@@ -601,6 +601,15 @@ class Panel{
     }
     for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){ const x=pad+c*(cw+gap),y=pad+r*(ch+gap); const f=fills[r*COLS+c]; roundRect(ctx,x,y,cw,ch,rad); ctx.fillStyle=fills[r*COLS+c]?css(fills[r*COLS+c]):css(EMPTY); ctx.fill(); }
 
+    // ---- per-cell sum labels (intensity applied) ----
+    const cfs=Math.max(9, Math.round(Math.min(cw,ch)*0.30));
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.font=`700 ${cfs}px ui-sans-serif,system-ui,sans-serif`;
+    ctx.save(); ctx.shadowColor='rgba(0,0,0,.6)'; ctx.shadowBlur=3; ctx.fillStyle='#f2f6fa';
+    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){ const v=sumCells[r*COLS+c]; if(v<0.05) continue;
+      const cx=pad+c*(cw+gap)+cw/2, cy=pad+r*(ch+gap)+ch/2; ctx.fillText(v.toFixed(1), cx, cy); }
+    ctx.restore();
+
     // ---- row / column / total sum labels (intensity applied) ----
     const gridRight=this.cellGeom.gridRight, gridBottom=this.cellGeom.gridBottom;
     const rowCX=(gridRight+(this.W-pad))/2, colCY=(gridBottom+(this.H-pad))/2;
