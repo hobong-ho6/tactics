@@ -73,6 +73,12 @@
   .pitch-holder{position:relative;width:100%;aspect-ratio:1/1;border-radius:8px;overflow:hidden}
   .pitch-holder canvas{position:absolute;inset:0;width:100%;height:100%}
   .pitch-holder{background:#13151c}
+  .p-heatrow{display:flex;align-items:stretch;gap:8px}
+  .p-heatrow .p-holder{flex:1;min-width:0}
+  .p-thresh-col{display:flex;flex-direction:column;align-items:center;gap:6px;flex:0 0 26px}
+  .p-thresh-cap{font-size:9px;letter-spacing:.08em;color:var(--muted-2)}
+  .p-thresh{flex:1;writing-mode:vertical-lr;direction:rtl;width:18px;accent-color:var(--accent);cursor:pointer}
+  .p-thresh-val{font-family:var(--mono);font-size:10px;color:var(--muted-2)}
   #heat{mix-blend-mode:normal}
   .chips{position:absolute;inset:0}
   .p-holder.chips-hidden .chips{display:none}
@@ -121,6 +127,7 @@
   .pos{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.03em}
   .selects{display:flex;gap:6px;min-width:0}
   .rrole,.rfocus{background:var(--panel-2);border:1px solid var(--line);border-radius:7px;padding:6px 8px;font-size:12px;width:100%;appearance:none;cursor:pointer;min-width:0}
+  .rname{flex:1;background:var(--panel-2);border:1px dashed var(--line-soft);border-radius:7px;padding:6px 8px;font-size:12px;font-weight:700;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .rfocus{flex:0 0 40%;color:var(--muted)}
   .rrole:focus,.rfocus:focus{outline:none;border-color:var(--accent)}
   .eyebtn{width:28px;height:26px;border-radius:7px;background:var(--panel-2);border:1px solid var(--line);cursor:pointer;font-size:12px;color:var(--accent);display:grid;place-items:center}
@@ -347,97 +354,51 @@ const ROLE_SETS = {
    FORMATIONS  (x: 0 left .. 100 right, y: 0 own goal .. 100 opp goal)
 ============================================================ */
 const FORMATIONS = {
-  '4-2-3-1':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper'},
-    {pos:'LB', t:'FB', x:13,y:30, r:'fb_fullback'},
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_defender'},
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender'},
-    {pos:'RB', t:'FB', x:87,y:30, r:'fb_fullback'},
-    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_holding'},
-    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_dlp'},
-    {pos:'LW', t:'W',  x:15,y:64, r:'w_insidefwd'},
-    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_shadow'},
-    {pos:'RW', t:'W',  x:85,y:64, r:'w_insidefwd'},
-    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced'},
-  ],
-  '4-2-3-1 (와이드)':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper'},
-    {pos:'LB', t:'FB', x:13,y:30, r:'fb_fullback'},
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_defender'},
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender'},
-    {pos:'RB', t:'FB', x:87,y:30, r:'fb_fullback'},
-    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_holding'},
-    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_dlp'},
-    {pos:'LM', t:'WM', x:14,y:64, r:'wm_insidefwd'},
-    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_shadow'},
-    {pos:'RM', t:'WM', x:86,y:64, r:'wm_insidefwd'},
-    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced'},
-  ],
-  '4-3-3':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper'},
-    {pos:'LB', t:'FB', x:13,y:30, r:'fb_fullback'},
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_defender'},
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender'},
-    {pos:'RB', t:'FB', x:87,y:30, r:'fb_fullback'},
-    {pos:'CDM',t:'DM', x:50,y:40, r:'dm_dlp'},
-    {pos:'LCM',t:'CM', x:30,y:52, r:'cm_b2b'},
-    {pos:'RCM',t:'CM', x:70,y:52, r:'cm_b2b'},
-    {pos:'LW', t:'W',  x:15,y:74, r:'w_insidefwd'},
-    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced'},
-    {pos:'RW', t:'W',  x:85,y:74, r:'w_insidefwd'},
-  ],
-  '4-4-2':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_goalkeeper'},
-    {pos:'LB', t:'FB', x:13,y:30, r:'fb_fullback'},
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_defender'},
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender'},
-    {pos:'RB', t:'FB', x:87,y:30, r:'fb_fullback'},
-    {pos:'LM', t:'WM', x:14,y:52, r:'wm_winger'},
-    {pos:'LCM',t:'CM', x:38,y:46, r:'cm_b2b'},
-    {pos:'RCM',t:'CM', x:62,y:46, r:'cm_dlp'},
-    {pos:'RM', t:'WM', x:86,y:52, r:'wm_winger'},
-    {pos:'LST',t:'ST', x:40,y:84, r:'st_advanced'},
-    {pos:'RST',t:'ST', x:60,y:84, r:'st_poacher'},
-  ],
-  '4-5-1':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper'},
-    {pos:'LB', t:'FB', x:13,y:30, r:'fb_fullback'},
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_defender'},
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender'},
-    {pos:'RB', t:'FB', x:87,y:30, r:'fb_fullback'},
-    {pos:'LM', t:'WM', x:12,y:56, r:'wm_winger'},
-    {pos:'LCM',t:'CM', x:34,y:50, r:'cm_b2b'},
-    {pos:'CM', t:'CM', x:50,y:44, r:'cm_holding'},
-    {pos:'RCM',t:'CM', x:66,y:50, r:'cm_b2b'},
-    {pos:'RM', t:'WM', x:88,y:56, r:'wm_winger'},
-    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced'},
-  ],
-  '4-1-2-1-2 (내로우)':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_goalkeeper'},
-    {pos:'LB', t:'FB', x:13,y:30, r:'fb_fullback'},
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_defender'},
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender'},
-    {pos:'RB', t:'FB', x:87,y:30, r:'fb_fullback'},
-    {pos:'CDM',t:'DM', x:50,y:38, r:'dm_holding'},
-    {pos:'LCM',t:'CM', x:33,y:52, r:'cm_b2b'},
-    {pos:'RCM',t:'CM', x:67,y:52, r:'cm_b2b'},
-    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker'},
-    {pos:'LST',t:'ST', x:41,y:85, r:'st_advanced'},
-    {pos:'RST',t:'ST', x:59,y:85, r:'st_poacher'},
-  ],
-  '3-4-3':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper'},
-    {pos:'LCB',t:'CB', x:27,y:28, r:'cb_defender'},
-    {pos:'CB', t:'CB', x:50,y:26, r:'cb_bpd'},
-    {pos:'RCB',t:'CB', x:73,y:28, r:'cb_defender'},
-    {pos:'LM', t:'WM', x:12,y:50, r:'wm_insidefwd'},
-    {pos:'LCM',t:'CM', x:38,y:48, r:'cm_b2b'},
-    {pos:'RCM',t:'CM', x:62,y:48, r:'cm_dlp'},
-    {pos:'RM', t:'WM', x:88,y:50, r:'wm_insidefwd'},
-    {pos:'LW', t:'W',  x:22,y:78, r:'w_insidefwd'},
-    {pos:'ST', t:'ST', x:50,y:86, r:'st_advanced'},
-    {pos:'RW', t:'W',  x:78,y:78, r:'w_insidefwd'},
-  ],
+  '4-2-3-1':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LDM',t:'DM',x:38,y:42,r:'dm_holding'},{pos:'RDM',t:'DM',x:62,y:42,r:'dm_dlp'},{pos:'LW',t:'W',x:15,y:64,r:'w_insidefwd'},{pos:'CAM',t:'CAM',x:50,y:66,r:'cam_shadow'},{pos:'RW',t:'W',x:85,y:64,r:'w_insidefwd'},{pos:'ST',t:'ST',x:50,y:87,r:'st_advanced'}],
+  '4-2-3-1 (2)':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LDM',t:'DM',x:38,y:40,r:'dm_holding'},{pos:'RDM',t:'DM',x:62,y:40,r:'dm_holding'},{pos:'LM',t:'WM',x:15,y:62,r:'wm_widemid'},{pos:'CAM',t:'CAM',x:50,y:64,r:'cam_playmaker'},{pos:'RM',t:'WM',x:85,y:62,r:'wm_widemid'},{pos:'ST',t:'ST',x:50,y:86,r:'st_target'}],
+  '4-2-3-1 Narrow':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LDM',t:'DM',x:38,y:42,r:'dm_holding'},{pos:'RDM',t:'DM',x:62,y:42,r:'dm_dlp'},{pos:'LCAM',t:'CAM',x:33,y:64,r:'cam_playmaker'},{pos:'CAM',t:'CAM',x:50,y:66,r:'cam_shadow'},{pos:'RCAM',t:'CAM',x:67,y:64,r:'cam_playmaker'},{pos:'ST',t:'ST',x:50,y:87,r:'st_advanced'}],
+  '4-2-3-1 Wide':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LDM',t:'DM',x:38,y:42,r:'dm_holding'},{pos:'RDM',t:'DM',x:62,y:42,r:'dm_dlp'},{pos:'LM',t:'WM',x:14,y:64,r:'wm_insidefwd'},{pos:'CAM',t:'CAM',x:50,y:66,r:'cam_playmaker'},{pos:'RM',t:'WM',x:86,y:64,r:'wm_insidefwd'},{pos:'ST',t:'ST',x:50,y:87,r:'st_advanced'}],
+  '4-3-3':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'CDM',t:'DM',x:50,y:40,r:'dm_holding'},{pos:'LCM',t:'CM',x:35,y:50,r:'cm_b2b'},{pos:'RCM',t:'CM',x:65,y:50,r:'cm_dlp'},{pos:'LW',t:'W',x:16,y:74,r:'w_insidefwd'},{pos:'ST',t:'ST',x:50,y:86,r:'st_advanced'},{pos:'RW',t:'W',x:84,y:74,r:'w_insidefwd'}],
+  '4-3-3 (2)':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LDM',t:'DM',x:38,y:42,r:'dm_holding'},{pos:'RDM',t:'DM',x:62,y:42,r:'dm_dlp'},{pos:'CM',t:'CM',x:50,y:54,r:'cm_playmaker'},{pos:'LW',t:'W',x:16,y:74,r:'w_insidefwd'},{pos:'ST',t:'ST',x:50,y:86,r:'st_advanced'},{pos:'RW',t:'W',x:84,y:74,r:'w_insidefwd'}],
+  '4-3-3 (3)':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'CDM',t:'DM',x:50,y:42,r:'dm_dlp'},{pos:'LCM',t:'CM',x:34,y:52,r:'cm_halfwinger'},{pos:'RCM',t:'CM',x:66,y:52,r:'cm_halfwinger'},{pos:'LW',t:'W',x:16,y:75,r:'w_winger'},{pos:'ST',t:'ST',x:50,y:87,r:'st_poacher'},{pos:'RW',t:'W',x:84,y:75,r:'w_winger'}],
+  '4-3-3 (4)':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'CDM',t:'DM',x:50,y:38,r:'dm_holding'},{pos:'LCM',t:'CM',x:35,y:48,r:'cm_holding'},{pos:'RCM',t:'CM',x:65,y:48,r:'cm_holding'},{pos:'LW',t:'W',x:17,y:72,r:'w_insidefwd'},{pos:'ST',t:'ST',x:50,y:85,r:'st_advanced'},{pos:'RW',t:'W',x:83,y:72,r:'w_insidefwd'}],
+  '4-3-3 Attack':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'CDM',t:'DM',x:50,y:44,r:'dm_dlp'},{pos:'LCM',t:'CM',x:34,y:54,r:'cm_halfwinger'},{pos:'RCM',t:'CM',x:66,y:54,r:'cm_halfwinger'},{pos:'LW',t:'W',x:16,y:76,r:'w_winger'},{pos:'ST',t:'ST',x:50,y:88,r:'st_poacher'},{pos:'RW',t:'W',x:84,y:76,r:'w_winger'}],
+  '4-3-3 Defend':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'CDM',t:'DM',x:50,y:38,r:'dm_holding'},{pos:'LCM',t:'CM',x:35,y:47,r:'cm_holding'},{pos:'RCM',t:'CM',x:65,y:47,r:'cm_dlp'},{pos:'LW',t:'W',x:18,y:70,r:'w_insidefwd'},{pos:'ST',t:'ST',x:50,y:84,r:'st_advanced'},{pos:'RW',t:'W',x:82,y:70,r:'w_insidefwd'}],
+  '4-3-3 Flat':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LCM',t:'CM',x:32,y:50,r:'cm_b2b'},{pos:'CM',t:'CM',x:50,y:50,r:'cm_dlp'},{pos:'RCM',t:'CM',x:68,y:50,r:'cm_b2b'},{pos:'LW',t:'W',x:16,y:74,r:'w_insidefwd'},{pos:'ST',t:'ST',x:50,y:86,r:'st_advanced'},{pos:'RW',t:'W',x:84,y:74,r:'w_insidefwd'}],
+  '4-3-3 Holding':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'CDM',t:'DM',x:50,y:39,r:'dm_holding'},{pos:'LCM',t:'CM',x:36,y:50,r:'cm_b2b'},{pos:'RCM',t:'CM',x:64,y:50,r:'cm_playmaker'},{pos:'LW',t:'W',x:16,y:74,r:'w_insidefwd'},{pos:'ST',t:'ST',x:50,y:86,r:'st_advanced'},{pos:'RW',t:'W',x:84,y:74,r:'w_insidefwd'}],
+  '4-4-2':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LM',t:'WM',x:14,y:52,r:'wm_winger'},{pos:'LCM',t:'CM',x:38,y:46,r:'cm_b2b'},{pos:'RCM',t:'CM',x:62,y:46,r:'cm_dlp'},{pos:'RM',t:'WM',x:86,y:52,r:'wm_winger'},{pos:'LST',t:'ST',x:40,y:84,r:'st_advanced'},{pos:'RST',t:'ST',x:60,y:84,r:'st_poacher'}],
+  '4-4-2 (2)':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LM',t:'WM',x:14,y:52,r:'wm_widemid'},{pos:'LDM',t:'DM',x:40,y:44,r:'dm_holding'},{pos:'RDM',t:'DM',x:60,y:44,r:'dm_holding'},{pos:'RM',t:'WM',x:86,y:52,r:'wm_widemid'},{pos:'LST',t:'ST',x:40,y:84,r:'st_advanced'},{pos:'RST',t:'ST',x:60,y:84,r:'st_poacher'}],
+  '4-4-2 Flat':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LM',t:'WM',x:13,y:50,r:'wm_winger'},{pos:'LCM',t:'CM',x:38,y:50,r:'cm_b2b'},{pos:'RCM',t:'CM',x:62,y:50,r:'cm_b2b'},{pos:'RM',t:'WM',x:87,y:50,r:'wm_winger'},{pos:'LST',t:'ST',x:40,y:84,r:'st_advanced'},{pos:'RST',t:'ST',x:60,y:84,r:'st_poacher'}],
+  '4-4-2 Holding':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LM',t:'WM',x:14,y:50,r:'wm_widemid'},{pos:'LCM',t:'CM',x:40,y:44,r:'cm_holding'},{pos:'RCM',t:'CM',x:60,y:44,r:'cm_holding'},{pos:'RM',t:'WM',x:86,y:50,r:'wm_widemid'},{pos:'LST',t:'ST',x:40,y:84,r:'st_advanced'},{pos:'RST',t:'ST',x:60,y:84,r:'st_target'}],
+  '4-4-1-1 (2)':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LM',t:'WM',x:14,y:54,r:'wm_winger'},{pos:'LCM',t:'CM',x:38,y:48,r:'cm_b2b'},{pos:'RCM',t:'CM',x:62,y:48,r:'cm_dlp'},{pos:'RM',t:'WM',x:86,y:54,r:'wm_winger'},{pos:'CAM',t:'CAM',x:50,y:68,r:'cam_shadow'},{pos:'ST',t:'ST',x:50,y:87,r:'st_advanced'}],
+  '4-4-1-1 Midfield':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LM',t:'WM',x:14,y:52,r:'wm_widemid'},{pos:'LCM',t:'CM',x:38,y:45,r:'cm_holding'},{pos:'RCM',t:'CM',x:62,y:45,r:'cm_dlp'},{pos:'RM',t:'WM',x:86,y:52,r:'wm_widemid'},{pos:'CAM',t:'CAM',x:50,y:66,r:'cam_playmaker'},{pos:'ST',t:'ST',x:50,y:86,r:'st_advanced'}],
+  '4-5-1':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LM',t:'WM',x:12,y:56,r:'wm_winger'},{pos:'LCM',t:'CM',x:34,y:50,r:'cm_b2b'},{pos:'CM',t:'CM',x:50,y:44,r:'cm_holding'},{pos:'RCM',t:'CM',x:66,y:50,r:'cm_b2b'},{pos:'RM',t:'WM',x:88,y:56,r:'wm_winger'},{pos:'ST',t:'ST',x:50,y:87,r:'st_advanced'}],
+  '4-5-1 (2)':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LM',t:'WM',x:13,y:54,r:'wm_widemid'},{pos:'LDM',t:'DM',x:38,y:42,r:'dm_holding'},{pos:'RDM',t:'DM',x:62,y:42,r:'dm_dlp'},{pos:'RM',t:'WM',x:87,y:54,r:'wm_widemid'},{pos:'CAM',t:'CAM',x:50,y:66,r:'cam_playmaker'},{pos:'ST',t:'ST',x:50,y:87,r:'st_advanced'}],
+  '4-5-1 Attack':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LM',t:'WM',x:13,y:60,r:'wm_winger'},{pos:'LCM',t:'CM',x:36,y:54,r:'cm_halfwinger'},{pos:'CAM',t:'CAM',x:50,y:66,r:'cam_shadow'},{pos:'RCM',t:'CM',x:64,y:54,r:'cm_halfwinger'},{pos:'RM',t:'WM',x:87,y:60,r:'wm_winger'},{pos:'ST',t:'ST',x:50,y:88,r:'st_poacher'}],
+  '4-5-1 Flat':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LM',t:'WM',x:12,y:52,r:'wm_winger'},{pos:'LCM',t:'CM',x:33,y:52,r:'cm_b2b'},{pos:'CM',t:'CM',x:50,y:52,r:'cm_dlp'},{pos:'RCM',t:'CM',x:67,y:52,r:'cm_b2b'},{pos:'RM',t:'WM',x:88,y:52,r:'wm_winger'},{pos:'ST',t:'ST',x:50,y:86,r:'st_advanced'}],
+  '4-1-2-1-2':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'CDM',t:'DM',x:50,y:40,r:'dm_holding'},{pos:'LCM',t:'CM',x:30,y:52,r:'cm_b2b'},{pos:'RCM',t:'CM',x:70,y:52,r:'cm_b2b'},{pos:'CAM',t:'CAM',x:50,y:66,r:'cam_playmaker'},{pos:'LST',t:'ST',x:41,y:85,r:'st_advanced'},{pos:'RST',t:'ST',x:59,y:85,r:'st_poacher'}],
+  '4-1-2-1-2 (2)':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'CDM',t:'DM',x:50,y:38,r:'dm_holding'},{pos:'LCM',t:'CM',x:33,y:50,r:'cm_holding'},{pos:'RCM',t:'CM',x:67,y:50,r:'cm_dlp'},{pos:'CAM',t:'CAM',x:50,y:64,r:'cam_playmaker'},{pos:'LST',t:'ST',x:41,y:84,r:'st_advanced'},{pos:'RST',t:'ST',x:59,y:84,r:'st_target'}],
+  '4-1-2-1-2 Narrow':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'CDM',t:'DM',x:50,y:40,r:'dm_holding'},{pos:'LCM',t:'CM',x:36,y:52,r:'cm_b2b'},{pos:'RCM',t:'CM',x:64,y:52,r:'cm_b2b'},{pos:'CAM',t:'CAM',x:50,y:66,r:'cam_playmaker'},{pos:'LST',t:'ST',x:43,y:85,r:'st_advanced'},{pos:'RST',t:'ST',x:57,y:85,r:'st_poacher'}],
+  '4-1-2-1-2 Wide':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'CDM',t:'DM',x:50,y:40,r:'dm_holding'},{pos:'LM',t:'WM',x:18,y:54,r:'wm_winger'},{pos:'RM',t:'WM',x:82,y:54,r:'wm_winger'},{pos:'CAM',t:'CAM',x:50,y:66,r:'cam_playmaker'},{pos:'LST',t:'ST',x:41,y:85,r:'st_advanced'},{pos:'RST',t:'ST',x:59,y:85,r:'st_poacher'}],
+  '4-1-3-2':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'CDM',t:'DM',x:50,y:40,r:'dm_holding'},{pos:'LM',t:'WM',x:16,y:56,r:'wm_winger'},{pos:'CM',t:'CM',x:50,y:54,r:'cm_playmaker'},{pos:'RM',t:'WM',x:84,y:56,r:'wm_winger'},{pos:'LST',t:'ST',x:41,y:85,r:'st_advanced'},{pos:'RST',t:'ST',x:59,y:85,r:'st_poacher'}],
+  '4-1-4-1':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'CDM',t:'DM',x:50,y:40,r:'dm_holding'},{pos:'LM',t:'WM',x:14,y:56,r:'wm_winger'},{pos:'LCM',t:'CM',x:38,y:52,r:'cm_b2b'},{pos:'RCM',t:'CM',x:62,y:52,r:'cm_dlp'},{pos:'RM',t:'WM',x:86,y:56,r:'wm_winger'},{pos:'ST',t:'ST',x:50,y:87,r:'st_advanced'}],
+  '4-2-1-3':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LDM',t:'DM',x:38,y:42,r:'dm_holding'},{pos:'RDM',t:'DM',x:62,y:42,r:'dm_dlp'},{pos:'CAM',t:'CAM',x:50,y:60,r:'cam_playmaker'},{pos:'LW',t:'W',x:16,y:76,r:'w_insidefwd'},{pos:'ST',t:'ST',x:50,y:87,r:'st_advanced'},{pos:'RW',t:'W',x:84,y:76,r:'w_insidefwd'}],
+  '4-2-2-2':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LDM',t:'DM',x:38,y:42,r:'dm_holding'},{pos:'RDM',t:'DM',x:62,y:42,r:'dm_dlp'},{pos:'LCAM',t:'CAM',x:30,y:64,r:'cam_halfwinger'},{pos:'RCAM',t:'CAM',x:70,y:64,r:'cam_halfwinger'},{pos:'LST',t:'ST',x:41,y:85,r:'st_advanced'},{pos:'RST',t:'ST',x:59,y:85,r:'st_poacher'}],
+  '4-2-4':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LCM',t:'CM',x:38,y:48,r:'cm_b2b'},{pos:'RCM',t:'CM',x:62,y:48,r:'cm_b2b'},{pos:'LW',t:'W',x:15,y:74,r:'w_winger'},{pos:'LST',t:'ST',x:40,y:86,r:'st_advanced'},{pos:'RST',t:'ST',x:60,y:86,r:'st_poacher'},{pos:'RW',t:'W',x:85,y:74,r:'w_winger'}],
+  '4-3-1-2':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'CDM',t:'DM',x:50,y:40,r:'dm_holding'},{pos:'LCM',t:'CM',x:34,y:50,r:'cm_b2b'},{pos:'RCM',t:'CM',x:66,y:50,r:'cm_dlp'},{pos:'CAM',t:'CAM',x:50,y:66,r:'cam_playmaker'},{pos:'LST',t:'ST',x:41,y:85,r:'st_advanced'},{pos:'RST',t:'ST',x:59,y:85,r:'st_poacher'}],
+  '4-3-2-1':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LB',t:'FB',x:13,y:30,r:'fb_fullback'},{pos:'LCB',t:'CB',x:37,y:28,r:'cb_defender'},{pos:'RCB',t:'CB',x:63,y:28,r:'cb_defender'},{pos:'RB',t:'FB',x:87,y:30,r:'fb_fullback'},{pos:'LCM',t:'CM',x:34,y:48,r:'cm_b2b'},{pos:'CM',t:'CM',x:50,y:44,r:'cm_holding'},{pos:'RCM',t:'CM',x:66,y:48,r:'cm_dlp'},{pos:'LCAM',t:'CAM',x:36,y:66,r:'cam_shadow'},{pos:'RCAM',t:'CAM',x:64,y:66,r:'cam_shadow'},{pos:'ST',t:'ST',x:50,y:88,r:'st_poacher'}],
+  '3-1-4-2':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LCB',t:'CB',x:27,y:28,r:'cb_defender'},{pos:'CB',t:'CB',x:50,y:26,r:'cb_bpd'},{pos:'RCB',t:'CB',x:73,y:28,r:'cb_defender'},{pos:'CDM',t:'DM',x:50,y:40,r:'dm_holding'},{pos:'LM',t:'WM',x:14,y:54,r:'wm_winger'},{pos:'LCM',t:'CM',x:38,y:52,r:'cm_b2b'},{pos:'RCM',t:'CM',x:62,y:52,r:'cm_dlp'},{pos:'RM',t:'WM',x:86,y:54,r:'wm_winger'},{pos:'LST',t:'ST',x:41,y:85,r:'st_advanced'},{pos:'RST',t:'ST',x:59,y:85,r:'st_poacher'}],
+  '3-4-1-2':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LCB',t:'CB',x:27,y:28,r:'cb_defender'},{pos:'CB',t:'CB',x:50,y:26,r:'cb_bpd'},{pos:'RCB',t:'CB',x:73,y:28,r:'cb_defender'},{pos:'LM',t:'WM',x:12,y:50,r:'wm_widemid'},{pos:'LCM',t:'CM',x:38,y:46,r:'cm_b2b'},{pos:'RCM',t:'CM',x:62,y:46,r:'cm_dlp'},{pos:'RM',t:'WM',x:88,y:50,r:'wm_widemid'},{pos:'CAM',t:'CAM',x:50,y:66,r:'cam_playmaker'},{pos:'LST',t:'ST',x:41,y:85,r:'st_advanced'},{pos:'RST',t:'ST',x:59,y:85,r:'st_poacher'}],
+  '3-4-2-1':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LCB',t:'CB',x:27,y:28,r:'cb_defender'},{pos:'CB',t:'CB',x:50,y:26,r:'cb_bpd'},{pos:'RCB',t:'CB',x:73,y:28,r:'cb_defender'},{pos:'LM',t:'WM',x:12,y:50,r:'wm_widemid'},{pos:'LCM',t:'CM',x:38,y:46,r:'cm_b2b'},{pos:'RCM',t:'CM',x:62,y:46,r:'cm_dlp'},{pos:'RM',t:'WM',x:88,y:50,r:'wm_widemid'},{pos:'LCAM',t:'CAM',x:36,y:66,r:'cam_shadow'},{pos:'RCAM',t:'CAM',x:64,y:66,r:'cam_shadow'},{pos:'ST',t:'ST',x:50,y:88,r:'st_advanced'}],
+  '3-4-3':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LCB',t:'CB',x:27,y:28,r:'cb_defender'},{pos:'CB',t:'CB',x:50,y:26,r:'cb_bpd'},{pos:'RCB',t:'CB',x:73,y:28,r:'cb_defender'},{pos:'LM',t:'WM',x:12,y:50,r:'wm_insidefwd'},{pos:'LCM',t:'CM',x:38,y:48,r:'cm_b2b'},{pos:'RCM',t:'CM',x:62,y:48,r:'cm_dlp'},{pos:'RM',t:'WM',x:88,y:50,r:'wm_insidefwd'},{pos:'LW',t:'W',x:22,y:76,r:'w_insidefwd'},{pos:'ST',t:'ST',x:50,y:86,r:'st_advanced'},{pos:'RW',t:'W',x:78,y:76,r:'w_insidefwd'}],
+  '3-4-3 Flat':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LCB',t:'CB',x:27,y:28,r:'cb_defender'},{pos:'CB',t:'CB',x:50,y:26,r:'cb_bpd'},{pos:'RCB',t:'CB',x:73,y:28,r:'cb_defender'},{pos:'LM',t:'WM',x:12,y:52,r:'wm_winger'},{pos:'LCM',t:'CM',x:38,y:50,r:'cm_b2b'},{pos:'RCM',t:'CM',x:62,y:50,r:'cm_b2b'},{pos:'RM',t:'WM',x:88,y:52,r:'wm_winger'},{pos:'LW',t:'W',x:20,y:74,r:'w_winger'},{pos:'ST',t:'ST',x:50,y:84,r:'st_target'},{pos:'RW',t:'W',x:80,y:74,r:'w_winger'}],
+  '3-5-2':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LCB',t:'CB',x:27,y:28,r:'cb_defender'},{pos:'CB',t:'CB',x:50,y:26,r:'cb_bpd'},{pos:'RCB',t:'CB',x:73,y:28,r:'cb_defender'},{pos:'CDM',t:'DM',x:50,y:40,r:'dm_holding'},{pos:'LM',t:'WM',x:12,y:52,r:'wm_widemid'},{pos:'LCM',t:'CM',x:36,y:50,r:'cm_b2b'},{pos:'RCM',t:'CM',x:64,y:50,r:'cm_dlp'},{pos:'RM',t:'WM',x:88,y:52,r:'wm_widemid'},{pos:'LST',t:'ST',x:41,y:85,r:'st_advanced'},{pos:'RST',t:'ST',x:59,y:85,r:'st_poacher'}],
+  '5-2-1-2':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LWB',t:'FB',x:8,y:40,r:'fb_wingback'},{pos:'LCB',t:'CB',x:28,y:26,r:'cb_defender'},{pos:'CB',t:'CB',x:50,y:24,r:'cb_bpd'},{pos:'RCB',t:'CB',x:72,y:26,r:'cb_defender'},{pos:'RWB',t:'FB',x:92,y:40,r:'fb_wingback'},{pos:'LCM',t:'CM',x:38,y:50,r:'cm_b2b'},{pos:'RCM',t:'CM',x:62,y:50,r:'cm_dlp'},{pos:'CAM',t:'CAM',x:50,y:66,r:'cam_playmaker'},{pos:'LST',t:'ST',x:41,y:85,r:'st_advanced'},{pos:'RST',t:'ST',x:59,y:85,r:'st_poacher'}],
+  '5-2-3':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LWB',t:'FB',x:8,y:40,r:'fb_wingback'},{pos:'LCB',t:'CB',x:28,y:26,r:'cb_defender'},{pos:'CB',t:'CB',x:50,y:24,r:'cb_bpd'},{pos:'RCB',t:'CB',x:72,y:26,r:'cb_defender'},{pos:'RWB',t:'FB',x:92,y:40,r:'fb_wingback'},{pos:'LCM',t:'CM',x:38,y:50,r:'cm_b2b'},{pos:'RCM',t:'CM',x:62,y:50,r:'cm_dlp'},{pos:'LW',t:'W',x:18,y:74,r:'w_insidefwd'},{pos:'ST',t:'ST',x:50,y:86,r:'st_advanced'},{pos:'RW',t:'W',x:82,y:74,r:'w_insidefwd'}],
+  '5-3-2':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LWB',t:'FB',x:8,y:40,r:'fb_wingback'},{pos:'LCB',t:'CB',x:28,y:26,r:'cb_defender'},{pos:'CB',t:'CB',x:50,y:24,r:'cb_bpd'},{pos:'RCB',t:'CB',x:72,y:26,r:'cb_defender'},{pos:'RWB',t:'FB',x:92,y:40,r:'fb_wingback'},{pos:'LCM',t:'CM',x:34,y:50,r:'cm_b2b'},{pos:'CM',t:'CM',x:50,y:46,r:'cm_holding'},{pos:'RCM',t:'CM',x:66,y:50,r:'cm_dlp'},{pos:'LST',t:'ST',x:41,y:85,r:'st_advanced'},{pos:'RST',t:'ST',x:59,y:85,r:'st_poacher'}],
+  '5-3-2 Holding':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LWB',t:'FB',x:8,y:40,r:'fb_wingback'},{pos:'LCB',t:'CB',x:28,y:26,r:'cb_defender'},{pos:'CB',t:'CB',x:50,y:24,r:'cb_bpd'},{pos:'RCB',t:'CB',x:72,y:26,r:'cb_defender'},{pos:'RWB',t:'FB',x:92,y:40,r:'fb_wingback'},{pos:'LCM',t:'CM',x:34,y:48,r:'cm_holding'},{pos:'CDM',t:'DM',x:50,y:42,r:'dm_holding'},{pos:'RCM',t:'CM',x:66,y:48,r:'cm_dlp'},{pos:'LST',t:'ST',x:41,y:84,r:'st_advanced'},{pos:'RST',t:'ST',x:59,y:84,r:'st_target'}],
+  '5-4-1':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LWB',t:'FB',x:8,y:40,r:'fb_wingback'},{pos:'LCB',t:'CB',x:28,y:26,r:'cb_defender'},{pos:'CB',t:'CB',x:50,y:24,r:'cb_bpd'},{pos:'RCB',t:'CB',x:72,y:26,r:'cb_defender'},{pos:'RWB',t:'FB',x:92,y:40,r:'fb_wingback'},{pos:'LM',t:'WM',x:14,y:54,r:'wm_widemid'},{pos:'LCM',t:'CM',x:38,y:50,r:'cm_b2b'},{pos:'RCM',t:'CM',x:62,y:50,r:'cm_dlp'},{pos:'RM',t:'WM',x:86,y:54,r:'wm_widemid'},{pos:'ST',t:'ST',x:50,y:87,r:'st_advanced'}],
+  '5-4-1 Flat':[{pos:'GK',t:'GK',x:50,y:6,r:'gk_sweeper'},{pos:'LWB',t:'FB',x:8,y:40,r:'fb_wingback'},{pos:'LCB',t:'CB',x:28,y:26,r:'cb_defender'},{pos:'CB',t:'CB',x:50,y:24,r:'cb_bpd'},{pos:'RCB',t:'CB',x:72,y:26,r:'cb_defender'},{pos:'RWB',t:'FB',x:92,y:40,r:'fb_wingback'},{pos:'LM',t:'WM',x:13,y:52,r:'wm_winger'},{pos:'LCM',t:'CM',x:37,y:52,r:'cm_b2b'},{pos:'RCM',t:'CM',x:63,y:52,r:'cm_b2b'},{pos:'RM',t:'WM',x:87,y:52,r:'wm_winger'},{pos:'ST',t:'ST',x:50,y:86,r:'st_advanced'}],
   /* Aston Villa 25/26 (Emery) — 4-2-3-1 (wide) → defends as 4-4-2.
      Wide slots are WM (wide midfielders) so they drop into the 4-4-2 block.
      Roles/focus map each starter to their real average movement (not exact pixel heatmaps). */
@@ -459,17 +420,17 @@ const FORMATIONS = {
      map25 rows: top=attacking third .. bottom=own third; cols: left..right. It overrides the role kernel
      (placedMap uses it as-is, no mirror/shift); changing a player's role/focus reverts them to the kernel. */
   '아스톤 빌라 25/26 (실측)':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper',    focus:'Build-Up',    map25:'0000000000000000131014X41'}, // E.Martínez
-    {pos:'LB', t:'FB', x:13,y:32, r:'fb_inverted',   focus:'Attack',      map25:'43100X6200952107310042100'}, // Maatsen
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    map25:'0010001210244205X84136520'}, // Pau Torres
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender',   focus:'Balanced',    map25:'00010001210135302685027X6'}, // Konsa
-    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Support',     map25:'0001300137012590136X00136'}, // Cash
-    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_dlp',        focus:'Build-Up',    map25:'00100122103664159X6225631'}, // Kamara
-    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning',map25:'001111233225783368X413542'}, // Onana
-    {pos:'LM', t:'WM', x:14,y:64, r:'wm_insidefwd',  focus:'Attack',      map25:'696317X841586313542012210'}, // Rogers
-    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming',     map25:'012101474127X621463101210'}, // Tielemans
-    {pos:'RM', t:'WM', x:86,y:64, r:'wm_insidefwd',  focus:'Balanced',    map25:'0246313794258X51368401352'}, // McGinn
-    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile',   map25:'68X7546863245421232101110'}, // Watkins
+    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper',    focus:'Build-Up',    name:'마르티네스',   map25:'0000000000000000131014X41'},
+    {pos:'LB', t:'FB', x:13,y:32, r:'fb_inverted',   focus:'Attack',      name:'마첸',        map25:'43100X6200952107310042100'},
+    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스',  map25:'0010001210244205X84136520'},
+    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender',   focus:'Balanced',    name:'콘사',        map25:'00010001210135302685027X6'},
+    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Support',     name:'캐시',        map25:'0001300137012590136X00136'},
+    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_dlp',        focus:'Build-Up',    name:'카마라',      map25:'00100122103664159X6225631'},
+    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'오나나',      map25:'001111233225783368X413542'},
+    {pos:'LM', t:'WM', x:14,y:64, r:'wm_insidefwd',  focus:'Attack',      name:'로저스',      map25:'696317X841586313542012210'},
+    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming',     name:'티엘레망스',   map25:'012101474127X621463101210'},
+    {pos:'RM', t:'WM', x:86,y:64, r:'wm_insidefwd',  focus:'Balanced',    name:'맥긴',        map25:'0246313794258X51368401352'},
+    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile',   name:'왓킨스',      map25:'68X7546863245421232101110'},
   ],
   /* Aston Villa 25/26 (roles) — the closest EA FC role/focus to each player's measured heatmap
      (max cosine similarity of the placed role kernel vs the map25 grid). No map25 → uses role kernels.
@@ -523,7 +484,8 @@ function placedMap(p){
   let m=decodeMap(code);
   if(p.x>55){ const t=new Float32Array(25); for(let r=0;r<5;r++)for(let c=0;c<5;c++) t[r*5+c]=m[r*5+(4-c)]; m=t; }
   let sw=0,sc=0; for(let r=0;r<5;r++)for(let c=0;c<5;c++){const v=m[r*5+c]; sw+=v; sc+=v*c;}
-  const centroid=sw>0?sc/sw:2, target=clamp(Math.floor(p.x/100*5),0,4), shift=Math.round(target-centroid);
+  const centroid=sw>0?sc/sw:2, target=clamp(Math.floor(p.x/100*5),0,4);
+  const _d=target-centroid, _ad=Math.abs(_d), _fl=Math.floor(_ad), shift=(_d<0?-1:1)*(_ad-_fl>0.5?_fl+1:_fl);  // round half toward zero → left/right mirror symmetric
   if(shift){ const t=new Float32Array(25); for(let r=0;r<5;r++)for(let c=0;c<5;c++){const nc=clamp(c+shift,0,4); t[r*5+nc]+=m[r*5+c];} m=t; }
   return m;
 }
@@ -536,7 +498,7 @@ function playersOf(formation){
 }
 function defaultSetup(formation){ return {formation,mode:'composite',intensity:1,selected:-1,players:playersOf(formation)}; }
 function snapshot(su){ return {formation:su.formation,mode:su.mode,intensity:su.intensity,
-  players:su.players.map(p=>({pos:p.pos,t:p.t,x:p.x,y:p.y,r:p.r,id:p.id,focus:p.focus,map25:p.map25,visible:p.visible,color:p.color}))}; }
+  players:su.players.map(p=>({pos:p.pos,t:p.t,x:p.x,y:p.y,r:p.r,id:p.id,focus:p.focus,map25:p.map25,name:p.name,visible:p.visible,color:p.color}))}; }
 function fromSnapshot(sn){ return {formation:sn.formation,mode:sn.mode,intensity:sn.intensity,selected:-1,
   players:sn.players.map(p=>({...p}))}; }
 
@@ -558,10 +520,17 @@ const PANEL_HTML = `
     <div class="seg p-chiptog"><button class="on" title="포지션 아이콘 표시/숨김">아이콘</button></div>
   </div>
   <div class="pitch-card">
-    <div class="pitch-holder p-holder">
-      <canvas class="p-pitch"></canvas>
-      <canvas class="p-heat"></canvas>
-      <div class="chips p-chips"></div>
+    <div class="p-heatrow">
+      <div class="p-thresh-col">
+        <span class="p-thresh-cap">필터</span>
+        <input class="p-thresh" type="range" min="0" max="6" step="0.1" value="0" title="임계값 — 이 값 미만 셀은 색을 지웁니다" aria-label="임계값 필터">
+        <span class="p-thresh-val">0.0</span>
+      </div>
+      <div class="pitch-holder p-holder">
+        <canvas class="p-pitch"></canvas>
+        <canvas class="p-heat"></canvas>
+        <div class="chips p-chips"></div>
+      </div>
     </div>
     <div class="legend"><span>단독(약)</span><span class="bar"></span><span>중첩↑</span></div>
     <div class="p-scorebar"><span>합계 · 우측=행 · 하단=열 · <b style="color:#ff7a2f">주황=전체</b></span><b class="p-score">0.0</b><span class="p-scorecells"></span></div>
@@ -588,12 +557,13 @@ class Panel{
   constructor(root,key,idx){
     this.key=key; this.root=root; root.innerHTML=PANEL_HTML;
     this.su=defaultSetup(FKEYS[idx]||FKEYS[0]);
-    this.DPR=Math.min(window.devicePixelRatio||1,2); this.W=0;this.H=0;this.cellGeom=null; this.hideChips=false;
+    this.DPR=Math.min(window.devicePixelRatio||1,2); this.W=0;this.H=0;this.cellGeom=null; this.hideChips=false; this.thresh=0;
     const $=(s)=>root.querySelector(s); this.$=$;
     this.holder=$('.p-holder'); this.pitch=$('.p-pitch'); this.heat=$('.p-heat');
     this.chipsEl=$('.p-chips'); this.rowsEl=$('.p-rows'); this.simEl=$('.p-sim'); this.simOpen=false;
     this.scoreEl=$('.p-score'); this.scoreCellsEl=$('.p-scorecells');
     this.fSel=$('.p-formation'); this.modeSeg=$('.p-mode'); this.intEl=$('.p-intensity');
+    this.threshEl=$('.p-thresh'); this.threshValEl=$('.p-thresh-val');
     this.nameEl=$('.p-name'); this.loadSel=$('.p-load');
     $('.pbadge').textContent=key;
     FKEYS.forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=k;this.fSel.appendChild(o);});
@@ -614,6 +584,7 @@ class Panel{
     });
     this.modeSeg.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return; this.su.mode=b.dataset.mode; [...this.modeSeg.children].forEach(x=>x.classList.toggle('on',x===b)); this.renderHeat(); });
     this.intEl.addEventListener('input',e=>{ this.su.intensity=+e.target.value; this.renderHeat(); });
+    this.threshEl.addEventListener('input',e=>{ this.thresh=+e.target.value; this.threshValEl.textContent=this.thresh.toFixed(1); this.renderHeat(); });
     this.$('.p-chiptog').addEventListener('click',()=>{ this.hideChips=!this.hideChips; this.applyChipVis(); });
     this.$('.p-optimize').addEventListener('click',()=>{ this.simOpen=!this.simOpen; if(this.simOpen) this.simulate(); else this.closeSim(); });
     this.simEl.addEventListener('click',e=>{
@@ -716,14 +687,14 @@ class Panel{
         for(let i=0;i<COLS*ROWS;i++){ let bt=0,brgb=null; for(const pp of per){ const t=pp.cells[i]/pp.mx; if(t>bt){bt=t;brgb=pp.rgb;} } fills[i]= bt<0.08?null:mix(EMPTY,brgb,0.30+0.66*Math.min(1,bt*this.su.intensity)); }
       }
     }
-    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){ const x=pad+c*(cw+gap),y=pad+r*(ch+gap); const f=fills[r*COLS+c]; roundRect(ctx,x,y,cw,ch,rad); ctx.fillStyle=fills[r*COLS+c]?css(fills[r*COLS+c]):css(EMPTY); ctx.fill(); }
+    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){ const i=r*COLS+c; const x=pad+c*(cw+gap),y=pad+r*(ch+gap); const on=fills[i]&&sumCells[i]>=this.thresh; roundRect(ctx,x,y,cw,ch,rad); ctx.fillStyle=on?css(fills[i]):css(EMPTY); ctx.fill(); }
 
     // ---- per-cell sum labels (intensity applied) ----
     const cfs=Math.max(9, Math.round(Math.min(cw,ch)*0.30));
     ctx.textAlign='center'; ctx.textBaseline='middle';
     ctx.font=`700 ${cfs}px ui-sans-serif,system-ui,sans-serif`;
     ctx.save(); ctx.shadowColor='rgba(0,0,0,.6)'; ctx.shadowBlur=3; ctx.fillStyle='#f2f6fa';
-    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){ const v=sumCells[r*COLS+c]; if(v<0.05) continue;
+    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){ const v=sumCells[r*COLS+c]; if(v<0.05||v<this.thresh) continue;
       const cx=pad+c*(cw+gap)+cw/2, cy=pad+r*(ch+gap)+ch/2; ctx.fillText(v.toFixed(1), cx, cy); }
     ctx.restore();
 
@@ -764,6 +735,11 @@ class Panel{
     this.rowsEl.innerHTML='';
     this.su.players.forEach(p=>{
       const row=document.createElement('div'); row.className='row'+(this.su.selected===p.id?' sel':'');
+      if(p.name){   // measured/reference formation — show the real player's name instead of a role dropdown
+        row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${p.pos}</span><div class="selects"><span class="rname" title="실측 히트맵 · 참고용">${p.name}</span></div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
+        row.querySelector('.eyebtn').addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); this.mirrorVisibility(); });
+        this.rowsEl.appendChild(row); return;
+      }
       const opts=ROLE_SETS[p.t].map(id=>`<option value="${id}" ${id===p.r?'selected':''}>${ROLES[id].n}</option>`).join('');
       const fopts=ROLES[p.r].f.map(fx=>`<option value="${fx}" ${fx===p.focus?'selected':''}>${FOCUS_KR[fx]||fx}</option>`).join('');
       row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${p.pos}</span><div class="selects"><select class="rrole">${opts}</select><select class="rfocus">${fopts}</select></div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
