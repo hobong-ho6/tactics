@@ -438,7 +438,8 @@ const FORMATIONS = {
     {pos:'ST', t:'ST', x:50,y:86, r:'st_advanced'},
     {pos:'RW', t:'W',  x:78,y:78, r:'w_insidefwd'},
   ],
-  /* Aston Villa 25/26 (Emery) — 4-2-3-1 → defends as 4-4-2.
+  /* Aston Villa 25/26 (Emery) — 4-2-3-1 (wide) → defends as 4-4-2.
+     Wide slots are WM (wide midfielders) so they drop into the 4-4-2 block.
      Roles/focus map each starter to their real average movement (not exact pixel heatmaps). */
   '아스톤 빌라 25/26':[
     {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper',   focus:'Build-Up'},     // E.Martínez — build-up initiator
@@ -448,10 +449,43 @@ const FORMATIONS = {
     {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',  focus:'Support'},      // Cash — overlaps wide right
     {pos:'LDM',t:'DM', x:38,y:42, r:'dm_dlp',       focus:'Build-Up'},     // Kamara — deep-lying playmaker
     {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',   focus:'Ball-Winning'}, // Onana — ball-winner
-    {pos:'LW', t:'W',  x:16,y:64, r:'w_insidefwd',  focus:'Attack'},       // Rogers — cuts inside onto right
+    {pos:'LM', t:'WM', x:14,y:64, r:'wm_insidefwd', focus:'Attack'},       // Rogers — cuts inside, drops to 4-4-2
     {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker',focus:'Roaming'},      // Tielemans — roaming 10
-    {pos:'RW', t:'W',  x:84,y:64, r:'w_insidefwd',  focus:'Balanced'},     // McGinn — drifts inside from right
+    {pos:'RM', t:'WM', x:86,y:64, r:'wm_insidefwd', focus:'Balanced'},     // McGinn — drifts inside, tracks back
     {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',  focus:'Versatile'},    // Watkins — drifts, runs channels
+  ],
+  /* Aston Villa 25/26 (measured) — each player's map25 is a 5x5 (0-9,X=10, peak=10) quantized from their
+     real average heatmap (SofaScore/Fotmob/FBref + tactical analysis). APPROXIMATION, not exact data.
+     map25 rows: top=attacking third .. bottom=own third; cols: left..right. It overrides the role kernel
+     (placedMap uses it as-is, no mirror/shift); changing a player's role/focus reverts them to the kernel. */
+  '아스톤 빌라 25/26 (실측)':[
+    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper',    focus:'Build-Up',    map25:'0000000000000000131014X41'}, // E.Martínez
+    {pos:'LB', t:'FB', x:13,y:32, r:'fb_inverted',   focus:'Attack',      map25:'43100X6200952107310042100'}, // Maatsen
+    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    map25:'0010001210244205X84136520'}, // Pau Torres
+    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender',   focus:'Balanced',    map25:'00010001210135302685027X6'}, // Konsa
+    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Support',     map25:'0001300137012590136X00136'}, // Cash
+    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_dlp',        focus:'Build-Up',    map25:'00100122103664159X6225631'}, // Kamara
+    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning',map25:'001111233225783368X413542'}, // Onana
+    {pos:'LM', t:'WM', x:14,y:64, r:'wm_insidefwd',  focus:'Attack',      map25:'696317X841586313542012210'}, // Rogers
+    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming',     map25:'012101474127X621463101210'}, // Tielemans
+    {pos:'RM', t:'WM', x:86,y:64, r:'wm_insidefwd',  focus:'Balanced',    map25:'0246313794258X51368401352'}, // McGinn
+    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile',   map25:'68X7546863245421232101110'}, // Watkins
+  ],
+  /* Aston Villa 25/26 (roles) — the closest EA FC role/focus to each player's measured heatmap
+     (max cosine similarity of the placed role kernel vs the map25 grid). No map25 → uses role kernels.
+     Auto-loaded into panel B when the (실측) formation is selected, for a side-by-side comparison. */
+  '아스톤 빌라 25/26 (역할)':[
+    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_goalkeeper', focus:'Balanced'},   // E.Martínez  (sim 0.98)
+    {pos:'LB', t:'FB', x:13,y:32, r:'fb_inverted',   focus:'Attack'},     // Maatsen     (sim 0.88)
+    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Aggressive'}, // Pau Torres  (sim 0.93)
+    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Build-Up'},   // Konsa       (sim 0.94)
+    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Support'},    // Cash        (sim 0.83)
+    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_holding',    focus:'Roaming'},    // Kamara      (sim 0.74)
+    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_dlp',        focus:'Roaming'},    // Onana       (sim 0.77)
+    {pos:'LM', t:'WM', x:14,y:64, r:'wm_wideplm',    focus:'Attack'},     // Rogers      (sim 0.61)
+    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Build-Up'},   // Tielemans   (sim 0.84)
+    {pos:'RM', t:'WM', x:86,y:64, r:'wm_insidefwd',  focus:'Balanced'},   // McGinn      (sim 0.41)
+    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Support'},    // Watkins     (sim 0.83)
   ],
 };
 
@@ -460,6 +494,7 @@ const FORMATIONS = {
 ============================================================ */
 const PALETTE = ['#ff5d5d','#ffa63d','#ffe14d','#8ce65b','#3ddc97','#38c6e6','#5c8bff','#a97cff','#ff6fd8','#ff9d6e','#7de0c8'];
 const FKEYS = Object.keys(FORMATIONS);
+const AVL_MEASURED='아스톤 빌라 25/26 (실측)', AVL_ROLES='아스톤 빌라 25/26 (역할)';
 
 /* ---- pure heatmap math (shared by both panels) ---- */
 const COLS=5, ROWS=5;
@@ -482,6 +517,7 @@ const _mapCache={};
 function decodeMap(code){ if(_mapCache[code])return _mapCache[code]; const a=new Float32Array(25); for(let i=0;i<25;i++){const ch=code[i]; a[i]=ch==='X'?1:(+ch)/10;} return _mapCache[code]=a; }
 function sumCode(code){ const a=decodeMap(code); let s=0; for(const v of a)s+=v; return s; }
 function placedMap(p){
+  if(p.map25) return decodeMap(p.map25);   // real measured heatmap — already absolute, skip mirror/shift
   const rm=MAPS[p.r]; if(!rm) return null;
   const code=rm[p.focus]||rm[Object.keys(rm)[0]]; if(!code) return null;
   let m=decodeMap(code);
@@ -500,7 +536,7 @@ function playersOf(formation){
 }
 function defaultSetup(formation){ return {formation,mode:'composite',intensity:1,selected:-1,players:playersOf(formation)}; }
 function snapshot(su){ return {formation:su.formation,mode:su.mode,intensity:su.intensity,
-  players:su.players.map(p=>({pos:p.pos,t:p.t,x:p.x,y:p.y,r:p.r,id:p.id,focus:p.focus,visible:p.visible,color:p.color}))}; }
+  players:su.players.map(p=>({pos:p.pos,t:p.t,x:p.x,y:p.y,r:p.r,id:p.id,focus:p.focus,map25:p.map25,visible:p.visible,color:p.color}))}; }
 function fromSnapshot(sn){ return {formation:sn.formation,mode:sn.mode,intensity:sn.intensity,selected:-1,
   players:sn.players.map(p=>({...p}))}; }
 
@@ -566,8 +602,16 @@ class Panel{
     this.holder.addEventListener('mouseleave',hideTip);
   }
   other(){ return this.key==='A'?panels.B:panels.A; }
+  setFormation(name){ this.su.formation=name; this.su.players=playersOf(name); this.su.selected=-1; this.fSel.value=name; this.size(); this.refresh(); }
+  mirrorVisibility(){ const o=this.other(); if(!o) return;   // sync show/hide to the other panel, matched by position label
+    const vis={}; this.su.players.forEach(p=>{ vis[p.pos]=p.visible; });
+    let changed=false; o.su.players.forEach(p=>{ if(p.pos in vis && p.visible!==vis[p.pos]){ p.visible=vis[p.pos]; changed=true; } });
+    if(changed) o.refresh(); }
   wire(){
-    this.fSel.addEventListener('change',e=>{ this.su.formation=e.target.value; this.su.players=playersOf(this.su.formation); this.su.selected=-1; this.size(); this.refresh(); });
+    this.fSel.addEventListener('change',e=>{
+      if(e.target.value===AVL_MEASURED){ panels.A.setFormation(AVL_MEASURED); panels.B.setFormation(AVL_ROLES); return; }  // 실측 선택 → 왼쪽 히트맵, 오른쪽 역할
+      this.setFormation(e.target.value);
+    });
     this.modeSeg.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return; this.su.mode=b.dataset.mode; [...this.modeSeg.children].forEach(x=>x.classList.toggle('on',x===b)); this.renderHeat(); });
     this.intEl.addEventListener('input',e=>{ this.su.intensity=+e.target.value; this.renderHeat(); });
     this.$('.p-chiptog').addEventListener('click',()=>{ this.hideChips=!this.hideChips; this.applyChipVis(); });
@@ -579,9 +623,9 @@ class Panel{
       const r=(this.simRows||[]).find(x=>String(x.p.id)===row.dataset.pid); if(!r)return;
       r.p.r=r.best.role; r.p.focus=r.best.focus; this.refresh();
     });
-    this.$('.p-allon').addEventListener('click',()=>{ this.su.players.forEach(p=>p.visible=true); this.refresh(); });
-    this.$('.p-alloff').addEventListener('click',()=>{ this.su.players.forEach(p=>p.visible=false); this.refresh(); });
-    this.$('.p-reset').addEventListener('click',()=>{ const f=FORMATIONS[this.su.formation]; this.su.players.forEach((p,i)=>{p.r=f[i].r;p.focus=f[i].focus||ROLES[p.r].f[0];}); this.refresh(); });
+    this.$('.p-allon').addEventListener('click',()=>{ this.su.players.forEach(p=>p.visible=true); this.refresh(); this.mirrorVisibility(); });
+    this.$('.p-alloff').addEventListener('click',()=>{ this.su.players.forEach(p=>p.visible=false); this.refresh(); this.mirrorVisibility(); });
+    this.$('.p-reset').addEventListener('click',()=>{ const f=FORMATIONS[this.su.formation]; this.su.players.forEach((p,i)=>{p.r=f[i].r;p.focus=f[i].focus||ROLES[p.r].f[0];p.map25=f[i].map25;}); this.refresh(); });
     this.$('.p-save').addEventListener('click',()=>this.savePreset());
     this.$('.p-del').addEventListener('click',()=>this.delPreset());
     this.loadSel.addEventListener('change',e=>{ const i=e.target.value; if(i==='')return; this.applySnapshot(PRESETS[+i].snap); this.nameEl.value=PRESETS[+i].name; e.target.value=''; });
@@ -712,7 +756,7 @@ class Panel{
         c.style.left=lx+'%'; c.style.top=ly+'%';
       } else { c.style.left=p.x+'%'; c.style.top=(100-p.y)+'%'; }
       c.innerHTML=`<div class="dot" style="background:${p.color}">${p.pos}<span class="eye">${p.visible?'●':'○'}</span></div><div class="role">${ROLES[p.r].n} · ${FOCUS_KR[p.focus]||p.focus}</div>`;
-      c.addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); });
+      c.addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); this.mirrorVisibility(); });
       this.chipsEl.appendChild(c);
     });
   }
@@ -724,11 +768,11 @@ class Panel{
       const fopts=ROLES[p.r].f.map(fx=>`<option value="${fx}" ${fx===p.focus?'selected':''}>${FOCUS_KR[fx]||fx}</option>`).join('');
       row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${p.pos}</span><div class="selects"><select class="rrole">${opts}</select><select class="rfocus">${fopts}</select></div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
       const rsel=row.querySelector('.rrole'),fsel=row.querySelector('.rfocus');
-      rsel.addEventListener('change',e=>{ p.r=e.target.value; p.focus=ROLES[p.r].f[0]; this.su.selected=p.id; this.refresh(); });
+      rsel.addEventListener('change',e=>{ p.r=e.target.value; p.focus=ROLES[p.r].f[0]; p.map25=null; this.su.selected=p.id; this.refresh(); });
       rsel.addEventListener('focus',()=>{ this.su.selected=p.id; this.markSelected(); });
-      fsel.addEventListener('change',e=>{ p.focus=e.target.value; this.su.selected=p.id; this.refresh(); });
+      fsel.addEventListener('change',e=>{ p.focus=e.target.value; p.map25=null; this.su.selected=p.id; this.refresh(); });
       fsel.addEventListener('focus',()=>{ this.su.selected=p.id; this.markSelected(); });
-      row.querySelector('.eyebtn').addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); });
+      row.querySelector('.eyebtn').addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); this.mirrorVisibility(); });
       this.rowsEl.appendChild(row);
     });
   }
