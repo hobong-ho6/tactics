@@ -148,6 +148,9 @@
   .p-preset .p-load{flex:1;min-width:104px}
   .p-copy{font-weight:700;color:var(--accent)!important;border-color:var(--accent)!important}
   .p-rows{margin-top:10px;border:1px solid var(--line-soft);border-radius:10px;overflow:hidden}
+  .p-scorebar{display:flex;align-items:baseline;gap:8px;margin-top:8px;font-size:11px;color:var(--muted)}
+  .p-scorebar .p-score{font-family:var(--mono);font-size:17px;font-weight:800;color:var(--ink)}
+  .p-scorebar .p-scorecells{color:var(--muted-2)}
 
   /* ---- cell hover tooltip ---- */
   #celltip{position:fixed;z-index:60;pointer-events:none;background:#0b0f14;border:1px solid var(--line);
@@ -491,6 +494,7 @@ const PANEL_HTML = `
       <div class="chips p-chips"></div>
     </div>
     <div class="legend"><span>단독(약)</span><span class="bar"></span><span>중첩↑</span></div>
+    <div class="p-scorebar"><span>합계 · 우측=행 · 하단=열 · <b style="color:#ff7a2f">주황=전체</b></span><b class="p-score">0.0</b><span class="p-scorecells"></span></div>
   </div>
   <div class="p-actions">
     <button class="p-allon">모두 켜기</button>
@@ -516,6 +520,7 @@ class Panel{
     const $=(s)=>root.querySelector(s); this.$=$;
     this.holder=$('.p-holder'); this.pitch=$('.p-pitch'); this.heat=$('.p-heat');
     this.chipsEl=$('.p-chips'); this.rowsEl=$('.p-rows');
+    this.scoreEl=$('.p-score'); this.scoreCellsEl=$('.p-scorecells');
     this.fSel=$('.p-formation'); this.modeSeg=$('.p-mode'); this.intEl=$('.p-intensity');
     this.nameEl=$('.p-name'); this.loadSel=$('.p-load');
     $('.pbadge').textContent=key;
@@ -563,32 +568,67 @@ class Panel{
     this.cellGeom=null; this.drawPitch(); this.renderHeat(); this.layoutChips();
   }
   drawPitch(){ const ctx=this.pitch.getContext('2d'); ctx.setTransform(this.DPR,0,0,this.DPR,0,0); ctx.clearRect(0,0,this.W,this.H); ctx.fillStyle='#1c1e28'; ctx.fillRect(0,0,this.W,this.H); }
-  computeGeom(){ const W=this.W,H=this.H; const pad=Math.round(W*0.022),gap=Math.max(3,Math.round(W*0.014)); const cw=(W-2*pad-(COLS-1)*gap)/COLS, ch=(H-2*pad-(ROWS-1)*gap)/ROWS; this.cellGeom={pad,gap,cw,ch,rad:Math.min(cw,ch)*0.24}; }
+  computeGeom(){ const W=this.W,H=this.H; const pad=Math.round(W*0.02),gap=Math.max(3,Math.round(W*0.012));
+    const gutR=Math.round(W*0.135), gutB=Math.round(H*0.115);      // gutters for row/col sums
+    const gridW=W-2*pad-gutR, gridH=H-2*pad-gutB;
+    const cw=(gridW-(COLS-1)*gap)/COLS, ch=(gridH-(ROWS-1)*gap)/ROWS;
+    const gridRight=pad+COLS*cw+(COLS-1)*gap, gridBottom=pad+ROWS*ch+(ROWS-1)*gap;
+    this.cellGeom={pad,gap,cw,ch,gutR,gutB,gridRight,gridBottom,rad:Math.min(cw,ch)*0.24}; }
   renderHeat(){
     const ctx=this.heat.getContext('2d'); ctx.setTransform(this.DPR,0,0,this.DPR,0,0); ctx.clearRect(0,0,this.W,this.H);
     if(!this.cellGeom) this.computeGeom(); const {pad,gap,cw,ch,rad}=this.cellGeom;
     const vis=this.su.players.filter(p=>p.visible);
     this.visCache = vis.map(p=>({p, m:placedMap(p)}));   // for hover tooltip
+
+    // whole-map summed score (all 25 cells, intensity applied) — independent of display mode
+    const sumCells=new Float32Array(COLS*ROWS);
+    for(const p of vis) accumulateCells(p,sumCells,this.su.intensity);
+    let total=0, covered=0;
+    for(const v of sumCells){ total+=v; if(v>=0.15) covered++; }
+    if(this.scoreEl){
+      this.scoreEl.textContent=total.toFixed(1);
+      this.scoreCellsEl.textContent = vis.length ? `· 활성 ${covered}/25칸 · 선수 ${vis.length}명` : '· 표시된 선수 없음';
+    }
+
     const fills=new Array(COLS*ROWS).fill(null);
     if(vis.length){
       if(this.su.mode==='composite'){
-        const cells=new Float32Array(COLS*ROWS);
-        for(const p of vis) accumulateCells(p,cells,this.su.intensity);
-        for(let i=0;i<cells.length;i++) fills[i]=heatColorAbs(cells[i]);
+        for(let i=0;i<sumCells.length;i++) fills[i]=heatColorAbs(sumCells[i]);
       } else {
         const per=vis.map(p=>{ const cells=new Float32Array(COLS*ROWS); accumulateCells(p,cells,1); let mx=1e-6; for(const v of cells) if(v>mx)mx=v; return {rgb:hexRgb(p.color),cells,mx}; });
         for(let i=0;i<COLS*ROWS;i++){ let bt=0,brgb=null; for(const pp of per){ const t=pp.cells[i]/pp.mx; if(t>bt){bt=t;brgb=pp.rgb;} } fills[i]= bt<0.08?null:mix(EMPTY,brgb,0.30+0.66*Math.min(1,bt*this.su.intensity)); }
       }
     }
     for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){ const x=pad+c*(cw+gap),y=pad+r*(ch+gap); const f=fills[r*COLS+c]; roundRect(ctx,x,y,cw,ch,rad); ctx.fillStyle=fills[r*COLS+c]?css(fills[r*COLS+c]):css(EMPTY); ctx.fill(); }
-    ctx.strokeStyle='rgba(233,240,246,.08)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(pad,this.H/2); ctx.lineTo(this.W-pad,this.H/2); ctx.stroke();
+
+    // ---- row / column / total sum labels (intensity applied) ----
+    const gridRight=this.cellGeom.gridRight, gridBottom=this.cellGeom.gridBottom;
+    const rowCX=(gridRight+(this.W-pad))/2, colCY=(gridBottom+(this.H-pad))/2;
+    const fs=Math.max(10, Math.round(ch*0.34));
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    // row sums (right gutter)
+    ctx.font=`600 ${fs}px ui-sans-serif,system-ui,sans-serif`; ctx.fillStyle='#aab6c6';
+    for(let r=0;r<ROWS;r++){ let s=0; for(let c=0;c<COLS;c++) s+=sumCells[r*COLS+c]; const yc=pad+r*(ch+gap)+ch/2; ctx.fillText(s.toFixed(1), rowCX, yc); }
+    // column sums (bottom gutter)
+    for(let c=0;c<COLS;c++){ let s=0; for(let r=0;r<ROWS;r++) s+=sumCells[r*COLS+c]; const xc=pad+c*(cw+gap)+cw/2; ctx.fillText(s.toFixed(1), xc, colCY); }
+    // grand total (corner) — highlighted
+    ctx.font=`800 ${Math.max(12,Math.round(fs*1.18))}px ui-sans-serif,system-ui,sans-serif`; ctx.fillStyle='#ff7a2f';
+    ctx.fillText(total.toFixed(1), rowCX, colCY);
+    // faint halfway guide across the grid
+    const gridMidY=pad+(gridBottom-pad)/2;
+    ctx.strokeStyle='rgba(233,240,246,.08)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(pad,gridMidY); ctx.lineTo(gridRight,gridMidY); ctx.stroke();
   }
   layoutChips(){
     this.chipsEl.innerHTML='';
+    const g=this.cellGeom;
     this.su.players.forEach(p=>{
       const c=document.createElement('div');
       c.className='chip'+(p.visible?'':' off')+(this.su.selected===p.id?' sel':'');
-      c.style.left=p.x+'%'; c.style.top=(100-p.y)+'%';
+      if(g && this.W && this.H){                                   // map into the grid rect (avoid sum gutters)
+        const lx=(g.pad + p.x/100*(g.gridRight-g.pad))/this.W*100;
+        const ly=(g.pad + (100-p.y)/100*(g.gridBottom-g.pad))/this.H*100;
+        c.style.left=lx+'%'; c.style.top=ly+'%';
+      } else { c.style.left=p.x+'%'; c.style.top=(100-p.y)+'%'; }
       c.innerHTML=`<div class="dot" style="background:${p.color}">${p.pos}<span class="eye">${p.visible?'●':'○'}</span></div><div class="role">${ROLES[p.r].n} · ${FOCUS_KR[p.focus]||p.focus}</div>`;
       c.addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); });
       this.chipsEl.appendChild(c);
