@@ -75,6 +75,7 @@
   .pitch-holder{background:#13151c}
   #heat{mix-blend-mode:normal}
   .chips{position:absolute;inset:0}
+  .p-holder.chips-hidden .chips{display:none}
   .chip{
     position:absolute;transform:translate(-50%,-50%);cursor:pointer;
     display:flex;flex-direction:column;align-items:center;gap:3px;user-select:none;
@@ -486,6 +487,7 @@ const PANEL_HTML = `
       <button data-mode="perplayer">선수별</button>
     </div>
     <label class="int">강도 <input class="p-intensity" type="range" min="0.4" max="2" step="0.05" value="1"></label>
+    <div class="seg p-chiptog"><button class="on" title="포지션 아이콘 표시/숨김">아이콘</button></div>
   </div>
   <div class="pitch-card">
     <div class="pitch-holder p-holder">
@@ -516,7 +518,7 @@ class Panel{
   constructor(root,key,idx){
     this.key=key; this.root=root; root.innerHTML=PANEL_HTML;
     this.su=defaultSetup(FKEYS[idx]||FKEYS[0]);
-    this.DPR=Math.min(window.devicePixelRatio||1,2); this.W=0;this.H=0;this.cellGeom=null;
+    this.DPR=Math.min(window.devicePixelRatio||1,2); this.W=0;this.H=0;this.cellGeom=null; this.hideChips=false;
     const $=(s)=>root.querySelector(s); this.$=$;
     this.holder=$('.p-holder'); this.pitch=$('.p-pitch'); this.heat=$('.p-heat');
     this.chipsEl=$('.p-chips'); this.rowsEl=$('.p-rows');
@@ -534,6 +536,7 @@ class Panel{
     this.fSel.addEventListener('change',e=>{ this.su.formation=e.target.value; this.su.players=playersOf(this.su.formation); this.su.selected=-1; this.size(); this.refresh(); });
     this.modeSeg.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return; this.su.mode=b.dataset.mode; [...this.modeSeg.children].forEach(x=>x.classList.toggle('on',x===b)); this.renderHeat(); });
     this.intEl.addEventListener('input',e=>{ this.su.intensity=+e.target.value; this.renderHeat(); });
+    this.$('.p-chiptog').addEventListener('click',()=>{ this.hideChips=!this.hideChips; this.applyChipVis(); });
     this.$('.p-allon').addEventListener('click',()=>{ this.su.players.forEach(p=>p.visible=true); this.refresh(); });
     this.$('.p-alloff').addEventListener('click',()=>{ this.su.players.forEach(p=>p.visible=false); this.refresh(); });
     this.$('.p-reset').addEventListener('click',()=>{ const f=FORMATIONS[this.su.formation]; this.su.players.forEach((p,i)=>{p.r=f[i].r;p.focus=ROLES[p.r].f[0];}); this.refresh(); });
@@ -547,7 +550,9 @@ class Panel{
     this.intEl.value=this.su.intensity;
     [...this.modeSeg.children].forEach(x=>x.classList.toggle('on',x.dataset.mode===this.su.mode));
     this.$('.p-copy').textContent = this.key==='A' ? '→ B로 복사' : '← A로 복사';
+    this.applyChipVis();
   }
+  applyChipVis(){ this.$('.p-chiptog button').classList.toggle('on',!this.hideChips); this.holder.classList.toggle('chips-hidden',this.hideChips); }
   applySnapshot(sn){ this.su=fromSnapshot(sn); this.syncControls(); this.size(); this.refresh(); }
   savePreset(){
     let name=(this.nameEl.value||'').trim(); if(!name){ name=this.su.formation+' '+new Date().toLocaleTimeString(); this.nameEl.value=name; }
