@@ -438,6 +438,21 @@ const FORMATIONS = {
     {pos:'ST', t:'ST', x:50,y:86, r:'st_advanced'},
     {pos:'RW', t:'W',  x:78,y:78, r:'w_insidefwd'},
   ],
+  /* Aston Villa 25/26 (Emery) — 4-2-3-1 → defends as 4-4-2.
+     Roles/focus map each starter to their real average movement (not exact pixel heatmaps). */
+  '아스톤 빌라 25/26':[
+    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper',   focus:'Build-Up'},     // E.Martínez — build-up initiator
+    {pos:'LB', t:'FB', x:13,y:32, r:'fb_inverted',  focus:'Attack'},       // Maatsen — underlaps inside Rogers
+    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',       focus:'Build-Up'},     // Pau Torres — ball-playing LCB
+    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender',  focus:'Balanced'},     // Konsa — front-foot defender
+    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',  focus:'Support'},      // Cash — overlaps wide right
+    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_dlp',       focus:'Build-Up'},     // Kamara — deep-lying playmaker
+    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',   focus:'Ball-Winning'}, // Onana — ball-winner
+    {pos:'LW', t:'W',  x:16,y:64, r:'w_insidefwd',  focus:'Attack'},       // Rogers — cuts inside onto right
+    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker',focus:'Roaming'},      // Tielemans — roaming 10
+    {pos:'RW', t:'W',  x:84,y:64, r:'w_insidefwd',  focus:'Balanced'},     // McGinn — drifts inside from right
+    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',  focus:'Versatile'},    // Watkins — drifts, runs channels
+  ],
 };
 
 /* ============================================================
@@ -481,7 +496,7 @@ function roundRect(ctx,x,y,w,h,r){ ctx.beginPath(); ctx.moveTo(x+r,y);ctx.arcTo(
 
 /* ---- setup helpers ---- */
 function playersOf(formation){
-  return FORMATIONS[formation].map((p,idx)=>({...p,id:idx,focus:ROLES[p.r].f[0],visible:true,color:PALETTE[idx%PALETTE.length]}));
+  return FORMATIONS[formation].map((p,idx)=>({...p,id:idx,focus:p.focus||ROLES[p.r].f[0],visible:true,color:PALETTE[idx%PALETTE.length]}));
 }
 function defaultSetup(formation){ return {formation,mode:'composite',intensity:1,selected:-1,players:playersOf(formation)}; }
 function snapshot(su){ return {formation:su.formation,mode:su.mode,intensity:su.intensity,
@@ -566,7 +581,7 @@ class Panel{
     });
     this.$('.p-allon').addEventListener('click',()=>{ this.su.players.forEach(p=>p.visible=true); this.refresh(); });
     this.$('.p-alloff').addEventListener('click',()=>{ this.su.players.forEach(p=>p.visible=false); this.refresh(); });
-    this.$('.p-reset').addEventListener('click',()=>{ const f=FORMATIONS[this.su.formation]; this.su.players.forEach((p,i)=>{p.r=f[i].r;p.focus=ROLES[p.r].f[0];}); this.refresh(); });
+    this.$('.p-reset').addEventListener('click',()=>{ const f=FORMATIONS[this.su.formation]; this.su.players.forEach((p,i)=>{p.r=f[i].r;p.focus=f[i].focus||ROLES[p.r].f[0];}); this.refresh(); });
     this.$('.p-save').addEventListener('click',()=>this.savePreset());
     this.$('.p-del').addEventListener('click',()=>this.delPreset());
     this.loadSel.addEventListener('change',e=>{ const i=e.target.value; if(i==='')return; this.applySnapshot(PRESETS[+i].snap); this.nameEl.value=PRESETS[+i].name; e.target.value=''; });
