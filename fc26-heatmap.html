@@ -238,7 +238,8 @@
       <span class="sq-note">근거: 후방 숏빌드업 고수 + 4-4-2 콤팩트 미드블록 실측·분석 (DB team_tactic_setups, 게임 내 미검증 MEDIUM)</span>
     </div>
     <div class="sq-slots" id="sqSlots"></div>
-    <div class="sq-note" style="padding:6px 2px 0">왼쪽 패널 = <b>처방(최적)</b> — 실축 성과 기준 추천 · 오른쪽 패널 = <b>실측 최근접</b> — 움직임 재현 기준. 슬롯별로 분석 근거가 있는 선수만 표시됩니다.</div>
+    <div class="sq-note" style="padding:6px 2px 0">왼쪽 패널 = <b>처방(최적)</b> — 실축 성과 기준 추천 · 오른쪽 패널 = <b>실측 최근접</b> — 움직임 재현 기준. 슬롯별로 분석 근거가 있는 선수만 표시됩니다.
+    <b>영입·</b> 접두 = 2026 여름 이적 후보 (에메르송 RB 협상중·서머빌 LW·보웬 RM·기라시 ST·아데예미 RM·페르난데스 DM — 최근 6경기 실측 프로필 기반, DB transfer_targets 참조. 아데예미는 실측상 LW 부적합(0.24)이라 RM만 제공).</div>
   </section>
 
   <div class="compare">
@@ -899,20 +900,24 @@ const SQUAD_SLOTS=[
    {n:'콘사',      opt:['cb_defender','Balanced'],  fit:['cb_bpd','Aggressive']},
    {n:'린델뢰프',   opt:['cb_defender','Balanced'],  fit:['cb_defender','Balanced']}]},
  {pos:'RB', t:'FB', x:87,y:32, opts:[
-   {n:'캐시',      opt:['fb_fullback','Versatile'], fit:['fb_att_wb','Support']}]},
+   {n:'캐시',      opt:['fb_fullback','Versatile'], fit:['fb_att_wb','Support']},
+   {n:'영입·에메르송', opt:['fb_att_wb','Support'],   fit:['fb_att_wb','Support']}]},
  {pos:'LDM',t:'DM', x:38,y:42, opts:[
    {n:'오나나',    opt:['dm_boxcrasher','Balanced'], fit:['dm_dlp','Roaming']},
    {n:'틸레만스',  opt:['dm_dlp','Build-Up'],        fit:['dm_dlp','Build-Up']},
-   {n:'보가르드',  opt:['dm_holding','Defend'],      fit:['dm_holding','Defend']}]},
+   {n:'보가르드',  opt:['dm_holding','Defend'],      fit:['dm_holding','Defend']},
+   {n:'영입·페르난데스', opt:['dm_dlp','Build-Up'],  fit:['dm_dlp','Roaming']}]},
  {pos:'RDM',t:'DM', x:62,y:42, opts:[
    {n:'카마라',    opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
    {n:'틸레만스',  opt:['dm_dlp','Build-Up'],        fit:['dm_dlp','Build-Up']},
    {n:'오나나',    opt:['dm_boxcrasher','Balanced'], fit:['dm_dlp','Roaming']},
    {n:'린델뢰프',   opt:['dm_holding','Defend'],     fit:['dm_holding','Defend']},
-   {n:'보가르드',  opt:['dm_holding','Defend'],      fit:['dm_holding','Defend']}]},
+   {n:'보가르드',  opt:['dm_holding','Defend'],      fit:['dm_holding','Defend']},
+   {n:'영입·페르난데스', opt:['dm_dlp','Build-Up'],  fit:['dm_dlp','Roaming']}]},
  {pos:'LW', t:'W',  x:15,y:64, opts:[
    {n:'로저스',    opt:['w_insidefwd','Attack'],     fit:['w_winger','Versatile']},
-   {n:'부엔디아',  opt:['w_wideplm','Attack'],       fit:['w_insidefwd','Roaming']}]},
+   {n:'부엔디아',  opt:['w_wideplm','Attack'],       fit:['w_insidefwd','Roaming']},
+   {n:'영입·서머빌', opt:['w_insidefwd','Attack'],   fit:['w_wideplm','Build-Up']}]},
  {pos:'CAM',t:'CAM',x:50,y:66, opts:[
    {n:'부엔디아',  opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
    {n:'로저스',    opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
@@ -920,9 +925,12 @@ const SQUAD_SLOTS=[
    {n:'맥긴',      opt:['cam_playmaker','Balanced'], fit:['cam_playmaker','Balanced']}]},
  {pos:'RM', t:'WM', x:85,y:64, opts:[
    {n:'맥긴',      opt:['wm_widemid','Support'],     fit:['wm_insidefwd','Balanced']},
-   {n:'산초',      opt:['wm_insidefwd','Attack'],    fit:['wm_insidefwd','Attack']}]},
+   {n:'산초',      opt:['wm_insidefwd','Attack'],    fit:['wm_insidefwd','Attack']},
+   {n:'영입·보웬',  opt:['wm_insidefwd','Attack'],   fit:['wm_insidefwd','Balanced']},
+   {n:'영입·아데예미', opt:['wm_winger','Attack'],   fit:['wm_insidefwd','Balanced']}]},
  {pos:'ST', t:'ST', x:50,y:87, opts:[
-   {n:'왓킨스',    opt:['st_advanced','Versatile'],  fit:['st_advanced','Versatile']}]},
+   {n:'왓킨스',    opt:['st_advanced','Versatile'],  fit:['st_advanced','Versatile']},
+   {n:'영입·기라시', opt:['st_target','Attack'],     fit:['st_false9','Attack']}]},
 ];
 const sqSel = SQUAD_SLOTS.map(()=>0);   // selected option index per slot
 

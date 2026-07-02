@@ -23,6 +23,9 @@ never a rewrite.
    - `player_match_positions(season,player_id,event_id,date,…,avg_x,avg_y,minutes,rating,started,pos_class)`
      — full-season per-match average positions (SofaScore API); the measured basis for
      most-used / best-performed position. Aggregated by the `v_position_profile` view.
+   - `transfer_targets(window,name,slot,likelihood,map25,tool_x,tool_y,opt_role/focus,fit_role/focus,fit_sim,…)`
+     — rumoured signings analyzed with the same pipeline (recent-6-match measured grid,
+     kernel-fit role); one row per (target, Villa slot). Feeds the tool's squad-builder 영입 options.
    - View `v_best`.
 
 2. **Game system library (per FC version)** — `game_roles(game_version,role_id,name,position_type,focuses)`

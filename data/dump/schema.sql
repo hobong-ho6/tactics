@@ -139,3 +139,15 @@ FROM player_match_positions pmp JOIN players p ON p.id=pmp.player_id
 WHERE pmp.pos_class IS NOT NULL
 GROUP BY pmp.player_id, pmp.pos_class
 /* v_position_profile(name,player_id,pos_class,apps,mins,avg_rating,best,ax,ay) */;
+CREATE TABLE transfer_targets(
+  id INTEGER PRIMARY KEY,
+  window TEXT NOT NULL,          -- '2026-summer'
+  name TEXT NOT NULL, name_kr TEXT,
+  sofascore_id INTEGER, club TEXT, position TEXT,
+  slot TEXT NOT NULL,            -- Villa 4-2-3-1 slot this row maps to
+  likelihood TEXT,               -- HIGH / MEDIUM-HIGH / MEDIUM / MEDIUM-LOW
+  map25 TEXT, tool_x REAL, tool_y REAL, sample_n INTEGER, avg_rating REAL,
+  opt_role TEXT, opt_focus TEXT, fit_role TEXT, fit_focus TEXT, fit_sim REAL,
+  rationale TEXT, source TEXT, confidence TEXT,
+  UNIQUE(window, name, slot)
+);
