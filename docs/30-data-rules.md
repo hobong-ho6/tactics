@@ -74,6 +74,11 @@ javascript_tool로 sofascore.com 페이지 컨텍스트에서 fetch** 하면 된
 변환: 툴x = 100 − SofaScore y, 툴y = SofaScore x. 선수별 통합본(경기 균등가중 평균)은
 `player_role_map kind='measured'`에 기록하며 툴이 이를 렌더링한다.
 
+**포지션-순수 규칙**: 가변 포지션 선수의 통합 그리드는 반드시 같은 포지션 경기끼리만
+묶는다 (혼합하면 어느 역할과도 안 닮은 뭉개진 그리드가 됨 — 로저스 사례: 혼합 43% →
+LW-순수 55%). 주 포지션 통합본 = `kind='measured'`, 나머지 포지션 =
+`kind='measured:<class>'` (예: measured:CAM). 포지션당 표본 2경기 이상 확보 후 집계.
+
 주요 ID (25/26 확보분): Konsa 827679, Buendía 783126, Cash 833956, Digne 96538,
 Rogers 948261, Tielemans 331737, McGinn 250223, Onana 923973, Kamara 826204.
 팀: Aston Villa 40. 그 외는 search로 확인하고, 자주 쓰는 ID는 여기에 추가해 갱신.

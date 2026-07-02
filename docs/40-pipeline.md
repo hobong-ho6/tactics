@@ -35,7 +35,10 @@
 - [ ] match 35의 result `W 4-0` → `4-0` 정규화
 - [x] `(실측)` 프리셋 역이관 — player_role_map kind='measured' 16행, API 정밀 그리드로 교체 (2026-07-02)
 - [ ] `(역할)` 프리셋 재도출 — 기존 sim 값은 구(근사) 그리드 기준. 툴의 실측 검증 모드에서
-      역할별 유사도를 보고 재선정한 뒤 kind='role'로 기록
+      역할별 유사도를 보고 재선정한 뒤 kind='role'로 기록.
+      초기 스캔(포지션-순수 그리드 기준, 2026-07-02): 로저스 LW → w_winger/Versatile 67%
+      (현 w_insidefwd/Attack 55%), 맥긴 RM → wm_insidefwd/Balanced 87% (현 wm_widemid/Support 71%),
+      부엔디아 CAM → cam_halfwinger/Balanced 56%. 사용자 검토 후 확정할 것.
 - [ ] 툴의 MAPS 커널·프리셋을 DB/JSON 로딩으로 전환 (DESIGN.md 로드맵)
 - [ ] 팀 전술 설정(빌드업/수비라인) 모델링 — `game_tactics` 테이블 설계
 - [x] 부엔디아 좌측 편향 → player_duties에 반영: 자유 10번은 "좌편향 프리롤"로 해석,

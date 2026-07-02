@@ -34,7 +34,7 @@ never a rewrite.
 
 3. **Derived mapping (what the tool renders)** — `player_role_map(player_id,season,game_version,kind,pos_label,x,y,role_id,focus,map25,rationale)`
    + `team_tactic_setups(season,game_version,kind,formation,build_up_style,defensive_approach,line_height,tactic_code,rationale,confidence)`.
-   - `kind`: `measured` (real avg heatmap → map25), `role` (closest game role to the heatmap), `optimal` (best position/role by rating+results), `match:<tag>` (single-match recreation).
+   - `kind`: `measured` (position-pure aggregate of real heatmap grids at the player's primary slot), `measured:<class>` (position-pure aggregate at a secondary position, e.g. measured:CAM), `role` (closest game role to the heatmap), `optimal` (best position/role by rating+results), `match:<tag>` (single-match recreation).
    - These two tables are the **contract** between analysis and the game: one (season, game_version, kind) join yields the complete in-game tactic — team settings + 11 player roles.
 
 ## Pipeline (re-run each season)
