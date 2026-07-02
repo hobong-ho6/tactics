@@ -24,11 +24,10 @@
 
 ## 표기 규약
 
-- **competition**: 표준 명칭은 `Premier League`, `Europa League`, `FA Cup`, `EFL Cup`.
-  스테이지·매치위크는 명칭에 붙이지 않고 필요하면 괄호 없이 별도 기록을 고려.
-  ⚠️ 기존 데이터에 14가지 혼재 표기 있음 — 신규 입력은 표준 명칭만 사용, 기존 정규화는 백로그.
-- **result**: 홈-원정 순 원문 스코어 (`4-2`). 승패는 venue와 조합해 판정.
-  `W 4-0` 같은 접두 표기는 쓰지 않는다 (match 35가 예외로 남아있음 — 정규화 대상).
+- **competition**: 표준 명칭만 사용 — `Premier League`, `Europa League`, `FA Cup`, `EFL Cup`.
+  스테이지·매치위크는 **`stage` 컬럼**에 기록 (`MW5`, `R16 1st leg`, `Final` 등). 기존 데이터 정규화 완료(2026-07-02).
+- **result**: 홈-원정 순 원문 스코어 (`4-2`)만. 승패는 venue와 조합해 판정.
+  `W 4-0` 같은 접두 표기 금지 (기존 10건 정규화 완료).
 - **source**: URL 또는 API 엔드포인트를 그대로. 여러 소스는 ` ; `로 이어붙이고
   수집 날짜를 괄호로 남긴다.
 - **confidence**: `HIGH / MEDIUM-HIGH / MEDIUM / QUALITATIVE` + 무엇이 어느 등급인지

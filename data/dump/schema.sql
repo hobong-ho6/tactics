@@ -12,7 +12,7 @@ CREATE TABLE matches(
   opponent TEXT,
   competition TEXT,
   venue TEXT,           -- H / A / N
-  result TEXT, season TEXT, team TEXT, is_club INTEGER DEFAULT 1,          -- e.g. "W 3-0"
+  result TEXT, season TEXT, team TEXT, is_club INTEGER DEFAULT 1, stage TEXT,          -- e.g. "W 3-0"
   UNIQUE(date, opponent, competition)
 );
 CREATE TABLE appearances(
