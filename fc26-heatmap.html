@@ -132,6 +132,8 @@
   .rrole:focus,.rfocus:focus{outline:none;border-color:var(--accent)}
   .eyebtn{width:28px;height:26px;border-radius:7px;background:var(--panel-2);border:1px solid var(--line);cursor:pointer;font-size:12px;color:var(--accent);display:grid;place-items:center}
   .eyebtn.off{color:var(--muted-2)}
+  .simv{flex:0 0 auto;align-self:center;font-family:var(--mono);font-size:10.5px;font-weight:700;padding:3px 5px;border-radius:6px;border:1px solid var(--line-soft)}
+  .simv.hi{color:#3ecf8e}.simv.mid{color:#f0e141}.simv.lo{color:#ff5d5d}
 
   .note{font-size:11.5px;color:var(--muted-2);line-height:1.55;margin-top:14px;padding:0 2px}
   .note b{color:var(--muted)}
@@ -200,6 +202,11 @@
       <p class="tag">두 설정(A·B)을 나란히 비교합니다. 각 패널에서 포메이션·역할·포커스·표시를 따로 바꾸고, 프리셋으로 저장하거나 반대편으로 복사해 비교하세요. 프리셋은 브라우저에 저장되며, 파일로 내보내 백업·공유할 수 있습니다.</p>
     </div>
     <div class="preset-bar">
+      <div class="seg" id="modeMenu" title="왼쪽=실측 히트맵, 오른쪽=게임 역할 설정. 오른쪽 목록의 %가 실측 대비 유사도입니다.">
+        <button data-m="free" class="on">자유 비교</button>
+        <button data-m="real">실측 → FC26 검증</button>
+        <button data-m="rot">실측 로테이션</button>
+      </div>
       <span class="pb-count" id="pbCount"></span>
       <button id="pExport" title="저장된 모든 프리셋을 JSON 파일로 내려받기">⭳ 프리셋 내보내기</button>
       <label class="pb-import" title="JSON 파일에서 프리셋 가져오기(같은 이름은 덮어쓰기)">⭱ 프리셋 불러오기
@@ -415,22 +422,39 @@ const FORMATIONS = {
     {pos:'RM', t:'WM', x:86,y:64, r:'wm_insidefwd', focus:'Balanced'},     // McGinn — drifts inside, tracks back
     {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',  focus:'Versatile'},    // Watkins — drifts, runs channels
   ],
-  /* Aston Villa 25/26 (measured) — each player's map25 is a 5x5 (0-9,X=10, peak=10) quantized from their
-     real average heatmap (SofaScore/Fotmob/FBref + tactical analysis). APPROXIMATION, not exact data.
-     map25 rows: top=attacking third .. bottom=own third; cols: left..right. It overrides the role kernel
-     (placedMap uses it as-is, no mirror/shift); changing a player's role/focus reverts them to the kernel. */
+  /* Aston Villa 25/26 (measured) — EXACT DATA: each map25 is the equal-weight aggregate of the player's
+     per-match SofaScore API heatmap points (5x5 tool-space, peak normalized to X). Source of truth:
+     data/avl_analysis.db player_role_map kind='measured' (per-match grids in appearances.heat_map25).
+     Chip x,y = the player's mean measured centroid. XI = streak-era optimal personnel; pivot sides are
+     the CORRECTED geometry (Onana left, Kamara right — 26-match avg-position sweep).
+     map25 overrides the role kernel (no mirror/shift). */
   '아스톤 빌라 25/26 (실측)':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper',    focus:'Build-Up',    name:'마르티네스',   map25:'0000000000000000131014X41'},
-    {pos:'LB', t:'FB', x:13,y:32, r:'fb_inverted',   focus:'Attack',      name:'마첸',        map25:'43100X6200952107310042100'},
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스',  map25:'0010001210244205X84136520'},
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender',   focus:'Balanced',    name:'콘사',        map25:'00010001210135302685027X6'},
-    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Support',     name:'캐시',        map25:'0001300137012590136X00136'},
-    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_dlp',        focus:'Build-Up',    name:'카마라',      map25:'00100122103664159X6225631'},
-    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'오나나',      map25:'001111233225783368X413542'},
-    {pos:'LM', t:'WM', x:14,y:64, r:'wm_insidefwd',  focus:'Attack',      name:'로저스',      map25:'696317X841586313542012210'},
-    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming',     name:'티엘레망스',   map25:'012101474127X621463101210'},
-    {pos:'RM', t:'WM', x:86,y:64, r:'wm_insidefwd',  focus:'Balanced',    name:'맥긴',        map25:'0246313794258X51368401352'},
-    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile',   name:'왓킨스',      map25:'68X7546863245421232101110'},
+    {pos:'GK', t:'GK', x:50,y:10, r:'gk_sweeper',    focus:'Build-Up',    name:'마르티네스',   map25:'0000000000000000010001X10'},
+    {pos:'LB', t:'FB', x:17,y:50, r:'fb_fullback',   focus:'Versatile',   name:'디뉴',        map25:'7110192100X10009200063100'},
+    {pos:'LCB',t:'CB', x:31,y:33, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스',  map25:'0021012000492005X52073620'},
+    {pos:'RCB',t:'CB', x:68,y:30, r:'cb_defender',   focus:'Balanced',    name:'콘사',        map25:'001010000000411002X200242'},
+    {pos:'RB', t:'FB', x:85,y:48, r:'fb_fullback',   focus:'Versatile',   name:'캐시',        map25:'100130002X0002X0002900134'},
+    {pos:'LDM',t:'DM', x:50,y:44, r:'dm_boxcrasher', focus:'Balanced',    name:'오나나',      map25:'003002545519X723866103930'},
+    {pos:'RDM',t:'DM', x:64,y:50, r:'dm_holding',    focus:'Ball-Winning',name:'카마라',      map25:'0010103475024X30165200032'},
+    {pos:'LW', t:'W',  x:43,y:57, r:'w_insidefwd',   focus:'Attack',      name:'로저스',      map25:'644456868762462X340144431'},
+    {pos:'CAM',t:'CAM',x:33,y:54, r:'cam_playmaker', focus:'Roaming',     name:'부엔디아',    map25:'46520X7531883207833022103'},
+    {pos:'RM', t:'WM', x:69,y:59, r:'wm_widemid',    focus:'Support',     name:'맥긴',        map25:'011392248X227990144501111'},
+    {pos:'ST', t:'ST', x:41,y:68, r:'st_advanced',   focus:'Versatile',   name:'왓킨스',      map25:'35X2213242333013311000200'},
+  ],
+  /* Aston Villa 25/26 (measured · rotation) — same exact-data grids for the measured rotation options:
+     Maatsen LB, Lindelöf CB, Bogarde/Tielemans pivot, Sancho right. First-XI grids fill the other slots. */
+  '아스톤 빌라 25/26 (실측 로테이션)':[
+    {pos:'GK', t:'GK', x:50,y:10, r:'gk_sweeper',    focus:'Build-Up',    name:'마르티네스',   map25:'0000000000000000010001X10'},
+    {pos:'LB', t:'FB', x:18,y:52, r:'fb_att_wb',     focus:'Attack',      name:'마첸',        map25:'441018600092100X200061000'},
+    {pos:'LCB',t:'CB', x:31,y:33, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스',  map25:'0021012000492005X52073620'},
+    {pos:'RCB',t:'CB', x:53,y:31, r:'cb_defender',   focus:'Balanced',    name:'린델뢰프',    map25:'011100011101651079X103852'},
+    {pos:'RB', t:'FB', x:85,y:48, r:'fb_fullback',   focus:'Versatile',   name:'캐시',        map25:'100130002X0002X0002900134'},
+    {pos:'LDM',t:'DM', x:63,y:36, r:'dm_holding',    focus:'Defend',      name:'보가르드',    map25:'000000310312226033X600361'},
+    {pos:'RDM',t:'DM', x:43,y:54, r:'dm_dlp',        focus:'Build-Up',    name:'틸레만스',    map25:'21111476523X8412542101110'},
+    {pos:'LW', t:'W',  x:43,y:57, r:'w_insidefwd',   focus:'Attack',      name:'로저스',      map25:'644456868762462X340144431'},
+    {pos:'CAM',t:'CAM',x:33,y:54, r:'cam_playmaker', focus:'Roaming',     name:'부엔디아',    map25:'46520X7531883207833022103'},
+    {pos:'RM', t:'WM', x:72,y:63, r:'wm_insidefwd',  focus:'Balanced',    name:'산초',        map25:'212442023X001140023200021'},
+    {pos:'ST', t:'ST', x:41,y:68, r:'st_advanced',   focus:'Versatile',   name:'왓킨스',      map25:'35X2213242333013311000200'},
   ],
   /* Aston Villa 25/26 (roles) — the closest EA FC role/focus to each player's measured heatmap
      (max cosine similarity of the placed role kernel vs the map25 grid). No map25 → uses role kernels.
@@ -488,7 +512,7 @@ const FORMATIONS = {
 ============================================================ */
 const PALETTE = ['#ff5d5d','#ffa63d','#ffe14d','#8ce65b','#3ddc97','#38c6e6','#5c8bff','#a97cff','#ff6fd8','#ff9d6e','#7de0c8'];
 const FKEYS = Object.keys(FORMATIONS);
-const AVL_MEASURED='아스톤 빌라 25/26 (실측)', AVL_ROLES='아스톤 빌라 25/26 (역할)';
+const AVL_MEASURED='아스톤 빌라 25/26 (실측)', AVL_MEASURED_ROT='아스톤 빌라 25/26 (실측 로테이션)', AVL_ROLES='아스톤 빌라 25/26 (역할)', AVL_OPTIMAL='아스톤 빌라 25/26 (최적)';
 
 /* ---- pure heatmap math (shared by both panels) ---- */
 const COLS=5, ROWS=5;
@@ -605,15 +629,16 @@ class Panel{
     this.holder.addEventListener('mouseleave',hideTip);
   }
   other(){ return this.key==='A'?panels.B:panels.A; }
-  setFormation(name){ this.su.formation=name; this.su.players=playersOf(name); this.su.selected=-1; this.fSel.value=name; this.size(); this.refresh(); }
+  setFormation(name){ this.su.formation=name; this.su.players=playersOf(name); this.su.selected=-1; this.fSel.value=name; this.size(); this.refresh(); const o=this.other(); if(o) o.buildRoster(); }
   mirrorVisibility(){ const o=this.other(); if(!o) return;   // sync show/hide to the other panel, matched by position label
     const vis={}; this.su.players.forEach(p=>{ vis[p.pos]=p.visible; });
     let changed=false; o.su.players.forEach(p=>{ if(p.pos in vis && p.visible!==vis[p.pos]){ p.visible=vis[p.pos]; changed=true; } });
     if(changed) o.refresh(); }
   wire(){
     this.fSel.addEventListener('change',e=>{
-      if(e.target.value===AVL_MEASURED){ panels.A.setFormation(AVL_MEASURED); panels.B.setFormation(AVL_ROLES); return; }  // 실측 선택 → 왼쪽 히트맵, 오른쪽 역할
-      this.setFormation(e.target.value);
+      const v=e.target.value;
+      if(v===AVL_MEASURED||v===AVL_MEASURED_ROT){ enterRealMode(v); return; }  // 실측 선택 → 왼쪽 실측, 오른쪽 게임 역할
+      this.setFormation(v);
     });
     this.modeSeg.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return; this.su.mode=b.dataset.mode; [...this.modeSeg.children].forEach(x=>x.classList.toggle('on',x===b)); this.renderHeat(); });
     this.intEl.addEventListener('input',e=>{ this.su.intensity=+e.target.value; this.renderHeat(); });
@@ -759,7 +784,7 @@ class Panel{
         const ly=(g.pad + (100-p.y)/100*(g.gridBottom-g.pad))/this.H*100;
         c.style.left=lx+'%'; c.style.top=ly+'%';
       } else { c.style.left=p.x+'%'; c.style.top=(100-p.y)+'%'; }
-      c.innerHTML=`<div class="dot" style="background:${p.color}">${p.pos}<span class="eye">${p.visible?'●':'○'}</span></div><div class="role">${ROLES[p.r].n} · ${FOCUS_KR[p.focus]||p.focus}</div>`;
+      c.innerHTML=`<div class="dot" style="background:${p.color}">${p.pos}<span class="eye">${p.visible?'●':'○'}</span></div><div class="role">${p.name?p.name+' 실측':ROLES[p.r].n+' · '+(FOCUS_KR[p.focus]||p.focus)}</div>`;
       c.addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); this.mirrorVisibility(); });
       this.chipsEl.appendChild(c);
     });
@@ -775,7 +800,9 @@ class Panel{
       }
       const opts=ROLE_SETS[p.t].map(id=>`<option value="${id}" ${id===p.r?'selected':''}>${ROLES[id].n}</option>`).join('');
       const fopts=ROLES[p.r].f.map(fx=>`<option value="${fx}" ${fx===p.focus?'selected':''}>${FOCUS_KR[fx]||fx}</option>`).join('');
-      row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${p.pos}</span><div class="selects"><select class="rrole">${opts}</select><select class="rfocus">${fopts}</select></div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
+      const sim=this.simVsReal(p);
+      const simHtml=sim==null?'':`<span class="simv ${sim>=0.75?'hi':sim>=0.55?'mid':'lo'}" title="반대 패널 같은 포지션 실측 히트맵과의 코사인 유사도">${Math.round(sim*100)}%</span>`;
+      row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${p.pos}</span><div class="selects"><select class="rrole">${opts}</select><select class="rfocus">${fopts}</select>${simHtml}</div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
       const rsel=row.querySelector('.rrole'),fsel=row.querySelector('.rfocus');
       rsel.addEventListener('change',e=>{ p.r=e.target.value; p.focus=ROLES[p.r].f[0]; p.map25=null; this.su.selected=p.id; this.refresh(); });
       rsel.addEventListener('focus',()=>{ this.su.selected=p.id; this.markSelected(); });
@@ -784,6 +811,14 @@ class Panel{
       row.querySelector('.eyebtn').addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); this.mirrorVisibility(); });
       this.rowsEl.appendChild(row);
     });
+  }
+  simVsReal(p){   // cosine similarity of this player's role kernel vs the OTHER panel's measured grid at the same pos label
+    const o=this.other(); if(!o) return null;
+    const rp=o.su.players.find(q=>q.pos===p.pos && q.map25); if(!rp) return null;
+    const a=placedMap(p), b=decodeMap(rp.map25); if(!a||!b) return null;
+    let dot=0,na=0,nb=0; for(let i=0;i<25;i++){ dot+=a[i]*b[i]; na+=a[i]*a[i]; nb+=b[i]*b[i]; }
+    if(!na||!nb) return null;
+    return dot/Math.sqrt(na*nb);
   }
   markSelected(){
     [...this.rowsEl.children].forEach((r,i)=>r.classList.toggle('sel',this.su.players[i].id===this.su.selected));
@@ -814,6 +849,19 @@ class Panel{
 
 /* ---- wire up both panels + presets ---- */
 const panels={};
+
+/* real-verification mode: left = measured data, right = game roles to tune (sim% shows on the right) */
+function enterRealMode(measuredName){
+  panels.A.setFormation(measuredName||AVL_MEASURED);
+  panels.B.setFormation(AVL_OPTIMAL);
+  const seg=document.getElementById('modeMenu');
+  if(seg) [...seg.children].forEach(b=>b.classList.toggle('on',b.dataset.m===(measuredName===AVL_MEASURED_ROT?'rot':'real')));
+}
+function exitRealMode(){
+  panels.A.setFormation(FKEYS[0]); panels.B.setFormation(FKEYS[1]||FKEYS[0]);
+  const seg=document.getElementById('modeMenu');
+  if(seg) [...seg.children].forEach(b=>b.classList.toggle('on',b.dataset.m==='free'));
+}
 
 /* preset count label */
 function updatePresetCount(){ const el=document.getElementById('pbCount'); if(el) el.textContent='프리셋 '+PRESETS.length+'개'; }
@@ -877,6 +925,12 @@ panels.A=new Panel(document.querySelector('.panel[data-key="A"]'),'A',0);
 panels.B=new Panel(document.querySelector('.panel[data-key="B"]'),'B',1);
 refreshLoaders();
 panels.A.buildRoster(); panels.B.buildRoster();
+document.getElementById('modeMenu').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  if(b.dataset.m==='real') enterRealMode(AVL_MEASURED);
+  else if(b.dataset.m==='rot') enterRealMode(AVL_MEASURED_ROT);
+  else exitRealMode();
+});
 document.getElementById('pExport').addEventListener('click',exportPresets);
 document.getElementById('pImport').addEventListener('change',e=>{ const f=e.target.files&&e.target.files[0]; if(f) importPresetsFromFile(f); e.target.value=''; });
 window.addEventListener('resize',()=>{ panels.A.size(); panels.B.size(); });

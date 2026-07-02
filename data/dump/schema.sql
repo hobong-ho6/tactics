@@ -29,7 +29,7 @@ CREATE TABLE appearances(
   goals INTEGER,
   assists INTEGER,
   source TEXT,
-  confidence TEXT,
+  confidence TEXT, heat_map25 TEXT, heat_tool_x REAL, heat_tool_y REAL,
   UNIQUE(player_id, match_id)
 );
 CREATE VIEW v_best AS

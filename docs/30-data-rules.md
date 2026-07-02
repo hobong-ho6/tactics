@@ -69,6 +69,10 @@ javascript_tool로 sofascore.com 페이지 컨텍스트에서 fetch** 하면 된
 
 수집 시 기록할 것: 존 분포 %(상위부터), 중심좌표(centroid), x/y 범위, 히트포인트 수,
 터치 수 → `heat_zones`(존 요약)와 `heat_summary`(움직임 서술 + 수치)로.
+추가로 **5×5 툴좌표 그리드**를 `appearances.heat_map25`(문자 0–9,X=peak)와
+`heat_tool_x/heat_tool_y`(툴좌표 중심)로 저장한다.
+변환: 툴x = 100 − SofaScore y, 툴y = SofaScore x. 선수별 통합본(경기 균등가중 평균)은
+`player_role_map kind='measured'`에 기록하며 툴이 이를 렌더링한다.
 
 주요 ID (25/26 확보분): Konsa 827679, Buendía 783126, Cash 833956, Digne 96538,
 Rogers 948261, Tielemans 331737, McGinn 250223, Onana 923973, Kamara 826204.
