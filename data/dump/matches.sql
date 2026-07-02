@@ -39,3 +39,6 @@ INSERT INTO matches VALUES(43,'2026-05-16','Liverpool','Premier League (2025/26,
 INSERT INTO matches VALUES(44,'2026-01-07','Crystal Palace','Premier League','A','0-0 draw (clean sheet)','2025-26','Aston Villa',1);
 INSERT INTO matches VALUES(45,'2026-03-15','Manchester United','Premier League','A','3-1','2025-26','Aston Villa',1);
 INSERT INTO matches VALUES(46,'2026-02-11','Brighton & Hove Albion','Premier League','H','1-0','2025-26','Aston Villa',1);
+INSERT INTO matches VALUES(47,'2025-11-01','Liverpool','Premier League','A','2-0','2025-26','Aston Villa',1);
+INSERT INTO matches VALUES(48,'2026-04-12','Nottingham Forest','Premier League','A','1-1','2025-26','Aston Villa',1);
+INSERT INTO matches VALUES(49,'2025-12-30','Arsenal','Premier League','A','4-1','2025-26','Aston Villa',1);

@@ -34,16 +34,18 @@
 - [ ] `matches.competition` 표기 정규화 (14가지 혼재 → 표준 명칭)
 - [ ] match 35의 result `W 4-0` → `4-0` 정규화
 - [x] `(실측)` 프리셋 역이관 — player_role_map kind='measured' 16행, API 정밀 그리드로 교체 (2026-07-02)
-- [ ] `(역할)` 프리셋 재도출 — 기존 sim 값은 구(근사) 그리드 기준. 툴의 실측 검증 모드에서
-      역할별 유사도를 보고 재선정한 뒤 kind='role'로 기록.
-      초기 스캔(포지션-순수 그리드 기준, 2026-07-02): 로저스 LW → w_winger/Versatile 67%
-      (현 w_insidefwd/Attack 55%), 맥긴 RM → wm_insidefwd/Balanced 87% (현 wm_widemid/Support 71%),
-      부엔디아 CAM → cam_halfwinger/Balanced 56%. 사용자 검토 후 확정할 것.
+- [x] `(역할)` 프리셋 재도출 완료 (2026-07-02) — 표본 보강된 포지션-순수 그리드로 전 포지션
+      스캔 후 kind='role' 11행 확정 + 툴 (역할) 프리셋 갱신 (평균 유사도 ~0.82).
+      kind='role'은 "실측 움직임과 가장 닮은 역할"(기술적), kind='optimal'은 "게임에서 택할
+      역할"(처방적)로 구분 유지 — 예: GK 실측 최근접은 gk_goalkeeper/Defend(0.96)지만
+      빌드업 임무 때문에 optimal은 gk_sweeper 유지.
 - [ ] 툴의 MAPS 커널·프리셋을 DB/JSON 로딩으로 전환 (DESIGN.md 로드맵)
 - [ ] 팀 전술 설정(빌드업/수비라인) 모델링 — `game_tactics` 테이블 설계
 - [x] 부엔디아 좌측 편향 → player_duties에 반영: 자유 10번은 "좌편향 프리롤"로 해석,
       우측 매핑 금지 (2026-07-02)
-- [ ] 카마라 깊이 재검토 — 좌우 문제는 26경기 평균위치로 해결(우측-중앙, RDM으로 교정 완료);
-      깊이(dm_holding vs dm_dlp)는 어려운 경기 히트맵 1–2개 추가 수집 후 확정
+- [x] 카마라 깊이 재검토 완료 (2026-07-02) — 첼시 원정·리버풀 원정(2-0 패) 그리드를 추가한
+      탈편향 표본에서도 dm_dlp/Roaming 0.83 > dm_holding 0.58: "딥 앵커" 프레임 기각.
+      부가 발견: 피봇 좌우가 10월 중순(스퍼스 원정)을 기점으로 좌→우 전환, 이후 연승기 내내 우측.
+      optimal의 dm_holding은 처방적 안전 선택으로 유지 — 게임 내 검증 후 재고
 - [x] 가변 포지션 5명 player_duties 작성 — 포지션별 행 분리, player_match_positions
       전수 수집(226행) + v_position_profile 집계 기반 (2026-07-02)
