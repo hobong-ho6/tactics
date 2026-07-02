@@ -135,6 +135,18 @@
   .simv{flex:0 0 auto;align-self:center;font-family:var(--mono);font-size:10.5px;font-weight:700;padding:3px 5px;border-radius:6px;border:1px solid var(--line-soft)}
   .simv.hi{color:#3ecf8e}.simv.mid{color:#f0e141}.simv.lo{color:#ff5d5d}
 
+  /* ---- squad bar ---- */
+  #squadBar{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;margin-bottom:16px}
+  .sq-tactic{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-bottom:10px;border-bottom:1px dashed var(--line-soft)}
+  .sq-head{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .sq-chip{font-size:12px;color:var(--muted);background:var(--panel-2);border:1px solid var(--line);border-radius:7px;padding:5px 9px}
+  .sq-chip b{color:var(--ink)}
+  .sq-note{font-size:10.5px;color:var(--muted-2);line-height:1.5}
+  .sq-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;padding-top:10px}
+  .sq-slot label{display:block;font-family:var(--mono);font-size:10px;color:var(--muted-2);letter-spacing:.08em;margin-bottom:3px}
+  .sq-slot select{width:100%;background:var(--panel-2);border:1px solid var(--line);border-radius:7px;padding:6px 8px;font-size:12px;color:var(--ink);cursor:pointer}
+  .sq-slot select:focus{outline:none;border-color:var(--accent)}
+
   .note{font-size:11.5px;color:var(--muted-2);line-height:1.55;margin-top:14px;padding:0 2px}
   .note b{color:var(--muted)}
   kbd{font-family:var(--mono);font-size:10.5px;background:var(--panel);border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:1px 5px;color:var(--ink)}
@@ -202,10 +214,11 @@
       <p class="tag">두 설정(A·B)을 나란히 비교합니다. 각 패널에서 포메이션·역할·포커스·표시를 따로 바꾸고, 프리셋으로 저장하거나 반대편으로 복사해 비교하세요. 프리셋은 브라우저에 저장되며, 파일로 내보내 백업·공유할 수 있습니다.</p>
     </div>
     <div class="preset-bar">
-      <div class="seg" id="modeMenu" title="왼쪽=실측 히트맵, 오른쪽=게임 역할 설정. 오른쪽 목록의 %가 실측 대비 유사도입니다.">
+      <div class="seg" id="modeMenu" title="실측 모드: 왼쪽=실측 히트맵, 오른쪽=게임 역할(%는 실측 유사도). 스쿼드 모드: 11명 선택 → 왼쪽=처방(최적), 오른쪽=실측 최근접.">
         <button data-m="free" class="on">자유 비교</button>
         <button data-m="real">실측 → FC26 검증</button>
         <button data-m="rot">실측 로테이션</button>
+        <button data-m="squad">빌라 스쿼드</button>
       </div>
       <span class="pb-count" id="pbCount"></span>
       <button id="pExport" title="저장된 모든 프리셋을 JSON 파일로 내려받기">⭳ 프리셋 내보내기</button>
@@ -214,6 +227,19 @@
       </label>
     </div>
   </header>
+
+  <section id="squadBar" style="display:none">
+    <div class="sq-tactic">
+      <span class="sq-head">팀 전술 · 에메리 25/26</span>
+      <span class="sq-chip">포메이션 <b>4-2-3-1</b></span>
+      <span class="sq-chip">빌드업 <b>숏 패싱 (Short Passing)</b></span>
+      <span class="sq-chip">수비 접근 <b>밸런스 (Balanced)</b></span>
+      <span class="sq-chip">라인 높이 <b>52</b></span>
+      <span class="sq-note">근거: 후방 숏빌드업 고수 + 4-4-2 콤팩트 미드블록 실측·분석 (DB team_tactic_setups, 게임 내 미검증 MEDIUM)</span>
+    </div>
+    <div class="sq-slots" id="sqSlots"></div>
+    <div class="sq-note" style="padding:6px 2px 0">왼쪽 패널 = <b>처방(최적)</b> — 실축 성과 기준 추천 · 오른쪽 패널 = <b>실측 최근접</b> — 움직임 재현 기준. 슬롯별로 분석 근거가 있는 선수만 표시됩니다.</div>
+  </section>
 
   <div class="compare">
     <section class="panel" data-key="A"></section>
@@ -658,7 +684,7 @@ class Panel{
     });
     this.$('.p-allon').addEventListener('click',()=>{ this.su.players.forEach(p=>p.visible=true); this.refresh(); this.mirrorVisibility(); });
     this.$('.p-alloff').addEventListener('click',()=>{ this.su.players.forEach(p=>p.visible=false); this.refresh(); this.mirrorVisibility(); });
-    this.$('.p-reset').addEventListener('click',()=>{ const f=FORMATIONS[this.su.formation]; this.su.players.forEach((p,i)=>{p.r=f[i].r;p.focus=f[i].focus||ROLES[p.r].f[0];p.map25=f[i].map25;}); this.refresh(); });
+    this.$('.p-reset').addEventListener('click',()=>{ const f=FORMATIONS[this.su.formation]; if(!f){ if(this.su.formation.startsWith('빌라 스쿼드')) applySquad(); return; } this.su.players.forEach((p,i)=>{p.r=f[i].r;p.focus=f[i].focus||ROLES[p.r].f[0];p.map25=f[i].map25;}); this.refresh(); });
     this.$('.p-save').addEventListener('click',()=>this.savePreset());
     this.$('.p-del').addEventListener('click',()=>this.delPreset());
     this.loadSel.addEventListener('change',e=>{ const i=e.target.value; if(i==='')return; this.applySnapshot(PRESETS[+i].snap); this.nameEl.value=PRESETS[+i].name; e.target.value=''; });
@@ -788,7 +814,7 @@ class Panel{
         const ly=(g.pad + (100-p.y)/100*(g.gridBottom-g.pad))/this.H*100;
         c.style.left=lx+'%'; c.style.top=ly+'%';
       } else { c.style.left=p.x+'%'; c.style.top=(100-p.y)+'%'; }
-      c.innerHTML=`<div class="dot" style="background:${p.color}">${p.pos}<span class="eye">${p.visible?'●':'○'}</span></div><div class="role">${p.name?p.name+' 실측':ROLES[p.r].n+' · '+(FOCUS_KR[p.focus]||p.focus)}</div>`;
+      c.innerHTML=`<div class="dot" style="background:${p.color}">${p.pos}<span class="eye">${p.visible?'●':'○'}</span></div><div class="role">${p.name?p.name+' 실측':(p.sqName?p.sqName+' · ':'')+ROLES[p.r].n+' · '+(FOCUS_KR[p.focus]||p.focus)}</div>`;
       c.addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); this.mirrorVisibility(); });
       this.chipsEl.appendChild(c);
     });
@@ -806,7 +832,8 @@ class Panel{
       const fopts=ROLES[p.r].f.map(fx=>`<option value="${fx}" ${fx===p.focus?'selected':''}>${fmtFocus(fx)}</option>`).join('');
       const sim=this.simVsReal(p);
       const simHtml=sim==null?'':`<span class="simv ${sim>=0.75?'hi':sim>=0.55?'mid':'lo'}" title="반대 패널 같은 포지션 실측 히트맵과의 코사인 유사도">${Math.round(sim*100)}%</span>`;
-      row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${p.pos}</span><div class="selects"><select class="rrole">${opts}</select><select class="rfocus">${fopts}</select>${simHtml}</div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
+      const posHtml=p.sqName?`${p.pos}<br><span style="font-size:9px;color:var(--muted-2);letter-spacing:0">${p.sqName}</span>`:p.pos;
+      row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${posHtml}</span><div class="selects"><select class="rrole">${opts}</select><select class="rfocus">${fopts}</select>${simHtml}</div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
       const rsel=row.querySelector('.rrole'),fsel=row.querySelector('.rfocus');
       rsel.addEventListener('change',e=>{ p.r=e.target.value; p.focus=ROLES[p.r].f[0]; p.map25=null; this.su.selected=p.id; this.refresh(); });
       rsel.addEventListener('focus',()=>{ this.su.selected=p.id; this.markSelected(); });
@@ -853,6 +880,85 @@ class Panel{
 
 /* ---- wire up both panels + presets ---- */
 const panels={};
+
+/* ============================================================
+   VILLA SQUAD MODE — pick 11 analyzed players into Emery's 4-2-3-1;
+   left panel = 처방(최적) roles, right panel = 실측 최근접 roles.
+   Data source: data/avl_analysis.db player_role_map (optimal/role) + player_duties.
+============================================================ */
+const SQUAD_SLOTS=[
+ {pos:'GK', t:'GK', x:50,y:6,  opts:[
+   {n:'마르티네스', opt:['gk_sweeper','Build-Up'],   fit:['gk_goalkeeper','Defend']}]},
+ {pos:'LB', t:'FB', x:13,y:32, opts:[
+   {n:'디뉴',      opt:['fb_fullback','Versatile'], fit:['fb_att_wb','Support']},
+   {n:'마첸',      opt:['fb_att_wb','Attack'],      fit:['fb_att_wb','Attack']}]},
+ {pos:'LCB',t:'CB', x:37,y:28, opts:[
+   {n:'파우 토레스', opt:['cb_bpd','Build-Up'],      fit:['cb_bpd','Aggressive']},
+   {n:'린델뢰프',   opt:['cb_defender','Balanced'],  fit:['cb_defender','Balanced']}]},
+ {pos:'RCB',t:'CB', x:63,y:28, opts:[
+   {n:'콘사',      opt:['cb_defender','Balanced'],  fit:['cb_bpd','Aggressive']},
+   {n:'린델뢰프',   opt:['cb_defender','Balanced'],  fit:['cb_defender','Balanced']}]},
+ {pos:'RB', t:'FB', x:87,y:32, opts:[
+   {n:'캐시',      opt:['fb_fullback','Versatile'], fit:['fb_att_wb','Support']}]},
+ {pos:'LDM',t:'DM', x:38,y:42, opts:[
+   {n:'오나나',    opt:['dm_boxcrasher','Balanced'], fit:['dm_dlp','Roaming']},
+   {n:'틸레만스',  opt:['dm_dlp','Build-Up'],        fit:['dm_dlp','Build-Up']},
+   {n:'보가르드',  opt:['dm_holding','Defend'],      fit:['dm_holding','Defend']}]},
+ {pos:'RDM',t:'DM', x:62,y:42, opts:[
+   {n:'카마라',    opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
+   {n:'틸레만스',  opt:['dm_dlp','Build-Up'],        fit:['dm_dlp','Build-Up']},
+   {n:'오나나',    opt:['dm_boxcrasher','Balanced'], fit:['dm_dlp','Roaming']},
+   {n:'린델뢰프',   opt:['dm_holding','Defend'],     fit:['dm_holding','Defend']},
+   {n:'보가르드',  opt:['dm_holding','Defend'],      fit:['dm_holding','Defend']}]},
+ {pos:'LW', t:'W',  x:15,y:64, opts:[
+   {n:'로저스',    opt:['w_insidefwd','Attack'],     fit:['w_winger','Versatile']},
+   {n:'부엔디아',  opt:['w_wideplm','Attack'],       fit:['w_insidefwd','Roaming']}]},
+ {pos:'CAM',t:'CAM',x:50,y:66, opts:[
+   {n:'부엔디아',  opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
+   {n:'로저스',    opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
+   {n:'틸레만스',  opt:['cam_playmaker','Build-Up'], fit:['cam_playmaker','Build-Up']},
+   {n:'맥긴',      opt:['cam_playmaker','Balanced'], fit:['cam_playmaker','Balanced']}]},
+ {pos:'RM', t:'WM', x:85,y:64, opts:[
+   {n:'맥긴',      opt:['wm_widemid','Support'],     fit:['wm_insidefwd','Balanced']},
+   {n:'산초',      opt:['wm_insidefwd','Attack'],    fit:['wm_insidefwd','Attack']}]},
+ {pos:'ST', t:'ST', x:50,y:87, opts:[
+   {n:'왓킨스',    opt:['st_advanced','Versatile'],  fit:['st_advanced','Versatile']}]},
+];
+const sqSel = SQUAD_SLOTS.map(()=>0);   // selected option index per slot
+
+function buildSquadUI(){
+  const holder=document.getElementById('sqSlots'); holder.innerHTML='';
+  const used={}; SQUAD_SLOTS.forEach((s,i)=>{ used[s.opts[sqSel[i]].n]=i; });
+  SQUAD_SLOTS.forEach((s,i)=>{
+    const div=document.createElement('div'); div.className='sq-slot';
+    const opts=s.opts.map((o,j)=>{
+      const takenBy=used[o.n];
+      const dis=(takenBy!==undefined&&takenBy!==i)?'disabled':'';
+      return `<option value="${j}" ${j===sqSel[i]?'selected':''} ${dis}>${o.n}${dis?' (사용 중)':''}</option>`;
+    }).join('');
+    div.innerHTML=`<label>${s.pos}</label><select>${opts}</select>`;
+    div.querySelector('select').addEventListener('change',e=>{ sqSel[i]=+e.target.value; buildSquadUI(); applySquad(); });
+    holder.appendChild(div);
+  });
+}
+function squadPlayers(which){
+  return SQUAD_SLOTS.map((s,i)=>{
+    const o=s.opts[sqSel[i]], rf=o[which];
+    return {pos:s.pos,t:s.t,x:s.x,y:s.y,r:rf[0],focus:rf[1],id:i,visible:true,color:PALETTE[i%PALETTE.length],sqName:o.n};
+  });
+}
+function applySquad(){
+  panels.A.su={formation:'빌라 스쿼드 — 처방(최적)',mode:panels.A.su.mode,intensity:panels.A.su.intensity,selected:-1,players:squadPlayers('opt')};
+  panels.B.su={formation:'빌라 스쿼드 — 실측 최근접',mode:panels.B.su.mode,intensity:panels.B.su.intensity,selected:-1,players:squadPlayers('fit')};
+  [panels.A,panels.B].forEach(pn=>{ pn.fSel.value=''; pn.size(); pn.refresh(); });
+}
+function enterSquadMode(){
+  document.getElementById('squadBar').style.display='block';
+  buildSquadUI(); applySquad();
+  const seg=document.getElementById('modeMenu');
+  [...seg.children].forEach(b=>b.classList.toggle('on',b.dataset.m==='squad'));
+}
+function hideSquadBar(){ document.getElementById('squadBar').style.display='none'; }
 
 /* real-verification mode: left = measured data, right = game roles to tune (sim% shows on the right) */
 function enterRealMode(measuredName){
@@ -931,6 +1037,8 @@ refreshLoaders();
 panels.A.buildRoster(); panels.B.buildRoster();
 document.getElementById('modeMenu').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
+  if(b.dataset.m==='squad'){ enterSquadMode(); return; }
+  hideSquadBar();
   if(b.dataset.m==='real') enterRealMode(AVL_MEASURED);
   else if(b.dataset.m==='rot') enterRealMode(AVL_MEASURED_ROT);
   else exitRealMode();
