@@ -44,3 +44,4 @@ INSERT INTO matches VALUES(49,'2025-12-30','Arsenal','Premier League','A','4-1',
 INSERT INTO matches VALUES(50,'2025-08-23','Brentford','Premier League','A','1-0','2025-26','Aston Villa',1,NULL);
 INSERT INTO matches VALUES(51,'2025-08-31','Crystal Palace','Premier League','H','0-3','2025-26','Aston Villa',1,NULL);
 INSERT INTO matches VALUES(52,'2025-10-23','Go Ahead Eagles','Europa League','A','2-1','2025-26','Aston Villa',1,NULL);
+INSERT INTO matches VALUES(53,'2025-01-18','Arsenal','Premier League','A','2-2','2024-25','Aston Villa',1,'MW22');
