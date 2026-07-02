@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "_note": "preview daemon has no macOS TCC permission for ~/Documents \u2014 serve a /private/tmp mirror instead; re-run: cp fc26-heatmap.html /private/tmp/tactics-preview/ after edits",
+  "configurations": [
+    {
+      "name": "heatmap",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-I",
+        "-c",
+        "import os,functools;from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler;port=int(os.environ.get('PORT','8123'));H=functools.partial(SimpleHTTPRequestHandler, directory='/private/tmp/tactics-preview');ThreadingHTTPServer(('127.0.0.1',port), H).serve_forever()"
+      ],
+      "port": 8123,
+      "autoPort": true
+    }
+  ]
+}

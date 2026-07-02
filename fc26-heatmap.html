@@ -249,7 +249,7 @@
     <div class="sq-note" style="padding:6px 2px 0">왼쪽 패널 = <b>처방(최적)</b> — 실축 성과 기준 추천 · 오른쪽 패널 = <b>실측 최근접</b> — 움직임 재현 기준. 슬롯별로 분석 근거가 있는 선수만 표시됩니다.
     슬롯 카드의 <b>✓/⚠</b> = 이 슬롯이 그 선수의 최적 포지션인지 (⚠이면 최적 포지션 표시) · <b>🎯 처방</b> = 성과 기준 추천 역할·포커스 · <b>🔁 실측</b> = 실제 움직임 최근접 역할·포커스.
     <b>영입·</b> 접두 = 2026 여름 이적 후보 (최근 6경기 실측 프로필 기반, 근거·가능성 등급은 DB transfer_targets 참조):
-    RB 에메르송(협상 중단·재개 여지) · LM 서머빌/파르도/태버니어(관찰)/바투리나 · RM 보웬/아데예미/하지무사(협상 진전, 적합 0.92 최고) · ST 기라시/브로베이/파르도(실측상 ST 0.87>LM 0.69) · DM 페르난데스/로피(비드 단계, LDM 적합 0.84)/그레이(3티어 링크, RDM 0.77) · GK 트루빈/스즈키(관찰)/레스테스.
+    RB 에메르송(협상 중단·재개 여지) · LM 서머빌/파르도/태버니어(문의 발생)/바투리나 · RM 보웬/아데예미/하지무사(협상 진전, 적합 0.92 최고) · ST 기라시/브로베이/파르도(실측상 ST 0.87>LM 0.69) · DM 페르난데스/로피(비드 단계, LDM 적합 0.84)/그레이(3티어 링크, RDM 0.77)/모리바(2티어 오퍼 준비, LDM 0.80) · GK 스즈키/트래포드(로마노 숏리스트)/트루빈/레스테스.
     <b>바투리나(비드 €50m 거절)</b> = 명목 10번이나 실측상 LM 0.80 > CAM 0.68 — 로저스형 좌측 크리에이터.
     아데예미는 실측상 좌측 부적합(LM 0.25)이라 RM만 제공. <b>시세(합류확정)</b> = 프리계약 26/27 RCB · <b>알리송(신규)</b> = 2026-01 영입된 소속 RW.</div>
   </section>
@@ -953,7 +953,8 @@ const SQUAD_SLOTS=[
    {n:'마르티네스', opt:['gk_sweeper','Build-Up'],   fit:['gk_goalkeeper','Defend']},
    {n:'영입·트루빈', opt:['gk_sweeper','Build-Up'],  fit:['gk_goalkeeper','Defend']},
    {n:'영입·스즈키', opt:['gk_sweeper','Balanced'],  fit:['gk_goalkeeper','Defend']},
-   {n:'영입·레스테스', opt:['gk_sweeper','Build-Up'],fit:['gk_goalkeeper','Defend']}]},
+   {n:'영입·레스테스', opt:['gk_sweeper','Build-Up'],fit:['gk_goalkeeper','Defend']},
+   {n:'영입·트래포드', opt:['gk_sweeper','Build-Up'],fit:['gk_goalkeeper','Balanced']}]},
  {pos:'LB', t:'FB', x:13,y:32, opts:[
    {n:'디뉴',      opt:['fb_fullback','Versatile'], fit:['fb_att_wb','Support']},
    {n:'마첸',      opt:['fb_att_wb','Attack'],      fit:['fb_att_wb','Attack']}]},
@@ -973,7 +974,8 @@ const SQUAD_SLOTS=[
    {n:'보가르드',  opt:['dm_holding','Defend'],      fit:['dm_holding','Defend']},
    {n:'영입·페르난데스', opt:['dm_dlp','Build-Up'],  fit:['dm_dlp','Roaming']},
    {n:'영입·로피',  opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
-   {n:'영입·그레이', opt:['dm_dlp','Build-Up'],       fit:['dm_dlp','Roaming']}]},
+   {n:'영입·그레이', opt:['dm_dlp','Build-Up'],       fit:['dm_dlp','Roaming']},
+   {n:'영입·모리바', opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']}]},
  {pos:'RDM',t:'DM', x:62,y:42, opts:[
    {n:'카마라',    opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
    {n:'틸레만스',  opt:['dm_dlp','Build-Up'],        fit:['dm_dlp','Build-Up']},
@@ -981,7 +983,8 @@ const SQUAD_SLOTS=[
    {n:'린델뢰프',   opt:['dm_holding','Defend'],     fit:['dm_holding','Defend']},
    {n:'보가르드',  opt:['dm_holding','Defend'],      fit:['dm_holding','Defend']},
    {n:'영입·페르난데스', opt:['dm_dlp','Build-Up'],  fit:['dm_dlp','Roaming']},
-   {n:'영입·그레이', opt:['dm_dlp','Build-Up'],       fit:['dm_dlp','Roaming']}]},
+   {n:'영입·그레이', opt:['dm_dlp','Build-Up'],       fit:['dm_dlp','Roaming']},
+   {n:'영입·모리바', opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']}]},
  /* 4-2-3-1 Wide의 좌측 슬롯 = LM(WM 타입). 분석 라벨 LW의 게임 매핑 — fit은 wm_* 커널
     재계산 (2026-07-02, transfer_targets LM rows + player_role_map kind='role:LM') */
  {pos:'LM', t:'WM', x:14,y:64, opts:[
@@ -1017,6 +1020,7 @@ const PLAYER_BEST={
   '영입·트루빈':{pos:['GK'],note:'실측 적합 0.96'},
   '영입·스즈키':{pos:['GK'],note:'실측 적합 0.97'},
   '영입·레스테스':{pos:['GK'],note:'실측 적합 0.97'},
+  '영입·트래포드':{pos:['GK'],note:'실측 적합 0.97 — 로마노 숏리스트'},
   '디뉴':{pos:['LB'],note:'LB 상위 경기 최다 (8.2/8.2)'},
   '마첸':{pos:['LB'],note:'공격형 LB — 디뉴의 대안'},
   '파우 토레스':{pos:['LCB'],note:'좌측 볼 플레잉 CB'},
@@ -1032,6 +1036,7 @@ const PLAYER_BEST={
   '영입·페르난데스':{pos:['LDM'],note:'실측 LDM 0.80 > RDM 0.66'},
   '영입·로피':{pos:['LDM'],note:'실측 LDM 0.84 > RDM 0.58'},
   '영입·그레이':{pos:['RDM'],note:'실측 RDM 0.77 > LDM 0.65'},
+  '영입·모리바':{pos:['LDM'],note:'실측 LDM 0.80 > RDM 0.58'},
   '로저스':{pos:['LM'],note:'왼쪽 피크 8.84/8.46 > 중앙 10번 8.3'},
   '부엔디아':{pos:['CAM'],note:'최적 10번 — 피크 9.4'},
   '영입·서머빌':{pos:['LM'],note:'실측 적합 0.70 — 로저스와 유사 동선'},
