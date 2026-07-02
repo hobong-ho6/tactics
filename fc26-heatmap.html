@@ -239,8 +239,9 @@
     </div>
     <div class="sq-slots" id="sqSlots"></div>
     <div class="sq-note" style="padding:6px 2px 0">왼쪽 패널 = <b>처방(최적)</b> — 실축 성과 기준 추천 · 오른쪽 패널 = <b>실측 최근접</b> — 움직임 재현 기준. 슬롯별로 분석 근거가 있는 선수만 표시됩니다.
-    <b>영입·</b> 접두 = 2026 여름 이적 후보 (에메르송 RB 협상중·서머빌 LW·보웬 RM·기라시/브로베이 ST·아데예미 RM·페르난데스 DM·트루빈/스즈키 GK — 최근 6경기 실측 프로필 기반, DB transfer_targets 참조. 아데예미는 실측상 LW 부적합 0.24라 RM만 제공).
-    <b>시세(합류확정)</b> = 프리계약 26/27 합류 RCB · <b>알리송(신규)</b> = 2026-01 영입된 소속 RW.</div>
+    <b>영입·</b> 접두 = 2026 여름 이적 후보 (최근 6경기 실측 프로필 기반, 근거·가능성 등급은 DB transfer_targets 참조):
+    RB 에메르송(협상중) · LW 서머빌/파르도/태버니어(관찰) · RM 보웬/아데예미/하지무사(협상 진전, 적합 0.92 최고) · ST 기라시/브로베이/파르도(실측상 ST 0.87>LW 0.71) · DM 페르난데스 · GK 트루빈/스즈키(관찰)/레스테스.
+    아데예미는 실측상 LW 부적합(0.24)이라 RM만 제공. <b>시세(합류확정)</b> = 프리계약 26/27 RCB · <b>알리송(신규)</b> = 2026-01 영입된 소속 RW.</div>
   </section>
 
   <div class="compare">
@@ -892,7 +893,8 @@ const SQUAD_SLOTS=[
  {pos:'GK', t:'GK', x:50,y:6,  opts:[
    {n:'마르티네스', opt:['gk_sweeper','Build-Up'],   fit:['gk_goalkeeper','Defend']},
    {n:'영입·트루빈', opt:['gk_sweeper','Build-Up'],  fit:['gk_goalkeeper','Defend']},
-   {n:'영입·스즈키', opt:['gk_sweeper','Balanced'],  fit:['gk_goalkeeper','Defend']}]},
+   {n:'영입·스즈키', opt:['gk_sweeper','Balanced'],  fit:['gk_goalkeeper','Defend']},
+   {n:'영입·레스테스', opt:['gk_sweeper','Build-Up'],fit:['gk_goalkeeper','Defend']}]},
  {pos:'LB', t:'FB', x:13,y:32, opts:[
    {n:'디뉴',      opt:['fb_fullback','Versatile'], fit:['fb_att_wb','Support']},
    {n:'마첸',      opt:['fb_att_wb','Attack'],      fit:['fb_att_wb','Attack']}]},
@@ -921,7 +923,9 @@ const SQUAD_SLOTS=[
  {pos:'LW', t:'W',  x:15,y:64, opts:[
    {n:'로저스',    opt:['w_insidefwd','Attack'],     fit:['w_winger','Versatile']},
    {n:'부엔디아',  opt:['w_wideplm','Attack'],       fit:['w_insidefwd','Roaming']},
-   {n:'영입·서머빌', opt:['w_insidefwd','Attack'],   fit:['w_wideplm','Build-Up']}]},
+   {n:'영입·서머빌', opt:['w_insidefwd','Attack'],   fit:['w_wideplm','Build-Up']},
+   {n:'영입·파르도', opt:['w_insidefwd','Attack'],   fit:['w_wideplm','Attack']},
+   {n:'영입·태버니어', opt:['w_insidefwd','Balanced'],fit:['w_wideplm','Build-Up']}]},
  {pos:'CAM',t:'CAM',x:50,y:66, opts:[
    {n:'부엔디아',  opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
    {n:'로저스',    opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
@@ -932,11 +936,13 @@ const SQUAD_SLOTS=[
    {n:'산초',      opt:['wm_insidefwd','Attack'],    fit:['wm_insidefwd','Attack']},
    {n:'영입·보웬',  opt:['wm_insidefwd','Attack'],   fit:['wm_insidefwd','Balanced']},
    {n:'영입·아데예미', opt:['wm_winger','Attack'],   fit:['wm_insidefwd','Balanced']},
-   {n:'알리송(신규)', opt:['wm_winger','Attack'],    fit:['wm_insidefwd','Balanced']}]},
+   {n:'알리송(신규)', opt:['wm_winger','Attack'],    fit:['wm_insidefwd','Balanced']},
+   {n:'영입·하지무사', opt:['wm_winger','Attack'],   fit:['wm_insidefwd','Attack']}]},
  {pos:'ST', t:'ST', x:50,y:87, opts:[
    {n:'왓킨스',    opt:['st_advanced','Versatile'],  fit:['st_advanced','Versatile']},
    {n:'영입·기라시', opt:['st_target','Attack'],     fit:['st_false9','Attack']},
-   {n:'영입·브로베이', opt:['st_target','Attack'],   fit:['st_false9','Attack']}]},
+   {n:'영입·브로베이', opt:['st_target','Attack'],   fit:['st_false9','Attack']},
+   {n:'영입·파르도', opt:['st_advanced','Attack'],   fit:['st_advanced','Support']}]},
 ];
 const sqSel = SQUAD_SLOTS.map(()=>0);   // selected option index per slot
 
