@@ -242,53 +242,56 @@ const FOCUS_KR = {
 };
 
 const ROLES = {
-  /* n: 표시명, g: 포지션군, f: fut.gg 포커스 목록 (히트맵은 MAPS에서 조회) */
-  gk_goalkeeper:{n:'골키퍼',g:'GK',f:['Balanced','Defend']},
-  gk_sweeper:{n:'스위퍼 키퍼',g:'GK',f:['Build-Up','Balanced']},
-  gk_ballplaying:{n:'볼 플레잉 키퍼',g:'GK',f:['Build-Up']},
+  /* n: 표시명, en: 게임 원문(영문, fut.gg 확인 2026-07-02), g: 포지션군, f: 포커스 목록 */
+  gk_goalkeeper:{n:'골키퍼',en:'Goalkeeper',g:'GK',f:['Balanced','Defend']},
+  gk_sweeper:{n:'스위퍼 키퍼',en:'Sweeper Keeper',g:'GK',f:['Build-Up','Balanced']},
+  gk_ballplaying:{n:'볼 플레잉 키퍼',en:'Ball Playing Keeper',g:'GK',f:['Build-Up']},
 
-  cb_bpd:{n:'볼 플레잉 센터백',g:'CB',f:['Aggressive','Build-Up','Defend']},
-  cb_wideback:{n:'와이드 백',g:'CB',f:['Support','Aggressive','Defend']},
-  cb_defender:{n:'센터백',g:'CB',f:['Balanced','Defend']},
-  cb_stopper:{n:'스토퍼',g:'CB',f:['Aggressive','Balanced']},
+  cb_bpd:{n:'볼 플레잉 센터백',en:'Ball-Playing Defender',g:'CB',f:['Aggressive','Build-Up','Defend']},
+  cb_wideback:{n:'와이드 백',en:'Wide Back',g:'CB',f:['Support','Aggressive','Defend']},
+  cb_defender:{n:'센터백',en:'Defender',g:'CB',f:['Balanced','Defend']},
+  cb_stopper:{n:'스토퍼',en:'Stopper',g:'CB',f:['Aggressive','Balanced']},
 
-  fb_fullback:{n:'풀백',g:'FB',f:['Versatile','Balanced','Defend']},
-  fb_falseback:{n:'폴스백',g:'FB',f:['Balanced','Defend']},
-  fb_wingback:{n:'윙백',g:'FB',f:['Support','Balanced']},
-  fb_att_wb:{n:'공격형 윙백',g:'FB',f:['Attack','Support']},
-  fb_inverted:{n:'인버티드 윙백',g:'FB',f:['Attack','Build-Up']},
+  fb_fullback:{n:'풀백',en:'Fullback',g:'FB',f:['Versatile','Balanced','Defend']},
+  fb_falseback:{n:'폴스백',en:'Falseback',g:'FB',f:['Balanced','Defend']},
+  fb_wingback:{n:'윙백',en:'Wingback',g:'FB',f:['Support','Balanced']},
+  fb_att_wb:{n:'공격형 윙백',en:'Attacking Wingback',g:'FB',f:['Attack','Support']},
+  fb_inverted:{n:'인버티드 윙백',en:'Inverted Wingback',g:'FB',f:['Attack','Build-Up']},
 
-  dm_holding:{n:'홀딩',g:'DM',f:['Ball-Winning','Roaming','Defend']},
-  dm_dlp:{n:'딥라잉 플레이메이커',g:'DM',f:['Build-Up','Roaming','Defend']},
-  dm_widehalf:{n:'와이드 하프',g:'DM',f:['Build-Up','Defend']},
-  dm_centrehalf:{n:'센터 하프',g:'DM',f:['Defend']},
-  dm_boxcrasher:{n:'박스 크래셔',g:'DM',f:['Balanced']},
+  dm_holding:{n:'홀딩',en:'Holding',g:'DM',f:['Ball-Winning','Roaming','Defend']},
+  dm_dlp:{n:'딥라잉 플레이메이커',en:'Deep-Lying Playmaker',g:'DM',f:['Build-Up','Roaming','Defend']},
+  dm_widehalf:{n:'와이드 하프',en:'Wide Half',g:'DM',f:['Build-Up','Defend']},
+  dm_centrehalf:{n:'센터 하프',en:'Centre-Half',g:'DM',f:['Defend']},
+  dm_boxcrasher:{n:'박스 크래셔',en:'Box Crasher',g:'DM',f:['Balanced']},
 
-  cm_halfwinger:{n:'하프 윙어',g:'CM',f:['Support','Balanced','Attack']},
-  cm_b2b:{n:'박스 투 박스',g:'CM',f:['Ball-Winning','Balanced']},
-  cm_holding:{n:'홀딩',g:'CM',f:['Ball-Winning','Defend']},
-  cm_dlp:{n:'딥라잉 플레이메이커',g:'CM',f:['Build-Up','Defend']},
-  cm_playmaker:{n:'플레이메이커',g:'CM',f:['Roaming','Attack']},
+  cm_halfwinger:{n:'하프 윙어',en:'Half-Winger',g:'CM',f:['Support','Balanced','Attack']},
+  cm_b2b:{n:'박스 투 박스',en:'Box-To-Box',g:'CM',f:['Ball-Winning','Balanced']},
+  cm_holding:{n:'홀딩',en:'Holding',g:'CM',f:['Ball-Winning','Defend']},
+  cm_dlp:{n:'딥라잉 플레이메이커',en:'Deep-Lying Playmaker',g:'CM',f:['Build-Up','Defend']},
+  cm_playmaker:{n:'플레이메이커',en:'Playmaker',g:'CM',f:['Roaming','Attack']},
 
-  cam_playmaker:{n:'플레이메이커',g:'CAM',f:['Balanced','Build-Up','Roaming']},
-  cam_halfwinger:{n:'하프 윙어',g:'CAM',f:['Roaming','Attack','Balanced']},
-  cam_classic10:{n:'클래식 10번',g:'CAM',f:['Versatile','Wide','Attack']},
-  cam_shadow:{n:'섀도 스트라이커',g:'CAM',f:['Attack']},
+  cam_playmaker:{n:'플레이메이커',en:'Playmaker',g:'CAM',f:['Balanced','Build-Up','Roaming']},
+  cam_halfwinger:{n:'하프 윙어',en:'Half-Winger',g:'CAM',f:['Roaming','Attack','Balanced']},
+  cam_classic10:{n:'클래식 10번',en:'Classic 10',g:'CAM',f:['Versatile','Wide','Attack']},
+  cam_shadow:{n:'섀도 스트라이커',en:'Shadow Striker',g:'CAM',f:['Attack']},
 
-  wm_widemid:{n:'와이드 미드필더',g:'WM',f:['Defend','Build-Up','Support']},
-  wm_winger:{n:'윙어',g:'WM',f:['Balanced','Attack']},
-  wm_wideplm:{n:'와이드 플레이메이커',g:'WM',f:['Attack','Build-Up']},
-  wm_insidefwd:{n:'인사이드 포워드',g:'WM',f:['Balanced','Attack']},
+  wm_widemid:{n:'와이드 미드필더',en:'Wide Midfielder',g:'WM',f:['Defend','Build-Up','Support']},
+  wm_winger:{n:'윙어',en:'Winger',g:'WM',f:['Balanced','Attack']},
+  wm_wideplm:{n:'와이드 플레이메이커',en:'Wide Playmaker',g:'WM',f:['Attack','Build-Up']},
+  wm_insidefwd:{n:'인사이드 포워드',en:'Inside Forward',g:'WM',f:['Balanced','Attack']},
 
-  w_winger:{n:'윙어',g:'W',f:['Versatile','Attack','Balanced']},
-  w_insidefwd:{n:'인사이드 포워드',g:'W',f:['Attack','Balanced','Roaming']},
-  w_wideplm:{n:'와이드 플레이메이커',g:'W',f:['Attack','Build-Up']},
+  w_winger:{n:'윙어',en:'Winger',g:'W',f:['Versatile','Attack','Balanced']},
+  w_insidefwd:{n:'인사이드 포워드',en:'Inside Forward',g:'W',f:['Attack','Balanced','Roaming']},
+  w_wideplm:{n:'와이드 플레이메이커',en:'Wide Playmaker',g:'W',f:['Attack','Build-Up']},
 
-  st_advanced:{n:'어드밴스드 포워드',g:'ST',f:['Support','Attack','Versatile']},
-  st_poacher:{n:'포처',g:'ST',f:['Support','Versatile','Attack']},
-  st_target:{n:'타깃 포워드',g:'ST',f:['Attack','Balanced','Wide']},
-  st_false9:{n:'폴스 나인',g:'ST',f:['Attack','Build-Up']},
+  st_advanced:{n:'어드밴스드 포워드',en:'Advanced Forward',g:'ST',f:['Support','Attack','Versatile']},
+  st_poacher:{n:'포처',en:'Poacher',g:'ST',f:['Support','Versatile','Attack']},
+  st_target:{n:'타깃 포워드',en:'Target Forward',g:'ST',f:['Attack','Balanced','Wide']},
+  st_false9:{n:'폴스 나인',en:'False 9',g:'ST',f:['Attack','Build-Up']},
 };
+/* 게임 내 설정 정확성을 위해 항상 "한글 (영문 원문)"으로 표기 */
+const fmtRole = id => `${ROLES[id].n} (${ROLES[id].en})`;
+const fmtFocus = f => `${FOCUS_KR[f]||f} (${f})`;
 
 /* ============================================================
    HEATMAP DATA — scraped verbatim from fut.gg/roles (EA FC 26)
@@ -686,7 +689,7 @@ class Panel{
     this.simRows=rows;
     const now=rows.reduce((t,r)=>t+r.cur,0)*I, max=rows.reduce((t,r)=>t+r.best.s,0)*I;
     const list=rows.map(r=>{
-      const role=`${ROLES[r.best.role].n} · ${FOCUS_KR[r.best.focus]||r.best.focus}`;
+      const role=`${fmtRole(r.best.role)} · ${fmtFocus(r.best.focus)}`;
       const d=r.delta*I;
       const dHtml = d>0.05 ? `<span class="sim-delta up">+${d.toFixed(1)}</span>` : `<span class="sim-delta">최적</span>`;
       return `<div class="sim-row" data-pid="${r.p.id}"><span class="sim-pos">${r.p.pos}</span><span class="sim-role">${role}</span><span class="sim-contrib">${(r.best.s*I).toFixed(1)}</span>${dHtml}</div>`;
@@ -799,8 +802,8 @@ class Panel{
         row.querySelector('.eyebtn').addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); this.mirrorVisibility(); });
         this.rowsEl.appendChild(row); return;
       }
-      const opts=ROLE_SETS[p.t].map(id=>`<option value="${id}" ${id===p.r?'selected':''}>${ROLES[id].n}</option>`).join('');
-      const fopts=ROLES[p.r].f.map(fx=>`<option value="${fx}" ${fx===p.focus?'selected':''}>${FOCUS_KR[fx]||fx}</option>`).join('');
+      const opts=ROLE_SETS[p.t].map(id=>`<option value="${id}" ${id===p.r?'selected':''}>${fmtRole(id)}</option>`).join('');
+      const fopts=ROLES[p.r].f.map(fx=>`<option value="${fx}" ${fx===p.focus?'selected':''}>${fmtFocus(fx)}</option>`).join('');
       const sim=this.simVsReal(p);
       const simHtml=sim==null?'':`<span class="simv ${sim>=0.75?'hi':sim>=0.55?'mid':'lo'}" title="반대 패널 같은 포지션 실측 히트맵과의 코사인 유사도">${Math.round(sim*100)}%</span>`;
       row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${p.pos}</span><div class="selects"><select class="rrole">${opts}</select><select class="rfocus">${fopts}</select>${simHtml}</div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
