@@ -448,6 +448,39 @@ const FORMATIONS = {
     {pos:'RM', t:'WM', x:86,y:64, r:'wm_insidefwd',  focus:'Balanced'},   // McGinn      (sim 0.41)
     {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Support'},    // Watkins     (sim 0.83)
   ],
+  /* Aston Villa 25/26 (optimal) — data-derived best position+role per player under Emery,
+     from SofaScore top-3 club ratings + team results (see data/avl_analysis.db player_role_map).
+     Key data findings: Rogers peaks LEFT (8.84/8.46) not central 10; Buendia is the optimal No.10 (9.4);
+     McGinn optimal RIGHT (8.7/8.6); Tielemans peaks as a DEEP pivot (bench here behind Kamara/Onana). */
+  '아스톤 빌라 25/26 (최적)':[
+    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper',    focus:'Build-Up'},     // Martínez
+    {pos:'LB', t:'FB', x:13,y:32, r:'fb_fullback',   focus:'Versatile'},    // Digne
+    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up'},     // Pau Torres
+    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender',   focus:'Balanced'},     // Konsa
+    {pos:'RB', t:'FB', x:87,y:32, r:'fb_fullback',   focus:'Versatile'},    // Cash
+    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_holding',    focus:'Ball-Winning'}, // Kamara (deep screen)
+    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_boxcrasher', focus:'Balanced'},     // Onana (surging pivot)
+    {pos:'LW', t:'W',  x:15,y:64, r:'w_insidefwd',   focus:'Attack'},       // Rogers — optimal LEFT
+    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming'},      // Buendia — optimal No.10
+    {pos:'RM', t:'WM', x:85,y:64, r:'wm_widemid',    focus:'Support'},      // McGinn — optimal RIGHT
+    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile'},    // Watkins
+  ],
+  /* Aston Villa 25/26 (Rogers CAM) — the exact XI/roles from Villa 4-2 Liverpool (15 May 2026),
+     Rogers' best game as a central No.10 (rating 8.3, goal + assist). Roles mapped from each
+     starter's heatmap/role that match. Pivot Tielemans+Lindelof; Buendia L, Rogers CAM, McGinn R. */
+  '아스톤 빌라 25/26 (로저스 CAM)':[
+    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper',    focus:'Balanced'},     // Martínez (deep this game)
+    {pos:'LB', t:'FB', x:13,y:32, r:'fb_wingback',   focus:'Support'},      // Digne (assist cutback for Rogers)
+    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up'},     // Pau Torres
+    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender',   focus:'Balanced'},     // Konsa
+    {pos:'RB', t:'FB', x:87,y:32, r:'fb_fullback',   focus:'Defend'},       // Cash (contained Ngumoha, no overlap)
+    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_dlp',        focus:'Build-Up'},     // Tielemans (deep distributor)
+    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Defend'},       // Lindelöf (conservative screen)
+    {pos:'LM', t:'WM', x:14,y:64, r:'wm_wideplm',    focus:'Attack'},       // Buendia (left, inverts inside)
+    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming'},      // Rogers — central No.10, roams
+    {pos:'RM', t:'WM', x:86,y:64, r:'wm_widemid',    focus:'Support'},      // McGinn (right, cut in for 4th)
+    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Attack'},       // Watkins (brace)
+  ],
 };
 
 /* ============================================================
