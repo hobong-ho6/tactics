@@ -151,3 +151,21 @@ CREATE TABLE transfer_targets(
   rationale TEXT, source TEXT, confidence TEXT,
   UNIQUE(window, name, slot)
 );
+CREATE TABLE player_fc_stats(
+  id INTEGER PRIMARY KEY,
+  game_version TEXT NOT NULL,            -- 'FC26'
+  roster_date TEXT,                      -- sofifa roster update the stats were read from
+  name_kr TEXT NOT NULL,                 -- transfer_targets.name_kr / 툴 표기와 동일
+  player_id INTEGER REFERENCES players(id),  -- NULL = 외부(이적 후보)
+  sofifa_id INTEGER,                     -- NULL = FC26 DB에 없는 선수
+  sofifa_name TEXT,
+  club TEXT,
+  positions TEXT,                        -- 'CAM,LM,CM' (sofifa 등록 포지션)
+  best_pos TEXT,                         -- sofifa 계산 최적 포지션
+  age INTEGER, height_cm INTEGER, value_eur TEXT,
+  ovr INTEGER, pot INTEGER,
+  pac INTEGER, sho INTEGER, pas INTEGER, dri INTEGER, def INTEGER, phy INTEGER,
+  -- GK 행의 6개 스탯 = 다이빙/핸들링/킥/반응속도/속도/위치선정
+  source TEXT, confidence TEXT,
+  UNIQUE(game_version, name_kr)
+);
