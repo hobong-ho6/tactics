@@ -1,0 +1,137 @@
+{
+  "app": "fc26-heatmap",
+  "version": 1,
+  "presets": [
+    {
+      "name": "아스톤빌라",
+      "snap": {
+        "formation": "4-2-3-1 (와이드)",
+        "mode": "composite",
+        "intensity": 1,
+        "players": [
+          {
+            "pos": "GK",
+            "t": "GK",
+            "x": 50,
+            "y": 6,
+            "r": "gk_ballplaying",
+            "id": 0,
+            "focus": "Build-Up",
+            "visible": true,
+            "color": "#ff5d5d"
+          },
+          {
+            "pos": "LB",
+            "t": "FB",
+            "x": 13,
+            "y": 30,
+            "r": "fb_att_wb",
+            "id": 1,
+            "focus": "Attack",
+            "visible": true,
+            "color": "#ffa63d"
+          },
+          {
+            "pos": "LCB",
+            "t": "CB",
+            "x": 37,
+            "y": 28,
+            "r": "cb_defender",
+            "id": 2,
+            "focus": "Balanced",
+            "visible": true,
+            "color": "#ffe14d"
+          },
+          {
+            "pos": "RCB",
+            "t": "CB",
+            "x": 63,
+            "y": 28,
+            "r": "cb_defender",
+            "id": 3,
+            "focus": "Defend",
+            "visible": true,
+            "color": "#8ce65b"
+          },
+          {
+            "pos": "RB",
+            "t": "FB",
+            "x": 87,
+            "y": 30,
+            "r": "fb_wingback",
+            "id": 4,
+            "focus": "Balanced",
+            "visible": true,
+            "color": "#3ddc97"
+          },
+          {
+            "pos": "LDM",
+            "t": "DM",
+            "x": 38,
+            "y": 42,
+            "r": "dm_dlp",
+            "id": 5,
+            "focus": "Build-Up",
+            "visible": true,
+            "color": "#38c6e6"
+          },
+          {
+            "pos": "RDM",
+            "t": "DM",
+            "x": 62,
+            "y": 42,
+            "r": "dm_holding",
+            "id": 6,
+            "focus": "Defend",
+            "visible": true,
+            "color": "#5c8bff"
+          },
+          {
+            "pos": "LM",
+            "t": "WM",
+            "x": 14,
+            "y": 64,
+            "r": "wm_insidefwd",
+            "id": 7,
+            "focus": "Balanced",
+            "visible": true,
+            "color": "#a97cff"
+          },
+          {
+            "pos": "CAM",
+            "t": "CAM",
+            "x": 50,
+            "y": 66,
+            "r": "cam_halfwinger",
+            "id": 8,
+            "focus": "Roaming",
+            "visible": true,
+            "color": "#ff6fd8"
+          },
+          {
+            "pos": "RM",
+            "t": "WM",
+            "x": 86,
+            "y": 64,
+            "r": "wm_widemid",
+            "id": 9,
+            "focus": "Build-Up",
+            "visible": true,
+            "color": "#ff9d6e"
+          },
+          {
+            "pos": "ST",
+            "t": "ST",
+            "x": 50,
+            "y": 87,
+            "r": "st_advanced",
+            "id": 10,
+            "focus": "Attack",
+            "visible": true,
+            "color": "#7de0c8"
+          }
+        ]
+      }
+    }
+  ]
+}

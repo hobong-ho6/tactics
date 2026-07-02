@@ -1,0 +1,7 @@
+INSERT INTO streaks VALUES(1,'Autumn title-race run: 5 straight wins in all competitions (25 Sep – 19 Oct 2025). Contains the two candidate central-Rogers games (Bologna, Fulham). Broken by the 2-1 loss at Go Ahead Eagles on 23 Oct.',NULL,'2025-26');
+INSERT INTO streaks VALUES(2,'CLUB-RECORD 11 consecutive wins in all competitions (6 Nov – 27 Dec 2025) — equalled Villa''s 151-year club record. Broken by the 4-1 loss at Arsenal on 30 Dec.',NULL,'2025-26');
+INSERT INTO streaks VALUES(3,'8 consecutive PREMIER LEAGUE wins (9 Nov – 27 Dec 2025) — the PL-only sub-run inside the 11-game streak; best Villa top-flight winning run since 1910 and best PL streak of 2025/26. Broken by the 4-1 loss at Arsenal on 30 Dec.',NULL,'2025-26');
+INSERT INTO streaks VALUES(4,'3 straight wins in all competitions (22 – 29 Jan 2026), during the Jan-Mar injury phase. Broken by the 0-1 home loss to Brentford on 1 Feb.',NULL,'2025-26');
+INSERT INTO streaks VALUES(5,'4 straight wins in all competitions (12 Mar – 9 Apr 2026), spanning the Lille R16 tie. Broken by the 1-1 draw at Nottingham Forest on 12 Apr.',NULL,'2025-26');
+INSERT INTO streaks VALUES(6,'2 straight wins in all competitions (16 – 19 Apr 2026). Broken by the 1-0 loss at Fulham on 25 Apr.',NULL,'2025-26');
+INSERT INTO streaks VALUES(7,'Season-ending 3 straight wins in all competitions (15 – 24 May 2026), including the Europa League final triumph. Season''s final matches.',NULL,'2025-26');
