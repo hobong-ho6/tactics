@@ -161,6 +161,10 @@
   .panel-head .p-formation{flex:1;min-width:120px}
   .panel-head .int{display:flex;align-items:center;gap:6px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2)}
   .panel-head .int input{width:74px;accent-color:var(--accent)}
+  .p-desc{font-size:11.5px;color:var(--muted);line-height:1.55;margin:0 0 10px;padding:7px 10px;
+    background:var(--panel-2);border:1px solid var(--line);border-radius:8px}
+  .p-desc:empty{display:none}
+  .p-desc b{color:var(--ink)}
   .p-actions,.p-preset{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:10px}
   .p-actions button,.p-preset button{background:var(--panel-2);border:1px solid var(--line);border-radius:7px;font-size:11px;padding:6px 9px;cursor:pointer;color:var(--muted)}
   .p-actions button:hover,.p-preset button:hover{border-color:var(--accent);color:var(--ink)}
@@ -215,9 +219,7 @@
     </div>
     <div class="preset-bar">
       <div class="seg" id="modeMenu" title="실측 모드: 왼쪽=실측 히트맵, 오른쪽=게임 역할(%는 실측 유사도). 스쿼드 모드: 11명 선택 → 왼쪽=처방(최적), 오른쪽=실측 최근접.">
-        <button data-m="free" class="on">자유 비교</button>
-        <button data-m="real">실측 → FC26 검증</button>
-        <button data-m="rot">실측 로테이션</button>
+        <button data-m="real" class="on">실측 → FC26 검증</button>
         <button data-m="squad">빌라 스쿼드</button>
       </div>
       <span class="pb-count" id="pbCount"></span>
@@ -547,6 +549,18 @@ const PALETTE = ['#ff5d5d','#ffa63d','#ffe14d','#8ce65b','#3ddc97','#38c6e6','#5
 const FKEYS = Object.keys(FORMATIONS);
 const AVL_MEASURED='아스톤 빌라 25/26 (실측)', AVL_MEASURED_ROT='아스톤 빌라 25/26 (실측 로테이션)', AVL_ROLES='아스톤 빌라 25/26 (역할)', AVL_OPTIMAL='아스톤 빌라 25/26 (최적)';
 
+/* per-preset explainer shown under the panel header (docs/20-fc-game-system.md 참조) */
+const FORMATION_DESC = {
+  [AVL_MEASURED]: '📊 <b>실측</b> — 진짜 경기 데이터. 주전 XI가 실제 경기에서 뛴 위치(SofaScore 히트맵 집계)를 그대로 그린 것이라 역할을 바꿀 수 없는 <b>기준점</b>입니다. 반대편 패널의 게임 역할을 이 그림에 가깝게 맞추는 게 목표.',
+  [AVL_MEASURED_ROT]: '📊 <b>실측 로테이션</b> — 로테이션 멤버(마첸·린델뢰프·보가르드·틸레만스·산초)가 실제 경기에서 뛴 위치 데이터. 실측과 같은 기준점 역할.',
+  [AVL_ROLES]: '🔁 <b>역할</b> — "움직임 재현" 세팅. 각 선수의 실측 히트맵과 가장 비슷하게 움직이는 FC26 역할·포커스 조합(유사도 검증 완료). 실제 모습 그대로 재현하고 싶을 때.',
+  [AVL_OPTIMAL]: '🎯 <b>최적</b> — "성과 처방" 세팅. 평점×경기 결과 가중으로 뽑은 선수별 최고 성과 포지션·역할. 실제로 그렇게 뛰었다는 뜻이 아니라, 이렇게 세팅했을 때 성적이 가장 좋았다는 뜻.',
+  '아스톤 빌라 25/26': '📝 초기 추정 — 기사·관찰 기반으로 역할을 추정한 실측 검증 이전 버전. 참고용.',
+  '아스톤 빌라 25/26 (로저스 CAM)': '🎬 단일 경기 재현 — 리버풀전 4-2 (2026-05-15) 승리, 로저스 중앙 10번 기용 경기의 XI·역할.',
+  '빌라 스쿼드 — 처방(최적)': '🎯 <b>처방(최적)</b> — 선택한 11명에게 성과 기준(평점×결과)으로 가장 잘 먹혔던 역할을 부여. 승리 최적화 세팅.',
+  '빌라 스쿼드 — 실측 최근접': '🔁 <b>실측 최근접</b> — 선택한 11명이 실제 경기에서 움직인 모습과 가장 비슷한 FC26 역할을 부여. 현실 재현 세팅.',
+};
+
 /* ---- pure heatmap math (shared by both panels) ---- */
 const COLS=5, ROWS=5;
 const EMPTY=[43,47,57];
@@ -609,6 +623,7 @@ const PANEL_HTML = `
     <label class="int">강도 <input class="p-intensity" type="range" min="0.4" max="2" step="0.05" value="1"></label>
     <div class="seg p-chiptog"><button class="on" title="포지션 아이콘 표시/숨김">아이콘</button></div>
   </div>
+  <div class="p-desc"></div>
   <div class="pitch-card">
     <div class="p-heatrow">
       <div class="p-thresh-col">
@@ -878,7 +893,7 @@ class Panel{
     const rc=idx%COLS+1, rr=Math.floor(idx/COLS)+1;
     showTip(clientX,clientY,`<div class="ct-head">패널 ${this.key} · ${rr}행 ${rc}열 · 합계 ${total.toFixed(1)} · ${contrib.length}겹</div>${rows}`);
   }
-  refresh(){ this.layoutChips(); this.buildRoster(); this.renderHeat(); if(this.simOpen) this.simulate(); }
+  refresh(){ this.$('.p-desc').innerHTML=FORMATION_DESC[this.su.formation]||''; this.layoutChips(); this.buildRoster(); this.renderHeat(); if(this.simOpen) this.simulate(); }
 }
 
 /* ---- wire up both panels + presets ---- */
@@ -986,12 +1001,7 @@ function enterRealMode(measuredName){
   panels.A.setFormation(measuredName||AVL_MEASURED);
   panels.B.setFormation(AVL_OPTIMAL);
   const seg=document.getElementById('modeMenu');
-  if(seg) [...seg.children].forEach(b=>b.classList.toggle('on',b.dataset.m===(measuredName===AVL_MEASURED_ROT?'rot':'real')));
-}
-function exitRealMode(){
-  panels.A.setFormation(FKEYS[0]); panels.B.setFormation(FKEYS[1]||FKEYS[0]);
-  const seg=document.getElementById('modeMenu');
-  if(seg) [...seg.children].forEach(b=>b.classList.toggle('on',b.dataset.m==='free'));
+  if(seg) [...seg.children].forEach(b=>b.classList.toggle('on',b.dataset.m==='real'));
 }
 
 /* preset count label */
@@ -1056,13 +1066,12 @@ panels.A=new Panel(document.querySelector('.panel[data-key="A"]'),'A',0);
 panels.B=new Panel(document.querySelector('.panel[data-key="B"]'),'B',1);
 refreshLoaders();
 panels.A.buildRoster(); panels.B.buildRoster();
+enterRealMode(AVL_MEASURED);   // 기본 화면 = 실측 → FC26 검증
 document.getElementById('modeMenu').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
   if(b.dataset.m==='squad'){ enterSquadMode(); return; }
   hideSquadBar();
-  if(b.dataset.m==='real') enterRealMode(AVL_MEASURED);
-  else if(b.dataset.m==='rot') enterRealMode(AVL_MEASURED_ROT);
-  else exitRealMode();
+  enterRealMode(AVL_MEASURED);
 });
 document.getElementById('pExport').addEventListener('click',exportPresets);
 document.getElementById('pImport').addEventListener('change',e=>{ const f=e.target.files&&e.target.files[0]; if(f) importPresetsFromFile(f); e.target.value=''; });
