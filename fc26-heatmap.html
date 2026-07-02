@@ -617,6 +617,8 @@ const FORMATION_DESC = {
   '아스톤 빌라 25/26 (로저스 CAM)': '🎬 단일 경기 재현 — 리버풀전 4-2 (2026-05-15) 승리, 로저스 중앙 10번 기용 경기의 XI·역할.',
   '빌라 스쿼드 — 처방(최적)': '🎯 <b>처방(최적)</b> — 선택한 11명에게 성과 기준(평점×결과)으로 가장 잘 먹혔던 역할을 부여. 승리 최적화 세팅.',
   '빌라 스쿼드 — 실측 최근접': '🔁 <b>실측 최근접</b> — 선택한 11명이 실제 경기에서 움직인 모습과 가장 비슷한 FC26 역할을 부여. 현실 재현 세팅.',
+  '선수 비교 — A (실측)': '📊 <b>선수 A 실측</b> — 위 비교에서 선택한 A 선수의 실측 히트맵을 슬롯 위치에 그린 것 (그리드 출처는 비교 카드 표기 참조).',
+  '선수 비교 — B (실측)': '📊 <b>선수 B 실측</b> — 위 비교에서 선택한 B 선수의 실측 히트맵을 슬롯 위치에 그린 것 (그리드 출처는 비교 카드 표기 참조).',
 };
 
 /* ---- pure heatmap math (shared by both panels) ---- */
@@ -1295,6 +1297,19 @@ function renderCmp(){
   body.innerHTML=`<div class="cmp-verdict">${head}<br>${chips}${notes}</div>`
     +`<div class="cmp-cols">${cmpCard('A',pa,!close&&d>0)}${cmpCard('B',pb,!close&&d<0)}</div>`
     +`<div class="cmp-stats"><div class="cs-head">FC26 능력치 · sofifa ${FC_ROSTER_DATE} — 왼쪽 주황=A · 오른쪽 파랑=B</div>${cmpStatBars(pa,pb,slot.t==='GK')}</div>`;
+  applyCmpPanels(key,pa,pb);
+}
+/* 좌우 패널 = 선택된 A/B 선수의 실측 히트맵 (슬롯 위치 기준) */
+function applyCmpPanels(key,pa,pb){
+  const slot=CMP_SLOTS[key], sq=SQUAD_SLOTS.find(s=>s.pos===key);
+  const mk=(prof,color)=>{ const c=prof.c; if(!c.grid) return [];
+    const role=prof.fit?prof.fit.role:ROLE_SETS[slot.t][0];
+    return [{pos:key,t:slot.t,x:slot.x,y:sq?sq.y:50,r:role,focus:prof.fit?prof.fit.f:ROLES[role].f[0],
+             map25:c.grid,name:c.n,id:0,visible:true,color}];
+  };
+  panels.A.su={formation:'선수 비교 — A (실측)',mode:panels.A.su.mode,intensity:panels.A.su.intensity,selected:-1,players:mk(pa,'#ff7a2f')};
+  panels.B.su={formation:'선수 비교 — B (실측)',mode:panels.B.su.mode,intensity:panels.B.su.intensity,selected:-1,players:mk(pb,'#5c8bff')};
+  [panels.A,panels.B].forEach(pn=>{ pn.fSel.value=''; pn.size(); pn.refresh(); });
 }
 function fillCmpPlayers(reset){
   const slot=CMP_SLOTS[document.getElementById('cmpSlot').value];
