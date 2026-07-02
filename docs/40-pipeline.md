@@ -29,6 +29,15 @@
 - `.DS_Store` 등 OS 파일은 .gitignore.
 - 원격(remote)이 아직 없음 — GitHub private repo에 push해 백업하는 것을 권장 (백로그).
 
+## 정기 자동화
+
+- **transfer-watch** (매일 09:00/21:00, 로컬 스케줄러 `villa-transfer-watch`):
+  TransferFeed 빌라 페이지 스캔 → 1~2티어 기자 크로스체크 → MEDIUM 이상 신규 루머만
+  실측 분석 후 `transfer_targets`·툴 SQUAD_SLOTS에 추가. 절차 정의는
+  [.claude/skills/transfer-watch/SKILL.md](../.claude/skills/transfer-watch/SKILL.md).
+  Chrome 미연결 실행은 `PENDING MEASUREMENT`로 표시 — 다음 대화 세션에서 측정 보완.
+  앱이 꺼져 있으면 다음 실행 시점으로 밀린다.
+
 ## 백로그 (알려진 정리 과제)
 
 - [x] `matches.competition` 표기 정규화 완료 (2026-07-02) — 표준 명칭 2종 + 신설 `stage` 컬럼으로
