@@ -81,6 +81,27 @@
   이적 확정/무산 시 transfer_targets의 likelihood를 갱신하고 확정 영입은 players로 승격.
 - 역할·포커스 표기는 전부 `한글 (English)` 병기 — 게임 내 설정 오입력 방지.
 
+### 선수 비교 모드 (헤더 메뉴 `선수 비교`)
+
+- 목적: **영입 판단** — 같은 슬롯의 후보 2명(보유 선수 vs 영입 후보 포함)을 나란히 비교.
+- 슬롯 선택(4-2-3-1 Wide 11슬롯) → 선수 A/B 선택 → 3개 근거 블록:
+  1. **실측 분석** — 평점 표본(빌라: v_position_profile 시즌 포지션별 / appearances 상위 경기,
+     영입 후보: transfer_targets 최근 6경기) + **슬롯 적합**(실측 map25 그리드 ↔ 슬롯 포지션
+     타입 전체 역할·포커스 커널의 최대 코사인, 툴 런타임 계산 — transfer_targets.fit_sim과
+     같은 방법론이라 값이 일치함: 캐시/에메르송 0.94, 하지무사 0.92) + 최적 포지션 ✓/⚠.
+  2. **FC26 능력치** — `player_fc_stats`(sofifa, FC26 roster 2026-06-30) 파생 하드코딩
+     `FC_STATS`: OVR/POT/6대 스탯 미러 바/나이/키/가치. GK 6대 스탯 = 다이빙~위치선정.
+     미수록 선수는 "FC26 미수록"으로 표시 (에메르송 호얄 — 브라질 리그 미수록 확인).
+  3. **종합 판정** — 슬롯 적합 40% + 실측 평점 35% + FC26 OVR 25% 가중.
+     비교 불가 항목은 제외 후 재정규화: '상위 경기 평균'(베스트 경기 편향) 표본이 끼면
+     평점 제외, FC26 미수록이면 OVR 제외. |Δ|<0.03이면 "박빙" 판정.
+- 후보 데이터(`CMP_SLOTS`)와 `FC_STATS`는 DB 파생 하드코딩 — player_fc_stats /
+  transfer_targets / player_role_map 갱신 시 함께 갱신할 것.
+- FC26 스탯 수집법: sofifa는 curl/WebFetch 403(Cloudflare) — Chrome 페이지 컨텍스트에서
+  `/players?keyword=<이름>&showCol[]=ae|hi|oa|pt|bp|vl|pac|sho|pas|dri|def|phy` 검색 페이지를
+  fetch해 파싱한다 (동명이인은 팀명으로 구분). 새 영입 후보 추가 시 같은 방법으로
+  player_fc_stats에 행 추가.
+
 - 프리셋 네이밍: `아스톤 빌라 <시즌> (<종류>)` — 종류: 실측 / 역할 / 최적 / 경기 태그.
 - 프리셋 JSON export는 `data/exports/`에 날짜 스탬프로 저장·커밋한다.
 - 방향 규약: 툴 좌표(x=좌우, y=공격방향)와 SofaScore 좌표(x=공격방향, y=좌우 반전)가
