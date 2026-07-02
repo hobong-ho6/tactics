@@ -19,6 +19,10 @@ never a rewrite.
      (philosophy, build-up, defensive block, in-possession shape, per-match modulation axes, verdicts).
    - `player_duties(season,player_id,position,duties,execution,adherence,game_role_implication,source,confidence)`
      — per-player duty spec vs measured execution review; feeds squad selection and game-role refinement.
+     Variable-position players get one row per position held.
+   - `player_match_positions(season,player_id,event_id,date,…,avg_x,avg_y,minutes,rating,started,pos_class)`
+     — full-season per-match average positions (SofaScore API); the measured basis for
+     most-used / best-performed position. Aggregated by the `v_position_profile` view.
    - View `v_best`.
 
 2. **Game system library (per FC version)** — `game_roles(game_version,role_id,name,position_type,focuses)`

@@ -36,8 +36,9 @@
 - [ ] `(실측)`/`(역할)` 프리셋을 player_role_map에 역이관 (kind='measured'/'role')
 - [ ] 툴의 MAPS 커널·프리셋을 DB/JSON 로딩으로 전환 (DESIGN.md 로드맵)
 - [ ] 팀 전술 설정(빌드업/수비라인) 모델링 — `game_tactics` 테이블 설계
-- [ ] 부엔디아 좌측 편향 실측을 반영해 `optimal` 매핑 재검토 (CAM Roaming 유지? 좌하프스페이스?)
-- [ ] 카마라 역할 재검토 — 실측상 "딥 앵커"보다 전진형 피봇에 가까움 (dm_holding vs dm_dlp);
-      어려운 경기/원정 히트맵 1–2개 추가 수집해 top-3 대승 편향 제거 후 확정 (player_duties 참조)
-- [ ] 가변 포지션 선수들(로저스·부엔디아·맥긴·틸레만스·오나나)의 player_duties 작성 —
-      포지션별로 임무가 다르므로 (player, position)별 행 분리
+- [x] 부엔디아 좌측 편향 → player_duties에 반영: 자유 10번은 "좌편향 프리롤"로 해석,
+      우측 매핑 금지 (2026-07-02)
+- [ ] 카마라 깊이 재검토 — 좌우 문제는 26경기 평균위치로 해결(우측-중앙, RDM으로 교정 완료);
+      깊이(dm_holding vs dm_dlp)는 어려운 경기 히트맵 1–2개 추가 수집 후 확정
+- [x] 가변 포지션 5명 player_duties 작성 — 포지션별 행 분리, player_match_positions
+      전수 수집(226행) + v_position_profile 집계 기반 (2026-07-02)

@@ -117,3 +117,25 @@ CREATE TABLE player_duties(
   confidence TEXT,
   UNIQUE(season, player_id, position)
 );
+CREATE TABLE player_match_positions(
+  id INTEGER PRIMARY KEY,
+  season TEXT NOT NULL,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  event_id INTEGER NOT NULL,     -- SofaScore event id
+  date TEXT, opponent TEXT, venue TEXT, competition TEXT,
+  minutes INTEGER, rating REAL,
+  avg_x REAL, avg_y REAL,        -- SofaScore average-position (x attack dir, y low=right)
+  started INTEGER,               -- 1=start, 0=sub appearance
+  pos_class TEXT,                -- classified slot; NULL when minutes<45 (avg unreliable)
+  source TEXT, confidence TEXT,
+  UNIQUE(player_id, event_id)
+);
+CREATE VIEW v_position_profile AS
+SELECT p.name, pmp.player_id, pmp.pos_class,
+       COUNT(*) apps, SUM(pmp.minutes) mins,
+       ROUND(AVG(pmp.rating),2) avg_rating, MAX(pmp.rating) best,
+       ROUND(AVG(pmp.avg_x),1) ax, ROUND(AVG(pmp.avg_y),1) ay
+FROM player_match_positions pmp JOIN players p ON p.id=pmp.player_id
+WHERE pmp.pos_class IS NOT NULL
+GROUP BY pmp.player_id, pmp.pos_class
+/* v_position_profile(name,player_id,pos_class,apps,mins,avg_rating,best,ax,ay) */;

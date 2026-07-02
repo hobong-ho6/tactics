@@ -11,6 +11,16 @@
 - `streaks` + `match_streak` — 연승 등 구간 정의 (다대다).
 - `game_roles` — FC 버전별 역할 라이브러리.
 - `player_role_map` — 실측→게임 매핑 결과 (분석과 툴 사이의 계약).
+- `player_match_positions` — 경기별 평균위치 실측 (avg_x/avg_y, 분·평점, pos_class).
+  가변 포지션 선수의 "가장 많이/가장 잘 맡은 역할" 판정의 원천. 집계는 `v_position_profile` 뷰.
+- `player_duties` — 선수×포지션 임무 vs 수행 리뷰.
+
+### pos_class 분류 밴딩 (player_match_positions)
+
+- 레인: y<40 = R, 40–60 = C, y>60 = L / 깊이: avg_x≥52 = 전진(LW·CAM·RM), <52 = 피봇.
+- 45분 미만 출전은 평균위치가 불안정하므로 pos_class = NULL.
+- 경계(레인 60 부근)에 걸치는 선수는 밴드 2개로 갈라질 수 있음 — 해석 시 합산할 것
+  (사례: 틸레만스 pivot-left 11 + pivot-centre 10 = 같은 역할 21선발).
 
 ## 표기 규약
 
@@ -50,13 +60,19 @@ javascript_tool로 sofascore.com 페이지 컨텍스트에서 fetch** 하면 된
 /api/v1/event/<eid>/player/<pid>/heatmap        → 히트맵 좌표 배열 [{x,y},…]
 /api/v1/event/<eid>/player/<pid>/statistics     → 그 경기 평점·분·터치·키패스
 /api/v1/event/<eid>/lineups                     → 라인업·포메이션·전원 평점
+/api/v1/event/<eid>/average-positions           → 팀 전원 경기 평균좌표 (averageX/averageY)
 ```
+
+대량 수집 팁: javascript_tool 결과는 ~1KB에서 잘리므로, 루프는 window 변수에 담아
+백그라운드로 돌리고 (`window.__done` 플래그 + setTimeout 폴링) 결과는 슬라이스로
+나눠 회수한다. localhost POST 브리지는 Chrome의 로컬네트워크 차단으로 불가.
 
 수집 시 기록할 것: 존 분포 %(상위부터), 중심좌표(centroid), x/y 범위, 히트포인트 수,
 터치 수 → `heat_zones`(존 요약)와 `heat_summary`(움직임 서술 + 수치)로.
 
-주요 ID (25/26 확보분): Konsa 827679, Buendía 783126, Cash 833956, Digne 96538.
-그 외 선수는 search로 확인하고, 자주 쓰는 ID는 여기에 추가해 갱신.
+주요 ID (25/26 확보분): Konsa 827679, Buendía 783126, Cash 833956, Digne 96538,
+Rogers 948261, Tielemans 331737, McGinn 250223, Onana 923973, Kamara 826204.
+팀: Aston Villa 40. 그 외는 search로 확인하고, 자주 쓰는 ID는 여기에 추가해 갱신.
 
 ## 평점 권위 순서
 
