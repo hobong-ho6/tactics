@@ -74,3 +74,24 @@ CREATE TABLE player_role_map(
   rationale TEXT,
   PRIMARY KEY(player_id, season, game_version, kind)
 );
+CREATE TABLE game_tactic_params(
+  game_version TEXT NOT NULL,
+  param TEXT NOT NULL,        -- build_up_style / defensive_approach / line_height ...
+  option TEXT NOT NULL,       -- the selectable value ('numeric' for sliders)
+  description TEXT,
+  UNIQUE(game_version, param, option)
+);
+CREATE TABLE team_tactic_setups(
+  id INTEGER PRIMARY KEY,
+  season TEXT NOT NULL REFERENCES seasons(code),
+  game_version TEXT NOT NULL,
+  kind TEXT NOT NULL,          -- measured / role / optimal / match:<tag> (joins player_role_map.kind)
+  formation TEXT,
+  build_up_style TEXT,
+  defensive_approach TEXT,
+  line_height INTEGER,
+  tactic_code TEXT,            -- in-game share code once created & verified in FC26
+  rationale TEXT,
+  confidence TEXT,
+  UNIQUE(season, game_version, kind)
+);

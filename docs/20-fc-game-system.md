@@ -9,8 +9,17 @@
 - **역할(Role) + 포커스(Focus)**: 포지션 타입별 역할 세트는 `game_roles` 테이블
   (FC26: 37역할, 9개 포지션 타입). 각 역할의 기대 히트맵 커널은 툴의 `MAPS`에 있음
   — 장기적으로 DB로 이관 예정 (DESIGN.md 참조).
-- **팀 전술 설정**: 빌드업 스타일, 수비 접근·라인 높이 등은 아직 DB 미모델링.
-  분석이 쌓이면 `game_tactics(game_version, …)` 테이블로 추가한다 (additive).
+- **팀 전술 설정**: `game_tactic_params` 테이블이 버전별 설정 어휘를 보관.
+  FC26 팀 전술 = 포메이션 + 빌드업 스타일(Short Passing/Balanced/Counter)
+  + 수비 접근(Deep/Balanced/High/Aggressive) + 라인 높이(0–100, 접근 방식이 범위 제한)
+  + 11명의 (역할, 포커스) + 공유용 전술 코드.
+
+## 게임 내 전술 재현의 완전한 계약
+
+하나의 재현 전술 = **`team_tactic_setups` 1행 (팀 설정) + `player_role_map` 11행 (선수 배치)**,
+같은 (season, game_version, kind)로 조인. 이 두 테이블만 조회하면 게임에서 그대로
+입력 가능한 전술 전체가 나와야 한다. 게임에서 실제로 만들었으면 `tactic_code`를
+기록하고, 게임 내 히트맵과 실측 히트맵을 비교해 검증한다 (검증 전 confidence는 MEDIUM 이하).
 
 ## 실측 → 게임 매핑 방법
 
