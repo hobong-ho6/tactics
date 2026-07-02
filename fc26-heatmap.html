@@ -188,6 +188,8 @@
   .sim-row .sim-delta{font-family:var(--mono);font-size:11px;text-align:right;color:var(--muted-2)}
   .sim-row .sim-delta.up{color:#3ecf8e;font-weight:700}
   .sim-empty{font-size:12px;color:var(--muted-2);padding:6px 2px}
+  .sim-note{font-size:11px;color:var(--muted-2);line-height:1.55;padding:6px 9px;border:1px dashed var(--line-soft);border-radius:8px}
+  .sim-note b{color:var(--muted)}
   .p-preset{border-top:1px dashed var(--line-soft);padding-top:10px}
   .p-name{flex:1;min-width:84px;background:var(--panel-2);border:1px solid var(--line);border-radius:7px;padding:6px 8px;font-size:12px;color:var(--ink)}
   .p-name:focus{outline:none;border-color:var(--accent)}
@@ -650,7 +652,7 @@ const PANEL_HTML = `
     <button class="p-allon">모두 켜기</button>
     <button class="p-alloff">모두 끄기</button>
     <button class="p-reset">역할 초기화</button>
-    <button class="p-optimize">🎯 최적 조합</button>
+    <button class="p-optimize" title="스쿼드 모드: 선택된 11명 기준 종합 추천 — 최적 포지션 선수는 성과 처방, 오프 포지션 선수는 실측 재현. 일반 포메이션: 커널 타일 합계가 최대인 역할·포커스 탐색.">🎯 최적 조합</button>
   </div>
   <div class="p-sim"></div>
   <div class="p-preset">
@@ -774,9 +776,15 @@ class Panel{
     const headMsg = diff
       ? `선택 11명 종합 추천 · <b class="max">변경 ${diff}건</b> — 최적 포지션=성과 처방 · 오프 포지션=실측 재현`
       : `✓ 현재 설정이 이미 추천 조합과 일치합니다 — 역할을 조정했거나 오프 포지션 선수를 넣으면 변경이 제안됩니다`;
+    const algoNote=
+      `<div class="sim-note"><b>추천 로직</b> — 선수마다 ① DB의 최적 포지션 판정(평점 상위 경기 기준)과 현재 슬롯을 비교 → `+
+      `② <b>최적 포지션이면 [성과]</b>: 평점×경기 결과 가중으로 성적이 가장 좋았던 역할·포커스(처방) / `+
+      `<b>오프 포지션이면 [실측]</b>: 실측 히트맵과 역할 커널의 코사인 유사도가 가장 높은 역할·포커스(움직임 재현이 안전) → `+
+      `③ 현재 설정과 다르면 <b>변경</b>으로 표시. 행 클릭=개별 적용 · 모두 적용=일괄. `+
+      `근거: player_role_map(optimal/role) · transfer_targets(fit_sim) — 타일 합계 최대화가 아님.</div>`;
     this.simEl.innerHTML=
       `<div class="sim-head"><span>${headMsg}</span>`+
-      `<span>${diff?'<button class="sim-applyall">모두 적용</button> ':''}<button class="sim-close" title="닫기">✕</button></span></div>`+list;
+      `<span>${diff?'<button class="sim-applyall">모두 적용</button> ':''}<button class="sim-close" title="닫기">✕</button></span></div>`+algoNote+list;
   }
   applySnapshot(sn){ this.su=fromSnapshot(sn); this.syncControls(); this.size(); this.refresh(); }
   savePreset(){
