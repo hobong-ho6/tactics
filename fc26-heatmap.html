@@ -151,6 +151,41 @@
   .sq-slot select{width:100%;background:var(--panel-2);border:1px solid var(--line);border-radius:7px;padding:6px 8px;font-size:12px;color:var(--ink);cursor:pointer}
   .sq-slot select:focus{outline:none;border-color:var(--accent)}
 
+  /* ---- player compare mode (선수 비교) ---- */
+  #cmpBar{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;margin-bottom:16px}
+  .cmp-verdict{margin-top:12px;padding:10px 12px;border:1px solid var(--accent);border-radius:10px;background:rgba(255,122,47,.06);font-size:12.5px;line-height:1.65}
+  .cmp-verdict b{color:var(--accent)}
+  .cmp-verdict .even b{color:var(--ink)}
+  .cmp-verdict .vchip{display:inline-block;font-size:11px;font-family:var(--mono);background:var(--panel-2);border:1px solid var(--line-soft);border-radius:6px;padding:2px 7px;margin:4px 4px 0 0;color:var(--muted)}
+  .cmp-verdict .vchip b{color:var(--ink)}
+  .cmp-verdict .vnote{display:block;font-size:11px;color:var(--muted-2);margin-top:4px}
+  .cmp-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+  @media (max-width:700px){.cmp-cols{grid-template-columns:1fr}}
+  .cmp-card{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:12px;overflow:hidden}
+  .cmp-card.win{border-color:var(--accent)}
+  .cmp-card h3{margin:0 0 2px;font-size:14px;color:var(--accent)}
+  .cmp-card[data-side="B"] h3{color:#9db8ff}
+  .cmp-card .sub{font-size:11px;color:var(--muted);margin-bottom:8px}
+  .cmp-lh{display:inline-block;font-size:10px;padding:1px 6px;border-radius:6px;border:1px solid var(--line);color:var(--muted);margin-left:6px;vertical-align:1px}
+  .cmp-mini{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;width:110px;aspect-ratio:1/1;float:right;margin:0 0 8px 10px}
+  .cmp-mini i{display:block;border-radius:2px}
+  .cmp-line{font-size:11.5px;color:var(--muted);line-height:1.7}
+  .cmp-line b{color:var(--ink)}
+  .cmp-line .ok{color:#3ddc97}.cmp-line .warn{color:#ffa63d}
+  .cmp-fcnone{font-size:11.5px;color:var(--muted-2);border:1px dashed var(--line);border-radius:8px;padding:8px;margin-top:8px;clear:both}
+  .cmp-stats{margin-top:12px;border-top:1px dashed var(--line-soft);padding-top:10px}
+  .cmp-stats .cs-head{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-bottom:6px}
+  .cmp-srow{display:grid;grid-template-columns:36px 1fr 46px 1fr 36px;align-items:center;gap:8px;padding:3px 0;font-size:11.5px}
+  .cmp-srow .lab{text-align:center;font-family:var(--mono);color:var(--muted-2);letter-spacing:.04em}
+  .cmp-srow .v{font-family:var(--mono);font-weight:700;color:var(--muted-2)}
+  .cmp-srow .v.hi{color:var(--ink)}
+  .cmp-srow .v.a{text-align:right}
+  .cmp-bar{height:9px;border-radius:5px;background:var(--bg);position:relative;overflow:hidden;border:1px solid var(--line-soft)}
+  .cmp-bar i{position:absolute;top:0;bottom:0;border-radius:5px}
+  .cmp-bar.L i{right:0;background:var(--accent)}
+  .cmp-bar.R i{left:0;background:#5c8bff}
+  .cmp-bar i.dim{opacity:.4}
+
   .note{font-size:11.5px;color:var(--muted-2);line-height:1.55;margin-top:14px;padding:0 2px}
   .note b{color:var(--muted)}
   kbd{font-family:var(--mono);font-size:10.5px;background:var(--panel);border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:1px 5px;color:var(--ink)}
@@ -224,9 +259,10 @@
       <p class="tag">두 설정(A·B)을 나란히 비교합니다. 각 패널에서 포메이션·역할·포커스·표시를 따로 바꾸고, 프리셋으로 저장하거나 반대편으로 복사해 비교하세요. 프리셋은 브라우저에 저장되며, 파일로 내보내 백업·공유할 수 있습니다.</p>
     </div>
     <div class="preset-bar">
-      <div class="seg" id="modeMenu" title="실측 모드: 왼쪽=실측 히트맵, 오른쪽=게임 역할(%는 실측 유사도). 스쿼드 모드: 11명 선택 → 왼쪽=처방(최적), 오른쪽=실측 최근접.">
+      <div class="seg" id="modeMenu" title="실측 모드: 왼쪽=실측 히트맵, 오른쪽=게임 역할(%는 실측 유사도). 스쿼드 모드: 11명 선택 → 왼쪽=처방(최적), 오른쪽=실측 최근접. 선수 비교: 슬롯 후보 2명을 실측 분석 + FC26 능력치로 비교.">
         <button data-m="real" class="on">실측 → FC26 검증</button>
         <button data-m="squad">빌라 스쿼드</button>
+        <button data-m="cmp">선수 비교</button>
       </div>
       <span class="pb-count" id="pbCount"></span>
       <button id="pExport" title="저장된 모든 프리셋을 JSON 파일로 내려받기">⭳ 프리셋 내보내기</button>
@@ -252,6 +288,20 @@
     RB 에메르송(협상 중단·재개 여지) · LM 서머빌/파르도/태버니어(문의 발생)/바투리나 · RM 보웬/아데예미/하지무사(협상 진전, 적합 0.92 최고) · ST 기라시/브로베이/파르도(실측상 ST 0.87>LM 0.69) · DM 페르난데스/로피(비드 단계, LDM 적합 0.84)/그레이(3티어 링크, RDM 0.77)/모리바(2티어 오퍼 준비, LDM 0.80) · GK 스즈키/트래포드(로마노 숏리스트)/트루빈/레스테스.
     <b>바투리나(비드 €50m 거절)</b> = 명목 10번이나 실측상 LM 0.80 > CAM 0.68 — 로저스형 좌측 크리에이터.
     아데예미는 실측상 좌측 부적합(LM 0.25)이라 RM만 제공. <b>시세(합류확정)</b> = 프리계약 26/27 RCB · <b>알리송(신규)</b> = 2026-01 영입된 소속 RW.</div>
+  </section>
+
+  <section id="cmpBar" style="display:none">
+    <div class="sq-tactic">
+      <span class="sq-head">선수 비교 · 영입 적합성</span>
+      <div class="field"><label>슬롯 (4-2-3-1 Wide)</label><select id="cmpSlot" class="sel"></select></div>
+      <div class="field"><label>선수 A</label><select id="cmpA" class="sel"></select></div>
+      <div class="field"><label>선수 B</label><select id="cmpB" class="sel"></select></div>
+    </div>
+    <div id="cmpBody"></div>
+    <div class="sq-note" style="padding:8px 2px 0"><b>실측</b> = SofaScore 집계 — 빌라 선수: 25/26 시즌 포지션별 평균 또는 상위 경기 평균 · 영입 후보: 최근 6경기(45분+).
+    <b>슬롯 적합</b> = 실측 그리드 ↔ 이 슬롯 포지션 타입 전체 역할·포커스 커널의 최대 코사인 유사도 (반대 사이드에서 뛴 그리드는 낮게 나올 수 있음 — 그리드 출처 표기 참조).
+    <b>FC26 능력치</b> = sofifa, FC26 roster 2026-06-30 (DB player_fc_stats — GK 6대 스탯은 다이빙/핸들링/킥/반응속도/속도/위치선정).
+    <b>종합 판정</b> = 슬롯 적합 40% + 실측 평점 35% + FC26 OVR 25% 가중 — 단, '상위 경기 평균'(베스트 경기만 집계)이 낀 비교는 평점 항목 제외, FC26 미수록 선수가 있으면 OVR 항목 제외 후 남은 가중치로 재정규화. 판정은 참고용이며 영입 가능성 등급·나이·가치·POT는 별도 표기만 합니다.</div>
   </section>
 
   <div class="compare">
@@ -1037,7 +1087,7 @@ const PLAYER_BEST={
   '영입·로피':{pos:['LDM'],note:'실측 LDM 0.84 > RDM 0.58'},
   '영입·그레이':{pos:['RDM'],note:'실측 RDM 0.77 > LDM 0.65'},
   '영입·모리바':{pos:['LDM'],note:'실측 LDM 0.80 > RDM 0.58'},
-  '로저스':{pos:['LM'],note:'왼쪽 피크 8.84/8.46 > 중앙 10번 8.3'},
+  '로저스':{pos:['LM'],note:'왼쪽 피크 8.84/8.46 > 중앙 10번 8.3 · 접전 시 포커스 Balanced (실측 0.60>0.58)'},
   '부엔디아':{pos:['CAM'],note:'최적 10번 — 피크 9.4'},
   '영입·서머빌':{pos:['LM'],note:'실측 적합 0.70 — 로저스와 유사 동선'},
   '영입·태버니어':{pos:['LM'],note:'실측 적합 0.82'},
@@ -1054,6 +1104,225 @@ const PLAYER_BEST={
   '영입·파르도':{pos:['ST'],note:'실측 ST 0.87 > LM 0.69'},
 };
 const sqSel = SQUAD_SLOTS.map(()=>0);   // selected option index per slot
+
+/* ============================================================
+   PLAYER COMPARE MODE (선수 비교) — 슬롯 후보 2명의 영입 적합성 비교.
+   실측 = appearances/v_position_profile/transfer_targets 파생,
+   FC26 능력치 = player_fc_stats (sofifa, FC26 roster 2026-06-30).
+   DB 값이 바뀌면 함께 갱신할 것 (docs/20-fc-game-system.md).
+============================================================ */
+const FC_ROSTER_DATE='2026-06-30';
+/* st:[PAC,SHO,PAS,DRI,DEF,PHY] — GK는 [다이빙,핸들링,킥,반응속도,속도,위치선정] */
+const FC_STATS={
+  '마르티네스':{club:'Aston Villa',age:32,h:195,val:'€26.5M',ovr:85,pot:85,bp:'GK',pos:'GK',st:[83,81,82,85,56,85]},
+  '영입·트루빈':{club:'SL Benfica',age:23,h:199,val:'€36M',ovr:80,pot:87,bp:'GK',pos:'GK',st:[77,76,77,84,45,83]},
+  '영입·스즈키':{club:'Parma',age:22,h:190,val:'€5.5M',ovr:74,pot:80,bp:'GK',pos:'GK',st:[73,72,71,76,56,74]},
+  '영입·레스테스':{club:'Toulouse FC',age:20,h:188,val:'€23.5M',ovr:78,pot:85,bp:'GK',pos:'GK',st:[79,75,80,80,40,78]},
+  '영입·트래포드':{club:'Manchester City',age:22,h:192,val:'€18.5M',ovr:77,pot:84,bp:'GK',pos:'GK',st:[77,75,76,78,53,75]},
+  '디뉴':{club:'Aston Villa',age:31,h:178,val:'€15.5M',ovr:80,pot:80,bp:'LB',pos:'LB,LM',st:[69,68,79,76,77,74]},
+  '마첸':{club:'Aston Villa',age:23,h:178,val:'€24.5M',ovr:79,pot:84,bp:'LWB',pos:'LB,LM',st:[87,65,75,81,73,63]},
+  '파우 토레스':{club:'Aston Villa',age:28,h:191,val:'€18M',ovr:80,pot:80,bp:'CB',pos:'CB',st:[67,41,75,69,82,73]},
+  '린델뢰프':{club:'Aston Villa',age:30,h:187,val:'€6M',ovr:76,pot:76,bp:'CB',pos:'CB',st:[50,51,71,67,77,69]},
+  '콘사':{club:'Aston Villa',age:27,h:185,val:'€42.5M',ovr:84,pot:85,bp:'CB',pos:'CB',st:[75,53,72,75,85,80]},
+  '시세(합류확정)':{club:'LASK Linz',age:19,h:191,val:'€2.7M',ovr:68,pot:81,bp:'CB',pos:'CB',st:[69,38,53,53,69,68]},
+  '캐시':{club:'Aston Villa',age:27,h:185,val:'€25M',ovr:81,pot:81,bp:'RB',pos:'RB,RM',st:[75,67,74,76,78,76]},
+  '영입·에메르송':{none:'FC26 DB에 없음 — 플라멩구 이적(브라질 리그 미수록), sofifa 검색 전수 불일치 확인',club:'Flamengo'},
+  '오나나':{club:'Aston Villa',age:23,h:195,val:'€32M',ovr:81,pot:84,bp:'CB',pos:'CDM,CM',st:[74,64,72,74,81,82]},
+  '카마라':{club:'Aston Villa',age:25,h:184,val:'€47.5M',ovr:84,pot:86,bp:'CDM',pos:'CDM,CM',st:[64,55,77,79,83,80]},
+  '틸레만스':{club:'Aston Villa',age:28,h:176,val:'€54M',ovr:85,pot:85,bp:'CM',pos:'CM,CDM,CAM',st:[53,79,85,80,75,72]},
+  '보가르드':{club:'Aston Villa',age:21,h:183,val:'€8M',ovr:74,pot:81,bp:'CDM',pos:'CDM,CM,RB',st:[67,53,67,70,72,69]},
+  '영입·페르난데스':{club:'West Ham United',age:20,h:178,val:'€27M',ovr:79,pot:85,bp:'CM',pos:'CM,CAM,CDM',st:[70,73,79,80,72,67]},
+  '영입·로피':{club:'UD Almería',age:23,h:186,val:'€6.5M',ovr:73,pot:82,bp:'CM',pos:'CDM,CM,CB',st:[76,62,69,74,69,78]},
+  '영입·그레이':{club:'Tottenham Hotspur',age:19,h:187,val:'€21.5M',ovr:77,pot:86,bp:'CDM',pos:'CDM,CB,RB,CM',st:[72,61,73,75,75,73]},
+  '로저스':{club:'Aston Villa',age:22,h:187,val:'€56M',ovr:84,pot:86,bp:'CAM',pos:'CAM,LM,CM',st:[77,81,81,85,67,78]},
+  '부엔디아':{club:'Aston Villa',age:28,h:172,val:'€14M',ovr:78,pot:78,bp:'CAM',pos:'LM,CAM,LW',st:[67,77,79,82,66,67]},
+  '영입·서머빌':{club:'West Ham United',age:23,h:169,val:'€21M',ovr:78,pot:83,bp:'CAM',pos:'LM,LW',st:[89,74,70,82,36,55]},
+  '영입·파르도':{club:'Lille OSC',age:20,h:182,val:'€16.5M',ovr:76,pot:84,bp:'RM',pos:'LM,RM,ST,LW',st:[92,74,68,78,39,70]},
+  '영입·태버니어':{club:'AFC Bournemouth',age:26,h:178,val:'€15.5M',ovr:78,pot:78,bp:'LM',pos:'LM,RM,CAM,LW',st:[82,75,75,79,60,66]},
+  '영입·바투리나':{club:'Como',age:22,h:172,val:'€27M',ovr:79,pot:84,bp:'CAM',pos:'CAM,LM,CM',st:[78,72,79,83,63,67]},
+  '맥긴':{club:'Aston Villa',age:30,h:178,val:'€25M',ovr:81,pot:81,bp:'RM',pos:'RM,LM,CAM,RB',st:[69,77,78,80,77,83]},
+  '산초':{club:'Aston Villa',age:25,h:180,val:'€21M',ovr:79,pot:80,bp:'CAM',pos:'LM,RM,LW',st:[79,73,77,86,35,54]},
+  '영입·보웬':{club:'West Ham United',age:28,h:176,val:'€36.5M',ovr:83,pot:83,bp:'RM',pos:'RM,ST,RW',st:[76,81,78,82,46,70]},
+  '영입·아데예미':{club:'Borussia Dortmund',age:23,h:180,val:'€43.5M',ovr:82,pot:86,bp:'ST',pos:'RM,LW,CAM,RW',st:[96,80,72,82,36,69]},
+  '알리송(신규)':{club:'Aston Villa',age:19,h:184,val:'€3.8M',ovr:70,pot:83,bp:'LM',pos:'RM,RW',st:[79,61,64,72,34,61]},
+  '영입·하지무사':{club:'Feyenoord',age:23,h:176,val:'€12M',ovr:76,pot:82,bp:'RW',pos:'RW,RM',st:[80,69,67,83,30,53]},
+  '왓킨스':{club:'Aston Villa',age:29,h:180,val:'€30.5M',ovr:82,pot:82,bp:'ST',pos:'ST',st:[77,82,72,78,50,80]},
+  '영입·기라시':{club:'Borussia Dortmund',age:29,h:187,val:'€54M',ovr:85,pot:85,bp:'ST',pos:'ST',st:[72,85,75,82,45,83]},
+  '영입·브로베이':{club:'Sunderland',age:23,h:180,val:'€17M',ovr:77,pot:83,bp:'ST',pos:'ST',st:[84,73,57,72,30,83]},
+};
+/* 슬롯별 비교 후보 — grid: 실측 map25 (player_role_map measured[:class] / transfer_targets.map25),
+   rate: {v:평균, b:'season'(시즌 포지션별)|'r6'(최근 6경기)|'top'(상위 경기 — 판정 제외), s:표기},
+   dbFit: transfer_targets.fit_sim 기록값, lh: likelihood */
+const CMP_SLOTS={
+ GK:{t:'GK',x:50,c:[
+  {n:'마르티네스',grid:'0000000000000000010001X10',rate:{v:7.95,b:'top',s:'상위 4경기 평균 7.95'}},
+  {n:'영입·트루빈',grid:'0000000000000000010001X10',dbFit:0.96,lh:'MEDIUM',rate:{v:6.87,b:'r6',s:'최근 6경기 평균 6.87 (벤피카)'}},
+  {n:'영입·스즈키',grid:'0000000000000000010001X20',dbFit:0.97,lh:'MEDIUM-HIGH',rate:{v:7.13,b:'r6',s:'최근 6경기 평균 7.13 (파르마)'}},
+  {n:'영입·레스테스',grid:'0000000000000000210002X20',dbFit:0.97,lh:'MEDIUM',rate:{v:6.92,b:'r6',s:'최근 6경기 평균 6.92 (툴루즈)'}},
+  {n:'영입·트래포드',grid:null,lh:'로마노 숏리스트 — 실측 측정 대기',rate:null}]},
+ LB:{t:'FB',x:13,c:[
+  {n:'디뉴',grid:'721017200081000X200052100',rate:{v:6.73,b:'season',s:'LB 21경기 평균 6.73 · 피크 8.2'}},
+  {n:'마첸',grid:'321018500072100X400062100',rate:{v:6.74,b:'season',s:'LB 16경기 평균 6.74 · 피크 8.3'}}]},
+ LCB:{t:'CB',x:37,c:[
+  {n:'파우 토레스',grid:'0021012000492005X52073620',rate:{v:7.35,b:'top',s:'상위 5경기 평균 7.35'}},
+  {n:'린델뢰프',grid:'011100011101651079X103852',gridNote:'RCB 실측',rate:{v:7.05,b:'top',s:'상위 4경기 평균 7.05 · 양쪽 CB 커버'}}]},
+ RCB:{t:'CB',x:63,c:[
+  {n:'콘사',grid:'001000011000431002X101232',rate:{v:7.05,b:'season',s:'RCB 43경기 평균 7.05 · 피크 8.2'}},
+  {n:'린델뢰프',grid:'011100011101651079X103852',rate:{v:7.05,b:'top',s:'상위 4경기 평균 7.05 · 양쪽 CB 커버'}},
+  {n:'시세(합류확정)',grid:'00200001420237413X9814X84',dbFit:0.89,lh:'CONFIRMED',rate:{v:6.77,b:'r6',s:'최근 6경기 평균 6.77 (LASK)'}}]},
+ RB:{t:'FB',x:87,c:[
+  {n:'캐시',grid:'100130002X0002X0002900134',rate:{v:7.65,b:'top',s:'상위 6경기 평균 7.65 · 피크 8.4'}},
+  {n:'영입·에메르송',grid:'000250003X000160002600112',dbFit:0.94,lh:'MEDIUM (STALLED)',rate:{v:6.88,b:'r6',s:'최근 6경기 평균 6.88 (플라멩구)'}}]},
+ LDM:{t:'DM',x:38,c:[
+  {n:'오나나',grid:'00210244442X9712878212940',rate:{v:7.13,b:'season',s:'피벗 29경기 평균 7.13 · 피크 8.2'}},
+  {n:'틸레만스',grid:'112204844159X425974014320',gridNote:'RDM 실측',rate:{v:7.28,b:'season',s:'피벗 21경기 평균 7.28 · 피크 8.4'}},
+  {n:'보가르드',grid:'000010323702477035XX01372',rate:{v:6.62,b:'season',s:'피벗 21경기 평균 6.62 · 피크 7.3'}},
+  {n:'영입·페르난데스',grid:'011017946669X758867322310',dbFit:0.80,lh:'MEDIUM-LOW',rate:{v:7.37,b:'r6',s:'최근 6경기 평균 7.37 (웨스트햄)'}},
+  {n:'영입·로피',grid:'00000595414996169X6302221',dbFit:0.84,lh:'MEDIUM-HIGH',rate:{v:7.03,b:'r6',s:'최근 6경기 평균 7.03 (알메리아)'}},
+  {n:'영입·그레이',grid:'2011153364267X42776221221',dbFit:0.65,lh:'MEDIUM-LOW',rate:{v:6.72,b:'r6',s:'최근 6경기 평균 6.72 (스퍼스)'}}]},
+ RDM:{t:'DM',x:62,c:[
+  {n:'카마라',grid:'0010103364035X20287301141',rate:{v:7.14,b:'season',s:'피벗 16경기 평균 7.14 · 피크 7.8'}},
+  {n:'틸레만스',grid:'112204844159X425974014320',rate:{v:7.28,b:'season',s:'피벗 21경기 평균 7.28 · 피크 8.4'}},
+  {n:'오나나',grid:'00210244442X9712878212940',gridNote:'LDM 실측',rate:{v:7.13,b:'season',s:'피벗 29경기 평균 7.13 · 피크 8.2'}},
+  {n:'린델뢰프',grid:'011100011101651079X103852',gridNote:'RCB 실측',rate:{v:7.05,b:'top',s:'상위 4경기 평균 7.05'}},
+  {n:'보가르드',grid:'000010323702477035XX01372',gridNote:'LDM 실측',rate:{v:6.62,b:'season',s:'피벗 21경기 평균 6.62 · 피크 7.3'}},
+  {n:'영입·페르난데스',grid:'011017946669X758867322310',dbFit:0.66,lh:'MEDIUM-LOW',rate:{v:7.37,b:'r6',s:'최근 6경기 평균 7.37 (웨스트햄)'}},
+  {n:'영입·로피',grid:'00000595414996169X6302221',dbFit:0.58,lh:'MEDIUM-HIGH',rate:{v:7.03,b:'r6',s:'최근 6경기 평균 7.03 (알메리아)'}},
+  {n:'영입·그레이',grid:'2011153364267X42776221221',dbFit:0.77,lh:'MEDIUM-LOW',rate:{v:6.72,b:'r6',s:'최근 6경기 평균 6.72 (스퍼스)'}}]},
+ LM:{t:'WM',x:14,c:[
+  {n:'로저스',grid:'533116522143211X400042100',rate:{v:6.91,b:'season',s:'LW 13경기 평균 6.91 · 피크 9.3'}},
+  {n:'부엔디아',grid:'44410XX531783304633021102',gridNote:'자유 10번 실측(좌편향)',rate:{v:6.90,b:'season',s:'좌편향 10번 21경기 평균 6.90 · 피크 9.4'}},
+  {n:'영입·서머빌',grid:'74241X7586834317421110100',dbFit:0.70,lh:'MEDIUM-HIGH',rate:{v:7.15,b:'r6',s:'최근 6경기 평균 7.15 (웨스트햄)'}},
+  {n:'영입·파르도',grid:'8X76367662333110100000000',dbFit:0.69,lh:'MEDIUM',rate:{v:6.77,b:'r6',s:'최근 6경기 평균 6.77 (릴)'}},
+  {n:'영입·태버니어',grid:'35102X4221431105111032100',dbFit:0.82,lh:'MEDIUM-LOW',rate:{v:7.17,b:'r6',s:'최근 6경기 평균 7.17 (본머스)'}},
+  {n:'영입·바투리나',grid:'421117X542862104420011000',dbFit:0.80,lh:'MEDIUM-HIGH',rate:{v:7.10,b:'r6',s:'최근 6경기 평균 7.10 (코모)'}}]},
+ CAM:{t:'CAM',x:50,c:[
+  {n:'부엔디아',grid:'44410XX531783304633021102',rate:{v:6.90,b:'season',s:'좌편향 10번 21경기 평균 6.90 · 피크 9.4 (최적 10번 판정)'}},
+  {n:'로저스',grid:'3437X3X788146743459302233',rate:{v:7.10,b:'season',s:'CAM 21경기 평균 7.10 · 피크 8.5'}},
+  {n:'틸레만스',grid:'4113269X922X9202543001200',rate:{v:7.24,b:'season',s:'CAM 7경기 평균 7.24 · 피크 8.4 (최적은 딥 피벗)'}},
+  {n:'맥긴',grid:'254426X99447XX51352200110',rate:{v:6.90,b:'season',s:'CAM 4경기 평균 6.90 · 피크 7.8'}},
+  {n:'영입·바투리나',grid:'421117X542862104420011000',dbFit:0.68,lh:'MEDIUM-HIGH',rate:{v:7.10,b:'r6',s:'최근 6경기 평균 7.10 (코모)'}}]},
+ RM:{t:'WM',x:85,c:[
+  {n:'맥긴',grid:'011381017X011460022500001',rate:{v:7.08,b:'season',s:'RM 21경기 평균 7.08 · 피크 8.7'}},
+  {n:'산초',grid:'212442023X001140023200021',gridNote:'RW 실측',rate:{v:7.33,b:'top',s:'상위 3경기 평균 7.33'}},
+  {n:'영입·보웬',grid:'012371122X012140001400111',dbFit:0.88,lh:'MEDIUM',rate:{v:6.97,b:'r6',s:'최근 6경기 평균 6.97 (웨스트햄)'}},
+  {n:'영입·아데예미',grid:'135382548X112433233520100',dbFit:0.74,lh:'MEDIUM-LOW',rate:{v:6.93,b:'r6',s:'최근 6경기 평균 6.93 (도르트문트)'}},
+  {n:'알리송(신규)',grid:'001640014X000380003600011',dbFit:0.85,lh:'OWNED',rate:{v:6.75,b:'r6',s:'최근 6경기 평균 6.75 (그레미우+빌라 혼합)'}},
+  {n:'영입·하지무사',grid:'312691114X000140002400001',dbFit:0.92,lh:'MEDIUM-HIGH',rate:{v:7.55,b:'r6',s:'최근 6경기 평균 7.55 (페예노르트)'}}]},
+ ST:{t:'ST',x:50,c:[
+  {n:'왓킨스',grid:'35X2213242333013311000200',rate:{v:8.47,b:'top',s:'상위 7경기 평균 8.47'}},
+  {n:'영입·기라시',grid:'13X2126963456411141001200',dbFit:0.80,lh:'MEDIUM',rate:{v:6.65,b:'r6',s:'최근 6경기 평균 6.65 (도르트문트)'}},
+  {n:'영입·브로베이',grid:'43X5167873535222120022300',dbFit:0.75,lh:'MEDIUM-LOW',rate:{v:6.57,b:'r6',s:'최근 6경기 평균 6.57 (선덜랜드)'}},
+  {n:'영입·파르도',grid:'8X76367662333110100000000',dbFit:0.87,lh:'MEDIUM',rate:{v:6.77,b:'r6',s:'최근 6경기 평균 6.77 (릴)'}}]},
+};
+const clamp01=v=>v<0?0:v>1?1:v;
+function cmpCos(a,b){ let dot=0,na=0,nb=0; for(let i=0;i<25;i++){dot+=a[i]*b[i];na+=a[i]*a[i];nb+=b[i]*b[i];} return (na&&nb)?dot/Math.sqrt(na*nb):0; }
+/* 실측 그리드 ↔ 슬롯 포지션 타입의 모든 역할·포커스 커널 중 최대 코사인 */
+function slotKernelFit(gridCode,t,x){
+  const g=decodeMap(gridCode); let best=null;
+  for(const role of ROLE_SETS[t]) for(const f of ROLES[role].f){
+    if(!(MAPS[role]&&MAPS[role][f])) continue;
+    const s=cmpCos(placedMap({r:role,focus:f,x,y:0}),g);
+    if(!best||s>best.s) best={s,role,f};
+  }
+  return best;
+}
+function cmpProfile(slotKey,cand){
+  const slot=CMP_SLOTS[slotKey];
+  return {slotKey,c:cand,fc:FC_STATS[cand.n]||null,fit:cand.grid?slotKernelFit(cand.grid,slot.t,slot.x):null};
+}
+/* 종합 판정 — 적합 40 / 평점 35 / OVR 25, 비교 불가 항목은 제외 후 재정규화 */
+function cmpVerdict(A,B){
+  const comps=[];
+  if(A.fit&&B.fit) comps.push({k:'슬롯 적합',w:.40,a:A.fit.s,b:B.fit.s,na:clamp01((A.fit.s-.3)/.65),nb:clamp01((B.fit.s-.3)/.65),f:v=>Math.round(v*100)+'%'});
+  const rateOK=A.c.rate&&B.c.rate&&A.c.rate.b!=='top'&&B.c.rate.b!=='top';
+  if(rateOK) comps.push({k:'실측 평점',w:.35,a:A.c.rate.v,b:B.c.rate.v,na:clamp01((A.c.rate.v-6.4)/1.4),nb:clamp01((B.c.rate.v-6.4)/1.4),f:v=>v.toFixed(2)});
+  const fcOK=A.fc&&!A.fc.none&&B.fc&&!B.fc.none;
+  if(fcOK) comps.push({k:'FC26 OVR',w:.25,a:A.fc.ovr,b:B.fc.ovr,na:clamp01((A.fc.ovr-65)/23),nb:clamp01((B.fc.ovr-65)/23),f:v=>v});
+  const W=comps.reduce((s,c)=>s+c.w,0);
+  const sa=W?comps.reduce((s,c)=>s+c.w*c.na,0)/W:0, sb=W?comps.reduce((s,c)=>s+c.w*c.nb,0)/W:0;
+  const notes=[];
+  if(!rateOK&&A.c.rate&&B.c.rate) notes.push("'상위 경기 평균' 표본 포함 — 평점 항목은 판정에서 제외");
+  if(A.c.rate&&!B.c.rate||!A.c.rate&&B.c.rate) notes.push('한쪽 평점 표본 없음 — 평점 항목 제외');
+  if(!fcOK) notes.push('FC26 스탯 없는 선수 포함 — OVR 항목 제외');
+  if(!A.fit||!B.fit) notes.push('실측 그리드 없는 선수 포함 — 슬롯 적합 항목 제외');
+  return {comps,sa,sb,notes};
+}
+function cmpCard(side,prof,win){
+  const cand=prof.c, fc=prof.fc, best=PLAYER_BEST[cand.n];
+  const mini=cand.grid?'<div class="cmp-mini" title="실측 히트맵 (위=공격 방향)">'+Array.from(decodeMap(cand.grid)).map(v=>{const col=v>=0.15?heatColorAbs(v):EMPTY;return `<i style="background:${css(col)}"></i>`;}).join('')+'</div>':'';
+  const lh=cand.lh?`<span class="cmp-lh">${cand.lh}</span>`:'';
+  const posLine=best?(best.pos.includes(prof.slotKey)
+    ?`<span class="ok">✓ 최적 포지션</span> — ${best.note}`
+    :`<span class="warn">⚠ 최적 포지션: ${best.pos.join('/')}</span> — ${best.note}`):'';
+  const fitLine=prof.fit
+    ?`슬롯 적합 <b>${Math.round(prof.fit.s*100)}%</b> — 최근접 ${fmtRole(prof.fit.role)} · ${fmtFocus(prof.fit.f)}`
+      +(cand.dbFit?` <span style="color:var(--muted-2)">(DB ${cand.dbFit.toFixed(2)})</span>`:'')
+      +(cand.gridNote?` <span style="color:var(--muted-2)">· 그리드: ${cand.gridNote}</span>`:'')
+    :'실측 그리드 없음 — 측정 대기';
+  const rateLine=cand.rate?`실측 평점 <b>${cand.rate.s}</b>`:'실측 평점 표본 없음';
+  const fcLine=!fc?'<div class="cmp-fcnone">FC26 스탯 미수집</div>'
+    :fc.none?`<div class="cmp-fcnone">FC26 미수록 — ${fc.none}</div>`
+    :`<div class="cmp-line">FC26 <b>OVR ${fc.ovr}</b> · POT ${fc.pot} · ${fc.age}세 · ${fc.h}cm · 가치 ${fc.val}<br>등록 포지션 ${fc.pos} · sofifa 최적 ${fc.bp}</div>`;
+  return `<div class="cmp-card${win?' win':''}" data-side="${side}">${mini}<h3>${side} · ${cand.n}${win?' 🏆':''}</h3>
+    <div class="sub">${(fc&&fc.club)||''}${lh}</div>
+    ${posLine?`<div class="cmp-line">${posLine}</div>`:''}
+    <div class="cmp-line">${fitLine}</div>
+    <div class="cmp-line">${rateLine}</div>
+    ${fcLine}</div>`;
+}
+function cmpStatBars(A,B,isGK){
+  if(!(A.fc&&A.fc.st&&B.fc&&B.fc.st)) return '<div class="cmp-fcnone">양쪽 모두 FC26 스탯이 있어야 능력치 바 비교가 표시됩니다.</div>';
+  const labs=isGK?['DIV','HAN','KIC','REF','SPD','POS']:['PAC','SHO','PAS','DRI','DEF','PHY'];
+  return labs.map((L,i)=>{
+    const a=A.fc.st[i], b=B.fc.st[i];
+    return `<div class="cmp-srow"><span class="v a ${a>=b?'hi':''}">${a}</span><div class="cmp-bar L"><i class="${a<b?'dim':''}" style="width:${a}%"></i></div><span class="lab">${L}</span><div class="cmp-bar R"><i class="${b<a?'dim':''}" style="width:${b}%"></i></div><span class="v ${b>=a?'hi':''}">${b}</span></div>`;
+  }).join('');
+}
+function renderCmp(){
+  const key=document.getElementById('cmpSlot').value, slot=CMP_SLOTS[key];
+  const ca=slot.c[+document.getElementById('cmpA').value||0], cb=slot.c[+document.getElementById('cmpB').value||0];
+  const body=document.getElementById('cmpBody');
+  if(!ca||!cb){ body.innerHTML=''; return; }
+  if(ca===cb){ body.innerHTML='<div class="cmp-fcnone" style="margin-top:12px">같은 선수입니다 — 다른 후보를 선택하세요.</div>'; return; }
+  const pa=cmpProfile(key,ca), pb=cmpProfile(key,cb), v=cmpVerdict(pa,pb);
+  const d=v.sa-v.sb, close=Math.abs(d)<0.03;
+  const chips=v.comps.map(c=>`<span class="vchip">${c.k} <b>${c.f(c.a)}</b> ${c.na>c.nb?'◀':c.nb>c.na?'▶':'='} <b>${c.f(c.b)}</b></span>`).join('');
+  const head=!v.comps.length?'비교 가능한 공통 지표가 없습니다 — 아래 개별 근거를 참고하세요.'
+    :close?`<span class="even">판정 <b>박빙</b> — 종합 ${v.sa.toFixed(2)} vs ${v.sb.toFixed(2)}. 영입 가능성·나이·가치로 판단하세요.</span>`
+    :`이 슬롯 추천: <b>${(d>0?ca:cb).n}</b> — 종합 ${v.sa.toFixed(2)} vs ${v.sb.toFixed(2)}`;
+  const notes=v.notes.length?`<span class="vnote">※ ${v.notes.join(' · ')}</span>`:'';
+  body.innerHTML=`<div class="cmp-verdict">${head}<br>${chips}${notes}</div>`
+    +`<div class="cmp-cols">${cmpCard('A',pa,!close&&d>0)}${cmpCard('B',pb,!close&&d<0)}</div>`
+    +`<div class="cmp-stats"><div class="cs-head">FC26 능력치 · sofifa ${FC_ROSTER_DATE} — 왼쪽 주황=A · 오른쪽 파랑=B</div>${cmpStatBars(pa,pb,slot.t==='GK')}</div>`;
+}
+function fillCmpPlayers(reset){
+  const slot=CMP_SLOTS[document.getElementById('cmpSlot').value];
+  const opts=slot.c.map((c,i)=>`<option value="${i}">${c.n}</option>`).join('');
+  const a=document.getElementById('cmpA'), b=document.getElementById('cmpB');
+  a.innerHTML=opts; b.innerHTML=opts;
+  if(reset){ a.value=0; b.value=String(Math.min(1,slot.c.length-1)); }
+  renderCmp();
+}
+let cmpInit=false;
+function buildCmpUI(){
+  if(cmpInit){ renderCmp(); return; }
+  const sSel=document.getElementById('cmpSlot');
+  sSel.innerHTML=Object.keys(CMP_SLOTS).map(k=>`<option value="${k}">${k} (${CMP_SLOTS[k].t})</option>`).join('');
+  sSel.value='RM';
+  sSel.addEventListener('change',()=>fillCmpPlayers(true));
+  document.getElementById('cmpA').addEventListener('change',renderCmp);
+  document.getElementById('cmpB').addEventListener('change',renderCmp);
+  cmpInit=true; fillCmpPlayers(true);
+}
+function enterCmpMode(){
+  hideSquadBar();
+  document.getElementById('cmpBar').style.display='block';
+  const seg=document.getElementById('modeMenu');
+  [...seg.children].forEach(b=>b.classList.toggle('on',b.dataset.m==='cmp'));
+  buildCmpUI();
+}
+function hideCmpBar(){ const el=document.getElementById('cmpBar'); if(el) el.style.display='none'; }
 
 function buildSquadUI(){
   const holder=document.getElementById('sqSlots'); holder.innerHTML='';
@@ -1090,6 +1359,7 @@ function applySquad(){
   [panels.A,panels.B].forEach(pn=>{ pn.fSel.value=''; pn.size(); pn.refresh(); });
 }
 function enterSquadMode(){
+  hideCmpBar();
   document.getElementById('squadBar').style.display='block';
   buildSquadUI(); applySquad();
   const seg=document.getElementById('modeMenu');
@@ -1099,6 +1369,7 @@ function hideSquadBar(){ document.getElementById('squadBar').style.display='none
 
 /* real-verification mode: left = measured data, right = game roles to tune (sim% shows on the right) */
 function enterRealMode(measuredName){
+  hideCmpBar();
   panels.A.setFormation(measuredName||AVL_MEASURED);
   panels.B.setFormation(AVL_OPTIMAL);
   const seg=document.getElementById('modeMenu');
@@ -1171,7 +1442,8 @@ enterRealMode(AVL_MEASURED);   // 기본 화면 = 실측 → FC26 검증
 document.getElementById('modeMenu').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
   if(b.dataset.m==='squad'){ enterSquadMode(); return; }
-  hideSquadBar();
+  if(b.dataset.m==='cmp'){ enterCmpMode(); return; }
+  hideSquadBar(); hideCmpBar();
   enterRealMode(AVL_MEASURED);
 });
 document.getElementById('pExport').addEventListener('click',exportPresets);
