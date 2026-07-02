@@ -247,7 +247,8 @@
     <div class="sq-note" style="padding:6px 2px 0">왼쪽 패널 = <b>처방(최적)</b> — 실축 성과 기준 추천 · 오른쪽 패널 = <b>실측 최근접</b> — 움직임 재현 기준. 슬롯별로 분석 근거가 있는 선수만 표시됩니다.
     슬롯 카드의 <b>✓/⚠</b> = 이 슬롯이 그 선수의 최적 포지션인지 (⚠이면 최적 포지션 표시) · <b>🎯 처방</b> = 성과 기준 추천 역할·포커스 · <b>🔁 실측</b> = 실제 움직임 최근접 역할·포커스.
     <b>영입·</b> 접두 = 2026 여름 이적 후보 (최근 6경기 실측 프로필 기반, 근거·가능성 등급은 DB transfer_targets 참조):
-    RB 에메르송(협상 중단·재개 여지) · LM 서머빌/파르도/태버니어(관찰) · RM 보웬/아데예미/하지무사(협상 진전, 적합 0.92 최고) · ST 기라시/브로베이/파르도(실측상 ST 0.87>LM 0.69) · DM 페르난데스/로피(비드 단계, LDM 적합 0.84) · GK 트루빈/스즈키(관찰)/레스테스.
+    RB 에메르송(협상 중단·재개 여지) · LM 서머빌/파르도/태버니어(관찰)/바투리나 · RM 보웬/아데예미/하지무사(협상 진전, 적합 0.92 최고) · ST 기라시/브로베이/파르도(실측상 ST 0.87>LM 0.69) · DM 페르난데스/로피(비드 단계, LDM 적합 0.84)/그레이(3티어 링크, RDM 0.77) · GK 트루빈/스즈키(관찰)/레스테스.
+    <b>바투리나(비드 €50m 거절)</b> = 명목 10번이나 실측상 LM 0.80 > CAM 0.68 — 로저스형 좌측 크리에이터.
     아데예미는 실측상 좌측 부적합(LM 0.25)이라 RM만 제공. <b>시세(합류확정)</b> = 프리계약 26/27 RCB · <b>알리송(신규)</b> = 2026-01 영입된 소속 RW.</div>
   </section>
 
@@ -724,8 +725,9 @@ class Panel{
   closeSim(){ this.simEl.classList.remove('open'); this.simEl.innerHTML=''; this.simRows=null; }
   simulate(){
     if(this.su.formation.startsWith('빌라 스쿼드')){ this.simulateSquad(); return; }
-    const I=this.su.intensity, vis=this.su.players.filter(p=>p.visible);
+    const I=this.su.intensity, vis=this.su.players.filter(p=>p.visible&&!p.map25);
     this.simEl.classList.add('open');
+    if(this.su.players.some(p=>p.map25)&&!vis.length){ this.simEl.innerHTML='<div class="sim-empty">실측 히트맵 패널은 고정 데이터라 역할 최적화 대상이 아닙니다. 반대편(게임 역할) 패널에서 사용하세요.</div>'; this.simRows=null; return; }
     if(!vis.length){ this.simEl.innerHTML='<div class="sim-empty">표시된 선수가 없습니다. 셀 총합을 계산할 선수를 켜주세요.</div>'; this.simRows=null; return; }
     // per-player best (role,focus) by map-sum — total is separable, so each player optimizes independently
     const rows=vis.map(p=>{
@@ -748,28 +750,33 @@ class Panel{
       `<div class="sim-head"><span>셀 총합 <b class="now">${now.toFixed(1)}</b> → <b class="max">${max.toFixed(1)}</b></span>`+
       `<span><button class="sim-applyall">모두 적용</button> <button class="sim-close" title="닫기">✕</button></span></div>`+list;
   }
-  /* squad-mode 최적 조합: 타일 합계가 아니라 선택된 선수별 DB 근거 추천 —
-     처방 패널 = 성과(평점×결과) 기준 opt, 실측 패널 = 실측 최근접 fit */
+  /* squad-mode 최적 조합: 타일 합계가 아니라 선택된 선수별 DB 근거 종합 추천 —
+     최적 포지션의 선수 = 성과(평점×결과) 처방, 오프 포지션 선수 = 실측 재현(검증된 움직임)
+     → 두 패널의 초기 세팅 어느 쪽과도 다를 수 있는 하나의 권장 조합 */
   simulateSquad(){
     this.simEl.classList.add('open');
-    const which=this.su.formation.includes('처방')?'opt':'fit';
     const rows=this.su.players.map(p=>{
-      const s=SQUAD_SLOTS[p.id], o=s.opts[sqSel[p.id]], rec=o[which], best=PLAYER_BEST[o.n];
-      return {p, name:o.n, rec, best:{role:rec[0],focus:rec[1]},
+      const s=SQUAD_SLOTS[p.id], o=s.opts[sqSel[p.id]], best=PLAYER_BEST[o.n];
+      const onPos=best?best.pos.includes(s.pos):true;
+      const rec=onPos?o.opt:o.fit;
+      return {p, name:o.n, onPos, best:{role:rec[0],focus:rec[1]},
         same:p.r===rec[0]&&p.focus===rec[1],
-        posWarn:(best&&!best.pos.includes(s.pos))?best.pos.join('/'):null};
+        posWarn:onPos?null:best.pos.join('/')};
     });
     this.simRows=rows;
     const diff=rows.filter(r=>!r.same).length;
     const list=rows.map(r=>{
       const rec=`${fmtRole(r.best.role)} · ${fmtFocus(r.best.focus)}`;
-      const warn=r.posWarn?` <span class="sim-delta">⚠ 최적 포지션 ${r.posWarn}</span>`:'';
+      const basis=r.onPos?'성과':`실측 <span class="sim-delta">⚠ 최적 ${r.posWarn}</span>`;
       const dHtml=r.same?`<span class="sim-delta">일치</span>`:`<span class="sim-delta up">변경</span>`;
-      return `<div class="sim-row" data-pid="${r.p.id}"><span class="sim-pos">${r.p.pos}</span><span class="sim-role">${r.name} → ${rec}${warn}</span>${dHtml}</div>`;
+      return `<div class="sim-row" data-pid="${r.p.id}"><span class="sim-pos">${r.p.pos}</span><span class="sim-role">${r.name} → ${rec} <small>[${basis}]</small></span>${dHtml}</div>`;
     }).join('');
+    const headMsg = diff
+      ? `선택 11명 종합 추천 · <b class="max">변경 ${diff}건</b> — 최적 포지션=성과 처방 · 오프 포지션=실측 재현`
+      : `✓ 현재 설정이 이미 추천 조합과 일치합니다 — 역할을 조정했거나 오프 포지션 선수를 넣으면 변경이 제안됩니다`;
     this.simEl.innerHTML=
-      `<div class="sim-head"><span>선택된 11명 기준 <b class="now">${which==='opt'?'성과 처방':'실측 최근접'}</b> 추천 · 변경 ${diff}건 (타일 합계 아님)</span>`+
-      `<span><button class="sim-applyall">모두 적용</button> <button class="sim-close" title="닫기">✕</button></span></div>`+list;
+      `<div class="sim-head"><span>${headMsg}</span>`+
+      `<span>${diff?'<button class="sim-applyall">모두 적용</button> ':''}<button class="sim-close" title="닫기">✕</button></span></div>`+list;
   }
   applySnapshot(sn){ this.su=fromSnapshot(sn); this.syncControls(); this.size(); this.refresh(); }
   savePreset(){
@@ -957,14 +964,16 @@ const SQUAD_SLOTS=[
    {n:'틸레만스',  opt:['dm_dlp','Build-Up'],        fit:['dm_dlp','Build-Up']},
    {n:'보가르드',  opt:['dm_holding','Defend'],      fit:['dm_holding','Defend']},
    {n:'영입·페르난데스', opt:['dm_dlp','Build-Up'],  fit:['dm_dlp','Roaming']},
-   {n:'영입·로피',  opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']}]},
+   {n:'영입·로피',  opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
+   {n:'영입·그레이', opt:['dm_dlp','Build-Up'],       fit:['dm_dlp','Roaming']}]},
  {pos:'RDM',t:'DM', x:62,y:42, opts:[
    {n:'카마라',    opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
    {n:'틸레만스',  opt:['dm_dlp','Build-Up'],        fit:['dm_dlp','Build-Up']},
    {n:'오나나',    opt:['dm_boxcrasher','Balanced'], fit:['dm_dlp','Roaming']},
    {n:'린델뢰프',   opt:['dm_holding','Defend'],     fit:['dm_holding','Defend']},
    {n:'보가르드',  opt:['dm_holding','Defend'],      fit:['dm_holding','Defend']},
-   {n:'영입·페르난데스', opt:['dm_dlp','Build-Up'],  fit:['dm_dlp','Roaming']}]},
+   {n:'영입·페르난데스', opt:['dm_dlp','Build-Up'],  fit:['dm_dlp','Roaming']},
+   {n:'영입·그레이', opt:['dm_dlp','Build-Up'],       fit:['dm_dlp','Roaming']}]},
  /* 4-2-3-1 Wide의 좌측 슬롯 = LM(WM 타입). 분석 라벨 LW의 게임 매핑 — fit은 wm_* 커널
     재계산 (2026-07-02, transfer_targets LM rows + player_role_map kind='role:LM') */
  {pos:'LM', t:'WM', x:14,y:64, opts:[
@@ -972,12 +981,14 @@ const SQUAD_SLOTS=[
    {n:'부엔디아',  opt:['wm_wideplm','Attack'],      fit:['wm_wideplm','Attack']},
    {n:'영입·서머빌', opt:['wm_insidefwd','Attack'],  fit:['wm_insidefwd','Balanced']},
    {n:'영입·파르도', opt:['wm_insidefwd','Attack'],  fit:['wm_insidefwd','Attack']},
-   {n:'영입·태버니어', opt:['wm_insidefwd','Balanced'],fit:['wm_insidefwd','Balanced']}]},
+   {n:'영입·태버니어', opt:['wm_insidefwd','Balanced'],fit:['wm_insidefwd','Balanced']},
+   {n:'영입·바투리나', opt:['wm_insidefwd','Attack'],  fit:['wm_wideplm','Attack']}]},
  {pos:'CAM',t:'CAM',x:50,y:66, opts:[
    {n:'부엔디아',  opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
    {n:'로저스',    opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
    {n:'틸레만스',  opt:['cam_playmaker','Build-Up'], fit:['cam_playmaker','Build-Up']},
-   {n:'맥긴',      opt:['cam_playmaker','Balanced'], fit:['cam_playmaker','Balanced']}]},
+   {n:'맥긴',      opt:['cam_playmaker','Balanced'], fit:['cam_playmaker','Balanced']},
+   {n:'영입·바투리나', opt:['cam_halfwinger','Roaming'],fit:['cam_halfwinger','Balanced']}]},
  {pos:'RM', t:'WM', x:85,y:64, opts:[
    {n:'맥긴',      opt:['wm_widemid','Support'],     fit:['wm_insidefwd','Balanced']},
    {n:'산초',      opt:['wm_insidefwd','Attack'],    fit:['wm_insidefwd','Attack']},
@@ -1012,10 +1023,12 @@ const PLAYER_BEST={
   '보가르드':{pos:['LDM','RDM'],note:'홀딩 미드 로테이션'},
   '영입·페르난데스':{pos:['LDM'],note:'실측 LDM 0.80 > RDM 0.66'},
   '영입·로피':{pos:['LDM'],note:'실측 LDM 0.84 > RDM 0.58'},
+  '영입·그레이':{pos:['RDM'],note:'실측 RDM 0.77 > LDM 0.65'},
   '로저스':{pos:['LM'],note:'왼쪽 피크 8.84/8.46 > 중앙 10번 8.3'},
   '부엔디아':{pos:['CAM'],note:'최적 10번 — 피크 9.4'},
   '영입·서머빌':{pos:['LM'],note:'실측 적합 0.70 — 로저스와 유사 동선'},
   '영입·태버니어':{pos:['LM'],note:'실측 적합 0.82'},
+  '영입·바투리나':{pos:['LM'],note:'실측 LM 0.80 > CAM 0.68 — 좌측 크리에이터'},
   '맥긴':{pos:['RM'],note:'오른쪽 피크 8.7/8.6'},
   '산초':{pos:['RM'],note:'인버티드 우측 윙 (7.5/7.4/7.1)'},
   '영입·보웬':{pos:['RM'],note:'실측 적합 0.88 — 맥긴과 동일'},
