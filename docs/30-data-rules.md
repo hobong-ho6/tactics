@@ -79,6 +79,12 @@ javascript_tool로 sofascore.com 페이지 컨텍스트에서 fetch** 하면 된
 LW-순수 55%). 주 포지션 통합본 = `kind='measured'`, 나머지 포지션 =
 `kind='measured:<class>'` (예: measured:CAM). 포지션당 표본 2경기 이상 확보 후 집계.
 
+**맥락별 분리 집계**: 같은 (선수, 포지션)이라도 경기 지배도에 따라 풋프린트가 다르므로,
+버킷당 2경기 이상이면 `@dom`(2골차 이상 승) / `@tight`(무·패·1골차 승)으로 분리 집계를
+추가한다 — kind 예: `measured@dom`, `measured:CAM@tight`. 균등 평균의 "번짐"을 피하고
+지배/접전 변형 프리셋의 근거가 된다. 표본 확장은 경기 수보다 **맥락 다양성**(홈/원정,
+승/패)이 우선 — 균등가중 top-10 확장은 편향과 번짐만 키우므로 금지.
+
 주요 ID (25/26 확보분): Konsa 827679, Buendía 783126, Cash 833956, Digne 96538,
 Rogers 948261, Tielemans 331737, McGinn 250223, Onana 923973, Kamara 826204.
 팀: Aston Villa 40. 그 외는 search로 확인하고, 자주 쓰는 ID는 여기에 추가해 갱신.
