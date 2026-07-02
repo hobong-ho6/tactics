@@ -15,6 +15,8 @@ never a rewrite.
    - `matches(id,season,team,date,opponent,competition,venue,result)`
    - `appearances(player_id,match_id,rank_for_player,rating,minutes,position,role,heat_zones,heat_summary,goals,assists,source,confidence)` — one row per player per match (SofaScore rating + that-match position/role/heatmap).
    - `streaks(id,season,label,note)` + `match_streak(match_id,streak_id)` (m2m; overlapping runs like 11-all-comp ⊃ 8-PL).
+   - `tactic_observations(season,scope,claim,evidence,source,confidence)` — team-level tactical facts
+     (philosophy, build-up, defensive block, in-possession shape, per-match modulation axes, verdicts).
    - View `v_best`.
 
 2. **Game system library (per FC version)** — `game_roles(game_version,role_id,name,position_type,focuses)`

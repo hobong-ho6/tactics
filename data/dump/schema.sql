@@ -95,3 +95,12 @@ CREATE TABLE team_tactic_setups(
   confidence TEXT,
   UNIQUE(season, game_version, kind)
 );
+CREATE TABLE tactic_observations(
+  id INTEGER PRIMARY KEY,
+  season TEXT NOT NULL REFERENCES seasons(code),
+  scope TEXT NOT NULL,       -- philosophy / build_up / defence / in_possession / modulation / verdict
+  claim TEXT NOT NULL,
+  evidence TEXT,
+  source TEXT,
+  confidence TEXT
+);
