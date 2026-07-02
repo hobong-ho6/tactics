@@ -104,3 +104,16 @@ CREATE TABLE tactic_observations(
   source TEXT,
   confidence TEXT
 );
+CREATE TABLE player_duties(
+  id INTEGER PRIMARY KEY,
+  season TEXT NOT NULL REFERENCES seasons(code),
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  position TEXT NOT NULL,
+  duties TEXT NOT NULL,
+  execution TEXT,
+  adherence TEXT,
+  game_role_implication TEXT,
+  source TEXT,
+  confidence TEXT,
+  UNIQUE(season, player_id, position)
+);
