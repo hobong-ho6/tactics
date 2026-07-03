@@ -301,7 +301,8 @@
     <div class="sq-note" style="padding:8px 2px 0"><b>실측</b> = SofaScore 집계 — 빌라 선수: 25/26 시즌 포지션별 평균 또는 상위 경기 평균 · 영입 후보: 최근 6경기(45분+).
     <b>슬롯 적합</b> = 실측 그리드 ↔ 이 슬롯 포지션 타입 전체 역할·포커스 커널의 최대 코사인 유사도 (반대 사이드에서 뛴 그리드는 낮게 나올 수 있음 — 그리드 출처 표기 참조).
     <b>FC26 능력치</b> = sofifa, FC26 roster 2026-06-30 (DB player_fc_stats — GK 6대 스탯은 다이빙/핸들링/킥/반응속도/속도/위치선정).
-    <b>종합 판정</b> = 슬롯 적합 40% + 실측 평점 35% + FC26 OVR 25% 가중 — 단, '상위 경기 평균'(베스트 경기만 집계)이 낀 비교는 평점 항목 제외, FC26 미수록 선수가 있으면 OVR 항목 제외 후 남은 가중치로 재정규화. 판정은 참고용이며 영입 가능성 등급·나이·가치·POT는 별도 표기만 합니다.</div>
+    <b>종합 판정</b> = 슬롯 적합 40% + 실측 평점 35% + FC26 OVR 25% 가중 — 단, '상위 경기 평균'(베스트 경기만 집계)이 낀 비교는 평점 항목 제외, FC26 미수록 선수가 있으면 OVR 항목 제외 후 남은 가중치로 재정규화. 판정은 참고용이며 영입 가능성 등급·나이·가치·POT는 별도 표기만 합니다.
+    <b>실험 배치</b> = 선수 목록 하단 '실험' 그룹에서 분석 근거가 없는 슬롯에 선수를 가정 배치 — 게임 내 움직임은 선택한 역할 커널이 결정하므로, 여기서는 그 선수의 실측 그리드(측면 전환 시 좌우 반전 '미러' 가정 포함)가 이 슬롯 커널로 재현되는 정도와 재도출 역할을 계산합니다. 미러는 가정치라 DB 확정 판정(예: 아데예미 LM 0.24 — 원본 방향 판정)과 다르며, 게임 내 검증 후 채택 시 player_role_map(kind='role:슬롯')에 기록해야 스쿼드 정식 후보가 됩니다.</div>
   </section>
 
   <div class="compare">
@@ -1240,10 +1241,47 @@ function squadFitRF(slotKey,name){
   const s=SQUAD_SLOTS.find(x=>x.pos===slotKey); if(!s) return null;
   const o=s.opts.find(o=>o.n===name); return o?o.fit:null;
 }
+/* ---- 실험 배치 (what-if): 분석 근거가 없는 슬롯에 선수를 가정 배치 ----
+   게임 내 움직임 자체는 선택한 역할 커널이 결정하므로 '예측'은 커널 그대로이고,
+   여기서 계산하는 것은 그 선수의 실측 패턴이 이 슬롯 커널로 재현되는 정도.
+   측면 전환(예: RM 선수 → LM)은 '미러(좌우 반전) 가정'을 함께 계산 — DB 확정
+   판정(아데예미 LM 0.24처럼 원본 방향 그대로 판정)과 구분되는 가정치다. */
+function mirrorGrid(code){ let out=''; for(let r=0;r<5;r++) out+=code.slice(r*5,r*5+5).split('').reverse().join(''); return out; }
+function slotKernelTop(gridCode,t,x,n){
+  const g=decodeMap(gridCode); const all=[];
+  for(const role of ROLE_SETS[t]) for(const f of ROLES[role].f){
+    if(!(MAPS[role]&&MAPS[role][f])) continue;
+    all.push({s:cmpCos(placedMap({r:role,focus:f,x,y:0}),g),role,f});
+  }
+  all.sort((a,b)=>b.s-a.s); return all.slice(0,n||1);
+}
+const CMP_POOL={};   // name → {slotKey:{grid,rate}} — 실험 배치용 그리드 풀 (첫 등장 슬롯 우선)
+Object.entries(CMP_SLOTS).forEach(([k,s])=>s.c.forEach(c=>{
+  if(c.grid&&!(CMP_POOL[c.n]&&CMP_POOL[c.n][k])) (CMP_POOL[c.n]=CMP_POOL[c.n]||{})[k]={grid:c.grid,rate:c.rate};
+}));
+function expCand(slotKey,name){
+  const srcs=CMP_POOL[name]; if(!srcs) return null;
+  const srcKey=srcs[slotKey]?slotKey:Object.keys(srcs)[0];
+  return {n:name,grid:srcs[srcKey].grid,rate:srcs[srcKey].rate,exp:true,srcKey};
+}
+function cmpCandOf(key,val){
+  if(typeof val==='string'&&val.startsWith('x:')) return expCand(key,val.slice(2));
+  return CMP_SLOTS[key].c[+val||0];
+}
+/* 슬롯 → sofifa 등록 포지션 계열 (FC26에서 무보정 기용 가능 여부 체크) */
+const SLOT_FCPOS={GK:['GK'],LB:['LB','LWB'],RB:['RB','RWB'],LCB:['CB'],RCB:['CB'],
+  LDM:['CDM','CM'],RDM:['CDM','CM'],LM:['LM','LW'],CAM:['CAM','CF'],RM:['RM','RW'],ST:['ST','CF']};
 function cmpProfile(slotKey,cand){
   const slot=CMP_SLOTS[slotKey];
   let fit=null;
-  if(cand.grid){
+  if(cand.grid&&cand.exp){
+    // 실험 배치: 원본 그리드와 미러(좌우 반전) 가정 각각 역할 재도출, 높은 쪽 채택
+    const o=slotKernelTop(cand.grid,slot.t,slot.x,2);
+    const m=slotKernelTop(mirrorGrid(cand.grid),slot.t,slot.x,2);
+    const useM=m[0].s>o[0].s;
+    const top=useM?m:o;
+    fit={s:top[0].s,role:top[0].role,f:top[0].f,exp:true,mir:useM,alt:top[1]||null,other:(useM?o:m)[0]};
+  } else if(cand.grid){
     const kmax=slotKernelFit(cand.grid,slot.t,slot.x);
     const rf=squadFitRF(slotKey,cand.n);
     if(rf&&MAPS[rf[0]]&&MAPS[rf[0]][rf[1]]){
@@ -1252,20 +1290,22 @@ function cmpProfile(slotKey,cand){
            kmax:(kmax&&(kmax.role!==rf[0]||kmax.f!==rf[1])&&kmax.s-s>0.02)?kmax:null};
     } else fit=kmax;
   }
-  return {slotKey,c:cand,fc:FC_STATS[cand.n]||null,fit};
+  const dispGrid=cand.grid?(fit&&fit.exp&&fit.mir?mirrorGrid(cand.grid):cand.grid):null;
+  return {slotKey,c:cand,fc:FC_STATS[cand.n]||null,fit,dispGrid};
 }
 /* 종합 판정 — 적합 40 / 평점 35 / OVR 25, 비교 불가 항목은 제외 후 재정규화 */
 function cmpVerdict(A,B){
   const comps=[];
   if(A.fit&&B.fit) comps.push({k:'슬롯 적합',w:.40,a:A.fit.s,b:B.fit.s,na:clamp01((A.fit.s-.3)/.65),nb:clamp01((B.fit.s-.3)/.65),f:v=>Math.round(v*100)+'%'});
-  const rateOK=A.c.rate&&B.c.rate&&A.c.rate.b!=='top'&&B.c.rate.b!=='top';
+  const rateOK=A.c.rate&&B.c.rate&&A.c.rate.b!=='top'&&B.c.rate.b!=='top'&&!A.c.exp&&!B.c.exp;
   if(rateOK) comps.push({k:'실측 평점',w:.35,a:A.c.rate.v,b:B.c.rate.v,na:clamp01((A.c.rate.v-6.4)/1.4),nb:clamp01((B.c.rate.v-6.4)/1.4),f:v=>v.toFixed(2)});
   const fcOK=A.fc&&!A.fc.none&&B.fc&&!B.fc.none;
   if(fcOK) comps.push({k:'FC26 OVR',w:.25,a:A.fc.ovr,b:B.fc.ovr,na:clamp01((A.fc.ovr-65)/23),nb:clamp01((B.fc.ovr-65)/23),f:v=>v});
   const W=comps.reduce((s,c)=>s+c.w,0);
   const sa=W?comps.reduce((s,c)=>s+c.w*c.na,0)/W:0, sb=W?comps.reduce((s,c)=>s+c.w*c.nb,0)/W:0;
   const notes=[];
-  if(!rateOK&&A.c.rate&&B.c.rate) notes.push("'상위 경기 평균' 표본 포함 — 평점 항목은 판정에서 제외");
+  if(A.c.exp||B.c.exp) notes.push('실험 배치 포함 — 적합도는 미러/타 포지션 그리드 가정치(참고용), 본 포지션 평점은 판정 제외');
+  else if(!rateOK&&A.c.rate&&B.c.rate) notes.push("'상위 경기 평균' 표본 포함 — 평점 항목은 판정에서 제외");
   if(A.c.rate&&!B.c.rate||!A.c.rate&&B.c.rate) notes.push('한쪽 평점 표본 없음 — 평점 항목 제외');
   if(!fcOK) notes.push('FC26 스탯 없는 선수 포함 — OVR 항목 제외');
   if(!A.fit||!B.fit) notes.push('실측 그리드 없는 선수 포함 — 슬롯 적합 항목 제외');
@@ -1273,25 +1313,35 @@ function cmpVerdict(A,B){
 }
 function cmpCard(side,prof,win){
   const cand=prof.c, fc=prof.fc, best=PLAYER_BEST[cand.n];
-  const mini=cand.grid?'<div class="cmp-mini" title="실측 히트맵 (위=공격 방향)">'+Array.from(decodeMap(cand.grid)).map(v=>{const col=v>=0.15?heatColorAbs(v):EMPTY;return `<i style="background:${css(col)}"></i>`;}).join('')+'</div>':'';
+  const mini=prof.dispGrid?'<div class="cmp-mini" title="실측 히트맵 (위=공격 방향'+(prof.fit&&prof.fit.mir?' · 미러 가정 적용':'')+')">'+Array.from(decodeMap(prof.dispGrid)).map(v=>{const col=v>=0.15?heatColorAbs(v):EMPTY;return `<i style="background:${css(col)}"></i>`;}).join('')+'</div>':'';
   const lh=cand.lh?`<span class="cmp-lh">${cand.lh}</span>`:'';
+  const expTag=cand.exp?`<span class="cmp-lh" style="color:var(--accent);border-color:var(--accent)">실험 배치</span>`:'';
   const posLine=best?(best.pos.includes(prof.slotKey)
     ?`<span class="ok">✓ 최적 포지션</span> — ${best.note}`
     :`<span class="warn">⚠ 최적 포지션: ${best.pos.join('/')}</span> — ${best.note}`):'';
   const fitLine=prof.fit
-    ?`슬롯 적합 <b>${Math.round(prof.fit.s*100)}%</b> — ${prof.fit.curated?'실측 최근접(DB 확정)':'최근접(커널 최대)'} ${fmtRole(prof.fit.role)} · ${fmtFocus(prof.fit.f)}`
-      +(cand.dbFit?` <span style="color:var(--muted-2)">(DB ${cand.dbFit.toFixed(2)})</span>`:'')
-      +(cand.gridNote?` <span style="color:var(--muted-2)">· 그리드: ${cand.gridNote}</span>`:'')
-      +(prof.fit.kmax?`<br><span style="color:var(--muted-2)">참고 · 커널 최대는 ${fmtRole(prof.fit.kmax.role)} · ${fmtFocus(prof.fit.kmax.f)} ${Math.round(prof.fit.kmax.s*100)}% — DB 스캔에서 동률/커널 한계로 기각된 후보일 수 있음</span>`:'')
+    ?(prof.fit.exp
+      ?`실험 적합 <b>${Math.round(prof.fit.s*100)}%</b>${prof.fit.mir?` <span class="warn">(미러 가정 — ${cand.srcKey} 그리드 좌우 반전)</span>`:` (${cand.srcKey} 그리드 원본 방향)`}`
+        +` — 역할 재도출: <b>${fmtRole(prof.fit.role)} · ${fmtFocus(prof.fit.f)}</b>`
+        +(prof.fit.alt?`, 차선 ${fmtRole(prof.fit.alt.role)} · ${fmtFocus(prof.fit.alt.f)} ${Math.round(prof.fit.alt.s*100)}%`:'')
+        +`<br><span style="color:var(--muted-2)">${prof.fit.mir?'원본 방향 그대로는':'미러 가정은'} ${Math.round(prof.fit.other.s*100)}% (${fmtRole(prof.fit.other.role)}) — 미러는 가정치, DB 확정 판정 아님</span>`
+      :`슬롯 적합 <b>${Math.round(prof.fit.s*100)}%</b> — ${prof.fit.curated?'실측 최근접(DB 확정)':'최근접(커널 최대)'} ${fmtRole(prof.fit.role)} · ${fmtFocus(prof.fit.f)}`
+        +(cand.dbFit?` <span style="color:var(--muted-2)">(DB ${cand.dbFit.toFixed(2)})</span>`:'')
+        +(cand.gridNote?` <span style="color:var(--muted-2)">· 그리드: ${cand.gridNote}</span>`:'')
+        +(prof.fit.kmax?`<br><span style="color:var(--muted-2)">참고 · 커널 최대는 ${fmtRole(prof.fit.kmax.role)} · ${fmtFocus(prof.fit.kmax.f)} ${Math.round(prof.fit.kmax.s*100)}% — DB 스캔에서 동률/커널 한계로 기각된 후보일 수 있음</span>`:''))
     :'실측 그리드 없음 — 측정 대기';
-  const rateLine=cand.rate?`실측 평점 <b>${cand.rate.s}</b>`:'실측 평점 표본 없음';
+  const fcPos=SLOT_FCPOS[prof.slotKey]||[];
+  const fcPosWarn=(fc&&!fc.none&&fc.pos&&!fc.pos.split(',').some(p=>fcPos.includes(p)))
+    ?`<div class="cmp-line"><span class="warn">⚠ FC26 등록 포지션(${fc.pos})에 ${prof.slotKey} 계열(${fcPos.join('/')}) 없음</span> — 게임 내 포지션 변경(훈련/아이템) 필요</div>`:'';
+  const rateLine=cand.rate?`실측 평점 <b>${cand.rate.s}</b>${cand.exp?' <span style="color:var(--muted-2)">— 본 포지션 기준, 판정 제외</span>':''}`:'실측 평점 표본 없음';
   const fcLine=!fc?'<div class="cmp-fcnone">FC26 스탯 미수집</div>'
     :fc.none?`<div class="cmp-fcnone">FC26 미수록 — ${fc.none}</div>`
     :`<div class="cmp-line">FC26 <b>OVR ${fc.ovr}</b> · POT ${fc.pot} · ${fc.age}세 · ${fc.h}cm · 가치 ${fc.val}<br>등록 포지션 ${fc.pos} · sofifa 최적 ${fc.bp}</div>`;
   return `<div class="cmp-card${win?' win':''}" data-side="${side}">${mini}<h3>${side} · ${cand.n}${win?' 🏆':''}</h3>
-    <div class="sub">${(fc&&fc.club)||''}${lh}</div>
+    <div class="sub">${(fc&&fc.club)||''}${lh}${expTag}</div>
     ${posLine?`<div class="cmp-line">${posLine}</div>`:''}
     <div class="cmp-line">${fitLine}</div>
+    ${fcPosWarn}
     <div class="cmp-line">${rateLine}</div>
     ${fcLine}</div>`;
 }
@@ -1305,10 +1355,10 @@ function cmpStatBars(A,B,isGK){
 }
 function renderCmp(){
   const key=document.getElementById('cmpSlot').value, slot=CMP_SLOTS[key];
-  const ca=slot.c[+document.getElementById('cmpA').value||0], cb=slot.c[+document.getElementById('cmpB').value||0];
+  const ca=cmpCandOf(key,document.getElementById('cmpA').value), cb=cmpCandOf(key,document.getElementById('cmpB').value);
   const body=document.getElementById('cmpBody');
   if(!ca||!cb){ body.innerHTML=''; return; }
-  if(ca===cb){ body.innerHTML='<div class="cmp-fcnone" style="margin-top:12px">같은 선수입니다 — 다른 후보를 선택하세요.</div>'; return; }
+  if(ca.n===cb.n){ body.innerHTML='<div class="cmp-fcnone" style="margin-top:12px">같은 선수입니다 — 다른 후보를 선택하세요.</div>'; return; }
   const pa=cmpProfile(key,ca), pb=cmpProfile(key,cb), v=cmpVerdict(pa,pb);
   const d=v.sa-v.sb, close=Math.abs(d)<0.03;
   const chips=v.comps.map(c=>`<span class="vchip">${c.k} <b>${c.f(c.a)}</b> ${c.na>c.nb?'◀':c.nb>c.na?'▶':'='} <b>${c.f(c.b)}</b></span>`).join('');
@@ -1324,10 +1374,10 @@ function renderCmp(){
 /* 좌우 패널 = 선택된 A/B 선수의 실측 히트맵 (슬롯 위치 기준) */
 function applyCmpPanels(key,pa,pb){
   const slot=CMP_SLOTS[key], sq=SQUAD_SLOTS.find(s=>s.pos===key);
-  const mk=(prof,color)=>{ const c=prof.c; if(!c.grid) return [];
+  const mk=(prof,color)=>{ const c=prof.c; if(!prof.dispGrid) return [];
     const role=prof.fit?prof.fit.role:ROLE_SETS[slot.t][0];
     return [{pos:key,t:slot.t,x:slot.x,y:sq?sq.y:50,r:role,focus:prof.fit?prof.fit.f:ROLES[role].f[0],
-             map25:c.grid,name:c.n,id:0,visible:true,color}];
+             map25:prof.dispGrid,name:c.n+(prof.fit&&prof.fit.exp?(prof.fit.mir?' (미러 가정)':' (실험)'):''),id:0,visible:true,color}];
   };
   panels.A.su={formation:'선수 비교 — A (실측)',mode:panels.A.su.mode,intensity:panels.A.su.intensity,selected:-1,players:mk(pa,'#ff7a2f')};
   panels.B.su={formation:'선수 비교 — B (실측)',mode:panels.B.su.mode,intensity:panels.B.su.intensity,selected:-1,players:mk(pb,'#5c8bff')};
@@ -1336,8 +1386,11 @@ function applyCmpPanels(key,pa,pb){
 function fillCmpPlayers(reset){
   const slot=CMP_SLOTS[document.getElementById('cmpSlot').value];
   const opts=slot.c.map((c,i)=>`<option value="${i}">${c.n}</option>`).join('');
+  const cur=new Set(slot.c.map(c=>c.n));
+  const extras=Object.keys(CMP_POOL).filter(n=>!cur.has(n)).sort();
+  const expOpts=extras.length?`<optgroup label="실험 배치 — 타 포지션 선수 (가정)">${extras.map(n=>`<option value="x:${n}">${n} (실험)</option>`).join('')}</optgroup>`:'';
   const a=document.getElementById('cmpA'), b=document.getElementById('cmpB');
-  a.innerHTML=opts; b.innerHTML=opts;
+  a.innerHTML=opts+expOpts; b.innerHTML=opts+expOpts;
   if(reset){ a.value=0; b.value=String(Math.min(1,slot.c.length-1)); }
   renderCmp();
 }
