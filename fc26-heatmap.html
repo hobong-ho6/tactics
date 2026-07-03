@@ -52,14 +52,15 @@
   .field{display:flex;flex-direction:column;gap:5px}
   .field label{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2)}
   select,button{font-family:inherit;color:var(--ink)}
-  .sel{
+  /* select 전용 — 칩/로스터 행도 선택 시 'sel' 클래스를 받으므로 select로 한정 (박스 오적용 버그) */
+  select.sel{
     background:var(--panel);border:1px solid var(--line);border-radius:9px;
     padding:8px 30px 8px 11px;font-size:13px;appearance:none;cursor:pointer;
     background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
     background-position:calc(100% - 15px) 52%,calc(100% - 10px) 52%;
     background-size:5px 5px,5px 5px;background-repeat:no-repeat;
   }
-  .sel:focus{outline:none;border-color:var(--accent)}
+  select.sel:focus{outline:none;border-color:var(--accent)}
   .seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;background:var(--panel)}
   .seg button{background:transparent;border:0;padding:8px 13px;font-size:12.5px;cursor:pointer;color:var(--muted)}
   .seg button.on{background:var(--accent);color:#160a02;font-weight:700}
