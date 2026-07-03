@@ -1136,6 +1136,7 @@ const FC_STATS={
   '영입·페르난데스':{club:'West Ham United',age:20,h:178,val:'€27M',ovr:79,pot:85,bp:'CM',pos:'CM,CAM,CDM',st:[70,73,79,80,72,67]},
   '영입·로피':{club:'UD Almería',age:23,h:186,val:'€6.5M',ovr:73,pot:82,bp:'CM',pos:'CDM,CM,CB',st:[76,62,69,74,69,78]},
   '영입·그레이':{club:'Tottenham Hotspur',age:19,h:187,val:'€21.5M',ovr:77,pot:86,bp:'CDM',pos:'CDM,CB,RB,CM',st:[72,61,73,75,75,73]},
+  '영입·모리바':{club:'RC Celta',age:22,h:185,val:'€21.5M',ovr:78,pot:83,bp:'CM',pos:'CM,CDM',st:[74,71,73,76,75,79]},
   '로저스':{club:'Aston Villa',age:22,h:187,val:'€56M',ovr:84,pot:86,bp:'CAM',pos:'CAM,LM,CM',st:[77,81,81,85,67,78]},
   '부엔디아':{club:'Aston Villa',age:28,h:172,val:'€14M',ovr:78,pot:78,bp:'CAM',pos:'LM,CAM,LW',st:[67,77,79,82,66,67]},
   '영입·서머빌':{club:'West Ham United',age:23,h:169,val:'€21M',ovr:78,pot:83,bp:'CAM',pos:'LM,LW',st:[89,74,70,82,36,55]},
@@ -1161,7 +1162,7 @@ const CMP_SLOTS={
   {n:'영입·트루빈',grid:'0000000000000000010001X10',dbFit:0.96,lh:'MEDIUM',rate:{v:6.87,b:'r6',s:'최근 6경기 평균 6.87 (벤피카)'}},
   {n:'영입·스즈키',grid:'0000000000000000010001X20',dbFit:0.97,lh:'MEDIUM-HIGH',rate:{v:7.13,b:'r6',s:'최근 6경기 평균 7.13 (파르마)'}},
   {n:'영입·레스테스',grid:'0000000000000000210002X20',dbFit:0.97,lh:'MEDIUM',rate:{v:6.92,b:'r6',s:'최근 6경기 평균 6.92 (툴루즈)'}},
-  {n:'영입·트래포드',grid:null,lh:'로마노 숏리스트 — 실측 측정 대기',rate:null}]},
+  {n:'영입·트래포드',grid:'0000000000000000020001X10',dbFit:0.97,lh:'MEDIUM-HIGH',rate:{v:7.05,b:'r6',s:'최근 6경기 평균 7.05 (맨시티)'}}]},
  LB:{t:'FB',x:13,c:[
   {n:'디뉴',grid:'721017200081000X200052100',rate:{v:6.73,b:'season',s:'LB 21경기 평균 6.73 · 피크 8.2'}},
   {n:'마첸',grid:'321018500072100X400062100',rate:{v:6.74,b:'season',s:'LB 16경기 평균 6.74 · 피크 8.3'}}]},
@@ -1181,7 +1182,8 @@ const CMP_SLOTS={
   {n:'보가르드',grid:'000010323702477035XX01372',rate:{v:6.62,b:'season',s:'피벗 21경기 평균 6.62 · 피크 7.3'}},
   {n:'영입·페르난데스',grid:'011017946669X758867322310',dbFit:0.80,lh:'MEDIUM-LOW',rate:{v:7.37,b:'r6',s:'최근 6경기 평균 7.37 (웨스트햄)'}},
   {n:'영입·로피',grid:'00000595414996169X6302221',dbFit:0.84,lh:'MEDIUM-HIGH',rate:{v:7.03,b:'r6',s:'최근 6경기 평균 7.03 (알메리아)'}},
-  {n:'영입·그레이',grid:'2011153364267X42776221221',dbFit:0.65,lh:'MEDIUM-LOW',rate:{v:6.72,b:'r6',s:'최근 6경기 평균 6.72 (스퍼스)'}}]},
+  {n:'영입·그레이',grid:'2011153364267X42776221221',dbFit:0.65,lh:'MEDIUM-LOW',rate:{v:6.72,b:'r6',s:'최근 6경기 평균 6.72 (스퍼스)'}},
+  {n:'영입·모리바',grid:'0000026550276422X85111110',dbFit:0.80,lh:'MEDIUM',rate:{v:6.95,b:'r6',s:'최근 6경기 평균 6.95 (셀타)'}}]},
  RDM:{t:'DM',x:62,c:[
   {n:'카마라',grid:'0010103364035X20287301141',rate:{v:7.14,b:'season',s:'피벗 16경기 평균 7.14 · 피크 7.8'}},
   {n:'틸레만스',grid:'112204844159X425974014320',rate:{v:7.28,b:'season',s:'피벗 21경기 평균 7.28 · 피크 8.4'}},
@@ -1190,7 +1192,8 @@ const CMP_SLOTS={
   {n:'보가르드',grid:'000010323702477035XX01372',gridNote:'LDM 실측',rate:{v:6.62,b:'season',s:'피벗 21경기 평균 6.62 · 피크 7.3'}},
   {n:'영입·페르난데스',grid:'011017946669X758867322310',dbFit:0.66,lh:'MEDIUM-LOW',rate:{v:7.37,b:'r6',s:'최근 6경기 평균 7.37 (웨스트햄)'}},
   {n:'영입·로피',grid:'00000595414996169X6302221',dbFit:0.58,lh:'MEDIUM-HIGH',rate:{v:7.03,b:'r6',s:'최근 6경기 평균 7.03 (알메리아)'}},
-  {n:'영입·그레이',grid:'2011153364267X42776221221',dbFit:0.77,lh:'MEDIUM-LOW',rate:{v:6.72,b:'r6',s:'최근 6경기 평균 6.72 (스퍼스)'}}]},
+  {n:'영입·그레이',grid:'2011153364267X42776221221',dbFit:0.77,lh:'MEDIUM-LOW',rate:{v:6.72,b:'r6',s:'최근 6경기 평균 6.72 (스퍼스)'}},
+  {n:'영입·모리바',grid:'0000026550276422X85111110',dbFit:0.58,lh:'MEDIUM',rate:{v:6.95,b:'r6',s:'최근 6경기 평균 6.95 (셀타)'}}]},
  LM:{t:'WM',x:14,c:[
   {n:'로저스',grid:'533116522143211X400042100',rate:{v:6.91,b:'season',s:'LW 13경기 평균 6.91 · 피크 9.3'}},
   {n:'부엔디아',grid:'44410XX531783304633021102',gridNote:'자유 10번 실측(좌편향)',rate:{v:6.90,b:'season',s:'좌편향 10번 21경기 평균 6.90 · 피크 9.4'}},
@@ -1229,9 +1232,27 @@ function slotKernelFit(gridCode,t,x){
   }
   return best;
 }
+/* 슬롯 적합의 기준 역할 = SQUAD_SLOTS.fit(= DB player_role_map kind='role' /
+   transfer_targets fit_role 확정값). 런타임 argmax는 시프트 반올림 차이로 DB 스캔과
+   동률이 갈릴 수 있어(부엔디아 CAM: playmaker 0.59 = halfwinger 0.59 동률 → DB는
+   playmaker 채택) 확정값을 기준으로 쓰고, argmax는 유의미하게 높을 때 참고로만 표기. */
+function squadFitRF(slotKey,name){
+  const s=SQUAD_SLOTS.find(x=>x.pos===slotKey); if(!s) return null;
+  const o=s.opts.find(o=>o.n===name); return o?o.fit:null;
+}
 function cmpProfile(slotKey,cand){
   const slot=CMP_SLOTS[slotKey];
-  return {slotKey,c:cand,fc:FC_STATS[cand.n]||null,fit:cand.grid?slotKernelFit(cand.grid,slot.t,slot.x):null};
+  let fit=null;
+  if(cand.grid){
+    const kmax=slotKernelFit(cand.grid,slot.t,slot.x);
+    const rf=squadFitRF(slotKey,cand.n);
+    if(rf&&MAPS[rf[0]]&&MAPS[rf[0]][rf[1]]){
+      const s=cmpCos(placedMap({r:rf[0],focus:rf[1],x:slot.x,y:0}),decodeMap(cand.grid));
+      fit={s,role:rf[0],f:rf[1],curated:true,
+           kmax:(kmax&&(kmax.role!==rf[0]||kmax.f!==rf[1])&&kmax.s-s>0.02)?kmax:null};
+    } else fit=kmax;
+  }
+  return {slotKey,c:cand,fc:FC_STATS[cand.n]||null,fit};
 }
 /* 종합 판정 — 적합 40 / 평점 35 / OVR 25, 비교 불가 항목은 제외 후 재정규화 */
 function cmpVerdict(A,B){
@@ -1258,9 +1279,10 @@ function cmpCard(side,prof,win){
     ?`<span class="ok">✓ 최적 포지션</span> — ${best.note}`
     :`<span class="warn">⚠ 최적 포지션: ${best.pos.join('/')}</span> — ${best.note}`):'';
   const fitLine=prof.fit
-    ?`슬롯 적합 <b>${Math.round(prof.fit.s*100)}%</b> — 최근접 ${fmtRole(prof.fit.role)} · ${fmtFocus(prof.fit.f)}`
+    ?`슬롯 적합 <b>${Math.round(prof.fit.s*100)}%</b> — ${prof.fit.curated?'실측 최근접(DB 확정)':'최근접(커널 최대)'} ${fmtRole(prof.fit.role)} · ${fmtFocus(prof.fit.f)}`
       +(cand.dbFit?` <span style="color:var(--muted-2)">(DB ${cand.dbFit.toFixed(2)})</span>`:'')
       +(cand.gridNote?` <span style="color:var(--muted-2)">· 그리드: ${cand.gridNote}</span>`:'')
+      +(prof.fit.kmax?`<br><span style="color:var(--muted-2)">참고 · 커널 최대는 ${fmtRole(prof.fit.kmax.role)} · ${fmtFocus(prof.fit.kmax.f)} ${Math.round(prof.fit.kmax.s*100)}% — DB 스캔에서 동률/커널 한계로 기각된 후보일 수 있음</span>`:'')
     :'실측 그리드 없음 — 측정 대기';
   const rateLine=cand.rate?`실측 평점 <b>${cand.rate.s}</b>`:'실측 평점 표본 없음';
   const fcLine=!fc?'<div class="cmp-fcnone">FC26 스탯 미수집</div>'
