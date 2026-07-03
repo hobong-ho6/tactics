@@ -723,7 +723,7 @@ class Panel{
   constructor(root,key,idx){
     this.key=key; this.root=root; root.innerHTML=PANEL_HTML;
     this.su=defaultSetup(FKEYS[idx]||FKEYS[0]);
-    this.DPR=Math.min(window.devicePixelRatio||1,2); this.W=0;this.H=0;this.cellGeom=null; this.hideChips=false; this.thresh=0;
+    this.DPR=Math.min(window.devicePixelRatio||1,2); this.W=0;this.H=0;this.cellGeom=null; this.hideChips=true; this.thresh=0;   // 아이콘 기본 꺼짐
     const $=(s)=>root.querySelector(s); this.$=$;
     this.holder=$('.p-holder'); this.pitch=$('.p-pitch'); this.heat=$('.p-heat');
     this.chipsEl=$('.p-chips'); this.rowsEl=$('.p-rows'); this.simEl=$('.p-sim'); this.simOpen=false;
@@ -752,7 +752,10 @@ class Panel{
     this.modeSeg.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b)return; this.su.mode=b.dataset.mode; [...this.modeSeg.children].forEach(x=>x.classList.toggle('on',x===b)); this.renderHeat(); });
     this.intEl.addEventListener('input',e=>{ this.su.intensity=+e.target.value; this.renderHeat(); });
     this.threshEl.addEventListener('input',e=>{ this.thresh=+e.target.value; this.threshValEl.textContent=this.thresh.toFixed(1); this.renderHeat(); });
-    this.$('.p-chiptog').addEventListener('click',()=>{ this.hideChips=!this.hideChips; this.applyChipVis(); });
+    this.$('.p-chiptog').addEventListener('click',()=>{   // 좌우 패널 동기화 + 아이콘 ON이면 히트맵 색·숫자 숨김
+      const v=!this.hideChips;
+      [panels.A,panels.B].forEach(pn=>{ if(!pn) return; pn.hideChips=v; pn.applyChipVis(); pn.renderHeat(); });
+    });
     this.$('.p-optimize').addEventListener('click',()=>{ this.simOpen=!this.simOpen; if(this.simOpen) this.simulate(); else this.closeSim(); });
     this.simEl.addEventListener('click',e=>{
       if(e.target.closest('.sim-close')){ this.simOpen=false; this.closeSim(); return; }
@@ -890,8 +893,10 @@ class Panel{
         for(let i=0;i<COLS*ROWS;i++){ let bt=0,brgb=null; for(const pp of per){ const t=pp.cells[i]/pp.mx; if(t>bt){bt=t;brgb=pp.rgb;} } fills[i]= bt<0.08?null:mix(EMPTY,brgb,0.30+0.66*Math.min(1,bt*this.su.intensity)); }
       }
     }
-    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){ const i=r*COLS+c; const x=pad+c*(cw+gap),y=pad+r*(ch+gap); const on=fills[i]&&sumCells[i]>=this.thresh; roundRect(ctx,x,y,cw,ch,rad); ctx.fillStyle=on?css(fills[i]):css(EMPTY); ctx.fill(); }
+    const heatOff=!this.hideChips;   // 아이콘 ON = 히트맵 색·숫자 숨김 (선수 위치 가독성)
+    for(let r=0;r<ROWS;r++)for(let c=0;c<COLS;c++){ const i=r*COLS+c; const x=pad+c*(cw+gap),y=pad+r*(ch+gap); const on=!heatOff&&fills[i]&&sumCells[i]>=this.thresh; roundRect(ctx,x,y,cw,ch,rad); ctx.fillStyle=on?css(fills[i]):css(EMPTY); ctx.fill(); }
 
+    if(!heatOff){
     // ---- per-cell sum labels (intensity applied) ----
     const cfs=Math.max(9, Math.round(Math.min(cw,ch)*0.30));
     ctx.textAlign='center'; ctx.textBaseline='middle';
@@ -914,7 +919,9 @@ class Panel{
     // grand total (corner) — highlighted
     ctx.font=`800 ${Math.max(12,Math.round(fs*1.18))}px ui-sans-serif,system-ui,sans-serif`; ctx.fillStyle='#ff7a2f';
     ctx.fillText(total.toFixed(1), rowCX, colCY);
+    }
     // faint halfway guide across the grid
+    const gridBottom=this.cellGeom.gridBottom, gridRight=this.cellGeom.gridRight;
     const gridMidY=pad+(gridBottom-pad)/2;
     ctx.strokeStyle='rgba(233,240,246,.08)'; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(pad,gridMidY); ctx.lineTo(gridRight,gridMidY); ctx.stroke();
   }
