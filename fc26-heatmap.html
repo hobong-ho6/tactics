@@ -185,6 +185,15 @@
   .cmp-bar.L i{right:0;background:var(--accent)}
   .cmp-bar.R i{left:0;background:#5c8bff}
   .cmp-bar i.dim{opacity:.4}
+  .cmp-ps{display:inline-block;font-size:10.5px;padding:2px 7px;margin:2px 4px 0 0;border-radius:999px;
+    background:rgba(255,122,47,.10);border:1px solid rgba(255,122,47,.4);color:#ffb27e}
+  .cmp-ps.tr{background:rgba(92,139,255,.10);border-color:rgba(92,139,255,.45);color:#9db8ff}
+  .cmp-det{margin-top:10px;border:1px dashed var(--line-soft);border-radius:9px;padding:8px 10px}
+  .cmp-det summary{cursor:pointer;font-size:11.5px;color:var(--muted);letter-spacing:.02em}
+  .cmp-det summary:hover{color:var(--ink)}
+  .cmp-srow.drow{grid-template-columns:32px 1fr 108px 1fr 32px;padding:2px 0;font-size:11px}
+  .cmp-srow.drow .lab{font-size:10.5px;letter-spacing:0;font-family:var(--sans)}
+  .cmp-srow.drow .cmp-bar{height:7px}
 
   .note{font-size:11.5px;color:var(--muted-2);line-height:1.55;margin-top:14px;padding:0 2px}
   .note b{color:var(--muted)}
@@ -682,7 +691,7 @@ const PANEL_HTML = `
       <button data-mode="perplayer">선수별</button>
     </div>
     <label class="int">강도 <input class="p-intensity" type="range" min="0.4" max="2" step="0.05" value="1"></label>
-    <div class="seg p-chiptog"><button class="on" title="포지션 아이콘 표시/숨김">아이콘</button></div>
+    <div class="seg p-chiptog"><button class="on" title="포지션 아이콘 표시/숨김 — 켜면 히트맵 색·숫자를 숨기고 설정된 역할 기준 평균 위치에 아이콘 표시 (좌우 패널 동기화)">아이콘</button></div>
   </div>
   <div class="p-desc"></div>
   <div class="pitch-card">
@@ -931,11 +940,16 @@ class Panel{
     this.su.players.forEach(p=>{
       const c=document.createElement('div');
       c.className='chip'+(p.visible?'':' off')+(this.su.selected===p.id?' sel':'');
+      // 아이콘 위치 = 설정된 역할·포커스 커널(실측 그리드가 있으면 그 그리드)의 평균 위치(중심점)
+      let px=p.x, py=100-p.y;                                      // fallback: 포메이션 슬롯 좌표
+      const m=placedMap(p);
+      if(m){ let w=0,sx=0,sy=0; for(let r=0;r<5;r++)for(let cc=0;cc<5;cc++){const v=m[r*5+cc]; w+=v; sx+=v*(cc+0.5); sy+=v*(r+0.5);}
+        if(w>0.01){ px=sx/w/5*100; py=sy/w/5*100; } }              // row0=공격 방향(위)
       if(g && this.W && this.H){                                   // map into the grid rect (avoid sum gutters)
-        const lx=(g.pad + p.x/100*(g.gridRight-g.pad))/this.W*100;
-        const ly=(g.pad + (100-p.y)/100*(g.gridBottom-g.pad))/this.H*100;
+        const lx=(g.pad + px/100*(g.gridRight-g.pad))/this.W*100;
+        const ly=(g.pad + py/100*(g.gridBottom-g.pad))/this.H*100;
         c.style.left=lx+'%'; c.style.top=ly+'%';
-      } else { c.style.left=p.x+'%'; c.style.top=(100-p.y)+'%'; }
+      } else { c.style.left=px+'%'; c.style.top=py+'%'; }
       c.innerHTML=`<div class="dot" style="background:${p.color}">${p.pos}<span class="eye">${p.visible?'●':'○'}</span></div><div class="role">${p.name?p.name+' 실측':(p.sqName?p.sqName+' · ':'')+ROLES[p.r].n+' · '+(FOCUS_KR[p.focus]||p.focus)}</div>`;
       c.addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); this.mirrorVisibility(); });
       this.chipsEl.appendChild(c);
@@ -1161,6 +1175,47 @@ const FC_STATS={
   '영입·기라시':{club:'Borussia Dortmund',age:29,h:187,val:'€54M',ovr:85,pot:85,bp:'ST',pos:'ST',st:[72,85,75,82,45,83]},
   '영입·브로베이':{club:'Sunderland',age:23,h:180,val:'€17M',ovr:77,pot:83,bp:'ST',pos:'ST',st:[84,73,57,72,30,83]},
 };
+/* sofifa 상세 (roster 2026-07-02, DB player_fc_stats.attrs/playstyles/traits) —
+   a: FC_ATTR_NAMES 순서의 34개 세부 능력치, ps: 플레이 스타일, tr: 특산품(#특성) */
+const FC_ATTR_NAMES=['크로스','결정력','헤딩 정확도','짧은 패스','발리 슛','드리블','커브','프리킥 정확도','긴 패스','볼컨트롤','가속','질주 속도','민첩성','반응력','균형 감각','슈팅력','점프','체력','힘','중거리슛','공격성','차단력','공격 위치 선정','시야','페널티킥','침착','방어인식','스탠딩 태클','슬라이딩 태클','GK 다이빙','GK 핸들링','GK 킥력','GK 위치 선정','GK 반사신경'];
+const FC_ATTR_GROUPS=[['공격',0,5],['기술',5,10],['기동력',10,15],['힘/파워',15,20],['정신력',20,26],['수비',26,29],['골키퍼',29,34]];
+const FC_DETAILS={
+  '마르티네스':{a:[22, 16, 26, 61, 13, 24, 22, 20, 59, 43, 55, 57, 54, 79, 49, 62, 79, 40, 78, 16, 40, 21, 12, 67, 43, 69, 25, 20, 20, 83, 81, 82, 85, 85],ps:["긴패스", "돌진 블로킹"],tr:[]},
+  '캐시':{a:[82, 66, 66, 77, 55, 76, 75, 48, 71, 78, 74, 75, 73, 80, 67, 78, 74, 86, 68, 64, 84, 78, 72, 70, 44, 75, 78, 80, 80, 15, 16, 13, 13, 8],ps:["긴스로우"],tr:[]},
+  '콘사':{a:[65, 55, 81, 80, 69, 74, 64, 38, 73, 78, 72, 78, 67, 85, 68, 69, 87, 79, 80, 32, 80, 84, 50, 75, 38, 82, 86, 87, 86, 14, 8, 11, 13, 9],ps:["예상 +", "견제", "슬라이딩태클", "단일 클럽 선수"],tr:["#Tackling"]},
+  '파우 토레스':{a:[64, 31, 85, 81, 41, 64, 74, 54, 80, 79, 66, 67, 56, 80, 52, 58, 84, 71, 73, 40, 73, 81, 66, 77, 42, 82, 83, 82, 81, 11, 13, 13, 13, 9],ps:["핑패스"],tr:[]},
+  '디뉴':{a:[86, 60, 73, 78, 68, 76, 83, 83, 73, 77, 70, 68, 68, 80, 78, 81, 77, 80, 69, 76, 76, 77, 73, 75, 60, 79, 77, 79, 78, 6, 12, 9, 6, 13],ps:["휩 패스", "긴스로우", "부상에 취약함"],tr:["#크로서"]},
+  '마첸':{a:[77, 64, 58, 79, 57, 81, 71, 62, 70, 80, 88, 87, 86, 78, 86, 72, 70, 74, 52, 68, 73, 76, 68, 72, 45, 76, 74, 72, 78, 9, 10, 12, 15, 9],ps:["슬라이딩태클", "래피드"],tr:[]},
+  '린델뢰프':{a:[62, 42, 75, 77, 38, 66, 67, 53, 78, 70, 51, 50, 56, 77, 60, 72, 76, 47, 76, 52, 76, 77, 51, 72, 60, 78, 78, 77, 76, 12, 16, 8, 7, 9],ps:[],tr:[]},
+  '오나나':{a:[58, 60, 81, 80, 51, 79, 72, 42, 78, 78, 64, 82, 49, 80, 52, 77, 86, 76, 84, 67, 83, 83, 69, 77, 39, 79, 78, 82, 82, 7, 12, 12, 9, 10],ps:["프리시전 헤딩", "슬라이딩태클", "압박검증", "인포서"],tr:["#공중 지배자"]},
+  '틸레만스':{a:[80, 77, 70, 87, 83, 79, 84, 78, 88, 86, 51, 55, 61, 86, 77, 85, 68, 87, 69, 76, 64, 75, 77, 87, 75, 88, 74, 77, 80, 6, 8, 10, 14, 12],ps:["핑패스 +", "파워슛", "예리한패스", "압박검증"],tr:["#플레이메이커"]},
+  '맥긴':{a:[76, 76, 57, 81, 75, 81, 76, 61, 80, 80, 69, 69, 77, 81, 85, 84, 74, 92, 79, 77, 86, 79, 77, 79, 55, 77, 79, 82, 75, 9, 13, 12, 10, 12],ps:["압박검증", "끈기와인내", "인포서", "부상에 취약함"],tr:[]},
+  '보가르드':{a:[53, 44, 60, 75, 41, 71, 58, 43, 73, 73, 65, 68, 58, 73, 65, 67, 70, 67, 70, 58, 71, 73, 60, 72, 55, 69, 72, 75, 76, 9, 10, 11, 13, 10],ps:[],tr:[]},
+  '카마라':{a:[67, 47, 72, 86, 28, 78, 66, 47, 83, 83, 62, 65, 66, 83, 72, 67, 78, 81, 79, 63, 80, 85, 62, 79, 63, 85, 83, 86, 83, 8, 12, 8, 6, 11],ps:["블로킹"],tr:[]},
+  '로저스':{a:[75, 81, 64, 84, 74, 86, 82, 69, 80, 86, 75, 79, 80, 84, 75, 83, 79, 83, 79, 84, 70, 68, 83, 85, 60, 85, 68, 72, 49, 7, 8, 13, 11, 14],ps:["낮은 드리븐 슛", "예리한패스", "테크니컬", "인포서", "단일 클럽 선수"],tr:["#드리블러"]},
+  '부엔디아':{a:[78, 77, 75, 81, 69, 82, 81, 75, 75, 82, 74, 62, 85, 78, 90, 79, 78, 60, 63, 79, 82, 60, 77, 80, 62, 80, 67, 68, 61, 11, 10, 13, 7, 9],ps:["슬라이딩태클", "테크니컬"],tr:[]},
+  '산초':{a:[73, 74, 40, 80, 70, 86, 81, 67, 70, 85, 81, 77, 90, 78, 90, 75, 62, 57, 58, 70, 40, 33, 78, 80, 73, 83, 38, 35, 25, 7, 11, 10, 11, 13],ps:["감아차기", "트릭스터"],tr:["#드리블러", "#곡예사"]},
+  '왓킨스':{a:[67, 84, 84, 77, 84, 78, 74, 63, 64, 78, 77, 77, 78, 83, 70, 83, 89, 88, 76, 76, 76, 55, 85, 77, 74, 77, 45, 46, 36, 14, 14, 14, 6, 10],ps:["칩슛", "프리시전 헤딩", "끈기와인내", "단일 클럽 선수", "부상에 취약함"],tr:[]},
+  '영입·서머빌':{a:[74, 78, 50, 74, 61, 82, 74, 65, 53, 79, 91, 88, 91, 75, 87, 74, 72, 74, 46, 66, 47, 18, 78, 74, 69, 77, 44, 38, 26, 9, 9, 15, 11, 10],ps:["래피드", "퍼스트터치", "퀵스텝"],tr:["#곡예사"]},
+  '영입·보웬':{a:[80, 84, 82, 80, 73, 82, 75, 70, 73, 82, 78, 74, 79, 84, 81, 80, 84, 83, 66, 80, 62, 37, 83, 79, 75, 80, 49, 41, 37, 14, 8, 14, 10, 7],ps:["낮은 드리븐 슛", "게임 체인저", "테크니컬", "단일 클럽 선수"],tr:[]},
+  '영입·기라시':{a:[65, 85, 86, 81, 83, 81, 76, 67, 72, 84, 73, 71, 76, 84, 77, 90, 90, 84, 85, 80, 76, 33, 88, 79, 80, 87, 42, 44, 36, 11, 8, 12, 12, 8],ps:["칩슛 +", "감아차기", "프리시전 헤딩", "아크로바틱", "낮은 드리븐 슛", "퍼스트터치"],tr:[]},
+  '영입·아데예미':{a:[73, 81, 75, 74, 71, 84, 69, 62, 69, 80, 96, 96, 86, 82, 81, 86, 93, 77, 67, 76, 59, 31, 82, 74, 70, 76, 25, 34, 49, 12, 12, 7, 12, 7],ps:["퀵스텝 +", "파워슛", "래피드"],tr:["#속도광", "#곡예사"]},
+  '영입·페르난데스':{a:[77, 69, 56, 80, 75, 80, 79, 70, 79, 79, 73, 67, 84, 79, 81, 79, 69, 83, 62, 78, 60, 75, 75, 80, 64, 78, 69, 77, 74, 6, 5, 12, 8, 5],ps:["긴패스", "인벤티브", "퍼스트터치"],tr:[]},
+  '영입·브로베이':{a:[36, 75, 71, 73, 66, 68, 49, 44, 53, 77, 82, 85, 65, 78, 87, 79, 93, 61, 94, 66, 78, 26, 82, 58, 62, 78, 28, 23, 24, 10, 11, 15, 8, 13],ps:["인포서 +", "압박검증"],tr:["#힘"]},
+  '시세(합류확정)':{a:[37, 38, 70, 65, 35, 41, 33, 34, 61, 64, 71, 67, 58, 65, 60, 40, 76, 66, 70, 36, 65, 68, 29, 52, 46, 60, 67, 72, 68, 7, 12, 14, 9, 8],ps:[],tr:[]},
+  '영입·스즈키':{a:[12, 6, 12, 21, 7, 14, 13, 11, 23, 11, 55, 58, 59, 72, 33, 53, 73, 23, 78, 8, 26, 7, 7, 46, 18, 39, 8, 16, 13, 73, 72, 71, 74, 76],ps:["긴패스", "디플렉터"],tr:[]},
+  '영입·트루빈':{a:[11, 9, 40, 37, 6, 13, 13, 13, 32, 29, 49, 38, 36, 76, 45, 58, 76, 33, 69, 8, 28, 9, 21, 64, 18, 50, 9, 11, 11, 77, 76, 77, 83, 84],ps:["발놀림"],tr:[]},
+  '알리송(신규)':{a:[66, 62, 49, 66, 59, 76, 63, 58, 60, 68, 76, 81, 72, 65, 75, 60, 65, 64, 60, 62, 57, 26, 65, 65, 59, 70, 31, 37, 34, 11, 6, 10, 13, 14],ps:["인벤티브"],tr:[]},
+  '영입·파르도':{a:[69, 71, 51, 73, 62, 79, 64, 60, 60, 77, 90, 93, 81, 73, 76, 83, 77, 74, 73, 76, 58, 36, 70, 68, 70, 76, 41, 36, 32, 14, 9, 6, 13, 8],ps:["낮은 드리븐 슛", "압박검증", "퀵스텝"],tr:["#속도광"]},
+  '영입·레스테스':{a:[17, 9, 12, 51, 7, 8, 13, 13, 48, 17, 38, 44, 38, 72, 42, 60, 62, 39, 65, 7, 22, 13, 9, 62, 15, 55, 11, 16, 14, 79, 75, 80, 78, 80],ps:["발놀림"],tr:[]},
+  '영입·태버니어':{a:[77, 73, 50, 74, 62, 80, 80, 70, 70, 77, 83, 82, 78, 77, 79, 86, 70, 79, 62, 75, 60, 59, 72, 78, 74, 76, 59, 66, 57, 9, 14, 6, 12, 8],ps:["파워슛", "테크니컬"],tr:[]},
+  '영입·하지무사':{a:[69, 72, 47, 69, 61, 86, 77, 63, 60, 82, 83, 77, 92, 69, 80, 68, 62, 71, 50, 70, 35, 21, 72, 64, 50, 64, 29, 29, 36, 7, 5, 15, 12, 6],ps:["데드볼", "낮은 드리븐 슛", "게임 체인저", "휩 패스", "퍼스트터치", "트릭스터", "퀵스텝"],tr:["#드리블러", "#곡예사"]},
+  '영입·로피':{a:[63, 60, 70, 72, 51, 77, 60, 45, 75, 75, 76, 76, 67, 65, 63, 71, 84, 75, 80, 62, 76, 69, 65, 73, 55, 70, 68, 71, 68, 14, 11, 14, 6, 15],ps:["긴패스", "압박검증", "브루저"],tr:[]},
+  '영입·그레이':{a:[68, 59, 68, 78, 55, 75, 69, 55, 75, 77, 70, 73, 66, 77, 67, 66, 75, 77, 72, 60, 72, 76, 68, 73, 57, 78, 75, 76, 74, 15, 12, 13, 6, 5],ps:["단일 클럽 선수"],tr:[]},
+  '영입·바투리나':{a:[76, 70, 59, 81, 70, 84, 77, 75, 78, 83, 79, 77, 78, 78, 86, 75, 74, 76, 69, 72, 49, 58, 70, 80, 72, 79, 68, 64, 60, 7, 5, 7, 10, 6],ps:["감아차기", "예리한패스", "인벤티브", "테크니컬", "퍼스트터치"],tr:[]},
+  '영입·트래포드':{a:[17, 8, 15, 56, 9, 23, 23, 12, 53, 33, 54, 52, 52, 75, 51, 57, 64, 40, 55, 9, 28, 20, 14, 60, 16, 64, 21, 16, 19, 77, 75, 76, 75, 78],ps:["긴스로우", "발놀림", "크로스클레이머"],tr:[]},
+  '영입·모리바':{a:[60, 73, 67, 80, 57, 78, 62, 59, 78, 77, 76, 73, 70, 77, 65, 73, 81, 81, 78, 73, 77, 79, 73, 78, 55, 79, 75, 77, 71, 9, 14, 15, 10, 12],ps:["슬라이딩태클", "테크니컬", "브루저"],tr:[]},
+};
 /* 슬롯별 비교 후보 — grid: 실측 map25 (player_role_map measured[:class] / transfer_targets.map25),
    rate: {v:평균, b:'season'(시즌 포지션별)|'r6'(최근 6경기)|'top'(상위 경기 — 판정 제외), s:표기},
    dbFit: transfer_targets.fit_sim 기록값, lh: likelihood */
@@ -1344,13 +1399,27 @@ function cmpCard(side,prof,win){
   const fcLine=!fc?'<div class="cmp-fcnone">FC26 스탯 미수집</div>'
     :fc.none?`<div class="cmp-fcnone">FC26 미수록 — ${fc.none}</div>`
     :`<div class="cmp-line">FC26 <b>OVR ${fc.ovr}</b> · POT ${fc.pot} · ${fc.age}세 · ${fc.h}cm · 가치 ${fc.val}<br>등록 포지션 ${fc.pos} · sofifa 최적 ${fc.bp}</div>`;
+  const det=FC_DETAILS[cand.n];
+  const psLine=det&&(det.ps.length||det.tr.length)
+    ?`<div class="cmp-line" style="margin-top:4px">${det.ps.map(p=>`<span class="cmp-ps">${p}</span>`).join('')}${det.tr.map(t=>`<span class="cmp-ps tr">${t}</span>`).join('')}</div>`:'';
   return `<div class="cmp-card${win?' win':''}" data-side="${side}">${mini}<h3>${side} · ${cand.n}${win?' 🏆':''}</h3>
     <div class="sub">${(fc&&fc.club)||''}${lh}${expTag}</div>
     ${posLine?`<div class="cmp-line">${posLine}</div>`:''}
     <div class="cmp-line">${fitLine}</div>
     ${fcPosWarn}
     <div class="cmp-line">${rateLine}</div>
-    ${fcLine}</div>`;
+    ${fcLine}${psLine}</div>`;
+}
+/* 세부 능력치 34항목 — sofifa 상세, 카테고리별 미러 바 (양쪽 모두 있을 때만) */
+function cmpDetailBars(A,B){
+  const da=FC_DETAILS[A.c.n], db=FC_DETAILS[B.c.n];
+  if(!(da&&db)) return '';
+  const rows=FC_ATTR_GROUPS.map(([gname,s,e])=>
+    `<div class="cs-head" style="margin-top:9px">${gname}</div>`+
+    Array.from({length:e-s},(_,k)=>{const i=s+k, a=da.a[i], b=db.a[i];
+      return `<div class="cmp-srow drow"><span class="v a ${a>=b?'hi':''}">${a}</span><div class="cmp-bar L"><i class="${a<b?'dim':''}" style="width:${a}%"></i></div><span class="lab">${FC_ATTR_NAMES[i]}</span><div class="cmp-bar R"><i class="${b<a?'dim':''}" style="width:${b}%"></i></div><span class="v ${b>=a?'hi':''}">${b}</span></div>`;
+    }).join('')).join('');
+  return `<details class="cmp-det"><summary>세부 능력치 34항목 펼치기 — sofifa 상세 (플레이 스타일은 카드에 표시)</summary>${rows}</details>`;
 }
 function cmpStatBars(A,B,isGK){
   if(!(A.fc&&A.fc.st&&B.fc&&B.fc.st)) return '<div class="cmp-fcnone">양쪽 모두 FC26 스탯이 있어야 능력치 바 비교가 표시됩니다.</div>';
@@ -1375,7 +1444,7 @@ function renderCmp(){
   const notes=v.notes.length?`<span class="vnote">※ ${v.notes.join(' · ')}</span>`:'';
   body.innerHTML=`<div class="cmp-verdict">${head}<br>${chips}${notes}</div>`
     +`<div class="cmp-cols">${cmpCard('A',pa,!close&&d>0)}${cmpCard('B',pb,!close&&d<0)}</div>`
-    +`<div class="cmp-stats"><div class="cs-head">FC26 능력치 · sofifa ${FC_ROSTER_DATE} — 왼쪽 주황=A · 오른쪽 파랑=B</div>${cmpStatBars(pa,pb,slot.t==='GK')}</div>`;
+    +`<div class="cmp-stats"><div class="cs-head">FC26 능력치 · sofifa ${FC_ROSTER_DATE} — 왼쪽 주황=A · 오른쪽 파랑=B</div>${cmpStatBars(pa,pb,slot.t==='GK')}${cmpDetailBars(pa,pb)}</div>`;
   applyCmpPanels(key,pa,pb);
 }
 /* 좌우 패널 = 선택된 A/B 선수의 실측 히트맵 (슬롯 위치 기준) */
