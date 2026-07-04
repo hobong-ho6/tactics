@@ -593,7 +593,7 @@ const FORMATIONS = {
     {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning'}, // Kamara (시스템 스크리너 처방 유지)
     {pos:'LW', t:'W',  x:15,y:64, r:'w_insidefwd',   focus:'Attack'},       // Buendia — 시즌 LW 주포지션 (좌측 인버티드 창조)
     {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming'},      // Rogers — 시즌 CAM 주포지션 (중앙 10번)
-    {pos:'RM', t:'WM', x:85,y:64, r:'wm_widemid',    focus:'Build-Up'},     // McGinn (FC26 숙련도=와이드 미드필더; 실측 inside-fwd 0.80이나 미숙련이라 숙련 역할 채택)
+    {pos:'RM', t:'WM', x:85,y:64, r:'wm_insidefwd',  focus:'Balanced'},     // McGinn (시즌 실측 inside-fwd 0.80 — 숙련도 영향 규명 후 재검토)
     {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile'},    // Watkins
   ],
   /* Aston Villa 25/26 (Rogers CAM) — the exact XI/roles from Villa 4-2 Liverpool (15 May 2026),
@@ -1140,7 +1140,7 @@ const SQUAD_SLOTS=[
    {n:'영입·바투리나', opt:['cam_halfwinger','Roaming'],fit:['cam_halfwinger','Balanced']},
    {n:'영입·베리발', opt:['cam_playmaker','Roaming'],fit:['cam_halfwinger','Balanced']}]},
  {pos:'RM', t:'WM', x:85,y:64, opts:[
-   {n:'맥긴',      opt:['wm_widemid','Build-Up'],    fit:['wm_insidefwd','Balanced']},
+   {n:'맥긴',      opt:['wm_insidefwd','Balanced'],  fit:['wm_insidefwd','Balanced']},
    {n:'산초',      opt:['wm_insidefwd','Attack'],    fit:['wm_insidefwd','Attack']},
    {n:'영입·보웬',  opt:['wm_insidefwd','Attack'],   fit:['wm_insidefwd','Balanced']},
    {n:'영입·아데예미', opt:['wm_winger','Attack'],   fit:['wm_insidefwd','Balanced']},
@@ -1189,7 +1189,7 @@ const PLAYER_BEST={
   '영입·태버니어':{pos:['LM'],note:'실측 적합 0.82'},
   '영입·바투리나':{pos:['LM'],note:'실측 LM 0.80 > CAM 0.68 — 좌측 크리에이터'},
   '영입·베리발':{pos:['CAM'],note:'실측 적합 0.66 — 최근 출전시간 부족으로 표본 편향 caveat'},
-  '맥긴':{pos:['RM'],note:'오른쪽 — FC26 숙련도 와이드미드필더(+), 처방 widemid/Build-Up. 실측은 inside-fwd 0.80(미숙련이라 처방 제외)'},
+  '맥긴':{pos:['RM'],note:'오른쪽 — 시즌 inside-fwd/Balanced 0.80 (안으로 컷인). ※FC26 숙련도는 와이드미드 — 숙련도 영향 규명 후 재검토'},
   '산초':{pos:['RM'],note:'인버티드 우측 윙 (7.5/7.4/7.1)'},
   '영입·보웬':{pos:['RM'],note:'실측 적합 0.88 — 맥긴과 동일'},
   '영입·아데예미':{pos:['RM'],note:'실측 RM 0.74 (LW 0.24 부적합)'},
