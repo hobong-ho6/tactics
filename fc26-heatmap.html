@@ -573,26 +573,27 @@ const FORMATIONS = {
     {pos:'RB', t:'FB', x:87,y:32, r:'fb_att_wb',     focus:'Support'},      // 캐시      (sim .94)
     {pos:'LDM',t:'DM', x:38,y:42, r:'dm_dlp',        focus:'Roaming'},      // 오나나     (sim .72)
     {pos:'RDM',t:'DM', x:62,y:42, r:'dm_dlp',        focus:'Roaming'},      // 카마라     (sim .83 — 원정 표본 포함해도 DLP)
-    {pos:'LW', t:'W',  x:15,y:64, r:'w_winger',      focus:'Versatile'},    // 로저스     (sim .65 — 투웨이 볼륨)
-    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming'},      // 부엔디아   (sim .59 — 좌편향 프리롤은 커널 한계)
+    {pos:'LW', t:'W',  x:15,y:64, r:'w_wideplm',     focus:'Build-Up'},     // 부엔디아 (시즌 LW 주포지션 21경기, w_wideplm/Build-Up .71 — role:season)
+    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming'},      // 로저스 (시즌 CAM 주포지션 21경기, playmaker/Roaming .74 — role:season)
     {pos:'RM', t:'WM', x:85,y:64, r:'wm_insidefwd',  focus:'Balanced'},     // 맥긴      (sim .88)
     {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile'},    // 왓킨스     (sim .77)
   ],
-  /* Aston Villa 25/26 (optimal) — data-derived best position+role per player under Emery,
-     from SofaScore top-3 club ratings + team results (see data/avl_analysis.db player_role_map).
-     Key data findings: Rogers peaks LEFT (8.84/8.46) not central 10; Buendia is the optimal No.10 (9.4);
-     McGinn optimal RIGHT (8.7/8.6); Tielemans peaks as a DEEP pivot (bench here behind Kamara/Onana). */
+  /* Aston Villa 25/26 (optimal) — SEASON-REVISED 2026-07-03: full-season-average basis
+     (333-match position-pure heatmaps). Prior best-game version had Rogers LEFT / Buendia 10
+     (ceiling bias); season primaries FLIP to Rogers CAM (21 matches) / Buendia LW (21).
+     Also season-corrected: Digne att_wb, Konsa BPD, Onana DLP, McGinn inside-fwd.
+     Kamara keeps holding (system screener). See player_role_map kind='optimal' + tactic_observations. */
   '아스톤 빌라 25/26 (최적)':[
     {pos:'GK', t:'GK', x:50,y:6,  r:'gk_sweeper',    focus:'Build-Up'},     // Martínez
-    {pos:'LB', t:'FB', x:13,y:32, r:'fb_fullback',   focus:'Versatile'},    // Digne
+    {pos:'LB', t:'FB', x:13,y:32, r:'fb_att_wb',     focus:'Support'},      // Digne (시즌 att_wb .91 — 전진형)
     {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up'},     // Pau Torres
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_defender',   focus:'Balanced'},     // Konsa
+    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Build-Up'},     // Konsa (시즌 BPD .94 — 스토퍼 프레임 기각)
     {pos:'RB', t:'FB', x:87,y:32, r:'fb_fullback',   focus:'Versatile'},    // Cash
-    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_boxcrasher', focus:'Balanced'},     // Onana (surging pivot; left of Kamara — measured)
-    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning'}, // Kamara (screen; RIGHT-of-centre, 26-match avg y=42.6)
-    {pos:'LW', t:'W',  x:15,y:64, r:'w_insidefwd',   focus:'Attack'},       // Rogers — optimal LEFT
-    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming'},      // Buendia — optimal No.10
-    {pos:'RM', t:'WM', x:85,y:64, r:'wm_widemid',    focus:'Support'},      // McGinn — optimal RIGHT
+    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_dlp',        focus:'Roaming'},      // Onana (시즌 DLP/Roaming — boxcrasher는 베스트겜 편향)
+    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning'}, // Kamara (시스템 스크리너 처방 유지)
+    {pos:'LW', t:'W',  x:15,y:64, r:'w_insidefwd',   focus:'Attack'},       // Buendia — 시즌 LW 주포지션 (좌측 인버티드 창조)
+    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming'},      // Rogers — 시즌 CAM 주포지션 (중앙 10번)
+    {pos:'RM', t:'WM', x:85,y:64, r:'wm_insidefwd',  focus:'Balanced'},     // McGinn (시즌+문서 일치 — 안으로 컷인, 폭은 캐시)
     {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile'},    // Watkins
   ],
   /* Aston Villa 25/26 (Rogers CAM) — the exact XI/roles from Villa 4-2 Liverpool (15 May 2026),
@@ -1090,14 +1091,14 @@ const SQUAD_SLOTS=[
    {n:'영입·리세르', opt:['gk_sweeper','Build-Up'],  fit:['gk_goalkeeper','Defend']},
    {n:'영입·요한손', opt:['gk_sweeper','Build-Up'],  fit:['gk_goalkeeper','Defend']}]},
  {pos:'LB', t:'FB', x:13,y:32, opts:[
-   {n:'디뉴',      opt:['fb_fullback','Versatile'], fit:['fb_att_wb','Support']},
-   {n:'마첸',      opt:['fb_att_wb','Attack'],      fit:['fb_att_wb','Support']}]},
+   {n:'디뉴',      opt:['fb_att_wb','Support'],     fit:['fb_att_wb','Support']},
+   {n:'마첸',      opt:['fb_wingback','Balanced'],  fit:['fb_wingback','Balanced']}]},
  {pos:'LCB',t:'CB', x:37,y:28, opts:[
    {n:'파우 토레스', opt:['cb_bpd','Build-Up'],      fit:['cb_bpd','Aggressive']},
    {n:'린델뢰프',   opt:['cb_defender','Balanced'],  fit:['cb_defender','Balanced']},
    {n:'영입·켈리',  opt:['cb_bpd','Build-Up'],       fit:['cb_bpd','Aggressive']}]},
  {pos:'RCB',t:'CB', x:63,y:28, opts:[
-   {n:'콘사',      opt:['cb_defender','Balanced'],  fit:['cb_bpd','Aggressive']},
+   {n:'콘사',      opt:['cb_bpd','Build-Up'],       fit:['cb_bpd','Aggressive']},
    {n:'린델뢰프',   opt:['cb_defender','Balanced'],  fit:['cb_defender','Balanced']},
    {n:'시세(합류확정)', opt:['cb_defender','Balanced'], fit:['cb_bpd','Aggressive']},
    {n:'영입·찰로바', opt:['cb_defender','Balanced'],  fit:['cb_bpd','Aggressive']}]},
@@ -1105,7 +1106,7 @@ const SQUAD_SLOTS=[
    {n:'캐시',      opt:['fb_fullback','Versatile'], fit:['fb_att_wb','Support']},
    {n:'영입·에메르송', opt:['fb_att_wb','Support'],   fit:['fb_att_wb','Support']}]},
  {pos:'LDM',t:'DM', x:38,y:42, opts:[
-   {n:'오나나',    opt:['dm_boxcrasher','Balanced'], fit:['dm_dlp','Roaming']},
+   {n:'오나나',    opt:['dm_dlp','Roaming'],         fit:['dm_dlp','Roaming']},
    {n:'틸레만스',  opt:['dm_dlp','Build-Up'],        fit:['dm_dlp','Build-Up']},
    {n:'보가르드',  opt:['dm_holding','Defend'],      fit:['dm_holding','Defend']},
    {n:'영입·페르난데스', opt:['dm_dlp','Build-Up'],  fit:['dm_dlp','Roaming']},
@@ -1115,7 +1116,7 @@ const SQUAD_SLOTS=[
  {pos:'RDM',t:'DM', x:62,y:42, opts:[
    {n:'카마라',    opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
    {n:'틸레만스',  opt:['dm_dlp','Build-Up'],        fit:['dm_dlp','Build-Up']},
-   {n:'오나나',    opt:['dm_boxcrasher','Balanced'], fit:['dm_dlp','Roaming']},
+   {n:'오나나',    opt:['dm_dlp','Roaming'],         fit:['dm_dlp','Roaming']},
    {n:'린델뢰프',   opt:['dm_holding','Defend'],     fit:['dm_holding','Defend']},
    {n:'보가르드',  opt:['dm_holding','Defend'],      fit:['dm_holding','Defend']},
    {n:'영입·페르난데스', opt:['dm_dlp','Build-Up'],  fit:['dm_dlp','Roaming']},
@@ -1124,22 +1125,22 @@ const SQUAD_SLOTS=[
  /* 4-2-3-1 Wide의 좌측 슬롯 = LM(WM 타입). 분석 라벨 LW의 게임 매핑 — fit은 wm_* 커널
     재계산 (2026-07-02, transfer_targets LM rows + player_role_map kind='role:LM') */
  {pos:'LM', t:'WM', x:14,y:64, opts:[
-   {n:'로저스',    opt:['wm_insidefwd','Attack'],    fit:['wm_widemid','Defend']},
    {n:'부엔디아',  opt:['wm_wideplm','Attack'],      fit:['wm_wideplm','Attack']},
+   {n:'로저스',    opt:['wm_insidefwd','Attack'],    fit:['wm_widemid','Defend']},
    {n:'영입·서머빌', opt:['wm_insidefwd','Attack'],  fit:['wm_insidefwd','Balanced']},
    {n:'영입·파르도', opt:['wm_insidefwd','Attack'],  fit:['wm_insidefwd','Attack']},
    {n:'영입·태버니어', opt:['wm_insidefwd','Balanced'],fit:['wm_insidefwd','Balanced']},
    {n:'영입·바투리나', opt:['wm_insidefwd','Attack'],  fit:['wm_wideplm','Attack']},
    {n:'영입·트로사르', opt:['wm_widemid','Defend'],    fit:['wm_widemid','Defend']}]},
  {pos:'CAM',t:'CAM',x:50,y:66, opts:[
-   {n:'부엔디아',  opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
    {n:'로저스',    opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
+   {n:'부엔디아',  opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
    {n:'틸레만스',  opt:['cam_playmaker','Build-Up'], fit:['cam_playmaker','Build-Up']},
    {n:'맥긴',      opt:['cam_playmaker','Balanced'], fit:['cam_playmaker','Balanced']},
    {n:'영입·바투리나', opt:['cam_halfwinger','Roaming'],fit:['cam_halfwinger','Balanced']},
    {n:'영입·베리발', opt:['cam_playmaker','Roaming'],fit:['cam_halfwinger','Balanced']}]},
  {pos:'RM', t:'WM', x:85,y:64, opts:[
-   {n:'맥긴',      opt:['wm_widemid','Support'],     fit:['wm_insidefwd','Balanced']},
+   {n:'맥긴',      opt:['wm_insidefwd','Balanced'],  fit:['wm_insidefwd','Balanced']},
    {n:'산초',      opt:['wm_insidefwd','Attack'],    fit:['wm_insidefwd','Attack']},
    {n:'영입·보웬',  opt:['wm_insidefwd','Attack'],   fit:['wm_insidefwd','Balanced']},
    {n:'영입·아데예미', opt:['wm_winger','Attack'],   fit:['wm_insidefwd','Balanced']},
@@ -1165,16 +1166,16 @@ const PLAYER_BEST={
   '영입·리세르':{pos:['GK'],note:'실측 적합 0.98 — 리그1 GK of the Year'},
   '영입·요한손':{pos:['GK'],note:'실측 적합 0.97 — 빌라 아카데미 출신'},
   '디뉴':{pos:['LB'],note:'LB 상위 경기 최다 (8.2/8.2)'},
-  '마첸':{pos:['LB'],note:'공격형 LB — 디뉴의 대안'},
+  '마첸':{pos:['LB'],note:'규율형 윙백 — 시즌 wingback/Balanced 0.86 (att_wb는 베스트겜 편향)'},
   '파우 토레스':{pos:['LCB'],note:'좌측 볼 플레잉 CB'},
   '린델뢰프':{pos:['LCB','RCB'],note:'양쪽 CB 커버 (~6.65 동일)'},
-  '콘사':{pos:['RCB'],note:'전 경기 RCB (피크 8.3)'},
+  '콘사':{pos:['RCB'],note:'RCB — 시즌 BPD/Aggressive 0.94 (스텝아웃, 순수 스토퍼 아님)'},
   '시세(합류확정)':{pos:['RCB'],note:'실측 적합 0.89'},
   '영입·찰로바':{pos:['RCB'],note:'실측 적합 0.79 — 시세와 동일 패밀리(cb_bpd)'},
   '영입·켈리':{pos:['LCB'],note:'실측 적합 0.91 — 좌발, LB 겸업 가능(밍스 대체)'},
   '캐시':{pos:['RB'],note:'RB 피크 8.4'},
   '영입·에메르송':{pos:['RB'],note:'실측 적합 0.94 — 캐시와 동일'},
-  '오나나':{pos:['LDM'],note:'피벗 좌측, 박스 진입형 (8.2/8.1)'},
+  '오나나':{pos:['LDM'],note:'피벗 좌측 — 시즌 DLP/Roaming (박스크래셔는 베스트겜 편향)'},
   '카마라':{pos:['RDM'],note:'피벗 앵커/스크린 (7.8/7.8)'},
   '틸레만스':{pos:['LDM','RDM'],note:'딥 피벗이 최적 (EL 결승 8.4) — 10번 아님'},
   '보가르드':{pos:['LDM','RDM'],note:'홀딩 미드 로테이션'},
@@ -1182,13 +1183,13 @@ const PLAYER_BEST={
   '영입·로피':{pos:['LDM'],note:'실측 LDM 0.84 > RDM 0.58'},
   '영입·그레이':{pos:['RDM'],note:'실측 RDM 0.77 > LDM 0.65'},
   '영입·모리바':{pos:['LDM'],note:'실측 LDM 0.80 > RDM 0.58'},
-  '로저스':{pos:['LM'],note:'왼쪽 피크 8.84/8.46 > 중앙 10번 8.3 · 접전 시 포커스 Balanced (실측 0.60>0.58)'},
-  '부엔디아':{pos:['CAM'],note:'최적 10번 — 피크 9.4'},
+  '로저스':{pos:['CAM'],note:'시즌 주포지션 CAM 21경기(7.1)>LW 13(6.91) — 중앙 10번 (LW는 천장, 접전 변형)'},
+  '부엔디아':{pos:['LM'],note:'시즌 주포지션 LW 21경기 — 좌측 인버티드 창조 (CAM은 3경기뿐)'},
   '영입·서머빌':{pos:['LM'],note:'실측 적합 0.70 — 로저스와 유사 동선'},
   '영입·태버니어':{pos:['LM'],note:'실측 적합 0.82'},
   '영입·바투리나':{pos:['LM'],note:'실측 LM 0.80 > CAM 0.68 — 좌측 크리에이터'},
   '영입·베리발':{pos:['CAM'],note:'실측 적합 0.66 — 최근 출전시간 부족으로 표본 편향 caveat'},
-  '맥긴':{pos:['RM'],note:'오른쪽 피크 8.7/8.6'},
+  '맥긴':{pos:['RM'],note:'오른쪽 — 시즌 inside-fwd/Balanced 0.80 (안으로 컷인, 폭은 캐시)'},
   '산초':{pos:['RM'],note:'인버티드 우측 윙 (7.5/7.4/7.1)'},
   '영입·보웬':{pos:['RM'],note:'실측 적합 0.88 — 맥긴과 동일'},
   '영입·아데예미':{pos:['RM'],note:'실측 RM 0.74 (LW 0.24 부적합)'},
