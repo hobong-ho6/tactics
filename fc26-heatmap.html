@@ -1095,11 +1095,11 @@ const SQUAD_SLOTS=[
    {n:'마첸',      opt:['fb_wingback','Balanced'],  fit:['fb_wingback','Balanced']}]},
  {pos:'LCB',t:'CB', x:37,y:28, opts:[
    {n:'파우 토레스', opt:['cb_bpd','Build-Up'],      fit:['cb_bpd','Aggressive']},
-   {n:'린델뢰프',   opt:['cb_defender','Balanced'],  fit:['cb_defender','Balanced']},
+   {n:'린델뢰프',   opt:['cb_bpd','Build-Up'],       fit:['cb_bpd','Aggressive']},
    {n:'영입·켈리',  opt:['cb_bpd','Build-Up'],       fit:['cb_bpd','Aggressive']}]},
  {pos:'RCB',t:'CB', x:63,y:28, opts:[
    {n:'콘사',      opt:['cb_bpd','Build-Up'],       fit:['cb_bpd','Aggressive']},
-   {n:'린델뢰프',   opt:['cb_defender','Balanced'],  fit:['cb_defender','Balanced']},
+   {n:'린델뢰프',   opt:['cb_bpd','Build-Up'],       fit:['cb_bpd','Aggressive']},
    {n:'시세(합류확정)', opt:['cb_defender','Balanced'], fit:['cb_bpd','Aggressive']},
    {n:'영입·찰로바', opt:['cb_defender','Balanced'],  fit:['cb_bpd','Aggressive']}]},
  {pos:'RB', t:'FB', x:87,y:32, opts:[
@@ -1168,7 +1168,7 @@ const PLAYER_BEST={
   '디뉴':{pos:['LB'],note:'LB 상위 경기 최다 (8.2/8.2)'},
   '마첸':{pos:['LB'],note:'규율형 윙백 — 시즌 wingback/Balanced 0.86 (att_wb는 베스트겜 편향)'},
   '파우 토레스':{pos:['LCB'],note:'좌측 볼 플레잉 CB'},
-  '린델뢰프':{pos:['LCB','RCB'],note:'양쪽 CB 커버 (~6.65 동일)'},
+  '린델뢰프':{pos:['LCB','RCB'],note:'양쪽 CB 커버 — 시즌 BPD/Aggressive 0.78 (락다운 시 defender 대안)'},
   '콘사':{pos:['RCB'],note:'RCB — 시즌 BPD/Aggressive 0.94 (스텝아웃, 순수 스토퍼 아님)'},
   '시세(합류확정)':{pos:['RCB'],note:'실측 적합 0.89'},
   '영입·찰로바':{pos:['RCB'],note:'실측 적합 0.79 — 시세와 동일 패밀리(cb_bpd)'},

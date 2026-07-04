@@ -11,7 +11,7 @@ INSERT INTO player_role_map VALUES(10,'2025-26','FC26','optimal','RM',85,64,'wm_
 INSERT INTO player_role_map VALUES(16,'2025-26','FC26','optimal','ST',50,87,'st_advanced','Versatile',NULL,'[XI] Lone ST; 8.7/8.5 in wins, channel runs + in-behind.');
 INSERT INTO player_role_map VALUES(6,'2025-26','FC26','optimal','LB',NULL,NULL,'fb_wingback','Balanced',NULL,'[bench] SEASON-REVISED 2026-07-03: full-season LB grid→fb_wingback/Balanced 0.86 (best-game fb_att_wb/Support 0.85 fell out of season top — attacking outings overweighted the best-game sample). Disciplined two-way wingback, matches doc.');
 INSERT INTO player_role_map VALUES(9,'2025-26','FC26','optimal','LDM',NULL,NULL,'dm_dlp','Build-Up',NULL,'[bench] DATA KEY: optimal DEEPER pivot (EL final 8.4) NOT the No.10; premier deep-mid rotation.');
-INSERT INTO player_role_map VALUES(7,'2025-26','FC26','optimal','LCB',NULL,NULL,'cb_defender','Balanced',NULL,'[bench] Two-footed CB cover, ~6.65 either side.');
+INSERT INTO player_role_map VALUES(7,'2025-26','FC26','optimal','LCB',NULL,NULL,'cb_bpd','Build-Up',NULL,'[bench] SEASON-REVISED 2026-07-04: 시즌 28경기 cb_bpd/Aggressive 0.78 > cb_defender(top밖) — 파우·콘사와 동일 볼플레잉 프로필(단 0.78로 다소 약함). cb_defender→cb_bpd/Build-Up 통일. 락다운 게임 한정 cb_defender 대안 가능.');
 INSERT INTO player_role_map VALUES(11,'2025-26','FC26','optimal','LDM',NULL,NULL,'dm_holding','Defend',NULL,'[bench] Holding-mid rotation.');
 INSERT INTO player_role_map VALUES(15,'2025-26','FC26','optimal','RW',NULL,NULL,'w_insidefwd','Attack',NULL,'[bench] Left-footed inverted RW in his top games (7.5/7.4/7.1).');
 INSERT INTO player_role_map VALUES(1,'2025-26','FC26','match:LIV-4-2','GK',50,6,'gk_sweeper','Balanced',NULL,'Villa 4-2 Liverpool 15 May 2026 — Rogers best game as central No.10');
