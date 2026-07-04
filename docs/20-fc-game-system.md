@@ -102,6 +102,13 @@
   실측 부적합 슬롯은 제공하지 않는다 (아데예미 LW 0.24 사례; 로저스 RM 제외와 동일 정책).
   이적 확정/무산 시 transfer_targets의 likelihood를 갱신하고 확정 영입은 players로 승격.
 - 역할·포커스 표기는 전부 `한글 (English)` 병기 — 게임 내 설정 오입력 방지.
+- **FC26 역할 숙련도(role familiarity) 플래그** (2026-07-05): `player_fc_stats.role_familiarity`
+  (sofifa 파생, role_id별 레벨 1=+/2=++). 슬롯 카드·비교 카드에 **처방 역할이 그 선수에게
+  숙련된 역할인지** ✓/⚠로 표시(툴 `FC_FAMILIARITY`, `roleFamiliar()`, W↔WM 개념 정규화).
+  **숙련도는 행동(AI 실행 정교함) 영향이지 스탯 너프가 아니므로**(EA 미공개, 커뮤니티 합의),
+  **optimal은 실측 기준을 유지**하고 숙련도는 정보 플래그로만 쓴다. 발견: 측정 최적의 절반이
+  EA 기본 숙련과 불일치 — 에메리가 선수를 기본 역할 너머로 기용(CB Defender→BPD, 캐시
+  Wingback→AttWB, 오나나 Holding→DLP, 맥긴 WideMid→InsideFwd). 재현 시 소프트 실행 비용만 감수.
 
 ### 스쿼드 인선 → 전술 조정 규칙 (2026-07-03, 실측 그리드 겹침·수비가담 분석)
 

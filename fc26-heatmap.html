@@ -1291,6 +1291,60 @@ const FC_DETAILS={
   '영입·트래포드':{a:[17, 8, 15, 56, 9, 23, 23, 12, 53, 33, 54, 52, 52, 75, 51, 57, 64, 40, 55, 9, 28, 20, 14, 60, 16, 64, 21, 16, 19, 77, 75, 76, 75, 78],ps:["긴스로우", "발놀림", "크로스클레이머"],tr:[]},
   '영입·모리바':{a:[60, 73, 67, 80, 57, 78, 62, 59, 78, 77, 76, 73, 70, 77, 65, 73, 81, 81, 78, 73, 77, 79, 73, 78, 55, 79, 75, 77, 71, 9, 14, 15, 10, 12],ps:["슬라이딩태클", "테크니컬", "브루저"],tr:[]},
 };
+/* FC26 역할 숙련도 (sofifa 역할 섹션, role_id: 레벨 1=+ / 2=++). player_fc_stats.role_familiarity 파생.
+   숙련도는 행동(AI 실행) 영향이지 스탯 너프 아님 — 처방은 실측 기준 유지, 아래는 정보 플래그용. */
+const FC_FAMILIARITY={
+  '마르티네스':{"gk_ballplaying": 1},
+  '캐시':{"fb_wingback": 1, "wm_widemid": 1},
+  '콘사':{"cb_defender": 1},
+  '파우 토레스':{"cb_defender": 1},
+  '디뉴':{"fb_wingback": 1, "fb_att_wb": 1},
+  '마첸':{"fb_att_wb": 1},
+  '린델뢰프':{"cb_defender": 1},
+  '오나나':{"dm_holding": 1},
+  '틸레만스':{"cm_playmaker": 1, "cm_dlp": 1, "dm_dlp": 1, "cam_playmaker": 1},
+  '맥긴':{"wm_widemid": 1, "cam_playmaker": 1},
+  '보가르드':{"dm_holding": 1, "cm_b2b": 1, "fb_wingback": 1},
+  '카마라':{"dm_holding": 1, "dm_dlp": 1, "cm_b2b": 1},
+  '로저스':{"cam_playmaker": 1, "wm_insidefwd": 1},
+  '부엔디아':{"wm_winger": 1, "cam_playmaker": 1},
+  '산초':{"wm_wideplm": 1},
+  '왓킨스':{"st_advanced": 1},
+  '밍스':{"cb_defender": 1},
+  '게상':{"w_insidefwd": 1, "wm_insidefwd": 1, "st_poacher": 1},
+  '비조':{"gk_ballplaying": 1},
+  '말렌':{"st_false9": 1, "wm_insidefwd": 1, "w_insidefwd": 1},
+  '바클리':{"cm_b2b": 1, "cam_playmaker": 1},
+  '두글라스 루이스':{"dm_boxcrasher": 1, "cm_dlp": 1},
+  '영입·서머빌':{"wm_insidefwd": 1, "wm_wideplm": 1},
+  '영입·보웬':{"wm_insidefwd": 1, "wm_winger": 1, "st_poacher": 1},
+  '영입·기라시':{"st_poacher": 2, "st_target": 1},
+  '영입·아데예미':{"wm_insidefwd": 1, "wm_winger": 1, "w_insidefwd": 1, "cam_shadow": 1},
+  '영입·페르난데스':{"cm_dlp": 1, "cm_b2b": 1, "cam_playmaker": 1},
+  '영입·브로베이':{"st_target": 1},
+  '시세(합류확정)':{"cb_defender": 1, "cb_stopper": 1},
+  '영입·스즈키':{"gk_ballplaying": 1},
+  '영입·트루빈':{"gk_goalkeeper": 1},
+  '알리송(신규)':{"wm_winger": 1, "w_winger": 1},
+  '영입·파르도':{"wm_insidefwd": 1, "wm_winger": 1, "st_advanced": 1},
+  '영입·레스테스':{"gk_goalkeeper": 1},
+  '영입·태버니어':{"wm_wideplm": 1, "cam_playmaker": 1},
+  '영입·하지무사':{"w_insidefwd": 1},
+  '영입·로피':{"dm_centrehalf": 1, "dm_dlp": 1, "cm_b2b": 1},
+  '영입·그레이':{"dm_holding": 1, "dm_widehalf": 1, "cb_bpd": 1, "fb_wingback": 1},
+  '영입·바투리나':{"cam_playmaker": 1, "wm_wideplm": 1},
+  '영입·트래포드':{"gk_ballplaying": 1},
+  '영입·모리바':{"cm_b2b": 1},
+  '아브라함(보유)':{"st_poacher": 1},
+};
+/* 처방 역할이 그 선수에게 숙련된 역할인지 — W↔WM 동일개념 정규화 포함 */
+function roleFamiliar(name,roleId){
+  const f=FC_FAMILIARITY[name]; if(!f) return null;   // 데이터 없음
+  if(f[roleId]) return f[roleId];
+  // w_/wm_ 개념 교차(같은 역할, 다른 포지션 라벨)
+  const alt=roleId.startsWith('w_')?roleId.replace(/^w_/,'wm_'):roleId.startsWith('wm_')?roleId.replace(/^wm_/,'w_'):null;
+  return alt&&f[alt]?f[alt]:0;
+}
 /* 슬롯별 비교 후보 — grid: 실측 map25 (player_role_map measured[:class] / transfer_targets.map25),
    rate: {v:평균, b:'season'(시즌 포지션별)|'r6'(최근 6경기)|'top'(상위 경기 — 판정 제외), s:표기},
    dbFit: transfer_targets.fit_sim 기록값, lh: likelihood */
@@ -1553,13 +1607,23 @@ function cmpCard(side,prof,win){
   const det=FC_DETAILS[cand.n];
   const psLine=det&&(det.ps.length||det.tr.length)
     ?`<div class="cmp-line" style="margin-top:4px">${det.ps.map(p=>`<span class="cmp-ps">${p}</span>`).join('')}${det.tr.map(t=>`<span class="cmp-ps tr">${t}</span>`).join('')}</div>`:'';
+  // FC26 역할 숙련도 — 이 슬롯 포지션 타입에서 숙련된 역할 (정보용)
+  const famMap=FC_FAMILIARITY[cand.n];
+  const pref={GK:'gk',CB:'cb',FB:'fb',DM:'dm',CM:'cm',CAM:'cam',WM:'wm',W:'w',ST:'st'}[(CMP_SLOTS[prof.slotKey]||{}).t];
+  let famLine='';
+  if(famMap&&pref){
+    const rel=Object.keys(famMap).filter(r=>r.startsWith(pref+'_')||(pref==='wm'&&r.startsWith('w_'))||(pref==='w'&&r.startsWith('wm_')));
+    famLine=rel.length
+      ?`<div class="cmp-line" style="color:var(--muted-2)">FC26 숙련 역할(${prof.slotKey}): ${rel.map(r=>(ROLES[r]?ROLES[r].n:r)+(famMap[r]>=2?'++':'')).join(', ')}</div>`
+      :`<div class="cmp-line"><span class="warn">⚠ 이 포지션 숙련 역할 없음</span> — 게임 실행 단순화(스탯 페널티 없음)</div>`;
+  }
   return `<div class="cmp-card${win?' win':''}" data-side="${side}">${mini}<h3>${side} · ${cand.n}${win?' 🏆':''}</h3>
     <div class="sub">${(fc&&fc.club)||''}${lh}${expTag}</div>
     ${posLine?`<div class="cmp-line">${posLine}</div>`:''}
     <div class="cmp-line">${fitLine}</div>
     ${fcPosWarn}
     <div class="cmp-line">${rateLine}</div>
-    ${fcLine}${psLine}</div>`;
+    ${fcLine}${psLine}${famLine}</div>`;
 }
 /* 세부 능력치 34항목 — sofifa 상세, 카테고리별 미러 바 (양쪽 모두 있을 때만) */
 function cmpDetailBars(A,B){
@@ -1656,9 +1720,14 @@ function buildSquadUI(){
     const posLine=best?(best.pos.includes(s.pos)
       ?`<span class="ok">✓ 최적 포지션</span> — ${best.note}`
       :`<span class="warn">⚠ 최적 포지션: ${best.pos.join('/')}</span> — ${best.note}`):'';
+    // 처방 역할이 FC26에서 숙련된 역할인지 (정보 플래그, 스탯 너프 아님 — 실행 정교함만)
+    const fam=(typeof roleFamiliar==='function')?roleFamiliar(sel.n,sel.opt[0]):null;
+    const famLine=fam===null?'':fam>0
+      ?`<div><span class="ok">✓ 숙련 역할${fam>=2?'++':''}</span> — 게임 실행 정교</div>`
+      :`<div><span class="warn">⚠ 미숙련 역할</span> — 실측 재현 처방(게임 실행 단순화, 스탯 페널티는 없음)</div>`;
     div.innerHTML=`<label>${s.pos}</label><select>${opts}</select>
       <div class="sq-info">${posLine?`<div>${posLine}</div>`:''}
-        <div>🎯 처방: <b>${fmtRF(sel.opt)}</b></div>
+        <div>🎯 처방: <b>${fmtRF(sel.opt)}</b></div>${famLine}
         <div>🔁 실측: ${fmtRF(sel.fit)}</div></div>`;
     div.querySelector('select').addEventListener('change',e=>{ sqSel[i]=+e.target.value; buildSquadUI(); applySquad(); });
     holder.appendChild(div);
