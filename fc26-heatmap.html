@@ -1086,13 +1086,16 @@ const SQUAD_SLOTS=[
    {n:'영입·스즈키', opt:['gk_sweeper','Balanced'],  fit:['gk_goalkeeper','Defend']},
    {n:'영입·레스테스', opt:['gk_sweeper','Build-Up'],fit:['gk_goalkeeper','Defend']},
    {n:'영입·트래포드', opt:['gk_sweeper','Build-Up'],fit:['gk_goalkeeper','Balanced']},
-   {n:'영입·헨더슨', opt:['gk_sweeper','Build-Up'],  fit:['gk_goalkeeper','Defend']}]},
+   {n:'영입·헨더슨', opt:['gk_sweeper','Build-Up'],  fit:['gk_goalkeeper','Defend']},
+   {n:'영입·리세르', opt:['gk_sweeper','Build-Up'],  fit:['gk_goalkeeper','Defend']},
+   {n:'영입·요한손', opt:['gk_sweeper','Build-Up'],  fit:['gk_goalkeeper','Defend']}]},
  {pos:'LB', t:'FB', x:13,y:32, opts:[
    {n:'디뉴',      opt:['fb_fullback','Versatile'], fit:['fb_att_wb','Support']},
    {n:'마첸',      opt:['fb_att_wb','Attack'],      fit:['fb_att_wb','Support']}]},
  {pos:'LCB',t:'CB', x:37,y:28, opts:[
    {n:'파우 토레스', opt:['cb_bpd','Build-Up'],      fit:['cb_bpd','Aggressive']},
-   {n:'린델뢰프',   opt:['cb_defender','Balanced'],  fit:['cb_defender','Balanced']}]},
+   {n:'린델뢰프',   opt:['cb_defender','Balanced'],  fit:['cb_defender','Balanced']},
+   {n:'영입·켈리',  opt:['cb_bpd','Build-Up'],       fit:['cb_bpd','Aggressive']}]},
  {pos:'RCB',t:'CB', x:63,y:28, opts:[
    {n:'콘사',      opt:['cb_defender','Balanced'],  fit:['cb_bpd','Aggressive']},
    {n:'린델뢰프',   opt:['cb_defender','Balanced'],  fit:['cb_defender','Balanced']},
@@ -1133,7 +1136,8 @@ const SQUAD_SLOTS=[
    {n:'로저스',    opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
    {n:'틸레만스',  opt:['cam_playmaker','Build-Up'], fit:['cam_playmaker','Build-Up']},
    {n:'맥긴',      opt:['cam_playmaker','Balanced'], fit:['cam_playmaker','Balanced']},
-   {n:'영입·바투리나', opt:['cam_halfwinger','Roaming'],fit:['cam_halfwinger','Balanced']}]},
+   {n:'영입·바투리나', opt:['cam_halfwinger','Roaming'],fit:['cam_halfwinger','Balanced']},
+   {n:'영입·베리발', opt:['cam_playmaker','Roaming'],fit:['cam_halfwinger','Balanced']}]},
  {pos:'RM', t:'WM', x:85,y:64, opts:[
    {n:'맥긴',      opt:['wm_widemid','Support'],     fit:['wm_insidefwd','Balanced']},
    {n:'산초',      opt:['wm_insidefwd','Attack'],    fit:['wm_insidefwd','Attack']},
@@ -1146,7 +1150,8 @@ const SQUAD_SLOTS=[
    {n:'영입·기라시', opt:['st_target','Attack'],     fit:['st_false9','Attack']},
    {n:'영입·브로베이', opt:['st_target','Attack'],   fit:['st_false9','Attack']},
    {n:'영입·파르도', opt:['st_advanced','Attack'],   fit:['st_advanced','Support']},
-   {n:'아브라함(보유)', opt:['st_target','Attack'],  fit:['st_false9','Attack']}]},
+   {n:'아브라함(보유)', opt:['st_target','Attack'],  fit:['st_false9','Attack']},
+   {n:'영입·볼테마데', opt:['st_advanced','Versatile'],fit:['st_false9','Build-Up']}]},
 ];
 /* per-player best position + one-line evidence (derived from player_role_map kind='optimal'
    for owned players, transfer_targets fit_sim for incoming candidates — DB가 바뀌면 함께 갱신) */
@@ -1157,6 +1162,8 @@ const PLAYER_BEST={
   '영입·레스테스':{pos:['GK'],note:'실측 적합 0.97'},
   '영입·트래포드':{pos:['GK'],note:'실측 적합 0.97 — 로마노 숏리스트'},
   '영입·헨더슨':{pos:['GK'],note:'실측 적합 0.96 — 전통 슛스토퍼(비스위퍼)'},
+  '영입·리세르':{pos:['GK'],note:'실측 적합 0.98 — 리그1 GK of the Year'},
+  '영입·요한손':{pos:['GK'],note:'실측 적합 0.97 — 빌라 아카데미 출신'},
   '디뉴':{pos:['LB'],note:'LB 상위 경기 최다 (8.2/8.2)'},
   '마첸':{pos:['LB'],note:'공격형 LB — 디뉴의 대안'},
   '파우 토레스':{pos:['LCB'],note:'좌측 볼 플레잉 CB'},
@@ -1164,6 +1171,7 @@ const PLAYER_BEST={
   '콘사':{pos:['RCB'],note:'전 경기 RCB (피크 8.3)'},
   '시세(합류확정)':{pos:['RCB'],note:'실측 적합 0.89'},
   '영입·찰로바':{pos:['RCB'],note:'실측 적합 0.79 — 시세와 동일 패밀리(cb_bpd)'},
+  '영입·켈리':{pos:['LCB'],note:'실측 적합 0.91 — 좌발, LB 겸업 가능(밍스 대체)'},
   '캐시':{pos:['RB'],note:'RB 피크 8.4'},
   '영입·에메르송':{pos:['RB'],note:'실측 적합 0.94 — 캐시와 동일'},
   '오나나':{pos:['LDM'],note:'피벗 좌측, 박스 진입형 (8.2/8.1)'},
@@ -1179,6 +1187,7 @@ const PLAYER_BEST={
   '영입·서머빌':{pos:['LM'],note:'실측 적합 0.70 — 로저스와 유사 동선'},
   '영입·태버니어':{pos:['LM'],note:'실측 적합 0.82'},
   '영입·바투리나':{pos:['LM'],note:'실측 LM 0.80 > CAM 0.68 — 좌측 크리에이터'},
+  '영입·베리발':{pos:['CAM'],note:'실측 적합 0.66 — 최근 출전시간 부족으로 표본 편향 caveat'},
   '맥긴':{pos:['RM'],note:'오른쪽 피크 8.7/8.6'},
   '산초':{pos:['RM'],note:'인버티드 우측 윙 (7.5/7.4/7.1)'},
   '영입·보웬':{pos:['RM'],note:'실측 적합 0.88 — 맥긴과 동일'},
@@ -1190,6 +1199,7 @@ const PLAYER_BEST={
   '영입·브로베이':{pos:['ST'],note:'실측 적합 0.75'},
   '영입·파르도':{pos:['ST'],note:'실측 ST 0.87 > LM 0.69'},
   '아브라함(보유)':{pos:['ST'],note:'실측 적합 0.52 — 표본 4경기·전부 교체출전(편향)'},
+  '영입·볼테마데':{pos:['ST'],note:'실측 적합 0.79 — 폴스나인형, 왓킨스와 결 다름'},
 };
 const sqSel = SQUAD_SLOTS.map(()=>0);   // selected option index per slot
 
