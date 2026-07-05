@@ -20,3 +20,5 @@ INSERT INTO players VALUES(19,'Marco Bizot','GK',40,1170,NULL);
 INSERT INTO players VALUES(20,'Donyell Malen','LW',17,1106,NULL);
 INSERT INTO players VALUES(21,'Ross Barkley','CM',6,948,NULL);
 INSERT INTO players VALUES(22,'Douglas Luiz','CM',21,881,NULL);
+INSERT INTO players VALUES(23,'Moussa Diaby','RW',19,NULL,'23/24 빌라 우측 공격수(£50m 레버쿠젠→, 2024 여름 알이티하드 이적). 실측 히스토리 기록용(현 스쿼드 아님).');
+INSERT INTO players VALUES(24,'Jhon Durán','ST',9,NULL,'23/24~24/25 빌라 ST 임팩트 서브(2025.1 알나스르 이적). ''듀란형'' ST 아키타입 원천.');

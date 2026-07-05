@@ -45,3 +45,13 @@ INSERT INTO matches VALUES(50,'2025-08-23','Brentford','Premier League','A','1-0
 INSERT INTO matches VALUES(51,'2025-08-31','Crystal Palace','Premier League','H','0-3','2025-26','Aston Villa',1,NULL);
 INSERT INTO matches VALUES(52,'2025-10-23','Go Ahead Eagles','Europa League','A','2-1','2025-26','Aston Villa',1,NULL);
 INSERT INTO matches VALUES(53,'2025-01-18','Arsenal','Premier League','A','2-2','2024-25','Aston Villa',1,'MW22');
+INSERT INTO matches VALUES(54,'2023-08-27','Burnley','Premier League','A','1-3','2023-24','Aston Villa',1,NULL);
+INSERT INTO matches VALUES(55,'2024-04-21','Bournemouth','Premier League','H','3-1','2023-24','Aston Villa',1,NULL);
+INSERT INTO matches VALUES(56,'2024-05-02','Olympiacos FC','Europa Conference League','H','2-4','2023-24','Aston Villa',1,'SF 1st leg');
+INSERT INTO matches VALUES(57,'2024-05-13','Liverpool FC','Premier League','H','3-3','2023-24','Aston Villa',1,NULL);
+INSERT INTO matches VALUES(58,'2024-03-14','AFC Ajax','Europa Conference League','H','4-0','2023-24','Aston Villa',1,'QF 2nd leg');
+INSERT INTO matches VALUES(59,'2024-09-24','Wycombe Wanderers','EFL Cup','A','1-2','2024-25','Aston Villa',1,'R3');
+INSERT INTO matches VALUES(60,'2024-10-22','Bologna','Champions League','H','2-0','2024-25','Aston Villa',1,'League phase');
+INSERT INTO matches VALUES(61,'2024-10-30','Crystal Palace','EFL Cup','H','1-2','2024-25','Aston Villa',1,'R4');
+INSERT INTO matches VALUES(62,'2024-12-10','RB Leipzig','Champions League','A','2-3','2024-25','Aston Villa',1,'League phase');
+INSERT INTO matches VALUES(63,'2024-12-21','Manchester City','Premier League','H','2-1','2024-25','Aston Villa',1,NULL);

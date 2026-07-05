@@ -21,3 +21,5 @@ INSERT INTO player_seasons VALUES(20,'2025-26','Aston Villa','LW',17,1106);
 INSERT INTO player_seasons VALUES(21,'2025-26','Aston Villa','CM',6,948);
 INSERT INTO player_seasons VALUES(22,'2025-26','Aston Villa','CM',21,881);
 INSERT INTO player_seasons VALUES(13,'2024-25','Aston Villa','AM',27,NULL);
+INSERT INTO player_seasons VALUES(23,'2023-24','Aston Villa','RW',19,NULL);
+INSERT INTO player_seasons VALUES(24,'2024-25','Aston Villa','ST',9,NULL);
