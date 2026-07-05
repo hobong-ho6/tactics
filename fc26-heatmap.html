@@ -1349,6 +1349,15 @@ function roleFamiliar(name,roleId){
   const alt=roleId.startsWith('w_')?roleId.replace(/^w_/,'wm_'):roleId.startsWith('wm_')?roleId.replace(/^wm_/,'w_'):null;
   return alt&&f[alt]?f[alt]:0;
 }
+/* 자율 판단 지수(파생 휴리스틱, EA 공식 스탯 아님) — 로밍/다재다능 같은 자율 포커스를
+   줬을 때 스스로 위치·판단을 잘 하는지. 오프볼 위치선정을 직접 요인으로 가중.
+   공격 위치 선정 .40 / 시야 .25 / 반응력 .25 / 침착 .10 (FC_ATTR_NAMES idx 22/23/13/25) */
+const AUTON_FOCUS=['Roaming','Versatile'];
+function autonomyIQ(name){
+  const d=FC_DETAILS[name]; if(!d||!d.a) return null; const a=d.a;
+  return Math.round(a[22]*0.40 + a[23]*0.25 + a[13]*0.25 + a[25]*0.10);
+}
+function autonomyTier(iq){ return iq>=80?['높음','ok']:iq>=72?['보통','']:['낮음','warn']; }
 /* 슬롯별 비교 후보 — grid: 실측 map25 (player_role_map measured[:class] / transfer_targets.map25),
    rate: {v:평균, b:'season'(시즌 포지션별)|'r6'(최근 6경기)|'top'(상위 경기 — 판정 제외), s:표기},
    dbFit: transfer_targets.fit_sim 기록값, lh: likelihood */
@@ -1623,13 +1632,16 @@ function cmpCard(side,prof,win){
       ?`<div class="cmp-line" style="color:var(--muted-2)">FC26 숙련 역할(${prof.slotKey}): ${rel.map(r=>(ROLES[r]?ROLES[r].n:r)+(famMap[r]>=2?'++':'')).join(', ')}</div>`
       :`<div class="cmp-line"><span class="warn">⚠ 이 포지션 숙련 역할 없음</span> — 게임 실행 단순화(스탯 페널티 없음)</div>`;
   }
+  const iq=autonomyIQ(cand.n); let autoLine='';
+  if(iq!=null){ const [t,cls]=autonomyTier(iq);
+    autoLine=`<div class="cmp-line">자율 판단 <b>${iq}</b> <span style="color:var(--muted-2)">(위치선정·시야·반응·침착)</span> · 로밍/다재다능 적합 <span class="${cls}">${t}</span></div>`; }
   return `<div class="cmp-card${win?' win':''}" data-side="${side}">${mini}<h3>${side} · ${cand.n}${win?' 🏆':''}</h3>
     <div class="sub">${(fc&&fc.club)||''}${lh}${expTag}</div>
     ${posLine?`<div class="cmp-line">${posLine}</div>`:''}
     <div class="cmp-line">${fitLine}</div>
     ${fcPosWarn}
     <div class="cmp-line">${rateLine}</div>
-    ${fcLine}${psLine}${famLine}</div>`;
+    ${fcLine}${psLine}${famLine}${autoLine}</div>`;
 }
 /* 세부 능력치 34항목 — sofifa 상세, 카테고리별 미러 바 (양쪽 모두 있을 때만) */
 function cmpDetailBars(A,B){
@@ -1731,9 +1743,14 @@ function buildSquadUI(){
     const famLine=fam===null?'':fam>0
       ?`<div><span class="ok">✓ 숙련 역할${fam>=2?'++':''}</span> — 게임 실행 정교</div>`
       :`<div><span class="warn">⚠ 미숙련 역할</span> — 실측 재현 처방(게임 실행 단순화, 스탯 페널티는 없음)</div>`;
+    // 처방 포커스가 자율형(로밍/다재다능)이면 자율 판단 지수로 적합 여부 플래그
+    const iq=(typeof autonomyIQ==='function')?autonomyIQ(sel.n):null;
+    const autoFlag=(iq!=null&&AUTON_FOCUS.includes(sel.opt[1]))
+      ?(iq>=72?`<div><span class="ok">자율 포커스 OK</span> — 판단 ${iq}</div>`
+              :`<div><span class="warn">⚠ 자율 포커스인데 판단 ${iq}(낮음)</span> — 고정 포커스가 안전</div>`):'';
     div.innerHTML=`<label>${s.pos}</label><select>${opts}</select>
       <div class="sq-info">${posLine?`<div>${posLine}</div>`:''}
-        <div>🎯 처방: <b>${fmtRF(sel.opt)}</b></div>${famLine}
+        <div>🎯 처방: <b>${fmtRF(sel.opt)}</b></div>${famLine}${autoFlag}
         <div>🔁 실측: ${fmtRF(sel.fit)}</div></div>`;
     div.querySelector('select').addEventListener('change',e=>{ sqSel[i]=+e.target.value; buildSquadUI(); applySquad(); });
     holder.appendChild(div);
