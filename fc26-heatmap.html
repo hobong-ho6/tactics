@@ -297,7 +297,7 @@
     <div class="sq-note" style="padding:6px 2px 0">왼쪽 패널 = <b>처방(최적)</b> — 실축 성과 기준 추천 · 오른쪽 패널 = <b>실측 최근접</b> — 움직임 재현 기준. 슬롯별로 분석 근거가 있는 선수만 표시됩니다.
     슬롯 카드의 <b>✓/⚠</b> = 이 슬롯이 그 선수의 최적 포지션인지 (⚠이면 최적 포지션 표시) · <b>🎯 처방</b> = 성과 기준 추천 역할·포커스 · <b>🔁 실측</b> = 실제 움직임 최근접 역할·포커스.
     <b>영입·</b> 접두 = 2026 여름 이적 후보 (최근 6경기 실측 프로필 기반, 근거·가능성 등급은 DB transfer_targets 참조):
-    RB 에메르송(협상 중단·재개 여지) · LM 서머빌/파르도(11경기 실측 LM 0.83>ST 0.73)/태버니어(문의 발생)/바투리나 · RM 보웬/아데예미/하지무사(협상 진전, 적합 0.92 최고) · ST 기라시/브로베이/파르도 · DM 페르난데스/로피(비드 단계, LDM 적합 0.84)/그레이(3티어 링크, RDM 0.77)/모리바(2티어 오퍼 준비, LDM 0.80) · GK 스즈키/트래포드(로마노 숏리스트)/트루빈/레스테스.
+    RB 에메르송(협상 중단·재개 여지) · LM 서머빌/파르도(11경기 실측 LM 0.83>ST 0.73)/태버니어(문의 발생)/바투리나 · RM 보웬/아데예미/하지무사(협상 진전, 적합 0.92 최고) · ST 기라시/브로베이/파르도/잭슨(1티어 2곳 교차확인 HIGH, 적합 0.75·왓킨스와 동일 역할군) · DM 페르난데스/로피(비드 단계, LDM 적합 0.84)/그레이(3티어 링크, RDM 0.77)/모리바(2티어 오퍼 준비, LDM 0.80) · GK 스즈키/트래포드(로마노 숏리스트)/트루빈/레스테스.
     <b>바투리나(비드 €50m 거절)</b> = 명목 10번이나 실측상 LM 0.80 > CAM 0.68 — 로저스형 좌측 크리에이터.
     아데예미는 실측상 좌측 부적합(LM 0.25)이라 RM만 제공. <b>시세(합류확정)</b> = 프리계약 26/27 RCB · <b>알리송(신규)</b> = 2026-01 영입된 소속 RW.</div>
   </section>
@@ -1152,7 +1152,8 @@ const SQUAD_SLOTS=[
    {n:'영입·브로베이', opt:['st_target','Attack'],   fit:['st_false9','Attack']},
    {n:'영입·파르도', opt:['st_advanced','Attack'],   fit:['st_advanced','Support']},
    {n:'아브라함(보유)', opt:['st_target','Attack'],  fit:['st_false9','Attack']},
-   {n:'영입·볼테마데', opt:['st_advanced','Versatile'],fit:['st_false9','Build-Up']}]},
+   {n:'영입·볼테마데', opt:['st_advanced','Versatile'],fit:['st_false9','Build-Up']},
+   {n:'영입·잭슨',    opt:['st_advanced','Attack'],    fit:['st_advanced','Support']}]},
 ];
 /* per-player best position + one-line evidence (derived from player_role_map kind='optimal'
    for owned players, transfer_targets fit_sim for incoming candidates — DB가 바뀌면 함께 갱신) */
@@ -1201,6 +1202,7 @@ const PLAYER_BEST={
   '영입·파르도':{pos:['LM'],note:'실측 LM 0.83 > ST 0.73 (11경기 표본 확장 후 역전)'},
   '아브라함(보유)':{pos:['ST'],note:'실측 적합 0.52 — 표본 4경기·전부 교체출전(편향)'},
   '영입·볼테마데':{pos:['ST'],note:'실측 적합 0.79 — 폴스나인형, 왓킨스와 결 다름'},
+  '영입·잭슨':{pos:['ST'],note:'실측 적합 0.75 — st_advanced, 왓킨스와 동일 역할군 (1티어 2곳 HIGH)'},
 };
 const sqSel = SQUAD_SLOTS.map(()=>0);   // selected option index per slot
 
@@ -1417,7 +1419,8 @@ const CMP_SLOTS={
   {n:'영입·브로베이',grid:'43X5167873535222120022300',dbFit:0.75,lh:'MEDIUM-LOW',rate:{v:6.57,b:'r6',s:'최근 6경기 평균 6.57 (선덜랜드)'}},
   {n:'영입·파르도',grid:'X9553X5443534211210000000',dbFit:0.73,lh:'MEDIUM',rate:{v:7.14,b:'r6',s:'최근 11경기 평균 7.14 (릴, 표본 확장)'}},
   {n:'아브라함(보유)',grid:'01855255648X8415422010200',dbFit:0.52,lh:'OWNED',rate:{v:6.85,b:'r6',s:'45분+ 4경기 평균 6.85 (빌라·전부 교체)'}},
-  {n:'영입·볼테마데',grid:'11421357X2332332111101110',dbFit:0.79,lh:'MEDIUM',rate:{v:6.73,b:'r6',s:'최근 6경기 평균 6.73 (뉴캐슬)'}}]},
+  {n:'영입·볼테마데',grid:'11421357X2332332111101110',dbFit:0.79,lh:'MEDIUM',rate:{v:6.73,b:'r6',s:'최근 6경기 평균 6.73 (뉴캐슬)'}},
+  {n:'영입·잭슨',grid:'457725X496434211211100000',dbFit:0.75,lh:'HIGH',rate:{v:7.45,b:'r6',s:'최근 6경기 평균 7.45 (바이에른 임대)'}}]},
 };
 const clamp01=v=>v<0?0:v>1?1:v;
 function cmpCos(a,b){ let dot=0,na=0,nb=0; for(let i=0;i<25;i++){dot+=a[i]*b[i];na+=a[i]*a[i];nb+=b[i]*b[i];} return (na&&nb)?dot/Math.sqrt(na*nb):0; }
