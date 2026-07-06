@@ -180,3 +180,12 @@ SELECT p.name, a.player_id, COUNT(*) n,
 FROM appearances a JOIN players p ON p.id=a.player_id
 WHERE a.stats_json IS NOT NULL GROUP BY a.player_id
 /* v_event_profile(name,player_id,n,xg_pm,xa_pm,kp_pm,duelw_pm,tkl_pm,int_pm,drb_pm,pass_pct) */;
+CREATE TABLE player_shot_profile(
+  player_id INTEGER PRIMARY KEY REFERENCES players(id),
+  window TEXT,             -- sample window note
+  events_n INTEGER, shots INTEGER, xg_sum REAL,
+  box_n INTEGER, sixyard_n INTEGER, headers INTEGER, goals INTEGER,
+  mean_dist REAL,          -- mean playerCoordinates.x = distance from OPPONENT goal line (0=goal)
+  mean_y REAL,             -- lateral (SofaScore y, low=right assumed as heatmap)
+  source TEXT, confidence TEXT
+);
