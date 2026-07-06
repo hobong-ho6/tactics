@@ -202,3 +202,14 @@ CREATE TABLE ingame_checks(
   verdict TEXT,               -- MATCH / PARTIAL / MISMATCH
   action TEXT                 -- 유지 / 역할변경 / 포커스변경 / 팀설정변경
 );
+CREATE TABLE team_match_stats(
+  event_id INTEGER PRIMARY KEY,
+  date TEXT,
+  xg_v REAL, xg_o REAL, shots_v INT, shots_o INT, sot_v INT, sot_o INT,
+  bigch_v INT, bigch_o INT, passes_v INT, passes_o INT,
+  long_att_v INT, long_acc_v INT, long_att_o INT, long_acc_o INT,
+  cross_att_v INT, cross_acc_v INT, corners_v INT, corners_o INT,
+  duelpct_v REAL, fouls_v INT, fouls_o INT,
+  formation_v TEXT, formation_o TEXT,
+  source TEXT, confidence TEXT
+);

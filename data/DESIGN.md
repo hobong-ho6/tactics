@@ -17,6 +17,9 @@ never a rewrite.
    - `streaks(id,season,label,note)` + `match_streak(match_id,streak_id)` (m2m; overlapping runs like 11-all-comp ⊃ 8-PL).
    - `tactic_observations(season,scope,claim,evidence,source,confidence)` — team-level tactical facts
      (philosophy, build-up, defensive block, in-possession shape, per-match modulation axes, verdicts).
+   - `team_match_stats(event_id,date,xg/shots/big-chances/passes/long-balls/crosses/corners for both sides,formation_v/o)`
+     — per-match TEAM stats (SofaScore); verifies foundation claims (formation constancy, short build-up)
+     and powers possession/xG phase analysis.
    - `player_duties(season,player_id,position,duties,execution,adherence,game_role_implication,source,confidence)`
      — per-player duty spec vs measured execution review; feeds squad selection and game-role refinement.
      Variable-position players get one row per position held.
