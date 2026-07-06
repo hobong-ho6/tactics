@@ -70,6 +70,11 @@ javascript_tool로 sofascore.com 페이지 컨텍스트에서 fetch** 하면 된
 터치 수 → `heat_zones`(존 요약)와 `heat_summary`(움직임 서술 + 수치)로.
 추가로 **5×5 툴좌표 그리드**를 `appearances.heat_map25`(문자 0–9,X=peak)와
 `heat_tool_x/heat_tool_y`(툴좌표 중심)로 저장한다.
+**이벤트 스탯도 반드시 함께 수집** (그리드와 같은 statistics 호출에서 나옴):
+`xg`/`xa`/`key_passes` 컬럼 + `stats_json`(passes_total/acc, duels_won/lost, tackles,
+interceptions, shots_on/off, dribbles_won, aerials_won, goals, assists 컴팩트 JSON).
+선수별 집계는 `v_event_profile` 뷰. 용도: 평점 의존 축소 — 위치(그리드)+산출(스탯)의
+2차원 판단 (docs/10 방법론 한계 참조).
 변환: 툴x = 100 − SofaScore y, 툴y = SofaScore x. 선수별 통합본(경기 균등가중 평균)은
 `player_role_map kind='measured'`에 기록하며 툴이 이를 렌더링한다.
 

@@ -169,3 +169,14 @@ CREATE TABLE player_fc_stats(
   source TEXT, confidence TEXT, attrs TEXT, playstyles TEXT, traits TEXT, detail_date TEXT, role_familiarity TEXT,
   UNIQUE(game_version, name_kr)
 );
+CREATE VIEW v_event_profile AS
+SELECT p.name, a.player_id, COUNT(*) n,
+ ROUND(AVG(a.xg),2) xg_pm, ROUND(AVG(a.xa),2) xa_pm, ROUND(AVG(a.key_passes),1) kp_pm,
+ ROUND(AVG(json_extract(a.stats_json,'$.duels_won')),1) duelw_pm,
+ ROUND(AVG(json_extract(a.stats_json,'$.tackles')),1) tkl_pm,
+ ROUND(AVG(json_extract(a.stats_json,'$.interceptions')),1) int_pm,
+ ROUND(AVG(json_extract(a.stats_json,'$.dribbles_won')),1) drb_pm,
+ ROUND(AVG(json_extract(a.stats_json,'$.passes_acc')*1.0/NULLIF(json_extract(a.stats_json,'$.passes_total'),0)),2) pass_pct
+FROM appearances a JOIN players p ON p.id=a.player_id
+WHERE a.stats_json IS NOT NULL GROUP BY a.player_id
+/* v_event_profile(name,player_id,n,xg_pm,xa_pm,kp_pm,duelw_pm,tkl_pm,int_pm,drb_pm,pass_pct) */;
