@@ -154,6 +154,29 @@
 
   /* ---- player compare mode (선수 비교) ---- */
   #cmpBar{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;margin-bottom:16px}
+
+  /* ---- tactics report page ---- */
+  #reportPage{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;margin-bottom:16px;line-height:1.65;font-size:13.5px}
+  #reportPage h2{font-size:19px;margin:0 0 4px;letter-spacing:.02em}
+  #reportPage h3{font-size:14px;margin:26px 0 8px;color:var(--accent);letter-spacing:.06em}
+  #reportPage h3::before{content:'§ ';color:var(--muted-2)}
+  #reportPage p{margin:6px 0;color:var(--ink)}
+  #reportPage .rp-sub{color:var(--muted);font-size:12px}
+  #reportPage .rp-badges{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px}
+  #reportPage .rp-badge{font-size:11px;font-family:var(--mono);background:var(--panel-2);border:1px solid var(--line);border-radius:6px;padding:4px 8px;color:var(--muted)}
+  #reportPage .rp-badge b{color:var(--ink)}
+  #reportPage table{border-collapse:collapse;width:100%;margin:8px 0;font-size:12.5px}
+  #reportPage th{color:var(--muted);font-weight:600;text-align:left;padding:6px 9px;border-bottom:1px solid var(--line);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  #reportPage td{padding:6px 9px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  #reportPage .ok{color:#3ecf8e;font-weight:700}
+  #reportPage .warn{color:#f0e141;font-weight:700}
+  #reportPage .bad{color:#ff5d5d;font-weight:700}
+  #reportPage .rp-card{background:var(--panel-2);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:8px;padding:10px 13px;margin:8px 0}
+  #reportPage .rp-card b:first-child{color:var(--accent)}
+  #reportPage .rp-foot{margin-top:24px;padding-top:12px;border-top:1px dashed var(--line-soft);font-size:11px;color:var(--muted-2)}
+  #reportPage ul{margin:6px 0;padding-left:20px}
+  #reportPage li{margin:4px 0}
+  #reportPage .mono{font-family:var(--mono);font-size:12px}
   .cmp-verdict{margin-top:12px;padding:10px 12px;border:1px solid var(--accent);border-radius:10px;background:rgba(255,122,47,.06);font-size:12.5px;line-height:1.65}
   .cmp-verdict b{color:var(--accent)}
   .cmp-verdict .even b{color:var(--ink)}
@@ -275,6 +298,7 @@
         <button data-m="real" class="on">실측 → FC26 검증</button>
         <button data-m="squad">빌라 스쿼드</button>
         <button data-m="cmp">선수 비교</button>
+        <button data-m="report">전술 리포트</button>
       </div>
       <span class="pb-count" id="pbCount"></span>
       <button id="pExport" title="저장된 모든 프리셋을 JSON 파일로 내려받기">⭳ 프리셋 내보내기</button>
@@ -315,6 +339,111 @@
     <b>FC26 능력치</b> = sofifa, FC26 roster 2026-06-30 (DB player_fc_stats — GK 6대 스탯은 다이빙/핸들링/킥/반응속도/속도/위치선정).
     <b>종합 판정</b> = 슬롯 적합 40% + 실측 평점 35% + FC26 OVR 25% 가중 — 단, '상위 경기 평균'(베스트 경기만 집계)이 낀 비교는 평점 항목 제외, FC26 미수록 선수가 있으면 OVR 항목 제외 후 남은 가중치로 재정규화. 판정은 참고용이며 영입 가능성 등급·나이·가치·POT는 별도 표기만 합니다.
     <b>실험 배치</b> = 선수 목록 하단 '실험' 그룹에서 분석 근거가 없는 슬롯에 선수를 가정 배치 — 게임 내 움직임은 선택한 역할 커널이 결정하므로, 여기서는 그 선수의 실측 그리드(측면 전환 시 좌우 반전 '미러' 가정 포함)가 이 슬롯 커널로 재현되는 정도와 재도출 역할을 계산합니다. 미러는 가정치라 DB 확정 판정(예: 아데예미 LM 0.24 — 원본 방향 판정)과 다르며, 게임 내 검증 후 채택 시 player_role_map(kind='role:슬롯')에 기록해야 스쿼드 정식 후보가 됩니다.</div>
+  </section>
+
+  <section id="reportPage" style="display:none">
+    <h2>에메리의 아스톤 빌라 25/26 — 전술 리포트</h2>
+    <p class="rp-sub">이 페이지의 모든 주장은 data/avl_analysis.db의 실측 기록에서 파생됨 (서사 기반 주장은 별도 표기). 갱신 2026-07-05.</p>
+    <div class="rp-badges">
+      <span class="rp-badge">팀 스탯 <b>45경기</b> (양팀 xG·포메이션)</span>
+      <span class="rp-badge">경기별 평균위치 <b>388+</b></span>
+      <span class="rp-badge">히트맵 그리드+이벤트 스탯 <b>109</b></span>
+      <span class="rp-badge">슈팅맵 <b>공격진 9명·402슛</b></span>
+      <span class="rp-badge">팀 전술 관측 <b>25건</b></span>
+    </div>
+
+    <h3>근본 — 철학</h3>
+    <p>에메리는 과르디올라·클롭류의 스타일 이상주의자가 아니라 <b>공수 균형과 상대 분석이 우선인 실용주의자</b>다
+    ("상대를 완벽하게 분석하는 완벽주의자" — 헤라르드 모레노). 그래서 이 팀의 정체성은 "볼을 어떻게 다루는가"가 아니라
+    <b>"어떤 구조를 절대 무너뜨리지 않는가"</b>에 있다. 판정: <b>파운데이션-퍼스트</b> — 게임 모델은 고정하고,
+    경기별 색채는 인원·역할 스왑으로만 조절한다.</p>
+
+    <h3>파운데이션 — 구조 상수 (실측 검증 완료)</h3>
+    <table>
+      <tr><th>상수</th><th>내용</th><th>실측 검증</th></tr>
+      <tr><td><b>4-2-3-1</b></td><td>공격 시 기본 형태. 수비 시 10번이 왓킨스 옆으로 올라가는 <b>4-4-2 두 줄 콤팩트 미드블록</b></td>
+        <td><span class="ok">✓ 45경기 중 41 (91%)</span> — 예외: 4-4-2×3 (본머스H·리즈A·첼시A), 4-2-2-2×1 (번리H)</td></tr>
+      <tr><td><b>숏 빌드업 고수</b></td><td>마르티네스부터 짧게. 강한 압박에도 유지 (약점으로 지적될 정도), 탈출구는 왓킨스 롱볼</td>
+        <td><span class="ok">✓ 롱볼 시도 비중 9.0%</span> (상대 평균 10.5%보다 낮음)</td></tr>
+      <tr><td><b>미드블록 · 비압박</b></td><td>강도 높은 전방압박 팀이 아님 — 블록을 유지하다 기회에 탈취. 23/24의 "초하이라인" 서사는 25/26에 부적용</td>
+        <td><span class="ok">✓ 중간시점까지 역습 실점 0</span> · 저점유 국면 전적이 시스템 작동 증명 (아래 국면 분석)</td></tr>
+      <tr><td><b>중앙 콤비네이션</b></td><td>맥긴·로저스가 안으로, 왓킨스가 밖·뒷공간으로, 풀백은 한 명씩만 전진</td>
+        <td><span class="ok">✓ 실측 히트맵</span> — 맥긴 하프스페이스 도착(헤더 0·에지형), 왓킨스 인박스 84%</td></tr>
+      <tr><td><b>인원 상수</b></td><td>백4 (캐시–콘사–토레스–디뉴/마첸) + 카마라 앵커 + 왓킨스 원톱</td>
+        <td><span class="ok">✓ 포지션 라벨 전수</span> — 콘사 RCB 단일, 왓킨스 ST 단일, 카마라 피봇 단일</td></tr>
+    </table>
+
+    <h3>모듈레이션 — 경기별 가변 4축 (구조 안의 스왑)</h3>
+    <ul>
+      <li><b>① 10번의 정체</b> — 로저스 중앙(시즌 주포지션, 21선발) vs 부엔디아 vs 틸레만스 프리롤</li>
+      <li><b>② 좌측 전진의 정체</b> — 부엔디아 좌10(시즌 주포지션) vs 로저스 LW(천장: 9.3/9.0) — 둘은 산출까지 동형(xG+xA ≈0.5)인 호환 자원</li>
+      <li><b>③ 세컨드 피봇 프로필</b> — 오나나(로머+세트피스 헤더) vs 틸레만스(메트로놈: 패스 87%·xA 팀1위) vs 린델뢰프(비상)</li>
+      <li><b>④ 풀백 공격성</b> — 캐시 봉쇄↔전진 (폭 규율은 절대), 디뉴(홈·원정 일관) vs 마첸(홈 51.6/원정 43.6 — 스쿼드 최대 낙폭)</li>
+    </ul>
+
+    <h3>국면 분석 — 점유율의 역설 (45경기)</h3>
+    <table>
+      <tr><th>국면</th><th>전적</th><th>평균 득실</th><th>xG차</th><th>해석</th></tr>
+      <tr><td><b>저점유 ≤48%</b></td><td><b>14승 1무 2패</b></td><td>+1.00</td><td class="mono">-0.01</td>
+        <td>첼시·토트넘 원정, 리버풀·시티·아스널전 포함. xG는 이븐 — <b>찬스 질(빅찬스 2.9)+결정력+마르티네스로 이긴 오버퍼포먼스</b></td></tr>
+      <tr><td>중간 49–54%</td><td>9승 1무 1패</td><td>+1.36</td><td class="mono">+0.47</td><td>가장 건강한 국면</td></tr>
+      <tr><td><b>고점유 ≥55%</b></td><td>8승 3무 6패</td><td>+0.24</td><td class="mono">+0.38</td>
+        <td><b>표본 내 패배 전부가 여기</b> (팰리스H 0-3, 브렌트포드H/A, 에버턴H…). 과정(xG)은 건강했으나 마무리·한 방 실점으로 언더퍼포먼스 — <b>약점 국면 = 로우블록 공략</b></td></tr>
+    </table>
+    <p>점유율-득실 상관 <span class="mono">r = -0.29</span>: 이 팀은 <b>점유를 넘겨받을 때 가장 강하다</b>.
+    강함의 정체는 찬스 "양"이 아니라 <b>질과 박스 양끝 실행력</b> — 게임 재현 검증에서도 "이겼나"가 아니라 "빅찬스를 만들었나"를 봐야 하는 이유.</p>
+
+    <h3>서사를 뒤집은 실측 — 데이터 반전 사례</h3>
+    <div class="rp-card"><b>부엔디아 좌편향</b> — 기사들은 "우측 드리프트"라 썼지만, 베스트 3경기(9.4 포레스트·8.5 본머스·8.3 결승) 실측 중심은 전부 좌측(y 64~72).
+      시즌 전수로도 좌측 전진 21선발이 주포지션. 우측 선발은 시즌 단 2회. → <b>좌편향 프리롤로만 기용</b></div>
+    <div class="rp-card"><b>카마라 3단 반전</b> — ① 기존 기록 "좌측 앵커"는 좌표 규약 오독 (26경기 평균 y=42.6, 우측-중앙) ② "딥 앵커" 프레임 기각 — 하프라인 컨트롤러(무브먼트는 DLP 0.83)
+      ③ 그런데 기능은 <b>듀얼승 8.4·인터셉트 3.0 팀 1위 볼위너</b>. 결론: "볼위닝 DLP 하이브리드" — 홀딩/볼위닝 처방 유지, DLP/로밍과 게임 내 A/B 대상</div>
+    <div class="rp-card"><b>로저스 — 천장과 기본값의 분리</b> — 시즌 최고 경기 2개(9.3·9.0)는 좌윙, 그러나 시즌 주포지션·최고 평균은 CAM(21선발 7.10).
+      베스트겜 기준이던 초기 "LW 최적" 판정은 천장 편향으로 교정 → 시즌 기준 <b>CAM 기본 + LW 천장 카드</b>. RM은 8선발 6.33으로 배치 금지</div>
+    <div class="rp-card"><b>하이라인 신화</b> — 23/24의 "리그 최고 하이라인·오프사이드 트랩" 이미지로 초기 팀 설정을 High/68로 잡았다가,
+      25/26 전용 분석·역습 실점 0·미드블록 실측으로 <b>Balanced/52로 교정</b>. 시즌이 바뀌면 서사를 재검증해야 하는 대표 사례</div>
+    <div class="rp-card"><b>아데예미 (영입 검토)</b> — "좌윙" 라벨과 달리 실측 움직임은 중앙-우측: 빌라 좌측 슬롯 적합 0.25 vs RM 0.74 → <b>영입해도 우측 전용</b></div>
+    <div class="rp-card"><b>오나나 — 미해결 A/B</b> — 시즌 무브먼트는 딥 로머(DLP), 베스트겜 기능은 듀얼 6.6·공중 2.3 박스크래셔.
+      슈팅맵이 중재 단서: <b>슛의 35%가 헤더</b> = 박스 존재감은 세트피스 국면 한정일 가능성 → 오픈플레이 DLP와 양립. 게임 내 A/B로 판정 예정</div>
+
+    <h3>FC26 팀 설정 — 기본 + 변형 (파운데이션-퍼스트의 게임 번역)</h3>
+    <table>
+      <tr><th>설정</th><th>포메이션 / 빌드업 / 수비 / 라인</th><th>근거</th></tr>
+      <tr><td><b>기본 (optimal)</b></td><td class="mono">4-2-3-1 Wide · Short Passing · Balanced · 52</td>
+        <td>숏빌드업 실측(롱볼 9%) + 미드블록 실측. <span class="warn">게임 내 미검증 (MEDIUM)</span></td></tr>
+      <tr><td>vs 강팀</td><td class="mono">라인 43 (흡수-역습)</td><td>강팀전 PPDA 14~20 (내려앉음) + 저점유 국면 14승1무2패가 결과로 확인</td></tr>
+      <tr><td>vs 약팀·로우블록</td><td class="mono">라인 67 (압박 상향)</td><td>약팀전 PPDA 5 내외 + 고점유 국면 언더퍼포먼스가 변형 필요성을 결과로 확인</td></tr>
+      <tr><td>리드 시</td><td class="mono">라인 45</td><td>리드 관리 국면</td></tr>
+      <tr><td>로저스 10번 변형</td><td class="mono">라인 47</td><td>리버풀 4-2 재현 (단일 경기 프리셋)</td></tr>
+    </table>
+
+    <h3>최적 XI — 역할·포커스와 근거 축</h3>
+    <p class="rp-sub">근거 축: 모양=히트맵 커널 적합 / 기능=이벤트 스탯 / 도착=슈팅맵. 축이 많을수록 확신이 높다.</p>
+    <table>
+      <tr><th>슬롯</th><th>선수</th><th>역할 (Role) / 포커스 (Focus)</th><th>근거</th></tr>
+      <tr><td>GK</td><td>마르티네스</td><td>스위퍼 키퍼 (Sweeper Keeper) / 빌드업 (Build-Up)</td><td>숏빌드업 임무 처방 — 실측 움직임은 골라인형(0.96): 게임 검증에서 과잉 스위핑 감시</td></tr>
+      <tr><td>LB</td><td>디뉴</td><td>공격형 윙백 (Attacking Wingback) / 지원 (Support)</td><td>모양 .91 + 홈·원정 일관성 (마첸 대비 선발 기준)</td></tr>
+      <tr><td>LCB</td><td>파우 토레스</td><td>볼 플레잉 센터백 (Ball-Playing Defender) / 빌드업 (Build-Up)</td><td>모양 .91 + 좌중앙 전진 캐리</td></tr>
+      <tr><td>RCB</td><td>콘사</td><td>볼 플레잉 센터백 (Ball-Playing Defender) / 빌드업 (Build-Up)</td><td><b>3축</b>: 모양 .88~.94 + 스텝아웃 + 패스 96% 팀 1위</td></tr>
+      <tr><td>RB</td><td>캐시</td><td>공격형 윙백 (Attacking Wingback) / 지원 (Support)</td><td>모양 .90+ (폭 규율 절대, 높이 가변)</td></tr>
+      <tr><td>LDM</td><td>오나나</td><td>딥라잉 플레이메이커 (Deep-Lying Playmaker) / 로밍 (Roaming)</td><td>시즌 무브먼트 기준 — <span class="warn">박스크래셔와 A/B 미해결</span></td></tr>
+      <tr><td>RDM</td><td>카마라</td><td>홀딩 (Holding) / 볼 위닝 (Ball-Winning)</td><td><b>기능 축</b>: 듀얼·인터셉트 팀 1위 (무브먼트는 DLP — A/B 대상)</td></tr>
+      <tr><td>LW</td><td>부엔디아</td><td>인사이드 포워드 (Inside Forward) / 공격 (Attack)</td><td>시즌 좌측 주포지션 + 좌편향 실측</td></tr>
+      <tr><td>CAM</td><td>로저스</td><td>플레이메이커 (Playmaker) / 로밍 (Roaming)</td><td>시즌 주포지션(21선발 7.10) + 모양 .74</td></tr>
+      <tr><td>RM</td><td>맥긴</td><td>인사이드 포워드 (Inside Forward) / 밸런스 (Balanced)</td><td><b>3축</b>: 모양 .88 + 드리블 중원 1위 + 슈팅맵 에지 도착(헤더 0)</td></tr>
+      <tr><td>ST</td><td>왓킨스</td><td>어드밴스드 포워드 (Advanced Forward) / 유동적 (Versatile)</td><td><b>3축</b>: 모양 .77 + xG 1.33 + 인박스 84%·6야드 24·헤더 19</td></tr>
+    </table>
+
+    <h3>방법론과 신뢰도 — 이 리포트를 읽는 법</h3>
+    <ul>
+      <li><b>실측 &gt; 서사</b>: 기사·통념은 가설 생성기로만 쓰고, 판정은 API 좌표·스탯으로. 위 반전 사례들이 이 규칙의 산출물.</li>
+      <li><b>3축 채점</b>: 모양(히트맵 점유 분포) / 기능(이벤트 스탯) / 도착(슈팅맵) — 히트맵 단독으론 역량 판단 불가라는 한계 검토에서 도입.</li>
+      <li><b>표본 주의</b>: 베스트 경기 표본은 대승에 편향(카마라 사례) → 원정·패배 경기로 탈편향, @dom/@tight·점유 국면 분리 집계 병행.</li>
+      <li><b>미검증 잔여</b>: 팀 설정 수치(라인 52/43/67)와 오나나·카마라 역할 A/B는 <span class="warn">게임 내 검증 대기</span> — docs/50 체크리스트로 플레이 후 확정.</li>
+    </ul>
+
+    <div class="rp-foot">근거 원장: tactic_observations(팀 사실 25건) · team_match_stats(45) · player_role_map(measured/role/optimal + @dom/@tight/@poss 분리) ·
+    player_duties(임무-수행 리뷰) · v_event_profile(산출) · player_shot_profile(도착) · team_tactic_setups(설정+변형). 전 항목 source·confidence 기재, git 이력으로 감사 가능.</div>
   </section>
 
   <div class="compare">
@@ -1908,8 +2037,20 @@ panels.B=new Panel(document.querySelector('.panel[data-key="B"]'),'B',1);
 refreshLoaders();
 panels.A.buildRoster(); panels.B.buildRoster();
 enterRealMode(AVL_MEASURED);   // 기본 화면 = 실측 → FC26 검증
+function showReport(){
+  document.getElementById('reportPage').style.display='block';
+  document.querySelector('.compare').style.display='none';
+  const seg=document.getElementById('modeMenu');
+  [...seg.children].forEach(x=>x.classList.toggle('on',x.dataset.m==='report'));
+}
+function hideReport(){
+  document.getElementById('reportPage').style.display='none';
+  document.querySelector('.compare').style.display='';
+}
 document.getElementById('modeMenu').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
+  hideReport();
+  if(b.dataset.m==='report'){ hideSquadBar(); hideCmpBar(); showReport(); return; }
   if(b.dataset.m==='squad'){ enterSquadMode(); return; }
   if(b.dataset.m==='cmp'){ enterCmpMode(); return; }
   hideSquadBar(); hideCmpBar();
