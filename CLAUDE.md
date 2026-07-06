@@ -12,7 +12,7 @@
 | FC 게임 시스템 분석·매핑 (역할/포커스, 버전 관리, 툴) | [docs/20-fc-game-system.md](docs/20-fc-game-system.md) |
 | 데이터 수집·기록 규칙 (스키마, 좌표 규약, 신뢰도, SofaScore 수집법) | [docs/30-data-rules.md](docs/30-data-rules.md) |
 | 파이프라인, DB·git 운영 | [docs/40-pipeline.md](docs/40-pipeline.md) |
-| 게임 내 검증 루프 (플레이 체크리스트, ingame_checks) | [docs/50-ingame-validation.md](docs/50-ingame-validation.md) |
+| ~~게임 내 검증 루프~~ ⛔ 폐기 — 데이터가 최종 심판 (참고용 보존) | [docs/50-ingame-validation.md](docs/50-ingame-validation.md) |
 
 ## 불변 규칙 (모든 세션 공통)
 
