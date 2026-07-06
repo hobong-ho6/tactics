@@ -55,6 +55,18 @@ docs/20-fc-game-system.md의 영입 후보 파이프라인 그대로:
 - 빌라 이적 확정: likelihood `CONFIRMED`, 라벨 `(합류확정)`으로 변경.
   시즌 데이터가 쌓이면 players로 승격 (docs/20 규칙).
 
+## 4-1. 빌라 선수 유출(outgoing) 루머 확인
+
+영입 스캔과 별도로, 빌라 기존 선수(`players` 테이블)의 이적설도 확인한다.
+
+- `WebSearch`로 `"Aston Villa" "<선수명>" transfer` 또는 일반적으로
+  "Aston Villa outgoing/exit rumours"를 스캔해 주전급 선수 유출 루머를 찾는다.
+- 1~2티어 크로스체크는 §2와 동일 기준 적용.
+- 통과한 건은 `transfer_outgoing(window, player_id, dest_club, likelihood, rationale,
+  source, confidence)`에 INSERT OR REPLACE (player_id는 `players.id` FK).
+  히트맵/커널 적합도 분석은 하지 않는다 — 이 테이블은 역할 적합성이 아니라 유출 위험을 추적한다.
+- 이적 확정 시 likelihood `CONFIRMED`로 갱신 (player_seasons 등 승격은 별도 판단).
+
 ## 5. 완료 기준 (매 실행)
 
 - 변경이 있으면: `scripts/db_dump.sh` 실행 → `git add -A && git commit`(메시지 접두 `data(transfer-watch):`) → `git push`.

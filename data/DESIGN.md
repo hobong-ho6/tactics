@@ -29,6 +29,9 @@ never a rewrite.
    - `transfer_targets(window,name,slot,likelihood,map25,tool_x,tool_y,opt_role/focus,fit_role/focus,fit_sim,…)`
      — rumoured signings analyzed with the same pipeline (recent-6-match measured grid,
      kernel-fit role); one row per (target, Villa slot). Feeds the tool's squad-builder 영입 options.
+   - `transfer_outgoing(window,player_id,dest_club,likelihood,rationale,source,confidence)`
+     — rumoured departures of existing Villa players (`player_id` FK into `players`); one row
+     per (window, player). No heatmap/fit analysis — this tracks departure risk, not role fit.
    - View `v_best`.
 
 2. **Game system library (per FC version)** — `game_roles(game_version,role_id,name,position_type,focuses)`

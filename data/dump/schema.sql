@@ -213,3 +213,14 @@ CREATE TABLE team_match_stats(
   formation_v TEXT, formation_o TEXT,
   source TEXT, confidence TEXT
 );
+CREATE TABLE transfer_outgoing(
+  id INTEGER PRIMARY KEY,
+  window TEXT NOT NULL,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  dest_club TEXT,
+  likelihood TEXT,
+  rationale TEXT,
+  source TEXT,
+  confidence TEXT,
+  UNIQUE(window, player_id)
+);
