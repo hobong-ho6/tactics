@@ -12,7 +12,7 @@ CREATE TABLE matches(
   opponent TEXT,
   competition TEXT,
   venue TEXT,           -- H / A / N
-  result TEXT, season TEXT, team TEXT, is_club INTEGER DEFAULT 1, stage TEXT,          -- e.g. "W 3-0"
+  result TEXT, season TEXT, team TEXT, is_club INTEGER DEFAULT 1, stage TEXT, possession REAL,          -- e.g. "W 3-0"
   UNIQUE(date, opponent, competition)
 );
 CREATE TABLE appearances(
@@ -188,4 +188,17 @@ CREATE TABLE player_shot_profile(
   mean_dist REAL,          -- mean playerCoordinates.x = distance from OPPONENT goal line (0=goal)
   mean_y REAL,             -- lateral (SofaScore y, low=right assumed as heatmap)
   source TEXT, confidence TEXT
+);
+CREATE TABLE ingame_checks(
+  id INTEGER PRIMARY KEY,
+  checked_at TEXT,            -- 날짜
+  preset TEXT,                -- (역할) / (최적) / 스쿼드 변형명
+  tactic_code TEXT,           -- 게임 공유 코드
+  matches_played INTEGER,
+  position TEXT, player TEXT,
+  axis TEXT,                  -- shape(히트맵) / function(스탯) / arrival(득점유형)
+  expected TEXT,              -- 실측 기준 기대값
+  observed TEXT,              -- 게임에서 관찰된 것
+  verdict TEXT,               -- MATCH / PARTIAL / MISMATCH
+  action TEXT                 -- 유지 / 역할변경 / 포커스변경 / 팀설정변경
 );
