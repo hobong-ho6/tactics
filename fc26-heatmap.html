@@ -1263,7 +1263,8 @@ const SQUAD_SLOTS=[
    {n:'영입·태버니어', opt:['wm_insidefwd','Balanced'],fit:['wm_insidefwd','Balanced']},
    {n:'영입·바투리나', opt:['wm_insidefwd','Attack'],  fit:['wm_wideplm','Attack']},
    {n:'영입·반스', opt:['wm_insidefwd','Attack'],  fit:['wm_widemid','Defend']},
-   {n:'영입·로우', opt:['wm_insidefwd','Attack'],  fit:['wm_widemid','Defend']}]},
+   {n:'영입·로우', opt:['wm_insidefwd','Attack'],  fit:['wm_widemid','Defend']},
+   {n:'영입·래시포드', opt:['wm_insidefwd','Attack'],  fit:['wm_widemid','Defend']}]},
  {pos:'CAM',t:'CAM',x:50,y:66, opts:[
    {n:'로저스',    opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
    {n:'부엔디아',  opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
@@ -1325,6 +1326,7 @@ const PLAYER_BEST={
   '영입·바투리나':{pos:['LM'],note:'실측 LM 0.80 > CAM 0.68 — 좌측 크리에이터'},
   '영입·반스':{pos:['LM'],note:'실측 적합 0.87 — 좌측 5경기 순수표본(1경기 우측 이례치 제외)'},
   '영입·로우':{pos:['LM'],note:'실측 적합 0.78(wm_widemid/Defend) — 발판단(우측주발+좌측=인버티드 추정)과 실측 충돌, 터치라인 고수형으로 확인. 크로스체크 미통과(펀디트 의견뿐) — UNKNOWN'},
+  '영입·래시포드':{pos:['LM'],note:'실측 적합 0.63(wm_widemid/Defend, 바르셀로나) — 로우와 동일 패턴(발판단 인버티드 추정과 실측 충돌). 2024-25 빌라 임대 시절 보강: 6경기 중 4경기 중앙(C-class) 기용·평균 7.38 — 순수 LM보다 중앙 프리롤에서 더 강함. Romano: 빌라 언급 자체 없음 — 크로스체크 미통과 UNKNOWN'},
   '영입·베리발':{pos:['CAM'],note:'실측 적합 0.66 — 최근 출전시간 부족으로 표본 편향 caveat'},
   '맥긴':{pos:['RM'],note:'오른쪽 — 재검증 07-08: 구 inside-fwd 0.80은 stale(현커널 0.57). 측정최적 wideplm/Attack .76, 숙련 widemid/Build-Up Δ.02 → 타이브레이크로 widemid/Build-Up 처방'},
   '산초':{pos:['RM'],note:'인버티드 우측 윙 (7.5/7.4/7.1)'},
@@ -1585,7 +1587,8 @@ const CMP_SLOTS={
   {n:'영입·태버니어',grid:'35102X4221431105111032100',dbFit:0.82,lh:'MEDIUM-LOW',rate:{v:7.17,b:'r6',s:'최근 6경기 평균 7.17 (본머스)'}},
   {n:'영입·바투리나',grid:'421117X542862104420011000',dbFit:0.80,lh:'MEDIUM-HIGH',rate:{v:7.10,b:'r6',s:'최근 6경기 평균 7.10 (코모)'}},
   {n:'영입·반스',grid:'011001100062100X400043210',dbFit:0.87,lh:'MEDIUM',rate:{v:6.56,b:'r6',s:'최근 6경기 중 좌측 5경기 평균 6.56 (뉴캐슬)'}},
-  {n:'영입·로우',grid:'000003110063111X521056200',dbFit:0.78,lh:'UNKNOWN',rate:{v:7.16,b:'r6',s:'최근 6경기 중 좌측 5경기 평균 7.16 (볼로냐, 빌라전 2경기 포함·홈전 9.1)'}}]},
+  {n:'영입·로우',grid:'000003110063111X521056200',dbFit:0.78,lh:'UNKNOWN',rate:{v:7.16,b:'r6',s:'최근 6경기 중 좌측 5경기 평균 7.16 (볼로냐, 빌라전 2경기 포함·홈전 9.1)'}},
+  {n:'영입·래시포드',grid:'000003110021101X310175001',dbFit:0.63,lh:'UNKNOWN',rate:{v:6.65,b:'r6',s:'최근 6경기 중 좌측 4경기 평균 6.65 (바르셀로나, 표본 작음)'}}]},
  CAM:{t:'CAM',x:50,c:[
   {n:'부엔디아',grid:'63323362X6136471211510110',rate:{v:6.90,b:'season',s:'좌편향 10번 21경기 평균 6.90 · 피크 9.4 (최적 10번 판정)'}},
   {n:'로저스',grid:'684545X7X8346663423201121',rate:{v:7.10,b:'season',s:'CAM 21경기 평균 7.10 · 피크 8.5'}},
