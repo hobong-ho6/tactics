@@ -1264,7 +1264,7 @@ const SQUAD_SLOTS=[
    {n:'영입·바투리나', opt:['wm_insidefwd','Attack'],  fit:['wm_wideplm','Attack']},
    {n:'영입·반스', opt:['wm_insidefwd','Attack'],  fit:['wm_widemid','Defend']},
    {n:'영입·로우', opt:['wm_insidefwd','Attack'],  fit:['wm_widemid','Defend']},
-   {n:'영입·래시포드', opt:['wm_insidefwd','Attack'],  fit:['wm_widemid','Defend']}]},
+   {n:'영입·래시포드', opt:['wm_wideplm','Attack'],  fit:['wm_widemid','Defend']}]},
  {pos:'CAM',t:'CAM',x:50,y:66, opts:[
    {n:'로저스',    opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
    {n:'부엔디아',  opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
@@ -1326,7 +1326,7 @@ const PLAYER_BEST={
   '영입·바투리나':{pos:['LM'],note:'실측 LM 0.80 > CAM 0.68 — 좌측 크리에이터'},
   '영입·반스':{pos:['LM'],note:'실측 적합 0.87 — 좌측 5경기 순수표본(1경기 우측 이례치 제외)'},
   '영입·로우':{pos:['LM'],note:'실측 적합 0.78(wm_widemid/Defend) — 발판단(우측주발+좌측=인버티드 추정)과 실측 충돌, 터치라인 고수형으로 확인. 크로스체크 미통과(펀디트 의견뿐) — UNKNOWN'},
-  '영입·래시포드':{pos:['LM'],note:'실측 적합 0.63(wm_widemid/Defend, 바르셀로나) — 로우와 동일 패턴(발판단 인버티드 추정과 실측 충돌). 2024-25 빌라 임대 시절 보강: 6경기 중 4경기 중앙(C-class) 기용·평균 7.38 — 순수 LM보다 중앙 프리롤에서 더 강함. Romano: 빌라 언급 자체 없음 — 크로스체크 미통과 UNKNOWN'},
+  '영입·래시포드':{pos:['LM'],note:'실측 적합 0.63(wm_widemid/Defend, 바르셀로나) — 로우와 동일 패턴(발판단 인버티드 추정과 실측 충돌). 2024-25 빌라 임대 실측(6경기 통합): 어떤 role도 깔끔히 안 맞음(최고 wm_wideplm/Attack .35) — 처방을 insidefwd→wm_wideplm/Attack으로 정정, cam_halfwinger/Balanced(.33)도 근접해 로저스 CAM/LW식 상황별 변형 권장. Romano: 빌라 언급 자체 없음 — 크로스체크 미통과 UNKNOWN'},
   '영입·베리발':{pos:['CAM'],note:'실측 적합 0.66 — 최근 출전시간 부족으로 표본 편향 caveat'},
   '맥긴':{pos:['RM'],note:'오른쪽 — 재검증 07-08: 구 inside-fwd 0.80은 stale(현커널 0.57). 측정최적 wideplm/Attack .76, 숙련 widemid/Build-Up Δ.02 → 타이브레이크로 widemid/Build-Up 처방'},
   '산초':{pos:['RM'],note:'인버티드 우측 윙 (7.5/7.4/7.1)'},
