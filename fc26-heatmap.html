@@ -229,10 +229,18 @@
   .cmp-rrow.top{background:rgba(255,122,47,.09);border-color:var(--accent)}
   .cmp-rrow .rk{font-family:var(--mono);font-weight:800;color:var(--muted-2);text-align:center}
   .cmp-rrow.top .rk{color:var(--accent)}
-  .cmp-rrow .nm{font-weight:700;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .cmp-rrow .nm .tag{font-size:9px;font-weight:600;margin-left:5px;padding:1px 5px;border-radius:5px;border:1px solid var(--line-soft);color:var(--muted-2)}
+  .cmp-rrow .nm{font-weight:700;color:var(--ink);display:flex;align-items:center;gap:5px;min-width:0}
+  .cmp-rrow .nm .ntxt{flex:0 0 auto;white-space:nowrap}
+  .cmp-rrow .nm .tag{font-size:9px;font-weight:600;padding:1px 5px;border-radius:5px;border:1px solid var(--line-soft);color:var(--muted-2);flex:0 0 auto}
   .cmp-rrow .nm .tag.own{color:#3ddc97;border-color:rgba(61,220,151,.4)}
   .cmp-rrow .nm .tag.tgt{color:#9db8ff;border-color:rgba(92,139,255,.4)}
+  .cmp-rrow .nm .en{flex:0 1 auto;font-weight:400;font-size:10px;color:var(--muted-2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+  /* sofifa 링크 (↗ 아이콘 · 카드 이름) */
+  .sf-lnk{flex:0 0 auto;font-size:11px;color:var(--muted-2);cursor:pointer;text-decoration:none;padding:0 2px;border-radius:4px;border:1px solid transparent}
+  .sf-lnk:hover{color:var(--accent);border-color:var(--accent)}
+  a.sf-name{color:inherit;text-decoration:none;cursor:pointer;border-bottom:1px dashed rgba(255,122,47,.5)}
+  a.sf-name:hover{color:var(--accent)}
+  a.sf-name .arr{font-size:.82em;color:var(--muted-2);margin-left:3px}
   .cmp-rrow .sc{font-family:var(--mono);font-weight:800;color:var(--ink);text-align:right}
   .cmp-rrow .mt{font-family:var(--mono);color:var(--muted);text-align:right}
   .cmp-rrow .mt.ex{color:var(--muted-2);opacity:.6}
@@ -1660,6 +1668,68 @@ const CMP_SLOTS={
   {n:'영입·오슬라',grid:'5597247X58125410121100000',dbFit:0.75,lh:'MEDIUM-LOW',rate:{v:7.6,b:'r6',s:'최근 5경기 평균 7.6 (뉴캐슬, 15+ 히트포인트 조건으로 1경기 제외)'}},
   {n:'영입·콜로무아니',grid:'14383364741425X0305300400',dbFit:0.62,lh:'MEDIUM-HIGH',rate:{v:6.63,b:'r6',s:'ST 포지션 순수 6경기(lineup pos=F, 45분+) 평균 6.63 (토트넘/UCL). RM fit 0.57보다 근소 우위'}}]},
 };
+/* 선수 표기명 → sofifa 링크 (id 있으면 직접, 없으면 영문명 keyword 검색). 빌드타임 매핑 — docs: player_fc_stats.sofifa_id / transfer_targets.name */
+const SOFIFA={
+  '디뉴':{id:200458,en:"L. Digne"},
+  '로저스':{id:260247,en:"M. Rogers"},
+  '린델뢰프':{id:221660,en:"V. Lindelöf"},
+  '마르티네스':{id:202811,en:"E. Martínez"},
+  '마첸':{id:248465,en:"I. Maatsen"},
+  '맥긴':{id:210881,en:"J. McGinn"},
+  '보가르드':{id:264209,en:"L. Bogarde"},
+  '부엔디아':{id:226162,en:"E. Buendía"},
+  '산초':{id:233049,en:"J. Sancho"},
+  '시세(합류확정)':{id:77524,en:"M. Cissé"},
+  '아브라함(보유)':{id:231352,en:"T. Abraham"},
+  '알리송(신규)':{id:82968,en:"Alysson"},
+  '영입·게예':{en:"Pape Gueye"},
+  '영입·그레이':{id:270208,en:"A. Gray"},
+  '영입·기라시':{id:215441,en:"S. Guirassy"},
+  '영입·래시포드':{en:"Marcus Rashford"},
+  '영입·레스테스':{id:265526,en:"G. Restes"},
+  '영입·로우':{en:"Jonathan Rowe"},
+  '영입·로피':{id:259190,en:"D. Lopy"},
+  '영입·리세르':{id:271918,en:"R. Risser"},
+  '영입·모리바':{id:259233,en:"I. Moriba"},
+  '영입·바르가스':{en:"Ruben Vargas"},
+  '영입·바투리나':{id:262842,en:"M. Baturina"},
+  '영입·반스':{id:234742,en:"H. Barnes"},
+  '영입·베리발':{id:272926,en:"L. Bergvall"},
+  '영입·보웬':{id:224371,en:"J. Bowen"},
+  '영입·볼테마데':{id:254022,en:"N. Woltemade"},
+  '영입·브로베이':{id:251810,en:"B. Brobbey"},
+  '영입·서머빌':{id:251954,en:"C. Summerville"},
+  '영입·소울레':{id:265695,en:"M. Soulé"},
+  '영입·스즈키':{id:255981,en:"Z. Suzuki"},
+  '영입·아데예미':{id:251852,en:"K. Adeyemi"},
+  '영입·아타':{en:"Arthur Atta"},
+  '영입·에메르송':{en:"Emerson Royal"},
+  '영입·오슬라':{id:270519,en:"W. Osula"},
+  '영입·요한손':{id:241643,en:"V. Johansson"},
+  '영입·음바예':{en:"Ibrahim Mbaye"},
+  '영입·잭슨':{id:259197,en:"N. Jackson"},
+  '영입·카마라(모나코)':{en:"Lamine Camara"},
+  '영입·칼라일리':{en:"Anan Khalaili"},
+  '영입·케이타':{en:"Mandela Keita"},
+  '영입·켈리':{id:231512,en:"L. Kelly"},
+  '영입·콜로무아니':{en:"Randal Kolo Muani"},
+  '영입·태버니어':{id:237477,en:"M. Tavernier"},
+  '영입·트래포드':{id:263063,en:"J. Trafford"},
+  '영입·트루빈':{id:250753,en:"A. Trubin"},
+  '영입·파르도':{id:276048,en:"M. Fernandez-Pardo"},
+  '영입·페르난데스':{id:270857,en:"Mateus Fernandes"},
+  '영입·하지무사':{id:70726,en:"A. Hadj-Moussa"},
+  '오나나':{id:257057,en:"A. Onana"},
+  '왓킨스':{id:221697,en:"O. Watkins"},
+  '카마라':{id:236987,en:"B. Kamara"},
+  '캐시':{id:227174,en:"M. Cash"},
+  '콘사':{id:227678,en:"E. Konsa"},
+  '틸레만스':{id:216393,en:"Y. Tielemans"},
+  '파우 토레스':{id:241464,en:"Pau Torres"}
+};
+function sofifaURL(name){const s=SOFIFA[name];if(!s)return null;return s.id?`https://sofifa.com/player/${s.id}/`:(s.en?`https://sofifa.com/players?keyword=${encodeURIComponent(s.en)}`:null);}
+function sofifaEn(name){return (SOFIFA[name]||{}).en||'';}
+function openSofifa(name){const u=sofifaURL(name);if(u)window.open(u,'sofifaWin','width=1000,height=880,menubar=no,toolbar=no,scrollbars=yes,resizable=yes');}
 const clamp01=v=>v<0?0:v>1?1:v;
 function cmpCos(a,b){ let dot=0,na=0,nb=0; for(let i=0;i<25;i++){dot+=a[i]*b[i];na+=a[i]*a[i];nb+=b[i]*b[i];} return (na&&nb)?dot/Math.sqrt(na*nb):0; }
 /* 실측 그리드 ↔ 슬롯 포지션 타입의 모든 역할·포커스 커널 중 최대 코사인 */
@@ -1861,8 +1931,10 @@ function cmpCard(side,prof,win){
   const iq=autonomyIQ(cand.n,(CMP_SLOTS[prof.slotKey]||{}).t); let autoLine='';
   if(iq!=null){ const [t,cls]=autonomyTier(iq);
     autoLine=`<div class="cmp-line">자율 판단 <b>${iq}</b> <span style="color:var(--muted-2)">(위치선정·시야·반응·침착)</span> · 로밍/다재다능 적합 <span class="${cls}">${t}</span></div>`; }
-  return `<div class="cmp-card${win?' win':''}" data-side="${side}">${mini}<h3>${side} · ${cand.n}${win?' 🏆':''}</h3>
-    <div class="sub">${(fc&&fc.club)||''}${lh}${expTag}</div>
+  const cEn=sofifaEn(cand.n), nameHTML=sofifaURL(cand.n)
+    ?`<a class="sf-name" data-sofifa="${cand.n}" title="sofifa 열기: ${cEn||cand.n}">${cand.n}<span class="arr">↗</span></a>`:cand.n;
+  return `<div class="cmp-card${win?' win':''}" data-side="${side}">${mini}<h3>${side} · ${nameHTML}${win?' 🏆':''}</h3>
+    <div class="sub">${cEn?`${cEn} · `:''}${(fc&&fc.club)||''}${lh}${expTag}</div>
     ${posLine?`<div class="cmp-line">${posLine}</div>`:''}
     <div class="cmp-line">${fitLine}</div>
     ${fcPosWarn}
@@ -1916,8 +1988,10 @@ function cmpRankHTML(slotKey){
     const fit=r.prof.fit?Math.round(r.prof.fit.s*100)+'%':'—';
     const rate=c.rate?`<span class="mt${r.rateOK?'':' ex'}">${c.rate.v.toFixed(2)}${r.rateOK?'':'*'}</span>`:'<span class="mt ex">—</span>';
     const ovr=r.fcOK?`<span class="mt">${r.prof.fc.ovr}</span>`:'<span class="mt ex">—</span>';
-    return `<div class="cmp-rrow${i===0?' top':''}" data-rank-idx="${r.idx}" title="클릭 → 선수 A로 불러와 비교">`
-      +`<span class="rk">${i+1}</span><span class="nm">${c.n}${tag}</span>`
+    const en=sofifaEn(c.n), sf=sofifaURL(c.n)
+      ?`<a class="sf-lnk" data-sofifa="${c.n}" title="sofifa 열기: ${en||c.n}">↗</a>`:'';
+    return `<div class="cmp-rrow${i===0?' top':''}" data-rank-idx="${r.idx}" title="클릭 → 선수 A로 불러와 비교${en?' · '+en:''}">`
+      +`<span class="rk">${i+1}</span><span class="nm"><span class="ntxt">${c.n}</span>${tag}${sf}</span>`
       +`<span class="sc">${r.score.toFixed(2)}</span><span class="mt">${fit}</span>${rate}${ovr}</div>`;
   }).join('');
   const anyEx=rows.some(r=>r.c.rate&&!r.rateOK);
@@ -1959,7 +2033,7 @@ function applyCmpPanels(key,pa,pb){
 }
 function fillCmpPlayers(reset){
   const slot=CMP_SLOTS[document.getElementById('cmpSlot').value];
-  const opts=slot.c.map((c,i)=>`<option value="${i}">${c.n}</option>`).join('');
+  const opts=slot.c.map((c,i)=>{const en=sofifaEn(c.n);return `<option value="${i}">${c.n}${en?' — '+en:''}</option>`;}).join('');
   const cur=new Set(slot.c.map(c=>c.n));
   const extras=Object.keys(CMP_POOL).filter(n=>!cur.has(n)).sort();
   const expOpts=extras.length?`<optgroup label="실험 배치 — 타 포지션 선수 (가정)">${extras.map(n=>`<option value="x:${n}">${n} (실험)</option>`).join('')}</optgroup>`:'';
@@ -1978,6 +2052,8 @@ function buildCmpUI(){
   document.getElementById('cmpA').addEventListener('change',renderCmp);
   document.getElementById('cmpB').addEventListener('change',renderCmp);
   document.getElementById('cmpBody').addEventListener('click',e=>{
+    const sf=e.target.closest('[data-sofifa]');
+    if(sf){ e.preventDefault(); openSofifa(sf.dataset.sofifa); return; }
     const row=e.target.closest('.cmp-rrow[data-rank-idx]'); if(!row) return;
     const a=document.getElementById('cmpA'), b=document.getElementById('cmpB');
     if(b.value===row.dataset.rankIdx){ b.value=a.value; } // A가 이미 그 선수면 B와 스왑 방지
