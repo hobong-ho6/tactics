@@ -455,7 +455,7 @@
       <tr><td>RCB</td><td>콘사</td><td>볼 플레잉 센터백 (Ball-Playing Defender) / 빌드업 (Build-Up)</td><td><b>3축</b>: 모양 .88~.94 + 스텝아웃 + 패스 96% 팀 1위</td></tr>
       <tr><td>RB</td><td>캐시</td><td>윙백 (Wingback) / 밸런스 (Balanced)</td><td>재검증 07-08: att_wb Δ.007 동률→숙련 wingback 채택, 수비우선 FB(비대칭). 폭 규율 절대</td></tr>
       <tr><td>LDM</td><td>오나나</td><td>홀딩 (Holding) / 로밍 (Roaming)</td><td><b>숙련 타이브레이크</b>: 유일 숙련 DM — 로밍=시즌 무브먼트, 홀딩 커널=볼위닝 기능. <span class="ok">확정</span></td></tr>
-      <tr><td>RDM</td><td>카마라</td><td>딥라잉 플레이메이커 (Deep-Lying Playmaker) / 로밍 (Roaming)</td><td>재검증 07-08: 실측·숙련·role:season 3중 dlp/Roaming .87 — 앵커 서사보다 실측 우선(rule#3). 수비 책임 유지</td></tr>
+      <tr><td>RDM</td><td>카마라</td><td>홀딩 (Holding) / 볼 위닝 (Ball-Winning)</td><td>되돌림 07-09: 움직임은 dlp/Roaming .87이나 기능 실측=스쿼드 1위 볼위닝(듀얼 8.4·인터셉트 3.0)+미드블록 중앙 스크린(obs#27). role:season(움직임)=dlp/Roaming</td></tr>
       <tr><td>LW</td><td>부엔디아</td><td>인사이드 포워드 (Inside Forward) / 밸런스 (Balanced)</td><td>재검증 07-08: insidefwd/Balanced .77 > Attack. 시즌 좌측 주포지션 + 좌편향 실측</td></tr>
       <tr><td>CAM</td><td>로저스</td><td>플레이메이커 (Playmaker) / 로밍 (Roaming)</td><td>시즌 주포지션(21선발 7.10) + 모양 .74</td></tr>
       <tr><td>RM</td><td>맥긴</td><td>와이드 미드필더 (Wide Midfielder) / 빌드업 (Build-Up)</td><td>재검증 07-08: 구 insidefwd .88은 stale(현커널 .57). 숙련 타이브레이크 widemid/Build-Up(측정최적 wideplm/Att .76와 Δ.02)</td></tr>
@@ -748,7 +748,7 @@ const FORMATIONS = {
     {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive'},   // Konsa (재검증 07-08: bpd/Aggressive .71 — 스텝아웃, role:season 일치)
     {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Balanced'},     // Cash (재검증 07-08: att_wb Δ.007 동률→숙련 wingback/Balanced, 수비우선 FB)
     {pos:'LDM',t:'DM', x:38,y:42, r:'dm_dlp',        focus:'Roaming'},      // Onana (재검증 07-08: dlp/Roaming .87 >> holding .77, 실측 우선)
-    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_dlp',        focus:'Roaming'},      // Kamara (재검증 07-08: dlp/Roaming .87 실측·숙련·role:season 3중, 앵커서사보다 실측 우선)
+    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning'}, // Kamara (되돌림 07-09: 움직임 dlp/Roaming .87이나 기능=스쿼드1위 볼위닝+미드블록 스크린 obs#27 → holding/Ball-Winning)
     {pos:'LW', t:'W',  x:15,y:64, r:'w_insidefwd',   focus:'Balanced'},     // Buendia (재검증 07-08: insidefwd/Balanced .77 > Attack — IF Balanced 원칙)
     {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming'},      // Rogers — 시즌 CAM 주포지션 (중앙 10번)
     {pos:'RM', t:'WM', x:85,y:64, r:'wm_widemid',    focus:'Build-Up'},     // McGinn (재검증 07-08: 구 insidefwd .80 stale=현 .57 → 숙련 타이브레이크 widemid/Build-Up)
@@ -1275,7 +1275,7 @@ const SQUAD_SLOTS=[
    {n:'영입·게예', opt:['dm_holding','Ball-Winning'], fit:['dm_dlp','Roaming']},
    {n:'영입·아타', opt:['dm_boxcrasher','Balanced'],  fit:['dm_dlp','Roaming']}]},
  {pos:'RDM',t:'DM', x:62,y:42, opts:[
-   {n:'카마라',    opt:['dm_dlp','Roaming'],         fit:['dm_dlp','Roaming']},
+   {n:'카마라',    opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
    {n:'틸레만스',  opt:['dm_dlp','Roaming'],         fit:['dm_dlp','Roaming']},
    {n:'오나나',    opt:['dm_dlp','Roaming'],         fit:['dm_dlp','Roaming']},
    {n:'린델뢰프',   opt:['dm_holding','Defend'],     fit:['dm_holding','Defend']},
