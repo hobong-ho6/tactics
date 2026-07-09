@@ -744,7 +744,7 @@ const FORMATIONS = {
   '아스톤 빌라 25/26 (최적)':[
     {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up'},     // Martínez (숙련 타이브레이크: 빌드업+골라인 화해)
     {pos:'LB', t:'FB', x:13,y:32, r:'fb_att_wb',     focus:'Support'},      // Digne (시즌 att_wb .91 — 전진형)
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Aggressive'},   // Pau Torres (재검증 07-08: bpd/Aggressive .65 — 스텝아웃)
+    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up'},     // Pau Torres (3축 07-09: duties=진전형 볼플레잉 Build-Up 명시; 콘사와 분화. role:season=Aggressive)
     {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive'},   // Konsa (재검증 07-08: bpd/Aggressive .71 — 스텝아웃, role:season 일치)
     {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Balanced'},     // Cash (재검증 07-08: att_wb Δ.007 동률→숙련 wingback/Balanced, 수비우선 FB)
     {pos:'LDM',t:'DM', x:38,y:42, r:'dm_holding',    focus:'Roaming'},      // Onana (기능축 07-09: 움직임 dlp .87이나 기능=인포서/볼위닝 태클3.4·듀얼6.6·창조최저 → holding/Roaming)
@@ -1252,7 +1252,7 @@ const SQUAD_SLOTS=[
    {n:'디뉴',      opt:['fb_att_wb','Support'],     fit:['fb_att_wb','Support']},
    {n:'마첸',      opt:['fb_wingback','Balanced'],  fit:['fb_wingback','Balanced']}]},
  {pos:'LCB',t:'CB', x:37,y:28, opts:[
-   {n:'파우 토레스', opt:['cb_bpd','Aggressive'],    fit:['cb_bpd','Aggressive']},
+   {n:'파우 토레스', opt:['cb_bpd','Build-Up'],      fit:['cb_bpd','Aggressive']},
    {n:'린델뢰프',   opt:['cb_bpd','Aggressive'],     fit:['cb_bpd','Aggressive']},
    {n:'영입·켈리',  opt:['cb_bpd','Build-Up'],       fit:['cb_bpd','Aggressive']}]},
  {pos:'RCB',t:'CB', x:63,y:28, opts:[
@@ -1265,7 +1265,7 @@ const SQUAD_SLOTS=[
    {n:'영입·에메르송', opt:['fb_att_wb','Support'],   fit:['fb_att_wb','Support']}]},
  {pos:'LDM',t:'DM', x:38,y:42, opts:[
    {n:'오나나',    opt:['dm_holding','Roaming'],     fit:['dm_dlp','Roaming']},
-   {n:'틸레만스',  opt:['dm_dlp','Roaming'],         fit:['dm_dlp','Roaming']},
+   {n:'틸레만스',  opt:['dm_dlp','Build-Up'],        fit:['dm_dlp','Roaming']},
    {n:'보가르드',  opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
    {n:'영입·페르난데스', opt:['dm_dlp','Build-Up'],  fit:['dm_dlp','Roaming']},
    {n:'영입·로피',  opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
@@ -1276,7 +1276,7 @@ const SQUAD_SLOTS=[
    {n:'영입·아타', opt:['dm_boxcrasher','Balanced'],  fit:['dm_dlp','Roaming']}]},
  {pos:'RDM',t:'DM', x:62,y:42, opts:[
    {n:'카마라',    opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
-   {n:'틸레만스',  opt:['dm_dlp','Roaming'],         fit:['dm_dlp','Roaming']},
+   {n:'틸레만스',  opt:['dm_dlp','Build-Up'],        fit:['dm_dlp','Roaming']},
    {n:'오나나',    opt:['dm_holding','Roaming'],     fit:['dm_dlp','Roaming']},
    {n:'린델뢰프',   opt:['dm_holding','Defend'],     fit:['dm_holding','Defend']},
    {n:'보가르드',  opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
