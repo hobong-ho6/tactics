@@ -1305,7 +1305,7 @@ const SQUAD_SLOTS=[
    {n:'영입·하지무사', opt:['wm_winger','Attack'],   fit:['wm_insidefwd','Attack']},
    {n:'영입·소울레', opt:['wm_insidefwd','Attack'],  fit:['wm_widemid','Defend']},
    {n:'영입·음바예', opt:['wm_insidefwd','Attack'],  fit:['wm_insidefwd','Balanced']},
-   {n:'영입·콜로무아니', opt:['wm_insidefwd','Attack'],fit:['wm_insidefwd','Balanced']},
+   {n:'영입·콜로무아니', opt:['wm_insidefwd','Attack'],fit:['wm_widemid','Build-Up']},
    {n:'영입·칼라일리', opt:['wm_insidefwd','Attack'], fit:['wm_winger','Balanced']}]},
  {pos:'ST', t:'ST', x:50,y:87, opts:[
    {n:'왓킨스',    opt:['st_advanced','Support'],    fit:['st_advanced','Versatile']},
@@ -1315,7 +1315,8 @@ const SQUAD_SLOTS=[
    {n:'아브라함(보유)', opt:['st_target','Attack'],  fit:['st_false9','Attack']},
    {n:'영입·볼테마데', opt:['st_advanced','Versatile'],fit:['st_false9','Build-Up']},
    {n:'영입·잭슨',    opt:['st_advanced','Attack'],    fit:['st_advanced','Support']},
-   {n:'영입·오슬라',  opt:['st_advanced','Attack'],    fit:['st_advanced','Support']}]},
+   {n:'영입·오슬라',  opt:['st_advanced','Attack'],    fit:['st_advanced','Support']},
+   {n:'영입·콜로무아니', opt:['st_advanced','Attack'], fit:['st_advanced','Support']}]},
 ];
 /* per-player best position + one-line evidence (derived from player_role_map kind='optimal'
    for owned players, transfer_targets fit_sim for incoming candidates — DB가 바뀌면 함께 갱신) */
@@ -1346,9 +1347,9 @@ const PLAYER_BEST={
   '영입·로피':{pos:['LDM'],note:'실측 LDM 0.84 > RDM 0.58'},
   '영입·그레이':{pos:['RDM'],note:'실측 RDM 0.77 > LDM 0.65'},
   '영입·모리바':{pos:['LDM'],note:'실측 LDM 0.80 > RDM 0.58'},
-  '영입·케이타':{pos:['LDM'],note:'실측 적합 0.80 — 오나나 부상 대체 후보(TeamTalk)'},
-  '영입·게예':{pos:['LDM'],note:'실측 적합 0.82 — 오나나 부상 대체 후보(TeamTalk), 갈라타사라이 근접 합의설 경쟁'},
-  '영입·아타':{pos:['LDM'],note:'실측 적합 0.53(낮음, 박스투박스형) — 오나나 부상 대체 후보 중 최저 적합'},
+  '영입·케이타':{pos:['LDM'],note:'실측 적합 0.86(재계산: 미러+센트로이드 시프트) — 오나나 부상 대체 후보(TeamTalk)'},
+  '영입·게예':{pos:['LDM'],note:'실측 적합 0.78(재계산) — 오나나 부상 대체 후보(TeamTalk), 갈라타사라이 근접 합의설 경쟁'},
+  '영입·아타':{pos:['LDM'],note:'실측 적합 0.79(재계산: 이전 0.53은 시프트 미적용 오류) — 오나나 부상 대체 후보'},
   '영입·카마라(모나코)':{pos:['RDM'],note:'실측 적합 0.74 — 오나나 부상 대체 후보(TeamTalk), 교체출전 비중 높은 표본'},
   '로저스':{pos:['CAM'],note:'시즌 주포지션 CAM 21경기(7.1)>LW 13(6.91) — 중앙 10번 (LW는 천장, 접전 변형)'},
   '부엔디아':{pos:['LM'],note:'시즌 주포지션 LW 21경기 — 좌측 인버티드 창조 (CAM은 3경기뿐)'},
@@ -1368,7 +1369,7 @@ const PLAYER_BEST={
   '영입·하지무사':{pos:['RM'],note:'실측 적합 0.92 — RM 후보 중 최고'},
   '영입·소울레':{pos:['RM'],note:'실측 적합 0.84 — 우측 5경기 순수표본(1경기 중앙 이례치 제외), LM/CAM 추정을 실측으로 정정'},
   '영입·음바예':{pos:['RM'],note:'실측 적합 0.96 — RM 후보 중 최고(6경기 확장표본, PSG 조커자원). 이적설 3티어만 보도 — 크로스체크 미통과 UNKNOWN'},
-  '영입·콜로무아니':{pos:['RM'],note:'실측 적합 0.72(ST 포지션 순수 재측정) — SofaScore lineup pos=F 45분+ 6경기(토트넘/UCL)만 필터링. 중앙화(tool_x 57.9)됐으나 ST로 뛰어도 인사이드포워드형 우측 드리프트 확인, RM 유지'},
+  '영입·콜로무아니':{pos:['ST','RM'],note:'ST 포지션 순수 재측정(SofaScore lineup pos=F 45분+ 6경기, 토트넘/UCL) — 미러+센트로이드 시프트 적용 정확 계산: ST fit 0.62(st_advanced/Support) > RM fit 0.57(wm_widemid/Build-Up), 둘 다 중간 수준이라 ST/RM 겸용'},
   '영입·칼라일리':{pos:['RM'],note:'실측 적합 0.83 — 우측 중간-전진 구역(벨기에 6경기), 인터밀란이 오퍼로 선두'},
   '왓킨스':{pos:['ST'],note:'원톱 고정 (8.7/8.5)'},
   '영입·기라시':{pos:['ST'],note:'실측 적합 0.80'},
@@ -1605,9 +1606,9 @@ const CMP_SLOTS={
   {n:'영입·로피',grid:'00000595414996169X6302221',dbFit:0.84,lh:'MEDIUM-HIGH',rate:{v:7.03,b:'r6',s:'최근 6경기 평균 7.03 (알메리아)'}},
   {n:'영입·그레이',grid:'2011153364267X42776221221',dbFit:0.65,lh:'MEDIUM-LOW',rate:{v:6.72,b:'r6',s:'최근 6경기 평균 6.72 (스퍼스)'}},
   {n:'영입·모리바',grid:'0000026550276422X85111110',dbFit:0.80,lh:'MEDIUM',rate:{v:6.95,b:'r6',s:'최근 6경기 평균 6.95 (셀타)'}},
-  {n:'영입·케이타',grid:'1010025331387116X94121221',dbFit:0.80,lh:'MEDIUM',rate:{v:7.08,b:'r6',s:'최근 6경기 평균 7.08 (파르마, 오나나 대체 후보)'}},
-  {n:'영입·게예',grid:'10010564525654148X8102220',dbFit:0.82,lh:'MEDIUM',rate:{v:6.80,b:'r6',s:'최근 6경기 평균 6.80 (비야레알, 오나나 대체 후보)'}},
-  {n:'영입·아타',grid:'43112X7222753225542101100',dbFit:0.53,lh:'MEDIUM',rate:{v:7.12,b:'r6',s:'최근 6경기 평균 7.12 (우디네세, 오나나 대체 후보 중 fit 최저)'}}]},
+  {n:'영입·케이타',grid:'1010025331387116X94121221',dbFit:0.86,lh:'MEDIUM',rate:{v:7.08,b:'r6',s:'최근 6경기 평균 7.08 (파르마, 오나나 대체 후보)'}},
+  {n:'영입·게예',grid:'10010564525654148X8102220',dbFit:0.78,lh:'MEDIUM',rate:{v:6.80,b:'r6',s:'최근 6경기 평균 6.80 (비야레알, 오나나 대체 후보)'}},
+  {n:'영입·아타',grid:'43112X7222753225542101100',dbFit:0.79,lh:'MEDIUM',rate:{v:7.12,b:'r6',s:'최근 6경기 평균 7.12 (우디네세, 오나나 대체 후보)'}}]},
  RDM:{t:'DM',x:62,c:[
   {n:'카마라',grid:'001001345215861248X112341',rate:{v:7.14,b:'season',s:'피벗 16경기 평균 7.14 · 피크 7.8'}},
   {n:'틸레만스',grid:'10101473214X8314X72013310',rate:{v:7.28,b:'season',s:'피벗 21경기 평균 7.28 · 피크 8.4'}},
@@ -1646,7 +1647,7 @@ const CMP_SLOTS={
   {n:'영입·하지무사',grid:'312691114X000140002400001',dbFit:0.92,lh:'MEDIUM-HIGH',rate:{v:7.55,b:'r6',s:'최근 6경기 평균 7.55 (페예노르트)'}},
   {n:'영입·소울레',grid:'0000100111001330014X00013',dbFit:0.84,lh:'MEDIUM',rate:{v:7.0,b:'r6',s:'최근 6경기 중 우측 5경기 평균 7.0 (로마)'}},
   {n:'영입·음바예',grid:'001231104X000160001200000',dbFit:0.96,lh:'UNKNOWN',rate:{v:6.92,b:'r6',s:'최근 6경기(45분+) 평균 6.92 (PSG, 조커자원이라 2026-02~07 확장표본)'}},
-  {n:'영입·콜로무아니',grid:'14383364741425X0305300400',dbFit:0.72,lh:'MEDIUM-HIGH',rate:{v:6.63,b:'r6',s:'ST 포지션 순수 6경기(lineup pos=F, 45분+) 평균 6.63 — 토트넘 PL 2·UCL 2 (PSG 이력은 대부분 단기 교체출전이라 미채택)'}},
+  {n:'영입·콜로무아니',grid:'14383364741425X0305300400',dbFit:0.57,lh:'MEDIUM-HIGH',rate:{v:6.63,b:'r6',s:'ST 포지션 순수 6경기(lineup pos=F, 45분+) 평균 6.63 — 토트넘 PL 2·UCL 2 (PSG 이력은 대부분 단기 교체출전이라 미채택). RM fit 0.57 — ST 슬롯(0.62)이 근소 우위, ST 목록에도 등록'}},
   {n:'영입·칼라일리',grid:'000120013X001170003800134',dbFit:0.83,lh:'MEDIUM',rate:{v:7.45,b:'r6',s:'최근 6경기 평균 7.45 (벨기에 유니언생질루아즈)'}}]},
  ST:{t:'ST',x:50,c:[
   {n:'왓킨스',grid:'569426XX63565314322100200',rate:{v:8.47,b:'top',s:'상위 7경기 평균 8.47'}},
@@ -1656,7 +1657,8 @@ const CMP_SLOTS={
   {n:'아브라함(보유)',grid:'01855255648X8415422010200',dbFit:0.52,lh:'OWNED',rate:{v:6.85,b:'r6',s:'45분+ 4경기 평균 6.85 (빌라·전부 교체)'}},
   {n:'영입·볼테마데',grid:'11421357X2332332111101110',dbFit:0.79,lh:'MEDIUM',rate:{v:6.73,b:'r6',s:'최근 6경기 평균 6.73 (뉴캐슬)'}},
   {n:'영입·잭슨',grid:'457725X496434211211100000',dbFit:0.75,lh:'HIGH',rate:{v:7.45,b:'r6',s:'최근 6경기 평균 7.45 (바이에른 임대)'}},
-  {n:'영입·오슬라',grid:'5597247X58125410121100000',dbFit:0.75,lh:'MEDIUM-LOW',rate:{v:7.6,b:'r6',s:'최근 5경기 평균 7.6 (뉴캐슬, 15+ 히트포인트 조건으로 1경기 제외)'}}]},
+  {n:'영입·오슬라',grid:'5597247X58125410121100000',dbFit:0.75,lh:'MEDIUM-LOW',rate:{v:7.6,b:'r6',s:'최근 5경기 평균 7.6 (뉴캐슬, 15+ 히트포인트 조건으로 1경기 제외)'}},
+  {n:'영입·콜로무아니',grid:'14383364741425X0305300400',dbFit:0.62,lh:'MEDIUM-HIGH',rate:{v:6.63,b:'r6',s:'ST 포지션 순수 6경기(lineup pos=F, 45분+) 평균 6.63 (토트넘/UCL). RM fit 0.57보다 근소 우위'}}]},
 };
 const clamp01=v=>v<0?0:v>1?1:v;
 function cmpCos(a,b){ let dot=0,na=0,nb=0; for(let i=0;i<25;i++){dot+=a[i]*b[i];na+=a[i]*a[i];nb+=b[i]*b[i];} return (na&&nb)?dot/Math.sqrt(na*nb):0; }
