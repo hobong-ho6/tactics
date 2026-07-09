@@ -1960,11 +1960,43 @@ function cmpStatBars(A,B,isGK){
     return `<div class="cmp-srow"><span class="v a ${a>=b?'hi':''}">${a}</span><div class="cmp-bar L"><i class="${a<b?'dim':''}" style="width:${a}%"></i></div><span class="lab">${L}</span><div class="cmp-bar R"><i class="${b<a?'dim':''}" style="width:${b}%"></i></div><span class="v ${b>=a?'hi':''}">${b}</span></div>`;
   }).join('');
 }
-/* 후보 1명의 절대 종합점수 — cmpVerdict와 동일 정규화(적합40/평점35/OVR25),
-   비교불가 항목(상위경기 평점·실험배치·FC26 미수록)은 제외 후 남은 가중치로 재정규화 */
-function cmpAbsScore(prof){
+/* 슬롯별 에메리 요구역할 (검증된 주전 optimal, obs#27~33). 랭킹 '요구적합'의 기준 —
+   후보의 자연역할이 아니라 Villa가 그 자리에 요구하는 역할에 얼마나 맞는지 측정.
+   피벗·LB는 2종(둘 다 정당한 니즈) → 후보 그리드가 더 잘 맞는 쪽(max)을 채택. */
+const SLOT_EMERY_ROLE={
+  GK:[['gk_ballplaying','Build-Up']],
+  LB:[['fb_att_wb','Support'],['fb_wingback','Balanced']],
+  RB:[['fb_wingback','Balanced']],
+  LCB:[['cb_bpd','Build-Up']],
+  RCB:[['cb_bpd','Aggressive']],
+  LDM:[['dm_holding','Roaming'],['dm_dlp','Build-Up']],
+  RDM:[['dm_holding','Ball-Winning'],['dm_dlp','Build-Up']],
+  LM:[['wm_insidefwd','Balanced']],
+  CAM:[['cam_playmaker','Roaming']],
+  RM:[['wm_widemid','Support']],
+  ST:[['st_advanced','Versatile']],
+};
+/* 요구적합 = 후보 실측 그리드 vs 슬롯 에메리 요구역할 커널 코사인 (피벗/LB는 max) */
+function emeryRoleFit(slotKey,cand){
+  const slot=CMP_SLOTS[slotKey], roles=SLOT_EMERY_ROLE[slotKey];
+  if(!cand.grid||!roles) return null;
+  const grids=[decodeMap(cand.grid)];
+  if(cand.exp) grids.push(decodeMap(mirrorGrid(cand.grid)));
+  let best=null;
+  for(const g of grids) for(const [r,f] of roles){
+    if(!(MAPS[r]&&MAPS[r][f])) continue;
+    const s=cmpCos(placedMap({r,focus:f,x:slot.x,y:0}),g);
+    if(!best||s>best.s) best={s,role:r,f};
+  }
+  return best;
+}
+/* 후보 1명의 절대 종합점수 — 요구적합40/평점35/OVR25,
+   비교불가 항목(상위경기 평점·실험배치·FC26 미수록)은 제외 후 남은 가중치로 재정규화.
+   fit = 슬롯 에메리 요구역할 적합(ef); 없으면 자연역할 fit로 폴백 */
+function cmpAbsScore(prof, ef){
   const c=prof.c, comps=[];
-  if(prof.fit) comps.push({w:.40,n:clamp01((prof.fit.s-.3)/.65)});
+  const fitS = ef?ef.s:(prof.fit?prof.fit.s:null);
+  if(fitS!=null) comps.push({w:.40,n:clamp01((fitS-.3)/.65)});
   const rateOK=c.rate&&c.rate.b!=='top'&&!c.exp;
   if(rateOK) comps.push({w:.35,n:clamp01((c.rate.v-6.4)/1.4)});
   const fcOK=prof.fc&&!prof.fc.none;
@@ -1975,28 +2007,32 @@ function cmpAbsScore(prof){
 /* 이 슬롯 영입 랭킹 — slot.c 전원을 종합점수로 정렬 (실험배치 제외) */
 function cmpSlotRanking(slotKey){
   return CMP_SLOTS[slotKey].c.map((c,idx)=>{
-    const prof=cmpProfile(slotKey,c), sc=cmpAbsScore(prof);
-    return {idx,c,prof,score:sc.score,rateOK:sc.rateOK,fcOK:sc.fcOK};
-  }).sort((a,b)=> b.score-a.score || ((b.prof.fit?b.prof.fit.s:0)-(a.prof.fit?a.prof.fit.s:0)));
+    const prof=cmpProfile(slotKey,c), ef=emeryRoleFit(slotKey,c), sc=cmpAbsScore(prof,ef);
+    return {idx,c,prof,ef,score:sc.score,rateOK:sc.rateOK,fcOK:sc.fcOK};
+  }).sort((a,b)=> b.score-a.score || ((b.ef?b.ef.s:0)-(a.ef?a.ef.s:0)));
 }
 function cmpRankHTML(slotKey){
   const rows=cmpSlotRanking(slotKey);
   if(!rows.length) return '';
-  const hd=`<div class="cmp-rrow hd"><span class="rk">#</span><span class="nm">선수</span><span>종합</span><span>적합</span><span>평점</span><span>OVR</span></div>`;
+  const roles=SLOT_EMERY_ROLE[slotKey]||[];
+  const targetTxt=roles.map(([r,f])=>`${ROLES[r]?ROLES[r].n:r}/${FOCUS_KR[f]||f}`).join(' 또는 ');
+  const hd=`<div class="cmp-rrow hd"><span class="rk">#</span><span class="nm">선수</span><span>종합</span><span>요구적합</span><span>평점</span><span>OVR</span></div>`;
   const body=rows.map((r,i)=>{
     const c=r.c, own=!(c.dbFit||c.lh), tag=own?'<span class="tag own">보유</span>':(c.lh?`<span class="tag tgt">${c.lh}</span>`:'<span class="tag tgt">영입</span>');
-    const fit=r.prof.fit?Math.round(r.prof.fit.s*100)+'%':'—';
+    const fit=r.ef?Math.round(r.ef.s*100)+'%':'—';
+    const nat=r.prof.fit?`${fmtRole(r.prof.fit.role)} ${Math.round(r.prof.fit.s*100)}%`:'—';
     const rate=c.rate?`<span class="mt${r.rateOK?'':' ex'}">${c.rate.v.toFixed(2)}${r.rateOK?'':'*'}</span>`:'<span class="mt ex">—</span>';
     const ovr=r.fcOK?`<span class="mt">${r.prof.fc.ovr}</span>`:'<span class="mt ex">—</span>';
     const en=sofifaEn(c.n), sf=sofifaURL(c.n)
       ?`<a class="sf-lnk" data-sofifa="${c.n}" title="sofifa 열기: ${en||c.n}">↗</a>`:'';
-    return `<div class="cmp-rrow${i===0?' top':''}" data-rank-idx="${r.idx}" title="클릭 → 선수 A로 불러와 비교${en?' · '+en:''}">`
+    const ttl=`클릭 → 선수 A로 비교${en?' · '+en:''} · 자연역할 ${nat}${r.ef?` · 요구역할 매칭 ${fmtRole(r.ef.role)}`:''}`;
+    return `<div class="cmp-rrow${i===0?' top':''}" data-rank-idx="${r.idx}" title="${ttl}">`
       +`<span class="rk">${i+1}</span><span class="nm"><span class="ntxt">${c.n}</span>${tag}${sf}</span>`
       +`<span class="sc">${r.score.toFixed(2)}</span><span class="mt">${fit}</span>${rate}${ovr}</div>`;
   }).join('');
   const anyEx=rows.some(r=>r.c.rate&&!r.rateOK);
-  return `<div class="cmp-rank"><div class="rk-head">이 슬롯 영입 랭킹 — <b>${slotKey}</b> · 종합 판정순 (적합40 / 평점35 / OVR25)</div>`
-    +`<div class="rk-sub">행 클릭 → 선수 A로 불러와 상세 비교. ${anyEx?"평점 *=상위경기 평균(표본 편향)이라 종합에서 제외됨. ":""}미수집 항목(—)은 남은 가중치로 재정규화 — 항목 수가 다른 후보 간 비교는 참고용. 종합점수는 후보별 절대 정규화라 아래 A/B 판정(두 선수 공통 지표만 비교)과 소폭 다를 수 있음.</div>`
+  return `<div class="cmp-rank"><div class="rk-head">이 슬롯 영입 랭킹 — <b>${slotKey}</b> · 요구역할 <b>${targetTxt}</b> 적합 기준 (적합40 / 평점35 / OVR25)</div>`
+    +`<div class="rk-sub">적합 = 후보 실측이 <b>이 슬롯의 에메리 요구역할</b>에 맞는 정도(후보의 자연역할 아님 — 자연역할은 행 툴팁 참조). 행 클릭 → 선수 A로 상세 비교. ${anyEx?"평점 *=상위경기 평균(표본 편향)이라 종합 제외. ":""}미수집(—)은 잔여 가중치로 재정규화. 아래 A/B 카드의 '슬롯 적합'은 자연역할 최근접이라 이 요구적합과 다를 수 있음.</div>`
     +hd+body+`</div>`;
 }
 function renderCmp(){
