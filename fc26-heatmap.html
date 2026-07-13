@@ -1298,7 +1298,8 @@ const SQUAD_SLOTS=[
    {n:'영입·레미로', opt:['gk_sweeper','Build-Up'],  fit:['gk_goalkeeper','Defend']},
    {n:'영입·리세르', opt:['gk_sweeper','Build-Up'],  fit:['gk_goalkeeper','Defend']},
    {n:'영입·트래포드', opt:['gk_sweeper','Build-Up'],fit:['gk_goalkeeper','Defend']},
-   {n:'영입·오를란도힐', opt:['gk_sweeper','Balanced'],fit:['gk_goalkeeper','Defend']}]},
+   {n:'영입·오를란도힐', opt:['gk_sweeper','Balanced'],fit:['gk_goalkeeper','Defend']},
+   {n:'영입·요한손', opt:['gk_sweeper','Balanced'],fit:['gk_goalkeeper','Defend']}]},
  {pos:'LB', t:'FB', x:13,y:32, opts:[
    {n:'디뉴',      opt:['fb_att_wb','Support'],     fit:['fb_att_wb','Support']},
    {n:'마첸',      opt:['fb_wingback','Balanced'],  fit:['fb_wingback','Balanced']},
@@ -1333,7 +1334,9 @@ const SQUAD_SLOTS=[
    {n:'보가르드',  opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
    {n:'영입·모리바', opt:['dm_holding','Ball-Winning'],fit:['dm_dlp','Roaming']},
    {n:'영입·카마라(모나코)', opt:['dm_dlp','Build-Up'],fit:['dm_dlp','Roaming']},
-   {n:'영입·베리발', opt:['dm_holding','Roaming'],fit:['dm_holding','Roaming']}]},
+   {n:'영입·베리발', opt:['dm_holding','Roaming'],fit:['dm_holding','Roaming']},
+   {n:'영입·그레이', opt:['dm_dlp','Roaming'],fit:['dm_dlp','Roaming']},
+   {n:'영입·마운트', opt:['dm_dlp','Roaming'],fit:['dm_dlp','Roaming']}]},
  /* 4-2-3-1 Wide의 좌측 슬롯 = LM(WM 타입). 분석 라벨 LW의 게임 매핑 — fit은 wm_* 커널
     재계산 (2026-07-02, transfer_targets LM rows + player_role_map kind='role:LM') */
  {pos:'LM', t:'WM', x:14,y:64, opts:[
@@ -1393,13 +1396,14 @@ const PLAYER_BEST={
   '틸레만스':{pos:['LDM','RDM'],note:'딥 피벗이 최적 (EL 결승 8.4) — 10번 아님'},
   '보가르드':{pos:['LDM','RDM'],note:'홀딩 미드 로테이션'},
   '영입·로피':{pos:['LDM'],note:'실측 LDM 0.84 > RDM 0.58'},
-  '영입·그레이':{pos:['RDM'],note:'실측 RDM 0.77 > LDM 0.65'},
+  '영입·그레이':{pos:['RDM'],note:'실측 적합 0.797(dm_dlp/Roaming) > LDM 0.528 — PL/UCL 6경기(45분+, U21 국대 제외) 299pt. 이적설 MEDIUM-HIGH(TeamTalk 2티어, 토트넘 강등 시에만 실현)'},
   '영입·모리바':{pos:['LDM'],note:'실측 LDM 0.80 > RDM 0.58'},
   '영입·케이타':{pos:['LDM'],note:'실측 적합 0.86(재계산: 미러+센트로이드 시프트) — 오나나 부상 대체 후보(TeamTalk)'},
   '영입·게예':{pos:['LDM'],note:'실측 적합 0.78(재계산) — 오나나 부상 대체 후보(TeamTalk), 갈라타사라이 근접 합의설 경쟁'},
   '영입·아타':{pos:['LDM'],note:'실측 적합 0.85(M-포지션 순수 재수집: 기존 표본이 F/M 혼재였음) — 오나나 대체 후보 중 최상위권'},
   '영입·카마라(모나코)':{pos:['RDM'],note:'실측 적합 0.74 — 오나나 부상 대체 후보(TeamTalk), 교체출전 비중 높은 표본'},
   '영입·베리발':{pos:['RDM'],note:'실측 적합 0.59(dm_holding/Roaming) — PL 6경기(45분+) 우측 편향, 순수 스크리너보다 전진형 8번 성향. 크로스체크 2티어(Football Insider)만, 토트넘 잔류압박으로 MEDIUM'},
+  '영입·마운트':{pos:['RDM'],note:'실측 적합 0.82(dm_dlp/Roaming) — PL 6경기(45분+) 307pt, CAM 커널(0.58)보다 딥 8번형에 더 근접. 표본 기간 넓게 분산(부상·로테이션). 이적설 MEDIUM(Football Insider 2티어 단일소스, tier-1 미확인)'},
   '로저스':{pos:['CAM'],note:'시즌 주포지션 CAM 21경기(7.1)>LW 13(6.91) — 중앙 10번 (LW는 천장, 접전 변형)'},
   '부엔디아':{pos:['LM'],note:'시즌 주포지션 LW 21경기 — 좌측 인버티드 창조 (CAM은 3경기뿐)'},
   '영입·서머빌':{pos:['LM'],note:'실측 적합 0.70 — 로저스와 유사 동선'},
