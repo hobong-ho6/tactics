@@ -1357,11 +1357,14 @@ const SQUAD_SLOTS=[
    {n:'영입·음바예', opt:['wm_insidefwd','Attack'],  fit:['wm_insidefwd','Balanced']},
    {n:'영입·콜로무아니', opt:['wm_widemid','Support'],  fit:['wm_widemid','Build-Up']},
    {n:'영입·바르드기', opt:['wm_winger','Attack'],     fit:['wm_insidefwd','Balanced']},
+   {n:'영입·트로사르', opt:['wm_insidefwd','Attack'],  fit:['wm_wideplm','Attack']},
    ]},
  {pos:'ST', t:'ST', x:50,y:87, opts:[
    {n:'왓킨스',    opt:['st_advanced','Versatile'],  fit:['st_advanced','Versatile']},
    {n:'아브라함(보유)', opt:['st_target','Attack'],  fit:['st_false9','Attack']},
    {n:'영입·콜로무아니', opt:['st_advanced','Attack'], fit:['st_advanced','Support']},
+   {n:'영입·기라시', opt:['st_advanced','Attack'],    fit:['st_false9','Attack']},
+   {n:'영입·볼테마데', opt:['st_target','Attack'],    fit:['st_false9','Build-Up']},
    ]},
 ];
 /* per-player best position + one-line evidence (derived from player_role_map kind='optimal'
@@ -1417,12 +1420,13 @@ const PLAYER_BEST={
   '영입·콜로무아니':{pos:['ST','RM'],note:'ST 포지션 순수 재측정(SofaScore lineup pos=F 45분+ 6경기, 토트넘/UCL) — 미러+센트로이드 시프트 적용 정확 계산: ST fit 0.62(st_advanced/Support) > RM fit 0.57(wm_widemid/Build-Up), 둘 다 중간 수준이라 ST/RM 겸용'},
   '영입·칼라일리':{pos:['RM'],note:'실측 적합 0.83 — 우측 중간-전진 구역(벨기에 6경기), 인터밀란이 오퍼로 선두'},
   '영입·바르드기':{pos:['RM'],note:'실측 적합 0.946(wm_insidefwd/Balanced) — 우측 전진+인사이드 컷인 패턴(바르셀로나/UCL 6경기). 이적설 MEDIUM(TeamTalk 2티어급, 리즈와 경쟁 유동적)'},
+  '영입·트로사르':{pos:['LM'],note:'실측 적합 0.768(wm_wideplm/Attack) — 하프스페이스 창출형(PL 6경기, 폼 절정기 평균 7.52). 이적설 MEDIUM-HIGH(Football Insider·TeamTalk 2티어급, 본인 희망+아스날 매각 용인)'},
   '왓킨스':{pos:['ST'],note:'원톱 고정 (8.7/8.5)'},
-  '영입·기라시':{pos:['ST'],note:'실측 적합 0.80'},
+  '영입·기라시':{pos:['ST'],note:'실측 적합 0.828(st_false9/Attack, 분데스리가 6경기 재측정) — 깊게 내려와 연계하는 유형. 이적설 MEDIUM(BILD·TeamTalk 2티어급이나 도르트문트 공개 매각거부)'},
   '영입·브로베이':{pos:['ST'],note:'실측 적합 0.75'},
   '영입·파르도':{pos:['LM'],note:'실측 LM 0.83 > ST 0.73 (11경기 표본 확장 후 역전)'},
   '아브라함(보유)':{pos:['ST'],note:'실측 적합 0.52 — 표본 4경기·전부 교체출전(편향)'},
-  '영입·볼테마데':{pos:['ST'],note:'실측 적합 0.79 — 폴스나인형, 왓킨스와 결 다름'},
+  '영입·볼테마데':{pos:['ST'],note:'실측 적합 0.726(st_false9/Build-Up, PL 6경기 재측정) — 폴스나인형, 왓킨스와 결 다름. 이적설 MEDIUM(뉴캐슬 매각의사 없음+가격(£56m+)으로 실현성 낮음 명시)'},
   '영입·잭슨':{pos:['ST'],note:'실측 적합 0.75 — st_advanced, 왓킨스와 동일 역할군 (1티어 2곳 HIGH)'},
   '영입·오슬라':{pos:['ST'],note:'실측 적합 0.75 — st_advanced, 왓킨스와 동일 역할군 (3티어만 확인, MEDIUM-LOW)'},
 };
