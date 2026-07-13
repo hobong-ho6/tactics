@@ -202,15 +202,25 @@
   #transferPage details.tf-src summary::before{content:'▸ ';color:var(--muted-2)}
   #transferPage details.tf-src[open] summary::before{content:'▾ '}
   #transferPage details.tf-src div{color:var(--muted-2);font-size:11px;margin-top:4px;line-height:1.5}
-  #xiPage .xi-chart{display:flex;flex-direction:column;gap:10px;margin-top:14px}
-  #xiPage .xi-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  #xiPage .xi-slot{background:var(--panel-2);border:1px solid var(--line-soft);border-radius:10px;padding:8px 10px;min-width:150px}
-  #xiPage .xi-slot h4{margin:0 0 6px;font-size:12px;letter-spacing:.06em;color:var(--muted);text-align:center}
-  #xiPage .xi-cand{display:flex;align-items:center;gap:6px;padding:3px 0;font-size:12px;border-top:1px dashed var(--line-soft)}
-  #xiPage .xi-cand:first-child{border-top:none;font-weight:700;color:var(--ink)}
-  #xiPage .xi-cand .xi-sim{font-family:var(--mono);color:var(--accent);min-width:34px;text-align:right}
-  #xiPage .xi-cand .xi-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  #xiPage .xi-empty{color:var(--muted-2);font-size:12px;text-align:center;padding:6px 0}
+  #xiPage .xi-pitch{position:relative;width:100%;max-width:760px;aspect-ratio:340/400;margin:14px auto 0;
+    background:linear-gradient(180deg,#1e6b3a,#195c31);border:2px solid rgba(255,255,255,.55);border-radius:10px;overflow:visible}
+  #xiPage .xi-pitch::before{content:'';position:absolute;left:0;right:0;top:50%;height:0;border-top:1px solid rgba(255,255,255,.4)}
+  #xiPage .xi-pitch::after{content:'';position:absolute;left:50%;top:50%;width:15%;aspect-ratio:1;border:1px solid rgba(255,255,255,.4);border-radius:50%;transform:translate(-50%,-50%)}
+  #xiPage .xi-box{position:absolute;left:50%;width:44%;border:1px solid rgba(255,255,255,.4);transform:translateX(-50%)}
+  #xiPage .xi-box.top{top:0;height:12%;border-top:none}
+  #xiPage .xi-box.bottom{bottom:0;height:12%;border-bottom:none}
+  #xiPage .xi-slot{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:3px;width:148px}
+  #xiPage .xi-tag{font-size:10.5px;font-weight:800;letter-spacing:.04em;border-radius:5px;padding:1px 7px;background:rgba(20,24,20,.85);border:1px solid rgba(255,255,255,.5);color:var(--ink)}
+  #xiPage .xi-tag.t-gk{color:#ff8d8d;border-color:#ff8d8d}
+  #xiPage .xi-tag.t-def{color:#f0a041;border-color:#f0a041}
+  #xiPage .xi-tag.t-mid{color:#3ecf8e;border-color:#3ecf8e}
+  #xiPage .xi-tag.t-att{color:#a0cf3e;border-color:#a0cf3e}
+  #xiPage .xi-tag.t-st{color:#5db8ff;border-color:#5db8ff}
+  #xiPage .xi-cand{display:flex;align-items:center;gap:5px;width:100%;background:rgba(15,18,15,.82);border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:3px 6px;font-size:11.5px}
+  #xiPage .xi-cand:first-child{border-color:rgba(255,255,255,.4);font-weight:700}
+  #xiPage .xi-cand .xi-sim{font-family:var(--mono);color:var(--accent);min-width:28px;text-align:right;flex:none}
+  #xiPage .xi-cand .xi-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)}
+  #xiPage .xi-empty{color:rgba(255,255,255,.6);font-size:11px;background:rgba(15,18,15,.82);border-radius:6px;padding:3px 6px;width:100%;text-align:center}
   .cmp-verdict{margin-top:12px;padding:10px 12px;border:1px solid var(--accent);border-radius:10px;background:rgba(255,122,47,.06);font-size:12.5px;line-height:1.65}
   .cmp-verdict b{color:var(--accent)}
   .cmp-verdict .even b{color:var(--ink)}
@@ -542,9 +552,9 @@
     <p class="rp-sub">포메이션을 고르면 슬롯별로 <b>전체 선수(보유+영입 후보)</b>를 실측 히트맵 vs 그 슬롯의 FC26 역할 커널 코사인 유사도로 줄세웁니다. 등급(가능성)과는 독립 지표 — 여기 순위는 순수 실측 적합도입니다.</p>
     <div class="tf-toolbar">
       <select id="xiFormation"></select>
-      <span class="rp-sub" style="margin:0">슬롯당 상위 5명 표시 · 실측 데이터 없는 선수는 순위에서 제외</span>
+      <span class="rp-sub" style="margin:0">슬롯당 상위 3명(주전+백업 2) 표시 · 실측 데이터 없는 선수는 순위에서 제외</span>
     </div>
-    <div id="xiChart" class="xi-chart"></div>
+    <div id="xiChart" class="xi-pitch"></div>
     <div class="rp-foot">후보 풀: CMP_SLOTS(보유 스쿼드 실측) + transfer_targets.map25(영입 후보 실측, 46명) — 실측 그리드가 없는 후보(예: Emerson Royal·Bowen·Bergvall·Kolo Muani)는 제외됩니다.</div>
   </section>
 
@@ -2504,33 +2514,36 @@ function buildXiPage(){
   sel.addEventListener('change',renderXi);
   xiBuilt=true;
 }
+const XI_TAG_CLASS={GK:'t-gk',CB:'t-def',FB:'t-def',DM:'t-mid',CM:'t-mid',CAM:'t-att',WM:'t-att',W:'t-att',ST:'t-st'};
+const XI_LH_SHORT={CONFIRMED:'C','HIGH':'H','MEDIUM-HIGH':'MH','MEDIUM-LOW':'ML',MEDIUM:'M',LOW:'L',OWNED:'●',UNKNOWN:'?',DEAD:'X'};
+function xiBadge(lh){
+  if(!lh) return '<span class="tf-badge tf-unk">-</span>';
+  const key=Object.keys(XI_LH_SHORT).find(k=>lh.toUpperCase().startsWith(k));
+  return `<span class="tf-badge ${tfBadgeClass(lh)}" title="${lh}">${key?XI_LH_SHORT[key]:lh.slice(0,2)}</span>`;
+}
 function renderXi(){
   const formation=document.getElementById('xiFormation').value;
   const slots=FORMATIONS[formation];
-  const rows=new Map();
-  for(const s of slots){
+  const html=slots.map(s=>{
     const prefix=s.t.toLowerCase();
     const ranked=XI_POOL.map(p=>{
       const fit=xiBestFit(xiDecode(p.grid),s.x,prefix);
       return fit?{...p,...fit}:null;
-    }).filter(Boolean).sort((a,b)=>b.sim-a.sim).slice(0,5);
-    if(!rows.has(s.y)) rows.set(s.y,[]);
-    rows.get(s.y).push({pos:s.pos,x:s.x,ranked});
-  }
-  const rowYs=[...rows.keys()].sort((a,b)=>b-a);   // 공격(높은 y) 먼저 = 위쪽
-  document.getElementById('xiChart').innerHTML=rowYs.map(y=>{
-    const cols=rows.get(y).slice().sort((a,b)=>a.x-b.x);
-    return `<div class="xi-row">${cols.map(c=>`
-      <div class="xi-slot"><h4>${c.pos}</h4>${
-        c.ranked.length?c.ranked.map(r=>`
-          <div class="xi-cand">
-            <span class="xi-sim">${r.sim.toFixed(2)}</span>
-            <span class="xi-name">${r.label}</span>
-            ${tfBadge(r.lh)}
-          </div>`).join('')
-        :'<div class="xi-empty">실측 후보 없음</div>'
-      }</div>`).join('')}</div>`;
+    }).filter(Boolean).sort((a,b)=>b.sim-a.sim).slice(0,3);
+    const tagCls=XI_TAG_CLASS[s.t]||'';
+    return `<div class="xi-slot" style="left:${s.x}%;top:${100-s.y}%">
+      <span class="xi-tag ${tagCls}">${s.pos}</span>
+      ${ranked.length?ranked.map(r=>`
+        <div class="xi-cand">
+          <span class="xi-sim">${r.sim.toFixed(2)}</span>
+          <span class="xi-name" title="${r.label}">${r.label}</span>
+          ${xiBadge(r.lh)}
+        </div>`).join('')
+      :'<div class="xi-empty">실측 후보 없음</div>'}
+    </div>`;
   }).join('');
+  document.getElementById('xiChart').innerHTML=
+    '<div class="xi-box top"></div><div class="xi-box bottom"></div>'+html;
 }
 function showXiPage(){
   if(!xiBuilt) buildXiPage();
