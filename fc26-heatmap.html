@@ -157,11 +157,11 @@
 
   /* ---- tactics report page ---- */
   #reportPage,#transferPage{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px 26px;margin-bottom:16px;line-height:1.65;font-size:13.5px}
-  #reportPage h2,#transferPage h2{font-size:19px;margin:0 0 4px;letter-spacing:.02em}
-  #reportPage h3,#transferPage h3{font-size:14px;margin:26px 0 8px;color:var(--accent);letter-spacing:.06em}
-  #reportPage h3::before,#transferPage h3::before{content:'§ ';color:var(--muted-2)}
-  #reportPage p,#transferPage p{margin:6px 0;color:var(--ink)}
-  #reportPage .rp-sub,#transferPage .rp-sub{color:var(--muted);font-size:12px}
+  #reportPage h2,#transferPage h2,#xiPage h2{font-size:19px;margin:0 0 4px;letter-spacing:.02em}
+  #reportPage h3,#transferPage h3,#xiPage h3{font-size:14px;margin:26px 0 8px;color:var(--accent);letter-spacing:.06em}
+  #reportPage h3::before,#transferPage h3::before,#xiPage h3::before{content:'§ ';color:var(--muted-2)}
+  #reportPage p,#transferPage p,#xiPage p{margin:6px 0;color:var(--ink)}
+  #reportPage .rp-sub,#transferPage .rp-sub,#xiPage .rp-sub{color:var(--muted);font-size:12px}
   #reportPage .rp-badges{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px}
   #reportPage .rp-badge{font-size:11px;font-family:var(--mono);background:var(--panel-2);border:1px solid var(--line);border-radius:6px;padding:4px 8px;color:var(--muted)}
   #reportPage .rp-badge b{color:var(--ink)}
@@ -177,24 +177,24 @@
   #reportPage .bad{color:#ff5d5d;font-weight:700}
   #reportPage .rp-card{background:var(--panel-2);border:1px solid var(--line-soft);border-left:3px solid var(--accent);border-radius:8px;padding:10px 13px;margin:8px 0}
   #reportPage .rp-card b:first-child{color:var(--accent)}
-  #reportPage .rp-foot,#transferPage .rp-foot{margin-top:24px;padding-top:12px;border-top:1px dashed var(--line-soft);font-size:11px;color:var(--muted-2)}
+  #reportPage .rp-foot,#transferPage .rp-foot,#xiPage .rp-foot{margin-top:24px;padding-top:12px;border-top:1px dashed var(--line-soft);font-size:11px;color:var(--muted-2)}
   #reportPage ul{margin:6px 0;padding-left:20px}
   #reportPage li{margin:4px 0}
   #reportPage .mono{font-family:var(--mono);font-size:12px}
-  #transferPage .tf-toolbar{display:flex;gap:8px;margin:10px 0 4px;flex-wrap:wrap}
-  #transferPage .tf-toolbar input,#transferPage .tf-toolbar select{background:var(--panel-2);border:1px solid var(--line);border-radius:6px;color:var(--ink);padding:6px 10px;font-size:12.5px;font-family:inherit}
+  #transferPage .tf-toolbar,#xiPage .tf-toolbar{display:flex;gap:8px;margin:10px 0 4px;flex-wrap:wrap}
+  #transferPage .tf-toolbar input,#transferPage .tf-toolbar select,#xiPage .tf-toolbar select{background:var(--panel-2);border:1px solid var(--line);border-radius:6px;color:var(--ink);padding:6px 10px;font-size:12.5px;font-family:inherit}
   #transferPage .tf-toolbar input{flex:1;min-width:160px}
   #transferPage td.tf-name{font-weight:600}
   #transferPage td.tf-name small{display:block;font-weight:400;color:var(--muted);font-size:11px}
-  #transferPage .tf-badge{display:inline-block;font-size:11px;font-family:var(--mono);font-weight:700;border-radius:5px;padding:2px 7px;white-space:nowrap}
-  #transferPage .tf-hi{background:rgba(62,207,142,.16);color:#3ecf8e}
-  #transferPage .tf-mh{background:rgba(160,207,62,.16);color:#a0cf3e}
-  #transferPage .tf-med{background:rgba(240,225,65,.16);color:#f0e141}
-  #transferPage .tf-ml{background:rgba(240,160,65,.16);color:#f0a041}
-  #transferPage .tf-lo{background:rgba(255,93,93,.14);color:#ff8d8d}
-  #transferPage .tf-dead{background:rgba(255,93,93,.16);color:#ff5d5d;text-decoration:line-through}
-  #transferPage .tf-unk{background:var(--panel-2);color:var(--muted-2)}
-  #transferPage .tf-conf{background:rgba(62,207,142,.16);color:#3ecf8e}
+  #transferPage .tf-badge,#xiPage .tf-badge{display:inline-block;font-size:11px;font-family:var(--mono);font-weight:700;border-radius:5px;padding:2px 7px;white-space:nowrap}
+  #transferPage .tf-hi,#xiPage .tf-hi{background:rgba(62,207,142,.16);color:#3ecf8e}
+  #transferPage .tf-mh,#xiPage .tf-mh{background:rgba(160,207,62,.16);color:#a0cf3e}
+  #transferPage .tf-med,#xiPage .tf-med{background:rgba(240,225,65,.16);color:#f0e141}
+  #transferPage .tf-ml,#xiPage .tf-ml{background:rgba(240,160,65,.16);color:#f0a041}
+  #transferPage .tf-lo,#xiPage .tf-lo{background:rgba(255,93,93,.14);color:#ff8d8d}
+  #transferPage .tf-dead,#xiPage .tf-dead{background:rgba(255,93,93,.16);color:#ff5d5d;text-decoration:line-through}
+  #transferPage .tf-unk,#xiPage .tf-unk{background:var(--panel-2);color:var(--muted-2)}
+  #transferPage .tf-conf,#xiPage .tf-conf{background:rgba(62,207,142,.16);color:#3ecf8e}
   #transferPage tr.tf-hidden{display:none}
   #transferPage .tf-fit{font-family:var(--mono)}
   #transferPage details.tf-src summary{cursor:pointer;color:var(--muted);font-size:11px;white-space:nowrap;list-style:none}
@@ -202,6 +202,15 @@
   #transferPage details.tf-src summary::before{content:'▸ ';color:var(--muted-2)}
   #transferPage details.tf-src[open] summary::before{content:'▾ '}
   #transferPage details.tf-src div{color:var(--muted-2);font-size:11px;margin-top:4px;line-height:1.5}
+  #xiPage .xi-chart{display:flex;flex-direction:column;gap:10px;margin-top:14px}
+  #xiPage .xi-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  #xiPage .xi-slot{background:var(--panel-2);border:1px solid var(--line-soft);border-radius:10px;padding:8px 10px;min-width:150px}
+  #xiPage .xi-slot h4{margin:0 0 6px;font-size:12px;letter-spacing:.06em;color:var(--muted);text-align:center}
+  #xiPage .xi-cand{display:flex;align-items:center;gap:6px;padding:3px 0;font-size:12px;border-top:1px dashed var(--line-soft)}
+  #xiPage .xi-cand:first-child{border-top:none;font-weight:700;color:var(--ink)}
+  #xiPage .xi-cand .xi-sim{font-family:var(--mono);color:var(--accent);min-width:34px;text-align:right}
+  #xiPage .xi-cand .xi-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #xiPage .xi-empty{color:var(--muted-2);font-size:12px;text-align:center;padding:6px 0}
   .cmp-verdict{margin-top:12px;padding:10px 12px;border:1px solid var(--accent);border-radius:10px;background:rgba(255,122,47,.06);font-size:12.5px;line-height:1.65}
   .cmp-verdict b{color:var(--accent)}
   .cmp-verdict .even b{color:var(--ink)}
@@ -352,6 +361,7 @@
         <button data-m="cmp">선수 비교</button>
         <button data-m="report">전술 리포트</button>
         <button data-m="transfer">이적</button>
+        <button data-m="xi">베스트 11</button>
       </div>
       <span class="pb-count" id="pbCount"></span>
       <button id="pExport" title="저장된 모든 프리셋을 JSON 파일로 내려받기">⭳ 프리셋 내보내기</button>
@@ -525,6 +535,17 @@
       <th>선수</th><th>목적클럽</th><th>가능성</th><th>근거</th>
     </tr></thead><tbody></tbody></table></div>
     <div class="rp-foot">원장: transfer_targets · transfer_outgoing (window=2026-summer). 등급 정의: HIGH(협상/합의 단계) · MEDIUM-HIGH(1티어 관심 or 2티어 2곳+) · MEDIUM(2티어 1곳+) · MEDIUM-LOW/LOW(약한 관심·클럽 저항) · DEAD(무산/타클럽 이적) · UNKNOWN(크로스체크 미통과, 실측만 참고).</div>
+  </section>
+
+  <section id="xiPage" style="display:none">
+    <h2>베스트 11 — 포메이션 기반 뎁스차트</h2>
+    <p class="rp-sub">포메이션을 고르면 슬롯별로 <b>전체 선수(보유+영입 후보)</b>를 실측 히트맵 vs 그 슬롯의 FC26 역할 커널 코사인 유사도로 줄세웁니다. 등급(가능성)과는 독립 지표 — 여기 순위는 순수 실측 적합도입니다.</p>
+    <div class="tf-toolbar">
+      <select id="xiFormation"></select>
+      <span class="rp-sub" style="margin:0">슬롯당 상위 5명 표시 · 실측 데이터 없는 선수는 순위에서 제외</span>
+    </div>
+    <div id="xiChart" class="xi-chart"></div>
+    <div class="rp-foot">후보 풀: CMP_SLOTS(보유 스쿼드 실측) + transfer_targets.map25(영입 후보 실측, 46명) — 실측 그리드가 없는 후보(예: Emerson Royal·Bowen·Bergvall·Kolo Muani)는 제외됩니다.</div>
   </section>
 
   <div class="compare">
@@ -1737,6 +1758,56 @@ const TRANSFER_OUTGOING=[
 {player:'Morgan Rogers',dest_club:'Arsenal',likelihood:'HIGH',confidence:'HIGH — FootballTransfers 단독(개인조건 임박), 다수 매체 수렴. 이적료 격차(£130m vs €85m)로 완결 시점 불확실.',source:'https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/07/exclusive-arsenal-very-close-to-morgan-rogers-transfer-breakthrough ; https://www.teamtalk.com/arsenal/morgan-rogers-transfer-news-record-bid-imminent-from-arsenal-villa (2026-07-09)'},
 {player:'Ollie Watkins',dest_club:'Fenerbahçe',likelihood:'MEDIUM-HIGH',confidence:'HIGH — 다수 매체(TeamTalk 포함) 수렴: 개인조건 합의, 이적료 협상 단계.',source:'https://www.astonvillanews.co.uk/transfers/why-aston-villa-are-set-for-ollie-watkins-heartbreak-as-fenerbahce-close-in ; https://uk.sports.yahoo.com/news/why-aston-villa-set-ollie-133854669.html (2026-07-09)'},
 ];
+
+/* 베스트 11(포메이션 기반) 후보 풀 — CMP_SLOTS(오너·기존 후보) + transfer_targets(map25 실측, 그리드 중복 제거) 통합 */
+const XI_POOL=[
+{label:'마르티네스',grid:'0000000000000000010001X10',lh:'OWNED',rate:{v:7.95,b:'top',s:'상위 4경기 평균 7.95'}},
+{label:'영입·스즈키',grid:'0000000000000000010001X20',lh:'MEDIUM-HIGH',rate:{v:7.13,b:'r6',s:'최근 6경기 평균 7.13 (파르마)'}},
+{label:'영입·레스테스',grid:'0000000000000000210002X20',lh:'HIGH',rate:{v:6.92,b:'r6',s:'최근 6경기 평균 6.92 (툴루즈)'}},
+{label:'디뉴',grid:'410018100071000X300053100',lh:'OWNED',rate:{v:6.73,b:'season',s:'LB 21경기 평균 6.73 · 피크 8.2'}},
+{label:'마첸',grid:'220005200052100X300063100',lh:'OWNED',rate:{v:6.74,b:'season',s:'LB 16경기 평균 6.74 · 피크 8.3'}},
+{label:'파우 토레스',grid:'0010012000382004X31046610',lh:'OWNED',rate:{v:7.35,b:'top',s:'상위 5경기 평균 7.35'}},
+{label:'린델뢰프',grid:'0001203126249762X9X727665',lh:'OWNED',rate:{v:7.05,b:'top',s:'상위 4경기 평균 7.05 · 양쪽 CB 커버'}},
+{label:'영입·켈리',grid:'0000012100351003X21022200',lh:'MEDIUM-HIGH',rate:{v:7.08,b:'r6',s:'최근 6경기 평균 7.08 (유벤투스)'}},
+{label:'콘사',grid:'001000001100451013X200353',lh:'OWNED',rate:{v:7.05,b:'season',s:'RCB 43경기 평균 7.05 · 피크 8.2'}},
+{label:'시세(합류확정)',grid:'00200001420237413X9814X84',lh:'CONFIRMED',rate:{v:6.77,b:'r6',s:'최근 6경기 평균 6.77 (LASK)'}},
+{label:'캐시',grid:'1001300027000270002X00125',lh:'OWNED',rate:{v:7.65,b:'top',s:'상위 6경기 평균 7.65 · 피크 8.4'}},
+{label:'오나나',grid:'00200144422578226X8312630',lh:'OWNED',rate:{v:7.13,b:'season',s:'피벗 29경기 평균 7.13 · 피크 8.2'}},
+{label:'틸레만스',grid:'10101473214X8314X72013310',lh:'OWNED',rate:{v:7.28,b:'season',s:'피벗 21경기 평균 7.28 · 피크 8.4'}},
+{label:'보가르드',grid:'0000101137012570137X00144',lh:'OWNED',rate:{v:6.62,b:'season',s:'피벗 21경기 평균 6.62 · 피크 7.3'}},
+{label:'영입·로피',grid:'00000595414996169X6302221',lh:'HIGH',rate:{v:7.03,b:'r6',s:'최근 6경기 평균 7.03 (알메리아)'}},
+{label:'영입·모리바',grid:'0000026550276422X85111110',lh:'MEDIUM-HIGH',rate:{v:6.95,b:'r6',s:'최근 6경기 평균 6.95 (셀타)'}},
+{label:'영입·케이타',grid:'1010025331387116X94121221',lh:'MEDIUM-HIGH',rate:{v:7.08,b:'r6',s:'최근 6경기 평균 7.08 (파르마, 오나나 대체 후보)'}},
+{label:'영입·게예',grid:'10010564525654148X8102220',lh:'MEDIUM-HIGH',rate:{v:6.8,b:'r6',s:'최근 6경기 평균 6.80 (비야레알, 오나나 대체 후보)'}},
+{label:'카마라',grid:'001001345215861248X112341',lh:'OWNED',rate:{v:7.14,b:'season',s:'피벗 16경기 평균 7.14 · 피크 7.8'}},
+{label:'영입·카마라(모나코)',grid:'20003235X5335421455401111',lh:'MEDIUM-HIGH',rate:{v:6.6,b:'r6',s:'최근 6경기 평균 6.60 (모나코, 오나나 대체 후보)'}},
+{label:'로저스',grid:'65321X9632564117410121100',lh:'OWNED',rate:{v:6.91,b:'season',s:'LW 13경기 평균 6.91 · 피크 9.3'}},
+{label:'부엔디아',grid:'63323362X6136471211510110',lh:'OWNED',rate:{v:6.9,b:'season',s:'좌편향 10번 21경기 평균 6.90 · 피크 9.4'}},
+{label:'영입·서머빌',grid:'74241X7586834317421110100',lh:'MEDIUM-HIGH',rate:{v:7.15,b:'r6',s:'최근 6경기 평균 7.15 (웨스트햄)'}},
+{label:'맥긴',grid:'2433258883379X41232200110',lh:'OWNED',rate:{v:6.9,b:'season',s:'CAM 4경기 평균 6.90 · 피크 7.8'}},
+{label:'산초',grid:'74134X6346131232231311011',lh:'OWNED',rate:{v:7.33,b:'top',s:'상위 3경기 평균 7.33'}},
+{label:'알리송(신규)',grid:'001640014X000380003600011',lh:'OWNED',rate:{v:6.75,b:'r6',s:'최근 6경기 평균 6.75 (그레미우+빌라 혼합)'}},
+{label:'영입·하지무사',grid:'312691114X000140002400001',lh:'HIGH',rate:{v:7.55,b:'r6',s:'최근 6경기 평균 7.55 (페예노르트)'}},
+{label:'영입·음바예',grid:'001231104X000160001200000',lh:'MEDIUM-HIGH',rate:{v:6.92,b:'r6',s:'최근 6경기(45분+) 평균 6.92 (PSG, 조커자원이라 2026-02~07 확장표본)'}},
+{label:'왓킨스',grid:'569426XX63565314322100200',lh:'OWNED',rate:{v:8.47,b:'top',s:'상위 7경기 평균 8.47'}},
+{label:'아브라함(보유)',grid:'01855255648X8415422010200',lh:'OWNED',rate:{v:6.85,b:'r6',s:'45분+ 4경기 평균 6.85 (빌라·전부 교체)'}},
+{label:'누사',grid:'13010X6210443002220010000',lh:'MEDIUM-HIGH',rate:{v:7.25,b:'r6',s:'최근 6경기 평균 7.25 (RB Leipzig)'}},
+{label:'Archie Gray',grid:'2022242467255X52657421432',lh:'MEDIUM-HIGH',rate:{v:6.65,b:'r6',s:'최근 6경기 평균 6.65 (Tottenham Hotspur)'}},
+{label:'엘리프 엘마스',grid:'20123X5348656331322211110',lh:'MEDIUM-HIGH',rate:{v:6.6,b:'r6',s:'최근 6경기 평균 6.6 (RB Leipzig)'}},
+{label:'Gabriel Sara',grid:'532156X876379685888621110',lh:'MEDIUM-HIGH',rate:{v:6.62,b:'r6',s:'최근 6경기 평균 6.62 (Galatasaray)'}},
+{label:'만잠비',grid:'33414775548X6447877220320',lh:'HIGH',rate:{v:7.62,b:'r6',s:'최근 6경기 평균 7.62 (SC Freiburg)'}},
+{label:'트로사르',grid:'332209X452312221212212112',lh:'MEDIUM-HIGH',rate:{v:7.52,b:'r6',s:'최근 6경기 평균 7.52 (Arsenal)'}},
+{label:'Mason Mount',grid:'2222213385223X60334400211',lh:'MEDIUM',rate:{v:6.93,b:'r6',s:'최근 6경기 평균 6.93 (Manchester United)'}},
+{label:'볼테마데',grid:'11321485X2232312521102100',lh:'MEDIUM',rate:{v:6.98,b:'r6',s:'최근 6경기 평균 6.98 (Newcastle United)'}},
+{label:'오를란도 힐',grid:'0000000000000000000001X20',lh:'MEDIUM',rate:{v:7.38,b:'r6',s:'최근 6경기 평균 7.38 (San Lorenzo)'}},
+{label:'페드루 곤살베스',grid:'542225X641431202122111100',lh:'MEDIUM-HIGH',rate:{v:6.88,b:'r6',s:'최근 6경기 평균 6.88 (Sporting CP)'}},
+{label:'에스투피냔',grid:'21000X3100610007200032100',lh:'MEDIUM-HIGH',rate:{v:6.87,b:'r6',s:'최근 6경기 평균 6.87 (AC Milan)'}},
+{label:'리세르',grid:'0000000000000000001001X30',lh:'MEDIUM-HIGH',rate:{v:6.63,b:'r6',s:'최근 6경기 평균 6.63 (RC Lens)'}},
+{label:'Roony Bardghji',grid:'000230003X000140001300001',lh:'MEDIUM',rate:{v:6.53,b:'r6',s:'최근 6경기 평균 6.53 (FC Barcelona)'}},
+{label:'기라시',grid:'12X2125752245311221001100',lh:'MEDIUM',rate:{v:6.65,b:'r6',s:'최근 6경기 평균 6.65 (Borussia Dortmund)'}},
+{label:'트레보 찰로바',grid:'001000111112471165X214220',lh:'MEDIUM',rate:{v:6.32,b:'r6',s:'최근 6경기 평균 6.32 (Chelsea)'}},
+{label:'Viktor Johansson',grid:'0000000000000000111001X20',lh:'MEDIUM',rate:{v:7.2,b:'r6',s:'최근 6경기 평균 7.2 (Stoke City)'}},
+];
 /* 선수 표기명 → sofifa 링크 (id 있으면 직접, 없으면 영문명 keyword 검색). 빌드타임 매핑 — docs: player_fc_stats.sofifa_id / transfer_targets.name */
 const SOFIFA={
   '디뉴':{id:200458,en:"L. Digne"},
@@ -2409,12 +2480,79 @@ function hideTransferPage(){
   document.getElementById('transferPage').style.display='none';
   document.querySelector('.compare').style.display='';
 }
+
+/* ---- 베스트 11 (포메이션 기반 뎁스차트, 커널 유사도 줄세우기) ---- */
+const XI_GRID_CACHE={};
+function xiDecode(grid){ if(!XI_GRID_CACHE[grid]) XI_GRID_CACHE[grid]=decodeMap(grid); return XI_GRID_CACHE[grid]; }
+function xiBestFit(grid,slotX,prefix){
+  let best=null;
+  for(const roleName of Object.keys(MAPS)){
+    if(roleName.split('_')[0]!==prefix) continue;
+    for(const focus of Object.keys(MAPS[roleName])){
+      const pm=placedMap({r:roleName,focus,x:slotX});
+      const sim=cmpCos(grid,pm);
+      if(!best||sim>best.sim) best={role:roleName,focus,sim};
+    }
+  }
+  return best;
+}
+let xiBuilt=false;
+function buildXiPage(){
+  const sel=document.getElementById('xiFormation');
+  sel.innerHTML=Object.keys(FORMATIONS).map(f=>`<option value="${f}">${f}</option>`).join('');
+  sel.value='4-2-3-1 Wide';
+  sel.addEventListener('change',renderXi);
+  xiBuilt=true;
+}
+function renderXi(){
+  const formation=document.getElementById('xiFormation').value;
+  const slots=FORMATIONS[formation];
+  const rows=new Map();
+  for(const s of slots){
+    const prefix=s.t.toLowerCase();
+    const ranked=XI_POOL.map(p=>{
+      const fit=xiBestFit(xiDecode(p.grid),s.x,prefix);
+      return fit?{...p,...fit}:null;
+    }).filter(Boolean).sort((a,b)=>b.sim-a.sim).slice(0,5);
+    if(!rows.has(s.y)) rows.set(s.y,[]);
+    rows.get(s.y).push({pos:s.pos,x:s.x,ranked});
+  }
+  const rowYs=[...rows.keys()].sort((a,b)=>b-a);   // 공격(높은 y) 먼저 = 위쪽
+  document.getElementById('xiChart').innerHTML=rowYs.map(y=>{
+    const cols=rows.get(y).slice().sort((a,b)=>a.x-b.x);
+    return `<div class="xi-row">${cols.map(c=>`
+      <div class="xi-slot"><h4>${c.pos}</h4>${
+        c.ranked.length?c.ranked.map(r=>`
+          <div class="xi-cand">
+            <span class="xi-sim">${r.sim.toFixed(2)}</span>
+            <span class="xi-name">${r.label}</span>
+            ${tfBadge(r.lh)}
+          </div>`).join('')
+        :'<div class="xi-empty">실측 후보 없음</div>'
+      }</div>`).join('')}</div>`;
+  }).join('');
+}
+function showXiPage(){
+  if(!xiBuilt) buildXiPage();
+  renderXi();
+  document.getElementById('xiPage').style.display='block';
+  document.querySelector('.compare').style.display='none';
+  const seg=document.getElementById('modeMenu');
+  [...seg.children].forEach(x=>x.classList.toggle('on',x.dataset.m==='xi'));
+}
+function hideXiPage(){
+  document.getElementById('xiPage').style.display='none';
+  document.querySelector('.compare').style.display='';
+}
+
 document.getElementById('modeMenu').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
   hideReport();
   hideTransferPage();
+  hideXiPage();
   if(b.dataset.m==='report'){ hideSquadBar(); hideCmpBar(); showReport(); return; }
   if(b.dataset.m==='transfer'){ hideSquadBar(); hideCmpBar(); showTransferPage(); return; }
+  if(b.dataset.m==='xi'){ hideSquadBar(); hideCmpBar(); showXiPage(); return; }
   if(b.dataset.m==='squad'){ enterSquadMode(); return; }
   if(b.dataset.m==='cmp'){ enterCmpMode(); return; }
   hideSquadBar(); hideCmpBar();
