@@ -220,7 +220,12 @@
   #xiPage .xi-cand:first-child{border-color:rgba(255,255,255,.4);font-weight:700}
   #xiPage .xi-cand .xi-sim{font-family:var(--mono);color:var(--accent);min-width:28px;text-align:right;flex:none}
   #xiPage .xi-cand .xi-name{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)}
+  #xiPage .xi-cand.manual{border-style:dashed;border-color:var(--accent)}
+  #xiPage .xi-cand .xi-rm{flex:none;background:none;border:none;color:rgba(255,255,255,.4);cursor:pointer;font-size:11px;padding:0 0 0 2px;line-height:1}
+  #xiPage .xi-cand .xi-rm:hover{color:#ff5d5d}
   #xiPage .xi-empty{color:rgba(255,255,255,.6);font-size:11px;background:rgba(15,18,15,.82);border-radius:6px;padding:3px 6px;width:100%;text-align:center}
+  #xiPage .xi-add{width:100%;background:rgba(15,18,15,.6);border:1px dashed rgba(255,255,255,.25);border-radius:6px;color:rgba(255,255,255,.65);font-size:11px;padding:3px 4px;font-family:inherit}
+  #xiPage .xi-add:hover{border-color:var(--accent);color:var(--ink)}
   .cmp-verdict{margin-top:12px;padding:10px 12px;border:1px solid var(--accent);border-radius:10px;background:rgba(255,122,47,.06);font-size:12.5px;line-height:1.65}
   .cmp-verdict b{color:var(--accent)}
   .cmp-verdict .even b{color:var(--ink)}
@@ -2507,11 +2512,37 @@ function xiBestFit(grid,slotX,prefix){
   return best;
 }
 let xiBuilt=false;
+let XI_OVERRIDES={};
+try{ XI_OVERRIDES=JSON.parse(localStorage.getItem('fc26_xi_overrides')||'{}')||{}; }catch(e){ XI_OVERRIDES={}; }
+function persistXiOverrides(){ try{ localStorage.setItem('fc26_xi_overrides',JSON.stringify(XI_OVERRIDES)); }catch(e){} }
+function xiGetOverride(formation,pos){
+  const k=formation+'::'+pos;
+  if(!XI_OVERRIDES[k]) XI_OVERRIDES[k]={removed:[],added:[]};
+  return XI_OVERRIDES[k];
+}
 function buildXiPage(){
   const sel=document.getElementById('xiFormation');
   sel.innerHTML=Object.keys(FORMATIONS).map(f=>`<option value="${f}">${f}</option>`).join('');
   sel.value='4-2-3-1 Wide';
   sel.addEventListener('change',renderXi);
+  const chart=document.getElementById('xiChart');
+  chart.addEventListener('click',e=>{
+    const btn=e.target.closest('.xi-rm'); if(!btn) return;
+    const {formation,pos,label}=btn.dataset;
+    const ov=xiGetOverride(formation,pos);
+    if(ov.added.includes(label)) ov.added=ov.added.filter(x=>x!==label);
+    else if(!ov.removed.includes(label)) ov.removed.push(label);
+    persistXiOverrides();
+    renderXi();
+  });
+  chart.addEventListener('change',e=>{
+    const sel2=e.target.closest('.xi-add'); if(!sel2||!sel2.value) return;
+    const {formation,pos}=sel2.dataset;
+    const ov=xiGetOverride(formation,pos);
+    if(!ov.added.includes(sel2.value)) ov.added.push(sel2.value);
+    persistXiOverrides();
+    renderXi();
+  });
   xiBuilt=true;
 }
 const XI_TAG_CLASS={GK:'t-gk',CB:'t-def',FB:'t-def',DM:'t-mid',CM:'t-mid',CAM:'t-att',WM:'t-att',W:'t-att',ST:'t-st'};
@@ -2526,20 +2557,33 @@ function renderXi(){
   const slots=FORMATIONS[formation];
   const html=slots.map(s=>{
     const prefix=s.t.toLowerCase();
-    const ranked=XI_POOL.map(p=>{
+    const ov=xiGetOverride(formation,s.pos);
+    const removed=new Set(ov.removed), added=new Set(ov.added);
+    const scored=XI_POOL.filter(p=>!removed.has(p.label)).map(p=>{
       const fit=xiBestFit(xiDecode(p.grid),s.x,prefix);
       return fit?{...p,...fit}:null;
-    }).filter(Boolean).sort((a,b)=>b.sim-a.sim).slice(0,3);
+    }).filter(Boolean).sort((a,b)=>b.sim-a.sim);
+    const top3=scored.slice(0,3);
+    const manualExtra=scored.filter(p=>added.has(p.label)&&!top3.some(t=>t.label===p.label));
+    const shown=[...top3,...manualExtra].sort((a,b)=>b.sim-a.sim);
+    const shownLabels=new Set(shown.map(p=>p.label));
+    const addable=scored.filter(p=>!shownLabels.has(p.label));
     const tagCls=XI_TAG_CLASS[s.t]||'';
+    const esc=v=>v.replace(/"/g,'&quot;');
     return `<div class="xi-slot" style="left:${s.x}%;top:${100-s.y}%">
       <span class="xi-tag ${tagCls}">${s.pos}</span>
-      ${ranked.length?ranked.map(r=>`
-        <div class="xi-cand">
+      ${shown.length?shown.map(r=>`
+        <div class="xi-cand${added.has(r.label)?' manual':''}">
           <span class="xi-sim">${r.sim.toFixed(2)}</span>
           <span class="xi-name" title="${r.label}">${r.label}</span>
           ${xiBadge(r.lh)}
+          <button class="xi-rm" data-formation="${formation}" data-pos="${s.pos}" data-label="${esc(r.label)}" title="이 슬롯에서 제외">✕</button>
         </div>`).join('')
       :'<div class="xi-empty">실측 후보 없음</div>'}
+      <select class="xi-add" data-formation="${formation}" data-pos="${s.pos}">
+        <option value="">+ 추가…</option>
+        ${addable.map(p=>`<option value="${esc(p.label)}">${p.label} (${p.sim.toFixed(2)})</option>`).join('')}
+      </select>
     </div>`;
   }).join('');
   document.getElementById('xiChart').innerHTML=
