@@ -1729,8 +1729,8 @@ const XI_POOL=[
 ];
 /* ============================================================
    TRANSFER_TARGETS(= DB transfer_targets 미러, scripts/sync_transfer_ui.py가
-   재생성) → SQUAD_SLOTS/PLAYER_BEST/XI_POOL 런타임 주입. 영입 후보·합류확정
-   항목을 세 곳에 손으로 따로 추가하다 생기던 동기화 누락을 원천 차단한다
+   재생성) → SQUAD_SLOTS/PLAYER_BEST/XI_POOL/CMP_SLOTS 런타임 주입. 영입 후보·
+   합류확정 항목을 네 곳에 손으로 따로 추가하다 생기던 동기화 누락을 원천 차단한다
    (2026-07-14 리팩터, docs/40-pipeline.md). DEAD(무산) 행은 제외.
 ============================================================ */
 const SLOT_TYPE_FOR_XI={GK:'GK',LB:'FB',RB:'FB',LCB:'CB',RCB:'CB',LDM:'DM',RDM:'DM',LM:'WM',RM:'WM',CAM:'CAM',ST:'ST'};
@@ -1751,6 +1751,11 @@ function injectTransferCandidates(){
       XI_POOL.push({label, grid:row.map25, lh:row.likelihood,
         rate:{v:row.avg_rating,b:'r6',s:`최근 6경기 평균 ${row.avg_rating} (${row.club})`},
         t:SLOT_TYPE_FOR_XI[row.slot]||row.slot});
+    }
+    const cmp = CMP_SLOTS[row.slot];
+    if(cmp && row.map25 && !cmp.c.some(c=>c.n===label)){
+      cmp.c.push({n:label, grid:row.map25, dbFit:row.fit_sim, lh:row.likelihood,
+        rate:{v:row.avg_rating,b:'r6',s:`최근 6경기 평균 ${row.avg_rating} (${row.club})`}});
     }
   });
 }
@@ -1815,6 +1820,9 @@ const SOFIFA={
 };
 function sofifaURL(name){const s=SOFIFA[name];if(!s)return null;return s.id?`https://sofifa.com/player/${s.id}/`:(s.en?`https://sofifa.com/players?keyword=${encodeURIComponent(s.en)}`:null);}
 function sofifaEn(name){return (SOFIFA[name]||{}).en||'';}
+/* 이적 탭 전용 — SOFIFA 맵(선수별 수동 등록) 없이 영문 이름으로 바로 키워드 검색 링크 생성.
+   transfer_targets/transfer_outgoing 행은 항상 영문 name이 있어 매핑 유지 부담이 없다. */
+function sofifaKeywordURL(englishName){return englishName?`https://sofifa.com/players?keyword=${encodeURIComponent(englishName)}`:null;}
 function openSofifa(name){const u=sofifaURL(name);if(u)window.open(u,'sofifaWin','width=1000,height=880,menubar=no,toolbar=no,scrollbars=yes,resizable=yes');}
 const clamp01=v=>v<0?0:v>1?1:v;
 function cmpCos(a,b){ let dot=0,na=0,nb=0; for(let i=0;i<25;i++){dot+=a[i]*b[i];na+=a[i]*a[i];nb+=b[i]*b[i];} return (na&&nb)?dot/Math.sqrt(na*nb):0; }
@@ -2377,7 +2385,7 @@ function buildTransferPage(){
   const outBody=document.querySelector('#tfOutgoingTable tbody');
   outBody.innerHTML=TRANSFER_OUTGOING.slice().sort((a,b)=>tfRank(a.likelihood)-tfRank(b.likelihood)).map(r=>`
     <tr>
-      <td class="tf-name">${r.player}</td>
+      <td class="tf-name"><a class="sf-name" href="${sofifaKeywordURL(r.player)}" target="_blank" rel="noopener" title="sofifa에서 확인">${r.player}<span class="arr">↗</span></a></td>
       <td>${r.dest_club||'-'}</td>
       <td>${tfBadge(r.likelihood)}</td>
       <td><details class="tf-src"><summary>근거</summary><div>${(r.confidence||'').replace(/</g,'&lt;')}</div></details></td>
@@ -2406,7 +2414,7 @@ function renderIncomingTable(){
   document.getElementById('tfIncomingCount').textContent=`${rows.length}명 표시 (전체 ${TRANSFER_TARGETS.length}명)`;
   document.querySelector('#tfIncomingTable tbody').innerHTML=rows.map(r=>`
     <tr>
-      <td class="tf-name">${r.name_kr||r.name}<small>${r.name_kr?r.name:''} · ${r.position||''}</small></td>
+      <td class="tf-name"><a class="sf-name" href="${sofifaKeywordURL(r.name)}" target="_blank" rel="noopener" title="sofifa에서 확인">${r.name_kr||r.name}<span class="arr">↗</span></a><small>${r.name_kr?r.name:''} · ${r.position||''}</small></td>
       <td>${r.slot}</td>
       <td>${r.club||'-'}</td>
       <td>${tfBadge(r.likelihood)}</td>
