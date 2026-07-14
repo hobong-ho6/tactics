@@ -44,16 +44,20 @@ docs/20-fc-game-system.md의 영입 후보 파이프라인 그대로:
 2. 5×5 툴 그리드(툴x=100−소파y, 툴y=소파x) + 중심좌표 + 평균 평점 계산.
 3. 커널 적합도: fc26-heatmap.html의 MAPS를 파싱해 해당 슬롯 x에서 placedMap
    (미러+시프트) 후 코사인 — 기존 세션 스크립트 패턴 재사용.
-4. `transfer_targets`에 INSERT OR REPLACE (window='2026-summer', 근거 URL·등급·캐비앳 포함).
-   실측상 부적합 슬롯(예: 적합도 <0.4)은 제공 금지 행으로 기록.
-5. fc26-heatmap.html `SQUAD_SLOTS`의 해당 슬롯에 `영입·<이름>` 옵션 추가
-   (opt=처방, fit=계산된 적합 역할). 스쿼드 바 안내문 갱신.
+4. `transfer_targets`에 INSERT OR REPLACE (window='2026-summer', 근거 URL·등급·캐비앗 +
+   **`short_label` 필수** — 툴에 쓸 짧은 한글/영문 이름, 예: `Matías Soulé` → `소울레`).
+   실측상 부적합 슬롯(예: 적합도 <0.4)은 애초에 그 슬롯 행을 만들지 않는 것으로 대신한다.
+5. **fc26-heatmap.html은 손으로 고치지 않는다.** DB 갱신 후
+   `python3 scripts/sync_transfer_ui.py`를 실행하면 `TRANSFER_TARGETS`/`TRANSFER_OUTGOING`
+   미러 배열이 재생성되고, 툴의 `injectTransferCandidates()`가 런타임에 SQUAD_SLOTS/
+   PLAYER_BEST/XI_POOL로 자동 주입한다 (2026-07-14 리팩터, docs/20-fc-game-system.md 참조).
 
 ## 4. 상태 변화 처리
 
-- 무산/타클럽 이적 확정: likelihood를 `DEAD (사유)`로 갱신, SQUAD_SLOTS에서 제거.
-- 빌라 이적 확정: likelihood `CONFIRMED`, 라벨 `(합류확정)`으로 변경.
-  시즌 데이터가 쌓이면 players로 승격 (docs/20 규칙).
+- 무산/타클럽 이적 확정: likelihood를 `DEAD (사유)`로 갱신 — `sync_transfer_ui.py` 재실행 후
+  자동으로 SQUAD_SLOTS/XI_POOL 후보에서 빠진다(injectTransferCandidates가 DEAD 필터).
+- 빌라 이적 확정: likelihood `CONFIRMED`로 갱신. 라벨 `(합류확정)`은 툴이 런타임에 자동
+  붙이므로 손으로 안 바꿔도 됨. 시즌 데이터가 쌓이면 players로 승격 (docs/20 규칙).
 
 ## 4-1. 빌라 선수 유출(outgoing) 루머 확인
 
@@ -69,6 +73,8 @@ docs/20-fc-game-system.md의 영입 후보 파이프라인 그대로:
 
 ## 5. 완료 기준 (매 실행)
 
-- 변경이 있으면: `scripts/db_dump.sh` 실행 → `git add -A && git commit`(메시지 접두 `data(transfer-watch):`) → `git push`.
+- 변경이 있으면: `python3 scripts/sync_transfer_ui.py` 실행(fc26-heatmap.html 미러 갱신)
+  → `scripts/db_dump.sh` 실행 → `git add -A && git commit`(메시지 접두 `data(transfer-watch):`)
+  → `git push`.
 - 변경이 없으면 커밋하지 않는다.
 - 종료 보고: 스캔된 이름 수 / 크로스체크 통과·실패 / 추가·갱신된 행 / PENDING 여부.

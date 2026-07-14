@@ -59,6 +59,12 @@ research (Workflows) → ingest into DB → analyze (rating×result by position)
 
 - **Now (25/26, FC26)**: formations are hardcoded in JS (incl. `아스톤 빌라 25/26 (실측)/(역할)`, and soon `(최적)`). Works, ships today.
 - **Next (26/27 and/or FC27)**: refactor the tool to **load formations from the exported JSON** instead of hardcoding, and make the role/kernel library (`MAPS`/`ROLE_SETS`) selectable by game version. Then a new season = new DB rows + re-export; a new game = new `game_roles` + kernel set. No structural tool rewrite.
+- **Done (2026-07-14, transfer-target slice only)**: `transfer_targets`/`transfer_outgoing` no
+  longer need hand-edits in three places. `scripts/sync_transfer_ui.py` regenerates the
+  `TRANSFER_TARGETS`/`TRANSFER_OUTGOING` mirror arrays from the DB, and the tool's
+  `injectTransferCandidates()` derives SQUAD_SLOTS/PLAYER_BEST/XI_POOL incoming-candidate
+  entries from that mirror at page load. Owned-squad data (FC_STATS, season formations, etc.)
+  is still hand-curated — this only closes the recurring incoming-candidate sync gap.
 
 ## Naming convention
 

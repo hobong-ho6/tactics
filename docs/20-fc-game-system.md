@@ -108,12 +108,21 @@
 - 슬롯 카드마다 선택된 선수의 안내가 표시된다: **✓/⚠ 최적 포지션 여부**(근거 한 줄 —
   `PLAYER_BEST`, player_role_map optimal + transfer_targets fit_sim에서 파생) +
   **🎯 처방 역할·포커스** + **🔁 실측 최근접 역할·포커스** (한글·영문 병기).
-- 후보·역할 데이터(`SQUAD_SLOTS`)는 player_role_map(optimal/role) + player_duties에서
-  파생된 하드코딩 — DB 값이 바뀌면 함께 갱신할 것.
+- 후보·역할 데이터(`SQUAD_SLOTS`)는 보유 선수만 하드코딩(player_role_map optimal/role +
+  player_duties에서 파생) — DB 값이 바뀌면 함께 갱신할 것.
 - **영입 후보**(`영입·` 접두)는 `transfer_targets`에서 파생: 루머 수집 → 가능성 등급 →
-  최근 6경기(45분+) 실측 그리드 → 슬롯별 커널 적합도 계산 → 슬롯 옵션 추가.
-  실측 부적합 슬롯은 제공하지 않는다 (아데예미 LW 0.24 사례; 로저스 RM 제외와 동일 정책).
-  이적 확정/무산 시 transfer_targets의 likelihood를 갱신하고 확정 영입은 players로 승격.
+  최근 6경기(45분+) 실측 그리드 → 슬롯별 커널 적합도 계산 → DB에 행 추가.
+  **2026-07-14 리팩터 이후로는 여기서 끝** — `SQUAD_SLOTS`/`PLAYER_BEST`/`XI_POOL`에
+  옵션을 손으로 추가하지 않는다. `scripts/sync_transfer_ui.py`가 DB를 그대로
+  `TRANSFER_TARGETS`/`TRANSFER_OUTGOING` 미러 배열로 재생성하고, 툴의
+  `injectTransferCandidates()`가 그 미러에서 런타임에 세 곳으로 자동 주입한다
+  (라벨: `likelihood='CONFIRMED'`→`<short_label>(합류확정)`, 그 외→`영입·<short_label>`).
+  즉 이 파이프라인의 산출물은 DB 행(+`short_label` 컬럼)이며, 툴 갱신은 스크립트
+  실행만으로 끝난다. 실측 부적합 슬롯은 애초에 그 슬롯으로 DB 행을 만들지 않는 것으로
+  대신한다(아데예미 LW 0.24 사례; 로저스 RM 제외와 동일 정책 — "제공 금지" 플래그가 아니라
+  행 자체를 안 만드는 것으로 구현이 바뀜).
+  이적 확정/무산 시 transfer_targets의 likelihood를 갱신(`DEAD (사유)`는 자동 제외)하고
+  확정 영입은 시즌 데이터가 쌓이면 players로 승격.
 - 역할·포커스 표기는 전부 `한글 (English)` 병기 — 게임 내 설정 오입력 방지.
 - **FC26 역할 숙련도(role familiarity) 플래그** (2026-07-05): `player_fc_stats.role_familiarity`
   (sofifa 파생, role_id별 레벨 1=+/2=++). 슬롯 카드·비교 카드에 **처방 역할이 그 선수에게
