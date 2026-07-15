@@ -502,13 +502,13 @@
     <table>
       <tr><th>슬롯</th><th>선수</th><th>역할 (Role) / 포커스 (Focus)</th><th>근거</th></tr>
       <tr><td>GK</td><td>마르티네스</td><td>볼 플레잉 키퍼 (Ball Playing Keeper) / 빌드업 (Build-Up)</td><td><b>숙련 타이브레이크</b>: "빌드업 지원+골라인 고정" 정의가 임무·실측(0.96)을 동시 만족하는 유일 숙련 GK 역할. <span class="ok">확정</span></td></tr>
-      <tr><td>LB</td><td>디뉴</td><td>공격형 윙백 (Attacking Wingback) / 지원 (Support)</td><td>모양 .91 + 홈·원정 일관성 (마첸 대비 선발 기준)</td></tr>
+      <tr><td>LB</td><td>마첸</td><td>공격형 윙백 (Attacking Wingback) / 지원 (Support)</td><td><b>3축 07-15</b>: 디뉴 PSG 이적으로 승격 — duties 공격형 변형 + 기능 수비진 창조 1위(xA .24·키패스 2.0) + 숙련(att_wb만). 움직임 최근접은 wingback/Balanced .86</td></tr>
       <tr><td>LCB</td><td>파우 토레스</td><td>볼 플레잉 센터백 (Ball-Playing Defender) / 빌드업 (Build-Up)</td><td>모양 .91 + 좌중앙 전진 캐리</td></tr>
-      <tr><td>RCB</td><td>콘사</td><td>볼 플레잉 센터백 (Ball-Playing Defender) / 빌드업 (Build-Up)</td><td><b>3축</b>: 모양 .88~.94 + 스텝아웃 + 패스 96% 팀 1위</td></tr>
+      <tr><td>RCB</td><td>콘사</td><td>볼 플레잉 센터백 (Ball-Playing Defender) / 어그레시브 (Aggressive)</td><td><b>3축</b>: 모양 .94(현커널) + 스텝아웃 + 패스 96% 팀 1위 — 07-08 재검증 Aggressive, 07-15 재확인</td></tr>
       <tr><td>RB</td><td>캐시</td><td>윙백 (Wingback) / 밸런스 (Balanced)</td><td>재검증 07-08: att_wb Δ.007 동률→숙련 wingback 채택, 수비우선 FB(비대칭). 폭 규율 절대</td></tr>
       <tr><td>LDM</td><td>오나나</td><td>홀딩 (Holding) / 로밍 (Roaming)</td><td><b>숙련 타이브레이크</b>: 유일 숙련 DM — 로밍=시즌 무브먼트, 홀딩 커널=볼위닝 기능. <span class="ok">확정</span></td></tr>
       <tr><td>RDM</td><td>카마라</td><td>홀딩 (Holding) / 볼 위닝 (Ball-Winning)</td><td>되돌림 07-09: 움직임은 dlp/Roaming .87이나 기능 실측=스쿼드 1위 볼위닝(듀얼 8.4·인터셉트 3.0)+미드블록 중앙 스크린(obs#27). role:season(움직임)=dlp/Roaming</td></tr>
-      <tr><td>LW</td><td>부엔디아</td><td>인사이드 포워드 (Inside Forward) / 밸런스 (Balanced)</td><td>재검증 07-08: insidefwd/Balanced .77 > Attack. 시즌 좌측 주포지션 + 좌편향 실측</td></tr>
+      <tr><td>LW</td><td>부엔디아</td><td>와이드 플레이메이커 (Wide Playmaker) / 빌드업 (Build-Up)</td><td><b>3축 07-15</b>: 구 insidefwd .767 stale(현 .614) — wideplm/Build-Up .712 측정최적 + 창조 기능(키패스 2.1·xA .19·세트피스) + creator duties. 캐비앗: xG .32·9골이라 슛 저하 체감 시 Attack 1대안</td></tr>
       <tr><td>CAM</td><td>로저스</td><td>플레이메이커 (Playmaker) / 로밍 (Roaming)</td><td>시즌 주포지션(21선발 7.10) + 모양 .74</td></tr>
       <tr><td>RM</td><td>맥긴</td><td>와이드 미드필더 (Wide Midfielder) / 지원 (Support)</td><td>기능축 07-09: duties·obs#27 = widemid/Support (미드블록 뱅크 복귀+하프스페이스 런). 구 insidefwd .88은 stale(현 .57); role:season(움직임)=wideplm/Attack</td></tr>
       <tr><td>ST</td><td>왓킨스</td><td>어드밴스드 포워드 (Advanced Forward) / 유동적 (Versatile)</td><td><b>3축</b>: 모양 .77 + xG 1.33 + 인박스 84%·6야드 24·헤더 19</td></tr>
@@ -832,13 +832,13 @@ const FORMATIONS = {
      Kamara keeps holding (system screener). See player_role_map kind='optimal' + tactic_observations. */
   '아스톤 빌라 25/26 (최적)':[
     {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up'},     // Martínez (숙련 타이브레이크: 빌드업+골라인 화해)
-    {pos:'LB', t:'FB', x:13,y:32, r:'fb_att_wb',     focus:'Support'},      // Digne (시즌 att_wb .91 — 전진형)
+    {pos:'LB', t:'FB', x:13,y:32, r:'fb_att_wb',     focus:'Support'},      // Maatsen (3축 07-15: 디뉴 이적으로 승격 — duties 공격형 변형+기능 xa .24+숙련 att_wb, 디뉴 슬롯 처방 승계)
     {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up'},     // Pau Torres (3축 07-09: duties=진전형 볼플레잉 Build-Up 명시; 콘사와 분화. role:season=Aggressive)
     {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive'},   // Konsa (재검증 07-08: bpd/Aggressive .71 — 스텝아웃, role:season 일치)
     {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Balanced'},     // Cash (재검증 07-08: att_wb Δ.007 동률→숙련 wingback/Balanced, 수비우선 FB)
     {pos:'LDM',t:'DM', x:38,y:42, r:'dm_holding',    focus:'Roaming'},      // Onana (기능축 07-09: 움직임 dlp .87이나 기능=인포서/볼위닝 태클3.4·듀얼6.6·창조최저 → holding/Roaming)
     {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning'}, // Kamara (되돌림 07-09: 움직임 dlp/Roaming .87이나 기능=스쿼드1위 볼위닝+미드블록 스크린 obs#27 → holding/Ball-Winning)
-    {pos:'LW', t:'W',  x:15,y:64, r:'w_insidefwd',   focus:'Balanced'},     // Buendia (재검증 07-08: insidefwd/Balanced .77 > Attack — IF Balanced 원칙)
+    {pos:'LW', t:'W',  x:15,y:64, r:'w_wideplm',     focus:'Build-Up'},     // Buendia (3축 07-15: 구 insidefwd .767 stale(현 .614) — w_wideplm/Build-Up .712 측정최적 + 창조 기능 kp 2.1·xa .19 + creator duties)
     {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming'},      // Rogers — 시즌 CAM 주포지션 (중앙 10번)
     {pos:'RM', t:'WM', x:85,y:64, r:'wm_widemid',    focus:'Support'},      // McGinn (기능축 07-09: duties·obs#27 = widemid/Support, 미드블록 뱅크 복귀+하프스페이스 런)
     {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile'},    // Watkins (기능축 07-09: duties = Versatile 박스점유/링크/채널런 3역, xg1.33 피니셔·xa.03; obs#12 복원)
@@ -1332,7 +1332,7 @@ const SQUAD_SLOTS=[
    {n:'마르티네스', opt:['gk_ballplaying','Build-Up'],fit:['gk_goalkeeper','Defend']},
    ]},
  {pos:'LB', t:'FB', x:13,y:32, opts:[
-   {n:'마첸',      opt:['fb_wingback','Balanced'],  fit:['fb_wingback','Balanced']},
+   {n:'마첸',      opt:['fb_att_wb','Support'],     fit:['fb_wingback','Balanced']},
    ]},
  {pos:'LCB',t:'CB', x:37,y:28, opts:[
    {n:'파우 토레스', opt:['cb_bpd','Build-Up'],      fit:['cb_bpd','Aggressive']},
@@ -1384,7 +1384,7 @@ const SQUAD_SLOTS=[
 const PLAYER_BEST={
   '마르티네스':{pos:['GK'],note:'유일 포지션'},
   '디뉴':{pos:['LB'],note:'LB 상위 경기 최다 (8.2/8.2)'},
-  '마첸':{pos:['LB'],note:'LB선 양방향 윙백 wingback/Balanced 0.86 (att_wb/Attack 0.59 최하위) — 디뉴(att_wb 0.91)보다 덜 전진. 공격력은 LW 기용 시 발현'},
+  '마첸':{pos:['LB'],note:'3축 07-15: 디뉴 이적으로 XI 승격 — optimal=att_wb/Support(duties 공격형 변형+기능 수비진 창조 1위 xa .24+숙련 att_wb만). 움직임 최근접(fit)은 wingback/Balanced 0.86'},
   '파우 토레스':{pos:['LCB'],note:'좌측 볼 플레잉 CB'},
   '린델뢰프':{pos:['LCB','RCB'],note:'양쪽 CB 커버 — 시즌 BPD/Aggressive 0.78 (락다운 시 defender 대안)'},
   '콘사':{pos:['RCB'],note:'RCB — 시즌 BPD/Aggressive 0.94 (스텝아웃, 순수 스토퍼 아님)'},
@@ -1394,7 +1394,7 @@ const PLAYER_BEST={
   '틸레만스':{pos:['LDM','RDM'],note:'딥 피벗이 최적 (EL 결승 8.4) — 10번 아님'},
   '보가르드':{pos:['LDM','RDM'],note:'홀딩 미드 로테이션'},
   '로저스':{pos:['CAM'],note:'시즌 주포지션 CAM 21경기(7.1)>LW 13(6.91) — 중앙 10번 (LW는 천장, 접전 변형)'},
-  '부엔디아':{pos:['LM'],note:'시즌 주포지션 LW 21경기 — 좌측 인버티드 창조 (CAM은 3경기뿐)'},
+  '부엔디아':{pos:['LM'],note:'시즌 주포지션 LW 21경기 — 좌측 인버티드 창조 (CAM은 3경기뿐). 3축 07-15: optimal=wideplm/Build-Up(구 insidefwd .767 stale→현 .614; 창조 기능 kp 2.1·xa .19)'},
   '맥긴':{pos:['RM'],note:'오른쪽 — 기능축 07-09: duties·obs#27 = wm_widemid/Support (미드블록 뱅크 복귀+하프스페이스 런). 움직임 role:season=wideplm/Attack(구 inside-fwd .80은 stale=현 .57)'},
   '산초':{pos:['RM'],note:'인버티드 우측 윙 (7.5/7.4/7.1)'},
   '알리송(신규)':{pos:['RM'],note:'실측 적합 0.85'},
