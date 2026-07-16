@@ -71,10 +71,54 @@ docs/20-fc-game-system.md의 영입 후보 파이프라인 그대로:
   히트맵/커널 적합도 분석은 하지 않는다 — 이 테이블은 역할 적합성이 아니라 유출 위험을 추적한다.
 - 이적 확정 시 likelihood `CONFIRMED`로 갱신 (player_seasons 등 승격은 별도 판단).
 
+## 4-2. 일일 리포트 생성 (매 실행 필수)
+
+DB 갱신과 별도로, **그날 수집한 기사·업데이트를 모은 리포트를 파일로 남긴다.**
+`reports/transfer-watch/<YYYY-MM-DD>.md`에 작성한다(`<YYYY-MM-DD>`는 실행일).
+같은 날 재실행이면 같은 파일을 **덮어쓰지 않고**, 파일 안에 `## <HH>시 실행` 섹션을 추가한다.
+
+리포트는 스크립트가 아니라 이 실행이 직접 쓴다 — 원문 기사 서술은 WebSearch 결과에만
+있고 DB 필드로는 복원되지 않기 때문. DB의 `rationale`/`source`와 그날 검색한 기사 내용을
+결합해 아래 템플릿을 채운다.
+
+```markdown
+# 빌라 이적 감시 리포트 — <YYYY-MM-DD>
+
+## 요약
+- 스캔: 영입 ~N건 / 유출 ~M건 (소스: TransferFeed)
+- 오늘 변동: 신규 X · 갱신 Y · 무산/DEAD Z
+
+## 신규·갱신 (선수별)
+### <선수> (<현소속>, <슬롯>) — <등급 old→new>
+- 기사 요지: <그날 기사 1~3줄, 이적료·단계·경쟁 클럽>
+- 출처: <기자/매체 (티어)>, <URL>
+  (유출 건도 같은 형식으로. 실측 미수행 시 `실측 PENDING` 명시)
+
+## 크로스체크 실패·보류
+- <이름>: <사유 — 팬사이트 단독 / 미크로스체크 / 링크 소멸>
+
+## 기존 행 재확인 (변동 없음)
+- 영입: <등급 유지 요약>
+- 유출: <등급 유지 요약>
+
+## PENDING MEASUREMENT
+- <이름(슬롯)> …
+```
+
+변동이 전혀 없는 날도 리포트는 남긴다(그날의 기사 로그·재확인 기록 보존).
+
 ## 5. 완료 기준 (매 실행)
 
-- 변경이 있으면: `python3 scripts/sync_transfer_ui.py` 실행(fc26-heatmap.html 미러 갱신)
-  → `scripts/db_dump.sh` 실행 → `git add -A && git commit`(메시지 접두 `data(transfer-watch):`)
-  → `git push`.
-- 변경이 없으면 커밋하지 않는다.
-- 종료 보고: 스캔된 이름 수 / 크로스체크 통과·실패 / 추가·갱신된 행 / PENDING 여부.
+- **DB 변경이 있으면**: `python3 scripts/sync_transfer_ui.py`(fc26-heatmap.html 미러 갱신)
+  → `scripts/db_dump.sh`(dump 재생성) 실행. DB 변경이 없으면 이 둘은 건너뛴다.
+- **리포트는 매 실행 작성**(§4-2) 후, 아래처럼 **파일을 명시 스테이징**해서 커밋한다.
+  `git add -A`는 쓰지 않는다 — 저장소에 `.claude/settings.json`(Figma PAT 등) 등 커밋 금지
+  파일이 있어 푸시가 차단된다:
+  ```
+  git add reports/transfer-watch/ data/avl_analysis.db data/dump/ fc26-heatmap.html
+  git commit -m "data(transfer-watch): <요약> (<YYYY-MM-DD>)"
+  git push
+  ```
+  (DB 변동이 없어 리포트만 있는 날도 리포트 파일만 스테이징해 커밋한다.)
+- 종료 보고(터미널): 스캔된 이름 수 / 크로스체크 통과·실패 / 추가·갱신된 행 / PENDING 여부
+  + **리포트 파일 경로**.
