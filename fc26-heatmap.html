@@ -1257,14 +1257,16 @@ class Panel{
         if(cands.length>1){
           const extra=cands.some(c=>c.n===p.name)?'':`<option value="${p.name}" selected>${p.name}</option>`;
           const opts=extra+cands.map(c=>`<option value="${c.n}" ${c.n===p.name?'selected':''}>${c.n}${c.gridNote?' · '+c.gridNote:''}</option>`).join('');
-          row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${p.pos}</span><div class="selects"><select class="rrole" title="동 포지션 실측 그리드 교체 (DB 관리 선수)">${opts}</select></div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
+          const sfA=(typeof sofifaAnyURL==='function'&&sofifaAnyURL(p.name))?`<a class="sf-name" data-sofifa="${p.name}" title="sofifa에서 FC26 확인">↗</a>`:'';
+          row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${p.pos}</span><div class="selects"><select class="rrole" title="동 포지션 실측 그리드 교체 (DB 관리 선수)">${opts}</select>${sfA}</div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
           row.querySelector('.rrole').addEventListener('change',e=>{
             const cand=cands.find(c=>c.n===e.target.value); if(!cand) return;
             p.name=cand.n; p.map25=cand.grid; this.su.selected=p.id;
             this.refresh(); const o=this.other(); if(o) o.buildRoster();   // 반대편 % 뱃지 갱신
           });
         } else {
-          row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${p.pos}</span><div class="selects"><span class="rname" title="실측 히트맵 · 참고용">${p.name}</span></div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
+          const sfB=(typeof sofifaAnyURL==='function'&&sofifaAnyURL(p.name))?` data-sofifa="${p.name}"`:'';
+          row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${p.pos}</span><div class="selects"><span class="rname${sfB?' sf-name':''}"${sfB} title="${sfB?'sofifa에서 FC26 확인':'실측 히트맵 · 참고용'}">${p.name}${sfB?'<span class="arr">↗</span>':''}</span></div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
         }
         row.querySelector('.eyebtn').addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); this.mirrorVisibility(); });
         this.rowsEl.appendChild(row); return;
@@ -1273,7 +1275,7 @@ class Panel{
       const fopts=ROLES[p.r].f.map(fx=>`<option value="${fx}" ${fx===p.focus?'selected':''}>${fmtFocus(fx)}</option>`).join('');
       const sim=this.simVsReal(p);
       const simHtml=sim==null?'':`<span class="simv ${sim>=0.75?'hi':sim>=0.55?'mid':'lo'}" title="반대 패널 같은 포지션 실측 히트맵과의 코사인 유사도">${Math.round(sim*100)}%</span>`;
-      const posHtml=p.sqName?`${p.pos}<br><span style="font-size:9px;color:var(--muted-2);letter-spacing:0">${p.sqName}</span>`:p.pos;
+      const posHtml=p.sqName?`${p.pos}<br><span class="${(typeof sofifaAnyURL==='function'&&sofifaAnyURL(p.sqName))?'sf-name':''}" ${(typeof sofifaAnyURL==='function'&&sofifaAnyURL(p.sqName))?`data-sofifa="${p.sqName}" title="sofifa에서 FC26 확인"`:''} style="font-size:9px;color:var(--muted-2);letter-spacing:0">${p.sqName}</span>`:p.pos;
       row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${posHtml}</span><div class="selects"><select class="rrole">${opts}</select><select class="rfocus">${fopts}</select>${simHtml}</div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
       const rsel=row.querySelector('.rrole'),fsel=row.querySelector('.rfocus');
       rsel.addEventListener('change',e=>{ p.r=e.target.value; p.focus=ROLES[p.r].f[0]; p.map25=null; this.su.selected=p.id; this.refresh(); });
@@ -1901,6 +1903,25 @@ function sofifaEn(name){return (SOFIFA[name]||{}).en||'';}
    transfer_targets/transfer_outgoing 행은 항상 영문 name이 있어 매핑 유지 부담이 없다. */
 function sofifaKeywordURL(englishName){return englishName?`https://sofifa.com/players?keyword=${encodeURIComponent(englishName)}`:null;}
 function openSofifa(name){const u=sofifaURL(name);if(u)window.open(u,'sofifaWin','width=1000,height=880,menubar=no,toolbar=no,scrollbars=yes,resizable=yes');}
+/* 모든 메뉴 공통 — 표기 변형(영입·/(합류확정)/(보유)/(신규)/(25임대·…))을 정규화해 SOFIFA 맵을
+   찾고, 없으면 TRANSFER_TARGETS 영문명 키워드 검색으로 폴백. data-sofifa 클릭은 문서 레벨에서 위임. */
+function sofifaAnyURL(label){
+  if(!label) return null;
+  if(SOFIFA[label]) return sofifaURL(label);
+  const base=label.replace(/^영입·/,'').replace(/\((합류확정|보유|신규)\)$/,'').replace(/\(25임대·(참조|전방)\)$/,'').trim();
+  if(SOFIFA[base]) return sofifaURL(base);
+  if(SOFIFA['영입·'+base]) return sofifaURL('영입·'+base);
+  if(typeof TRANSFER_TARGETS!=='undefined'){
+    const t=TRANSFER_TARGETS.find(r=>r.short_label===base||r.name_kr===base||r.name===base);
+    if(t) return `https://sofifa.com/players?keyword=${encodeURIComponent(t.name)}`;
+  }
+  return null;
+}
+function openSofifaAny(label){const u=sofifaAnyURL(label);if(u)window.open(u,'sofifaWin','width=1000,height=880,menubar=no,toolbar=no,scrollbars=yes,resizable=yes');}
+document.addEventListener('click',e=>{
+  const sf=e.target.closest('[data-sofifa]');
+  if(sf){ e.preventDefault(); openSofifaAny(sf.dataset.sofifa); }
+});
 const clamp01=v=>v<0?0:v>1?1:v;
 function cmpCos(a,b){ let dot=0,na=0,nb=0; for(let i=0;i<25;i++){dot+=a[i]*b[i];na+=a[i]*a[i];nb+=b[i]*b[i];} return (na&&nb)?dot/Math.sqrt(na*nb):0; }
 /* 실측 그리드 ↔ 슬롯 포지션 타입의 모든 역할·포커스 커널 중 최대 코사인 */
@@ -2260,7 +2281,8 @@ function buildCmpUI(){
   document.getElementById('cmpB').addEventListener('change',renderCmp);
   document.getElementById('cmpBody').addEventListener('click',e=>{
     const sf=e.target.closest('[data-sofifa]');
-    if(sf){ e.preventDefault(); openSofifa(sf.dataset.sofifa); return; }
+    if(sf) return; // 문서 레벨 위임 핸들러가 열어줌 — 여기서는 랭킹 행 선택만 차단
+
     const row=e.target.closest('.cmp-rrow[data-rank-idx]'); if(!row) return;
     const a=document.getElementById('cmpA'), b=document.getElementById('cmpB');
     if(b.value===row.dataset.rankIdx){ b.value=a.value; } // A가 이미 그 선수면 B와 스왑 방지
@@ -2320,7 +2342,8 @@ function buildSquadUI(){
     const autoFlag=(iq!=null&&AUTON_FOCUS.includes(sel.opt[1]))
       ?(iq>=72?`<div><span class="ok">자율 포커스 OK</span> — 판단 ${iq}</div>`
               :`<div><span class="warn">⚠ 자율 포커스인데 판단 ${iq}(낮음)</span> — 고정 포커스가 안전</div>`):'';
-    div.innerHTML=`<label>${s.pos}</label><select>${opts}</select>
+    const sfLink=sofifaAnyURL(sel.n)?` <a class="sf-name" data-sofifa="${sel.n}" title="sofifa에서 FC26 확인">FC26<span class="arr">↗</span></a>`:'';
+    div.innerHTML=`<label>${s.pos}</label><select>${opts}</select>${sfLink}
       <div class="sq-info">${posLine?`<div>${posLine}</div>`:''}
         <div>🎯 처방: <b>${fmtRF(sel.opt)}</b></div>${famLine}${autoFlag}
         <div>🔁 실측: ${fmtRF(sel.fit)}</div>${SQ_STATS[sel.n]?`<div>⚙ 산출: ${SQ_STATS[sel.n]}</div>`:''}</div>`;
@@ -2420,7 +2443,18 @@ panels.B=new Panel(document.querySelector('.panel[data-key="B"]'),'B',1);
 refreshLoaders();
 panels.A.buildRoster(); panels.B.buildRoster();
 enterRealMode(AVL_MEASURED);   // 기본 화면 = 실측 → FC26 검증
+let _rpSofifaDone=false;
+function enhanceReportNames(){ // 정적 리포트 표의 선수명 셀을 sofifa 링크로 승격 (1회)
+  if(_rpSofifaDone) return; _rpSofifaDone=true;
+  document.querySelectorAll('#reportPage table td').forEach(td=>{
+    const t=td.textContent.trim();
+    if(td.children.length===0 && t.length>0 && t.length<14 && sofifaAnyURL(t)){
+      td.innerHTML=`<a class="sf-name" data-sofifa="${t}" title="sofifa에서 FC26 확인">${t}<span class="arr">↗</span></a>`;
+    }
+  });
+}
 function showReport(){
+  enhanceReportNames();
   document.getElementById('reportPage').style.display='block';
   document.querySelector('.compare').style.display='none';
   const seg=document.getElementById('modeMenu');
@@ -2604,7 +2638,7 @@ function renderXi(){
       ${shown.length?shown.map(r=>`
         <div class="xi-cand${added.has(r.label)?' manual':''}">
           <span class="xi-sim">${r.sim.toFixed(2)}</span>
-          <span class="xi-name" title="${r.label}">${r.label}</span>
+          <a class="xi-name sf-name" data-sofifa="${esc(r.label)}" title="sofifa에서 FC26 확인: ${r.label}">${r.label}</a>
           ${xiBadge(r.lh)}
           <button class="xi-rm" data-formation="${formation}" data-pos="${s.pos}" data-label="${esc(r.label)}" title="이 슬롯에서 제외">✕</button>
         </div>`).join('')
