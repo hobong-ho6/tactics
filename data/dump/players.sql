@@ -23,3 +23,4 @@ INSERT INTO players VALUES(22,'Douglas Luiz','CM',21,881,NULL);
 INSERT INTO players VALUES(23,'Moussa Diaby','RW',19,NULL,'23/24 빌라 우측 공격수(£50m 레버쿠젠→, 2024 여름 알이티하드 이적). 실측 히스토리 기록용(현 스쿼드 아님).');
 INSERT INTO players VALUES(24,'Jhon Durán','ST',9,NULL,'23/24~24/25 빌라 ST 임팩트 서브(2025.1 알나스르 이적). ''듀란형'' ST 아키타입 원천.');
 INSERT INTO players VALUES(25,'Marcus Rashford','LW/CF',NULL,NULL,'2025-02~05 맨유→빌라 임대(24-25 후반기). 이후 바르셀로나 임대(£26m 바이옵션). 에메리 좌측 인버티드 기용 선례의 기준 선수 — 레앙 등 동형 영입 평가 template (tactic_observations 래시포드 선례 참조).');
+INSERT INTO players VALUES(26,'Leon Bailey','RW/LW',NULL,NULL,'2026-07-21 유출 루머로 신규 등재 — 상세 프로필(등번호/출전시간)은 추후 보강');
