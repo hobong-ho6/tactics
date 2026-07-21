@@ -606,7 +606,10 @@
     <div class="tf-toolbar" id="anCtrl">
       <button id="anTeamBtn" class="an-btn on">전체 움직임</button>
       <button id="anPlayerBtn" class="an-btn">선수별 움직임</button>
-      <span style="flex:0 0 12px"></span>
+      <span style="flex:0 0 10px"></span>
+      <button class="an-btn an-src on" data-src="tactic">전술 도식</button>
+      <button class="an-btn an-src" data-src="real">실측 동선</button>
+      <span style="flex:0 0 10px"></span>
       <button class="an-btn an-ph on" data-ph="0">① 빌드업</button>
       <button class="an-btn an-ph" data-ph="1">② 공격 4-2-3-1</button>
       <button class="an-btn an-ph" data-ph="2">③ 수비 4-4-2</button>
@@ -2829,7 +2832,7 @@ const AN_PATTERN=[
  {period:4800, sway:{GK:2,LB:8,LCB:8,RCB:8,RB:8,LDM:9,RDM:9,LM:10,RM:10,CAM:12,ST:12}}];
 const AN_NS='http://www.w3.org/2000/svg';
 const anPX=x=>120+x/100*340, anPY=y=>20+(100-y)/100*525;
-let anBuilt=false,anMode='team',anPhase=0,anSel=8,anAuto=null,anRaf=null,anOcc=[];
+let anBuilt=false,anMode='team',anPhase=0,anSel=8,anAuto=null,anRaf=null,anOcc=[],anTeamSrc='tactic';
 function anEl(t,a){const e=document.createElementNS(AN_NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
 function anPool(t){return XI_POOL.filter(p=>p.t===t);}
 function anGridPath(grid){
@@ -2904,6 +2907,7 @@ function buildXiAnim(){
   document.getElementById('anTeamBtn').addEventListener('click',()=>{anMode='team';anSyncMode();});
   document.getElementById('anPlayerBtn').addEventListener('click',()=>{anMode='player';anSyncMode();});
   document.querySelectorAll('.an-ph').forEach((b,i)=>b.addEventListener('click',()=>{anPhase=i;anStop();anRender();}));
+  document.querySelectorAll('.an-src').forEach(b=>b.addEventListener('click',()=>{anTeamSrc=b.dataset.src;anStop();anSyncMode();}));
   document.getElementById('anAuto').addEventListener('click',()=>{
     if(anAuto){anStop();anRender();return;}
     if(anMode!=='team'){anMode='team';anSyncMode();}
@@ -2915,7 +2919,12 @@ function buildXiAnim(){
 function anSyncMode(){
   document.getElementById('anTeamBtn').classList.toggle('on',anMode==='team');
   document.getElementById('anPlayerBtn').classList.toggle('on',anMode==='player');
-  document.querySelectorAll('.an-ph').forEach(b=>b.style.display=anMode==='team'?'':'none');
+  document.querySelectorAll('.an-src').forEach(b=>{
+    b.style.display=anMode==='team'?'':'none';
+    b.classList.toggle('on',b.dataset.src===anTeamSrc);
+  });
+  // 실측 동선 모드에선 국면(빌드업/공격/수비)이 무의미 — 선수별 시즌 히트맵 기반이므로 국면 버튼 숨김
+  document.querySelectorAll('.an-ph').forEach(b=>b.style.display=(anMode==='team'&&anTeamSrc==='tactic')?'':'none');
   if(anMode==='player') anStop();
   anRender();
 }
@@ -2933,6 +2942,37 @@ function anRender(){
   if(anMode==='team'){
     const ballG=document.getElementById('anBall'), oppG=document.getElementById('anOppBall');
     ballG.style.display='none'; oppG.style.display='none';
+    const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const mkSegs=wp=>{const pts=wp.map(w=>[anPX(w[0]),anPY(w[1])]);let segs=[],tot=0;
+      for(let j=1;j<pts.length;j++){const L=Math.hypot(pts[j][0]-pts[j-1][0],pts[j][1]-pts[j-1][1]);segs.push({a:pts[j-1],b:pts[j],L});tot+=L;}
+      return {segs,tot,start:pts[0]};};
+    const at=(m,dpx)=>{for(const sg of m.segs){if(dpx<=sg.L){const f=sg.L?dpx/sg.L:0;return [sg.a[0]+(sg.b[0]-sg.a[0])*f,sg.a[1]+(sg.b[1]-sg.a[1])*f];}dpx-=sg.L;}return m.start;};
+    if(anTeamSrc==='real'){
+      /* 실측 동선 — 11명 각자 실측 히트맵(시즌 집계)에서 파생한 실제 활동 경로 동시 재생.
+         전술 도식과 달리 개별 선수 데이터 기반이고, 국면(빌드업/공격/수비)과 무관하다. */
+      document.getElementById('anDesc').innerHTML='<b>실측 동선</b> — 각 선수의 SofaScore 실측 히트맵(시즌 집계 5×5)에서 파생한 실제 활동 경로를 11명 동시 재생. 전술 도식과 달리 개별 선수 데이터 기반이며 국면과 무관(시즌 전체 평균 위치).';
+      const movers=[];
+      ANIM_SLOTS.forEach((s,i)=>{
+        const p=occPlayers[i], node=pl.children[i];
+        node.style.transition='none'; node.setAttribute('opacity',1);
+        const wp=(p&&p.grid)?anGridPath(p.grid):null;
+        if(!wp||wp.length<2){ const a=wp&&wp[0]?wp[0]:s.ph[1];
+          node.setAttribute('transform',`translate(${anPX(a[0])},${anPY(a[1])})`);
+          if(wp&&wp[0]) pt.appendChild(anEl('circle',{cx:anPX(wp[0][0]),cy:anPY(wp[0][1]),r:3,fill:'var(--muted)'}));
+          return; }
+        pt.appendChild(anEl('path',{d:wp.map((w,j)=>(j?'L':'M')+anPX(w[0])+' '+anPY(w[1])).join(' '),fill:'none',stroke:'var(--accent)','stroke-width':1,opacity:.28}));
+        movers.push({node,...mkSegs(wp)});
+      });
+      if(!reduced && movers.length){
+        const t0=performance.now();
+        const step=now=>{ const f=((now-t0)/5200)%1;
+          movers.forEach(m=>{const p=at(m,f*m.tot);m.node.setAttribute('transform',`translate(${p[0]},${p[1]})`);});
+          anRaf=requestAnimationFrame(step);
+        };
+        anRaf=requestAnimationFrame(step);
+      }
+      return;
+    }
     ANIM_SLOTS.forEach((s,i)=>{
       pl.children[i].style.transition='';
       pl.children[i].setAttribute('transform',`translate(${anPX(s.ph[anPhase][0])},${anPY(s.ph[anPhase][1])})`);
@@ -2948,14 +2988,10 @@ function anRender(){
       const lb=anEl('text',{x:anPX(97),y:(anPY(24)+anPY(40))/2+3,'font-size':10,fill:'var(--accent)'});
       lb.textContent='10m'; pt.appendChild(lb);
     }
-    document.getElementById('anDesc').innerHTML=`<b>${ANIM_PHASES[anPhase].t}</b> — ${ANIM_PHASES[anPhase].d}`;
+    document.getElementById('anDesc').innerHTML=`<b>${ANIM_PHASES[anPhase].t}</b> <span class="rp-sub">(전술 도식 — tactic_observations/duties 파생)</span> — ${ANIM_PHASES[anPhase].d}`;
     /* 국면 패턴 재생 — 11명 동시 루프 + 볼 순환/블록 셔플 (reduced-motion 시 정적 배치 유지) */
-    if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    if(!reduced){
       const pat=AN_PATTERN[anPhase];
-      const mkSegs=wp=>{const pts=wp.map(w=>[anPX(w[0]),anPY(w[1])]);let segs=[],tot=0;
-        for(let j=1;j<pts.length;j++){const L=Math.hypot(pts[j][0]-pts[j-1][0],pts[j][1]-pts[j-1][1]);segs.push({a:pts[j-1],b:pts[j],L});tot+=L;}
-        return {segs,tot,start:pts[0]};};
-      const at=(m,dpx)=>{for(const sg of m.segs){if(dpx<=sg.L){const f=sg.L?dpx/sg.L:0;return [sg.a[0]+(sg.b[0]-sg.a[0])*f,sg.a[1]+(sg.b[1]-sg.a[1])*f];}dpx-=sg.L;}return m.start;};
       let movers=[], ballM=null;
       if(pat.paths){
         movers=ANIM_SLOTS.map((s,i)=>{const wp=pat.paths[s.pos];return wp&&wp.length>1?{node:pl.children[i],...mkSegs(wp)}:null;}).filter(Boolean);
