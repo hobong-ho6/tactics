@@ -62,6 +62,7 @@ def gen_transfer_targets(conn):
                 "source": r["source"],
                 "map25": r["map25"],
                 "avg_rating": r["avg_rating"],
+                "sample_n": r["sample_n"],
                 "short_label": r["short_label"],
             }
         )
