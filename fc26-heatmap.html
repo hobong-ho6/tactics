@@ -3056,6 +3056,20 @@ function anRender(){
    주의: 아래 상태 변수는 var — 초기 로드의 enterRealMode→hideCmpBar→cmpAnimHide가
    이 선언부보다 먼저 실행되므로 let이면 TDZ 에러. */
 var cmpAnimBuilt=false,cmpAnimRaf=null;
+/* 슬롯별 에메리 요구 동선 — player_duties(주전 임무)에서 파생한 슬롯 기준선.
+   선수 개인이 아니라 "이 슬롯에서 에메리 시스템이 요구하는 움직임" (3축의 요구역할 축). */
+const AN_SLOT_DEMAND={
+ GK:{path:[[50,8],[44,12],[56,12],[50,8]],txt:'숏 빌드업 배급 + 박스 전폭 커버 (고정 원칙)'},
+ LB:{path:[[12,35],[10,55],[8,72],[12,35]],txt:'터치라인 폭 유지 → 한 명씩 오버랩 → 크로스·컷백'},
+ LCB:{path:[[30,20],[33,32],[38,44],[30,20]],txt:'좌 하프스페이스 캐리·전진 공급'},
+ RCB:{path:[[68,20],[64,30],[61,38],[68,20]],txt:'듀얼 앵커 + 볼 소유 시 우중앙 스텝아웃'},
+ RB:{path:[[88,30],[86,44],[84,56],[88,30]],txt:'수비 우선 봉쇄 + 우측 폭 유지 (제한적 전진)'},
+ LDM:{path:[[44,34],[48,50],[44,64],[50,76],[44,34]],txt:'피벗 좌 레인 — 스크린 후 박스 서지 (로밍)'},
+ RDM:{path:[[58,38],[53,43],[63,43],[58,38]],txt:'앵커 — 백4 앞 스크린 + 통제된 순환'},
+ LM:{path:[[20,60],[28,67],[36,72],[43,76],[20,60]],txt:'하이레프트 → 오른발 컷인 → 슛/콤비 (수비 시 뱅크 복귀)'},
+ CAM:{path:[[38,50],[45,60],[50,72],[44,80],[38,50]],txt:'피벗-공격 링크 + 늦은 박스 진입 (수비 시 원톱 옆 상승)'},
+ RM:{path:[[80,55],[72,64],[64,72],[55,82],[80,55]],txt:'블록 폭 유지 ↔ 하프스페이스 침투 런 + 파포스트'},
+ ST:{path:[[48,80],[42,66],[52,72],[72,84],[30,83],[48,80]],txt:'박스 점유 ↔ 드롭 링크 ↔ 채널 런 (3중 임무)'}};
 function cmpAnimHide(){
   const sec=document.getElementById('cmpAnimSec'); if(sec) sec.style.display='none';
   if(cmpAnimRaf){cancelAnimationFrame(cmpAnimRaf);cmpAnimRaf=null;}
@@ -3088,29 +3102,40 @@ function cmpAnimRender(key,pa,pb){
   if(cmpAnimRaf){cancelAnimationFrame(cmpAnimRaf);cmpAnimRaf=null;}
   const clear=id=>{const n=document.getElementById(id);while(n.firstChild)n.removeChild(n.firstChild);return n;};
   const pt=clear('cmpAnPath'), dots=clear('cmpAnDots');
-  const sides=[{prof:pa,col:'#ff7a2f',mk:'arrowCmpA',tag:'A'},{prof:pb,col:'#5c8bff',mk:'arrowCmpB',tag:'B'}];
   const movers=[], legend=[];
-  sides.forEach(sd=>{
-    const c=sd.prof.c, grid=sd.prof.dispGrid;
-    if(!grid){legend.push(`${sd.tag} ${c.n}: 실측 그리드 없음`);return;}
-    const duty=ANIM_DUTY[c.n];
-    const wp=(duty&&!(sd.prof.fit&&sd.prof.fit.exp))?duty.path:anGridPath(grid);
-    if(wp.length<2){legend.push(`${sd.tag} ${c.n}: 경로 산출 불가(집중 셀 부족)`);return;}
+  const addMover=(wp,col,tag,fillDot,dash)=>{
     const d=wp.map((w,j)=>(j?'L':'M')+anPX(w[0])+' '+anPY(w[1])).join(' ');
-    pt.appendChild(anEl('path',{d,fill:'none',stroke:sd.col,'stroke-width':2,class:'an-flow','marker-end':`url(#${sd.mk})`,opacity:.85}));
+    const attrs={d,fill:'none',stroke:col,'stroke-width':dash?1.5:2,class:'an-flow',opacity:dash?.6:.85};
+    if(dash) attrs['stroke-dasharray']='3 5';
+    if(tag==='A') attrs['marker-end']='url(#arrowCmpA)';
+    if(tag==='B') attrs['marker-end']='url(#arrowCmpB)';
+    pt.appendChild(anEl('path',attrs));
     const g=anEl('g',{});
-    g.appendChild(anEl('circle',{r:12,fill:sd.col,stroke:'#111','stroke-width':1}));
-    const tx=anEl('text',{y:4,'text-anchor':'middle','font-size':10,fill:'#fff','font-weight':700});
-    tx.textContent=sd.tag; g.appendChild(tx);
+    g.appendChild(anEl('circle',{r:fillDot?12:10,fill:fillDot?col:'none',stroke:fillDot?'#111':col,'stroke-width':fillDot?1:2}));
+    if(fillDot){const tx=anEl('text',{y:4,'text-anchor':'middle','font-size':10,fill:'#fff','font-weight':700});tx.textContent=tag;g.appendChild(tx);}
     g.setAttribute('transform',`translate(${anPX(wp[0][0])},${anPY(wp[0][1])})`);
     dots.appendChild(g);
     const pts=wp.map(w=>[anPX(w[0]),anPY(w[1])]);
     let segs=[],tot=0;
     for(let j=1;j<pts.length;j++){const dx=pts[j][0]-pts[j-1][0],dy=pts[j][1]-pts[j-1][1],L=Math.hypot(dx,dy);segs.push({a:pts[j-1],b:pts[j],L});tot+=L;}
     movers.push({node:g,segs,tot});
-    legend.push(`${sd.tag} ${c.n} — ${duty&&!(sd.prof.fit&&sd.prof.fit.exp)?'임무(duties) 경로':'실측 그리드 파생'}`);
+  };
+  /* 축 1 — 에메리 요구 동선 (슬롯 기준선, 회색 점선) */
+  const demand=AN_SLOT_DEMAND[key];
+  if(demand){ addMover(demand.path,'var(--muted)','D',false,true); }
+  /* 축 2 — A/B 선수 실측 그리드 파생 경로 (요구와의 괴리를 눈으로 비교) */
+  [{prof:pa,col:'#ff7a2f',tag:'A'},{prof:pb,col:'#5c8bff',tag:'B'}].forEach(sd=>{
+    const c=sd.prof.c, grid=sd.prof.dispGrid;
+    if(!grid){legend.push(`${sd.tag} ${c.n}: 실측 그리드 없음`);return;}
+    const wp=anGridPath(grid);
+    if(wp.length<2){legend.push(`${sd.tag} ${c.n}: 경로 산출 불가(집중 셀 부족)`);return;}
+    addMover(wp,sd.col,sd.tag,true,false);
+    legend.push(`${sd.tag} ${c.n} — 실측 히트맵 파생${sd.prof.fit&&sd.prof.fit.exp?(sd.prof.fit.mir?' (미러 가정)':' (실험 배치)'):''}`);
   });
-  document.getElementById('cmpAnimLegend').innerHTML=`<span style="color:#ff7a2f">■</span> ${legend[0]||''} &nbsp; <span style="color:#5c8bff">■</span> ${legend[1]||''}`;
+  document.getElementById('cmpAnimLegend').innerHTML=
+    `<span style="color:var(--muted)">◌ 점선</span> 에메리 요구 동선(${key}) — ${demand?demand.txt:''}<br>`+
+    `<span style="color:#ff7a2f">■</span> ${legend[0]||''} &nbsp; <span style="color:#5c8bff">■</span> ${legend[1]||''}<br>`+
+    `<span class="rp-sub">기능(스탯) 축은 위 비교 카드의 xG·xA·키패스·듀얼 참조 — 3축(요구·움직임·기능) 중 앞 두 축을 피치에서 비교</span>`;
   sec.style.display='block';
   if(movers.length&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
     const t0=performance.now();
