@@ -1821,9 +1821,10 @@ const TRANSFER_LEDGER=[
 /* AUTOGEN:TRANSFER_LEDGER:END */
 
 /* 베스트 11(포메이션 기반) 후보 풀 — 보유 선수는 squad_positions(DB) 단일 소스에서
-   sync_transfer_ui.py가 XI_OWNED로 생성(다포지션은 여러 행). 확정 영입은
-   injectTransferCandidates()가 TRANSFER_TARGETS의 CONFIRMED 행만 덧붙인다.
-   → Best 11 후보 = 보유 + 확정만 (영입 후보/루머는 제외). */
+   sync_transfer_ui.py가 XI_OWNED로 생성(다포지션은 여러 행). 확정 영입 + 강한 루머
+   (MEDIUM-HIGH 이상)는 injectTransferCandidates()가 TRANSFER_TARGETS에서 덧붙인다.
+   → Best 11 후보 = 보유 + 확정 + MEDIUM-HIGH 이상 루머 (2026-07-21: 사용자 요청으로
+   확정만→MEDIUM-HIGH 이상으로 확대). */
 /* AUTOGEN:XI_OWNED:START */
 const XI_OWNED=[
 {label:"마르티네스",grid:"0000000000000000010001X10",lh:"OWNED",rate:{"v": 7.95, "b": "top", "s": "상위 4경기 평균 7.95"},t:"GK"},
@@ -1856,6 +1857,7 @@ const XI_POOL=XI_OWNED.slice();
    (2026-07-14 리팩터, docs/40-pipeline.md). DEAD(무산) 행은 제외.
 ============================================================ */
 const SLOT_TYPE_FOR_XI={GK:'GK',LB:'FB',RB:'FB',LCB:'CB',RCB:'CB',LDM:'DM',RDM:'DM',LM:'WM',RM:'WM',CAM:'CAM',ST:'ST'};
+const XI_ELIGIBLE_LIKELIHOOD=new Set(['CONFIRMED','HIGH','MEDIUM-HIGH']);
 function injectTransferCandidates(){
   TRANSFER_TARGETS.forEach(row=>{
     if(!row.short_label || /^DEAD/i.test(row.likelihood||'')) return;
@@ -1869,9 +1871,9 @@ function injectTransferCandidates(){
     } else if(!PLAYER_BEST[label].pos.includes(row.slot)){
       PLAYER_BEST[label].pos.push(row.slot);
     }
-    /* Best 11 = 보유(XI_OWNED) + 확정 영입만. 루머 후보(영입·)는 제외. */
+    /* Best 11 = 보유(XI_OWNED) + 확정 영입 + MEDIUM-HIGH 이상 루머. */
     const xiT=SLOT_TYPE_FOR_XI[row.slot]||row.slot;
-    if(row.likelihood==='CONFIRMED' && row.map25 && !XI_POOL.some(x=>x.label===label&&x.t===xiT)){
+    if(XI_ELIGIBLE_LIKELIHOOD.has(row.likelihood) && row.map25 && !XI_POOL.some(x=>x.label===label&&x.t===xiT)){
       XI_POOL.push({label, grid:row.map25, lh:row.likelihood,
         rate:{v:row.avg_rating,b:'r6',s:`최근 ${row.sample_n||6}경기 평균 ${row.avg_rating} (${row.club})`},
         t:xiT});
