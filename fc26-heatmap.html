@@ -2699,6 +2699,8 @@ function renderXi(){
 function showXiPage(){
   if(!xiBuilt) buildXiPage();
   renderXi();
+  if(!anBuilt) buildXiAnim();
+  anRender();
   document.getElementById('xiPage').style.display='block';
   document.querySelector('.compare').style.display='none';
   const seg=document.getElementById('modeMenu');
@@ -2707,6 +2709,197 @@ function showXiPage(){
 function hideXiPage(){
   document.getElementById('xiPage').style.display='none';
   document.querySelector('.compare').style.display='';
+  anStop();
+}
+
+/* ---- 베스트 11 · 움직임 애니메이션 ----
+   국면 위치 = tactic_observations 파생(빌드업/공격 4-2-3-1/수비 4-4-2 미드블록).
+   기본 XI 경로·임무 = player_duties 파생 하드코딩, 교체 선수 경로 = 실측 그리드 파생. */
+const ANIM_SLOTS=[
+ {pos:'GK', t:'GK', ph:[[50,8],[50,12],[50,6]],  def:'마르티네스'},
+ {pos:'LB', t:'FB', ph:[[12,35],[10,62],[16,24]],def:'마첸'},
+ {pos:'LCB',t:'CB', ph:[[30,20],[32,38],[37,22]],def:'파우 토레스'},
+ {pos:'RCB',t:'CB', ph:[[68,20],[66,34],[63,22]],def:'콘사'},
+ {pos:'RB', t:'FB', ph:[[88,32],[85,45],[84,24]],def:'캐시'},
+ {pos:'LDM',t:'DM', ph:[[44,34],[46,52],[40,38]],def:'오나나'},
+ {pos:'RDM',t:'DM', ph:[[58,30],[58,42],[60,38]],def:'카마라'},
+ {pos:'LM', t:'WM', ph:[[20,58],[33,70],[16,40]],def:'부엔디아'},
+ {pos:'CAM',t:'CAM',ph:[[38,50],[40,64],[55,52]],def:'로저스'},
+ {pos:'RM', t:'WM', ph:[[80,52],[70,68],[84,40]],def:'맥긴'},
+ {pos:'ST', t:'ST', ph:[[48,68],[52,84],[43,52]],def:'왓킨스'}];
+const ANIM_PHASES=[
+ {t:'① 빌드업 — 숏패스 고정 원칙',d:'마르티네스부터 숏 빌드업(시즌 롱볼 9%) — 압박이 세도 풀백·CB 경유 후방 전개를 고수. 파우 토레스가 캐리로 좌 하프스페이스를 열고, 카마라가 볼 밑 순환 허브.',
+  ar:[[[50,8],[15,32]],[[30,20],[33,36]]]},
+ {t:'② 공격 4-2-3-1 — 중앙 숫자·콤비네이션',d:'맥긴·좌측 크리에이터가 안으로 좁혀 중앙 콤비네이션, 왓킨스는 와이드 드리프트/뒷공간 런으로 배출구. 풀백은 한 명씩만 전진(좌↑ 우 대기), 피벗은 볼 밑 커버.',
+  ar:[[[33,70],[44,76]],[[52,84],[73,87]],[[10,62],[8,74]],[[70,68],[57,81]]]},
+ {t:'③ 수비 4-4-2 미드블록 — 라인간 10m 초압축',d:'10번이 원톱 옆으로 상승해 두 줄 4 형성. 통상 20m인 라인간을 10m로 압축한 콤팩트 블록 — 강압박이 아닌 기회주의적 볼 사냥(중반까지 카운터 실점 0). 배후는 GK 스위핑+오프사이드 트랩(리그 1위)으로 상쇄.',
+  ar:[]}];
+/* player_duties 파생 — 기본 XI 임무·경로 (tool 좌표: x=좌우, y=공격방향) */
+const ANIM_DUTY={
+ '마르티네스':{path:[[50,8],[44,12],[56,12],[50,8]],duty:'숏 빌드업 시작점 — 강한 압박에도 풀백·CB 숏패스 고수(고정 원칙). 박스 장악, 미드블록 뒤 페널티 폭 전체 커버. 스위핑은 상황부.'},
+ '마첸':{path:[[15,35],[12,55],[10,72],[15,35]],duty:'공격형 LB 변형 — 하이·와이드 시작, 좌 하프스페이스를 관통해 바이라인까지, 인버티드 좌측과 오버로드. 좌측 채널 수비는 전담.'},
+ '파우 토레스':{path:[[30,20],[33,32],[38,44],[30,20]],duty:'좌 볼플레잉 CB — 캐리·패스로 좌 하프스페이스 전진 공급. 상대가 내려앉으면 미드필드로 스텝인. 세트피스 박스 도착.'},
+ '콘사':{path:[[68,20],[64,30],[61,38],[68,20]],duty:'우측 듀얼·공중볼 앵커 — 전진한 캐시 뒤 커버. 볼 소유 시 우중앙으로 스텝아웃(패스 96% 팀 1위). 세트피스 파포스트 위협.'},
+ '캐시':{path:[[88,30],[86,44],[84,56],[88,30]],duty:'수비 우선 RB — 상대 윙어 봉쇄, 우 터치라인 폭 유지. 좌FB와 한 명씩만 전진(파운데이션 규칙), 우세 경기에만 늦은 박스 도착.'},
+ '오나나':{path:[[44,34],[48,50],[44,64],[50,76],[44,34]],duty:'박스투박스 피벗 — 스크린·듀얼 후 박스까지 서지(헤더 골). 파트너가 비운 레인을 가져가는 로밍형.'},
+ '카마라':{path:[[58,38],[53,43],[63,43],[58,38]],duty:'피벗 앵커 — 백4 앞 스크린, 중앙 우측 상주(좌 레인은 파트너 몫). 듀얼승 8.4·인터셉트 3.0 팀 1위 볼위너, 통제된 볼 순환.'},
+ '부엔디아':{path:[[20,58],[28,64],[35,68],[25,61],[20,58]],duty:'좌편향 자유 크리에이터 — 좌 하프스페이스↔중앙을 오가며 키패스·세트피스 전담. 수비 시 미드 4 좌측 복귀 또는 제2 스트라이커 상승.'},
+ '로저스':{path:[[38,50],[45,60],[50,72],[44,80],[38,50]],duty:'중앙 10번(시즌 주포지션 21선발) — 피벗과 공격 연결, 중원 캐리, 늦은 박스 진입. 수비 시 왓킨스 옆 압박(4-4-2 전방 2). ※ 2026-07 첼시 이적 확정 — 시즌 기록으로 유지.'},
+ '맥긴':{path:[[80,55],[72,64],[64,72],[55,82],[80,55]],duty:'미드 4의 우측 — 블록에선 터치라인 폭 유지, 공격 시 하프스페이스 침투 런. 상대 LB 압박, 파포스트 도착(헤더 0·에지형).'},
+ '왓킨스':{path:[[48,80],[42,66],[52,72],[72,84],[30,83],[48,80]],duty:'원톱 3중 임무 — ① 와이드 배달 타깃으로 박스 점유(인박스 84%) ② 드롭해서 컷인하는 동료에 레이오프 ③ 채널 뒷공간 런(트랜지션 배출구).'}};
+const AN_NS='http://www.w3.org/2000/svg';
+const anPX=x=>120+x/100*340, anPY=y=>20+(100-y)/100*525;
+let anBuilt=false,anMode='team',anPhase=0,anSel=8,anAuto=null,anRaf=null,anOcc=[];
+function anEl(t,a){const e=document.createElementNS(AN_NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+function anPool(t){return XI_POOL.filter(p=>p.t===t);}
+function anGridPath(grid){
+  const g=decodeMap(grid); const cells=[];
+  for(let i=0;i<25;i++) if(g[i]>=0.35) cells.push({r:Math.floor(i/5),c:i%5,v:g[i]});
+  cells.sort((a,b)=>b.v-a.v);
+  const top=cells.slice(0,5);
+  top.sort((a,b)=>b.r-a.r||a.c-b.c);
+  const pts=top.map(c=>[c.c*20+10,100-(c.r*20+10)]);
+  if(pts.length>1) pts.push(pts[0]);
+  return pts;
+}
+function anStop(){
+  if(anAuto){clearInterval(anAuto);anAuto=null;const b=document.getElementById('anAuto');if(b)b.textContent='▶ 자동 재생';}
+  if(anRaf){cancelAnimationFrame(anRaf);anRaf=null;}
+}
+function buildXiAnim(){
+  anOcc=ANIM_SLOTS.map(s=>{
+    const pool=anPool(s.t);
+    const hit=pool.findIndex(p=>p.label===s.def);
+    return hit>=0?hit:0;
+  });
+  const selRow=document.getElementById('anSelRow');
+  selRow.innerHTML=ANIM_SLOTS.map((s,i)=>`<div class="field"><label>${s.pos}</label><select data-slot="${i}">${
+    anPool(s.t).map((p,j)=>`<option value="${j}"${j===anOcc[i]?' selected':''}>${p.label}</option>`).join('')
+  }</select></div>`).join('');
+  selRow.addEventListener('change',e=>{
+    const sel=e.target.closest('select[data-slot]'); if(!sel) return;
+    anOcc[+sel.dataset.slot]=+sel.value;
+    anRender();
+  });
+  const wrap=document.getElementById('anPitchWrap');
+  const svg=anEl('svg',{id:'anPitch',width:'100%',viewBox:'0 0 580 565',style:'max-width:580px'});
+  const defs=anEl('defs',{});
+  const mk=anEl('marker',{id:'arrowOrange',viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:6,markerHeight:6,orient:'auto-start-reverse'});
+  mk.appendChild(anEl('path',{d:'M2 1L8 5L2 9',fill:'none',stroke:'var(--accent)','stroke-width':1.6,'stroke-linecap':'round','stroke-linejoin':'round'}));
+  defs.appendChild(mk); svg.appendChild(defs);
+  svg.appendChild(anEl('rect',{x:120,y:20,width:340,height:525,rx:6,fill:'rgba(62,207,142,.07)'}));
+  const lines=anEl('g',{fill:'none',stroke:'var(--line)','stroke-width':1});
+  [['rect',{x:120,y:20,width:340,height:525,rx:6}],
+   ['line',{x1:120,y1:282.5,x2:460,y2:282.5}],
+   ['circle',{cx:290,cy:282.5,r:45}],
+   ['rect',{x:189,y:20,width:202,height:82}],
+   ['rect',{x:244,y:20,width:92,height:27}],
+   ['rect',{x:189,y:463,width:202,height:82}],
+   ['rect',{x:244,y:518,width:92,height:27}]].forEach(([t,a])=>lines.appendChild(anEl(t,a)));
+  svg.appendChild(lines);
+  const dir=anEl('text',{x:468,y:36,'font-size':10,fill:'var(--muted-2)',transform:'rotate(90 468 36)'});
+  dir.textContent='공격 방향 ↑'; svg.appendChild(dir);
+  ['anHeat','anArrow','anPath','anPl'].forEach(id=>svg.appendChild(anEl('g',{id})));
+  wrap.innerHTML=''; wrap.appendChild(svg);
+  const pl=document.getElementById('anPl');
+  ANIM_SLOTS.forEach((s,i)=>{
+    const g=anEl('g',{class:'an-pl','data-i':i});
+    g.appendChild(anEl('circle',{r:13,fill:s.t==='GK'?'var(--panel-2)':'#5c8bff',stroke:s.t==='GK'?'var(--line)':'#26215C','stroke-width':1.5}));
+    const t=anEl('text',{y:3.5,'text-anchor':'middle','font-size':9.5,fill:s.t==='GK'?'var(--ink)':'#fff','font-weight':700});
+    t.textContent=s.pos; g.appendChild(t);
+    const nm=anEl('text',{y:25,'text-anchor':'middle','font-size':10,fill:'var(--ink)','font-weight':600,class:'an-nm'});
+    g.appendChild(nm);
+    g.addEventListener('click',()=>{anSel=i;if(anMode!=='player'){anMode='player';anSyncMode();}else anRender();});
+    pl.appendChild(g);
+  });
+  document.getElementById('anTeamBtn').addEventListener('click',()=>{anMode='team';anSyncMode();});
+  document.getElementById('anPlayerBtn').addEventListener('click',()=>{anMode='player';anSyncMode();});
+  document.querySelectorAll('.an-ph').forEach((b,i)=>b.addEventListener('click',()=>{anPhase=i;anStop();anRender();}));
+  document.getElementById('anAuto').addEventListener('click',()=>{
+    if(anAuto){anStop();anRender();return;}
+    if(anMode!=='team'){anMode='team';anSyncMode();}
+    anAuto=setInterval(()=>{anPhase=(anPhase+1)%3;anRender();},2600);
+    document.getElementById('anAuto').textContent='⏸ 정지';
+  });
+  anBuilt=true;
+}
+function anSyncMode(){
+  document.getElementById('anTeamBtn').classList.toggle('on',anMode==='team');
+  document.getElementById('anPlayerBtn').classList.toggle('on',anMode==='player');
+  document.querySelectorAll('.an-ph').forEach(b=>b.style.display=anMode==='team'?'':'none');
+  if(anMode==='player') anStop();
+  anRender();
+}
+function anRender(){
+  const clear=id=>{const n=document.getElementById(id);while(n.firstChild)n.removeChild(n.firstChild);return n;};
+  const hl=clear('anHeat'),al=clear('anArrow'),pt=clear('anPath');
+  const pl=document.getElementById('anPl');
+  if(anRaf){cancelAnimationFrame(anRaf);anRaf=null;}
+  document.querySelectorAll('.an-ph').forEach((b,i)=>b.classList.toggle('on',i===anPhase));
+  const occPlayers=ANIM_SLOTS.map((s,i)=>anPool(s.t)[anOcc[i]]);
+  ANIM_SLOTS.forEach((s,i)=>{
+    const nm=pl.children[i].querySelector('.an-nm');
+    nm.textContent=occPlayers[i]?occPlayers[i].label.replace(/^영입·/,''):'-';
+  });
+  if(anMode==='team'){
+    ANIM_SLOTS.forEach((s,i)=>{
+      pl.children[i].style.transition='';
+      pl.children[i].setAttribute('transform',`translate(${anPX(s.ph[anPhase][0])},${anPY(s.ph[anPhase][1])})`);
+      pl.children[i].setAttribute('opacity',1);
+    });
+    ANIM_PHASES[anPhase].ar.forEach(a=>{
+      al.appendChild(anEl('path',{d:`M${anPX(a[0][0])} ${anPY(a[0][1])} L${anPX(a[1][0])} ${anPY(a[1][1])}`,fill:'none',stroke:'var(--accent)','stroke-width':2,'marker-end':'url(#arrowOrange)',class:'an-flow'}));
+    });
+    if(anPhase===2){
+      [[16,24,84,24],[16,40,84,40]].forEach(l=>{
+        pt.appendChild(anEl('line',{x1:anPX(l[0])-18,y1:anPY(l[1]),x2:anPX(l[2])+18,y2:anPY(l[3]),stroke:'var(--accent)','stroke-width':1,'stroke-dasharray':'3 4',opacity:.55}));
+      });
+      const lb=anEl('text',{x:anPX(97),y:(anPY(24)+anPY(40))/2+3,'font-size':10,fill:'var(--accent)'});
+      lb.textContent='10m'; pt.appendChild(lb);
+    }
+    document.getElementById('anDesc').innerHTML=`<b>${ANIM_PHASES[anPhase].t}</b> — ${ANIM_PHASES[anPhase].d}`;
+  }else{
+    const s=ANIM_SLOTS[anSel], p=occPlayers[anSel];
+    if(!p){document.getElementById('anDesc').textContent='후보 없음';return;}
+    const g=decodeMap(p.grid);
+    for(let k=0;k<25;k++){
+      if(g[k]>0.05){
+        const r=Math.floor(k/5),c=k%5;
+        hl.appendChild(anEl('rect',{x:120+c*68,y:20+r*105,width:68,height:105,fill:'#f0a03c',opacity:(g[k]*0.4).toFixed(2)}));
+      }
+    }
+    ANIM_SLOTS.forEach((sl,i)=>{
+      pl.children[i].style.transition='';
+      pl.children[i].setAttribute('transform',`translate(${anPX(sl.ph[1][0])},${anPY(sl.ph[1][1])})`);
+      pl.children[i].setAttribute('opacity',i===anSel?1:0.18);
+    });
+    const duty=ANIM_DUTY[p.label];
+    const wp=duty?duty.path:anGridPath(p.grid);
+    if(wp.length>1){
+      const d=wp.map((w,j)=>(j?'L':'M')+anPX(w[0])+' '+anPY(w[1])).join(' ');
+      pt.appendChild(anEl('path',{d,fill:'none',stroke:'var(--accent)','stroke-width':2,class:'an-flow','marker-end':'url(#arrowOrange)'}));
+      if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+        const pts=wp.map(w=>[anPX(w[0]),anPY(w[1])]);
+        let segs=[],tot=0;
+        for(let j=1;j<pts.length;j++){const dx=pts[j][0]-pts[j-1][0],dy=pts[j][1]-pts[j-1][1],L=Math.hypot(dx,dy);segs.push({a:pts[j-1],b:pts[j],L});tot+=L;}
+        const t0=performance.now(), node=pl.children[anSel];
+        node.style.transition='none';
+        const step=now=>{
+          let dpx=((now-t0)/3200%1)*tot;
+          for(const sg of segs){
+            if(dpx<=sg.L){const f=dpx/sg.L;
+              node.setAttribute('transform',`translate(${sg.a[0]+(sg.b[0]-sg.a[0])*f},${sg.a[1]+(sg.b[1]-sg.a[1])*f})`);break;}
+            dpx-=sg.L;
+          }
+          anRaf=requestAnimationFrame(step);
+        };
+        anRaf=requestAnimationFrame(step);
+      }
+    }
+    const src=duty?'player_duties 임무 기반':'실측 그리드 파생 경로';
+    const note=duty?duty.duty:((PLAYER_BEST[p.label]&&PLAYER_BEST[p.label].note)||p.rate.s);
+    document.getElementById('anDesc').innerHTML=`<b>${s.pos} · ${p.label}</b> <span class="rp-sub">(${src})</span><br>${note}`;
+  }
 }
 
 document.getElementById('modeMenu').addEventListener('click',e=>{
