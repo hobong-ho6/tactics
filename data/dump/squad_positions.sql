@@ -17,3 +17,4 @@ INSERT INTO squad_positions VALUES(16,'부엔디아','CAM','OWNED','72332272X702
 INSERT INTO squad_positions VALUES(17,'로저스','CAM','OWNED','65321X9632564117410121100',6.910000000000000142,'season','LW 13경기 평균 6.91 · 피크 9.3',NULL,NULL,NULL,'appearances measured','OWNED — 첼시 이적 진행(시즌 기록 유지)',61);
 INSERT INTO squad_positions VALUES(18,'왓킨스','ST','OWNED','569426XX63565314322100200',8.47000000000000064,'top','상위 7경기 평균 8.47',NULL,NULL,NULL,'appearances measured','OWNED',70);
 INSERT INTO squad_positions VALUES(19,'아브라함(보유)','ST','OWNED','01855255648X8415422010200',6.849999999999999645,'r6','45분+ 4경기 평균 6.85 (빌라·전부 교체)',NULL,NULL,NULL,'appearances measured','OWNED',71);
+INSERT INTO squad_positions VALUES(20,'맥긴','CAM','OWNED','243325X88437XX41242200110',6.900000000000000355,'season','CAM 4경기 평균 6.90 (No.10 실측)','cam_playmaker','Roaming',0.8010000000000000452,'appearances measured (2026-07-21 슬롯 추가)','OWNED — CAM 4경기, cam_playmaker/Roaming',62);

@@ -1421,7 +1421,7 @@ const SQUAD_SLOTS=[
  {pos:'CAM',t:'CAM',x:50,y:66, opts:[
    {n:'로저스',    opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
    {n:'부엔디아',  opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
-   {n:'맥긴',      opt:['cam_playmaker','Balanced'], fit:['cam_playmaker','Balanced']},
+   {n:'맥긴',      opt:['cam_playmaker','Balanced'], fit:['cam_playmaker','Roaming']},
    ]},
  {pos:'RM', t:'WM', x:85,y:64, opts:[
    {n:'맥긴',      opt:['wm_widemid','Support'],     fit:['wm_wideplm','Attack']},
@@ -1452,7 +1452,7 @@ const PLAYER_BEST={
   '보가르드':{pos:['LDM','RDM','RB'],note:'홀딩 미드 로테이션 + 긴급 RB 겸업(n=1 실측, fb_att_wb 0.89 — 문서용 표본)'},
   '로저스':{pos:['CAM'],note:'시즌 주포지션 CAM 21경기(7.1)>LW 13(6.91) — 중앙 10번 (LW는 천장, 접전 변형)'},
   '부엔디아':{pos:['LM','CAM'],note:'시즌 주포지션 LW 21경기 — 좌측 인버티드 창조. CAM 겸업(3경기 씬클래스, cam_halfwinger/Roaming 0.672). 3축 07-15: optimal=wideplm/Build-Up(구 insidefwd .767 stale→현 .614; 창조 기능 kp 2.1·xa .19)'},
-  '맥긴':{pos:['RM','RDM'],note:'오른쪽 — 기능축 07-09: duties·obs#27 = wm_widemid/Support (미드블록 뱅크 복귀+하프스페이스 런). 움직임 role:season=wideplm/Attack. RDM 겸업: 딥롤(No.8/피벗우측) 3경기 dm_dlp/Roaming 0.878 — 우측 전용(LDM 0.44)'},
+  '맥긴':{pos:['RM','RDM','CAM'],note:'오른쪽 — 기능축 07-09: duties·obs#27 = wm_widemid/Support (미드블록 뱅크 복귀+하프스페이스 런). 움직임 role:season=wideplm/Attack. RDM 겸업: 딥롤(No.8/피벗우측) 3경기 dm_dlp/Roaming 0.878(LDM 0.44 우측전용). CAM 겸업: No.10 4경기 cam_playmaker/Roaming 0.801'},
   '산초':{pos:['RM'],note:'인버티드 우측 윙 (7.5/7.4/7.1)'},
   '알리송(신규)':{pos:['RM'],note:'실측 적합 0.85'},
   '왓킨스':{pos:['ST'],note:'원톱 고정 (8.7/8.5)'},
@@ -1738,7 +1738,7 @@ const CMP_SLOTS={
  CAM:{t:'CAM',x:50,c:[
   {n:'부엔디아',grid:'63323362X6136471211510110',rate:{v:6.90,b:'season',s:'좌편향 10번 21경기 평균 6.90 · 피크 9.4 (최적 10번 판정)'}},
   {n:'로저스',grid:'684545X7X8346663423201121',rate:{v:7.10,b:'season',s:'CAM 21경기 평균 7.10 · 피크 8.5'}},
-  {n:'맥긴',grid:'2433258883379X41232200110',rate:{v:6.90,b:'season',s:'CAM 4경기 평균 6.90 · 피크 7.8'}},
+  {n:'맥긴',grid:'243325X88437XX41242200110',gridNote:'CAM/No.10 4경기 실측',rate:{v:6.90,b:'season',s:'CAM 4경기 평균 6.90 (cam_playmaker/Roaming 0.801)'}},
   ]},
  RM:{t:'WM',x:85,c:[
   {n:'맥긴',grid:'001370126X003770024600011',rate:{v:7.08,b:'season',s:'RM 21경기 평균 7.08 · 피크 8.7'}},
@@ -1833,6 +1833,7 @@ const XI_OWNED=[
 {label:"부엔디아",grid:"63323362X6136471211510110",lh:"OWNED",rate:{"v": 6.9, "b": "season", "s": "좌편향 10번 21경기 평균 6.90 · 피크 9.4"},t:"WM"},
 {label:"부엔디아",grid:"72332272X7027351301410110",lh:"OWNED",rate:{"v": 6.23, "b": "season", "s": "CAM 3경기 평균 6.23 (씬클래스 표본)"},t:"CAM"},
 {label:"로저스",grid:"65321X9632564117410121100",lh:"OWNED",rate:{"v": 6.91, "b": "season", "s": "LW 13경기 평균 6.91 · 피크 9.3"},t:"CAM"},
+{label:"맥긴",grid:"243325X88437XX41242200110",lh:"OWNED",rate:{"v": 6.9, "b": "season", "s": "CAM 4경기 평균 6.90 (No.10 실측)"},t:"CAM"},
 {label:"왓킨스",grid:"569426XX63565314322100200",lh:"OWNED",rate:{"v": 8.47, "b": "top", "s": "상위 7경기 평균 8.47"},t:"ST"},
 {label:"아브라함(보유)",grid:"01855255648X8415422010200",lh:"OWNED",rate:{"v": 6.85, "b": "r6", "s": "45분+ 4경기 평균 6.85 (빌라·전부 교체)"},t:"ST"},
 ];
