@@ -2821,6 +2821,37 @@ const ANIM_DUTY={
  '로저스':{path:[[38,50],[45,60],[50,72],[44,80],[38,50]],duty:'중앙 10번(시즌 주포지션 21선발) — 피벗과 공격 연결, 중원 캐리, 늦은 박스 진입. 수비 시 왓킨스 옆 압박(4-4-2 전방 2). ※ 2026-07 첼시 이적 확정 — 시즌 기록으로 유지.'},
  '맥긴':{path:[[80,55],[72,64],[64,72],[55,82],[80,55]],duty:'미드 4의 우측 — 블록에선 터치라인 폭 유지, 공격 시 하프스페이스 침투 런. 상대 LB 압박, 파포스트 도착(헤더 0·에지형).'},
  '왓킨스':{path:[[48,80],[42,66],[52,72],[72,84],[30,83],[48,80]],duty:'원톱 3중 임무 — ① 와이드 배달 타깃으로 박스 점유(인박스 84%) ② 드롭해서 컷인하는 동료에 레이오프 ③ 채널 뒷공간 런(트랜지션 배출구).'}};
+/* 국면별 패턴 루프 — 전체 움직임 모드에서 11명이 동시에 재생하는 전술 동선 (tool 좌표).
+   paths 키=슬롯 pos, 각 경로는 닫힌 루프. ball=볼 순환 시퀀스(빌드업·공격).
+   수비 국면은 경로 대신 블록 셔플(sway) — obs#2 "shuffling with the play". */
+const AN_PATTERN=[
+ {period:6400, ball:[[50,8],[68,22],[56,28],[32,26],[36,40],[11,48],[44,38],[50,8]],
+  paths:{
+   GK:[[50,8],[48,10],[52,10],[50,8]],
+   LB:[[12,35],[10,48],[14,42],[12,35]],
+   LCB:[[30,20],[32,30],[36,40],[30,20]],
+   RCB:[[68,20],[65,28],[68,20]],
+   RB:[[88,32],[87,40],[88,32]],
+   LDM:[[44,34],[40,28],[46,40],[44,34]],
+   RDM:[[58,30],[54,26],[60,34],[58,30]],
+   LM:[[20,58],[24,50],[20,58]],
+   CAM:[[38,50],[42,44],[38,50]],
+   RM:[[80,52],[78,46],[80,52]],
+   ST:[[48,68],[52,74],[44,72],[48,68]]}},
+ {period:6400, ball:[[58,42],[45,62],[35,71],[43,76],[48,78],[56,82],[58,42]],
+  paths:{
+   GK:[[50,12],[50,14],[50,12]],
+   LB:[[10,62],[8,72],[10,62]],
+   LCB:[[32,38],[34,42],[32,38]],
+   RCB:[[66,34],[64,38],[66,34]],
+   RB:[[85,45],[85,52],[85,45]],
+   LDM:[[46,52],[48,62],[44,70],[46,52]],
+   RDM:[[58,42],[54,46],[62,46],[58,42]],
+   LM:[[33,70],[38,74],[43,77],[33,70]],
+   CAM:[[40,64],[45,60],[48,68],[40,64]],
+   RM:[[70,68],[62,75],[55,82],[70,68]],
+   ST:[[52,84],[42,72],[60,86],[30,84],[52,84]]}},
+ {period:4800, sway:{GK:2,LB:8,LCB:8,RCB:8,RB:8,LDM:9,RDM:9,LM:10,RM:10,CAM:12,ST:12}}];
 const AN_NS='http://www.w3.org/2000/svg';
 const anPX=x=>120+x/100*340, anPY=y=>20+(100-y)/100*525;
 let anBuilt=false,anMode='team',anPhase=0,anSel=8,anAuto=null,anRaf=null,anOcc=[];
@@ -2873,7 +2904,16 @@ function buildXiAnim(){
   svg.appendChild(lines);
   const dir=anEl('text',{x:468,y:36,'font-size':10,fill:'var(--muted-2)',transform:'rotate(90 468 36)'});
   dir.textContent='공격 방향 ↑'; svg.appendChild(dir);
-  ['anHeat','anArrow','anPath','anPl'].forEach(id=>svg.appendChild(anEl('g',{id})));
+  ['anHeat','anArrow','anPath','anPl','anBallL'].forEach(id=>svg.appendChild(anEl('g',{id})));
+  const bl=svg.querySelector('#anBallL');
+  const ball=anEl('g',{id:'anBall',style:'display:none'});
+  ball.appendChild(anEl('circle',{r:6.5,fill:'#f5f5f0',stroke:'#111','stroke-width':1.5}));
+  bl.appendChild(ball);
+  const opp=anEl('g',{id:'anOppBall',style:'display:none'});
+  opp.appendChild(anEl('circle',{r:6.5,fill:'var(--muted-2)',stroke:'#111','stroke-width':1.2,'stroke-dasharray':'2 2'}));
+  const ot=anEl('text',{y:-11,'text-anchor':'middle','font-size':9,fill:'var(--muted)'});
+  ot.textContent='상대 볼'; opp.appendChild(ot);
+  bl.appendChild(opp);
   wrap.innerHTML=''; wrap.appendChild(svg);
   const pl=document.getElementById('anPl');
   ANIM_SLOTS.forEach((s,i)=>{
@@ -2892,7 +2932,7 @@ function buildXiAnim(){
   document.getElementById('anAuto').addEventListener('click',()=>{
     if(anAuto){anStop();anRender();return;}
     if(anMode!=='team'){anMode='team';anSyncMode();}
-    anAuto=setInterval(()=>{anPhase=(anPhase+1)%3;anRender();},2600);
+    anAuto=setInterval(()=>{anPhase=(anPhase+1)%3;anRender();},6600);
     document.getElementById('anAuto').textContent='⏸ 정지';
   });
   anBuilt=true;
@@ -2916,6 +2956,8 @@ function anRender(){
     nm.textContent=occPlayers[i]?occPlayers[i].label.replace(/^영입·/,''):'-';
   });
   if(anMode==='team'){
+    const ballG=document.getElementById('anBall'), oppG=document.getElementById('anOppBall');
+    ballG.style.display='none'; oppG.style.display='none';
     ANIM_SLOTS.forEach((s,i)=>{
       pl.children[i].style.transition='';
       pl.children[i].setAttribute('transform',`translate(${anPX(s.ph[anPhase][0])},${anPY(s.ph[anPhase][1])})`);
@@ -2932,7 +2974,41 @@ function anRender(){
       lb.textContent='10m'; pt.appendChild(lb);
     }
     document.getElementById('anDesc').innerHTML=`<b>${ANIM_PHASES[anPhase].t}</b> — ${ANIM_PHASES[anPhase].d}`;
+    /* 국면 패턴 재생 — 11명 동시 루프 + 볼 순환/블록 셔플 (reduced-motion 시 정적 배치 유지) */
+    if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+      const pat=AN_PATTERN[anPhase];
+      const mkSegs=wp=>{const pts=wp.map(w=>[anPX(w[0]),anPY(w[1])]);let segs=[],tot=0;
+        for(let j=1;j<pts.length;j++){const L=Math.hypot(pts[j][0]-pts[j-1][0],pts[j][1]-pts[j-1][1]);segs.push({a:pts[j-1],b:pts[j],L});tot+=L;}
+        return {segs,tot,start:pts[0]};};
+      const at=(m,dpx)=>{for(const sg of m.segs){if(dpx<=sg.L){const f=sg.L?dpx/sg.L:0;return [sg.a[0]+(sg.b[0]-sg.a[0])*f,sg.a[1]+(sg.b[1]-sg.a[1])*f];}dpx-=sg.L;}return m.start;};
+      let movers=[], ballM=null;
+      if(pat.paths){
+        movers=ANIM_SLOTS.map((s,i)=>{const wp=pat.paths[s.pos];return wp&&wp.length>1?{node:pl.children[i],...mkSegs(wp)}:null;}).filter(Boolean);
+        if(pat.ball){ ballM=mkSegs(pat.ball); ballG.style.display=''; }
+      }else if(pat.sway){ oppG.style.display=''; }
+      /* rAF 프레임 구동 중엔 CSS transition(0.9s)이 고무줄 현상을 만들므로 차단 */
+      ANIM_SLOTS.forEach((s,i)=>{ pl.children[i].style.transition='none'; });
+      const t0=performance.now();
+      const step=now=>{
+        const phF=((now-t0)/pat.period)%1;
+        if(pat.paths){
+          movers.forEach(m=>{const p=at(m,phF*m.tot);m.node.setAttribute('transform',`translate(${p[0]},${p[1]})`);});
+          if(ballM){const p=at(ballM,phF*ballM.tot);ballG.setAttribute('transform',`translate(${p[0]},${p[1]})`);}
+        }else if(pat.sway){
+          const sw=Math.sin(phF*Math.PI*2);
+          ANIM_SLOTS.forEach((s,i)=>{
+            const amp=pat.sway[s.pos]||0;
+            pl.children[i].setAttribute('transform',`translate(${anPX(s.ph[2][0]+amp*sw)},${anPY(s.ph[2][1])})`);
+          });
+          oppG.setAttribute('transform',`translate(${anPX(50+26*sw)},${anPY(60)})`);
+        }
+        anRaf=requestAnimationFrame(step);
+      };
+      anRaf=requestAnimationFrame(step);
+    }
   }else{
+    const bg=document.getElementById('anBall'), og=document.getElementById('anOppBall');
+    if(bg) bg.style.display='none'; if(og) og.style.display='none';
     const s=ANIM_SLOTS[anSel], p=occPlayers[anSel];
     if(!p){document.getElementById('anDesc').textContent='후보 없음';return;}
     const g=decodeMap(p.grid);
