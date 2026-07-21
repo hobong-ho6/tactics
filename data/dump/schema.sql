@@ -233,3 +233,14 @@ CREATE TABLE transfer_ledger(
   note TEXT, source TEXT, confidence TEXT,
   UNIQUE(window, kind, label)
 );
+CREATE TABLE squad_positions(
+  id INTEGER PRIMARY KEY,
+  label TEXT NOT NULL,        -- 툴 표시명 (XI_POOL/PLAYER_BEST 라벨과 동일)
+  slot_type TEXT NOT NULL,    -- XI_POOL t: GK/FB/CB/DM/WM/CAM/ST
+  lh TEXT NOT NULL,           -- OWNED
+  map25 TEXT NOT NULL,
+  rate_v REAL, rate_basis TEXT, rate_note TEXT,
+  fit_role TEXT, fit_focus TEXT, fit_sim REAL,
+  source TEXT, confidence TEXT, sort_order INTEGER,
+  UNIQUE(label, slot_type)
+);

@@ -41,9 +41,15 @@
   이적료가 확정·변경되는 건은 **`transfer_ledger` 테이블(가계부: in/deduct/out/pending)도
   함께 갱신** — 이적 탭 상단 예산 가계부가 여기서 파생된다.
   **DB 갱신 후 반드시 `python3 scripts/sync_transfer_ui.py` 실행** — fc26-heatmap.html의
-  `TRANSFER_TARGETS`/`TRANSFER_OUTGOING`/`TRANSFER_LEDGER` 미러 배열을 DB로 재생성한다(SQUAD_SLOTS/
-  PLAYER_BEST/XI_POOL의 영입 후보 옵션은 툴이 그 미러에서 런타임에 자동 파생하므로
-  더 이상 손으로 안 고쳐도 됨 — 2026-07-14 리팩터, docs/20-fc-game-system.md 참조).
+  `TRANSFER_TARGETS`/`TRANSFER_OUTGOING`/`TRANSFER_LEDGER`/`XI_OWNED` 미러 배열을 DB로 재생성한다.
+  - 영입 후보 옵션(SQUAD_SLOTS/PLAYER_BEST/CMP_SLOTS/XI_POOL)은 `injectTransferCandidates()`가
+    미러에서 런타임 파생 (2026-07-14 리팩터).
+  - **베스트 11(XI_POOL)** = 보유 선수(`squad_positions` DB → XI_OWNED) + 확정 영입만
+    (`transfer_targets.likelihood='CONFIRMED'`). 루머 후보(MEDIUM-HIGH·HIGH)는 Best 11에서 제외
+    — 이적 탭·선수 비교·빌라 스쿼드에만 노출 (2026-07-21).
+  - **보유 선수의 뛸 수 있는 포지션**은 `squad_positions` 테이블이 단일 소스 — 다포지션 선수는
+    (label, slot_type)로 여러 행(예: 맥긴 WM+DM, 부엔디아 WM+CAM, 보가르드 DM+FB). 새 포지션
+    실측이 생기면 이 테이블에 행 추가 후 sync — XI_POOL이 자동 갱신된다.
   순서: DB 갱신 → `sync_transfer_ui.py` → `db_dump.sh` → 커밋.
 
 ## 백로그 (알려진 정리 과제)

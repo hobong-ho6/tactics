@@ -116,6 +116,28 @@ def gen_transfer_ledger(conn):
     return "const TRANSFER_LEDGER=[\n" + "\n".join(lines) + "\n];", len(rows)
 
 
+def gen_xi_owned(conn):
+    """보유 선수의 포지션별 Best-11 엔트리 — squad_positions 단일 소스.
+    다포지션 선수(맥긴 WM+DM, 부엔디아 WM+CAM, 보가르드 DM+FB)는 여러 행으로 나온다."""
+    rows = conn.execute(
+        """SELECT label,slot_type,lh,map25,rate_v,rate_basis,rate_note
+           FROM squad_positions ORDER BY sort_order, label""",
+    ).fetchall()
+    lines = []
+    for r in rows:
+        obj = js_obj(
+            {
+                "label": r["label"],
+                "grid": r["map25"],
+                "lh": r["lh"],
+                "rate": {"v": r["rate_v"], "b": r["rate_basis"], "s": r["rate_note"]},
+                "t": r["slot_type"],
+            }
+        )
+        lines.append(obj + ",")
+    return "const XI_OWNED=[\n" + "\n".join(lines) + "\n];", len(rows)
+
+
 def replace_block(html, marker, new_body):
     start = f"/* AUTOGEN:{marker}:START */"
     end = f"/* AUTOGEN:{marker}:END */"
@@ -133,11 +155,13 @@ def main():
     targets_body, n_targets = gen_transfer_targets(conn)
     outgoing_body, n_outgoing = gen_transfer_outgoing(conn)
     ledger_body, n_ledger = gen_transfer_ledger(conn)
+    owned_body, n_owned = gen_xi_owned(conn)
     html = replace_block(html, "TRANSFER_TARGETS", targets_body)
     html = replace_block(html, "TRANSFER_OUTGOING", outgoing_body)
     html = replace_block(html, "TRANSFER_LEDGER", ledger_body)
+    html = replace_block(html, "XI_OWNED", owned_body)
     HTML.write_text(html, encoding="utf-8")
-    print(f"synced {n_targets} TRANSFER_TARGETS + {n_outgoing} TRANSFER_OUTGOING + {n_ledger} TRANSFER_LEDGER rows into {HTML.name}")
+    print(f"synced {n_targets} TRANSFER_TARGETS + {n_outgoing} TRANSFER_OUTGOING + {n_ledger} TRANSFER_LEDGER + {n_owned} XI_OWNED rows into {HTML.name}")
 
 
 if __name__ == "__main__":
