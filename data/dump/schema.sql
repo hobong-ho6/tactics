@@ -224,3 +224,12 @@ CREATE TABLE transfer_outgoing(
   confidence TEXT,
   UNIQUE(window, player_id)
 );
+CREATE TABLE transfer_ledger(
+  id INTEGER PRIMARY KEY,
+  window TEXT NOT NULL,
+  kind TEXT NOT NULL,          -- 'in'(매각수입) | 'deduct'(수입차감) | 'out'(지출확정) | 'pending'(진행중지출)
+  label TEXT NOT NULL,
+  amount_m REAL NOT NULL,      -- £m 절대값 (부호는 kind가 결정)
+  note TEXT, source TEXT, confidence TEXT,
+  UNIQUE(window, kind, label)
+);

@@ -1,0 +1,13 @@
+INSERT INTO transfer_ledger VALUES(1,'2026-summer','in','로저스 → 첼시',117.0,'영국 선수 역대 최고액, 메디컬 완료 단계','ESPN·Sky Sports (2026-07-19)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(2,'2026-summer','in','틸레만스 → 맨유',35.0,'바이아웃 조항 발동','Sky Sports·Romano (2026-07-15 공식)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(3,'2026-summer','in','말렌 → 로마',23.30000000000000071,'£21.6m + 임대료 £1.7m','readastonvilla (2026-07-14)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(4,'2026-summer','in','바레네체아 → 벤피카',10.30000000000000072,'임대 후 의무매입 발동','readastonvilla (2026-07-14)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(5,'2026-summer','in','돕빈 → 사우샘프턴',9.0,'+ 애드온 별도','readastonvilla (2026-07-13)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(6,'2026-summer','in','디뉴 → PSG',8.699999999999999289,'€10m 미만 바이아웃, 월드컵 후 발동','Romano·Schira (2026-07-19)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(7,'2026-summer','in','배리 → 셰필드 웬즈데이',2.0,'비공개 — 추정치','readastonvilla (2026-07-14)','ESTIMATE');
+INSERT INTO transfer_ledger VALUES(8,'2026-summer','deduct','미들즈브러 셀온 (로저스 20%)',20.0,'이적 차익의 20%, £15-20m 보도 — 상단 추정','ESPN (2026-07-19)','ESTIMATE');
+INSERT INTO transfer_ledger VALUES(9,'2026-summer','out','만잠비 ← 프라이부르크',59.5,'클럽 레코드 (€70m, 애드온 포함)','Sky Sports (2026-07-17 공식)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(10,'2026-summer','out','고메스 ← 울버햄튼',38.0,'£34m + 애드온 £4m','Sky Sports (2026-07-17 공식)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(11,'2026-summer','out','시세 ← LASK',4.0,'26/27 합류 RCB','readastonvilla (2026-05)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(12,'2026-summer','pending','에스투피냔 ← AC밀란',13.0,'개인조건 합의, 이적료 협상 중 (€12-18m대)','Romano (2026-07-19)','HIGH');
+INSERT INTO transfer_ledger VALUES(13,'2026-summer','pending','팔리냐 ← 바이에른',21.0,'구조 조율 중 (~€25m)','Romano (2026-07-19)','MEDIUM-HIGH');

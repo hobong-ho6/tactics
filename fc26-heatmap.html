@@ -182,6 +182,22 @@
   #reportPage li{margin:4px 0}
   #reportPage .mono{font-family:var(--mono);font-size:12px}
   #transferPage .tf-toolbar,#xiPage .tf-toolbar{display:flex;gap:8px;margin:10px 0 4px;flex-wrap:wrap}
+  .tf-ledger{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:6px 0 4px}
+  .tf-lcol{background:var(--panel-2);border:1px solid var(--line-soft);border-radius:8px;padding:10px 13px}
+  .tf-lcol h4{margin:0 0 6px;font-size:12px;letter-spacing:.05em;color:var(--muted)}
+  .tf-lrow{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;padding:3px 0;border-bottom:1px dashed var(--line-soft)}
+  .tf-lrow:last-of-type{border-bottom:none}
+  .tf-lrow .amt{font-family:var(--mono);white-space:nowrap}
+  .tf-lrow.deduct .amt,.tf-lrow.deduct .lbl{color:#ff5d5d}
+  .tf-lrow.pending .amt,.tf-lrow.pending .lbl{color:var(--muted)}
+  .tf-lsub{display:flex;justify-content:space-between;margin-top:7px;padding-top:7px;border-top:1px solid var(--line);font-size:12.5px;font-weight:700}
+  .tf-lsummary{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:10px 0 4px}
+  .tf-lcard{background:var(--panel-2);border:1px solid var(--line-soft);border-radius:8px;padding:9px 13px}
+  .tf-lcard .k{font-size:11px;color:var(--muted-2)}
+  .tf-lcard .v{font-size:19px;font-weight:700;font-family:var(--mono);margin-top:2px}
+  .tf-lcard.avail{border-color:var(--accent)}
+  .tf-lcard.avail .v{color:var(--accent)}
+  @media(max-width:760px){.tf-ledger{grid-template-columns:1fr}}
   .an-btn{font-size:11.5px;background:var(--panel-2);border:1px solid var(--line);border-radius:6px;color:var(--muted);padding:5px 11px;cursor:pointer;font-family:inherit}
   .an-btn.on{color:var(--ink);border-color:var(--accent);background:rgba(255,122,47,.13)}
   .an-sels{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:6px;margin:8px 0}
@@ -548,7 +564,9 @@
 
   <section id="transferPage" style="display:none">
     <h2>2026 여름 이적 시장 — 영입·유출 트래커</h2>
-    <p class="rp-sub">data/avl_analysis.db의 transfer_targets/transfer_outgoing 원장을 그대로 표기. 등급(가능성)은 1~2티어 매체 크로스체크, 실측 적합은 SofaScore 히트맵 커널 유사도 — <b>둘은 독립 지표</b>. transfer-watch 실행마다 갱신.</p>
+    <p class="rp-sub">data/avl_analysis.db의 transfer_targets/transfer_outgoing/transfer_ledger 원장을 그대로 표기. 등급(가능성)은 1~2티어 매체 크로스체크, 실측 적합은 SofaScore 히트맵 커널 유사도 — <b>둘은 독립 지표</b>. transfer-watch 실행마다 갱신.</p>
+    <h3>예산 가계부 — 들어온 돈 · 나간 돈 · 가용 예산</h3>
+    <div id="tfLedger"></div>
     <div class="tf-toolbar">
       <input id="tfSearch" type="search" placeholder="선수명·클럽 검색…">
       <select id="tfSlotFilter"><option value="">전체 슬롯</option></select>
@@ -1809,6 +1827,23 @@ const TRANSFER_OUTGOING=[
 {player:"Donyell Malen",dest_club:"Roma",likelihood:"CONFIRMED",confidence:"CONFIRMED — 완료된 영구 이적(공식 발표 기준). 빌라 임대 성과(18경기 14골)가 완전 이적 트리거.",source:"https://readastonvilla.com/2026/07/14/aston-villa-summer-2026-transfers-out/"},
 ];
 /* AUTOGEN:TRANSFER_OUTGOING:END */
+/* AUTOGEN:TRANSFER_LEDGER:START */
+const TRANSFER_LEDGER=[
+{kind:"in",label:"로저스 → 첼시",amount:117.0,note:"영국 선수 역대 최고액, 메디컬 완료 단계",confidence:"CONFIRMED"},
+{kind:"in",label:"틸레만스 → 맨유",amount:35.0,note:"바이아웃 조항 발동",confidence:"CONFIRMED"},
+{kind:"in",label:"말렌 → 로마",amount:23.3,note:"£21.6m + 임대료 £1.7m",confidence:"CONFIRMED"},
+{kind:"in",label:"바레네체아 → 벤피카",amount:10.3,note:"임대 후 의무매입 발동",confidence:"CONFIRMED"},
+{kind:"in",label:"돕빈 → 사우샘프턴",amount:9.0,note:"+ 애드온 별도",confidence:"CONFIRMED"},
+{kind:"in",label:"디뉴 → PSG",amount:8.7,note:"€10m 미만 바이아웃, 월드컵 후 발동",confidence:"CONFIRMED"},
+{kind:"in",label:"배리 → 셰필드 웬즈데이",amount:2.0,note:"비공개 — 추정치",confidence:"ESTIMATE"},
+{kind:"deduct",label:"미들즈브러 셀온 (로저스 20%)",amount:20.0,note:"이적 차익의 20%, £15-20m 보도 — 상단 추정",confidence:"ESTIMATE"},
+{kind:"out",label:"만잠비 ← 프라이부르크",amount:59.5,note:"클럽 레코드 (€70m, 애드온 포함)",confidence:"CONFIRMED"},
+{kind:"out",label:"고메스 ← 울버햄튼",amount:38.0,note:"£34m + 애드온 £4m",confidence:"CONFIRMED"},
+{kind:"out",label:"시세 ← LASK",amount:4.0,note:"26/27 합류 RCB",confidence:"CONFIRMED"},
+{kind:"pending",label:"팔리냐 ← 바이에른",amount:21.0,note:"구조 조율 중 (~€25m)",confidence:"MEDIUM-HIGH"},
+{kind:"pending",label:"에스투피냔 ← AC밀란",amount:13.0,note:"개인조건 합의, 이적료 협상 중 (€12-18m대)",confidence:"HIGH"},
+];
+/* AUTOGEN:TRANSFER_LEDGER:END */
 
 /* 베스트 11(포메이션 기반) 후보 풀 — 보유 선수만 하드코딩(플레이 시간 축적 필요해 자동화 불가).
    영입 후보(map25 보유)는 injectTransferCandidates()가 TRANSFER_TARGETS에서 런타임에 덧붙인다. */
@@ -2555,7 +2590,37 @@ function tfNewBadge(text){
   return (diffDays>=0 && diffDays<=1)?'<span class="tf-new">NEW</span>':'';
 }
 let tfBuilt=false;
+function renderTfLedger(){
+  const el=document.getElementById('tfLedger'); if(!el||!TRANSFER_LEDGER.length) return;
+  const F=v=>'£'+(Math.round(v*10)/10).toLocaleString()+'m';
+  const by=k=>TRANSFER_LEDGER.filter(r=>r.kind===k);
+  const sum=k=>by(k).reduce((a,r)=>a+r.amount,0);
+  const inn=sum('in'), ded=sum('deduct'), out=sum('out'), pen=sum('pending');
+  const netIn=inn-ded, avail=netIn-out, real=avail-pen;
+  const row=(r,cls)=>`<div class="tf-lrow ${cls||''}" title="${(r.note||'')+(r.confidence?' · '+r.confidence:'')}">
+    <span class="lbl">${r.label}${r.confidence==='ESTIMATE'?' <small>(추정)</small>':''}</span><span class="amt">${cls==='deduct'?'−':cls==='pending'?'−':''}${F(r.amount)}</span></div>`;
+  el.innerHTML=`
+  <div class="tf-lsummary">
+    <div class="tf-lcard"><div class="k">들어온 돈 (순매각, 셀온 차감)</div><div class="v" style="color:#3ecf8e">+${F(netIn)}</div></div>
+    <div class="tf-lcard"><div class="k">나간 돈 (영입 확정)</div><div class="v" style="color:#ff5d5d">−${F(out)}</div></div>
+    <div class="tf-lcard avail"><div class="k">가용 예산 (확정 기준)</div><div class="v">${F(avail)}</div></div>
+    <div class="tf-lcard"><div class="k">실질 잔여 (진행 중 지출 반영)</div><div class="v">${F(real)}</div></div>
+  </div>
+  <div class="tf-ledger">
+    <div class="tf-lcol"><h4>들어온 돈 — 매각 ${F(inn)}</h4>
+      ${by('in').map(r=>row(r)).join('')}${by('deduct').map(r=>row(r,'deduct')).join('')}
+      <div class="tf-lsub"><span>순수입</span><span class="amt" style="color:#3ecf8e">+${F(netIn)}</span></div></div>
+    <div class="tf-lcol"><h4>나간 돈 — 영입</h4>
+      ${by('out').map(r=>row(r)).join('')}
+      <div class="tf-lsub"><span>확정 지출</span><span class="amt" style="color:#ff5d5d">−${F(out)}</span></div>
+      ${by('pending').length?`<h4 style="margin-top:10px">진행 중 (미확정)</h4>${by('pending').map(r=>row(r,'pending')).join('')}
+      <div class="tf-lsub"><span>예정 지출</span><span class="amt">−${F(pen)}</span></div>`:''}</div>
+  </div>
+  <p class="rp-sub" style="margin:6px 0 0">캐비앗: UEFA 합의(FER 손실 한도 €5m, 지분투입 시 €60m)로 가용액 전액 재투자 불가 —
+  단건 지출 한도 ~£40m 관측(Athletic), 로저스 대금은 윙어 영입 배정(가디언). 원장: DB transfer_ledger (마우스 오버 시 근거 표시).</p>`;
+}
 function buildTransferPage(){
+  renderTfLedger();
   const slots=[...new Set(TRANSFER_TARGETS.map(r=>r.slot))].sort();
   const slotSel=document.getElementById('tfSlotFilter');
   slotSel.innerHTML='<option value="">전체 슬롯</option>'+slots.map(s=>`<option value="${s}">${s}</option>`).join('');

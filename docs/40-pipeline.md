@@ -38,8 +38,10 @@
   [.claude/skills/transfer-watch/SKILL.md](../.claude/skills/transfer-watch/SKILL.md).
   Chrome 미연결 실행은 `PENDING MEASUREMENT`로 표시 — 다음 대화 세션에서 측정 보완.
   앱이 꺼져 있으면 다음 실행 시점으로 밀린다.
+  이적료가 확정·변경되는 건은 **`transfer_ledger` 테이블(가계부: in/deduct/out/pending)도
+  함께 갱신** — 이적 탭 상단 예산 가계부가 여기서 파생된다.
   **DB 갱신 후 반드시 `python3 scripts/sync_transfer_ui.py` 실행** — fc26-heatmap.html의
-  `TRANSFER_TARGETS`/`TRANSFER_OUTGOING` 미러 배열을 DB로 재생성한다(SQUAD_SLOTS/
+  `TRANSFER_TARGETS`/`TRANSFER_OUTGOING`/`TRANSFER_LEDGER` 미러 배열을 DB로 재생성한다(SQUAD_SLOTS/
   PLAYER_BEST/XI_POOL의 영입 후보 옵션은 툴이 그 미러에서 런타임에 자동 파생하므로
   더 이상 손으로 안 고쳐도 됨 — 2026-07-14 리팩터, docs/20-fc-game-system.md 참조).
   순서: DB 갱신 → `sync_transfer_ui.py` → `db_dump.sh` → 커밋.

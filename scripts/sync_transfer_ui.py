@@ -93,6 +93,29 @@ def gen_transfer_outgoing(conn):
     return "const TRANSFER_OUTGOING=[\n" + "\n".join(lines) + "\n];", len(rows)
 
 
+def gen_transfer_ledger(conn):
+    rows = conn.execute(
+        """SELECT kind,label,amount_m,note,confidence
+           FROM transfer_ledger WHERE window=?
+           ORDER BY CASE kind WHEN 'in' THEN 0 WHEN 'deduct' THEN 1 WHEN 'out' THEN 2 ELSE 3 END,
+                    amount_m DESC""",
+        (WINDOW,),
+    ).fetchall()
+    lines = []
+    for r in rows:
+        obj = js_obj(
+            {
+                "kind": r["kind"],
+                "label": r["label"],
+                "amount": r["amount_m"],
+                "note": r["note"],
+                "confidence": r["confidence"],
+            }
+        )
+        lines.append(obj + ",")
+    return "const TRANSFER_LEDGER=[\n" + "\n".join(lines) + "\n];", len(rows)
+
+
 def replace_block(html, marker, new_body):
     start = f"/* AUTOGEN:{marker}:START */"
     end = f"/* AUTOGEN:{marker}:END */"
@@ -109,10 +132,12 @@ def main():
     html = HTML.read_text(encoding="utf-8")
     targets_body, n_targets = gen_transfer_targets(conn)
     outgoing_body, n_outgoing = gen_transfer_outgoing(conn)
+    ledger_body, n_ledger = gen_transfer_ledger(conn)
     html = replace_block(html, "TRANSFER_TARGETS", targets_body)
     html = replace_block(html, "TRANSFER_OUTGOING", outgoing_body)
+    html = replace_block(html, "TRANSFER_LEDGER", ledger_body)
     HTML.write_text(html, encoding="utf-8")
-    print(f"synced {n_targets} TRANSFER_TARGETS rows + {n_outgoing} TRANSFER_OUTGOING rows into {HTML.name}")
+    print(f"synced {n_targets} TRANSFER_TARGETS + {n_outgoing} TRANSFER_OUTGOING + {n_ledger} TRANSFER_LEDGER rows into {HTML.name}")
 
 
 if __name__ == "__main__":
