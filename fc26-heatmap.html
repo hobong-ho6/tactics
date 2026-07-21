@@ -182,6 +182,18 @@
   #reportPage li{margin:4px 0}
   #reportPage .mono{font-family:var(--mono);font-size:12px}
   #transferPage .tf-toolbar,#xiPage .tf-toolbar{display:flex;gap:8px;margin:10px 0 4px;flex-wrap:wrap}
+  .an-btn{font-size:11.5px;background:var(--panel-2);border:1px solid var(--line);border-radius:6px;color:var(--muted);padding:5px 11px;cursor:pointer;font-family:inherit}
+  .an-btn.on{color:var(--ink);border-color:var(--accent);background:rgba(255,122,47,.13)}
+  .an-sels{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:6px;margin:8px 0}
+  .an-sels .field label{font-size:10px;color:var(--muted-2);display:block;margin-bottom:2px}
+  .an-sels select{width:100%;font-size:11px;background:var(--panel-2);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:4px;font-family:inherit}
+  #anPitchWrap svg{display:block;margin:6px auto 0}
+  .an-pl{cursor:pointer}
+  @media (prefers-reduced-motion: no-preference){
+    .an-pl{transition:transform .9s cubic-bezier(.4,0,.2,1)}
+    .an-flow{stroke-dasharray:6 5;animation:anfl 1.4s linear infinite}
+    @keyframes anfl{to{stroke-dashoffset:-22}}
+  }
   #transferPage .tf-toolbar input,#transferPage .tf-toolbar select,#xiPage .tf-toolbar select{background:var(--panel-2);border:1px solid var(--line);border-radius:6px;color:var(--ink);padding:6px 10px;font-size:12.5px;font-family:inherit}
   #transferPage .tf-toolbar input{flex:1;min-width:160px}
   #transferPage td.tf-name{font-weight:600}
@@ -399,10 +411,8 @@
     <div class="sq-slots" id="sqSlots"></div>
     <div class="sq-note" style="padding:6px 2px 0">왼쪽 패널 = <b>처방(최적)</b> — 실축 성과 기준 추천 · 오른쪽 패널 = <b>실측 최근접</b> — 움직임 재현 기준. 슬롯별로 분석 근거가 있는 선수만 표시됩니다.
     슬롯 카드의 <b>✓/⚠</b> = 이 슬롯이 그 선수의 최적 포지션인지 (⚠이면 최적 포지션 표시) · <b>🎯 처방</b> = 성과 기준 추천 역할·포커스 · <b>🔁 실측</b> = 실제 움직임 최근접 역할·포커스.
-    <b>영입·</b> 접두 = 2026 여름 이적 후보 (최근 6경기 실측 프로필 기반, 근거·가능성 등급은 DB transfer_targets 참조):
-    RB 에메르송(협상 중단·재개 여지) · LM 서머빌/파르도(11경기 실측 LM 0.83>ST 0.73)/태버니어(0.87)/바투리나/그릴리시(에버턴 임대 미해결시 복귀, 0.85) · RM 보웬/아데예미/하지무사(협상 진전, 적합 0.92 최고)/소울레(로마 FFP 매각후보, 0.91) · ST 기라시/브로베이/파르도/잭슨(1티어 2곳 교차확인 HIGH, 적합 0.75·왓킨스와 동일 역할군)/오슬라(3티어만, MEDIUM-LOW, 적합 0.75 동일 역할군) · DM 로피(비드 단계, LDM 적합 0.84)/그레이(3티어 링크, RDM 0.77)/모리바(2티어 오퍼 준비, LDM 0.80)/투람(유벤투스, 모니터링 단계, LDM 0.88) · GK 스즈키/트래포드(로마노 숏리스트)/트루빈/레스테스/헨더슨(마르티네스 대체 후보, 0.96).
-    <b>바투리나(비드 €50m 거절)</b> = 명목 10번이나 실측상 LM 0.80 > CAM 0.68 — 로저스형 좌측 크리에이터.
-    아데예미는 실측상 좌측 부적합(LM 0.25)이라 RM만 제공. <b>시세(합류확정)</b> = 프리계약 26/27 RCB · <b>알리송(신규)</b> = 2026-01 영입된 소속 RW.</div>
+    <b>영입·</b> 접두 = 2026 여름 이적 후보 — DB transfer_targets에서 자동 주입(수동 나열 폐지, 2026-07-19). 목록·등급·근거·sofifa 링크는 <b>이적 탭</b>에서 확인.
+    합류 확정: <b>시세(RCB)</b> · <b>만잠비(LDM)</b> · <b>고메스(LDM)</b>. <b>알리송(신규)</b> = 2026-01 영입된 소속 RW(그레미우 시절부터 실측상 우측 자원).</div>
   </section>
 
   <section id="cmpBar" style="display:none">
@@ -422,7 +432,11 @@
 
   <section id="reportPage" style="display:none">
     <h2>에메리의 아스톤 빌라 25/26 — 전술 리포트</h2>
-    <p class="rp-sub">이 페이지의 모든 주장은 data/avl_analysis.db의 실측 기록에서 파생됨 (서사 기반 주장은 별도 표기). 갱신 2026-07-05.</p>
+    <p class="rp-sub">이 페이지의 모든 주장은 data/avl_analysis.db의 실측 기록에서 파생됨 (서사 기반 주장은 별도 표기). 갱신 2026-07-05 · 스쿼드 변동 노트 2026-07-19.</p>
+    <div class="rp-card"><b>스쿼드 변동 노트 (2026-07-19)</b> — 본 리포트는 25/26 시즌 실측 기록으로 유지된다. 시즌 종료 후 확정 유출:
+      <b>로저스→첼시 £117m(영국 선수 역대 최고액)</b> · 틸레만스→맨유 £35m(바이아웃) · 디뉴→PSG · 말렌→로마 £21.6m.
+      확정 영입: <b>만잠비 £59.5m(클럽 레코드, LDM)</b> · 조앙 고메스(울버햄튼, LDM) · 시세(RCB).
+      아래 최적 XI의 로저스(CAM) 항목과 모듈레이션 축의 틸레만스·디뉴 항목은 26/27 재현 시 대체가 필요 — 현재 후보·등급은 이적 탭 참조.</div>
     <div class="rp-badges">
       <span class="rp-badge">팀 스탯 <b>45경기</b> (양팀 xG·포메이션)</span>
       <span class="rp-badge">경기별 평균위치 <b>388+</b></span>
@@ -562,6 +576,22 @@
     </div>
     <div id="xiChart" class="xi-pitch"></div>
     <div class="rp-foot">후보 풀: CMP_SLOTS(보유 스쿼드 실측) + transfer_targets.map25(영입 후보 실측, 46명) — 실측 그리드가 없는 후보(예: Emerson Royal·Bowen·Bergvall·Kolo Muani)는 제외됩니다.</div>
+
+    <h3>움직임 애니메이션 — 국면별 팀 이동 · 선수별 실측 경로</h3>
+    <p class="rp-sub">국면 위치 = 45경기 실측 구조(빌드업 → 공격 4-2-3-1 → 수비 4-4-2 미드블록, tactic_observations 파생).
+    선수별 경로 = 기본 XI는 player_duties 임무 기반, 교체 선수는 실측 그리드(5×5)에서 파생. 슬롯 드롭다운으로 실측 그리드 보유 선수 전원 교체 가능 · 피치 위 선수를 클릭하면 그 선수의 히트맵 존+경로를 재생합니다.</p>
+    <div class="tf-toolbar" id="anCtrl">
+      <button id="anTeamBtn" class="an-btn on">전체 움직임</button>
+      <button id="anPlayerBtn" class="an-btn">선수별 움직임</button>
+      <span style="flex:0 0 12px"></span>
+      <button class="an-btn an-ph on" data-ph="0">① 빌드업</button>
+      <button class="an-btn an-ph" data-ph="1">② 공격 4-2-3-1</button>
+      <button class="an-btn an-ph" data-ph="2">③ 수비 4-4-2</button>
+      <button id="anAuto" class="an-btn">▶ 자동 재생</button>
+    </div>
+    <div id="anSelRow" class="an-sels"></div>
+    <div id="anPitchWrap"></div>
+    <div id="anDesc" class="rp-card" style="margin-top:8px"></div>
   </section>
 
   <div class="compare">
@@ -1756,6 +1786,8 @@ const TRANSFER_TARGETS=[
 {name:"Marcus Tavernier",name_kr:"마커스 태버니어",slot:"LM",club:"AFC Bournemouth",position:"RM",likelihood:"MEDIUM-HIGH",confidence:"실측 완료(2026-07-20): fit wm_insidefwd/Balanced 0.864(HIGH 적합) — 본머스 최근 6경기(45분+) 실측, 평균 7.17. 좌측 위주 실측(RM 적합도 0.16로 사실상 불일치) → 슬롯 LM으로 정정.",fit_sim:0.864,opt_role:null,opt_focus:null,fit_role:"wm_insidefwd",fit_focus:"Balanced",source:"https://www.teamtalk.com/news/liverpool-aston-villa-hijack-fulham-move-marcus-tavernier-perfect-harry-wilson-heir ; https://www.sportsmole.co.uk/football/bournemouth/transfer-talk/news/villa-fulham-enquire-over-move-for-bournemouth-star_600420.html (2026-07-20 수집)",map25:"24101X4221421104100021000",avg_rating:7.17,short_label:"태버니어"},
 {name:"Ngal'ayel Mukau",name_kr:"응갈아엘 무카우",slot:"RDM",club:"LOSC Lille",position:"RDM",likelihood:"MEDIUM",confidence:"실측 완료(2026-07-20): fit dm_dlp/Roaming 0.646(MEDIUM 적합) — 릴 최근 6경기(45분+) 실측, 평균 6.8. 실측 위치가 예상(좌측 앵커)과 달리 우측·전진 편향 강함(RM급 WM 적합도 0.94) — DM보다 박스투박스/로밍 성향일 가능성. 슬롯은 RDM으로 한정.",fit_sim:0.646,opt_role:null,opt_focus:null,fit_role:"dm_dlp",fit_focus:"Roaming",source:"https://www.teamtalk.com/news/ngalayel-mukau-transfer-news-tottenham-aston-villa-everton-race-ignites (2026-07-20 수집)",map25:"000230015X001360011200100",avg_rating:6.8,short_label:"무카우"},
 {name:"Noah Atubolu",name_kr:"노아 아투볼루",slot:"GK",club:"SC Freiburg",position:"GK",likelihood:"MEDIUM",confidence:"PENDING MEASUREMENT (헤드리스 실행, SofaScore 실측 미수행). 참고: DB의 마르티네스 유벤투스 유출설은 기존에 로마노(1티어) 확인 잔류로 DEAD 처리됨 — 이번 TeamTalk 재점화 보도는 2티어 단일소스로 기존 DEAD 판정을 뒤집기엔 근거 부족, 마르티네스 상태는 변경하지 않음. [2026-07-20 21시 실측] SofaScore 최근 6경기(분데스리가+UEL, 45분+, 391 히트포인트) 실측 완료. 중심(51.1,9.0) — 전형적 골라인 고정형. fit gk_goalkeeper/Defend 0.975(타 GK 후보와 동일 패턴). 산출: 선방 3.3/경기·패스 72.5%(빌드업 신호 양호, 마르티네스 55%·수즈키 59% 상회)·평균 6.95.",fit_sim:0.975,opt_role:null,opt_focus:null,fit_role:"gk_goalkeeper",fit_focus:"Defend",source:"Sky Sport Deutschland(獨 Sky, 재인용 다수) - https://www.football365.com/news/aston-villa-intense-battle-german-goalkeeper-atubolu-martinez-move-on ; TeamTalk(2티어, 마르티네스 대체 프레이밍) - https://www.teamtalk.com/aston-villa/villans-icon-emiliano-martinez-tipped-exit-noah-atubolu-link",map25:"0000000000000000010001X20",avg_rating:6.95,short_label:"아투볼루"},
+{name:"Alejandro Garnacho",name_kr:null,slot:"RM",club:"Chelsea",position:"LW",likelihood:"MEDIUM",confidence:"MEDIUM — Romano(1티어) 경유 확인이나 \"구체적 아님\" 명시, 로마 우선순위 리스크. PENDING MEASUREMENT (헤드리스 실행, SofaScore 실측 미수행).",fit_sim:null,opt_role:null,opt_focus:null,fit_role:null,fit_focus:null,source:"https://www.teamtalk.com/chelsea/fabrizio-romano-reveals-alejandro-garnacho-decision-on-joining-aston-villa-from-chelsea",map25:null,avg_rating:null,short_label:"가르나초"},
+{name:"Trevoh Chalobah",name_kr:null,slot:"LCB",club:"Chelsea",position:"CB",likelihood:"MEDIUM-HIGH",confidence:"MEDIUM-HIGH — Football Insider(2티어) 가격조건 확인, 1티어 미확인. PENDING MEASUREMENT (헤드리스 실행, SofaScore 실측 미수행).",fit_sim:null,opt_role:null,opt_focus:null,fit_role:null,fit_focus:null,source:"https://www.footballinsider247.com/chelsea-will-accept-20m-trevoh-chalobah-bid-as-aston-villa-swoop-sources",map25:null,avg_rating:null,short_label:"찰로바"},
 ];
 /* AUTOGEN:TRANSFER_TARGETS:END */
 /* AUTOGEN:TRANSFER_OUTGOING:START */
