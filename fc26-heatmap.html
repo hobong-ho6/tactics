@@ -424,6 +424,11 @@
       <span class="sq-chip">라인 높이 <b>52</b></span>
       <span class="sq-note">근거: 후방 숏빌드업 고수(롱볼 9% 실측) + 4-4-2 콤팩트 미드블록 실측·분석 (DB team_tactic_setups, FINAL data-only)</span>
     </div>
+    <div class="sq-tactic" style="margin-top:6px">
+      <span class="sq-head">빠른 선택</span>
+      <button id="sqProj2627" style="background:var(--panel-2);border:1px solid var(--line);border-radius:7px;font-size:11px;padding:5px 9px;cursor:pointer;color:var(--muted)">🔮 26/27 예상 스쿼드</button>
+      <span class="sq-note" id="sqProjNote">2026-07-22 이적 전망 기준 예상 XI 일괄 선택 (DB team_tactic_setups 2026-27 projected) — 슬롯별 🎯 처방 = 게임에 설정할 역할·포커스</span>
+    </div>
     <div class="sq-slots" id="sqSlots"></div>
     <div class="sq-note" style="padding:6px 2px 0">왼쪽 패널 = <b>처방(최적)</b> — 실축 성과 기준 추천 · 오른쪽 패널 = <b>실측 최근접</b> — 움직임 재현 기준. 슬롯별로 분석 근거가 있는 선수만 표시됩니다.
     슬롯 카드의 <b>✓/⚠</b> = 이 슬롯이 그 선수의 최적 포지션인지 (⚠이면 최적 포지션 표시) · <b>🎯 처방</b> = 성과 기준 추천 역할·포커스 · <b>🔁 실측</b> = 실제 움직임 최근접 역할·포커스.
@@ -2458,6 +2463,25 @@ function applySquad(){
   panels.B.su={formation:'빌라 스쿼드 — 실측 최근접',mode:panels.B.su.mode,intensity:panels.B.su.intensity,selected:-1,players:squadPlayers('fit')};
   [panels.A,panels.B].forEach(pn=>{ pn.fSel.value=''; pn.size(); pn.refresh(); });
 }
+/* 26/27 예상 XI 일괄 선택 — DB team_tactic_setups(2026-27, projected) 미러.
+   라벨은 injectTransferCandidates() 규칙(CONFIRMED='(합류확정)', 그 외='영입·') 그대로.
+   DB에서 루머가 삭제/DEAD 되면 해당 슬롯은 건너뛰고 경고를 표시한다. */
+const PROJECTED_XI_2627={GK:'마르티네스',LB:'영입·에스투피냔',LCB:'파우 토레스',RCB:'콘사',RB:'캐시',
+  LDM:'고메스(합류확정)',RDM:'카마라',LM:'영입·가르나초',CAM:'만잠비(합류확정)',RM:'맥긴',ST:'왓킨스'};
+function selectProjectedXI(){
+  const missing=[];
+  SQUAD_SLOTS.forEach((s,i)=>{
+    const want=PROJECTED_XI_2627[s.pos]; if(!want) return;
+    const j=s.opts.findIndex(o=>o.n===want);
+    if(j>=0) sqSel[i]=j; else missing.push(`${s.pos}:${want}`);
+  });
+  buildSquadUI(); applySquad();
+  const el=document.getElementById('sqProjNote');
+  if(el) el.textContent=missing.length
+    ?`⚠ 일부 적용 — DB transfer_targets에 없는 항목(무산/삭제 여부 확인): ${missing.join(', ')}`
+    :'✓ 26/27 예상 XI 적용됨 — 슬롯별 🎯 처방 = 게임에 설정할 역할·포커스 (근거: reports/transfer-watch/2026-07-22.md)';
+}
+document.getElementById('sqProj2627').addEventListener('click',selectProjectedXI);
 function enterSquadMode(){
   hideCmpBar();
   document.getElementById('squadBar').style.display='block';
