@@ -915,6 +915,25 @@ const FORMATIONS = {
     {pos:'RM', t:'WM', x:86,y:64, r:'wm_widemid',    focus:'Support'},      // McGinn (right, cut in for 4th)
     {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Attack'},       // Watkins (brace)
   ],
+  /* Aston Villa 26/27 (projected) — PROJECTED XI per 2026-07-22 transfer outlook.
+     Team shell = 25/26 optimal (foundation-first, obs#6). Returning 7 = player_role_map optimal;
+     signings 4 = transfer_targets measured prescriptions (Estupiñán .946 / Garnacho .911 /
+     Manzambi CAM .817 / Gomes LDM .797). Pivot sides: Kamara RIGHT anchor (duties#12),
+     Gomes LEFT (measured .797 vs right .638). Source: team_tactic_setups (2026-27, projected)
+     + reports/transfer-watch/2026-07-22.md. */
+  '아스톤 빌라 26/27 (예상)':[
+    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up',    name:'마르티네스'},  // optimal 유지
+    {pos:'LB', t:'FB', x:13,y:32, r:'fb_att_wb',     focus:'Support',     name:'에스투피냔'},  // 실측 .946 — 디뉴 att_wb 프로필 승계
+    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스'}, // optimal 유지 — 딥 창조 보상 축 1
+    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive',  name:'콘사'},       // optimal 유지
+    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Balanced',    name:'캐시'},       // optimal 유지 — 풀백 한 명 전진 원칙상 안정 사이드
+    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'고메스'},     // 실측 .797 — 틸레만스 좌측 레인 승계
+    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'카마라'},     // optimal 유지 — 우중앙 앵커(duties#12)
+    {pos:'LM', t:'WM', x:14,y:64, r:'wm_insidefwd',  focus:'Attack',      name:'가르나초'},   // 실측 .911 — 단주마형 수직 종결자(로저스 Balanced와 분화)
+    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_halfwinger',focus:'Balanced',    name:'만잠비'},     // 실측 .817(대표팀 전진 4경기) — CAM-LM 충돌 .72 캐비앗
+    {pos:'RM', t:'WM', x:86,y:64, r:'wm_widemid',    focus:'Support',     name:'맥긴'},       // optimal 유지 — 인사이드 이동으로 중앙 숫자 보충
+    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile',   name:'왓킨스'},     // optimal 유지 — 니어포스트 침투(인박스 84%)
+  ],
 };
 
 /* ============================================================
@@ -932,6 +951,7 @@ const FORMATION_DESC = {
   [AVL_OPTIMAL]: '🎯 <b>최적</b> — "성과 처방" 세팅. 평점×경기 결과 가중으로 뽑은 선수별 최고 성과 포지션·역할. 실제로 그렇게 뛰었다는 뜻이 아니라, 이렇게 세팅했을 때 성적이 가장 좋았다는 뜻.',
   '아스톤 빌라 25/26': '📝 초기 추정 — 기사·관찰 기반으로 역할을 추정한 실측 검증 이전 버전. 참고용.',
   '아스톤 빌라 25/26 (로저스 CAM)': '🎬 단일 경기 재현 — 리버풀전 4-2 (2026-05-15) 승리, 로저스 중앙 10번 기용 경기의 XI·역할.',
+  '아스톤 빌라 26/27 (예상)': '🔮 <b>26/27 예상</b> — 2026-07-22 이적 전망 기준 예상 XI (에스투피냔·가르나초는 미확정 루머 포함). 기존 7인=성과 처방(최적), 영입 4인=타클럽/대표팀 실측 최근접 처방. 좌측=공격 사이드(에스투피냔 오버랩+가르나초 인버티드), 더블 볼위닝 피봇(고메스 좌·카마라 우). 캐비앗: 만잠비 하프윙어와 가르나초의 좌측 존 겹침 — 시즌 실측으로 검증 예정.',
   '빌라 스쿼드 — 처방(최적)': '🎯 <b>처방(최적)</b> — 선택한 11명에게 성과 기준(평점×결과)으로 가장 잘 먹혔던 역할을 부여. 승리 최적화 세팅.',
   '빌라 스쿼드 — 실측 최근접': '🔁 <b>실측 최근접</b> — 선택한 11명이 실제 경기에서 움직인 모습과 가장 비슷한 FC26 역할을 부여. 현실 재현 세팅.',
   '선수 비교 — A (실측)': '📊 <b>선수 A 실측</b> — 위 비교에서 선택한 A 선수의 실측 히트맵을 슬롯 위치에 그린 것 (그리드 출처는 비교 카드 표기 참조).',
