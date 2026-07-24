@@ -1444,10 +1444,8 @@ const SQUAD_SLOTS=[
     재계산 (2026-07-02, transfer_targets LM rows + player_role_map kind='role:LM') */
  {pos:'LM', t:'WM', x:14,y:64, opts:[
    {n:'부엔디아',  opt:['wm_wideplm','Attack'],      fit:['wm_wideplm','Attack']},
-   {n:'로저스',    opt:['wm_insidefwd','Balanced'],  fit:['wm_widemid','Defend']},
    ]},
  {pos:'CAM',t:'CAM',x:50,y:66, opts:[
-   {n:'로저스',    opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
    {n:'부엔디아',  opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
    {n:'맥긴',      opt:['cam_playmaker','Balanced'], fit:['cam_playmaker','Roaming']},
    ]},
@@ -1758,14 +1756,12 @@ const CMP_SLOTS={
   {n:'영입·카마라(모나코)',grid:'20003235X5335421455401111',dbFit:0.74,lh:'MEDIUM-HIGH',rate:{v:6.60,b:'r6',s:'최근 6경기 평균 6.60 (모나코, 오나나 대체 후보)'}},
   {n:'맥긴',grid:'100131145301574024X401432',gridNote:'딥롤(No.8/피벗우측) 실측',rate:{v:7.87,b:'season',s:'No.8/피벗우측 3경기 평균 7.87 (딥롤, RDM 전용)'}}]},
  LM:{t:'WM',x:14,c:[
-  {n:'로저스',grid:'65321X9632564117410121100',rate:{v:6.91,b:'season',s:'LW 13경기 평균 6.91 · 피크 9.3'}},
   {n:'부엔디아',grid:'63323362X6136471211510110',gridNote:'자유 10번 실측(좌편향)',rate:{v:6.90,b:'season',s:'좌편향 10번 21경기 평균 6.90 · 피크 9.4'}},
   {n:'래시포드(25임대·참조)',grid:'X6223X6212323013310000000',gridNote:'24-25 임대 12경기 실측 — 에메리 좌측 기용 선례(수비면제 .145)',rate:{v:7.50,b:'season',s:'임대 12경기 평균 7.50 · 4골 (kp 2.25·xA .25)'}},
   {n:'영입·서머빌',grid:'74241X7586834317421110100',dbFit:0.70,lh:'MEDIUM-HIGH',rate:{v:7.15,b:'r6',s:'최근 6경기 평균 7.15 (웨스트햄)'}},
   ]},
  CAM:{t:'CAM',x:50,c:[
   {n:'부엔디아',grid:'63323362X6136471211510110',rate:{v:6.90,b:'season',s:'좌편향 10번 21경기 평균 6.90 · 피크 9.4 (최적 10번 판정)'}},
-  {n:'로저스',grid:'684545X7X8346663423201121',rate:{v:7.10,b:'season',s:'CAM 21경기 평균 7.10 · 피크 8.5'}},
   {n:'맥긴',grid:'243325X88437XX41242200110',gridNote:'CAM/No.10 4경기 실측',rate:{v:6.90,b:'season',s:'CAM 4경기 평균 6.90 (cam_playmaker/Roaming 0.801)'}},
   ]},
  RM:{t:'WM',x:85,c:[
@@ -1823,7 +1819,6 @@ const TRANSFER_TARGETS=[
 /* AUTOGEN:TRANSFER_OUTGOING:START */
 const TRANSFER_OUTGOING=[
 {player:"Emiliano Martínez",dest_club:"Juventus",likelihood:"DEAD (구단 공식 잔류 발표 - 로마노 확인)",confidence:"DEAD 추정 — 구단 공식 부인 + Romano(1티어) 협상 중단 확인. [2026-07-19 재검증 하향]",source:"Fabrizio Romano; Gianluca Di Marzio; La Gazzetta dello Sport; Express&Star(Matt Maher)"},
-{player:"Ezri Konsa",dest_club:"Arsenal",likelihood:"MEDIUM",confidence:"MEDIUM — Daily Mail(주요 전국지) \"오퍼 준비\" 보도, 살리바 부상이라는 명확한 동기 확인. 단 밸류에이션 격차(£35m vs £60m)로 협상 단계 아님. tier-1 미확인.",source:"https://www.caughtoffside.com/2026/07/17/arsenal-prepare-ezri-konsa-transfer-bid/ ; https://arsenalnews.co.uk/2026/07/17/report-arsenal-are-preparing-an-offer-for-aston-villa-star-ezri-konsa-after-william-saliba-setback/ (Daily Mail 인용, 2026-07-17)"},
 {player:"Lucas Digne",dest_club:"Paris Saint-Germain",likelihood:"CONFIRMED",confidence:"CONFIRMED — Romano \"here we go\"(1티어), 실행 시점만 월드컵 이후로 이연. / 2026-07-15: 구단간 통보·개인합의 완료 확인 — CONFIRMED 유지.",source:"https://readastonvilla.com/2026/07/13/aston-villa-face-major-digne-decision-after-psg-clause-emerges/ ; https://www.getfootballnewsfrance.com/2026/psg-express-interest-for-aston-villas-lucas-digne/ ; https://www.teamtalk.com/aston-villa/nightmare-scenario-psg-push-lucas-digne-youri-tielemans-exit (2026-07-13) ; https://www.getfootballnewsfrance.com/2026/psg-to-sign-aston-villas-lucas-digne-after-paying-e10m-release-clause/ (2026-07-14)"},
 {player:"Ian Maatsen",dest_club:"미정",likelihood:"DEAD (마첸 1옵션 확정 - 애슬레틱)",confidence:"DEAD 추정 — Athletic(1티어) 마첸 1옵션 확정 보도로 유출설 종료. [2026-07-19 재검증]",source:"https://www.footballinsider247.com/aston-villa/im-told-aston-villa-plan-to-accept-ian-maatsen-offer-as-unai-emery-eyes-new-signing ; readastonvilla 2026-07-13 잔류 리셋 보도(상충)"},
 {player:"Youri Tielemans",dest_club:"Manchester United",likelihood:"CONFIRMED",confidence:"CONFIRMED — Romano \"here we go\" + 메디컬 부킹 보도(복수 소스), 공식 발표만 남음. / 2026-07-15: 공식 발표 완료(양 클럽 확인) — CONFIRMED 확정.",source:"https://www.skysports.com/football/news/11095/13562972/youri-tielemans-manchester-united-in-talks-to-sign-aston-villa-and-belgium-midfielder ; https://www.espn.com/soccer/story/_/id/49348973/youri-tielemans-man-united-advanced-talks-aston-villa-sources ; https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/07/man-utd-transfer-news-youri-tielemans-aston-villa-david-ornstein-advanced-talks-summer-2026 (2026-07-13) ; https://www.skysports.com (Plettenberg 메디컬 임박) ; Romano X/YouTube 07-14"},
@@ -1875,7 +1870,6 @@ const XI_OWNED=[
 {label:"알리송(신규)",grid:"001640014X000380003600011",lh:"OWNED",rate:{"v": 6.75, "b": "r6", "s": "최근 6경기 평균 6.75 (그레미우+빌라 혼합)"},t:"WM"},
 {label:"부엔디아",grid:"63323362X6136471211510110",lh:"OWNED",rate:{"v": 6.9, "b": "season", "s": "좌편향 10번 21경기 평균 6.90 · 피크 9.4"},t:"WM"},
 {label:"부엔디아",grid:"72332272X7027351301410110",lh:"OWNED",rate:{"v": 6.23, "b": "season", "s": "CAM 3경기 평균 6.23 (씬클래스 표본)"},t:"CAM"},
-{label:"로저스",grid:"65321X9632564117410121100",lh:"OWNED",rate:{"v": 6.91, "b": "season", "s": "LW 13경기 평균 6.91 · 피크 9.3"},t:"CAM"},
 {label:"맥긴",grid:"243325X88437XX41242200110",lh:"OWNED",rate:{"v": 6.9, "b": "season", "s": "CAM 4경기 평균 6.90 (No.10 실측)"},t:"CAM"},
 {label:"왓킨스",grid:"569426XX63565314322100200",lh:"OWNED",rate:{"v": 8.47, "b": "top", "s": "상위 7경기 평균 8.47"},t:"ST"},
 {label:"아브라함(보유)",grid:"01855255648X8415422010200",lh:"OWNED",rate:{"v": 6.85, "b": "r6", "s": "45분+ 4경기 평균 6.85 (빌라·전부 교체)"},t:"ST"},
