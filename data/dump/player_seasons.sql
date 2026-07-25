@@ -30,3 +30,4 @@ INSERT INTO player_seasons VALUES(27,'2026-27','Aston Villa','RB',20,NULL);
 INSERT INTO player_seasons VALUES(28,'2026-27','Aston Villa','LM',19,NULL);
 INSERT INTO player_seasons VALUES(29,'2026-27','Aston Villa','GK',18,NULL);
 INSERT INTO player_seasons VALUES(30,'2025-26','Aston Villa','DM',53,71);
+INSERT INTO player_seasons VALUES(18,'2024-25','Nice','ST/RW',NULL,3086);
