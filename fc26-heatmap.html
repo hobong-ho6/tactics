@@ -457,6 +457,11 @@
   </section>
 
   <section id="reportPage" style="display:none">
+    <div class="seg" style="display:inline-flex;margin-bottom:16px">
+      <button id="rpBtnEmery" class="on" onclick="rpMgr('emery')">에메리 · 아스톤 빌라</button>
+      <button id="rpBtnAlonso" onclick="rpMgr('alonso')">알론소 · 첼시</button>
+    </div>
+    <div id="rpEmery">
     <h2>에메리의 아스톤 빌라 25/26 — 전술 리포트</h2>
     <p class="rp-sub">이 페이지의 모든 주장은 data/avl_analysis.db의 실측 기록에서 파생됨 (서사 기반 주장은 별도 표기). 갱신 2026-07-05 · 스쿼드 변동 노트 2026-07-19.</p>
     <div class="rp-card"><b>스쿼드 변동 노트 (2026-07-19)</b> — 본 리포트는 25/26 시즌 실측 기록으로 유지된다. 시즌 종료 후 확정 유출:
@@ -565,6 +570,79 @@
 
     <div class="rp-foot">근거 원장: tactic_observations(팀 사실 25건) · team_match_stats(45) · player_role_map(measured/role/optimal + @dom/@tight/@poss 분리) ·
     player_duties(임무-수행 리뷰) · v_event_profile(산출) · player_shot_profile(도착) · team_tactic_setups(설정+변형). 전 항목 source·confidence 기재, git 이력으로 감사 가능.</div>
+    </div><!-- /rpEmery -->
+
+    <div id="rpAlonso" style="display:none">
+    <h2>알론소의 첼시 26/27 — 전술 리포트 (레버쿠젠 블루프린트 이식)</h2>
+    <p class="rp-sub">에메리 리포트와 달리 <b>실측 기반이 아닌 예측 구현</b> — 레버쿠젠 23/24 무패 더블 시즌의 전술 분석(다수 매체 교차)과
+    26/27 첼시 스쿼드(2026-07-25 이적시장 반영)를 결합한 블루프린트. 알론소가 첼시에서 동일 골격을 쓸지는 시즌 개막 후 실측으로 검증 예정. 작성 2026-07-25.</p>
+    <div class="rp-card"><b>부임·스쿼드 노트 (2026-07-25)</b> — 알론소 2026-05-17 선임 발표, 07-01 부임(4년, 레알 반 시즌 경질 후 복귀. 첼시 25/26 10위 — 마레스카·로제니어 경질).
+      확정 영입: <b>로저스 £117m(빌라, 영국 역대 최고액)</b> · 팔레스트라 £43m(아탈란타, RWB) · 퀜다 £40m(스포르팅, RW) · 에메가 £22m(스트라스부르, ST).
+      유출: <b>쿠쿠레야→레알 £47.5m(LWB 공백!)</b> · A.산투스→맨유 £48m · T.조지→에버튼 · 가르나초→빌라(임대). 잭슨은 빌라行 HIGH 루머로 XI 제외.</div>
+
+    <h3>근본 — 철학</h3>
+    <p>알론소는 <b>포지셔니즘+릴레이셔니즘의 혼합주의자</b>다 — 과르디올라(바이언)·스페인 티키타카의 구조 위에
+    지단·안첼로티식 선수 중심 유동성을 얹는다. 목표는 <b>"볼로 게임을 통제"</b>: 상대가 틈을 보일 때까지 인내하며 순환하다
+    <b>3자 콤비네이션(third-man)</b>으로 수직 침투한다. 에메리(구조 고정·상대 맞춤 실용주의)와 대비되는 지점: 알론소는
+    볼 소유 자체가 수비 수단이며, 상실 즉시 볼 주변 다이아몬드로 <b>카운터프레스</b>한다.</p>
+
+    <h3>골격 — 3-4-2-1 스캐폴드 (레버쿠젠 실측 서사)</h3>
+    <table>
+      <tr><th>국면</th><th>형태</th><th>메커니즘</th></tr>
+      <tr><td><b>빌드업</b></td><td>비대칭 4-2-4화</td><td>좌WB(그리말도)가 내려와 인버트 + 우측 와이드CB(코수누)가 벌림. 중앙 지향(측면 아님), 2×10이 내려와 받음</td></tr>
+      <tr><td><b>공격</b></td><td><b>3-2-5</b></td><td>5채널 오버로드 — 양WB 최전방 폭, 2×10 하프스페이스, 3+2 rest-defense</td></tr>
+      <tr><td><b>수비</b></td><td><b>5-4-1 백5</b></td><td>WB 하강. 하이라인 + 상실 즉시 카운터프레스(22/23 미드블록에서 진화)</td></tr>
+    </table>
+
+    <h3>인게임 포메이션 판정 — 왜 5-4-1인가</h3>
+    <p>FC26의 3-4-2-1은 와이드 슬롯이 <b>LM/RM(WM 역할군)</b>이라 윙백 역할(인버티드/공격형 윙백)을 쓸 수 없다.
+    <b>5-4-1</b>은 ① LWB/RWB가 FB 슬롯이라 그리말도·프림퐁 역할을 그대로 재현하고 ② 수비 형태 백5가 레버쿠젠 실제 수비형태와 일치하며
+    ③ 2×10은 LM/RM의 인사이드 롤(커널이 하프스페이스로 수렴)로 재현된다. 공격 시 3-2-5 전개는 역할 커널이 담당.</p>
+
+    <h3>포지션 역할 매핑 (FC26 5-4-1 · 스쿼드 2026-07-25)</h3>
+    <table>
+      <tr><th>슬롯</th><th>첼시</th><th>레버쿠젠 원형</th><th>FC26 역할 / 포커스</th><th>근거</th></tr>
+      <tr><td>GK</td><td>산체스</td><td>흐라데츠키</td><td>볼 플레잉 키퍼 / 빌드업</td><td>숏 빌드업 참여</td></tr>
+      <tr><td>LCB</td><td>콜윌</td><td>인카피에</td><td>볼 플레잉 센터백 / 적극적</td><td>좌 전진 스텝+볼 진행</td></tr>
+      <tr><td>CB</td><td>아다라비오요</td><td>타</td><td>볼 플레잉 센터백 / 빌드업</td><td>중앙 지휘·롱 대각</td></tr>
+      <tr><td>RCB</td><td>포파나</td><td>탑소바/코수누</td><td><b>와이드 백 / 지원</b></td><td>빌드업 시 와이드 이탈+볼캐리</td></tr>
+      <tr><td>LWB</td><td>아토</td><td><b>그리말도</b></td><td><b>인버티드 윙백 / 빌드업</b></td><td>딥→대각 내향 플레이메이커(13A+10G 원형). 쿠쿠레야 매각으로 유일 적임=구조 최약 슬롯</td></tr>
+      <tr><td>RWB</td><td>팔레스트라</td><td><b>프림퐁</b></td><td><b>공격형 윙백 / 공격</b></td><td>사실상 윙어 — 뒷공간 폭격. £43m 영입이 이 슬롯 지명</td></tr>
+      <tr><td>LCM</td><td>엔소</td><td>샤카</td><td>딥라잉 플레이메이커 / 빌드업</td><td>오케스트레이터(빌드업 관여 1위 아키타입)</td></tr>
+      <tr><td>RCM</td><td>카이세도</td><td>팔라시오스</td><td>홀딩 / 볼 위닝</td><td>볼위너 스크린 — 원형과 사실상 동일 프로필</td></tr>
+      <tr><td>LM</td><td>로저스</td><td><b>비르츠</b></td><td>와이드 플레이메이커 / 공격</td><td>좌 하프스페이스 내향 창조 — 빌라 실측 로밍 창조형 승계</td></tr>
+      <tr><td>RM</td><td>팔머</td><td>호프만</td><td>인사이드 포워드 / 공격</td><td>우 하프스페이스 득점 커넥터(왼발 컷인)</td></tr>
+      <tr><td>ST</td><td>주앙 페드루</td><td>보니페이스</td><td>어드밴스드 포워드 / 지원</td><td>드롭 링크+카운터프레스 선봉</td></tr>
+    </table>
+
+    <h3>팀 설정 (FC26)</h3>
+    <table>
+      <tr><th>항목</th><th>설정</th><th>근거</th></tr>
+      <tr><td>택티컬 비전</td><td><b>포제션</b> (구 티키타카)</td><td>"러너가 틈 찾을 때까지 순환" 정의가 알론소 철학과 일치. 하이 프레싱(구 게겐프레싱) 비전은 다이렉트 지향이라 부적합 — 카운터프레스는 아래 수비 설정이 담당</td></tr>
+      <tr><td>빌드업</td><td>Short Passing</td><td>중앙 지향 숏 빌드업</td></tr>
+      <tr><td>수비 접근·라인</td><td><b>High · ~64</b></td><td>하이라인+즉시 카운터프레스. 에메리 빌라(Balanced/52)와 핵심 대비</td></tr>
+    </table>
+
+    <h3>리스크 — 이 이식의 약점</h3>
+    <ul>
+      <li><b>그리말도 슬롯 뎁스</b>: 쿠쿠레야 매각으로 인버티드 LWB 적임이 아토뿐 — 아토가 LCB로 밀리면 시스템 축이 사라진다. 레버쿠젠도 그리말도 의존이 동일 약점이었다.</li>
+      <li><b>중앙 상실 취약</b>: 3-2 박스 중앙에서 볼을 잃으면 즉시 역습 노출 — 원전 분석 공통 지적("정밀함을 요구하는 설계").</li>
+      <li><b>2×10의 수비 뱅크</b>: 5-4-1에서 LM/RM에 공격 포커스를 주면 수비 시 4의 뱅크가 깨질 수 있음 — 접전용으로 로저스 Balanced 강등 변형 검토.</li>
+      <li><b>실측 부재</b>: 알론소가 레알에서는 백4도 병용했다 — 첼시에서 레버쿠젠 골격 복원은 가설. 개막 후 첼시 실측(라인업·평균위치)으로 이 리포트 전체를 재검증할 것.</li>
+    </ul>
+
+    <div class="rp-foot">근거: 레버쿠젠 전술 — themastermindsite · ac3lab · soccertutor · managingmadrid · bulinews (교차검증 2026-07-25) /
+    부임·스쿼드 — chelseafc.com 공식 · Wikipedia 2026-27 Chelsea season · ESPN / FC26 비전 — EA Pitch Notes · Dexerto. DB: team_tactic_setups kind=reference:chelsea-alonso · tactic_observations scope=reference (등재 대기).</div>
+    </div><!-- /rpAlonso -->
+    <script>
+    function rpMgr(k){
+      const e=k==='emery';
+      document.getElementById('rpEmery').style.display=e?'block':'none';
+      document.getElementById('rpAlonso').style.display=e?'none':'block';
+      document.getElementById('rpBtnEmery').classList.toggle('on',e);
+      document.getElementById('rpBtnAlonso').classList.toggle('on',!e);
+    }
+    </script>
   </section>
 
   <section id="transferPage" style="display:none">
@@ -939,6 +1017,48 @@ const FORMATIONS = {
     {pos:'RM', t:'WM', x:86,y:64, r:'wm_widemid',    focus:'Support',     name:'맥긴'},       // optimal 유지 — 인사이드 이동으로 중앙 숫자 보충
     {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile',   name:'왓킨스'},     // optimal 유지 — 니어포스트 침투(인박스 84%)
   ],
+  /* Aston Villa 26/27 (투톱) — Watkins+Jackson 투톱 4-2-2-2. PREDICTION(실측 아님).
+     더블 피봇 보존(빌라 구조 핵심), 폭=풀백(에메리 "한 번에 한 명"). 스트라이커 스태거:
+     왓킨스=최전방 박스 피니셔(Attack), 잭슨=하강 링크(Support). 근거: 포메이션 상수 예외
+     (4-2-2-2 ×1 번리·4-4-2 ×3) + team_tactic_setups 26/27 projected 셸 + transfer_targets
+     Jackson(st_advanced/Support .752, id123) + Watkins measured st_advanced(player_role_map 16).
+     분석 2026-07-24. 대안: 4-4-2(맥긴 RM·가르나초 LM wm_widemid + 카마라·로저스 중앙). */
+  '아스톤 빌라 26/27 (투톱)':[
+    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up',    name:'마르티네스'},
+    {pos:'LB', t:'FB', x:13,y:34, r:'fb_att_wb',     focus:'Support',     name:'에스투피냔'},  // 좌측 폭 공급(윙어 부재 보상)
+    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스'}, // 스텝업 보상(배후 리스크 상쇄)
+    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive',  name:'콘사'},
+    {pos:'RB', t:'FB', x:87,y:33, r:'fb_wingback',   focus:'Balanced',    name:'캐시'},       // rest-defense 사이드(풀백 한 명씩 전진)
+    {pos:'LDM',t:'DM', x:38,y:44, r:'dm_holding',    focus:'Ball-Winning',name:'고메스'},     // 더블 피봇 유지 — 폭 없는 투톱의 배후 커버
+    {pos:'RDM',t:'DM', x:62,y:44, r:'dm_holding',    focus:'Ball-Winning',name:'카마라'},
+    {pos:'LM', t:'WM', x:32,y:67, r:'wm_insidefwd',  focus:'Attack',      name:'가르나초'},   // 좌측 내향 인사이드 포워드
+    {pos:'CAM',t:'CAM',x:60,y:65, r:'cam_halfwinger',focus:'Balanced',    name:'만잠비'},     // 투톱 공급책(로저스는 첼시 매각 — 26/27 예상과 동일 인선)
+    {pos:'ST', t:'ST', x:41,y:87, r:'st_advanced',   focus:'Attack',      name:'왓킨스'},     // 최전방 고정 박스 피니셔+좌채널 배후침투
+    {pos:'ST', t:'ST', x:59,y:84, r:'st_advanced',   focus:'Support',     name:'잭슨'},       // 하강 링크·양채널 런·전방압박 트리거
+  ],
+  /* Chelsea 26/27 (Alonso) — 레버쿠젠 3-4-2-1 블루프린트의 첼시 이식. REFERENCE(타팀 구현, 실측 아님).
+     스쿼드 = 2026-07-25 이적시장 반영(로저스£117m·팔레스트라£43m·퀜다£40m·에메가£22m IN /
+     쿠쿠레야·A.산투스·T.조지·가르나초(빌라 임대) OUT — Wikipedia 26/27 Chelsea season 2026-07-25 수집).
+     비대칭 윙백이 핵심: 우 팔레스트라=프림퐁(터치라인 하이 윙어) / 좌 아토=그리말도(딥→내향 플레이메이커).
+     포파나 cb_wideback=빌드업 시 와이드로 벌리는 코수누 메커니즘. 근거: themastermindsite·ac3lab·
+     soccertutor·managingmadrid 레버쿠젠 분석 교차검증.
+     ★인게임 포메이션 = 5-4-1 (2026-07-25 확정): FC26 3-4-2-1은 와이드가 LM/RM(WM)이라 윙백 역할
+     (fb_inverted/fb_att_wb)을 못 쓴다 → 5-4-1이 정확한 이식: LWB/RWB=FB 슬롯(그리말도·프림퐁 역할 가능),
+     수비 형태=백5(레버쿠젠 실제 수비형태 일치), 2×10은 LM/RM(WM)의 인사이드 롤로 재현, 중앙 2미들=CM.
+     공격 시 3-2-5 전개는 역할 커널이 담당. */
+  '첼시 26/27 (알론소)':[
+    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up',    name:'산체스'},
+    {pos:'LCB',t:'CB', x:28,y:26, r:'cb_bpd',        focus:'Aggressive',  name:'콜윌'},        // 인카피에 롤 — 좌 전진 스텝 + 볼 진행
+    {pos:'CB', t:'CB', x:50,y:24, r:'cb_bpd',        focus:'Build-Up',    name:'아다라비오요'}, // 타 롤 — 중앙 지휘·롱 대각
+    {pos:'RCB',t:'CB', x:72,y:26, r:'cb_wideback',   focus:'Support',     name:'포파나'},      // 탑소바/코수누 롤 — 빌드업 시 와이드 이탈+볼캐리
+    {pos:'LWB',t:'FB', x:11,y:38, r:'fb_inverted',   focus:'Build-Up',    name:'아토'},        // 그리말도 롤 — 5-4-1 LWB는 FB 슬롯: 인버티드 윙백(딥→대각 내향 플레이메이커)
+    {pos:'RWB',t:'FB', x:89,y:42, r:'fb_att_wb',     focus:'Attack',      name:'팔레스트라'},  // 프림퐁 롤 — RWB 공격형 윙백: 터치라인 하이·뒷공간 폭격
+    {pos:'LCM',t:'CM', x:40,y:44, r:'cm_dlp',        focus:'Build-Up',    name:'엔소'},        // 샤카 롤 — 5-4-1 중앙 2미들=CM 슬롯: 딥라잉 플레이메이커
+    {pos:'RCM',t:'CM', x:60,y:44, r:'cm_holding',    focus:'Ball-Winning',name:'카이세도'},    // 팔라시오스 롤 — CM 홀딩 볼위너 스크린
+    {pos:'LM', t:'WM', x:22,y:64, r:'wm_wideplm',    focus:'Attack',      name:'로저스'},      // 비르츠 롤 — 5-4-1 미들 와이드(WM): 와이드 플레이메이커로 좌 하프스페이스 내향 창조
+    {pos:'RM', t:'WM', x:78,y:64, r:'wm_insidefwd',  focus:'Attack',      name:'팔머'},        // 호프만 롤 — 인사이드 포워드로 우 하프스페이스 득점 위협
+    {pos:'ST', t:'ST', x:50,y:86, r:'st_advanced',   focus:'Support',     name:'주앙 페드루'},  // 보니페이스 롤 — 드롭 링크+카운터프레스 선봉
+  ],
 };
 
 /* ============================================================
@@ -957,6 +1077,11 @@ const FORMATION_DESC = {
   '아스톤 빌라 25/26': '📝 초기 추정 — 기사·관찰 기반으로 역할을 추정한 실측 검증 이전 버전. 참고용.',
   '아스톤 빌라 25/26 (로저스 CAM)': '🎬 단일 경기 재현 — 리버풀전 4-2 (2026-05-15) 승리, 로저스 중앙 10번 기용 경기의 XI·역할.',
   '아스톤 빌라 26/27 (예상)': '🔮 <b>26/27 예상</b> — 2026-07-22 이적 전망 기준 예상 XI (에스투피냔·가르나초는 미확정 루머 포함). 기존 7인=성과 처방(최적), 영입 4인=타클럽/대표팀 실측 최근접 처방. 좌측=공격 사이드(에스투피냔 오버랩+가르나초 인버티드), 더블 볼위닝 피봇(고메스 좌·카마라 우). 캐비앗: 만잠비 하프윙어와 가르나초의 좌측 존 겹침 — 시즌 실측으로 검증 예정.',
+  '아스톤 빌라 26/27 (투톱)': '⚔️ <b>26/27 투톱(예측)</b> — 왓킨스+잭슨 2스트라이커 <b>4-2-2-2</b>. 실측이 아니라 예측 세팅. 더블 피봇(고메스·카마라) 보존 + 폭은 풀백이 전담(에메리 "한 번에 한 명"). 스트라이커 스태거가 핵심: <b>왓킨스=최전방 박스 피니셔(Attack)</b> / <b>잭슨=하강 링크(Support)</b> — 둘 다 드롭 성향이라 동시 하강 시 박스 공동화 리스크. 2선=가르나초(좌 내향)+만잠비(중앙 공급 — 로저스는 첼시 매각). 근거: 포메이션 상수 예외(4-2-2-2 번리 H) + 잭슨 실측 st_advanced/Support .752. 대안 형태=4-4-2(리드관리·수비안정).',
+  '첼시 26/27 (알론소)': '🧪 <b>첼시 26/27 — 알론소 레버쿠젠 이식 (최종 전술 프리셋)</b> — 실측 아님=블루프린트, 상세 근거는 <b>전술 리포트 탭 → 알론소·첼시</b>.<br>' +
+    '<b>팀 전술</b>: 포메이션 <b>5-4-1</b>(공격 시 3-2-5 · 수비 백5) · 택티컬 비전 <b>포제션</b> · 빌드업 <b>숏 패싱</b> · 수비 접근 <b>하이</b> · 라인 높이 <b>64</b>(하이라인+즉시 카운터프레스) — 에메리 빌라(Balanced/52)와 대비.<br>' +
+    '<b>선수별 역할·포커스</b>: GK 산체스=<b>볼 플레잉 키퍼/빌드업</b> · LCB 콜윌=<b>볼 플레잉 센터백/적극적</b>(인카피에) · CB 아다라비오요=<b>볼 플레잉 센터백/빌드업</b>(타) · RCB 포파나=<b>와이드 백/지원</b>(탑소바/코수누 — 빌드업 시 와이드 이탈) · LWB 아토=<b>인버티드 윙백/빌드업</b>(그리말도 — 딥→대각 내향) · RWB 팔레스트라=<b>공격형 윙백/공격</b>(프림퐁 — 터치라인 하이) · LCM 엔소=<b>딥라잉 플레이메이커/빌드업</b>(샤카) · RCM 카이세도=<b>홀딩/볼 위닝</b>(팔라시오스) · LM 로저스=<b>와이드 플레이메이커/공격</b>(비르츠 — 좌 하프스페이스 창조) · RM 팔머=<b>인사이드 포워드/공격</b>(호프만 — 우 하프스페이스 득점) · ST 주앙 페드루=<b>어드밴스드 포워드/지원</b>(보니페이스 — 링크+압박 선봉).<br>' +
+    '스쿼드 2026-07-25 기준(잭슨 제외 — 빌라行 HIGH) · 로테이션: 제임스(RWB/RCB) · 에스테방/퀜다(RM·RWB) · 라비아/에수구(피봇) · 델랍/에메가(타깃 포워드) · 지튼스(LM).',
   '빌라 스쿼드 — 처방(최적)': '🎯 <b>처방(최적)</b> — 선택한 11명에게 성과 기준(평점×결과)으로 가장 잘 먹혔던 역할을 부여. 승리 최적화 세팅.',
   '빌라 스쿼드 — 실측 최근접': '🔁 <b>실측 최근접</b> — 선택한 11명이 실제 경기에서 움직인 모습과 가장 비슷한 FC26 역할을 부여. 현실 재현 세팅.',
   '선수 비교 — A (실측)': '📊 <b>선수 A 실측</b> — 위 비교에서 선택한 A 선수의 실측 히트맵을 슬롯 위치에 그린 것 (그리드 출처는 비교 카드 표기 참조).',
@@ -1320,7 +1445,7 @@ class Panel{
         const ly=(g.pad + py/100*(g.gridBottom-g.pad))/this.H*100;
         c.style.left=lx+'%'; c.style.top=ly+'%';
       } else { c.style.left=px+'%'; c.style.top=py+'%'; }
-      c.innerHTML=`<div class="dot" style="background:${p.color}">${p.pos}<span class="eye">${p.visible?'●':'○'}</span></div><div class="role">${p.name?p.name+' 실측':(p.sqName?p.sqName+' · ':'')+ROLES[p.r].n+' · '+(FOCUS_KR[p.focus]||p.focus)}</div>`;
+      c.innerHTML=`<div class="dot" style="background:${p.color}">${p.pos}<span class="eye">${p.visible?'●':'○'}</span></div><div class="role">${p.name?(p.map25?p.name+' 실측':p.name+' · '+ROLES[p.r].n+' · '+(FOCUS_KR[p.focus]||p.focus)):(p.sqName?p.sqName+' · ':'')+ROLES[p.r].n+' · '+(FOCUS_KR[p.focus]||p.focus)}</div>`;
       c.addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); this.mirrorVisibility(); });
       this.chipsEl.appendChild(c);
     });
@@ -1329,7 +1454,7 @@ class Panel{
     this.rowsEl.innerHTML='';
     this.su.players.forEach(p=>{
       const row=document.createElement('div'); row.className='row'+(this.su.selected===p.id?' sel':'');
-      if(p.name){   // measured/reference formation — real player's measured grid
+      if(p.name && p.map25){   // measured formation — real player's measured grid (이름만 있고 map25 없는 커널 프리셋(첼시·26/27 예상·투톱)은 아래 역할·포커스 드롭다운 분기)
         // (실측)/(실측 로테이션) 프리셋에서는 동 포지션의 DB 관리 선수(로테이션·영입 후보)로
         // 교체 선택 가능 — 그리드 출처는 CMP_SLOTS(슬롯별 실측 map25). 비교 모드 패널은 고정.
         const poolKey=p.pos==='LW'?'LM':p.pos;
@@ -1356,7 +1481,8 @@ class Panel{
       const fopts=ROLES[p.r].f.map(fx=>`<option value="${fx}" ${fx===p.focus?'selected':''}>${fmtFocus(fx)}</option>`).join('');
       const sim=this.simVsReal(p);
       const simHtml=sim==null?'':`<span class="simv ${sim>=0.75?'hi':sim>=0.55?'mid':'lo'}" title="반대 패널 같은 포지션 실측 히트맵과의 코사인 유사도">${Math.round(sim*100)}%</span>`;
-      const posHtml=p.sqName?`${p.pos}<br><span class="${(typeof sofifaAnyURL==='function'&&sofifaAnyURL(p.sqName))?'sf-name':''}" ${(typeof sofifaAnyURL==='function'&&sofifaAnyURL(p.sqName))?`data-sofifa="${p.sqName}" title="sofifa에서 FC26 확인"`:''} style="font-size:9px;color:var(--muted-2);letter-spacing:0">${p.sqName}</span>`:p.pos;
+      const dispName=p.sqName||p.name;   // 커널 프리셋의 named 선수도 포지션 아래 이름 표시
+      const posHtml=dispName?`${p.pos}<br><span class="${(typeof sofifaAnyURL==='function'&&sofifaAnyURL(dispName))?'sf-name':''}" ${(typeof sofifaAnyURL==='function'&&sofifaAnyURL(dispName))?`data-sofifa="${dispName}" title="sofifa에서 FC26 확인"`:''} style="font-size:9px;color:var(--muted-2);letter-spacing:0">${dispName}</span>`:p.pos;
       row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${posHtml}</span><div class="selects"><select class="rrole">${opts}</select><select class="rfocus">${fopts}</select>${simHtml}</div><button class="eyebtn ${p.visible?'':'off'}">${p.visible?'👁':'⦸'}</button>`;
       const rsel=row.querySelector('.rrole'),fsel=row.querySelector('.rfocus');
       rsel.addEventListener('change',e=>{ p.r=e.target.value; p.focus=ROLES[p.r].f[0]; p.map25=null; this.su.selected=p.id; this.refresh(); });
