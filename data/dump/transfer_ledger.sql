@@ -9,6 +9,7 @@ INSERT INTO transfer_ledger VALUES(8,'2026-summer','deduct','미들즈브러 셀
 INSERT INTO transfer_ledger VALUES(9,'2026-summer','out','만잠비 ← 프라이부르크',59.5,'클럽 레코드 (€70m, 애드온 포함)','Sky Sports (2026-07-17 공식)','CONFIRMED');
 INSERT INTO transfer_ledger VALUES(10,'2026-summer','out','고메스 ← 울버햄튼',38.0,'£34m + 애드온 £4m','Sky Sports (2026-07-17 공식)','CONFIRMED');
 INSERT INTO transfer_ledger VALUES(11,'2026-summer','out','시세 ← LASK',4.0,'26/27 합류 RCB','readastonvilla (2026-05)','CONFIRMED');
-INSERT INTO transfer_ledger VALUES(12,'2026-summer','pending','에스투피냔 ← AC밀란',13.0,'개인조건 합의, 이적료 협상 중 (€12-18m대)','Romano (2026-07-19)','HIGH');
-INSERT INTO transfer_ledger VALUES(13,'2026-summer','pending','팔리냐 ← 바이에른',21.0,'구조 조율 중 (~€25m)','Romano (2026-07-19)','MEDIUM-HIGH');
+INSERT INTO transfer_ledger VALUES(12,'2026-summer','pending','에스투피냔 ← AC밀란',13.0,'개인조건 합의 유지, 단 밀란 신임감독 Amorim 매각 승인 보류(차단설 vs 글래스고 투어 명단 제외로 임박설 병존), 이적료 €15-16m 절충설','Romano·Ben Jacobs·Calciomercato·Vitello (2026-07-27)','MEDIUM-HIGH');
+INSERT INTO transfer_ledger VALUES(13,'2026-summer','pending','팔리냐 ← 바이에른',21.0,'임대+콜옵션(€25m≈£21m) 구조로 합의, 선수 잉글랜드 이동 — 옵션 발동 시 지출은 2027 여름 귀속, 이번 창 현금 지출은 임대료 수준(미공개)','Romano·Yahoo/BFW·Tanswell(Athletic) (2026-07-27)','HIGH');
 INSERT INTO transfer_ledger VALUES(14,'2026-summer','pending','가르나초 ← 첼시 (임대+의무매입)',43.0,'2026/27 시즌 임대 + 조건부 의무매입(2027 여름 완전이적). 첼시 희망가 £42.6-43m, 트리거 조건은 26/27 출전 횟수 — 달성 용이하다고 보도됨. 아직 트리거 전이라 확정 지출 아님(에스투피냔·팔리냐와 동일하게 pending 처리).','Sky Sports·The Athletic·Romano (2026-07-22)','HIGH');
+INSERT INTO transfer_ledger VALUES(15,'2026-summer','pending','잭슨 ← 첼시',60.0,'첼시 호가 £65m, 빌라는 재정상 £60m 이하 목표(Telegraph) — 클럽 레코드 경신 전망, positive discussions 진행 중. 성사 시 추가 대형 매각 1건 필요 전망','Sky Sports·Athletic·Telegraph(John Percy) (2026-07-27)','HIGH');
