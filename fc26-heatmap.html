@@ -1036,6 +1036,64 @@ const FORMATIONS = {
     {pos:'ST', t:'ST', x:41,y:87, r:'st_advanced',   focus:'Attack',      name:'왓킨스'},     // 최전방 고정 박스 피니셔+좌채널 배후침투
     {pos:'ST', t:'ST', x:59,y:84, r:'st_advanced',   focus:'Support',     name:'잭슨'},       // 하강 링크·양채널 런·전방압박 트리거
   ],
+  /* Aston Villa 26/27 (가르나초 해방) — team_tactic_setups(2026-27, projected:left-release-A) 파생.
+     DRAFT 2026-07-29. projected 셸에서 2슬롯 델타: ①CAM playmaker/Roaming(로저스 INTERPLAY —
+     halfwinger는 포켓 6.2→4.6 + CAM-LM 충돌 .45→.72, 가르나초 컷인 레인과 충돌) ②LDM 고메스
+     dm_dlp/Roaming(좌측 창작 소멸 시 후방 공급, Package G). LB=마첸(디뉴 PSG행 확정 기준;
+     에스투피냔 영입 시 교체). RM 맥긴 Support 비협상(obs#27 — 해방 윙어는 한 번에 한 명).
+     용도: 기본 + 강팀 Deep/43-45(obs#8), 강팀전 가르나초 전방 F형 스왑(래시포드 선례 obs#36). */
+  '아스톤 빌라 26/27 (가르나초 해방)':[
+    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up',    name:'마르티네스'},
+    {pos:'LB', t:'FB', x:13,y:32, r:'fb_att_wb',     focus:'Support',     name:'마첸'},       // 컷인 릴레이 오버랩 — 래시포드×LB 겹침 .707 최저=상보
+    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스'},
+    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive',  name:'콘사'},
+    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Balanced',    name:'캐시'},
+    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_dlp',        focus:'Roaming',     name:'고메스'},     // 후방 공급 필수(Package G) — 캐비앗: 기능축=볼위너(obs#32), 팔리냐 합류 시 분담
+    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'카마라'},     // 중앙 스크린 — 좌측 뱅크 3.5인화의 보험
+    {pos:'LM', t:'WM', x:14,y:64, r:'wm_insidefwd',  focus:'Attack',      name:'가르나초'},   // 실측 .911 — 수비복귀 완화(래시포드 자기진영 .145 선례)
+    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming',     name:'만잠비'},     // 포켓 보호 — 캐비앗: 실측최적 halfwinger .817과 긴장, 바투리나 영입=완성 조건
+    {pos:'RM', t:'WM', x:86,y:64, r:'wm_widemid',    focus:'Support',     name:'맥긴'},       // 비협상 — 두 줄 4 유지(obs#27)
+    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile',   name:'왓킨스'},     // 우채널 우선(가르나초 컷인 레인과 분리)
+  ],
+  /* Aston Villa 26/27 (부엔디아 딥창작) — team_tactic_setups(2026-27, projected:interior-left-B1) 파생.
+     DRAFT 2026-07-29. 인테리어 좌측 B1: LM 부엔디아 wideplm/Build-Up(role:LM .782, 좌8 실측 8선발
+     7.09, 자기진영 .277 완전 뱅크복귀형) + CAM 만잠비 halfwinger .817 그대로(Package G 정합 —
+     LM wideplm/Build-Up이 측면 충돌 .72→.36 복구). 피봇 더블 홀딩 유지(부엔디아가 딥 공급 겸직,
+     고메스 기능축 정합). 좌측 뱅크 복귀 온전 → RM 재량 발생(산초 인버티드 실험 선례).
+     용도: 점유 주도/딥블록 상대 + 약팀 High/67(obs#8). 모듈레이션 축1 부엔디아 항 상설화. */
+  '아스톤 빌라 26/27 (부엔디아 딥창작)':[
+    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up',    name:'마르티네스'},
+    {pos:'LB', t:'FB', x:13,y:32, r:'fb_att_wb',     focus:'Support',     name:'마첸'},       // 임무 격상 — 좌측 폭 유일 공급원(디뉴 시즌 실측 .911 구조 재현)
+    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스'},
+    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive',  name:'콘사'},
+    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Balanced',    name:'캐시'},
+    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'고메스'},     // 더블 홀딩 유지 — 부엔디아 딥 공급으로 LDM dlp 불요
+    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'카마라'},
+    {pos:'LM', t:'WM', x:14,y:64, r:'wm_wideplm',    focus:'Build-Up',    name:'부엔디아'},   // role:LM .782 — 좌8 딥 창작, 투웨이+박스 도착(뉴캐슬전 실측)
+    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_halfwinger',focus:'Balanced',    name:'만잠비'},     // 실측최적 .817 그대로 — Package G 커널 정합(충돌 .36)
+    {pos:'RM', t:'WM', x:86,y:64, r:'wm_widemid',    focus:'Support',     name:'맥긴'},       // 기본 — 재량 변형: wideplm/Attack(role:season .761, 캐시 오버랩 스왑+숙련 확인 조건부)
+    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile',   name:'왓킨스'},
+  ],
+  /* Aston Villa 26/27 (IF형) — team_tactic_setups(2026-27, projected:interior-left-B2) 파생.
+     DRAFT 2026-07-29. 인테리어 좌측 B2 = 로저스 직무 승계 트랙: LM wm_insidefwd/Balanced
+     (만잠비 .700 로테이션급; 장기 1옵션 헤밍스 — 에메리 left 10 프로젝션(Tanswell 2026-07),
+     1군 실측 無 PENDING) + CAM playmaker/Roaming(창작+도착 분담 — B1의 더블 창작과 구별;
+     CAM 인선=부엔디아 프리 10 실측 근거: 포레스트전 9.4 free No.10, role CAM playmaker .59).
+     가르나초 Balanced 하향은 실측(Attack .911) 미스핏 — B2의 LM은 만잠비/헤밍스 전용.
+     3안 중 최저 우선순위(LM 후보 실측 빈약). */
+  '아스톤 빌라 26/27 (IF형)':[
+    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up',    name:'마르티네스'},
+    {pos:'LB', t:'FB', x:13,y:32, r:'fb_att_wb',     focus:'Support',     name:'마첸'},
+    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스'},
+    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive',  name:'콘사'},
+    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Balanced',    name:'캐시'},
+    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'고메스'},
+    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'카마라'},
+    {pos:'LM', t:'WM', x:14,y:64, r:'wm_insidefwd',  focus:'Balanced',    name:'만잠비'},     // .700 로테이션급 — 장기: 헤밍스(실측 축적 시 검증)
+    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming',     name:'부엔디아'},   // 프리 10 실측(포레스트 9.4) — 창작+LM 도착 분담
+    {pos:'RM', t:'WM', x:86,y:64, r:'wm_widemid',    focus:'Support',     name:'맥긴'},
+    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile',   name:'왓킨스'},
+  ],
   /* Chelsea 26/27 (Alonso) — 레버쿠젠 3-4-2-1 블루프린트의 첼시 이식. REFERENCE(타팀 구현, 실측 아님).
      스쿼드 = 2026-07-25 이적시장 반영(로저스£117m·팔레스트라£43m·퀜다£40m·에메가£22m IN /
      쿠쿠레야·A.산투스·T.조지·가르나초(빌라 임대) OUT — Wikipedia 26/27 Chelsea season 2026-07-25 수집).
@@ -1078,6 +1136,9 @@ const FORMATION_DESC = {
   '아스톤 빌라 25/26 (로저스 CAM)': '🎬 단일 경기 재현 — 리버풀전 4-2 (2026-05-15) 승리, 로저스 중앙 10번 기용 경기의 XI·역할.',
   '아스톤 빌라 26/27 (예상)': '🔮 <b>26/27 예상</b> — 2026-07-22 이적 전망 기준 예상 XI (에스투피냔·가르나초는 미확정 루머 포함). 기존 7인=성과 처방(최적), 영입 4인=타클럽/대표팀 실측 최근접 처방. 좌측=공격 사이드(에스투피냔 오버랩+가르나초 인버티드), 더블 볼위닝 피봇(고메스 좌·카마라 우). 캐비앗: 만잠비 하프윙어와 가르나초의 좌측 존 겹침 — 시즌 실측으로 검증 예정.',
   '아스톤 빌라 26/27 (투톱)': '⚔️ <b>26/27 투톱(예측)</b> — 왓킨스+잭슨 2스트라이커 <b>4-2-2-2</b>. 실측이 아니라 예측 세팅. 더블 피봇(고메스·카마라) 보존 + 폭은 풀백이 전담(에메리 "한 번에 한 명"). 스트라이커 스태거가 핵심: <b>왓킨스=최전방 박스 피니셔(Attack)</b> / <b>잭슨=하강 링크(Support)</b> — 둘 다 드롭 성향이라 동시 하강 시 박스 공동화 리스크. 2선=가르나초(좌 내향)+만잠비(중앙 공급 — 로저스는 첼시 매각). 근거: 포메이션 상수 예외(4-2-2-2 번리 H) + 잭슨 실측 st_advanced/Support .752. 대안 형태=4-4-2(리드관리·수비안정).',
+  '아스톤 빌라 26/27 (가르나초 해방)': '🅰️ <b>26/27 가르나초 해방 (DRAFT)</b> — 좌측 해방 윙어 모드(세션 설계 2026-07-29, DB projected:left-release-A). 예상 셸에서 2슬롯 델타: <b>CAM 만잠비 플레이메이커/로밍</b>(하프윙어는 가르나초 컷인 레인과 충돌 .72 — 포켓 보호; 바투리나 영입=완성 조건) + <b>LDM 고메스 DLP/로밍</b>(좌측 창작 소멸 시 후방 공급, Package G). RM 맥긴 지원 고정=비협상(두 줄 4, 해방 윙어는 한 번에 한 명). 용도: 기본 전술 + 강팀 Deep/43-45, 강팀전 가르나초 전방 F형 스왑(래시포드 선례).',
+  '아스톤 빌라 26/27 (부엔디아 딥창작)': '🅱️ <b>26/27 부엔디아 딥창작 (DRAFT · B1)</b> — 인테리어 좌측 모드(DB projected:interior-left-B1). <b>LM 부엔디아 와이드PM/빌드업</b>(role:LM .782, 좌8 실측 8선발 7.09 — 완전 뱅크복귀형 딥 창작) + <b>CAM 만잠비 하프윙어 .817 그대로</b>(Package G 정합: 충돌 .72→.36). 피봇 더블 홀딩 유지, 마첸=좌측 폭 유일 공급원. 좌측 복귀 온전→RM 재량: 맥긴 <b>와이드PM/공격 변형 가능</b>(role:season .761 실측최적 + 17m 중거리=딥블록 킬러 — 단 캐시 오버랩 스왑+wideplm 숙련 확인 조건부). 용도: 점유 주도/약팀 High-67.',
+  '아스톤 빌라 26/27 (IF형)': '🅱️ <b>26/27 IF형 (DRAFT · B2)</b> — 로저스 직무 승계 트랙(DB projected:interior-left-B2). <b>LM 인사이드 포워드/균형</b>(만잠비 .700 로테이션급; 장기 1옵션=<b>헤밍스</b> — 에메리 left 10 프로젝션, 1군 실측 無 PENDING) + <b>CAM 부엔디아 플레이메이커/로밍</b>(프리 10 실측 포레스트전 9.4) — 창작+도착 분담(B1의 더블 창작과 구별). 가르나초 Balanced 하향은 실측(.911 Attack) 미스핏이라 비권장. 3안 중 최저 우선순위.',
   '첼시 26/27 (알론소)': '🧪 <b>첼시 26/27 — 알론소 레버쿠젠 이식 (최종 전술 프리셋)</b> — 실측 아님=블루프린트, 상세 근거는 <b>전술 리포트 탭 → 알론소·첼시</b>.<br>' +
     '<b>팀 전술</b>: 포메이션 <b>5-4-1</b>(공격 시 3-2-5 · 수비 백5) · 택티컬 비전 <b>포제션</b> · 빌드업 <b>숏 패싱</b> · 수비 접근 <b>하이</b> · 라인 높이 <b>64</b>(하이라인+즉시 카운터프레스) — 에메리 빌라(Balanced/52)와 대비.<br>' +
     '<b>선수별 역할·포커스</b>: GK 산체스=<b>볼 플레잉 키퍼/빌드업</b> · LCB 콜윌=<b>볼 플레잉 센터백/적극적</b>(인카피에) · CB 아다라비오요=<b>볼 플레잉 센터백/빌드업</b>(타) · RCB 포파나=<b>와이드 백/지원</b>(탑소바/코수누 — 빌드업 시 와이드 이탈) · LWB 아토=<b>인버티드 윙백/빌드업</b>(그리말도 — 딥→대각 내향) · RWB 팔레스트라=<b>공격형 윙백/공격</b>(프림퐁 — 터치라인 하이) · LCM 엔소=<b>딥라잉 플레이메이커/빌드업</b>(샤카) · RCM 카이세도=<b>홀딩/볼 위닝</b>(팔라시오스) · LM 로저스=<b>와이드 플레이메이커/공격</b>(비르츠 — 좌 하프스페이스 창조) · RM 팔머=<b>인사이드 포워드/공격</b>(호프만 — 우 하프스페이스 득점) · ST 주앙 페드루=<b>어드밴스드 포워드/지원</b>(보니페이스 — 링크+압박 선봉).<br>' +
