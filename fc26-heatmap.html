@@ -1131,6 +1131,30 @@ const FORMATIONS = {
     {pos:'RM', t:'WM', x:78,y:64, r:'wm_insidefwd',  focus:'Attack',      name:'팔머'},        // 호프만 롤 — 인사이드 포워드로 우 하프스페이스 득점 위협
     {pos:'ST', t:'ST', x:50,y:86, r:'st_advanced',   focus:'Support',     name:'주앙 페드루'},  // 보니페이스 롤 — 드롭 링크+카운터프레스 선봉
   ],
+  /* Chelsea 26/27 (Alonso · prescription) — PROJECTED. 첼시 25/26 개인 실측(team=CHE, kind='measured')에
+     알론소 원칙(obs 40~62)을 얹은 파생. 알론소 첼시 공식전 0경기(첫 경기 2026-08-24 풀럼)이므로
+     팀 전술은 실측 근거가 아니다. 출처: team_tactic_setups(CHE, 2026-27, projected, id 15) +
+     player_role_map(team='CHE', kind='projected') / map25는 같은 선수의 kind='measured' 실측 그리드.
+     ★CCB(중앙 CB) 슬롯 신설 — 백3 세 명이 각자 자기 자리에서 최고치이고 다른 자리에서 급락한다
+     (하토 LCB .930→CCB .495 / 찰로바 CCB .873→RCB .744 / 포파나 RCB .953→CCB .669) → 중앙 CB를
+     좌우로 흡수하면 찰로바 .873이 .744로 깎인다. 커널 x=50(기존 LCB 31 / RCB 66 사이).
+     3-4-2-1의 두 하프스페이스 10번은 LM·RM에 배치하고 CAM 슬롯은 비운다(실측이 좌우 와이드를 지시).
+     LB(좌 윙백)는 gap:'<표시문구>' — 인선 근거 없음(쿠쿠렐라 레알 이적 + 팔레스트라·케다 첼시 실측 0).
+     gap 항목은 placedMap이 null을 돌려 히트맵·선수 수·최적화에서 빠지고 칩/로스터에만 공백으로 뜬다.
+     map25가 있으므로 이 패널은 실측 그리드 기준점이고, 역할·포커스는 처방 기록이다. */
+  '첼시 26/27 (알론소 처방)':[
+    {pos:'GK', t:'GK', x:50,y:11, r:'gk_goalkeeper', focus:'Defend',      name:'산체스',      map25:'0000000000000000010001X10'},  // 실측 .961 — gk_sweeper(.773)는 서사 우위였으나 실측 우선
+    {pos:'LB', t:'FB', x:14,y:46, r:'fb_att_wb',     focus:'Support',     gap:'인선 공백 — 좌 윙백(실측 후보 없음)'},              // 쿠쿠렐라 OUT·팔레스트라/케다 첼시 실측 0 → 11칸 중 이 한 칸만 비움
+    {pos:'LCB',t:'CB', x:31,y:36, r:'cb_bpd',        focus:'Aggressive',  name:'하토',        map25:'0000023100661007X30045200'},  // LCB .930 — "쿠쿠렐라 후임 LB" 제안을 실측이 반박(LB .717)
+    {pos:'CCB',t:'CB', x:50,y:34, r:'cb_bpd',        focus:'Aggressive',  name:'찰로바',      map25:'0020002331137922X8X316440'},  // ★CCB .873 > RCB .744 > LCB .665, 중심 x 52.7. 캐비앗: 45분+ 표본 3경기 / 그리드는 RCB 표기 경기
+    {pos:'RCB',t:'CB', x:66,y:32, r:'cb_bpd',        focus:'Aggressive',  name:'포파나',      map25:'000000001101262023X400344'},  // RCB .953(CCB .669·LCB .424) 우측 전용 — 자기진영 .70, obs#58 "강력한 CB 1"
+    {pos:'RB', t:'FB', x:86,y:46, r:'fb_att_wb',     focus:'Support',     name:'구스토',      map25:'00015111390004X0015900147'},  // .862 — 폭 독점 윙백(obs#46), 전방 4인 중 유일한 수비 질량 공급자
+    {pos:'LDM',t:'DM', x:50,y:45, r:'dm_dlp',        focus:'Roaming',     name:'카이세도',    map25:'000001333116X411574101111'},  // LDM .941(RDM .692) — 백라인 옆까지 하강해 압박 유인(obs#44)
+    {pos:'RDM',t:'DM', x:61,y:52, r:'dm_dlp',        focus:'Roaming',     name:'리스 제임스', map25:'301170125901284002X800123'},  // RDM .772 = 우측 피벗 유일 적합(엔소 RDM .361 부적합). ★표본 3경기 = 최약 칸
+    {pos:'LM', t:'WM', x:14,y:56, r:'wm_insidefwd',  focus:'Balanced',    name:'로저스',      map25:'65321X9632564117410121100'},  // LM .733(CAM .664) — 그리드는 빌라 25/26. 엔소 LM .750 근소 우위(로저스 근거는 알론소 지시+£117m)
+    {pos:'RM', t:'WM', x:86,y:60, r:'wm_wideplm',    focus:'Attack',      name:'팔머',        map25:'11223225XX015640123200011'},  // RM .845 ≫ CAM .676 — 알론소 "포켓" 지시와 충돌, 실측 중심 x=65 우측 편향
+    {pos:'ST', t:'ST', x:50,y:61, r:'st_false9',     focus:'Build-Up',    name:'주앙 페드루', map25:'243116X533232331212300110'},  // ST .624 < CAM .718 = "내려오는 9번"(obs#59). ⚠ 로저스와 겹침 .863 최고
+  ],
 };
 
 /* ============================================================
@@ -1139,7 +1163,7 @@ const FORMATIONS = {
 const PALETTE = ['#ff5d5d','#ffa63d','#ffe14d','#8ce65b','#3ddc97','#38c6e6','#5c8bff','#a97cff','#ff6fd8','#ff9d6e','#7de0c8'];
 const FKEYS = Object.keys(FORMATIONS);
 const AVL_MEASURED='아스톤 빌라 25/26 (실측)', AVL_MEASURED_ROT='아스톤 빌라 25/26 (실측 로테이션)', AVL_ROLES='아스톤 빌라 25/26 (역할)', AVL_OPTIMAL='아스톤 빌라 25/26 (최적)';
-const CHE_MAIN='첼시 26/27 (알론소)';
+const CHE_MAIN='첼시 26/27 (알론소)', CHE_PROJ='첼시 26/27 (알론소 처방)';
 
 /* ============================================================
    TEAM GATING (Phase 1) — 데이터 리팩터 없이 "무엇을 보여줄지"만 팀별로 가른다.
@@ -1157,7 +1181,10 @@ const TEAMS={
        prefix:'아스톤 빌라', defA:AVL_MEASURED, defB:AVL_OPTIMAL, rp:'emery',
        presetPrefixes:['아스톤 빌라','빌라 스쿼드','선수 비교']},
   CHE:{label:'첼시', modes:['real','report'],
-       prefix:'첼시', defA:CHE_MAIN, defB:CHE_MAIN, rp:'alonso',
+       /* defA=처방(map25 실측 그리드=기준점) / defB=블루프린트(역할 커널) — 빌라의
+          실측↔최적 배치와 같은 구조. prefix '첼시'가 두 프리셋을 모두 잡으므로
+          패널 A/B 드롭다운에서 서로 바꿔 고를 수 있다. */
+       prefix:'첼시', defA:CHE_PROJ, defB:CHE_MAIN, rp:'alonso',
        presetPrefixes:['첼시']},
 };
 let TEAM='AVL', TEAM_STORED=false;
@@ -1193,6 +1220,14 @@ const FORMATION_DESC = {
     '<b>팀 전술</b>: 포메이션 <b>5-4-1</b>(공격 시 3-2-5 · 수비 백5) · 택티컬 비전 <b>포제션</b> · 빌드업 <b>숏 패싱</b> · 수비 접근 <b>하이</b> · 라인 높이 <b>64</b>(하이라인+즉시 카운터프레스) — 에메리 빌라(Balanced/52)와 대비.<br>' +
     '<b>선수별 역할·포커스</b>: GK 산체스=<b>볼 플레잉 키퍼/빌드업</b> · LCB 콜윌=<b>볼 플레잉 센터백/적극적</b>(인카피에) · CB 아다라비오요=<b>볼 플레잉 센터백/빌드업</b>(타) · RCB 포파나=<b>와이드 백/지원</b>(탑소바/코수누 — 빌드업 시 와이드 이탈) · LWB 아토=<b>인버티드 윙백/빌드업</b>(그리말도 — 딥→대각 내향) · RWB 팔레스트라=<b>공격형 윙백/공격</b>(프림퐁 — 터치라인 하이) · LCM 엔소=<b>딥라잉 플레이메이커/빌드업</b>(샤카) · RCM 카이세도=<b>홀딩/볼 위닝</b>(팔라시오스) · LM 로저스=<b>와이드 플레이메이커/공격</b>(비르츠 — 좌 하프스페이스 창조) · RM 팔머=<b>인사이드 포워드/공격</b>(호프만 — 우 하프스페이스 득점) · ST 주앙 페드루=<b>어드밴스드 포워드/지원</b>(보니페이스 — 링크+압박 선봉).<br>' +
     '스쿼드 2026-07-25 기준(잭슨 제외 — 빌라行 HIGH) · 로테이션: 제임스(RWB/RCB) · 에스테방/퀜다(RM·RWB) · 라비아/에수구(피봇) · 델랍/에메가(타깃 포워드) · 지튼스(LM).',
+  [CHE_PROJ]: '🧭 <b>첼시 26/27 — 알론소 처방 (PROJECTED)</b> — 첼시 25/26 <b>개인 실측</b>에 알론소 원칙(obs 40~62)을 얹은 파생. 출처: team_tactic_setups(CHE, 2026-27, projected) + player_role_map(team=CHE) — 그림은 각 선수의 <b>실측 그리드</b>, 역할·포커스는 <b>처방</b>입니다.<br>' +
+    '<b>⚠ 등급 = PROJECTED</b>: 알론소 첼시 <b>공식전 0경기</b>(첫 경기 2026-08-24 풀럼). 개인 실측은 <b>25/26 마레스카·로즈니어 체제</b> 표본이라 <b>팀 전술의 근거가 아니다</b> — 선수 개인의 위치 성향 기준선일 뿐. 블루프린트 버전은 <b>첼시 26/27 (알론소)</b>, 상세 근거는 <b>전술 리포트 탭 → 알론소·첼시</b>.<br>' +
+    '<b>팀 설정</b>: 포메이션 <b>3-4-2-1</b> · 빌드업 <b>숏 패싱</b> · 수비 접근 <b>밸런스드</b> · 라인 높이 <b>58</b>(파운데이션 52보다 높게, 단 obs#37 "하이라인" 근거 미달 정정 반영해 64에서 하향 — 1·2티어 소스에 라인 수치가 없고 PL 공식은 더 깊은 구조로 서술).<br>' +
+    '<b>★CCB(중앙 센터백) 슬롯 신설 근거</b>: 백3 세 명이 <b>각자 자기 자리에서 최고치이고 다른 자리에서 급락</b>한다 — 하토 <b>LCB .930</b>(CCB .495) · 찰로바 <b>CCB .873</b>(LCB .665 · RCB .744) · 포파나 <b>RCB .953</b>(CCB .669 · LCB .424). 중앙 CB를 좌우 CB로 흡수하면 찰로바 .873이 <b>.744로 깎인다</b> → 커널 x=<b>50</b>(기존 LCB 31 / RCB 66 사이)의 독립 슬롯이 필요하다. 백3의 중앙은 좌우와 역할이 다르다(스토퍼/커버, 전진 캐리 주체).<br>' +
+    '<b>선수별</b>: GK 산체스=<b>골키퍼/수비</b>(실측 .961 — 알론소의 "GK가 +1 수적우위"(obs#44)는 gk_sweeper를 함의하나 실측 .773으로 낮아 기각, 서사보다 실측 우선) · LCB 하토=<b>볼 플레잉 CB/적극적</b>(.930 — A2 조사의 "쿠쿠렐라 후임 LB" 제안을 실측이 반박: LB .717) · <b>CCB 찰로바=볼 플레잉 CB/적극적</b>(.873, 중심 x 52.7) · RCB 포파나=<b>볼 플레잉 CB/적극적</b>(.953, 자기진영 .70으로 백3 중 가장 순수한 수비형 = obs#58 "강력한 CB 1") · RB 구스토=<b>공격형 윙백/지원</b>(.862 — obs#46 "윙백은 크로서가 아니라 득점자", 전방 4인 중 유일한 수비 질량 공급자) · LDM 카이세도=<b>딥라잉 플레이메이커/로밍</b>(.941 — 백라인 옆까지 하강해 압박 유인 후 관통, obs#44) · RDM 리스 제임스=<b>딥라잉 플레이메이커/로밍</b>(.772) · LM 로저스=<b>인사이드 포워드/균형</b>(.733) · RM 팔머=<b>와이드 플레이메이커/공격</b>(.845) · ST 주앙 페드루=<b>폴스 나인/빌드업</b>(ST .624 < <b>CAM .718</b> = obs#59 "내려오는 9번"을 실측이 지지).<br>' +
+    '<b>알론소 지시 vs 실측 충돌</b>: 그는 팔머·로저스를 <b>"포켓"(스트라이커 근처·10번 근처)</b>으로 규정했으나 실측은 <b>팔머 RM .845</b>(CAM .676) · <b>로저스 LM .733</b>(CAM .664) = <b>좌우 와이드</b>를 지시한다. 그래서 3-4-2-1의 두 하프스페이스 10번을 <b>LM·RM에 배치하고 CAM 슬롯은 비운다</b>. 즉 이 처방의 2×10은 알론소의 언어가 아니라 <b>실측의 언어</b>다(불변규칙 #3).<br>' +
+    '<b>미해결 3건</b>: ①<b>좌 윙백(LB) 인선 공백</b> — 11칸 중 이 한 칸만 비어 있다(쿠쿠렐라 레알 이적 + 팔레스트라·케다 첼시 실측 0). obs#61이 지목한 "좌측이 구조 최약 슬롯"이 처방에서도 공백으로 남는다. 영입 시 형태는 구스토의 거울상(공격형 윙백/지원). ②<b>RDM</b> — 엔소는 RDM <b>.361로 부적합</b>(LDM .698)이라 카이세도(.941)와 같은 쪽을 원하고, 우측 피벗 유일 적합자 리스 제임스는 <b>표본 3경기</b> = 이 처방의 가장 약한 칸. ③<b>로저스×주앙 페드루 실측 겹침 .863</b>(전체 최고) — 좌측 10번과 9번이 같은 공간을 쓴다, 알론소 체계의 실질 리스크 지점.<br>' +
+    '<b>추가 캐비앗</b>: 찰로바·제임스 표본 각 3경기(찰로바 그리드는 RCB 표기 경기에서 수집) · <b>로저스 그리드는 빌라 25/26(에메리 체제)</b>이고 실측만 보면 <b>엔소가 LM .750으로 근소 우위</b> — 로저스를 두는 근거는 알론소의 명시 지시(obs#59, 1티어 구단 공식)와 £117m 영입 사실이며 실측 근거가 아니다.',
   '빌라 스쿼드 — 처방(최적)': '🎯 <b>처방(최적)</b> — 선택한 11명에게 성과 기준(평점×결과)으로 가장 잘 먹혔던 역할을 부여. 승리 최적화 세팅.',
   '빌라 스쿼드 — 실측 최근접': '🔁 <b>실측 최근접</b> — 선택한 11명이 실제 경기에서 움직인 모습과 가장 비슷한 FC26 역할을 부여. 현실 재현 세팅.',
   '선수 비교 — A (실측)': '📊 <b>선수 A 실측</b> — 위 비교에서 선택한 A 선수의 실측 히트맵을 슬롯 위치에 그린 것 (그리드 출처는 비교 카드 표기 참조).',
@@ -1220,6 +1255,7 @@ const _mapCache={};
 function decodeMap(code){ if(_mapCache[code])return _mapCache[code]; const a=new Float32Array(25); for(let i=0;i<25;i++){const ch=code[i]; a[i]=ch==='X'?1:(+ch)/10;} return _mapCache[code]=a; }
 function sumCode(code){ const a=decodeMap(code); let s=0; for(const v of a)s+=v; return s; }
 function placedMap(p){
+  if(p.gap) return null;                   // 인선 공백 슬롯 — 히트맵 기여 없음(칩만 자리 표시). 빌라 데이터에는 gap 항목이 없다
   if(p.map25) return decodeMap(p.map25);   // real measured heatmap — already absolute, skip mirror/shift
   const rm=MAPS[p.r]; if(!rm) return null;
   const code=rm[p.focus]||rm[Object.keys(rm)[0]]; if(!code) return null;
@@ -1240,7 +1276,7 @@ function playersOf(formation){
 }
 function defaultSetup(formation){ return {formation,mode:'composite',intensity:1,selected:-1,players:playersOf(formation)}; }
 function snapshot(su){ return {formation:su.formation,mode:su.mode,intensity:su.intensity,
-  players:su.players.map(p=>({pos:p.pos,t:p.t,x:p.x,y:p.y,r:p.r,id:p.id,focus:p.focus,map25:p.map25,name:p.name,visible:p.visible,color:p.color}))}; }
+  players:su.players.map(p=>({pos:p.pos,t:p.t,x:p.x,y:p.y,r:p.r,id:p.id,focus:p.focus,map25:p.map25,name:p.name,gap:p.gap,visible:p.visible,color:p.color}))}; }
 function fromSnapshot(sn){ return {formation:sn.formation,mode:sn.mode,intensity:sn.intensity,selected:-1,
   players:sn.players.map(p=>({...p}))}; }
 
@@ -1369,7 +1405,7 @@ class Panel{
   closeSim(){ this.simEl.classList.remove('open'); this.simEl.innerHTML=''; this.simRows=null; }
   simulate(){
     if(this.su.formation.startsWith('빌라 스쿼드')){ this.simulateSquad(); return; }
-    const I=this.su.intensity, vis=this.su.players.filter(p=>p.visible&&!p.map25);
+    const I=this.su.intensity, vis=this.su.players.filter(p=>p.visible&&!p.map25&&!p.gap);
     this.simEl.classList.add('open');
     if(this.su.players.some(p=>p.map25)&&!vis.length){ this.simEl.innerHTML='<div class="sim-empty">실측 히트맵 패널은 고정 데이터라 역할 최적화 대상이 아닙니다. 반대편(게임 역할) 패널에서 사용하세요.</div>'; this.simRows=null; return; }
     if(!vis.length){ this.simEl.innerHTML='<div class="sim-empty">표시된 선수가 없습니다. 셀 총합을 계산할 선수를 켜주세요.</div>'; this.simRows=null; return; }
@@ -1490,7 +1526,7 @@ class Panel{
   renderHeat(){
     const ctx=this.heat.getContext('2d'); ctx.setTransform(this.DPR,0,0,this.DPR,0,0); ctx.clearRect(0,0,this.W,this.H);
     if(!this.cellGeom) this.computeGeom(); const {pad,gap,cw,ch,rad}=this.cellGeom;
-    const vis=this.su.players.filter(p=>p.visible);
+    const vis=this.su.players.filter(p=>p.visible&&!p.gap);   // 인선 공백은 선수 수·합계에서 제외
     this.visCache = vis.map(p=>({p, m:placedMap(p)}));   // for hover tooltip
 
     // whole-map summed score (all 25 cells, intensity applied) — independent of display mode
@@ -1567,7 +1603,7 @@ class Panel{
         const ly=(g.pad + py/100*(g.gridBottom-g.pad))/this.H*100;
         c.style.left=lx+'%'; c.style.top=ly+'%';
       } else { c.style.left=px+'%'; c.style.top=py+'%'; }
-      c.innerHTML=`<div class="dot" style="background:${p.color}">${p.pos}<span class="eye">${p.visible?'●':'○'}</span></div><div class="role">${p.name?(p.map25?p.name+' 실측':p.name+' · '+ROLES[p.r].n+' · '+(FOCUS_KR[p.focus]||p.focus)):(p.sqName?p.sqName+' · ':'')+ROLES[p.r].n+' · '+(FOCUS_KR[p.focus]||p.focus)}</div>`;
+      c.innerHTML=`<div class="dot" style="background:${p.color}">${p.pos}<span class="eye">${p.visible?'●':'○'}</span></div><div class="role">${p.gap?'⚠ '+p.gap:(p.name?(p.map25?p.name+' 실측':p.name+' · '+ROLES[p.r].n+' · '+(FOCUS_KR[p.focus]||p.focus)):(p.sqName?p.sqName+' · ':'')+ROLES[p.r].n+' · '+(FOCUS_KR[p.focus]||p.focus))}</div>`;
       c.addEventListener('click',()=>{ p.visible=!p.visible; this.refresh(); this.mirrorVisibility(); });
       this.chipsEl.appendChild(c);
     });
@@ -1576,11 +1612,18 @@ class Panel{
     this.rowsEl.innerHTML='';
     this.su.players.forEach(p=>{
       const row=document.createElement('div'); row.className='row'+(this.su.selected===p.id?' sel':'');
+      if(p.gap){   // 인선 공백 슬롯 — 처방할 선수가 없는 칸. 역할·포커스 드롭다운을 주지 않는다(빈 칸임을 흐리지 않기 위해)
+        row.innerHTML=`<span class="swatch" style="background:${p.color}"></span><span class="pos">${p.pos}</span><div class="selects"><span class="rname" style="color:#ffa63d" title="이 슬롯은 실측 근거가 있는 후보가 없어 비워 둔 칸입니다">⚠ ${p.gap}</span></div><span></span>`;
+        this.rowsEl.appendChild(row); return;
+      }
       if(p.name && p.map25){   // measured formation — real player's measured grid (이름만 있고 map25 없는 커널 프리셋(첼시·26/27 예상·투톱)은 아래 역할·포커스 드롭다운 분기)
         // (실측)/(실측 로테이션) 프리셋에서는 동 포지션의 DB 관리 선수(로테이션·영입 후보)로
         // 교체 선택 가능 — 그리드 출처는 CMP_SLOTS(슬롯별 실측 map25). 비교 모드 패널은 고정.
         const poolKey=p.pos==='LW'?'LM':p.pos;
-        const slot=(!this.su.formation.startsWith('선수 비교')&&typeof CMP_SLOTS!=='undefined')?CMP_SLOTS[poolKey]:null;
+        /* CMP_SLOTS는 빌라 전용 자산(슬롯별 빌라 실측·영입후보)이라 타 팀 실측 프리셋
+           (첼시 처방)에서 이 드롭다운을 열면 빌라 선수가 첼시 로스터에 뜬다 → AVL 전용.
+           빌라 프리셋은 항상 TEAM==='AVL'에서만 표시되므로 빌라 동작은 완전 동일. */
+        const slot=(TEAM==='AVL'&&!this.su.formation.startsWith('선수 비교')&&typeof CMP_SLOTS!=='undefined')?CMP_SLOTS[poolKey]:null;
         const cands=slot?slot.c.filter(c=>c.grid):[];
         if(cands.length>1){
           const extra=cands.some(c=>c.n===p.name)?'':`<option value="${p.name}" selected>${p.name}</option>`;
@@ -2075,7 +2118,7 @@ const TRANSFER_TARGETS=[
 /* AUTOGEN:TRANSFER_OUTGOING:START */
 const TRANSFER_OUTGOING=[
 {player:"Emiliano Martínez",dest_club:"Juventus",likelihood:"HIGH",confidence:"MEDIUM-HIGH — 1티어(Romano) 협상 재개 확인 + 유벤투스 감독 공개 발언, 단 클럽 공식 부인 지속·이적료 격차 존재로 HIGH 미달. [2026-07-27 21시 재상향]",source:"Fabrizio Romano; Gianluca Di Marzio; La Gazzetta dello Sport; Express&Star(Matt Maher); Luciano Spalletti(Gazzetta 경유); Fabrizio Romano(2026-07-27 재확인); Gazzetta dello Sport(Spalletti 인터뷰) 2026-07-26; readastonvilla 2026-07-28",last_news_date:"2026-07-28"},
-{player:"Ezri Konsa",dest_club:"Arsenal",likelihood:"MEDIUM-HIGH",confidence:"MEDIUM-HIGH 유지 — 아스날 최우선 후보로 확인되나 밸류에이션 격차가 커 HIGH 미달.",source:"BBC Sami Mokbel ; Mail Sport via sports.yahoo.com/articles/arsenal-preparing-bid-sign-ezri-132838099.html ; readastonvilla konsa-contract-remains-unsigned (2026-07-26); Sky Sports; FootballTransfers; ReadAstonVilla; Football365; FootballInsider",last_news_date:"2026-07-29"},
+{player:"Ezri Konsa",dest_club:"Arsenal",likelihood:"MEDIUM-HIGH",confidence:"MEDIUM-HIGH 유지 — 아스날 최우선 후보로 확인되나 밸류에이션 격차가 커 HIGH 미달. / [2026-07-30] 리버풀 관심은 2티어(TEAMtalk 인용)에 그쳐 등급 미반영 — 1티어 확인 시 dest_club 재판정.",source:"BBC Sami Mokbel ; Mail Sport via sports.yahoo.com/articles/arsenal-preparing-bid-sign-ezri-132838099.html ; readastonvilla konsa-contract-remains-unsigned (2026-07-26); Sky Sports; FootballTransfers; ReadAstonVilla; Football365; FootballInsider",last_news_date:"2026-07-30"},
 {player:"Lucas Digne",dest_club:"Paris Saint-Germain",likelihood:"CONFIRMED",confidence:"CONFIRMED — Romano \"here we go\"(1티어), 실행 시점만 월드컵 이후로 이연. / 2026-07-15: 구단간 통보·개인합의 완료 확인 — CONFIRMED 유지.",source:"https://readastonvilla.com/2026/07/13/aston-villa-face-major-digne-decision-after-psg-clause-emerges/ ; https://www.getfootballnewsfrance.com/2026/psg-express-interest-for-aston-villas-lucas-digne/ ; https://www.teamtalk.com/aston-villa/nightmare-scenario-psg-push-lucas-digne-youri-tielemans-exit (2026-07-13) ; https://www.getfootballnewsfrance.com/2026/psg-to-sign-aston-villas-lucas-digne-after-paying-e10m-release-clause/ (2026-07-14)",last_news_date:null},
 {player:"Ian Maatsen",dest_club:"미정",likelihood:"DEAD (마첸 1옵션 확정 - 애슬레틱)",confidence:"DEAD 추정 — Athletic(1티어) 마첸 1옵션 확정 보도로 유출설 종료. [2026-07-19 재검증]",source:"https://www.footballinsider247.com/aston-villa/im-told-aston-villa-plan-to-accept-ian-maatsen-offer-as-unai-emery-eyes-new-signing ; readastonvilla 2026-07-13 잔류 리셋 보도(상충)",last_news_date:null},
 {player:"Youri Tielemans",dest_club:"Manchester United",likelihood:"CONFIRMED",confidence:"CONFIRMED — Romano \"here we go\" + 메디컬 부킹 보도(복수 소스), 공식 발표만 남음. / 2026-07-15: 공식 발표 완료(양 클럽 확인) — CONFIRMED 확정.",source:"https://www.skysports.com/football/news/11095/13562972/youri-tielemans-manchester-united-in-talks-to-sign-aston-villa-and-belgium-midfielder ; https://www.espn.com/soccer/story/_/id/49348973/youri-tielemans-man-united-advanced-talks-aston-villa-sources ; https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/07/man-utd-transfer-news-youri-tielemans-aston-villa-david-ornstein-advanced-talks-summer-2026 (2026-07-13) ; https://www.skysports.com (Plettenberg 메디컬 임박) ; Romano X/YouTube 07-14",last_news_date:null},
