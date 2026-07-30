@@ -144,6 +144,29 @@ def gen_xi_owned(conn):
     return "const XI_OWNED=[\n" + "\n".join(lines) + "\n];", len(rows)
 
 
+def warn_dropped_teams(conn):
+    """다른 팀 행이 생겼는데 조용히 UI에서 빠지는 것을 막는다.
+
+    이 스크립트의 AUTOGEN 블록은 빌라 UI 전용이라 모든 쿼리가 TEAM으로 필터된다.
+    첼시·리버풀 이적 데이터를 넣는 날, 아무 경고 없이 누락되면 "DB에는 있는데 툴에는
+    없는" 상태를 눈치채기 어렵다 — 그때 이 경고가 마커 추가 작업을 상기시킨다.
+    (마커를 미리 만들어 두지 않는 이유: 대응 블록이 HTML에 없으면 replace_block이
+     sys.exit 한다. 실제 데이터가 생길 때 HTML 블록과 함께 추가할 것.)"""
+    dropped = []
+    for table in ("transfer_targets", "transfer_outgoing", "transfer_ledger", "squad_positions"):
+        for team, n in conn.execute(
+            f"SELECT team, COUNT(*) FROM {table} WHERE team!=? GROUP BY team", (TEAM,)
+        ).fetchall():
+            dropped.append(f"{table}:{team}={n}")
+    if dropped:
+        print(
+            f"⚠️  {TEAM} 외 팀 행이 UI에서 제외됨 — {', '.join(dropped)}. "
+            f"툴에 노출하려면 해당 팀 AUTOGEN 마커를 fc26-heatmap.html에 추가하고 "
+            f"이 스크립트에 생성 루프를 넣을 것 (docs/40-pipeline.md).",
+            file=sys.stderr,
+        )
+
+
 def replace_block(html, marker, new_body):
     start = f"/* AUTOGEN:{marker}:START */"
     end = f"/* AUTOGEN:{marker}:END */"
@@ -158,6 +181,7 @@ def main():
     conn = sqlite3.connect(DB)
     conn.row_factory = sqlite3.Row
     html = HTML.read_text(encoding="utf-8")
+    warn_dropped_teams(conn)
     targets_body, n_targets = gen_transfer_targets(conn)
     outgoing_body, n_outgoing = gen_transfer_outgoing(conn)
     ledger_body, n_ledger = gen_transfer_ledger(conn)
