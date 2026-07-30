@@ -1,13 +1,33 @@
 ---
 name: transfer-watch
-description: 아스톤 빌라 이적 루머 정기 감시 — TransferFeed 스캔 → 1~2티어 기자 크로스체크 → 강한 루머만 실측 분석 후 transfer_targets에 추가. 스케줄(매일 09/21시) 또는 수동(/transfer-watch)으로 실행.
+description: 아스톤 빌라 이적 루머 정기 감시 — 스캔·크로스체크는 서브에이전트에 위임하고, 메인 세션이 추가 기사 검사·등급 확정·실측·transfer_targets 반영을 맡는다. 스케줄(매일 09/21시) 또는 수동(/transfer-watch)으로 실행.
 ---
 
 # 빌라 이적 루머 감시 파이프라인
 
 작업 디렉터리: `/Users/user/Documents/tactics`. 규칙은 CLAUDE.md와 docs/30-data-rules.md를 따른다.
 
-## 1. 루머 소스 스캔
+## 0. 실행 구조 — 스캔은 서브에이전트, 판정·실측·DB는 메인 세션 (2026-07-30 확정)
+
+§1~2(소스 스캔 + 티어 크로스체크)는 **`Agent` 툴로 서브에이전트에 위임**한다. 검색·페이지 읽기가
+대량 토큰을 쓰는 데 반해 산출물은 "이름·등급·URL" 목록뿐이라, 메인 세션의 컨텍스트를 §3 이후
+(실측·커널 계산·DB 쓰기·리포트)에 남겨두는 편이 낫다.
+
+- **서브에이전트 범위**: §1 스캔 + §2 크로스체크. `subagent_type: general-purpose`.
+  프롬프트에 반드시 포함할 것:
+  ① 오늘 날짜, ② **DB 쓰기·파일 편집·git·`scripts/` 실행 금지(읽기·검색 전용)**,
+  ③ `reports/transfer-watch/<오늘>.md`를 먼저 읽고 **같은 날 이미 판정된 건은 새 근거가 있을 때만 보고**,
+  ④ 3티어 목록(Fichajes·CaughtOffside·thehardtackle·insidefutbol·givemesport·Yardbarker 등)과
+     **애그리게이터가 인용한 원출처를 추적하라**는 지시, ⑤ 아래 4개 절 고정 보고 형식
+     (신규 이름 후보 / 기존 행 상태 변화 / 크로스체크 실패 / 변동 없음 확인) + **항목마다 URL 필수**.
+- **메인 세션 범위**: 서브에이전트 보고를 받은 뒤 ⑴ 등급 **최종 판정**(에이전트 제안은 참고값이고
+  보존 정책 적용·슬롯 결정은 메인이 한다), ⑵ 애매한 건에 대한 **추가 기사 검사**(1티어 직접 확인,
+  원출처 추적, 상충 보도 대조), ⑶ §3 실측·커널 적합도, ⑷ §4 DB 반영, ⑸ §4-2 리포트, ⑹ §5 커밋·푸시.
+- 에이전트를 띄운 직후 대기하지 말고, 메인 세션은 그 사이 **실측 백로그(PENDING MEASUREMENT)**나
+  전날 미해결 항목을 먼저 처리한다. 보고가 오면 합쳐서 리포트를 쓴다.
+- 헤드리스 스케줄 실행에서 `Agent` 툴을 쓸 수 없으면 메인 세션이 §1~2를 직접 수행한다(기존 방식).
+
+## 1. 루머 소스 스캔 *(서브에이전트 담당)*
 
 - `WebFetch`로 https://www.transferfeed.com/clubs/aston-villa/15 와
   https://www.fotmob.com/rumours?teamIds=10252 를 읽고
@@ -16,7 +36,7 @@ description: 아스톤 빌라 이적 루머 정기 감시 — TransferFeed 스�
 - 이미 `transfer_targets`에 있는 선수는 상태 변화(협상 단계 진전/무산)만 확인.
   `sqlite3 data/avl_analysis.db "SELECT name, slot, likelihood FROM transfer_targets WHERE window='2026-summer'"`
 
-## 2. 1~2티어 기자 크로스체크
+## 2. 1~2티어 기자 크로스체크 *(서브에이전트 담당 — 최종 판정은 메인 세션)*
 
 새 이름 또는 상태 변화 후보마다 `WebSearch`로 확인한다:
 `"Aston Villa" "<선수명>" transfer` (+필요시 기자명).
@@ -40,7 +60,7 @@ MEDIUM·MEDIUM-LOW·LOW·DEAD로 판정/강등된 건은 DB에서 삭제하고, 
 리포트 파일(reports/transfer-watch/)에만 남긴다 (DB=실행 가능한 숏리스트, 리포트=전체 로그).
 새 루머가 MEDIUM이면 리포트에 기록하되 DB에는 넣지 않는다.
 
-## 3. 강한 루머(MEDIUM 이상) 분석 → DB 추가
+## 3. 강한 루머(MEDIUM 이상) 분석 → DB 추가 *(메인 세션 담당)*
 
 docs/20-fc-game-system.md의 영입 후보 파이프라인 그대로:
 
