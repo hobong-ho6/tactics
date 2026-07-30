@@ -38,7 +38,7 @@ CREATE VIEW v_best AS
   FROM appearances a JOIN players p ON p.id=a.player_id JOIN matches m ON m.id=a.match_id
   ORDER BY p.name, a.rank_for_player
 /* v_best(name,primary_position,date,opponent,competition,result,rank_for_player,rating,minutes,position,role,heat_zones) */;
-CREATE TABLE streaks(id INTEGER PRIMARY KEY, label TEXT UNIQUE, note TEXT, season TEXT);
+CREATE TABLE streaks(id INTEGER PRIMARY KEY, label TEXT UNIQUE, note TEXT, season TEXT, team TEXT DEFAULT 'AVL');
 CREATE TABLE match_streak(match_id INTEGER REFERENCES matches(id), streak_id INTEGER REFERENCES streaks(id), UNIQUE(match_id,streak_id));
 CREATE TABLE seasons(
   code TEXT PRIMARY KEY,          -- '2025-26'
@@ -71,7 +71,7 @@ CREATE TABLE player_role_map(
   role_id TEXT,                  -- FK-ish to game_roles(game_version, role_id)
   focus TEXT,
   map25 TEXT,                    -- optional real-heatmap grid
-  rationale TEXT,
+  rationale TEXT, team TEXT DEFAULT 'AVL',
   PRIMARY KEY(player_id, season, game_version, kind)
 );
 CREATE TABLE game_tactic_params(
@@ -81,20 +81,6 @@ CREATE TABLE game_tactic_params(
   description TEXT,
   UNIQUE(game_version, param, option)
 );
-CREATE TABLE team_tactic_setups(
-  id INTEGER PRIMARY KEY,
-  season TEXT NOT NULL REFERENCES seasons(code),
-  game_version TEXT NOT NULL,
-  kind TEXT NOT NULL,          -- measured / role / optimal / match:<tag> (joins player_role_map.kind)
-  formation TEXT,
-  build_up_style TEXT,
-  defensive_approach TEXT,
-  line_height INTEGER,
-  tactic_code TEXT,            -- in-game share code once created & verified in FC26
-  rationale TEXT,
-  confidence TEXT,
-  UNIQUE(season, game_version, kind)
-);
 CREATE TABLE tactic_observations(
   id INTEGER PRIMARY KEY,
   season TEXT NOT NULL REFERENCES seasons(code),
@@ -103,7 +89,7 @@ CREATE TABLE tactic_observations(
   evidence TEXT,
   source TEXT,
   confidence TEXT
-);
+, team TEXT DEFAULT 'AVL');
 CREATE TABLE player_duties(
   id INTEGER PRIMARY KEY,
   season TEXT NOT NULL REFERENCES seasons(code),
@@ -114,7 +100,7 @@ CREATE TABLE player_duties(
   adherence TEXT,
   game_role_implication TEXT,
   source TEXT,
-  confidence TEXT,
+  confidence TEXT, team TEXT DEFAULT 'AVL',
   UNIQUE(season, player_id, position)
 );
 CREATE TABLE player_match_positions(
@@ -127,7 +113,7 @@ CREATE TABLE player_match_positions(
   avg_x REAL, avg_y REAL,        -- SofaScore average-position (x attack dir, y low=right)
   started INTEGER,               -- 1=start, 0=sub appearance
   pos_class TEXT,                -- classified slot; NULL when minutes<45 (avg unreliable)
-  source TEXT, confidence TEXT,
+  source TEXT, confidence TEXT, team TEXT DEFAULT 'AVL',
   UNIQUE(player_id, event_id)
 );
 CREATE VIEW v_position_profile AS
@@ -139,18 +125,6 @@ FROM player_match_positions pmp JOIN players p ON p.id=pmp.player_id
 WHERE pmp.pos_class IS NOT NULL
 GROUP BY pmp.player_id, pmp.pos_class
 /* v_position_profile(name,player_id,pos_class,apps,mins,avg_rating,best,ax,ay) */;
-CREATE TABLE transfer_targets(
-  id INTEGER PRIMARY KEY,
-  window TEXT NOT NULL,          -- '2026-summer'
-  name TEXT NOT NULL, name_kr TEXT,
-  sofascore_id INTEGER, club TEXT, position TEXT,
-  slot TEXT NOT NULL,            -- Villa 4-2-3-1 slot this row maps to
-  likelihood TEXT,               -- HIGH / MEDIUM-HIGH / MEDIUM / MEDIUM-LOW
-  map25 TEXT, tool_x REAL, tool_y REAL, sample_n INTEGER, avg_rating REAL,
-  opt_role TEXT, opt_focus TEXT, fit_role TEXT, fit_focus TEXT, fit_sim REAL,
-  rationale TEXT, source TEXT, confidence TEXT, short_label TEXT, last_news_date TEXT,
-  UNIQUE(window, name, slot)
-);
 CREATE TABLE player_fc_stats(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL,            -- 'FC26'
@@ -202,17 +176,6 @@ CREATE TABLE ingame_checks(
   verdict TEXT,               -- MATCH / PARTIAL / MISMATCH
   action TEXT                 -- 유지 / 역할변경 / 포커스변경 / 팀설정변경
 );
-CREATE TABLE team_match_stats(
-  event_id INTEGER PRIMARY KEY,
-  date TEXT,
-  xg_v REAL, xg_o REAL, shots_v INT, shots_o INT, sot_v INT, sot_o INT,
-  bigch_v INT, bigch_o INT, passes_v INT, passes_o INT,
-  long_att_v INT, long_acc_v INT, long_att_o INT, long_acc_o INT,
-  cross_att_v INT, cross_acc_v INT, corners_v INT, corners_o INT,
-  duelpct_v REAL, fouls_v INT, fouls_o INT,
-  formation_v TEXT, formation_o TEXT,
-  source TEXT, confidence TEXT
-);
 CREATE TABLE transfer_outgoing(
   id INTEGER PRIMARY KEY,
   window TEXT NOT NULL,
@@ -221,26 +184,65 @@ CREATE TABLE transfer_outgoing(
   likelihood TEXT,
   rationale TEXT,
   source TEXT,
-  confidence TEXT, last_news_date TEXT,
+  confidence TEXT, last_news_date TEXT, team TEXT DEFAULT 'AVL',
   UNIQUE(window, player_id)
 );
-CREATE TABLE transfer_ledger(
-  id INTEGER PRIMARY KEY,
-  window TEXT NOT NULL,
-  kind TEXT NOT NULL,          -- 'in'(매각수입) | 'deduct'(수입차감) | 'out'(지출확정) | 'pending'(진행중지출)
-  label TEXT NOT NULL,
-  amount_m REAL NOT NULL,      -- £m 절대값 (부호는 kind가 결정)
-  note TEXT, source TEXT, confidence TEXT,
-  UNIQUE(window, kind, label)
+CREATE TABLE teams(
+  code TEXT PRIMARY KEY,        -- 'AVL' / 'CHE' — 분석 주체 팀 코드 (FK는 걸지 않는다: 기존 행 재작성 회피)
+  name TEXT NOT NULL,           -- 정규 영문 표기
+  name_kr TEXT,
+  manager TEXT,
+  note TEXT
 );
-CREATE TABLE squad_positions(
+CREATE TABLE IF NOT EXISTS "team_tactic_setups"(
   id INTEGER PRIMARY KEY,
-  label TEXT NOT NULL,        -- 툴 표시명 (XI_POOL/PLAYER_BEST 라벨과 동일)
-  slot_type TEXT NOT NULL,    -- XI_POOL t: GK/FB/CB/DM/WM/CAM/ST
-  lh TEXT NOT NULL,           -- OWNED
-  map25 TEXT NOT NULL,
+  team TEXT NOT NULL DEFAULT 'AVL',   -- teams.code (FK 미설정)
+  season TEXT NOT NULL REFERENCES seasons(code),
+  game_version TEXT NOT NULL,
+  kind TEXT NOT NULL,
+  formation TEXT, build_up_style TEXT, defensive_approach TEXT, line_height INTEGER,
+  tactic_code TEXT, rationale TEXT, confidence TEXT,
+  UNIQUE(team, season, game_version, kind)
+);
+CREATE TABLE IF NOT EXISTS "team_match_stats"(
+  event_id INTEGER NOT NULL,
+  team TEXT NOT NULL DEFAULT 'AVL',
+  date TEXT,
+  xg_v REAL, xg_o REAL, shots_v INT, shots_o INT, sot_v INT, sot_o INT,
+  bigch_v INT, bigch_o INT, passes_v INT, passes_o INT,
+  long_att_v INT, long_acc_v INT, long_att_o INT, long_acc_o INT,
+  cross_att_v INT, cross_acc_v INT, corners_v INT, corners_o INT,
+  duelpct_v REAL, fouls_v INT, fouls_o INT,
+  formation_v TEXT, formation_o TEXT,
+  source TEXT, confidence TEXT,
+  PRIMARY KEY(event_id, team)
+);
+CREATE TABLE IF NOT EXISTS "transfer_targets"(
+  id INTEGER PRIMARY KEY,
+  team TEXT NOT NULL DEFAULT 'AVL',  -- 영입 주체(분석 대상 팀). club = 매도 클럽이므로 구분한다
+  window TEXT NOT NULL,
+  name TEXT NOT NULL, name_kr TEXT,
+  sofascore_id INTEGER, club TEXT, position TEXT,
+  slot TEXT NOT NULL,
+  likelihood TEXT,
+  map25 TEXT, tool_x REAL, tool_y REAL, sample_n INTEGER, avg_rating REAL,
+  opt_role TEXT, opt_focus TEXT, fit_role TEXT, fit_focus TEXT, fit_sim REAL,
+  rationale TEXT, source TEXT, confidence TEXT, short_label TEXT, last_news_date TEXT,
+  UNIQUE(team, window, name, slot)
+);
+CREATE TABLE IF NOT EXISTS "transfer_ledger"(
+  id INTEGER PRIMARY KEY,
+  team TEXT NOT NULL DEFAULT 'AVL',  -- kind(in/out)는 이 팀 관점에서의 방향이다
+  window TEXT NOT NULL, kind TEXT NOT NULL, label TEXT NOT NULL,
+  amount_m REAL NOT NULL, note TEXT, source TEXT, confidence TEXT,
+  UNIQUE(team, window, kind, label)
+);
+CREATE TABLE IF NOT EXISTS "squad_positions"(
+  id INTEGER PRIMARY KEY,
+  team TEXT NOT NULL DEFAULT 'AVL',
+  label TEXT NOT NULL, slot_type TEXT NOT NULL, lh TEXT NOT NULL, map25 TEXT NOT NULL,
   rate_v REAL, rate_basis TEXT, rate_note TEXT,
   fit_role TEXT, fit_focus TEXT, fit_sim REAL,
   source TEXT, confidence TEXT, sort_order INTEGER,
-  UNIQUE(label, slot_type)
+  UNIQUE(team, label, slot_type)
 );
