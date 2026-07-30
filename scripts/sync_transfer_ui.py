@@ -23,6 +23,9 @@ ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "data" / "avl_analysis.db"
 HTML = ROOT / "fc26-heatmap.html"
 WINDOW = "2026-summer"
+# 분석 주체 팀 (2026-07-30 팀 축 도입). 이 스크립트가 채우는 AUTOGEN 블록은 빌라 UI 전용이므로
+# 첼시/리버풀 행이 섞여 들어가지 않도록 모든 쿼리를 이 값으로 필터한다. teams.code 참조.
+TEAM = "AVL"
 
 
 def js_obj(fields):
@@ -36,11 +39,11 @@ def gen_transfer_targets(conn):
     rows = conn.execute(
         """SELECT name,name_kr,slot,club,position,likelihood,confidence,
                   fit_sim,opt_role,opt_focus,fit_role,fit_focus,source,
-                  map25,tool_x,tool_y,sample_n,avg_rating,short_label
+                  map25,tool_x,tool_y,sample_n,avg_rating,short_label,last_news_date
            FROM transfer_targets
-           WHERE window=? AND likelihood!='OWNED'
+           WHERE team=? AND window=? AND likelihood!='OWNED'
            ORDER BY id""",
-        (WINDOW,),
+        (TEAM, WINDOW,),
     ).fetchall()
     lines = []
     for row in rows:
@@ -64,6 +67,7 @@ def gen_transfer_targets(conn):
                 "avg_rating": r["avg_rating"],
                 "sample_n": r["sample_n"],
                 "short_label": r["short_label"],
+                "last_news_date": r["last_news_date"],
             }
         )
         lines.append(obj + ",")
@@ -72,14 +76,14 @@ def gen_transfer_targets(conn):
 
 def gen_transfer_outgoing(conn):
     rows = conn.execute(
-        """SELECT p.name,t.dest_club,t.likelihood,t.confidence,t.source
+        """SELECT p.name,t.dest_club,t.likelihood,t.confidence,t.source,t.last_news_date
            FROM transfer_outgoing t JOIN players p ON p.id=t.player_id
-           WHERE t.window=?
+           WHERE t.team=? AND t.window=?
            ORDER BY t.player_id""",
-        (WINDOW,),
+        (TEAM, WINDOW,),
     ).fetchall()
     lines = []
-    for name, dest_club, likelihood, confidence, source in rows:
+    for name, dest_club, likelihood, confidence, source, last_news_date in rows:
         obj = js_obj(
             {
                 "player": name,
@@ -87,6 +91,7 @@ def gen_transfer_outgoing(conn):
                 "likelihood": likelihood,
                 "confidence": confidence,
                 "source": source,
+                "last_news_date": last_news_date,
             }
         )
         lines.append(obj + ",")
@@ -96,10 +101,10 @@ def gen_transfer_outgoing(conn):
 def gen_transfer_ledger(conn):
     rows = conn.execute(
         """SELECT kind,label,amount_m,note,confidence
-           FROM transfer_ledger WHERE window=?
+           FROM transfer_ledger WHERE team=? AND window=?
            ORDER BY CASE kind WHEN 'in' THEN 0 WHEN 'deduct' THEN 1 WHEN 'out' THEN 2 ELSE 3 END,
                     amount_m DESC""",
-        (WINDOW,),
+        (TEAM, WINDOW,),
     ).fetchall()
     lines = []
     for r in rows:
@@ -121,7 +126,8 @@ def gen_xi_owned(conn):
     다포지션 선수(맥긴 WM+DM, 부엔디아 WM+CAM, 보가르드 DM+FB)는 여러 행으로 나온다."""
     rows = conn.execute(
         """SELECT label,slot_type,lh,map25,rate_v,rate_basis,rate_note
-           FROM squad_positions ORDER BY sort_order, label""",
+           FROM squad_positions WHERE team=? ORDER BY sort_order, label""",
+        (TEAM,),
     ).fetchall()
     lines = []
     for r in rows:
