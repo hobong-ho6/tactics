@@ -40,3 +40,15 @@ INSERT INTO players VALUES(39,'Cole Palmer','AM',NULL,NULL,'첼시 25/26 PL 26�
 INSERT INTO players VALUES(40,'João Pedro','ST',NULL,NULL,'첼시 25/26 PL 35경기. SofaScore 975079');
 INSERT INTO players VALUES(41,'Reece James','RB/DM',NULL,NULL,'첼시 25/26 PL 29경기. SofaScore 885908');
 INSERT INTO players VALUES(42,'Estêvão','RW',NULL,NULL,'첼시 25/26 PL 22경기. SofaScore 1597265');
+INSERT INTO players VALUES(43,'Alisson','GK',NULL,NULL,'리버풀 25/26 PL 26경기. SofaScore 243609');
+INSERT INTO players VALUES(44,'Virgil van Dijk','CB',NULL,NULL,'리버풀 주장. 25/26 PL 38경기 전 출전(전 대회 4671분, 유럽 5대리그 1위). SofaScore 151545');
+INSERT INTO players VALUES(45,'Ibrahima Konaté','CB',NULL,NULL,'리버풀 25/26 PL 36경기 → 2026-07-01 레알 마드리드 자유이적. SofaScore 826215');
+INSERT INTO players VALUES(46,'Curtis Jones','CM/RB',NULL,NULL,'리버풀 25/26 PL 34경기, 미드필더의 RB 전용 사례. SofaScore 927353');
+INSERT INTO players VALUES(47,'Miloš Kerkez','LB',NULL,NULL,'리버풀 25/26 PL 34경기. SofaScore 1097425');
+INSERT INTO players VALUES(48,'Jeremie Frimpong','RB/RWB',NULL,NULL,'리버풀 25/26 PL 21경기. SofaScore 970361');
+INSERT INTO players VALUES(49,'Ryan Gravenberch','DM',NULL,NULL,'리버풀 25/26 PL 36경기. SofaScore 904897');
+INSERT INTO players VALUES(50,'Alexis Mac Allister','CM',NULL,NULL,'리버풀 25/26 PL 37경기. SofaScore 895324');
+INSERT INTO players VALUES(51,'Dominik Szoboszlai','CM/RW',NULL,NULL,'리버풀 25/26 PL 36경기, 전 대회 4466분(유럽 2위). RM/RDM/CAM 3슬롯 순회. SofaScore 869856');
+INSERT INTO players VALUES(52,'Florian Wirtz','CAM',NULL,NULL,'£100m 영입, 리버풀 25/26 PL 33경기. SofaScore 1019322');
+INSERT INTO players VALUES(53,'Cody Gakpo','LW/ST',NULL,NULL,'리버풀 25/26 PL 36경기. SofaScore 862967');
+INSERT INTO players VALUES(54,'Mohamed Salah','RW',NULL,NULL,'리버풀 25/26 PL 27경기 → 2026-07-01 계약 조기 해지(FA). SofaScore 159665');
