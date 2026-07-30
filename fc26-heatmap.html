@@ -389,6 +389,19 @@
   .preset-bar button,.pb-import{background:var(--panel);border:1px solid var(--line);border-radius:9px;
     font-size:12px;padding:8px 12px;cursor:pointer;color:var(--muted);display:inline-flex;align-items:center;gap:4px}
   .preset-bar button:hover,.pb-import:hover{border-color:var(--accent);color:var(--ink)}
+
+  /* ---- team picker (first-run modal; 세그먼트는 .seg 스타일 재사용) ---- */
+  #teamModal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;
+    background:rgba(6,9,13,.86);padding:18px}
+  #teamModal.open{display:flex}
+  .tm-card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;max-width:470px}
+  .tm-card h2{margin:0 0 6px;font-size:17px}
+  .tm-card p{margin:0 0 16px;font-size:12.5px;color:var(--muted);line-height:1.6}
+  .tm-opts{display:flex;gap:10px;flex-wrap:wrap}
+  .tm-opt{flex:1 1 190px;background:var(--panel-2);border:1px solid var(--line);border-radius:10px;
+    padding:14px 13px;cursor:pointer;text-align:left;font-size:13.5px;font-weight:700;color:var(--ink)}
+  .tm-opt:hover{border-color:var(--accent)}
+  .tm-opt small{display:block;margin-top:6px;font-size:11px;font-weight:400;color:var(--muted);line-height:1.5}
 </style>
 </head>
 <body>
@@ -399,6 +412,10 @@
       <p class="tag">두 설정(A·B)을 나란히 비교합니다. 각 패널에서 포메이션·역할·포커스·표시를 따로 바꾸고, 프리셋으로 저장하거나 반대편으로 복사해 비교하세요. 프리셋은 브라우저에 저장되며, 파일로 내보내 백업·공유할 수 있습니다.</p>
     </div>
     <div class="preset-bar">
+      <div class="seg" id="teamSeg" title="분석 대상 팀 — 선택은 브라우저에 저장됩니다(fc26_team). 첼시는 실측검증·전술 리포트만 제공(빌라 전용 데이터 메뉴는 숨김).">
+        <button data-t="AVL">아스톤 빌라</button>
+        <button data-t="CHE">첼시</button>
+      </div>
       <div class="seg" id="modeMenu" title="실측 모드: 왼쪽=실측 히트맵, 오른쪽=게임 역할(%는 실측 유사도). 스쿼드 모드: 11명 선택 → 왼쪽=처방(최적), 오른쪽=실측 최근접. 선수 비교: 슬롯 후보 2명을 실측 분석 + FC26 능력치로 비교.">
         <button data-m="real" class="on">실측 → FC26 검증</button>
         <button data-m="squad">빌라 스쿼드</button>
@@ -723,6 +740,20 @@
     합성 모드에서는 겹치는 구역의 값이 더해져 초록→노랑→주황→빨강으로 뜨거워집니다(절대 스케일·상한 없음).
     <b>저장</b>은 현재 패널 설정을 이름으로 보관하고, <b>불러오기</b>로 어느 패널에든 적용, <b>복사</b>로 반대편 패널로 바로 옮깁니다.
   </p>
+</div>
+
+<!-- 팀 선택 — localStorage['fc26_team']가 없을 때만 1회 표시. 이후는 상단 세그먼트로 전환. -->
+<div id="teamModal">
+  <div class="tm-card">
+    <h2>어느 팀을 볼까요?</h2>
+    <p>선택은 브라우저에 저장되고, 다음부터는 이 창 없이 바로 열립니다. 상단 세그먼트에서 언제든 바꿀 수 있습니다.</p>
+    <div class="tm-opts">
+      <button class="tm-opt" data-t="AVL">아스톤 빌라 25/26 · 26/27
+        <small>실측 검증 · 스쿼드 · 선수 비교 · 전술 리포트 · 이적 · 베스트 11 (전체 메뉴)</small></button>
+      <button class="tm-opt" data-t="CHE">첼시 26/27 (알론소)
+        <small>실측 검증 · 전술 리포트 — 블루프린트 단계라 실측 파생 메뉴는 아직 없습니다.</small></button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -1108,6 +1139,36 @@ const FORMATIONS = {
 const PALETTE = ['#ff5d5d','#ffa63d','#ffe14d','#8ce65b','#3ddc97','#38c6e6','#5c8bff','#a97cff','#ff6fd8','#ff9d6e','#7de0c8'];
 const FKEYS = Object.keys(FORMATIONS);
 const AVL_MEASURED='아스톤 빌라 25/26 (실측)', AVL_MEASURED_ROT='아스톤 빌라 25/26 (실측 로테이션)', AVL_ROLES='아스톤 빌라 25/26 (역할)', AVL_OPTIMAL='아스톤 빌라 25/26 (최적)';
+const CHE_MAIN='첼시 26/27 (알론소)';
+
+/* ============================================================
+   TEAM GATING (Phase 1) — 데이터 리팩터 없이 "무엇을 보여줄지"만 팀별로 가른다.
+   ROLES/MAPS/히트맵 수학은 팀 중립이므로 그대로 쓰고, 팀 의존 자산(SQUAD_SLOTS·
+   CMP_SLOTS·XI_POOL·TRANSFER_*·ANIM_* 등)은 전부 빌라 전용이라 AVL에서만 노출한다.
+     modes          — #modeMenu에서 노출할 모드(그 외는 숨김 + 진입 방어)
+     prefix         — FORMATIONS 키 필터(포메이션 드롭다운 · 베스트 11 드롭다운)
+     defA/defB      — 실측검증 모드의 패널 A/B 기본 프리셋
+     rp             — 전술 리포트 탭 기본 매니저(rpMgr 인자)
+     presetPrefixes — 저장 프리셋 드롭다운 필터. 매칭 안 되는 프리셋은 삭제하지 않고
+                      "기타" optgroup으로 남긴다(데이터 손실 인식 방지).
+============================================================ */
+const TEAMS={
+  AVL:{label:'아스톤 빌라', modes:['real','squad','cmp','report','transfer','xi'],
+       prefix:'아스톤 빌라', defA:AVL_MEASURED, defB:AVL_OPTIMAL, rp:'emery',
+       presetPrefixes:['아스톤 빌라','빌라 스쿼드','선수 비교']},
+  CHE:{label:'첼시', modes:['real','report'],
+       prefix:'첼시', defA:CHE_MAIN, defB:CHE_MAIN, rp:'alonso',
+       presetPrefixes:['첼시']},
+};
+let TEAM='AVL', TEAM_STORED=false;
+try{ const _t=localStorage.getItem('fc26_team'); if(_t&&TEAMS[_t]){ TEAM=_t; TEAM_STORED=true; } }catch(e){}
+function teamCfg(){ return TEAMS[TEAM]; }
+function teamFKEYS(){ const p=teamCfg().prefix; return FKEYS.filter(k=>k.startsWith(p)); }
+function teamAllows(m){ return teamCfg().modes.includes(m); }
+/* 팀 전환으로 build*()가 다시 돌 때 영속 DOM(셀렉트·버튼)에 리스너가 중복 바인딩되는
+   것을 막는 1회 가드. 매 빌드마다 새로 만드는 노드의 리스너는 대상이 아니다. */
+const _WIRED={};
+function wireOnce(k,fn){ if(_WIRED[k]) return; _WIRED[k]=true; fn(); }
 
 /* per-preset explainer shown under the panel header (docs/20-fc-game-system.md 참조) */
 const FORMATION_DESC = {
@@ -1238,7 +1299,8 @@ const PANEL_HTML = `
 class Panel{
   constructor(root,key,idx){
     this.key=key; this.root=root; root.innerHTML=PANEL_HTML;
-    this.su=defaultSetup(FKEYS[idx]||FKEYS[0]);
+    const tk=teamFKEYS();
+    this.su=defaultSetup(tk[idx]||tk[0]||FKEYS[0]);
     this.DPR=Math.min(window.devicePixelRatio||1,2); this.W=0;this.H=0;this.cellGeom=null; this.hideChips=true; this.thresh=0;   // 아이콘 기본 꺼짐
     const $=(s)=>root.querySelector(s); this.$=$;
     this.holder=$('.p-holder'); this.pitch=$('.p-pitch'); this.heat=$('.p-heat');
@@ -1248,10 +1310,18 @@ class Panel{
     this.threshEl=$('.p-thresh'); this.threshValEl=$('.p-thresh-val');
     this.nameEl=$('.p-name'); this.loadSel=$('.p-load');
     $('.pbadge').textContent=key;
-    FKEYS.forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=k;this.fSel.appendChild(o);});
+    this.fillFormations();
     this.wire(); this.syncControls();
     this.holder.addEventListener('mousemove',e=>this.hoverAt(e.clientX,e.clientY));
     this.holder.addEventListener('mouseleave',hideTip);
+  }
+  /* 포메이션 드롭다운 채우기 — 현재 팀 프리픽스로 필터. 팀 전환 시 재호출한다.
+     FORMATION_DESC의 가상 키(빌라 스쿼드 …·선수 비교 …)는 FORMATIONS에 없어 여기 대상이
+     아니고, 그 모드에서는 원래대로 fSel.value=''(빈 선택)이 유지된다. */
+  fillFormations(){
+    this.fSel.innerHTML='';
+    teamFKEYS().forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=k;this.fSel.appendChild(o);});
+    this.fSel.value=this.su.formation;
   }
   other(){ return this.key==='A'?panels.B:panels.A; }
   setFormation(name){ this.su.formation=name; this.su.players=playersOf(name); this.su.selected=-1; this.fSel.value=name; this.size(); this.refresh(); const o=this.other(); if(o) o.buildRoster(); }
@@ -1433,7 +1503,9 @@ class Panel{
       this.scoreCellsEl.textContent = vis.length ? `· 활성 ${covered}/25칸 · 선수 ${vis.length}명` : '· 표시된 선수 없음';
     }
     if(this.emeryEl){   // 에메리 구조 점수 — 총합이 아닌 구조 기준 평가 (hover=요소별 근거)
-      const es=(typeof emeryScore==='function')?emeryScore(vis):null;
+      // 버그 수정: 기준선(포켓 6.2·수비가담 25.1%)이 빌라 실측 파생이라 타 팀 프리셋에
+      // 적용하면 무의미한 점수가 나온다(첼시 5-4-1은 조기 탈출 조건을 둘 다 통과) → AVL 전용.
+      const es=(TEAM==='AVL'&&typeof emeryScore==='function')?emeryScore(vis):null;
       this.emeryEl.innerHTML=es?`에메리 구조 <b>${es.score}</b>`:'';
       this.emeryEl.title=es?es.comps.map(c=>`${c[0]} ${Math.round(c[1]*100)}점 — ${c[3]}`).join('\n'):'';
     }
@@ -2565,6 +2637,7 @@ function buildCmpUI(){
   const sSel=document.getElementById('cmpSlot');
   sSel.innerHTML=Object.keys(CMP_SLOTS).map(k=>`<option value="${k}">${k} (${CMP_SLOTS[k].t})</option>`).join('');
   sSel.value='RM';
+  wireOnce('cmp',()=>{   // 영속 DOM — 팀 전환 후 재빌드 시 중복 바인딩 금지
   sSel.addEventListener('change',()=>fillCmpPlayers(true));
   document.getElementById('cmpA').addEventListener('change',renderCmp);
   document.getElementById('cmpB').addEventListener('change',renderCmp);
@@ -2576,6 +2649,7 @@ function buildCmpUI(){
     const a=document.getElementById('cmpA'), b=document.getElementById('cmpB');
     if(b.value===row.dataset.rankIdx){ b.value=a.value; } // A가 이미 그 선수면 B와 스왑 방지
     a.value=row.dataset.rankIdx; renderCmp();
+  });
   });
   cmpInit=true; fillCmpPlayers(true);
 }
@@ -2682,8 +2756,9 @@ function hideSquadBar(){ document.getElementById('squadBar').style.display='none
 /* real-verification mode: left = measured data, right = game roles to tune (sim% shows on the right) */
 function enterRealMode(measuredName){
   hideCmpBar();
-  panels.A.setFormation(measuredName||AVL_MEASURED);
-  panels.B.setFormation(AVL_OPTIMAL);
+  const cfg=teamCfg();   // 빌라는 defA/defB = AVL_MEASURED/AVL_OPTIMAL — 기존과 동일
+  panels.A.setFormation(measuredName&&FORMATIONS[measuredName]?measuredName:cfg.defA);
+  panels.B.setFormation(cfg.defB);
   const seg=document.getElementById('modeMenu');
   if(seg) [...seg.children].forEach(b=>b.classList.toggle('on',b.dataset.m==='real'));
 }
@@ -2740,9 +2815,18 @@ function showTip(x,y,html){
 function hideTip(){ tip.style.display='none'; }
 
 function refreshLoaders(){
+  /* 이름 프리픽스로 현재 팀 프리셋을 앞에 놓되, 매칭 안 되는 프리셋(다른 팀·사용자 지정
+     이름)은 삭제·숨김 없이 "기타" optgroup으로 남긴다 — PRESETS 자체는 건드리지 않는다.
+     option value는 계속 PRESETS 인덱스라 불러오기 동작은 그대로. */
+  const pre=teamCfg().presetPrefixes, mine=[], other=[];
+  PRESETS.forEach((p,i)=>{
+    (pre.some(x=>p.name.startsWith(x))?mine:other).push(`<option value="${i}">${p.name}</option>`);
+  });
+  const html='<option value="">불러오기…</option>'+mine.join('')
+    +(other.length?`<optgroup label="기타 (다른 팀 · 사용자 이름)">${other.join('')}</optgroup>`:'');
   [panels.A,panels.B].forEach(pn=>{
     if(!pn) return;
-    pn.loadSel.innerHTML='<option value="">불러오기…</option>'+PRESETS.map((p,i)=>`<option value="${i}">${p.name}</option>`).join('');
+    pn.loadSel.innerHTML=html;
   });
   updatePresetCount();
 }
@@ -2750,7 +2834,7 @@ panels.A=new Panel(document.querySelector('.panel[data-key="A"]'),'A',0);
 panels.B=new Panel(document.querySelector('.panel[data-key="B"]'),'B',1);
 refreshLoaders();
 panels.A.buildRoster(); panels.B.buildRoster();
-enterRealMode(AVL_MEASURED);   // 기본 화면 = 실측 → FC26 검증
+enterRealMode();   // 기본 화면 = 실측 → FC26 검증 (팀별 defA/defB)
 let _rpSofifaDone=false;
 function enhanceReportNames(){ // 정적 리포트 표의 선수명 셀을 sofifa 링크로 승격 (1회)
   if(_rpSofifaDone) return; _rpSofifaDone=true;
@@ -2852,9 +2936,11 @@ function buildTransferPage(){
       <td>${tfBadge(r.likelihood)}</td>
       <td><details class="tf-src"><summary>근거${tfNewBadge(r.confidence)}</summary><div>${(r.confidence||'').replace(/</g,'&lt;')}</div></details></td>
     </tr>`).join('');
+  wireOnce('tf',()=>{   // 영속 DOM — 팀 전환 후 재빌드 시 중복 바인딩 금지
   ['tfSearch','tfSlotFilter','tfSort'].forEach(id=>{
     document.getElementById(id).addEventListener('input',renderIncomingTable);
     document.getElementById(id).addEventListener('change',renderIncomingTable);
+  });
   });
   tfBuilt=true;
 }
@@ -2923,8 +3009,12 @@ function xiGetOverride(formation,pos){
 }
 function buildXiPage(){
   const sel=document.getElementById('xiFormation');
-  sel.innerHTML=Object.keys(FORMATIONS).map(f=>`<option value="${f}">${f}</option>`).join('');
-  sel.value='아스톤 빌라 25/26 (최적)';
+  /* 버그 수정: 전체 FORMATIONS를 넣으면 타 팀 포메이션에 XI_POOL(빌라 선수)이 줄세워진다
+     (renderXi는 슬롯 타입만 맞춘다) → 후보 풀과 같은 팀의 포메이션으로만 제한. */
+  const keys=teamFKEYS();
+  sel.innerHTML=keys.map(f=>`<option value="${f}">${f}</option>`).join('');
+  sel.value=keys.includes(AVL_OPTIMAL)?AVL_OPTIMAL:keys[0];
+  wireOnce('xi',()=>{   // 영속 DOM — 팀 전환 후 재빌드 시 중복 바인딩 금지
   sel.addEventListener('change',renderXi);
   const chart=document.getElementById('xiChart');
   chart.addEventListener('click',e=>{
@@ -2943,6 +3033,7 @@ function buildXiPage(){
     if(!ov.added.includes(sel2.value)) ov.added.push(sel2.value);
     persistXiOverrides();
     renderXi();
+  });
   });
   xiBuilt=true;
 }
@@ -3101,10 +3192,12 @@ function buildXiAnim(){
   selRow.innerHTML=ANIM_SLOTS.map((s,i)=>`<div class="field"><label>${s.pos}</label><select data-slot="${i}">${
     anPool(s.t).map((p,j)=>`<option value="${j}"${j===anOcc[i]?' selected':''}>${p.label}</option>`).join('')
   }</select></div>`).join('');
+  wireOnce('anSelRow',()=>{   // 영속 컨테이너에 위임 — 재빌드 시 중복 바인딩 금지
   selRow.addEventListener('change',e=>{
     const sel=e.target.closest('select[data-slot]'); if(!sel) return;
     anOcc[+sel.dataset.slot]=+sel.value;
     anRender();
+  });
   });
   const wrap=document.getElementById('anPitchWrap');
   const svg=anEl('svg',{id:'anPitch',width:'100%',viewBox:'0 0 580 565',style:'max-width:580px'});
@@ -3146,6 +3239,7 @@ function buildXiAnim(){
     g.addEventListener('click',()=>{anSel=i;if(anMode!=='player'){anMode='player';anSyncMode();}else anRender();});
     pl.appendChild(g);
   });
+  wireOnce('anCtrl',()=>{   // 영속 버튼 — 중복 바인딩되면 자동 재생 토글이 깨진다
   document.getElementById('anTeamBtn').addEventListener('click',()=>{anMode='team';anSyncMode();});
   document.getElementById('anPlayerBtn').addEventListener('click',()=>{anMode='player';anSyncMode();});
   document.querySelectorAll('.an-ph').forEach((b,i)=>b.addEventListener('click',()=>{anPhase=i;anStop();anRender();}));
@@ -3155,6 +3249,7 @@ function buildXiAnim(){
     if(anMode!=='team'){anMode='team';anSyncMode();}
     anAuto=setInterval(()=>{anPhase=(anPhase+1)%3;anRender();},6600);
     document.getElementById('anAuto').textContent='⏸ 정지';
+  });
   });
   anBuilt=true;
 }
@@ -3409,6 +3504,7 @@ function cmpAnimRender(key,pa,pb){
 
 document.getElementById('modeMenu').addEventListener('click',e=>{
   const b=e.target.closest('button'); if(!b) return;
+  if(!teamAllows(b.dataset.m)) return;   // 현재 팀에서 숨긴 모드로의 진입 방어
   hideReport();
   hideTransferPage();
   hideXiPage();
@@ -3418,8 +3514,55 @@ document.getElementById('modeMenu').addEventListener('click',e=>{
   if(b.dataset.m==='squad'){ enterSquadMode(); return; }
   if(b.dataset.m==='cmp'){ enterCmpMode(); return; }
   hideSquadBar(); hideCmpBar();
-  enterRealMode(AVL_MEASURED);
+  enterRealMode();
 });
+
+/* ============================================================
+   팀 선택기 — 세그먼트 전환 + 초회 1회 모달. 데이터는 그대로 두고 노출만 가른다.
+============================================================ */
+function currentMode(){ const on=document.querySelector('#modeMenu button.on'); return on?on.dataset.m:'real'; }
+/* 팀 의존 페이지의 1회성 빌드 플래그 + 이전 팀 DOM 무효화.
+   리스너는 wireOnce가 잡아주므로 재빌드해도 중복 바인딩되지 않는다. */
+function invalidateTeamBuilds(){
+  sqSel.fill(0);
+  cmpInit=false; tfBuilt=false; xiBuilt=false; anBuilt=false; _rpSofifaDone=false;
+  anStop();
+  ['cmpBody','xiChart','anSelRow','anPitchWrap'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.innerHTML='';
+  });
+}
+function applyTeam(changed){
+  const cfg=teamCfg();
+  [...document.getElementById('teamSeg').children].forEach(b=>b.classList.toggle('on',b.dataset.t===TEAM));
+  [...document.getElementById('modeMenu').children].forEach(b=>{
+    b.style.display=cfg.modes.includes(b.dataset.m)?'':'none';
+  });
+  rpMgr(cfg.rp);                       // 전술 리포트 탭을 팀 선택과 동기화
+  if(!changed) return;                 // 부팅 경로는 아래 초기화가 이미 끝나 있다
+  const keepReport=currentMode()==='report';
+  invalidateTeamBuilds();
+  [panels.A,panels.B].forEach(pn=>{ if(pn) pn.fillFormations(); });
+  refreshLoaders();
+  hideSquadBar(); hideCmpBar(); hideReport(); hideTransferPage(); hideXiPage();
+  enterRealMode();                     // 패널 A/B = 새 팀 기본 프리셋 (빌라 전용 모드에서 강제 복귀)
+  if(keepReport) showReport();         // 리포트는 양 팀 공통이라 머문 자리 유지
+}
+function setTeam(t){
+  if(!TEAMS[t]) return;
+  const changed=(t!==TEAM);
+  TEAM=t; TEAM_STORED=true;
+  try{ localStorage.setItem('fc26_team',t); }catch(e){}
+  applyTeam(changed);
+}
+document.getElementById('teamSeg').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(b) setTeam(b.dataset.t);
+});
+document.querySelectorAll('#teamModal .tm-opt').forEach(b=>b.addEventListener('click',()=>{
+  document.getElementById('teamModal').classList.remove('open');
+  setTeam(b.dataset.t);
+}));
+applyTeam(false);
+if(!TEAM_STORED) document.getElementById('teamModal').classList.add('open');
 document.getElementById('pExport').addEventListener('click',exportPresets);
 document.getElementById('pImport').addEventListener('change',e=>{ const f=e.target.files&&e.target.files[0]; if(f) importPresetsFromFile(f); e.target.value=''; });
 window.addEventListener('resize',()=>{ panels.A.size(); panels.B.size(); });
