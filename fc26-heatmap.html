@@ -444,8 +444,10 @@
     </div>
     <div class="sq-tactic" style="margin-top:6px">
       <span class="sq-head">빠른 선택</span>
-      <button id="sqProj2627" style="background:var(--panel-2);border:1px solid var(--line);border-radius:7px;font-size:11px;padding:5px 9px;cursor:pointer;color:var(--muted)">🔮 26/27 예상 스쿼드</button>
-      <span class="sq-note" id="sqProjNote">2026-07-22 이적 전망 기준 예상 XI 일괄 선택 (DB team_tactic_setups 2026-27 projected) — 슬롯별 🎯 처방 = 게임에 설정할 역할·포커스</span>
+      <button id="sqProj2627" style="background:var(--panel-2);border:1px solid var(--line);border-radius:7px;font-size:11px;padding:5px 9px;cursor:pointer;color:var(--muted)">🔮 26/27 스쿼드</button>
+      <button id="sqSolve" style="background:var(--panel-2);border:1px solid var(--accent);border-radius:7px;font-size:11px;padding:5px 9px;cursor:pointer;color:var(--ink);margin-left:6px">⚙️ 에메리 전술로 풀기</button>
+      <span class="sq-note" id="sqProjNote">선수를 고른 뒤 <b>에메리 전술로 풀기</b>를 누르면, 그 스쿼드에서 에메리 구조 제약(두 줄 4 뱅크 · 볼위너+창조 피벗 · 풀백 한 명씩)을 만족하는 <b>역할·포커스 조합</b>을 실측 적합 최대로 풉니다.</span>
+      <div class="sq-note" id="sqSolveOut" style="padding:6px 2px 0"></div>
     </div>
     <div class="sq-slots" id="sqSlots"></div>
     <div class="sq-note" style="padding:6px 2px 0">왼쪽 패널 = <b>처방(최적)</b> — 실축 성과 기준 추천 · 오른쪽 패널 = <b>실측 최근접</b> — 움직임 재현 기준. 슬롯별로 분석 근거가 있는 선수만 표시됩니다.
@@ -1181,120 +1183,6 @@ const FORMATIONS = {
     {pos:'RM', t:'WM', x:86,y:64, r:'wm_widemid',    focus:'Support'},      // McGinn (right, cut in for 4th)
     {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Attack'},       // Watkins (brace)
   ],
-  /* Aston Villa 26/27 (projected) — PROJECTED XI per 2026-07-22 transfer outlook.
-     Team shell = 25/26 optimal (foundation-first, obs#6). Returning 7 = player_role_map optimal;
-     signings 4 = transfer_targets measured prescriptions (Estupiñán .946 / Garnacho .911 /
-     Manzambi CAM .817 / Gomes LDM .797). Pivot sides: Kamara RIGHT anchor (duties#12),
-     Gomes LEFT (measured .797 vs right .638). Source: team_tactic_setups (2026-27, projected)
-     + reports/transfer-watch/2026-07-22.md. */
-  '아스톤 빌라 26/27 (예상)':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up',    name:'마르티네스'},  // optimal 유지
-    {pos:'LB', t:'FB', x:13,y:32, r:'fb_att_wb',     focus:'Support',     name:'에스투피냔'},  // 실측 .946 — 디뉴 att_wb 프로필 승계
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스'}, // optimal 유지 — 딥 창조 보상 축 1
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive',  name:'콘사'},       // optimal 유지
-    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Balanced',    name:'캐시'},       // optimal 유지 — 풀백 한 명 전진 원칙상 안정 사이드
-    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'고메스'},     // 실측 .797 — 틸레만스 좌측 레인 승계
-    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'카마라'},     // optimal 유지 — 우중앙 앵커(duties#12)
-    {pos:'LM', t:'WM', x:14,y:64, r:'wm_insidefwd',  focus:'Attack',      name:'가르나초'},   // 실측 .911 — 단주마형 수직 종결자(로저스 Balanced와 분화)
-    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_halfwinger',focus:'Balanced',    name:'만잠비'},     // 실측 .817(대표팀 전진 4경기) — CAM-LM 충돌 .72 캐비앗
-    {pos:'RM', t:'WM', x:86,y:64, r:'wm_widemid',    focus:'Support',     name:'맥긴'},       // optimal 유지 — 인사이드 이동으로 중앙 숫자 보충
-    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile',   name:'왓킨스'},     // optimal 유지 — 니어포스트 침투(인박스 84%)
-  ],
-  /* Aston Villa 26/27 (투톱) — Watkins+Jackson 투톱 4-2-2-2. PREDICTION(실측 아님).
-     더블 피봇 보존(빌라 구조 핵심), 폭=풀백(에메리 "한 번에 한 명"). 스트라이커 스태거:
-     왓킨스=최전방 박스 피니셔(Attack), 잭슨=하강 링크(Support). 근거: 포메이션 상수 예외
-     (4-2-2-2 ×1 번리·4-4-2 ×3) + team_tactic_setups 26/27 projected 셸 + transfer_targets
-     Jackson(st_advanced/Support .752, id123) + Watkins measured st_advanced(player_role_map 16).
-     분석 2026-07-24. 대안: 4-4-2(맥긴 RM·가르나초 LM wm_widemid + 카마라·로저스 중앙). */
-  '아스톤 빌라 26/27 (투톱)':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up',    name:'마르티네스'},
-    {pos:'LB', t:'FB', x:13,y:34, r:'fb_att_wb',     focus:'Support',     name:'에스투피냔'},  // 좌측 폭 공급(윙어 부재 보상)
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스'}, // 스텝업 보상(배후 리스크 상쇄)
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive',  name:'콘사'},
-    {pos:'RB', t:'FB', x:87,y:33, r:'fb_wingback',   focus:'Balanced',    name:'캐시'},       // rest-defense 사이드(풀백 한 명씩 전진)
-    {pos:'LDM',t:'DM', x:38,y:44, r:'dm_holding',    focus:'Ball-Winning',name:'고메스'},     // 더블 피봇 유지 — 폭 없는 투톱의 배후 커버
-    {pos:'RDM',t:'DM', x:62,y:44, r:'dm_holding',    focus:'Ball-Winning',name:'카마라'},
-    {pos:'LM', t:'WM', x:32,y:67, r:'wm_insidefwd',  focus:'Attack',      name:'가르나초'},   // 좌측 내향 인사이드 포워드
-    {pos:'CAM',t:'CAM',x:60,y:65, r:'cam_halfwinger',focus:'Balanced',    name:'만잠비'},     // 투톱 공급책(로저스는 첼시 매각 — 26/27 예상과 동일 인선)
-    {pos:'ST', t:'ST', x:41,y:87, r:'st_advanced',   focus:'Attack',      name:'왓킨스'},     // 최전방 고정 박스 피니셔+좌채널 배후침투
-    {pos:'ST', t:'ST', x:59,y:84, r:'st_advanced',   focus:'Support',     name:'잭슨'},       // 하강 링크·양채널 런·전방압박 트리거
-  ],
-  /* Aston Villa 26/27 (가르나초 해방) — team_tactic_setups(2026-27, projected:left-release-A) 파생.
-     DRAFT 2026-07-29. projected 셸에서 2슬롯 델타: ①CAM playmaker/Roaming(로저스 INTERPLAY —
-     halfwinger는 포켓 6.2→4.6 + CAM-LM 충돌 .45→.72, 가르나초 컷인 레인과 충돌) ②LDM 고메스
-     dm_dlp/Roaming(좌측 창작 소멸 시 후방 공급, Package G). LB=마첸(디뉴 PSG행 확정 기준;
-     에스투피냔 영입 시 교체). RM 맥긴 Support 비협상(obs#27 — 해방 윙어는 한 번에 한 명).
-     용도: 기본 + 강팀 Deep/43-45(obs#8), 강팀전 가르나초 전방 F형 스왑(래시포드 선례 obs#36). */
-  '아스톤 빌라 26/27 (가르나초 해방)':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up',    name:'마르티네스'},
-    {pos:'LB', t:'FB', x:13,y:32, r:'fb_att_wb',     focus:'Support',     name:'마첸'},       // 컷인 릴레이 오버랩 — 래시포드×LB 겹침 .707 최저=상보
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스'},
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive',  name:'콘사'},
-    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Balanced',    name:'캐시'},
-    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_dlp',        focus:'Roaming',     name:'고메스'},     // 후방 공급 필수(Package G) — 캐비앗: 기능축=볼위너(obs#32), 팔리냐 합류 시 분담
-    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'카마라'},     // 중앙 스크린 — 좌측 뱅크 3.5인화의 보험
-    {pos:'LM', t:'WM', x:14,y:64, r:'wm_insidefwd',  focus:'Attack',      name:'가르나초'},   // 실측 .911 — 수비복귀 완화(래시포드 자기진영 .145 선례)
-    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming',     name:'만잠비'},     // 포켓 보호 — 캐비앗: 실측최적 halfwinger .817과 긴장, 바투리나 영입=완성 조건
-    {pos:'RM', t:'WM', x:86,y:64, r:'wm_widemid',    focus:'Support',     name:'맥긴'},       // 비협상 — 두 줄 4 유지(obs#27)
-    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile',   name:'왓킨스'},     // 우채널 우선(가르나초 컷인 레인과 분리)
-  ],
-  /* Aston Villa 26/27 (부엔디아 딥창작) — team_tactic_setups(2026-27, projected:interior-left-B1) 파생.
-     DRAFT 2026-07-29. 인테리어 좌측 B1: LM 부엔디아 wideplm/Build-Up(role:LM .782, 좌8 실측 8선발
-     7.09, 자기진영 .277 완전 뱅크복귀형) + CAM 만잠비 halfwinger .817 그대로(Package G 정합 —
-     LM wideplm/Build-Up이 측면 충돌 .72→.36 복구). 피봇 더블 홀딩 유지(부엔디아가 딥 공급 겸직,
-     고메스 기능축 정합). 좌측 뱅크 복귀 온전 → RM 재량 발생(산초 인버티드 실험 선례).
-     용도: 점유 주도/딥블록 상대 + 약팀 High/67(obs#8). 모듈레이션 축1 부엔디아 항 상설화. */
-  '아스톤 빌라 26/27 (부엔디아 딥창작)':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up',    name:'마르티네스'},
-    {pos:'LB', t:'FB', x:13,y:32, r:'fb_att_wb',     focus:'Support',     name:'마첸'},       // 임무 격상 — 좌측 폭 유일 공급원(디뉴 시즌 실측 .911 구조 재현)
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스'},
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive',  name:'콘사'},
-    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Balanced',    name:'캐시'},
-    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'고메스'},     // 더블 홀딩 유지 — 부엔디아 딥 공급으로 LDM dlp 불요
-    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'카마라'},
-    {pos:'LM', t:'WM', x:14,y:64, r:'wm_wideplm',    focus:'Build-Up',    name:'부엔디아'},   // role:LM .782 — 좌8 딥 창작, 투웨이+박스 도착(뉴캐슬전 실측)
-    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_halfwinger',focus:'Balanced',    name:'만잠비'},     // 실측최적 .817 그대로 — Package G 커널 정합(충돌 .36)
-    {pos:'RM', t:'WM', x:86,y:64, r:'wm_wideplm',    focus:'Attack',      name:'맥긴'},       // 2026-07-29 확정: role:season 실측최적 .761 + 17.1m 중거리=딥블록 킬러. 세트: 캐시 오버랩 모듈레이션(축4)+마첸 절제. 캐비앗: wideplm 미숙련(숙련=widemid) — 페널티 확인 전 폴백=widemid/Support
-    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile',   name:'왓킨스'},
-  ],
-  /* Aston Villa 26/27 (IF형) — team_tactic_setups(2026-27, projected:interior-left-B2) 파생.
-     DRAFT 2026-07-29. 인테리어 좌측 B2 = 로저스 직무 승계 트랙: LM wm_insidefwd/Balanced
-     (만잠비 .700 로테이션급; 장기 1옵션 헤밍스 — 에메리 left 10 프로젝션(Tanswell 2026-07),
-     1군 실측 無 PENDING) + CAM playmaker/Roaming(창작+도착 분담 — B1의 더블 창작과 구별;
-     CAM 인선=부엔디아 프리 10 실측 근거: 포레스트전 9.4 free No.10, role CAM playmaker .59).
-     가르나초 Balanced 하향은 실측(Attack .911) 미스핏 — B2의 LM은 만잠비/헤밍스 전용.
-     3안 중 최저 우선순위(LM 후보 실측 빈약). */
-  '아스톤 빌라 26/27 (IF형)':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up',    name:'마르티네스'},
-    {pos:'LB', t:'FB', x:13,y:32, r:'fb_att_wb',     focus:'Support',     name:'마첸'},
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스'},
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive',  name:'콘사'},
-    {pos:'RB', t:'FB', x:87,y:32, r:'fb_wingback',   focus:'Balanced',    name:'캐시'},
-    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'고메스'},
-    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'카마라'},
-    {pos:'LM', t:'WM', x:14,y:64, r:'wm_insidefwd',  focus:'Balanced',    name:'만잠비'},     // .700 로테이션급 — 장기: 헤밍스(실측 축적 시 검증)
-    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming',     name:'부엔디아'},   // 프리 10 실측(포레스트 9.4) — 창작+LM 도착 분담
-    {pos:'RM', t:'WM', x:86,y:64, r:'wm_widemid',    focus:'Support',     name:'맥긴'},
-    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Versatile',   name:'왓킨스'},
-  ],
-  /* Aston Villa 26/27 (우측 침투) — team_tactic_setups(2026-27, projected:right-release-C) 파생.
-     DRAFT 2026-07-29. obs#38 브리프("뒷공간 반복 침투 빠른 우측 윙어") 전용 착지 프리셋 = A의 정확한 거울상.
-     우측 해방(RM insidefwd/Attack + RB 오버랩) + 좌측 뱅크(LM widemid/Support 0.60 + LB 절제) → 전방4 뱅크 0.60
-     = A와 동일(B1은 0.00 딥블록 전용). 용도는 B1의 정반대 — 배후 공간이 있는 상대(하이라인·압박팀·트랜지션).
-     미해결: LM widemid/Support 인선 공백(맥긴은 우측 전용 실측 → 좌측은 미러 가정), CAM 단일 공급 실패점. */
-  '아스톤 빌라 26/27 (우측 침투)':[
-    {pos:'GK', t:'GK', x:50,y:6,  r:'gk_ballplaying',focus:'Build-Up',    name:'마르티네스'},
-    {pos:'LB', t:'FB', x:13,y:32, r:'fb_wingback',   focus:'Balanced',    name:'마첸'},       // 절제 — 뱅크 보존("풀백 한 명씩만 전진", 전진은 우측 캐시)
-    {pos:'LCB',t:'CB', x:37,y:28, r:'cb_bpd',        focus:'Build-Up',    name:'파우 토레스'},
-    {pos:'RCB',t:'CB', x:63,y:28, r:'cb_bpd',        focus:'Aggressive',  name:'콘사'},
-    {pos:'RB', t:'FB', x:87,y:32, r:'fb_att_wb',     focus:'Support',     name:'캐시'},       // 좌우 스왑 — 침투 뒤 빈 우측 폭 재점유(래시포드×디뉴 .707 궁합의 우측 거울상)
-    {pos:'LDM',t:'DM', x:38,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'고메스'},     // 캐비앗: 더블 홀딩이라 딥 공급 부재 → 사라·베르그발(DLP형) 영입이 완성 조건
-    {pos:'RDM',t:'DM', x:62,y:42, r:'dm_holding',    focus:'Ball-Winning',name:'카마라'},
-    {pos:'LM', t:'WM', x:14,y:64, r:'wm_widemid',    focus:'Support',     name:'맥긴'},       // 좌측 뱅크 전담(자기진영 0.60). ★미러 가정 — 맥긴 실측·처방은 우측 전용, 좌측 배치 미검증
-    {pos:'CAM',t:'CAM',x:50,y:66, r:'cam_playmaker', focus:'Roaming',     name:'부엔디아'},   // RM 겹침 0.16 최소 + 침투 런 공급(halfwinger .57 배제, shadow .14는 공급 부재)
-    {pos:'RM', t:'WM', x:86,y:64, r:'wm_insidefwd',  focus:'Attack',      name:'하지무사'},   // 영입 전제(MEDIUM-HIGH) — 침투 서명 .923/전방 0.76, 우채널 전방 질량 2.8
-    {pos:'ST', t:'ST', x:50,y:87, r:'st_advanced',   focus:'Attack',      name:'왓킨스'},     // Versatile→Attack: RM 겹침 0.31→0.17 + 실측 x41.1 좌편향으로 우채널 양보. 잭슨 Support는 겹침 .44로 부적합
-  ],
   /* Chelsea 26/27 (Alonso) — 레버쿠젠 3-4-2-1 블루프린트의 첼시 이식. REFERENCE(타팀 구현, 실측 아님).
      스쿼드 = 2026-07-25 이적시장 반영(로저스£117m·팔레스트라£43m·퀜다£40m·에메가£22m IN /
      쿠쿠레야·A.산투스·T.조지·가르나초(빌라 임대) OUT — Wikipedia 26/27 Chelsea season 2026-07-25 수집).
@@ -1397,17 +1285,6 @@ const FORMATION_DESC = {
   [AVL_OPTIMAL]: '🎯 <b>최적</b> — "성과 처방" 세팅. 평점×경기 결과 가중으로 뽑은 선수별 최고 성과 포지션·역할. 실제로 그렇게 뛰었다는 뜻이 아니라, 이렇게 세팅했을 때 성적이 가장 좋았다는 뜻.',
   '아스톤 빌라 25/26': '📝 초기 추정 — 기사·관찰 기반으로 역할을 추정한 실측 검증 이전 버전. 참고용.',
   '아스톤 빌라 25/26 (로저스 CAM)': '🎬 단일 경기 재현 — 리버풀전 4-2 (2026-05-15) 승리, 로저스 중앙 10번 기용 경기의 XI·역할.',
-  '아스톤 빌라 26/27 (예상)': '🔮 <b>26/27 예상</b> — 2026-07-22 이적 전망 기준 예상 XI (에스투피냔·가르나초는 미확정 루머 포함). 기존 7인=성과 처방(최적), 영입 4인=타클럽/대표팀 실측 최근접 처방. 좌측=공격 사이드(에스투피냔 오버랩+가르나초 인버티드), 더블 볼위닝 피봇(고메스 좌·카마라 우). 캐비앗: 만잠비 하프윙어와 가르나초의 좌측 존 겹침 — 시즌 실측으로 검증 예정.',
-  '아스톤 빌라 26/27 (투톱)': '⚔️ <b>26/27 투톱(예측)</b> — 왓킨스+잭슨 2스트라이커 <b>4-2-2-2</b>. 실측이 아니라 예측 세팅. 더블 피봇(고메스·카마라) 보존 + 폭은 풀백이 전담(에메리 "한 번에 한 명"). 스트라이커 스태거가 핵심: <b>왓킨스=최전방 박스 피니셔(Attack)</b> / <b>잭슨=하강 링크(Support)</b> — 둘 다 드롭 성향이라 동시 하강 시 박스 공동화 리스크. 2선=가르나초(좌 내향)+만잠비(중앙 공급 — 로저스는 첼시 매각). 근거: 포메이션 상수 예외(4-2-2-2 번리 H) + 잭슨 실측 st_advanced/Support .752. 대안 형태=4-4-2(리드관리·수비안정).<br><b>우측 브리프와의 상호배타(obs#38·39)</b>: 이 형태에는 <b>RM 슬롯이 없다</b>(2선=LM+CAM). 브리프대로 침투형 우측 윙어를 영입하면 이 프리셋에 자연스러운 자리가 없어 LM(가르나초와 경합)이나 벤치가 됨 — <b>우측 영입과 투톱 전환은 상호 배타적 선택</b>으로 취급. 2선 2인 모두 자기진영 0이라 적용할 뱅크 칸 자체가 없고 폭·복귀는 풀백 전담.',
-  '아스톤 빌라 26/27 (가르나초 해방)': '🅰️ <b>26/27 가르나초 해방 (DRAFT)</b> — 좌측 해방 윙어 모드(세션 설계 2026-07-29, DB projected:left-release-A). 예상 셸에서 2슬롯 델타: <b>CAM 만잠비 플레이메이커/로밍</b>(하프윙어는 가르나초 컷인 레인과 충돌 .72 — 포켓 보호; 바투리나 영입=완성 조건) + <b>LDM 고메스 DLP/로밍</b>(좌측 창작 소멸 시 후방 공급, Package G). RM 맥긴 지원 고정=비협상(두 줄 4, 해방 윙어는 한 번에 한 명). 용도: 기본 전술 + 강팀 Deep/43-45, 강팀전 가르나초 전방 F형 스왑(래시포드 선례).<br><b>우측 영입 시 주의(obs#38)</b>: Tanswell 브리프대로 침투형 우측 윙어를 영입해도 이 프리셋에선 <b>Support 강제</b> — 좌우 동시 해방은 두 줄 4를 깬다. Attack 가용은 B1 전용.<br><b>뱅크(obs#39)</b>: RM widemid/Support = 자기진영 <b>0.60</b>으로 전방 4인 중 <b>유일한 뱅크 기여원</b>(LM 가르나초는 0). 강팀 Deep/43-45에서 더 조이려면 <b>widemid/Defend·Balanced(1.30, 2배)</b> 상향 가능. RM을 Attack 계열로 올리면 뱅크가 0이 되어 A의 존재 이유가 무너짐 — 금지.',
-  '아스톤 빌라 26/27 (부엔디아 딥창작)': '🅱️ <b>26/27 부엔디아 딥창작 (DRAFT · B1)</b> — 인테리어 좌측 모드(DB projected:interior-left-B1). <b>LM 부엔디아 와이드PM/빌드업</b>(role:LM .782, 좌8 실측 8선발 7.09 — 완전 뱅크복귀형 딥 창작) + <b>CAM 만잠비 하프윙어 .817 그대로</b>(Package G 정합: 충돌 .72→.36). 피봇 더블 홀딩 유지, 마첸=좌측 폭 유일 공급원. 좌측 복귀 온전→해방 1명 쿼터를 우측에 사용: <b>RM 맥긴 와이드PM/공격 확정</b>(2026-07-29 — role:season 실측최적 .761 + 17m 중거리=딥블록 킬러). 세트 조건: 캐시 오버랩 모듈레이션(축4)+마첸 절제. 캐비앗: wideplm 미숙련(숙련=widemid) — 인게임 페널티 확인 전 폴백=widemid/Support. 용도: 점유 주도/약팀 High-67.<br><b>업그레이드 경로(obs#38)</b>: 이 해방 우측 슬롯이 Tanswell 브리프의 착지점. 맥긴은 침투 서명이 <b>전방 0.49·자기진영 0.23 = 균형자형</b>이라 "뒷공간 반복 침투"를 충족하지 못하는 잠정치 — 영입 성사 시 <b>하지무사 wm_insidefwd/Attack(.923, 전방 0.76)</b>로 교체가 정합 최상, 맥긴은 RDM 딥롤(7.87)·로테이션으로 이동.<br><b>뱅크 비용 공개(obs#39)</b>: 맥긴 widemid/Support→wideplm/Attack 채택으로 전방 4인 자기진영 질량이 <b>0.60→0.00</b> — 이 프리셋은 "두 줄 4 온전"이 아니라 <b>우측 뱅크를 의도적으로 포기한 구성</b>이다. 정당화=딥블록·약팀 High/67 전용이라 상대의 우리진영 점유 시간이 짧음. <b>강팀 Deep/43-45에서는 사용 금지</b>(→A 사용), 뱅크가 필요한 인테리어는 <b>B2</b>.',
-  '아스톤 빌라 26/27 (IF형)': '🅱️ <b>26/27 IF형 (DRAFT · B2)</b> — 로저스 직무 승계 트랙(DB projected:interior-left-B2). <b>LM 인사이드 포워드/균형</b>(만잠비 .700 로테이션급; 장기 1옵션=<b>헤밍스</b> — 에메리 left 10 프로젝션, 1군 실측 無 PENDING) + <b>CAM 부엔디아 플레이메이커/로밍</b>(프리 10 실측 포레스트전 9.4) — 창작+도착 분담(B1의 더블 창작과 구별). 가르나초 Balanced 하향은 실측(.911 Attack) 미스핏이라 비권장.<br><b>정체성 확정(obs#39)</b>: 3종 중 <b>유일하게 뱅크 온전</b>한 <b>양쪽 절제형</b> — RM 맥긴 widemid/Support(자기진영 <b>0.60</b>) 유지(B1은 0.00). 좌측 LM insidefwd/Balanced는 커널 자기진영 0이라 뱅크 기여 없음 → 뱅크는 RM 단독 결정. 용도 확장: 점유 국면 대안 + <b>리드관리(Deep/45)·뱅크 필요 국면의 인테리어 옵션</b>. 신규 우측 윙어 투입 시 insidefwd는 Attack·Balanced 모두 자기진영 0이라 성격을 파괴 — 뱅크 유지엔 widemid/Support(0.60)나 winger/Balanced(0.30) 절충, 침투형 Attack은 B1에서.',
-  '아스톤 빌라 26/27 (우측 침투)': '🅲 <b>26/27 우측 침투 (DRAFT · C)</b> — obs#38 브리프("뒷공간 반복 침투 빠른 우측 윙어") <b>전용 착지 프리셋</b>이며 <b>A의 정확한 거울상</b>(DB projected:right-release-C).<br>' +
-    '<b>왜 기존 프리셋에 한 칸 교체로 안 되는가</b>: ①<b>용도 축이 정반대</b> — 침투형의 가치는 배후 공간이 있을 때 발생(하이라인·압박팀·트랜지션)이고, B1의 용도는 딥블록 상대(배후 공간 없음) ②<b>뱅크 사이드가 뒤집힘</b>(obs#39 보정) ③ST 채널·풀백 좌우가 함께 바뀜.<br>' +
-    '<b>구조</b>: 우측 해방(<b>RM 하지무사 인사이드 포워드/공격</b> — 침투 .923·전방 0.76·우채널 전방 2.8) + <b>RB 캐시 공격형 WB/지원</b>(침투 뒤 빈 폭 재점유 릴레이) ↔ 좌측 뱅크(<b>LM 와이드 미드/지원</b> 자기진영 <b>0.60</b>) + <b>LB 마첸 윙백/밸런스</b>(절제). 전방4 뱅크 <b>0.60 = A와 동일</b>(B1은 0.00) → <b>상대가 공을 쥐는 경기에 사용 가능</b>.<br>' +
-    '<b>CAM 부엔디아 플레이메이커/로밍</b>=RM 겹침 0.16 최소 + 침투 런 공급(하프윙어 .57 배제) · <b>ST 왓킨스 Attack</b>=겹침 0.31→0.17 + 실측 x41.1 좌편향으로 우채널 양보(<b>잭슨 Support는 겹침 .44로 부적합</b>).<br>' +
-    '<b>미해결 2건</b>: ①<b>LM 인선 공백</b> — widemid/Support 보유자는 맥긴뿐인데 그의 실측·처방은 우측 전용이라 좌측은 <b>미러 가정(미검증)</b>. 좌측 뱅크형 영입 또는 맥긴 좌측 실측 확보가 완성 조건 ②<b>공급 단일 실패점</b> — 더블 홀딩이라 딥 공급이 없어 CAM 봉쇄 시 침투 무력화 → 사라·베르그발(DLP형) 영입 또는 팔리냐 합류로 피벗 재편 필요.<br>' +
-    '<b>팀 설정 = 라인 48</b>(다른 26/27 프리셋은 52): docs/20 §B 정규화 수비가담(실측 그리드 자기진영, 전방 6인 평균, 기본 XI 31.0% 기준)이 <b>27.8% = -3.2pt</b>로 문서 최저 사례(바투리나L+로저스10 28.8%)보다 낮다 — 침투형 RM(하지무사 <b>14.0%</b>)과 왓킨스(14.7%)가 전방을 차지해 구조적으로 낮고 맥긴(23.0%)·피벗(고메스 38.3·카마라 49.3)으로도 상쇄 부족. <b>라인 보상은 상대 유형 무관 필수</b>. 추가 옵션: LM을 widemid/<b>Defend</b>로(커널 0.60→1.30). <b>구분 주의</b>: 이 수치는 <b>실측 그리드(수비 국면 포함)</b> 기반 수비가담%이고, 설계에 쓴 <b>커널 자기진영(0.60/1.30/0.00)</b>은 역할이 지시하는 위치 깊이 — 별개 축(obs#39 혼용 금지).',
   '첼시 26/27 (알론소)': '🧪 <b>첼시 26/27 — 알론소 레버쿠젠 이식 (최종 전술 프리셋)</b> — 실측 아님=블루프린트, 상세 근거는 <b>전술 리포트 탭 → 알론소·첼시</b>.<br>' +
     '<b>팀 전술</b>: 포메이션 <b>5-4-1</b>(공격 시 3-2-5 · 수비 백5) · 택티컬 비전 <b>포제션</b> · 빌드업 <b>숏 패싱</b> · 수비 접근 <b>하이</b> · 라인 높이 <b>64</b>(하이라인+즉시 카운터프레스) — 에메리 빌라(Balanced/52)와 대비.<br>' +
     '<b>선수별 역할·포커스</b>: GK 산체스=<b>볼 플레잉 키퍼/빌드업</b> · LCB 콜윌=<b>볼 플레잉 센터백/적극적</b>(인카피에) · CB 아다라비오요=<b>볼 플레잉 센터백/빌드업</b>(타) · RCB 포파나=<b>와이드 백/지원</b>(탑소바/코수누 — 빌드업 시 와이드 이탈) · LWB 아토=<b>인버티드 윙백/빌드업</b>(그리말도 — 딥→대각 내향) · RWB 팔레스트라=<b>공격형 윙백/공격</b>(프림퐁 — 터치라인 하이) · LCM 엔소=<b>딥라잉 플레이메이커/빌드업</b>(샤카) · RCM 카이세도=<b>홀딩/볼 위닝</b>(팔라시오스) · LM 로저스=<b>와이드 플레이메이커/공격</b>(비르츠 — 좌 하프스페이스 창조) · RM 팔머=<b>인사이드 포워드/공격</b>(호프만 — 우 하프스페이스 득점) · ST 주앙 페드루=<b>어드밴스드 포워드/지원</b>(보니페이스 — 링크+압박 선봉).<br>' +
@@ -1934,7 +1811,7 @@ const SQUAD_SLOTS=[
    ]},
  {pos:'RM', t:'WM', x:85,y:64, opts:[
    {n:'맥긴',      opt:['wm_widemid','Support'],     fit:['wm_wideplm','Attack']},
-   {n:'산초',      opt:['wm_insidefwd','Attack'],    fit:['wm_insidefwd','Attack']},
+   /* 산초 — 26/27 스쿼드 제외(2026-07-31). 실측 그리드는 CMP_SLOTS(선수 비교)에 보존한다. */
    {n:'알리송(신규)', opt:['wm_winger','Attack'],    fit:['wm_insidefwd','Balanced']},
    ]},
  {pos:'ST', t:'ST', x:50,y:87, opts:[
@@ -2966,7 +2843,7 @@ function applySquad(){
    라벨은 injectTransferCandidates() 규칙(CONFIRMED='(합류확정)', 그 외='영입·') 그대로.
    DB에서 루머가 삭제/DEAD 되면 해당 슬롯은 건너뛰고 경고를 표시한다. */
 const PROJECTED_XI_2627={GK:'마르티네스',LB:'영입·에스투피냔',LCB:'파우 토레스',RCB:'콘사',RB:'캐시',
-  LDM:'고메스(합류확정)',RDM:'카마라',LM:'영입·가르나초',CAM:'만잠비(합류확정)',RM:'맥긴',ST:'왓킨스'};
+  LDM:'만잠비(합류확정)',RDM:'카마라',LM:'가르나초(합류확정)',CAM:'맥긴',RM:'알리송(신규)',ST:'영입·잭슨'};
 function selectProjectedXI(){
   const missing=[];
   SQUAD_SLOTS.forEach((s,i)=>{
@@ -2981,6 +2858,115 @@ function selectProjectedXI(){
     :'✓ 26/27 예상 XI 적용됨 — 슬롯별 🎯 처방 = 게임에 설정할 역할·포커스 (근거: reports/transfer-watch/2026-07-22.md)';
 }
 document.getElementById('sqProj2627').addEventListener('click',selectProjectedXI);
+
+/* ============================================================
+   에메리 솔버 (2026-07-31, obs#82 재정립 기준 위에 구현)
+   선택된 11명 → 에메리 구조 제약을 만족하는 역할·포커스 조합을 실측 적합 최대로 탐색.
+
+   측정 기준(obs#82): 슬롯 x는 SQUAD_SLOTS가 정본 / 계산은 이 파일의 placedMap·cmpCos를
+   그대로 사용 / 그리드는 CMP_SLOTS에서 (슬롯, 선수명)으로 조회.
+
+   제약 (전부 obs 근거):
+     C1 두 줄 4 — LM·RM 중 정확히 한쪽만 '해방'(뱅크 0), 반대쪽은 뱅크≥0.60  (obs#27·#39)
+     C2 풀백 한 명씩 — LB·RB 중 정확히 한쪽만 전진형(전방질량 큰 쪽)          (obs#4·#27)
+     C3 피벗 분화 — LDM·RDM 중 하나는 dm_dlp(창조), 다른 하나는 dm_holding(볼위너) (obs#32·#11)
+     C4 GK·CB·CAM·ST — 슬롯 실측 최적 (제약 없음)
+   동점·근소차는 obs#29(Δ≤0.03이면 FC26 숙련 역할 우선)로 가른다.
+   ============================================================ */
+const EMERY_BANK_MIN=0.60;
+function sqGrid(pos,name){
+  const c=CMP_SLOTS[pos]; if(!c) return null;
+  const hit=c.c.find(o=>o.n===name); return hit?hit.grid:null;
+}
+function roleOptions(pos,grid){          // 해당 슬롯의 모든 역할×포커스 평가
+  const S=SQUAD_SLOTS.find(s=>s.pos===pos); if(!S||!grid) return [];
+  const g=decodeMap(grid), out=[];
+  for(const role of ROLE_SETS[S.t]) for(const f of ROLES[role].f){
+    if(!(MAPS[role]&&MAPS[role][f])) continue;
+    const k=placedMap({r:role,focus:f,x:S.x,y:0}); if(!k) continue;
+    let bank=0,fwd=0;
+    for(let i=15;i<25;i++) bank+=k[i];
+    for(let i=0;i<10;i++) fwd+=k[i];
+    out.push({role,f,s:cmpCos(k,g),bank,fwd});
+  }
+  return out.sort((a,b)=>b.s-a.s);
+}
+/* obs#29: 최적 대비 Δ≤0.03이면 FC26 숙련 역할을 우선 */
+function pickFamiliar(name,list){
+  if(!list.length) return null;
+  const top=list[0];
+  const fam=list.find(o=>o.s>=top.s-0.03 && (typeof roleFamiliar==='function') && roleFamiliar(name,o.role)>0);
+  return fam||top;
+}
+function emerySolve(){
+  const sel={}; SQUAD_SLOTS.forEach((s,i)=>{ sel[s.pos]=s.opts[sqSel[i]].n; });
+  const opt={}, warn=[];
+  for(const s of SQUAD_SLOTS){
+    const g=sqGrid(s.pos,sel[s.pos]);
+    opt[s.pos]=roleOptions(s.pos,g);
+    if(!opt[s.pos].length) warn.push(`${s.pos}(${sel[s.pos]}) 그리드 없음`);
+  }
+  const R={};
+  // C4 — 제약 없는 슬롯
+  ['GK','LCB','RCB','CAM','ST'].forEach(p=>{ R[p]=pickFamiliar(sel[p],opt[p]); });
+  // C1 — 와이드: 한쪽 해방(뱅크 0) + 반대쪽 뱅크≥0.60. 두 배치를 모두 평가해 합이 큰 쪽.
+  const freeL=opt['LM'].filter(o=>o.bank<0.01), bankL=opt['LM'].filter(o=>o.bank>=EMERY_BANK_MIN);
+  const freeR=opt['RM'].filter(o=>o.bank<0.01), bankR=opt['RM'].filter(o=>o.bank>=EMERY_BANK_MIN);
+  const wide=[];
+  if(freeL.length&&bankR.length) wide.push({side:'좌측 해방',LM:pickFamiliar(sel.LM,freeL),RM:pickFamiliar(sel.RM,bankR)});
+  if(freeR.length&&bankL.length) wide.push({side:'우측 해방',LM:pickFamiliar(sel.LM,bankL),RM:pickFamiliar(sel.RM,freeR)});
+  if(!wide.length){ warn.push('C1 불가 — 뱅크(≥0.60) 가능한 와이드가 없어 두 줄 4가 성립하지 않음'); }
+  wide.sort((a,b)=>(b.LM.s+b.RM.s)-(a.LM.s+a.RM.s));
+  const W=wide[0]; if(W){ R.LM=W.LM; R.RM=W.RM; }
+  // C2 — 풀백: 한쪽만 전진형(전방질량 상위). 반대쪽은 전방질량이 더 낮은 것 중 최적.
+  const fbPick=(a,b)=>{
+    const A=opt[a],B=opt[b]; if(!A.length||!B.length) return null;
+    let best=null;
+    for(const x of A.slice(0,8)) for(const y of B.slice(0,8)){
+      if(!(x.fwd>y.fwd)) continue;                    // a가 전진, b가 절제
+      const sc=x.s+y.s; if(!best||sc>best.sc) best={sc,x,y};
+    }
+    return best;
+  };
+  const lAdv=fbPick('LB','RB'), rAdv=fbPick('RB','LB');
+  if(lAdv&&(!rAdv||lAdv.sc>=rAdv.sc)){ R.LB=lAdv.x; R.RB=lAdv.y; R._fb='좌측 전진'; }
+  else if(rAdv){ R.RB=rAdv.x; R.LB=rAdv.y; R._fb='우측 전진'; }
+  else { warn.push('C2 불가 — 풀백 비대칭 조합 없음'); R.LB=opt['LB'][0]; R.RB=opt['RB'][0]; }
+  // C3 — 피벗: 한쪽 dm_dlp(창조) / 다른 쪽 dm_holding(볼위너)
+  const dlp=p=>opt[p].filter(o=>o.role==='dm_dlp'), hold=p=>opt[p].filter(o=>o.role==='dm_holding');
+  const combos=[];
+  if(dlp('LDM').length&&hold('RDM').length) combos.push({t:'좌 창조 · 우 볼위너',LDM:dlp('LDM')[0],RDM:hold('RDM')[0]});
+  if(hold('LDM').length&&dlp('RDM').length) combos.push({t:'좌 볼위너 · 우 창조',LDM:hold('LDM')[0],RDM:dlp('RDM')[0]});
+  if(!combos.length){ warn.push('C3 불가 — dm_dlp/dm_holding 분화 조합 없음'); R.LDM=opt['LDM'][0]; R.RDM=opt['RDM'][0]; }
+  else { combos.sort((a,b)=>(b.LDM.s+b.RDM.s)-(a.LDM.s+a.RDM.s)); R.LDM=combos[0].LDM; R.RDM=combos[0].RDM; R._piv=combos[0].t; }
+  // 진단
+  let bank4=0; ['LM','CAM','RM','ST'].forEach(p=>{ if(R[p]) bank4+=R[p].bank; });
+  let own=0,n=0; ['LM','CAM','RM','ST','LDM','RDM'].forEach(p=>{
+    const g=sqGrid(p,sel[p]); if(!g) return; const m=decodeMap(g);
+    let t=0,o=0; for(let i=0;i<25;i++){ t+=m[i]; if(i>=15) o+=m[i]; }
+    own+=o/t*100; n++;
+  });
+  const avg=SQUAD_SLOTS.reduce((a,s)=>a+(R[s.pos]?R[s.pos].s:0),0)/11;
+  return {sel,R,bank4,own:n?own/n:null,avg,warn,wide:W?W.side:null};
+}
+function renderSolve(){
+  const out=document.getElementById('sqSolveOut'); if(!out) return;
+  const r=emerySolve();
+  SQUAD_SLOTS.forEach((s,i)=>{ const p=r.R[s.pos]; if(p) s.opts[sqSel[i]].opt=[p.role,p.f]; });
+  buildSquadUI(); applySquad();
+  const rows=SQUAD_SLOTS.map(s=>{ const p=r.R[s.pos];
+    return p?`${s.pos} ${r.sel[s.pos]} <b>${ROLES[p.role].n}/${fmtFocus(p.f)}</b> ${p.s.toFixed(3)}`:`${s.pos} —`; }).join(' · ');
+  const bankOK=r.bank4>=EMERY_BANK_MIN;
+  out.innerHTML=
+    `<div style="margin-bottom:4px">⚙️ <b>에메리 해</b> — 평균 적합 <b>${r.avg.toFixed(3)}</b> · `+
+    `전방 4인 뱅크 <b class="${bankOK?'ok':'warn'}">${r.bank4.toFixed(2)}</b>${bankOK?'':' ⚠ 두 줄 4 미성립'} · `+
+    `${r.wide||'-'} · ${r.R._fb||'-'} · ${r.R._piv||'-'}`+
+    (r.own!=null?` · 전방 6인 수비가담 <b>${r.own.toFixed(1)}%</b>`:'')+`</div>`+
+    `<div style="color:var(--muted-2)">${rows}</div>`+
+    (r.own!=null&&r.own<28?`<div class="warn" style="margin-top:4px">전방 수비가담이 25/26 기준선(시즌축 30.3%)보다 낮습니다 — obs#82에 따라 <b>라인은 52로 유지</b>하고, 부족분은 뱅크 사이드 포커스를 <b>Defend/Balanced</b>로 올려 보상하세요(뱅크 0.60→1.30).</div>`:'')+
+    (r.warn.length?`<div class="warn" style="margin-top:4px">⚠ ${r.warn.join(' / ')}</div>`:'');
+}
+document.getElementById('sqSolve').addEventListener('click',renderSolve);
 function enterSquadMode(){
   hideCmpBar();
   document.getElementById('squadBar').style.display='block';
