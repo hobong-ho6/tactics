@@ -2874,6 +2874,46 @@ document.getElementById('sqProj2627').addEventListener('click',selectProjectedXI
    동점·근소차는 obs#29(Δ≤0.03이면 FC26 숙련 역할 우선)로 가른다.
    ============================================================ */
 const EMERY_BANK_MIN=0.60;
+
+/* ------------------------------------------------------------
+   충돌 지수 (CI) — 2026-07-31 시즌축 재보정, docs/20 §A 전역 임계값(0.81/0.88/0.9) 대체.
+
+   왜 전역 임계값을 버렸나: 슬롯쌍별 중앙값이 LB×RB 0.006 ~ RB×RM 0.849로 **140배** 범위다.
+   원래 비슷한 자리끼리(더블 피벗·CB 짝·RB×RM)는 코사인이 높은 게 정상인데, 전역선 0.81은
+   그런 쌍을 전부 오탐하고(RB×RM 중앙 0.849 → 정상 조합 절반이 감점) 원거리 쌍은 전부 미탐한다.
+
+   CI = (실측 코사인 − 슬롯쌍 중앙값) / (슬롯쌍 p90 − 중앙값).
+     CI 1.0 = 그 슬롯쌍의 p90 수준 / 0 = 중앙값 / 음수 = 평균보다 잘 분리됨.
+   절대 하한 COLL_FLOOR 미만은 공간 겹침 자체가 없으므로 CI를 계산하지 않는다
+   (LB×RB처럼 분모가 붕괴하는 쌍에서 노이즈가 증폭되는 것을 막는다).
+
+   검증(2026-07-31): 오나나×카마라 0.960 → CI 1.55(최고, obs#32 '미분화 더블 볼위너'와 일치) /
+   만잠비×카마라 0.792 → CI −0.16(현 프리셋의 분화된 피벗, 정상) /
+   캐시×알리송 0.856 → CI 0.11(전역선 0.81이면 오탐이었을 쌍).
+   표는 CMP_SLOTS 후보 전수 조합에서 산출했다(52쌍, 표본 6~85). ⚠️ 그리드 축은 여전히 혼재
+   (보유 season/top, 영입 r6) — 축이 통일되면 재산출할 것.
+   ------------------------------------------------------------ */
+const COLL_FLOOR=0.50, COLL_WARN=1.0, COLL_PENAL=1.5, COLL_BAN=2.0;
+const COLL_CAL={"GK|LB":[0.085,0.139],"GK|LCB":[0.335,0.529],"GK|RCB":[0.317,0.559],"GK|LDM":[0.153,0.342],
+"GK|RDM":[0.174,0.351],"GK|LM":[0.036,0.08],"GK|RM":[0.011,0.031],"GK|ST":[0.065,0.11],"LB|LCB":[0.478,0.622],
+"LB|RCB":[0.13,0.304],"LB|LDM":[0.464,0.608],"LB|RDM":[0.293,0.513],"LB|LM":[0.639,0.812],"LB|CAM":[0.401,0.697],
+"LB|RM":[0.047,0.624],"LB|ST":[0.448,0.537],"LCB|RCB":[0.533,0.875],"LCB|RB":[0.037,0.567],"LCB|LDM":[0.721,0.832],
+"LCB|RDM":[0.623,0.861],"LCB|LM":[0.327,0.476],"LCB|CAM":[0.395,0.581],"LCB|RM":[0.061,0.513],"LCB|ST":[0.388,0.563],
+"RCB|RB":[0.497,0.567],"RCB|LDM":[0.721,0.849],"RCB|RDM":[0.773,0.875],"RCB|LM":[0.27,0.479],"RCB|CAM":[0.422,0.581],
+"RCB|RM":[0.394,0.555],"RCB|ST":[0.382,0.431],"RB|LDM":[0.293,0.55],"RB|RDM":[0.489,0.579],"RB|LM":[0.303,0.604],
+"RB|CAM":[0.406,0.604],"RB|RM":[0.849,0.913],"RB|ST":[0.279,0.33],"LDM|RDM":[0.808,0.906],"LDM|LM":[0.568,0.712],
+"LDM|CAM":[0.668,0.775],"LDM|RM":[0.414,0.666],"LDM|ST":[0.579,0.728],"RDM|LM":[0.525,0.742],"RDM|CAM":[0.622,0.869],
+"RDM|RM":[0.504,0.677],"RDM|ST":[0.55,0.745],"LM|CAM":[0.778,0.884],"LM|RM":[0.483,0.869],"LM|ST":[0.747,0.86],
+"CAM|RM":[0.525,0.846],"CAM|ST":[0.759,0.862],"RM|ST":[0.496,0.769]};
+function collisionCI(p1,n1,p2,n2){
+  const cal=COLL_CAL[p1+'|'+p2]||COLL_CAL[p2+'|'+p1]; if(!cal) return null;
+  const g1=sqGrid(p1,n1), g2=sqGrid(p2,n2); if(!g1||!g2) return null;
+  const v=cmpCos(decodeMap(g1),decodeMap(g2));
+  if(v<COLL_FLOOR) return {v,ci:null,lvl:'ok'};        // 겹침 자체가 없음
+  const den=cal[1]-cal[0]; if(den<0.02) return {v,ci:null,lvl:'ok'};
+  const ci=(v-cal[0])/den;
+  return {v,ci,lvl: ci>=COLL_BAN?'ban' : ci>=COLL_PENAL?'penal' : ci>=COLL_WARN?'warn' : 'ok'};
+}
 function sqGrid(pos,name){
   const c=CMP_SLOTS[pos]; if(!c) return null;
   const hit=c.c.find(o=>o.n===name); return hit?hit.grid:null;
@@ -2947,7 +2987,15 @@ function emerySolve(){
     own+=o/t*100; n++;
   });
   const avg=SQUAD_SLOTS.reduce((a,s)=>a+(R[s.pos]?R[s.pos].s:0),0)/11;
-  return {sel,R,bank4,own:n?own/n:null,avg,warn,wide:W?W.side:null};
+  // 충돌 점검 (CI, 시즌축 재보정판)
+  const coll=[];
+  for(let a=0;a<SQUAD_SLOTS.length;a++) for(let b=a+1;b<SQUAD_SLOTS.length;b++){
+    const pa=SQUAD_SLOTS[a].pos, pb=SQUAD_SLOTS[b].pos;
+    const c=collisionCI(pa,sel[pa],pb,sel[pb]);
+    if(c&&c.lvl!=='ok') coll.push({pair:`${pa}×${pb}`,a:sel[pa],b:sel[pb],...c});
+  }
+  coll.sort((x,y)=>y.ci-x.ci);
+  return {sel,R,bank4,own:n?own/n:null,avg,warn,wide:W?W.side:null,coll};
 }
 function renderSolve(){
   const out=document.getElementById('sqSolveOut'); if(!out) return;
@@ -2964,6 +3012,10 @@ function renderSolve(){
     (r.own!=null?` · 전방 6인 수비가담 <b>${r.own.toFixed(1)}%</b>`:'')+`</div>`+
     `<div style="color:var(--muted-2)">${rows}</div>`+
     (r.own!=null&&r.own<28?`<div class="warn" style="margin-top:4px">전방 수비가담이 25/26 기준선(시즌축 30.3%)보다 낮습니다 — obs#82에 따라 <b>라인은 52로 유지</b>하고, 부족분은 뱅크 사이드 포커스를 <b>Defend/Balanced</b>로 올려 보상하세요(뱅크 0.60→1.30).</div>`:'')+
+    (r.coll.length
+      ?`<div style="margin-top:4px">🔗 <b>공간 충돌</b>(슬롯쌍 상대 지수 CI — 전역 임계값 대체): `+
+        r.coll.map(c=>`<span class="${c.lvl==='ok'?'ok':'warn'}">${c.pair} ${c.a.replace(/(영입·|\(.*)/g,'')}×${c.b.replace(/(영입·|\(.*)/g,'')} cos ${c.v.toFixed(3)} · CI ${c.ci.toFixed(2)}${c.lvl==='ban'?' 금지':c.lvl==='penal'?' 감점':' 주의'}</span>`).join(' · ')+`</div>`
+      :`<div style="margin-top:4px"><span class="ok">🔗 공간 충돌 없음</span> — 모든 쌍이 해당 슬롯쌍 분포의 p90 이하</div>`)+
     (r.warn.length?`<div class="warn" style="margin-top:4px">⚠ ${r.warn.join(' / ')}</div>`:'');
 }
 document.getElementById('sqSolve').addEventListener('click',renderSolve);
