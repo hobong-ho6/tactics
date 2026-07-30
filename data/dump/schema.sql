@@ -246,3 +246,9 @@ CREATE TABLE IF NOT EXISTS "squad_positions"(
   source TEXT, confidence TEXT, sort_order INTEGER,
   UNIQUE(team, label, slot_type)
 );
+CREATE TABLE player_match_grids(
+  team TEXT NOT NULL DEFAULT 'AVL', season TEXT NOT NULL,
+  player_id INTEGER REFERENCES players(id), name_kr TEXT NOT NULL,
+  event_id INTEGER NOT NULL, possession REAL, hit_points INTEGER,
+  cells TEXT NOT NULL, map25 TEXT, source TEXT, confidence TEXT,
+  PRIMARY KEY(name_kr, event_id));
