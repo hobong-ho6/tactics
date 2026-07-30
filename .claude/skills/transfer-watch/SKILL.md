@@ -48,6 +48,12 @@ docs/20-fc-game-system.md의 영입 후보 파이프라인 그대로:
    **API는 sofascore.com 페이지 컨텍스트에서만 접근 가능** (claude-in-chrome javascript_tool).
    Chrome 연결이 없는 헤드리스 실행이면: transfer_targets에 map25 없이 행을 만들고
    confidence에 `PENDING MEASUREMENT`를 남긴 뒤 종료 보고에 명시한다.
+   - 엔드포인트: 히트맵 `/api/v1/event/{eid}/player/{pid}/heatmap`, 스탯 `.../statistics`,
+     경기목록 `/api/v1/player/{pid}/events/last/{page}` (역순 `player/{pid}/event/{eid}/...`는 404).
+   - **탭 프리즈 주의 (2026-07-30 확인)**: sofascore.com 홈에서 fetch 루프를 돌리면 라이브 스코어
+     스크립트가 렌더러를 얼려 CDP가 45초 타임아웃된다 — 레이트리밋이 아니다(7/29 오진).
+     **새 탭 + `https://www.sofascore.com/robots.txt`(동일 오리진 경량 페이지) + `Promise.all` 병렬 fetch**로
+     8경기 일괄 수집이 안정적이다. 얼면 새 탭을 만들어 재시도. `curl`은 UA/Referer를 붙여도 403.
 2. 5×5 툴 그리드(툴x=100−소파y, 툴y=소파x) + 중심좌표 + 평균 평점 계산.
 3. 커널 적합도: fc26-heatmap.html의 MAPS를 파싱해 해당 슬롯 x에서 placedMap
    (미러+시프트) 후 코사인 — 기존 세션 스크립트 패턴 재사용.
