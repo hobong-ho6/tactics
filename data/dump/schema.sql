@@ -148,7 +148,7 @@ CREATE TABLE transfer_targets(
   likelihood TEXT,               -- HIGH / MEDIUM-HIGH / MEDIUM / MEDIUM-LOW
   map25 TEXT, tool_x REAL, tool_y REAL, sample_n INTEGER, avg_rating REAL,
   opt_role TEXT, opt_focus TEXT, fit_role TEXT, fit_focus TEXT, fit_sim REAL,
-  rationale TEXT, source TEXT, confidence TEXT, short_label TEXT,
+  rationale TEXT, source TEXT, confidence TEXT, short_label TEXT, last_news_date TEXT,
   UNIQUE(window, name, slot)
 );
 CREATE TABLE player_fc_stats(
@@ -221,7 +221,7 @@ CREATE TABLE transfer_outgoing(
   likelihood TEXT,
   rationale TEXT,
   source TEXT,
-  confidence TEXT,
+  confidence TEXT, last_news_date TEXT,
   UNIQUE(window, player_id)
 );
 CREATE TABLE transfer_ledger(
