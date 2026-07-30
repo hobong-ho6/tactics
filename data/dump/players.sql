@@ -28,3 +28,15 @@ INSERT INTO players VALUES(27,'Kosta Nedeljkovic','RB',20,NULL,'26/27 RB 뎁스 
 INSERT INTO players VALUES(28,'Samuel Iling-Junior','LM',19,NULL,'26/27 LM 복귀(#19). 25/26 이중 임대 — 웨스트브롬(챔피언십 9월~1월) 24경기·14선발·1290분·평점6.53·1골이 본체, 이후 피사(세리에A 2~3월) 5경기 교체·107분. WBA 등록상 LM이나 실측 주력은 우측(RM/AMR) 12선발, 좌측(LW/AML)은 후반 4선발. Source: SofaScore player 996919 (2026-07-22).');
 INSERT INTO players VALUES(29,'Joe Gauci','GK',18,NULL,'26/27 백업 GK 복귀. 25/26 포트 베일(리그원) 주전: 34경기 전선발·3060분·평점6.94·클린시트11·세이브89·실점40·세이브율62% + EFL컵 2경기(1CS). GK라 히트맵/평균위치 미수집(시즌 요약만). Source: SofaScore player 966874 season stats (2026-07-22).');
 INSERT INTO players VALUES(30,'George Hemmings','DM',53,71,'25/26 유스(U21) DM, #53. 2007-03-04생(잉글랜드, 노팅엄 포레스트 유스→2024 빌라). 1군 데뷔 시즌 — 시니어 PL 2경기 25분(A아스널 8''·H에버튼 17'', 둘 다 평점6.6) + 유로파리그 2경기 46분(A페네르바체 1''·H잘츠부르크 45''선발 평점6.5, 실측 좌측 피봇 DM avg 44.5/67.6). 유로파리그 우승 스쿼드 멤버. 유스: PL2 Div1 11경기 전선발·928분·3어시(vs Leicester/Stoke/Man City U21; SofaScore 평점 미제공, FotMob 7.3 참고=QUALITATIVE), UEFA 유스리그 3경기 225분(평점 7.8/7.1/6.7), EFL트로피 1경기 90분 6.4, 프리시즌 AS로마 26''. PL2·유스리그는 SofaScore 히트맵·평균위치 미제공 → 포지션 그리드 미생성. 잉글랜드 U18/U19. Source: SofaScore player 1398204 (2026-07-24).');
+INSERT INTO players VALUES(31,'Robert Sánchez','GK',NULL,NULL,'첼시 25/26 PL 35경기 선발. SofaScore 920546');
+INSERT INTO players VALUES(32,'Malo Gusto','RB',NULL,NULL,'첼시 25/26 PL 34경기. SofaScore 996958');
+INSERT INTO players VALUES(33,'Wesley Fofana','CB',NULL,NULL,'첼시 25/26 PL 25경기. SofaScore 923894');
+INSERT INTO players VALUES(34,'Trevoh Chalobah','CB',NULL,NULL,'첼시 25/26 PL 34경기. SofaScore 826134');
+INSERT INTO players VALUES(35,'Jorrel Hato','LB/CB',NULL,NULL,'아약스→첼시. 25/26 PL 22경기. SofaScore 1153079');
+INSERT INTO players VALUES(36,'Moisés Caicedo','DM',NULL,NULL,'첼시 25/26 PL 33경기. SofaScore 987650');
+INSERT INTO players VALUES(37,'Enzo Fernández','CM',NULL,NULL,'첼시 25/26 PL 36경기. SofaScore 974505');
+INSERT INTO players VALUES(38,'Pedro Neto','W',NULL,NULL,'첼시 25/26 PL 34경기. SofaScore 879349');
+INSERT INTO players VALUES(39,'Cole Palmer','AM',NULL,NULL,'첼시 25/26 PL 26경기. SofaScore 982780');
+INSERT INTO players VALUES(40,'João Pedro','ST',NULL,NULL,'첼시 25/26 PL 35경기. SofaScore 975079');
+INSERT INTO players VALUES(41,'Reece James','RB/DM',NULL,NULL,'첼시 25/26 PL 29경기. SofaScore 885908');
+INSERT INTO players VALUES(42,'Estêvão','RW',NULL,NULL,'첼시 25/26 PL 22경기. SofaScore 1597265');
