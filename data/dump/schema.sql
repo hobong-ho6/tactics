@@ -263,6 +263,6 @@ CREATE TABLE game_role_focus(
   negative TEXT,              -- JSON array — 희생되는 특성
   side_conflict INTEGER DEFAULT 0,  -- 1 = fut.gg의 좌/우 변형이 서로 다른 값을 준 항목
   note TEXT,
-  source TEXT,
+  source TEXT, kernel25 TEXT, kernel_source TEXT,
   PRIMARY KEY(game_version, role_id, focus)
 );
