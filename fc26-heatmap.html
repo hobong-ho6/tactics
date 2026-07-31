@@ -1772,7 +1772,10 @@ const panels={};
 ============================================================ */
 const SQUAD_SLOTS=[
  {pos:'GK', t:'GK', x:50,y:6,  opts:[
-   {n:'마르티네스', opt:['gk_ballplaying','Build-Up'],fit:['gk_goalkeeper','Defend']},
+   /* 2026-07-31: opt를 DB 프리셋(projected:emery-2627)과 정렬. gk_goalkeeper/Defend .961 vs
+      gk_ballplaying/Build-Up .744 = Δ.217로 노이즈 구간(≤0.05, obs#91 ①)의 4배 — 숙련(ballplaying)
+      보유는 Δ가 노이즈일 때만 결정권을 갖는다. emerySolve()도 독립적으로 goalkeeper/Defend를 뽑는다. */
+   {n:'마르티네스', opt:['gk_goalkeeper','Defend'],  fit:['gk_goalkeeper','Defend']},
    ]},
  {pos:'LB', t:'FB', x:13,y:32, opts:[
    {n:'마첸',      opt:['fb_att_wb','Support'],     fit:['fb_wingback','Balanced']},
@@ -1815,7 +1818,10 @@ const SQUAD_SLOTS=[
    ]},
  {pos:'CAM',t:'CAM',x:50,y:66, opts:[
    {n:'부엔디아',  opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
-   {n:'맥긴',      opt:['cam_playmaker','Balanced'], fit:['cam_playmaker','Roaming']},
+   /* 2026-07-31: opt를 DB 프리셋과 정렬. 역할은 양쪽 다 cam_playmaker라 숙련도가 가르지 못하고,
+      Roaming .801 vs Balanced .703 = Δ.098로 노이즈 구간 밖 → 적합 우선. 자율 포커스 게이트도 통과
+      (autonomyIQ 79 ≥ 72). emerySolve()도 Roaming을 뽑는다. */
+   {n:'맥긴',      opt:['cam_playmaker','Roaming'],  fit:['cam_playmaker','Roaming']},
    ]},
  {pos:'RM', t:'WM', x:85,y:64, opts:[
    {n:'맥긴',      opt:['wm_widemid','Support'],     fit:['wm_wideplm','Attack']},
