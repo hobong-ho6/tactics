@@ -2712,7 +2712,14 @@ const SLOT_EMERY_ROLE={
   RCB:[['cb_bpd','Aggressive']],
   LDM:[['dm_holding','Roaming'],['dm_dlp','Build-Up']],
   RDM:[['dm_holding','Ball-Winning'],['dm_dlp','Build-Up']],
-  LM:[['wm_insidefwd','Balanced']],
+  /* ⭐ 2026-07-31 (obs#119) — `wm_insidefwd`/Balanced → `wm_winger`/Attack.
+     obs#100이 목표 커널을 개정했다: 옛 placedMap이 insidefwd를 터치라인으로 끌어당겨 적합을
+     부풀리고 있었고(하지무사 .923→.589), 정본 변형에서 좌측 해방의 성격은 **컷인 → 터치라인 침투**다.
+     ⚠️ obs#27의 "Winger 금지"는 **뱅크 쪽 와이드미드**에 대한 것이고(높이 남아 뱅크가 깨진다),
+     obs#39가 "금지 대상은 role이 아니라 **자기진영 0인 조합**"으로 정밀화했다 —
+     해방 쪽은 뱅크 0.00이 요건이므로 winger가 정합한다. 충돌 없음.
+     효과: 선수비교 `요구적합`에서 가르나초 4위 .637 → **2위 .804**로 올라 표가 처방과 정합해진다. */
+  LM:[['wm_winger','Attack']],
   CAM:[['cam_playmaker','Roaming']],
   RM:[['wm_widemid','Support']],
   ST:[['st_advanced','Versatile']],
@@ -3228,10 +3235,16 @@ const TACTIC_ONLY_PICK={ LB:['fb_att_wb','Support'], RB:['fb_wingback','Balanced
 /* ⚠️ `SLOT_EMERY_ROLE`이 후속 obs 대비 낡은 항목 — 화면에 그대로 표시하되 경고를 띄운다.
    이 표를 지금 고치면 선수비교 메뉴의 `요구적합` 순위가 함께 바뀌므로(emeryRoleFit이 같은 표를
    쓴다) 별 과제로 분리한다. 값을 조용히 바꾸지 않는 것이 불변규칙 1·3의 취지다. */
-const TACTIC_ONLY_STALE={
-  GK:'표는 `gk_ballplaying`/Build-Up이지만 실측이 `gk_goalkeeper`/Defend를 지시했다(스위퍼 .773으로 기각).',
-  LM:'표는 `wm_insidefwd`/Balanced이지만 **obs#100이 목표 커널을 `wm_winger`로 개정**했다 — 좌측 해방의 성격이 컷인 → 터치라인 침투로 바뀌었다.',
-  ST:'표는 `st_advanced`/Versatile이지만 현 처방은 /Support다.' };
+/* ⚠️ 요구역할과 현 처방이 다른 칸의 **사유**를 표시한다.
+   2026-07-31 obs#119 정정: 이것들은 "표가 낡은 것"이 **아니라** obs#14가 등재한
+   **의도적 처방 예외**다 — 요구는 그대로이고 실측이 그것을 이긴 칸이다(불변규칙 3).
+   초기 구현(obs#118)이 3건을 모두 "낡음"으로 표기한 것은 오판이었다. 진짜 낡은 1건(LM)은 위에서 고쳤다. */
+const TACTIC_ONLY_DIVERGE={
+  GK:'**의도적 예외**(obs#14) — 요구는 `gk_ballplaying`/Build-Up이 맞다. obs#27이 구조 요건으로 명시한다: 컴팩트 블록을 위해 라인을 올린 대가인 배후 공간을 **스위퍼 + 오프사이드 트랩**(빌라 오프사이드 유발 리그 1위)으로 상쇄한다. 다만 마르티네스 실측이 `gk_goalkeeper` 0.96이고 스위퍼는 0.773이라 **처방은 실측을 택했다**(불변규칙 3).',
+  ST:'**의도적 예외**(obs#12·#14) — 요구 `st_advanced`/Versatile이 맞다("시즌 전체로도 Attack 아님, 유동적 처방 유지"). 현 처방이 /Support인 것은 주인이 **왓킨스 → 잭슨**으로 바뀌어 그의 실측 최적을 따른 결과다.',
+  LDM:'포커스 차이 — 요구는 Build-Up(창조 축), 처방은 Roaming(고메스 실측 최적).',
+  RDM:'포커스 차이 — 요구는 Ball-Winning(볼위너 축), 처방은 Defend(카마라 실측 최적). 역할(`dm_holding`)은 같다.',
+  CAM:'역할 차이 — 요구는 `cam_playmaker`/Roaming(중앙 창조), 처방은 `cam_halfwinger`/Balanced(만잠비 실측이 **중앙이 비고 양 하프스페이스가 두꺼운 M자**, obs#111 ②).' };
 function applyTacticOnly(){
   const out=document.getElementById('sqSolveOut');
   snapshotPresetOpt();                     // 되돌리기 경로 확보 (↩︎ DB 처방으로)
@@ -3244,7 +3257,7 @@ function applyTacticOnly(){
     const alt = list.length>1 ? list.filter(([r,f])=>!(r===pick[0]&&f===pick[1]))
                                     .map(([r,f])=>`${ROLES[r]?ROLES[r].n:r}/${fmtFocus(f)}`).join(', ') : '';
     rows.push({pos:s.pos, txt:`${ROLES[pick[0]]?ROLES[pick[0]].n:pick[0]}/${fmtFocus(pick[1])}`, alt});
-    if(TACTIC_ONLY_STALE[s.pos]) stale.push(`${s.pos} — ${TACTIC_ONLY_STALE[s.pos]}`);
+    if(TACTIC_ONLY_DIVERGE[s.pos]) stale.push(`${s.pos} — ${TACTIC_ONLY_DIVERGE[s.pos]}`);
   }
   /* 자동 솔버 억제 — 위와 같은 이유(applySquad → renderSolve가 요구역할을 덮어쓴다) */
   _autoSolving=true; try{ buildSquadUI(); applySquad(); } finally{ _autoSolving=false; }
@@ -3253,7 +3266,7 @@ function applyTacticOnly(){
     + '<div style="margin-top:4px">'+rows.map(r=>`${r.pos} <b>${r.txt}</b>${r.alt?`<span style="opacity:.6"> (대안 ${r.alt})</span>`:''}`).join(' · ')+'</div>'
     + '<div style="margin-top:4px;color:var(--muted-2)">C2 성립 — LB 전진(공격형 윙백) vs RB 절제(윙백). C3 성립 — 좌 창조(딥라잉) vs 우 볼위너(홀딩). '
       +'⚠️ LDM은 표의 둘째 항목을 쓴다(첫째를 쓰면 두 피벗이 모두 홀딩이 되어 C3가 깨진다).</div>'
-    + (stale.length?`<div style="margin-top:4px;color:var(--warn,#f0a03c)">⚠️ <b>요구역할 표가 낡은 칸 ${stale.length}건</b> — 값을 조용히 바꾸지 않고 그대로 표시한다(선수비교 메뉴의 요구적합이 같은 표를 쓴다). ${stale.join(' · ')}</div>`:'');
+    + (stale.length?`<div style="margin-top:4px;color:var(--warn,#f0a03c)">⚠️ <b>요구역할 ≠ 현 처방인 칸 ${stale.length}건</b> — 표가 낡은 게 아니라 <b>실측이 요구를 이긴 칸</b>이다(불변규칙 3, obs#14가 등재한 의도적 예외 포함). ${stale.join('<br>')}</div>`:'');
 }
 function renderSolve(){
   const out=document.getElementById('sqSolveOut'); if(!out) return;
