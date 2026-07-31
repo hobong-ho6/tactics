@@ -113,7 +113,7 @@ CREATE TABLE player_match_positions(
   avg_x REAL, avg_y REAL,        -- SofaScore average-position (x attack dir, y low=right)
   started INTEGER,               -- 1=start, 0=sub appearance
   pos_class TEXT,                -- classified slot; NULL when minutes<45 (avg unreliable)
-  source TEXT, confidence TEXT, team TEXT DEFAULT 'AVL',
+  source TEXT, confidence TEXT, team TEXT DEFAULT 'AVL', lineup_order INTEGER, formation TEXT, lineup_pos TEXT,
   UNIQUE(player_id, event_id)
 );
 CREATE VIEW v_position_profile AS
