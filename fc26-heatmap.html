@@ -2130,12 +2130,9 @@ const FC_FAMILIARITY={
   '영입·바투리나':{"cam_playmaker": 1, "wm_wideplm": 1},
   '영입·트래포드':{"gk_ballplaying": 1},
   '영입·모리바':{"cm_b2b": 1},
-  '아브라함(보유)':{"st_poacher": 1},
   '영입·베리발':{"cm_b2b": 1, "cam_playmaker": 1},
   '영입·헨더슨':{"gk_sweeper": 1},
-  '영입·리세르':{"gk_ballplaying": 1},
   '영입·요한손':{"gk_ballplaying": 1},
-  '영입·켈리':{"cb_stopper": 1, "fb_att_wb": 1},
   '영입·찰로바':{"cb_stopper": 1, "cb_defender": 1, "fb_fullback": 1},
   '영입·볼테마데':{"st_advanced": 1, "st_false9": 1},
   '영입·잭슨':{"st_advanced": 1},
@@ -2373,7 +2370,6 @@ const SOFIFA={
   '시세(합류확정)':{id:77524,en:"M. Cissé"},
   '아브라함(보유)':{id:231352,en:"T. Abraham"},
   '알리송(신규)':{id:82968,en:"Alysson"},
-  '영입·게예':{en:"Pape Gueye"},
   '영입·그레이':{id:270208,en:"A. Gray"},
   '영입·기라시':{id:215441,en:"S. Guirassy"},
   '영입·래시포드':{en:"Marcus Rashford"},
@@ -2382,7 +2378,6 @@ const SOFIFA={
   '영입·로피':{id:259190,en:"D. Lopy"},
   '영입·리세르':{id:271918,en:"R. Risser"},
   '영입·모리바':{id:259233,en:"I. Moriba"},
-  '영입·바르가스':{en:"Ruben Vargas"},
   '영입·바투리나':{id:262842,en:"M. Baturina"},
   '영입·반스':{id:234742,en:"H. Barnes"},
   '영입·베리발':{id:272926,en:"L. Bergvall"},
@@ -2406,7 +2401,6 @@ const SOFIFA={
   '영입·카마라(모나코)':{id:275138,en:"L. Camara"},
   '영입·와튼':{id:259240,en:"A. Wharton"},
   '영입·라스킨':{id:239810,en:"N. Raskin"},
-  '영입·반스':{id:234742,en:"H. Barnes"},
   '영입·바르가스':{id:238581,en:"R. Vargas"},
   '영입·퀴뇨네스':{id:234579,en:"J. Quiñones"},
   '영입·세이스':{id:71305,en:"J. Seys"},
@@ -2415,10 +2409,8 @@ const SOFIFA={
   '래시포드(25임대·참조)':{id:231677,en:"M. Rashford"},
   '래시포드(25임대·전방)':{id:231677,en:"M. Rashford"},
   '영입·구드문드손':{id:238004,en:"A. Guðmundsson"},
-  '영입·리세르':{id:271918,en:"R. Risser"},
   '영입·켈리':{id:231512,en:"L. Kelly"},
   '영입·베르그발':{id:272926,en:"L. Bergvall"},
-  '아브라함(보유)':{id:231352,en:"T. Abraham"},
   '영입·소울레':{id:265695,en:"M. Soulé"},
   '영입·스즈키':{id:255981,en:"Z. Suzuki"},
   '영입·아데예미':{id:251852,en:"K. Adeyemi"},
@@ -2428,10 +2420,7 @@ const SOFIFA={
   '영입·요한손':{id:241643,en:"V. Johansson"},
   '영입·음바예':{en:"Ibrahim Mbaye"},
   '영입·잭슨':{id:259197,en:"N. Jackson"},
-  '영입·카마라(모나코)':{en:"Lamine Camara"},
   '영입·칼라일리':{en:"Anan Khalaili"},
-  '영입·케이타':{en:"Mandela Keita"},
-  '영입·켈리':{id:231512,en:"L. Kelly"},
   '영입·콜로무아니':{en:"Randal Kolo Muani"},
   '영입·태버니어':{id:237477,en:"M. Tavernier"},
   '영입·트래포드':{id:263063,en:"J. Trafford"},
@@ -2969,7 +2958,16 @@ const EMERY_BANK_MIN=0.60;
    mode 'require' = 그 역할군 밖으로는 배정 금지 (해당 역할이 그 슬롯의 ROLE_SETS에 있을 때만 적용)
    mode 'prefer'  = 동점 구간(Δ≤0.03)에서만 우선. 적합이 뚜렷이 낮으면 강제하지 않는다.
    ------------------------------------------------------------ */
+/* C5 기능축 — 2026-07-31 obs#103: `focus` 차원 추가.
+   왜: LCB에서 갈리는 것은 role이 아니라 **focus**다(파우·콘사 둘 다 cb_bpd). role만 제약하던
+   구조로는 표현할 수 없어 솔버가 프리셋과 이탈하는 유일한 칸이었다 — 결손은 근거가 아니라
+   제약의 표현력이었다(obs#33·#13 + player_duties id=3/4가 근거를 3중으로 제공한다).
+   `focus`는 선택 필드다 — 없으면 종전대로 role만 제약한다. */
 const FUNC_AXIS={
+  '파우 토레스':  {role:'cb_bpd',focus:'Build-Up',mode:'require',
+                  why:'duties(id=4) "좌 하프스페이스로 캐리·패스해 전진" 명시 + game_role_implication "cb_bpd/Build-Up confirmed unambiguously"(adherence HIGH). 움직임 최적 Aggressive(.927)와 Δ.049는 노이즈 구간(obs#91 ①)이라 결정권이 duties로 넘어간다(obs#33). PAC 67로 Aggressive의 뒷공간 노출에 부적합하고, 두 CB 동시 Aggressive는 에메리 rest-defense를 붕괴시킨다(obs#13).'},
+  '콘사':        {role:'cb_bpd',focus:'Aggressive',mode:'prefer',
+                  why:'duties(id=3) "볼을 갖고 우측 중앙으로 step out" 실측 확증 + 인터셉트 2.0 · PAC 75. 움직임 최적과 이미 일치하므로 require가 불필요하다(obs#33·#13).'},
   '카마라':      {role:'dm_holding',mode:'require',
                   why:'듀얼 8.4 · 인터셉트 3.0 스쿼드 1위 = 기능축 볼위너 (obs#31·#32). 움직임 최적 dm_dlp/Roaming(.899)을 버리고 기능을 택하는 칸임을 프리셋이 명시한다.'},
   '오나나':      {role:'dm_holding',mode:'prefer',
@@ -2978,12 +2976,16 @@ const FUNC_AXIS={
                   why:'창조 전무(kp .3 · xA .04)로 기능축은 볼위너 (obs#32). 다만 dm_dlp 적합이 뚜렷이 높아 프리셋(H안)은 dlp를 채택했다 — 적합을 위해 기능 정합을 포기한 칸.'},
 };
 /* 해당 슬롯에 그 역할군 자체가 없으면(예: 볼위너 지정 선수를 RM에 두면) 제약을 적용하지 않는다 */
-function funcAllows(name,role,posType){
+function funcAllows(name,role,focus,posType){
   const f=FUNC_AXIS[name]; if(!f||f.mode!=='require') return true;
   if(!ROLE_SETS[posType]||!ROLE_SETS[posType].includes(f.role)) return true;
-  return role===f.role;
+  if(role!==f.role) return false;
+  return f.focus?focus===f.focus:true;                              // focus는 선택 제약
 }
-function funcPrefers(name,role){ const f=FUNC_AXIS[name]; return !!(f&&f.role===role); }
+function funcPrefers(name,role,focus){
+  const f=FUNC_AXIS[name]; if(!f||f.role!==role) return false;
+  return f.focus?focus===f.focus:true;
+}
 
 /* ------------------------------------------------------------
    충돌 지수 (CI) — 2026-07-31 시즌축 재보정, docs/20 §A 전역 임계값(0.81/0.88/0.9) 대체.
@@ -3045,7 +3047,7 @@ function roleOptions(pos,grid){          // 해당 슬롯의 모든 역할×포�
 function pickFamiliar(name,list){
   if(!list.length) return null;
   const top=list[0], band=list.filter(o=>o.s>=top.s-0.03);
-  const fn=band.find(o=>funcPrefers(name,o.role));            // ① 기능축
+  const fn=band.find(o=>funcPrefers(name,o.role,o.f));        // ① 기능축(role + 선택 focus)
   if(fn) return fn;
   const fam=band.find(o=>(typeof roleFamiliar==='function') && roleFamiliar(name,o.role)>0);  // ② 숙련
   return fam||top;
@@ -3056,10 +3058,10 @@ function emerySolve(){
   for(const s of SQUAD_SLOTS){
     const g=sqGrid(s.pos,sel[s.pos]);
     const all=roleOptions(s.pos,g);
-    opt[s.pos]=all.filter(o=>funcAllows(sel[s.pos],o.role,s.t));      // C5 기능축 require
+    opt[s.pos]=all.filter(o=>funcAllows(sel[s.pos],o.role,o.f,s.t)); // C5 기능축 require (role + 선택 focus)
     if(all.length&&opt[s.pos].length<all.length){
       const f=FUNC_AXIS[sel[s.pos]];
-      notes.push({pos:s.pos,name:sel[s.pos],role:f.role,why:f.why,
+      notes.push({pos:s.pos,name:sel[s.pos],role:f.role+(f.focus?'/'+f.focus:''),why:f.why,
                   drop:+(all[0].s-(opt[s.pos][0]?opt[s.pos][0].s:0)).toFixed(3),dropTo:all[0].role+'/'+all[0].f});
     }
     if(!opt[s.pos].length) warn.push(`${s.pos}(${sel[s.pos]}) 그리드 없음`);
