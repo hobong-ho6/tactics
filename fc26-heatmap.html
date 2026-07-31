@@ -3132,11 +3132,29 @@ function emerySolve(){
      좌공격×우풀백 −0.314 p=0.075 경향). 같은 쪽 짝은 양수지만 무의미(+0.178/+0.198)라
      "함께 올라간다"는 입증되지 않았다 — 지지되는 것은 억제 쪽이고 실용 함의만 같다.
      ⚠️ 유의 1건(n=19)·다중비교 미보정이라 **하드 제약이 아니라 동점 구간 타이브레이크**로만 쓴다. */
-  const C6_BAND=0.05;
+  /* ⭐ 2026-07-31 (obs#111, 사용자 확정) — C6를 **소프트 타이브레이크 → 하드 제약**으로 승격.
+     경위: obs#110의 XI(LB 마첸·RB 캐시)에서 풀백 배치 합이 RB전진 1.759 vs LB전진 1.690으로
+     Δ.069 > 옛 C6_BAND(0.05)라 C6가 적용되지 않아 **좌측 해방인데 전진 풀백이 우측**이 됐다.
+     하드화 근거: obs#106 ③이 전수 42,972 라인업에서 **C6 만족 최고 .8560 vs 전역 최고 .8561 =
+     Δ.0001**을 측정했다 — 즉 최상위권에서 하드화 비용이 사실상 0이다.
+     ⚠️ 단 obs#95의 근거 강도는 그대로다(잔차 상관 유의 1건 · n=19 · 다중비교 미보정).
+     "대가가 없다"가 "근거가 세다"를 뜻하지 않으므로, 되돌릴 수 있게 **플래그 한 개로** 구현하고
+     C6를 만족시킬 배치가 아예 없으면 종전처럼 적합 우선으로 폴백한 뒤 경고한다. */
+  const C6_HARD=true;        // false로 두면 2026-07-31 이전(소프트 타이브레이크)으로 되돌아간다
+  const C6_BAND=0.05;        // C6_HARD=false일 때만 쓰인다
   let fbNote='';
   const relSide = W ? (W.side==='좌측 해방'?'L':'R') : null;
   let useL;
-  if(lAdv&&rAdv&&relSide&&Math.abs(lAdv.sc-rAdv.sc)<=C6_BAND){
+  const c6Pick = relSide==='L' ? lAdv : relSide==='R' ? rAdv : null;
+  if(C6_HARD && relSide && c6Pick){
+    useL = (relSide==='L');
+    const other = relSide==='L' ? rAdv : lAdv;
+    if(other && other.sc > c6Pick.sc)
+      fbNote=` · C6 하드 적용(적합 −${(other.sc-c6Pick.sc).toFixed(3)})`;
+  } else if(C6_HARD && relSide && !c6Pick){
+    warn.push(`C6 하드 불가 — ${W.side}인데 그 쪽 풀백을 전진시키는 비대칭 조합이 없다. 적합 우선으로 폴백한다.`);
+    if(lAdv&&(!rAdv||lAdv.sc>=rAdv.sc)) useL=true; else if(rAdv) useL=false;
+  } else if(lAdv&&rAdv&&relSide&&Math.abs(lAdv.sc-rAdv.sc)<=C6_BAND){
     useL = (relSide==='L');
     const better = lAdv.sc>=rAdv.sc ? 'L':'R';
     if((useL?'L':'R')!==better) fbNote=` · C6 적용(적합 −${Math.abs(lAdv.sc-rAdv.sc).toFixed(3)})`;
