@@ -1787,7 +1787,11 @@ const SQUAD_SLOTS=[
    ]},
  {pos:'RB', t:'FB', x:87,y:32, opts:[
    {n:'캐시',      opt:['fb_wingback','Balanced'],  fit:['fb_att_wb','Support']},
-   {n:'보가르드',  opt:['fb_att_wb','Support'],      fit:['fb_att_wb','Support']},
+   /* 보가르드 RB — 2026-07-31 obs#89: 측정최적은 fb_att_wb/Support 0.890이지만 그는 att_wb
+      미숙련이고 fb_wingback 숙련 보유다. 숙련이 개선하는 것이 정확히 오프더볼 복귀(obs#88)이므로
+      뱅크·rest-defense 성격의 이 칸에서는 wingback/Support 0.808을 채택하고 Δ0.082를 지불한다.
+      (obs#29의 Δ≤0.03 기계 규칙이 아니라 명시적 구조 지불이다.) */
+   {n:'보가르드',  opt:['fb_wingback','Support'],    fit:['fb_att_wb','Support']},
    ]},
  {pos:'LDM',t:'DM', x:38,y:42, opts:[
    {n:'오나나',    opt:['dm_holding','Roaming'],     fit:['dm_dlp','Roaming']},
@@ -1813,6 +1817,10 @@ const SQUAD_SLOTS=[
    {n:'맥긴',      opt:['wm_widemid','Support'],     fit:['wm_wideplm','Attack']},
    /* 산초 — 26/27 스쿼드 제외(2026-07-31). 실측 그리드는 CMP_SLOTS(선수 비교)에 보존한다. */
    {n:'알리송(신규)', opt:['wm_winger','Attack'],    fit:['wm_insidefwd','Balanced']},
+   /* 캐시 RM (obs#89 C안, 2026-07-31) — 두 줄 4의 뱅크 칸. wm_widemid 숙련 보유자 중
+      적합 최고(0.835, 뱅크 0.60)이고 알리송의 widemid는 미숙련이다.
+      ⚠️ 그리드는 RB 실측(RM 실측 0경기) — CMP_SLOTS.RM의 gridNote 참조. */
+   {n:'캐시',      opt:['wm_widemid','Support'],     fit:['wm_widemid','Support']},
    ]},
  {pos:'ST', t:'ST', x:50,y:87, opts:[
    {n:'왓킨스',    opt:['st_advanced','Versatile'],  fit:['st_advanced','Versatile']},
@@ -1831,7 +1839,7 @@ const PLAYER_BEST={
   '파우 토레스':{pos:['LCB'],note:'좌측 볼 플레잉 CB'},
   '린델뢰프':{pos:['LCB','RCB'],note:'양쪽 CB 커버 — 시즌 BPD/Aggressive 0.78 (락다운 시 defender 대안)'},
   '콘사':{pos:['RCB'],note:'RCB — 시즌 BPD/Aggressive 0.94 (스텝아웃, 순수 스토퍼 아님)'},
-  '캐시':{pos:['RB'],note:'RB — 재검증 07-08: att_wb/Support .90과 wingback/Balanced .89 Δ.007 동률 → 숙련(wingback)+수비우선 FB로 wingback/Balanced 채택'},
+  '캐시':{pos:['RB','RM'],note:'RB — 재검증 07-08: att_wb/Support .90과 wingback/Balanced .89 Δ.007 동률 → 숙련(wingback)+수비우선 FB로 wingback/Balanced 채택. RM 겸업(obs#89): sofifa 숙련에 wm_widemid 보유 → widemid/Support 0.835(뱅크 0.60)로 알리송 0.807(미숙련)·맥긴 0.728보다 높다. 그리드는 RB 실측'},
   '오나나':{pos:['LDM'],note:'피벗 좌측 — 홀딩/로밍 확정 (숙련 타이브레이크: 로밍=시즌 무브먼트, 홀딩=볼위닝 기능)'},
   '카마라':{pos:['RDM'],note:'피벗 앵커/스크린 (7.8/7.8)'},
   '틸레만스':{pos:['LDM','RDM'],note:'딥 피벗이 최적 (EL 결승 8.4) — 10번 아님'},
@@ -2146,6 +2154,7 @@ const CMP_SLOTS={
   {n:'맥긴',grid:'001370126X003770024600011',rate:{v:7.08,b:'season',s:'RM 21경기 평균 7.08 · 피크 8.7'}},
   {n:'산초',grid:'74134X6346131232231311011',gridNote:'RW 실측',rate:{v:7.33,b:'top',s:'상위 3경기 평균 7.33'}},
   {n:'알리송(신규)',grid:'001640014X000380003600011',dbFit:0.85,lh:'OWNED',rate:{v:6.75,b:'r6',s:'최근 6경기 평균 6.75 (그레미우+빌라 혼합)'}},
+  {n:'캐시',grid:'1001300027000270002X00125',gridNote:'RB 실측 — RM 실측 0경기(obs#89 C안의 뱅크 칸)',rate:{v:7.65,b:'top',s:'상위 6경기 평균 7.65 · 피크 8.4 (RB 기준)'}},
   {n:'영입·하지무사',grid:'312691114X000140002400001',dbFit:0.92,lh:'HIGH',rate:{v:7.55,b:'r6',s:'최근 6경기 평균 7.55 (페예노르트)'}},
   {n:'영입·음바예',grid:'001231104X000160001200000',dbFit:0.96,lh:'MEDIUM-HIGH',rate:{v:6.92,b:'r6',s:'최근 6경기(45분+) 평균 6.92 (PSG, 조커자원이라 2026-02~07 확장표본)'}},
   ]},
@@ -2842,8 +2851,13 @@ function applySquad(){
 /* 26/27 예상 XI 일괄 선택 — DB team_tactic_setups(2026-27, projected) 미러.
    라벨은 injectTransferCandidates() 규칙(CONFIRMED='(합류확정)', 그 외='영입·') 그대로.
    DB에서 루머가 삭제/DEAD 되면 해당 슬롯은 건너뛰고 경고를 표시한다. */
-const PROJECTED_XI_2627={GK:'마르티네스',LB:'영입·에스투피냔',LCB:'파우 토레스',RCB:'콘사',RB:'캐시',
-  LDM:'만잠비(합류확정)',RDM:'카마라',LM:'가르나초(합류확정)',CAM:'맥긴',RM:'알리송(신규)',ST:'영입·잭슨'};
+/* 2026-07-31 obs#89 C안 반영: RB 캐시 → 보가르드 / RM 알리송 → 캐시.
+   이유: 두 줄 4의 뱅크 칸(RM)은 오프더볼 복귀 역할인데 알리송의 RM 숙련 역할은
+   wm_winger이지 wm_widemid가 아니다 = 뱅크에 미숙련 배치. 캐시는 wm_widemid 숙련 보유 +
+   적합 0.835로 더 높다. 캐시가 RM으로 올라가면서 RB는 보가르드가 받는다.
+   대가: XI 평균 적합 0.847 → 0.842. 뱅크는 0.60 유지. */
+const PROJECTED_XI_2627={GK:'마르티네스',LB:'영입·에스투피냔',LCB:'파우 토레스',RCB:'콘사',RB:'보가르드',
+  LDM:'만잠비(합류확정)',RDM:'카마라',LM:'가르나초(합류확정)',CAM:'맥긴',RM:'캐시',ST:'영입·잭슨'};
 function selectProjectedXI(){
   const missing=[];
   SQUAD_SLOTS.forEach((s,i)=>{
@@ -2855,7 +2869,7 @@ function selectProjectedXI(){
   const el=document.getElementById('sqProjNote');
   if(el) el.textContent=missing.length
     ?`⚠ 일부 적용 — DB transfer_targets에 없는 항목(무산/삭제 여부 확인): ${missing.join(', ')}`
-    :'✓ 26/27 예상 XI 적용됨 — 슬롯별 🎯 처방 = 게임에 설정할 역할·포커스 (근거: reports/transfer-watch/2026-07-22.md)';
+    :'✓ 26/27 예상 XI 적용됨 — 슬롯별 🎯 처방 = 게임에 설정할 역할·포커스 (근거: DB team_tactic_setups projected:emery-2627, obs#82·#89)';
 }
 document.getElementById('sqProj2627').addEventListener('click',selectProjectedXI);
 
