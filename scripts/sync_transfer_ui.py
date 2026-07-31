@@ -178,6 +178,41 @@ def gen_role_kernels(conn):
     return "const MAPS = {\n" + "\n".join(lines) + "\n};", len(rows)
 
 
+def gen_role_variants(conn):
+    """ROLE_VARIANTS — 위치 변형 217개 (obs#107, SSOT 2단계).
+
+    obs#94에서 placedMap이 "슬롯 x 최근접 변형을 골라 그대로 쓴다"로 바뀐 뒤 이 표가
+    placedMap의 실질 본체다. MAPS(중앙판 커널 85개)와는 별개 자료다.
+
+    정렬은 MAPS와 같은 **피치 순서** + role_id + focus + pitch_x. pitch_x 오름차순은
+    툴 원본과 같으므로 diff 0이 성립한다.
+    """
+    PITCH_ORDER = ["GK", "CB", "FB", "DM", "CM", "CAM", "WM", "W", "ST"]
+    rows = conn.execute(
+        "SELECT v.role_id, v.focus, v.pitch_x, v.kernel25, r.position_type "
+        "FROM game_role_variants v JOIN game_roles r "
+        "  ON r.game_version=v.game_version AND r.role_id=v.role_id "
+        "WHERE v.game_version='FC26' "
+        "ORDER BY v.role_id, v.focus, v.pitch_x"
+    ).fetchall()
+    unknown = sorted({r["position_type"] for r in rows} - set(PITCH_ORDER))
+    if unknown:
+        sys.exit(f"gen_role_variants: PITCH_ORDER에 없는 position_type {unknown}")
+    by_role, ptype = {}, {}
+    for r in rows:
+        by_role.setdefault(r["role_id"], {}).setdefault(r["focus"], []).append(
+            (r["pitch_x"], r["kernel25"]))
+        ptype[r["role_id"]] = r["position_type"]
+    lines = []
+    for role in sorted(by_role, key=lambda x: (PITCH_ORDER.index(ptype[x]), x)):
+        parts = []
+        for focus in sorted(by_role[role]):
+            vs = ",".join(f"[{x},'{k}']" for x, k in by_role[role][focus])
+            parts.append(f"'{focus}':[{vs}]")
+        lines.append(f"  {role}:{{{','.join(parts)}}},")
+    return "const ROLE_VARIANTS = {\n" + "\n".join(lines) + "\n};", len(rows)
+
+
 def warn_dropped_teams(conn):
     """다른 팀 행이 생겼는데 조용히 UI에서 빠지는 것을 막는다.
 
@@ -221,13 +256,15 @@ def main():
     ledger_body, n_ledger = gen_transfer_ledger(conn)
     owned_body, n_owned = gen_xi_owned(conn)
     kernels_body, n_kernels = gen_role_kernels(conn)
+    variants_body, n_variants = gen_role_variants(conn)
     html = replace_block(html, "TRANSFER_TARGETS", targets_body)
     html = replace_block(html, "TRANSFER_OUTGOING", outgoing_body)
     html = replace_block(html, "TRANSFER_LEDGER", ledger_body)
     html = replace_block(html, "XI_OWNED", owned_body)
     html = replace_block(html, "MAPS", kernels_body)
+    html = replace_block(html, "ROLE_VARIANTS", variants_body)
     HTML.write_text(html, encoding="utf-8")
-    print(f"synced {n_targets} TRANSFER_TARGETS + {n_outgoing} TRANSFER_OUTGOING + {n_ledger} TRANSFER_LEDGER + {n_owned} XI_OWNED + {n_kernels} MAPS rows into {HTML.name}")
+    print(f"synced {n_targets} TRANSFER_TARGETS + {n_outgoing} TRANSFER_OUTGOING + {n_ledger} TRANSFER_LEDGER + {n_owned} XI_OWNED + {n_kernels} MAPS + {n_variants} ROLE_VARIANTS rows into {HTML.name}")
 
 
 if __name__ == "__main__":

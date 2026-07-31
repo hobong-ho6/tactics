@@ -266,3 +266,13 @@ CREATE TABLE game_role_focus(
   source TEXT, kernel25 TEXT, kernel_source TEXT,
   PRIMARY KEY(game_version, role_id, focus)
 );
+CREATE TABLE game_role_variants(
+  game_version TEXT NOT NULL,
+  role_id      TEXT NOT NULL,
+  focus        TEXT NOT NULL,
+  pitch_x      INTEGER NOT NULL,   -- 이 변형의 좌우 위치(질량중심 x, 10~90). placedMap이 슬롯 x와 최근접 매칭한다
+  kernel25     TEXT NOT NULL,      -- 25자 히트맵 (0/1-9/X, X=최대)
+  source       TEXT,
+  confidence   TEXT,
+  PRIMARY KEY(game_version, role_id, focus, pitch_x)
+);
