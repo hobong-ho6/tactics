@@ -140,7 +140,7 @@ CREATE TABLE player_fc_stats(
   ovr INTEGER, pot INTEGER,
   pac INTEGER, sho INTEGER, pas INTEGER, dri INTEGER, def INTEGER, phy INTEGER,
   -- GK 행의 6개 스탯 = 다이빙/핸들링/킥/반응속도/속도/위치선정
-  source TEXT, confidence TEXT, attrs TEXT, playstyles TEXT, traits TEXT, detail_date TEXT, role_familiarity TEXT,
+  source TEXT, confidence TEXT, attrs TEXT, playstyles TEXT, traits TEXT, detail_date TEXT, role_familiarity TEXT, accelerate TEXT, body_type TEXT, preferred_foot TEXT, role_detail TEXT,
   UNIQUE(game_version, name_kr)
 );
 CREATE VIEW v_event_profile AS
