@@ -115,6 +115,15 @@ kind='measured:possH/L:<class>' 7쌍(중앙값 분할). 클래스당 그리드�
 (사용자 결정). 최종 심판 = 실측 3축(모양/기능/도착) + FC26 숙련도 타이브레이커.
 docs/50은 참고용 보존, team_tactic_setups는 전부 FINAL (data-only).
 
+> ⚠️ **[2026-07-31 obs#103] 아래 "콘사 optimal→cb_bpd/Build-Up"은 2026-07-02판이며 폐기됐다.**
+> 2026-07-08 이후 콘사는 **`cb_bpd`/Aggressive**이고 파우 토레스가 **`cb_bpd`/Build-Up**이다.
+> 이 CB 비대칭은 obs#33(claim이 분화를 명문화) · obs#13(파우 PAC **67** vs 콘사 **75** →
+> 파우는 Aggressive의 뒷공간 노출에 부적합 / 두 CB 동시 Aggressive는 rest-defense 붕괴) ·
+> `player_duties` id=3(콘사 "볼을 갖고 우측 중앙으로 step out") · id=4(파우 "좌 하프스페이스로
+> 캐리·패스해 전진", `game_role_implication`="cb_bpd/Build-Up confirmed unambiguously")가 근거다.
+> 2026-07-31 솔버 C5에 `focus` 차원으로 등재됐다(파우 require · 콘사 prefer).
+> 기능축 실측도 갈린다 — 콘사 인터셉트 2.0·패스 96%(압박형) / 파우 인터셉트 1.0·듀얼 6.0·드리블 1.5(캐리형).
+
 역할 재검토 이력(2026-07-02, 이벤트 스탯 반영): 콘사 optimal→cb_bpd/Build-Up(3축),
 맥긴 optimal→wm_insidefwd/Balanced(2축+슈팅맵), 카마라 홀딩은 기능(듀얼 8.4·인터셉트
 3.0 팀 1위)으로 재정당화, 오나나는 boxcrash=세트피스 국면 한정 가능성.
