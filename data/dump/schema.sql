@@ -252,3 +252,17 @@ CREATE TABLE player_match_grids(
   event_id INTEGER NOT NULL, possession REAL, hit_points INTEGER,
   cells TEXT NOT NULL, map25 TEXT, source TEXT, confidence TEXT,
   PRIMARY KEY(name_kr, event_id));
+CREATE TABLE game_role_focus(
+  game_version TEXT NOT NULL,
+  role_id TEXT NOT NULL,
+  focus TEXT NOT NULL,
+  ea_role_name TEXT,          -- EA/fut.gg 표기 역할명
+  description TEXT,           -- 포커스 1차 정의문 (EA 원문)
+  plus TEXT,                  -- JSON array — 그 포커스가 강화하는 특성
+  equal TEXT,                 -- JSON array — 중립 특성
+  negative TEXT,              -- JSON array — 희생되는 특성
+  side_conflict INTEGER DEFAULT 0,  -- 1 = fut.gg의 좌/우 변형이 서로 다른 값을 준 항목
+  note TEXT,
+  source TEXT,
+  PRIMARY KEY(game_version, role_id, focus)
+);

@@ -75,6 +75,27 @@ FC25/2차 자료 표기와 FC26 현행 표기가 다르다. **같은 것**이다
 → 압박 재현이 **진영별 비대칭**이 됐다. **이라올라(고압박)가 가장 손해**, 에메리 미드블록은
 상대적으로 유리, 알론소는 중간. 압박 강도를 게임 설정으로 옮길 때 이 비대칭을 반영할 것.
 
+### ⑧ 포커스 판정 = 태그 조회 (`game_role_focus`, obs#92)
+
+포커스 판정 근거는 더 이상 **웹 검색 요약문이 아니다**. 테이블 `game_role_focus`(FC26 **85행**)가
+역할×포커스별로 **EA 원문 정의문 + `plus`/`equal`/`negative` 태그**를 보관한다.
+
+```bash
+sqlite3 data/avl_analysis.db "SELECT focus,plus,negative FROM game_role_focus WHERE role_id='wm_widemid'"
+```
+
+뱅크 칸(`wm_widemid`) 판정의 정본 — 커널 자기진영과 태그가 같은 방향을 가리킨다:
+
+| 포커스 | plus | negative | 커널 자기진영 |
+|---|---|---|---|
+| **Support** (기본) | Wide Support, **Supports Play** | Lacks Mobility | 0.60 |
+| **Defend** (보상용) | Wide Support, **Stays Back** | **Supports Attacks** | 1.30 |
+
+> ⚠️ **fut.gg 소스 주의** (obs#92): ⑴ 역할 `slug`가 유일하지 않다 — **키는 `id`**.
+> ⑵ 역할 id 162(CAM Playmaker)에 **Winger 항목 2건이 오염**돼 있다.
+> ⑶ 좌/우 변형의 characteristics가 갈리는 행이 4건 있다(`side_conflict=1`).
+> **설명문은 좌우 동일하고 신뢰할 수 있으니, 태그가 갈리면 설명문과 정합한 쪽을 채택한다.**
+
 ### ⑦ 미검증으로 남은 것
 
 - **라인 높이의 실효** — *"수비 라인이 오프사이드 유도 시 예전만큼 자동으로 올라가지 않는다"*.
