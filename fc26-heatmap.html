@@ -3609,18 +3609,75 @@ function hideXiPage(){
 /* ---- 베스트 11 · 움직임 애니메이션 ----
    국면 위치 = tactic_observations 파생(빌드업/공격 4-2-3-1/수비 4-4-2 미드블록).
    기본 XI 경로·임무 = player_duties 파생 하드코딩, 교체 선수 경로 = 실측 그리드 파생. */
+/* ⭐ 2026-07-31 (obs#117) — 국면 좌표를 **역할 커널에서 파생**한다.
+   종전: `ph`가 손으로 적은 상수였고 처방(역할·포커스)과 **아무 연결이 없었다** — XI나 역할을
+   바꿔도 동선이 그대로였고 `def` 기본 인선도 옛 XI(오나나·부엔디아·로저스·왓킨스)로 낡아 있었다.
+   지금: `anPh(slot)`가 그 칸의 현 처방 커널의 **질량중심**을 국면별로 계산한다.
+     ① 빌드업  = 커널 전체 질량중심(중간 위치)
+     ② 공격    = 전방 3행(row0~2) 질량중심
+     ③ 수비    = 후방 3행(row2~4) 질량중심
+   `phFallback`은 커널을 못 찾을 때만 쓰는 옛 상수다(제거하지 않는다 — 폴백 경로가 필요하다).
+   ⚠️ 한계: 커널은 **전 국면 평균**이므로(obs#101) ②③은 국면 실측이 아니라 **커널 내부 구간의
+   재해석**이다. 실제 국면 실측(poss-hi/poss-lo)은 8쌍뿐이어서 11칸을 채울 수 없다(obs#101 ⑤).
+   ⚠️ 경로(AN_PATTERN)·화살표(ANIM_PHASES.ar)는 여전히 **삽화**다 — 커널은 "어디 있는가"만 주고
+   "어떤 궤적으로 가는가"는 주지 않는다. */
 const ANIM_SLOTS=[
- {pos:'GK', t:'GK', ph:[[50,8],[50,12],[50,6]],  def:'마르티네스'},
- {pos:'LB', t:'FB', ph:[[12,35],[10,62],[16,24]],def:'마첸'},
- {pos:'LCB',t:'CB', ph:[[30,20],[32,38],[37,22]],def:'파우 토레스'},
- {pos:'RCB',t:'CB', ph:[[68,20],[66,34],[63,22]],def:'콘사'},
- {pos:'RB', t:'FB', ph:[[88,32],[85,45],[84,24]],def:'캐시'},
- {pos:'LDM',t:'DM', ph:[[44,34],[46,52],[40,38]],def:'오나나'},
- {pos:'RDM',t:'DM', ph:[[58,30],[58,42],[60,38]],def:'카마라'},
- {pos:'LM', t:'WM', ph:[[20,58],[33,70],[16,40]],def:'부엔디아'},
- {pos:'CAM',t:'CAM',ph:[[38,50],[40,64],[55,52]],def:'로저스'},
- {pos:'RM', t:'WM', ph:[[80,52],[70,68],[84,40]],def:'맥긴'},
- {pos:'ST', t:'ST', ph:[[48,68],[52,84],[43,52]],def:'왓킨스'}];
+ {pos:'GK', t:'GK', phFallback:[[50,8],[50,12],[50,6]]},
+ {pos:'LB', t:'FB', phFallback:[[12,35],[10,62],[16,24]]},
+ {pos:'LCB',t:'CB', phFallback:[[30,20],[32,38],[37,22]]},
+ {pos:'RCB',t:'CB', phFallback:[[68,20],[66,34],[63,22]]},
+ {pos:'RB', t:'FB', phFallback:[[88,32],[85,45],[84,24]]},
+ {pos:'LDM',t:'DM', phFallback:[[44,34],[46,52],[40,38]]},
+ {pos:'RDM',t:'DM', phFallback:[[58,30],[58,42],[60,38]]},
+ {pos:'LM', t:'WM', phFallback:[[20,58],[33,70],[16,40]]},
+ {pos:'CAM',t:'CAM',phFallback:[[38,50],[40,64],[55,52]]},
+ {pos:'RM', t:'WM', phFallback:[[80,52],[70,68],[84,40]]},
+ {pos:'ST', t:'ST', phFallback:[[48,68],[52,84],[43,52]]}];
+/* 기본 인선 = 26/27 예상 XI(PROJECTED_XI_2627) — 하드코딩하지 않는다.
+   그 라벨이 XI_POOL에 없으면(등급 강등·DEAD) anOcc가 0으로 폴백한다. */
+function anDef(pos){ return PROJECTED_XI_2627[pos]||null; }
+/* 슬롯 x 정본은 SQUAD_SLOTS(obs#82 ①). 애니메이션 슬롯과 1:1 대응한다. */
+function anSlotX(pos){ const s=SQUAD_SLOTS.find(q=>q.pos===pos); return s?s.x:50; }
+/* 그 칸에 선 **그 선수**의 역할·포커스. 우선순위:
+   ① 그 선수가 그 슬롯 후보면 그의 `opt`(솔버 해 또는 DB 처방) — 가장 정확
+   ② 후보는 아니지만 그 슬롯에 그의 실측 그리드가 있으면 → 거기서 최적 역할을 계산(C5 제약 적용)
+   ③ 둘 다 없으면 null → 호출자가 `phFallback`(슬롯 일반 위치)을 쓴다
+   ⚠️ **다른 선수(프리셋 기본 인선)의 역할로 대체하지 않는다.** 초기 구현이 그렇게 해서
+   XI 메뉴에서 맥긴을 LM에 넣어도 가르나초의 동선이 그려졌다(2026-07-31에 발견·수정).
+   XI 메뉴의 후보 풀(XI_POOL 타입별)이 SQUAD_SLOTS 슬롯 후보보다 넓기 때문에 생기는 간극이다. */
+function anRoleFor(pos, label){
+  const s=SQUAD_SLOTS.find(q=>q.pos===pos); if(!s||!label) return null;
+  const o = s.opts.find(x=>x.n===label);
+  if(o && o.opt) return {r:o.opt[0], focus:o.opt[1], src:'처방'};
+  const g = (typeof sqGrid==='function') ? sqGrid(pos, label) : null;
+  if(g){
+    const all = roleOptions(pos, g).filter(x=>funcAllows(label, x.role, x.f, s.t));
+    if(all.length) return {r:all[0].role, focus:all[0].f, src:'그리드파생'};
+  }
+  return null;
+}
+/* 커널 질량중심 → 툴 좌표(0~100). 그리드는 row0=최전방·col0=좌측이므로
+   x = col*20+10, y = (4-row)*20+10 으로 되돌린다. rows를 주면 그 행들만 쓴다. */
+function anCentroid(k, rows){
+  let m=0,sx=0,sy=0;
+  for(const r of rows) for(let c=0;c<5;c++){ const v=k[r*5+c]; if(!v) continue;
+    m+=v; sx+=v*(c*20+10); sy+=v*((4-r)*20+10); }
+  return m ? [Math.round(sx/m), Math.round(sy/m)] : null;
+}
+const _anPhCache=new Map();
+function anPh(slot, label){
+  const role=anRoleFor(slot.pos, label);
+  if(!role) return slot.phFallback;
+  const key=slot.pos+'|'+role.r+'|'+role.focus;
+  if(_anPhCache.has(key)) return _anPhCache.get(key);
+  const k=placedMap({r:role.r, focus:role.focus, x:anSlotX(slot.pos)});
+  if(!k){ _anPhCache.set(key, slot.phFallback); return slot.phFallback; }
+  const all=anCentroid(k,[0,1,2,3,4]);
+  if(!all){ _anPhCache.set(key, slot.phFallback); return slot.phFallback; }
+  // 반쪽에 질량이 없으면(GK 공격·ST 수비) 전체 중심으로 폴백한다
+  const ph=[all, anCentroid(k,[0,1,2])||all, anCentroid(k,[2,3,4])||all];
+  _anPhCache.set(key, ph); return ph;
+}
 const ANIM_PHASES=[
  {t:'① 빌드업 — 숏패스 고정 원칙',d:'마르티네스부터 숏 빌드업(시즌 롱볼 9%) — 압박이 세도 풀백·CB 경유 후방 전개를 고수. 파우 토레스가 캐리로 좌 하프스페이스를 열고, 카마라가 볼 밑 순환 허브.',
   ar:[[[50,8],[15,32]],[[30,20],[33,36]]]},
@@ -3694,7 +3751,7 @@ function anStop(){
 function buildXiAnim(){
   anOcc=ANIM_SLOTS.map(s=>{
     const pool=anPool(s.t);
-    const hit=pool.findIndex(p=>p.label===s.def);
+    const hit=pool.findIndex(p=>p.label===anDef(s.pos));
     return hit>=0?hit:0;
   });
   const selRow=document.getElementById('anSelRow');
@@ -3802,7 +3859,7 @@ function anRender(){
         const p=occPlayers[i], node=pl.children[i];
         node.style.transition='none'; node.setAttribute('opacity',1);
         const wp=(p&&p.grid)?anGridPath(p.grid):null;
-        if(!wp||wp.length<2){ const a=wp&&wp[0]?wp[0]:s.ph[1];
+        if(!wp||wp.length<2){ const a=wp&&wp[0]?wp[0]:anPh(s,p&&p.label)[1];
           node.setAttribute('transform',`translate(${anPX(a[0])},${anPY(a[1])})`);
           if(wp&&wp[0]) pt.appendChild(anEl('circle',{cx:anPX(wp[0][0]),cy:anPY(wp[0][1]),r:3,fill:'var(--muted)'}));
           return; }
@@ -3821,7 +3878,8 @@ function anRender(){
     }
     ANIM_SLOTS.forEach((s,i)=>{
       pl.children[i].style.transition='';
-      pl.children[i].setAttribute('transform',`translate(${anPX(s.ph[anPhase][0])},${anPY(s.ph[anPhase][1])})`);
+      const _p=anPh(s, occPlayers[i]&&occPlayers[i].label);
+      pl.children[i].setAttribute('transform',`translate(${anPX(_p[anPhase][0])},${anPY(_p[anPhase][1])})`);
       pl.children[i].setAttribute('opacity',1);
     });
     ANIM_PHASES[anPhase].ar.forEach(a=>{
@@ -3855,7 +3913,8 @@ function anRender(){
           const sw=Math.sin(phF*Math.PI*2);
           ANIM_SLOTS.forEach((s,i)=>{
             const amp=pat.sway[s.pos]||0;
-            pl.children[i].setAttribute('transform',`translate(${anPX(s.ph[2][0]+amp*sw)},${anPY(s.ph[2][1])})`);
+            const _d=anPh(s, occPlayers[i]&&occPlayers[i].label);
+            pl.children[i].setAttribute('transform',`translate(${anPX(_d[2][0]+amp*sw)},${anPY(_d[2][1])})`);
           });
           oppG.setAttribute('transform',`translate(${anPX(50+26*sw)},${anPY(60)})`);
         }
@@ -3877,7 +3936,8 @@ function anRender(){
     }
     ANIM_SLOTS.forEach((sl,i)=>{
       pl.children[i].style.transition='';
-      pl.children[i].setAttribute('transform',`translate(${anPX(sl.ph[1][0])},${anPY(sl.ph[1][1])})`);
+      const _s=anPh(sl, occPlayers[i]&&occPlayers[i].label);
+      pl.children[i].setAttribute('transform',`translate(${anPX(_s[1][0])},${anPY(_s[1][1])})`);
       pl.children[i].setAttribute('opacity',i===anSel?1:0.18);
     });
     const duty=ANIM_DUTY[p.label];
