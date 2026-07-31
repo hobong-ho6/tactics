@@ -3090,9 +3090,26 @@ function emerySolve(){
     return best;
   };
   const lAdv=fbPick('LB','RB'), rAdv=fbPick('RB','LB');
-  if(lAdv&&(!rAdv||lAdv.sc>=rAdv.sc)){ R.LB=lAdv.x; R.RB=lAdv.y; R._fb='좌측 전진'; }
-  else if(rAdv){ R.RB=rAdv.x; R.LB=rAdv.y; R._fb='우측 전진'; }
+  /* C6(소프트) — 전진 풀백은 해방 사이드와 같은 쪽에 둔다. obs#95:
+     경기별 평균을 뺀 잔차 상관에서 **반대쪽 풀백이 억제**된다(우공격×좌풀백 −0.572 p=0.010 유의,
+     좌공격×우풀백 −0.314 p=0.075 경향). 같은 쪽 짝은 양수지만 무의미(+0.178/+0.198)라
+     "함께 올라간다"는 입증되지 않았다 — 지지되는 것은 억제 쪽이고 실용 함의만 같다.
+     ⚠️ 유의 1건(n=19)·다중비교 미보정이라 **하드 제약이 아니라 동점 구간 타이브레이크**로만 쓴다. */
+  const C6_BAND=0.05;
+  let fbNote='';
+  const relSide = W ? (W.side==='좌측 해방'?'L':'R') : null;
+  let useL;
+  if(lAdv&&rAdv&&relSide&&Math.abs(lAdv.sc-rAdv.sc)<=C6_BAND){
+    useL = (relSide==='L');
+    const better = lAdv.sc>=rAdv.sc ? 'L':'R';
+    if((useL?'L':'R')!==better) fbNote=` · C6 적용(적합 −${Math.abs(lAdv.sc-rAdv.sc).toFixed(3)})`;
+  } else if(lAdv&&(!rAdv||lAdv.sc>=rAdv.sc)) useL=true;
+  else if(rAdv) useL=false;
+  if(useL===true){ R.LB=lAdv.x; R.RB=lAdv.y; R._fb='좌측 전진'+fbNote; }
+  else if(useL===false){ R.RB=rAdv.x; R.LB=rAdv.y; R._fb='우측 전진'+fbNote; }
   else { warn.push('C2 불가 — 풀백 비대칭 조합 없음'); R.LB=opt['LB'][0]; R.RB=opt['RB'][0]; }
+  if(W&&R._fb&&!R._fb.startsWith(W.side==='좌측 해방'?'좌':'우'))
+    warn.push(`C6 미충족 — ${W.side}인데 ${R._fb.split(' ')[0]}이다. obs#95는 반대쪽 풀백이 억제된다고 본다(적합 격차가 ${C6_BAND} 초과라 강제하지 않음).`);
   // C3 — 피벗: 한쪽 dm_dlp(창조) / 다른 쪽 dm_holding(볼위너)
   const dlp=p=>opt[p].filter(o=>o.role==='dm_dlp'), hold=p=>opt[p].filter(o=>o.role==='dm_holding');
   const combos=[];
