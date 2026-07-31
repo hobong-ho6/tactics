@@ -446,7 +446,8 @@
       <span class="sq-head">빠른 선택</span>
       <button id="sqProj2627" style="background:var(--panel-2);border:1px solid var(--line);border-radius:7px;font-size:11px;padding:5px 9px;cursor:pointer;color:var(--muted)">🔮 26/27 스쿼드</button>
       <button id="sqSolve" style="background:var(--panel-2);border:1px solid var(--accent);border-radius:7px;font-size:11px;padding:5px 9px;cursor:pointer;color:var(--ink);margin-left:6px">⚙️ 에메리 전술로 풀기</button>
-      <span class="sq-note" id="sqProjNote">선수를 고른 뒤 <b>에메리 전술로 풀기</b>를 누르면, 그 스쿼드에서 에메리 구조 제약(두 줄 4 뱅크 · 볼위너+창조 피벗 · 풀백 한 명씩)을 만족하는 <b>역할·포커스 조합</b>을 실측 적합 최대로 풉니다.</span>
+      <button id="sqRestore" style="background:var(--panel-2);border:1px solid var(--line);border-radius:7px;font-size:11px;padding:5px 9px;cursor:pointer;color:var(--muted);margin-left:6px">↩︎ DB 처방으로</button>
+      <span class="sq-note" id="sqProjNote">선수를 고른 뒤 <b>에메리 전술로 풀기</b>를 누르면, 그 스쿼드에서 에메리 구조 제약(<b>C1</b> 두 줄 4 뱅크 · <b>C2</b> 풀백 한 명씩 · <b>C3</b> 볼위너+창조 피벗 · <b>C5</b> 기능축 고정)을 만족하는 <b>역할·포커스 조합</b>을 실측 적합 최대로 풉니다. 결과는 <b>DB 프리셋과 대조</b>해 이탈 칸을 표시하며, <b>↩︎ DB 처방으로</b>를 누르면 정본으로 되돌립니다.</span>
       <div class="sq-note" id="sqSolveOut" style="padding:6px 2px 0"></div>
     </div>
     <div class="sq-slots" id="sqSlots"></div>
@@ -2958,6 +2959,36 @@ document.getElementById('sqProj2627').addEventListener('click',selectProjectedXI
 const EMERY_BANK_MIN=0.60;
 
 /* ------------------------------------------------------------
+   C5 — 기능축 제약 (2026-07-31 신설)
+
+   왜 필요한가: 솔버는 '움직임 적합(코사인)'만 최대화하므로, 실측 **기능 지표**가 다른 역할을
+   가리키는 선수를 엉뚱한 자리에 넣는다. 실제 사고: obs#94의 커널 교체로 카마라의
+   dm_dlp/Roaming이 .899로 급등하자 솔버가 그를 **창조 역할**에 배정했다 — 그는 듀얼·인터셉트
+   스쿼드 1위인 **볼위너**이고(obs#31·#32), 프리셋은 바로 그 기능축을 지키려 적합을 지불해 왔다.
+
+   움직임 적합은 "어디에 서는가"만 보고 "거기서 무엇을 하는가"는 못 본다. C5가 그 구멍을 막는다.
+   ⚠️ obs 근거가 있는 선수만 넣을 것 — 추측으로 채우면 솔버가 그 추측을 정답처럼 출력한다.
+
+   mode 'require' = 그 역할군 밖으로는 배정 금지 (해당 역할이 그 슬롯의 ROLE_SETS에 있을 때만 적용)
+   mode 'prefer'  = 동점 구간(Δ≤0.03)에서만 우선. 적합이 뚜렷이 낮으면 강제하지 않는다.
+   ------------------------------------------------------------ */
+const FUNC_AXIS={
+  '카마라':      {role:'dm_holding',mode:'require',
+                  why:'듀얼 8.4 · 인터셉트 3.0 스쿼드 1위 = 기능축 볼위너 (obs#31·#32). 움직임 최적 dm_dlp/Roaming(.899)을 버리고 기능을 택하는 칸임을 프리셋이 명시한다.'},
+  '오나나':      {role:'dm_holding',mode:'prefer',
+                  why:'홀딩/로밍 확정 — 숙련 타이브레이커 (docs/20, 2026-07-05).'},
+  '고메스(합류확정)':{role:'dm_holding',mode:'prefer',
+                  why:'창조 전무(kp .3 · xA .04)로 기능축은 볼위너 (obs#32). 다만 dm_dlp 적합이 뚜렷이 높아 프리셋(H안)은 dlp를 채택했다 — 적합을 위해 기능 정합을 포기한 칸.'},
+};
+/* 해당 슬롯에 그 역할군 자체가 없으면(예: 볼위너 지정 선수를 RM에 두면) 제약을 적용하지 않는다 */
+function funcAllows(name,role,posType){
+  const f=FUNC_AXIS[name]; if(!f||f.mode!=='require') return true;
+  if(!ROLE_SETS[posType]||!ROLE_SETS[posType].includes(f.role)) return true;
+  return role===f.role;
+}
+function funcPrefers(name,role){ const f=FUNC_AXIS[name]; return !!(f&&f.role===role); }
+
+/* ------------------------------------------------------------
    충돌 지수 (CI) — 2026-07-31 시즌축 재보정, docs/20 §A 전역 임계값(0.81/0.88/0.9) 대체.
 
    왜 전역 임계값을 버렸나: 슬롯쌍별 중앙값이 LB×RB 0.006 ~ RB×RM 0.849로 **140배** 범위다.
@@ -3013,19 +3044,27 @@ function roleOptions(pos,grid){          // 해당 슬롯의 모든 역할×포�
   }
   return out.sort((a,b)=>b.s-a.s);
 }
-/* obs#29: 최적 대비 Δ≤0.03이면 FC26 숙련 역할을 우선 */
+/* 동점 구간(Δ≤0.03) 타이브레이커 순서: ① C5 기능축 prefer → ② obs#29 FC26 숙련 역할 */
 function pickFamiliar(name,list){
   if(!list.length) return null;
-  const top=list[0];
-  const fam=list.find(o=>o.s>=top.s-0.03 && (typeof roleFamiliar==='function') && roleFamiliar(name,o.role)>0);
+  const top=list[0], band=list.filter(o=>o.s>=top.s-0.03);
+  const fn=band.find(o=>funcPrefers(name,o.role));            // ① 기능축
+  if(fn) return fn;
+  const fam=band.find(o=>(typeof roleFamiliar==='function') && roleFamiliar(name,o.role)>0);  // ② 숙련
   return fam||top;
 }
 function emerySolve(){
   const sel={}; SQUAD_SLOTS.forEach((s,i)=>{ sel[s.pos]=s.opts[sqSel[i]].n; });
-  const opt={}, warn=[];
+  const opt={}, warn=[], notes=[];
   for(const s of SQUAD_SLOTS){
     const g=sqGrid(s.pos,sel[s.pos]);
-    opt[s.pos]=roleOptions(s.pos,g);
+    const all=roleOptions(s.pos,g);
+    opt[s.pos]=all.filter(o=>funcAllows(sel[s.pos],o.role,s.t));      // C5 기능축 require
+    if(all.length&&opt[s.pos].length<all.length){
+      const f=FUNC_AXIS[sel[s.pos]];
+      notes.push({pos:s.pos,name:sel[s.pos],role:f.role,why:f.why,
+                  drop:+(all[0].s-(opt[s.pos][0]?opt[s.pos][0].s:0)).toFixed(3),dropTo:all[0].role+'/'+all[0].f});
+    }
     if(!opt[s.pos].length) warn.push(`${s.pos}(${sel[s.pos]}) 그리드 없음`);
   }
   const R={};
@@ -3059,7 +3098,7 @@ function emerySolve(){
   const combos=[];
   if(dlp('LDM').length&&hold('RDM').length) combos.push({t:'좌 창조 · 우 볼위너',LDM:dlp('LDM')[0],RDM:hold('RDM')[0]});
   if(hold('LDM').length&&dlp('RDM').length) combos.push({t:'좌 볼위너 · 우 창조',LDM:hold('LDM')[0],RDM:dlp('RDM')[0]});
-  if(!combos.length){ warn.push('C3 불가 — dm_dlp/dm_holding 분화 조합 없음'); R.LDM=opt['LDM'][0]; R.RDM=opt['RDM'][0]; }
+  if(!combos.length){ warn.push('C3 불가 — dm_dlp/dm_holding 분화 조합 없음(C5 기능축 고정과 상충하는지 확인할 것)'); R.LDM=opt['LDM'][0]; R.RDM=opt['RDM'][0]; }
   else { combos.sort((a,b)=>(b.LDM.s+b.RDM.s)-(a.LDM.s+a.RDM.s)); R.LDM=combos[0].LDM; R.RDM=combos[0].RDM; R._piv=combos[0].t; }
   // 진단
   let bank4=0; ['LM','CAM','RM','ST'].forEach(p=>{ if(R[p]) bank4+=R[p].bank; });
@@ -3077,11 +3116,36 @@ function emerySolve(){
     if(c&&c.lvl!=='ok') coll.push({pair:`${pa}×${pb}`,a:sel[pa],b:sel[pb],...c});
   }
   coll.sort((x,y)=>y.ci-x.ci);
-  return {sel,R,bank4,own:n?own/n:null,avg,warn,wide:W?W.side:null,coll};
+  return {sel,R,bank4,own:n?own/n:null,avg,warn,notes,wide:W?W.side:null,coll};
+}
+/* DB 처방 스냅샷 — 솔버가 opt를 덮어쓰기 **전에** 원본을 보관한다.
+   (2026-07-31: 이전 구현은 덮어쓰기만 하고 되돌릴 수단이 없어, 버튼을 한 번 누르면
+    그 세션의 🎯 처방이 영구히 솔버 해로 바뀌었다. 불변규칙 1 = DB가 정본이므로 복원 가능해야 한다.) */
+const PRESET_OPT=new Map();
+function snapshotPresetOpt(){
+  SQUAD_SLOTS.forEach(s=>s.opts.forEach(o=>{
+    const k=s.pos+'|'+o.n; if(!PRESET_OPT.has(k)) PRESET_OPT.set(k,[o.opt[0],o.opt[1]]);
+  }));
+}
+function restorePresetOpt(){
+  SQUAD_SLOTS.forEach(s=>s.opts.forEach(o=>{
+    const v=PRESET_OPT.get(s.pos+'|'+o.n); if(v) o.opt=[v[0],v[1]];
+  }));
+  buildSquadUI(); applySquad();
+  const out=document.getElementById('sqSolveOut');
+  if(out) out.innerHTML='<span class="ok">↩︎ DB 처방으로 되돌렸습니다</span> — 🎯 표시가 team_tactic_setups 프리셋 기준으로 복원됐습니다.';
 }
 function renderSolve(){
   const out=document.getElementById('sqSolveOut'); if(!out) return;
+  snapshotPresetOpt();
   const r=emerySolve();
+  /* DB 프리셋과의 대조 — 덮어쓰기 전에 계산한다 */
+  const dev=[];
+  SQUAD_SLOTS.forEach((s,i)=>{ const p=r.R[s.pos]; if(!p) return;
+    const base=PRESET_OPT.get(s.pos+'|'+s.opts[sqSel[i]].n);
+    if(base&&(base[0]!==p.role||base[1]!==p.f))
+      dev.push({pos:s.pos,name:s.opts[sqSel[i]].n,from:base,to:[p.role,p.f]});
+  });
   SQUAD_SLOTS.forEach((s,i)=>{ const p=r.R[s.pos]; if(p) s.opts[sqSel[i]].opt=[p.role,p.f]; });
   buildSquadUI(); applySquad();
   const rows=SQUAD_SLOTS.map(s=>{ const p=r.R[s.pos];
@@ -3098,9 +3162,21 @@ function renderSolve(){
       ?`<div style="margin-top:4px">🔗 <b>공간 충돌</b>(슬롯쌍 상대 지수 CI — 전역 임계값 대체): `+
         r.coll.map(c=>`<span class="${c.lvl==='ok'?'ok':'warn'}">${c.pair} ${c.a.replace(/(영입·|\(.*)/g,'')}×${c.b.replace(/(영입·|\(.*)/g,'')} cos ${c.v.toFixed(3)} · CI ${c.ci.toFixed(2)}${c.lvl==='ban'?' 금지':c.lvl==='penal'?' 감점':' 주의'}</span>`).join(' · ')+`</div>`
       :`<div style="margin-top:4px"><span class="ok">🔗 공간 충돌 없음</span> — 모든 쌍이 해당 슬롯쌍 분포의 p90 이하</div>`)+
+    (r.notes.length
+      ?`<div style="margin-top:4px;color:var(--muted-2)">🎯 <b>C5 기능축 고정</b> — `+
+        r.notes.map(n=>`${n.pos} ${n.name.replace(/(영입·|\(.*)/g,'')} → <b>${ROLES[n.role].n}</b>`+
+          (n.drop>0?` (움직임 최적 ${ROLES[n.dropTo.split('/')[0]].n}/${fmtFocus(n.dropTo.split('/')[1])} 대비 −${n.drop.toFixed(3)} 지불)`:'')+
+          `<span style="opacity:.75"> · ${n.why}</span>`).join('<br>')+`</div>`
+      :'')+
+    (dev.length
+      ?`<div style="margin-top:4px" class="warn">📌 <b>DB 프리셋 대비 이탈 ${dev.length}칸</b> — `+
+        dev.map(d=>`${d.pos} ${d.name.replace(/(영입·|\(.*)/g,'')}: ${ROLES[d.from[0]].n}/${fmtFocus(d.from[1])} → <b>${ROLES[d.to[0]].n}/${fmtFocus(d.to[1])}</b>`).join(' · ')+
+        `<br><span style="opacity:.8">솔버는 <b>움직임 적합</b>만 최대화한다. 프리셋은 그 위에 구조·기능·사용자 확정을 얹은 정본이므로, 이탈 칸은 <b>솔버가 옳다는 뜻이 아니라 근거 축이 다르다는 뜻</b>이다. 정본은 DB <code>team_tactic_setups</code>다.</span></div>`
+      :`<div style="margin-top:4px"><span class="ok">📌 DB 프리셋과 11칸 일치</span></div>`)+
     (r.warn.length?`<div class="warn" style="margin-top:4px">⚠ ${r.warn.join(' / ')}</div>`:'');
 }
 document.getElementById('sqSolve').addEventListener('click',renderSolve);
+document.getElementById('sqRestore').addEventListener('click',restorePresetOpt);
 function enterSquadMode(){
   hideCmpBar();
   document.getElementById('squadBar').style.display='block';
