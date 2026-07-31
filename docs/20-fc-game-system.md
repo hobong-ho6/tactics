@@ -3,6 +3,85 @@
 목적: 실측 분석 결과를 특정 FC 버전의 전술 시스템으로 번역하는 규칙.
 게임 버전이 바뀌어도 "행 추가"로만 대응한다 (구조 재작성 금지).
 
+## ⭐ EA 공식 피치노트 — 대상 시스템의 정본 (obs#91, 2026-07-31)
+
+> 여기 있는 것은 **EA 1차 자료 직접 인용**이다. 2차 자료(위키·가이드)와 충돌하면 이쪽이 이긴다.
+> 원문: [Gameplay Deep Dive](https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-gameplay-deep-dive) ·
+> [TU 1.4.0](https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-title-update-1-4-0) ·
+> [TU 1.5.0](https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-title-update-1-5-0) ·
+> [The World's Game Update](https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-the-worlds-game-update)
+
+### ① 역할 커널은 결정적이지 않다 — 방법론의 구조적 상한
+
+EA는 FC26에서 역할 구속을 **의도적으로 풀었다**: *"Players are less constrained by their Roles"* /
+*"All players will be more likely to make the best attacking run options **instead of strictly following
+what their player Role dictates**"*(윙어가 박스로 컷인, 윙백이 빈 공간으로 전진) / *"Tweaked **all**
+Roles' positions to allow for more space in play"*.
+
+→ **(역할×포커스) → 결정적 히트맵**이라는 우리 가정에는 상한이 있고, 그 상한은 **고칠 수 없다**
+(obs#82 ①의 계단 함수는 우리 구현 문제라 고칠 수 있다 — 성격이 다르다).
+
+> **적용 규칙**: 적합도 **Δ 0.02~0.05는 노이즈 구간**으로 취급하고 그 차이로 인선을 가르지 않는다.
+> 그 구간은 숙련도·기능축 같은 **이산 근거**로 가른다 — obs#29(Δ≤0.03 → 숙련 우선)의 독립 근거다.
+
+### ② 숙련도(Role+/++) 격차는 FC26에서 좁혀졌다
+
+*"**Significantly improved usage of regular Roles and Roles+, to bring them closer to Roles++**"* /
+*"**Drastically reduced the negative impact of being Out of Position**"*.
+
+→ 미숙련 회피를 위해 **큰 적합도를 지불하지 말 것**. 크기는 EA 비공개라 방향만 확정이다.
+⚠️ ①과 ②는 반대로 작용한다 — ①은 "작은 Δ는 무의미", ②는 "숙련 프리미엄도 작다".
+**Δ가 노이즈 구간(≤0.05)이면 숙련 우선, 그보다 크면 적합 우선**이 현재의 절충이다.
+
+### ③ 역할·포커스 개명 대조표 (문서 인용 시 필수)
+
+FC25/2차 자료 표기와 FC26 현행 표기가 다르다. **같은 것**이다.
+
+| 옛 표기 | 현 표기 |
+|---|---|
+| Wide Mid – **Balanced** | Wide Mid – **Support** |
+| Attacking Wingback – **Balanced** | Attacking Wingback – **Support** |
+| Advanced Forward – **Complete** | Advanced Forward – **Versatile** |
+| (신규 포커스명) **Complete** 전반 | **Versatile** |
+
+### ④ Wide Mid 리워크 — EA 정의 원문
+
+*"Wide Mid are now **more defensively oriented and ideal for 3-back formations**."*
+- **Defend** — *"tracks back like a Wingback **protecting the DM line**"* (커널 자기진영 1.30)
+- **Support** — *"supports possession and defence **when needed**"* (0.60)
+- **Build-Up** — *"can move a little forward to support play, but also comes back on defence"* (0.00)
+
+→ 에메리 4-2-3-1의 뱅크 칸은 **DM 라인 보호가 아니라 두 줄 4의 두 번째 줄**이므로 **Support가 기본**이다
+(obs#89 결론을 EA 정의가 지지). ⚠️ 단 EA는 이 역할을 **백3용으로** 리워크했다고 명시한다 —
+백4에서의 정합성은 미확인이고, 반대로 **알론소 3-4-2-1에는 최적**이다.
+
+### ⑤ AcceleRATE 분류 공식 (FC26 = 4종 → **3종** 회귀)
+
+| 유형 | 조건 (전부 AND) |
+|---|---|
+| **Explosive** | 민첩성 ≥65 · (민첩성−체력) ≥10 · 가속력 ≥80 · 키 남 ≤182cm / 여 ≤162cm |
+| **Lengthy** | 체력 ≥65 · (체력−민첩성) ≥4 · 가속력 ≥40 · 키 남 ≥183cm / 여 ≥164cm |
+| **Controlled** | 위 둘에 해당하지 않는 나머지 |
+
+→ **쓸 수 있는 것**: `player_fc_stats.accelerate` 수집값의 교차 검증.
+→ **못 쓰는 것**: 가속 곡선의 **효과 크기는 여전히 비공개**라 적합 판정 가중치로는 쓸 수 없다.
+⚠️ "TU 1.4.0에서 Lengthy 최소 키 185cm" 주장은 **원문에 없다**(웹 요약에만 존재) — 183cm를 채택한다.
+
+### ⑥ Team Press 진영별 너프 (2026-05-28)
+
+**수비 진영** 발동 시: 볼 소유자 압박 감소, AI 이중 압박 안 함, **마킹 타이트니스 하향**(골대에
+가까울수록 더 느슨). **공격 진영** 발동 시: **종전대로** 공격적 압박 + 상황적 이중 압박.
+
+→ 압박 재현이 **진영별 비대칭**이 됐다. **이라올라(고압박)가 가장 손해**, 에메리 미드블록은
+상대적으로 유리, 알론소는 중간. 압박 강도를 게임 설정으로 옮길 때 이 비대칭을 반영할 것.
+
+### ⑦ 미검증으로 남은 것
+
+- **라인 높이의 실효** — *"수비 라인이 오프사이드 유도 시 예전만큼 자동으로 올라가지 않는다"*.
+  우리 라인 값(52/43/67/45)은 **실측 도출값**이지 게임 내 실효 검증값이 아니다.
+- **TU 1.1.0~1.3.0 원문** — EA 사이트에서 404. 변경 이력에 공백이 있다.
+- **②의 크기** — Role+/++ 격차와 OOP 페널티의 정량은 EA 비공개.
+
 ## FC26 전술 구성요소 (기록 대상)
 
 - **포메이션**: 툴에 45개 FC26 포메이션 등록 완료 (fc26-heatmap.html `FORMATIONS`).
