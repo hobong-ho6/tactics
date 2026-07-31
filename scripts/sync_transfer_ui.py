@@ -15,6 +15,7 @@ injectTransferCandidates() (see fc26-heatmap.html), not generated here.
 """
 import json
 import re
+import shutil
 import sqlite3
 import sys
 from pathlib import Path
@@ -264,6 +265,15 @@ def main():
     html = replace_block(html, "MAPS", kernels_body)
     html = replace_block(html, "ROLE_VARIANTS", variants_body)
     HTML.write_text(html, encoding="utf-8")
+    # ⭐ 2026-07-31 — 프리뷰 미러 자동 갱신.
+    # 프리뷰 데몬은 ~/Documents TCC 권한이 없어 /private/tmp 미러를 서빙한다(.claude/launch.json).
+    # 종전에는 이 cp를 사람이 손으로 해야 해서 **빠뜨리면 브라우저가 옛 화면을 보여주고**
+    # 캐시 문제로 오진하게 됐다(2026-07-31에 두 번 발생). 툴을 재생성하는 이 스크립트가
+    # 미러까지 책임지는 것이 옳다. 미러 디렉터리가 없으면 조용히 건너뛴다(프리뷰 미사용 환경).
+    mirror = Path("/private/tmp/tactics-preview")
+    if mirror.is_dir():
+        shutil.copy2(HTML, mirror / HTML.name)
+        print(f"mirrored → {mirror / HTML.name}")
     print(f"synced {n_targets} TRANSFER_TARGETS + {n_outgoing} TRANSFER_OUTGOING + {n_ledger} TRANSFER_LEDGER + {n_owned} XI_OWNED + {n_kernels} MAPS + {n_variants} ROLE_VARIANTS rows into {HTML.name}")
 
 
