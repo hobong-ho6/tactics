@@ -1787,11 +1787,15 @@ const SQUAD_SLOTS=[
    ]},
  {pos:'RB', t:'FB', x:87,y:32, opts:[
    {n:'캐시',      opt:['fb_wingback','Balanced'],  fit:['fb_att_wb','Support']},
-   /* 보가르드 RB — 2026-07-31 obs#89: 측정최적은 fb_att_wb/Support 0.890이지만 그는 att_wb
-      미숙련이고 fb_wingback 숙련 보유다. 숙련이 개선하는 것이 정확히 오프더볼 복귀(obs#88)이므로
-      뱅크·rest-defense 성격의 이 칸에서는 wingback/Support 0.808을 채택하고 Δ0.082를 지불한다.
-      (obs#29의 Δ≤0.03 기계 규칙이 아니라 명시적 구조 지불이다.) */
-   {n:'보가르드',  opt:['fb_wingback','Support'],    fit:['fb_att_wb','Support']},
+   /* 보가르드 RB — 2026-07-31 최종: fb_att_wb/Support 0.890 (측정최적) 유지.
+      경위: obs#89가 미숙련 회피로 wingback/Support 0.808을 채택했으나(Δ0.082 지불),
+      같은 날 obs#91에서 EA 공식 피치노트가 "regular Roles·Roles+를 Roles++에 가깝게 올렸고
+      Out of Position 페널티를 대폭 줄였다"고 명시한 것이 확인됐다 — 숙련 프리미엄이 작아진
+      시스템에서 Δ0.082는 과한 대가다. 사용자 확정으로 측정최적으로 복귀.
+      ⚠️ 대가: LB 에스투피냔도 fb_att_wb/Support(전방 1.30)라 **C2(풀백 한 명씩만 전진,
+      obs#4·#27)가 정확한 동률로 깨진다**. 이 프리셋은 양쪽 풀백이 모두 전진형이며,
+      비대칭 복원 옵션은 wingback/Support(0.808, 전방 0.30)뿐이다. */
+   {n:'보가르드',  opt:['fb_att_wb','Support'],      fit:['fb_att_wb','Support']},
    ]},
  {pos:'LDM',t:'DM', x:38,y:42, opts:[
    {n:'오나나',    opt:['dm_holding','Roaming'],     fit:['dm_dlp','Roaming']},
