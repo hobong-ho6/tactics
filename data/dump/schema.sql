@@ -5,7 +5,7 @@ CREATE TABLE players(
   shirt_no INTEGER,
   minutes_2526 INTEGER,
   notes TEXT
-);
+, name_kr TEXT);
 CREATE TABLE matches(
   id INTEGER PRIMARY KEY,
   date TEXT,

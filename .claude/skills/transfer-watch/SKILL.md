@@ -29,10 +29,16 @@ description: 아스톤 빌라 이적 루머 정기 감시 — 스캔·크로스�
 
 ## 1. 루머 소스 스캔 *(서브에이전트 담당)*
 
-- `WebFetch`로 https://www.transferfeed.com/clubs/aston-villa/15 와
-  https://www.fotmob.com/rumours?teamIds=10252 를 읽고
+- `WebFetch`로 https://www.transferfeed.com/clubs/aston-villa/15 를 읽고
   **영입(incoming) 루머 선수 목록**을 추출한다 (선수명, 소속, 포지션, 루머 요지).
-  두 소스 결과를 합쳐 중복 제거 후 크로스체크 대상으로 삼는다.
+- ⛔ **Fotmob은 2026-07-31에 소스에서 제거됐다** (`/rumours?teamIds=10252`).
+  이유: 그 페이지는 **CSR**이라 `teamIds` 쿼리를 클라이언트 JS가 읽어 테이블을 하이드레이션한다 →
+  `WebFetch`(서버측 정적 GET)로는 **셸/헤더만** 받는다. 2026-07-23~07-31 약 20회 실행 **전건 실패**이고
+  같은 실행에서 서버 렌더링인 TransferFeed는 항상 성공했다 = 일시 장애·레이트리밋이 아니라 **구조적 불일치**.
+  로그 근거: `reports/transfer-watch/2026-07-31.md` "루머 테이블 미렌더링(헤더만 존재)".
+  **§0 서브에이전트 프롬프트에도 넣지 말 것.** 복구 조건: 브라우저 경유 수집 또는 내부 JSON 엔드포인트 확보.
+- ⚠️ **단일 소스가 됐으므로 `WebSearch`로 공백을 메운다** — 예: `"Aston Villa" transfer news <날짜>` ·
+  `"Aston Villa" signing agreed` · `"Aston Villa" exit transfer`. 대체 소스 1곳 추가는 백로그.
 - 이미 `transfer_targets`에 있는 선수는 상태 변화(협상 단계 진전/무산)만 확인.
   `sqlite3 data/avl_analysis.db "SELECT name, slot, likelihood FROM transfer_targets WHERE window='2026-summer'"`
 
