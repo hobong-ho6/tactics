@@ -446,8 +446,9 @@
       <span class="sq-head">빠른 선택</span>
       <button id="sqProj2627" style="background:var(--panel-2);border:1px solid var(--line);border-radius:7px;font-size:11px;padding:5px 9px;cursor:pointer;color:var(--muted)">🔮 26/27 스쿼드</button>
       <button id="sqSolve" style="background:var(--panel-2);border:1px solid var(--accent);border-radius:7px;font-size:11px;padding:5px 9px;cursor:pointer;color:var(--ink);margin-left:6px">⚙️ 에메리 전술로 풀기</button>
+      <button id="sqTacticOnly" style="background:var(--panel-2);border:1px solid var(--line);border-radius:7px;font-size:11px;padding:5px 9px;cursor:pointer;color:var(--muted);margin-left:6px">🧭 전술 요구역할만</button>
       <button id="sqRestore" style="background:var(--panel-2);border:1px solid var(--line);border-radius:7px;font-size:11px;padding:5px 9px;cursor:pointer;color:var(--muted);margin-left:6px">↩︎ DB 처방으로</button>
-      <span class="sq-note" id="sqProjNote">선수를 고른 뒤 <b>에메리 전술로 풀기</b>를 누르면, 그 스쿼드에서 에메리 구조 제약(<b>C1</b> 두 줄 4 뱅크 · <b>C2</b> 풀백 한 명씩 · <b>C3</b> 볼위너+창조 피벗 · <b>C5</b> 기능축 고정)을 만족하는 <b>역할·포커스 조합</b>을 실측 적합 최대로 풉니다. 결과는 <b>DB 프리셋과 대조</b>해 이탈 칸을 표시하며, <b>↩︎ DB 처방으로</b>를 누르면 정본으로 되돌립니다.</span>
+      <span class="sq-note" id="sqProjNote">선수를 고른 뒤 <b>에메리 전술로 풀기</b>를 누르면, 그 스쿼드에서 에메리 구조 제약(<b>C1</b> 두 줄 4 뱅크 · <b>C2</b> 풀백 한 명씩 · <b>C3</b> 볼위너+창조 피벗 · <b>C5</b> 기능축 고정)을 만족하는 <b>역할·포커스 조합</b>을 실측 적합 최대로 풉니다. 결과는 <b>DB 프리셋과 대조</b>해 이탈 칸을 표시하며, <b>↩︎ DB 처방으로</b>를 누르면 정본으로 되돌립니다.<br><b>🧭 전술 요구역할만</b>은 정반대입니다 — <b>선수 스탯·실측·적합도를 전부 무시</b>하고 슬롯이 전술적으로 요구하는 역할만 배치합니다(누가 서든 같은 역할). 두 결과의 차이가 곧 <b>"이 스쿼드가 전술 요구에서 얼마나 벗어나 있는가"</b>입니다.</span>
       <div class="sq-note" id="sqSolveOut" style="padding:6px 2px 0"></div>
     </div>
     <div class="sq-slots" id="sqSlots"></div>
@@ -3203,9 +3204,56 @@ function restorePresetOpt(){
   SQUAD_SLOTS.forEach(s=>s.opts.forEach(o=>{
     const v=PRESET_OPT.get(s.pos+'|'+o.n); if(v) o.opt=[v[0],v[1]];
   }));
-  buildSquadUI(); applySquad();
+  /* ⚠️ 자동 솔버를 억제해야 한다 — applySquad()가 renderSolve()를 부르므로(obs#110)
+     가드 없이 두면 방금 복원한 DB 값을 솔버 해가 **즉시 덮어쓴다**. 되돌리기가 무력화된다.
+     (2026-07-31 obs#118에서 발견: 이탈 칸이 0이던 시점이라 증상이 보이지 않았다.) */
+  _autoSolving=true; try{ buildSquadUI(); applySquad(); } finally{ _autoSolving=false; }
   const out=document.getElementById('sqSolveOut');
   if(out) out.innerHTML='<span class="ok">↩︎ DB 처방으로 되돌렸습니다</span> — 🎯 표시가 team_tactic_setups 프리셋 기준으로 복원됐습니다.';
+}
+/* ⭐ 2026-07-31 (obs#118, 사용자 요청) — **전술 요구역할만** 배치.
+   `에메리 전술로 풀기`(솔버)와 정반대 방향이다:
+     솔버        = 그 선수의 **실측 적합 최대** (구조 제약 안에서)
+     요구역할만  = 슬롯이 **전술적으로 요구하는 역할** (선수 스탯·실측·적합도 전부 무시)
+   두 결과의 차이가 곧 "이 스쿼드가 전술 요구에서 얼마나 벗어나 있는가"다.
+
+   `SLOT_EMERY_ROLE`(obs#27~33 파생)이 원천이다. 그 표는 슬롯당 후보를 1~2개 담는데,
+   **2개인 슬롯(LB·LDM·RDM)이 정확히 C2·C3 비대칭이 사는 자리**다 → 구조로 결정한다:
+     LB `fb_att_wb`/Support(전진) + RB `fb_wingback`/Balanced(절제)  → C2 성립
+     LDM `dm_dlp`/Build-Up(창조) + RDM `dm_holding`/Ball-Winning(볼위너) → C3 성립
+   ⚠️ LDM은 표의 **둘째** 항목을 쓴다 — 첫째(`dm_holding`/Roaming)를 쓰면 RDM과 둘 다
+   holding이 되어 C3(피벗 분화)가 깨진다. */
+const TACTIC_ONLY_PICK={ LB:['fb_att_wb','Support'], RB:['fb_wingback','Balanced'],
+  LDM:['dm_dlp','Build-Up'], RDM:['dm_holding','Ball-Winning'] };
+/* ⚠️ `SLOT_EMERY_ROLE`이 후속 obs 대비 낡은 항목 — 화면에 그대로 표시하되 경고를 띄운다.
+   이 표를 지금 고치면 선수비교 메뉴의 `요구적합` 순위가 함께 바뀌므로(emeryRoleFit이 같은 표를
+   쓴다) 별 과제로 분리한다. 값을 조용히 바꾸지 않는 것이 불변규칙 1·3의 취지다. */
+const TACTIC_ONLY_STALE={
+  GK:'표는 `gk_ballplaying`/Build-Up이지만 실측이 `gk_goalkeeper`/Defend를 지시했다(스위퍼 .773으로 기각).',
+  LM:'표는 `wm_insidefwd`/Balanced이지만 **obs#100이 목표 커널을 `wm_winger`로 개정**했다 — 좌측 해방의 성격이 컷인 → 터치라인 침투로 바뀌었다.',
+  ST:'표는 `st_advanced`/Versatile이지만 현 처방은 /Support다.' };
+function applyTacticOnly(){
+  const out=document.getElementById('sqSolveOut');
+  snapshotPresetOpt();                     // 되돌리기 경로 확보 (↩︎ DB 처방으로)
+  const rows=[], stale=[];
+  for(const s of SQUAD_SLOTS){
+    const list=SLOT_EMERY_ROLE[s.pos];
+    if(!list||!list.length){ rows.push({pos:s.pos, txt:'요구역할 미정의'}); continue; }
+    const pick = TACTIC_ONLY_PICK[s.pos] || list[0];
+    s.opts.forEach(o=>{ o.opt=[pick[0],pick[1]]; });   // 누가 서든 같은 역할
+    const alt = list.length>1 ? list.filter(([r,f])=>!(r===pick[0]&&f===pick[1]))
+                                    .map(([r,f])=>`${ROLES[r]?ROLES[r].n:r}/${fmtFocus(f)}`).join(', ') : '';
+    rows.push({pos:s.pos, txt:`${ROLES[pick[0]]?ROLES[pick[0]].n:pick[0]}/${fmtFocus(pick[1])}`, alt});
+    if(TACTIC_ONLY_STALE[s.pos]) stale.push(`${s.pos} — ${TACTIC_ONLY_STALE[s.pos]}`);
+  }
+  /* 자동 솔버 억제 — 위와 같은 이유(applySquad → renderSolve가 요구역할을 덮어쓴다) */
+  _autoSolving=true; try{ buildSquadUI(); applySquad(); } finally{ _autoSolving=false; }
+  if(out) out.innerHTML=
+    '<span class="ok">🧭 전술 요구역할만 적용</span> — 선수 스탯·실측·적합도를 <b>무시</b>하고 슬롯의 전술 요구만 배치했습니다(누가 서든 같은 역할). 원천: <span class="mono">SLOT_EMERY_ROLE</span>(obs#27~33).'
+    + '<div style="margin-top:4px">'+rows.map(r=>`${r.pos} <b>${r.txt}</b>${r.alt?`<span style="opacity:.6"> (대안 ${r.alt})</span>`:''}`).join(' · ')+'</div>'
+    + '<div style="margin-top:4px;color:var(--muted-2)">C2 성립 — LB 전진(공격형 윙백) vs RB 절제(윙백). C3 성립 — 좌 창조(딥라잉) vs 우 볼위너(홀딩). '
+      +'⚠️ LDM은 표의 둘째 항목을 쓴다(첫째를 쓰면 두 피벗이 모두 홀딩이 되어 C3가 깨진다).</div>'
+    + (stale.length?`<div style="margin-top:4px;color:var(--warn,#f0a03c)">⚠️ <b>요구역할 표가 낡은 칸 ${stale.length}건</b> — 값을 조용히 바꾸지 않고 그대로 표시한다(선수비교 메뉴의 요구적합이 같은 표를 쓴다). ${stale.join(' · ')}</div>`:'');
 }
 function renderSolve(){
   const out=document.getElementById('sqSolveOut'); if(!out) return;
@@ -3248,6 +3296,7 @@ function renderSolve(){
     (r.warn.length?`<div class="warn" style="margin-top:4px">⚠ ${r.warn.join(' / ')}</div>`:'');
 }
 document.getElementById('sqSolve').addEventListener('click',renderSolve);
+document.getElementById('sqTacticOnly').addEventListener('click',applyTacticOnly);
 document.getElementById('sqRestore').addEventListener('click',restorePresetOpt);
 function enterSquadMode(){
   hideCmpBar();
