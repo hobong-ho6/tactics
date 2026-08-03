@@ -4,14 +4,15 @@
 게임 내 전술(포메이션·역할·포커스)로 재현하는 프로젝트.
 
 **대상 3팀 (2026-07-30 팀 축 도입)**: 에메리·아스톤 빌라(AVL, 기준 구현) /
-알론소·첼시(CHE) / 이라올라·리버풀(LIV). DB 8개 테이블에 `team` 컬럼이 있고
+알론소·첼시(CHE) / 이라올라·리버풀(LIV). **13개 테이블**에 `team` 컬럼이 있고
 `teams` 테이블이 코드를 관리한다 — 팀별 조회는 항상 `WHERE team='<코드>'`로 좁힐 것.
+> ⚠️ **`matches`만 예외다** — 값이 코드가 아니라 **풀네임**(`'Aston Villa'`)이다.
+> 여기에 `team='AVL'`을 쓰면 **오류 없이 0행**이 돌아온다(2026-08-03 실측 확인).
 
----
 ## 세션 핸드오프
 - 세션 시작 시 반드시 HANDOFF.md를 먼저 읽고, 현재 상태와 다음 할 일을 한 줄로 브리핑한 뒤 작업을 시작할 것
 - 세션 종료 전 또는 사용자가 "handoff"라고 하면 HANDOFF.md 내부 규칙에 따라 파일을 갱신할 것
----
+
 ## 문서 맵 — 작업 전에 해당 문서를 먼저 읽을 것
 
 | 작업 | 문서 |
@@ -23,6 +24,7 @@
 | FC 게임 시스템 분석·매핑 (역할/포커스, 버전 관리, 툴) | [docs/20-fc-game-system.md](docs/20-fc-game-system.md) |
 | 데이터 수집·기록 규칙 (스키마, 좌표 규약, 신뢰도, SofaScore 수집법) | [docs/30-data-rules.md](docs/30-data-rules.md) |
 | 파이프라인, DB·git 운영 | [docs/40-pipeline.md](docs/40-pipeline.md) |
+| **새 분석 축을 세울 때**(사전 등록 양식·성공 기준·처분표) — R축 기각 선례 | [docs/60-r-axis-prereg.md](docs/60-r-axis-prereg.md) |
 | ~~게임 내 검증 루프~~ ⛔ 폐기 — 데이터가 최종 심판 (참고용 보존) | [docs/50-ingame-validation.md](docs/50-ingame-validation.md) |
 
 > PPDA·압박 강도 수치를 인용할 때는 **docs/12의 「PPDA 정의 차이 표」와 정본 표(obs#80)**를
@@ -39,8 +41,9 @@
    (사례: 부엔디아 — 기사 "오른쪽 드리프트" vs 실측 좌측 편향, appearances 75–77 참조)
 4. **좌표 규약 준수.** SofaScore 히트맵 0–100: x는 공격 방향, **y 낮음=오른쪽 / y 높음=왼쪽**.
    상세와 검증 근거는 docs/30-data-rules.md.
-5. **DB 변경 후에는 반드시 `scripts/db_dump.sh` 실행** → `data/dump/*.sql` 재생성 후
-   .db와 dump를 함께 커밋한다 (바이너리 diff 불가 보완).
+5. **DB 변경 후 고정 절차**: `python3 scripts/sync_transfer_ui.py`(툴 미러 + 프리뷰 재생성)
+   → `scripts/db_dump.sh`(`data/dump/*.sql` 재생성) → **.db + dump + fc26-heatmap.html 함께 커밋**
+   (바이너리 diff 불가 보완). ⚠️ `git add -A` 금지 — 커밋 금지 파일이 있어 푸시가 차단된다.
 6. 툴 프리셋 네이밍: `<팀명> <시즌> (<종류>)` — 예: `아스톤 빌라 25/26 (최적)`,
    `첼시 26/27 (알론소)`. 팀명은 `TEAMS` 레지스트리(fc26-heatmap.html)의 `prefix` 값을 쓴다.
 7. **팀 축을 섞지 말 것.** 한 팀의 실측을 다른 팀 처방의 근거로 쓸 때는 `rationale`에
@@ -53,4 +56,4 @@
 - 새 사실은 `appearances`(또는 해당 테이블)에 `source`(URL/API 엔드포인트)와
   `confidence`(등급+근거)를 채워서 기록했다.
 - 파생 결론은 `player_role_map`에 `kind`와 `rationale`을 채워서 기록했다.
-- `scripts/db_dump.sh`를 실행했고, .db + dump를 커밋했다.
+- 불변규칙 5의 고정 절차(sync → dump → 커밋)를 실행했다.
