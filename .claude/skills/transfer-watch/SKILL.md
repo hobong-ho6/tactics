@@ -27,18 +27,31 @@ description: 아스톤 빌라 이적 루머 정기 감시 — 스캔·크로스�
   전날 미해결 항목을 먼저 처리한다. 보고가 오면 합쳐서 리포트를 쓴다.
 - 헤드리스 스케줄 실행에서 `Agent` 툴을 쓸 수 없으면 메인 세션이 §1~2를 직접 수행한다(기존 방식).
 
-## 1. 루머 소스 스캔 *(서브에이전트 담당)*
+## 1. 루머 소스 스캔 *(TransferFeed·WebSearch는 서브에이전트 / Fotmob은 메인 세션)*
 
 - `WebFetch`로 https://www.transferfeed.com/clubs/aston-villa/15 를 읽고
   **영입(incoming) 루머 선수 목록**을 추출한다 (선수명, 소속, 포지션, 루머 요지).
-- ⛔ **Fotmob은 2026-07-31에 소스에서 제거됐다** (`/rumours?teamIds=10252`).
-  이유: 그 페이지는 **CSR**이라 `teamIds` 쿼리를 클라이언트 JS가 읽어 테이블을 하이드레이션한다 →
-  `WebFetch`(서버측 정적 GET)로는 **셸/헤더만** 받는다. 2026-07-23~07-31 약 20회 실행 **전건 실패**이고
-  같은 실행에서 서버 렌더링인 TransferFeed는 항상 성공했다 = 일시 장애·레이트리밋이 아니라 **구조적 불일치**.
-  로그 근거: `reports/transfer-watch/2026-07-31.md` "루머 테이블 미렌더링(헤더만 존재)".
-  **§0 서브에이전트 프롬프트에도 넣지 말 것.** 복구 조건: 브라우저 경유 수집 또는 내부 JSON 엔드포인트 확보.
-- ⚠️ **단일 소스가 됐으므로 `WebSearch`로 공백을 메운다** — 예: `"Aston Villa" transfer news <날짜>` ·
-  `"Aston Villa" signing agreed` · `"Aston Villa" exit transfer`. 대체 소스 1곳 추가는 백로그.
+  ⚠️ **TransferFeed의 "Nh ago" 스탬프는 원기사 발행 시각이 아니라 피드 수집 시각이다** (2026-08-03 실증:
+  Dobbin "16h 전 임대 이적"의 실제 사실은 07-15 완전이적 완료). "최근 몇 시간 이내" 판별에 단독으로 쓰지 말 것.
+- ✅ **Fotmob은 2026-08-03에 복구됐다 — 브라우저 경유로 계속 사용한다** (`/rumours?teamIds=10252`).
+  - **수집 주체는 메인 세션이다.** 브라우저 창(pane)은 세션당 하나뿐이라 서브에이전트와 동시 사용하면 충돌한다.
+    §0대로 스캔 에이전트를 띄운 **직후 대기 시간에** 메인 세션이 다음을 실행한다:
+    `preview_start {url: "https://www.fotmob.com/rumours?teamIds=10252"}` → `get_page_text`.
+    루머 테이블 30행이 완전히 렌더링되고 `teamIds` 필터도 정상 적용된다.
+  - 왜 이게 되는가: 07-23~07-31 전건 실패의 원인은 레이트리밋이 아니라 **CSR vs 정적 GET의 구조적 불일치**였다
+    (`WebFetch`는 셸/헤더만 받는다). 렌더링하는 클라이언트를 쓰면 그대로 풀린다. → **`WebFetch`로는 여전히 불가.**
+  - **고유 가치**: 루머마다 **출처 매체와 날짜를 라벨링**한다(예: `ST Nicolas Jackson / Jul 21 / Fabrizio Romano`).
+    TransferFeed에 없는 정보이고, TransferFeed가 놓치는 이름을 실제로 잡아낸다(2026-08-03: Scienza·Ferrán
+    Torres·Bowen·Woltemade·Gakpo 등).
+  - ⛔ **그러나 라벨을 티어 근거로 쓰지 말 것.** Fotmob은 `Watkins → Fenerbahce`를 "Sky Sports"로 표시하지만
+    실제 원출처는 전부 터키 매체(Sabah·Fotomac·Sercan Hamzaoglu)였고 Sky 보도는 확인되지 않았다. 게다가 루머
+    행은 기사 URL이 아니라 **선수 페이지로만 링크**돼 라벨을 원문으로 검증할 수 없다.
+    → **이름·날짜 발굴용 리드 소스로만 쓰고, 티어 판정은 §2 원문 추적으로 별도 수행한다.**
+  - Fotmob에서만 나온 이름은 **메인 세션이 직접 §2 크로스체크**한다(에이전트는 이미 실행 중이라 전달 불가).
+- ⚠️ `WebSearch`로 공백을 메운다 — 예: `"Aston Villa" transfer news <날짜>` ·
+  `"Aston Villa" signing agreed` · `"Aston Villa" exit transfer`.
+  ⛔ **Sky Sports 빌라 라이브 블로그는 2026-08-02~03에 누적 5회 이상 접근 실패**("blog currently unavailable") —
+  "당일 1티어 확인" 경로가 막혀 있다. 대체 소스 1곳 확보가 최우선 백로그.
 - 이미 `transfer_targets`에 있는 선수는 상태 변화(협상 단계 진전/무산)만 확인.
   `sqlite3 data/avl_analysis.db "SELECT name, slot, likelihood FROM transfer_targets WHERE window='2026-summer'"`
 
