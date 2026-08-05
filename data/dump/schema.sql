@@ -143,17 +143,6 @@ CREATE TABLE player_fc_stats(
   source TEXT, confidence TEXT, attrs TEXT, playstyles TEXT, traits TEXT, detail_date TEXT, role_familiarity TEXT, accelerate TEXT, body_type TEXT, preferred_foot TEXT, role_detail TEXT,
   UNIQUE(game_version, name_kr)
 );
-CREATE VIEW v_event_profile AS
-SELECT p.name, a.player_id, COUNT(*) n,
- ROUND(AVG(a.xg),2) xg_pm, ROUND(AVG(a.xa),2) xa_pm, ROUND(AVG(a.key_passes),1) kp_pm,
- ROUND(AVG(json_extract(a.stats_json,'$.duels_won')),1) duelw_pm,
- ROUND(AVG(json_extract(a.stats_json,'$.tackles')),1) tkl_pm,
- ROUND(AVG(json_extract(a.stats_json,'$.interceptions')),1) int_pm,
- ROUND(AVG(json_extract(a.stats_json,'$.dribbles_won')),1) drb_pm,
- ROUND(AVG(json_extract(a.stats_json,'$.passes_acc')*1.0/NULLIF(json_extract(a.stats_json,'$.passes_total'),0)),2) pass_pct
-FROM appearances a JOIN players p ON p.id=a.player_id
-WHERE a.stats_json IS NOT NULL GROUP BY a.player_id
-/* v_event_profile(name,player_id,n,xg_pm,xa_pm,kp_pm,duelw_pm,tkl_pm,int_pm,drb_pm,pass_pct) */;
 CREATE TABLE player_shot_profile(
   player_id INTEGER PRIMARY KEY REFERENCES players(id),
   window TEXT,             -- sample window note
@@ -276,3 +265,22 @@ CREATE TABLE game_role_variants(
   confidence   TEXT,
   PRIMARY KEY(game_version, role_id, focus, pitch_x)
 );
+CREATE VIEW v_event_profile AS
+SELECT p.name, a.player_id, COUNT(*) n,
+ ROUND(AVG(a.xg),2) xg_pm, ROUND(AVG(a.xa),2) xa_pm, ROUND(AVG(a.key_passes),1) kp_pm,
+ ROUND(AVG(json_extract(a.stats_json,'$.duels_won')),1) duelw_pm,
+ ROUND(AVG(json_extract(a.stats_json,'$.tackles')),1) tkl_pm,
+ ROUND(AVG(json_extract(a.stats_json,'$.interceptions')),1) int_pm,
+ ROUND(AVG(json_extract(a.stats_json,'$.dribbles_won')),1) drb_pm,
+ ROUND(AVG(json_extract(a.stats_json,'$.passes_acc')*1.0/NULLIF(json_extract(a.stats_json,'$.passes_total'),0)),2) pass_pct,
+ /* 2026-08-05 obs#131 — 지표별 실제 표본 수. AVG()가 NULL을 무시하므로 n 단독으로는
+    각 지표의 표본을 알 수 없다(카마라 인터셉트가 n=5 표기에 실제 2행으로 3.0을 냈던 사례). */
+ COUNT(a.xg) n_xg, COUNT(a.xa) n_xa, COUNT(a.key_passes) n_kp,
+ COUNT(json_extract(a.stats_json,'$.duels_won')) n_duelw,
+ COUNT(json_extract(a.stats_json,'$.tackles')) n_tkl,
+ COUNT(json_extract(a.stats_json,'$.interceptions')) n_int,
+ COUNT(json_extract(a.stats_json,'$.dribbles_won')) n_drb,
+ COUNT(json_extract(a.stats_json,'$.passes_total')) n_pass
+FROM appearances a JOIN players p ON p.id=a.player_id
+WHERE a.stats_json IS NOT NULL GROUP BY a.player_id
+/* v_event_profile(name,player_id,n,xg_pm,xa_pm,kp_pm,duelw_pm,tkl_pm,int_pm,drb_pm,pass_pct,n_xg,n_xa,n_kp,n_duelw,n_tkl,n_int,n_drb,n_pass) */;
