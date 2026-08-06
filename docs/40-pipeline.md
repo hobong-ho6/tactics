@@ -27,7 +27,25 @@
 - 커밋은 성격별로 분리: `data:`(DB+dump), `tool:`(fc26-heatmap.html), `docs:`(문서).
 - 프리셋 JSON export는 `data/exports/`에 두고 커밋한다.
 - `.DS_Store` 등 OS 파일은 .gitignore.
-- 원격(remote)이 아직 없음 — GitHub private repo에 push해 백업하는 것을 권장 (백로그).
+- ⛔ **`git add -A` 금지** — 저장소에 `.claude/settings.json`(Figma PAT) 등 **커밋 금지 파일**이 있어
+  푸시가 차단된다. 항상 **명시 스테이징**할 것:
+  `git add reports/… data/avl_analysis.db data/dump/ fc26-heatmap.html`
+  ⚠️ 이 규칙은 핸드오프 스킬의 "wip 보존 시 `git add -A`" 절차보다 **우선**한다(비밀 유출 방지).
+- DB 변경 후 순서: `python3 scripts/sync_transfer_ui.py` → `scripts/db_dump.sh` → 명시 스테이징 커밋.
+  (프리뷰 미러 `cp`는 **sync가 자동으로 한다** — 손으로 하지 않는다.)
+- **sync 회귀 게이트**: DB 무변경 상태에서 sync를 두 번 돌려 `git diff fc26-heatmap.html`이 비어야 한다.
+
+### 툴(fc26-heatmap.html) 편집 사고 사례 — 반복 금지
+
+- ⚠️ **탐욕적 정규식 금지** — 1271줄이 삭제되는 사고가 났다. 블록 제거는 **정확한 줄 범위를 확인한 뒤**
+  슬라이싱할 것.
+- ⚠️ **`git checkout <file>`이 미커밋 툴 편집을 날린다** — 실제로 발생했다. DB가 SSOT라 데이터 손실은
+  0이었지만 툴 편집은 재적용해야 했다.
+- ⚠️ **데이터 함수와 표시 함수를 따로 검증할 것** — `emerySolve()`만 호출해 검증했더니 `renderSolve()`의
+  버그를 놓쳤다(obs#110 ⑸). **렌더 경로를 반드시 지나갈 것.**
+- ⚠️ **일괄 교체는 "적용되지 않은 곳"을 세어야 한다** — obs#94의 역할 교체가 `squad_positions` WM 행에만
+  적용되고 W 행을 놓쳤고, 그 행은 **8개 중 최저값**을 정답처럼 들고 있었다(2026-08-06 발견).
+  교체 작업의 검증은 **argmax 재계산**으로 한다.
 
 ## 정기 자동화
 
