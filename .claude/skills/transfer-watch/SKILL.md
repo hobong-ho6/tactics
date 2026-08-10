@@ -31,6 +31,26 @@ description: 아스톤 빌라 이적 루머 정기 감시 — 스캔·크로스�
 
 ## 1. 루머 소스 스캔 *(TransferFeed·WebSearch는 서브에이전트 / Fotmob은 메인 세션)*
 
+### 1-0. ⭐ 웹 검색보다 **DB 선조회를 먼저** 한다 *(메인 세션 · §0 에이전트를 띄우기 전)* (2026-08-10 추가)
+
+**웹으로 나가기 전에 우리가 이미 아는 것을 확인한다.** 두 테이블 다 본다.
+
+```
+sqlite3 data/avl_analysis.db "SELECT name, slot, likelihood, last_news_date FROM transfer_targets WHERE window='2026-summer'"
+sqlite3 data/avl_analysis.db "SELECT id, scope, substr(claim,1,60) FROM tactic_observations WHERE team='AVL' ORDER BY id DESC LIMIT 5"
+```
+
+- `transfer_targets`/`transfer_outgoing`: 이미 있는 선수는 **상태 변화**(협상 단계 진전/무산)만 확인.
+- ⭐ **`tactic_observations`(obs)**: 경기 리포트형 obs에 **선수 이름·라인업·득점자가 원천값으로** 들어 있다.
+  특정 이름을 확인할 때는 본문·근거를 같이 훑는다 —
+  `... WHERE claim LIKE '%<이름>%' OR evidence LIKE '%<이름>%'`
+  > **실증(2026-08-10)**: "프리시즌 활약 유스" 수집에서 헤밍스·린치를 통째로 놓쳤는데,
+  > **`obs#126` ③에 Carroll·Hemmings·Lynch·Madjo·Burrowes 5명이 이름으로 적혀 있었고**
+  > 58분 득점도 `Lynch 어시 → Madjo 마무리`로 기록돼 있었다. **답의 절반이 DB에 있었다.**
+- ⚠️ obs를 읽을 때는 **`claim`(결론)과 `confidence`(한계)를 같이 읽을 것.** 둘이 어긋나 있을 수 있다 —
+  obs#126은 결론을 "친선이라 실측이 없다"로 썼지만 `confidence`에는 진짜 원인인
+  **"상대가 올스타 선발팀"** 이 이미 적혀 있었다(2026-08-10에 실측으로 확인). **근거 칸이 결론보다 정확할 수 있다.**
+
 - `WebFetch`로 https://www.transferfeed.com/clubs/aston-villa/15 를 읽고
   **영입(incoming) 루머 선수 목록**을 추출한다 (선수명, 소속, 포지션, 루머 요지).
   ⚠️ **TransferFeed의 "Nh ago" 스탬프는 원기사 발행 시각이 아니라 피드 수집 시각이다** (2026-08-03 실증:
@@ -54,8 +74,6 @@ description: 아스톤 빌라 이적 루머 정기 감시 — 스캔·크로스�
   `"Aston Villa" signing agreed` · `"Aston Villa" exit transfer`.
   ⛔ **Sky Sports 빌라 라이브 블로그는 2026-08-02~03에 누적 5회 이상 접근 실패**("blog currently unavailable") —
   "당일 1티어 확인" 경로가 막혀 있다. 대체 소스 1곳 확보가 최우선 백로그.
-- 이미 `transfer_targets`에 있는 선수는 상태 변화(협상 단계 진전/무산)만 확인.
-  `sqlite3 data/avl_analysis.db "SELECT name, slot, likelihood FROM transfer_targets WHERE window='2026-summer'"`
 
 ## 2. 1~2티어 기자 크로스체크 *(서브에이전트 담당 — 최종 판정은 메인 세션)*
 
