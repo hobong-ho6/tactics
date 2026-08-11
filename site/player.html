@@ -14,22 +14,24 @@ import { mountHeader, loadTeam, loadGameStats, sofifaLink } from './assets/data.
 import { miniGrid } from './assets/pitch.js';
 const { team } = await mountHeader('player.html');
 const [td, GS] = await Promise.all([loadTeam(team), loadGameStats('FC26')]);
-const names = [...new Set(td.squad.map(q=>q.label.replace(/\((합류확정|신규|보유)\)$/,'')))];
+const names = [...new Set(td.squad.map(q=>q.label.normalize('NFC').replace(/\((합류확정|신규|보유)\)$/,'')))];
 const who = document.getElementById('who');
 who.innerHTML = names.map(n=>`<option>${n}</option>`).join('');
 who.addEventListener('change', render);
+const norm = x => (x||'').normalize('NFC').replace(/\((합류확정|신규|보유)\)$/,'');
 function render(){
-  const n = who.value;
+  const n = norm(who.value);
+  if (!n) return;
   document.getElementById('sf').innerHTML = sofifaLink(n, GS);
-  const pres = td.prescriptions.filter(p=>p.label.includes(n)&&p.map25&&p.kind.startsWith('measured'));
+  const pres = td.prescriptions.filter(p=>norm(p.label)===n&&p.map25&&p.kind.startsWith('measured'));
   document.getElementById('grids').innerHTML = (pres.length?pres:td.squad.filter(q=>q.label.includes(n)).map(q=>({kind:'measured(스쿼드)',map25:q.map25,sample_n:null,avg_rating:q.rate_v})))
     .map(p=>`<div class="pcard"><b>${p.kind}</b> <small class="dim">${p.pos_label??''}</small><br>${miniGrid(p.map25)}<br>
       <small class="dim">n=${p.sample_n??'—'} · 평점 ${p.avg_rating??'—'} · sim ${p.fit_sim??'—'}</small></div>`).join('') || '<span class="dim">실측 그리드 없음</span>';
-  const st = td.player_stats.find(s=>s.label.includes(n)||n.includes(s.label));
+  const st = td.player_stats.find(s=>norm(s.label)===n);
   document.getElementById('pstat').innerHTML = st ? `경기 <b>${st.n}</b> · 분 <b>${st.minutes??'—'}</b> · 평점 <b>${st.avg_rating??'—'}</b> · xG <b>${st.xg_pg??'—'}</b> · xA <b>${st.xa_pg??'—'}</b> · 키패스 <b>${st.kp_pg??'—'}</b> · 듀얼승 <b>${st.dw_pg??'—'}</b> · 태클 <b>${st.tk_pg??'—'}</b> · 인터셉트 <b>${st.ic_pg??'—'}</b>` : '<span class="dim">경기 스탯 없음 (match-watch 수집 대기)</span>';
   const g = GS[n];
   document.getElementById('gstat').innerHTML = g ? `OVR <b>${g.ovr}</b>/${g.pot} · ${g.positions??''} · 급성장 ${g.best_pos??''}<br>PAC ${g.pac} SHO ${g.sho} PAS ${g.pas} DRI ${g.dri} DEF ${g.def} PHY ${g.phy}<br><span class="dim">${(g.playstyles??'').split(';').join(' · ')}</span>` : '<span class="dim">FC26 로스터에 없음</span>';
-  const ds = td.duties.filter(d=>d.label.includes(n)||n.includes(d.label));
+  const ds = td.duties.filter(d=>norm(d.label)===n);
   document.getElementById('duty').innerHTML = ds.length ? '<tr><th>포지션</th><th>영상·스카우트 주장(가설)</th><th>실측 대조</th><th>판정</th><th>게임 함의</th></tr>'+
     ds.map(d=>`<tr><td><b>${d.position}</b></td><td>${d.duties}</td><td>${d.execution??''}</td><td>${d.adherence??''}</td><td class="dim">${d.game_role_implication??''}</td></tr>`).join('')
     : '<tr><td class="dim">파일럿 미수행 — 현재 만잠비·가르나초·고메스·시세 완료</td></tr>';
