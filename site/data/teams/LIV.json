@@ -416,9 +416,16 @@
   },
   {
    "axis": "pressing",
-   "confidence": "HIGH(제약 자체는 EA 명시)",
-   "content": "FC26 Team Press가 수비 진영에서 너프됨(2026-05-28) — 고압박 재현이 구조적으로 가장 불리한 감독. 압박 강도는 라인 높이+수비 접근으로 근사.",
-   "evidence": "docs/20 ⑥ · docs/12",
+   "confidence": "MEDIUM-HIGH — 본머스 실측 뒷받침",
+   "content": "하이브리드 프레스 — 존 수비로 시작해 트리거 발동 시 전면 맨투맨 전환, 터치라인을 추가 수비수로 쓰는 측면 압축. 목적은 공격: 파이널서드 탈취(리그 3위)→즉시 슛. ⚠️ FC26 Team Press 수비진영 너프로 트리거식 재현 불가 — High 라인+Aggressive 근사가 상한.",
+   "evidence": "obs#146 (thisisanfield·PL공식)",
+   "updated": "2026-08-11"
+  },
+  {
+   "axis": "situational",
+   "confidence": "MEDIUM-HIGH — 정량 근거 있음(원값 미수집)",
+   "content": "⚠️ 지배 국면 리스크: 55%+ 점유 시 1승 13경기 vs 55% 미만 12승 8무 — 언더독 구조가 슈퍼클럽에서 재현될지가 26/27 최대 검증 과제. 수직성(1.95m/s 최속·2.98패스/시퀀스)은 게임에서 Counter 빌드업 스타일 검토 근거.",
+   "evidence": "obs#146",
    "updated": "2026-08-11"
   },
   {

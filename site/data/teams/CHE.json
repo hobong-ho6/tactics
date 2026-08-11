@@ -648,6 +648,13 @@
  ],
  "profile": [
   {
+   "axis": "buildup",
+   "confidence": "MEDIUM — 레버쿠젠 원형, 첼시 이식 검증 전",
+   "content": "3-2-5 빌드업(백3+더블피벗 7인 후방 — 수적 우위) 또는 2-3-5 가변(RCB 전진). \"tac-tac-tac\" 짧은 리듬 패스 — 점유 자체가 목적이 아니라 상대 결정 강요. 게임 구현: Short Passing + cb_bpd 전원 + 카이세도 하강(dm_dlp/Roaming).",
+   "evidence": "obs#146 (soccertutor·ACE Lab)",
+   "updated": "2026-08-11"
+  },
+  {
    "axis": "formation",
    "confidence": "MEDIUM",
    "content": "3-4-2-1 (수비 국면 백5 표기 — CCB 슬롯). 좌 윙백은 인선 공백.",
@@ -666,6 +673,13 @@
    "confidence": "MEDIUM — 개막 전 처방",
    "content": "레버쿠젠 원형의 이식 — 백3 빌드업과 윙백 폭 독점, 하프스페이스 2×10번. 25/26 첼시 전술과 무관하며(규칙 7) 26/27 처방은 블루프린트 단계다.",
    "evidence": "docs/11 · obs#37~62 · team_tactic_setups(CHE, projected 3-4-2-1)",
+   "updated": "2026-08-11"
+  },
+  {
+   "axis": "rest_defense",
+   "confidence": "MEDIUM",
+   "content": "⚠️ 구조적 약점: 박스 미드필드 중앙에서 볼 상실 시 직선 역습에 취약 — 기술 규율 요구가 극단적으로 높다. 게임 구현 시 더블피벗 중 한 명은 Defend 계열 포커스로 보험 검토.",
+   "evidence": "obs#146 (managingmadrid)",
    "updated": "2026-08-11"
   },
   {
