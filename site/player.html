@@ -15,11 +15,14 @@ import { miniGrid } from './assets/pitch.js';
 const { team } = await mountHeader('player.html');
 const [td, GS] = await Promise.all([loadTeam(team), loadGameStats('FC26')]);
 const strip = x => (x||'').normalize('NFC').replace(/\((합류확정|신규|보유)\)$/,'').replace(/^영입·/,'');
+/* 26/27 스쿼드 기준 — 이적 확정 이탈자·구시즌 전용 실측자(듀란·래시포드 등)는 제외 */
+const gone = new Set((td.departed||[]).map(strip));
+const recent = p => (p.season==null) || p.season >= '2025-26';
 const names = [...new Set([
   ...td.squad.map(q=>strip(q.label)),
-  ...td.prescriptions.filter(p=>p.kind.startsWith('measured')||p.starter).map(p=>strip(p.label)),
+  ...td.prescriptions.filter(p=>(p.kind.startsWith('measured')&&recent(p))||p.starter).map(p=>strip(p.label)),
   ...td.duties.map(d=>strip(d.label)),
-])].sort();
+])].filter(n=>!gone.has(n)).sort();
 const who = document.getElementById('who');
 who.innerHTML = names.map(n=>`<option>${n}</option>`).join('');
 who.addEventListener('change', render);

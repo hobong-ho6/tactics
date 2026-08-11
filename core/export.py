@@ -125,9 +125,12 @@ def export_all(db_path=None, window="2026-summer"):
                                FROM v_player_profile v JOIN players p ON p.id=v.player_id
                                WHERE v.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
                                      UNION SELECT player_id FROM prescriptions WHERE regime_id=?)""", (rid, rid))
+        departed = [r["label"] for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label
+            FROM transfer_outgoing o JOIN players p ON p.id=o.player_id
+            WHERE o.team_code=? AND o.likelihood='CONFIRMED'""", (code,))]
         written.append(_write(SITE_DATA / "teams" / f"{code}.json", {
             "regime": rg, "slots": slots, "squad": squad, "prescriptions": prescriptions,
-            "duties": duties, "player_stats": pstats,
+            "duties": duties, "player_stats": pstats, "departed": departed,
             "setups": setups, "profile": profile,
             "transfer": {"targets": targets, "outgoing": outgoing, "ledger": ledger}}))
 
