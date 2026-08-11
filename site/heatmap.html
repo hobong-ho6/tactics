@@ -79,7 +79,12 @@ function render(){
       const q = c[sel[s.pos]];
       let map = null;
       if (mode === 'measured') map = decodeMap(q.map25);
-      else if (q.fit_role) map = K.placed(q.fit_role, q.fit_focus, s.x);
+      else {
+        // DB fit이 비면(구 v1 이관분) 라이브 커널 최적을 산출 — B가 항상 그려진다
+        let role = q.fit_role, focus = q.fit_focus;
+        if (!role){ const bf = K.bestFit(q.map25, s.x, s.slot_type); role = bf.role; focus = bf.focus; }
+        map = K.placed(role, focus, s.x);
+      }
       if (map) decoded.push(map);
       chips.push([s.x, s.y, q.label]);
     }
