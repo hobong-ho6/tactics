@@ -1,6 +1,24 @@
 {
  "prescriptions": [
   {
+   "avg_rating": null,
+   "fit_sim": null,
+   "focus": "Defend",
+   "game_version": "FC26",
+   "kind": "fc26:opt:GK",
+   "label": "Alisson",
+   "map25": null,
+   "player_id": 43,
+   "pos_label": "GK",
+   "rationale": "⚠️ 잠정 — 이라올라 26/27 처방 부재(개막 실측 대기). 25/26 실측 최근접 역할로 임시 배치",
+   "role_id": "gk_goalkeeper",
+   "sample_n": null,
+   "season": "2026-27",
+   "starter": 1,
+   "x": null,
+   "y": null
+  },
+  {
    "avg_rating": 6.8,
    "fit_sim": null,
    "focus": "Defend",
@@ -17,6 +35,24 @@
    "starter": 0,
    "x": 50,
    "y": 11
+  },
+  {
+   "avg_rating": null,
+   "fit_sim": null,
+   "focus": "Aggressive",
+   "game_version": "FC26",
+   "kind": "fc26:opt:RCB",
+   "label": "Virgil van Dijk",
+   "map25": null,
+   "player_id": 44,
+   "pos_label": "RCB",
+   "rationale": "⚠️ 잠정 — 이라올라 26/27 처방 부재(개막 실측 대기). 25/26 실측 최근접 역할로 임시 배치",
+   "role_id": "cb_bpd",
+   "sample_n": null,
+   "season": "2026-27",
+   "starter": 1,
+   "x": null,
+   "y": null
   },
   {
    "avg_rating": 7.15,
@@ -37,6 +73,24 @@
    "y": 36
   },
   {
+   "avg_rating": null,
+   "fit_sim": null,
+   "focus": "Aggressive",
+   "game_version": "FC26",
+   "kind": "fc26:opt:LCB",
+   "label": "Ibrahima Konaté",
+   "map25": null,
+   "player_id": 45,
+   "pos_label": "LCB",
+   "rationale": "⚠️ 잠정 — 이라올라 26/27 처방 부재(개막 실측 대기). 25/26 실측 최근접 역할로 임시 배치",
+   "role_id": "cb_bpd",
+   "sample_n": null,
+   "season": "2026-27",
+   "starter": 1,
+   "x": null,
+   "y": null
+  },
+  {
    "avg_rating": 6.88,
    "fit_sim": null,
    "focus": "Aggressive",
@@ -53,6 +107,24 @@
    "starter": 0,
    "x": 66,
    "y": 35
+  },
+  {
+   "avg_rating": null,
+   "fit_sim": null,
+   "focus": "Support",
+   "game_version": "FC26",
+   "kind": "fc26:opt:RB",
+   "label": "Curtis Jones",
+   "map25": null,
+   "player_id": 46,
+   "pos_label": "RB",
+   "rationale": "⚠️ 잠정 — 이라올라 26/27 처방 부재(개막 실측 대기). 25/26 실측 최근접 역할로 임시 배치",
+   "role_id": "fb_wingback",
+   "sample_n": null,
+   "season": "2026-27",
+   "starter": 1,
+   "x": null,
+   "y": null
   },
   {
    "avg_rating": 7.05,
@@ -93,6 +165,24 @@
   {
    "avg_rating": null,
    "fit_sim": null,
+   "focus": "Support",
+   "game_version": "FC26",
+   "kind": "fc26:opt:LB",
+   "label": "Jeremie Frimpong",
+   "map25": null,
+   "player_id": 48,
+   "pos_label": "LB",
+   "rationale": "⚠️ 잠정 — 이라올라 26/27 처방 부재(개막 실측 대기). 25/26 실측 최근접 역할로 임시 배치",
+   "role_id": "fb_att_wb",
+   "sample_n": null,
+   "season": "2026-27",
+   "starter": 1,
+   "x": null,
+   "y": null
+  },
+  {
+   "avg_rating": null,
+   "fit_sim": null,
    "focus": "Attack",
    "game_version": "FC26",
    "kind": "measured",
@@ -107,6 +197,24 @@
    "starter": 0,
    "x": 86,
    "y": 58
+  },
+  {
+   "avg_rating": null,
+   "fit_sim": null,
+   "focus": "Roaming",
+   "game_version": "FC26",
+   "kind": "fc26:opt:RDM",
+   "label": "Ryan Gravenberch",
+   "map25": null,
+   "player_id": 49,
+   "pos_label": "RDM",
+   "rationale": "⚠️ 잠정 — 이라올라 26/27 처방 부재(개막 실측 대기). 25/26 실측 최근접 역할로 임시 배치",
+   "role_id": "dm_dlp",
+   "sample_n": null,
+   "season": "2026-27",
+   "starter": 1,
+   "x": null,
+   "y": null
   },
   {
    "avg_rating": 6.77,
@@ -125,6 +233,24 @@
    "starter": 0,
    "x": 50,
    "y": 49
+  },
+  {
+   "avg_rating": null,
+   "fit_sim": null,
+   "focus": "Roaming",
+   "game_version": "FC26",
+   "kind": "fc26:opt:LDM",
+   "label": "Alexis Mac Allister",
+   "map25": null,
+   "player_id": 50,
+   "pos_label": "LDM",
+   "rationale": "⚠️ 잠정 — 이라올라 26/27 처방 부재(개막 실측 대기). 25/26 실측 최근접 역할로 임시 배치",
+   "role_id": "dm_dlp",
+   "sample_n": null,
+   "season": "2026-27",
+   "starter": 1,
+   "x": null,
+   "y": null
   },
   {
    "avg_rating": 6.64,
@@ -163,6 +289,24 @@
    "y": 57
   },
   {
+   "avg_rating": null,
+   "fit_sim": null,
+   "focus": "Balanced",
+   "game_version": "FC26",
+   "kind": "fc26:opt:CAM",
+   "label": "Florian Wirtz",
+   "map25": null,
+   "player_id": 52,
+   "pos_label": "CAM",
+   "rationale": "⚠️ 잠정 — 이라올라 26/27 처방 부재(개막 실측 대기). 25/26 실측 최근접 역할로 임시 배치",
+   "role_id": "cam_halfwinger",
+   "sample_n": null,
+   "season": "2026-27",
+   "starter": 1,
+   "x": null,
+   "y": null
+  },
+  {
    "avg_rating": 7.0,
    "fit_sim": null,
    "focus": "Balanced",
@@ -179,6 +323,24 @@
    "starter": 0,
    "x": 50,
    "y": 59
+  },
+  {
+   "avg_rating": null,
+   "fit_sim": null,
+   "focus": "Balanced",
+   "game_version": "FC26",
+   "kind": "fc26:opt:RM",
+   "label": "Cody Gakpo",
+   "map25": null,
+   "player_id": 53,
+   "pos_label": "RM",
+   "rationale": "⚠️ 잠정 — 이라올라 26/27 처방 부재(개막 실측 대기). 25/26 실측 최근접 역할로 임시 배치",
+   "role_id": "wm_insidefwd",
+   "sample_n": null,
+   "season": "2026-27",
+   "starter": 1,
+   "x": null,
+   "y": null
   },
   {
    "avg_rating": 6.52,
@@ -203,6 +365,24 @@
    "fit_sim": null,
    "focus": "Attack",
    "game_version": "FC26",
+   "kind": "fc26:opt:LM",
+   "label": "Mohamed Salah",
+   "map25": null,
+   "player_id": 54,
+   "pos_label": "LM",
+   "rationale": "⚠️ 잠정 — 이라올라 26/27 처방 부재(개막 실측 대기). 25/26 실측 최근접 역할로 임시 배치",
+   "role_id": "wm_winger",
+   "sample_n": null,
+   "season": "2026-27",
+   "starter": 1,
+   "x": null,
+   "y": null
+  },
+  {
+   "avg_rating": null,
+   "fit_sim": null,
+   "focus": "Attack",
+   "game_version": "FC26",
    "kind": "measured",
    "label": "Mohamed Salah",
    "map25": "011480003X000240001100000",
@@ -218,6 +398,13 @@
   }
  ],
  "profile": [
+  {
+   "axis": "implementation",
+   "confidence": "LOW — 잠정",
+   "content": "게임 구현(잠정): 이라올라 처방이 아직 없어 25/26 실측 최근접으로 임시 배치 — 알리송 GK/Defend, 반다이크·코나테 cb_bpd, 프림퐁 인버티드 성향은 fb_att_wb로 근사, 비르츠 cam_halfwinger, 살라 wm_winger/Attack. 팀 세팅은 방향성만(High·라인 64). ⚠️ 고압박 재현은 FC26 Team Press 너프로 구조적 한계 — 개막 실측 후 전면 재산출 예정.",
+   "evidence": "LIV measured 12명 · game_system_changes(Team Press)",
+   "updated": "2026-08-11"
+  },
   {
    "axis": "philosophy",
    "confidence": "MEDIUM — 이식 검증 전",
@@ -261,6 +448,18 @@
    "line_height": null,
    "rationale": "리버풀 25/26 실측 기준선. 감독은 **아르네 슬롯 단일 체제**(38R 전부) — 2026-05-30 경질, 후임 이라올라는 2026-06-04 부임(구단 공식, 2년)이므로 이 행에 이라올라 전술은 없다. 4-2-3-1이 기본형이고 변형은 4-2-2-2(UCL vs PSG — LM/RM 소멸로 11슬롯 매핑 불가)와 무소유 4-2-4 압박 셰이프. 성적 PL 5위 60점, UCL 8강. 이라올라의 기본형도 4-2-3-1이라 26/27도 프로젝트 슬롯과 1:1 대응이 유지된다.",
    "season": "2025-26",
+   "tactic_code": null
+  },
+  {
+   "build_up_style": "Balanced",
+   "confidence": "LOW — 잠정",
+   "defensive_approach": "High",
+   "formation": "4-2-3-1",
+   "game_version": "FC26",
+   "kind": "projected",
+   "line_height": 64,
+   "rationale": "이라올라 원형(본머스 고압박) 방향성 잠정치 — 개막 실측 후 확정. FC26 Team Press 수비진영 너프로 고압박 재현 불리(게임 시스템 페이지)",
+   "season": "2026-27",
    "tactic_code": null
   }
  ],
