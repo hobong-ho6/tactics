@@ -48,7 +48,11 @@ for (const q of td.squad){
 }
 // 영입 추적 — 아직 미합류(비 CONFIRMED) 감시 대상
 const tracked = td.transfer.targets.filter(t=>!/^(DEAD|CONFIRMED)/i.test(t.likelihood||'') && t.map25);
-if (tracked.length) groups['⭐ 영입 추적'] = tracked.map(t=>({name:(t.name_kr||t.short_label||t.name), tt:t}));
+if (tracked.length){
+  const seen=new Set();
+  groups['⭐ 영입 추적'] = tracked.filter(t=>{const k=t.name; if(seen.has(k))return false; seen.add(k); return true;})
+    .map(t=>({name:(t.name_kr||t.short_label||t.name), tt:t}));
+}
 const grp = document.getElementById('grp'), who = document.getElementById('who');
 grp.innerHTML = Object.keys(groups).map(g=>`<option>${g}</option>`).join('');
 function fillWho(){
