@@ -55,6 +55,13 @@
 > transfer-watch는 3팀 체제(AVL 전체 / CHE·LIV 스캔+기록) — **오늘 21시 스케줄 런이 v2 첫 실전**.
 >
 > **다음 세션이 이어서 할 일**:
+> 0. ⭐ **08-12 슈퍼컵 수집** — `/match-watch` 실행(신설 스킬). obs#134~136 검증 포함.
+>    이후 시즌 중 주간 실행(스케줄 등록됨). 수집 전 core.classify.pos_class로 세분류.
+> 0-b. **데이터·방법론 보강 작업지시(2026-08-11 사용자 확정)**: ⑴ FBref 팀 스탯(PPDA 원료,
+>    소스 명기·팀 레벨만) ⑵ manager_profiles 11축 시드 — 5축은 docs/10~12 이관,
+>    rotation은 player_matches 파생, market은 transfer-watch 요약, set_pieces는 incidents
+>    ⑶ 약표본 3건(헤밍스·가우치·AVL 스쿼드 3명 구그리드) ⑷ 스코어 국면(@lead/@trail —
+>    match-watch §2가 원료 수집) ⑸ R축 재시도는 26/27 표본 축적 후 docs/60 양식으로.
 > 1. 21시 transfer-watch 런 결과 점검 — CHE 8455·LIV 8650 fotmob id 검증, TransferFeed
 >    CHE/LIV 슬러그 확보해 SKILL.md에 추가.
 > 2. 단계 5 잔여 — manager_profiles 11축 시드(docs/10~12에서), docs/22-fifa-to-fc 신설.
