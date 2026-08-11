@@ -21,9 +21,12 @@ document.getElementById('title').textContent =
   `${regime.manager_kr ?? regime.manager} · ${regime.team_kr}`;
 
 // FC26 설정 시트 — 팀 세팅(setups 최신 projected/optimal) + 슬롯별 게임 처방(fc26:opt)
-const su = td.setups.filter(x=>/projected|optimal$/.test(x.kind)).slice(-1)[0] ?? td.setups.slice(-1)[0];
+const su = td.setups.filter(x=>!/deprecated|reference/.test(x.kind) && /projected|optimal/.test(x.kind)).slice(-1)[0] ?? td.setups.slice(-1)[0];
 document.getElementById('teamset').innerHTML = su ? `<b>${su.formation??''}</b> · 빌드업 <b>${su.build_up_style??'—'}</b> · 수비 <b>${su.defensive_approach??'—'}</b> · 라인 <b>${su.line_height??'—'}</b> · (${su.kind}, ${su.season})` : '팀 세팅 미기록';
-const opts = td.prescriptions.filter(p=>p.kind.startsWith('fc26:opt:'));
+const all = td.prescriptions.filter(p=>p.kind.startsWith('fc26:opt:'));
+// 슬롯당 선발 1명 — v1 SQUAD_SLOTS는 선발을 첫 항목으로 뒀다. 슬롯 순서는 slots 기하 순.
+const order = td.slots.map(s2=>s2.pos);
+const opts = order.map(pos=>all.find(p=>p.pos_label===pos)).filter(Boolean);
 document.getElementById('sheet').innerHTML = '<tr><th>슬롯</th><th>선수</th><th>역할</th><th>포커스</th></tr>'+
  (opts.length ? opts.map(p=>`<tr><td><b>${p.pos_label}</b></td><td>${p.label}</td><td>${p.role_id}</td><td>${p.focus}</td></tr>`).join('')
   : '<tr><td colspan="4" class="dim">게임 처방(fc26:opt) 미기록 — 실측이 쌓이면 스쿼드 페이지의 커널 적합으로 도출한다</td></tr>');
