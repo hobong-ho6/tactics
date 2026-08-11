@@ -66,6 +66,13 @@ def export_all(db_path=None, window="2026-summer"):
                               {"game_version": gv, "roles": roles, "focus": focus,
                                "variants": variants, "tactic_params": params}))
 
+    # ── game_stats/{GV}.json — sofifa 스탯·플레이스타일 (name_kr 키, 표시 전용) ──
+    for (gv,) in con.execute("SELECT DISTINCT game_version FROM player_game_stats"):
+        gs = _rows(con, """SELECT name_kr, sofifa_id, club, positions, best_pos, age,
+                                  ovr, pot, pac, sho, pas, dri, def, phy, playstyles, role_familiarity
+                           FROM player_game_stats WHERE game_version=? ORDER BY name_kr""", (gv,))
+        written.append(_write(SITE_DATA / "game_stats" / f"{gv}.json", {g["name_kr"]: g for g in gs}))
+
     # ── teams/{CODE}.json ────────────────────────────────────────────
     for rg in regimes:
         rid, code = rg["id"], rg["team_code"]

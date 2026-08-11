@@ -10,12 +10,12 @@
 <div class="panel"><h2 id="rankTitle"></h2><table id="rank"></table></div>
 <div class="cardrow" id="cards"></div>
 <script type="module">
-import { mountHeader, loadTeam, loadKernels } from './assets/data.js';
+import { mountHeader, loadTeam, loadKernels, loadGameStats, sofifaLink, statLine } from './assets/data.js';
 import { Kernel } from './assets/kernel.js';
 import { miniGrid } from './assets/pitch.js';
 
 const { team } = await mountHeader('compare.html');
-const [td, kd] = await Promise.all([loadTeam(team), loadKernels('FC26')]);
+const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loadGameStats('FC26')]);
 const K = new Kernel(kd);
 const slots = td.slots.filter(s => s.formation === td.slots[0]?.formation);
 
@@ -50,7 +50,7 @@ function render(){
     `${slot.pos} 슬롯 적합 랭킹 (커널 x=${slot.x} · ${slot.slot_type}군 ${rows.length}명)`;
   document.getElementById('rank').innerHTML =
     `<tr><th>#</th><th>선수</th><th>적합 역할/포커스</th><th>sim</th><th>DB값</th><th>평점</th><th>근거</th></tr>` +
-    rows.map((r, i) => `<tr><td>${i+1}</td><td>${r.label} ${badge(r.lh)}</td>
+    rows.map((r, i) => `<tr><td>${i+1}</td><td>${r.label} ${badge(r.lh)} ${sofifaLink(r.label, GS)}<br><small>${statLine(r.label, GS)}</small></td>
       <td>${K.roleName[r.role] ?? r.role}/${r.focus}</td><td><b>${r.sim.toFixed(3)}</b></td>
       <td class="dim">${r.dbFit != null ? r.dbFit.toFixed(3) : '—'}</td>
       <td>${r.rate ?? '—'}</td><td class="dim">${r.note ?? ''}</td></tr>`).join('');

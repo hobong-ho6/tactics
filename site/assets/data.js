@@ -12,6 +12,22 @@ async function j(path){
 export const loadIndex   = () => j('index.json');
 export const loadTeam    = code => j(`teams/${code}.json`);
 export const loadKernels = gv => j(`kernels/${gv}.json`);
+export const loadGameStats = gv => j(`game_stats/${gv}.json`).catch(() => ({}));
+
+/* sofifa 새창 링크 — v1 SOFIFA 매핑의 후계. 라벨 접두(영입·)와 접미((합류확정) 등) 제거 후 조회 */
+export function sofifaLink(label, GS){
+  const base = label.replace(/^영입·/, '').replace(/\((합류확정|신규|보유)\)$/, '');
+  const g = GS[base];
+  const url = g?.sofifa_id ? `https://sofifa.com/player/${g.sofifa_id}`
+    : `https://sofifa.com/players?keyword=${encodeURIComponent(base)}`;
+  return `<a href="${url}" target="_blank" rel="noopener" title="sofifa에서 FC26 스탯 보기">FC26↗</a>`;
+}
+export function statLine(label, GS){
+  const g = GS[label.replace(/^영입·/, '').replace(/\((합류확정|신규|보유)\)$/, '')];
+  if (!g) return '';
+  return `OVR <b>${g.ovr ?? '—'}</b>/${g.pot ?? '—'} · ${g.best_pos ?? ''} · ` +
+    `<span class="dim">${(JSON.parse(g.playstyles || '[]') || []).slice(0, 4).join('·') || '플레이스타일 미기재'}</span>`;
+}
 
 export function currentTeam(){
   try { return localStorage.getItem('tactics_team') || 'AVL'; } catch(e){ return 'AVL'; }

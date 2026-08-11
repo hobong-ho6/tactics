@@ -8,12 +8,12 @@
 <p class="dim">적합(sim)은 커널 라이브 산출값. DB 저장값과 어긋나면 익스포트가 낡은 것 —
 <span class="mono">python3 scripts/export.py</span>를 다시 돌릴 것.</p>
 <script type="module">
-import { mountHeader, loadTeam, loadKernels } from './assets/data.js';
+import { mountHeader, loadTeam, loadKernels, loadGameStats, sofifaLink, statLine } from './assets/data.js';
 import { Kernel } from './assets/kernel.js';
 import { miniGrid } from './assets/pitch.js';
 
 const { team } = await mountHeader('squad.html');
-const [td, kd] = await Promise.all([loadTeam(team), loadKernels('FC26')]);
+const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loadGameStats('FC26')]);
 const K = new Kernel(kd);
 const slots = td.slots.filter(s => s.formation === td.slots[0]?.formation);
 
@@ -25,7 +25,7 @@ for (const s of slots){
                    .sort((a, b) => b.bf.sim - a.bf.sim);
   ranked.forEach(({ q, bf }, i) => rows.push(`<tr>
     <td>${i === 0 ? `<b>${s.pos}</b>` : ''}</td>
-    <td>${i === 0 ? '★ ' : ''}${q.label}</td>
+    <td>${i === 0 ? '★ ' : ''}${q.label} ${sofifaLink(q.label, GS)}<br><small>${statLine(q.label, GS)}</small></td>
     <td>${K.roleName[bf.role] ?? bf.role}/${bf.focus} <b>${bf.sim.toFixed(3)}</b></td>
     <td>${q.rate_v ?? '—'} <small class="dim">${q.rate_note ?? ''}</small></td>
     <td>${miniGrid(q.map25, 60)}</td>
