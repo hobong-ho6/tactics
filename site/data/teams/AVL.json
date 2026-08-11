@@ -21,6 +21,16 @@
    "source": "appearances player_id=2 ranks 1-3 (measured); tactic_observations in_possession/modulation"
   },
   {
+   "adherence": "정합(전진성은 구조가 봉인)",
+   "confidence": "정합",
+   "duties": "영상 종합: 윙어 출신 — 터프 태클+드라이브 전진 런의 공수 겸장",
+   "execution": "실측: RB, 처방은 C2 제약으로 의도적 잔류(fb_wingback/Balanced, obs#110)",
+   "game_role_implication": "유지. 공격 전환 프리셋에서 att_wb 해방 검토 여지",
+   "label": "캐시",
+   "position": "RB",
+   "source": "obs#147"
+  },
+  {
    "adherence": "HIGH — textbook match between brief and footprint; the step-out carries are measured, not just narrated.",
    "confidence": "MEDIUM-HIGH — heatmaps HIGH; top-3 bias noted.",
    "duties": "Right-side duel/aerial anchor, cover behind the advancing Cash, step out with the ball into right-centre midfield in possession, far-post set-piece threat.",
@@ -29,6 +39,16 @@
    "label": "콘사",
    "position": "RCB",
    "source": "appearances 72-74 (measured); tactic_observations defence"
+  },
+  {
+   "adherence": "강정합",
+   "confidence": "정합",
+   "duties": "영상 종합: 태클 대신 포지셔닝·요격(passive-aggressive), 패스 95%, 약점 공중볼·크로스",
+   "execution": "실측: RCB 43경기 .943",
+   "game_role_implication": "cb_bpd/Aggressive 유지. 게임 공중볼 스탯 낮음 감안(세트피스 마킹)",
+   "label": "콘사",
+   "position": "RCB",
+   "source": "obs#147"
   },
   {
    "adherence": "HIGH — progression happens by stepping UP the left-centre channel, exactly the BPD brief; never wanders off the left channel.",
@@ -151,6 +171,16 @@
    "source": "appearances player_id=12 ranks 1-3 (measured); tactic_observations modulation"
   },
   {
+   "adherence": "정합",
+   "confidence": "정합",
+   "duties": "영상 종합: 볼위닝+빌드업 겸장 — 짧은 연결과 프레스 위 클리핑 롱패스, 유의미 약점 없음",
+   "execution": "실측: 피벗 16경기 7.14",
+   "game_role_implication": "dm_holding/Defend(RDM opt) 유지",
+   "label": "카마라",
+   "position": "RDM",
+   "source": "obs#147"
+  },
+  {
    "adherence": "HIGH — carries the largest minute load at the highest average output.",
    "confidence": "HIGH — full-season API position sweep.",
    "duties": "Central No.10: link pivot to attack, arrive late in the box, carry through the middle third; press alongside Watkins out of possession (4-4-2 block).",
@@ -269,6 +299,16 @@
    "label": "가르나초",
    "position": "LM",
    "source": "obs#143"
+  },
+  {
+   "adherence": "⚠️ 방향 긴장 — 잠정",
+   "confidence": "가설 — 표본 부족",
+   "duties": "영상 종합(가설): 왼발 인버티드 — 우측 시작, 컷인 슛 개발 중, 전환·1v1 위협. 장기 프로젝트",
+   "execution": "실측: 그레미우 혼합 15경기, 커널 wm_widemid/Build-Up .833",
+   "game_role_implication": "빌라 실측 6경기+ 축적 시 wm_insidefwd 대조 재판정",
+   "label": "알리송",
+   "position": "RM",
+   "source": "obs#147"
   }
  ],
  "player_stats": [
