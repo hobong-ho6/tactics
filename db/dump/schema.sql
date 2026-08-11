@@ -221,7 +221,7 @@ CREATE TABLE prescriptions(
   role_id TEXT, focus TEXT,
   map25 TEXT,
   fit_sim REAL, sample_n INTEGER, avg_rating REAL, minutes INTEGER,
-  rationale TEXT,                   -- 근거 서술 전용 (값은 위 컬럼으로)
+  rationale TEXT, starter INTEGER DEFAULT 0,                   -- 근거 서술 전용 (값은 위 컬럼으로)
   UNIQUE(player_id, regime_id, season, game_version, kind)
 );
 CREATE TABLE squad_entries(
