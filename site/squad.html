@@ -3,7 +3,8 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css"></head><body>
 <div id="hdr"></div>
-<h1>스쿼드 · 베스트 11 <small class="dim">슬롯별 실측 최적 인선 — 평점·적합 근거 병기</small></h1>
+<h1>스쿼드 · 베스트 11 <small class="dim">슬롯별 실측 최적 인선 — 평점·적합 근거 병기 · 그리드=실측(경기 데이터), 게임 커널 히트맵은 히트맵 비교 B패널</small></h1>
+<div class="panel"><label class="kv">슬롯 <select id="posSel"><option value="">전체</option></select></label></div>
 <div class="panel"><table id="tbl"></table></div>
 <p class="dim">적합(sim)은 커널 라이브 산출값. DB 저장값과 어긋나면 익스포트가 낡은 것 —
 <span class="mono">python3 scripts/export.py</span>를 다시 돌릴 것.</p>
@@ -17,8 +18,13 @@ const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loa
 const K = new Kernel(kd);
 const slots = td.slots.filter(s => s.formation === td.slots[0]?.formation);
 
+const posSel=document.getElementById('posSel');
+posSel.innerHTML='<option value="">전체</option>'+slots.map(s2=>`<option>${s2.pos}</option>`).join('');
+posSel.addEventListener('change',build);
+function build(){
 const rows = [];
 for (const s of slots){
+  if (posSel.value && s.pos !== posSel.value) continue;
   const cs = td.squad.filter(q => q.slot_type === s.slot_type);
   if (!cs.length){ rows.push(`<tr><td>${s.pos}</td><td colspan="5" class="dim">실측 후보 없음 — 공백 슬롯</td></tr>`); continue; }
   const ranked = cs.map(q => ({ q, bf: K.bestFit(q.map25, s.x, s.slot_type) }))
@@ -33,6 +39,8 @@ for (const s of slots){
   </tr>`));
 }
 document.getElementById('tbl').innerHTML =
-  `<tr><th>슬롯</th><th>선수</th><th>커널 적합(라이브)</th><th>평점</th><th>그리드</th><th>DB 저장값</th></tr>`
+  `<tr><th>슬롯</th><th>선수</th><th>커널 적합(라이브)</th><th>평점</th><th>실측 그리드</th><th>DB 저장값</th></tr>`
   + rows.join('');
+}
+build();
 </script></body></html>
