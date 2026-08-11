@@ -20,6 +20,8 @@ description: 시즌 중 주간 경기 데이터 수집 — 3팀(AVL·CHE·LIV) �
 - 라인업 API로 45분+ 출전자 목록 → `core.sofascore.js_collect()` 스니펫으로 일괄 수집
   → `parse_collected()` → `player_matches` INSERT (source·confidence 필수).
 - 신입 선수는 `players`에 승격(sofascore_id 컬럼) 후 적재.
+- ⭐ **신규 선수는 영상·서사 분석 필수** (docs/30 「영상·서사 소스 절차」): 스카우트 리포트
+  수집 → player_duties 가설 기록 → 실측 교차검증 → obs 판정. CHE/LIV 포함 전 팀 공통.
 - **pos_class 분류 필수**: `core.classify.pos_class(avg_x, avg_y, lineup_pos)` —
   lineup_pos(G/D/M/F)만으로는 포지션-순수 집계가 안 된다 (2026-08-11 방법론 보강).
 - **스코어 국면**: 같은 오리진에서 `/api/v1/event/<eid>/incidents`로 득점 시각을 받아

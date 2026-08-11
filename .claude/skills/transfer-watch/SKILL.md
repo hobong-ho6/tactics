@@ -200,10 +200,12 @@ docs/20-fc-game-system.md의 영입 후보 파이프라인 그대로:
      > 소수점 3자리까지 그대로 재현됐다 — 커널 교체의 영향은 wide 역할(RM/LM)에만 있었다.
      > 파이썬으로 `decodeMap`/`placedMap`/`cmpCos`를 재현해 검증해도 되고(브라우저 불필요),
      > 툴 함수를 브라우저에서 직접 호출해도 된다.
-4. `transfer_targets`에 INSERT OR REPLACE (team_code=해당 팀, window='2026-summer', 근거 URL·등급·캐비앗 +
+4. ⭐ 영상·서사 분석 병행 (docs/30 「영상·서사 소스 절차」) — MEDIUM-HIGH 이상 후보는
+   스카우트 리포트를 수집해 duties 가설 기록 + 실측 교차검증.
+5. `transfer_targets`에 INSERT OR REPLACE (team_code=해당 팀, window='2026-summer', 근거 URL·등급·캐비앗 +
    **`short_label` 필수** — 툴에 쓸 짧은 한글/영문 이름, 예: `Matías Soulé` → `소울레`).
    실측상 부적합 슬롯(예: 적합도 <0.4)은 애초에 그 슬롯 행을 만들지 않는 것으로 대신한다.
-5. **페이지는 손으로 고치지 않는다.** DB 갱신 후 `python3 scripts/export.py`가
+6. **페이지는 손으로 고치지 않는다.** DB 갱신 후 `python3 scripts/export.py`가
    site/data/*.json을 재생성한다(게이트 자동 강제). 이적 페이지는 site/transfer.html.
 
 ## 4. 상태 변화 처리
