@@ -24,9 +24,11 @@ ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "data" / "avl_analysis.db"
 HTML = ROOT / "fc26-heatmap.html"
 WINDOW = "2026-summer"
-# 분석 주체 팀 (2026-07-30 팀 축 도입). 이 스크립트가 채우는 AUTOGEN 블록은 빌라 UI 전용이므로
-# 첼시/리버풀 행이 섞여 들어가지 않도록 모든 쿼리를 이 값으로 필터한다. teams.code 참조.
-TEAM = "AVL"
+# 팀 축 (2026-07-30 도입 → 2026-08-11 UI까지 일반화). 종전에는 TEAM="AVL" 단일 값으로
+# 필터해 빌라 행만 툴에 실었고, 그래서 첼시·리버풀 행은 warn_dropped_teams()가 경고만 하고
+# 버려졌다. 이제 팀별 블록(`*_BY_TEAM`)을 생성하므로 세 팀이 같은 형태로 실린다.
+TEAM = "AVL"          # 하위호환용 기본 팀 (프리뷰·로그 표기)
+TEAM_CODES = ["AVL", "CHE", "LIV"]
 
 
 def js_obj(fields):
@@ -36,7 +38,18 @@ def js_obj(fields):
     return "{" + ",".join(parts) + "}"
 
 
-def gen_transfer_targets(conn):
+def by_team_block(varname, per_team):
+    """{AVL:[...],CHE:[...],LIV:[...]} 형태의 팀별 블록을 만든다.
+    per_team: team -> (list[str] 항목 리터럴). 빈 팀도 키는 남긴다(접근자 분기 단순화)."""
+    chunks = []
+    for code in TEAM_CODES:
+        items = per_team.get(code, [])
+        body = "\n".join(items)
+        chunks.append(f" {code}:[\n{body}\n ],")
+    return f"const {varname}_BY_TEAM={{\n" + "\n".join(chunks) + "\n};"
+
+
+def gen_transfer_targets(conn, TEAM):
     rows = conn.execute(
         """SELECT name,name_kr,slot,club,position,likelihood,confidence,
                   fit_sim,opt_role,opt_focus,fit_role,fit_focus,source,
@@ -72,10 +85,10 @@ def gen_transfer_targets(conn):
             }
         )
         lines.append(obj + ",")
-    return "const TRANSFER_TARGETS=[\n" + "\n".join(lines) + "\n];", len(rows)
+    return lines
 
 
-def gen_transfer_outgoing(conn):
+def gen_transfer_outgoing(conn, TEAM):
     rows = conn.execute(
         """SELECT p.name,t.dest_club,t.likelihood,t.confidence,t.source,t.last_news_date
            FROM transfer_outgoing t JOIN players p ON p.id=t.player_id
@@ -96,10 +109,10 @@ def gen_transfer_outgoing(conn):
             }
         )
         lines.append(obj + ",")
-    return "const TRANSFER_OUTGOING=[\n" + "\n".join(lines) + "\n];", len(rows)
+    return lines
 
 
-def gen_transfer_ledger(conn):
+def gen_transfer_ledger(conn, TEAM):
     rows = conn.execute(
         """SELECT kind,label,amount_m,note,confidence
            FROM transfer_ledger WHERE team=? AND window=?
@@ -119,10 +132,10 @@ def gen_transfer_ledger(conn):
             }
         )
         lines.append(obj + ",")
-    return "const TRANSFER_LEDGER=[\n" + "\n".join(lines) + "\n];", len(rows)
+    return lines
 
 
-def gen_xi_owned(conn):
+def gen_xi_owned(conn, TEAM):
     """보유 선수의 포지션별 Best-11 엔트리 — squad_positions 단일 소스.
     다포지션 선수(맥긴 WM+DM, 부엔디아 WM+CAM, 보가르드 DM+FB)는 여러 행으로 나온다."""
     rows = conn.execute(
@@ -142,7 +155,7 @@ def gen_xi_owned(conn):
             }
         )
         lines.append(obj + ",")
-    return "const XI_OWNED=[\n" + "\n".join(lines) + "\n];", len(rows)
+    return lines
 
 
 def gen_role_kernels(conn):
@@ -214,25 +227,25 @@ def gen_role_variants(conn):
     return "const ROLE_VARIANTS = {\n" + "\n".join(lines) + "\n};", len(rows)
 
 
-def warn_dropped_teams(conn):
-    """다른 팀 행이 생겼는데 조용히 UI에서 빠지는 것을 막는다.
+def warn_unknown_teams(conn):
+    """TEAM_CODES에 없는 팀 코드가 DB에 생기면 조용히 누락되므로 경고한다.
 
-    이 스크립트의 AUTOGEN 블록은 빌라 UI 전용이라 모든 쿼리가 TEAM으로 필터된다.
-    첼시·리버풀 이적 데이터를 넣는 날, 아무 경고 없이 누락되면 "DB에는 있는데 툴에는
-    없는" 상태를 눈치채기 어렵다 — 그때 이 경고가 마커 추가 작업을 상기시킨다.
-    (마커를 미리 만들어 두지 않는 이유: 대응 블록이 HTML에 없으면 replace_block이
-     sys.exit 한다. 실제 데이터가 생길 때 HTML 블록과 함께 추가할 것.)"""
-    dropped = []
+    2026-08-11 이전에는 이 함수가 `warn_dropped_teams`였고 "AVL 외 팀은 전부 UI에서
+    제외됨"을 알렸다 — 그때는 AUTOGEN 블록이 빌라 전용이었기 때문이다. 이제 세 팀을
+    모두 싣기 때문에, 남은 위험은 **네 번째 팀 코드**가 등장하는 경우뿐이다."""
+    unknown = []
     for table in ("transfer_targets", "transfer_outgoing", "transfer_ledger", "squad_positions"):
+        ph = ",".join("?" * len(TEAM_CODES))
         for team, n in conn.execute(
-            f"SELECT team, COUNT(*) FROM {table} WHERE team!=? GROUP BY team", (TEAM,)
+            f"SELECT team, COUNT(*) FROM {table} WHERE team NOT IN ({ph}) GROUP BY team",
+            TEAM_CODES,
         ).fetchall():
-            dropped.append(f"{table}:{team}={n}")
-    if dropped:
+            unknown.append(f"{table}:{team}={n}")
+    if unknown:
         print(
-            f"⚠️  {TEAM} 외 팀 행이 UI에서 제외됨 — {', '.join(dropped)}. "
-            f"툴에 노출하려면 해당 팀 AUTOGEN 마커를 fc26-heatmap.html에 추가하고 "
-            f"이 스크립트에 생성 루프를 넣을 것 (docs/40-pipeline.md).",
+            f"⚠️  TEAM_CODES에 없는 팀 행이 UI에서 제외됨 — {', '.join(unknown)}. "
+            f"이 스크립트의 TEAM_CODES와 fc26-heatmap.html의 TEAMS 레지스트리에 "
+            f"해당 코드를 추가할 것 (docs/40-pipeline.md).",
             file=sys.stderr,
         )
 
@@ -251,17 +264,19 @@ def main():
     conn = sqlite3.connect(DB)
     conn.row_factory = sqlite3.Row
     html = HTML.read_text(encoding="utf-8")
-    warn_dropped_teams(conn)
-    targets_body, n_targets = gen_transfer_targets(conn)
-    outgoing_body, n_outgoing = gen_transfer_outgoing(conn)
-    ledger_body, n_ledger = gen_transfer_ledger(conn)
-    owned_body, n_owned = gen_xi_owned(conn)
+    warn_unknown_teams(conn)
     kernels_body, n_kernels = gen_role_kernels(conn)
     variants_body, n_variants = gen_role_variants(conn)
-    html = replace_block(html, "TRANSFER_TARGETS", targets_body)
-    html = replace_block(html, "TRANSFER_OUTGOING", outgoing_body)
-    html = replace_block(html, "TRANSFER_LEDGER", ledger_body)
-    html = replace_block(html, "XI_OWNED", owned_body)
+
+    # 팀별 블록 4종 — 세 팀을 모두 싣는다(빈 팀도 키는 남긴다).
+    counts = {}
+    for marker, fn in (("TRANSFER_TARGETS", gen_transfer_targets),
+                       ("TRANSFER_OUTGOING", gen_transfer_outgoing),
+                       ("TRANSFER_LEDGER", gen_transfer_ledger),
+                       ("XI_OWNED", gen_xi_owned)):
+        per_team = {code: fn(conn, code) for code in TEAM_CODES}
+        counts[marker] = {c: len(v) for c, v in per_team.items()}
+        html = replace_block(html, marker, by_team_block(marker, per_team))
     html = replace_block(html, "MAPS", kernels_body)
     html = replace_block(html, "ROLE_VARIANTS", variants_body)
     HTML.write_text(html, encoding="utf-8")
@@ -274,7 +289,9 @@ def main():
     if mirror.is_dir():
         shutil.copy2(HTML, mirror / HTML.name)
         print(f"mirrored → {mirror / HTML.name}")
-    print(f"synced {n_targets} TRANSFER_TARGETS + {n_outgoing} TRANSFER_OUTGOING + {n_ledger} TRANSFER_LEDGER + {n_owned} XI_OWNED + {n_kernels} MAPS + {n_variants} ROLE_VARIANTS rows into {HTML.name}")
+    summary = " + ".join(
+        f"{m} " + "/".join(f"{c}:{counts[m][c]}" for c in TEAM_CODES) for m in counts)
+    print(f"synced {summary} + {n_kernels} MAPS + {n_variants} ROLE_VARIANTS into {HTML.name}")
 
 
 if __name__ == "__main__":
