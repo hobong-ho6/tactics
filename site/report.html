@@ -23,17 +23,33 @@ document.getElementById('title').textContent =
 const su = td.setups.filter(x=>!/deprecated|reference/.test(x.kind) && /projected|optimal/.test(x.kind)).slice(-1)[0] ?? td.setups.slice(-1)[0];
 document.getElementById('teamset').innerHTML = su ? `<b>${su.formation??''}</b> · 빌드업 <b>${su.build_up_style??'—'}</b> · 수비 <b>${su.defensive_approach??'—'}</b> · 라인 <b>${su.line_height??'—'}</b> · (${su.kind}, ${su.season})` : '팀 세팅 미기록';
 const all = td.prescriptions.filter(p=>p.kind.startsWith('fc26:opt:'));
-// 슬롯당 선발 1명 — v1 SQUAD_SLOTS는 선발을 첫 항목으로 뒀다. 슬롯 순서는 slots 기하 순.
 const order = td.slots.map(s2=>s2.pos);
-const opts = order.map(pos=>all.find(p=>p.pos_label===pos && p.starter) ?? all.find(p=>p.pos_label===pos)).filter(Boolean);
-// FC26 팀전술 화면형 피치 배치 — slots 기하(x=좌우, y=0 자기골문)로 칩을 놓는다
 const geo = Object.fromEntries(td.slots.map(s2=>[s2.pos,s2]));
-document.getElementById('pitch2').innerHTML =
- '<div class="tacpitch">' + opts.map(p=>{
-   const g = geo[p.pos_label]; if(!g) return '';
-   return `<div class="tchip" style="left:${g.x}%;bottom:${Math.max(4,g.y*0.92+4)}%">
-     <b>${p.label}</b><span>${p.pos_label}</span><small>${p.role_id}<br>${p.focus}</small></div>`;
- }).join('') + '</div>';
+const byPos = Object.fromEntries(order.map(pos=>[pos, all.filter(p=>p.pos_label===pos)]));
+const chosen = Object.fromEntries(order.map(pos=>{
+  const c = byPos[pos]; if(!c.length) return [pos,-1];
+  const i = c.findIndex(p=>p.starter); return [pos, i<0?0:i];
+}));
+function drawSheet(){
+  const opts = order.map(pos=>byPos[pos][chosen[pos]]).filter(Boolean);
+  document.getElementById('pitch2').innerHTML =
+   '<div class="tacpitch">' + opts.map(p=>{
+     const g = geo[p.pos_label]; if(!g) return '';
+     return `<div class="tchip" style="left:${g.x}%;bottom:${Math.max(4,g.y*0.92+4)}%">
+       <b>${p.label}</b><span>${p.pos_label}</span><small>${p.role_id}<br>${p.focus}</small></div>`;
+   }).join('') + '</div>';
+  document.getElementById('sheet').innerHTML = '<tr><th>슬롯</th><th>선수 (교체 가능)</th><th>역할</th><th>포커스</th></tr>'+
+   (all.length ? order.map(pos=>{
+     const c = byPos[pos]; if(!c.length) return `<tr><td><b>${pos}</b></td><td colspan="3" class="dim">인선 공백</td></tr>`;
+     const p = c[chosen[pos]];
+     const sel = c.length>1 ? `<select data-pos="${pos}">${c.map((q,i)=>`<option value="${i}" ${i===chosen[pos]?'selected':''}>${q.label}${q.starter?' ★':''}</option>`).join('')}</select>` : p.label;
+     return `<tr><td><b>${pos}</b></td><td>${sel}</td><td>${p.role_id}</td><td>${p.focus}</td></tr>`;
+   }).join('') : '<tr><td colspan="4" class="dim">게임 처방(fc26:opt) 미기록</td></tr>');
+  document.querySelectorAll('#sheet select').forEach(el=>el.addEventListener('change',()=>{
+    chosen[el.dataset.pos]=+el.value; drawSheet();
+  }));
+}
+drawSheet();
 document.getElementById('sheet').innerHTML = '<tr><th>슬롯</th><th>선수</th><th>역할</th><th>포커스</th></tr>'+
  (opts.length ? opts.map(p=>`<tr><td><b>${p.pos_label}</b></td><td>${p.label}</td><td>${p.role_id}</td><td>${p.focus}</td></tr>`).join('')
   : '<tr><td colspan="4" class="dim">게임 처방(fc26:opt) 미기록 — 실측이 쌓이면 스쿼드 페이지의 커널 적합으로 도출한다</td></tr>');
