@@ -1,0 +1,2467 @@
+{
+ "focus": [
+  {
+   "description": "When asked to Attack, the Classic 10 will maintain their position in the pocket behind the forward line, operating as the team's chief creative force.",
+   "ea_role_name": "Classic 10",
+   "equal": "[\"Limited Versatility\"]",
+   "focus": "Attack",
+   "kernel25": "0000006X60000000000000000",
+   "negative": "[\"Lacks Mobility\"]",
+   "plus": "[\"Supports Attacks\", \"Creative\"]",
+   "role_id": "cam_classic10"
+  },
+  {
+   "description": "When set to Versatile, the Classic 10 will use their best judgement when determining if they should stay central or use the pitch's width during attacks.",
+   "ea_role_name": "Classic 10",
+   "equal": "[\"Supports Attacks\"]",
+   "focus": "Versatile",
+   "kernel25": "0000066X66000000000000000",
+   "negative": "[\"Out of Position\"]",
+   "plus": "[\"Dynamic Width\", \"Creative\"]",
+   "role_id": "cam_classic10"
+  },
+  {
+   "description": "When set to Wide, the Classic 10 is able to drift out to the wing, and dictate attacks from anywhere across the width of the pitch.",
+   "ea_role_name": "Classic 10",
+   "equal": "[\"Wide Support\"]",
+   "focus": "Wide",
+   "kernel25": "0000036X63000000000000000",
+   "negative": "[\"Supports the Defence\"]",
+   "plus": "[\"Supports Attacks\", \"Creative\"]",
+   "role_id": "cam_classic10"
+  },
+  {
+   "description": "When set to Attack, the Half Winger can advance freely, sacrificing defensive responsibilities.",
+   "ea_role_name": "Half-Winger",
+   "equal": "[\"Out of Position\"]",
+   "focus": "Attack",
+   "kernel25": "6000633333000000000000000",
+   "negative": "[\"Defence Support\"]",
+   "plus": "[\"Wide Support\", \"Attacking\"]",
+   "role_id": "cam_halfwinger"
+  },
+  {
+   "description": "When Balanced, the Half Winger will alternate equally between attacking and defending in a measured way.",
+   "ea_role_name": "Half-Winger",
+   "equal": "[\"Movement\"]",
+   "focus": "Balanced",
+   "kernel25": "3000363336300030000000000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Wide Support\", \"Versatile\"]",
+   "role_id": "cam_halfwinger"
+  },
+  {
+   "description": "When set to Roaming, this attacking Half-Winger will freely alternate the side on which they attack, even during plays.",
+   "ea_role_name": "Half-Winger",
+   "equal": "[\"Wide Support\"]",
+   "focus": "Roaming",
+   "kernel25": "X000X66366000000000000000",
+   "negative": "[\"Out of Position\"]",
+   "plus": "[\"Dynamic Side\", \"Attacking\"]",
+   "role_id": "cam_halfwinger"
+  },
+  {
+   "description": "When asked to be Balanced, the Playmaker will offer defensive support when needed, as well as orchestrating attacks.",
+   "ea_role_name": "Playmaker",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Balanced",
+   "kernel25": "0030006X60006000000000000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Creative\", \"Versatile\"]",
+   "role_id": "cam_playmaker"
+  },
+  {
+   "description": "With Build-Up, the Playmaker is asked to drop deeper to get the ball, and orchestrate an attack.",
+   "ea_role_name": "Playmaker",
+   "equal": "[\"Movement\"]",
+   "focus": "Build-Up",
+   "kernel25": "0000003X30036300030000000",
+   "negative": "[\"Supports Attacks\"]",
+   "plus": "[\"Creative\", \"Build-Up Support\"]",
+   "role_id": "cam_playmaker"
+  },
+  {
+   "description": "When set to Roaming, the Playmaker will have freedom to explore the pitch to find the best spaces to support attacks.",
+   "ea_role_name": "Playmaker",
+   "equal": "[\"Out of Position\"]",
+   "focus": "Roaming",
+   "kernel25": "0333006X60033300000000000",
+   "negative": "[\"Supports the Defence\"]",
+   "plus": "[\"Creative\", \"Movement\"]",
+   "role_id": "cam_playmaker"
+  },
+  {
+   "description": "When set to Attack, the Shadow Striker will focus on making late runs into the box, filling the space behind the striker.",
+   "ea_role_name": "Shadow Striker",
+   "equal": "[\"Stamina Usage\"]",
+   "focus": "Attack",
+   "kernel25": "06X6000X00000000000000000",
+   "negative": "[\"Defence Support\"]",
+   "plus": "[\"Attacking Runs\", \"Support Centrally\"]",
+   "role_id": "cam_shadow"
+  },
+  {
+   "description": "When asked to be Aggressive, the Ball-Playing Defender will focus on intercepting passes and closing down opponents.",
+   "ea_role_name": "Ball-Playing Defender",
+   "equal": "[\"Build-Up Support\"]",
+   "focus": "Aggressive",
+   "kernel25": "00000000000363006X6003630",
+   "negative": "[\"Leaves Gaps\"]",
+   "plus": "[\"Pressure\", \"Aggressiveness\"]",
+   "role_id": "cb_bpd"
+  },
+  {
+   "description": "The Build-Up focus moves the Ball-playing Defender into more of a holding defensive midfielder during possession.",
+   "ea_role_name": "Ball-Playing Defender",
+   "equal": "[\"Versatile\"]",
+   "focus": "Build-Up",
+   "kernel25": "00000000000030006X6006X60",
+   "negative": "[\"Out of Position\"]",
+   "plus": "[\"Build-Up Support\", \"Defence Support\"]",
+   "role_id": "cb_bpd"
+  },
+  {
+   "description": "When set to Defend, the Ball-playing Defender will step up a little to support teammates during possession.",
+   "ea_role_name": "Ball-Playing Defender",
+   "equal": "[\"Stays Back\"]",
+   "focus": "Defend",
+   "kernel25": "0000000000000000363006X60",
+   "negative": "[\"Leave Gaps\"]",
+   "plus": "[\"Defending\", \"Build-Up Support\"]",
+   "role_id": "cb_bpd"
+  },
+  {
+   "description": "With a Balanced focus, the Defender will step up to close down attackers when needed.",
+   "ea_role_name": "Defender",
+   "equal": "[\"Limited Versatility\"]",
+   "focus": "Balanced",
+   "kernel25": "0000000000000000333006X60",
+   "negative": "[\"Limited Width\"]",
+   "plus": "[\"Defending\", \"Stays Back\"]",
+   "role_id": "cb_defender"
+  },
+  {
+   "description": "When asked to Defend, the Defender will focus only on their defensive responsibilities.",
+   "ea_role_name": "Defender",
+   "equal": "[\"Limited Versatility\"]",
+   "focus": "Defend",
+   "kernel25": "0000000000000000000006X60",
+   "negative": "[\"Pass Option\"]",
+   "plus": "[\"Stays Back\", \"Defending\"]",
+   "role_id": "cb_defender"
+  },
+  {
+   "description": "When asked to be Aggressive, the Stopper will push up into the base of midfield to intercept passes and close down attackers.",
+   "ea_role_name": "Stopper",
+   "equal": "[\"Defence Support\"]",
+   "focus": "Aggressive",
+   "kernel25": "00000000000030006X6000X00",
+   "negative": "[\"Leaves Gaps\"]",
+   "plus": "[\"Pressure\", \"Aggressiveness\"]",
+   "role_id": "cb_stopper"
+  },
+  {
+   "description": "With a Balanced focus, the Stopper will intercept passes and pressure attackers receiving the ball.",
+   "ea_role_name": "Stopper",
+   "equal": "[\"Aggressiveness\"]",
+   "focus": "Balanced",
+   "kernel25": "0000000000000000666003X30",
+   "negative": "[\"Leave Gaps\"]",
+   "plus": "[\"Defending\", \"Pressure\"]",
+   "role_id": "cb_stopper"
+  },
+  {
+   "description": "With an Aggressive focus, the Wide Back will also close down opponents and intercept passes during the defensive phase.",
+   "ea_role_name": "Wide Back",
+   "equal": "[\"Defending\"]",
+   "focus": "Aggressive",
+   "kernel25": "0000000000000003303363X36",
+   "negative": "[\"Leaves Gaps\"]",
+   "plus": "[\"Cover Side\", \"Aggressiveness\"]",
+   "role_id": "cb_wideback"
+  },
+  {
+   "description": "With a Defend focus, the Wide Back will cover for the fullbacks in all phases but stay close to the defensive line.",
+   "ea_role_name": "Wide Back",
+   "equal": "[\"Defending\"]",
+   "focus": "Defend",
+   "kernel25": "0000000000000000000063X36",
+   "negative": "[\"Limited Versatility\"]",
+   "plus": "[\"Cover Side\", \"Stays Back\"]",
+   "role_id": "cb_wideback"
+  },
+  {
+   "description": "With a Support focus, the Wide Back will move up the side of the pitch to a pass option when their team needs to release pressure.",
+   "ea_role_name": "Wide Back",
+   "equal": "[\"Defending\"]",
+   "focus": "Support",
+   "kernel25": "0000000000300036000663X36",
+   "negative": "[\"Out of Position\"]",
+   "plus": "[\"Cover Side\", \"Build-Up Support\"]",
+   "role_id": "cb_wideback"
+  },
+  {
+   "description": "When asked to be Balanced, the Box-to-box Midfielder will cover the centre of the pitch in attack and defence.",
+   "ea_role_name": "Box-To-Box",
+   "equal": "[\"Versatile\"]",
+   "focus": "Balanced",
+   "kernel25": "0030000X0003X3000X0000300",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Attack Support\", \"Defence Support\"]",
+   "role_id": "cm_b2b"
+  },
+  {
+   "description": "When asked to be Ball-Winning, the Box-to-Box Midfielder will focus on recovering the ball while providing central support in attack and defence.",
+   "ea_role_name": "Box-To-Box",
+   "equal": "[\"Support Centrally\"]",
+   "focus": "Ball-Winning",
+   "kernel25": "0030003X3003X3003X3000300",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Aggressiveness\", \"Supports Play\"]",
+   "role_id": "cm_b2b"
+  },
+  {
+   "description": "When set to Build-Up, the Deep-lying Playmaker will move forward and offer a passing option to support attacks.",
+   "ea_role_name": "Deep-Lying Playmaker",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Build-Up",
+   "kernel25": "000000030006X600060000000",
+   "negative": "[\"Supports the Defence\"]",
+   "plus": "[\"Creative\", \"Versatile\"]",
+   "role_id": "cm_dlp"
+  },
+  {
+   "description": "With a Defend focus, the Deep-lying Playmaker will focus on closing down passing lanes and staying back while their team attacks.",
+   "ea_role_name": "Deep-Lying Playmaker",
+   "equal": "[\"Intercepts Passes\"]",
+   "focus": "Defend",
+   "kernel25": "000000000003X300030000000",
+   "negative": "[\"Attacking\"]",
+   "plus": "[\"Defending\", \"Creative\"]",
+   "role_id": "cm_dlp"
+  },
+  {
+   "description": "When set to Attack, the Half Winger can advance freely, sacrificing defensive responsibilities.",
+   "ea_role_name": "Half-Winger",
+   "equal": "[\"Out of Position\"]",
+   "focus": "Attack",
+   "kernel25": "3000360006633360000000000",
+   "negative": "[\"Defence Support\"]",
+   "plus": "[\"Wide Support\", \"Attacking\"]",
+   "role_id": "cm_halfwinger"
+  },
+  {
+   "description": "When Balanced, the Half Winger will alternate equally between attacking and defending in a measured way.",
+   "ea_role_name": "Half-Winger",
+   "equal": "[\"Movement\"]",
+   "focus": "Balanced",
+   "kernel25": "0000060006633363000300000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Wide Support\", \"Versatile\"]",
+   "role_id": "cm_halfwinger"
+  },
+  {
+   "description": "When set to Support, the Half-Winger will focus on supporting the play instead of simply attacking or defending.",
+   "ea_role_name": "Half-Winger",
+   "equal": "[\"Versatile\"]",
+   "focus": "Support",
+   "kernel25": "0000063036633363000300000",
+   "negative": "[\"Out of Position\"]",
+   "plus": "[\"Wide Support\", \"Supports Play\"]",
+   "role_id": "cm_halfwinger"
+  },
+  {
+   "description": "The Ball-Winning focus tasks the Holding Midfielder with aggressively intercepting passing as part of their defensive focus.",
+   "ea_role_name": "Holding",
+   "equal": "[\"Limited Versatility\"]",
+   "focus": "Ball-Winning",
+   "kernel25": "000000000006X600060000000",
+   "negative": "[\"Pass Option\"]",
+   "plus": "[\"Defending\", \"Aggressiveness\"]",
+   "role_id": "cm_holding"
+  },
+  {
+   "description": "When instructed to Defend, the Holding Midfielder will move slightly higher to offer a passing option, but will otherwise focus on defending.",
+   "ea_role_name": "Holding",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Defend",
+   "kernel25": "000000000006X600363000000",
+   "negative": "[\"Lacks Mobility\"]",
+   "plus": "[\"Defending\", \"Stays Back\"]",
+   "role_id": "cm_holding"
+  },
+  {
+   "description": "When set to Attack, the Playmaker will move forward to support attacks higher up on the field.",
+   "ea_role_name": "Playmaker",
+   "equal": "[\"Limited Width\"]",
+   "focus": "Attack",
+   "kernel25": "000000363003X300000000000",
+   "negative": "[\"Defence Support\"]",
+   "plus": "[\"Creative\", \"Attack Support\"]",
+   "role_id": "cm_playmaker"
+  },
+  {
+   "description": "When set to Roaming, the Playmaker will have freedom to explore the pitch to find the best spaces to support attacks.",
+   "ea_role_name": "Playmaker",
+   "equal": "[\"Out of Position\"]",
+   "focus": "Roaming",
+   "kernel25": "000003666336X630000000000",
+   "negative": "[\"Defence Support\"]",
+   "plus": "[\"Creative\", \"Movement\"]",
+   "role_id": "cm_playmaker"
+  },
+  {
+   "description": "When asked to be Balanced, the Box Crasher will balance their responsibilities between defence and offence.",
+   "ea_role_name": "Box Crasher",
+   "equal": "[\"Out of Position\"]",
+   "focus": "Balanced",
+   "kernel25": "003000060000X0003X3000000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Attacking Runs\", \"Versatile\"]",
+   "role_id": "dm_boxcrasher"
+  },
+  {
+   "description": "When set to Defend, the Centre Half will focus on their defensive duties.",
+   "ea_role_name": "Centre-Half",
+   "equal": "[\"Limited Versatility\"]",
+   "focus": "Defend",
+   "kernel25": "00000000000000003X3003X30",
+   "negative": "[\"Wide Support\"]",
+   "plus": "[\"Defending\", \"Support Centrally\"]",
+   "role_id": "dm_centrehalf"
+  },
+  {
+   "description": "When set to Build-Up, the Deep-lying Playmaker will move forward and offer a passing option to support attacks.",
+   "ea_role_name": "Deep-Lying Playmaker",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Build-Up",
+   "kernel25": "000000030003X3003X3000000",
+   "negative": "[\"Supports the Defence\"]",
+   "plus": "[\"Creative\", \"Versatile\"]",
+   "role_id": "dm_dlp"
+  },
+  {
+   "description": "With a Defend focus, the Deep-lying Playmaker will focus on closing down passing lanes and staying back while their team attacks.",
+   "ea_role_name": "Deep-Lying Playmaker",
+   "equal": "[\"Intercepts Passes\"]",
+   "focus": "Defend",
+   "kernel25": "00000000000333003X3000000",
+   "negative": "[\"Attacking\"]",
+   "plus": "[\"Defending\", \"Creative\"]",
+   "role_id": "dm_dlp"
+  },
+  {
+   "description": "The Roaming focus allows the Deep-lying Playmaker to move across the width of the pitch to support attacks.",
+   "ea_role_name": "Deep-Lying Playmaker",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Roaming",
+   "kernel25": "0000003330066600363000000",
+   "negative": "[\"Out of Position\"]",
+   "plus": "[\"Creative\", \"Movement\"]",
+   "role_id": "dm_dlp"
+  },
+  {
+   "description": "The Ball-Winning focus tasks the Holding Midfielder with aggressively intercepting passing as part of their defensive focus.",
+   "ea_role_name": "Holding",
+   "equal": "[\"Limited Versatility\"]",
+   "focus": "Ball-Winning",
+   "kernel25": "00000000000000006X6000300",
+   "negative": "[\"Pass Option\"]",
+   "plus": "[\"Defending\", \"Aggressiveness\"]",
+   "role_id": "dm_holding"
+  },
+  {
+   "description": "When instructed to Defend, the Holding Midfielder will move slightly higher to offer a passing option, but will otherwise focus on defending.",
+   "ea_role_name": "Holding",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Defend",
+   "kernel25": "00000000000030003X3000300",
+   "negative": "[\"Lacks Mobility\"]",
+   "plus": "[\"Defending\", \"Stays Back\"]",
+   "role_id": "dm_holding"
+  },
+  {
+   "description": "When set to Roaming, the Holding Midfielder will move across the width of the pitch to close passing lanes, and step up to press attackers.",
+   "ea_role_name": "Holding",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Roaming",
+   "kernel25": "0000000000033306XXX600000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Defending\", \"Movement\"]",
+   "role_id": "dm_holding"
+  },
+  {
+   "description": "When set to Build-Up, the Wide Half can move into the Wingback position, and forward into Wide Midfielder territory, when their team is in possession.",
+   "ea_role_name": "Wide Half",
+   "equal": "[\"Supports the Defence\"]",
+   "focus": "Build-Up",
+   "kernel25": "0000000000300036363600000",
+   "negative": "[\"Supports Centrally\"]",
+   "plus": "[\"Pass Option\", \"Wide Support\"]",
+   "role_id": "dm_widehalf"
+  },
+  {
+   "description": "When instructed to Defend, the Wide Half can drop into Fullback and Wingback positions while their team has the ball.",
+   "ea_role_name": "Wide Half",
+   "equal": "[\"Stays Back\"]",
+   "focus": "Defend",
+   "kernel25": "0000000000000006363630003",
+   "negative": "[\"Supports Centrally\"]",
+   "plus": "[\"Defending\", \"Wide Support\"]",
+   "role_id": "dm_widehalf"
+  },
+  {
+   "description": "When asked to Attack, the Attacking Wingback will push even higher up the pitch, and perform fewer defensive duties.",
+   "ea_role_name": "Attacking Wingback",
+   "equal": "[\"Out of Position\"]",
+   "focus": "Attack",
+   "kernel25": "X000060000300003000030000",
+   "negative": "[\"Defending\"]",
+   "plus": "[\"Attacking\", \"Wide Support\"]",
+   "role_id": "fb_att_wb"
+  },
+  {
+   "description": "When asked to Support, the Attacking Wingback will rarely sprint back to defend, unless their team has been hit on the counter.",
+   "ea_role_name": "Attacking Wingback",
+   "equal": "[\"Stamina Usage\"]",
+   "focus": "Support",
+   "kernel25": "30000X0000600006000030000",
+   "negative": "[\"Defending\"]",
+   "plus": "[\"Wide Support\", \"Attacking\"]",
+   "role_id": "fb_att_wb"
+  },
+  {
+   "description": "When set to Balanced, the Falseback positions themselves as a Central Midfielder when their team is in possession.",
+   "ea_role_name": "Falseback",
+   "equal": "[\"Limited Width\"]",
+   "focus": "Balanced",
+   "kernel25": "00000000003X3003630060000",
+   "negative": "[\"Out of Position\"]",
+   "plus": "[\"Build-Up Support\", \"Defence Support\"]",
+   "role_id": "fb_falseback"
+  },
+  {
+   "description": "When set to Defend, the Falseback operates as a Defensive Midfielder when the team has the ball.",
+   "ea_role_name": "Falseback",
+   "equal": "[\"Limited Width\"]",
+   "focus": "Defend",
+   "kernel25": "0000000000033003X600X3000",
+   "negative": "[\"Out of Position\"]",
+   "plus": "[\"Defending\", \"Build-Up Support\"]",
+   "role_id": "fb_falseback"
+  },
+  {
+   "description": "When set to Balanced, the Fullback is granted more freedom to push slightly forward and wider in support of attacks.",
+   "ea_role_name": "Fullback",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Balanced",
+   "kernel25": "000000000030000X3000X6000",
+   "negative": "[\"Attack Support\"]",
+   "plus": "[\"Defending\", \"Stays Back\"]",
+   "role_id": "fb_fullback"
+  },
+  {
+   "description": "When set to Defend, the Fullback will move inside to form a back three when their team is in possession.",
+   "ea_role_name": "Fullback",
+   "equal": "[\"Limited Versatility\"]",
+   "focus": "Defend",
+   "kernel25": "00000000000000033000XX300",
+   "negative": "[\"Wide Support\"]",
+   "plus": "[\"Stays Back\", \"Defending\"]",
+   "role_id": "fb_fullback"
+  },
+  {
+   "description": "When set to Versatile, the Fullback can move inside to form a back three or push slightly forward and wider to support build-up.",
+   "ea_role_name": "Fullback",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Versatile",
+   "kernel25": "000000000030000X3000XX300",
+   "negative": "[\"Supports Attack\"]",
+   "plus": "[\"Versatile\", \"Defending\"]",
+   "role_id": "fb_fullback"
+  },
+  {
+   "description": "When asked to Attack, the Inverted Wingback will act as a central Shadow Striker, helping in the final third.",
+   "ea_role_name": "Inverted Wingback",
+   "equal": "[\"Stamina Usage\"]",
+   "focus": "Attack",
+   "kernel25": "063000X600330003000030000",
+   "negative": "[\"Defending\"]",
+   "plus": "[\"Attacking Runs\", \"Versatile\"]",
+   "role_id": "fb_inverted"
+  },
+  {
+   "description": "When asked to Build-Up, the Inverted Wingback will act as a central Playmaker, helping dictate the play.",
+   "ea_role_name": "Inverted Wingback",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Build-Up",
+   "kernel25": "000000X600360003000030000",
+   "negative": "[\"Attack Support\"]",
+   "plus": "[\"Defending\", \"Stays Back\"]",
+   "role_id": "fb_inverted"
+  },
+  {
+   "description": "With Balanced, the Wingback is given license to stay forward even when the team is out of possession, or drop back into defence when needed.",
+   "ea_role_name": "Wingback",
+   "equal": "[\"Versatile\"]",
+   "focus": "Balanced",
+   "kernel25": "0000030000X0000X000060000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Wide Support\", \"Movement\"]",
+   "role_id": "fb_wingback"
+  },
+  {
+   "description": "When asked to Support, the Wingback can only attack when their team has controlled possession, and only defend when the team doesn't have the ball.",
+   "ea_role_name": "Wingback",
+   "equal": "[\"Out of Position\"]",
+   "focus": "Support",
+   "kernel25": "0000030000X60006000060000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Wide Support\", \"Defence Option\"]",
+   "role_id": "fb_wingback"
+  },
+  {
+   "description": "A Build-Up focus encourages the Ball-Playing Keeper to push higher up the pitch to support play.",
+   "ea_role_name": "Ball Playing Keeper",
+   "equal": "[\"Some Risk\"]",
+   "focus": "Build-Up",
+   "kernel25": "00000000000000003X3003X30",
+   "negative": "[\"Rush\"]",
+   "plus": "[\"Pass Option\", \"Defending\"]",
+   "role_id": "gk_ballplaying"
+  },
+  {
+   "description": "With a Balanced focus, the Goalkeeper will occasionally leave their area to collect long or loose balls.",
+   "ea_role_name": "Goalkeeper",
+   "equal": "[\"Some Risk\"]",
+   "focus": "Balanced",
+   "kernel25": "0000000000000000030003X30",
+   "negative": "[\"Rush\"]",
+   "plus": "[\"Stay in Position\", \"Defending\"]",
+   "role_id": "gk_goalkeeper"
+  },
+  {
+   "description": "With a Defend focus, the Goalkeeper won't rush out to collect long or loose balls.",
+   "ea_role_name": "Goalkeeper",
+   "equal": "[\"Low Risk\"]",
+   "focus": "Defend",
+   "kernel25": "0000000000000000000003X30",
+   "negative": "[\"Rush\"]",
+   "plus": "[\"Stay in Position\", \"Defending\"]",
+   "role_id": "gk_goalkeeper"
+  },
+  {
+   "description": "A Balanced focus allows the Sweeper Keeper to leave their area to collect balls close to their box.",
+   "ea_role_name": "Sweeper Keeper",
+   "equal": "[\"Some Risk\"]",
+   "focus": "Balanced",
+   "kernel25": "0000000000000000363006X60",
+   "negative": "[\"Stay in Position\"]",
+   "plus": "[\"Rush\", \"Defending\"]",
+   "role_id": "gk_sweeper"
+  },
+  {
+   "description": "A Build-Up focus encourages the Sweeper Keeper to push even higher up the pitch to collect the ball and support play.",
+   "ea_role_name": "Sweeper Keeper",
+   "equal": "[\"Some Risk\"]",
+   "focus": "Build-Up",
+   "kernel25": "00000000000000003X300XXX0",
+   "negative": "[\"Stay in Position\"]",
+   "plus": "[\"Rush\", \"Pass Option\"]",
+   "role_id": "gk_sweeper"
+  },
+  {
+   "description": "With an Attack focus, the Advanced Forward will concentrate on goal-scoring opportunities, usually positioning themselves high and central on the pitch.",
+   "ea_role_name": "Advanced Forward",
+   "equal": "[\"Versatile\"]",
+   "focus": "Attack",
+   "kernel25": "06X6000300000000000000000",
+   "negative": "[\"Limited Width\"]",
+   "plus": "[\"Attacking\", \"Pass Option\"]",
+   "role_id": "st_advanced"
+  },
+  {
+   "description": "When set to Support, the Advanced Forward will look to make runs from deeper or wider positions, and press the defenders.",
+   "ea_role_name": "Advanced Forward",
+   "equal": "[\"Versatile\"]",
+   "focus": "Support",
+   "kernel25": "3636303330000000000000000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Attacking\", \"Pressure\"]",
+   "role_id": "st_advanced"
+  },
+  {
+   "description": "When set to Versatile, the Advanced Forward has the freedom to move wide when necessary to receive a pass or create space with a run.",
+   "ea_role_name": "Advanced Forward",
+   "equal": "[\"Movement\"]",
+   "focus": "Versatile",
+   "kernel25": "36X6300300000000000000000",
+   "negative": "[\"Build-Up Support\"]",
+   "plus": "[\"Attacking\", \"Versatile\"]",
+   "role_id": "st_advanced"
+  },
+  {
+   "description": "When set to Attack, the False 9 will drop back from the opposition's defence, and make trailing runs into the box from deep.",
+   "ea_role_name": "False 9",
+   "equal": "[\"Movement\"]",
+   "focus": "Attack",
+   "kernel25": "00X0006X60000000000000000",
+   "negative": "[\"Supports the Defence\"]",
+   "plus": "[\"Creative\", \"Attacking Runs\"]",
+   "role_id": "st_false9"
+  },
+  {
+   "description": "With Build-Up, the False 9 will drop back from the opposition's defence, and operate as a playmaker, leading attacks.",
+   "ea_role_name": "False 9",
+   "equal": "[\"Movement\"]",
+   "focus": "Build-Up",
+   "kernel25": "0030006X60000000000000000",
+   "negative": "[\"Attacking\"]",
+   "plus": "[\"Creative\", \"Build-Up Support\"]",
+   "role_id": "st_false9"
+  },
+  {
+   "description": "With an Attack focus, the Poacher will lurk just off the defensive line, ready to capitalise on any defensive gaps or errors.",
+   "ea_role_name": "Poacher",
+   "equal": "[\"Limited Width\"]",
+   "focus": "Attack",
+   "kernel25": "03X3000000000000000000000",
+   "negative": "[\"Supports the Defence\"]",
+   "plus": "[\"Attacking Runs\", \"Support Centrally\"]",
+   "role_id": "st_poacher"
+  },
+  {
+   "description": "When set to Support, the Poacher will stay close to the opposition defence, aggressively pressing them when in possession, in the hope of triggering a mistake.",
+   "ea_role_name": "Poacher",
+   "equal": "[\"Limited Width\"]",
+   "focus": "Support",
+   "kernel25": "06X6000300000000000000000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Attacking Runs\", \"Pressure\"]",
+   "role_id": "st_poacher"
+  },
+  {
+   "description": "With a Versatile focus, the Poacher will use their judgement to determine if they should come back to support their team or apply pressure.",
+   "ea_role_name": "Poacher",
+   "equal": "[\"Limited Width\"]",
+   "focus": "Versatile",
+   "kernel25": "06X6000600000000000000000",
+   "negative": "[\"Out of Position\"]",
+   "plus": "[\"Attacking Runs\", \"Versatile\"]",
+   "role_id": "st_poacher"
+  },
+  {
+   "description": "With an Attack focus, the Target Forward is free to focus on going forward, without any defensive instructions.",
+   "ea_role_name": "Target Forward",
+   "equal": "[\"Build-Up Support\"]",
+   "focus": "Attack",
+   "kernel25": "03X3000000000000000000000",
+   "negative": "[\"Lacks Mobility\"]",
+   "plus": "[\"Physical\", \"Attacking\"]",
+   "role_id": "st_target"
+  },
+  {
+   "description": "When Balanced, the Target Forward will drop off from the defensive line, hold up play, and lay the ball off to teammates. They will have minor defensive duties.",
+   "ea_role_name": "Target Forward",
+   "equal": "[\"Defense Support\"]",
+   "focus": "Balanced",
+   "kernel25": "00X0000600000000000000000",
+   "negative": "[\"Lacks Mobility\"]",
+   "plus": "[\"Physical\", \"Build-Up Support\"]",
+   "role_id": "st_target"
+  },
+  {
+   "description": "When set to Wide, the Target Forward will drift to the edges of the box in a search for space to make an impact.",
+   "ea_role_name": "Target Forward",
+   "equal": "[\"Attacking\"]",
+   "focus": "Wide",
+   "kernel25": "6636600000000000000000000",
+   "negative": "[\"Support Centrally\"]",
+   "plus": "[\"Physical\", \"Wide Support\"]",
+   "role_id": "st_target"
+  },
+  {
+   "description": "When given an Attack focus, the Inside Forward will focus on cutting inside and making attacking runs.",
+   "ea_role_name": "Inside Forward",
+   "equal": "[\"Cut Inside\"]",
+   "focus": "Attack",
+   "kernel25": "0X60036300000000000000000",
+   "negative": "[\"Defence Support\"]",
+   "plus": "[\"Attacking\", \"Support Centrally\"]",
+   "role_id": "w_insidefwd"
+  },
+  {
+   "description": "When Balanced, the Inside Forward will offer minimal defensive support, and sometimes hold off making runs in behind to instead offer passing options.",
+   "ea_role_name": "Inside Forward",
+   "equal": "[\"Cut Inside\"]",
+   "focus": "Balanced",
+   "kernel25": "063006X300330000000000000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Attack Support\", \"Pass Option\"]",
+   "role_id": "w_insidefwd"
+  },
+  {
+   "description": "When set to Roaming, the inside Forward is allowed to freely explore and exploit any defensive gaps they can find.",
+   "ea_role_name": "Inside Forward",
+   "equal": "[\"Cut Inside\"]",
+   "focus": "Roaming",
+   "kernel25": "363003X600300000000000000",
+   "negative": "[\"Out of Position\"]",
+   "plus": "[\"Movement\", \"Attack Support\"]",
+   "role_id": "w_insidefwd"
+  },
+  {
+   "description": "With an Attack focus, the wide Playmaker will move forward, and receive passes out wide.",
+   "ea_role_name": "Wide Playmaker",
+   "equal": "[\"Wide Support\"]",
+   "focus": "Attack",
+   "kernel25": "X600063000300000000000000",
+   "negative": "[\"Defence Support\"]",
+   "plus": "[\"Creative\", \"Attack Support\"]",
+   "role_id": "w_wideplm"
+  },
+  {
+   "description": "When set to Build-Up, the Wide Playmaker will come short to offer a passing option, while balancing their approach to support the defence if needed.",
+   "ea_role_name": "Wide Playmaker",
+   "equal": "[\"Supports the Defence\"]",
+   "focus": "Build-Up",
+   "kernel25": "33000X6000600000000000000",
+   "negative": "[\"Support Centrally\"]",
+   "plus": "[\"Creative\", \"Build-Up Support\"]",
+   "role_id": "w_wideplm"
+  },
+  {
+   "description": "When set to Attack, the Winger will focus on getting forward, and prefers to make runs behind the defence instead of receiving the ball to feet.",
+   "ea_role_name": "Winger",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Attack",
+   "kernel25": "X3000X0000300000000000000",
+   "negative": "[\"Defending\"]",
+   "plus": "[\"Wide Support\", \"Supports Attacks\"]",
+   "role_id": "w_winger"
+  },
+  {
+   "description": "When Balanced, the Winger will offer both defensive and attacking support. They mix making runs behind and offering themselves as a passing option.",
+   "ea_role_name": "Winger",
+   "equal": "[\"Versatile\"]",
+   "focus": "Balanced",
+   "kernel25": "60000X0000600003000000000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Wide Support\", \"Pass Option\"]",
+   "role_id": "w_winger"
+  },
+  {
+   "description": "The Versatile Winger decides when it's the right opportunity to attack or defend, and they can swap sides with another Versatile Winger between phases of play.",
+   "ea_role_name": "Winger",
+   "equal": "[\"Out of Position\"]",
+   "focus": "Versatile",
+   "kernel25": "X6000X0000600003000000000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Supports Play\", \"Wide Support\"]",
+   "role_id": "w_winger"
+  },
+  {
+   "description": "When given an Attack focus, the Inside Forward will focus on cutting inside and making attacking runs.",
+   "ea_role_name": "Inside Forward",
+   "equal": "[\"Cut Inside\"]",
+   "focus": "Attack",
+   "kernel25": "0X60036300300000000000000",
+   "negative": "[\"Defence Support\"]",
+   "plus": "[\"Attacking\", \"Support Centrally\"]",
+   "role_id": "wm_insidefwd"
+  },
+  {
+   "description": "When Balanced, the Inside Forward will offer minimal defensive support, and sometimes hold off making runs in behind to instead offer passing options.",
+   "ea_role_name": "Inside Forward",
+   "equal": "[\"Cut Inside\"]",
+   "focus": "Balanced",
+   "kernel25": "063003X600600000000000000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Attack Support\", \"Pass Option\"]",
+   "role_id": "wm_insidefwd"
+  },
+  {
+   "description": "When in Build-Up, the Wide Midfielder will position themselves a little higher up the pitch to support plays, while providing defensive support if needed.",
+   "ea_role_name": "Wide Midfielder",
+   "equal": "[\"Supports the Defence\"]",
+   "focus": "Build-Up",
+   "kernel25": "00000X3000X30000000000000",
+   "negative": "[\"Out of Position\"]",
+   "plus": "[\"Build-Up Support\", \"Wide Support\"]",
+   "role_id": "wm_widemid"
+  },
+  {
+   "description": "When asked to Defend, the Wide Midfielder will drop into the defensive midfield line and protect the defence.",
+   "ea_role_name": "Wide Midfielder",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Defend",
+   "kernel25": "0000000000X3000X300000000",
+   "negative": "[\"Supports Attacks\"]",
+   "plus": "[\"Wide Support\", \"Stays Back\"]",
+   "role_id": "wm_widemid"
+  },
+  {
+   "description": "When in Support focus, the Wide Midfielder will stay wide to support possession and provide defensive support when needed.",
+   "ea_role_name": "Wide Midfielder",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Support",
+   "kernel25": "0000060000X30006000000000",
+   "negative": "[\"Lacks Mobility\"]",
+   "plus": "[\"Wide Support\", \"Supports Play\"]",
+   "role_id": "wm_widemid"
+  },
+  {
+   "description": "With an Attack focus, the Wide Playmaker will move forward, and receive passes out wide.",
+   "ea_role_name": "Wide Playmaker",
+   "equal": "[\"Wide Support\"]",
+   "focus": "Attack",
+   "kernel25": "0000066000330000000000000",
+   "negative": "[\"Defence Support\"]",
+   "plus": "[\"Creative\", \"Attack Support\"]",
+   "role_id": "wm_wideplm"
+  },
+  {
+   "description": "When set to Build-Up, the Wide Playmaker will come short to offer a passing option, while balancing their approach to support the defence if needed.",
+   "ea_role_name": "Wide Playmaker",
+   "equal": "[\"Supports the Defence\"]",
+   "focus": "Build-Up",
+   "kernel25": "0000033000660000000000000",
+   "negative": "[\"Support Centrally\"]",
+   "plus": "[\"Creative\", \"Build-Up Support\"]",
+   "role_id": "wm_wideplm"
+  },
+  {
+   "description": "When set to Attack, the Winger will focus on getting forward, and prefers to make runs behind the defence instead of receiving the ball to feet.",
+   "ea_role_name": "Winger",
+   "equal": "[\"Pass Option\"]",
+   "focus": "Attack",
+   "kernel25": "X0000X0000600000000000000",
+   "negative": "[\"Defending\"]",
+   "plus": "[\"Wide Support\", \"Supports Attacks\"]",
+   "role_id": "wm_winger"
+  },
+  {
+   "description": "When Balanced, the Winger will offer both defensive and attacking support. They mix making runs in behind and offering themselves as a passing option.",
+   "ea_role_name": "Winger",
+   "equal": "[\"Versatile\"]",
+   "focus": "Balanced",
+   "kernel25": "30000X0000X00003000000000",
+   "negative": "[\"Stamina Usage\"]",
+   "plus": "[\"Wide Support\", \"Pass Option\"]",
+   "role_id": "wm_winger"
+  }
+ ],
+ "game_version": "FC26",
+ "roles": [
+  {
+   "focuses": "[\"Versatile\", \"Wide\", \"Attack\"]",
+   "name": "클래식 10번",
+   "name_en": null,
+   "position_type": "CAM",
+   "role_id": "cam_classic10"
+  },
+  {
+   "focuses": "[\"Roaming\", \"Attack\", \"Balanced\"]",
+   "name": "하프 윙어",
+   "name_en": null,
+   "position_type": "CAM",
+   "role_id": "cam_halfwinger"
+  },
+  {
+   "focuses": "[\"Balanced\", \"Build-Up\", \"Roaming\"]",
+   "name": "플레이메이커",
+   "name_en": null,
+   "position_type": "CAM",
+   "role_id": "cam_playmaker"
+  },
+  {
+   "focuses": "[\"Attack\"]",
+   "name": "섀도 스트라이커",
+   "name_en": null,
+   "position_type": "CAM",
+   "role_id": "cam_shadow"
+  },
+  {
+   "focuses": "[\"Aggressive\", \"Build-Up\", \"Defend\"]",
+   "name": "볼 플레잉 센터백",
+   "name_en": null,
+   "position_type": "CB",
+   "role_id": "cb_bpd"
+  },
+  {
+   "focuses": "[\"Balanced\", \"Defend\"]",
+   "name": "센터백",
+   "name_en": null,
+   "position_type": "CB",
+   "role_id": "cb_defender"
+  },
+  {
+   "focuses": "[\"Aggressive\", \"Balanced\"]",
+   "name": "스토퍼",
+   "name_en": null,
+   "position_type": "CB",
+   "role_id": "cb_stopper"
+  },
+  {
+   "focuses": "[\"Support\", \"Aggressive\", \"Defend\"]",
+   "name": "와이드 백",
+   "name_en": null,
+   "position_type": "CB",
+   "role_id": "cb_wideback"
+  },
+  {
+   "focuses": "[\"Ball-Winning\", \"Balanced\"]",
+   "name": "박스 투 박스",
+   "name_en": null,
+   "position_type": "CM",
+   "role_id": "cm_b2b"
+  },
+  {
+   "focuses": "[\"Build-Up\", \"Defend\"]",
+   "name": "딥라잉 플레이메이커",
+   "name_en": null,
+   "position_type": "CM",
+   "role_id": "cm_dlp"
+  },
+  {
+   "focuses": "[\"Support\", \"Balanced\", \"Attack\"]",
+   "name": "하프 윙어",
+   "name_en": null,
+   "position_type": "CM",
+   "role_id": "cm_halfwinger"
+  },
+  {
+   "focuses": "[\"Ball-Winning\", \"Defend\"]",
+   "name": "홀딩",
+   "name_en": null,
+   "position_type": "CM",
+   "role_id": "cm_holding"
+  },
+  {
+   "focuses": "[\"Roaming\", \"Attack\"]",
+   "name": "플레이메이커",
+   "name_en": null,
+   "position_type": "CM",
+   "role_id": "cm_playmaker"
+  },
+  {
+   "focuses": "[\"Balanced\"]",
+   "name": "박스 크래셔",
+   "name_en": null,
+   "position_type": "DM",
+   "role_id": "dm_boxcrasher"
+  },
+  {
+   "focuses": "[\"Defend\"]",
+   "name": "센터 하프",
+   "name_en": null,
+   "position_type": "DM",
+   "role_id": "dm_centrehalf"
+  },
+  {
+   "focuses": "[\"Build-Up\", \"Roaming\", \"Defend\"]",
+   "name": "딥라잉 플레이메이커",
+   "name_en": null,
+   "position_type": "DM",
+   "role_id": "dm_dlp"
+  },
+  {
+   "focuses": "[\"Ball-Winning\", \"Roaming\", \"Defend\"]",
+   "name": "홀딩",
+   "name_en": null,
+   "position_type": "DM",
+   "role_id": "dm_holding"
+  },
+  {
+   "focuses": "[\"Build-Up\", \"Defend\"]",
+   "name": "와이드 하프",
+   "name_en": null,
+   "position_type": "DM",
+   "role_id": "dm_widehalf"
+  },
+  {
+   "focuses": "[\"Attack\", \"Support\"]",
+   "name": "공격형 윙백",
+   "name_en": null,
+   "position_type": "FB",
+   "role_id": "fb_att_wb"
+  },
+  {
+   "focuses": "[\"Balanced\", \"Defend\"]",
+   "name": "폴스백",
+   "name_en": null,
+   "position_type": "FB",
+   "role_id": "fb_falseback"
+  },
+  {
+   "focuses": "[\"Versatile\", \"Balanced\", \"Defend\"]",
+   "name": "풀백",
+   "name_en": null,
+   "position_type": "FB",
+   "role_id": "fb_fullback"
+  },
+  {
+   "focuses": "[\"Attack\", \"Build-Up\"]",
+   "name": "인버티드 윙백",
+   "name_en": null,
+   "position_type": "FB",
+   "role_id": "fb_inverted"
+  },
+  {
+   "focuses": "[\"Support\", \"Balanced\"]",
+   "name": "윙백",
+   "name_en": null,
+   "position_type": "FB",
+   "role_id": "fb_wingback"
+  },
+  {
+   "focuses": "[\"Build-Up\"]",
+   "name": "볼 플레잉 키퍼",
+   "name_en": null,
+   "position_type": "GK",
+   "role_id": "gk_ballplaying"
+  },
+  {
+   "focuses": "[\"Balanced\", \"Defend\"]",
+   "name": "골키퍼",
+   "name_en": null,
+   "position_type": "GK",
+   "role_id": "gk_goalkeeper"
+  },
+  {
+   "focuses": "[\"Build-Up\", \"Balanced\"]",
+   "name": "스위퍼 키퍼",
+   "name_en": null,
+   "position_type": "GK",
+   "role_id": "gk_sweeper"
+  },
+  {
+   "focuses": "[\"Support\", \"Attack\", \"Versatile\"]",
+   "name": "어드밴스드 포워드",
+   "name_en": null,
+   "position_type": "ST",
+   "role_id": "st_advanced"
+  },
+  {
+   "focuses": "[\"Attack\", \"Build-Up\"]",
+   "name": "폴스 나인",
+   "name_en": null,
+   "position_type": "ST",
+   "role_id": "st_false9"
+  },
+  {
+   "focuses": "[\"Support\", \"Versatile\", \"Attack\"]",
+   "name": "포처",
+   "name_en": null,
+   "position_type": "ST",
+   "role_id": "st_poacher"
+  },
+  {
+   "focuses": "[\"Attack\", \"Balanced\", \"Wide\"]",
+   "name": "타깃 포워드",
+   "name_en": null,
+   "position_type": "ST",
+   "role_id": "st_target"
+  },
+  {
+   "focuses": "[\"Attack\", \"Balanced\", \"Roaming\"]",
+   "name": "인사이드 포워드",
+   "name_en": null,
+   "position_type": "W",
+   "role_id": "w_insidefwd"
+  },
+  {
+   "focuses": "[\"Attack\", \"Build-Up\"]",
+   "name": "와이드 플레이메이커",
+   "name_en": null,
+   "position_type": "W",
+   "role_id": "w_wideplm"
+  },
+  {
+   "focuses": "[\"Versatile\", \"Attack\", \"Balanced\"]",
+   "name": "윙어",
+   "name_en": null,
+   "position_type": "W",
+   "role_id": "w_winger"
+  },
+  {
+   "focuses": "[\"Balanced\", \"Attack\"]",
+   "name": "인사이드 포워드",
+   "name_en": null,
+   "position_type": "WM",
+   "role_id": "wm_insidefwd"
+  },
+  {
+   "focuses": "[\"Defend\", \"Build-Up\", \"Support\"]",
+   "name": "와이드 미드필더",
+   "name_en": null,
+   "position_type": "WM",
+   "role_id": "wm_widemid"
+  },
+  {
+   "focuses": "[\"Attack\", \"Build-Up\"]",
+   "name": "와이드 플레이메이커",
+   "name_en": null,
+   "position_type": "WM",
+   "role_id": "wm_wideplm"
+  },
+  {
+   "focuses": "[\"Balanced\", \"Attack\"]",
+   "name": "윙어",
+   "name_en": null,
+   "position_type": "WM",
+   "role_id": "wm_winger"
+  }
+ ],
+ "tactic_params": [
+  {
+   "description": "Mix of forward runs and coming short; steady transition into the in-possession shape.",
+   "option": "Balanced",
+   "param": "build_up_style"
+  },
+  {
+   "description": "Players run in behind as the team transitions quickly from defence to attack.",
+   "option": "Counter",
+   "param": "build_up_style"
+  },
+  {
+   "description": "Players come short to support the carrier instead of running forward; slow transition, keeps defensive shape longest.",
+   "option": "Short Passing",
+   "param": "build_up_style"
+  },
+  {
+   "description": "Highest-risk: high line + immediate counter-press after losing the ball, offside traps.",
+   "option": "Aggressive",
+   "param": "defensive_approach"
+  },
+  {
+   "description": "Flexible depth; adjusts line and run-tracking situationally.",
+   "option": "Balanced",
+   "param": "defensive_approach"
+  },
+  {
+   "description": "Safety-first; defensive line drops deep, tracks opposition runs.",
+   "option": "Deep",
+   "param": "defensive_approach"
+  },
+  {
+   "description": "High line with situational pressure; does not track runs closely (offside-trap risk).",
+   "option": "High",
+   "param": "defensive_approach"
+  },
+  {
+   "description": "0-100 slider; selectable range is constrained by the chosen defensive_approach.",
+   "option": "numeric",
+   "param": "line_height"
+  },
+  {
+   "description": "Shareable code encoding formation + build-up + defensive approach + line height + 11 roles/focuses.",
+   "option": "string",
+   "param": "tactic_code"
+  }
+ ],
+ "variants": [
+  {
+   "focus": "Attack",
+   "kernel25": "000000X630000000000000000",
+   "pitch_x": 43,
+   "role_id": "cam_classic10"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0000006X60000000000000000",
+   "pitch_x": 50,
+   "role_id": "cam_classic10"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "00000036X0000000000000000",
+   "pitch_x": 57,
+   "role_id": "cam_classic10"
+  },
+  {
+   "focus": "Versatile",
+   "kernel25": "000006X666000000000000000",
+   "pitch_x": 48,
+   "role_id": "cam_classic10"
+  },
+  {
+   "focus": "Versatile",
+   "kernel25": "0000066X66000000000000000",
+   "pitch_x": 50,
+   "role_id": "cam_classic10"
+  },
+  {
+   "focus": "Versatile",
+   "kernel25": "00000666X6000000000000000",
+   "pitch_x": 52,
+   "role_id": "cam_classic10"
+  },
+  {
+   "focus": "Wide",
+   "kernel25": "000006X300000000000000000",
+   "pitch_x": 27,
+   "role_id": "cam_classic10"
+  },
+  {
+   "focus": "Wide",
+   "kernel25": "0000036X63000000000000000",
+   "pitch_x": 50,
+   "role_id": "cam_classic10"
+  },
+  {
+   "focus": "Wide",
+   "kernel25": "00000003X6000000000000000",
+   "pitch_x": 73,
+   "role_id": "cam_classic10"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "X000066000000000000000000",
+   "pitch_x": 15,
+   "role_id": "cam_halfwinger"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "6000633333000000000000000",
+   "pitch_x": 50,
+   "role_id": "cam_halfwinger"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0000X00066000000000000000",
+   "pitch_x": 85,
+   "role_id": "cam_halfwinger"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "30000X6000600000000000000",
+   "pitch_x": 15,
+   "role_id": "cam_halfwinger"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "3000363336300030000000000",
+   "pitch_x": 50,
+   "role_id": "cam_halfwinger"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "000030006X000060000000000",
+   "pitch_x": 85,
+   "role_id": "cam_halfwinger"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "X000666336000000000000000",
+   "pitch_x": 45,
+   "role_id": "cam_halfwinger"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "X000X66366000000000000000",
+   "pitch_x": 50,
+   "role_id": "cam_halfwinger"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "6000X63366000000000000000",
+   "pitch_x": 56,
+   "role_id": "cam_halfwinger"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "030003X600060000000000000",
+   "pitch_x": 32,
+   "role_id": "cam_playmaker"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "0030006X60006000000000000",
+   "pitch_x": 50,
+   "role_id": "cam_playmaker"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "00030006X3000600000000000",
+   "pitch_x": 68,
+   "role_id": "cam_playmaker"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "000003X300363000300000000",
+   "pitch_x": 30,
+   "role_id": "cam_playmaker"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "0000003X30036300030000000",
+   "pitch_x": 50,
+   "role_id": "cam_playmaker"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "00000003X3003630003000000",
+   "pitch_x": 70,
+   "role_id": "cam_playmaker"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "033003X630033000000000000",
+   "pitch_x": 39,
+   "role_id": "cam_playmaker"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "0333006X60033300000000000",
+   "pitch_x": 50,
+   "role_id": "cam_playmaker"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "00330036X3003300000000000",
+   "pitch_x": 61,
+   "role_id": "cam_playmaker"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "3X6000X000000000000000000",
+   "pitch_x": 32,
+   "role_id": "cam_shadow"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "06X6000X00000000000000000",
+   "pitch_x": 50,
+   "role_id": "cam_shadow"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "006X3000X0000000000000000",
+   "pitch_x": 68,
+   "role_id": "cam_shadow"
+  },
+  {
+   "focus": "Aggressive",
+   "kernel25": "0000000000063003X60036300",
+   "pitch_x": 33,
+   "role_id": "cb_bpd"
+  },
+  {
+   "focus": "Aggressive",
+   "kernel25": "00000000000363006X6003630",
+   "pitch_x": 50,
+   "role_id": "cb_bpd"
+  },
+  {
+   "focus": "Aggressive",
+   "kernel25": "000000000000360006X300363",
+   "pitch_x": 67,
+   "role_id": "cb_bpd"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "0000000000030003X6003X600",
+   "pitch_x": 33,
+   "role_id": "cb_bpd"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "00000000000030006X6006X60",
+   "pitch_x": 50,
+   "role_id": "cb_bpd"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "000000000000030006X3006X3",
+   "pitch_x": 67,
+   "role_id": "cb_bpd"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "000000000000000363003X600",
+   "pitch_x": 32,
+   "role_id": "cb_bpd"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "0000000000000000363006X60",
+   "pitch_x": 50,
+   "role_id": "cb_bpd"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "00000000000000000363006X3",
+   "pitch_x": 68,
+   "role_id": "cb_bpd"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "000000000000000033003X600",
+   "pitch_x": 35,
+   "role_id": "cb_defender"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "0000000000000000333006X60",
+   "pitch_x": 50,
+   "role_id": "cb_defender"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "00000000000000000330006X3",
+   "pitch_x": 65,
+   "role_id": "cb_defender"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "000000000000000000003X600",
+   "pitch_x": 33,
+   "role_id": "cb_defender"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "0000000000000000000006X60",
+   "pitch_x": 50,
+   "role_id": "cb_defender"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "00000000000000000000006X3",
+   "pitch_x": 67,
+   "role_id": "cb_defender"
+  },
+  {
+   "focus": "Aggressive",
+   "kernel25": "0000000000033000X6000X000",
+   "pitch_x": 36,
+   "role_id": "cb_stopper"
+  },
+  {
+   "focus": "Aggressive",
+   "kernel25": "00000000000030006X6000X00",
+   "pitch_x": 50,
+   "role_id": "cb_stopper"
+  },
+  {
+   "focus": "Aggressive",
+   "kernel25": "000000000000330006X0000X0",
+   "pitch_x": 64,
+   "role_id": "cb_stopper"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "000000000000000066003X300",
+   "pitch_x": 34,
+   "role_id": "cb_stopper"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "0000000000000000666003X30",
+   "pitch_x": 50,
+   "role_id": "cb_stopper"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "00000000000000000660003X3",
+   "pitch_x": 66,
+   "role_id": "cb_stopper"
+  },
+  {
+   "focus": "Aggressive",
+   "kernel25": "000000000000000663006X000",
+   "pitch_x": 24,
+   "role_id": "cb_wideback"
+  },
+  {
+   "focus": "Aggressive",
+   "kernel25": "0000000000000003303363X36",
+   "pitch_x": 50,
+   "role_id": "cb_wideback"
+  },
+  {
+   "focus": "Aggressive",
+   "kernel25": "00000000000000000366000X6",
+   "pitch_x": 76,
+   "role_id": "cb_wideback"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "00000000000000066000XX000",
+   "pitch_x": 20,
+   "role_id": "cb_wideback"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "0000000000000000000063X36",
+   "pitch_x": 50,
+   "role_id": "cb_wideback"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "00000000000000000033000XX",
+   "pitch_x": 80,
+   "role_id": "cb_wideback"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "00000000003000063000XX000",
+   "pitch_x": 18,
+   "role_id": "cb_wideback"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "0000000000300036000663X36",
+   "pitch_x": 50,
+   "role_id": "cb_wideback"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "00000000000000300036000XX",
+   "pitch_x": 82,
+   "role_id": "cb_wideback"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "030000X0000X3000X00003000",
+   "pitch_x": 32,
+   "role_id": "cm_b2b"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "0030000X0003X3000X0000300",
+   "pitch_x": 50,
+   "role_id": "cm_b2b"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "00030000X0003X0000X000030",
+   "pitch_x": 68,
+   "role_id": "cm_b2b"
+  },
+  {
+   "focus": "Ball-Winning",
+   "kernel25": "030003X3003X3003X30003000",
+   "pitch_x": 30,
+   "role_id": "cm_b2b"
+  },
+  {
+   "focus": "Ball-Winning",
+   "kernel25": "0030003X3003X3003X3000300",
+   "pitch_x": 50,
+   "role_id": "cm_b2b"
+  },
+  {
+   "focus": "Ball-Winning",
+   "kernel25": "00030003X3003X3003X300030",
+   "pitch_x": 70,
+   "role_id": "cm_b2b"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "00000030000X6000630000000",
+   "pitch_x": 36,
+   "role_id": "cm_dlp"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "000000030006X600060000000",
+   "pitch_x": 50,
+   "role_id": "cm_dlp"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "0000000030006X00036000000",
+   "pitch_x": 64,
+   "role_id": "cm_dlp"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "00000000000X3000300000000",
+   "pitch_x": 34,
+   "role_id": "cm_dlp"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "000000000003X300030000000",
+   "pitch_x": 50,
+   "role_id": "cm_dlp"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "0000000000003X00003000000",
+   "pitch_x": 66,
+   "role_id": "cm_dlp"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "60000X0000630000000000000",
+   "pitch_x": 12,
+   "role_id": "cm_halfwinger"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "3000360006633360000000000",
+   "pitch_x": 50,
+   "role_id": "cm_halfwinger"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "000060000X000360000000000",
+   "pitch_x": 88,
+   "role_id": "cm_halfwinger"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "00000X0000X60003000000000",
+   "pitch_x": 14,
+   "role_id": "cm_halfwinger"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "0000060006633363000300000",
+   "pitch_x": 50,
+   "role_id": "cm_halfwinger"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "000000000X0006X0000300000",
+   "pitch_x": 86,
+   "role_id": "cm_halfwinger"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "0000063000X60003000000000",
+   "pitch_x": 16,
+   "role_id": "cm_halfwinger"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "0000063036633363000300000",
+   "pitch_x": 50,
+   "role_id": "cm_halfwinger"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "00000000360006X0000300000",
+   "pitch_x": 84,
+   "role_id": "cm_halfwinger"
+  },
+  {
+   "focus": "Ball-Winning",
+   "kernel25": "00000000003X6000600000000",
+   "pitch_x": 32,
+   "role_id": "cm_holding"
+  },
+  {
+   "focus": "Ball-Winning",
+   "kernel25": "000000000006X600060000000",
+   "pitch_x": 50,
+   "role_id": "cm_holding"
+  },
+  {
+   "focus": "Ball-Winning",
+   "kernel25": "0000000000006X30006000000",
+   "pitch_x": 68,
+   "role_id": "cm_holding"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "00000000003X6003630000000",
+   "pitch_x": 32,
+   "role_id": "cm_holding"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "000000000006X600363000000",
+   "pitch_x": 50,
+   "role_id": "cm_holding"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "0000000000006X30036300000",
+   "pitch_x": 68,
+   "role_id": "cm_holding"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "00000063000X3000000000000",
+   "pitch_x": 35,
+   "role_id": "cm_playmaker"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "000000363003X300000000000",
+   "pitch_x": 50,
+   "role_id": "cm_playmaker"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0000000360003X00000000000",
+   "pitch_x": 65,
+   "role_id": "cm_playmaker"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "00000366306X6300000000000",
+   "pitch_x": 37,
+   "role_id": "cm_playmaker"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "000003666336X630000000000",
+   "pitch_x": 50,
+   "role_id": "cm_playmaker"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "0000003663036X60000000000",
+   "pitch_x": 63,
+   "role_id": "cm_playmaker"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "03000060000X0000X30000000",
+   "pitch_x": 32,
+   "role_id": "dm_boxcrasher"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "003000060000X0003X3000000",
+   "pitch_x": 50,
+   "role_id": "dm_boxcrasher"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "0003000060000X0003X000000",
+   "pitch_x": 68,
+   "role_id": "dm_boxcrasher"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "0000000000000000X60003X30",
+   "pitch_x": 44,
+   "role_id": "dm_centrehalf"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "00000000000000003X3003X30",
+   "pitch_x": 50,
+   "role_id": "dm_centrehalf"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "000000000000000006X003X30",
+   "pitch_x": 56,
+   "role_id": "dm_centrehalf"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "00000030000X3000X30000000",
+   "pitch_x": 34,
+   "role_id": "dm_dlp"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "000000030003X3003X3000000",
+   "pitch_x": 50,
+   "role_id": "dm_dlp"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "0000000030003X0003X000000",
+   "pitch_x": 66,
+   "role_id": "dm_dlp"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "0000000000033000X30000000",
+   "pitch_x": 36,
+   "role_id": "dm_dlp"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "00000000000333003X3000000",
+   "pitch_x": 50,
+   "role_id": "dm_dlp"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "000000000000330003X000000",
+   "pitch_x": 64,
+   "role_id": "dm_dlp"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "0000003300066300633000000",
+   "pitch_x": 45,
+   "role_id": "dm_dlp"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "0000003330066600363000000",
+   "pitch_x": 50,
+   "role_id": "dm_dlp"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "0000000330036600336000000",
+   "pitch_x": 55,
+   "role_id": "dm_dlp"
+  },
+  {
+   "focus": "Ball-Winning",
+   "kernel25": "0000000000000003X60003000",
+   "pitch_x": 33,
+   "role_id": "dm_holding"
+  },
+  {
+   "focus": "Ball-Winning",
+   "kernel25": "00000000000000006X6000300",
+   "pitch_x": 50,
+   "role_id": "dm_holding"
+  },
+  {
+   "focus": "Ball-Winning",
+   "kernel25": "000000000000000006X300300",
+   "pitch_x": 65,
+   "role_id": "dm_holding"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "0000000000030003X60003000",
+   "pitch_x": 32,
+   "role_id": "dm_holding"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "00000000000030003X3000300",
+   "pitch_x": 50,
+   "role_id": "dm_holding"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "000000000000030006X300030",
+   "pitch_x": 68,
+   "role_id": "dm_holding"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "000000000003330XXX6600000",
+   "pitch_x": 45,
+   "role_id": "dm_holding"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "0000000000033306XXX600000",
+   "pitch_x": 50,
+   "role_id": "dm_holding"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "00000000000333066XXX00000",
+   "pitch_x": 55,
+   "role_id": "dm_holding"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "000000000060000X630000000",
+   "pitch_x": 20,
+   "role_id": "dm_widehalf"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "0000000000300036363600000",
+   "pitch_x": 50,
+   "role_id": "dm_widehalf"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "0000000000000060036X00000",
+   "pitch_x": 80,
+   "role_id": "dm_widehalf"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "000000000000000X630060000",
+   "pitch_x": 20,
+   "role_id": "dm_widehalf"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "0000000000000006363630003",
+   "pitch_x": 50,
+   "role_id": "dm_widehalf"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "0000000000000000036X00006",
+   "pitch_x": 80,
+   "role_id": "dm_widehalf"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "X000060000300003000030000",
+   "pitch_x": 10,
+   "role_id": "fb_att_wb"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0000X00006000030000300003",
+   "pitch_x": 90,
+   "role_id": "fb_att_wb"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "30000X0000600006000030000",
+   "pitch_x": 10,
+   "role_id": "fb_att_wb"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "000030000X000060000600003",
+   "pitch_x": 90,
+   "role_id": "fb_att_wb"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "00000000003X3003630060000",
+   "pitch_x": 26,
+   "role_id": "fb_falseback"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "0000000000003X30036300006",
+   "pitch_x": 74,
+   "role_id": "fb_falseback"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "0000000000033003X600X3000",
+   "pitch_x": 28,
+   "role_id": "fb_falseback"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "000000000000330006X30003X",
+   "pitch_x": 72,
+   "role_id": "fb_falseback"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "000000000030000X3000X6000",
+   "pitch_x": 16,
+   "role_id": "fb_fullback"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "0000000000000030003X0006X",
+   "pitch_x": 84,
+   "role_id": "fb_fullback"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "00000000000000033000XX300",
+   "pitch_x": 23,
+   "role_id": "fb_fullback"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "00000000000000000033003XX",
+   "pitch_x": 77,
+   "role_id": "fb_fullback"
+  },
+  {
+   "focus": "Versatile",
+   "kernel25": "000000000030000X3000XX300",
+   "pitch_x": 20,
+   "role_id": "fb_fullback"
+  },
+  {
+   "focus": "Versatile",
+   "kernel25": "0000000000000030003X003XX",
+   "pitch_x": 80,
+   "role_id": "fb_fullback"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "063000X600330003000030000",
+   "pitch_x": 30,
+   "role_id": "fb_inverted"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "00360006X0000330000300003",
+   "pitch_x": 70,
+   "role_id": "fb_inverted"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "000000X600360003000030000",
+   "pitch_x": 28,
+   "role_id": "fb_inverted"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "00000006X0000630000300003",
+   "pitch_x": 72,
+   "role_id": "fb_inverted"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "0000030000X0000X000060000",
+   "pitch_x": 10,
+   "role_id": "fb_wingback"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "00000000030000X0000X00006",
+   "pitch_x": 90,
+   "role_id": "fb_wingback"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "0000030000X60006000060000",
+   "pitch_x": 14,
+   "role_id": "fb_wingback"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "00000000030006X0000600006",
+   "pitch_x": 86,
+   "role_id": "fb_wingback"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "00000000000000003X3003X30",
+   "pitch_x": 50,
+   "role_id": "gk_ballplaying"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "0000000000000000030003X30",
+   "pitch_x": 50,
+   "role_id": "gk_goalkeeper"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "0000000000000000000003X30",
+   "pitch_x": 50,
+   "role_id": "gk_goalkeeper"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "0000000000000000363006X60",
+   "pitch_x": 50,
+   "role_id": "gk_sweeper"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "00000000000000003X300XXX0",
+   "pitch_x": 50,
+   "role_id": "gk_sweeper"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0X60006000000000000000000",
+   "pitch_x": 35,
+   "role_id": "st_advanced"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "06X6000300000000000000000",
+   "pitch_x": 50,
+   "role_id": "st_advanced"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "006X000060000000000000000",
+   "pitch_x": 65,
+   "role_id": "st_advanced"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "3X30033300000000000000000",
+   "pitch_x": 30,
+   "role_id": "st_advanced"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "3636303330000000000000000",
+   "pitch_x": 50,
+   "role_id": "st_advanced"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "003X300333000000000000000",
+   "pitch_x": 70,
+   "role_id": "st_advanced"
+  },
+  {
+   "focus": "Versatile",
+   "kernel25": "6X63003000000000000000000",
+   "pitch_x": 34,
+   "role_id": "st_advanced"
+  },
+  {
+   "focus": "Versatile",
+   "kernel25": "36X6300300000000000000000",
+   "pitch_x": 50,
+   "role_id": "st_advanced"
+  },
+  {
+   "focus": "Versatile",
+   "kernel25": "036X600030000000000000000",
+   "pitch_x": 66,
+   "role_id": "st_advanced"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0X0006X600000000000000000",
+   "pitch_x": 30,
+   "role_id": "st_false9"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "00X0006X60000000000000000",
+   "pitch_x": 50,
+   "role_id": "st_false9"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "000X0006X6000000000000000",
+   "pitch_x": 70,
+   "role_id": "st_false9"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "030003X600000000000000000",
+   "pitch_x": 33,
+   "role_id": "st_false9"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "0030006X60000000000000000",
+   "pitch_x": 50,
+   "role_id": "st_false9"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "00030006X3000000000000000",
+   "pitch_x": 67,
+   "role_id": "st_false9"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0X60000000000000000000000",
+   "pitch_x": 38,
+   "role_id": "st_poacher"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "03X3000000000000000000000",
+   "pitch_x": 50,
+   "role_id": "st_poacher"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "006X000000000000000000000",
+   "pitch_x": 63,
+   "role_id": "st_poacher"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "0X60006300000000000000000",
+   "pitch_x": 37,
+   "role_id": "st_poacher"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "06X6000300000000000000000",
+   "pitch_x": 50,
+   "role_id": "st_poacher"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "006X000330000000000000000",
+   "pitch_x": 62,
+   "role_id": "st_poacher"
+  },
+  {
+   "focus": "Versatile",
+   "kernel25": "0X60006000000000000000000",
+   "pitch_x": 35,
+   "role_id": "st_poacher"
+  },
+  {
+   "focus": "Versatile",
+   "kernel25": "06X6000600000000000000000",
+   "pitch_x": 50,
+   "role_id": "st_poacher"
+  },
+  {
+   "focus": "Versatile",
+   "kernel25": "006X000060000000000000000",
+   "pitch_x": 65,
+   "role_id": "st_poacher"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0X30000000000000000000000",
+   "pitch_x": 35,
+   "role_id": "st_target"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "03X3000000000000000000000",
+   "pitch_x": 50,
+   "role_id": "st_target"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "003X000000000000000000000",
+   "pitch_x": 65,
+   "role_id": "st_target"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "0X00006000000000000000000",
+   "pitch_x": 30,
+   "role_id": "st_target"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "00X0000600000000000000000",
+   "pitch_x": 50,
+   "role_id": "st_target"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "000X000060000000000000000",
+   "pitch_x": 70,
+   "role_id": "st_target"
+  },
+  {
+   "focus": "Wide",
+   "kernel25": "6X00000000000000000000000",
+   "pitch_x": 23,
+   "role_id": "st_target"
+  },
+  {
+   "focus": "Wide",
+   "kernel25": "6636600000000000000000000",
+   "pitch_x": 50,
+   "role_id": "st_target"
+  },
+  {
+   "focus": "Wide",
+   "kernel25": "000X600000000000000000000",
+   "pitch_x": 78,
+   "role_id": "st_target"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0X60036300000000000000000",
+   "pitch_x": 34,
+   "role_id": "w_insidefwd"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "006X000363000000000000000",
+   "pitch_x": 66,
+   "role_id": "w_insidefwd"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "063006X300330000000000000",
+   "pitch_x": 28,
+   "role_id": "w_insidefwd"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "00360003X6000330000000000",
+   "pitch_x": 72,
+   "role_id": "w_insidefwd"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "363003X600300000000000000",
+   "pitch_x": 30,
+   "role_id": "w_insidefwd"
+  },
+  {
+   "focus": "Roaming",
+   "kernel25": "00363006X3000030000000000",
+   "pitch_x": 70,
+   "role_id": "w_insidefwd"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "X600063000300000000000000",
+   "pitch_x": 16,
+   "role_id": "w_wideplm"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0006X00036000030000000000",
+   "pitch_x": 84,
+   "role_id": "w_wideplm"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "33000X6000600000000000000",
+   "pitch_x": 16,
+   "role_id": "w_wideplm"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "000330006X000060000000000",
+   "pitch_x": 84,
+   "role_id": "w_wideplm"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "X3000X0000300000000000000",
+   "pitch_x": 12,
+   "role_id": "w_winger"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0006X0000X000060000000000",
+   "pitch_x": 86,
+   "role_id": "w_winger"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "60000X0000600003000000000",
+   "pitch_x": 10,
+   "role_id": "w_winger"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "000060000X000060000300000",
+   "pitch_x": 90,
+   "role_id": "w_winger"
+  },
+  {
+   "focus": "Versatile",
+   "kernel25": "X6000X0000600003000000000",
+   "pitch_x": 13,
+   "role_id": "w_winger"
+  },
+  {
+   "focus": "Versatile",
+   "kernel25": "0003X0000X000060000300000",
+   "pitch_x": 88,
+   "role_id": "w_winger"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0X60036300300000000000000",
+   "pitch_x": 32,
+   "role_id": "wm_insidefwd"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "006X000363000030000000000",
+   "pitch_x": 68,
+   "role_id": "wm_insidefwd"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "063003X600600000000000000",
+   "pitch_x": 30,
+   "role_id": "wm_insidefwd"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "00360006X3000060000000000",
+   "pitch_x": 70,
+   "role_id": "wm_insidefwd"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "00000X3000X30000000000000",
+   "pitch_x": 15,
+   "role_id": "wm_widemid"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "000000003X0003X0000000000",
+   "pitch_x": 85,
+   "role_id": "wm_widemid"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "0000000000X3000X300000000",
+   "pitch_x": 15,
+   "role_id": "wm_widemid"
+  },
+  {
+   "focus": "Defend",
+   "kernel25": "00000000000003X0003X00000",
+   "pitch_x": 85,
+   "role_id": "wm_widemid"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "0000060000X30006000000000",
+   "pitch_x": 12,
+   "role_id": "wm_widemid"
+  },
+  {
+   "focus": "Support",
+   "kernel25": "00000000060003X0000600000",
+   "pitch_x": 88,
+   "role_id": "wm_widemid"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0000066000330000000000000",
+   "pitch_x": 20,
+   "role_id": "wm_wideplm"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0000000066000330000000000",
+   "pitch_x": 80,
+   "role_id": "wm_wideplm"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "0000033000660000000000000",
+   "pitch_x": 20,
+   "role_id": "wm_wideplm"
+  },
+  {
+   "focus": "Build-Up",
+   "kernel25": "0000000033000660000000000",
+   "pitch_x": 80,
+   "role_id": "wm_wideplm"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "X0000X0000600000000000000",
+   "pitch_x": 10,
+   "role_id": "wm_winger"
+  },
+  {
+   "focus": "Attack",
+   "kernel25": "0000X0000X000060000000000",
+   "pitch_x": 90,
+   "role_id": "wm_winger"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "30000X0000X00003000000000",
+   "pitch_x": 10,
+   "role_id": "wm_winger"
+  },
+  {
+   "focus": "Balanced",
+   "kernel25": "000030000X0000X0000300000",
+   "pitch_x": 90,
+   "role_id": "wm_winger"
+  }
+ ]
+}

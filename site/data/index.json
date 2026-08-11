@@ -1,0 +1,47 @@
+{
+ "game_versions": [
+  {
+   "code": "FC26",
+   "notes": "v1 전 데이터의 대상 버전",
+   "released": "2025-09-26"
+  },
+  {
+   "code": "FC27",
+   "notes": "2026-09 발매 예정 — 온보딩 체크리스트는 docs/21",
+   "released": null
+  }
+ ],
+ "regimes": [
+  {
+   "id": 1,
+   "is_main": 1,
+   "manager": "Unai Emery",
+   "manager_kr": "에메리",
+   "start": "2022-10-24",
+   "team_code": "AVL",
+   "team_kr": "아스톤 빌라",
+   "team_name": "Aston Villa"
+  },
+  {
+   "id": 2,
+   "is_main": 0,
+   "manager": "Xabi Alonso",
+   "manager_kr": "알론소",
+   "start": "2026-07-01",
+   "team_code": "CHE",
+   "team_kr": "첼시",
+   "team_name": "Chelsea"
+  },
+  {
+   "id": 3,
+   "is_main": 0,
+   "manager": "Andoni Iraola",
+   "manager_kr": "이라올라",
+   "start": "2026-07-01",
+   "team_code": "LIV",
+   "team_kr": "리버풀",
+   "team_name": "Liverpool"
+  }
+ ],
+ "window": "2026-summer"
+}
