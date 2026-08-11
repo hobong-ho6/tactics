@@ -325,16 +325,28 @@ sqlite3 data/avl_analysis.db "SELECT focus,plus,negative FROM game_role_focus WH
 > | 항목 | 현행 기준값 |
 > |---|---|
 > | 역할 수 / 조합 / 위치 변형 | **37** / **85** / **217** |
-> | 하지무사 RM(x=86) | **.821** (`wm_winger`/Attack) |
-> | 은디아예 RM(x=86) | **.825** (`wm_winger`/Attack) |
-> | 알리송 RM | **.835** (`wm_winger`/Balanced) |
-> | 캐시 RM | **.835** (`wm_widemid`/Support — 교체 전후 불변, 단일 열 커널) |
+> | 하지무사 RM(x=86) | ~~.821~~ — DB에서 행 삭제됨(보존정책), 검증 불가 |
+> | 은디아예 RM(x=86) | ~~.825~~ — DB에서 행 삭제됨, 검증 불가 |
+> | 알리송 RM | **.833** (`wm_widemid`/Build-Up) |
+> | ⭐ 캐시 RM (`measured:season`) | **.835** (`wm_widemid`/Support — 교체 전후 불변, 단일 열 커널) |
 > | Jackson ST(x=50) | **.752** (`st_advanced`/Support) |
-> | Quiñones ST(x=50) | **.832** (`st_false9`/Attack) |
-> | 만잠비 CAM(x=50) | **.817** (`cam_halfwinger`/Balanced) |
-> | 바투리나 CAM(x=50) | **.711** (`cam_halfwinger`/Balanced) |
-> | 가르나초 LM(x=14) | **.804** (`wm_winger`/Attack) |
-> | 가르나초 W(x=15·28) | **.936** (`w_winger`/Versatile) |
+> | Quiñones ST(x=50) | ~~.832~~ — DB에서 행 삭제됨, 검증 불가 |
+> | 만잠비 CAM(x=50) | **.861** (`cam_halfwinger`/Balanced) |
+> | 바투리나 CAM(x=50) | ~~.711~~ — DB에서 행 삭제됨, 검증 불가 |
+> | 가르나초 LM(x=14) | **.771** (`wm_winger`/Attack) |
+> | 가르나초 W(x=15·28) | **.919** (`w_winger`/Versatile) |
+>
+> ⚠️ **[2026-08-11 obs#140 — 표본 교체로 기준값이 다시 이동했다]** 알리송·만잠비·가르나초의
+> `transfer_targets.map25`를 **4~6경기 → 25/26 전수**로 교체했다. 옛 값(알리송 .835 `wm_winger`/Balanced ·
+> 만잠비 .817 · 가르나초 LM .804 · W .936)은 **작은 표본의 산물이므로 더 이상 쓰지 말 것**.
+> 커널은 그대로이고 **입력 그리드만 바뀌었다** — 즉 이번 이동은 구현 회귀가 아니다.
+> - ⭐ **게이트 항목에는 어느 `kind`의 그리드인지를 반드시 병기하라.** 캐시 RM .835는
+>   `measured:season` 기준이고, 같은 선수의 `measured`로 재면 **.900**이 나온다(2026-08-11 실측).
+>   종류를 안 적어두면 맞는 구현이 틀린 것처럼 보인다.
+> - ⭐ **캐시는 `player_role_map`에 있어 영입 후보 표본 교체의 영향을 받지 않는다 — 독립 앵커로 쓸 것.**
+>   `transfer_targets` 기반 항목은 표본이 갱신될 때마다 같이 움직인다.
+> - ⛔ 삭제된 4건(하지무사·은디아예·Quiñones·바투리나)은 §2 보존정책(MEDIUM-HIGH 미만 삭제)으로
+>   DB에서 빠져 **재현 검증이 원리적으로 불가능**하다. 게이트를 이 4건에 의존시키지 말 것.
 >
 > 추가 불변식 2개: ⑴ 좌우 커널의 **질량 총합이 같다**(옛 방식은 `clamp` 시프트로 가장자리 질량을
 > 뭉갰다), ⑵ 좌우 커널 **질량중심의 합 = 4**(정확한 미러).

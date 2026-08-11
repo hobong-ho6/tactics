@@ -26,8 +26,8 @@ INSERT INTO players VALUES(25,'Marcus Rashford','LW/CF',NULL,NULL,'2025-02~05 �
 INSERT INTO players VALUES(26,'Leon Bailey','RW/LW',NULL,NULL,'2026-07-21 유출 루머로 신규 등재 — 상세 프로필(등번호/출전시간)은 추후 보강',NULL);
 INSERT INTO players VALUES(27,'Kosta Nedeljkovic','RB',20,NULL,'26/27 RB 뎁스 복귀. 25/26 RB 라이프치히 임대: 분데스 5경기(3선발)·252분·평점6.3 + DFB포칼 1경기(45분·평점7.0), 0G/0A. 12월 집중 출전 후 이탈. 실측 우측 딥RB. Source: SofaScore player 1152923 (2026-07-22).',NULL);
 INSERT INTO players VALUES(28,'Samuel Iling-Junior','LM',19,NULL,'26/27 LM 복귀(#19). 25/26 이중 임대 — 웨스트브롬(챔피언십 9월~1월) 24경기·14선발·1290분·평점6.53·1골이 본체, 이후 피사(세리에A 2~3월) 5경기 교체·107분. WBA 등록상 LM이나 실측 주력은 우측(RM/AMR) 12선발, 좌측(LW/AML)은 후반 4선발. Source: SofaScore player 996919 (2026-07-22).',NULL);
-INSERT INTO players VALUES(29,'Joe Gauci','GK',18,NULL,'26/27 백업 GK 복귀. 25/26 포트 베일(리그원) 주전: 34경기 전선발·3060분·평점6.94·클린시트11·세이브89·실점40·세이브율62% + EFL컵 2경기(1CS). GK라 히트맵/평균위치 미수집(시즌 요약만). Source: SofaScore player 966874 season stats (2026-07-22).',NULL);
-INSERT INTO players VALUES(30,'George Hemmings','DM',53,71,'25/26 유스(U21) DM, #53. 2007-03-04생(잉글랜드, 노팅엄 포레스트 유스→2024 빌라). 1군 데뷔 시즌 — 시니어 PL 2경기 25분(A아스널 8''·H에버튼 17'', 둘 다 평점6.6) + 유로파리그 2경기 46분(A페네르바체 1''·H잘츠부르크 45''선발 평점6.5, 실측 좌측 피봇 DM avg 44.5/67.6). 유로파리그 우승 스쿼드 멤버. 유스: PL2 Div1 11경기 전선발·928분·3어시(vs Leicester/Stoke/Man City U21; SofaScore 평점 미제공, FotMob 7.3 참고=QUALITATIVE), UEFA 유스리그 3경기 225분(평점 7.8/7.1/6.7), EFL트로피 1경기 90분 6.4, 프리시즌 AS로마 26''. PL2·유스리그는 SofaScore 히트맵·평균위치 미제공 → 포지션 그리드 미생성. 잉글랜드 U18/U19. Source: SofaScore player 1398204 (2026-07-24).',NULL);
+INSERT INTO players VALUES(29,'Joe Gauci','GK',18,NULL,'26/27 백업 GK 복귀. 25/26 포트 베일(리그원) 주전: 34경기 전선발·3060분·평점6.94·클린시트11·세이브89·실점40·세이브율62% + EFL컵 2경기(1CS). GK라 히트맵/평균위치 미수집(시즌 요약만). Source: SofaScore player 966874 season stats (2026-07-22).','가우치');
+INSERT INTO players VALUES(30,'George Hemmings','DM',53,71,'25/26 유스(U21) DM, #53. 2007-03-04생(잉글랜드, 노팅엄 포레스트 유스→2024 빌라). 1군 데뷔 시즌 — 시니어 PL 2경기 25분(A아스널 8''·H에버튼 17'', 둘 다 평점6.6) + 유로파리그 2경기 46분(A페네르바체 1''·H잘츠부르크 45''선발 평점6.5, 실측 좌측 피봇 DM avg 44.5/67.6). 유로파리그 우승 스쿼드 멤버. 유스: PL2 Div1 11경기 전선발·928분·3어시(vs Leicester/Stoke/Man City U21; SofaScore 평점 미제공, FotMob 7.3 참고=QUALITATIVE), UEFA 유스리그 3경기 225분(평점 7.8/7.1/6.7), EFL트로피 1경기 90분 6.4, 프리시즌 AS로마 26''. PL2·유스리그는 SofaScore 히트맵·평균위치 미제공 → 포지션 그리드 미생성. 잉글랜드 U18/U19. Source: SofaScore player 1398204 (2026-07-24).','헤밍스');
 INSERT INTO players VALUES(31,'Robert Sánchez','GK',NULL,NULL,'첼시 25/26 PL 35경기 선발. SofaScore 920546',NULL);
 INSERT INTO players VALUES(32,'Malo Gusto','RB',NULL,NULL,'첼시 25/26 PL 34경기. SofaScore 996958',NULL);
 INSERT INTO players VALUES(33,'Wesley Fofana','CB',NULL,NULL,'첼시 25/26 PL 25경기. SofaScore 923894',NULL);
@@ -52,3 +52,9 @@ INSERT INTO players VALUES(51,'Dominik Szoboszlai','CM/RW',NULL,NULL,'리버풀 
 INSERT INTO players VALUES(52,'Florian Wirtz','CAM',NULL,NULL,'£100m 영입, 리버풀 25/26 PL 33경기. SofaScore 1019322',NULL);
 INSERT INTO players VALUES(53,'Cody Gakpo','LW/ST',NULL,NULL,'리버풀 25/26 PL 36경기. SofaScore 862967',NULL);
 INSERT INTO players VALUES(54,'Mohamed Salah','RW',NULL,NULL,'리버풀 25/26 PL 27경기 → 2026-07-01 계약 조기 해지(FA). SofaScore 159665',NULL);
+INSERT INTO players VALUES(55,'Johan Manzambi','CM/AM',NULL,NULL,'2026 여름 프라이부르크에서 합류(CONFIRMED). SofaScore pid 1518931. 실측은 25/26 프라이부르크 클럽 46경기 + 스위스 대표팀 14경기(월드컵 4 포함).','만잠비');
+INSERT INTO players VALUES(56,'João Gomes','DM/CM',NULL,NULL,'Wolverhampton → Aston Villa. SofaScore pid 1015267. 26/27 스쿼드 실측 (2026-08-11).','주앙 고메스');
+INSERT INTO players VALUES(57,'Modou Kéba Cissé','CB',NULL,NULL,'LASK → Aston Villa. SofaScore pid 1944705. 26/27 스쿼드 실측 (2026-08-11).','시세');
+INSERT INTO players VALUES(58,'Alejandro Garnacho','LW',NULL,NULL,'Chelsea → Aston Villa. SofaScore pid 1135873. 26/27 스쿼드 실측 (2026-08-11).','가르나초');
+INSERT INTO players VALUES(59,'Alysson','RW',NULL,NULL,'Aston Villa (2026-01). SofaScore pid 1631879. 26/27 스쿼드 실측 (2026-08-11).','알리송');
+INSERT INTO players VALUES(60,'Tammy Abraham','ST',NULL,NULL,'Aston Villa. SofaScore pid 610766. 26/27 스쿼드 실측 (2026-08-11).','타미 아브라함');
