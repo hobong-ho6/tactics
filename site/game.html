@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>게임 시스템 — tactics v2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<div id="hdr"></div>
+<h1>FC 게임 시스템 분석 <small class="dim" id="gv"></small></h1>
+<div class="panel"><h2>시스템 분석 — 구현에 영향을 주는 확정 사실 <small class="dim">game_system_changes</small></h2>
+  <table id="chg"></table></div>
+<div class="panel"><h2>역할 라이브러리 <small class="dim">역할 37 × 포커스 85 — EA 원문 정의·강화/희생 태그</small></h2>
+  <label class="kv">포지션군 <select id="grp"></select></label>
+  <table id="roles"></table></div>
+<div class="panel"><h2>팀 전술 파라미터 <small class="dim">game_tactic_params</small></h2><table id="prm"></table></div>
+<p class="dim">EA 피치노트 원문 분석·판정 이력 전문은 docs/20이 정본. FIFA→FC 변천사는 FC27 온보딩(docs/21) 때 소급 기입.</p>
+<script type="module">
+import { mountHeader, loadKernels } from './assets/data.js';
+await mountHeader('game.html');
+const kd = await loadKernels('FC26');
+document.getElementById('gv').textContent = kd.game_version;
+const AREA={engine:'엔진',roles:'역할',positioning:'포지셔닝',attributes:'속성',tactics:'전술',playstyles:'플레이스타일',meta:'메타'};
+document.getElementById('chg').innerHTML='<tr><th>영역</th><th>확정 사실</th><th>구현에의 영향</th><th>근거</th></tr>'+
+ (kd.system_changes??[]).map(c=>`<tr><td><b>${AREA[c.area]??c.area}</b></td><td>${c.change}</td><td>${c.impact??''}</td><td class="dim">${c.evidence??''}</td></tr>`).join('');
+const groups=[...new Set(kd.roles.map(r=>r.position_type))];
+const grp=document.getElementById('grp');
+grp.innerHTML=groups.map(g=>`<option>${g}</option>`).join('');
+grp.addEventListener('change',renderRoles);
+function renderRoles(){
+  const rs=kd.roles.filter(r=>r.position_type===grp.value);
+  document.getElementById('roles').innerHTML='<tr><th>역할</th><th>포커스</th><th>EA 정의</th><th>강화(+)</th><th>희생(−)</th></tr>'+
+   rs.flatMap(r=>kd.focus.filter(f=>f.role_id===r.role_id).map(f=>
+    `<tr><td><b>${r.name}</b> <small class="dim">${f.ea_role_name??r.role_id}</small></td><td>${f.focus}</td>
+     <td class="dim">${f.description??''}</td><td>${_j(f.plus)}</td><td>${_j(f.negative)}</td></tr>`)).join('');
+}
+function _j(v){ try{const a=JSON.parse(v??'[]');return Array.isArray(a)?a.join('·'):'';}catch(e){return v??'';} }
+renderRoles();
+document.getElementById('prm').innerHTML='<tr><th>파라미터</th><th>옵션</th><th>설명</th></tr>'+
+ kd.tactic_params.map(p=>`<tr><td>${p.param}</td><td><b>${p.option}</b></td><td class="dim">${p.description??''}</td></tr>`).join('');
+</script></body></html>

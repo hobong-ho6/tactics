@@ -62,9 +62,12 @@ def export_all(db_path=None, window="2026-summer"):
                                  ORDER BY role_id, focus, pitch_x""", (gv,))
         params = _rows(con, """SELECT param, option, description FROM game_tactic_params
                                WHERE game_version=? ORDER BY param, option""", (gv,))
+        changes = _rows(con, """SELECT area, change, evidence, impact, source, confidence, recorded
+                               FROM game_system_changes WHERE game_version=? ORDER BY id""", (gv,))
         written.append(_write(SITE_DATA / "kernels" / f"{gv}.json",
                               {"game_version": gv, "roles": roles, "focus": focus,
-                               "variants": variants, "tactic_params": params}))
+                               "variants": variants, "tactic_params": params,
+                               "system_changes": changes}))
 
     # ── game_stats/{GV}.json — sofifa 스탯·플레이스타일 (name_kr 키, 표시 전용) ──
     for (gv,) in con.execute("SELECT DISTINCT game_version FROM player_game_stats"):
