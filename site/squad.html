@@ -10,6 +10,7 @@
 <span class="mono">python3 scripts/export.py</span>를 다시 돌릴 것.</p>
 <script type="module">
 import { mountHeader, loadTeam, loadKernels, loadGameStats, sofifaLink, statLine } from './assets/data.js';
+import { annotate } from './assets/glossary.js';
 import { Kernel } from './assets/kernel.js';
 import { miniGrid } from './assets/pitch.js';
 
@@ -31,7 +32,7 @@ for (const s of slots){
                    .sort((a, b) => b.bf.sim - a.bf.sim);
   ranked.forEach(({ q, bf }, i) => rows.push(`<tr>
     <td>${i === 0 ? `<b>${s.pos}</b>` : ''}</td>
-    <td>${i === 0 ? '★ ' : ''}${q.label} ${sofifaLink(q.label, GS)}<br><small>${statLine(q.label, GS)}</small></td>
+    <td>${i === 0 ? '★ ' : ''}${q.label} ${sofifaLink(q.label, GS)}<br><small>${annotate(statLine(q.label, GS))}</small></td>
     <td>${K.roleName[bf.role] ?? bf.role}/${bf.focus} <b>${bf.sim.toFixed(3)}</b></td>
     <td>${q.rate_v ?? '—'} <small class="dim">${q.rate_note ?? ''}</small></td>
     <td>${miniGrid(q.map25, 60)}</td>
