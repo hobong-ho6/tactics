@@ -41,36 +41,26 @@
 
 ## 현재 상태
 
-> 마지막 갱신: **2026-08-11** · 세션 **#12** · 브랜치 `main` · 마지막 커밋 **`72b010a`** · obs **141개**.
-> ⭐⭐⭐ **시스템 전면 재설계(v2) 진행 중 — 단계 0~4 완료, 5~7 잔여.** 설계·규약·진행 상태의
-> 정본은 **[docs/00-overview.md](docs/00-overview.md)** 다. 태그 `pre-redesign`이 v1 최종 상태.
+> 마지막 갱신: **2026-08-11 (야간)** · 세션 **#12(재설계 세션)** · 브랜치 `main` · 마지막 커밋 **`2578729`** · obs **148개**.
+> ⭐⭐⭐ **v2 재설계 + 컷오버 + 사이트 9페이지 완성.** 정본: docs/00-overview.md. v1은 archive/v1·data/(동결).
 >
-> **완료(전부 커밋·게이트 통과)**: ⑴ `db/tactics.db` 신스키마+전량 마이그레이션(행수 무손실,
-> 인코딩 112행 정규화 — v1에 반올림 두 세대 혼재했음) ⑵ `core/` 엔진 패키지(kernel/encode/
-> aggregate/sofascore) ⑶ `scripts/gates.py` G1~G5 ⑷ `scripts/export.py` → `site/data/*.json`
-> (v1 AUTOGEN과 파리티 완전 일치) ⑸ `site/` 6페이지(3팀 렌더 검증 — 포파나 RCB .943/CCB .669/
-> LCB .256이 v1 수기값 정확 재현).
+> **이 세션의 산출**: ⑴ v2 전체(스키마·core/·게이트 G1~G5·export·site) ⑵ transfer-watch 3팀化 ⑶ match-watch
+> 스킬+주간 스케줄+슈퍼컵 1회차(08-13 09시) ⑷ 영상·서사 분석 절차 성문화(docs/30) + 파일럿 12명 완료
+> (obs#142~147, 고메스 재검토 obs#144=dlp 유지, 알리송 긴장 잠정) ⑸ 감독 3명 프로필 시드+영상 보강(obs#146)
+> ⑹ 정합성 수리 — CONFIRMED는 squad_entries 승격 규칙(docs/00) ⑺ 선수 페이지 스카우팅 리포트화
+> (2단 선택·영입 추적 그룹·레이더·폼·유사 프로필·백분위) ⑻ obs#148: 만잠비-고메스 .960 — **사용자 방침:
+> 만잠비=CAM 기대, 고메스=딥 LDM, 겹침은 백업 호환성으로 재해석.**
 >
-> **⭐ 컷오버 완료(2026-08-11)** — 이제 모든 쓰기는 **v2(db/tactics.db)**. v1은 동결 아카이브.
-> transfer-watch는 3팀 체제(AVL 전체 / CHE·LIV 스캔+기록) — **오늘 21시 스케줄 런이 v2 첫 실전**.
+> **다음 세션 우선순위**:
+> 1. **08-12 슈퍼컵 결과 확인**(08-13 09시 스케줄 런) + 오늘 21시 transfer-watch 첫 3팀 런 점검
+>    (CHE 8455·LIV 8650 fotmob id 검증, TransferFeed CHE/LIV 슬러그 확보).
+> 2. **게임 시스템 페이지 정의문 85건 한글 전문 번역** — 태그 39종은 한글화 완료, EA 정의문이
+>    영문 병기로 남아 있음(사용자 요청 잔여분). game_role_focus에 description_kr 컬럼 추가 권장.
+> 3. 외부 소스 백로그: Transfermarkt(계약·부상) + FBref(리그 백분위·PPDA 원료) — 묶어서 처리.
+> 4. manager_profiles 잔여 축(set_pieces·rotation·market — rotation은 player_matches 파생 가능).
+> 5. 26/27 개막(8/21~) 후: CHE/LIV 알론소·이라올라 체제 실측 시작 + 만잠비 CAM 기용 검증(obs#148).
 >
-> **다음 세션이 이어서 할 일**:
-> 0. ⭐ **08-12 슈퍼컵 수집** — `/match-watch` 실행(신설 스킬). obs#134~136 검증 포함.
->    이후 시즌 중 주간 실행(스케줄 등록됨). 수집 전 core.classify.pos_class로 세분류.
-> 0-b. **데이터·방법론 보강 작업지시(2026-08-11 사용자 확정)**: ⑴ FBref 팀 스탯(PPDA 원료,
->    소스 명기·팀 레벨만) ⑵ manager_profiles 11축 시드 — 5축은 docs/10~12 이관,
->    rotation은 player_matches 파생, market은 transfer-watch 요약, set_pieces는 incidents
->    ⑶ 약표본 3건(헤밍스·가우치·AVL 스쿼드 3명 구그리드) ⑷ 스코어 국면(@lead/@trail —
->    match-watch §2가 원료 수집) ⑸ R축 재시도는 26/27 표본 축적 후 docs/60 양식으로.
-> 1. 21시 transfer-watch 런 결과 점검 — CHE 8455·LIV 8650 fotmob id 검증, TransferFeed
->    CHE/LIV 슬러그 확보해 SKILL.md에 추가.
-> 2. 단계 5 잔여 — manager_profiles 11축 시드(docs/10~12에서), docs/22-fifa-to-fc 신설.
-> 3. 단계 7 — FC27 온보딩(9월): docs/21 + game_system_changes 소급 기입.
-> 4. 데이터 백로그 — AVL squad_entries 3명(가르나초·알리송·아브라함) 구표본 그리드를
->    prescriptions 확장 표본으로 갱신 후 재익스포트.
->
-> ⚠️ 미커밋 `.gitignore`·`README.md`
-> + untracked는 여전히 사용자 소유 — `git add -A` 금지.
+> ⚠️ 미커밋 `.gitignore`·`README.md` + untracked는 사용자 소유 — `git add -A` 금지.
 
 ## 다음 할 일
 
