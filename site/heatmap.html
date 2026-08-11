@@ -61,9 +61,11 @@ function buildBar(){
 const who=document.getElementById('who');
 who.addEventListener('change', render);
 function fillWho(){
+  const keep=who.value;
   who.innerHTML='<option value="">전체 합성</option>'+useSlots.map(s2=>{
     const c=cands(s2.pos); return c.length?`<option value="${s2.pos}">${s2.pos} — ${c[sel[s2.pos]].label}</option>`:'';
   }).join('');
+  who.value=keep;
 }
 function render(){
   fillWho();
