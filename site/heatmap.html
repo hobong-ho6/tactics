@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>히트맵 비교 — tactics v2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<div id="hdr"></div>
+<h1>히트맵 비교 <small class="dim">A = 실측 그리드 · B = 처방 역할 커널 (같은 인선)</small></h1>
+<div class="panel" id="slotBar"></div>
+<div class="grid2">
+  <div class="panel"><h2>A · 실측</h2><canvas class="pitch" id="cvA" width="640" height="860"></canvas></div>
+  <div class="panel"><h2>B · 처방(커널)</h2><canvas class="pitch" id="cvB" width="640" height="860"></canvas></div>
+</div>
+<p class="dim">데이터: teams/{팀}.json (slots·squad·prescriptions) + kernels/FC26.json. 인선을 바꾸면 즉시 다시 그린다.
+칸이 비면 그 슬롯은 실측 후보가 없는 것 — 데이터가 생기면 자동으로 나타난다.</p>
+<script type="module">
+import { mountHeader, loadTeam, loadKernels } from './assets/data.js';
+import { Kernel, decodeMap } from './assets/kernel.js';
+import { drawPitch, drawComposite, drawChip } from './assets/pitch.js';
+
+const { team } = await mountHeader('heatmap.html');
+const [td, kd] = await Promise.all([loadTeam(team), loadKernels('FC26')]);
+const K = new Kernel(kd);
+const slots = td.slots;   // 단일 포메이션 가정 (복수면 첫 formation)
+const formation = slots[0]?.formation;
+const useSlots = slots.filter(s => s.formation === formation);
+
+// 슬롯별 후보 = squad에서 slot_type 일치
+const cands = pos => {
+  const st = useSlots.find(s => s.pos === pos)?.slot_type;
+  return td.squad.filter(q => q.slot_type === st);
+};
+/* 초기 인선 — slot_type 필터만으로는 좌우 쌍(LCB/RCB 등)이 같은 후보를 중복
+   선택하므로, 이미 쓴 선수를 건너뛰며 배정한다. DB에 fit_sim이 있으면 높은 순. */
+const sel = {};   // pos -> squad index(후보 배열 내)
+{
+  const used = new Set();
+  for (const s of useSlots){
+    const c = cands(s.pos);
+    let pick = c.findIndex(q => !used.has(q.label));
+    if (pick < 0) pick = 0;
+    sel[s.pos] = pick;
+    if (c[pick]) used.add(c[pick].label);
+  }
+}
+
+function buildBar(){
+  const bar = document.getElementById('slotBar');
+  bar.innerHTML = `<b>${formation ?? '(슬롯 미정의)'}</b> ` + useSlots.map(s => {
+    const c = cands(s.pos);
+    if (!c.length) return `<span class="badge dead" title="실측 후보 없음">${s.pos} 공백</span>`;
+    return `<label class="kv" style="margin-right:10px">${s.pos}
+      <select data-pos="${s.pos}">${c.map((q, i) =>
+        `<option value="${i}" ${i === sel[s.pos] ? 'selected' : ''}>${q.label}</option>`).join('')}
+      </select></label>`;
+  }).join(' ');
+  bar.querySelectorAll('select').forEach(el => el.addEventListener('change', () => {
+    sel[el.dataset.pos] = +el.value; render();
+  }));
+}
+
+function render(){
+  for (const [id, mode] of [['cvA', 'measured'], ['cvB', 'kernel']]){
+    const cv = document.getElementById(id), ctx = cv.getContext('2d');
+    drawPitch(ctx, cv.width, cv.height);
+    const decoded = [], chips = [];
+    for (const s of useSlots){
+      const c = cands(s.pos); if (!c.length) continue;
+      const q = c[sel[s.pos]];
+      let map = null;
+      if (mode === 'measured') map = decodeMap(q.map25);
+      else if (q.fit_role) map = K.placed(q.fit_role, q.fit_focus, s.x);
+      if (map) decoded.push(map);
+      chips.push([s.x, s.y, q.label]);
+    }
+    drawComposite(ctx, cv.width, cv.height, decoded);
+    for (const [x, y, label] of chips) drawChip(ctx, cv.width, cv.height, x, y, label);
+  }
+}
+buildBar(); render();
+</script></body></html>

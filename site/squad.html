@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>스쿼드 — tactics v2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<div id="hdr"></div>
+<h1>스쿼드 · 베스트 11 <small class="dim">슬롯별 실측 최적 인선 — 평점·적합 근거 병기</small></h1>
+<div class="panel"><table id="tbl"></table></div>
+<p class="dim">적합(sim)은 커널 라이브 산출값. DB 저장값과 어긋나면 익스포트가 낡은 것 —
+<span class="mono">python3 scripts/export.py</span>를 다시 돌릴 것.</p>
+<script type="module">
+import { mountHeader, loadTeam, loadKernels } from './assets/data.js';
+import { Kernel } from './assets/kernel.js';
+import { miniGrid } from './assets/pitch.js';
+
+const { team } = await mountHeader('squad.html');
+const [td, kd] = await Promise.all([loadTeam(team), loadKernels('FC26')]);
+const K = new Kernel(kd);
+const slots = td.slots.filter(s => s.formation === td.slots[0]?.formation);
+
+const rows = [];
+for (const s of slots){
+  const cs = td.squad.filter(q => q.slot_type === s.slot_type);
+  if (!cs.length){ rows.push(`<tr><td>${s.pos}</td><td colspan="5" class="dim">실측 후보 없음 — 공백 슬롯</td></tr>`); continue; }
+  const ranked = cs.map(q => ({ q, bf: K.bestFit(q.map25, s.x, s.slot_type) }))
+                   .sort((a, b) => b.bf.sim - a.bf.sim);
+  ranked.forEach(({ q, bf }, i) => rows.push(`<tr>
+    <td>${i === 0 ? `<b>${s.pos}</b>` : ''}</td>
+    <td>${i === 0 ? '★ ' : ''}${q.label}</td>
+    <td>${K.roleName[bf.role] ?? bf.role}/${bf.focus} <b>${bf.sim.toFixed(3)}</b></td>
+    <td>${q.rate_v ?? '—'} <small class="dim">${q.rate_note ?? ''}</small></td>
+    <td>${miniGrid(q.map25, 60)}</td>
+    <td class="dim">${q.fit_role ? `DB: ${q.fit_role}/${q.fit_focus} ${q.fit_sim ?? ''}` : ''}</td>
+  </tr>`));
+}
+document.getElementById('tbl').innerHTML =
+  `<tr><th>슬롯</th><th>선수</th><th>커널 적합(라이브)</th><th>평점</th><th>그리드</th><th>DB 저장값</th></tr>`
+  + rows.join('');
+</script></body></html>

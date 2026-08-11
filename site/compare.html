@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>선수 비교 — tactics v2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<div id="hdr"></div>
+<h1>선수 비교 · 영입 적합성 <small class="dim">후보 풀 = 스쿼드 실측 + 이적 후보(DEAD 제외) — DB가 단일 소스</small></h1>
+<div class="panel">
+  <label class="kv">슬롯 <select id="slotSel"></select></label>
+</div>
+<div class="panel"><h2 id="rankTitle"></h2><table id="rank"></table></div>
+<div class="cardrow" id="cards"></div>
+<script type="module">
+import { mountHeader, loadTeam, loadKernels } from './assets/data.js';
+import { Kernel } from './assets/kernel.js';
+import { miniGrid } from './assets/pitch.js';
+
+const { team } = await mountHeader('compare.html');
+const [td, kd] = await Promise.all([loadTeam(team), loadKernels('FC26')]);
+const K = new Kernel(kd);
+const slots = td.slots.filter(s => s.formation === td.slots[0]?.formation);
+
+/* 후보 풀 — v1 CMP_SLOTS의 후계. 하드코딩이 아니라 export 데이터에서 조립하므로
+   v1의 "강등 후보 유령 잔존" 사고(2026-08-11, 13건)가 구조적으로 재발 불가. */
+function pool(slot){
+  const owned = td.squad.filter(q => q.slot_type === slot.slot_type)
+    .map(q => ({ label: q.label, map25: q.map25, lh: q.lh, rate: q.rate_v, note: q.rate_note }));
+  const incoming = td.transfer.targets
+    .filter(t => t.slot === slot.pos && t.map25 && !/^DEAD/i.test(t.likelihood || ''))
+    .map(t => ({ label: (t.likelihood === 'CONFIRMED' ? `${t.short_label}(합류확정)` : `영입·${t.short_label}`),
+                 map25: t.map25, lh: t.likelihood, rate: t.avg_rating,
+                 note: `표본 ${t.sample_n}경기 (${t.club ?? ''})`, dbFit: t.fit_sim }));
+  return [...owned, ...incoming];
+}
+const badge = lh => !lh || lh === 'OWNED' ? '<span class="badge own">보유</span>'
+  : /^CONFIRMED/.test(lh) ? '<span class="badge hi">합류확정</span>'
+  : /^HIGH/.test(lh) ? `<span class="badge hi">${lh.split(' ')[0]}</span>`
+  : `<span class="badge mid">${lh.split(' ')[0]}</span>`;
+
+const selEl = document.getElementById('slotSel');
+selEl.innerHTML = slots.map(s => `<option value="${s.pos}">${s.pos} (${s.slot_type}, x=${s.x})</option>`).join('');
+selEl.addEventListener('change', render);
+
+function render(){
+  const slot = slots.find(s => s.pos === selEl.value) ?? slots[0];
+  const rows = pool(slot).map(c => {
+    const bf = K.bestFit(c.map25, slot.x, slot.slot_type);   // 라이브 산출 — dbFit과 대조 가능
+    return { ...c, ...bf };
+  }).sort((a, b) => b.sim - a.sim);
+  document.getElementById('rankTitle').textContent =
+    `${slot.pos} 슬롯 적합 랭킹 (커널 x=${slot.x} · ${slot.slot_type}군 ${rows.length}명)`;
+  document.getElementById('rank').innerHTML =
+    `<tr><th>#</th><th>선수</th><th>적합 역할/포커스</th><th>sim</th><th>DB값</th><th>평점</th><th>근거</th></tr>` +
+    rows.map((r, i) => `<tr><td>${i+1}</td><td>${r.label} ${badge(r.lh)}</td>
+      <td>${K.roleName[r.role] ?? r.role}/${r.focus}</td><td><b>${r.sim.toFixed(3)}</b></td>
+      <td class="dim">${r.dbFit != null ? r.dbFit.toFixed(3) : '—'}</td>
+      <td>${r.rate ?? '—'}</td><td class="dim">${r.note ?? ''}</td></tr>`).join('');
+  document.getElementById('cards').innerHTML = rows.slice(0, 4).map(r => `
+    <div class="pcard"><b>${r.label}</b><br>${miniGrid(r.map25)}<br>
+    <span class="dim mono">${r.map25}</span></div>`).join('');
+}
+render();
+</script></body></html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>이적 — tactics v2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<div id="hdr"></div>
+<h1>이적 감시 <small class="dim" id="win"></small></h1>
+<div class="panel"><h2>영입 후보</h2><table id="in"></table></div>
+<div class="grid2">
+  <div class="panel"><h2>유출 감시</h2><table id="out"></table></div>
+  <div class="panel"><h2>수지 원장</h2><table id="ledger"></table></div>
+</div>
+<script type="module">
+import { mountHeader, loadTeam, loadIndex } from './assets/data.js';
+import { miniGrid } from './assets/pitch.js';
+
+const { team, idx } = await mountHeader('transfer.html');
+const td = await loadTeam(team);
+document.getElementById('win').textContent = idx.window;
+
+const badge = lh => !lh ? '' : /^DEAD/i.test(lh) ? `<span class="badge dead">DEAD</span>`
+  : /^CONFIRMED/.test(lh) ? '<span class="badge hi">확정</span>'
+  : /^HIGH/.test(lh) ? `<span class="badge hi">${lh.split(' ')[0]}</span>`
+  : `<span class="badge mid">${lh.split(' ')[0]}</span>`;
+
+const T = td.transfer;
+document.getElementById('in').innerHTML =
+  `<tr><th>선수</th><th>슬롯</th><th>등급</th><th>최신 보도</th><th>적합</th><th>표본</th><th>그리드</th></tr>` +
+  (T.targets.map(t => `<tr><td><b>${t.name_kr ?? t.name}</b> <small class="dim">${t.club ?? ''}</small></td>
+    <td>${t.slot}</td><td>${badge(t.likelihood)}</td><td>${t.last_news_date ?? '—'}</td>
+    <td>${t.fit_role ? `${t.fit_role}/${t.fit_focus} <b>${t.fit_sim}</b>` : '—'}</td>
+    <td>${t.sample_n ?? '—'}경기 ${t.avg_rating ?? ''}</td>
+    <td>${t.map25 ? miniGrid(t.map25, 50) : '<small class="dim">PENDING</small>'}</td></tr>`).join('')
+   || '<tr><td colspan="7" class="dim">이 팀의 이적 감시 데이터 없음</td></tr>');
+
+document.getElementById('out').innerHTML =
+  `<tr><th>선수</th><th>행선</th><th>등급</th><th>최신</th></tr>` +
+  (T.outgoing.map(o => `<tr><td>${o.name_kr ?? o.name}</td><td>${o.dest_club}</td>
+    <td>${badge(o.likelihood)}</td><td>${o.last_news_date ?? '—'}</td></tr>`).join('')
+   || '<tr><td colspan="4" class="dim">없음</td></tr>');
+
+document.getElementById('ledger').innerHTML =
+  `<tr><th>구분</th><th>항목</th><th>금액(€m)</th><th>비고</th></tr>` +
+  (T.ledger.map(l => `<tr><td>${l.kind}</td><td>${l.label}</td><td>${l.amount_m}</td>
+    <td class="dim">${l.note ?? ''}</td></tr>`).join('')
+   || '<tr><td colspan="4" class="dim">없음</td></tr>');
+</script></body></html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>tactics v2 — 실축→FC 구현</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<div id="hdr"></div>
+<h1>실축 → FC 구현 <small class="dim">감독·팀 페어 3개 · 게임 버전 축 (FC26 → FC27)</small></h1>
+<div class="cardrow" id="cards"></div>
+<div class="panel">
+  <h2>페이지</h2>
+  <table>
+    <tr><td><a href="heatmap.html"><b>히트맵 비교</b></a></td><td class="dim">실측 그리드 vs 처방 역할 커널 — A/B 합성 렌더</td></tr>
+    <tr><td><a href="squad.html"><b>스쿼드</b></a></td><td class="dim">슬롯별 실측 최적 인선 + 커널 적합 랭킹</td></tr>
+    <tr><td><a href="compare.html"><b>선수 비교</b></a></td><td class="dim">보유 + 영입 후보의 슬롯 적합성 비교</td></tr>
+    <tr><td><a href="transfer.html"><b>이적</b></a></td><td class="dim">transfer-watch 감시 현황 (영입·유출·수지)</td></tr>
+    <tr><td><a href="report.html"><b>리포트</b></a></td><td class="dim">감독 프로필 11축 + 팀 전술 세팅</td></tr>
+  </table>
+</div>
+<p class="dim">데이터 흐름: db/tactics.db → <span class="mono">scripts/export.py</span>(게이트 통과 필수)
+→ site/data/*.json → 이 페이지들. 손편집 지점 없음.</p>
+<script type="module">
+import { mountHeader, loadTeam } from './assets/data.js';
+const { idx } = await mountHeader('index.html');
+const cards = await Promise.all(idx.regimes.map(async r => {
+  const td = await loadTeam(r.team_code);
+  return `<div class="pcard"><b>${r.team_kr}</b> <small class="dim">${r.manager_kr ?? r.manager}</small><br>
+    <span class="kv">스쿼드 실측 <b>${td.squad.length}</b>명 · 처방 <b>${td.prescriptions.length}</b>행 ·
+    이적 감시 <b>${td.transfer.targets.length}</b>건</span><br>
+    <small class="dim">${r.is_main ? '★ 주 분석 대상' : ''} ${r.start ?? ''}~</small></div>`;
+}));
+document.getElementById('cards').innerHTML = cards.join('');
+</script></body></html>

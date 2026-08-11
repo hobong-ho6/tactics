@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>전술 리포트 — tactics v2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<div id="hdr"></div>
+<h1 id="title"></h1>
+<div class="panel"><h2>감독 프로필 <small class="dim">manager_profiles — 11축</small></h2>
+  <table id="profile"></table></div>
+<div class="panel"><h2>팀 전술 세팅 <small class="dim">team_tactic_setups</small></h2>
+  <table id="setups"></table></div>
+<p class="dim">서사·분석 전문은 docs/1x 감독 문서가 정본이다 — 이 페이지는 DB에 확정 기록된
+결론(프로필 축·세팅)만 보여준다.</p>
+<script type="module">
+import { mountHeader, loadTeam } from './assets/data.js';
+
+const { team, regime } = await mountHeader('report.html');
+const td = await loadTeam(team);
+document.getElementById('title').textContent =
+  `${regime.manager_kr ?? regime.manager} · ${regime.team_kr}`;
+
+const AXES = { philosophy:'철학', traits:'전술적 특징', role_demands:'역할 요구',
+  formation:'포메이션', situational:'상황별 변화', pressing:'압박·PPDA',
+  buildup:'빌드업', rest_defense:'rest-defense', set_pieces:'세트피스',
+  rotation:'로테이션', market:'이적 정책' };
+
+document.getElementById('profile').innerHTML =
+  `<tr><th>축</th><th>확정 결론</th><th>근거</th><th>갱신</th></tr>` +
+  (td.profile.length ? td.profile.map(p => `<tr><td><b>${AXES[p.axis] ?? p.axis}</b></td>
+     <td>${p.content}</td><td class="dim">${p.evidence ?? ''}</td><td>${p.updated ?? ''}</td></tr>`).join('')
+   : `<tr><td colspan="4" class="dim">아직 프로필 축이 기록되지 않았다 — docs 문서에서 이관 예정
+      (manager_profiles 테이블에 INSERT 후 재익스포트)</td></tr>`);
+
+document.getElementById('setups').innerHTML =
+  `<tr><th>시즌</th><th>종류</th><th>포메이션</th><th>빌드업</th><th>수비</th><th>라인</th><th>신뢰도</th></tr>` +
+  td.setups.map(s => `<tr><td>${s.season}</td><td>${s.kind}</td><td>${s.formation ?? ''}</td>
+    <td>${s.build_up_style ?? ''}</td><td>${s.defensive_approach ?? ''}</td>
+    <td>${s.line_height ?? ''}</td><td class="dim">${(s.confidence ?? '').slice(0, 60)}</td></tr>`).join('');
+</script></body></html>

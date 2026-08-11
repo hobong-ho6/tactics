@@ -102,10 +102,54 @@ def run(db_path=None, verbose=True):
         if not ok:
             fails.append("G4")
 
+    # G5 — JS 커널 동치 (site/assets/kernel.js가 파이썬과 같은 값을 내는가)
+    #      node + 익스포트된 kernels/FC26.json으로 앵커 재계산. node/JSON 부재 시 건너뜀.
+    import subprocess
+    kern_json = Path(__file__).resolve().parent.parent / "site" / "data" / "kernels" / "FC26.json"
+    if kern_json.exists():
+        cases = []   # (map25, x, slot_type, 기대 sim)
+        for label, sql, params, x, st, wr, wf, ws in ANCHORS:
+            con2 = sqlite3.connect(db_path)
+            m25 = params if sql is None else (con2.execute(sql, params).fetchone() or [None])[0]
+            con2.close()
+            if m25:
+                cases.append((m25, x, st, ws))
+        js = (
+            "import { Kernel } from " + json_str(kernel_js_uri()) + ";\n"
+            "import { readFileSync } from 'fs';\n"
+            "const K = new Kernel(JSON.parse(readFileSync(" + json_str(str(kern_json)) + ", 'utf8')));\n"
+            "const cases = " + json_str(cases) + ";\n"
+            "for (const [m25, x, st, ws] of cases) {\n"
+            "  const r = K.bestFit(m25, x, st);\n"
+            "  if (Math.abs(r.sim - ws) >= 0.001) { console.log('MISMATCH', r.sim, ws); process.exit(1); }\n"
+            "}\nconsole.log('OK', cases.length);\n")
+        try:
+            p = subprocess.run(["node", "--input-type=module", "-e", js],
+                               capture_output=True, text=True, timeout=30)
+            ok5 = p.returncode == 0
+            if verbose:
+                print(f"G5 JS 커널 동치({len(cases)}앵커): {'✅ ' + p.stdout.strip() if ok5 else '⛔ ' + p.stdout + p.stderr}")
+            if not ok5:
+                fails.append("G5")
+        except FileNotFoundError:
+            if verbose:
+                print("G5 JS 커널 동치: ⚠️ node 없음 — 건너뜀")
+    elif verbose:
+        print("G5 JS 커널 동치: ⚠️ kernels/FC26.json 미익스포트 — 건너뜀")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")
     return not fails
+
+
+def json_str(v):
+    import json as _json
+    return _json.dumps(v, ensure_ascii=False)
+
+
+def kernel_js_uri():
+    return (Path(__file__).resolve().parent.parent / "site" / "assets" / "kernel.js").as_uri()
 
 
 if __name__ == "__main__":
