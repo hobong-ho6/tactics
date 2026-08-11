@@ -54,8 +54,8 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 | 실측 수집 | `core.sofascore.js_collect()` → 브라우저 → `parse_collected()` | sofascore.com 오리진 필수 |
 | 익스포트 | `python3 scripts/export.py` | 게이트 통과 후 site/data 재생성 + 프리뷰 미러 |
 | 게이트 | `python3 scripts/gates.py` | G1~G5 |
-| v1 재흡수 | `python3 scripts/migrate_v1.py` | 컷오버 전까지 재실행 가능(전량 재구축) |
-| 이적 감시 | transfer-watch 스킬 (매일 09/21시) | ⚠️ 컷오버(단계 6)까지 v1에 기록 |
+| v1 재흡수 | `python3 scripts/migrate_v1.py` | ⚠️ 컷오버 완료 — 재실행하면 v2 신규분이 날아간다. 사용 금지(아카이브 참조용) |
+| 이적 감시 | transfer-watch 스킬 (매일 09/21시) | 3팀 루프 — v2에 기록 (2026-08-11 컷오버 완료) |
 
 ## 재설계 진행 상태 (2026-08-11)
 
