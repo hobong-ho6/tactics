@@ -16,10 +16,16 @@ a{color:var(--acc);text-decoration:none}
 #hdr .teams button.on{background:var(--acc);border-color:var(--acc);color:#14100b;font-weight:700}
 #hdr nav a{padding:6px 10px;border-radius:8px}
 #hdr nav a.on{background:var(--panel);outline:1px solid var(--line)}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0;
+  overflow-wrap:anywhere}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:900px){.grid2{grid-template-columns:1fr}}
 table{border-collapse:collapse;width:100%;font-size:13px}
+/* 열이 많은 표(시즌 성적·영상 분석)는 좁은 화면에서 패널을 밀어내지 않고 가로 스크롤한다.
+   .panel의 overflow-wrap:anywhere가 셀에 걸리면 글자가 세로로 쪼개지므로 표 안에서는 되돌린다. */
+.scrollx{overflow-x:auto}
+.scrollx table{overflow-wrap:normal;word-break:keep-all}
+#season table{white-space:nowrap;width:auto;min-width:100%}
 th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
 th{color:var(--dim);font-weight:500}
 select,button.act{background:var(--panel);color:var(--txt);border:1px solid var(--line);
@@ -31,6 +37,12 @@ canvas.pitch{width:100%;max-width:380px;margin:0 auto;border-radius:10px;display
 .cardrow{display:flex;gap:10px;flex-wrap:wrap}
 .pcard{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:200px}
 .mono{font-family:ui-monospace,monospace;font-size:12px}
+button.tab{background:none;border:1px solid var(--line);color:var(--dim);border-radius:8px;
+  padding:4px 12px;margin-left:6px;cursor:pointer;font-size:12px}
+button.tab.on{background:var(--acc);border-color:var(--acc);color:#14100b;font-weight:700}
+.evalgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:8px}
+.evalgrid section{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.evalgrid section h3{margin:0 0 6px;font-size:13px;color:var(--dim);font-weight:500}
 .kv{color:var(--dim)} .kv b{color:var(--txt)}
 
 .tacpitch{position:relative;max-width:560px;height:640px;margin:10px auto;border-radius:12px;

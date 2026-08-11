@@ -71,7 +71,7 @@ def export_all(db_path=None, window="2026-summer"):
 
     # ── game_stats/{GV}.json — sofifa 스탯·플레이스타일 (name_kr 키, 표시 전용) ──
     for (gv,) in con.execute("SELECT DISTINCT game_version FROM player_game_stats"):
-        gs = _rows(con, """SELECT name_kr, sofifa_id, club, positions, best_pos, age, height_cm,
+        gs = _rows(con, """SELECT name_kr, sofifa_name, sofifa_id, club, positions, best_pos, age, height_cm,
                                   value_eur, preferred_foot, accelerate,
                                   ovr, pot, pac, sho, pas, dri, def, phy, playstyles, role_familiarity
                            FROM player_game_stats WHERE game_version=? ORDER BY name_kr""", (gv,))
@@ -82,7 +82,9 @@ def export_all(db_path=None, window="2026-summer"):
         rid, code = rg["id"], rg["team_code"]
         slots = _rows(con, """SELECT formation, pos, slot_type, x, y, sort_order
                               FROM slots WHERE regime_id=? ORDER BY formation, sort_order""", (rid,))
+        # name_kr = 다른 맵(form·season_stats·fbref…)의 키. label은 표시용이라 접미·별칭이 붙어 다를 수 있다.
         squad = _rows(con, """SELECT s.player_id, COALESCE(s.label, p.name_kr, p.name) label,
+                                     p.name name_en, COALESCE(p.name_kr, p.name) name_kr,
                                      s.slot_type, s.lh, s.map25, s.rate_v, s.rate_basis, s.rate_note,
                                      s.fit_role, s.fit_focus, s.fit_sim, s.sort_order
                               FROM squad_entries s JOIN players p ON p.id=s.player_id
@@ -126,6 +128,40 @@ def export_all(db_path=None, window="2026-summer"):
                                FROM v_player_profile v JOIN players p ON p.id=v.player_id
                                WHERE v.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
                                      UNION SELECT player_id FROM prescriptions WHERE regime_id=?)""", (rid, rid))
+        evals = _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, p.name name_en, e.player_id,
+                                     e.overall, e.traits, e.strengths, e.stat_eval,
+                                     e.fit_emery, e.fit_alonso, e.fit_iraola,
+                                     e.source, e.confidence, e.updated
+                              FROM player_evaluations e JOIN players p ON p.id=e.player_id
+                              WHERE e.regime_id=? ORDER BY e.player_id""", (rid,))
+        season_stats = {}
+        for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, v.season, v.competition,
+                                      v.n, v.starts, v.minutes, v.goals, v.assists, v.avg_rating
+                               FROM v_player_season_stats v JOIN players p ON p.id=v.player_id
+                               WHERE v.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
+                                     UNION SELECT player_id FROM prescriptions WHERE regime_id=?)
+                               ORDER BY v.season DESC, v.n DESC""", (rid, rid)):
+            season_stats.setdefault(r.pop("label"), []).append(r)
+        fbref = {}   # 리그 백분위 — Fotmob traits (FBref는 2026-08 기준 백분위 미공개, migrations/005)
+        for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, f.pos_group,
+                                      f.metric, f.metric_kr, f.percentile, f.source, f.pulled
+                               FROM fotmob_traits f JOIN players p ON p.id=f.player_id
+                               WHERE f.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
+                                     UNION SELECT player_id FROM prescriptions WHERE regime_id=?
+                                     UNION SELECT p2.id FROM transfer_targets t JOIN players p2
+                                           ON p2.name=t.name WHERE t.team_code=?)
+                               ORDER BY f.percentile DESC""", (rid, rid, code)):
+            fbref.setdefault(r.pop("label"), []).append(r)
+        fm_season = {}
+        for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, f.league, f.season,
+                                      f.metric, f.metric_kr, f.value, f.pulled
+                               FROM fotmob_season_stats f JOIN players p ON p.id=f.player_id
+                               WHERE f.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
+                                     UNION SELECT player_id FROM prescriptions WHERE regime_id=?
+                                     UNION SELECT p2.id FROM transfer_targets t JOIN players p2
+                                           ON p2.name=t.name WHERE t.team_code=?)
+                               ORDER BY f.id""", (rid, rid, code)):
+            fm_season.setdefault(r.pop("label"), []).append(r)
         form = {}
         for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, m.date, m.rating, m.competition
               FROM player_matches m JOIN players p ON p.id=m.player_id
@@ -141,6 +177,8 @@ def export_all(db_path=None, window="2026-summer"):
         written.append(_write(SITE_DATA / "teams" / f"{code}.json", {
             "regime": rg, "slots": slots, "squad": squad, "prescriptions": prescriptions,
             "duties": duties, "player_stats": pstats, "departed": departed, "form": form,
+            "evaluations": evals, "season_stats": season_stats, "fbref": fbref,
+            "fotmob_season": fm_season,
             "setups": setups, "profile": profile,
             "transfer": {"targets": targets, "outgoing": outgoing, "ledger": ledger}}))
 

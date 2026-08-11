@@ -1,6 +1,896 @@
 {
  "departed": [],
- "duties": [],
+ "duties": [
+  {
+   "adherence": "MEDIUM — 서사의 '넓게 섰다 안으로 접힘'·'왕복 풀백 아님'은 실측 tool_x 75.6(RB보다 안쪽)·avg_x 43.0(낮은 전진도)과 정합. 다만 백3 RCB인지 백4 RB인지는 **실측이 판별하지 못한다** — 두 슬롯 적합차 Δ.003.",
+   "confidence": "서사 소스(3티어급) — 가설 지위(docs/30 영상·서사 절차 2단계). 위치 주장은 실측 우선. ⚠️ 1경기 표본. FBref 백분위 403 미확보. 신장 185cm vs 1.90m 소스 충돌. 알론소 체제 선발 지위도 소스 충돌(‘untouchable’ vs ‘두 형태 모두 선발 예상 안 됨’).",
+   "duties": "우측 볼전진 수비수. 서사: 본직 라이트 CB이며 백3의 우측 또는 백4의 RB·인버티드 FB·DM까지 겸업하는 다역. 1페이즈에서 넓게 서다가 살짝 안으로 접히는 유형이며 전통적 상하 왕복 풀백이 '아니다'라고 명시됨. 밀란전에서는 상대 레프트윙어(레앙) 대인 처리를 맡았다고 보도.",
+   "execution": "실측 1경기(밀란전 90분, 평점 7.6, hp=66): avg_x 43.0 · avg_y 24.4 → tool_x 75.6. CHE 슬롯 기하에서 RCB(x=66)와 RB(x=86) 사이 정중앙 — RCB에 근소하게 더 가깝다(9.6 vs 10.4). avg_x 43.0은 왕복형 풀백치고 낮다(같은 경기 Hato 43.5와 동급, Palestra 65.9와 대비).",
+   "game_role_implication": "⚠️ 슬롯 미확정: RB → fb_wingback/Support .638 / RCB → cb_bpd/Aggressive .635 (Δ.003, 구별 불가). 두 값 모두 .64 수준으로 낮은 것 자체가 하이브리드·경계 위치의 서명이다. pos_class='RB'은 classify.py의 avg_x>35 문턱 산물이므로 신뢰 근거로 쓰지 말 것. 처방 변경 금지 — 표본 2경기+ 필요.",
+   "label": "Josh Acheampong",
+   "position": "RB",
+   "source": "https://tacticalfootballanalysis.com/josh-acheampong-scout-report-at-chelsea-2025-2026-the-blues-next-defensive-leader-player-analysis/ ; https://instinctive.substack.com/p/scouting-josh-acheampong ; https://www.chelseafc.com/en/news/article/confirmed-chelsea-line-up-vs-western-sydney-wanderers"
+  },
+  {
+   "adherence": "HIGH — 서사의 '딥 스크린 + 압박저항 + 라인 사이 배급'이 dm_dlp(딥라잉 플레이메이커) .913과 강정합. 정량 근거도 방향 일치: 라인 사이 패스 성공 4.57/90 PL 미드필더 1위·볼 상실 5.75/90 3번째로 적음(24/25). '중앙 이탈 없음' vs Roaming 포커스는 경미한 긴장이나 Δ가 노이즈 밖이라 적합 우선.",
+   "confidence": "서사 소스(3티어급) — 가설 지위(docs/30 영상·서사 절차 2단계). 위치 주장은 실측 우선. ⚠️ 부상 이력이 지배적 캐비앗(24/25 선발 10회, 26-07 햄스트링). PFF 등급은 404로 검색 스니펫 경유 — 저신뢰. 피벗 구성도 소스 충돌(카이세도+엔소 예상 vs 실제 카이세도+라비아 선발).",
+   "duties": "백라인 앞 딥 스크린. 서사: 단독 6번 또는 더블 피벗의 한 축이며 '중앙을 거의 벗어나지 않는' 규율형. 압박 저항이 반복 지명된 최대 강점. 밀란전에서는 모드리치 대인 마킹 임무. 본인 발언상 카이세도가 파괴자 역할을 분담.",
+   "execution": "실측 1경기(밀란전 90분, 평점 7.7, hp=77): avg_x 46.0 · avg_y 54.4(중앙 살짝 좌). 터치 68·리커버리 8·듀얼 4/6·패스 60중 58성공(96.7%) — 외부 보도의 동일 경기 수치(68터치·8리커버리·97%)와 독립 일치. ⭐ 이 경기가 첼시 입단 후 첫 90분 완주다.",
+   "game_role_implication": "dm_dlp/Roaming .913 (2위 dm_dlp/Build-Up .798, Δ.115 — 노이즈 구간 밖). docs/30 4단계상 Δ>.05면 적합 우선 → Roaming 유지, 처방 변경 근거 없음(obs#144 고메스 선례와 동일 논리).",
+   "label": "Roméo Lavia",
+   "position": "LDM",
+   "source": "https://www.premierleague.com/en/news/4304480 ; https://transferhub.substack.com/p/scouting-report-what-makes-romeo ; https://totalfootballanalysis.com/player-analysis/romeo-lavia-at-southampton-scout-report-tactical-analysis-tactics ; https://chelsea.news/2026/08/xabi-alonso-chelsea-tactics/"
+  },
+  {
+   "adherence": "MEDIUM-HIGH — 측면은 **실측이 서사를 기각**(우측 예측 → 좌측 실측, docs/30 3단계 '위치 주장은 실측이 이긴다'). 높이·폭 주장은 실측 확인(tool_x 16.1·avg_x 65.9). 기능 주장(드리블·크로스)은 그리드 밖 층이라 가설 유지.",
+   "confidence": "서사 소스(3티어급) — 가설 지위(docs/30 영상·서사 절차 2단계). 위치 주장은 실측 우선. ⚠️ 소스 내부 모순 다수: 공중볼을 '강점'으로 쓴 리포트가 자기 수치로 48%를 제시(2월판은 51.4%를 약점으로 분류); 피지컬 지배력·리스크 성향도 소스간 정반대. 1경기 표본.",
+   "duties": "매우 높고 넓은 공격형 윙백. 서사: 본직은 **라이트** 백/윙백이며 양측면·백3 3번째 CB·인버티드 FB까지 되는 '유니콘' 다역. 1v1 고립을 의도적으로 부여받는 유형. 드리블 다량·양발 크로스가 핵심 무기.",
+   "execution": "실측 1경기(밀란전 90분, 평점 6.8, hp=47): avg_x 65.9 · avg_y 83.9 → tool_x 16.1. ⭐ **좌측 최외곽 + 매우 높은 전진도** — 서사의 '우측 윙백' 예측과 반대 측면이고, LM 슬롯(x=14)에 거의 정확히 앉는다. 키패스 3·터치 41.",
+   "game_role_implication": "wm_widemid/Build-Up .888 vs wm_winger/Balanced .871 — **Δ.017, 노이즈 구간(≤.05)**. docs/30 4단계상 노이즈 구간에서는 서사가 이산 근거가 될 수 있다 → 서사(세리에A 성공 탈압박 2위·오픈플레이 크로스 9위·코너 획득 3위·의도적 1v1 고립)는 widemid보다 **wm_winger**를 가리킨다. 가설로만 기록 — 1경기 표본이라 처방 확정은 2경기+ 이후.",
+   "label": "Marco Palestra",
+   "position": "LM",
+   "source": "https://totalfootballanalysis.com/player-analysis/marco-palestra-scout-report-cagliari-2025-2026-analysis-tactics ; https://tacticalfootballanalysis.com/marco-palestra-scout-report-2026-2027-tactical-analysis-tactics/ ; https://breakingthelines.com/player-analysis/marco-palestra-one-of-the-biggest-prospects-in-italian-football/ ; https://www.skysports.com/football/news/11668/13557345/marco-palestra-to-chelsea-why-atalanta-wing-backs-dribbling-and-running-power-makes-him-a-fit-for-the-premier-league"
+  },
+  {
+   "adherence": "MEDIUM — '드롭오프' 위치 주장은 실측 강확인(동일 경기 내 ST 두 명 전진도 대조). 다만 ⚠️ hp=18로 그리드 유효 문턱(15, docs/30 ③)을 겨우 넘겨 그리드 형태 신뢰도는 낮다.",
+   "confidence": "서사 소스(3티어급) — 가설 지위(docs/30 영상·서사 절차 2단계). 위치 주장은 실측 우선. ⚠️ **26/27 첼시 역할을 다룬 전술 소스가 없다** — 스타일 서술 전량이 브라이턴 시절(2024~2026). 35세·단기 계약. hp=18 경계 표본. 첼시 내 비중도 소스 충돌(depth 옵션 vs '핵심 역할').",
+   "duties": "베테랑 백업 9번. 서사: 데제르비 체제에서는 폴스나인, 휘르첼러 체제 24/25부터는 순수 центре포워드. 움직임의 핵심은 **내려받기** — 짧게 떨어져 CB를 끌어내 배후를 열고, CB-풀백 사이 하프스페이스에 위치. 압박의 기준점(프레스 리더)이며 등지고 받아 연결하는 역할.",
+   "execution": "실측 1경기(밀란전 58분, 평점 6.5, hp=18): avg_x **63.4** · avg_y 50.1(정중앙). ⭐ 같은 경기 João Pedro avg_x 74.3과 비교해 **10.9 낮다** — 서사의 '내려받기'가 동일 경기·동일 상대 통제 조건에서 실측 확인됨. 터치 16·패스 5(4성공)로 관여량 자체는 낮다.",
+   "game_role_implication": "st_advanced/Support .570 (2위 st_false9/Build-Up .420, Δ.150). 서사가 암시한 폴스나인 역할은 커널상 명확히 열세 — 내려받기는 **역할(false9)이 아니라 포커스(Support)+낮은 avg_x로 재현**된다. 적합 .570 자체가 낮아 처방 근거로 쓰기 부족. 표본 축적 필요.",
+   "label": "Danny Welbeck",
+   "position": "ST",
+   "source": "https://www.skysports.com/football/news/11668/13568440/chelsea-transfer-news-danny-welbeck-completes-move-to-stamford-bridge-from-brighton-for-undisclosed-fee ; https://www.beinsports.com/en-us/soccer/premier-league/articles/why-did-xabi-alonso-s-chelsea-sign-veteran-danny-welbeck-2026-08-01 ; https://totalfootballanalysis.com/team-analysis/brighton-fabian-hurzeler-build-up-tactical-analysis-tactics ; https://www.premierleague.com/en/news/4171172"
+  }
+ ],
+ "evaluations": [
+  {
+   "confidence": "HIGH(빌라 실측·FC26 스탯) / MEDIUM(알론소 핏 — 체제 실측 0경기, 그리드는 에메리 체제)",
+   "fit_alonso": "HIGH — 2×10의 좌측 축으로 처방(LM wm_insidefwd/Balanced, 실측 적합 0.700~0.733, 군최적 wideplm 0.725와 Δ0.025 노이즈 구간이라 알론소 명시 구상 유지 — obs#102 ④). 단 근거 그리드는 빌라 25/26 에메리 체제 것이며 첼시 실측이 아니다(체제 실측 아님).",
+   "fit_emery": "HIGH — 유일하게 실측 근거가 있는 감독 핏: 에메리 25/26 체제에서 CAM 평균 7.10·LW 천장 실측을 직접 남겼다. 에메리의 '자유 로밍 10번'(manager_profiles r1 traits) 원형 인원.",
+   "fit_iraola": "MEDIUM — (교차 투영 — 실측 아님) 이라올라의 하프윙어 10번 슬롯(r3: 비르츠 cam_halfwinger)에 프로필상 이식 가능하나, 고강도 압박·수직 전환 체계에서의 비소유 기여는 실측 근거가 없다.",
+   "label": "로저스",
+   "name_en": "Morgan Rogers",
+   "overall": "A — 알론소가 1티어 구단 공식 발언으로 직접 규정한 유일한 선수(obs#59: '포켓 위치, 스트라이커 근처, 우리 10번 근처'), £117m 영국 기록 영입. 빌라 25/26 실측 56경기 4652분 평균 6.90으로 대량 표본이 있는 몇 안 되는 인원. 단 그 실측은 전부 에메리 체제 것이며(불변규칙 7), 알론소가 요구하는 중앙화(CAM 0.664)보다 좌측 인사이드(LW 0.778, LM wm_insidefwd 0.733)가 실측상 높아 '지시 vs 실측' 충돌이 미해결이다(obs#109 ③).",
+   "player_id": 13,
+   "source": "squad_entries(r2)·prescriptions(measured/projected)·v_player_profile·player_duties(r1 3행)·player_game_stats(FC26 2026-06-30)·obs#59·#102·#109",
+   "stat_eval": "player_matches 56경기 4652분 평균 6.90(풀 57명 중 46백분위) — xG/경기 0.305(74백분위)·xA 0.202(77백분위)·키패스 1.91(74백분위). 태클·인터셉트 표본 0(미수집·공격수 특성). 빌라 CAM 21선발 평균 7.10 vs LW 13선발 6.91(천장형) vs RM 6.33(player_duties 실측).",
+   "strengths": "특장점: 좌측 인사이드~중앙 10번 겸용의 유연성(알론소도 'flexible' 언급), 빅게임 천장(빌라 LW 실측 피크 8.84/8.46), 팔머와 실측 겹침 0.465로 낮아 좌우 분리 공존 가능. 약점: 우측 기용은 빌라 실측 최악 축(RM 8선발 평균 6.33, RM 적합 0.178 — 절대 금지 수준). 주앙 페드루와 실측 겹침 0.863(전체 최고)으로 좌측 과밀의 당사자(obs#109 ④). 엔소가 LM 0.750으로 근소 우위라 실측만으로는 이 칸 1순위가 아니다.",
+   "traits": "FC26 84/86(CAM 최적, 187cm): PAC77 SHO81 PAS81 DRI85 DEF67 PHY78. PlayStyles: 낮은 드리븐 슛·예리한패스·테크니컬·인포서·단일 클럽 선수(FC26 실조회값). 로밍형 중앙 크리에이터 — 인버티드 좌측에서 오른발 컷인, 미들서드 캐리.",
+   "updated": "2026-08-11"
+  },
+  {
+   "confidence": "HIGH(그리드 6경기) / LOW(이벤트 스탯 — player_matches 1경기)",
+   "fit_alonso": "MEDIUM — 처방은 gk_goalkeeper/Defend 유지(0.961). 알론소가 GK 빌드업 참여를 요구할 경우 스위퍼 적합 0.773이 걸림돌. (체제 실측 아님 — 25/26 타 감독 표본)",
+   "fit_emery": "MEDIUM — (교차 투영 — 실측 아님) 에메리도 GK Defend 처방(r1: '스위퍼 아님, 참여는 패스 옵션 수준')이라 요구 프로필이 유사 — 이식 마찰은 작을 것.",
+   "fit_iraola": "LOW~MEDIUM — (교차 투영 — 실측 아님) 하이라인·고압박 체계는 스위퍼형 GK를 선호하는데 산체스의 스위퍼 적합은 0.773으로 낮다.",
+   "label": "로베르트 산체스",
+   "name_en": "Robert Sánchez",
+   "overall": "B — GK 실측 6경기 평균 6.80, gk_goalkeeper/Defend 적합 0.961로 스쿼드 전체 최고 적합치. 스위퍼형이 아님이 실측으로 확정됐고(sweeper 0.773), 알론소 원칙의 'GK +1 수적우위'(obs#44)는 서사보다 실측 우선 원칙에 따라 채택되지 않았다. 다만 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것이다.",
+   "player_id": 31,
+   "source": "squad_entries(r2)·prescriptions(measured/projected)·v_player_profile·obs#44",
+   "stat_eval": "player_matches 1경기 90분 평균 6.90(46백분위·표본 부족), 키패스 2.0(89백분위, 1경기 값). 그리드 실측은 6경기 평균 6.80(prescriptions measured). 태클·인터셉트 0은 실제 0(GK 포지션 특성).",
+   "strengths": "특장점: GK 커널 적합 0.961로 처방 확실성이 스쿼드에서 가장 높다. 약점: 스위퍼 적합 0.773으로 낮아 알론소식 빌드업 +1 참여의 실측 근거가 없다 — 빌드업 관여를 요구받으면 검증 안 된 영역.",
+   "traits": "자기진영 질량 1.00, 중심(51.8,10.8)의 정통 라인 키퍼. FC26 개인 스탯은 DB 미수집(player_game_stats에 행 없음 — 조회 불가 항목은 기재하지 않음).",
+   "updated": "2026-08-11"
+  },
+  {
+   "confidence": "MEDIUM(그리드 6경기) / 이벤트 스탯 없음",
+   "fit_alonso": "MEDIUM~HIGH — 구조상 유일한 우측 폭 공급자(RB fb_att_wb/Support 0.862, manager_profiles r2 implementation)이나 산출력이 원형(프림퐁) 대비 미검증. (체제 실측 아님 — 25/26 타 감독 표본)",
+   "fit_emery": "MEDIUM — (교차 투영 — 실측 아님) 에메리는 풀백을 한 명씩만 전진(C2). 균형형 프로필이라 전진측·잔류측 어느 쪽도 소화 가능할 것으로 보이나 실측 없음.",
+   "fit_iraola": "MEDIUM — (교차 투영 — 실측 아님) 이라올라 우측은 인버티드(프림퐁 fb_inverted 성향 실측)가 기준선 — 귀스토의 인버티드 실측 근거는 없다.",
+   "label": "말로 귀스토",
+   "name_en": "Malo Gusto",
+   "overall": "B — RB 실측 6경기 평균 6.40, fb_att_wb/Support 0.862. 전방 0.34/자기진영 0.44의 균형형 전진 풀백으로, 알론소 체계의 '폭 독점 윙백'(obs#46: 크로서가 아니라 득점자, 프림퐁형) 요구에 부합하는 유일한 보유 우측 인원이자 전방 4인 중 유일한 수비 질량 공급자. 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.",
+   "player_id": 32,
+   "source": "squad_entries(r2)·prescriptions(measured/projected)·obs#46",
+   "stat_eval": "player_matches 행 0 — 이벤트 스탯·백분위 산출 불가. 그리드 실측 6경기 평균 6.40(prescriptions measured 기재값)이 유일한 정량 근거.",
+   "strengths": "특장점: 우측 윙백 슬롯의 유일 적임(팔레스트라 영입 전 기준)이며 공수 질량 배분이 균형적. 약점: 평균 6.40은 스쿼드 실측 인원 중 최저 — 프림퐁의 득점 관여(obs#46 원형)를 재현할 공격 산출 근거가 없다.",
+   "traits": "균형형 전진 풀백, 중심(81.5,46.3). wingback/Support 0.830이 차순위로 역할 간 격차가 작다. FC26 개인 스탯 DB 미수집.",
+   "updated": "2026-08-11"
+  },
+  {
+   "confidence": "HIGH(그리드 6경기·슬롯 전수 산출) / LOW(이벤트 스탯 1경기)",
+   "fit_alonso": "HIGH — 백3 우측의 확정 인선(RCB cb_bpd/Aggressive 0.943, obs#102에서 불변에 가까움). (체제 실측 아님 — 25/26 타 감독 표본)",
+   "fit_emery": "MEDIUM~HIGH — (교차 투영 — 실측 아님) 에메리 백4의 볼플레잉 CB 요구(r1 buildup)와 cb_bpd 프로필이 일치하나 백4 RCB 실측은 없다.",
+   "fit_iraola": "MEDIUM~HIGH — (교차 투영 — 실측 아님) 하이라인 커버형 CB 요구 — 순수 수비형 프로필은 맞으나 압박 체계 실측 없음.",
+   "label": "웨슬리 포파나",
+   "name_en": "Wesley Fofana",
+   "overall": "B+ — RCB cb_bpd/Aggressive 0.943(신커널)으로 백3 우측 확정 인원. 실측 6경기 평균 6.47, RCB 0.953 vs LCB 0.239~0.424로 완전한 우측 전용. 전방 0.05/자기진영 0.70 — 백3 중 가장 순수한 수비형으로 obs#58의 '강력한 CB 1' 역할에 대응. 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.",
+   "player_id": 33,
+   "source": "squad_entries(r2)·prescriptions(measured/projected)·v_player_profile·obs#58·#102",
+   "stat_eval": "player_matches 1경기 89분 평균 7.90(91백분위) — 듀얼승 10.0(98백분위)·태클 2.0(87백분위)·인터셉트 3.0(100백분위)·키패스 0(CB 특성). 전 지표 1경기 표본이라 백분위는 참고치. 그리드 실측은 6경기 평균 6.47.",
+   "strengths": "특장점: 수비 지표가 풀 최상위 — 듀얼승 10.0(98백분위)·태클 2.0(87백분위)·인터셉트 3.0(100백분위). 단 전부 1경기 값(표본 부족). 약점: 좌측 이동 불가(LCB 0.239~0.424)라 백3 좌우 로테이션 유연성이 없다. 내구성(부상 이력)은 본 DB에 근거 행이 없어 판단 보류.",
+   "traits": "순수 수비형 우측 CB, 중심(66.5,31.8). 세 슬롯 전수 재산출(obs#102 ②)에서 LCB 0.256/CCB 0.669/RCB 0.943 — 자기 자리가 압도적. FC26 개인 스탯 DB 미수집.",
+   "updated": "2026-08-11"
+  },
+  {
+   "confidence": "MEDIUM(그리드 3경기 — 표본 부족) / HIGH(FC26 스탯)",
+   "fit_alonso": "MEDIUM~HIGH — CCB cb_bpd/Aggressive 0.873으로 신설 슬롯의 확정 인선이나 표본 3경기. (체제 실측 아님 — 25/26 타 감독 표본)",
+   "fit_emery": "MEDIUM — (교차 투영 — 실측 아님) 백4 체계에서는 CCB 이점이 사라지고 RCB 0.744로 포파나(0.943)에 밀린다.",
+   "fit_iraola": "LOW~MEDIUM — (교차 투영 — 실측 아님) FC26 PAC 66은 하이라인·즉시 압박 체계의 뒷공간 노출 지점.",
+   "label": "트레보 찰로바",
+   "name_en": "Trevoh Chalobah",
+   "overall": "B — CCB 슬롯 신설의 근거 인선(obs#102 ②: CCB 0.873 > RCB 0.744 > LCB 0.665, 중심 x 52.7로 정확히 중앙). 중앙 CB를 좌우로 흡수하면 −0.118 손실이라 백3 중앙 배치가 수치로 성립한다. 단 45분+ 표본 3경기로 표본 부족이고, 그리드는 RCB 표기 경기의 것을 CCB에 쓴 것(원 캐비앗). 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.",
+   "player_id": 34,
+   "source": "squad_entries(r2)·prescriptions(measured/projected)·player_game_stats(FC26 2026-06-30)·obs#102",
+   "stat_eval": "player_matches 행 0 — 이벤트 스탯·백분위 산출 불가. 그리드 실측 3경기 평균 6.47(prescriptions measured 기재값, 표본 부족 명기).",
+   "strengths": "특장점: 백3 세 슬롯 중 유일하게 중앙 성향(세 CB 전수 산출에서 셋 다 자기 자리 최고 — 그가 빠지면 CCB 슬롯 자체가 흔들린다). 공중·태클형 PlayStyles가 '강력한 CB' 축과 정합. 약점: 표본 3경기(표본 부족) — 백3 처방 중 근거가 가장 얇은 축의 하나. PAC 66으로 하이라인 뒷공간 커버는 게임 내 제약.",
+   "traits": "FC26 80/82(CB 최적, 190cm): PAC66 SHO53 PAS69 DRI70 DEF81 PHY78. PlayStyles: 프리시전 헤딩·슬라이딩태클(FC26 실조회값). CB/RB 겸용 등록.",
+   "updated": "2026-08-11"
+  },
+  {
+   "confidence": "HIGH(그리드 6경기·슬롯 전수 산출) / LOW(이벤트 스탯 1경기)",
+   "fit_alonso": "HIGH — LCB cb_bpd/Aggressive 0.850(신커널)으로 백3 좌측 확정. 단 커널 교체로 −0.080 하락한 이력 있음(obs#102 ①). (체제 실측 아님 — 25/26 타 감독 표본)",
+   "fit_emery": "MEDIUM — (교차 투영 — 실측 아님) 에메리 백4 LCB 볼플레잉 요구와 프로필 일치 — 단 백4 실측 없음.",
+   "fit_iraola": "MEDIUM — (교차 투영 — 실측 아님) 좌측 CB 프로필 자체는 이식 가능하나 압박 체계 실측 없음.",
+   "label": "요렐 하토",
+   "name_en": "Jorrel Hato",
+   "overall": "B — 실측이 포지션 서사를 정정한 사례: '쿠쿠렐라 후임 LB' 제안을 실측이 반박(LB 0.717→신커널 0.469)하고 LCB cb_bpd/Aggressive 0.930(신커널 0.850)으로 좌측 CB 프로필이 확정됐다(obs#102 ②: '하토는 LB가 아니라 좌측 CB' 반박이 더 강해짐). 6경기 평균 6.52. 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.",
+   "player_id": 35,
+   "source": "squad_entries(r2)·prescriptions(measured/projected)·v_player_profile·obs#58·#102·#109",
+   "stat_eval": "player_matches 1경기 79분 평균 6.70(25백분위·표본 부족) — 듀얼승 2.0(34백분위)·태클 1.0(55백분위)·인터셉트 0(실제 0, 1경기). 그리드 실측 6경기 평균 6.52.",
+   "strengths": "특장점: 백3 좌측의 확정 인선이며 볼플레잉 축. 약점: LB 겸용 불가 판정(0.469)이 좌 윙백 인선 공백(obs#109 ①: 확정 영입 2인이 전부 우측 자원)을 해소하지 못하는 원인 — 그의 전용성이 스쿼드 구조 최약 슬롯을 그대로 남긴다. 이벤트 스탯 평균 6.70(25백분위, 1경기)으로 낮은 편.",
+   "traits": "좌측 볼플레잉 CB, 중심(27.0,35.3), 전방 0.12/자기진영 0.62. obs#58의 '볼플레잉 CB 2' 중 한 축. RCB 0.102로 우측 이동 불가. FC26 개인 스탯 DB 미수집.",
+   "updated": "2026-08-11"
+  },
+  {
+   "confidence": "HIGH(움직임 6경기+기능축 8경기 실측) / MEDIUM(알론소 체제 이식 — 공식전 0경기)",
+   "fit_alonso": "HIGH — 하강 피벗(dm_dlp/Roaming 0.941)이 알론소 빌드업 원칙(obs#44)과 정합하며 manager_profiles r2가 지명한 핵심 인원. 단 obs#116의 기능축 긴장(볼위너인데 창조형 처방·피벗 2인 모두 dm_dlp로 분화 없음 — id=8 reference의 샤카+팔라시오스 분화와 어긋남)이 미해결이고, 표본이 체제 실측이 아니다(25/26 타 감독 표본).",
+   "fit_emery": "HIGH — (교차 투영 — 실측 아님) 에메리 더블 피벗의 볼위닝 축(r1: 오나나·카마라=dm_holding, obs#32의 기능 분화 원칙)에 기능축 프로필이 정확히 대응한다.",
+   "fit_iraola": "HIGH — (교차 투영 — 실측 아님) 고강도 압박·즉시 탈취 체계에서 볼회수 5.4/경기 프로필은 원형 적합 — 단 실측 없음.",
+   "label": "모이세스 카이세도",
+   "name_en": "Moisés Caicedo",
+   "overall": "A — 피벗의 실질 기둥. LDM dm_dlp/Roaming 0.941(6경기 평균 7.00, 신커널 불변), 신커널에서 RDM도 0.871로 급등해 양측 겸용이 가능해졌다(obs#102 ⑤ — 단 이동은 순 −0.028로 기각, 우발 대비로만 기록). 핵심 긴장: obs#116이 확정한 기능축 실측(듀얼승 4.6·인터셉트 1.25·볼회수 5.4 전부 피벗 3인 중 1위, 키패스 0.6 최하위)은 그가 명백한 볼위너임을 말하는데, 현 처방은 dm_dlp(창조형)를 유지한다 — 움직임 적합 +0.126을 사고 기능 정합을 포기한 트레이드(지불액 0.246~0.294, 사용자 판단 보류 사항). 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.",
+   "player_id": 36,
+   "source": "squad_entries(r2)·prescriptions(measured/projected)·v_player_profile·obs#44·#102·#109·#116",
+   "stat_eval": "player_matches 9경기 800분 평균 7.08(63백분위) — 듀얼승 4.22(81백분위)·인터셉트 1.33(89백분위)·태클 1.33(62백분위)·키패스 0.67(43백분위)·xA 0.056(47백분위). 기능축 stats_json 8경기: 듀얼승 4.6·인터셉트 1.25·볼회수 5.4·키패스 0.6·패스 66.0(90.7%).",
+   "strengths": "특장점: 수비 3지표(듀얼·인터셉트·회수) 피벗 내 전부 1위 + 패스 성공률 90.7%·경기당 66.0회로 볼순환 볼륨도 최고 — 파괴와 순환을 겸한다. 신커널 기준 좌우 피벗 양측 가용. 약점: 창조 산출 최하위(키패스 0.6·xA 0.056) — dm_dlp 처방이 요구하는 창조 축을 기능축 실측이 지지하지 않는다(obs#116 ⑤). 듀얼 4.6은 첼시 3인 내부 비교이지 리그 절대 기준이 아님(카마라 8.4의 절반 수준).",
+   "traits": "움직임은 창조형(백라인 옆 하강, obs#44의 '압박 유인 후 관통' 정합 — 자기진영 0.40)인데 기능은 볼위너 — '첼시의 카마라'(obs#116). 중심(47.6,44.5)의 중앙 피벗. FC26 개인 스탯 DB 미수집.",
+   "updated": "2026-08-11"
+  },
+  {
+   "confidence": "HIGH(움직임 6경기+기능축 8경기 실측) / MEDIUM(알론소 체제 이식 — 공식전 0경기)",
+   "fit_alonso": "HIGH — 샤카 대응 창조 축(id=8 reference·obs#58 '엔소+카이세도 더블 피벗' 공통 지목). 단 현 처방은 그를 피벗이 아닌 LM 후보로 두며, 소스 배정(엔소 LDM 창조)으로의 변경은 움직임 적합 −0.126의 대가가 있어 미실행(obs#116 ④). (체제 실측 아님 — 25/26 타 감독 표본)",
+   "fit_emery": "MEDIUM~HIGH — (교차 투영 — 실측 아님) 에메리 더블 피벗의 창조 축(틸레만스=dm_dlp 원형, obs#32)에 기능 프로필이 대응하나 수비 질량이 얇다.",
+   "fit_iraola": "MEDIUM — (교차 투영 — 실측 아님) 수직 전환 체계의 전진 패스 축으로는 맞으나, 고강도 압박의 비소유 요구 대비 수비 질량(자기진영 0.21)이 최소라는 점이 리스크.",
+   "label": "엔소 페르난데스",
+   "name_en": "Enzo Fernández",
+   "overall": "A — 실측 6경기 평균 7.28로 첼시 필드 플레이어 최고. 실측 형태는 피벗 라벨보다 좌측 와이드 플레이메이커(LM wm_wideplm/Attack 0.750 > LDM 0.698 > CAM 0.631, 중심 35.3,57.0 좌측 편향). obs#116이 기능축을 확정: 키패스 2.6으로 카이세도의 4배 이상 — 피벗 2인의 기능 분화에서 명백한 창조 축이다. RDM은 0.535로 부적합('카이세도와 같은 쪽(좌측)을 원한다' 판정 유지, obs#116 ⑥). 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.",
+   "player_id": 37,
+   "source": "squad_entries(r2)·prescriptions(measured)·v_player_profile·obs#58·#102·#116",
+   "stat_eval": "player_matches 8경기 718분 평균 7.44(84백분위) — 키패스 2.63(94백분위)·xA 0.213(83백분위)·듀얼승 4.0(77백분위)·태클 1.38(64백분위)·인터셉트 0.63(70백분위). 기능축 stats_json 8경기: 키패스 2.6·xA 0.213·듀얼승 4.0·볼회수 3.5.",
+   "strengths": "특장점: 창조 지표 풀 최상위 — 키패스 2.63(94백분위)·xA 0.213(83백분위), 평점 7.44(84백분위, player_matches 8경기). 약점: 수비 질량 최소(자기진영 0.21) — 그를 LDM에 두면 좌 윙백 공백 지역의 수비 보호가 사라진다(obs#102 ⑷ 카이세도 이동 기각의 근거). RDM 0.535로 우측 피벗 불가.",
+   "traits": "창조형 좌측 성향 미드필더 — 전방 0.49/자기진영 0.21로 피벗 후보 중 가장 전진적. LM 0.750이 로저스(0.700)보다 높아 실측만 보면 LM 칸 1순위(obs#102 ⑥, 격차 0.050). FC26 개인 스탯 DB 미수집(웨스트햄 '페르난데스'는 동명이인).",
+   "updated": "2026-08-11"
+  },
+  {
+   "confidence": "HIGH(그리드 6경기) / LOW(이벤트 스탯 1경기)",
+   "fit_alonso": "LOW~MEDIUM — 개인 적합(0.875)이 아니라 슬롯 부재가 문제: 3-4-2-1에 윙어 칸이 없다(obs#61). 로테이션·플랜B(4-3-3 잔존 시나리오) 자원. (체제 실측 아님 — 25/26 타 감독 표본)",
+   "fit_emery": "MEDIUM~HIGH — (교차 투영 — 실측 아님) 에메리 4-2-3-1 Wide의 우측 와이드 슬롯이 존재하나, 그 칸의 처방은 뱅크 복귀형(wm_widemid/Support)이라 전방 0.59/자기진영 0.20의 네투와 질량 방향이 반대다.",
+   "fit_iraola": "MEDIUM~HIGH — (교차 투영 — 실측 아님) 이라올라 체계는 정통 윙어 슬롯이 살아 있는 편(살라 wm_winger/Attack 임시 처방)이라 세 감독 중 직무 보존이 가장 좋다.",
+   "label": "페드루 네투",
+   "name_en": "Pedro Neto",
+   "overall": "B — 실측 6경기 평균 6.63, RM wm_winger/Balanced 0.875, 전방 0.59/자기진영 0.20의 터치라인형 윙어. 문제는 선수가 아니라 구조: 알론소 3-4-2-1에는 윙어 슬롯이 아예 없고(obs#61 — 첼시의 구조적 모순은 윙어 과잉), 네투의 실측이 그 모순의 실측 근거로 지목돼 있다. LM 0.316으로 우측 전용. 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.",
+   "player_id": 38,
+   "source": "squad_entries(r2)·prescriptions(measured)·v_player_profile·obs#46·#61",
+   "stat_eval": "player_matches 1경기 59분 평균 8.20(98백분위·표본 부족) — 키패스 2.0(89백분위)·듀얼승 2.0(34백분위), 인터셉트 0은 실제 0(1경기·윙어 특성). 그리드 실측 6경기 평균 6.63.",
+   "strengths": "특장점: 우측 폭 공급 자체는 확실(적합 0.875). player_matches 1경기 평균 8.20(98백분위)이 눈에 띄나 1경기 값(표본 부족). 약점: 체계 부적합 — 알론소의 폭 담당자는 윙백이라(obs#46) 그의 본 직무 슬롯이 처방에 없다. 팔머(RM 0.845)와 슬롯 경합 시 실측 근거가 밀린다.",
+   "traits": "터치라인형 우측 윙어(중심 65.4,61.8) — insidefwd 0.847이 근접 차순위라 인사이드 변형 여지는 있음(Δ0.028은 노이즈 구간이라 우열 단정 불가). FC26 개인 스탯 DB 미수집.",
+   "updated": "2026-08-11"
+  },
+  {
+   "confidence": "HIGH(그리드 6경기·신커널 불변) / LOW(이벤트 스탯 1경기)",
+   "fit_alonso": "HIGH — RM wm_wideplm/Attack 0.845(신커널 불변)로 2×10 우측 확정 인선이며 알론소 본인이 로저스와의 연계를 공언(obs#59). (체제 실측 아님 — 25/26 타 감독 표본)",
+   "fit_emery": "MEDIUM — (교차 투영 — 실측 아님) 에메리 우측 와이드는 뱅크 복귀형(wm_widemid/Support) 처방이라 파머의 전방 편중(0.59/0.16)과 어긋난다. 자유 로밍 10번 칸이라면 적합하나 그 칸 실측은 없다.",
+   "fit_iraola": "MEDIUM~HIGH — (교차 투영 — 실측 아님) 살라의 우측 인사이드 슬롯(r3 traits)과 형태가 유사 — 단 압박 기여 요구가 미검증.",
+   "label": "콜 파머",
+   "name_en": "Cole Palmer",
+   "overall": "A — 2×10의 우측 축. 실측이 'CAM 10번' 라벨을 정정한 대표 사례: 중심(65.0,59.9) 우측 편향, RM wm_wideplm/Attack 0.845 ≫ CAM 0.676, LM 0.152 완전 부적합. 6경기 평균 6.82, 신커널에서도 0.845 불변(obs#102 ①). 로저스와 실측 겹침 0.465로 낮아 좌우 분리 공존이 구조적으로 가능 — 알론소의 '팔머 병용 플랜'(obs#59)을 실측이 지지한다. 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.",
+   "player_id": 39,
+   "source": "squad_entries(r2)·prescriptions(measured/projected)·v_player_profile·obs#59·#102",
+   "stat_eval": "player_matches 1경기 85분 평균 7.20(77백분위·표본 부족) — 키패스 1.0(63백분위)·듀얼승 4.0(77백분위)·태클 2.0(87백분위)·인터셉트 1.0(85백분위, 전부 1경기 값). 그리드 실측 6경기 평균 6.82.",
+   "strengths": "특장점: 우측 하프스페이스 전용성이 명확해 처방 확실성이 높다(신커널 불변 7칸 중 하나). 수비 스탯도 1경기 기준 태클 2.0(87백분위)·인터셉트 1.0(85백분위)으로 나쁘지 않음. 약점: LM 0.152 — 좌측 이동 불가라 로저스 부재 시 좌측 커버 불가. 자기진영 질량 0.16으로 비소유 국면 기여는 얇다.",
+   "traits": "우측 포켓 플레이메이커(호프만=우 커넥터 대응, id=8 reference), 전방 0.59/자기진영 0.16으로 수비 질량 최소급. 알론소는 '10번 근처'로 말했지만 실측 중심 x=65는 우측 편향(projected 캐비앗). FC26 개인 스탯 DB 미수집.",
+   "updated": "2026-08-11"
+  },
+  {
+   "confidence": "HIGH(그리드 6경기·겹침 산출) / LOW(이벤트 스탯 1경기)",
+   "fit_alonso": "HIGH — '내려오는 9번' 서사를 실측이 지지하는, 서사-실측이 일치하는 드문 칸. 단 좌측 과밀(로저스 겹침 0.863)의 해소는 8/24 풀럼 이후 실측 대기. (체제 실측 아님 — 25/26 타 감독 표본)",
+   "fit_emery": "MEDIUM — (교차 투영 — 실측 아님) 에메리 4-2-3-1의 9번은 왓킨스형 압박 선도+뒷공간 침투가 원형 — 하강 연계형과 방향이 다르나 겸용 불가 근거도 없다.",
+   "fit_iraola": "MEDIUM~HIGH — (교차 투영 — 실측 아님) 파이널서드 탈취→즉시 슛 체계에서 전방 압박 선봉+링크 프로필은 원형 적합 — 실측 없음.",
+   "label": "주앙 페드루",
+   "name_en": "João Pedro",
+   "overall": "A− — 서사-실측 일치 사례: '내려오는 9번'(obs#58) 서술을 실측이 지지한다(ST 0.624 < CAM 0.718 — 하강 성향이 수치로 확인). 6경기 평균 6.92, 처방은 그 성향에 가장 가까운 ST 역할인 st_false9/Build-Up. 구조적 리스크의 당사자: 로저스와 실측 겹침 0.863(전체 최고) — 좌측 10번과 9번이 같은 공간을 쓴다(obs#109 ④: 좌측 과밀+무보호). 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.",
+   "player_id": 40,
+   "source": "squad_entries(r2)·prescriptions(measured/projected)·v_player_profile·obs#58·#102 ⑦·#109",
+   "stat_eval": "player_matches 1경기 85분 평균 8.00(95백분위·표본 부족) — 키패스 1.0(63백분위)·듀얼승 2.0(34백분위)·태클 1.0(55백분위), 인터셉트 0은 실제 0(1경기·ST 특성). xG는 표본 0으로 산출 불가. 그리드 실측 6경기 평균 6.92.",
+   "strengths": "특장점: 연계·하강 프로필이 알론소 원형(9번=압박 선봉+링크)과 정합하고 평점 산출도 상위(1경기 8.0, 그리드 6경기 6.92). 약점: 처방 적합 0.624가 10칸 중 최저 — 박스 내 고정 9번 산출은 실측 형태 밖. 로저스 겹침 0.863은 알론소 체계의 실질 리스크 지점(projected 명기).",
+   "traits": "드롭형 9번(보니페이스 대응, id=8 reference: 압박 선봉+링크), 중심(45.1,61.4), 전방 0.61/자기진영 0.18. ST 슬롯 적합 0.624는 스쿼드 처방 10칸 중 최저 — 형태상 순수 9번이 아니기 때문. FC26 개인 스탯 DB 미수집.",
+   "updated": "2026-08-11"
+  },
+  {
+   "confidence": "MEDIUM(그리드 3경기 — 표본 부족·기능값 역할 혼재) / HIGH(이벤트 7경기)",
+   "fit_alonso": "MEDIUM~HIGH — 트렌트 'inverted role'의 대응 인원으로 기능(창조·전개)은 맞으나, 처방 근거(그리드 3경기·Δ0.001 동률 판정)가 스쿼드에서 가장 얇다 — 8/24 풀럼이 첫 검증. (체제 실측 아님 — 25/26 타 감독 표본)",
+   "fit_emery": "MEDIUM — (교차 투영 — 실측 아님) 에메리 C2(풀백 한 명만 전진)의 전진측 RB로 쓸 수 있는 프로필이나, 에메리 처방의 우측은 잔류형(fb_wingback/Balanced)이라 방향이 어긋난다.",
+   "fit_iraola": "HIGH — (교차 투영 — 실측 아님) 이라올라 우측의 인버티드 RB(프림퐁 fb_inverted 실측 성향)와 형태가 가장 직접 대응하는 스쿼드 인원.",
+   "label": "리스 제임스",
+   "name_en": "Reece James",
+   "overall": "B+ — 처방 전체의 최약 칸이자 가장 흥미로운 하이브리드. RDM dm_dlp 처방(신커널에서 Roaming 0.772→0.579로 붕괴, Build-Up 0.656으로 포커스만 교체 — obs#102 ③)이나 45분+ 표본 3경기(표본 부족 — '이 처방의 가장 약한 칸' 명기). 실측 3경기 평균 7.33은 스쿼드 최고치지만 표본이 이를 뒷받침하지 못한다. 알론소가 트렌트에게 준 'inverted role' 지시(obs#57)의 첼시 대응 인원. 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.",
+   "player_id": 41,
+   "source": "squad_entries(r2)·prescriptions(measured/projected)·v_player_profile·obs#57·#102·#109·#116",
+   "stat_eval": "player_matches 7경기 592분 평균 7.14(70백분위) — xA 0.244(93백분위)·키패스 1.43(69백분위)·태클 1.71(72백분위)·인터셉트 0.71(72백분위)·듀얼승 3.43(53백분위). 기능축 stats_json 7경기: xA 0.244·키패스 1.4·패스 53.1회(94.1%). 45분+ 그리드는 3경기(표본 부족).",
+   "strengths": "특장점: xA 0.244(93백분위)로 창조 산출 최상급 + 패스 성공률 94.1%로 정확도 최고 — 우측 전개 축의 근거. 약점: ① 표본 3경기 ② obs#58(1티어)·id=8이 공통 지목한 '엔소+카이세도' 피벗에서 이탈한 인선인데 그 이탈이 움직임 적합 +0.126의 구매였음이 뒤늦게 정량화됨(obs#116 ④) ③ 카이세도 RDM 0.871 급등으로 '유일 적합자' 서술 폐기(obs#109 ②) — 결장 시 대체는 서나 지위는 상대화됨.",
+   "traits": "인버티드 윙백/피벗 하이브리드 — RDM 0.772(구커널) > RB fb_inverted/Attack 0.692, 중심(73.3,52.3). 기능축(obs#116)에서 xA 0.244로 3인 중 최고이나 패스 볼륨 최소(53.1회)·pos가 M/D 혼재라 기능값 자체가 역할 혼재값. FC26 개인 스탯 DB 미수집.",
+   "updated": "2026-08-11"
+  },
+  {
+   "confidence": "LOW~MEDIUM(그리드 3경기 — 표본 부족, 이벤트 스탯 없음)",
+   "fit_alonso": "MEDIUM — 우측 로테이션 자원(RM 0.789). 2×10 우측은 팔머 확정이라 출전 경로가 좁다. (체제 실측 아님 — 25/26 타 감독 표본)",
+   "fit_emery": "MEDIUM~HIGH — (교차 투영 — 실측 아님) 에메리 우측 와이드 처방이 정확히 wm_widemid/Support(뱅크 복귀형) — 세 감독 처방 중 실측 성향과 역할 라벨이 유일하게 일치한다. 단 실측 자체가 3경기.",
+   "fit_iraola": "MEDIUM — (교차 투영 — 실측 아님) 측면 압축·복귀 요구와 복귀 성향은 맞으나 표본이 얇아 판단 보류 수준.",
+   "label": "에스테방",
+   "name_en": "Estêvão",
+   "overall": "B — 실측 3경기(표본 부족) 평균 6.77, RM wm_widemid/Support 0.789. 전방 0.51/자기진영 0.29로 네투보다 복귀 성향이 큰 우측 와이드 — 순수 윙어보다 지원형에 가깝다는 것이 초기 실측의 시사점. 우측은 팔머(0.845)·네투(0.875)와 3파전이라 슬롯 경쟁이 스쿼드에서 가장 치열한 칸. 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.",
+   "player_id": 42,
+   "source": "squad_entries(r2)·prescriptions(measured)·obs#61",
+   "stat_eval": "player_matches 행 0 — 이벤트 스탯·백분위 산출 불가. 그리드 실측 3경기 평균 6.77(prescriptions measured 기재값, 표본 부족 명기)이 유일한 정량 근거.",
+   "strengths": "특장점: 복귀 질량(자기진영 0.29)이 우측 와이드 3인 중 최대 — 비소유 국면 기여가 필요한 라인업에서 차별점. 약점: 표본 3경기로 모든 판단이 잠정적. 알론소 체계에 윙어 슬롯이 없다는 구조 문제(obs#61)는 네투와 공유.",
+   "traits": "복귀 성향 우측 와이드(중심 76.1,58.2), winger/Balanced 0.746이 차순위(Δ0.043 — 노이즈 상단이라 우열 단정 보류). FC26 개인 스탯 DB 미수집. 연령·성장 곡선 관련 행도 DB에 없어 잠재력 서술은 하지 않는다.",
+   "updated": "2026-08-11"
+  }
+ ],
+ "fbref": {
+  "로베르트 산체스": [
+   {
+    "metric": "High claims",
+    "metric_kr": "하이볼 처리",
+    "percentile": 83,
+    "pos_group": "Stats compared to other keepers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Sweeper actions",
+    "metric_kr": "스위퍼 행동",
+    "percentile": 58,
+    "pos_group": "Stats compared to other keepers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Clean sheets",
+    "metric_kr": "클린시트",
+    "percentile": 55,
+    "pos_group": "Stats compared to other keepers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Goals conceded",
+    "metric_kr": "실점",
+    "percentile": 46,
+    "pos_group": "Stats compared to other keepers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Save percentage",
+    "metric_kr": "선방률",
+    "percentile": 37,
+    "pos_group": "Stats compared to other keepers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Long ball percentage",
+    "metric_kr": "롱볼 정확도",
+    "percentile": 27,
+    "pos_group": "Stats compared to other keepers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   }
+  ],
+  "로저스": [
+   {
+    "metric": "Aerial duels",
+    "metric_kr": "공중 볼 경합",
+    "percentile": 74,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Chances created",
+    "metric_kr": "기회 창출",
+    "percentile": 60,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Shot attempts",
+    "metric_kr": "슛 시도",
+    "percentile": 58,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Goals",
+    "metric_kr": "득점",
+    "percentile": 53,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Defensive actions",
+    "metric_kr": "수비적 행동",
+    "percentile": 52,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Touches",
+    "metric_kr": "터치",
+    "percentile": 39,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   }
+  ],
+  "리스 제임스": [
+   {
+    "metric": "Touches",
+    "metric_kr": "터치",
+    "percentile": 96,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Shot attempts",
+    "metric_kr": "슛 시도",
+    "percentile": 75,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Chances created",
+    "metric_kr": "기회 창출",
+    "percentile": 74,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Aerial duels",
+    "metric_kr": "공중 볼 경합",
+    "percentile": 67,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Goals",
+    "metric_kr": "득점",
+    "percentile": 59,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Defensive actions",
+    "metric_kr": "수비적 행동",
+    "percentile": 41,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   }
+  ],
+  "말로 귀스토": [
+   {
+    "metric": "Touches",
+    "metric_kr": "터치",
+    "percentile": 83,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Goals",
+    "metric_kr": "득점",
+    "percentile": 68,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Chances created",
+    "metric_kr": "기회 창출",
+    "percentile": 60,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Shot attempts",
+    "metric_kr": "슛 시도",
+    "percentile": 32,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Defensive actions",
+    "metric_kr": "수비적 행동",
+    "percentile": 29,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Aerial duels",
+    "metric_kr": "공중 볼 경합",
+    "percentile": 15,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   }
+  ],
+  "모이세스 카이세도": [
+   {
+    "metric": "Touches",
+    "metric_kr": "터치",
+    "percentile": 93,
+    "pos_group": "Stats compared to other midfielders",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Defensive actions",
+    "metric_kr": "수비적 행동",
+    "percentile": 80,
+    "pos_group": "Stats compared to other midfielders",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Goals",
+    "metric_kr": "득점",
+    "percentile": 62,
+    "pos_group": "Stats compared to other midfielders",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Chances created",
+    "metric_kr": "기회 창출",
+    "percentile": 60,
+    "pos_group": "Stats compared to other midfielders",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Shot attempts",
+    "metric_kr": "슛 시도",
+    "percentile": 34,
+    "pos_group": "Stats compared to other midfielders",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Aerial duels",
+    "metric_kr": "공중 볼 경합",
+    "percentile": 33,
+    "pos_group": "Stats compared to other midfielders",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   }
+  ],
+  "에스테방": [
+   {
+    "metric": "Shot attempts",
+    "metric_kr": "슛 시도",
+    "percentile": 97,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Goals",
+    "metric_kr": "득점",
+    "percentile": 96,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Chances created",
+    "metric_kr": "기회 창출",
+    "percentile": 71,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Touches",
+    "metric_kr": "터치",
+    "percentile": 60,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Defensive actions",
+    "metric_kr": "수비적 행동",
+    "percentile": 30,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Aerial duels",
+    "metric_kr": "공중 볼 경합",
+    "percentile": 17,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   }
+  ],
+  "엔소 페르난데스": [
+   {
+    "metric": "Touches",
+    "metric_kr": "터치",
+    "percentile": 97,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Defensive actions",
+    "metric_kr": "수비적 행동",
+    "percentile": 66,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Goals",
+    "metric_kr": "득점",
+    "percentile": 66,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Chances created",
+    "metric_kr": "기회 창출",
+    "percentile": 65,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Aerial duels",
+    "metric_kr": "공중 볼 경합",
+    "percentile": 58,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Shot attempts",
+    "metric_kr": "슛 시도",
+    "percentile": 45,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   }
+  ],
+  "요렐 하토": [
+   {
+    "metric": "Aerial duels",
+    "metric_kr": "공중 볼 경합",
+    "percentile": 83,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Touches",
+    "metric_kr": "터치",
+    "percentile": 81,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Defensive actions",
+    "metric_kr": "수비적 행동",
+    "percentile": 78,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Goals",
+    "metric_kr": "득점",
+    "percentile": 69,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Shot attempts",
+    "metric_kr": "슛 시도",
+    "percentile": 36,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Chances created",
+    "metric_kr": "기회 창출",
+    "percentile": 20,
+    "pos_group": "Stats compared to other fullbacks",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   }
+  ],
+  "웨슬리 포파나": [
+   {
+    "metric": "Touches",
+    "metric_kr": "터치",
+    "percentile": 92,
+    "pos_group": "Stats compared to other center-backs",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Aerial duels",
+    "metric_kr": "공중 볼 경합",
+    "percentile": 84,
+    "pos_group": "Stats compared to other center-backs",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Defensive actions",
+    "metric_kr": "수비적 행동",
+    "percentile": 82,
+    "pos_group": "Stats compared to other center-backs",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Shot attempts",
+    "metric_kr": "슛 시도",
+    "percentile": 39,
+    "pos_group": "Stats compared to other center-backs",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Chances created",
+    "metric_kr": "기회 창출",
+    "percentile": 33,
+    "pos_group": "Stats compared to other center-backs",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Goals",
+    "metric_kr": "득점",
+    "percentile": 0,
+    "pos_group": "Stats compared to other center-backs",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   }
+  ],
+  "주앙 페드루": [
+   {
+    "metric": "Touches",
+    "metric_kr": "터치",
+    "percentile": 84,
+    "pos_group": "Stats compared to other forwards",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Goals",
+    "metric_kr": "득점",
+    "percentile": 69,
+    "pos_group": "Stats compared to other forwards",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Aerial duels",
+    "metric_kr": "공중 볼 경합",
+    "percentile": 63,
+    "pos_group": "Stats compared to other forwards",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Defensive actions",
+    "metric_kr": "수비적 행동",
+    "percentile": 46,
+    "pos_group": "Stats compared to other forwards",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Chances created",
+    "metric_kr": "기회 창출",
+    "percentile": 45,
+    "pos_group": "Stats compared to other forwards",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Shot attempts",
+    "metric_kr": "슛 시도",
+    "percentile": 31,
+    "pos_group": "Stats compared to other forwards",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   }
+  ],
+  "콜 파머": [
+   {
+    "metric": "Shot attempts",
+    "metric_kr": "슛 시도",
+    "percentile": 81,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Goals",
+    "metric_kr": "득점",
+    "percentile": 79,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Touches",
+    "metric_kr": "터치",
+    "percentile": 62,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Chances created",
+    "metric_kr": "기회 창출",
+    "percentile": 35,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Defensive actions",
+    "metric_kr": "수비적 행동",
+    "percentile": 18,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Aerial duels",
+    "metric_kr": "공중 볼 경합",
+    "percentile": 0,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   }
+  ],
+  "트레보 찰로바": [
+   {
+    "metric": "Touches",
+    "metric_kr": "터치",
+    "percentile": 91,
+    "pos_group": "Stats compared to other center-backs",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Goals",
+    "metric_kr": "득점",
+    "percentile": 76,
+    "pos_group": "Stats compared to other center-backs",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Aerial duels",
+    "metric_kr": "공중 볼 경합",
+    "percentile": 67,
+    "pos_group": "Stats compared to other center-backs",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Shot attempts",
+    "metric_kr": "슛 시도",
+    "percentile": 42,
+    "pos_group": "Stats compared to other center-backs",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Defensive actions",
+    "metric_kr": "수비적 행동",
+    "percentile": 35,
+    "pos_group": "Stats compared to other center-backs",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Chances created",
+    "metric_kr": "기회 창출",
+    "percentile": 26,
+    "pos_group": "Stats compared to other center-backs",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   }
+  ],
+  "페드루 네투": [
+   {
+    "metric": "Chances created",
+    "metric_kr": "기회 창출",
+    "percentile": 70,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Touches",
+    "metric_kr": "터치",
+    "percentile": 64,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Goals",
+    "metric_kr": "득점",
+    "percentile": 43,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Aerial duels",
+    "metric_kr": "공중 볼 경합",
+    "percentile": 30,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Shot attempts",
+    "metric_kr": "슛 시도",
+    "percentile": 27,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   },
+   {
+    "metric": "Defensive actions",
+    "metric_kr": "수비적 행동",
+    "percentile": 2,
+    "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-11",
+    "source": "fotmob.com/api/data/playerData (2026-08-11 수집)"
+   }
+  ]
+ },
  "form": {
   "로베르트 산체스": [
    [
@@ -221,6 +1111,866 @@
     8.2,
     "Club Friendly Games"
    ]
+  ]
+ },
+ "fotmob_season": {
+  "로베르트 산체스": [
+   {
+    "league": "Premier League",
+    "metric": "Clean sheets",
+    "metric_kr": "클린시트",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "9"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals conceded",
+    "metric_kr": "실점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "47"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Saved penalties",
+    "metric_kr": "PK 선방",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "0/2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "7.07"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "35"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "3041"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "1"
+   }
+  ],
+  "로저스": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "10"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "6"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "37"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "37"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "3285"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "7.0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "7"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "0"
+   }
+  ],
+  "리스 제임스": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "20"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "29"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "1961"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "7.23"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "0"
+   }
+  ],
+  "말로 귀스토": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "26"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "34"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "2267"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "6.84"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "1"
+   }
+  ],
+  "모이세스 카이세도": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "32"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "33"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "2802"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "7.1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "11"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "1"
+   }
+  ],
+  "에스테방": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "12"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "22"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "845"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "6.65"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "0"
+   }
+  ],
+  "엔소 페르난데스": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "10"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "35"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "36"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "3121"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "7.3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "10"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "0"
+   }
+  ],
+  "요렐 하토": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "12"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "22"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "1142"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "6.57"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "7"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "0"
+   }
+  ],
+  "웨슬리 포파나": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "20"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "25"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "1726"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "6.86"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "2"
+   }
+  ],
+  "주앙 페드루": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "15"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "31"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "35"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "2674"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "7.18"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "0"
+   }
+  ],
+  "콜 파머": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "10"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "24"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "26"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "1965"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "7.04"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "0"
+   }
+  ],
+  "트레보 찰로바": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "31"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "34"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "2782"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "7.01"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "1"
+   }
+  ],
+  "페드루 네투": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "6"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "30"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "34"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "2643"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "7.04"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "1"
+   }
   ]
  },
  "player_stats": [
@@ -1301,6 +3051,218 @@
   "team_kr": "첼시",
   "team_name": "Chelsea"
  },
+ "season_stats": {
+  "로베르트 산체스": [
+   {
+    "assists": 0,
+    "avg_rating": 6.9,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   }
+  ],
+  "로저스": [
+   {
+    "assists": 1,
+    "avg_rating": 6.85,
+    "competition": "Premier League",
+    "goals": 5,
+    "minutes": 3285,
+    "n": 37,
+    "season": "2025-26",
+    "starts": 37
+   },
+   {
+    "assists": null,
+    "avg_rating": 7.1,
+    "competition": "UEFA Europa League",
+    "goals": null,
+    "minutes": 1087,
+    "n": 15,
+    "season": "2025-26",
+    "starts": 12
+   },
+   {
+    "assists": null,
+    "avg_rating": 6.95,
+    "competition": "FA Cup",
+    "goals": null,
+    "minutes": 167,
+    "n": 2,
+    "season": "2025-26",
+    "starts": 2
+   },
+   {
+    "assists": null,
+    "avg_rating": 6.7,
+    "competition": "EFL Cup",
+    "goals": null,
+    "minutes": 23,
+    "n": 1,
+    "season": "2025-26",
+    "starts": 0
+   },
+   {
+    "assists": 0,
+    "avg_rating": 5.8,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2024-25",
+    "starts": 1
+   }
+  ],
+  "리스 제임스": [
+   {
+    "assists": null,
+    "avg_rating": 7.25,
+    "competition": "Premier League",
+    "goals": null,
+    "minutes": 359,
+    "n": 4,
+    "season": "2025-26",
+    "starts": 4
+   },
+   {
+    "assists": null,
+    "avg_rating": 7.05,
+    "competition": "FA Cup",
+    "goals": null,
+    "minutes": 143,
+    "n": 2,
+    "season": "2025-26",
+    "starts": 2
+   },
+   {
+    "assists": null,
+    "avg_rating": 6.9,
+    "competition": "UCL",
+    "goals": null,
+    "minutes": 90,
+    "n": 1,
+    "season": "2025-26",
+    "starts": 1
+   }
+  ],
+  "모이세스 카이세도": [
+   {
+    "assists": 1,
+    "avg_rating": 8.2,
+    "competition": "Club Friendly Games",
+    "goals": 1,
+    "minutes": 85,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   },
+   {
+    "assists": null,
+    "avg_rating": 7.0,
+    "competition": "Premier League",
+    "goals": null,
+    "minutes": 535,
+    "n": 6,
+    "season": "2025-26",
+    "starts": 6
+   },
+   {
+    "assists": null,
+    "avg_rating": 6.75,
+    "competition": "FA Cup",
+    "goals": null,
+    "minutes": 180,
+    "n": 2,
+    "season": "2025-26",
+    "starts": 2
+   }
+  ],
+  "엔소 페르난데스": [
+   {
+    "assists": null,
+    "avg_rating": 7.28,
+    "competition": "Premier League",
+    "goals": null,
+    "minutes": 538,
+    "n": 6,
+    "season": "2025-26",
+    "starts": 6
+   },
+   {
+    "assists": null,
+    "avg_rating": 7.9,
+    "competition": "FA Cup",
+    "goals": null,
+    "minutes": 180,
+    "n": 2,
+    "season": "2025-26",
+    "starts": 2
+   }
+  ],
+  "요렐 하토": [
+   {
+    "assists": 0,
+    "avg_rating": 6.7,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 79,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   }
+  ],
+  "웨슬리 포파나": [
+   {
+    "assists": 0,
+    "avg_rating": 7.9,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 89,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   }
+  ],
+  "주앙 페드루": [
+   {
+    "assists": 0,
+    "avg_rating": 8.0,
+    "competition": "Club Friendly Games",
+    "goals": 2,
+    "minutes": 85,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   }
+  ],
+  "콜 파머": [
+   {
+    "assists": 0,
+    "avg_rating": 7.2,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 85,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   }
+  ],
+  "페드루 네투": [
+   {
+    "assists": 1,
+    "avg_rating": 8.2,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 59,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   }
+  ]
+ },
  "setups": [
   {
    "build_up_style": null,
@@ -1437,6 +3399,8 @@
    "label": "로베르트 산체스",
    "lh": "OWNED",
    "map25": "0000000000000000010001X10",
+   "name_en": "Robert Sánchez",
+   "name_kr": "로베르트 산체스",
    "player_id": 31,
    "rate_basis": "r6",
    "rate_note": "GK 실측 6경기 평균 6.80",
@@ -1451,6 +3415,8 @@
    "label": "요렐 하토",
    "lh": "OWNED",
    "map25": "0000023100661007X30045200",
+   "name_en": "Jorrel Hato",
+   "name_kr": "요렐 하토",
    "player_id": 35,
    "rate_basis": "r6",
    "rate_note": "LCB 실측 6경기 평균 6.52",
@@ -1465,6 +3431,8 @@
    "label": "웨슬리 포파나",
    "lh": "OWNED",
    "map25": "000000001101262023X400344",
+   "name_en": "Wesley Fofana",
+   "name_kr": "웨슬리 포파나",
    "player_id": 33,
    "rate_basis": "r6",
    "rate_note": "RCB 실측 6경기 평균 6.47",
@@ -1479,6 +3447,8 @@
    "label": "트레보 찰로바",
    "lh": "OWNED",
    "map25": "0020002331137922X8X316440",
+   "name_en": "Trevoh Chalobah",
+   "name_kr": "트레보 찰로바",
    "player_id": 34,
    "rate_basis": "r6",
    "rate_note": "RCB 실측 (평점 미기재)",
@@ -1493,6 +3463,8 @@
    "label": "말로 귀스토",
    "lh": "OWNED",
    "map25": "00015111390004X0015900147",
+   "name_en": "Malo Gusto",
+   "name_kr": "말로 귀스토",
    "player_id": 32,
    "rate_basis": "r6",
    "rate_note": "RB 실측 6경기 평균 6.40",
@@ -1507,6 +3479,8 @@
    "label": "모이세스 카이세도",
    "lh": "OWNED",
    "map25": "000001333116X411574101111",
+   "name_en": "Moisés Caicedo",
+   "name_kr": "모이세스 카이세도",
    "player_id": 36,
    "rate_basis": "r6",
    "rate_note": "LDM 실측 6경기 평균 7.00",
@@ -1521,6 +3495,8 @@
    "label": "리스 제임스",
    "lh": "OWNED",
    "map25": "301170125901284002X800123",
+   "name_en": "Reece James",
+   "name_kr": "리스 제임스",
    "player_id": 41,
    "rate_basis": "r6",
    "rate_note": "RDM 실측 (평점 미기재)",
@@ -1535,6 +3511,8 @@
    "label": "로저스",
    "lh": "OWNED",
    "map25": "65321X9632564117410121100",
+   "name_en": "Morgan Rogers",
+   "name_kr": "로저스",
    "player_id": 13,
    "rate_basis": "r6",
    "rate_note": "LM 실측 (평점 미기재)",
@@ -1549,6 +3527,8 @@
    "label": "엔소 페르난데스",
    "lh": "OWNED",
    "map25": "311116X431386113522001000",
+   "name_en": "Enzo Fernández",
+   "name_kr": "엔소 페르난데스",
    "player_id": 37,
    "rate_basis": "r6",
    "rate_note": "LM 실측 6경기 평균 7.28",
@@ -1563,6 +3543,8 @@
    "label": "에스테방",
    "lh": "OWNED",
    "map25": "01354013780003X0025910001",
+   "name_en": "Estêvão",
+   "name_kr": "에스테방",
    "player_id": 42,
    "rate_basis": "r6",
    "rate_note": "RM 실측 (평점 미기재)",
@@ -1577,6 +3559,8 @@
    "label": "콜 파머",
    "lh": "OWNED",
    "map25": "11223225XX015640123200011",
+   "name_en": "Cole Palmer",
+   "name_kr": "콜 파머",
    "player_id": 39,
    "rate_basis": "r6",
    "rate_note": "RM 실측 6경기 평균 6.82",
@@ -1591,6 +3575,8 @@
    "label": "페드루 네투",
    "lh": "OWNED",
    "map25": "311264213X110191201410011",
+   "name_en": "Pedro Neto",
+   "name_kr": "페드루 네투",
    "player_id": 38,
    "rate_basis": "r6",
    "rate_note": "RM 실측 6경기 평균 6.63",
@@ -1605,6 +3591,8 @@
    "label": "주앙 페드루",
    "lh": "OWNED",
    "map25": "243116X533232331212300110",
+   "name_en": "João Pedro",
+   "name_kr": "주앙 페드루",
    "player_id": 40,
    "rate_basis": "r6",
    "rate_note": "ST 실측 6경기 평균 6.92",

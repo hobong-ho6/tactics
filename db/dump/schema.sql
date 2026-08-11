@@ -35,7 +35,7 @@ CREATE TABLE players(
   birth_year INTEGER,
   primary_position TEXT,
   notes TEXT
-);
+, fotmob_id INTEGER);
 CREATE TABLE player_tenures(
   player_id INTEGER NOT NULL REFERENCES players(id),
   season TEXT NOT NULL REFERENCES seasons(code),
@@ -292,4 +292,84 @@ FROM player_matches GROUP BY player_id
 /* v_player_profile(player_id,n,avg_rating,minutes,xg_pg,xg_n,xa_pg,xa_n,kp_pg,kp_n,dw_pg,dw_n,tk_pg,tk_n,ic_pg,ic_n) */;
 CREATE TABLE _migration_log(
   run_at TEXT, v1_path TEXT, note TEXT
+);
+CREATE TABLE player_evaluations(
+  id INTEGER PRIMARY KEY,
+  regime_id INTEGER NOT NULL REFERENCES regimes(id),   -- 선수 소속 팀의 현 체제
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  overall TEXT NOT NULL,      -- 종합 평가 (등급 접두 'S/A/B/C — ' + 서술)
+  traits TEXT,                -- 선수 특성 (플레이 유형·성향)
+  strengths TEXT,             -- 특장점 (·약점 병기 허용)
+  stat_eval TEXT,             -- 경기 스탯 기반 평가 (v_player_profile·백분위 근거)
+  fit_emery TEXT,             -- 에메리(AVL) 전술핏: 'HIGH/MEDIUM/LOW — 서술'
+  fit_alonso TEXT,            -- 알론소(CHE) 전술핏
+  fit_iraola TEXT,            -- 이라올라(LIV) 전술핏
+  source TEXT,                -- 인용한 데이터 (obs#·duties·prescriptions·stats)
+  confidence TEXT,            -- 표본·교차투영 캐비앗
+  updated TEXT,
+  UNIQUE(regime_id, player_id)
+);
+CREATE TABLE fbref_percentiles(
+  id INTEGER PRIMARY KEY,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  pulled TEXT,                -- 수집일 YYYY-MM-DD
+  pos_group TEXT,             -- FBref 비교 포지션군 원문 (예: 'Midfielders')
+  period TEXT,                -- 비교 기간·모집단 원문 (예: 'Last 365 days, Big 5 Leagues')
+  metric TEXT NOT NULL,       -- FBref 지표명 영문 원문
+  metric_kr TEXT,
+  per90 TEXT,                 -- 원값 문자열 그대로 (%·소수 혼재하므로 TEXT)
+  percentile INTEGER,         -- 0~100
+  source TEXT,
+  UNIQUE(player_id, metric, period)
+);
+CREATE VIEW v_player_season_stats AS
+SELECT player_id, season,
+       CASE competition
+         WHEN 'PL' THEN 'Premier League'
+         WHEN 'EL' THEN 'UEFA Europa League'
+         WHEN 'CL' THEN 'UEFA Champions League'
+         WHEN 'FIFA World Cup' THEN 'World Cup'
+         WHEN '' THEN '미분류'
+         ELSE COALESCE(competition, '미분류')
+       END AS competition,
+       COUNT(*)        AS n,
+       SUM(started)    AS starts,
+       SUM(minutes)    AS minutes,
+       SUM(goals)      AS goals,
+       SUM(assists)    AS assists,
+       ROUND(AVG(rating),2) AS avg_rating,
+       COUNT(rating)   AS rating_n
+FROM player_matches
+GROUP BY player_id, season,
+       CASE competition
+         WHEN 'PL' THEN 'Premier League'
+         WHEN 'EL' THEN 'UEFA Europa League'
+         WHEN 'CL' THEN 'UEFA Champions League'
+         WHEN 'FIFA World Cup' THEN 'World Cup'
+         WHEN '' THEN '미분류'
+         ELSE COALESCE(competition, '미분류')
+       END
+/* v_player_season_stats(player_id,season,competition,n,starts,minutes,goals,assists,avg_rating,rating_n) */;
+CREATE TABLE fotmob_traits(
+  id INTEGER PRIMARY KEY,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  pulled TEXT,                 -- 수집일
+  pos_group TEXT,              -- 비교 모집단 원문 (예: 'Stats compared to other midfielders')
+  metric TEXT NOT NULL,        -- Fotmob key (chances_created 등)
+  metric_kr TEXT,
+  percentile INTEGER,          -- 0~100 (원값 0~1 × 100)
+  source TEXT,
+  UNIQUE(player_id, metric)
+);
+CREATE TABLE fotmob_season_stats(
+  id INTEGER PRIMARY KEY,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  pulled TEXT,
+  league TEXT,                 -- 'Bundesliga 2025/2026'
+  season TEXT,
+  metric TEXT NOT NULL,        -- 라벨 원문 ('Goals','xG' 등)
+  metric_kr TEXT,
+  value TEXT,                  -- 원값 문자열 (%·소수 혼재)
+  source TEXT,
+  UNIQUE(player_id, league, season, metric)
 );
