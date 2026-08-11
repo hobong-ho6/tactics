@@ -47,7 +47,7 @@ export async function mountHeader(active){
   const team = currentTeam();
   const nav = [
     ['index.html', '허브'], ['heatmap.html', '히트맵 비교'], ['squad.html', '스쿼드'],
-    ['compare.html', '선수 비교'], ['transfer.html', '이적'], ['report.html', '리포트'], ['game.html', '게임 시스템'],
+    ['compare.html', '선수 비교'], ['transfer.html', '이적'], ['report.html', '리포트'], ['game.html', '게임 시스템'], ['manual.html', '매뉴얼'],
   ];
   const el = document.getElementById('hdr');
   el.innerHTML = `

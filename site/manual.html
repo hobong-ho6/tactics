@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>구현 매뉴얼 — tactics v2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="assets/style.css"></head><body>
+<div id="hdr"></div>
+<h1>실축 → FC26 구현 매뉴얼 <small class="dim">역할·포커스를 정하는 기준</small></h1>
+<div class="panel"><h2>1. 실측 수집 — 선수의 진짜 발자국</h2>
+<p>SofaScore 히트맵(경기당 좌표 수십~수백 점)을 5×5 그리드로 압축한다. <b>히트포인트 15 미만 경기는 버리고</b>,
+같은 포지션 경기끼리만 묶는다(포지션-순수 — 섞으면 어느 역할과도 안 닮은 뭉개진 그리드가 된다).
+평점·xG·수비 스탯을 함께 수집해 <b>위치(그리드) + 산출(스탯) 2차원</b>으로 본다.</p></div>
+<div class="panel"><h2>2. 커널 — 게임 역할의 기대 히트맵</h2>
+<p>EA의 역할×포커스마다 게임이 기대하는 히트맵(<b>커널</b>)이 있다 — FC26은 역할 37 × 조합 85 × 위치 변형 217.
+선수가 설 슬롯의 x좌표(예: RM=85, LM=14)에 <b>질량중심이 가장 가까운 변형</b>을 그대로 쓴다(합성·시프트 금지 — EA 정본).
+슬롯은 자기 포지션군(WM/DM/CB…)의 역할만 후보로 삼는다.</p></div>
+<div class="panel"><h2>3. 적합(fit) — 실측과 커널의 코사인 유사도</h2>
+<p>선수의 실측 그리드와 각 커널의 <b>코사인 유사도</b>를 계산해 최고값 조합이 "실측 최근접 역할"이다.
+예: 포파나 실측은 RCB 커널과 .943, 중앙(CCB) .669, 좌측 .256 — <b>우측 전용</b>이라는 결론이 수치로 나온다.
+전 페이지의 sim 값이 이것이다.</p></div>
+<div class="panel"><h2>4. 처방(opt) — 적합 그대로가 아니다</h2>
+<p>게임에 입력하는 역할·포커스는 적합 1위를 기본으로 하되 세 가지로 보정한다:</p>
+<table>
+<tr><th>규칙</th><th>내용</th></tr>
+<tr><td><b>노이즈 구간</b></td><td>Δ 0.02~0.05 차이는 EA가 명시한 비결정성 안 — 이 차이로 인선·역할을 가르지 않는다.
+그 구간에서는 <b>이산 근거</b>(역할 숙련도 Role+/++, 기능축, 아래 팀 제약)로 정한다.</td></tr>
+<tr><td><b>팀 제약(C 규칙)</b></td><td>감독 구조가 개인 최적보다 우선할 수 있다. 예: 에메리 C2(풀백 한 명씩만 전진) —
+캐시 RB는 개인 최적(att_wb .890) 대신 wingback을 줘 Δ.082를 지불하고 구조를 지켰다.</td></tr>
+<tr><td><b>실측 &gt; 서사</b></td><td>기사·평판과 실측이 충돌하면 실측 채택. 유튜브·기사 주장은 가설로만 기록하고
+그리드와 교차검증 후 승격한다.</td></tr></table></div>
+<div class="panel"><h2>5. 포커스 — 커널 + EA 태그의 이중 근거</h2>
+<p>같은 역할 안에서 포커스는 ⑴ 커널의 자기진영/전방 질량(수비 복귀량)과 ⑵ EA 원문 태그(강화+/희생−)가
+<b>같은 방향을 가리킬 때</b> 확정한다. 예: 에메리 뱅크 칸 wm_widemid는 Support(자기진영 0.60, "Supports Play")가
+기본이고 Defend(1.30, "Stays Back")는 보상용.</p></div>
+<div class="panel"><h2>6. 팀 세팅 — 실측 도출</h2>
+<p>포메이션은 실측 불변성으로(빌라 4-2-3-1 Wide 시즌 고정), 빌드업·수비 접근·라인 높이는 팀 실측
+(점유·PPDA·수비 위치)에서 도출한다. 상황 변형(리드/강팀/약팀)은 세팅만 바꾸고 역할은 유지한다.</p></div>
+<p class="dim">정본: docs/00-overview.md(규약) · docs/20(EA 피치노트 분석) · scripts/gates.py(기준값 검증).
+모든 수치는 게이트 통과 구현(core/)으로만 산출한다.</p>
+<script type="module">
+import { mountHeader } from './assets/data.js';
+await mountHeader('manual.html');
+</script></body></html>
