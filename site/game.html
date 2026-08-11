@@ -28,9 +28,18 @@ function renderRoles(){
   document.getElementById('roles').innerHTML='<tr><th>역할</th><th>포커스</th><th>EA 정의</th><th>강화(+)</th><th>희생(−)</th></tr>'+
    rs.flatMap(r=>kd.focus.filter(f=>f.role_id===r.role_id).map(f=>
     `<tr><td><b>${r.name}</b> <small class="dim">${f.ea_role_name??r.role_id}</small></td><td>${f.focus}</td>
-     <td class="dim">${f.description??''}</td><td>${_j(f.plus)}</td><td>${_j(f.negative)}</td></tr>`)).join('');
+     <td class="dim">${f.description??''} <small>(EA 원문 — 정의 왜곡 방지를 위해 원문 병기, 한글 전문 번역은 진행 중)</small></td><td>${_j(f.plus)}</td><td>${_j(f.negative)}</td></tr>`)).join('');
 }
-function _j(v){ try{const a=JSON.parse(v??'[]');return Array.isArray(a)?a.join('·'):'';}catch(e){return v??'';} }
+const TAG={'Aggressiveness':'적극성','Attack Support':'공격 지원','Attacking':'공격적','Attacking Runs':'공격 침투',
+ 'Build-Up Support':'빌드업 지원','Cover Side':'측면 커버','Creative':'창조적','Cut Inside':'안으로 파고듦',
+ 'Defence Option':'수비 옵션','Defence Support':'수비 지원','Defending':'수비 가담','Defense Support':'수비 지원',
+ 'Dynamic Side':'측면 활동량','Dynamic Width':'가변 폭','Intercepts Passes':'패스 차단','Lacks Mobility':'기동력 부족',
+ 'Leave Gaps':'공간 노출','Leaves Gaps':'공간 노출','Limited Versatility':'다재다능 제한','Limited Width':'폭 제한',
+ 'Low Risk':'낮은 리스크','Movement':'움직임','Out of Position':'자리 이탈','Pass Option':'패스 옵션','Physical':'피지컬',
+ 'Pressure':'압박','Rush':'전진 러시','Some Risk':'약간의 리스크','Stamina Usage':'체력 소모','Stay in Position':'자리 고수',
+ 'Stays Back':'후방 잔류','Support Centrally':'중앙 지원','Supports Attack':'공격 지원','Supports Attacks':'공격 지원',
+ 'Supports Centrally':'중앙 지원','Supports Play':'플레이 지원','Supports the Defence':'수비 지원','Versatile':'다재다능','Wide Support':'측면 지원'};
+function _j(v){ try{const a=JSON.parse(v??'[]');return Array.isArray(a)?a.map(t=>TAG[t]??t).join('·'):'';}catch(e){return v??'';} }
 renderRoles();
 document.getElementById('prm').innerHTML='<tr><th>파라미터</th><th>옵션</th><th>설명</th></tr>'+
  kd.tactic_params.map(p=>`<tr><td>${p.param}</td><td><b>${p.option}</b></td><td class="dim">${p.description??''}</td></tr>`).join('');
