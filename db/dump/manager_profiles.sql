@@ -1,0 +1,9 @@
+INSERT INTO manager_profiles VALUES(1,'philosophy','포지셔널 통제와 미드블록 — 짧은 빌드업으로 전진하고, 수비는 두 줄 4(뱅크)로 중앙을 닫는다. 압박보다 구조: 라인 52(기준)에서 상대·상황에 따라 43~67로 조절한다.','docs/10 · team_tactic_setups optimal 계열 · obs#4·#27(C2 풀백 비대칭)',NULL,'HIGH — 25/26 전수 실측 기반','2026-08-11');
+INSERT INTO manager_profiles VALUES(1,'traits','풀백 한 명씩만 전진(C2), 우측 와이드는 뱅크 복귀형(wm_widemid/Support), 10번은 자유 로밍. 리드 시 딥블록 전환(optimal:lead, 라인 45).','obs#89·#106·#110 · docs/20 Wide Mid 리워크',NULL,'HIGH','2026-08-11');
+INSERT INTO manager_profiles VALUES(1,'formation','4-2-3-1 Wide 고정 — 시즌 내 포메이션 불변이 실측으로 확인됨. 국면 변형은 라인·역할로만.','team_match_stats formation_v · docs/10',NULL,'HIGH','2026-08-11');
+INSERT INTO manager_profiles VALUES(2,'philosophy','레버쿠젠 원형의 이식 — 백3 빌드업과 윙백 폭 독점, 하프스페이스 2×10번. 25/26 첼시 전술과 무관하며(규칙 7) 26/27 처방은 블루프린트 단계다.','docs/11 · obs#37~62 · team_tactic_setups(CHE, projected 3-4-2-1)',NULL,'MEDIUM — 개막 전 처방','2026-08-11');
+INSERT INTO manager_profiles VALUES(2,'traits','카이세도 하강 빌드업(백라인 옆 압박 유인), 리스 제임스 하이브리드 RDM(창조 축), 팔머 우측 포켓. 수비 국면 5-4-1 참조형.','obs#44·#46·#102 · CHE 처방 프리셋 주석(archive/v1)',NULL,'MEDIUM','2026-08-11');
+INSERT INTO manager_profiles VALUES(2,'formation','3-4-2-1 (수비 국면 백5 표기 — CCB 슬롯). 좌 윙백은 인선 공백.','slots(CHE) · docs/11',NULL,'MEDIUM','2026-08-11');
+INSERT INTO manager_profiles VALUES(3,'philosophy','고강도 압박과 수직 전환 — 본머스 실측이 원형(PPDA 정본표는 docs/12). 26/27 리버풀 이식은 개막 후 실측 대기.','docs/12 · obs#80(PPDA 정의 차이)',NULL,'MEDIUM — 이식 검증 전','2026-08-11');
+INSERT INTO manager_profiles VALUES(3,'traits','인버티드 RB(프림퐁 fb_inverted 성향 실측), 살라 우측 인사이드, 비르츠 하프윙어 10번. ⚠️ 25/26 실측은 전임 체제 — 개인 성향 기준선으로만.','LIV measured 12명 · 규칙 7',NULL,'MEDIUM','2026-08-11');
+INSERT INTO manager_profiles VALUES(3,'pressing','FC26 Team Press가 수비 진영에서 너프됨(2026-05-28) — 고압박 재현이 구조적으로 가장 불리한 감독. 압박 강도는 라인 높이+수비 접근으로 근사.','docs/20 ⑥ · docs/12',NULL,'HIGH(제약 자체는 EA 명시)','2026-08-11');

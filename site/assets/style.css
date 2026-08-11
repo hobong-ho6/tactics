@@ -27,7 +27,7 @@ select,button.act{background:var(--panel);color:var(--txt);border:1px solid var(
 .badge{display:inline-block;padding:1px 8px;border-radius:8px;font-size:11px;border:1px solid var(--line)}
 .badge.hi{color:var(--ok);border-color:var(--ok)} .badge.mid{color:var(--warn);border-color:var(--warn)}
 .badge.dead{color:var(--bad);border-color:var(--bad)} .badge.own{color:var(--dim)}
-canvas.pitch{width:100%;border-radius:10px;display:block}
+canvas.pitch{width:100%;max-width:380px;margin:0 auto;border-radius:10px;display:block}
 .cardrow{display:flex;gap:10px;flex-wrap:wrap}
 .pcard{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-width:200px}
 .mono{font-family:ui-monospace,monospace;font-size:12px}

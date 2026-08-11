@@ -3943,7 +3943,29 @@
    "y": 61
   }
  ],
- "profile": [],
+ "profile": [
+  {
+   "axis": "formation",
+   "confidence": "HIGH",
+   "content": "4-2-3-1 Wide 고정 — 시즌 내 포메이션 불변이 실측으로 확인됨. 국면 변형은 라인·역할로만.",
+   "evidence": "team_match_stats formation_v · docs/10",
+   "updated": "2026-08-11"
+  },
+  {
+   "axis": "philosophy",
+   "confidence": "HIGH — 25/26 전수 실측 기반",
+   "content": "포지셔널 통제와 미드블록 — 짧은 빌드업으로 전진하고, 수비는 두 줄 4(뱅크)로 중앙을 닫는다. 압박보다 구조: 라인 52(기준)에서 상대·상황에 따라 43~67로 조절한다.",
+   "evidence": "docs/10 · team_tactic_setups optimal 계열 · obs#4·#27(C2 풀백 비대칭)",
+   "updated": "2026-08-11"
+  },
+  {
+   "axis": "traits",
+   "confidence": "HIGH",
+   "content": "풀백 한 명씩만 전진(C2), 우측 와이드는 뱅크 복귀형(wm_widemid/Support), 10번은 자유 로밍. 리드 시 딥블록 전환(optimal:lead, 라인 45).",
+   "evidence": "obs#89·#106·#110 · docs/20 Wide Mid 리워크",
+   "updated": "2026-08-11"
+  }
+ ],
  "regime": {
   "id": 1,
   "is_main": 1,

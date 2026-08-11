@@ -217,7 +217,29 @@
    "y": 71
   }
  ],
- "profile": [],
+ "profile": [
+  {
+   "axis": "philosophy",
+   "confidence": "MEDIUM — 이식 검증 전",
+   "content": "고강도 압박과 수직 전환 — 본머스 실측이 원형(PPDA 정본표는 docs/12). 26/27 리버풀 이식은 개막 후 실측 대기.",
+   "evidence": "docs/12 · obs#80(PPDA 정의 차이)",
+   "updated": "2026-08-11"
+  },
+  {
+   "axis": "pressing",
+   "confidence": "HIGH(제약 자체는 EA 명시)",
+   "content": "FC26 Team Press가 수비 진영에서 너프됨(2026-05-28) — 고압박 재현이 구조적으로 가장 불리한 감독. 압박 강도는 라인 높이+수비 접근으로 근사.",
+   "evidence": "docs/20 ⑥ · docs/12",
+   "updated": "2026-08-11"
+  },
+  {
+   "axis": "traits",
+   "confidence": "MEDIUM",
+   "content": "인버티드 RB(프림퐁 fb_inverted 성향 실측), 살라 우측 인사이드, 비르츠 하프윙어 10번. ⚠️ 25/26 실측은 전임 체제 — 개인 성향 기준선으로만.",
+   "evidence": "LIV measured 12명 · 규칙 7",
+   "updated": "2026-08-11"
+  }
+ ],
  "regime": {
   "id": 3,
   "is_main": 0,
