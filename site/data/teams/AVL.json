@@ -25917,6 +25917,26 @@
     "short_label": "루헤리",
     "slot": "LB",
     "source": "Marca(스페인 전국지, 원출처) via Matteo Moretto(준1티어) ; https://www.sportsmole.co.uk/football/aston-villa/transfer-talk/news/emery-wants-to-sign-italian-defender-immediately-as-aston-villa-bid-to-resolve-clear-issue_602381.html ; http://insidefutbol.com/2026/08/04/aston-villa-push-for-defender-as-he-weighs-his-options/722198/ ; https://www.eurosport.es/futbol/mercado-de-fichajes-2026/2026/aston-villa-interes-matteo-ruggeri-atletico-de-madrid_sto23325237/story.shtml ; https://uk.sports.yahoo.com/news/aston-villa-could-seal-immediate-101500950.html ; SofaScore /api/v1/player/965011/events/last/0 + /event/{eid}/player/965011/heatmap|statistics ; The Athletic(Jacob Tanswell, 1티어, 2026-08-04, paywall 미열람 — 인용 3매체 발행시각 일치로 확정) ; Marca(Isaac Suarez) 2026-08-04 via Sport Witness ; https://www.givemesport.com/aston-villa-identify-mattero-ruggeri-digne-replacement-transfer/ (2026-08-04) ; Tinti 발언 https://www.romaforever.it/2026/07/21/ruggeri-si-allontana-lagente-tinti-fa-chiarezza-sul-suo-futuro/ (2026-07-21) ; Total Football Analysis 스카우트리포트 2025-07-24(⚠️아탈란타 24/25 데이터) | https://www.marca.com (2026-08-05, via readastonvilla.com/2026/08/05/aston-villa-agree-20m-matteo-ruggeri-deal-as-final-hurdle-remains/) | https://insidefutbol.com/2026/08/05/aston-villa-move-blocked-for-now-as-definitive-yes-is-missing/ (Moretto)"
+   },
+   {
+    "avg_rating": 7.0,
+    "club": "Real Madrid",
+    "confidence": "MEDIUM-HIGH — 1티어 관심 보도(Fabrizio Romano, 2026-08-10). §2-0 발행일 검증 통과: 본문 나이 표기 '20세'가 현재(2006-07-21생 → 2026-08 기준 20세)와 일치하고, 병기된 상황(무리뉴 부임·카를로스 에스피 영입 후 3순위, 로저스 첼시행 후 빌라의 여름 영입 나열)이 모두 26/27 창과 정합. 보조 소스 AS(스페인, 2티어)·Sky Sports Paper Talk(지면 요약이라 Sky 자체 취재 아님 — 티어 근거 제외). ⚠️ **협상 단계 아님** — Romano도 '관심'까지만 말했고 접촉·오퍼 보도는 0건이라 HIGH가 아니다. ⚠️ 실측 표본은 **리옹 임대 20경기(25/26 후반기)** 이고 레알 소속 경기가 아니다. ⚠️ 임대 구조라 잭슨 건과 달리 PL 동일구단 임대 슬롯 제약을 함께 봐야 한다(가르나초가 이미 임대 1명).",
+    "fit_focus": "Attack",
+    "fit_role": "wm_wideplm",
+    "fit_sim": 0.847,
+    "last_news_date": "2026-08-10",
+    "likelihood": "MEDIUM-HIGH",
+    "map25": "013440137X001350112200000",
+    "name": "Endrick",
+    "name_kr": "엔드릭",
+    "opt_focus": "Attack",
+    "opt_role": "wm_wideplm",
+    "position": "RW/ST",
+    "sample_n": 20,
+    "short_label": "엔드릭",
+    "slot": "RM",
+    "source": "Fabrizio Romano 발언(2026-08-10) via football365 https://www.football365.com/news/aston-villa-real-madrid-endrick-fabrizio-romano-transfer-update ; AS 원보도 via Managing Madrid https://www.managingmadrid.com/111142/endrick-real-madrid-loan-deal-2026-news ; Fotmob rumours teamIds=10252 (RW Endrick / 어제 / AS) ; 실측 obs#135 SofaScore pid 1174937"
    }
   ]
  }

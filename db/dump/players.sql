@@ -73,3 +73,4 @@ INSERT INTO players VALUES(75,'João Palhinha','팔리냐',NULL,NULL,NULL,'DM','
 INSERT INTO players VALUES(76,'Nicolas Jackson','잭슨',NULL,NULL,NULL,'ST','transfer_targets 2026-summer AVL 후보 — 평가·듀티 기록용 등재 (2026-08-11)',1197347);
 INSERT INTO players VALUES(77,'Allan','아우안',NULL,NULL,NULL,'RW','transfer_targets 2026-summer AVL 후보(팔메이라스) — 평가·듀티 기록용 등재 (2026-08-11)',1721789);
 INSERT INTO players VALUES(78,'Matteo Ruggeri','마테오 루헤리',NULL,NULL,NULL,'LB','transfer_targets 2026-summer AVL 후보(아틀레티코) — 평가·듀티 기록용 등재 (2026-08-11)',1051097);
+INSERT INTO players VALUES(79,'Endrick','엔드릭',1174937,NULL,NULL,'RW','transfer_targets 2026-summer AVL 후보 — 2026-08-11 등재(Romano 08-10). 실측은 obs#135(리옹 임대 20경기)',NULL);
