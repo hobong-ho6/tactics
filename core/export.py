@@ -116,8 +116,17 @@ def export_all(db_path=None, window="2026-summer"):
                                ORDER BY CASE kind WHEN 'in' THEN 0 WHEN 'deduct' THEN 1
                                         WHEN 'out' THEN 2 ELSE 3 END, amount_m DESC""",
                         (code, window))
+        duties = _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, d.position, d.duties,
+                                      d.execution, d.adherence, d.game_role_implication, d.source, d.confidence
+                               FROM player_duties d JOIN players p ON p.id=d.player_id
+                               WHERE d.regime_id=? ORDER BY p.id""", (rid,))
+        pstats = _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, v.n, v.avg_rating, v.minutes,
+                                      v.xg_pg, v.xa_pg, v.kp_pg, v.dw_pg, v.tk_pg, v.ic_pg
+                               FROM v_player_profile v JOIN players p ON p.id=v.player_id
+                               WHERE v.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?)""", (rid,))
         written.append(_write(SITE_DATA / "teams" / f"{code}.json", {
             "regime": rg, "slots": slots, "squad": squad, "prescriptions": prescriptions,
+            "duties": duties, "player_stats": pstats,
             "setups": setups, "profile": profile,
             "transfer": {"targets": targets, "outgoing": outgoing, "ledger": ledger}}))
 
