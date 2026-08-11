@@ -4915,6 +4915,20 @@
  ],
  "squad": [
   {
+   "fit_focus": "Aggressive",
+   "fit_role": "cb_bpd",
+   "fit_sim": 0.883,
+   "label": "시세(합류확정)",
+   "lh": "CONFIRMED",
+   "map25": "001100013201476027X812666",
+   "player_id": 57,
+   "rate_basis": "r6",
+   "rate_note": "29경기 평균 7.1",
+   "rate_v": 7.1,
+   "slot_type": "CB",
+   "sort_order": 8
+  },
+  {
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -4927,6 +4941,62 @@
    "rate_v": 7.95,
    "slot_type": "GK",
    "sort_order": 10
+  },
+  {
+   "fit_focus": "Roaming",
+   "fit_role": "dm_dlp",
+   "fit_sim": 0.713,
+   "label": "만잠비(합류확정)",
+   "lh": "CONFIRMED",
+   "map25": "33423X9565897636965322311",
+   "player_id": 55,
+   "rate_basis": "r6",
+   "rate_note": "클럽 56경기 평균 7.2",
+   "rate_v": 7.2,
+   "slot_type": "DM",
+   "sort_order": 11
+  },
+  {
+   "fit_focus": "Roaming",
+   "fit_role": "dm_dlp",
+   "fit_sim": 0.763,
+   "label": "고메스(합류확정)",
+   "lh": "CONFIRMED",
+   "map25": "11111794665X6647968421221",
+   "player_id": 56,
+   "rate_basis": "r6",
+   "rate_note": "39경기 평균 6.77",
+   "rate_v": 6.77,
+   "slot_type": "DM",
+   "sort_order": 12
+  },
+  {
+   "fit_focus": "Attack",
+   "fit_role": "wm_winger",
+   "fit_sim": 0.771,
+   "label": "가르나초(합류확정)",
+   "lh": "CONFIRMED",
+   "map25": "77111X4111510006100010100",
+   "player_id": 58,
+   "rate_basis": "r6",
+   "rate_note": "38경기 평균 6.99",
+   "rate_v": 6.99,
+   "slot_type": "WM",
+   "sort_order": 15
+  },
+  {
+   "fit_focus": "Balanced",
+   "fit_role": "cam_halfwinger",
+   "fit_sim": 0.861,
+   "label": "만잠비(합류확정)",
+   "lh": "CONFIRMED",
+   "map25": "35345X9578542261322300020",
+   "player_id": 55,
+   "rate_basis": "r6",
+   "rate_note": "대표팀 12경기 평균 7.2",
+   "rate_v": 7.2,
+   "slot_type": "CAM",
+   "sort_order": 18
   },
   {
    "fit_focus": null,
@@ -4983,20 +5053,6 @@
    "rate_v": 7.03,
    "slot_type": "W",
    "sort_order": 26
-  },
-  {
-   "fit_focus": "Attack",
-   "fit_role": "wm_winger",
-   "fit_sim": 0.804,
-   "label": "가르나초",
-   "lh": "OWNED",
-   "map25": "88210X4101720004100011000",
-   "player_id": 58,
-   "rate_basis": "r6",
-   "rate_note": "최근 6경기 평균 7.03 (첼시 25/26 실측)",
-   "rate_v": 7.03,
-   "slot_type": "WM",
-   "sort_order": 27
   },
   {
    "fit_focus": null,
@@ -5125,16 +5181,16 @@
    "sort_order": 52
   },
   {
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "fit_focus": "Build-Up",
+   "fit_role": "wm_widemid",
+   "fit_sim": 0.833,
    "label": "알리송(신규)",
    "lh": "OWNED",
-   "map25": "001640014X000380003600011",
+   "map25": "001331015X001370003500013",
    "player_id": 59,
    "rate_basis": "r6",
-   "rate_note": "최근 6경기 평균 6.75 (그레미우+빌라 혼합)",
-   "rate_v": 6.75,
+   "rate_note": "확장 22경기 평균 6.88 (그레미우+빌라)",
+   "rate_v": 6.88,
    "slot_type": "WM",
    "sort_order": 53
   },
@@ -5195,16 +5251,16 @@
    "sort_order": 70
   },
   {
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "fit_focus": "Attack",
+   "fit_role": "st_false9",
+   "fit_sim": 0.643,
    "label": "아브라함(보유)",
    "lh": "OWNED",
-   "map25": "01855255648X8415422010200",
+   "map25": "239324777256X732212211410",
    "player_id": 60,
    "rate_basis": "r6",
-   "rate_note": "45분+ 4경기 평균 6.85 (빌라·전부 교체)",
-   "rate_v": 6.85,
+   "rate_note": "확장 25경기 평균 6.95",
+   "rate_v": 6.95,
    "slot_type": "ST",
    "sort_order": 71
   }

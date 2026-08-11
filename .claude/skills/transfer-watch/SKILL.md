@@ -212,7 +212,7 @@ docs/20-fc-game-system.md의 영입 후보 파이프라인 그대로:
 
 - 무산/타클럽 이적 확정: likelihood를 `DEAD (사유)`로 갱신 — `sync_transfer_ui.py` 재실행 후
   자동으로 SQUAD_SLOTS/XI_POOL 후보에서 빠진다(injectTransferCandidates가 DEAD 필터).
-- 빌라 이적 확정: likelihood `CONFIRMED`로 갱신. 라벨 `(합류확정)`은 툴이 런타임에 자동
+- 이적 확정: likelihood `CONFIRMED`로 갱신 + ⭐**squad_entries로 즉시 승격**(그리드·적합 복사, 다포지션은 복수 행 — docs/00 정합성 규칙). 라벨 `(합류확정)`은 툴이 런타임에 자동
   붙이므로 손으로 안 바꿔도 됨. 시즌 데이터가 쌓이면 players로 승격 (docs/20 규칙).
 
 ## 4-3. 정체(STALE) 관리 — 2주 무소식은 DEAD로 숨기고, 새 보도가 나오면 복원 (2026-07-30 확정)

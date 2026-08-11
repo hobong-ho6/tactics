@@ -67,3 +67,10 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 - [ ] 7 FC27 온보딩 (9월): game_system_changes 소급 기입 + docs/21·22 작성
 - 데이터 백로그: AVL squad_entries의 가르나초·알리송·아브라함 그리드가 구표본(v1 승계) —
   prescriptions 확장 표본으로 갱신 필요. 만잠비 fit 재산출값의 transfer_targets 반영은 완료.
+
+## 정합성 규칙 (2026-08-11 추가 — 히트맵 CAM 만잠비 누락 사고에서)
+
+**페이지 후보 풀의 SSOT는 `squad_entries`다.** transfer_targets가 CONFIRMED가 되는 순간
+squad_entries로 승격해야 한다(다포지션은 복수 행 — 맥긴 WM+DM 선례). 승격 없이 두면
+설정 시트(prescriptions)에는 있는데 히트맵·스쿼드(squad_entries)에는 없는 불일치가 생긴다.
+transfer-watch §4의 CONFIRMED 처리에 승격 단계 포함.
