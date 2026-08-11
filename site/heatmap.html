@@ -5,6 +5,7 @@
 <div id="hdr"></div>
 <h1>히트맵 비교 <small class="dim">A = 실측 그리드 · B = 처방 역할 커널 (같은 인선)</small></h1>
 <div class="panel" id="slotBar"></div>
+<div class="panel">표시: <select id="who"><option value="">전체 합성</option></select></div>
 <div class="grid2">
   <div class="panel"><h2>A · 실측</h2><canvas class="pitch" id="cvA" width="640" height="860"></canvas></div>
   <div class="panel"><h2>B · 처방(커널)</h2><canvas class="pitch" id="cvB" width="640" height="860"></canvas></div>
@@ -57,12 +58,21 @@ function buildBar(){
   }));
 }
 
+const who=document.getElementById('who');
+who.addEventListener('change', render);
+function fillWho(){
+  who.innerHTML='<option value="">전체 합성</option>'+useSlots.map(s2=>{
+    const c=cands(s2.pos); return c.length?`<option value="${s2.pos}">${s2.pos} — ${c[sel[s2.pos]].label}</option>`:'';
+  }).join('');
+}
 function render(){
+  fillWho();
   for (const [id, mode] of [['cvA', 'measured'], ['cvB', 'kernel']]){
     const cv = document.getElementById(id), ctx = cv.getContext('2d');
     drawPitch(ctx, cv.width, cv.height);
     const decoded = [], chips = [];
     for (const s of useSlots){
+      if (who.value && s.pos !== who.value) continue;
       const c = cands(s.pos); if (!c.length) continue;
       const q = c[sel[s.pos]];
       let map = null;

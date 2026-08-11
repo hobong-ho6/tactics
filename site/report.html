@@ -4,6 +4,8 @@
 <link rel="stylesheet" href="assets/style.css"></head><body>
 <div id="hdr"></div>
 <h1 id="title"></h1>
+<div class="panel"><h2>⭐ FC26 설정 시트 — 게임에 그대로 입력</h2>
+  <div id="teamset" class="kv"></div><table id="sheet"></table></div>
 <div class="panel"><h2>감독 프로필 <small class="dim">manager_profiles — 11축</small></h2>
   <table id="profile"></table></div>
 <div class="panel"><h2>팀 전술 세팅 <small class="dim">team_tactic_setups</small></h2>
@@ -18,6 +20,13 @@ const td = await loadTeam(team);
 document.getElementById('title').textContent =
   `${regime.manager_kr ?? regime.manager} · ${regime.team_kr}`;
 
+// FC26 설정 시트 — 팀 세팅(setups 최신 projected/optimal) + 슬롯별 게임 처방(fc26:opt)
+const su = td.setups.filter(x=>/projected|optimal$/.test(x.kind)).slice(-1)[0] ?? td.setups.slice(-1)[0];
+document.getElementById('teamset').innerHTML = su ? `<b>${su.formation??''}</b> · 빌드업 <b>${su.build_up_style??'—'}</b> · 수비 <b>${su.defensive_approach??'—'}</b> · 라인 <b>${su.line_height??'—'}</b> · (${su.kind}, ${su.season})` : '팀 세팅 미기록';
+const opts = td.prescriptions.filter(p=>p.kind.startsWith('fc26:opt:'));
+document.getElementById('sheet').innerHTML = '<tr><th>슬롯</th><th>선수</th><th>역할</th><th>포커스</th></tr>'+
+ (opts.length ? opts.map(p=>`<tr><td><b>${p.pos_label}</b></td><td>${p.label}</td><td>${p.role_id}</td><td>${p.focus}</td></tr>`).join('')
+  : '<tr><td colspan="4" class="dim">게임 처방(fc26:opt) 미기록 — 실측이 쌓이면 스쿼드 페이지의 커널 적합으로 도출한다</td></tr>');
 const AXES = { philosophy:'철학', traits:'전술적 특징', role_demands:'역할 요구',
   formation:'포메이션', situational:'상황별 변화', pressing:'압박·PPDA',
   buildup:'빌드업', rest_defense:'rest-defense', set_pieces:'세트피스',
