@@ -2,6 +2,126 @@
  "departed": [],
  "duties": [
   {
+   "adherence": "MEDIUM — 배급 취약 서사는 패스·롱볼 정확도 백분위(62/46)가 지지한다. 그러나 그로부터 도출되는 '스위퍼형 골키퍼가 필요하다'는 함의는 실측 그리드가 기각한다(gk_sweeper 0.773).",
+   "confidence": "서사 소스(3티어급, 구단 공식 리뷰는 1차) — 2026-07~08 발행 확인. ⚠️ 체제 캐비앗: 우리 실측 6경기와 팟몹 25/26 리그 스탯은 모두 마레스카·로즈니어 체제 산물이며 알론소 체제 표본은 0이다(첫 공식전 8/24 풀럼).",
+   "duties": "25/26 전 대회 50경기(49선발) 4,844분·클린시트 15로 첼시 최다 출전. 리그는 35경기 41실점·9클린시트, 선방률 67.59%. 페트르 체흐 이후 첫 첼시 골키퍼 리그 도움을 기록했다(뉴캐슬 원정, 롱볼→주앙 페드루). 서사의 초점은 발밑 배급 논란이며 스콜스는 \"알론소가 원하는 방식으로 뛸 수 없다\"며 새 골키퍼를 예측했다. 26/27 알론소 체제에서는 토트넘 친선 결장(경미 부상)에 펜더스가 임대 복귀해 경쟁 구도이나, 개막전(8/24 풀럼) 예상 선발로 지목됐다.",
+   "execution": "우리 실측 6경기 평균 6.80, 중심(51.8,10.8), 자기진영 질량 1.00. 커널은 gk_goalkeeper/Defend 0.961 > 동 역할 Balanced 0.953 > gk_sweeper/Balanced 0.773 — 스위퍼형이 아니다. 팟몹 25/26 리그 백분위: 패스 정확도 66.7%(62)·롱볼 정확도 32.1%(46)로 정확도는 평범한 반면 정확한 롱볼 199회(87)·성공 패스 25.8/90(82)로 양은 많다 — '길게 자주 차지만 정확하진 않다'가 배급 비판의 정량 형태다. 기회 창출 5회(100)·도움 1(100)은 뉴캐슬전 롱볼 도움 서사와 직접 일치. 스위퍼 행동 23회(82)는 높지만 히트맵 질량은 골라인에 고착돼 있어 두 지표가 어긋난다.",
+   "game_role_implication": "gk_goalkeeper/Defend 유지(실측 0.961). obs#44의 알론소 원칙 'GK가 압박 시 +1 수적우위 제공'은 스위퍼를 함의하나 실측 적합이 낮아 채택하지 않는다 — 기존 prescriptions(projected) 판정과 동일하며 이번 서사 조사도 이를 뒤집지 못했다. ⚠️ 알론소 체제 공식전 0경기이므로 이 판정은 마레스카·로즈니어 체제 표본 기준이다.",
+   "label": "로베르트 산체스",
+   "position": "GK",
+   "source": "Chelsea FC 공식 시즌 리뷰 — https://www.chelseafc.com/en/news/article/chelsea-2025-26-revisited-goalkeepers · Premier League 선수 스탯 — https://www.premierleague.com/en/players/215059/robert-sanchez/stats · The Chelsea Chronicle 개막전 예상 XI — https://www.thechelseachronicle.com/match-coverage/predicting-the-chelsea-xi-xabi-alonso-will-name-to-face-fulham-after-mixed-pre-season/"
+  },
+  {
+   "adherence": "HIGH — '전진해 안쪽에서 받는 풀백, 크로서 아님'이 실측 그리드(fb_att_wb 0.862)와 백분위(전진·회수 상위 / 크로스 중하위) 양쪽에서 확인된다. obs#46의 '윙백은 크로서가 아니라 득점자'와 같은 방향이다.",
+   "confidence": "서사 소스(3티어급, 코치스 보이스는 2티어급 경기 분석) — 2026-04~07 발행 확인. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 공식전 0경기. 이적 보도는 추측 티어로 분류.",
+   "duties": "마레스카 체제 우측 풀백 로테이션의 한 축. 전술 분석은 그를 명목상 풀백이나 실제로는 우측 상위 지역까지 올라가 수적우위를 만드는 인원으로 서술한다 — 리스 제임스가 볼을 운반할 때 구스토가 더 중앙·전방으로 들어가 받으며 상대 수비 조직을 흐트리고 파머의 배후 침투를 열어준다. 반대 방향의 근거도 있다. 코치스 보이스의 첼시 0-3 맨시티(2026-04) 분석은 그를 표적으로 지목했다(오라일리의 안쪽 침투로 도쿠에게 접근로를 만들어 1v1 반복). 26/27 여름 맨시티·PSG 관심 보도가 있고 첼시는 £75m를 요구했다.",
+   "execution": "실측 6경기 평균 6.40, 중심(81.5,46.3), RB fb_att_wb/Support 0.862 > fb_wingback/Support 0.830. 전방 0.34/자기진영 0.44의 균형형 전진 풀백이다. 팟몹 백분위(90분당 기준): 성공 패스 43.6(86)·상대 진영 볼 탈취 0.40(85)·기대 도움 0.119(82)·볼 회수 4.84(82)로 전진과 회수가 모두 상위. 반면 크로스 정확도 20.7%(48)·공중 경합 승률 45.5%(32)·걷어내기(2)로 전통적 크로서도 제공권 요원도 아니다. 맨시티전 1v1 피격 서술은 제쳐당함(39)·출전 중 피xG(40)가 약하게만 지지한다 — 한 경기 서술이라 시즌 지표로는 두드러지지 않는다.",
+   "game_role_implication": "fb_att_wb/Support 유지. ⚠️ 스쿼드 변수: 알론소 26/27 예상 XI들은 우측 윙백에 신입 팔레스트라를 넣고 구스토를 이적 후보로 다룬다 — 인선이 바뀌면 FC26 우측 윙백 슬롯 주인이 달라진다. 역할 자체는 알론소 체계가 요구하는 '폭을 독점하는 윙백'에 부합하는 보유 인원이다.",
+   "label": "말로 귀스토",
+   "position": "RB",
+   "source": "Squawka 전술 분석(구스토) — https://www.squawka.com/en/features/tactical-analysis-malo-gusto-chelsea-2-0-everton/ · Coaches' Voice 첼시 0-3 맨시티(2026-04) — https://learning.coachesvoice.com/cv/chelsea-manchester-city-tactics-april-2026/ · Total Football Analysis 마레스카 전술 결산 — https://totalfootballanalysis.com/head-coach-analysis/enzo-maresca-tactics-chelsea-2025-2026-what-went-wrong · CaughtOffside 이적 보도(2026-07-14) — https://www.caughtoffside.com/2026/07/14/sources-chelsea-demand-considered-excessive-full-back/"
+  },
+  {
+   "adherence": "HIGH(위치) / 검증 불가(기능) — '백3 우측 센터백' 예측은 실측 우측 전용(0.953)과 강정합. 규율·듀얼 등 기능 서사는 팟몹 미수집으로 대조 자체가 불가하므로 판단을 유보한다.",
+   "confidence": "서사 소스(3티어급) — 2026-07~08 발행 확인. ⚠️ 체제 캐비앗: 실측 그리드는 25/26 마레스카·로즈니어 체제 산물. ⚠️ 데이터 결손: fotmob_detail_stats 0행이라 백분위 교차검증을 수행하지 못했다.",
+   "duties": "25/26은 첼시 커리어 최다 가용 시즌이었다 — 전 대회 38경기(31선발), 리그 25경기 1,727분(20선발). 부상 이력이 지배하던 이전 세 시즌과 대비되는 지점이다. 결점은 규율로, 커리어 첫 두 번의 리그 퇴장이 모두 이 시즌에 나왔다(최종전 선덜랜드전 62분 퇴장 포함). 26/27 알론소 체제에서는 밀란전 3-0(3-4-2-1 데뷔)의 호평을 근거로 백3 우측 선발이 예상되나, £52m 라크루아 영입으로 자리는 확정되지 않았다. 알론소는 센터백을 '4~5명' 규모로 유지하겠다고 밝혔다.",
+   "execution": "실측 6경기 평균 6.47, 중심(66.5,31.8). RCB cb_bpd/Aggressive 0.953 대 LCB 0.239 — 우측 전용이 극단적으로 선명하다. 전방 0.05/자기진영 0.70으로 백3 후보 중 가장 순수한 수비형이다. ⚠️ 이 선수는 fotmob_detail_stats에 행이 하나도 없다 — 지표별 백분위 대조가 불가능하며, 따라서 '퇴장 2회·규율' 같은 기능축 서사는 우리 데이터로 검증할 수 없다. player_matches도 8/8 친선 1행뿐이라 위치 판정은 prescriptions에 누적된 그리드에만 의존한다.",
+   "game_role_implication": "cb_bpd/Aggressive(RCB 전용) 유지. 전방 질량 0.05는 obs#58의 '볼플레잉 CB 2 + 강력한 CB 1' 중 후자에 대응한다 — 백3에서 전개를 맡기지 않는 칸이다. ⚠️ 팟몹 상세 스탯 미수집 — 다음 수집 회차의 우선 대상으로 기록.",
+   "label": "웨슬리 포파나",
+   "position": "RCB",
+   "source": "The Analyst 선수 페이지 — https://theanalyst.com/players/3915/wesley-fofana · Chelsea FC 인터뷰 — https://www.chelseafc.com/en/news/article/interview-wesley-fofana-feeling-good-making-progress-wanting-more · The Chelsea Chronicle 개막전 예상 XI — https://www.thechelseachronicle.com/match-coverage/predicting-the-chelsea-xi-xabi-alonso-will-name-to-face-fulham-after-mixed-pre-season/ · PlanetFootball 26/27 예상 XI(라크루아 영입) — https://www.planetfootball.com/chelsea/predicting-xabi-alonso-chelsea-lineup-2026-27"
+  },
+  {
+   "adherence": "HIGH — '주전 중앙 센터백·빌드업 지분'이 실측 중심 좌표와 패스 백분위 양쪽에서 일치한다. 서사와 실측이 충돌하는 지점이 없다.",
+   "confidence": "서사 소스(3티어급, 이적 확정은 1차 보도 다수 일치) — 2026-08-09 발행 확인. ⚠️ 실측 표본 3경기로 얕다. ⚠️ 체제 캐비앗: 그리드·팟몹 모두 25/26 마레스카·로즈니어 체제.",
+   "duties": "⚠️ 2026-08-09 코모로 완전이적 확정(€30m 고정 + €6m 옵션, 5년 계약, 셀온 조항 포함) — 26/27 첼시 스쿼드가 아니다. 25/26에는 전 대회 47경기(41선발) 4,149분으로 첼시 센터백 중 압도적 최다 출전이었고 4골(아스날전 헤더 포함), 11월 4클린시트 구간에서 포파나와 짝을 이뤘다. 라크루아 영입 후 잉여 분류됐다.",
+   "execution": "실측 3경기(45분+ 표본 부족) 중심(52.7,37.6), CCB 0.873 > RCB 0.744 > LCB 0.665 — 정확히 중앙이며 이것이 CCB 슬롯 신설의 근거 인선이었다. 팟몹 25/26 리그(league='Premier League' 확인 — 코모 이적은 이 시즌 종료 후) 백분위: 패스 정확도 93.0%(94)·성공 패스 68.7/90(92)·터치 86.9/90(92)로 빌드업 지분이 최상위. 반대로 롱볼 정확도 40.0%(33)·정확한 롱볼(26)·상대 박스 터치(14)·태클(29)은 낮다 — 길게 넘기지 않고 짧게 순환시키는 중앙 센터백이다. 걷어내기 5.76/90(53)·공중 경합 승률 55.6%(33)로 방어 항목은 평범하다.",
+   "game_role_implication": "⚠️ 이적으로 26/27 인선에서 제외 — CCB 슬롯이 공석이 된다(라크루아가 유력 대체이나 우리 실측 없음). 이 행은 CCB 슬롯의 실측 기준선으로만 보존하고, 처방 인선에는 넣지 않는다. 백3 중앙에 요구되는 프로필(짧은 순환·높은 터치)의 수치 원형으로 유용하다.",
+   "label": "트레보 찰로바",
+   "position": "CCB",
+   "source": "Goal.com 이적 확정 — https://www.goal.com/en-us/lists/trevoh-chalobah-permanent-como-chelsea-academy-graduate-cesc-fabregas-serie-a/blt8515f8dc46294a7e · ESPN — https://www.espn.com/soccer/story/_/id/49535037/trevoh-chalobah-como-chelsea-premier-league-serie-transfers · Chelsea FC 공식 시즌 리뷰(수비수) — https://www.chelseafc.com/en/news/article/chelsea-2025-26-revisited-defenders"
+  },
+  {
+   "adherence": "HIGH — '좌측 전용·볼플레잉·과도한 전진 개입' 세 가지가 위치(0.930)·패스(95)·태클/인터셉트(85/87)에서 모두 확인된다. 다만 '좌측 풀백 겸업' 라벨은 실측이 기각한다(LB 0.717).",
+   "confidence": "서사 소스(3티어급) — TFA 리포트는 아약스 시절(24/25) 기준이므로 현재 서술의 근거로는 스타일 항목만 채용하고 25/26 첼시 사실관계는 SI·Strictly Chelsea(2025-10~2026-04)로 보강. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 0경기.",
+   "duties": "아약스에서 €46.5m(보너스 제외)에 2025-08-03 영입, 2032년 계약. 왼발잡이로 좌측 센터백과 좌측 풀백을 겸하며 아약스 최연소 주장 기록. 25/26 출전은 계획보다 빨랐고, 구단 스카우트 올로핀자나는 첫 시즌에 큰 부담을 지울 계획이 아니었다고 인정했다 — 콜윌·토신·포파나 부상으로 좌측 풀백이 아닌 센터백 선발이 앞당겨졌다. 지적된 약점은 두 가지다. 마커를 따라 지나치게 높이 올라가 배후를 비운다는 것, 그리고 강한 공격수와의 직접 경합에서 밀린다는 것.",
+   "execution": "실측 6경기 평균 6.52, 중심(27.0,35.3). ⭐ 여기서 실측이 서사를 정정한다 — LB(x=14) 최고 적합 fb_falseback/Balanced 0.717보다 LCB(x=31) cb_bpd/Aggressive 0.930이 훨씬 높다. 즉 그는 좌측 풀백이 아니라 좌측 센터백 프로필이다. 팟몹 백분위(90분당): 패스 정확도 92.0%(95)·성공 패스 55.2(95)로 배급은 최상위, 그리고 태클 2.84(85)·인터셉트 1.42(87)·수비 행동 7.88(80)·슛 블록 0.55(89)로 능동 개입량이 매우 높다. 이 능동성이 'Aggressive'(스텝업 요격) 포커스와 정합하는 동시에 '마커를 따라 과하게 올라간다'는 약점 서술의 정량 이면이다. 반면 정확한 롱볼(13)·롱볼 정확도(21)는 최하위권 — 전개는 짧은 패스에 한정된다.",
+   "game_role_implication": "cb_bpd/Aggressive(LCB) 유지. 쿠쿠렐라 이탈 후 좌측 풀백 대체자로 쓰면 안 된다 — 실측이 반박한다. 롱볼 백분위 하위는 백3 좌측에서 긴 전환을 그에게 맡기지 말라는 함의다. 알론소 26/27 예상 XI들은 좌측에 콜윌을 두고 하토를 그 뒤 경쟁자로 본다.",
+   "label": "요렐 하토",
+   "position": "LCB",
+   "source": "Total Football Analysis 스카우팅 리포트 — https://totalfootballanalysis.com/article/jorrel-hato-2024-25-scout-report-tactical-analysis-tactics · Strictly Chelsea 스타일 분석 — https://strictlycfc.com/jorrel-hato-style-of-play-and-tactical-analysis/ · SI(구단 스카우트 발언) — https://www.si.com/onsi/soccer/chelsea/news/chelsea-scout-summer-signing-shouldnt-have-played-regularly-per-initial-plan-01k6fytgcvj5"
+  },
+  {
+   "adherence": "HIGH — '통제형 볼위너, 창조자 아님'이 위치·기능 양쪽에서 확인된다. 남는 긴장은 하나뿐이다. 커널 최적 역할명이 창조형(dm_dlp)인데 기능축 실측은 명백한 볼위너다 — obs#116이 이미 '카이세도는 첼시의 카마라'로 기록한 미해결 지점이며, 이번 서사 조사도 같은 결론에 도달했다.",
+   "confidence": "서사 소스(3티어급) — 25/26 시즌 진행분 및 2026-07 발행 확인. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 0경기.",
+   "duties": "25/26 리그 31경기 2,626분(30선발), 3골 1도움. 경고 11회로 리그 최다에 퇴장 1회 — 듀얼 중심 스타일의 가장 선명한 통계적 서명이다. 분석 서사는 그를 '볼위닝 엔진'으로 규정하되, 압박 아래에서의 침착함·전진 패스 의지·템포 조절이 늘어 파괴자에서 완성형 미드필더로 진화했다고 본다. 마레스카는 \"현 시점 세계 최고의 수비형 미드필더 중 하나, 아니 최고\"라고 말했다. 다만 언더라잉은 통제·파괴 쪽에 크게 치우쳐 있다는 단서가 붙는다(수비 지수 78.88 대 공격 위협 69.45, 리그 101위).",
+   "execution": "실측 6경기 평균 7.00, 중심(47.6,44.5). LDM(x=50) dm_dlp/Roaming 0.941 > RDM(x=61) 0.692 — 우측 피벗이 아니라 중앙 피벗이다. 전방 0.20/자기진영 0.40. 팟몹 백분위(90분당): 인터셉트 1.90(95)·태클 2.79(81)·수비 행동 11.76(75)·경합 승 5.53(68)로 볼위너 서사가 그대로 확인된다. 동시에 패스 정확도 91.7%(95)·성공 패스 60.5(93)·롱볼 정확도 64.4%(81)로 배급 안정성도 최상위. 그러나 창조 산출은 낮다 — 기회 창출(31)·상대 박스 터치(12)·기대 도움(52). 경고 11회는 파울 백분위 2(리그 최하위권)로 정확히 재현된다.",
+   "game_role_implication": "위치는 LDM 유지. obs#116의 지적대로 현 처방이 두 피벗을 모두 dm_dlp(창조형)로 둔 것은 기능축·알론소 청사진(팔라시오스=볼위너 / 샤카=오케스트레이터) 양쪽과 어긋난다 — 카이세도를 볼위닝 계열로 옮길지가 미결이다. 알론소 26/27 예상 XI들은 그를 라비아와 짝지어 피벗에 배치한다.",
+   "label": "모이세스 카이세도",
+   "position": "LDM",
+   "source": "The Analyst 선수 페이지 — https://theanalyst.com/players/3902/moises-caicedo · Total Football Analysis 선수 허브 — https://totalfootballanalysis.com/players/moises-caicedo · PlanetFootball 26/27 예상 XI — https://www.planetfootball.com/chelsea/predicting-xabi-alonso-chelsea-lineup-2026-27"
+  },
+  {
+   "adherence": "HIGH — 마레스카의 '박스 도착' 발언이 기대 득점·유효슛 백분위로 직접 확인된다. 다만 '중앙 10번'이라는 위치 라벨은 실측 중심 x=35.3이 좌측으로 밀어낸다 — 위치는 실측을 채택한다.",
+   "confidence": "서사 소스(3티어급) — 25/26 시즌 중 발행. ⚠️ 검색으로 '좌측 편향'을 명시한 전용 분석 기사는 확보되지 않았다 — 좌측 판정은 전적으로 우리 실측 그리드 근거다. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제.",
+   "duties": "25/26 리그 10골 4도움 3,121분, 팟몹 평균 7.3, 경고 10. 팟몹은 그를 이제 수비형이 아닌 공격형 미드필더로 분류한다. 역할 변화의 1차 근거는 마레스카 발언이다 — 경기와 포지션 이해가 크게 늘었고 \"이제 박스에 도착한다\"며 그것이 공격 자원에게 요구하는 바라고 했다. 로즈니어 체제에서는 중앙 공격 지역 로밍 재량을 받았다. 세트피스 키커이기도 하다(빌라전 FA컵 프리킥, 짧은 코너로 파머 결승골 유도).",
+   "execution": "실측 6경기 평균 7.28(첼시 필드 최고), 중심(35.3,57.0)으로 좌측 편향. LM(x=14) wm_wideplm/Attack 0.750 > LDM dm_dlp/Roaming 0.698 > CAM playmaker/Roaming 0.631 — 피벗 라벨보다 좌측 와이드 플레이메이커 형태에 가깝다. 전방 0.49/자기진영 0.21. 팟몹 백분위(90분당): 정확한 롱볼 2.74(97)·성공 패스 50.6(95)·터치 75.2(95)로 볼륨 축이면서, 기대 득점 0.325(87)·유효슛 0.894(84)·기대 도움 0.209(84)·기회 창출 1.96(82)로 '박스 도착' 서사가 정량 확인된다. 반대로 드리블 성공률 27.1%(9)·드리블 성공(6)은 최하위 — 캐리로 전진하는 유형이 아니라 패스와 오프더볼 침투로 도착한다.",
+   "game_role_implication": "LM wm_wideplm/Attack 유지(0.750). obs#37의 매핑 '엔소=샤카(좌측 중앙 미드필더)'는 실측 LDM 0.698로 차선이며 좌측 와이드가 우선한다. 드리블 백분위 최하위는 그를 1v1 돌파 축으로 쓰면 안 된다는 함의. ⚠️ 알론소 26/27 예상 XI들에 그의 이름이 명시되지 않는 경우가 있어 스쿼드 내 지위 자체가 변수다.",
+   "label": "엔소 페르난데스",
+   "position": "LM",
+   "source": "SI(마레스카 발언) — https://www.si.com/onsi/soccer/chelsea/news/how-enzo-fernandez-changed-chelsea-trajectory-maresca · FotMob 선수 페이지 — https://www.fotmob.com/players/1137705/enzo-fernandez · Premier League 선수 스탯 — https://www.premierleague.com/en/players/448047/enzo-fern%C3%A1ndez/stats"
+  },
+  {
+   "adherence": "MEDIUM — '우측이 낫다'는 실측이 강하게 지지한다(RM 0.875 대 LM 0.316). 그러나 '중앙 10번 전환' 실험 서사는 실측이 지지하지 않는다 — 중심 x=65.4와 전방 질량 0.59는 중앙 미드필드가 아니라 우측 전방이다. 서사 기각, 실측 채택.",
+   "confidence": "서사 소스(3티어급) — 2025~2026 발행 확인. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 0경기.",
+   "duties": "25/26 전 대회 38경기 중 우측 23·좌측 13·중앙 2로 배치됐고 산출은 우측이 우세했다(우측 5골 3도움 대 좌측 2골 1도움, 90분당도 동일 방향). 스콰카의 논지는 그가 혼돈형·기동형 드리블러라 좌측 터치라인에 묶으면 '제치고 크로스'로 선택지가 좁아지고, 우측에서 안으로 접을 때 선택지가 늘어난다는 것이다. 로즈니어는 여기서 더 나아가 중앙 10번으로도 실험했다(헐시티전, 바르셀로나전 최전방 드리프트). 리그 34경기 30선발 5골 6도움, 크로스 187회.",
+   "execution": "실측 6경기 평균 6.63, 중심(65.4,61.8). RM wm_winger/Balanced 0.875 > wm_insidefwd/Balanced 0.847이며 LM은 0.316 — 우측 전용이다. 전방 0.59/자기진영 0.20의 터치라인형. 팟몹 백분위(90분당): 성공 크로스 1.29(88)·기대 도움 0.233(86)·빅찬스 창출 0.409(81)·드리블 성공 1.60(76)로 크로스와 돌파를 동시에 공급한다. 수비 기여는 리그 최하위권이다 — 수비 행동(2)·태클(8)·볼 회수(13)·인터셉트(18).",
+   "game_role_implication": "wm_winger/Balanced 유지. ⚠️ 구조적 경고: obs#61대로 알론소 3-4-2-1에는 윙어 슬롯이 없다. 일부 26/27 예상 XI는 네투를 우측 '윙백'에 배치하는데, 수비 행동 백분위 2·태클 8은 이를 전혀 지지하지 않는다 — 그 배치는 고위험으로 기록한다.",
+   "label": "페드루 네투",
+   "position": "RM",
+   "source": "Squawka 네투 분석(2025) — https://www.squawka.com/en/features/tactical-analysis-chelsea-pedro-neto-underrated-impact-one-of-the-most-important-players-2025/ · Squawka 로즈니어의 네투 실험(2026) — https://www.squawka.com/en/features/tactical-analysis-chelsea-why-we-might-see-more-liam-rosenior-pedro-neto-experiment-2026/ · The Chelsea Chronicle 개막전 예상 XI — https://www.thechelseachronicle.com/match-coverage/predicting-the-chelsea-xi-xabi-alonso-will-name-to-face-fulham-after-mixed-pre-season/"
+  },
+  {
+   "adherence": "MEDIUM — '우측 하프스페이스 배치'는 실측 강정합. 그러나 '터치라인에 고립됐다'는 비판은 실측이 부분 기각한다 — 중심 x=65는 터치라인(x=86)이 아니라 하프스페이스다. '중앙 10번이 맞다'는 여론도 실측 CAM 0.676이 지지하지 않는다.",
+   "confidence": "서사 소스(3티어급, Premier League 공식 분석은 2티어급) — 25/26 시즌 중~시즌 후 발행. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 0경기.",
+   "duties": "로즈니어 체제에서 주로 우측과 우측 하프스페이스에 배치됐다 — 마레스카 시절의 전방 프리롤을 좁힌 것으로, 오버래핑 풀백과의 조합을 위한 설계였고 엔소에게 중앙 로밍을 넘긴 결과이기도 하다. 부상으로 파행된 시즌이었고 리그 26경기 10골 1도움에 그쳤다(전 시즌 골관여 17→10). 비판의 초점은 터치라인 고립이며, 미켈은 10번 기용을, 투헬은 대표팀에서 중앙 해방을 택했다. 데이터 서사는 다르게 읽는다 — 빅찬스 빌드업 관여는 늘고 슈터로 공급받는 빈도는 줄었으나 위협 프로필 자체는 그대로라는 것이다. 26/27 알론소 예상 XI에서는 로저스와 함께 2×10 중 하나이며 '비르츠형 인버티드' 역할이 기대된다.",
+   "execution": "실측 6경기 평균 6.82, 중심(65.0,59.9)으로 우측 편향. CAM(x=50) 최고 0.676보다 RM(x=86) wm_wideplm/Attack 0.845가 높고 LM은 0.152 — 우측 편향이 확정적이다. 전방 0.59/자기진영 0.16. 팟몹 백분위(90분당): 기대 득점 0.484(95)·유효슛 기대득점 0.461(95)·슛 2.93(92)·유효슛 1.15(92)·PK 득점 5회(98)로 슈터 프로필이 압도적이다. 반면 도움(24)·크로스 정확도(23)·드리블 성공률(19)은 하위 — '창조자'보다 '마무리자'다. 상대 진영 볼 탈취 0.96(93)은 전방 압박 기여가 상당함을 보여준다.",
+   "game_role_implication": "RM wm_wideplm/Attack 유지 — 알론소 2×10 중 우측 축. 로저스와의 실측 겹침 0.465(낮음)로 좌우 분리 공존은 구조적으로 가능하다(기존 prescriptions 판정 유지). ⚠️ 알론소 본인은 로저스를 '포켓·10번 근처'로 지시했으나(obs#59) 파머의 실측 중심은 우측이다 — 두 10번을 대칭으로 설계하면 안 된다.",
+   "label": "콜 파머",
+   "position": "RM",
+   "source": "Squawka 파머·로즈니어 분석 — https://www.squawka.com/en/features/tactical-analysis-cole-palmer-improvement-liam-rosenior/ · Goal.com 데이터 반론 — https://www.goal.com/en-us/news/is-cole-palmer-really-having-a-bad-season-with-chelsea-the-tactical-truth-behind-his-form/blt3bfa5f16ccf39f67 · Premier League 분석 — https://www.premierleague.com/en/news/4497475/analysis-how-palmer-can-reignite-chelseas-misfiring-attack"
+  },
+  {
+   "adherence": "HIGH — 폴스나인·드롭 서사가 그리드(CAM 0.718 > ST 0.624)와 파울 유도·경합 백분위로 이중 확인된다. 다만 로즈니어의 '중앙 고정' 교정 효과는 우리 6경기 표본으로 분리 검증되지 않는다 — 시즌 후반 표본이 따로 없다.",
+   "confidence": "서사 소스(3티어급, Between the Posts·TFA는 전술 전문 매체) — 25/26 시즌 중~후 발행. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 0경기.",
+   "duties": "애초 영입 의도가 순수 9번이 아니었다 — 델랍 뒤에서 연결하고 내려와 만들며 제공권을 보태는 역할이었고, 프로필 비교 대상으로 피르미누가 거론됐다. 마레스카 체제 실행은 폴스나인에 가까웠다. 맨시티전에서는 반복적으로 내려와 시티 센터백을 끌어냄으로써 네투·에스테방에게 1v1 채널을 열었다. 문제는 구조였다 — 파머·엔소·주앙 페드루가 모두 내려오려 해 셋을 동시에 넣기 어려웠다. 로즈니어는 이를 교정해 그를 중앙에 고정시켰고 박스 안 터치·슈팅이 급증하며 연초 이후 팀 내 최다 골관여를 기록했다. 26/27 알론소 예상 XI에서도 최전방이다.",
+   "execution": "실측 6경기 평균 6.92, 중심(45.1,61.4). ST(x=50) st_false9/Build-Up 0.624인데 CAM playmaker/Roaming 0.718이 더 높다 — '내려오는 9번' 서사를 실측이 직접 지지한다. 전방 0.61/자기진영 0.18. 팟몹 백분위(90분당): 얻어낸 파울 1.89(96)·얻어낸 PK 3회(96)·드리블 성공 1.35(90)·경합 승률 48.3%(90)·터치 41.9(90)로 등지고 버티며 연결하는 유형이 확인된다. 반면 상대 박스 터치 4.88은 백분위 47로 중간에 그친다 — 박스 상주형 9번이 아니다. 산출은 기대 득점 0.503(76)·15골로 준수하다.",
+   "game_role_implication": "st_false9/Build-Up 유지하되 적합 0.624는 낮다. ⚠️ 기존 prescriptions의 경고를 그대로 승계한다 — 로저스와 실측 겹침 0.863(최고치)으로 좌측 10번과 9번이 같은 공간을 쓴다. 서사 조사도 같은 문제를 독립적으로 지적했다(내려오려는 선수 과잉). 알론소 체계의 실질 리스크 지점.",
+   "label": "주앙 페드루",
+   "position": "ST",
+   "source": "Total Football Analysis 스카우트 리포트 — https://totalfootballanalysis.com/player-analysis/joao-pedro-chelsea-2025-2026-player-analysis-tactics · Squawka(로즈니어 체제 변화) — https://www.squawka.com/en/features/joao-pedro-analysis-chelsea-form-rosenior/ · Between the Posts 첼시 0-3 맨시티 — https://betweentheposts.net/chelsea-manchester-city-city-put-pressure-on-arsenal-after-second-half-blitz-at-the-bridge-0-3/"
+  },
+  {
+   "adherence": "HIGH — '중앙 인버티드 딥 플레이메이커'가 위치(RDM 0.772)와 패스·롱볼 백분위 양쪽에서 확인된다. 유일한 반증은 '크로싱이 줄었다'는 서술로, 90분당 효율 기준으로는 성립하지 않는다.",
+   "confidence": "서사 소스(3티어급, Premier League 공식 분석은 2티어급) — 2026-01 이후 발행 확인. ⚠️ 실측 표본 3경기. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제.",
+   "duties": "25/26 리그 9선발 중 7회는 명목상 우측 풀백이었으나 히트맵상 터치를 중앙에 크게 몰았고, 토트넘·아스날·바이에른·바르셀로나전은 정식 중앙 미드필더로 선발됐다. 설계 의도는 두 갈래다 — 엘리트 패스 레인지를 중앙에서 쓰고, 터치라인 스프린트 부하(햄스트링 병력의 원인으로 지목)를 줄이는 것. 빌드업에서는 백3 + 안쪽 두 명의 딥 식스 구조에서 그가 한 축이고, 반대편 윙백이 접히면 그가 센터백 사이로 내려간다. 크로스는 4.52/90으로 과거 약 6/90보다 줄었다. 한 스카우트 리포트는 그를 선발보다 '슈퍼 서브'로 쓰는 편이 낫다고 본다.",
+   "execution": "실측 3경기(표본 부족) 중심(73.3,52.3). RDM dm_dlp/Roaming 0.772 > RB fb_inverted/Attack 0.692 — 인버티드 하이브리드다. 팟몹 25/26 리그 백분위(90분당): 성공 패스 54.1(94)·터치 84.7(94)·정확한 롱볼 2.62(92)·롱볼 정확도 55.3%(88)로 패스 레인지 서사가 정면 확인된다. 공중 경합 승률 66.0%(87)·경합 승률 59.3%(83)로 몸싸움도 상위. ⚠️ 한 지점에서 서사가 어긋난다 — '크로싱 축소'는 총량 기준의 이야기이고, 90분당으로 보면 성공 크로스 1.38(88)·빅찬스 창출 0.367(89)·기대 도움 0.146(90)로 여전히 리그 상위다.",
+   "game_role_implication": "RDM dm_dlp/Roaming 유지 — obs#57의 '트렌트에게 준 인버티드 지시'에 대응하는 첼시 인원이며 엔소는 RDM 0.361로 부적합하므로 대체 인선이 없다. ⚠️ 표본 3경기로 첼시 처방에서 가장 약한 칸이라는 기존 경고를 유지한다. 알론소 예상 XI들이 피벗을 카이세도+라비아로 채우고 있어 지위도 불확실하다.",
+   "label": "리스 제임스",
+   "position": "RDM",
+   "source": "Total Football Analysis 스카우트 리포트 — https://totalfootballanalysis.com/player-analysis/reece-james-scout-report-chelsea-2025-2026-analysis-tactics · The Mastermind Site 'Game of Numbers #41'(2026-01-09) — https://themastermindsite.com/2026/01/09/game-of-numbers-41-reece-james-in-central-midfield/ · Premier League Talking Tactics — https://www.premierleague.com/en/news/4486630/talking-tactics-on-reece-james-versatility-bringing-balance-to-chelsea"
+  },
+  {
+   "adherence": "MEDIUM — '우측 와이드'는 확인되나 '터치라인 고정'은 실측이 완화한다. '중앙 전환' 예고는 3경기 표본으로 판정 불가. 서사의 정량 주장(드리블·속도)은 팟몹 미수집으로 교차검증하지 못했다.",
+   "confidence": "서사 소스(3티어급, Premier League 공식 분석은 2티어급) — 2025-08~2026-08 발행 확인. ⚠️ 데이터 결손: fotmob_detail_stats 0행. ⚠️ 실측 3경기. ⚠️ 체제 캐비앗: 실측은 25/26 마레스카·로즈니어 체제.",
+   "duties": "팔메이라스에서 £29m로 합류해 25/26이 첼시 데뷔 시즌이었다. 팔메이라스에서는 우측 윙어로 주로 넓게 유지했고 인버티드 우측 풀백과 공격형 미드필더의 지원을 받았다. 첼시에서 마레스카는 장기적으로 파머식 중앙화를 예고하면서도 당분간 윙어로 기용했고, 넓게 선발해도 중앙 터치를 허용했다. 웨스트햄 5-1에서는 엔소·주앙 페드루와 함께 델랍 뒤 세 명이 움직이는 구조의 한 축이었다. 10/4 리버풀전 95분 결승골이 분기점. 스콰카는 그를 리그 윙어·와이드 미드필더 중 최고 점수(75%)로 평가했다. 순수 스피드형은 아니다 — 최고 속도 32.75km/h로 팀 내 11위에 불과하다. 26/27 알론소 3-4-2-1에서는 전방 3인 중 하나로 안으로 들어오는 역할이 예상되며, 그를 윙백으로 쓰는 시나리오는 명시적으로 부정됐다.",
+   "execution": "실측 3경기(표본 부족) 평균 6.77, 중심(76.1,58.2). RM wm_widemid/Support 0.789 > wm_winger/Balanced 0.746. 전방 0.51/자기진영 0.29로 네투(0.59/0.20)보다 복귀 성향이 뚜렷하다. ⚠️ fotmob_detail_stats에 행이 없어 드리블·기대 득점 백분위 대조가 불가능하다 — 스콰카의 드리블 3.7/90 서술은 우리 데이터로 확인할 수 없다. '넓게 유지한다'는 서사는 중심 x=76.1이 부분만 지지한다 — 터치라인(x=86)보다 안쪽이니 이미 반쯤 들어와 있다.",
+   "game_role_implication": "wm_widemid/Support 유지 — 표본 3경기라 가설 지위다. obs#61의 '윙어 과잉' 구조 문제의 당사자이며, 예상 XI들에서 그의 자리가 파머·로저스와 충돌한다. ⚠️ 팟몹 상세 스탯 미수집 — 다음 수집 회차 우선 대상.",
+   "label": "에스테방",
+   "position": "RM",
+   "source": "Breaking The Lines 심층 프로필 — https://breakingthelines.com/player-analysis/estevao-willian-at-chelsea-a-tactical-and-technical-deep-dive-into-the-premier-leagues-newest-prodigy/ · Premier League 분석 — https://www.premierleague.com/en/news/4462052/why-brazil-winger-estevao-could-become-most-important-attacker-for-chelsea · Squawka — https://www.squawka.com/en/features/tactical-analysis-estevao-chelsea/ · The Chelsea Chronicle(밀란전 3-4-2-1 예상 XI) — https://www.thechelseachronicle.com/match-coverage/chelsea-predicted-xi-vs-ac-milan-xabi-alonso-trials-new-formation-as-estevao-returns/"
+  },
+  {
    "adherence": "MEDIUM — 서사의 '넓게 섰다 안으로 접힘'·'왕복 풀백 아님'은 실측 tool_x 75.6(RB보다 안쪽)·avg_x 43.0(낮은 전진도)과 정합. 다만 백3 RCB인지 백4 RB인지는 **실측이 판별하지 못한다** — 두 슬롯 적합차 Δ.003.",
    "confidence": "서사 소스(3티어급) — 가설 지위(docs/30 영상·서사 절차 2단계). 위치 주장은 실측 우선. ⚠️ 1경기 표본. FBref 백분위 403 미확보. 신장 185cm vs 1.90m 소스 충돌. 알론소 체제 선발 지위도 소스 충돌(‘untouchable’ vs ‘두 형태 모두 선발 예상 안 됨’).",
    "duties": "우측 볼전진 수비수. 서사: 본직 라이트 CB이며 백3의 우측 또는 백4의 RB·인버티드 FB·DM까지 겸업하는 다역. 1페이즈에서 넓게 서다가 살짝 안으로 접히는 유형이며 전통적 상하 왕복 풀백이 '아니다'라고 명시됨. 밀란전에서는 상대 레프트윙어(레앙) 대인 처리를 맡았다고 보도.",
