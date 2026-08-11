@@ -123,7 +123,8 @@ def export_all(db_path=None, window="2026-summer"):
         pstats = _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, v.n, v.avg_rating, v.minutes,
                                       v.xg_pg, v.xa_pg, v.kp_pg, v.dw_pg, v.tk_pg, v.ic_pg
                                FROM v_player_profile v JOIN players p ON p.id=v.player_id
-                               WHERE v.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?)""", (rid,))
+                               WHERE v.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
+                                     UNION SELECT player_id FROM prescriptions WHERE regime_id=?)""", (rid, rid))
         written.append(_write(SITE_DATA / "teams" / f"{code}.json", {
             "regime": rg, "slots": slots, "squad": squad, "prescriptions": prescriptions,
             "duties": duties, "player_stats": pstats,
