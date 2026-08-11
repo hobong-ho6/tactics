@@ -1,3 +1,7 @@
+> ⚠️ **[2026-08-11 v2 컷오버]** 이 문서는 v1(fc26-heatmap.html, archive/v1/) 기준이다.
+> **게이트 표의 정본은 `scripts/gates.py`**, 커널 정본은 `db/tactics.db`(game_role_variants),
+> 시스템 정본은 docs/00-overview.md다. 여기 남은 EA 피치노트·역할 분석·판정 이력은 유효하다.
+
 # FC 게임 시스템 분석·매핑 규칙 (FC26 → FC27…)
 
 목적: 실측 분석 결과를 특정 FC 버전의 전술 시스템으로 번역하는 규칙.

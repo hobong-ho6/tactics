@@ -1,27 +1,8 @@
--- ============================================================================
--- tactics.db 스키마 v2 (2026-08-11 재설계)
---
--- 설계 원칙 (v1 운영에서 실증된 교훈의 성문화):
---  1. 축 3개가 1급 엔티티다 — 감독·팀 페어(regimes), 게임 버전(game_versions),
---     선수 정체성(players: 외부 식별자를 컬럼으로).
---  2. 팀 참조는 어디서나 team_code(TEXT, regimes/teams 코드)다.
---     v1의 matches 풀네임 함정(WHERE team='AVL' → 조용히 0행)을 제거한다.
---  3. 문자열 라벨 조인 금지 — 사람 참조는 player_id FK로만.
---  4. 정형 값(평점·표본수·적합값)은 컬럼이다. 산문(rationale)은 근거 서술 전용.
---  5. 사실(실세계 관측)과 판단(매핑·처방)은 레이어가 다르다 — 사실 테이블은
---     team_code+date로 자명하고, 판단 테이블은 regime_id를 명시한다.
--- ============================================================================
-
-PRAGMA foreign_keys = ON;
-
--- ── 축(axes) ────────────────────────────────────────────────────────────────
-
 CREATE TABLE game_versions(
   code TEXT PRIMARY KEY,            -- 'FC26', 'FC27'
   released TEXT,                    -- 발매일 (YYYY-MM-DD, 예정이면 NULL)
   notes TEXT
 );
-
 CREATE TABLE teams(
   code TEXT PRIMARY KEY,            -- 'AVL' / 'CHE' / 'LIV'
   name TEXT NOT NULL,               -- 정규 영문 표기 (SofaScore 표기 기준)
@@ -30,7 +11,6 @@ CREATE TABLE teams(
   fotmob_id INTEGER,                -- Fotmob rumours teamIds (이적 감시용)
   note TEXT
 );
-
 CREATE TABLE regimes(
   id INTEGER PRIMARY KEY,
   team_code TEXT NOT NULL REFERENCES teams(code),
@@ -42,12 +22,10 @@ CREATE TABLE regimes(
   note TEXT,
   UNIQUE(team_code, manager, start)
 );
-
 CREATE TABLE seasons(
   code TEXT PRIMARY KEY,            -- '2025-26'
   label TEXT
 );
-
 CREATE TABLE players(
   id INTEGER PRIMARY KEY,
   name TEXT UNIQUE NOT NULL,        -- 정규 영문 표기
@@ -58,7 +36,6 @@ CREATE TABLE players(
   primary_position TEXT,
   notes TEXT
 );
-
 CREATE TABLE player_tenures(
   player_id INTEGER NOT NULL REFERENCES players(id),
   season TEXT NOT NULL REFERENCES seasons(code),
@@ -67,9 +44,6 @@ CREATE TABLE player_tenures(
   position TEXT, shirt_no INTEGER, minutes INTEGER,
   PRIMARY KEY(player_id, season)
 );
-
--- ── 실세계 레이어 (사실 — 관측치) ──────────────────────────────────────────
-
 CREATE TABLE matches(
   id INTEGER PRIMARY KEY,           -- v1 id 승계
   event_id INTEGER,                 -- SofaScore event id (아는 경우)
@@ -80,10 +54,6 @@ CREATE TABLE matches(
   result TEXT, is_club INTEGER DEFAULT 1, stage TEXT, possession REAL,
   UNIQUE(team_code, date, opponent, competition)
 );
-
--- ⭐ v1의 appearances + player_match_grids + player_match_positions 3테이블 통합.
---    한 행 = (선수, 경기). SofaScore event_id가 기본 키이지만, event_id를 모르는
---    v1 appearances 잔여분은 match_id로만 연결된다(둘 다 NULL은 불가).
 CREATE TABLE player_matches(
   id INTEGER PRIMARY KEY,
   player_id INTEGER NOT NULL REFERENCES players(id),
@@ -111,7 +81,6 @@ CREATE TABLE player_matches(
   UNIQUE(player_id, event_id),
   CHECK(event_id IS NOT NULL OR match_id IS NOT NULL)
 );
-
 CREATE TABLE team_match_stats(      -- v1 그대로 (team → team_code만 정규화)
   event_id INTEGER NOT NULL,
   team_code TEXT NOT NULL REFERENCES teams(code),
@@ -125,7 +94,6 @@ CREATE TABLE team_match_stats(      -- v1 그대로 (team → team_code만 정�
   source TEXT, confidence TEXT,
   PRIMARY KEY(event_id, team_code)
 );
-
 CREATE TABLE player_shot_profile(   -- v1 그대로
   player_id INTEGER PRIMARY KEY REFERENCES players(id),
   window TEXT, events_n INTEGER, shots INTEGER, xg_sum REAL,
@@ -133,7 +101,6 @@ CREATE TABLE player_shot_profile(   -- v1 그대로
   mean_dist REAL, mean_y REAL,
   source TEXT, confidence TEXT
 );
-
 CREATE TABLE streaks(
   id INTEGER PRIMARY KEY, label TEXT UNIQUE, note TEXT,
   season TEXT, team_code TEXT REFERENCES teams(code)
@@ -143,10 +110,6 @@ CREATE TABLE match_streak(
   streak_id INTEGER REFERENCES streaks(id),
   UNIQUE(match_id, streak_id)
 );
-
--- ── 지식 레이어 (관찰·판단의 기록) ─────────────────────────────────────────
-
--- obs 번호(id)는 v1에서 그대로 승계된다 — 141개 상호참조(obs#NNN)가 살아있는 주소다.
 CREATE TABLE observations(
   id INTEGER PRIMARY KEY,
   regime_id INTEGER REFERENCES regimes(id),
@@ -155,10 +118,6 @@ CREATE TABLE observations(
   claim TEXT NOT NULL,
   evidence TEXT, source TEXT, confidence TEXT
 );
-
--- 감독 분석의 정형화 — docs/1x 산문의 구조화 사본이 아니라, "현재 확정된 결론"의 슬롯.
--- axis 어휘(11): philosophy / traits / role_demands / formation / situational /
---   pressing / buildup / rest_defense / set_pieces / rotation / market
 CREATE TABLE manager_profiles(
   regime_id INTEGER NOT NULL REFERENCES regimes(id),
   axis TEXT NOT NULL,
@@ -168,7 +127,6 @@ CREATE TABLE manager_profiles(
   updated TEXT,                     -- YYYY-MM-DD
   PRIMARY KEY(regime_id, axis)
 );
-
 CREATE TABLE player_duties(         -- v1 그대로 (team → regime_id)
   id INTEGER PRIMARY KEY,
   regime_id INTEGER REFERENCES regimes(id),
@@ -180,9 +138,6 @@ CREATE TABLE player_duties(         -- v1 그대로 (team → regime_id)
   source TEXT, confidence TEXT,
   UNIQUE(season, player_id, position)
 );
-
--- ── 게임 레이어 (FC 버전별) ─────────────────────────────────────────────────
-
 CREATE TABLE game_roles(
   game_version TEXT NOT NULL REFERENCES game_versions(code),
   role_id TEXT NOT NULL,            -- 'wm_insidefwd'
@@ -191,7 +146,6 @@ CREATE TABLE game_roles(
   focuses TEXT,                     -- JSON array
   PRIMARY KEY(game_version, role_id)
 );
-
 CREATE TABLE game_role_focus(       -- 커널 85개 — 모든 적합값의 뿌리 (obs#105). v1 전 컬럼 승계
   game_version TEXT NOT NULL,
   role_id TEXT NOT NULL,
@@ -204,7 +158,6 @@ CREATE TABLE game_role_focus(       -- 커널 85개 — 모든 적합값의 뿌�
   kernel25 TEXT, kernel_source TEXT,
   PRIMARY KEY(game_version, role_id, focus)
 );
-
 CREATE TABLE game_role_variants(    -- 위치 변형 217개 — placedMap의 실질 본체 (obs#94·#107)
   game_version TEXT NOT NULL,
   role_id TEXT NOT NULL,
@@ -214,14 +167,11 @@ CREATE TABLE game_role_variants(    -- 위치 변형 217개 — placedMap의 실
   source TEXT, confidence TEXT,
   PRIMARY KEY(game_version, role_id, focus, pitch_x)
 );
-
 CREATE TABLE game_tactic_params(    -- v1 그대로
   game_version TEXT NOT NULL,
   param TEXT NOT NULL, option TEXT NOT NULL, description TEXT,
   UNIQUE(game_version, param, option)
 );
-
--- ⭐ 로스터 스냅샷 이력 — v1 UNIQUE(game_version,name_kr)는 이력을 덮어썼다.
 CREATE TABLE player_game_stats(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL REFERENCES game_versions(code),
@@ -239,8 +189,6 @@ CREATE TABLE player_game_stats(
   detail_date TEXT, source TEXT, confidence TEXT,
   UNIQUE(game_version, roster_date, name_kr)
 );
-
--- ⭐ 신설 — FIFA→FC 시스템 변천 관찰 로그 (재설계 요구사항: 시리즈 변화 추적)
 CREATE TABLE game_system_changes(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL REFERENCES game_versions(code),  -- 변화가 도입된 버전
@@ -251,9 +199,6 @@ CREATE TABLE game_system_changes(
   source TEXT, confidence TEXT,
   recorded TEXT                     -- YYYY-MM-DD
 );
-
--- ── 매핑 레이어 (판단 — 분석의 산출물) ──────────────────────────────────────
-
 CREATE TABLE slots(                 -- 오늘(v1) 만든 team_slots의 승계 — regime 슬롯 기하
   regime_id INTEGER NOT NULL REFERENCES regimes(id),
   formation TEXT NOT NULL,          -- '4-2-3-1 Wide' / '3-4-2-1' — 같은 regime의 복수 포메이션 허용
@@ -264,11 +209,6 @@ CREATE TABLE slots(                 -- 오늘(v1) 만든 team_slots의 승계 �
   source TEXT, confidence TEXT,
   PRIMARY KEY(regime_id, formation, pos)
 );
-
--- v1 player_role_map의 승계. kind 어휘는 그대로(measured / measured:<class> /
--- @dom/@tight / optimal / projected / role / match:<tag>).
--- ⭐ 정형 필드 추가: sample_n / avg_rating / fit_sim — v1에서 rationale 산문에 갇혀
---    정규식으로 긁어야 했던 값들.
 CREATE TABLE prescriptions(
   id INTEGER PRIMARY KEY,
   player_id INTEGER NOT NULL REFERENCES players(id),
@@ -284,8 +224,6 @@ CREATE TABLE prescriptions(
   rationale TEXT,                   -- 근거 서술 전용 (값은 위 컬럼으로)
   UNIQUE(player_id, regime_id, season, game_version, kind)
 );
-
--- v1 squad_positions의 승계 — label 문자열 조인 폐지, player_id FK.
 CREATE TABLE squad_entries(
   id INTEGER PRIMARY KEY,
   regime_id INTEGER NOT NULL REFERENCES regimes(id),
@@ -299,7 +237,6 @@ CREATE TABLE squad_entries(
   source TEXT, confidence TEXT, sort_order INTEGER,
   UNIQUE(regime_id, player_id, slot_type)
 );
-
 CREATE TABLE team_tactic_setups(    -- v1 그대로 (team → regime_id)
   id INTEGER PRIMARY KEY,
   regime_id INTEGER REFERENCES regimes(id),
@@ -310,9 +247,6 @@ CREATE TABLE team_tactic_setups(    -- v1 그대로 (team → regime_id)
   tactic_code TEXT, rationale TEXT, confidence TEXT,
   UNIQUE(regime_id, season, game_version, kind)
 );
-
--- ── 이적 레이어 (transfer-watch — v1 파이프라인 그대로) ─────────────────────
-
 CREATE TABLE transfer_targets(
   id INTEGER PRIMARY KEY,
   team_code TEXT NOT NULL REFERENCES teams(code),
@@ -327,7 +261,6 @@ CREATE TABLE transfer_targets(
   rationale TEXT, source TEXT, confidence TEXT,
   UNIQUE(team_code, window, name, slot)
 );
-
 CREATE TABLE transfer_outgoing(
   id INTEGER PRIMARY KEY,
   team_code TEXT NOT NULL REFERENCES teams(code),
@@ -337,7 +270,6 @@ CREATE TABLE transfer_outgoing(
   rationale TEXT, source TEXT, confidence TEXT,
   UNIQUE(team_code, window, player_id)
 );
-
 CREATE TABLE transfer_ledger(
   id INTEGER PRIMARY KEY,
   team_code TEXT NOT NULL REFERENCES teams(code),
@@ -345,11 +277,6 @@ CREATE TABLE transfer_ledger(
   amount_m REAL NOT NULL, note TEXT, source TEXT, confidence TEXT,
   UNIQUE(team_code, window, kind, label)
 );
-
--- ── 뷰 ──────────────────────────────────────────────────────────────────────
-
--- 선수별 이벤트 스탯 프로필 (v1 v_event_profile 승계).
--- ⚠️ n은 경기 수다 — 지표별 표본 수가 아니다. 지표별 COUNT 컬럼을 반드시 볼 것 (obs#132).
 CREATE VIEW v_player_profile AS
 SELECT player_id,
        COUNT(*) AS n,
@@ -361,9 +288,8 @@ SELECT player_id,
        ROUND(AVG(duels_won),2) AS dw_pg, COUNT(duels_won) AS dw_n,
        ROUND(AVG(tackles),2) AS tk_pg, COUNT(tackles) AS tk_n,
        ROUND(AVG(interceptions),2) AS ic_pg, COUNT(interceptions) AS ic_n
-FROM player_matches GROUP BY player_id;
-
--- 마이그레이션 메타 (재실행 이력)
+FROM player_matches GROUP BY player_id
+/* v_player_profile(player_id,n,avg_rating,minutes,xg_pg,xg_n,xa_pg,xa_n,kp_pg,kp_n,dw_pg,dw_n,tk_pg,tk_n,ic_pg,ic_n) */;
 CREATE TABLE _migration_log(
   run_at TEXT, v1_path TEXT, note TEXT
 );

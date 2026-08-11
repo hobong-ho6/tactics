@@ -1,11 +1,26 @@
 ---
 name: transfer-watch
-description: 아스톤 빌라 이적 루머 정기 감시 — 스캔·크로스체크는 서브에이전트에 위임하고, 메인 세션이 추가 기사 검사·등급 확정·실측·transfer_targets 반영을 맡는다. 스케줄(매일 09/21시) 또는 수동(/transfer-watch)으로 실행.
+description: 3팀(빌라·첼시·리버풀) 이적 루머 정기 감시 — 스캔·크로스체크는 서브에이전트에 위임하고, 메인 세션이 추가 기사 검사·등급 확정·실측·transfer_targets 반영을 맡는다. 스케줄(매일 09/21시) 또는 수동(/transfer-watch)으로 실행.
 ---
 
-# 빌라 이적 루머 감시 파이프라인
+# 이적 루머 감시 파이프라인 (3팀)
 
-작업 디렉터리: `/Users/user/Documents/tactics`. 규칙은 CLAUDE.md와 docs/30-data-rules.md를 따른다.
+작업 디렉터리: `/Users/ad03230205/Documents/tactics`. 규칙은 CLAUDE.md·docs/00-overview.md를 따른다.
+**DB는 v2(`db/tactics.db`)다** — 2026-08-11 컷오버. 팀 컬럼은 `team_code`.
+
+## 팀 루프 (2026-08-11 — 3팀 확장)
+
+이적 시장은 팀별 정기 이벤트다. 매 실행은 **AVL → CHE → LIV** 순으로 돈다:
+- **AVL(주 분석)**: 아래 §0~§5 전체 파이프라인.
+- **CHE·LIV**: §1 스캔 + §2 크로스체크 + DB 기록 + 리포트 절까지. **실측(§3)은
+  MEDIUM-HIGH 이상 신규 건에만** 수행(주 분석이 아니므로 커널 재산출 비용을 아낀다).
+  스캔 서브에이전트는 팀당 1개씩 병렬로 띄워도 된다(§0 규칙 동일 적용).
+- 팀별 소스 id는 DB가 정본: `SELECT code, fotmob_id, sofascore_id FROM teams`
+  (Fotmob rumours URL: `/rumours?teamIds=<fotmob_id>`. AVL 10252만 실사용 검증됨 —
+  **CHE 8455·LIV 8650은 첫 실행에서 페이지 팀명으로 검증하고 어긋나면 DB를 고칠 것**).
+- 검색 키워드의 "Aston Villa"는 해당 팀명으로 치환. 티어 기준(§2)은 공통이되
+  클럽 전담 기자(빌라 Tanswell/Townley ↔ 첼시·리버풀 담당)는 팀별로 다름을 유의.
+- 리포트는 같은 파일에 `## <팀> — <HH>시` 절로 나눠 쓴다.
 
 ## 0. 실행 구조 — 스캔은 서브에이전트, 판정·실측·DB는 메인 세션 (2026-07-30 확정)
 
@@ -36,14 +51,14 @@ description: 아스톤 빌라 이적 루머 정기 감시 — 스캔·크로스�
 **웹으로 나가기 전에 우리가 이미 아는 것을 확인한다.** 두 테이블 다 본다.
 
 ```
-sqlite3 data/avl_analysis.db "SELECT name, slot, likelihood, last_news_date FROM transfer_targets WHERE window='2026-summer'"
-sqlite3 data/avl_analysis.db "SELECT id, scope, substr(claim,1,60) FROM tactic_observations WHERE team='AVL' ORDER BY id DESC LIMIT 5"
+sqlite3 db/tactics.db "SELECT team_code, name, slot, likelihood, last_news_date FROM transfer_targets WHERE window='2026-summer'"
+sqlite3 db/tactics.db "SELECT id, regime_id, scope, substr(claim,1,60) FROM observations ORDER BY id DESC LIMIT 5"
 ```
 
 - `transfer_targets`/`transfer_outgoing`: 이미 있는 선수는 **상태 변화**(협상 단계 진전/무산)만 확인.
-- ⭐ **`tactic_observations`(obs)**: 경기 리포트형 obs에 **선수 이름·라인업·득점자가 원천값으로** 들어 있다.
+- ⭐ **`observations`(obs)**: 경기 리포트형 obs에 **선수 이름·라인업·득점자가 원천값으로** 들어 있다.
   특정 이름을 확인할 때는 본문·근거를 같이 훑는다 —
-  `... WHERE claim LIKE '%<이름>%' OR evidence LIKE '%<이름>%'`
+  `... WHERE claim LIKE '%<이름>%' OR evidence LIKE '%<이름>%'` (observations)
   > **실증(2026-08-10)**: "프리시즌 활약 유스" 수집에서 헤밍스·린치를 통째로 놓쳤는데,
   > **`obs#126` ③에 Carroll·Hemmings·Lynch·Madjo·Burrowes 5명이 이름으로 적혀 있었고**
   > 58분 득점도 `Lynch 어시 → Madjo 마무리`로 기록돼 있었다. **답의 절반이 DB에 있었다.**
@@ -51,14 +66,14 @@ sqlite3 data/avl_analysis.db "SELECT id, scope, substr(claim,1,60) FROM tactic_o
   obs#126은 결론을 "친선이라 실측이 없다"로 썼지만 `confidence`에는 진짜 원인인
   **"상대가 올스타 선발팀"** 이 이미 적혀 있었다(2026-08-10에 실측으로 확인). **근거 칸이 결론보다 정확할 수 있다.**
 
-- `WebFetch`로 https://www.transferfeed.com/clubs/aston-villa/15 를 읽고
+- `WebFetch`로 해당 팀 페이지를 읽고 (AVL: /clubs/aston-villa/15 — CHE·LIV 슬러그는 사이트 검색으로 확보해 여기 추가)
   **영입(incoming) 루머 선수 목록**을 추출한다 (선수명, 소속, 포지션, 루머 요지).
   ⚠️ **TransferFeed의 "Nh ago" 스탬프는 원기사 발행 시각이 아니라 피드 수집 시각이다** (2026-08-03 실증:
   Dobbin "16h 전 임대 이적"의 실제 사실은 07-15 완전이적 완료). "최근 몇 시간 이내" 판별에 단독으로 쓰지 말 것.
 - ✅ **Fotmob은 2026-08-03에 복구됐다 — 브라우저 경유로 계속 사용한다** (`/rumours?teamIds=10252`).
   - **수집 주체는 메인 세션이다.** 브라우저 창(pane)은 세션당 하나뿐이라 서브에이전트와 동시 사용하면 충돌한다.
     §0대로 스캔 에이전트를 띄운 **직후 대기 시간에** 메인 세션이 다음을 실행한다:
-    `preview_start {url: "https://www.fotmob.com/rumours?teamIds=10252"}` → `get_page_text`.
+    `preview_start {url: "https://www.fotmob.com/rumours?teamIds=<fotmob_id>"}` → `get_page_text`.
     루머 테이블 30행이 완전히 렌더링되고 `teamIds` 필터도 정상 적용된다.
   - 왜 이게 되는가: 07-23~07-31 전건 실패의 원인은 레이트리밋이 아니라 **CSR vs 정적 GET의 구조적 불일치**였다
     (`WebFetch`는 셸/헤더만 받는다). 렌더링하는 클라이언트를 쓰면 그대로 풀린다. → **`WebFetch`로는 여전히 불가.**
@@ -159,6 +174,8 @@ MEDIUM·MEDIUM-LOW·LOW·DEAD로 판정/강등된 건은 DB에서 삭제하고, 
 docs/20-fc-game-system.md의 영입 후보 파이프라인 그대로:
 
 1. SofaScore API에서 선수 검색 → 최근 6경기(45분+, 히트포인트 15+) 히트맵 수집.
+   **수집·인코딩·집계·적합은 `core/` 모듈만 쓴다** (`core.sofascore.js_collect` →
+   `parse_collected` → `core.aggregate` → `core.kernel.Kernel.best_fit_slot`). 세션 내 재구현 금지.
    **API는 sofascore.com 페이지 컨텍스트에서만 접근 가능** (claude-in-chrome javascript_tool).
    Chrome 연결이 없는 헤드리스 실행이면: transfer_targets에 map25 없이 행을 만들고
    confidence에 `PENDING MEASUREMENT`를 남긴 뒤 종료 보고에 명시한다.
@@ -169,8 +186,8 @@ docs/20-fc-game-system.md의 영입 후보 파이프라인 그대로:
      **새 탭 + `https://www.sofascore.com/robots.txt`(동일 오리진 경량 페이지) + `Promise.all` 병렬 fetch**로
      8경기 일괄 수집이 안정적이다. 얼면 새 탭을 만들어 재시도. `curl`은 UA/Referer를 붙여도 403.
 2. 5×5 툴 그리드(툴x=100−소파y, 툴y=소파x) + 중심좌표 + 평균 평점 계산.
-3. 커널 적합도: fc26-heatmap.html의 MAPS를 파싱해 해당 슬롯 x에서 placedMap
-   (미러+시프트) 후 코사인 — 기존 세션 스크립트 패턴 재사용.
+3. 커널 적합도: `core.kernel.Kernel('FC26').best_fit_slot(map25, regime_id, pos)` —
+   커널 정본은 DB(game_role_variants)이고 HTML 파싱은 폐기됐다.
    - **파싱 함정 (2026-07-30)**: MAPS 블록의 **마지막 항목(`st_false9`)은 뒤에 개행이 없어**
      `\},?\n` 류 정규식이 조용히 놓친다. 파싱 직후 **역할 수가 37인지 확인**하고, 기존 행의
      저장값(**하지무사 .821** / **은디아예 .825** / Jackson .752 / **Quiñones .832=st_false9/Attack** /
@@ -183,13 +200,11 @@ docs/20-fc-game-system.md의 영입 후보 파이프라인 그대로:
      > 소수점 3자리까지 그대로 재현됐다 — 커널 교체의 영향은 wide 역할(RM/LM)에만 있었다.
      > 파이썬으로 `decodeMap`/`placedMap`/`cmpCos`를 재현해 검증해도 되고(브라우저 불필요),
      > 툴 함수를 브라우저에서 직접 호출해도 된다.
-4. `transfer_targets`에 INSERT OR REPLACE (window='2026-summer', 근거 URL·등급·캐비앗 +
+4. `transfer_targets`에 INSERT OR REPLACE (team_code=해당 팀, window='2026-summer', 근거 URL·등급·캐비앗 +
    **`short_label` 필수** — 툴에 쓸 짧은 한글/영문 이름, 예: `Matías Soulé` → `소울레`).
    실측상 부적합 슬롯(예: 적합도 <0.4)은 애초에 그 슬롯 행을 만들지 않는 것으로 대신한다.
-5. **fc26-heatmap.html은 손으로 고치지 않는다.** DB 갱신 후
-   `python3 scripts/sync_transfer_ui.py`를 실행하면 `TRANSFER_TARGETS`/`TRANSFER_OUTGOING`
-   미러 배열이 재생성되고, 툴의 `injectTransferCandidates()`가 런타임에 SQUAD_SLOTS/
-   PLAYER_BEST/XI_POOL로 자동 주입한다 (2026-07-14 리팩터, docs/20-fc-game-system.md 참조).
+5. **페이지는 손으로 고치지 않는다.** DB 갱신 후 `python3 scripts/export.py`가
+   site/data/*.json을 재생성한다(게이트 자동 강제). 이적 페이지는 site/transfer.html.
 
 ## 4. 상태 변화 처리
 
@@ -229,7 +244,7 @@ docs/20-fc-game-system.md의 영입 후보 파이프라인 그대로:
 - `WebSearch`로 `"Aston Villa" "<선수명>" transfer` 또는 일반적으로
   "Aston Villa outgoing/exit rumours"를 스캔해 주전급 선수 유출 루머를 찾는다.
 - 1~2티어 크로스체크는 §2와 동일 기준 적용.
-- 통과한 건은 `transfer_outgoing(window, player_id, dest_club, likelihood, rationale,
+- 통과한 건은 `transfer_outgoing(team_code, window, player_id, dest_club, likelihood, rationale,
   source, confidence)`에 INSERT OR REPLACE (player_id는 `players.id` FK).
   히트맵/커널 적합도 분석은 하지 않는다 — 이 테이블은 역할 적합성이 아니라 유출 위험을 추적한다.
 - 이적 확정 시 likelihood `CONFIRMED`로 갱신 (player_seasons 등 승격은 별도 판단).
@@ -272,13 +287,13 @@ DB 갱신과 별도로, **그날 수집한 기사·업데이트를 모은 리포
 
 ## 5. 완료 기준 (매 실행)
 
-- **DB 변경이 있으면**: `python3 scripts/sync_transfer_ui.py`(fc26-heatmap.html 미러 갱신)
-  → `scripts/db_dump.sh`(dump 재생성) 실행. DB 변경이 없으면 이 둘은 건너뛴다.
+- **DB 변경이 있으면**: `python3 scripts/export.py`(site/data 재생성 + 프리뷰 미러)
+  → `scripts/db_dump.sh`(db/dump 재생성) 실행. DB 변경이 없으면 이 둘은 건너뛴다.
 - **리포트는 매 실행 작성**(§4-2) 후, 아래처럼 **파일을 명시 스테이징**해서 커밋한다.
   `git add -A`는 쓰지 않는다 — 저장소에 `.claude/settings.json`(Figma PAT 등) 등 커밋 금지
   파일이 있어 푸시가 차단된다:
   ```
-  git add reports/transfer-watch/ data/avl_analysis.db data/dump/ fc26-heatmap.html
+  git add reports/transfer-watch/ db/tactics.db db/dump/ site/data/
   git commit -m "data(transfer-watch): <요약> (<YYYY-MM-DD>)"
   git push
   ```

@@ -60,8 +60,10 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 ## 재설계 진행 상태 (2026-08-11)
 
 - [x] 0 체크포인트(`pre-redesign` 태그) · 1 스키마+마이그레이션 · 2 core/ · 3 export/JSON · 4 site/ 6페이지
-- [ ] 5 docs 재편(이 문서 외 잔여: 감독/게임/규칙 문서 renumber, CLAUDE.md 재작성, HANDOFF)
-- [ ] 6 구 툴 아카이브 + transfer-watch v2 포인팅 (직전에 migrate_v1 재실행 — v1 신규분 흡수)
+- [x] 5 CLAUDE.md 재작성 · docs/20 v2 배너 · HANDOFF (잔여: manager_profiles 시드, docs/22 신설)
+- [x] 6 컷오버 — 구 툴 archive/v1/ 이동, db_dump v2 전환, transfer-watch 스킬 v2·**3팀 확장**
+      (팀 루프 AVL 전체 / CHE·LIV 스캔+기록, teams.fotmob_id가 소스 정본 —
+      ⚠️ CHE 8455·LIV 8650은 첫 실행에서 검증)
 - [ ] 7 FC27 온보딩 (9월): game_system_changes 소급 기입 + docs/21·22 작성
 - 데이터 백로그: AVL squad_entries의 가르나초·알리송·아브라함 그리드가 구표본(v1 승계) —
   prescriptions 확장 표본으로 갱신 필요. 만잠비 fit 재산출값의 transfer_targets 반영은 완료.

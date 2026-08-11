@@ -1,65 +1,46 @@
-# 감독 전술 → FC 전술 구현 프로젝트
+# 실축 → FC 구현 플랫폼 (v2, 2026-08-11 재설계)
 
-실제 감독의 전술을 데이터로 분석해서, FC26 및 이후 시리즈(FC27…)의
-게임 내 전술(포메이션·역할·포커스)로 재현하는 프로젝트.
-
-**대상 3팀 (2026-07-30 팀 축 도입)**: 에메리·아스톤 빌라(AVL, 기준 구현) /
-알론소·첼시(CHE) / 이라올라·리버풀(LIV). **13개 테이블**에 `team` 컬럼이 있고
-`teams` 테이블이 코드를 관리한다 — 팀별 조회는 항상 `WHERE team='<코드>'`로 좁힐 것.
-> ⚠️ **`matches`만 예외다** — 값이 코드가 아니라 **풀네임**(`'Aston Villa'`)이다.
-> 여기에 `team='AVL'`을 쓰면 **오류 없이 0행**이 돌아온다(2026-08-03 실측 확인).
+실제 감독·팀 페어의 전술을 데이터로 분석해 FC26·FC27+에 재현하는 프로젝트.
+**대상**: 에메리·아스톤 빌라(AVL, 주) / 알론소·첼시(CHE) / 이라올라·리버풀(LIV).
+시스템 설계·규약·진행 상태의 정본은 **[docs/00-overview.md](docs/00-overview.md)**.
 
 ## 세션 핸드오프
-- 세션 시작 시 반드시 HANDOFF.md를 먼저 읽고, 현재 상태와 다음 할 일을 한 줄로 브리핑한 뒤 작업을 시작할 것
-- 세션 종료 전 또는 사용자가 "handoff"라고 하면 HANDOFF.md 내부 규칙에 따라 파일을 갱신할 것
+- 세션 시작 시 HANDOFF.md를 먼저 읽고 한 줄 브리핑 후 시작.
+- 종료 전 또는 "handoff" 지시 시 HANDOFF.md 내부 규칙대로 갱신.
 
-## 문서 맵 — 작업 전에 해당 문서를 먼저 읽을 것
+## 문서 맵
 
 | 작업 | 문서 |
 |---|---|
-| 시스템 전체 구조(레이어, 테이블 관계) | [data/DESIGN.md](data/DESIGN.md) |
-| **에메리·빌라** 전술 분석 (철학, 포지션 요구, 선수 분석) — 기준 구현 | [docs/10-emery-tactics.md](docs/10-emery-tactics.md) |
-| **알론소·첼시** 전술 분석 (레버쿠젠 원형, 26/27 처방) | [docs/11-alonso-tactics.md](docs/11-alonso-tactics.md) |
-| **이라올라·리버풀** 전술 분석 (본머스 실측, 3자 대조, **PPDA 정의·정본 표**) | [docs/12-iraola-tactics.md](docs/12-iraola-tactics.md) |
-| FC 게임 시스템 분석·매핑 (역할/포커스, 버전 관리, 툴) | [docs/20-fc-game-system.md](docs/20-fc-game-system.md) |
-| 데이터 수집·기록 규칙 (스키마, 좌표 규약, 신뢰도, SofaScore 수집법) | [docs/30-data-rules.md](docs/30-data-rules.md) |
-| 파이프라인, DB·git 운영 | [docs/40-pipeline.md](docs/40-pipeline.md) |
-| **새 분석 축을 세울 때**(사전 등록 양식·성공 기준·처분표) — R축 기각 선례 | [docs/60-r-axis-prereg.md](docs/60-r-axis-prereg.md) |
-| ~~게임 내 검증 루프~~ ⛔ 폐기 — 데이터가 최종 심판 (참고용 보존) | [docs/50-ingame-validation.md](docs/50-ingame-validation.md) |
+| 시스템 구조·게이트·규약·진행 상태 | [docs/00-overview.md](docs/00-overview.md) ⭐정본 |
+| 감독 분석 (에메리/알론소/이라올라 — PPDA 정본은 12) | docs/10 · 11 · 12 |
+| FC 게임 시스템 (v1 기준 — 게이트 표는 scripts/gates.py가 정본) | docs/20 |
+| 데이터 수집 규칙 (좌표·함정 7종·SofaScore) | docs/30 |
+| 새 분석 축 사전등록 양식 | docs/60 |
+| v1 아카이브 (구 툴·구 DB — 읽기 전용) | archive/v1/ · data/ |
 
-> PPDA·압박 강도 수치를 인용할 때는 **docs/12의 「PPDA 정의 차이 표」와 정본 표(obs#80)**를
-> 먼저 볼 것. 정의 기준표는 docs/12에만 두고 docs/11은 참조한다(중복 금지).
+## 불변 규칙
 
-## 불변 규칙 (모든 세션 공통)
+1. **`db/tactics.db`가 single source of truth.** 페이지(site/)는 export 산출물만 소비한다 —
+   손편집 지점 0. 구 v1 DB(data/avl_analysis.db)는 동결 아카이브(읽기 전용).
+2. **추가만, 재작성 금지.** 새 시즌/버전/팀 = 행 추가. 기존 행을 덮어쓰지 않는다.
+3. **실측 > 서사.** 기사와 실측이 충돌하면 실측 채택, 충돌 사실을 `confidence`에 기록.
+4. **게이트 우선.** DB 쓰기 전 `python3 scripts/gates.py` 통과 필수 (export.py는 자동 강제).
+   인코딩·집계·커널 로직은 `core/`만 쓴다 — 세션 내 재구현 금지.
+5. **DB 변경 후 고정 절차**: `python3 scripts/export.py`(site/data 재생성 + 프리뷰 미러)
+   → `scripts/db_dump.sh`(db/dump 재생성) → **.db + dump + site/data 함께 커밋**.
+   ⚠️ `git add -A` 금지 — 커밋 금지 파일이 있어 푸시가 차단된다. 명시 스테이징만.
+6. **조인 규칙**: 사람은 `player_id`, 팀은 `team_code`, 판단 테이블은 `regime_id`.
+   라벨 문자열 조인 금지.
+7. **팀 축을 섞지 말 것.** 타 팀 실측을 근거로 쓸 때 `rationale`에 출처 팀·체제 명기.
+   25/26 첼시·리버풀 팀 전술은 알론소·이라올라 것이 아니다.
+8. **히트맵은 시각화해서 보여준다.** 대화에서 5×5 그리드는 위젯으로(열0=좌측, 행0=공격 방향,
+   X=1.0·숫자/10, 단일색 램프). 수치 결론은 본문에.
+9. **좌표 규약**: SofaScore x=공격 방향, y 낮음=오른쪽. 툴x=100−소파y, 툴y=소파x (docs/30).
 
-1. **`data/avl_analysis.db`가 single source of truth.** 분석 결과·매핑은 반드시 DB에 먼저
-   기록하고, 툴(fc26-heatmap.html)의 하드코딩은 DB에서 파생된 것으로 취급한다.
-2. **추가만, 재작성 금지.** 새 시즌 = `seasons`/`player_seasons`/`matches`… 행 추가.
-   새 게임 버전 = `game_roles` 행 추가. 기존 시즌·버전 데이터를 덮어쓰지 않는다.
-3. **실측 > 서사.** 뉴스 기사 서술과 SofaScore API 실측(평점·좌표)이 충돌하면 실측을
-   채택하고, 충돌 사실 자체를 해당 행의 `confidence`에 기록한다.
-   (사례: 부엔디아 — 기사 "오른쪽 드리프트" vs 실측 좌측 편향, appearances 75–77 참조)
-4. **좌표 규약 준수.** SofaScore 히트맵 0–100: x는 공격 방향, **y 낮음=오른쪽 / y 높음=왼쪽**.
-   상세와 검증 근거는 docs/30-data-rules.md.
-5. **DB 변경 후 고정 절차**: `python3 scripts/sync_transfer_ui.py`(툴 미러 + 프리뷰 재생성)
-   → `scripts/db_dump.sh`(`data/dump/*.sql` 재생성) → **.db + dump + fc26-heatmap.html 함께 커밋**
-   (바이너리 diff 불가 보완). ⚠️ `git add -A` 금지 — 커밋 금지 파일이 있어 푸시가 차단된다.
-6. 툴 프리셋 네이밍: `<팀명> <시즌> (<종류>)` — 예: `아스톤 빌라 25/26 (최적)`,
-   `첼시 26/27 (알론소)`. 팀명은 `TEAMS` 레지스트리(fc26-heatmap.html)의 `prefix` 값을 쓴다.
-7. **팀 축을 섞지 말 것.** 한 팀의 실측을 다른 팀 처방의 근거로 쓸 때는 `rationale`에
-   출처 팀·체제를 명기한다 (사례: 로저스 첼시 처방의 그리드는 빌라 25/26 에메리 체제 것).
-   특히 **25/26 첼시·리버풀 팀 전술은 알론소·이라올라의 것이 아니다** — 개인 위치 성향의
-   기준선으로만 쓰고, 팀 구조 주장의 근거로 쓰지 않는다.
-8. **히트맵은 시각화해서 보여준다.** (2026-08-06 추가) `map25` 5×5 그리드를 사용자에게 제시할 때는
-   숫자 표·코드블록이 아니라 **시각화 위젯**으로 렌더링한다 — 그리드는 공간 정보를 담고 있고
-   (**열 0 = 좌측 터치라인, 행 0 = 공격 방향**), 두 선수의 좌우 편향을 숫자열로 비교하는 것은
-   사실상 불가능하기 때문이다. 디코딩은 `X`=1.0, 숫자/10. 단일 색상 시퀀셜 램프로 칠하고
-   공격 방향이 위로 가게 그린다. **수치 결론(컬럼 열량 %, 커널 적합도)은 위젯 안이 아니라
-   응답 본문에 쓴다.** (실증: 가르나초 좌2컬럼 90% vs 로저스 68% — 이 대비는 그림에서만 즉시 보인다.)
+## 작업 완료 기준 (data 작업의 DoD)
 
-## 작업 완료 기준 (data 작업의 Definition of Done)
-
-- 새 사실은 `appearances`(또는 해당 테이블)에 `source`(URL/API 엔드포인트)와
-  `confidence`(등급+근거)를 채워서 기록했다.
-- 파생 결론은 `player_role_map`에 `kind`와 `rationale`을 채워서 기록했다.
-- 불변규칙 5의 고정 절차(sync → dump → 커밋)를 실행했다.
+- 새 사실은 `player_matches`/해당 테이블에 `source`·`confidence`를 채워 기록했다.
+- 파생 결론은 `prescriptions`(정형 필드: fit_sim/sample_n/avg_rating 컬럼)에 기록했다 —
+  값을 rationale 산문에 묻지 않는다.
+- 불변규칙 5의 고정 절차(export → dump → 커밋)를 실행했다.

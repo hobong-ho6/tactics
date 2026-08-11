@@ -84,9 +84,11 @@ def main():
     c2.execute("INSERT INTO game_versions VALUES('FC27',NULL,'2026-09 발매 예정 — 온보딩 체크리스트는 docs/21')")
 
     for r in c1.execute("SELECT * FROM teams"):
-        c2.execute("INSERT INTO teams(code,name,name_kr,sofascore_id,note) VALUES(?,?,?,?,?)",
-                   (r["code"], r["name"], r["name_kr"],
-                    40 if r["code"] == "AVL" else None, r["note"]))
+        SOFA_TEAM = {"AVL": 40, "CHE": 38, "LIV": 44}      # CHE/LIV는 표준 id — 첫 수집에서 재확인
+        FOTMOB = {"AVL": 10252, "CHE": 8455, "LIV": 8650}  # AVL만 실사용 검증됨(transfer-watch)
+        c2.execute("INSERT INTO teams(code,name,name_kr,sofascore_id,fotmob_id,note) VALUES(?,?,?,?,?,?)",
+                   (r["code"], r["name"], r["name_kr"], SOFA_TEAM.get(r["code"]),
+                    FOTMOB.get(r["code"]), r["note"]))
     c2.executemany(
         "INSERT INTO regimes(id,team_code,manager,manager_kr,start,end,is_main,note) VALUES(?,?,?,?,?,?,?,?)",
         [(1, "AVL", "Unai Emery", "에메리", "2022-10-24", None, 1, "주 분석 대상(기준 구현)"),

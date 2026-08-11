@@ -1,0 +1,15 @@
+INSERT INTO transfer_ledger VALUES(1,'AVL','2026-summer','in','로저스 → 첼시',117.0,'영국 선수 역대 최고액, 메디컬 완료 단계','ESPN·Sky Sports (2026-07-19)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(2,'AVL','2026-summer','in','틸레만스 → 맨유',35.0,'바이아웃 조항 발동','Sky Sports·Romano (2026-07-15 공식)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(3,'AVL','2026-summer','in','말렌 → 로마',23.30000000000000071,'£21.6m + 임대료 £1.7m','readastonvilla (2026-07-14)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(4,'AVL','2026-summer','in','바레네체아 → 벤피카',10.30000000000000072,'임대 후 의무매입 발동','readastonvilla (2026-07-14)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(5,'AVL','2026-summer','in','돕빈 → 사우샘프턴',9.0,'+ 애드온 별도','readastonvilla (2026-07-13)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(6,'AVL','2026-summer','in','디뉴 → PSG',8.699999999999999289,'€10m 미만 바이아웃, 월드컵 후 발동','Romano·Schira (2026-07-19)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(7,'AVL','2026-summer','in','배리 → 셰필드 웬즈데이',2.0,'비공개 — 추정치','readastonvilla (2026-07-14)','ESTIMATE');
+INSERT INTO transfer_ledger VALUES(8,'AVL','2026-summer','deduct','미들즈브러 셀온 (로저스 20%)',20.0,'이적 차익의 20%, £15-20m 보도 — 상단 추정','ESPN (2026-07-19)','ESTIMATE');
+INSERT INTO transfer_ledger VALUES(9,'AVL','2026-summer','out','만잠비 ← 프라이부르크',59.5,'클럽 레코드 (€70m, 애드온 포함)','Sky Sports (2026-07-17 공식)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(10,'AVL','2026-summer','out','고메스 ← 울버햄튼',38.0,'£34m + 애드온 £4m','Sky Sports (2026-07-17 공식)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(11,'AVL','2026-summer','out','시세 ← LASK',4.0,'26/27 합류 RCB','readastonvilla (2026-05)','CONFIRMED');
+INSERT INTO transfer_ledger VALUES(13,'AVL','2026-summer','pending','팔리냐 ← 바이에른',21.0,'교착 중 — 빌라는 임대+옵션(또는 의무매입) 구조를 원하나 바이에른은 완전이적 €20-25m을 고수. 빌라 SD Vidagany 공개 발언(08-08): "We are in talks, but there is currently no agreement." 08-07 홍콩 대면협상에서도 미해결. €25m≈£21m 기준 계상하되 임대 구조로 성사되면 이번 창 현금 지출은 임대료 수준으로 축소된다. 온나나 시즌아웃 공백 보강 건.','Sport Bild(Vidagany 직접 발언, 2026-08-08) ; Sport1 ; Tanswell(Athletic)','HIGH (등급) / 구조·금액 미확정');
+INSERT INTO transfer_ledger VALUES(14,'AVL','2026-summer','pending','가르나초 ← 첼시 (임대+의무매입)',43.0,'임대는 CONFIRMED(2026/27 시즌). £43m 의무매입은 26/27 출전 횟수 트리거로 2027 여름에 귀속되므로 이번 창 지출이 아니다 — 트리거 전이라 pending 유지. 첼시 희망가 £42.6-43m, 트리거 달성은 용이하다고 보도됨.','Sky Sports·The Athletic·Romano (2026-07-22)','임대 CONFIRMED / 매입 트리거 미발동');
+INSERT INTO transfer_ledger VALUES(15,'AVL','2026-summer','pending','잭슨 ← 첼시',60.0,'첼시 호가 £65m, 빌라 목표 £60m 이하 — 07-28 이후 단계 전진 없이 정체. 가르나초 임대로 PL 동일구단 임대 슬롯이 소진돼 잭슨은 완전이적만 가능(임대 대안 소멸 = 총액 부담 고정). 토트넘 경쟁 지속. 성사 시 클럽 레코드이며 추가 대형 매각 1건 선행 필요 전망.','Sky Sports·Athletic·Telegraph(John Percy) ; Romano 재확인 (2026-08-08)','HIGH');
+INSERT INTO transfer_ledger VALUES(16,'AVL','2026-summer','pending','루헤리 ← 아틀레티코',17.0,'€20m 클럽간 합의(환율 0.85 적용, 만잠비 €70m→£59.5m와 동일 기준). 선수 그린라이트 확보, 계약조건 협상 중 — 메디컬·공식발표 전. 매체별 구조 병존: Marca 고정 €18m+보너스 €6m vs 스페인 매체 총액 €25m. 디뉴(→PSG) 이탈로 생긴 LB 공백을 메우는 영입이며, 무산된 에스투피냔 딜(£13m)을 대체한다.','Fabrizio Romano 트윗(1티어, status ID로 2026-08-08 09:13 UTC 확정) ; Marca ; Moretto','HIGH');

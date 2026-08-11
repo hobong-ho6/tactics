@@ -51,18 +51,18 @@
 > (v1 AUTOGEN과 파리티 완전 일치) ⑸ `site/` 6페이지(3팀 렌더 검증 — 포파나 RCB .943/CCB .669/
 > LCB .256이 v1 수기값 정확 재현).
 >
-> **다음 세션이 이어서 할 일 (순서대로)**:
-> 1. **단계 5 잔여** — docs 재편(10~12 감독 문서에 v2 테이블 참조 반영, docs/20 게이트 표를
->    scripts/gates.py 참조로 교체, docs/22-fifa-to-fc 신설) + **CLAUDE.md 재작성**(문서 맵·
->    불변규칙 5의 sync 절차를 v2 export로, matches 풀네임 경고 제거) + manager_profiles 시드.
-> 2. **단계 6 컷오버** — `python3 scripts/migrate_v1.py` **재실행**(v1 신규분 흡수: transfer-watch가
->    아직 v1에 쓴다!) → fc26-heatmap.html·sync_transfer_ui.py를 archive/v1/로 → transfer-watch
->    스킬(.claude/skills/transfer-watch/SKILL.md)의 DB 경로·§3~5 스크립트명을 v2로 → 드라이런.
-> 3. **단계 7** — FC27 온보딩(9월): docs/21·22 + game_system_changes 소급 기입.
-> 4. 데이터 백로그: AVL squad_entries 3명(가르나초·알리송·아브라함) 구표본 그리드 갱신.
+> **⭐ 컷오버 완료(2026-08-11)** — 이제 모든 쓰기는 **v2(db/tactics.db)**. v1은 동결 아카이브.
+> transfer-watch는 3팀 체제(AVL 전체 / CHE·LIV 스캔+기록) — **오늘 21시 스케줄 런이 v2 첫 실전**.
 >
-> ⚠️ **v1(data/avl_analysis.db)은 컷오버까지 살아있는 쓰기 대상**이다(스케줄 transfer-watch).
-> v2를 고치고 싶으면 v1에 쓰고 migrate 재실행이 정석. ⚠️ 미커밋 `.gitignore`·`README.md`
+> **다음 세션이 이어서 할 일**:
+> 1. 21시 transfer-watch 런 결과 점검 — CHE 8455·LIV 8650 fotmob id 검증, TransferFeed
+>    CHE/LIV 슬러그 확보해 SKILL.md에 추가.
+> 2. 단계 5 잔여 — manager_profiles 11축 시드(docs/10~12에서), docs/22-fifa-to-fc 신설.
+> 3. 단계 7 — FC27 온보딩(9월): docs/21 + game_system_changes 소급 기입.
+> 4. 데이터 백로그 — AVL squad_entries 3명(가르나초·알리송·아브라함) 구표본 그리드를
+>    prescriptions 확장 표본으로 갱신 후 재익스포트.
+>
+> ⚠️ 미커밋 `.gitignore`·`README.md`
 > + untracked는 여전히 사용자 소유 — `git add -A` 금지.
 
 ## 다음 할 일
