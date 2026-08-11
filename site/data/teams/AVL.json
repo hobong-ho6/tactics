@@ -71,6 +71,16 @@
    "source": "player_match_positions player_id=8; appearances Onana heatmaps x4 (measured)"
   },
   {
+   "adherence": "강정합",
+   "confidence": "정합",
+   "duties": "영상 종합: 공중볼 최강·듀얼 머신·인터셉트, 소유 유지형(창출 낮음), 딥 볼컨트롤 선호, 세트피스 위협(195cm)",
+   "execution": "실측: 피벗 29경기 평점 7.13, dm_holding/Roaming",
+   "game_role_implication": "dm_holding/Roaming 유지. 세트피스는 게임 공중볼 스탯으로 재현",
+   "label": "오나나",
+   "position": "LDM",
+   "source": "obs#145"
+  },
+  {
    "adherence": "HIGH — the streak side's tempo source when Kamara was injured; season-best games came here.",
    "confidence": "HIGH — full-season API position sweep.",
    "duties": "Deep-lying playmaker on the left of the pivot: dictate tempo from deep, progressive passing, late box arrival (EL final goal).",
@@ -119,6 +129,16 @@
    "label": "맥긴",
    "position": "CAM",
    "source": "player_match_positions player_id=10; appearances match_id=22 (measured)"
+  },
+  {
+   "adherence": "강정합 ⭐검증자 사례",
+   "confidence": "정합",
+   "duties": "영상 종합: 명목 우측이나 움직임은 내부·수직(하이브리드), 듀얼 5.75/90 최다, 찬스 창출 최다, 중거리. 캐비앗: 피로 누적 시 수행 저하",
+   "execution": "실측: RM 21경기, wm_widemid/Support(뱅크 복귀) — 외부 분석이 obs#27·#89를 독립 재현",
+   "game_role_implication": "wm_widemid/Support 유지",
+   "label": "맥긴",
+   "position": "RM",
+   "source": "obs#145"
   },
   {
    "adherence": "HIGH on screening/circulation. The \"deep sitting anchor\" framing is now REJECTED with a de-biased sample: he is a right-of-centre deep-lying playmaker. Side-switch (left→right, mid-Oct) coincides with the streak-era pivot geometry.",
@@ -181,6 +201,16 @@
    "source": "player_match_positions player_id=14; appearances match_id=18 (measured)"
   },
   {
+   "adherence": "강정합",
+   "confidence": "정합",
+   "duties": "영상 종합: 윙어가 아니라 플레이메이커 — 크로스 적음, 라인 사이 수신, 인필드 이동 후 중거리 드리븐",
+   "execution": "실측: 좌편향 자유 10번(부엔디아 좌측 실측이 기사 \"우측 드리프트\"를 정정한 원조 사례), cam_playmaker/Roaming",
+   "game_role_implication": "cam_playmaker/Roaming 유지",
+   "label": "부엔디아",
+   "position": "CAM",
+   "source": "obs#145"
+  },
+  {
    "adherence": "HIGH — the footprint reshapes per game plan while the goal output stays constant (2 goals in each of the three matches); this is the system's most brief-obedient attacker.",
    "confidence": "MEDIUM-HIGH — heatmaps HIGH; top-3 bias noted but the three matches happen to span three distinct game types (home rout, home clash, away counter), which mitigates it.",
    "duties": "Lone striker, three briefs in one: (1) occupy the central box for wide deliveries, (2) drop/link and lay off to the inside-cutting Rogers/McGinn, (3) run the channels in behind as the transition outlet (drift wide to open the box for the 10).",
@@ -189,6 +219,16 @@
    "label": "왓킨스",
    "position": "ST",
    "source": "appearances player_id=16 ranks 1-3 (measured); tactic_observations in_possession"
+  },
+  {
+   "adherence": "강정합",
+   "confidence": "정합",
+   "duties": "영상 종합: 뒷공간 런 리그 1위·박스 상주(채널 러너에서 진화), 양발+헤더 마무리, 전방 압박 탈취",
+   "execution": "실측: st_advanced 커널 정합, 상위 7경기 평점 8.47",
+   "game_role_implication": "st_advanced/Versatile 유지",
+   "label": "왓킨스",
+   "position": "ST",
+   "source": "obs#145"
   },
   {
    "adherence": "부분 일치 — 캐리 전진(온더볼)은 그리드 밖이라 미검증, 위치 주장은 실측이 정정",
