@@ -8,7 +8,7 @@
 <div class="panel">표시: <select id="who"><option value="">전체 합성</option></select></div>
 <div class="grid2">
   <div class="panel"><h2>A · 실측</h2><canvas class="pitch" id="cvA" width="640" height="860"></canvas></div>
-  <div class="panel"><h2>B · 처방(커널)</h2><canvas class="pitch" id="cvB" width="640" height="860"></canvas></div>
+  <div class="panel"><h2>B · 처방(커널) <small class="dim">게임 내 역할·포커스의 기대 움직임</small></h2><canvas class="pitch" id="cvB" width="640" height="860"></canvas><div id="capB" class="kv" style="margin-top:8px"></div></div>
 </div>
 <p class="dim">데이터: teams/{팀}.json (slots·squad·prescriptions) + kernels/FC26.json. 인선을 바꾸면 즉시 다시 그린다.
 칸이 비면 그 슬롯은 실측 후보가 없는 것 — 데이터가 생기면 자동으로 나타난다.</p>
@@ -69,6 +69,7 @@ function fillWho(){
 }
 function render(){
   fillWho();
+  const caps=[];
   for (const [id, mode] of [['cvA', 'measured'], ['cvB', 'kernel']]){
     const cv = document.getElementById(id), ctx = cv.getContext('2d');
     drawPitch(ctx, cv.width, cv.height);
@@ -83,14 +84,17 @@ function render(){
         // DB fit이 비면(구 v1 이관분) 라이브 커널 최적을 산출 — B가 항상 그려진다
         let role = q.fit_role, focus = q.fit_focus;
         if (!role){ const bf = K.bestFit(q.map25, s.x, s.slot_type); role = bf.role; focus = bf.focus; }
+        q._role = role; q._focus = focus;
         map = K.placed(role, focus, s.x);
       }
       if (map) decoded.push(map);
       chips.push([s.x, s.y, q.label]);
+      if (mode==='kernel') caps.push(`<b>${s.pos}</b> ${q.label} — ${K.roleName[q._role]??q._role}/${q._focus}`);
     }
     drawComposite(ctx, cv.width, cv.height, decoded);
     for (const [x, y, label] of chips) drawChip(ctx, cv.width, cv.height, x, y, label);
   }
+  document.getElementById('capB').innerHTML = caps.join(' · ');
 }
 buildBar(); render();
 </script></body></html>
