@@ -11,7 +11,8 @@
 <b>:F/:CAM 등</b>=다른 포지션으로 뛴 경기만 · <b>@dom/@tight</b>=2골차+ 승 / 접전 분리 ·
 <b>:season</b>=시즌 전체(주전은 상위 경기 표본과 구분). 표본 n·평점은 카드에 병기.</p>
 <div class="panel"><h2>경기 스탯 (경기당 평균)</h2><div id="pstat" class="kv"></div>
-<div id="pct" style="margin-top:10px"></div>
+<div class="kv" style="margin:8px 0 2px"><b>동료 대비 위치</b> <small class="dim">— 숫자 = 백분위(수집 3팀 풀에서 이 값보다 낮은 선수의 비율%. 예: 92 = 상위 8%). 풋몹 백분위와 같은 개념이되 모집단이 리그 전체가 아니라 수집 풀임.</small></div>
+<div id="pct" style="margin-top:4px"></div>
 <details style="margin-top:8px"><summary class="dim">📖 경기 스탯 읽는 법</summary>
 <div class="kv" style="font-size:13px;line-height:1.8;margin-top:6px">
 <b>평점</b> — SofaScore 경기 평점 평균. 6.5=평범, 7.0+=준수, 7.5+=상위권. 표본(경기 수)이 적으면 과신 금지.<br>
@@ -37,7 +38,6 @@ const POOL = (await Promise.all(['AVL','CHE','LIV'].map(c=>loadTeam(c).catch(()=
   .filter(Boolean).flatMap(t=>t.player_stats);
 const strip = x => (x||'').normalize('NFC').replace(/\((합류확정|신규|보유)\)$/,'').replace(/^영입·/,'');
 /* 26/27 스쿼드 기준 — 이탈 확정·구시즌 전용 제외. 그룹핑: 포지션군 + 영입 추적 */
-const strip = x => (x||'').normalize('NFC').replace(/\((합류확정|신규|보유)\)$/,'').replace(/^영입·/,'');
 const gone = new Set((td.departed||[]).map(strip));
 const GRPKR = {GK:'골키퍼',CB:'센터백',FB:'풀백',DM:'수비형 MF',CM:'중앙 MF',CAM:'공격형 MF',WM:'와이드',W:'윙어',ST:'스트라이커'};
 const groups = {};   // 그룹명 -> [{name, tt?}]
@@ -57,7 +57,6 @@ function fillWho(){
 grp.addEventListener('change', ()=>{ fillWho(); render(); });
 who.addEventListener('change', render);
 fillWho();
-const norm = x => (x||'').normalize('NFC').replace(/\((합류확정|신규|보유)\)$/,'');
 function render(){
   const sel = groups[grp.value][+who.value]; if (!sel) return;
   const n = sel.name;
@@ -85,11 +84,13 @@ function render(){
       const vals=POOL.map(p=>p[k]).filter(x=>x!=null).sort((a,b)=>a-b);
       const pct=Math.round(vals.filter(x=>x<=v).length/vals.length*100);
       const col=pct>=70?'var(--ok)':pct>=40?'var(--warn)':'var(--bad)';
-      return `<div style="display:flex;align-items:center;gap:8px;margin:3px 0">
+      const tag = pct>=85?'엘리트':pct>=70?'우수':pct>=40?'평균':pct>=20?'평균 이하':'하위';
+      return `<div style="display:flex;align-items:center;gap:8px;margin:4px 0" title="수집 풀 상위 ${100-pct}% — 값이 풀의 ${pct}%보다 높거나 같음">
         <span style="width:70px" class="dim">${name}</span>
-        <div style="flex:1;background:rgba(255,255,255,.08);border-radius:6px;height:14px">
+        <b style="width:52px;text-align:right">${v}</b>
+        <div style="flex:1;background:rgba(255,255,255,.08);border-radius:6px;height:14px;position:relative">
           <div style="width:${pct}%;background:${col};height:14px;border-radius:6px"></div></div>
-        <b style="width:80px">${v} <small class="dim">${pct}%</small></b></div>`;
+        <span class="badge" style="width:64px;text-align:center;color:${col};border-color:${col}">${tag} ${pct}</span></div>`;
     }).join('') : '';
   }
   const g = GS[n];
