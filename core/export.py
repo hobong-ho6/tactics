@@ -78,7 +78,7 @@ def export_all(db_path=None, window="2026-summer"):
                               WHERE s.regime_id=? ORDER BY s.sort_order, label""", (rid,))
         prescriptions = _rows(con, """
             SELECT pr.player_id, COALESCE(p.name_kr, p.name) label, pr.season, pr.game_version,
-                   pr.kind, pr.pos_label, pr.x, pr.y, pr.role_id, pr.focus, pr.map25,
+                   pr.kind, pr.pos_label, pr.x, pr.y, pr.role_id, pr.focus, pr.map25, pr.starter,
                    pr.fit_sim, pr.sample_n, pr.avg_rating, pr.rationale
             FROM prescriptions pr JOIN players p ON p.id=pr.player_id
             WHERE pr.regime_id=? ORDER BY pr.player_id, pr.kind""", (rid,))
