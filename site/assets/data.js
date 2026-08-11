@@ -26,7 +26,12 @@ export function statLine(label, GS){
   const g = GS[label.replace(/^영입·/, '').replace(/\((합류확정|신규|보유)\)$/, '')];
   if (!g) return '';
   return `OVR <b>${g.ovr ?? '—'}</b>/${g.pot ?? '—'} · ${g.best_pos ?? ''} · ` +
-    `<span class="dim">${(JSON.parse(g.playstyles || '[]') || []).slice(0, 4).join('·') || '플레이스타일 미기재'}</span>`;
+    `<span class="dim">${_ps(g.playstyles).slice(0, 4).join('·') || '플레이스타일 미기재'}</span>`;
+}
+function _ps(v){
+  if (!v) return [];
+  try { const a = JSON.parse(v); return Array.isArray(a) ? a : []; }
+  catch(e){ return String(v).split(/[;,]/).map(x => x.trim()).filter(Boolean); }
 }
 
 export function currentTeam(){
