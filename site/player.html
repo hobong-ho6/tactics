@@ -12,7 +12,12 @@
 <b>:season</b>=시즌 전체(주전은 상위 경기 표본과 구분). 표본 n·평점은 카드에 병기.</p>
 <div class="panel"><h2>경기 스탯 (경기당 평균)</h2><div id="pstat" class="kv"></div>
 <div class="kv" style="margin:8px 0 2px"><b>동료 대비 위치</b> <small class="dim">— 숫자 = 백분위(수집 3팀 풀에서 이 값보다 낮은 선수의 비율%. 예: 92 = 상위 8%). 풋몹 백분위와 같은 개념이되 모집단이 리그 전체가 아니라 수집 풀임.</small></div>
-<div id="pct" style="margin-top:4px"></div>
+<div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
+   <div id="radar"></div><div style="flex:1;min-width:280px"><div id="pct" style="margin-top:4px"></div></div></div>
+ <div class="kv" style="margin-top:10px"><b>최근 폼</b> <small class="dim">— 최근 10경기 평점 추이</small></div>
+ <div id="form"></div>
+ <div class="kv" style="margin-top:10px"><b>유사 프로필</b> <small class="dim">— 실측 그리드 코사인 최근접(수집 풀)</small></div>
+ <div id="similar" class="kv"></div>
 <details style="margin-top:8px"><summary class="dim">📖 경기 스탯 읽는 법</summary>
 <div class="kv" style="font-size:13px;line-height:1.8;margin-top:6px">
 <b>평점</b> — SofaScore 경기 평점 평균. 6.5=평범, 7.0+=준수, 7.5+=상위권. 표본(경기 수)이 적으면 과신 금지.<br>
@@ -34,8 +39,9 @@ import { mountHeader, loadTeam, loadGameStats, sofifaLink } from './assets/data.
 import { miniGrid } from './assets/pitch.js';
 const { team } = await mountHeader('player.html');
 const [td, GS] = await Promise.all([loadTeam(team), loadGameStats('FC26')]);
-const POOL = (await Promise.all(['AVL','CHE','LIV'].map(c=>loadTeam(c).catch(()=>null))))
-  .filter(Boolean).flatMap(t=>t.player_stats);
+const _TEAMS = (await Promise.all(['AVL','CHE','LIV'].map(c=>loadTeam(c).catch(()=>null)))).filter(Boolean);
+const POOL = _TEAMS.flatMap(t=>t.player_stats);
+const POOL_SQ = _TEAMS.flatMap(t=>t.squad.map(q=>({...q, team:t.regime.team_code})));
 const strip = x => (x||'').normalize('NFC').replace(/\((합류확정|신규|보유)\)$/,'').replace(/^영입·/,'');
 /* 26/27 스쿼드 기준 — 이탈 확정·구시즌 전용 제외. 그룹핑: 포지션군 + 영입 추적 */
 const gone = new Set((td.departed||[]).map(strip));
@@ -66,7 +72,7 @@ function render(){
   const n = sel.name;
   document.getElementById('sf').innerHTML = sofifaLink(n, GS);
   const g0 = GS[n];
-  document.getElementById('bio').textContent = g0 ? ` ${g0.age}세 · ${g0.height_cm??'?'}cm · ${g0.club??''}` : '';
+  document.getElementById('bio').textContent = g0 ? ` ${g0.age}세 · ${g0.height_cm??'?'}cm · ${g0.preferred_foot==='Left'?'왼발':g0.preferred_foot==='Right'?'오른발':''} · 가치 ${g0.value_eur??'?'} · ${g0.club??''}` : '';
   if (sel.tt){   // 영입 추적 — transfer_targets 데이터로 렌더
     const t = sel.tt;
     document.getElementById('grids').innerHTML =
@@ -96,6 +102,40 @@ function render(){
           <div style="width:${pct}%;background:${col};height:14px;border-radius:6px"></div></div>
         <span class="badge" style="width:64px;text-align:center;color:${col};border-color:${col}">${tag} ${pct}</span></div>`;
     }).join('') : '';
+    // ⬡ 레이더 (풋몹 프로필 참고 — 6축 백분위)
+    const axes=[['xg_pg','득점 위협'],['xa_pg','기회 창출'],['kp_pg','키패스'],['dw_pg','경합'],['tk_pg','태클'],['ic_pg','인터셉트']];
+    if (st){
+      const pcts=axes.map(([k])=>{const v=st[k]; if(v==null)return 0;
+        const vals=POOL.map(p=>p[k]).filter(x=>x!=null).sort((a,b)=>a-b);
+        return vals.filter(x=>x<=v).length/vals.length;});
+      const C=110,R=80;
+      const pt=(i,r)=>{const a=Math.PI/2+i*Math.PI/3;return `${C+r*Math.cos(a)},${C-r*Math.sin(a)}`;};
+      const grid=[1,.66,.33].map(f=>`<polygon points="${axes.map((_,i)=>pt(i,R*f)).join(' ')}" fill="none" stroke="rgba(255,255,255,.15)"/>`).join('');
+      const shape=`<polygon points="${pcts.map((p,i)=>pt(i,R*Math.max(.05,p))).join(' ')}" fill="rgba(255,138,61,.35)" stroke="var(--acc)"/>`;
+      const labels=axes.map(([k,name],i)=>{const [x,y]=pt(i,R+22).split(',');
+        return `<text x="${x}" y="${y}" fill="var(--dim)" font-size="10" text-anchor="middle">${name} ${Math.round(pcts[i]*100)}%</text>`;}).join('');
+      document.getElementById('radar').innerHTML=`<svg width="220" height="230" viewBox="0 0 220 230" role="img" aria-label="6축 백분위 레이더">${grid}${shape}${labels}</svg>`;
+    } else document.getElementById('radar').innerHTML='';
+    // 폼 스파크라인
+    const fm=(td.form||{})[Object.keys(td.form||{}).find(k=>strip(k)===n)]||[];
+    document.getElementById('form').innerHTML = fm.length ? (()=>{
+      const w=320,h=60,min=5.5,max=9.5;
+      const px=i=>10+i*(w-20)/Math.max(1,fm.length-1), py=r=>h-8-(Math.min(max,Math.max(min,r))-min)/(max-min)*(h-18);
+      const line=fm.map((f,i)=>`${px(i)},${py(f[1])}`).join(' ');
+      const dots=fm.map((f,i)=>`<circle cx="${px(i)}" cy="${py(f[1])}" r="3" fill="${f[1]>=7.5?'var(--ok)':f[1]>=6.5?'var(--warn)':'var(--bad)'}"><title>${f[0]} ${f[2]} — ${f[1]}</title></circle>`).join('');
+      return `<svg width="${w}" height="${h}"><polyline points="${line}" fill="none" stroke="rgba(255,255,255,.35)"/>${dots}</svg>
+        <small class="dim">${fm[0][0]} ~ ${fm[fm.length-1][0]} · 점에 마우스를 올리면 경기 정보</small>`;
+    })() : '<span class="dim">경기별 평점 없음</span>';
+    // 유사 프로필 — 그리드 코사인
+    const me=td.squad.find(q=>strip(q.label)===n)?.map25;
+    if(me){
+      const dec=c=>[...c].map(ch=>ch==='X'?1:+ch/10);
+      const cos=(a,b)=>{let d=0,x=0,y=0;for(let i=0;i<25;i++){d+=a[i]*b[i];x+=a[i]*a[i];y+=b[i]*b[i];}return d/Math.sqrt(x*y);};
+      const mv=dec(me);
+      const sims=POOL_SQ.filter(q=>strip(q.label)!==n).map(q=>({l:q.label,t:q.team,s:cos(mv,dec(q.map25))}))
+        .sort((a,b)=>b.s-a.s).slice(0,3);
+      document.getElementById('similar').innerHTML=sims.map(x=>`<b>${x.l}</b><small class="dim">(${x.t}) ${x.s.toFixed(3)}</small>`).join(' · ');
+    } else document.getElementById('similar').innerHTML='<span class="dim">—</span>';
   }
   const g = GS[n];
   document.getElementById('gstat').innerHTML = g ? `OVR <b>${g.ovr}</b>/${g.pot} · ${g.positions??''} · 최적 ${g.best_pos??''}<br>PAC ${g.pac} SHO ${g.sho} PAS ${g.pas} DRI ${g.dri} DEF ${g.def} PHY ${g.phy}<br><span class="dim">${(g.playstyles??'').split(';').join(' · ')}</span>` : '<span class="dim">FC26 로스터에 없음</span>';

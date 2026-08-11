@@ -71,7 +71,8 @@ def export_all(db_path=None, window="2026-summer"):
 
     # ── game_stats/{GV}.json — sofifa 스탯·플레이스타일 (name_kr 키, 표시 전용) ──
     for (gv,) in con.execute("SELECT DISTINCT game_version FROM player_game_stats"):
-        gs = _rows(con, """SELECT name_kr, sofifa_id, club, positions, best_pos, age,
+        gs = _rows(con, """SELECT name_kr, sofifa_id, club, positions, best_pos, age, height_cm,
+                                  value_eur, preferred_foot, accelerate,
                                   ovr, pot, pac, sho, pas, dri, def, phy, playstyles, role_familiarity
                            FROM player_game_stats WHERE game_version=? ORDER BY name_kr""", (gv,))
         written.append(_write(SITE_DATA / "game_stats" / f"{gv}.json", {g["name_kr"]: g for g in gs}))
@@ -125,12 +126,21 @@ def export_all(db_path=None, window="2026-summer"):
                                FROM v_player_profile v JOIN players p ON p.id=v.player_id
                                WHERE v.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
                                      UNION SELECT player_id FROM prescriptions WHERE regime_id=?)""", (rid, rid))
+        form = {}
+        for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, m.date, m.rating, m.competition
+              FROM player_matches m JOIN players p ON p.id=m.player_id
+              WHERE m.rating IS NOT NULL AND m.player_id IN
+                (SELECT player_id FROM squad_entries WHERE regime_id=?
+                 UNION SELECT player_id FROM prescriptions WHERE regime_id=?)
+              ORDER BY m.date""", (rid, rid)):
+            form.setdefault(r["label"], []).append([r["date"], r["rating"], r["competition"]])
+        form = {k: v[-10:] for k, v in form.items()}   # 최근 10경기
         departed = [r["label"] for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label
             FROM transfer_outgoing o JOIN players p ON p.id=o.player_id
             WHERE o.team_code=? AND o.likelihood='CONFIRMED'""", (code,))]
         written.append(_write(SITE_DATA / "teams" / f"{code}.json", {
             "regime": rg, "slots": slots, "squad": squad, "prescriptions": prescriptions,
-            "duties": duties, "player_stats": pstats, "departed": departed,
+            "duties": duties, "player_stats": pstats, "departed": departed, "form": form,
             "setups": setups, "profile": profile,
             "transfer": {"targets": targets, "outgoing": outgoing, "ledger": ledger}}))
 
