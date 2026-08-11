@@ -1312,7 +1312,10 @@ const TEAMS={
   AVL:{label:'아스톤 빌라', modes:['real','squad','cmp','report','transfer','xi'],
        prefix:'아스톤 빌라', defA:AVL_MEASURED, defB:AVL_OPTIMAL, rp:'emery',
        presetPrefixes:['아스톤 빌라','빌라 스쿼드','선수 비교']},
-  CHE:{label:'첼시', modes:['real','report'],
+  /* 2026-08-11 — squad·cmp·xi 개방. 팀 자산이 DB에서 생성되면서(AUTOGEN:TEAM_SQUADS)
+     세 모드가 실데이터를 갖게 됐다. transfer는 CHE/LIV의 transfer_targets가 0행이라
+     아직 닫아 둔다 — 열면 빈 화면이 나온다. */
+  CHE:{label:'첼시', modes:['real','squad','cmp','xi','report'],
        /* defA=처방(map25 실측 그리드=기준점) / defB=블루프린트(역할 커널) — 빌라의
           실측↔최적 배치와 같은 구조. prefix '첼시'가 두 프리셋을 모두 잡으므로
           패널 A/B 드롭다운에서 서로 바꿔 고를 수 있다. */
@@ -1321,7 +1324,9 @@ const TEAMS={
   /* 리버풀은 프리셋이 없다(26/27 RCB·RM·LB 인선 근거 부재 — 8/23 개막 실측 대기).
      modes를 report 하나로 두면 defA/defB 없이도 동작한다 — enterRealMode가
      teamAllows('real')로 자기 방어하고 applyTeam이 리포트로 보낸다. */
-  LIV:{label:'리버풀', modes:['report'],
+  /* 리버풀은 여전히 실측검증(real) 프리셋이 없다 — 26/27 처방 부재라 defA/defB를 못 채운다.
+     그러나 squad·cmp·xi는 25/26 실측 12명으로 성립한다(2026-08-11 개방). */
+  LIV:{label:'리버풀', modes:['squad','cmp','xi','report'],
        prefix:'리버풀', rp:'iraola', presetPrefixes:['리버풀']},
 };
 let TEAM='AVL', TEAM_STORED=false;
@@ -2353,10 +2358,33 @@ const XI_OWNED_BY_TEAM={
 {label:"아브라함(보유)",grid:"01855255648X8415422010200",lh:"OWNED",rate:{"v": 6.85, "b": "r6", "s": "45분+ 4경기 평균 6.85 (빌라·전부 교체)"},t:"ST"},
  ],
  CHE:[
-
+{label:"Robert Sánchez",grid:"0000000000000000010001X10",lh:"OWNED",rate:{"v": 6.8, "b": "r6", "s": "GK 실측 6경기 평균 6.80"},t:"GK"},
+{label:"Jorrel Hato",grid:"0000023100661007X30045200",lh:"OWNED",rate:{"v": null, "b": "r6", "s": "LCB 실측 (평점 미기재)"},t:"CB"},
+{label:"Trevoh Chalobah",grid:"0020002331137922X8X316440",lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RCB 실측 (평점 미기재)"},t:"CB"},
+{label:"Wesley Fofana",grid:"000000001101262023X400344",lh:"OWNED",rate:{"v": 6.47, "b": "r6", "s": "RCB 실측 6경기 평균 6.47"},t:"CB"},
+{label:"Malo Gusto",grid:"00015111390004X0015900147",lh:"OWNED",rate:{"v": 6.4, "b": "r6", "s": "RB 실측 6경기 평균 6.40"},t:"FB"},
+{label:"Moisés Caicedo",grid:"000001333116X411574101111",lh:"OWNED",rate:{"v": 7.0, "b": "r6", "s": "LDM 실측 6경기 평균 7.00"},t:"DM"},
+{label:"Reece James",grid:"301170125901284002X800123",lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RDM 실측 (평점 미기재)"},t:"DM"},
+{label:"Enzo Fernández",grid:"311116X431386113522001000",lh:"OWNED",rate:{"v": 7.28, "b": "r6", "s": "LM 실측 6경기 평균 7.28"},t:"WM"},
+{label:"로저스",grid:"65321X9632564117410121100",lh:"OWNED",rate:{"v": null, "b": "r6", "s": "LM 실측 (평점 미기재)"},t:"WM"},
+{label:"Cole Palmer",grid:"11223225XX015640123200011",lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RM 실측 (평점 미기재)"},t:"WM"},
+{label:"Estêvão",grid:"01354013780003X0025910001",lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RM 실측 (평점 미기재)"},t:"WM"},
+{label:"Pedro Neto",grid:"311264213X110191201410011",lh:"OWNED",rate:{"v": 6.63, "b": "r6", "s": "RM 실측 6경기 평균 6.63"},t:"WM"},
+{label:"João Pedro",grid:"243116X533232331212300110",lh:"OWNED",rate:{"v": null, "b": "r6", "s": "ST 실측 (평점 미기재)"},t:"ST"},
  ],
  LIV:[
-
+{label:"Alisson",grid:"0000000000000000010001X30",lh:"OWNED",rate:{"v": 6.8, "b": "r6", "s": "GK 실측 6경기 평균 6.80"},t:"GK"},
+{label:"Miloš Kerkez",grid:"200009210043000X800043000",lh:"OWNED",rate:{"v": null, "b": "r6", "s": "LB 실측 (평점 미기재)"},t:"FB"},
+{label:"Virgil van Dijk",grid:"0010012100283102X52013610",lh:"OWNED",rate:{"v": 7.15, "b": "r6", "s": "LCB 실측 6경기 평균 7.15"},t:"CB"},
+{label:"Ibrahima Konaté",grid:"000000012100251013X201232",lh:"OWNED",rate:{"v": 6.88, "b": "r6", "s": "RCB 실측 6경기 평균 6.88"},t:"CB"},
+{label:"Curtis Jones",grid:"00011010381125X0016700124",lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RB 실측 (평점 미기재)"},t:"FB"},
+{label:"Jeremie Frimpong",grid:"000680001X000170002500123",lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RB 실측 (평점 미기재)"},t:"FB"},
+{label:"Alexis Mac Allister",grid:"00321377622X9614887211211",lh:"OWNED",rate:{"v": 6.64, "b": "r6", "s": "LDM 실측 5경기 평균 6.64"},t:"DM"},
+{label:"Ryan Gravenberch",grid:"112113X594266632466514432",lh:"OWNED",rate:{"v": 6.77, "b": "r6", "s": "LDM 실측 6경기 평균 6.77"},t:"DM"},
+{label:"Dominik Szoboszlai",grid:"41324345XX237861326610110",lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RDM 실측 (평점 미기재)"},t:"DM"},
+{label:"Cody Gakpo",grid:"56831X8674768332323200100",lh:"OWNED",rate:{"v": 6.52, "b": "r6", "s": "LM 실측 6경기 평균 6.52"},t:"WM"},
+{label:"Florian Wirtz",grid:"120425857X443564223210100",lh:"OWNED",rate:{"v": 7.0, "b": "r6", "s": "CAM 실측 5경기 평균 7.00"},t:"CAM"},
+{label:"Mohamed Salah",grid:"011480003X000240001100000",lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RM 실측 (평점 미기재)"},t:"WM"},
  ],
 };
 /* AUTOGEN:XI_OWNED:END */
@@ -2396,6 +2424,141 @@ function injectTransferCandidates(A){
     }
   });
 }
+/* ── CHE/LIV 스쿼드 자산 (DB 생성) ──────────────────────────────────────
+   AVL은 하드코딩으로 남긴다 — SQUAD_SLOTS 주석에 판단 근거가 축적돼 있고 그것이
+   편집 지점에 있어야 다음 판단이 가능하다. CHE/LIV는 그런 축적이 없어 처음부터
+   DB 구동으로 둔다(CLAUDE.md 불변규칙 1). 손으로 고치지 말 것 — sync가 덮어쓴다. */
+/* AUTOGEN:TEAM_SQUADS:START */
+SQUAD_SLOTS_BY_TEAM.CHE=[
+  {pos:"GK", t:"GK", x:50,y:11, opts:[
+    {n:"Robert Sánchez",opt:["gk_goalkeeper", "Defend"],fit:["gk_goalkeeper", "Defend"]},
+  ]},
+  {pos:"LB", t:"FB", x:14,y:46, opts:[
+  ]},
+  {pos:"LCB", t:"CB", x:31,y:36, opts:[
+    {n:"Jorrel Hato",opt:["cb_bpd", "Aggressive"],fit:["cb_bpd", "Aggressive"]},
+  ]},
+  {pos:"CCB", t:"CB", x:50,y:34, opts:[
+  ]},
+  {pos:"RCB", t:"CB", x:66,y:32, opts:[
+    {n:"Wesley Fofana",opt:["cb_bpd", "Aggressive"],fit:["cb_bpd", "Aggressive"]},
+    {n:"Trevoh Chalobah",opt:["cb_bpd", "Aggressive"],fit:["cb_bpd", "Aggressive"]},
+  ]},
+  {pos:"RB", t:"FB", x:86,y:46, opts:[
+    {n:"Malo Gusto",opt:["fb_att_wb", "Support"],fit:["fb_att_wb", "Support"]},
+  ]},
+  {pos:"LDM", t:"DM", x:50,y:45, opts:[
+    {n:"Moisés Caicedo",opt:["dm_dlp", "Roaming"],fit:["dm_dlp", "Roaming"]},
+  ]},
+  {pos:"RDM", t:"DM", x:61,y:52, opts:[
+    {n:"Reece James",opt:["dm_dlp", "Roaming"],fit:["dm_boxcrasher", "Balanced"]},
+  ]},
+  {pos:"LM", t:"WM", x:14,y:56, opts:[
+    {n:"로저스",opt:["wm_insidefwd", "Balanced"],fit:["wm_wideplm", "Attack"]},
+    {n:"Enzo Fernández",opt:["wm_wideplm", "Attack"],fit:["wm_wideplm", "Attack"]},
+  ]},
+  {pos:"RM", t:"WM", x:86,y:60, opts:[
+    {n:"Pedro Neto",opt:["wm_winger", "Balanced"],fit:["wm_winger", "Balanced"]},
+    {n:"Cole Palmer",opt:["wm_wideplm", "Attack"],fit:["wm_wideplm", "Attack"]},
+    {n:"Estêvão",opt:["wm_widemid", "Support"],fit:["wm_widemid", "Support"]},
+  ]},
+  {pos:"ST", t:"ST", x:50,y:61, opts:[
+    {n:"João Pedro",opt:["st_false9", "Build-Up"],fit:["st_false9", "Build-Up"]},
+  ]},
+];
+CMP_SLOTS_BY_TEAM.CHE={
+  GK:{t:"GK",x:50,c:[{n:"Robert Sánchez",grid:"0000000000000000010001X10",dbFit:0.961,lh:"OWNED",rate:{"v": 6.8, "b": "r6", "s": "GK 실측 6경기 평균 6.80"}}]},
+  LB:{t:"FB",x:14,c:[]},
+  LCB:{t:"CB",x:31,c:[{n:"Jorrel Hato",grid:"0000023100661007X30045200",dbFit:0.85,lh:"OWNED",rate:{"v": null, "b": "r6", "s": "LCB 실측 (평점 미기재)"}}]},
+  CCB:{t:"CB",x:50,c:[]},
+  RCB:{t:"CB",x:66,c:[{n:"Wesley Fofana",grid:"000000001101262023X400344",dbFit:0.943,lh:"OWNED",rate:{"v": 6.47, "b": "r6", "s": "RCB 실측 6경기 평균 6.47"}},{n:"Trevoh Chalobah",grid:"0020002331137922X8X316440",dbFit:0.755,lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RCB 실측 (평점 미기재)"}}]},
+  RB:{t:"FB",x:86,c:[{n:"Malo Gusto",grid:"00015111390004X0015900147",dbFit:0.862,lh:"OWNED",rate:{"v": 6.4, "b": "r6", "s": "RB 실측 6경기 평균 6.40"}}]},
+  LDM:{t:"DM",x:50,c:[{n:"Moisés Caicedo",grid:"000001333116X411574101111",dbFit:0.941,lh:"OWNED",rate:{"v": 7.0, "b": "r6", "s": "LDM 실측 6경기 평균 7.00"}}]},
+  RDM:{t:"DM",x:61,c:[{n:"Reece James",grid:"301170125901284002X800123",dbFit:0.657,lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RDM 실측 (평점 미기재)"}}]},
+  LM:{t:"WM",x:14,c:[{n:"로저스",grid:"65321X9632564117410121100",dbFit:0.725,lh:"OWNED",rate:{"v": null, "b": "r6", "s": "LM 실측 (평점 미기재)"}},{n:"Enzo Fernández",grid:"311116X431386113522001000",dbFit:0.75,lh:"OWNED",rate:{"v": 7.28, "b": "r6", "s": "LM 실측 6경기 평균 7.28"}}]},
+  RM:{t:"WM",x:86,c:[{n:"Pedro Neto",grid:"311264213X110191201410011",dbFit:0.875,lh:"OWNED",rate:{"v": 6.63, "b": "r6", "s": "RM 실측 6경기 평균 6.63"}},{n:"Cole Palmer",grid:"11223225XX015640123200011",dbFit:0.845,lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RM 실측 (평점 미기재)"}},{n:"Estêvão",grid:"01354013780003X0025910001",dbFit:0.789,lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RM 실측 (평점 미기재)"}}]},
+  ST:{t:"ST",x:50,c:[{n:"João Pedro",grid:"243116X533232331212300110",dbFit:0.624,lh:"OWNED",rate:{"v": null, "b": "r6", "s": "ST 실측 (평점 미기재)"}}]},
+};
+PLAYER_BEST_BY_TEAM.CHE={
+  "Robert Sánchez":{pos:["GK"],note:"실측 적합 0.961(gk_goalkeeper/Defend)"},
+  "Jorrel Hato":{pos:["LCB"],note:"실측 적합 0.85(cb_bpd/Aggressive)"},
+  "Wesley Fofana":{pos:["RCB"],note:"실측 적합 0.943(cb_bpd/Aggressive)"},
+  "Trevoh Chalobah":{pos:["RCB"],note:"실측 적합 0.755(cb_bpd/Aggressive)"},
+  "Malo Gusto":{pos:["RB"],note:"실측 적합 0.862(fb_att_wb/Support)"},
+  "Moisés Caicedo":{pos:["LDM"],note:"실측 적합 0.941(dm_dlp/Roaming)"},
+  "Reece James":{pos:["RDM"],note:"실측 적합 0.657(dm_boxcrasher/Balanced)"},
+  "로저스":{pos:["LM"],note:"실측 적합 0.725(wm_wideplm/Attack)"},
+  "Enzo Fernández":{pos:["LM"],note:"실측 적합 0.75(wm_wideplm/Attack)"},
+  "Pedro Neto":{pos:["RM"],note:"실측 적합 0.875(wm_winger/Balanced)"},
+  "Cole Palmer":{pos:["RM"],note:"실측 적합 0.845(wm_wideplm/Attack)"},
+  "Estêvão":{pos:["RM"],note:"실측 적합 0.789(wm_widemid/Support)"},
+  "João Pedro":{pos:["ST"],note:"실측 적합 0.624(st_false9/Build-Up)"},
+};
+SQUAD_SLOTS_BY_TEAM.LIV=[
+  {pos:"GK", t:"GK", x:50,y:6, opts:[
+    {n:"Alisson",opt:["gk_goalkeeper", "Defend"],fit:["gk_goalkeeper", "Defend"]},
+  ]},
+  {pos:"LB", t:"FB", x:13,y:32, opts:[
+    {n:"Miloš Kerkez",opt:["fb_att_wb", "Support"],fit:["fb_att_wb", "Support"]},
+  ]},
+  {pos:"LCB", t:"CB", x:37,y:28, opts:[
+    {n:"Virgil van Dijk",opt:["cb_bpd", "Aggressive"],fit:["cb_bpd", "Aggressive"]},
+  ]},
+  {pos:"RCB", t:"CB", x:63,y:28, opts:[
+    {n:"Ibrahima Konaté",opt:["cb_bpd", "Aggressive"],fit:["cb_bpd", "Aggressive"]},
+  ]},
+  {pos:"RB", t:"FB", x:87,y:32, opts:[
+    {n:"Curtis Jones",opt:["fb_wingback", "Support"],fit:["fb_wingback", "Support"]},
+    {n:"Jeremie Frimpong",opt:["fb_inverted", "Attack"],fit:["fb_att_wb", "Support"]},
+  ]},
+  {pos:"LDM", t:"DM", x:38,y:42, opts:[
+    {n:"Ryan Gravenberch",opt:["dm_dlp", "Roaming"],fit:["dm_dlp", "Roaming"]},
+    {n:"Alexis Mac Allister",opt:["dm_dlp", "Roaming"],fit:["dm_dlp", "Roaming"]},
+  ]},
+  {pos:"RDM", t:"DM", x:62,y:42, opts:[
+    {n:"Dominik Szoboszlai",opt:["dm_dlp", "Roaming"],fit:["dm_dlp", "Roaming"]},
+  ]},
+  {pos:"LM", t:"WM", x:14,y:64, opts:[
+    {n:"Cody Gakpo",opt:["wm_insidefwd", "Balanced"],fit:["wm_insidefwd", "Balanced"]},
+  ]},
+  {pos:"CAM", t:"CAM", x:50,y:66, opts:[
+    {n:"Florian Wirtz",opt:["cam_halfwinger", "Balanced"],fit:["cam_halfwinger", "Balanced"]},
+  ]},
+  {pos:"RM", t:"WM", x:85,y:64, opts:[
+    {n:"Mohamed Salah",opt:["wm_insidefwd", "Attack"],fit:["wm_winger", "Attack"]},
+  ]},
+  {pos:"ST", t:"ST", x:50,y:87, opts:[
+  ]},
+];
+CMP_SLOTS_BY_TEAM.LIV={
+  GK:{t:"GK",x:50,c:[{n:"Alisson",grid:"0000000000000000010001X30",dbFit:0.979,lh:"OWNED",rate:{"v": 6.8, "b": "r6", "s": "GK 실측 6경기 평균 6.80"}}]},
+  LB:{t:"FB",x:13,c:[{n:"Miloš Kerkez",grid:"200009210043000X800043000",dbFit:0.799,lh:"OWNED",rate:{"v": null, "b": "r6", "s": "LB 실측 (평점 미기재)"}}]},
+  LCB:{t:"CB",x:37,c:[{n:"Virgil van Dijk",grid:"0010012100283102X52013610",dbFit:0.912,lh:"OWNED",rate:{"v": 7.15, "b": "r6", "s": "LCB 실측 6경기 평균 7.15"}}]},
+  RCB:{t:"CB",x:63,c:[{n:"Ibrahima Konaté",grid:"000000012100251013X201232",dbFit:0.938,lh:"OWNED",rate:{"v": 6.88, "b": "r6", "s": "RCB 실측 6경기 평균 6.88"}}]},
+  RB:{t:"FB",x:87,c:[{n:"Curtis Jones",grid:"00011010381125X0016700124",dbFit:0.843,lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RB 실측 (평점 미기재)"}},{n:"Jeremie Frimpong",grid:"000680001X000170002500123",dbFit:0.867,lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RB 실측 (평점 미기재)"}}]},
+  LDM:{t:"DM",x:38,c:[{n:"Ryan Gravenberch",grid:"112113X594266632466514432",dbFit:0.689,lh:"OWNED",rate:{"v": 6.77, "b": "r6", "s": "LDM 실측 6경기 평균 6.77"}},{n:"Alexis Mac Allister",grid:"00321377622X9614887211211",dbFit:0.89,lh:"OWNED",rate:{"v": 6.64, "b": "r6", "s": "LDM 실측 5경기 평균 6.64"}}]},
+  RDM:{t:"DM",x:62,c:[{n:"Dominik Szoboszlai",grid:"41324345XX237861326610110",dbFit:0.674,lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RDM 실측 (평점 미기재)"}}]},
+  LM:{t:"WM",x:14,c:[{n:"Cody Gakpo",grid:"56831X8674768332323200100",dbFit:0.675,lh:"OWNED",rate:{"v": 6.52, "b": "r6", "s": "LM 실측 6경기 평균 6.52"}}]},
+  CAM:{t:"CAM",x:50,c:[{n:"Florian Wirtz",grid:"120425857X443564223210100",dbFit:0.785,lh:"OWNED",rate:{"v": 7.0, "b": "r6", "s": "CAM 실측 5경기 평균 7.00"}}]},
+  RM:{t:"WM",x:85,c:[{n:"Mohamed Salah",grid:"011480003X000240001100000",dbFit:0.91,lh:"OWNED",rate:{"v": null, "b": "r6", "s": "RM 실측 (평점 미기재)"}}]},
+  ST:{t:"ST",x:50,c:[]},
+};
+PLAYER_BEST_BY_TEAM.LIV={
+  "Alisson":{pos:["GK"],note:"실측 적합 0.979(gk_goalkeeper/Defend)"},
+  "Miloš Kerkez":{pos:["LB"],note:"실측 적합 0.799(fb_att_wb/Support)"},
+  "Virgil van Dijk":{pos:["LCB"],note:"실측 적합 0.912(cb_bpd/Aggressive)"},
+  "Ibrahima Konaté":{pos:["RCB"],note:"실측 적합 0.938(cb_bpd/Aggressive)"},
+  "Curtis Jones":{pos:["RB"],note:"실측 적합 0.843(fb_wingback/Support)"},
+  "Jeremie Frimpong":{pos:["RB"],note:"실측 적합 0.867(fb_att_wb/Support)"},
+  "Ryan Gravenberch":{pos:["LDM"],note:"실측 적합 0.689(dm_dlp/Roaming)"},
+  "Alexis Mac Allister":{pos:["LDM"],note:"실측 적합 0.89(dm_dlp/Roaming)"},
+  "Dominik Szoboszlai":{pos:["RDM"],note:"실측 적합 0.674(dm_dlp/Roaming)"},
+  "Cody Gakpo":{pos:["LM"],note:"실측 적합 0.675(wm_insidefwd/Balanced)"},
+  "Florian Wirtz":{pos:["CAM"],note:"실측 적합 0.785(cam_halfwinger/Balanced)"},
+  "Mohamed Salah":{pos:["RM"],note:"실측 적합 0.91(wm_winger/Attack)"},
+};
+/* AUTOGEN:TEAM_SQUADS:END */
+
 /* ── 팀 자산 바인딩 (2026-08-11 팀 축 일반화) ────────────────────────────
    종전에는 SQUAD_SLOTS·CMP_SLOTS·XI_POOL·PLAYER_BEST가 빌라 전용 전역 const였고
    injectTransferCandidates()가 그것을 로드 시 1회 변형했다. 이제 팀마다 같은 구조를

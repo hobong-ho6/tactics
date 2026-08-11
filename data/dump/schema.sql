@@ -284,3 +284,12 @@ SELECT p.name, a.player_id, COUNT(*) n,
 FROM appearances a JOIN players p ON p.id=a.player_id
 WHERE a.stats_json IS NOT NULL GROUP BY a.player_id
 /* v_event_profile(name,player_id,n,xg_pm,xa_pm,kp_pm,duelw_pm,tkl_pm,int_pm,drb_pm,pass_pct,n_xg,n_xa,n_kp,n_duelw,n_tkl,n_int,n_drb,n_pass) */;
+CREATE TABLE team_slots(
+  team TEXT NOT NULL,            -- teams.code
+  pos TEXT NOT NULL,             -- 슬롯 코드 (GK/LB/LCB/CCB/RCB/RB/LDM/RDM/LM/CAM/RM/ST)
+  slot_type TEXT NOT NULL,       -- 커널 역할군 (GK/FB/CB/DM/WM/CAM/ST) — ROLES[r].g와 매칭
+  x INTEGER NOT NULL, y INTEGER NOT NULL,
+  sort_order INTEGER NOT NULL,
+  source TEXT, confidence TEXT,
+  PRIMARY KEY(team, pos)
+);

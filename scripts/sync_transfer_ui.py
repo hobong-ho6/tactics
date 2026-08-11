@@ -250,6 +250,68 @@ def warn_unknown_teams(conn):
         )
 
 
+
+def gen_team_squads(conn):
+    """CHE/LIV의 SQUAD_SLOTS·CMP_SLOTS·PLAYER_BEST를 DB에서 생성한다.
+
+    AVL은 제외한다 — 툴 하드코딩에 판단 근거 주석(보가르드 RB의 Δ0.082 지불 경위 등)이
+    대량으로 박혀 있고, 그것이 편집 지점에 있어야 다음 판단이 가능하기 때문이다.
+    CHE/LIV는 그런 축적이 없으므로 처음부터 DB 구동으로 둔다(CLAUDE.md 불변규칙 1).
+
+    opt = 처방(player_role_map kind='projected', 없으면 measured 값)
+    fit = 실측 최적(squad_positions.fit_* — 팀 고유 기하로 산출한 argmax)
+    둘을 나누는 이유: 빌라와 같다 — 처방은 사람의 판단이고 argmax와 어긋날 수 있다
+    (예: 리스 제임스 RDM은 Δ.001 동률에서 창조 축을 지키려 dm_dlp를 유지했다).
+    """
+    out = []
+    for team in ("CHE", "LIV"):
+        slots = conn.execute(
+            "SELECT pos,slot_type,x,y FROM team_slots WHERE team=? ORDER BY sort_order",
+            (team,)).fetchall()
+        # 슬롯별 후보: measured 그리드를 가진 선수
+        cand = {}
+        for r in conn.execute(
+                """SELECT rm.pos_label pos, COALESCE(p.name_kr,p.name) label, rm.map25,
+                          rm.role_id m_role, rm.focus m_focus,
+                          sp.rate_v, sp.rate_basis, sp.rate_note,
+                          sp.fit_role, sp.fit_focus, sp.fit_sim,
+                          (SELECT pr.role_id FROM player_role_map pr WHERE pr.player_id=rm.player_id
+                             AND pr.team=rm.team AND pr.kind='projected') p_role,
+                          (SELECT pr.focus FROM player_role_map pr WHERE pr.player_id=rm.player_id
+                             AND pr.team=rm.team AND pr.kind='projected') p_focus
+                   FROM player_role_map rm JOIN players p ON p.id=rm.player_id
+                   LEFT JOIN squad_positions sp ON sp.team=rm.team
+                        AND sp.label=COALESCE(p.name_kr,p.name)
+                   WHERE rm.team=? AND rm.kind='measured' AND rm.map25 IS NOT NULL
+                   ORDER BY p.id""", (team,)):
+            cand.setdefault(r["pos"], []).append(dict(r))
+
+        sq, cmp_, pb = [], [], []
+        for sl in slots:
+            pos, st, x, y = sl["pos"], sl["slot_type"], sl["x"], sl["y"]
+            cs = cand.get(pos, [])
+            opts = []
+            for c in cs:
+                opt_r = c["p_role"] or c["m_role"]
+                opt_f = c["p_focus"] or c["m_focus"]
+                opts.append(js_obj({"n": c["label"],
+                                    "opt": [opt_r, opt_f],
+                                    "fit": [c["fit_role"] or opt_r, c["fit_focus"] or opt_f]}))
+                pb.append(f'  {json.dumps(c["label"], ensure_ascii=False)}:'
+                          + js_obj({"pos": [pos],
+                                    "note": f'실측 적합 {c["fit_sim"]}({c["fit_role"]}/{c["fit_focus"]})'}) + ",")
+            sq.append(f'  {{pos:{json.dumps(pos)}, t:{json.dumps(st)}, x:{x},y:{y}, opts:[\n'
+                      + "".join(f"    {o},\n" for o in opts) + '  ]},')
+            cl = [js_obj({"n": c["label"], "grid": c["map25"], "dbFit": c["fit_sim"], "lh": "OWNED",
+                          "rate": {"v": c["rate_v"], "b": c["rate_basis"] or "r6", "s": c["rate_note"]}})
+                  for c in cs]
+            cmp_.append(f'  {pos}:{{t:{json.dumps(st)},x:{x},c:[' + ",".join(cl) + ']},')
+        out.append(f"SQUAD_SLOTS_BY_TEAM.{team}=[\n" + "\n".join(sq) + "\n];")
+        out.append(f"CMP_SLOTS_BY_TEAM.{team}={{\n" + "\n".join(cmp_) + "\n};")
+        out.append(f"PLAYER_BEST_BY_TEAM.{team}={{\n" + "\n".join(pb) + "\n};")
+    return "\n".join(out)
+
+
 def replace_block(html, marker, new_body):
     start = f"/* AUTOGEN:{marker}:START */"
     end = f"/* AUTOGEN:{marker}:END */"
@@ -277,6 +339,7 @@ def main():
         per_team = {code: fn(conn, code) for code in TEAM_CODES}
         counts[marker] = {c: len(v) for c, v in per_team.items()}
         html = replace_block(html, marker, by_team_block(marker, per_team))
+    html = replace_block(html, "TEAM_SQUADS", gen_team_squads(conn))
     html = replace_block(html, "MAPS", kernels_body)
     html = replace_block(html, "ROLE_VARIANTS", variants_body)
     HTML.write_text(html, encoding="utf-8")
