@@ -20,6 +20,7 @@
 <div id="tabnote" class="dim" style="font-size:12px;margin-bottom:6px"></div>
 <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
    <div id="radar"></div><div style="flex:1;min-width:220px"><div id="pct" style="margin-top:4px"></div></div></div>
+ <div id="fmeval"></div>
  <div class="kv" style="margin-top:10px"><b>최근 폼</b> <small class="dim">— 최근 10경기 평점 추이</small></div>
  <div id="form"></div>
  <div class="kv" style="margin-top:10px"><b>유사 프로필</b> <small class="dim">— 실측 그리드 코사인 최근접(수집 풀)</small></div>
@@ -44,7 +45,7 @@
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, sofifaLink } from './assets/data.js';
 import { miniGrid } from './assets/pitch.js';
-import { annotate } from './assets/glossary.js';
+import { annotate, mountGlossaryTips } from './assets/glossary.js';
 const { team } = await mountHeader('player.html');
 const [td, GS] = await Promise.all([loadTeam(team), loadGameStats('FC26')]);
 const _TEAMS = (await Promise.all(['AVL','CHE','LIV'].map(c=>loadTeam(c).catch(()=>null)))).filter(Boolean);
@@ -147,11 +148,23 @@ function renderLeague(key, force){
             <small class="dim">${s.metric_kr||s.metric}</small></div>`).join('')}</div>` : '');
   return true;
 }
+/* Fotmob 스탯만으로 내린 평가 — 비교 기준 영역 하단. 실측·커널과 독립된 제2의 시선이다. */
+function renderFotmobEval(sel){
+  const el = document.getElementById('fmeval');
+  const e = (td.evaluations||[]).find(x =>
+    (sel.pid && x.player_id===sel.pid) || (sel.en && x.name_en===sel.en));
+  if (!e?.fotmob_eval){ el.innerHTML=''; return; }
+  el.innerHTML = `<div style="margin-top:12px;border-left:3px solid var(--acc);padding:8px 0 8px 12px">
+    <div class="kv" style="margin-bottom:4px"><b>스탯 기반 평가</b>
+      <small class="dim">— 위 리그 백분위만 근거로 내린 판단(실측 히트맵·커널 적합과 독립)</small></div>
+    ${annotate(e.fotmob_eval)}</div>`;
+}
 function render(){
   const sel = groups[grp.value][+who.value]; if (!sel) return;
   const n = sel.name;
   const key = sel.kr || n;   // DB 맵의 키(players.name_kr)
   renderEval(n, sel);
+  renderFotmobEval(sel);
   document.getElementById('sf').innerHTML = sofifaLink(key, GS, sel.en);
   const g0 = GS[key] ?? GS[n];
   document.getElementById('bio').textContent = g0 ? ` ${g0.age}세 · ${g0.height_cm??'?'}cm · ${g0.preferred_foot==='Left'?'왼발':g0.preferred_foot==='Right'?'오른발':''} · 가치 ${g0.value_eur??'?'} · ${g0.club??''}` : '';
@@ -242,4 +255,5 @@ function render(){
     : '<tr><td class="dim">영상 분석 미수행 — 규칙상 신규 선수·MEDIUM-HIGH+ 후보는 자동 수행 대상</td></tr>';
 }
 render();
+mountGlossaryTips();
 </script></body></html>

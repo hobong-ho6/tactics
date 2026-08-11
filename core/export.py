@@ -129,7 +129,7 @@ def export_all(db_path=None, window="2026-summer"):
                                WHERE v.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
                                      UNION SELECT player_id FROM prescriptions WHERE regime_id=?)""", (rid, rid))
         evals = _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, p.name name_en, e.player_id,
-                                     e.overall, e.traits, e.strengths, e.stat_eval,
+                                     e.overall, e.traits, e.strengths, e.stat_eval, e.fotmob_eval,
                                      e.fit_emery, e.fit_alonso, e.fit_iraola,
                                      e.source, e.confidence, e.updated
                               FROM player_evaluations e JOIN players p ON p.id=e.player_id

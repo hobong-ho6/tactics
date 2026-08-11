@@ -68,6 +68,7 @@
    "fit_alonso": "MEDIUM — (교차 투영 — 실측 아님) 알론소는 Short Passing 백3 빌드업에 GK를 후방 수적 우위 요원으로 쓴다. 역할 자체는 무리 없으나 배급 품질을 가릴 FC26 스탯·기능축 실측이 없어 상향 판정 근거 부족.",
    "fit_emery": "HIGH — (교차 투영 — 실측 아님) 에메리 빌라 처방이 정확히 GK gk_goalkeeper/Defend(스위퍼 아님, 빌라 실측 0.961)이고 알리송의 실측 최적이 같은 역할·포커스 0.979다. 짧은 빌드업 참여는 '패스 옵션 수준'이라는 에메리 요구와 잔류형 실측 분포가 정합.",
    "fit_iraola": "MEDIUM — ⚠️ 체제 실측 아님(이라올라 공식전 0경기, 8/23 뉴캐슬이 첫 경기). 이라올라 하이라인+맨투맨 프레스(obs#68)는 라인 뒤 넓은 커버를 요구할 개연성이 있는데 실측 sweeper 적합은 0.821로 gk형(0.979)보다 낮다. 다만 이 그리드는 25/26 슬롯 체제 표본이라 이라올라 지시 하 재측정 필요 — regime3 implementation도 '잠정 GK/Defend' 배치(confidence LOW).",
+   "fotmob_eval": null,
    "label": "알리송 베케르",
    "name_en": "Alisson",
    "overall": "B+ — 25/26 실측 6경기 평균 6.80(중심 53.0,11.4), gk_goalkeeper/Defend 적합 0.979로 스쿼드 최고 커널 정합(obs#120). sweeper 변형은 0.821로 뚜렷이 낮아 스위퍼형이 아니라는 실측 판정. 8/9 모나코 친선 45분 6.8. 단 표본이 전임(슬롯) 체제 것이고 FC26 인게임 스탯은 미수집 상태라 상한 판정은 유보.",
@@ -83,6 +84,7 @@
    "fit_alonso": "HIGH — (교차 투영 — 실측 아님) 알론소 백3는 전 CB cb_bpd/Aggressive + Short Passing(r2 implementation) — 실측 역할·포커스가 그대로 일치. 좌측 CB 실측(LCB 0.896)이라 백3 좌 스토퍼 투영이 자연스럽다.",
    "fit_emery": "HIGH — (교차 투영 — 실측 아님) 에메리 처방이 양 CB cb_bpd(볼 플레잉)이고 실측 최적이 정확히 cb_bpd. 단 빌라는 '두 CB 동시 Aggressive는 rest-defense 붕괴'로 기각한 이력(obs#13, obs#120 ⓐ 재인용)이라 포커스는 Build-Up 계열 조정 여지.",
    "fit_iraola": "HIGH — ⚠️ 체제 실측 아님. 이라올라는 CB가 내려오는 스트라이커를 따라 박스 밖까지 나가는 맨마킹을 명시 지시(obs#68·#69)하고 Aggressive 커널이 이 문법과 정합. 다만 obs#69가 '이 지시를 수행할 인원이 없다'고 지적한 그 유일한 시니어 CB가 본인이며, 롱볼 대응은 맨마킹에 더 치명적(obs#77)이라 부하·리스크 집중은 체제 최대 검증 항목.",
+   "fotmob_eval": null,
    "label": "판 다이크",
    "name_en": "Virgil van Dijk",
    "overall": "A− — 25/26 실측 6경기 평균 7.15(필드 내 상위), LCB cb_bpd/Aggressive 0.912(obs#120 신커널). LCB 0.896 > CCB 0.789로 백3 중앙이 아닌 좌측 CB 판정. 공중 경합 부담 78%로 리그 1위 집중(obs#77)이라는 '단일장애점' 지위가 등급을 지탱하면서 동시에 리스크다. 코나테 이탈로 26/27 가용 시니어 CB가 사실상 본인 1명(obs#69).",
@@ -98,6 +100,7 @@
    "fit_alonso": "HIGH — (교차 투영 — 실측 아님) 알론소 백3 전원 cb_bpd/Aggressive 처방과 역할·포커스 완전 일치. 단 레알 이적이 사실이면 무의미한 투영.",
    "fit_emery": "MEDIUM — (교차 투영 — 실측 아님) cb_bpd 요구 자체는 정합이나 빌라의 '동시 Aggressive 기각'(obs#13) 방침상 포커스 조정 전제. 이적 상태 미확정이라 실전 투영 의미 제한.",
    "fit_iraola": "HIGH(커널 기준) — ⚠️ 체제 실측 아님 + 이탈 기재. CB 전진 맨마킹(obs#68·#69) 문법에 Aggressive 커널이 정합하나, obs#69가 명시한 '코나테 레알 자유이적'이 맞다면 이라올라는 이 프로필을 쓸 수 없다 — 바로 그 공백이 26/27 RCB 영입 과제(RCB·RM·LB 주인 미정, 처방 부재)의 핵심.",
+   "fotmob_eval": null,
    "label": "코나테",
    "name_en": "Ibrahima Konaté",
    "overall": "B+ — 25/26 실측 6경기 평균 6.88, RCB cb_bpd/Aggressive 0.938(obs#120 신커널, 판다이크 0.912와의 Δ0.026은 EA 노이즈 — 우열 없음). ⚠️ 소속 상태 데이터 불일치: prescriptions와 obs#69는 '2026-07-01 레알 마드리드 자유이적 이탈'로 기록했는데 squad_entries(r3)에는 lh=OWNED로 남아 있다. 실측 행은 '26/27 RCB 슬롯의 유일한 실측 기준선'으로서 대체자 판정용으로 보존된 것.",
@@ -113,6 +116,7 @@
    "fit_alonso": "LOW-MEDIUM — (교차 투영 — 실측 아님) 알론소 윙백은 '크로서가 아니라 득점자'로 폭을 독점(obs#46)하는 전진형 — 존스의 낮은 전방 질량(0.26)과 정면 상충. 반면 하이브리드 RDM(리스 제임스 축, dm_dlp) 투영이라면 RDM 0.800이 근거가 되나 실측은 RB 슬롯 표본.",
    "fit_emery": "MEDIUM-HIGH — (교차 투영 — 실측 아님) 에메리 C2는 RB 잔류형(fb_wingback/Balanced — 캐시 축)을 요구하는데 존스의 실측이 정확히 잔류·연결형 fb_wingback/Support 0.843이다. 낮은 전방 질량이 여기서는 결함이 아니라 요건.",
    "fit_iraola": "MEDIUM — ⚠️ 체제 실측 아님. 이라올라 풀백은 낮고 빠른 얼리크로스의 크로서(obs#67, 케르케즈 본머스 실측 근거) — 존스의 인버티드 분포와 문법이 다르다. 다만 상대 풀백 인버트 시 중앙 미드가 따라 올라가는 맨마킹 체계(obs#68)에서 위치 다능성은 자산. 26/27 RB 주인 미정 슬롯의 내부 후보라는 지위 자체는 유효.",
+   "fotmob_eval": null,
    "label": "커티스 존스",
    "name_en": "Curtis Jones",
    "overall": "B+ — 미드필더의 RB 전용 기용이라는 희귀 실측 사례(⭐ 표기). 25/26 RB 6경기 평균 7.05, fb_wingback/Support 0.843(신커널), RDM dm_dlp/Roaming 0.800 병립 — 미드필드 드리프트 서술을 실측이 지지. 단 전방 0.26/자기진영 0.39로 구스토(0.34/0.44)·캐시(0.33/0.47)보다 공격 관여가 낮아 3티어의 '트렌트급' 서술은 실측이 기각.",
@@ -128,6 +132,7 @@
    "fit_alonso": "MEDIUM — (교차 투영 — 실측 아님) 알론소 좌 윙백은 인선 공백 슬롯(r2 formation)이고 요구는 '폭 독점 + 득점자'(obs#46) — 크로서형인 케르케즈와 득점 요건이 어긋난다. 폭 공급 축만 부분 정합.",
    "fit_emery": "MEDIUM — (교차 투영 — 실측 아님) 에메리 C2 좌측은 전진 담당(LB fb_att_wb/Support — 디뉴 축)이라 역할 문자열은 정확히 일치. 단 리버풀 실측 n=2로 판단 재료 부족.",
    "fit_iraola": "HIGH — ⚠️ 리버풀 체제 실측 아님(이라올라 리버풀 공식전 0경기). 단 본머스 24/25가 이라올라 본인 체제 실측이고 거기서 풀백-크로서 패턴의 핵심 수치(기회창출 7위·크로스 6위 — obs#67)를 만든 당사자다. 세 감독 핏 중 유일하게 감독 본인 체제의 과거 실측이 존재 — 다만 리버풀 이식 후 재현은 8/23 개막 후 검증 대상.",
+   "fotmob_eval": null,
    "label": "케르케즈",
    "name_en": "Miloš Kerkez",
    "overall": "B− — 25/26 LB 실측 2경기 평균 6.15로 표본 심각 부족(부상으로 3~5월 결장, n<6 명기), fb_att_wb/Support 0.799. 등급은 리버풀 표본이 아니라 본머스 24/25 이라올라 체제 간접 실측(obs#67: 오픈플레이 기회창출 15로 리그 7위, 크로스 37로 6위)이 지탱한다. 로버트슨 토트넘 이적으로 26/27 LB 1선발 유력이나 표본 재수집이 선결 과제.",
@@ -143,6 +148,7 @@
    "fit_alonso": "HIGH — (교차 투영 — 실측 아님) 알론소 윙백은 '크로서가 아니라 득점자'로 폭을 독점(obs#46) — 전방 질량 0.54의 전진형 윙백은 이 문법의 원형에 가깝다. 레버쿠젠 시절 알론소 아래 뛴 이력도 있으나 본 DB에 그 실측은 없음.",
    "fit_emery": "LOW-MEDIUM — (교차 투영 — 실측 아님) 에메리 RB는 잔류형(fb_wingback/Balanced, C2 제약 — 풀백은 한 명씩만 전진)이라 프림퐁의 전진 일변 분포와 상충. 우측 와이드(RM)로 쓴다면 뱅크 복귀형(wm_widemid/Support) 요구가 다시 걸림돌.",
    "fit_iraola": "MEDIUM-HIGH — ⚠️ 체제 실측 아님. regime3 implementation이 '프림퐁 인버티드 성향은 fb_att_wb로 근사'로 잠정 배치(confidence LOW). 풀백-크로서 문법(obs#67)과 전진성은 정합하나, 맨마킹 체계의 잔류 규율(잔여수비가 엔진 — obs#72) 대비 자기진영 질량 0.28이 리스크. 26/27 RB 주인 미정 — 존스와 유형 경합.",
+   "fotmob_eval": null,
    "label": "프림퐁",
    "name_en": "Jeremie Frimpong",
    "overall": "B — 25/26 RB 실측 4경기 평균 6.42(표본 부족, n<6 명기), 신커널 fb_att_wb/Support 0.867(차2 Attack 0.845 — Δ0.022는 EA 노이즈). 구커널 산출에선 fb_inverted/Attack 0.905·RM 0.875로 '풀백이 아니라 사실상 우측 공격 인원' 판정 — 전방 0.54/자기진영 0.28로 존스의 정반대 분포. 같은 RB 슬롯에 두 유형이 공존한다는 실측 결론.",
@@ -158,6 +164,7 @@
    "fit_alonso": "MEDIUM-HIGH — (교차 투영 — 실측 아님) 알론소 하강 피벗(카이세도 dm_dlp/Roaming — r2 implementation)과 역할·포커스 문자열이 일치. 단 박스 미드필드 중앙 볼 상실 리스크(r2 rest_defense)상 기술 규율 요구가 극단적으로 높다는 유보 조건 동반.",
    "fit_emery": "MEDIUM — (교차 투영 — 실측 아님) 에메리 더블 피벗 처방은 dm_holding(Roaming/Defend 분담) — 흐라벤베르흐의 차2가 dm_holding/Roaming(0.525)이나 값이 낮아 정합 주장 불가. 대칭형 왕복은 뱅크 복귀 규율과는 무난.",
    "fit_iraola": "MEDIUM-HIGH — ⚠️ 체제 실측 아님. 이라올라는 중앙 미드가 상대 박스까지 따라 올라가는 맨마킹(obs#68·#69)과 리그 1위 주행량(obs#73)을 요구 — 대칭 왕복형 분포가 이 요구와 방향은 맞다. 단 기능축 0행이라 피벗 내 역할 배분(누가 잔류하는지)은 판정 불가 — 개막 실측 대기.",
+   "fotmob_eval": null,
    "label": "흐라벤베르흐",
    "name_en": "Ryan Gravenberch",
    "overall": "B — 25/26 LDM 실측 6경기 평균 6.77, dm_dlp/Roaming 0.689(신커널 — 피벗 3인 중 최저 적합, 차2 dm_holding/Roaming 0.525). LDM 0.782 > RDM 0.677로 중앙 피벗 판정, 전방 0.38/자기진영 0.38의 대칭형. 8/9 모나코 친선에서 7.3(어시스트 1)으로 스쿼드 내 상위 퍼포먼스.",
@@ -173,6 +180,7 @@
    "fit_alonso": "HIGH — (교차 투영 — 실측 아님) 알론소 하강 피벗 카이세도 처방이 정확히 dm_dlp/Roaming — 역할·포커스 완전 일치에 정합도 0.890. 백라인 옆으로 내려와 압박을 유인하는 빌드업 축의 커널 원형. 단 박스 미드필드의 볼 상실 리스크(r2 rest_defense) 유보 동일.",
    "fit_emery": "MEDIUM — (교차 투영 — 실측 아님) 에메리 피벗 처방은 dm_holding 계열 — dlp 특화형과 역할 문자열 불일치. 자유 10번(cam_playmaker/Roaming — 부엔디아·맥긴 축) 투영이 대안이나 실측 표본은 DM 슬롯 것.",
    "fit_iraola": "MEDIUM — ⚠️ 체제 실측 아님. 이라올라는 시퀀스당 패스 2.98의 비점유 다이렉트 팀(obs#66) — 점유형 딥라잉 배급자의 가치가 구조적으로 줄어드는 문법이다. 중앙 미드 전진 맨마킹(obs#68) 요구 대비 전방 질량 0.33도 낮은 편. 기능축 0행이라 확정 불가 — 개막 실측이 판정.",
+   "fotmob_eval": null,
    "label": "맥 알리스터",
    "name_en": "Alexis Mac Allister",
    "overall": "B — 25/26 LDM 실측 5경기 평균 6.64(n<6, 표본 부족 명기), dm_dlp/Roaming 0.890(신커널 — 피벗 3인 중 최고 적합, 차2 Build-Up 0.690). LDM 0.909 > RDM 0.639(구커널 병기)로 좌측 피벗 특화. ⚠️ 흐라벤베르흐와 동일 슬롯·동일 역할 최적 — 더블 피벗 두 축이 실측상 분화되지 않아 슬롯 배분은 별도 판단 필요(prescriptions 명기).",
@@ -188,6 +196,7 @@
    "fit_alonso": "MEDIUM — (교차 투영 — 실측 아님) 하이브리드 RDM 창조 축(리스 제임스 dm_dlp/Build-Up — r2)과 지대는 겹치나, 소보슬라이의 전방 질량 0.49는 하강 빌드업보다 2×10번 지대에 가깝다 — 어느 쪽에도 완전 정합은 아님.",
    "fit_emery": "MEDIUM-HIGH — (교차 투영 — 실측 아님) 에메리 자유 10번(cam_playmaker/Roaming) 또는 전진 피벗 투영 모두 가능 — 다능성이 에메리의 상황 프리셋 체계(리드 시 딥블록 등)와 궁합. 단 우측 와이드 기용이라면 뱅크 복귀(wm_widemid/Support) 규율이 전진 편향과 상충.",
    "fit_iraola": "HIGH — ⚠️ 체제 실측 아님. 이라올라 4-2-3-1에서 중앙 미드가 상대 박스까지 진입하는 문법(obs#68·#69 'Lewis Cook을 상대 박스에서 보게 된다')의 커널 대응이 정확히 전진형 피벗/boxcrasher 성향이다. 리그 1위 주행 체제(obs#73)에 다능성·활동량 프로필이 부합. 단 판정은 개막 실측 후.",
+   "fotmob_eval": null,
    "label": "소보슬라이",
    "name_en": "Dominik Szoboszlai",
    "overall": "B+ — 스쿼드 유일의 다중 슬롯 순회 실측(RM/RDM/CAM 36경기, 평균 7.02 — 표본 최대). 세 라벨 중 실측 최적은 RDM: 구커널 dm_dlp/Roaming 0.812 > RM 0.730 > CAM 0.673, 신커널 재산출은 dm_dlp/Roaming 0.674(차2 dm_boxcrasher/Balanced 0.569 — obs#120). 전방 0.49/자기진영 0.23의 전진 편향 피벗.",
@@ -203,6 +212,7 @@
    "fit_alonso": "HIGH — (교차 투영이지만 예외적 근거: 레버쿠젠 시절 알론소 본인 체제의 서사 실측 존재) obs#45: 샤카·팔라시오스의 third-man 콤비네이션의 종착지가 비르츠. obs#48: 2×10번 중 '로머/최종 창조자' 축이 비르츠로 명시 — 세 감독 핏 중 감독-선수 실제 협업 기록이 있는 유일 조합. 단 첼시 이식 검증 전(r2 confidence MEDIUM)이며 25/26 리버풀 표본은 알론소 것이 아니다.",
    "fit_emery": "HIGH — (교차 투영 — 실측 아님) 에메리 자유 10번 슬롯(cam_playmaker/Roaming 또는 cam_halfwinger — r1 implementation ⑸에 halfwinger가 만잠비 축으로 명시)과 실측 최적 역할이 일치. 로밍 자유를 주는 문법이 비르츠의 하프스페이스 유동과 정합.",
    "fit_iraola": "MEDIUM-HIGH — ⚠️ 체제 실측 아님. regime3 traits가 '비르츠 하프윙어 10번'으로 잠정 배치(confidence LOW). 수직 전환 체제(전진 속도 1.95m/s 리그 최속 — obs#66)에서 전환 순간의 최종 패스 자원으로 투영되나, 파이널서드 탈취→즉시 슛 문법(r3 pressing)에 필요한 압박 관여는 자기진영 질량 0.19가 물음표 — 개막 실측 대기.",
+   "fotmob_eval": null,
    "label": "비르츠",
    "name_en": "Florian Wirtz",
    "overall": "A− — 25/26 CAM 실측 5경기 평균 7.00(n<6, 표본 부족 명기), cam_halfwinger/Balanced 0.785(차2 classic10/Versatile 0.711). prescriptions 명기: '£100m 영입 대비 부진 시즌이라는 서사와 달리 평점은 필드 상위' — 실측>서사 원칙의 사례. 8/9 모나코 친선 평점 8.60(1골)은 이번 조회 3팀 풀 최고값(백분위 98%, 단 n=1).",
@@ -218,6 +228,7 @@
    "fit_alonso": "MEDIUM — (교차 투영 — 실측 아님) 2×10번 중 안으로 좁히는 축(로저스 wm_insidefwd — r2 implementation)과 역할 문자열이 일치 — 세 투영 중 문법 정합이 가장 낫다. 단 정합도 절대값(0.675)이 낮아 강한 주장 불가.",
    "fit_emery": "LOW-MEDIUM — (교차 투영 — 실측 아님) 에메리 와이드는 뱅크 복귀 수비 규율(wm_widemid/Support 또는 obs#125 winger/Balanced 사다리)을 요구 — 자기진영 질량 0.13과 정면 상충. 인사이드 포워드 기용(obs#124 문법)이라면 가능하나 그 역할 요구 대비 커널 정합이 0.675로 낮다.",
    "fit_iraola": "MEDIUM — ⚠️ 체제 실측 아님. 좌측 인사이드 포워드 지대 자체는 4-2-3-1 셸에 존재하나, 수비 4-4-2 복귀와 맨마킹 인계(obs#68)가 요구하는 수비 관여를 자기진영 0.13이 지지하지 않는다. 파이널서드 탈취→즉시 슛 국면의 마무리 자원 투영은 가능 — 개막 실측 대기.",
+   "fotmob_eval": null,
    "label": "학포",
    "name_en": "Cody Gakpo",
    "overall": "B− — 25/26 LM 실측 6경기 평균 6.52(피벗 포함 필드 실측 중 최저권), 신커널 wm_insidefwd/Balanced 0.675(차2 Attack 0.652 — Δ0.023 노이즈). 구커널 병기값이 문제의 핵심: LM 0.648·CAM 0.686·ST 0.579 — 세 슬롯 모두 0.7 미만으로 '어디에도 강하게 맞지 않는다'(prescriptions 명기, LM↔ST 겸업의 대가).",
@@ -233,6 +244,7 @@
    "fit_alonso": "LOW-MEDIUM — (교차 투영 — 실측 아님) 알론소 3-4-2-1에는 터치라인 윙어 슬롯이 없다(폭은 윙백 독점 — obs#46). 우측 포켓 10번(팔머 wm_wideplm/Attack 축)은 다른 직무.",
    "fit_emery": "MEDIUM(커널 기준 HIGH, 구조 기준 LOW) — (교차 투영 — 실측 아님) obs#100 개정 후 에메리 우측 윙어 브리프의 목표 커널이 정확히 wm_winger — 살라 그리드가 그 브리프의 상한 기준선이다. 그러나 에메리 두 줄 4 뱅크 복귀(obs#125의 winger/Balanced 요구)와 자기진영 0.06은 정면 상충 — '기준선'이지 '처방 대상'이 아니다.",
    "fit_iraola": "MEDIUM-HIGH(커널 기준) — ⚠️ 체제 실측 아님 + 이탈 기재. regime3 traits의 잠정 배치가 '살라 wm_winger/Attack'이고 수직 전환·패스트브레이크 체제(obs#66: 패스트브레이크 슛 128)와 침투 서명이 정합. 그러나 맨투맨 프레스는 최전방부터의 압박 가담(obs#68 곡선 런)을 요구 — 자기진영 0.06과 상충. 이탈이 사실이면 논의 자체가 소급 불가.",
+   "fotmob_eval": null,
    "label": "살라",
    "name_en": "Mohamed Salah",
    "overall": "A — 25/26 RM 실측 5경기 평균 7.56으로 리버풀 필드 최고(n<6, 표본 부족 명기). 신커널 wm_winger/Attack 0.910(obs#120 — 구커널의 wm_insidefwd 0.961은 폐기값, 신기준 insidefwd는 0.515). 침투 서명 전방 0.77/자기진영 0.06은 이 프로젝트 전 측정 후보 중 최상위권. ⚠️ 소속 상태 데이터 불일치: prescriptions는 '2026-07-01 FA로 이탈 — obs#38 브리프의 실측 원형(archetype)으로 보존'이라 기재했는데 squad_entries(r3)에는 lh=OWNED로 남아 있다.",
@@ -5839,14 +5851,208 @@
   ]
  },
  "form": {
+  "맥 알리스터": [
+   [
+    "2026-06-07",
+    6.8,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-10",
+    6.9,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-17",
+    6.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-22",
+    6.9,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-28",
+    7.0,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-03",
+    6.9,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-07",
+    6.4,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-12",
+    7.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-15",
+    6.1,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-19",
+    6.6,
+    "FIFA World Cup"
+   ]
+  ],
   "비르츠": [
+   [
+    "2026-05-15",
+    6.2,
+    "Premier League"
+   ],
+   [
+    "2026-05-24",
+    6.5,
+    "Premier League"
+   ],
+   [
+    "2026-05-31",
+    8.2,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-06",
+    6.6,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-14",
+    7.6,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-20",
+    7.4,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-25",
+    7.2,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-29",
+    8.3,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-08-02",
+    7.5,
+    "Club Friendly Games"
+   ],
    [
     "2026-08-09",
     8.6,
     "Club Friendly Games"
    ]
   ],
+  "살라": [
+   [
+    "2026-04-19",
+    7.5,
+    "Premier League"
+   ],
+   [
+    "2026-04-25",
+    6.5,
+    "Premier League"
+   ],
+   [
+    "2026-05-15",
+    6.6,
+    "Premier League"
+   ],
+   [
+    "2026-05-24",
+    8.1,
+    "Premier League"
+   ],
+   [
+    "2026-06-06",
+    6.5,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-15",
+    6.8,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-22",
+    8.6,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-27",
+    6.4,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-03",
+    7.3,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-07",
+    6.8,
+    "FIFA World Cup"
+   ]
+  ],
   "소보슬라이": [
+   [
+    "2026-05-03",
+    8.1,
+    "Premier League"
+   ],
+   [
+    "2026-05-09",
+    6.3,
+    "Premier League"
+   ],
+   [
+    "2026-05-15",
+    6.5,
+    "Premier League"
+   ],
+   [
+    "2026-05-24",
+    7.5,
+    "Premier League"
+   ],
+   [
+    "2026-06-05",
+    7.2,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-09",
+    9.3,
+    "International Friendly Games"
+   ],
+   [
+    "2026-07-25",
+    8.2,
+    "Club Friendly Games"
+   ],
+   [
+    "2026-07-29",
+    7.3,
+    "Club Friendly Games"
+   ],
+   [
+    "2026-08-02",
+    6.6,
+    "Club Friendly Games"
+   ],
    [
     "2026-08-09",
     6.6,
@@ -5855,12 +6061,258 @@
   ],
   "알리송 베케르": [
    [
+    "2026-03-18",
+    6.9,
+    "UEFA Champions League"
+   ],
+   [
+    "2026-05-24",
+    6.9,
+    "Premier League"
+   ],
+   [
+    "2026-05-31",
+    7.3,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-06",
+    6.3,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-13",
+    6.9,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-20",
+    7.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-24",
+    8.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-29",
+    6.4,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-05",
+    6.8,
+    "FIFA World Cup"
+   ],
+   [
     "2026-08-09",
     6.8,
     "Club Friendly Games"
    ]
   ],
+  "커티스 존스": [
+   [
+    "2026-04-14",
+    6.3,
+    "UEFA Champions League"
+   ],
+   [
+    "2026-04-19",
+    7.5,
+    "Premier League"
+   ],
+   [
+    "2026-04-25",
+    6.6,
+    "Premier League"
+   ],
+   [
+    "2026-05-03",
+    6.3,
+    "Premier League"
+   ],
+   [
+    "2026-05-09",
+    7.2,
+    "Premier League"
+   ],
+   [
+    "2026-05-15",
+    6.8,
+    "Premier League"
+   ],
+   [
+    "2026-05-24",
+    7.9,
+    "Premier League"
+   ],
+   [
+    "2026-07-25",
+    6.9,
+    "Club Friendly Games"
+   ],
+   [
+    "2026-07-29",
+    7.0,
+    "Club Friendly Games"
+   ],
+   [
+    "2026-08-02",
+    5.4,
+    "Club Friendly Games"
+   ]
+  ],
+  "케르케즈": [
+   [
+    "2026-04-25",
+    6.9,
+    "Premier League"
+   ],
+   [
+    "2026-05-03",
+    6.6,
+    "Premier League"
+   ],
+   [
+    "2026-05-09",
+    6.4,
+    "Premier League"
+   ],
+   [
+    "2026-05-15",
+    5.9,
+    "Premier League"
+   ],
+   [
+    "2026-05-24",
+    6.7,
+    "Premier League"
+   ],
+   [
+    "2026-06-05",
+    6.5,
+    "International Friendly Games"
+   ],
+   [
+    "2026-07-25",
+    6.3,
+    "Club Friendly Games"
+   ],
+   [
+    "2026-07-29",
+    6.6,
+    "Club Friendly Games"
+   ],
+   [
+    "2026-08-02",
+    7.5,
+    "Club Friendly Games"
+   ],
+   [
+    "2026-08-09",
+    6.4,
+    "Club Friendly Games"
+   ]
+  ],
+  "코나테": [
+   [
+    "2026-04-14",
+    7.2,
+    "UEFA Champions League"
+   ],
+   [
+    "2026-04-19",
+    7.1,
+    "Premier League"
+   ],
+   [
+    "2026-04-25",
+    7.8,
+    "Premier League"
+   ],
+   [
+    "2026-05-03",
+    6.7,
+    "Premier League"
+   ],
+   [
+    "2026-05-09",
+    6.7,
+    "Premier League"
+   ],
+   [
+    "2026-05-15",
+    6.1,
+    "Premier League"
+   ],
+   [
+    "2026-05-24",
+    6.9,
+    "Premier League"
+   ],
+   [
+    "2026-06-04",
+    6.5,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-26",
+    6.7,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-18",
+    5.5,
+    "FIFA World Cup"
+   ]
+  ],
   "판 다이크": [
+   [
+    "2026-05-09",
+    6.7,
+    "Premier League"
+   ],
+   [
+    "2026-05-15",
+    8.2,
+    "Premier League"
+   ],
+   [
+    "2026-05-24",
+    7.8,
+    "Premier League"
+   ],
+   [
+    "2026-06-03",
+    7.4,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-08",
+    7.2,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-14",
+    7.9,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-20",
+    6.9,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-25",
+    8.0,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-30",
+    7.0,
+    "FIFA World Cup"
+   ],
    [
     "2026-08-09",
     6.1,
@@ -5869,6 +6321,51 @@
   ],
   "프림퐁": [
    [
+    "2026-04-14",
+    7.2,
+    "UEFA Champions League"
+   ],
+   [
+    "2026-04-19",
+    6.5,
+    "Premier League"
+   ],
+   [
+    "2026-04-25",
+    6.6,
+    "Premier League"
+   ],
+   [
+    "2026-05-03",
+    5.9,
+    "Premier League"
+   ],
+   [
+    "2026-05-09",
+    6.4,
+    "Premier League"
+   ],
+   [
+    "2026-05-24",
+    6.7,
+    "Premier League"
+   ],
+   [
+    "2026-07-25",
+    5.8,
+    "Club Friendly Games"
+   ],
+   [
+    "2026-07-29",
+    6.7,
+    "Club Friendly Games"
+   ],
+   [
+    "2026-08-02",
+    6.1,
+    "Club Friendly Games"
+   ],
+   [
     "2026-08-09",
     6.1,
     "Club Friendly Games"
@@ -5876,12 +6373,102 @@
   ],
   "학포": [
    [
+    "2026-05-09",
+    6.2,
+    "Premier League"
+   ],
+   [
+    "2026-05-15",
+    6.5,
+    "Premier League"
+   ],
+   [
+    "2026-05-24",
+    6.5,
+    "Premier League"
+   ],
+   [
+    "2026-06-03",
+    7.0,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-08",
+    10.0,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-14",
+    7.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-20",
+    9.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-25",
+    6.3,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-30",
+    6.9,
+    "FIFA World Cup"
+   ],
+   [
     "2026-08-09",
     7.0,
     "Club Friendly Games"
    ]
   ],
   "흐라벤베르흐": [
+   [
+    "2026-05-15",
+    6.2,
+    "Premier League"
+   ],
+   [
+    "2026-05-24",
+    6.7,
+    "Premier League"
+   ],
+   [
+    "2026-06-03",
+    6.6,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-08",
+    7.2,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-14",
+    7.3,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-20",
+    6.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-25",
+    6.8,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-30",
+    6.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-08-02",
+    6.4,
+    "Club Friendly Games"
+   ],
    [
     "2026-08-09",
     7.3,
@@ -6685,88 +7272,148 @@
  },
  "player_stats": [
   {
-   "avg_rating": 6.8,
-   "dw_pg": 0.0,
+   "avg_rating": 7.01,
+   "dw_pg": 0.36,
    "ic_pg": 0.0,
    "kp_pg": 0.0,
    "label": "알리송 베케르",
-   "minutes": 45,
-   "n": 1,
-   "tk_pg": 0.0,
-   "xa_pg": null,
+   "minutes": 3926,
+   "n": 47,
+   "tk_pg": 0.02,
+   "xa_pg": 0.001,
    "xg_pg": null
   },
   {
-   "avg_rating": 6.1,
-   "dw_pg": 3.0,
-   "ic_pg": 3.0,
-   "kp_pg": 0.0,
+   "avg_rating": 7.25,
+   "dw_pg": 4.77,
+   "ic_pg": 0.76,
+   "kp_pg": 0.32,
    "label": "판 다이크",
-   "minutes": 59,
-   "n": 1,
-   "tk_pg": 0.0,
-   "xa_pg": null,
-   "xg_pg": null
+   "minutes": 6245,
+   "n": 71,
+   "tk_pg": 0.54,
+   "xa_pg": 0.038,
+   "xg_pg": 0.206
   },
   {
-   "avg_rating": 6.1,
-   "dw_pg": 2.0,
-   "ic_pg": 0.0,
-   "kp_pg": 1.0,
+   "avg_rating": 6.97,
+   "dw_pg": 4.3,
+   "ic_pg": 0.77,
+   "kp_pg": 0.17,
+   "label": "코나테",
+   "minutes": 4901,
+   "n": 71,
+   "tk_pg": 1.08,
+   "xa_pg": 0.025,
+   "xg_pg": 0.128
+  },
+  {
+   "avg_rating": 6.85,
+   "dw_pg": 2.76,
+   "ic_pg": 0.43,
+   "kp_pg": 0.5,
+   "label": "커티스 존스",
+   "minutes": 3179,
+   "n": 58,
+   "tk_pg": 0.95,
+   "xa_pg": 0.072,
+   "xg_pg": 0.135
+  },
+  {
+   "avg_rating": 6.67,
+   "dw_pg": 2.99,
+   "ic_pg": 0.56,
+   "kp_pg": 0.71,
+   "label": "케르케즈",
+   "minutes": 4401,
+   "n": 73,
+   "tk_pg": 1.14,
+   "xa_pg": 0.029,
+   "xg_pg": 0.196
+  },
+  {
+   "avg_rating": 6.67,
+   "dw_pg": 2.38,
+   "ic_pg": 0.29,
+   "kp_pg": 0.48,
    "label": "프림퐁",
-   "minutes": 75,
-   "n": 1,
-   "tk_pg": 0.0,
-   "xa_pg": null,
-   "xg_pg": null
+   "minutes": 2310,
+   "n": 48,
+   "tk_pg": 0.65,
+   "xa_pg": 0.083,
+   "xg_pg": 0.068
   },
   {
-   "avg_rating": 7.3,
-   "dw_pg": 2.0,
-   "ic_pg": 2.0,
-   "kp_pg": 2.0,
+   "avg_rating": 7.02,
+   "dw_pg": 3.77,
+   "ic_pg": 1.39,
+   "kp_pg": 0.71,
    "label": "흐라벤베르흐",
-   "minutes": 59,
-   "n": 1,
-   "tk_pg": 1.0,
-   "xa_pg": null,
-   "xg_pg": null
+   "minutes": 5311,
+   "n": 70,
+   "tk_pg": 1.3,
+   "xa_pg": 0.074,
+   "xg_pg": 0.085
   },
   {
-   "avg_rating": 6.6,
-   "dw_pg": 0.0,
-   "ic_pg": 0.0,
-   "kp_pg": 3.0,
+   "avg_rating": 6.83,
+   "dw_pg": 3.3,
+   "ic_pg": 0.6,
+   "kp_pg": 0.89,
+   "label": "맥 알리스터",
+   "minutes": 5181,
+   "n": 73,
+   "tk_pg": 1.62,
+   "xa_pg": 0.059,
+   "xg_pg": 0.204
+  },
+  {
+   "avg_rating": 7.39,
+   "dw_pg": 3.7,
+   "ic_pg": 0.73,
+   "kp_pg": 2.37,
    "label": "소보슬라이",
-   "minutes": 76,
-   "n": 1,
-   "tk_pg": 0.0,
-   "xa_pg": null,
-   "xg_pg": null
+   "minutes": 6078,
+   "n": 70,
+   "tk_pg": 1.49,
+   "xa_pg": 0.213,
+   "xg_pg": 0.191
   },
   {
-   "avg_rating": 8.6,
-   "dw_pg": 3.0,
-   "ic_pg": 0.0,
-   "kp_pg": 1.0,
+   "avg_rating": 7.16,
+   "dw_pg": 3.3,
+   "ic_pg": 0.31,
+   "kp_pg": 2.13,
    "label": "비르츠",
-   "minutes": 59,
-   "n": 1,
-   "tk_pg": 2.0,
-   "xa_pg": null,
-   "xg_pg": null
+   "minutes": 4918,
+   "n": 67,
+   "tk_pg": 1.1,
+   "xa_pg": 0.222,
+   "xg_pg": 0.26
   },
   {
-   "avg_rating": 7.0,
-   "dw_pg": 1.0,
-   "ic_pg": 0.0,
-   "kp_pg": 2.0,
+   "avg_rating": 7.14,
+   "dw_pg": 3.9,
+   "ic_pg": 0.29,
+   "kp_pg": 1.6,
    "label": "학포",
-   "minutes": 59,
-   "n": 1,
-   "tk_pg": 0.0,
-   "xa_pg": null,
-   "xg_pg": null
+   "minutes": 5032,
+   "n": 70,
+   "tk_pg": 0.69,
+   "xa_pg": 0.16,
+   "xg_pg": 0.277
+  },
+  {
+   "avg_rating": 7.07,
+   "dw_pg": 2.55,
+   "ic_pg": 0.22,
+   "kp_pg": 1.8,
+   "label": "살라",
+   "minutes": 4728,
+   "n": 64,
+   "tk_pg": 0.52,
+   "xa_pg": 0.248,
+   "xg_pg": 0.388
   }
  ],
  "prescriptions": [
@@ -6805,6 +7452,24 @@
    "starter": 0,
    "x": 50,
    "y": 11
+  },
+  {
+   "avg_rating": 7.02,
+   "fit_sim": 0.97,
+   "focus": "Defend",
+   "game_version": "FC26",
+   "kind": "measured:season:full2526",
+   "label": "알리송 베케르",
+   "map25": "0000000000000000011001X20",
+   "player_id": 43,
+   "pos_label": "GK",
+   "rationale": "2026-08-11 전수 재수집 — 종전 CHE·LIV 실측은 1경기(8/9 모나코 친선)뿐이었다. SofaScore 25/26 전수 수집 후 /lineups 배열순서로 슬롯을 판정하고(docs/30 ④) 최다 출전 슬롯만 골라 집계했다. 교체 출전·미매핑 포메이션은 제외. ⚠️ 이 표본은 알론소·이라올라 체제가 아니다(각각 마레스카·로즈니어 / 슬롯 체제) — 불변규칙 7. lineup_pos='GK' 45경기(3881분), 슬롯 x=50.",
+   "role_id": "gk_goalkeeper",
+   "sample_n": 45,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 50,
+   "y": null
   },
   {
    "avg_rating": null,
@@ -6861,6 +7526,24 @@
    "y": 36
   },
   {
+   "avg_rating": 7.26,
+   "fit_sim": 0.911,
+   "focus": "Aggressive",
+   "game_version": "FC26",
+   "kind": "measured:season:full2526",
+   "label": "판 다이크",
+   "map25": "0010013100295102X51013410",
+   "player_id": 44,
+   "pos_label": "LCB",
+   "rationale": "2026-08-11 전수 재수집 — 종전 CHE·LIV 실측은 1경기(8/9 모나코 친선)뿐이었다. SofaScore 25/26 전수 수집 후 /lineups 배열순서로 슬롯을 판정하고(docs/30 ④) 최다 출전 슬롯만 골라 집계했다. 교체 출전·미매핑 포메이션은 제외. ⚠️ 이 표본은 알론소·이라올라 체제가 아니다(각각 마레스카·로즈니어 / 슬롯 체제) — 불변규칙 7. lineup_pos='LCB' 69경기(6035분), 슬롯 x=37.",
+   "role_id": "cb_bpd",
+   "sample_n": 69,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 37,
+   "y": null
+  },
+  {
    "avg_rating": null,
    "fit_sim": null,
    "focus": "Aggressive",
@@ -6913,6 +7596,24 @@
    "starter": 0,
    "x": 66,
    "y": 35
+  },
+  {
+   "avg_rating": 6.99,
+   "fit_sim": 0.919,
+   "focus": "Aggressive",
+   "game_version": "FC26",
+   "kind": "measured:season:full2526",
+   "label": "코나테",
+   "map25": "001000013100373013X401342",
+   "player_id": 45,
+   "pos_label": "RCB",
+   "rationale": "2026-08-11 전수 재수집 — 종전 CHE·LIV 실측은 1경기(8/9 모나코 친선)뿐이었다. SofaScore 25/26 전수 수집 후 /lineups 배열순서로 슬롯을 판정하고(docs/30 ④) 최다 출전 슬롯만 골라 집계했다. 교체 출전·미매핑 포메이션은 제외. ⚠️ 이 표본은 알론소·이라올라 체제가 아니다(각각 마레스카·로즈니어 / 슬롯 체제) — 불변규칙 7. lineup_pos='RCB' 56경기(4803분), 슬롯 x=63.",
+   "role_id": "cb_bpd",
+   "sample_n": 56,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 63,
+   "y": null
   },
   {
    "avg_rating": null,
@@ -6969,6 +7670,24 @@
    "y": 46
   },
   {
+   "avg_rating": 6.94,
+   "fit_sim": 0.716,
+   "focus": "Roaming",
+   "game_version": "FC26",
+   "kind": "measured:season:full2526",
+   "label": "커티스 존스",
+   "map25": "11110991437X5425753111111",
+   "player_id": 46,
+   "pos_label": "LDM",
+   "rationale": "2026-08-11 전수 재수집 — 종전 CHE·LIV 실측은 1경기(8/9 모나코 친선)뿐이었다. SofaScore 25/26 전수 수집 후 /lineups 배열순서로 슬롯을 판정하고(docs/30 ④) 최다 출전 슬롯만 골라 집계했다. 교체 출전·미매핑 포메이션은 제외. ⚠️ 이 표본은 알론소·이라올라 체제가 아니다(각각 마레스카·로즈니어 / 슬롯 체제) — 불변규칙 7. lineup_pos='LDM' 11경기(867분), 슬롯 x=38.",
+   "role_id": "dm_dlp",
+   "sample_n": 11,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 38,
+   "y": null
+  },
+  {
    "avg_rating": null,
    "fit_sim": null,
    "focus": "Support",
@@ -7021,6 +7740,24 @@
    "starter": 0,
    "x": 14,
    "y": 43
+  },
+  {
+   "avg_rating": 6.68,
+   "fit_sim": 0.896,
+   "focus": "Support",
+   "game_version": "FC26",
+   "kind": "measured:season:full2526",
+   "label": "케르케즈",
+   "map25": "32000X4000830009410043100",
+   "player_id": 47,
+   "pos_label": "LB",
+   "rationale": "2026-08-11 전수 재수집 — 종전 CHE·LIV 실측은 1경기(8/9 모나코 친선)뿐이었다. SofaScore 25/26 전수 수집 후 /lineups 배열순서로 슬롯을 판정하고(docs/30 ④) 최다 출전 슬롯만 골라 집계했다. 교체 출전·미매핑 포메이션은 제외. ⚠️ 이 표본은 알론소·이라올라 체제가 아니다(각각 마레스카·로즈니어 / 슬롯 체제) — 불변규칙 7. lineup_pos='LB' 49경기(3981분), 슬롯 x=13.",
+   "role_id": "fb_att_wb",
+   "sample_n": 49,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 13,
+   "y": null
   },
   {
    "avg_rating": null,
@@ -7077,6 +7814,24 @@
    "y": 58
   },
   {
+   "avg_rating": 6.69,
+   "fit_sim": 0.915,
+   "focus": "Support",
+   "game_version": "FC26",
+   "kind": "measured:season:full2526",
+   "label": "프림퐁",
+   "map25": "000470002X000180002800133",
+   "player_id": 48,
+   "pos_label": "RB",
+   "rationale": "2026-08-11 전수 재수집 — 종전 CHE·LIV 실측은 1경기(8/9 모나코 친선)뿐이었다. SofaScore 25/26 전수 수집 후 /lineups 배열순서로 슬롯을 판정하고(docs/30 ④) 최다 출전 슬롯만 골라 집계했다. 교체 출전·미매핑 포메이션은 제외. ⚠️ 이 표본은 알론소·이라올라 체제가 아니다(각각 마레스카·로즈니어 / 슬롯 체제) — 불변규칙 7. lineup_pos='RB' 18경기(1294분), 슬롯 x=87.",
+   "role_id": "fb_att_wb",
+   "sample_n": 18,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 87,
+   "y": null
+  },
+  {
    "avg_rating": null,
    "fit_sim": null,
    "focus": "Roaming",
@@ -7129,6 +7884,24 @@
    "starter": 0,
    "x": 50,
    "y": 49
+  },
+  {
+   "avg_rating": 7.05,
+   "fit_sim": 0.808,
+   "focus": "Roaming",
+   "game_version": "FC26",
+   "kind": "measured:season:full2526",
+   "label": "흐라벤베르흐",
+   "map25": "00111287X6168951369601221",
+   "player_id": 49,
+   "pos_label": "RDM",
+   "rationale": "2026-08-11 전수 재수집 — 종전 CHE·LIV 실측은 1경기(8/9 모나코 친선)뿐이었다. SofaScore 25/26 전수 수집 후 /lineups 배열순서로 슬롯을 판정하고(docs/30 ④) 최다 출전 슬롯만 골라 집계했다. 교체 출전·미매핑 포메이션은 제외. ⚠️ 이 표본은 알론소·이라올라 체제가 아니다(각각 마레스카·로즈니어 / 슬롯 체제) — 불변규칙 7. lineup_pos='RDM' 45경기(3780분), 슬롯 x=62.",
+   "role_id": "dm_dlp",
+   "sample_n": 45,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 62,
+   "y": null
   },
   {
    "avg_rating": null,
@@ -7185,6 +7958,24 @@
    "y": 49
   },
   {
+   "avg_rating": 6.86,
+   "fit_sim": 0.867,
+   "focus": "Roaming",
+   "game_version": "FC26",
+   "kind": "measured:season:full2526",
+   "label": "맥 알리스터",
+   "map25": "013104X862398613865111211",
+   "player_id": 50,
+   "pos_label": "LDM",
+   "rationale": "2026-08-11 전수 재수집 — 종전 CHE·LIV 실측은 1경기(8/9 모나코 친선)뿐이었다. SofaScore 25/26 전수 수집 후 /lineups 배열순서로 슬롯을 판정하고(docs/30 ④) 최다 출전 슬롯만 골라 집계했다. 교체 출전·미매핑 포메이션은 제외. ⚠️ 이 표본은 알론소·이라올라 체제가 아니다(각각 마레스카·로즈니어 / 슬롯 체제) — 불변규칙 7. lineup_pos='LDM' 33경기(2709분), 슬롯 x=38.",
+   "role_id": "dm_dlp",
+   "sample_n": 33,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 38,
+   "y": null
+  },
+  {
    "avg_rating": null,
    "fit_sim": null,
    "focus": "Roaming",
@@ -7239,6 +8030,24 @@
    "y": 57
   },
   {
+   "avg_rating": 6.87,
+   "fit_sim": 0.683,
+   "focus": "Balanced",
+   "game_version": "FC26",
+   "kind": "measured:season:full2526",
+   "label": "소보슬라이",
+   "map25": "21223344X7224751223510111",
+   "player_id": 51,
+   "pos_label": "CAM",
+   "rationale": "2026-08-11 전수 재수집 — 종전 CHE·LIV 실측은 1경기(8/9 모나코 친선)뿐이었다. SofaScore 25/26 전수 수집 후 /lineups 배열순서로 슬롯을 판정하고(docs/30 ④) 최다 출전 슬롯만 골라 집계했다. 교체 출전·미매핑 포메이션은 제외. ⚠️ 이 표본은 알론소·이라올라 체제가 아니다(각각 마레스카·로즈니어 / 슬롯 체제) — 불변규칙 7. lineup_pos='CAM' 18경기(1575분), 슬롯 x=50.",
+   "role_id": "cam_halfwinger",
+   "sample_n": 18,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 50,
+   "y": null
+  },
+  {
    "avg_rating": null,
    "fit_sim": null,
    "focus": "Balanced",
@@ -7273,6 +8082,24 @@
    "starter": 0,
    "x": 50,
    "y": 59
+  },
+  {
+   "avg_rating": 6.98,
+   "fit_sim": 0.736,
+   "focus": "Balanced",
+   "game_version": "FC26",
+   "kind": "measured:season:full2526",
+   "label": "비르츠",
+   "map25": "333447X588365633523311101",
+   "player_id": 52,
+   "pos_label": "CAM",
+   "rationale": "2026-08-11 전수 재수집 — 종전 CHE·LIV 실측은 1경기(8/9 모나코 친선)뿐이었다. SofaScore 25/26 전수 수집 후 /lineups 배열순서로 슬롯을 판정하고(docs/30 ④) 최다 출전 슬롯만 골라 집계했다. 교체 출전·미매핑 포메이션은 제외. ⚠️ 이 표본은 알론소·이라올라 체제가 아니다(각각 마레스카·로즈니어 / 슬롯 체제) — 불변규칙 7. lineup_pos='CAM' 24경기(1867분), 슬롯 x=50.",
+   "role_id": "cam_halfwinger",
+   "sample_n": 24,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 50,
+   "y": null
   },
   {
    "avg_rating": null,
@@ -7329,6 +8156,24 @@
    "y": 64
   },
   {
+   "avg_rating": 7.16,
+   "fit_sim": 0.769,
+   "focus": "Attack",
+   "game_version": "FC26",
+   "kind": "measured:season:full2526",
+   "label": "학포",
+   "map25": "77210X8210631104210001100",
+   "player_id": 53,
+   "pos_label": "LAM",
+   "rationale": "2026-08-11 전수 재수집 — 종전 CHE·LIV 실측은 1경기(8/9 모나코 친선)뿐이었다. SofaScore 25/26 전수 수집 후 /lineups 배열순서로 슬롯을 판정하고(docs/30 ④) 최다 출전 슬롯만 골라 집계했다. 교체 출전·미매핑 포메이션은 제외. ⚠️ 이 표본은 알론소·이라올라 체제가 아니다(각각 마레스카·로즈니어 / 슬롯 체제) — 불변규칙 7. lineup_pos='LAM' 36경기(2960분), 슬롯 x=14.",
+   "role_id": "wm_wideplm",
+   "sample_n": 36,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 14,
+   "y": null
+  },
+  {
    "avg_rating": null,
    "fit_sim": null,
    "focus": "Attack",
@@ -7381,6 +8226,24 @@
    "starter": 0,
    "x": 86,
    "y": 71
+  },
+  {
+   "avg_rating": 7.11,
+   "fit_sim": 0.846,
+   "focus": "Attack",
+   "game_version": "FC26",
+   "kind": "measured:season:full2526",
+   "label": "살라",
+   "map25": "001570014X000240011300000",
+   "player_id": 54,
+   "pos_label": "RAM",
+   "rationale": "2026-08-11 전수 재수집 — 종전 CHE·LIV 실측은 1경기(8/9 모나코 친선)뿐이었다. SofaScore 25/26 전수 수집 후 /lineups 배열순서로 슬롯을 판정하고(docs/30 ④) 최다 출전 슬롯만 골라 집계했다. 교체 출전·미매핑 포메이션은 제외. ⚠️ 이 표본은 알론소·이라올라 체제가 아니다(각각 마레스카·로즈니어 / 슬롯 체제) — 불변규칙 7. lineup_pos='RAM' 34경기(2833분), 슬롯 x=85.",
+   "role_id": "wm_winger",
+   "sample_n": 34,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 85,
+   "y": null
   }
  ],
  "profile": [
@@ -7431,28 +8294,382 @@
   "team_name": "Liverpool"
  },
  "season_stats": {
+  "맥 알리스터": [
+   {
+    "assists": 1,
+    "avg_rating": 6.7,
+    "competition": "World Cup",
+    "goals": 1,
+    "minutes": 540,
+    "n": 5,
+    "season": "2026-27",
+    "starts": null
+   },
+   {
+    "assists": 4,
+    "avg_rating": 6.71,
+    "competition": "Premier League",
+    "goals": 2,
+    "minutes": 2675,
+    "n": 37,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 6.98,
+    "competition": "UEFA Champions League",
+    "goals": 3,
+    "minutes": 853,
+    "n": 12,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.24,
+    "competition": "International Friendly Games",
+    "goals": 2,
+    "minutes": 389,
+    "n": 7,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 2,
+    "avg_rating": 7.2,
+    "competition": "FA Cup",
+    "goals": 0,
+    "minutes": 283,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.8,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 209,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.3,
+    "competition": "World Cup Qual. CONMEBOL",
+    "goals": 0,
+    "minutes": 90,
+    "n": 2,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.0,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 56,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 5.5,
+    "competition": "Community Shield",
+    "goals": 0,
+    "minutes": 19,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.4,
+    "competition": "EFL Cup",
+    "goals": 0,
+    "minutes": 67,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   }
+  ],
   "비르츠": [
    {
     "assists": 0,
-    "avg_rating": 8.6,
+    "avg_rating": 8.05,
     "competition": "Club Friendly Games",
-    "goals": 1,
-    "minutes": 59,
-    "n": 1,
+    "goals": 2,
+    "minutes": 104,
+    "n": 2,
     "season": "2026-27",
     "starts": 1
+   },
+   {
+    "assists": 3,
+    "avg_rating": 6.85,
+    "competition": "Premier League",
+    "goals": 5,
+    "minutes": 2388,
+    "n": 33,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 3,
+    "avg_rating": 7.18,
+    "competition": "UEFA Champions League",
+    "goals": 1,
+    "minutes": 840,
+    "n": 11,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 2,
+    "avg_rating": 7.98,
+    "competition": "World Cup Qual. UEFA",
+    "goals": 1,
+    "minutes": 526,
+    "n": 6,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.27,
+    "competition": "FA Cup",
+    "goals": 1,
+    "minutes": 190,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 2,
+    "avg_rating": 8.07,
+    "competition": "International Friendly Games",
+    "goals": 3,
+    "minutes": 304,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 3,
+    "avg_rating": 7.63,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 363,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.4,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 119,
+    "n": 2,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 6.3,
+    "competition": "Community Shield",
+    "goals": 0,
+    "minutes": 84,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   }
+  ],
+  "살라": [
+   {
+    "assists": 0,
+    "avg_rating": 7.05,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 210,
+    "n": 2,
+    "season": "2026-27",
+    "starts": null
+   },
+   {
+    "assists": 7,
+    "avg_rating": 6.91,
+    "competition": "Premier League",
+    "goals": 7,
+    "minutes": 2148,
+    "n": 29,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 2,
+    "avg_rating": 7.37,
+    "competition": "UEFA Champions League",
+    "goals": 3,
+    "minutes": 687,
+    "n": 11,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.5,
+    "competition": "Africa Cup of Nations",
+    "goals": 4,
+    "minutes": 569,
+    "n": 7,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.07,
+    "competition": "Club Friendly Games",
+    "goals": 1,
+    "minutes": 180,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.5,
+    "competition": "FA Cup",
+    "goals": 2,
+    "minutes": 223,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 2,
+    "avg_rating": 7.27,
+    "competition": "World Cup",
+    "goals": 1,
+    "minutes": 218,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": null,
+    "competition": "World Cup Qual. CAF ",
+    "goals": 3,
+    "minutes": 268,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.6,
+    "competition": "International Friendly Games",
+    "goals": 0,
+    "minutes": 135,
+    "n": 2,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 4.7,
+    "competition": "Community Shield",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
    }
   ],
   "소보슬라이": [
    {
-    "assists": 0,
-    "avg_rating": 6.6,
+    "assists": 2,
+    "avg_rating": 7.17,
     "competition": "Club Friendly Games",
-    "goals": 0,
-    "minutes": 76,
-    "n": 1,
+    "goals": 1,
+    "minutes": 265,
+    "n": 4,
     "season": "2026-27",
     "starts": 1
+   },
+   {
+    "assists": 7,
+    "avg_rating": 7.18,
+    "competition": "Premier League",
+    "goals": 6,
+    "minutes": 3233,
+    "n": 36,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 4,
+    "avg_rating": 7.53,
+    "competition": "UEFA Champions League",
+    "goals": 5,
+    "minutes": 1053,
+    "n": 12,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 4,
+    "avg_rating": 7.78,
+    "competition": "World Cup Qual. UEFA",
+    "goals": 1,
+    "minutes": 540,
+    "n": 6,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 8.05,
+    "competition": "FA Cup",
+    "goals": 2,
+    "minutes": 360,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 2,
+    "avg_rating": 7.93,
+    "competition": "International Friendly Games",
+    "goals": 1,
+    "minutes": 357,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.17,
+    "competition": "Club Friendly Games",
+    "goals": 1,
+    "minutes": 180,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.6,
+    "competition": "Community Shield",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
    }
   ],
   "알리송 베케르": [
@@ -7465,6 +8682,352 @@
     "n": 1,
     "season": "2026-27",
     "starts": 1
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.8,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.81,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 2340,
+    "n": 26,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.17,
+    "competition": "UEFA Champions League",
+    "goals": 0,
+    "minutes": 506,
+    "n": 6,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.33,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 360,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.25,
+    "competition": "FA Cup",
+    "goals": 0,
+    "minutes": 180,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.8,
+    "competition": "International Friendly Games",
+    "goals": 0,
+    "minutes": 90,
+    "n": 2,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.65,
+    "competition": "World Cup Qual. CONMEBOL",
+    "goals": 0,
+    "minutes": 180,
+    "n": 2,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.5,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 45,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 8.5,
+    "competition": "Community Shield",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   }
+  ],
+  "커티스 존스": [
+   {
+    "assists": 0,
+    "avg_rating": 6.43,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 135,
+    "n": 3,
+    "season": "2026-27",
+    "starts": null
+   },
+   {
+    "assists": 2,
+    "avg_rating": 6.85,
+    "competition": "Premier League",
+    "goals": 1,
+    "minutes": 1950,
+    "n": 36,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.71,
+    "competition": "UEFA Champions League",
+    "goals": 0,
+    "minutes": 433,
+    "n": 10,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.58,
+    "competition": "FA Cup",
+    "goals": 2,
+    "minutes": 359,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.63,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 174,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.9,
+    "competition": "Community Shield",
+    "goals": 0,
+    "minutes": 71,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.0,
+    "competition": "EFL Cup",
+    "goals": 0,
+    "minutes": 57,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   }
+  ],
+  "케르케즈": [
+   {
+    "assists": 1,
+    "avg_rating": 6.7,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 190,
+    "n": 4,
+    "season": "2026-27",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 6.6,
+    "competition": "Premier League",
+    "goals": 2,
+    "minutes": 2301,
+    "n": 38,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.71,
+    "competition": "UEFA Champions League",
+    "goals": 0,
+    "minutes": 607,
+    "n": 12,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.02,
+    "competition": "World Cup Qual. UEFA",
+    "goals": 0,
+    "minutes": 513,
+    "n": 6,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 6.4,
+    "competition": "FA Cup",
+    "goals": 0,
+    "minutes": 180,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.77,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 180,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.7,
+    "competition": "International Friendly Games",
+    "goals": 0,
+    "minutes": 247,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.25,
+    "competition": "EFL Cup",
+    "goals": 0,
+    "minutes": 99,
+    "n": 2,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.5,
+    "competition": "Community Shield",
+    "goals": 0,
+    "minutes": 84,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   }
+  ],
+  "코나테": [
+   {
+    "assists": 0,
+    "avg_rating": 5.5,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 45,
+    "n": 4,
+    "season": "2026-27",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.06,
+    "competition": "Premier League",
+    "goals": 1,
+    "minutes": 3100,
+    "n": 37,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.99,
+    "competition": "UEFA Champions League",
+    "goals": 1,
+    "minutes": 871,
+    "n": 10,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.37,
+    "competition": "World Cup Qual. UEFA",
+    "goals": 0,
+    "minutes": 270,
+    "n": 5,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.6,
+    "competition": "FA Cup",
+    "goals": 0,
+    "minutes": 219,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 6.55,
+    "competition": "International Friendly Games",
+    "goals": 0,
+    "minutes": 157,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.7,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 14,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.0,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 135,
+    "n": 2,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.4,
+    "competition": "Community Shield",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
    }
   ],
   "판 다이크": [
@@ -7477,18 +9040,178 @@
     "n": 1,
     "season": "2026-27",
     "starts": 1
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.26,
+    "competition": "Premier League",
+    "goals": 6,
+    "minutes": 3420,
+    "n": 38,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 3,
+    "avg_rating": 7.43,
+    "competition": "UEFA Champions League",
+    "goals": 2,
+    "minutes": 1080,
+    "n": 12,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.52,
+    "competition": "World Cup Qual. UEFA",
+    "goals": 1,
+    "minutes": 540,
+    "n": 6,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.95,
+    "competition": "FA Cup",
+    "goals": 0,
+    "minutes": 351,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.08,
+    "competition": "International Friendly Games",
+    "goals": 1,
+    "minutes": 270,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.45,
+    "competition": "World Cup",
+    "goals": 1,
+    "minutes": 390,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.6,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 45,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 5.9,
+    "competition": "Community Shield",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
    }
   ],
   "프림퐁": [
    {
-    "assists": 0,
-    "avg_rating": 6.1,
+    "assists": 1,
+    "avg_rating": 6.17,
     "competition": "Club Friendly Games",
     "goals": 0,
-    "minutes": 75,
-    "n": 1,
+    "minutes": 246,
+    "n": 4,
     "season": "2026-27",
     "starts": 1
+   },
+   {
+    "assists": 1,
+    "avg_rating": 6.71,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 1068,
+    "n": 23,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.59,
+    "competition": "UEFA Champions League",
+    "goals": 0,
+    "minutes": 464,
+    "n": 9,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.8,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 162,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.77,
+    "competition": "FA Cup",
+    "goals": 1,
+    "minutes": 109,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.7,
+    "competition": "International Friendly Games",
+    "goals": 0,
+    "minutes": 14,
+    "n": 2,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.5,
+    "competition": "World Cup Qual. UEFA",
+    "goals": 0,
+    "minutes": 67,
+    "n": 2,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.0,
+    "competition": "Community Shield",
+    "goals": 1,
+    "minutes": 90,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.3,
+    "competition": "EFL Cup",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
    }
   ],
   "학포": [
@@ -7501,18 +9224,168 @@
     "n": 1,
     "season": "2026-27",
     "starts": 1
+   },
+   {
+    "assists": 5,
+    "avg_rating": 6.9,
+    "competition": "Premier League",
+    "goals": 7,
+    "minutes": 2754,
+    "n": 36,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 6.95,
+    "competition": "UEFA Champions League",
+    "goals": 2,
+    "minutes": 470,
+    "n": 11,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 3,
+    "avg_rating": 8.23,
+    "competition": "World Cup Qual. UEFA",
+    "goals": 4,
+    "minutes": 523,
+    "n": 6,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.78,
+    "competition": "FA Cup",
+    "goals": 0,
+    "minutes": 287,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.95,
+    "competition": "International Friendly Games",
+    "goals": 2,
+    "minutes": 298,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.55,
+    "competition": "World Cup",
+    "goals": 3,
+    "minutes": 371,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.53,
+    "competition": "Club Friendly Games",
+    "goals": 4,
+    "minutes": 180,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.6,
+    "competition": "Community Shield",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
    }
   ],
   "흐라벤베르흐": [
    {
     "assists": 1,
-    "avg_rating": 7.3,
+    "avg_rating": 6.85,
     "competition": "Club Friendly Games",
     "goals": 0,
-    "minutes": 59,
-    "n": 1,
+    "minutes": 104,
+    "n": 2,
     "season": "2026-27",
     "starts": 1
+   },
+   {
+    "assists": 3,
+    "avg_rating": 7.04,
+    "competition": "Premier League",
+    "goals": 5,
+    "minutes": 2996,
+    "n": 36,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 2,
+    "avg_rating": 7.05,
+    "competition": "UEFA Champions League",
+    "goals": 1,
+    "minutes": 961,
+    "n": 11,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.25,
+    "competition": "World Cup Qual. UEFA",
+    "goals": 0,
+    "minutes": 314,
+    "n": 6,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 6.6,
+    "competition": "FA Cup",
+    "goals": 0,
+    "minutes": 174,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.0,
+    "competition": "International Friendly Games",
+    "goals": 0,
+    "minutes": 217,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 2,
+    "avg_rating": 6.78,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 347,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.1,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 198,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
    }
   ]
  },
@@ -7636,192 +9509,192 @@
   {
    "fit_focus": "Defend",
    "fit_role": "gk_goalkeeper",
-   "fit_sim": 0.979,
+   "fit_sim": 0.97,
    "label": "알리송 베케르",
    "lh": "OWNED",
-   "map25": "0000000000000000010001X30",
+   "map25": "0000000000000000011001X20",
    "name_en": "Alisson",
    "name_kr": "알리송 베케르",
    "player_id": 43,
-   "rate_basis": "r6",
-   "rate_note": "GK 실측 6경기 평균 6.80",
-   "rate_v": 6.8,
+   "rate_basis": "full2526",
+   "rate_note": "GK 45경기 평균 7.02 (measured:season:full2526)",
+   "rate_v": 7.02,
    "slot_type": "GK",
    "sort_order": 0
   },
   {
    "fit_focus": "Support",
    "fit_role": "fb_att_wb",
-   "fit_sim": 0.799,
+   "fit_sim": 0.896,
    "label": "케르케즈",
    "lh": "OWNED",
-   "map25": "200009210043000X800043000",
+   "map25": "32000X4000830009410043100",
    "name_en": "Miloš Kerkez",
    "name_kr": "케르케즈",
    "player_id": 47,
-   "rate_basis": "r6",
-   "rate_note": "LB 실측 (평점 미기재)",
-   "rate_v": null,
+   "rate_basis": "full2526",
+   "rate_note": "LB 49경기 평균 6.68 (measured:season:full2526)",
+   "rate_v": 6.68,
    "slot_type": "FB",
    "sort_order": 1
   },
   {
    "fit_focus": "Aggressive",
    "fit_role": "cb_bpd",
-   "fit_sim": 0.912,
+   "fit_sim": 0.911,
    "label": "판 다이크",
    "lh": "OWNED",
-   "map25": "0010012100283102X52013610",
+   "map25": "0010013100295102X51013410",
    "name_en": "Virgil van Dijk",
    "name_kr": "판 다이크",
    "player_id": 44,
-   "rate_basis": "r6",
-   "rate_note": "LCB 실측 6경기 평균 7.15",
-   "rate_v": 7.15,
+   "rate_basis": "full2526",
+   "rate_note": "LCB 69경기 평균 7.26 (measured:season:full2526)",
+   "rate_v": 7.26,
    "slot_type": "CB",
    "sort_order": 2
   },
   {
    "fit_focus": "Aggressive",
    "fit_role": "cb_bpd",
-   "fit_sim": 0.938,
+   "fit_sim": 0.919,
    "label": "코나테",
    "lh": "OWNED",
-   "map25": "000000012100251013X201232",
+   "map25": "001000013100373013X401342",
    "name_en": "Ibrahima Konaté",
    "name_kr": "코나테",
    "player_id": 45,
-   "rate_basis": "r6",
-   "rate_note": "RCB 실측 6경기 평균 6.88",
-   "rate_v": 6.88,
+   "rate_basis": "full2526",
+   "rate_note": "RCB 56경기 평균 6.99 (measured:season:full2526)",
+   "rate_v": 6.99,
    "slot_type": "CB",
    "sort_order": 3
   },
   {
-   "fit_focus": "Support",
-   "fit_role": "fb_wingback",
-   "fit_sim": 0.843,
+   "fit_focus": "Roaming",
+   "fit_role": "dm_dlp",
+   "fit_sim": 0.716,
    "label": "커티스 존스",
    "lh": "OWNED",
-   "map25": "00011010381125X0016700124",
+   "map25": "11110991437X5425753111111",
    "name_en": "Curtis Jones",
    "name_kr": "커티스 존스",
    "player_id": 46,
-   "rate_basis": "r6",
-   "rate_note": "RB 실측 6경기 평균 7.05",
-   "rate_v": 7.05,
+   "rate_basis": "full2526",
+   "rate_note": "LDM 11경기 평균 6.94 (measured:season:full2526)",
+   "rate_v": 6.94,
    "slot_type": "FB",
    "sort_order": 4
   },
   {
    "fit_focus": "Support",
    "fit_role": "fb_att_wb",
-   "fit_sim": 0.867,
+   "fit_sim": 0.915,
    "label": "프림퐁",
    "lh": "OWNED",
-   "map25": "000680001X000170002500123",
+   "map25": "000470002X000180002800133",
    "name_en": "Jeremie Frimpong",
    "name_kr": "프림퐁",
    "player_id": 48,
-   "rate_basis": "r6",
-   "rate_note": "RB 실측 (평점 미기재)",
-   "rate_v": null,
+   "rate_basis": "full2526",
+   "rate_note": "RB 18경기 평균 6.69 (measured:season:full2526)",
+   "rate_v": 6.69,
    "slot_type": "FB",
    "sort_order": 4
   },
   {
    "fit_focus": "Roaming",
    "fit_role": "dm_dlp",
-   "fit_sim": 0.89,
+   "fit_sim": 0.867,
    "label": "맥 알리스터",
    "lh": "OWNED",
-   "map25": "00321377622X9614887211211",
+   "map25": "013104X862398613865111211",
    "name_en": "Alexis Mac Allister",
    "name_kr": "맥 알리스터",
    "player_id": 50,
-   "rate_basis": "r6",
-   "rate_note": "LDM 실측 5경기 평균 6.64",
-   "rate_v": 6.64,
+   "rate_basis": "full2526",
+   "rate_note": "LDM 33경기 평균 6.86 (measured:season:full2526)",
+   "rate_v": 6.86,
    "slot_type": "DM",
    "sort_order": 5
   },
   {
    "fit_focus": "Roaming",
    "fit_role": "dm_dlp",
-   "fit_sim": 0.689,
+   "fit_sim": 0.808,
    "label": "흐라벤베르흐",
    "lh": "OWNED",
-   "map25": "112113X594266632466514432",
+   "map25": "00111287X6168951369601221",
    "name_en": "Ryan Gravenberch",
    "name_kr": "흐라벤베르흐",
    "player_id": 49,
-   "rate_basis": "r6",
-   "rate_note": "LDM 실측 6경기 평균 6.77",
-   "rate_v": 6.77,
+   "rate_basis": "full2526",
+   "rate_note": "RDM 45경기 평균 7.05 (measured:season:full2526)",
+   "rate_v": 7.05,
    "slot_type": "DM",
    "sort_order": 5
   },
   {
-   "fit_focus": "Roaming",
-   "fit_role": "dm_dlp",
-   "fit_sim": 0.674,
+   "fit_focus": "Balanced",
+   "fit_role": "cam_halfwinger",
+   "fit_sim": 0.683,
    "label": "소보슬라이",
    "lh": "OWNED",
-   "map25": "41324345XX237861326610110",
+   "map25": "21223344X7224751223510111",
    "name_en": "Dominik Szoboszlai",
    "name_kr": "소보슬라이",
    "player_id": 51,
-   "rate_basis": "r6",
-   "rate_note": "RDM 실측 (평점 미기재)",
-   "rate_v": null,
+   "rate_basis": "full2526",
+   "rate_note": "CAM 18경기 평균 6.87 (measured:season:full2526)",
+   "rate_v": 6.87,
    "slot_type": "DM",
    "sort_order": 6
   },
   {
-   "fit_focus": "Balanced",
-   "fit_role": "wm_insidefwd",
-   "fit_sim": 0.675,
+   "fit_focus": "Attack",
+   "fit_role": "wm_wideplm",
+   "fit_sim": 0.769,
    "label": "학포",
    "lh": "OWNED",
-   "map25": "56831X8674768332323200100",
+   "map25": "77210X8210631104210001100",
    "name_en": "Cody Gakpo",
    "name_kr": "학포",
    "player_id": 53,
-   "rate_basis": "r6",
-   "rate_note": "LM 실측 6경기 평균 6.52",
-   "rate_v": 6.52,
+   "rate_basis": "full2526",
+   "rate_note": "LAM 36경기 평균 7.16 (measured:season:full2526)",
+   "rate_v": 7.16,
    "slot_type": "WM",
    "sort_order": 7
   },
   {
    "fit_focus": "Balanced",
    "fit_role": "cam_halfwinger",
-   "fit_sim": 0.785,
+   "fit_sim": 0.736,
    "label": "비르츠",
    "lh": "OWNED",
-   "map25": "120425857X443564223210100",
+   "map25": "333447X588365633523311101",
    "name_en": "Florian Wirtz",
    "name_kr": "비르츠",
    "player_id": 52,
-   "rate_basis": "r6",
-   "rate_note": "CAM 실측 5경기 평균 7.00",
-   "rate_v": 7.0,
+   "rate_basis": "full2526",
+   "rate_note": "CAM 24경기 평균 6.98 (measured:season:full2526)",
+   "rate_v": 6.98,
    "slot_type": "CAM",
    "sort_order": 8
   },
   {
    "fit_focus": "Attack",
    "fit_role": "wm_winger",
-   "fit_sim": 0.91,
+   "fit_sim": 0.846,
    "label": "살라",
    "lh": "OWNED",
-   "map25": "011480003X000240001100000",
+   "map25": "001570014X000240011300000",
    "name_en": "Mohamed Salah",
    "name_kr": "살라",
    "player_id": 54,
-   "rate_basis": "r6",
-   "rate_note": "RM 실측 (평점 미기재)",
-   "rate_v": null,
+   "rate_basis": "full2526",
+   "rate_note": "RAM 34경기 평균 7.11 (measured:season:full2526)",
+   "rate_v": 7.11,
    "slot_type": "WM",
    "sort_order": 9
   }

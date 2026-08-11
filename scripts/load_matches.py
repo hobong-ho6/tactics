@@ -32,9 +32,13 @@ def main(path):
         if not ln.strip():
             continue
         p = ln.split("|")
-        expect = 8 + len(STAT_FIELDS) + 1
-        if len(p) != expect:
-            raise ValueError(f"필드 수 불일치({len(p)} != {expect}): {ln[:80]}")
+        base = 8 + len(STAT_FIELDS) + 1
+        # 마지막에 team_code가 붙은 변형도 받는다 (타 팀 수집분)
+        team = "AVL"
+        if len(p) == base + 1:
+            team = p.pop()
+        elif len(p) != base:
+            raise ValueError(f"필드 수 불일치({len(p)} != {base}): {ln[:80]}")
         pid, eid, date, comp, hp, lineup_pos = int(p[0]), int(p[1]), p[2], p[3], int(p[4]), p[5]
         if (pid, eid) in have:
             skip += 1
@@ -52,8 +56,8 @@ def main(path):
             minutes,rating,lineup_pos,avg_x,avg_y,hit_points,cells,map25,
             xg,xa,key_passes,duels_won,duels_lost,tackles,interceptions,goals,assists,touches,recoveries,
             source,confidence)
-            VALUES(?,?,'AVL',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'measured')""",
-                    (pid, eid, season_of(date), date, comp or None,
+            VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,'measured')""",
+                    (pid, eid, team, season_of(date), date, comp or None,
                      stats["minutes"], stats["rating"], lineup_pos or None,
                      float(p[6]) if p[6] else None, float(p[7]) if p[7] else None,
                      hp, cells, encode([int(x) for x in cells.split(",")]) if cells else None,

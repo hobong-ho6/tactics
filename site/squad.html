@@ -10,7 +10,7 @@
 <span class="mono">python3 scripts/export.py</span>를 다시 돌릴 것.</p>
 <script type="module">
 import { mountHeader, loadTeam, loadKernels, loadGameStats, sofifaLink, statLine } from './assets/data.js';
-import { annotate } from './assets/glossary.js';
+import { annotate, mountGlossaryTips } from './assets/glossary.js';
 import { Kernel } from './assets/kernel.js';
 import { miniGrid } from './assets/pitch.js';
 
@@ -44,4 +44,5 @@ document.getElementById('tbl').innerHTML =
   + rows.join('');
 }
 build();
+mountGlossaryTips();
 </script></body></html>

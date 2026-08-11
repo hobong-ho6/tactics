@@ -120,7 +120,43 @@ export function annotate(html){
     return part.replace(RE, m => {
       if (seen.has(m)) return m;
       seen.add(m);
-      return `<abbr class="gl" title="${esc(GLOSSARY[m])}">${m}</abbr>`;
+      // data-tip = 직접 그리는 툴팁의 원문. title은 접근성·복사용 보조.
+      return `<abbr class="gl" tabindex="0" data-tip="${esc(GLOSSARY[m])}" title="${esc(GLOSSARY[m])}">${m}</abbr>`;
     });
   }).join('');
+}
+
+/* 툴팁을 직접 그린다 — 사파리는 <abbr title>의 네이티브 툴팁을 띄우지 않는다.
+   문서에 한 번만 붙이면 이후 삽입되는 abbr에도 위임 방식으로 동작한다. */
+let TIP;
+function showTip(el){
+  if (!TIP){
+    TIP = document.createElement('div');
+    TIP.className = 'gl-tip';
+    document.body.appendChild(TIP);
+  }
+  TIP.textContent = el.dataset.tip;
+  TIP.style.visibility = 'hidden';
+  TIP.style.display = 'block';
+  const r = el.getBoundingClientRect(), t = TIP.getBoundingClientRect();
+  let left = r.left + r.width / 2 - t.width / 2;
+  left = Math.max(8, Math.min(left, innerWidth - t.width - 8));
+  const above = r.top > t.height + 12;
+  TIP.style.left = `${left + scrollX}px`;
+  TIP.style.top = `${(above ? r.top - t.height - 8 : r.bottom + 8) + scrollY}px`;
+  TIP.style.visibility = 'visible';
+}
+function hideTip(){ if (TIP) TIP.style.display = 'none'; }
+
+export function mountGlossaryTips(){
+  if (document.body.dataset.glTips) return;
+  document.body.dataset.glTips = '1';
+  const hit = e => e.target.closest?.('abbr.gl');
+  document.addEventListener('pointerover', e => { const el = hit(e); if (el) showTip(el); });
+  document.addEventListener('pointerout',  e => { if (hit(e)) hideTip(); });
+  document.addEventListener('focusin',     e => { const el = hit(e); if (el) showTip(el); });
+  document.addEventListener('focusout',    e => { if (hit(e)) hideTip(); });
+  // 터치: 탭하면 뜨고 바깥을 누르면 닫힌다
+  document.addEventListener('click', e => { const el = hit(e); el ? showTip(el) : hideTip(); });
+  addEventListener('scroll', hideTip, { passive: true });
 }

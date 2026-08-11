@@ -297,6 +297,76 @@
    "source": "obs#145"
   },
   {
+   "adherence": "MEDIUM — 위치(왼쪽 중앙수비)와 배급 임무는 실측과 정합하지만, '압박·경합으로 지배하는 수비수'와 '세트피스 득점 위협'이라는 서사는 태클 백분위 10·득점 0으로 실측이 지지하지 않는다.",
+   "confidence": "서사 소스(3티어급) — roundtable은 2026-06-09 발행이 확인돼 25/26 시즌을 서술한다. 세트피스 요구 기사는 발행일 미확인이라 시기 특정 없이 인용했다. 실측은 HIGH(SofaScore 전수 40경기, LCB 순수 17경기 · Fotmob 리그 표본 1109터치 규모). ⚠️ 캐비앗: 밍스는 25/26 리그 출전이 적어 Fotmob 백분위의 분모가 작다(90분당 백분위는 obs#154의 교훈대로 분모 확인 필요). 세트피스 지표는 리그 표본만 반영한다.",
+   "duties": "왼발 센터백으로, 에메리는 전통적으로 왼쪽 중앙수비에 왼발잡이를 세우는 것을 선호하며 밍스가 그 조건에 맞는다는 서술이 있다(roundtable, 2026-06-09). 같은 글은 33세인 그가 더는 1선택이 아니고 파우 토레스·린델뢰프와 경쟁하는 '비중 있는 보조 자원'이며, 에메리가 그를 쓰는 이유를 기량보다 리더십·존재감·성격으로 설명한다. 2025년 달력해 기준 프리미어리그 출전이 7경기에 그쳤고 햄스트링으로 한 달가량 추가 이탈해 콘사-파우 조합이 주전으로 굳어졌다는 보도가 붙는다. 에메리가 그의 신장을 살려 세트피스에서 꾸준한 득점 위협이 되기를 요구했다는 발언도 기록돼 있다. 즉 서사상의 임무는 '왼발 빌드업 출발점 + 세트피스 표적 + 드레싱룸 리더'이고, 제약은 능력이 아니라 가용성이다.",
+   "execution": "실측은 왼쪽 센터백 배치를 그대로 확인한다. 25/26 전수 집계 LCB 17경기 평균 6.74, 그리드 `0010012000252102X31027510`은 최대값 칸이 4행 2열(자기 진영 좌중앙)이고 5행 2열=7·3행 2열=5로 좌중앙 레인에 질량이 몰려 있으며 우측 끝 열은 전 행 0이다. 슬롯 판정도 lineup_pos LCB 14경기(1202분·평점 6.59)·RCB 2경기뿐이라 좌측 고정이다. 그러나 '공격적 수비수' 쪽 지표는 서사만큼 강하지 않다 — Fotmob 25/26 PL에서 태클 5회(백분위 10, 90분당 2), 인터셉트 11회(27), 수비적 행동 108회(33), 경합 승률 55.1%(32), 공중 경합 승률 59.7%(53)로 대부분 중하위권이다. 반대로 배급 축은 뒷받침된다 — 패스 정확도 90.0%가 백분위 79, 성공 패스 842회(90분당 백분위 73), 정확한 롱볼 90분당 백분위 66이다. 세트피스 요구와 달리 리그 득점 0·유효슛 1(백분위 24)로 표적 산출은 나오지 않았다.",
+   "game_role_implication": "현 `fit_role`=cb_bpd(Ball-Playing Defender) / `fit_focus`=Aggressive, `fit_sim`=0.935(25/26 LCB 17경기)로 등재돼 있다. 배급 지표(패스 정확도 백분위 79)가 Ball-Playing Defender 쪽을 뒷받침하므로 역할 자체는 유지가 타당하다. 다만 포커스 Aggressive는 그리드 형태가 뽑아낸 값이고 이벤트 지표(태클·인터셉트 하위권)는 오히려 cb_bpd/Build-Up 쪽 서술(점유 시 홀딩 미드필더처럼 전진)과 충돌하지 않는 수준이므로, 포커스는 노이즈 구간 재검토 대상으로 남긴다. PlayStyles는 DB에서 조회하지 않았으므로 지정하지 않는다.",
+   "label": "밍스",
+   "position": "LCB",
+   "source": "roundtable.io 「Tyrone Mings And Aston Villa: What Happens Next?」(2026-06-09) https://roundtable.io/sports/soccer/premier-league/aston-villa/transfers/tyrone-mings-and-aston-villa-what-happens-next · Football Insider 「Aston Villa make Tyrone Mings decision as concerning data emerges」 https://www.footballinsider247.com/exclusive-aston-villa-make-tyrone-mings-decision-as-concerning-data-emerges · BBC Sport 「Emery eases fears over Villa's defensive crisis」 https://feeds.bbci.co.uk/sport/football/articles/cn8x2dj92myo · AOL/PA 「Villa boss Unai Emery wants Tyrone Mings to become consistent set-piece threat」 https://www.aol.com/villa-boss-unai-emery-wants-111542861.html"
+  },
+  {
+   "adherence": "LOW — 서사(중앙·하프스페이스 드리프트형 전방)와 빌라 실측(우측 레인 고정·수비 부담)이 어긋나며, prescriptions의 기존 판정('부적응이 아니라 역할 미스매치')과 같은 방향이다.",
+   "confidence": "서사 소스(3티어급, 구단 공식 1건 포함) — 임대 시점·구매 옵션은 구단 공식과 25/26 시즌 기사로 확인된다. ⚠️ South London News 기사는 나이·국적·과거 소속에 명백한 오류가 있어 채택하지 않았다. 실측은 HIGH(빌라 RAM 15경기 1235분 + Fotmob 리그 1015분급 표본). ⚠️ 니스 시절 그리드 행은 3백 표본이라 슬롯 라벨 신뢰도가 낮고(obs#98), 25/26 빌라 행은 열 중심이 예측보다 0.30 낮아 좌우 폭 해석에 오차를 병기해야 한다(obs#108).",
+   "duties": "니스 아카데미 출신으로 24/25에 12골을 넣고 구단 올해의 선수에 뽑힌 뒤 2025년 8월 약 €30m에 빌라로 이적했다(Wikipedia·cpfc.co.uk). 분석자들은 그를 '중앙을 관통하다가 측면으로 흘러나가고 배후를 노리는 힘 있고 다목적인 공격수 — 박스 안 전문 스트라이커라기보다 전환 국면에 유용한 현대형 포워드'로 규정한다. 빌라에서 주된 역할을 잡지 못한 채 2026년 1월 30일 크리스털 팰리스로 임대(구매 옵션 약 £28m)됐고, 글라스너 체제에서 핵심으로 평가받았으나 무릎 부상으로 결장이 이어졌다. 2026년 5월 시점 보도는 팰리스 완전 영입이 유력하다고 적는다. 즉 소속팀에서의 임무는 '중앙-좌측 하프스페이스를 오가는 전방 자원'이었지 측면 고정 윙어가 아니었다.",
+   "execution": "⚠️ 위치 주장과 실측이 정면 충돌하고, 규약대로 실측을 채택한다. 빌라 25/26 전수 집계는 lineup_pos='RAM' 15경기(1235분) 평균 6.76이고 그리드 `003550024X002470013700113`은 좌측 두 열(1·2열)이 25칸 중 전부 0이며 최대값 칸이 2행 5열(우측 터치라인·전진 대역)이다. 즉 빌라는 그를 우측 레인에 고정했고 '중앙을 관통한다'는 서사가 그리드에 나타나지 않는다. 니스 시절 중앙 표본(prescriptions kind='measured:ST', 툴 x≈49·y≈65)과 팰리스 임대 표본(kind='measured:CP-loan', CAM, 툴 x≈40 — 중앙-좌측)은 서사와 일치하므로, 충돌은 선수 성향이 아니라 빌라의 배치에서 온다. 산출도 이 구조를 따라간다 — Fotmob 25/26 PL 기회 창출 5회(90분당 백분위 8), 슛 11회(8), 터치 412회(9), 성공 패스 154회(8), 상대 진영 볼 탈취 3회(11)로 창조·관여 지표가 리그 하위권인 반면 태클 24회(90분당 백분위 89)·경합 승 69회(89)·수비적 행동 85회(79)는 상위권이다. 우측에서 볼을 만지기보다 수비 트래킹을 한 선수의 서명이다.",
+   "game_role_implication": "현 `fit_role`=wm_winger(Winger) / `fit_focus`=Balanced, `fit_sim`=0.782 — 25/26 빌라 우측 실측 기준으로는 정합하지만, 이는 '그가 그렇게 쓰였다'는 기록이지 최적 처방이 아니다. Winger/Balanced 설명(수비·공격 양쪽 지원, 배후 침투와 패스 옵션 혼합)은 그의 태클 백분위 89와는 맞지만 기회 창출 백분위 8과는 맞지 않는다. 니스·팰리스 표본이 가리키는 중앙 계열 처방은 이 행으로 대체되지 않으므로, 그를 다시 쓸 경우 슬롯을 우측 와이드로 고정하는 처방은 재검토 대상이다. ⚠️ 신분 충돌 명기: prescriptions 주석은 그가 26/27 스쿼드 밖(2026-06-30 소속 Crystal Palace)이라고 적었는데 obs#152는 Fotmob AVL 명단에서 그를 발견해 squad_entries(regime_id=1)에 OWNED로 등재했다 — 소속 확정 전까지 처방 인용에 이 충돌을 병기해야 한다. PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
+   "label": "게상",
+   "position": "RM",
+   "source": "Crystal Palace 공식 「Evann Guessand joins Crystal Palace on loan」(2026-01-30) https://www.cpfc.co.uk/news/announcement/evann-guessand-joins-crystal-palace-on-loan/ · Wikipedia 「Evann Guessand」 https://en.wikipedia.org/wiki/Evann_Guessand · CaughtOffside 「Crystal Palace expected to sign Evann Guessand permanently」(2026-05-18) https://www.caughtoffside.com/2026/05/18/crystal-palace-agree-deal-premier-league-striker/"
+  },
+  {
+   "adherence": "HIGH — '마르티네스 뒤 컵 로테이션 키퍼, 배후 청소가 아니라 패스 옵션'이라는 서사와 그리드·커널·이벤트 지표가 모두 같은 방향이다.",
+   "confidence": "서사 소스(구단 공식 1티어 + 백과 3티어) — 이적 시점·계약·출전 패턴은 공식·리그 자료로 확인된다. ⚠️ 스타일(스위퍼 여부)을 직접 다룬 전술 분석 매체 서술은 찾지 못했으므로 스타일 판단은 전적으로 실측(그리드 커널 Δ0.188 + obs#154)에 의존한다. ⚠️ 표본 캐비앗: 리그 표본이 약 585분, 전 대회 16경기 1306분으로 얇다.",
+   "duties": "2025년 7월 15일 브레스트에서 €3.5m에 이적한 백업 골키퍼로, 등번호 40번·신장 1.93m다(avfc.co.uk). 25/26 임무는 마르티네스 뒤의 컵·유로파리그 로테이션 키퍼였다 — 전 대회 7경기 584분에 그쳤고 그중 4경기가 유로파리그였으며, 2월 21일~4월 9일과 4월 16일~5월 20일 각각 9경기 연속 미출전 구간이 있다. 이전 경력은 배후 커버형 활동량보다 안정적 수비 조율 쪽으로 서술된다 — 브레스트에서 4년 148경기, 23/24 클린시트 13회로 구단 첫 챔피언스리그 진출에 기여했고 24/25에는 41경기 12클린시트(챔스 9경기)를 기록했다. ⚠️ 확보한 소스 어디에도 그를 스위퍼형 골키퍼로 규정한 전술 분석 서술은 없다.",
+   "execution": "그리드 `0000000000000000010001X10`은 최대값 칸이 최하단 행 중앙(자기 골문 앞)이고 인접 두 칸만 1로, 골문 이탈이 거의 없는 분포다. 25/26 GK 16경기(1306분) 집계 평균 7.08이고 커널 전수 재산출에서 `gk_goalkeeper`/Defend가 0.961로 `gk_sweeper`/Balanced 0.773 대비 Δ0.188 — EA 노이즈 구간(0.02~0.05, obs#91) 밖이다. Fotmob의 '스위퍼 행동 90분당 백분위 95'는 반대 신호로 보이지만 obs#154가 이미 기각했다 — 합계는 9회·백분위 41이고 per90 역산 시 리그 출전이 약 585분뿐이라 분모가 너무 작다. 오히려 프로필과 맞는 지표는 배급 쪽이다 — 패스 정확도 76.3%가 백분위 90(90분당도 90), 롱볼 정확도 34.9%가 백분위 64다. 선방 지표는 평범하다(선방률 65.5% 백분위 36, 선방 19회 33, 선방으로 막은 실점 −0.42로 기대 대비 마이너스).",
+   "game_role_implication": "현 `fit_role`=gk_goalkeeper(Goalkeeper) / `fit_focus`=Defend, `fit_sim`=0.961로 정합하며 obs#154가 스위퍼 계열 대안을 명시적으로 기각했다. 감독 프로필의 빌드업 서술도 'GK Defend — 참여는 패스 옵션 수준'이라 적혀 있고 패스 정확도 백분위 90이 이를 확증한다. 처방 변경 근거 없음. ⚠️ 재검토 조건은 obs#154가 정한 대로, 26/27에 리그 900분 이상을 소화하고도 스위퍼 행동 90분 백분위가 상위권을 유지할 때다. PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
+   "label": "비조",
+   "position": "GK",
+   "source": "Aston Villa 공식 「Villa announce Marco Bizot signing」(2025-07-15) https://www.avfc.co.uk/news/2025/july/15/villa-announce-marco-bizot-signing/ · Aston Villa 선수 프로필 https://www.avfc.co.uk/players/marcobizot/ · Wikipedia 「Marco Bizot」 https://en.wikipedia.org/wiki/Marco_Bizot · Premier League 프로필 https://www.premierleague.com/en/players/72147/marco-bizot/overview"
+  },
+  {
+   "adherence": "MEDIUM-HIGH — '내려와 배급하는 광역 중앙 미드필더'라는 임무는 실측과 정합하지만, '10번으로 쓰기엔 3순위'라는 서열 서사는 26/27 스쿼드 기준 커널 결과(CAM 스쿼드 1위 0.803)와 긴장한다.",
+   "confidence": "서사 소스(3티어급) — Read Aston Villa 2026-07-08 · Aston Villa News 2026-05-17로 발행일이 25/26 시즌 종료 직후임이 확인된다. 실측은 HIGH(SofaScore 전수 25경기 중 RDM 순수 17경기 875분 + 슬롯 전수 채점, 회귀검증 통과). ⚠️ 캐비앗: SofaScore lineup_pos가 'M' 단일 라벨이라 경기별 LDM/RDM/CAM 구분은 불가하고 슬롯 판정은 커널 적합도에 의존한다(라벨 근거 아님). ⚠️ 코번트리 이적설은 2티어권(GiveMeSport·Football Insider·Football League World)으로 1티어 확인 대기 상태다.",
+   "duties": "25/26 그의 자리는 선발이 아니라 로테이션이었다 — 프리미어리그 17경기 출전이지만 대다수가 교체였고 무릎 부상으로 여러 차례 이탈했다. 유로파리그 명단에 등록되지 않아 프라이부르크와의 결승(5월 20일)을 포함해 유럽 대회에는 전혀 나설 수 없었다. 전술적 임무는 2024년 복귀 이후 카마라·틸레만스·오나나의 3선 백업이 본체이고, 25/26에는 10번 자리 기용이 간간이 나왔으며 11월 리즈 원정이 가장 뚜렷한 사례로 지목된다. 다만 공격형 미드필더 서열에서는 로저스·부엔디아에 이은 3순위였고, 리버풀전 교체 출전에서 터치 29회·상대 박스 터치 0회라는 비판적 평가도 붙었다. 2026년 7월 코번트리와의 협상이 진행되는 가운데, 전용 CAM을 영입하는 대신 바클리를 위로 재배치하자는 반론이 함께 제기됐다.",
+   "execution": "실측은 '3선 백업'과 'CAM 재배치론' 양쪽을 동시에 지지한다. 25/26 lineup_pos='M' 17경기(875분) 집계 평균 6.91, 그리드 `123213989136X612566201211`은 2행에 9·8·9가 나란히 서고 최대값 칸이 3행 3열(피치 정중앙)이며 1~4행에 고르게 질량이 퍼진 좌우 대칭 광역 분포다. 슬롯 전수 채점에서 RDM `dm_dlp`/Roaming 0.836이 2위(dm_dlp/Build-Up 0.575)를 Δ0.260으로 압도했고, CAM `cam_playmaker`/Build-Up 0.803은 스쿼드 1위로 맥긴 0.641을 Δ0.162 앞선다 — 즉 '3순위 10번'이라는 서열 서사와 달리 26/27 스쿼드 안에서는 그가 최적합자다. 다만 '박스 도착이 없다'는 비판은 실측이 그대로 확인한다 — Fotmob 25/26 PL 상대 박스 터치 18회로 백분위 14(90분당 9)이고, 기회 창출 10회는 28이다. 반면 기술 비율 지표는 상위권이다 — 롱볼 정확도 73.7%(백분위 92), 패스 정확도 87.7%(89), 드리블 성공률 65.0%(96), 공중 경합 승률 46.7%(86). 25/26 프리시즌에도 친선 5경기 중 4경기 선발로 방출 대상이 아닌 주력으로 쓰였다.",
+   "game_role_implication": "현 `fit_role`=dm_dlp(Deep-Lying Playmaker) / `fit_focus`=Roaming, `fit_sim`=0.807(RDM 17경기)로 등재돼 있고, Roaming 설명('피치 폭을 가로질러 이동해 공격을 지원')이 그의 좌우 대칭 광역 분포와 정합한다. CAM으로 올릴 경우 DB의 전수 열거는 `cam_playmaker`/Build-Up 0.803이 1위이고 `cam_shadow`/Attack이 0.260으로 최하위 — 즉 '내려와 배급하는 10번'이지 '박스로 침투하는 10번'이 아니며, 상대 박스 터치 백분위 14가 이를 이벤트 축에서 확증한다. 코번트리 이적설이 실현되지 않는다면 CAM 뎁스로 재배치하는 처방이 실측·서사 양쪽에서 지지된다. PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
+   "label": "바클리",
+   "position": "RDM",
+   "source": "Read Aston Villa 「Ross Barkley Coventry Talks Leave Aston Villa With Midfield Decision」(2026-07-08) https://readastonvilla.com/2026/07/08/ross-barkley-coventry-talks-leave-aston-villa-with-midfield-decision/ · Aston Villa News 「Ross Barkley blows Europa League final shot」(2026-05-17) https://www.astonvillanews.co.uk/2026/05/17/ross-barkley-blows-europa-league-final-shot-he-cant-start-after-liverpool-disasterclass/ · roundtable.io 「The Aston Villa Player Who Could Be Repurposed By Unai Emery」 https://roundtable.io/sports/soccer/premier-league/aston-villa/transfers/the-aston-villa-player-who-could-be-repurposed-by-unai-emery · Football League World 「Frank Lampard plots Coventry City move for Ross Barkley」 https://footballleagueworld.co.uk/coventry-city-plotting-audacious-transfer-swoop-for-premier-league-midfielder/"
+  },
+  {
+   "adherence": "MEDIUM — 우측 배치와 크로스·기회 창출 임무는 실측과 맞지만, 소스가 강조한 '속도로 정면 돌파하는 윙어'는 드리블 성공률 백분위 5로 실측이 정면 반박한다(부상 누적 상태의 표본이라는 교란 포함).",
+   "confidence": "서사 소스(구단 공식 1건 + 3티어 다수) — 임대 개시(2025-08-20)·종료(2026-01-21)·헐 메디컬(2026-08-05)이 모두 25/26~26/27 창 시점으로 확인된다. 실측은 MEDIUM-HIGH — 빌라 복귀 후 RM 순수 표본이 9경기 523분으로 얇고, Fotmob 리그 표본도 90분 환산 약 5.8경기 규모라 90분당 백분위(회수 98·xA 94)는 obs#154의 교훈대로 분모를 감안해 읽어야 한다. ⚠️ 부상 후유 상태에서 얻은 표본이라 능력의 기준선으로 쓰기 어렵다.",
+   "duties": "2025년 8월 20일 로마로 시즌 임대(구매 옵션 포함)됐다. 임대 전 분석은 그를 '수비수를 정면으로 몰고 들어가 속도와 기교로 라인을 끊는 윙어'로 규정하고, 속도·과감함을 활용하는 가스페리니 체제와의 궁합을 기대하되 근육 부상 이력을 최대 변수로 지목했다. 실제로는 첫 훈련에서 부상해 59일·8경기를 결장했고, 11월 햄스트링(23일), 12월 이후 추가 근육 문제(24일·5경기)로 반복 이탈했다. 로마에서 11경기 중 선발은 2경기·300분 남짓, 0골 2도움에 그쳤고 2026년 1월 21일 임대가 조기 종료됐다 — 가스페리니는 '그에게도 우리에게도 부정적이었다'며 사유를 전적으로 부상으로 돌렸다. 빌라 복귀는 오나나·카마라·바클리·맥긴이 동시 이탈한 부상 위기를 메우기 위한 소환이었고, 복귀 후 프리미어리그 13경기를 뛰었으나 26/27에 주된 역할이 없다는 보도가 이어져 2026년 8월 5일 헐 시티 메디컬이 예정됐다.",
+   "execution": "실측이 서사의 시기 구분을 그대로 재현한다 — player_matches상 2025-10~12는 세리에A·코파 이탈리아(로마), 2026-01-25부터 프리미어리그로 바뀐다. 빌라 복귀 후 lineup_pos='M' 9경기(523분) 집계는 평균 6.46으로 이번 8명 중 최저 수준이고, 그리드 `001480025X001260012700125`는 좌측 두 열이 전 행 0, 최대값 칸이 2행 5열(우측 터치라인 전진 대역)로 우측 레인 고정이다. 서사의 '수비수를 정면으로 몰고 들어가는' 부분은 실측이 지지하지 않는다 — Fotmob 25/26 PL 드리블 성공 5회로 성공률 19.2%(백분위 5), 경합 승률 33.8%(8), 유효슛 1회(8), xG 0.49(11), xGOT 0.11(10)로 1대1·마무리 축이 전부 리그 최하위권이다. 반대로 살아 있는 축은 배달이다 — 기회 창출 12회가 90분당 백분위 94, xA 1.46이 90분당 94, 크로스 정확도 26.3%가 73, 볼 회수 90분당 백분위 98이다. 즉 '드리블로 무너뜨리는 윙어'가 아니라 '우측에서 올려주고 회수하는 윙어'로 뛰었다.",
+   "game_role_implication": "현 `fit_role`=wm_winger(Winger) / `fit_focus`=Attack, `fit_sim`=0.768(RM 9경기). Attack 포커스 설명은 '발밑으로 받기보다 수비 뒤로 침투'인데, 실측의 xG 백분위 11·유효슛 8은 배후 침투 산출이 없었음을 보여주고 기회 창출 90분당 94는 오히려 패스 옵션·배달 쪽이다 — Balanced(수비·공격 양면 지원, 배후 침투와 패스 옵션 혼합) 쪽 재검토 여지가 있으나 표본 9경기라 판정 변경 근거로는 약하다. 실무적으로는 헐 시티 이적이 확정되면 26/27 프리셋에서 제외될 자원이다. PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
+   "label": "베일리",
+   "position": "RM",
+   "source": "football-italia 「Gasperini explains Bailey's Aston Villa return from AS Roma: 'Negative for him and us'」 https://football-italia.net/gasperini-bailey-villa-return-roma-negative/ · football-italia 「Bailey returns to Aston Villa: what went wrong at Roma?」 https://football-italia.net/bailey-returns-aston-villa-what-wrong-roma/ · AS Roma 공식 「Bailey's loan termination」 https://www.asroma.com/en/news/74698/baileys-loan-termination · RTÉ 「Aston Villa recall Leon Bailey from Roma loan」(2026-01-21) https://www.rte.ie/sport/soccer/2026/0121/1554289-transfers-aston-villa-recall-bailey-from-roma-loan/ · Get Italian Football News 「The numbers behind Leon Bailey's struggles at AS Roma」(2026) https://www.getfootballnewsitaly.com/2026/the-numbers-behind-leon-baileys-struggles-at-as-roma/ · Read Aston Villa 「Leon Bailey set for Hull City medical」(2026-08-05) https://readastonvilla.com/2026/08/05/leon-bailey-set-for-hull-city-medical-as-aston-villa-exit-nears/"
+  },
+  {
+   "adherence": "LOW — '속도와 공격 성향, 태클·볼 탈취가 강한 풀백'이라는 영입 당시 규정과 25/26 실측(딥 포지셔닝·경합 승률 백분위 2·상대 박스 터치 백분위 5)이 정반대다. 다만 표본이 252~297분으로 극히 얇아 능력 판정이 아니라 그 시즌 상태 기록으로 읽어야 한다.",
+   "confidence": "서사 소스(구단 공식 2건 + 3티어) — Aston Villa News 2026-03-19 · Read Aston Villa 2026-07-03으로 25/26 시즌 서술임이 확인된다. 실측은 LOW-MEDIUM — 분데스리가 252분(전 대회 297분), 그리드 유효 3~4경기로 표본 미달이다. squad_entries가 이미 '그리드·적합 미산출'로 결손 처리했다. Fotmob 백분위는 90분당 기준 분모가 3경기 수준이라 단독 근거로 쓰면 안 된다.",
+   "duties": "24/25 겨울 라이프치히로 임대돼 첫 반 시즌에 14경기 중 10경기를 뛰며 좋은 평가를 받았고, 라이프치히는 €12~15m 완전 영입 대신 25/26까지 임대를 연장했다. 영입 당시 단장 마르셀 셰퍼는 그를 '속도와 공격적 성향을 갖춘 근면한 풀백, 태클이 강하고 볼 탈취에 능하다'고 규정했다. 그러나 25/26은 분데스리가 5경기에 그쳤다 — 리들레 바쿠와 벤야민 헨릭스에게 밀렸고 무릎 부상으로 리듬이 끊겼으며, 1월 피오렌티나 이적이 무산돼 출전 기회를 얻지 못했다. 라이프치히는 결국 €10m 구매 옵션을 행사하지 않았고, 빌라 매체는 이 임대를 '재앙'으로 부르며 백업 우측 수비수로 신뢰하기 어렵다고 적었다.",
+   "execution": "⚠️ 그리드 표본이 3경기뿐이라 squad_entries에는 빈 그리드로 결손 표시돼 있고 `fit_role`/`fit_sim` 미산출이다 — 적합 판정을 인용할 수 없다. 참고용 prescriptions(kind='measured', 45분 이상 우측 선발 4경기 통합)의 그리드 `00014000240002X0003900113`은 4·5열(우측)에만 질량이 있고 최대값 칸이 3행 5열, 4행 5열=9로 중앙~수비 3분의 1에 몰려 있으며 최전방 행은 4에 그친다 — 툴 중심 x 81.7·y 46.6의 '전진 빈도 낮은 딥 우측 풀백'이다. 이벤트 지표는 셰퍼의 프로필 규정을 정면으로 반박한다 — Fotmob 25/26 분데스리가 태클 1회(백분위 3), 인터셉트 1회(3), 수비적 행동 12회(6), 경합 승률 26.7%(2), 경합 승 4회(5)로 '태클·볼 탈취 강점'이 전 지표 하위 5% 안이다. 살아 있는 축은 패스뿐이다 — 패스 정확도 87.1%(백분위 85), 롱볼 정확도 62.5%(92). 공격 관여는 사실상 없다 — 슛 0회, 상대 박스 터치 2회(백분위 5), xA 0.09(6).",
+   "game_role_implication": "적합도가 산출되지 않았으므로 역할 처방을 제시할 수 없다 — squad_entries의 rate_note가 명시한 대로 '그리드 3경기(표본 미달)'이 현재 상태다. obs#134가 정리한 대로 26/27 RB는 캐시 1명뿐이라 뎁스 후보로서의 가치가 걸려 있으나, 이번 실측만으로는 우측 뎁스 처방 근거가 서지 않는다. 다음 검증 기회는 26/27 공식전 출전 시 그리드 재수집이다(프리시즌 친선은 커버리지가 갈린다 — obs#133). PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
+   "label": "네델코비치",
+   "position": "RB",
+   "source": "Bundesliga 공식 「RB Leipzig extend Kosta Nedeljković loan from Aston Villa」 https://www.bundesliga.com/en/bundesliga/news/rb-leipzig-extend-kosta-nedeljkovic-loan-from-aston-villa-33084 · RB Leipzig 공식 「Kosta Nedeljkovic joins RB Leipzig on loan」 https://rbleipzig.com/en/news/kosta-nedeljkovic-joins-rb-leipzig-on-loan · Get German Football News 「RB Leipzig decide against exercising purchase option」(2026) https://www.getfootballnewsgermany.com/2026/rb-leipzig-decide-exercising-purchase-nedeljkovic-aston-villa-bundesliga-premier-league/ · Aston Villa News 「Kosta Nedeljkovic: Aston Villa defender enduring nightmare RB Leipzig loan」(2026-03-19) https://www.astonvillanews.co.uk/2026/03/19/kosta-nedeljkovic-aston-villa-defender-has-endured-nightmare-rb-leipzig-loan/ · Read Aston Villa 「Kosta Nedeljkovic Return Gives Aston Villa Right-Back Decision」(2026-07-03) https://readastonvilla.com/2026/07/03/kosta-nedeljkovic-aston-villa-right-back-return-2/"
+  },
+  {
+   "adherence": "MEDIUM — '양발 측면 겸용·왼발로 안으로 접어드는 우측'이라는 임무 서술은 실측 우측 편중과 정합하지만, 등록 포지션 LM과 실제 주력 우측 사이의 불일치는 그대로 남는다.",
+   "confidence": "서사 소스(구단 공식 1건 + 3티어) — The72 2026-01-15와 데드라인데이 임대 취소 기사로 25/26 시즌임이 확인된다. 실측은 MEDIUM-HIGH(웨스트브롬 우측 선발 12경기 그리드 + 시즌 통합 RM 9경기 672분). ⚠️ 캐비앗 2건: ⓐ 리그가 챔피언십이라 Fotmob 백분위의 비교 모집단이 프리미어리그가 아니다 ⓑ 좌측 표본 4경기는 별도 행으로만 존재해 통합 판정에 반영되지 않았다. ⚠️ 소스의 '포츠머스전 45분이 마지막 출전'과 DB의 1월 좌측 4선발 목록(포츠머스 포함) 사이에 세부 불일치가 있어 경기 단위 서술은 피했다.",
+   "duties": "25/26 시즌 초 웨스트브롬으로 시즌 임대됐다. 구단 스포팅 디렉터 앤드루 네스터는 '속도와 퀄리티', 그리고 '양쪽 윙을 모두 소화할 수 있는 능력'을 영입 이유로 들었고 미들즈브러 임대·잉글랜드 U21에서 풀백까지 적응한 이력을 함께 언급했다. 영입 전 분석은 톰 펠로우스의 대체로 우측에 세울 가능성을 짚었다 — 왼발잡이가 우측에서 안으로 접어 들어가는 형태다. 레스터전 데뷔골로 출발은 좋았으나 그 골이 시즌 유일한 공격포인트로 남았고, 챔피언십 24경기·14선발에 그치며 선발과 벤치를 오갔다. 1월 마감일에 임대가 조기 취소돼 시즌 잔여 기간 세리에A 피사로 재임대됐다. 등록상은 LM이고 등번호 19번으로 26/27 빌라에 복귀했다.",
+   "execution": "⚠️ 등록 포지션과 실측이 어긋나고 실측을 채택한다. 25/26 lineup_pos 분포는 웨스트브롬에서 RAM 9경기(672분·평균 6.42)·RM 2경기(153분·7.45)로 우측이 주력이고 LM은 2경기(135분·5.65)·LB 1경기뿐이다. 시즌 통합 그리드 `001361017X001271013800023`은 좌측 두 열이 거의 전부 0이고 최대값 칸이 2행 5열(우측 터치라인)로 우측 레인 고정이다. 별도 좌측 표본(prescriptions kind='measured:L', 1월 4경기)은 그리드 `64112X3210721008320031100`으로 완전히 반대편에 서 있어 좌우 두 프로파일이 분리 저장돼 있다 — '양쪽을 다 본다'는 서사 자체는 실측과 맞지만 비중은 우측이 압도적이다. Fotmob 25/26 챔피언십 지표는 균형형에 가깝다 — 드리블 성공률 48.4%(백분위 76), 걷어내기 27회(87), 슛 블록 4회(87), 인터셉트 10회(76), 헤더 슛 5회(82), 공중 경합 승 17회(73)로 수비·경합 축이 상위권인 반면 기회 창출 16회(53)·xA 1.74(53)·xG 2.54(55)로 창조·마무리는 중간이다. '한 골 외 공격포인트 없음'이라는 서사와 xG 55·xA 53의 중간값은 산출 미달 방향으로 일치한다.",
+   "game_role_implication": "현 `fit_role`=wm_winger(Winger) / `fit_focus`=Balanced, `fit_sim`=0.780(RM 9경기 672분). Balanced 설명(수비·공격 양쪽 지원, 배후 침투와 패스 옵션 혼합)은 그의 수비 지표 상위권(걷어내기 87·슛 블록 87·인터셉트 76)과 중간급 창조 지표 조합에 정합한다. ⚠️ 리그 수준 캐비앗이 중요하다 — Fotmob 백분위는 챔피언십 동포지션 대비값이라 프리미어리그로 환산하면 하향해야 하고, 26/27 빌라 우측 뎁스 판단의 직접 근거로 쓰기 어렵다. 좌측 배치를 검토한다면 별도 좌측 그리드(measured:L, 4경기)로 재채점이 필요하며 현 wm_winger 판정은 우측 표본 기준이다. PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
+   "label": "일링주니어",
+   "position": "RM",
+   "source": "West Bromwich Albion 공식 「Samuel Iling-Junior joins Albion on loan」 https://www.wba.co.uk/news/samuel-iling-junior-joins-albion-loan · BBC Sport 「West Brom sign Iling-Junior and Taylor on loan」 https://feeds.bbci.co.uk/sport/football/articles/c75420qy7d3o · BirminghamWorld 「West Brom lose attacker as Aston Villa star's loan deal cancelled」 https://www.birminghamworld.uk/sport/football/west-bromwich-albion/west-brom-aston-villa-samuel-iling-junior-loan-cancelled-transfer-deadline-day-5499151 · The72 「Update emerges on Samuel Iling-Junior's West Brom future amid loan struggles」(2026-01-15) https://the72.co.uk/2026/01/15/update-emerges-on-samuel-iling-juniors-west-brom-future-amid-loan-struggles/ · Football League World 「West Brom submit loan offer for Aston Villa winger Samuel Iling-Junior」 https://footballleagueworld.co.uk/west-brom-submit-loan-offer-for-aston-villa-winger-samuel-iling-junior/ · Transfermarkt 25/26 스탯 https://www.transfermarkt.co.uk/samuel-iling/leistungsdaten/spieler/581672"
+  },
+  {
    "adherence": "부분 일치 — 캐리 전진(온더볼)은 그리드 밖이라 미검증, 위치 주장은 실측이 정정",
    "confidence": "서사+실측 교차검증 — 온더볼 주장만 가설 잔존",
    "duties": "영상·스카우트 분석 종합(가설): 캐리로 전진하는 B2B — 드리블 돌파보다 운반, 박스 침투 시 공중볼 위협, 중거리 슈팅, 롱스로 보유",
@@ -357,6 +427,16 @@
    "source": "Total Football Analysis — totalfootballanalysis.com/player-analysis/tammy-abraham-scout-report-aston-villa-2025-2026-analysis · avfc.co.uk 공식 발표(2026-01-27) · Aston Villa News — astonvillanews.co.uk/2026/06/03/tammy-abraham-aston-villa-star-shows-2026-27-breakout-potential-with-underlying-numbers/"
   },
   {
+   "adherence": "판정 보류 — 스카우팅 서술은 풍부하나 그리드가 없어 위치·형태를 대조할 수 없고, 이벤트 지표는 175분 표본이라 '공중 경합 승률 89·수비적 행동 5' 두 방향 신호만 서사와 정합하는 수준이다.",
+   "confidence": "서사 소스(구단 공식 2건 + 리그 공식 + 스카우팅 리포트) — 이적(2026-01-12)·CAS 판정(2026-08-04)이 공식 자료로 확인돼 시기 오인 위험이 없다. ⚠️ 신장은 소스마다 1m90~193cm로 갈린다. ⚠️ 실측은 LOW — 리그1 162분·전 대회 438분, 유효 그리드 3경기 199분으로 표본 미달이고 squad_entries가 이미 결손 처리했다. 스카우팅 리포트의 기능 주장(연계형·압박 미가담·마무리 미완)은 그리드 밖 층이므로 가설로만 유지한다.",
+   "duties": "2026년 1월 12일 메스에서 약 €12m에 이적한 17세 스트라이커로, 5년 반 계약이며 역대 최고액 17세 이적 중 하나다(FOX Sports·Wikipedia). 스카우팅 서술은 그를 '순수 9번'으로 규정한다 — 신장 1.90~1.93m대에 즉시 눈에 띄는 운동능력으로 루카쿠 비교가 붙었고, 몸을 지능적으로 써서 상대와 공 사이에 자리를 잡아 볼을 지키고 연계를 만드는 유형이며 배후 침투를 즐긴다. 상세 리포트는 균형·민첩성이 좋고 볼 전진과 헤더가 뛰어나며 약발도 쓸 수 있는 반면 마무리와 슈팅 기술이 나머지 역량에 못 미친다고 적는다. 볼을 가진 국면에서는 등지고 떨궈주기·2대1·배후 침투·기점 역할을 오가는 연계형이고, 볼이 없을 때는 압박 가담이 적다고 명시한다. 메스 U19에서 15세에 26경기 13골을 넣었고 2025년 8월 17일 스트라스부르전에서 16세 217일에 구단 최연소 데뷔를 기록했다.",
+   "execution": "⚠️ 실측 그리드가 없다 — squad_entries가 'F 그리드 3경기 199분(표본 미달)'로 빈 그리드 결손 처리했고 prescriptions 행이 0건이라 적합도·슬롯 판정을 인용할 수 없다. 확보된 실측은 다음뿐이다: 25/26 리그1 9경기 162분 평균 6.58(전 대회 13경기 438분·평균 6.56), U17 유럽선수권 예선 3경기는 SofaScore 커버리지 밖(obs#133), 26/27 프리시즌 2026-08-07 바이에른 뮌헨전 60분 선발(평점 6.5). Fotmob 25/26 리그1 표본은 157~175분 수준이라 대부분 백분위가 하위권으로 찍힌다 — 터치 41회(백분위 5), 성공 패스 10회(3), 패스 정확도 55.6%(2), 슛 3회(5), 수비적 행동 2회(5). 이 구간에서 유일하게 서사와 맞는 방향의 지표는 공중 경합 승률 60.0%(백분위 89)와 xGOT 90분당 백분위 77이고, '압박 가담이 적다'는 서술은 수비적 행동 백분위 5와 방향이 일치한다. 다만 어느 쪽도 표본이 90분당 2경기 미만이라 단독 근거가 되지 못한다. 별도 실측으로 2026-08-01 인도네시아 올스타전 58분 득점(Lynch 도움)이 기록돼 있으나 이 경기는 히트맵·스탯이 전무하다(obs#126).",
+   "game_role_implication": "적합도 미산출이므로 역할 처방을 제시할 수 없다. 스카우팅 서술('등지고 지키는 연계형 9번, 배후 침투 겸장, 압박 가담 적음, 마무리 미완')은 가설로만 유지하고 26/27 공식전 그리드 수집 후 커널 채점으로 검증해야 한다 — 특히 '기점형'과 '배후 침투형'은 그리드 형태가 크게 달라 판별 가능하다. 2026-08-04 CAS가 빌라의 항소를 인용해 26/27 공식전 등록 자격이 확정됐으므로(avfc.co.uk) 표본 확보 경로는 열렸다. PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
+   "label": "Brian Madjo",
+   "position": "ST",
+   "source": "Aston Villa 공식 「Aston Villa announce Brian Madjo signing」(2026-01-12) https://www.avfc.co.uk/news/2026/january/12/signing-aston-villa-announce-brian-madjo-signing/ · Aston Villa 공식 「Madjo appeal upheld」(2026-08-04) https://www.avfc.co.uk/news/2026/august/04/news-madjo-appeal-upheld/ · The Scouting App 「Scouting Report: Brian Madjo」 https://www.thescoutingapp.com/blog/scouting-report-brian-madjo-469 · Ligue 1 공식 「One to watch: Metz's Brian Madjo - a precocious talent」 https://ligue1.com/en/articles/l1_article_3034-one-to-watch-metz-s-brian-madjo-a-precocious-talent · FOX Sports 「Aston Villa signs 17-year-old striker Brian Madjo from Metz」 https://www.foxsports.com/articles/soccer/aston-villa-signs-17yearold-striker-brian-madjo-from-metz-in-reported-14m-deal · Transfermarkt 「Meet Brian Madjo」 https://www.transfermarkt.us/meet-brian-madjo-aston-villa-sign-wonderkid-striker-compared-to-romelu-lukaku/view/news/458937 · Wikipedia 「Brian Madjo」 https://en.wikipedia.org/wiki/Brian_Madjo"
+  },
+  {
    "adherence": "HIGH — 서사(볼위닝 앵커·중앙 스크린)와 실측 그리드·기능축이 전면 정합. 긴장은 슬롯 커널 층에서만 발생: 빌라 LDM 기용 시 fit dm_widehalf/Build-Up .709, RDM 시 dm_dlp/Roaming .738 — 본인 정체성(dm_holding)과 슬롯 최적역할이 갈린다.",
    "confidence": "서사 소스(3티어급) — TFA 스카우트 리포트는 25/26 시즌 발행 확인(제목 명기). 실측 표본 6경기(45분+)로 시즌 전수 아님.",
    "duties": "토트넘(프랭크) 25/26 임대에서 클래식 볼위닝 앵커/6번 — 백라인 스크린, 전환 지연, 세컨드볼 회수, 중앙 진입로 차단. TFA는 프랭크가 브렌트포드의 뇌르고르 역할(순수 볼위너 + 세트피스 빅바디, 190cm·풀럼 시절 공중듀얼 62%)로 기용했다고 분석. PL 5번째로 많은 팀 내 출전시간 — 로테이션이 아닌 중심 기둥. 온볼 배급은 엘리트가 아니라는 한계 병기(풀럼 2년 태클 300개 1위·경고 27장의 파울 비용).",
@@ -403,6 +483,7 @@
    "fit_alonso": "HIGH — 알론소의 3-2-5 숏 빌드업(tac-tac-tac 리듬)도 볼 플레잉 GK를 전제하며 마르티네스의 배급 실측이 그대로 이식 가능 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — squad rate_v 7.95 실측에 더해 에메리 빌드업 축(manager_profiles buildup)이 GK의 빌드업 참여를 명시적으로 요구 — 임무와 실측 발자국의 정합이 duties에서 HIGH 판정.",
    "fit_iraola": "MEDIUM — 고압박·하이라인 체제는 배후 스위핑 GK를 요구하나 실측 발자국은 골라인 고정, 스위핑은 상황부에 그침 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "마르티네스",
    "name_en": "Emiliano Martínez",
    "overall": "A — 상위 4경기 평균 7.95(rate_v, 풀 내 평점 백분위 91)로 GK 슬롯 확정 주전(obs#110 XI, prescriptions fc26:opt:GK starter). 실측 히트맵은 순수 골라인형(GK 커널 코사인 .96 vs 스위퍼 .63)이고 스위핑은 상황부라는 duties 판정과 일치. 최종 처방은 gk_ballplaying/Build-Up(2026-07-05 숙련도 타이브레이크 확정).",
@@ -418,6 +499,7 @@
    "fit_alonso": "MEDIUM — 3-4-2-1 윙백의 폭 독점 역할과 전장 우측 커버 실측(.94)은 맞닿으나, 공격 산출(xA 백분위 47)이 폭 공급자 기준으로는 평범 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — obs#110 확정 XI RB이며 '풀백 한 명씩만 전진' C2 규칙의 잔류측 담당(manager_profiles implementation ④). duties 판정 HIGH.",
    "fit_iraola": "LOW — 이라올라의 인버티드 RB 성향(프림퐁 실측)과 정반대 — 캐시는 실측상 절대 안쪽으로 들어오지 않는 순수 와이드형 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "캐시",
    "name_en": "Matty Cash",
    "overall": "A− — 확정 XI의 RB(obs#110, fc26:opt:RB starter). rate_v 7.65(상위 6경기, 피크 8.4). 처방은 fb_wingback/Balanced — att_wb/Support(.898)와 Δ.007 동률(노이즈 이내)이라 FC26 숙련·에메리 C2 비대칭(수비우선 풀백) 근거로 채택(prescriptions optimal). obs#147 영상 분석에서 처방 정합 확인.",
@@ -433,6 +515,7 @@
    "fit_alonso": "HIGH — 알론소는 전 CB cb_bpd/Aggressive를 요구(implementation ①)하며 콘사의 실측 커널이 정확히 그 역할 — 백3 우측 스토퍼로 직이식 가능 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — role:season .938은 스쿼드 최상위 실측 적합. 에메리 백라인 스텝아웃·볼 플레잉 요구(obs#22 — CB Defender 숙련을 BPD로 기용)와 정확히 일치.",
    "fit_iraola": "MEDIUM — 하이라인 배후 커버는 pac 75와 요격형 수비(예상+)로 감당 가능하나 전면 맨투맨 전환 체제의 1v1 노출은 실측 검증 없음 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "콘사",
    "name_en": "Ezri Konsa",
    "overall": "S− — RCB 43경기 평균 7.05(rate_v), 시즌 그리드 cb_bpd/Aggressive 코사인 .938(role:season, 2위 Build-Up .865)로 스쿼드에서 가장 강한 역할 실측 정합. 패스 96%로 스쿼드 최고(duties 이벤트 스탯) — BPD 3축 충족으로 cb_bpd 승급. 확정 XI RCB(obs#110).",
@@ -448,6 +531,7 @@
    "fit_alonso": "HIGH — 백3 전원 cb_bpd 요구 체제에 좌측 BPD로 직결. 다만 알론소 처방은 Aggressive 포커스라 Build-Up 성향과 미세 긴장 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — 확정 XI LCB이며 빌드업 축(볼플레잉 CB 2인, obs#16)의 좌측 담당. duties 판정 HIGH.",
    "fit_iraola": "LOW — pac 67로 하이라인+전면 맨투맨 전환 체제의 배후 공간 리스크가 큼 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "파우 토레스",
    "name_en": "Pau Torres",
    "overall": "A — 상위 5경기 평균 7.35(rate_v), cb_bpd/Build-Up '명백히 확인'(duties·prescriptions optimal — 기능 pass 88% 진전형, 움직임 Aggressive .65 vs Build-Up .63은 노이즈차). 좌중앙 채널을 올라가며 전진하는 교과서적 좌측 볼 플레잉 CB. 확정 XI LCB(obs#110).",
@@ -463,6 +547,7 @@
    "fit_alonso": "HIGH — 알론소 좌 윙백은 인선 공백(formation 축)이고 마첸의 하이앤와이드 실측 프로필이 윙백 폭 독점 요구에 부합 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — 확정 XI LB로 C2 비대칭의 전진측(fb_att_wb 변형) 담당. 단 홈/지배 임무 한정 HIGH이며 원정 변형에선 Balanced/Defend 강등이 처방(duties).",
    "fit_iraola": "MEDIUM — 고강도 왕복과 pac 87은 부합하나 홈/원정 요동과 낮은 평점 일관성이 고압박 체제의 상시 강도 요구와 긴장 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "마첸",
    "name_en": "Ian Maatsen",
    "overall": "B+ — 확정 XI LB(obs#110)이나 rate_v 6.74(LB 16경기)로 XI 중 가장 낮은 축. 측정된 수비수 중 가장 전진형 발자국(평균 높이 44-56/100)이면서 홈/원정 요동이 스쿼드 최대(홈 ~51.6 vs 원정 ~43.6) — 하이앤와이드는 주로 홈 현상이고 원정에선 딥으로 수렴(duties 보강 실측).",
@@ -478,6 +563,7 @@
    "fit_alonso": "MEDIUM — 백3 체제는 BPD CB 수요가 3장이라 로테이션 가치가 오히려 커질 수 있으나 Aggressive 강도 요구 대비 기동력 의문 (교차 투영 — 실측 아님).",
    "fit_emery": "MEDIUM — 로테이션 CB로 처방 정합(.826)은 확인됐으나 XI 밖. 표본 3~5경기라 기능축 근거 약함(prescriptions optimal 주석).",
    "fit_iraola": "LOW — pac 50으로 하이라인·전면 맨투맨 체제 부적합 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "린델뢰프",
    "name_en": "Victor Lindelof",
    "overall": "B — 백업 CB, 상위 4경기 평균 7.05(rate_v)에 양쪽 CB 커버 가능. 시즌 그리드 cb_bpd/Aggressive .826 >> Build-Up .741로 스텝아웃 뚜렷(prescriptions optimal LCB). obs#14 전 스쿼드 재검증에서 유일하게 처방이 교정된 사례.",
@@ -493,6 +579,7 @@
    "fit_alonso": "HIGH — 알론소 rest_defense 축이 '더블피벗 중 한 명 Defend 계열 보험'을 명시적으로 요구 — 오나나의 볼위닝 홀딩 기능이 그 보험 그 자체 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — 확정 XI LDM이고 더블 피벗 dm_holding 분담(implementation ②)의 볼위닝 축. 세 레인 만능성이 에메리 피벗 로테이션에 직결.",
    "fit_iraola": "MEDIUM — 듀얼·압박검증은 부합하나 Controlled Lengthy 가속과 창조 최저 기능이 탈취 후 즉시 슛 전환 체제와 부분 긴장 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "오나나",
    "name_en": "Amadou Onana",
    "overall": "A− — 피벗 29경기 평균 7.13(rate_v), 확정 XI LDM(obs#110 starter). 처방은 dm_holding/Roaming(2026-07-05 숙련도 타이브레이크 확정) — 움직임은 dlp .87이나 기능은 볼위닝(태클 3.4·듀얼 6.6 스쿼드 최상위, 창조 최저 xa .04·kp 1.0, prescriptions optimal). 단 obs#129가 26/27 피봇을 '카마라 RDM·고메스 LDM'으로 기록해 슬롯 경쟁 존재.",
@@ -508,6 +595,7 @@
    "fit_alonso": "MEDIUM — 2×10번 하프스페이스 포켓에 인사이드 포워드 도착 성향이 닿으나 알론소 10번은 창조 우선(팔머형) — 맥긴은 듀얼·수직형 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — fit_sim 실측 .878(DM)·.801(CAM)에 확정 XI RM. 에메리 두 줄 4의 우측 뱅크 복귀 역할(implementation ②)을 정의하는 선수.",
    "fit_iraola": "HIGH — 듀얼 최다·압박검증·수직 움직임이 고강도 압박과 측면 압축 체제에 직결 — 단 피로 민감성은 강행군 리스크 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "맥긴",
    "name_en": "John McGinn",
    "overall": "S — 주장이자 확정 XI RM(obs#110 starter). RM 21경기 7.08에 천장 경기 전부(8.7/8.6/8.5), 피벗우측 7경기 7.87(fit_sim .878 — 자체 실측 최고), CAM .801까지 3슬롯 실측 보유. obs#145에서 외부 영상 분석이 내부 실측(obs#27·#89)을 독립 재현한 '검증자 사례'.",
@@ -523,6 +611,7 @@
    "fit_alonso": "LOW — 박스 미드필드의 극단적 기술 규율 요구(rest_defense 축) 대비 창조·배급 산출이 하위권 (교차 투영 — 실측 아님).",
    "fit_emery": "MEDIUM — 벤치 처방이 실측으로 정리된 백업. RDM(볼위닝 홀딩)과 RB(fb_wingback/Balanced .832) 두 슬롯 실측 보유가 가치.",
    "fit_iraola": "MEDIUM — 젊은 볼위너로 압박 체제 원자재는 되나 실측 근거는 에메리 체제뿐 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "보가르드",
    "name_en": "Lamare Bogarde",
    "overall": "B− — 다슬롯 백업(RDM·RB). 피벗 21경기 6.62, RB 8선발 704분 6.46(fit_sim .832 — obs#99가 'n=1' 오류를 8선발 전수로 교정, obs#104에서 포커스 Balanced 확정). 처방 dm_holding/Ball-Winning 벤치 — 카마라와 동형 볼위닝 홀딩(prescriptions optimal RDM).",
@@ -538,6 +627,7 @@
    "fit_alonso": "HIGH — 알론소 카이세도 하강 피벗(dm_dlp/Roaming, 백라인 옆 압박 유인)과 카마라의 dlp형 움직임 실측(.83)이 동형 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — 확정 XI RDM, 더블 피벗 dm_holding 분담의 핵. 11연승 기간 우측 고정 실측(duties)이 체제 기여를 직접 증명.",
    "fit_iraola": "MEDIUM — 볼위닝·커버 범위는 부합하나 pac 64·Controlled Lengthy가 수직 전환 최속 체제(1.95m/s)와 긴장 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "카마라",
    "name_en": "Boubacar Kamara",
    "overall": "S — 확정 XI RDM(obs#110 starter)이자 3선 배급 주도자(obs#129). 피벗 16경기 7.14(rate_v). 움직임 코사인은 dm_dlp/Roaming .83이 최고지만 기능 실측이 스쿼드 1위 볼위닝(듀얼승 8.4, 창조 최저 xA .04·KP 1.0)이라 dm_holding/Ball-Winning으로 확정(2026-07-05 A/B 종결) — '움직임=dlp, 기능=holding' 하이브리드.",
@@ -553,6 +643,7 @@
    "fit_alonso": "HIGH — 2×10번 하프스페이스 체제의 좌측 포켓에 라인 사이 수신·창조 프로필이 직결 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — 확정 XI LM이며 에메리 '자유 10번 로밍'(traits 축)의 좌편향 담당. cam_playmaker/Roaming 처방이 duties·영상·실측 3축 정합.",
    "fit_iraola": "MEDIUM — 세컨드 스트라이커 압박 실측은 있으나 고강도 왕복의 상시 요구와 리그 일관성 저하가 긴장 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "부엔디아",
    "name_en": "Emiliano Buendia",
    "overall": "A− — 확정 XI LM(obs#110, fc26:opt:LM starter). 좌측 와이드 21경기 6.90에 천장이 압도적(피크 9.4 포레스트 4강·8.5 본머스·8.3 EL 결승 — 전부 좌중앙 실측). CAM fit_sim .672는 n=3 소표본이라 판단 근거로 약함. '우측 드리프트 10번' 언론 서사는 실측으로 기각(시즌 우측 선발 2회뿐).",
@@ -568,6 +659,7 @@
    "fit_alonso": "MEDIUM — 하프스페이스 10번 포켓 변환 여지는 있으나 극단적 기술 규율·수비 전환 요구와 def 35의 긴장 (교차 투영 — 실측 아님).",
    "fit_emery": "MEDIUM — 상위 경기 실측은 좋으나 표본 3경기뿐이고, 뱅크 복귀형 우측(wm_widemid/Support)이 기본인 체제에서 수비 관여 최저 프로필은 조건부.",
    "fit_iraola": "LOW — 고강도 압박·왕복 체제에 수비 스탯 최저 프로필 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "산초",
    "name_en": "Jadon Sancho",
    "overall": "B− — 벤치 인버티드 RW(prescriptions optimal '[bench] Left-footed inverted RW', 상위 경기 7.5/7.4/7.1). rate_v 7.33이나 v_player_profile n=3으로 표본 부족 — 등급 판단 자체가 잠정. obs#134가 지목한 '실제 공백은 우측 와이드' 맥락에서 조건부 옵션.",
@@ -583,6 +675,7 @@
    "fit_alonso": "MEDIUM — 알론소 9번은 내려오는 false9(st_false9/Build-Up) — 왓킨스는 박스 점유·인비하인드형이라 역할 정의가 어긋남 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — 확정 XI ST(obs#110 starter). 원톱 3중 임무의 실측 정합이 duties에서 교과서 사례로 기록됨.",
    "fit_iraola": "HIGH — 뒷공간 런 리그 1위·전방 압박 탈취가 수직 전환+파이널서드 탈취 체제와 직결 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "왓킨스",
    "name_en": "Ollie Watkins",
    "overall": "S — 체제의 원톱. 상위 7경기 평균 8.47(rate_v, 스쿼드 최고)에 xG 1.327/경기는 풀 백분위 96. st_advanced/Versatile 확정 — '박스 점유/링크/채널 런' 3중 임무가 경기 유형별로 깨끗이 분리되면서 득점 산출은 상수(3경기 각 2골, duties). 실측·영상·처방 3축 강정합(obs#145).",
@@ -598,6 +691,7 @@
    "fit_alonso": "MEDIUM — (교차 투영 — 실측 아님) 알론소 체제는 백3 빌드업에 전 센터백 cb_bpd/Aggressive를 주고 '탁-탁-탁' 짧은 리듬 패스로 상대 결정을 강요하는 구조다(manager_profiles regime 2 buildup·implementation ⑴). 밍스의 패스 정확도 상위 21%와 왼발 배급은 백3의 왼쪽 센터백에 그대로 맞고, 백3는 좌우 커버가 나뉘어 있어 속도 약점도 백4보다 덜 노출된다. 다만 알론소 구조의 명시된 구조적 약점이 '중앙 볼 상실 후 직선 역습 취약'(regime 2 rest_defense)이라 되돌아 뛰는 속도가 요구되는데 이 지점이 그의 최대 약점이다.",
    "fit_emery": "HIGH — 왼쪽 센터백 슬롯 x=37에서 cb_bpd(볼 플레잉 센터백)/Aggressive 적합 0.935(17경기·평점 6.74) 실측. 에메리 체제의 게임 구현 기준선이 '짧은 빌드업 + 양 센터백 cb_bpd'(manager_profiles regime 1 implementation ⑴)이므로 처방 역할과 실측 역할이 정확히 겹친다. ⚠️ 단, FC26 roster의 역할 친숙도는 cb_defender 하나뿐이라 게임 안에서 cb_bpd를 주면 친숙도 밖 배치가 된다 — 실측 커널과 게임 내 친숙도가 어긋나는 항목으로 기록해 둔다. 또한 에메리의 기준 수비 라인 52·약팀 상대 67(하이라인)은 가속 49·민첩성 34인 그의 뒷공간 커버와 상충하므로, 하이라인 프리셋에서는 파트너 선택으로 보완해야 한다.",
    "fit_iraola": "LOW — (교차 투영 — 실측 아님) 이라올라의 축은 고강도 압박과 수직 전환이고, 존 수비로 시작해 트리거가 걸리면 전면 맨투맨으로 넘어가며 터치라인까지 압축한다(manager_profiles regime 3 pressing). 이 구조는 센터백이 앞으로 튀어나가 미리 끊고 뒷공간을 혼자 감당하는 능력을 요구하는데, 밍스는 태클 90분 기준 하위 2%·인터셉트 하위 20%로 개입 빈도가 낮고 가속 49다. 제쳐당한 횟수가 적다는 강점은 물러서서 버티는 상황의 값이라 이 체제에서는 살리기 어렵다.",
+   "fotmob_eval": null,
    "label": "밍스",
    "name_en": "Tyrone Mings",
    "overall": "B — 왼쪽 센터백 슬롯(x=37)에서 cb_bpd/Aggressive 적합 0.935로 이번 8명 중 필드플레이어 최고값이고, 해당 슬롯 17경기 평균 평점 6.74다(prescriptions kind='measured:season:full2526'). 기존 measured 행의 0.939 대비 Δ−0.003은 EA 노이즈 구간이라 판정은 그대로다. 다만 25/26 전체 40경기 1709분 중 프리미어리그 왼쪽 센터백 선발은 14경기(1202분·평점 6.59)뿐이고 나머지는 짧은 교체·컵대회라, 주전이 아니라 '적합도는 높은 로테이션 자원'으로 읽어야 한다. obs#152로 뒤늦게 등재된 8명 중 실측 근거가 가장 두꺼운 축이다.",
@@ -613,6 +707,7 @@
    "fit_alonso": "MEDIUM-HIGH — (교차 투영 — 실측 아님) 알론소 구조의 핵심 중 하나가 하프스페이스에 2명의 10번을 두는 것이고(regime 2 philosophy·implementation ⑷), 윙백이 폭을 독점하므로 안쪽 선수는 측면 고정 임무에서 해방된다. 게상이 값을 낸 유일한 프로필이 '중앙 또는 하프스페이스 자유 드리프트'이므로 구조 방향이 일치한다. 또 백3 뒤에서 앞으로 나가는 9번 대신 내려오는 9번(st_false9)을 쓰는 구성이라 그의 포처 성향과는 다소 어긋난다. ⚠️ 이는 manager_profiles 축과의 정성 대조일 뿐 알론소 체제 실측이 아니며, 25/26 첼시 전술은 알론소의 것이 아니다(불변규칙 7).",
    "fit_emery": "MEDIUM — 오른쪽 와이드 x=85에서 wm_winger/Balanced 0.782 실측(15경기)으로 커널 자체는 무난하다. 그리고 에메리 구현의 오른쪽 와이드 요구는 wm_widemid/Support, 즉 '복귀해 수비를 지원하는' 두 번째 줄 복귀형인데(regime 1 implementation ⑵), 게상의 태클 90분 상위 11%·수비 행동 상위 21%·수비 진영 오른쪽 체류 16%는 그 임무를 실제로 수행했음을 보여준다. 문제는 그 배치가 그의 산출을 죽인다는 점이다 — prescriptions가 기록한 xG 0.62→0.17, xA 0.44→0.02 붕괴가 그것이다. 에메리 구조에서 그의 최적은 오른쪽이 아니라 10번 자리인데, 그 슬롯은 로밍 자유가 주어지는 cam_playmaker 계열(regime 1 implementation ⑸)이고 그의 팰리스 임대 프로필(중앙-좌측, x=40 y=62)과 방향이 맞는다. 다만 그 배치의 실측 적합값은 산출되어 있지 않다.",
    "fit_iraola": "MEDIUM — (교차 투영 — 실측 아님) 이라올라 체제는 파이널서드에서 볼을 빼앗아 즉시 슛으로 가는 것이 압박의 목적이다(regime 3 pressing). 게상의 태클·경합 승 90분 상위 11%는 전방 압박 임무의 원료로 쓸 만하다. 그러나 정면으로 걸리는 수치가 있다 — 상대 진영 볼 탈취가 3회(0.295/90)로 90분 기준 하위 11%다. 즉 수비 행동은 많지만 그 위치가 앞이 아니라 자기 진영 오른쪽이다. 압박 후 즉시 마무리라는 요구에도 슛 1.08/90 하위 8%가 걸린다.",
+   "fotmob_eval": null,
    "label": "게상",
    "name_en": "Evann Guessand",
    "overall": "B− — 오른쪽 와이드 슬롯(x=85)에서 wm_winger/Balanced 적합 0.782(15경기·1235분·평점 6.76)로 중상 수준이지만, 문제는 적합값이 아니라 배치다. prescriptions의 25/26 통합 실측 근거는 그가 오른쪽 레인에만 79% 머물렀고 그 결과 니스 시절 대비 경기당 xG 0.62→0.17, xA 0.44→0.02, 키패스 1.5→0.4, 평점 8.42→6.44로 산출이 무너졌다고 적는다 — '부적응이 아니라 역할 미스매치'라는 결론이다. 크리스탈 팰리스 임대에서 중앙 10번으로 되돌리자 프로필 방향은 맞았으나(measured:CP-loan, 7경기 평점 6.77) 산출 회복은 부분에 그쳤다. 이적 논의가 진행 중인 자원이다.",
@@ -624,10 +719,11 @@
    "updated": "2026-08-11"
   },
   {
-   "confidence": "MEDIUM-HIGH — 커널 적합 표본은 16경기 1306분으로 충분하고 값(0.961)도 압도적이다. ⚠️ 캐비앗: ⑴ 프리미어리그 실측 표본이 585분(약 6.5경기)뿐이라 fotmob 리그 백분위는 표본이 얇다 — 선방 19회·실점 10골 수준의 절대량에서 산출된 값이므로 선방률 65.5% 같은 비율 지표는 한 경기로도 크게 흔들린다. ⑵ v_player_profile의 58경기·평점 7.05는 미출전 명단 포함 행을 포함한 값이라 실출전 기준과 다르다. ⑶ 유로파리그 평점 8.43(4경기 기록)은 상대 강도가 다른 표본이고 평균을 위로 끌어당긴다 — 프리미어리그 평점 6.54와 나란히 두지 말 것. ⑷ 처방(스위퍼 아님)과 리그 스위퍼 백분위 상위 5%가 방향이 반대다 — 본문에 명기했다. ⑸ 실측 커널(gk_goalkeeper)과 FC26 역할 친숙도(gk_ballplaying)가 불일치한다. ⑹ 알론소·이라올라 적합은 교차 투영 — 실측 아님.",
+   "confidence": "MEDIUM-HIGH — 커널 적합 표본은 16경기 1306분으로 충분하고 값(0.961)도 압도적이다. ⚠️ 캐비앗: ⑴ 프리미어리그 실측 표본이 585분(약 6.5경기)뿐이라 fotmob 리그 백분위는 표본이 얇다 — 선방 19회·실점 10골 수준의 절대량에서 산출된 값이므로 선방률 65.5% 같은 비율 지표는 한 경기로도 크게 흔들린다. ⑵ v_player_profile의 58경기·평점 7.05는 미출전 명단 포함 행을 포함한 값이라 실출전 기준과 다르다. ⑶ 유로파리그 평점 8.43(4경기 기록)은 상대 강도가 다른 표본이고 평균을 위로 끌어당긴다 — 프리미어리그 평점 6.54와 나란히 두지 말 것. ⑷ 처방(스위퍼 아님)과 리그 스위퍼 백분위 상위 5%가 방향이 반대다 — 본문에 명기했다. ⑸ 실측 커널(gk_goalkeeper)과 FC26 역할 친숙도(gk_ballplaying)가 불일치한다. ⑹ 알론소·이라올라 적합은 교차 투영 — 실측 아님. ⚠️ 2026-08-11 판정(obs#154): 이 평가가 지적한 '스위퍼 행동 90분 상위 5% vs 처방 gk_goalkeeper/Defend' 충돌은 **처방 유지로 해소**됐다 — 해당 백분위는 리그 585분에서 나온 비율값이고 합계 백분위는 41이다. 그리드 커널은 Defend .961 vs sweeper .773(Δ.188, 노이즈 밖). 패스 정확도 백분위 90이 오히려 프로필의 '패스 옵션 수준 참여'를 확증한다.",
    "fit_alonso": "MEDIUM-HIGH — (교차 투영 — 실측 아님) 알론소 구조는 백3와 더블 피벗으로 후방 7인을 만들어 짧은 리듬 패스를 돌리는 형태이고(regime 2 buildup) 골키퍼는 그 사슬의 한 칸이다. 패스 정확도 리그 상위 10%가 여기에 그대로 쓰인다. 또 중앙 볼 상실 시 직선 역습에 취약하다는 구조적 약점(regime 2 rest_defense)을 고려하면 박스 밖으로 나와 끊는 스위퍼 행동 상위 5%가 보험 역할을 한다. 다만 선방률 하위 36%는 역습을 실제로 맞았을 때의 마지막 방어선으로는 약하다.",
    "fit_emery": "HIGH — gk_goalkeeper/Defend 적합 0.961(16경기·평점 7.08)로 8명 중 최고 실측값이고, 에메리 구현 문서가 골키퍼 처방의 근거로 직접 인용하는 값이다(regime 1 implementation ⑴: 'GK gk_goalkeeper/Defend — 스위퍼 아님, 실측 .961'). 빌드업 축에서 요구되는 것은 '수적 우위를 만드는 패스 옵션'인데 그의 패스 정확도 리그 상위 10%가 정확히 그 요구에 맞는다. 실질 역할은 유로파·컵 전담 2번 골키퍼이고 그 범위에서 평점 8.43으로 값을 냈다. ⚠️ FC26 역할 친숙도는 gk_ballplaying으로 잡혀 있어 처방한 gk_goalkeeper와 어긋난다 — 게임 안에서는 친숙도 밖 배치가 된다.",
    "fit_iraola": "MEDIUM — (교차 투영 — 실측 아님) 이라올라는 높은 라인과 수직 전환을 축으로 하고(regime 3 philosophy), 하이라인 뒤 넓은 공간을 골키퍼가 커버해야 한다. 스위퍼 행동 90분 상위 5%·하이볼 처리 상위 23%는 이 요구에 잘 맞는다. 반면 수직 전환의 시발점으로 긴 패스를 정확히 꽂아야 하는데 롱볼 정확도 34.9%(상위 36%)와 정확한 롱볼 30회(하위 26%)는 중간 수준이다. 34세라는 나이도 하이라인 뒤 넓은 커버를 상시 요구하는 체제에서는 감점 요인이다.",
+   "fotmob_eval": null,
    "label": "비조",
    "name_en": "Marco Bizot",
    "overall": "B+ — 골키퍼 슬롯(x=50)에서 gk_goalkeeper/Defend 적합 0.961로 8명 중 최고값이고, 해당 슬롯 16경기(1306분) 평균 평점 7.08이다. 에메리 구현 문서가 '골키퍼는 스위퍼가 아니라 패스 옵션 수준의 참여'라고 못 박으면서 근거로 든 실측값 .961이 바로 이 행이다(manager_profiles regime 1 implementation ⑴). 다만 실제 기용은 컵·유로파 전담이다 — 프리미어리그는 37경기 명단 중 실출전 585분에 그치고 유로파리그 15경기(360분) 평점 8.43이 평균값을 끌어올린다. 즉 '체제 적합도가 매우 높은 2번 골키퍼'다.",
@@ -643,6 +739,7 @@
    "fit_alonso": "MEDIUM-HIGH — (교차 투영 — 실측 아님) 알론소 구조의 더블 피벗은 카이세도가 백라인 옆으로 내려와 상대 압박을 유인하는 dm_dlp/Roaming, 리스 제임스가 창조 축의 dm_dlp/Build-Up이다(regime 2 implementation ⑶). 바클리의 실측 커널이 정확히 dm_dlp이고 최적 포커스도 Roaming과 Build-Up 두 가지라 역할 정의가 겹친다. 패스 정확도 상위 11%·롱볼 정확도 상위 8%는 '탁-탁-탁' 짧은 리듬 패스와 백3 뒤 배급 요구에 그대로 맞는다. ⚠️ 걸리는 지점: 이 구조의 명시된 약점이 '박스 미드필드 중앙에서 볼 상실 시 직선 역습에 취약하고 기술 규율 요구가 극단적으로 높다'(regime 2 rest_defense)는 것이다. 31세·가속 52·인터셉트 하위 15%는 그 보험 역할에 부적합하므로, 두 피벗 중 다른 한 명이 Defend 계열이어야 한다.",
    "fit_emery": "HIGH — 실측이 두 자리에서 모두 지지한다. 오른쪽 수비형 미드필더 x=62에서 dm_dlp/Roaming 0.836(2위와 Δ0.260 단독 1위, 시즌 집계로는 0.807·17경기·평점 6.91), 왼쪽 수비형 미드필더 x=38에서도 0.798로 스쿼드 3위다. 그리고 10번 자리에서 cam_playmaker/Build-Up 0.803으로 스쿼드 1위(2위 맥긴 0.641, 마진 0.162)다. 에메리 구현은 10번에게 로밍 자유를 주고(regime 1 traits·implementation ⑸) 더블 피벗은 dm_holding 계열로 분담하는 구조인데, 바클리는 피벗과 10번 양쪽에 모두 걸친다. 피벗 자원이 고갈된 맥락(틸레만스 맨유 이적·오나나 무릎 장기 이탈·카마라 십자인대 복귀 직후)에서 프리시즌 5경기 중 4경기 선발로 실제 주력 취급을 받고 있다. ⚠️ 다만 에메리의 미드블록은 두 줄 4로 중앙 진입로를 닫고 탈취 후 빠른 전환을 노리는데, 그의 인터셉트 하위 15%·상대 진영 볼 탈취 하위 13%는 이 '탈취' 부분의 기여가 얇다는 뜻이다.",
    "fit_iraola": "LOW — (교차 투영 — 실측 아님) 이라올라의 압박 목적은 파이널서드 탈취(리그 3위) 후 즉시 슛이고 수직성이 극단적이다(초당 1.95m 최속·시퀀스당 2.98패스, regime 3 philosophy·pressing·situational). 바클리는 정면으로 어긋난다 — 상대 진영 볼 탈취 90분 기준 하위 13%, 인터셉트 하위 15%, 상대 박스 터치 하위 9%다. 즉 앞에서 뺏지도 않고 앞으로 들어가지도 않는다. 가속 52·질주 53으로 존 수비에서 전면 맨투맨으로 전환하는 트리거식 수비의 체력·속도 요구도 맞추기 어렵다. 그의 장점(배급 정확도·볼 유지)은 이 체제가 가장 덜 요구하는 항목이다.",
+   "fotmob_eval": null,
    "label": "바클리",
    "name_en": "Ross Barkley",
    "overall": "B+ — 오른쪽 수비형 미드필더 슬롯(x=62)에서 dm_dlp/Roaming 적합 0.807(17경기·875분·평점 6.91)이고, 슬롯별 전수 채점에서는 같은 자리 0.836으로 2위(dm_dlp/Build-Up 0.575)와 Δ0.260 차이의 단독 1위다. 더 중요한 값은 10번 자리다 — CAM(x=50)에서 cam_playmaker/Build-Up 0.803으로 스쿼드 1위이며 2위 맥긴(0.641)과 마진 0.162로 압도적이다. 로저스가 첼시로 떠나 10번 자리가 빈 상황과 맞물린다. 프리미어리그 22경기 865분에 3골 1도움, 평점 6.85로 기여도 실제로 있었다.",
@@ -658,6 +755,7 @@
    "fit_alonso": "LOW-MEDIUM — (교차 투영 — 실측 아님) 알론소 구조에서 폭은 윙백이 독점하고(regime 2 implementation ⑵) 안쪽 두 자리는 하프스페이스 10번이다. 즉 순수 측면 크로서를 위한 칸이 없다. 그의 최대 강점인 크로스·기회 창출이 구조적으로 쓰일 자리가 없고, 하프스페이스 10번에게 요구되는 좁은 공간에서의 개인 돌파와 마무리는 드리블 성공률 하위 5%·경합 승률 하위 8%로 정면으로 부족하다. 이 체제의 기술 규율 요구가 극단적으로 높다는 서술(regime 2 rest_defense)도 감점 요인이다.",
    "fit_emery": "LOW — 커널 적합은 wm_winger/Attack 0.768로 최악은 아니지만 나머지 근거가 전부 반대 방향이다. 에메리의 오른쪽 와이드 요구는 두 번째 줄로 복귀해 중앙 진입로를 닫는 wm_widemid/Support이고(regime 1 implementation ⑵), 그의 처방 포커스는 Attack이라 임무 정의부터 어긋난다. 수비 복귀량 자체는 90분 기준 상위 10%로 있지만, 에메리 구조의 오른쪽 와이드가 공격 국면에서 요구하는 개인 돌파(드리블 성공률 하위 5%)와 마무리(유효슛 하위 8%·득점 0)가 리그 최하위다. 무엇보다 transfer_outgoing #13이 '에메리 구상 밖', 아시아 프리시즌 투어 명단 제외, 계약 1년 잔여를 기록하고 있고 구단이 여름 내내 매각을 추진했다 — 감독의 판단 자체가 실측과 같은 방향이다.",
    "fit_iraola": "MEDIUM — (교차 투영 — 실측 아님) 이라올라 체제와는 오히려 접점이 있다. 압박의 목적이 파이널서드 탈취 후 즉시 슛인데(regime 3 pressing) 그의 90분당 볼 회수 6.17회는 리그 상위 2%, 상대 진영 볼 탈취 0.796/90은 90분 기준 상위 24%로 앞에서 뺏는 값이 실제로 있다. 수직 전환에서 빠르게 올려주는 크로스(상위 22~27%)와 xA 상위 6%도 쓰인다. 다만 '탈취 후 즉시 슛'의 슛 부분이 비어 있다 — 유효슛 하위 8%, 시즌 득점 0이다. 이라올라 체제의 언더독 구조 자체가 26/27 리버풀에서 재현될지가 미검증 과제이기도 하다(regime 3 situational).",
+   "fotmob_eval": null,
    "label": "베일리",
    "name_en": "Leon Bailey",
    "overall": "C+ — 오른쪽 와이드 x=85에서 wm_winger/Attack 적합 0.768(9경기·523분·평점 6.46)로 커널은 무난하지만 산출이 받쳐주지 않는다. 25/26은 두 리그로 쪼개진 시즌이었고(프리미어리그 16경기 466분 평점 6.58, 세리에 A 8경기 182분 평점 6.44) 어느 쪽도 90분 환산 5~6경기 분량이다. 우리 3팀 풀 59명 중 평균 평점 백분위 17%로 8명 중 최하위권이다. 리그 백분위에서 창출 지표는 최상위인데 마무리와 1대1이 최하위라 값이 정면으로 갈린다. 이적이 진행 중이며 에메리 구상 밖으로 기록돼 있다.",
@@ -673,6 +771,7 @@
    "fit_alonso": "⚠️ 판단 보류 — (교차 투영 — 실측 아님) 알론소 구조에서 오른쪽 윙백은 fb_att_wb/Support로 폭을 독점하는 공급자다(regime 2 implementation ⑵). 이는 '전진 빈도 낮은 딥 풀백'이라는 그의 실측 방향과 정반대이고, 상대 박스 터치 하위 5%·슛 0회·xA 하위 6%도 폭 공급자 요구에 미달한다. 다만 크로스 정확도 상위 14%는 접점이 있다. 표본 미달이라 등급을 매기지 않는다.",
    "fit_emery": "⚠️ 판단 보류 — 표본 미달. 적합값이 산출되어 있지 않으므로(squad_entries.fit_sim NULL, rate_note '그리드·적합 미산출') 에메리 적합을 등급으로 매기지 않는다. 참고로 방향만 적으면, 에메리 구현의 오른쪽 풀백은 fb_wingback/Balanced로 '전진하지 않고 잔류하는' 쪽이며 왼쪽 풀백만 전진시키는 비대칭(C2 제약, regime 1 implementation ⑷)이다. 네델코비치의 실측 프로필이 '전진 빈도 낮은 딥 풀백'이라 이 임무 정의와 방향은 일치한다. 그러나 이는 히트맵 중심 좌표 2개에서 읽은 정성 관찰이지 커널 적합 실측이 아니며, 표본 3~4경기라 확인이 필요하다. 성립 여부는 26/27 공식전 출전 후 재산출해야 한다.",
    "fit_iraola": "⚠️ 판단 보류 — (교차 투영 — 실측 아님) 이라올라 체제는 인버티드 풀백(프림퐁 성향)과 고강도 압박·터치라인을 이용한 측면 압축을 축으로 한다(regime 3 traits·pressing). 태클 하위 3%·인터셉트 하위 3%·경합 승률 하위 2%는 이 요구와 정면으로 어긋난다. 표본 미달이라 등급을 매기지 않는다.",
+   "fotmob_eval": null,
    "label": "네델코비치",
    "name_en": "Kosta Nedeljkovic",
    "overall": "C — ⚠️ 판단 보류: 표본 미달. squad_entries의 rate_note가 '오른쪽 풀백 그리드 3경기뿐(표본 미달) — 그리드·적합 미산출'이라고 명시하며, rate_v·fit_role·fit_focus·fit_sim이 모두 비어 있다. prescriptions에도 25/26 라이프치히 임대 오른쪽 선발 4경기를 통합한 measured 행(오른쪽 x=81.7·깊이 y=46.6, 전진 빈도 낮은 딥 풀백)만 있고 커널 적합값은 산출되지 않았다. 25/26 실출전은 분데스리가 15경기 중 선발 3경기·252분(평점 6.30)에 DFB 포칼 45분이 전부이고, 12월 집중 출전 후 이탈했다. 등급은 평가 불능에 따른 C이며 실력 판정이 아니다.",
@@ -688,6 +787,7 @@
    "fit_alonso": "LOW-MEDIUM — (교차 투영 — 실측 아님) 알론소 구조는 윙백이 폭을 독점하고 안쪽은 하프스페이스 10번 2명이라(regime 2 implementation ⑵⑷) 순수 측면 와이드 미드필더의 칸이 없다. 그의 수비 기여 강점(걷어내기·블록)은 윙백 자리로 옮기면 쓰일 여지가 있고 실제로 챔피언십에서 왼쪽 풀백 1경기 기록이 있으나 표본이 1경기다. 하프스페이스 10번 요구인 창출·마무리는 어시스트 0개·유효슛 하위 25%로 정면 미달이다. 이 체제의 기술 규율 요구가 극단적으로 높다는 점(regime 2 rest_defense)도 2부 리그 검증만 있는 자원에게 불리하다.",
    "fit_emery": "MEDIUM — 오른쪽 와이드 x=85에서 wm_winger/Balanced 0.780(9경기·672분·평점 6.42) 실측. 에메리 구현이 오른쪽 와이드에 요구하는 것은 두 번째 줄로 복귀해 수비를 지원하는 wm_widemid/Support(regime 1 implementation ⑵)인데, 그의 챔피언십 실측 프로필이 정확히 그 방향이다 — 걷어내기 90분 상위 9%, 슛 블록 상위 13%, 인터셉트 상위 27%로 뒤쪽 기여가 강점이고 어시스트는 0개다. 즉 임무 적성은 맞고 공격 산출이 비어 있다. 그리고 26/27 스쿼드의 실제 결손이 우측 와이드로 판정돼 있어(obs#134) 자리 자체는 열려 있다. ⚠️ 다만 적합값 0.780은 게상 0.782·베일리 0.768과 Δ0.02 이내라 EA 노이즈 구간이며, 이 셋의 우열을 적합도로 가르면 안 된다. 판단은 리그 수준과 산출로 해야 하고 그 축에서 그는 프리미어리그 검증이 0에 가깝다(프리미어리그 명단 1경기·출전 기록 없음).",
    "fit_iraola": "MEDIUM — (교차 투영 — 실측 아님) 이라올라 체제는 터치라인을 추가 수비수처럼 쓰는 측면 압축과 존→맨투맨 전환을 요구하고(regime 3 pressing) 측면 자원의 수비 부담이 크다. 그의 걷어내기 상위 9%·인터셉트 상위 27%·공중 경합 승 상위 29%는 이 부담을 감당한다는 신호다. 그러나 압박의 목적인 파이널서드 탈취 후 즉시 슛에서 두 축이 모두 약하다 — 상대 진영 볼 탈취 0.349/90이 90분 기준 하위 21%, 태클 하위 15%로 앞에서 뺏지 못하고, 어시스트 0개·유효슛 하위 25%로 마무리도 없다. 활동량형 측면 자원으로서의 하한선은 맞지만 산출 상한이 보이지 않는다.",
+   "fotmob_eval": null,
    "label": "일링주니어",
    "name_en": "Samuel Iling-Junior",
    "overall": "C+ — 오른쪽 와이드 x=85에서 wm_winger/Balanced 적합 0.780(9경기·672분·평점 6.42)로 커널 값 자체는 게상(0.782)·베일리(0.768)와 EA 노이즈 구간 안에서 사실상 동률이라 이 셋을 적합도로 가를 수 없다. 판단을 가르는 것은 리그 수준이다 — 그의 25/26 본체 표본은 챔피언십(웨스트브롬 26경기 14선발 1290분 평점 6.53)이고 세리에 A(피사)는 12경기 107분 교체가 전부다. 즉 프리미어리그 수준의 검증이 없다. 우리 3팀 풀에서 평균 평점 백분위 14%로 하위권이고, 26/27은 뎁스 자원 위치다.",
@@ -703,6 +803,7 @@
    "fit_alonso": "HIGH — 하프윙어 10번 프로필이 2×10번 하프스페이스 체제에 직결, 수비 기여도 rest_defense 리스크 완화 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — fit_sim .861은 실측 기반이며 에메리 '자유 10번' 슬롯의 cam_halfwinger 처방(implementation ⑤)과 정합. 단 전방 프로필은 대표팀 실측(n=12)이 근거.",
    "fit_iraola": "MEDIUM — 왕복·듀얼 볼륨은 부합하나 전방 압박 트리거 수행은 미검증 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "만잠비",
    "name_en": "Johan Manzambi",
    "overall": "A− — 합류 확정, obs#110 확정 XI의 CAM(fc26:opt:CAM starter). CAM 적합 .861(cam_halfwinger/Balanced, 대표팀 12경기 7.2), DM .713(클럽 56경기 7.2). obs#138: 클럽(프라이부르크)과 대표팀은 서로 다른 선수 — 클럽은 좌측·후방 박스투박스, 대표팀·월드컵은 전방·우측 10번. obs#148 고메스와 클럽 그리드 코사인 .960 — 사용자 확정 방침대로 CAM 기용이 역할 분담 해법.",
@@ -718,6 +819,7 @@
    "fit_alonso": "MEDIUM — rest_defense 보험형 볼위너로는 최적이나 3선 배급·기술 규율 요구 대비 창조 최하위 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — fit_sim .763 실측에 obs#129 피봇 배치 확정. 만잠비와의 코사인 .960 중복은 CAM/LDM 분담으로 해소(obs#148).",
    "fit_iraola": "HIGH — 프레스 저항 캐리+풀 최상위 태클·듀얼이 고강도 압박·즉시 탈취 체제에 직결 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "주앙 고메스",
    "name_en": "João Gomes",
    "overall": "A− — 합류 확정 피벗. DM fit_sim .763(dm_dlp/Roaming, 39경기 6.77). obs#143 파일럿의 첫 실질 수확: 서사(볼위닝 destroyer)와 위치 실측(dlp)의 긴장 — obs#144 재검토로 dm_dlp/Roaming 유지 종결(holding계 최고 .679). obs#129 기준 26/27 LDM 배치·볼위닝 담당(배급 주도는 카마라).",
@@ -733,6 +835,7 @@
    "fit_alonso": "HIGH — cb_bpd/Aggressive 전원 요구 체제와 커널이 정확히 동형 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — fit_sim .883은 콘사(.938)에 이은 CB 실측 적합 상위. 단 즉시 XI가 아니라 성장 후 승계 트랙 (오스트리아 LASK 실측 — 에메리 체제 아님).",
    "fit_iraola": "MEDIUM — 공중·요격형은 유용하나 pac 69와 하이라인 1v1 노출 미검증 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "시세",
    "name_en": "Modou Kéba Cissé",
    "overall": "B+ — 합류 확정 CB. fit_sim .883(cb_bpd/Aggressive, 29경기 7.1)으로 실측 적합은 주전급이나 FC26 OVR 68로 게임 즉전력은 백업 — POT 81 성장형 영입. obs#143 파일럿에서 처방 정합 확인.",
@@ -748,6 +851,7 @@
    "fit_alonso": "MEDIUM — 첼시 실측 .936이 있으나 그것은 25/26 전임 체제 기록(규칙 7)이고, 알론소 3-4-2-1엔 순수 윙어 슬롯이 없어 10번 포켓 변환이 전제 (교차 투영 — 실측 아님).",
    "fit_emery": "HIGH — WM .771 실측 + XI 후보(fc26:opt:LM/RM). 단 .936은 첼시 25/26 출처 실측이라 에메리 체제 근거로는 .771이 1차.",
    "fit_iraola": "HIGH — 1v1 돌파·카운터 위협·pac 86이 수직 전환 체제의 이상형 — 단 압박 가담량은 미검증 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "가르나초",
    "name_en": "Alejandro Garnacho",
    "overall": "A− — 합류 확정 윙어. W 슬롯 fit_sim .936(w_winger/Versatile — 단 첼시 25/26 실측 6경기, 규칙 7상 출처 명기)·WM .771(wm_winger/Attack, 38경기 6.99). obs#143: 컷인형 윙어 서사와 커널 정합. obs#125·#134 맥락에서 좌측 윙어 기용 시 LB 처방 연쇄 변경 필요(obs#128).",
@@ -763,6 +867,7 @@
    "fit_alonso": "LOW — 10번 포켓·윙백 어느 쪽에도 현 프로필이 닿지 않음 — 개발 단계 (교차 투영 — 실측 아님).",
    "fit_emery": "MEDIUM — 커널 .833은 있으나 방향 긴장(인버티드 vs widemid)이 미해소·잠정 판정. obs#134의 우측 와이드 공백 후보이나 즉전력 미달.",
    "fit_iraola": "MEDIUM — 전환·1v1 위협과 듀얼 경합력은 수직 체제 원자재 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "알리송",
    "name_en": "Alysson",
    "overall": "C+ — 신규 영입 장기 프로젝트. WM fit_sim .833(wm_widemid/Build-Up, 확장 22경기 6.88 — 그레미우+빌라). obs#147에서 성향 긴장 1건: 인버티드 서사 vs widemid 커널 — 표본 혼합이라 잠정, 빌라 실측 6경기+ 축적 후 wm_insidefwd 대조 재판정 예정(duties '⚠️ 방향 긴장').",
@@ -778,6 +883,7 @@
    "fit_alonso": "LOW — 알론소 9번은 내려오는 false9(주앙 페드루형) — 아브라함의 st_false9 적합 .643이 낮고 타깃형 성향과 어긋남 (교차 투영 — 실측 아님).",
    "fit_emery": "LOW — obs#19 판정 그대로 기본 시스템 부적합. 단 공중·직선 플랜B 한정으로는 유용(리드 시 딥블록·다이렉트 전환 국면).",
    "fit_iraola": "MEDIUM — 직선성·전방 압박(압박검증)은 수직 전환 체제와 부분 부합 (교차 투영 — 실측 아님).",
+   "fotmob_eval": null,
    "label": "타미 아브라함",
    "name_en": "Tammy Abraham",
    "overall": "C+ — 보유 ST 백업. fit_sim .643(st_false9/Attack, 확장 25경기 6.95)으로 스쿼드 내 최저 적합. obs#19가 핵심 판정: '기본 시스템엔 부적합, 공중·직선 플랜B로만 유용'. 개인 산출은 나쁘지 않아(xG 0.508, 풀 백분위 87) 등급은 핏 불투명 쪽.",
@@ -793,6 +899,7 @@
    "fit_alonso": "⚠️ 판단 보류 — (교차 투영 — 실측 아님) 알론소 구조의 9번은 내려와서 받는 st_false9/Build-Up이다(regime 2 implementation ⑸). 이는 연계 능력을 최우선으로 요구하는 역할인데 패스 정확도 55.6%(하위 2%)·터치 23.5/90(하위 5%)와 정면으로 어긋난다. 표본 미달이라 등급을 매기지 않는다.",
    "fit_emery": "⚠️ 판단 보류 — 표본 미달. 적합값이 산출되어 있지 않고(squad_entries.fit_sim NULL, rate_note '그리드·적합 미산출') prescriptions 행이 0건이므로 에메리 적합을 등급으로 매기지 않는다. 방향만 적으면, 에메리 구조의 최전방은 짧은 빌드업으로 상대 1선을 넘긴 뒤 하프스페이스에서 수적 우위를 만드는 포지셔널 전진의 종점이고(regime 1 philosophy ⑴) 고빌드업에서는 3-2-5로 중앙이 밀집한다. 이 구조는 최전방에게 등지고 받아 연결하는 연계를 요구하는데 패스 정확도 하위 2%는 그 요구와 정면으로 어긋나는 유일하게 표본에 덜 흔들리는 신호다. 판정은 26/27 공식전 출전 후 재산출해야 한다.",
    "fit_iraola": "⚠️ 판단 보류 — (교차 투영 — 실측 아님) 이라올라 체제는 파이널서드 탈취 후 즉시 슛이라는 수직 구조이고(regime 3 pressing·situational, 시퀀스당 2.98패스) 최전방의 압박 시발과 침투 반복을 요구한다. 패스가 적게 요구되는 구조라는 점에서는 오히려 접점이 있으나, 수비 행동 2회(하위 5%)로 압박 시발의 근거가 없고 슛 3회(하위 5%)로 마무리 시도도 없다. 표본 미달이라 등급을 매기지 않는다.",
+   "fotmob_eval": null,
    "label": "Brian Madjo",
    "name_en": "Brian Madjo",
    "overall": "C — ⚠️ 판단 보류: 표본 미달. squad_entries의 rate_note가 '최전방 그리드 3경기 199분(표본 미달) — 그리드·적합 미산출'이라고 명시하고, rate_v·fit_role·fit_focus·fit_sim이 전부 비어 있으며 prescriptions에는 행이 하나도 없다. 25/26 리그 앙 9경기는 전부 교체 출전 162분(평점 6.58)이고, 값이 나온 U17 유럽선수권 예선 3경기 216분 2골은 SofaScore 커버리지 밖이라(obs#133) 실측 자료를 만들 수 없다. 26/27 친선 1경기 선발 60분(평점 6.5)이 최신 신호다. 등급은 평가 불능에 따른 C이며 실력 판정이 아니다.",
@@ -808,6 +915,7 @@
    "fit_alonso": "(교차 투영 — 실측 아님) MEDIUM — 백3 빌드업·윙백 폭 독점 구조(regime 2)에서 싱글/더블 6의 수비 반경은 부합하나, 하프스페이스 2×10번을 받치는 6번에게 요구되는 전진 배급이 그의 최약점.",
    "fit_emery": "HIGH — 숙련 dm_holding/Ball-Winning이 에메리 더블 피벗 처방과 정확 일치(DB rationale '기능축 처방과 정확 일치 — 확정'). 슬롯 fit_sim LDM .709(dm_widehalf/Build-Up)·RDM .738(dm_dlp/Roaming) — 커널 지불은 있으나 카마라 부재 시나리오의 보험 가치가 상회.",
    "fit_iraola": "(교차 투영 — 실측 아님) MEDIUM-HIGH — 고강도 압박·수직 전환(regime 3)에 태클·회수 기질은 부합, 파이널서드 탈취 지향의 전면 맨투맨 전환 시 광역 커버가 자산. 단 탈취 후 즉시 슛/전진 연결의 온볼 속도는 캐비앗.",
+   "fotmob_eval": null,
    "label": "팔리냐",
    "name_en": "João Palhinha",
    "overall": "B+ — 처방 축(더블 피벗 볼위닝) 정면 보강이자 오나나 부상·틸레만스 이탈 공백의 1:1 해법. 역할 정체성 완벽, 슬롯 커널 적합은 중간, 부상 리스크 존재.",
@@ -823,6 +931,7 @@
    "fit_alonso": "(교차 투영 — 실측 아님) HIGH — 3-4-2-1 원톱은 2×10번을 위해 등지고 내주는 링크형 9번을 요구 — 잭슨의 레이오프·채널 침투 이중성이 구조 요구와 부합.",
    "fit_emery": "HIGH — fit_sim .752, opt=fit 일치(st_advanced/Support). 에메리-비야레알 인연 + 왓킨스와 로테이션/공존 모두 가능한 프로필. 하강 링크가 자유 10번(부엔디아·로저스류)과의 연계 축을 추가.",
    "fit_iraola": "(교차 투영 — 실측 아님) HIGH — 압박 개시·하이 리커버리 기질이 하이브리드 프레스의 1선 트리거 역할과 정확 부합. 탈취 후 즉시 슛 국면에서 마무리 기복이 유일 감점.",
+   "fotmob_eval": null,
    "label": "잭슨",
    "name_en": "Nicolas Jackson",
    "overall": "A- — 표본 평점 최고(7.45)·fit 최고권(.752)·나이(2001년생) 모두 4후보 중 상위. 리스크는 £60m+ 클럽레코드 이적료와 마무리 기복.",
@@ -838,6 +947,7 @@
    "fit_alonso": "(교차 투영 — 실측 아님) HIGH — 하프스페이스 2×10번 구조가 그의 최적 서식지: 인버티드 컷인 + 좁은 지역 콤비네이션 + CAM 미달이어도 10번 슬롯은 윙백이 폭을 대신 지므로 실측 우측 편향과 충돌이 적다.",
    "fit_emery": "MEDIUM — fit_sim .812(wm_winger/Balanced)는 수치상 4후보 중 2위지만, 에메리 우측이 요구하는 4-4-2 뱅크 복귀(wm_widemid/Support)로 재면 .734로 하락 — DB 판정 '해방 사이드용 자원, 현 스쿼드 구조와 어긋남' 유지. 로저스 대체 창조 자원이라는 영입 서사와 실측 풋프린트가 반만 겹친다.",
    "fit_iraola": "(교차 투영 — 실측 아님) MEDIUM-HIGH — 압박 성실성·수직 드리블은 부합하나 이라올라 윙어에게 요구되는 터치라인 고정·크로스 볼륨이 그의 약점(크로스 weak)과 정면 충돌.",
+   "fotmob_eval": null,
    "label": "아우안",
    "name_en": "Allan",
    "overall": "B — 재능·평점(7.18)·나이(2004년생) 대비 구조 적합이 발목: 해방 윙어 풋프린트인데 빌라 우측은 뱅크 칸. 성사 확률도 셀링클럽 블록으로 4후보 중 최저.",
@@ -853,6 +963,7 @@
    "fit_alonso": "(교차 투영 — 실측 아님) HIGH — regime 2의 '좌 윙백 인선 공백'에 정확히 꽂히는 프로필: 윙백 폭 독점 구조에서 크로스·전진패스형 LWB는 요구 사양 그대로. 가스페리니 3백 이력이 이식성 방증.",
    "fit_emery": "HIGH — fit_sim .949는 전체 후보 통틀어 최고. 에메리 C2 비대칭(LB 전진 fb_att_wb/Support vs RB 잔류)의 좌측 축과 정확 일치 — 디뉴(→PSG) 공백의 1:1 대체이자 에스투피냔 딜 정체의 헤지. FC26 존재(77/83)로 게임 재현도 즉시 가능.",
    "fit_iraola": "(교차 투영 — 실측 아님) MEDIUM — 오버랩 동력은 부합하나 이라올라 풀백에 요구되는 전면 맨투맨 1대1 수비가 그의 지목된 약점 — 측면 압축 구조에서 노출 위험.",
+   "fotmob_eval": null,
    "label": "마테오 루헤리",
    "name_en": "Matteo Ruggeri",
    "overall": "A- — 4후보 중 구조 적합 최고(.949)·성사 조건 최선(아틀레티코 매도 동기 구조적)·나이(2002년생) 균형. 천장은 낮다 — 스타가 아니라 정확한 부품.",
@@ -15099,54 +15210,54 @@
   ],
   "로저스": [
    [
-    "2026-04-12",
-    6.2,
-    "PL"
-   ],
-   [
-    "2026-04-16",
-    8.4,
-    "EL"
-   ],
-   [
-    "2026-04-19",
-    9.0,
-    "PL"
-   ],
-   [
-    "2026-04-25",
-    5.7,
-    "PL"
-   ],
-   [
-    "2026-04-30",
-    6.2,
-    "EL"
-   ],
-   [
-    "2026-05-03",
-    6.4,
-    "PL"
-   ],
-   [
-    "2026-05-07",
-    7.2,
-    "EL"
-   ],
-   [
-    "2026-05-10",
-    5.7,
-    "PL"
-   ],
-   [
-    "2026-05-15",
-    8.3,
-    "PL"
-   ],
-   [
     "2026-05-20",
     7.9,
     "EL"
+   ],
+   [
+    "2026-06-06",
+    6.7,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-10",
+    6.2,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-17",
+    7.3,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-23",
+    6.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-27",
+    6.4,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-06",
+    6.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-11",
+    6.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-15",
+    7.1,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-18",
+    6.5,
+    "FIFA World Cup"
    ]
   ],
   "린델뢰프": [
@@ -18177,16 +18288,16 @@
    "xg_pg": 0.12
   },
   {
-   "avg_rating": 6.9,
-   "dw_pg": null,
-   "ic_pg": null,
-   "kp_pg": 1.91,
+   "avg_rating": 6.88,
+   "dw_pg": 1.79,
+   "ic_pg": 0.05,
+   "kp_pg": 1.47,
    "label": "로저스",
-   "minutes": 4652,
-   "n": 56,
-   "tk_pg": null,
-   "xa_pg": 0.202,
-   "xg_pg": 0.305
+   "minutes": 5534,
+   "n": 75,
+   "tk_pg": 0.42,
+   "xa_pg": 0.185,
+   "xg_pg": 0.245
   },
   {
    "avg_rating": 6.93,
@@ -23129,6 +23240,16 @@
   "로저스": [
    {
     "assists": 1,
+    "avg_rating": 6.65,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 224,
+    "n": 5,
+    "season": "2026-27",
+    "starts": null
+   },
+   {
+    "assists": 1,
     "avg_rating": 6.85,
     "competition": "Premier League",
     "goals": 5,
@@ -23146,6 +23267,46 @@
     "n": 15,
     "season": "2025-26",
     "starts": 12
+   },
+   {
+    "assists": 1,
+    "avg_rating": 6.92,
+    "competition": "World Cup Qual. UEFA",
+    "goals": 0,
+    "minutes": 249,
+    "n": 5,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.98,
+    "competition": "International Friendly Games",
+    "goals": 1,
+    "minutes": 232,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.73,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 125,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.1,
+    "competition": "Club Friendly Games",
+    "goals": 1,
+    "minutes": 52,
+    "n": 2,
+    "season": "2025-26",
+    "starts": null
    },
    {
     "assists": null,

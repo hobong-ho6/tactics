@@ -306,7 +306,7 @@ CREATE TABLE player_evaluations(
   fit_iraola TEXT,            -- 이라올라(LIV) 전술핏
   source TEXT,                -- 인용한 데이터 (obs#·duties·prescriptions·stats)
   confidence TEXT,            -- 표본·교차투영 캐비앗
-  updated TEXT,
+  updated TEXT, fotmob_eval TEXT,
   UNIQUE(regime_id, player_id)
 );
 CREATE TABLE fbref_percentiles(

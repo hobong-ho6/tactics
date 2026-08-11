@@ -13,7 +13,7 @@
 결론(프로필 축·세팅)만 보여준다.</p>
 <script type="module">
 import { mountHeader, loadTeam } from './assets/data.js';
-import { annotate } from './assets/glossary.js';
+import { annotate, mountGlossaryTips } from './assets/glossary.js';
 
 const { team, regime } = await mountHeader('report.html');
 const td = await loadTeam(team);
@@ -64,4 +64,5 @@ document.getElementById('profile').innerHTML =
       (manager_profiles 테이블에 INSERT 후 재익스포트)</td></tr>`);
 
 
+mountGlossaryTips();
 </script></body></html>

@@ -23,3 +23,7 @@ CREATE TABLE fotmob_detail_stats(
   source TEXT,
   UNIQUE(player_id, season, league, metric_key)
 );
+
+-- 006b (2026-08-11) · 사용자 요청: "Fotmob 스탯 기준으로도 선수를 평가 — 비교 기준 영역 하단에".
+-- stat_eval(우리 실측 중심)과 분리한다: fotmob_eval은 **리그 동포지션 백분위만으로** 내리는 평가다.
+ALTER TABLE player_evaluations ADD COLUMN fotmob_eval TEXT;
