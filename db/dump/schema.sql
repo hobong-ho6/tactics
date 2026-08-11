@@ -373,3 +373,13 @@ CREATE TABLE fotmob_season_stats(
   source TEXT,
   UNIQUE(player_id, league, season, metric)
 );
+CREATE TABLE fotmob_detail_stats(
+  id INTEGER PRIMARY KEY,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  pulled TEXT, season TEXT, league TEXT,
+  metric_key TEXT NOT NULL, metric TEXT, metric_kr TEXT,
+  stat_value TEXT, per90 REAL,
+  percentile INTEGER,          -- 같은 리그 동포지션 대비 백분위(합계 기준)
+  percentile_per90 INTEGER,    -- 90분당 기준 백분위
+  source TEXT,
+  UNIQUE(player_id, season, league, metric_key));

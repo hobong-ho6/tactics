@@ -53,3 +53,6 @@ button.tab.on{background:var(--acc);border-color:var(--acc);color:#14100b;font-w
   border:1px solid var(--acc);border-radius:10px;padding:5px 9px;min-width:86px;line-height:1.25;z-index:2}
 .tchip b{display:block;font-size:12px}.tchip span{font-size:10px;color:var(--acc)}
 .tchip small{display:block;font-size:10px;color:var(--dim)}
+
+/* 용어 주석 — 점선 밑줄, hover/tap 시 브라우저 기본 툴팁으로 뜻 표시 */
+abbr.gl{text-decoration:underline dotted var(--acc);text-underline-offset:3px;cursor:help}

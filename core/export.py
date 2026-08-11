@@ -142,10 +142,11 @@ def export_all(db_path=None, window="2026-summer"):
                                      UNION SELECT player_id FROM prescriptions WHERE regime_id=?)
                                ORDER BY v.season DESC, v.n DESC""", (rid, rid)):
             season_stats.setdefault(r.pop("label"), []).append(r)
-        fbref = {}   # 리그 백분위 — Fotmob traits (FBref는 2026-08 기준 백분위 미공개, migrations/005)
-        for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, f.pos_group,
-                                      f.metric, f.metric_kr, f.percentile, f.source, f.pulled
-                               FROM fotmob_traits f JOIN players p ON p.id=f.player_id
+        fbref = {}   # 리그 백분위 — Fotmob 상세 스탯(migrations/006). 지표별 동포지션 백분위.
+        for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, f.season, f.league,
+                                      f.metric_key, f.metric, f.metric_kr, f.stat_value, f.per90,
+                                      f.percentile, f.percentile_per90, f.pulled
+                               FROM fotmob_detail_stats f JOIN players p ON p.id=f.player_id
                                WHERE f.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
                                      UNION SELECT player_id FROM prescriptions WHERE regime_id=?
                                      UNION SELECT p2.id FROM transfer_targets t JOIN players p2
