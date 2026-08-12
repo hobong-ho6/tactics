@@ -383,3 +383,17 @@ CREATE TABLE fotmob_detail_stats(
   percentile_per90 INTEGER,    -- 90분당 기준 백분위
   source TEXT,
   UNIQUE(player_id, season, league, metric_key));
+CREATE TABLE slot_canon_roles(
+  regime_id INTEGER NOT NULL REFERENCES regimes(id),
+  formation TEXT NOT NULL,
+  pos TEXT NOT NULL,                -- slots.pos와 동일 키
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  role_id TEXT NOT NULL,
+  focus TEXT NOT NULL,
+  rationale TEXT,                   -- 어느 축·obs에서 왔는지
+  source TEXT, confidence TEXT,
+  updated TEXT,
+  PRIMARY KEY(regime_id, formation, pos, game_version),
+  FOREIGN KEY(regime_id, formation, pos) REFERENCES slots(regime_id, formation, pos),
+  FOREIGN KEY(game_version, role_id) REFERENCES game_roles(game_version, role_id)
+);

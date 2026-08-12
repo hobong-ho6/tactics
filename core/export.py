@@ -82,6 +82,12 @@ def export_all(db_path=None, window="2026-summer"):
         rid, code = rg["id"], rg["team_code"]
         slots = _rows(con, """SELECT formation, pos, slot_type, x, y, sort_order
                               FROM slots WHERE regime_id=? ORDER BY formation, sort_order""", (rid,))
+        # 슬롯별 전술 정본(인선 무관) — migrations/008. 프리셋(fc26:opt:*)과 다르면 편차로 읽는다.
+        canon = _rows(con, """SELECT c.formation, c.pos, c.game_version, c.role_id, c.focus,
+                                     c.rationale, c.source, c.confidence, c.updated
+                              FROM slot_canon_roles c JOIN slots s
+                                ON s.regime_id=c.regime_id AND s.formation=c.formation AND s.pos=c.pos
+                              WHERE c.regime_id=? ORDER BY c.formation, s.sort_order""", (rid,))
         # name_kr = 다른 맵(form·season_stats·fbref…)의 키. label은 표시용이라 접미·별칭이 붙어 다를 수 있다.
         squad = _rows(con, """SELECT s.player_id, COALESCE(s.label, p.name_kr, p.name) label,
                                      p.name name_en, COALESCE(p.name_kr, p.name) name_kr,
@@ -176,7 +182,8 @@ def export_all(db_path=None, window="2026-summer"):
             FROM transfer_outgoing o JOIN players p ON p.id=o.player_id
             WHERE o.team_code=? AND o.likelihood='CONFIRMED'""", (code,))]
         written.append(_write(SITE_DATA / "teams" / f"{code}.json", {
-            "regime": rg, "slots": slots, "squad": squad, "prescriptions": prescriptions,
+            "regime": rg, "slots": slots, "slot_canon": canon,
+            "squad": squad, "prescriptions": prescriptions,
             "duties": duties, "player_stats": pstats, "departed": departed, "form": form,
             "evaluations": evals, "season_stats": season_stats, "fbref": fbref,
             "fotmob_season": fm_season,
