@@ -1,5 +1,8 @@
 {
- "departed": [],
+ "departed": [
+  "코나테",
+  "살라"
+ ],
  "duties": [
   {
    "adherence": "MEDIUM — '여전히 최고 골키퍼' 서사는 배급 백분위(95)가 지지하나 슛 스토핑 지표(선방으로 막은 실점 -2.70, 백분위 33)는 반대 방향이다. '하이라인에 맞는 스위퍼' 함의도 실측 0.821로 기각된다.",
@@ -8545,6 +8548,25 @@
    "focus": "Aggressive",
    "game_version": "FC26",
    "grid_club": "Barcelona",
+   "kind": "fc26:opt:RCB",
+   "label": "아라우호",
+   "map25": "001000012101594015X400232",
+   "player_id": 85,
+   "pos_label": "RCB",
+   "rationale": "2026-08-12 CONFIRMED 승격에 따른 게임 처방. 코나테(→레알 06-18 자유이적) 이탈분 보강. ⭐ **RCB 전용 자원이다** — 같은 그리드를 LCB(x=37)로 재면 cb_wideback/Support .271로 붕괴한다(22/22 전 경기 우측 우세, 우2컬럼 0.69). 판 다이크가 LCB 71경기 .911로 고정이라 좌우 분담이 맞물린다. ⚠️ 근거 그리드가 바르셀로나 소속분이라 리버풀 합류 후 재측정이 필요하다.",
+   "role_id": "cb_bpd",
+   "sample_n": 22,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 63,
+   "y": null
+  },
+  {
+   "avg_rating": 7.15,
+   "fit_sim": 0.908,
+   "focus": "Aggressive",
+   "game_version": "FC26",
+   "grid_club": "Barcelona",
    "kind": "measured:season:full2526",
    "label": "아라우호",
    "map25": "001000012101594015X400232",
@@ -10247,11 +10269,38 @@
    "rate_v": 7.11,
    "slot_type": "WM",
    "sort_order": 9
+  },
+  {
+   "fit_focus": "Aggressive",
+   "fit_role": "cb_bpd",
+   "fit_sim": 0.908,
+   "grid_caveat": "⚠️ 리버풀 공식전 0경기 — 그리드 전량이 **바르셀로나 시절**(25/26 45분+ 22경기)이다. 적합값은 \"바르셀로나에서 하던 일\"의 적합이며 이라올라 전술에서 같은 위치를 쓴다는 근거가 아니다(obs#157·#158). ⭐ 같은 선수가 팀을 옮기자 좌우 위치가 17~18단위 움직인 사례가 둘 있다(베일리·게상, obs#158). ⚠️ 이라올라 체제는 공식전 0경기다(첫 경기 8/23 뉴캐슬 원정).",
+   "grid_club": "Barcelona",
+   "label": "아라우호(합류확정)",
+   "lh": "CONFIRMED",
+   "map25": "001000012101594015X400232",
+   "name_en": "Ronald Araújo",
+   "name_kr": "아라우호",
+   "player_id": 85,
+   "rate_basis": "full2526",
+   "rate_note": "RCB 22경기 평균 7.15 (measured:season:full2526)",
+   "rate_v": 7.15,
+   "slot_type": "CB",
+   "sort_order": 10
   }
  ],
  "transfer": {
   "ledger": [],
   "outgoing": [
+   {
+    "confidence": "CONFIRMED — 자유이적 완료. ⚠️ **일자(2026-06-18)는 스캔 보고의 병기 서술 기준**이고 레알 구단 공식 발표 원문은 직접 확인하지 않았다. 이탈 사실 자체는 복수 소스가 일치한다.",
+    "dest_club": "Real Madrid",
+    "last_news_date": "2026-06-18",
+    "likelihood": "CONFIRMED",
+    "name": "Ibrahima Konaté",
+    "name_kr": "코나테",
+    "source": "리버풀 아라우호 영입 보도의 병기 서술(리버풀 구단 공식 2026-08-11 · Sky · ESPN) ; LIV 스캔 회차 보고(2026-08-12) ; fotmob_detail_stats.league='Premier League'(25/26 기록은 리버풀 소속분)"
+   },
    {
     "confidence": "MEDIUM-HIGH — 이탈리아 1티어급 전담 기자의 구체 금액·단계 보도. ⚠️ **§2-0 함정 회피 기록**: 검색 상위의 Football365 'Jones accepts offer / green light' 기사는 **2026-01-31자**(지난 겨울 임대 무산 건, 당시 €40m 매입옵션 구조)다 — 다른 창의 기사이므로 혼동 금지.",
     "dest_club": "Inter",
@@ -10269,6 +10318,15 @@
     "name": "Cody Gakpo",
     "name_kr": "학포",
     "source": "Fabrizio Romano · The Athletic Gregg Evans via thisisanfield.com/2026/08/cody-gakpo-tottenham-transfer-open-liverpool-stance-change/ ; thisisanfield.com/2026/08/cody-gakpo-several-clubs-tottenham-liverpool-transfer/ ; 리드 Fotmob teamIds=8650 (08-10 footballinsider247)"
+   },
+   {
+    "confidence": "CONFIRMED — 이적 완료. ⚠️ **구단 공식 발표 원문은 직접 확인하지 않았다**(스캔 보고의 복수 소스 일치 기준). 다음 회차에 원문으로 뒷받침할 것.",
+    "dest_club": "Trabzonspor",
+    "last_news_date": "2026-08-06",
+    "likelihood": "CONFIRMED",
+    "name": "Mohamed Salah",
+    "name_kr": "살라",
+    "source": "LIV 스캔 회차 보고(2026-08-12) ; 살라 연봉 €17m/년 병기 서술이 §2-0 발행일 검증 보조 지표로 사용됨 ; fotmob_detail_stats.league='Premier League'(25/26 기록은 리버풀 소속분)"
    }
   ],
   "targets": [
