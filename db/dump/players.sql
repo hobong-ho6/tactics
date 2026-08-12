@@ -74,3 +74,9 @@ INSERT INTO players VALUES(76,'Nicolas Jackson','잭슨',NULL,NULL,NULL,'ST','tr
 INSERT INTO players VALUES(77,'Allan','아우안',NULL,NULL,NULL,'RW','transfer_targets 2026-summer AVL 후보(팔메이라스) — 평가·듀티 기록용 등재 (2026-08-11)',1721789);
 INSERT INTO players VALUES(78,'Matteo Ruggeri','마테오 루헤리',NULL,NULL,NULL,'LB','transfer_targets 2026-summer AVL 후보(아틀레티코) — 평가·듀티 기록용 등재 (2026-08-11)',1051097);
 INSERT INTO players VALUES(79,'Endrick','엔드릭',1174937,NULL,NULL,'RW','transfer_targets 2026-summer AVL 후보 — 2026-08-11 등재(Romano 08-10). 실측은 obs#135(리옹 임대 20경기)',NULL);
+INSERT INTO players VALUES(80,'Pep Chavarría','차바리아',1010421,NULL,NULL,'LB','transfer_targets 2026-summer CHE 후보 — 2026-08-12 실측용 등재',NULL);
+INSERT INTO players VALUES(81,'Bradley Barcola','바르콜라',996952,NULL,NULL,'LW','transfer_targets 2026-summer LIV 후보 — 2026-08-12 실측용 등재',NULL);
+INSERT INTO players VALUES(82,'Mykhaylo Mudryk','무드리크',NULL,NULL,NULL,'LW','transfer_outgoing 2026-summer CHE — 2026-08-12 등재',NULL);
+INSERT INTO players VALUES(83,'Filip Jørgensen','요르겐센',NULL,NULL,NULL,'GK','transfer_outgoing 2026-summer CHE — 2026-08-12 등재',NULL);
+INSERT INTO players VALUES(84,'Benoît Badiashile','바디아실',NULL,NULL,NULL,'CB','transfer_outgoing 2026-summer CHE — 2026-08-12 등재',NULL);
+INSERT INTO players VALUES(85,'Ronald Araújo','아라우호',NULL,NULL,NULL,'CB','2026-08-11 바르셀로나에서 리버풀 임대(26/27 시즌). 등번호 33.',NULL);
