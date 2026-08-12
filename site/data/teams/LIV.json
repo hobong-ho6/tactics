@@ -6179,6 +6179,58 @@
     "Club Friendly Games"
    ]
   ],
+  "아라우호": [
+   [
+    "2026-03-27",
+    7.1,
+    "International Friendly Games"
+   ],
+   [
+    "2026-03-31",
+    7.0,
+    "International Friendly Games"
+   ],
+   [
+    "2026-04-04",
+    6.5,
+    "LaLiga"
+   ],
+   [
+    "2026-04-08",
+    6.7,
+    "UEFA Champions League"
+   ],
+   [
+    "2026-04-11",
+    7.3,
+    "LaLiga"
+   ],
+   [
+    "2026-04-14",
+    6.2,
+    "UEFA Champions League"
+   ],
+   [
+    "2026-04-25",
+    7.1,
+    "LaLiga"
+   ],
+   [
+    "2026-05-02",
+    6.3,
+    "LaLiga"
+   ],
+   [
+    "2026-05-17",
+    6.5,
+    "LaLiga"
+   ],
+   [
+    "2026-05-23",
+    8.7,
+    "LaLiga"
+   ]
+  ],
   "알리송 베케르": [
    [
     "2026-03-18",
@@ -6228,6 +6280,58 @@
    [
     "2026-08-09",
     6.8,
+    "Club Friendly Games"
+   ]
+  ],
+  "음바예": [
+   [
+    "2026-05-02",
+    7.4,
+    "Ligue 1"
+   ],
+   [
+    "2026-05-13",
+    7.6,
+    "Ligue 1"
+   ],
+   [
+    "2026-05-17",
+    6.7,
+    "Ligue 1"
+   ],
+   [
+    "2026-06-09",
+    6.5,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-16",
+    7.4,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-23",
+    7.3,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-26",
+    6.6,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-01",
+    6.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-08-05",
+    6.4,
+    "Club Friendly Games"
+   ],
+   [
+    "2026-08-08",
+    7.5,
     "Club Friendly Games"
    ]
   ],
@@ -7534,6 +7638,30 @@
    "tk_pg": 0.52,
    "xa_pg": 0.248,
    "xg_pg": 0.388
+  },
+  {
+   "avg_rating": 6.9,
+   "dw_pg": 2.31,
+   "ic_pg": 0.31,
+   "kp_pg": 0.07,
+   "label": "아라우호",
+   "minutes": 2084,
+   "n": 58,
+   "tk_pg": 0.79,
+   "xa_pg": 0.015,
+   "xg_pg": 0.129
+  },
+  {
+   "avg_rating": 6.91,
+   "dw_pg": 1.64,
+   "ic_pg": 0.15,
+   "kp_pg": 0.49,
+   "label": "음바예",
+   "minutes": 1745,
+   "n": 67,
+   "tk_pg": 0.4,
+   "xa_pg": 0.078,
+   "xg_pg": 0.205
   }
  ],
  "prescriptions": [
@@ -8410,6 +8538,44 @@
    "starter": 0,
    "x": 85,
    "y": null
+  },
+  {
+   "avg_rating": 7.15,
+   "fit_sim": 0.908,
+   "focus": "Aggressive",
+   "game_version": "FC26",
+   "grid_club": "Barcelona",
+   "kind": "measured:season:full2526",
+   "label": "아라우호",
+   "map25": "001000012101594015X400232",
+   "player_id": 85,
+   "pos_label": "RCB",
+   "rationale": "2026-08-12 전수 실측(SofaScore 25/26, 45분+). ⭐ **`transfer_targets`의 6경기 표본은 덮지 않는다** — 그 행은 게이트 G3 앵커이고 불변규칙 2가 재작성을 금한다. 전수 결과는 이 처방 행에 **추가**한다. **22/22 전 경기 우측 우세**(우2 0.69). LCB로 재면 **.271로 붕괴** — RCB 전용 자원이다. 22경기(1615분).",
+   "role_id": "cb_bpd",
+   "sample_n": 22,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 63,
+   "y": null
+  },
+  {
+   "avg_rating": 7.01,
+   "fit_sim": 0.94,
+   "focus": "Build-Up",
+   "game_version": "FC26",
+   "grid_club": "PSG",
+   "kind": "measured:season:full2526",
+   "label": "음바예",
+   "map25": "011231115X100261001300000",
+   "player_id": 86,
+   "pos_label": "RM",
+   "rationale": "2026-08-12 전수 실측(SofaScore 25/26, 45분+). ⭐ **`transfer_targets`의 6경기 표본은 덮지 않는다** — 그 행은 게이트 G3 앵커이고 불변규칙 2가 재작성을 금한다. 전수 결과는 이 처방 행에 **추가**한다. 20경기 중 4경기가 좌측이라 obs#156 교훈대로 **우측 16경기만** 집계. 16경기(1003분).",
+   "role_id": "w_wideplm",
+   "sample_n": 16,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 85,
+   "y": null
   }
  ],
  "profile": [
@@ -8838,6 +9004,98 @@
     "starts": null
    }
   ],
+  "아라우호": [
+   {
+    "assists": 0,
+    "avg_rating": null,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": null,
+    "n": 1,
+    "season": "2026-27",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.95,
+    "competition": "LaLiga",
+    "goals": 3,
+    "minutes": 1072,
+    "n": 32,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.61,
+    "competition": "UEFA Champions League",
+    "goals": 0,
+    "minutes": 451,
+    "n": 11,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.3,
+    "competition": "Copa del Rey",
+    "goals": 1,
+    "minutes": 110,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.93,
+    "competition": "International Friendly Games",
+    "goals": 0,
+    "minutes": 225,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.83,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 135,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": null,
+    "competition": "Supercopa de España",
+    "goals": 0,
+    "minutes": 1,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": null,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": null,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.4,
+    "competition": "World Cup Qual. CONMEBOL",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   }
+  ],
   "알리송 베케르": [
    {
     "assists": 0,
@@ -8935,6 +9193,108 @@
     "competition": "Community Shield",
     "goals": 0,
     "minutes": 90,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   }
+  ],
+  "음바예": [
+   {
+    "assists": 0,
+    "avg_rating": 6.95,
+    "competition": "Club Friendly Games",
+    "goals": 1,
+    "minutes": 150,
+    "n": 2,
+    "season": "2026-27",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.5,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 47,
+    "n": 1,
+    "season": "2026-27",
+    "starts": null
+   },
+   {
+    "assists": 2,
+    "avg_rating": 6.79,
+    "competition": "Ligue 1",
+    "goals": 3,
+    "minutes": 997,
+    "n": 30,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.72,
+    "competition": "UEFA Champions League",
+    "goals": 0,
+    "minutes": 106,
+    "n": 16,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.9,
+    "competition": "Africa Cup of Nations",
+    "goals": 1,
+    "minutes": 125,
+    "n": 6,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 3,
+    "avg_rating": 7.72,
+    "competition": "International Friendly Games",
+    "goals": 1,
+    "minutes": 159,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": null,
+    "competition": "FIFA Club World Cup",
+    "goals": 0,
+    "minutes": null,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.1,
+    "competition": "World Cup",
+    "goals": 1,
+    "minutes": 108,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.9,
+    "competition": "FIFA Intercontinental Cup",
+    "goals": 0,
+    "minutes": 30,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.8,
+    "competition": "UEFA Super Cup",
+    "goals": 0,
+    "minutes": 23,
     "n": 1,
     "season": "2025-26",
     "starts": null
@@ -9933,41 +10293,41 @@
     "source": "Fabrizio Romano (2026-08-10) via football365.com/news/bradley-barcola-liverpool-paris-saint-germain-fabrizio-romano-transfer-update ; Sky Sports Vinny O'Connor·Amar Mehta (2026-08-07) skysports.com/football/news/11669/13570766 ; Sky (2026-07-29) 11095/13567997 ; Sky 영상 Mark McAdam (08-11)"
    },
    {
-    "avg_rating": null,
+    "avg_rating": 7.01,
     "club": "PSG",
-    "confidence": "MEDIUM-HIGH — 1티어(Romano) 관심 보도 + '선두' 언급. §2-0 검증 통과: 나이 18세 표기가 실제와 일치. ⚠️ 오퍼·협상 단계 보도 0건이라 HIGH 아님. ⚠️ **실측 PENDING** — SofaScore 미수집. ⚠️ 18세라 표본이 얕을 수 있다(다음 회차 수집 시 45분+ 경기 수 확인 필요).",
-    "fit_focus": null,
-    "fit_role": null,
-    "fit_sim": null,
+    "confidence": "MEDIUM-HIGH — 1티어(Romano) 관심 보도 + '선두' 언급. §2-0 검증 통과: 나이 18세 표기가 실제와 일치. ⚠️ 오퍼·협상 단계 보도 0건이라 HIGH 아님. ⚠️ **실측 PENDING** — SofaScore 미수집. ⚠️ 18세라 표본이 얕을 수 있다(다음 회차 수집 시 45분+ 경기 수 확인 필요). | [실측 전수 완료 2026-08-12] 2026-08-12 전수 실측(SofaScore 25/26). 종전 6경기 표본을 대체하지 않고 추가한다(불변규칙 2). ⚠️ 표본은 **이전/현 소속 클럽**의 것이고 우리 팀 전술이 아니다(obs#157·#158). 20경기 중 **4경기가 좌측**이라 obs#156 교훈대로 **우측 16경기만** 집계. 표본은 PSG. 45분+ 16경기(1003분) 집계.",
+    "fit_focus": "Build-Up",
+    "fit_role": "w_wideplm",
+    "fit_sim": 0.94,
     "last_news_date": "2026-08-06",
     "likelihood": "MEDIUM-HIGH",
-    "map25": null,
+    "map25": "011231115X100261001300000",
     "name": "Ibrahim Mbaye",
     "name_kr": "음바예",
-    "opt_focus": null,
-    "opt_role": null,
+    "opt_focus": "Build-Up",
+    "opt_role": "w_wideplm",
     "position": "RW",
-    "sample_n": null,
+    "sample_n": 16,
     "short_label": "음바예",
     "slot": "RM",
     "source": "Fabrizio Romano 발언 (2026-08-06) via teamtalk.com/liverpool/ibrahim-mbaye-bradley-barcola-liverpool-psg-fabrizio-romano-latest ; Sky Sports 병기 확인 ; 리드 Fotmob teamIds=8650 (08-07 TEAMtalk)"
    },
    {
-    "avg_rating": null,
+    "avg_rating": 7.15,
     "club": "Barcelona → Liverpool (임대)",
-    "confidence": "CONFIRMED — 구단 공식 발표. §2-0 검증 통과: 본문 나이 27세(1999-03-07생)가 일치하고 병기 상황(테어 슈테겐 이탈 후 주장단, 플릭 체제 출전시간, 이라올라 부임)이 26/27 창과 정합. ⚠️ **실측 PENDING** — SofaScore 미수집이라 그리드·적합이 없다. 다음 회차에 수집해 `squad_entries` regime_id=3으로 승격할 것. ⚠️ 승격 시 표본은 **바르셀로나** 소속이므로 `grid_club` 캐비앗(obs#157) 대상이다.",
-    "fit_focus": null,
-    "fit_role": null,
-    "fit_sim": null,
+    "confidence": "CONFIRMED — 구단 공식 발표. §2-0 검증 통과: 본문 나이 27세(1999-03-07생)가 일치하고 병기 상황(테어 슈테겐 이탈 후 주장단, 플릭 체제 출전시간, 이라올라 부임)이 26/27 창과 정합. ⚠️ **실측 PENDING** — SofaScore 미수집이라 그리드·적합이 없다. 다음 회차에 수집해 `squad_entries` regime_id=3으로 승격할 것. ⚠️ 승격 시 표본은 **바르셀로나** 소속이므로 `grid_club` 캐비앗(obs#157) 대상이다. | [실측 전수 완료 2026-08-12] 2026-08-12 전수 실측(SofaScore 25/26). 종전 6경기 표본을 대체하지 않고 추가한다(불변규칙 2). ⚠️ 표본은 **이전/현 소속 클럽**의 것이고 우리 팀 전술이 아니다(obs#157·#158). **22/22 전 경기 우측 우세**(우2 0.69). LCB로 재면 .271로 붕괴 — **RCB 전용 자원**이다. 표본은 바르셀로나. 45분+ 22경기(1615분) 집계.",
+    "fit_focus": "Aggressive",
+    "fit_role": "cb_bpd",
+    "fit_sim": 0.908,
     "last_news_date": "2026-08-11",
     "likelihood": "CONFIRMED",
-    "map25": null,
+    "map25": "001000012101594015X400232",
     "name": "Ronald Araújo",
     "name_kr": "아라우호",
-    "opt_focus": null,
-    "opt_role": null,
+    "opt_focus": "Aggressive",
+    "opt_role": "cb_bpd",
     "position": "CB",
-    "sample_n": null,
+    "sample_n": 22,
     "short_label": "아라우호",
     "slot": "RCB",
     "source": "Liverpool 구단 공식 https://www.liverpoolfc.com/news/liverpool-agree-deal-sign-ronald-araujo-loan (2026-08-11) ; Sky Sports https://www.skysports.com/football/news/11669/13570899 (08-11) ; ESPN https://www.espn.com/soccer/story/_/id/49556442 (08-11) ; 리드 TransferFeed liverpool/8"
