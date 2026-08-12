@@ -6,6 +6,9 @@
 <h1 id="title"></h1>
 <div class="panel"><h2>⭐ FC26 설정 시트 — 게임에 그대로 입력</h2>
   <div id="teamset" class="kv"></div><div id="pitch2"></div><table id="sheet"></table></div>
+<div class="panel"><h2>전술 정본 — 인선 무관 <small class="dim">slot_canon_roles — 감독이 요구하는
+  슬롯 임무의 게임 번역. 위 설정 시트(인선 프리셋)가 이와 다르면 편차다</small></h2>
+  <div id="pitchCanon"></div><table id="canon"></table></div>
 <div class="panel"><h2>감독 프로필 <small class="dim">manager_profiles — 11축</small></h2>
   <table id="profile"></table></div>
 
@@ -31,6 +34,8 @@ const chosen = Object.fromEntries(order.map(pos=>{
   const c = byPos[pos]; if(!c.length) return [pos,-1];
   const i = c.findIndex(p=>p.starter); return [pos, i<0?0:i];
 }));
+const canon = Object.fromEntries((td.slot_canon ?? [])
+  .filter(c=>!su?.formation || c.formation===su.formation).map(c=>[c.pos,c]));
 function drawSheet(){
   const opts = order.map(pos=>byPos[pos][chosen[pos]]).filter(Boolean);
   document.getElementById('pitch2').innerHTML =
@@ -44,13 +49,30 @@ function drawSheet(){
      const c = byPos[pos]; if(!c.length) return `<tr><td><b>${pos}</b></td><td colspan="3" class="dim">인선 공백</td></tr>`;
      const p = c[chosen[pos]];
      const sel = c.length>1 ? `<select data-pos="${pos}">${c.map((q,i)=>`<option value="${i}" ${i===chosen[pos]?'selected':''}>${q.label}${q.starter?' ★':''}</option>`).join('')}</select>` : p.label;
-     return `<tr><td><b>${pos}</b></td><td>${sel}</td><td>${p.role_id}</td><td>${p.focus}</td></tr>`;
+     const cn = canon[pos];
+     const dev = cn && (cn.role_id!==p.role_id || cn.focus!==p.focus)
+       ? ` <small class="dim" title="정본 ${cn.role_id}/${cn.focus}와 다르다 — 인선 적합 우선">⚠ 정본과 편차</small>` : '';
+     return `<tr><td><b>${pos}</b></td><td>${sel}</td><td>${p.role_id}${dev}</td><td>${p.focus}</td></tr>`;
    }).join('') : '<tr><td colspan="4" class="dim">게임 처방(fc26:opt) 미기록</td></tr>');
   document.querySelectorAll('#sheet select').forEach(el=>el.addEventListener('change',()=>{
     chosen[el.dataset.pos]=+el.value; drawSheet();
   }));
 }
 drawSheet();
+
+// 전술 정본 — 인선 무관 (slot_canon_roles)
+const cRows = order.map(pos=>canon[pos]).filter(Boolean);
+document.getElementById('pitchCanon').innerHTML = cRows.length ?
+  '<div class="tacpitch">' + cRows.map(c=>{
+    const g = geo[c.pos]; if(!g) return '';
+    return `<div class="tchip" style="left:${g.x}%;bottom:${Math.max(4,g.y*0.92+4)}%">
+      <b>${c.pos}</b><small>${c.role_id}<br>${c.focus}</small></div>`;
+  }).join('') + '</div>' : '';
+document.getElementById('canon').innerHTML = '<tr><th>슬롯</th><th>역할</th><th>포커스</th><th>신뢰도</th><th>근거</th></tr>'+
+  (cRows.length ? cRows.map(c=>
+    `<tr><td><b>${c.pos}</b></td><td>${c.role_id}</td><td>${c.focus}</td>
+     <td>${c.confidence ?? ''}</td><td class="dim">${annotate(c.rationale ?? '')}</td></tr>`).join('')
+   : '<tr><td colspan="5" class="dim">이 체제의 정본 세트는 아직 기록되지 않았다 (slot_canon_roles — AVL만 확정, 2026-08-12)</td></tr>');
 const AXES = { philosophy:'철학', traits:'전술적 특징', role_demands:'역할 요구',
   formation:'포메이션', situational:'상황별 변화', pressing:'압박·PPDA',
   buildup:'빌드업', rest_defense:'rest-defense', set_pieces:'세트피스',
