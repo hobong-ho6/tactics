@@ -7,6 +7,7 @@
 <div class="panel"><label class="kv">그룹 <select id="grp"></select></label> <label class="kv">선수 <select id="who"></select></label> <span id="sf"></span> <span id="bio" class="dim"></span></div>
 <div class="panel" id="evalpanel" style="display:none"><h2>종합 평가 <small class="dim">— 실측·게임스탯·감독 전술축을 종합한 판단(산출: player_evaluations)</small></h2>
  <div id="evalbody"></div></div>
+<div id="gridwarn"></div>
 <div class="cardrow" id="grids"></div>
 <p class="dim" style="font-size:12px">그리드 읽는 법 — 위=공격 방향·왼쪽=좌측 터치라인. <b>measured</b>=주 포지션 전체 실측 ·
 <b>:bundesliga/:europa/:pokal</b>=클럽 대회별 · <b>:worldcup/:national</b>=대표팀(월드컵/통합) ·
@@ -173,6 +174,10 @@ function render(){
     document.getElementById('grids').innerHTML =
       `<div class="pcard"><b>실측 (${t.slot} 후보)</b><br>${miniGrid(t.map25)}<br>
        <small class="dim">n=${t.sample_n??'—'} · 평점 ${t.avg_rating??'—'} · 적합 ${t.fit_role??''}/${t.fit_focus??''} ${t.fit_sim??''}</small></div>`;
+    document.getElementById('gridwarn').innerHTML =
+      `<div style="border-left:3px solid var(--warn);background:rgba(255,193,7,.07);padding:8px 12px;margin:8px 0;border-radius:0 6px 6px 0">
+         <b style="color:var(--warn)">실측 출처: ${t.club ?? '이전 소속팀'}</b><br>
+         <small class="dim">⚠️ 아직 영입 전이라 이 그리드는 <b>현 소속팀에서의 기록</b>이다. 적합값은 "그 팀에서 하던 일"의 적합이며, 우리 팀 전술에서 같은 위치를 쓴다는 근거가 아니다.</small></div>`;
     document.getElementById('pstat').innerHTML =
       `<span class="badge mid">${(t.likelihood||'').split(' ')[0]}</span> ${t.club??''} · 최신 보도 ${t.last_news_date??'—'} · 표본 ${t.sample_n??'—'}경기 평균 ${t.avg_rating??'—'}`;
     // 영입 후보는 우리 실측 풀에 없다 — 리그 백분위(Fotmob)만 보여준다
@@ -182,6 +187,13 @@ function render(){
     document.getElementById('form').innerHTML='<span class="dim">경기별 평점 없음(영입 후보)</span>';
     document.getElementById('similar').innerHTML='<span class="dim">—</span>';
   } else {
+    // 실측 출처 경고 — 현 소속팀 경기가 없거나 이전 클럽 표본이 섞인 선수(migration 007)
+    const sq0 = td.squad.find(q=>q.player_id===sel.pid);
+    document.getElementById('gridwarn').innerHTML = sq0?.grid_caveat
+      ? `<div style="border-left:3px solid var(--warn);background:rgba(255,193,7,.07);padding:8px 12px;margin:8px 0;border-radius:0 6px 6px 0">
+           <b style="color:var(--warn)">실측 출처: ${sq0.grid_club}</b><br>
+           <small class="dim">${annotate(sq0.grid_caveat)}</small></div>`
+      : '';
     const pres = td.prescriptions.filter(p=>p.label===key&&p.map25&&p.kind.startsWith('measured'));
     document.getElementById('grids').innerHTML = (pres.length?pres:td.squad.filter(q=>q.player_id===sel.pid).map(q=>({kind:'measured(스쿼드)',map25:q.map25,sample_n:null,avg_rating:q.rate_v})))
       .map(p=>`<div class="pcard"><b>${p.kind}</b> <small class="dim">${p.pos_label??''}</small><br>${miniGrid(p.map25)}<br>

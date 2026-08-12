@@ -221,7 +221,7 @@ CREATE TABLE prescriptions(
   role_id TEXT, focus TEXT,
   map25 TEXT,
   fit_sim REAL, sample_n INTEGER, avg_rating REAL, minutes INTEGER,
-  rationale TEXT, starter INTEGER DEFAULT 0,                   -- 근거 서술 전용 (값은 위 컬럼으로)
+  rationale TEXT, starter INTEGER DEFAULT 0, grid_club TEXT,                   -- 근거 서술 전용 (값은 위 컬럼으로)
   UNIQUE(player_id, regime_id, season, game_version, kind)
 );
 CREATE TABLE squad_entries(
@@ -234,7 +234,7 @@ CREATE TABLE squad_entries(
   map25 TEXT NOT NULL,
   rate_v REAL, rate_basis TEXT, rate_note TEXT,
   fit_role TEXT, fit_focus TEXT, fit_sim REAL,
-  source TEXT, confidence TEXT, sort_order INTEGER,
+  source TEXT, confidence TEXT, sort_order INTEGER, grid_club TEXT, grid_caveat TEXT,
   UNIQUE(regime_id, player_id, slot_type)
 );
 CREATE TABLE team_tactic_setups(    -- v1 그대로 (team → regime_id)

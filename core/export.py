@@ -86,13 +86,13 @@ def export_all(db_path=None, window="2026-summer"):
         squad = _rows(con, """SELECT s.player_id, COALESCE(s.label, p.name_kr, p.name) label,
                                      p.name name_en, COALESCE(p.name_kr, p.name) name_kr,
                                      s.slot_type, s.lh, s.map25, s.rate_v, s.rate_basis, s.rate_note,
-                                     s.fit_role, s.fit_focus, s.fit_sim, s.sort_order
+                                     s.fit_role, s.fit_focus, s.fit_sim, s.sort_order, s.grid_club, s.grid_caveat
                               FROM squad_entries s JOIN players p ON p.id=s.player_id
                               WHERE s.regime_id=? ORDER BY s.sort_order, label""", (rid,))
         prescriptions = _rows(con, """
             SELECT pr.player_id, COALESCE(p.name_kr, p.name) label, pr.season, pr.game_version,
                    pr.kind, pr.pos_label, pr.x, pr.y, pr.role_id, pr.focus, pr.map25, pr.starter,
-                   pr.fit_sim, pr.sample_n, pr.avg_rating, pr.rationale
+                   pr.fit_sim, pr.sample_n, pr.avg_rating, pr.rationale, pr.grid_club
             FROM prescriptions pr JOIN players p ON p.id=pr.player_id
             WHERE pr.regime_id=? ORDER BY pr.player_id, pr.kind""", (rid,))
         setups = _rows(con, """SELECT season, game_version, kind, formation, build_up_style,
