@@ -20,11 +20,10 @@ a{color:var(--acc);text-decoration:none}
   overflow-wrap:anywhere}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 @media(max-width:900px){.grid2{grid-template-columns:1fr}}
-table{border-collapse:collapse;width:100%;font-size:13px}
+table{border-collapse:collapse;width:100%;font-size:13px;overflow-wrap:normal;word-break:keep-all}
 /* 열이 많은 표(시즌 성적·영상 분석)는 좁은 화면에서 패널을 밀어내지 않고 가로 스크롤한다.
-   .panel의 overflow-wrap:anywhere가 셀에 걸리면 글자가 세로로 쪼개지므로 표 안에서는 되돌린다. */
+   .panel의 overflow-wrap:anywhere가 셀에 걸리면 글자가 세로로 쪼개지므로 표 안에서는 되돌린다(위 table 규칙). */
 .scrollx{overflow-x:auto}
-.scrollx table{overflow-wrap:normal;word-break:keep-all}
 #season table{white-space:nowrap;width:auto;min-width:100%}
 th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
 th{color:var(--dim);font-weight:500}
