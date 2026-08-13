@@ -20,6 +20,7 @@
   G10. 영상 레퍼런스 — duties 출처 결손 0 + 선수 화면의 기본 닫힘 details 유지
   G11. 현재 스쿼드 표시 — 확정 이탈·이적 후보·DEAD가 현재 선수 화면에 재노출되지 않음
   G12. 경기 리포트 — 완료본 필수 섹션·선수 전원·원문 파일·히트맵 메뉴가 모두 연결됨
+       + 경기 전용 FC 팀 설정·선발 11명 역할/포커스가 시즌 정본과 분리돼 있음
 
 사용: python3 scripts/gates.py          (전체)
       from scripts.gates import run    (프로그램 내 호출)
@@ -282,22 +283,36 @@ def run(db_path=None, verbose=True):
     report_paths = con.execute("""
         SELECT id,report_path FROM match_reports WHERE status='complete'""").fetchall()
     missing_report_files = [rid for rid, path in report_paths if not (root / path).is_file()]
+    missing_match_presets = con.execute("""
+        SELECT mr.id
+        FROM match_reports mr LEFT JOIN match_game_setups mgs ON mgs.report_id=mr.id
+        WHERE mr.status='complete' AND (mgs.report_id IS NULL OR mgs.match_only!=1)
+        UNION
+        SELECT mr.id
+        FROM match_reports mr LEFT JOIN match_player_prescriptions mpp
+          ON mpp.report_id=mr.id AND mpp.starter=1
+        WHERE mr.status='complete'
+        GROUP BY mr.id HAVING COUNT(mpp.player_id)!=11""").fetchall()
     heatmap_html = (root / "site" / "heatmap.html").read_text()
     match_report_html = (root / "site" / "match-report.html").read_text()
     export_py = (root / "core" / "export.py").read_text()
     ok12 = (
         not incomplete_reports and not uncovered_report_players and not missing_report_files
+        and not missing_match_presets
         and '대표 실측(시즌·유효 표본)' in heatmap_html
         and 'id="matchReportSel"' in match_report_html
         and 'id="teamStats"' in match_report_html
         and 'id="matchPitch"' in match_report_html
         and 'playerStats(p)' in match_report_html
+        and 'MATCH ONLY' in match_report_html
+        and 'renderGamePreset(r)' in match_report_html
         and "['match-report.html', '경기 분석']" in data_js
         and '"match_reports": match_reports' in export_py
     )
     if verbose:
         print(f"G12 경기 리포트: 불완전 {len(incomplete_reports)} · 선수누락 "
-              f"{len(uncovered_report_players)} · 원문누락 {len(missing_report_files)} "
+              f"{len(uncovered_report_players)} · 원문누락 {len(missing_report_files)} · "
+              f"경기프리셋누락 {len(missing_match_presets)} "
               f"{'✅' if ok12 else '⛔'}")
     if not ok12:
         fails.append("G12")

@@ -162,3 +162,33 @@
 - 2026-27 역할 기록이 없던 Bizot·Lindelöf·Pau Torres·Maatsen·Hemmings·Madjo만 `player_duties`에
   추가한다. 기존 Cash·Kamara·Gomes·McGinn·Buendía 행은 보존하고 이 경기 판정은 observation으로 연결한다.
 - 한 경기 커널 Δ만으로 `prescriptions`·`team_tactic_setups`는 변경하지 않는다.
+
+---
+
+## 이 경기만의 FC26 재현 프리셋
+
+> **MATCH ONLY** — 아래 설정은 PSG전 한 경기만 재현한다. 시즌 대표 전술이나 에메리 정본 설정을
+> 변경하지 않으며, `match_game_setups`·`match_player_prescriptions`에 별도로 저장한다.
+
+- 포메이션: **4-2-3-1 Wide**
+- 빌드업: **Counter** — 39% 점유에서 탈취 직후 적은 패스로 Madjo와 우측 McGinn을 찾은 직접 전환.
+- 수비 접근: **Balanced**, 라인 높이 **45** — 중앙을 좁게 보호한 4-2-3-1과 일시적 5-4-1을 정적 설정으로 근사.
+- 전술 코드: **미검증**. 실제 게임에서 아직 저장·검증하지 않았다.
+- 한계: 0-0의 낮은 블록과 1-2 열세 뒤 라인 상승을 단일 프리셋 하나가 모두 표현할 수 없다.
+
+| 슬롯 | 선수 | FC26 역할 | 포커스 | 이 경기 적합 |
+|---|---|---|---|---:|
+| GK | 비조 | 골키퍼 (`gk_goalkeeper`) | Defend | .966 |
+| LB | 마첸 | 윙백 (`fb_wingback`) | Balanced | .759 |
+| LCB | 파우 토레스 | 볼 플레잉 센터백 (`cb_bpd`) | Build-Up | .798 |
+| RCB | 린델뢰프 | 볼 플레잉 센터백 (`cb_bpd`) | Aggressive | .895 |
+| RB | 캐시 | 윙백 (`fb_wingback`) | Balanced | .907 |
+| LDM | 주앙 고메스 | 홀딩 (`dm_holding`) | Roaming | .679 |
+| RDM | 카마라 | 홀딩 (`dm_holding`) | Ball-Winning | .788 |
+| LM | 헤밍스 | 와이드 미드필더 (`wm_widemid`) | Support | .788 |
+| CAM | 부엔디아 | 플레이메이커 (`cam_playmaker`) | Roaming | .623 |
+| RM | 맥긴 | 윙어 (`wm_winger`) | Attack | .882 |
+| ST | Brian Madjo | 포처 (`st_poacher`) | Attack | .725 |
+
+역할·포커스는 event `16260286`의 선수별 실제 히트맵을 해당 슬롯의 FC26 커널에 비교한 단일 경기
+argmax다. 이는 “그 경기에서 가장 비슷했던 움직임”이지 선수의 시즌 대표 역할이나 최적 처방이 아니다.

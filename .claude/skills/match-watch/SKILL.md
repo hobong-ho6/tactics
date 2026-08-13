@@ -64,9 +64,13 @@ description: 시즌 중 정기 경기 수집 — 3팀(AVL·CHE·LIV)의 선수 �
 6. 전술 변화 판정 — 기존 `manager_profiles`·직전 경기와 무엇이 유지/변경됐는지.
 7. 게임 구현 판정 — `유지 / 추가 관찰 / 시험 프리셋 / 정본 변경` 중 하나를 명시한다.
    단일 경기·커널 Δ≤.05는 정본 처방 변경 근거로 쓰지 않는다.
+   또한 **그 경기만 재현하는** `match_game_setups` 1행과 `match_player_prescriptions` 선발 11행을 만든다.
+   팀 포메이션·빌드업·수비 접근·라인 높이와 각 선수의 위치·역할·포커스·단일 경기 fit을 기록한다.
+   `match_only=1`이며 시즌 `team_tactic_setups`·`prescriptions`·`slot_canon_roles`를 덮어쓰지 않는다.
 8. 레퍼런스·한계 — SofaScore 엔드포인트, 영상/전술 글/기사/감독 발언 URL과 미수행 사유.
 
-`match_reports.status='complete'`는 위 필수 섹션과 수집 선수 전원의 `match_player_reports`가 모두 있을 때만 쓴다.
+`match_reports.status='complete'`는 위 필수 섹션, 수집 선수 전원의 `match_player_reports`, 경기 전용 팀 설정과
+선발 11명 역할·포커스가 모두 있을 때만 쓴다.
 초안은 `draft`로 두며 별도 `경기 분석` 메뉴에는 완료본만 노출한다. G12가 누락·원문 경로·UI 연결을 검사한다.
 
 ## 3. 팀 스탯

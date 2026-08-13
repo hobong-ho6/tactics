@@ -507,3 +507,33 @@ CREATE TABLE match_player_reports(
   confidence TEXT NOT NULL,
   PRIMARY KEY(report_id,player_id)
 );
+CREATE TABLE match_game_setups(
+  report_id INTEGER PRIMARY KEY REFERENCES match_reports(id) ON DELETE CASCADE,
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  formation TEXT NOT NULL,
+  build_up_style TEXT NOT NULL,
+  defensive_approach TEXT NOT NULL,
+  line_height INTEGER NOT NULL CHECK(line_height BETWEEN 0 AND 100),
+  tactic_code TEXT,
+  match_only INTEGER NOT NULL DEFAULT 1 CHECK(match_only=1),
+  rationale TEXT NOT NULL,
+  source TEXT NOT NULL,
+  confidence TEXT NOT NULL
+);
+CREATE TABLE match_player_prescriptions(
+  report_id INTEGER NOT NULL REFERENCES match_reports(id) ON DELETE CASCADE,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  game_version TEXT NOT NULL,
+  pos_label TEXT NOT NULL,
+  role_id TEXT NOT NULL,
+  focus TEXT NOT NULL,
+  fit_sim REAL,
+  starter INTEGER NOT NULL DEFAULT 1,
+  sort_order INTEGER,
+  rationale TEXT NOT NULL,
+  source TEXT NOT NULL,
+  confidence TEXT NOT NULL,
+  PRIMARY KEY(report_id,player_id),
+  FOREIGN KEY(game_version,role_id,focus)
+    REFERENCES game_role_focus(game_version,role_id,focus)
+);

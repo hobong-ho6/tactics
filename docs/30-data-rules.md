@@ -240,3 +240,5 @@ AVL·CHE·LIV 공통.
   `status='complete'`다. 하나라도 비면 `draft`이며 공개 메뉴에서 숨긴다.
 - 매 경기 결론은 **유지 / 추가 관찰 / 시험 프리셋 / 정본 변경**으로 닫는다. 단일 경기만으로
   `prescriptions`나 `slot_canon_roles`를 바꾸지 않는다.
+- 별도로 `match_game_setups`와 `match_player_prescriptions`에 **해당 경기만의** FC 설정과 선발 11명의
+  역할·포커스를 기록한다. 이는 재현용 `MATCH ONLY` 프리셋이며 시즌/감독 정본과 합치지 않는다.

@@ -224,6 +224,26 @@ def export_all(db_path=None, window="2026-summer"):
                 WHERE mpr.report_id=?
                 ORDER BY COALESCE(pm.lineup_order,99), p.id""",
                 (report["event_id"], report["id"]))
+            setup = _rows(con, """
+                SELECT report_id,game_version,formation,build_up_style,
+                       defensive_approach,line_height,tactic_code,match_only,
+                       rationale,source,confidence
+                FROM match_game_setups WHERE report_id=?""", (report["id"],))
+            report["game_setup"] = setup[0] if setup else None
+            report["game_players"] = _rows(con, """
+                SELECT mpp.player_id,COALESCE(p.name_kr,p.name) label,p.name name_en,
+                       mpp.game_version,mpp.pos_label,mpp.role_id,gr.name role_name,
+                       mpp.focus,mpp.fit_sim,mpp.starter,mpp.sort_order,mpp.rationale,
+                       mpp.source,mpp.confidence,s.x,s.y
+                FROM match_player_prescriptions mpp
+                JOIN players p ON p.id=mpp.player_id
+                JOIN game_roles gr
+                  ON gr.game_version=mpp.game_version AND gr.role_id=mpp.role_id
+                LEFT JOIN match_game_setups mgs ON mgs.report_id=mpp.report_id
+                LEFT JOIN slots s ON s.regime_id=? AND s.formation=mgs.formation
+                                 AND s.pos=mpp.pos_label
+                WHERE mpp.report_id=? ORDER BY mpp.sort_order,p.id""",
+                (rid, report["id"]))
             report_file = ROOT / report["report_path"]
             report["report_markdown"] = (
                 report_file.read_text(encoding="utf-8") if report_file.is_file() else None)

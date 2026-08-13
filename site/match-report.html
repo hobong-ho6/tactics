@@ -17,6 +17,7 @@
       <div id="pitchCaption" class="kv"></div></section>
     <section class="panel"><h2>팀 전체 스탯</h2><div class="scrollx"><table id="teamStats"></table></div></section>
   </div>
+  <div class="panel" id="gamePreset"></div>
   <div class="panel"><h2>전술 분석</h2><div class="report-grid" id="tactical"></div></div>
   <div class="panel"><h2>선수별 히트맵·역할·전체 스탯</h2><div id="players" class="player-report-list"></div></div>
   <div class="panel"><details class="report-source"><summary>전체 분석 원문·레퍼런스 펼치기</summary>
@@ -54,9 +55,36 @@ function playerStats(p){
     goals:p.goals,assists:p.assists,touches:p.touches,recoveries:p.recoveries};
   return Object.entries({...extra,...base}).filter(([,v])=>present(v));
 }
-function statsGrid(p){
-  return `<div class="all-stats">${playerStats(p).map(([k,v]) =>
-    `<span><small>${esc(statNames[k] || k)}</small><b>${esc(k==='started' ? (v?'선발':'교체') : v)}</b></span>`).join('')}</div>`;
+function statsTable(p){
+  const values=new Map(playerStats(p));
+  const groups=[
+    ['경기 결과',['minutes','rating','started','goals','assists','shots_total','shots_on','xg','xa']],
+    ['공격·배급',['key_passes','pass_acc','pass_total','touches']],
+    ['수비·경합',['duels_won','duels_lost','tackles','interceptions','recoveries','clearances','saves']],
+    ['위치·국면',['lineup_pos','pos_class','avg_x','avg_y','hit_points','phase_lead','phase_level','phase_trail']]
+  ];
+  const renderValue=(k,v)=>esc(k==='started'?(v?'선발':'교체'):v);
+  const rows=[];
+  for (const [title,keys] of groups){
+    const items=keys.filter(k=>values.has(k)).map(k=>{const v=values.get(k);values.delete(k);return [k,v]});
+    if (!items.length) continue;
+    for(let i=0;i<items.length;i+=3){
+      const chunk=items.slice(i,i+3);
+      const pad=3-chunk.length;
+      rows.push(`<tr>${i===0?`<th class="stat-group" rowspan="${Math.ceil(items.length/3)}">${title}</th>`:''}`+
+        chunk.map(([k,v])=>`<th>${esc(statNames[k]||k)}</th><td><b>${renderValue(k,v)}</b></td>`).join('')+
+        (pad?`<td colspan="${pad*2}"></td>`:'')+'</tr>');
+    }
+  }
+  const rest=[...values.entries()];
+  for(let i=0;i<rest.length;i+=3){
+    const chunk=rest.slice(i,i+3);
+    const pad=3-chunk.length;
+    rows.push(`<tr>${i===0?`<th class="stat-group" rowspan="${Math.ceil(rest.length/3)}">기타 원천값</th>`:''}`+
+      chunk.map(([k,v])=>`<th>${esc(statNames[k]||k)}</th><td><b>${renderValue(k,v)}</b></td>`).join('')+
+      (pad?`<td colspan="${pad*2}"></td>`:'')+'</tr>');
+  }
+  return `<div class="scrollx"><table class="player-stats-table">${rows.join('')}</table></div>`;
 }
 function miniMap(map25){
   if (!map25 || map25.length !== 25) return '<span class="dim">유효 경기 히트맵 없음</span>';
@@ -89,7 +117,26 @@ function renderPitch(r){
   }
   document.getElementById('pitchCaption').innerHTML = requested
     ? `<b>${esc(picked[0]?.label)}</b> · 이 경기 ${esc(picked[0]?.minutes ?? '—')}분 · 히트포인트 ${esc(picked[0]?.hit_points ?? '—')}`
-    : `<b>팀 합성</b> · 유효 히트맵 ${maps.length}/${r.players.length}명 · 칩은 실제 평균 위치`;
+    : `<b>팀 합성</b> · 유효 히트맵 ${maps.length}/${r.players.length}명 · <b>이름 칩 = 해당 경기 실제 평균 위치</b>`;
+}
+function renderGamePreset(r){
+  const s=r.game_setup, players=r.game_players??[];
+  const el=document.getElementById('gamePreset');
+  if (!s){el.innerHTML='<h2>이 경기 FC 재현 프리셋</h2><p class="dim">아직 작성되지 않았습니다.</p>';return;}
+  el.innerHTML=`<div class="match-report-head"><div><h2>이 경기만의 ${esc(s.game_version)} 재현 프리셋</h2>
+    <p class="kv">시즌 정본과 분리된 단일 경기 설정입니다. 다른 경기나 전체 전술에 자동 적용되지 않습니다.</p></div>
+    <span class="badge mid">MATCH ONLY</span></div>
+    <div class="report-metrics"><span>포메이션 <b>${esc(s.formation)}</b></span>
+      <span>빌드업 <b>${esc(s.build_up_style)}</b></span><span>수비 <b>${esc(s.defensive_approach)}</b></span>
+      <span>라인 높이 <b>${esc(s.line_height)}</b></span><span>전술 코드 <b>${esc(s.tactic_code||'미검증')}</b></span></div>
+    <div class="grid2"><div><div class="tacpitch match-tacpitch">${players.filter(p=>p.starter).map(p=>
+      `<div class="tchip" style="left:${p.x}%;bottom:${Math.max(4,p.y*.92+4)}%"><b>${esc(p.label)}</b>
+       <span>${esc(p.pos_label)}</span><small>${esc(p.role_name||p.role_id)}<br>${esc(p.focus)}</small></div>`).join('')}</div></div>
+      <div class="scrollx"><table class="match-preset-table"><tr><th>위치</th><th>선수</th><th>역할</th><th>포커스</th><th>경기 적합</th></tr>
+      ${players.map(p=>`<tr><td><b>${esc(p.pos_label)}</b></td><td>${esc(p.label)}</td><td>${esc(p.role_name||p.role_id)}<br><small>${esc(p.role_id)}</small></td>
+        <td>${esc(p.focus)}</td><td>${present(p.fit_sim)?Number(p.fit_sim).toFixed(3):'—'}</td></tr>`).join('')}</table></div></div>
+    <details class="report-source"><summary>이 경기 설정의 근거·한계</summary><p>${esc(s.rationale)}</p>
+      <p class="dim">${esc(s.source)}<br>${esc(s.confidence)}</p></details>`;
 }
 function render(r){
   document.getElementById('summary').innerHTML=`<div class="match-report-head"><div><h2>${esc(r.title)}</h2>
@@ -100,6 +147,7 @@ function render(r){
     <span>유효슈팅 <b>${esc(r.sot_v ?? '—')}–${esc(r.sot_o ?? '—')}</b></span>
     <span>빅찬스 <b>${esc(r.bigch_v ?? '—')}–${esc(r.bigch_o ?? '—')}</b></span></div>`;
   document.getElementById('teamStats').innerHTML=teamStatRows(r);
+  renderGamePreset(r);
   document.getElementById('tactical').innerHTML=`
     <section><h3>전술 설명</h3><p>${esc(r.tactical_description)}</p></section>
     <section><h3>전술적 특성</h3><ul>${bullets(r.tactical_features)}</ul></section>
@@ -110,7 +158,7 @@ function render(r){
       <span class="dim">${esc(p.minutes ?? '—')}분 / ${esc(p.rating ?? '—')}</span></summary>
     <div class="player-report-body">${miniMap(p.map25)}<div>
       <p><b>특성</b> ${esc(p.characteristics)}</p><p><b>경기 평가</b> ${esc(p.performance)}</p>
-      <p><b>FC 구현</b> ${esc(p.game_implication)}</p>${statsGrid(p)}
+      <p><b>FC 구현</b> ${esc(p.game_implication)}</p>${statsTable(p)}
       <p class="dim">${esc(p.source)} · ${esc(p.confidence)}</p></div></div></details>`).join('');
   document.getElementById('sourceMeta').innerHTML=`<p class="kv"><b>출처</b> ${esc(r.source)}<br>
     <b>신뢰도</b> ${esc(r.confidence)}<br><b>원문 경로</b> <code>${esc(r.report_path)}</code></p>`;
