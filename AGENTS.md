@@ -1,0 +1,69 @@
+# AGENTS.md — Codex CLI 진입점
+
+**규약의 정본은 [CLAUDE.md](CLAUDE.md)와 [docs/00-overview.md](docs/00-overview.md)다. 먼저 읽어라.**
+이 파일은 그것을 대체하지 않고, **에이전트 툴 없이 셸에서 돌릴 때 달라지는 것만** 적는다.
+(2026-08-13 신설. 목표는 Claude Code와 Codex CLI **양쪽에서 동일하게** 돌아가는 것이다.)
+
+## 0. 최초 1회 세팅
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r requirements.txt
+.venv/bin/playwright install chromium
+```
+
+`.venv/`는 `.gitignore`에 있다. ⚠️ **머신마다 파이썬 버전이 다르다**(이 리포는 3.9.6과 3.14가 섞여 있었다) —
+`__pycache__`를 커밋하지 말 것. 2026-08-13에 추적에서 제거했다.
+
+## 1. 세션 시작·종료
+
+CLAUDE.md와 동일하다 — 시작 시 `HANDOFF.md`를 먼저 읽고 한 줄 브리핑, 종료 시 갱신.
+절차는 [.claude/skills/hadoff/SKILL.md](.claude/skills/hadoff/SKILL.md)에 있고 **툴 중립이라 그대로 쓸 수 있다**.
+
+## 2. 브라우저가 필요한 작업 — 스크립트로 대체한다
+
+Claude Code에서는 MCP 브라우저 툴로 오리진 JS를 돌렸다. Codex에는 그 툴이 없으므로 아래를 쓴다.
+**두 경로는 같은 값을 낸다**(2026-08-13 회귀 검증: 완비사카 25경기 `map25` 일치, RB 적합 `.932` 일치).
+
+| 필요한 것 | Claude Code | Codex CLI |
+|---|---|---|
+| SofaScore 실측 | `mcp__Claude_Browser__javascript_tool` | `.venv/bin/python scripts/collect_sofascore.py <player_id> --from … --to …` |
+| Fotmob 루머 | `preview_start` + `get_page_text` | `.venv/bin/python scripts/fetch_fotmob.py AVL CHE LIV` |
+| 페이지 확인 | `preview_start {name:"heatmap"}` | `scripts/serve.sh` (기본 8123, `PORT=` 로 변경) |
+
+⚠️ **왜 스크립트가 필요한가**: SofaScore API는 sofascore.com 오리진에서만 열리고 `curl`은 UA/Referer를
+붙여도 **403**이다(docs/30 ②). Fotmob 루머 표는 **CSR**이라 정적 GET으로는 셸만 온다.
+두 스크립트 다 Playwright의 실제 Chromium을 같은 오리진에 띄워 이 문제를 푼다.
+
+수집 후 **인코딩·집계·커널은 `core/` 모듈만 쓴다**(불변규칙 4 — 재구현 금지):
+`core.sofascore.parse_collected` → `core.aggregate.aggregate_rows` → `core.kernel.Kernel.best_fit_slot`.
+
+## 3. 정기 작업 (스킬 = 런북)
+
+`.claude/skills/`의 SKILL.md는 **Claude Code 전용 포맷이 아니라 읽고 따라 하는 절차서**다.
+Codex에서는 슬래시 명령 대신 그 파일을 읽고 실행한다.
+
+| 작업 | 런북 | Codex에서 달라지는 점 |
+|---|---|---|
+| 이적 감시 | [.claude/skills/transfer-watch/SKILL.md](.claude/skills/transfer-watch/SKILL.md) | §0의 **서브에이전트 3개 병렬**은 Codex에 대응물이 없다 → 순차 수행하거나 3회로 나눠 실행. §1 Fotmob은 위 스크립트로. |
+| 경기 실측 | [.claude/skills/match-watch/SKILL.md](.claude/skills/match-watch/SKILL.md) | §3 수집을 `collect_sofascore.py`로. |
+
+⚠️ **스킬 본문이 "메인 세션이 브라우저로"라고 쓴 부분은 Codex에서 스크립트로 읽는다** —
+판정·DB 쓰기·리포트·커밋의 책임 분담은 그대로다.
+
+## 4. DB 변경 후 고정 절차 (양쪽 동일)
+
+```bash
+python3 scripts/export.py     # site/data 재생성 (게이트 자동 강제)
+scripts/db_dump.sh            # db/dump 재생성
+git add db/tactics.db db/dump/ site/data/ reports/…   # ⛔ git add -A 금지
+```
+
+⛔ **`git add -A` 금지** — `.claude/settings.json`(Figma PAT)이 있어 푸시가 차단된다. 명시 스테이징만.
+
+## 5. 아직 대응물이 없는 것 (미해결)
+
+- **서브에이전트 병렬 스캔** — transfer-watch §0의 설계 근거는 "스캔이 토큰을 많이 쓰는데 산출물은
+  이름·등급·URL 목록뿐"이라는 것이다. 순차 실행해도 결과는 같지만 컨텍스트를 더 쓴다.
+- **스케줄 실행** — Claude Code의 스케줄 작업(매일 09/21시)에 해당하는 것은 `cron`/`launchd`로
+  따로 걸어야 한다. 스크립트는 전부 비대화형으로 돌아가므로 걸 수 있다. (미구성)
