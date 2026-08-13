@@ -191,18 +191,40 @@ def main():
                              FROM appearances a JOIN matches m ON m.id=a.match_id""").fetchall()
     n_app_merged = n_app_new = 0
     for a in app_rows:
-        hit = c2.execute("""SELECT id, map25, pos_class FROM player_matches
+        hit = c2.execute("""SELECT id, map25, pos_class, stats_json FROM player_matches
                             WHERE player_id=? AND date=?""", (a["player_id"], a["mdate"])).fetchone()
         heat_note = " / ".join(x for x in (a["heat_zones"], a["heat_summary"]) if x) or None
         if hit:
+            # positions를 기저로 먼저 넣었더라도 appearances의 기능 스탯은 버리면 안 된다.
+            # 기존 구현은 xg/xa/key_passes/goals/assists만 병합해 obs#132가 보정한
+            # duels/tackles/interceptions와 stats_json 142행을 조용히 유실했다.
+            app_stats = json.loads(a["stats_json"]) if a["stats_json"] else {}
+            cur_stats = json.loads(hit[3]) if hit[3] else {}
+            vals = {k: pick(app_stats, ks) for k, ks in STAT_KEYS.items()}
+            merged_stats = {**app_stats, **cur_stats}  # 더 최신인 positions 값 우선
             c2.execute("""UPDATE player_matches SET
-                match_id=?, role_note=?, heat_note=?,
+                match_id=?, role_note=?, heat_note=?, minutes=COALESCE(?,minutes),
+                rating=COALESCE(?,rating),
                 pos_class=COALESCE(pos_class,?), map25=COALESCE(map25,?),
                 xg=COALESCE(xg,?), xa=COALESCE(xa,?), key_passes=COALESCE(key_passes,?),
-                goals=COALESCE(goals,?), assists=COALESCE(assists,?)
+                duels_won=COALESCE(duels_won,?), duels_lost=COALESCE(duels_lost,?),
+                tackles=COALESCE(tackles,?), interceptions=COALESCE(interceptions,?),
+                goals=COALESCE(goals,?), assists=COALESCE(assists,?),
+                touches=COALESCE(touches,?), recoveries=COALESCE(recoveries,?),
+                stats_json=?
                 WHERE id=?""",
-                (a["match_id"], a["role"], heat_note, a["position"], a["heat_map25"],
-                 a["xg"], a["xa"], a["key_passes"], a["goals"], a["assists"], hit[0]))
+                (a["match_id"], a["role"], heat_note, a["minutes"], a["rating"],
+                 a["position"], a["heat_map25"],
+                 a["xg"] if a["xg"] is not None else vals["xg"],
+                 a["xa"] if a["xa"] is not None else vals["xa"],
+                 a["key_passes"] if a["key_passes"] is not None else vals["key_passes"],
+                 vals["duels_won"], vals["duels_lost"], vals["tackles"],
+                 vals["interceptions"],
+                 a["goals"] if a["goals"] is not None else vals["goals"],
+                 a["assists"] if a["assists"] is not None else vals["assists"],
+                 vals["touches"], vals["recoveries"],
+                 json.dumps(merged_stats, ensure_ascii=False) if merged_stats else None,
+                 hit[0]))
             n_app_merged += 1
         else:
             st = json.loads(a["stats_json"]) if a["stats_json"] else {}

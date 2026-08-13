@@ -148,6 +148,19 @@ def run(db_path=None, verbose=True):
     if fk_bad:
         fails.append("G6")
 
+    # G7 — v1 appearances 기능 스탯이 v2 player_matches 위치 행과 병합됐는지 확인한다.
+    #      migrate_v1.py의 옛 UPDATE가 이 필드들을 빼먹어 obs#132 보정 142행이 유실됐다.
+    app_anchor = con.execute("""SELECT pm.duels_won,pm.tackles,pm.interceptions,
+                                       json_extract(pm.stats_json,'$.passes_total')
+                                FROM player_matches pm JOIN players p ON p.id=pm.player_id
+                                WHERE p.name='Boubacar Kamara' AND pm.event_id=14025276""").fetchone()
+    ok7 = app_anchor == (14, 6, 4, 93)
+    if verbose:
+        print(f"G7 appearances 병합 앵커: {app_anchor} "
+              f"{'✅' if ok7 else '⛔ 기대 (14, 6, 4, 93)'}")
+    if not ok7:
+        fails.append("G7")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")

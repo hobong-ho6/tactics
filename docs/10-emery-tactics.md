@@ -125,10 +125,13 @@ docs/50은 참고용 보존, team_tactic_setups는 전부 FINAL (data-only).
 > 기능축 실측도 갈린다 — 콘사 인터셉트 2.0·패스 96%(압박형) / 파우 인터셉트 1.0·듀얼 6.0·드리블 1.5(캐리형).
 
 역할 재검토 이력(2026-07-02, 이벤트 스탯 반영): 콘사 optimal→cb_bpd/Build-Up(3축),
-맥긴 optimal→wm_insidefwd/Balanced(2축+슈팅맵), 카마라 홀딩은 기능(듀얼 8.4·인터셉트
-3.0 팀 1위)으로 재정당화, 오나나는 boxcrash=세트피스 국면 한정 가능성.
-→ 최종 확정(2026-07-05, 숙련 타이브레이커): 오나나 dm_holding/Roaming ·
+맥긴 optimal→wm_insidefwd/Balanced(2축+슈팅맵). 카마라 홀딩은 당시 듀얼 8.4·인터셉트
+3.0을 근거로 재정당화했으나, **0 생략 보정 후 6.9·1.22로 정정됐고 인터셉트·태클 1위는
+오나나다**(obs#132·#195). 현재 `dm_holding/Defend`의 근거는 스쿼드 1위 볼위너라는 서열이 아니라
+백4 스크린 임무와 창조 역할 오배정 방지다. 오나나는 boxcrash=세트피스 국면 한정 가능성.
+→ 당시 확정(2026-07-05, 숙련 타이브레이커): 오나나 dm_holding/Roaming ·
 마르티네스 gk_ballplaying/Build-Up · 카마라 dm_holding/Ball-Winning · 맥긴 유지.
+카마라 포커스는 2026-07-31 커널 교체 후 **dm_holding/Defend**로 교정됐고 현재 정본도 같다.
 미해결 A/B 0건 (게임 내 검증 폐기 — 데이터가 최종 심판).
 
 ## 증거 규칙
