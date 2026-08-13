@@ -1,3 +1,8 @@
 .DS_Store
 .claude/settings.json
 .claude/settings.local.json
+
+# 2026-08-13 사용자 확정 — 다른 세션/PC에서 유입된 것으로 추정되는 디렉터리.
+# 삭제하지 않고 추적에서만 제외한다(세션 #14 판단 유지, 세션 #15에서 처분 확정).
+handoff-hooks/
+.claude(구독)/
