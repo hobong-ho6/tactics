@@ -333,7 +333,7 @@ sqlite3 data/avl_analysis.db "SELECT focus,plus,negative FROM game_role_focus WH
 > | 은디아예 RM(x=86) | ~~.825~~ — 그리드가 DB·툴 어디에도 없음, 검증 불가 |
 > | 알리송 RM | **.833** (`wm_widemid`/Build-Up) |
 > | ⭐ 캐시 RM (`measured:season`) | **.835** (`wm_widemid`/Support — 교체 전후 불변, 단일 열 커널) |
-> | Jackson ST(x=50) | **.752** (`st_advanced`/Support) |
+> | Jackson ST(x=50, 28경기 전수) | **.724** (`st_false9`/Attack) |
 > | Quiñones ST(x=50) | ~~.832~~ — DB에서 행 삭제됨, 검증 불가 |
 > | 만잠비 CAM(x=50) | **.861** (`cam_halfwinger`/Balanced) |
 > | 바투리나 CAM(x=50) | ~~.711~~ — DB에서 행 삭제됨, 검증 불가 |

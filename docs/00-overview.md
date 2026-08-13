@@ -26,7 +26,7 @@ transfer-watch(스킬) ────────────┘        ↑       
 ## 게이트 (`python3 scripts/gates.py`) — 모든 DB 쓰기의 선행 조건
 
 G1 커널 정합 37/85/217 · G2 인코딩 회귀(전 그리드 cells→map25) · G3 커널 앵커 6항
-(캐시 measured:season RM **.835** 독립앵커 · 하지무사 **.821** 상수 그리드 · Jackson .752 ·
+(캐시 measured:season RM **.835** 독립앵커 · 하지무사 **.821** 상수 그리드 · Jackson **.724**(28경기) ·
 만잠비 CAM .861 · 가르나초 LM .771 · 알리송 RM .833) · G4 집계 공식 재현(만잠비 national 12경기) ·
 G5 JS 커널 동치(site/assets/kernel.js ↔ core/kernel.py, node).
 

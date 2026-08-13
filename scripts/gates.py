@@ -6,13 +6,15 @@
   G2. 인코딩 회귀 — player_matches 전 그리드 cells→map25 재인코딩 대조
   G3. 커널 앵커 — 저장 그리드로 기준 적합값 재현:
         캐시 measured:season RM(x=85, WM)  .835 wm_widemid/Support   (독립 앵커)
-        Jackson ST(x=50, ST)               .752 st_advanced/Support
+        Jackson ST(x=50, ST, 28경기)       .724 st_false9/Attack
         만잠비 CAM(x=50, CAM)              .861 cam_halfwinger/Balanced
         가르나초 LM(x=14, WM)              .771 wm_winger/Attack
         알리송 RM(x=85, WM)                .833 wm_widemid/Build-Up
         하지무사 RM(x=85, WM)              .821 wm_winger/Attack — 그리드 상수
           (DB에서 삭제된 행 — docs/20에 박힌 사본이 유일본, 커널 자체의 앵커)
   G4. 집계 공식 — 만잠비 대표팀 12경기 재집계가 저장 map25와 일치
+  G5. JS 커널 동치 — 브라우저용 커널이 파이썬 앵커와 같은 값
+  G6. DB 참조 정합 — PRAGMA foreign_key_check 결과 0건
 
 사용: python3 scripts/gates.py          (전체)
       from scripts.gates import run    (프로그램 내 호출)
@@ -37,7 +39,7 @@ ANCHORS = [
      "wm_widemid", "Support", 0.835),
     ("Jackson ST",
      "SELECT map25 FROM transfer_targets WHERE name='Nicolas Jackson' AND slot='ST'", (),
-     50, "ST", "st_advanced", "Support", 0.752),
+     50, "ST", "st_false9", "Attack", 0.724),
     ("만잠비 CAM",
      "SELECT map25 FROM transfer_targets WHERE name='Johan Manzambi' AND slot='CAM'", (),
      50, "CAM", "cam_halfwinger", "Balanced", 0.861),
@@ -136,6 +138,15 @@ def run(db_path=None, verbose=True):
                 print("G5 JS 커널 동치: ⚠️ node 없음 — 건너뜀")
     elif verbose:
         print("G5 JS 커널 동치: ⚠️ kernels/FC26.json 미익스포트 — 건너뜀")
+
+    # G6 — SQLite는 연결별 foreign_keys 설정에 따라 고아 FK 삽입을 허용할 수 있다.
+    #      읽기 전용 검사인 foreign_key_check는 설정과 무관하게 전체 고아 행을 찾는다.
+    fk_bad = con.execute("PRAGMA foreign_key_check").fetchall()
+    if verbose:
+        print(f"G6 DB 참조 정합: 고아 FK {len(fk_bad)}건 "
+              f"{'✅' if not fk_bad else '⛔ ' + str(fk_bad[:5])}")
+    if fk_bad:
+        fails.append("G6")
 
     con.close()
     if verbose:
