@@ -9,7 +9,7 @@
 SofaScore(브라우저 오리진 수집) ─┐
 sofifa / EA 피치노트 ────────────┤→  db/tactics.db  →  scripts/export.py  →  site/data/*.json  →  site/*.html
 transfer-watch(스킬) ────────────┘        ↑                (게이트 통과 필수)
-                                   scripts/gates.py = 정본성 보증 (G1~G9)
+                                   scripts/gates.py = 정본성 보증 (G1~G10)
 ```
 
 ## 레이어 (db/migrations/001-schema.sql이 스키마 정본)
@@ -30,7 +30,7 @@ G1 커널 정합 37/85/217 · G2 인코딩 회귀(전 그리드 cells→map25) �
 만잠비 CAM .861 · 가르나초 LM .771 · 알리송 RM .833) · G4 집계 공식 재현(만잠비 national 12경기) ·
 G5 JS 커널 동치(site/assets/kernel.js ↔ core/kernel.py, node) · G6 DB FK 정합 ·
 G7 appearances 병합 앵커 · G8 공통 슬롯 후보 풀(중복·도달불가·이적누락 0) ·
-G9 프리뷰 최신성(no-store 서버 + JSON 캐시 우회).
+G9 프리뷰 최신성(no-store 서버 + JSON 캐시 우회) · G10 영상 레퍼런스(source 결손 0 + 기본 닫힘 UI).
 
 ## 핵심 규약 (v1 교훈의 성문화 — 위반이 실제 사고를 냈던 것들)
 
@@ -55,7 +55,7 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 |---|---|---|
 | 실측 수집 | `core.sofascore.js_collect()` → 브라우저 → `parse_collected()` | sofascore.com 오리진 필수 |
 | 익스포트 | `python3 scripts/export.py` | 게이트 통과 후 site/data 재생성 + 프리뷰 미러 |
-| 게이트 | `python3 scripts/gates.py` | G1~G9 |
+| 게이트 | `python3 scripts/gates.py` | G1~G10 |
 | v1 재흡수 | `python3 scripts/migrate_v1.py` | ⚠️ 컷오버 완료 — 재실행하면 v2 신규분이 날아간다. 사용 금지(아카이브 참조용) |
 | 이적 감시 | transfer-watch 스킬 (매일 09/21시) | 3팀 루프 — v2에 기록 (2026-08-11 컷오버 완료) |
 

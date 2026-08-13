@@ -17,6 +17,7 @@
   G6. DB 참조 정합 — PRAGMA foreign_key_check 결과 0건
   G8. 공통 후보 풀 — 슬롯 내 선수 중복 0, 도달 불가 squad 행 0, 활성 이적 실측 누락 0
   G9. 프리뷰 최신성 — 로컬 서버 no-store + JSON 요청 캐시 우회가 유지되는지 검사
+  G10. 영상 레퍼런스 — duties 출처 결손 0 + 선수 화면의 기본 닫힘 details 유지
 
 사용: python3 scripts/gates.py          (전체)
       from scripts.gates import run    (프로그램 내 호출)
@@ -213,6 +214,23 @@ def run(db_path=None, verbose=True):
         print(f"G9 프리뷰 최신성: 서버·JSON 캐시 우회 {'✅' if ok9 else '⛔'}")
     if not ok9:
         fails.append("G9")
+
+    # G10 — 영상·스카우트 결론은 원문/내부 근거를 접힌 상태로 추적할 수 있어야 한다.
+    missing_duty_sources = con.execute("""
+        SELECT id FROM player_duties
+        WHERE source IS NULL OR trim(source)=''""").fetchall()
+    player_html = (root / "site" / "player.html").read_text()
+    ok10 = (
+        not missing_duty_sources
+        and '<details class="refs">' in player_html
+        and 'references(d.source)' in player_html
+        and '<details class="refs" open' not in player_html
+    )
+    if verbose:
+        print(f"G10 영상 레퍼런스: 출처 결손 {len(missing_duty_sources)} · 기본 닫힘 "
+              f"{'✅' if ok10 else '⛔'}")
+    if not ok10:
+        fails.append("G10")
 
     con.close()
     if verbose:

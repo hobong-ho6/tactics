@@ -15,7 +15,7 @@
    "game_role_implication": "빌드업 임무에는 gk_sweeper/Build-Up이 맞고, 실측 깊이는 스위핑이 상황부임을 말하므로 경기 변형에서 Balanced 포커스 허용(로저스 CAM 프리셋에서 사용). [확정 2026-07-05: gk_ballplaying/Build-Up — 숙련도 타이브레이커. 골라인+빌드업 화해.]\n\n[08-12] DB 확정 처방 gk_ballplaying/Build-Up 유지가 타당하다. 새 서사 중 처방을 흔들 근거는 없다 — 스위퍼 분류는 실측이 기각한다. 다만 '볼을 쥐고 압박을 유인한 뒤 배급'이라는 1차 임무 묘사는 빌드업 포커스를 Balanced로 낮출 이유가 아니라 오히려 Build-Up 고정을 지지한다. PlayStyles는 DB에 기록된 긴패스·돌진 블로킹 외에 새로 확인한 것이 없어 추가 주장하지 않는다.",
    "label": "마르티네스",
    "position": "GK",
-   "source": "appearances player_id=1 ranks 1-3 (measured); tactic_observations build_up ; [08-12 서사수집] England Football Learning(Aston Cox, 2024-07-02) · Marc Lamberts GK Sweeping Quality Score · themastermindsite 2025-12-29 빌라 전술 분석 · BBC Sport 에메리 발언 · Read Aston Villa 2026-07-30"
+   "source": "appearances player_id=1 ranks 1-3 (measured); tactic_observations build_up ; [08-12 서사수집] England Football Learning(Aston Cox, 2024-07-02) · Marc Lamberts GK Sweeping Quality Score · themastermindsite 2025-12-29 빌라 전술 분석 · BBC Sport 에메리 발언 · Read Aston Villa 2026-07-30 ; [원문 URL 보강] Marc Lamberts 「Introducing GK Sweeping Quality Score」 https://marclamberts.medium.com/introducing-gk-sweeping-quality-score-e0e16881811c · TheMastermindSite 「Unai Emery – Aston Villa – Tactical Analysis – 2025-26 Edition」 https://themastermindsite.com/2025/12/29/unai-emery-aston-villa-tactical-analysis-2025-26-edition/"
   },
   {
    "adherence": "HIGH — 폭 규율은 절대적. 높이는 '한 명씩 전진' 규칙 예측대로 게임플랜별 조절. | [08-12 재판정] HIGH — 폭 규율·높이 가변·늦은 박스 진입이라는 임무 서사가 실측 y~15-20 고정과 백분위 프로필에 그대로 대응한다. 새 서사 중 실측과 충돌하는 것은 없다.",
@@ -25,7 +25,7 @@
    "game_role_implication": "fb_fullback/Versatile(최적)이 높이 조절에 부합. 봉쇄 임무(예: 리버풀전, 로저스 CAM 프리셋)에는 Defend 포커스 전환.\n\n[08-12] DB 처방 fb_wingback/Balanced를 유지할 근거가 강화됐다 — 서사가 말하는 '폭 담당 + 미드필드 뒤 커버 + 선택적 가담'이 정확히 이 조합이다. 바이에른전 1대1 노출은 강한 윙어 상대 경기 변형에서 수비 포커스(Defend)로 낮추는 근거로 쓸 수 있다. PlayStyles는 DB 기록(긴스로우) 외 추가 확인 사항 없음.",
    "label": "캐시",
    "position": "RB",
-   "source": "appearances player_id=2 ranks 1-3 (measured); tactic_observations in_possession/modulation ; [08-12 서사수집] Read Aston Villa 2026-08-08 · themastermindsite 2025-12-29 · Express & Star 캐시 인터뷰 · Stan Sports 캐시 인터뷰 · Villa Park Pod 유튜브(2024-10, 설명 기준) · Football Insider"
+   "source": "appearances player_id=2 ranks 1-3 (measured); tactic_observations in_possession/modulation ; [08-12 서사수집] Read Aston Villa 2026-08-08 · themastermindsite 2025-12-29 · Express & Star 캐시 인터뷰 · Stan Sports 캐시 인터뷰 · Villa Park Pod 유튜브(2024-10, 설명 기준) · Football Insider ; [원문 URL 보강] TheMastermindSite 「Unai Emery – Aston Villa – Tactical Analysis – 2025-26 Edition」 https://themastermindsite.com/2025/12/29/unai-emery-aston-villa-tactical-analysis-2025-26-edition/"
   },
   {
    "adherence": "정합(전진성은 구조가 봉인)",
@@ -95,7 +95,7 @@
    "game_role_implication": "홈/지배 임무용 fb_att_wb/Attack 유지. 디뉴와의 핵심 대비: 원정·강한 윙어 상대면 실측 프로필이 평범한 딥 LB로 붕괴 — 그땐 디뉴 우선 또는 마첸 Defend 변형.\n\n[08-12] DB 처방 운용(홈·지배 경기 fb_att_wb/Attack, 원정·강한 윙어 상대는 Defend 변형 또는 대체)을 유지·강화한다. 새로 확인된 결정적 정보는 감독 측 요구 방향이다 — 디 애슬레틱 제이컵 탠즈웰 보도에 따르면 에메리는 빌드업에서 하이브리드 백3로 전환할 수 있는 더 피지컬한 좌측 수비수를 찾고 있으며, 이는 우측에서 하는 것을 좌측에도 이식하겠다는 뜻이다. 마첸의 실측 프로필은 그 요구(안으로 들어와 백3를 이루는 인버티드 좌측 수비수)와 맞지 않으므로, 이 노선이 관철되면 마첸의 att_wb 처방은 구조적으로 밀린다. PlayStyles는 DB 기록(래피드) 외 새 확인 없음.",
    "label": "마첸",
    "position": "LB",
-   "source": "appearances player_id=6 ranks 1-3 (measured); tactic_observations modulation axis 4 ; [08-12 서사수집] themastermindsite 2025-12-29 · 에메리 2026-02 발언 · Read Aston Villa 2026-06-10(탠즈웰 인용) · astonvillanews 2026-03-05·2026-02-18 · OneFootball 2026"
+   "source": "appearances player_id=6 ranks 1-3 (measured); tactic_observations modulation axis 4 ; [08-12 서사수집] themastermindsite 2025-12-29 · 에메리 2026-02 발언 · Read Aston Villa 2026-06-10(탠즈웰 인용) · astonvillanews 2026-03-05·2026-02-18 · OneFootball 2026 ; [원문 URL 보강] TheMastermindSite 「Unai Emery – Aston Villa – Tactical Analysis – 2025-26 Edition」 https://themastermindsite.com/2025/12/29/unai-emery-aston-villa-tactical-analysis-2025-26-edition/"
   },
   {
    "adherence": "MEDIUM-HIGH — 실측 활동량과 영상 평가가 공수 왕복에 수렴.",
@@ -175,7 +175,7 @@
    "game_role_implication": "기반 XI용 wm_widemid/Support(현 최적) 확인. [이벤트 스탯 2026-07-02: 최적 wm_insidefwd/Balanced로 승급.] [샷맵 2026-07-02: 46슛 중 헤더 0·6야드 1, 평균 17.1m, 골대 좌측 편향 — 박스 스트라이커가 아니라 박스 가장자리 인사이드 포워드 도착. 승급 보강.]\n\n[08-12] FC26 wm_wideplm(와이드 플레이메이커)/Attack이 실측 최적이고, 이번 회차 매체 조사도 이를 반증하지 않았다 — 어떤 소스도 그를 '인사이드 포워드'라 부르지 않고, 프리미어리그 공식 서술의 '측면화된 10번 + 하프스페이스'는 wide playmaker의 정의와 사실상 같은 말이다. 다만 매체 어디에도 'wide playmaker'라는 용어는 나오지 않으므로 명칭 일치가 아니라 기제 일치다. 뱅크 복귀량(obs#39: wideplm/Attack 자기진영 질량 0.00 vs widemid/Support 0.60)이 여전히 유일한 반대 근거이므로, 두 줄 4 복귀를 요구하는 프리셋에서는 wm_widemid/Support 유지가 타당하다. PlayStyles는 DB 기록분(압박검증·끈기와인내·인포서)만 사용.",
    "label": "맥긴",
    "position": "RM",
-   "source": "player_match_positions player_id=10; appearances McGinn RM heatmaps ; [08-12 서사수집] PremierLeague.com(Clarke 2024-01-19) · TheMastermindSite(2025-12-29) · achievers.amway.com 선수 해부 · UEFA.com 맥긴 인터뷰(2026-05-13) · BBC Sport · Soccerway 재계약 · YouTube TACTICAL DEBRIEF(2025-09-29경, 미시청) / 내부: obs#151(=id158)·obs#153(=id160)·obs#145, player_duties, fotmob_detail_stats"
+   "source": "player_match_positions player_id=10; appearances McGinn RM heatmaps ; [08-12 서사수집] PremierLeague.com(Clarke 2024-01-19) · TheMastermindSite(2025-12-29) · achievers.amway.com 선수 해부 · UEFA.com 맥긴 인터뷰(2026-05-13) · BBC Sport · Soccerway 재계약 · YouTube TACTICAL DEBRIEF(2025-09-29경, 미시청) / 내부: obs#151(=id158)·obs#153(=id160)·obs#145, player_duties, fotmob_detail_stats ; [원문 URL 보강] TheMastermindSite 「Unai Emery – Aston Villa – Tactical Analysis – 2025-26 Edition」 https://themastermindsite.com/2025/12/29/unai-emery-aston-villa-tactical-analysis-2025-26-edition/"
   },
   {
    "adherence": "HIGH — 폭을 통제와 맞바꾸면 평점이 오른다.",
@@ -225,7 +225,7 @@
    "game_role_implication": "RDM 슬롯 확인. 역할 갱신: dm_dlp 프로필(kind=role: 0.83). optimal은 처방적 안전선 dm_holding/Ball-Winning 유지. [이벤트 스탯 2026-07-02: dlp 경향 반전 — 기능은 스쿼드 최고 볼위닝(듀얼승 8.4·인터셉트 3.0/경기)에 높은 패스량(56/경기·87%). 움직임=dlp, 기능=holding의 하이브리드. 기능 근거로 dm_holding/Ball-Winning 유지.] [확정 2026-07-05: dm_holding/Ball-Winning — 숙련 동률 시 기능 축 우선. A/B 종결.]\n\n[08-12] dm_holding/Ball-Winning 유지(2026-07-05 A/B 종결, 숙련 동률 시 기능 축 우선). 이번 매체 조사는 이 판정을 흔들지 않는다: 서술된 임무('뒤를 보호하고 주변에 자유를 준다')는 holding의 정의이고, 움직임이 dlp를 닮은 것은 이미 기록된 하이브리드다. 새로 추가할 만한 함의는 **파트너 의존성** — 고메스가 전진형으로 쓰이면 카마라의 자기진영 질량이 더 커져 holding 쪽으로 더 밀린다는 것이 매체의 일관된 예측이다. PlayStyles는 DB 기록분(슬라이딩태클·압박검증 등은 56번 항목이며 카마라 것은 미조회) 외 주장 금지 — 이번 회차에서 카마라 PlayStyles는 조회하지 않았다.\n[2026-08-13 obs#195 정정] 옛 듀얼 8.4·인터셉트 3.0 스쿼드 1위 근거는 폐기한다. 0 생략 보정 후 6.9·1.22이며 인터셉트·태클 1위는 오나나다. 현재 처방은 dm_holding/Defend이고, 근거는 최고 볼위너 서열이 아니라 백4 스크린 임무·안전한 배급·창조 역할 오배정 방지다.",
    "label": "카마라",
    "position": "LDM",
-   "source": "appearances player_id=12 ranks 1-3 (measured); tactic_observations modulation ; [08-12 서사수집] Squawka 카마라 분석 · TFA 「Unai Emery Tactics At Aston Villa 2025/2026」 · astonvillanews.co.uk(2026-04-09·04-15) · readastonvilla.com(2026-08-06·08-07) · AOL/PA 복귀 리포트(2026-08) / 내부: player_duties, obs#129·#130·#147, fotmob_detail_stats"
+   "source": "appearances player_id=12 ranks 1-3 (measured); tactic_observations modulation ; [08-12 서사수집] Squawka 카마라 분석 · TFA 「Unai Emery Tactics At Aston Villa 2025/2026」 · astonvillanews.co.uk(2026-04-09·04-15) · readastonvilla.com(2026-08-06·08-07) · AOL/PA 복귀 리포트(2026-08) / 내부: player_duties, obs#129·#130·#147, fotmob_detail_stats ; [원문 URL 보강] Total Football Analysis 「Unai Emery Tactics at Aston Villa 2025/2026」 https://totalfootballanalysis.com/data-analysis/unai-emery-tactics-aston-villa-2025-2026-data-analysis"
   },
   {
    "adherence": "정합",
@@ -315,7 +315,7 @@
    "game_role_implication": "st_advanced/Versatile 정확히 확인 — 박스 점유/링크/채널 런 삼위일체는 Attack(순수 포처)보다 Versatile이 담는다. [샷맵 2026-07-02: 103슛/38이벤트, 박스 내 84%, 6야드 24, 헤더 19, xG/슛 0.19 — 순수 박스 점유 도착 프로필.]\n\n[08-12] st_advanced/Versatile 유지 확정. 매체·감독 발언 어디에도 순수 포처 서술이 없고, '뒷공간 런 + 홀드업 + 박스 도착'의 삼위일체는 Attack(순수 포처)보다 Versatile이 담는다. Support(링크형) 포커스는 xA 0.03이 반증하므로 여전히 부적합. PlayStyles는 DB 기록분(칩슛·프리시전 헤딩·끈기와인내)만 사용.",
    "label": "왓킨스",
    "position": "ST",
-   "source": "appearances player_id=16 ranks 1-3 (measured); tactic_observations in_possession ; [08-12 서사수집] Sky Sports 에메리 독점 인터뷰(발행일 미확인) · TheMastermindSite(2025-12-29) · astonvillanews.co.uk(2026-04-24) · ThisIsAnfield 왓킨스 인터뷰(2026-05) · Yahoo Sports UK(2026 여름) / 내부: player_duties, 샷맵(2026-07-02), fotmob_detail_stats, prescriptions measured:season:full2526"
+   "source": "appearances player_id=16 ranks 1-3 (measured); tactic_observations in_possession ; [08-12 서사수집] Sky Sports 에메리 독점 인터뷰(발행일 미확인) · TheMastermindSite(2025-12-29) · astonvillanews.co.uk(2026-04-24) · ThisIsAnfield 왓킨스 인터뷰(2026-05) · Yahoo Sports UK(2026 여름) / 내부: player_duties, 샷맵(2026-07-02), fotmob_detail_stats, prescriptions measured:season:full2526 ; [원문 URL 보강] TheMastermindSite 「Unai Emery – Aston Villa – Tactical Analysis – 2025-26 Edition」 https://themastermindsite.com/2025/12/29/unai-emery-aston-villa-tactical-analysis-2025-26-edition/"
   },
   {
    "adherence": "강정합",

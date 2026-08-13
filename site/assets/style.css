@@ -59,3 +59,13 @@ abbr.gl{text-decoration:underline dotted var(--acc);text-underline-offset:3px;cu
   background:#0a0e14;color:var(--txt);border:1px solid var(--acc);border-radius:8px;
   padding:8px 10px;font-size:12px;line-height:1.55;box-shadow:0 6px 20px rgba(0,0,0,.5);
   pointer-events:none}
+
+/* 선수 영상·스카우트 근거 — 기본 닫힘, 펼치면 원문과 내부 근거를 직접 확인 */
+details.refs{min-width:210px;max-width:360px}
+details.refs summary{color:var(--acc);cursor:pointer;white-space:nowrap;user-select:none}
+details.refs[open] summary{margin-bottom:6px}
+details.refs ol{margin:0;padding-left:20px;white-space:normal;word-break:break-word}
+details.refs li{margin:0 0 6px;color:var(--dim);line-height:1.45}
+details.refs a{overflow-wrap:anywhere}
+.ref-jump{font-size:11px;white-space:nowrap}
+.ref-missing{display:inline-block;color:var(--warn);white-space:nowrap}

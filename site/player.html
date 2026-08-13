@@ -42,6 +42,7 @@
 <b>리그 전체</b>는 Fotmob이 산출한 같은 포지션 리그 선수 대비 백분위다. 두 축은 모집단이 달라 값이 직접 비교되지 않는다.</p></div>
 <div class="panel"><h2>FC26 게임 스탯</h2><div id="gstat" class="kv"></div></div>
 <div class="panel"><h2>영상·스카우트 분석 (가설 → 실측 교차검증)</h2>
+<p class="dim">각 분석의 <b>레퍼런스 보기</b>를 펼치면 저장된 원문·내부 근거를 확인할 수 있다. URL이 없는 과거 기록은 출처명만 표시한다.</p>
 <div class="scrollx"><table id="duty"></table></div></div>
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, slotCandidates, sofifaLink } from './assets/data.js?v=20260813-slot-candidates';
@@ -62,6 +63,50 @@ const currentCandidates = t => {
 const CURRENT = currentCandidates(td);
 const POOL_SQ = _TEAMS.flatMap(t=>currentCandidates(t).map(q=>({...q, team:t.regime.team_code})));
 const strip = x => (x||'').normalize('NFC').replace(/\((합류확정|신규|보유)\)$/,'').replace(/^영입·/,'');
+const esc = value => String(value??'').replace(/[&<>"']/g, ch => ({
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+}[ch]));
+const directUrl = /(?:https?:\/\/|www\.)[^\s;·)]+|(?:[a-z0-9-]+\.)+[a-z]{2,}(?:\/[^\s;·)]*)?/gi;
+function linkedReference(raw){
+  const text=String(raw??'').trim();
+  let html='', last=0, links=0;
+  for(const match of text.matchAll(directUrl)){
+    const token=match[0];
+    // Publisher names without a path (e.g. BBC Sport) are not guessed into URLs.
+    if(!token.includes('/') && !/^www\./i.test(token)) continue;
+    html+=esc(text.slice(last,match.index));
+    const href=/^https?:\/\//i.test(token)?token:`https://${token}`;
+    html+=`<a href="${esc(href)}" target="_blank" rel="noopener noreferrer">${esc(token)}</a>`;
+    last=match.index+token.length; links++;
+  }
+  html+=esc(text.slice(last));
+
+  if(!links){
+    const obs=text.match(/obs#(\d+)/i);
+    const report=text.match(/(?:^|\s)(reports\/[\w./-]+\.md)/i);
+    const event=text.match(/SofaScore(?: API)? event\s+(\d+)/i);
+    if(obs){
+      const q=encodeURIComponent(`obs#${obs[1]}`);
+      html+=` <a class="ref-jump" href="https://github.com/hobong-ho6/tactics/search?q=${q}&type=code" target="_blank" rel="noopener noreferrer">저장 근거 찾기↗</a>`;
+      links++;
+    } else if(report){
+      html+=` <a class="ref-jump" href="https://github.com/hobong-ho6/tactics/blob/main/${esc(report[1])}" target="_blank" rel="noopener noreferrer">리포트 열기↗</a>`;
+      links++;
+    } else if(event){
+      html+=` <a class="ref-jump" href="https://www.sofascore.com/api/v1/event/${event[1]}" target="_blank" rel="noopener noreferrer">원천 이벤트↗</a>`;
+      links++;
+    }
+  }
+  return {html,links};
+}
+function references(source){
+  const parts=String(source??'').split(/\s*(?:;|·|\n)\s*/).map(x=>x.trim()).filter(Boolean);
+  const rendered=parts.map(linkedReference);
+  const linked=rendered.filter(x=>x.links).length;
+  return `<details class="refs"><summary>레퍼런스 ${parts.length}개 보기</summary>
+    <ol>${rendered.map(x=>`<li>${x.html}${x.links?'':' <small class="ref-missing">링크 미기록</small>'}</li>`).join('')}</ol>
+    <small class="dim">직접 링크 ${linked}/${parts.length} · 새 탭에서 열림</small></details>`;
+}
 /* 26/27 스쿼드 기준 — 이탈 확정·구시즌 전용 제외. 그룹핑: 포지션군 + 영입 추적 */
 const gone = new Set((td.departed||[]).map(strip));
 const GRPKR = {GK:'골키퍼',CB:'센터백',FB:'풀백',DM:'수비형 MF',CM:'중앙 MF',CAM:'공격형 MF',WM:'와이드',W:'윙어',ST:'스트라이커'};
@@ -271,8 +316,8 @@ function render(){
   const g = GS[key] ?? GS[n];
   document.getElementById('gstat').innerHTML = g ? `OVR <b>${g.ovr}</b>/${g.pot} · ${g.positions??''} · 최적 ${g.best_pos??''}<br>PAC ${g.pac} SHO ${g.sho} PAS ${g.pas} DRI ${g.dri} DEF ${g.def} PHY ${g.phy}<br><span class="dim">${annotate((g.playstyles??'').split(';').map(x=>x.trim()).join(' · '))}</span>` : '<span class="dim">FC26 로스터에 없음</span>';
   const ds = td.duties.filter(d=>d.label===key);
-  document.getElementById('duty').innerHTML = ds.length ? '<tr><th>포지션</th><th>영상·스카우트 주장(가설)</th><th>실측 대조</th><th>판정</th><th>게임 함의</th></tr>'+
-    ds.map(d=>`<tr><td><b>${d.position}</b></td><td>${annotate(d.duties)}</td><td>${annotate(d.execution??'')}</td><td>${annotate(d.adherence??'')}</td><td class="dim">${annotate(d.game_role_implication??'')}</td></tr>`).join('')
+  document.getElementById('duty').innerHTML = ds.length ? '<tr><th>포지션</th><th>영상·스카우트 주장(가설)</th><th>실측 대조</th><th>판정</th><th>게임 함의</th><th>근거</th></tr>'+
+    ds.map(d=>`<tr><td><b>${d.position}</b></td><td>${annotate(d.duties)}</td><td>${annotate(d.execution??'')}</td><td>${annotate(d.adherence??'')}</td><td class="dim">${annotate(d.game_role_implication??'')}</td><td>${references(d.source)}</td></tr>`).join('')
     : '<tr><td class="dim">영상 분석 미수행 — 규칙상 신규 선수·MEDIUM-HIGH+ 후보는 자동 수행 대상</td></tr>';
 }
 render();
