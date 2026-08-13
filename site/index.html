@@ -18,12 +18,14 @@
 <p class="dim">데이터 흐름: db/tactics.db → <span class="mono">scripts/export.py</span>(게이트 통과 필수)
 → site/data/*.json → 이 페이지들. 손편집 지점 없음.</p>
 <script type="module">
-import { mountHeader, loadTeam } from './assets/data.js';
+import { mountHeader, loadTeam, slotCandidates } from './assets/data.js?v=20260813-slot-candidates';
 const { idx } = await mountHeader('index.html');
 const cards = await Promise.all(idx.regimes.map(async r => {
   const td = await loadTeam(r.team_code);
+  const current = new Set(td.slots.flatMap(s=>slotCandidates(td,s.pos,{includeTransfers:false}))
+    .map(q=>q.player_id ?? q.name_en));
   return `<div class="pcard"><b>${r.team_kr}</b> <small class="dim">${r.manager_kr ?? r.manager}</small><br>
-    <span class="kv">스쿼드 실측 <b>${td.squad.length}</b>명 · 처방 <b>${td.prescriptions.length}</b>행 ·
+    <span class="kv">공통 후보 풀 현재 선수 <b>${current.size}</b>명 · 처방 <b>${td.prescriptions.length}</b>행 ·
     이적 감시 <b>${td.transfer.targets.length}</b>건</span><br>
     <small class="dim">${r.is_main ? '★ 주 분석 대상' : ''} ${r.start ?? ''}~</small></div>`;
 }));

@@ -15,6 +15,8 @@
   G4. 집계 공식 — 만잠비 대표팀 12경기 재집계가 저장 map25와 일치
   G5. JS 커널 동치 — 브라우저용 커널이 파이썬 앵커와 같은 값
   G6. DB 참조 정합 — PRAGMA foreign_key_check 결과 0건
+  G8. 공통 후보 풀 — 슬롯 내 선수 중복 0, 도달 불가 squad 행 0, 활성 이적 실측 누락 0
+  G9. 프리뷰 최신성 — 로컬 서버 no-store + JSON 요청 캐시 우회가 유지되는지 검사
 
 사용: python3 scripts/gates.py          (전체)
       from scripts.gates import run    (프로그램 내 호출)
@@ -160,6 +162,57 @@ def run(db_path=None, verbose=True):
               f"{'✅' if ok7 else '⛔ 기대 (14, 6, 4, 93)'}")
     if not ok7:
         fails.append("G7")
+
+    # G8 — 모든 선수 목록 화면의 정본인 v_slot_candidates 정합.
+    #      CONFIRMED target + 승격 squad가 같은 슬롯에 이중 노출되거나,
+    #      현재 슬롯 유형이 없는 squad 행이 유령 후보로 남는 것을 막는다.
+    dup_candidates = con.execute("""
+        SELECT regime_id,formation,pos,COALESCE(player_id,-1),COUNT(*)
+        FROM v_slot_candidates
+        GROUP BY regime_id,formation,pos,COALESCE(player_id,-1)
+        HAVING COUNT(*)>1""").fetchall()
+    unreachable_squad = con.execute("""
+        SELECT se.id
+        FROM squad_entries se
+        WHERE NOT EXISTS (
+          SELECT 1 FROM slots sl
+          WHERE sl.regime_id=se.regime_id AND sl.slot_type=se.slot_type
+        )""").fetchall()
+    uncovered_targets = con.execute("""
+        SELECT tt.id
+        FROM transfer_targets tt
+        JOIN regimes r ON r.team_code=tt.team_code AND r.end IS NULL
+        WHERE tt.map25 IS NOT NULL
+          AND tt.likelihood!='OWNED' AND tt.likelihood NOT LIKE 'DEAD%'
+          AND NOT EXISTS (
+            SELECT 1 FROM v_slot_candidates vc
+            WHERE vc.regime_id=r.id
+              AND vc.pos=(CASE tt.slot WHEN 'LW' THEN 'LM' WHEN 'RW' THEN 'RM' ELSE tt.slot END)
+              AND (vc.player_id=tt.player_id OR
+                   (tt.player_id IS NULL AND vc.name_en=tt.name))
+          )""").fetchall()
+    ok8 = not dup_candidates and not unreachable_squad and not uncovered_targets
+    if verbose:
+        detail = (f"중복 {len(dup_candidates)} · 도달불가 {len(unreachable_squad)} · "
+                  f"이적누락 {len(uncovered_targets)}")
+        print(f"G8 공통 슬롯 후보 풀: {detail} {'✅' if ok8 else '⛔'}")
+    if not ok8:
+        fails.append("G8")
+
+    # G9 — 생성 JSON과 UI가 어긋나는 캐시 회귀를 정적 검사한다.
+    root = Path(__file__).resolve().parent.parent
+    serve_py = (root / "scripts" / "serve.py").read_text()
+    data_js = (root / "site" / "assets" / "data.js").read_text()
+    ok9 = (
+        'Cache-Control", "no-store' in serve_py
+        and "cache: 'no-store'" in data_js
+        and "searchParams.set('_', Date.now()" in data_js
+        and "scripts/serve.py" in (root / "scripts" / "serve.sh").read_text()
+    )
+    if verbose:
+        print(f"G9 프리뷰 최신성: 서버·JSON 캐시 우회 {'✅' if ok9 else '⛔'}")
+    if not ok9:
+        fails.append("G9")
 
     con.close()
     if verbose:

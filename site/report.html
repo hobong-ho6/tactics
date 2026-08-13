@@ -17,7 +17,7 @@
 <p class="dim">서사·분석 전문은 docs/1x 감독 문서가 정본이다 — 이 페이지는 DB에 확정 기록된
 결론(프로필 축·세팅)만 보여준다.</p>
 <script type="module">
-import { mountHeader, loadTeam } from './assets/data.js';
+import { mountHeader, loadTeam, slotCandidates } from './assets/data.js?v=20260813-slot-candidates';
 import { annotate, mountGlossaryTips } from './assets/glossary.js';
 
 const { team, regime } = await mountHeader('report.html');
@@ -28,9 +28,17 @@ document.getElementById('title').textContent =
 // FC26 설정 시트 — 팀 세팅(setups 최신 projected/optimal) + 슬롯별 게임 처방(fc26:opt)
 const su = td.setups.filter(x=>!/deprecated|reference/.test(x.kind) && /projected|optimal/.test(x.kind)).slice(-1)[0] ?? td.setups.slice(-1)[0];
 document.getElementById('teamset').innerHTML = su ? `<b>${su.formation??''}</b> · 빌드업 <b>${su.build_up_style??'—'}</b> · 수비 <b>${su.defensive_approach??'—'}</b> · 라인 <b>${su.line_height??'—'}</b> · (${su.kind}, ${su.season})` : '팀 세팅 미기록';
-const all = td.prescriptions.filter(p=>p.kind.startsWith('fc26:opt:'));
 const order = td.slots.map(s2=>s2.pos);
 const geo = Object.fromEntries(td.slots.map(s2=>[s2.pos,s2]));
+const rx = td.prescriptions.filter(p=>p.kind.startsWith('fc26:opt:'));
+const all = order.flatMap(pos => slotCandidates(td, pos, { includeTransfers: false }).map(q => {
+  const saved = rx.find(p => p.player_id===q.player_id && p.pos_label===pos);
+  return {
+    player_id:q.player_id, label:q.label, pos_label:pos,
+    role_id:saved?.role_id ?? q.fit_role, focus:saved?.focus ?? q.fit_focus,
+    starter:saved?.starter ?? 0
+  };
+}).filter(p => p.role_id && p.focus));
 const byPos = Object.fromEntries(order.map(pos=>[pos, all.filter(p=>p.pos_label===pos)]));
 const chosen = Object.fromEntries(order.map(pos=>{
   const c = byPos[pos]; if(!c.length) return [pos,-1];

@@ -16,5 +16,5 @@ PORT="${PORT:-8123}"
 
 [ -d "$DIR" ] || { echo "디렉터리 없음: $DIR" >&2; exit 1; }
 
-echo "서빙 $DIR → http://127.0.0.1:$PORT  (Ctrl-C로 종료)"
-exec python3 -m http.server "$PORT" --bind 127.0.0.1 --directory "$DIR"
+echo "서빙 $DIR → http://127.0.0.1:$PORT  (캐시 비활성 · Ctrl-C로 종료)"
+exec python3 "$ROOT/scripts/serve.py" --port "$PORT" --bind 127.0.0.1 --directory "$DIR"

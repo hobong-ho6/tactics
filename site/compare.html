@@ -10,7 +10,7 @@
 <div class="panel"><h2 id="rankTitle"></h2><table id="rank"></table></div>
 <div class="cardrow" id="cards"></div>
 <script type="module">
-import { mountHeader, loadTeam, loadKernels, loadGameStats, sofifaLink, statLine } from './assets/data.js';
+import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine } from './assets/data.js?v=20260813-slot-candidates';
 import { Kernel } from './assets/kernel.js';
 import { miniGrid } from './assets/pitch.js';
 
@@ -19,17 +19,13 @@ const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loa
 const K = new Kernel(kd);
 const slots = td.slots.filter(s => s.formation === td.slots[0]?.formation);
 
-/* 후보 풀 — v1 CMP_SLOTS의 후계. 하드코딩이 아니라 export 데이터에서 조립하므로
-   v1의 "강등 후보 유령 잔존" 사고(2026-08-11, 13건)가 구조적으로 재발 불가. */
+/* 후보 풀은 DB v_slot_candidates의 export만 사용한다.
+   squad + transfer를 여기서 다시 합치지 않아 CONFIRMED 승격 중복을 막는다. */
 function pool(slot){
-  const owned = td.squad.filter(q => q.slot_type === slot.slot_type)
-    .map(q => ({ label: q.label, map25: q.map25, lh: q.lh, rate: q.rate_v, note: q.rate_note }));
-  const incoming = td.transfer.targets
-    .filter(t => t.slot === slot.pos && t.map25 && !/^DEAD/i.test(t.likelihood || ''))
-    .map(t => ({ label: (t.likelihood === 'CONFIRMED' ? `${t.short_label}(합류확정)` : `영입·${t.short_label}`),
-                 map25: t.map25, lh: t.likelihood, rate: t.avg_rating,
-                 note: `표본 ${t.sample_n}경기 (${t.club ?? ''})`, dbFit: t.fit_sim }));
-  return [...owned, ...incoming];
+  return slotCandidates(td, slot.pos).map(q => ({
+    player_id: q.player_id, label: q.label, map25: q.map25, lh: q.status,
+    rate: q.rating, note: q.rate_note, dbFit: q.fit_sim, sourceKind: q.source_kind
+  }));
 }
 const badge = lh => !lh || lh === 'OWNED' ? '<span class="badge own">보유</span>'
   : /^CONFIRMED/.test(lh) ? '<span class="badge hi">합류확정</span>'

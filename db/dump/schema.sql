@@ -397,3 +397,80 @@ CREATE TABLE slot_canon_roles(
   FOREIGN KEY(regime_id, formation, pos) REFERENCES slots(regime_id, formation, pos),
   FOREIGN KEY(game_version, role_id) REFERENCES game_roles(game_version, role_id)
 );
+CREATE UNIQUE INDEX uq_squad_entries_regime_player_type
+ON squad_entries(regime_id, player_id, slot_type);
+CREATE VIEW v_slot_candidates AS
+SELECT
+  r.id AS regime_id,
+  r.team_code,
+  sl.formation,
+  sl.pos,
+  sl.slot_type,
+  se.player_id,
+  COALESCE(se.label, p.name_kr, p.name) AS label,
+  p.name AS name_en,
+  COALESCE(p.name_kr, p.name) AS name_kr,
+  'squad' AS source_kind,
+  se.lh AS status,
+  se.map25,
+  se.rate_v AS rating,
+  se.rate_basis,
+  se.rate_note,
+  se.fit_role,
+  se.fit_focus,
+  se.fit_sim,
+  se.source,
+  se.confidence,
+  se.sort_order,
+  se.grid_club,
+  se.grid_caveat
+FROM squad_entries se
+JOIN regimes r ON r.id=se.regime_id
+JOIN players p ON p.id=se.player_id
+JOIN slots sl ON sl.regime_id=se.regime_id AND sl.slot_type=se.slot_type
+
+UNION ALL
+
+SELECT
+  r.id AS regime_id,
+  r.team_code,
+  sl.formation,
+  sl.pos,
+  sl.slot_type,
+  COALESCE(tt.player_id, tp.id) AS player_id,
+  CASE WHEN tt.likelihood='CONFIRMED'
+       THEN COALESCE(tt.short_label, tt.name_kr, tt.name) || '(합류확정)'
+       ELSE '영입·' || COALESCE(tt.short_label, tt.name_kr, tt.name) END AS label,
+  tt.name AS name_en,
+  COALESCE(tt.name_kr, tp.name_kr, tt.short_label, tt.name) AS name_kr,
+  'transfer' AS source_kind,
+  tt.likelihood AS status,
+  tt.map25,
+  tt.avg_rating AS rating,
+  'transfer' AS rate_basis,
+  '표본 ' || COALESCE(tt.sample_n, 0) || '경기 (' || COALESCE(tt.club, '') || ')' AS rate_note,
+  tt.fit_role,
+  tt.fit_focus,
+  tt.fit_sim,
+  tt.source,
+  tt.confidence,
+  10000 + tt.id AS sort_order,
+  tt.club AS grid_club,
+  CASE WHEN tt.map25 IS NOT NULL THEN '⚠️ 영입 전 현 소속팀 실측' END AS grid_caveat
+FROM transfer_targets tt
+JOIN regimes r ON r.team_code=tt.team_code AND r.end IS NULL
+JOIN slots sl ON sl.regime_id=r.id AND sl.pos=(
+  CASE tt.slot WHEN 'LW' THEN 'LM' WHEN 'RW' THEN 'RM' ELSE tt.slot END
+)
+LEFT JOIN players tp ON tp.id=tt.player_id OR (tt.player_id IS NULL AND tp.name=tt.name)
+WHERE tt.map25 IS NOT NULL
+  AND tt.likelihood!='OWNED'
+  AND tt.likelihood NOT LIKE 'DEAD%'
+  AND NOT EXISTS (
+    SELECT 1
+    FROM squad_entries se2
+    WHERE se2.regime_id=r.id
+      AND se2.player_id=COALESCE(tt.player_id, tp.id)
+      AND se2.slot_type=sl.slot_type
+  )
+/* v_slot_candidates(regime_id,team_code,formation,pos,slot_type,player_id,label,name_en,name_kr,source_kind,status,map25,rating,rate_basis,rate_note,fit_role,fit_focus,fit_sim,source,confidence,sort_order,grid_club,grid_caveat) */;

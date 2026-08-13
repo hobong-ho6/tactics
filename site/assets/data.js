@@ -4,7 +4,11 @@
 const BASE = new URL('.', import.meta.url).href.replace(/assets\/$/, '');
 
 async function j(path){
-  const r = await fetch(BASE + 'data/' + path);
+  // Generated JSON is a live projection of db/tactics.db. `no-store` plus a
+  // unique URL also bypasses browsers/CDNs that ignore revalidation headers.
+  const url = new URL('data/' + path, BASE);
+  url.searchParams.set('_', Date.now().toString());
+  const r = await fetch(url, { cache: 'no-store' });
   if (!r.ok) throw new Error(`${path} 로드 실패 (${r.status})`);
   return r.json();
 }
@@ -13,6 +17,21 @@ export const loadIndex   = () => j('index.json');
 export const loadTeam    = code => j(`teams/${code}.json`);
 export const loadKernels = gv => j(`kernels/${gv}.json`);
 export const loadGameStats = gv => j(`game_stats/${gv}.json`).catch(() => ({}));
+
+/* 화면 공통 슬롯 후보 풀 — DB v_slot_candidates의 1:1 export.
+   페이지가 squad + transfer를 각자 합치면 CONFIRMED 승격 중복이 재발하므로
+   선수 목록을 만드는 모든 화면은 이 함수만 사용한다. */
+export function slotCandidates(teamData, pos, { includeTransfers = true } = {}){
+  const rows = (teamData.slot_candidates || []).filter(q =>
+    q.pos === pos && (includeTransfers || q.source_kind === 'squad'));
+  const seen = new Set();
+  return rows.filter(q => {
+    const key = q.player_id != null ? `p:${q.player_id}` : `n:${q.name_en || q.label}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
 
 /* sofifa 새창 링크 — v1 SOFIFA 매핑의 후계. 라벨 접두(영입·)와 접미((합류확정) 등) 제거 후 조회 */
 export function sofifaLink(label, GS, nameEn){

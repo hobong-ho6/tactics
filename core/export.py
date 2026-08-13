@@ -3,7 +3,7 @@
 파일 구조 (팀·버전 추가 = 파일 추가, 코드 수정 없음):
   site/data/index.json          — 팀·regime·버전 메타 (허브/네비가 로드)
   site/data/kernels/{GV}.json   — 역할·포커스·위치변형·팀전술 파라미터 (버전당 1파일)
-  site/data/teams/{CODE}.json   — regime 자산 전체: slots / squad / prescriptions /
+  site/data/teams/{CODE}.json   — regime 자산 전체: slots / slot_candidates / squad / prescriptions /
                                   transfer{targets,outgoing,ledger} / setups / profile
 
 원칙:
@@ -101,13 +101,22 @@ def export_all(db_path=None, window="2026-summer"):
                    pr.fit_sim, pr.sample_n, pr.avg_rating, pr.rationale, pr.grid_club
             FROM prescriptions pr JOIN players p ON p.id=pr.player_id
             WHERE pr.regime_id=? ORDER BY pr.player_id, pr.kind""", (rid,))
+        # 모든 화면이 공유하는 슬롯 후보 정본. squad/transfer를 페이지별로 다시 합치지 않는다.
+        # v_slot_candidates가 (regime, formation, pos, player_id) 중복 제거와 승격 우선순위를 보장한다.
+        slot_candidates = _rows(con, """
+            SELECT regime_id, team_code, formation, pos, slot_type, player_id, label,
+                   name_en, name_kr, source_kind, status, map25, rating, rate_basis,
+                   rate_note, fit_role, fit_focus, fit_sim, source, confidence,
+                   sort_order, grid_club, grid_caveat
+            FROM v_slot_candidates WHERE regime_id=?
+            ORDER BY formation, pos, source_kind, sort_order, label""", (rid,))
         setups = _rows(con, """SELECT season, game_version, kind, formation, build_up_style,
                                       defensive_approach, line_height, tactic_code, rationale, confidence
                                FROM team_tactic_setups WHERE regime_id=?
                                ORDER BY season, kind""", (rid,))
         profile = _rows(con, """SELECT axis, content, evidence, confidence, updated
                                 FROM manager_profiles WHERE regime_id=? ORDER BY axis""", (rid,))
-        targets = _rows(con, """SELECT name, name_kr, short_label, slot, club, position,
+        targets = _rows(con, """SELECT player_id, name, name_kr, short_label, slot, club, position,
                                        likelihood, last_news_date, map25, sample_n, avg_rating,
                                        opt_role, opt_focus, fit_role, fit_focus, fit_sim,
                                        confidence, source
@@ -183,6 +192,7 @@ def export_all(db_path=None, window="2026-summer"):
             WHERE o.team_code=? AND o.likelihood='CONFIRMED'""", (code,))]
         written.append(_write(SITE_DATA / "teams" / f"{code}.json", {
             "regime": rg, "slots": slots, "slot_canon": canon,
+            "slot_candidates": slot_candidates,
             "squad": squad, "prescriptions": prescriptions,
             "duties": duties, "player_stats": pstats, "departed": departed, "form": form,
             "evaluations": evals, "season_stats": season_stats, "fbref": fbref,

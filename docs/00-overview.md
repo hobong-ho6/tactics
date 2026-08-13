@@ -9,7 +9,7 @@
 SofaScore(브라우저 오리진 수집) ─┐
 sofifa / EA 피치노트 ────────────┤→  db/tactics.db  →  scripts/export.py  →  site/data/*.json  →  site/*.html
 transfer-watch(스킬) ────────────┘        ↑                (게이트 통과 필수)
-                                   scripts/gates.py = 정본성 보증 (G1~G5)
+                                   scripts/gates.py = 정본성 보증 (G1~G9)
 ```
 
 ## 레이어 (db/migrations/001-schema.sql이 스키마 정본)
@@ -28,7 +28,9 @@ transfer-watch(스킬) ────────────┘        ↑       
 G1 커널 정합 37/85/217 · G2 인코딩 회귀(전 그리드 cells→map25) · G3 커널 앵커 6항
 (캐시 measured:season RM **.835** 독립앵커 · 하지무사 **.821** 상수 그리드 · Jackson **.724**(28경기) ·
 만잠비 CAM .861 · 가르나초 LM .771 · 알리송 RM .833) · G4 집계 공식 재현(만잠비 national 12경기) ·
-G5 JS 커널 동치(site/assets/kernel.js ↔ core/kernel.py, node).
+G5 JS 커널 동치(site/assets/kernel.js ↔ core/kernel.py, node) · G6 DB FK 정합 ·
+G7 appearances 병합 앵커 · G8 공통 슬롯 후보 풀(중복·도달불가·이적누락 0) ·
+G9 프리뷰 최신성(no-store 서버 + JSON 캐시 우회).
 
 ## 핵심 규약 (v1 교훈의 성문화 — 위반이 실제 사고를 냈던 것들)
 
@@ -53,7 +55,7 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 |---|---|---|
 | 실측 수집 | `core.sofascore.js_collect()` → 브라우저 → `parse_collected()` | sofascore.com 오리진 필수 |
 | 익스포트 | `python3 scripts/export.py` | 게이트 통과 후 site/data 재생성 + 프리뷰 미러 |
-| 게이트 | `python3 scripts/gates.py` | G1~G5 |
+| 게이트 | `python3 scripts/gates.py` | G1~G9 |
 | v1 재흡수 | `python3 scripts/migrate_v1.py` | ⚠️ 컷오버 완료 — 재실행하면 v2 신규분이 날아간다. 사용 금지(아카이브 참조용) |
 | 이적 감시 | transfer-watch 스킬 (매일 09/21시) | 3팀 루프 — v2에 기록 (2026-08-11 컷오버 완료) |
 
@@ -68,9 +70,10 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 - 데이터 백로그: AVL squad_entries의 가르나초·알리송·아브라함 그리드가 구표본(v1 승계) —
   prescriptions 확장 표본으로 갱신 필요. 만잠비 fit 재산출값의 transfer_targets 반영은 완료.
 
-## 정합성 규칙 (2026-08-11 추가 — 히트맵 CAM 만잠비 누락 사고에서)
+## 정합성 규칙 (2026-08-13 갱신 — 가르나초 중복·헤밍스 누락 사고에서)
 
-**페이지 후보 풀의 SSOT는 `squad_entries`다.** transfer_targets가 CONFIRMED가 되는 순간
-squad_entries로 승격해야 한다(다포지션은 복수 행 — 맥긴 WM+DM 선례). 승격 없이 두면
-설정 시트(prescriptions)에는 있는데 히트맵·스쿼드(squad_entries)에는 없는 불일치가 생긴다.
-transfer-watch §4의 CONFIRMED 처리에 승격 단계 포함.
+**페이지 슬롯 후보 풀의 SSOT는 DB 뷰 `v_slot_candidates`다.** `squad_entries`를 우선하고
+`transfer_targets`의 활성 실측 후보를 합치며, 같은 `player_id`가 스쿼드로 승격됐으면 이적 행은
+화면 풀에서 숨긴다. 모든 선수 목록 화면은 export의 `slot_candidates`와 공용 JS 함수만 사용한다.
+transfer_targets가 CONFIRMED가 되는 순간 squad_entries로 승격하는 규칙도 유지한다.
+G8이 슬롯별 중복·도달 불가 스쿼드 행·활성 이적 후보 누락을 차단한다.

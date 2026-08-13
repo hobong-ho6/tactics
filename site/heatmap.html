@@ -13,7 +13,7 @@
 <p class="dim">데이터: teams/{팀}.json (slots·squad·prescriptions) + kernels/FC26.json. 인선을 바꾸면 즉시 다시 그린다.
 칸이 비면 그 슬롯은 실측 후보가 없는 것 — 데이터가 생기면 자동으로 나타난다.</p>
 <script type="module">
-import { mountHeader, loadTeam, loadKernels } from './assets/data.js';
+import { mountHeader, loadTeam, loadKernels, slotCandidates } from './assets/data.js?v=20260813-slot-candidates';
 import { Kernel, decodeMap } from './assets/kernel.js';
 import { drawPitch, drawComposite, drawChip } from './assets/pitch.js';
 
@@ -24,11 +24,8 @@ const slots = td.slots;   // 단일 포메이션 가정 (복수면 첫 formation
 const formation = slots[0]?.formation;
 const useSlots = slots.filter(s => s.formation === formation);
 
-// 슬롯별 후보 = squad에서 slot_type 일치
-const cands = pos => {
-  const st = useSlots.find(s => s.pos === pos)?.slot_type;
-  return td.squad.filter(q => q.slot_type === st);
-};
+// 슬롯별 후보 = DB 공통 후보 풀의 보유/합류 선수. 이적 루머는 인선 화면에서 제외한다.
+const cands = pos => slotCandidates(td, pos, { includeTransfers: false });
 /* 초기 인선 — slot_type 필터만으로는 좌우 쌍(LCB/RCB 등)이 같은 후보를 중복
    선택하므로, 이미 쓴 선수를 건너뛰며 배정한다. DB에 fit_sim이 있으면 높은 순. */
 const sel = {};   // pos -> squad index(후보 배열 내)

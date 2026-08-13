@@ -29,7 +29,7 @@ Claude Code에서는 MCP 브라우저 툴로 오리진 JS를 돌렸다. Codex에
 |---|---|---|
 | SofaScore 실측 | `mcp__Claude_Browser__javascript_tool` | `.venv/bin/python scripts/collect_sofascore.py <player_id> --from … --to …` |
 | Fotmob 루머 | `preview_start` + `get_page_text` | `.venv/bin/python scripts/fetch_fotmob.py AVL CHE LIV` |
-| 페이지 확인 | `preview_start {name:"heatmap"}` | `scripts/serve.sh` (기본 8123, `PORT=` 로 변경) |
+| 페이지 확인 | `preview_start {name:"heatmap"}` | `scripts/serve.sh` (기본 8123, `PORT=` 로 변경, HTML·JS·JSON 캐시 비활성) |
 
 ⚠️ **왜 스크립트가 필요한가**: SofaScore API는 sofascore.com 오리진에서만 열리고 `curl`은 UA/Referer를
 붙여도 **403**이다(docs/30 ②). Fotmob 루머 표는 **CSR**이라 정적 GET으로는 셸만 온다.
