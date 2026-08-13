@@ -68,6 +68,16 @@
    "source": "appearances player_id=4 ranks 1-3 (measured); tactic_observations build_up ; [08-12 서사수집] 에메리 영입 발언(2023, 캐비앗) · Sky Sports 패스마스터 분석 · Breaking The Lines(발행일 미확인) · astonvillanews 2026-03-24·2026-04-22 · 유튜브 Dan Rolinson·John Townley 2025-06(설명 기준)"
   },
   {
+   "adherence": "MEDIUM-HIGH — 위치·패스·수비 스탯이 기존 빌드업 역할과 정합.",
+   "confidence": "HIGH on raw data; MEDIUM on match-specific duty",
+   "duties": "PSG 슈퍼컵 단일경기: 좁은 백4의 좌측 센터백, 좌측 전진 배급과 박스 보호. Maatsen 전진 뒤 좌중앙을 유지했다.",
+   "execution": "79분 7.0, 23/26패스, 3/6경합, 2태클, 3클리어. 평균위치 (28.70,68.14), 경기 적합 cb_bpd/Build-Up .798.",
+   "game_role_implication": "cb_bpd/Build-Up 유지. 대표 처방 변경 없음.",
+   "label": "파우 토레스",
+   "position": "LCB",
+   "source": "SofaScore event 16260286; El País 2026-08-12; The Villa Park Podcast 2026-08-13"
+  },
+  {
    "adherence": "HIGH — 폭 상수·높이 가변. 리버풀전 컷백 어시스트(로저스 골)가 임무 수행의 정점.",
    "confidence": "MEDIUM-HIGH — heatmaps HIGH; top-3 bias noted.",
    "duties": "공수 겸장 레프트백: 인버티드 공격을 위한 좌측 터치라인 폭 유지(로저스 컷인·디뉴 폭), 캐시와 반대로 한 명씩 전진, 크로스·컷백 배달. 수비 복귀와 공격 산출의 균형.",
@@ -88,6 +98,16 @@
    "source": "appearances player_id=6 ranks 1-3 (measured); tactic_observations modulation axis 4 ; [08-12 서사수집] themastermindsite 2025-12-29 · 에메리 2026-02 발언 · Read Aston Villa 2026-06-10(탠즈웰 인용) · astonvillanews 2026-03-05·2026-02-18 · OneFootball 2026"
   },
   {
+   "adherence": "MEDIUM-HIGH — 실측 활동량과 영상 평가가 공수 왕복에 수렴.",
+   "confidence": "HIGH on raw data; MEDIUM on narrative",
+   "duties": "PSG 슈퍼컵 단일경기: 좌측 폭과 전진 출구를 제공하면서 전환 때 빠르게 복귀. Hemmings가 안쪽·낮게 서는 동안 외곽 폭을 담당했다.",
+   "execution": "90분 7.0, 11/16경합, 4태클, 2키패스, 27/35패스. 평균위치 (50.02,87.46), 경기 적합 fb_wingback/Balanced .759.",
+   "game_role_implication": "fb_wingback 계열 유지. 한 경기 적합값으로 전진 강도를 바꾸지 않음.",
+   "label": "마첸",
+   "position": "LB",
+   "source": "SofaScore event 16260286; The Villa Park Podcast 2026-08-13; r/avfc post-match 2026-08-12"
+  },
+  {
    "adherence": "HIGH — 뎁스·안정·듀얼 우위 서사와 실측 평점·그리드 정합. 서사에 실측과 충돌하는 위치·스타일 주장 없음. | [08-12 재판정] HIGH — 뎁스·안정·다역할 서사와 실측 평점·그리드가 정합하며, 미드필드 기용 서사는 DB의 기존 RDM 비상 처방을 오히려 뒷받침한다.",
    "confidence": "서사 소스(3티어급, 통계 집계 사이트 위주 — 전술 서사 매체의 단독 분석은 미발견) — 25/26 시즌 데이터 명기. 실측 표본 5경기(360분)로 얇음. ; [08-12] 중간. 1차 자료(에메리·본인 발언 각각)를 확보했고 체제·시점이 모두 25/26 빌라로 검증됐다. 캐비앗 셋: ⑴ 유튜브·전술 블로그 두 종이 완전 미발견이라 소스 다양성이 절반 ⑵ 실측 표본이 25경기·코사인 .615로 얇아 그리드 결론의 신뢰구간이 넓다 ⑶ 결승 백3 구성 보도는 소수 경기 사건이라 시즌 위치 결론(RCB 기본)을 뒤집지 않는다.",
    "duties": "빌라 25/26(2025-09-01 자유이적) — 뎁스 CB. 서사: 17경기 945분(11선발), 로테이션 자원으로 듀얼 18-11·공중 11-6 우위, 무실책 안정형(커리어 211경기 무퇴장), 마지막 경기(맨시티전 73분, 7.2)도 견실. 시즌 평점 소스별 6.52(팟몹)~6.79(StatMuse). EL 우승 스쿼드 기여.\n\n[2026-08-12 정기 서사 수집] 린델뢰프는 2025년 9월 자유이적으로 합류해 콘사와 중앙 수비 조합을 이뤘고, 11-12월 11연승 기간 중 5경기에 관여했다. 25/26 시즌 후반의 핵심 사건은 임무 확장이다 — 오나나·카마라 결장으로 미드필드가 고갈되자 에메리가 본직이 센터백인 그를 딥 미드필드에 세웠고, 노팅엄 포레스트전 4-0 준결승 승리에서 침착함·판단·위치 규율로 응답했다는 평가를 받았다. 유로파 결승을 앞두고는 오나나와의 선발 경쟁이 최대 딜레마였으며, 그를 넣으면 콘사·파우 토레스와 백3가 되어 캐시가 전진할 수 있다는 구성 논리가 보도됐다.",
@@ -96,6 +116,16 @@
    "label": "린델뢰프",
    "position": "CB",
    "source": "LiveScore — livescore.com/en/season-stats/victor-lindelof/27767/ · StatMuse — statmuse.com/fc/player/victor-nilsson-lindelöf-6430 · FotMob — fotmob.com/players/258269 ; [08-12 서사수집] Read Aston Villa 2026-05-08·2026-05-07 · astonvillanews 2026-05-17 · el-balad 결승 선발 딜레마 · 에메리 포레스트 준결승 후 발언 · 린델뢰프 본인 잔류 발언"
+  },
+  {
+   "adherence": "MEDIUM-HIGH — 실측과 경기 서사가 중앙 보호·침착한 배급에 수렴.",
+   "confidence": "HIGH on raw data; MEDIUM on individual narrative",
+   "duties": "PSG 슈퍼컵 단일경기: 중앙을 좁게 보호하는 RCB, 압박을 넘기는 안전 배급. 전진 수비선이 올라갈 때 우측 간격을 관리했다.",
+   "execution": "90분 6.4, 39/41패스, 1인터셉트, 2클리어, 8회수. 평균위치 (29.11,36.46), 경기 적합 cb_bpd/Aggressive .895.",
+   "game_role_implication": "기존 CB/RDM 비상 처방 유지. 단일경기로 역할 변경 없음.",
+   "label": "린델뢰프",
+   "position": "RCB",
+   "source": "SofaScore event 16260286; El País 2026-08-12; The Villa Park Podcast 2026-08-13"
   },
   {
    "adherence": "HIGH — 피벗의 만능 어댑터. 평점이 파트너 독립적. | [08-12 재판정] HIGH — 볼위닝·공중 지배·낮은 창출이라는 기능 서사가 실측 백분위와 전면 일치하고, 위치 주장에도 충돌이 없다.",
@@ -328,6 +358,16 @@
    "source": "Aston Villa 공식 「Villa announce Marco Bizot signing」(2025-07-15) https://www.avfc.co.uk/news/2025/july/15/villa-announce-marco-bizot-signing/ · Aston Villa 선수 프로필 https://www.avfc.co.uk/players/marcobizot/ · Wikipedia 「Marco Bizot」 https://en.wikipedia.org/wiki/Marco_Bizot · Premier League 프로필 https://www.premierleague.com/en/players/72147/marco-bizot/overview"
   },
   {
+   "adherence": "MEDIUM — 실측은 명확하나 한 경기이며 두 실점의 개인 책임은 영상 근거 부족.",
+   "confidence": "HIGH on raw event data; MEDIUM on tactical interpretation",
+   "duties": "PSG 슈퍼컵 단일경기: 좁은 블록 뒤의 라인 수비와 후방 패스 옵션. 공격적 스위핑보다 선방·안전 배급이 우선이었다.",
+   "execution": "90분 6.6, 4선방, 23/30패스, 40터치, 10회수. 평균위치 (10.05,51.10), 맵25 0000000000000000000001X10, 경기 적합 gk_goalkeeper/Defend .966.",
+   "game_role_implication": "gk_goalkeeper/Defend 유지. 대표 처방 변경 없음.",
+   "label": "비조",
+   "position": "GK",
+   "source": "SofaScore event 16260286 (2026-08-12); reports/match-watch/2026-08-12-avl-psg-super-cup.md"
+  },
+  {
    "adherence": "MEDIUM-HIGH — '내려와 배급하는 광역 중앙 미드필더'라는 임무는 실측과 정합하지만, '10번으로 쓰기엔 3순위'라는 서열 서사는 26/27 스쿼드 기준 커널 결과(CAM 스쿼드 1위 0.803)와 긴장한다.",
    "confidence": "서사 소스(3티어급) — Read Aston Villa 2026-07-08 · Aston Villa News 2026-05-17로 발행일이 25/26 시즌 종료 직후임이 확인된다. 실측은 HIGH(SofaScore 전수 25경기 중 RDM 순수 17경기 875분 + 슬롯 전수 채점, 회귀검증 통과). ⚠️ 캐비앗: SofaScore lineup_pos가 'M' 단일 라벨이라 경기별 LDM/RDM/CAM 구분은 불가하고 슬롯 판정은 커널 적합도에 의존한다(라벨 근거 아님). ⚠️ 코번트리 이적설은 2티어권(GiveMeSport·Football Insider·Football League World)으로 1티어 확인 대기 상태다.",
    "duties": "25/26 그의 자리는 선발이 아니라 로테이션이었다 — 프리미어리그 17경기 출전이지만 대다수가 교체였고 무릎 부상으로 여러 차례 이탈했다. 유로파리그 명단에 등록되지 않아 프라이부르크와의 결승(5월 20일)을 포함해 유럽 대회에는 전혀 나설 수 없었다. 전술적 임무는 2024년 복귀 이후 카마라·틸레만스·오나나의 3선 백업이 본체이고, 25/26에는 10번 자리 기용이 간간이 나왔으며 11월 리즈 원정이 가장 뚜렷한 사례로 지목된다. 다만 공격형 미드필더 서열에서는 로저스·부엔디아에 이은 3순위였고, 리버풀전 교체 출전에서 터치 29회·상대 박스 터치 0회라는 비판적 평가도 붙었다. 2026년 7월 코번트리와의 협상이 진행되는 가운데, 전용 CAM을 영입하는 대신 바클리를 위로 재배치하자는 반론이 함께 제기됐다.",
@@ -366,6 +406,16 @@
    "label": "일링주니어",
    "position": "RM",
    "source": "West Bromwich Albion 공식 「Samuel Iling-Junior joins Albion on loan」 https://www.wba.co.uk/news/samuel-iling-junior-joins-albion-loan · BBC Sport 「West Brom sign Iling-Junior and Taylor on loan」 https://feeds.bbci.co.uk/sport/football/articles/c75420qy7d3o · BirminghamWorld 「West Brom lose attacker as Aston Villa star's loan deal cancelled」 https://www.birminghamworld.uk/sport/football/west-bromwich-albion/west-brom-aston-villa-samuel-iling-junior-loan-cancelled-transfer-deadline-day-5499151 · The72 「Update emerges on Samuel Iling-Junior's West Brom future amid loan struggles」(2026-01-15) https://the72.co.uk/2026/01/15/update-emerges-on-samuel-iling-juniors-west-brom-future-amid-loan-struggles/ · Football League World 「West Brom submit loan offer for Aston Villa winger Samuel Iling-Junior」 https://footballleagueworld.co.uk/west-brom-submit-loan-offer-for-aston-villa-winger-samuel-iling-junior/ · Transfermarkt 25/26 스탯 https://www.transfermarkt.co.uk/samuel-iling/leistungsdaten/spieler/581672"
+  },
+  {
+   "adherence": "MEDIUM — 이벤트 원천값과 Emery의 의도된 포지션 발언은 강하지만 공식 성인 표본이 한 경기뿐.",
+   "confidence": "HIGH on raw event heatmap/statistics; MEDIUM on representative role",
+   "duties": "PSG 슈퍼컵 단일경기: 명목 LAM이지만 터치라인 고정 윙어보다 왼쪽 안쪽·낮은 지원자. 전방 압박, 회수, 짧은 연결로 Maatsen의 외곽 전진을 보조했다.",
+   "execution": "90분 6.2, 20/25패스, 1키패스, 3/9경합, 1태클, 2슈팅(1유효), 6회수. 평균위치 (58.11,73.31), 히트포인트 51, 맵25 66111X4430X41009403004000, 경기 적합 wm_widemid/Support .788.",
+   "game_role_implication": "LM/LAM 지원·압박 가설. 공식전 2경기 이상 같은 위치 표본 전 대표 처방 승격 금지.",
+   "label": "헤밍스",
+   "position": "LM",
+   "source": "SofaScore event 16260286; AS Emery interview 2026-08-12; BeanymanSports post-match press conference 2026-08-13; The Villa Park Podcast 2026-08-13"
   },
   {
    "adherence": "부분 일치 — 캐리 전진(온더볼)은 그리드 밖이라 미검증, 위치 주장은 실측이 정정",
@@ -466,6 +516,16 @@
    "label": "Brian Madjo",
    "position": "ST",
    "source": "Aston Villa 공식 「Aston Villa announce Brian Madjo signing」(2026-01-12) https://www.avfc.co.uk/news/2026/january/12/signing-aston-villa-announce-brian-madjo-signing/ · Aston Villa 공식 「Madjo appeal upheld」(2026-08-04) https://www.avfc.co.uk/news/2026/august/04/news-madjo-appeal-upheld/ · The Scouting App 「Scouting Report: Brian Madjo」 https://www.thescoutingapp.com/blog/scouting-report-brian-madjo-469 · Ligue 1 공식 「One to watch: Metz's Brian Madjo - a precocious talent」 https://ligue1.com/en/articles/l1_article_3034-one-to-watch-metz-s-brian-madjo-a-precocious-talent · FOX Sports 「Aston Villa signs 17-year-old striker Brian Madjo from Metz」 https://www.foxsports.com/articles/soccer/aston-villa-signs-17yearold-striker-brian-madjo-from-metz-in-reported-14m-deal · Transfermarkt 「Meet Brian Madjo」 https://www.transfermarkt.us/meet-brian-madjo-aston-villa-sign-wonderkid-striker-compared-to-romelu-lukaku/view/news/458937 · Wikipedia 「Brian Madjo」 https://en.wikipedia.org/wiki/Brian_Madjo"
+  },
+  {
+   "adherence": "MEDIUM-HIGH — 득점·움직임·감독 발언은 수렴. 다만 1/9 경합승이라 물리적 경합 지배로 과장하지 않는다.",
+   "confidence": "HIGH on raw data; MEDIUM-HIGH on match role; LOW for season-long projection",
+   "duties": "PSG 슈퍼컵 단일경기: 정통 9번이자 직접 전환의 물리적 출구. 등진 떨굼, 수비수 앞/뒤를 바꾸는 반복 침투, 박스 점유와 전방 압박을 함께 수행했다.",
+   "execution": "72분 6.6, 1골, 6슈팅(1유효), 2키패스, 9/14패스, 경합승 1/9. 평균위치 (64.55,54.02), 경기 적합 st_poacher/Attack .725.",
+   "game_role_implication": "st_poacher/Attack 경기 가설. 유효 대표 표본 4경기로 최소 6경기 전 처방 승격 금지.",
+   "label": "Brian Madjo",
+   "position": "ST",
+   "source": "SofaScore event 16260286; El País 2026-08-12; AS 2026-08-12; BeanymanSports and talkSPORT 2026-08-13"
   },
   {
    "adherence": "HIGH — 서사(볼위닝 앵커·중앙 스크린)와 실측 그리드·기능축이 전면 정합. 긴장은 슬롯 커널 층에서만 발생: 빌라 LDM 기용 시 fit dm_widehalf/Build-Up .709, RDM 시 dm_dlp/Roaming .738 — 본인 정체성(dm_holding)과 슬롯 최적역할이 갈린다.",
