@@ -59,3 +59,4 @@ INSERT INTO matches VALUES(64,NULL,'AVL','2026-27','2026-08-01','Indonesia All S
 INSERT INTO matches VALUES(65,16284981,'AVL','2026-27','2026-08-07','Bayern München','Club Friendly Games','H','1-2',1,NULL,44.0);
 INSERT INTO matches VALUES(66,16285002,'CHE','2026-27','2026-08-08','AC Milan','Club Friendly Games','H','3-0',1,NULL,50.0);
 INSERT INTO matches VALUES(67,16284988,'LIV','2026-27','2026-08-09','AS Monaco','Club Friendly Games','H','2-3',1,NULL,52.0);
+INSERT INTO matches VALUES(68,16260286,'AVL','2026-27','2026-08-12','Paris Saint-Germain','UEFA Super Cup','N','1-2',1,'Final',39.0);
