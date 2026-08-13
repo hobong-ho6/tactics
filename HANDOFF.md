@@ -76,12 +76,20 @@
 > 8. `fotmob_detail_stats` 결손 3명(포파나·에스테방·알리송) 보충 + 네델코비치·마조 표본 축적.
 > 9. 게임 시스템 페이지 EA 정의문 85건 한글 번역(사용자 요청 잔여분).
 >
-> 🆕 **사용자 신규 요청(2026-08-13, 세션 #15 종료 직전 접수)**: **이적 감시 · 경기 실측 · 히트맵 서버
-> 실행을 ChatGPT로 마이그레이션**하는 준비. **미착수** — 타깃(Codex CLI / ChatGPT 앱+Tasks / 커스텀 GPT)에
-> 따라 작업이 완전히 달라져 사용자에게 확인 중이었다. ⚠️ 선행 조사 결과 **핵심 병목은 브라우저 오리진
-> 실행**이다: SofaScore API는 `curl`이 UA/Referer를 붙여도 **403**이고(docs/30 ②) Fotmob 루머 표는 **CSR**이라
-> 정적 GET으로 안 나온다(obs 07-31 진단). 즉 실측·Fotmob 수집은 "페이지 컨텍스트에서 JS를 돌릴 수 있는가"에
-> 전부 걸려 있다. `python3 scripts/*.py` · sqlite3 · git은 이식이 쉬운 쪽이다.
+> 🆕 **Codex CLI 병행 준비 — 핵심 완료 (2026-08-13, `8b3d97f`)**. 사용자 확정: 타깃 **Codex CLI(로컬)**,
+> 범위 **병행**(Claude Code 폐기 아님, 도구 중립화). 진입점은 신설 **[AGENTS.md](AGENTS.md)** — CLAUDE.md를
+> 대체하지 않고 "셸에서 달라지는 것"만 담는다.
+> ⭐⭐ **최대 리스크였던 브라우저 오리진 실행이 뚫렸다.** SofaScore는 `curl`이 UA/Referer를 붙여도 403이고
+> (docs/30 ②) Fotmob 루머 표는 CSR이라 정적 GET이 안 된다 — **Playwright의 실제 Chromium을 같은 오리진에
+> 띄우면 둘 다 그대로 통한다**. ✅ **회귀 검증: 완비사카 863653 53경기 수집 → 클럽 25경기 `map25`·평점·
+> RB 적합 `.932`가 브라우저 MCP 경로와 소수점 3자리까지 일치.** 이 값을 앞으로 이식 회귀 게이트로 쓴다.
+> 신설: `scripts/collect_sofascore.py`(수집 JS는 `core.sofascore.js_collect` 재사용) ·
+> `scripts/fetch_fotmob.py`(3팀 확인) · `scripts/serve.sh`(launch.json의 TCC 미러 우회 불필요) ·
+> `requirements.txt` · `.venv/`(gitignore). **`__pycache__` 추적 해제** — cpython-314 pyc 7개가 커밋돼
+> 있었는데 이 머신은 3.9.6이라 영구히 `M`으로 떴다.
+> ⚠️ **미해결 2건**: ⓐ **서브에이전트 병렬 스캔에 Codex 대응물이 없다**(순차 실행하면 결과는 같으나
+> 컨텍스트를 더 쓴다 — transfer-watch §0의 설계 근거가 그것이었다) ⓑ **스케줄 실행 미구성**(cron/launchd로
+> 따로 걸어야 한다. 스크립트는 전부 비대화형이라 걸 수 있다). ⚠️ **Codex CLI 자체는 미설치**(`npm i -g @openai/codex`).
 
 ## 다음 할 일
 
