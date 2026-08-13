@@ -40,8 +40,9 @@ fi
 
 if [ -n "$CODEX_BIN" ]; then
   # --full-auto는 공식 문서상 deprecated이고 현재 앱 번들 CLI에서는 제거됐다.
-  # --approve-for-me가 workspace-write 샌드박스 안에서 승인 요청을 자동 검토한다.
-  "$CODEX_BIN" exec --ephemeral --approve-for-me -C "$ROOT" \
+  # workspace-write(--approve-for-me)는 .git/FETCH_HEAD를 막아 여러 PC 동기화가 깨진다.
+  # 이 회차는 DB·리포트·git commit/push까지가 명시된 역할이므로 danger-full-access를 쓴다.
+  "$CODEX_BIN" exec --ephemeral --sandbox danger-full-access -C "$ROOT" \
     "$(cat "$ROOT/scripts/cron/transfer-watch-prompt.txt")"
   rc=$?
   echo "codex exec 종료 코드: $rc"
