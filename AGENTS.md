@@ -61,9 +61,32 @@ git add db/tactics.db db/dump/ site/data/ reports/…   # ⛔ git add -A 금지
 
 ⛔ **`git add -A` 금지** — `.claude/settings.json`(Figma PAT)이 있어 푸시가 차단된다. 명시 스테이징만.
 
-## 5. 아직 대응물이 없는 것 (미해결)
+## 5. 정기 실행 (cron)
+
+```bash
+scripts/cron/install.sh            # 매일 09:00 / 21:00 등록 (멱등)
+scripts/cron/install.sh --remove   # 해제
+```
+
+`scripts/cron/transfer-watch.sh`가 두 단계로 돈다: ⑴ Fotmob 3팀 수집(LLM 불필요, `logs/fotmob-*.txt`) →
+⑵ `codex exec --full-auto`로 판정·DB·리포트·커밋(프롬프트는 `scripts/cron/transfer-watch-prompt.txt`).
+codex가 없으면 ⑴만 하고 **그 사실을 로그에 남긴다** — 조용히 성공한 척하지 않는다.
+
+### ⛔ macOS TCC — 사용자가 한 번 풀어줘야 한다
+
+**2026-08-13 실증**: cron 항목은 정상 등록·기동됐으나(11:00:01 실행 확인) 결과는
+`bash: …/transfer-watch.sh: Operation not permitted`였다. cron이 TCC 샌드박스라 `~/Documents`를
+읽지 못한다. **스크립트 문제가 아니다** — 같은 스크립트를 셸에서 직접 돌리면 정상 완료한다.
+
+> 시스템 설정 → 개인정보 보호 및 보안 → **전체 디스크 접근 권한** → `+` → `⌘⇧G`로
+> `/usr/sbin/cron` 추가 → 켜기
+
+(이 저장소는 같은 TCC 문제를 이미 겪었다 — `.claude/launch.json`이 `/private/tmp` 미러를 서빙하는 이유가 그것이다.)
+권한을 준 뒤 확인하려면 crontab에 1~2분 뒤 시각을 임시로 넣고 `logs/`에 파일이 생기는지 본다.
+
+## 6. 아직 대응물이 없는 것 (미해결)
 
 - **서브에이전트 병렬 스캔** — transfer-watch §0의 설계 근거는 "스캔이 토큰을 많이 쓰는데 산출물은
   이름·등급·URL 목록뿐"이라는 것이다. 순차 실행해도 결과는 같지만 컨텍스트를 더 쓴다.
-- **스케줄 실행** — Claude Code의 스케줄 작업(매일 09/21시)에 해당하는 것은 `cron`/`launchd`로
-  따로 걸어야 한다. 스크립트는 전부 비대화형으로 돌아가므로 걸 수 있다. (미구성)
+- **`codex exec --full-auto` 미검증** — codex CLI가 이 머신에 설치돼 있지 않아 ⑵단계는 실행된 적이 없다.
+  플래그 이름과 비대화형 동작을 첫 실행에서 확인할 것.

@@ -11,3 +11,6 @@ handoff-hooks/
 __pycache__/
 *.pyc
 .venv/
+
+# cron 실행 로그 — 산출물이 아니다.
+logs/
