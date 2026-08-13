@@ -41,8 +41,8 @@
 
 ## 현재 상태
 
-> 마지막 갱신: **2026-08-13** · 세션 **#20** · 작업 PC `AL02359162.local` · 브랜치 `main` ·
-> 최신 데이터 커밋 **`f1a2867`** · observations **196행**(최신 obs#196).
+> 마지막 갱신: **2026-08-13** · 세션 **#21** · 작업 PC `AL02359162.local` · 브랜치 `main` ·
+> 최신 데이터 커밋 **`777a52e`** · observations **196행**(최신 obs#196).
 > DB는 v2(`db/tactics.db`), 3팀 스쿼드·실측·평가 체제 유지.
 >
 > **선수 후보 SSOT 통합(`f1a2867`).** DB `v_slot_candidates` → export `slot_candidates` → 공용 JS 함수로
@@ -50,6 +50,8 @@
 > `squad_entries.id=66` WM에 승격돼 LM에 노출된다. G8이 중복·도달불가·이적누락 0을 강제한다.
 > `scripts/serve.sh`는 no-store 서버를 쓰며 JSON에도 timestamp+`cache:'no-store'`를 붙이고 G9가 지킨다.
 >
+> **영상 레퍼런스 UI(`777a52e`).** `player_duties.source` 90행을 기본 닫힘 `<details>`로 노출하고 URL·obs·
+> 리포트·SofaScore 이벤트를 직접 링크한다. URL 미기록 과거 출처는 명시하며 G10이 출처 결손 0을 강제한다.
 > **Codex 이식 검증 완료.** 병렬 3팀 스캔·실제 `transfer-watch.sh` end-to-end를 모두 통과했다.
 > `workspace-write`는 `.git/FETCH_HEAD`를 막으므로 cron을
 > `codex exec --ephemeral --sandbox danger-full-access`로 교정(`e71bc38`), 고정 프롬프트에서 fetch 성공을 확인했다.
@@ -190,6 +192,11 @@
 
 ## 최근 세션 기록
 
+### 2026-08-13 — 세션 #21: 접이식 영상·스카우트 레퍼런스 (`777a52e`)
+
+- 선수 분석 표에 기본 닫힘 레퍼런스 목록을 추가하고 원문 URL·obs·리포트·SofaScore 이벤트를 링크했다.
+- 마르티네스 핵심 원문 2건을 DB에 보강. export→dump→G1~G10 및 닫힘→펼침 UI를 검증했다.
+
 ### 2026-08-13 — 세션 #20: 선수 후보 SSOT + 캐시 없는 프리뷰 (`f1a2867`)
 
 - `v_slot_candidates`를 신설해 squad 우선·활성 transfer 병합·player_id 중복 제거를 DB에서 고정했다.
@@ -219,18 +226,11 @@
 - 커티스 존스의 프라테시 선결 조건 진전을 근거에 반영하되 HIGH·기사일 08-12는 유지했다.
   export→dump→게이트→명시 스테이징→push 완료. `squad_entries.id=62` FK 결손은 후속으로 남겼다.
 
-### 2026-08-13 — 세션 #16: Codex 이식 검증 (`eaa4f67`)
-
-- `.venv`·Playwright 설치, 지정 완비사카 회귀를 자동 게이트화해 **RB .932**, 전체 `gates.py` 통과.
-- 앱 번들 Codex `0.147.0-alpha.6.5`에서 `--full-auto` 제거를 확인하고 cron을
-  `--ephemeral --approve-for-me` + 앱 경로 fallback으로 교체. smoke test 종료 0, 실제 전체 회차는 미검증.
-- 엔소 시한 사전 점검: 오퍼 없음, **MEDIUM-HIGH 유지**, DB 무변경. 최종 확인은 08-15 01:00 KST 직후.
-
 ---
 
 ## 아카이브 요약
 
-- **#11~15 (08-10~13, obs#133~158)**: 친선 일반화 정정, 26/27 결손, 스쿼드 누락 복구, 3팀 이적 실측,
+- **#11~16 (08-10~13, obs#133~158)**: 친선 일반화 정정, 26/27 결손, Codex 이식·3팀 이적 실측,
   이적 감시 PENDING 중복과 README 혼입을 정리해 DB 선조회 원칙을 재확인.
 - **#8~10 (08-04~06, obs#128~132)**: 결손값 재수집으로 인터셉트 1위 카마라→오나나, 가르나초 W .936 교정,
   히트맵 시각화 규칙 신설. **결손과 0은 다르다.**
