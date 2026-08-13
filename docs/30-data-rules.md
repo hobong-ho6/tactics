@@ -230,7 +230,7 @@ AVL·CHE·LIV 공통.
 - 판정·충돌 → `observations`
 - 경기 완료본 → `match_reports`(전술 설명·특성·변화·게임 함의) +
   `match_player_reports`(출전 선수별 실제 역할·특성·평가·게임 함의) + `reports/match-watch/*.md` 원문.
-  히트맵 메뉴는 이 구조화 데이터와 원천 `player_matches`를 event_id로 결합해 보여준다.
+  별도 `경기 분석` 메뉴는 이 구조화 데이터와 원천 `player_matches`를 event_id로 결합해 보여준다.
 
 ### 경기 리포트 완료 기준
 

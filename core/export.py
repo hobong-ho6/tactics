@@ -197,7 +197,10 @@ def export_all(db_path=None, window="2026-summer"):
                    m.date, m.opponent, m.competition, m.venue, m.result, m.stage,
                    m.possession, ts.xg_v, ts.xg_o, ts.shots_v, ts.shots_o,
                    ts.sot_v, ts.sot_o, ts.bigch_v, ts.bigch_o, ts.passes_v,
-                   ts.passes_o, ts.duelpct_v, ts.formation_v, ts.formation_o
+                   ts.passes_o, ts.long_att_v, ts.long_acc_v, ts.long_att_o,
+                   ts.long_acc_o, ts.cross_att_v, ts.cross_acc_v, ts.corners_v,
+                   ts.corners_o, ts.duelpct_v, ts.fouls_v, ts.fouls_o,
+                   ts.formation_v, ts.formation_o
             FROM match_reports mr
             LEFT JOIN matches m ON m.id=mr.match_id
             LEFT JOIN team_match_stats ts

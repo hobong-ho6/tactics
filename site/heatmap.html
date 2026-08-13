@@ -3,12 +3,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css"></head><body>
 <div id="hdr"></div>
-<h1>히트맵 비교 <small class="dim">A = 실측 그리드 · B = 처방 역할 커널 (같은 인선)</small></h1>
-<div class="panel" id="matchReports">
-  <h2>경기별 심층 리포트 <small class="dim">실측 → 전술 해석 → 선수 역할 → 게임 구현 판단</small></h2>
-  <label class="kv">경기 <select id="matchReportSel" aria-label="경기별 리포트 선택"></select></label>
-  <div id="matchReportBody"></div>
-</div>
+<h1>대표 히트맵 비교 <small class="dim">A = 선수별 대표 실측(시즌·유효 표본) · B = FC 처방 역할 커널</small></h1>
+<div class="panel kv"><b>이 화면은 선택 경기의 히트맵이 아닙니다.</b> 현재 선수의 시즌·대표 표본과 게임 역할을
+비교합니다. 한 경기의 실제 히트맵·스탯·전술 분석은 상단 <a href="match-report.html">경기 분석</a>에서 확인하세요.</div>
 <div class="panel" id="slotBar"></div>
 <div class="panel">표시: <select id="who"><option value="">전체 합성</option></select></div>
 <div class="grid2">
@@ -28,92 +25,6 @@ const K = new Kernel(kd);
 const slots = td.slots;   // 단일 포메이션 가정 (복수면 첫 formation)
 const formation = slots[0]?.formation;
 const useSlots = slots.filter(s => s.formation === formation);
-
-const esc = value => String(value ?? '').replace(/[&<>"']/g, c =>
-  ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const bullets = value => String(value ?? '').split('|').filter(Boolean)
-  .map(x => `<li>${esc(x)}</li>`).join('');
-function miniMap(map25){
-  if (!map25 || map25.length !== 25) return '<span class="dim">그리드 없음</span>';
-  return `<div class="mini-map" aria-label="5×5 경기 히트맵">${[...map25].map(c => {
-    const v = c === 'X' ? 10 : Number(c) || 0;
-    return `<i style="--heat:${v/10}" title="${v}"></i>`;
-  }).join('')}</div>`;
-}
-function statLine(player){
-  let s = {};
-  try { s = JSON.parse(player.stats_json || '{}'); } catch (_) {}
-  const items = [
-    ['분',player.minutes],['평점',player.rating],['골',player.goals],['도움',player.assists],
-    ['슈팅',s.shots_total],['유효슈팅',s.shots_on],['키패스',player.key_passes],
-    ['패스',s.pass_acc != null && s.pass_total != null ? `${s.pass_acc}/${s.pass_total}` : null],
-    ['경합승',player.duels_won != null && player.duels_lost != null ? `${player.duels_won}/${player.duels_won+player.duels_lost}` : null],
-    ['태클',player.tackles],['인터셉트',player.interceptions],['터치',player.touches],['회수',player.recoveries]
-  ].filter(([,v]) => v !== null && v !== undefined);
-  return items.map(([k,v]) => `<span><small>${k}</small> <b>${esc(v)}</b></span>`).join('');
-}
-function renderMatchReport(report){
-  const body = document.getElementById('matchReportBody');
-  if (!report){ body.innerHTML = '<p class="dim">완료된 경기 리포트가 아직 없습니다.</p>'; return; }
-  const players = report.players ?? [];
-  body.innerHTML = `
-    <div class="match-report-head">
-      <div><h3>${esc(report.title)}</h3>
-        <p class="kv">${esc(report.competition)} · ${esc(report.venue)} · ${esc(report.result)} ·
-        ${esc(report.formation_v || '포메이션 미기록')} · 점유율 ${esc(report.possession ?? '—')}%</p></div>
-      <span class="badge hi">${esc(report.status)}</span>
-    </div>
-    <div class="report-metrics">
-      <span>슈팅 <b>${esc(report.shots_v ?? '—')}–${esc(report.shots_o ?? '—')}</b></span>
-      <span>유효슈팅 <b>${esc(report.sot_v ?? '—')}–${esc(report.sot_o ?? '—')}</b></span>
-      <span>빅찬스 <b>${esc(report.bigch_v ?? '—')}–${esc(report.bigch_o ?? '—')}</b></span>
-      <span>패스 <b>${esc(report.passes_v ?? '—')}–${esc(report.passes_o ?? '—')}</b></span>
-    </div>
-    <div class="report-grid">
-      <section><h3>전술 설명</h3><p>${esc(report.tactical_description)}</p></section>
-      <section><h3>전술적 특성</h3><ul>${bullets(report.tactical_features)}</ul></section>
-      <section><h3>경기 중 변화</h3><ol>${bullets(report.tactical_changes)}</ol></section>
-      <section><h3>게임 구현 함의</h3><ul>${bullets(report.game_implications)}</ul></section>
-    </div>
-    <details class="match-players" open><summary>선수별 분석 ${players.length}명</summary>
-      <div class="player-report-list">${players.map(p => `<details class="player-report">
-        <summary><b>${esc(p.position)}</b> ${esc(p.label)} · ${esc(p.tactical_role)}
-          <span class="dim">${esc(p.minutes ?? '—')}분 / ${esc(p.rating ?? '—')}</span></summary>
-        <div class="player-report-body">
-          ${miniMap(p.map25)}
-          <div><p><b>특성</b> ${esc(p.characteristics)}</p>
-          <p><b>경기 평가</b> ${esc(p.performance)}</p>
-          <p><b>게임 반영</b> ${esc(p.game_implication)}</p>
-          <div class="statline">${statLine(p)}</div>
-          <p class="dim">평균 위치 (${esc(p.avg_x ?? '—')}, ${esc(p.avg_y ?? '—')}) · ${esc(p.confidence)}</p></div>
-        </div></details>`).join('')}</div>
-    </details>
-    <details class="report-source"><summary>전체 원문·근거 보기</summary>
-      <p class="kv"><b>출처</b> ${esc(report.source)}<br><b>신뢰도</b> ${esc(report.confidence)}<br>
-      <b>원문 경로</b> <code>${esc(report.report_path)}</code></p>
-      <pre>${esc(report.report_markdown || '원문 파일을 찾을 수 없습니다.')}</pre>
-    </details>`;
-}
-function buildMatchReports(){
-  const reports = (td.match_reports ?? []).filter(r => r.status === 'complete');
-  const select = document.getElementById('matchReportSel');
-  if (!reports.length){
-    select.innerHTML = '<option>리포트 없음</option>'; select.disabled = true;
-    renderMatchReport(null); return;
-  }
-  select.innerHTML = reports.map(r =>
-    `<option value="${r.event_id}">${esc(r.date || r.report_date)} · ${esc(r.opponent || r.title)} · ${esc(r.result || '')}</option>`).join('');
-  const requested = new URLSearchParams(location.search).get('event');
-  if (requested && reports.some(r => String(r.event_id) === requested)) select.value = requested;
-  const show = () => {
-    const report = reports.find(r => String(r.event_id) === select.value) ?? reports[0];
-    renderMatchReport(report);
-    const url = new URL(location.href); url.searchParams.set('event', report.event_id);
-    history.replaceState(null, '', url);
-  };
-  select.addEventListener('change', show); show();
-}
-buildMatchReports();
 
 // 슬롯별 후보 = DB 공통 후보 풀의 보유/합류 선수. 이적 루머는 인선 화면에서 제외한다.
 const cands = pos => slotCandidates(td, pos, { includeTransfers: false });

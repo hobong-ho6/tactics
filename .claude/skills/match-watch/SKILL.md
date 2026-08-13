@@ -67,7 +67,7 @@ description: 시즌 중 정기 경기 수집 — 3팀(AVL·CHE·LIV)의 선수 �
 8. 레퍼런스·한계 — SofaScore 엔드포인트, 영상/전술 글/기사/감독 발언 URL과 미수행 사유.
 
 `match_reports.status='complete'`는 위 필수 섹션과 수집 선수 전원의 `match_player_reports`가 모두 있을 때만 쓴다.
-초안은 `draft`로 두며 히트맵 메뉴에는 완료본만 노출한다. G12가 누락·원문 경로·UI 연결을 검사한다.
+초안은 `draft`로 두며 별도 `경기 분석` 메뉴에는 완료본만 노출한다. G12가 누락·원문 경로·UI 연결을 검사한다.
 
 ## 3. 팀 스탯
 `/api/v1/event/<eid>/statistics` → `team_match_stats` + `matches` 행 추가.

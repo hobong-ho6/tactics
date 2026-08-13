@@ -283,11 +283,16 @@ def run(db_path=None, verbose=True):
         SELECT id,report_path FROM match_reports WHERE status='complete'""").fetchall()
     missing_report_files = [rid for rid, path in report_paths if not (root / path).is_file()]
     heatmap_html = (root / "site" / "heatmap.html").read_text()
+    match_report_html = (root / "site" / "match-report.html").read_text()
     export_py = (root / "core" / "export.py").read_text()
     ok12 = (
         not incomplete_reports and not uncovered_report_players and not missing_report_files
-        and 'id="matchReportSel"' in heatmap_html
-        and 'renderMatchReport(report)' in heatmap_html
+        and '대표 실측(시즌·유효 표본)' in heatmap_html
+        and 'id="matchReportSel"' in match_report_html
+        and 'id="teamStats"' in match_report_html
+        and 'id="matchPitch"' in match_report_html
+        and 'playerStats(p)' in match_report_html
+        and "['match-report.html', '경기 분석']" in data_js
         and '"match_reports": match_reports' in export_py
     )
     if verbose:

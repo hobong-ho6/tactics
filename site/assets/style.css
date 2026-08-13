@@ -99,3 +99,11 @@ details.match-players>summary,details.report-source>summary{color:var(--acc);cur
   .report-grid,.player-report-list{grid-template-columns:1fr}
   .player-report-body{grid-template-columns:68px 1fr}
 }
+
+/* 별도 경기 분석 화면 */
+.report-picker{display:flex;gap:14px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:20}
+.report-picker select{min-width:230px}
+.match-overview canvas.pitch{max-width:440px}
+.all-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(105px,1fr));gap:5px;margin:10px 0}
+.all-stats span{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:7px;padding:5px 7px}
+.all-stats small{font-size:10px}.all-stats b{font-size:12px}
