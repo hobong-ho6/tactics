@@ -69,8 +69,13 @@ scripts/cron/install.sh --remove   # 해제
 ```
 
 `scripts/cron/transfer-watch.sh`가 두 단계로 돈다: ⑴ Fotmob 3팀 수집(LLM 불필요, `logs/fotmob-*.txt`) →
-⑵ `codex exec --full-auto`로 판정·DB·리포트·커밋(프롬프트는 `scripts/cron/transfer-watch-prompt.txt`).
+⑵ `codex exec --approve-for-me`로 판정·DB·리포트·커밋(프롬프트는 `scripts/cron/transfer-watch-prompt.txt`).
 codex가 없으면 ⑴만 하고 **그 사실을 로그에 남긴다** — 조용히 성공한 척하지 않는다.
+
+`--full-auto`는 공식 문서상 deprecated이고 ChatGPT 앱 번들 CLI `0.147.0-alpha.6.5`에서는 제거됐다.
+`--approve-for-me`는 workspace-write 샌드박스 안에서 승인 요청을 자동 검토하며, 2026-08-13 이 머신에서
+비대화형 실행(`CODEX_EXEC_OK`, 종료 0)을 확인했다. cron의 최소 PATH에서는 앱 번들을 못 찾을 수 있어
+`/Applications/ChatGPT.app/Contents/Resources/codex`도 fallback으로 탐색한다.
 
 ### ⛔ macOS TCC — 사용자가 한 번 풀어줘야 한다
 
@@ -84,9 +89,11 @@ codex가 없으면 ⑴만 하고 **그 사실을 로그에 남긴다** — 조�
 (이 저장소는 같은 TCC 문제를 이미 겪었다 — `.claude/launch.json`이 `/private/tmp` 미러를 서빙하는 이유가 그것이다.)
 권한을 준 뒤 확인하려면 crontab에 1~2분 뒤 시각을 임시로 넣고 `logs/`에 파일이 생기는지 본다.
 
-## 6. 아직 대응물이 없는 것 (미해결)
+## 6. 아직 확인이 필요한 것 (미해결 3건)
 
 - **서브에이전트 병렬 스캔** — transfer-watch §0의 설계 근거는 "스캔이 토큰을 많이 쓰는데 산출물은
   이름·등급·URL 목록뿐"이라는 것이다. 순차 실행해도 결과는 같지만 컨텍스트를 더 쓴다.
-- **`codex exec --full-auto` 미검증** — codex CLI가 이 머신에 설치돼 있지 않아 ⑵단계는 실행된 적이 없다.
-  플래그 이름과 비대화형 동작을 첫 실행에서 확인할 것.
+- **TCC 해제 후 cron 기동 재검증** — `/usr/sbin/cron` 전체 디스크 접근 권한을 사용자가 켠 뒤
+  예약 시각 실행과 `logs/` 생성을 확인해야 한다.
+- **실제 이적 감시 end-to-end 미검증** — `codex exec --approve-for-me` 자체는 종료 0까지 확인했지만,
+  Fotmob 로그 → 웹 크로스체크 → DB/리포트 → 명시 스테이징 → push 전체 회차는 아직 돌지 않았다.

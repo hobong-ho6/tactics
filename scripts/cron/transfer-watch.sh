@@ -32,12 +32,27 @@ else
 fi
 
 echo "--- 2/2 판정·DB·리포트·커밋 ---"
-if command -v codex >/dev/null 2>&1; then
-  codex exec --full-auto "$(cat "$ROOT/scripts/cron/transfer-watch-prompt.txt")"
-  echo "codex exec 종료 코드: $?"
+codex_rc=0
+CODEX_BIN="$(command -v codex 2>/dev/null || true)"
+if [ -z "$CODEX_BIN" ] && [ -x "/Applications/ChatGPT.app/Contents/Resources/codex" ]; then
+  CODEX_BIN="/Applications/ChatGPT.app/Contents/Resources/codex"
+fi
+
+if [ -n "$CODEX_BIN" ]; then
+  # --full-auto는 공식 문서상 deprecated이고 현재 앱 번들 CLI에서는 제거됐다.
+  # --approve-for-me가 workspace-write 샌드박스 안에서 승인 요청을 자동 검토한다.
+  "$CODEX_BIN" exec --ephemeral --approve-for-me -C "$ROOT" \
+    "$(cat "$ROOT/scripts/cron/transfer-watch-prompt.txt")"
+  rc=$?
+  echo "codex exec 종료 코드: $rc"
+  if [ "$rc" -ne 0 ]; then
+    echo "⛔ 판정 단계 실패 — 위 codex 로그를 확인할 것"
+    codex_rc="$rc"
+  fi
 else
   echo "⛔ codex 미설치 — 판정 단계를 건너뛴다. 수집분만 logs/fotmob-$STAMP.txt에 남았다."
-  echo "   설치: npm i -g @openai/codex"
+  echo "   ChatGPT 앱 또는 @openai/codex CLI 설치 필요"
 fi
 
 echo "═══ 종료 $(date +%H:%M:%S) ═══"
+exit "$codex_rc"
