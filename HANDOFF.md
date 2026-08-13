@@ -87,9 +87,16 @@
 > `scripts/fetch_fotmob.py`(3팀 확인) · `scripts/serve.sh`(launch.json의 TCC 미러 우회 불필요) ·
 > `requirements.txt` · `.venv/`(gitignore). **`__pycache__` 추적 해제** — cpython-314 pyc 7개가 커밋돼
 > 있었는데 이 머신은 3.9.6이라 영구히 `M`으로 떴다.
-> ⚠️ **미해결 2건**: ⓐ **서브에이전트 병렬 스캔에 Codex 대응물이 없다**(순차 실행하면 결과는 같으나
-> 컨텍스트를 더 쓴다 — transfer-watch §0의 설계 근거가 그것이었다) ⓑ **스케줄 실행 미구성**(cron/launchd로
-> 따로 걸어야 한다. 스크립트는 전부 비대화형이라 걸 수 있다). ⚠️ **Codex CLI 자체는 미설치**(`npm i -g @openai/codex`).
+> **cron 등록 완료**(`5c43166`, 매일 09/21시) — `scripts/cron/{install,transfer-watch}.sh` + 비대화형
+> 프롬프트. 2단계 구조: Fotmob 수집(LLM 불필요) → `codex exec`로 판정·DB·커밋. codex가 없으면 수집만 하고
+> **그 사실을 로그에 남긴다**.
+> ⛔ **그러나 macOS TCC가 막는다 — 사용자가 한 번 풀어야 한다.** 실증: cron이 **11:00:01에 실제로
+> 기동**했으나 `bash: …/transfer-watch.sh: Operation not permitted`로 종료(cron이 `~/Documents`를 못 읽는다).
+> **스크립트 문제가 아니다** — 셸에서 직접 돌리면 정상 완료한다(Fotmob 8,760바이트 수집 확인).
+> 해제: 시스템 설정 → 개인정보 보호 및 보안 → **전체 디스크 접근 권한** → `/usr/sbin/cron` 추가.
+> ⚠️ **미해결 3건**: ⓐ **서브에이전트 병렬 스캔에 Codex 대응물이 없다**(순차 실행하면 결과는 같으나
+> 컨텍스트를 더 쓴다 — transfer-watch §0의 설계 근거가 그것이었다) ⓑ **TCC 해제 대기**(위)
+> ⓒ **`codex exec --full-auto` 미검증** — Codex CLI 미설치(`npm i -g @openai/codex`)라 2단계는 실행된 적이 없다.
 
 ## 다음 할 일
 
