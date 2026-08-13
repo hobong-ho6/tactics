@@ -10337,6 +10337,42 @@
    "rate_v": 7.15,
    "slot_type": "CB",
    "sort_order": 10
+  },
+  {
+   "fit_focus": "Attack",
+   "fit_role": "wm_wideplm",
+   "fit_sim": 0.729,
+   "grid_caveat": "⚠️ 리버풀 공식전 0경기 — 그리드 전량이 **오사수나 시절**(25/26 45분+ 34경기 중 좌측 23경기)이다. 적합값은 \"오사수나에서 하던 일\"의 적합이며 이라올라 전술에서 같은 위치를 쓴다는 근거가 아니다(obs#157·#158). ⭐⭐ **우측으로 쓰면 값이 달라진다** — 우측 11경기만 재면 **RM wm_winger/Balanced .772**로 좌측(.729)보다 높다. 살라 이탈로 리버풀의 결손 칸이 우측인 점을 감안하면 이 행 하나로 판단하지 말 것. ⚠️ 이라올라 체제는 공식전 0경기다(첫 경기 8/23 뉴캐슬 원정). ⚠️ 표본은 라리가 중위권 팀의 것이다 — 리그·팀 수준 보정 없음.",
+   "grid_club": "Osasuna (25/26)",
+   "label": "무뇨스(합류확정)",
+   "lh": "CONFIRMED",
+   "map25": "54123X5222422114211111100",
+   "name_en": "Víctor Muñoz",
+   "name_kr": "무뇨스",
+   "player_id": 88,
+   "rate_basis": "full2526",
+   "rate_note": "좌측 23경기 평균 7.03 (measured:season:full2526)",
+   "rate_v": 7.03,
+   "slot_type": "WM",
+   "sort_order": 11
+  },
+  {
+   "fit_focus": "Aggressive",
+   "fit_role": "cb_bpd",
+   "fit_sim": 0.903,
+   "grid_caveat": "⚠️ 리버풀 공식전 0경기 — 그리드 전량이 **렌 시절**(25/26 45분+ 21경기 중 우측 14경기)이다. 적합값은 \"렌에서 하던 일\"의 적합이며 이라올라 전술 근거가 아니다(obs#157·#158). ⭐⭐ **아라우호와 같은 칸을 다툰다** — 아라우호 RCB **.908** vs 자케 RCB **.903**로 Δ.005는 EA 노이즈 구간(.02~.05, obs#91) **훨씬 안쪽**이라 적합값으로는 두 사람을 가를 수 없다. 자케는 좌측 7경기 LCB .850도 있어 **좌측 이동 여지가 아라우호(LCB .271로 붕괴)보다 크다** — 이 비대칭이 실제 인선의 결정 변수일 수 있다. ⚠️ 이라올라 체제는 공식전 0경기다. ⚠️ 표본은 리그1의 것 — 리그 수준 보정 없음. ⚠️ 25/26 시즌 말 어깨 부상으로 결장한 이력이 있다.",
+   "grid_club": "Rennes (25/26)",
+   "label": "자케(합류확정)",
+   "lh": "CONFIRMED",
+   "map25": "001001012013752147X311562",
+   "name_en": "Jérémy Jacquet",
+   "name_kr": "자케",
+   "player_id": 89,
+   "rate_basis": "full2526",
+   "rate_note": "RCB 14경기 평균 7.08 (measured:season:full2526)",
+   "rate_v": 7.08,
+   "slot_type": "CB",
+   "sort_order": 12
   }
  ],
  "transfer": {
@@ -10352,13 +10388,13 @@
     "source": "리버풀 아라우호 영입 보도의 병기 서술(리버풀 구단 공식 2026-08-11 · Sky · ESPN) ; LIV 스캔 회차 보고(2026-08-12) ; fotmob_detail_stats.league='Premier League'(25/26 기록은 리버풀 소속분)"
    },
    {
-    "confidence": "MEDIUM-HIGH — 이탈리아 1티어급 전담 기자의 구체 금액·단계 보도. ⚠️ **§2-0 함정 회피 기록**: 검색 상위의 Football365 'Jones accepts offer / green light' 기사는 **2026-01-31자**(지난 겨울 임대 무산 건, 당시 €40m 매입옵션 구조)다 — 다른 창의 기사이므로 혼동 금지.",
+    "confidence": "MEDIUM-HIGH — 이탈리아 1티어급 전담 기자의 구체 금액·단계 보도. ⚠️ **§2-0 함정 회피 기록**: 검색 상위의 Football365 'Jones accepts offer / green light' 기사는 **2026-01-31자**(지난 겨울 임대 무산 건, 당시 €40m 매입옵션 구조)다 — 다른 창의 기사이므로 혼동 금지. [2026-08-13] §2-0 통과: 존스 나이 25세 일치 · 병기 상황(기마랑이스→아스날, 프라테시 매물화) 현 창 정합 · 어제 회피한 2026-01-31자 Football365 \"Jones accepts offer\" 기사와 별건임을 재확인. ⚠️ HIGH이나 **오퍼 제출 0건**이고 선결 조건(프라테시 매각)이 미충족이다 — 단계는 \"협상 중\"까지다. ⚠️ 존스는 squad_entries FB 슬롯 보유 선수다.",
     "dest_club": "Inter",
     "last_news_date": "2026-08-12",
-    "likelihood": "MEDIUM-HIGH",
+    "likelihood": "HIGH",
     "name": "Curtis Jones",
     "name_kr": "커티스 존스",
-    "source": "Gianluca Di Marzio via sports.yahoo.com/articles/liverpool-stand-firm-30m-demand-075500528.html ; goal.com/en-us/lists/inter-milan-curtis-jones-30m-offer-liverpool-transfer ; 리드 TransferFeed liverpool/8 (Di Marzio, 3h)"
+    "source": "Gianluca Di Marzio via sports.yahoo.com/articles/liverpool-stand-firm-30m-demand-075500528.html ; goal.com/en-us/lists/inter-milan-curtis-jones-30m-offer-liverpool-transfer ; 리드 TransferFeed liverpool/8 (Di Marzio, 3h) ; Fabrizio Romano(1티어) 2026-08-12 경유 https://www.teamtalk.com/liverpool/growing-feeling-liverpool-transfer-curtis-jones-inter-milan-30m-fabrizio-romano"
    },
    {
     "confidence": "MEDIUM — 1티어가 '대리인 접촉'까지 보도했으나 입찰·협상은 0건이고 리버풀은 매각 계획 부인. ⚠️ 원기사 2건 모두 **정확한 발행일 미표기**(2026년 8월로만 확인) — §2-0 기준 발행일 부분 확정. ⚠️ 어제는 footballinsider247(3티어) 단독이라 미등재했는데 오늘 1티어 근거가 확보됐다.",
@@ -10387,7 +10423,7 @@
     "fit_focus": "Build-Up",
     "fit_role": "w_wideplm",
     "fit_sim": 0.906,
-    "last_news_date": "2026-08-10",
+    "last_news_date": "2026-08-12",
     "likelihood": "HIGH",
     "map25": "46211X5111411013100110000",
     "name": "Bradley Barcola",
@@ -10418,7 +10454,7 @@
     "sample_n": 16,
     "short_label": "음바예",
     "slot": "RM",
-    "source": "Fabrizio Romano 발언 (2026-08-06) via teamtalk.com/liverpool/ibrahim-mbaye-bradley-barcola-liverpool-psg-fabrizio-romano-latest ; Sky Sports 병기 확인 ; 리드 Fotmob teamIds=8650 (08-07 TEAMtalk)"
+    "source": "Fabrizio Romano 발언 (2026-08-06) via teamtalk.com/liverpool/ibrahim-mbaye-bradley-barcola-liverpool-psg-fabrizio-romano-latest ; Sky Sports 병기 확인 ; 리드 Fotmob teamIds=8650 (08-07 TEAMtalk) ; Sky Sports(1티어) 2026-08-06 https://www.skysports.com/football/news/11669/13569955/ibrahim-mbaye-liverpool-explore-deal-for-paris-saint-germain-winger"
    },
    {
     "avg_rating": 7.15,

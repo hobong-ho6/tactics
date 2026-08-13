@@ -6043,6 +6043,58 @@
     "Club Friendly Games"
    ]
   ],
+  "차바리아": [
+   [
+    "2026-04-16",
+    6.1,
+    "UEFA Conference League"
+   ],
+   [
+    "2026-04-23",
+    7.3,
+    "LaLiga"
+   ],
+   [
+    "2026-04-26",
+    6.0,
+    "LaLiga"
+   ],
+   [
+    "2026-04-30",
+    6.9,
+    "UEFA Conference League"
+   ],
+   [
+    "2026-05-03",
+    6.6,
+    "LaLiga"
+   ],
+   [
+    "2026-05-07",
+    7.2,
+    "UEFA Conference League"
+   ],
+   [
+    "2026-05-11",
+    6.3,
+    "LaLiga"
+   ],
+   [
+    "2026-05-14",
+    6.5,
+    "LaLiga"
+   ],
+   [
+    "2026-05-17",
+    7.2,
+    "LaLiga"
+   ],
+   [
+    "2026-05-27",
+    6.9,
+    "UEFA Conference League"
+   ]
+  ],
   "콜 파머": [
    [
     "2026-04-04",
@@ -7216,6 +7268,18 @@
    "tk_pg": 0.53,
    "xa_pg": 0.104,
    "xg_pg": 0.306
+  },
+  {
+   "avg_rating": 6.8,
+   "dw_pg": 3.02,
+   "ic_pg": 0.76,
+   "kp_pg": 0.62,
+   "label": "차바리아",
+   "minutes": 3519,
+   "n": 55,
+   "tk_pg": 1.33,
+   "xa_pg": 0.089,
+   "xg_pg": 0.047
   }
  ],
  "prescriptions": [
@@ -9424,6 +9488,38 @@
     "starts": null
    }
   ],
+  "차바리아": [
+   {
+    "assists": 2,
+    "avg_rating": 6.8,
+    "competition": "LaLiga",
+    "goals": 1,
+    "minutes": 2681,
+    "n": 37,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 1,
+    "avg_rating": 6.88,
+    "competition": "UEFA Conference League",
+    "goals": 0,
+    "minutes": 720,
+    "n": 14,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.5,
+    "competition": "Copa del Rey",
+    "goals": 0,
+    "minutes": 118,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   }
+  ],
   "콜 파머": [
    {
     "assists": 0,
@@ -9932,6 +10028,24 @@
    "sort_order": 5
   },
   {
+   "fit_focus": "Support",
+   "fit_role": "fb_att_wb",
+   "fit_sim": 0.89,
+   "grid_caveat": "⚠️ 첼시 공식전 0경기 — 그리드 전량이 **라요 바예카노 시절**(25/26 45분+ 39경기)이다. 적합값은 \"라요에서 하던 일\"의 적합이며 알론소 전술에서 같은 위치를 쓴다는 근거가 아니다(obs#157·#158). ⭐ 같은 선수가 팀을 옮기자 좌우 위치가 17~18단위 움직인 사례가 둘 있다(베일리·게상, obs#158). ⚠️ 알론소 체제는 공식전 0경기다(첫 경기 8/24 풀럼). ⚠️ 포지션은 **하토의 백업·경쟁**이며 주전 결손 보강이 아니다.",
+   "grid_club": "Rayo Vallecano (25/26)",
+   "label": "차바리아(합류확정)",
+   "lh": "CONFIRMED",
+   "map25": "510009210093100X510053100",
+   "name_en": "Pep Chavarría",
+   "name_kr": "차바리아",
+   "player_id": 80,
+   "rate_basis": "full2526",
+   "rate_note": "LB 39경기 평균 6.80 (measured:season:full2526)",
+   "rate_v": 6.8,
+   "slot_type": "FB",
+   "sort_order": 5
+  },
+  {
    "fit_focus": "Roaming",
    "fit_role": "dm_dlp",
    "fit_sim": 0.901,
@@ -10089,9 +10203,18 @@
     "source": "Como 구단 공식 발표 (2026-08-10) ; CHE 스캔 회차 보고 ; fotmob_detail_stats.league 확인(25/26 기록은 첼시 소속분)"
    },
    {
+    "confidence": "MEDIUM-HIGH — 1티어 2곳이 접촉·시한 통보를 보도하나 **오퍼 0건**이라 HIGH(협상/합의 단계) 미달. §2-0 발행일 검증 통과: 마레스카=맨시티 감독(구단 공식 2026-06-29, 과르디올라 5월 사임 후임) · 엘리엇 앤더슨 £116m 포레스트→시티 완료 · 베르나르두 실바 레알행 · 로드리↔바르셀로나 진행 · 부아디(릴) 병행 협상 — 병기 상황 전건 현 창 정합. ⚠️ 08-14 17:00 이후 등급이 반드시 갈리므로 **금요일 회차에서 재판정 필수**. ⚠️ 엔소는 squad_entries WM 슬롯 보유 선수라 성사 시 첼시 XI에 직접 영향.",
+    "dest_club": "Manchester City",
+    "last_news_date": "2026-08-12",
+    "likelihood": "MEDIUM-HIGH",
+    "name": "Enzo Fernández",
+    "name_kr": "엔소 페르난데스",
+    "source": "Sky Sports(1티어) 2026-08-12 https://www.skysports.com/football/news/11095/13572395/enzo-fernandez-transfer-news-chelsea-set-man-city-deadline-to-bid-for-midfielder ; Fabrizio Romano(1티어) 2026-08-12 ; Sky 매각 총정리 https://www.skysports.com/football/news/11668/13572382/chelsea-transfer-news-enzo-fernandez-nicolas-jackson-malo-gusto-and-more-in-spotlight-as-blues-look-to-player-sales"
+   },
+   {
     "confidence": "MEDIUM-HIGH — 1티어 접촉 보도. **오퍼 0건**이고 사비뉴 선결 조건이 걸려 있어 HIGH 아님.",
     "dest_club": "Manchester City",
-    "last_news_date": "2026-08-11",
+    "last_news_date": "2026-08-12",
     "likelihood": "MEDIUM-HIGH",
     "name": "Pedro Neto",
     "name_kr": "페드루 네투",
@@ -10118,8 +10241,8 @@
    {
     "confidence": "MEDIUM-HIGH — 1티어 협상 보도. 오퍼·합의 0건이라 HIGH 아님.",
     "dest_club": "SSC Napoli",
-    "last_news_date": "2026-08-11",
-    "likelihood": "MEDIUM-HIGH",
+    "last_news_date": "2026-08-12",
+    "likelihood": "HIGH",
     "name": "Benoît Badiashile",
     "name_kr": "바디아실",
     "source": "Fabrizio Romano ; TransferFeed chelsea/18 (2026-08-11) ; 리드 Fotmob teamIds=8455 (07-27 The Sun)"
@@ -10133,8 +10256,8 @@
     "fit_focus": "Support",
     "fit_role": "fb_att_wb",
     "fit_sim": 0.89,
-    "last_news_date": "2026-08-07",
-    "likelihood": "HIGH",
+    "last_news_date": "2026-08-12",
+    "likelihood": "CONFIRMED",
     "map25": "510009210093100X510053100",
     "name": "Pep Chavarría",
     "name_kr": "차바리아",
@@ -10144,7 +10267,7 @@
     "sample_n": 39,
     "short_label": "차바리아",
     "slot": "LB",
-    "source": "Fabrizio Romano 원트윗 status 2085475147692061073 (2026-08-06 22:16, \"here we go\") + status 2085617184093446637 (08-07 메디컬) ; Sky Sports Kaveh Solhekol (2026-08-05) ; The Athletic (08-05) ; 리드 Fotmob teamIds=8455"
+    "source": "Fabrizio Romano 원트윗 status 2085475147692061073 (2026-08-06 22:16, \"here we go\") + status 2085617184093446637 (08-07 메디컬) ; Sky Sports Kaveh Solhekol (2026-08-05) ; The Athletic (08-05) ; 리드 Fotmob teamIds=8455 ; https://www.chelseafc.com/en/news/article/pep-chavarria-signs-for-chelsea (구단 공식)"
    }
   ]
  }

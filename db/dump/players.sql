@@ -74,10 +74,12 @@ INSERT INTO players VALUES(76,'Nicolas Jackson','잭슨',1085381,NULL,NULL,'ST',
 INSERT INTO players VALUES(77,'Allan','아우안',1835889,NULL,NULL,'RW','transfer_targets 2026-summer AVL 후보(팔메이라스) — 평가·듀티 기록용 등재 (2026-08-11)',1721789);
 INSERT INTO players VALUES(78,'Matteo Ruggeri','마테오 루헤리',965011,NULL,NULL,'LB','transfer_targets 2026-summer AVL 후보(아틀레티코) — 평가·듀티 기록용 등재 (2026-08-11)',1051097);
 INSERT INTO players VALUES(79,'Endrick','엔드릭',1174937,NULL,NULL,'RW','transfer_targets 2026-summer AVL 후보 — 2026-08-11 등재(Romano 08-10). 실측은 obs#135(리옹 임대 20경기)',NULL);
-INSERT INTO players VALUES(80,'Pep Chavarría','차바리아',1010421,NULL,NULL,'LB','transfer_targets 2026-summer CHE 후보 — 2026-08-12 실측용 등재',NULL);
+INSERT INTO players VALUES(80,'Pep Chavarría','차바리아',1010421,NULL,NULL,'LB','transfer_targets 2026-summer CHE 후보 — 2026-08-12 실측용 등재 | 2026-08-12 첼시 이적 구단 공식(2031년까지). €19m 고정 + €2m 애드온. 쿠쿠렐라(→레알) 대체이자 하토의 좌측백 경쟁·백업.',NULL);
 INSERT INTO players VALUES(81,'Bradley Barcola','바르콜라',996952,NULL,NULL,'LW','transfer_targets 2026-summer LIV 후보 — 2026-08-12 실측용 등재',NULL);
 INSERT INTO players VALUES(82,'Mykhaylo Mudryk','무드리크',NULL,NULL,NULL,'LW','transfer_outgoing 2026-summer CHE — 2026-08-12 등재',NULL);
 INSERT INTO players VALUES(83,'Filip Jørgensen','요르겐센',NULL,NULL,NULL,'GK','transfer_outgoing 2026-summer CHE — 2026-08-12 등재',NULL);
 INSERT INTO players VALUES(84,'Benoît Badiashile','바디아실',NULL,NULL,NULL,'CB','transfer_outgoing 2026-summer CHE — 2026-08-12 등재',NULL);
 INSERT INTO players VALUES(85,'Ronald Araújo','아라우호',925097,NULL,NULL,'CB','2026-08-11 바르셀로나에서 리버풀 임대(26/27 시즌). 등번호 33.',NULL);
 INSERT INTO players VALUES(86,'Ibrahim Mbaye','음바예',1590918,NULL,NULL,'RW','transfer_targets 2026-summer LIV 후보 — 2026-08-12 등재',NULL);
+INSERT INTO players VALUES(88,'Víctor Muñoz','무뇨스',1145642,NULL,NULL,'W','2026-06-18 오사수나에서 리버풀 이적(구단 공식). 바이아웃 €40m(£34.5m) 전액 지급, 장기 계약. 이라올라 체제 1호 영입이며 뉴캐슬을 가로챈 건. 22세 스페인 대표(월드컵 우승 멤버). 양 측면 모두 소화.',NULL);
+INSERT INTO players VALUES(89,'Jérémy Jacquet','자케',1445625,NULL,NULL,'CB','2026-07-01 렌에서 리버풀 이적(구단 공식). 고정 £55m + 애드온 £5m(총 £60m), 5년(+1년 옵션). 합의는 2026-01 데드라인 데이 메디컬까지 갔고 25/26 잔여 시즌은 렌 잔류 조건이었다. 20세. 코나테(→레알 자유이적) 대체 = 판 다이크 파트너로 규정된다.',NULL);
