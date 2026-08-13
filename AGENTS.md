@@ -46,7 +46,7 @@ Codex에서는 슬래시 명령 대신 그 파일을 읽고 실행한다.
 | 작업 | 런북 | Codex에서 달라지는 점 |
 |---|---|---|
 | 이적 감시 | [.claude/skills/transfer-watch/SKILL.md](.claude/skills/transfer-watch/SKILL.md) | §0의 **서브에이전트 3개 병렬**은 Codex에 대응물이 없다 → 순차 수행하거나 3회로 나눠 실행. §1 Fotmob은 위 스크립트로. |
-| 경기 실측 | [.claude/skills/match-watch/SKILL.md](.claude/skills/match-watch/SKILL.md) | §3 수집을 `collect_sofascore.py`로. |
+| 경기 실측·심층 리포트 | [.claude/skills/match-watch/SKILL.md](.claude/skills/match-watch/SKILL.md) | §2 수집을 `collect_sofascore.py`로. 완료본은 전술·선수 분석과 히트맵 메뉴 공개까지 포함. |
 
 ⚠️ **스킬 본문이 "메인 세션이 브라우저로"라고 쓴 부분은 Codex에서 스크립트로 읽는다** —
 판정·DB 쓰기·리포트·커밋의 책임 분담은 그대로다.

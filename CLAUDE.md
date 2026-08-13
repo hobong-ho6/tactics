@@ -41,6 +41,8 @@
 ## 작업 완료 기준 (data 작업의 DoD)
 
 - 새 사실은 `player_matches`/해당 테이블에 `source`·`confidence`를 채워 기록했다.
+- 새 경기 수집은 `match_reports`·`match_player_reports`와 `reports/match-watch/` 원문까지 작성해
+  출전 선수 전원·전술 변화·게임 구현 판단을 닫았다(G12).
 - 파생 결론은 `prescriptions`(정형 필드: fit_sim/sample_n/avg_rating 컬럼)에 기록했다 —
   값을 rationale 산문에 묻지 않는다.
 - 불변규칙 5의 고정 절차(export → dump → 커밋)를 실행했다.

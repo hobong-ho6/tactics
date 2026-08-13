@@ -9,7 +9,7 @@
 SofaScore(브라우저 오리진 수집) ─┐
 sofifa / EA 피치노트 ────────────┤→  db/tactics.db  →  scripts/export.py  →  site/data/*.json  →  site/*.html
 transfer-watch(스킬) ────────────┘        ↑                (게이트 통과 필수)
-                                   scripts/gates.py = 정본성 보증 (G1~G11)
+                                   scripts/gates.py = 정본성 보증 (G1~G12)
 ```
 
 ## 레이어 (db/migrations/001-schema.sql이 스키마 정본)
@@ -18,6 +18,7 @@ transfer-watch(스킬) ────────────┘        ↑       
 |---|---|---|
 | 축 | game_versions · regimes(감독·팀 페어) · teams · players(sofascore/sofifa id 컬럼) · seasons | 1급 엔티티 |
 | 실세계(사실) | matches · **player_matches**(구 appearances+grids+positions 통합) · team_match_stats | team_code+date로 자명 |
+| 경기 해석 | **match_reports** · **match_player_reports** · reports/match-watch 원문 | event_id+team_code로 사실층과 연결 |
 | 지식 | observations(obs# 전역 연속) · manager_profiles(11축) · player_duties | 관찰·판단 기록 |
 | 게임(버전별) | game_roles/…focus(커널 85)/…variants(변형 217) · player_game_stats(로스터 스냅샷) · **game_system_changes**(FIFA→FC 변천) | 버전 추가 = 행 추가 |
 | 매핑(판단) | slots(regime 기하) · prescriptions(정형 필드: fit_sim/sample_n/avg_rating) · squad_entries(player_id FK) · team_tactic_setups | regime_id 명시 |
@@ -31,7 +32,8 @@ G1 커널 정합 37/85/217 · G2 인코딩 회귀(전 그리드 cells→map25) �
 G5 JS 커널 동치(site/assets/kernel.js ↔ core/kernel.py, node) · G6 DB FK 정합 ·
 G7 appearances 병합 앵커 · G8 공통 슬롯 후보 풀(중복·도달불가·이적누락 0) ·
 G9 프리뷰 최신성(no-store 서버 + JSON 캐시 우회) · G10 영상 레퍼런스(source 결손 0 + 기본 닫힘 UI) ·
-G11 현재 스쿼드 표시(확정 이탈·이적 후보·DEAD 숨김).
+G11 현재 스쿼드 표시(확정 이탈·이적 후보·DEAD 숨김) ·
+G12 경기 리포트(완료본 필수 섹션·수집 선수 전원·원문 파일·히트맵 메뉴 연결).
 
 ## 핵심 규약 (v1 교훈의 성문화 — 위반이 실제 사고를 냈던 것들)
 
@@ -56,7 +58,7 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 |---|---|---|
 | 실측 수집 | `core.sofascore.js_collect()` → 브라우저 → `parse_collected()` | sofascore.com 오리진 필수 |
 | 익스포트 | `python3 scripts/export.py` | 게이트 통과 후 site/data 재생성 + 프리뷰 미러 |
-| 게이트 | `python3 scripts/gates.py` | G1~G11 |
+| 게이트 | `python3 scripts/gates.py` | G1~G12 |
 | v1 재흡수 | `python3 scripts/migrate_v1.py` | ⚠️ 컷오버 완료 — 재실행하면 v2 신규분이 날아간다. 사용 금지(아카이브 참조용) |
 | 이적 감시 | transfer-watch 스킬 (매일 09/21시) | 3팀 루프 — v2에 기록 (2026-08-11 컷오버 완료) |
 

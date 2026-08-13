@@ -4,7 +4,7 @@
   site/data/index.json          — 팀·regime·버전 메타 (허브/네비가 로드)
   site/data/kernels/{GV}.json   — 역할·포커스·위치변형·팀전술 파라미터 (버전당 1파일)
   site/data/teams/{CODE}.json   — regime 자산 전체: slots / slot_candidates / squad / prescriptions /
-                                  transfer{targets,outgoing,ledger} / setups / profile
+                                  match_reports / transfer{targets,outgoing,ledger} / setups / profile
 
 원칙:
   · 값은 DB 컬럼의 1:1 사상 — 여기서 가공하지 않는다 (가공은 분석 단계의 일)
@@ -187,6 +187,43 @@ def export_all(db_path=None, window="2026-summer"):
               ORDER BY m.date""", (rid, rid)):
             form.setdefault(r["label"], []).append([r["date"], r["rating"], r["competition"]])
         form = {k: v[-10:] for k, v in form.items()}   # 최근 10경기
+        # 경기별 리포트 — 해석은 match_reports/match_player_reports, 원천 수치는
+        # matches/player_matches/team_match_stats에서 같은 event_id로 묶는다.
+        match_reports = _rows(con, """
+            SELECT mr.id, mr.event_id, mr.match_id, mr.season, mr.report_date, mr.title,
+                   mr.status, mr.tactical_description, mr.tactical_features,
+                   mr.tactical_changes, mr.game_implications, mr.report_path,
+                   mr.source, mr.confidence, mr.created_at, mr.updated_at,
+                   m.date, m.opponent, m.competition, m.venue, m.result, m.stage,
+                   m.possession, ts.xg_v, ts.xg_o, ts.shots_v, ts.shots_o,
+                   ts.sot_v, ts.sot_o, ts.bigch_v, ts.bigch_o, ts.passes_v,
+                   ts.passes_o, ts.duelpct_v, ts.formation_v, ts.formation_o
+            FROM match_reports mr
+            LEFT JOIN matches m ON m.id=mr.match_id
+            LEFT JOIN team_match_stats ts
+              ON ts.event_id=mr.event_id AND ts.team_code=mr.team_code
+            WHERE mr.team_code=?
+            ORDER BY COALESCE(m.date,mr.report_date) DESC, mr.id DESC""", (code,))
+        for report in match_reports:
+            report["players"] = _rows(con, """
+                SELECT mpr.player_id, COALESCE(p.name_kr,p.name) label, p.name name_en,
+                       mpr.position, mpr.tactical_role, mpr.characteristics,
+                       mpr.performance, mpr.game_implication, mpr.source, mpr.confidence,
+                       pm.minutes, pm.rating, pm.started, pm.lineup_pos, pm.pos_class,
+                       pm.avg_x, pm.avg_y, pm.hit_points, pm.map25, pm.xg, pm.xa,
+                       pm.key_passes, pm.duels_won, pm.duels_lost, pm.tackles,
+                       pm.interceptions, pm.goals, pm.assists, pm.touches,
+                       pm.recoveries, pm.stats_json
+                FROM match_player_reports mpr
+                JOIN players p ON p.id=mpr.player_id
+                LEFT JOIN player_matches pm
+                  ON pm.player_id=mpr.player_id AND pm.event_id=?
+                WHERE mpr.report_id=?
+                ORDER BY COALESCE(pm.lineup_order,99), p.id""",
+                (report["event_id"], report["id"]))
+            report_file = ROOT / report["report_path"]
+            report["report_markdown"] = (
+                report_file.read_text(encoding="utf-8") if report_file.is_file() else None)
         departed = [r["label"] for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label
             FROM transfer_outgoing o JOIN players p ON p.id=o.player_id
             WHERE o.team_code=? AND o.likelihood='CONFIRMED'""", (code,))]
@@ -195,6 +232,7 @@ def export_all(db_path=None, window="2026-summer"):
             "slot_candidates": slot_candidates,
             "squad": squad, "prescriptions": prescriptions,
             "duties": duties, "player_stats": pstats, "departed": departed, "form": form,
+            "match_reports": match_reports,
             "evaluations": evals, "season_stats": season_stats, "fbref": fbref,
             "fotmob_season": fm_season,
             "setups": setups, "profile": profile,

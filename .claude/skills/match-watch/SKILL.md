@@ -1,11 +1,11 @@
 ---
 name: match-watch
-description: 시즌 중 주간 경기 데이터 수집 — 3팀(AVL·CHE·LIV) 라운드별 선수 실측(히트맵·스탯·평균위치)과 팀 스탯을 v2 DB에 적재하고 집계·적합을 갱신. 매주 또는 경기 다음날 /match-watch로 실행. 슈퍼컵·컵대회 포함.
+description: 시즌 중 정기 경기 수집 — 3팀(AVL·CHE·LIV)의 선수 실측·팀 스탯을 적재하고, 경기별 전술·선수 심층 리포트와 FC 구현 판단까지 발행. 매주 또는 경기 다음날 /match-watch로 실행. 슈퍼컵·컵대회 포함.
 ---
 
 # 주간 경기 수집 파이프라인 (v2 · 3팀)
 
-작업 디렉터리: `/Users/ad03230205/Documents/tactics`. DB `db/tactics.db`. 규칙: CLAUDE.md·docs/00.
+작업 디렉터리: 저장소 루트(PC마다 절대경로가 다름). DB `db/tactics.db`. 규칙: CLAUDE.md·docs/00.
 
 ## 0. 선행 게이트
 `python3 scripts/gates.py` 통과 확인. 실패 시 수집 중단하고 원인부터.
@@ -17,8 +17,10 @@ description: 시즌 중 주간 경기 데이터 수집 — 3팀(AVL·CHE·LIV) �
   `SELECT DISTINCT event_id FROM player_matches WHERE event_id IN (...)`.
 
 ## 2. 선수 실측 수집
-- 라인업 API로 45분+ 출전자 목록 → `core.sofascore.js_collect()` 스니펫으로 일괄 수집
+- 라인업 API로 **출전 선수 전원** → `core.sofascore.js_collect()` 스니펫으로 일괄 수집
   → `parse_collected()` → `player_matches` INSERT (source·confidence 필수).
+- 45분 미만 교체 출전도 스탯·역할 리포트에는 포함한다. 단 대표 히트맵·시즌 처방 집계는 기존 기준
+  (**45분+ · hit_points 15+**)을 통과한 행만 쓴다. 짧은 표본을 0이나 결손으로 바꾸지 않는다.
 - 신입 선수는 `players`에 승격(sofascore_id 컬럼) 후 적재.
 - ⭐ **신규 선수는 영상·서사 분석 필수** (docs/30 「영상·서사 소스 절차」): 스카우트 리포트
   수집 → player_duties 가설 기록 → 실측 교차검증 → obs 판정. CHE/LIV 포함 전 팀 공통.
@@ -46,6 +48,27 @@ description: 시즌 중 주간 경기 데이터 수집 — 3팀(AVL·CHE·LIV) �
   게임 설정 함의가 나오면 `team_tactic_setups`·처방에 반영(단 **커널 Δ 산출 전 처방 변경 금지**).
 - ⚠️ **위치 주장은 실측이 이긴다.** 서사가 실측과 어긋나면 충돌을 기록하고 실측을 채택한다.
 
+## 2-2. ⭐ 경기별 심층 리포트 — 매 경기 의무
+
+수집한 경기마다 [`reports/match-watch/TEMPLATE.md`](../../../reports/match-watch/TEMPLATE.md)를 복사해
+`reports/match-watch/YYYY-MM-DD-TEAM-opponent.md`를 만들고, 같은 내용을
+`match_reports` + `match_player_reports`에 구조화한다. **리포트가 없으면 그 경기 수집은 미완료다.**
+
+필수 섹션:
+1. 경기 개요·원천 수치 — 포메이션, 점유율, 슈팅/xG/빅찬스/패스, 득점 국면, 수집 한계.
+2. 전술 설명 — 점유/비점유 구조, 빌드업, 압박, rest-defense, 전환, 세트피스.
+3. 전술적 특성 — 반복 패턴·강점·취약점과 상대 전술이 만든 교란을 분리.
+4. 경기 중 변화 — 스코어 국면·교체·포메이션/역할 변화와 그 전후 효과.
+5. **출전 선수 전원** — 위치, 실제 역할, 특성, 분/평점/핵심 스탯, 평균 위치·히트맵,
+   잘된 점·제약, FC 역할/포커스 함의. 미수집 값은 `미수집`으로 쓰며 0으로 만들지 않는다.
+6. 전술 변화 판정 — 기존 `manager_profiles`·직전 경기와 무엇이 유지/변경됐는지.
+7. 게임 구현 판정 — `유지 / 추가 관찰 / 시험 프리셋 / 정본 변경` 중 하나를 명시한다.
+   단일 경기·커널 Δ≤.05는 정본 처방 변경 근거로 쓰지 않는다.
+8. 레퍼런스·한계 — SofaScore 엔드포인트, 영상/전술 글/기사/감독 발언 URL과 미수행 사유.
+
+`match_reports.status='complete'`는 위 필수 섹션과 수집 선수 전원의 `match_player_reports`가 모두 있을 때만 쓴다.
+초안은 `draft`로 두며 히트맵 메뉴에는 완료본만 노출한다. G12가 누락·원문 경로·UI 연결을 검사한다.
+
 ## 3. 팀 스탯
 `/api/v1/event/<eid>/statistics` → `team_match_stats` + `matches` 행 추가.
 CHE·LIV는 이것이 알론소·이라올라 **체제 첫 실측**이다 — 25/26 데이터와 섞지 말 것(규칙 7).
@@ -54,11 +77,13 @@ CHE·LIV는 이것이 알론소·이라올라 **체제 첫 실측**이다 — 25
 - 표본이 2경기 이상 쌓인 선수는 `core.aggregate.player_aggregate`(포지션-순수)로
   `prescriptions` kind='measured'(26/27 시즌 행 — 25/26 행을 덮지 않는다, 추가만) 갱신.
 - 적합은 `core.kernel.Kernel('FC26').best_fit_slot()`. 노이즈 구간(Δ≤.05)은 인선 변경 금지.
+- 경기별 판정을 직전 완료 리포트와 비교해 `유지/변화`를 적는다. 같은 변화가 누적되면 observation으로
+  승격하고, 실제 처방 변경은 표본·서사·커널 적합이 함께 지지할 때만 한다.
 
 ## 5. 완료 절차 (매 실행)
 `python3 scripts/export.py` → `scripts/db_dump.sh` →
-`git add db/tactics.db db/dump/ site/data/ && git commit -m "data(match-watch): <라운드 요약>" && git push`
-종료 보고: 팀별 수집 경기 수 / 신규 선수 / 집계 갱신 행 / 게이트 상태.
+`git add db/tactics.db db/dump/ site/data/ reports/match-watch/ && git commit -m "data(match-watch): <라운드 요약>" && git push`
+종료 보고: 팀별 수집 경기 수 / 신규 선수 / 완료 리포트 / 집계·처방 변경 행 / G1~G12 상태.
 
 ## 특별 회차
 - **2026-08-12 슈퍼컵(AVL)**: 시즌 첫 실측 — obs#134~136(우측 와이드 선발) 검증을 §2와 함께 수행,

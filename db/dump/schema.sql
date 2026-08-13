@@ -474,3 +474,36 @@ WHERE tt.map25 IS NOT NULL
       AND se2.slot_type=sl.slot_type
   )
 /* v_slot_candidates(regime_id,team_code,formation,pos,slot_type,player_id,label,name_en,name_kr,source_kind,status,map25,rating,rate_basis,rate_note,fit_role,fit_focus,fit_sim,source,confidence,sort_order,grid_club,grid_caveat) */;
+CREATE TABLE match_reports(
+  id INTEGER PRIMARY KEY,
+  event_id INTEGER NOT NULL,
+  match_id INTEGER REFERENCES matches(id),
+  regime_id INTEGER NOT NULL REFERENCES regimes(id),
+  team_code TEXT NOT NULL REFERENCES teams(code),
+  season TEXT REFERENCES seasons(code),
+  report_date TEXT NOT NULL,
+  title TEXT NOT NULL,
+  status TEXT NOT NULL DEFAULT 'draft' CHECK(status IN ('draft','complete')),
+  tactical_description TEXT NOT NULL,
+  tactical_features TEXT NOT NULL,
+  tactical_changes TEXT NOT NULL,
+  game_implications TEXT NOT NULL,
+  report_path TEXT NOT NULL,
+  source TEXT NOT NULL,
+  confidence TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL,
+  UNIQUE(team_code,event_id)
+);
+CREATE TABLE match_player_reports(
+  report_id INTEGER NOT NULL REFERENCES match_reports(id) ON DELETE CASCADE,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  position TEXT NOT NULL,
+  tactical_role TEXT NOT NULL,
+  characteristics TEXT NOT NULL,
+  performance TEXT NOT NULL,
+  game_implication TEXT NOT NULL,
+  source TEXT NOT NULL,
+  confidence TEXT NOT NULL,
+  PRIMARY KEY(report_id,player_id)
+);

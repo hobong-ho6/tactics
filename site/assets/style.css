@@ -69,3 +69,33 @@ details.refs li{margin:0 0 6px;color:var(--dim);line-height:1.45}
 details.refs a{overflow-wrap:anywhere}
 .ref-jump{font-size:11px;white-space:nowrap}
 .ref-missing{display:inline-block;color:var(--warn);white-space:nowrap}
+
+/* 경기별 심층 리포트 — 히트맵 화면 안에서 전술→선수→원문 순으로 파고든다 */
+.match-report-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-top:10px}
+.match-report-head h3{margin:0;font-size:17px}.match-report-head p{margin:2px 0 0}
+.report-metrics{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.report-metrics span{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:8px;padding:5px 9px}
+.report-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.report-grid section{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.report-grid h3{color:var(--acc);font-size:13px;margin:0 0 5px}
+.report-grid p,.report-grid ul,.report-grid ol{margin:0;padding-left:18px}
+.report-grid p{padding-left:0}
+details.match-players,details.report-source{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+details.match-players>summary,details.report-source>summary{color:var(--acc);cursor:pointer;font-weight:700}
+.player-report-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+.player-report{border:1px solid var(--line);border-radius:9px;padding:8px 10px;background:rgba(0,0,0,.1)}
+.player-report summary{cursor:pointer}.player-report summary .dim{float:right;margin-left:8px}
+.player-report-body{display:grid;grid-template-columns:76px 1fr;gap:12px;margin-top:10px}
+.player-report-body p{margin:0 0 6px}
+.mini-map{display:grid;grid-template-columns:repeat(5,13px);grid-template-rows:repeat(5,13px);gap:2px;
+  align-self:start;padding:4px;border-radius:6px;background:#0a1118}
+.mini-map i{display:block;border-radius:2px;background:rgba(255,138,61,calc(.08 + var(--heat) * .92))}
+.statline{display:flex;gap:6px;flex-wrap:wrap;margin:7px 0}
+.statline span{border:1px solid var(--line);border-radius:6px;padding:2px 6px;white-space:nowrap}
+.statline small{margin-right:2px}
+.report-source pre{max-height:520px;overflow:auto;white-space:pre-wrap;word-break:break-word;
+  background:#090d13;border:1px solid var(--line);border-radius:8px;padding:12px;color:var(--dim)}
+@media(max-width:900px){
+  .report-grid,.player-report-list{grid-template-columns:1fr}
+  .player-report-body{grid-template-columns:68px 1fr}
+}

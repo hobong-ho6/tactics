@@ -228,3 +228,15 @@ AVL·CHE·LIV 공통.
 - 선수 → `player_duties`(duties/execution/adherence/game_role_implication)
 - 감독 → `manager_profiles`(11축) + `game_implication`이 있으면 `team_tactic_setups`·처방에 반영
 - 판정·충돌 → `observations`
+- 경기 완료본 → `match_reports`(전술 설명·특성·변화·게임 함의) +
+  `match_player_reports`(출전 선수별 실제 역할·특성·평가·게임 함의) + `reports/match-watch/*.md` 원문.
+  히트맵 메뉴는 이 구조화 데이터와 원천 `player_matches`를 event_id로 결합해 보여준다.
+
+### 경기 리포트 완료 기준
+
+- 출전 선수 전원의 스탯·역할 분석을 기록한다. 45분 미만 행도 리포트에는 포함하지만 대표 그리드 집계에는
+  넣지 않는다(45분+·히트포인트 15+ 기준 유지).
+- `tactical_description/features/changes/game_implications`와 원문 경로·source·confidence가 모두 있어야
+  `status='complete'`다. 하나라도 비면 `draft`이며 공개 메뉴에서 숨긴다.
+- 매 경기 결론은 **유지 / 추가 관찰 / 시험 프리셋 / 정본 변경**으로 닫는다. 단일 경기만으로
+  `prescriptions`나 `slot_canon_roles`를 바꾸지 않는다.
