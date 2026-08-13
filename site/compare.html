@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css"></head><body>
 <div id="hdr"></div>
-<h1>선수 비교 · 영입 적합성 <small class="dim">후보 풀 = 스쿼드 실측 + 이적 후보(DEAD 제외) — DB가 단일 소스</small></h1>
+<h1>선수 비교 <small class="dim">후보 풀 = 현재 잔류 스쿼드 실측 — 확정 이탈·이적 루머 제외, DB 이력은 보존</small></h1>
 <div class="panel">
   <label class="kv">슬롯 <select id="slotSel"></select></label>
 </div>
@@ -19,10 +19,9 @@ const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loa
 const K = new Kernel(kd);
 const slots = td.slots.filter(s => s.formation === td.slots[0]?.formation);
 
-/* 후보 풀은 DB v_slot_candidates의 export만 사용한다.
-   squad + transfer를 여기서 다시 합치지 않아 CONFIRMED 승격 중복을 막는다. */
+/* 현재 스쿼드만 비교한다. 이적 후보와 확정 이탈은 DB에 보존하되 여기서는 숨긴다. */
 function pool(slot){
-  return slotCandidates(td, slot.pos).map(q => ({
+  return slotCandidates(td, slot.pos, { includeTransfers: false }).map(q => ({
     player_id: q.player_id, label: q.label, map25: q.map25, lh: q.status,
     rate: q.rating, note: q.rate_note, dbFit: q.fit_sim, sourceKind: q.source_kind
   }));

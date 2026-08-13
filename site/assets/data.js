@@ -21,9 +21,15 @@ export const loadGameStats = gv => j(`game_stats/${gv}.json`).catch(() => ({}));
 /* 화면 공통 슬롯 후보 풀 — DB v_slot_candidates의 1:1 export.
    페이지가 squad + transfer를 각자 합치면 CONFIRMED 승격 중복이 재발하므로
    선수 목록을 만드는 모든 화면은 이 함수만 사용한다. */
-export function slotCandidates(teamData, pos, { includeTransfers = true } = {}){
+const playerKey = value => String(value??'').normalize('NFC')
+  .replace(/^영입·/, '').replace(/\((합류확정|신규|보유)\)$/, '');
+
+export function slotCandidates(teamData, pos, { includeTransfers = true, includeDeparted = false } = {}){
+  const departed = new Set((teamData.departed || []).map(playerKey));
   const rows = (teamData.slot_candidates || []).filter(q =>
-    q.pos === pos && (includeTransfers || q.source_kind === 'squad'));
+    q.pos === pos
+    && (includeTransfers || q.source_kind === 'squad')
+    && (includeDeparted || !departed.has(playerKey(q.label))));
   const seen = new Set();
   return rows.filter(q => {
     const key = q.player_id != null ? `p:${q.player_id}` : `n:${q.name_en || q.label}`;

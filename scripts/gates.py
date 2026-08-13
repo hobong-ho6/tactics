@@ -18,6 +18,7 @@
   G8. 공통 후보 풀 — 슬롯 내 선수 중복 0, 도달 불가 squad 행 0, 활성 이적 실측 누락 0
   G9. 프리뷰 최신성 — 로컬 서버 no-store + JSON 요청 캐시 우회가 유지되는지 검사
   G10. 영상 레퍼런스 — duties 출처 결손 0 + 선수 화면의 기본 닫힘 details 유지
+  G11. 현재 스쿼드 표시 — 확정 이탈·이적 후보·DEAD가 현재 선수 화면에 재노출되지 않음
 
 사용: python3 scripts/gates.py          (전체)
       from scripts.gates import run    (프로그램 내 호출)
@@ -231,6 +232,36 @@ def run(db_path=None, verbose=True):
               f"{'✅' if ok10 else '⛔'}")
     if not ok10:
         fails.append("G10")
+
+    # G11 — 이력은 DB에 보존하되 현재 선수 화면과 이적 화면의 노출 범위를 분리한다.
+    visible_dup = con.execute("""
+        SELECT vc.regime_id,vc.pos,vc.player_id,COUNT(*)
+        FROM v_slot_candidates vc
+        WHERE vc.source_kind='squad'
+          AND NOT EXISTS (
+            SELECT 1 FROM transfer_outgoing o
+            WHERE o.team_code=vc.team_code AND o.player_id=vc.player_id
+              AND o.likelihood='CONFIRMED'
+          )
+        GROUP BY vc.regime_id,vc.pos,vc.player_id
+        HAVING COUNT(*)>1""").fetchall()
+    sancho_departed = con.execute("""
+        SELECT 1 FROM transfer_outgoing
+        WHERE team_code='AVL' AND player_id=15 AND likelihood='CONFIRMED'""").fetchone()
+    compare_html = (root / "site" / "compare.html").read_text()
+    transfer_html = (root / "site" / "transfer.html").read_text()
+    ok11 = (
+        not visible_dup and bool(sancho_departed)
+        and "includeTransfers: false" in compare_html
+        and "includeDeparted = false" in data_js
+        and "visible(T.targets)" in transfer_html
+        and "visible(T.outgoing)" in transfer_html
+    )
+    if verbose:
+        print(f"G11 현재 스쿼드 표시: 중복 {len(visible_dup)} · 산초 이탈 원장 "
+              f"{'있음' if sancho_departed else '없음'} · DEAD 숨김 {'✅' if ok11 else '⛔'}")
+    if not ok11:
+        fails.append("G11")
 
     con.close()
     if verbose:
