@@ -27,6 +27,7 @@
 """
 import sqlite3
 import sys
+import re
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -222,15 +223,51 @@ def run(db_path=None, verbose=True):
     missing_duty_sources = con.execute("""
         SELECT id FROM player_duties
         WHERE source IS NULL OR trim(source)=''""").fetchall()
+    missing_current_duties = con.execute("""
+        SELECT r.team_code,p.id
+        FROM squad_entries se
+        JOIN regimes r ON r.id=se.regime_id AND r.end IS NULL
+        JOIN players p ON p.id=se.player_id
+        LEFT JOIN player_duties pd ON pd.regime_id=r.id AND pd.player_id=p.id
+        WHERE NOT EXISTS (
+          SELECT 1 FROM transfer_outgoing o
+          WHERE o.team_code=r.team_code AND o.player_id=p.id AND o.likelihood='CONFIRMED'
+        )
+        GROUP BY r.team_code,p.id HAVING COUNT(pd.id)=0""").fetchall()
+    missing_duty_provenance = con.execute("""
+        SELECT id FROM player_duties
+        WHERE sample_scope IS NULL OR trim(sample_scope)=''
+           OR sample_note IS NULL OR trim(sample_note)=''""").fetchall()
+    current_source_rows = con.execute("""
+        SELECT r.team_code,p.id,group_concat(pd.source,' ')
+        FROM squad_entries se
+        JOIN regimes r ON r.id=se.regime_id AND r.end IS NULL
+        JOIN players p ON p.id=se.player_id
+        JOIN player_duties pd ON pd.regime_id=r.id AND pd.player_id=p.id
+        WHERE NOT EXISTS (
+          SELECT 1 FROM transfer_outgoing o
+          WHERE o.team_code=r.team_code AND o.player_id=p.id AND o.likelihood='CONFIRMED'
+        )
+        GROUP BY r.team_code,p.id""").fetchall()
+    ref_re = re.compile(
+        r"https?://|www\.|(?:[a-z0-9-]+\.)+[a-z]{2,}/|obs#\d+|reports/[\w./-]+\.md|"
+        r"SofaScore(?: API)? event\s+\d+", re.I)
+    current_without_reference = [row[:2] for row in current_source_rows if not ref_re.search(row[2] or '')]
     player_html = (root / "site" / "player.html").read_text()
     ok10 = (
         not missing_duty_sources
+        and not missing_current_duties
+        and not missing_duty_provenance
+        and not current_without_reference
         and '<details class="refs">' in player_html
         and 'references(d.source)' in player_html
+        and 'analysisWindow(d)' in player_html
         and '<details class="refs" open' not in player_html
     )
     if verbose:
-        print(f"G10 영상 레퍼런스: 출처 결손 {len(missing_duty_sources)} · 기본 닫힘 "
+        print(f"G10 영상 레퍼런스: 출처 결손 {len(missing_duty_sources)} · 현재 분석 누락 "
+              f"{len(missing_current_duties)} · 표본 메타 누락 {len(missing_duty_provenance)} · "
+              f"현재 클릭근거 누락 {len(current_without_reference)} · 기본 닫힘 "
               f"{'✅' if ok10 else '⛔'}")
     if not ok10:
         fails.append("G10")
@@ -293,12 +330,19 @@ def run(db_path=None, verbose=True):
           ON mpp.report_id=mr.id AND mpp.starter=1
         WHERE mr.status='complete'
         GROUP BY mr.id HAVING COUNT(mpp.player_id)!=11""").fetchall()
+    uncovered_match_prescriptions = con.execute("""
+        SELECT mr.id,pm.player_id
+        FROM match_reports mr
+        JOIN player_matches pm ON pm.event_id=mr.event_id AND pm.team_code=mr.team_code
+        LEFT JOIN match_player_prescriptions mpp
+          ON mpp.report_id=mr.id AND mpp.player_id=pm.player_id
+        WHERE mr.status='complete' AND pm.minutes>0 AND mpp.player_id IS NULL""").fetchall()
     heatmap_html = (root / "site" / "heatmap.html").read_text()
     match_report_html = (root / "site" / "match-report.html").read_text()
     export_py = (root / "core" / "export.py").read_text()
     ok12 = (
         not incomplete_reports and not uncovered_report_players and not missing_report_files
-        and not missing_match_presets
+        and not missing_match_presets and not uncovered_match_prescriptions
         and '대표 실측(시즌·유효 표본)' in heatmap_html
         and 'id="matchReportSel"' in match_report_html
         and 'id="teamStats"' in match_report_html
@@ -306,13 +350,16 @@ def run(db_path=None, verbose=True):
         and 'playerStats(p)' in match_report_html
         and 'MATCH ONLY' in match_report_html
         and 'renderGamePreset(r)' in match_report_html
+        and 'id="heatView"' in match_report_html
+        and 'id="presetView"' in match_report_html
+        and 'replaced_player_id' in match_report_html
         and "['match-report.html', '경기 분석']" in data_js
         and '"match_reports": match_reports' in export_py
     )
     if verbose:
         print(f"G12 경기 리포트: 불완전 {len(incomplete_reports)} · 선수누락 "
               f"{len(uncovered_report_players)} · 원문누락 {len(missing_report_files)} · "
-              f"경기프리셋누락 {len(missing_match_presets)} "
+              f"경기프리셋누락 {len(missing_match_presets)} · 선수처방누락 {len(uncovered_match_prescriptions)} "
               f"{'✅' if ok12 else '⛔'}")
     if not ok12:
         fails.append("G12")

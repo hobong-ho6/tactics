@@ -11,7 +11,11 @@
    "execution": "실측 6경기 평균 6.80, 중심(53.0,11.4). gk_goalkeeper/Defend 0.979 > 동 역할 Balanced 0.969 > gk_sweeper 0.821 — 스위퍼형이 아니다. 팟몹 백분위: 패스 정확도 79.0%(95)·롱볼 정확도 39.4%(85)·실책으로 인한 실점 0(100)으로 배급 정확도가 리그 최상위. 반대로 선방(18)·선방으로 막은 실점 -2.70(33)으로 슛 스토핑 부가가치는 마이너스이고, 스위퍼 행동 0.54/90(31)도 낮다. ⚠️ obs#152 — 같은 경기 준통제 비교에서 마마르다슈빌리가 알리송보다 7.2 깊게 선다. 이라올라가 하이라인을 쓰므로 골키퍼 교체가 곧 라인 리스크 변경이다.",
    "game_role_implication": "gk_goalkeeper/Defend 유지(0.979). obs#152대로 두 골키퍼를 같은 처방으로 묶지 말 것 — 라인 높이가 골키퍼에 종속된다. 배급 정확도 백분위 95는 이라올라의 다이렉트 지향(obs#66)에 필요한 롱볼 출발점을 제공한다. ⚠️ 이라올라 체제 공식전 0경기(첫 경기 8/23 뉴캐슬 원정).",
    "label": "알리송 베케르",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "GK",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/alisson-season-review-2025-2026/ · Liverpool FC 공식 이라올라 회견 — https://www.liverpoolfc.com/news/press-conference-andoni-iraola-transfer-window-alisson-szoboszlai-deal-and-vice-captaincy · Liverpool.com 회견 정리 — https://www.liverpool.com/liverpool-fc-news/andoni-iraola-lessons-liverpool-press-34330503"
   },
   {
@@ -21,7 +25,11 @@
    "execution": "실측 6경기 평균 7.15(리버풀 필드 최고), 중심(38.1,35.7). LCB cb_bpd/Aggressive 0.912 > CCB 0.789 — 백3 중앙이 아니라 좌측 센터백이다. 전방 0.10/자기진영 0.61. 팟몹 백분위(90분당): 경합 승률 73.5%(98)·공중 경합 승 4.58(94)·공중 승률 74.4%(93)·제쳐당함 0.053(94)로 '1v1에서 지지 않는다'가 정면 확인된다. 걷어내기 7.24(88)·정확한 롱볼 3.61(90)도 상위. 공격 서사도 확인된다 — 득점 6(98)·헤더 슛 0.605(89)·기대 득점 0.099(88). ⚠️ 결정적 반대 신호: 태클(6)·볼 회수(10)·인터셉트(18)는 리그 최하위권이다. 그는 능동 요격형이 아니라 위치선정·차단형이며, 이것이 하이라인 이식 우려의 실측 근거다.",
    "game_role_implication": "cb_bpd/Aggressive(LCB) 유지. ⚠️ 단 Aggressive(스텝업 요격) 포커스는 태클·인터셉트 백분위(6/18)와 긴장이 있다 — 이라올라가 CB에게 상대 박스까지 따라 올라가라고 지시하는 체계(obs#69)에서 이 프로필은 결손 지점이 될 수 있다. 이라올라 체제 표본 축적 후 포커스 재검토 후보로 기록.",
    "label": "판 다이크",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "LCB",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "Sofascore 25/26 수치 분석 — https://www.sofascore.com/news/van-dijk-still-owns-the-pitch-insane-defensive-numbers-in-25-26-season · Premier League 이라올라 분석 — https://www.premierleague.com/en/news/4673093/analysis-how-will-liverpool-look-under-iraola · Goal.com 26/27 예상 XI — https://www.goal.com/en/lists/liverpool-andoni-iraola-2026-27-premier-league/blt2d70dc0df5b54109"
   },
   {
@@ -31,7 +39,11 @@
    "execution": "실측 6경기 평균 6.88, 중심(66.2,34.5). RCB cb_bpd/Aggressive 0.938. 전방 0.11/자기진영 0.67. 팟몹 25/26 리그 백분위(90분당): 경합 승률 69.0%(91)·공중 승률 71.3%(90)·경합 승 6.39(90)·얻어낸 파울 1.19(90)로 판 다이크와 같은 결의 듀얼형이다. 태클 1.54(66)로 판 다이크(6)보다는 능동적이나 인터셉트(30)는 낮다. 상대 박스 터치(16)·도움 0으로 공격 관여는 사실상 없다 — 순수 수비형 우측 센터백.",
    "game_role_implication": "⚠️ 26/27 인선에서 제외 — 처방 대상이 아니다. 기존 rationale대로 이 행은 **RCB 슬롯의 실측 기준선**으로만 사용한다(대체자 판정용). 이라올라 체제 RCB 주인은 미정이며(레오니·자케 거론), 후보 평가 시 이 그리드와 듀얼 백분위가 비교 상한이 된다.",
    "label": "코나테",
+   "observed_from": null,
+   "observed_to": null,
    "position": "RCB",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "This Is Anfield 이적 확정(2026-06) — https://www.thisisanfield.com/2026/06/ibrahima-konate-officially-completes-real-madrid-free-transfer/ · Goal.com — https://www.goal.com/en/lists/real-madrid-confirm-ibrahima-konate-free-transfer-liverpool/blt09865e2422617480"
   },
   {
@@ -41,7 +53,11 @@
    "execution": "실측 6경기 평균 7.05, 중심(77.6,46.4). RB fb_wingback/Support 0.843 · fb_inverted/Build-Up 0.814 / RDM dm_dlp/Roaming 0.800 — 미드필드 드리프트 서사를 세 값이 함께 지지한다. 다만 전방 0.26/자기진영 0.39로 구스토(0.34/0.44)보다 공격 관여가 낮다. 팟몹 백분위(90분당): 터치 93.9(98)·성공 패스 70.4(96)·볼 회수 6.72(95)·패스 정확도 91.6%(93)·롱볼 정확도 68.1%(91)·드리블 성공률 64.7%(90)로 온볼 지분이 리그 최상위다. 반대편이 결정적이다 — 공중 경합 승률 28.9%(4)·크로스 정확도 6.7%(21)·성공 크로스(23). 풀백에게 요구되는 제공권과 전달이 최하위권이며, 이것이 '자연스러운 우측 풀백이 아니다'의 정량 형태다.",
    "game_role_implication": "fb_wingback/Support 유지하되 ⚠️ 이라올라 체제 적합성에 경고를 단다 — 이라올라는 풀백을 크로서로 쓰고(obs#67) 케르케즈 증언대로 라인을 따라 언더랩·오버랩시키는데, 존스의 크로스 정확도(21)·공중(4)은 정면 충돌한다. RDM(0.800) 겸용 표기를 유지해 중앙 대안으로 남긴다.",
    "label": "커티스 존스",
+   "observed_from": null,
+   "observed_to": null,
    "position": "RB",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "This Is Anfield(밀너형 유틸리티 논지, 2026-04) — https://www.thisisanfield.com/2026/04/curtis-jones-right-back-james-milner-liverpool-career-2026/ · Liverpool.com(본인 발언·슬롯 평가) — https://www.liverpool.com/liverpool-fc-news/features/curtis-jones-position-arne-slot-33948597 · Empire of the Kop — https://www.empireofthekop.com/2026/05/15/curtis-jones-explains-new-liverpool-role-after-right-back-switch/amp/"
   },
   {
@@ -51,7 +67,11 @@
    "execution": "실측 2경기(표본 심각 부족 — 부상 결장) 평균 6.15, 중심(17.7,42.6), LB fb_att_wb/Support 0.799. 팟몹 25/26 리그 백분위(90분당): 기회 창출 1.04(74)·성공 크로스 0.60(61)·얻어낸 파울 1.20(76)·경합 승률 59.1%(82)·득점 2회(81)로 전진 기여는 중상위다. 그러나 기대 도움 0.028(12)·인터셉트 0.56(18)·수비 행동 5.34(19)·태클(24)은 하위권이다. 종합하면 '크로스는 넣지만 도착 품질이 낮고, 수비 개입량도 적다' — '본머스 시절보다 못하다'는 비판이 이 두 칸에 그대로 앉아 있다.",
    "game_role_implication": "fb_att_wb/Support 유지하되 표본 재수집이 선결(기존 rationale 승계). obs#81의 본머스 실측 — 좌측 풀백이 상시 전진하고 우측이 상황에 따라 내려앉는 비대칭 — 에서 좌측 상시 전진 축이 이 자리다. 즉 이라올라 체계에서 케르케즈는 구조상 가장 높이 올라가는 수비수가 된다.",
    "label": "케르케즈",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "LB",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/milos-kerkez-season-review-2025-2026/ · This Is Anfield 이라올라 재회 — https://www.thisisanfield.com/2026/06/milos-kerkez-andoni-iraola-liverpool-reunion-2026/ · Liverpool FC 공식(본인 발언) — https://www.liverpoolfc.com/news/exciting-times-ahead-why-milos-kerkez-delighted-be-reunited-andoni-iraola"
   },
   {
@@ -61,7 +81,11 @@
    "execution": "실측 4경기(표본 부족) 평균 6.42, 중심(85.8,58.3). 신커널 정본은 RB fb_att_wb/Support 0.867(차2 fb_att_wb/Attack 0.845)이고, RM wm_insidefwd/Attack 0.875로 오히려 더 높다 — 풀백이 아니라 우측 공격 인원이다. 전방 0.54/자기진영 0.28로 존스의 정반대. 팟몹 백분위(90분당)가 이를 극단적으로 확증한다: 상대 박스 터치 5.98(100)·상대 진영 볼 탈취 0.78(98)·드리블 성공 1.56(96)·빅찬스 창출 0.43(94)·얻어낸 파울 1.82(92)·기대 도움 0.137(88). 반대편은 바닥이다 — 걷어내기(0)·수비 행동(1)·태클(5)·인터셉트(12). 공격 100 / 수비 0의 양극단이다.",
    "game_role_implication": "RB 슬롯에 두되 fb_att_wb 계열 유지, 그리고 위치 상향(RM wm_insidefwd/Attack 0.875) 검토 근거를 함께 기록한다. ⚠️ 구조 경고: 같은 RB 슬롯에 존스(온볼·저전진·수비 저조)와 프림퐁(고전진·수비 전무)이라는 정반대 두 유형이 공존한다. 게다가 obs#81의 이라올라 폭 문법상 우측은 상황에 따라 내려앉는 쪽이라 프림퐁 프로필과 어긋난다 — 좌측 케르케즈 상시 전진 + 우측 자제라는 구조에서 그는 구조적으로 잉여다.",
    "label": "프림퐁",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "RB",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/jeremie-frimpong-liverpool-season-review-2025-26/ · This Is Anfield 이라올라 체제 역할(2026-07) — https://www.thisisanfield.com/2026/07/jeremie-frimpong-liverpool-tactical-role-right-back-iraola/ · TimesLIVE(이라올라 부상 코멘트, 2026-08-03) — https://www.timeslive.co.za/sport/soccer/2026-08-03-liverpool-boss-iraola-downplays-frimpong-injury-concerns/"
   },
   {
@@ -71,7 +95,11 @@
    "execution": "실측 6경기 평균 6.77, 중심(52.9,48.6). LDM(x=50) 0.782 > RDM(x=61) 0.677로 중앙 피벗이며 신커널 정본은 dm_dlp/Roaming 0.689. 전방 0.38/자기진영 0.38의 대칭형. 팟몹 백분위(90분당): 드리블 성공 0.96(90)·인터셉트 1.44(83)·성공 패스 49.7(83)·패스 정확도 88.9%(77) — 캐리와 요격이 강점. 반면 롱볼 정확도 31.5%(5)·정확한 롱볼(10)은 리그 최하위 — 전개 거리가 짧다. 태클(27)·볼 회수(25)·수비 행동(27)이 모두 중하위인 점은 '파괴자가 아니다'라는 10월 분석을 그대로 확인한다.",
    "game_role_implication": "LDM dm_dlp/Roaming 유지. ⚠️ 기존 rationale의 경고를 승계한다 — 맥 알리스터와 슬롯·역할 최적이 동일해 더블 피벗 두 축이 실측상 분화되지 않았다. 다만 이번 팟몹 대조로 기능축은 갈린다: 흐라벤베르흐가 캐리·인터셉트, 맥 알리스터가 슈팅·박스 진입이다. 이 분화를 처방에 반영할지가 다음 판단 대상.",
    "label": "흐라벤베르흐",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "LDM",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/ryan-gravenberch-season-review-2025-2026/ · Anything Liverpool 역할 분석(2025-10) — https://anythingliverpool.com/2025/10/10/ryan-gravenberch-the-measured-revolution-of-liverpools-midfield/ · Forbes(더비 경기 분석, 2025-09) — https://www.forbes.com/sites/jamesnalton/2025/09/20/ryan-gravenberch-midfield-masterclass-wins-merseyside-derby-for-liverpool/"
   },
   {
@@ -81,7 +109,11 @@
    "execution": "실측 5경기 평균 6.64, 중심(47.1,49.2). LDM dm_dlp/Roaming 0.890 > RDM 0.639. 전방 0.33/자기진영 0.37. 팟몹 백분위(90분당)는 서사와 다른 그림을 보여준다: 헤더 슛 0.47(95)·크로스 정확도 45.0%(93)·기대 득점 0.132(90)·슛 1.76(89)·상대 박스 터치 2.20(84)로 박스 진입과 슈팅이 리버풀 미드필더 중 최상위다. '깊은 통제자'라는 역할 서사와 어긋나는 지점이다. 반면 비판이 지목한 곳은 정확히 재현된다 — 경합 승률 45.2%(11)·제쳐당함 1.35(16)·수비 행동(12).",
    "game_role_implication": "LDM dm_dlp/Roaming 유지(그리드 0.890). 흐라벤베르흐와의 슬롯 중복은 기능축으로 분리 가능하다 — 맥 알리스터는 박스 진입·슈팅, 흐라벤베르흐는 캐리·인터셉트. ⚠️ 이라올라의 맨투맨 락온 압박(obs#68)에서 경합 승률 백분위 11은 구조적 리스크이며, 이 체계는 개인 듀얼 승률에 직접 의존한다.",
    "label": "맥 알리스터",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "LDM",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/alexis-mac-allister-season-review-2025-2026/ · Andrew Beasley(OBV 데이터 분석) — https://www.andrewbeasleyfootball.com/p/alexis-mac-allister-sums-up-liverpools-problem-this-season · RushTheKop 시즌 리뷰 — https://rushthekop.com/the-2025-26-season-was-a-dramatic-step-back-in-alexis-mac-allister-s-liverpool-career"
   },
   {
@@ -91,7 +123,11 @@
    "execution": "실측 다중 슬롯 순회(RM/RDM/CAM 36경기) 평균 7.02, 중심(59.8,57.0). RDM dm_dlp/Roaming 0.812 > RM wm_wideplm/Attack 0.730 > CAM 0.673 — 세 라벨 중 실측 최적은 RDM이고 신커널 정본은 0.674다. 전방 0.49/자기진영 0.23. 팟몹 백분위(90분당)가 전천후 서사를 정면 지지한다 — 전달 축: 정확한 롱볼 3.62(98)·성공 크로스 1.89(97)·터치 83.4(97)·기회 창출 2.17(91)·빅찬스 창출 0.39(78)·기대 도움 0.189(78). 동시에 수비 축: 수비 행동 9.44(89)·인터셉트 0.84(89)·볼 회수 5.21(89)·걷어내기 1.62(92)·슛 블록 0.22(84). 온볼과 오프볼이 동시에 리그 상위 10% 안에 드는 유일한 대상이다.",
    "game_role_implication": "RDM dm_dlp/Roaming 유지. ⚠️ 방법론 주의: 걷어내기·수비 행동 백분위(92/89)는 우측 풀백 출전 10경기가 섞인 시즌 합계라 위치 분리 재집계 전에는 '미드필더로서의 수비량'으로 읽으면 안 된다. 이라올라 체계가 요구하는 주행 부하(obs#73: 총주행 리그 1위, 스프린트 2위)에 가장 부합하는 보유 프로필이다.",
    "label": "소보슬라이",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "RDM",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "Liverpool FC 공식 올해의 선수 — https://www.liverpoolfc.com/news/dominik-szoboszlai-wins-liverpools-mens-player-season-award · This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/dominik-szoboszlai-2025-26-season-player-review/ · Liverpool FC 이라올라 회견 — https://www.liverpoolfc.com/news/press-conference-andoni-iraola-transfer-window-alisson-szoboszlai-deal-and-vice-captaincy"
   },
   {
@@ -101,7 +137,11 @@
    "execution": "실측 5경기 평균 7.00, 중심(54.1,58.7). CAM cam_halfwinger/Balanced 0.785 > cam_classic10/Versatile 0.711, RM 0.687. 전방 0.54/자기진영 0.19. 팟몹 25/26 리그 백분위(90분당): 기회 창출 2.26(92)·상대 박스 터치 6.07(85)·기대 도움 0.195(79)·PK 제외 기대 득점 0.265(79)·상대 진영 볼 탈취 0.79(76)·드리블 성공 1.47(70). 즉 리그 기준으로는 상위권 창조 산출이다 — '실패한 시즌' 서사는 이적료·팀 성적 대비 기대치의 산물이지 백분위의 서술이 아니다. 약점은 신체 경합이다: 공중 승률 14.9%(9)·경합 승률 39.9%(24).",
    "game_role_implication": "cam_halfwinger/Balanced 유지 — 이라올라 프리시즌의 '이사크 뒤 10번' 배치와 실측 최적이 일치하는 드문 사례다. ⚠️ 공중·경합 하위 백분위(9/24)는 이라올라의 맨투맨 락온(obs#68) 국면에서 표적이 될 수 있는 지점으로 기록.",
    "label": "비르츠",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "CAM",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "Total Football Analysis 데이터 분석 — https://totalfootballanalysis.com/data-analysis/florian-wirtz-scout-report-liverpool-2025-2026-data-analysis · Opta Analyst — https://theanalyst.com/articles/liverpool-real-florian-wirtz-stats · Liverpool FC 이라올라 회견(비르츠 포지션) — https://www.liverpoolfc.com/news/andoni-iraola-press-conference-chicago-benefits-ngumoha-and-wirtz-positions-transfers-and-more"
   },
   {
@@ -111,7 +151,11 @@
    "execution": "실측 6경기 평균 6.52, 중심(42.5,63.6). LM 0.648·CAM 0.686·ST 0.579로 세 슬롯 모두 0.7 미만 — 어디에도 강하게 맞지 않는다(신커널 정본 wm_insidefwd/Balanced 0.675). 겸업의 대가가 그리드에 그대로 남았다. 전방 0.59/자기진영 0.13. 팟몹 백분위(90분당): 공중 승률 50.9%(95)·공중 경합 승 1.84(89)·슛 2.85(90)·상대 박스 터치 6.13(86)·헤더 슛 0.33(84)·PK 제외 기대 득점 0.28(83)로 박스 안 제공권과 슈팅량이 리그 최상위다. 반대로 패스 정확도 78.5%(37)·크로스 정확도 12.6%(20)·터치(21)로 연계와 전달은 약하다.",
    "game_role_implication": "wm_insidefwd/Balanced 유지하되 적합 0.675는 낮다 — 슬롯 미확정 자체가 실측의 결론이다. ⚠️ '이라올라의 전방 압박이 회복 요인'이라는 낙관은 상대 진영 볼 탈취 백분위 59(중간)로 강하게 지지되지 않는다 — 그는 높은 위치에서 스스로 회수하는 유형이 아니라 회수된 볼을 마무리하는 유형이다.",
    "label": "학포",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "LM",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/cody-gakpo-season-review-2025-2026/ · SI(거취 논의) — https://www.si.com/soccer/keep-or-sell-what-should-liverpool-do-cody-gakpo · Opta Analyst 리버풀 스쿼드 감사(26/27) — https://theanalyst.com/articles/liverpool-squad-audit-transfers-stats-2026-27"
   },
   {
@@ -121,7 +165,11 @@
    "execution": "실측 5경기 평균 7.56(리버풀 최고), 중심(82.6,71.3). 신커널 정본은 RM wm_winger/Attack 0.910이다 — 구커널의 wm_insidefwd/Attack 0.961은 obs#120이 폐기했고 재산출값은 0.515다. 침투 서명은 전방 0.77/자기진영 0.06. 팟몹 25/26 리그 백분위(90분당): 상대 박스 터치 7.84(92)·도움 0.29(91)·기대 득점 0.34(89)·슛 2.85(89)·빅찬스 창출 0.46(87)·기대 도움 0.22(85)로 부진 서사에도 리그 기준 위협은 여전히 상위다. 하락의 실제 위치는 다른 곳이다 — 경합 승률 29.9%(2)·드리블 성공률 26.4%(7)·수비 행동(7). 1v1과 오프볼 수비가 리그 최하위권이다.",
    "game_role_implication": "⚠️ 26/27 리버풀 스쿼드가 아니다 — 처방 인선에서 제외한다. obs#120대로 이 행은 **우측 침투 윙어의 실측 상한 기준선**으로만 사용한다(wm_winger/Attack 0.910, 전방 질량 0.77). 빌라 우측 후보 평가 시 비교 기준선으로 쓸 수 있다는 기존 용도를 유지한다.",
    "label": "살라",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "RM",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "Al Jazeera 이적 확정(2026-08-06) — https://www.aljazeera.com/sports/2026/8/6/mohamed-salah-signs-two-year-deal-with-trabzonspor-after-liverpool-exit · ESPN — https://www.espn.com/soccer/story/_/id/49546039/moahmed-salah-trabzonspor-liverpool-transfer-contract"
   },
   {
@@ -131,7 +179,11 @@
    "execution": "실측 1경기(모나코전 45분 선발, 평점 6.7, hp=36): avg_x 31.6 · avg_y 27.6 → tool_x 72.4(RCB 슬롯 x=63보다 우측). 판 다이크(좌, tool_x 34.2)와 짝 — 우측 배치 서사와 정합. 태클 3·클리어 3·패스 24중 23성공.",
    "game_role_implication": "cb_bpd/Aggressive .803 (2위 cb_bpd/Build-Up .726, 3위 cb_stopper/Aggressive .663 → bpd 대비 Δ.140). ⚠️ 서사의 '전진 패스 의문·짧고 단순한 패스' 주장은 bpd(배급형)와 긴장 관계이나, Δ.140은 노이즈 밖이므로 **적합 우선 — bpd 유지**. 패스 품질 의문은 역할이 아니라 스탯·PlayStyles 층에서 재현할 사안(obs#144와 동일 논리).",
    "label": "Ifeanyi Ndukwe",
+   "observed_from": null,
+   "observed_to": null,
    "position": "RCB",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "https://anfieldinsights.substack.com/p/why-liverpool-are-signing-ifeanyi ; https://www.thisisanfield.com/2026/01/who-is-ifeanyi-ndukwe-liverpool-transfer-fee-style-quotes/ ; https://www.thisisanfield.com/2026/07/liverpool-ifeanyi-ndukwe-work-permit-ineligible-iraola/"
   },
   {
@@ -141,7 +193,11 @@
    "execution": "실측 1경기(모나코전 59분 선발, 평점 6.2, hp=52): avg_x **42.1** · avg_y 80.4 → tool_x 19.6(LB 슬롯 x=13보다 안쪽). 리커버리 8·태클 2. 크로스 관련 산출 없음(키패스 0).",
    "game_role_implication": "fb_wingback/Balanced .741 (2위 fb_fullback/Balanced .727) — **Δ.013, 노이즈 구간**. 서사(오버랩·크로스량·측면 과부하)는 fullback보다 wingback을 지지하므로 커널 선택과 방향 일치 — 노이즈 구간이나 서사가 같은 쪽을 가리켜 유지. 높이 주장이 실측과 어긋나므로 Attack 계열 포커스로의 상향은 근거 없음.",
    "label": "Kostas Tsimikas",
+   "observed_from": null,
+   "observed_to": null,
    "position": "LB",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "https://totalfootballanalysis.com/article/scout-report-kostas-tsimikas-2019-20-tactical-analysis-tactics ; https://tacticalfootballanalysis.com/andoni-iraola-tactics-liverpool-2026-2027-tactical-analysis/ ; https://www.thisisanfield.com/2026/05/kostas-tsimikas-liverpool-stay-next-season-plans-2026/ ; https://www.liverpoolfc.com/news/kostas-tsimikas-return-liverpool-what-iraola-wants-and-squad-mood"
   },
   {
@@ -151,7 +207,11 @@
    "execution": "실측 1경기(모나코전 75분 선발, 평점 6.4, hp=40): avg_x 64.3 · avg_y 25.2 → tool_x **74.8**. ⭐ **우측 와이드 + 전진** — 중앙이 아니다. 슛 4·키패스 1·리커버리 7. 동일 경기 Ngumoha는 31분 교체 출전(45분 미달로 본 수집 대상 외)이므로, '응구모하 우측·쿠마스 중앙' 보도는 후반 교체 이후 국면을 서술한 것으로 보인다.",
    "game_role_implication": "wm_winger/Balanced .720 (2위 wm_widemid/Build-Up .678) — Δ.042, 노이즈 구간. ⚠️ 서사의 기능 지표는 winger 역할과 **역방향**이다(드리블 성공 25%·듀얼 32.8%·찬스창출 6번째 백분위). 위치는 와이드로 확정이나 역할 품질 근거가 약하므로 처방 확정 보류 — 위치(확정)와 역할(보류)을 분리해 기록.",
    "label": "Lewis Koumas",
+   "observed_from": null,
+   "observed_to": null,
    "position": "RM",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "https://www.thisisanfield.com/2026/07/lewis-koumas-liverpool-no-9-andoni-iraola/ ; https://www.fotmob.com/players/1364042/lewis-koumas ; https://footystats.org/players/england/lewis-koumas ; https://www.thisisanfield.com/2026/08/lewis-koumas-wanted-by-several-clubs-loan-likely-despite-good-pre-season/"
   },
   {
@@ -161,7 +221,11 @@
    "execution": "실측 1경기(모나코전 59분 선발, 평점 7.1, hp=**25**): avg_x 72.7 · avg_y 53.1(중앙). 골 1·어시 1·슛 1·키패스 2·터치 23. hp=25로 그리드 포인트가 적다.",
    "game_role_implication": "⭐ st_poacher/Support .7659 ≡ st_advanced/Attack .7659 — **커널 그리드가 동일해 완전 동률**이며, 구별되는 3위(st_poacher/Versatile .737)까지 Δ.029로 노이즈 구간. 즉 **소스가 못 정한 라벨(포처 vs 전진형 하이브리드)을 커널도 기계적으로 못 정한다** — 우연이 아니라 두 역할의 커널이 같기 때문. 역할 확정 불가, 처방 보류. 표본 축적이 유일한 해소 경로.",
    "label": "Alexander Isak",
+   "observed_from": null,
+   "observed_to": null,
    "position": "ST",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "https://www.premierleague.com/en/news/4407886/analysis-how-isaks-introduction-could-impact-liverpools-frontline ; https://totalfootballanalysis.com/recruitment-analysis/alexander-isak-hugo-ekitike-scout-report-2025-2026-liverpool-recruitment ; https://breakingthelines.com/player-analysis/player-analysis-alexander-isak/ ; https://thepfsa.co.uk/analysis-what-liverpool-might-look-like-under-andoni-iraola/"
   },
   {
@@ -171,7 +235,11 @@
    "execution": "실측 1경기(모나코전 후반 45분 교체, 평점 7.2, hp=32): avg_x **8.6**. ⭐ **동일 경기 통제 비교**: 전반 45분을 뛴 알리송은 avg_x 15.8 — 마마르다슈빌리가 **7.2 더 깊다**. 세이브 3·패스 23중 21성공.",
    "game_role_implication": "gk_goalkeeper/Defend .957 (2위 Balanced .922, Δ.035 — 노이즈 구간). 노이즈 구간이지만 서사(스위핑 0.41/경기·라인 고착)가 Defend를 독립 지지하므로 docs/30 4단계상 서사를 이산 근거로 채택 가능. ⭐ 전술적 함의: 이라올라는 하이라인을 쓰는데 이 GK는 라인을 비우지 않는다 — **GK 교체가 곧 라인 리스크 변경**이므로 알리송/마마르다슈빌리를 같은 처방으로 묶으면 안 된다.",
    "label": "Giorgi Mamardashvili",
+   "observed_from": null,
+   "observed_to": null,
    "position": "GK",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "https://transferhub.substack.com/p/scouting-report-giorgi-mamardashvili ; https://www.premierleague.com/en/news/4431976/analysis-how-liverpool-will-miss-alisson-and-who-is-mamardashvili ; https://www.espn.co.uk/football/story/_/id/46615423/liverpool-giorgi-mamardashvili-alisson-georgia-premier-league-arne-slot-goalkeeper ; https://www.empireofthekop.com/2026/06/11/andoni-iraolas-liverpool-blueprint-pressing-direct-attacks-and-a-clearer-identity/"
   },
   {
@@ -181,8 +249,54 @@
    "execution": "실측 1경기(모나코전 후반 45분 교체, 평점 6.2, hp=54): avg_x **22.5** · avg_y 31.8 → 매우 깊다. 패스 40중 33성공·리커버리 4·클리어 1. 국면 확인: lead 11' · level 32' · trail 2' — **리드 방어가 주 국면이 아니므로** 깊은 위치를 국면 탓으로 돌릴 수 없다(교란요인 배제).",
    "game_role_implication": "dm_holding/Defend .879 (2위 dm_holding/Ball-Winning .844) — **Δ.035, 노이즈 구간**. 서사의 정량(듀얼 1위·소유권 획득 2위·공중볼 최다)은 Defend보다 **Ball-Winning**을 가리키므로 docs/30 4단계상 노이즈 구간에서 서사가 이산 근거가 될 수 있다. 역할(dm_holding)은 양쪽 동일해 확정, 포커스만 Defend/Ball-Winning 미결 — 표본 축적으로 해소.",
    "label": "Wataru Endo",
+   "observed_from": null,
+   "observed_to": null,
    "position": "RDM",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "https://totalfootballanalysis.com/player-analysis/wataru-endo-at-liverpool-fc-2023-24-scout-report-tactical-analysis-tactics ; https://www.planetfootball.com/quick-reads/wataru-endo-liverpool-profile-scouting-report-defensive-midfield-signing ; https://one-versus-one.com/en/players/wataru-endo ; https://www.footballinsider247.com/liverpool/sources-liverpool-plan-to-accept-wataru-endo-offer"
+  },
+  {
+   "adherence": "TRANSFERRED — 바르셀로나 역할은 실측 확인, 리버풀·이라올라 체제 실행은 공식전 0경기로 미검증.",
+   "confidence": "HIGH 바르셀로나 원천 / LOW 리버풀 역할 투영",
+   "duties": "바르셀로나 표본에서 우측 센터백으로 전진해 끊고 배급하는 공격적 볼 플레잉 센터백. 리버풀에서는 자케 이후의 추가 보강이라 같은 RCB 자리를 두고 경쟁한다.",
+   "execution": "2025/26 포함 수집 58경기 2,084분 평균 6.90. 45분+ 바르셀로나 RCB 22경기 표본은 cb_bpd/Aggressive .908이고 LCB 재배치 시 적합이 크게 하락한다.",
+   "game_role_implication": "RCB cb_bpd/Aggressive. 자케와 적합 차 .005라 수치로 우열을 정하지 않고 좌우 유연성·가용성으로 선발 판단.",
+   "label": "아라우호",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
+   "position": "RCB",
+   "sample_note": "2025/26 Barcelona 시즌 표본 + 2026-08-11 Liverpool 공식 영입; Liverpool 경기 분석은 아님",
+   "sample_scope": "season",
+   "source": "Liverpool 공식 영입 https://www.liverpoolfc.com/news/liverpool-agree-deal-sign-ronald-araujo-loan ; Sky Sports https://www.skysports.com/football/news/11669/13570899 ; reports/transfer-watch/2026-08-12.md ; SofaScore player 925097"
+  },
+  {
+   "adherence": "TRANSFERRED — 오사수나 시즌 수행은 확인, 이라올라 체제와 살라 이탈 뒤 우측 기용은 공식전 0경기로 미검증.",
+   "confidence": "HIGH 오사수나 원천·구단 Opta 요약 / LOW 리버풀 실행",
+   "duties": "폭발적인 속도와 직접 드리블을 쓰며 양쪽 윙을 소화하고, 공을 잃은 뒤 복귀에도 가담하는 와이드 공격수. 좌우 혼합 그리드는 위치를 뭉개므로 반드시 측면별로 본다.",
+   "execution": "오사수나 2025/26 전 대회 34경기 2,766분 7골 5도움. 실측은 좌측 23경기 LM wm_wideplm/Attack .729, 우측 11경기 RM wm_winger/Balanced .772다.",
+   "game_role_implication": "LM wide playmaker/Attack와 RM winger/Balanced를 별도 보존. 평균낸 혼합 처방은 사용하지 않는다.",
+   "label": "무뇨스",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-13",
+   "position": "LM/RM",
+   "sample_note": "2025/26 Osasuna 시즌 전체 34경기; Liverpool 공식전 분석은 아님",
+   "sample_scope": "season",
+   "source": "Liverpool 공식 프로필 https://www.liverpoolfc.com/news/career-path-spain-impact-and-history-maker-get-know-victor-munoz ; Liverpool 공식 영입 https://www.liverpoolfc.com/news/liverpool-agree-deal-sign-spain-forward-victor-munoz ; SofaScore player 1145642 ; reports/transfer-watch/2026-08-13.md"
+  },
+  {
+   "adherence": "TRANSFERRED — 렌 시즌 수행은 확인, 리버풀·이라올라 체제 실행은 공식전 0경기로 미검증.",
+   "confidence": "HIGH 렌 원천·구단 Opta 요약 / LOW 리버풀 실행",
+   "duties": "공중 경합과 박스 수비가 강하면서도 라인을 깨는 전진 패스를 시도하는 침착한 센터백. 우측이 주 표본이지만 왼쪽도 소화해 아라우호보다 좌우 전환 여지가 크다.",
+   "execution": "렌 2025/26 21경기. 우측 14경기 RCB cb_bpd/Aggressive .903, 좌측 7경기 LCB .850. 구단 Opta 요약은 공중 경합 승률 75.5%, 패스 성공률 90.4%, 클리어 4.9/90을 제시한다.",
+   "game_role_implication": "RCB cb_bpd/Aggressive 주 처방, 필요 시 LCB 대안. 어깨 부상으로 시즌이 짧아진 점을 가용성 변수로 유지.",
+   "label": "자케",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-13",
+   "position": "RCB/LCB",
+   "sample_note": "2025/26 Rennes 시즌 전체 21경기; Liverpool 공식전 분석은 아님",
+   "sample_scope": "season",
+   "source": "Liverpool 공식 팩트파일 https://www.liverpoolfc.com/news/jeremy-jacquet-factfile-aerial-dominance-van-dijk-respect-and-lfc-homework ; Liverpool 공식 영입 https://www.liverpoolfc.com/news/liverpool-complete-signing-jeremy-jacquet ; SofaScore player 1445625 ; reports/transfer-watch/2026-08-13.md"
   }
  ],
  "evaluations": [
@@ -377,6 +491,54 @@
    "strengths": "우측 뒷공간 침투의 실측 상한 기준선 — 빌라 우측 후보 평가(obs#38 브리프)의 비교 원형으로 보존될 만큼의 서명. 약점: 수비 국면 기여 사실상 0(자기진영 0.06) — 두 줄 수비 체제에서는 구조 비용을 동반. 이탈 기재가 사실이면 평가 실효성 자체가 아카이브용.",
    "traits": "정통 터치라인 윙어의 침투형(wm_winger/Attack) — obs#100·#120이 독립 재현한 판정: '뒷공간 반복 침투 빠른 우측 윙어'의 커널은 insidefwd가 아니라 winger다. 자기진영 질량 0.06은 수비 관여 실측 최저 — 순수 공격 전담.",
    "updated": "2026-08-11"
+  },
+  {
+   "confidence": "HIGH 바르셀로나 실측 / LOW 리버풀 실행",
+   "fit_alonso": "LOW — 알론소 체제 대상 아님.",
+   "fit_emery": "LOW — 에메리 체제 대상 아님.",
+   "fit_iraola": "MEDIUM-HIGH — 이라올라의 전방지향 RCB와 공간 적합. 리버풀 실행은 미검증.",
+   "fotmob_eval": null,
+   "label": "아라우호",
+   "name_en": "Ronald Araújo",
+   "overall": "A- — 우측 센터백 22경기 실측 .908로 리버풀의 공격적 RCB 요구에 높은 공간 적합을 보인다. 다만 리버풀 공식전은 아직 0경기다.",
+   "player_id": 85,
+   "source": "SofaScore player 925097; https://www.liverpoolfc.com/news/liverpool-agree-deal-sign-ronald-araujo-loan; reports/transfer-watch/2026-08-12.md",
+   "stat_eval": "수집 58경기 2,084분 평균 6.90, 듀얼승 2.31/경기. 45분+ 바르셀로나 RCB 22경기 평균 7.15, cb_bpd/Aggressive .908.",
+   "strengths": "강점은 RCB 역할 적합과 상위 수준 경합. 약점은 좌측 재배치 적합 급락과 최근 가용성 맥락이다.",
+   "traits": "전진 스텝아웃과 공격적 경합, 우측에서의 배급이 중심인 볼 플레잉 센터백.",
+   "updated": "2026-08-13"
+  },
+  {
+   "confidence": "HIGH 오사수나 시즌 데이터 / LOW 리버풀 실행",
+   "fit_alonso": "LOW — 알론소 체제 대상 아님.",
+   "fit_emery": "LOW — 에메리 체제 대상 아님.",
+   "fit_iraola": "MEDIUM — 이라올라의 수직 전환·와이드 압박과 특성 정합, 리버풀 공식전 0경기.",
+   "fotmob_eval": null,
+   "label": "무뇨스",
+   "name_en": "Víctor Muñoz",
+   "overall": "B+ — 오사수나 34경기 7골 5도움의 즉시 전력 윙어. 좌우를 분리하면 두 측면 모두 유효하지만 리버풀의 우측 결손을 메우는지는 새 팀 공식전이 필요하다.",
+   "player_id": 88,
+   "source": "SofaScore player 1145642; https://www.liverpoolfc.com/news/career-path-spain-impact-and-history-maker-get-know-victor-munoz; reports/transfer-watch/2026-08-13.md",
+   "stat_eval": "Liverpool 공식 프로필 기준 오사수나 34경기 2,766분 7골 5도움. 좌 23경기 평균 7.03·LM wideplm/Attack .729, 우 11경기 RM winger/Balanced .772.",
+   "strengths": "강점은 양쪽 윙과 1대1 돌파. 약점은 좌우 혼합 시 위치 데이터가 무의미해지고 강팀 점유 구조에서 같은 공간을 쓸지 미정이라는 점.",
+   "traits": "폭발적 속도, 직접 드리블, 양측면 전환, 수비 복귀를 겸한 와이드 공격수.",
+   "updated": "2026-08-13"
+  },
+  {
+   "confidence": "HIGH 렌·구단 Opta 데이터 / LOW 리버풀 실행",
+   "fit_alonso": "LOW — 알론소 체제 대상 아님.",
+   "fit_emery": "LOW — 에메리 체제 대상 아님.",
+   "fit_iraola": "MEDIUM-HIGH — 이라올라 센터백의 전진 배급·선제 차단 요구에 정합, 리버풀 실행은 미검증.",
+   "fotmob_eval": null,
+   "label": "자케",
+   "name_en": "Jérémy Jacquet",
+   "overall": "A- — 렌 RCB 14경기 .903과 LCB 7경기 .850으로 양쪽 이동 가능한 전진 배급형 센터백. 아라우호와 .005 차라 적합만으로 주전을 정할 수 없다.",
+   "player_id": 89,
+   "source": "SofaScore player 1445625; https://www.liverpoolfc.com/news/jeremy-jacquet-factfile-aerial-dominance-van-dijk-respect-and-lfc-homework; reports/transfer-watch/2026-08-13.md",
+   "stat_eval": "렌 2025/26 21경기. 우측 14경기 평균 7.08·cb_bpd/Aggressive .903, 좌측 7경기 .850. 구단 Opta 요약 클리어 4.9/90·볼 회수 4.14/90.",
+   "strengths": "강점은 75.5% 공중 경합 승률과 90.4% 패스 성공률, 좌우 유연성. 약점은 어깨 부상으로 시즌 표본이 21경기에 그친 점.",
+   "traits": "공중 지배, 침착한 패스, 전진 차단을 겸한 볼 플레잉 센터백.",
+   "updated": "2026-08-13"
   }
  ],
  "fbref": {
@@ -6026,6 +6188,58 @@
     "FIFA World Cup"
    ]
   ],
+  "무뇨스": [
+   [
+    "2026-03-15",
+    7.4,
+    "LaLiga"
+   ],
+   [
+    "2026-03-21",
+    8.2,
+    "LaLiga"
+   ],
+   [
+    "2026-03-27",
+    7.7,
+    "International Friendly Games"
+   ],
+   [
+    "2026-03-31",
+    6.8,
+    "International Friendly Games"
+   ],
+   [
+    "2026-04-05",
+    6.8,
+    "LaLiga"
+   ],
+   [
+    "2026-04-12",
+    7.2,
+    "LaLiga"
+   ],
+   [
+    "2026-04-21",
+    6.6,
+    "LaLiga"
+   ],
+   [
+    "2026-04-26",
+    7.2,
+    "LaLiga"
+   ],
+   [
+    "2026-05-17",
+    8.4,
+    "LaLiga"
+   ],
+   [
+    "2026-08-09",
+    6.6,
+    "Club Friendly Games"
+   ]
+  ],
   "비르츠": [
    [
     "2026-05-15",
@@ -6336,6 +6550,58 @@
     "2026-08-08",
     7.5,
     "Club Friendly Games"
+   ]
+  ],
+  "자케": [
+   [
+    "2025-11-07",
+    7.4,
+    "Ligue 1"
+   ],
+   [
+    "2025-11-22",
+    7.8,
+    "Ligue 1"
+   ],
+   [
+    "2025-11-28",
+    7.4,
+    "Ligue 1"
+   ],
+   [
+    "2025-12-06",
+    5.7,
+    "Ligue 1"
+   ],
+   [
+    "2026-01-03",
+    8.2,
+    "Ligue 1"
+   ],
+   [
+    "2026-01-11",
+    7.0,
+    "Coupe de France"
+   ],
+   [
+    "2026-01-24",
+    7.3,
+    "Ligue 1"
+   ],
+   [
+    "2026-01-31",
+    6.4,
+    "Ligue 1"
+   ],
+   [
+    "2026-02-03",
+    6.4,
+    "Coupe de France"
+   ],
+   [
+    "2026-02-07",
+    6.6,
+    "Ligue 1"
    ]
   ],
   "커티스 존스": [
@@ -7666,6 +7932,30 @@
    "tk_pg": 0.4,
    "xa_pg": 0.078,
    "xg_pg": 0.205
+  },
+  {
+   "avg_rating": 6.94,
+   "dw_pg": 4.59,
+   "ic_pg": 0.26,
+   "kp_pg": 0.82,
+   "label": "무뇨스",
+   "minutes": 2867,
+   "n": 39,
+   "tk_pg": 0.67,
+   "xa_pg": 0.095,
+   "xg_pg": 0.202
+  },
+  {
+   "avg_rating": 6.96,
+   "dw_pg": 4.24,
+   "ic_pg": 0.95,
+   "kp_pg": 0.48,
+   "label": "자케",
+   "minutes": 1853,
+   "n": 21,
+   "tk_pg": 1.43,
+   "xa_pg": 0.025,
+   "xg_pg": 0.13
   }
  ],
  "prescriptions": [
@@ -8800,6 +9090,48 @@
     "starts": null
    }
   ],
+  "무뇨스": [
+   {
+    "assists": 0,
+    "avg_rating": 6.6,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 31,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 0
+   },
+   {
+    "assists": 2,
+    "avg_rating": 6.84,
+    "competition": "LaLiga",
+    "goals": 6,
+    "minutes": 2668,
+    "n": 34,
+    "season": "2025-26",
+    "starts": 31
+   },
+   {
+    "assists": 3,
+    "avg_rating": 8.45,
+    "competition": "Copa del Rey",
+    "goals": 1,
+    "minutes": 96,
+    "n": 2,
+    "season": "2025-26",
+    "starts": 0
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.25,
+    "competition": "International Friendly Games",
+    "goals": 1,
+    "minutes": 72,
+    "n": 2,
+    "season": "2025-26",
+    "starts": 0
+   }
+  ],
   "비르츠": [
    {
     "assists": 0,
@@ -9370,6 +9702,28 @@
     "n": 1,
     "season": "2025-26",
     "starts": null
+   }
+  ],
+  "자케": [
+   {
+    "assists": 0,
+    "avg_rating": 6.99,
+    "competition": "Ligue 1",
+    "goals": 0,
+    "minutes": 1673,
+    "n": 19,
+    "season": "2025-26",
+    "starts": 19
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.7,
+    "competition": "Coupe de France",
+    "goals": 0,
+    "minutes": 180,
+    "n": 2,
+    "season": "2025-26",
+    "starts": 2
    }
   ],
   "커티스 존스": [

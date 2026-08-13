@@ -135,7 +135,7 @@ CREATE TABLE player_duties(         -- v1 그대로 (team → regime_id)
   position TEXT NOT NULL,
   duties TEXT NOT NULL, execution TEXT, adherence TEXT,
   game_role_implication TEXT,
-  source TEXT, confidence TEXT,
+  source TEXT, confidence TEXT, observed_from TEXT, observed_to TEXT, sample_scope TEXT, sample_note TEXT,
   UNIQUE(season, player_id, position)
 );
 CREATE TABLE game_roles(
@@ -532,7 +532,7 @@ CREATE TABLE match_player_prescriptions(
   sort_order INTEGER,
   rationale TEXT NOT NULL,
   source TEXT NOT NULL,
-  confidence TEXT NOT NULL,
+  confidence TEXT NOT NULL, replaced_player_id INTEGER REFERENCES players(id), minute_on INTEGER,
   PRIMARY KEY(report_id,player_id),
   FOREIGN KEY(game_version,role_id,focus)
     REFERENCES game_role_focus(game_version,role_id,focus)

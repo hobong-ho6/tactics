@@ -135,7 +135,8 @@ def export_all(db_path=None, window="2026-summer"):
                                         WHEN 'out' THEN 2 ELSE 3 END, amount_m DESC""",
                         (code, window))
         duties = _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, d.position, d.duties,
-                                      d.execution, d.adherence, d.game_role_implication, d.source, d.confidence
+                                      d.execution, d.adherence, d.game_role_implication, d.source, d.confidence,
+                                      d.observed_from, d.observed_to, d.sample_scope, d.sample_note
                                FROM player_duties d JOIN players p ON p.id=d.player_id
                                WHERE d.regime_id=? ORDER BY p.id""", (rid,))
         pstats = _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, v.n, v.avg_rating, v.minutes,
@@ -234,6 +235,7 @@ def export_all(db_path=None, window="2026-summer"):
                 SELECT mpp.player_id,COALESCE(p.name_kr,p.name) label,p.name name_en,
                        mpp.game_version,mpp.pos_label,mpp.role_id,gr.name role_name,
                        mpp.focus,mpp.fit_sim,mpp.starter,mpp.sort_order,mpp.rationale,
+                       mpp.replaced_player_id,mpp.minute_on,
                        mpp.source,mpp.confidence,s.x,s.y
                 FROM match_player_prescriptions mpp
                 JOIN players p ON p.id=mpp.player_id

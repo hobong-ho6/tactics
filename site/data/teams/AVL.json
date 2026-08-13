@@ -15,7 +15,11 @@
    "execution": "실측(3경기): 중심이 자기 골라인에 고정(x~10.1-10.5), 좌우로는 중앙(y~46-53). 박스 폭 전체의 얕고 넓은 커버. 오프라인 이탈 최대치는 경기가 요구했을 때 1경기뿐 — 스위핑은 상황부. 액션 볼륨 높음(한 경기 74+).\n\n[2026-08-12] 협회 분석의 배급 수치는 시즌 1272회 시도·성공률 81%, 압박 상황 패스 성공률 84%로 리그 골키퍼 1위, 패스의 절반이 압박 아래였다 — 다만 이 글은 2024-07-02 발행이라 23/24 데이터이므로 우리 25/26 실측과 직접 비교 불가다. DB 25/26 팟몹 실측은 성공한 패스 893회(백분위 87)·패스 정확도 73.7%(79)·롱볼 정확도 36.0%(77)로 볼륨은 상위지만 정확도는 23/24 서사만큼 압도적이지 않다. 하이볼 처리 48회(백분위 100)와 선방률 70.9%(85)는 '박스 장악' 임무와 정합한다. 반면 마크 램버츠의 골키퍼 스위핑 품질 점수 모델은 마르티네스를 79.7점 1티어 '엘리트 스위퍼'로 분류하는데, 우리 실측은 정반대다.",
    "game_role_implication": "빌드업 임무에는 gk_sweeper/Build-Up이 맞고, 실측 깊이는 스위핑이 상황부임을 말하므로 경기 변형에서 Balanced 포커스 허용(로저스 CAM 프리셋에서 사용). [확정 2026-07-05: gk_ballplaying/Build-Up — 숙련도 타이브레이커. 골라인+빌드업 화해.]\n\n[08-12] DB 확정 처방 gk_ballplaying/Build-Up 유지가 타당하다. 새 서사 중 처방을 흔들 근거는 없다 — 스위퍼 분류는 실측이 기각한다. 다만 '볼을 쥐고 압박을 유인한 뒤 배급'이라는 1차 임무 묘사는 빌드업 포커스를 Balanced로 낮출 이유가 아니라 오히려 Build-Up 고정을 지지한다. PlayStyles는 DB에 기록된 긴패스·돌진 블로킹 외에 새로 확인한 것이 없어 추가 주장하지 않는다.",
    "label": "마르티네스",
+   "observed_from": null,
+   "observed_to": null,
    "position": "GK",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "appearances player_id=1 ranks 1-3 (measured); tactic_observations build_up ; [08-12 서사수집] England Football Learning(Aston Cox, 2024-07-02) · Marc Lamberts GK Sweeping Quality Score · themastermindsite 2025-12-29 빌라 전술 분석 · BBC Sport 에메리 발언 · Read Aston Villa 2026-07-30 ; [원문 URL 보강] Marc Lamberts 「Introducing GK Sweeping Quality Score」 https://marclamberts.medium.com/introducing-gk-sweeping-quality-score-e0e16881811c · TheMastermindSite 「Unai Emery – Aston Villa – Tactical Analysis – 2025-26 Edition」 https://themastermindsite.com/2025/12/29/unai-emery-aston-villa-tactical-analysis-2025-26-edition/"
   },
   {
@@ -25,7 +29,11 @@
    "execution": "실측(3경기): 매 경기 y~15-20 — 절대 안쪽으로 안 들어옴. 측면 높이는 임무 따라 가변: 수비형(수비 38%/미들 42%), 균형(29%/41%), 높이 상주(미들 46%/공격 32%) 각 1경기.\n\n[2026-08-12] 실측은 임무 서사보다 더 단정적이다 — 3경기 전부 y~15-20으로 절대 안쪽으로 들어오지 않고, 높이만 게임플랜별로 조절된다(수비형 38%/균형 29%/높이 상주 46%). 팟몹 백분위도 측면 임무형이다: 슛 블록 14회(76)·정확한 롱볼 56회(75)·성공한 크로스 26회(73)·드리블 성공률 55%(85)·득점 3골(83). 즉 폭 유지와 박스 진입 마무리 양쪽이 수치로 나온다. 다만 2026-08-08 Read Aston Villa 분석은 바이에른전에서 교체 투입된 루이스 디아스가 캐시를 고립시켜 가속·직선 돌파로 10분 만에 득점했다며 1대1 속도 대응 약점을 지적했는데, 이는 DB 약점란(전진성 봉인)과는 다른 새 결손이다.",
    "game_role_implication": "fb_fullback/Versatile(최적)이 높이 조절에 부합. 봉쇄 임무(예: 리버풀전, 로저스 CAM 프리셋)에는 Defend 포커스 전환.\n\n[08-12] DB 처방 fb_wingback/Balanced를 유지할 근거가 강화됐다 — 서사가 말하는 '폭 담당 + 미드필드 뒤 커버 + 선택적 가담'이 정확히 이 조합이다. 바이에른전 1대1 노출은 강한 윙어 상대 경기 변형에서 수비 포커스(Defend)로 낮추는 근거로 쓸 수 있다. PlayStyles는 DB 기록(긴스로우) 외 추가 확인 사항 없음.",
    "label": "캐시",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "RB",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "appearances player_id=2 ranks 1-3 (measured); tactic_observations in_possession/modulation ; [08-12 서사수집] Read Aston Villa 2026-08-08 · themastermindsite 2025-12-29 · Express & Star 캐시 인터뷰 · Stan Sports 캐시 인터뷰 · Villa Park Pod 유튜브(2024-10, 설명 기준) · Football Insider ; [원문 URL 보강] TheMastermindSite 「Unai Emery – Aston Villa – Tactical Analysis – 2025-26 Edition」 https://themastermindsite.com/2025/12/29/unai-emery-aston-villa-tactical-analysis-2025-26-edition/"
   },
   {
@@ -35,7 +43,11 @@
    "execution": "실측: RB, 처방은 C2 제약으로 의도적 잔류(fb_wingback/Balanced, obs#110)",
    "game_role_implication": "유지. 공격 전환 프리셋에서 att_wb 해방 검토 여지",
    "label": "캐시",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "RB",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "obs#147"
   },
   {
@@ -45,7 +57,11 @@
    "execution": "실측(3경기): 수비|우측 35-50% 핵심, 미들|중앙 20-34% 스텝인(포레스트전 최대, 최고 라인 경기서 x중심 33.6). 공격 3분의1 스파이크는 세트피스뿐(볼로냐 원정 헤더 골).\n\n[2026-08-12] 실측이 서사를 그대로 확인한다. 팟몹 백분위 최상단이 패스 정확도 95.5%(백분위 100)·롱볼 정확도 61.0%(98)·경고 0회(100)·파울 11회(88)로, '태클로 뛰어들지 않는 패시브 어그레시브' 규정과 정확히 대응한다. 시즌 그리드는 수비|우측 35-50% 핵심에 미들|중앙 20-34% 스텝인으로 '미드필드 스텝인' 주장이 서사가 아니라 실측임을 보여주고, cb_bpd/Aggressive 코사인 .938로 스쿼드 최고 정합이다. 외부 데이터의 약점 지목(후스코어드: 공중볼·크로스·태클 '약함', one-versus-one: 공중 경합 57.45%)은 우리 DB 경합 승률 67.1%(백분위 87)와 어긋나는데, 종목이 다르다 — 전체 경합은 강하고 공중볼만 약한 구조로 읽는 것이 두 자료를 모두 살린다.",
    "game_role_implication": "cb_defender/Balanced 확인 — 실측 미들 스텝인이 순수 스토퍼 Defend보다 Balanced를 지지. [이벤트 스탯 2026-07-02: 패스 96%(스쿼드 최고) — BPD 3축 충족, 최적을 cb_bpd/Build-Up으로 승급.]\n\n[08-12] DB 처방 cb_bpd/Aggressive 유지에 추가 근거가 붙었다 — 브레이킹 더 라인스가 '스텝인'을 독립적으로 확인해줬다. 공중볼 약점은 외부 3개 소스가 일관되게 지적하므로 세트피스 마킹 배치에서 콘사를 파포스트 공격 임무에 쓰되 수비 시 최고 높이 마커로는 쓰지 않는 운용이 맞다. PlayStyles는 DB 기록(예상+·견제·슬라이딩태클) 외 새 확인 없음.",
    "label": "콘사",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "RCB",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "appearances 72-74 (measured); tactic_observations defence ; [08-12 서사수집] Breaking The Lines 2026-06-12 · WhoScored·one-versus-one 데이터 · 유튜브 컴필레이션(2026-07, 설명 기준) · astonvillanews 2026-04-13 · Yahoo Sports 아스날 관심 보도 · 팟몹 콘사 2025 프리시즌 발언"
   },
   {
@@ -55,7 +71,11 @@
    "execution": "실측: RCB 43경기 .943",
    "game_role_implication": "cb_bpd/Aggressive 유지. 게임 공중볼 스탯 낮음 감안(세트피스 마킹)",
    "label": "콘사",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "RCB",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "obs#147"
   },
   {
@@ -65,7 +85,11 @@
    "execution": "실측(3경기): y~67-71 좌중앙 상수. 깊이는 지배도에 비례: 볼로냐전 딥(자기 진영 70%), 풀럼(미들 54%)·포레스트(x 최대 97 — 헤더+PK 유도)선 미들 스텝인. 오픈플레이 공격 3분의1 볼륨은 0에 가까움.\n\n[2026-08-12] 실측은 '더 넓고 더 높게 선다'는 통설을 부분 기각한다. DB 그리드는 y~67-71 좌중앙 상수로, 좌측 터치라인 쪽으로 벌어지지 않고 좌중앙 채널을 벗어나지 않는다. 오픈플레이 공격 3분의1 볼륨은 0에 가깝고, 미들 스텝인은 지배 국면 한정이다(볼로냐전 자기 진영 70%, 풀럼·포레스트전 미들 진입). 반면 전진 배급 서사는 수치로 확인된다 — 팟몹 25/26 패스 정확도 89.0%(백분위 72)·정확한 롱볼 53회(80)·드리블 성공 7회(82)·볼 회수 80회(89)로, 웨스트햄전 최종 3분의1 패스 16회(그 라운드 리그 1위)와도 방향이 같다. 다만 스카이가 인용한 캐리 거리 2,344m·최종 3분의1 캐리 상위 4% 같은 수치는 초기 시즌 기준이라 25/26 실측 볼륨과 직접 대응하지 않는다.",
    "game_role_implication": "cb_bpd/Build-Up 명백히 확인.\n\n[08-12] DB 처방 cb_bpd/Build-Up 유지가 맞다 — 새 서사는 기능(빌드업·전진 패스·캐리)만 지지하고 위치 상향은 지지하지 않는다. 좌측 폭은 마첸이 대고 파우 토레스는 좌중앙에 남는 구조이므로, 그를 넓게 벌리는 변형(하이브리드 백3의 좌측 와이드 역할)은 실측 근거가 없다. 후스코어드가 공중볼 '매우 약함'·태클 '약함'으로 평가한 점과 DB 약점(pac 67, 회복 속도)이 겹쳐 하이라인 배후 커버 부담은 여전히 미해결이다. PlayStyles는 DB 기록(핑패스) 외 새 확인 없음.",
    "label": "파우 토레스",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "LCB",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "appearances player_id=4 ranks 1-3 (measured); tactic_observations build_up ; [08-12 서사수집] 에메리 영입 발언(2023, 캐비앗) · Sky Sports 패스마스터 분석 · Breaking The Lines(발행일 미확인) · astonvillanews 2026-03-24·2026-04-22 · 유튜브 Dan Rolinson·John Townley 2025-06(설명 기준)"
   },
   {
@@ -75,7 +99,11 @@
    "execution": "79분 7.0, 23/26패스, 3/6경합, 2태클, 3클리어. 평균위치 (28.70,68.14), 경기 적합 cb_bpd/Build-Up .798.",
    "game_role_implication": "cb_bpd/Build-Up 유지. 대표 처방 변경 없음.",
    "label": "파우 토레스",
+   "observed_from": "2026-08-12",
+   "observed_to": "2026-08-12",
    "position": "LCB",
+   "sample_note": "2026-08-12 UEFA Super Cup PSG전 단일 경기 — SofaScore event 16260286와 경기 후 영상·기사 교차검증",
+   "sample_scope": "specific_match",
    "source": "SofaScore event 16260286; El País 2026-08-12; The Villa Park Podcast 2026-08-13"
   },
   {
@@ -85,7 +113,11 @@
    "execution": "실측(3경기): 3경기 모두 y~82-84 터치라인 밀착. 평균 높이 45→51→53, 공격 3분의1 비중 21%→35%→41%로 임무별 가변. 52-86터치, 큰 왕복 볼륨. 보강 2026-07-02(팰리스 원정 7.7·스퍼스 원정 6.9 포함 5그리드): 높이가 홈/원정 안정적 — 평균 전진 홈 ~49.6 vs 원정 ~47.9(툴 y). 원정에서도 공격 3분의1 볼륨 유지.",
    "game_role_implication": "균형용은 fb_fullback/Versatile(최적), 실측 움직임은 fb_att_wb/Support에 최적합(코사인 0.89). 마첸과의 핵심 대비: 디뉴는 홈이든 원정이든 같은 왕복 프로필 — 게임플랜이 장소·상대 변동을 견뎌야 할 때 그를 선택.",
    "label": "디뉴",
+   "observed_from": null,
+   "observed_to": null,
    "position": "LB",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "appearances player_id=5 ranks 1-3 (measured); tactic_observations in_possession"
   },
   {
@@ -95,7 +127,11 @@
    "execution": "실측(3경기): 평균 높이 44-56/100(일반 FB 훨씬 이상), y~81-83. 매 경기 좌측 채널 엔드투엔드 — 자기 박스에서 상대 바이라인까지. 마카비전 바이라인 런 골. 브렌트포드전 115히트·100터치·6태클. 보강 2026-07-02(뉴캐슬 원정 7.1·페예노르트 원정 7.0 포함 5그리드): 높이가 홈/원정 요동 — 평균 전진 홈 ~51.6 vs 원정 ~43.6, 스쿼드 최대 홈/원정 격차. 하이앤와이드는 실재하나 주로 홈 현상 — 원정에선 딥으로 수렴.\n\n[2026-08-12] 실측은 '높고 넓다'를 조건부로만 인정한다. DB 5그리드 보강 실측은 평균 전진 높이가 홈 ~51.6 vs 원정 ~43.6으로 스쿼드 최대 홈/원정 격차를 보이며, 하이앤와이드는 주로 홈 현상이고 원정에서는 평범한 딥 레프트백으로 수렴한다. 팟몹 백분위는 홈형 프로필을 뒷받침한다 — 상대 박스 터치 67회(백분위 95)·기회 창출 26회(88)·드리블 성공 21회(88)·xA 2.41(87)·빅찬스 창출 5회(83). 그러나 산출 일관성은 낮고(평균 평점 백분위 18, rate_v 6.74로 확정 XI 중 최저), 이는 외부 비판과 정확히 겹친다 — 2026-03-05 astonvillanews는 첼시전 수비 붕괴의 중심으로 그를 지목하며 '깊게 내려서는 약체 상대에서 가장 좋아 보이고 디뉴가 더 꾸준하다'고 결론냈고, 원푸볼은 5.8 소파스코어 평점·크로스 정확도 0%·지상 경합 4회 패배를 들어 벤치행이 타당하다고 봤다.",
    "game_role_implication": "홈/지배 임무용 fb_att_wb/Attack 유지. 디뉴와의 핵심 대비: 원정·강한 윙어 상대면 실측 프로필이 평범한 딥 LB로 붕괴 — 그땐 디뉴 우선 또는 마첸 Defend 변형.\n\n[08-12] DB 처방 운용(홈·지배 경기 fb_att_wb/Attack, 원정·강한 윙어 상대는 Defend 변형 또는 대체)을 유지·강화한다. 새로 확인된 결정적 정보는 감독 측 요구 방향이다 — 디 애슬레틱 제이컵 탠즈웰 보도에 따르면 에메리는 빌드업에서 하이브리드 백3로 전환할 수 있는 더 피지컬한 좌측 수비수를 찾고 있으며, 이는 우측에서 하는 것을 좌측에도 이식하겠다는 뜻이다. 마첸의 실측 프로필은 그 요구(안으로 들어와 백3를 이루는 인버티드 좌측 수비수)와 맞지 않으므로, 이 노선이 관철되면 마첸의 att_wb 처방은 구조적으로 밀린다. PlayStyles는 DB 기록(래피드) 외 새 확인 없음.",
    "label": "마첸",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "LB",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "appearances player_id=6 ranks 1-3 (measured); tactic_observations modulation axis 4 ; [08-12 서사수집] themastermindsite 2025-12-29 · 에메리 2026-02 발언 · Read Aston Villa 2026-06-10(탠즈웰 인용) · astonvillanews 2026-03-05·2026-02-18 · OneFootball 2026 ; [원문 URL 보강] TheMastermindSite 「Unai Emery – Aston Villa – Tactical Analysis – 2025-26 Edition」 https://themastermindsite.com/2025/12/29/unai-emery-aston-villa-tactical-analysis-2025-26-edition/"
   },
   {
@@ -105,7 +141,11 @@
    "execution": "90분 7.0, 11/16경합, 4태클, 2키패스, 27/35패스. 평균위치 (50.02,87.46), 경기 적합 fb_wingback/Balanced .759.",
    "game_role_implication": "fb_wingback 계열 유지. 한 경기 적합값으로 전진 강도를 바꾸지 않음.",
    "label": "마첸",
+   "observed_from": "2026-08-12",
+   "observed_to": "2026-08-12",
    "position": "LB",
+   "sample_note": "2026-08-12 UEFA Super Cup PSG전 단일 경기 — SofaScore event 16260286와 경기 후 영상·기사 교차검증",
+   "sample_scope": "specific_match",
    "source": "SofaScore event 16260286; The Villa Park Podcast 2026-08-13; r/avfc post-match 2026-08-12"
   },
   {
@@ -115,7 +155,11 @@
    "execution": "DB 실측과 정합: squad_entries rate 7.05(상위 4경기)·v_profile 5경기 6.88, 양쪽 CB 커버. 시즌 그리드(0001203126249762X9X727665) 자기진영 중앙-우 이중 피크 = RCB 기본. optimal은 LCB cb_bpd/Aggressive — 스텝아웃 실측(시즌그리드 .826)이 근거로, '리딩·스텝인' 서사와 방향 일치.\n\n[2026-08-12] DB duties에 이미 'dm_holding/Defend(RDM 비상 — 리버풀전 실증)'가 기록돼 있었는데, 2026년 5월 포레스트 준결승 딥 미드필드 기용은 이 처방 이력의 독립적 재확인이다. 실측과 서사가 같은 방향을 가리킨다. 팟몹 백분위도 '무실책 안정형' 서사대로다 — 패스 정확도 94.2%(백분위 98)·퇴장 0(100)·경고 0(100)·파울 2회(91)·공중 경합 승률 64.7%(74). 다만 위치 주장에는 어긋남이 있다. 백3의 좌·중앙 배치를 시사하는 결승 보도와 달리 DB 시즌 그리드(0001203126249762X9X727665)는 자기 진영 중앙-우 이중 피크로 RCB가 기본이며, optimal은 스텝아웃 실측(.826)에 근거한 LCB cb_bpd/Aggressive다. 실측 표본(25경기, full2526 코사인 .615)이 얇아 백3 구성 자체는 소수 표본 사건으로 본다.",
    "game_role_implication": "cb_bpd/Aggressive(LCB 예비) + dm_holding/Defend(RDM 비상 — 리버풀전 실증) 유지. 로테이션 CB 이상을 시사하는 서사 없음 — 처방 변경 근거 부재.\n\n[08-12] DB 처방 cb_bpd/Aggressive(LCB 예비) + dm_holding/Defend(RDM 비상) 유지가 맞고, 이번 조사로 후자의 근거가 두 경기(리버풀전·포레스트 준결승)로 늘었다. 오나나의 장기 이탈(아래 player_id 8 참조)을 감안하면 RDM 비상 처방은 26/27에 실제로 쓰일 확률이 크게 올라간다 — 다만 pac 50이라는 DB 약점 때문에 하이라인·회복 수비 국면에는 여전히 부적합하다. PlayStyles는 DB에 '없음'으로 기록돼 있고 새로 확인된 것도 없다.",
    "label": "린델뢰프",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "CB",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "LiveScore — livescore.com/en/season-stats/victor-lindelof/27767/ · StatMuse — statmuse.com/fc/player/victor-nilsson-lindelöf-6430 · FotMob — fotmob.com/players/258269 ; [08-12 서사수집] Read Aston Villa 2026-05-08·2026-05-07 · astonvillanews 2026-05-17 · el-balad 결승 선발 딜레마 · 에메리 포레스트 준결승 후 발언 · 린델뢰프 본인 잔류 발언"
   },
   {
@@ -125,7 +169,11 @@
    "execution": "90분 6.4, 39/41패스, 1인터셉트, 2클리어, 8회수. 평균위치 (29.11,36.46), 경기 적합 cb_bpd/Aggressive .895.",
    "game_role_implication": "기존 CB/RDM 비상 처방 유지. 단일경기로 역할 변경 없음.",
    "label": "린델뢰프",
+   "observed_from": "2026-08-12",
+   "observed_to": "2026-08-12",
    "position": "RCB",
+   "sample_note": "2026-08-12 UEFA Super Cup PSG전 단일 경기 — SofaScore event 16260286와 경기 후 영상·기사 교차검증",
+   "sample_scope": "specific_match",
    "source": "SofaScore event 16260286; El País 2026-08-12; The Villa Park Podcast 2026-08-13"
   },
   {
@@ -135,7 +183,11 @@
    "execution": "사이드 불문: 중앙 15선발(평균 7.21·최고 8.1)/우 8(7.04)/좌 6(7.05) — 세 레인 산출 거의 동일. 연승기엔 카마라 좌측, 이후 틸레만스 우측. 중앙(맨시티 8.1)·좌(본머스 8.2)·우(뉴캐슬 원정 7.3) 실측 전부 같은 미드블록 스크린+박스 쇄도 패턴.\n\n[2026-08-12] 릴 시절 스카우트 리포트들의 기능 판정이 현재 실측과 놀랍도록 일치한다. 토탈 풋볼 어낼리시스는 그를 '모든 것을 잘하지만 뛰어난 것은 없는' 박스투박스로 규정하며 상대 박스보다 자기 박스 근처에 더 오래 머문다고 적었고, ScoutingStats는 현 빌라 프로필에서 전진 패스와 도움 수치가 낮다고 지적한다 — DB의 창조성 최저(xa .04·kp 1.0)와 dm_holding 확정 근거와 정확히 같다. 캐넌스탯의 90분당 경합 4.4-6.8회·승률 61-63% 역시 DB 경합 승률 63.9%(백분위 98)와 수치가 맞는다. 공중 지배는 DB에서 더 뚜렷하다 — 공중 경합 승 45회(91)·승률 66.2%(90)·걷어내기 59회(91)·슛 블록 17회(96)·헤더 슛 5회(86). 다만 릴 자료의 '과도하게 공격적, 90분당 1.7파울' 지적은 DB 25/26 프로필의 파울 항목이 상위에 없어 확인되지 않는다(체제 차이로 처리).",
    "game_role_implication": "dm_boxcrasher/Balanced 확인. 파트너 따라 LDM/RDM 자유 배치 — 수정 최적 XI는 카마라(RDM) 옆 LDM. [이벤트 스탯 2026-07-02: 긴장 — 최고 경기 기능은 박스크래셔(듀얼 6.6·공중 2.3·피벗 최저 패스량 37)이나 이 표본은 지배 편향 공유(시즌 최적은 dm_dlp/Roaming, 시즌 깊이 ~44).] [샷맵 2026-07-02: 슛의 35%가 헤더 — 박스 존재감은 대부분 세트피스 공중 도착. 박스크래시는 국면 한정, dm_dlp 오픈플레이 움직임과 양립.] [확정 2026-07-05: dm_holding/Roaming — 숙련도 타이브레이커(유일 숙련 DM). A/B 종결.]\n\n[08-12] 처방 자체(dm_holding/Roaming)는 유지한다 — 새 근거는 모두 이를 지지한다. 그러나 운용 전제가 무너졌다: 오나나는 2026-07-07 시애틀에서 열린 월드컵 16강 미국전(벨기에 4-1 승) 21분 만에 오른쪽 무릎 전방십자인대가 파열됐고, 7월 21일 리옹에서 수술을 받았으며, AFP 기준 최소 9개월 이탈로 2027년 4월경 복귀가 예상된다(빌라 측 6~9개월 관측도 병기됨). 즉 26/27 시즌 대부분 결장이며, DB의 확정 XI LDM 처방은 시즌 초반 가용 자원이 아니다. 대체 경로는 DB에 이미 있는 것들로 좁혀진다 — obs#129의 카마라 RDM·고메스 LDM 조합, 그리고 린델뢰프 RDM 비상(player_id 7). PlayStyles는 DB 기록(프리시전 헤딩·슬라이딩태클·압박검증·인포서) 외 새 확인 없음.",
    "label": "오나나",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "pivot (all lanes)",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "player_match_positions player_id=8; appearances Onana heatmaps x4 (measured) ; [08-12 서사수집] Premier League 알렉스 케블 분석(2024, 영입 시점) · Total Football Analysis·Breaking The Lines(릴 시절, 체제 캐비앗) · ScoutingStats.ai · CannonStats · Get French Football News·Yahoo 2026-07-21 ACL 보도 · Read Aston Villa 2026-07-21 · 오나나 본인 발언(soccerway)"
   },
   {
@@ -145,7 +197,11 @@
    "execution": "실측: 피벗 29경기 평점 7.13, dm_holding/Roaming",
    "game_role_implication": "dm_holding/Roaming 유지. 세트피스는 게임 공중볼 스탯으로 재현",
    "label": "오나나",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "LDM",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "obs#145"
   },
   {
@@ -155,7 +211,11 @@
    "execution": "최다·최고 포지션: 11선발 평균 7.32(+중앙 10선발 7.24 — 레인 경계에 걸친 같은 역할, 합산 21선발 ~7.28), 최고 8.4(EL 결승·골). 실측: 좌중앙의 더 깊은 배급자.",
    "game_role_implication": "dm_dlp/Build-Up(현 벤치 매핑) 확인 — 수정된 피벗 기하에서 카마라(RDM)의 1순위 LDM 파트너. [이벤트 스탯 2026-07-02: 기능으로 메트로놈 검증 — 패스 87%·xA 0.30(스쿼드 최고)·xG 0.12: 딥 크리에이터, 3축 확인.] [샷맵 2026-07-02: 30슛 중 헤더 5+6야드 4 — 메트로놈 위에 늦은 박스 도착 실측. Build-Up 포커스에 도착 업사이드.]",
    "label": "틸레만스",
+   "observed_from": null,
+   "observed_to": null,
    "position": "pivot-left",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "player_match_positions player_id=9; appearances Tielemans deep heatmaps"
   },
   {
@@ -165,7 +225,11 @@
    "execution": "7선발 평균 7.24, 최고 8.4. 실측(포레스트 홈 7.9·어시스트): 90분 123터치 — 일반 10번의 거의 2배 볼륨. 좌편향 전장 배급.",
    "game_role_implication": "빌라가 점유 지배를 예상하는 경기용 컨트롤 변형 10번(cam_playmaker/Build-Up 성향) 가용. 주 슬롯은 여전히 피벗.",
    "label": "틸레만스",
+   "observed_from": null,
+   "observed_to": null,
    "position": "CAM",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "player_match_positions player_id=9; appearances match_id=41 (measured)"
   },
   {
@@ -175,7 +239,11 @@
    "execution": "최다 기용: 21선발 1672분 평균 7.08, 최고 8.7(포레스트 4강)+8.6/8.5 — 천장 경기가 전부 여기. 실측 히트맵: 우 하프스페이스·채널, 박스 가장자리 도착(득점).\n\n[2026-08-12] 실측이 매체 서사를 부분 확인하고 부분 정정한다. ⑴ '안으로 접힌다'는 슬롯 실측으로 확인됨 — RAM 슬롯 정본 x=85 대비 실측 76.1(Δ−8.9), LAM은 14→30.9(Δ+16.9)로 좌측이 더 크게 접히고, 폭 담당인 풀백은 그대로다(LB Δ+5.9·RB Δ−5.2). ⑵ 그러나 '인사이드 포워드'는 아니다 — 맥긴 RM 실측의 우측 터치라인 열 비중이 .48~.60인데 wm_insidefwd 커널은 .19~.27로 방향이 반대다. wm_wideplm/Attack 커널(터치라인 .50·안쪽 .50)이 실측 .51과 정확히 겹치고 적합 1위(.761)다. ⑶ Fotmob 백분위는 '와이드 배급자' 쪽 — 정확한 롱볼 89·기회 창출 73·성공한 크로스 76·크로스 정확도 69로 전달 지표가 살아 있고, 상대 진영 볼 탈취 85·얻어낸 파울 87로 전방 압박 기여도 실재한다. 샷맵은 46슛 중 헤더 0·평균 17.1m로 박스 가장자리 도착형. ⑷ 평점: RM 21선발 7.08(천장 8.7/8.6/8.5), 피벗우측 7선발 7.30·적합 .878.",
    "game_role_implication": "기반 XI용 wm_widemid/Support(현 최적) 확인. [이벤트 스탯 2026-07-02: 최적 wm_insidefwd/Balanced로 승급.] [샷맵 2026-07-02: 46슛 중 헤더 0·6야드 1, 평균 17.1m, 골대 좌측 편향 — 박스 스트라이커가 아니라 박스 가장자리 인사이드 포워드 도착. 승급 보강.]\n\n[08-12] FC26 wm_wideplm(와이드 플레이메이커)/Attack이 실측 최적이고, 이번 회차 매체 조사도 이를 반증하지 않았다 — 어떤 소스도 그를 '인사이드 포워드'라 부르지 않고, 프리미어리그 공식 서술의 '측면화된 10번 + 하프스페이스'는 wide playmaker의 정의와 사실상 같은 말이다. 다만 매체 어디에도 'wide playmaker'라는 용어는 나오지 않으므로 명칭 일치가 아니라 기제 일치다. 뱅크 복귀량(obs#39: wideplm/Attack 자기진영 질량 0.00 vs widemid/Support 0.60)이 여전히 유일한 반대 근거이므로, 두 줄 4 복귀를 요구하는 프리셋에서는 wm_widemid/Support 유지가 타당하다. PlayStyles는 DB 기록분(압박검증·끈기와인내·인포서)만 사용.",
    "label": "맥긴",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "RM",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "player_match_positions player_id=10; appearances McGinn RM heatmaps ; [08-12 서사수집] PremierLeague.com(Clarke 2024-01-19) · TheMastermindSite(2025-12-29) · achievers.amway.com 선수 해부 · UEFA.com 맥긴 인터뷰(2026-05-13) · BBC Sport · Soccerway 재계약 · YouTube TACTICAL DEBRIEF(2025-09-29경, 미시청) / 내부: obs#151(=id158)·obs#153(=id160)·obs#145, player_duties, fotmob_detail_stats ; [원문 URL 보강] TheMastermindSite 「Unai Emery – Aston Villa – Tactical Analysis – 2025-26 Edition」 https://themastermindsite.com/2025/12/29/unai-emery-aston-villa-tactical-analysis-2025-26-edition/"
   },
   {
@@ -185,7 +253,11 @@
    "execution": "최고 평균 포지션: 7선발 평균 7.30 — RM 평균보다 높고 험지 원정에 집중. 실측(페예노르트 원정 7.9·골): 전장 왕복 커버(x3-99), 미들|중앙+미들|우측 핵심에 실제 회수 작업.",
    "game_role_implication": "정당한 2차 매핑: 원정/수비 변형 프리셋에서 자연 DM 대신 CM-우측/DM 인접 역할 Balanced 포커스.",
    "label": "맥긴",
+   "observed_from": null,
+   "observed_to": null,
    "position": "pivot-right",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "player_match_positions player_id=10; appearances match_id=3 (measured)"
   },
   {
@@ -195,7 +267,11 @@
    "execution": "4선발 평균 6.90. 실측(웨스트햄 홈 7.8·골): 정중앙 연결자(미들|중앙 35%), 컴팩트 x29-87 — 기능하지만 그의 압박·박스 쇄도 가치는 우측 와이드나 우측 딥에서 더 산다.",
    "game_role_implication": "선호하지 말 것. 부엔디아·로저스 둘 다 불가할 때만.",
    "label": "맥긴",
+   "observed_from": null,
+   "observed_to": null,
    "position": "CAM",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "player_match_positions player_id=10; appearances match_id=22 (measured)"
   },
   {
@@ -205,7 +281,11 @@
    "execution": "실측: RM 21경기, wm_widemid/Support(뱅크 복귀) — 외부 분석이 obs#27·#89를 독립 재현",
    "game_role_implication": "wm_widemid/Support 유지",
    "label": "맥긴",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "RM",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "obs#145"
   },
   {
@@ -215,7 +295,11 @@
    "execution": "DB 실측과 정확 정합: pos_class별 그리드가 다포지션 서사를 정량 입증(피벗우 18경기·피벗중 3·피벗좌 1·RM/AMR 1 + RB 8선발 704분 별도 슬롯). 피벗 21경기 평균 6.62·RB 6.46은 팟몹 6.39와 상응 — '임팩트 부족' 비판과 평점 실측 일치. 기능축은 볼위닝(듀얼 5.8·인터셉트 1.8·xa .03).",
    "game_role_implication": "dm_holding/Ball-Winning(RDM, 카마라 동형) + fb_wingback/Balanced(RB .832) 겸용 유지. 서사의 성장 한계론 + 선덜랜드 링크는 스쿼드 플래닝(팔리냐 영입 시 서열 하락) 참고 사항.",
    "label": "보가르드",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "DM/FB",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "Aston Villa News — astonvillanews.co.uk/2026/05/31/lamare-bogarde-may-have-already-shown-true-potential-at-aston-villa-his-best-isnt-good-enough/ · FotMob — fotmob.com/players/1190033/lamare-bogarde · avfc.co.uk/players/lamarbogarde/"
   },
   {
@@ -225,7 +309,11 @@
    "execution": "실측: 26경기 평균위치 스윕 y=42.6(우 12/중 12/좌 2) — 우중앙 피벗. 10월부터 11연승 내내 우측 고정, 1월 부상까지. 깊이: 지배 경기 x 39-54 하프라인 컨트롤러(상위3 히트맵 미들 47-66%), 접전에선 더 딥. 탈편향 2026-07-02: 첼시 원정(6.7)·리버풀 원정 0-2패(6.3) 추가 — 포지션-순수 집계 여전히 하프라인(툴 y≈45), 최근접 커널 dm_dlp/Roaming(0.83) vs dm_holding/Ball-Winning(0.58). 추가: 피벗 사이드가 시즌 중 전환 — 8월~10월중순 좌측(y~55-65), 스퍼스 원정 승(10/19)부터 우측(y~30-44) 고정.\n\n[2026-08-12] 매체 서사('딥라잉 앵커')와 우리 실측의 오래된 긴장이 이번에도 재확인된다. 우리 탈편향 표본은 그가 하프라인 근처(툴 y≈45)에 사는 **우중앙 딥라잉 플레이메이커**임을 보이고, 26경기 평균위치 스윕은 y=42.6(우 12/중 12/좌 2)이다 — 시즌 중 좌→우 전환(10월 중순, 스퍼스 원정 승 이후 고정)까지 잡혀 있다. 커널: dm_dlp/Roaming .83 vs dm_holding/Ball-Winning .58. 반면 기능 실측은 반대편을 가리킨다 — Fotmob 백분위 경합 승 93(116회)·공중 경합 승 90·공중 경합 승률 89·경합 승률 80으로 스쿼드 1위 볼위닝이고, 창조는 최저(xA 백분위 27·KP 1.0). 배급 축은 롱볼 정확도 88·패스 정확도 74·어시스트 백분위 90으로 살아 있어 매체의 '깊은 곳에서 끌어내는 빌드업' 서술과 맞는다. 피벗 16경기 7.14.",
    "game_role_implication": "RDM 슬롯 확인. 역할 갱신: dm_dlp 프로필(kind=role: 0.83). optimal은 처방적 안전선 dm_holding/Ball-Winning 유지. [이벤트 스탯 2026-07-02: dlp 경향 반전 — 기능은 스쿼드 최고 볼위닝(듀얼승 8.4·인터셉트 3.0/경기)에 높은 패스량(56/경기·87%). 움직임=dlp, 기능=holding의 하이브리드. 기능 근거로 dm_holding/Ball-Winning 유지.] [확정 2026-07-05: dm_holding/Ball-Winning — 숙련 동률 시 기능 축 우선. A/B 종결.]\n\n[08-12] dm_holding/Ball-Winning 유지(2026-07-05 A/B 종결, 숙련 동률 시 기능 축 우선). 이번 매체 조사는 이 판정을 흔들지 않는다: 서술된 임무('뒤를 보호하고 주변에 자유를 준다')는 holding의 정의이고, 움직임이 dlp를 닮은 것은 이미 기록된 하이브리드다. 새로 추가할 만한 함의는 **파트너 의존성** — 고메스가 전진형으로 쓰이면 카마라의 자기진영 질량이 더 커져 holding 쪽으로 더 밀린다는 것이 매체의 일관된 예측이다. PlayStyles는 DB 기록분(슬라이딩태클·압박검증 등은 56번 항목이며 카마라 것은 미조회) 외 주장 금지 — 이번 회차에서 카마라 PlayStyles는 조회하지 않았다.\n[2026-08-13 obs#195 정정] 옛 듀얼 8.4·인터셉트 3.0 스쿼드 1위 근거는 폐기한다. 0 생략 보정 후 6.9·1.22이며 인터셉트·태클 1위는 오나나다. 현재 처방은 dm_holding/Defend이고, 근거는 최고 볼위너 서열이 아니라 백4 스크린 임무·안전한 배급·창조 역할 오배정 방지다.",
    "label": "카마라",
+   "observed_from": null,
+   "observed_to": null,
    "position": "LDM",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "appearances player_id=12 ranks 1-3 (measured); tactic_observations modulation ; [08-12 서사수집] Squawka 카마라 분석 · TFA 「Unai Emery Tactics At Aston Villa 2025/2026」 · astonvillanews.co.uk(2026-04-09·04-15) · readastonvilla.com(2026-08-06·08-07) · AOL/PA 복귀 리포트(2026-08) / 내부: player_duties, obs#129·#130·#147, fotmob_detail_stats ; [원문 URL 보강] Total Football Analysis 「Unai Emery Tactics at Aston Villa 2025/2026」 https://totalfootballanalysis.com/data-analysis/unai-emery-tactics-aston-villa-2025-2026-data-analysis"
   },
   {
@@ -235,7 +323,11 @@
    "execution": "실측: 피벗 16경기 7.14",
    "game_role_implication": "dm_holding/Defend(RDM opt) 유지",
    "label": "카마라",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "RDM",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "obs#147"
   },
   {
@@ -245,7 +337,11 @@
    "execution": "최다 기용: 21선발 1759분 평균 7.10, 최고 8.5(리즈 원정) — 그의 최고 per-90 축. 리버풀 4-2 실측 히트맵: 로밍형 중앙 크리에이터, 골+어시스트.",
    "game_role_implication": "부엔디아의 10번 대안으로 cam_playmaker/Roaming 가용. 그의 LW 슬롯을 말렌/산초 로테이션에 열어줌.",
    "label": "로저스",
+   "observed_from": null,
+   "observed_to": null,
    "position": "CAM",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "player_match_positions player_id=13; appearances Liverpool CAM (measured)"
   },
   {
@@ -255,7 +351,11 @@
    "execution": "최고 천장 포지션: 13선발 평균 6.91이지만 시즌 최고 2경기(웨스트햄 9.3·선덜랜드 홈 9.0)와 실측 피크(8.84/8.46)가 전부 여기. 붐-오어-콰이엇 프로필: CAM보다 바닥은 낮고 천장은 높다.",
    "game_role_implication": "최대 천장용은 w_insidefwd/Attack(현 최적)이 맞음. 일관성을 원하면 CAM 기용 + 자연 LW 배치.",
    "label": "로저스",
+   "observed_from": null,
+   "observed_to": null,
    "position": "LW",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "player_match_positions player_id=13; appearances 8.84/8.46 LW heatmaps"
   },
   {
@@ -265,7 +365,11 @@
    "execution": "최약 축: 8선발 평균 6.33 — 스쿼드 표본 내 (선수,포지션) 쌍 최악. 최고 RM 실측(맨유 원정 7.3)조차 측면을 버리고 중앙 터치를 찾아다님 — 인버티드 윙어 무기가 우측으로 이식되지 않는다.",
    "game_role_implication": "어떤 프리셋에서도 로저스를 우측에 배치하지 말 것. 우측 커버 필요 시 맥긴·게상 우선.",
    "label": "로저스",
+   "observed_from": null,
+   "observed_to": null,
    "position": "RM",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "player_match_positions player_id=13; appearances match_id=45 (measured)"
   },
   {
@@ -275,7 +379,11 @@
    "execution": "최다 기용: 21선발 1541분 평균 6.90 — 그리고 천장: 9.4(포레스트 4강)·8.5(본머스)·8.3(EL 결승) 전부 좌중앙 실측(중심 y64-72). 언론의 '우측 드리프트 10번' 서사는 사망: 시즌 우측 선발 단 2회.\n\n[2026-08-12] 이번 회차 최대 수확은 **수비 프로필의 외부 확인**이다. 우리 Fotmob 백분위는 수비적 행동 94(197회)·볼 회수 92(5.58/90)·태클 91(2.51/90)·얻어낸 파울 92·경합 승 84·인터셉트 84로 창조 지표(키패스 백분위 74·xA 70)보다 수비 지표가 더 높은데, 2026-08-07 바이에른 프리시즌에서 그가 **79분간 태클 10·인터셉트 1·리커버리 6·듀얼 13으로 양 팀 통틀어 수비 기여 1위**였다는 보도가 이를 독립 재현한다. 위치 축은 우리 실측이 여전히 매체를 이긴다 — 언론의 '우측 드리프트 10번' 서사는 시즌 우측 선발 2회뿐이라는 실측으로 기각되어 있고, 이번 소스들도 '중앙에서도 뛰고 양 측면으로 흐른다'는 모호한 서술에 그친다. 좌측 와이드 21선발 6.90, 천장 9.4(포레스트 4강)·8.5·8.3은 전부 좌중앙 실측(중심 y64-72). CAM 적합 .672는 n=3 소표본. 25/26 전 대회 11골 9도움(유로파 4골 5도움).",
    "game_role_implication": "최적 행은 10번(cam_playmaker/Roaming) — 단 자유 역할이 좌편향으로 이해될 때만 정확. 엄격한 셋업에선 AML/좌10번 슬롯. 절대 우측 배치 금지.\n\n[08-12] cam_playmaker/Roaming(자유 10번) 유지 — 단 그 자유가 **좌편향으로 이해될 때만** 정확하며, 엄격한 셋업에서는 LM/좌10번 슬롯이다. 우측 배치 금지 원칙은 이번 회차 매체 조사로도 반증되지 않았다(어느 소스도 우측 고정을 주장하지 않는다). 26/27 함의: 만잠비 부상으로 그가 실제 중앙 10번 선발이 되는 국면이 생겼으므로 CAM-central 슬롯 표본이 늘어날 여지가 있다 — 현재 CAM 표본 n=3은 판단 근거로 약하므로 시즌 초 실측으로 재평가 대상이다. PlayStyles는 DB 기록분(테크니컬·슬라이딩태클)만 사용.",
    "label": "부엔디아",
+   "observed_from": null,
+   "observed_to": null,
    "position": "LW/left-10",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "player_match_positions player_id=14; appearances 75-77 (measured) ; [08-12 서사수집] readastonvilla.com(2026-08-06) · footballinsider247 프리시즌 스탯 리포트(2026-08) · Yahoo Sports UK(2026-08) · UEFA 25/26 유로파 도움 순위 / 내부: player_duties, player_evaluations, fotmob_detail_stats, prescriptions(CAM n=3)"
   },
   {
@@ -285,7 +393,11 @@
    "execution": "신뢰성 포지션: 8선발 평균 7.09 — 그의 선발당 최고 평균, 전진 역할보다 높음. 실측(뉴캐슬 원정 7.9·골): 수비|좌 31%+미들|좌 22% 진짜 수비 작업(4태클)에 박스 도착까지.",
    "game_role_implication": "게임: 로테이션 셋업에서 CM/좌8번 Balanced 또는 Build-Up이 정당한 2차 매핑 — 창의성 유지에 수비 존재감 추가.",
    "label": "부엔디아",
+   "observed_from": null,
+   "observed_to": null,
    "position": "pivot-left",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "player_match_positions player_id=14; appearances match_id=18 (measured)"
   },
   {
@@ -295,7 +407,11 @@
    "execution": "실측: 좌편향 자유 10번(부엔디아 좌측 실측이 기사 \"우측 드리프트\"를 정정한 원조 사례), cam_playmaker/Roaming",
    "game_role_implication": "cam_playmaker/Roaming 유지",
    "label": "부엔디아",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "CAM",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "obs#145"
   },
   {
@@ -305,7 +421,11 @@
    "execution": "DB 실측과 부분 정합: 상위 3경기 평균 7.33(measured 그리드는 RW, X 좌중앙행)·시즌 그리드(74134X6346...)는 좌측 전방 피크 — 우측 고정이 아니라 양 측면 로테이션(DB도 '린델뢰프/산초 rotation' 명기). '창조' 서사는 kp 2.5/경기(상위 경기 표본)와 정합, '낮은 생산' 서사는 시즌 1골 3도움과 정합 — 상위 표본과 시즌 전수의 괴리가 그의 시즌 요약이다.",
    "game_role_implication": "w_insidefwd/Attack 벤치 처방(왼발 인버티드 RW — 상위 경기 7.5/7.4/7.1 근거) 유지가 타당. 서사도 주전 재료 아님을 지지 — 임대 만료(05-31) 후 지위는 transfer 트래킹 사안.",
    "label": "산초",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "WM",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "Aston Villa News — astonvillanews.co.uk/2026/05/30/jadon-sancho-was-close-to-aston-villa-stardom-in-2025-26-the-numbers-prove-it/ · ESPN — espn.com/soccer/player/_/id/259836/jadon-sancho · LiveScore 25/26 시즌 스탯"
   },
   {
@@ -315,7 +435,11 @@
    "execution": "실측(3경기): 세 임무가 경기 유형별로 깨끗이 분리 — 선덜랜드: 순수 중앙 박스 점유(와이드 딜리버리 헤더 2), 리버풀: 중앙 박스+로저스와 좌측 링크, 맨시티(원정 역습 임무): 더 딥한 평균, 하프라인~박스 전환 레인, 중앙-우측 채널 버스트.\n\n[2026-08-12] '박스 상주형 도착자' 판정이 실측·샷맵·매체에서 3중 확인된다. 샷맵 103슛 중 박스 내 84%·6야드 24회·헤더 19회·xG/슛 0.19. Fotmob 백분위는 유효슛 76·PK 제외 xG 71·xGOT 69·상대 박스 터치 67(177회)·드리블 성공 73으로 마무리 축이 상단이고, 크로스 정확도 78·성공한 크로스 67은 그의 와이드 드리프트 임무(⑶)의 흔적이다. 창조는 여전히 없다(xA 0.03). 실측 3경기에서 임무가 경기 유형별로 깨끗이 분리되는 것도 그대로 — 선덜랜드전 순수 중앙 점유, 맨시티 원정에서는 더 딥한 평균위치와 하프라인~박스 전환 레인. 시즌 ST 슬롯 fit_sim .713(n=37, 평균 6.93), 상위 7경기 8.47.",
    "game_role_implication": "st_advanced/Versatile 정확히 확인 — 박스 점유/링크/채널 런 삼위일체는 Attack(순수 포처)보다 Versatile이 담는다. [샷맵 2026-07-02: 103슛/38이벤트, 박스 내 84%, 6야드 24, 헤더 19, xG/슛 0.19 — 순수 박스 점유 도착 프로필.]\n\n[08-12] st_advanced/Versatile 유지 확정. 매체·감독 발언 어디에도 순수 포처 서술이 없고, '뒷공간 런 + 홀드업 + 박스 도착'의 삼위일체는 Attack(순수 포처)보다 Versatile이 담는다. Support(링크형) 포커스는 xA 0.03이 반증하므로 여전히 부적합. PlayStyles는 DB 기록분(칩슛·프리시전 헤딩·끈기와인내)만 사용.",
    "label": "왓킨스",
+   "observed_from": null,
+   "observed_to": null,
    "position": "ST",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "appearances player_id=16 ranks 1-3 (measured); tactic_observations in_possession ; [08-12 서사수집] Sky Sports 에메리 독점 인터뷰(발행일 미확인) · TheMastermindSite(2025-12-29) · astonvillanews.co.uk(2026-04-24) · ThisIsAnfield 왓킨스 인터뷰(2026-05) · Yahoo Sports UK(2026 여름) / 내부: player_duties, 샷맵(2026-07-02), fotmob_detail_stats, prescriptions measured:season:full2526 ; [원문 URL 보강] TheMastermindSite 「Unai Emery – Aston Villa – Tactical Analysis – 2025-26 Edition」 https://themastermindsite.com/2025/12/29/unai-emery-aston-villa-tactical-analysis-2025-26-edition/"
   },
   {
@@ -325,7 +449,11 @@
    "execution": "실측: st_advanced 커널 정합, 상위 7경기 평점 8.47",
    "game_role_implication": "st_advanced/Versatile 유지",
    "label": "왓킨스",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "ST",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "obs#145"
   },
   {
@@ -335,7 +463,11 @@
    "execution": "실측은 왼쪽 센터백 배치를 그대로 확인한다. 25/26 전수 집계 LCB 17경기 평균 6.74, 그리드 `0010012000252102X31027510`은 최대값 칸이 4행 2열(자기 진영 좌중앙)이고 5행 2열=7·3행 2열=5로 좌중앙 레인에 질량이 몰려 있으며 우측 끝 열은 전 행 0이다. 슬롯 판정도 lineup_pos LCB 14경기(1202분·평점 6.59)·RCB 2경기뿐이라 좌측 고정이다. 그러나 '공격적 수비수' 쪽 지표는 서사만큼 강하지 않다 — Fotmob 25/26 PL에서 태클 5회(백분위 10, 90분당 2), 인터셉트 11회(27), 수비적 행동 108회(33), 경합 승률 55.1%(32), 공중 경합 승률 59.7%(53)로 대부분 중하위권이다. 반대로 배급 축은 뒷받침된다 — 패스 정확도 90.0%가 백분위 79, 성공 패스 842회(90분당 백분위 73), 정확한 롱볼 90분당 백분위 66이다. 세트피스 요구와 달리 리그 득점 0·유효슛 1(백분위 24)로 표적 산출은 나오지 않았다.",
    "game_role_implication": "현 `fit_role`=cb_bpd(Ball-Playing Defender) / `fit_focus`=Aggressive, `fit_sim`=0.935(25/26 LCB 17경기)로 등재돼 있다. 배급 지표(패스 정확도 백분위 79)가 Ball-Playing Defender 쪽을 뒷받침하므로 역할 자체는 유지가 타당하다. 다만 포커스 Aggressive는 그리드 형태가 뽑아낸 값이고 이벤트 지표(태클·인터셉트 하위권)는 오히려 cb_bpd/Build-Up 쪽 서술(점유 시 홀딩 미드필더처럼 전진)과 충돌하지 않는 수준이므로, 포커스는 노이즈 구간 재검토 대상으로 남긴다. PlayStyles는 DB에서 조회하지 않았으므로 지정하지 않는다.",
    "label": "밍스",
+   "observed_from": null,
+   "observed_to": null,
    "position": "LCB",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "roundtable.io 「Tyrone Mings And Aston Villa: What Happens Next?」(2026-06-09) https://roundtable.io/sports/soccer/premier-league/aston-villa/transfers/tyrone-mings-and-aston-villa-what-happens-next · Football Insider 「Aston Villa make Tyrone Mings decision as concerning data emerges」 https://www.footballinsider247.com/exclusive-aston-villa-make-tyrone-mings-decision-as-concerning-data-emerges · BBC Sport 「Emery eases fears over Villa's defensive crisis」 https://feeds.bbci.co.uk/sport/football/articles/cn8x2dj92myo · AOL/PA 「Villa boss Unai Emery wants Tyrone Mings to become consistent set-piece threat」 https://www.aol.com/villa-boss-unai-emery-wants-111542861.html"
   },
   {
@@ -345,7 +477,11 @@
    "execution": "⚠️ 위치 주장과 실측이 정면 충돌하고, 규약대로 실측을 채택한다. 빌라 25/26 전수 집계는 lineup_pos='RAM' 15경기(1235분) 평균 6.76이고 그리드 `003550024X002470013700113`은 좌측 두 열(1·2열)이 25칸 중 전부 0이며 최대값 칸이 2행 5열(우측 터치라인·전진 대역)이다. 즉 빌라는 그를 우측 레인에 고정했고 '중앙을 관통한다'는 서사가 그리드에 나타나지 않는다. 니스 시절 중앙 표본(prescriptions kind='measured:ST', 툴 x≈49·y≈65)과 팰리스 임대 표본(kind='measured:CP-loan', CAM, 툴 x≈40 — 중앙-좌측)은 서사와 일치하므로, 충돌은 선수 성향이 아니라 빌라의 배치에서 온다. 산출도 이 구조를 따라간다 — Fotmob 25/26 PL 기회 창출 5회(90분당 백분위 8), 슛 11회(8), 터치 412회(9), 성공 패스 154회(8), 상대 진영 볼 탈취 3회(11)로 창조·관여 지표가 리그 하위권인 반면 태클 24회(90분당 백분위 89)·경합 승 69회(89)·수비적 행동 85회(79)는 상위권이다. 우측에서 볼을 만지기보다 수비 트래킹을 한 선수의 서명이다.",
    "game_role_implication": "현 `fit_role`=wm_winger(Winger) / `fit_focus`=Balanced, `fit_sim`=0.782 — 25/26 빌라 우측 실측 기준으로는 정합하지만, 이는 '그가 그렇게 쓰였다'는 기록이지 최적 처방이 아니다. Winger/Balanced 설명(수비·공격 양쪽 지원, 배후 침투와 패스 옵션 혼합)은 그의 태클 백분위 89와는 맞지만 기회 창출 백분위 8과는 맞지 않는다. 니스·팰리스 표본이 가리키는 중앙 계열 처방은 이 행으로 대체되지 않으므로, 그를 다시 쓸 경우 슬롯을 우측 와이드로 고정하는 처방은 재검토 대상이다. ⚠️ 신분 충돌 명기: prescriptions 주석은 그가 26/27 스쿼드 밖(2026-06-30 소속 Crystal Palace)이라고 적었는데 obs#152는 Fotmob AVL 명단에서 그를 발견해 squad_entries(regime_id=1)에 OWNED로 등재했다 — 소속 확정 전까지 처방 인용에 이 충돌을 병기해야 한다. PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
    "label": "게상",
+   "observed_from": null,
+   "observed_to": null,
    "position": "RM",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "Crystal Palace 공식 「Evann Guessand joins Crystal Palace on loan」(2026-01-30) https://www.cpfc.co.uk/news/announcement/evann-guessand-joins-crystal-palace-on-loan/ · Wikipedia 「Evann Guessand」 https://en.wikipedia.org/wiki/Evann_Guessand · CaughtOffside 「Crystal Palace expected to sign Evann Guessand permanently」(2026-05-18) https://www.caughtoffside.com/2026/05/18/crystal-palace-agree-deal-premier-league-striker/"
   },
   {
@@ -355,7 +491,11 @@
    "execution": "그리드 `0000000000000000010001X10`은 최대값 칸이 최하단 행 중앙(자기 골문 앞)이고 인접 두 칸만 1로, 골문 이탈이 거의 없는 분포다. 25/26 GK 16경기(1306분) 집계 평균 7.08이고 커널 전수 재산출에서 `gk_goalkeeper`/Defend가 0.961로 `gk_sweeper`/Balanced 0.773 대비 Δ0.188 — EA 노이즈 구간(0.02~0.05, obs#91) 밖이다. Fotmob의 '스위퍼 행동 90분당 백분위 95'는 반대 신호로 보이지만 obs#154가 이미 기각했다 — 합계는 9회·백분위 41이고 per90 역산 시 리그 출전이 약 585분뿐이라 분모가 너무 작다. 오히려 프로필과 맞는 지표는 배급 쪽이다 — 패스 정확도 76.3%가 백분위 90(90분당도 90), 롱볼 정확도 34.9%가 백분위 64다. 선방 지표는 평범하다(선방률 65.5% 백분위 36, 선방 19회 33, 선방으로 막은 실점 −0.42로 기대 대비 마이너스).",
    "game_role_implication": "현 `fit_role`=gk_goalkeeper(Goalkeeper) / `fit_focus`=Defend, `fit_sim`=0.961로 정합하며 obs#154가 스위퍼 계열 대안을 명시적으로 기각했다. 감독 프로필의 빌드업 서술도 'GK Defend — 참여는 패스 옵션 수준'이라 적혀 있고 패스 정확도 백분위 90이 이를 확증한다. 처방 변경 근거 없음. ⚠️ 재검토 조건은 obs#154가 정한 대로, 26/27에 리그 900분 이상을 소화하고도 스위퍼 행동 90분 백분위가 상위권을 유지할 때다. PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
    "label": "비조",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "GK",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "Aston Villa 공식 「Villa announce Marco Bizot signing」(2025-07-15) https://www.avfc.co.uk/news/2025/july/15/villa-announce-marco-bizot-signing/ · Aston Villa 선수 프로필 https://www.avfc.co.uk/players/marcobizot/ · Wikipedia 「Marco Bizot」 https://en.wikipedia.org/wiki/Marco_Bizot · Premier League 프로필 https://www.premierleague.com/en/players/72147/marco-bizot/overview"
   },
   {
@@ -365,7 +505,11 @@
    "execution": "90분 6.6, 4선방, 23/30패스, 40터치, 10회수. 평균위치 (10.05,51.10), 맵25 0000000000000000000001X10, 경기 적합 gk_goalkeeper/Defend .966.",
    "game_role_implication": "gk_goalkeeper/Defend 유지. 대표 처방 변경 없음.",
    "label": "비조",
+   "observed_from": "2026-08-12",
+   "observed_to": "2026-08-12",
    "position": "GK",
+   "sample_note": "2026-08-12 UEFA Super Cup PSG전 단일 경기 — SofaScore event 16260286와 경기 후 영상·기사 교차검증",
+   "sample_scope": "specific_match",
    "source": "SofaScore event 16260286 (2026-08-12); reports/match-watch/2026-08-12-avl-psg-super-cup.md"
   },
   {
@@ -375,7 +519,11 @@
    "execution": "실측은 '3선 백업'과 'CAM 재배치론' 양쪽을 동시에 지지한다. 25/26 lineup_pos='M' 17경기(875분) 집계 평균 6.91, 그리드 `123213989136X612566201211`은 2행에 9·8·9가 나란히 서고 최대값 칸이 3행 3열(피치 정중앙)이며 1~4행에 고르게 질량이 퍼진 좌우 대칭 광역 분포다. 슬롯 전수 채점에서 RDM `dm_dlp`/Roaming 0.836이 2위(dm_dlp/Build-Up 0.575)를 Δ0.260으로 압도했고, CAM `cam_playmaker`/Build-Up 0.803은 스쿼드 1위로 맥긴 0.641을 Δ0.162 앞선다 — 즉 '3순위 10번'이라는 서열 서사와 달리 26/27 스쿼드 안에서는 그가 최적합자다. 다만 '박스 도착이 없다'는 비판은 실측이 그대로 확인한다 — Fotmob 25/26 PL 상대 박스 터치 18회로 백분위 14(90분당 9)이고, 기회 창출 10회는 28이다. 반면 기술 비율 지표는 상위권이다 — 롱볼 정확도 73.7%(백분위 92), 패스 정확도 87.7%(89), 드리블 성공률 65.0%(96), 공중 경합 승률 46.7%(86). 25/26 프리시즌에도 친선 5경기 중 4경기 선발로 방출 대상이 아닌 주력으로 쓰였다.",
    "game_role_implication": "현 `fit_role`=dm_dlp(Deep-Lying Playmaker) / `fit_focus`=Roaming, `fit_sim`=0.807(RDM 17경기)로 등재돼 있고, Roaming 설명('피치 폭을 가로질러 이동해 공격을 지원')이 그의 좌우 대칭 광역 분포와 정합한다. CAM으로 올릴 경우 DB의 전수 열거는 `cam_playmaker`/Build-Up 0.803이 1위이고 `cam_shadow`/Attack이 0.260으로 최하위 — 즉 '내려와 배급하는 10번'이지 '박스로 침투하는 10번'이 아니며, 상대 박스 터치 백분위 14가 이를 이벤트 축에서 확증한다. 코번트리 이적설이 실현되지 않는다면 CAM 뎁스로 재배치하는 처방이 실측·서사 양쪽에서 지지된다. PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
    "label": "바클리",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "RDM",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "Read Aston Villa 「Ross Barkley Coventry Talks Leave Aston Villa With Midfield Decision」(2026-07-08) https://readastonvilla.com/2026/07/08/ross-barkley-coventry-talks-leave-aston-villa-with-midfield-decision/ · Aston Villa News 「Ross Barkley blows Europa League final shot」(2026-05-17) https://www.astonvillanews.co.uk/2026/05/17/ross-barkley-blows-europa-league-final-shot-he-cant-start-after-liverpool-disasterclass/ · roundtable.io 「The Aston Villa Player Who Could Be Repurposed By Unai Emery」 https://roundtable.io/sports/soccer/premier-league/aston-villa/transfers/the-aston-villa-player-who-could-be-repurposed-by-unai-emery · Football League World 「Frank Lampard plots Coventry City move for Ross Barkley」 https://footballleagueworld.co.uk/coventry-city-plotting-audacious-transfer-swoop-for-premier-league-midfielder/"
   },
   {
@@ -385,7 +533,11 @@
    "execution": "실측이 서사의 시기 구분을 그대로 재현한다 — player_matches상 2025-10~12는 세리에A·코파 이탈리아(로마), 2026-01-25부터 프리미어리그로 바뀐다. 빌라 복귀 후 lineup_pos='M' 9경기(523분) 집계는 평균 6.46으로 이번 8명 중 최저 수준이고, 그리드 `001480025X001260012700125`는 좌측 두 열이 전 행 0, 최대값 칸이 2행 5열(우측 터치라인 전진 대역)로 우측 레인 고정이다. 서사의 '수비수를 정면으로 몰고 들어가는' 부분은 실측이 지지하지 않는다 — Fotmob 25/26 PL 드리블 성공 5회로 성공률 19.2%(백분위 5), 경합 승률 33.8%(8), 유효슛 1회(8), xG 0.49(11), xGOT 0.11(10)로 1대1·마무리 축이 전부 리그 최하위권이다. 반대로 살아 있는 축은 배달이다 — 기회 창출 12회가 90분당 백분위 94, xA 1.46이 90분당 94, 크로스 정확도 26.3%가 73, 볼 회수 90분당 백분위 98이다. 즉 '드리블로 무너뜨리는 윙어'가 아니라 '우측에서 올려주고 회수하는 윙어'로 뛰었다.",
    "game_role_implication": "현 `fit_role`=wm_winger(Winger) / `fit_focus`=Attack, `fit_sim`=0.768(RM 9경기). Attack 포커스 설명은 '발밑으로 받기보다 수비 뒤로 침투'인데, 실측의 xG 백분위 11·유효슛 8은 배후 침투 산출이 없었음을 보여주고 기회 창출 90분당 94는 오히려 패스 옵션·배달 쪽이다 — Balanced(수비·공격 양면 지원, 배후 침투와 패스 옵션 혼합) 쪽 재검토 여지가 있으나 표본 9경기라 판정 변경 근거로는 약하다. 실무적으로는 헐 시티 이적이 확정되면 26/27 프리셋에서 제외될 자원이다. PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
    "label": "베일리",
+   "observed_from": null,
+   "observed_to": null,
    "position": "RM",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "football-italia 「Gasperini explains Bailey's Aston Villa return from AS Roma: 'Negative for him and us'」 https://football-italia.net/gasperini-bailey-villa-return-roma-negative/ · football-italia 「Bailey returns to Aston Villa: what went wrong at Roma?」 https://football-italia.net/bailey-returns-aston-villa-what-wrong-roma/ · AS Roma 공식 「Bailey's loan termination」 https://www.asroma.com/en/news/74698/baileys-loan-termination · RTÉ 「Aston Villa recall Leon Bailey from Roma loan」(2026-01-21) https://www.rte.ie/sport/soccer/2026/0121/1554289-transfers-aston-villa-recall-bailey-from-roma-loan/ · Get Italian Football News 「The numbers behind Leon Bailey's struggles at AS Roma」(2026) https://www.getfootballnewsitaly.com/2026/the-numbers-behind-leon-baileys-struggles-at-as-roma/ · Read Aston Villa 「Leon Bailey set for Hull City medical」(2026-08-05) https://readastonvilla.com/2026/08/05/leon-bailey-set-for-hull-city-medical-as-aston-villa-exit-nears/"
   },
   {
@@ -395,7 +547,11 @@
    "execution": "⚠️ 그리드 표본이 3경기뿐이라 squad_entries에는 빈 그리드로 결손 표시돼 있고 `fit_role`/`fit_sim` 미산출이다 — 적합 판정을 인용할 수 없다. 참고용 prescriptions(kind='measured', 45분 이상 우측 선발 4경기 통합)의 그리드 `00014000240002X0003900113`은 4·5열(우측)에만 질량이 있고 최대값 칸이 3행 5열, 4행 5열=9로 중앙~수비 3분의 1에 몰려 있으며 최전방 행은 4에 그친다 — 툴 중심 x 81.7·y 46.6의 '전진 빈도 낮은 딥 우측 풀백'이다. 이벤트 지표는 셰퍼의 프로필 규정을 정면으로 반박한다 — Fotmob 25/26 분데스리가 태클 1회(백분위 3), 인터셉트 1회(3), 수비적 행동 12회(6), 경합 승률 26.7%(2), 경합 승 4회(5)로 '태클·볼 탈취 강점'이 전 지표 하위 5% 안이다. 살아 있는 축은 패스뿐이다 — 패스 정확도 87.1%(백분위 85), 롱볼 정확도 62.5%(92). 공격 관여는 사실상 없다 — 슛 0회, 상대 박스 터치 2회(백분위 5), xA 0.09(6).",
    "game_role_implication": "적합도가 산출되지 않았으므로 역할 처방을 제시할 수 없다 — squad_entries의 rate_note가 명시한 대로 '그리드 3경기(표본 미달)'이 현재 상태다. obs#134가 정리한 대로 26/27 RB는 캐시 1명뿐이라 뎁스 후보로서의 가치가 걸려 있으나, 이번 실측만으로는 우측 뎁스 처방 근거가 서지 않는다. 다음 검증 기회는 26/27 공식전 출전 시 그리드 재수집이다(프리시즌 친선은 커버리지가 갈린다 — obs#133). PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
    "label": "네델코비치",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "RB",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "Bundesliga 공식 「RB Leipzig extend Kosta Nedeljković loan from Aston Villa」 https://www.bundesliga.com/en/bundesliga/news/rb-leipzig-extend-kosta-nedeljkovic-loan-from-aston-villa-33084 · RB Leipzig 공식 「Kosta Nedeljkovic joins RB Leipzig on loan」 https://rbleipzig.com/en/news/kosta-nedeljkovic-joins-rb-leipzig-on-loan · Get German Football News 「RB Leipzig decide against exercising purchase option」(2026) https://www.getfootballnewsgermany.com/2026/rb-leipzig-decide-exercising-purchase-nedeljkovic-aston-villa-bundesliga-premier-league/ · Aston Villa News 「Kosta Nedeljkovic: Aston Villa defender enduring nightmare RB Leipzig loan」(2026-03-19) https://www.astonvillanews.co.uk/2026/03/19/kosta-nedeljkovic-aston-villa-defender-has-endured-nightmare-rb-leipzig-loan/ · Read Aston Villa 「Kosta Nedeljkovic Return Gives Aston Villa Right-Back Decision」(2026-07-03) https://readastonvilla.com/2026/07/03/kosta-nedeljkovic-aston-villa-right-back-return-2/"
   },
   {
@@ -405,7 +561,11 @@
    "execution": "⚠️ 등록 포지션과 실측이 어긋나고 실측을 채택한다. 25/26 lineup_pos 분포는 웨스트브롬에서 RAM 9경기(672분·평균 6.42)·RM 2경기(153분·7.45)로 우측이 주력이고 LM은 2경기(135분·5.65)·LB 1경기뿐이다. 시즌 통합 그리드 `001361017X001271013800023`은 좌측 두 열이 거의 전부 0이고 최대값 칸이 2행 5열(우측 터치라인)로 우측 레인 고정이다. 별도 좌측 표본(prescriptions kind='measured:L', 1월 4경기)은 그리드 `64112X3210721008320031100`으로 완전히 반대편에 서 있어 좌우 두 프로파일이 분리 저장돼 있다 — '양쪽을 다 본다'는 서사 자체는 실측과 맞지만 비중은 우측이 압도적이다. Fotmob 25/26 챔피언십 지표는 균형형에 가깝다 — 드리블 성공률 48.4%(백분위 76), 걷어내기 27회(87), 슛 블록 4회(87), 인터셉트 10회(76), 헤더 슛 5회(82), 공중 경합 승 17회(73)로 수비·경합 축이 상위권인 반면 기회 창출 16회(53)·xA 1.74(53)·xG 2.54(55)로 창조·마무리는 중간이다. '한 골 외 공격포인트 없음'이라는 서사와 xG 55·xA 53의 중간값은 산출 미달 방향으로 일치한다.",
    "game_role_implication": "현 `fit_role`=wm_winger(Winger) / `fit_focus`=Balanced, `fit_sim`=0.780(RM 9경기 672분). Balanced 설명(수비·공격 양쪽 지원, 배후 침투와 패스 옵션 혼합)은 그의 수비 지표 상위권(걷어내기 87·슛 블록 87·인터셉트 76)과 중간급 창조 지표 조합에 정합한다. ⚠️ 리그 수준 캐비앗이 중요하다 — Fotmob 백분위는 챔피언십 동포지션 대비값이라 프리미어리그로 환산하면 하향해야 하고, 26/27 빌라 우측 뎁스 판단의 직접 근거로 쓰기 어렵다. 좌측 배치를 검토한다면 별도 좌측 그리드(measured:L, 4경기)로 재채점이 필요하며 현 wm_winger 판정은 우측 표본 기준이다. PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
    "label": "일링주니어",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "RM",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "West Bromwich Albion 공식 「Samuel Iling-Junior joins Albion on loan」 https://www.wba.co.uk/news/samuel-iling-junior-joins-albion-loan · BBC Sport 「West Brom sign Iling-Junior and Taylor on loan」 https://feeds.bbci.co.uk/sport/football/articles/c75420qy7d3o · BirminghamWorld 「West Brom lose attacker as Aston Villa star's loan deal cancelled」 https://www.birminghamworld.uk/sport/football/west-bromwich-albion/west-brom-aston-villa-samuel-iling-junior-loan-cancelled-transfer-deadline-day-5499151 · The72 「Update emerges on Samuel Iling-Junior's West Brom future amid loan struggles」(2026-01-15) https://the72.co.uk/2026/01/15/update-emerges-on-samuel-iling-juniors-west-brom-future-amid-loan-struggles/ · Football League World 「West Brom submit loan offer for Aston Villa winger Samuel Iling-Junior」 https://footballleagueworld.co.uk/west-brom-submit-loan-offer-for-aston-villa-winger-samuel-iling-junior/ · Transfermarkt 25/26 스탯 https://www.transfermarkt.co.uk/samuel-iling/leistungsdaten/spieler/581672"
   },
   {
@@ -415,8 +575,12 @@
    "execution": "90분 6.2, 20/25패스, 1키패스, 3/9경합, 1태클, 2슈팅(1유효), 6회수. 평균위치 (58.11,73.31), 히트포인트 51, 맵25 66111X4430X41009403004000, 경기 적합 wm_widemid/Support .788.",
    "game_role_implication": "LM/LAM 지원·압박 가설. 공식전 2경기 이상 같은 위치 표본 전 대표 처방 승격 금지.",
    "label": "헤밍스",
+   "observed_from": "2026-08-12",
+   "observed_to": "2026-08-12",
    "position": "LM",
-   "source": "SofaScore event 16260286; AS Emery interview 2026-08-12; BeanymanSports post-match press conference 2026-08-13; The Villa Park Podcast 2026-08-13"
+   "sample_note": "2026-08-12 UEFA Super Cup PSG전 단일 경기 — SofaScore event 16260286와 경기 후 영상·기사 교차검증",
+   "sample_scope": "specific_match",
+   "source": "SofaScore event 16260286 https://www.sofascore.com/api/v1/event/16260286 ; AS Emery interview 2026-08-12 https://as.com/futbol/internacional/unai-emery-habra-mas-cambios-f202608-n/ ; BeanymanSports post-match 2026-08-13 https://www.youtube.com/watch?v=cV0xoK0gK3w ; The Villa Park Podcast 2026-08-13 https://www.youtube.com/watch?v=NfejEXQj3sE ; reports/match-watch/2026-08-12-avl-psg-super-cup.md"
   },
   {
    "adherence": "부분 일치 — 캐리 전진(온더볼)은 그리드 밖이라 미검증, 위치 주장은 실측이 정정",
@@ -425,7 +589,11 @@
    "execution": "클럽 실측: 딥 좌측 기본(좌2컬럼 50.4%), 태클 1.52·탈취 4.69/90 — 수비 기여 실재. 전진 배치는 대표팀에서만(전방 64.8%)",
    "game_role_implication": "dm_dlp/Roaming 지지(캐리 전진형 딥롤). PlayStyles 확인 필요: 파워샷·긴스로인 보유 시 게임 재현 가산",
    "label": "만잠비",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "LDM",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "obs#142 참조 (TFA·TransferFlow·X 스카우트)"
   },
   {
@@ -435,7 +603,11 @@
    "execution": "⭐ **특별 과제 결과 — 매체 서술이 obs#156을 반박하지 않고 오히려 보강한다.** ⑴ 매체는 그를 **하프스페이스 점유자로 부르지 않는다**. 오히려 TFA 스카우트 리포트(2025-12-07)는 '하프스페이스'를 별도의 **약점 섹션**으로 다뤄, 라인 사이에서 타이밍과 몸 방향을 잡는 데 문제가 있다고 적는다. 우리 실측(중앙 열 0.13, 5열 중 최저 — 그리드 가운데가 비어 있음)과 방향이 같다. ⑵ 좌우 축에서도 매체가 실측 편이다 — X 스카우트 분석(HrtNico, 2025-12경, 히트맵 첨부)은 그가 '주로 **좌측** 중앙 미드필드를 커버하고 프라이부르크가 공격할 때 인버티드 레프트백 위치로 내려간다'고 서술한다. 우리 클럽 실측(딥·좌측 기본, 좌 2개 열 50.4%)과 정확히 일치한다. ⑶ 즉 `cam_halfwinger` .861은 여전히 좌우 경기를 평균 낸 산물이며, 매체 조사로 반증되지 않는다. 대표팀 12경기 표본의 포지션 혼입(CAM 선발 2 · RW 선발 2 · RST 1 · 교체 7)도 매체의 '대표팀에서 윙과 스트라이커를 뛰었다'는 서술로 확인된다. ⑷ Fotmob 백분위는 온더볼 축이 압도적 — 얻어낸 파울 100(78회, 분데스리가 최다 피파울), 경합 승 98(179회), 드리블 성공 94, 상대 박스 터치 90, 헤더 슛 90, xA 89. 태클 1.52·탈취 4.69/90의 수비 기여도 실재.",
    "game_role_implication": "**클럽 실측 기준으로는 dm_dlp/Roaming(캐리 전진형 딥롤) 지지가 유지된다.** fc26:opt:CAM 배치(사용자 확정 방침)는 게임 내 역할 배분 해법이지 프라이부르크 실측의 산물이 아니며, 이번 회차 매체 조사도 CAM을 **예측**으로만 서술한다 — 확인된 사실이 아니다. cam_halfwinger 커널 적합(.861)은 obs#156대로 표본 인공물이므로 CAM 배치 근거로 인용하면 안 된다. ⚠️ 그리드는 이전 소속팀(프라이부르크·스위스) 산물이므로 obs#157의 `grid_caveat` 원칙 적용 대상. PlayStyles는 미조회 — 주장 없음.",
    "label": "만잠비",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "LDM(클럽 실측) / CAM(빌라 예정 배치)",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "TFA 프라이부르크 스카우트 리포트(2025-12-07) · tacticalfootballanalysis.com 빌라 스카우트 리포트(2026-07-23) · X 스카우트 HrtNico(2025-12, 히트맵) · Sky Sports 이적 보도(2026-07) · SC Freiburg 공식 · Bundesliga.com · ESPN · Squawka 분석·프리뷰 · YouTube 2건(미시청) / 내부: obs#156(=id163)·obs#138·obs#142·obs#148, prescriptions(national/bundesliga/europa/worldcup), fotmob_detail_stats"
   },
   {
@@ -445,7 +617,11 @@
    "execution": "실측: 듀얼·태클 상위, dm_dlp/Roaming .763(위치 기준)",
    "game_role_implication": "dm_holding/Ball-Winning Δ 산출 후 처방 재검토(다음 세션)",
    "label": "주앙 고메스",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "LDM",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "obs#143"
   },
   {
@@ -455,7 +631,11 @@
    "execution": "obs#143의 긴장(위치=dlp, 기능=볼위너)이 이번 회차 매체 조사로 **더 선명해진다**. 기능 축은 매체·실측 완전 일치 — Fotmob 백분위 태클 90(107회·3.40/90)·경합 승 90(226회)·볼 회수 89·수비적 행동 86(388회)이고, 매체가 든 '90분당 약 20회 캐리(로저스보다 많고 틸레만스·맥긴·부엔디아의 두 배 이상)'는 우리 드리블 성공 백분위 98(43회·1.37/90)·드리블 성공률 89와 같은 현상을 다른 지표로 잰 것이다. 위치 축은 여전히 실측이 dm_dlp/Roaming .763(39경기 6.77, holding계 최고 .679)을 가리키고, 매체는 위치를 말하지 않는다 — 즉 **매체는 기능만 서술하고 위치를 다투지 않으므로 충돌이 아니다**. 창의성 약점도 양쪽 일치(xG 백분위 13, 크로스 정확도 83은 있으나 롱볼 정확도 62·인터셉트 58로 배급·차단은 중간). 2026-08-07 바이에른 프리시즌 90분 1골·패스 성공률 83%·태클 승 3·듀얼 승 7.",
    "game_role_implication": "현 처방 dm_dlp/Roaming 유지(obs#144 재검토로 종결). 이번 매체 조사는 **기능 축 근거를 강화**하지만 위치 축을 반증하지 않으므로 처방 변경 사유가 되지 않는다. 다만 새 정보 하나는 기록할 값어치가 있다 — 카마라와 짝지을 때 고메스가 **더 전진**하는 분업이 매체 공통 전망이라면, 26/27 빌라 실측에서 그의 평균 위치가 울버햄튼 대비 전진할 개연성이 있고 그때 dlp 적합이 흔들릴 수 있다. 개막 후 실측으로 재검정할 것. PlayStyles는 DB 기록분(슬라이딩태클·압박검증)만 사용.",
    "label": "주앙 고메스",
+   "observed_from": null,
+   "observed_to": null,
    "position": "LDM",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "Sky Sports 이적·프로필(2026-07) · ESPN(2026-07) · BBC Sport · readastonvilla.com(2026-07-21·2026-08-08) · myoldmansaid.com · 페레이라·잭슨 발언(Sky 인용) · YouTube 3건(미시청) / 내부: obs#143·#144·#129, player_duties, fotmob_detail_stats"
   },
   {
@@ -465,7 +645,11 @@
    "execution": "실측: cb_bpd/Aggressive .883 (29경기)",
    "game_role_implication": "cb_bpd/Aggressive 유지. DM 겸업은 실측 표본 생기면 검증",
    "label": "시세",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "RCB",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "obs#143"
   },
   {
@@ -475,7 +659,11 @@
    "execution": "실측: 좌 편향(좌측 38경기), winger 커널 .771",
    "game_role_implication": "wm_winger/Attack 유지. PlayStyles 확인: 감아차기·테크니컬·퀵스텝 보유(player_game_stats 2026-07-23 수집. ⚠️ 2026-08-11 교정: 종전 기재 '트릭스터'는 수집값에 없음 — obs#143 근거에도 없는 미검증 기재였다)",
    "label": "가르나초",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "LM",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "obs#143"
   },
   {
@@ -485,7 +673,11 @@
    "execution": "실측과 매체가 위치 축에서 일치한다. 그의 map25(77111X4111510006100010100)는 좌측 최외곽 열에 질량이 집중돼 있고 좌측 38경기 편향이며, wm_winger 커널 적합 .771(38경기 6.99) — 매체가 말한 '구식 터치라인 밀착형 윙어'와 같은 그림이다(우리 duties의 '컷인형'은 슈팅 동작 서술이지 평균 위치 서술이 아니다). 진행 지표도 겹친다 — 매체 인용 Data.MB 기준 프로그레시브 캐리 2위(5.63/90)·볼 캐리 빈도 3위(18.1)·박스 터치 2위(5.94)·크로스 시도 4위(4.74)이고, 우리 Fotmob 백분위는 상대 박스 터치 93(112회·7.95/90)·기회 창출 87·xA 91·빅찬스 창출 84로 같은 방향의 독립 측정이다. 마무리 산출은 낮다(25/26 프리미어리그 1골 4도움, 1,125분, 평균 6.99). def 37·phy 56이라는 게임 속성과 '수비 작업이 과제'라는 매체 지적도 일치.",
    "game_role_implication": "wm_winger/Attack 유지 — 매체의 '터치라인을 잡아 중앙에 공간을 만든다'는 서술은 winger 커널(터치라인 질량 1.00)과 정확히 같은 방향이라 처방을 강화한다. 반대로 이는 **두 줄 4 복귀량과의 구조적 긴장**(obs#125)을 완화하지 않고 오히려 확인한다 — winger/Attack의 자기진영 질량이 낮은 것이 실제 리스크이고, 매체가 '와이드 선수가 러너를 따라가고 풀백을 보호해야 한다'고 지적한 지점과 같다. 좌측 윙어 기용 시 좌측백 처방 연쇄 변경(obs#128) 필요는 그대로. PlayStyles는 DB 수집분(감아차기·아크로바틱·테크니컬·퀵스텝, 2026-07-23 수집)만 사용 — '트릭스터'는 2026-08-11 교정된 허위 기재이므로 재기입 금지.",
    "label": "가르나초",
+   "observed_from": null,
+   "observed_to": null,
    "position": "LM",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "readastonvilla.com(2026-07-22, Data.MB 인용) · Sky Sports(2026-07-23) · astonvillanews.co.uk · Transfermarkt 26/27 · 에메리 발언(Yahoo/AOL 2026-07) · 가르나초 발언(beIN Sports 2026-07-24 · World Soccer Talk · Fotmob) · TFA 빌라-첼시 경기 분석(첼시 시절) / 내부: obs#143·#125·#128, player_duties, player_evaluations, fotmob_detail_stats"
   },
   {
@@ -495,7 +687,11 @@
    "execution": "실측: 그레미우 혼합 15경기, 커널 wm_widemid/Build-Up .833",
    "game_role_implication": "빌라 실측 6경기+ 축적 시 wm_insidefwd 대조 재판정",
    "label": "알리송",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "RM",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "obs#147"
   },
   {
@@ -505,7 +701,11 @@
    "execution": "DB 실측과 긴장: measured(25경기 전수, n=25·1878분·평균 6.95) 그리드(239324777256X732212211410)는 X가 중앙 3행(미드필드)·하강 질량이 커서 st_false9/Attack(fit .643)이 argmax — TFA의 '박스 스트라이커' 서사와 어긋난다. 단 xg .508/경기·dw 2.92는 박스 위협·공중 서사를 지지 — 온볼 이벤트는 박스형, 이동 풋프린트는 하강형인 이중 프로필.",
    "game_role_implication": "fc26:opt는 st_target/Attack(v1 이관)이나 실측 argmax는 st_false9/Attack(.643) — 둘 다 낮은 적합이라 26/27 표본 축적 후 재판정 대상. TFA 서사(라인 침투·공중)는 st_target 쪽을, 실측 그리드는 false9 쪽을 각각 지지 — 처방 충돌 미해소 상태로 기록.",
    "label": "타미 아브라함",
+   "observed_from": null,
+   "observed_to": "2026-08-12",
    "position": "ST",
+   "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
+   "sample_scope": "multi_source",
    "source": "Total Football Analysis — totalfootballanalysis.com/player-analysis/tammy-abraham-scout-report-aston-villa-2025-2026-analysis · avfc.co.uk 공식 발표(2026-01-27) · Aston Villa News — astonvillanews.co.uk/2026/06/03/tammy-abraham-aston-villa-star-shows-2026-27-breakout-potential-with-underlying-numbers/"
   },
   {
@@ -515,7 +715,11 @@
    "execution": "⚠️ 실측 그리드가 없다 — squad_entries가 'F 그리드 3경기 199분(표본 미달)'로 빈 그리드 결손 처리했고 prescriptions 행이 0건이라 적합도·슬롯 판정을 인용할 수 없다. 확보된 실측은 다음뿐이다: 25/26 리그1 9경기 162분 평균 6.58(전 대회 13경기 438분·평균 6.56), U17 유럽선수권 예선 3경기는 SofaScore 커버리지 밖(obs#133), 26/27 프리시즌 2026-08-07 바이에른 뮌헨전 60분 선발(평점 6.5). Fotmob 25/26 리그1 표본은 157~175분 수준이라 대부분 백분위가 하위권으로 찍힌다 — 터치 41회(백분위 5), 성공 패스 10회(3), 패스 정확도 55.6%(2), 슛 3회(5), 수비적 행동 2회(5). 이 구간에서 유일하게 서사와 맞는 방향의 지표는 공중 경합 승률 60.0%(백분위 89)와 xGOT 90분당 백분위 77이고, '압박 가담이 적다'는 서술은 수비적 행동 백분위 5와 방향이 일치한다. 다만 어느 쪽도 표본이 90분당 2경기 미만이라 단독 근거가 되지 못한다. 별도 실측으로 2026-08-01 인도네시아 올스타전 58분 득점(Lynch 도움)이 기록돼 있으나 이 경기는 히트맵·스탯이 전무하다(obs#126).",
    "game_role_implication": "적합도 미산출이므로 역할 처방을 제시할 수 없다. 스카우팅 서술('등지고 지키는 연계형 9번, 배후 침투 겸장, 압박 가담 적음, 마무리 미완')은 가설로만 유지하고 26/27 공식전 그리드 수집 후 커널 채점으로 검증해야 한다 — 특히 '기점형'과 '배후 침투형'은 그리드 형태가 크게 달라 판별 가능하다. 2026-08-04 CAS가 빌라의 항소를 인용해 26/27 공식전 등록 자격이 확정됐으므로(avfc.co.uk) 표본 확보 경로는 열렸다. PlayStyles는 조회하지 않았으므로 지정하지 않는다.",
    "label": "Brian Madjo",
+   "observed_from": null,
+   "observed_to": null,
    "position": "ST",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "Aston Villa 공식 「Aston Villa announce Brian Madjo signing」(2026-01-12) https://www.avfc.co.uk/news/2026/january/12/signing-aston-villa-announce-brian-madjo-signing/ · Aston Villa 공식 「Madjo appeal upheld」(2026-08-04) https://www.avfc.co.uk/news/2026/august/04/news-madjo-appeal-upheld/ · The Scouting App 「Scouting Report: Brian Madjo」 https://www.thescoutingapp.com/blog/scouting-report-brian-madjo-469 · Ligue 1 공식 「One to watch: Metz's Brian Madjo - a precocious talent」 https://ligue1.com/en/articles/l1_article_3034-one-to-watch-metz-s-brian-madjo-a-precocious-talent · FOX Sports 「Aston Villa signs 17-year-old striker Brian Madjo from Metz」 https://www.foxsports.com/articles/soccer/aston-villa-signs-17yearold-striker-brian-madjo-from-metz-in-reported-14m-deal · Transfermarkt 「Meet Brian Madjo」 https://www.transfermarkt.us/meet-brian-madjo-aston-villa-sign-wonderkid-striker-compared-to-romelu-lukaku/view/news/458937 · Wikipedia 「Brian Madjo」 https://en.wikipedia.org/wiki/Brian_Madjo"
   },
   {
@@ -525,8 +729,12 @@
    "execution": "72분 6.6, 1골, 6슈팅(1유효), 2키패스, 9/14패스, 경합승 1/9. 평균위치 (64.55,54.02), 경기 적합 st_poacher/Attack .725.",
    "game_role_implication": "st_poacher/Attack 경기 가설. 유효 대표 표본 4경기로 최소 6경기 전 처방 승격 금지.",
    "label": "Brian Madjo",
+   "observed_from": "2026-08-12",
+   "observed_to": "2026-08-12",
    "position": "ST",
-   "source": "SofaScore event 16260286; El País 2026-08-12; AS 2026-08-12; BeanymanSports and talkSPORT 2026-08-13"
+   "sample_note": "2026-08-12 UEFA Super Cup PSG전 단일 경기 — SofaScore event 16260286와 경기 후 영상·기사 교차검증",
+   "sample_scope": "specific_match",
+   "source": "SofaScore event 16260286 https://www.sofascore.com/api/v1/event/16260286 ; El País 2026-08-12 https://elpais.com/deportes/futbol/2026-08-12/el-psg-extiende-su-hegemonia-tras-vencer-la-supercopa-de-europa-ante-el-aston-villa.html ; AS 2026-08-12 https://as.com/futbol/internacional/invencible-luis-enrique-f202608-n/ ; BeanymanSports https://www.youtube.com/watch?v=cV0xoK0gK3w ; talkSPORT https://www.youtube.com/watch?v=6_VcfCoJTmQ ; reports/match-watch/2026-08-12-avl-psg-super-cup.md"
   },
   {
    "adherence": "HIGH — 서사(볼위닝 앵커·중앙 스크린)와 실측 그리드·기능축이 전면 정합. 긴장은 슬롯 커널 층에서만 발생: 빌라 LDM 기용 시 fit dm_widehalf/Build-Up .709, RDM 시 dm_dlp/Roaming .738 — 본인 정체성(dm_holding)과 슬롯 최적역할이 갈린다.",
@@ -535,7 +743,11 @@
    "execution": "DB 실측과 정합: transfer_targets.map25(002112323345365465X611221) — X가 자기진영 중앙(행3)·중심 툴좌표(53.7, 44.0)로 중앙 저지대 편중 = 앵커 서사 그대로. opt_role dm_holding/Ball-Winning(숙련 일치, DB rationale의 FC26 확인: DEF83/PHY84/공격성91/태클85·브루저)이 서사의 볼위닝 정체성과 일치. 표본 6경기 평균 6.92.",
    "game_role_implication": "dm_holding/Ball-Winning — 에메리 더블 피벗 처방(dm_holding Roaming/Defend 분담)과 정확 일치, 카마라·보가르드 동형. LDM 투입 시 커널 지불(.709)은 감수 항목. 네거티브 PS '부상에 취약함'(DB 확인) 로테이션 설계 필요.",
    "label": "팔리냐",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "DM",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "Total Football Analysis — totalfootballanalysis.com/player-analysis/joao-palhinha-scout-report-tottenham-hotspur-2025-2026-analysis-tactics · BBC Sport — feeds.bbci.co.uk/sport/football/articles/cdj2ygpp42ko"
   },
   {
@@ -545,7 +757,11 @@
    "execution": "DB 실측과 정합: map25(457725X496434211211100000) — X가 공격 2행째 중앙-좌, 전진 질량 압도 + 하강 링크 꼬리. fit=opt=st_advanced/Support .752 — Support 포커스가 '딥존 발동·레이오프' 서사와 정확 대응(DB rationale도 '하강 링크 성향(실측)' 명기). 표본 6경기 평균 7.45 — 8명 중 최고.",
    "game_role_implication": "st_advanced/Support 유지 — 왓킨스와 로테이션 축. DB 확인 PS 게임체인저·테크니컬이 Support 링크 역할과 부합. 박스 피니셔(st_target류) 재해석은 실측 근거 없음.",
    "label": "잭슨",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "ST",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "FC Bayern 공식 — fcbayern.com/en/news/2025/09/nicolas-jackson-bayern-new-signing-with-street-football-in-his-blood · Bavarian Football Works — bavarianfootballworks.com/bayern-munich-opinion/185121 · Goal — goal.com (Kompany fit 분석·복귀 전망 기사 2건)"
   },
   {
@@ -555,7 +771,11 @@
    "execution": "DB 실측과 대체로 정합: map25(001361125X001360013500001) — X 공격 2행째 우측, 중심(77.2, 59.4) 우측·전진 편향 = 우측 인버티드 서사 그대로. 평균 7.18(최고 8.4)도 팟몹 7.25와 상응. 단 '공미 겸용' 서사는 실측 CAM 적합 .674 급락으로 기각 — 등재 슬롯 RM이 맞다(DB 판정과 동일). W군 재채점 w_wideplm/Build-Up .870 = 해방 윙어 풋프린트.",
    "game_role_implication": "wm_winger/Balanced(RM .812 — 하지무사 .821·은디아예 .825와 동급)이되, 에메리 구조에서 RM은 뱅크 칸이라 실기용 시 wm_widemid/Support .734 지불(−.078). 좌측이 이미 해방 우세인 현 스쿼드에서 구조적 긴장 — 해방 사이드용 자원이라는 DB 판정을 서사(오프더볼 성실)가 일부 완화하지만 뒤집지는 못함.",
    "label": "아우안",
+   "observed_from": null,
+   "observed_to": null,
    "position": "RW/CAM",
+   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
+   "sample_scope": "unknown",
    "source": "Rousing The Kop — rousingthekop.com/2026/02/20/allan-elias-scout-report-why-liverpool-could-be-looking-to-sign-the-next-harvey-elliott/ · WhoScored — whoscored.com/players/521094/show/allan · FotMob — fotmob.com/players/1721789/allan"
   },
   {
@@ -565,7 +785,11 @@
    "execution": "DB 실측과 정확 정합: map25(32100X2000410007200031000) — X 공격행 좌측 터치라인, 좌측 레인 수직 분포 = 오버랩 서사 그대로. fit fb_att_wb/Support .949(2위 대비 Δ.214 단독 1위), 에스투피냔 .946과 동급 프로필. 표본 6경기 평균 6.77 — 수비수 평점 기저 감안 필요.",
    "game_role_implication": "fb_att_wb/Support — 에메리 C2 비대칭(좌전진 LB)과 정확 일치, 디뉴 공백 1:1 대체. FC26 존재(77/83, best LB) — PS 휩 패스가 크로스 서사와, 에어리얼 포트리스가 공중듀얼 서사와 각각 부합.",
    "label": "마테오 루헤리",
+   "observed_from": "2025-08-01",
+   "observed_to": "2026-08-12",
    "position": "LB",
+   "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
+   "sample_scope": "season",
    "source": "Total Football Analysis — totalfootballanalysis.com/player-analysis/matteo-ruggeri-scout-report-atletico-madrid-2025-2026-analysis-tactics · Into the Calderon — intothecalderon.com/atletico-madrid-columns/24965 · ScoutingStats — scoutingstats.ai/player/matteo-ruggeri-24837941/"
   }
  ],
@@ -889,6 +1113,22 @@
    "strengths": "강점: 뒤쪽 기여가 챔피언십 동포지션 최상위다 — 걷어내기 27회(1.88/90)로 90분 기준 상위 9%, 슛 블록 4회 상위 13%, 인터셉트 10회(0.70/90) 상위 27%, 수비 행동 상위 27%다. 공중볼도 좋다: 공중 경합 승 17회 상위 29%, 헤더 슛 5회 상위 13%. 개인 돌파는 실제로 된다 — 드리블 성공률 48.4%로 상위 24%이고, 성공 크로스 12회로 상위 29%다. 프리미어리그 진출 이후 슛 30회(2.09/90)로 슈팅 시도 자체는 상위 42%로 적극적이다. 챔피언십 1290분으로 8명 중 실출전 시간이 가장 두껍다. 약점: 결과가 없다 — 챔피언십 26경기에서 어시스트 0개(하위 0%), 득점 1골(하위 25%)이다. 크로스 정확도 18.8%(하위 44%)로 올리는 양에 비해 정확도가 떨어지고, 유효슛 6회는 90분 기준 하위 25%로 슛은 많은데 골문 안으로 가지 않는다. 태클 0.91/90은 90분 기준 하위 15%로 앞에서 뺏는 값은 약하다. 패스 정확도 75.8%(하위 43%). 그리고 이 모든 수치가 챔피언십 기준이다.",
    "traits": "등록상 왼쪽 미드필더지만 실측 주력은 오른쪽이다 — 웨스트브롬 임대에서 오른쪽 선발 12경기(중심 x=75.9·y=55.1)가 본체이고 좌측 전환은 시즌 후반 4경기(중심 x=23.8)에 그친다. 리그 실측이 그리는 상은 '공격보다 수비 쪽 값이 더 좋은 측면 자원'이다 — 걷어내기·슛 블록·인터셉트가 챔피언십 동포지션 최상위인데 어시스트는 시즌 0개다. 헤딩 관여도 높다. player_game_stats에 FC26 행이 없어 게임 능력치·특성·역할 친숙도는 조회할 수 없었다 — 결손이며 추정하지 않는다.",
    "updated": "2026-08-11"
+  },
+  {
+   "confidence": "HIGH 경기 원천 / MEDIUM 역할 — 성인 공식전 단일 경기",
+   "fit_alonso": "LOW — 알론소 체제 교차 투영 근거 없음.",
+   "fit_emery": "MEDIUM — 에메리가 경기 전 해당 포지션을 준비시켰다고 확인했고 90분 실측이 일치한다.",
+   "fit_iraola": "LOW — 이라올라 체제 교차 투영 근거 없음.",
+   "fotmob_eval": null,
+   "label": "헤밍스",
+   "name_en": "George Hemmings",
+   "overall": "B — 17세 유스지만 슈퍼컵 PSG전 90분을 소화하며 성인 공식전 좌측 역할의 첫 완전 표본을 남겼다. 단 한 경기만으로 시즌 대표 역할을 확정하지 않는다.",
+   "player_id": 30,
+   "source": "SofaScore event 16260286; reports/match-watch/2026-08-12-avl-psg-super-cup.md; https://as.com/futbol/internacional/unai-emery-habra-mas-cambios-f202608-n/; https://www.youtube.com/watch?v=cV0xoK0gK3w",
+   "stat_eval": "수집 11경기 592분 평균 6.67. PSG전 90분 6.2, 20/25패스, 1키패스, 2슈팅(1유효), 3/9경합, 1태클, 6회수. 경기 그리드 wm_widemid/Support .788.",
+   "strengths": "장점은 전술 규율과 90분 가용성. 약점 판단은 표본 부족으로 보류하며, 성인 공식전 같은 위치 2경기 이상이 필요하다.",
+   "traits": "왼쪽 안쪽 지원형 미드필더. 명목 LAM보다 낮고 중앙에 서며 압박·회수·짧은 연결로 외곽 풀백을 보조한다.",
+   "updated": "2026-08-13"
   },
   {
    "confidence": "n=59 충분하나 CAM 근거는 대표팀 n=12 축 — 클럽 표본과 프로필이 갈리는 이중성 캐비앗. 빌라 실측 0경기. 알론소·이라올라 핏은 교차 투영(실측 아님).",
@@ -15671,11 +15911,6 @@
   ],
   "밍스": [
    [
-    "2026-02-07",
-    6.4,
-    "Premier League"
-   ],
-   [
     "2026-02-11",
     6.9,
     "Premier League"
@@ -15719,14 +15954,14 @@
     "2026-08-07",
     6.8,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-12",
+    6.6,
+    "UEFA Super Cup"
    ]
   ],
   "바클리": [
-   [
-    "2026-03-04",
-    7.0,
-    "Premier League"
-   ],
    [
     "2026-03-15",
     8.3,
@@ -15771,6 +16006,11 @@
     "2026-05-24",
     6.6,
     "Premier League"
+   ],
+   [
+    "2026-08-12",
+    6.8,
+    "UEFA Super Cup"
    ]
   ],
   "베일리": [
@@ -15827,11 +16067,6 @@
   ],
   "보가르드": [
    [
-    "2026-03-30",
-    6.6,
-    "U21 Friendly Games"
-   ],
-   [
     "2026-04-09",
     6.4,
     ""
@@ -15875,6 +16110,11 @@
     "2026-08-07",
     6.7,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-12",
+    6.8,
+    "UEFA Super Cup"
    ]
   ],
   "부엔디아": [
@@ -16139,11 +16379,6 @@
   ],
   "알리송": [
    [
-    "2025-09-28",
-    6.8,
-    "Brasileirao"
-   ],
-   [
     "2025-10-02",
     6.8,
     "Brasileirao"
@@ -16187,6 +16422,11 @@
     "2025-12-07",
     6.5,
     "Brasileirao"
+   ],
+   [
+    "2026-08-12",
+    6.2,
+    "UEFA Super Cup"
    ]
   ],
   "오나나": [
@@ -16607,11 +16847,6 @@
   ],
   "타미 아브라함": [
    [
-    "2025-11-08",
-    7.3,
-    "Super Lig"
-   ],
-   [
     "2025-11-23",
     6.6,
     "Super Lig"
@@ -16655,6 +16890,11 @@
     "2026-05-03",
     6.4,
     "Premier League"
+   ],
+   [
+    "2026-08-12",
+    6.6,
+    "UEFA Super Cup"
    ]
   ],
   "틸레만스": [
@@ -18470,7 +18710,7 @@
    "formation_v": "4-2-3-1",
    "fouls_o": 11,
    "fouls_v": 13,
-   "game_implications": "McGinn의 RM 임시 해법은 기능했지만 전문 우측 자원 결손을 해소하지 않는다|Hemmings는 LM 와이드 미드필더 Support 후보, Madjo는 포처 Attack 후보로 추적하되 단일 경기라 대표 처방은 유지|Kamara-Gomes 역할 분업과 Maatsen의 왕복 임무는 후속 공식전 표본으로 재검증",
+   "game_implications": "McGinn의 RM 임시 해법은 기능했지만 전문 우측 자원 결손을 해소하지 않는다|Hemmings는 LM 와이드 미드필더 Support 후보, Madjo는 포처 Attack 후보로 추적하되 단일 경기라 대표 처방은 유지|Kamara-Gomes 역할 분업과 Maatsen의 왕복 임무는 후속 공식전 표본으로 재검증|교체 5명은 경기 전용 종료 XI에서만 바꿔 볼 수 있으며 45분 미만 표본을 시즌 대표 처방에 합산하지 않음",
    "game_players": [
     {
      "confidence": "HIGH 실측 / MEDIUM 게임 번역 — 단일 경기",
@@ -18478,10 +18718,12 @@
      "focus": "Defend",
      "game_version": "FC26",
      "label": "비조",
+     "minute_on": null,
      "name_en": "Marco Bizot",
      "player_id": 19,
      "pos_label": "GK",
      "rationale": "PSG전 실제 히트맵의 슬롯 제한 argmax. 후방 패스 옵션과 라인 수비를 재현.",
+     "replaced_player_id": null,
      "role_id": "gk_goalkeeper",
      "role_name": "골키퍼",
      "sort_order": 1,
@@ -18496,10 +18738,12 @@
      "focus": "Balanced",
      "game_version": "FC26",
      "label": "마첸",
+     "minute_on": null,
      "name_en": "Ian Maatsen",
      "player_id": 6,
      "pos_label": "LB",
      "rationale": "좌측 폭·전진과 긴 회복 수비를 함께 재현.",
+     "replaced_player_id": null,
      "role_id": "fb_wingback",
      "role_name": "윙백",
      "sort_order": 2,
@@ -18514,10 +18758,12 @@
      "focus": "Build-Up",
      "game_version": "FC26",
      "label": "파우 토레스",
+     "minute_on": null,
      "name_en": "Pau Torres",
      "player_id": 4,
      "pos_label": "LCB",
      "rationale": "좌측 전진 배급과 중앙 보호를 재현.",
+     "replaced_player_id": null,
      "role_id": "cb_bpd",
      "role_name": "볼 플레잉 센터백",
      "sort_order": 3,
@@ -18532,10 +18778,12 @@
      "focus": "Aggressive",
      "game_version": "FC26",
      "label": "린델뢰프",
+     "minute_on": null,
      "name_en": "Victor Lindelof",
      "player_id": 7,
      "pos_label": "RCB",
      "rationale": "좁은 중앙 보호와 간결한 전진 연결을 재현.",
+     "replaced_player_id": null,
      "role_id": "cb_bpd",
      "role_name": "볼 플레잉 센터백",
      "sort_order": 4,
@@ -18550,10 +18798,12 @@
      "focus": "Balanced",
      "game_version": "FC26",
      "label": "캐시",
+     "minute_on": null,
      "name_en": "Matty Cash",
      "player_id": 2,
      "pos_label": "RB",
      "rationale": "우측 폭 유지와 회복 수비를 재현.",
+     "replaced_player_id": null,
      "role_id": "fb_wingback",
      "role_name": "윙백",
      "sort_order": 5,
@@ -18568,10 +18818,12 @@
      "focus": "Roaming",
      "game_version": "FC26",
      "label": "주앙 고메스",
+     "minute_on": null,
      "name_en": "João Gomes",
      "player_id": 56,
      "pos_label": "LDM",
      "rationale": "좌측 피벗의 경합·전진 압박과 이동 범위를 재현.",
+     "replaced_player_id": null,
      "role_id": "dm_holding",
      "role_name": "홀딩",
      "sort_order": 6,
@@ -18586,10 +18838,12 @@
      "focus": "Ball-Winning",
      "game_version": "FC26",
      "label": "카마라",
+     "minute_on": null,
      "name_en": "Boubacar Kamara",
      "player_id": 12,
      "pos_label": "RDM",
      "rationale": "우측 피벗의 중앙 스크린·차단을 재현.",
+     "replaced_player_id": null,
      "role_id": "dm_holding",
      "role_name": "홀딩",
      "sort_order": 7,
@@ -18604,10 +18858,12 @@
      "focus": "Support",
      "game_version": "FC26",
      "label": "헤밍스",
+     "minute_on": null,
      "name_en": "George Hemmings",
      "player_id": 30,
      "pos_label": "LM",
      "rationale": "LAM 표기와 달리 왼쪽 안쪽·낮은 지원/압박 분포를 재현.",
+     "replaced_player_id": null,
      "role_id": "wm_widemid",
      "role_name": "와이드 미드필더",
      "sort_order": 8,
@@ -18622,10 +18878,12 @@
      "focus": "Roaming",
      "game_version": "FC26",
      "label": "부엔디아",
+     "minute_on": null,
      "name_en": "Emiliano Buendia",
      "player_id": 14,
      "pos_label": "CAM",
      "rationale": "명목 CAM에서 낮게 내려온 중앙 연결자 움직임을 재현.",
+     "replaced_player_id": null,
      "role_id": "cam_playmaker",
      "role_name": "플레이메이커",
      "sort_order": 9,
@@ -18640,10 +18898,12 @@
      "focus": "Attack",
      "game_version": "FC26",
      "label": "맥긴",
+     "minute_on": null,
      "name_en": "John McGinn",
      "player_id": 10,
      "pos_label": "RM",
      "rationale": "RAM의 강한 우측 편향·전방 공급과 압박을 재현.",
+     "replaced_player_id": null,
      "role_id": "wm_winger",
      "role_name": "윙어",
      "sort_order": 10,
@@ -18658,15 +18918,117 @@
      "focus": "Attack",
      "game_version": "FC26",
      "label": "Brian Madjo",
+     "minute_on": null,
      "name_en": "Brian Madjo",
      "player_id": 61,
      "pos_label": "ST",
      "rationale": "등진 연결 시도보다 최종 위치의 반복 박스 침투와 슈팅 분포를 우선 재현.",
+     "replaced_player_id": null,
      "role_id": "st_poacher",
      "role_name": "포처",
      "sort_order": 11,
      "source": "SofaScore event 16260286 player heatmap/statistics; Emery 발언",
      "starter": 1,
+     "x": 50,
+     "y": 87
+    },
+    {
+     "confidence": "LOW 게임 번역 — 11분·히트포인트 15",
+     "fit_sim": 0.794,
+     "focus": "Aggressive",
+     "game_version": "FC26",
+     "label": "밍스",
+     "minute_on": 79,
+     "name_en": "Tyrone Mings",
+     "player_id": 17,
+     "pos_label": "LCB",
+     "rationale": "79분 파우 토레스 교체 후 종료 XI의 좌측 수비 위치를 재현.",
+     "replaced_player_id": 4,
+     "role_id": "cb_wideback",
+     "role_name": "와이드 백",
+     "sort_order": 12,
+     "source": "SofaScore event 16260286 player heatmap/statistics",
+     "starter": 0,
+     "x": 37,
+     "y": 28
+    },
+    {
+     "confidence": "LOW 게임 번역 — 18분",
+     "fit_sim": 0.722,
+     "focus": "Roaming",
+     "game_version": "FC26",
+     "label": "보가르드",
+     "minute_on": 72,
+     "name_en": "Lamare Bogarde",
+     "player_id": 11,
+     "pos_label": "RDM",
+     "rationale": "72분 카마라 교체 후 중앙 순환·회수 위치를 재현.",
+     "replaced_player_id": 12,
+     "role_id": "dm_dlp",
+     "role_name": "딥라잉 플레이메이커",
+     "sort_order": 13,
+     "source": "SofaScore event 16260286 player heatmap/statistics",
+     "starter": 0,
+     "x": 62,
+     "y": 42
+    },
+    {
+     "confidence": "VERY LOW 게임 번역 — 11분",
+     "fit_sim": 0.466,
+     "focus": "Roaming",
+     "game_version": "FC26",
+     "label": "바클리",
+     "minute_on": 79,
+     "name_en": "Ross Barkley",
+     "player_id": 21,
+     "pos_label": "LDM",
+     "rationale": "79분 주앙 고메스 교체 후 좌중앙 패스 순환 위치를 재현.",
+     "replaced_player_id": 56,
+     "role_id": "dm_dlp",
+     "role_name": "딥라잉 플레이메이커",
+     "sort_order": 14,
+     "source": "SofaScore event 16260286 player heatmap/statistics",
+     "starter": 0,
+     "x": 38,
+     "y": 42
+    },
+    {
+     "confidence": "LOW 게임 번역 — 17분",
+     "fit_sim": 0.765,
+     "focus": "Build-Up",
+     "game_version": "FC26",
+     "label": "알리송",
+     "minute_on": 73,
+     "name_en": "Alysson",
+     "player_id": 59,
+     "pos_label": "RM",
+     "rationale": "73분 맥긴 교체 후 우측 폭·전진 출구를 재현.",
+     "replaced_player_id": 10,
+     "role_id": "wm_widemid",
+     "role_name": "와이드 미드필더",
+     "sort_order": 15,
+     "source": "SofaScore event 16260286 player heatmap/statistics",
+     "starter": 0,
+     "x": 85,
+     "y": 64
+    },
+    {
+     "confidence": "VERY LOW 게임 번역 — 18분·히트포인트 9",
+     "fit_sim": 0.493,
+     "focus": "Build-Up",
+     "game_version": "FC26",
+     "label": "타미 아브라함",
+     "minute_on": 72,
+     "name_en": "Tammy Abraham",
+     "player_id": 60,
+     "pos_label": "ST",
+     "rationale": "72분 Madjo 교체 후 짧은 연결 위치를 표시. 히트포인트 9라 역할 판정에는 사용하지 않는다.",
+     "replaced_player_id": 61,
+     "role_id": "st_false9",
+     "role_name": "폴스 나인",
+     "sort_order": 16,
+     "source": "SofaScore event 16260286 player heatmap/statistics",
+     "starter": 0,
      "x": 50,
      "y": 87
     }
@@ -19056,11 +19418,176 @@
      "touches": 27,
      "xa": null,
      "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 35.51,
+     "avg_y": 81.81,
+     "characteristics": "종료 국면에서 좌측 후방과 터치라인 쪽을 커버",
+     "confidence": "HIGH 스탯 / LOW 역할 — 11분",
+     "duels_lost": 0,
+     "duels_won": 0,
+     "game_implication": "종료 XI LCB cb_wideback/Aggressive .794; 히트포인트 15 경계 표본",
+     "goals": 0,
+     "hit_points": 15,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "밍스",
+     "lineup_pos": "D",
+     "map25": "50000300003000038300X5000",
+     "minutes": 11,
+     "name_en": "Tyrone Mings",
+     "performance": "11분, 10/12패스, 12터치, 2회수, 평점 6.6. 실점 없이 종료했으나 짧은 표본",
+     "player_id": 17,
+     "pos_class": "LB",
+     "position": "SUB LCB",
+     "rating": 6.6,
+     "recoveries": 2,
+     "source": "SofaScore event 16260286; reports/match-watch/2026-08-12-avl-psg-super-cup.md",
+     "started": 0,
+     "stats_json": "{\"minutes\":11,\"rating\":6.6,\"key_passes\":0,\"pass_total\":12,\"pass_acc\":10,\"duels_won\":0,\"duels_lost\":0,\"tackles\":0,\"interceptions\":0,\"goals\":0,\"assists\":0,\"touches\":12,\"recoveries\":2,\"shots_on\":0,\"shots_total\":0,\"clearances\":0,\"saves\":0}",
+     "tackles": 0,
+     "tactical_role": "79분 파우 토레스 대신 투입된 좌측 센터백",
+     "touches": 12,
+     "xa": null,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 45.01,
+     "avg_y": 44.14,
+     "characteristics": "열세 추격에서 중앙 순환과 회수를 유지",
+     "confidence": "HIGH 스탯 / LOW 역할 — 18분",
+     "duels_lost": 0,
+     "duels_won": 2,
+     "game_implication": "종료 XI RDM dm_dlp/Roaming .722; 대표 처방에는 반영하지 않음",
+     "goals": 0,
+     "hit_points": 23,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "보가르드",
+     "lineup_pos": "M",
+     "map25": "0000002622002X20804002240",
+     "minutes": 18,
+     "name_en": "Lamare Bogarde",
+     "performance": "18분, 12/13패스, 2/2경합, 1태클, 4회수, 평점 6.8",
+     "player_id": 11,
+     "pos_class": "RDM",
+     "position": "SUB RDM",
+     "rating": 6.8,
+     "recoveries": 4,
+     "source": "SofaScore event 16260286; reports/match-watch/2026-08-12-avl-psg-super-cup.md",
+     "started": 0,
+     "stats_json": "{\"minutes\":18,\"rating\":6.8,\"key_passes\":0,\"pass_total\":13,\"pass_acc\":12,\"duels_won\":2,\"duels_lost\":0,\"tackles\":1,\"interceptions\":0,\"goals\":0,\"assists\":0,\"touches\":18,\"recoveries\":4,\"shots_on\":0,\"shots_total\":0,\"clearances\":1,\"saves\":0}",
+     "tackles": 1,
+     "tactical_role": "72분 카마라 대신 투입된 우측 피벗",
+     "touches": 18,
+     "xa": null,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 59.61,
+     "avg_y": 61.11,
+     "characteristics": "높아진 라인 뒤에서 좌중앙 패스 순환",
+     "confidence": "HIGH 스탯 / LOW 역할 — 11분",
+     "duels_lost": 1,
+     "duels_won": 2,
+     "game_implication": "종료 XI LDM dm_dlp/Roaming .466; 짧은 표본이라 유사도 해석 금지",
+     "goals": 0,
+     "hit_points": 19,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "바클리",
+     "lineup_pos": "M",
+     "map25": "040002X400020624040000000",
+     "minutes": 11,
+     "name_en": "Ross Barkley",
+     "performance": "11분, 15/15패스, 2/3경합, 1태클, 18터치, 평점 6.8",
+     "player_id": 21,
+     "pos_class": "LDM",
+     "position": "SUB LDM",
+     "rating": 6.8,
+     "recoveries": 0,
+     "source": "SofaScore event 16260286; reports/match-watch/2026-08-12-avl-psg-super-cup.md",
+     "started": 0,
+     "stats_json": "{\"minutes\":11,\"rating\":6.8,\"key_passes\":0,\"pass_total\":15,\"pass_acc\":15,\"duels_won\":2,\"duels_lost\":1,\"tackles\":1,\"interceptions\":0,\"goals\":0,\"assists\":0,\"touches\":18,\"recoveries\":0,\"shots_on\":0,\"shots_total\":0,\"clearances\":0,\"saves\":0}",
+     "tackles": 1,
+     "tactical_role": "79분 주앙 고메스 대신 투입된 좌측 피벗",
+     "touches": 18,
+     "xa": null,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 62.08,
+     "avg_y": 19.31,
+     "characteristics": "우측 폭과 전진 출구를 이어받았으나 창출량은 제한",
+     "confidence": "HIGH 스탯 / LOW 역할 — 17분",
+     "duels_lost": 1,
+     "duels_won": 2,
+     "game_implication": "종료 XI RM wm_widemid/Build-Up .765; 공격형 대표 처방으로 승격하지 않음",
+     "goals": 0,
+     "hit_points": 20,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "알리송",
+     "lineup_pos": "F",
+     "map25": "003850005X000580000300005",
+     "minutes": 17,
+     "name_en": "Alysson",
+     "performance": "17분, 9/14패스, 2/3경합, 1태클, 2회수, 평점 6.2",
+     "player_id": 59,
+     "pos_class": "RM",
+     "position": "SUB RM",
+     "rating": 6.2,
+     "recoveries": 2,
+     "source": "SofaScore event 16260286; reports/match-watch/2026-08-12-avl-psg-super-cup.md",
+     "started": 0,
+     "stats_json": "{\"minutes\":17,\"rating\":6.2,\"key_passes\":0,\"pass_total\":14,\"pass_acc\":9,\"duels_won\":2,\"duels_lost\":1,\"tackles\":1,\"interceptions\":0,\"goals\":0,\"assists\":0,\"touches\":18,\"recoveries\":2,\"shots_on\":0,\"shots_total\":0,\"clearances\":0,\"saves\":0}",
+     "tackles": 1,
+     "tactical_role": "73분 맥긴 대신 투입된 우측 와이드 공격수",
+     "touches": 18,
+     "xa": null,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 64.94,
+     "avg_y": 40.66,
+     "characteristics": "추격 국면의 중앙 표적과 크로스 도착점",
+     "confidence": "HIGH 스탯 / VERY LOW 역할 — 히트포인트 9",
+     "duels_lost": 1,
+     "duels_won": 1,
+     "game_implication": "종료 XI ST st_false9/Build-Up .493은 히트포인트 9라 표시만 하고 판정에는 사용하지 않음",
+     "goals": 0,
+     "hit_points": 9,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "타미 아브라함",
+     "lineup_pos": "F",
+     "map25": "05005055500505X0000000000",
+     "minutes": 18,
+     "name_en": "Tammy Abraham",
+     "performance": "18분, 5/7패스, 1/2경합, 7터치, 슈팅 0, 평점 6.6",
+     "player_id": 60,
+     "pos_class": "ST",
+     "position": "SUB ST",
+     "rating": 6.6,
+     "recoveries": 0,
+     "source": "SofaScore event 16260286; reports/match-watch/2026-08-12-avl-psg-super-cup.md",
+     "started": 0,
+     "stats_json": "{\"minutes\":18,\"rating\":6.6,\"key_passes\":0,\"pass_total\":7,\"pass_acc\":5,\"duels_won\":1,\"duels_lost\":1,\"tackles\":0,\"interceptions\":0,\"goals\":0,\"assists\":0,\"touches\":7,\"recoveries\":0,\"shots_on\":0,\"shots_total\":0,\"clearances\":0,\"saves\":0}",
+     "tackles": 0,
+     "tactical_role": "72분 Madjo 대신 투입된 스트라이커",
+     "touches": 7,
+     "xa": null,
+     "xg": null
     }
    ],
    "possession": 39.0,
    "report_date": "2026-08-13",
-   "report_markdown": "# 2026-08-12 UEFA Super Cup — PSG 2-1 Aston Villa\n\n> 수집일 2026-08-13 · SofaScore event `16260286` · 중립 경기 · 빌라 4-2-3-1\n\n## 실측\n\n- 빌라 점유율 **39%**, 슈팅 **15-12**, 유효슈팅 **4-6**, 빅찬스 **5-3**, 패스 **368-588**.\n- 득점 국면: 0-0 20분 → 0-1 열세 25분 → 1-1 16분 → 1-2 열세 29분.\n- 45분 이상 출전한 11명을 `player_matches`에 적재했다. 전원 평균 위치·히트맵·개별 스탯이 있고\n  히트포인트 최저도 **33**이라 경기 단위 그리드로 유효하다.\n- Brian Madjo는 72분, 1골, 6슈팅, 2키패스. John McGinn은 73분, 1도움, 4키패스.\n\n| 선수 | 라인업 슬롯 | 평균 위치 기반 분류 | 평점 | 핵심 |\n|---|---:|---:|---:|---|\n| Marco Bizot | GK | GK | 6.6 | 4선방 |\n| Matty Cash | RB | RB | 6.6 | 우측 수비 |\n| Victor Lindelöf | RCB | RCB | 6.4 | 중앙 보호 |\n| Pau Torres | LCB | LCB | 7.0 | 79분 |\n| Ian Maatsen | LB | LB | 7.0 | 좌측 폭·전진 |\n| Boubacar Kamara | RDM | RDM | 6.4 | 더블 피벗 |\n| João Gomes | LDM | LDM | 6.1 | 더블 피벗 |\n| John McGinn | RAM | RM | 7.1 | 우측 창출, 4키패스·1도움 |\n| Emiliano Buendía | CAM | LDM | 6.3 | 명목 CAM이나 평균 위치는 중앙·낮음 |\n| George Hemmings | LAM | LDM | 6.2 | 순수 윙어보다 좌측 하프스페이스 |\n| Brian Madjo | ST | ST | 6.6 | 정통 9번·물리적 출구, 1골 |\n\n`lineup_pos`는 실제 라인업 배열을 4-2-3-1 우→좌 순서로 사상한 원천 배치이고,\n`pos_class`는 평균 위치 기반 사후 분류다. 둘이 다른 Buendía·Hemmings는 오류로 덮지 않고 나란히 보존한다.\n\n## 전술 판정\n\n- 명목 구조 `McGinn RAM — Buendía CAM — Hemmings LAM — Madjo ST`와\n  `Kamara/Gomes` 더블 피벗은 확인됐다. 다만 세 공격형 미드필더는 유동적이었다.\n- [El País 경기 분석](https://elpais.com/deportes/futbol/2026-08-12/el-psg-extiende-su-hegemonia-tras-vencer-la-supercopa-de-europa-ante-el-aston-villa.html)\n  (2026-08-12)은 빌라가 중앙을 좁게 보호하고 전방에서 센터백을 압박한 뒤 짧고 직접적으로 전환했다고 서술한다.\n- [AS의 Emery 경기 후 문답](https://as.com/futbol/internacional/unai-emery-habra-mas-cambios-f202608-n/)\n  (2026-08-12)에서 Emery는 Madjo와 Hemmings를 해당 포지션에 맞춰 준비시켰다고 확인했다.\n  따라서 두 선수의 배치는 라인업 표기 오류가 아니라 의도된 선택이다.\n- Madjo는 등지고 연결하는 물리적 출구와 박스 침투를 함께 맡았고, McGinn은 오른쪽 하프스페이스에서\n  반복적으로 공급했다. 경기 단위 FC 적합은 McGinn RM `wm_winger/Attack` **.882**,\n  Madjo ST `st_poacher/Attack` **.725**다. 한 경기 값이므로 대표 적합으로 승격하지 않는다.\n\n## obs#134~136 검증\n\n- **obs#134 지지**: 자연 우측 윙어 대신 McGinn을 RAM에 세워 임시 해결했다. 그의 평균 y=15.81은\n  실제로 강한 우측 편향이고 4키패스·1도움으로 기능했지만, 전문 우측 자원 영입 필요를 반증하지 않는다.\n- **obs#135 검증 불가**: Endrick이 출전하지 않아 우측 적합성이나 9번 조건에 새 근거가 없다.\n- **obs#136 검증 대상 아님**: 이 경기는 빌라의 수요만 보여줄 뿐 협상 단계·선수 의사를 말하지 않는다.\n\n팬 관찰은 [r/avfc 경기 후 스레드](https://www.reddit.com/r/avfc/comments/1vmqcwz/post_match_thread_psg_21_aston_villa_uefa_super/)\n(2026-08-12)에서 교차 확인했다. Madjo/Hemmings, McGinn, Kamara/Gomes 조합 호평은 반복됐지만\n위치 판정에서는 SofaScore 원천값과 감독 발언보다 낮은 우선순위로만 사용했다. 경기 전 Reuters 기자회견은\n영상 전체를 검토하지 못해 근거로 채택하지 않았다. 전문 전술 블로그·경기 후 전술 유튜브는 수집 시점에\n검색되지 않아 미수행으로 남긴다.\n\n## 데이터 출처와 한계\n\n- SofaScore `/event`, `/lineups`, `/statistics`, `/incidents`, `/average-positions`,\n  `/player/{id}/heatmap`, `/player/{id}/statistics`를 동일 오리진 Playwright 수집기로 사용했다.\n- SofaScore가 이 경기 xG를 양 팀 모두 `0.00`으로 제공해 `team_match_stats.xg_v/xg_o`도 원천값 그대로 0이다.\n  이를 실제 무위험 경기라는 뜻으로 해석하면 안 된다(빅찬스는 빌라 5, PSG 3).\n- Madjo의 유효 표본은 이 경기 포함 **4경기**라 대표 역할 최소 기준 6경기에 아직 미달한다.\n\n---\n\n## 2026-08-13 15시 심화 업데이트 — 선수별 스탯·히트맵·영상 교차검증\n\n### 선수별 실제 데이터\n\n아래 `평균 위치`는 SofaScore 원좌표 `(avg_x, avg_y)`이고 `맵25`는 같은 이벤트에서 받은 5×5 히트맵을\n행 우선으로 인코딩한 원천값이다(`0~9`, 최대 셀 `X`). 한 경기 커널 적합은 역할 판정을 돕는 참고값이며\n대표 처방이나 선발 결론으로 승격하지 않는다.\n\n| 선수 | 분/평점 | 평균 위치·맵25 | 실제 스탯 | 이 경기 역할·FC26 참고 적합 |\n|---|---:|---|---|---|\n| Marco Bizot | 90 / 6.6 | `(10.05, 51.10)` · `0000000000000000000001X10` | 4선방, 23/30패스, 40터치, 10회수 | 후방 패스 옵션·라인 수비 GK · `gk_goalkeeper/Defend .966` |\n| Matty Cash | 90 / 6.6 | `(41.71, 12.64)` · `00003000250002X0004900135` | 32/42패스, 2/4경합, 2태클, 5클리어, 1키패스 | 우측 폭·회복 수비 · `fb_wingback/Balanced .907` |\n| Victor Lindelöf | 90 / 6.4 | `(29.11, 36.46)` · `001000001001211018X301043` | 39/41패스, 1인터셉트, 2클리어, 8회수 | RCB 중앙 보호·안정 배급 · `cb_bpd/Aggressive .895` |\n| Pau Torres | 79 / 7.0 | `(28.70, 68.14)` · `0001021000123006810024X20` | 23/26패스, 3/6경합, 2태클, 3클리어 | LCB 좌측 전진 배급 · `cb_bpd/Build-Up .798` |\n| Ian Maatsen | 90 / 7.0 | `(50.02, 87.46)` · `220004200021000X000011000` | 27/35패스, 11/16경합, 4태클, 2키패스 | 좌측 폭·전진과 회복 · `fb_wingback/Balanced .759` |\n| Boubacar Kamara | 72 / 6.4 | `(41.31, 38.72)` · `001000061600430009X101410` | 19/21패스, 2인터셉트, 2슈팅(1유효) | 우측 피벗·중앙 스크린 · `dm_holding/Ball-Winning .788` |\n| João Gomes | 79 / 6.1 | `(46.81, 57.68)` · `0030111160616016X13301100` | 12/18패스, 3/9경합, 3태클, 1슈팅 | 좌측 피벗·경합/압박 · `dm_holding/Roaming .679` |\n| John McGinn | 73 / 7.1 | `(63.70, 15.81)` · `000580001X000190014300000` | 4/10패스, 4키패스, 1도움, 4/13경합 | RAM 우측 창출·전방 압박 · `wm_winger/Attack .882` |\n| Emiliano Buendía | 90 / 6.3 | `(53.43, 50.76)` · `4122115551342X40556111020` | 30/45패스, 1키패스, 6/15경합, 2태클, 2슈팅 | 명목 CAM, 실제 중앙·낮은 연결자 · `cam_playmaker/Roaming .623` |\n| **George Hemmings** | **90 / 6.2** | **`(58.11, 73.31)` · `66111X4430X41009403004000`** | **20/25패스, 1키패스, 3/9경합, 1태클, 2슈팅(1유효), 6회수** | **LAM이지만 왼쪽 안쪽·낮은 지원/압박 · `wm_widemid/Support .788`** |\n| Brian Madjo | 72 / 6.6 | `(64.55, 54.02)` · `13X1003334314003131101000` | 1골, 6슈팅(1유효), 2키패스, 9/14패스, 1/9경합 | 포스트 출구+배후/박스 침투 · `st_poacher/Attack .725` |\n\n### 헤밍스 유스 데이터 확보 경로\n\n- 선수 프로필의 `events/last` 경로는 유스 선수에게 비거나 404가 날 수 있다. 이번에는 프로필 이력이 아니라\n  **경기 이벤트 `16260286`의 lineup → player statistics/heatmap/average-positions** 순으로 회수했다.\n- 그래서 헤밍스도 90분 스탯, 평균 위치, 히트포인트 51, 5×5 원천맵까지 성인 선수와 같은 형식으로 저장됐다.\n- 위치 판정은 명목 LAM을 그대로 복사하지 않았다. 평균 `y=73.31`의 좌편향은 맞지만 전진 깊이와 맵 분포가\n  터치라인 고정 윙어보다 낮고 안쪽이다. 에메리의 의도된 배치 확인과 합치되, 한 경기라 대표 역할 확정은 보류한다.\n\n### 국면별 전술\n\n1. **0-0(20분)** — 명목 4-2-3-1. 중앙을 좁게 보호하고 전방 인원이 PSG 센터백·안쪽 통로를 압박했다.\n   AS는 초반 비소유 모양을 5-4-1로 묘사했지만, 라인업·평균 위치 정본은 백4다. 따라서 이는 고정 포메이션\n   변경보다 초반 수비 국면의 일시적 하강으로 기록한다.\n2. **0-1 열세(25분)** — 탈취 뒤 적은 패스로 전진했다. McGinn의 우측 공급과 Madjo의 등진 떨굼·배후 침투가\n   주 출구였다. Kamara도 박스 앞까지 전진해 슈팅했다.\n3. **1-1(16분)** — Madjo가 McGinn의 측면 공급을 마무리했다. PSG가 후반 Dembélé를 넣고 다시 볼·공간을\n   장악했으며, Villa의 전진 수비선에서 Cash가 마지막 선에 남은 틈을 Doué가 공략했다.\n4. **1-2 열세(29분)** — Villa가 라인과 압박을 올려 경기를 개방했다. Gomes 슈팅, Abraham을 향한 크로스 등\n   박스 접근은 늘었지만, 더 큰 후방 공간도 감수했다.\n\n### 영상·감독 발언 확인\n\n- [BeanymanSports 경기 후 전체 기자회견](https://www.youtube.com/watch?v=cV0xoK0gK3w)\n  (2026-08-13 게시, 자동 영문 자막 직접 확인): Emery는 팀이 전술·개인 양쪽에서 응답했고, 볼을 가졌을 때의\n  위치, 압박 시점, 컴팩트함, 젊은 선수의 수비·전술 규율을 준비했다고 설명했다.\n- [BeanymanSports Emery 단독 클립](https://www.youtube.com/watch?v=ILFYehyhGNY)\n  (2026-08-13 게시, 자동 영문 자막 직접 확인): 같은 기자회견의 Emery 구간이다. Madjo의 평가는 득점만이\n  아니라 수비, 헌신, 전술 규율을 포함했다.\n- [The Villa Park Podcast 경기 분석](https://www.youtube.com/watch?v=NfejEXQj3sE)\n  (2026-08-13 게시, 자동 영문 자막 직접 확인): Madjo의 위치 인지·수비수와의 접촉·반복 박스 움직임,\n  Hemmings의 성숙한 왼쪽 수행, Kamara/Gomes의 더 강한 경합 성격, Maatsen의 전진 뒤 회복을 평가했다.\n  팬/클럽 팟캐스트이므로 감독 발언·실측보다 낮은 보조 근거로만 썼다.\n- [talkSPORT Madjo 분석](https://www.youtube.com/watch?v=6_VcfCoJTmQ)\n  (2026-08-13 게시, 자동 영문 자막 직접 확인): 득점 전 기회 실패 후에도 표정·움직임이 무너지지 않았고,\n  수비수 앞/뒤를 바꾸는 박스 움직임과 물리적 경합을 반복했다는 스트라이커 관점 평가다.\n- [TNT Sports 공식 트로피·경기 영상](https://www.youtube.com/watch?v=Kf_KjuJPvS0)\n  (2026-08-13 게시): 경기 장면 확인용이며 전술 해설의 주 근거로 사용하지 않았다.\n\n### 기사·1차 자료 교차검증\n\n- [El País 경기 분석](https://elpais.com/deportes/futbol/2026-08-12/el-psg-extiende-su-hegemonia-tras-vencer-la-supercopa-de-europa-ante-el-aston-villa.html)\n  (2026-08-12 23:26 CEST): 중앙 보호, 전방 압박, 직접 전환, Madjo의 등진 연결, 실점 후 라인 상승을 가장\n  구체적으로 설명한다.\n- [AS 경기 분석](https://as.com/futbol/internacional/invencible-luis-enrique-f202608-n/)\n  (2026-08-12 22:59 CEST): 초반 수비 모양을 5-4-1로 묘사하고, McGinn·Buendía가 Madjo를 찾았으며\n  Madjo가 등진 연결·공중볼·배후 침투를 모두 수행했다고 평가한다. 두 번째 실점은 Cash가 마지막 선에\n  묶인 전진 수비의 위험으로 해석한다.\n- [AS Emery 경기 후 문답](https://as.com/futbol/internacional/unai-emery-habra-mas-cambios-f202608-n/)\n  (2026-08-12 23:58 CEST): Madjo와 Hemmings를 경기 전 정한 위치에서 훈련했다고 직접 확인한다.\n- [UEFA 공식 경기 페이지](https://www.uefa.com/uefasupercup/match/2048319--paris-vs-aston-villa/)\n  및 [공식 하이라이트 링크](https://www.uefa.com/uefasupercup/clubs/52747--paris/matches/): 대회·경기 정본과\n  하이라이트 경로를 확인했다. 현재 텍스트 페이지는 세부 선수 통계를 노출하지 않아 SofaScore 수치를 대체하지 않는다.\n- Aston Villa 공식 사이트의 경기 후 상세 리포트는 수집 시점 검색 인덱스에서 발견되지 않았다.\n  Telegraph 원문은 유료벽으로 전체 검토하지 못했다. 이 두 유형은 **미수행 사유를 명시**하고 결론 근거에서 제외했다.\n\n### 선수별 최종 판정\n\n- **Bizot**: 4선방과 후방 패스 옵션은 확인. 두 실점의 개인 책임을 확정할 영상 근거는 부족하다.\n- **Cash**: Kvaratskhelia를 장시간 통제했지만 두 득점 장면의 간격·마지막 선 판단은 약점으로 남았다.\n- **Lindelöf/Pau**: 좁은 중앙 수비와 안정 배급. Lindelöf 39/41, Pau 23/26 패스로 빌드업 정확도가 높았다.\n- **Maatsen**: 폭·전진뿐 아니라 11회 경합승, 4태클, 2키패스로 공수 활동량이 가장 선명했다.\n- **Kamara/Gomes**: 더블 피벗은 확인. Kamara는 스크린·배급, Gomes는 경합·태클 쪽 신호가 강하지만\n  한 경기만으로 고정 분업을 확정하지 않는다.\n- **McGinn**: 자연 RW가 아닌 RAM 임시 해법이면서 실제 우측 창출자였다. 4키패스·1도움이 이를 직접 지지한다.\n- **Buendía**: 명목 CAM보다 실측이 낮았다. 63터치·45패스로 연결량은 컸지만 6/15 경합과 낮은 평균 위치는\n  PSG 압박 아래 전진 연결이 제한됐음을 보여준다.\n- **Hemmings**: 90분을 버티며 왼쪽 안쪽 지원·압박·회수 임무를 수행했다. 유스 선수도 이벤트 경로로\n  히트맵을 확보했으나, 대표 LM/LAM 역할로 승격하려면 공식전 2경기 이상 같은 위치 표본이 더 필요하다.\n- **Madjo**: 1골·6슈팅·2키패스의 공격 출구. 실제 경합승은 1/9라 “물리적으로 모든 경합을 지배했다”는\n  서사는 과장이다. 가치의 핵심은 등진 연결 시도, 반복 침투, 실패 뒤 재시도와 박스 점유다.\n\n### DB 반영 원칙\n\n- 이번 심화 회차에서 기존 `player_matches` 원천행은 덮어쓰지 않았다.\n- 2026-27 역할 기록이 없던 Bizot·Lindelöf·Pau Torres·Maatsen·Hemmings·Madjo만 `player_duties`에\n  추가한다. 기존 Cash·Kamara·Gomes·McGinn·Buendía 행은 보존하고 이 경기 판정은 observation으로 연결한다.\n- 한 경기 커널 Δ만으로 `prescriptions`·`team_tactic_setups`는 변경하지 않는다.\n\n---\n\n## 이 경기만의 FC26 재현 프리셋\n\n> **MATCH ONLY** — 아래 설정은 PSG전 한 경기만 재현한다. 시즌 대표 전술이나 에메리 정본 설정을\n> 변경하지 않으며, `match_game_setups`·`match_player_prescriptions`에 별도로 저장한다.\n\n- 포메이션: **4-2-3-1 Wide**\n- 빌드업: **Counter** — 39% 점유에서 탈취 직후 적은 패스로 Madjo와 우측 McGinn을 찾은 직접 전환.\n- 수비 접근: **Balanced**, 라인 높이 **45** — 중앙을 좁게 보호한 4-2-3-1과 일시적 5-4-1을 정적 설정으로 근사.\n- 전술 코드: **미검증**. 실제 게임에서 아직 저장·검증하지 않았다.\n- 한계: 0-0의 낮은 블록과 1-2 열세 뒤 라인 상승을 단일 프리셋 하나가 모두 표현할 수 없다.\n\n| 슬롯 | 선수 | FC26 역할 | 포커스 | 이 경기 적합 |\n|---|---|---|---|---:|\n| GK | 비조 | 골키퍼 (`gk_goalkeeper`) | Defend | .966 |\n| LB | 마첸 | 윙백 (`fb_wingback`) | Balanced | .759 |\n| LCB | 파우 토레스 | 볼 플레잉 센터백 (`cb_bpd`) | Build-Up | .798 |\n| RCB | 린델뢰프 | 볼 플레잉 센터백 (`cb_bpd`) | Aggressive | .895 |\n| RB | 캐시 | 윙백 (`fb_wingback`) | Balanced | .907 |\n| LDM | 주앙 고메스 | 홀딩 (`dm_holding`) | Roaming | .679 |\n| RDM | 카마라 | 홀딩 (`dm_holding`) | Ball-Winning | .788 |\n| LM | 헤밍스 | 와이드 미드필더 (`wm_widemid`) | Support | .788 |\n| CAM | 부엔디아 | 플레이메이커 (`cam_playmaker`) | Roaming | .623 |\n| RM | 맥긴 | 윙어 (`wm_winger`) | Attack | .882 |\n| ST | Brian Madjo | 포처 (`st_poacher`) | Attack | .725 |\n\n역할·포커스는 event `16260286`의 선수별 실제 히트맵을 해당 슬롯의 FC26 커널에 비교한 단일 경기\nargmax다. 이는 “그 경기에서 가장 비슷했던 움직임”이지 선수의 시즌 대표 역할이나 최적 처방이 아니다.\n",
+   "report_markdown": "# 2026-08-12 UEFA Super Cup — PSG 2-1 Aston Villa\n\n> 수집일 2026-08-13 · SofaScore event `16260286` · 중립 경기 · 빌라 4-2-3-1\n\n## 실측\n\n- 빌라 점유율 **39%**, 슈팅 **15-12**, 유효슈팅 **4-6**, 빅찬스 **5-3**, 패스 **368-588**.\n- 득점 국면: 0-0 20분 → 0-1 열세 25분 → 1-1 16분 → 1-2 열세 29분.\n- 45분 이상 출전한 11명을 `player_matches`에 적재했다. 전원 평균 위치·히트맵·개별 스탯이 있고\n  히트포인트 최저도 **33**이라 경기 단위 그리드로 유효하다.\n- Brian Madjo는 72분, 1골, 6슈팅, 2키패스. John McGinn은 73분, 1도움, 4키패스.\n\n| 선수 | 라인업 슬롯 | 평균 위치 기반 분류 | 평점 | 핵심 |\n|---|---:|---:|---:|---|\n| Marco Bizot | GK | GK | 6.6 | 4선방 |\n| Matty Cash | RB | RB | 6.6 | 우측 수비 |\n| Victor Lindelöf | RCB | RCB | 6.4 | 중앙 보호 |\n| Pau Torres | LCB | LCB | 7.0 | 79분 |\n| Ian Maatsen | LB | LB | 7.0 | 좌측 폭·전진 |\n| Boubacar Kamara | RDM | RDM | 6.4 | 더블 피벗 |\n| João Gomes | LDM | LDM | 6.1 | 더블 피벗 |\n| John McGinn | RAM | RM | 7.1 | 우측 창출, 4키패스·1도움 |\n| Emiliano Buendía | CAM | LDM | 6.3 | 명목 CAM이나 평균 위치는 중앙·낮음 |\n| George Hemmings | LAM | LDM | 6.2 | 순수 윙어보다 좌측 하프스페이스 |\n| Brian Madjo | ST | ST | 6.6 | 정통 9번·물리적 출구, 1골 |\n\n`lineup_pos`는 실제 라인업 배열을 4-2-3-1 우→좌 순서로 사상한 원천 배치이고,\n`pos_class`는 평균 위치 기반 사후 분류다. 둘이 다른 Buendía·Hemmings는 오류로 덮지 않고 나란히 보존한다.\n\n## 전술 판정\n\n- 명목 구조 `McGinn RAM — Buendía CAM — Hemmings LAM — Madjo ST`와\n  `Kamara/Gomes` 더블 피벗은 확인됐다. 다만 세 공격형 미드필더는 유동적이었다.\n- [El País 경기 분석](https://elpais.com/deportes/futbol/2026-08-12/el-psg-extiende-su-hegemonia-tras-vencer-la-supercopa-de-europa-ante-el-aston-villa.html)\n  (2026-08-12)은 빌라가 중앙을 좁게 보호하고 전방에서 센터백을 압박한 뒤 짧고 직접적으로 전환했다고 서술한다.\n- [AS의 Emery 경기 후 문답](https://as.com/futbol/internacional/unai-emery-habra-mas-cambios-f202608-n/)\n  (2026-08-12)에서 Emery는 Madjo와 Hemmings를 해당 포지션에 맞춰 준비시켰다고 확인했다.\n  따라서 두 선수의 배치는 라인업 표기 오류가 아니라 의도된 선택이다.\n- Madjo는 등지고 연결하는 물리적 출구와 박스 침투를 함께 맡았고, McGinn은 오른쪽 하프스페이스에서\n  반복적으로 공급했다. 경기 단위 FC 적합은 McGinn RM `wm_winger/Attack` **.882**,\n  Madjo ST `st_poacher/Attack` **.725**다. 한 경기 값이므로 대표 적합으로 승격하지 않는다.\n\n## obs#134~136 검증\n\n- **obs#134 지지**: 자연 우측 윙어 대신 McGinn을 RAM에 세워 임시 해결했다. 그의 평균 y=15.81은\n  실제로 강한 우측 편향이고 4키패스·1도움으로 기능했지만, 전문 우측 자원 영입 필요를 반증하지 않는다.\n- **obs#135 검증 불가**: Endrick이 출전하지 않아 우측 적합성이나 9번 조건에 새 근거가 없다.\n- **obs#136 검증 대상 아님**: 이 경기는 빌라의 수요만 보여줄 뿐 협상 단계·선수 의사를 말하지 않는다.\n\n팬 관찰은 [r/avfc 경기 후 스레드](https://www.reddit.com/r/avfc/comments/1vmqcwz/post_match_thread_psg_21_aston_villa_uefa_super/)\n(2026-08-12)에서 교차 확인했다. Madjo/Hemmings, McGinn, Kamara/Gomes 조합 호평은 반복됐지만\n위치 판정에서는 SofaScore 원천값과 감독 발언보다 낮은 우선순위로만 사용했다. 경기 전 Reuters 기자회견은\n영상 전체를 검토하지 못해 근거로 채택하지 않았다. 전문 전술 블로그·경기 후 전술 유튜브는 수집 시점에\n검색되지 않아 미수행으로 남긴다.\n\n## 데이터 출처와 한계\n\n- SofaScore `/event`, `/lineups`, `/statistics`, `/incidents`, `/average-positions`,\n  `/player/{id}/heatmap`, `/player/{id}/statistics`를 동일 오리진 Playwright 수집기로 사용했다.\n- SofaScore가 이 경기 xG를 양 팀 모두 `0.00`으로 제공해 `team_match_stats.xg_v/xg_o`도 원천값 그대로 0이다.\n  이를 실제 무위험 경기라는 뜻으로 해석하면 안 된다(빅찬스는 빌라 5, PSG 3).\n- Madjo의 유효 표본은 이 경기 포함 **4경기**라 대표 역할 최소 기준 6경기에 아직 미달한다.\n\n---\n\n## 2026-08-13 15시 심화 업데이트 — 선수별 스탯·히트맵·영상 교차검증\n\n### 선수별 실제 데이터\n\n아래 `평균 위치`는 SofaScore 원좌표 `(avg_x, avg_y)`이고 `맵25`는 같은 이벤트에서 받은 5×5 히트맵을\n행 우선으로 인코딩한 원천값이다(`0~9`, 최대 셀 `X`). 한 경기 커널 적합은 역할 판정을 돕는 참고값이며\n대표 처방이나 선발 결론으로 승격하지 않는다.\n\n| 선수 | 분/평점 | 평균 위치·맵25 | 실제 스탯 | 이 경기 역할·FC26 참고 적합 |\n|---|---:|---|---|---|\n| Marco Bizot | 90 / 6.6 | `(10.05, 51.10)` · `0000000000000000000001X10` | 4선방, 23/30패스, 40터치, 10회수 | 후방 패스 옵션·라인 수비 GK · `gk_goalkeeper/Defend .966` |\n| Matty Cash | 90 / 6.6 | `(41.71, 12.64)` · `00003000250002X0004900135` | 32/42패스, 2/4경합, 2태클, 5클리어, 1키패스 | 우측 폭·회복 수비 · `fb_wingback/Balanced .907` |\n| Victor Lindelöf | 90 / 6.4 | `(29.11, 36.46)` · `001000001001211018X301043` | 39/41패스, 1인터셉트, 2클리어, 8회수 | RCB 중앙 보호·안정 배급 · `cb_bpd/Aggressive .895` |\n| Pau Torres | 79 / 7.0 | `(28.70, 68.14)` · `0001021000123006810024X20` | 23/26패스, 3/6경합, 2태클, 3클리어 | LCB 좌측 전진 배급 · `cb_bpd/Build-Up .798` |\n| Ian Maatsen | 90 / 7.0 | `(50.02, 87.46)` · `220004200021000X000011000` | 27/35패스, 11/16경합, 4태클, 2키패스 | 좌측 폭·전진과 회복 · `fb_wingback/Balanced .759` |\n| Boubacar Kamara | 72 / 6.4 | `(41.31, 38.72)` · `001000061600430009X101410` | 19/21패스, 2인터셉트, 2슈팅(1유효) | 우측 피벗·중앙 스크린 · `dm_holding/Ball-Winning .788` |\n| João Gomes | 79 / 6.1 | `(46.81, 57.68)` · `0030111160616016X13301100` | 12/18패스, 3/9경합, 3태클, 1슈팅 | 좌측 피벗·경합/압박 · `dm_holding/Roaming .679` |\n| John McGinn | 73 / 7.1 | `(63.70, 15.81)` · `000580001X000190014300000` | 4/10패스, 4키패스, 1도움, 4/13경합 | RAM 우측 창출·전방 압박 · `wm_winger/Attack .882` |\n| Emiliano Buendía | 90 / 6.3 | `(53.43, 50.76)` · `4122115551342X40556111020` | 30/45패스, 1키패스, 6/15경합, 2태클, 2슈팅 | 명목 CAM, 실제 중앙·낮은 연결자 · `cam_playmaker/Roaming .623` |\n| **George Hemmings** | **90 / 6.2** | **`(58.11, 73.31)` · `66111X4430X41009403004000`** | **20/25패스, 1키패스, 3/9경합, 1태클, 2슈팅(1유효), 6회수** | **LAM이지만 왼쪽 안쪽·낮은 지원/압박 · `wm_widemid/Support .788`** |\n| Brian Madjo | 72 / 6.6 | `(64.55, 54.02)` · `13X1003334314003131101000` | 1골, 6슈팅(1유효), 2키패스, 9/14패스, 1/9경합 | 포스트 출구+배후/박스 침투 · `st_poacher/Attack .725` |\n\n### 교체 선수 5명 보강\n\n기존 45분+ 필터는 시즌 대표 그리드에는 맞지만 경기 리포트에서 교체 선수를 통째로 누락시켰다. 이 경기의\n교체 5명은 필터를 0분+로 낮춰 같은 event의 `lineups → statistics → heatmap → average-positions`에서 다시\n수집했다. 아래 히트맵은 **그 교체 시간만의 실제 위치**이며 시즌 대표 처방에는 합산하지 않는다.\n\n| 투입 | 교체 | 분/평점 | 평균 위치·맵25 | 실제 스탯 | 종료 XI FC26 참고 |\n|---:|---|---:|---|---|---|\n| 72′ | 카마라 → **보가르드** | 18 / 6.8 | `(45.01, 44.14)` · `0000002622002X20804002240` | 12/13패스, 2/2경합, 1태클, 4회수 | RDM `dm_dlp/Roaming .722` |\n| 72′ | Madjo → **타미 아브라함** | 18 / 6.6 | `(64.94, 40.66)` · `05005055500505X0000000000` | 5/7패스, 1/2경합, 7터치, 슈팅 0 | ST `st_false9/Build-Up .493` ⚠️ 히트포인트 9 |\n| 73′ | 맥긴 → **알리송** | 17 / 6.2 | `(62.08, 19.31)` · `003850005X000580000300005` | 9/14패스, 2/3경합, 1태클, 2회수 | RM `wm_widemid/Build-Up .765` |\n| 79′ | 파우 토레스 → **밍스** | 11 / 6.6 | `(35.51, 81.81)` · `50000300003000038300X5000` | 10/12패스, 12터치, 2회수 | LCB `cb_wideback/Aggressive .794` |\n| 79′ | 주앙 고메스 → **바클리** | 11 / 6.8 | `(59.61, 61.11)` · `040002X400020624040000000` | 15/15패스, 2/3경합, 1태클, 18터치 | LDM `dm_dlp/Roaming .466` |\n\n아브라함은 히트포인트가 9라 프로젝트의 대표 그리드 최소 기준 15에 못 미친다. 원천 위치를 숨기지 않기 위해\n경기 화면에는 표시하지만 `.493`을 전술 판정이나 시즌 처방의 근거로 사용하지 않는다. 나머지 교체 선수도\n11~18분 표본이므로 역할·포커스는 **종료 XI를 화면에서 재현하기 위한 참고값**일 뿐이다.\n\n### 헤밍스 유스 데이터 확보 경로\n\n- 선수 프로필의 `events/last` 경로는 유스 선수에게 비거나 404가 날 수 있다. 이번에는 프로필 이력이 아니라\n  **경기 이벤트 `16260286`의 lineup → player statistics/heatmap/average-positions** 순으로 회수했다.\n- 그래서 헤밍스도 90분 스탯, 평균 위치, 히트포인트 51, 5×5 원천맵까지 성인 선수와 같은 형식으로 저장됐다.\n- 위치 판정은 명목 LAM을 그대로 복사하지 않았다. 평균 `y=73.31`의 좌편향은 맞지만 전진 깊이와 맵 분포가\n  터치라인 고정 윙어보다 낮고 안쪽이다. 에메리의 의도된 배치 확인과 합치되, 한 경기라 대표 역할 확정은 보류한다.\n\n### 국면별 전술\n\n1. **0-0(20분)** — 명목 4-2-3-1. 중앙을 좁게 보호하고 전방 인원이 PSG 센터백·안쪽 통로를 압박했다.\n   AS는 초반 비소유 모양을 5-4-1로 묘사했지만, 라인업·평균 위치 정본은 백4다. 따라서 이는 고정 포메이션\n   변경보다 초반 수비 국면의 일시적 하강으로 기록한다.\n2. **0-1 열세(25분)** — 탈취 뒤 적은 패스로 전진했다. McGinn의 우측 공급과 Madjo의 등진 떨굼·배후 침투가\n   주 출구였다. Kamara도 박스 앞까지 전진해 슈팅했다.\n3. **1-1(16분)** — Madjo가 McGinn의 측면 공급을 마무리했다. PSG가 후반 Dembélé를 넣고 다시 볼·공간을\n   장악했으며, Villa의 전진 수비선에서 Cash가 마지막 선에 남은 틈을 Doué가 공략했다.\n4. **1-2 열세(29분)** — Villa가 라인과 압박을 올려 경기를 개방했다. Gomes 슈팅, Abraham을 향한 크로스 등\n   박스 접근은 늘었지만, 더 큰 후방 공간도 감수했다.\n\n### 영상·감독 발언 확인\n\n- [BeanymanSports 경기 후 전체 기자회견](https://www.youtube.com/watch?v=cV0xoK0gK3w)\n  (2026-08-13 게시, 자동 영문 자막 직접 확인): Emery는 팀이 전술·개인 양쪽에서 응답했고, 볼을 가졌을 때의\n  위치, 압박 시점, 컴팩트함, 젊은 선수의 수비·전술 규율을 준비했다고 설명했다.\n- [BeanymanSports Emery 단독 클립](https://www.youtube.com/watch?v=ILFYehyhGNY)\n  (2026-08-13 게시, 자동 영문 자막 직접 확인): 같은 기자회견의 Emery 구간이다. Madjo의 평가는 득점만이\n  아니라 수비, 헌신, 전술 규율을 포함했다.\n- [The Villa Park Podcast 경기 분석](https://www.youtube.com/watch?v=NfejEXQj3sE)\n  (2026-08-13 게시, 자동 영문 자막 직접 확인): Madjo의 위치 인지·수비수와의 접촉·반복 박스 움직임,\n  Hemmings의 성숙한 왼쪽 수행, Kamara/Gomes의 더 강한 경합 성격, Maatsen의 전진 뒤 회복을 평가했다.\n  팬/클럽 팟캐스트이므로 감독 발언·실측보다 낮은 보조 근거로만 썼다.\n- [talkSPORT Madjo 분석](https://www.youtube.com/watch?v=6_VcfCoJTmQ)\n  (2026-08-13 게시, 자동 영문 자막 직접 확인): 득점 전 기회 실패 후에도 표정·움직임이 무너지지 않았고,\n  수비수 앞/뒤를 바꾸는 박스 움직임과 물리적 경합을 반복했다는 스트라이커 관점 평가다.\n- [TNT Sports 공식 트로피·경기 영상](https://www.youtube.com/watch?v=Kf_KjuJPvS0)\n  (2026-08-13 게시): 경기 장면 확인용이며 전술 해설의 주 근거로 사용하지 않았다.\n\n### 기사·1차 자료 교차검증\n\n- [El País 경기 분석](https://elpais.com/deportes/futbol/2026-08-12/el-psg-extiende-su-hegemonia-tras-vencer-la-supercopa-de-europa-ante-el-aston-villa.html)\n  (2026-08-12 23:26 CEST): 중앙 보호, 전방 압박, 직접 전환, Madjo의 등진 연결, 실점 후 라인 상승을 가장\n  구체적으로 설명한다.\n- [AS 경기 분석](https://as.com/futbol/internacional/invencible-luis-enrique-f202608-n/)\n  (2026-08-12 22:59 CEST): 초반 수비 모양을 5-4-1로 묘사하고, McGinn·Buendía가 Madjo를 찾았으며\n  Madjo가 등진 연결·공중볼·배후 침투를 모두 수행했다고 평가한다. 두 번째 실점은 Cash가 마지막 선에\n  묶인 전진 수비의 위험으로 해석한다.\n- [AS Emery 경기 후 문답](https://as.com/futbol/internacional/unai-emery-habra-mas-cambios-f202608-n/)\n  (2026-08-12 23:58 CEST): Madjo와 Hemmings를 경기 전 정한 위치에서 훈련했다고 직접 확인한다.\n- [UEFA 공식 경기 페이지](https://www.uefa.com/uefasupercup/match/2048319--paris-vs-aston-villa/)\n  및 [공식 하이라이트 링크](https://www.uefa.com/uefasupercup/clubs/52747--paris/matches/): 대회·경기 정본과\n  하이라이트 경로를 확인했다. 현재 텍스트 페이지는 세부 선수 통계를 노출하지 않아 SofaScore 수치를 대체하지 않는다.\n- Aston Villa 공식 사이트의 경기 후 상세 리포트는 수집 시점 검색 인덱스에서 발견되지 않았다.\n  Telegraph 원문은 유료벽으로 전체 검토하지 못했다. 이 두 유형은 **미수행 사유를 명시**하고 결론 근거에서 제외했다.\n\n### 선수별 최종 판정\n\n- **Bizot**: 4선방과 후방 패스 옵션은 확인. 두 실점의 개인 책임을 확정할 영상 근거는 부족하다.\n- **Cash**: Kvaratskhelia를 장시간 통제했지만 두 득점 장면의 간격·마지막 선 판단은 약점으로 남았다.\n- **Lindelöf/Pau**: 좁은 중앙 수비와 안정 배급. Lindelöf 39/41, Pau 23/26 패스로 빌드업 정확도가 높았다.\n- **Maatsen**: 폭·전진뿐 아니라 11회 경합승, 4태클, 2키패스로 공수 활동량이 가장 선명했다.\n- **Kamara/Gomes**: 더블 피벗은 확인. Kamara는 스크린·배급, Gomes는 경합·태클 쪽 신호가 강하지만\n  한 경기만으로 고정 분업을 확정하지 않는다.\n- **McGinn**: 자연 RW가 아닌 RAM 임시 해법이면서 실제 우측 창출자였다. 4키패스·1도움이 이를 직접 지지한다.\n- **Buendía**: 명목 CAM보다 실측이 낮았다. 63터치·45패스로 연결량은 컸지만 6/15 경합과 낮은 평균 위치는\n  PSG 압박 아래 전진 연결이 제한됐음을 보여준다.\n- **Hemmings**: 90분을 버티며 왼쪽 안쪽 지원·압박·회수 임무를 수행했다. 유스 선수도 이벤트 경로로\n  히트맵을 확보했으나, 대표 LM/LAM 역할로 승격하려면 공식전 2경기 이상 같은 위치 표본이 더 필요하다.\n- **Madjo**: 1골·6슈팅·2키패스의 공격 출구. 실제 경합승은 1/9라 “물리적으로 모든 경합을 지배했다”는\n  서사는 과장이다. 가치의 핵심은 등진 연결 시도, 반복 침투, 실패 뒤 재시도와 박스 점유다.\n\n### DB 반영 원칙\n\n- 이번 심화 회차에서 기존 `player_matches` 원천행은 덮어쓰지 않았다.\n- 2026-27 역할 기록이 없던 Bizot·Lindelöf·Pau Torres·Maatsen·Hemmings·Madjo만 `player_duties`에\n  추가한다. 기존 Cash·Kamara·Gomes·McGinn·Buendía 행은 보존하고 이 경기 판정은 observation으로 연결한다.\n- 한 경기 커널 Δ만으로 `prescriptions`·`team_tactic_setups`는 변경하지 않는다.\n- 교체 5명은 `player_matches`·`match_player_reports`·`match_player_prescriptions(starter=0)`에만 추가하고,\n  누구를 몇 분에 교체했는지 `replaced_player_id`·`minute_on`으로 보존한다.\n\n---\n\n## 이 경기만의 FC26 재현 프리셋\n\n> **MATCH ONLY** — 아래 설정은 PSG전 한 경기만 재현한다. 시즌 대표 전술이나 에메리 정본 설정을\n> 변경하지 않으며, `match_game_setups`·`match_player_prescriptions`에 별도로 저장한다.\n\n- 포메이션: **4-2-3-1 Wide**\n- 빌드업: **Counter** — 39% 점유에서 탈취 직후 적은 패스로 Madjo와 우측 McGinn을 찾은 직접 전환.\n- 수비 접근: **Balanced**, 라인 높이 **45** — 중앙을 좁게 보호한 4-2-3-1과 일시적 5-4-1을 정적 설정으로 근사.\n- 전술 코드: **미검증**. 실제 게임에서 아직 저장·검증하지 않았다.\n- 한계: 0-0의 낮은 블록과 1-2 열세 뒤 라인 상승을 단일 프리셋 하나가 모두 표현할 수 없다.\n\n| 슬롯 | 선수 | FC26 역할 | 포커스 | 이 경기 적합 |\n|---|---|---|---|---:|\n| GK | 비조 | 골키퍼 (`gk_goalkeeper`) | Defend | .966 |\n| LB | 마첸 | 윙백 (`fb_wingback`) | Balanced | .759 |\n| LCB | 파우 토레스 | 볼 플레잉 센터백 (`cb_bpd`) | Build-Up | .798 |\n| RCB | 린델뢰프 | 볼 플레잉 센터백 (`cb_bpd`) | Aggressive | .895 |\n| RB | 캐시 | 윙백 (`fb_wingback`) | Balanced | .907 |\n| LDM | 주앙 고메스 | 홀딩 (`dm_holding`) | Roaming | .679 |\n| RDM | 카마라 | 홀딩 (`dm_holding`) | Ball-Winning | .788 |\n| LM | 헤밍스 | 와이드 미드필더 (`wm_widemid`) | Support | .788 |\n| CAM | 부엔디아 | 플레이메이커 (`cam_playmaker`) | Roaming | .623 |\n| RM | 맥긴 | 윙어 (`wm_winger`) | Attack | .882 |\n| ST | Brian Madjo | 포처 (`st_poacher`) | Attack | .725 |\n\n역할·포커스는 event `16260286`의 선수별 실제 히트맵을 해당 슬롯의 FC26 커널에 비교한 단일 경기\nargmax다. 이는 “그 경기에서 가장 비슷했던 움직임”이지 선수의 시즌 대표 역할이나 최적 처방이 아니다.\n\n경기 분석 메뉴의 **재현 XI** 선택기에서 `선발 XI`와 `교체 반영 종료 XI`를 바꿔 볼 수 있다. 종료 XI는\n보가르드·아브라함·알리송·밍스·바클리를 실제 교체 대상 슬롯에 넣으며, 팀 히트맵도 전체/선발/교체 및\n개별 선수로 나눠 확인할 수 있다.\n",
    "report_path": "reports/match-watch/2026-08-12-avl-psg-super-cup.md",
    "result": "1-2",
    "season": "2026-27",
@@ -19071,7 +19598,7 @@
    "source": "SofaScore event 16260286; Emery 경기 후 기자회견; El País; AS; UEFA; 경기 분석 영상·팟캐스트",
    "stage": "Final",
    "status": "complete",
-   "tactical_changes": "0-0에는 중앙 보호와 전방 압박|0-1 열세 뒤 직접 전환과 우측 공급 강화|1-1 뒤 PSG 교체에 밀려 후방 공간 노출|1-2 열세에는 라인과 압박을 올려 박스 접근과 전환 위험이 함께 증가",
+   "tactical_changes": "0-0에는 중앙 보호와 전방 압박|0-1 열세 뒤 직접 전환과 우측 공급 강화|1-1 뒤 PSG 교체에 밀려 후방 공간 노출|1-2 열세에는 라인과 압박을 올려 박스 접근과 전환 위험이 함께 증가|72~79분 Bogarde·Abraham·Alysson·Mings·Barkley 5명을 투입해 종료 XI로 전환",
    "tactical_description": "명목 4-2-3-1에서 중앙을 좁게 보호하고 전방 압박 뒤 짧고 직접적으로 전환했다. McGinn이 자연 우측 윙어 대신 RAM 창출자, Madjo가 등진 연결과 박스 침투를 겸한 9번을 맡았다.",
    "tactical_features": "비소유 때 중앙 컴팩트함과 센터백 압박|좌 Maatsen 전진·우 McGinn 공급의 비대칭|Kamara-Gomes 더블 피벗의 스크린·경합 분업|Madjo를 향한 직접 전환과 세 공격형 미드필더의 유동성",
    "title": "2026-08-12 UEFA Super Cup — PSG 2-1 Aston Villa",
@@ -19203,14 +19730,14 @@
    "xg_pg": 0.212
   },
   {
-   "avg_rating": 6.64,
-   "dw_pg": 2.36,
-   "ic_pg": 0.44,
-   "kp_pg": 0.15,
+   "avg_rating": 6.65,
+   "dw_pg": 2.35,
+   "ic_pg": 0.42,
+   "kp_pg": 0.14,
    "label": "보가르드",
-   "minutes": 2508,
-   "n": 63,
-   "tk_pg": 0.72,
+   "minutes": 2526,
+   "n": 64,
+   "tk_pg": 0.73,
    "xa_pg": 0.027,
    "xg_pg": null
   },
@@ -19275,14 +19802,14 @@
    "xg_pg": 1.007
   },
   {
-   "avg_rating": 6.71,
-   "dw_pg": 1.77,
-   "ic_pg": 0.42,
+   "avg_rating": 6.7,
+   "dw_pg": 1.73,
+   "ic_pg": 0.41,
    "kp_pg": 0.15,
    "label": "밍스",
-   "minutes": 1709,
-   "n": 40,
-   "tk_pg": 0.25,
+   "minutes": 1720,
+   "n": 41,
+   "tk_pg": 0.24,
    "xa_pg": 0.023,
    "xg_pg": 0.191
   },
@@ -19312,13 +19839,13 @@
   },
   {
    "avg_rating": 6.84,
-   "dw_pg": 2.2,
+   "dw_pg": 2.19,
    "ic_pg": 0.12,
-   "kp_pg": 0.44,
+   "kp_pg": 0.42,
    "label": "바클리",
-   "minutes": 960,
-   "n": 25,
-   "tk_pg": 0.64,
+   "minutes": 971,
+   "n": 26,
+   "tk_pg": 0.65,
    "xa_pg": 0.076,
    "xg_pg": 0.12
   },
@@ -19443,26 +19970,26 @@
    "xg_pg": 0.225
   },
   {
-   "avg_rating": 6.88,
-   "dw_pg": 6.14,
-   "ic_pg": 0.55,
-   "kp_pg": 0.41,
+   "avg_rating": 6.85,
+   "dw_pg": 5.96,
+   "ic_pg": 0.52,
+   "kp_pg": 0.39,
    "label": "알리송",
-   "minutes": 1475,
-   "n": 22,
-   "tk_pg": 1.32,
+   "minutes": 1492,
+   "n": 23,
+   "tk_pg": 1.3,
    "xa_pg": 0.047,
    "xg_pg": 0.151
   },
   {
-   "avg_rating": 6.95,
-   "dw_pg": 2.92,
-   "ic_pg": 0.32,
-   "kp_pg": 0.96,
+   "avg_rating": 6.94,
+   "dw_pg": 2.85,
+   "ic_pg": 0.31,
+   "kp_pg": 0.92,
    "label": "타미 아브라함",
-   "minutes": 1878,
-   "n": 25,
-   "tk_pg": 0.6,
+   "minutes": 1896,
+   "n": 26,
+   "tk_pg": 0.58,
    "xa_pg": 0.098,
    "xg_pg": 0.508
   },
@@ -25198,6 +25725,16 @@
    },
    {
     "assists": 0,
+    "avg_rating": 6.6,
+    "competition": "UEFA Super Cup",
+    "goals": 0,
+    "minutes": 11,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 0
+   },
+   {
+    "assists": 0,
     "avg_rating": 6.65,
     "competition": "Premier League",
     "goals": 0,
@@ -25248,6 +25785,16 @@
    }
   ],
   "바클리": [
+   {
+    "assists": 0,
+    "avg_rating": 6.8,
+    "competition": "UEFA Super Cup",
+    "goals": 0,
+    "minutes": 11,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 0
+   },
    {
     "assists": 1,
     "avg_rating": 6.85,
@@ -25361,6 +25908,16 @@
     "n": 1,
     "season": "2026-27",
     "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.8,
+    "competition": "UEFA Super Cup",
+    "goals": 0,
+    "minutes": 18,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 0
    },
    {
     "assists": 0,
@@ -25704,6 +26261,16 @@
    }
   ],
   "알리송": [
+   {
+    "assists": 0,
+    "avg_rating": 6.2,
+    "competition": "UEFA Super Cup",
+    "goals": 0,
+    "minutes": 17,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 0
+   },
    {
     "assists": 1,
     "avg_rating": 6.88,
@@ -26212,6 +26779,16 @@
    }
   ],
   "타미 아브라함": [
+   {
+    "assists": 0,
+    "avg_rating": 6.6,
+    "competition": "UEFA Super Cup",
+    "goals": 0,
+    "minutes": 18,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 0
+   },
    {
     "assists": 1,
     "avg_rating": 6.84,

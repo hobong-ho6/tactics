@@ -42,7 +42,7 @@
 <b>리그 전체</b>는 Fotmob이 산출한 같은 포지션 리그 선수 대비 백분위다. 두 축은 모집단이 달라 값이 직접 비교되지 않는다.</p></div>
 <div class="panel"><h2>FC26 게임 스탯</h2><div id="gstat" class="kv"></div></div>
 <div class="panel"><h2>영상·스카우트 분석 (가설 → 실측 교차검증)</h2>
-<p class="dim">각 분석의 <b>레퍼런스 보기</b>를 펼치면 저장된 원문·내부 근거를 확인할 수 있다. URL이 없는 과거 기록은 출처명만 표시한다.</p>
+<p class="dim">각 분석은 <b>분석 기준일·표본 범위</b>를 함께 표시한다. <b>레퍼런스 보기</b>를 펼치면 저장된 원문·내부 근거를 직접 확인할 수 있다. 기간을 복원할 수 없는 과거 기록은 임의 추정하지 않고 <b>기간 미기록</b>으로 표시한다.</p>
 <div class="scrollx"><table id="duty"></table></div></div>
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, slotCandidates, sofifaLink } from './assets/data.js?v=20260813-slot-candidates';
@@ -106,6 +106,14 @@ function references(source){
   return `<details class="refs"><summary>레퍼런스 ${parts.length}개 보기</summary>
     <ol>${rendered.map(x=>`<li>${x.html}${x.links?'':' <small class="ref-missing">링크 미기록</small>'}</li>`).join('')}</ol>
     <small class="dim">직접 링크 ${linked}/${parts.length} · 새 탭에서 열림</small></details>`;
+}
+const scopeLabels={specific_match:'특정 경기',season:'시즌 표본',multi_match:'여러 경기',multi_source:'복수 자료 종합',career:'커리어 종합',unknown:'범위 미기록'};
+function analysisWindow(d){
+  const from=d.observed_from, to=d.observed_to;
+  const range=from&&to ? (from===to?from:`${from} ~ ${to}`) : (to?`~ ${to}`:(from?`${from} ~`:'기간 미기록'));
+  const scope=scopeLabels[d.sample_scope]||d.sample_scope||'범위 미기록';
+  return `<div class="analysis-window"><span class="badge mid">${esc(scope)}</span><b>${esc(range)}</b>
+    <small class="dim">${annotate(esc(d.sample_note||'표본 설명 미기록'))}</small></div>`;
 }
 /* 26/27 스쿼드 기준 — 이탈 확정·구시즌 전용 제외. 그룹핑: 포지션군 + 영입 추적 */
 const gone = new Set((td.departed||[]).map(strip));
@@ -253,7 +261,7 @@ function render(){
       .map(p=>`<div class="pcard"><b>${p.kind}</b> <small class="dim">${p.pos_label??''}</small><br>${miniGrid(p.map25)}<br>
         <small class="dim">n=${p.sample_n??'—'} · 평점 ${p.avg_rating??'—'} · sim ${p.fit_sim??'—'}</small></div>`).join('') || '<span class="dim">실측 그리드 없음</span>';
     const st = td.player_stats.find(s=>s.label===key);
-    document.getElementById('pstat').innerHTML = st ? `경기 <b>${st.n}</b> · 분 <b>${st.minutes??'—'}</b> · 평점 <b>${st.avg_rating??'—'}</b> · xG <b>${st.xg_pg??'—'}</b> · xA <b>${st.xa_pg??'—'}</b> · 키패스 <b>${st.kp_pg??'—'}</b> · 듀얼승 <b>${st.dw_pg??'—'}</b> · 태클 <b>${st.tk_pg??'—'}</b> · 인터셉트 <b>${st.ic_pg??'—'}</b>` : '<span class="dim">경기 스탯 없음 (match-watch 수집 대기)</span>';
+  document.getElementById('pstat').innerHTML = st ? annotate(`경기 <b>${st.n}</b> · 분 <b>${st.minutes??'—'}</b> · 평점 <b>${st.avg_rating??'—'}</b> · xG <b>${st.xg_pg??'—'}</b> · xA <b>${st.xa_pg??'—'}</b> · 키패스 <b>${st.kp_pg??'—'}</b> · 듀얼승 <b>${st.dw_pg??'—'}</b> · 태클 <b>${st.tk_pg??'—'}</b> · 인터셉트 <b>${st.ic_pg??'—'}</b>`) : '<span class="dim">경기 스탯 없음 (match-watch 수집 대기)</span>';
     // 시즌 성적 — 대회별 (Fotmob 선수 페이지 참고)
     const ss=(td.season_stats||{})[key]||[];
     document.getElementById('season').innerHTML = ss.length
@@ -316,8 +324,8 @@ function render(){
   const g = GS[key] ?? GS[n];
   document.getElementById('gstat').innerHTML = g ? `OVR <b>${g.ovr}</b>/${g.pot} · ${g.positions??''} · 최적 ${g.best_pos??''}<br>PAC ${g.pac} SHO ${g.sho} PAS ${g.pas} DRI ${g.dri} DEF ${g.def} PHY ${g.phy}<br><span class="dim">${annotate((g.playstyles??'').split(';').map(x=>x.trim()).join(' · '))}</span>` : '<span class="dim">FC26 로스터에 없음</span>';
   const ds = td.duties.filter(d=>d.label===key);
-  document.getElementById('duty').innerHTML = ds.length ? '<tr><th>포지션</th><th>영상·스카우트 주장(가설)</th><th>실측 대조</th><th>판정</th><th>게임 함의</th><th>근거</th></tr>'+
-    ds.map(d=>`<tr><td><b>${d.position}</b></td><td>${annotate(d.duties)}</td><td>${annotate(d.execution??'')}</td><td>${annotate(d.adherence??'')}</td><td class="dim">${annotate(d.game_role_implication??'')}</td><td>${references(d.source)}</td></tr>`).join('')
+  document.getElementById('duty').innerHTML = ds.length ? '<tr><th>포지션</th><th>분석 시점·표본</th><th>영상·스카우트 주장(가설)</th><th>실측 대조</th><th>판정</th><th>게임 함의</th><th>근거</th></tr>'+
+    ds.map(d=>`<tr><td><b>${esc(d.position)}</b></td><td>${analysisWindow(d)}</td><td>${annotate(d.duties)}</td><td>${annotate(d.execution??'')}</td><td>${annotate(d.adherence??'')}</td><td class="dim">${annotate(d.game_role_implication??'')}</td><td>${references(d.source)}</td></tr>`).join('')
     : '<tr><td class="dim">영상 분석 미수행 — 규칙상 신규 선수·MEDIUM-HIGH+ 후보는 자동 수행 대상</td></tr>';
 }
 render();

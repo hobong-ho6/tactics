@@ -44,21 +44,30 @@ window.__grid = hm => {{ const c=new Array(25).fill(0);
     for (const e of j.events) {{
       const d=new Date(e.startTimestamp*1000).toISOString().slice(0,10);
       if (d>='{date_from}' && d<='{date_to}')
-        evs.push({{id:e.id, d, c:(e.tournament?.uniqueTournament?.name||e.tournament?.name)}});
+        evs.push({{id:e.id, d, c:(e.tournament?.uniqueTournament?.name||e.tournament?.name),
+          home:e.homeTeam?.name||'', away:e.awayTeam?.name||''}});
     }}
   }}
   for (let i=0;i<evs.length;i+=6) {{
     await Promise.all(evs.slice(i,i+6).map(async ev => {{
       try {{
-        const [h,s,ap]=await Promise.all([
+        const [h,s,ap,lu]=await Promise.all([
           fetch(`/api/v1/event/${{ev.id}}/player/${{P}}/heatmap`).then(r=>r.ok?r.json():null),
           fetch(`/api/v1/event/${{ev.id}}/player/${{P}}/statistics`).then(r=>r.ok?r.json():null),
-          fetch(`/api/v1/event/${{ev.id}}/average-positions`).then(r=>r.ok?r.json():null)]);
-        let ax=null, ay=null;
+          fetch(`/api/v1/event/${{ev.id}}/average-positions`).then(r=>r.ok?r.json():null),
+          fetch(`/api/v1/event/${{ev.id}}/lineups`).then(r=>r.ok?r.json():null)]);
+        let ax=null, ay=null, side=null;
         if (ap) for (const sd of ['home','away']) {{
-          const p=ap[sd]?.find(x=>x.player?.id===P); if(p){{ax=p.averageX;ay=p.averageY;}} }}
+          const p=ap[sd]?.find(x=>x.player?.id===P); if(p){{ax=p.averageX;ay=p.averageY;side=sd;}} }}
+        if(!side && lu) for (const sd of ['home','away']) {{
+          if(lu[sd]?.players?.some(x=>x.player?.id===P)) side=sd; }}
+        const lp=side&&lu?.[side]?.players?.find(x=>x.player?.id===P);
+        const started=lp ? (lp.substitute?0:1) : '';
+        const opponent=side==='home'?ev.away:(side==='away'?ev.home:'');
+        const venue=side==='home'?'H':(side==='away'?'A':'');
         const st=s?.statistics||{{}};
-        window.__RES.push([ev.id, ev.d, (ev.c||'').replace(/[|]/g,''), h?.heatmap?.length||0,
+        window.__RES.push([ev.id, ev.d, (ev.c||'').replace(/[|]/g,''),
+          (opponent||'').replace(/[|]/g,''), venue, started, h?.heatmap?.length||0,
           s?.position||'', ax===null?'':Math.round(ax*100)/100, ay===null?'':Math.round(ay*100)/100,
           ...KEYS.map(k=>st[k]===undefined?'':st[k]),
           (h?.heatmap?window.__grid(h.heatmap):[]).join('.')].join('|'));
@@ -77,14 +86,27 @@ def parse_collected(text):
     out = []
     for ln in text.strip().split("\n"):
         p = ln.split("|")
-        if len(p) != 7 + len(STAT_FIELDS) + 1:
+        old_len = 7 + len(STAT_FIELDS) + 1
+        new_len = 10 + len(STAT_FIELDS) + 1
+        if len(p) not in (old_len, new_len):
             raise ValueError(f"필드 수 불일치({len(p)}): {ln[:80]}")
-        row = dict(event_id=int(p[0]), date=p[1], competition=p[2], hit_points=int(p[3]),
-                   lineup_pos=p[4] or None,
-                   avg_x=float(p[5]) if p[5] else None,
-                   avg_y=float(p[6]) if p[6] else None)
+        if len(p) == new_len:
+            row = dict(event_id=int(p[0]), date=p[1], competition=p[2],
+                       opponent=p[3] or None, venue=p[4] or None,
+                       started=int(p[5]) if p[5] else None, hit_points=int(p[6]),
+                       lineup_pos=p[7] or None,
+                       avg_x=float(p[8]) if p[8] else None,
+                       avg_y=float(p[9]) if p[9] else None)
+            stat_start = 10
+        else:  # 2026-08-13 이전 수집 문자열과의 호환
+            row = dict(event_id=int(p[0]), date=p[1], competition=p[2],
+                       opponent=None, venue=None, started=None, hit_points=int(p[3]),
+                       lineup_pos=p[4] or None,
+                       avg_x=float(p[5]) if p[5] else None,
+                       avg_y=float(p[6]) if p[6] else None)
+            stat_start = 7
         stats = {}
-        for (name, _), raw in zip(STAT_FIELDS, p[7:7 + len(STAT_FIELDS)]):
+        for (name, _), raw in zip(STAT_FIELDS, p[stat_start:stat_start + len(STAT_FIELDS)]):
             if name in FLOATS:
                 stats[name] = float(raw) if raw else None
             elif name in ("minutes",):
