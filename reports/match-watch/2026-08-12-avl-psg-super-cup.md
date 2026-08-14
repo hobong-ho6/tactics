@@ -388,3 +388,24 @@ Opta 퀄리파이어: **`Volley` · `LeftFoot` · `FirstTouch` · `SmallBoxLeft`
 
 ### ⚠️ 저장 위치 문제 (사용자 판단 필요)
 **PPDA와 팀 단위 공중볼·드리블·수비액션은 저장할 컬럼이 없어 obs#206 본문에만 있다.** `team_match_stats` 스키마 확장이 정식 자리인데, 스키마 변경은 임의로 하지 않았다. PPDA는 docs/12가 정본으로 다루는 축이라 컬럼을 두는 편이 맞아 보인다.
+
+### [2026-08-14] 저장 위치 해소 — 마이그레이션 015
+
+5회차가 "저장할 컬럼이 없다"고 남긴 문제를 `db/migrations/015-team-match-ppda-and-duels.sql`로 해소했다.
+
+**PPDA는 비율만 저장하지 않는다.** 구현마다 존 경계·수비액션 종류가 달라 값만 있으면 검증도 비교도 불가능하므로 **분자·분모·정의**를 함께 넣었다.
+
+| 컬럼 | 값(AVL 기준) |
+|---|---|
+| `ppda_v` / `ppda_o` | **12.59** / **8.50** |
+| `ppda_num_v` / `ppda_den_v` | 428 / 34 |
+| `ppda_num_o` / `ppda_den_o` | 289 / 34 |
+| `ppda_method` | 존 경계·액션 종류·원천 전문 |
+
+함께 추가한 팀 단위 지표: `aerial_won/att_v·o` **4/12 : 8/12** · `dribble_succ/att_v·o` **10/17 : 14/21** · `tackles_v·o` **18:23** · `interceptions_v·o` **6:9** · `clearances_v·o` **13:28**.
+
+**교차검증**: 태클 18 · 인터셉트 6 · 클리어 13 · 공중볼 승리 4는 **WhoScored 이벤트 집계와 FotMob 팀 스탯이 정확히 일치**했다. 공중볼 시도 12도 FotMob 승률 33%에서 역산한 값이 WhoScored 집계와 일치한다.
+⚠️ **드리블 시도만 두 원천이 갈린다** — FotMob 승률 59% 역산은 17, WhoScored TakeOn 이벤트 집계는 19다(성공 10은 동일). 무산 시도의 분류 차이로 보이며, 팀 블록의 원천 일관성을 위해 **FotMob 17을 채택**하고 `confidence`에 명기했다. 선수별 원천값은 `player_matches.stats_json.whoscored`에 그대로 있다.
+
+⚠️ 이 컬럼들은 SofaScore가 아니라 **WhoScored(Opta)·FotMob 원천**이라 같은 행의 SofaScore 필드와 provenance가 다르다 — `confidence`에 기록했다.
+게이트 G1~G12 전항 통과, export·dump 재생성 완료.
