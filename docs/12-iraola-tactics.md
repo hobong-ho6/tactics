@@ -1,8 +1,8 @@
 # 실제 전술 분석 — 안도니 이라올라의 리버풀 (라요·본머스 참조)
 
 <!--
-이 문서는 DB `tactic_observations(team='LIV')` 16행(obs#63–#78), `team_tactic_setups` id=14,
-`player_role_map(team='LIV')` 12행에서 **파생된 요약**이다. DB가 원본(single source of truth,
+이 문서는 DB의 이라올라 관련 관측(obs#63–#78 및 후속 관측)과 `team_tactic_setups` id=14·17,
+리버풀 선수 역할 정본에서 **파생된 요약**이다. DB가 원본(single source of truth,
 CLAUDE.md 불변규칙 1). 사실이 바뀌면 DB를 먼저 고치고 이 문서를 갱신한다.
 문서에 없는 세부 근거·소스 URL은 DB의 evidence/source/confidence 컬럼에 있다.
 -->
@@ -311,9 +311,23 @@ Sky만 명시하고 구단 릴리스에는 없다(obs#64). 본머스 부임 정�
 
 ## FC26 구현 함의 — 미해결 과제 (결론 아님)
 
-현재 `team_tactic_setups`에 **이라올라 전용 행은 없다.** id=14는 LIV/2025-26/kind=`measured`로
-슬롯 체제의 실측 기준선이며 빌드업·수비접근·라인 값이 비어 있다. 아래는 아직 풀리지 않은
-문제이며 어느 것도 확정으로 읽지 말 것.
+현재 `team_tactic_setups` id=17은 LIV/2026-27/kind=`projected` 이라올라 전용 잠정 행이다.
+값은 4-2-3-1 / Balanced / High / line 64 / LOW이며, id=14는 슬롯 체제의 25/26 실측 기준선이다.
+id=17은 공식전 실측을 뜻하지 않는다. 아래는 아직 풀리지 않은 문제이며 어느 것도 확정으로
+읽지 말 것.
+
+### 2026-08-14 이식 리스크 3건 재검토 (obs#199)
+
+- **케르케즈의 “수비 우선” 요구**는 열려 있다. 25/26 전수 map25의 LB 적합은
+  attacking wingback/Support `.896`가 1위이고 wingback/Balanced `.793`,
+  fullback/Balanced `.639`, fullback/Defend `.412`다. 감독 원칙을 수비 포커스로 강제하면
+  선수 이동 정본을 크게 훼손하므로 현재 역할을 유지하고 수비 수행 리스크로 기록한다.
+- **잔여수비·체력 문제**는 Monaco 친선의 2-0→2-3 역전과 감독의 체력 부족 인정으로
+  obs#73을 지지하지만, 친선 1경기로 라인 높이 또는 압박 강도 스위칭을 확정하지 않는다.
+- **GK를 우회하는 다이렉트 빌드업**은 현 역할 축으로 분리되지 않는다. Alisson과
+  Mamardashvili는 평균 위치가 달라도 둘 다 GK Defend가 최적이고, GK의 기점 빈도 자체는
+  역할 라벨에 없다. 따라서 id=17의 Balanced/High/64와 선수 역할은 **8/23 뉴캐슬 공식전까지
+  유지**한다.
 
 1. **✅ 알론소가 만든 슬롯 확장 문제는 여기서 발생하지 않는다.** 이라올라의 기본형은 에메리와
    **같은 4-2-3-1 슬롯 어휘**(GK/LB/LCB/RCB/RB/LDM/RDM/LM/CAM/RM/ST)라서 docs/11 미해결 #1

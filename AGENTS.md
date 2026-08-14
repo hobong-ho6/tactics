@@ -79,7 +79,7 @@ codex가 없으면 ⑴만 하고 **그 사실을 로그에 남긴다** — 조�
 cron의 최소 PATH에서는 앱 번들을 못 찾을 수 있어
 `/Applications/ChatGPT.app/Contents/Resources/codex`도 fallback으로 탐색한다.
 
-### ⛔ macOS TCC — 사용자가 한 번 풀어줘야 한다
+### ✅ macOS TCC — 2026-08-14 검증 완료
 
 **2026-08-13 실증**: cron 항목은 정상 등록·기동됐으나(11:00:01 실행 확인) 결과는
 `bash: …/transfer-watch.sh: Operation not permitted`였다. cron이 TCC 샌드박스라 `~/Documents`를
@@ -89,12 +89,14 @@ cron의 최소 PATH에서는 앱 번들을 못 찾을 수 있어
 > `/usr/sbin/cron` 추가 → 켜기
 
 (이 저장소는 같은 TCC 문제를 이미 겪었다 — `.claude/launch.json`이 `/private/tmp` 미러를 서빙하는 이유가 그것이다.)
-권한을 준 뒤 확인하려면 crontab에 1~2분 뒤 시각을 임시로 넣고 `logs/`에 파일이 생기는지 본다.
+**2026-08-14 09:31:00 KST 실증**: `AD03230205ui-iMac.local`에서 2분 뒤 임시 `touch` probe가
+저장소의 `logs/`에 marker를 만들었다. probe 행·marker만 제거했고, crontab은 09:00/21:00
+`transfer-watch.sh` 각 1행을 유지한다. 이 PC의 검증 전 crontab은 비어 있어 정규 2행을 함께 설치했다.
+따라서 TCC 이식 검증은 닫혔다. 새 PC에서는 같은 권한 설정 뒤 동일한 marker probe로 확인한다.
 
-## 6. 이식 검증 상태 (미해결 1건)
+## 6. 이식 검증 상태 (미해결 0건)
 
-- **TCC 해제 후 cron 기동 재검증** — `/usr/sbin/cron` 전체 디스크 접근 권한을 사용자가 켠 뒤
-  예약 시각 실행과 `logs/` 생성을 확인해야 한다.
+- ~~**TCC 해제 후 cron 기동 재검증**~~ — 2026-08-14 임시 예약 probe가 저장소 marker를 생성해 완료.
 - ~~**서브에이전트 병렬 스캔**~~ — Codex 보조 에이전트 3개(AVL/CHE/LIV)로 2026-08-13 실제 병렬
   스캔을 완료했다. 각 결과가 고정 4절·URL·발행일 형식으로 반환됨을 확인했다.
 - ~~**실제 이적 감시 end-to-end**~~ — Fotmob 109행 → 순차 웹 크로스체크 → DB 근거 갱신 →

@@ -287,18 +287,33 @@ def run(db_path=None, verbose=True):
     sancho_departed = con.execute("""
         SELECT 1 FROM transfer_outgoing
         WHERE team_code='AVL' AND player_id=15 AND likelihood='CONFIRMED'""").fetchone()
+    departed_starters = con.execute("""
+        SELECT pr.regime_id,pr.pos_label,pr.player_id
+        FROM prescriptions pr JOIN regimes r ON r.id=pr.regime_id
+        WHERE pr.kind LIKE 'fc26:opt:%' AND pr.starter=1
+          AND EXISTS (
+            SELECT 1 FROM transfer_outgoing o
+            WHERE o.team_code=r.team_code AND o.player_id=pr.player_id
+              AND o.likelihood='CONFIRMED'
+          )""").fetchall()
     compare_html = (root / "site" / "compare.html").read_text()
     transfer_html = (root / "site" / "transfer.html").read_text()
+    report_html = (root / "site" / "report.html").read_text()
     ok11 = (
         not visible_dup and bool(sancho_departed)
         and "includeTransfers: false" in compare_html
         and "includeDeparted = false" in data_js
         and "visible(T.targets)" in transfer_html
         and "visible(T.outgoing)" in transfer_html
+        and (not departed_starters or (
+            "departedStarterPositions" in report_html
+            and "인선 공백 — 기존 선발 이탈" in report_html
+        ))
     )
     if verbose:
         print(f"G11 현재 스쿼드 표시: 중복 {len(visible_dup)} · 산초 이탈 원장 "
-              f"{'있음' if sancho_departed else '없음'} · DEAD 숨김 {'✅' if ok11 else '⛔'}")
+              f"{'있음' if sancho_departed else '없음'} · 이탈 선발 공백 {len(departed_starters)} · "
+              f"DEAD 숨김 {'✅' if ok11 else '⛔'}")
     if not ok11:
         fails.append("G11")
 
