@@ -10744,7 +10744,7 @@
    "team_code": "LIV"
   },
   {
-   "confidence": "HIGH — §2 기준 '1티어가 협상 단계를 보도'를 충족한다(Romano '공식 구단 간 협상'). ⚠️ 다만 **공식 오퍼는 0건**이고 금액 갭이 €50m로 크다 — 등급은 '보도된 단계'를 재는 것이지 성사 확률이 아니다. Romano 본인이 '리버풀이 공식 입찰을 보냈다는 보도는 사실이 아니다'라고 부인했다. ⚠️ **스쿼드 밸런스 반론 존재**: Carragher(Sky) — '바르콜라는 반대쪽 윙이고 리버풀에 필요한 건 우측 윙어'. 실제로 리버풀은 시니어 우측 윙어가 전무하다(선덜랜드 친선에서 19세 Kieran Morrison 기용). ⚠️ 실측 PENDING — SofaScore 68경기 수집 완료, 슬롯 판정·집계 미수행. ⚠️ 이 표본은 **PSG 소속**이고 이라올라 체제가 아니다(불변규칙 7 · obs#157). | [실측 완료 2026-08-12] SofaScore 25/26 전수 68경기 중 45분+ 46경기. ⭐ **좌우 분리 적용**(obs#156 교훈) — 46경기 중 **7경기가 우측**이라 혼합 그리드는 좌우를 섞는다. **좌측 39경기만** 집계했다(좌2컬럼 0.78). 혼합 집계는 .873으로 Δ.033 낮다. 참고: 우측 7경기만 재면 RW에서 w_winger/Versatile .806 — 양쪽 다 가능한 자원이다. ⚠️ 표본은 **PSG** 소속이고 이라올라 체제가 아니다(obs#157).",
+   "confidence": "HIGH — §2 기준 '1티어가 협상 단계를 보도'를 충족한다(Romano '공식 구단 간 협상'). ⚠️ 다만 **공식 오퍼는 0건**이고 금액 갭이 €50m로 크다 — 등급은 '보도된 단계'를 재는 것이지 성사 확률이 아니다. Romano 본인이 '리버풀이 공식 입찰을 보냈다는 보도는 사실이 아니다'라고 부인했다. ⚠️ **스쿼드 밸런스 반론 존재**: Carragher(Sky) — '바르콜라는 반대쪽 윙이고 리버풀에 필요한 건 우측 윙어'. 실제로 리버풀은 시니어 우측 윙어가 전무하다(선덜랜드 친선에서 19세 Kieran Morrison 기용). ⚠️ 실측 PENDING — SofaScore 68경기 수집 완료, 슬롯 판정·집계 미수행. ⚠️ 이 표본은 **PSG 소속**이고 이라올라 체제가 아니다(불변규칙 7 · obs#157). | [실측 완료 2026-08-12] SofaScore 25/26 전수 68경기 중 45분+ 46경기. ⭐ **좌우 분리 적용**(obs#156 교훈) — 46경기 중 **7경기가 우측**이라 혼합 그리드는 좌우를 섞는다. **좌측 39경기만** 집계했다(좌2컬럼 0.78). 혼합 집계는 .873으로 Δ.033 낮다. 참고: 우측 7경기만 재면 RW에서 w_winger/Versatile .806 — 양쪽 다 가능한 자원이다. ⚠️ 표본은 **PSG** 소속이고 이라올라 체제가 아니다(obs#157). / 구단 간 이적료 격차 £25m 미해소 — 선수 합의만으로는 CONFIRMED 아님. TransferFeed 리드의 L'Équipe '리버풀 대기·추가 오퍼 없음' 항목은 원문 확인 실패로 미채택.",
    "fit_focus": "Build-Up",
    "fit_role": "w_wideplm",
    "fit_sim": 0.906,
@@ -10763,7 +10763,7 @@
    "regime_id": 3,
    "slot_type": "WM",
    "sort_order": 10144,
-   "source": "Fabrizio Romano (2026-08-10) via football365.com/news/bradley-barcola-liverpool-paris-saint-germain-fabrizio-romano-transfer-update ; Sky Sports Vinny O'Connor·Amar Mehta (2026-08-07) skysports.com/football/news/11669/13570766 ; Sky (2026-07-29) 11095/13567997 ; Sky 영상 Mark McAdam (08-11)",
+   "source": "Fabrizio Romano (2026-08-10) via football365.com/news/bradley-barcola-liverpool-paris-saint-germain-fabrizio-romano-transfer-update ; Sky Sports Vinny O'Connor·Amar Mehta (2026-08-07) skysports.com/football/news/11669/13570766 ; Sky (2026-07-29) 11095/13567997 ; Sky 영상 Mark McAdam (08-11) · Romano 경유 Football365 2026-08-14 (https://www.football365.com/news/romano-reveals-liverpool-barcola-verbal-agreement-reds-getting-closer-106m-signing)",
    "source_kind": "transfer",
    "status": "HIGH",
    "team_code": "LIV"
@@ -11091,31 +11091,6 @@
    "source": "SofaScore player 1145642, 25/26 오사수나 클럽경기(라리가+코파) 45분+·히트포인트 15+ 34경기 중 좌측 23경기(1898분) 균등가중 ; 구단 공식 https://www.liverpoolfc.com/news/liverpool-agree-deal-sign-spain-forward-victor-munoz (2026-06-18)",
    "source_kind": "squad",
    "status": "CONFIRMED",
-   "team_code": "LIV"
-  },
-  {
-   "confidence": "MEDIUM-HIGH — 1티어(Romano) 관심 보도 + '선두' 언급. §2-0 검증 통과: 나이 18세 표기가 실제와 일치. ⚠️ 오퍼·협상 단계 보도 0건이라 HIGH 아님. ⚠️ **실측 PENDING** — SofaScore 미수집. ⚠️ 18세라 표본이 얕을 수 있다(다음 회차 수집 시 45분+ 경기 수 확인 필요). | [실측 전수 완료 2026-08-12] 2026-08-12 전수 실측(SofaScore 25/26). 종전 6경기 표본을 대체하지 않고 추가한다(불변규칙 2). ⚠️ 표본은 **이전/현 소속 클럽**의 것이고 우리 팀 전술이 아니다(obs#157·#158). 20경기 중 **4경기가 좌측**이라 obs#156 교훈대로 **우측 16경기만** 집계. 표본은 PSG. 45분+ 16경기(1003분) 집계.",
-   "fit_focus": "Build-Up",
-   "fit_role": "wm_widemid",
-   "fit_sim": 0.878,
-   "formation": "4-2-3-1",
-   "grid_caveat": "⚠️ 영입 전 현 소속팀 실측",
-   "grid_club": "PSG",
-   "label": "영입·음바예",
-   "map25": "011231115X100261001300000",
-   "name_en": "Ibrahim Mbaye",
-   "name_kr": "음바예",
-   "player_id": 86,
-   "pos": "RM",
-   "rate_basis": "transfer",
-   "rate_note": "표본 16경기 (PSG)",
-   "rating": 7.01,
-   "regime_id": 3,
-   "slot_type": "WM",
-   "sort_order": 10145,
-   "source": "Fabrizio Romano 발언 (2026-08-06) via teamtalk.com/liverpool/ibrahim-mbaye-bradley-barcola-liverpool-psg-fabrizio-romano-latest ; Sky Sports 병기 확인 ; 리드 Fotmob teamIds=8650 (08-07 TEAMtalk) ; Sky Sports(1티어) 2026-08-06 https://www.skysports.com/football/news/11669/13569955/ibrahim-mbaye-liverpool-explore-deal-for-paris-saint-germain-winger",
-   "source_kind": "transfer",
-   "status": "MEDIUM-HIGH",
    "team_code": "LIV"
   }
  ],
@@ -11495,22 +11470,22 @@
     "source": "리버풀 아라우호 영입 보도의 병기 서술(리버풀 구단 공식 2026-08-11 · Sky · ESPN) ; LIV 스캔 회차 보고(2026-08-12) ; fotmob_detail_stats.league='Premier League'(25/26 기록은 리버풀 소속분)"
    },
    {
-    "confidence": "MEDIUM-HIGH — 이탈리아 1티어급 전담 기자의 구체 금액·단계 보도. ⚠️ **§2-0 함정 회피 기록**: 검색 상위의 Football365 'Jones accepts offer / green light' 기사는 **2026-01-31자**(지난 겨울 임대 무산 건, 당시 €40m 매입옵션 구조)다 — 다른 창의 기사이므로 혼동 금지. [2026-08-13] §2-0 통과: 존스 나이 25세 일치 · 병기 상황(기마랑이스→아스날, 프라테시 매물화) 현 창 정합 · 어제 회피한 2026-01-31자 Football365 \"Jones accepts offer\" 기사와 별건임을 재확인. ⚠️ HIGH이나 **오퍼 제출 0건**이고 선결 조건(프라테시 매각)이 미충족이다 — 단계는 \"협상 중\"까지다. ⚠️ 존스는 squad_entries FB 슬롯 보유 선수다. [2026-08-13 재확인] 프라테시 라치오행은 원칙 합의 단계이나 완료 전이고, 존스 신규 공식 오퍼도 0건이다.",
+    "confidence": "MEDIUM-HIGH — 이탈리아 1티어급 전담 기자의 구체 금액·단계 보도. ⚠️ **§2-0 함정 회피 기록**: 검색 상위의 Football365 'Jones accepts offer / green light' 기사는 **2026-01-31자**(지난 겨울 임대 무산 건, 당시 €40m 매입옵션 구조)다 — 다른 창의 기사이므로 혼동 금지. [2026-08-13] §2-0 통과: 존스 나이 25세 일치 · 병기 상황(기마랑이스→아스날, 프라테시 매물화) 현 창 정합 · 어제 회피한 2026-01-31자 Football365 \"Jones accepts offer\" 기사와 별건임을 재확인. ⚠️ HIGH이나 **오퍼 제출 0건**이고 선결 조건(프라테시 매각)이 미충족이다 — 단계는 \"협상 중\"까지다. ⚠️ 존스는 squad_entries FB 슬롯 보유 선수다. [2026-08-13 재확인] 프라테시 라치오행은 원칙 합의 단계이나 완료 전이고, 존스 신규 공식 오퍼도 0건이다. / 공식 오퍼 0건 — CONFIRMED 아님. 프라테시 메디컬이 오늘이라 다음 회차에서 인터 공식 오퍼 제출 여부가 최우선 확인 대상.",
     "dest_club": "Inter",
-    "last_news_date": "2026-08-13",
+    "last_news_date": "2026-08-14",
     "likelihood": "HIGH",
     "name": "Curtis Jones",
     "name_kr": "커티스 존스",
-    "source": "Gianluca Di Marzio via sports.yahoo.com/articles/liverpool-stand-firm-30m-demand-075500528.html ; goal.com/en-us/lists/inter-milan-curtis-jones-30m-offer-liverpool-transfer ; 리드 TransferFeed liverpool/8 (Di Marzio, 3h) ; Fabrizio Romano(1티어) 2026-08-12 경유 https://www.teamtalk.com/liverpool/growing-feeling-liverpool-transfer-curtis-jones-inter-milan-30m-fabrizio-romano ; Di Marzio(2026-08-12) https://www.reddit.com/r/FCInterMilan/comments/1vmc6xy/di_marzio_lazio_and_inter_have_reached_an/ ; Fabrizio Romano(2026-08-12) https://www.reddit.com/r/FCInterMilan/comments/1vmcku6/romano_with_frattesi_leaving_is_almost_certain_to/ ; Fabrizio Romano 2026-08-13 via reddit.com/r/FCInterMilan/comments/1vn998k/ ; Fabrizio Romano 2026-08-13 https://www.reddit.com/r/FCInterMilan/comments/1vn7cgq/ ; Sky Liverpool live 2026-08-13 https://www.skysports.com/football/live-blog/11095/13025501/liverpool-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts"
+    "source": "Gianluca Di Marzio via sports.yahoo.com/articles/liverpool-stand-firm-30m-demand-075500528.html ; goal.com/en-us/lists/inter-milan-curtis-jones-30m-offer-liverpool-transfer ; 리드 TransferFeed liverpool/8 (Di Marzio, 3h) ; Fabrizio Romano(1티어) 2026-08-12 경유 https://www.teamtalk.com/liverpool/growing-feeling-liverpool-transfer-curtis-jones-inter-milan-30m-fabrizio-romano ; Di Marzio(2026-08-12) https://www.reddit.com/r/FCInterMilan/comments/1vmc6xy/di_marzio_lazio_and_inter_have_reached_an/ ; Fabrizio Romano(2026-08-12) https://www.reddit.com/r/FCInterMilan/comments/1vmcku6/romano_with_frattesi_leaving_is_almost_certain_to/ ; Fabrizio Romano 2026-08-13 via reddit.com/r/FCInterMilan/comments/1vn998k/ ; Fabrizio Romano 2026-08-13 https://www.reddit.com/r/FCInterMilan/comments/1vn7cgq/ ; Sky Liverpool live 2026-08-13 https://www.skysports.com/football/live-blog/11095/13025501/liverpool-transfer-news-rumours-and-gossip-live-updates-and-latest-on-deals-signings-loans-and-contracts · Romano/Di Marzio 2026-08-13 · Corriere dello Sport 2026-08-14 (https://www.goal.com/en/lists/inter-with-frattesi-s-departure-make-a-new-move-for-curtis-jones-the-figures/bltea36219f9b984f9d)"
    },
    {
-    "confidence": "MEDIUM — 1티어가 '대리인 접촉'까지 보도했으나 입찰·협상은 0건이고 리버풀은 매각 계획 부인. ⚠️ 원기사 2건 모두 **정확한 발행일 미표기**(2026년 8월로만 확인) — §2-0 기준 발행일 부분 확정. ⚠️ 어제는 footballinsider247(3티어) 단독이라 미등재했는데 오늘 1티어 근거가 확보됐다.",
+    "confidence": "MEDIUM — 1티어가 '대리인 접촉'까지 보도했으나 입찰·협상은 0건이고 리버풀은 매각 계획 부인. ⚠️ 원기사 2건 모두 **정확한 발행일 미표기**(2026년 8월로만 확인) — §2-0 기준 발행일 부분 확정. ⚠️ 어제는 footballinsider247(3티어) 단독이라 미등재했는데 오늘 1티어 근거가 확보됐다. / **오퍼는 아직 0건.** The Athletic은 08월 초 '리버풀은 매각 의사 없음'을 보도했다 — 상향 근거는 스퍼스 측 단계 전진이지 리버풀 기조 변화가 아니다.",
     "dest_club": "Tottenham",
-    "last_news_date": "2026-08-12",
-    "likelihood": "MEDIUM",
+    "last_news_date": "2026-08-14",
+    "likelihood": "MEDIUM-HIGH",
     "name": "Cody Gakpo",
     "name_kr": "학포",
-    "source": "Fabrizio Romano · The Athletic Gregg Evans via thisisanfield.com/2026/08/cody-gakpo-tottenham-transfer-open-liverpool-stance-change/ ; thisisanfield.com/2026/08/cody-gakpo-several-clubs-tottenham-liverpool-transfer/ ; 리드 Fotmob teamIds=8650 (08-10 footballinsider247)"
+    "source": "Fabrizio Romano · The Athletic Gregg Evans via thisisanfield.com/2026/08/cody-gakpo-tottenham-transfer-open-liverpool-stance-change/ ; thisisanfield.com/2026/08/cody-gakpo-several-clubs-tottenham-liverpool-transfer/ ; 리드 Fotmob teamIds=8650 (08-10 footballinsider247) · Romano 2026-08-14 · Blaauwhof/Voetbal International 2026-08-13 (https://www.thisisanfield.com/2026/08/tottenham-make-formal-contact-for-cody-gakpo-transfer/)"
    },
    {
     "confidence": "CONFIRMED — 이적 완료. ⚠️ **구단 공식 발표 원문은 직접 확인하지 않았다**(스캔 보고의 복수 소스 일치 기준). 다음 회차에 원문으로 뒷받침할 것.",
@@ -11526,11 +11501,11 @@
    {
     "avg_rating": 7.09,
     "club": "PSG",
-    "confidence": "HIGH — §2 기준 '1티어가 협상 단계를 보도'를 충족한다(Romano '공식 구단 간 협상'). ⚠️ 다만 **공식 오퍼는 0건**이고 금액 갭이 €50m로 크다 — 등급은 '보도된 단계'를 재는 것이지 성사 확률이 아니다. Romano 본인이 '리버풀이 공식 입찰을 보냈다는 보도는 사실이 아니다'라고 부인했다. ⚠️ **스쿼드 밸런스 반론 존재**: Carragher(Sky) — '바르콜라는 반대쪽 윙이고 리버풀에 필요한 건 우측 윙어'. 실제로 리버풀은 시니어 우측 윙어가 전무하다(선덜랜드 친선에서 19세 Kieran Morrison 기용). ⚠️ 실측 PENDING — SofaScore 68경기 수집 완료, 슬롯 판정·집계 미수행. ⚠️ 이 표본은 **PSG 소속**이고 이라올라 체제가 아니다(불변규칙 7 · obs#157). | [실측 완료 2026-08-12] SofaScore 25/26 전수 68경기 중 45분+ 46경기. ⭐ **좌우 분리 적용**(obs#156 교훈) — 46경기 중 **7경기가 우측**이라 혼합 그리드는 좌우를 섞는다. **좌측 39경기만** 집계했다(좌2컬럼 0.78). 혼합 집계는 .873으로 Δ.033 낮다. 참고: 우측 7경기만 재면 RW에서 w_winger/Versatile .806 — 양쪽 다 가능한 자원이다. ⚠️ 표본은 **PSG** 소속이고 이라올라 체제가 아니다(obs#157).",
+    "confidence": "HIGH — §2 기준 '1티어가 협상 단계를 보도'를 충족한다(Romano '공식 구단 간 협상'). ⚠️ 다만 **공식 오퍼는 0건**이고 금액 갭이 €50m로 크다 — 등급은 '보도된 단계'를 재는 것이지 성사 확률이 아니다. Romano 본인이 '리버풀이 공식 입찰을 보냈다는 보도는 사실이 아니다'라고 부인했다. ⚠️ **스쿼드 밸런스 반론 존재**: Carragher(Sky) — '바르콜라는 반대쪽 윙이고 리버풀에 필요한 건 우측 윙어'. 실제로 리버풀은 시니어 우측 윙어가 전무하다(선덜랜드 친선에서 19세 Kieran Morrison 기용). ⚠️ 실측 PENDING — SofaScore 68경기 수집 완료, 슬롯 판정·집계 미수행. ⚠️ 이 표본은 **PSG 소속**이고 이라올라 체제가 아니다(불변규칙 7 · obs#157). | [실측 완료 2026-08-12] SofaScore 25/26 전수 68경기 중 45분+ 46경기. ⭐ **좌우 분리 적용**(obs#156 교훈) — 46경기 중 **7경기가 우측**이라 혼합 그리드는 좌우를 섞는다. **좌측 39경기만** 집계했다(좌2컬럼 0.78). 혼합 집계는 .873으로 Δ.033 낮다. 참고: 우측 7경기만 재면 RW에서 w_winger/Versatile .806 — 양쪽 다 가능한 자원이다. ⚠️ 표본은 **PSG** 소속이고 이라올라 체제가 아니다(obs#157). / 구단 간 이적료 격차 £25m 미해소 — 선수 합의만으로는 CONFIRMED 아님. TransferFeed 리드의 L'Équipe '리버풀 대기·추가 오퍼 없음' 항목은 원문 확인 실패로 미채택.",
     "fit_focus": "Build-Up",
     "fit_role": "w_wideplm",
     "fit_sim": 0.906,
-    "last_news_date": "2026-08-12",
+    "last_news_date": "2026-08-14",
     "likelihood": "HIGH",
     "map25": "46211X5111411013100110000",
     "name": "Bradley Barcola",
@@ -11542,17 +11517,17 @@
     "sample_n": 39,
     "short_label": "바르콜라",
     "slot": "LW",
-    "source": "Fabrizio Romano (2026-08-10) via football365.com/news/bradley-barcola-liverpool-paris-saint-germain-fabrizio-romano-transfer-update ; Sky Sports Vinny O'Connor·Amar Mehta (2026-08-07) skysports.com/football/news/11669/13570766 ; Sky (2026-07-29) 11095/13567997 ; Sky 영상 Mark McAdam (08-11)"
+    "source": "Fabrizio Romano (2026-08-10) via football365.com/news/bradley-barcola-liverpool-paris-saint-germain-fabrizio-romano-transfer-update ; Sky Sports Vinny O'Connor·Amar Mehta (2026-08-07) skysports.com/football/news/11669/13570766 ; Sky (2026-07-29) 11095/13567997 ; Sky 영상 Mark McAdam (08-11) · Romano 경유 Football365 2026-08-14 (https://www.football365.com/news/romano-reveals-liverpool-barcola-verbal-agreement-reds-getting-closer-106m-signing)"
    },
    {
     "avg_rating": 7.01,
     "club": "PSG",
-    "confidence": "MEDIUM-HIGH — 1티어(Romano) 관심 보도 + '선두' 언급. §2-0 검증 통과: 나이 18세 표기가 실제와 일치. ⚠️ 오퍼·협상 단계 보도 0건이라 HIGH 아님. ⚠️ **실측 PENDING** — SofaScore 미수집. ⚠️ 18세라 표본이 얕을 수 있다(다음 회차 수집 시 45분+ 경기 수 확인 필요). | [실측 전수 완료 2026-08-12] 2026-08-12 전수 실측(SofaScore 25/26). 종전 6경기 표본을 대체하지 않고 추가한다(불변규칙 2). ⚠️ 표본은 **이전/현 소속 클럽**의 것이고 우리 팀 전술이 아니다(obs#157·#158). 20경기 중 **4경기가 좌측**이라 obs#156 교훈대로 **우측 16경기만** 집계. 표본은 PSG. 45분+ 16경기(1003분) 집계.",
+    "confidence": "MEDIUM-HIGH — 1티어(Romano) 관심 보도 + '선두' 언급. §2-0 검증 통과: 나이 18세 표기가 실제와 일치. ⚠️ 오퍼·협상 단계 보도 0건이라 HIGH 아님. ⚠️ **실측 PENDING** — SofaScore 미수집. ⚠️ 18세라 표본이 얕을 수 있다(다음 회차 수집 시 45분+ 경기 수 확인 필요). | [실측 전수 완료 2026-08-12] 2026-08-12 전수 실측(SofaScore 25/26). 종전 6경기 표본을 대체하지 않고 추가한다(불변규칙 2). ⚠️ 표본은 **이전/현 소속 클럽**의 것이고 우리 팀 전술이 아니다(obs#157·#158). 20경기 중 **4경기가 좌측**이라 obs#156 교훈대로 **우측 16경기만** 집계. 표본은 PSG. 45분+ 16경기(1003분) 집계. / 가격 조건부 무산 — PSG 번들 호가가 내려가면 §2 등급표로 재판정해 복원한다.",
     "fit_focus": "Build-Up",
     "fit_role": "wm_widemid",
     "fit_sim": 0.878,
-    "last_news_date": "2026-08-06",
-    "likelihood": "MEDIUM-HIGH",
+    "last_news_date": "2026-08-13",
+    "likelihood": "DEAD (Romano 2026-08-13 \"현재 OFF\" — PSG 바르콜라+음바예 번들 €200m 호가)",
     "map25": "011231115X100261001300000",
     "name": "Ibrahim Mbaye",
     "name_kr": "음바예",
@@ -11563,7 +11538,7 @@
     "sample_n": 16,
     "short_label": "음바예",
     "slot": "RM",
-    "source": "Fabrizio Romano 발언 (2026-08-06) via teamtalk.com/liverpool/ibrahim-mbaye-bradley-barcola-liverpool-psg-fabrizio-romano-latest ; Sky Sports 병기 확인 ; 리드 Fotmob teamIds=8650 (08-07 TEAMtalk) ; Sky Sports(1티어) 2026-08-06 https://www.skysports.com/football/news/11669/13569955/ibrahim-mbaye-liverpool-explore-deal-for-paris-saint-germain-winger"
+    "source": "Fabrizio Romano 발언 (2026-08-06) via teamtalk.com/liverpool/ibrahim-mbaye-bradley-barcola-liverpool-psg-fabrizio-romano-latest ; Sky Sports 병기 확인 ; 리드 Fotmob teamIds=8650 (08-07 TEAMtalk) ; Sky Sports(1티어) 2026-08-06 https://www.skysports.com/football/news/11669/13569955/ibrahim-mbaye-liverpool-explore-deal-for-paris-saint-germain-winger · Romano 경유 Football365 2026-08-13 07:26 UK (https://www.football365.com/news/romano-liverpool-signing-currently-off-fsg-pay-crazy-package-barcola-mbaye)"
    },
    {
     "avg_rating": 7.15,
