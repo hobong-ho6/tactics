@@ -83,3 +83,4 @@ INSERT INTO players VALUES(85,'Ronald Araújo','아라우호',925097,NULL,NULL,'
 INSERT INTO players VALUES(86,'Ibrahim Mbaye','음바예',1590918,NULL,NULL,'RW','transfer_targets 2026-summer LIV 후보 — 2026-08-12 등재',NULL);
 INSERT INTO players VALUES(88,'Víctor Muñoz','무뇨스',1145642,NULL,NULL,'W','2026-06-18 오사수나에서 리버풀 이적(구단 공식). 바이아웃 €40m(£34.5m) 전액 지급, 장기 계약. 이라올라 체제 1호 영입이며 뉴캐슬을 가로챈 건. 22세 스페인 대표(월드컵 우승 멤버). 양 측면 모두 소화.',NULL);
 INSERT INTO players VALUES(89,'Jérémy Jacquet','자케',1445625,NULL,NULL,'CB','2026-07-01 렌에서 리버풀 이적(구단 공식). 고정 £55m + 애드온 £5m(총 £60m), 5년(+1년 옵션). 합의는 2026-01 데드라인 데이 메디컬까지 갔고 25/26 잔여 시즌은 렌 잔류 조건이었다. 20세. 코나테(→레알 자유이적) 대체 = 판 다이크 파트너로 규정된다.',NULL);
+INSERT INTO players VALUES(90,'Aaron Wan-Bissaka','완비사카',863653,NULL,1997,'RB','transfer_targets 2026-summer AVL 후보 — 2026-08-14 FotMob 상세 스탯 수집용 등재',760320);

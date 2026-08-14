@@ -52,7 +52,16 @@ def collect(player_id, date_from, date_to, pages=3, timeout_ms=180_000):
         page.evaluate("() => {%s}" % js_collect(player_id, date_from, date_to, pages))
         page.wait_for_function("() => window.__DONE === 1", timeout=timeout_ms)
         raw = page.evaluate("() => window.__SER()")
+        diag = json.loads(page.evaluate("() => window.__DIAG_SER()"))
         browser.close()
+    page_states = diag.get("pages", [])
+    if page_states and not any(
+            isinstance(item.get("status"), int) and 200 <= item["status"] < 300
+            for item in page_states):
+        states = ", ".join(
+            f"page {item.get('page')}={item.get('status') or item.get('error', 'ERROR')}"
+            for item in page_states)
+        raise RuntimeError(f"SofaScore 경기목록 접근 실패 — {states}")
     return parse_collected(raw) if raw.strip() else []
 
 
@@ -100,7 +109,10 @@ def main():
     ap.add_argument("--out")
     a = ap.parse_args()
 
-    rows = collect(a.player_id, a.date_from, a.date_to, a.pages)
+    try:
+        rows = collect(a.player_id, a.date_from, a.date_to, a.pages)
+    except RuntimeError as exc:
+        raise SystemExit(f"⛔ {exc}") from exc
     kept = [r for r in rows
             if (r["minutes"] or 0) >= a.min_minutes and r["hit_points"] >= a.min_hp]
 

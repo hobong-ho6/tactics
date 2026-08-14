@@ -286,3 +286,9 @@ INSERT INTO fotmob_traits VALUES(285,78,'2026-08-11','Stats compared to other fu
 INSERT INTO fotmob_traits VALUES(286,78,'2026-08-11','Stats compared to other fullbacks','Goals','득점',0,'fotmob.com/api/data/playerData (2026-08-11 수집)');
 INSERT INTO fotmob_traits VALUES(287,78,'2026-08-11','Stats compared to other fullbacks','Shot attempts','슛 시도',11,'fotmob.com/api/data/playerData (2026-08-11 수집)');
 INSERT INTO fotmob_traits VALUES(288,78,'2026-08-11','Stats compared to other fullbacks','Touches','터치',65,'fotmob.com/api/data/playerData (2026-08-11 수집)');
+INSERT INTO fotmob_traits VALUES(289,90,'2026-08-14','Stats compared to other fullbacks','Chances created','기회 창출',25,'fotmob.com/api/data/playerData (player 760320, 2026-08-14 수집)');
+INSERT INTO fotmob_traits VALUES(290,90,'2026-08-14','Stats compared to other fullbacks','Aerial duels','공중 볼 경합',45,'fotmob.com/api/data/playerData (player 760320, 2026-08-14 수집)');
+INSERT INTO fotmob_traits VALUES(291,90,'2026-08-14','Stats compared to other fullbacks','Defensive actions','수비적 행동',52,'fotmob.com/api/data/playerData (player 760320, 2026-08-14 수집)');
+INSERT INTO fotmob_traits VALUES(292,90,'2026-08-14','Stats compared to other fullbacks','Goals','득점',0,'fotmob.com/api/data/playerData (player 760320, 2026-08-14 수집)');
+INSERT INTO fotmob_traits VALUES(293,90,'2026-08-14','Stats compared to other fullbacks','Shot attempts','슛 시도',0,'fotmob.com/api/data/playerData (player 760320, 2026-08-14 수집)');
+INSERT INTO fotmob_traits VALUES(294,90,'2026-08-14','Stats compared to other fullbacks','Touches','터치',12,'fotmob.com/api/data/playerData (player 760320, 2026-08-14 수집)');

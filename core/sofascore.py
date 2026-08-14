@@ -31,7 +31,7 @@ def js_collect(player_id, date_from, date_to, pages=2):
     완료 후 window.__SER()로 파이프 직렬화 회수."""
     api_keys = ",".join(f"'{api}'" for _, api in STAT_FIELDS)
     return f"""
-window.__RES=[]; window.__DONE=0;
+window.__RES=[]; window.__DONE=0; window.__DIAG={{pages:[],eventCount:0}};
 window.__grid = hm => {{ const c=new Array(25).fill(0);
   for(const p of hm){{ let r=4-Math.floor(p.x/20), col=Math.floor((100-p.y)/20);
     r=Math.max(0,Math.min(4,r)); col=Math.max(0,Math.min(4,col)); c[r*5+col]++; }} return c; }};
@@ -39,7 +39,14 @@ window.__grid = hm => {{ const c=new Array(25).fill(0);
   const P={player_id}, KEYS=[{api_keys}];
   const evs=[];
   for (const pg of [...Array({pages}).keys()]) {{
-    const j=await fetch(`/api/v1/player/${{P}}/events/last/${{pg}}`).then(r=>r.ok?r.json():null);
+    let j=null;
+    try {{
+      const r=await fetch(`/api/v1/player/${{P}}/events/last/${{pg}}`);
+      window.__DIAG.pages.push({{page:pg,status:r.status}});
+      if(r.ok) j=await r.json();
+    }} catch(e) {{
+      window.__DIAG.pages.push({{page:pg,status:null,error:String(e)}});
+    }}
     if(!j) continue;
     for (const e of j.events) {{
       const d=new Date(e.startTimestamp*1000).toISOString().slice(0,10);
@@ -48,6 +55,7 @@ window.__grid = hm => {{ const c=new Array(25).fill(0);
           home:e.homeTeam?.name||'', away:e.awayTeam?.name||''}});
     }}
   }}
+  window.__DIAG.eventCount=evs.length;
   for (let i=0;i<evs.length;i+=6) {{
     await Promise.all(evs.slice(i,i+6).map(async ev => {{
       try {{
@@ -77,6 +85,7 @@ window.__grid = hm => {{ const c=new Array(25).fill(0);
   window.__DONE=1;
 }})();
 window.__SER = () => window.__RES.join('\\n');
+window.__DIAG_SER = () => JSON.stringify(window.__DIAG);
 'started'
 """
 

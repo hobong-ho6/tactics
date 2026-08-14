@@ -10542,6 +10542,440 @@
     "stat_value": "0"
    }
   ],
+  "완비사카": [
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_key": "red_cards",
+    "metric_kr": "퇴장",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Interceptions",
+    "metric_key": "interceptions",
+    "metric_kr": "인터셉트",
+    "per90": 1.7274472168905948,
+    "percentile": 93,
+    "percentile_per90": 95,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "40"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Cross accuracy",
+    "metric_key": "crosses_succeeeded_accuracy",
+    "metric_kr": "크로스 정확도",
+    "per90": 38.095238095238095,
+    "percentile": 90,
+    "percentile_per90": 90,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "38.1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "걷어내기",
+    "per90": 4.059500959692898,
+    "percentile": 83,
+    "percentile_per90": 86,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "94"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Successful crosses",
+    "metric_key": "crosses_succeeeded",
+    "metric_kr": "성공한 크로스",
+    "per90": 0.690978886756238,
+    "percentile": 75,
+    "percentile_per90": 69,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "16"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블 성공",
+    "per90": 0.690978886756238,
+    "percentile": 74,
+    "percentile_per90": 67,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "16"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Defensive actions",
+    "metric_key": "defensive_actions",
+    "metric_kr": "수비적 행동",
+    "per90": 7.514395393474088,
+    "percentile": 73,
+    "percentile_per90": 75,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "174"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "제쳐당함",
+    "per90": 0.30230326295585414,
+    "percentile": 73,
+    "percentile_per90": 92,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "7"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_key": "assists",
+    "metric_kr": "어시스트",
+    "per90": 0.08637236084452975,
+    "percentile": 63,
+    "percentile_per90": 63,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Blocked scoring attempt",
+    "metric_key": "blocked_shots",
+    "metric_kr": "슛 블록",
+    "per90": 0.30230326295585414,
+    "percentile": 62,
+    "percentile_per90": 57,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "7"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Touches",
+    "metric_key": "touches",
+    "metric_kr": "터치",
+    "per90": 58.38771593090211,
+    "percentile": 61,
+    "percentile_per90": 26,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "1352"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Aerials won",
+    "metric_key": "aerials_won",
+    "metric_kr": "공중 경합 승",
+    "per90": 0.9500959692898272,
+    "percentile": 56,
+    "percentile_per90": 33,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "22"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Chances created",
+    "metric_key": "chances_created",
+    "metric_kr": "기회 창출",
+    "per90": 0.7773512476007678,
+    "percentile": 55,
+    "percentile_per90": 48,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "18"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 48.484848484848484,
+    "percentile": 54,
+    "percentile_per90": 54,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "48.5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 1.0364683301343571,
+    "percentile": 52,
+    "percentile_per90": 31,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "24"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Recoveries",
+    "metric_key": "recoveries",
+    "metric_kr": "볼 회수",
+    "per90": 3.2389635316698655,
+    "percentile": 52,
+    "percentile_per90": 21,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "75"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Duels won",
+    "metric_key": "duel_won",
+    "metric_kr": "경합 승",
+    "per90": 3.5844529750479848,
+    "percentile": 49,
+    "percentile_per90": 12,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "83"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Tackles",
+    "metric_key": "matchstats.headers.tackles",
+    "metric_kr": "태클",
+    "per90": 1.4251439539347408,
+    "percentile": 46,
+    "percentile_per90": 14,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "33"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Accurate passes",
+    "metric_key": "successful_passes",
+    "metric_kr": "성공한 패스",
+    "per90": 24.443378119001917,
+    "percentile": 45,
+    "percentile_per90": 19,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "566"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xA",
+    "metric_key": "expected_assists",
+    "metric_kr": "xA(기대 도움)",
+    "per90": 0.04319836619719434,
+    "percentile": 43,
+    "percentile_per90": 24,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "1.00"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Big chances created",
+    "metric_key": "big_chance_created_team_title",
+    "metric_kr": "빅찬스 창출",
+    "per90": 0.08637236084452975,
+    "percentile": 42,
+    "percentile_per90": 42,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Fouls won",
+    "metric_key": "fouls_won",
+    "metric_kr": "얻어낸 파울",
+    "per90": 0.5182341650671786,
+    "percentile": 42,
+    "percentile_per90": 25,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "12"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Aerials won %",
+    "metric_key": "aerials_won_percent",
+    "metric_kr": "공중 경합 승률",
+    "per90": 47.82608695652174,
+    "percentile": 40,
+    "percentile_per90": 40,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "47.8"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Clean sheets",
+    "metric_key": "clean_sheet_team_title",
+    "metric_kr": "클린시트",
+    "per90": 0.12955854126679464,
+    "percentile": 38,
+    "percentile_per90": 42,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 33.80281690140845,
+    "percentile": 37,
+    "percentile_per90": 37,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "33.8"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_key": "yellow_cards",
+    "metric_kr": "경고",
+    "per90": 0.1727447216890595,
+    "percentile": 36,
+    "percentile_per90": 45,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Duels won %",
+    "metric_key": "duel_won_percent",
+    "metric_kr": "경합 승률",
+    "per90": 50.303030303030305,
+    "percentile": 35,
+    "percentile_per90": 35,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "50.3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Possession won final 3rd",
+    "metric_key": "poss_won_att_3rd_team_title",
+    "metric_kr": "상대 진영 볼 탈취",
+    "per90": 0.12955854126679464,
+    "percentile": 35,
+    "percentile_per90": 33,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Touches in opposition box",
+    "metric_key": "touches_opp_box",
+    "metric_kr": "상대 박스 터치",
+    "per90": 0.6477927063339731,
+    "percentile": 33,
+    "percentile_per90": 10,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "15"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dispossessed",
+    "metric_key": "dispossessed",
+    "metric_kr": "볼 뺏김",
+    "per90": 0.6477927063339731,
+    "percentile": 31,
+    "percentile_per90": 42,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "15"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Fouls committed",
+    "metric_key": "fouls",
+    "metric_kr": "파울",
+    "per90": 0.993282149712092,
+    "percentile": 31,
+    "percentile_per90": 51,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "23"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG against while on pitch",
+    "metric_key": "expected_goals_against_while_on_pitch",
+    "metric_kr": "출전 중 피xG",
+    "per90": 1.5492869247172936,
+    "percentile": 27,
+    "percentile_per90": 23,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "35.87"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Pass accuracy",
+    "metric_key": "successful_passes_accuracy",
+    "metric_kr": "패스 정확도",
+    "per90": 76.69376693766938,
+    "percentile": 20,
+    "percentile_per90": 20,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "76.7"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals conceded while on pitch",
+    "metric_key": "goals_conceded_while_on_pitch",
+    "metric_kr": "출전 중 실점",
+    "per90": 1.8570057581573896,
+    "percentile": 14,
+    "percentile_per90": 18,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "43"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_key": "goals",
+    "metric_kr": "득점",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Shots",
+    "metric_key": "shots",
+    "metric_kr": "슛",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "stat_value": "0"
+   }
+  ],
   "왓킨스": [
    {
     "league": "Premier League",
@@ -18093,6 +18527,72 @@
     "metric": "Red cards",
     "metric_kr": "퇴장",
     "pulled": "2026-08-11",
+    "season": "2025/2026",
+    "value": "0"
+   }
+  ],
+  "완비사카": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "value": "25"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "value": "23"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "value": "2084"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "value": "6.80"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "pulled": "2026-08-14",
+    "season": "2025/2026",
+    "value": "4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "pulled": "2026-08-14",
     "season": "2025/2026",
     "value": "0"
    }
@@ -28237,7 +28737,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "MEDIUM-HIGH — 1티어(The Athletic)가 회담 개시를 보도하나 문구가 **\"preliminary/exploratory\"**라 §2 등급표의 HIGH 요건(\"advanced talks\"·합의)에 미달한다. ⚠️ The Athletic 원문은 페이월로 직접 확인 실패 — Goal·LiveScore 인용문에 의존했다. §2-0 발행일 검증 통과: 나이 28세 표기 일치(1997-11생) · 병기 상황 전건 현 창 정합(웨스트햄 강등, 디뉴→PSG, 루헤리 진행 중, 에머슨 로열 무산, 워커-피터스에 밀린 출전 기록). ⚠️ 표본은 **웨스트햄(강등팀)의 것**이며 빌라 전술이 아니다(obs#157·#158) — 팀을 옮기면 좌우 위치가 17~18단위 움직인 사례가 둘 있다. ⚠️ 26세 이상 자원이라 리세일 가치는 낮다.",
+   "confidence": "MEDIUM-HIGH — 1티어(The Athletic)가 회담 개시를 보도하나 문구가 **\"preliminary/exploratory\"**라 §2 등급표의 HIGH 요건(\"advanced talks\"·합의)에 미달한다. ⚠️ The Athletic 원문은 페이월로 직접 확인 실패 — Goal·LiveScore 인용문에 의존했다. §2-0 발행일 검증 통과: 나이 28세 표기 일치(1997-11생) · 병기 상황 전건 현 창 정합(웨스트햄 강등, 디뉴→PSG, 루헤리 진행 중, 에머슨 로열 무산, 워커-피터스에 밀린 출전 기록). ⚠️ 표본은 **웨스트햄(강등팀)의 것**이며 빌라 전술이 아니다(obs#157·#158) — 팀을 옮기면 좌우 위치가 17~18단위 움직인 사례가 둘 있다. ⚠️ 26세 이상 자원이라 리세일 가치는 낮다. ⭐ 2026-08-14 FotMob PL 상세 36지표는 원천 API 전사 HIGH. 위치 표본은 기존 SofaScore 25경기 회귀값이며 당일 재수집 403으로 새 표본을 주장하지 않는다.",
    "fit_focus": "Support",
    "fit_role": "fb_att_wb",
    "fit_sim": 0.932,
@@ -28248,7 +28748,7 @@
    "map25": "000140002X001290003900234",
    "name_en": "Aaron Wan-Bissaka",
    "name_kr": "완비사카",
-   "player_id": null,
+   "player_id": 90,
    "pos": "RB",
    "rate_basis": "transfer",
    "rate_note": "표본 25경기 (West Ham United)",
@@ -28256,7 +28756,7 @@
    "regime_id": 1,
    "slot_type": "FB",
    "sort_order": 10147,
-   "source": "The Athletic(1티어, 2026-08-12, \"opened talks\"·preliminary) 경유 https://www.goal.com/en/lists/aston-villa-aaron-wan-bissaka-transfer-west-ham-manchester-united/blt64cc0a3ed802e9f8 (2026-08-13) ; Alex Crook/talkSPORT(2티어) https://www.livescore.com/en/news/football/premier-league/aston-villa-explore-move-for-aaron-wan-bissaka-as-west-ham-set-25-asking-price-claret-villans/ ; 실측 SofaScore player 863653",
+   "source": "The Athletic(1티어, 2026-08-12, \"opened talks\"·preliminary) 경유 https://www.goal.com/en/lists/aston-villa-aaron-wan-bissaka-transfer-west-ham-manchester-united/blt64cc0a3ed802e9f8 (2026-08-13) ; Alex Crook/talkSPORT(2티어) https://www.livescore.com/en/news/football/premier-league/aston-villa-explore-move-for-aaron-wan-bissaka-as-west-ham-set-25-asking-price-claret-villans/ ; 실측 SofaScore player 863653 ; FotMob player 760320 https://www.fotmob.com/players/760320/a.-wan-bissaka ; FotMob playerData/playerStats seasonId=1-0 (2026-08-14)",
    "source_kind": "transfer",
    "status": "MEDIUM-HIGH",
    "team_code": "AVL"
@@ -30284,7 +30784,7 @@
    {
     "avg_rating": 6.59,
     "club": "West Ham United",
-    "confidence": "MEDIUM-HIGH — 1티어(The Athletic)가 회담 개시를 보도하나 문구가 **\"preliminary/exploratory\"**라 §2 등급표의 HIGH 요건(\"advanced talks\"·합의)에 미달한다. ⚠️ The Athletic 원문은 페이월로 직접 확인 실패 — Goal·LiveScore 인용문에 의존했다. §2-0 발행일 검증 통과: 나이 28세 표기 일치(1997-11생) · 병기 상황 전건 현 창 정합(웨스트햄 강등, 디뉴→PSG, 루헤리 진행 중, 에머슨 로열 무산, 워커-피터스에 밀린 출전 기록). ⚠️ 표본은 **웨스트햄(강등팀)의 것**이며 빌라 전술이 아니다(obs#157·#158) — 팀을 옮기면 좌우 위치가 17~18단위 움직인 사례가 둘 있다. ⚠️ 26세 이상 자원이라 리세일 가치는 낮다.",
+    "confidence": "MEDIUM-HIGH — 1티어(The Athletic)가 회담 개시를 보도하나 문구가 **\"preliminary/exploratory\"**라 §2 등급표의 HIGH 요건(\"advanced talks\"·합의)에 미달한다. ⚠️ The Athletic 원문은 페이월로 직접 확인 실패 — Goal·LiveScore 인용문에 의존했다. §2-0 발행일 검증 통과: 나이 28세 표기 일치(1997-11생) · 병기 상황 전건 현 창 정합(웨스트햄 강등, 디뉴→PSG, 루헤리 진행 중, 에머슨 로열 무산, 워커-피터스에 밀린 출전 기록). ⚠️ 표본은 **웨스트햄(강등팀)의 것**이며 빌라 전술이 아니다(obs#157·#158) — 팀을 옮기면 좌우 위치가 17~18단위 움직인 사례가 둘 있다. ⚠️ 26세 이상 자원이라 리세일 가치는 낮다. ⭐ 2026-08-14 FotMob PL 상세 36지표는 원천 API 전사 HIGH. 위치 표본은 기존 SofaScore 25경기 회귀값이며 당일 재수집 403으로 새 표본을 주장하지 않는다.",
     "fit_focus": "Support",
     "fit_role": "fb_att_wb",
     "fit_sim": 0.932,
@@ -30295,12 +30795,12 @@
     "name_kr": "완비사카",
     "opt_focus": "Support",
     "opt_role": "fb_att_wb",
-    "player_id": null,
+    "player_id": 90,
     "position": "RB",
     "sample_n": 25,
     "short_label": "완비사카",
     "slot": "RB",
-    "source": "The Athletic(1티어, 2026-08-12, \"opened talks\"·preliminary) 경유 https://www.goal.com/en/lists/aston-villa-aaron-wan-bissaka-transfer-west-ham-manchester-united/blt64cc0a3ed802e9f8 (2026-08-13) ; Alex Crook/talkSPORT(2티어) https://www.livescore.com/en/news/football/premier-league/aston-villa-explore-move-for-aaron-wan-bissaka-as-west-ham-set-25-asking-price-claret-villans/ ; 실측 SofaScore player 863653"
+    "source": "The Athletic(1티어, 2026-08-12, \"opened talks\"·preliminary) 경유 https://www.goal.com/en/lists/aston-villa-aaron-wan-bissaka-transfer-west-ham-manchester-united/blt64cc0a3ed802e9f8 (2026-08-13) ; Alex Crook/talkSPORT(2티어) https://www.livescore.com/en/news/football/premier-league/aston-villa-explore-move-for-aaron-wan-bissaka-as-west-ham-set-25-asking-price-claret-villans/ ; 실측 SofaScore player 863653 ; FotMob player 760320 https://www.fotmob.com/players/760320/a.-wan-bissaka ; FotMob playerData/playerStats seasonId=1-0 (2026-08-14)"
    }
   ]
  }

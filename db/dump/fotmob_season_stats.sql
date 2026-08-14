@@ -382,3 +382,11 @@ INSERT INTO fotmob_season_stats VALUES(381,78,'2026-08-11','LaLiga','2025/2026',
 INSERT INTO fotmob_season_stats VALUES(382,78,'2026-08-11','LaLiga','2025/2026','Rating','평점','6.96','fotmob.com/api/data/playerData (2026-08-11 수집)');
 INSERT INTO fotmob_season_stats VALUES(383,78,'2026-08-11','LaLiga','2025/2026','Yellow cards','경고','4','fotmob.com/api/data/playerData (2026-08-11 수집)');
 INSERT INTO fotmob_season_stats VALUES(384,78,'2026-08-11','LaLiga','2025/2026','Red cards','퇴장','0','fotmob.com/api/data/playerData (2026-08-11 수집)');
+INSERT INTO fotmob_season_stats VALUES(385,90,'2026-08-14','Premier League','2025/2026','Goals','골','0','fotmob.com/api/data/playerStats (player 760320, 2025/2026 Premier League, 2026-08-14 수집)');
+INSERT INTO fotmob_season_stats VALUES(386,90,'2026-08-14','Premier League','2025/2026','Assists','어시스트','2','fotmob.com/api/data/playerStats (player 760320, 2025/2026 Premier League, 2026-08-14 수집)');
+INSERT INTO fotmob_season_stats VALUES(387,90,'2026-08-14','Premier League','2025/2026','Matches','경기','25','fotmob.com/api/data/playerStats (player 760320, 2025/2026 Premier League, 2026-08-14 수집)');
+INSERT INTO fotmob_season_stats VALUES(388,90,'2026-08-14','Premier League','2025/2026','Started','선발','23','fotmob.com/api/data/playerStats (player 760320, 2025/2026 Premier League, 2026-08-14 수집)');
+INSERT INTO fotmob_season_stats VALUES(389,90,'2026-08-14','Premier League','2025/2026','Minutes played','출전 시간','2084','fotmob.com/api/data/playerStats (player 760320, 2025/2026 Premier League, 2026-08-14 수집)');
+INSERT INTO fotmob_season_stats VALUES(390,90,'2026-08-14','Premier League','2025/2026','Rating','평점','6.80','fotmob.com/api/data/playerStats (player 760320, 2025/2026 Premier League, 2026-08-14 수집)');
+INSERT INTO fotmob_season_stats VALUES(391,90,'2026-08-14','Premier League','2025/2026','Yellow cards','경고','4','fotmob.com/api/data/playerStats (player 760320, 2025/2026 Premier League, 2026-08-14 수집)');
+INSERT INTO fotmob_season_stats VALUES(392,90,'2026-08-14','Premier League','2025/2026','Red cards','퇴장','0','fotmob.com/api/data/playerStats (player 760320, 2025/2026 Premier League, 2026-08-14 수집)');
