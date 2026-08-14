@@ -17,6 +17,8 @@ export PATH="/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PAT
 STAMP="$(date +%Y%m%d-%H%M)"
 mkdir -p "$ROOT/logs"
 LOG="$ROOT/logs/transfer-watch-$STAMP.log"
+REPORT="$ROOT/reports/transfer-watch/$(date +%F).md"
+REPORT_BEFORE="$(shasum -a 256 "$REPORT" 2>/dev/null | awk '{print $1}')"
 exec >>"$LOG" 2>&1
 
 echo "═══ 이적 감시 $STAMP 시작 (호스트 $(hostname)) ═══"
@@ -49,6 +51,14 @@ if [ -n "$CODEX_BIN" ]; then
   if [ "$rc" -ne 0 ]; then
     echo "⛔ 판정 단계 실패 — 위 codex 로그를 확인할 것"
     codex_rc="$rc"
+  else
+    REPORT_AFTER="$(shasum -a 256 "$REPORT" 2>/dev/null | awk '{print $1}')"
+    if [ -z "$REPORT_AFTER" ] || [ "$REPORT_AFTER" = "$REPORT_BEFORE" ]; then
+      echo "⛔ 리포트 발행 실패 — 당일 파일이 생성·갱신되지 않았다: $REPORT"
+      codex_rc=1
+    else
+      echo "OK → 당일 리포트 생성·갱신 확인: $REPORT"
+    fi
   fi
 else
   echo "⛔ codex 미설치 — 판정 단계를 건너뛴다. 수집분만 logs/fotmob-$STAMP.txt에 남았다."

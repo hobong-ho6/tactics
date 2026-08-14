@@ -11095,6 +11095,31 @@
    "team_code": "CHE"
   },
   {
+   "confidence": "MEDIUM-HIGH — 1티어 문의 보도. 선수·아스널 잔류 기조와 오퍼 부재로 성사 단계는 낮다. 실측 HIGH on collection(30경기) / MEDIUM on Chelsea role: 25/26 아스널·대표팀 수비수 표본이며 알론소 체제가 아니다. CM 경력은 서사만 있고 이번 위치 표본에는 없다.",
+   "fit_focus": "Build-Up",
+   "fit_role": "fb_inverted",
+   "fit_sim": 0.6980380595,
+   "formation": "3-4-2-1",
+   "grid_caveat": "⚠️ 영입 전 현 소속팀 실측",
+   "grid_club": "Arsenal",
+   "label": "영입·루이스스켈리",
+   "map25": "121009X631988309653022200",
+   "name_en": "Myles Lewis-Skelly",
+   "name_kr": "마일스 루이스스켈리",
+   "player_id": null,
+   "pos": "LB",
+   "rate_basis": "transfer",
+   "rate_note": "표본 30경기 (Arsenal)",
+   "rating": 7.01,
+   "regime_id": 2,
+   "slot_type": "FB",
+   "sort_order": 10148,
+   "source": "Sky Sports 2026-08-12 https://www.skysports.com/football/news/11095/13571919/myles-lewis-skelly-transfer-news-chelsea-make-enquiry-for-arsenal-teenager-amid-long-term-interest-from-blues-and-man-utd ; SofaScore player 1423711 (2026-08-14 수집)",
+   "source_kind": "transfer",
+   "status": "MEDIUM-HIGH",
+   "team_code": "CHE"
+  },
+  {
    "confidence": "실측 그리드는 원 수집 그대로. 평점은 rationale 본문 파싱값이라 구조화 필드가 아니다.",
    "fit_focus": "Support",
    "fit_role": "fb_wingback",
@@ -12030,11 +12055,11 @@
    {
     "confidence": "MEDIUM-HIGH — 1티어 2곳이 접촉·시한 통보를 보도하나 **오퍼 0건**이라 HIGH(협상/합의 단계) 미달. §2-0 발행일 검증 통과: 마레스카=맨시티 감독(구단 공식 2026-06-29, 과르디올라 5월 사임 후임) · 엘리엇 앤더슨 £116m 포레스트→시티 완료 · 베르나르두 실바 레알행 · 로드리↔바르셀로나 진행 · 부아디(릴) 병행 협상 — 병기 상황 전건 현 창 정합. ⚠️ 08-14 17:00 이후 등급이 반드시 갈리므로 **금요일 회차에서 재판정 필수**. ⚠️ 엔소는 squad_entries WM 슬롯 보유 선수라 성사 시 첼시 XI에 직접 영향.",
     "dest_club": "Manchester City",
-    "last_news_date": "2026-08-12",
+    "last_news_date": "2026-08-14",
     "likelihood": "MEDIUM-HIGH",
     "name": "Enzo Fernández",
     "name_kr": "엔소 페르난데스",
-    "source": "Sky Sports(1티어) 2026-08-12 https://www.skysports.com/football/news/11095/13572395/enzo-fernandez-transfer-news-chelsea-set-man-city-deadline-to-bid-for-midfielder ; Fabrizio Romano(1티어) 2026-08-12 ; Sky 매각 총정리 https://www.skysports.com/football/news/11668/13572382/chelsea-transfer-news-enzo-fernandez-nicolas-jackson-malo-gusto-and-more-in-spotlight-as-blues-look-to-player-sales"
+    "source": "Sky Sports(1티어) 2026-08-12 https://www.skysports.com/football/news/11095/13572395/enzo-fernandez-transfer-news-chelsea-set-man-city-deadline-to-bid-for-midfielder ; Fabrizio Romano(1티어) 2026-08-12 ; Sky 매각 총정리 https://www.skysports.com/football/news/11668/13572382/chelsea-transfer-news-enzo-fernandez-nicolas-jackson-malo-gusto-and-more-in-spotlight-as-blues-look-to-player-sales ; Sky Sports 2026-08-14 https://www.skysports.com/football/news/11661/13572395/enzo-fernandez-transfer-news-chelsea-set-man-city-deadline-to-bid-for-midfielder"
    },
    {
     "confidence": "MEDIUM-HIGH — 1티어 접촉 보도. **오퍼 0건**이고 사비뉴 선결 조건이 걸려 있어 HIGH 아님.",
@@ -12094,6 +12119,27 @@
     "short_label": "차바리아",
     "slot": "LB",
     "source": "Fabrizio Romano 원트윗 status 2085475147692061073 (2026-08-06 22:16, \"here we go\") + status 2085617184093446637 (08-07 메디컬) ; Sky Sports Kaveh Solhekol (2026-08-05) ; The Athletic (08-05) ; 리드 Fotmob teamIds=8455 ; https://www.chelseafc.com/en/news/article/pep-chavarria-signs-for-chelsea (구단 공식)"
+   },
+   {
+    "avg_rating": 7.01,
+    "club": "Arsenal",
+    "confidence": "MEDIUM-HIGH — 1티어 문의 보도. 선수·아스널 잔류 기조와 오퍼 부재로 성사 단계는 낮다. 실측 HIGH on collection(30경기) / MEDIUM on Chelsea role: 25/26 아스널·대표팀 수비수 표본이며 알론소 체제가 아니다. CM 경력은 서사만 있고 이번 위치 표본에는 없다.",
+    "fit_focus": "Build-Up",
+    "fit_role": "fb_inverted",
+    "fit_sim": 0.6980380595,
+    "last_news_date": "2026-08-12",
+    "likelihood": "MEDIUM-HIGH",
+    "map25": "121009X631988309653022200",
+    "name": "Myles Lewis-Skelly",
+    "name_kr": "마일스 루이스스켈리",
+    "opt_focus": "Build-Up",
+    "opt_role": "fb_inverted",
+    "player_id": null,
+    "position": "LB/CM",
+    "sample_n": 30,
+    "short_label": "루이스스켈리",
+    "slot": "LB",
+    "source": "Sky Sports 2026-08-12 https://www.skysports.com/football/news/11095/13571919/myles-lewis-skelly-transfer-news-chelsea-make-enquiry-for-arsenal-teenager-amid-long-term-interest-from-blues-and-man-utd ; SofaScore player 1423711 (2026-08-14 수집)"
    }
   ]
  }
