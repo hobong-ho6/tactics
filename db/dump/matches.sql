@@ -60,3 +60,14 @@ INSERT INTO matches VALUES(65,16284981,'AVL','2026-27','2026-08-07','Bayern Mün
 INSERT INTO matches VALUES(66,16285002,'CHE','2026-27','2026-08-08','AC Milan','Club Friendly Games','H','3-0',1,NULL,50.0);
 INSERT INTO matches VALUES(67,16284988,'LIV','2026-27','2026-08-09','AS Monaco','Club Friendly Games','H','2-3',1,NULL,52.0);
 INSERT INTO matches VALUES(68,16260286,'AVL','2026-27','2026-08-12','Paris Saint-Germain','UEFA Super Cup','N','1-2',1,'Final',39.0);
+INSERT INTO matches VALUES(69,-5847098,'AVL','2026-27','2026-07-21','Walsall','Club Friendly','A','0-5',1,'프리시즌 1차전 (⚠️event_id는 음수 FotMob matchId 5847098 — SofaScore 미커버 친선의 합성 키)',NULL);
+INSERT INTO matches VALUES(70,-5961030,'AVL','2026-27','2026-07-25','FC Porto','Club Friendly','A','2-1',1,'프리시즌 (⚠️event_id는 음수 FotMob matchId 5961030 — SofaScore 미커버 친선의 합성 키)',NULL);
+INSERT INTO matches VALUES(71,-5874657,'AVL','2026-27','2026-07-28','Real Sociedad','Club Friendly','H','2-4',1,'프리시즌 (⚠️event_id는 음수 FotMob matchId 5874657 — SofaScore 미커버 친선의 합성 키)',NULL);
+INSERT INTO matches VALUES(72,-5898788,'AVL','2026-27','2026-08-04','BG Pathum United','Club Friendly','A','1-3',1,'아시아 프리시즌 투어 2차전 방콕 (⚠️event_id는 음수 FotMob matchId 5898788 — SofaScore 미커버 친선의 합성 키)',NULL);
+INSERT INTO matches VALUES(73,-5199446,'CHE','2026-27','2026-07-28','Western Sydney Wanderers','Club Friendly','H','6-4',1,'아시아·오세아니아 투어 (⚠️event_id는 음수 FotMob matchId 5199446 — SofaScore 미커버 친선의 합성 키)',NULL);
+INSERT INTO matches VALUES(74,-5199448,'CHE','2026-27','2026-08-01','Tottenham Hotspur','Club Friendly','H','1-2',1,'시드니 (⚠️event_id는 음수 FotMob matchId 5199448 — SofaScore 미커버 친선의 합성 키)',NULL);
+INSERT INTO matches VALUES(75,-5406268,'CHE','2026-27','2026-08-05','Juventus','Club Friendly','H','0-1',1,'홍콩 (⚠️event_id는 음수 FotMob matchId 5406268 — SofaScore 미커버 친선의 합성 키)',NULL);
+INSERT INTO matches VALUES(76,-5739313,'CHE','2026-27','2026-08-09','Johor Darul Tazim','Club Friendly','A','3-3',1,'말레이시아 — 밀란전 24시간 뒤 2연전 (⚠️event_id는 음수 FotMob matchId 5739313 — SofaScore 미커버 친선의 합성 키)',NULL);
+INSERT INTO matches VALUES(77,-5498878,'LIV','2026-27','2026-07-25','Sunderland','Club Friendly','H','4-2',1,'내슈빌 — 이라올라 체제 1차전 (⚠️event_id는 음수 FotMob matchId 5498878 — SofaScore 미커버 친선의 합성 키)',NULL);
+INSERT INTO matches VALUES(78,-5498879,'LIV','2026-27','2026-07-29','Wrexham','Club Friendly','H','1-0',1,'프리시즌 (⚠️event_id는 음수 FotMob matchId 5498879 — SofaScore 미커버 친선의 합성 키)',NULL);
+INSERT INTO matches VALUES(79,-5498880,'LIV','2026-27','2026-08-02','Leeds United','Club Friendly','H','2-4',1,'시카고 — 2-0 리드 후 역전패 (⚠️event_id는 음수 FotMob matchId 5498880 — SofaScore 미커버 친선의 합성 키)',NULL);
