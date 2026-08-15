@@ -11096,31 +11096,6 @@
    "team_code": "CHE"
   },
   {
-   "confidence": "MEDIUM-HIGH — 1티어 문의 보도. 선수·아스널 잔류 기조와 오퍼 부재로 성사 단계는 낮다. 실측 HIGH on collection(30경기) / MEDIUM on Chelsea role: 25/26 아스널·대표팀 수비수 표본이며 알론소 체제가 아니다. CM 경력은 서사만 있고 이번 위치 표본에는 없다. / ⚠️ 1티어(Romano)가 같은 날 '구체적 진전 없음'을 명시 — 등급은 Sky의 후행 문의 보도에만 의존한다. ⭐ **발행일 검증이 결론을 뒤집을 뻔한 사례**다 — 반증이 근거보다 하루 앞선다는 사실을 확인하지 않았다면 등급을 잘못 내렸을 것이다(§2-0 판정 순서의 실증).",
-   "fit_focus": "Build-Up",
-   "fit_role": "fb_inverted",
-   "fit_sim": 0.6980380595,
-   "formation": "3-4-2-1",
-   "grid_caveat": "⚠️ 영입 전 현 소속팀 실측",
-   "grid_club": "Arsenal",
-   "label": "영입·루이스스켈리",
-   "map25": "121009X631988309653022200",
-   "name_en": "Myles Lewis-Skelly",
-   "name_kr": "마일스 루이스스켈리",
-   "player_id": null,
-   "pos": "LB",
-   "rate_basis": "transfer",
-   "rate_note": "표본 30경기 (Arsenal)",
-   "rating": 7.01,
-   "regime_id": 2,
-   "slot_type": "FB",
-   "sort_order": 10148,
-   "source": "Sky Sports 2026-08-12 https://www.skysports.com/football/news/11095/13571919/myles-lewis-skelly-transfer-news-chelsea-make-enquiry-for-arsenal-teenager-amid-long-term-interest-from-blues-and-man-utd ; SofaScore player 1423711 (2026-08-14 수집) · Romano 2026-08-12 (https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/08/fabrizio-romano-enzo-fernandez-myles-lewis-skelly-jules-kounde) ; Sky Paper Talk(원출처 Daily Telegraph) 2026-08-11 22:36 https://www.skysports.com/football/transfer-paper-talk/12709/13572089/ ; SI 2026-08-12 https://www.si.com/soccer/why-man-utd-chelsea-turned-down-arsenal-myles-lewis-skelly ; The Athletic(1티어) 2026-08-12",
-   "source_kind": "transfer",
-   "status": "MEDIUM-HIGH",
-   "team_code": "CHE"
-  },
-  {
    "confidence": "실측 그리드는 원 수집 그대로. 평점은 rationale 본문 파싱값이라 구조화 필드가 아니다.",
    "fit_focus": "Support",
    "fit_role": "fb_wingback",
@@ -12054,22 +12029,22 @@
     "source": "Como 구단 공식 발표 (2026-08-10) ; CHE 스캔 회차 보고 ; fotmob_detail_stats.league 확인(25/26 기록은 첼시 소속분)"
    },
    {
-    "confidence": "MEDIUM-HIGH — 1티어 2곳이 접촉·시한 통보를 보도하나 **오퍼 0건**이라 HIGH(협상/합의 단계) 미달. §2-0 발행일 검증 통과: 마레스카=맨시티 감독(구단 공식 2026-06-29, 과르디올라 5월 사임 후임) · 엘리엇 앤더슨 £116m 포레스트→시티 완료 · 베르나르두 실바 레알행 · 로드리↔바르셀로나 진행 · 부아디(릴) 병행 협상 — 병기 상황 전건 현 창 정합. ⚠️ 08-14 17:00 이후 등급이 반드시 갈리므로 **금요일 회차에서 재판정 필수**. ⚠️ 엔소는 squad_entries WM 슬롯 보유 선수라 성사 시 첼시 XI에 직접 영향. / ⚠️ 17:00 BST(=08-15 01:00 KST) 시한 도과 후 재판정 필수 — 무산 시 rationale을 '2027 여름까지 매각 불가'로 갱신할 1티어 근거 있음. ⛔ **£102.5m/€120m 오퍼설은 오늘도 재확산됐으나 기각 유지** — 원출처가 스페인 Tribuna(3티어)의 Merlo 보도 재순환이고 Romano·Schira·Sky·Evening Standard 4곳이 부인한다.",
+    "confidence": "MEDIUM-HIGH — 1티어 2곳이 접촉·시한 통보를 보도하나 **오퍼 0건**이라 HIGH(협상/합의 단계) 미달. §2-0 발행일 검증 통과: 마레스카=맨시티 감독(구단 공식 2026-06-29, 과르디올라 5월 사임 후임) · 엘리엇 앤더슨 £116m 포레스트→시티 완료 · 베르나르두 실바 레알행 · 로드리↔바르셀로나 진행 · 부아디(릴) 병행 협상 — 병기 상황 전건 현 창 정합. ⚠️ 08-14 17:00 이후 등급이 반드시 갈리므로 **금요일 회차에서 재판정 필수**. ⚠️ 엔소는 squad_entries WM 슬롯 보유 선수라 성사 시 첼시 XI에 직접 영향. / ⚠️ 17:00 BST(=08-15 01:00 KST) 시한 도과 후 재판정 필수 — 무산 시 rationale을 '2027 여름까지 매각 불가'로 갱신할 1티어 근거 있음. ⛔ **£102.5m/€120m 오퍼설은 오늘도 재확산됐으나 기각 유지** — 원출처가 스페인 Tribuna(3티어)의 Merlo 보도 재순환이고 Romano·Schira·Sky·Evening Standard 4곳이 부인한다. ⚠️ Evening Standard가 예고한 **\"2027년 여름까지 매각 불가\"는 부분 확인**에 그쳤다 — 시한 후 1티어는 \"시즌 전체 잔류·겨울 창 불매\"까지만 확정했고 ESPN은 \"seemingly also rules out\"이라는 유보 표현을 썼다. **2027년이라는 표현 자체를 시한 후 1티어가 반복한 사례는 확보하지 못했다.** ⛔ £102.5m/€120m/€140m 오퍼설은 오늘도 재확산됐으나 원출처가 동일한 Tribuna(3티어) Merlo 재순환이고, 시한 후 1티어 3곳의 \"입찰 0건\" 확정으로 **최종 기각**됐다. ⛔ 엔소의 08-15 훈련·스쿼드 합류 여부는 **확인 실패**(08-15자 1~2티어 0건, 첼시 개막은 08-24 풀럼).",
     "dest_club": "Manchester City",
     "last_news_date": "2026-08-14",
-    "likelihood": "MEDIUM-HIGH",
+    "likelihood": "DEAD (시한 도과 — 2026-08-14 17:00 BST까지 시티 공식 오퍼 0건. ⚠️로드리 매각 성사 시 09-01 마감 전 부활 가능)",
     "name": "Enzo Fernández",
     "name_kr": "엔소 페르난데스",
-    "source": "Sky Sports(1티어) 2026-08-12 https://www.skysports.com/football/news/11095/13572395/enzo-fernandez-transfer-news-chelsea-set-man-city-deadline-to-bid-for-midfielder ; Fabrizio Romano(1티어) 2026-08-12 ; Sky 매각 총정리 https://www.skysports.com/football/news/11668/13572382/chelsea-transfer-news-enzo-fernandez-nicolas-jackson-malo-gusto-and-more-in-spotlight-as-blues-look-to-player-sales ; Sky Sports 2026-08-14 https://www.skysports.com/football/news/11661/13572395/enzo-fernandez-transfer-news-chelsea-set-man-city-deadline-to-bid-for-midfielder · Romano/Ben Jacobs/Evening Standard 2026-08-13~14 · ESPN James Olley 2026-08-13 (https://www.espn.com/soccer/story/_/id/49598641/chelsea-enzo-fernandez-man-city-premier-league-transfers) ; Fabrizio Romano(1티어) 2026-08-14 08:20 BST via https://www.caughtoffside.com/2026/08/14/man-city-enzo-fernandez-transfer/ ; Football365 2026-08-14 08:25 https://www.football365.com/news/man-city-offer-chelsea-102-5m-enzo-fernandez-push-finalise-signing ; ESPN James Olley 2026-08-13 (금요일 시한·시티 'unlikely to meet' £120m) https://www.espn.com/soccer/story/_/id/49597770/ ; Sky Sports 2026-08-13 (로드리 £55m 거절) https://www.skysports.com/football/news/11679/13567985/"
+    "source": "Sky Sports(1티어) 2026-08-12 https://www.skysports.com/football/news/11095/13572395/enzo-fernandez-transfer-news-chelsea-set-man-city-deadline-to-bid-for-midfielder ; Fabrizio Romano(1티어) 2026-08-12 ; Sky 매각 총정리 https://www.skysports.com/football/news/11668/13572382/chelsea-transfer-news-enzo-fernandez-nicolas-jackson-malo-gusto-and-more-in-spotlight-as-blues-look-to-player-sales ; Sky Sports 2026-08-14 https://www.skysports.com/football/news/11661/13572395/enzo-fernandez-transfer-news-chelsea-set-man-city-deadline-to-bid-for-midfielder · Romano/Ben Jacobs/Evening Standard 2026-08-13~14 · ESPN James Olley 2026-08-13 (https://www.espn.com/soccer/story/_/id/49598641/chelsea-enzo-fernandez-man-city-premier-league-transfers) ; Fabrizio Romano(1티어) 2026-08-14 08:20 BST via https://www.caughtoffside.com/2026/08/14/man-city-enzo-fernandez-transfer/ ; Football365 2026-08-14 08:25 https://www.football365.com/news/man-city-offer-chelsea-102-5m-enzo-fernandez-push-finalise-signing ; ESPN James Olley 2026-08-13 (금요일 시한·시티 'unlikely to meet' £120m) https://www.espn.com/soccer/story/_/id/49597770/ ; Sky Sports 2026-08-13 (로드리 £55m 거절) https://www.skysports.com/football/news/11679/13567985/ ; Sky Sports(1티어) 2026-08-14 19:49 UK https://www.skysports.com/football/news/11668/13572838/enzo-fernandez-transfer-news-man-city-miss-chelseas-deadline-to-bid-for-midfielder ; ESPN James Olley(1티어) 2026-08-14 17:22 BST https://www.espn.com/soccer/story/_/id/49610484/enzo-fernandez-set-chelsea-stay-manchester-city-miss-deadline-sources ; BBC Sport 2026-08-14(시티 측 입장) via https://sports.yahoo.com/articles/man-city-move-fernandez-chelseas-124659437.html"
    },
    {
-    "confidence": "MEDIUM-HIGH — 1티어 접촉 보도. **오퍼 0건**이고 사비뉴 선결 조건이 걸려 있어 HIGH 아님.",
+    "confidence": "MEDIUM-HIGH — 1티어 접촉 보도. **오퍼 0건**이고 사비뉴 선결 조건이 걸려 있어 HIGH 아님. ⚠️ **이번 회차에 등급을 내리지 않은 이유**: Ransom 원 게시물의 정확한 타임스탬프를 X에서 직접 확정하지 못해 **2차 인용 기반**이다. §2-0의 \"발행일을 확정하지 못한 건은 등급 근거로 쓰지 않는다\"를 그대로 적용했다 — 반증의 내용은 3개 매체가 일치하나 원문 확정이 선행돼야 한다.",
     "dest_club": "Manchester City",
     "last_news_date": "2026-08-12",
     "likelihood": "MEDIUM-HIGH",
     "name": "Pedro Neto",
     "name_kr": "페드루 네투",
-    "source": "Fabrizio Romano via sports.yahoo.com/articles/chelsea-pedro-neto-transfer-stance-084346153.html ; 리드 Fotmob teamIds=8455 (08-05 The Sun)"
+    "source": "Fabrizio Romano via sports.yahoo.com/articles/chelsea-pedro-neto-transfer-stance-084346153.html ; 리드 Fotmob teamIds=8455 (08-05 The Sun) ; Sky Sports Ben Ransom(1티어 매체 소속) 2026-08-10 via https://cityxtra.co.uk/50588/manchester-city-hold-transfer-talks-with-chelsea-forwards-representatives-as-official-bid-looms/ ; Read Chelsea 2026-08-11 https://readchelsea.com/2026/08/11/70m-rated-chelsea-forward-set-to-stay-after-major-man-city-transfer-twist/"
    },
    {
     "confidence": "⚠️ 팀 축 교차 기록(불변규칙 7) — 출처 팀은 AVL 영입축이다. 그리드·적합값은 첼시 시절 38경기 표본이며 알론소 이전 마레스카·로즈니어 체제분이다(squad_entries.grid_caveat와 동일 캐비앗).",
@@ -12083,11 +12058,11 @@
    {
     "confidence": "AVL 축 판정을 CHE 원장에 미러한 행이다. 08-13 상반 보도 공존(Schira 승낙 vs The Sun/Goal 잔류 의지) — 양쪽 다 3티어~2티어 하단이라 단계 판정에 쓰지 않았다. ⚠️ Plettenberg 항목은 **발행일 독립 확정에 실패**해 등급 근거로 쓰지 않았다(§2-0). 경쟁 링크(맨유·AC밀란)는 전부 3티어 재중계라 미채택이고, 토트넘 링크는 전담 기자가 정면 부인한 상태가 유지된다.",
     "dest_club": "Aston Villa",
-    "last_news_date": "2026-08-14",
+    "last_news_date": "2026-08-15",
     "likelihood": "HIGH (정체 — 07-28 이후 단계 전진 없음)",
     "name": "Nicolas Jackson",
     "name_kr": "잭슨",
-    "source": "Nicolò Schira 2026-08-13 · AVL 축 transfer_targets 행과 동일 근거 (팀 축 교차 — 불변규칙 7에 따라 출처 팀 명기) ; BBC Gossip(2026-08-12, 원출처 Telegraph) https://feeds.bbci.co.uk/sport/football/articles/cz0yg9e85pvo ; Sky Sports 2026-08-12 https://www.skysports.com/football/news/11095/13565547/nicolas-jackson-transfer-to-aston-villa-or-tottenham-why-striker-from-chelsea-could-yet-prove-to-be-underrated"
+    "source": "Nicolò Schira 2026-08-13 · AVL 축 transfer_targets 행과 동일 근거 (팀 축 교차 — 불변규칙 7에 따라 출처 팀 명기) ; BBC Gossip(2026-08-12, 원출처 Telegraph) https://feeds.bbci.co.uk/sport/football/articles/cz0yg9e85pvo ; Sky Sports 2026-08-12 https://www.skysports.com/football/news/11095/13565547/nicolas-jackson-transfer-to-aston-villa-or-tottenham-why-striker-from-chelsea-could-yet-prove-to-be-underrated ; Tribal Football 2026-08-15 https://www.tribalfootball.com/article/soccer-premier-league-nicolas-jackson-wanted-by-aston-villa-but-a-loan-deal-is-impossible-this-summer-7c6cf336-3df8-4d14-b5a9-b0a380f0683a ; Fabrizio Romano(1티어) 임대설 부인"
    },
    {
     "confidence": "HIGH — 1티어 2곳이 '선수 본인 임대 합의'를 보도. ⚠️ **행선지가 미정**이라 목적지 특정 불가 — 다음 회차에 확정하라. ⚠️ 임대이므로 첼시 소유권은 유지된다.",
@@ -12108,13 +12083,13 @@
     "source": "Chelsea FC official 2026-08-11 https://www.chelseafc.com/en/news/article/chelsea-filip-jorgensen-completes-loan-switch ; RC Strasbourg official 2026-08-11 https://www.rcstrasbourgalsace.fr/filip-jorgensen-prete-au-racing/ ; Fabrizio Romano 2026-08-09"
    },
    {
-    "confidence": "HIGH — 1티어가 합의 단계(here we go)를 보도. 시즌 임대 + 매입옵션 구조. 구단 공식 발표 전이므로 CONFIRMED 아님.",
+    "confidence": "HIGH — 1티어가 합의 단계(here we go)를 보도. 시즌 임대 + 매입옵션 구조. 구단 공식 발표 전이므로 CONFIRMED 아님. ⚠️ **보도 간 충돌 병기**: L'Équipe의 \"선수가 개인 조건 미수락\"은 Schira 08-05의 \"2031년까지 개인 조건 원칙 합의\"와 정면 충돌한다. 실측 충돌이 아니라 보도 간 충돌이므로 어느 한쪽을 폐기하지 않고 양쪽을 병기한다 — Schira 근거가 최신 상태가 아닐 수 있다.",
     "dest_club": "SSC Napoli",
     "last_news_date": "2026-08-14",
     "likelihood": "HIGH",
     "name": "Benoît Badiashile",
     "name_kr": "바디아실",
-    "source": "Fabrizio Romano ; TransferFeed chelsea/18 (2026-08-11) ; 리드 Fotmob teamIds=8455 (07-27 The Sun) ; Fabrizio Romano 2026-08-13 via reddit.com/r/chelseafc/comments/1vnhogy/ ; Get Football News Italy 2026-08-14 https://www.getfootballnewsitaly.com/2026/chelsea-reach-verbal-agreement-with-napoli-for-benoit-badiashile/ ; Nicolò Schira(2티어) 2026-08-05 https://www.napolimagazine.com/in-evidenza/articolo/mercato-schira-napoli-accordo-di-massima-con-badiashile-prosegue-positivamente-la-trattativa-con-il-05-08-2026"
+    "source": "Fabrizio Romano ; TransferFeed chelsea/18 (2026-08-11) ; 리드 Fotmob teamIds=8455 (07-27 The Sun) ; Fabrizio Romano 2026-08-13 via reddit.com/r/chelseafc/comments/1vnhogy/ ; Get Football News Italy 2026-08-14 https://www.getfootballnewsitaly.com/2026/chelsea-reach-verbal-agreement-with-napoli-for-benoit-badiashile/ ; Nicolò Schira(2티어) 2026-08-05 https://www.napolimagazine.com/in-evidenza/articolo/mercato-schira-napoli-accordo-di-massima-con-badiashile-prosegue-positivamente-la-trattativa-con-il-05-08-2026 ; Football Italia(Susy Campanale) 2026-08-14 16:07 https://football-italia.net/badiashile-napoli-final-decisions-chelsea-exit/"
    }
   ],
   "targets": [
@@ -12142,12 +12117,12 @@
    {
     "avg_rating": 7.01,
     "club": "Arsenal",
-    "confidence": "MEDIUM-HIGH — 1티어 문의 보도. 선수·아스널 잔류 기조와 오퍼 부재로 성사 단계는 낮다. 실측 HIGH on collection(30경기) / MEDIUM on Chelsea role: 25/26 아스널·대표팀 수비수 표본이며 알론소 체제가 아니다. CM 경력은 서사만 있고 이번 위치 표본에는 없다. / ⚠️ 1티어(Romano)가 같은 날 '구체적 진전 없음'을 명시 — 등급은 Sky의 후행 문의 보도에만 의존한다. ⭐ **발행일 검증이 결론을 뒤집을 뻔한 사례**다 — 반증이 근거보다 하루 앞선다는 사실을 확인하지 않았다면 등급을 잘못 내렸을 것이다(§2-0 판정 순서의 실증).",
+    "confidence": "MEDIUM-HIGH — 1티어 문의 보도. 선수·아스널 잔류 기조와 오퍼 부재로 성사 단계는 낮다. 실측 HIGH on collection(30경기) / MEDIUM on Chelsea role: 25/26 아스널·대표팀 수비수 표본이며 알론소 체제가 아니다. CM 경력은 서사만 있고 이번 위치 표본에는 없다. / ⚠️ 1티어(Romano)가 같은 날 '구체적 진전 없음'을 명시 — 등급은 Sky의 후행 문의 보도에만 의존한다. ⭐ **발행일 검증이 결론을 뒤집을 뻔한 사례**다 — 반증이 근거보다 하루 앞선다는 사실을 확인하지 않았다면 등급을 잘못 내렸을 것이다(§2-0 판정 순서의 실증). ⚠️ Arteta 발언(\"추측은 좋은 신호\") 기사는 ESPN id 49594261로 시한 기사 49610484보다 낮다 = 더 오래됐다(§2-0 지표 4) — 08-12~13자 재노출이며 신규 아님.",
     "fit_focus": "Build-Up",
     "fit_role": "fb_inverted",
     "fit_sim": 0.6980380595,
     "last_news_date": "2026-08-12",
-    "likelihood": "MEDIUM-HIGH",
+    "likelihood": "DEAD (MEDIUM 강등 — 2026-08-12 Sky 문의 이후 1티어 진전 0건 · 반증 1티어 2곳)",
     "map25": "121009X631988309653022200",
     "name": "Myles Lewis-Skelly",
     "name_kr": "마일스 루이스스켈리",
@@ -12158,7 +12133,7 @@
     "sample_n": 30,
     "short_label": "루이스스켈리",
     "slot": "LB",
-    "source": "Sky Sports 2026-08-12 https://www.skysports.com/football/news/11095/13571919/myles-lewis-skelly-transfer-news-chelsea-make-enquiry-for-arsenal-teenager-amid-long-term-interest-from-blues-and-man-utd ; SofaScore player 1423711 (2026-08-14 수집) · Romano 2026-08-12 (https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/08/fabrizio-romano-enzo-fernandez-myles-lewis-skelly-jules-kounde) ; Sky Paper Talk(원출처 Daily Telegraph) 2026-08-11 22:36 https://www.skysports.com/football/transfer-paper-talk/12709/13572089/ ; SI 2026-08-12 https://www.si.com/soccer/why-man-utd-chelsea-turned-down-arsenal-myles-lewis-skelly ; The Athletic(1티어) 2026-08-12"
+    "source": "Sky Sports 2026-08-12 https://www.skysports.com/football/news/11095/13571919/myles-lewis-skelly-transfer-news-chelsea-make-enquiry-for-arsenal-teenager-amid-long-term-interest-from-blues-and-man-utd ; SofaScore player 1423711 (2026-08-14 수집) · Romano 2026-08-12 (https://www.footballtransfers.com/en/transfer-news/uk-premier-league/2026/08/fabrizio-romano-enzo-fernandez-myles-lewis-skelly-jules-kounde) ; Sky Paper Talk(원출처 Daily Telegraph) 2026-08-11 22:36 https://www.skysports.com/football/transfer-paper-talk/12709/13572089/ ; SI 2026-08-12 https://www.si.com/soccer/why-man-utd-chelsea-turned-down-arsenal-myles-lewis-skelly ; The Athletic(1티어) 2026-08-12 ; Sky Paper Talk(원출처 Daily Telegraph) 2026-08-11 22:36 · The Athletic(1티어) 2026-08-12 · Fabrizio Romano(1티어) 2026-08-12 07:24 부인 ; 2026-08-15 신규 1티어 보도 0건 확인"
    }
   ]
  }
