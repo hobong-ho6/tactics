@@ -22,7 +22,9 @@ import { mountHeader, loadTeam, slotCandidates } from './assets/data.js?v=202608
 const { idx } = await mountHeader('index.html');
 const cards = await Promise.all(idx.regimes.map(async r => {
   const td = await loadTeam(r.team_code);
-  const current = new Set(td.slots.flatMap(s=>slotCandidates(td,s.pos,{includeTransfers:false}))
+  // 복수 포메이션 대비 — 시즌 정본 포메이션만 순회한다.
+  const cs0 = td.slots.filter(s=>s.formation===td.slots[0]?.formation);
+  const current = new Set(cs0.flatMap(s=>slotCandidates(td,s.pos,{includeTransfers:false}))
     .map(q=>q.player_id ?? q.name_en));
   return `<div class="pcard"><b>${r.team_kr}</b> <small class="dim">${r.manager_kr ?? r.manager}</small><br>
     <span class="kv">공통 후보 풀 현재 선수 <b>${current.size}</b>명 · 처방 <b>${td.prescriptions.length}</b>행 ·

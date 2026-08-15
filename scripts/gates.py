@@ -274,8 +274,12 @@ def run(db_path=None, verbose=True):
         fails.append("G10")
 
     # G11 — 이력은 DB에 보존하되 현재 선수 화면과 이적 화면의 노출 범위를 분리한다.
+    # ⚠️ formation을 GROUP BY에 넣는다(2026-08-16). 한 regime에 포메이션이 하나뿐일 때는
+    #    (regime,pos,player)로 충분했으나, AVL에 4-4-2가 추가되면서 같은 선수가 두 포메이션의
+    #    같은 pos 후보로 정상적으로 잡힌다. 막아야 하는 것은 "같은 포메이션의 같은 칸에 두 번"이다.
+    #    G8의 dup_candidates도 formation을 포함해 묶는다 — 두 게이트의 기준을 맞춘다.
     visible_dup = con.execute("""
-        SELECT vc.regime_id,vc.pos,vc.player_id,COUNT(*)
+        SELECT vc.regime_id,vc.formation,vc.pos,vc.player_id,COUNT(*)
         FROM v_slot_candidates vc
         WHERE vc.source_kind='squad'
           AND NOT EXISTS (
@@ -283,7 +287,7 @@ def run(db_path=None, verbose=True):
             WHERE o.team_code=vc.team_code AND o.player_id=vc.player_id
               AND o.likelihood='CONFIRMED'
           )
-        GROUP BY vc.regime_id,vc.pos,vc.player_id
+        GROUP BY vc.regime_id,vc.formation,vc.pos,vc.player_id
         HAVING COUNT(*)>1""").fetchall()
     sancho_departed = con.execute("""
         SELECT 1 FROM transfer_outgoing

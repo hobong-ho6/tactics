@@ -28,8 +28,11 @@ document.getElementById('title').textContent =
 // FC26 설정 시트 — 팀 세팅(setups 최신 projected/optimal) + 슬롯별 게임 처방(fc26:opt)
 const su = td.setups.filter(x=>!/deprecated|reference/.test(x.kind) && /projected|optimal/.test(x.kind)).slice(-1)[0] ?? td.setups.slice(-1)[0];
 document.getElementById('teamset').innerHTML = su ? `<b>${su.formation??''}</b> · 빌드업 <b>${su.build_up_style??'—'}</b> · 수비 <b>${su.defensive_approach??'—'}</b> · 라인 <b>${su.line_height??'—'}</b> · (${su.kind}, ${su.season})` : '팀 세팅 미기록';
-const order = td.slots.map(s2=>s2.pos);
-const geo = Object.fromEntries(td.slots.map(s2=>[s2.pos,s2]));
+/* 한 regime에 복수 포메이션이 있을 수 있다(AVL 4-2-3-1 Wide + 4-4-2). 시즌 정본 화면은
+   첫 포메이션만 쓴다 — 걸러내지 않으면 pos가 중복돼 좌표가 덮어써진다. */
+const canonSlots = td.slots.filter(s2=>s2.formation===td.slots[0]?.formation);
+const order = canonSlots.map(s2=>s2.pos);
+const geo = Object.fromEntries(canonSlots.map(s2=>[s2.pos,s2]));
 const rx = td.prescriptions.filter(p=>p.kind.startsWith('fc26:opt:'));
 const all = order.flatMap(pos => slotCandidates(td, pos, { includeTransfers: false }).map(q => {
   const saved = rx.find(p => p.player_id===q.player_id && p.pos_label===pos);

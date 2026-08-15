@@ -54,7 +54,9 @@ const _TEAMS = (await Promise.all(['AVL','CHE','LIV'].map(c=>loadTeam(c).catch((
 const POOL = _TEAMS.flatMap(t=>t.player_stats);
 const currentCandidates = t => {
   const seen = new Set();
-  return t.slots.flatMap(s=>slotCandidates(t, s.pos, {includeTransfers:false})).filter(q=>{
+  // 복수 포메이션 대비 — 시즌 정본 포메이션만 순회한다.
+  const cs = t.slots.filter(s=>s.formation===t.slots[0]?.formation);
+  return cs.flatMap(s=>slotCandidates(t, s.pos, {includeTransfers:false})).filter(q=>{
     const key=`${q.player_id}:${q.slot_type}`;
     if(seen.has(key)) return false;
     seen.add(key); return true;
