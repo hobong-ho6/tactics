@@ -371,6 +371,11 @@ def run(db_path=None, verbose=True):
         and not missing_match_presets and not uncovered_match_prescriptions
         and not playerless_reports
         and '대표 실측(시즌·유효 표본)' in heatmap_html
+        # A(실측) 패널은 슬롯 좌표가 아니라 선수의 실제 평균 위치에 칩을 찍어야 한다.
+        # 이 세 줄이 함께 있어야 export의 avg_positions가 화면까지 도달한다.
+        and 'td.avg_positions' in heatmap_html
+        and 'const toolPos' in heatmap_html
+        and '"avg_positions": avg_positions' in export_py
         and 'id="matchReportSel"' in match_report_html
         and 'id="teamStats"' in match_report_html
         and 'id="matchPitch"' in match_report_html

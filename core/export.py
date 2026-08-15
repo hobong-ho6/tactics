@@ -110,6 +110,16 @@ def export_all(db_path=None, window="2026-summer"):
                    sort_order, grid_club, grid_caveat
             FROM v_slot_candidates WHERE regime_id=?
             ORDER BY formation, pos, source_kind, sort_order, label""", (rid,))
+        # 대표 평균위치 — 히트맵 비교(A·실측)가 슬롯 좌표가 아니라 선수의 실제 평균 위치에
+        # 칩을 찍기 위한 값. 대표 히트맵(map25)과 같은 유효 표본 기준(45분+ · 히트포인트 15+)을
+        # 쓴다. 좌표 변환은 화면에서 한다(docs/30: 툴x=100−소파y, 툴y=소파x).
+        avg_positions = _rows(con, """
+            SELECT player_id, ROUND(AVG(avg_x),1) avg_x, ROUND(AVG(avg_y),1) avg_y,
+                   COUNT(*) n, MIN(date) first_date, MAX(date) last_date
+            FROM player_matches
+            WHERE team_code=? AND avg_x IS NOT NULL AND avg_y IS NOT NULL
+              AND minutes>=45 AND hit_points>=15
+            GROUP BY player_id""", (code,))
         setups = _rows(con, """SELECT season, game_version, kind, formation, build_up_style,
                                       defensive_approach, line_height, tactic_code, rationale, confidence
                                FROM team_tactic_setups WHERE regime_id=?
@@ -257,6 +267,7 @@ def export_all(db_path=None, window="2026-summer"):
             "slot_candidates": slot_candidates,
             "squad": squad, "prescriptions": prescriptions,
             "duties": duties, "player_stats": pstats, "departed": departed, "form": form,
+            "avg_positions": avg_positions,
             "match_reports": match_reports,
             "evaluations": evals, "season_stats": season_stats, "fbref": fbref,
             "fotmob_season": fm_season,

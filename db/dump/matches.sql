@@ -71,3 +71,4 @@ INSERT INTO matches VALUES(76,-5739313,'CHE','2026-27','2026-08-09','Johor Darul
 INSERT INTO matches VALUES(77,-5498878,'LIV','2026-27','2026-07-25','Sunderland','Club Friendly','H','4-2',1,'내슈빌 — 이라올라 체제 1차전 (⚠️event_id는 음수 FotMob matchId 5498878 — SofaScore 미커버 친선의 합성 키)',NULL);
 INSERT INTO matches VALUES(78,-5498879,'LIV','2026-27','2026-07-29','Wrexham','Club Friendly','H','1-0',1,'프리시즌 (⚠️event_id는 음수 FotMob matchId 5498879 — SofaScore 미커버 친선의 합성 키)',NULL);
 INSERT INTO matches VALUES(79,-5498880,'LIV','2026-27','2026-08-02','Leeds United','Club Friendly','H','2-4',1,'시카고 — 2-0 리드 후 역전패 (⚠️event_id는 음수 FotMob matchId 5498880 — SofaScore 미커버 친선의 합성 키)',NULL);
+INSERT INTO matches VALUES(80,-5958679,'CHE','2026-27','2026-08-15','Real Sociedad','Club Friendly','H','3-1',1,'프리시즌 최종전 스탬퍼드브리지 — 알론소 홈 데뷔·로저스/라크루아 첼시 데뷔 (⚠️event_id는 음수 FotMob matchId 5958679)',NULL);

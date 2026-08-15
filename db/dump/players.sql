@@ -60,7 +60,7 @@ INSERT INTO players VALUES(59,'Alysson','알리송',1631879,NULL,NULL,'RW','Asto
 INSERT INTO players VALUES(60,'Tammy Abraham','타미 아브라함',610766,NULL,NULL,'ST','Aston Villa. SofaScore pid 610766. 26/27 스쿼드 실측 (2026-08-11).',749661);
 INSERT INTO players VALUES(61,'Brian Madjo',NULL,2070311,NULL,NULL,'FW',NULL,1729841);
 INSERT INTO players VALUES(63,'Josh Acheampong',NULL,1403050,NULL,NULL,'DF',NULL,1400216);
-INSERT INTO players VALUES(65,'Roméo Lavia',NULL,1069488,NULL,NULL,'MF',NULL,NULL);
+INSERT INTO players VALUES(65,'Roméo Lavia',NULL,1069488,NULL,NULL,'MF',NULL,1190867);
 INSERT INTO players VALUES(66,'Marco Palestra',NULL,1397736,NULL,NULL,'MF',NULL,1473806);
 INSERT INTO players VALUES(67,'Danny Welbeck',NULL,33902,NULL,NULL,'FW',NULL,113836);
 INSERT INTO players VALUES(69,'Ifeanyi Ndukwe',NULL,1929673,NULL,NULL,'DF',NULL,1780239);
@@ -74,7 +74,7 @@ INSERT INTO players VALUES(76,'Nicolas Jackson','잭슨',1085381,NULL,NULL,'ST',
 INSERT INTO players VALUES(77,'Allan','아우안',1835889,NULL,NULL,'RW','transfer_targets 2026-summer AVL 후보(팔메이라스) — 평가·듀티 기록용 등재 (2026-08-11)',1721789);
 INSERT INTO players VALUES(78,'Matteo Ruggeri','마테오 루헤리',965011,NULL,NULL,'LB','transfer_targets 2026-summer AVL 후보(아틀레티코) — 평가·듀티 기록용 등재 (2026-08-11)',1051097);
 INSERT INTO players VALUES(79,'Endrick','엔드릭',1174937,NULL,NULL,'RW','transfer_targets 2026-summer AVL 후보 — 2026-08-11 등재(Romano 08-10). 실측은 obs#135(리옹 임대 20경기)',NULL);
-INSERT INTO players VALUES(80,'Pep Chavarría','차바리아',1010421,NULL,NULL,'LB','transfer_targets 2026-summer CHE 후보 — 2026-08-12 실측용 등재 | 2026-08-12 첼시 이적 구단 공식(2031년까지). €19m 고정 + €2m 애드온. 쿠쿠렐라(→레알) 대체이자 하토의 좌측백 경쟁·백업.',NULL);
+INSERT INTO players VALUES(80,'Pep Chavarría','차바리아',1010421,NULL,NULL,'LB','transfer_targets 2026-summer CHE 후보 — 2026-08-12 실측용 등재 | 2026-08-12 첼시 이적 구단 공식(2031년까지). €19m 고정 + €2m 애드온. 쿠쿠렐라(→레알) 대체이자 하토의 좌측백 경쟁·백업.',988805);
 INSERT INTO players VALUES(81,'Bradley Barcola','바르콜라',996952,NULL,NULL,'LW','transfer_targets 2026-summer LIV 후보 — 2026-08-12 실측용 등재',NULL);
 INSERT INTO players VALUES(82,'Mykhaylo Mudryk','무드리크',NULL,NULL,NULL,'LW','transfer_outgoing 2026-summer CHE — 2026-08-12 등재',NULL);
 INSERT INTO players VALUES(83,'Filip Jørgensen','요르겐센',NULL,NULL,NULL,'GK','transfer_outgoing 2026-summer CHE — 2026-08-12 등재',NULL);
@@ -122,3 +122,5 @@ INSERT INTO players VALUES(126,'James Wright',NULL,NULL,NULL,NULL,NULL,'2026-27 
 INSERT INTO players VALUES(127,'Aidan Borland',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1614550);
 INSERT INTO players VALUES(128,'Jamaldeen Jimoh-Aloba',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1557236);
 INSERT INTO players VALUES(129,'Ben Broggio',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1407239);
+INSERT INTO players VALUES(130,'Maxence Lacroix',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-16) — 실측 히트맵 없음',950485);
+INSERT INTO players VALUES(131,'Levi Colwill',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-16) — 실측 히트맵 없음',1096400);

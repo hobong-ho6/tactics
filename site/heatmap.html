@@ -9,11 +9,13 @@
 <div class="panel" id="slotBar"></div>
 <div class="panel">표시: <select id="who"><option value="">전체 합성</option></select></div>
 <div class="grid2">
-  <div class="panel"><h2>A · 실측</h2><canvas class="pitch" id="cvA" width="640" height="860"></canvas></div>
-  <div class="panel"><h2>B · 처방(커널) <small class="dim">게임 내 역할·포커스의 기대 움직임</small></h2><canvas class="pitch" id="cvB" width="640" height="860"></canvas><div id="capB" class="kv" style="margin-top:8px"></div></div>
+  <div class="panel"><h2>A · 실측 <small class="dim">이름 칩 = 실제 평균 위치</small></h2><canvas class="pitch" id="cvA" width="640" height="860"></canvas><div id="capA" class="kv" style="margin-top:8px"></div></div>
+  <div class="panel"><h2>B · 처방(커널) <small class="dim">이름 칩 = FC 슬롯 좌표</small></h2><canvas class="pitch" id="cvB" width="640" height="860"></canvas><div id="capB" class="kv" style="margin-top:8px"></div></div>
 </div>
 <p class="dim">데이터: teams/{팀}.json (slots·squad·prescriptions) + kernels/FC26.json. 인선을 바꾸면 즉시 다시 그린다.
-칸이 비면 그 슬롯은 실측 후보가 없는 것 — 데이터가 생기면 자동으로 나타난다.</p>
+칸이 비면 그 슬롯은 실측 후보가 없는 것 — 데이터가 생기면 자동으로 나타난다.
+<b>A 패널의 이름 칩은 슬롯 좌표가 아니라 그 선수의 실제 평균 위치</b>(avg_positions, 45분+·히트포인트 15+ 표본 평균)이고,
+B 패널은 FC 슬롯 좌표다. 두 칩의 어긋남이 곧 "실측과 처방 자리의 거리"다.</p>
 <script type="module">
 import { mountHeader, loadTeam, loadKernels, slotCandidates } from './assets/data.js?v=20260813-slot-candidates';
 import { Kernel, decodeMap } from './assets/kernel.js';
@@ -22,6 +24,9 @@ import { drawPitch, drawComposite, drawChip } from './assets/pitch.js';
 const { team } = await mountHeader('heatmap.html');
 const [td, kd] = await Promise.all([loadTeam(team), loadKernels('FC26')]);
 const K = new Kernel(kd);
+// 대표 평균위치 — map25와 같은 유효 표본(45분+ · 히트포인트 15+) 평균. A 패널 전용.
+const AVG = new Map((td.avg_positions ?? []).map(a => [a.player_id, a]));
+const toolPos = a => [100 - Number(a.avg_y), Number(a.avg_x)];   // docs/30 좌표 규약
 const slots = td.slots;   // 단일 포메이션 가정 (복수면 첫 formation)
 const formation = slots[0]?.formation;
 const useSlots = slots.filter(s => s.formation === formation);
@@ -68,7 +73,7 @@ function fillWho(){
 }
 function render(){
   fillWho();
-  const caps=[];
+  const caps=[]; let measured=0; const fallback=[], sideMismatch=[];
   for (const [id, mode] of [['cvA', 'measured'], ['cvB', 'kernel']]){
     const cv = document.getElementById(id), ctx = cv.getContext('2d');
     drawPitch(ctx, cv.width, cv.height);
@@ -87,12 +92,29 @@ function render(){
         map = K.placed(role, focus, s.x);
       }
       if (map) decoded.push(map);
-      chips.push([s.x, s.y, q.label]);
+      /* A(실측)는 슬롯 좌표가 아니라 선수의 실제 평균 위치에 칩을 찍는다. 슬롯 x/y는 FC가
+         요구하는 자리이고, 실측 패널이 답해야 하는 것은 "그가 실제로 어디 섰나"다.
+         평균위치가 없는 선수(신규 승격·친선만 출전 등)는 슬롯 좌표로 되돌리고 캡션에 센다. */
+      const ap = mode === 'measured' ? AVG.get(q.player_id) : null;
+      if (ap){
+        const [tx, ty] = toolPos(ap); chips.push([tx, ty, q.label]); measured++;
+        /* 실측 좌우가 슬롯과 크게 어긋나면 인선이 틀렸다는 신호다. 초기 배정은 중복만
+           피할 뿐 좌우를 보지 않아 우측 선수가 LB에 들어가는 일이 생긴다. 숨기지 않고 센다. */
+        if (Math.abs(tx - s.x) > 25) sideMismatch.push(`${s.pos}=${q.label}(Δ${Math.round(tx - s.x)})`);
+      }
+      else { chips.push([s.x, s.y, q.label]); if (mode === 'measured') fallback.push(q.label); }
       if (mode==='kernel') caps.push(`<b>${s.pos}</b> ${q.label} — ${K.roleName[q._role]??q._role}/${q._focus}`);
     }
     drawComposite(ctx, cv.width, cv.height, decoded);
     for (const [x, y, label] of chips) drawChip(ctx, cv.width, cv.height, x, y, label);
   }
+  document.getElementById('capA').innerHTML =
+    `<b>이름 칩 = 실제 평균 위치</b> · 평균위치 보유 ${measured}명` +
+    (fallback.length ? ` · <b>슬롯 좌표로 대체 ${fallback.length}명</b>(${fallback.join(', ')}) — 평균위치 미수집이며 0이 아닙니다`
+                     : '') +
+    ` · 표본 기준 45분+ · 히트포인트 15+` +
+    (sideMismatch.length ? `<br><b class="warn">⚠️ 슬롯과 좌우가 25 이상 어긋난 인선 ${sideMismatch.length}건</b> — ${sideMismatch.join(', ')}
+       · 초기 배정은 중복만 피할 뿐 좌우를 보지 않습니다. 위 셀렉트로 바꿔 확인하세요.` : '');
   document.getElementById('capB').innerHTML = caps.join(' · ');
 }
 buildBar(); render();
