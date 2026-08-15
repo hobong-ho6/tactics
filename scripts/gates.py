@@ -20,6 +20,7 @@
   G10. 영상 레퍼런스 — duties 출처 결손 0 + 선수 화면의 기본 닫힘 details 유지
   G11. 현재 스쿼드 표시 — 확정 이탈·이적 후보·DEAD가 현재 선수 화면에 재노출되지 않음
   G12. 경기 리포트 — 완료본 필수 섹션·선수 전원·원문 파일·히트맵 메뉴가 모두 연결됨
+       + draft 포함 모든 리포트가 선수 행을 최소 1개 갖는다(빈 피치 회귀 방지)
        + 경기 전용 FC 팀 설정·선발 11명 역할/포커스가 시즌 정본과 분리돼 있음
 
 사용: python3 scripts/gates.py          (전체)
@@ -352,12 +353,23 @@ def run(db_path=None, verbose=True):
         LEFT JOIN match_player_prescriptions mpp
           ON mpp.report_id=mr.id AND mpp.player_id=pm.player_id
         WHERE mr.status='complete' AND pm.minutes>0 AND mpp.player_id IS NULL""").fetchall()
+    # draft라도 선수 행이 통째로 비면 경기 화면의 실측 평균위치·히트맵이 빈 피치가 된다.
+    # core/export.py는 match_reports.players를 match_player_reports에서만 채우므로
+    # (players 소스가 단일하다) 이 표가 비면 UI에서 조용히 사라진다 — obs#216의 회귀.
+    # complete는 위에서 전원 커버를 따로 보므로, 여기서는 "비어 있지 않을 것"만 본다.
+    playerless_reports = con.execute("""
+        SELECT mr.id FROM match_reports mr
+        WHERE EXISTS (SELECT 1 FROM player_matches pm
+                      WHERE pm.event_id=mr.event_id AND pm.team_code=mr.team_code)
+          AND NOT EXISTS (SELECT 1 FROM match_player_reports mpr
+                          WHERE mpr.report_id=mr.id)""").fetchall()
     heatmap_html = (root / "site" / "heatmap.html").read_text()
     match_report_html = (root / "site" / "match-report.html").read_text()
     export_py = (root / "core" / "export.py").read_text()
     ok12 = (
         not incomplete_reports and not uncovered_report_players and not missing_report_files
         and not missing_match_presets and not uncovered_match_prescriptions
+        and not playerless_reports
         and '대표 실측(시즌·유효 표본)' in heatmap_html
         and 'id="matchReportSel"' in match_report_html
         and 'id="teamStats"' in match_report_html
@@ -372,7 +384,8 @@ def run(db_path=None, verbose=True):
         and '"match_reports": match_reports' in export_py
     )
     if verbose:
-        print(f"G12 경기 리포트: 불완전 {len(incomplete_reports)} · 선수누락 "
+        print(f"G12 경기 리포트: 불완전 {len(incomplete_reports)} · 선수행0 "
+              f"{len(playerless_reports)} · 선수누락 "
               f"{len(uncovered_report_players)} · 원문누락 {len(missing_report_files)} · "
               f"경기프리셋누락 {len(missing_match_presets)} · 선수처방누락 {len(uncovered_match_prescriptions)} "
               f"{'✅' if ok12 else '⛔'}")
