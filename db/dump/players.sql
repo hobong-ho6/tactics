@@ -64,7 +64,7 @@ INSERT INTO players VALUES(65,'Roméo Lavia',NULL,1069488,NULL,NULL,'MF',NULL,NU
 INSERT INTO players VALUES(66,'Marco Palestra',NULL,1397736,NULL,NULL,'MF',NULL,1473806);
 INSERT INTO players VALUES(67,'Danny Welbeck',NULL,33902,NULL,NULL,'FW',NULL,113836);
 INSERT INTO players VALUES(69,'Ifeanyi Ndukwe',NULL,1929673,NULL,NULL,'DF',NULL,1780239);
-INSERT INTO players VALUES(70,'Kostas Tsimikas',NULL,786259,NULL,NULL,'DF',NULL,NULL);
+INSERT INTO players VALUES(70,'Kostas Tsimikas',NULL,786259,NULL,NULL,'DF',NULL,671529);
 INSERT INTO players VALUES(71,'Lewis Koumas',NULL,1403111,NULL,NULL,'MF',NULL,1364042);
 INSERT INTO players VALUES(72,'Alexander Isak',NULL,823941,NULL,NULL,'FW',NULL,690107);
 INSERT INTO players VALUES(73,'Giorgi Mamardashvili',NULL,930997,NULL,NULL,'GK',NULL,948800);
@@ -103,7 +103,6 @@ INSERT INTO players VALUES(106,'Reggie Watson',NULL,NULL,NULL,NULL,NULL,'2026-27
 INSERT INTO players VALUES(107,'Gaga Slonina',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1031220);
 INSERT INTO players VALUES(108,'Joseph Gomez',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',568571);
 INSERT INTO players VALUES(109,'Mor Talla Ndiaye',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1933860);
-INSERT INTO players VALUES(110,'Konstantinos Tsimikas',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',671529);
 INSERT INTO players VALUES(111,'James McConnell',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1231075);
 INSERT INTO players VALUES(112,'Kieran Morrison',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1439550);
 INSERT INTO players VALUES(113,'Harvey Elliott',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',963964);
