@@ -124,3 +124,4 @@ INSERT INTO players VALUES(128,'Jamaldeen Jimoh-Aloba',NULL,NULL,NULL,NULL,NULL,
 INSERT INTO players VALUES(129,'Ben Broggio',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1407239);
 INSERT INTO players VALUES(130,'Maxence Lacroix',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-16) — 실측 히트맵 없음',950485);
 INSERT INTO players VALUES(131,'Levi Colwill',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-16) — 실측 히트맵 없음',1096400);
+INSERT INTO players VALUES(132,'Zion Suzuki','스즈키 지온',905351,NULL,2002,'GK','transfer_targets 2026-summer AVL 후보(파르마) — 평가·듀티 기록용 등재 (2026-08-16)',NULL);
