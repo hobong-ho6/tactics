@@ -1,0 +1,120 @@
+---
+name: player-collect
+description: 한 선수의 모든 데이터 축을 빠짐없이 수집한다 — 실측·게임스탯·상세지표·서사·판정까지 14축 체크리스트. 사용자가 "<선수> 데이터 수집", "<선수> 자료 수집해줘", "<선수> 전부 수집", "선수 데이터 업데이트", "<선수> 분석 자료 모아줘"라고 할 때 반드시 사용한다. 영입 후보·신규 영입·기존 스쿼드 누구에게나 적용한다. 특정 축 하나만 요청받아도 이 목록으로 결손을 먼저 점검한 뒤 시작한다.
+---
+
+# 선수 데이터 전수 수집
+
+작업 디렉터리는 저장소 루트. 규칙은 CLAUDE.md·docs/00. **DB `db/tactics.db`가 정본.**
+
+## 0. 원칙 4개
+
+1. **결손과 0은 다르다**(obs#132). 소스가 값을 주지 않으면 **NULL**로 둔다. 0으로 채우면 집계가 조용히 망가진다.
+2. **팀 축을 섞지 마라**(불변규칙 7). 영입 후보의 지표는 **원소속 팀 시스템의 값**이다.
+   `regime_id`가 필요한 테이블(`player_duties`·`player_evaluations`)에 **우리 팀 체제로 넣지 말 것** —
+   아직 우리 선수가 아니면 `regime_id=NULL` 또는 미등재.
+3. **추가만, 재작성 금지**(불변규칙 2). 기존 행은 **비어 있는 칸만** 채운다.
+4. **수집 못 한 축은 리포트에 "미수집 + 사유"를 남긴다.** 조용히 빠뜨리면 다음 세션이 있는 줄 안다.
+
+## 1. 먼저 결손을 센다 (웹으로 나가기 전)
+
+```bash
+sqlite3 db/tactics.db "SELECT id,name,name_kr,sofascore_id,fotmob_id,sofifa_id FROM players WHERE name LIKE '%<이름>%'"
+```
+`player_id`를 확보한 뒤 아래를 돌려 **어느 축이 비었는지** 먼저 표로 만든다.
+
+```bash
+PID=<player_id>
+for t in player_game_stats player_matches fotmob_detail_stats fotmob_season_stats fotmob_traits \
+         player_duties player_tenures player_evaluations prescriptions squad_entries \
+         transfer_targets transfer_outgoing player_shot_profile fbref_percentiles match_player_reports; do
+  printf '%-28s %s\n' "$t" "$(sqlite3 db/tactics.db "SELECT COUNT(*) FROM $t WHERE player_id=$PID")"
+done
+```
+
+⭐ **이 표가 이번 수집의 작업 목록이다.** 0인 축을 채우는 것이 과제다.
+
+## 2. 14축 체크리스트
+
+| # | 축 | 테이블 | 소스·경로 | 필수? |
+|---|---|---|---|---|
+| 1 | **선수 기본** | `players` | 이름·`name_kr`·생년·주포지션 + **id 3종**(`sofascore_id`·`fotmob_id`·`sofifa_id`) | ✅ |
+| 2 | **경기별 실측** | `player_matches` | SofaScore `core.sofascore.js_collect` → `parse_collected` | ✅ |
+| 3 | **대표 그리드·적합** | `transfer_targets` / `prescriptions` | `core.aggregate` → `core.kernel.best_fit_slot` | ✅ |
+| 4 | **FC 게임스탯** | `player_game_stats` | sofifa | ✅ |
+| 5 | **상세 지표·백분위** | `fotmob_detail_stats` | FotMob `playerStats` | ✅ |
+| 6 | **시즌 요약** | `fotmob_season_stats` | FotMob `playerData` | ✅ |
+| 7 | **포지션군 백분위** | `fotmob_traits` | FotMob `playerData.traits` | ✅ |
+| 8 | **커리어 이력** | `player_tenures` | FotMob `playerData.careerHistory` | ✅ |
+| 9 | **서사·듀티** | `player_duties` | 영상·전술블로그·기사·1차발언 4종 | ✅ |
+| 10 | **종합 평가** | `player_evaluations` | 위 전부의 종합 + 3감독 전술핏 | 스쿼드만 |
+| 11 | **슛 프로파일** | `player_shot_profile` | SofaScore 슛맵 | 공격수 |
+| 12 | **FBref 백분위** | `fbref_percentiles` | FBref | ⛔ 차단 중 |
+| 13 | **경기별 리포트** | `match_player_reports` | match-watch 스킬 | 출전 시 |
+| 14 | **판정 기록** | `observations` | 새 사실·충돌·정정 | ✅ |
+
+### 축별 수집 경로 상세
+
+**① id 3종** — 없으면 나머지가 전부 막힌다. 가장 먼저 확보한다.
+- SofaScore: `/api/v1/search/all?q=<name>` → `results[].entity.id`
+- FotMob: 팀 스쿼드에서 — `/api/data/teams?id=<fotmob_team_id>` → `squad[].members[]`
+  (팀 id는 리그 테이블에서: `/api/data/leagues?id=<league>&season=<YYYY%2FYYYY>`)
+  ⚠️ FotMob **검색 API는 404**다(2026-08-16). 팀 경유로 찾을 것.
+- sofifa: `https://sofifa.com/players?keyword=<name>` → 결과 행의 `/player/<id>/` 링크
+
+**② 경기별 실측** — `core/` 모듈만 쓴다. 세션 내 재구현 금지.
+브라우저를 `https://www.sofascore.com/robots.txt` 오리진에 띄우고 `js_collect` 스니펫 실행.
+⚠️ 홈페이지에서 돌리면 렌더러가 얼어 CDP 타임아웃(레이트리밋 아님).
+
+**④ FC 게임스탯 (sofifa)**
+⛔ **선수 상세 페이지는 로그인 게이트다**(2026-08-16 확인) → **검색 페이지 컬럼 스크레이프**를 쓴다:
+`https://sofifa.com/players?keyword=<name>&showCol%5B%5D=<코드>&…`
+확인된 코드: `ae`나이 `oa`OVR `pt`POT `bp`베스트포지션 `hi`키 `pf`주발 `vl`가치 `wg`주급 `tt`총합
+`ir`국제인지도 · 능력치 `cr fi he vo cu fk sh lo bl ac sp ag ba so ju st sr ln aa in po pe ma sa sl vi cm re dp`
+· GK `gd gh gc gp gr`
+⚠️ **6대 스탯(PAC/SHO/PAS/DRI/DEF/PHY) 컬럼은 스크레이프되지 않는다.** GK는 원능력치에서 매핑한다 —
+**DIV/HAN/KIC/REF/POS = GK 원능력치 그대로, DEF 칸 = SPD = (가속+질주)/2.**
+이 규칙은 마르티네스 기존 행으로 재현 검증됐다(83/81/82/85/56/85).
+⛔ **playstyles·traits·role_familiarity·AcceleRATE·body_type은 상세 페이지 전용이라 현재 미수집**이다.
+⚠️ sofifa 나이 필드가 **1년 뒤처질 수 있다**(스즈키 실제 23세 ↔ 표기 22세). 나이 판단에 그대로 쓰지 말 것.
+
+**⑤ 상세 지표 (FotMob = Opta 원자료)** — ⭐ 이 프로젝트에서 **가장 수확이 큰 경로**다.
+1. `/api/data/playerData?id=<fotmob_id>` → `statSeasons[]`에서 **`entryId`** 를 얻는다(예: `1-0`).
+2. `/api/data/playerStats?playerId=<id>&seasonId=<entryId>` → 지표·백분위.
+   ⚠️ `seasonId`에 `2025/2026-55` 같은 형식을 넣으면 **null**이 온다. **반드시 `entryId`**를 쓸 것.
+3. `localizedTitleId`가 우리 `metric_key`와 **1:1로 일치**한다. 그대로 쓴다.
+4. ⭐ **여러 시즌·여러 클럽을 전부 받아라** — 같은 선수의 팀별 대비가 obs#223의 근거였다.
+5. ⭐ **`keeperShotmap`/`shotmap`에 `situation`·`shotType`·`expectedGoalsOnTarget`이 있다** →
+   **세트피스 vs 오픈플레이 분리 방어 지표**를 직접 계산할 수 있다(FBref 없이).
+   ⚠️ 이렇게 계산한 PSxG−실점 합계는 공표된 `goals_prevented`와 **정확히 일치하지 않는다**(모델 차이).
+   **상황 간 상대 비교에만 쓰고 절대값을 공표값처럼 인용하지 말 것.**
+
+**⑨ 서사·듀티** — docs/30 「영상·서사 소스 절차」. **4종을 전부 시도**하고 빠뜨린 것은 사유를 적는다:
+**유튜브 전술 분석 · 전술 블로그 · 기사 · 본인/감독 1차 발언**(1차 자료가 가장 세다).
+- **서브에이전트에 위임한다**(브라우저 금지·읽기 전용·DB 선조회 먼저).
+- ⚠️ **체제 검증 필수** — 선수가 거쳐온 감독·클럽을 먼저 나열하고, 각 자료가 **어느 체제**인지 명기하게 한다.
+- ⚠️ **영어 검색만으로 끝내지 마라.** 모국어·현 리그 언어로 각도를 바꾸면 수확이 크게 달라진다.
+- ⛔ **콘텐츠팜 주의** — `footballkit.lazada.com.ph` 류 AI 생성 문서가 검색 상위에 반복 노출된다.
+- `player_duties`는 G10이 검사한다: `source`(URL/obs#/리포트 경로 포함)·`sample_scope`·`sample_note` **필수**.
+
+## 3. 교차검증 — 수집으로 끝내지 않는다
+
+⭐ **실측과 서사가 어긋나면 그 자체가 결과다.** 충돌을 지우지 말고 기록한다(불변규칙 3).
+- 서사가 위치를 주장하면 **실측이 이긴다.**
+- 단 **같은 것을 재고 있는지 먼저 확인하라** — obs#223의 교훈: 평균 위치(깊이)와
+  Opta `Acted as sweeper`(빈도)는 **다른 것을 재는 지표**라 어긋나도 모순이 아니다.
+- 지표가 팀 시스템의 함수일 수 있다 — 같은 선수의 **다른 클럽 시즌**이 최고의 통제군이다.
+
+## 4. 완료 기준
+
+- §1 결손 표의 0이 **채워졌거나, 사유가 적혔다.**
+- 새 사실은 `source`·`confidence`를 채워 기록했다. **결손은 NULL.**
+- 판정·충돌·정정은 `observations`에 남겼다.
+- `python3 scripts/gates.py` 통과 → `python3 scripts/export.py` → `scripts/db_dump.sh`
+- 명시 스테이징 커밋(⛔ `git add -A` 금지):
+  ```
+  git add db/tactics.db db/dump/ site/data/ reports/
+  git commit -m "data(<선수>): <수집 축 요약>"
+  git push
+  ```
+- 종료 보고: **축별 수집/미수집 표** + 새 obs 번호 + 미수집 사유.

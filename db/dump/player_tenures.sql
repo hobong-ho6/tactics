@@ -56,3 +56,6 @@ INSERT INTO player_tenures VALUES(47,'2025-26','LIV','Liverpool','LB',NULL,NULL)
 INSERT INTO player_tenures VALUES(54,'2025-26','LIV','Liverpool','RW',NULL,NULL);
 INSERT INTO player_tenures VALUES(49,'2025-26','LIV','Liverpool','DM',NULL,NULL);
 INSERT INTO player_tenures VALUES(44,'2025-26','LIV','Liverpool','CB',NULL,NULL);
+INSERT INTO player_tenures VALUES(132,'2025-26',NULL,'Parma','GK',NULL,NULL);
+INSERT INTO player_tenures VALUES(132,'2024-25',NULL,'Parma','GK',NULL,NULL);
+INSERT INTO player_tenures VALUES(132,'2023-24',NULL,'St.Truiden (임대)','GK',NULL,NULL);

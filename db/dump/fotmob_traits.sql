@@ -292,3 +292,9 @@ INSERT INTO fotmob_traits VALUES(291,90,'2026-08-14','Stats compared to other fu
 INSERT INTO fotmob_traits VALUES(292,90,'2026-08-14','Stats compared to other fullbacks','Goals','득점',0,'fotmob.com/api/data/playerData (player 760320, 2026-08-14 수집)');
 INSERT INTO fotmob_traits VALUES(293,90,'2026-08-14','Stats compared to other fullbacks','Shot attempts','슛 시도',0,'fotmob.com/api/data/playerData (player 760320, 2026-08-14 수집)');
 INSERT INTO fotmob_traits VALUES(294,90,'2026-08-14','Stats compared to other fullbacks','Touches','터치',12,'fotmob.com/api/data/playerData (player 760320, 2026-08-14 수집)');
+INSERT INTO fotmob_traits VALUES(295,132,'2026-08-16','Stats compared to other keepers','keeper_sweeper_actions','스위퍼 행동',60,'fotmob.com/api/data/playerData?id=1053679 (2026-08-16 수집)');
+INSERT INTO fotmob_traits VALUES(296,132,'2026-08-16','Stats compared to other keepers','goals_conceded','실점',59,'fotmob.com/api/data/playerData?id=1053679 (2026-08-16 수집)');
+INSERT INTO fotmob_traits VALUES(297,132,'2026-08-16','Stats compared to other keepers','save_percentage','선방률',64,'fotmob.com/api/data/playerData?id=1053679 (2026-08-16 수집)');
+INSERT INTO fotmob_traits VALUES(298,132,'2026-08-16','Stats compared to other keepers','keeper_high_claim','하이볼 처리',97,'fotmob.com/api/data/playerData?id=1053679 (2026-08-16 수집)');
+INSERT INTO fotmob_traits VALUES(299,132,'2026-08-16','Stats compared to other keepers','clean_sheet','클린시트',64,'fotmob.com/api/data/playerData?id=1053679 (2026-08-16 수집)');
+INSERT INTO fotmob_traits VALUES(300,132,'2026-08-16','Stats compared to other keepers','long_ball_succeeeded_accuracy','롱볼 정확도',49,'fotmob.com/api/data/playerData?id=1053679 (2026-08-16 수집)');

@@ -35,7 +35,16 @@
 - **주요 경로/저장소**: `/Users/user/Documents/tactics` (git, main)
   - DB `db/tactics.db` = single source of truth / `site/data/`·툴 = DB 파생
   - 문서 맵은 `CLAUDE.md` 참조. 신규: `docs/11-alonso-tactics.md`, `docs/12-iraola-tactics.md`
-- **관련 링크**: 스케줄 작업 `villa-transfer-watch` (매일 09/21시), 스킬 `.claude/skills/transfer-watch/SKILL.md`
+- **관련 링크**: 스케줄 작업 `villa-transfer-watch` (매일 09/21시)
+
+### 프로젝트 스킬 (`.claude/skills/`)
+
+| 스킬 | 언제 쓰나 |
+|---|---|
+| `transfer-watch` | 3팀 이적 루머 정기 감시. 스케줄(09/21시) 또는 `/transfer-watch` |
+| `match-watch` | 경기 수집 — 실측·팀스탯·경기 리포트·게임 구현 판정 |
+| `player-collect` | ⭐ **한 선수의 모든 데이터 축(14축) 전수 수집.** "○○ 데이터 수집"이면 이것 |
+| `hadoff` | 세션 인수인계 — HANDOFF.md 갱신·Git 동기화 |
 
 ---
 
