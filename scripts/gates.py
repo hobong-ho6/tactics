@@ -387,6 +387,10 @@ def run(db_path=None, verbose=True):
         and 'MATCH ONLY' in match_report_html
         and 'renderGamePreset(r)' in match_report_html
         and 'id="heatView"' in match_report_html
+        # 경기 분석 메뉴는 초안도 노출하되 상태를 구분해야 한다(2026-08-16 결정).
+        # 이 두 문자열이 사라지면 초안이 다시 안 보이거나, 보이되 완료본과 구별되지 않는다.
+        and 'const isDraft' in match_report_html
+        and '[초안]' in match_report_html
         and 'id="presetView"' in match_report_html
         and 'replaced_player_id' in match_report_html
         and "['match-report.html', '경기 분석']" in data_js
