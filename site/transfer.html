@@ -39,9 +39,25 @@ document.getElementById('out').innerHTML =
     <td>${badge(o.likelihood)}</td><td>${o.last_news_date ?? '—'}</td></tr>`).join('')
    || '<tr><td colspan="4" class="dim">없음</td></tr>');
 
-document.getElementById('ledger').innerHTML =
-  `<tr><th>구분</th><th>항목</th><th>금액(€m)</th><th>비고</th></tr>` +
-  (T.ledger.map(l => `<tr><td>${l.kind}</td><td>${l.label}</td><td>${l.amount_m}</td>
-    <td class="dim">${l.note ?? ''}</td></tr>`).join('')
-   || '<tr><td colspan="4" class="dim">없음</td></tr>');
+/* 통화는 £m이다(Sky 표기값). 이전 헤더가 €m으로 잘못 적혀 있었다 — 2026-08-16 정정.
+   미공개(undisclosed) 건은 0으로 합산하면 순수지를 왜곡하므로 합계에서 빼고 건수만 센다. */
+{
+  const num = l => (l.note ?? '').startsWith('미공개') ? null : Number(l.amount_m);
+  const sum = k => T.ledger.filter(l => l.kind === k).reduce((a, l) => a + (num(l) ?? 0), 0);
+  const spend = sum('영입 지출'), earn = sum('매각 수입');
+  const undis = T.ledger.filter(l => (l.note ?? '').startsWith('미공개')).length;
+  const net = earn - spend;
+  document.getElementById('ledger').innerHTML =
+    `<tr><th>구분</th><th>항목</th><th>금액(£m)</th><th>비고</th></tr>` +
+    (T.ledger.map(l => `<tr><td>${l.kind}</td><td>${l.label}</td>` +
+      `<td>${(l.note ?? '').startsWith('미공개') ? '미공개' : l.amount_m}</td>` +
+      `<td class="dim">${l.note ?? ''}</td></tr>`).join('')
+     || '<tr><td colspan="4" class="dim">없음</td></tr>') +
+    (T.ledger.length ? `<tr><th colspan="2">합계 — 완료 건만</th>
+      <th>지출 £${spend.toFixed(1)}m · 수입 £${earn.toFixed(1)}m</th>
+      <th class="${net >= 0 ? 'hi' : 'dead'}">순 ${net >= 0 ? '+' : ''}${net.toFixed(1)}m</th></tr>
+      <tr><td colspan="4" class="dim">⚠️ 진행 중 루머는 제외한 <b>공식 발표 완료 건</b>만입니다.
+      금액은 Sky 표기값이고 <b>애드온·셀온·급여·임대료는 포함되지 않습니다</b> — 구단 회계 계상액과 다릅니다.
+      미공개 ${undis}건은 합계에서 제외했습니다(0으로 세면 순수지가 왜곡됩니다).</td></tr>` : '');
+}
 </script></body></html>
