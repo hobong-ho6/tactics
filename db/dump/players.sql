@@ -85,7 +85,7 @@ INSERT INTO players VALUES(88,'Víctor Muñoz','무뇨스',1145642,NULL,NULL,'W'
 INSERT INTO players VALUES(89,'Jérémy Jacquet','자케',1445625,NULL,NULL,'CB','2026-07-01 렌에서 리버풀 이적(구단 공식). 고정 £55m + 애드온 £5m(총 £60m), 5년(+1년 옵션). 합의는 2026-01 데드라인 데이 메디컬까지 갔고 25/26 잔여 시즌은 렌 잔류 조건이었다. 20세. 코나테(→레알 자유이적) 대체 = 판 다이크 파트너로 규정된다.',NULL);
 INSERT INTO players VALUES(90,'Aaron Wan-Bissaka','완비사카',863653,229880,1997,'RB','transfer_targets 2026-summer AVL 후보 — 2026-08-14 FotMob 상세 스탯 수집용 등재',760320);
 INSERT INTO players VALUES(91,'Luka Lynch',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1553189);
-INSERT INTO players VALUES(92,'Triston Rowe',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1442496);
+INSERT INTO players VALUES(92,'Triston Rowe',NULL,1400655,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1442496);
 INSERT INTO players VALUES(93,'Bradley Burrowes',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1639163);
 INSERT INTO players VALUES(94,'Tosin Adarabioyo',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',683402);
 INSERT INTO players VALUES(95,'Geovany Quenda',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1530314);
@@ -118,10 +118,16 @@ INSERT INTO players VALUES(122,'Joshua Abe',NULL,NULL,NULL,NULL,NULL,'2026-27 �
 INSERT INTO players VALUES(123,'Harvey Davies',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1236818);
 INSERT INTO players VALUES(124,'Joshua Sonni-Lambie',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1644308);
 INSERT INTO players VALUES(125,'TJ Carroll',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1559638);
-INSERT INTO players VALUES(126,'James Wright',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1340673);
+INSERT INTO players VALUES(126,'James Wright',NULL,1138445,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1340673);
 INSERT INTO players VALUES(127,'Aidan Borland',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1614550);
 INSERT INTO players VALUES(128,'Jamaldeen Jimoh-Aloba',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1557236);
 INSERT INTO players VALUES(129,'Ben Broggio',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1407239);
 INSERT INTO players VALUES(130,'Maxence Lacroix',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-16) — 실측 히트맵 없음',950485);
 INSERT INTO players VALUES(131,'Levi Colwill',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-16) — 실측 히트맵 없음',1096400);
 INSERT INTO players VALUES(132,'Zion Suzuki','스즈키 지온',905351,NULL,2002,'GK','transfer_targets 2026-summer AVL 후보(파르마) — 평가·듀티 기록용 등재 (2026-08-16)',NULL);
+INSERT INTO players VALUES(133,'Landon Emenalo',NULL,NULL,NULL,NULL,NULL,'2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1677143);
+INSERT INTO players VALUES(134,'Lucas Pitt',NULL,NULL,NULL,NULL,NULL,'2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1469832);
+INSERT INTO players VALUES(135,'Omari Kellyman',NULL,NULL,NULL,NULL,NULL,'2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1315477);
+INSERT INTO players VALUES(136,'Reggie Walsh',NULL,NULL,NULL,NULL,NULL,'2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1693359);
+INSERT INTO players VALUES(137,'Rodrigo Fortes',NULL,NULL,NULL,NULL,NULL,'2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1706481);
+INSERT INTO players VALUES(138,'Ryan Kavuma-McQueen',NULL,NULL,NULL,NULL,NULL,'2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1681979);

@@ -73,3 +73,5 @@ INSERT INTO matches VALUES(78,-5498879,'LIV','2026-27','2026-07-29','Wrexham','C
 INSERT INTO matches VALUES(79,-5498880,'LIV','2026-27','2026-08-02','Leeds United','Club Friendly','H','2-4',1,'시카고 — 2-0 리드 후 역전패 (⚠️event_id는 음수 FotMob matchId 5498880 — SofaScore 미커버 친선의 합성 키)',NULL);
 INSERT INTO matches VALUES(80,-5958679,'CHE','2026-27','2026-08-15','Real Sociedad','Club Friendly','H','3-1',1,'프리시즌 최종전 스탬퍼드브리지 — 알론소 홈 데뷔·로저스/라크루아 첼시 데뷔 (⚠️event_id는 음수 FotMob matchId 5958679)',NULL);
 INSERT INTO matches VALUES(81,-5765426,'AVL','2026-27','2026-08-15','Borussia Mönchengladbach','Club Friendly','A','2-1',1,'프리시즌 최종전 보루시아파크(관중 50,148) — 글라트바흐의 시즌 개막 행사 겸 7전 7승 마무리 (⚠️event_id는 음수 FotMob matchId 5765426 · result는 홈-원정 순서로 BMG 2 · 빌라 1)',NULL);
+INSERT INTO matches VALUES(82,16494875,'AVL','2026-27','2026-08-01','Indonesia XI','Club Friendly','A','1-3',1,'아시아 투어 1차전 (SofaScore 정본 event · 인도네시아 XI 1 · 빌라 3 · 선발 11명만 적재)',NULL);
+INSERT INTO matches VALUES(83,-5973785,'LIV','2026-27','2026-08-16','Como','Club Friendly','H','0-0',1,'비공개 더블헤더 1차전 AXA 트레이닝센터 (⚠️음수 FotMob matchId 5973785 · 2차전은 안필드 17:00 UTC로 미포함)',NULL);
