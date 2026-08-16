@@ -10,7 +10,7 @@
   <div class="panel"><h2>수지 원장</h2><table id="ledger"></table></div>
 </div>
 <script type="module">
-import { mountHeader, loadTeam, loadIndex } from './assets/data.js';
+import { mountHeader, loadTeam, loadIndex, gkPosCell } from './assets/data.js?v=20260816-gk-avgpos';
 import { miniGrid } from './assets/pitch.js';
 
 const { team, idx } = await mountHeader('transfer.html');
@@ -28,7 +28,8 @@ document.getElementById('in').innerHTML =
   `<tr><th>선수</th><th>슬롯</th><th>등급</th><th>최신 보도</th><th>적합</th><th>표본</th><th>그리드</th></tr>` +
   (visible(T.targets).map(t => `<tr><td><b>${t.name_kr ?? t.name}</b> <small class="dim">${t.club ?? ''}</small></td>
     <td>${t.slot}</td><td>${badge(t.likelihood)}</td><td>${t.last_news_date ?? '—'}</td>
-    <td>${t.fit_role ? `${t.fit_role}/${t.fit_focus} <b>${t.fit_sim}</b>` : '—'}</td>
+    <td>${gkPosCell(td, t.slot, t.player_id, t.tool_y != null ? { x: t.tool_x, y: t.tool_y, n: t.sample_n } : null)
+          ?? (t.fit_role ? `${t.fit_role}/${t.fit_focus} <b>${t.fit_sim}</b>` : '—')}</td>
     <td>${t.sample_n ?? '—'}경기 ${t.avg_rating ?? ''}</td>
     <td>${t.map25 ? miniGrid(t.map25, 50) : '<small class="dim">PENDING</small>'}</td></tr>`).join('')
    || '<tr><td colspan="7" class="dim">이 팀의 이적 감시 데이터 없음</td></tr>');

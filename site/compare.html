@@ -10,7 +10,7 @@
 <div class="panel"><h2 id="rankTitle"></h2><table id="rank"></table></div>
 <div class="cardrow" id="cards"></div>
 <script type="module">
-import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine } from './assets/data.js?v=20260813-slot-candidates';
+import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell } from './assets/data.js?v=20260816-gk-avgpos';
 import { Kernel } from './assets/kernel.js';
 import { miniGrid } from './assets/pitch.js';
 
@@ -37,17 +37,21 @@ selEl.addEventListener('change', render);
 
 function render(){
   const slot = slots.find(s => s.pos === selEl.value) ?? slots[0];
+  const gk = isGkSlot(slot.pos);
   const rows = pool(slot).map(c => {
     const bf = K.bestFit(c.map25, slot.x, slot.slot_type);   // 라이브 산출 — dbFit과 대조 가능
     return { ...c, ...bf };
-  }).sort((a, b) => b.sim - a.sim);
-  document.getElementById('rankTitle').textContent =
-    `${slot.pos} 슬롯 적합 랭킹 (커널 x=${slot.x} · ${slot.slot_type}군 ${rows.length}명)`;
+  // GK는 적합이 변별하지 못한다(obs#220) — 적합순 랭킹 자체가 성립하지 않으므로 평점순으로 세운다.
+  }).sort((a, b) => gk ? (b.rate ?? 0) - (a.rate ?? 0) : b.sim - a.sim);
+  document.getElementById('rankTitle').textContent = gk
+    ? `${slot.pos} 슬롯 — 평점 랭킹 (${rows.length}명 · GK는 커널 적합이 변별력을 갖지 못해 평균 위치로 대체)`
+    : `${slot.pos} 슬롯 적합 랭킹 (커널 x=${slot.x} · ${slot.slot_type}군 ${rows.length}명)`;
   document.getElementById('rank').innerHTML =
-    `<tr><th>#</th><th>선수</th><th>적합 역할/포커스</th><th>sim</th><th>DB값</th><th>평점</th><th>근거</th></tr>` +
+    `<tr><th>#</th><th>선수</th><th>적합 역할/포커스</th><th>${gk ? '평균 위치' : 'sim'}</th><th>DB값</th><th>평점</th><th>근거</th></tr>` +
     rows.map((r, i) => `<tr><td>${i+1}</td><td>${r.label} ${badge(r.lh)} ${sofifaLink(r.label, GS)}<br><small>${statLine(r.label, GS)}</small></td>
-      <td>${K.roleName[r.role] ?? r.role}/${r.focus}</td><td><b>${r.sim.toFixed(3)}</b></td>
-      <td class="dim">${r.dbFit != null ? r.dbFit.toFixed(3) : '—'}</td>
+      <td>${K.roleName[r.role] ?? r.role}/${r.focus}</td>
+      <td>${gkPosCell(td, slot.pos, r.player_id) ?? `<b>${r.sim.toFixed(3)}</b>`}</td>
+      <td class="dim">${gk ? '' : (r.dbFit != null ? r.dbFit.toFixed(3) : '—')}</td>
       <td>${r.rate ?? '—'}</td><td class="dim">${r.note ?? ''}</td></tr>`).join('');
   document.getElementById('cards').innerHTML = rows.slice(0, 4).map(r => `
     <div class="pcard"><b>${r.label}</b><br>${miniGrid(r.map25)}<br>

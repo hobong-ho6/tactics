@@ -45,7 +45,7 @@
 <p class="dim">각 분석은 <b>분석 기준일·표본 범위</b>를 함께 표시한다. <b>레퍼런스 보기</b>를 펼치면 저장된 원문·내부 근거를 직접 확인할 수 있다. 기간을 복원할 수 없는 과거 기록은 임의 추정하지 않고 <b>기간 미기록</b>으로 표시한다.</p>
 <div class="scrollx"><table id="duty"></table></div></div>
 <script type="module">
-import { mountHeader, loadTeam, loadGameStats, slotCandidates, sofifaLink } from './assets/data.js?v=20260813-slot-candidates';
+import { mountHeader, loadTeam, loadGameStats, slotCandidates, sofifaLink, isGkSlot, gkPosCell } from './assets/data.js?v=20260816-gk-avgpos';
 import { miniGrid } from './assets/pitch.js';
 import { annotate, mountGlossaryTips } from './assets/glossary.js';
 const { team } = await mountHeader('player.html');
@@ -237,7 +237,9 @@ function render(){
     const t = sel.tt;
     document.getElementById('grids').innerHTML =
       `<div class="pcard"><b>실측 (${t.slot} 후보)</b><br>${miniGrid(t.map25)}<br>
-       <small class="dim">n=${t.sample_n??'—'} · 평점 ${t.avg_rating??'—'} · 적합 ${t.fit_role??''}/${t.fit_focus??''} ${t.fit_sim??''}</small></div>`;
+       <small class="dim">n=${t.sample_n??'—'} · 평점 ${t.avg_rating??'—'} · ${
+         gkPosCell(td, t.slot, t.player_id, t.tool_y != null ? { x: t.tool_x, y: t.tool_y } : null)
+         ?? `적합 ${t.fit_role??''}/${t.fit_focus??''} ${t.fit_sim??''}`}</small></div>`;
     document.getElementById('gridwarn').innerHTML =
       `<div style="border-left:3px solid var(--warn);background:rgba(255,193,7,.07);padding:8px 12px;margin:8px 0;border-radius:0 6px 6px 0">
          <b style="color:var(--warn)">실측 출처: ${t.club ?? '이전 소속팀'}</b><br>
@@ -261,7 +263,8 @@ function render(){
     const pres = td.prescriptions.filter(p=>p.label===key&&p.map25&&p.kind.startsWith('measured'));
     document.getElementById('grids').innerHTML = (pres.length?pres:CURRENT.filter(q=>q.player_id===sel.pid).map(q=>({kind:'measured(스쿼드)',map25:q.map25,sample_n:null,avg_rating:q.rating})))
       .map(p=>`<div class="pcard"><b>${p.kind}</b> <small class="dim">${p.pos_label??''}</small><br>${miniGrid(p.map25)}<br>
-        <small class="dim">n=${p.sample_n??'—'} · 평점 ${p.avg_rating??'—'} · sim ${p.fit_sim??'—'}</small></div>`).join('') || '<span class="dim">실측 그리드 없음</span>';
+        <small class="dim">n=${p.sample_n??'—'} · 평점 ${p.avg_rating??'—'} · ${
+          gkPosCell(td, p.pos_label ?? sq0?.slot_type, sel.pid) ?? `sim ${p.fit_sim??'—'}`}</small></div>`).join('') || '<span class="dim">실측 그리드 없음</span>';
     const st = td.player_stats.find(s=>s.label===key);
   document.getElementById('pstat').innerHTML = st ? annotate(`경기 <b>${st.n}</b> · 분 <b>${st.minutes??'—'}</b> · 평점 <b>${st.avg_rating??'—'}</b> · xG <b>${st.xg_pg??'—'}</b> · xA <b>${st.xa_pg??'—'}</b> · 키패스 <b>${st.kp_pg??'—'}</b> · 듀얼승 <b>${st.dw_pg??'—'}</b> · 태클 <b>${st.tk_pg??'—'}</b> · 인터셉트 <b>${st.ic_pg??'—'}</b>`) : '<span class="dim">경기 스탯 없음 (match-watch 수집 대기)</span>';
     // 시즌 성적 — 대회별 (Fotmob 선수 페이지 참고)

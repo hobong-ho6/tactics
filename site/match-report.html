@@ -26,7 +26,7 @@
     <div id="sourceMeta"></div><pre id="markdown"></pre></details></div>
 </main>
 <script type="module">
-import { mountHeader, loadTeam } from './assets/data.js?v=20260813-match-reports';
+import { mountHeader, loadTeam, isGkSlot } from './assets/data.js?v=20260816-gk-avgpos';
 import { decodeMap } from './assets/kernel.js';
 import { drawPitch, drawComposite, drawChip } from './assets/pitch.js';
 import { annotate, mountGlossaryTips } from './assets/glossary.js';
@@ -151,7 +151,9 @@ function renderGamePreset(r){
        <span>${esc(p.pos_label)}</span><small>${annotate(esc(p.role_name||p.role_id))}<br>${annotate(esc(p.focus))}${p.starter?'':`<br>${esc(p.minute_on)}분 투입`}</small></div>`).join('')}</div></div>
       <div class="scrollx"><table class="match-preset-table"><tr><th>위치</th><th>선수</th><th>구분</th><th>역할</th><th>포커스</th><th>경기 적합</th></tr>
       ${players.map(p=>`<tr><td><b>${esc(p.pos_label)}</b></td><td>${esc(p.label)}</td><td>${p.starter?'선발':`교체 ${esc(p.minute_on)}′`}</td><td>${annotate(esc(p.role_name||p.role_id))}<br><small>${esc(p.role_id)}</small></td>
-        <td>${annotate(esc(p.focus))}</td><td>${present(p.fit_sim)?Number(p.fit_sim).toFixed(3):'—'}</td></tr>`).join('')}</table></div></div>
+        <td>${annotate(esc(p.focus))}</td><td>${
+          isGkSlot(p.pos_label) ? '<small class="dim" title="GK는 커널 적합이 변별력을 갖지 못한다(obs#220)">—</small>'
+          : present(p.fit_sim)?Number(p.fit_sim).toFixed(3):'—'}</td></tr>`).join('')}</table></div></div>
     ${subs.length?`<p class="dim">종료 XI 교체: ${subs.map(p=>`${esc(p.minute_on)}′ ${esc(all.find(x=>x.player_id===p.replaced_player_id)?.label||'—')} → <b>${esc(p.label)}</b>`).join(' · ')}</p>`:''}
     <details class="report-source"><summary>이 경기 설정의 근거·한계</summary><p>${esc(s.rationale)}</p>
       <p class="dim">${esc(s.source)}<br>${esc(s.confidence)}</p></details>`;

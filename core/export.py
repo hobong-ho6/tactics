@@ -128,6 +128,7 @@ def export_all(db_path=None, window="2026-summer"):
                                 FROM manager_profiles WHERE regime_id=? ORDER BY axis""", (rid,))
         targets = _rows(con, """SELECT player_id, name, name_kr, short_label, slot, club, position,
                                        likelihood, last_news_date, map25, sample_n, avg_rating,
+                                       tool_x, tool_y,
                                        opt_role, opt_focus, fit_role, fit_focus, fit_sim,
                                        confidence, source
                                 FROM transfer_targets WHERE team_code=? AND window=?

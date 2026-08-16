@@ -90,6 +90,29 @@ export async function mountHeader(active){
   return { idx, team, regime: idx.regimes.find(r => r.team_code === team) };
 }
 
+/* GK 적합 표시 — obs#220. GK는 커널 적합이 변별력을 갖지 못한다: 측정된 GK들의 그리드가
+   상호 코사인 ≥0.986이라 적합이 .96~.98 한 대역에 전원 수렴한다(폭 0.014). 숫자를 그대로
+   노출하면 없는 우열을 읽게 되므로 GK 행은 평균 위치로 대체한다 — 변별은 여기서 나온다(폭 2.5).
+   좌표 변환은 docs/30: 툴x = 100 − 소파y, 툴y = 소파x(= 골문에서의 전진 거리). */
+export const isGkSlot = v => String(v ?? '').toUpperCase() === 'GK';
+
+export function avgPos(teamData, playerId){
+  if (playerId == null) return null;
+  const a = (teamData.avg_positions || []).find(p => p.player_id === playerId);
+  return a ? { x: +(100 - a.avg_y).toFixed(1), y: +a.avg_x.toFixed(1), n: a.n } : null;
+}
+
+/* GK가 아니면 null — 호출부가 기존 적합 표시를 그대로 쓴다.
+   stored: transfer_targets처럼 좌표를 이미 들고 있는 행이면 그 값을 우선한다. */
+export function gkPosCell(teamData, slotOrPos, playerId, stored){
+  if (!isGkSlot(slotOrPos)) return null;
+  const p = (stored && stored.y != null) ? stored : avgPos(teamData, playerId);
+  const tip = 'GK는 커널 적합이 변별력을 갖지 못한다(obs#220) — 평균 위치로 표시한다';
+  return p
+    ? `<span title="${tip}">평균 위치 <b>y ${(+p.y).toFixed(1)}</b> <small class="dim">x ${(+p.x).toFixed(1)}${p.n ? ` · n=${p.n}` : ''}</small></span>`
+    : `<small class="dim" title="${tip}">평균 위치 없음</small>`;
+}
+
 /* prescriptions에서 (kind 우선순위별) 선수 대표 그리드 고르기 */
 export function gridOf(teamData, playerId, kinds){
   for (const k of kinds){

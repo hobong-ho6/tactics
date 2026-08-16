@@ -9,7 +9,7 @@
 <p class="dim">적합(sim)은 커널 라이브 산출값. DB 저장값과 어긋나면 익스포트가 낡은 것 —
 <span class="mono">python3 scripts/export.py</span>를 다시 돌릴 것.</p>
 <script type="module">
-import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine } from './assets/data.js?v=20260813-slot-candidates';
+import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell } from './assets/data.js?v=20260816-gk-avgpos';
 import { annotate, mountGlossaryTips } from './assets/glossary.js';
 import { Kernel } from './assets/kernel.js';
 import { miniGrid } from './assets/pitch.js';
@@ -28,15 +28,17 @@ for (const s of slots){
   if (posSel.value && s.pos !== posSel.value) continue;
   const cs = slotCandidates(td, s.pos, { includeTransfers: false });
   if (!cs.length){ rows.push(`<tr><td>${s.pos}</td><td colspan="5" class="dim">실측 후보 없음 — 공백 슬롯</td></tr>`); continue; }
+  // GK는 적합이 변별하지 못하므로(obs#220) 적합순 정렬이 의미 없다 — 평점순으로 세운다.
   const ranked = cs.map(q => ({ q, bf: K.bestFit(q.map25, s.x, s.slot_type) }))
-                   .sort((a, b) => b.bf.sim - a.bf.sim);
+                   .sort((a, b) => isGkSlot(s.pos) ? (b.q.rating ?? 0) - (a.q.rating ?? 0)
+                                                   : b.bf.sim - a.bf.sim);
   ranked.forEach(({ q, bf }, i) => rows.push(`<tr>
     <td>${i === 0 ? `<b>${s.pos}</b>` : ''}</td>
     <td>${i === 0 ? '★ ' : ''}${q.label} ${sofifaLink(q.label, GS)}<br><small>${annotate(statLine(q.label, GS))}</small></td>
-    <td>${K.roleName[bf.role] ?? bf.role}/${bf.focus} <b>${bf.sim.toFixed(3)}</b></td>
+    <td>${gkPosCell(td, s.pos, q.player_id) ?? `${K.roleName[bf.role] ?? bf.role}/${bf.focus} <b>${bf.sim.toFixed(3)}</b>`}</td>
     <td>${q.rating ?? '—'} <small class="dim">${q.rate_note ?? ''}</small></td>
     <td>${miniGrid(q.map25, 60)}</td>
-    <td class="dim">${q.fit_role ? `DB: ${q.fit_role}/${q.fit_focus} ${q.fit_sim ?? ''}` : ''}</td>
+    <td class="dim">${isGkSlot(s.pos) ? '' : (q.fit_role ? `DB: ${q.fit_role}/${q.fit_focus} ${q.fit_sim ?? ''}` : '')}</td>
   </tr>`));
 }
 document.getElementById('tbl').innerHTML =
