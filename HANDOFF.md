@@ -42,12 +42,12 @@
 ## 현재 상태
 
 > 마지막 갱신: **2026-08-16** · 세션 **#30** · 작업 PC `AD03230205ui-iMac.local` · 브랜치 `main` ·
-> 최신 커밋 **`557d8c5`** · observations **221행**(최신 obs#221) · match_reports **19행**(완료 4 · 초안 15).
-> DB는 v2(`db/tactics.db`), 3팀 스쿼드·실측·평가 체제 유지.
+> 최신 커밋 **`b41b1db`**(데이터 최신 `557d8c5`) · observations **221행**(최신 obs#221) ·
+> match_reports **19행**(완료 4 · 초안 15). DB는 v2(`db/tactics.db`), 3팀 체제 유지.
 >
 > **⭐ SofaScore 403이 해소됐다.** 세션 #29가 "08-14 전 경로 403"으로 기록한 전면 차단이 08-16에
-> 200으로 복구됐다(`/api/v1/search/all` 확인). `robots.txt` 오리진 + `Promise.all` 병렬 fetch 경로가
-> 그대로 작동해 스즈키 39경기를 한 번에 수집했다. **런북 §3의 ⛔ 차단 기록은 무효다.**
+> 200으로 복구됐다. `robots.txt` 오리진 + `Promise.all` 병렬 fetch 경로가 그대로 작동해 스즈키 39경기를
+> 한 번에 수집했다. **런북 §3의 ⛔ 차단 기록은 무효다.**
 >
 > **스즈키 실측 종결 — PENDING MEASUREMENT 백로그 0.** `players` id=132 승격 + `player_matches` 39행.
 > 유효 29경기(파르마 22 + 일본대표 7)로 `gk_goalkeeper/Defend .975`, tool_x 50.11 · tool_y 10.06 ·
