@@ -43,11 +43,12 @@
 <div class="panel"><h2>FC26 게임 스탯</h2><div id="gstat" class="kv"></div></div>
 <div class="panel"><h2>영상·스카우트 분석 (가설 → 실측 교차검증)</h2>
 <p class="dim">각 분석은 <b>분석 기준일·표본 범위</b>를 함께 표시한다. <b>레퍼런스 보기</b>를 펼치면 저장된 원문·내부 근거를 직접 확인할 수 있다. 기간을 복원할 수 없는 과거 기록은 임의 추정하지 않고 <b>기간 미기록</b>으로 표시한다.</p>
-<div class="scrollx"><table id="duty"></table></div></div>
+<div id="duty"></div></div>
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, slotCandidates, sofifaLink, isGkSlot, gkPosCell } from './assets/data.js?v=20260816-gk-avgpos';
 import { miniGrid } from './assets/pitch.js';
 import { annotate, mountGlossaryTips } from './assets/glossary.js';
+import { prose } from './assets/prose.js';
 const { team } = await mountHeader('player.html');
 const [td, GS] = await Promise.all([loadTeam(team), loadGameStats('FC26')]);
 const _TEAMS = (await Promise.all(['AVL','CHE','LIV'].map(c=>loadTeam(c).catch(()=>null)))).filter(Boolean);
@@ -114,8 +115,8 @@ function analysisWindow(d){
   const from=d.observed_from, to=d.observed_to;
   const range=from&&to ? (from===to?from:`${from} ~ ${to}`) : (to?`~ ${to}`:(from?`${from} ~`:'기간 미기록'));
   const scope=scopeLabels[d.sample_scope]||d.sample_scope||'범위 미기록';
-  return `<div class="analysis-window"><span class="badge mid">${esc(scope)}</span><b>${esc(range)}</b>
-    <small class="dim">${annotate(esc(d.sample_note||'표본 설명 미기록'))}</small></div>`;
+  return `<span class="badge mid">${esc(scope)}</span><b>${esc(range)}</b>
+    <small class="dim">${annotate(esc(d.sample_note||'표본 설명 미기록'))}</small>`;
 }
 /* 26/27 스쿼드 기준 — 이탈 확정·구시즌 전용 제외. 그룹핑: 포지션군 + 영입 추적 */
 const gone = new Set((td.departed||[]).map(strip));
@@ -160,23 +161,27 @@ function renderEval(n, sel){
   const fitBadge = (mgr, v) => { if(!v) return '';
     const lv=(v.split('—')[0]||'').trim(), body=v.slice(v.indexOf('—')+1).trim();
     const c=lv.startsWith('HIGH')?'var(--ok)':lv.startsWith('MEDIUM')?'var(--warn)':'var(--bad)';
-    return `<div style="margin:6px 0"><b>${mgr}</b> <span class="badge" style="color:${c};border-color:${c}">${lv}</span><br>
-      <small class="dim">${annotate(body)}</small></div>`; };
+    return `<div class="fitrow"><b>${mgr}</b><span class="badge" style="color:${c};border-color:${c}">${lv}</span>
+      ${prose(body)}</div>`; };
+  // 서술이 길면 좁은 칸에서 읽히지 않는다 — 한 줄을 통째로 쓴다(경계는 눈으로 정한 값이다).
+  const evalSection = (title, text) => text
+    ? `<section${text.length>420?' class="wide"':''}><h3>${title}</h3>${prose(text)}</section>` : '';
   const ov = e.overall||'', grade = (ov.split('—')[0]||'').trim();
   panel.querySelector('#evalbody').innerHTML = `
-    <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
-      <span class="badge" style="font-size:18px;padding:4px 14px;color:${gradeCol(grade)};border-color:${gradeCol(grade)}">${grade}</span>
-      <div style="flex:1;min-width:180px">${annotate(ov.slice(ov.indexOf('—')+1).trim())}</div></div>
+    <div class="evalhead">
+      <span class="badge grade" style="color:${gradeCol(grade)};border-color:${gradeCol(grade)}">${grade}</span>
+      <div>${prose(ov.slice(ov.indexOf('—')+1).trim())}</div></div>
     <div class="evalgrid">
-      ${e.traits?`<section><h3>선수 특성</h3>${annotate(e.traits)}</section>`:''}
-      ${e.strengths?`<section><h3>특장점 · 약점</h3>${annotate(e.strengths)}</section>`:''}
-      ${e.stat_eval?`<section><h3>스탯 기반 평가</h3>${annotate(e.stat_eval)}</section>`:''}
-      <section><h3>감독별 전술핏</h3>
+      ${evalSection('선수 특성', e.traits)}
+      ${evalSection('특장점 · 약점', e.strengths)}
+      ${evalSection('스탯 기반 평가', e.stat_eval)}
+      <section class="wide"><h3>감독별 전술핏</h3>
         ${fitBadge('에메리 (빌라)', e.fit_emery)}${fitBadge('알론소 (첼시)', e.fit_alonso)}${fitBadge('이라올라 (리버풀)', e.fit_iraola)}</section>
     </div>
-    <details style="margin-top:8px"><summary class="dim">근거 · 신뢰도</summary>
-      <div class="kv" style="font-size:12px;line-height:1.7;margin-top:6px">
-        <b>근거</b> ${e.source??'—'}<br><b>신뢰도</b> ${e.confidence??'—'}${e.updated?`<br><b>갱신</b> ${e.updated}`:''}</div></details>`;
+    <details style="margin-top:10px"><summary class="dim">근거 · 신뢰도</summary>
+      <div class="kv" style="font-size:12.5px;margin-top:8px">
+        <b>근거</b>${prose(e.source)}<b>신뢰도</b>${prose(e.confidence)}${
+          e.updated?`<b>갱신</b> ${e.updated}`:''}</div></details>`;
 }
 /* 백분위 막대 — 두 모집단이 같은 표현을 쓴다 */
 function bar(name,val,pct,tip){
@@ -222,7 +227,7 @@ function renderFotmobEval(sel){
   el.innerHTML = `<div style="margin-top:12px;border-left:3px solid var(--acc);padding:8px 0 8px 12px">
     <div class="kv" style="margin-bottom:4px"><b>스탯 기반 평가</b>
       <small class="dim">— 위 리그 백분위만 근거로 내린 판단(실측 히트맵·커널 적합과 독립)</small></div>
-    ${annotate(e.fotmob_eval)}</div>`;
+    ${prose(e.fotmob_eval)}</div>`;
 }
 function render(){
   const sel = groups[grp.value][+who.value]; if (!sel) return;
@@ -230,8 +235,11 @@ function render(){
   const key = sel.kr || n;   // DB 맵의 키(players.name_kr)
   renderEval(n, sel);
   renderFotmobEval(sel);
-  document.getElementById('sf').innerHTML = sofifaLink(key, GS, sel.en);
-  const g0 = GS[key] ?? GS[n];
+  // game_stats는 sofifa 표시명(짧은 라벨)으로 키가 잡혀 있어 players.name_kr와 어긋날 수 있다
+  // (스즈키 지온↔스즈키 · 주앙 고메스↔고메스). 영입 후보는 transfer_targets.short_label로 한 번 더 찾는다.
+  const gsKey = [key, n, sel.tt?.short_label].find(k => k && GS[k]) ?? key;
+  document.getElementById('sf').innerHTML = sofifaLink(gsKey, GS, sel.en);
+  const g0 = GS[gsKey];
   document.getElementById('bio').textContent = g0 ? ` ${g0.age}세 · ${g0.height_cm??'?'}cm · ${g0.preferred_foot==='Left'?'왼발':g0.preferred_foot==='Right'?'오른발':''} · 가치 ${g0.value_eur??'?'} · ${g0.club??''}` : '';
   if (sel.tt){   // 영입 추적 — transfer_targets 데이터로 렌더
     const t = sel.tt;
@@ -326,12 +334,25 @@ function render(){
       document.getElementById('similar').innerHTML=sims.map(x=>`<b>${x.l}</b><small class="dim">(${x.t}) ${x.s.toFixed(3)}</small>`).join(' · ');
     } else document.getElementById('similar').innerHTML='<span class="dim">—</span>';
   }
-  const g = GS[key] ?? GS[n];
+  const g = GS[gsKey];
   document.getElementById('gstat').innerHTML = g ? `OVR <b>${g.ovr}</b>/${g.pot} · ${g.positions??''} · 최적 ${g.best_pos??''}<br>PAC ${g.pac} SHO ${g.sho} PAS ${g.pas} DRI ${g.dri} DEF ${g.def} PHY ${g.phy}<br><span class="dim">${annotate((g.playstyles??'').split(';').map(x=>x.trim()).join(' · '))}</span>` : '<span class="dim">FC26 로스터에 없음</span>';
   const ds = td.duties.filter(d=>d.label===key);
-  document.getElementById('duty').innerHTML = ds.length ? '<tr><th>포지션</th><th>분석 시점·표본</th><th>영상·스카우트 주장(가설)</th><th>실측 대조</th><th>판정</th><th>게임 함의</th><th>근거</th></tr>'+
-    ds.map(d=>`<tr><td><b>${esc(d.position)}</b></td><td>${analysisWindow(d)}</td><td>${annotate(d.duties)}</td><td>${annotate(d.execution??'')}</td><td>${annotate(d.adherence??'')}</td><td class="dim">${annotate(d.game_role_implication??'')}</td><td>${references(d.source)}</td></tr>`).join('')
-    : '<tr><td class="dim">영상 분석 미수행 — 규칙상 신규 선수·MEDIUM-HIGH+ 후보는 자동 수행 대상</td></tr>';
+  // 산문 4칸을 표의 좁은 열에 넣으면 세로 국수가 된다 — 분석 1건 = 카드 1장으로 읽는다.
+  // 순서는 근거의 사슬(주장 → 실측 → 판정 → 게임 함의)을 그대로 따른다.
+  const section = (title, text, span) => text
+    ? `<section${span?' class="span"':''}><h3>${title}</h3>${prose(text)}</section>` : '';
+  document.getElementById('duty').innerHTML = ds.length ? ds.map(d=>`
+    <article class="dutycard">
+      <header><span class="badge">${esc(d.position)}</span>${analysisWindow(d)}</header>
+      <div class="dutygrid">
+        ${section('① 영상·스카우트 주장 (가설)', d.duties)}
+        ${section('② 실측 대조', d.execution)}
+        ${section('③ 판정', d.adherence)}
+        ${section('④ 게임 함의', d.game_role_implication)}
+      </div>
+      <footer>${references(d.source)}</footer>
+    </article>`).join('')
+    : '<p class="dim">영상 분석 미수행 — 규칙상 신규 선수·MEDIUM-HIGH+ 후보는 자동 수행 대상</p>';
 }
 render();
 mountGlossaryTips();

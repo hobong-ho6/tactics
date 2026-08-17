@@ -145,11 +145,19 @@ def export_all(db_path=None, window="2026-summer"):
                                ORDER BY CASE kind WHEN 'in' THEN 0 WHEN 'deduct' THEN 1
                                         WHEN 'out' THEN 2 ELSE 3 END, amount_m DESC""",
                         (code, window))
+        # regime_id IS NULL = 아직 우리 선수가 아닌 영입 후보의 원소속 관측이다(불변규칙 7 —
+        # 원소속 체제의 서사를 우리 체제 행으로 넣지 않는다). 그 행을 regime로만 걸러내면
+        # 수집해 둔 서사가 어느 화면에도 뜨지 않아 페이지가 '영상 분석 미수행'이라고 잘못 적는다.
+        # ⇒ 그 팀이 추적 중인 후보(transfer_targets)면 함께 싣는다. 출처 팀 경고는 화면이 이미 띄운다.
         duties = _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, d.position, d.duties,
                                       d.execution, d.adherence, d.game_role_implication, d.source, d.confidence,
                                       d.observed_from, d.observed_to, d.sample_scope, d.sample_note
                                FROM player_duties d JOIN players p ON p.id=d.player_id
-                               WHERE d.regime_id=? ORDER BY p.id""", (rid,))
+                               WHERE d.regime_id=?
+                                  OR (d.regime_id IS NULL AND d.player_id IN
+                                      (SELECT player_id FROM transfer_targets
+                                       WHERE team_code=? AND window=? AND player_id IS NOT NULL))
+                               ORDER BY p.id""", (rid, code, window))
         pstats = _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, v.n, v.avg_rating, v.minutes,
                                       v.xg_pg, v.xa_pg, v.kp_pg, v.dw_pg, v.tk_pg, v.ic_pg
                                FROM v_player_profile v JOIN players p ON p.id=v.player_id

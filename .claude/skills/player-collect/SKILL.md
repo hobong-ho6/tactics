@@ -34,6 +34,15 @@ done
 
 ⭐ **이 표가 이번 수집의 작업 목록이다.** 0인 축을 채우는 것이 과제다.
 
+⚠️ **이 카운트는 두 가지를 놓친다**(obs#234 실증 — 이 함정에 실제로 빠졌다):
+1. **`player_id`가 NULL인 외부 후보 행**. `player_game_stats`·`transfer_targets`는 우리 선수가 아닌 사람도
+   담으므로 `WHERE player_id=<id>`가 0을 보고할 수 있다. **`sofifa_id`·이름으로도 함께 세라**:
+   `sqlite3 db/tactics.db "SELECT id,roster_date,player_id,playstyles FROM player_game_stats WHERE sofifa_id=<sofifa_id>"`
+   찾으면 그 행에 `player_id`를 링크해 구멍을 닫는다.
+2. **카운트가 1 이상이어도 그 행의 빈 칸**. '축이 있다'와 '축이 채워졌다'는 다르다 —
+   0이 아닌 축도 **행을 열어 어느 컬럼이 비었는지 봐라**. obs#234는 이걸 안 해서
+   이미 DB에 있던 PlayStyles를 "근거 0건"이라고 적었다.
+
 ## 2. 14축 체크리스트
 
 | # | 축 | 테이블 | 소스·경로 | 필수? |
@@ -67,7 +76,10 @@ done
 ⚠️ 홈페이지에서 돌리면 렌더러가 얼어 CDP 타임아웃(레이트리밋 아님).
 
 **④ FC 게임스탯 (sofifa)**
-⛔ **선수 상세 페이지는 로그인 게이트다**(2026-08-16 확인) → **검색 페이지 컬럼 스크레이프**를 쓴다:
+⭐ **선수 상세 페이지는 로그인 세션이면 열린다**(2026-08-17 실증, obs#234) — `https://sofifa.com/player/<id>/`.
+로그인 상태면 **playstyles·특산품(traits)·역할 숙련·AcceleRATE·체형**이 전부 나온다(비로그인은 로그인 페이지로
+리다이렉트 · WebFetch는 403). ⚠️ **상세 페이지 제목의 로스터 날짜를 기존 행의 `roster_date`와 대조**하고,
+같을 때만 그 행의 빈 칸을 채운다. 로그인이 없을 때는 **검색 페이지 컬럼 스크레이프**를 쓴다:
 `https://sofifa.com/players?keyword=<name>&showCol%5B%5D=<코드>&…`
 확인된 코드: `ae`나이 `oa`OVR `pt`POT `bp`베스트포지션 `hi`키 `pf`주발 `vl`가치 `wg`주급 `tt`총합
 `ir`국제인지도 · 능력치 `cr fi he vo cu fk sh lo bl ac sp ag ba so ju st sr ln aa in po pe ma sa sl vi cm re dp`
@@ -75,7 +87,9 @@ done
 ⚠️ **6대 스탯(PAC/SHO/PAS/DRI/DEF/PHY) 컬럼은 스크레이프되지 않는다.** GK는 원능력치에서 매핑한다 —
 **DIV/HAN/KIC/REF/POS = GK 원능력치 그대로, DEF 칸 = SPD = (가속+질주)/2.**
 이 규칙은 마르티네스 기존 행으로 재현 검증됐다(83/81/82/85/56/85).
-⛔ **playstyles·traits·role_familiarity·AcceleRATE·body_type은 상세 페이지 전용이라 현재 미수집**이다.
+⚠️ **playstyles·traits·role_familiarity·AcceleRATE·body_type은 상세 페이지 전용**이다 —
+검색 컬럼으로는 안 나오니 **로그인 후 상세로 가라**(위 참조). ⛔ traits 공란은 결손이 아니라 '없음'일 수 있다 —
+상세의 **특산품 블록이 존재하고 비어 있으면 실측 0**이다(obs#132의 결손/0 구분).
 ⚠️ sofifa 나이 필드가 **1년 뒤처질 수 있다**(스즈키 실제 23세 ↔ 표기 22세). 나이 판단에 그대로 쓰지 말 것.
 
 **⑤ 상세 지표 (FotMob = Opta 원자료)** — ⭐ 이 프로젝트에서 **가장 수확이 큰 경로**다.

@@ -39,9 +39,17 @@ canvas.pitch{width:100%;max-width:380px;margin:0 auto;border-radius:10px;display
 button.tab{background:none;border:1px solid var(--line);color:var(--dim);border-radius:8px;
   padding:4px 12px;margin-left:6px;cursor:pointer;font-size:12px}
 button.tab.on{background:var(--acc);border-color:var(--acc);color:#14100b;font-weight:700}
-.evalgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-top:8px}
-.evalgrid section{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
-.evalgrid section h3{margin:0 0 6px;font-size:13px;color:var(--dim);font-weight:500}
+.evalgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px;margin-top:10px}
+.evalgrid section{border:1px solid var(--line);border-radius:10px;padding:10px 13px}
+.evalgrid section h3{margin:0 0 7px;font-size:13px;color:var(--acc);font-weight:700}
+/* 긴 서술(스탯 평가·특장점)은 좁은 칸에서 국수가 된다 — 한 줄을 통째로 쓴다 */
+.evalgrid section.wide{grid-column:1/-1}
+.evalhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.evalhead .grade{font-size:19px;padding:4px 14px;font-weight:700}
+.evalhead>div{flex:1;min-width:240px}
+.fitrow{margin:9px 0 0;padding-left:10px;border-left:2px solid var(--line)}
+.fitrow:first-of-type{margin-top:2px}
+.fitrow>b{margin-right:6px}
 .kv{color:var(--dim)} .kv b{color:var(--txt)}
 
 .tacpitch{position:relative;max-width:560px;height:640px;margin:10px auto;border-radius:12px;
@@ -69,8 +77,35 @@ details.refs li{margin:0 0 6px;color:var(--dim);line-height:1.45}
 details.refs a{overflow-wrap:anywhere}
 .ref-jump{font-size:11px;white-space:nowrap}
 .ref-missing{display:inline-block;color:var(--warn);white-space:nowrap}
-.analysis-window{min-width:170px;display:flex;flex-direction:column;align-items:flex-start;gap:5px;line-height:1.35}
-.analysis-window small{max-width:260px}
+.analysis-window{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;line-height:1.4}
+.analysis-window small{flex:1;min-width:220px}
+
+/* DB 서사 렌더러(assets/prose.js) — 판정 마커별 왼쪽 띠로 끊어 읽는다.
+   ⭐⚠️⛔ 글리프는 폰트가 색을 정해 color가 듣지 않으므로 심각도는 띠로 표시한다. */
+.prose{line-height:1.78}
+.prose .pb{margin:0 0 9px;padding-left:11px;border-left:2px solid var(--line)}
+.prose .pb:last-child{margin-bottom:0}
+.prose .pb.hi{border-color:var(--acc)} .prose .pb.warn{border-color:var(--warn)}
+.prose .pb.bad{border-color:var(--bad)} .prose .pb.plain{border-color:rgba(255,255,255,.07)}
+.prose .pm{margin-right:5px;font-size:12px}
+.prose b{color:var(--txt);font-weight:700}
+.prose .pi{display:block;padding-left:19px;text-indent:-19px;margin-top:5px}
+.prose .pn{color:var(--acc);margin-right:4px}
+.prose .ptag{display:inline-block;margin:0 6px 2px 0;padding:0 7px;border:1px solid var(--line);
+  border-radius:6px;font-size:11px;color:var(--dim);white-space:nowrap}
+.prose .badge.pgrade{margin-right:6px;color:var(--txt)}
+
+/* 영상·스카우트 분석 — 7열 표에 산문 4칸을 넣으면 세로 국수가 된다. 분석 1건 = 카드 1장. */
+.dutycard{border:1px solid var(--line);border-radius:11px;padding:11px 14px;margin:10px 0;
+  background:rgba(255,255,255,.015)}
+.dutycard>header{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;
+  padding-bottom:9px;margin-bottom:11px;border-bottom:1px solid var(--line)}
+.dutygrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:12px}
+.dutygrid section{border:1px solid var(--line);border-radius:9px;padding:9px 12px;background:rgba(0,0,0,.12)}
+.dutygrid section h3{margin:0 0 7px;font-size:12px;color:var(--acc);font-weight:700}
+.dutygrid section.span{grid-column:1/-1}
+.dutycard>footer{margin-top:11px;padding-top:9px;border-top:1px solid var(--line)}
+.dutycard>footer details.refs{max-width:none}
 
 /* 경기별 심층 리포트 — 히트맵 화면 안에서 전술→선수→원문 순으로 파고든다 */
 .match-report-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-top:10px}

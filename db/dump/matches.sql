@@ -75,3 +75,4 @@ INSERT INTO matches VALUES(80,-5958679,'CHE','2026-27','2026-08-15','Real Socied
 INSERT INTO matches VALUES(81,-5765426,'AVL','2026-27','2026-08-15','Borussia Mönchengladbach','Club Friendly','A','2-1',1,'프리시즌 최종전 보루시아파크(관중 50,148) — 글라트바흐의 시즌 개막 행사 겸 7전 7승 마무리 (⚠️event_id는 음수 FotMob matchId 5765426 · result는 홈-원정 순서로 BMG 2 · 빌라 1)',NULL);
 INSERT INTO matches VALUES(82,16494875,'AVL','2026-27','2026-08-01','Indonesia XI','Club Friendly','A','1-3',1,'아시아 투어 1차전 (SofaScore 정본 event · 인도네시아 XI 1 · 빌라 3 · 선발 11명만 적재)',NULL);
 INSERT INTO matches VALUES(83,-5973785,'LIV','2026-27','2026-08-16','Como','Club Friendly','H','0-0',1,'비공개 더블헤더 1차전 AXA 트레이닝센터 (⚠️음수 FotMob matchId 5973785 · 2차전은 안필드 17:00 UTC로 미포함)',NULL);
+INSERT INTO matches VALUES(84,16846122,'LIV','2026-27','2026-08-16','Como','Club Friendly Games','H','2-0',1,NULL,42.0);
