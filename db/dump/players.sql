@@ -98,7 +98,7 @@ INSERT INTO players VALUES(101,'Aaron Anselmino',NULL,NULL,NULL,NULL,NULL,'2026-
 INSERT INTO players VALUES(102,'Olutayo Subuloye',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1682325);
 INSERT INTO players VALUES(103,'Dário Essugo',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1239595);
 INSERT INTO players VALUES(104,'Teddy Sharman-Lowe',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1117871);
-INSERT INTO players VALUES(105,'Liam Delap',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1113903);
+INSERT INTO players VALUES(105,'Liam Delap','델랍',NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1113903);
 INSERT INTO players VALUES(106,'Reggie Watson',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1837929);
 INSERT INTO players VALUES(107,'Gaga Slonina',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1031220);
 INSERT INTO players VALUES(108,'Joseph Gomez',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',568571);
@@ -109,8 +109,8 @@ INSERT INTO players VALUES(113,'Harvey Elliott',NULL,NULL,NULL,NULL,NULL,'2026-2
 INSERT INTO players VALUES(114,'Rio Ngumoha',NULL,1881902,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1597668);
 INSERT INTO players VALUES(115,'Will Wright',NULL,1984100,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1692224);
 INSERT INTO players VALUES(116,'Trey Nyoni',NULL,1445945,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1436258);
-INSERT INTO players VALUES(117,'Federico Chiesa',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',784510);
-INSERT INTO players VALUES(118,'Calum Scanlon',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1355539);
+INSERT INTO players VALUES(117,'Federico Chiesa','키에사',NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',784510);
+INSERT INTO players VALUES(118,'Calum Scanlon','스캔런',NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1355539);
 INSERT INTO players VALUES(119,'Freddie Woodman',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',582276);
 INSERT INTO players VALUES(120,'Luke Chambers',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1249634);
 INSERT INTO players VALUES(121,'Calvin Ramsay',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1076952);
@@ -124,7 +124,7 @@ INSERT INTO players VALUES(128,'Jamaldeen Jimoh-Aloba',NULL,NULL,NULL,NULL,NULL,
 INSERT INTO players VALUES(129,'Ben Broggio',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1407239);
 INSERT INTO players VALUES(130,'Maxence Lacroix',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-16) — 실측 히트맵 없음',950485);
 INSERT INTO players VALUES(131,'Levi Colwill',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-16) — 실측 히트맵 없음',1096400);
-INSERT INTO players VALUES(132,'Zion Suzuki','스즈키 지온',905351,255981,2002,'GK','transfer_targets 2026-summer AVL 후보(파르마) — 평가·듀티 기록용 등재 (2026-08-16) → 2026-08-17 CONFIRMED 승격(squad_entries GK · 사용자 확정 · 양 구단 공식 발표 0건)',1053679);
+INSERT INTO players VALUES(132,'Zion Suzuki','스즈키 지온',905351,255981,2002,'GK','transfer_targets 2026-summer AVL 후보(파르마) — 평가·듀티 기록용 등재 (2026-08-16) → 2026-08-18 CONFIRMED 승격(squad_entries GK · 사용자 확정 · 양 구단 공식 발표 0건)',1053679);
 INSERT INTO players VALUES(133,'Landon Emenalo',NULL,NULL,NULL,NULL,NULL,'2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1677143);
 INSERT INTO players VALUES(134,'Lucas Pitt',NULL,NULL,NULL,NULL,NULL,'2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1469832);
 INSERT INTO players VALUES(135,'Omari Kellyman',NULL,NULL,NULL,NULL,NULL,'2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1315477);
