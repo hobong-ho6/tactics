@@ -39350,10 +39350,10 @@
     "source": "Fotmob /api/data/teams?id=10252&tab=squad 전수 대조 (2026-08-11); obs#152"
    },
    {
-    "confidence": "MEDIUM-HIGH 유지 — 지르크제발 조건부 단계 지속, 공식 오퍼 아직 없음. / ⚠️ 2026-08-14 감사에서 rationale의 '슈퍼컵 스쿼드 포함' 정황이 오류로 확인돼 철회했다. 결론(DEAD)은 유지. ⚠️ **[2026-08-17 MEDIUM으로만 되살린다 — 어제 네토에 적용한 잣대와 동일하게]** **1티어 0건**이다(Romano·Ornstein·Tanswell·Sky UK·BBC 전부 침묵). 축이 **Tavolieri 1인 단독**이고 어제 네토를 같은 이유로 MEDIUM에 묶었으므로 **일관성을 위해 MEDIUM 상한**이다. ⛔ **이적료 보도 0건.** ⛔ **벤제마 선결 조건은 우리도 알힐랄도 통제할 수 없다** — 성사 확률을 크게 깎는다. ⚠️ 기존 DEAD 사유(맨유 관심 부정, The Athletic 08-04)는 **여전히 유효하다** — 이번 재활성은 **다른 목적지**에 대한 것이다. ⭐ 참고: 어제 네토 건이 오늘 Romano 진입으로 MEDIUM-HIGH가 됐다 — **이 행도 1티어가 들어오면 즉시 재판정 대상**이다.",
-    "dest_club": "Manchester United",
-    "last_news_date": "2026-08-17",
-    "likelihood": "MEDIUM",
+    "confidence": "MEDIUM-HIGH 유지 — 지르크제발 조건부 단계 지속, 공식 오퍼 아직 없음. / ⚠️ 2026-08-14 감사에서 rationale의 '슈퍼컵 스쿼드 포함' 정황이 오류로 확인돼 철회했다. 결론(DEAD)은 유지. ⚠️ **[2026-08-17 MEDIUM으로만 되살린다 — 어제 네토에 적용한 잣대와 동일하게]** **1티어 0건**이다(Romano·Ornstein·Tanswell·Sky UK·BBC 전부 침묵). 축이 **Tavolieri 1인 단독**이고 어제 네토를 같은 이유로 MEDIUM에 묶었으므로 **일관성을 위해 MEDIUM 상한**이다. ⛔ **이적료 보도 0건.** ⛔ **벤제마 선결 조건은 우리도 알힐랄도 통제할 수 없다** — 성사 확률을 크게 깎는다. ⚠️ 기존 DEAD 사유(맨유 관심 부정, The Athletic 08-04)는 **여전히 유효하다** — 이번 재활성은 **다른 목적지**에 대한 것이다. ⭐ 참고: 어제 네토 건이 오늘 Romano 진입으로 MEDIUM-HIGH가 됐다 — **이 행도 1티어가 들어오면 즉시 재판정 대상**이다.\n⛔ **[2026-08-18] DEAD 판정 근거와 한계** — §2 등급표에서 MEDIUM은 「2티어 1곳 이상이 구체적 관심 보도」인데, **1티어(Tanswell)가 구단 방침을 '잔류'로 명시**했고 오퍼는 0건이다. **엔드릭 선례와 같은 구조**(1티어가 잔류/철수를 보도 → DEAD)라 그 판정을 따랐다. ⚠️ **DEAD는 숨김이지 삭제가 아니다**(§4-3) — 행과 근거는 보존된다. ⭐ **복원 트리거: 1티어가 ⑴ 알힐랄의 공식 오퍼 제출 또는 ⑵ 빌라–알힐랄 구단 간 협상 개시를 보도할 때.** 3티어의 '개인 조건 합의' 재유통은 트리거가 아니다(obs#233). ⚠️ **비대칭을 기록해 둔다**: 「선수 측이 합의했다」와 「구단이 팔 의사가 없다」는 **동시에 참일 수 있다** — 따라서 DEAD는 '선수가 원하지 않는다'는 뜻이 아니라 **'현재 성사 경로가 막혀 있다'** 는 뜻이다. 선결 병목도 그대로다: 알힐랄은 **벤제마 계약 해지(잔여 1년 전액 수령 요구)** 를 먼저 풀어야 오퍼를 낼 수 있다. ⚠️ **TEAMtalk가 그를 「29세」로 적었다** — 우리 `players.birth_year`가 NULL이라 이 표기를 검증할 수 없다(§2-0 지표 ⑴을 적용 불가). **생년 결손을 채우는 것이 선행 과제**다. ⚠️ `dest_club`이 08-17 목적지 축 전환(맨유 → 알힐랄) 때 갱신되지 않아 오늘 함께 정정했다.",
+    "dest_club": "Al-Hilal (⚠️ dest_club 정정 — 08-17 목적지 축 전환 시 갱신 누락됐다. 맨유 축은 창 초반 건이다)",
+    "last_news_date": "2026-08-18",
+    "likelihood": "DEAD (1티어 잔류 보도 — Tanswell/The Athletic 2026-08-18, 알힐랄 공식 오퍼 0건)",
     "name": "Ollie Watkins",
     "name_kr": "왓킨스",
     "source": "Sky Sports Paper Talk 13566763 (원출처 The Sun, 3티어) ; teamtalk watkins-bid-coming (2026-07-26); Sky Sports; TeamTalk; ThePeoplesPerson; ReadAstonVilla ; Sacha Tavolieri(Sky Sport Switzerland) 2026-08-16~17 via livescore.com ; Gianluigi Longari/Sportitalia 2026-08-16~17  ; insidefutbol 2026-08-16·08-17 2건"
