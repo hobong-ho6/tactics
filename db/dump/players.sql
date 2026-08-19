@@ -131,3 +131,4 @@ INSERT INTO players VALUES(135,'Omari Kellyman',NULL,NULL,NULL,NULL,NULL,'2026 �
 INSERT INTO players VALUES(136,'Reggie Walsh',NULL,NULL,NULL,NULL,NULL,'2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1693359,NULL);
 INSERT INTO players VALUES(137,'Rodrigo Fortes',NULL,NULL,NULL,NULL,NULL,'2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1706481,NULL);
 INSERT INTO players VALUES(138,'Ryan Kavuma-McQueen',NULL,NULL,NULL,NULL,NULL,'2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1681979,NULL);
+INSERT INTO players VALUES(139,'Andrés García','안드레스 가르시아',NULL,NULL,2003,'RB','2025-01 레반테에서 약 £5m 영입. 빌라 통산 18경기(25/26 8경기·24/25 10경기). 2026-07-16 헤타페 시즌 임대.',NULL,NULL);
