@@ -130,13 +130,13 @@ def export_all(db_path=None, window="2026-summer"):
                                        likelihood, last_news_date, map25, sample_n, avg_rating,
                                        tool_x, tool_y,
                                        opt_role, opt_focus, fit_role, fit_focus, fit_sim,
-                                       confidence, source
+                                       confidence, source, rationale
                                 FROM transfer_targets WHERE team_code=? AND window=?
                                   AND likelihood!='OWNED'
                                 ORDER BY id""", (code, window))
         # OWNED는 스쿼드(squad_entries)에 이미 있다 — 이적 목록에서 제외 (v1 동일 필터)
         outgoing = _rows(con, """SELECT p.name, p.name_kr, o.dest_club, o.likelihood,
-                                        o.last_news_date, o.confidence, o.source
+                                        o.last_news_date, o.confidence, o.source, o.rationale
                                  FROM transfer_outgoing o JOIN players p ON p.id=o.player_id
                                  WHERE o.team_code=? AND o.window=? ORDER BY o.player_id""",
                          (code, window))

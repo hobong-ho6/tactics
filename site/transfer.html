@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><title>이적 — tactics v2</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="assets/style.css"></head><body>
+<link rel="stylesheet" href="assets/style.css">
+<style>/* 근거 확장 행 — 데이터 행과 한 덩어리로 읽히게 경계선을 잇고, 접힌 상태에서 높이를 최소화한다 */
+tr.hasWhy>td{border-bottom:none}
+tr.whyrow>td{padding-top:0}
+tr.whyrow details.refs{min-width:0;max-width:none}
+tr.whyrow .whylab{margin:8px 0 2px;font-size:12px;color:var(--acc);font-weight:700}
+tr.whyrow .whylab:first-child{margin-top:4px}
+tr.whyrow .srclist{margin:2px 0 0;padding-left:22px;font-size:12px;line-height:1.7}
+tr.whyrow .srclist li{overflow-wrap:anywhere;margin-bottom:3px}</style></head><body>
 <div id="hdr"></div>
 <h1>이적 감시 <small class="dim" id="win"></small></h1>
 <div class="panel"><h2>영입 후보</h2><table id="in"></table></div>
@@ -12,6 +20,7 @@
 <script type="module">
 import { mountHeader, loadTeam, loadIndex, gkPosCell } from './assets/data.js?v=20260816-gk-avgpos';
 import { miniGrid } from './assets/pitch.js';
+import { prose } from './assets/prose.js';
 
 const { team, idx } = await mountHeader('transfer.html');
 const td = await loadTeam(team);
@@ -24,20 +33,46 @@ const badge = lh => !lh ? '' : /^DEAD/i.test(lh) ? `<span class="badge dead">DEA
 
 const T = td.transfer;
 const visible = rows => rows.filter(x => !/^DEAD/i.test(x.likelihood || ''));
+/* 근거 행 — rationale은 최대 5천자대라 셀에 넣으면 표가 무너진다. 데이터 행 바로 아래에
+   colspan 행으로 붙여 접어 두고, 펼치면 표 폭 전체를 쓴다(prose로 마커·열거를 끊어 읽는다).
+   데이터 행의 아래 경계선을 없애 두 행이 한 덩어리로 읽히게 한다. */
+const FIELDS = [['근거', 'rationale'], ['신뢰도·한계', 'confidence']];
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* source는 마커가 없어 prose로 넣으면 1블록에 뭉친다 — ' ; ' 구분 목록이므로 번호 리스트로 쪼개고
+   URL은 새 탭 링크로 만든다(player.html의 references()와 같은 취급). */
+function srcList(src){
+  const items = String(src ?? '').split(/\s*;\s*/).map(s => s.trim()).filter(Boolean);
+  if (!items.length) return '';
+  const link = s => esc(s).replace(/(https?:\/\/[^\s<]+)/g,
+    '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+  const linked = items.filter(s => /https?:\/\//.test(s)).length;
+  return `<div class="whylab">출처 ${items.length}건 <small class="dim">· 직접 링크 ${linked}건</small></div>
+    <ol class="srclist">${items.map(s => `<li>${link(s)}</li>`).join('')}</ol>`;
+}
+function whyRow(x, cols){
+  const parts = FIELDS.filter(([, k]) => (x[k] ?? '').trim())
+    .map(([lab, k]) => `<div class="whylab">${lab}</div>${prose(x[k])}`);
+  if ((x.source ?? '').trim()) parts.push(srcList(x.source));
+  if (!parts.length) return '';
+  return `<tr class="whyrow"><td colspan="${cols}"><details class="refs">
+    <summary>근거 · 신뢰도 · 출처 보기</summary>${parts.join('')}</details></td></tr>`;
+}
 document.getElementById('in').innerHTML =
   `<tr><th>선수</th><th>슬롯</th><th>등급</th><th>최신 보도</th><th>적합</th><th>표본</th><th>그리드</th></tr>` +
-  (visible(T.targets).map(t => `<tr><td><b>${t.name_kr ?? t.name}</b> <small class="dim">${t.club ?? ''}</small></td>
+  (visible(T.targets).map(t => `<tr class="${(t.rationale??'').trim()?'hasWhy':''}"><td><b>${t.name_kr ?? t.name}</b> <small class="dim">${t.club ?? ''}</small></td>
     <td>${t.slot}</td><td>${badge(t.likelihood)}</td><td>${t.last_news_date ?? '—'}</td>
     <td>${gkPosCell(td, t.slot, t.player_id, t.tool_y != null ? { x: t.tool_x, y: t.tool_y, n: t.sample_n } : null)
           ?? (t.fit_role ? `${t.fit_role}/${t.fit_focus} <b>${t.fit_sim}</b>` : '—')}</td>
     <td>${t.sample_n ?? '—'}경기 ${t.avg_rating ?? ''}</td>
-    <td>${t.map25 ? miniGrid(t.map25, 50) : '<small class="dim">PENDING</small>'}</td></tr>`).join('')
+    <td>${t.map25 ? miniGrid(t.map25, 50) : '<small class="dim">PENDING</small>'}</td></tr>`
+    + whyRow(t, 7)).join('')
    || '<tr><td colspan="7" class="dim">이 팀의 이적 감시 데이터 없음</td></tr>');
 
 document.getElementById('out').innerHTML =
   `<tr><th>선수</th><th>행선</th><th>등급</th><th>최신</th></tr>` +
-  (visible(T.outgoing).map(o => `<tr><td>${o.name_kr ?? o.name}</td><td>${o.dest_club}</td>
-    <td>${badge(o.likelihood)}</td><td>${o.last_news_date ?? '—'}</td></tr>`).join('')
+  (visible(T.outgoing).map(o => `<tr class="${(o.rationale??'').trim()?'hasWhy':''}"><td>${o.name_kr ?? o.name}</td><td>${o.dest_club}</td>
+    <td>${badge(o.likelihood)}</td><td>${o.last_news_date ?? '—'}</td></tr>`
+    + whyRow(o, 4)).join('')
    || '<tr><td colspan="4" class="dim">없음</td></tr>');
 
 /* 통화는 £m이다(Sky 표기값). 이전 헤더가 €m으로 잘못 적혀 있었다 — 2026-08-16 정정.
