@@ -35,7 +35,7 @@ CREATE TABLE players(
   birth_year INTEGER,
   primary_position TEXT,
   notes TEXT
-, fotmob_id INTEGER);
+, fotmob_id INTEGER, nationality TEXT);
 CREATE TABLE player_tenures(
   player_id INTEGER NOT NULL REFERENCES players(id),
   season TEXT NOT NULL REFERENCES seasons(code),
@@ -186,7 +186,7 @@ CREATE TABLE player_game_stats(
   attrs TEXT, playstyles TEXT, traits TEXT,
   role_familiarity TEXT, role_detail TEXT,
   accelerate TEXT, body_type TEXT, preferred_foot TEXT,
-  detail_date TEXT, source TEXT, confidence TEXT,
+  detail_date TEXT, source TEXT, confidence TEXT, nationality TEXT, full_name TEXT,
   UNIQUE(game_version, roster_date, name_kr)
 );
 CREATE TABLE game_system_changes(

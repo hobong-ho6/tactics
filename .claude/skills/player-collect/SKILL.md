@@ -34,6 +34,10 @@ done
 
 ⭐ **이 표가 이번 수집의 작업 목록이다.** 0인 축을 채우는 것이 과제다.
 
+⛔⭐ **선수를 특정할 때는 이름과 함께 소속팀·국적·포지션 3요소를 반드시 대조한다**(docs/30 「선수 동일성 확인 규약」이 정본).
+이름 표기는 소스마다 다르고(`Miloš Kerkez` ↔ `Milos Kerkez`), 동명이인은 국적까지 같을 수 있다
+(`Alysson` 빌라·브라질·**RM** ↔ `Alisson Becker` 리버풀·브라질·**GK**). **`name_kr`이 충돌하면 행이 조용히 사라진다.**
+
 ⚠️ **이 카운트는 두 가지를 놓친다**(obs#234 실증 — 이 함정에 실제로 빠졌다):
 1. **`player_id`가 NULL인 외부 후보 행**. `player_game_stats`·`transfer_targets`는 우리 선수가 아닌 사람도
    담으므로 `WHERE player_id=<id>`가 0을 보고할 수 있다. **`sofifa_id`·이름으로도 함께 세라**:
@@ -84,9 +88,13 @@ done
 확인된 코드: `ae`나이 `oa`OVR `pt`POT `bp`베스트포지션 `hi`키 `pf`주발 `vl`가치 `wg`주급 `tt`총합
 `ir`국제인지도 · 능력치 `cr fi he vo cu fk sh lo bl ac sp ag ba so ju st sr ln aa in po pe ma sa sl vi cm re dp`
 · GK `gd gh gc gp gr`
-⚠️ **6대 스탯(PAC/SHO/PAS/DRI/DEF/PHY) 컬럼은 스크레이프되지 않는다.** GK는 원능력치에서 매핑한다 —
-**DIV/HAN/KIC/REF/POS = GK 원능력치 그대로, DEF 칸 = SPD = (가속+질주)/2.**
-이 규칙은 마르티네스 기존 행으로 재현 검증됐다(83/81/82/85/56/85).
+⭐⭐ **[2026-08-19 정정] 6대 스탯(PAC/SHO/PAS/DRI/DEF/PHY)은 검색 페이지에서 그대로 받아진다** —
+`showCol[]=pac,sho,pas,dri,def,phy`. 종전의 「스크레이프되지 않는다」는 틀렸다.
+마르티네스 83/81/82/85/56/85가 기존 행과 일치해 재현 검증됐다 ⇒ **GK 원능력치 매핑 규칙은 불필요**하다
+(과거 규칙 `DEF칸 = SPD = (가속+질주)/2`도 옳았음이 함께 확인됐다).
+⭐ **팀 단위 수집**: `?tm[]=<팀id>` (AVL 2 · CHE 5 · LIV 9). ⚠️ 여러 팀을 묶으면 **60행에서 잘린다** — 팀별로 받을 것.
+국적·풀네임·sofifa_id는 행 DOM에서: `img.flag[title]` · `a[data-tippy-content]` · `href=/player/<id>/`.
+⛔ **프리킥 정확도·공격성은 컬럼 코드가 없다**(`fk`·`aa` 무시됨) — 상세 페이지 전용.
 ⚠️ **playstyles·traits·role_familiarity·AcceleRATE·body_type은 상세 페이지 전용**이다 —
 검색 컬럼으로는 안 나오니 **로그인 후 상세로 가라**(위 참조). ⛔ traits 공란은 결손이 아니라 '없음'일 수 있다 —
 상세의 **특산품 블록이 존재하고 비어 있으면 실측 0**이다(obs#132의 결손/0 구분).
