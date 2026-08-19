@@ -244,7 +244,7 @@ CREATE TABLE team_tactic_setups(    -- v1 그대로 (team → regime_id)
   game_version TEXT NOT NULL,
   kind TEXT NOT NULL,
   formation TEXT, build_up_style TEXT, defensive_approach TEXT, line_height INTEGER,
-  tactic_code TEXT, rationale TEXT, confidence TEXT,
+  tactic_code TEXT, rationale TEXT, confidence TEXT, ingame_formation TEXT,
   UNIQUE(regime_id, season, game_version, kind)
 );
 CREATE TABLE transfer_targets(

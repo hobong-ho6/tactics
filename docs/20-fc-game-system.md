@@ -138,7 +138,11 @@ sqlite3 data/avl_analysis.db "SELECT focus,plus,negative FROM game_role_focus WH
 
 ## FC26 전술 구성요소 (기록 대상)
 
-- **포메이션**: 툴에 45개 FC26 포메이션 등록 완료 (fc26-heatmap.html `FORMATIONS`).
+- **포메이션**: ⚠️ **[2026-08-19 정정]** 「툴에 45개 FC26 포메이션 등록 완료 (fc26-heatmap.html `FORMATIONS`)」는
+  **사실이 아니다.** `archive/v1/fc26-heatmap.html`의 `FORMATIONS`에는 **팀 프리셋 8개**만 있다
+  (빌라 6종 · 첼시 2종). **FC26 포메이션 카탈로그는 이 저장소에 없다.**
+  ⇒ 포메이션 선택 시 슬롯 유형 구성은 **EA 문서·커뮤니티 가이드로 매번 확인**해야 한다.
+  포메이션 정본은 팀별 `slots` 테이블이고, 실축↔인게임 구분은 docs/00 「실축 포메이션 ≠ 인게임 포메이션」을 따른다.
 - **역할(Role) + 포커스(Focus)**: 포지션 타입별 역할 세트는 `game_roles` 테이블
   (FC26: 37역할, 9개 포지션 타입). 각 역할의 기대 히트맵 커널은 툴의 `MAPS`에 있음
   — 장기적으로 DB로 이관 예정 (DESIGN.md 참조).
