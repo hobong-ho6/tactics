@@ -97,43 +97,43 @@
    "player_id": 54
   },
   {
-   "avg_x": 31.6,
-   "avg_y": 27.6,
-   "first_date": "2026-08-09",
+   "avg_x": 32.5,
+   "avg_y": 30.4,
+   "first_date": "2026-07-25",
    "last_date": "2026-08-09",
-   "n": 1,
+   "n": 4,
    "player_id": 69
   },
   {
-   "avg_x": 42.1,
-   "avg_y": 80.4,
-   "first_date": "2026-08-09",
+   "avg_x": 43.0,
+   "avg_y": 84.8,
+   "first_date": "2026-07-25",
    "last_date": "2026-08-09",
-   "n": 1,
+   "n": 3,
    "player_id": 70
   },
   {
-   "avg_x": 64.3,
-   "avg_y": 25.2,
-   "first_date": "2026-08-09",
+   "avg_x": 64.9,
+   "avg_y": 53.2,
+   "first_date": "2026-07-25",
    "last_date": "2026-08-09",
-   "n": 1,
+   "n": 4,
    "player_id": 71
   },
   {
-   "avg_x": 72.6,
-   "avg_y": 56.2,
-   "first_date": "2026-08-09",
+   "avg_x": 69.4,
+   "avg_y": 49.4,
+   "first_date": "2026-08-02",
    "last_date": "2026-08-16",
-   "n": 2,
+   "n": 3,
    "player_id": 72
   },
   {
-   "avg_x": 8.6,
-   "avg_y": 49.4,
-   "first_date": "2026-08-09",
+   "avg_x": 8.3,
+   "avg_y": 49.5,
+   "first_date": "2026-07-25",
    "last_date": "2026-08-09",
-   "n": 1,
+   "n": 4,
    "player_id": 73
   },
   {
@@ -177,12 +177,92 @@
    "player_id": 89
   },
   {
-   "avg_x": 57.5,
-   "avg_y": 19.6,
-   "first_date": "2026-08-16",
-   "last_date": "2026-08-16",
+   "avg_x": 46.9,
+   "avg_y": 65.1,
+   "first_date": "2026-07-25",
+   "last_date": "2026-07-25",
    "n": 1,
+   "player_id": 111
+  },
+  {
+   "avg_x": 57.6,
+   "avg_y": 39.1,
+   "first_date": "2026-07-25",
+   "last_date": "2026-08-02",
+   "n": 3,
+   "player_id": 112
+  },
+  {
+   "avg_x": 54.0,
+   "avg_y": 27.5,
+   "first_date": "2026-07-25",
+   "last_date": "2026-07-29",
+   "n": 2,
+   "player_id": 113
+  },
+  {
+   "avg_x": 63.9,
+   "avg_y": 50.8,
+   "first_date": "2026-07-25",
+   "last_date": "2026-08-16",
+   "n": 4,
    "player_id": 114
+  },
+  {
+   "avg_x": 46.1,
+   "avg_y": 44.4,
+   "first_date": "2026-07-25",
+   "last_date": "2026-08-02",
+   "n": 3,
+   "player_id": 116
+  },
+  {
+   "avg_x": 54.9,
+   "avg_y": 63.0,
+   "first_date": "2026-07-25",
+   "last_date": "2026-08-02",
+   "n": 2,
+   "player_id": 117
+  },
+  {
+   "avg_x": 31.6,
+   "avg_y": 70.6,
+   "first_date": "2026-07-25",
+   "last_date": "2026-07-25",
+   "n": 1,
+   "player_id": 141
+  },
+  {
+   "avg_x": 47.4,
+   "avg_y": 10.0,
+   "first_date": "2026-07-29",
+   "last_date": "2026-07-29",
+   "n": 1,
+   "player_id": 142
+  },
+  {
+   "avg_x": 34.8,
+   "avg_y": 63.9,
+   "first_date": "2026-07-29",
+   "last_date": "2026-08-02",
+   "n": 2,
+   "player_id": 143
+  },
+  {
+   "avg_x": 66.1,
+   "avg_y": 9.2,
+   "first_date": "2026-07-29",
+   "last_date": "2026-07-29",
+   "n": 1,
+   "player_id": 144
+  },
+  {
+   "avg_x": 56.4,
+   "avg_y": 84.8,
+   "first_date": "2026-07-29",
+   "last_date": "2026-07-29",
+   "n": 1,
+   "player_id": 145
   }
  ],
  "departed": [
@@ -6484,6 +6564,11 @@
     "Club Friendly"
    ],
    [
+    "2026-08-02",
+    6.4,
+    "Club Friendly"
+   ],
+   [
     "2026-08-09",
     7.1,
     "Club Friendly Games"
@@ -10115,8 +10200,8 @@
    "players": [
     {
      "assists": 0,
-     "avg_x": 15.796153846154,
-     "avg_y": 47.365384615385,
+     "avg_x": 15.8,
+     "avg_y": 47.37,
      "characteristics": "프리시즌 데뷔, 전반 45분",
      "confidence": "MEDIUM 스탯 / MEDIUM 역할 — 이라올라 체제 첫 밀도 자료. ⛔ 커널 Δ 미산출, 표본 1경기(친선).",
      "duels_lost": 0,
@@ -10127,7 +10212,7 @@
      "interceptions": 0,
      "key_passes": 0,
      "label": "알리송 베케르",
-     "lineup_pos": "GK",
+     "lineup_pos": "G",
      "map25": "0000000000000000041001X20",
      "minutes": 45,
      "name_en": "Alisson",
@@ -10148,8 +10233,8 @@
     },
     {
      "assists": 0,
-     "avg_x": 53.39756097561,
-     "avg_y": 17.541463414634,
+     "avg_x": 53.4,
+     "avg_y": 17.54,
      "characteristics": "초반 스피드 뒤 영향력 감소. 압박 트리거를 거는 두 명 중 하나",
      "confidence": "MEDIUM 스탯 / MEDIUM 역할 — 이라올라 체제 첫 밀도 자료. ⛔ 커널 Δ 미산출, 표본 1경기(친선).",
      "duels_lost": 3,
@@ -10160,7 +10245,7 @@
      "interceptions": 0,
      "key_passes": 1,
      "label": "프림퐁",
-     "lineup_pos": "RB",
+     "lineup_pos": "D",
      "map25": "000410101X001360003X00001",
      "minutes": 75,
      "name_en": "Jeremie Frimpong",
@@ -10181,8 +10266,8 @@
     },
     {
      "assists": 0,
-     "avg_x": 33.053333333333,
-     "avg_y": 65.771666666667,
+     "avg_x": 33.05,
+     "avg_y": 65.77,
      "characteristics": "44분 '전혀 불필요한' PK 헌납 — '습관이 되고 있다'는 지적",
      "confidence": "MEDIUM 스탯 / MEDIUM 역할 — 이라올라 체제 첫 밀도 자료. ⛔ 커널 Δ 미산출, 표본 1경기(친선).",
      "duels_lost": 1,
@@ -10193,7 +10278,7 @@
      "interceptions": 3,
      "key_passes": 0,
      "label": "판 다이크",
-     "lineup_pos": "LCB",
+     "lineup_pos": "D",
      "map25": "0010001000431000X61014101",
      "minutes": 59,
      "name_en": "Virgil van Dijk",
@@ -10214,8 +10299,8 @@
     },
     {
      "assists": 0,
-     "avg_x": 50.419642857143,
-     "avg_y": 41.135714285714,
+     "avg_x": 50.42,
+     "avg_y": 41.14,
      "characteristics": "압박 트리거 담당",
      "confidence": "MEDIUM 스탯 / MEDIUM 역할 — 이라올라 체제 첫 밀도 자료. ⛔ 커널 Δ 미산출, 표본 1경기(친선).",
      "duels_lost": 5,
@@ -10226,7 +10311,7 @@
      "interceptions": 0,
      "key_passes": 3,
      "label": "소보슬라이",
-     "lineup_pos": "RDM",
+     "lineup_pos": "M",
      "map25": "00000077X2233340147400003",
      "minutes": 76,
      "name_en": "Dominik Szoboszlai",
@@ -10247,8 +10332,8 @@
     },
     {
      "assists": 1,
-     "avg_x": 44.509230769231,
-     "avg_y": 57.766153846154,
+     "avg_x": 44.51,
+     "avg_y": 57.77,
      "characteristics": "이삭 선제골 어시스트",
      "confidence": "MEDIUM 스탯 / MEDIUM 역할 — 이라올라 체제 첫 밀도 자료. ⛔ 커널 Δ 미산출, 표본 1경기(친선).",
      "duels_lost": 1,
@@ -10259,7 +10344,7 @@
      "interceptions": 2,
      "key_passes": 2,
      "label": "흐라벤베르흐",
-     "lineup_pos": "LDM",
+     "lineup_pos": "M",
      "map25": "0000053520466100X58300200",
      "minutes": 59,
      "name_en": "Ryan Gravenberch",
@@ -10280,8 +10365,8 @@
     },
     {
      "assists": 0,
-     "avg_x": 57.896153846154,
-     "avg_y": 61.894230769231,
+     "avg_x": 57.9,
+     "avg_y": 61.89,
      "characteristics": "이삭과의 조합이 '마침내 눈에 띄었다'. 29분 득점",
      "confidence": "MEDIUM 스탯 / MEDIUM 역할 — 이라올라 체제 첫 밀도 자료. ⛔ 커널 Δ 미산출, 표본 1경기(친선).",
      "duels_lost": 2,
@@ -10292,7 +10377,7 @@
      "interceptions": 0,
      "key_passes": 1,
      "label": "비르츠",
-     "lineup_pos": "CAM",
+     "lineup_pos": "M",
      "map25": "123002X321225212511002000",
      "minutes": 59,
      "name_en": "Florian Wirtz",
@@ -10313,7 +10398,7 @@
     },
     {
      "assists": 0,
-     "avg_x": 64.582857142857,
+     "avg_x": 64.58,
      "avg_y": 70.06,
      "characteristics": "쿠마스의 백포스트 크로스를 받았다",
      "confidence": "MEDIUM 스탯 / MEDIUM 역할 — 이라올라 체제 첫 밀도 자료. ⛔ 커널 Δ 미산출, 표본 1경기(친선).",
@@ -10325,7 +10410,7 @@
      "interceptions": 0,
      "key_passes": 2,
      "label": "학포",
-     "lineup_pos": "LAM",
+     "lineup_pos": "M",
      "map25": "560004X111441100410000000",
      "minutes": 59,
      "name_en": "Cody Gakpo",
@@ -10379,8 +10464,8 @@
     },
     {
      "assists": 0,
-     "avg_x": 31.630555555556,
-     "avg_y": 27.647222222222,
+     "avg_x": 31.63,
+     "avg_y": 27.65,
      "characteristics": "판 다이크 옆에서 침착한 45분, 최고 평가",
      "confidence": "MEDIUM 스탯 / MEDIUM 역할 — 이라올라 체제 첫 밀도 자료. ⛔ 커널 Δ 미산출, 표본 1경기(친선).",
      "duels_lost": 0,
@@ -10412,8 +10497,8 @@
     },
     {
      "assists": 0,
-     "avg_x": 42.086538461538,
-     "avg_y": 80.417307692308,
+     "avg_x": 42.09,
+     "avg_y": 80.42,
      "characteristics": "크로스 낭비·소유 시 헐거움이 지적됐다",
      "confidence": "MEDIUM 스탯 / MEDIUM 역할 — 이라올라 체제 첫 밀도 자료. ⛔ 커널 Δ 미산출, 표본 1경기(친선).",
      "duels_lost": 2,
@@ -10445,7 +10530,7 @@
     },
     {
      "assists": 0,
-     "avg_x": 64.335,
+     "avg_x": 64.33,
      "avg_y": 25.16,
      "characteristics": "'우측의 깜짝 선발' — 본래 자리가 아닌데도 잘했다. 살라 공백의 임시책",
      "confidence": "MEDIUM 스탯 / MEDIUM 역할 — 이라올라 체제 첫 밀도 자료. ⛔ 커널 Δ 미산출, 표본 1경기(친선).",
@@ -10478,8 +10563,8 @@
     },
     {
      "assists": 1,
-     "avg_x": 72.704,
-     "avg_y": 53.112,
+     "avg_x": 72.7,
+     "avg_y": 53.11,
      "characteristics": "16분 선제골, 중앙 최전방 고정",
      "confidence": "MEDIUM 스탯 / MEDIUM 역할 — 이라올라 체제 첫 밀도 자료. ⛔ 커널 Δ 미산출, 표본 1경기(친선).",
      "duels_lost": 4,
@@ -10511,8 +10596,8 @@
     },
     {
      "assists": 0,
-     "avg_x": 8.584375,
-     "avg_y": 49.396875,
+     "avg_x": 8.58,
+     "avg_y": 49.4,
      "characteristics": "하프타임 교체 투입",
      "confidence": "MEDIUM 스탯 / MEDIUM 역할 — 이라올라 체제 첫 밀도 자료. ⛔ 커널 Δ 미산출, 표본 1경기(친선).",
      "duels_lost": 0,
@@ -10544,8 +10629,8 @@
     },
     {
      "assists": 0,
-     "avg_x": 22.483333333333,
-     "avg_y": 31.824074074074,
+     "avg_x": 22.48,
+     "avg_y": 31.82,
      "characteristics": "⛔ 개별 전술 서술 미확보 — 이 경기를 다룬 전담 기자 리포트를 찾지 못했다(미수집이며 평가 없음이 아니다).",
      "confidence": "MEDIUM 스탯 / MEDIUM 역할 — 이라올라 체제 첫 밀도 자료. ⛔ 커널 Δ 미산출, 표본 1경기(친선).",
      "duels_lost": 0,
@@ -13247,13 +13332,13 @@
    "xg_pg": 0.388
   },
   {
-   "avg_rating": 6.5,
-   "dw_pg": 0.5,
+   "avg_rating": 6.47,
+   "dw_pg": 0.33,
    "ic_pg": 0.0,
-   "kp_pg": 1.5,
+   "kp_pg": 1.0,
    "label": "Alexander Isak",
-   "minutes": 189,
-   "n": 3,
+   "minutes": 234,
+   "n": 4,
    "tk_pg": 0.0,
    "xa_pg": null,
    "xg_pg": null
@@ -14510,6 +14595,16 @@
  "season_stats": {
   "Alexander Isak": [
    {
+    "assists": 0,
+    "avg_rating": 6.3,
+    "competition": "Club Friendly",
+    "goals": 0,
+    "minutes": 91,
+    "n": 2,
+    "season": "2026-27",
+    "starts": 2
+   },
+   {
     "assists": 1,
     "avg_rating": 6.65,
     "competition": "Club Friendly Games",
@@ -14518,16 +14613,6 @@
     "n": 2,
     "season": "2026-27",
     "starts": 2
-   },
-   {
-    "assists": null,
-    "avg_rating": 6.2,
-    "competition": "Club Friendly",
-    "goals": null,
-    "minutes": 46,
-    "n": 1,
-    "season": "2026-27",
-    "starts": 1
    }
   ],
   "맥 알리스터": [
@@ -14693,7 +14778,7 @@
     "minutes": 177,
     "n": 3,
     "season": "2026-27",
-    "starts": 2
+    "starts": 3
    },
    {
     "assists": null,
@@ -14897,7 +14982,7 @@
     "minutes": 355,
     "n": 5,
     "season": "2026-27",
-    "starts": 2
+    "starts": 4
    },
    {
     "assists": null,
@@ -15327,7 +15412,7 @@
     "minutes": 135,
     "n": 3,
     "season": "2026-27",
-    "starts": null
+    "starts": 1
    },
    {
     "assists": 2,
@@ -15399,7 +15484,7 @@
     "minutes": 280,
     "n": 5,
     "season": "2026-27",
-    "starts": 1
+    "starts": 3
    },
    {
     "assists": null,
@@ -15685,7 +15770,7 @@
     "minutes": 336,
     "n": 5,
     "season": "2026-27",
-    "starts": 2
+    "starts": 4
    },
    {
     "assists": null,
