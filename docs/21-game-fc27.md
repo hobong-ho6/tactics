@@ -1,10 +1,33 @@
-# FC27 온보딩 체크리스트 (발매 예정 2026-09)
+# FC27 온보딩 체크리스트 (발매 **2026-09-25** — EA 공식 확정)
 
-원칙: **버전 추가 = 행 추가** (game_versions에 FC27 행은 이미 있음). 발매일 실행 순서:
+원칙: **버전 추가 = 행 추가** (game_versions에 FC27 행은 이미 있음).
 
-1. **Day-1 스냅샷**: EA 피치노트 원문 수집 → `game_system_changes`에 area별 기입
-   (FIFA→FC26 소급 요약도 이때 함께). sofifa day-1 로스터 → `player_game_stats`
-   (game_version='FC27', roster_date 명기 — 이력 보존이 v2 설계 의도).
+## ⏰ EA 공식 공개 일정 (2026-08-18 EA 뉴스 원문 · obs#249)
+
+| 시점 | 내용 | 우리 쪽 함의 |
+|---|---|---|
+| 08-17~18 | top-27 남녀 + **리그별 공개**(08-18 PL · 08-19 세리에A·라리가 · 08-20 리그1) | 구단 공식이 top-11을 낸다. **숫자를 본문에 적는 구단과 그래픽으로만 배포하는 구단이 갈린다**(리버풀=본문 ✅ / 빌라=그래픽 ⛔) |
+| **08-21 18:00 BST** | **Full Base Item Database — ⛔ PlayStyles 없음** | **1단계 수집.** OVR·POT·6대 스탯·원능력치·포지션까지. ⚠️ 이적창 마감 전이라 **이번 창 이적이 반영되지 않는다** |
+| **09-10** | **Full base Item Database — ⭐ PlayStyles 포함 + 이적 마감 후 갱신** | **2단계 수집이자 26/27 분석의 정본.** 스즈키·완비사카·루헤리·네델코비치가 그때야 새 소속으로 잡힌다 |
+
+⛔ **`fcratings.com`을 쓰지 말 것** — 「FC 27」 라벨을 달지만 **실제 데이터는 FC26**이다(2026-08-19 확인:
+빌라 스쿼드에 틸레만스·로저스·디뉴·산초가 그대로 있고 이번 창 영입 0명 · 마르티네스 6대 스탯이 우리 FC26 행과 완전 일치).
+⚠️ sofifa·fut.gg는 **전체 DB 공개 전까지 FC26을 계속 표시**한다 — 라벨이 아니라 **스쿼드 구성으로 버전을 판별하라.**
+
+## 실행 순서
+
+1. **Day-1 스냅샷 — 2단계로 나눈다**(obs#249):
+   - **1단계(08-21)**: sofifa 로스터 → `player_game_stats`(game_version='FC27', **roster_date 명기**).
+     ⚠️ **`playstyles`·`traits`는 NULL로 남긴다** — 아직 공개되지 않은 것이지 없는 것이 아니다(결손 ≠ 0, obs#132).
+     ⚠️ sofifa 상세는 **로그인 세션에서만 열린다**(obs#234) — 수집 전 로그인 확인.
+   - **2단계(09-10)**: PlayStyles·traits 채우기 + **이적 반영 로스터를 새 roster_date 행으로 추가**(덮어쓰지 않는다, 불변규칙 2).
+   - EA 피치노트 원문 → `game_system_changes`에 area별 기입(FIFA→FC26 소급 요약도 이때 함께).
+   - ⭐ **3팀 전 스쿼드를 받는다.** 현재 FC26 베이스라인은 **빌라 22 · 첼시 2 · 리버풀 0**으로 편중돼 있어
+     **그대로 두면 첼시·리버풀의 FC26→FC27 델타를 낼 수 없다.** 가능하면 **FC26 베이스라인도 같은 범위로 보강**하라
+     (sofifa는 전체 DB 공개 후에도 FC26 로스터를 계속 제공한다).
+   - ⚠️ **이름 충돌 함정**: 우리 `name_kr` 「알리송」은 **빌라의 Alysson(브라질 LM, OVR 70)** 이고 **리버풀 GK Alisson Becker가 아니다.**
+     `player_game_stats`는 **UNIQUE(game_version, roster_date, name_kr)** 이므로 리버풀 수집 시 충돌한다 —
+     **수집 전에 표시명 규약을 정할 것.**
 2. **역할·커널 수집**: fut.gg `/api/fut/roles/` (키는 id, slug 아님 — obs#92 함정)
    → `game_roles`/`game_role_focus`/`game_role_variants` FC27 행. 좌표 변환은 docs/20 규약.
 3. **게이트 확장**: `core/kernel.py`의 EXPECTED에 FC27 정합값 추가, gates.py 앵커는
