@@ -13,12 +13,14 @@
 <p class="dim">EA 피치노트 원문 분석·판정 이력 전문은 docs/20이 정본. FIFA→FC 변천사는 FC27 온보딩(docs/21) 때 소급 기입.</p>
 <script type="module">
 import { mountHeader, loadKernels } from './assets/data.js';
+import { prose } from './assets/prose.js';
 await mountHeader('game.html');
 const kd = await loadKernels('FC26');
 document.getElementById('gv').textContent = kd.game_version;
 const AREA={engine:'엔진',roles:'역할',positioning:'포지셔닝',attributes:'속성',tactics:'전술',playstyles:'플레이스타일',meta:'메타'};
 document.getElementById('chg').innerHTML='<tr><th>영역</th><th>확정 사실</th><th>구현에의 영향</th><th>근거</th></tr>'+
- (kd.system_changes??[]).map(c=>`<tr><td><b>${AREA[c.area]??c.area}</b></td><td>${c.change}</td><td>${c.impact??''}</td><td class="dim">${c.evidence??''}</td></tr>`).join('');
+ (kd.system_changes??[]).map(c=>`<tr><td><b>${AREA[c.area]??c.area}</b></td><td>${prose(c.change)}</td><td>${prose(c.impact??'')}</td>
+   <td>${c.evidence ? `<details class="refs"><summary>근거 보기</summary>${prose(c.evidence)}</details>` : ''}</td></tr>`).join('');
 const groups=[...new Set(kd.roles.map(r=>r.position_type))];
 const grp=document.getElementById('grp');
 grp.innerHTML=groups.map(g=>`<option>${g}</option>`).join('');

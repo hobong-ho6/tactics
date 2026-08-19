@@ -30,6 +30,7 @@ import { mountHeader, loadTeam, isGkSlot } from './assets/data.js?v=20260816-gk-
 import { decodeMap } from './assets/kernel.js';
 import { drawPitch, drawComposite, drawChip } from './assets/pitch.js';
 import { annotate, mountGlossaryTips } from './assets/glossary.js';
+import { prose } from './assets/prose.js';
 
 const { team } = await mountHeader('match-report.html');
 const td = await loadTeam(team);
@@ -155,8 +156,8 @@ function renderGamePreset(r){
           isGkSlot(p.pos_label) ? '<small class="dim" title="GK는 커널 적합이 변별력을 갖지 못한다(obs#220)">—</small>'
           : present(p.fit_sim)?Number(p.fit_sim).toFixed(3):'—'}</td></tr>`).join('')}</table></div></div>
     ${subs.length?`<p class="dim">종료 XI 교체: ${subs.map(p=>`${esc(p.minute_on)}′ ${esc(all.find(x=>x.player_id===p.replaced_player_id)?.label||'—')} → <b>${esc(p.label)}</b>`).join(' · ')}</p>`:''}
-    <details class="report-source"><summary>이 경기 설정의 근거·한계</summary><p>${esc(s.rationale)}</p>
-      <p class="dim">${esc(s.source)}<br>${esc(s.confidence)}</p></details>`;
+    <details class="report-source"><summary>이 경기 설정의 근거·한계</summary>${prose(s.rationale)}
+      ${prose(s.source)}${prose(s.confidence)}</details>`;
 }
 function render(r){
   document.getElementById('summary').innerHTML=`<div class="match-report-head"><div><h2>${esc(r.title)}</h2>
@@ -173,7 +174,7 @@ function render(r){
   document.getElementById('teamStats').innerHTML=teamStatRows(r);
   renderGamePreset(r);
   document.getElementById('tactical').innerHTML=`
-    <section><h3>전술 설명</h3><p>${annotate(esc(r.tactical_description))}</p></section>
+    <section><h3>전술 설명</h3>${prose(r.tactical_description)}</section>
     <section><h3>전술적 특성</h3><ul>${bullets(r.tactical_features)}</ul></section>
     <section><h3>경기 중 변화</h3><ol>${bullets(r.tactical_changes)}</ol></section>
     <section><h3>게임 구현 함의</h3><ul>${bullets(r.game_implications)}</ul></section>`;
@@ -181,11 +182,13 @@ function render(r){
     <summary><span class="badge ${p.started?'hi':'mid'}">${p.started?'선발':'교체'}</span> <b>${esc(p.position)}</b> ${esc(p.label)} · ${annotate(esc(p.tactical_role))}
       <span class="dim">${esc(p.minutes ?? '—')}분 / ${esc(p.rating ?? '—')}</span></summary>
     <div class="player-report-body">${miniMap(p.map25)}<div>
-      <p><b>특성</b> ${annotate(esc(p.characteristics))}</p><p><b>경기 평가</b> ${annotate(esc(p.performance))}</p>
-      <p><b>FC 구현</b> ${annotate(esc(p.game_implication))}</p>${statsTable(p)}
-      <p class="dim">${esc(p.source)} · ${esc(p.confidence)}</p></div></div></details>`).join('');
-  document.getElementById('sourceMeta').innerHTML=`<p class="kv"><b>출처</b> ${esc(r.source)}<br>
-    <b>신뢰도</b> ${esc(r.confidence)}<br><b>원문 경로</b> <code>${esc(r.report_path)}</code></p>`;
+      <div class="kv"><b>특성</b></div>${prose(p.characteristics)}
+      <div class="kv"><b>경기 평가</b></div>${prose(p.performance)}
+      <div class="kv"><b>FC 구현</b></div>${prose(p.game_implication)}${statsTable(p)}
+      <details class="refs"><summary>출처 · 신뢰도</summary>${prose(p.source)}${prose(p.confidence)}</details></div></div></details>`).join('');
+  document.getElementById('sourceMeta').innerHTML=`<div class="kv"><b>출처</b></div>${prose(r.source)}
+    <div class="kv"><b>신뢰도</b></div>${prose(r.confidence)}
+    <p class="kv"><b>원문 경로</b> <code>${esc(r.report_path)}</code></p>`;
   document.getElementById('markdown').textContent=r.report_markdown || '원문 파일을 찾을 수 없습니다.';
   const keep=playerSel.value;
   const starters=r.players.filter(p=>p.started), subs=r.players.filter(p=>!p.started);

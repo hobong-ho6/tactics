@@ -17292,7 +17292,129 @@
    "team_code": "LIV"
   }
  ],
- "slot_canon": [],
+ "slot_canon": [
+  {
+   "confidence": "편차 +0.040 — 실측 최적은 같은 역할의 **Balanced**(.976 vs 정본 Defend .936). 방향 일치, 포커스만 다르다. [산출: 정본 0.936 · 실측최적 gk_goalkeeper/Balanced 0.976 · 점유자 알리송 베케르]",
+   "focus": "Defend",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "pos": "GK",
+   "rationale": "⭐ **GK는 빌드업 기점이 아니다** — 이라올라는 세 감독 중 유일한 **비점유 다이렉트** 팀이고(전진 속도 1.95 m/s · 시퀀스당 패스 **2.98** · 다이렉트 어택 리그 1위, obs#66 1티어 Opta), docs/12는 「**GK를 우회하는 다이렉트 빌드업**」을 명시한다. ↔ 알론소의 「GK = 압박 시 +1 제공자」(obs#44)와 정반대 극.",
+   "role_id": "gk_goalkeeper",
+   "source": "docs/12-iraola-tactics.md (obs#65~69 · 압박·주행 축) · 이라올라 실측 프리시즌 4-2-3-1 5경기(SofaScore event 16090445·16282054·16289305·16284988·16846122) · AVL slot_canon_roles(에메리) 대조",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "편차 — 실측 최적은 `fb_att_wb`/Support **.918**. `fb_wingback`은 오버랩·크로스형이라 서사와 맞지만 커널 값이 낮다. ⚠️ FC26 `fb_wingback`은 Attack 포커스를 제공하지 않는다(Balanced/Support만) — 「공격적 크로서」를 표현할 조합이 없다는 제약을 명기한다. [산출: 정본 0.800 · 실측최적 fb_att_wb/Support 0.918 · 점유자 케르케즈]",
+   "focus": "Support",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "pos": "LB",
+   "rationale": "⭐⭐ **풀백은 크로서다** — 「낮고 빠른 얼리크로스가 리허설된 패턴」. 케르케즈 오픈플레이 기회창출 15(7위)·오픈플레이 크로스 **37(6위)**·성공 크로스 10(6위) (obs#67, 1티어 수치). ↔ 알론소 obs#46(「윙백은 크로서가 아니라 득점자, 크로스 의존 분데스 하위 2번째」)와 **정반대 극**. ⭐ 실측이 이를 지지한다 — **풀백이 폭을 독점**한다(케르케즈 툴x 17.0 · 프림퐁 83.8, 와이드 미드 26.5·72.5보다 넓다).",
+   "role_id": "fb_wingback",
+   "source": "docs/12-iraola-tactics.md (obs#65~69 · 압박·주행 축) · 이라올라 실측 프리시즌 4-2-3-1 5경기(SofaScore event 16090445·16282054·16289305·16284988·16846122) · AVL slot_canon_roles(에메리) 대조",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "⚠️ **편차 +0.136** — 실측 최적은 `cb_bpd`/Aggressive **.922**(정본 .786). 판 다이크 그리드는 **볼 플레잉 성향**이고 스토퍼형 이동 패턴이 아니다. ⛔ 좌표 실측이 없는 obs#68 근거라 「서사 vs 실측」 대치이고 판정은 개막 후로 미룬다. [산출: 정본 0.786 · 실측최적 cb_bpd/Aggressive 0.922 · 점유자 판 다이크]",
+   "focus": "Aggressive",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "pos": "LCB",
+   "rationale": "⭐⭐ **세 감독 중 이라올라만 맨마킹을 쓴다** — 「존 출발 → 트랩 → **맨투맨 락온 + 인계(takeover)**」 하이브리드이고 「CB는 내려오는 스트라이커를 따라 나간다」(obs#68, 2티어 2소스 교차). 존 컴팩트가 아니라 **사람을 따라가는** 역할이므로 `cb_stopper`다. ↔ 에메리 존 콤팩트 4-4-2(obs#2), 알론소 전방3 좁게·백라인 넓게(obs#50).",
+   "role_id": "cb_stopper",
+   "source": "docs/12-iraola-tactics.md (obs#65~69 · 압박·주행 축) · 이라올라 실측 프리시즌 4-2-3-1 5경기(SofaScore event 16090445·16282054·16289305·16284988·16846122) · AVL slot_canon_roles(에메리) 대조",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "⚠️ **편차 +0.124** — 실측 최적 `cb_bpd`/Aggressive .925(정본 .801). ⚠️ 현재 1순위 점유자가 **Ndukwe(유스, n=4)** 라는 사실 자체가 obs#69의 CB 공백을 그대로 보여준다. [산출: 정본 0.801 · 실측최적 cb_bpd/Aggressive 0.925 · 점유자 Ifeanyi Ndukwe]",
+   "focus": "Aggressive",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "pos": "RCB",
+   "rationale": "좌측과 동일. ⭐⭐ **리버풀 이식의 최대 결손 지점이 이 슬롯이다** — 감독 본인 인용: 「센터백 세네시조차 때때로 박스 근처까지 따라 들어간다」. 그런데 26/27 가용 시니어 CB가 **반 다이크 1명뿐**이다(코나테 레알 자유이적·레오니 ACL·고메스 근육 부상·자케 어깨) → **이 지시를 수행할 인원이 없다**(obs#69, 1티어 본인 인용).",
+   "role_id": "cb_stopper",
+   "source": "docs/12-iraola-tactics.md (obs#65~69 · 압박·주행 축) · 이라올라 실측 프리시즌 4-2-3-1 5경기(SofaScore event 16090445·16282054·16289305·16284988·16846122) · AVL slot_canon_roles(에메리) 대조",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "편차 — 실측 최적은 `fb_att_wb`/Support **.942**(스쿼드 최고 FB 값). LB와 동일한 조합 제약. [산출: 정본 0.780 · 실측최적 fb_att_wb/Support 0.942 · 점유자 프림퐁]",
+   "focus": "Support",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "pos": "RB",
+   "rationale": "좌측과 대칭 — 폭 독점 + 얼리크로스(obs#67). 프림퐁 실측 툴x **83.8**(n=5, 336분)로 터치라인을 점유한다. ⚠️ 그는 **알론소 레버쿠젠의 프림퐁 본인**이고 지금 이라올라 밑에서 뛴다 — 같은 선수를 두 체제가 같은 방식(폭 독점)으로 쓴다는 뜻이다(obs#257).",
+   "role_id": "fb_wingback",
+   "source": "docs/12-iraola-tactics.md (obs#65~69 · 압박·주행 축) · 이라올라 실측 프리시즌 4-2-3-1 5경기(SofaScore event 16090445·16282054·16289305·16284988·16846122) · AVL slot_canon_roles(에메리) 대조",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "⚠️ **편차 +0.226** — 실측 최적은 `dm_dlp`/Roaming **.900**(정본 .674). 흐라벤베르흐 그리드는 **배급·이동형**이고 순수 회수형이 아니다. ⛔ 정본은 감독 요구이고 실측은 인선 특성이다 — 이 칸은 **인선이 요구와 다르다**는 신호로 읽는다. [산출: 정본 0.674 · 실측최적 dm_dlp/Roaming 0.900 · 점유자 흐라벤베르흐]",
+   "focus": "Ball-Winning",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "pos": "LDM",
+   "rationale": "피벗의 1차 임무는 **압박 회수와 인계(takeover)** 다 — 「우리는 높은 위치에서 볼을 많이 회수하고 있다」(obs#69 본인 인용). 물리적 토대는 주행량이고 **총주행 1,683.4km 리그 1위**(경기당 112.2km, obs#178 계열)다. PPDA 통산 10.6.",
+   "role_id": "dm_holding",
+   "source": "docs/12-iraola-tactics.md (obs#65~69 · 압박·주행 축) · 이라올라 실측 프리시즌 4-2-3-1 5경기(SofaScore event 16090445·16282054·16289305·16284988·16846122) · AVL slot_canon_roles(에메리) 대조",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "⚠️ **편차 +0.132** — 실측 최적 `dm_dlp`/Roaming .855(정본 .723). ⚠️ FC26 `dm_boxcrasher`는 **Balanced 포커스만** 제공한다 — 「공격적 박스 침투」를 표현할 조합이 없다. [산출: 정본 0.723 · 실측최적 dm_dlp/Roaming 0.855 · 점유자 흐라벤베르흐]",
+   "focus": "Balanced",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "pos": "RDM",
+   "rationale": "⭐ **미드필더가 상대 박스까지 침투한다** — 감독 본인 지시: 「때로는 루이스 [쿡]을 **상대 박스 안에서** 보는 것에 익숙해져야 한다」(obs#69, 1티어). 피벗 2명이 동형이 아니라 **한 명은 회수(LDM)·한 명은 침투(RDM)** 로 갈린다. ↔ 에메리는 둘 다 `dm_holding`으로 **자리 유지**가 1차 임무다(AVL 정본).",
+   "role_id": "dm_boxcrasher",
+   "source": "docs/12-iraola-tactics.md (obs#65~69 · 압박·주행 축) · 이라올라 실측 프리시즌 4-2-3-1 5경기(SofaScore event 16090445·16282054·16289305·16284988·16846122) · AVL slot_canon_roles(에메리) 대조",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "✅ **편차 0.000 — 정본과 실측 최적이 완전히 일치한다.** `wm_wideplm`/Attack **.800**. [산출: 정본 0.800 · 실측최적 wm_wideplm/Attack 0.800 · 점유자 학포]",
+   "focus": "Attack",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "pos": "LM",
+   "rationale": "**와이드는 안쪽으로 들어오고 폭은 풀백이 댄다.** ⭐ 실측이 직접 지시한다 — 학포 툴x **26.5**(n=2)로 터치라인(14)이 아니라 하프스페이스에 선다. 풀백 폭(17.0↔83.8, 66.8) > 와이드미드 폭(26.5↔72.5, 46.0). ⇒ 에메리 빌라와 **같은 결론·다른 이유**다(AVL 정본도 `wm_wideplm`/Attack).",
+   "role_id": "wm_wideplm",
+   "source": "docs/12-iraola-tactics.md (obs#65~69 · 압박·주행 축) · 이라올라 실측 프리시즌 4-2-3-1 5경기(SofaScore event 16090445·16282054·16289305·16284988·16846122) · AVL slot_canon_roles(에메리) 대조",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "✅ 편차 0.000(정의상) — `cam_playmaker`/Roaming **.823**. ⚠️ 이 값은 **비르츠 개인 특성**이고 「이라올라가 10번에게 요구하는 것」이 아니다 — 인선이 바뀌면 정본도 재도출해야 한다. ⭐ 참고: 비르츠는 **알론소 레버쿠젠의 그 비르츠**이고 첼시 로저스와 커널 산출이 동일하다(obs#257). 다이렉트 팀에서 창조형 10번을 쓰는 것이 이라올라 원형인지 **비르츠라서 그런지 구분되지 않는다** — in_possession obs 수집이 최우선 백로그. [산출: 정본 0.823 · 실측최적 cam_playmaker/Roaming 0.823 · 점유자 비르츠]",
+   "focus": "Roaming",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "pos": "CAM",
+   "rationale": "⛔ **이 슬롯의 정본은 서사로 도출하지 못했다 — 실측을 채택했다.** docs/12 「점유 국면(in_possession)」 절은 **`scope=in_possession`인 LIV obs가 0행**이라고 명시한다. 알론소 쪽 obs#48(2×10 분화)에 대응하는 이라올라 기록이 없다. ⇒ 불변규칙 3(실측 > 서사)에 따라 실측 최적을 그대로 정본으로 둔다.",
+   "role_id": "cam_playmaker",
+   "source": "docs/12-iraola-tactics.md (obs#65~69 · 압박·주행 축) · 이라올라 실측 프리시즌 4-2-3-1 5경기(SofaScore event 16090445·16282054·16289305·16284988·16846122) · AVL slot_canon_roles(에메리) 대조",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "✅ **편차 0.000 — 정본과 실측 최적이 완전히 일치한다.** `wm_wideplm`/Attack **.858**. [산출: 정본 0.858 · 실측최적 wm_wideplm/Attack 0.858 · 점유자 엘리엇]",
+   "focus": "Attack",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "pos": "RM",
+   "rationale": "좌측과 대칭. 엘리엇 툴x **72.5**(n=2)로 터치라인(85)이 아니라 안쪽이다. 다이렉트 팀이므로 크로스 공급은 풀백이 맡고 와이드 미드는 **세컨드볼·침투 경로**를 만든다(obs#66·67).",
+   "role_id": "wm_wideplm",
+   "source": "docs/12-iraola-tactics.md (obs#65~69 · 압박·주행 축) · 이라올라 실측 프리시즌 4-2-3-1 5경기(SofaScore event 16090445·16282054·16289305·16284988·16846122) · AVL slot_canon_roles(에메리) 대조",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "편차 +0.020 — 실측 최적 `st_false9`/Attack .725(정본 .705). 차이가 노이즈 구간(Δ.025) 이내여서 **정본과 실측이 사실상 구분되지 않는다**. ⚠️ 이삭 표본 3경기 188분. [산출: 정본 0.705 · 실측최적 st_false9/Attack 0.725 · 점유자 Alexander Isak]",
+   "focus": "Attack",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "pos": "ST",
+   "rationale": "**최전방이 압박의 시작점이다** — 「곡선 런으로 GK가 CB에게 주도록 강제」한 뒤 볼이 백라인에 닿으면 맨투맨으로 전환한다(obs#68). 동시에 다이렉트 공격(전진속도 1위)의 종점이므로 내려오는 9번이 아니라 **전진형**이다.",
+   "role_id": "st_advanced",
+   "source": "docs/12-iraola-tactics.md (obs#65~69 · 압박·주행 축) · 이라올라 실측 프리시즌 4-2-3-1 5경기(SofaScore event 16090445·16282054·16289305·16284988·16846122) · AVL slot_canon_roles(에메리) 대조",
+   "updated": "2026-08-19"
+  }
+ ],
  "slots": [
   {
    "formation": "4-2-3-1 Wide",

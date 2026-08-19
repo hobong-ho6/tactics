@@ -21,7 +21,8 @@
 결론(프로필 축·세팅)만 보여준다.</p>
 <script type="module">
 import { mountHeader, loadTeam, slotCandidates } from './assets/data.js?v=20260813-slot-candidates';
-import { annotate, mountGlossaryTips } from './assets/glossary.js';
+import { mountGlossaryTips } from './assets/glossary.js';
+import { prose } from './assets/prose.js';   // 긴 DB 산문은 공용 렌더러로 끊어 읽는다(player.html과 동일)
 
 const { team, regime } = await mountHeader('report.html');
 const td = await loadTeam(team);
@@ -75,7 +76,7 @@ function drawSheet(){
    }).join('') + '</div>';
   document.getElementById('sheet').innerHTML = '<tr><th>밴드</th><th>슬롯</th><th>선수 (교체 가능)</th><th>역할</th><th>포커스</th></tr>'+
    (all.length ? order.map(pos=>{
-     const c = byPos[pos]; if(!c.length) return `<tr><td><b>${pos}</b></td><td colspan="3" class="dim">인선 공백</td></tr>`;
+     const c = byPos[pos]; if(!c.length) return `<tr>${bandCell(pos)}<td><b>${pos}</b></td><td colspan="3" class="dim">인선 공백</td></tr>`;
      const p = chosen[pos]>=0 ? c[chosen[pos]] : null;
      const sel = c.length>1 || !p ? `<select data-pos="${pos}">
        ${!p?'<option value="-1" selected>인선 공백 — 기존 선발 이탈</option>':''}
@@ -114,7 +115,8 @@ function drawCanon(){
        : roleSame ? '<span class="badge mid">포커스만</span>'
        : '<span class="badge dead">역할 상이</span>';
      const cur = p ? `${p.role_id}<br><small class="dim">${p.focus}</small>` : '<span class="dim">—</span>';
-     const why = [c.rationale, c.confidence].filter(Boolean).map(t=>`<div style="margin:6px 0">${annotate(t)}</div>`).join('');
+     const why = [['근거',c.rationale],['신뢰도·편차',c.confidence]].filter(([,v])=>v)
+       .map(([k,v])=>`<div style="margin:8px 0 2px"><b class="dim">${k}</b></div>${prose(v)}`).join('');
      return `<tr>${bandCell(c.pos)}<td><b>${c.pos}</b></td>
        <td><b>${c.role_id}</b><br><small class="dim">${c.focus}</small></td>
        <td>${cur}</td><td>${mark}</td>
@@ -132,8 +134,8 @@ const AXES = { philosophy:'철학', traits:'전술적 특징', role_demands:'역
 document.getElementById('profile').innerHTML =
   `<tr><th>축</th><th>확정 결론</th><th>근거</th><th>갱신</th></tr>` +
   (td.profile.length ? td.profile.map(p => `<tr><td><b>${AXES[p.axis] ?? p.axis}</b></td>
-     <td>${annotate(p.content)}</td>
-     <td>${p.evidence ? `<details class="refs"><summary>근거 보기</summary><div class="dim">${annotate(p.evidence)}</div></details>` : ''}</td>
+     <td>${prose(p.content)}</td>
+     <td>${p.evidence ? `<details class="refs"><summary>근거 보기</summary>${prose(p.evidence)}</details>` : ''}</td>
      <td>${p.updated ?? ''}</td></tr>`).join('')
    : `<tr><td colspan="4" class="dim">아직 프로필 축이 기록되지 않았다 — docs 문서에서 이관 예정
       (manager_profiles 테이블에 INSERT 후 재익스포트)</td></tr>`);
