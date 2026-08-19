@@ -80,3 +80,23 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 화면 풀에서 숨긴다. 모든 선수 목록 화면은 export의 `slot_candidates`와 공용 JS 함수만 사용한다.
 transfer_targets가 CONFIRMED가 되는 순간 squad_entries로 승격하는 규칙도 유지한다.
 G8이 슬롯별 중복·도달 불가 스쿼드 행·활성 이적 후보 누락을 차단한다.
+
+### 좌우 쌍 슬롯의 한쪽만 쓰기 — `squad_entries.pos_only` (2026-08-19 추가)
+
+`squad_entries`는 `pos`가 아니라 **`slot_type`으로 슬롯과 조인**한다. 그런데 좌우 쌍 슬롯
+(`FB`=LB/RB · `CB`=LCB/RCB · `DM`=LDM/RDM · `WM`=LM/RM)은 한 `slot_type`이 **두 pos를 덮으므로,
+그 유형의 선수는 기본적으로 양쪽 후보에 모두 뜬다.** 왼발 전문 풀백이 RB 드롭다운에 나오는 것이 이 때문이다.
+
+- 한쪽만 후보로 쓰려면 그 행의 **`pos_only`에 해당 pos를 적는다**(예: 루헤리 `pos_only='LB'`).
+  `NULL`이면 종전대로 `slot_type`의 모든 pos에 노출된다 — **기본 동작은 바뀌지 않았다.**
+- 필터는 뷰 `v_slot_candidates`의 squad 브랜치에 있다: `(se.pos_only IS NULL OR se.pos_only = sl.pos)`.
+- ⚠️ **실측 좌우로 자동 판정하지 않는다.** 히트맵의 `sideMismatch` 경고는 참고용일 뿐이고,
+  친선 소표본에서 좌우가 뒤집혀 기록된 행이 실재한다(2026-08-19 확인: 마첸 툴x 87.9 / 캐시 14.5, 각 n=2·3).
+  자동 배제로 돌리면 **정상 선수를 지운다** — 그래서 `pos_only`는 **명시 지정 전용**이다.
+
+### 확정 영입 라벨 규약 (2026-08-19 변경)
+
+`(합류확정)` 접미는 **쓰지 않는다.** 종전에는 `squad_entries.label`에 문자열로 박히고
+`v_slot_candidates`의 transfer 브랜치가 `likelihood='CONFIRMED'`일 때 덧붙였는데, **양쪽 다 제거**했다.
+확정 여부는 라벨이 아니라 **`lh`/`status` 값으로 전달**하고, 화면 배지는 그 값으로 그린다
+(`compare.html`이 이미 그렇게 동작한다). `영입·` 접두(미확정 이적 후보)와 `(신규)`·`(보유)`는 그대로 유지한다.
