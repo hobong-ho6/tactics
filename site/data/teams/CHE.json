@@ -19198,7 +19198,129 @@
    "team_code": "CHE"
   }
  ],
- "slot_canon": [],
+ "slot_canon": [
+  {
+   "confidence": "⚠️ **편차 +0.167** — 실측 최적은 `gk_goalkeeper`/Balanced .956, 정본 역할은 .789다. 알론소의 GK 빌드업 참여가 **첼시에서는 아직 재현되지 않는다**. 산체스 실측(툴x 51.2·툴y 11.9)은 표준 GK 깊이다.",
+   "focus": "Build-Up",
+   "formation": "3-4-2-1",
+   "game_version": "FC26",
+   "pos": "GK",
+   "rationale": "압박 시 **+1 제공자**다 — 후방 수적 우위를 GK가 만든다(obs#44, 2티어). 백3가 벌어지고 피벗이 내려올 때 마지막 출구.",
+   "role_id": "gk_ballplaying",
+   "source": "docs/11-alonso-tactics.md (obs#43~50·58·59) · team_tactic_setups id=8(레버쿠젠 이식 초안 2026-07-25) · obs#257(레버쿠젠→첼시 매칭 실측 검증) · 알론소 실측 SofaScore event 16285002·16767421",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "⚠️ **편차 +0.118** — 실측 최적은 같은 역할의 **Aggressive** 포커스(.720 vs 정본 Build-Up .602). 콜윌은 배급보다 **전진·압박** 성향으로 뛴다.",
+   "focus": "Build-Up",
+   "formation": "3-4-2-1",
+   "game_version": "FC26",
+   "pos": "LCB",
+   "rationale": "**인카피에 롤** — 좌 전진 스텝 + 볼 진행. 「센터백의 전진 드리블로 상대를 끌어내 중앙을 연다」(obs#44)의 좌측 실행자.",
+   "role_id": "cb_bpd",
+   "source": "docs/11-alonso-tactics.md (obs#43~50·58·59) · team_tactic_setups id=8(레버쿠젠 이식 초안 2026-07-25) · obs#257(레버쿠젠→첼시 매칭 실측 검증) · 알론소 실측 SofaScore event 16285002·16767421",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "⚠️ **편차 +0.151** — 실측 최적은 **Aggressive**(.844 vs .693). 라크루아 실측 툴x 57.5는 앵커 57과 Δ+0.5로 자리는 정확하나 **역할 성향이 배급형이 아니다**. ⚠️ 데뷔 1경기 표본.",
+   "focus": "Build-Up",
+   "formation": "3-4-2-1",
+   "game_version": "FC26",
+   "pos": "CCB",
+   "rationale": "**타 롤** — 백3 중앙의 지휘·롱 대각 배급축. 좌우 CB가 벌어질 때 유일한 잔류 중앙이므로 rest-defense의 기준점이기도 하다.",
+   "role_id": "cb_bpd",
+   "source": "docs/11-alonso-tactics.md (obs#43~50·58·59) · team_tactic_setups id=8(레버쿠젠 이식 초안 2026-07-25) · obs#257(레버쿠젠→첼시 매칭 실측 검증) · 알론소 실측 SofaScore event 16285002·16767421",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "⛔ **커널이 기각한다** — x=75에서 `cb_wideback`/Support **.437** < `cb_bpd`/Aggressive **.480**(편차 +0.043). ⭐ 단 **위치는 확증된다**: 포파나 실측 툴x **74.6**으로 앵커 75보다도 벌어진다 = 「와이드 이탈」 메커니즘 자체는 실재한다(obs#257). ⇒ **역할명은 틀렸고 움직임은 맞다.** FC26 `cb_wideback` 커널이 이 움직임을 표현하지 못하는 것일 수 있다.",
+   "focus": "Support",
+   "formation": "3-4-2-1",
+   "game_version": "FC26",
+   "pos": "RCB",
+   "rationale": "**탑소바/코수누 롤** — 빌드업 시 **와이드로 이탈**해 볼을 캐리한다. 우측 윙백이 높이 올라간 뒤 생기는 폭을 CB가 메운다.",
+   "role_id": "cb_wideback",
+   "source": "docs/11-alonso-tactics.md (obs#43~50·58·59) · team_tactic_setups id=8(레버쿠젠 이식 초안 2026-07-25) · obs#257(레버쿠젠→첼시 매칭 실측 검증) · 알론소 실측 SofaScore event 16285002·16767421",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "⚠️⚠️ **이 시스템의 최대 편차 +0.302** — 실측 최적은 `wm_winger`/Balanced **.908**, 정본은 **.606**이다. ⇒ **팔레스트라는 그리말도처럼 안으로 들어오지 않고 정통 윙어로 뛴다.** id=8이 남긴 구조 리스크(「쿠쿠레야 매각으로 그리말도 롤 적임자가 아토뿐」)가 실측으로 확인된 형태다. ⚠️ obs#257 정정: id=8은 팔레스트라를 **프림퐁 롤(우측)** 로 지정했으나 실측은 **좌측 전용**(툴x 13.6·16.1)이다.",
+   "focus": "Build-Up",
+   "formation": "3-4-2-1",
+   "game_version": "FC26",
+   "pos": "LM",
+   "rationale": "**그리말도 롤** — 좌 윙백이지만 크로서가 아니라 **딥에서 대각으로 안쪽을 향하는 플레이메이커**다. 「폭은 윙백 2명이 독점하며 이들은 크로서가 아니라 득점자다」(obs#46, 1티어 Opta — 그리말도·프림퐁 합계 분데스리가 39골 관여).",
+   "role_id": "wm_wideplm",
+   "source": "docs/11-alonso-tactics.md (obs#43~50·58·59) · team_tactic_setups id=8(레버쿠젠 이식 초안 2026-07-25) · obs#257(레버쿠젠→첼시 매칭 실측 검증) · 알론소 실측 SofaScore event 16285002·16767421",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "⚠️ **편차 +0.068** — 실측 최적은 `cm_playmaker`/Roaming .847(정본 .779). 방향은 같고(창조·배급) **자리 유지보다 이동**이 강하다. ⚠️ obs#257 정정: id=8은 이 자리를 **엔소**로 지정했으나 소시에다드전 LCM 선발은 **리스 제임스**(주장 완장)다.",
+   "focus": "Build-Up",
+   "formation": "3-4-2-1",
+   "game_version": "FC26",
+   "pos": "LCM",
+   "rationale": "**샤카 롤** — 오케스트레이터. 「더블 피벗은 백라인 옆까지 내려와 볼 사이드로 이동」하며 짧은 패스거리로 압박을 유인한 뒤 관통한다(obs#44). 레버쿠젠 기준선: 샤카 패스성공률 94%·팀 패스정확도 리그 1위 90%(obs#45).",
+   "role_id": "cm_dlp",
+   "source": "docs/11-alonso-tactics.md (obs#43~50·58·59) · team_tactic_setups id=8(레버쿠젠 이식 초안 2026-07-25) · obs#257(레버쿠젠→첼시 매칭 실측 검증) · 알론소 실측 SofaScore event 16285002·16767421",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "✅ **역할 일치 · 편차 +0.092**(포커스만 Ball-Winning → Defend). 실측 최적 `cm_holding`/**Defend** .885 — ⭐ **서사에서 도출한 역할명이 실측 최적과 같은 역할군·같은 역할로 떨어진 유일한 수비축**이다.",
+   "focus": "Ball-Winning",
+   "formation": "3-4-2-1",
+   "game_version": "FC26",
+   "pos": "RCM",
+   "rationale": "**팔라시오스 롤** — 볼위너 스크린. 피벗 2명 중 잔류·회수축이고, 「실점 억제의 실제 엔진은 라인 높이가 아니라 카운터프레스 볼회수량」(obs#50 계열)의 실행자.",
+   "role_id": "cm_holding",
+   "source": "docs/11-alonso-tactics.md (obs#43~50·58·59) · team_tactic_setups id=8(레버쿠젠 이식 초안 2026-07-25) · obs#257(레버쿠젠→첼시 매칭 실측 검증) · 알론소 실측 SofaScore event 16285002·16767421",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "✅ **역할 일치 · 편차 +0.060**(포커스만 Attack → Balanced). 실측 `wm_winger`/Balanced .914. ⭐ obs#257: **네투 ↔ 프림퐁 본인(현 리버풀) 그리드 코사인 0.910**(첼시 35행 중위 0.523)으로 직접 확증됐다. ⚠️ obs#257 정정: id=8은 이 자리를 팔레스트라로 지정했으나 실제 우측 윙백은 **네투**다.",
+   "focus": "Attack",
+   "formation": "3-4-2-1",
+   "game_version": "FC26",
+   "pos": "RM",
+   "rationale": "**프림퐁 롤** — 터치라인을 점유하는 하이 윙어. 레버쿠젠 기준선: 프림퐁 22/23 성공 드리블 82회·10m+ 전진 캐리 162회 **모두 리그 1위**, 반면 **팀 크로스 의존도는 분데스리가 하위 2번째**(obs#46) = 폭을 잡되 크로스가 아니라 침투로 마무리한다.",
+   "role_id": "wm_winger",
+   "source": "docs/11-alonso-tactics.md (obs#43~50·58·59) · team_tactic_setups id=8(레버쿠젠 이식 초안 2026-07-25) · obs#257(레버쿠젠→첼시 매칭 실측 검증) · 알론소 실측 SofaScore event 16285002·16767421",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "✅✅ **편차 0.000 — 정본과 실측 최적이 완전히 일치한다.** `cam_playmaker`/Roaming **.827**. ⭐ 그리고 **비르츠 본인(현 리버풀)의 커널 산출도 `cam_playmaker`/Roaming .823**으로 역할·포커스·적합도가 사실상 동일하다(obs#257). ⇒ 「비르츠 자리는 로저스」가 **id=8 지정 · 실측 위치(툴x 35.1) · 커널 역할** 3중으로 지지된다.",
+   "focus": "Roaming",
+   "formation": "3-4-2-1",
+   "game_version": "FC26",
+   "pos": "LAM",
+   "rationale": "**비르츠 롤** — 하프스페이스 2×10 중 **로머/최종 창조자**. 「하프스페이스 10번 2명은 동형이 아니다 — 한 명은 로머·최종 창조자(비르츠, 23/24 중반 31개 기회 창출), 다른 한 명은 커넥터(호프만)」(obs#48, 1티어 수치). ⭐ 알론소 본인 지시: 로저스는 「포켓 위치, 스트라이커 근처, 우리 10번 근처」(obs#59, 1티어 구단 공식 인용).",
+   "role_id": "cam_playmaker",
+   "source": "docs/11-alonso-tactics.md (obs#43~50·58·59) · team_tactic_setups id=8(레버쿠젠 이식 초안 2026-07-25) · obs#257(레버쿠젠→첼시 매칭 실측 검증) · 알론소 실측 SofaScore event 16285002·16767421",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "⚠️ **편차 +0.035** — 실측 최적은 `st_poacher`/Support .821(정본 .787). ⚠️ 그러나 실측 툴x **39.9**로 두 경기 모두 **좌측으로 흐른다** — 「드롭 링크」와 정합하고 obs#59의 「내려오는 9번」을 지지한다. 역할명 차이는 노이즈 구간에 가깝다.",
+   "focus": "Support",
+   "formation": "3-4-2-1",
+   "game_version": "FC26",
+   "pos": "ST",
+   "rationale": "**보니페이스 롤** — 드롭 링크 + **카운터프레스 선봉**. 폭은 윙백이 잡고 「득점 경로는 중앙」(obs#47, 24/38골이 중앙 기원)이라 9번은 연결과 재압박이 1차 임무다. 프리미어리그 공식 예측도 주앙 페드루를 「내려오는 9번」으로 규정(obs#58).",
+   "role_id": "st_advanced",
+   "source": "docs/11-alonso-tactics.md (obs#43~50·58·59) · team_tactic_setups id=8(레버쿠젠 이식 초안 2026-07-25) · obs#257(레버쿠젠→첼시 매칭 실측 검증) · 알론소 실측 SofaScore event 16285002·16767421",
+   "updated": "2026-08-19"
+  },
+  {
+   "confidence": "✅✅ **편차 0.000 — 정본과 실측 최적이 완전히 일치한다.** `cam_playmaker`/Build-Up **.877**. ⭐ LAM과 **같은 역할·다른 포커스**(Roaming ↔ Build-Up)로 obs#48의 「2×10은 동형이 아니다」가 커널 수준에서 재현된다.",
+   "focus": "Build-Up",
+   "formation": "3-4-2-1",
+   "game_version": "FC26",
+   "pos": "RAM",
+   "rationale": "**호프만 롤** — 2×10 중 **커넥터**. 로머(LAM)와 달리 연결·전진 담당이고, 알론소는 팔머-로저스 병용에 대해 「I can see them linking really well」이라 했다(obs#59).",
+   "role_id": "cam_playmaker",
+   "source": "docs/11-alonso-tactics.md (obs#43~50·58·59) · team_tactic_setups id=8(레버쿠젠 이식 초안 2026-07-25) · obs#257(레버쿠젠→첼시 매칭 실측 검증) · 알론소 실측 SofaScore event 16285002·16767421",
+   "updated": "2026-08-19"
+  }
+ ],
  "slots": [
   {
    "formation": "3-4-2-1",

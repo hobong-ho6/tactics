@@ -3,7 +3,10 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css">
 <style>/* 감독 프로필 표 — 축·갱신(날짜) 열은 꺾지 않는다 */
-#profile td:first-child,#profile td:last-child{white-space:nowrap}</style></head><body>
+#profile td:first-child,#profile td:last-child{white-space:nowrap}
+/* 표 안의 접이식 근거는 공용 .refs 폭 제한(360px)을 풀어 셀 폭을 그대로 쓴다 */
+#canon details.refs,#profile details.refs{min-width:0;max-width:none}
+#canon td:nth-child(3),#canon td:nth-child(4){white-space:nowrap}</style></head><body>
 <div id="hdr"></div>
 <h1 id="title"></h1>
 <div class="panel"><h2>⭐ FC26 설정 시트 — 게임에 그대로 입력</h2>
@@ -52,7 +55,17 @@ const chosen = Object.fromEntries(order.map(pos=>{
 }));
 const canon = Object.fromEntries((td.slot_canon ?? [])
   .filter(c=>!su?.formation || c.formation===su.formation).map(c=>[c.pos,c]));
+/* 밴드 = 슬롯 유형을 라인으로 묶은 표시용 그룹. 11행을 한 덩어리로 두면 읽히지 않아
+   GK/수비/중원/2선/전방으로 나눈다. 같은 밴드가 이어지면 라벨을 비운다(반복 제거). */
+const BAND = { GK:'GK', CB:'수비', FB:'수비', DM:'중원', CM:'중원', WM:'2선', CAM:'2선', W:'전방', ST:'전방' };
+let _lastBand = null;
+const bandOf = pos => BAND[geo[pos]?.slot_type] ?? '';
+function bandCell(pos){
+  const b = bandOf(pos), show = b !== _lastBand; _lastBand = b;
+  return `<td class="dim"${show?'':' style="border-bottom:none"'}>${show?b:''}</td>`;
+}
 function drawSheet(){
+  _lastBand = null;
   const opts = order.map(pos=>byPos[pos][chosen[pos]]).filter(Boolean);
   document.getElementById('pitch2').innerHTML =
    '<div class="tacpitch">' + opts.map(p=>{
@@ -60,7 +73,7 @@ function drawSheet(){
      return `<div class="tchip" style="left:${g.x}%;bottom:${Math.max(4,g.y*0.92+4)}%">
        <b>${p.label}</b><span>${p.pos_label}</span><small>${p.role_id}<br>${p.focus}</small></div>`;
    }).join('') + '</div>';
-  document.getElementById('sheet').innerHTML = '<tr><th>슬롯</th><th>선수 (교체 가능)</th><th>역할</th><th>포커스</th></tr>'+
+  document.getElementById('sheet').innerHTML = '<tr><th>밴드</th><th>슬롯</th><th>선수 (교체 가능)</th><th>역할</th><th>포커스</th></tr>'+
    (all.length ? order.map(pos=>{
      const c = byPos[pos]; if(!c.length) return `<tr><td><b>${pos}</b></td><td colspan="3" class="dim">인선 공백</td></tr>`;
      const p = chosen[pos]>=0 ? c[chosen[pos]] : null;
@@ -69,11 +82,11 @@ function drawSheet(){
        ${c.map((q,i)=>`<option value="${i}" ${i===chosen[pos]?'selected':''}>${q.label}${q.starter?' ★':''}</option>`).join('')}</select>` : p.label;
      const cn = canon[pos];
      const dev = p && cn && (cn.role_id!==p.role_id || cn.focus!==p.focus)
-       ? ` <small class="dim" title="정본 ${cn.role_id}/${cn.focus}와 다르다 — 인선 적합 우선">⚠ 정본과 편차</small>` : '';
-     return `<tr><td><b>${pos}</b></td><td>${sel}</td><td>${p?p.role_id:'—'}${dev}</td><td>${p?p.focus:'—'}</td></tr>`;
-   }).join('') : '<tr><td colspan="4" class="dim">게임 처방(fc26:opt) 미기록</td></tr>');
+       ? `<br><small class="dim">⚠ 정본은 <b>${cn.role_id}</b>/${cn.focus}</small>` : '';
+     return `<tr>${bandCell(pos)}<td><b>${pos}</b></td><td>${sel}</td><td>${p?p.role_id:'—'}${dev}</td><td>${p?p.focus:'—'}</td></tr>`;
+   }).join('') : '<tr><td colspan="5" class="dim">게임 처방(fc26:opt) 미기록</td></tr>');
   document.querySelectorAll('#sheet select').forEach(el=>el.addEventListener('change',()=>{
-    chosen[el.dataset.pos]=+el.value; drawSheet();
+    chosen[el.dataset.pos]=+el.value; drawSheet(); drawCanon();   // 정본 표의 「현재 프리셋」도 같이 갱신
   }));
 }
 drawSheet();
@@ -86,20 +99,42 @@ document.getElementById('pitchCanon').innerHTML = cRows.length ?
     return `<div class="tchip" style="left:${g.x}%;bottom:${Math.max(4,g.y*0.92+4)}%">
       <b>${c.pos}</b><small>${c.role_id}<br>${c.focus}</small></div>`;
   }).join('') + '</div>' : '';
-document.getElementById('canon').innerHTML = '<tr><th>슬롯</th><th>역할</th><th>포커스</th><th>신뢰도</th><th>근거</th></tr>'+
-  (cRows.length ? cRows.map(c=>
-    `<tr><td><b>${c.pos}</b></td><td>${c.role_id}</td><td>${c.focus}</td>
-     <td>${c.confidence ?? ''}</td><td class="dim">${annotate(c.rationale ?? '')}</td></tr>`).join('')
-   : '<tr><td colspan="5" class="dim">이 체제의 정본 세트는 아직 기록되지 않았다 (slot_canon_roles — AVL만 확정, 2026-08-12)</td></tr>');
+/* 정본 표 — 「감독이 요구하는 역할」과 「현재 인선 프리셋」을 같은 행에 놓아 편차를 바로 읽게 한다.
+   근거·신뢰도는 길어서 셀에 그대로 두면 표가 벽이 된다 → details로 접는다(player.html과 같은 패턴). */
+function drawCanon(){
+  _lastBand = null;
+  document.getElementById('canon').innerHTML =
+   '<tr><th>밴드</th><th>슬롯</th><th>정본 — 감독 요구</th><th>현재 프리셋</th><th>편차</th><th>근거 · 신뢰도</th></tr>'+
+   (cRows.length ? cRows.map(c=>{
+     const p = byPos[c.pos]?.[chosen[c.pos]];
+     const same = p && c.role_id===p.role_id && c.focus===p.focus;
+     const roleSame = p && c.role_id===p.role_id;
+     const mark = !p ? '<span class="badge">인선 공백</span>'
+       : same ? '<span class="badge hi">일치</span>'
+       : roleSame ? '<span class="badge mid">포커스만</span>'
+       : '<span class="badge dead">역할 상이</span>';
+     const cur = p ? `${p.role_id}<br><small class="dim">${p.focus}</small>` : '<span class="dim">—</span>';
+     const why = [c.rationale, c.confidence].filter(Boolean).map(t=>`<div style="margin:6px 0">${annotate(t)}</div>`).join('');
+     return `<tr>${bandCell(c.pos)}<td><b>${c.pos}</b></td>
+       <td><b>${c.role_id}</b><br><small class="dim">${c.focus}</small></td>
+       <td>${cur}</td><td>${mark}</td>
+       <td>${why ? `<details class="refs"><summary>근거 보기</summary>${why}</details>` : ''}</td></tr>`;
+   }).join('')
+    : '<tr><td colspan="6" class="dim">이 체제의 정본 세트는 아직 기록되지 않았다 (slot_canon_roles)</td></tr>');
+}
+drawCanon();
 const AXES = { philosophy:'철학', traits:'전술적 특징', role_demands:'역할 요구',
   formation:'포메이션', situational:'상황별 변화', pressing:'압박·PPDA',
   buildup:'빌드업', rest_defense:'rest-defense', set_pieces:'세트피스',
   rotation:'로테이션', market:'이적 정책', implementation:'⭐ 게임 구현' };
 
+/* 근거(evidence)는 축마다 수백 자라 셀에 펼치면 결론이 묻힌다 → details로 접는다. */
 document.getElementById('profile').innerHTML =
   `<tr><th>축</th><th>확정 결론</th><th>근거</th><th>갱신</th></tr>` +
   (td.profile.length ? td.profile.map(p => `<tr><td><b>${AXES[p.axis] ?? p.axis}</b></td>
-     <td>${annotate(p.content)}</td><td class="dim">${annotate(p.evidence ?? '')}</td><td>${p.updated ?? ''}</td></tr>`).join('')
+     <td>${annotate(p.content)}</td>
+     <td>${p.evidence ? `<details class="refs"><summary>근거 보기</summary><div class="dim">${annotate(p.evidence)}</div></details>` : ''}</td>
+     <td>${p.updated ?? ''}</td></tr>`).join('')
    : `<tr><td colspan="4" class="dim">아직 프로필 축이 기록되지 않았다 — docs 문서에서 이관 예정
       (manager_profiles 테이블에 INSERT 후 재익스포트)</td></tr>`);
 
