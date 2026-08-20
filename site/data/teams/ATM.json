@@ -1,0 +1,343 @@
+{
+ "avg_positions": [],
+ "departed": [],
+ "duties": [],
+ "evaluations": [],
+ "fbref": {},
+ "form": {},
+ "fotmob_season": {},
+ "match_reports": [],
+ "player_stats": [],
+ "prescriptions": [],
+ "profile": [
+  {
+   "axis": "buildup",
+   "confidence": "[2026-08-20] ⚠️ **1차 등록본이다.** 근거의 대부분이 **3티어 전술 분석 블로그**이고 **우리 실측(PPDA·라인 높이·선수 커널 적합)은 0건**이다. 라리가 R1 1경기 도식만 실측이다. ⚠️ 문헌 자체가 현 아틀레티코를 「정체성 과도기」로 서술하므로 **역사적 시메오네 상**과 **26/27 실제**가 어긋날 수 있다 — 라운드가 쌓이면 축별로 갱신한다.",
+   "content": "⭐ 문헌은 빌드업 국면을 **1-3-2-5**로 서술한다 — 백3 + 중앙 2 + 전방 5. 중앙 미드필더를 늘려 **중앙으로 통과**하는 것을 우선하고, 선수 간 간격을 좁혀 상실 시 즉시 압박이 되도록 한다(공격 구조가 곧 수비 전환 조건이다). 한 명은 높고 넓게 남아 상대 백라인을 늘린다. 2020/21 이후 **후방에서 짧은 패스로 빌드업하는 비중이 늘었다** — 우리 setup의 Short Passing 근거다.",
+   "evidence": "docs/13-simeone-tactics.md · 26/27 라리가 R1(FotMob matchId=5868012) · regimes.id=4",
+   "updated": "2026-08-20"
+  },
+  {
+   "axis": "formation",
+   "confidence": "[2026-08-20] ⚠️ **1차 등록본이다.** 근거의 대부분이 **3티어 전술 분석 블로그**이고 **우리 실측(PPDA·라인 높이·선수 커널 적합)은 0건**이다. 라리가 R1 1경기 도식만 실측이다. ⚠️ 문헌 자체가 현 아틀레티코를 「정체성 과도기」로 서술하므로 **역사적 시메오네 상**과 **26/27 실제**가 어긋날 수 있다 — 라운드가 쌓이면 축별로 갱신한다.",
+   "content": "역사적 기본형은 **4-4-2**이나 **26/27 라리가 R1은 5-4-1**로 나왔다(백3 + 윙백 2 + 플랫 4 + 단독 9). 수비 국면에 **5백 라인으로 전환**하는 것이 2020/21 이후 관찰된 구조다. ⚠️ **R1 1경기로는 5-4-1이 기본형인지 상황형인지 확정할 수 없다** — R2(08-23 비야레알)로 재확인이 필요하다. 우리 `slots`(regime 4)는 R1 도식을 정본으로 등록했다.",
+   "evidence": "docs/13-simeone-tactics.md · 26/27 라리가 R1(FotMob matchId=5868012) · regimes.id=4",
+   "updated": "2026-08-20"
+  },
+  {
+   "axis": "implementation",
+   "confidence": "[2026-08-20] ⚠️ **1차 등록본이다.** 근거의 대부분이 **3티어 전술 분석 블로그**이고 **우리 실측(PPDA·라인 높이·선수 커널 적합)은 0건**이다. 라리가 R1 1경기 도식만 실측이다. ⚠️ 문헌 자체가 현 아틀레티코를 「정체성 과도기」로 서술하므로 **역사적 시메오네 상**과 **26/27 실제**가 어긋날 수 있다 — 라운드가 쌓이면 축별로 갱신한다.",
+   "content": "FC 구현 초안: 포메이션 **5-4-1**, 빌드업 **Short Passing**, 수비 **Balanced**, 라인 **45**. ⚠️ **라인 45는 문헌 기반 추정치**이고 실측이 아니다 — AVL 52·CHE 58보다 낮게 두었다. 슬롯 역할 11개는 `slot_canon_roles`(regime 4, 5-4-1)에 등록했다. ⛔ **선수 개인 커널 적합은 0건** — SofaScore가 이 회차에 사이트 전역 403이라 산출하지 못했다.",
+   "evidence": "docs/13-simeone-tactics.md · 26/27 라리가 R1(FotMob matchId=5868012) · regimes.id=4",
+   "updated": "2026-08-20"
+  },
+  {
+   "axis": "market",
+   "confidence": "[2026-08-20] ⚠️ **1차 등록본이다.** 근거의 대부분이 **3티어 전술 분석 블로그**이고 **우리 실측(PPDA·라인 높이·선수 커널 적합)은 0건**이다. 라리가 R1 1경기 도식만 실측이다. ⚠️ 문헌 자체가 현 아틀레티코를 「정체성 과도기」로 서술하므로 **역사적 시메오네 상**과 **26/27 실제**가 어긋날 수 있다 — 라운드가 쌓이면 축별로 갱신한다.",
+   "content": "⚠️ **부분 조사.** 이 회차에 확인된 것: **훌리안 알바레스 이탈설이 스페인어 매체에 있고 시메오네가 언급**했다 · Cuti Romero가 스쿼드에 있다 · **쇠를로트 부상**(CHE 회차의 잭슨 축에서 「아틀레티코가 Sørloth 부상으로 재검토」로 교차 확인). ⭐ 아틀레티코는 **잭슨(첼시) 경쟁 클럽**으로 이미 우리 원장에 등장한다 — 이적 감시 루프 편입 시 이 축이 겹친다.",
+   "evidence": "docs/13-simeone-tactics.md · 26/27 라리가 R1(FotMob matchId=5868012) · regimes.id=4",
+   "updated": "2026-08-20"
+  },
+  {
+   "axis": "philosophy",
+   "confidence": "[2026-08-20] ⚠️ **1차 등록본이다.** 근거의 대부분이 **3티어 전술 분석 블로그**이고 **우리 실측(PPDA·라인 높이·선수 커널 적합)은 0건**이다. 라리가 R1 1경기 도식만 실측이다. ⚠️ 문헌 자체가 현 아틀레티코를 「정체성 과도기」로 서술하므로 **역사적 시메오네 상**과 **26/27 실제**가 어긋날 수 있다 — 라운드가 쌓이면 축별로 갱신한다.",
+   "content": "⭐ 「Cholismo」 — 경기를 **상대가 하고 싶은 것을 못 하게 만드는 축**으로 설계한다. 공간·시간을 지우고 전환 순간에 이익을 낸다. ⚠️ 다만 2026년 현재 문헌의 공통 진단은 **정체성 과도기**다: 순수 저블록·역압박에서 점유 기반 빌드업을 섞는 하이브리드로 이동했고 결과가 일정하지 않다. 시메오네 본인도 「진화하고 변해야 한다 — 상대가 우리 강점을 이미 안다」고 공개 발언했다.",
+   "evidence": "docs/13-simeone-tactics.md · 26/27 라리가 R1(FotMob matchId=5868012) · regimes.id=4",
+   "updated": "2026-08-20"
+  },
+  {
+   "axis": "pressing",
+   "confidence": "[2026-08-20] ⚠️ **1차 등록본이다.** 근거의 대부분이 **3티어 전술 분석 블로그**이고 **우리 실측(PPDA·라인 높이·선수 커널 적합)은 0건**이다. 라리가 R1 1경기 도식만 실측이다. ⚠️ 문헌 자체가 현 아틀레티코를 「정체성 과도기」로 서술하므로 **역사적 시메오네 상**과 **26/27 실제**가 어긋날 수 있다 — 라운드가 쌓이면 축별로 갱신한다.",
+   "content": "⭐ **위치 지향 존 마킹(position-oriented zonal)** 으로 중앙을 봉쇄하고 상대를 **롱 스위치**로 몰아낸다 — 시간을 벌어 재정비하거나 인터셉트로 역습한다. 고압박도 쓴다(바르셀로나전 성공 사례). ⚠️ **현 결함이 명확히 지적된다**: 전방이 압박할 때 **미드필드가 따라붙지 못해 라인 간 공간이 생기고** 압박이 산발적이 된다. 이것이 5-4-1의 LM·RM 슬롯 과제와 직결된다. ⛔ **PPDA 실측 0건.**",
+   "evidence": "docs/13-simeone-tactics.md · 26/27 라리가 R1(FotMob matchId=5868012) · regimes.id=4",
+   "updated": "2026-08-20"
+  },
+  {
+   "axis": "rest_defense",
+   "confidence": "[2026-08-20] ⚠️ **1차 등록본이다.** 근거의 대부분이 **3티어 전술 분석 블로그**이고 **우리 실측(PPDA·라인 높이·선수 커널 적합)은 0건**이다. 라리가 R1 1경기 도식만 실측이다. ⚠️ 문헌 자체가 현 아틀레티코를 「정체성 과도기」로 서술하므로 **역사적 시메오네 상**과 **26/27 실제**가 어긋날 수 있다 — 라운드가 쌓이면 축별로 갱신한다.",
+   "content": "⭐ **「pendulum」 백라인** — 상대가 후방으로 몰리면 라인을 밀어올려 라인 간 공간을 압축하고, 전진당하면 통째로 내려앉는다. 백3의 **중앙 CB가 그 스윙의 기준점**이고 좌우 CB가 벌어질 때 유일한 잔류 중앙이다. 빌드업에서 중앙 인원을 늘리는 선택 자체가 **상실 시 즉시 압박 가능한 인원 확보**를 겸한다.",
+   "evidence": "docs/13-simeone-tactics.md · 26/27 라리가 R1(FotMob matchId=5868012) · regimes.id=4",
+   "updated": "2026-08-20"
+  },
+  {
+   "axis": "role_demands",
+   "confidence": "[2026-08-20] ⚠️ **1차 등록본이다.** 근거의 대부분이 **3티어 전술 분석 블로그**이고 **우리 실측(PPDA·라인 높이·선수 커널 적합)은 0건**이다. 라리가 R1 1경기 도식만 실측이다. ⚠️ 문헌 자체가 현 아틀레티코를 「정체성 과도기」로 서술하므로 **역사적 시메오네 상**과 **26/27 실제**가 어긋날 수 있다 — 라운드가 쌓이면 축별로 갱신한다.",
+   "content": "윙백은 **폭 전체를 혼자 담당하되 수비 책임이 선행**한다(R1 도식에서 y=37로 CB 라인 36과 거의 같은 깊이). 플랫 4의 외곽은 윙어가 아니라 **채널 수비 + 역습 출구**다. 단독 9번은 롱볼 타깃이 아니라 **압박의 첫 기준점 + 전환의 시작점**이다. ⭐ GK는 **빌드업 +1이 아니다** — 알론소(CHE)와 정반대 축이고 `slot_canon_roles`에 그 판단을 기록했다.",
+   "evidence": "docs/13-simeone-tactics.md · 26/27 라리가 R1(FotMob matchId=5868012) · regimes.id=4",
+   "updated": "2026-08-20"
+  },
+  {
+   "axis": "rotation",
+   "confidence": "[2026-08-20] ⚠️ **1차 등록본이다.** 근거의 대부분이 **3티어 전술 분석 블로그**이고 **우리 실측(PPDA·라인 높이·선수 커널 적합)은 0건**이다. 라리가 R1 1경기 도식만 실측이다. ⚠️ 문헌 자체가 현 아틀레티코를 「정체성 과도기」로 서술하므로 **역사적 시메오네 상**과 **26/27 실제**가 어긋날 수 있다 — 라운드가 쌓이면 축별로 갱신한다.",
+   "content": "⚠️ **미조사.** R1 선발에 로테이션이 섞인 것만 확인됐다(J.알바레스 결장·Cuti Romero 명단 외·Jorge Domínguez 조기 데뷔). 라운드가 쌓이면 선발 연속성·교체 패턴을 채운다.",
+   "evidence": "docs/13-simeone-tactics.md · 26/27 라리가 R1(FotMob matchId=5868012) · regimes.id=4",
+   "updated": "2026-08-20"
+  },
+  {
+   "axis": "set_pieces",
+   "confidence": "[2026-08-20] ⚠️ **1차 등록본이다.** 근거의 대부분이 **3티어 전술 분석 블로그**이고 **우리 실측(PPDA·라인 높이·선수 커널 적합)은 0건**이다. 라리가 R1 1경기 도식만 실측이다. ⚠️ 문헌 자체가 현 아틀레티코를 「정체성 과도기」로 서술하므로 **역사적 시메오네 상**과 **26/27 실제**가 어긋날 수 있다 — 라운드가 쌓이면 축별로 갱신한다.",
+   "content": "⚠️ **미조사.** 아틀레티코는 전통적으로 세트피스 비중이 높다고 알려져 있으나 이 회차에 **1~2티어 근거를 확보하지 않았다** — 추정으로 채우지 않고 결손으로 남긴다.",
+   "evidence": "docs/13-simeone-tactics.md · 26/27 라리가 R1(FotMob matchId=5868012) · regimes.id=4",
+   "updated": "2026-08-20"
+  },
+  {
+   "axis": "situational",
+   "confidence": "[2026-08-20] ⚠️ **1차 등록본이다.** 근거의 대부분이 **3티어 전술 분석 블로그**이고 **우리 실측(PPDA·라인 높이·선수 커널 적합)은 0건**이다. 라리가 R1 1경기 도식만 실측이다. ⚠️ 문헌 자체가 현 아틀레티코를 「정체성 과도기」로 서술하므로 **역사적 시메오네 상**과 **26/27 실제**가 어긋날 수 있다 — 라운드가 쌓이면 축별로 갱신한다.",
+   "content": "빅매치에서는 더 극단으로 간다 — 과거 챔피언스리그에서 **후방 6명 라인**까지 쓴 이력이 있다. 중앙 밀착 마킹으로 상대를 측면 전환과 리스크 높은 선택으로 유도하는 것이 반복 패턴이다. ⚠️ 25/26 개막전에서는 에스파뇰에 2-1 패하고 **시메오네가 전술적 실수를 인정**했다 — 개막 라운드의 준비도가 항상 높지는 않다.",
+   "evidence": "docs/13-simeone-tactics.md · 26/27 라리가 R1(FotMob matchId=5868012) · regimes.id=4",
+   "updated": "2026-08-20"
+  },
+  {
+   "axis": "traits",
+   "confidence": "[2026-08-20] ⚠️ **1차 등록본이다.** 근거의 대부분이 **3티어 전술 분석 블로그**이고 **우리 실측(PPDA·라인 높이·선수 커널 적합)은 0건**이다. 라리가 R1 1경기 도식만 실측이다. ⚠️ 문헌 자체가 현 아틀레티코를 「정체성 과도기」로 서술하므로 **역사적 시메오네 상**과 **26/27 실제**가 어긋날 수 있다 — 라운드가 쌓이면 축별로 갱신한다.",
+   "content": "장기 재임(2011-12-23~, **15년차**)에서 오는 가장 큰 특성은 **팀 실측 = 감독 실측**이라는 점이다. ⭐ 이것이 이 프로젝트에서 ATM이 갖는 구조적 이점이다 — CHE(알론소)·LIV(이라올라)는 「25/26 팀 전술은 이 감독 것이 아니다」라는 경고 때문에 `projected` 파생을 거쳐야 하지만 ATM은 **모든 시즌 실측이 곧 시메오네 체제**라 `measured` 정본을 바로 쌓을 수 있다.",
+   "evidence": "docs/13-simeone-tactics.md · 26/27 라리가 R1(FotMob matchId=5868012) · regimes.id=4",
+   "updated": "2026-08-20"
+  }
+ ],
+ "regime": {
+  "id": 4,
+  "is_main": 0,
+  "manager": "Diego Simeone",
+  "manager_kr": "시메오네",
+  "start": "2011-12-23",
+  "team_code": "ATM",
+  "team_kr": "아틀레티코 마드리드",
+  "team_name": "Atletico Madrid"
+ },
+ "season_stats": {},
+ "setups": [
+  {
+   "build_up_style": "Short Passing",
+   "confidence": "[2026-08-20] ⚠️ **표본 1경기.** 사용자 지시대로 **라리가 R1부터** 수집을 시작했다. ⚠️ **라인 45·빌드업·수비접근 3개 값은 실측이 아니라 문헌 기반 추정**이다 — 라운드가 쌓이면 갱신한다. ⚠️ R1 선발에 로테이션이 섞였다(J.알바레스 결장 — 스페인어 매체는 **시메오네가 그의 이탈을 언급**했다고 적는다 · Cuti Romero 명단 외 · Jorge Domínguez 조기 데뷔). ⚠️ 문헌은 현 아틀레티코를 「정체성 과도기 · 하이브리드 블록 · 라인 간 간격 문제」로 서술한다 — 5-4-1이 **기본형인지 상황형인지 R1 1경기로는 확정할 수 없다**(역사적 기본형은 4-4-2). ⏰ R2 08-23 비야레알전으로 재확인 필요.",
+   "defensive_approach": "Balanced",
+   "formation": "5-4-1",
+   "game_version": "FC26",
+   "kind": "measured",
+   "line_height": 45,
+   "rationale": "[2026-08-20] ⭐ **26/27 라리가 R1 실측 도식**(Atletico 2-0 Malaga, 2026-08-19 19:05Z, FotMob matchId=5868012). ⭐⭐ 이 행을 `measured`로 잡은 근거: 시메오네는 **2011-12-23 부임 후 연속 재임 15년차**라 「팀 전술 ≠ 감독 전술」 경고가 성립하지 않는다 — CHE·LIV가 `projected`인 이유(감독 공식전 0경기)가 ATM에는 없다. 빌드업 Short Passing: 2020/21 이후 후방 짧은 패스 빌드업 비중을 늘렸다는 문헌 근거 + 빌드업 국면을 **1-3-2-5**(백3 + 중앙 2 + 전방 5)로 서술하는 분석. ⚠️ **라인 45는 추정치다** — AVL 52·CHE 58보다 낮게 두었고 근거는 시메오네의 전통적 중저 블록 + 「low block」 문헌이다. **실측(PPDA·라인 높이) 미산출.**",
+   "season": "2026-27",
+   "tactic_code": null
+  }
+ ],
+ "slot_candidates": [],
+ "slot_canon": [
+  {
+   "confidence": "[2026-08-20] ⚠️⚠️ **파생 가설이다 — 선수 실측 적합도 0건.** 이 세트는 ⑴ R1 라인업의 실제 도식(5-4-1)과 ⑵ 시메오네 전술 문헌의 슬롯 요구를 결합한 것이고, **개별 선수 map25·커널 적합은 아직 산출하지 않았다** (SofaScore 사이트 전역 403 — 다음 회차). CHE 3-4-2-1이 실측 앵커를 얻기 전 상태와 같은 단계다. ⚠️ **전술 문헌 출처는 대부분 3티어 분석 블로그**다(이적 루머 티어 기준과 다른 축이지만 provenance는 분리 기록). ⚠️ **R1 표본 1경기**이고 선발에 로테이션이 섞였다(J.알바레스 결장·Cuti Romero 명단 외). ⭐ 다만 **AVL·CHE·LIV와 달리 「감독 실측이 곧 팀 실측」이라 이식 추론 단계가 없다** — 라운드가 쌓이면 projected가 아니라 **measured 정본**으로 바로 승격할 수 있다.",
+   "focus": "Defend",
+   "formation": "5-4-1",
+   "game_version": "FC26",
+   "pos": "GK",
+   "rationale": "⭐ 알론소(CHE)와 정반대 축이다 — 시메오네의 GK는 **빌드업 +1 제공자가 아니다.** 후방 수적 우위를 GK로 만들지 않고 슛 스토핑·박스 지배에 특화시킨다. 백5로 내려앉는 국면에서 GK는 라인 뒤 공간을 커버하는 역할이 아니라 박스 안 최종 차단자다.",
+   "role_id": "gk_goalkeeper",
+   "source": "docs/13-simeone-tactics.md · 26/27 라리가 R1 실측 라인업(FotMob matchId=5868012, 5-4-1, coach Diego Simeone) · 전술 문헌: Total Football Analysis 「Simeone Tactics 2025/26」·「Real-Atleti Low Block」 · The Football Analyst 「빌드업 1-3-2-5」 · SportsDigest 「Atletico Defensive Identity 2026」 · 스페인어: 2020/21 관찰연구(백3 기반 → 수비 시 5백 전환)",
+   "updated": "2026-08-20"
+  },
+  {
+   "confidence": "[2026-08-20] ⚠️⚠️ **파생 가설이다 — 선수 실측 적합도 0건.** 이 세트는 ⑴ R1 라인업의 실제 도식(5-4-1)과 ⑵ 시메오네 전술 문헌의 슬롯 요구를 결합한 것이고, **개별 선수 map25·커널 적합은 아직 산출하지 않았다** (SofaScore 사이트 전역 403 — 다음 회차). CHE 3-4-2-1이 실측 앵커를 얻기 전 상태와 같은 단계다. ⚠️ **전술 문헌 출처는 대부분 3티어 분석 블로그**다(이적 루머 티어 기준과 다른 축이지만 provenance는 분리 기록). ⚠️ **R1 표본 1경기**이고 선발에 로테이션이 섞였다(J.알바레스 결장·Cuti Romero 명단 외). ⭐ 다만 **AVL·CHE·LIV와 달리 「감독 실측이 곧 팀 실측」이라 이식 추론 단계가 없다** — 라운드가 쌓이면 projected가 아니라 **measured 정본**으로 바로 승격할 수 있다.",
+   "focus": "Support",
+   "formation": "5-4-1",
+   "game_version": "FC26",
+   "pos": "LB",
+   "rationale": "⭐ 백5의 윙백이다 — **폭 전체를 혼자 담당**하고 수비 라인으로 복귀한다. `fb_att_wb`(공격형)를 주지 않은 이유: 시메오네의 윙백은 **수비 책임이 선행**하고, R1 도식에서도 y=37로 CB 라인(36)과 거의 같은 깊이에 있다.",
+   "role_id": "fb_wingback",
+   "source": "docs/13-simeone-tactics.md · 26/27 라리가 R1 실측 라인업(FotMob matchId=5868012, 5-4-1, coach Diego Simeone) · 전술 문헌: Total Football Analysis 「Simeone Tactics 2025/26」·「Real-Atleti Low Block」 · The Football Analyst 「빌드업 1-3-2-5」 · SportsDigest 「Atletico Defensive Identity 2026」 · 스페인어: 2020/21 관찰연구(백3 기반 → 수비 시 5백 전환)",
+   "updated": "2026-08-20"
+  },
+  {
+   "confidence": "[2026-08-20] ⚠️⚠️ **파생 가설이다 — 선수 실측 적합도 0건.** 이 세트는 ⑴ R1 라인업의 실제 도식(5-4-1)과 ⑵ 시메오네 전술 문헌의 슬롯 요구를 결합한 것이고, **개별 선수 map25·커널 적합은 아직 산출하지 않았다** (SofaScore 사이트 전역 403 — 다음 회차). CHE 3-4-2-1이 실측 앵커를 얻기 전 상태와 같은 단계다. ⚠️ **전술 문헌 출처는 대부분 3티어 분석 블로그**다(이적 루머 티어 기준과 다른 축이지만 provenance는 분리 기록). ⚠️ **R1 표본 1경기**이고 선발에 로테이션이 섞였다(J.알바레스 결장·Cuti Romero 명단 외). ⭐ 다만 **AVL·CHE·LIV와 달리 「감독 실측이 곧 팀 실측」이라 이식 추론 단계가 없다** — 라운드가 쌓이면 projected가 아니라 **measured 정본**으로 바로 승격할 수 있다.",
+   "focus": "Aggressive",
+   "formation": "5-4-1",
+   "game_version": "FC26",
+   "pos": "LCB",
+   "rationale": "백3의 좌측. 수비 국면에 **5백 라인으로 전환**되며 측면 채널을 좁힌다. 시메오네는 wide CB에게 **전방 압박형 듀얼**을 요구한다(position-oriented zonal marking으로 중앙을 봉쇄하고 상대를 롱 스위치로 몰아낸다).",
+   "role_id": "cb_defender",
+   "source": "docs/13-simeone-tactics.md · 26/27 라리가 R1 실측 라인업(FotMob matchId=5868012, 5-4-1, coach Diego Simeone) · 전술 문헌: Total Football Analysis 「Simeone Tactics 2025/26」·「Real-Atleti Low Block」 · The Football Analyst 「빌드업 1-3-2-5」 · SportsDigest 「Atletico Defensive Identity 2026」 · 스페인어: 2020/21 관찰연구(백3 기반 → 수비 시 5백 전환)",
+   "updated": "2026-08-20"
+  },
+  {
+   "confidence": "[2026-08-20] ⚠️⚠️ **파생 가설이다 — 선수 실측 적합도 0건.** 이 세트는 ⑴ R1 라인업의 실제 도식(5-4-1)과 ⑵ 시메오네 전술 문헌의 슬롯 요구를 결합한 것이고, **개별 선수 map25·커널 적합은 아직 산출하지 않았다** (SofaScore 사이트 전역 403 — 다음 회차). CHE 3-4-2-1이 실측 앵커를 얻기 전 상태와 같은 단계다. ⚠️ **전술 문헌 출처는 대부분 3티어 분석 블로그**다(이적 루머 티어 기준과 다른 축이지만 provenance는 분리 기록). ⚠️ **R1 표본 1경기**이고 선발에 로테이션이 섞였다(J.알바레스 결장·Cuti Romero 명단 외). ⭐ 다만 **AVL·CHE·LIV와 달리 「감독 실측이 곧 팀 실측」이라 이식 추론 단계가 없다** — 라운드가 쌓이면 projected가 아니라 **measured 정본**으로 바로 승격할 수 있다.",
+   "focus": "Balanced",
+   "formation": "5-4-1",
+   "game_version": "FC26",
+   "pos": "CCB",
+   "rationale": "⭐ 백3 중앙 = **rest-defense 기준점**. 좌우 CB가 벌어질 때 유일한 잔류 중앙이므로 라인 전체의 「pendulum」(상대가 후방으로 몰리면 라인을 밀어올려 라인 간 공간을 압축) 스윙을 조율한다. Aggressive를 주지 않는 이유는 이 자리가 나가면 백3가 무너지기 때문이다.",
+   "role_id": "cb_defender",
+   "source": "docs/13-simeone-tactics.md · 26/27 라리가 R1 실측 라인업(FotMob matchId=5868012, 5-4-1, coach Diego Simeone) · 전술 문헌: Total Football Analysis 「Simeone Tactics 2025/26」·「Real-Atleti Low Block」 · The Football Analyst 「빌드업 1-3-2-5」 · SportsDigest 「Atletico Defensive Identity 2026」 · 스페인어: 2020/21 관찰연구(백3 기반 → 수비 시 5백 전환)",
+   "updated": "2026-08-20"
+  },
+  {
+   "confidence": "[2026-08-20] ⚠️⚠️ **파생 가설이다 — 선수 실측 적합도 0건.** 이 세트는 ⑴ R1 라인업의 실제 도식(5-4-1)과 ⑵ 시메오네 전술 문헌의 슬롯 요구를 결합한 것이고, **개별 선수 map25·커널 적합은 아직 산출하지 않았다** (SofaScore 사이트 전역 403 — 다음 회차). CHE 3-4-2-1이 실측 앵커를 얻기 전 상태와 같은 단계다. ⚠️ **전술 문헌 출처는 대부분 3티어 분석 블로그**다(이적 루머 티어 기준과 다른 축이지만 provenance는 분리 기록). ⚠️ **R1 표본 1경기**이고 선발에 로테이션이 섞였다(J.알바레스 결장·Cuti Romero 명단 외). ⭐ 다만 **AVL·CHE·LIV와 달리 「감독 실측이 곧 팀 실측」이라 이식 추론 단계가 없다** — 라운드가 쌓이면 projected가 아니라 **measured 정본**으로 바로 승격할 수 있다.",
+   "focus": "Aggressive",
+   "formation": "5-4-1",
+   "game_version": "FC26",
+   "pos": "RCB",
+   "rationale": "백3의 우측. LCB와 대칭 요구.",
+   "role_id": "cb_defender",
+   "source": "docs/13-simeone-tactics.md · 26/27 라리가 R1 실측 라인업(FotMob matchId=5868012, 5-4-1, coach Diego Simeone) · 전술 문헌: Total Football Analysis 「Simeone Tactics 2025/26」·「Real-Atleti Low Block」 · The Football Analyst 「빌드업 1-3-2-5」 · SportsDigest 「Atletico Defensive Identity 2026」 · 스페인어: 2020/21 관찰연구(백3 기반 → 수비 시 5백 전환)",
+   "updated": "2026-08-20"
+  },
+  {
+   "confidence": "[2026-08-20] ⚠️⚠️ **파생 가설이다 — 선수 실측 적합도 0건.** 이 세트는 ⑴ R1 라인업의 실제 도식(5-4-1)과 ⑵ 시메오네 전술 문헌의 슬롯 요구를 결합한 것이고, **개별 선수 map25·커널 적합은 아직 산출하지 않았다** (SofaScore 사이트 전역 403 — 다음 회차). CHE 3-4-2-1이 실측 앵커를 얻기 전 상태와 같은 단계다. ⚠️ **전술 문헌 출처는 대부분 3티어 분석 블로그**다(이적 루머 티어 기준과 다른 축이지만 provenance는 분리 기록). ⚠️ **R1 표본 1경기**이고 선발에 로테이션이 섞였다(J.알바레스 결장·Cuti Romero 명단 외). ⭐ 다만 **AVL·CHE·LIV와 달리 「감독 실측이 곧 팀 실측」이라 이식 추론 단계가 없다** — 라운드가 쌓이면 projected가 아니라 **measured 정본**으로 바로 승격할 수 있다.",
+   "focus": "Support",
+   "formation": "5-4-1",
+   "game_version": "FC26",
+   "pos": "RB",
+   "rationale": "LB와 대칭 요구.",
+   "role_id": "fb_wingback",
+   "source": "docs/13-simeone-tactics.md · 26/27 라리가 R1 실측 라인업(FotMob matchId=5868012, 5-4-1, coach Diego Simeone) · 전술 문헌: Total Football Analysis 「Simeone Tactics 2025/26」·「Real-Atleti Low Block」 · The Football Analyst 「빌드업 1-3-2-5」 · SportsDigest 「Atletico Defensive Identity 2026」 · 스페인어: 2020/21 관찰연구(백3 기반 → 수비 시 5백 전환)",
+   "updated": "2026-08-20"
+  },
+  {
+   "confidence": "[2026-08-20] ⚠️⚠️ **파생 가설이다 — 선수 실측 적합도 0건.** 이 세트는 ⑴ R1 라인업의 실제 도식(5-4-1)과 ⑵ 시메오네 전술 문헌의 슬롯 요구를 결합한 것이고, **개별 선수 map25·커널 적합은 아직 산출하지 않았다** (SofaScore 사이트 전역 403 — 다음 회차). CHE 3-4-2-1이 실측 앵커를 얻기 전 상태와 같은 단계다. ⚠️ **전술 문헌 출처는 대부분 3티어 분석 블로그**다(이적 루머 티어 기준과 다른 축이지만 provenance는 분리 기록). ⚠️ **R1 표본 1경기**이고 선발에 로테이션이 섞였다(J.알바레스 결장·Cuti Romero 명단 외). ⭐ 다만 **AVL·CHE·LIV와 달리 「감독 실측이 곧 팀 실측」이라 이식 추론 단계가 없다** — 라운드가 쌓이면 projected가 아니라 **measured 정본**으로 바로 승격할 수 있다.",
+   "focus": "Defend",
+   "formation": "5-4-1",
+   "game_version": "FC26",
+   "pos": "LM",
+   "rationale": "⭐ 5-4-1의 플랫 4 외곽. 윙어가 아니라 **채널 수비 + 역습 출구**다. 윙백이 이미 폭을 담당하므로 이 자리는 안쪽으로 접혀 미드필드 4를 완성한다. 전술 문헌이 지적하는 현 결함 — 「전방이 압박할 때 미드필드가 따라붙지 못해 라인 간 공간이 생긴다」 — 가 정확히 이 슬롯의 과제다.",
+   "role_id": "wm_widemid",
+   "source": "docs/13-simeone-tactics.md · 26/27 라리가 R1 실측 라인업(FotMob matchId=5868012, 5-4-1, coach Diego Simeone) · 전술 문헌: Total Football Analysis 「Simeone Tactics 2025/26」·「Real-Atleti Low Block」 · The Football Analyst 「빌드업 1-3-2-5」 · SportsDigest 「Atletico Defensive Identity 2026」 · 스페인어: 2020/21 관찰연구(백3 기반 → 수비 시 5백 전환)",
+   "updated": "2026-08-20"
+  },
+  {
+   "confidence": "[2026-08-20] ⚠️⚠️ **파생 가설이다 — 선수 실측 적합도 0건.** 이 세트는 ⑴ R1 라인업의 실제 도식(5-4-1)과 ⑵ 시메오네 전술 문헌의 슬롯 요구를 결합한 것이고, **개별 선수 map25·커널 적합은 아직 산출하지 않았다** (SofaScore 사이트 전역 403 — 다음 회차). CHE 3-4-2-1이 실측 앵커를 얻기 전 상태와 같은 단계다. ⚠️ **전술 문헌 출처는 대부분 3티어 분석 블로그**다(이적 루머 티어 기준과 다른 축이지만 provenance는 분리 기록). ⚠️ **R1 표본 1경기**이고 선발에 로테이션이 섞였다(J.알바레스 결장·Cuti Romero 명단 외). ⭐ 다만 **AVL·CHE·LIV와 달리 「감독 실측이 곧 팀 실측」이라 이식 추론 단계가 없다** — 라운드가 쌓이면 projected가 아니라 **measured 정본**으로 바로 승격할 수 있다.",
+   "focus": "Ball-Winning",
+   "formation": "5-4-1",
+   "game_version": "FC26",
+   "pos": "LDM",
+   "rationale": "중앙 2의 스크리너. 시메오네 체계의 핵심 요구인 **중앙 봉쇄(playing through the middle을 상대에게 허용하지 않음)**를 담당한다. 볼 회수 즉시 역습 전환의 첫 연결.",
+   "role_id": "dm_holding",
+   "source": "docs/13-simeone-tactics.md · 26/27 라리가 R1 실측 라인업(FotMob matchId=5868012, 5-4-1, coach Diego Simeone) · 전술 문헌: Total Football Analysis 「Simeone Tactics 2025/26」·「Real-Atleti Low Block」 · The Football Analyst 「빌드업 1-3-2-5」 · SportsDigest 「Atletico Defensive Identity 2026」 · 스페인어: 2020/21 관찰연구(백3 기반 → 수비 시 5백 전환)",
+   "updated": "2026-08-20"
+  },
+  {
+   "confidence": "[2026-08-20] ⚠️⚠️ **파생 가설이다 — 선수 실측 적합도 0건.** 이 세트는 ⑴ R1 라인업의 실제 도식(5-4-1)과 ⑵ 시메오네 전술 문헌의 슬롯 요구를 결합한 것이고, **개별 선수 map25·커널 적합은 아직 산출하지 않았다** (SofaScore 사이트 전역 403 — 다음 회차). CHE 3-4-2-1이 실측 앵커를 얻기 전 상태와 같은 단계다. ⚠️ **전술 문헌 출처는 대부분 3티어 분석 블로그**다(이적 루머 티어 기준과 다른 축이지만 provenance는 분리 기록). ⚠️ **R1 표본 1경기**이고 선발에 로테이션이 섞였다(J.알바레스 결장·Cuti Romero 명단 외). ⭐ 다만 **AVL·CHE·LIV와 달리 「감독 실측이 곧 팀 실측」이라 이식 추론 단계가 없다** — 라운드가 쌓이면 projected가 아니라 **measured 정본**으로 바로 승격할 수 있다.",
+   "focus": "Support",
+   "formation": "5-4-1",
+   "game_version": "FC26",
+   "pos": "RDM",
+   "rationale": "중앙 2의 배급축. 2020/21 이후 시메오네가 **후방에서 짧은 패스로 빌드업**하는 비중을 늘렸고(문헌), 빌드업 국면 1-3-2-5의 「2」가 이 자리다. LDM과 역할을 비대칭으로 둔 근거다.",
+   "role_id": "dm_dlp",
+   "source": "docs/13-simeone-tactics.md · 26/27 라리가 R1 실측 라인업(FotMob matchId=5868012, 5-4-1, coach Diego Simeone) · 전술 문헌: Total Football Analysis 「Simeone Tactics 2025/26」·「Real-Atleti Low Block」 · The Football Analyst 「빌드업 1-3-2-5」 · SportsDigest 「Atletico Defensive Identity 2026」 · 스페인어: 2020/21 관찰연구(백3 기반 → 수비 시 5백 전환)",
+   "updated": "2026-08-20"
+  },
+  {
+   "confidence": "[2026-08-20] ⚠️⚠️ **파생 가설이다 — 선수 실측 적합도 0건.** 이 세트는 ⑴ R1 라인업의 실제 도식(5-4-1)과 ⑵ 시메오네 전술 문헌의 슬롯 요구를 결합한 것이고, **개별 선수 map25·커널 적합은 아직 산출하지 않았다** (SofaScore 사이트 전역 403 — 다음 회차). CHE 3-4-2-1이 실측 앵커를 얻기 전 상태와 같은 단계다. ⚠️ **전술 문헌 출처는 대부분 3티어 분석 블로그**다(이적 루머 티어 기준과 다른 축이지만 provenance는 분리 기록). ⚠️ **R1 표본 1경기**이고 선발에 로테이션이 섞였다(J.알바레스 결장·Cuti Romero 명단 외). ⭐ 다만 **AVL·CHE·LIV와 달리 「감독 실측이 곧 팀 실측」이라 이식 추론 단계가 없다** — 라운드가 쌓이면 projected가 아니라 **measured 정본**으로 바로 승격할 수 있다.",
+   "focus": "Defend",
+   "formation": "5-4-1",
+   "game_version": "FC26",
+   "pos": "RM",
+   "rationale": "LM과 대칭 요구.",
+   "role_id": "wm_widemid",
+   "source": "docs/13-simeone-tactics.md · 26/27 라리가 R1 실측 라인업(FotMob matchId=5868012, 5-4-1, coach Diego Simeone) · 전술 문헌: Total Football Analysis 「Simeone Tactics 2025/26」·「Real-Atleti Low Block」 · The Football Analyst 「빌드업 1-3-2-5」 · SportsDigest 「Atletico Defensive Identity 2026」 · 스페인어: 2020/21 관찰연구(백3 기반 → 수비 시 5백 전환)",
+   "updated": "2026-08-20"
+  },
+  {
+   "confidence": "[2026-08-20] ⚠️⚠️ **파생 가설이다 — 선수 실측 적합도 0건.** 이 세트는 ⑴ R1 라인업의 실제 도식(5-4-1)과 ⑵ 시메오네 전술 문헌의 슬롯 요구를 결합한 것이고, **개별 선수 map25·커널 적합은 아직 산출하지 않았다** (SofaScore 사이트 전역 403 — 다음 회차). CHE 3-4-2-1이 실측 앵커를 얻기 전 상태와 같은 단계다. ⚠️ **전술 문헌 출처는 대부분 3티어 분석 블로그**다(이적 루머 티어 기준과 다른 축이지만 provenance는 분리 기록). ⚠️ **R1 표본 1경기**이고 선발에 로테이션이 섞였다(J.알바레스 결장·Cuti Romero 명단 외). ⭐ 다만 **AVL·CHE·LIV와 달리 「감독 실측이 곧 팀 실측」이라 이식 추론 단계가 없다** — 라운드가 쌓이면 projected가 아니라 **measured 정본**으로 바로 승격할 수 있다.",
+   "focus": "Support",
+   "formation": "5-4-1",
+   "game_version": "FC26",
+   "pos": "ST",
+   "rationale": "⭐ 5-4-1의 **단독 9번**. 요구가 둘이다 — ⑴ **압박의 첫 기준점**(상대 빌드업 방향을 한쪽으로 몰아낸다) ⑵ 역습 시 채널 침투 출구. `st_target`을 주지 않은 이유: 시메오네의 단독 9번은 롱볼 타깃이 아니라 **전환 속도의 시작점**이다.",
+   "role_id": "st_advanced",
+   "source": "docs/13-simeone-tactics.md · 26/27 라리가 R1 실측 라인업(FotMob matchId=5868012, 5-4-1, coach Diego Simeone) · 전술 문헌: Total Football Analysis 「Simeone Tactics 2025/26」·「Real-Atleti Low Block」 · The Football Analyst 「빌드업 1-3-2-5」 · SportsDigest 「Atletico Defensive Identity 2026」 · 스페인어: 2020/21 관찰연구(백3 기반 → 수비 시 5백 전환)",
+   "updated": "2026-08-20"
+  }
+ ],
+ "slots": [
+  {
+   "formation": "5-4-1",
+   "pos": "GK",
+   "slot_type": "GK",
+   "sort_order": 0,
+   "x": 50,
+   "y": 10
+  },
+  {
+   "formation": "5-4-1",
+   "pos": "LB",
+   "slot_type": "FB",
+   "sort_order": 1,
+   "x": 11,
+   "y": 37
+  },
+  {
+   "formation": "5-4-1",
+   "pos": "LCB",
+   "slot_type": "CB",
+   "sort_order": 2,
+   "x": 31,
+   "y": 36
+  },
+  {
+   "formation": "5-4-1",
+   "pos": "CCB",
+   "slot_type": "CB",
+   "sort_order": 3,
+   "x": 50,
+   "y": 36
+  },
+  {
+   "formation": "5-4-1",
+   "pos": "RCB",
+   "slot_type": "CB",
+   "sort_order": 4,
+   "x": 70,
+   "y": 36
+  },
+  {
+   "formation": "5-4-1",
+   "pos": "RB",
+   "slot_type": "FB",
+   "sort_order": 5,
+   "x": 89,
+   "y": 37
+  },
+  {
+   "formation": "5-4-1",
+   "pos": "LM",
+   "slot_type": "WM",
+   "sort_order": 6,
+   "x": 13,
+   "y": 61
+  },
+  {
+   "formation": "5-4-1",
+   "pos": "LDM",
+   "slot_type": "DM",
+   "sort_order": 7,
+   "x": 38,
+   "y": 61
+  },
+  {
+   "formation": "5-4-1",
+   "pos": "RDM",
+   "slot_type": "DM",
+   "sort_order": 8,
+   "x": 63,
+   "y": 61
+  },
+  {
+   "formation": "5-4-1",
+   "pos": "RM",
+   "slot_type": "WM",
+   "sort_order": 9,
+   "x": 88,
+   "y": 61
+  },
+  {
+   "formation": "5-4-1",
+   "pos": "ST",
+   "slot_type": "ST",
+   "sort_order": 10,
+   "x": 50,
+   "y": 87
+  }
+ ],
+ "squad": [],
+ "transfer": {
+  "ledger": [],
+  "outgoing": [],
+  "targets": []
+ }
+}
