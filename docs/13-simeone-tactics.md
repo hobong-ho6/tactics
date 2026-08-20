@@ -10,9 +10,9 @@
 | `regimes.id` | **4** (`team_code=ATM`, `is_main=0`) |
 | 감독 | Diego Simeone / 시메오네 — **2011-12-23 부임, 재임 15년차** |
 | `fotmob_id` | **9906** (페이지 팀명으로 직접 검증) |
-| `sofascore_id` | ⛔ **미기재** — 후보값 2836이나 2026-08-20 시점 SofaScore 사이트 전역 403으로 검증 실패 |
-| 슬롯 정본 | `slots` regime_id=4, formation **5-4-1**, 11행 |
-| 전술 정본 | `slot_canon_roles` regime_id=4, 11행 |
+| `sofascore_id` | **2836** ✅ — 403 상태에서 검색 크롤 URL·본문으로 확정(⚠️ 77879=여자팀·24326/305874=B·72022=U19). 선수별 id는 **미확정** |
+| 슬롯 정본 | `slots` regime_id=4, formation **4-1-4-1**, 11행 (⚠️ 최초 5-4-1은 좌우 반전 오류 — obs#258로 정정) |
+| 전술 정본 | `slot_canon_roles` regime_id=4, **4-1-4-1** 11행 |
 | 감독 프로필 | `manager_profiles` regime_id=4, **12축** |
 | 게임 설정 | `team_tactic_setups` regime_id=4, season 2026-27, **kind=`measured`** |
 
@@ -31,8 +31,9 @@ CHE(알론소)·LIV(이라올라)에는 반드시 붙는 경고가 있다:
 이것이 ATM 확장의 가장 큰 분석적 이점이고, `team_tactic_setups.kind`를
 CHE·LIV처럼 `projected`가 아니라 **`measured`** 로 잡은 근거다.
 
-⚠️ 단 **현재 등록본의 수치 대부분은 아직 실측이 아니다**(아래 「결손」 절). 위 문장은
-「실측을 쌓을 수 있다」는 구조적 가능성이고, 「이미 쌓았다」는 뜻이 아니다.
+✅ **2026-08-20 현재 R1 실측이 적재됐다** — `player_matches` 16 · `squad_entries` 12 ·
+`prescriptions` 16 · `player_duties` 16 · **PPDA 7.77**. ⚠️ 단 **표본 1경기**이고
+라인 높이·세트피스·선수별 서사는 여전히 결손이다(아래 「결손」 절).
 
 ---
 
@@ -43,37 +44,57 @@ CHE·LIV처럼 `projected`가 아니라 **`measured`** 로 잡은 근거다.
 | 경기 | **Atlético Madrid 2-0 Málaga** (홈) |
 | 킥오프 | **2026-08-19 19:05 UTC** |
 | 대회 | LaLiga **라운드 1** |
-| 소스 | FotMob `matchDetails?matchId=5868012` — 응답 내 `coach: "Diego Simeone"` 확인 |
-| 도식 | **5-4-1** (상대 말라가 4-4-1-1) |
+| 소스 | **WhoScored `matchCentreData`(Opta) matchId=1993898** — 이벤트 1,606건. 보조: FotMob matchId=5868012 |
+| 포메이션 | **4-1-4-1**(0~61분) → **4-4-2**(61~96분) · 말라가도 4-1-4-1 → 4-4-2 |
+| PPDA | ⭐ **7.77** (말라가 11.46) |
 
-### R1 선발 11명과 슬롯 기하
+### ⚠️⚠️ 최초 적재는 좌우가 반전돼 있었다 — 정정 경위 (정본 `obs#258`)
 
-`slots`(regime 4)의 x·y는 이 라인업의 FotMob `verticalLayout` 좌표를 ×100한 값이다.
+첫 적재는 **FotMob heatmap 좌표**를 썼고 **16명 전원의 그리드가 열 좌우로 반전**됐다.
+슬롯 기하도 반전되고 포메이션도 **5-4-1로 잘못** 읽혔다.
 
-| pos | slot_type | x | y | R1 선발 |
+**자체 검증이 통과한 이유는 순환 논증이다** — FotMob `verticalLayout.x`로 「우측」을 정의한 뒤
+**같은 FotMob `cy`** 로 확인했다. 두 축이 같은 소스에서 같은 방향으로 뒤집혀 있어 서로를 확증했다.
+
+**독립 반증 3건**: ⑴ **Opta 포지션 라벨**(도밍게스 **DR** · 다니 마르티네스 **DL** · 카를로스 마르틴 **MR** ·
+오르티스 **ML**)이 내 배정과 정반대 ⑵ 좌우가 알려진 선수 2명(**줄리아노 시메오네·마르코스 요렌테**)이
+Opta y 16 부근(우측)인데 FotMob cy는 높다 ⇒ **FotMob은 cy 높을수록 우측**
+⑶ ⭐ **정정 효과** — 도밍게스 0.321→**0.917** · 요렌테 0.367→**0.891** · 바리오스 0.440→**0.846**.
+
+⇒ **원천을 Opta로 바꿨다.** Opta는 1차 제공자이고 좌표 규약이 소파와 **동일**해 변환이 없다.
+⭐ **런북 정정**: **WhoScored는 in-app 브라우저에서 열린다**(「실제 Chrome 필요」는 과도한 제약) ·
+**xG는 대체 경로에 있다**(「없다」는 클럽 친선 한정).
+
+### R1 선발 11명과 슬롯 기하 (Opta 4-1-4-1)
+
+| pos | slot_type | x | R1 선발 | 실측 툴x |
 |---|---|---|---|---|
-| GK | GK | 50 | 10 | Jan Oblak |
-| LB | FB | 11 | 37 | Carlos Martín |
-| LCB | CB | 31 | 36 | Jorge Domínguez |
-| CCB | CB | 50 | 36 | Robin Le Normand |
-| RCB | CB | 70 | 36 | Dávid Hancko |
-| RB | FB | 89 | 37 | Dani Martínez |
-| LM | WM | 13 | 61 | Rodrigo Mendoza |
-| LDM | DM | 38 | 61 | Pablo Barrios |
-| RDM | DM | 63 | 61 | Koke |
-| RM | WM | 88 | 61 | Arnau Ortiz |
-| ST | ST | 50 | 87 | Ademola Lookman |
+| GK | GK | 50 | Jan Oblak | 53.2 |
+| LB | FB | 14 | **Dani Martínez** (DL) | 11.9 |
+| LCB | CB | 35 | **Dávid Hancko** | 29.4 |
+| RCB | CB | 65 | **Robin Le Normand** | 60.2 |
+| RB | FB | 86 | **Jorge Domínguez** (DR) | 84.8 |
+| CDM | DM | 50 | Koke (DMC) | 51.6 |
+| LM | WM | 24 | **Arnau Ortiz** (ML) | 28.4 |
+| LCM | CM | 36 | Pablo Barrios | 38.4 |
+| RCM | CM | 64 | Rodrigo Mendoza | 66.8 |
+| RM | WM | 76 | **Carlos Martín** (MR) | 81.5 |
+| ST | ST | 50 | Ademola Lookman | 37.6 |
 
-**왜 도식 좌표를 slots 정본으로 쓰는가**: 기존 regime의 `slots`도 같은 성격이다 —
-AVL 4-4-2 세트의 `source`가 「FotMob away formation + positionId 배열」이고,
-검증 결과 **AVL 값과 FotMob `vl`×100이 근사 일치**한다
-(GK 50/6 ↔ 50/10 · LM 14/58 ↔ 13/61 · ST 50/86 ↔ 50/87).
-⇒ `slots`는 **도식 기하**가 정본 성격이고, 실측 평균위치는 **선수 그리드**(`map25`·`tool_x/y`) 쪽 개념이다.
+**슬롯 x는 ATM 자체 실측(Opta 툴x)을 좌우 대칭화한 값이다** — FB(11.9/84.8 → 변 offset 평균 13.6) ·
+CB(29.4/60.2 → 중앙 offset 15.4) · WM(28.4/81.5 → 23.5) · CM(38.4/66.8 → 14.2) ·
+CDM 51.6→50 · ST 37.6→50(단일 중앙 슬롯).
+1경기 편류를 그대로 넣으면 **ST 37.6·LM 28.4**로 좌측에 LM·LCM·ST가 몰리는 병리적 기하가 된다.
+⛔ **AVL 값을 재사용하지 않았다**(불변규칙 7의 팀 축 혼선).
+⭐ 미드필드가 좁다(LM 24 ↔ LCM 36) — 문헌의 「중앙 인원을 늘려 중앙으로 통과」와 정합.
+⏰ **R2 이후 2경기 합의값으로 재산출**(CHE 3-4-2-1 선례).
 
 ⭐ **커널은 `x`와 `slot_type`만 사용한다**(`core.kernel.best_fit_slot`) — `y`는 표시용이다.
+⭐ **배정 교훈**: x 근접도만으로 슬롯을 정하면 틀린다 — 바에나를 툴x(41.6)만 보고 LCM(36)에 넣으면 0.534,
+LM(24)에 넣으면 **0.825**다. 커널은 **그리드 형상 대 역할 변형**을 비교한다.
 
 ⚠️ **R1 선발은 최적 XI가 아니다**: 훌리안 알바레스 결장(스페인어 매체는 **시메오네가 그의 이탈을 언급**했다고
-적는다) · Cuti Romero 명단 외 · Jorge Domínguez 조기 데뷔 · **쇠를로트 부상**.
+적는다) · Cuti Romero 명단 외 · Jorge Domínguez(16세) 조기 데뷔 · **쇠를로트 부상**.
 
 ### ⛔ 단일 포메이션만 등록한 이유 — CHE의 결함을 재현하지 않기 위해
 
@@ -93,8 +114,8 @@ SELECT x, slot_type FROM slots WHERE regime_id=? AND pos=?
   실측 결과 현재는 **의도한 3-4-2-1 앵커(LCB 25·CCB 57·RCB 75·ST 42·RM 79)가 선택**되고 있어
   **오늘의 값은 옳다.** 그러나 이는 SQLite의 행 반환 순서에 의존한 **우연**이고,
   VACUUM·인덱스 변경·버전 차이로 조용히 옛 마레스카 파생값(31·50·66·50·86)으로 뒤집힐 수 있다.
-- ⇒ **ATM은 5-4-1 하나만 등록했다.** 포메이션을 추가할 때는 **AVL 관례대로 공유 pos의
-  x·slot_type을 동일하게** 맞춰야 한다.
+- ⇒ **ATM은 4-1-4-1 하나만 등록했다.** 61분 이후의 4-4-2는 슬롯 세트로 만들지 않았다 —
+  포메이션을 추가할 때는 **AVL 관례대로 공유 pos의 x·slot_type을 동일하게** 맞춰야 한다.
 
 ---
 
@@ -112,30 +133,44 @@ SELECT x, slot_type FROM slots WHERE regime_id=? AND pos=?
 **공격 구조가 곧 수비 전환 조건**이다(상실 시 즉시 압박 가능한 인원을 확보한다).
 한 명은 높고 넓게 남아 상대 백라인을 늘린다.
 **2020/21 이후 후방 짧은 패스 빌드업 비중이 늘었다** ⇒ 게임 설정 `Short Passing`의 근거.
+⚠️ **R1은 백3이 아니라 백4였다**(Opta) — 1-3-2-5 서술은 문헌의 것이고 이 경기로는 확인되지 않았다.
+⭐ 다만 **백4 좌측 CB 한츠코가 전진 배급의 출구**였다(터치 113·정확패스 91·파이널서드 18·어시 1) —
+「wide CB가 배급축」이라는 구조 자체는 백4에서도 관찰된다.
 
-### 압박 — 위치 지향 존 마킹, 그리고 현 결함
+### 압박 — 위치 지향 존 마킹, 그리고 ⭐ 첫 실측 (PPDA)
+⭐⭐ **26/27 R1 PPDA = 7.77** (말라가 11.46). 낮을수록 강한 압박이므로 **아틀레티코가 훨씬 강하게 압박했다**
+(수비 액션 44 대 28). 점유 53%·상대 진영 패스 266 대 180과 합치면 이 경기는 **저블록이 아니라
+「전방 압박 + 점유」** 였다 — 문헌의 「하이브리드 이동」 진단에 **처음으로 실측 근거**가 붙었다.
+⚠️ 표본 1경기이고 상대는 승격팀 홈경기다. 정의는 `team_match_stats.ppda_method` 참조.
+
+#### 문헌이 말하는 구조와 현 결함
 **중앙을 봉쇄하고 상대를 롱 스위치로 몰아낸다** — 시간을 벌어 재정비하거나 인터셉트로 역습한다.
 고압박도 쓴다(바르셀로나전 성공 사례).
 ⚠️ **현 결함이 명확히 지적된다**: 전방이 압박할 때 **미드필드가 따라붙지 못해 라인 간 공간이 생기고**
-압박이 산발적이 된다. ⇒ 5-4-1의 **LM·RM 슬롯 과제**와 직결된다.
-⛔ **PPDA 실측 0건** — PPDA 정본 규약은 [docs/12](12-iraola-tactics.md)를 따른다.
+압박이 산발적이 된다. ⇒ 4-1-4-1의 **LM·RM 슬롯 과제**와 직결된다.
+⚠️ 다만 **R1 PPDA 7.77은 그 서술과 어긋난다** — 이 경기에서는 압박이 산발적이지 않았다.
+PPDA 정본 규약은 [docs/12](12-iraola-tactics.md)를 따른다.
 
 ### rest-defense — pendulum 백라인
 상대가 후방으로 몰리면 라인을 **밀어올려 라인 간 공간을 압축**하고, 전진당하면 통째로 내려앉는다.
-**백3의 중앙 CB가 그 스윙의 기준점**이고, 좌우 CB가 벌어질 때 유일한 잔류 중앙이다.
+⚠️ **문헌은 백3 전제로 「중앙 CB가 스윙의 기준점」이라고 쓰지만, R1 실측은 백4였다**(Opta 4-1-4-1).
+백4에서는 그 역할이 **단일 피벗(CDM)** 에게 옮겨간다 — 백4 앞을 혼자 가리는 자리다.
 
 ### 슬롯 요구 (정본은 `slot_canon_roles`)
 
 | pos | 역할/포커스 | 핵심 요구 |
 |---|---|---|
 | GK | `gk_goalkeeper` / Defend | ⭐ **빌드업 +1이 아니다** — 알론소(CHE `gk_ballplaying`)와 정반대 축 |
-| LCB·RCB | `cb_defender` / Aggressive | 5백 전환 시 채널 좁힘 + **전방 압박형 듀얼** |
-| CCB | `cb_defender` / Balanced | **rest-defense 기준점** — 나가면 백3가 무너지므로 Aggressive를 주지 않는다 |
-| LB·RB | `fb_wingback` / Support | 폭 전체 담당하되 **수비 책임 선행**(R1 y=37, CB 라인 36과 거의 동일 깊이) |
+| LB·RB | `fb_wingback` / Support | 폭을 담당하되 **수비 책임 선행** |
+| LCB·RCB | `cb_stopper` / Aggressive | 백4 CB. **전방 압박형 듀얼** + 중앙 봉쇄 |
+| **CDM** | `dm_holding` / Ball-Winning | ⭐ **4-1-4-1의 단일 피벗** — 백4 앞을 혼자 가린다. 이 자리가 비면 백4가 그대로 노출된다 |
 | LM·RM | `wm_widemid` / Defend | 윙어가 아니라 **채널 수비 + 역습 출구**. 안쪽으로 접혀 미드 4를 완성 |
-| LDM | `dm_holding` / Ball-Winning | 중앙 봉쇄 + 회수 즉시 전환 첫 연결 |
-| RDM | `dm_dlp` / Support | 빌드업 1-3-2-5의 「2」 — LDM과 **비대칭** |
+| LCM·RCM | `cm_b2b` / Balanced | 피벗 옆에서 상하 연결. 문헌의 「중앙 인원을 늘려 중앙으로 통과」 축 |
 | ST | `st_advanced` / Support | ⭐ 롱볼 타깃이 아니라 **압박 첫 기준점 + 전환 시작점** |
+
+⚠️ 역할·포커스는 **FC26 유효 조합만** 썼다(`game_role_focus` 대조). 최초 등록본에 있던
+`cb_defender`/Aggressive · `dm_dlp`/Support는 **존재하지 않는 조합**이어서 정정했다 —
+원인은 `slot_canon_roles`에 **focus FK가 없다는 점**이다(`match_player_prescriptions`에는 있다).
 
 ### 상황 대응
 빅매치에서는 더 극단으로 간다 — 과거 챔피언스리그에서 **후방 6명 라인**까지 쓴 이력이 있다.
@@ -153,12 +188,12 @@ SELECT x, slot_type FROM slots WHERE regime_id=? AND pos=?
 
 | 항목 | 상태 |
 |---|---|
-| `sofascore_id` | ⛔ 미확정(후보 2836) — SofaScore 403 해제 후 검증 |
-| 선수 실측·커널 적합 | ⛔ **0건**. `squad_entries`·`prescriptions`·`player_matches` 전부 미착수 |
-| PPDA·라인 높이 실측 | ⛔ 0건 — 게임 설정의 **라인 45는 문헌 기반 추정치**다 |
+| `sofascore_id` | 팀 **2836 확정** / ⛔ **선수별 전원 미확정** — 403으로 스쿼드·API 열거 불가. `collect_sofascore.py`의 선결 조건 |
+| 선수 실측·커널 적합 | ✅ **R1 적재 완료** — `player_matches` 16 · `squad_entries` 12 · `prescriptions` 16 · `player_duties` 16. ⚠️ 표본 1경기 |
+| PPDA | ✅ **R1 7.77 확보**(Opta 원천). ⚠️ 라인 높이는 여전히 미측정 — **라인 45는 문헌 기반 추정치** |
 | `set_pieces` 축 | ⛔ 미조사(1~2티어 근거 미확보로 결손 유지 — 추정으로 채우지 않았다) |
 | `rotation` 축 | ⚠️ R1 로테이션 정황만 |
-| 포메이션 확정 | ⚠️ **R1 1경기**. 5-4-1이 기본형인지 상황형인지 미확정(역사적 기본형은 4-4-2) — **R2 08-23 비야레알전**으로 재확인 |
+| 포메이션 확정 | ⚠️ **R1 1경기**. Opta 기준 **4-1-4-1(0~61분) → 4-4-2**이고 FotMob은 5-4-1로 읽었다(Opta 채택) — **R2 08-23**로 재확인 |
 | 라리가 이적 마감일 | ⚠️ PL(09-01)과 다를 수 있음 — 이적 감시 편입 전 확인 필요 |
 | 전술 문헌 티어 | ⚠️ 근거 대부분이 **3티어 분석 블로그**다. 이적 루머 티어 기준과 다른 축이지만 provenance는 분리 기록했다 |
 
