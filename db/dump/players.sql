@@ -139,3 +139,4 @@ INSERT INTO players VALUES(143,'Luca Chambers','체임버스',1134530,NULL,NULL,
 INSERT INTO players VALUES(144,'Junnosuke Abe','아베',2148398,NULL,NULL,'MF','[2026-08-19 프리시즌 전수 수집에서 신설] 리버풀 40번.',NULL,NULL);
 INSERT INTO players VALUES(145,'Cody Scanlon','스캔런',1188167,NULL,NULL,'MF','[2026-08-19 프리시즌 전수 수집에서 신설] 리버풀 48번.',NULL,NULL);
 INSERT INTO players VALUES(146,'Axel Disasi','디사시',NULL,NULL,NULL,NULL,'[2026-08-20] transfer-watch — CHE 유출 감시(MEDIUM-HIGH) 등재를 위해 추가. 25/26 후반기 웨스트햄 임대 17경기 1500분+, 계약 2029, 2023-08 모나코에서 €45m/£38.8m. 실측 히트맵·sofascore_id 없음(SofaScore 403).',NULL,NULL);
+INSERT INTO players VALUES(147,'Ishé Samuels-Smith','새뮤얼스-스미스',NULL,NULL,NULL,NULL,'[2026-08-20] transfer-watch 원장 감사 — CHE 임대 아웃 CONFIRMED 등재를 위해 추가. LB/CB · 2006년생(20). 실측 없음.',NULL,NULL);
