@@ -140,7 +140,7 @@ def export_all(db_path=None, window="2026-summer"):
                                  FROM transfer_outgoing o JOIN players p ON p.id=o.player_id
                                  WHERE o.team_code=? AND o.window=? ORDER BY o.player_id""",
                          (code, window))
-        ledger = _rows(con, """SELECT kind, label, amount_m, note, confidence
+        ledger = _rows(con, """SELECT kind, label, amount_m, note, confidence, contract_years
                                FROM transfer_ledger WHERE team_code=? AND window=?
                                ORDER BY CASE kind WHEN 'in' THEN 0 WHEN 'deduct' THEN 1
                                         WHEN 'out' THEN 2 ELSE 3 END, amount_m DESC""",

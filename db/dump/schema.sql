@@ -274,7 +274,7 @@ CREATE TABLE transfer_ledger(
   id INTEGER PRIMARY KEY,
   team_code TEXT NOT NULL REFERENCES teams(code),
   window TEXT NOT NULL, kind TEXT NOT NULL, label TEXT NOT NULL,
-  amount_m REAL NOT NULL, note TEXT, source TEXT, confidence TEXT,
+  amount_m REAL NOT NULL, note TEXT, source TEXT, confidence TEXT, contract_years REAL,
   UNIQUE(team_code, window, kind, label)
 );
 CREATE VIEW v_player_profile AS

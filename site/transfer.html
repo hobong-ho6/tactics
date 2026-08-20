@@ -103,24 +103,82 @@ function drawOut(){
 }
 
 /* 통화는 £m이다(Sky 표기값). 이전 헤더가 €m으로 잘못 적혀 있었다 — 2026-08-16 정정.
-   미공개(undisclosed) 건은 0으로 합산하면 순수지를 왜곡하므로 합계에서 빼고 건수만 센다. */
+   미공개(undisclosed) 건은 0으로 합산하면 순수지를 왜곡하므로 합계에서 빼고 건수만 센다.
+
+   ⭐ 2026-08-20 — 지출·수입을 절로 분리하고 영입에 「상각 기준」을 넣었다. 이유:
+   구단 장부에 잡히는 것은 이적료 전액이 아니라 **연 상각액 = 이적료 ÷ 계약연수**다.
+   PL은 2023-12 주주총회 의결로 그 상각 기간을 **5년으로 상한**했다(UEFA 2023-06과 정합).
+   따라서 계약이 7~8년이어도 분모는 5다 — 첼시의 장기계약 분산 기법을 무력화한 그 규정이다.
+   ⚠️ 매각은 상각하지 않는다 — 매각은 처분이익(이적료 − 잔존 장부가)으로 **즉시** 인식된다.
+   그래서 두 축을 한 숫자로 상계하면 회계적으로 틀린다. 순현금은 참고용으로만 남긴다. */
 {
-  const num = l => (l.note ?? '').startsWith('미공개') ? null : Number(l.amount_m);
-  const sum = k => T.ledger.filter(l => l.kind === k).reduce((a, l) => a + (num(l) ?? 0), 0);
+  const AMORT_CAP = 5;                                   // PL·UEFA 상각 상한(년)
+  const undisc = l => (l.note ?? '').startsWith('미공개');
+  const num = l => undisc(l) ? null : Number(l.amount_m);
+  const rows = k => T.ledger.filter(l => l.kind === k);
+  const sum = k => rows(k).reduce((a, l) => a + (num(l) ?? 0), 0);
+  /* 연 상각액 — 계약연수가 확인된 건만. 미확인은 추정하지 않고 건수만 센다(§2 보존 정책과 같은 태도). */
+  const amort = l => {
+    const fee = num(l), y = Number(l.contract_years);
+    return (fee && y) ? fee / Math.min(y, AMORT_CAP) : null;
+  };
   const spend = sum('영입 지출'), earn = sum('매각 수입');
-  const undis = T.ledger.filter(l => (l.note ?? '').startsWith('미공개')).length;
+  const ins = rows('영입 지출'), outs = rows('매각 수입');
+  const amortSum = ins.reduce((a, l) => a + (amort(l) ?? 0), 0);
+  /* 상각 커버리지는 **이적료가 있는 행**만 분모로 센다 — 미공개·자유이적(0)까지 세면
+     「확인 N건」이 실제보다 커져 결손이 감춰진다. */
+  const feeRows = ins.filter(l => num(l));
+  const noYears = feeRows.filter(l => !Number(l.contract_years));
+  const withYears = feeRows.filter(l => Number(l.contract_years));
+  const feeKnown = withYears.reduce((a, l) => a + num(l), 0);
+  const undis = T.ledger.filter(undisc).length;
   const net = earn - spend;
-  document.getElementById('ledger').innerHTML =
-    `<tr><th>구분</th><th>항목</th><th>금액(£m)</th><th>비고</th></tr>` +
-    (T.ledger.map(l => `<tr><td>${l.kind}</td><td>${l.label}</td>` +
-      `<td>${(l.note ?? '').startsWith('미공개') ? '미공개' : l.amount_m}</td>` +
-      `<td class="dim">${l.note ?? ''}</td></tr>`).join('')
-     || '<tr><td colspan="4" class="dim">없음</td></tr>') +
-    (T.ledger.length ? `<tr><th colspan="2">합계 — 완료 건만</th>
-      <th>지출 £${spend.toFixed(1)}m · 수입 £${earn.toFixed(1)}m</th>
-      <th class="${net >= 0 ? 'hi' : 'dead'}">순 ${net >= 0 ? '+' : ''}${net.toFixed(1)}m</th></tr>
-      <tr><td colspan="4" class="dim">⚠️ 진행 중 루머는 제외한 <b>공식 발표 완료 건</b>만입니다.
-      금액은 Sky 표기값이고 <b>애드온·셀온·급여·임대료는 포함되지 않습니다</b> — 구단 회계 계상액과 다릅니다.
-      미공개 ${undis}건은 합계에서 제외했습니다(0으로 세면 순수지가 왜곡됩니다).</td></tr>` : '');
+  const f1 = v => v.toFixed(1);
+
+  const inRow = l => {
+    const a = amort(l);
+    return `<tr><td>${l.label}</td>
+      <td>${undisc(l) ? '<small class="dim">미공개</small>' : f1(Number(l.amount_m))}</td>
+      <td>${l.contract_years ? `${l.contract_years}년${l.contract_years > AMORT_CAP
+            ? ' <small class="dim">→5</small>' : ''}` : '<small class="dim">미확인</small>'}</td>
+      <td>${a != null ? `<b>${f1(a)}</b>` : '<small class="dim">—</small>'}</td></tr>`;
+  };
+  const outRow = l => `<tr><td>${l.label}</td>
+      <td>${undisc(l) ? '<small class="dim">미공개</small>' : f1(Number(l.amount_m))}</td>
+      <td colspan="2" class="dim">${l.note ?? ''}</td></tr>`;
+
+  document.getElementById('ledger').innerHTML = T.ledger.length ? `
+    <tr><th colspan="4">영입 — 지출 <small class="dim">(£m)</small></th></tr>
+    <tr><th>항목</th><th>이적료</th><th>계약</th><th>연 상각액</th></tr>
+    ${ins.map(inRow).join('') || '<tr><td colspan="4" class="dim">없음</td></tr>'}
+    <tr><th>소계</th><th>${f1(spend)}</th>
+      <th class="dim">계약 확인 ${withYears.length}/${feeRows.length}건</th>
+      <th class="dead">${f1(amortSum)}/년</th></tr>
+
+    <tr><th colspan="4" style="padding-top:14px">매각 — 수입 <small class="dim">(£m · 상각 없음)</small></th></tr>
+    <tr><th>항목</th><th>금액</th><th colspan="2">비고</th></tr>
+    ${outs.map(outRow).join('') || '<tr><td colspan="4" class="dim">없음</td></tr>'}
+    <tr><th>소계</th><th class="hi">${f1(earn)}</th><th colspan="2" class="dim">처분이익은 즉시 인식</th></tr>
+
+    <tr><th colspan="4" style="padding-top:14px">이번 창이 만든 연간 비용</th></tr>
+    <tr><td>영입 연 상각 부담</td><th class="dead">+${f1(amortSum)}/년</th>
+      <td colspan="2" class="dim">이적료 £${f1(feeKnown)}m을 계약연수(최대 ${AMORT_CAP}년)로 나눈 값</td></tr>
+    <tr><td>순현금 <small class="dim">(참고)</small></td>
+      <th class="${net >= 0 ? 'hi' : 'dead'}">${net >= 0 ? '+' : ''}${f1(net)}</th>
+      <td colspan="2" class="dim">현금 이동 기준 — 회계 손익이 아닙니다</td></tr>
+    <tr><td colspan="4" class="dim">
+      ⭐ <b>연 상각액 = 이적료 ÷ 계약연수</b>이고, PL은 <b>2023-12 의결로 상각 기간을 ${AMORT_CAP}년으로 상한</b>했습니다
+      (UEFA 2023-06과 정합). 계약이 ${AMORT_CAP}년보다 길면 <small class="dim">→5</small>로 표시하고 분모를 5로 씁니다 —
+      첼시의 장기계약 분산 기법을 무력화한 그 규정입니다.<br>
+      ⚠️ <b>매각은 상각하지 않습니다</b> — 처분이익(이적료 − 잔존 장부가)으로 즉시 인식되므로 상각과 상계할 수 없습니다.
+      잔존 장부가를 우리가 갖고 있지 않아 <b>처분이익은 산출하지 않았습니다</b>(표시값은 이적료입니다).<br>
+      ⚠️ 계약연수 <b>미확인 ${noYears.length}건</b>은 추정하지 않고 상각 소계에서 제외했습니다 — 실제 부담은 이보다 큽니다.<br>
+      ⚠️ 진행 중 루머를 제외한 <b>공식 발표 완료 건</b>만이며, 금액은 Sky 표기값이고 <b>급여·대리인 수수료·임대료는 빠져
+      있습니다</b>. 일부 행은 애드온이 포함된 총액이라 상각 분모에 넣을 <b>보장 이적료와 다를 수 있습니다</b>.
+      미공개 ${undis}건은 합계에서 제외했습니다.<br>
+      ⛔ <b>「가용 금액」의 절대치는 산출하지 않았습니다.</b> 26/27부터 PSR을 대체하는 <b>SCR</b>은
+      (임금+상각+대리인수수료) ÷ (축구수익+선수매각 순손익) ≤ <b>85%</b>를 보는 <b>비율 규제</b>이고,
+      우리 DB에 <b>축구수익·임금 총액이 없습니다</b>. 위 「연 상각 부담」은 그 분자의 증가분입니다.
+    </td></tr>` : '<tr><td colspan="4" class="dim">없음</td></tr>';
 }
 </script></body></html>
