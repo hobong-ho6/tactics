@@ -32,7 +32,7 @@ CHE(알론소)·LIV(이라올라)에는 반드시 붙는 경고가 있다:
 CHE·LIV처럼 `projected`가 아니라 **`measured`** 로 잡은 근거다.
 
 ✅ **2026-08-20 현재 R1 실측이 적재됐다** — `player_matches` 16 · `squad_entries` 12 ·
-`prescriptions` 16 · `player_duties` 16 · **PPDA 7.77**. ⚠️ 단 **표본 1경기**이고
+`prescriptions` 16 · `squad_entries` **23**(실측 16 + 미출전 자리표시 7) · `player_duties` 23 · **PPDA 7.77**. ⚠️ 단 **표본 1경기**이고
 라인 높이·세트피스·선수별 서사는 여전히 결손이다(아래 「결손」 절).
 
 ---
@@ -189,7 +189,8 @@ PPDA 정본 규약은 [docs/12](12-iraola-tactics.md)를 따른다.
 | 항목 | 상태 |
 |---|---|
 | `sofascore_id` | 팀 **2836 확정** / ⛔ **선수별 전원 미확정** — 403으로 스쿼드·API 열거 불가. `collect_sofascore.py`의 선결 조건 |
-| 선수 실측·커널 적합 | ✅ **R1 적재 완료** — `player_matches` 16 · `squad_entries` 12 · `prescriptions` 16 · `player_duties` 16. ⚠️ 표본 1경기 |
+| 선수 실측·커널 적합 | ✅ **R1 적재 완료** — `player_matches` 16 · `squad_entries` **23**(실측 16 + 자리표시 7) · `prescriptions` 16 · `player_duties` 23. ⚠️ 표본 1경기 |
+| ⚠️ 자리표시 7명 | R1 미출전 벤치(무소·히메네스·푸빌·그리말도·카르도소·J.카스티요·M.요렌테) — `map25`가 NOT NULL이라 **전부 0 그리드**를 넣고 `fit_*`은 **NULL**로 뒀다(AVL 네델코비치 선례). 슬롯은 **추정**이다 |
 | PPDA | ✅ **R1 7.77 확보**(Opta 원천). ⚠️ 라인 높이는 여전히 미측정 — **라인 45는 문헌 기반 추정치** |
 | `set_pieces` 축 | ⛔ 미조사(1~2티어 근거 미확보로 결손 유지 — 추정으로 채우지 않았다) |
 | `rotation` 축 | ⚠️ R1 로테이션 정황만 |
