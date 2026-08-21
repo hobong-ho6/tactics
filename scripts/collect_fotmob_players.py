@@ -136,6 +136,15 @@ async ({fm, mains, wanted}) => {
   const ml = j.mainLeague || {};
   out.mainLeague = {league: ml.leagueName, season: ml.season,
                     stats: (ml.stats || []).map(s => [s.title, String(s.value)])};
+  // 축1 신원 3종. playerInformation의 title은 로케일 라벨이라 값으로 찾지 않고 title로 매칭한다.
+  out.birthDate = j.birthDate ? (j.birthDate.utcTime || j.birthDate) : null;
+  const info = j.playerInformation || [];
+  const pick = t => { const i = info.find(x => x.title === t); if (!i) return null;
+    const v = i.value; return v && typeof v === 'object' ? (v.fallback ?? v.key ?? null) : v; };
+  out.country = pick('Country');
+  out.height = pick('Height');
+  const pos = ((j.positionDescription || {}).positions || []).find(p => p.isMainPosition);
+  out.mainPos = pos && pos.strPosShort ? pos.strPosShort.label : null;
   out.traitsTitle = (j.traits || {}).title || null;
   out.traits = ((j.traits || {}).items || []).map(t => [t.title, t.value]);
   const ch = (j.careerHistory || {}).careerItems || {};
@@ -262,14 +271,29 @@ def main():
         return
 
     cur = con.cursor()
-    unknown, ins = set(), dict.fromkeys(
-        ["detail", "season", "traits", "tenures", "fotmob_id"], 0)
+    unknown, conflicts, ins = set(), [], dict.fromkeys(
+        ["detail", "season", "traits", "tenures", "identity", "fotmob_id"], 0)
     seasons_have = {r[0] for r in con.execute("SELECT code FROM seasons")}
     for r in results:
         if r.get("err"):
             continue
         pid, fm = r["pid"], r["fm"]
         src = f"fotmob.com/api/data (player {fm}, scripts/collect_fotmob_players.py, {pulled} 수집)"
+
+        # 축1 신원 — NULL만 채운다. 기존 값과 다르면 덮지 않고 보고한다(불변규칙 2·3).
+        # 생년·국적은 동명이인 판별의 필수 3요소다(2026-08-19 규약).
+        cur.execute("SELECT birth_year, nationality, primary_position FROM players WHERE id=?", (pid,))
+        cur_by, cur_nat, cur_pos = cur.fetchone()
+        by = int(r["birthDate"][:4]) if r.get("birthDate") else None
+        for col, new, old in (("birth_year", by, cur_by), ("nationality", r.get("country"), cur_nat),
+                              ("primary_position", r.get("mainPos"), cur_pos)):
+            if new is None:
+                continue
+            if old is None:
+                cur.execute(f"UPDATE players SET {col}=? WHERE id=?", (new, pid))
+                ins["identity"] += cur.rowcount
+            elif str(old) != str(new):
+                conflicts.append((r["kr"], col, old, new))
 
         for s in r["stats"]:
             if s.get("err") or not s.get("rows"):
@@ -328,6 +352,10 @@ def main():
 
     con.commit()
     print("\n적재:", " · ".join(f"{k} +{v}" for k, v in ins.items() if k != "fotmob_id"))
+    if conflicts:
+        print("⚠️ 기존 값과 불일치 — 덮지 않았다(사람이 판정할 것):")
+        for kr, col, old, new in conflicts:
+            print(f"   {kr}.{col}: DB '{old}' vs FotMob '{new}'")
     if unknown:
         print("⚠️ 라벨 미매핑 키(metric/metric_kr가 NULL로 들어갔다 — LABELS에 추가할 것):")
         print("   " + ", ".join(sorted(unknown)))
