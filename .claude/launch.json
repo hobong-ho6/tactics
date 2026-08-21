@@ -1,6 +1,6 @@
 {
   "version": "0.0.1",
-  "_note": "preview daemon has no macOS TCC permission for ~/Documents \u2014 serve a /private/tmp mirror instead; re-run: cp fc26-heatmap.html /private/tmp/tactics-preview/ after edits",
+  "_note": "preview daemon has no macOS TCC permission for ~/Documents \u2014 so this serves the /private/tmp/tactics-preview mirror, not the repo. The mirror is refreshed automatically by `python3 scripts/export.py` (it copies site/ wholesale), so no manual copy step is needed. Pages live in site/*.html; data in site/data/*.json. Reloading the browser is enough to pick up new data: site/assets/data.js fetches JSON with cache:'no-store' plus a Date.now() cache-buster (enforced by gate G9). NOTE: this inline handler does not send Cache-Control: no-store \u2014 use scripts/serve.sh instead if you need that for HTML/JS too.",
   "configurations": [
     {
       "name": "heatmap",
