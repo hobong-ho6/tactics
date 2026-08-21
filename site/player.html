@@ -152,7 +152,22 @@ const tracked = td.transfer.targets.filter(t=>!/^(DEAD|CONFIRMED)/i.test(t.likel
 if (tracked.length){
   const seen=new Set();
   groups['⭐ 영입 추적'] = tracked.filter(t=>{const k=t.name; if(seen.has(k))return false; seen.add(k); return true;})
-    .map(t=>({name:(t.name_kr||t.short_label||t.name), en:t.name, tt:t}));
+    // ⭐ pid·kr을 반드시 채운다 — 없으면 fbref·fotmob_season·form 조회가 라벨만으로 이뤄져
+    // transfer_targets.name_kr(‘토신 아다라비오요’) ↔ players.name_kr(‘아다라비오요’) 불일치로 조용히 0행이 된다.
+    .map(t=>({name:(t.name_kr||t.short_label||t.name), en:t.name, tt:t, pid:t.player_id, kr:t.name_kr}));
+}
+/* players.name_kr로 키가 잡힌 맵(fbref·fotmob_season·form·season_stats)에서 행을 꺼낸다.
+   ⭐ player_id가 있으면 그것을 먼저 쓴다 — 라벨은 표기 규약이 두 테이블에서 갈리므로 신뢰할 수 없다.
+   id로 못 찾으면 라벨 후보를 순서대로 시도하고, 그래도 없으면 빈 배열(= 진짜 결손)이다. */
+function pickRows(map, sel){
+  if (!map) return [];
+  if (sel.pid != null){
+    for (const rows of Object.values(map))
+      if (Array.isArray(rows) && rows.some(r => r.player_id === sel.pid)) return rows;
+  }
+  for (const k of [sel.kr, sel.name, sel.tt?.short_label, sel.en])
+    if (k && map[k]) return map[k];
+  return [];
 }
 let TAB = 'pool';   // 백분위 모집단: pool = 수집 대상 전 팀(POOL_CODES) / league = Fotmob 리그 전체
 document.querySelectorAll('button.tab').forEach(b=>b.addEventListener('click',()=>{
@@ -215,12 +230,27 @@ function bar(name,val,pct,tip){
     <span class="badge" style="width:64px;text-align:center;color:${col};border-color:${col}">${tag} ${pct}</span></div>`;
 }
 /* 리그 전체(Fotmob) — 지표별 동포지션 백분위 + 주 리그 시즌 요약. 그린 경우 true. */
-function renderLeague(key, force){
+function renderLeague(key, force, sel){
   if (TAB!=='league' && !force) return false;
-  const fb=(td.fbref||{})[key]||[], fms=(td.fotmob_season||{})[key]||[];
+  const fbAll=pickRows(td.fbref, sel||{kr:key}), fms=pickRows(td.fotmob_season, sel||{kr:key});
+  /* ⭐ 한 선수가 복수 (리그, 시즌)을 가질 수 있다 — 2026-08-21에 CB 3후보를 리그·시즌 교차로 수집하면서
+     생겼다. 섞어서 한 줄로 그리면 「Championship 21/22 + PL 24/25」가 같은 막대열에 들어가 해석이 불가능하다.
+     ⇒ 시즌 내림차순으로 **가장 최신 (리그, 시즌) 하나만** 그리고, 나머지는 노트에 열거한다. */
+  const buckets = new Map();
+  for (const r of fbAll) {
+    const k = `${r.league} ${r.season}`;
+    (buckets.get(k) ?? buckets.set(k, []).get(k)).push(r);
+  }
+  const seasonKey = s => String(s||'').replace(/[^\d]/g,'');   // '2025/2026'→'20252026', '2026'→'2026'
+  const ordered = [...buckets.entries()].sort((a,b) =>
+    seasonKey(b[1][0].season).localeCompare(seasonKey(a[1][0].season)));
+  const fb = ordered.length ? ordered[0][1] : [];
+  const others = ordered.slice(1).map(([,v]) => `${v[0].league} ${v[0].season}`);
   document.getElementById('tabnote').innerHTML = fb.length
     ? `Fotmob <b>${fb[0].league} ${fb[0].season}</b> — 같은 리그 <b>동포지션 선수</b> 대비 백분위(수집 ${fb[0].pulled}).
        막대는 <b>90분당 기준</b>이고, 값 칸은 시즌 합계다. 실점·파울처럼 낮을수록 좋은 지표는 Fotmob이 이미 뒤집어 준다.`
+       + (others.length ? `<br><span class="dim">⚠️ 이 선수는 <b>${others.length}개 시즌</b>이 더 수집돼 있다
+         (${others.join(' · ')}). <b>모집단이 달라 섞어 읽으면 안 되므로</b> 최신 시즌만 표시한다.</span>` : '')
     : 'Fotmob 리그 백분위 미수집 — 주 리그 출전이 없거나 아직 수집되지 않은 선수다.';
   const rows = fb.slice().sort((a,b)=>(b.percentile_per90??b.percentile??0)-(a.percentile_per90??a.percentile??0));
   document.getElementById('pct').innerHTML =
@@ -275,7 +305,7 @@ function render(){
     document.getElementById('pstat').innerHTML =
       `<span class="badge mid">${(t.likelihood||'').split(' ')[0]}</span> ${t.club??''} · 최신 보도 ${t.last_news_date??'—'} · 표본 ${t.sample_n??'—'}경기 평균 ${t.avg_rating??'—'}`;
     // 영입 후보는 우리 실측 풀에 없다 — 리그 백분위(Fotmob)만 보여준다
-    renderLeague(key, true);
+    renderLeague(key, true, sel);
     document.getElementById('season').innerHTML='';
     document.getElementById('radar').innerHTML='';
     document.getElementById('form').innerHTML='<span class="dim">경기별 평점 없음(영입 후보)</span>';
@@ -296,14 +326,14 @@ function render(){
     const st = td.player_stats.find(s=>s.label===key);
   document.getElementById('pstat').innerHTML = st ? annotate(`경기 <b>${st.n}</b> · 분 <b>${st.minutes??'—'}</b> · 평점 <b>${st.avg_rating??'—'}</b> · xG <b>${st.xg_pg??'—'}</b> · xA <b>${st.xa_pg??'—'}</b> · 키패스 <b>${st.kp_pg??'—'}</b> · 듀얼승 <b>${st.dw_pg??'—'}</b> · 태클 <b>${st.tk_pg??'—'}</b> · 인터셉트 <b>${st.ic_pg??'—'}</b>`) : '<span class="dim">경기 스탯 없음 (match-watch 수집 대기)</span>';
     // 시즌 성적 — 대회별 (Fotmob 선수 페이지 참고)
-    const ss=(td.season_stats||{})[key]||[];
+    const ss=pickRows(td.season_stats, sel);
     document.getElementById('season').innerHTML = ss.length
       ? `<table><tr><th>시즌</th><th>대회</th><th>경기</th><th>선발</th><th>분</th><th>골</th><th>어시</th><th>평점</th></tr>`
         + ss.map(s=>`<tr><td>${s.season}</td><td>${s.competition}</td><td>${s.n}</td><td>${s.starts??'—'}</td>
             <td>${s.minutes??'—'}</td><td>${s.goals??0}</td><td>${s.assists??0}</td><td><b>${s.avg_rating??'—'}</b></td></tr>`).join('')
         + '</table>'
       : '<span class="dim">시즌 성적 없음</span>';
-    if (!renderLeague(key, false)) {
+    if (!renderLeague(key, false, sel)) {
       document.getElementById('tabnote').textContent =
         `수집 ${_TEAMS.length}팀(${POOL_LABEL}) 풀 내 상대 위치. 숫자 = 이 값보다 낮은 선수의 비율(%).`
         + (_FAILED.length ? ` ⚠️ 로드 실패로 제외된 팀: ${_FAILED.join(', ')}` : '');
@@ -330,7 +360,7 @@ function render(){
       document.getElementById('radar').innerHTML=`<svg viewBox="0 0 320 240" style="width:100%;max-width:320px;height:auto" role="img" aria-label="6축 백분위 레이더">${grid}${shape}${labels}</svg>`;
     } else document.getElementById('radar').innerHTML='';
     // 폼 스파크라인 — hover 판정용 투명 원(r=9)을 위에 겹치고, 정보는 캡션에 표시(네이티브 <title>은 3px 원에서 사실상 안 뜬다)
-    const fm=(td.form||{})[key]||[];
+    const fm=pickRows(td.form, sel);
     const formEl=document.getElementById('form');
     formEl.innerHTML = fm.length ? (()=>{
       const w=320,h=60,min=5.5,max=9.5;

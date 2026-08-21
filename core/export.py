@@ -178,7 +178,9 @@ def export_all(db_path=None, window="2026-summer"):
                                ORDER BY v.season DESC, v.n DESC""", (rid, rid)):
             season_stats.setdefault(r.pop("label"), []).append(r)
         fbref = {}   # 리그 백분위 — Fotmob 상세 스탯(migrations/006). 지표별 동포지션 백분위.
-        for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, f.season, f.league,
+        # ⭐ `player_id`를 함께 싣는다 — 딕셔너리 키는 players.name_kr이지만 화면의 영입 후보는
+        # transfer_targets.name_kr을 쓰므로 라벨만으로는 조용히 어긋난다(토신 '아다라비오요' ↔ '토신 아다라비오요').
+        for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, f.player_id, f.season, f.league,
                                       f.metric_key, f.metric, f.metric_kr, f.stat_value, f.per90,
                                       f.percentile, f.percentile_per90, f.pulled
                                FROM fotmob_detail_stats f JOIN players p ON p.id=f.player_id
@@ -189,7 +191,7 @@ def export_all(db_path=None, window="2026-summer"):
                                ORDER BY f.percentile DESC""", (rid, rid, code)):
             fbref.setdefault(r.pop("label"), []).append(r)
         fm_season = {}
-        for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, f.league, f.season,
+        for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, f.player_id, f.league, f.season,
                                       f.metric, f.metric_kr, f.value, f.pulled
                                FROM fotmob_season_stats f JOIN players p ON p.id=f.player_id
                                WHERE f.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
