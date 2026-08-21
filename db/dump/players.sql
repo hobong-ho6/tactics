@@ -83,7 +83,7 @@ INSERT INTO players VALUES(85,'Ronald Araújo','아라우호',925097,NULL,1999,'
 INSERT INTO players VALUES(86,'Ibrahim Mbaye','음바예',1590918,NULL,2008,'RW','transfer_targets 2026-summer LIV 후보 — 2026-08-12 등재',1593857,'Senegal',12733,NULL);
 INSERT INTO players VALUES(88,'Víctor Muñoz','무뇨스',1145642,NULL,2003,'LW','2026-06-18 오사수나에서 리버풀 이적(구단 공식). 바이아웃 €40m(£34.5m) 전액 지급, 장기 계약. 이라올라 체제 1호 영입이며 뉴캐슬을 가로챈 건. 22세 스페인 대표(월드컵 우승 멤버). 양 측면 모두 소화.',1553105,'Spain',13279,'W');
 INSERT INTO players VALUES(89,'Jérémy Jacquet','자케',1445625,NULL,2005,'CB','2026-07-01 렌에서 리버풀 이적(구단 공식). 고정 £55m + 애드온 £5m(총 £60m), 5년(+1년 옵션). 합의는 2026-01 데드라인 데이 메디컬까지 갔고 25/26 잔여 시즌은 렌 잔류 조건이었다. 20세. 코나테(→레알 자유이적) 대체 = 판 다이크 파트너로 규정된다.',1473534,'France',11545,NULL);
-INSERT INTO players VALUES(90,'Aaron Wan-Bissaka','완비사카',863653,229880,1997,'RB','transfer_targets 2026-summer AVL 후보 — 2026-08-14 FotMob 상세 스탯 수집용 등재',760320,'DR Congo',5584,NULL);
+INSERT INTO players VALUES(90,'Aaron Wan-Bissaka','완비사카',863653,229880,1997,'RB','transfer_targets 2026-summer AVL 후보 — 2026-08-14 FotMob 상세 스탯 수집용 등재 | 2026-08-21 웨스트햄에서 **시즌 임대 + 조건부 의무매입**으로 빌라 합류(구단 공식). transfer_targets id=147 → squad_entries 승격.',760320,'DR Congo',5584,NULL);
 INSERT INTO players VALUES(91,'Luka Lynch',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1553189,NULL,NULL,NULL);
 INSERT INTO players VALUES(92,'Triston Rowe',NULL,1400655,NULL,2006,'RM','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1442496,'England',NULL,NULL);
 INSERT INTO players VALUES(93,'Bradley Burrowes',NULL,NULL,NULL,2008,'ST','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1639163,'England',NULL,NULL);
