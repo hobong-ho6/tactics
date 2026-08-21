@@ -101,7 +101,29 @@ done
 ⚠️ sofifa 나이 필드가 **1년 뒤처질 수 있다**(스즈키 실제 23세 ↔ 표기 22세). 나이 판단에 그대로 쓰지 말 것.
 
 **⑤ 상세 지표 (FotMob = Opta 원자료)** — ⭐ 이 프로젝트에서 **가장 수확이 큰 경로**다.
+
+⭐⭐ **2명 이상이면 손으로 하지 말고 스크립트를 써라** (2026-08-21 신설):
+```bash
+.venv/bin/python scripts/collect_fotmob_players.py --team ATM               # 스쿼드 전원
+.venv/bin/python scripts/collect_fotmob_players.py --team LIV --include-targets
+.venv/bin/python scripts/collect_fotmob_players.py --players 177 178 94 --dry-run
+```
+축 **1·5·6·7·8**(`fotmob_id`·detail·season·traits·tenures)을 한 번에 채운다. 멱등이라 재실행 안전.
+⭐ **Playwright로 셸에서 직접 돈다 — 브라우저 MCP도 에이전트 컨텍스트도 거치지 않는다.**
+왜 중요한가: 2026-08-21에 ATM 31명을 브라우저 MCP로 수집하며 **브라우저→localhost 전송이
+`fetch`·form POST 모두 `ERR_BLOCKED_BY_CLIENT`로 차단**된다는 것이 확인됐다(하니스 정책).
+그 결과 1,285행을 **에이전트 컨텍스트를 경유**해 옮겨야 했다(obs#273). 스크립트는 그 비용이 0이고,
+같은 대상에서 **수동 수집이 놓친 표본을 더 찾아냈다**(푸리치 30행·오르티스 LaLiga2 23/24 등).
+⛔ curl·WebFetch로는 안 된다 — FotMob API는 페이지 컨텍스트 밖에서 막힌다.
+⚠️ 기본 `--seasons latest2`인 이유: 개막 직후에는 최신 시즌이 **1~2경기 표본**이라 백분위가 극단으로
+튄다(한츠코 26/27 1경기 평점 8.66 · 패스 정확도 백분위 93). 직전 시즌을 함께 받아야 표본이 생긴다.
+⚠️ 팀 하나에 약 2분 걸린다 — 셸 타임아웃(120초)에 걸리면 백그라운드로 돌려라.
+⚠️ `player_tenures`는 `seasons` FK라 없는 시즌 코드는 **건너뛰고 경고**한다. 경고에 나온 코드를
+`seasons`에 넣고 재실행하면 채워진다(멱등).
+
+수동으로 할 때(1명 · 디버깅):
 1. `/api/data/playerData?id=<fotmob_id>` → `statSeasons[]`에서 **`entryId`** 를 얻는다(예: `1-0`).
+   ⚠️ `statSeasons`는 **배열**이다 — `{seasons:[...]}`가 아니다(2026-08-21에 이 오해로 빈 결과를 받았다).
 2. `/api/data/playerStats?playerId=<id>&seasonId=<entryId>` → 지표·백분위.
    ⚠️ `seasonId`에 `2025/2026-55` 같은 형식을 넣으면 **null**이 온다. **반드시 `entryId`**를 쓸 것.
 3. `localizedTitleId`가 우리 `metric_key`와 **1:1로 일치**한다. 그대로 쓴다.
