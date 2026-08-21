@@ -540,3 +540,37 @@ WHERE tt.map25 IS NOT NULL
       AND se2.slot_type=sl.slot_type
   )
 /* v_slot_candidates(regime_id,team_code,formation,pos,slot_type,player_id,label,name_en,name_kr,source_kind,status,map25,rating,rate_basis,rate_note,fit_role,fit_focus,fit_sim,source,confidence,sort_order,grid_club,grid_caveat) */;
+CREATE TABLE player_market_values(
+  id INTEGER PRIMARY KEY,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  val_date TEXT NOT NULL,        -- 평가 기준일 (FotMob/scisports 시계열의 date)
+  value_eur INTEGER,             -- 중앙 추정값
+  lower_eur INTEGER, upper_eur INTEGER,   -- scisports 신뢰구간
+  team_name TEXT,                -- 그 시점 소속 (이적 시 값 점프의 원인을 남긴다)
+  source TEXT,
+  UNIQUE(player_id, val_date)
+);
+CREATE TABLE player_status(
+  id INTEGER PRIMARY KEY,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  pulled TEXT NOT NULL,          -- 수집일 (스냅샷이므로 날짜가 정본이다)
+  kind TEXT NOT NULL,            -- injury / contract_end
+  value TEXT,                    -- injury: 부상명 · contract_end: YYYY-MM-DD
+  detail TEXT,                   -- injury: 복귀 예상 표기 원문
+  as_of TEXT,                    -- 소스가 밝힌 갱신일 (injuryInformation.lastUpdated)
+  source TEXT, confidence TEXT,
+  UNIQUE(player_id, pulled, kind)
+);
+CREATE TABLE understat_player_matches(
+  id INTEGER PRIMARY KEY,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  us_match_id INTEGER NOT NULL,   -- Understat match id (경기 조인 키)
+  season TEXT,                    -- 시작연도 표기 그대로 ('2025' = 25/26)
+  match_date TEXT, h_team TEXT, a_team TEXT,
+  position TEXT,                  -- Understat 표기 원문 (FW·AMC·Sub 등)
+  minutes INTEGER,
+  goals INTEGER, assists INTEGER, shots INTEGER, key_passes INTEGER,
+  xg REAL, xa REAL, npxg REAL, xg_chain REAL, xg_buildup REAL,
+  source TEXT,
+  UNIQUE(player_id, us_match_id)
+);

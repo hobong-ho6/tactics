@@ -51,7 +51,12 @@ JS_SHOTS = """async (uid) => {
   const d = await r.json();
   return {shots: (d.shots || []).map(s => ({
     m: s.match_id, se: s.season, x: +s.X, y: +s.Y, xg: +s.xG,
-    t: s.shotType, r: s.result, si: s.situation}))};
+    t: s.shotType, r: s.result, si: s.situation})),
+  // 경기 단위 창조 지표 — 슛 프로파일의 짝(2026-08-21 신설)
+  matches: (d.matches || []).map(m => ({
+    id: m.id, se: m.season, date: m.date, h: m.h_team, a: m.a_team, pos: m.position,
+    min: m.time, g: m.goals, as: m.assists, sh: m.shots, kp: m.key_passes,
+    xg: m.xG, xa: m.xA, npxg: m.npxG, chain: m.xGChain, build: m.xGBuildup}))};
 }"""
 
 
@@ -181,14 +186,16 @@ def main():
         sys.exit("대상 0명")
 
     existing = {r[0] for r in con.execute("SELECT player_id FROM player_shot_profile")}
-    todo = [r for r in rows if r[0] not in existing]
-    print(f"대상 {len(rows)}명 · 기존 행 보유 {len(rows) - len(todo)}명은 건너뛴다"
-          f"(PK가 player_id라 덮어쓰기가 되므로 — 교체는 사용자 판단)")
-    if not todo:
-        sys.exit("적재 대상 0명")
+    # ⚠️ 슛 프로파일 보유자도 **대상에서 빼지 않는다** — understat_player_matches(창조 지표)는
+    #    별개 축이고 슛 행이 있다는 이유로 경기 지표를 놓치면 안 된다(2026-08-21 수정).
+    #    슛 INSERT 자체는 ON CONFLICT(player_id) DO NOTHING이 기존 행을 보호한다.
+    todo = rows
+    have_shots = sum(1 for r in rows if r[0] in existing)
+    print(f"대상 {len(rows)}명 · 슛 프로파일 기존 보유 {have_shots}명"
+          f"(그 행은 덮지 않고 경기 지표만 추가한다)")
 
     from playwright.sync_api import sync_playwright
-    results, mapped, unresolved = [], [], []
+    results, mapped, unresolved, matches = [], [], [], []
     with sync_playwright() as p:
         br = p.chromium.launch()
         pg = br.new_page()
@@ -206,6 +213,10 @@ def main():
             if r.get("err"):
                 print(f"  ⚠️ {kr}({pid}) {r['err']}")
                 continue
+            ms = r.get("matches") or []
+            if not a.all_career:
+                ms = [m for m in ms if m["se"] in set(a.seasons)]
+            matches.append((pid, kr, uid, ms))
             shots = r["shots"] if a.all_career else [
                 s for s in r["shots"] if s["se"] in set(a.seasons)]
             if len(shots) < a.min_shots:
@@ -235,6 +246,21 @@ def main():
     cur = con.cursor()
     for pid, kr, uid in ((m[0], m[1], m[2]) for m in mapped):
         cur.execute("UPDATE players SET understat_id=? WHERE id=?", (uid, pid))
+    ins_m = 0
+    for pid, kr, uid, ms in matches:
+        msrc = f"understat.com/getPlayerData/{uid} (matches, scripts/collect_understat_shots.py)"
+        for m in ms:
+            cur.execute(
+                """INSERT INTO understat_player_matches(player_id,us_match_id,season,match_date,
+                   h_team,a_team,position,minutes,goals,assists,shots,key_passes,xg,xa,npxg,
+                   xg_chain,xg_buildup,source) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                   ON CONFLICT(player_id,us_match_id) DO NOTHING""",
+                (pid, int(m["id"]), m["se"], (m["date"] or "")[:10], m["h"], m["a"], m["pos"],
+                 int(m["min"] or 0), int(m["g"] or 0), int(m["as"] or 0), int(m["sh"] or 0),
+                 int(m["kp"] or 0), float(m["xg"] or 0), float(m["xa"] or 0),
+                 float(m["npxg"] or 0), float(m["chain"] or 0), float(m["build"] or 0), msrc))
+            ins_m += cur.rowcount
+
     ins = 0
     for pid, kr, uid, agg, seasons in results:
         window = f"{season_label(seasons)} ({agg['events_n']} events, Understat)"
@@ -256,7 +282,8 @@ def main():
              agg["mean_y"], agg["penalties"], agg["npxg_sum"], src, conf))
         ins += cur.rowcount
     con.commit()
-    print(f"\n적재: player_shot_profile +{ins}행 · understat_id +{len(mapped)}")
+    print(f"\n적재: player_shot_profile +{ins}행 · understat_player_matches +{ins_m}행"
+          f" · understat_id +{len(mapped)}")
     print("다음: python3 scripts/gates.py && python3 scripts/export.py && scripts/db_dump.sh")
 
 

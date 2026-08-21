@@ -7,3 +7,5 @@ INSERT INTO _migration_log VALUES('015-team-match-ppda-and-duels','2026-08-14','
 INSERT INTO _migration_log VALUES('016-players-understat-id','2026-08-21','players.understat_id 추가 — 축11 슛맵의 Understat 경로 (SofaScore·WhoScored·FBref 전부 403인 환경의 대체 원천)');
 INSERT INTO _migration_log VALUES('017-shot-profile-penalties','2026-08-21','player_shot_profile에 penalties·npxg_sum 추가 — PK가 xG/슛(슛 선택 품질) 해석을 왜곡한다(콜 파머 0.137→0.099). 기존 SofaScore 9행은 PK 포함 여부 불명이라 NULL.');
 INSERT INTO _migration_log VALUES('018-players-positions-alt','2026-08-21','primary_position을 FotMob 정규코드로 통일하고 원값(LCB·RB/DM 등 좌우·복합 표기)을 positions_alt에 보존한다');
+INSERT INTO _migration_log VALUES('019-market-values-and-status','2026-08-21','player_market_values(scisports 시계열)·player_status(부상·계약만료 스냅샷) 신설 — 이적 등급 판단의 근거를 산문에서 정형 필드로 옮긴다(민테 사례, obs#272)');
+INSERT INTO _migration_log VALUES('020-understat-player-matches','2026-08-21','understat_player_matches 신설 — 경기 단위 창조 지표(xA·키패스·xGChain·xGBuildup). 축11 슛 프로파일의 짝이고 minutes를 경기 단위로 남긴다');

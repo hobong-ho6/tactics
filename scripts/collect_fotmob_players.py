@@ -13,6 +13,8 @@
 채우는 축 (player-collect 스킬 기준):
   축1 `players.fotmob_id` · 축5 `fotmob_detail_stats` · 축6 `fotmob_season_stats`
   축7 `fotmob_traits` · 축8 `player_tenures`
+  + 신원(`players.birth_year`·`nationality`·`primary_position`) ·
+    `player_market_values`(시장가 시계열) · `player_status`(부상·계약만료 스냅샷)
 
 사용:
     # 팀 스쿼드 전원 (regime의 squad_entries)
@@ -173,6 +175,16 @@ async ({fm, mains, wanted}) => {
   out.height = pick('Height');
   const pos = ((j.positionDescription || {}).positions || []).find(p => p.isMainPosition);
   out.mainPos = pos && pos.strPosShort ? pos.strPosShort.label : null;
+  // 부상·계약만료·시장가 시계열 (2026-08-21 신설 — 등급 판단 근거를 산문에서 정형 필드로)
+  const inj = j.injuryInformation;
+  out.injury = inj ? {name: inj.name,
+    ret: (inj.expectedReturn || {}).expectedReturnFallback || null,
+    retDate: (inj.expectedReturn || {}).expectedReturnDateParam || null,
+    asOf: ((inj.lastUpdated || {}).utcTime || '').slice(0, 10) || null} : null;
+  out.contractEnd = j.contractEnd ? String(j.contractEnd.utcTime || j.contractEnd).slice(0, 10) : null;
+  out.marketValues = ((j.marketValues || {}).values || []).map(v => ({
+    d: String(v.date).slice(0, 10), v: v.value, lo: v.lowerBound, hi: v.upperBound,
+    team: v.teamName, src: v.source}));
   out.traitsTitle = (j.traits || {}).title || null;
   out.traits = ((j.traits || {}).items || []).map(t => [t.title, t.value]);
   const ch = (j.careerHistory || {}).careerItems || {};
@@ -344,7 +356,8 @@ def main():
     for pid, kr, fm, team in resolved:
         cur.execute("UPDATE players SET fotmob_id=? WHERE id=? AND fotmob_id IS NULL", (fm, pid))
     unknown, conflicts, ins = set(), [], dict.fromkeys(
-        ["detail", "season", "traits", "tenures", "identity", "pos_norm", "fotmob_id"], 0)
+        ["detail", "season", "traits", "tenures", "identity", "pos_norm",
+         "market", "status", "fotmob_id"], 0)
     seasons_have = {r[0] for r in con.execute("SELECT code FROM seasons")}
     for r in results:
         if r.get("err"):
@@ -401,6 +414,34 @@ def main():
                     (pid, pulled, ml["league"], ml["season"], title,
                      SEASON_LABELS.get(title), value, src))
                 ins["season"] += cur.rowcount
+
+        for mv in (r.get("marketValues") or []):
+            cur.execute(
+                """INSERT INTO player_market_values(player_id,val_date,value_eur,lower_eur,
+                   upper_eur,team_name,source) VALUES(?,?,?,?,?,?,?)
+                   ON CONFLICT(player_id,val_date) DO NOTHING""",
+                (pid, mv["d"], mv["v"], mv["lo"], mv["hi"], mv["team"],
+                 f"fotmob.com/api/data ({mv.get('src') or 'scisports'}, player {fm})"))
+            ins["market"] += cur.rowcount
+
+        inj = r.get("injury")
+        if inj:
+            cur.execute(
+                """INSERT INTO player_status(player_id,pulled,kind,value,detail,as_of,source,
+                   confidence) VALUES(?,?,'injury',?,?,?,?,?)
+                   ON CONFLICT(player_id,pulled,kind) DO NOTHING""",
+                (pid, pulled, inj["name"], inj.get("retDate") or inj.get("ret"),
+                 inj.get("asOf"), src,
+                 "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다."
+                 " 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다."))
+            ins["status"] += cur.rowcount
+        if r.get("contractEnd"):
+            cur.execute(
+                """INSERT INTO player_status(player_id,pulled,kind,value,detail,as_of,source,
+                   confidence) VALUES(?,?,'contract_end',?,NULL,NULL,?,NULL)
+                   ON CONFLICT(player_id,pulled,kind) DO NOTHING""",
+                (pid, pulled, r["contractEnd"], src))
+            ins["status"] += cur.rowcount
 
         for title, value in (r.get("traits") or []):
             cur.execute(
