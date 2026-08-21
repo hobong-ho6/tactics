@@ -38,8 +38,8 @@
 ## 현재 상태
 
 > 마지막 갱신: **2026-08-21** · 세션 **#34** · 작업 PC `AD03230205ui-iMac.local` · 브랜치 `main` ·
-> 최신 커밋 **`3377180`**(데이터 최신 **`74c7fda`**) · observations **278행**(최신 obs#278) ·
-> match_reports **21행** · **4팀 체제**(AVL·CHE·LIV·ATM). DB는 v2(`db/tactics.db`). #33 이후 **8커밋**.
+> 최신 커밋 **`883bc3d`**(이 핸드오프 · 데이터 최신 **`74c7fda`**) · observations **278행**(최신 obs#278) ·
+> match_reports **21행** · **4팀 체제**(AVL·CHE·LIV·ATM). DB는 v2(`db/tactics.db`). #33 이후 **9커밋**.
 >
 > ⛔⛔ **소스 접근 상태가 이 세션의 최대 변수다**(obs#274, 08-21 오후 4클라이언트 전수 프로브):
 > **차단** — SofaScore 403 · **WhoScored 403** · FBref 403 · sofifa 403.
