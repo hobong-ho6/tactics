@@ -47,11 +47,11 @@ done
    0이 아닌 축도 **행을 열어 어느 컬럼이 비었는지 봐라**. obs#234는 이걸 안 해서
    이미 DB에 있던 PlayStyles를 "근거 0건"이라고 적었다.
 
-## 2. 14축 체크리스트
+## 2. 17축 체크리스트
 
 | # | 축 | 테이블 | 소스·경로 | 필수? |
 |---|---|---|---|---|
-| 1 | **선수 기본** | `players` | 이름·`name_kr`·생년·주포지션 + **id 3종**(`sofascore_id`·`fotmob_id`·`sofifa_id`) | ✅ |
+| 1 | **선수 기본** | `players` | 이름·`name_kr`·생년·국적·주포지션 + **id 4종**(`sofascore_id`·`fotmob_id`·`sofifa_id`·`understat_id`) | ✅ |
 | 2 | **경기별 실측** | `player_matches` | SofaScore `core.sofascore.js_collect` → `parse_collected` | ✅ |
 | 3 | **대표 그리드·적합** | `transfer_targets` / `prescriptions` | `core.aggregate` → `core.kernel.best_fit_slot` | ✅ |
 | 4 | **FC 게임스탯** | `player_game_stats` | sofifa | ✅ |
@@ -61,10 +61,18 @@ done
 | 8 | **커리어 이력** | `player_tenures` | FotMob `playerData.careerHistory` | ✅ |
 | 9 | **서사·듀티** | `player_duties` | 영상·전술블로그·기사·1차발언 4종 | ✅ |
 | 10 | **종합 평가** | `player_evaluations` | 위 전부의 종합 + 3감독 전술핏 | 스쿼드만 |
-| 11 | **슛 프로파일** | `player_shot_profile` | SofaScore 슛맵 | 공격수 |
+| 11 | **슛 프로파일** | `player_shot_profile` | SofaScore 슛맵 ⛔차단 → **Understat `getPlayerData.shots`** | 공격수 |
 | 12 | **FBref 백분위** | `fbref_percentiles` | FBref | ⛔ 차단 중 |
 | 13 | **경기별 리포트** | `match_player_reports` | match-watch 스킬 | 출전 시 |
 | 14 | **판정 기록** | `observations` | 새 사실·충돌·정정 | ✅ |
+| 15 | **시장가 시계열** | `player_market_values` | FotMob `playerData.marketValues`(scisports) | ✅ |
+| 16 | **부상·계약** | `player_status` | FotMob `playerData.injuryInformation`·`contractEnd` | ✅ |
+| 17 | **경기 단위 창조** | `understat_player_matches` | Understat `getPlayerData.matches`(xA·키패스·xGChain) | 빅5 출전자 |
+
+> ⭐ **축 1·5·6·7·8·15·16은 `scripts/collect_fotmob_players.py` 한 번으로 끝난다**
+> (`--resolve-ids`로 `fotmob_id`까지 해결, `--adopt-fotmob-position`으로 포지션 표기 통일).
+> **축 11·17은 `scripts/collect_understat_shots.py`** 하나다. ⇒ 2명 이상이면 손으로 하지 않는다.
+> ⛔ 축 2·4·12는 2026-08-21 현재 소스가 403이다(SofaScore·sofifa·FBref — obs#274, 상태 재확인 필요).
 
 ### 축별 수집 경로 상세
 
