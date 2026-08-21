@@ -1,6 +1,6 @@
 {
   "version": "0.0.1",
-  "_note": "preview daemon has no macOS TCC permission for ~/Documents \u2014 so this serves the /private/tmp/tactics-preview mirror, not the repo. The mirror is refreshed automatically by `python3 scripts/export.py` (it copies site/ wholesale), so no manual copy step is needed. Pages live in site/*.html; data in site/data/*.json. Reloading the browser is enough to pick up new data: site/assets/data.js fetches JSON with cache:'no-store' plus a Date.now() cache-buster (enforced by gate G9). NOTE: this inline handler does not send Cache-Control: no-store \u2014 use scripts/serve.sh instead if you need that for HTML/JS too.",
+  "_note": "preview daemon has no macOS TCC permission for ~/Documents — so this serves the /private/tmp/tactics-preview mirror, not the repo. The mirror is refreshed automatically by `python3 scripts/export.py` (it copies site/ wholesale), so no manual copy step is needed. Pages live in site/*.html; data in site/data/*.json. Reloading the browser is enough to pick up new data: site/assets/data.js fetches JSON with cache:'no-store' plus a Date.now() cache-buster (enforced by gate G9). NOTE: this inline handler does not send Cache-Control: no-store — use scripts/serve.sh instead if you need that for HTML/JS too.",
   "configurations": [
     {
       "name": "heatmap",
@@ -11,6 +11,20 @@
         "import os,functools;from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler;port=int(os.environ.get('PORT','8123'));H=functools.partial(SimpleHTTPRequestHandler, directory='/private/tmp/tactics-preview');ThreadingHTTPServer(('127.0.0.1',port), H).serve_forever()"
       ],
       "port": 8123,
+      "autoPort": true
+    },
+    {
+      "name": "site-nocache",
+      "_note": "scripts/serve.py — HTML/JS까지 no-store를 보낸다. player.html·assets/*.js를 고칠 때는 inline 핸들러(heatmap)가 아니라 이것을 써야 한다(launch.json 상단 주석의 caveat).",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "scripts/serve.py",
+        "--directory",
+        "/private/tmp/tactics-preview/site",
+        "--port",
+        "8125"
+      ],
+      "port": 8125,
       "autoPort": true
     }
   ]

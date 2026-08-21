@@ -33,14 +33,14 @@
 실득점과의 차이는 마무리 능력(+) 또는 운(−)의 신호.<br>
 <b>xA</b>(기대도움)/경기 — 패스가 만든 슛의 xG. 창조성 지표 — 키패스와 함께 본다.<br>
 <b>키패스</b> — 슛으로 직결된 패스. 10번·윙어의 핵심 지표.<br>
-<b>듀얼승</b> — 지상+공중 경합 승리. 5+면 전투형(맥긴 5.75가 팀 최다 기준점).<br>
+<b>듀얼승</b> — 지상+공중 경합 승리. 5+면 전투형(기준점: 맥긴 <b>5.61/90</b>, 24/25 PL 백분위 84 — FotMob 실측. ⚠️ 종전 표기 「5.75」는 출처가 404된 비축구 도메인 단독이라 폐기했다, obs#283).<br>
 <b>태클·인터셉트</b> — 수비 개입량. ⚠️ 낮다고 수비를 못하는 게 아니다 — 콘사처럼 포지셔닝으로
 태클 없이 막는 유형이 있다(듀얼·회수와 교차 확인). ⚠️ 0은 "그 경기들에서 실제 0"이다(결측 아님).<br>
 <b>백분위 막대</b> — 이 시스템이 수집한 <b>전 팀 선수 풀</b> 내 상대 위치(팀 수는 「비교 기준」 탭에 표시). 포지션 특성 감안 필수
 (수비수의 xG 백분위가 낮은 건 정상).</div></details>
 <p class="dim" style="font-size:12px">탭으로 모집단을 바꾼다 — <b>수집 풀</b>은 이 시스템이 실측한 <b>수집 대상 전 팀</b> 선수 안에서의 상대 위치,
 <b>리그 전체</b>는 Fotmob이 산출한 같은 포지션 리그 선수 대비 백분위다. 두 축은 모집단이 달라 값이 직접 비교되지 않는다.</p></div>
-<div class="panel"><h2>FC26 게임 스탯</h2><div id="gstat" class="kv"></div></div>
+<div class="panel"><h2>게임 스탯 <small class="dim">— FC26 ↔ FC27 및 그 차이</small></h2><div id="gstat" class="kv"></div><p class="dim" style="font-size:12px;margin:8px 0 0">Δ는 <b>우리 DB의 FC26 최신 로스터</b>와 FC27을 직접 대조한 값이다. ⚠️ 매체가 표기하는 Δ와 다를 수 있다 — 그쪽은 FC26 <b>출시판</b> 기준이고 우리 FC26 행은 <b>시즌 말 라이브판</b>이라 부호가 뒤집힌다(obs#249). <b>예측</b> 배지가 붙은 값은 EA 미확정이라 공식 드롭 후 바뀐다.</p></div>
 <div class="panel"><h2>영상·스카우트 분석 (가설 → 실측 교차검증)</h2>
 <p class="dim">각 분석은 <b>분석 기준일·표본 범위</b>를 함께 표시한다. <b>레퍼런스 보기</b>를 펼치면 저장된 원문·내부 근거를 직접 확인할 수 있다. 기간을 복원할 수 없는 과거 기록은 임의 추정하지 않고 <b>기간 미기록</b>으로 표시한다.</p>
 <div id="duty"></div></div>
@@ -50,7 +50,7 @@ import { miniGrid } from './assets/pitch.js';
 import { annotate, mountGlossaryTips } from './assets/glossary.js';
 import { prose } from './assets/prose.js';
 const { team, idx } = await mountHeader('player.html');
-const [td, GS] = await Promise.all([loadTeam(team), loadGameStats('FC26')]);
+const [td, GS, GS27] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({}))]);
 /* 백분위·유사프로필 모집단 = 활성 regime 전체. ⛔ 팀 코드를 하드코딩하지 않는다 —
    2026-08-20 ATM 편입 때 이 배열이 ['AVL','CHE','LIV']로 남아 ATM 선수가 모집단에서 통째로 빠졌다.
    index.json의 regimes가 SSOT이고 `end IS NULL`이 활성 조건이다(DB 뷰와 같은 규약). */
@@ -387,7 +387,49 @@ function render(){
     } else document.getElementById('similar').innerHTML='<span class="dim">—</span>';
   }
   const g = GS[gsKey];
-  document.getElementById('gstat').innerHTML = g ? `OVR <b>${g.ovr}</b>/${g.pot} · ${g.positions??''} · 최적 ${g.best_pos??''}<br>PAC ${g.pac} SHO ${g.sho} PAS ${g.pas} DRI ${g.dri} DEF ${g.def} PHY ${g.phy}<br><span class="dim">${annotate((g.playstyles??'').split(';').map(x=>x.trim()).join(' · '))}</span>` : '<span class="dim">FC26 로스터에 없음</span>';
+  /* FC27은 소스(fut.gg)가 「EA 공식 확정 ↔ 예측」을 갈라 주므로 그 구분을 화면까지 옮긴다.
+     ⛔ 이름 단독 조인은 조용히 깨진다(obs#270) — player_id 우선, 라벨 폴백. */
+  const g27 = (sel.pid != null && Object.values(GS27).find(x => x.player_id === sel.pid))
+            ?? GS27[gsKey] ?? GS27[key] ?? GS27[n];
+  /* ⚠️ GK는 같은 6칸에 DIV/HAN/KIC/REF/SPD/POS가 들어간다(수집 규약) — 라벨을 바꿔야 한다.
+     안 바꾸면 마르티네스의 SPD 하락이 「DEF −6」으로 표시돼 없는 의미를 읽게 된다. */
+  const isGkRow = /(^|[^A-Z])GK([^A-Z]|$)/.test(`${g27?.best_pos ?? g?.best_pos ?? ''} ${g27?.positions ?? g?.positions ?? ''}`);
+  const KEYS = isGkRow
+    ? [['pac','DIV'],['sho','HAN'],['pas','KIC'],['dri','REF'],['def','SPD'],['phy','POS']]
+    : [['pac','PAC'],['sho','SHO'],['pas','PAS'],['dri','DRI'],['def','DEF'],['phy','PHY']];
+  const delta = v => v > 0 ? `<span style="color:var(--ok)">+${v}</span>`
+                   : v < 0 ? `<span style="color:var(--bad)">${v}</span>`
+                   : `<span class="dim">0</span>`;
+  const line = (label, o, extra='') => `<div><b>${label}</b> ${extra} OVR <b>${o.ovr}</b>${
+      o.pot ? `/${o.pot}` : ''} · ${o.positions ?? ''}${o.best_pos ? ` · 최적 ${o.best_pos}` : ''}<br>${
+      KEYS.map(([k, L]) => `${L} ${o[k] ?? '—'}`).join(' ')}</div>`;
+  const isPred = g27 && /예측값/.test(g27.source || '');
+  const badge27 = !g27 ? '' : isPred
+    ? '<span class="badge" style="border-color:var(--warn);color:var(--warn)">예측</span>'
+    : '<span class="badge">EA 공식</span>';
+  let html;
+  if (!g && !g27) html = '<span class="dim">FC26·FC27 로스터에 모두 없음</span>';
+  else {
+    const parts = [];
+    if (g) parts.push(line(`FC26 <small class="dim">(${g.roster_date ?? '시점 미기록'})</small>`, g));
+    if (g27) parts.push(line(`FC27 <small class="dim">(${g27.roster_date ?? ''})</small>`, g27, badge27));
+    if (g && g27) {
+      const dov = g27.ovr - g.ovr;
+      parts.push(`<div style="margin-top:4px"><b>Δ FC26→FC27</b> OVR ${delta(dov)} · ${
+        KEYS.map(([k, L]) => (g[k] == null || g27[k] == null)
+          ? `${L} <span class="dim">—</span>` : `${L} ${delta(g27[k] - g[k])}`).join(' ')}</div>`
+        + (isPred ? '<div class="dim" style="font-size:12px">⚠️ FC27 쪽이 예측값이라 이 Δ도 확정이 아니다.</div>' : ''));
+    } else if (g27 && !g) {
+      parts.push('<div class="dim" style="font-size:12px">⚠️ FC26 행이 없어 Δ를 낼 수 없다.</div>');
+    } else {
+      parts.push('<div class="dim" style="font-size:12px">⚠️ FC27 행이 없다 — EA 리그별 드롭 대기이거나, '
+        + '26/27 이적이 FC27 DB에 반영되지 않아 <b>전 소속 클럽</b> 페이지에 있다(obs#282).</div>');
+    }
+    if (g?.playstyles) parts.push(`<div class="dim">${annotate((g.playstyles ?? '').split(';').map(x=>x.trim()).join(' · '))}
+      <small>— FC26 PlayStyles. FC27 PlayStyles는 EA 스케줄상 09-10판에서 들어온다(obs#249).</small></div>`);
+    html = parts.join('');
+  }
+  document.getElementById('gstat').innerHTML = html;
   const ds = td.duties.filter(d=>d.label===key);
   // 산문 4칸을 표의 좁은 열에 넣으면 세로 국수가 된다 — 분석 1건 = 카드 1장으로 읽는다.
   // 순서는 근거의 사슬(주장 → 실측 → 판정 → 게임 함의)을 그대로 따른다.

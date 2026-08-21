@@ -71,10 +71,16 @@ def export_all(db_path=None, window="2026-summer"):
 
     # ── game_stats/{GV}.json — sofifa 스탯·플레이스타일 (name_kr 키, 표시 전용) ──
     for (gv,) in con.execute("SELECT DISTINCT game_version FROM player_game_stats"):
-        gs = _rows(con, """SELECT name_kr, sofifa_name, sofifa_id, club, positions, best_pos, age, height_cm,
+        # ⚠️ 같은 name_kr에 roster_date가 여럿이다(FC26 5개·FC27 3개). ORDER BY roster_date로
+        #    **최신 행이 마지막에 와서 이기게** 고정한다 — 종전에는 어느 행이 이길지 비결정적이었다.
+        #    `player_id`·`roster_date`·`source`는 화면이 id 우선 조인·시점·공식여부를 읽는 데 쓴다.
+        gs = _rows(con, """SELECT name_kr, player_id, roster_date, sofifa_name, sofifa_id, club,
+                                  positions, best_pos, age, height_cm,
                                   value_eur, preferred_foot, accelerate,
-                                  ovr, pot, pac, sho, pas, dri, def, phy, playstyles, role_familiarity
-                           FROM player_game_stats WHERE game_version=? ORDER BY name_kr""", (gv,))
+                                  ovr, pot, pac, sho, pas, dri, def, phy, playstyles, role_familiarity,
+                                  source
+                           FROM player_game_stats WHERE game_version=?
+                           ORDER BY name_kr, roster_date""", (gv,))
         written.append(_write(SITE_DATA / "game_stats" / f"{gv}.json", {g["name_kr"]: g for g in gs}))
 
     # ── teams/{CODE}.json ────────────────────────────────────────────
