@@ -52,7 +52,7 @@
 ## 현재 상태
 
 > 마지막 갱신: **2026-08-21** · 세션 **#33** · 작업 PC `AD03230205ui-iMac.local` · 브랜치 `main` ·
-> 최신 커밋 **`f7a003b`** · observations **269행**(최신 obs#269) · match_reports **21행** ·
+> 최신 커밋 **`523fff1`**(이 핸드오프 · 데이터 최신 **`f7a003b`**) · observations **269행**(최신 obs#269) · match_reports **21행** ·
 > **4팀 체제**(AVL·CHE·LIV·**ATM**). DB는 v2(`db/tactics.db`). #32 이후 **19커밋**(그중 10건이 이 세션).
 > ⚠️ 작업 PC가 #32(`AL02359162.local`)에서 다시 바뀌었다 — #31과 같은 iMac이다.
 >
