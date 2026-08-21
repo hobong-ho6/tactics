@@ -1,5 +1,5 @@
 INSERT INTO players VALUES(1,'Emiliano Martínez','마르티네스',158263,202811,NULL,'GK',NULL,268375,NULL,4401);
-INSERT INTO players VALUES(2,'Matty Cash','캐시',833956,227174,NULL,'RB',NULL,729731,NULL,NULL);
+INSERT INTO players VALUES(2,'Matty Cash','캐시',833956,227174,NULL,'RB',NULL,729731,NULL,8864);
 INSERT INTO players VALUES(3,'Ezri Konsa','콘사',827679,227678,NULL,'CB',NULL,710159,NULL,7726);
 INSERT INTO players VALUES(4,'Pau Torres','파우 토레스',864169,241464,NULL,'LCB',NULL,792645,NULL,6221);
 INSERT INTO players VALUES(5,'Lucas Digne','디뉴',96538,200458,NULL,'LB',NULL,NULL,NULL,NULL);
@@ -64,7 +64,7 @@ INSERT INTO players VALUES(65,'Roméo Lavia','라비아',1069488,NULL,NULL,'MF',
 INSERT INTO players VALUES(66,'Marco Palestra','팔레스트라',1397736,NULL,NULL,'MF',NULL,1473806,NULL,11551);
 INSERT INTO players VALUES(67,'Danny Welbeck','웰벡',33902,NULL,NULL,'FW',NULL,113836,NULL,501);
 INSERT INTO players VALUES(69,'Ifeanyi Ndukwe',NULL,1929673,NULL,NULL,'DF',NULL,1780239,NULL,NULL);
-INSERT INTO players VALUES(70,'Kostas Tsimikas',NULL,786259,NULL,NULL,'DF',NULL,671529,NULL,NULL);
+INSERT INTO players VALUES(70,'Kostas Tsimikas',NULL,786259,NULL,NULL,'DF',NULL,671529,NULL,8852);
 INSERT INTO players VALUES(71,'Lewis Koumas',NULL,1403111,NULL,NULL,'MF',NULL,1364042,NULL,NULL);
 INSERT INTO players VALUES(72,'Alexander Isak',NULL,823941,NULL,NULL,'FW',NULL,690107,NULL,5232);
 INSERT INTO players VALUES(73,'Giorgi Mamardashvili',NULL,930997,NULL,NULL,'GK',NULL,948800,NULL,9693);
@@ -90,7 +90,7 @@ INSERT INTO players VALUES(93,'Bradley Burrowes',NULL,NULL,NULL,NULL,NULL,'2026-
 INSERT INTO players VALUES(94,'Tosin Adarabioyo','아다라비오요',352668,222104,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=352668 부여(프리시즌 전수 수집).',683402,NULL,5590);
 INSERT INTO players VALUES(95,'Geovany Quenda','퀜다',1403165,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1403165 부여(프리시즌 전수 수집).',1530314,NULL,NULL);
 INSERT INTO players VALUES(96,'Mahdi Nicoll-Jazuli','니콜자줄리',2037476,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=2037476 부여(프리시즌 전수 수집).',1720243,NULL,NULL);
-INSERT INTO players VALUES(97,'Jamie Gittens','기텐스',1140599,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1140599 부여(프리시즌 전수 수집).',1113692,NULL,NULL);
+INSERT INTO players VALUES(97,'Jamie Gittens','기텐스',1140599,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1140599 부여(프리시즌 전수 수집).',1113692,NULL,10542);
 INSERT INTO players VALUES(98,'Mike Penders','펜더스',1149148,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1149148 부여(프리시즌 전수 수집).',1319972,NULL,NULL);
 INSERT INTO players VALUES(99,'Mamadou Sarr','마마두 사르',1154657,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1154657 부여(프리시즌 전수 수집).',1426170,NULL,NULL);
 INSERT INTO players VALUES(100,'Dastan Satpaev',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1684584,NULL,NULL);
@@ -108,7 +108,7 @@ INSERT INTO players VALUES(112,'Kieran Morrison','모리슨',1462781,NULL,NULL,N
 INSERT INTO players VALUES(113,'Harvey Elliott','엘리엇',955245,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=955245 부여(프리시즌 전수 수집).',963964,NULL,7546);
 INSERT INTO players VALUES(114,'Rio Ngumoha',NULL,1881902,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1597668,NULL,NULL);
 INSERT INTO players VALUES(115,'Will Wright',NULL,1984100,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1692224,NULL,NULL);
-INSERT INTO players VALUES(116,'Trey Nyoni',NULL,1445945,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1436258,NULL,NULL);
+INSERT INTO players VALUES(116,'Trey Nyoni',NULL,1445945,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1436258,NULL,12203);
 INSERT INTO players VALUES(117,'Federico Chiesa','키에사',845386,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=845386 부여(프리시즌 전수 수집).',784510,NULL,NULL);
 INSERT INTO players VALUES(118,'Calum Scanlon','스캔런',NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1355539,NULL,NULL);
 INSERT INTO players VALUES(119,'Freddie Woodman',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',582276,NULL,NULL);
