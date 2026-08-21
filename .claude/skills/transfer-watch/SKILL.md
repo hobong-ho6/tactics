@@ -1,9 +1,9 @@
 ---
 name: transfer-watch
-description: 3팀(빌라·첼시·리버풀) 이적 루머 정기 감시 — 스캔·크로스체크는 서브에이전트에 위임하고, 메인 세션이 추가 기사 검사·등급 확정·실측·transfer_targets 반영을 맡는다. 스케줄(매일 09/21시) 또는 수동(/transfer-watch)으로 실행.
+description: 4팀(빌라·첼시·리버풀·아틀레티코) 이적 루머 정기 감시 — 스캔·크로스체크는 서브에이전트에 위임하고, 메인 세션이 추가 기사 검사·등급 확정·실측·transfer_targets 반영을 맡는다. 스케줄(매일 09/21시) 또는 수동(/transfer-watch)으로 실행.
 ---
 
-# 이적 루머 감시 파이프라인 (3팀)
+# 이적 루머 감시 파이프라인 (4팀)
 
 작업 디렉터리: `/Users/ad03230205/Documents/tactics`. 규칙은 CLAUDE.md·docs/00-overview.md를 따른다.
 **DB는 v2(`db/tactics.db`)다** — 2026-08-11 컷오버. 팀 컬럼은 `team_code`.
