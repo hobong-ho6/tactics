@@ -100,7 +100,7 @@ CREATE TABLE player_shot_profile(   -- v1 그대로
   box_n INTEGER, sixyard_n INTEGER, headers INTEGER, goals INTEGER,
   mean_dist REAL, mean_y REAL,
   source TEXT, confidence TEXT
-);
+, penalties INTEGER, npxg_sum REAL);
 CREATE TABLE streaks(
   id INTEGER PRIMARY KEY, label TEXT UNIQUE, note TEXT,
   season TEXT, team_code TEXT REFERENCES teams(code)

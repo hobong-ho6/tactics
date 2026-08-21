@@ -93,7 +93,12 @@ def season_label(codes):
 def aggregate(shots):
     n = len(shots)
     dist, ys, box, six, head, goals, xg = [], [], 0, 0, 0, 0, 0.0
+    pens, npxg = 0, 0.0
     for s in shots:
+        if s["si"] == "Penalty":
+            pens += 1
+        else:
+            npxg += s["xg"]
         dx = (1.0 - s["x"]) * PITCH_L                  # 골라인까지 거리
         dy = (s["y"] - 0.5) * PITCH_W                  # 골 중앙 기준 좌우
         dist.append((dx ** 2 + dy ** 2) ** 0.5)
@@ -112,6 +117,9 @@ def aggregate(shots):
         "xg_sum": round(xg, 2), "box_n": box, "sixyard_n": six,
         "headers": head, "goals": goals,
         "mean_dist": round(sum(dist) / n, 1), "mean_y": round(sum(ys) / n, 1),
+        # PK는 좌표가 고정점이라 box_n·mean_dist를 끌어당기고, xG/슛(슛 선택 품질) 해석을
+        # 부풀린다(콜 파머 .137→.099). 카운트는 전량 유지하되 보정 재료를 함께 적재한다.
+        "penalties": pens, "npxg_sum": round(npxg, 2),
     }
 
 
@@ -209,7 +217,8 @@ def main():
             results.append((pid, kr, uid, agg, seasons))
             print(f"  {kr}: {agg['shots']}슛 / {agg['events_n']}경기 · xG {agg['xg_sum']}"
                   f" · 박스 {agg['box_n']} · 6야드 {agg['sixyard_n']} · 헤더 {agg['headers']}"
-                  f" · 골 {agg['goals']} · 평균거리 {agg['mean_dist']}m · mean_y {agg['mean_y']}")
+                  f" · 골 {agg['goals']} · PK {agg['penalties']}"
+                  f" · 평균거리 {agg['mean_dist']}m · mean_y {agg['mean_y']}")
         br.close()
 
     if unresolved:
@@ -233,15 +242,18 @@ def main():
                f" scripts/collect_understat_shots.py)")
         conf = ("MEDIUM — Understat 좌표계(X,Y∈[0,1]→105×68m) 환산값이다."
                 " mean_y는 Understat 핸디드니스 그대로라 SofaScore 기반 행과 좌우 부호가"
-                " 같다는 보장이 없다. 커버리지는 빅5 리그 한정 — 타 리그 출전분은 빠져 있다.")
+                " 같다는 보장이 없다. 커버리지는 빅5 리그 한정 — 타 리그 출전분은 빠져 있다."
+                " shots·box_n·xg_sum은 PK 포함값이다 — 슛 선택 품질은"
+                " npxg_sum/(shots−penalties)로 읽을 것(PK 포함 xG/슛은 최대 38% 부풀려진다,"
+                " 콜 파머 .137→.099).")
         cur.execute(
             """INSERT INTO player_shot_profile(player_id,window,events_n,shots,xg_sum,box_n,
-               sixyard_n,headers,goals,mean_dist,mean_y,source,confidence)
-               VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)
+               sixyard_n,headers,goals,mean_dist,mean_y,penalties,npxg_sum,source,confidence)
+               VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                ON CONFLICT(player_id) DO NOTHING""",
             (pid, window, agg["events_n"], agg["shots"], agg["xg_sum"], agg["box_n"],
              agg["sixyard_n"], agg["headers"], agg["goals"], agg["mean_dist"],
-             agg["mean_y"], src, conf))
+             agg["mean_y"], agg["penalties"], agg["npxg_sum"], src, conf))
         ins += cur.rowcount
     con.commit()
     print(f"\n적재: player_shot_profile +{ins}행 · understat_id +{len(mapped)}")
