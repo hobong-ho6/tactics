@@ -117,6 +117,22 @@ SEASON_LABELS = {
     "Saved penalties": "PK 선방",
 }
 
+# primary_position 정규 어휘 = FotMob strPosShort 라벨(2026-08-21 통일). 이 집합 안의 값은
+# 이미 정규 표기이므로 **덮지 않는다** — 통일 대상은 표기이고, 사실 판정이 아니다.
+# ⛔ 실증(2026-08-21): 무제한 채택은 맥긴 CM→RW · 비르츠 CAM→LW · 안드레스 가르시아 RB→ST처럼
+#    FotMob의 「최근 출전 분포」 라벨이 우리 판정을 덮는다. coarse 원천만 있는 유스는 DF/MF를 유지한다.
+POS_CANON = {"GK", "RB", "RWB", "LB", "LWB", "CB", "DM", "CM", "AM", "RM", "LM", "RW", "LW", "ST"}
+POS_ALIAS = {"CAM": "AM", "CDM": "DM", "CF": "ST", "LCB": "CB", "RCB": "CB", "SS": "ST"}
+
+
+def canon_pos(old):
+    """비정규 표기를 정규 코드로 옮긴다. 좌우·복합 정보가 담긴 값은 **첫 토큰**을 쓴다 —
+    `CM/RW`를 FotMob의 `AM`으로 바꾸는 것은 표기 통일이 아니라 사실 변경이다.
+    담긴 정보가 없으면(MF·DF·FW·F·D·M·W) None을 돌려주고 호출부가 FotMob 값을 쓴다."""
+    t = old.split("/")[0].strip().upper()
+    t = POS_ALIAS.get(t, t)
+    return t if t in POS_CANON else None
+
 TRAIT_LABELS = {
     "Chances created": "기회 창출", "Aerial duels": "공중 볼 경합",
     "Defensive actions": "수비적 행동", "Goals": "득점", "Shot attempts": "슛 시도",
@@ -124,6 +140,18 @@ TRAIT_LABELS = {
     "Save percentage": "세이브율", "High claims": "하이 클레임",
     "Clean sheets": "클린시트", "Long ball percentage": "롱볼 성공률",
 }
+
+# fotmob_id 해결 — /api/data/search/suggest. 발음기호 차이를 정규화해 비교한다.
+JS_SUGGEST = """
+async (q) => {
+  const r = await fetch('/api/data/search/suggest?term=' + encodeURIComponent(q));
+  if (!r.ok) return {err: 'suggest ' + r.status};
+  const d = await r.json();
+  const all = ((d.find(x => x.title && x.title.key === 'all') || d[0] || {}).suggestions) || [];
+  return {players: all.filter(s => s.type === 'player' && !s.isCoach)
+                      .map(s => ({id: s.id, name: s.name, team: s.teamName}))};
+}
+"""
 
 # 페이지 컨텍스트에서 한 선수분을 통째로 받는다. ⛔ 셸(curl)에서는 막히므로 여기서 해야 한다.
 JS = """
@@ -184,6 +212,13 @@ async ({fm, mains, wanted}) => {
 """
 
 
+def norm_name(x):
+    """발음기호 제거 + 소문자. 'Clement Lenglet' ↔ 'Clément Lenglet'."""
+    import unicodedata
+    return "".join(c for c in unicodedata.normalize("NFKD", x)
+                   if not unicodedata.combining(c)).casefold().strip()
+
+
 def season_code(name):
     """FotMob 시즌명 → seasons.code. '2025/2026'→'2025-26' · '2026'→'2026'."""
     if "/" in name:
@@ -221,6 +256,12 @@ def main():
     ap.add_argument("--seasons", choices=["latest", "latest2", "latest3"], default="latest2",
                     help="주 리그 시즌 개수. 기본 latest2 — 개막 직후 1~2경기 표본만 잡히는 것을 막는다")
     ap.add_argument("--pulled", default=None, help="수집일 (기본: 오늘). 결정적 재현용으로 명시 가능")
+    ap.add_argument("--resolve-ids", action="store_true",
+                    help="fotmob_id가 없는 대상을 검색으로 해결한다(완전일치 유일 후보만). "
+                         "모호하면 후보를 출력하고 넘긴다 — 사람이 판정할 것")
+    ap.add_argument("--adopt-fotmob-position", action="store_true",
+                    help="primary_position을 FotMob 정규코드로 통일한다. 기존 값은 지우지 않고 "
+                         "players.positions_alt에 보존한다(좌우·복합 정보 손실 방지)")
     ap.add_argument("--dry-run", action="store_true", help="DB에 쓰지 않고 요약만 출력")
     a = ap.parse_args()
 
@@ -232,24 +273,53 @@ def main():
         pulled = datetime.date.today().isoformat()
 
     con = sqlite3.connect(DB)
+    if a.adopt_fotmob_position and not a.dry_run:
+        if "positions_alt" not in {r[1] for r in con.execute("PRAGMA table_info(players)")}:
+            con.execute("ALTER TABLE players ADD COLUMN positions_alt TEXT")
+            con.execute("INSERT INTO _migration_log(run_at,v1_path,note) VALUES(?,?,?)",
+                        ("018-players-positions-alt", "2026-08-21",
+                         "primary_position을 FotMob 정규코드로 통일하고 원값(LCB·RB/DM 등 "
+                         "좌우·복합 표기)을 positions_alt에 보존한다"))
+            con.commit()
+            print("스키마: players.positions_alt 추가 (018)")
     rows = targets(con, a.team, a.players, a.include_targets)
     if not rows:
         sys.exit("대상 0명")
     have = [(i, n, f) for i, n, f in rows if f]
     missing = [(i, n) for i, n, f in rows if not f]
     print(f"대상 {len(rows)}명 · fotmob_id 보유 {len(have)} · 결손 {len(missing)}")
-    if missing:
+    if missing and not a.resolve_ids:
         print("  ⛔ fotmob_id 없어 건너뜀:", ", ".join(f"{n}({i})" for i, n in missing))
-        print("     → 팀 스쿼드에서 찾아 players.fotmob_id를 먼저 채울 것"
+        print("     → --resolve-ids로 검색 해결을 시도하거나, 팀 스쿼드에서 찾아 채울 것"
               " (/api/data/teams?id=<fotmob_team_id>&tab=squad)")
 
     from playwright.sync_api import sync_playwright
-    results = []
+    results, resolved, unresolved = [], [], []
     with sync_playwright() as p:
         br = p.chromium.launch()
         pg = br.new_page()
         # robots.txt = 동일 오리진 경량 페이지. 홈은 라이브스코어 스크립트가 렌더러를 얼린다(docs/30).
         pg.goto("https://www.fotmob.com/robots.txt", wait_until="domcontentloaded", timeout=60_000)
+
+        if missing and a.resolve_ids:
+            # ⚠️ 완전일치 유일 후보만 채택한다 — 동명이인 오매칭은 UNIQUE 충돌로 행을 지운다
+            # (2026-08-19 규약). 모호하면 후보를 출력하고 사람에게 넘긴다.
+            names = dict(con.execute(
+                "SELECT id, name FROM players WHERE id IN (%s)"
+                % ",".join(str(i) for i, _ in missing)).fetchall())
+            for pid, kr in missing:
+                en = names.get(pid) or kr
+                res = pg.evaluate(JS_SUGGEST, en)
+                cands = res.get("players") or []
+                hit = [c for c in cands if norm_name(c["name"]) == norm_name(en)]
+                if len(hit) == 1:
+                    fm = int(hit[0]["id"])
+                    resolved.append((pid, kr, fm, hit[0]["team"]))
+                    have.append((pid, kr, fm))
+                    print(f"  해결 {kr}({pid}) → fotmob {fm} · {hit[0]['name']} · {hit[0]['team']}"
+                          f" — ⚠️ 소속으로 동명이인 확인할 것")
+                else:
+                    unresolved.append((pid, kr, en, cands[:5]))
         for pid, name, fm in have:
             try:
                 r = pg.evaluate(JS, {"fm": fm, "mains": sorted(MAIN_LEAGUES), "wanted": wanted})
@@ -271,8 +341,10 @@ def main():
         return
 
     cur = con.cursor()
+    for pid, kr, fm, team in resolved:
+        cur.execute("UPDATE players SET fotmob_id=? WHERE id=? AND fotmob_id IS NULL", (fm, pid))
     unknown, conflicts, ins = set(), [], dict.fromkeys(
-        ["detail", "season", "traits", "tenures", "identity", "fotmob_id"], 0)
+        ["detail", "season", "traits", "tenures", "identity", "pos_norm", "fotmob_id"], 0)
     seasons_have = {r[0] for r in con.execute("SELECT code FROM seasons")}
     for r in results:
         if r.get("err"):
@@ -294,6 +366,15 @@ def main():
                 ins["identity"] += cur.rowcount
             elif str(old) != str(new):
                 conflicts.append((r["kr"], col, old, new))
+                # 표기 통일(2026-08-21 사용자 지시)은 primary_position에만 적용한다.
+                # ⛔ 국적은 제외 — DB의 복수 국적(케르케즈 'Hungary/Serbia')이 FotMob보다 정확하다.
+                if (a.adopt_fotmob_position and col == "primary_position"
+                        and str(old) not in POS_CANON):
+                    # 첫 토큰이 정규 코드면 그것을 쓰고, 없으면 FotMob 값을 쓴다.
+                    cur.execute("UPDATE players SET primary_position=?,"
+                                " positions_alt=COALESCE(positions_alt,?) WHERE id=?",
+                                (canon_pos(str(old)) or new, old, pid))
+                    ins["pos_norm"] += cur.rowcount
 
         for s in r["stats"]:
             if s.get("err") or not s.get("rows"):
@@ -352,6 +433,11 @@ def main():
 
     con.commit()
     print("\n적재:", " · ".join(f"{k} +{v}" for k, v in ins.items() if k != "fotmob_id"))
+    if unresolved:
+        print("⛔ fotmob_id 미해결 — 세션에서 처리할 것(players.fotmob_id를 채우고 재실행):")
+        for pid, kr, en, cands in unresolved:
+            hint = ", ".join(f"{c['name']}({c['id']}, {c['team']})" for c in cands) or "검색 0건"
+            print(f"   {kr}({pid}) [{en}] → {hint}")
     if conflicts:
         print("⚠️ 기존 값과 불일치 — 덮지 않았다(사람이 판정할 것):")
         for kr, col, old, new in conflicts:

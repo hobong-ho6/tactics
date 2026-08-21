@@ -6,3 +6,4 @@ INSERT INTO _migration_log VALUES('014-player-analysis-provenance-and-supercup-s
 INSERT INTO _migration_log VALUES('015-team-match-ppda-and-duels','2026-08-14','team_match_stats에 PPDA(비율+분자·분모·정의)와 팀 단위 공중볼·드리블·태클·인터셉트·클리어 컬럼 추가. 2026 슈퍼컵 값 적재(PPDA 빌라 12.59 / PSG 8.50)');
 INSERT INTO _migration_log VALUES('016-players-understat-id','2026-08-21','players.understat_id 추가 — 축11 슛맵의 Understat 경로 (SofaScore·WhoScored·FBref 전부 403인 환경의 대체 원천)');
 INSERT INTO _migration_log VALUES('017-shot-profile-penalties','2026-08-21','player_shot_profile에 penalties·npxg_sum 추가 — PK가 xG/슛(슛 선택 품질) 해석을 왜곡한다(콜 파머 0.137→0.099). 기존 SofaScore 9행은 PK 포함 여부 불명이라 NULL.');
+INSERT INTO _migration_log VALUES('018-players-positions-alt','2026-08-21','primary_position을 FotMob 정규코드로 통일하고 원값(LCB·RB/DM 등 좌우·복합 표기)을 positions_alt에 보존한다');
