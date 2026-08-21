@@ -17,7 +17,7 @@
 <div class="kv" style="margin:8px 0 2px"><b>시즌 성적</b> <small class="dim">— 대회별 출전·득점·평점(실측 player_matches 집계)</small></div>
 <div id="season" class="scrollx"></div>
 <div class="kv" style="margin:14px 0 2px"><b>비교 기준</b>
-  <button class="tab on" data-tab="pool">수집 풀(3팀)</button><button class="tab" data-tab="league">리그 전체(Fotmob)</button></div>
+  <button class="tab on" data-tab="pool" id="poolTab">수집 풀</button><button class="tab" data-tab="league">리그 전체(Fotmob)</button></div>
 <div id="tabnote" class="dim" style="font-size:12px;margin-bottom:6px"></div>
 <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
    <div id="radar"></div><div style="flex:1;min-width:220px"><div id="pct" style="margin-top:4px"></div></div></div>
@@ -36,9 +36,9 @@
 <b>듀얼승</b> — 지상+공중 경합 승리. 5+면 전투형(맥긴 5.75가 팀 최다 기준점).<br>
 <b>태클·인터셉트</b> — 수비 개입량. ⚠️ 낮다고 수비를 못하는 게 아니다 — 콘사처럼 포지셔닝으로
 태클 없이 막는 유형이 있다(듀얼·회수와 교차 확인). ⚠️ 0은 "그 경기들에서 실제 0"이다(결측 아님).<br>
-<b>백분위 막대</b> — 이 시스템이 수집한 3팀 선수 풀 내 상대 위치. 포지션 특성 감안 필수
+<b>백분위 막대</b> — 이 시스템이 수집한 <b>전 팀 선수 풀</b> 내 상대 위치(팀 수는 「비교 기준」 탭에 표시). 포지션 특성 감안 필수
 (수비수의 xG 백분위가 낮은 건 정상).</div></details>
-<p class="dim" style="font-size:12px">탭으로 모집단을 바꾼다 — <b>수집 풀</b>은 이 시스템이 실측한 3팀 선수 안에서의 상대 위치,
+<p class="dim" style="font-size:12px">탭으로 모집단을 바꾼다 — <b>수집 풀</b>은 이 시스템이 실측한 <b>수집 대상 전 팀</b> 선수 안에서의 상대 위치,
 <b>리그 전체</b>는 Fotmob이 산출한 같은 포지션 리그 선수 대비 백분위다. 두 축은 모집단이 달라 값이 직접 비교되지 않는다.</p></div>
 <div class="panel"><h2>FC26 게임 스탯</h2><div id="gstat" class="kv"></div></div>
 <div class="panel"><h2>영상·스카우트 분석 (가설 → 실측 교차검증)</h2>
@@ -49,9 +49,19 @@ import { mountHeader, loadTeam, loadGameStats, slotCandidates, sofifaLink, isGkS
 import { miniGrid } from './assets/pitch.js';
 import { annotate, mountGlossaryTips } from './assets/glossary.js';
 import { prose } from './assets/prose.js';
-const { team } = await mountHeader('player.html');
+const { team, idx } = await mountHeader('player.html');
 const [td, GS] = await Promise.all([loadTeam(team), loadGameStats('FC26')]);
-const _TEAMS = (await Promise.all(['AVL','CHE','LIV'].map(c=>loadTeam(c).catch(()=>null)))).filter(Boolean);
+/* 백분위·유사프로필 모집단 = 활성 regime 전체. ⛔ 팀 코드를 하드코딩하지 않는다 —
+   2026-08-20 ATM 편입 때 이 배열이 ['AVL','CHE','LIV']로 남아 ATM 선수가 모집단에서 통째로 빠졌다.
+   index.json의 regimes가 SSOT이고 `end IS NULL`이 활성 조건이다(DB 뷰와 같은 규약). */
+const POOL_CODES = idx.regimes.filter(r => r.end == null).map(r => r.team_code);
+const _LOADED = await Promise.all(POOL_CODES.map(c => loadTeam(c).then(t=>[c,t]).catch(()=>[c,null])));
+const _TEAMS = _LOADED.filter(([,t])=>t).map(([,t])=>t);
+const _FAILED = _LOADED.filter(([,t])=>!t).map(([c])=>c);   // 로드 실패는 숨기지 않고 라벨에 드러낸다
+/* 표시용 팀 이름도 regimes에서 가져온다 — 「빌라·첼시·리버풀」식 하드코딩 금지 */
+const POOL_LABEL = _TEAMS
+  .map(t => (idx.regimes.find(r => r.team_code === t.regime.team_code)?.team_kr) || t.regime.team_code)
+  .join('·');
 const POOL = _TEAMS.flatMap(t=>t.player_stats);
 const currentCandidates = t => {
   const seen = new Set();
@@ -65,6 +75,16 @@ const currentCandidates = t => {
 };
 const CURRENT = currentCandidates(td);
 const POOL_SQ = _TEAMS.flatMap(t=>currentCandidates(t).map(q=>({...q, team:t.regime.team_code})));
+/* 탭 라벨은 「의도한 팀 수」가 아니라 「실제로 로드된 팀 수」를 쓴다 — 조용한 결손 방지 */
+{
+  const t = document.getElementById('poolTab');
+  if (t) {
+    t.textContent = `수집 풀(${_TEAMS.length}팀)`;
+    t.title = `모집단: ${_TEAMS.map(x=>x.regime.team_code).join(' · ')}`
+      + (_FAILED.length ? ` ⚠️ 로드 실패: ${_FAILED.join(', ')}` : '');
+    if (_FAILED.length) t.style.borderColor = 'var(--bad)';
+  }
+}
 const strip = x => (x||'').normalize('NFC').replace(/\((합류확정|신규|보유)\)$/,'').replace(/^영입·/,'');
 const esc = value => String(value??'').replace(/[&<>"']/g, ch => ({
   '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
@@ -134,7 +154,7 @@ if (tracked.length){
   groups['⭐ 영입 추적'] = tracked.filter(t=>{const k=t.name; if(seen.has(k))return false; seen.add(k); return true;})
     .map(t=>({name:(t.name_kr||t.short_label||t.name), en:t.name, tt:t}));
 }
-let TAB = 'pool';   // 백분위 모집단: pool = 수집 3팀 / league = FBref 리그 전체
+let TAB = 'pool';   // 백분위 모집단: pool = 수집 대상 전 팀(POOL_CODES) / league = Fotmob 리그 전체
 document.querySelectorAll('button.tab').forEach(b=>b.addEventListener('click',()=>{
   TAB = b.dataset.tab;
   document.querySelectorAll('button.tab').forEach(x=>x.classList.toggle('on', x===b));
@@ -284,7 +304,9 @@ function render(){
         + '</table>'
       : '<span class="dim">시즌 성적 없음</span>';
     if (!renderLeague(key, false)) {
-      document.getElementById('tabnote').textContent = '수집 3팀(빌라·첼시·리버풀) 풀 내 상대 위치. 숫자 = 이 값보다 낮은 선수의 비율(%).';
+      document.getElementById('tabnote').textContent =
+        `수집 ${_TEAMS.length}팀(${POOL_LABEL}) 풀 내 상대 위치. 숫자 = 이 값보다 낮은 선수의 비율(%).`
+        + (_FAILED.length ? ` ⚠️ 로드 실패로 제외된 팀: ${_FAILED.join(', ')}` : '');
       const METRICS=[['avg_rating','평점'],['xg_pg','xG'],['xa_pg','xA'],['kp_pg','키패스'],['dw_pg','듀얼승'],['tk_pg','태클'],['ic_pg','인터셉트']];
       document.getElementById('pct').innerHTML = st ? METRICS.map(([k,name])=>{
         const v=st[k]; if(v==null) return '';
