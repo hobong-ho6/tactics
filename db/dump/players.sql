@@ -52,10 +52,10 @@ INSERT INTO players VALUES(51,'Dominik Szoboszlai','소보슬라이',869856,NULL
 INSERT INTO players VALUES(52,'Florian Wirtz','비르츠',1019322,NULL,NULL,'CAM','£100m 영입, 리버풀 25/26 PL 33경기. SofaScore 1019322',1152455,NULL);
 INSERT INTO players VALUES(53,'Cody Gakpo','학포',862967,NULL,NULL,'LW/ST','리버풀 25/26 PL 36경기. SofaScore 862967',806552,NULL);
 INSERT INTO players VALUES(54,'Mohamed Salah','살라',159665,NULL,NULL,'RW','리버풀 25/26 PL 27경기 → 2026-07-01 계약 조기 해지(FA). SofaScore 159665',292462,NULL);
-INSERT INTO players VALUES(55,'Johan Manzambi','만잠비',1518931,NULL,NULL,'CM/AM','2026 여름 프라이부르크에서 합류(CONFIRMED). SofaScore pid 1518931. 실측은 25/26 프라이부르크 클럽 46경기 + 스위스 대표팀 14경기(월드컵 4 포함).',1520063,NULL);
-INSERT INTO players VALUES(56,'João Gomes','주앙 고메스',1015267,NULL,NULL,'DM/CM','Wolverhampton → Aston Villa. SofaScore pid 1015267. 26/27 스쿼드 실측 (2026-08-11).',1174672,NULL);
-INSERT INTO players VALUES(57,'Modou Kéba Cissé','시세',1944705,NULL,NULL,'CB','LASK → Aston Villa. SofaScore pid 1944705. 26/27 스쿼드 실측 (2026-08-11).',1714552,NULL);
-INSERT INTO players VALUES(58,'Alejandro Garnacho','가르나초',1135873,NULL,NULL,'LW','Chelsea → Aston Villa. SofaScore pid 1135873. 26/27 스쿼드 실측 (2026-08-11).',1203665,NULL);
+INSERT INTO players VALUES(55,'Johan Manzambi','만잠비',1518931,276694,NULL,'CM/AM','2026 여름 프라이부르크에서 합류(CONFIRMED). SofaScore pid 1518931. 실측은 25/26 프라이부르크 클럽 46경기 + 스위스 대표팀 14경기(월드컵 4 포함).',1520063,NULL);
+INSERT INTO players VALUES(56,'João Gomes','주앙 고메스',1015267,273463,NULL,'DM/CM','Wolverhampton → Aston Villa. SofaScore pid 1015267. 26/27 스쿼드 실측 (2026-08-11).',1174672,NULL);
+INSERT INTO players VALUES(57,'Modou Kéba Cissé','시세',1944705,77524,NULL,'CB','LASK → Aston Villa. SofaScore pid 1944705. 26/27 스쿼드 실측 (2026-08-11).',1714552,NULL);
+INSERT INTO players VALUES(58,'Alejandro Garnacho','가르나초',1135873,268438,NULL,'LW','Chelsea → Aston Villa. SofaScore pid 1135873. 26/27 스쿼드 실측 (2026-08-11).',1203665,NULL);
 INSERT INTO players VALUES(59,'Alysson','알리송',1631879,NULL,NULL,'RW','Aston Villa (2026-01). SofaScore pid 1631879. 26/27 스쿼드 실측 (2026-08-11).',1656860,NULL);
 INSERT INTO players VALUES(60,'Tammy Abraham','타미 아브라함',610766,NULL,NULL,'ST','Aston Villa. SofaScore pid 610766. 26/27 스쿼드 실측 (2026-08-11).',749661,NULL);
 INSERT INTO players VALUES(61,'Brian Madjo',NULL,2070311,NULL,NULL,'FW',NULL,1729841,NULL);
@@ -70,9 +70,9 @@ INSERT INTO players VALUES(72,'Alexander Isak',NULL,823941,NULL,NULL,'FW',NULL,6
 INSERT INTO players VALUES(73,'Giorgi Mamardashvili',NULL,930997,NULL,NULL,'GK',NULL,948800,NULL);
 INSERT INTO players VALUES(74,'Wataru Endo',NULL,143040,NULL,NULL,'MF',NULL,202643,NULL);
 INSERT INTO players VALUES(75,'João Palhinha','팔리냐',364612,NULL,NULL,'DM','transfer_targets 2026-summer AVL 후보 — 평가·듀티 기록용 등재 (2026-08-11)',524434,NULL);
-INSERT INTO players VALUES(76,'Nicolas Jackson','잭슨',1085381,NULL,NULL,'ST','transfer_targets 2026-summer AVL 후보 — 평가·듀티 기록용 등재 (2026-08-11)',1197347,NULL);
+INSERT INTO players VALUES(76,'Nicolas Jackson','잭슨',1085381,259197,NULL,'ST','transfer_targets 2026-summer AVL 후보 — 평가·듀티 기록용 등재 (2026-08-11)',1197347,NULL);
 INSERT INTO players VALUES(77,'Allan','아우안',1835889,NULL,NULL,'RW','transfer_targets 2026-summer AVL 후보(팔메이라스) — 평가·듀티 기록용 등재 (2026-08-11)',1721789,NULL);
-INSERT INTO players VALUES(78,'Matteo Ruggeri','마테오 루헤리',965011,NULL,NULL,'LB','transfer_targets 2026-summer AVL 후보(아틀레티코) — 평가·듀티 기록용 등재 (2026-08-11)',1051097,NULL);
+INSERT INTO players VALUES(78,'Matteo Ruggeri','마테오 루헤리',965011,259584,NULL,'LB','transfer_targets 2026-summer AVL 후보(아틀레티코) — 평가·듀티 기록용 등재 (2026-08-11)',1051097,NULL);
 INSERT INTO players VALUES(79,'Endrick','엔드릭',1174937,NULL,NULL,'RW','transfer_targets 2026-summer AVL 후보 — 2026-08-11 등재(Romano 08-10). 실측은 obs#135(리옹 임대 20경기)',NULL,NULL);
 INSERT INTO players VALUES(80,'Pep Chavarría','차바리아',1010421,NULL,NULL,'LB','transfer_targets 2026-summer CHE 후보 — 2026-08-12 실측용 등재 | 2026-08-12 첼시 이적 구단 공식(2031년까지). €19m 고정 + €2m 애드온. 쿠쿠렐라(→레알) 대체이자 하토의 좌측백 경쟁·백업.',988805,NULL);
 INSERT INTO players VALUES(81,'Bradley Barcola','바르콜라',996952,NULL,NULL,'LW','transfer_targets 2026-summer LIV 후보 — 2026-08-12 실측용 등재',NULL,NULL);
@@ -87,7 +87,7 @@ INSERT INTO players VALUES(90,'Aaron Wan-Bissaka','완비사카',863653,229880,1
 INSERT INTO players VALUES(91,'Luka Lynch',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1553189,NULL);
 INSERT INTO players VALUES(92,'Triston Rowe',NULL,1400655,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1442496,NULL);
 INSERT INTO players VALUES(93,'Bradley Burrowes',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1639163,NULL);
-INSERT INTO players VALUES(94,'Tosin Adarabioyo','아다라비오요',352668,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=352668 부여(프리시즌 전수 수집).',683402,NULL);
+INSERT INTO players VALUES(94,'Tosin Adarabioyo','아다라비오요',352668,222104,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=352668 부여(프리시즌 전수 수집).',683402,NULL);
 INSERT INTO players VALUES(95,'Geovany Quenda','퀜다',1403165,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1403165 부여(프리시즌 전수 수집).',1530314,NULL);
 INSERT INTO players VALUES(96,'Mahdi Nicoll-Jazuli','니콜자줄리',2037476,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=2037476 부여(프리시즌 전수 수집).',1720243,NULL);
 INSERT INTO players VALUES(97,'Jamie Gittens','기텐스',1140599,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1140599 부여(프리시즌 전수 수집).',1113692,NULL);
@@ -169,8 +169,8 @@ INSERT INTO players VALUES(173,'Alexander Sørloth','쇠를로트',309078,NULL,N
 INSERT INTO players VALUES(174,'Cristian Romero','쿠티 로메로',829932,NULL,NULL,'D','[2026-08-21] ATM 1군 스쿼드 — SofaScore `/api/v1/team/2836/players` 응답으로 등재. ⭐ 아틀레티코 소속 확인(SofaScore 스쿼드) — R1 명단 외. ⛔ 실측·fotmob_id 없음(R1 미출전 또는 명단 외).',789066,NULL);
 INSERT INTO players VALUES(175,'Thomas Lemar','르마르',191182,NULL,NULL,'M','[2026-08-21] ATM 1군 스쿼드 — SofaScore `/api/v1/team/2836/players` 응답으로 등재. R1 명단 외. ⛔ 실측·fotmob_id 없음(R1 미출전 또는 명단 외).',468931,NULL);
 INSERT INTO players VALUES(176,'Obed Vargas','오베드 바르가스',1119345,NULL,NULL,'M','[2026-08-21] ATM 1군 스쿼드 — SofaScore `/api/v1/team/2836/players` 응답으로 등재. R1 명단 외 — 우리 원장에 처음 등장. ⛔ 실측·fotmob_id 없음(R1 미출전 또는 명단 외).',1254394,NULL);
-INSERT INTO players VALUES(177,'Fikayo Tomori','톰모리',788255,NULL,NULL,'CB','[2026-08-21] AVL RCB 영입 후보(MEDIUM-HIGH). 25/26 세리에A 전수 34경기 실측 보유. 소속 AC Milan. ⭐ `players`에 등재한 이유: `transfer_targets.player_id`가 NULL이면 **G8의 중복 판정 키**(`COALESCE(player_id,-1)`)가 **같은 슬롯의 서로 다른 후보를 중복으로 오판**한다 — 토신(id=94)처럼 실 player_id를 붙여 해소했다.',749662,NULL);
-INSERT INTO players VALUES(178,'Taylor Harwood-Bellis','하우드-벨리스',980637,NULL,NULL,'CB','[2026-08-21] AVL RCB 영입 후보(MEDIUM-HIGH). 25/26 48경기 실측 보유(챔피언십 43). 소속 Southampton. ⭐ `players`에 등재한 이유: `transfer_targets.player_id`가 NULL이면 **G8의 중복 판정 키**(`COALESCE(player_id,-1)`)가 **같은 슬롯의 서로 다른 후보를 중복으로 오판**한다 — 토신(id=94)처럼 실 player_id를 붙여 해소했다. | [2026-08-21] ⚠️ **키 정정: 188cm(6ft 2in)** — 전 출처 일치. 원장의 「192cm 전후」는 오류였다. 생년월일 2002-01-30(24세) · FotMob 등번호 6 · 시장가치 약 €19.5m · fotmob_id 966021.',966021,NULL);
+INSERT INTO players VALUES(177,'Fikayo Tomori','톰모리',788255,232756,NULL,'CB','[2026-08-21] AVL RCB 영입 후보(MEDIUM-HIGH). 25/26 세리에A 전수 34경기 실측 보유. 소속 AC Milan. ⭐ `players`에 등재한 이유: `transfer_targets.player_id`가 NULL이면 **G8의 중복 판정 키**(`COALESCE(player_id,-1)`)가 **같은 슬롯의 서로 다른 후보를 중복으로 오판**한다 — 토신(id=94)처럼 실 player_id를 붙여 해소했다.',749662,NULL);
+INSERT INTO players VALUES(178,'Taylor Harwood-Bellis','하우드-벨리스',980637,252793,NULL,'CB','[2026-08-21] AVL RCB 영입 후보(MEDIUM-HIGH). 25/26 48경기 실측 보유(챔피언십 43). 소속 Southampton. ⭐ `players`에 등재한 이유: `transfer_targets.player_id`가 NULL이면 **G8의 중복 판정 키**(`COALESCE(player_id,-1)`)가 **같은 슬롯의 서로 다른 후보를 중복으로 오판**한다 — 토신(id=94)처럼 실 player_id를 붙여 해소했다. | [2026-08-21] ⚠️ **키 정정: 188cm(6ft 2in)** — 전 출처 일치. 원장의 「192cm 전후」는 오류였다. 생년월일 2002-01-30(24세) · FotMob 등번호 6 · 시장가치 약 €19.5m · fotmob_id 966021.',966021,NULL);
 INSERT INTO players VALUES(179,'Nahuel Molina','나우엘 몰리나',831799,NULL,1998,'RB','2026-08-21 ATM 이적 원장 등재. 2026-08-12 AS Roma 이적 공식.',NULL,'Argentina');
 INSERT INTO players VALUES(180,'Mason Greenwood','메이슨 그린우드',942116,NULL,2001,'LW','2026-08-21 ATM 이적 원장 등재. Fenerbahçe 이적 완료.',NULL,'England');
 INSERT INTO players VALUES(181,'Clément Lenglet','클레망 랑글레',580550,NULL,1995,'LCB','2026-08-21 ATM 이적 원장 등재. 2026-06 말 Benfica 이적.',NULL,'France');
