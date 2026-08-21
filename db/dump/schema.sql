@@ -35,7 +35,7 @@ CREATE TABLE players(
   birth_year INTEGER,
   primary_position TEXT,
   notes TEXT
-, fotmob_id INTEGER, nationality TEXT);
+, fotmob_id INTEGER, nationality TEXT, understat_id INTEGER);
 CREATE TABLE player_tenures(
   player_id INTEGER NOT NULL REFERENCES players(id),
   season TEXT NOT NULL REFERENCES seasons(code),
