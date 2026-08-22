@@ -77,7 +77,7 @@ def export_all(db_path=None, window="2026-summer"):
         gs = _rows(con, """SELECT name_kr, player_id, roster_date, sofifa_name, sofifa_id, club,
                                   positions, best_pos, age, height_cm,
                                   value_eur, preferred_foot, accelerate,
-                                  ovr, pot, pac, sho, pas, dri, def, phy, playstyles, role_familiarity,
+                                  ovr, pot, pac, sho, pas, dri, def, phy, playstyles, role_familiarity, attrs,
                                   source
                            FROM player_game_stats WHERE game_version=?
                            ORDER BY name_kr, roster_date""", (gv,))

@@ -394,15 +394,22 @@ function render(){
   /* ⚠️ GK는 같은 6칸에 DIV/HAN/KIC/REF/SPD/POS가 들어간다(수집 규약) — 라벨을 바꿔야 한다.
      안 바꾸면 마르티네스의 SPD 하락이 「DEF −6」으로 표시돼 없는 의미를 읽게 된다. */
   const isGkRow = /(^|[^A-Z])GK([^A-Z]|$)/.test(`${g27?.best_pos ?? g?.best_pos ?? ''} ${g27?.positions ?? g?.positions ?? ''}`);
-  const KEYS = isGkRow
-    ? [['pac','DIV'],['sho','HAN'],['pas','KIC'],['dri','REF'],['def','SPD'],['phy','POS']]
-    : [['pac','PAC'],['sho','SHO'],['pas','PAS'],['dri','DRI'],['def','DEF'],['phy','PHY']];
-  const delta = v => v > 0 ? `<span style="color:var(--ok)">+${v}</span>`
-                   : v < 0 ? `<span style="color:var(--bad)">${v}</span>`
-                   : `<span class="dim">0</span>`;
-  const line = (label, o, extra='') => `<div><b>${label}</b> ${extra} OVR <b>${o.ovr}</b>${
-      o.pot ? `/${o.pot}` : ''} · ${o.positions ?? ''}${o.best_pos ? ` · 최적 ${o.best_pos}` : ''}<br>${
-      KEYS.map(([k, L]) => `${L} ${o[k] ?? '—'}`).join(' ')}</div>`;
+  /* fut.gg와 같은 6그룹 구성. 그룹값은 6종합 스탯이고 멤버는 세부 속성이다. */
+  const GROUPS = isGkRow
+    ? [['DIVING','pac',['다이빙']],['HANDLING','sho',['핸들링']],['KICKING','pas',['킥']],
+       ['REFLEXES','dri',['반사신경']],['SPEED','def',['GK 스피드']],['POSITIONING','phy',['포지셔닝']]]
+    : [['PACE','pac',['가속','질주 속도']],
+       ['SHOOTING','sho',['공격 위치 선정','결정력','슈팅력','중거리슛','발리 슛','페널티킥']],
+       ['PASSING','pas',['시야','크로스','프리킥 정확도','짧은 패스','긴 패스','커브']],
+       ['DRIBBLING','dri',['민첩성','균형 감각','반응력','볼컨트롤','드리블','침착']],
+       ['DEFENDING','def',['차단력','헤딩 정확도','수비 위치 선정','스탠딩 태클','슬라이딩 태클']],
+       ['PHYSICAL','phy',['점프','체력','힘','공격성']]];
+  const tier = v => v >= 75 ? 'var(--ok)' : v >= 60 ? 'var(--warn)' : 'var(--bad)';
+  const dBadge = (a, b) => {            // fut.gg식 Δ 배지 — 0이거나 한쪽이 없으면 생략
+    if (a == null || b == null || a === b) return '';
+    const d = b - a, up = d > 0;
+    return `<span class="db" style="color:${up ? 'var(--ok)' : 'var(--bad)'}">${up ? '⌃' : '⌄'}${Math.abs(d)}</span>`;
+  };
   const isPred = g27 && /예측값/.test(g27.source || '');
   const badge27 = !g27 ? '' : isPred
     ? '<span class="badge" style="border-color:var(--warn);color:var(--warn)">예측</span>'
@@ -410,24 +417,68 @@ function render(){
   let html;
   if (!g && !g27) html = '<span class="dim">FC26·FC27 로스터에 모두 없음</span>';
   else {
-    const parts = [];
-    if (g) parts.push(line(`FC26 <small class="dim">(${g.roster_date ?? '시점 미기록'})</small>`, g));
-    if (g27) parts.push(line(`FC27 <small class="dim">(${g27.roster_date ?? ''})</small>`, g27, badge27));
-    if (g && g27) {
-      const dov = g27.ovr - g.ovr;
-      parts.push(`<div style="margin-top:4px"><b>Δ FC26→FC27</b> OVR ${delta(dov)} · ${
-        KEYS.map(([k, L]) => (g[k] == null || g27[k] == null)
-          ? `${L} <span class="dim">—</span>` : `${L} ${delta(g27[k] - g[k])}`).join(' ')}</div>`
-        + (isPred ? '<div class="dim" style="font-size:12px">⚠️ FC27 쪽이 예측값이라 이 Δ도 확정이 아니다.</div>' : ''));
-    } else if (g27 && !g) {
-      parts.push('<div class="dim" style="font-size:12px">⚠️ FC26 행이 없어 Δ를 낼 수 없다.</div>');
+    const ov = [g?.ovr ?? null, g27?.ovr ?? null];
+    const SIX = isGkRow
+      ? [['pac','DIV'],['sho','HAN'],['pas','KIC'],['dri','REF'],['def','SPD'],['phy','POS']]
+      : [['pac','PAC'],['sho','SHO'],['pas','PAS'],['dri','DRI'],['def','DEF'],['phy','PHY']];
+    /* fut.gg식 카드 비교 — FC26 카드 → FC27 카드 + Δ 칩 */
+    const card = (o, ver) => o ? `<div class="gcard">
+        <div class="gc-ovr" style="color:${tier(o.ovr)}">${o.ovr}</div>
+        <div class="gc-pos">${o.best_pos ?? o.positions ?? ''}</div>
+        <div class="gc-six">${SIX.map(([k,L]) =>
+          `<span><em>${L}</em>${o[k] ?? '—'}</span>`).join('')}</div>
+        <div class="gc-ver dim">${ver}<br><small>${o.roster_date ?? ''}</small></div>
+      </div>` : `<div class="gcard empty dim">${ver}<br><small>행 없음</small></div>`;
+    const chips = [['ovr','OVR'], ...SIX].map(([k,L]) => {
+      const a = g?.[k], b = g27?.[k];
+      if (a == null || b == null || a === b) return '';
+      const d = b - a;
+      return `<span class="chip" style="border-color:${d>0?'var(--ok)':'var(--bad)'};color:${d>0?'var(--ok)':'var(--bad)'}">${d>0?'+':''}${d} ${L}</span>`;
+    }).filter(Boolean).join('');
+    html = `<div class="kv" style="margin-bottom:6px"><b>FC 27 Rating</b> ${badge27}
+        ${dBadge(ov[0], ov[1])}</div>
+      <div class="gcrow">${card(g,'FC26')}<span class="gc-arrow">›››</span>${card(g27,'FC27')}</div>
+      <div class="chips">${chips || '<span class="dim">6종합·OVR 변화 없음</span>'}</div>
+      <div class="kv dim" style="font-size:12px">${
+        [g27?.accelerate && `AcceleRATE <b>${g27.accelerate}</b>`,
+         g27?.positions && `포지션 ${g27.positions}`].filter(Boolean).join(' · ')}</div>
+      <p class="dim" style="font-size:12px;margin:4px 0 0">⚠️ 이 Δ는 <b>우리 DB의 FC26 최신 로스터(시즌 말 라이브판)</b> 기준이다 —
+        fut.gg가 카드에 표시하는 Δ는 <b>FC26 출시판</b> 기준이라 <b>값이 다를 수 있다</b>(obs#249. 실측: 왓킨스 fut.gg −1 ↔ 우리 +1).</p>`;
+    /* ── 세부 속성: 기본 접힘. 펼치면 fut.gg식 6그룹 비교 ─────────── */
+    const pa = t => { try { return t ? JSON.parse(t) : null; } catch (e) { return null; } };
+    const a26 = pa(g?.attrs), a27 = pa(g27?.attrs);
+    if (a26 || a27) {
+      const names = [...new Set([...Object.keys(a26 ?? {}), ...Object.keys(a27 ?? {})])];
+      const both = names.filter(k => a26?.[k] != null && a27?.[k] != null);
+      const moved = both.filter(k => a27[k] !== a26[k]).length;
+      const cards = GROUPS.map(([label, gk, members]) => {
+        const rows = members.filter(m => (a27?.[m] ?? a26?.[m]) != null).map(m => {
+          const x = a26?.[m] ?? null, y = a27?.[m] ?? null, v = y ?? x;
+          return `<div class="arow"><span class="an">${m}</span>
+            <span class="ad">${dBadge(x, y)}</span>
+            <span class="av" style="color:${tier(v)}">${v}</span>
+            <span class="abar"><i style="width:${Math.min(100, v)}%;background:${tier(v)}"></i></span></div>`;
+        }).join('');
+        if (!rows) return '';
+        const gx = g?.[gk] ?? null, gy = g27?.[gk] ?? null, gv = gy ?? gx;
+        return `<section class="agrp"><header><b>${label}</b>
+            <span class="gv" style="color:${gv != null ? tier(gv) : ''}">${gv ?? '—'}</span>
+            ${dBadge(gx, gy)}</header>${rows}</section>`;
+      }).join('');
+      html += `<details style="margin-top:10px"><summary class="dim">📊 세부 속성 ${names.length}개 — 펼쳐서 FC26↔FC27 비교 ${
+          both.length ? `<small>(대조 가능 ${both.length}개 · 변동 <b>${moved}</b>개)</small>`
+                      : '<small>(한쪽만 있어 대조 불가)</small>'}</summary>
+        <div class="agrid">${cards}</div>
+        <p class="dim" style="font-size:12px;margin:8px 0 0">화살표는 <b>FC26 대비 변화</b>다. 값·바 색은 등급(75+ / 60+ / 그 미만).
+        FC26·FC27 모두 <b>fut.gg 상세</b>에서 받아 소스를 일치시켰다 — sofifa(FC26) ↔ fut.gg(FC27) 혼합을 피했다.
+        ⚠️ 단 <b>여기의 FC26은 fut.gg 출시판</b>이고 위 카드의 FC26 6종합은 <b>우리 DB 시즌 말 라이브판</b>이다 —
+        <b>두 층의 기준 시점이 다르므로</b> 세부 Δ와 6종합 Δ를 합산하지 말 것.
+        ⛔ <b>PlayStyles는 FC27에 아직 없다</b>(그 페이지의 목록은 커뮤니티 투표 %이지 EA 확정값이 아니다 — 09-10판이 정본, obs#249).</p></details>`;
     } else {
-      parts.push('<div class="dim" style="font-size:12px">⚠️ FC27 행이 없다 — EA 리그별 드롭 대기이거나, '
-        + '26/27 이적이 FC27 DB에 반영되지 않아 <b>전 소속 클럽</b> 페이지에 있다(obs#282).</div>');
+      html += '<div class="dim" style="font-size:12px;margin-top:8px">세부 속성 미수집(fut.gg 상세에 해당 선수 카드가 없다).</div>';
     }
-    if (g?.playstyles) parts.push(`<div class="dim">${annotate((g.playstyles ?? '').split(';').map(x=>x.trim()).join(' · '))}
-      <small>— FC26 PlayStyles. FC27 PlayStyles는 EA 스케줄상 09-10판에서 들어온다(obs#249).</small></div>`);
-    html = parts.join('');
+    if (g?.playstyles) html += `<div class="dim" style="margin-top:6px">${annotate((g.playstyles ?? '').split(';').map(x=>x.trim()).join(' · '))}
+      <small>— FC26 PlayStyles</small></div>`;
   }
   document.getElementById('gstat').innerHTML = html;
   const ds = td.duties.filter(d=>d.label===key);

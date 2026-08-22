@@ -57,6 +57,53 @@ JS = """async () => {
 }"""
 
 
+# fut.gg 상세 라벨 → FC26 `attrs`의 한글 키(sofifa 라벨). ⭐ 키를 맞춰야 FC26↔FC27 비교가 성립한다.
+ATTR_MAP = {
+    "Acceleration": "가속", "Sprint Speed": "질주 속도",
+    "Att. Pos.": "공격 위치 선정", "Finishing": "결정력", "Shot Power": "슈팅력",
+    "Long Shots": "중거리슛", "Volleys": "발리 슛", "Penalties": "페널티킥",
+    "Vision": "시야", "Crossing": "크로스", "Fk Acc.": "프리킥 정확도",
+    "Short Pass": "짧은 패스", "Long Pass": "긴 패스", "Curve": "커브",
+    "Agility": "민첩성", "Balance": "균형 감각", "Reactions": "반응력",
+    "Ball Control": "볼컨트롤", "Dribbling": "드리블", "Composure": "침착",
+    "Interceptions": "차단력", "Heading Acc.": "헤딩 정확도",
+    "Def. Aware.": "수비 위치 선정", "Stand Tackle": "스탠딩 태클", "Slide Tackle": "슬라이딩 태클",
+    "Jumping": "점프", "Stamina": "체력", "Strength": "힘", "Aggression": "공격성",
+    # GK
+    "Diving": "다이빙", "Handling": "핸들링", "Kicking": "킥", "Positioning": "포지셔닝",
+    "Reflexes": "반사신경", "GK Speed": "GK 스피드",
+}
+
+
+def parse_attrs(text):
+    """상세 페이지 텍스트에서 속성 라벨→값을 뽑는다.
+
+    ⛔⛔ **라벨과 값 사이에 「순위 배지」 숫자가 끼어든다** — 원문이 `Vision | 4 | 79`처럼
+        `{라벨} | {순위} | {값}`이 되는 경우가 있다(순위 배지가 붙은 속성만). 따라서
+        **라벨 뒤 첫 숫자를 취하면 순위를 값으로 읽는다**(2026-08-22에 이 버그로 시야 79→4,
+        점프 89→1 같은 값이 들어갔다). ⇒ **라벨과 다음 라벨 사이의 마지막 숫자**가 값이다.
+    """
+    text = text.replace("\n", " | ")
+    # FC27 상세는 「FC 27 Attributes」, FC26 상세는 「Attributes」로 헤더가 다르다.
+    i = text.find("FC 27 Attributes")
+    if i < 0:
+        i = text.find("Attributes")
+    if i < 0:
+        return {}, None
+    seg = text[i:i + 4000]
+    out = {}
+    for en, kr in ATTR_MAP.items():
+        # 라벨 **직후의 연속 숫자열**만 본다. 「라벨 | 값」이면 1개, 「라벨 | 순위 | 값」이면 2개다
+        # ⇒ 2개 이상이면 **두 번째**가 값이다. 구간 전체의 마지막 숫자를 쓰면 그룹 헤더 숫자를 먹는다.
+        m = re.search(re.escape(en) + r"(?![A-Za-z.])((?:\s*\|\s*\d{1,3})+)", seg)
+        if not m:
+            continue
+        nums = re.findall(r"\d{1,3}", m.group(1))
+        out[kr] = int(nums[1] if len(nums) >= 2 else nums[0])
+    acc = re.search(r"AcceleRATE \| ([A-Za-z ]+?) \|", seg)
+    return out, (acc.group(1).strip() if acc else None)
+
+
 def norm(s):
     s = "".join(c for c in unicodedata.normalize("NFKD", s) if not unicodedata.combining(c))
     return re.sub(r"[^a-z ]", "", s.casefold()).strip()
@@ -92,6 +139,13 @@ def main():
     ap.add_argument("--roster-date", default=None, help="기본: 오늘")
     ap.add_argument("--include-unmatched", action="store_true",
                     help="`players` 미매칭 행도 적재(⚠️ 여자팀이 같은 페이지에 섞여 있다 — 기본 제외)")
+    ap.add_argument("--attrs", action="store_true",
+                    help="⭐ FC27 **세부 35속성 + AcceleRATE**를 선수 상세 페이지에서 수집해 기존 FC27 행의 "
+                         "비어 있는 attrs를 채운다(/players/{eaId}-{slug}/27-{eaId}/). "
+                         "키는 FC26 attrs의 한글 라벨로 맞춘다 — 그래야 FC26↔FC27 비교가 성립한다")
+    ap.add_argument("--attrs-version", choices=["26", "27"], default="27",
+                    help="--attrs가 어느 버전 상세를 읽을지. ⭐ FC26도 같은 소스(fut.gg)에서 받아야 "
+                         "속성 비교의 provenance가 섞이지 않는다 — sofifa(FC26) ↔ fut.gg(FC27) 혼합은 피한다")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
@@ -110,7 +164,7 @@ def main():
             by_name.setdefault(norm(kr), (pid, kr))
 
     from playwright.sync_api import sync_playwright
-    rows, unmatched = [], []
+    rows, unmatched, attr_rows = [], [], []
     with sync_playwright() as p:
         br = p.chromium.launch()
         pg = br.new_page()
@@ -142,7 +196,43 @@ def main():
                           + ", ".join(x["kr"] for x in rows[-hit:]))
                 elif n % 50 == 0:
                     print(f"  page {n:>3}/{last}: …")
-        if not targets and not a.scan_all:
+        if a.attrs:
+            slugs = [CLUBS[t] for t in a.team] + list(a.clubs) or list(CLUBS.values())
+            links = {}
+            for slug in slugs:
+                pg.goto(f"https://www.fut.gg/players/rating-predictions/clubs/{slug}/",
+                        wait_until="domcontentloaded", timeout=60_000)
+                pg.wait_for_timeout(2500)
+                for h in pg.eval_on_selector_all(
+                        "a[href*='/27-']", "els=>els.map(e=>e.getAttribute('href'))"):
+                    m = re.match(r"/players/(\d+)-([a-z0-9-]+)/27-\1/?$", h or "")
+                    if m:
+                        links[m.group(1)] = (h, m.group(2).replace("-", " "))
+            print(f"[attrs] 상세 링크 {len(links)}건 수집 — 우리 DB 매칭분만 방문한다")
+            done = 0
+            for ea, (href, nm) in links.items():
+                hit = by_name.get(norm(nm))
+                if not hit:
+                    continue
+                pid, kr = hit
+                url = re.sub(r"/27-", f"/{a.attrs_version}-", "https://www.fut.gg" + href)
+                pg.goto(url, wait_until="domcontentloaded", timeout=60_000)
+                # ⚠️ 속성 블록은 클라이언트에서 늦게 렌더된다 — 고정 대기(900ms)로는 못 잡는다.
+                #    텍스트가 나타날 때까지 폴링한다(최대 ~5초).
+                body = ""
+                for _ in range(10):
+                    pg.wait_for_timeout(500)
+                    body = pg.inner_text("body")
+                    if "Attributes" in body:
+                        break
+                at, acc = parse_attrs(body)
+                if not at:
+                    print(f"  ⚠️ {kr}: 속성 블록 없음"); continue
+                attr_rows.append((pid, kr, ea, at, acc)); done += 1
+                if done % 10 == 0:
+                    print(f"  … {done}명 수집")
+            print(f"[attrs] {done}명 속성 수집 완료")
+        if not targets and not a.scan_all and not a.attrs:
             sys.exit("--team · --clubs · --scan-all 중 하나는 필요하다")
         for team, slug in targets:
             url = f"https://www.fut.gg/players/rating-predictions/clubs/{slug}/"
@@ -181,6 +271,31 @@ def main():
         return
 
     cur = con.cursor()
+    if attr_rows:
+        import json
+        upd = 0
+        for pid, kr, ea, at, acc in attr_rows:
+            gv = "FC" + a.attrs_version
+            # ⚠️ 같은 버전에 roster_date가 여럿이다 — **최신 행만** 채운다(화면이 최신을 쓰므로).
+            #    전 행에 뿌리면 06-30 로스터 행에 08-22 수집 속성이 붙어 provenance가 번진다.
+            cur.execute(f"""UPDATE player_game_stats SET attrs=?, accelerate=COALESCE(accelerate,?),
+                           detail_date=?, confidence=COALESCE(confidence,'')||?
+                           WHERE game_version='{gv}' AND player_id=? AND (attrs IS NULL OR attrs='')
+                             AND roster_date=(SELECT MAX(roster_date) FROM player_game_stats
+                                              WHERE game_version='{gv}' AND player_id=?)""",
+                        (json.dumps(at, ensure_ascii=False), acc, roster,
+                         f" ⭐ [{roster}] 세부 {len(at)}속성(fut.gg FC{a.attrs_version} 상세)"
+                         + (f" + AcceleRATE({acc})" if acc else "")
+                         + f" 수집 — fut.gg 상세 /players/{ea}-…/27-{ea}/. "
+                           "키는 FC26 attrs의 한글 라벨로 맞췄다(비교 가능성 확보). "
+                           "⛔ **playstyles는 여전히 없다** — 그 페이지의 PlayStyles 목록은 "
+                           "커뮤니티 투표 %이지 EA 확정값이 아니다(09-10판이 정본, obs#249).",
+                         pid, pid))
+            upd += cur.rowcount
+        con.commit()
+        print(f"\n적재: attrs +{upd}행")
+        if not rows:
+            return
     ins, skipped = 0, 0
     for c in rows:
         if c["pid"] is None and not a.include_unmatched:
