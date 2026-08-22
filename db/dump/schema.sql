@@ -293,22 +293,6 @@ FROM player_matches GROUP BY player_id
 CREATE TABLE _migration_log(
   run_at TEXT, v1_path TEXT, note TEXT
 );
-CREATE TABLE player_evaluations(
-  id INTEGER PRIMARY KEY,
-  regime_id INTEGER NOT NULL REFERENCES regimes(id),   -- 선수 소속 팀의 현 체제
-  player_id INTEGER NOT NULL REFERENCES players(id),
-  overall TEXT NOT NULL,      -- 종합 평가 (등급 접두 'S/A/B/C — ' + 서술)
-  traits TEXT,                -- 선수 특성 (플레이 유형·성향)
-  strengths TEXT,             -- 특장점 (·약점 병기 허용)
-  stat_eval TEXT,             -- 경기 스탯 기반 평가 (v_player_profile·백분위 근거)
-  fit_emery TEXT,             -- 에메리(AVL) 전술핏: 'HIGH/MEDIUM/LOW — 서술'
-  fit_alonso TEXT,            -- 알론소(CHE) 전술핏
-  fit_iraola TEXT,            -- 이라올라(LIV) 전술핏
-  source TEXT,                -- 인용한 데이터 (obs#·duties·prescriptions·stats)
-  confidence TEXT,            -- 표본·교차투영 캐비앗
-  updated TEXT, fotmob_eval TEXT,
-  UNIQUE(regime_id, player_id)
-);
 CREATE TABLE fbref_percentiles(
   id INTEGER PRIMARY KEY,
   player_id INTEGER NOT NULL REFERENCES players(id),
@@ -573,4 +557,20 @@ CREATE TABLE understat_player_matches(
   xg REAL, xa REAL, npxg REAL, xg_chain REAL, xg_buildup REAL,
   source TEXT,
   UNIQUE(player_id, us_match_id)
+);
+CREATE TABLE IF NOT EXISTS "player_evaluations"(
+  id INTEGER PRIMARY KEY,
+  regime_id INTEGER REFERENCES regimes(id),   -- NULL = 아직 우리 선수가 아니다(영입 후보). 불변규칙 7.
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  overall TEXT NOT NULL,
+  traits TEXT,
+  strengths TEXT,
+  stat_eval TEXT,
+  fit_emery TEXT,
+  fit_alonso TEXT,
+  fit_iraola TEXT,
+  source TEXT,
+  confidence TEXT,
+  updated TEXT, fotmob_eval TEXT,
+  UNIQUE(regime_id, player_id)
 );

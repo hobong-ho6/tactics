@@ -13,16 +13,16 @@
 <b>:bundesliga/:europa/:pokal</b>=클럽 대회별 · <b>:worldcup/:national</b>=대표팀(월드컵/통합) ·
 <b>:F/:CAM 등</b>=다른 포지션으로 뛴 경기만 · <b>@dom/@tight</b>=2골차+ 승 / 접전 분리 ·
 <b>:season</b>=시즌 전체(주전은 상위 경기 표본과 구분). 표본 n·평점은 카드에 병기.</p>
-<div class="panel"><h2>경기 스탯 (경기당 평균)</h2><div id="pstat" class="kv"></div>
+<div class="panel"><h2>경기 스탯 (경기당 평균) <small class="dim">— 출처: <b>SofaScore</b> 경기별 실측(player_matches) 집계</small></h2><div id="pstat" class="kv"></div>
 <div class="kv" style="margin:8px 0 2px"><b>시즌 성적</b> <small class="dim">— 대회별 출전·득점·평점(실측 player_matches 집계)</small></div>
 <div id="season" class="scrollx"></div>
 <div class="kv" style="margin:14px 0 2px"><b>비교 기준</b>
-  <button class="tab on" data-tab="pool" id="poolTab">수집 풀</button><button class="tab" data-tab="league">리그 전체(Fotmob)</button></div>
+  <button class="tab on" data-tab="pool" id="poolTab">수집 풀 (SofaScore 실측)</button><button class="tab" data-tab="league">리그 전체 (FotMob/Opta)</button></div>
 <div id="tabnote" class="dim" style="font-size:12px;margin-bottom:6px"></div>
 <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
-   <div id="radar"></div><div style="flex:1;min-width:220px"><div id="pct" style="margin-top:4px"></div></div></div>
+   <div><div class="dim" style="font-size:12px;margin-bottom:2px">6축 백분위 <b>— SofaScore 실측 / 수집 풀 기준</b></div><div id="radar"></div></div><div style="flex:1;min-width:220px"><div id="pct" style="margin-top:4px"></div></div></div>
  <div id="fmeval"></div>
- <div class="kv" style="margin-top:10px"><b>최근 폼</b> <small class="dim">— 최근 10경기 평점 추이</small></div>
+ <div class="kv" style="margin-top:10px"><b>최근 폼</b> <small class="dim">— 최근 10경기 평점 추이(SofaScore)</small></div>
  <div id="form"></div>
  <div class="kv" style="margin-top:10px"><b>유사 프로필</b> <small class="dim">— 실측 그리드 코사인 최근접(수집 풀)</small></div>
  <div id="similar" class="kv"></div>
@@ -38,8 +38,9 @@
 태클 없이 막는 유형이 있다(듀얼·회수와 교차 확인). ⚠️ 0은 "그 경기들에서 실제 0"이다(결측 아님).<br>
 <b>백분위 막대</b> — 이 시스템이 수집한 <b>전 팀 선수 풀</b> 내 상대 위치(팀 수는 「비교 기준」 탭에 표시). 포지션 특성 감안 필수
 (수비수의 xG 백분위가 낮은 건 정상).</div></details>
-<p class="dim" style="font-size:12px">탭으로 모집단을 바꾼다 — <b>수집 풀</b>은 이 시스템이 실측한 <b>수집 대상 전 팀</b> 선수 안에서의 상대 위치,
-<b>리그 전체</b>는 Fotmob이 산출한 같은 포지션 리그 선수 대비 백분위다. 두 축은 모집단이 달라 값이 직접 비교되지 않는다.</p></div>
+<p class="dim" style="font-size:12px">탭으로 <b>모집단과 원천이 함께</b> 바뀐다 — <b>수집 풀</b>은 우리가 <b>SofaScore</b>로 직접 실측한
+<b>수집 대상 전 팀</b> 선수 안에서의 상대 위치, <b>리그 전체</b>는 <b>FotMob(Opta 원자료)</b>이 산출한 같은 포지션 리그 선수 대비 백분위다.
+두 축은 원천도 모집단도 달라 값이 직접 비교되지 않는다. ⚠️ 영입 후보는 우리 실측 풀에 없어 <b>FotMob 축만</b> 표시된다.</p></div>
 <div class="panel"><h2>게임 스탯 <small class="dim">— FC26 ↔ FC27 및 그 차이</small></h2><div id="gstat" class="kv"></div><p class="dim" style="font-size:12px;margin:8px 0 0">Δ는 <b>우리 DB의 FC26 최신 로스터</b>와 FC27을 직접 대조한 값이다. ⚠️ 매체가 표기하는 Δ와 다를 수 있다 — 그쪽은 FC26 <b>출시판</b> 기준이고 우리 FC26 행은 <b>시즌 말 라이브판</b>이라 부호가 뒤집힌다(obs#249). <b>예측</b> 배지가 붙은 값은 EA 미확정이라 공식 드롭 후 바뀐다.</p></div>
 <div class="panel"><h2>영상·스카우트 분석 (가설 → 실측 교차검증)</h2>
 <p class="dim">각 분석은 <b>분석 기준일·표본 범위</b>를 함께 표시한다. <b>레퍼런스 보기</b>를 펼치면 저장된 원문·내부 근거를 직접 확인할 수 있다. 기간을 복원할 수 없는 과거 기록은 임의 추정하지 않고 <b>기간 미기록</b>으로 표시한다.</p>
@@ -79,7 +80,7 @@ const POOL_SQ = _TEAMS.flatMap(t=>currentCandidates(t).map(q=>({...q, team:t.reg
 {
   const t = document.getElementById('poolTab');
   if (t) {
-    t.textContent = `수집 풀(${_TEAMS.length}팀)`;
+    t.textContent = `수집 풀 ${_TEAMS.length}팀 (SofaScore 실측)`;
     t.title = `모집단: ${_TEAMS.map(x=>x.regime.team_code).join(' · ')}`
       + (_FAILED.length ? ` ⚠️ 로드 실패: ${_FAILED.join(', ')}` : '');
     if (_FAILED.length) t.style.borderColor = 'var(--bad)';
@@ -148,7 +149,11 @@ for (const q of CURRENT){
   (groups[g] ??= []).find(x=>x.name===n) || groups[g].push({name:n, en:q.name_en, kr:q.name_kr, pid:q.player_id});
 }
 // 영입 추적 — 아직 미합류(비 CONFIRMED) 감시 대상
-const tracked = td.transfer.targets.filter(t=>!/^(DEAD|CONFIRMED)/i.test(t.likelihood||'') && t.map25);
+/* ⭐ map25 유무로 거르지 않는다 — 그리드가 없다고 선수가 사라지면 안 된다.
+   2026-08-22: SofaScore가 IP 차단돼 고레츠카가 그리드 없이 등재됐고(HIGH), 그 결과 이 목록에서
+   통째로 빠져 FotMob 백분위·게임 스탯·서사가 전부 화면에 닿지 못했다(obs#290). 그리드는 아래에서
+   PENDING으로 표시한다. */
+const tracked = td.transfer.targets.filter(t=>!/^(DEAD|CONFIRMED)/i.test(t.likelihood||''));
 if (tracked.length){
   const seen=new Set();
   groups['⭐ 영입 추적'] = tracked.filter(t=>{const k=t.name; if(seen.has(k))return false; seen.add(k); return true;})
@@ -293,11 +298,14 @@ function render(){
   document.getElementById('bio').textContent = g0 ? ` ${g0.age}세 · ${g0.height_cm??'?'}cm · ${g0.preferred_foot==='Left'?'왼발':g0.preferred_foot==='Right'?'오른발':''} · 가치 ${g0.value_eur??'?'} · ${g0.club??''}` : '';
   if (sel.tt){   // 영입 추적 — transfer_targets 데이터로 렌더
     const t = sel.tt;
-    document.getElementById('grids').innerHTML =
-      `<div class="pcard"><b>실측 (${t.slot} 후보)</b><br>${miniGrid(t.map25)}<br>
+    document.getElementById('grids').innerHTML = t.map25
+      ? `<div class="pcard"><b>실측 (${t.slot} 후보)</b> <small class="dim">— SofaScore</small><br>${miniGrid(t.map25)}<br>
        <small class="dim">n=${t.sample_n??'—'} · 평점 ${t.avg_rating??'—'} · ${
          gkPosCell(td, t.slot, t.player_id, t.tool_y != null ? { x: t.tool_x, y: t.tool_y } : null)
-         ?? `적합 ${t.fit_role??''}/${t.fit_focus??''} ${t.fit_sim??''}`}</small></div>`;
+         ?? `적합 ${t.fit_role??''}/${t.fit_focus??''} ${t.fit_sim??''}`}</small></div>`
+      : `<div class="pcard"><b>실측 (${t.slot} 후보)</b><br><span class="dim">그리드 PENDING</span><br>
+       <small class="dim">SofaScore 미수집 — 슬롯 <b>${t.slot}</b>은 커널 argmax가 아니라 구조 논거로 정한 잠정값이다.
+       적합값(fit_sim)도 없다.</small></div>`;
     document.getElementById('gridwarn').innerHTML =
       `<div style="border-left:3px solid var(--warn);background:rgba(255,193,7,.07);padding:8px 12px;margin:8px 0;border-radius:0 6px 6px 0">
          <b style="color:var(--warn)">실측 출처: ${t.club ?? '이전 소속팀'}</b><br>
@@ -335,7 +343,7 @@ function render(){
       : '<span class="dim">시즌 성적 없음</span>';
     if (!renderLeague(key, false, sel)) {
       document.getElementById('tabnote').textContent =
-        `수집 ${_TEAMS.length}팀(${POOL_LABEL}) 풀 내 상대 위치. 숫자 = 이 값보다 낮은 선수의 비율(%).`
+        `출처 SofaScore 실측 — 수집 ${_TEAMS.length}팀(${POOL_LABEL}) 풀 내 상대 위치. 숫자 = 이 값보다 낮은 선수의 비율(%).`
         + (_FAILED.length ? ` ⚠️ 로드 실패로 제외된 팀: ${_FAILED.join(', ')}` : '');
       const METRICS=[['avg_rating','평점'],['xg_pg','xG'],['xa_pg','xA'],['kp_pg','키패스'],['dw_pg','듀얼승'],['tk_pg','태클'],['ic_pg','인터셉트']];
       document.getElementById('pct').innerHTML = st ? METRICS.map(([k,name])=>{
@@ -345,7 +353,8 @@ function render(){
         return bar(name, v, pct, `수집 풀 상위 ${100-pct}%`);
       }).join('') : '';
     }
-    // ⬡ 레이더 (풋몹 프로필 참고 — 6축 백분위)
+    // ⬡ 레이더 — 축은 SofaScore 실측(v_player_profile)이고 백분위 모집단도 수집 풀이다.
+    //   ⚠️ FotMob 레이더가 아니다(형식만 그 프로필을 참고했다) — 라벨에 출처를 못박아 둔다.
     const axes=[['xg_pg','득점 위협'],['xa_pg','기회 창출'],['kp_pg','키패스'],['dw_pg','경합'],['tk_pg','태클'],['ic_pg','인터셉트']];
     if (st){
       const pcts=axes.map(([k])=>{const v=st[k]; if(v==null)return 0;
@@ -481,7 +490,10 @@ function render(){
       <small>— FC26 PlayStyles</small></div>`;
   }
   document.getElementById('gstat').innerHTML = html;
-  const ds = td.duties.filter(d=>d.label===key);
+  // ⭐ player_id 우선 — 라벨 조인은 표기 규약이 갈리면 조용히 0행이 된다(불변규칙 6).
+  const ds = sel.pid != null && td.duties.some(d=>d.player_id===sel.pid)
+    ? td.duties.filter(d=>d.player_id===sel.pid)
+    : td.duties.filter(d=>d.label===key);
   // 산문 4칸을 표의 좁은 열에 넣으면 세로 국수가 된다 — 분석 1건 = 카드 1장으로 읽는다.
   // 순서는 근거의 사슬(주장 → 실측 → 판정 → 게임 함의)을 그대로 따른다.
   const section = (title, text, span) => text
