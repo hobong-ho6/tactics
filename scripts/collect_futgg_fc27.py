@@ -43,7 +43,9 @@ CLUBS = {                       # fut.gg 클럽 슬러그 (2026-08-22 확인)
 #    | K1 | v1 | ... K6 | v6 | (Δ 목록…)"
 CARD_RE = re.compile(
     r"(?P<full>[^|]+?) FC 27 (?:official rating|rating prediction) \| [^|]+ \| "
-    r"(?P<flag>OFFICIAL|PREDICTION) \| (?P<club>[^|]+?) \| (?P<dovr>[+-]?\d+) \| "
+    # ⚠️ Δovr는 **선택**이다 — FC26에 없던 신규·유스 선수 카드에는 변화값 필드가 아예 없다.
+    #    필수로 두면 그 선수들이 조용히 전부 누락된다(2026-08-22에 유스 14명이 이렇게 빠졌다).
+    r"(?P<flag>OFFICIAL|PREDICTION) \| (?P<club>[^|]+?) \| (?:(?P<dovr>[+-]?\d+) \| )?"
     r"(?P<short>[^|]+?) \| (?P<ovr>\d{2,3}) \| (?P<pos>[A-Z]{2,3}) \| "
     r"(?P<k1>[A-Z]{3}) \| (?P<v1>\d{1,3}) \| (?P<k2>[A-Z]{3}) \| (?P<v2>\d{1,3}) \| "
     r"(?P<k3>[A-Z]{3}) \| (?P<v3>\d{1,3}) \| (?P<k4>[A-Z]{3}) \| (?P<v4>\d{1,3}) \| "
@@ -67,7 +69,8 @@ def parse(text):
         out.append({
             "full": d["full"].strip(), "short": d["short"].strip(),
             "official": d["flag"] == "OFFICIAL", "club": d["club"].strip(),
-            "ovr": int(d["ovr"]), "pos": d["pos"], "dovr": int(d["dovr"]),
+            "ovr": int(d["ovr"]), "pos": d["pos"],
+            "dovr": int(d["dovr"]) if d.get("dovr") is not None else None,
             "stats": [(d[f"k{i}"], int(d[f"v{i}"])) for i in range(1, 7)],
         })
     return out
@@ -79,6 +82,11 @@ def main():
     ap.add_argument("--clubs", nargs="*", default=[],
                     help="fut.gg 클럽 슬러그 직접 지정. ⭐ **FC27 DB는 26/27 이적을 반영하지 않으므로 "
                          "신규 영입은 전 소속 클럽 페이지에 있다** — 그 결손을 닫는 경로다")
+    ap.add_argument("--scan-all", action="store_true",
+                    help="⭐ 전체 레이팅 목록(/players/rating-predictions/?page=N)을 전수 스캔해 "
+                         "`players`에 있는 선수를 모두 채운다. **클럽 슬러그가 필요 없어 「26/27 이적 미반영」 "
+                         "결손을 구조적으로 닫는다** — 선수가 어느 클럽 페이지에 있든 잡힌다")
+    ap.add_argument("--max-pages", type=int, default=500, help="--scan-all 상한(기본 500)")
     ap.add_argument("--include-predictions", action="store_true",
                     help="공식 미확정 선수의 예측값도 적재한다(행에 예측임을 명기)")
     ap.add_argument("--roster-date", default=None, help="기본: 오늘")
@@ -107,8 +115,35 @@ def main():
         br = p.chromium.launch()
         pg = br.new_page()
         targets = [(t, CLUBS[t]) for t in a.team] + [(f"slug:{c}", c) for c in a.clubs]
-        if not targets:
-            sys.exit("--team 또는 --clubs 중 하나는 필요하다")
+        if a.scan_all:
+            # 마지막 페이지는 페이지네이션 링크에서 읽는다(하드코딩 금지 — 드롭마다 늘어난다).
+            pg.goto("https://www.fut.gg/players/rating-predictions/",
+                    wait_until="domcontentloaded", timeout=60_000)
+            pg.wait_for_timeout(2500)
+            last = pg.evaluate("""() => Math.max(0, ...[...document.querySelectorAll("a[href*='page=']")]
+                 .map(a => +(a.getAttribute('href').match(/page=(\\d+)/)||[0,0])[1]))""")
+            last = min(last or 1, a.max_pages)
+            print(f"[scan-all] 전체 {last}페이지 스캔 시작 (matched만 적재)")
+            for n in range(1, last + 1):
+                pg.goto(f"https://www.fut.gg/players/rating-predictions/?page={n}",
+                        wait_until="domcontentloaded", timeout=60_000)
+                pg.wait_for_timeout(1200)
+                cards = parse(pg.evaluate(JS))
+                hit = 0
+                for c in cards:
+                    h = by_name.get(norm(c["full"])) or by_name.get(norm(c["short"]))
+                    if not h:
+                        continue          # 우리 DB에 없는 선수는 버린다(2만 명을 넣지 않는다)
+                    c["pid"], c["kr"] = h
+                    c["team"], c["slug"] = "scan-all", f"page{n}"
+                    rows.append(c); hit += 1
+                if hit:
+                    print(f"  page {n:>3}/{last}: 매칭 {hit}명 — "
+                          + ", ".join(x["kr"] for x in rows[-hit:]))
+                elif n % 50 == 0:
+                    print(f"  page {n:>3}/{last}: …")
+        if not targets and not a.scan_all:
+            sys.exit("--team · --clubs · --scan-all 중 하나는 필요하다")
         for team, slug in targets:
             url = f"https://www.fut.gg/players/rating-predictions/clubs/{slug}/"
             pg.goto(url, wait_until="domcontentloaded", timeout=60_000)
@@ -141,7 +176,8 @@ def main():
         for c in rows[:12]:
             print(f"   {c['kr']:<14} {c['ovr']} {c['pos']:<4}"
                   f" {' '.join(f'{k}{v}' for k, v in c['stats'])}"
-                  f" {'공식' if c['official'] else '예측'} Δ{c['dovr']:+d}")
+                  f" {'공식' if c['official'] else '예측'}"
+                  f" {('Δ%+d' % c['dovr']) if c['dovr'] is not None else 'Δ없음(신규)'}")
         return
 
     cur = con.cursor()
@@ -157,8 +193,9 @@ def main():
                 "그것이 정본이다(obs#249). 이 행에는 `attrs`(35속성)·`playstyles`가 없다. "
                 + ("**EA가 확정한 공식 레이팅**이다. " if c["official"] else
                    "⛔ **EA 미확정 = fut.gg 예측값이다.** 공식 드롭 후 반드시 갱신할 것. ")
-                + f"fut.gg 표기 OVR 변화 Δ{c['dovr']:+d}. "
-                "⚠️ **Δ의 기준 시점을 밝히지 않으면 부호가 뒤집힌다** — fut.gg Δ는 FC26 **출시판** 기준이고 "
+                + (f"fut.gg 표기 OVR 변화 Δ{c['dovr']:+d}. " if c["dovr"] is not None else
+                   "⭐ fut.gg에 **Δ 필드가 없다 = FC26에 없던 신규 카드**다(유스·신규 등재). ")
+                + "⚠️ **Δ의 기준 시점을 밝히지 않으면 부호가 뒤집힌다** — fut.gg Δ는 FC26 **출시판** 기준이고 "
                 "우리 FC26 행은 시즌 말 라이브판이다(obs#249). 우리 Δ는 DB 간 대조로 따로 산출할 것. "
                 "⚠️ 이 경로는 6개 종합 스탯까지만 준다 — sofifa 상세(35속성)는 403으로 막혀 있다(obs#274).")
         cur.execute(
