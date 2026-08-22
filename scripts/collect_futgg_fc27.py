@@ -105,8 +105,11 @@ def parse_attrs(text):
 
 
 def norm(s):
+    # ⚠️ 하이픈은 **공백으로** 바꾼다 — 삭제하면 안 된다. 상세 링크 슬러그는
+    #    `taylor-harwood-bellis`(하이픈→공백)로 오는데 DB 표기는 `Taylor Harwood-Bellis`라
+    #    하이픈을 지우면 `taylor harwoodbellis` ↔ `taylor harwood bellis`로 갈려 영구 미매칭이 된다.
     s = "".join(c for c in unicodedata.normalize("NFKD", s) if not unicodedata.combining(c))
-    return re.sub(r"[^a-z ]", "", s.casefold()).strip()
+    return re.sub(r"\s+", " ", re.sub(r"[^a-z]+", " ", s.casefold())).strip()
 
 
 def parse(text):
