@@ -1281,3 +1281,17 @@ INSERT INTO player_tenures VALUES(139,'2025-26',NULL,'Aston Villa (8경기, 평�
 INSERT INTO player_tenures VALUES(139,'2024-25',NULL,'Levante (23경기, 평점 7.23) / Aston Villa (10경기, 평점 6.52)','ST',NULL,NULL);
 INSERT INTO player_tenures VALUES(139,'2023-24',NULL,'Levante (24경기, 평점 6.98)','ST',NULL,NULL);
 INSERT INTO player_tenures VALUES(139,'2022-23',NULL,'Atletico Levante UD (31경기) / Levante (3경기, 평점 6.52)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2025-26',NULL,'Bayern München (51경기, 평점 7.01)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2024-25',NULL,'Bayern München (40경기, 평점 7.18)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2023-24',NULL,'Bayern München (42경기, 평점 7.35)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2022-23',NULL,'Bayern München (40경기, 평점 7.28)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2021-22',NULL,'Bayern München (27경기, 평점 7.34)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2020-21',NULL,'Bayern München (32경기, 평점 7.25)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2019-20',NULL,'Bayern München (38경기, 평점 7.25)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2018-19',NULL,'Bayern München (42경기, 평점 6.96)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2017-18',NULL,'Schalke 04 (29경기, 평점 6.98)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2016-17',NULL,'Schalke 04 (41경기, 평점 7.07)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2015-16',NULL,'Schalke 04 (34경기)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2014-15',NULL,'Schalke 04 (11경기) / Schalke 04 II (1경기)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2013-14',NULL,'Schalke 04 (32경기)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(190,'2012-13',NULL,'Bochum (36경기)','CM/DM',NULL,NULL);
