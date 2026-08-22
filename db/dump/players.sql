@@ -182,3 +182,4 @@ INSERT INTO players VALUES(186,'Matías Fernández-Pardo','페르난데스-파�
 INSERT INTO players VALUES(187,'Jorge Salinas','살리나스',NULL,NULL,2007,'LB','[2026-08-21] ATM LB 영입 후보. FotMob 1670161 · Racing Santander · LB,CB · 등번호 17 · 19세 · 183cm · 시장가치 €2.3m. ⭐ 라싱이 26/27 라리가로 승격했다 — 실측 표본(25/26)은 LaLiga2다.',1670161,'Spain',14687,NULL);
 INSERT INTO players VALUES(188,'Stefan Bajčetić','바이체티치',NULL,NULL,2004,'CM','[2026-08-22 09시 /transfer-watch 신설] 리버풀 CM · 게타페 이적 협의 축 등재용. 실측 히트맵 없음(2025-05 이후 공식전 출전 0).',NULL,'Spain',NULL,NULL);
 INSERT INTO players VALUES(189,'Marc Guiu','기우',NULL,NULL,2006,'ST','[2026-08-22 09시 /transfer-watch 신설] 첼시 ST · 나폴리 접촉 축 등재용. 실측 히트맵 없음. ⚠️ 26/27 첼시 fuori lista 취급 보도.',NULL,'Spain',NULL,NULL);
+INSERT INTO players VALUES(190,'Leon Goretzka','고레츠카',NULL,NULL,1995,'CM/DM','transfer_targets 2026-summer AVL 후보 — 2026-08-22 FotMob 상세 스탯 수집용 등재',343748,NULL,NULL,NULL);

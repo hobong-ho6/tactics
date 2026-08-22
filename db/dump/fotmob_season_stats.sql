@@ -1345,3 +1345,11 @@ INSERT INTO fotmob_season_stats VALUES(1344,139,'2026-08-21','LaLiga','2026/2027
 INSERT INTO fotmob_season_stats VALUES(1345,139,'2026-08-21','LaLiga','2026/2027','Rating','평점','6.09','fotmob.com/api/data (player 1430406, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
 INSERT INTO fotmob_season_stats VALUES(1346,139,'2026-08-21','LaLiga','2026/2027','Yellow cards','경고','0','fotmob.com/api/data (player 1430406, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
 INSERT INTO fotmob_season_stats VALUES(1347,139,'2026-08-21','LaLiga','2026/2027','Red cards','퇴장','0','fotmob.com/api/data (player 1430406, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
+INSERT INTO fotmob_season_stats VALUES(1348,190,'2026-08-22','Bundesliga','2025/2026','Goals','골','5','fotmob.com/api/data/playerStats (player 343748, 2025/2026 Bundesliga, 2026-08-22 수집)');
+INSERT INTO fotmob_season_stats VALUES(1349,190,'2026-08-22','Bundesliga','2025/2026','Assists','어시스트','3','fotmob.com/api/data/playerStats (player 343748, 2025/2026 Bundesliga, 2026-08-22 수집)');
+INSERT INTO fotmob_season_stats VALUES(1350,190,'2026-08-22','Bundesliga','2025/2026','Matches','경기','31','fotmob.com/api/data/playerStats (player 343748, 2025/2026 Bundesliga, 2026-08-22 수집)');
+INSERT INTO fotmob_season_stats VALUES(1351,190,'2026-08-22','Bundesliga','2025/2026','Started','선발','25','fotmob.com/api/data/playerStats (player 343748, 2025/2026 Bundesliga, 2026-08-22 수집)');
+INSERT INTO fotmob_season_stats VALUES(1352,190,'2026-08-22','Bundesliga','2025/2026','Minutes played','출전 시간','1954','fotmob.com/api/data/playerStats (player 343748, 2025/2026 Bundesliga, 2026-08-22 수집)');
+INSERT INTO fotmob_season_stats VALUES(1353,190,'2026-08-22','Bundesliga','2025/2026','Rating','평점','7.29','fotmob.com/api/data/playerStats (player 343748, 2025/2026 Bundesliga, 2026-08-22 수집)');
+INSERT INTO fotmob_season_stats VALUES(1354,190,'2026-08-22','Bundesliga','2025/2026','Yellow cards','경고','4','fotmob.com/api/data/playerStats (player 343748, 2025/2026 Bundesliga, 2026-08-22 수집)');
+INSERT INTO fotmob_season_stats VALUES(1355,190,'2026-08-22','Bundesliga','2025/2026','Red cards','퇴장','0','fotmob.com/api/data/playerStats (player 343748, 2025/2026 Bundesliga, 2026-08-22 수집)');
