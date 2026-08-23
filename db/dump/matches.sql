@@ -55,7 +55,6 @@ INSERT INTO matches VALUES(60,NULL,'AVL','2024-25','2024-10-22','Bologna','Champ
 INSERT INTO matches VALUES(61,NULL,'AVL','2024-25','2024-10-30','Crystal Palace','EFL Cup','H','1-2',1,'R4',NULL);
 INSERT INTO matches VALUES(62,NULL,'AVL','2024-25','2024-12-10','RB Leipzig','Champions League','A','2-3',1,'League phase',NULL);
 INSERT INTO matches VALUES(63,NULL,'AVL','2024-25','2024-12-21','Manchester City','Premier League','H','2-1',1,NULL,NULL);
-INSERT INTO matches VALUES(64,NULL,'AVL','2026-27','2026-08-01','Indonesia All Stars','Club Friendly','A','1-3',1,'아시아 프리시즌 투어 1차전 (SofaScore event 16494875)',NULL);
 INSERT INTO matches VALUES(65,16284981,'AVL','2026-27','2026-08-07','Bayern München','Club Friendly Games','H','1-2',1,NULL,44.0);
 INSERT INTO matches VALUES(66,16285002,'CHE','2026-27','2026-08-08','AC Milan','Club Friendly Games','H','3-0',1,NULL,50.0);
 INSERT INTO matches VALUES(67,16284988,'LIV','2026-27','2026-08-09','AS Monaco','Club Friendly Games','H','2-3',1,NULL,52.0);
