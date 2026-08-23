@@ -76,3 +76,5 @@ INSERT INTO matches VALUES(82,16494875,'AVL','2026-27','2026-08-01','Indonesia X
 INSERT INTO matches VALUES(83,16284986,'LIV','2026-27','2026-08-16','Como','Club Friendly','H','0-0',1,'비공개 더블헤더 1차전 AXA 트레이닝센터 (⚠️음수 FotMob matchId 5973785 · 2차전은 안필드 17:00 UTC로 미포함)',NULL);
 INSERT INTO matches VALUES(84,16846122,'LIV','2026-27','2026-08-16','Como','Club Friendly Games','H','2-0',1,NULL,42.0);
 INSERT INTO matches VALUES(85,5868012,'ATM','2026-27','2026-08-19','Malaga','LaLiga','H','2-0 W',1,'라운드 1',53.0);
+INSERT INTO matches VALUES(86,5795369,'AVL','2026-27','2026-08-23','Brighton & Hove Albion','Premier League','A','0-4',1,'Round 1',27.0);
+INSERT INTO matches VALUES(87,5795371,'LIV','2026-27','2026-08-23','Newcastle United','Premier League','A','2-2',1,'Round 1',61.0);

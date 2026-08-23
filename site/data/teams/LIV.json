@@ -1,19 +1,19 @@
 {
  "avg_positions": [
   {
-   "avg_x": 12.3,
+   "avg_x": 12.4,
    "avg_y": 48.2,
    "first_date": "2025-07-26",
-   "last_date": "2026-08-16",
-   "n": 46,
+   "last_date": "2026-08-23",
+   "n": 47,
    "player_id": 43
   },
   {
    "avg_x": 39.2,
    "avg_y": 62.7,
    "first_date": "2025-07-26",
-   "last_date": "2026-08-16",
-   "n": 72,
+   "last_date": "2026-08-23",
+   "n": 73,
    "player_id": 44
   },
   {
@@ -33,27 +33,27 @@
    "player_id": 46
   },
   {
-   "avg_x": 48.2,
+   "avg_x": 48.4,
    "avg_y": 83.4,
    "first_date": "2025-07-13",
-   "last_date": "2026-08-16",
-   "n": 53,
+   "last_date": "2026-08-23",
+   "n": 54,
    "player_id": 47
   },
   {
    "avg_x": 57.6,
    "avg_y": 16.1,
    "first_date": "2025-07-13",
-   "last_date": "2026-08-16",
-   "n": 29,
+   "last_date": "2026-08-23",
+   "n": 30,
    "player_id": 48
   },
   {
-   "avg_x": 50.2,
+   "avg_x": 50.3,
    "avg_y": 43.4,
    "first_date": "2025-07-13",
-   "last_date": "2026-08-16",
-   "n": 65,
+   "last_date": "2026-08-23",
+   "n": 66,
    "player_id": 49
   },
   {
@@ -65,27 +65,27 @@
    "player_id": 50
   },
   {
-   "avg_x": 54.9,
+   "avg_x": 55.0,
    "avg_y": 40.7,
    "first_date": "2025-07-13",
-   "last_date": "2026-08-16",
-   "n": 71,
+   "last_date": "2026-08-23",
+   "n": 72,
    "player_id": 51
   },
   {
    "avg_x": 61.8,
    "avg_y": 56.2,
    "first_date": "2025-07-26",
-   "last_date": "2026-08-16",
-   "n": 60,
+   "last_date": "2026-08-23",
+   "n": 61,
    "player_id": 52
   },
   {
    "avg_x": 66.9,
-   "avg_y": 73.2,
+   "avg_y": 73.3,
    "first_date": "2025-07-13",
-   "last_date": "2026-08-16",
-   "n": 61,
+   "last_date": "2026-08-23",
+   "n": 62,
    "player_id": 53
   },
   {
@@ -121,11 +121,11 @@
    "player_id": 71
   },
   {
-   "avg_x": 69.4,
-   "avg_y": 49.4,
+   "avg_x": 69.1,
+   "avg_y": 47.5,
    "first_date": "2026-08-02",
-   "last_date": "2026-08-16",
-   "n": 3,
+   "last_date": "2026-08-23",
+   "n": 4,
    "player_id": 72
   },
   {
@@ -169,11 +169,11 @@
    "player_id": 86
   },
   {
-   "avg_x": 35.9,
-   "avg_y": 37.6,
+   "avg_x": 40.2,
+   "avg_y": 34.4,
    "first_date": "2026-08-16",
-   "last_date": "2026-08-16",
-   "n": 1,
+   "last_date": "2026-08-23",
+   "n": 2,
    "player_id": 89
   },
   {
@@ -201,11 +201,11 @@
    "player_id": 113
   },
   {
-   "avg_x": 63.9,
-   "avg_y": 50.8,
+   "avg_x": 65.6,
+   "avg_y": 43.9,
    "first_date": "2026-07-25",
-   "last_date": "2026-08-16",
-   "n": 4,
+   "last_date": "2026-08-23",
+   "n": 5,
    "player_id": 114
   },
   {
@@ -290,6 +290,21 @@
    "source": "This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/alisson-season-review-2025-2026/ · Liverpool FC 공식 이라올라 회견 — https://www.liverpoolfc.com/news/press-conference-andoni-iraola-transfer-window-alisson-szoboszlai-deal-and-vice-captaincy · Liverpool.com 회견 정리 — https://www.liverpool.com/liverpool-fc-news/andoni-iraola-lessons-liverpool-press-34330503"
   },
   {
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 후방 골키퍼.",
+   "execution": "세이브 3, 두 실점. 전환 단독 돌파를 맞았다.",
+   "game_role_implication": "골키퍼 역할보다 잔여수비가 우선 교정점.",
+   "label": "알리송 베케르",
+   "observed_from": "2026-08-23",
+   "observed_to": "2026-08-23",
+   "player_id": 43,
+   "position": "GK",
+   "sample_note": "PL Round 1, 90분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
+  },
+  {
    "adherence": "HIGH — 듀얼·제공권·롱볼 서사가 모두 상위 백분위로 확인된다. '라인 조직 실패' 비판은 개인 지표로 분리 검증이 불가능하다(출전 중 피xG 백분위 9는 팀 사안이지 개인 귀책의 증거가 아니다).",
    "confidence": "서사 소스(3티어급, Premier League 공식 분석은 2티어급) — 2026-06~07 발행 확인. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 슬롯 체제이며 이라올라 공식전 0경기. player_matches는 8/9 모나코 친선 1행.",
    "duties": "25/26 전 대회 45경기 전부 선발, 소파스코어 평균 7.32, 5골 3도움, 경기당 듀얼 5.29에 성공률 73.2%. 그러나 팀은 5위·16년 내 최다 패배·30여 년 내 최다 실점이었고, 그가 평소의 통솔력을 잃고 흔들리는 수비 라인을 조직하지 못했다는 비판이 따랐다 — 동시에 전 대회 8골로 커리어 최고의 공격 시즌이기도 했다. 26/27 쟁점은 나이와 하이라인의 상충이다. 코나테 이탈로 파트너가 공석이고 레오니 단계적 투입 또는 자케 조기 기용이 거론된다. 이라올라는 그를 알리송·고메스와 함께 드레싱룸의 '기준점'으로 명시했다.",
@@ -303,6 +318,21 @@
    "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
    "sample_scope": "season",
    "source": "Sofascore 25/26 수치 분석 — https://www.sofascore.com/news/van-dijk-still-owns-the-pitch-insane-defensive-numbers-in-25-26-season · Premier League 이라올라 분석 — https://www.premierleague.com/en/news/4673093/analysis-how-will-liverpool-look-under-iraola · Goal.com 26/27 예상 XI — https://www.goal.com/en/lists/liverpool-andoni-iraola-2026-27-premier-league/blt2d70dc0df5b54109"
+  },
+  {
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 좌측 후방 리더.",
+   "execution": "클리어와 공중 대응, 90분.",
+   "game_role_implication": "단일 경기 역할 변경 근거 없음.",
+   "label": "판 다이크",
+   "observed_from": "2026-08-23",
+   "observed_to": "2026-08-23",
+   "player_id": 44,
+   "position": "LCB",
+   "sample_note": "PL Round 1, 90분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
   },
   {
    "adherence": "HIGH — 듀얼·제공권 중심의 프로필이 백분위로 일관되게 확인된다. 서사와 실측의 충돌 지점이 없다.",
@@ -350,6 +380,21 @@
    "source": "This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/milos-kerkez-season-review-2025-2026/ · This Is Anfield 이라올라 재회 — https://www.thisisanfield.com/2026/06/milos-kerkez-andoni-iraola-liverpool-reunion-2026/ · Liverpool FC 공식(본인 발언) — https://www.liverpoolfc.com/news/exciting-times-ahead-why-milos-kerkez-delighted-be-reunited-andoni-iraola"
   },
   {
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 높은 좌측 풀백.",
+   "execution": "엘랑가의 첫 역습에서 뒤를 허용.",
+   "game_role_implication": "전진 시 잔여수비 보강 필요.",
+   "label": "케르케즈",
+   "observed_from": "2026-08-23",
+   "observed_to": "2026-08-23",
+   "player_id": 47,
+   "position": "LB",
+   "sample_note": "PL Round 1, 90분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
+  },
+  {
    "adherence": "HIGH — '풀백이 아니라 윙백 또는 공격수'라는 서사가 실측 그리드와 팟몹 양극단에서 동시에 확인된다. 이보다 선명한 서사-실측 일치는 이번 회차에 없다.",
    "confidence": "서사 소스(3티어급) — 2026-06~08 발행 확인. ⚠️ 실측 4경기. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 슬롯 체제이며 이라올라 공식전 0경기.",
    "duties": "25/26 35경기(우측 풀백 25·전방 10)이나 경기당 51.3분에 그쳤다. 햄스트링 반복이 시즌을 규정했다 — 결장 경기 수가 팀 5위, 프랑크푸르트전 복귀 직후 재발해 12경기를 이탈했고 그 구간에 리버풀은 10경기 중 6경기에서 3실점 이상을 허용했다. 근육량 4kg 증량과 핫요가·필라테스로 대응했다. 최고 순간은 커뮤니티실드 득점, 최악은 카라바흐전 2분 만의 시즌 세 번째 부상이다. 네덜란드 월드컵 명단에서도 탈락했다. 26/27 구단 방침은 명확하다 — 그를 우측 풀백 1선발로 쓰지 않겠다는 것이고(데이비드 린치: \"프림퐁에게 우측 풀백 50경기를 원하지 않는다\") '유틸리티' 역할이 예상된다. 전술적 논리는 레버쿠젠 시절처럼 더 높은 윙백이 맞고 우측 풀백에서는 수비 결손이 노출된다는 것이다.",
@@ -363,6 +408,21 @@
    "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
    "sample_scope": "season",
    "source": "This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/jeremie-frimpong-liverpool-season-review-2025-26/ · This Is Anfield 이라올라 체제 역할(2026-07) — https://www.thisisanfield.com/2026/07/jeremie-frimpong-liverpool-tactical-role-right-back-iraola/ · TimesLIVE(이라올라 부상 코멘트, 2026-08-03) — https://www.timeslive.co.za/sport/soccer/2026-08-03-liverpool-boss-iraola-downplays-frimpong-injury-concerns/"
+  },
+  {
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 높은 우측 풀백.",
+   "execution": "찬스 생성 3과 폭 제공, 수비 전환 부담.",
+   "game_role_implication": "공격형 윙백 유지, 뒤 공간 보호 필요.",
+   "label": "프림퐁",
+   "observed_from": "2026-08-23",
+   "observed_to": "2026-08-23",
+   "player_id": 48,
+   "position": "RB",
+   "sample_note": "PL Round 1, 90분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
   },
   {
    "adherence": "HIGH — '컨트롤러이자 캐리어, 파괴자 아님'이 드리블(90) 대 태클(27)의 대비로 명확히 확인된다. 인터셉트(83)만 예외적으로 높아 '읽고 끊는' 방식의 요격은 한다. 롱볼 전개 주장은 서사에 없었고 실측도 이를 배제한다(5).",
@@ -380,6 +440,21 @@
    "source": "This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/ryan-gravenberch-season-review-2025-2026/ · Anything Liverpool 역할 분석(2025-10) — https://anythingliverpool.com/2025/10/10/ryan-gravenberch-the-measured-revolution-of-liverpools-midfield/ · Forbes(더비 경기 분석, 2025-09) — https://www.forbes.com/sites/jamesnalton/2025/09/20/ryan-gravenberch-midfield-masterclass-wins-merseyside-derby-for-liverpool/"
   },
   {
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 로밍 빌드업 피벗.",
+   "execution": "학포 도움과 두 실점 전 소유권 상실의 양면.",
+   "game_role_implication": "Roaming의 위험 관리가 핵심.",
+   "label": "흐라벤베르흐",
+   "observed_from": "2026-08-23",
+   "observed_to": "2026-08-23",
+   "player_id": 49,
+   "position": "LDM",
+   "sample_note": "PL Round 1, 78분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
+  },
+  {
    "adherence": "MEDIUM — '수비적으로 통과당한다'는 비판은 경합 승률(11)·제쳐당함(16)이 강하게 지지한다. 그러나 '딥라잉 플레이메이커로 내려갔다'는 역할 서사는 슛·박스 터치 백분위(89/84)와 어긋난다 — 위치는 내려갔을지 몰라도 산출은 여전히 전진하는 8번의 것이다. 두 주장 중 후자는 부분 기각.",
    "confidence": "서사 소스(3티어급, Beasley는 데이터 분석 전문) — 2026-06 발행 확인. ⚠️ 실측 5경기. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 슬롯 체제이며 이라올라 공식전 0경기. player_matches 0행.",
    "duties": "우승 시즌의 핵심에서 25/26에는 가장 뚜렷하게 퇴보한 중앙 미드필더로 지목됐다. 37경기 2골 4도움에 리그 출전 시간은 상위권이었고 슬롯은 대부분의 중요 국면에서 그를 썼다. 팟몹 평점은 2,662분에 6.89로 종전 약 7.3에서 하락. 시즌 전 기대는 비르츠 합류로 그가 더 내려가 딥라잉 플레이메이커가 되리라는 것이었고 실제로 위치는 내려갔다. 문제는 수비였다 — 너무 쉽게 통과당했고(11월 3연속 3실점 패배 구간) 반응이 느렸으며 피지컬이 예년만 못했다. 데이터: 100터치당 온볼 밸류 0.40→0.08, 슛 스코어 -0.11, 패스 OBV 0.09/90은 리그 4경기에서만 달성. 정상참작 요소(부상·동료 상실·첫 아이)와 이적 링크가 함께 보도됐다.",
@@ -393,6 +468,21 @@
    "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
    "sample_scope": "season",
    "source": "This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/alexis-mac-allister-season-review-2025-2026/ · Andrew Beasley(OBV 데이터 분석) — https://www.andrewbeasleyfootball.com/p/alexis-mac-allister-sums-up-liverpools-problem-this-season · RushTheKop 시즌 리뷰 — https://rushthekop.com/the-2025-26-season-was-a-dramatic-step-back-in-alexis-mac-allister-s-liverpool-career"
+  },
+  {
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 교체 중앙 연결자.",
+   "execution": "27분, 패스 연결과 태클 2.",
+   "game_role_implication": "경기 마감용 안정화 카드.",
+   "label": "맥 알리스터",
+   "observed_from": "2026-08-23",
+   "observed_to": "2026-08-23",
+   "player_id": 50,
+   "position": "CAM",
+   "sample_note": "PL Round 1, 27분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
   },
   {
    "adherence": "HIGH — 다포지션·전천후 서사가 온볼·오프볼 백분위 양쪽에서 확인된다. '본직은 미드필더'라는 슬롯의 주장도 실측 RDM > RM > CAM 순서와 정합한다.",
@@ -410,6 +500,21 @@
    "source": "Liverpool FC 공식 올해의 선수 — https://www.liverpoolfc.com/news/dominik-szoboszlai-wins-liverpools-mens-player-season-award · This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/dominik-szoboszlai-2025-26-season-player-review/ · Liverpool FC 이라올라 회견 — https://www.liverpoolfc.com/news/press-conference-andoni-iraola-transfer-window-alisson-szoboszlai-deal-and-vice-captaincy"
   },
   {
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 왕복형 우측 피벗.",
+   "execution": "90+9분 PK 동점골, 높은 활동량.",
+   "game_role_implication": "중앙 잔류 규율을 함께 점검.",
+   "label": "소보슬라이",
+   "observed_from": "2026-08-23",
+   "observed_to": "2026-08-23",
+   "player_id": 51,
+   "position": "RDM",
+   "sample_note": "PL Round 1, 90분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
+  },
+  {
    "adherence": "MEDIUM — '적응 실패' 총평은 리그 백분위가 지지하지 않는다(기회 창출 92). TFA의 슈팅량 급감 지적은 방향 자체는 맞지만 우리 데이터로는 검증 불가(시즌 전반 분리 표본 없음). '좌측으로 옮겨야 한다'는 주장은 실측이 기각한다(CAM 0.785 > RM 0.687).",
    "confidence": "서사 소스(3티어급, Opta Analyst·TFA는 데이터 전문) — 2025-10~2026-07 발행 확인. ⚠️ 실측 5경기. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 슬롯 체제이며 이라올라 공식전 0경기(프리시즌 배치는 친선 관찰).",
    "duties": "£100m(옵션 포함 £116m) 영입. 초반은 혹독했다 — 8경기 무공격포인트, 선발할 때마다 교체, 첫 머지사이드 더비 벤치. TFA의 데이터 분석은 낙차를 수치화했다: 레버쿠젠 24/25 분데스리가 슈팅 101회(2.69/90)·누적 기대 득점 16.12에서, 슬롯 체제 첫 6경기 7회(1.36/90)·누적 0.59로 급감했다. 루니 등의 혹평이 이어졌고 팀은 12경기 9패 구간에 빠졌다. 연초부터 반전해 에키티케와 25/26 리그 최다 골 합작 듀오가 됐고(서로 3도움씩), 옵타는 마침내 구단이 중심으로 삼을 선수의 모습이 나왔다고 평가했다. 리그 27경기 4골 2도움에 부상 2회(11월 근육·2월 허리). 중앙 10번 대신 좌측 배치론도 제기됐다. 26/27 이라올라 프리시즌에서는 이사크 뒤 10번으로 기용됐고 유망하다는 평가다.",
@@ -425,6 +530,21 @@
    "source": "Total Football Analysis 데이터 분석 — https://totalfootballanalysis.com/data-analysis/florian-wirtz-scout-report-liverpool-2025-2026-data-analysis · Opta Analyst — https://theanalyst.com/articles/liverpool-real-florian-wirtz-stats · Liverpool FC 이라올라 회견(비르츠 포지션) — https://www.liverpoolfc.com/news/andoni-iraola-press-conference-chicago-benefits-ngumoha-and-wirtz-positions-transfers-and-more"
   },
   {
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 중앙 10번.",
+   "execution": "63분간 연결·중거리, 결정적 침투 부족.",
+   "game_role_implication": "CAM 유지, 9번과 거리 조정.",
+   "label": "비르츠",
+   "observed_from": "2026-08-23",
+   "observed_to": "2026-08-23",
+   "player_id": 52,
+   "position": "CAM",
+   "sample_note": "PL Round 1, 63분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
+  },
+  {
    "adherence": "HIGH — '좌측 윙이 아니라 중앙으로 끌려갔다'는 진단이 그리드(LM 0.648 < CAM 0.686)와 제공권·박스 백분위로 이중 확인된다. '최종 패스가 안 된다'는 비판도 크로스 정확도(20)·도움 이력과 정합한다.",
    "confidence": "서사 소스(3티어급, Opta Analyst는 데이터 전문) — 2026-06~07 발행 확인. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 슬롯 체제이며 이라올라 공식전 0경기. player_matches는 8/9 모나코 친선 1행.",
    "duties": "25/26 리그 36경기 7골 5도움 2,747분, 팟몹 평균 7.17, 슈팅 87회 중 유효 21회. 전 대회 골은 전 시즌 18골의 절반으로 떨어졌고, 9골 중 2월~5월 구간은 단 2골이었다(전 시즌 24 골관여로 팀 내 살라 다음). 진단의 핵심은 위치다 — 좌측 윙에서 이탈해 시즌 후반 중앙 공격수로 자주 기용됐고, 그것이 폼 회복 가능성을 사실상 닫았다는 것이다. 마무리 실패가 자신감 하락으로 이어지는 나선도 지적됐다(다만 그 시즌 리버풀 선수 대부분이 유사한 하락을 겪었다는 단서 포함). 26/27 전망은 갈린다 — 이라올라의 전방 압박이 유리한 위치에서의 회수를 늘려 산출을 회복시킬 수 있다는 낙관과, 도움 6회를 넘긴 적이 없어 천장이 낮다는 회의. 토트넘 관심이 보도됐다.",
@@ -438,6 +558,21 @@
    "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
    "sample_scope": "season",
    "source": "This Is Anfield 시즌 리뷰(2026-06) — https://www.thisisanfield.com/2026/06/cody-gakpo-season-review-2025-2026/ · SI(거취 논의) — https://www.si.com/soccer/keep-or-sell-what-should-liverpool-do-cody-gakpo · Opta Analyst 리버풀 스쿼드 감사(26/27) — https://theanalyst.com/articles/liverpool-squad-audit-transfers-stats-2026-27"
+  },
+  {
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 좌측 득점형 플레이메이커.",
+   "execution": "1골, 슛 6, 찬스 3, 평점 8.42.",
+   "game_role_implication": "wide playmaker/Attack 근거 강화.",
+   "label": "학포",
+   "observed_from": "2026-08-23",
+   "observed_to": "2026-08-23",
+   "player_id": 53,
+   "position": "LM",
+   "sample_note": "PL Round 1, 90분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
   },
   {
    "adherence": "MEDIUM — '12골 부진' 총평은 기대 득점 0.34/90(89)와 어긋난다. 즉 기회의 질은 유지됐고 무너진 것은 마무리와 1v1이다. 경합·드리블 성공률 백분위(2/7)가 노쇠 서사의 정확한 좌표를 지목한다 — 서사의 방향은 맞고 원인 귀속은 틀렸다.",
@@ -500,19 +635,34 @@
    "source": "https://www.thisisanfield.com/2026/07/lewis-koumas-liverpool-no-9-andoni-iraola/ ; https://www.fotmob.com/players/1364042/lewis-koumas ; https://footystats.org/players/england/lewis-koumas ; https://www.thisisanfield.com/2026/08/lewis-koumas-wanted-by-several-clubs-loan-likely-despite-good-pre-season/"
   },
   {
-   "adherence": "MEDIUM-LOW — 전진도(72.7)·중앙성(53.1)은 확인되나 hp=25·59분으로 좌우 이탈 폭을 판정할 해상도가 없다. '하이브리드 vs 포처' 라벨 분쟁을 이 표본으로 해소할 수 없다.",
-   "confidence": "서사 소스(3티어급) — 가설 지위(docs/30 영상·서사 절차 2단계). 위치 주장은 실측 우선. ⚠️ hp=25 저해상도 1경기. 소스간 패스 정확도가 54.76% vs 75.3%로 미조정 충돌. 약점 정량: 듀얼 성공 35%·인터셉트 0.1/90 — 홀드업 요구가 큰 시스템에서 리스크. 25/26 부상으로 22경기 4골.",
-   "duties": "단독 9번·득점 초점. 서사: 라벨 분쟁이 있다 — '다이내믹 포처'로 부르는 리포트와 '중앙만큼 좌우로도 빠지고 카운터 개시를 위해 깊게 내려온다'는 서술이 **같은 소스 안에서** 병존. 공통분모는 박스 고정형이 아닌 하이브리드. 압박의 첫 단계이며 커브 런으로 패스 차단(이라올라의 터치라인 유도와 부합). 비르츠를 위한 디코이 러너.",
-   "execution": "실측 1경기(모나코전 59분 선발, 평점 7.1, hp=**25**): avg_x 72.7 · avg_y 53.1(중앙). 골 1·어시 1·슛 1·키패스 2·터치 23. hp=25로 그리드 포인트가 적다.",
-   "game_role_implication": "⭐ st_poacher/Support .7659 ≡ st_advanced/Attack .7659 — **커널 그리드가 동일해 완전 동률**이며, 구별되는 3위(st_poacher/Versatile .737)까지 Δ.029로 노이즈 구간. 즉 **소스가 못 정한 라벨(포처 vs 전진형 하이브리드)을 커널도 기계적으로 못 정한다** — 우연이 아니라 두 역할의 커널이 같기 때문. 역할 확정 불가, 처방 보류. 표본 축적이 유일한 해소 경로.",
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 교체 중앙 공격 가담.",
+   "execution": "12분, 추격 국면 공격 숫자 확대.",
+   "game_role_implication": "표본·히트포인트 미달이면 처방 확정 금지.",
+   "label": "Lewis Koumas",
+   "observed_from": "2026-08-23",
+   "observed_to": "2026-08-23",
+   "player_id": 71,
+   "position": "LDM",
+   "sample_note": "PL Round 1, 12분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
+  },
+  {
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 단독 9번.",
+   "execution": "슛 4, 득점 0, 연결 터치 제한.",
+   "game_role_implication": "근접 지원을 늘려 고립 완화.",
    "label": "Alexander Isak",
    "observed_from": null,
-   "observed_to": null,
+   "observed_to": "2026-08-23",
    "player_id": 72,
    "position": "ST",
-   "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
-   "sample_scope": "unknown",
-   "source": "https://www.premierleague.com/en/news/4407886/analysis-how-isaks-introduction-could-impact-liverpools-frontline ; https://totalfootballanalysis.com/recruitment-analysis/alexander-isak-hugo-ekitike-scout-report-2025-2026-liverpool-recruitment ; https://breakingthelines.com/player-analysis/player-analysis-alexander-isak/ ; https://thepfsa.co.uk/analysis-what-liverpool-might-look-like-under-andoni-iraola/"
+   "sample_note": "PL Round 1, 90분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
   },
   {
    "adherence": "HIGH — '골라인 고착' 서사가 동일 경기·동일 상대·각 45분이라는 준통제 조건에서 실측 확인됨. 커널 포커스도 갈린다: 알리송 gk_goalkeeper/**Balanced** .972 vs 마마르다슈빌리 gk_goalkeeper/**Defend** .957. ⚠️ 교란요인 명기: 알리송은 리드·동점 국면(lead 29')만 뛰었고 마마르다슈빌리는 2-1→2-3 붕괴 국면(level 32'·trail 2')을 뛰었다 — 피격 상황이 GK를 뒤로 밀 수 있으므로 7.2 전량을 성향으로 귀속하지 말 것.",
@@ -560,19 +710,19 @@
    "source": "Tactical Football Analysis 스카우트 리포트(2026/27 창, 25/26 히트맵) https://tacticalfootballanalysis.com/bradley-barcola-scout-report-psg-france-2026-2027-tactics-analysis/ ; Sky Sports 2026-07-30 https://www.skysports.com/football/news/11095/13565590/ ; Yahoo/Opta 2026-08 https://sports.yahoo.com/articles/strengths-might-barcola-bring-anfield-075544097.html ; 이라올라 2026-07 \"we definitely need to sign a winger\" ; 응구모하 인터뷰 liverpoolfc.com 2026-07(이라올라의 윙어 요구: pressing high·unpredictable·양측면 겸용) ; obs#212 ; reports/match-watch/2026-preseason-liv.md"
   },
   {
-   "adherence": "TRANSFERRED — 바르셀로나 역할은 실측 확인, 리버풀·이라올라 체제 실행은 공식전 0경기로 미검증.",
-   "confidence": "HIGH 바르셀로나 원천 / LOW 리버풀 역할 투영",
-   "duties": "바르셀로나 표본에서 우측 센터백으로 전진해 끊고 배급하는 공격적 볼 플레잉 센터백. 리버풀에서는 자케 이후의 추가 보강이라 같은 RCB 자리를 두고 경쟁한다.",
-   "execution": "2025/26 포함 수집 58경기 2,084분 평균 6.90. 45분+ 바르셀로나 RCB 22경기 표본은 cb_bpd/Aggressive .908이고 LCB 재배치 시 적합이 크게 하락한다.",
-   "game_role_implication": "RCB cb_bpd/Aggressive. 자케와 적합 차 .005라 수치로 우열을 정하지 않고 좌우 유연성·가용성으로 선발 판단.",
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 교체 우측 센터백.",
+   "execution": "20분, 공중 대응과 후방 패스.",
+   "game_role_implication": "3번째 CB 실전 카드 확인.",
    "label": "아라우호",
    "observed_from": "2025-08-01",
-   "observed_to": "2026-08-12",
+   "observed_to": "2026-08-23",
    "player_id": 85,
    "position": "RCB",
-   "sample_note": "2025/26 Barcelona 시즌 표본 + 2026-08-11 Liverpool 공식 영입; Liverpool 경기 분석은 아님",
-   "sample_scope": "season",
-   "source": "Liverpool 공식 영입 https://www.liverpoolfc.com/news/liverpool-agree-deal-sign-ronald-araujo-loan ; Sky Sports https://www.skysports.com/football/news/11669/13570899 ; reports/transfer-watch/2026-08-12.md ; SofaScore player 925097"
+   "sample_note": "PL Round 1, 20분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
   },
   {
    "adherence": "⚠️ **판정 불가 — 압박·수비 데이터가 어느 소스에도 없다(확인 실패).** 한계로는 '오프볼 움직임의 다양성 부족'과 'far post를 노리는 아웃-투-인 런의 일관성 결여'가 지목됐다. 규율 축의 신호는 엇갈린다 — AFCON 복귀 후 출전이 급감했고 엔리케의 '감정 관리' 지적이 부담이었다는 측근 전언이 있는 반면(2026-02), 2026-04에는 엔리케가 'playing with more freedom'을 언급했다.",
@@ -605,6 +755,21 @@
    "source": "Liverpool 공식 프로필 https://www.liverpoolfc.com/news/career-path-spain-impact-and-history-maker-get-know-victor-munoz ; Liverpool 공식 영입 https://www.liverpoolfc.com/news/liverpool-agree-deal-sign-spain-forward-victor-munoz ; SofaScore player 1145642 ; reports/transfer-watch/2026-08-13.md"
   },
   {
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 교체 우측 직선 윙어.",
+   "execution": "27분 직접 운반, 마지막 PK 유도.",
+   "game_role_implication": "RM 선발 경쟁을 즉시 개방.",
+   "label": "무뇨스",
+   "observed_from": "2026-08-23",
+   "observed_to": "2026-08-23",
+   "player_id": 88,
+   "position": "RM",
+   "sample_note": "PL Round 1, 27분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
+  },
+  {
    "adherence": "TRANSFERRED — 렌 시즌 수행은 확인, 리버풀·이라올라 체제 실행은 공식전 0경기로 미검증.",
    "confidence": "HIGH 렌 원천·구단 Opta 요약 / LOW 리버풀 실행",
    "duties": "공중 경합과 박스 수비가 강하면서도 라인을 깨는 전진 패스를 시도하는 침착한 센터백. 우측이 주 표본이지만 왼쪽도 소화해 아라우호보다 좌우 전환 여지가 크다.",
@@ -618,6 +783,21 @@
    "sample_note": "2025/26 Rennes 시즌 전체 21경기; Liverpool 공식전 분석은 아님",
    "sample_scope": "season",
    "source": "Liverpool 공식 팩트파일 https://www.liverpoolfc.com/news/jeremy-jacquet-factfile-aerial-dominance-van-dijk-respect-and-lfc-homework ; Liverpool 공식 영입 https://www.liverpoolfc.com/news/liverpool-complete-signing-jeremy-jacquet ; SofaScore player 1445625 ; reports/transfer-watch/2026-08-13.md"
+  },
+  {
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 전진형 우측 센터백.",
+   "execution": "70분까지 빌드업과 넓은 공간 방어.",
+   "game_role_implication": "BPD 성격은 유지하되 첫 공식전 표본.",
+   "label": "자케",
+   "observed_from": "2026-08-23",
+   "observed_to": "2026-08-23",
+   "player_id": 89,
+   "position": "RCB",
+   "sample_note": "PL Round 1, 70분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
   },
   {
    "adherence": "MEDIUM. 좌측 CB·왼발·선제형이라는 세 요소가 실측·구단·매체에서 모순 없이 일치한다. ⚠️ 다만 'proactive'는 **영입 시점(2026-01) 스카우팅 서술**이지 이라올라 체제 관찰이 아니고, U21 코치 평도 **U21 레벨·슬롯 체제** 발언이다.",
@@ -678,6 +858,21 @@
    "sample_note": "25/26 자료(BTL·TFA)는 슬롯 체제·U18/U21 레벨이라 별도 표기했다.",
    "sample_scope": "이라올라 체제 친선 4경기 166분(LM 2선발 + 교체 2, 그중 렉섬전 교체는 우측)",
    "source": "Breaking The Lines 2026-04-14(본문 확보) https://breakingthelines.com/player-analysis/rio-ngumoha-and-the-mbappe-comparison-why-liverpools-teenager-matters-now/ ; Total Football Analysis 25/26(검색 요약) ; This Is Anfield 2026-07(403) ; Liverpool.com(402 Payment Required — 미확보) ; obs#187"
+  },
+  {
+   "adherence": "첫 공식전 단일 표본.",
+   "confidence": "measured(단일경기). D+1~D+3 서사 보강 전 임무의 이유는 잠정.",
+   "duties": "2026-08-23 뉴캐슬 원정: 우측 와이드 선발.",
+   "execution": "63분간 폭 제공, 결정적 박스 행동은 제한.",
+   "game_role_implication": "무뇨스와 선발 경쟁 재검토.",
+   "label": "Rio Ngumoha",
+   "observed_from": "2026-08-23",
+   "observed_to": "2026-08-23",
+   "player_id": 114,
+   "position": "RM",
+   "sample_note": "PL Round 1, 63분.",
+   "sample_scope": "specific_match",
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
   },
   {
    "adherence": "⭐ HIGH — 이번 LIV 대상 중 세 소스가 같은 방향을 가리키는 유일한 사례다. 감독 직접 평가(2026-07-29 렉섬전 후 LFCTV): \"볼을 아주 잘 다루고 매우 침착하며 상황을 잘 읽는다. 우리는 그를 **볼 없는 일·압박**에서 밀어붙이고 있고 그는 아주 잘하고 있다. **점프 타이밍이 매우 좋다**.\" 압박저항도 별도 지목했다 — '가까이 붙어 있어도 서두르지 않고 자신 있게 공을 요구한다'를 \"very valuable\"이라 표현. U21 코치 \"프리시즌 최고 선수\", The Athletic(Pearce) \"이번 투어 최대 성공 사례\".",
@@ -22020,6 +22215,11 @@
     "2026-08-16",
     6.2,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-23",
+    6.68,
+    "Premier League"
    ]
   ],
   "Giorgi Mamardashvili": [
@@ -22172,11 +22372,6 @@
   ],
   "맥 알리스터": [
    [
-    "2026-06-07",
-    6.8,
-    "International Friendly Games"
-   ],
-   [
     "2026-06-10",
     6.9,
     "International Friendly Games"
@@ -22220,6 +22415,11 @@
     "2026-07-19",
     6.6,
     "FIFA World Cup"
+   ],
+   [
+    "2026-08-23",
+    6.57,
+    "Premier League"
    ]
   ],
   "모리슨": [
@@ -22255,11 +22455,6 @@
    ]
   ],
   "무뇨스": [
-   [
-    "2026-03-21",
-    8.2,
-    "LaLiga"
-   ],
    [
     "2026-03-27",
     7.7,
@@ -22304,14 +22499,14 @@
     "2026-08-16",
     6.5,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-23",
+    6.67,
+    "Premier League"
    ]
   ],
   "비르츠": [
-   [
-    "2026-05-31",
-    8.2,
-    "International Friendly Games"
-   ],
    [
     "2026-06-06",
     6.6,
@@ -22356,6 +22551,11 @@
     "2026-08-16",
     7.2,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-23",
+    7.07,
+    "Premier League"
    ]
   ],
   "살라": [
@@ -22412,11 +22612,6 @@
   ],
   "소보슬라이": [
    [
-    "2026-06-05",
-    7.2,
-    "International Friendly Games"
-   ],
-   [
     "2026-06-09",
     9.3,
     "International Friendly Games"
@@ -22460,14 +22655,14 @@
     "2026-08-16",
     7.4,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-23",
+    7.96,
+    "Premier League"
    ]
   ],
   "아라우호": [
-   [
-    "2026-03-31",
-    7.0,
-    "International Friendly Games"
-   ],
    [
     "2026-04-04",
     6.5,
@@ -22512,14 +22707,14 @@
     "2026-08-16",
     7.0,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-23",
+    6.48,
+    "Premier League"
    ]
   ],
   "알리송 베케르": [
-   [
-    "2026-05-24",
-    6.9,
-    "Premier League"
-   ],
    [
     "2026-05-31",
     7.3,
@@ -22564,6 +22759,11 @@
     "2026-08-16",
     7.4,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-23",
+    6.04,
+    "Premier League"
    ]
   ],
   "엘리엇": [
@@ -22652,11 +22852,6 @@
   ],
   "자케": [
    [
-    "2025-11-22",
-    7.8,
-    "Ligue 1"
-   ],
-   [
     "2025-11-28",
     7.4,
     "Ligue 1"
@@ -22700,6 +22895,11 @@
     "2026-08-16",
     8.2,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-23",
+    7.04,
+    "Premier League"
    ]
   ],
   "커티스 존스": [
@@ -22756,11 +22956,6 @@
   ],
   "케르케즈": [
    [
-    "2026-05-24",
-    6.7,
-    "Premier League"
-   ],
-   [
     "2026-06-05",
     6.5,
     "International Friendly Games"
@@ -22804,6 +22999,11 @@
     "2026-08-16",
     7.1,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-23",
+    6.32,
+    "Premier League"
    ]
   ],
   "코나테": [
@@ -22860,11 +23060,6 @@
   ],
   "판 다이크": [
    [
-    "2026-05-15",
-    8.2,
-    "Premier League"
-   ],
-   [
     "2026-05-24",
     7.8,
     "Premier League"
@@ -22908,14 +23103,14 @@
     "2026-08-16",
     7.6,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-23",
+    7.1,
+    "Premier League"
    ]
   ],
   "프림퐁": [
-   [
-    "2026-05-09",
-    6.4,
-    "Premier League"
-   ],
    [
     "2026-05-24",
     6.7,
@@ -22960,14 +23155,14 @@
     "2026-08-16",
     8.1,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-23",
+    6.74,
+    "Premier League"
    ]
   ],
   "학포": [
-   [
-    "2026-05-15",
-    6.5,
-    "Premier League"
-   ],
    [
     "2026-05-24",
     6.5,
@@ -23012,14 +23207,14 @@
     "2026-08-16",
     9.4,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-23",
+    8.42,
+    "Premier League"
    ]
   ],
   "흐라벤베르흐": [
-   [
-    "2026-06-03",
-    6.6,
-    "International Friendly Games"
-   ],
    [
     "2026-06-08",
     7.2,
@@ -23064,6 +23259,11 @@
     "2026-08-16",
     7.1,
     "Club Friendly Games"
+   ],
+   [
+    "2026-08-23",
+    7.38,
+    "Premier League"
    ]
   ]
  },
@@ -24974,6 +25174,787 @@
   ]
  },
  "match_reports": [
+  {
+   "bigch_o": 3,
+   "bigch_v": 3,
+   "competition": "Premier League",
+   "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+   "corners_o": 2,
+   "corners_v": 6,
+   "created_at": "2026-08-24T08:30:00+09:00",
+   "cross_acc_v": 7,
+   "cross_att_v": 27,
+   "date": "2026-08-23",
+   "duelpct_v": 51.5,
+   "event_id": 5795371,
+   "formation_o": "4-2-3-1",
+   "formation_v": "4-2-3-1",
+   "fouls_o": 16,
+   "fouls_v": 15,
+   "game_implications": "Short Passing/High/72의 경기 전용 재현. 시즌 정본 병합 금지; RM 경쟁과 잔여수비를 다음 경기 재검증.",
+   "game_players": [
+    {
+     "confidence": "measured(match-only). 단일 경기 fit이며 시즌 prescriptions에 병합 금지.",
+     "fit_sim": 0.942,
+     "focus": "Balanced",
+     "game_version": "FC26",
+     "label": "알리송 베케르",
+     "minute_on": null,
+     "name_en": "Alisson",
+     "player_id": 43,
+     "pos_label": "GK",
+     "rationale": "후방 골키퍼; 이 경기 Opta 터치 그리드에 대한 gk_goalkeeper/Balanced 최고 적합.",
+     "replaced_player_id": null,
+     "role_id": "gk_goalkeeper",
+     "role_name": "골키퍼",
+     "sort_order": 1,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "starter": 1,
+     "x": null,
+     "y": null
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit이며 시즌 prescriptions에 병합 금지.",
+     "fit_sim": 0.932,
+     "focus": "Support",
+     "game_version": "FC26",
+     "label": "프림퐁",
+     "minute_on": null,
+     "name_en": "Jeremie Frimpong",
+     "player_id": 48,
+     "pos_label": "RB",
+     "rationale": "높은 우측 풀백; 이 경기 Opta 터치 그리드에 대한 fb_att_wb/Support 최고 적합.",
+     "replaced_player_id": null,
+     "role_id": "fb_att_wb",
+     "role_name": "공격형 윙백",
+     "sort_order": 2,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "starter": 1,
+     "x": null,
+     "y": null
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit이며 시즌 prescriptions에 병합 금지.",
+     "fit_sim": 0.795,
+     "focus": "Aggressive",
+     "game_version": "FC26",
+     "label": "자케",
+     "minute_on": null,
+     "name_en": "Jérémy Jacquet",
+     "player_id": 89,
+     "pos_label": "RCB",
+     "rationale": "전진형 우측 센터백; 이 경기 Opta 터치 그리드에 대한 cb_bpd/Aggressive 최고 적합.",
+     "replaced_player_id": null,
+     "role_id": "cb_bpd",
+     "role_name": "볼 플레잉 센터백",
+     "sort_order": 3,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "starter": 1,
+     "x": null,
+     "y": null
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit이며 시즌 prescriptions에 병합 금지.",
+     "fit_sim": 0.852,
+     "focus": "Aggressive",
+     "game_version": "FC26",
+     "label": "판 다이크",
+     "minute_on": null,
+     "name_en": "Virgil van Dijk",
+     "player_id": 44,
+     "pos_label": "LCB",
+     "rationale": "좌측 후방 리더; 이 경기 Opta 터치 그리드에 대한 cb_bpd/Aggressive 최고 적합.",
+     "replaced_player_id": null,
+     "role_id": "cb_bpd",
+     "role_name": "볼 플레잉 센터백",
+     "sort_order": 4,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "starter": 1,
+     "x": null,
+     "y": null
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit이며 시즌 prescriptions에 병합 금지.",
+     "fit_sim": 0.902,
+     "focus": "Support",
+     "game_version": "FC26",
+     "label": "케르케즈",
+     "minute_on": null,
+     "name_en": "Miloš Kerkez",
+     "player_id": 47,
+     "pos_label": "LB",
+     "rationale": "높은 좌측 풀백; 이 경기 Opta 터치 그리드에 대한 fb_att_wb/Support 최고 적합.",
+     "replaced_player_id": null,
+     "role_id": "fb_att_wb",
+     "role_name": "공격형 윙백",
+     "sort_order": 5,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "starter": 1,
+     "x": null,
+     "y": null
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit이며 시즌 prescriptions에 병합 금지.",
+     "fit_sim": 0.57,
+     "focus": "Roaming",
+     "game_version": "FC26",
+     "label": "흐라벤베르흐",
+     "minute_on": null,
+     "name_en": "Ryan Gravenberch",
+     "player_id": 49,
+     "pos_label": "LDM",
+     "rationale": "로밍 빌드업 피벗; 이 경기 Opta 터치 그리드에 대한 dm_dlp/Roaming 최고 적합.",
+     "replaced_player_id": null,
+     "role_id": "dm_dlp",
+     "role_name": "딥라잉 플레이메이커",
+     "sort_order": 6,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "starter": 1,
+     "x": null,
+     "y": null
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit이며 시즌 prescriptions에 병합 금지.",
+     "fit_sim": 0.631,
+     "focus": "Roaming",
+     "game_version": "FC26",
+     "label": "소보슬라이",
+     "minute_on": null,
+     "name_en": "Dominik Szoboszlai",
+     "player_id": 51,
+     "pos_label": "RDM",
+     "rationale": "왕복형 우측 피벗; 이 경기 Opta 터치 그리드에 대한 dm_dlp/Roaming 최고 적합.",
+     "replaced_player_id": null,
+     "role_id": "dm_dlp",
+     "role_name": "딥라잉 플레이메이커",
+     "sort_order": 7,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "starter": 1,
+     "x": null,
+     "y": null
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit이며 시즌 prescriptions에 병합 금지.",
+     "fit_sim": 0.844,
+     "focus": "Attack",
+     "game_version": "FC26",
+     "label": "Rio Ngumoha",
+     "minute_on": null,
+     "name_en": "Rio Ngumoha",
+     "player_id": 114,
+     "pos_label": "RM",
+     "rationale": "우측 와이드 선발; 이 경기 Opta 터치 그리드에 대한 wm_winger/Attack 최고 적합.",
+     "replaced_player_id": null,
+     "role_id": "wm_winger",
+     "role_name": "윙어",
+     "sort_order": 8,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "starter": 1,
+     "x": null,
+     "y": null
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit이며 시즌 prescriptions에 병합 금지.",
+     "fit_sim": 0.831,
+     "focus": "Versatile",
+     "game_version": "FC26",
+     "label": "비르츠",
+     "minute_on": null,
+     "name_en": "Florian Wirtz",
+     "player_id": 52,
+     "pos_label": "CAM",
+     "rationale": "중앙 10번; 이 경기 Opta 터치 그리드에 대한 cam_classic10/Versatile 최고 적합.",
+     "replaced_player_id": null,
+     "role_id": "cam_classic10",
+     "role_name": "클래식 10번",
+     "sort_order": 9,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "starter": 1,
+     "x": null,
+     "y": null
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit이며 시즌 prescriptions에 병합 금지.",
+     "fit_sim": 0.861,
+     "focus": "Balanced",
+     "game_version": "FC26",
+     "label": "학포",
+     "minute_on": null,
+     "name_en": "Cody Gakpo",
+     "player_id": 53,
+     "pos_label": "LM",
+     "rationale": "좌측 득점형 플레이메이커; 이 경기 Opta 터치 그리드에 대한 wm_insidefwd/Balanced 최고 적합.",
+     "replaced_player_id": null,
+     "role_id": "wm_insidefwd",
+     "role_name": "인사이드 포워드",
+     "sort_order": 10,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "starter": 1,
+     "x": null,
+     "y": null
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit이며 시즌 prescriptions에 병합 금지.",
+     "fit_sim": 0.616,
+     "focus": "Attack",
+     "game_version": "FC26",
+     "label": "Alexander Isak",
+     "minute_on": null,
+     "name_en": "Alexander Isak",
+     "player_id": 72,
+     "pos_label": "ST",
+     "rationale": "단독 9번; 이 경기 Opta 터치 그리드에 대한 st_poacher/Attack 최고 적합.",
+     "replaced_player_id": null,
+     "role_id": "st_poacher",
+     "role_name": "포처",
+     "sort_order": 11,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "starter": 1,
+     "x": null,
+     "y": null
+    }
+   ],
+   "game_setup": {
+    "build_up_style": "Short Passing",
+    "confidence": "measured(match-only). 이 경기 재현값이며 시즌 team_tactic_setups에 병합 금지.",
+    "defensive_approach": "High",
+    "formation": "4-2-3-1",
+    "game_version": "FC26",
+    "line_height": 72,
+    "match_only": 1,
+    "rationale": "점유 61%·패스 445·상대 진영 성공 패스 249·박스 터치 36으로 짧은 패스와 높은 위치를 재현. PPDA 5.95는 압박량 참고치이나 두 차례 전환 실점을 동반했다.",
+    "report_id": 23,
+    "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+    "tactic_code": null
+   },
+   "id": 23,
+   "long_acc_o": 15,
+   "long_acc_v": 22,
+   "long_att_o": 54,
+   "long_att_v": 46,
+   "match_id": 87,
+   "opponent": "Newcastle United",
+   "passes_o": 296,
+   "passes_v": 445,
+   "players": [
+    {
+     "assists": null,
+     "avg_x": 15.43,
+     "avg_y": 49.14,
+     "characteristics": "세이브 3, 두 실점. 전환 단독 돌파를 맞았다.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": null,
+     "duels_won": null,
+     "game_implication": "골키퍼 역할보다 잔여수비가 우선 교정점.",
+     "goals": null,
+     "hit_points": 28,
+     "interceptions": 0,
+     "key_passes": null,
+     "label": "알리송 베케르",
+     "lineup_pos": "G",
+     "map25": "0000000000000001051011X10",
+     "minutes": 90,
+     "name_en": "Alisson",
+     "performance": "90′ · 평점 6.04",
+     "player_id": 43,
+     "pos_class": "GK",
+     "position": "GK",
+     "rating": 6.04,
+     "recoveries": 6,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 1,
+     "stats_json": "{\"accurate_passes\": 15, \"accurate_passes_total\": 19, \"clearances\": 2, \"defensive_actions\": 2, \"expected_goals_on_target_faced\": 1.56, \"fantasy_points\": 2, \"fotmob_id\": 319784, \"fouls\": 0, \"goals_conceded\": 2, \"goals_prevented\": -0.44, \"interceptions\": 0, \"keeper_diving_save\": 1, \"keeper_high_claim\": 0, \"keeper_sweeper\": 1, \"long_balls_accurate\": 0, \"long_balls_accurate_total\": 4, \"matchstats.headers.tackles\": 0, \"minutes_played\": 90, \"passes_into_final_third\": 1, \"physical_metrics_distance_covered\": 5531, \"physical_metrics_running\": 125, \"physical_metrics_running_total\": 5531, \"physical_metrics_topspeed\": 20.899999618530273, \"player_throws\": 4, \"pos_class_auto\": \"GK\", \"punches\": 1, \"rating_title\": 6.04, \"recoveries\": 6, \"saves\": 3, \"saves_inside_box\": 1, \"touches\": 28, \"was_fouled\": null, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 114147}",
+     "tackles": 0,
+     "tactical_role": "후방 골키퍼",
+     "touches": 28,
+     "xa": null,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 55.94,
+     "avg_y": 14.54,
+     "characteristics": "찬스 생성 3과 폭 제공, 수비 전환 부담.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": 5,
+     "duels_won": 2,
+     "game_implication": "공격형 윙백 유지, 뒤 공간 보호 필요.",
+     "goals": 0,
+     "hit_points": 66,
+     "interceptions": 0,
+     "key_passes": 3,
+     "label": "프림퐁",
+     "lineup_pos": "D",
+     "map25": "001350014X000190002800004",
+     "minutes": 90,
+     "name_en": "Jeremie Frimpong",
+     "performance": "90′ · 평점 6.74 · 슛 1 · 찬스 3",
+     "player_id": 48,
+     "pos_class": "RB",
+     "position": "RB",
+     "rating": 6.74,
+     "recoveries": 3,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 0, \"ShotsOnTarget\": 0, \"accurate_crosses\": 1, \"accurate_crosses_total\": 5, \"accurate_passes\": 36, \"accurate_passes_total\": 43, \"aerials_won\": 0, \"aerials_won_total\": 0, \"assists\": 0, \"blocked_shots\": 1, \"chances_created\": 3, \"clearances\": 1, \"defensive_actions\": 2, \"dispossessed\": 0, \"dribbled_past\": 2, \"dribbles_succeeded\": 1, \"dribbles_succeeded_total\": 2, \"duel_lost\": 5, \"duel_won\": 2, \"expected_assists\": 0.09, \"expected_goals\": 0.01, \"expected_goals_non_penalty\": 0.01, \"expected_goals_on_target_variant\": null, \"fantasy_points\": 0, \"fotmob_id\": 966018, \"fouls\": 2, \"goals\": 0, \"ground_duels_won\": 2, \"ground_duels_won_total\": 7, \"headed_clearance\": 1, \"interceptions\": 0, \"line_breaking_passes\": 12, \"long_balls_accurate\": 2, \"long_balls_accurate_total\": 4, \"matchstats.headers.tackles\": 1, \"minutes_played\": 90, \"passes_into_final_third\": 11, \"physical_metrics_distance_covered\": 10048, \"physical_metrics_number_of_sprints\": 27, \"physical_metrics_running\": 2078, \"physical_metrics_running_total\": 10048, \"physical_metrics_sprinting\": 580, \"physical_metrics_sprinting_total\": 10048, \"physical_metrics_topspeed\": 33.400001525878906, \"pos_class_auto\": \"RB\", \"rating_title\": 6.74, \"recoveries\": 3, \"shot_blocks\": 0, \"total_shots\": 1, \"touches\": 66, \"touches_opp_box\": 4, \"was_fouled\": null, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 392644, \"xg_and_xa\": 0.09999999999999999}",
+     "tackles": 1,
+     "tactical_role": "높은 우측 풀백",
+     "touches": 66,
+     "xa": 0.09,
+     "xg": 0.01
+    },
+    {
+     "assists": 0,
+     "avg_x": 44.44,
+     "avg_y": 31.12,
+     "characteristics": "70분까지 빌드업과 넓은 공간 방어.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": null,
+     "duels_won": 4,
+     "game_implication": "BPD 성격은 유지하되 첫 공식전 표본.",
+     "goals": 0,
+     "hit_points": 51,
+     "interceptions": 1,
+     "key_passes": 1,
+     "label": "자케",
+     "lineup_pos": "D",
+     "map25": "0000001262005X2001X300032",
+     "minutes": 70,
+     "name_en": "Jérémy Jacquet",
+     "performance": "70′ · 평점 7.04 · 찬스 1",
+     "player_id": 89,
+     "pos_class": "RCB",
+     "position": "RCB",
+     "rating": 7.04,
+     "recoveries": 3,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 1,
+     "stats_json": "{\"accurate_passes\": 38, \"accurate_passes_total\": 42, \"aerials_won\": 1, \"aerials_won_total\": 1, \"assists\": 0, \"chances_created\": 1, \"clearances\": 1, \"defensive_actions\": 3, \"dispossessed\": 0, \"dribbled_past\": 0, \"dribbles_succeeded\": 1, \"dribbles_succeeded_total\": 1, \"duel_won\": 4, \"expected_assists\": 0.02, \"fantasy_points\": 1, \"fotmob_id\": 1473534, \"fouls\": 1, \"goals\": 0, \"ground_duels_won\": 3, \"ground_duels_won_total\": 3, \"headed_clearance\": 1, \"interceptions\": 1, \"line_breaking_passes\": 11, \"long_balls_accurate\": 1, \"long_balls_accurate_total\": 2, \"matchstats.headers.tackles\": 1, \"minutes_played\": 70, \"passes_into_final_third\": 12, \"physical_metrics_distance_covered\": 7177, \"physical_metrics_number_of_sprints\": 6, \"physical_metrics_running\": 1350, \"physical_metrics_running_total\": 7177, \"physical_metrics_sprinting\": 97, \"physical_metrics_sprinting_total\": 7177, \"physical_metrics_topspeed\": 30.700000762939453, \"pos_class_auto\": \"RB\", \"rating_title\": 7.04, \"recoveries\": 3, \"shot_blocks\": 0, \"touches\": 51, \"touches_opp_box\": 0, \"was_fouled\": 1, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 468827, \"xg_and_xa\": 0.02}",
+     "tackles": 1,
+     "tactical_role": "전진형 우측 센터백",
+     "touches": 51,
+     "xa": 0.02,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 38.23,
+     "avg_y": 65.53,
+     "characteristics": "클리어와 공중 대응, 90분.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": 2,
+     "duels_won": 5,
+     "game_implication": "단일 경기 역할 변경 근거 없음.",
+     "goals": 0,
+     "hit_points": 74,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "판 다이크",
+     "lineup_pos": "D",
+     "map25": "0010013000061001X21111400",
+     "minutes": 90,
+     "name_en": "Virgil van Dijk",
+     "performance": "90′ · 평점 7.1 · 슛 2 · 찬스 0",
+     "player_id": 44,
+     "pos_class": "LCB",
+     "position": "LCB",
+     "rating": 7.1,
+     "recoveries": 6,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 0, \"ShotsOnTarget\": 1, \"accurate_passes\": 50, \"accurate_passes_total\": 58, \"aerials_won\": 3, \"aerials_won_total\": 5, \"assists\": 0, \"blocked_shots\": 1, \"chances_created\": 0, \"clearances\": 9, \"defensive_actions\": 11, \"dispossessed\": 0, \"dribbled_past\": 0, \"duel_lost\": 2, \"duel_won\": 5, \"expected_assists\": 0.01, \"expected_goals\": 0.25, \"expected_goals_non_penalty\": 0.25, \"expected_goals_on_target_variant\": 0.17, \"fantasy_points\": 2, \"fotmob_id\": 209405, \"fouls\": 0, \"goals\": 0, \"ground_duels_won\": 2, \"ground_duels_won_total\": 2, \"headed_clearance\": 5, \"interceptions\": 0, \"line_breaking_passes\": 9, \"long_balls_accurate\": 6, \"long_balls_accurate_total\": 12, \"matchstats.headers.tackles\": 2, \"minutes_played\": 90, \"passes_into_final_third\": 10, \"physical_metrics_distance_covered\": 8904, \"physical_metrics_number_of_sprints\": 12, \"physical_metrics_running\": 1349, \"physical_metrics_running_total\": 8904, \"physical_metrics_sprinting\": 265, \"physical_metrics_sprinting_total\": 8904, \"physical_metrics_topspeed\": 32.400001525878906, \"pos_class_auto\": \"LB\", \"rating_title\": 7.1, \"recoveries\": 6, \"shot_accuracy\": 1, \"shot_accuracy_total\": 1, \"shot_blocks\": 0, \"total_shots\": 2, \"touches\": 74, \"touches_opp_box\": 3, \"was_fouled\": null, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 95408, \"xg_and_xa\": 0.26}",
+     "tackles": 2,
+     "tactical_role": "좌측 후방 리더",
+     "touches": 74,
+     "xa": 0.01,
+     "xg": 0.25
+    },
+    {
+     "assists": 0,
+     "avg_x": 56.14,
+     "avg_y": 83.82,
+     "characteristics": "엘랑가의 첫 역습에서 뒤를 허용.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": 7,
+     "duels_won": 6,
+     "game_implication": "전진 시 잔여수비 보강 필요.",
+     "goals": 0,
+     "hit_points": 64,
+     "interceptions": 1,
+     "key_passes": 1,
+     "label": "케르케즈",
+     "lineup_pos": "D",
+     "map25": "32000X4200630004100031000",
+     "minutes": 90,
+     "name_en": "Miloš Kerkez",
+     "performance": "90′ · 평점 6.32 · 슛 2 · 찬스 1",
+     "player_id": 47,
+     "pos_class": "LB",
+     "position": "LB",
+     "rating": 6.32,
+     "recoveries": 3,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 1, \"ShotsOnTarget\": 1, \"accurate_crosses\": 0, \"accurate_crosses_total\": 2, \"accurate_passes\": 33, \"accurate_passes_total\": 41, \"aerials_won\": 2, \"aerials_won_total\": 3, \"assists\": 0, \"chances_created\": 1, \"clearances\": 2, \"defensive_actions\": 7, \"dispossessed\": 3, \"dribbled_past\": 0, \"duel_lost\": 7, \"duel_won\": 6, \"expected_assists\": 0.02, \"expected_goals\": 0.02, \"expected_goals_non_penalty\": 0.02, \"expected_goals_on_target_variant\": 0.04, \"fantasy_points\": 0, \"fotmob_id\": 1195281, \"fouls\": 3, \"goals\": 0, \"ground_duels_won\": 4, \"ground_duels_won_total\": 10, \"headed_clearance\": 2, \"interceptions\": 1, \"line_breaking_passes\": 9, \"long_balls_accurate\": 3, \"long_balls_accurate_total\": 7, \"matchstats.headers.tackles\": 3, \"minutes_played\": 90, \"passes_into_final_third\": 7, \"physical_metrics_distance_covered\": 10359, \"physical_metrics_number_of_sprints\": 25, \"physical_metrics_running\": 1778, \"physical_metrics_running_total\": 10359, \"physical_metrics_sprinting\": 538, \"physical_metrics_sprinting_total\": 10359, \"physical_metrics_topspeed\": 32.70000076293945, \"pos_class_auto\": \"LB\", \"rating_title\": 6.32, \"recoveries\": 3, \"shot_accuracy\": 1, \"shot_accuracy_total\": 2, \"shot_blocks\": 1, \"total_shots\": 2, \"touches\": 64, \"touches_opp_box\": 2, \"was_fouled\": 1, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 424273, \"xg_and_xa\": 0.04}",
+     "tackles": 3,
+     "tactical_role": "높은 좌측 풀백",
+     "touches": 64,
+     "xa": 0.02,
+     "xg": 0.02
+    },
+    {
+     "assists": 1,
+     "avg_x": 56.25,
+     "avg_y": 47.65,
+     "characteristics": "학포 도움과 두 실점 전 소유권 상실의 양면.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": 6,
+     "duels_won": 4,
+     "game_implication": "Roaming의 위험 관리가 핵심.",
+     "goals": 0,
+     "hit_points": 63,
+     "interceptions": 2,
+     "key_passes": 1,
+     "label": "흐라벤베르흐",
+     "lineup_pos": "M",
+     "map25": "00000095X4645632221300010",
+     "minutes": 78,
+     "name_en": "Ryan Gravenberch",
+     "performance": "78′ · 평점 7.38 · 도움 1 · 슛 2 · 찬스 1",
+     "player_id": 49,
+     "pos_class": "LDM",
+     "position": "LDM",
+     "rating": 7.38,
+     "recoveries": 8,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 0, \"ShotsOnTarget\": 0, \"accurate_passes\": 43, \"accurate_passes_total\": 47, \"aerials_won\": 0, \"aerials_won_total\": 0, \"assists\": 1, \"blocked_shots\": 2, \"chances_created\": 1, \"clearances\": 0, \"defensive_actions\": 11, \"dispossessed\": 5, \"dribbled_past\": 0, \"duel_lost\": 6, \"duel_won\": 4, \"expected_assists\": 0.05, \"expected_goals\": 0.06, \"expected_goals_non_penalty\": 0.06, \"expected_goals_on_target_variant\": null, \"fantasy_points\": 5, \"fotmob_id\": 956683, \"fouls\": 1, \"goals\": 0, \"ground_duels_won\": 4, \"ground_duels_won_total\": 10, \"interceptions\": 2, \"line_breaking_passes\": 12, \"long_balls_accurate\": 2, \"long_balls_accurate_total\": 2, \"matchstats.headers.tackles\": 1, \"minutes_played\": 78, \"passes_into_final_third\": 8, \"physical_metrics_distance_covered\": 8463, \"physical_metrics_number_of_sprints\": 9, \"physical_metrics_running\": 1887, \"physical_metrics_running_total\": 8463, \"physical_metrics_sprinting\": 189, \"physical_metrics_sprinting_total\": 8463, \"physical_metrics_topspeed\": 33.400001525878906, \"pos_class_auto\": \"RDM\", \"rating_title\": 7.38, \"recoveries\": 8, \"shot_blocks\": 0, \"total_shots\": 2, \"touches\": 62, \"touches_opp_box\": 0, \"was_fouled\": 3, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 363884, \"xg_and_xa\": 0.11}",
+     "tackles": 1,
+     "tactical_role": "로밍 빌드업 피벗",
+     "touches": 62,
+     "xa": 0.05,
+     "xg": 0.06
+    },
+    {
+     "assists": 0,
+     "avg_x": 58.17,
+     "avg_y": 40.44,
+     "characteristics": "90+9분 PK 동점골, 높은 활동량.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": 7,
+     "duels_won": 3,
+     "game_implication": "중앙 잔류 규율을 함께 점검.",
+     "goals": 1,
+     "hit_points": 88,
+     "interceptions": 1,
+     "key_passes": 3,
+     "label": "소보슬라이",
+     "lineup_pos": "M",
+     "map25": "30101336X4131620024400102",
+     "minutes": 90,
+     "name_en": "Dominik Szoboszlai",
+     "performance": "90′ · 평점 7.96 · 골 1 · 슛 3 · 찬스 3",
+     "player_id": 51,
+     "pos_class": "RDM",
+     "position": "RDM",
+     "rating": 7.96,
+     "recoveries": 4,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 0, \"ShotsOnTarget\": 1, \"accurate_crosses\": 3, \"accurate_crosses_total\": 10, \"accurate_passes\": 47, \"accurate_passes_total\": 58, \"aerials_won\": 0, \"aerials_won_total\": 3, \"assists\": 0, \"blocked_shots\": 2, \"chances_created\": 3, \"clearances\": 0, \"corners\": 6, \"defensive_actions\": 7, \"dispossessed\": 1, \"dribbled_past\": 0, \"dribbles_succeeded\": 1, \"dribbles_succeeded_total\": 2, \"duel_lost\": 7, \"duel_won\": 3, \"expected_assists\": 0.27, \"expected_goals\": 0.85, \"expected_goals_non_penalty\": 0.06, \"expected_goals_on_target_variant\": 0.99, \"fantasy_points\": 8, \"fotmob_id\": 846005, \"fouls\": 2, \"goals\": 1, \"ground_duels_won\": 3, \"ground_duels_won_total\": 7, \"interceptions\": 1, \"line_breaking_passes\": 18, \"long_balls_accurate\": 4, \"long_balls_accurate_total\": 7, \"matchstats.headers.tackles\": 1, \"minutes_played\": 90, \"passes_into_final_third\": 8, \"physical_metrics_distance_covered\": 10742, \"physical_metrics_number_of_sprints\": 8, \"physical_metrics_running\": 2429, \"physical_metrics_running_total\": 10742, \"physical_metrics_sprinting\": 229, \"physical_metrics_sprinting_total\": 10742, \"physical_metrics_topspeed\": 33.5, \"pos_class_auto\": \"RDM\", \"rating_title\": 7.96, \"recoveries\": 4, \"shot_accuracy\": 1, \"shot_accuracy_total\": 1, \"shot_blocks\": 1, \"total_shots\": 3, \"touches\": 88, \"touches_opp_box\": 1, \"was_fouled\": 1, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 369875, \"xg_and_xa\": 1.12}",
+     "tackles": 1,
+     "tactical_role": "왕복형 우측 피벗",
+     "touches": 88,
+     "xa": 0.27,
+     "xg": 0.85
+    },
+    {
+     "assists": 0,
+     "avg_x": 72.65,
+     "avg_y": 16.07,
+     "characteristics": "63분간 폭 제공, 결정적 박스 행동은 제한.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": 3,
+     "duels_won": 2,
+     "game_implication": "무뇨스와 선발 경쟁 재검토.",
+     "goals": 0,
+     "hit_points": 21,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "Rio Ngumoha",
+     "lineup_pos": "F",
+     "map25": "0001X00154000040000100000",
+     "minutes": 63,
+     "name_en": "Rio Ngumoha",
+     "performance": "63′ · 평점 6.37 · 슛 1 · 찬스 0",
+     "player_id": 114,
+     "pos_class": "RM",
+     "position": "RM",
+     "rating": 6.37,
+     "recoveries": 2,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 0, \"ShotsOnTarget\": 0, \"accurate_crosses\": 1, \"accurate_crosses_total\": 2, \"accurate_passes\": 10, \"accurate_passes_total\": 13, \"aerials_won\": 0, \"aerials_won_total\": 0, \"assists\": 0, \"blocked_shots\": 1, \"chances_created\": 0, \"clearances\": 0, \"defensive_actions\": 3, \"dispossessed\": 1, \"dribbled_past\": 0, \"dribbles_succeeded\": 0, \"dribbles_succeeded_total\": 1, \"duel_lost\": 3, \"duel_won\": 2, \"expected_assists\": 0.02, \"expected_goals\": 0.04, \"expected_goals_non_penalty\": 0.04, \"expected_goals_on_target_variant\": null, \"fantasy_points\": 2, \"fotmob_id\": 1597668, \"fouls\": 1, \"goals\": 0, \"ground_duels_won\": 2, \"ground_duels_won_total\": 5, \"interceptions\": 0, \"line_breaking_passes\": 2, \"matchstats.headers.tackles\": 1, \"minutes_played\": 63, \"passes_into_final_third\": 1, \"physical_metrics_distance_covered\": 6260, \"physical_metrics_number_of_sprints\": 6, \"physical_metrics_running\": 1167, \"physical_metrics_running_total\": 6260, \"physical_metrics_sprinting\": 168, \"physical_metrics_sprinting_total\": 6260, \"physical_metrics_topspeed\": 33.20000076293945, \"pos_class_auto\": \"RM\", \"rating_title\": 6.37, \"recoveries\": 2, \"shot_blocks\": 0, \"total_shots\": 1, \"touches\": 21, \"touches_opp_box\": 1, \"was_fouled\": 1, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 548566, \"xg_and_xa\": 0.06}",
+     "tackles": 1,
+     "tactical_role": "우측 와이드 선발",
+     "touches": 21,
+     "xa": 0.02,
+     "xg": 0.04
+    },
+    {
+     "assists": 0,
+     "avg_x": 61.56,
+     "avg_y": 55.76,
+     "characteristics": "63분간 연결·중거리, 결정적 침투 부족.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": 1,
+     "duels_won": 3,
+     "game_implication": "CAM 유지, 9번과 거리 조정.",
+     "goals": 0,
+     "hit_points": 43,
+     "interceptions": 0,
+     "key_passes": 1,
+     "label": "비르츠",
+     "lineup_pos": "M",
+     "map25": "233028X837325333200220000",
+     "minutes": 63,
+     "name_en": "Florian Wirtz",
+     "performance": "63′ · 평점 7.07 · 슛 3 · 찬스 1",
+     "player_id": 52,
+     "pos_class": "CAM",
+     "position": "CAM",
+     "rating": 7.07,
+     "recoveries": 4,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 0, \"ShotsOnTarget\": 1, \"accurate_crosses\": 0, \"accurate_crosses_total\": 1, \"accurate_passes\": 29, \"accurate_passes_total\": 33, \"aerials_won\": 0, \"aerials_won_total\": 0, \"assists\": 0, \"blocked_shots\": 2, \"chances_created\": 1, \"clearances\": 0, \"defensive_actions\": 5, \"dispossessed\": 0, \"dribbled_past\": 0, \"dribbles_succeeded\": 1, \"dribbles_succeeded_total\": 2, \"duel_lost\": 1, \"duel_won\": 3, \"expected_assists\": 0.04, \"expected_goals\": 0.26, \"expected_goals_non_penalty\": 0.26, \"expected_goals_on_target_variant\": 0.31, \"fantasy_points\": 2, \"fotmob_id\": 1152455, \"fouls\": 0, \"goals\": 0, \"ground_duels_won\": 3, \"ground_duels_won_total\": 4, \"interceptions\": 0, \"line_breaking_passes\": 8, \"long_balls_accurate\": 2, \"long_balls_accurate_total\": 4, \"matchstats.headers.tackles\": 1, \"minutes_played\": 63, \"passes_into_final_third\": 6, \"physical_metrics_distance_covered\": 7950, \"physical_metrics_number_of_sprints\": 6, \"physical_metrics_running\": 2246, \"physical_metrics_running_total\": 7950, \"physical_metrics_sprinting\": 146, \"physical_metrics_sprinting_total\": 7950, \"physical_metrics_topspeed\": 32.599998474121094, \"pos_class_auto\": \"CAM\", \"rating_title\": 7.07, \"recoveries\": 4, \"shot_accuracy\": 1, \"shot_accuracy_total\": 1, \"shot_blocks\": 0, \"total_shots\": 3, \"touches\": 43, \"touches_opp_box\": 4, \"was_fouled\": 1, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 394786, \"xg_and_xa\": 0.3}",
+     "tackles": 1,
+     "tactical_role": "중앙 10번",
+     "touches": 43,
+     "xa": 0.04,
+     "xg": 0.26
+    },
+    {
+     "assists": 0,
+     "avg_x": 68.59,
+     "avg_y": 75.01,
+     "characteristics": "1골, 슛 6, 찬스 3, 평점 8.42.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": 8,
+     "duels_won": 7,
+     "game_implication": "wide playmaker/Attack 근거 강화.",
+     "goals": 1,
+     "hit_points": 58,
+     "interceptions": 3,
+     "key_passes": 3,
+     "label": "학포",
+     "lineup_pos": "F",
+     "map25": "391006X011811001000000100",
+     "minutes": 90,
+     "name_en": "Cody Gakpo",
+     "performance": "90′ · 평점 8.42 · 골 1 · 슛 6 · 찬스 3",
+     "player_id": 53,
+     "pos_class": "LM",
+     "position": "LM",
+     "rating": 8.42,
+     "recoveries": 5,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 1,
+     "stats_json": "{\"Offsides\": 1, \"ShotsOffTarget\": 2, \"ShotsOnTarget\": 1, \"accurate_crosses\": 0, \"accurate_crosses_total\": 3, \"accurate_passes\": 20, \"accurate_passes_total\": 28, \"aerials_won\": 1, \"aerials_won_total\": 3, \"assists\": 0, \"blocked_shots\": 3, \"chances_created\": 3, \"clearances\": 1, \"defensive_actions\": 12, \"dispossessed\": 0, \"dribbled_past\": 1, \"dribbles_succeeded\": 0, \"dribbles_succeeded_total\": 1, \"duel_lost\": 8, \"duel_won\": 7, \"expected_assists\": 0.15, \"expected_goals\": 0.3, \"expected_goals_non_penalty\": 0.3, \"expected_goals_on_target_variant\": 0.38, \"fantasy_points\": 12, \"fotmob_id\": 806552, \"fouls\": 4, \"goals\": 1, \"ground_duels_won\": 6, \"ground_duels_won_total\": 12, \"headed_clearance\": 1, \"interceptions\": 3, \"line_breaking_passes\": 7, \"matchstats.headers.tackles\": 3, \"minutes_played\": 90, \"passes_into_final_third\": 4, \"physical_metrics_distance_covered\": 9273, \"physical_metrics_number_of_sprints\": 10, \"physical_metrics_running\": 1476, \"physical_metrics_running_total\": 9273, \"physical_metrics_sprinting\": 215, \"physical_metrics_sprinting_total\": 9273, \"physical_metrics_topspeed\": 33.099998474121094, \"pos_class_auto\": \"LM\", \"rating_title\": 8.42, \"recoveries\": 5, \"shot_accuracy\": 1, \"shot_accuracy_total\": 3, \"shot_blocks\": 0, \"total_shots\": 6, \"touches\": 58, \"touches_opp_box\": 10, \"was_fouled\": 3, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 352825, \"xg_and_xa\": 0.44999999999999996}",
+     "tackles": 3,
+     "tactical_role": "좌측 득점형 플레이메이커",
+     "touches": 58,
+     "xa": 0.15,
+     "xg": 0.3
+    },
+    {
+     "assists": 0,
+     "avg_x": 68.28,
+     "avg_y": 41.82,
+     "characteristics": "슛 4, 득점 0, 연결 터치 제한.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": 4,
+     "duels_won": 5,
+     "game_implication": "근접 지원을 늘려 고립 완화.",
+     "goals": 0,
+     "hit_points": 29,
+     "interceptions": 0,
+     "key_passes": 1,
+     "label": "Alexander Isak",
+     "lineup_pos": "F",
+     "map25": "20X3033058022520002000200",
+     "minutes": 90,
+     "name_en": "Alexander Isak",
+     "performance": "90′ · 평점 6.68 · 슛 4 · 찬스 1",
+     "player_id": 72,
+     "pos_class": "ST",
+     "position": "ST",
+     "rating": 6.68,
+     "recoveries": 0,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 1, \"ShotsOnTarget\": 2, \"accurate_passes\": 10, \"accurate_passes_total\": 13, \"aerials_won\": 3, \"aerials_won_total\": 3, \"assists\": 0, \"big_chance_missed_title\": 2, \"blocked_shots\": 1, \"chances_created\": 1, \"clearances\": 0, \"defensive_actions\": 1, \"dispossessed\": 1, \"dribbled_past\": 0, \"dribbles_succeeded\": 0, \"dribbles_succeeded_total\": 3, \"duel_lost\": 4, \"duel_won\": 5, \"expected_assists\": 0.01, \"expected_goals\": 1.09, \"expected_goals_non_penalty\": 1.09, \"expected_goals_on_target_variant\": 1.07, \"fantasy_points\": 2, \"fotmob_id\": 690107, \"fouls\": 0, \"goals\": 0, \"ground_duels_won\": 2, \"ground_duels_won_total\": 6, \"interceptions\": 0, \"line_breaking_passes\": 1, \"long_balls_accurate\": 1, \"long_balls_accurate_total\": 1, \"matchstats.headers.tackles\": 0, \"minutes_played\": 90, \"passes_into_final_third\": 3, \"physical_metrics_distance_covered\": 9679, \"physical_metrics_number_of_sprints\": 8, \"physical_metrics_running\": 1692, \"physical_metrics_running_total\": 9679, \"physical_metrics_sprinting\": 121, \"physical_metrics_sprinting_total\": 9679, \"physical_metrics_topspeed\": 30, \"pos_class_auto\": \"ST\", \"rating_title\": 6.68, \"recoveries\": 0, \"shot_accuracy\": 2, \"shot_accuracy_total\": 3, \"shot_blocks\": 1, \"total_shots\": 4, \"touches\": 28, \"touches_opp_box\": 6, \"was_fouled\": 2, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 299254, \"xg_and_xa\": 1.1}",
+     "tackles": 0,
+     "tactical_role": "단독 9번",
+     "touches": 28,
+     "xa": 0.01,
+     "xg": 1.09
+    },
+    {
+     "assists": 0,
+     "avg_x": 49.82,
+     "avg_y": 43.84,
+     "characteristics": "27분, 패스 연결과 태클 2.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": 1,
+     "duels_won": 4,
+     "game_implication": "경기 마감용 안정화 카드.",
+     "goals": 0,
+     "hit_points": 18,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "맥 알리스터",
+     "lineup_pos": "M",
+     "map25": "000000385003380300X330000",
+     "minutes": 27,
+     "name_en": "Alexis Mac Allister",
+     "performance": "27′ · 평점 6.57 · 찬스 0",
+     "player_id": 50,
+     "pos_class": "CAM",
+     "position": "CAM",
+     "rating": 6.57,
+     "recoveries": 1,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 0,
+     "stats_json": "{\"accurate_passes\": 11, \"accurate_passes_total\": 12, \"aerials_won\": 0, \"aerials_won_total\": 0, \"assists\": 0, \"chances_created\": 0, \"clearances\": 0, \"defensive_actions\": 3, \"dispossessed\": 0, \"dribbled_past\": 1, \"duel_lost\": 1, \"duel_won\": 4, \"expected_assists\": 0.01, \"fantasy_points\": 1, \"fotmob_id\": 831489, \"fouls\": 0, \"goals\": 0, \"ground_duels_won\": 4, \"ground_duels_won_total\": 5, \"interceptions\": 0, \"line_breaking_passes\": 2, \"matchstats.headers.tackles\": 2, \"minutes_played\": 27, \"passes_into_final_third\": 2, \"physical_metrics_distance_covered\": 3889, \"physical_metrics_number_of_sprints\": 1, \"physical_metrics_running\": 811, \"physical_metrics_running_total\": 3889, \"physical_metrics_sprinting\": 31, \"physical_metrics_sprinting_total\": 3889, \"physical_metrics_topspeed\": 28.5, \"pos_class_auto\": \"RDM\", \"rating_title\": 6.57, \"recoveries\": 1, \"shot_blocks\": 0, \"touches\": 18, \"touches_opp_box\": 0, \"was_fouled\": 2, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 345319, \"xg_and_xa\": 0.01}",
+     "tackles": 2,
+     "tactical_role": "교체 중앙 연결자",
+     "touches": 18,
+     "xa": 0.01,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 77.43,
+     "avg_y": 17.59,
+     "characteristics": "27분 직접 운반, 마지막 PK 유도.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": null,
+     "duels_won": 1,
+     "game_implication": "RM 선발 경쟁을 즉시 개방.",
+     "goals": 0,
+     "hit_points": 17,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "무뇨스",
+     "lineup_pos": "F",
+     "map25": "000X800028000060000000000",
+     "minutes": 27,
+     "name_en": "Víctor Muñoz",
+     "performance": "27′ · 평점 6.67 · 슛 2 · 찬스 0",
+     "player_id": 88,
+     "pos_class": "RM",
+     "position": "RM",
+     "rating": 6.67,
+     "recoveries": 0,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 0,
+     "stats_json": "{\"ShotsOffTarget\": 0, \"ShotsOnTarget\": 0, \"accurate_crosses\": 2, \"accurate_crosses_total\": 4, \"accurate_passes\": 5, \"accurate_passes_total\": 6, \"aerials_won\": 0, \"aerials_won_total\": 0, \"assists\": 0, \"blocked_shots\": 2, \"chances_created\": 0, \"clearances\": 0, \"defensive_actions\": 0, \"dispossessed\": 0, \"dribbled_past\": 0, \"duel_won\": 1, \"expected_assists\": 0.04, \"expected_goals\": 0.09, \"expected_goals_non_penalty\": 0.09, \"expected_goals_on_target_variant\": null, \"fantasy_points\": 4, \"fotmob_id\": 1553105, \"fouls\": 0, \"goals\": 0, \"ground_duels_won\": 1, \"ground_duels_won_total\": 1, \"interceptions\": 0, \"matchstats.headers.tackles\": 0, \"minutes_played\": 27, \"penalties_won\": 1, \"physical_metrics_distance_covered\": 3707, \"physical_metrics_number_of_sprints\": 9, \"physical_metrics_running\": 591, \"physical_metrics_running_total\": 3707, \"physical_metrics_sprinting\": 182, \"physical_metrics_sprinting_total\": 3707, \"physical_metrics_topspeed\": 32.29999923706055, \"pos_class_auto\": \"RM\", \"rating_title\": 6.67, \"recoveries\": 0, \"shot_blocks\": 0, \"total_shots\": 2, \"touches\": 16, \"touches_opp_box\": 3, \"was_fouled\": 1, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 548106, \"xg_and_xa\": 0.13}",
+     "tackles": 0,
+     "tactical_role": "교체 우측 직선 윙어",
+     "touches": 16,
+     "xa": 0.04,
+     "xg": 0.09
+    },
+    {
+     "assists": 0,
+     "avg_x": 42.65,
+     "avg_y": 28.72,
+     "characteristics": "20분, 공중 대응과 후방 패스.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": 3,
+     "duels_won": 4,
+     "game_implication": "3번째 CB 실전 카드 확인.",
+     "goals": 0,
+     "hit_points": 35,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "아라우호",
+     "lineup_pos": "D",
+     "map25": "0000100230001X10115300112",
+     "minutes": 20,
+     "name_en": "Ronald Araújo",
+     "performance": "20′ · 평점 6.48 · 찬스 0",
+     "player_id": 85,
+     "pos_class": "RCB",
+     "position": "RCB",
+     "rating": 6.48,
+     "recoveries": 1,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 0,
+     "stats_json": "{\"accurate_passes\": 26, \"accurate_passes_total\": 29, \"aerials_won\": 3, \"aerials_won_total\": 5, \"assists\": 0, \"chances_created\": 0, \"clearances\": 2, \"defensive_actions\": 4, \"dispossessed\": 0, \"dribbled_past\": 0, \"duel_lost\": 3, \"duel_won\": 4, \"expected_assists\": 0.03, \"fantasy_points\": 1, \"fotmob_id\": 921253, \"fouls\": 1, \"goals\": 0, \"ground_duels_won\": 1, \"ground_duels_won_total\": 2, \"headed_clearance\": 2, \"interceptions\": 0, \"line_breaking_passes\": 5, \"long_balls_accurate\": 1, \"long_balls_accurate_total\": 2, \"matchstats.headers.tackles\": 1, \"minutes_played\": 20, \"passes_into_final_third\": 4, \"physical_metrics_distance_covered\": 2902, \"physical_metrics_number_of_sprints\": 2, \"physical_metrics_running\": 536, \"physical_metrics_running_total\": 2902, \"physical_metrics_sprinting\": 36, \"physical_metrics_sprinting_total\": 2902, \"physical_metrics_topspeed\": 32.599998474121094, \"pos_class_auto\": \"RB\", \"rating_title\": 6.48, \"recoveries\": 1, \"shot_blocks\": 1, \"touches\": 35, \"touches_opp_box\": 0, \"was_fouled\": null, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 384711, \"xg_and_xa\": 0.03}",
+     "tackles": 1,
+     "tactical_role": "교체 우측 센터백",
+     "touches": 35,
+     "xa": 0.03,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 76.08,
+     "avg_y": 58.34,
+     "characteristics": "12분, 추격 국면 공격 숫자 확대.",
+     "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft.",
+     "duels_lost": 1,
+     "duels_won": 1,
+     "game_implication": "표본·히트포인트 미달이면 처방 확정 금지.",
+     "goals": 0,
+     "hit_points": 5,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "Lewis Koumas",
+     "lineup_pos": "M",
+     "map25": "05050X0005000000000000000",
+     "minutes": 12,
+     "name_en": "Lewis Koumas",
+     "performance": "12′ · 평점 6.27 · 슛 1 · 찬스 0",
+     "player_id": 71,
+     "pos_class": "LDM",
+     "position": "LDM",
+     "rating": 6.27,
+     "recoveries": 1,
+     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+     "started": 0,
+     "stats_json": "{\"ShotsOffTarget\": 0, \"ShotsOnTarget\": 0, \"accurate_passes\": 2, \"accurate_passes_total\": 3, \"aerials_won\": 0, \"aerials_won_total\": 1, \"assists\": 0, \"blocked_shots\": 1, \"chances_created\": 0, \"clearances\": 0, \"defensive_actions\": 1, \"dispossessed\": 0, \"dribbled_past\": 0, \"dribbles_succeeded\": 1, \"dribbles_succeeded_total\": 1, \"duel_lost\": 1, \"duel_won\": 1, \"expected_goals\": 0.03, \"expected_goals_non_penalty\": 0.03, \"expected_goals_on_target_variant\": null, \"fantasy_points\": 1, \"fotmob_id\": 1364042, \"fouls\": 0, \"goals\": 0, \"ground_duels_won\": 1, \"ground_duels_won_total\": 1, \"interceptions\": 0, \"long_balls_accurate\": 0, \"long_balls_accurate_total\": 1, \"matchstats.headers.tackles\": 0, \"minutes_played\": 12, \"passes_into_final_third\": 1, \"physical_metrics_distance_covered\": 2335, \"physical_metrics_number_of_sprints\": 4, \"physical_metrics_running\": 446, \"physical_metrics_running_total\": 2335, \"physical_metrics_sprinting\": 92, \"physical_metrics_sprinting_total\": 2335, \"physical_metrics_topspeed\": 31.5, \"pos_class_auto\": \"CAM\", \"rating_title\": 6.27, \"recoveries\": 1, \"shot_blocks\": 0, \"total_shots\": 1, \"touches\": 5, \"touches_opp_box\": 2, \"was_fouled\": null, \"whoscored_match_id\": 1983547, \"whoscored_player_id\": 492374, \"xg_and_xa\": 0.03}",
+     "tackles": 0,
+     "tactical_role": "교체 중앙 공격 가담",
+     "touches": 5,
+     "xa": null,
+     "xg": 0.03
+    }
+   ],
+   "possession": 61.0,
+   "report_date": "2026-08-24",
+   "report_markdown": "# Newcastle United 2–2 Liverpool — Iraola 공식 데뷔전\n\n- 경기: Premier League 2026/27 Round 1, 2026-08-23, St James’ Park (원정)\n- 결과: Newcastle United 2–2 Liverpool\n- 득점: Anthony Elanga 5′, Cody Gakpo 55′, Joe Willock 57′, Dominik Szoboszlai 90+9′(PK)\n- 실측 원천: FotMob matchId `5795371`, WhoScored/Opta matchId `1983547`\n- 상태: **draft** — 종료 약 5시간 뒤 초판. 공식 리포트·감독 기자회견·영어/스페인어/네덜란드어권 당일 보도는 반영했지만 지연 전술 영상·전문 블로그는 아직 검색되지 않았다.\n\n## 1. 경기 요약\n\n리버풀은 공 점유 61%, 슛 27–13, 유효 슛 7–4, xG 2.98–1.58로 볼과 기회 수를 우세하게 가져갔지만 두 차례 전환 수비 붕괴로 끌려갔다. 5분 흐라벤베르흐가 전진 중 공을 잃은 뒤 오술라–엘랑가의 빠른 역습을 허용했고, 학포가 55분 중거리 슛으로 동점을 만들자 2분 만에 다시 윌록에게 실점했다. 63분 무뇨스와 맥알리스터, 70분 아라우호, 78분 쿠마스를 투입한 뒤 마지막 공격에서 무뇨스가 홀의 반칙을 유도했고 소보슬라이가 90+9분 페널티킥을 성공시켰다.\n\n숫자는 공격량을 지지하지만 경기 통제까지 뜻하지 않는다. 리버풀의 27개 슛 중 16개가 막혔고 오픈플레이 xG는 0.96으로, 전체 xG 2.98 가운데 페널티와 세트피스 비중이 컸다. 반대로 뉴캐슬은 39% 점유에서도 빅찬스 3회를 만들었다.\n\n## 2. 전술 구조와 특징\n\n- 기본 대형은 양 팀 모두 4-2-3-1. 리버풀은 프림퐁·케르케즈가 폭을 높이고 흐라벤베르흐–소보슬라이가 더블 피벗, 비르츠가 10번, 응구모하–학포가 양쪽에 섰다.\n- 빌드업은 짧은 패스 비중이 높았다(445회, 성공 375회·84%). 상대 진영 성공 패스 249회와 박스 터치 36회까지 진입했으나 막힌 슛 16회가 보여주듯 박스 정면에서 슈팅 경로를 여는 마지막 조합은 부족했다.\n- 이라올라의 압박 의도는 있었지만 첫 실전의 간격은 불안정했다. 두 실점 모두 공격이 끊긴 직후 중앙 보호가 사라졌고, 특히 두 번째 실점은 1-1 직후 다시 구조가 벌어진 장면이었다.\n- 후반 교체는 폭과 전진성을 늘렸다. 무뇨스는 오른쪽에서 직접 운반하며 결승점이 된 페널티를 얻었고, 맥알리스터는 점유 연결, 아라우호는 자케 교체 뒤 후방 안정, 쿠마스는 막판 공격 숫자를 담당했다.\n\n## 3. 전술 변화와 감독 발언\n\n이라올라는 경기 뒤 결과 자체에는 만족하지 않지만 늦은 동점이 주는 감정적 가치는 인정했고, 시작 방식이 준비한 최악의 시나리오였다고 설명했다. 초판에서 확인된 감독 발언은 성격과 회복력에 관한 것이 중심이며, 더블 피벗 간격이나 풀백 높이에 대한 구체 설명은 아직 없다.\n\n실측을 FC26 경기 전용 설정으로 옮기면 `4-2-3-1 / Short Passing / High / line height 72`가 가장 가깝다. 다만 이는 이 경기 재현값이며 시즌 정본 전술로 병합하지 않는다. 높은 점유·상대 진영 패스와 별개로 전환 보호가 무너졌기 때문에 ‘High’는 압박 성과가 아니라 위험을 포함한 실제 위치 높이다.\n\n## 4. 선수별 분석\n\n| 선수 | 분 | 역할·수행 | 게임 시사점 |\n|---|---:|---|---|\n| Alisson | 90 | 두 실점, 세이브 3. 첫 실점은 단독 돌파와 일대일이었다. | 골라인 수비보다 전환 보호 결손이 우선 문제. |\n| Jeremie Frimpong | 90 | 우측 높은 폭, 찬스 생성 3. 경고와 수비 전환 부담이 공존. | 공격형 윙백 성격 유지, 뒤 공간 보호 필요. |\n| Jérémy Jacquet | 70 | 리그 데뷔 선발. 전진 패스와 대인 대응은 무난했으나 전환 시 넓은 공간을 방어. | 공격적 BPD는 유지하되 라인 보호를 동반. |\n| Virgil van Dijk | 90 | 후방 리더, 공중·클리어 중심. 2실점을 구조적으로 막지는 못했다. | 단일 경기로 역할 변경 근거 없음. |\n| Miloš Kerkez | 90 | 좌측 폭을 높였지만 5분 엘랑가의 침투를 따라가지 못했다. | Support보다 공격적으로 쓸 때 잔여수비 보강 필요. |\n| Ryan Gravenberch | 78 | 학포 동점골 도움. 두 실점 전 공격 진영에서 공을 잃어 전환의 기점이 됐다. | Roaming DLP의 창조성과 안전장치 손실을 동시에 확인. |\n| Dominik Szoboszlai | 90 | 더블 피벗에서 왕복, 90+9분 PK 동점골. | 활동량과 결승 행동은 강점, 전환 시 중앙 잔류 규율 점검. |\n| Rio Ngumoha | 63 | 우측 선발, 직접 돌파와 폭 제공은 제한적. | 선발 RM 표본 1경기. 무뇨스와 경쟁 재검토. |\n| Florian Wirtz | 63 | 중앙 10번, 중거리와 연결을 시도했지만 결정적 침투가 적었다. | CAM 정본은 유지하되 9번·피벗과 간격 조정 필요. |\n| Cody Gakpo | 90 | 55분 동점골, 슛 6·찬스 생성 3, 평점 8.42. | 좌측 wide playmaker/Attack의 득점·창조 근거 강화. |\n| Alexander Isak | 90 | 슛 4, 큰 기회에서 득점하지 못했고 연결 터치가 적었다. | 단독 9번 고립을 줄일 10번·윙의 근접 지원 필요. |\n| Alexis Mac Allister | 27 | 비르츠 대신 들어와 중앙 패스 연결과 태클 2. | 경기 마감용 피벗 안정화 카드. |\n| Víctor Muñoz | 27 | 응구모하 대신 우측 투입, 직접 운반으로 마지막 PK 유도. | RM 선발 경쟁을 즉시 열 수 있는 실행 근거. |\n| Ronald Araújo | 20 | 자케 대신 투입, 공중 경합과 후방 패스 안정. | 리드가 아닌 추격 국면에서도 3번째 CB 카드로 기능. |\n| Lewis Koumas | 12 | 흐라벤베르흐 대신 투입해 공격 숫자를 늘림. | 짧은 표본이라 그리드·역할 처방 확정 금지. |\n\n## 5. 핵심 판정\n\n1. **공격량 우세와 통제력은 분리해야 한다.** 61% 점유·27슛에도 오픈플레이 xG는 0.96이고 전환 두 번에 실점했다.\n2. **흐라벤베르흐 로밍의 양면성이 첫 공식전에서 드러났다.** 도움을 만들었지만 두 실점 전 소유권 상실에도 관여했다.\n3. **오른쪽 윙 경쟁은 재개해야 한다.** 응구모하의 63분보다 무뇨스의 27분이 더 직접적인 박스 침투와 결과(PK 유도)를 냈다.\n4. **이라올라 이식 리스크 3건 중 잔여수비·체력/간격 리스크는 유지된다.** 케르케즈 수비 우선 문제와 골키퍼 우회 빌드업은 한 경기만으로 닫지 않는다.\n\n## 6. 결손과 재시도 조건\n\n- D+1(2026-08-25 10:00 KST): 공식 전체 기자회견·클럽 전술 영상·현지 전술 칼럼 재검색\n- D+2(2026-08-26 10:00 KST): 선수별 분석(비르츠·흐라벤베르흐·케르케즈·무뇨스)과 다국어 보강\n- D+3(2026-08-27 10:00 KST): 최종 재검색 뒤 신규 근거가 있으면 본문·DB를 갱신하고, 없으면 0건으로 기록해 `complete` 전환 가능성을 판단\n\n## 7. 출처\n\n- FotMob `matchDetails?matchId=5795371` — 팀·선수 스탯, 평점, 분, xG, 라인업\n- WhoScored/Opta `matchCentreData`, matchId `1983547` — 1,412개 이벤트, 터치 좌표, 평균 위치, PPDA 원천\n- Liverpool FC 공식 경기 리포트, 2026-08-23\n- Sky Sports 경기 리포트, 2026-08-23: https://www.skysports.com/football/newcastle-vs-liverpool/report/559452\n- The Guardian 경기 리포트·이라올라 인터뷰, 2026-08-23: https://www.theguardian.com/football/2026/aug/23/andoni-iraola-liverpool-alexander-isak-matthias-jaissle-newcastle\n- AS, 2026-08-23: https://as.com/futbol/internacional/victor-munoz-rescata-a-iraola-f202608-n/\n- Cadena SER, 2026-08-23: https://cadenaser.com/nacional/2026/08/23/el-liverpool-empata-contra-el-newcastle-en-el-debut-de-iraola-gracias-a-un-penalti-provocado-por-victor-munoz-en-el-ultimo-minuto-cadena-ser/\n- El País, 2026-08-23: https://elpais.com/deportes/futbol/2026-08-23/alarmante-debut-de-iraola-en-el-liverpool.html\n\n",
+   "report_path": "reports/match-watch/2026-08-23-liv-newcastle.md",
+   "result": "2-2",
+   "season": "2026-27",
+   "shots_o": 13,
+   "shots_v": 27,
+   "sot_o": 4,
+   "sot_v": 7,
+   "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
+   "stage": "Round 1",
+   "status": "draft",
+   "tactical_changes": "63분 무뇨스·맥알리스터, 70분 아라우호, 78분 쿠마스. 무뇨스가 90+8분 PK를 유도.",
+   "tactical_description": "61% 점유와 27개 슛을 만들었지만 두 차례 소유권 상실 뒤 중앙 보호가 사라져 역습 실점했다.",
+   "tactical_features": "4-2-3-1, 높은 풀백, 더블 피벗, 상대 진영 패스 249회. 전체 xG 2.98 중 오픈플레이 xG는 0.96.",
+   "title": "뉴캐슬 2-2 리버풀 — 이라올라 첫 공식전, 공격량과 전환 보호의 분리",
+   "updated_at": "2026-08-24T08:30:00+09:00",
+   "venue": "A",
+   "xg_o": 1.58,
+   "xg_v": 2.98
+  },
   {
    "bigch_o": 1,
    "bigch_v": 3,
@@ -29955,13 +30936,13 @@
  ],
  "player_stats": [
   {
-   "avg_rating": 7.02,
+   "avg_rating": 7.0,
    "dw_pg": 0.35,
    "ic_pg": 0.0,
    "kp_pg": 0.0,
    "label": "알리송 베케르",
-   "minutes": 4016,
-   "n": 48,
+   "minutes": 4106,
+   "n": 49,
    "tk_pg": 0.02,
    "xa_pg": 0.001,
    "xg_pg": null
@@ -29969,14 +30950,14 @@
   {
    "avg_rating": 7.25,
    "dw_pg": 4.75,
-   "ic_pg": 0.75,
+   "ic_pg": 0.74,
    "kp_pg": 0.33,
    "label": "판 다이크",
-   "minutes": 6335,
-   "n": 72,
-   "tk_pg": 0.54,
-   "xa_pg": 0.038,
-   "xg_pg": 0.206
+   "minutes": 6425,
+   "n": 73,
+   "tk_pg": 0.56,
+   "xa_pg": 0.037,
+   "xg_pg": 0.207
   },
   {
    "avg_rating": 6.97,
@@ -30004,85 +30985,85 @@
   },
   {
    "avg_rating": 6.67,
-   "dw_pg": 3.03,
-   "ic_pg": 0.55,
-   "kp_pg": 0.7,
+   "dw_pg": 3.07,
+   "ic_pg": 0.56,
+   "kp_pg": 0.71,
    "label": "케르케즈",
-   "minutes": 4650,
-   "n": 77,
-   "tk_pg": 1.15,
-   "xa_pg": 0.029,
-   "xg_pg": 0.196
+   "minutes": 4740,
+   "n": 78,
+   "tk_pg": 1.17,
+   "xa_pg": 0.028,
+   "xg_pg": 0.183
   },
   {
-   "avg_rating": 6.67,
-   "dw_pg": 2.45,
-   "ic_pg": 0.29,
-   "kp_pg": 0.49,
+   "avg_rating": 6.68,
+   "dw_pg": 2.44,
+   "ic_pg": 0.28,
+   "kp_pg": 0.54,
    "label": "프림퐁",
-   "minutes": 2572,
-   "n": 52,
-   "tk_pg": 0.69,
+   "minutes": 2662,
+   "n": 53,
+   "tk_pg": 0.7,
    "xa_pg": 0.083,
-   "xg_pg": 0.068
+   "xg_pg": 0.062
   },
   {
    "avg_rating": 7.01,
    "dw_pg": 3.79,
-   "ic_pg": 1.38,
+   "ic_pg": 1.39,
    "kp_pg": 0.72,
    "label": "흐라벤베르흐",
-   "minutes": 5445,
-   "n": 72,
-   "tk_pg": 1.3,
-   "xa_pg": 0.074,
+   "minutes": 5523,
+   "n": 73,
+   "tk_pg": 1.29,
+   "xa_pg": 0.073,
    "xg_pg": 0.085
   },
   {
    "avg_rating": 6.83,
-   "dw_pg": 3.3,
-   "ic_pg": 0.6,
-   "kp_pg": 0.89,
+   "dw_pg": 3.31,
+   "ic_pg": 0.59,
+   "kp_pg": 0.88,
    "label": "맥 알리스터",
-   "minutes": 5250,
-   "n": 74,
+   "minutes": 5277,
+   "n": 75,
    "tk_pg": 1.62,
-   "xa_pg": 0.059,
+   "xa_pg": 0.058,
    "xg_pg": 0.204
   },
   {
    "avg_rating": 7.4,
-   "dw_pg": 3.75,
+   "dw_pg": 3.74,
    "ic_pg": 0.72,
-   "kp_pg": 2.37,
+   "kp_pg": 2.38,
    "label": "소보슬라이",
-   "minutes": 6356,
-   "n": 74,
+   "minutes": 6446,
+   "n": 75,
    "tk_pg": 1.49,
-   "xa_pg": 0.213,
-   "xg_pg": 0.191
+   "xa_pg": 0.214,
+   "xg_pg": 0.207
   },
   {
    "avg_rating": 7.17,
    "dw_pg": 3.28,
-   "ic_pg": 0.31,
-   "kp_pg": 2.13,
+   "ic_pg": 0.3,
+   "kp_pg": 2.12,
    "label": "비르츠",
-   "minutes": 5037,
-   "n": 69,
+   "minutes": 5100,
+   "n": 70,
    "tk_pg": 1.1,
-   "xa_pg": 0.222,
+   "xa_pg": 0.219,
    "xg_pg": 0.26
   },
   {
-   "avg_rating": 7.17,
-   "dw_pg": 3.89,
-   "ic_pg": 0.28,
-   "kp_pg": 1.61,
+   "avg_rating": 7.19,
+   "dw_pg": 3.93,
+   "ic_pg": 0.32,
+   "kp_pg": 1.63,
    "label": "학포",
-   "minutes": 5105,
-   "n": 71,
-   "tk_pg": 0.69,
+   "minutes": 5195,
+   "n": 72,
+   "tk_pg": 0.72,
    "xa_pg": 0.16,
    "xg_pg": 0.277
   },
@@ -30123,16 +31104,16 @@
    "xg_pg": null
   },
   {
-   "avg_rating": 6.47,
-   "dw_pg": 0.33,
+   "avg_rating": 6.52,
+   "dw_pg": 1.5,
    "ic_pg": 0.0,
    "kp_pg": 1.0,
    "label": "Alexander Isak",
-   "minutes": 234,
-   "n": 4,
+   "minutes": 324,
+   "n": 5,
    "tk_pg": 0.0,
-   "xa_pg": null,
-   "xg_pg": null
+   "xa_pg": 0.01,
+   "xg_pg": 1.09
   },
   {
    "avg_rating": 6.41,
@@ -30147,13 +31128,13 @@
    "xg_pg": null
   },
   {
-   "avg_rating": 6.9,
-   "dw_pg": 2.36,
+   "avg_rating": 6.89,
+   "dw_pg": 2.38,
    "ic_pg": 0.32,
    "kp_pg": 0.07,
    "label": "아라우호",
-   "minutes": 2129,
-   "n": 59,
+   "minutes": 2149,
+   "n": 60,
    "tk_pg": 0.85,
    "xa_pg": 0.015,
    "xg_pg": 0.129
@@ -30172,25 +31153,25 @@
   },
   {
    "avg_rating": 6.92,
-   "dw_pg": 4.47,
-   "ic_pg": 0.25,
-   "kp_pg": 0.8,
+   "dw_pg": 4.39,
+   "ic_pg": 0.24,
+   "kp_pg": 0.78,
    "label": "무뇨스",
-   "minutes": 2941,
-   "n": 41,
-   "tk_pg": 0.65,
-   "xa_pg": 0.095,
-   "xg_pg": 0.202
+   "minutes": 2968,
+   "n": 42,
+   "tk_pg": 0.63,
+   "xa_pg": 0.094,
+   "xg_pg": 0.198
   },
   {
    "avg_rating": 7.02,
-   "dw_pg": 4.36,
+   "dw_pg": 4.35,
    "ic_pg": 0.91,
-   "kp_pg": 0.45,
+   "kp_pg": 0.48,
    "label": "자케",
-   "minutes": 1898,
-   "n": 22,
-   "tk_pg": 1.59,
+   "minutes": 1968,
+   "n": 23,
+   "tk_pg": 1.57,
    "xa_pg": 0.025,
    "xg_pg": 0.13
   },
@@ -31452,6 +32433,16 @@
     "n": 2,
     "season": "2026-27",
     "starts": 2
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.68,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    }
   ],
   "Giorgi Mamardashvili": [
@@ -31562,6 +32553,16 @@
     "n": 1,
     "season": "2026-27",
     "starts": 1
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.57,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 27,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 0
    },
    {
     "assists": 4,
@@ -31688,6 +32689,16 @@
     "starts": 1
    },
    {
+    "assists": 0,
+    "avg_rating": 6.67,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 27,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 0
+   },
+   {
     "assists": 2,
     "avg_rating": 6.84,
     "competition": "LaLiga",
@@ -31735,6 +32746,16 @@
     "competition": "Club Friendly",
     "goals": null,
     "minutes": 46,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.07,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 63,
     "n": 1,
     "season": "2026-27",
     "starts": 1
@@ -31944,6 +32965,16 @@
     "starts": 2
    },
    {
+    "assists": 0,
+    "avg_rating": 7.96,
+    "competition": "Premier League",
+    "goals": 1,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   },
+   {
     "assists": 7,
     "avg_rating": 7.18,
     "competition": "Premier League",
@@ -32022,6 +33053,16 @@
     "goals": 0,
     "minutes": 45,
     "n": 2,
+    "season": "2026-27",
+    "starts": 0
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.48,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 20,
+    "n": 1,
     "season": "2026-27",
     "starts": 0
    },
@@ -32116,6 +33157,16 @@
     "n": 2,
     "season": "2026-27",
     "starts": 2
+   },
+   {
+    "assists": null,
+    "avg_rating": 6.04,
+    "competition": "Premier League",
+    "goals": null,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    },
    {
     "assists": 0,
@@ -32345,6 +33396,16 @@
    },
    {
     "assists": 0,
+    "avg_rating": 7.04,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 70,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   },
+   {
+    "assists": 0,
     "avg_rating": 6.99,
     "competition": "Ligue 1",
     "goals": 0,
@@ -32466,6 +33527,16 @@
     "n": 3,
     "season": "2026-27",
     "starts": 2
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.32,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    },
    {
     "assists": 1,
@@ -32653,6 +33724,16 @@
    },
    {
     "assists": 0,
+    "avg_rating": 7.1,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   },
+   {
+    "assists": 0,
     "avg_rating": 7.26,
     "competition": "Premier League",
     "goals": 6,
@@ -32754,6 +33835,16 @@
     "starts": 2
    },
    {
+    "assists": 0,
+    "avg_rating": 6.74,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   },
+   {
     "assists": 1,
     "avg_rating": 6.71,
     "competition": "Premier League",
@@ -32844,6 +33935,16 @@
     "n": 2,
     "season": "2026-27",
     "starts": 2
+   },
+   {
+    "assists": 0,
+    "avg_rating": 8.42,
+    "competition": "Premier League",
+    "goals": 1,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    },
    {
     "assists": 5,
@@ -32946,6 +34047,16 @@
     "n": 1,
     "season": "2026-27",
     "starts": 0
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.38,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 78,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    },
    {
     "assists": 3,
