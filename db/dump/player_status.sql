@@ -104,3 +104,6 @@ INSERT INTO player_status VALUES(103,174,'2026-08-21','contract_end','2029-06-30
 INSERT INTO player_status VALUES(104,176,'2026-08-21','contract_end','2030-06-30',NULL,NULL,'fotmob.com/api/data (player 1254394, scripts/collect_fotmob_players.py, 2026-08-21 수집)',NULL);
 INSERT INTO player_status VALUES(105,186,'2026-08-21','contract_end','2029-06-30',NULL,NULL,'fotmob.com/api/data (player 1444231, scripts/collect_fotmob_players.py, 2026-08-21 수집)',NULL);
 INSERT INTO player_status VALUES(106,187,'2026-08-21','contract_end','2029-06-30',NULL,NULL,'fotmob.com/api/data (player 1670161, scripts/collect_fotmob_players.py, 2026-08-21 수집)',NULL);
+INSERT INTO player_status VALUES(107,191,'2026-08-23','contract_end','2029-06-30',NULL,NULL,'fotmob.com/api/data (player 950830, scripts/collect_fotmob_players.py, 2026-08-23 수집)',NULL);
+INSERT INTO player_status VALUES(108,192,'2026-08-23','injury','Injured',NULL,'2026-08-12','fotmob.com/api/data (player 982677, scripts/collect_fotmob_players.py, 2026-08-23 수집)','⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.');
+INSERT INTO player_status VALUES(109,192,'2026-08-23','contract_end','2028-06-30',NULL,NULL,'fotmob.com/api/data (player 982677, scripts/collect_fotmob_players.py, 2026-08-23 수집)',NULL);

@@ -1295,3 +1295,17 @@ INSERT INTO player_tenures VALUES(190,'2015-16',NULL,'Schalke 04 (34경기)','CM
 INSERT INTO player_tenures VALUES(190,'2014-15',NULL,'Schalke 04 (11경기) / Schalke 04 II (1경기)','CM/DM',NULL,NULL);
 INSERT INTO player_tenures VALUES(190,'2013-14',NULL,'Schalke 04 (32경기)','CM/DM',NULL,NULL);
 INSERT INTO player_tenures VALUES(190,'2012-13',NULL,'Bochum (36경기)','CM/DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(191,'2025-26',NULL,'Manchester United (26경기, 평점 6.49)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(191,'2024-25',NULL,'Manchester United (49경기, 평점 6.46)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(191,'2023-24',NULL,'Bologna (37경기, 평점 7.21)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(191,'2022-23',NULL,'Bologna (21경기, 평점 6.37)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(191,'2021-22',NULL,'Anderlecht (47경기, 평점 7.18)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(191,'2020-21',NULL,'Bayern München (5경기, 평점 6.04) / Parma (4경기, 평점 6.22) / Bayern München II (4경기, 평점 5.09)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(191,'2019-20',NULL,'Bayern München II (16경기) / Bayern München (12경기, 평점 6.89)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(191,'2018-19',NULL,'Bayern München II (12경기)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(192,'2025-26',NULL,'Monaco (43경기, 평점 7.01)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(192,'2024-25',NULL,'Monaco (16경기, 평점 6.73)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(192,'2023-24',NULL,'Monaco (32경기, 평점 6.73)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(192,'2022-23',NULL,'Reims (39경기, 평점 7.10)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(192,'2021-22',NULL,'Middlesbrough (21경기, 평점 6.53) / Arsenal (4경기, 평점 6.28)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(192,'2020-21',NULL,'Arsenal (6경기, 평점 6.82)','ST',NULL,NULL);
