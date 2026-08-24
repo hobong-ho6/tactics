@@ -470,3 +470,242 @@ FotMob unavailable 목록에 **셋 다 없다**. 공식 스쿼드 페이지에�
 - D+3 → 2026-08-27 08:00 KST
 
 각 회차는 이 파일에 `## D+N 추적 (YYYY-MM-DD)` 절을 **추가**한다(덮어쓰기 금지).
+
+---
+
+## D+1 추적 (2026-08-24)
+
+> 스킬 §2-1a. 경기일 2026-08-23 기준 **D+1**이다. 본문 「D+N 추적(예약됨)」은 D+1을 08-25로 적었으나
+> 경기일 기준 D+1은 **08-24**이므로 이 회차가 D+1이다. 남은 창은 **D+2 08-25 · D+3 08-26**.
+> ⚠️ 아래 내용은 §1~§10을 **수정하지 않고 추가**한다(불변규칙 2).
+
+### A. 새로 확보한 자료
+
+**본문 직접 열람**
+
+| 유형 | 제목 | 매체 | 게시일 | 언어 | URL |
+|---|---|---|---|---|---|
+| ⭐ 데이터 분석 | Brighton 4-0 Aston Villa Stats: Nightmare Start for Villa | **Opta Analyst** | 2026-08-23 | EN | https://theanalyst.com/articles/brighton-vs-aston-villa-stats-premier-league-08-2026 |
+| ⭐ 감독 1차(상대) | Albion v Aston Villa reaction: Fabian Hurzeler delighted with 4-0 win | 브라이턴 공식 | 2026-08-23 | EN | https://www.brightonandhovealbion.com/media-article/albion-v-aston-villa-reaction-fabian-hurzeler-delighted-with-4-0-win |
+| 감독·선수 1차 | John McGinn apologises to fans but provides hope | Sky Sports | 2026-08-23 | EN | https://www.skysports.com/football/news/11677/13576370/aston-villa-captain-john-mcginn-apologises-to-fans-but-provides-hope-despite-brighton-horror-show |
+| 감독 1차 | Emery gives cryptic answer when asked about Watkins | Sky Sports | 2026-08-23 | EN | https://www.skysports.com/football/news/11677/13576353/ollie-watkins-transfer-news-aston-villa-boss-unai-emery-gives-cryptic-answer-when-asked-about-striker-amid-al-hilal-interest |
+| 전술 블로그(상대 관점) | Brighton Thrash Lowly Aston Villa In Opening Day Demolition Job | roundtable.io · Ryan Adsett | 2026-08-23 | EN | https://roundtable.io/sports/soccer/premier-league/brighton-and-hove-albion/news/brighton-thrash-lowly-aston-villa-in-opening-day-demolition-job |
+| 팀 블로그(평점) | Aston Villa player ratings from embarrassing PL defeat | astonvillareview.com | 2026-08-23 | EN | https://www.astonvillareview.com/p/aston-villa-player-ratings-brighton-premier-league-embarrassment-analysis |
+| 오피니언 | Aston Villa crisis exposed as Watkins, Gomes misery compounds humiliation | Football365 | 2026-08-23 | EN | https://www.football365.com/news/opinion-aston-villa-crisis-watkins-gomes-misery-brighton-humiliation |
+
+**요약 기준(본문 미열람 · 403 포함)**: France24/AFP · VAVEL(에메리 상세, **403**) · Read Aston Villa(**403**) ·
+PL 매치센터 성명(고메스 퇴장) · Yahoo Sports UK(징계) · 🇸🇪 SVT Sport · 🇸🇪 Fotbollskanalen · 🇸🇪 FotbollDirekt ·
+Sussex Express(브라이턴 평점) · SofaScore 뉴스면(미열람).
+
+**영상 — ⚠️ 전술 분석 영상 0건**
+하이라이트 1건(`youtube.com/watch?v=rm_tYhI7B44`)은 **채널명·게시일 확인 실패**로 근거로 쓰지 않는다.
+Sky Sports 퇴장 클립(https://www.skysports.com/football/video/12606/13576286/off-j-gomes-40-brighton-4-0-aston-villa) 미시청 · 설명 텍스트 기준.
+
+### B. 실측을 보강·확정하는 발견
+
+1. ⭐ **실점 4건의 인과가 확정됐다** (본문 §1·§2는 추정 톤이었다).
+   - **8'**: 파우 토레스가 비조에게 시도한 백패스 → 데 카위퍼가 가로채 슛 → 우측 포스트 → 린델뢰프 몸 → **자책골**.
+     **영어·이탈리아어·네덜란드어 3개 언어권이 동일하게 파우 토레스 백패스를 기점으로 지목**했고
+     FotMob `errors_led_to_goal: 파우 토레스 1`과 일치한다 ⇒ **추정 → 확정으로 승격**.
+     ⚠️ 단 astonvillareview는 **마첸의 「볼을 뒤로 던진 판단」**에도 지분을 매겼다(마첸→토레스 2단 체인 가능성).
+   - **18'**: 던크의 좌측 해방 패스 → 뤼테르가 **파우 토레스를 1대1로 제침** → 낮은 컷백 → 데 카위퍼 탭인.
+   - **30'**: 디에고 고메스 헤딩 낙하 → 힌셸우드가 백라인 뒤로 침투, 무압박 헤더.
+     astonvillareview는 **린델뢰프의 마킹 실패**로 지목.
+   - **31'**: 킥오프 직후 **야신 아야리**가 박스 가장자리에서 주앙 고메스에게서 탈취 → 힌셸우드 마무리.
+2. ⭐ **Opta 기록 — 체제 스케일의 이례성**
+   - 브라이턴 **오픈플레이 xG 3.4**(자사 2021-22 이후 최고) · **전반만 2.96**(2021-22 이후 PL 전반 최다).
+   - 빌라 **전반 xG 0.18**. 힌셸우드 2골 간격 **79초**(30′·30:30 — 본문 「30′·31′」보다 정밀).
+   - ⭐⭐ **빌라의 PL 정규 경기 유효슛 0은 2022-10 뉴캐슬전 이후 처음이다.**
+   - PL 개막전 하프타임 4골차 열세는 **역대 3번째**. 4실점+퇴장+자책골 동시 기록은 **PL 역대 2번째**.
+3. **브라이턴 압박 트리거가 1차 진술로 나왔다** — 휘르첼러: 「**winning personal duels to set the trap
+   and then the right moment to step**」. 지역 압박이 아니라 **개인 듀얼 승리 후 스텝업**이다.
+   PPDA 5.20의 구조적 설명이 되고, 카마라(듀얼 4/11)·마첸(2/7)의 수치가 그 설계의 결과값이다.
+4. **본문 §3 「첫 8분 빌라 우세」가 상대 감독 1차 진술로 교차 확인됐다** —
+   휘르첼러: 「The first five, six, seven minutes we struggled controlling the game」.
+
+### C. ⛔ 당일 판정 정정 2건
+
+1. **정정 — §3 「브라이턴 양쪽 풀백 모두 전진 = 에메리·이라올라와 다른 문법」**
+   상대 관점 블로그는 **데 카위퍼를 LWB가 아니라 좌측 윙어로 기용**했다고 서술한다.
+   그렇다면 본문이 측정한 「보스카글리 DL ax=52.8 / 비퍼 DR ax=55.6 양측 전진」은
+   **풀백 전진이 아니라 윙어 배치의 산물**일 수 있다. ⇒ **「풀백 문법 차이」 판정을 약화한다.**
+   D+2에서 브라이턴 포메이션 원천을 재확인한다. (obs#312)
+2. **보정 — §1 「18분 뒷공간 롱볼」**
+   실제는 **CB(던크)의 전진 패스 + LCB(파우 토레스)의 1대1 패배**다.
+   「구조적 뒷공간 노출」이 아니라 **개인 대인 실패**에 가깝다 ⇒ rest-defense 라인 해석을 약화한다.
+
+### D. 신규 사실 — 다음 경기 구성을 강제한다
+
+⭐⭐ **주앙 고메스 3경기 정지 확정.** PL 매치센터 공식 성명: VAR 리뷰 후 주심이 옐로를 취소하고
+「35번 선수가 상대를 걷어찼다」는 사유로 레드(**violent conduct**). 9분에 이미 항의로 경고를 받은 상태였다.
+⇒ **8/31 아스날(H) · 헐 시티 · 노팅엄 포레스트 결장**. 본문 §7 「다음 경기 재검증 항목」에
+**피벗 조합 변경이 강제된다**는 조건을 추가한다.
+부수 사실: 울브스에서 약 £38m · 부상으로 출전이 불투명했던 상태의 깜짝 선발 ·
+2012-02 QPR 삼바 디아키테 이후 **PL 데뷔전 퇴장** 기록에 합류.
+⚠️ Sky Sports 영상 페이지는 이 퇴장을 「second yellow」로 표기했다 — **PL 공식 성명이 우선**이며 Sky 표기는 오기로 기록한다.
+
+### E. 감독·선수 1차 발언
+
+**우나이 에메리** (Sky Sports 직접 열람)
+
+| 원문 | 번역 |
+|---|---|
+| "I can't understand exactly why we lost in 20 minutes all the match and a player." | 「왜 20분 만에 경기 전체와 선수 한 명까지 잃었는지 정확히 이해할 수 없다.」 |
+| "The players that are here today, they are keeping the mentality I want for the team – to be always not complaining and not blaming." | 「오늘 여기 있는 선수들은 내가 팀에 원하는 멘털리티를 지키고 있다 — 늘 불평하지 않고 남 탓하지 않는 것.」 |
+| "Ask him. I only can answer it by silence." (왓킨스 결장 질문) | 「그에게 물어라. 나는 침묵으로만 답할 수 있다.」 |
+
+⚠️ 두 번째 발언을 영국 매체·패널이 **왓킨스를 겨냥한 「commitment jab」**으로 읽었으나
+**이는 매체 해석이지 에메리의 명시가 아니다.** 근거로 쓰지 않는다.
+⏳ 「다음 주 빌라 파크에서의 전술 훈련」 언급은 **VAVEL 요약 기준**이고 본문 403이다 — D+2에서 원문 확보 대상.
+
+**파비안 휘르첼러** (브라이턴 공식, 직접 열람)
+「The first five, six, seven minutes we struggled controlling the game」 ·
+「winning personal duels to set the trap and then the right moment to step」 ·
+「the first goal a little bit of luck with Maxi」 · 「the red card was a game changer as well」.
+
+### F. 선수별 보강 (45분+ 출전자)
+
+| 선수 | D+1 서사 | 실측과의 관계 |
+|---|---|---|
+| 비조 (GK 90) | astonvillareview **3/10**(「두 번 쉽게 뚫렸고 첫 코너에서 펀칭이 흔들렸다」) | ⚠️ **충돌** — 실측 실점방지 −0.17(막을 수 있던 것 사실상 없음). **실측 채택 유지** |
+| 캐시 (RB 90) | astonvillareview 2/10, 2실점 미저지 지목 | 실측(태클 2·인터셉트 1·최종3선 패스 10)과 다른 각도. 병기 |
+| 린델뢰프 (RCB 90) | 자책골은 SVT·이탈리아·네덜란드어권 전부 **본인 과실 아님**. ⭐ 다만 3실점에서 **힌셸우드 마킹 실패** 지목 | 감점 지점은 자책골이 아니라 **마킹** |
+| 파우 토레스 (LCB 74) | **3개 언어권이 8분 실점 기점으로 일치 지목** + 18분 1대1 패배. 2/10 | ⭐ `errors_led_to_goal 1`·「드리블 돌파 허용 2」의 **서사 이중 확인** |
+| 마첸 (LB 82) | 52분 슛이 「빌라 후반 최대 기회」(NL). 1실점에 판단 기여 + 3실점에서 제쳐짐. 3/10 | 사실 추가 |
+| 카마라 (RDM 90) | 3/10 — 「초반 중원 통제 거의 없음, 후반 수비적 적극성 개선」 | 실측(패스 96%·듀얼 36%)과 방향 일치 |
+| 맥긴 (RM 82) | 1차 발언 확보(사과). 31분 실점 직전 **고메스 횡패스의 수신자** | 사실 추가 |
+| 바클리 (CAM 74) | 3/10 — 「**압박을 통해** 빌라의 초반 최고 기회를 만들었다」 | ⛔ **일부 매체가 「바클리를 최전방에 세웠다」고 오보** — 실측(바클리 ax 48.5 < 부엔디아 58.6)이 반증. 폐기 |
+| 부엔디아 (ST 86) | **Opta·Sky·ESPN·이탈리아어권 모두 「makeshift striker / most advanced forward」** | ⭐ 본문 ST 기용 판정 **다중 확인**. ⚠️ 이탈리아어 요약의 「7분에 두 번 유효슛」은 **유효슛 0과 모순 — 폐기** |
+| 헤밍스 (LM 90) | 3/10 — 「공격 임팩트 미미」. 다른 매체 개별 서사 **0건** | 해당 블로그의 포지션 라벨은 신뢰하지 않는다(헤밍스·바클리를 FW로 표기) |
+| 주앙 고메스 (LDM 40) | §D 참조. astonvillareview **0/10**(창간 이래 첫 0점) | — |
+| 루헤리 (교체 81') | 이탈리아어권: 아탈란타 출신 이탈리아 측면수비수의 빌라 데뷔, 개별 평가 없음 | — |
+| 스즈키(미출전) | 🇯🇵 **이 경기 벤치를 다룬 일본어 기사 0건.** 확인된 것은 이적 축(08-19 완전이적, 총액 €35m=€30m+애드온 €5m, 5년, 일본인 GK 최초 PL). **선발 예상 보도가 있었으나 실제 벤치** | ⇒ 예상과 실제의 괴리 자체를 기록 |
+
+### G. ⚠️ 0건·미수행 기록 (다음 회차가 같은 검색을 반복하지 않도록)
+
+**0건 확정**
+
+| 언어 | 검색어 | 결과 |
+|---|---|---|
+| EN | `Brighton Aston Villa tactical analysis youtube video breakdown Hinshelwood De Cuyper` | **전술 분석 영상 0건** — 반환은 전부 2023~2025 과거 경기, 발행일 검증에서 전량 탈락 |
+| EN | `Brighton 4-0 Aston Villa tactical analysis` (site:youtube.com) | **0건** |
+| EN | TFA·BTL·Spielverlagerung·Coaches' Voice·StatsBomb 한정 | **theanalyst 1건 외 0건** |
+| EN | `reddit r/avfc Brighton 4-0 post match thread tactics` | **0건** — ⛔ 검색 엔진이 Reddit을 색인하지 않는다. **다음 회차는 웹서치로 Reddit을 시도하지 말 것** |
+| EN | `Ashley Preece Birmingham Mail ... verdict` | **0건** — BirminghamLive 도메인이 색인 밖. 다음 회차는 `site:birminghammail.co.uk` 직접 URL 추정 |
+| 🇪🇸 | `Emery Aston Villa Brighton 0-4 análisis Marca AS Relevo` 외 2건 | **스페인 매체 0건** — 반환은 전부 soccerway 과거 경기 |
+| 🇪🇸 | marca/as/relevo/mundodeportivo/sport/elpais/estadiodeportivo 도메인 한정 | ⛔⛔ **API 오류 — 7개 도메인 전부 크롤러 접근 불가.** **구조적 제약**이며 향후 스페인어 축은 **soccerway.es · ESPN Deportes · Goal.com ES** 경유로 전환한다 |
+| 🇩🇪 | 미시도 | 휘르첼러 발언을 브라이턴 공식 영어판으로 대체 확보 ⇒ 우선도 하락 |
+| 🇯🇵 | `鈴木彩艶 アストンビラ ブライトン 開幕戦 ベンチ` | **경기 축 0건**(이적 축 기사만) |
+| 🇧🇷 | `João Gomes cartão vermelho Aston Villa Brighton VAR estreia` | **브라질 매체 고유 기사 0건.** 반환된 포르투갈어 1건은 과거 조앙 페드루 건 — **오염, 배제**. 다음 회차는 매체명 직접 지정(`Trivela João Gomes ...`) |
+| 🇳🇱 | `Bizot Maatsen De Cuyper Brighton Aston Villa 4-0 analyse` | **VI·Voetbalzone·HLN 고유 기사 0건.** 요약에 과거 경기 오염 1건 포함 — 배제 |
+| 🇸🇪 | `Victor Lindelöf självmål Brighton Aston Villa svenska` | ✅ **3건 확보** — 유일하게 현지 매체가 직접 잡힌 언어권. 다만 사실 전달 위주, 전술 분석 없음 |
+| 🇮🇹 | `Ruggeri esordio Aston Villa Brighton 4-0` | **이탈리아 매체 고유 기사 0건.** 반환된 이탈리아어는 영어 매체 번역이고 **오염 1건**(유효슛 모순) 포함 |
+
+**403으로 미열람(D+2 재시도)**: france24.com · vavel.com · readastonvilla.com.
+VAVEL은 에메리 1차 발언의 유일한 상세 원천이므로 **브라우저 경유 시도 가치가 있다**.
+**avfc.co.uk 공식 포스트매치 인터뷰는 D+1 시점에도 여전히 0건**(URL 추정 실패 · 검색 미색인).
+
+⚠️ **반복 오염 패턴**: 「Brighton Aston Villa」 쿼리는 2022-11(1-2) · 2023-09(6-1) · 2025-12(3-4) ·
+2026-02(1-0) 경기를 높은 빈도로 반환한다. **제목 스코어가 4-0이 아니면 즉시 배제할 것.**
+
+### H. 상태 판정
+
+`status = 'draft'` **유지**. 유튜브 전술 분석·전술 블로그(전문)는 여전히 0건이고,
+에메리 1차 발언의 상세 원문(VAVEL·구단 공식)이 미확보다.
+**D+2(08-25) · D+3(08-26)** 뒤 재판정한다.
+
+---
+
+## D+1 추적 (2026-08-24)
+
+> 스킬 §2-1a. 범위는 **이 경기 한정**. 유튜브 전술 분석·전술 블로그는 D+1~D+3에 게시되므로 그 둘에 가중치를 뒀다.
+
+### 소스 4종 점검
+
+| 소스 종류 | 결과 |
+|---|---|
+| **유튜브 전술 분석** | ⛔ **0건** — 하이라이트(브라이턴 공식)뿐. 이 경기 전용 전술 브레이크다운 없음 |
+| **전술 블로그** | ⛔ TFA·BTL·Spielverlagerung·Tifo·Coaches' Voice **전부 0건**. ✅ 대신 **Opta Analyst**·**Aston Villa Review**(Substack) 2건 수확 |
+| **기사(전담 기자)** | ⛔ The Athletic/Tanswell·Birmingham Mail/Townley **0건**. △ Sussex Express·The Argus 본문 **403** |
+| **감독·선수 1차 발언** | ✅ **에메리·휘르첼러·맥긴** 확보 — 리포트 §8의 최대 공백이 메워졌다 |
+
+⚠️ **오탐 1건 적발**: 「UNAI EMERY PRESS CONFERENCE REACTION | ASTON VILLA v BRIGHTON」(UTV 팬채널)는
+podbean 원본에서 **발행일 2023-09-29**로 확인됐다. D+2에서 다시 낚이지 말 것.
+같은 성격의 오탐 다수(2026-02·2025-12 빌라-브라이턴 경기, 휘르첼러 일반론 영상) 전부 체제·발행일 검증에서 탈락.
+
+### ⭐⭐ 당일 판정 정정 3건
+
+1. **부엔디아는 고정 9번이 아니었다.** Aston Villa Review(Chris Nee, 08-23): 「**부엔디아가 바클리 앞에 섰고 둘이 자주 자리를 바꿨다**」.
+   §5는 부엔디아를 ST, 바클리를 CAM으로 **고정 서술**했고 이를 근거로 `st_advanced` **.388** / `cam_playmaker` **.486**을 산출했다.
+   ⇒ **두 낮은 값이 각각의 역할 부적합이 아니라 「두 선수가 한 구역을 교대 점유한 결과」일 수 있다.**
+   avg_x 58.6 / 48.5가 나란히 낮은 것과도 정합한다. **§7의 해석 프레임을 바꿔야 한다.**
+   ⚠️ 당일 절은 수정하지 않는다(불변규칙 2·3) — 이 항목이 정정 기록이다.
+2. **퇴장 사유 표기 정정.** PL Match Centre 공식 문구는 **「serious foul play」**이지 violent conduct가 아니다.
+   (「After VAR review, the referee issued a red card to Gomes for serious foul play… **No.35 kicks out at his opponent**」)
+   §1·§8의 「폭력적 행위」는 스페인어권 매체 표현(conducta violenta)이었다.
+3. **후반 무실점에 각주가 필요하다** — **코스툴라스의 골이 오프사이드로 취소**됐다. §3의 「후반에 출혈을 멈췄다」는 유지하되 이 사실을 병기.
+
+### 보강 (5건)
+
+4. ⭐ **「유효슈팅 0」의 무게가 측정됐다** — **2022년 10월 뉴캐슬전 이후 첫 PL 풀경기 무유효슈팅**(Opta Analyst).
+   4년 만의 사건이지 단발 사고가 아니다.
+5. ⭐ **8분 실점의 인과 사슬 확정**: 파우 토레스 → **비조에게 가는 횡패스 미스** → 데 카위퍼 회수·GK 제침 → 포스트 → 린델뢰프.
+   (일본어·스웨덴어·네덜란드어 3개 언어권 서술 일치) §1의 「박스 안 패스 미스」를 **「GK를 향한 횡패스」**로 특정할 수 있다.
+6. ⭐ **18분 실점의 출발점은 브라이턴 CB 던크의 전진 볼**이었다 → 뤼테르가 파우 토레스를 제친 뒤 낮은 컷백 → 데 카위퍼 탭인.
+   §2의 「rest-defense가 뒷공간 롱볼에 뚫렸다」가 **패서 특정으로 강화**된다 — 전환이 아니라 딥 포지션에서의 의도적 다이렉트.
+7. ⭐⭐ **전반 xG 2.96 : 0.18**(Sporza, 벨기에). 리포트가 가진 것은 풀타임 3.67:0.31뿐이었다.
+   ⇒ **10명이 되기 전 11대11 구간에서 이미 격차가 결정됐다.** §10-1의 「50분간 10명」 한계 경고를 **부분적으로 완화**한다
+   (퇴장 전 국면만으로도 붕괴가 설명된다). 브라이턴 전체 오픈플레이 xG 3.4는 **2021-22 이후 PL 자체 최다**(Opta).
+8. **에메리는 하프타임에 교체하지 않았다**가 복수 매체로 독립 확인 — §4-2의 실측 추론이 **보도 확인 사실로 승격** 가능.
+
+### 감독·선수 1차 발언
+
+**에메리(경기 후)** — ⭐ **전술적 설명을 제시하지 않았다**:
+> 「We started the first 10-15 minutes very well. Then **I can't understand exactly why** we lost in 20 minutes all the match and a player.」
+
+왓킨스 결장: 「**This question is for him.**」 / 침묵으로만 답하겠다는 취지.
+⇒ §10-5의 「「왜 그렇게 했는가」의 1차 근거가 없다」에 대한 답은 **「1차 근거가 존재하지 않는다」**에 가깝다.
+이적시장 마지막 10일 안에 해법을 찾겠다(Reuters).
+
+**휘르첼러(The Argus/Brian Owen, Yahoo UK 재배포 본문 직접 열람)** — ⭐ 최상급 상대 관점 자료:
+> 「The first five, six, seven minutes, **we struggled controlling the game. Villa started strong.**」
+> 「We got the control by **good intensity against the ball, by winning some personal duels, by forcing them to do mistakes.**」
+
+⇒ ⭐⭐ **「forcing them to do mistakes」가 §1의 `errors_led_to_goal` 2건(파우 토레스·주앙 고메스)을
+「개인 실수」가 아니라 「브라이턴 압박 설계의 산출물」로 재해석하게 만든다.**
+이건 게임 구현 판정에 직접 걸린다 — 빌라 쪽 파라미터 문제가 아니라 **상대 압박 강도의 함수**다.
+또 **「첫 5~7분은 빌라가 우세했다」를 상대 감독이 인정**했으므로 §3-1의 「첫 8분 우세」는 홈미디어 편향이 아니라 **양측 교차 확인된 사실**이다.
+
+**맥긴(주장)**: 「The goals we conceded were poor, there's no getting away from that.」 / 「After five games last season we had one point.」
+
+### 원장 항목 신규 (confidence 낮음 — 1차 출처 미확보)
+
+9. ⚠️ **주앙 고메스 3경기 출전정지**(아스날 홈·헐 시티 원정·노팅엄 포레스트 홈) — **포르투갈어권 검색 요약 기준, 원문 URL 미확보.**
+   사실이면 §7 「다음 경기 재검증 항목」에 **중원 구성이 강제로 바뀐다**는 전제를 추가해야 한다. **D+2에서 PL·구단 공식으로 확정할 것.**
+10. ⚠️ **주앙 고메스는 부상으로 개막전 출전이 불투명했던 서프라이즈 선발**(포르투갈어권, 요약 기준). 사실이면 40분 표본 해석에 변수가 붙는다.
+11. **스즈키 이적은 2026-08-19 공식 완료**(일본어권), PSG행이 **대리인 수수료 문제로 막판 결렬**(€35m 합의 상태)된 뒤 파르마와 재합의. **일본인 GK 최초 PL 선수.**
+
+### 원천 충돌 (신규)
+- **빅찬스**: FotMob 6 ↔ SofaScore 계열 5. §10-6의 유효슈팅 충돌과 같은 축. **FotMob 채택 유지.**
+- **퇴장 시각**: 일본어권 38분 ↔ 리포트·영어권 40분. **FotMob/Opta 값(40′) 유지.**
+
+### 0건 소스와 시도한 검색어 (D+2 반복 금지)
+
+- 🇬🇧 영어 9종: `Brighton 4-0 Aston Villa tactical analysis Hürzeler Emery` · `…tactical breakdown YouTube analysis video` ·
+  `"Aston Villa" Brighton 4-0 analysis Jacob Tanswell OR "John Townley"…` · `Brighton fan channel reaction Villa 4-0…` ·
+  `totalfootballanalysis OR breakingthelines OR spielverlagerung Brighton Aston Villa 2026/27` ·
+  `"Claret and Blue" OR "The Villa View" podcast Brighton 4-0` 등 → **전술 영상·블로그 0건**
+- 🇩🇪 독일어: `Hürzeler Brighton Aston Villa 4:0 Pressekonferenz kicker Sky Sport` → **kicker·Sky DE 0건 확정.**
+  확보된 휘르첼러 인용은 전부 영어권(Argus/Hayters) 경유.
+- 🇧🇷 포르투갈어: `João Gomes cartão vermelho Aston Villa Brighton estreia` → ✅ 수확(출전정지·서프라이즈 선발·£38m). **Trivela 등 자체 분석은 0건.**
+- 🇪🇸 스페인어: `Emery Brighton 4-0 Villa Relevo Marca AS rueda de prensa` → **Relevo·Marca·AS 전용 기사 0건.**
+  ⚠️ EFE/Infobae 1건은 **득점자 귀속 오류**(8분을 뤼테르 득점으로 기재) — **수치·귀속 채택 금지, 논조만 참고.**
+- 🇳🇱🇧🇪 네덜란드어: `De Cuyper Brighton Aston Villa 4-0 analyse` → ✅ **Sporza 전반 xG 2.96:0.18**(검색 요약 기준, 본문 미열람 — D+2에서 열람).
+- 🇸🇪 스웨덴어: `Lindelöf självmål Aston Villa Brighton 4-0` → 3건 존재하나 **새 전술 정보 없음**. D+2 우선도 낮음.
+- 🇯🇵 일본어: `鈴木彩艶 アストンビラ ブライトン 開幕戦` → ✅ **최대 수확 언어권.** 스즈키 이적 경위·에메리 사전 발언·미토마 부상·
+  **8분 실점 국면 상세(파우 토레스→비조 횡패스 특정)를 일본어에서만** 얻었다. **불변규칙 10 재실증.**
+
+### D+2 권고
+① `theargus.co.uk`·`sussexexpress.co.uk` 직접 URL 재시도 ② **Sporza 원문 본문 열람**
+③ **주앙 고메스 3경기 정지의 1차 원천**(PL/구단 공식) 확보 ④ 유튜브는 **채널명 직격**(Tifo Football, The Athletic FC, Statman Dave, 브라이턴 팬채널 **Seagulls Social·Seagulls Central**)
+⑤ 독일어권은 D+1에도 0건 — **D+3에 한 번만 더 시도하고 종결**

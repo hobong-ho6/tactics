@@ -68,3 +68,113 @@
 - AS, 2026-08-23: https://as.com/futbol/internacional/victor-munoz-rescata-a-iraola-f202608-n/
 - Cadena SER, 2026-08-23: https://cadenaser.com/nacional/2026/08/23/el-liverpool-empata-contra-el-newcastle-en-el-debut-de-iraola-gracias-a-un-penalti-provocado-por-victor-munoz-en-el-ultimo-minuto-cadena-ser/
 - El País, 2026-08-23: https://elpais.com/deportes/futbol/2026-08-23/alarmante-debut-de-iraola-en-el-liverpool.html
+
+---
+
+## D+1 추적 (2026-08-24)
+
+> 스킬 §2-1a. 범위는 **이 경기 한정**. 유튜브 전술 분석·전술 블로그는 D+1~D+3에 게시되므로 그 둘에 가중치를 뒀다.
+
+### ⚠️⚠️ 리포트 결손 정정 — 뉴캐슬 감독은 에디 하우가 아니라 **마티아스 야이슬레(Matthias Jaissle)** 다
+
+하우는 떠났고 **이 경기는 야이슬레의 공식 데뷔전이기도 하다** — 즉 **신임 감독 2인의 맞대결**이었다.
+기존 리포트에 야이슬레 언급이 전무하다. 이 경기의 성격 규정 자체가 바뀐다.
+
+### 소스 4종 점검
+
+| 소스 종류 | 결과 |
+|---|---|
+| **유튜브 전술 분석** | ⛔ **이 경기 전용 0건.** 팬 리액션·평점쇼만 존재(The Anfield Wrap 2건·The Redmen TV 1건 — **모두 미시청, 제목·요약만 확인**) |
+| **전술 블로그** | ⛔ TFA·BTL·Spielverlagerung·Coaches' Voice **0건**. ✅ **Opta Analyst**·**This Is Anfield**(403·요약)·**NBC Sports** 3건 수확 |
+| **기사(전담 기자)** | ⛔ The Athletic/Pearce·Liverpool Echo(Gorst·Doyle)·Chronicle Live **전부 0건**. ✅ ESPN·Goal·kicker·The Mag |
+| **감독·선수 1차 발언** | ✅ **이라올라 공식 회견 전문**(리버풀 FC 공식) · **야이슬레**(The Mag) · 캐러거·스터리지 |
+
+⚠️ **배제한 오탐 — 절대 이 경기 근거로 쓰지 말 것**:
+「How Liverpool's Build Up DESTROYED Newcastle's Press」는 **2026-02-02 슬롯 체제 4-1 홈경기**다(제목 유사, 오인 위험 큼).
+「The ULTIMATE Tactical Guide To Iraola's Liverpool」(2026-06)·「How Liverpool Setup Under Andoni Iraola」(2026-06-05)·
+「How Andoni Iraola Is Already Changing Liverpool」(프리시즌 3경기 기준) — 전부 **레짐·날짜 검증에서 탈락**.
+
+### ⭐⭐ 당일 판정 정정 3건
+
+1. ⭐⭐ **「두 실점 모두 같은 메커니즘」은 감독 본인이 부정했다.** 이라올라:
+   > 「There are **different reasons** why we conceded both goals, even though both are transitions… There is a reason why Newcastle are so good there.」
+   > 「Second one, I think **we had the numbers** to defend it better… we had numbers, but we don't defend it properly… **we should compete for the first ball**.」
+
+   ⇒ **2번째 실점은 수적 열세가 아니라 첫 경합(first ball) 회피가 원인**이다. §2의 단일 메커니즘 서술은 수정 대상.
+   뉴캐슬 쪽 서술(위사 홀드업 → 윌록 릴리스, **롱볼 반복 사용**)도 이와 일치한다.
+2. ⭐⭐ **케르케즈 개인 문제가 아니라 4명 동시 이탈 구조다.**
+   Goal(Mark Doyle): 엘랑가 선제골 순간 **흐라벤베르흐·소보슬라이 더블 피벗 두 명 모두 상대 박스 안**에 있었다.
+   NBC(Joe Prince-Wright): **프림퐁·케르케즈가 *동시에* 전진**해 판데이크–자케를 노출했다.
+   ⇒ §4의 「케르케즈가 엘랑가의 침투를 따라가지 못했다」는 **개인 처방(케르케즈 Support)이 아니라 팀 지시**
+   (양 풀백 동시 전진 금지 / 피벗 1명 잔류) 문제로 재분류해야 한다. **두 소스가 독립 확인.**
+3. **§3의 「감독 발언은 성격·회복력 중심, 구체 전술 설명 없음」은 무효화됐다** — 아래 회견 전문 참조.
+
+### 이라올라 경기 후 회견 (리버풀 FC 공식, 본문 직접 열람)
+
+- **빌드업 과잉**: 「We have to finish more plays, **we were trying to overdo things in the first phase**.」
+- ⭐ **첫 실점의 원인은 수비가 아니라 마무리 미실행**:
+  > 「The first one I think **we should just finish the play**… it's a **four-v-three**, we are on the edge of the box and it's a clear situation to shoot.」
+
+  ⇒ **선제 실점 직전 리버풀이 박스 앞 4대3 우위에서 슛하지 않고 계속 이어간 것이 역습의 발단**이라는 감독 본인의 인과 설명.
+  리포트의 「막힌 슛 16회 / 마지막 조합 부족」과 정확히 맞물린다.
+- **개인 탓 아님 명시**: 「It's just **not personnel**… [it] is something that we have to correct **between a lot of players**.」
+- ⭐ **체력 축 1차 근거**(BBC, 스페인어 매체 경유): 「**es difícil aguantar los 90 minutos completos con los mismos jugadores
+  de la manera en que queremos jugar**」 ⇒ 리포트 판정 4의 「체력/간격 리스크」를 감독 본인이 확인.
+- ⚠️ **흐라벤베르흐 옹호**(네덜란드어권 요약 경유 — **직접 fetch 아님**): 그의 박스 근처 전진을 억제하지 않고
+  **팀 전체가 그에 맞춰 적응하게 하겠다**는 취지. **FC 처방 함의가 크다 — D+2에 원문 확정 필요.**
+
+### 보강
+
+4. ⭐⭐ **Opta: 리버풀은 지난 시즌 개막 이후 fast break 상황에서 9실점 — PL 전체 1위.** 이 경기 두 골이 그 카운트에 포함된다.
+   ⇒ 리포트 판정 1의 성격이 바뀐다: **이라올라 데뷔전 문제가 아니라 슬롯 체제에서 이월된 구조 결함**이며 이라올라 부임이 이를 악화시킨 것.
+   **FC 처방에서 「신임 감독 적응 리스크」가 아니라 「스쿼드 상수」로 취급해야 한다.**
+5. ⭐ **응구모하 터치 21회(리버풀 선발 최소) · 뉴캐슬 박스 안 1회**(This Is Anfield). 판정 3의 근거가 인상에서 **수치로 승격**.
+   오른쪽 배치 시 바깥으로 나가는 스피드가 없고 드리블 각도에 익숙하지 않다는 구체 서술("shoehorned").
+6. ⭐ **아이러니 하나**: 리버풀이 한 경기 역습 2실점을 한 것은 작년 8월 이후 처음이고, **그때 상대가 바로 이라올라의 본머스**였다(ESPN).
+7. **자케 선발은 선택이 아니라 강제** — 코너 브래들리·조 고메스 부상. 리포트는 「리그 데뷔 선발」로만 기록.
+
+### 상대(뉴캐슬) 관점 — 리포트에 전량 신규
+
+- **선발 XI**: Hornicek; Dedic, Thiaw, Botman, Hall; Miley, Steur; **Elanga, Wissa, Barnes**; Osula.
+  오술라 원톱 아래 **위사·반스·엘랑가**가 직선 침투 담당.
+- ⭐ **선제골 연쇄 전체**: 데뷔전의 **아마르 데디치**가 오술라 진로로 볼을 밀어줌 → 오술라가 하프라인 너머로 엘랑가를 출발시킴 →
+  엘랑가가 **케르케즈를 속도로 벗겨내고** 알리송 옆으로 마무리. ⇒ **리버풀 공격 진영 소유권 상실 → 뉴캐슬 자기 진영 1패스 → 하프라인 돌파의 2패스 역습.**
+- ⭐ **메커니즘이 턴오버 역습만이 아니다** — 뉴캐슬은 **롱볼을 반복 사용**해 전방 스피드로 공략했다. 리포트의 단일화 서술과 어긋난다.
+- **두 번째 골**: 위사가 밀집 지역에서 홀드업 → 윌록 릴리스. 윌록은 **야이슬레의 첫 교체 카드였고 투입 2분 만에** 득점.
+- **야이슬레**: 「Frustration in the end… but overall positivity. What they showed over 90 minutes was excellent.」
+  PK에 대해 「**too soft penalty**… if the referees are consistent with this approach, then you see too many penalties throughout the season.」
+- 뉴캐슬 자기비판: 소유 시 부주의해 불필요하게 압박을 자초했다 ⇒ **리버풀 61% 점유 중 상당량이 뉴캐슬의 볼 처리 실패에서 나왔다**는 함의.
+- 부수: 경기 전 **댄 번 훈련 중 발목 부상**. 양 팀 케빈 키건 추모.
+
+### 펀딧
+- **캐러거**: 두 실점 모두 중앙 관통을 「madness」로 규정. 2번째 실점 후 「**Again! This midfield cannot work, I said it before a competitive ball was kicked.**」
+- **스터리지**(Sky): 9월 1일 마감 전 새 6번 영입 요구.
+
+### 데이터 충돌 (실측 확정 필요)
+- **xG**: 리포트 2.98–1.58 ↔ 일부 매체 2.73–1.43 (FotMob vs Opta 차이 가능성)
+- **엘랑가 골 시각**: 4분(kicker) ↔ 5분(다수)
+- **가포→윌록 간격**: 157초(ESPN) ↔ 176초(Goal)
+- **PK 시각**: 90+9(리포트·다수) ↔ 96분/98분 혼재
+- ⚠️ **무뇨스 평가 충돌**: This Is Anfield 「직선성·스피드 명백」 ↔ 스페인어권(Infobae 계열) 「**apenas había intervenido**」
+  (30분 가까이 거의 관여하지 못하다 마지막 액션에서만 나타났다). **현재 리포트는 낙관 쪽만 반영 중 — 실측 터치/전진 캐리로 판정할 사안.**
+
+### 0건 소스와 시도한 검색어 (D+2 반복 금지)
+
+| 소스 | 검색어 | 결과 |
+|---|---|---|
+| TFA/BTL/Spielverlagerung/Coaches' Voice | `"Iraola" Liverpool Newcastle tactical analysis totalfootballanalysis OR breakingthelines OR spielverlagerung OR tifo 2026` (EN) | 0건 |
+| 유튜브 전술 브레이크다운 | `youtube Iraola Liverpool tactical analysis Newcastle debut breakdown` / `"Newcastle 2-2 Liverpool" post match analysis video Iraola tactics 24 August 2026` (site:youtube.com) | 0건. YouTube 검색 페이지 직접 fetch도 실패(푸터만 반환) |
+| The Athletic / Pearce | `"Newcastle" "Liverpool" 2-2 Iraola James Pearce The Athletic analysis` | 0건(페이월) |
+| Liverpool Echo (Gorst·Doyle) | `Liverpool Echo Paul Gorst Ian Doyle Newcastle Liverpool Iraola verdict` | 0건. **결과가 전부 Iraola-Bournemouth 구자료로 오염 — 이 검색어 재사용 금지** |
+| Chronicle Live | `chroniclelive Newcastle 2-2 Liverpool Jaissle analysis Wissa Osula Elanga` | 0건 |
+| **바스크어** | `Iraola Liverpool "Newcastle" prentsaurrekoa OR "Iraolaren" debuta euskaraz Premier` (EU) | **완전 0건.** berria.eus·diariovasco 색인 미포착 ⇒ D+2에는 **도메인 직접 fetch**로만 시도 |
+| Relevo/El Desmarque/Marca/AS 전술 칼럼 | `Iraola debut Liverpool Newcastle análisis táctico Relevo El Desmarque` 외 2종 (ES) | 해당 매체 0건. **스페인어권은 사실상 소진** — 확보된 것은 통신사형 크로니카뿐 |
+| NUFC 팟캐스트 | `NUFC Matters OR "The Everything is Black and White" Liverpool 2-2 Jaissle tactical review` | 에피소드 0건 |
+| PPDA·field tilt 공개 소스 | `Liverpool Newcastle Iraola pressing PPDA field tilt data opta stats 2026-27` | 수치 공개 0건(Opta 매치센터 전용) |
+
+**본문 접근 실패 — D+2 우선 타깃**: This Is Anfield(403) · Sportskeeda(405) · VAVEL 뉴캐슬 관점 전용(403) ·
+NUFC Blog(미색인) · **Eurosport.de「Alles zurück auf null für Florian Wirtz」·Sport1「Florian Wirtz: Jetzt oder nie」**(제목만 — **비르츠 10번 축 전용이라 가치 높음**)
+
+**언어 커버리지**: 영어 ✅ / 스페인어 ✅(소진) / 독일어 △(요약까지) / 네덜란드어 △(요약만) / **바스크어 ❌(방법 변경 필요)**
+⛔ **미시도: 헝가리어(소보슬라이)·프랑스어(자케)·스웨덴어(이사크·엘랑가)** —
+⭐ **스웨덴어는 양쪽 득점자(엘랑가)와 리버풀 9번(이사크)이 모두 스웨덴인이라 D+2 최우선 미개척 언어**다.
