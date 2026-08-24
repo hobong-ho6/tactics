@@ -40,11 +40,12 @@ def main():
     con = sqlite3.connect(DB)
     k = Kernel()
     slots = {}
-    for rid, pos, x, st in con.execute("SELECT regime_id, pos, x, slot_type FROM slots"):
-        slots.setdefault((rid, st), []).append((pos, x))
+    for rid, pos, x, st, fm in con.execute(
+            "SELECT regime_id, pos, x, slot_type, formation FROM slots"):
+        slots.setdefault((rid, st), []).append((pos, x, fm))
 
     sql = """SELECT r.team_code, se.player_id, COALESCE(se.label, p.name_kr), se.slot_type,
-                    se.map25, se.fit_role, se.fit_focus, se.fit_sim, se.regime_id
+                    se.map25, se.fit_role, se.fit_focus, se.fit_sim, se.regime_id, se.pos_only
              FROM squad_entries se
              JOIN players p ON p.id = se.player_id
              JOIN regimes r ON r.id = se.regime_id
@@ -55,13 +56,30 @@ def main():
         args.append(a.team)
     rows = con.execute(sql + " ORDER BY r.team_code, se.slot_type", args).fetchall()
 
-    same, drift, missing, noval = 0, [], [], 0
-    for team, pid, kr, st, m, role, focus, sim, rid in rows:
+    same, drift, missing, noval, pinned = 0, [], [], 0, 0
+    for team, pid, kr, st, m, role, focus, sim, rid, pos_only in rows:
         cands = slots.get((rid, st))
         if not cands:
             missing.append((team, kr, st))
             continue
-        best = max((k.best_fit(m, x, st) + (pos,) for pos, x in cands), key=lambda t: t[2])
+        # ⭐ [2026-08-24] 후보를 좁히는 두 단계 — 없으면 오탐이 난다(obs 참조).
+        #  ⑴ pos_only가 있으면 그 자리만 본다. 사이드 고정은 duty·관측에 따른 **판정**이지
+        #     드리프트가 아니다(라크루아 CCB·로저스 LW가 이 이유로 Δ+0.06·+0.14 오탐이었다).
+        #  ⑵ 그래도 여러 포메이션이 섞이면 **저장값을 재현하는 포메이션**으로 좁힌다.
+        #     한 (regime, slot_type)에 여러 슬롯 세트가 공존하고(첼시 3-4-2-1·3-4-3·5-4-1)
+        #     세트마다 x가 다르다 — 세트를 섞으면 타 체제 앵커와 비교하게 된다(불변규칙 7).
+        #     에수구가 이 경우였다: 저장 .705는 3-4-2-1 RCM(x=55), 오탐 .936은 3-4-3 RCM(x=60).
+        if pos_only:
+            cands = [c_ for c_ in cands if c_[0] == pos_only] or cands
+            pinned += 1
+        fms = {c_[2] for c_ in cands}
+        if sim is not None and len(fms) > 1:
+            hit = {c_[2] for c_ in cands
+                   if abs(k.best_fit(m, c_[1], st)[2] - sim) < a.min_delta}
+            if hit:
+                cands = [c_ for c_ in cands if c_[2] in hit]
+        best = max((k.best_fit(m, x, st) + (pos, fm) for pos, x, fm in cands),
+                   key=lambda t: t[2])
         if sim is None:
             noval += 1
             drift.append((team, kr, st, None, None, None, best))
@@ -72,14 +90,14 @@ def main():
             drift.append((team, kr, st, role, focus, sim, best))
 
     print(f"대조 {len(rows)}행 · 일치 {same} · 차이 {len(drift)}"
-          f"(그중 저장값 NULL {noval}) · 슬롯 기하 없음 {len(missing)}")
+          f"(그중 저장값 NULL {noval}) · pos_only 고정 {pinned} · 슬롯 기하 없음 {len(missing)}")
     if drift:
         print("\n차이 — ⚠️ 오류가 아니라 duty 제약·사이드 고정에 따른 판정일 수 있다:")
         for team, kr, st, role, focus, sim, best in drift:
             cur = "저장 없음" if sim is None else f"저장 {role}/{focus} {sim:.3f}"
             d = "" if sim is None else f" (Δ{best[2] - sim:+.3f})"
             print(f"  [{team}] {kr} {st}: {cur} vs 커널 {best[0]}/{best[1]} {best[2]:.3f}"
-                  f" @{best[3]}{d}")
+                  f" @{best[3]}({best[4]}){d}")
     if missing:
         print("\n⚠️ slots에 해당 (regime, slot_type) 기하가 없어 대조 불가:")
         for team, kr, st in missing:

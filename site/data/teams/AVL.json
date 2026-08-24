@@ -66523,10 +66523,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: gk_goalkeeper/Defend 0.961. 근거: GK 슬롯이 두 포메이션 모두 x=50 단일 — 사이드 모호성 없음.",
+   "fit_focus": "Defend",
+   "fit_role": "gk_goalkeeper",
+   "fit_sim": 0.961,
    "formation": "4-2-3-1 Wide",
    "grid_caveat": null,
    "grid_club": null,
@@ -66598,10 +66598,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: fb_wingback/Balanced 0.862. 근거: pos_only=LB 기설정 — 해당 pos 커널값 그대로.",
+   "fit_focus": "Balanced",
+   "fit_role": "fb_wingback",
+   "fit_sim": 0.862,
    "formation": "4-2-3-1 Wide",
    "grid_caveat": null,
    "grid_club": null,
@@ -66723,10 +66723,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: cb_bpd/Aggressive 0.927. 근거: pos_only=LCB 기설정 — 해당 pos 커널값 그대로.",
+   "fit_focus": "Aggressive",
+   "fit_role": "cb_bpd",
+   "fit_sim": 0.927,
    "formation": "4-2-3-1 Wide",
    "grid_caveat": null,
    "grid_club": null,
@@ -66748,7 +66748,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). 커널 argmax는 RCB(63) 0.744지만 RCB는 콘사(0.964·pos_only=RCB), LCB는 파우 토레스(0.927·pos_only=LCB)가 점유한다. 백업 CB의 사이드가 미정이라 값을 넣으면 사이드를 발명하게 된다. LCB 0.659 / RCB 0.744. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -66848,7 +66848,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). LDM(38) dm_dlp/Roaming 0.786 / RDM(62) dm_dlp/Roaming 0.843. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -66873,7 +66873,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). LDM(38) dm_dlp/Roaming 0.789 / RDM(62) dm_dlp/Roaming 0.899. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -66898,7 +66898,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). LDM(38) dm_widehalf/Build-Up 0.563 / RDM(62) dm_holding/Roaming 0.632. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -67048,32 +67048,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
-   "formation": "4-2-3-1 Wide",
-   "grid_caveat": null,
-   "grid_club": null,
-   "label": "맥긴",
-   "map25": "001370126X003770024600011",
-   "name_en": "John McGinn",
-   "name_kr": "맥긴",
-   "player_id": 10,
-   "pos": "LM",
-   "rate_basis": "season",
-   "rate_note": "RM 21경기 평균 7.08 · 피크 8.7",
-   "rating": 7.08,
-   "regime_id": 1,
-   "slot_type": "WM",
-   "sort_order": 50,
-   "source": "appearances measured",
-   "source_kind": "squad",
-   "status": "OWNED",
-   "team_code": "AVL"
-  },
-  {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 대상 외] 산초는 `player_tenures`에 2026-27 행이 없다(25/26 AVL 1,672분이 마지막) — **이탈 선수**이므로 26/27 처방 대상이 아니다. 커널 argmax는 wm_winger/Attack 0.619 @LM이나 백필하지 않고 25/26 유산 행으로 NULL을 유지한다. G11의 「산초 이탈 원장 있음」과 정합.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -67123,10 +67098,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: wm_wideplm/Attack 0.755. 근거: player_duties(id=12·27)가 좌측 고정·「우측 배치 금지」를 반복 명시 — LM 확정.",
+   "fit_focus": "Attack",
+   "fit_role": "wm_wideplm",
+   "fit_sim": 0.755,
    "formation": "4-2-3-1 Wide",
    "grid_caveat": null,
    "grid_club": null,
@@ -67248,10 +67223,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: fb_att_wb/Support 0.898. 근거: pos_only=RB 기설정 — 해당 pos 커널값 그대로.",
+   "fit_focus": "Support",
+   "fit_role": "fb_att_wb",
+   "fit_sim": 0.898,
    "formation": "4-2-3-1 Wide",
    "grid_caveat": null,
    "grid_club": null,
@@ -67373,7 +67348,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). 커널 argmax는 RCB(63) 0.744지만 RCB는 콘사(0.964·pos_only=RCB), LCB는 파우 토레스(0.927·pos_only=LCB)가 점유한다. 백업 CB의 사이드가 미정이라 값을 넣으면 사이드를 발명하게 된다. LCB 0.659 / RCB 0.744. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -67398,10 +67373,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: cb_bpd/Aggressive 0.964. 근거: pos_only=RCB 기설정 — 해당 pos 커널값 그대로.",
+   "fit_focus": "Aggressive",
+   "fit_role": "cb_bpd",
+   "fit_sim": 0.964,
    "formation": "4-2-3-1 Wide",
    "grid_caveat": null,
    "grid_club": null,
@@ -67573,7 +67548,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). LDM(38) dm_dlp/Roaming 0.786 / RDM(62) dm_dlp/Roaming 0.843. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -67598,7 +67573,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). LDM(38) dm_dlp/Roaming 0.789 / RDM(62) dm_dlp/Roaming 0.899. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -67623,7 +67598,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). LDM(38) dm_widehalf/Build-Up 0.563 / RDM(62) dm_holding/Roaming 0.632. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -67748,10 +67723,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: wm_wideplm/Attack 0.761. 근거: player_duties(id=14)가 값까지 명시: 「wm_wideplm/Attack 커널이 실측 .51과 정확히 겹치고 적합 1위(.761)」.",
+   "fit_focus": "Attack",
+   "fit_role": "wm_wideplm",
+   "fit_sim": 0.761,
    "formation": "4-2-3-1 Wide",
    "grid_caveat": null,
    "grid_club": null,
@@ -67773,7 +67748,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 대상 외] 산초는 `player_tenures`에 2026-27 행이 없다(25/26 AVL 1,672분이 마지막) — **이탈 선수**이므로 26/27 처방 대상이 아니다. 커널 argmax는 wm_winger/Attack 0.619 @LM이나 백필하지 않고 25/26 유산 행으로 NULL을 유지한다. G11의 「산초 이탈 원장 있음」과 정합.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -67817,31 +67792,6 @@
    "regime_id": 1,
    "slot_type": "WM",
    "sort_order": 53,
-   "source": "appearances measured",
-   "source_kind": "squad",
-   "status": "OWNED",
-   "team_code": "AVL"
-  },
-  {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
-   "formation": "4-2-3-1 Wide",
-   "grid_caveat": null,
-   "grid_club": null,
-   "label": "부엔디아",
-   "map25": "442109X630883206722032100",
-   "name_en": "Emiliano Buendia",
-   "name_kr": "부엔디아",
-   "player_id": 14,
-   "pos": "RM",
-   "rate_basis": "season",
-   "rate_note": "좌측 와이드 21경기 평균 6.90 · 피크 9.4 (season LW/AML, n=21)",
-   "rating": 6.9,
-   "regime_id": 1,
-   "slot_type": "WM",
-   "sort_order": 54,
    "source": "appearances measured",
    "source_kind": "squad",
    "status": "OWNED",
@@ -67948,10 +67898,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: st_false9/Attack 0.722. 근거: ST(50)·RST(60) 모두 st_false9/Attack 0.722 동일값 · LST(40)만 0.658 — 주 포메이션 4-2-3-1 Wide의 ST 단일 슬롯 채택.",
+   "fit_focus": "Attack",
+   "fit_role": "st_false9",
+   "fit_sim": 0.722,
    "formation": "4-2-3-1 Wide",
    "grid_caveat": null,
    "grid_club": null,
@@ -68098,10 +68048,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: gk_goalkeeper/Defend 0.961. 근거: GK 슬롯이 두 포메이션 모두 x=50 단일 — 사이드 모호성 없음.",
+   "fit_focus": "Defend",
+   "fit_role": "gk_goalkeeper",
+   "fit_sim": 0.961,
    "formation": "4-4-2",
    "grid_caveat": null,
    "grid_club": null,
@@ -68173,10 +68123,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: fb_wingback/Balanced 0.862. 근거: pos_only=LB 기설정 — 해당 pos 커널값 그대로.",
+   "fit_focus": "Balanced",
+   "fit_role": "fb_wingback",
+   "fit_sim": 0.862,
    "formation": "4-4-2",
    "grid_caveat": null,
    "grid_club": null,
@@ -68298,10 +68248,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: cb_bpd/Aggressive 0.927. 근거: pos_only=LCB 기설정 — 해당 pos 커널값 그대로.",
+   "fit_focus": "Aggressive",
+   "fit_role": "cb_bpd",
+   "fit_sim": 0.927,
    "formation": "4-4-2",
    "grid_caveat": null,
    "grid_club": null,
@@ -68323,7 +68273,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). 커널 argmax는 RCB(63) 0.744지만 RCB는 콘사(0.964·pos_only=RCB), LCB는 파우 토레스(0.927·pos_only=LCB)가 점유한다. 백업 CB의 사이드가 미정이라 값을 넣으면 사이드를 발명하게 된다. LCB 0.659 / RCB 0.744. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -68423,7 +68373,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). LDM(38) dm_dlp/Roaming 0.786 / RDM(62) dm_dlp/Roaming 0.843. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -68448,7 +68398,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). LDM(38) dm_dlp/Roaming 0.789 / RDM(62) dm_dlp/Roaming 0.899. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -68473,7 +68423,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). LDM(38) dm_widehalf/Build-Up 0.563 / RDM(62) dm_holding/Roaming 0.632. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -68623,32 +68573,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
-   "formation": "4-4-2",
-   "grid_caveat": null,
-   "grid_club": null,
-   "label": "맥긴",
-   "map25": "001370126X003770024600011",
-   "name_en": "John McGinn",
-   "name_kr": "맥긴",
-   "player_id": 10,
-   "pos": "LM",
-   "rate_basis": "season",
-   "rate_note": "RM 21경기 평균 7.08 · 피크 8.7",
-   "rating": 7.08,
-   "regime_id": 1,
-   "slot_type": "WM",
-   "sort_order": 50,
-   "source": "appearances measured",
-   "source_kind": "squad",
-   "status": "OWNED",
-   "team_code": "AVL"
-  },
-  {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 대상 외] 산초는 `player_tenures`에 2026-27 행이 없다(25/26 AVL 1,672분이 마지막) — **이탈 선수**이므로 26/27 처방 대상이 아니다. 커널 argmax는 wm_winger/Attack 0.619 @LM이나 백필하지 않고 25/26 유산 행으로 NULL을 유지한다. G11의 「산초 이탈 원장 있음」과 정합.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -68698,10 +68623,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: wm_wideplm/Attack 0.755. 근거: player_duties(id=12·27)가 좌측 고정·「우측 배치 금지」를 반복 명시 — LM 확정.",
+   "fit_focus": "Attack",
+   "fit_role": "wm_wideplm",
+   "fit_sim": 0.755,
    "formation": "4-4-2",
    "grid_caveat": null,
    "grid_club": null,
@@ -68823,10 +68748,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: st_false9/Attack 0.722. 근거: ST(50)·RST(60) 모두 st_false9/Attack 0.722 동일값 · LST(40)만 0.658 — 주 포메이션 4-2-3-1 Wide의 ST 단일 슬롯 채택.",
+   "fit_focus": "Attack",
+   "fit_role": "st_false9",
+   "fit_sim": 0.722,
    "formation": "4-4-2",
    "grid_caveat": null,
    "grid_club": null,
@@ -68898,10 +68823,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: fb_att_wb/Support 0.898. 근거: pos_only=RB 기설정 — 해당 pos 커널값 그대로.",
+   "fit_focus": "Support",
+   "fit_role": "fb_att_wb",
+   "fit_sim": 0.898,
    "formation": "4-4-2",
    "grid_caveat": null,
    "grid_club": null,
@@ -69023,7 +68948,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). 커널 argmax는 RCB(63) 0.744지만 RCB는 콘사(0.964·pos_only=RCB), LCB는 파우 토레스(0.927·pos_only=LCB)가 점유한다. 백업 CB의 사이드가 미정이라 값을 넣으면 사이드를 발명하게 된다. LCB 0.659 / RCB 0.744. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -69048,10 +68973,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: cb_bpd/Aggressive 0.964. 근거: pos_only=RCB 기설정 — 해당 pos 커널값 그대로.",
+   "fit_focus": "Aggressive",
+   "fit_role": "cb_bpd",
+   "fit_sim": 0.964,
    "formation": "4-4-2",
    "grid_caveat": null,
    "grid_club": null,
@@ -69223,7 +69148,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). LDM(38) dm_dlp/Roaming 0.786 / RDM(62) dm_dlp/Roaming 0.843. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -69248,7 +69173,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). LDM(38) dm_dlp/Roaming 0.789 / RDM(62) dm_dlp/Roaming 0.899. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -69273,7 +69198,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 보류] 최초 시드 행이라 값이 비어 있는 것은 누락이 맞으나, **사이드가 미확정이라 백필하지 않는다**(추측 금지). LDM(38) dm_widehalf/Build-Up 0.563 / RDM(62) dm_holding/Roaming 0.632. ⚠️ DM 3인(오나나·카마라·보가르드)이 **전부 RDM argmax**라 LDM 담당자가 정해지지 않으면 세 행 중 둘은 잘못된 사이드 값을 갖게 된다. pos_only 확정 후 일괄 백필할 것.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -69398,10 +69323,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: wm_wideplm/Attack 0.761. 근거: player_duties(id=14)가 값까지 명시: 「wm_wideplm/Attack 커널이 실측 .51과 정확히 겹치고 적합 1위(.761)」.",
+   "fit_focus": "Attack",
+   "fit_role": "wm_wideplm",
+   "fit_sim": 0.761,
    "formation": "4-4-2",
    "grid_caveat": null,
    "grid_club": null,
@@ -69423,7 +69348,7 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
+   "confidence": "OWNED / [2026-08-24 NULL fit 판정 — 대상 외] 산초는 `player_tenures`에 2026-27 행이 없다(25/26 AVL 1,672분이 마지막) — **이탈 선수**이므로 26/27 처방 대상이 아니다. 커널 argmax는 wm_winger/Attack 0.619 @LM이나 백필하지 않고 25/26 유산 행으로 NULL을 유지한다. G11의 「산초 이탈 원장 있음」과 정합.",
    "fit_focus": null,
    "fit_role": null,
    "fit_sim": null,
@@ -69467,31 +69392,6 @@
    "regime_id": 1,
    "slot_type": "WM",
    "sort_order": 53,
-   "source": "appearances measured",
-   "source_kind": "squad",
-   "status": "OWNED",
-   "team_code": "AVL"
-  },
-  {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
-   "formation": "4-4-2",
-   "grid_caveat": null,
-   "grid_club": null,
-   "label": "부엔디아",
-   "map25": "442109X630883206722032100",
-   "name_en": "Emiliano Buendia",
-   "name_kr": "부엔디아",
-   "player_id": 14,
-   "pos": "RM",
-   "rate_basis": "season",
-   "rate_note": "좌측 와이드 21경기 평균 6.90 · 피크 9.4 (season LW/AML, n=21)",
-   "rating": 6.9,
-   "regime_id": 1,
-   "slot_type": "WM",
-   "sort_order": 54,
    "source": "appearances measured",
    "source_kind": "squad",
    "status": "OWNED",
@@ -69598,10 +69498,10 @@
    "team_code": "AVL"
   },
   {
-   "confidence": "OWNED",
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "confidence": "OWNED / [2026-08-24 NULL fit 백필] 최초 시드 행(squad_entries.id≤17 · source='appearances measured' · 날짜 스탬프 없음)이라 fit 파이프라인 도입 이전에 만들어져 값이 비어 있었다 — 판단에 의한 NULL이 아니라 누락이다. core.kernel 재산출값을 적재: st_false9/Attack 0.722. 근거: ST(50)·RST(60) 모두 st_false9/Attack 0.722 동일값 · LST(40)만 0.658 — 주 포메이션 4-2-3-1 Wide의 ST 단일 슬롯 채택.",
+   "fit_focus": "Attack",
+   "fit_role": "st_false9",
+   "fit_sim": 0.722,
    "formation": "4-4-2",
    "grid_caveat": null,
    "grid_club": null,
@@ -69994,9 +69894,9 @@
    "sort_order": 8
   },
   {
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "fit_focus": "Defend",
+   "fit_role": "gk_goalkeeper",
+   "fit_sim": 0.961,
    "grid_caveat": null,
    "grid_club": null,
    "label": "마르티네스",
@@ -70120,9 +70020,9 @@
    "sort_order": 18
   },
   {
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "fit_focus": "Balanced",
+   "fit_role": "fb_wingback",
+   "fit_sim": 0.862,
    "grid_caveat": null,
    "grid_club": null,
    "label": "마첸",
@@ -70138,9 +70038,9 @@
    "sort_order": 20
   },
   {
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "fit_focus": "Support",
+   "fit_role": "fb_att_wb",
+   "fit_sim": 0.898,
    "grid_caveat": null,
    "grid_club": null,
    "label": "캐시",
@@ -70210,9 +70110,9 @@
    "sort_order": 24
   },
   {
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "fit_focus": "Aggressive",
+   "fit_role": "cb_bpd",
+   "fit_sim": 0.927,
    "grid_caveat": null,
    "grid_club": null,
    "label": "파우 토레스",
@@ -70246,9 +70146,9 @@
    "sort_order": 31
   },
   {
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "fit_focus": "Aggressive",
+   "fit_role": "cb_bpd",
+   "fit_sim": 0.964,
    "grid_caveat": null,
    "grid_club": null,
    "label": "콘사",
@@ -70318,9 +70218,9 @@
    "sort_order": 42
   },
   {
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "fit_focus": "Attack",
+   "fit_role": "wm_wideplm",
+   "fit_sim": 0.761,
    "grid_caveat": null,
    "grid_club": null,
    "label": "맥긴",
@@ -70390,9 +70290,9 @@
    "sort_order": 53
   },
   {
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "fit_focus": "Attack",
+   "fit_role": "wm_wideplm",
+   "fit_sim": 0.755,
    "grid_caveat": null,
    "grid_club": null,
    "label": "부엔디아",
@@ -70444,9 +70344,9 @@
    "sort_order": 62
   },
   {
-   "fit_focus": null,
-   "fit_role": null,
-   "fit_sim": null,
+   "fit_focus": "Attack",
+   "fit_role": "st_false9",
+   "fit_sim": 0.722,
    "grid_caveat": null,
    "grid_club": null,
    "label": "왓킨스",
