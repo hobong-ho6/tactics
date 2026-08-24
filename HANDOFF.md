@@ -11,13 +11,13 @@
 
 ## 현재 상태
 
-> 마지막 갱신: **2026-08-24 21시 KST** · 작업 PC `AD03230205ui-iMac.local` · 브랜치 `main` ·
-> 마지막 커밋 `17fc866`. ⚠️ 직전 갱신이 `11a407e` 기준이라 **5커밋 뒤처져 있었다** — 이번에 전수 정정.
+> 마지막 갱신: **2026-08-25 08시 KST** · 작업 PC `AD03230205ui-iMac.local` · 브랜치 `main` ·
+> 시작 기준 커밋 `9d0295e`(origin/main과 일치). 이번 match-watch 커밋은 아래 완료 후 기록한다.
 
-- DB: players 190 · player_matches **4,058** · team_match_stats **60** · match_reports **24** ·
-  match_player_reports 441 · squad_entries 125 · prescriptions 394 ·
-  match_game_setups 9 · match_player_prescriptions 148 · transfer_targets 37 ·
-  player_duties 176 · observations **317**(최신 obs#317).
+- DB: players 190 · player_matches **4,074** · team_match_stats **61** · match_reports **25** ·
+  match_player_reports **457** · squad_entries 125 · prescriptions 394 ·
+  match_game_setups **10** · match_player_prescriptions **164** · transfer_targets 37 ·
+  player_duties **190** · observations **325**(최신 obs#325).
 - 회귀: **G1~G12 전항 통과**. G2 **3,007** 그리드 불일치 0, G6 고아 FK 0,
   G7 appearances 앵커 `(14,6,4,93)`, G12 경기 리포트 결손 0.
 - ⭐ **적합값 드리프트: 차이 20 → 8, 일치 88 → 100**(obs#316). 아래 「종결된 항목」 참조.
@@ -30,17 +30,18 @@
 | 팀 | 경기 | 핵심 실측 | 상태/리포트 |
 |---|---|---|---|
 | AVL | Brighton 4–0 Aston Villa | 점유 27%, xG 0.31–3.67, 슛 6–21, PPDA 24.69. João Gomes 40′ 퇴장 | `draft` · `reports/match-watch/2026-08-23-avl-brighton.md` |
-| LIV | Newcastle 2–2 Liverpool | 점유 61%, xG 2.98–1.58, 슛 27–13, PPDA 5.95. Gakpo 55′, Szoboszlai 90+9′ PK | `draft` · `reports/match-watch/2026-08-23-liv-newcastle.md` |
-| CHE | Fulham 원정 2026-08-25 04:00 KST | **아직 경기 전** | ⏰ 미수집 — 아래 참조 |
+| LIV | Newcastle 2–2 Liverpool | 점유 61%, xG 2.98–1.58, 슛 27–13, PPDA 5.95. Gakpo 52′, Szoboszlai 90+9′ PK | **`complete`** · `reports/match-watch/2026-08-23-liv-newcastle.md` |
+| CHE | Fulham 2–3 Chelsea | 점유 38%, xG 1.70–1.34, 슛 18–14, PPDA 20.18. Palmer 1G1A | `draft` · `reports/match-watch/2026-08-24-che-fulham.md` |
 | ATM | 비야레알 2-2 (라리가 R2, 홈) | xG 0.78–3.60, 76′ DOGSO 퇴장, 주전 첫 가동 4-4-2 | **`complete`** · `reports/match-watch/2026-08-23-atm-villarreal.md` |
 
-⚠️ **CHE 풀럼전은 2026-08-24 20:30 KST 시점에 아직 킥오프 전이다.** FotMob 일정 확인 결과
-`2026-08-24T19:00:00Z` = **08-25 04:00 KST**, `started:false`. 수집은 08-25 회차에서 한다.
-경기 ID는 **5795372**. 이어서 08-27 EFL컵(루턴 홈, id 6005665) · 08-30 브라이턴 홈이 온다.
+✅ **CHE 풀럼전(matchId 5795372) 전체 적재 완료.** FotMob 팀·선수 실측 + WhoScored/Opta 1,659 이벤트로
+출전 16명 좌표/map25와 PPDA를 만들었다. 실제 3-4-2-1에서 Palmer–João Pedro–Rogers 전원이 득점에 관여했고,
+Lacroix는 CCB에서 박스까지 올라가 도움을 기록했다. 다만 공식 전체 회견·지연 전술 영상은 아직 없어 `draft`다.
+다음은 08-27 EFL컵(루턴 홈, id 6005665) · 08-30 브라이턴 홈.
 
 **D+N 창 정정** — 경기일이 08-23이므로 D+1은 **08-24**(완료)다. 본문에 08-25로 적혀 있던 것은
 오기이며 AVL 리포트에서 이미 정정됐다. 남은 창은 **D+3 = 08-25~26**.
-D+2는 **08-24 21시에 조기 실시 완료**(D+1로부터 11시간 경과분 수확).
+D+2는 **08-24 21시에 조기 실시 완료**, 08-25에 D+3 정기 검색도 완료했다.
 
 ### 이번 경기 판정
 
@@ -52,6 +53,13 @@ D+2는 **08-24 21시에 조기 실시 완료**(D+1로부터 11시간 경과분 �
   ⭐ **D+2에서 「직접 맞교체」로 확정됐다** — 63분 무뇨스 IN ↔ 응구모하 OUT(FotMob 이벤트 원본).
   같은 슬롯 수행 대비라는 간접 근거가 **감독이 그 자리에서 바꿨다**는 직접 근거가 됐다.
 - Ryan Gravenberch는 Gakpo 골을 도왔지만 두 실점 전 소유권 상실에도 관여했다. Roaming 피벗의 양면성 표본이다.
+- ⭐ **LIV D+3에서 Coaches' Voice 전술 보드와 Between The Posts 초록을 확보했다(obs#321).**
+  Wirtz·Szoboszlai가 뉴캐슬의 선수지향 마커를 바깥으로 끌고 Gakpo가 중앙으로 들어간 동점골 구조가 확정됐다.
+  지연 전문 분석·공식 회견·전 선수 처방이 갖춰져 `complete`로 승격했다.
+- **AVL D+3은 팟캐스트 4건의 공개 설명을 수확했지만 전술 영상·전문 블로그 0건**(obs#322).
+  오디오를 듣거나 전사하지 않았으므로 새 전술 문장은 채택하지 않았고 `draft`를 유지했다.
+- **CHE**: 38% 점유에도 xG 1.70·18슛·박스 터치 37로 전환 효율이 높았다(obs#323).
+  반면 Fulham 620패스·Sánchez goals prevented -0.78로 중원/GK 리스크가 남았다(obs#325).
 
 ## 자동화
 
@@ -78,22 +86,16 @@ D+2는 **08-24 21시에 조기 실시 완료**(D+1로부터 11시간 경과분 �
 
 ## 다음 할 일
 
-1. ⭐ **08-25: CHE 풀럼 원정 전체 수집**(경기 ID 5795372, 04:00 KST 킥오프). 알론소 첫 공식전이다 —
-   3-4-2-1 슬롯 앵커가 **프리시즌 친선 2경기 기반**이라 공식전 실측으로 재검증할 첫 기회다.
-2. **08-25~26: AVL/LIV D+3.** 남은 결손이 명확하다 —
-   LIV는 **이라올라 발언 원문**(FC 처방 함의 큼)·흐라벤베르흐 평가 충돌·바스크어 도메인 직접 fetch,
-   AVL은 **유튜브 전술 분석·전술 블로그**(draft의 핵심 사유)·네덜란드어/스웨덴어/일본어·브라이턴 관점.
-   D+3 뒤 근거가 충분하면 `complete`, 아니면 결손을 유지한다.
-3. **보류된 NULL fit 4행의 사이드를 정한다** — DM 3인(오나나 .843 · 카마라 .899 · 보가르드 .632)이
-   **전부 RDM argmax**라 LDM(x=38) 담당자를 정하지 않으면 셋 중 둘이 틀린 사이드 값을 갖는다.
-   린델뢰프도 argmax RCB(.744)가 콘사(.964)에 점유돼 있다. 사유는 각 행 confidence에 기록해 뒀다.
-   ⚠️ 참고: 주앙 고메스가 **3경기 정지**(08-31 아스날 · 09-05 헐 · 09-12 포레스트)라 이 기간 피벗 인선이 바뀐다.
-4. **PL 다음 라운드**: AVL/LIV/CHE 실제 경기마다 동일 파이프라인을 반복한다.
-5. Atlético 이후 경기는 별도 match-watch 일정. 그리말도 실측이 채워지면 2경기 슬롯 기하·fit·sort_order 연쇄 재검증.
-6. **왓킨스 이적 정황을 계속 추적한다** — 개막전 20인 제외가 부상이 아니고 에메리가 사유 답변을 3회 거부했다.
+1. ⭐ **CHE 풀럼전 D+2(08-26)·D+3(08-27)** — 알론소 공식 전체 회견, 클럽 전술 영상,
+   Palmer/Rogers/João Pedro 선수별 분석, 지연 전술 블로그를 재검색한다. 0건도 리포트에 기록한다.
+2. **AVL Brighton전은 비정기 재시도 조건부 draft** — 공식 전체 회견/클럽 전술 영상,
+   경기 전용 전문 분석 또는 팟캐스트 공식 전사가 나오면 다시 연다. 정기 D+1~D+3은 완료.
+3. **PL 다음 라운드**: AVL/LIV/CHE 실제 경기마다 동일 파이프라인을 반복한다.
+   가장 가까운 CHE 08-30 Brighton 홈에 앞서 08-27 Luton EFL컵도 match-watch 범위 여부를 확인한다.
+4. Atlético 이후 경기는 별도 match-watch 일정. 그리말도 실측이 채워지면 2경기 슬롯 기하·fit·sort_order 연쇄 재검증.
+5. **왓킨스 이적 정황을 계속 추적한다** — 개막전 20인 제외가 부상이 아니고 에메리가 사유 답변을 3회 거부했다.
    이적 확정 시 `squad_entries` ST 행(fit 0.722)과 9번 처방 전체가 재판정 대상이다.
-7. Minteh는 2026-09-02에 개선 오퍼 0건이면 등급 재판정한다.
-8. ⏰ **docs/20 런북 슬롯 x 표는 `fd3dbb9`에서 4팀 전수 정정됐다** — 추가 조치 불필요(확인 완료).
+6. Minteh는 2026-09-02에 개선 오퍼 0건이면 등급 재판정한다.
 
 ## 데이터 수집 상태와 결손
 

@@ -1,27 +1,27 @@
 {
  "avg_positions": [
   {
-   "avg_x": 65.1,
-   "avg_y": 33.6,
+   "avg_x": 65.0,
+   "avg_y": 36.9,
    "first_date": "2025-09-09",
-   "last_date": "2026-08-15",
-   "n": 9,
+   "last_date": "2026-08-24",
+   "n": 10,
    "player_id": 13
   },
   {
    "avg_x": 12.1,
    "avg_y": 48.7,
    "first_date": "2025-07-05",
-   "last_date": "2026-08-15",
-   "n": 56,
+   "last_date": "2026-08-24",
+   "n": 57,
    "player_id": 31
   },
   {
-   "avg_x": 49.4,
-   "avg_y": 21.9,
+   "avg_x": 49.5,
+   "avg_y": 21.8,
    "first_date": "2025-07-05",
-   "last_date": "2026-07-18",
-   "n": 48,
+   "last_date": "2026-08-24",
+   "n": 49,
    "player_id": 32
   },
   {
@@ -41,11 +41,11 @@
    "player_id": 34
   },
   {
-   "avg_x": 41.9,
-   "avg_y": 75.7,
+   "avg_x": 42.2,
+   "avg_y": 75.9,
    "first_date": "2025-08-08",
-   "last_date": "2026-08-08",
-   "n": 31,
+   "last_date": "2026-08-24",
+   "n": 32,
    "player_id": 35
   },
   {
@@ -73,27 +73,27 @@
    "player_id": 38
   },
   {
-   "avg_x": 60.0,
-   "avg_y": 38.0,
+   "avg_x": 60.1,
+   "avg_y": 37.8,
    "first_date": "2025-07-05",
-   "last_date": "2026-08-15",
-   "n": 37,
+   "last_date": "2026-08-24",
+   "n": 38,
    "player_id": 39
   },
   {
-   "avg_x": 61.3,
-   "avg_y": 53.4,
+   "avg_x": 61.4,
+   "avg_y": 53.3,
    "first_date": "2025-07-08",
-   "last_date": "2026-08-15",
-   "n": 52,
+   "last_date": "2026-08-24",
+   "n": 53,
    "player_id": 40
   },
   {
    "avg_x": 50.3,
-   "avg_y": 30.8,
+   "avg_y": 31.1,
    "first_date": "2025-07-13",
-   "last_date": "2026-08-15",
-   "n": 36,
+   "last_date": "2026-08-24",
+   "n": 37,
    "player_id": 41
   },
   {
@@ -105,19 +105,19 @@
    "player_id": 42
   },
   {
-   "avg_x": 43.0,
-   "avg_y": 24.4,
+   "avg_x": 41.9,
+   "avg_y": 24.1,
    "first_date": "2026-08-08",
-   "last_date": "2026-08-08",
-   "n": 1,
+   "last_date": "2026-08-24",
+   "n": 2,
    "player_id": 63
   },
   {
-   "avg_x": 46.0,
-   "avg_y": 54.4,
+   "avg_x": 47.2,
+   "avg_y": 55.3,
    "first_date": "2026-08-08",
-   "last_date": "2026-08-08",
-   "n": 1,
+   "last_date": "2026-08-24",
+   "n": 2,
    "player_id": 65
   },
   {
@@ -225,19 +225,19 @@
    "player_id": 107
   },
   {
-   "avg_x": 33.2,
-   "avg_y": 42.5,
+   "avg_x": 36.0,
+   "avg_y": 46.7,
    "first_date": "2026-08-15",
-   "last_date": "2026-08-15",
-   "n": 1,
+   "last_date": "2026-08-24",
+   "n": 2,
    "player_id": 130
   },
   {
-   "avg_x": 43.1,
-   "avg_y": 76.9,
+   "avg_x": 42.3,
+   "avg_y": 76.2,
    "first_date": "2026-08-15",
-   "last_date": "2026-08-15",
-   "n": 1,
+   "last_date": "2026-08-24",
+   "n": 2,
    "player_id": 131
   },
   {
@@ -276,6 +276,21 @@
    "source": "Chelsea 공식 영입 https://www.chelseafc.com/en/news/article/morgan-rogers-signs-for-chelsea ; Xabi Alonso 역할 설명 https://www.chelseafc.com/en/news/article/xabi-alonso-on-his-plan-for-great-signing-morgan-rogers-and-cole-palmer ; Chelsea 선수 인터뷰 https://www.chelseafc.com/en/news/article/morgan-rogers-interview-on-joy-family-and-finding-his-best-self"
   },
   {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "좌측 포켓 연결·침투 10번",
+   "execution": "2026-08-24 Fulham전 82분, LAM, 평점 8.65, 터치 40·hp 40; João Pedro–Palmer 사이를 잇고 중앙 침투로 득점했다.",
+   "game_role_implication": "Fulham전 실제 LAM 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "로저스",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 13,
+   "position": "LAM",
+   "sample_note": "Morgan Rogers Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
+  },
+  {
    "adherence": "MEDIUM — 배급 취약 서사는 패스·롱볼 정확도 백분위(62/46)가 지지한다. 그러나 그로부터 도출되는 '스위퍼형 골키퍼가 필요하다'는 함의는 실측 그리드가 기각한다(gk_sweeper 0.773).",
    "confidence": "서사 소스(3티어급, 구단 공식 리뷰는 1차) — 2026-07~08 발행 확인. ⚠️ 체제 캐비앗: 우리 실측 6경기와 팟몹 25/26 리그 스탯은 모두 마레스카·로즈니어 체제 산물이며 알론소 체제 표본은 0이다(첫 공식전 8/24 풀럼).",
    "duties": "25/26 전 대회 50경기(49선발) 4,844분·클린시트 15로 첼시 최다 출전. 리그는 35경기 41실점·9클린시트, 선방률 67.59%. 페트르 체흐 이후 첫 첼시 골키퍼 리그 도움을 기록했다(뉴캐슬 원정, 롱볼→주앙 페드루). 서사의 초점은 발밑 배급 논란이며 스콜스는 \"알론소가 원하는 방식으로 뛸 수 없다\"며 새 골키퍼를 예측했다. 26/27 알론소 체제에서는 토트넘 친선 결장(경미 부상)에 펜더스가 임대 복귀해 경쟁 구도이나, 개막전(8/24 풀럼) 예상 선발로 지목됐다.",
@@ -291,6 +306,21 @@
    "source": "Chelsea FC 공식 시즌 리뷰 — https://www.chelseafc.com/en/news/article/chelsea-2025-26-revisited-goalkeepers · Premier League 선수 스탯 — https://www.premierleague.com/en/players/215059/robert-sanchez/stats · The Chelsea Chronicle 개막전 예상 XI — https://www.thechelseachronicle.com/match-coverage/predicting-the-chelsea-xi-xabi-alonso-will-name-to-face-fulham-after-mixed-pre-season/"
   },
   {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "후방 골키퍼",
+   "execution": "2026-08-24 Fulham전 90분, GK, 평점 5.67, 터치 38·hp 38; 선방 4회에도 goals prevented -0.78; 두 실점 개입이 불안했다.",
+   "game_role_implication": "Fulham전 실제 GK 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "로베르트 산체스",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 31,
+   "position": "GK",
+   "sample_note": "Robert Sánchez Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
+  },
+  {
    "adherence": "HIGH — '전진해 안쪽에서 받는 풀백, 크로서 아님'이 실측 그리드(fb_att_wb 0.862)와 백분위(전진·회수 상위 / 크로스 중하위) 양쪽에서 확인된다. obs#46의 '윙백은 크로서가 아니라 득점자'와 같은 방향이다.",
    "confidence": "서사 소스(3티어급, 코치스 보이스는 2티어급 경기 분석) — 2026-04~07 발행 확인. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 공식전 0경기. 이적 보도는 추측 티어로 분류.",
    "duties": "마레스카 체제 우측 풀백 로테이션의 한 축. 전술 분석은 그를 명목상 풀백이나 실제로는 우측 상위 지역까지 올라가 수적우위를 만드는 인원으로 서술한다 — 리스 제임스가 볼을 운반할 때 구스토가 더 중앙·전방으로 들어가 받으며 상대 수비 조직을 흐트리고 파머의 배후 침투를 열어준다. 반대 방향의 근거도 있다. 코치스 보이스의 첼시 0-3 맨시티(2026-04) 분석은 그를 표적으로 지목했다(오라일리의 안쪽 침투로 도쿠에게 접근로를 만들어 1v1 반복). 26/27 여름 맨시티·PSG 관심 보도가 있고 첼시는 £75m를 요구했다.",
@@ -304,6 +334,21 @@
    "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
    "sample_scope": "unknown",
    "source": "Squawka 전술 분석(구스토) — https://www.squawka.com/en/features/tactical-analysis-malo-gusto-chelsea-2-0-everton/ · Coaches' Voice 첼시 0-3 맨시티(2026-04) — https://learning.coachesvoice.com/cv/chelsea-manchester-city-tactics-april-2026/ · Total Football Analysis 마레스카 전술 결산 — https://totalfootballanalysis.com/head-coach-analysis/enzo-maresca-tactics-chelsea-2025-2026-what-went-wrong · CaughtOffside 이적 보도(2026-07-14) — https://www.caughtoffside.com/2026/07/14/sources-chelsea-demand-considered-excessive-full-back/"
+  },
+  {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "우측 폭·전진 윙백",
+   "execution": "2026-08-24 Fulham전 76분, RM, 평점 6.69, 터치 42·hp 42; 76분 동안 폭을 제공했으나 최종 생산은 제한적.",
+   "game_role_implication": "Fulham전 실제 RM 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "말로 귀스토",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 32,
+   "position": "RM",
+   "sample_note": "Malo Gusto Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
   },
   {
    "adherence": "HIGH(위치) / MEDIUM-HIGH(기능) — 백3 우측 전용 0.953과 인터셉트 2.086/90(백분위 97)이 강정합한다. 패스 정확도 백분위 89도 BPD 라벨을 지지한다. 단 퇴장 2회(백분위 1)는 Aggressive 포커스의 비용을 확인하며, 알론소 체제 공식전 표본은 0경기다.",
@@ -351,6 +396,21 @@
    "source": "Total Football Analysis 스카우팅 리포트 — https://totalfootballanalysis.com/article/jorrel-hato-2024-25-scout-report-tactical-analysis-tactics · Strictly Chelsea 스타일 분석 — https://strictlycfc.com/jorrel-hato-style-of-play-and-tactical-analysis/ · SI(구단 스카우트 발언) — https://www.si.com/onsi/soccer/chelsea/news/chelsea-scout-summer-signing-shouldnt-have-played-regularly-per-initial-plan-01k6fytgcvj5"
   },
   {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "높은 좌측 윙백",
+   "execution": "2026-08-24 Fulham전 65분, LM, 평점 7.08, 터치 40·hp 40; 65분 동안 좌측 폭과 박스 진입을 제공했다.",
+   "game_role_implication": "Fulham전 실제 LM 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "요렐 하토",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 35,
+   "position": "LM",
+   "sample_note": "Jorrel Hato Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
+  },
+  {
    "adherence": "HIGH — '통제형 볼위너, 창조자 아님'이 위치·기능 양쪽에서 확인된다. 남는 긴장은 하나뿐이다. 커널 최적 역할명이 창조형(dm_dlp)인데 기능축 실측은 명백한 볼위너다 — obs#116이 이미 '카이세도는 첼시의 카마라'로 기록한 미해결 지점이며, 이번 서사 조사도 같은 결론에 도달했다.",
    "confidence": "서사 소스(3티어급) — 25/26 시즌 진행분 및 2026-07 발행 확인. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 0경기.",
    "duties": "25/26 리그 31경기 2,626분(30선발), 3골 1도움. 경고 11회로 리그 최다에 퇴장 1회 — 듀얼 중심 스타일의 가장 선명한 통계적 서명이다. 분석 서사는 그를 '볼위닝 엔진'으로 규정하되, 압박 아래에서의 침착함·전진 패스 의지·템포 조절이 늘어 파괴자에서 완성형 미드필더로 진화했다고 본다. 마레스카는 \"현 시점 세계 최고의 수비형 미드필더 중 하나, 아니 최고\"라고 말했다. 다만 언더라잉은 통제·파괴 쪽에 크게 치우쳐 있다는 단서가 붙는다(수비 지수 78.88 대 공격 위협 69.45, 리그 101위).",
@@ -381,6 +441,21 @@
    "source": "SI(마레스카 발언) — https://www.si.com/onsi/soccer/chelsea/news/how-enzo-fernandez-changed-chelsea-trajectory-maresca · FotMob 선수 페이지 — https://www.fotmob.com/players/1137705/enzo-fernandez · Premier League 선수 스탯 — https://www.premierleague.com/en/players/448047/enzo-fern%C3%A1ndez/stats"
   },
   {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "후반 볼 순환 피벗",
+   "execution": "2026-08-24 Fulham전 25분, LCM, 평점 6.41, 터치 25·hp 25; 65분 투입 후 중앙 볼 순환을 안정시켰다.",
+   "game_role_implication": "Fulham전 실제 LCM 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "엔소 페르난데스",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 37,
+   "position": "LCM",
+   "sample_note": "Enzo Fernández Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
+  },
+  {
    "adherence": "MEDIUM — '우측이 낫다'는 실측이 강하게 지지한다(RM 0.875 대 LM 0.316). 그러나 '중앙 10번 전환' 실험 서사는 실측이 지지하지 않는다 — 중심 x=65.4와 전방 질량 0.59는 중앙 미드필드가 아니라 우측 전방이다. 서사 기각, 실측 채택.",
    "confidence": "서사 소스(3티어급) — 2025~2026 발행 확인. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 0경기.",
    "duties": "25/26 전 대회 38경기 중 우측 23·좌측 13·중앙 2로 배치됐고 산출은 우측이 우세했다(우측 5골 3도움 대 좌측 2골 1도움, 90분당도 동일 방향). 스콰카의 논지는 그가 혼돈형·기동형 드리블러라 좌측 터치라인에 묶으면 '제치고 크로스'로 선택지가 좁아지고, 우측에서 안으로 접을 때 선택지가 늘어난다는 것이다. 로즈니어는 여기서 더 나아가 중앙 10번으로도 실험했다(헐시티전, 바르셀로나전 최전방 드리프트). 리그 34경기 30선발 5골 6도움, 크로스 187회.",
@@ -394,6 +469,21 @@
    "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
    "sample_scope": "season",
    "source": "Squawka 네투 분석(2025) — https://www.squawka.com/en/features/tactical-analysis-chelsea-pedro-neto-underrated-impact-one-of-the-most-important-players-2025/ · Squawka 로즈니어의 네투 실험(2026) — https://www.squawka.com/en/features/tactical-analysis-chelsea-why-we-might-see-more-liam-rosenior-pedro-neto-experiment-2026/ · The Chelsea Chronicle 개막전 예상 XI — https://www.thechelseachronicle.com/match-coverage/predicting-the-chelsea-xi-xabi-alonso-will-name-to-face-fulham-after-mixed-pre-season/"
+  },
+  {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "후반 우측 운반자",
+   "execution": "2026-08-24 Fulham전 14분, RM, 평점 6.88, 터치 14·hp 14; 짧은 시간 우측 운반은 성공했다.",
+   "game_role_implication": "Fulham전 실제 RM 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "페드루 네투",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 38,
+   "position": "RM",
+   "sample_note": "Pedro Neto Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
   },
   {
    "adherence": "MEDIUM — '우측 하프스페이스 배치'는 실측 강정합. 그러나 '터치라인에 고립됐다'는 비판은 실측이 부분 기각한다 — 중심 x=65는 터치라인(x=86)이 아니라 하프스페이스다. '중앙 10번이 맞다'는 여론도 실측 CAM 0.676이 지지하지 않는다.",
@@ -411,6 +501,21 @@
    "source": "Squawka 파머·로즈니어 분석 — https://www.squawka.com/en/features/tactical-analysis-cole-palmer-improvement-liam-rosenior/ · Goal.com 데이터 반론 — https://www.goal.com/en-us/news/is-cole-palmer-really-having-a-bad-season-with-chelsea-the-tactical-truth-behind-his-form/blt3bfa5f16ccf39f67 · Premier League 분석 — https://www.premierleague.com/en/news/4497475/analysis-how-palmer-can-reignite-chelseas-misfiring-attack"
   },
   {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "우측 하프스페이스 창조자",
+   "execution": "2026-08-24 Fulham전 83분, RAM, 평점 9.08, 터치 60·hp 60; 세 골 전개에 관여한 경기 최우수.",
+   "game_role_implication": "Fulham전 실제 RAM 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "콜 파머",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 39,
+   "position": "RAM",
+   "sample_note": "Cole Palmer Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
+  },
+  {
    "adherence": "HIGH — 폴스나인·드롭 서사가 그리드(CAM 0.718 > ST 0.624)와 파울 유도·경합 백분위로 이중 확인된다. 다만 로즈니어의 '중앙 고정' 교정 효과는 우리 6경기 표본으로 분리 검증되지 않는다 — 시즌 후반 표본이 따로 없다.",
    "confidence": "서사 소스(3티어급, Between the Posts·TFA는 전술 전문 매체) — 25/26 시즌 중~후 발행. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 0경기.",
    "duties": "애초 영입 의도가 순수 9번이 아니었다 — 델랍 뒤에서 연결하고 내려와 만들며 제공권을 보태는 역할이었고, 프로필 비교 대상으로 피르미누가 거론됐다. 마레스카 체제 실행은 폴스나인에 가까웠다. 맨시티전에서는 반복적으로 내려와 시티 센터백을 끌어냄으로써 네투·에스테방에게 1v1 채널을 열었다. 문제는 구조였다 — 파머·엔소·주앙 페드루가 모두 내려오려 해 셋을 동시에 넣기 어려웠다. 로즈니어는 이를 교정해 그를 중앙에 고정시켰고 박스 안 터치·슈팅이 급증하며 연초 이후 팀 내 최다 골관여를 기록했다. 26/27 알론소 예상 XI에서도 최전방이다.",
@@ -424,6 +529,21 @@
    "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
    "sample_scope": "unknown",
    "source": "Total Football Analysis 스카우트 리포트 — https://totalfootballanalysis.com/player-analysis/joao-pedro-chelsea-2025-2026-player-analysis-tactics · Squawka(로즈니어 체제 변화) — https://www.squawka.com/en/features/joao-pedro-analysis-chelsea-form-rosenior/ · Between the Posts 첼시 0-3 맨시티 — https://betweentheposts.net/chelsea-manchester-city-city-put-pressure-on-arsenal-after-second-half-blitz-at-the-bridge-0-3/"
+  },
+  {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "침투+홀드업 9번",
+   "execution": "2026-08-24 Fulham전 90분, ST, 평점 8.47, 터치 40·hp 40; 31초 침투와 결승골 홀드업을 모두 수행했다.",
+   "game_role_implication": "Fulham전 실제 ST 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "주앙 페드루",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 40,
+   "position": "ST",
+   "sample_note": "João Pedro Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
   },
   {
    "adherence": "HIGH — '중앙 인버티드 딥 플레이메이커'가 위치(RDM 0.772)와 패스·롱볼 백분위 양쪽에서 확인된다. 유일한 반증은 '크로싱이 줄었다'는 서술로, 90분당 효율 기준으로는 성립하지 않는다.",
@@ -441,6 +561,21 @@
    "source": "Total Football Analysis 스카우트 리포트 — https://totalfootballanalysis.com/player-analysis/reece-james-scout-report-chelsea-2025-2026-analysis-tactics · The Mastermind Site 'Game of Numbers #41'(2026-01-09) — https://themastermindsite.com/2026/01/09/game-of-numbers-41-reece-james-in-central-midfield/ · Premier League Talking Tactics — https://www.premierleague.com/en/news/4486630/talking-tactics-on-reece-james-versatility-bringing-balance-to-chelsea"
   },
   {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "우측 피벗·전환 안전장치",
+   "execution": "2026-08-24 Fulham전 90분, RCM, 평점 7.01, 터치 72·hp 72; Fulham 중원 우세 속에서도 중앙 연결을 유지했다.",
+   "game_role_implication": "Fulham전 실제 RCM 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "리스 제임스",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 41,
+   "position": "RCM",
+   "sample_note": "Reece James Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
+  },
+  {
    "adherence": "MEDIUM-HIGH(기능) / MEDIUM(위치) — 드리블 3.089/90(백분위 95)과 xG·xA/90 상위 17%·13%가 공격 재능 서사를 지지한다. 다만 터치라인 고정은 중심 x=76.1이 완화하고, 중앙 전환 예고는 3경기 위치 표본 및 알론소 공식전 0경기로 아직 판정할 수 없다.",
    "confidence": "서사 소스(3티어급, Premier League 공식 분석은 2티어급) + FotMob 25/26 PL 상세 41지표 — 2026-08-14 수집. ⚠️ 실측 위치 3경기. ⚠️ 체제 캐비앗: 실측과 리그 스탯은 25/26 마레스카·로즈니어 체제다.",
    "duties": "팔메이라스에서 £29m로 합류해 25/26이 첼시 데뷔 시즌이었다. 팔메이라스에서는 우측 윙어로 주로 넓게 유지했고 인버티드 우측 풀백과 공격형 미드필더의 지원을 받았다. 첼시에서 마레스카는 장기적으로 파머식 중앙화를 예고하면서도 당분간 윙어로 기용했고, 넓게 선발해도 중앙 터치를 허용했다. 웨스트햄 5-1에서는 엔소·주앙 페드루와 함께 델랍 뒤 세 명이 움직이는 구조의 한 축이었다. 10/4 리버풀전 95분 결승골이 분기점. 스콰카는 그를 리그 윙어·와이드 미드필더 중 최고 점수(75%)로 평가했다. 순수 스피드형은 아니다 — 최고 속도 32.75km/h로 팀 내 11위에 불과하다. 26/27 알론소 3-4-2-1에서는 전방 3인 중 하나로 안으로 들어오는 역할이 예상되며, 그를 윙백으로 쓰는 시나리오는 명시적으로 부정됐다.",
@@ -454,6 +589,21 @@
    "sample_note": "2025/26 시즌 경기·시즌 리뷰 중심; 이적·감독 발언은 2026-08-12까지 포함",
    "sample_scope": "season",
    "source": "Breaking The Lines 심층 프로필 — https://breakingthelines.com/player-analysis/estevao-willian-at-chelsea-a-tactical-and-technical-deep-dive-into-the-premier-leagues-newest-prodigy/ · Premier League 분석 — https://www.premierleague.com/en/news/4462052/why-brazil-winger-estevao-could-become-most-important-attacker-for-chelsea · Squawka — https://www.squawka.com/en/features/tactical-analysis-estevao-chelsea/ · The Chelsea Chronicle(밀란전 3-4-2-1 예상 XI) — https://www.thechelseachronicle.com/match-coverage/chelsea-predicted-xi-vs-ac-milan-xabi-alonso-trials-new-formation-as-estevao-returns/ · FotMob playerStats 2025/26 Premier League 41지표 — https://www.fotmob.com/players/1580774/estevao"
+  },
+  {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "막판 우측 포켓 교체",
+   "execution": "2026-08-24 Fulham전 7분, RAM, 평점 미산출, 터치 5·hp 5; Palmer 자리를 이어받았으나 평가 불가.",
+   "game_role_implication": "Fulham전 실제 RAM 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "에스테방",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 42,
+   "position": "RAM",
+   "sample_note": "Estêvão Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
   },
   {
    "adherence": "MEDIUM — 서사의 '넓게 섰다 안으로 접힘'·'왕복 풀백 아님'은 실측 tool_x 75.6(RB보다 안쪽)·avg_x 43.0(낮은 전진도)과 정합. 다만 백3 RCB인지 백4 RB인지는 **실측이 판별하지 못한다** — 두 슬롯 적합차 Δ.003.",
@@ -471,6 +621,21 @@
    "source": "https://tacticalfootballanalysis.com/josh-acheampong-scout-report-at-chelsea-2025-2026-the-blues-next-defensive-leader-player-analysis/ ; https://instinctive.substack.com/p/scouting-josh-acheampong ; https://www.chelseafc.com/en/news/article/confirmed-chelsea-line-up-vs-western-sydney-wanderers"
   },
   {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "넓은 우측 커버 CB",
+   "execution": "2026-08-24 Fulham전 90분, RCB, 평점 7.32, 터치 67·hp 67; 90분 동안 우측 백3의 가장 안정적인 수비 수행.",
+   "game_role_implication": "Fulham전 실제 RCB 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "아체암퐁",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 63,
+   "position": "RCB",
+   "sample_note": "Josh Acheampong Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
+  },
+  {
    "adherence": "HIGH — 서사의 '딥 스크린 + 압박저항 + 라인 사이 배급'이 dm_dlp(딥라잉 플레이메이커) .913과 강정합. 정량 근거도 방향 일치: 라인 사이 패스 성공 4.57/90 PL 미드필더 1위·볼 상실 5.75/90 3번째로 적음(24/25). '중앙 이탈 없음' vs Roaming 포커스는 경미한 긴장이나 Δ가 노이즈 밖이라 적합 우선.",
    "confidence": "서사 소스(3티어급) — 가설 지위(docs/30 영상·서사 절차 2단계). 위치 주장은 실측 우선. ⚠️ 부상 이력이 지배적 캐비앗(24/25 선발 10회, 26-07 햄스트링). PFF 등급은 404로 검색 스니펫 경유 — 저신뢰. 피벗 구성도 소스 충돌(카이세도+엔소 예상 vs 실제 카이세도+라비아 선발).",
    "duties": "백라인 앞 딥 스크린. 서사: 단독 6번 또는 더블 피벗의 한 축이며 '중앙을 거의 벗어나지 않는' 규율형. 압박 저항이 반복 지명된 최대 강점. 밀란전에서는 모드리치 대인 마킹 임무. 본인 발언상 카이세도가 파괴자 역할을 분담.",
@@ -484,6 +649,21 @@
    "sample_note": "기존 기록에 개별 시청 경기·영상의 관찰 기간이 명시되지 않음",
    "sample_scope": "unknown",
    "source": "https://www.premierleague.com/en/news/4304480 ; https://transferhub.substack.com/p/scouting-report-what-makes-romeo ; https://totalfootballanalysis.com/player-analysis/romeo-lavia-at-southampton-scout-report-tactical-analysis-tactics ; https://chelsea.news/2026/08/xabi-alonso-chelsea-tactics/"
+  },
+  {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "전진 연결형 피벗",
+   "execution": "2026-08-24 Fulham전 65분, LCM, 평점 7.31, 터치 34·hp 34; 공 소유 시 효율은 높았으나 상대 중원 통제를 막지는 못했다.",
+   "game_role_implication": "Fulham전 실제 LCM 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "라비아",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 65,
+   "position": "LCM",
+   "sample_note": "Roméo Lavia Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
   },
   {
    "adherence": "MEDIUM-HIGH — 측면은 **실측이 서사를 기각**(우측 예측 → 좌측 실측, docs/30 3단계 '위치 주장은 실측이 이긴다'). 높이·폭 주장은 실측 확인(tool_x 16.1·avg_x 65.9). 기능 주장(드리블·크로스)은 그리드 밖 층이라 가설 유지.",
@@ -546,6 +726,21 @@
    "source": "Chelsea 공식 영입 https://www.chelseafc.com/en/news/article/pep-chavarria-signs-for-chelsea ; reports/transfer-watch/2026-08-13.md ; SofaScore player 1010421"
   },
   {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "리드 보호 좌측 윙백",
+   "execution": "2026-08-24 Fulham전 25분, LM, 평점 5.98, 터치 12·hp 12; Hato 교체로 수비 가담했으나 표본이 부족했다.",
+   "game_role_implication": "Fulham전 실제 LM 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "차바리아",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 80,
+   "position": "LM",
+   "sample_note": "Pep Chavarría Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
+  },
+  {
    "adherence": "LOW-MEDIUM — 스카우트 서사(볼 유지·전진 패스가 강점, 리커버리·인터셉트는 약점)와 조호르전 정성 평가(빌드업 곤란)가 **방향이 어긋난다**. 좌표가 없어 실측 중재가 불가하다.",
    "confidence": "MEDIUM-LOW. ⛔ **좌표·map25 0** — SofaScore 403 + FotMob 친선 미제공으로 커널 적합(fit_sim) 산출이 불가하다. `game_role_implication`은 **역할 확정이 아니라 시사·보류**다. ⚠️ **풀럼 시절(마르쿠 실바) 서술이 스카우트 자료의 다수**다. 25/26 PL 705분·평균 6.87은 **마레스카·로즈니어 체제 값**이라 알론소 귀속 금지. ⚠️ scoutingstats.ai 프로필은 **게시일 확인 실패**라 보조 근거로만 썼다. ⛔ 전용 유튜브 개인 분석 **0건**(검색된 것은 하이라이트·토크물이며 미시청이라 인용하지 않았다). \n⚠️ **[2026-08-19]** 종전 `source`는 「Chelsea 공식 …」 서술만 있고 **URL·이벤트 ID가 없어 클릭 근거가 성립하지 않았다**(G10 실패). 그가 `squad_entries`에 편입되면서 드러난 결손이고, 실측 이벤트 참조를 추가해 해소했다.",
    "duties": "**백4일 때(유벤투스) LCB — 좌측 반쪽.** **백3일 때(조호르) CCB — 백3 중앙**, 즉 수불로예(우)·안셀미노(좌) 사이의 가장 낮은 꼭짓점이다. ⭐ 이는 알론소 서사(obs#175)의 **'볼플레잉 CB 2명 사이에 더 힘 있는 CB 1명'** 구조에서 **토신을 중앙 파워 CB로 놓았다**는 뜻이며, **obs#198이 '3-4-2-1 CCB는 공석·미정'으로 남긴 슬롯에 실제 배치 사례 1건**을 제공한다.",
@@ -574,6 +769,21 @@
    "sample_note": "⛔ 첼시 공식전 0경기. 스포르팅 시절 자료는 별도 축으로 표기했다.",
    "sample_scope": "이라올라 아님/알론소 체제 프리시즌 3경기(백4 1 · 백3 2)",
    "source": "TFA 스카우트 리포트(Rohit Rajeev) 2026-07-29 https://tacticalfootballanalysis.com/geovany-quenda-scout-report-chelsea-2026-2027-analysis-tactics/ ; Chelsea 공식 JDT 매치리포트 2026-08-09 ; Roundtable 2026-08-08 ; ESPN 반론 https://www.espn.com/soccer/story/_/id/44246905/why-geovany-quenda-chelsea-answer-saka ; reports/match-watch/2026-preseason-che.md"
+  },
+  {
+   "adherence": "single-match observation",
+   "confidence": "measured single match; sub-45m samples are descriptive only.",
+   "duties": "막판 좌측 포켓 교체",
+   "execution": "2026-08-24 Fulham전 8분, LAM, 평점 미산출, 터치 6·hp 6; Rogers 자리를 이어받았으나 평가 불가.",
+   "game_role_implication": "Fulham전 실제 LAM 수행. 경기 전용 커널값은 보고서에만 저장하고 시즌 역할로 승격하지 않는다.",
+   "label": "퀜다",
+   "observed_from": "2026-08-24",
+   "observed_to": "2026-08-24",
+   "player_id": 95,
+   "position": "LAM",
+   "sample_note": "Geovany Quenda Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
+   "sample_scope": "1 official match",
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
   },
   {
    "adherence": "MEDIUM — 2경기 표본이고 포메이션이 서로 다르다(4-4-2 ↔ 3-4-3)라 docs/30의 포지션-순수 원칙에서 벗어난 집계다. 위치 판독은 「중앙 밴드」까지만 유효하다.",
@@ -652,33 +862,33 @@
   },
   {
    "adherence": "HIGH(위치) / LOW(역할) — 위치는 CCB 앵커와 Δ0.5로 정합하나 **1경기 표본**이고 데뷔전이다. 수비 국면 근거가 거의 없다(태클 1).",
-   "confidence": "실측 MEASURED(SofaScore) — 단 프리시즌 친선 1경기이고 알론소 공식전 0경기다. 등번호 미배정 상태(첼시 공식 스쿼드 페이지).",
+   "confidence": "실측 MEASURED(SofaScore) — 단 프리시즌 친선 1경기이고 알론소 공식전 0경기다. 등번호 미배정 상태(첼시 공식 스쿼드 페이지). / measured single match; sub-45m samples are descriptive only.",
    "duties": "백3 중앙. 소시에다드전 첼시 데뷔전에서 라크루아가 백3의 **중앙**을 맡았다(콜윌 좌·포파나 우). 볼 소유 시 전진 없이 중앙에 남아 배급하는 형태.",
-   "execution": "실측 1경기(소시에다드전 62분, 평점 6.7, hp=65): avg_x 33.2 · avg_y 42.5 → **tool_x 57.5 · tool_y 33.2**. 3-4-2-1 CCB 앵커(x=57)와 Δ+0.5로 거의 정확히 일치한다. 패스 56회 중 54회 성공(96%)이고 태클 1·경합 1승1패로 수비 액션이 거의 없었다 — 점유 59% 경기에서 배급 역할.",
+   "execution": "실측 1경기(소시에다드전 62분, 평점 6.7, hp=65): avg_x 33.2 · avg_y 42.5 → **tool_x 57.5 · tool_y 33.2**. 3-4-2-1 CCB 앵커(x=57)와 Δ+0.5로 거의 정확히 일치한다. 패스 56회 중 54회 성공(96%)이고 태클 1·경합 1승1패로 수비 액션이 거의 없었다 — 점유 59% 경기에서 배급 역할. / 2026-08-24 Fulham전 90분, CCB, 평점 8, 터치 68·hp 68; 박스까지 올라가 수비수를 벗기고 Rogers 골을 만들었다.",
    "game_role_implication": "CCB(x=57) → cb_bpd/Aggressive .844. 백3 3인 중 가장 높다(콜윌 .720 · 포파나 .480). ⚠️ 1경기라 처방 확정 근거로 쓰지 말 것 — 08-24 풀럼 이후 재산출.",
    "label": "라크루아",
    "observed_from": null,
-   "observed_to": null,
+   "observed_to": "2026-08-24",
    "player_id": 130,
    "position": "CCB",
-   "sample_note": "소시에다드전 1경기(2026-08-15) 90분 중 62분 · 히트포인트 65",
+   "sample_note": "소시에다드전 1경기(2026-08-15) 90분 중 62분 · 히트포인트 65 / Maxence Lacroix Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
    "sample_scope": "match",
-   "source": "SofaScore event 16767421 (lineups·heatmap·statistics, 2026-08-19 수집) ; https://www.chelseafc.com/en/teams/men ; reports/match-watch/2026-08-15-che-real-sociedad.md"
+   "source": "SofaScore event 16767421 (lineups·heatmap·statistics, 2026-08-19 수집) ; https://www.chelseafc.com/en/teams/men ; reports/match-watch/2026-08-15-che-real-sociedad.md / FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
   },
   {
    "adherence": "HIGH(위치) / MEDIUM(역할) — 위치 Δ−1.9로 정합. ⚠️ 경합 0승3패는 표본이 작아(3회) 성향 판정에 못 쓴다.",
-   "confidence": "실측 MEASURED(SofaScore) — 프리시즌 친선 1경기, 알론소 공식전 0경기.",
+   "confidence": "실측 MEASURED(SofaScore) — 프리시즌 친선 1경기, 알론소 공식전 0경기. / measured single match; sub-45m samples are descriptive only.",
    "duties": "백3 좌측. 소시에다드전에서 백3의 좌측을 맡아 좌측 윙백(팔레스트라) 뒤를 덮었다. 첼시 6번.",
-   "execution": "실측 1경기(소시에다드전 76분, 평점 6.6, hp=68): avg_x 43.1 · avg_y 76.9 → **tool_x 23.1 · tool_y 43.1**. 3-4-2-1 LCB 앵커(x=25)와 Δ−1.9. 패스 57/57(100%)로 전량 성공이고 경합 0승3패 — 볼 배급은 완결적이었으나 듀얼에서 전패했다.",
+   "execution": "실측 1경기(소시에다드전 76분, 평점 6.6, hp=68): avg_x 43.1 · avg_y 76.9 → **tool_x 23.1 · tool_y 43.1**. 3-4-2-1 LCB 앵커(x=25)와 Δ−1.9. 패스 57/57(100%)로 전량 성공이고 경합 0승3패 — 볼 배급은 완결적이었으나 듀얼에서 전패했다. / 2026-08-24 Fulham전 90분, LCB, 평점 6.67, 터치 40·hp 40; 배급은 안정적이나 5분 경고 뒤 넓은 수비는 보수적.",
    "game_role_implication": "LCB(x=25) → cb_bpd/Aggressive .720. ⚠️ 1경기 표본. 밀란전에는 하토가 같은 자리(tool_x 26.2)를 맡아 **좌측 CB는 두 명이 번갈아** 쓴다.",
    "label": "콜윌",
    "observed_from": null,
-   "observed_to": null,
+   "observed_to": "2026-08-24",
    "player_id": 131,
    "position": "LCB",
-   "sample_note": "소시에다드전 1경기(2026-08-15) 90분 중 76분 · 히트포인트 68",
+   "sample_note": "소시에다드전 1경기(2026-08-15) 90분 중 76분 · 히트포인트 68 / Levi Colwill Fulham전. 경기 종료 직후 초판; 지연 분석 D+2~D+3 대기.",
    "sample_scope": "match",
-   "source": "SofaScore event 16767421 (lineups·heatmap·statistics, 2026-08-19 수집) ; https://www.chelseafc.com/en/teams/men ; reports/match-watch/2026-08-15-che-real-sociedad.md"
+   "source": "SofaScore event 16767421 (lineups·heatmap·statistics, 2026-08-19 수집) ; https://www.chelseafc.com/en/teams/men ; reports/match-watch/2026-08-15-che-real-sociedad.md / FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham"
   },
   {
    "adherence": "MEDIUM — 위치는 RCM과 Δ+5.1로 정합하나 **1경기 표본**이고 상대(조호르)가 저수준이라 볼 관여량이 부풀려졌을 수 있다.",
@@ -26888,6 +27098,11 @@
     "2026-08-15",
     6.1,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    7.31,
+    "Premier League"
    ]
   ],
   "라크루아": [
@@ -26900,14 +27115,14 @@
     "2026-08-15",
     6.7,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    8.0,
+    "Premier League"
    ]
   ],
   "로베르트 산체스": [
-   [
-    "2026-04-26",
-    7.9,
-    "FA Cup"
-   ],
    [
     "2026-05-04",
     6.3,
@@ -26952,14 +27167,14 @@
     "2026-08-15",
     6.8,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    5.67,
+    "Premier League"
    ]
   ],
   "로저스": [
-   [
-    "2026-06-10",
-    6.2,
-    "International Friendly Games"
-   ],
    [
     "2026-06-17",
     7.3,
@@ -27004,14 +27219,14 @@
     "2026-08-15",
     7.4,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    8.65,
+    "Premier League"
    ]
   ],
   "리스 제임스": [
-   [
-    "2026-05-24",
-    6.9,
-    "Premier League"
-   ],
    [
     "2026-06-06",
     6.7,
@@ -27056,14 +27271,14 @@
     "2026-08-15",
     7.4,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    7.01,
+    "Premier League"
    ]
   ],
   "말로 귀스토": [
-   [
-    "2026-05-16",
-    6.5,
-    "FA Cup"
-   ],
    [
     "2026-05-24",
     6.6,
@@ -27108,6 +27323,11 @@
     "2026-08-15",
     7.3,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    6.69,
+    "Premier League"
    ]
   ],
   "모이세스 카이세도": [
@@ -27199,6 +27419,11 @@
     "2026-08-15",
     6.0,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    7.32,
+    "Premier League"
    ]
   ],
   "에수구": [
@@ -27262,11 +27487,6 @@
   ],
   "엔소 페르난데스": [
    [
-    "2026-06-07",
-    6.9,
-    "International Friendly Games"
-   ],
-   [
     "2026-06-10",
     6.8,
     "International Friendly Games"
@@ -27310,14 +27530,14 @@
     "2026-08-15",
     6.5,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    6.41,
+    "Premier League"
    ]
   ],
   "요렐 하토": [
-   [
-    "2026-05-09",
-    6.9,
-    "Premier League"
-   ],
    [
     "2026-05-16",
     6.3,
@@ -27362,6 +27582,11 @@
     "2026-08-15",
     6.1,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    7.08,
+    "Premier League"
    ]
   ],
   "웨슬리 포파나": [
@@ -27435,11 +27660,6 @@
   ],
   "주앙 페드루": [
    [
-    "2026-04-26",
-    6.4,
-    "FA Cup"
-   ],
-   [
     "2026-05-04",
     7.8,
     "Premier League"
@@ -27483,14 +27703,14 @@
     "2026-08-15",
     8.8,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    8.47,
+    "Premier League"
    ]
   ],
   "차바리아": [
-   [
-    "2026-04-23",
-    7.3,
-    "LaLiga"
-   ],
    [
     "2026-04-26",
     6.0,
@@ -27535,14 +27755,14 @@
     "2026-08-15",
     6.2,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    5.98,
+    "Premier League"
    ]
   ],
   "콜 파머": [
-   [
-    "2026-04-18",
-    6.8,
-    "Premier League"
-   ],
    [
     "2026-04-26",
     6.5,
@@ -27587,6 +27807,11 @@
     "2026-08-15",
     6.7,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    9.08,
+    "Premier League"
    ]
   ],
   "콜윌": [
@@ -27599,6 +27824,11 @@
     "2026-08-15",
     6.6,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    6.67,
+    "Premier League"
    ]
   ],
   "퀜다": [
@@ -27709,11 +27939,6 @@
   ],
   "페드루 네투": [
    [
-    "2026-06-06",
-    6.6,
-    "International Friendly Games"
-   ],
-   [
     "2026-06-10",
     7.5,
     "International Friendly Games"
@@ -27757,6 +27982,11 @@
     "2026-08-15",
     7.8,
     "Club Friendly"
+   ],
+   [
+    "2026-08-24",
+    6.88,
+    "Premier League"
    ]
   ]
  },
@@ -29687,6 +29917,920 @@
   ]
  },
  "match_reports": [
+  {
+   "bigch_o": 2,
+   "bigch_v": 4,
+   "competition": "Premier League",
+   "confidence": "measured+reported, draft. 공식 전체 회견·클럽 전술 영상·지연 선수별 분석은 D+2~D+3 재수집 대상.",
+   "corners_o": 6,
+   "corners_v": 4,
+   "created_at": "2026-08-25T08:00:00+09:00",
+   "cross_acc_v": 5,
+   "cross_att_v": 11,
+   "date": "2026-08-24",
+   "duelpct_v": 53.3,
+   "event_id": 5795372,
+   "formation_o": "4-2-3-1",
+   "formation_v": "3-4-2-1",
+   "fouls_o": 12,
+   "fouls_v": 7,
+   "game_implications": "Counter/Balanced 경기 전용 설정. 중원 장악 실패와 Sánchez 골 방어는 다음 경기 재검증하고 단일 경기 fit은 시즌 정본에 병합하지 않는다.",
+   "game_players": [
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.961,
+     "focus": "Balanced",
+     "game_version": "FC26",
+     "label": "로베르트 산체스",
+     "minute_on": null,
+     "name_en": "Robert Sánchez",
+     "player_id": 31,
+     "pos_label": "GK",
+     "rationale": "3-4-2-1 GK 슬롯 정본 x=50; Opta 단일 경기 map25·hp38 커널 argmax.",
+     "replaced_player_id": null,
+     "role_id": "gk_goalkeeper",
+     "role_name": "골키퍼",
+     "sort_order": 1,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 1,
+     "x": 50,
+     "y": 11
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.737,
+     "focus": "Aggressive",
+     "game_version": "FC26",
+     "label": "아체암퐁",
+     "minute_on": null,
+     "name_en": "Josh Acheampong",
+     "player_id": 63,
+     "pos_label": "RCB",
+     "rationale": "3-4-2-1 RCB 슬롯 정본 x=75; Opta 단일 경기 map25·hp67 커널 argmax.",
+     "replaced_player_id": null,
+     "role_id": "cb_bpd",
+     "role_name": "볼 플레잉 센터백",
+     "sort_order": 2,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 1,
+     "x": 75,
+     "y": 32
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.885,
+     "focus": "Aggressive",
+     "game_version": "FC26",
+     "label": "라크루아",
+     "minute_on": null,
+     "name_en": "Maxence Lacroix",
+     "player_id": 130,
+     "pos_label": "CCB",
+     "rationale": "3-4-2-1 CCB 슬롯 정본 x=57; Opta 단일 경기 map25·hp68 커널 argmax.",
+     "replaced_player_id": null,
+     "role_id": "cb_bpd",
+     "role_name": "볼 플레잉 센터백",
+     "sort_order": 3,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 1,
+     "x": 57,
+     "y": 34
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.707,
+     "focus": "Aggressive",
+     "game_version": "FC26",
+     "label": "콜윌",
+     "minute_on": null,
+     "name_en": "Levi Colwill",
+     "player_id": 131,
+     "pos_label": "LCB",
+     "rationale": "3-4-2-1 LCB 슬롯 정본 x=25; Opta 단일 경기 map25·hp40 커널 argmax.",
+     "replaced_player_id": null,
+     "role_id": "cb_bpd",
+     "role_name": "볼 플레잉 센터백",
+     "sort_order": 4,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 1,
+     "x": 25,
+     "y": 36
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.796,
+     "focus": "Balanced",
+     "game_version": "FC26",
+     "label": "말로 귀스토",
+     "minute_on": null,
+     "name_en": "Malo Gusto",
+     "player_id": 32,
+     "pos_label": "RM",
+     "rationale": "3-4-2-1 RM 슬롯 정본 x=79; Opta 단일 경기 map25·hp42 커널 argmax.",
+     "replaced_player_id": null,
+     "role_id": "wm_winger",
+     "role_name": "윙어",
+     "sort_order": 5,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 1,
+     "x": 79,
+     "y": 58
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.727,
+     "focus": "Roaming",
+     "game_version": "FC26",
+     "label": "리스 제임스",
+     "minute_on": null,
+     "name_en": "Reece James",
+     "player_id": 41,
+     "pos_label": "RCM",
+     "rationale": "3-4-2-1 RCM 슬롯 정본 x=55; Opta 단일 경기 map25·hp72 커널 argmax.",
+     "replaced_player_id": null,
+     "role_id": "cm_playmaker",
+     "role_name": "플레이메이커",
+     "sort_order": 6,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 1,
+     "x": 55,
+     "y": 44
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.796,
+     "focus": "Attack",
+     "game_version": "FC26",
+     "label": "라비아",
+     "minute_on": null,
+     "name_en": "Roméo Lavia",
+     "player_id": 65,
+     "pos_label": "LCM",
+     "rationale": "3-4-2-1 LCM 슬롯 정본 x=45; Opta 단일 경기 map25·hp34 커널 argmax.",
+     "replaced_player_id": null,
+     "role_id": "cm_playmaker",
+     "role_name": "플레이메이커",
+     "sort_order": 7,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 1,
+     "x": 45,
+     "y": 44
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.776,
+     "focus": "Balanced",
+     "game_version": "FC26",
+     "label": "요렐 하토",
+     "minute_on": null,
+     "name_en": "Jorrel Hato",
+     "player_id": 35,
+     "pos_label": "LM",
+     "rationale": "3-4-2-1 LM 슬롯 정본 x=15; Opta 단일 경기 map25·hp40 커널 argmax.",
+     "replaced_player_id": null,
+     "role_id": "wm_winger",
+     "role_name": "윙어",
+     "sort_order": 8,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 1,
+     "x": 15,
+     "y": 56
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.751,
+     "focus": "Balanced",
+     "game_version": "FC26",
+     "label": "콜 파머",
+     "minute_on": null,
+     "name_en": "Cole Palmer",
+     "player_id": 39,
+     "pos_label": "RAM",
+     "rationale": "3-4-2-1 RAM 슬롯 정본 x=68; Opta 단일 경기 map25·hp60 커널 argmax.",
+     "replaced_player_id": null,
+     "role_id": "cam_halfwinger",
+     "role_name": "하프 윙어",
+     "sort_order": 9,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 1,
+     "x": 68,
+     "y": 72
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.675,
+     "focus": "Roaming",
+     "game_version": "FC26",
+     "label": "로저스",
+     "minute_on": null,
+     "name_en": "Morgan Rogers",
+     "player_id": 13,
+     "pos_label": "LAM",
+     "rationale": "3-4-2-1 LAM 슬롯 정본 x=35; Opta 단일 경기 map25·hp40 커널 argmax.",
+     "replaced_player_id": null,
+     "role_id": "cam_playmaker",
+     "role_name": "플레이메이커",
+     "sort_order": 10,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 1,
+     "x": 35,
+     "y": 72
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.739,
+     "focus": "Support",
+     "game_version": "FC26",
+     "label": "주앙 페드루",
+     "minute_on": null,
+     "name_en": "João Pedro",
+     "player_id": 40,
+     "pos_label": "ST",
+     "rationale": "3-4-2-1 ST 슬롯 정본 x=42; Opta 단일 경기 map25·hp40 커널 argmax.",
+     "replaced_player_id": null,
+     "role_id": "st_advanced",
+     "role_name": "어드밴스드 포워드",
+     "sort_order": 11,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 1,
+     "x": 42,
+     "y": 80
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.817,
+     "focus": "Roaming",
+     "game_version": "FC26",
+     "label": "엔소 페르난데스",
+     "minute_on": 65,
+     "name_en": "Enzo Fernández",
+     "player_id": 37,
+     "pos_label": "LCM",
+     "rationale": "3-4-2-1 LCM 슬롯 정본 x=45; Opta 단일 경기 map25·hp25 커널 argmax. ⛔ 표본 미달(25분·hp25); 시즌 정본 병합 금지.",
+     "replaced_player_id": 65,
+     "role_id": "cm_playmaker",
+     "role_name": "플레이메이커",
+     "sort_order": 12,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 0,
+     "x": 45,
+     "y": 44
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.72,
+     "focus": "Support",
+     "game_version": "FC26",
+     "label": "차바리아",
+     "minute_on": 65,
+     "name_en": "Pep Chavarría",
+     "player_id": 80,
+     "pos_label": "LM",
+     "rationale": "3-4-2-1 LM 슬롯 정본 x=15; Opta 단일 경기 map25·hp12 커널 argmax. ⛔ 표본 미달(25분·hp12); 시즌 정본 병합 금지.",
+     "replaced_player_id": 35,
+     "role_id": "wm_widemid",
+     "role_name": "와이드 미드필더",
+     "sort_order": 13,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 0,
+     "x": 15,
+     "y": 56
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.587,
+     "focus": "Defend",
+     "game_version": "FC26",
+     "label": "페드루 네투",
+     "minute_on": 76,
+     "name_en": "Pedro Neto",
+     "player_id": 38,
+     "pos_label": "RM",
+     "rationale": "3-4-2-1 RM 슬롯 정본 x=79; Opta 단일 경기 map25·hp14 커널 argmax. ⛔ 표본 미달(14분·hp14); 시즌 정본 병합 금지.",
+     "replaced_player_id": 32,
+     "role_id": "wm_widemid",
+     "role_name": "와이드 미드필더",
+     "sort_order": 14,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 0,
+     "x": 79,
+     "y": 58
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.422,
+     "focus": "Balanced",
+     "game_version": "FC26",
+     "label": "퀜다",
+     "minute_on": 82,
+     "name_en": "Geovany Quenda",
+     "player_id": 95,
+     "pos_label": "LAM",
+     "rationale": "3-4-2-1 LAM 슬롯 정본 x=35; Opta 단일 경기 map25·hp6 커널 argmax. ⛔ 표본 미달(8분·hp6); 시즌 정본 병합 금지.",
+     "replaced_player_id": 13,
+     "role_id": "cam_halfwinger",
+     "role_name": "하프 윙어",
+     "sort_order": 15,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 0,
+     "x": 35,
+     "y": 72
+    },
+    {
+     "confidence": "measured(match-only). 단일 경기 fit; 시즌 처방 승격 금지.",
+     "fit_sim": 0.546,
+     "focus": "Attack",
+     "game_version": "FC26",
+     "label": "에스테방",
+     "minute_on": 83,
+     "name_en": "Estêvão",
+     "player_id": 42,
+     "pos_label": "RAM",
+     "rationale": "3-4-2-1 RAM 슬롯 정본 x=68; Opta 단일 경기 map25·hp5 커널 argmax. ⛔ 표본 미달(7분·hp5); 시즌 정본 병합 금지.",
+     "replaced_player_id": 39,
+     "role_id": "cam_halfwinger",
+     "role_name": "하프 윙어",
+     "sort_order": 16,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "starter": 0,
+     "x": 68,
+     "y": 72
+    }
+   ],
+   "game_setup": {
+    "build_up_style": "Counter",
+    "confidence": "measured(match-only). 시즌 team_tactic_setups에 병합 금지.",
+    "defensive_approach": "Balanced",
+    "formation": "3-4-2-1",
+    "game_version": "FC26",
+    "line_height": 50,
+    "match_only": 1,
+    "rationale": "점유 38%·패스 389 대 620이라 Short Passing을 기각. xG 1.70·박스 터치 37·전방 3인 직접 결합은 Counter를 지지. PPDA 20.18이라 High를 기각하고 백3 평균 위치·후반 리드 보호를 합쳐 line 50.",
+    "report_id": 25,
+    "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+    "tactic_code": null
+   },
+   "id": 25,
+   "long_acc_o": 35,
+   "long_acc_v": 22,
+   "long_att_o": 64,
+   "long_att_v": 59,
+   "match_id": 89,
+   "opponent": "Fulham",
+   "passes_o": 620,
+   "passes_v": 389,
+   "players": [
+    {
+     "assists": 0,
+     "avg_x": 11.38,
+     "avg_y": 48.01,
+     "characteristics": "패스보다 선방·세컨드볼 처리 비중이 큰 경기",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 0,
+     "duels_won": 0,
+     "game_implication": "골 방어 안정 전까지 시즌 주전 GK 처방 승격 금지.",
+     "goals": 0,
+     "hit_points": 38,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "로베르트 산체스",
+     "lineup_pos": "G",
+     "map25": "0000000000000000021001X10",
+     "minutes": 90,
+     "name_en": "Robert Sánchez",
+     "performance": "선방 4회에도 goals prevented -0.78; 두 실점 개입이 불안했다.",
+     "player_id": 31,
+     "pos_class": "GK",
+     "position": "GK",
+     "rating": 5.67,
+     "recoveries": 5,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 1,
+     "stats_json": "{\"accurate_passes\": 10, \"accurate_passes_total\": 27, \"clearances\": 1, \"defensive_actions\": 1, \"errors_led_to_goal\": 1, \"expected_goals_on_target_faced\": 1.22, \"fantasy_points\": 2, \"fotmob_id\": 789571, \"fouls\": 0, \"goals_conceded\": 2, \"goals_prevented\": -0.78, \"interceptions\": 0, \"keeper_diving_save\": 1, \"keeper_high_claim\": 4, \"keeper_sweeper\": 0, \"line_breaking_passes\": 4, \"long_balls_accurate\": 7, \"long_balls_accurate_total\": 24, \"matchstats.headers.tackles\": 0, \"minutes_played\": 90, \"passes_into_final_third\": 13, \"physical_metrics_distance_covered\": 4717, \"physical_metrics_running\": 74, \"physical_metrics_running_total\": 4717, \"physical_metrics_topspeed\": 21.600000381469727, \"player_throws\": 2, \"pos_class_auto\": \"GK\", \"punches\": 1, \"rating_title\": 5.67, \"recoveries\": 5, \"saves\": 4, \"saves_inside_box\": 2, \"touches\": 38, \"was_fouled\": null, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 362151}",
+     "tackles": 0,
+     "tactical_role": "후방 골키퍼",
+     "touches": 38,
+     "xa": 0.0,
+     "xg": 0.0
+    },
+    {
+     "assists": 0,
+     "avg_x": 40.83,
+     "avg_y": 23.83,
+     "characteristics": "클리어 7·회수 5와 전진 경합",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 5,
+     "duels_won": 7,
+     "game_implication": "RCB 공격적 BPD 후보이나 반복 표본 필요.",
+     "goals": 0,
+     "hit_points": 67,
+     "interceptions": 1,
+     "key_passes": 0,
+     "label": "아체암퐁",
+     "lineup_pos": "D",
+     "map25": "000110004800254002X501225",
+     "minutes": 90,
+     "name_en": "Josh Acheampong",
+     "performance": "90분 동안 우측 백3의 가장 안정적인 수비 수행.",
+     "player_id": 63,
+     "pos_class": "RCB",
+     "position": "RCB",
+     "rating": 7.32,
+     "recoveries": 5,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 1,
+     "stats_json": "{\"Offsides\": 1, \"accurate_crosses\": 0, \"accurate_crosses_total\": 1, \"accurate_passes\": 38, \"accurate_passes_total\": 48, \"aerials_won\": 1, \"aerials_won_total\": 2, \"assists\": 0, \"chances_created\": 0, \"clearances\": 7, \"defensive_actions\": 15, \"dispossessed\": 1, \"dribbled_past\": 2, \"dribbles_succeeded\": 0, \"dribbles_succeeded_total\": 1, \"duel_lost\": 5, \"duel_won\": 7, \"expected_assists\": 0.01, \"fantasy_points\": 3, \"fotmob_id\": 1400216, \"fouls\": 0, \"goals\": 0, \"ground_duels_won\": 6, \"ground_duels_won_total\": 10, \"headed_clearance\": 2, \"interceptions\": 1, \"line_breaking_passes\": 11, \"long_balls_accurate\": 2, \"long_balls_accurate_total\": 8, \"matchstats.headers.tackles\": 5, \"minutes_played\": 90, \"passes_into_final_third\": 11, \"physical_metrics_distance_covered\": 11213, \"physical_metrics_number_of_sprints\": 12, \"physical_metrics_running\": 1780, \"physical_metrics_running_total\": 11213, \"physical_metrics_sprinting\": 218, \"physical_metrics_sprinting_total\": 11213, \"physical_metrics_topspeed\": 34.599998474121094, \"pos_class_auto\": \"RCB\", \"rating_title\": 7.32, \"recoveries\": 5, \"shot_blocks\": 2, \"touches\": 67, \"touches_opp_box\": 1, \"was_fouled\": 1, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 518604, \"xg_and_xa\": 0.01}",
+     "tackles": 5,
+     "tactical_role": "넓은 우측 커버 CB",
+     "touches": 67,
+     "xa": 0.01,
+     "xg": 0.0
+    },
+    {
+     "assists": 1,
+     "avg_x": 38.8,
+     "avg_y": 50.89,
+     "characteristics": "패스 47/50, xA .20, 도움 1",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 10,
+     "duels_won": 7,
+     "game_implication": "알론소 체제의 자유 CB 패턴인지 다음 경기 확인.",
+     "goals": 0,
+     "hit_points": 68,
+     "interceptions": 2,
+     "key_passes": 1,
+     "label": "라크루아",
+     "lineup_pos": "D",
+     "map25": "00010021001274122X3002210",
+     "minutes": 90,
+     "name_en": "Maxence Lacroix",
+     "performance": "박스까지 올라가 수비수를 벗기고 Rogers 골을 만들었다.",
+     "player_id": 130,
+     "pos_class": "CCB",
+     "position": "CCB",
+     "rating": 8.0,
+     "recoveries": 2,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 1,
+     "stats_json": "{\"accurate_passes\": 47, \"accurate_passes_total\": 50, \"aerials_won\": 1, \"aerials_won_total\": 7, \"assists\": 1, \"big_chance_created_team_title\": 1, \"chances_created\": 1, \"clearances\": 4, \"defensive_actions\": 12, \"dispossessed\": 2, \"dribbled_past\": 1, \"duel_lost\": 10, \"duel_won\": 7, \"expected_assists\": 0.2, \"fantasy_points\": 6, \"fotmob_id\": 950485, \"fouls\": 1, \"goals\": 0, \"ground_duels_won\": 6, \"ground_duels_won_total\": 10, \"headed_clearance\": 3, \"interceptions\": 2, \"last_man_tackle\": 2, \"line_breaking_passes\": 8, \"long_balls_accurate\": 2, \"long_balls_accurate_total\": 3, \"matchstats.headers.tackles\": 5, \"minutes_played\": 90, \"passes_into_final_third\": 3, \"physical_metrics_distance_covered\": 10307, \"physical_metrics_number_of_sprints\": 10, \"physical_metrics_running\": 1666, \"physical_metrics_running_total\": 10307, \"physical_metrics_sprinting\": 218, \"physical_metrics_sprinting_total\": 10307, \"physical_metrics_topspeed\": 32.29999923706055, \"pos_class_auto\": \"CCB\", \"rating_title\": 8, \"recoveries\": 2, \"shot_blocks\": 1, \"touches\": 68, \"touches_opp_box\": 1, \"was_fouled\": 1, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 401130, \"xg_and_xa\": 0.2}",
+     "tackles": 5,
+     "tactical_role": "중앙 배급+기습 박스 침투 CB",
+     "touches": 68,
+     "xa": 0.2,
+     "xg": 0.0
+    },
+    {
+     "assists": 0,
+     "avg_x": 41.6,
+     "avg_y": 75.54,
+     "characteristics": "패스 27/29, 좌측 낮은 위치",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 2,
+     "duels_won": 4,
+     "game_implication": "LCB Build-Up/Aggressive 간 반복 표본 필요.",
+     "goals": 0,
+     "hit_points": 40,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "콜윌",
+     "lineup_pos": "D",
+     "map25": "0200015010730002X20042100",
+     "minutes": 90,
+     "name_en": "Levi Colwill",
+     "performance": "배급은 안정적이나 5분 경고 뒤 넓은 수비는 보수적.",
+     "player_id": 131,
+     "pos_class": "LCB",
+     "position": "LCB",
+     "rating": 6.67,
+     "recoveries": 3,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 0, \"ShotsOnTarget\": 0, \"accurate_passes\": 27, \"accurate_passes_total\": 29, \"aerials_won\": 0, \"aerials_won_total\": 1, \"assists\": 0, \"blocked_shots\": 1, \"chances_created\": 0, \"clearances\": 2, \"defensive_actions\": 4, \"dispossessed\": 0, \"dribbled_past\": 0, \"dribbles_succeeded\": 1, \"dribbles_succeeded_total\": 1, \"duel_lost\": 2, \"duel_won\": 4, \"expected_assists\": 0.03, \"expected_goals\": 0.01, \"expected_goals_non_penalty\": 0.01, \"expected_goals_on_target_variant\": null, \"fantasy_points\": 0, \"fotmob_id\": 1096400, \"fouls\": 1, \"goals\": 0, \"ground_duels_won\": 4, \"ground_duels_won_total\": 5, \"headed_clearance\": 1, \"interceptions\": 0, \"line_breaking_passes\": 5, \"long_balls_accurate\": 0, \"long_balls_accurate_total\": 1, \"matchstats.headers.tackles\": 2, \"minutes_played\": 90, \"passes_into_final_third\": 1, \"physical_metrics_distance_covered\": 10802, \"physical_metrics_number_of_sprints\": 6, \"physical_metrics_running\": 1605, \"physical_metrics_running_total\": 10802, \"physical_metrics_sprinting\": 168, \"physical_metrics_sprinting_total\": 10802, \"physical_metrics_topspeed\": 32.900001525878906, \"pos_class_auto\": \"LCB\", \"rating_title\": 6.67, \"recoveries\": 3, \"shot_blocks\": 0, \"total_shots\": 1, \"touches\": 40, \"touches_opp_box\": 2, \"was_fouled\": 1, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 421351, \"xg_and_xa\": 0.04}",
+     "tackles": 2,
+     "tactical_role": "좌측 후방 배급 CB",
+     "touches": 40,
+     "xa": 0.03,
+     "xg": 0.01
+    },
+    {
+     "assists": 0,
+     "avg_x": 54.16,
+     "avg_y": 15.58,
+     "characteristics": "박스 터치 3, 패스 19/23",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 3,
+     "duels_won": 3,
+     "game_implication": "RM 외곽 전진 유지, Neto와 교대 패턴 추적.",
+     "goals": 0,
+     "hit_points": 42,
+     "interceptions": 1,
+     "key_passes": 0,
+     "label": "말로 귀스토",
+     "lineup_pos": "M",
+     "map25": "000470009X0101X0003700114",
+     "minutes": 76,
+     "name_en": "Malo Gusto",
+     "performance": "76분 동안 폭을 제공했으나 최종 생산은 제한적.",
+     "player_id": 32,
+     "pos_class": "RM",
+     "position": "RM",
+     "rating": 6.69,
+     "recoveries": 4,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 1,
+     "stats_json": "{\"accurate_crosses\": 2, \"accurate_crosses_total\": 3, \"accurate_passes\": 19, \"accurate_passes_total\": 23, \"aerials_won\": 2, \"aerials_won_total\": 2, \"assists\": 0, \"chances_created\": 0, \"clearances\": 1, \"defensive_actions\": 3, \"dispossessed\": 2, \"dribbled_past\": 0, \"duel_lost\": 3, \"duel_won\": 3, \"expected_assists\": 0.03, \"fantasy_points\": 1, \"fotmob_id\": 1197250, \"fouls\": 1, \"goals\": 0, \"ground_duels_won\": 1, \"ground_duels_won_total\": 4, \"interceptions\": 1, \"line_breaking_passes\": 5, \"long_balls_accurate\": 0, \"long_balls_accurate_total\": 2, \"matchstats.headers.tackles\": 1, \"minutes_played\": 76, \"passes_into_final_third\": 4, \"physical_metrics_distance_covered\": 9808, \"physical_metrics_number_of_sprints\": 14, \"physical_metrics_running\": 2204, \"physical_metrics_running_total\": 9808, \"physical_metrics_sprinting\": 344, \"physical_metrics_sprinting_total\": 9808, \"physical_metrics_topspeed\": 33.099998474121094, \"pos_class_auto\": \"RM\", \"rating_title\": 6.69, \"recoveries\": 4, \"shot_blocks\": 0, \"touches\": 42, \"touches_opp_box\": 3, \"was_fouled\": null, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 403850, \"xg_and_xa\": 0.03}",
+     "tackles": 1,
+     "tactical_role": "우측 폭·전진 윙백",
+     "touches": 42,
+     "xa": 0.03,
+     "xg": 0.0
+    },
+    {
+     "assists": 0,
+     "avg_x": 50.6,
+     "avg_y": 41.12,
+     "characteristics": "터치 72, 패스 45/52, 회수 4",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 4,
+     "duels_won": 1,
+     "game_implication": "Caicedo 복귀 후 피벗 유지 여부 확인.",
+     "goals": 0,
+     "hit_points": 72,
+     "interceptions": 2,
+     "key_passes": 1,
+     "label": "리스 제임스",
+     "lineup_pos": "M",
+     "map25": "1001102431114X10113211101",
+     "minutes": 90,
+     "name_en": "Reece James",
+     "performance": "Fulham 중원 우세 속에서도 중앙 연결을 유지했다.",
+     "player_id": 41,
+     "pos_class": "RCM",
+     "position": "RCM",
+     "rating": 7.01,
+     "recoveries": 4,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 0, \"ShotsOnTarget\": 1, \"accurate_crosses\": 1, \"accurate_crosses_total\": 3, \"accurate_passes\": 45, \"accurate_passes_total\": 52, \"aerials_won\": 1, \"aerials_won_total\": 1, \"assists\": 0, \"blocked_shots\": 1, \"chances_created\": 1, \"clearances\": 2, \"corners\": 1, \"defensive_actions\": 6, \"dispossessed\": 2, \"dribbled_past\": 1, \"duel_lost\": 4, \"duel_won\": 1, \"expected_assists\": 0.07, \"expected_goals\": 0.1, \"expected_goals_non_penalty\": 0.1, \"expected_goals_on_target_variant\": 0.1, \"fantasy_points\": 0, \"fotmob_id\": 807729, \"fouls\": 1, \"goals\": 0, \"ground_duels_won\": 0, \"ground_duels_won_total\": 4, \"headed_clearance\": 1, \"interceptions\": 2, \"line_breaking_passes\": 6, \"long_balls_accurate\": 2, \"long_balls_accurate_total\": 5, \"matchstats.headers.tackles\": 0, \"minutes_played\": 90, \"passes_into_final_third\": 3, \"physical_metrics_distance_covered\": 11922, \"physical_metrics_number_of_sprints\": 3, \"physical_metrics_running\": 2098, \"physical_metrics_running_total\": 11922, \"physical_metrics_sprinting\": 69, \"physical_metrics_sprinting_total\": 11922, \"physical_metrics_topspeed\": 30.700000762939453, \"pos_class_auto\": \"RCM\", \"rating_title\": 7.01, \"recoveries\": 4, \"shot_accuracy\": 1, \"shot_accuracy_total\": 1, \"shot_blocks\": 2, \"total_shots\": 2, \"touches\": 72, \"touches_opp_box\": 1, \"was_fouled\": null, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 361330, \"xg_and_xa\": 0.17}",
+     "tackles": 0,
+     "tactical_role": "우측 피벗·전환 안전장치",
+     "touches": 72,
+     "xa": 0.07,
+     "xg": 0.1
+    },
+    {
+     "assists": 0,
+     "avg_x": 48.4,
+     "avg_y": 56.2,
+     "characteristics": "패스 21/22, 찬스 2",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 3,
+     "duels_won": 3,
+     "game_implication": "65분 표본; 중앙 수비력과 전진성 분리 평가.",
+     "goals": 0,
+     "hit_points": 34,
+     "interceptions": 1,
+     "key_passes": 2,
+     "label": "라비아",
+     "lineup_pos": "M",
+     "map25": "002003575032X300305007200",
+     "minutes": 65,
+     "name_en": "Roméo Lavia",
+     "performance": "공 소유 시 효율은 높았으나 상대 중원 통제를 막지는 못했다.",
+     "player_id": 65,
+     "pos_class": "LCM",
+     "position": "LCM",
+     "rating": 7.31,
+     "recoveries": 4,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 0, \"ShotsOnTarget\": 1, \"accurate_passes\": 21, \"accurate_passes_total\": 22, \"aerials_won\": 0, \"aerials_won_total\": 0, \"assists\": 0, \"big_chance_missed_title\": 1, \"chances_created\": 2, \"clearances\": 1, \"defensive_actions\": 9, \"dispossessed\": 0, \"dribbled_past\": 1, \"dribbles_succeeded\": 0, \"dribbles_succeeded_total\": 1, \"duel_lost\": 3, \"duel_won\": 3, \"expected_assists\": 0.03, \"expected_goals\": 0.23, \"expected_goals_non_penalty\": 0.23, \"expected_goals_on_target_variant\": 0.34, \"fantasy_points\": 1, \"fotmob_id\": 1190867, \"fouls\": 1, \"goals\": 0, \"ground_duels_won\": 3, \"ground_duels_won_total\": 6, \"interceptions\": 1, \"line_breaking_passes\": 6, \"long_balls_accurate\": 1, \"long_balls_accurate_total\": 1, \"matchstats.headers.tackles\": 3, \"minutes_played\": 65, \"passes_into_final_third\": 1, \"physical_metrics_distance_covered\": 7906, \"physical_metrics_number_of_sprints\": 1, \"physical_metrics_running\": 1548, \"physical_metrics_running_total\": 7906, \"physical_metrics_sprinting\": 25, \"physical_metrics_sprinting_total\": 7906, \"physical_metrics_topspeed\": 26.700000762939453, \"pos_class_auto\": \"LCM\", \"rating_title\": 7.31, \"recoveries\": 4, \"shot_accuracy\": 1, \"shot_accuracy_total\": 1, \"shot_blocks\": 0, \"total_shots\": 1, \"touches\": 34, \"touches_opp_box\": 1, \"was_fouled\": null, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 425319, \"xg_and_xa\": 0.26}",
+     "tackles": 3,
+     "tactical_role": "전진 연결형 피벗",
+     "touches": 34,
+     "xa": 0.03,
+     "xg": 0.23
+    },
+    {
+     "assists": 0,
+     "avg_x": 52.2,
+     "avg_y": 83.36,
+     "characteristics": "박스 터치 4, 드리블 1/1",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 1,
+     "duels_won": 5,
+     "game_implication": "Chavarría와 경쟁의 첫 공식전 기준점.",
+     "goals": 0,
+     "hit_points": 40,
+     "interceptions": 0,
+     "key_passes": 1,
+     "label": "요렐 하토",
+     "lineup_pos": "M",
+     "map25": "23100X1100330004200023000",
+     "minutes": 65,
+     "name_en": "Jorrel Hato",
+     "performance": "65분 동안 좌측 폭과 박스 진입을 제공했다.",
+     "player_id": 35,
+     "pos_class": "LM",
+     "position": "LM",
+     "rating": 7.08,
+     "recoveries": 2,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 0, \"ShotsOnTarget\": 0, \"accurate_passes\": 18, \"accurate_passes_total\": 22, \"aerials_won\": 0, \"aerials_won_total\": 0, \"assists\": 0, \"big_chance_created_team_title\": 1, \"blocked_shots\": 1, \"chances_created\": 1, \"clearances\": 1, \"defensive_actions\": 3, \"dispossessed\": 0, \"dribbled_past\": 1, \"dribbles_succeeded\": 1, \"dribbles_succeeded_total\": 1, \"duel_lost\": 1, \"duel_won\": 5, \"expected_assists\": 0.03, \"expected_goals\": 0.01, \"expected_goals_non_penalty\": 0.01, \"expected_goals_on_target_variant\": null, \"fantasy_points\": 1, \"fotmob_id\": 1413846, \"fouls\": 0, \"goals\": 0, \"ground_duels_won\": 5, \"ground_duels_won_total\": 6, \"interceptions\": 0, \"long_balls_accurate\": 1, \"long_balls_accurate_total\": 2, \"matchstats.headers.tackles\": 2, \"minutes_played\": 65, \"physical_metrics_distance_covered\": 7540, \"physical_metrics_number_of_sprints\": 18, \"physical_metrics_running\": 1404, \"physical_metrics_running_total\": 7540, \"physical_metrics_sprinting\": 353, \"physical_metrics_sprinting_total\": 7540, \"physical_metrics_topspeed\": 32.20000076293945, \"pos_class_auto\": \"LM\", \"rating_title\": 7.08, \"recoveries\": 2, \"shot_blocks\": 0, \"total_shots\": 1, \"touches\": 40, \"touches_opp_box\": 4, \"was_fouled\": 2, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 467715, \"xg_and_xa\": 0.04}",
+     "tackles": 2,
+     "tactical_role": "높은 좌측 윙백",
+     "touches": 40,
+     "xa": 0.03,
+     "xg": 0.01
+    },
+    {
+     "assists": 1,
+     "avg_x": 64.68,
+     "avg_y": 29.86,
+     "characteristics": "1골 1도움, 찬스 3, 드리블 5/8",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 6,
+     "duels_won": 10,
+     "game_implication": "RAM 중심 공격 유지, 과도한 의존 여부 추적.",
+     "goals": 1,
+     "hit_points": 60,
+     "interceptions": 0,
+     "key_passes": 3,
+     "label": "콜 파머",
+     "lineup_pos": "M",
+     "map25": "111530154X001320011301010",
+     "minutes": 83,
+     "name_en": "Cole Palmer",
+     "performance": "세 골 전개에 관여한 경기 최우수.",
+     "player_id": 39,
+     "pos_class": "RAM",
+     "position": "RAM",
+     "rating": 9.08,
+     "recoveries": 7,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 1,
+     "stats_json": "{\"Offsides\": 1, \"ShotsOffTarget\": 2, \"ShotsOnTarget\": 2, \"accurate_crosses\": 1, \"accurate_crosses_total\": 2, \"accurate_passes\": 28, \"accurate_passes_total\": 32, \"aerials_won\": 0, \"aerials_won_total\": 1, \"assists\": 1, \"big_chance_created_team_title\": 1, \"blocked_shots\": 1, \"chances_created\": 3, \"clearances\": 0, \"corners\": 1, \"defensive_actions\": 9, \"dispossessed\": 2, \"dribbled_past\": 0, \"dribbles_succeeded\": 5, \"dribbles_succeeded_total\": 8, \"duel_lost\": 6, \"duel_won\": 10, \"expected_assists\": 0.21, \"expected_goals\": 0.24, \"expected_goals_non_penalty\": 0.24, \"expected_goals_on_target_variant\": 0.19, \"fantasy_points\": 13, \"fotmob_id\": 1096353, \"fouls\": 0, \"goals\": 1, \"ground_duels_won\": 10, \"ground_duels_won_total\": 15, \"interceptions\": 0, \"line_breaking_passes\": 6, \"long_balls_accurate\": 1, \"long_balls_accurate_total\": 3, \"matchstats.headers.tackles\": 2, \"minutes_played\": 83, \"passes_into_final_third\": 6, \"physical_metrics_distance_covered\": 10151, \"physical_metrics_number_of_sprints\": 16, \"physical_metrics_running\": 2321, \"physical_metrics_running_total\": 10151, \"physical_metrics_sprinting\": 314, \"physical_metrics_sprinting_total\": 10151, \"physical_metrics_topspeed\": 32.5, \"pos_class_auto\": \"RAM\", \"rating_title\": 9.08, \"recoveries\": 7, \"shot_accuracy\": 2, \"shot_accuracy_total\": 4, \"shot_blocks\": 0, \"total_shots\": 5, \"touches\": 60, \"touches_opp_box\": 9, \"was_fouled\": 3, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 395692, \"xg_and_xa\": 0.44999999999999996}",
+     "tackles": 2,
+     "tactical_role": "우측 하프스페이스 창조자",
+     "touches": 60,
+     "xa": 0.21,
+     "xg": 0.24
+    },
+    {
+     "assists": 0,
+     "avg_x": 64.24,
+     "avg_y": 66.49,
+     "characteristics": "데뷔골, xG .64, 찬스 5, 드리블 3/3",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 3,
+     "duels_won": 8,
+     "game_implication": "LAM 로밍 역할의 강한 첫 근거지만 1경기.",
+     "goals": 1,
+     "hit_points": 40,
+     "interceptions": 0,
+     "key_passes": 5,
+     "label": "로저스",
+     "lineup_pos": "M",
+     "map25": "52732X5X30322007202030000",
+     "minutes": 82,
+     "name_en": "Morgan Rogers",
+     "performance": "João Pedro–Palmer 사이를 잇고 중앙 침투로 득점했다.",
+     "player_id": 13,
+     "pos_class": "LAM",
+     "position": "LAM",
+     "rating": 8.65,
+     "recoveries": 5,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 0, \"ShotsOnTarget\": 1, \"accurate_crosses\": 0, \"accurate_crosses_total\": 1, \"accurate_passes\": 15, \"accurate_passes_total\": 22, \"aerials_won\": 2, \"aerials_won_total\": 3, \"assists\": 0, \"blocked_shots\": 2, \"chances_created\": 5, \"clearances\": 0, \"corners\": 1, \"defensive_actions\": 7, \"dispossessed\": 1, \"dribbled_past\": 0, \"dribbles_succeeded\": 3, \"dribbles_succeeded_total\": 3, \"duel_lost\": 3, \"duel_won\": 8, \"expected_assists\": 0.12, \"expected_goals\": 0.64, \"expected_goals_non_penalty\": 0.64, \"expected_goals_on_target_variant\": 0.2, \"fantasy_points\": 8, \"fotmob_id\": 883080, \"fouls\": 1, \"goals\": 1, \"ground_duels_won\": 6, \"ground_duels_won_total\": 8, \"interceptions\": 0, \"line_breaking_passes\": 2, \"long_balls_accurate\": 3, \"long_balls_accurate_total\": 3, \"matchstats.headers.tackles\": 2, \"minutes_played\": 82, \"passes_into_final_third\": 4, \"physical_metrics_distance_covered\": 10783, \"physical_metrics_number_of_sprints\": 10, \"physical_metrics_running\": 2232, \"physical_metrics_running_total\": 10783, \"physical_metrics_sprinting\": 183, \"physical_metrics_sprinting_total\": 10783, \"physical_metrics_topspeed\": 32.900001525878906, \"pos_class_auto\": \"LAM\", \"rating_title\": 8.65, \"recoveries\": 5, \"shot_accuracy\": 1, \"shot_accuracy_total\": 1, \"shot_blocks\": 0, \"total_shots\": 3, \"touches\": 40, \"touches_opp_box\": 4, \"was_fouled\": 1, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 362824, \"xg_and_xa\": 0.76}",
+     "tackles": 2,
+     "tactical_role": "좌측 포켓 연결·침투 10번",
+     "touches": 40,
+     "xa": 0.12,
+     "xg": 0.64
+    },
+    {
+     "assists": 1,
+     "avg_x": 67.33,
+     "avg_y": 46.2,
+     "characteristics": "1골 1도움, 박스 터치 8",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 7,
+     "duels_won": 3,
+     "game_implication": "advanced/Support가 첫 공식전 수행을 가장 잘 재현.",
+     "goals": 1,
+     "hit_points": 40,
+     "interceptions": 0,
+     "key_passes": 2,
+     "label": "주앙 페드루",
+     "lineup_pos": "F",
+     "map25": "2733728X52007230032000200",
+     "minutes": 90,
+     "name_en": "João Pedro",
+     "performance": "31초 침투와 결승골 홀드업을 모두 수행했다.",
+     "player_id": 40,
+     "pos_class": "ST",
+     "position": "ST",
+     "rating": 8.47,
+     "recoveries": 2,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 1,
+     "stats_json": "{\"ShotsOffTarget\": 2, \"ShotsOnTarget\": 1, \"accurate_passes\": 16, \"accurate_passes_total\": 20, \"aerials_won\": 1, \"aerials_won_total\": 3, \"assists\": 1, \"big_chance_created_team_title\": 1, \"blocked_shots\": 1, \"chances_created\": 2, \"clearances\": 1, \"defensive_actions\": 3, \"dispossessed\": 2, \"dribbled_past\": 1, \"dribbles_succeeded\": 1, \"dribbles_succeeded_total\": 2, \"duel_lost\": 7, \"duel_won\": 3, \"expected_assists\": 0.06, \"expected_goals\": 0.43, \"expected_goals_non_penalty\": 0.43, \"expected_goals_on_target_variant\": 0.4, \"fantasy_points\": 11, \"fotmob_id\": 1021382, \"fouls\": 1, \"goals\": 1, \"ground_duels_won\": 2, \"ground_duels_won_total\": 7, \"headed_clearance\": 1, \"interceptions\": 0, \"line_breaking_passes\": 3, \"long_balls_accurate\": 2, \"long_balls_accurate_total\": 3, \"matchstats.headers.tackles\": 0, \"minutes_played\": 90, \"passes_into_final_third\": 4, \"physical_metrics_distance_covered\": 10860, \"physical_metrics_number_of_sprints\": 13, \"physical_metrics_running\": 1952, \"physical_metrics_running_total\": 10860, \"physical_metrics_sprinting\": 264, \"physical_metrics_sprinting_total\": 10860, \"physical_metrics_topspeed\": 33.29999923706055, \"pos_class_auto\": \"ST\", \"rating_title\": 8.47, \"recoveries\": 2, \"shot_accuracy\": 1, \"shot_accuracy_total\": 3, \"shot_blocks\": 0, \"total_shots\": 4, \"touches\": 40, \"touches_opp_box\": 8, \"was_fouled\": 1, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 373525, \"xg_and_xa\": 0.49}",
+     "tackles": 0,
+     "tactical_role": "침투+홀드업 9번",
+     "touches": 40,
+     "xa": 0.06,
+     "xg": 0.43
+    },
+    {
+     "assists": 0,
+     "avg_x": 51.08,
+     "avg_y": 52.0,
+     "characteristics": "25분 패스 20/21, 회수 3",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 1,
+     "duels_won": 1,
+     "game_implication": "25분 표본; 이적 판정 근거로 사용 금지.",
+     "goals": 0,
+     "hit_points": 25,
+     "interceptions": 0,
+     "key_passes": 1,
+     "label": "엔소 페르난데스",
+     "lineup_pos": "M",
+     "map25": "000003555083X830833300000",
+     "minutes": 25,
+     "name_en": "Enzo Fernández",
+     "performance": "65분 투입 후 중앙 볼 순환을 안정시켰다.",
+     "player_id": 37,
+     "pos_class": "LCM",
+     "position": "LCM",
+     "rating": 6.41,
+     "recoveries": 3,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 0,
+     "stats_json": "{\"accurate_passes\": 20, \"accurate_passes_total\": 21, \"aerials_won\": 0, \"aerials_won_total\": 0, \"assists\": 0, \"chances_created\": 1, \"clearances\": 0, \"defensive_actions\": 3, \"dispossessed\": 1, \"dribbled_past\": 0, \"duel_lost\": 1, \"duel_won\": 1, \"expected_assists\": 0.02, \"fantasy_points\": 1, \"fotmob_id\": 1137705, \"fouls\": 0, \"goals\": 0, \"ground_duels_won\": 1, \"ground_duels_won_total\": 2, \"interceptions\": 0, \"line_breaking_passes\": 4, \"long_balls_accurate\": 0, \"long_balls_accurate_total\": 1, \"matchstats.headers.tackles\": 0, \"minutes_played\": 25, \"passes_into_final_third\": 3, \"physical_metrics_distance_covered\": 4078, \"physical_metrics_number_of_sprints\": 2, \"physical_metrics_running\": 1077, \"physical_metrics_running_total\": 4078, \"physical_metrics_sprinting\": 27, \"physical_metrics_sprinting_total\": 4078, \"physical_metrics_topspeed\": 28, \"pos_class_auto\": \"LCM\", \"rating_title\": 6.41, \"recoveries\": 3, \"shot_blocks\": 0, \"touches\": 25, \"touches_opp_box\": 0, \"was_fouled\": 1, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 369430, \"xg_and_xa\": 0.02}",
+     "tackles": 0,
+     "tactical_role": "후반 볼 순환 피벗",
+     "touches": 25,
+     "xa": 0.02,
+     "xg": 0.0
+    },
+    {
+     "assists": 0,
+     "avg_x": 52.6,
+     "avg_y": 11.77,
+     "characteristics": "14분 드리블 3/3, hp14",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 0,
+     "duels_won": 4,
+     "game_implication": "45분·hp15 모두 미달; fit 승격 금지.",
+     "goals": 0,
+     "hit_points": 14,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "페드루 네투",
+     "lineup_pos": "M",
+     "map25": "0002800002000020000X00004",
+     "minutes": 14,
+     "name_en": "Pedro Neto",
+     "performance": "짧은 시간 우측 운반은 성공했다.",
+     "player_id": 38,
+     "pos_class": "RM",
+     "position": "RM",
+     "rating": 6.88,
+     "recoveries": 3,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 0,
+     "stats_json": "{\"ShotsOffTarget\": 1, \"ShotsOnTarget\": 0, \"accurate_crosses\": 1, \"accurate_crosses_total\": 1, \"accurate_passes\": 3, \"accurate_passes_total\": 5, \"aerials_won\": 0, \"aerials_won_total\": 0, \"assists\": 0, \"chances_created\": 0, \"clearances\": 0, \"defensive_actions\": 4, \"dispossessed\": 0, \"dribbled_past\": 0, \"dribbles_succeeded\": 3, \"dribbles_succeeded_total\": 3, \"duel_won\": 4, \"expected_assists\": 0.07, \"expected_goals\": 0.03, \"expected_goals_non_penalty\": 0.03, \"expected_goals_on_target_variant\": null, \"fantasy_points\": 1, \"fotmob_id\": 843040, \"fouls\": 0, \"goals\": 0, \"ground_duels_won\": 4, \"ground_duels_won_total\": 4, \"interceptions\": 0, \"line_breaking_passes\": 1, \"long_balls_accurate\": 0, \"long_balls_accurate_total\": 2, \"matchstats.headers.tackles\": 1, \"minutes_played\": 14, \"physical_metrics_distance_covered\": 2444, \"physical_metrics_number_of_sprints\": 8, \"physical_metrics_running\": 477, \"physical_metrics_running_total\": 2444, \"physical_metrics_sprinting\": 140, \"physical_metrics_sprinting_total\": 2444, \"physical_metrics_topspeed\": 31.600000381469727, \"pos_class_auto\": \"RM\", \"rating_title\": 6.88, \"recoveries\": 3, \"shot_accuracy\": 0, \"shot_accuracy_total\": 1, \"shot_blocks\": 0, \"total_shots\": 1, \"touches\": 14, \"touches_opp_box\": 1, \"was_fouled\": null, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 337916, \"xg_and_xa\": 0.1}",
+     "tackles": 1,
+     "tactical_role": "후반 우측 운반자",
+     "touches": 14,
+     "xa": 0.07,
+     "xg": 0.03
+    },
+    {
+     "assists": 0,
+     "avg_x": 55.66,
+     "avg_y": 22.78,
+     "characteristics": "7분 터치 5, hp5",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 2,
+     "duels_won": 0,
+     "game_implication": "출전 사실만 유효.",
+     "goals": 0,
+     "hit_points": 5,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "에스테방",
+     "lineup_pos": "M",
+     "map25": "0000X000X00X00X000000000X",
+     "minutes": 7,
+     "name_en": "Estêvão",
+     "performance": "Palmer 자리를 이어받았으나 평가 불가.",
+     "player_id": 42,
+     "pos_class": "RAM",
+     "position": "RAM",
+     "rating": null,
+     "recoveries": 1,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 0,
+     "stats_json": "{\"accurate_passes\": 3, \"accurate_passes_total\": 4, \"aerials_won\": 0, \"aerials_won_total\": 1, \"assists\": 0, \"chances_created\": 0, \"clearances\": 0, \"corners\": 1, \"defensive_actions\": 1, \"dispossessed\": 0, \"dribbled_past\": 1, \"duel_lost\": 2, \"fantasy_points\": 1, \"fotmob_id\": 1580774, \"fouls\": 0, \"goals\": 0, \"ground_duels_won\": 0, \"ground_duels_won_total\": 1, \"interceptions\": 0, \"long_balls_accurate\": 1, \"long_balls_accurate_total\": 1, \"matchstats.headers.tackles\": 0, \"minutes_played\": 7, \"passes_into_final_third\": 1, \"physical_metrics_distance_covered\": 1745, \"physical_metrics_number_of_sprints\": 1, \"physical_metrics_running\": 557, \"physical_metrics_running_total\": 1745, \"physical_metrics_sprinting\": 22, \"physical_metrics_sprinting_total\": 1745, \"physical_metrics_topspeed\": 27.100000381469727, \"pos_class_auto\": \"RAM\", \"recoveries\": 1, \"shot_blocks\": 0, \"touches\": 5, \"touches_opp_box\": 0, \"was_fouled\": null, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 510728}",
+     "tackles": 0,
+     "tactical_role": "막판 우측 포켓 교체",
+     "touches": 5,
+     "xa": 0.0,
+     "xg": 0.0
+    },
+    {
+     "assists": 0,
+     "avg_x": 42.57,
+     "avg_y": 78.77,
+     "characteristics": "25분 터치 12, hp12",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 2,
+     "duels_won": 0,
+     "game_implication": "fit은 참고값; 시즌 역할 승격 금지.",
+     "goals": 0,
+     "hit_points": 12,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "차바리아",
+     "lineup_pos": "M",
+     "map25": "03000X0000330007330030300",
+     "minutes": 25,
+     "name_en": "Pep Chavarría",
+     "performance": "Hato 교체로 수비 가담했으나 표본이 부족했다.",
+     "player_id": 80,
+     "pos_class": "LM",
+     "position": "LM",
+     "rating": 5.98,
+     "recoveries": 1,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 0,
+     "stats_json": "{\"accurate_passes\": 5, \"accurate_passes_total\": 8, \"aerials_won\": 0, \"aerials_won_total\": 1, \"assists\": 0, \"chances_created\": 0, \"clearances\": 1, \"defensive_actions\": 1, \"dispossessed\": 1, \"dribbled_past\": 0, \"duel_lost\": 2, \"fantasy_points\": 1, \"fotmob_id\": 988805, \"fouls\": 0, \"goals\": 0, \"ground_duels_won\": 0, \"ground_duels_won_total\": 1, \"headed_clearance\": 1, \"interceptions\": 0, \"line_breaking_passes\": 1, \"long_balls_accurate\": 0, \"long_balls_accurate_total\": 1, \"matchstats.headers.tackles\": 0, \"minutes_played\": 25, \"passes_into_final_third\": 1, \"physical_metrics_distance_covered\": 4060, \"physical_metrics_number_of_sprints\": 7, \"physical_metrics_running\": 880, \"physical_metrics_running_total\": 4060, \"physical_metrics_sprinting\": 137, \"physical_metrics_sprinting_total\": 4060, \"physical_metrics_topspeed\": 31.700000762939453, \"pos_class_auto\": \"LM\", \"rating_title\": 5.98, \"recoveries\": 1, \"shot_blocks\": 0, \"touches\": 12, \"touches_opp_box\": 1, \"was_fouled\": null, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 448468}",
+     "tackles": 0,
+     "tactical_role": "리드 보호 좌측 윙백",
+     "touches": 12,
+     "xa": 0.0,
+     "xg": 0.0
+    },
+    {
+     "assists": 0,
+     "avg_x": 51.25,
+     "avg_y": 70.88,
+     "characteristics": "8분 터치 6, hp6",
+     "confidence": "measured+reported; 교체 5명은 45분 미만이며 hp15 미달 행의 적합 해석을 금지.",
+     "duels_lost": 0,
+     "duels_won": 0,
+     "game_implication": "출전 사실만 유효.",
+     "goals": 0,
+     "hit_points": 6,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "퀜다",
+     "lineup_pos": "M",
+     "map25": "0X000X0000X000XX00000X000",
+     "minutes": 8,
+     "name_en": "Geovany Quenda",
+     "performance": "Rogers 자리를 이어받았으나 평가 불가.",
+     "player_id": 95,
+     "pos_class": "LAM",
+     "position": "LAM",
+     "rating": null,
+     "recoveries": 0,
+     "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+     "started": 0,
+     "stats_json": "{\"Offsides\": 1, \"accurate_passes\": 2, \"accurate_passes_total\": 4, \"aerials_won\": 0, \"aerials_won_total\": 0, \"assists\": 0, \"chances_created\": 0, \"clearances\": 1, \"defensive_actions\": 1, \"dispossessed\": 0, \"dribbled_past\": 0, \"fantasy_points\": 1, \"fotmob_id\": 1530314, \"fouls\": 0, \"goals\": 0, \"interceptions\": 0, \"line_breaking_passes\": 1, \"matchstats.headers.tackles\": 0, \"minutes_played\": 8, \"physical_metrics_distance_covered\": 1723, \"physical_metrics_number_of_sprints\": 5, \"physical_metrics_running\": 452, \"physical_metrics_running_total\": 1723, \"physical_metrics_sprinting\": 77, \"physical_metrics_sprinting_total\": 1723, \"physical_metrics_topspeed\": 30.899999618530273, \"pos_class_auto\": \"LAM\", \"recoveries\": 0, \"shot_blocks\": 0, \"touches\": 6, \"touches_opp_box\": 1, \"was_fouled\": null, \"whoscored_match_id\": 1983550, \"whoscored_player_id\": 509068}",
+     "tackles": 0,
+     "tactical_role": "막판 좌측 포켓 교체",
+     "touches": 6,
+     "xa": 0.0,
+     "xg": 0.0
+    }
+   ],
+   "possession": 38.0,
+   "report_date": "2026-08-25",
+   "report_markdown": "# Fulham 2–3 Chelsea — 2026-08-24 Premier League\n\n> **상태: draft** · 2026-08-25 08:00 KST 초판  \n> 경기: Craven Cottage · Chelsea 원정 · Xabi Alonso의 Chelsea 공식전 데뷔  \n> 원천: FotMob matchId `5795372` + WhoScored/Opta matchId `1983550` + 구단 공식 리포트 + Guardian/Sky/스페인어권 기사\n\n## 1. 결과와 핵심 수치\n\nChelsea는 31초 만의 João Pedro 선제골, Morgan Rogers의 데뷔골, Cole Palmer의 결승골로 3–2 승리했다.\n\n| 지표 | Chelsea | Fulham |\n|---|---:|---:|\n| 점유율 | **38%** | 62% |\n| xG | **1.70** | 1.34 |\n| 슈팅 / 유효슈팅 | **18 / 6** | 14 / 6 |\n| 빅찬스 | **4** | 2 |\n| 상대 박스 터치 | **37** | 24 |\n| 패스 | 389 | **620** |\n| 태클 / 클리어 | **23 / 22** | 20 / 17 |\n| PPDA | **20.18** (444/22) | 9.07 (263/29) |\n\n⭐ **38% 점유는 공격 열세가 아니었다.** Chelsea가 슈팅·xG·빅찬스·박스 터치를 모두 앞섰다. 다만 PPDA 20.18,\n상대 620패스, 클리어 22회는 알론소의 첫 공식전이 점유·압박 지배가 아니라 **빠른 전환과 전방 효율**로 이긴 경기였음을 뜻한다.\n\n### 득점\n\n- 1′ João Pedro (Cole Palmer 도움)\n- 23′ Joshua King (Timothy Castagne 도움)\n- 41′ Morgan Rogers (Maxence Lacroix 도움)\n- 49′ Cole Palmer (João Pedro 도움)\n- 54′ Gonzalo García\n\n## 2. 실제 전술 구조\n\n- 실제 대형은 **3-4-2-1**. Colwill–Lacroix–Acheampong 백3, Hato–Gusto 윙백, Lavia–Reece James 중앙,\n  Rogers–Palmer가 João Pedro 아래 하프스페이스를 맡았다.\n- 보유보다 **턴오버 직후 전진**이 핵심이었다. Guardian은 마레스카의 통제형과 달리 알론소 축구가 빠른 턴오버와\n  트랜지션에 기반한다고 평가했다. Chelsea는 적은 패스량에도 상대 박스 터치 37회를 만들었다.\n- 양 윙백은 대칭이 아니었다. Hato는 좌측 폭을 비교적 높게 유지했고, Gusto는 우측 바깥에서 전진했지만\n  James가 중앙 오른쪽에서 안정 장치를 맡았다.\n- ⭐ **Lacroix의 전진이 세 번째 공격축이었다.** 중앙 CB가 Fulham 박스까지 올라가 수비수를 벗기고 Rogers에게 컷백했다.\n  이는 단순 세트피스 잔류가 아니라 알론소 체제의 예기치 않은 포지션 교환을 보여 준다.\n\n## 3. 경기 흐름\n\n1. Chelsea가 Palmer–João Pedro 연결로 31초 만에 앞섰다.\n2. Fulham이 중원 점유를 되찾고 King이 Sánchez의 니어포스트를 뚫어 1–1을 만들었다.\n3. 41분 Lacroix의 박스 침투와 컷백을 Rogers가 마무리했다.\n4. 후반 시작 직후 Rogers–João Pedro–Palmer가 직선적으로 연결돼 3–1이 됐다.\n5. 54분 Sánchez가 Castagne 슛을 중앙으로 쳐내 García가 3–2로 좁혔다.\n6. 65분 Enzo와 Chavarría를 동시에 넣어 중앙·좌측을 교체했고, 이후 Neto·Quenda·Estêvão로 전방 체력을 바꿨다.\n\n## 4. 선수별 분석\n\n| 선수 | 실제 슬롯 | 분/평점 | 실측·수행 | 경기 함의 |\n|---|---|---:|---|---|\n| Robert Sánchez | GK | 90 / 5.67 | 선방 4, goals prevented **-0.78**, 패스 10/27 | 두 실점 모두 개입 판단이 아쉬웠다. 빌드업보다 골 방어가 우선 과제 |\n| Josh Acheampong | RCB | 90 / 7.32 | 터치 67, 클리어 7, 회수 5 | 넓은 우측 커버와 전진 경합을 동시에 수행한 백3의 최고 수비수 |\n| Maxence Lacroix | CCB | 90 / 8.00 | 패스 47/50, 도움 1, xA .20 | 중앙 고정이 아니라 공격 시 박스까지 침투하는 자유 CB |\n| Levi Colwill | LCB | 90 / 6.67 | 패스 27/29, 클리어 2, 5′ 경고 | 좌측 후방 배급은 안정적이나 넓은 전환 수비는 보수적 |\n| Malo Gusto | RM | 76 / 6.69 | 박스 터치 3, 패스 19/23 | 우측 폭과 전진을 맡았으나 최종 패스 생산은 제한적 |\n| Reece James | RCM | 90 / 7.01 | 터치 72, 패스 45/52, 회수 4 | 오른쪽 피벗이자 전환 차단 장치. 75′ 경고 뒤에도 풀타임 |\n| Roméo Lavia | LCM | 65 / 7.31 | 패스 21/22, 찬스 2, xG .23 | 적은 점유에서도 전진 연결은 좋았으나 Fulham 중원 통제는 막지 못함 |\n| Jorrel Hato | LM | 65 / 7.08 | 박스 터치 4, 드리블 1/1 | 좌측 윙백으로 폭과 박스 진입을 제공 |\n| Cole Palmer | RAM | 83 / **9.08** | **1골 1도움**, 찬스 3, 드리블 5/8, 박스 터치 9 | 우측 하프스페이스에서 창조·침투·결정을 모두 담당한 경기 최우수 |\n| Morgan Rogers | LAM | 82 / **8.65** | 데뷔골, xG .64, 찬스 **5**, 드리블 3/3 | 좌측 포켓 출발 뒤 중앙으로 연결, 전방 3인 조합의 가속기 |\n| João Pedro | ST | 90 / **8.47** | **1골 1도움**, 박스 터치 8, 패스 16/20 | 31초 침투와 결승골 홀드업으로 9번·연결자 역할을 병행 |\n| Enzo Fernández | LCM | 25 / 6.41 | 패스 20/21, 회수 3 | 65분 이후 볼 순환 안정. ⛔ 25분 표본이며 이적 상태 판정 근거로 사용 금지 |\n| Pep Chavarría | LM | 25 / 5.98 | 터치 12, 패스 5/8 | 리드 보호 국면의 좌측 폭·수비 교대. hp 12라 fit 해석 금지 |\n| Pedro Neto | RM | 14 / 6.88 | 드리블 3/3, 패스 3/5 | 우측에서 볼 운반은 성공했으나 hp 14로 표본 미달 |\n| Geovany Quenda | LAM | 8 / — | 터치 6, 패스 2/4 | Rogers 교체로 좌측 포켓 경험. 수치 판정 불가 |\n| Estêvão | RAM | 7 / — | 터치 5, 패스 3/4 | Palmer 교체로 우측 10번에 투입. 수치 판정 불가 |\n\n## 5. 경기 전용 FC26 설정\n\n### 팀 설정 (`match_game_setups`, `match_only=1`)\n\n| 항목 | 값 |\n|---|---|\n| 포메이션 | **3-4-2-1** |\n| 빌드업 | **Counter** |\n| 수비 접근 | **Balanced** |\n| 라인 높이 | **50** |\n\n점유 38%·패스 389 대 620이므로 Short Passing은 기각한다. 반면 xG 1.70·박스 터치 37·전방 3인의 직접 결합은\nCounter를 지지한다. PPDA 20.18이라 High는 기각하고, 백3 평균 위치와 후반 리드 보호를 합쳐 line 50으로 둔다.\n이 값은 알론소의 시즌 정본이 아니라 **개막전 한 경기 재현값**이다.\n\n### 출전 16명 처방 (`match_player_prescriptions`, `match_only=1`)\n\n| 슬롯 | 선수 | 역할/포커스 | fit | 표본 |\n|---|---|---|---:|---|\n| GK | Sánchez | gk_goalkeeper/Balanced | .961 | 90′, hp38 |\n| RCB | Acheampong | cb_bpd/Aggressive | .737 | 90′, hp67 |\n| CCB | Lacroix | cb_bpd/Aggressive | .885 | 90′, hp68 |\n| LCB | Colwill | cb_bpd/Aggressive | .707 | 90′, hp40 |\n| RM | Gusto | wm_winger/Balanced | .796 | 76′, hp42 |\n| RCM | James | cm_playmaker/Roaming | .727 | 90′, hp72 |\n| LCM | Lavia | cm_playmaker/Attack | .796 | 65′, hp34 |\n| LM | Hato | wm_winger/Balanced | .776 | 65′, hp40 |\n| RAM | Palmer | cam_halfwinger/Balanced | .751 | 83′, hp60 |\n| LAM | Rogers | cam_playmaker/Roaming | .675 | 82′, hp40 |\n| ST | João Pedro | st_advanced/Support | .739 | 90′, hp40 |\n| LCM | Enzo | cm_playmaker/Roaming | .817 | 25′, hp25 ⚠️ |\n| LM | Chavarría | wm_widemid/Support | .720 | 25′, **hp12 ⛔** |\n| RM | Neto | wm_widemid/Defend | .587 | 14′, **hp14 ⛔** |\n| LAM | Quenda | cam_halfwinger/Balanced | .422 | 8′, **hp6 ⛔** |\n| RAM | Estêvão | cam_halfwinger/Attack | .546 | 7′, **hp5 ⛔** |\n\n⚠️ 교체 5명은 모두 45분 미만이고 뒤의 4명은 hp 15도 미달한다. DB 결손을 만들지 않기 위한 경기 전용 참고값이며,\n`prescriptions`·`slot_canon_roles`·시즌 정본에 병합하지 않는다.\n\n## 6. 실측과 서사의 충돌\n\n1. **결과 3–2 승리 ↔ 경기 통제 실패.** Chelsea는 더 높은 xG를 만들었지만 Fulham이 62% 점유와 PPDA 9.07로\n   중원을 오래 지배했다. 승리만으로 알론소 체제 안착을 선언하지 않는다.\n2. **Sánchez 선방 4회 ↔ goals prevented -0.78.** 선방 횟수보다 실점 질이 나빴다. 두 번째 실점은 슛을 중앙에 흘렸다.\n3. **Lacroix CCB ↔ 박스 안 도움.** 평균 위치만 보면 중앙 CB지만 득점 국면의 과감한 전진은 별도 임무다.\n4. **Palmer의 공식 득점 관여 표기.** FotMob은 1골 1도움이지만 Guardian은 세 골 모두에 관여했다고 평가한다.\n   세 번째 골의 전개 참여까지 포함한 서술과 공식 도움 수치를 구분한다.\n\n## 7. 다음 경기 재검증 항목\n\n1. Caicedo 복귀 뒤 James–Lavia 피벗 중 누가 빠지고, Fulham전의 중원 열세가 줄어드는가.\n2. Lacroix의 박스 침투가 설계된 반복 패턴인가, 개막전 단발인가.\n3. Sánchez의 니어포스트·세컨드볼 처리 문제가 반복되는가.\n4. Rogers–João Pedro–Palmer 전방 3인 조합이 점유 우세 경기에서도 같은 효율을 내는가.\n5. Hato/Gusto 윙백 높이의 비대칭과 65분 Chavarría–Enzo 동시 교체가 반복되는가.\n\n## 8. 후속 수집과 결손\n\n### D+1 조기 검색 (2026-08-25 08:00 KST)\n\n| 소스 종류 | 결과 |\n|---|---|\n| 공식 전체 기자회견 / 감독 1차 발언 | ⛔ 경기 종료 약 4시간 시점이라 **포스트매치 전체본 0건** |\n| 클럽 전술 영상 / YouTube 브레이크다운 | ⛔ **0건** — 하이라이트만 존재 |\n| 현지 전술 칼럼 | ✅ Guardian Jonathan Wilson 분석 확보 |\n| 다국어 선수 분석 | ✅ 스페인어 El País·Cadena SER·AS, 이탈리아 Sky 하이라이트 확보. 전술 전문 선수별 평가는 아직 0건 |\n\n**재시도 조건**: D+2(08-26) 공식 회견·클럽 영상·Palmer/Rogers/João Pedro 개별 분석,\nD+3(08-27) 지연 전술 블로그·다국어 선수 평가를 재검색한다. 새 근거가 없더라도 검색 범위와 0건을 기록한 뒤 상태를 재판정한다.\n\n## 9. 출처\n\n- FotMob `matchDetails?matchId=5795372` — 라인업, 득점·교체, 팀·선수 실측, xG·물리량 (2026-08-25 수집)\n- WhoScored/Opta `matchCentreData`, matchId `1983550` — 이벤트 1,659건, 터치 좌표, 5×5 그리드, PPDA 원천\n- Chelsea FC 공식 경기 리포트: https://www.chelseafc.com/en/news/article/match-report-fulham-chelsea-aug-26\n- Sky Sports 경기 리포트: https://www.skysports.com/football/news/11661/13567633/fulham-2-3-chelsea-cole-palmer-stars-as-blues-superb-front-three-edge-pulsating-contest-in-xabi-alonsos-first-game\n- Guardian 경기 리포트: https://www.theguardian.com/football/2026/aug/24/fulham-chelsea-premier-league-match-report\n- Guardian Jonathan Wilson 분석, 2026-08-25: https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham\n- El País, 2026-08-24: https://elpais.com/deportes/futbol/2026-08-24/palmer-da-un-recital-en-el-reencuentro-de-xabi-y-arbeloa-en-la-premier.html\n- Cadena SER, 2026-08-24: https://cadenaser.com/nacional/2026/08/24/xabi-alonso-tumba-a-arbeloa-en-el-derbi-del-oeste-de-londres-gonzalo-marca-en-su-debut-y-palmer-brilla-2-3-cadena-ser/\n- AS, 2026-08-24: https://as.com/futbol/internacional/gonzalo-marca-xabi-triunfa-f202608-n/\n\n## 10. 적재 범위와 한계\n\n- 신규: `matches` 1 · `player_matches` 16 · `team_match_stats` 1 · `match_reports` 1 ·\n  `match_player_reports` 16 · `match_game_setups` 1 · `match_player_prescriptions` 16.\n- player_matches의 좌표·map25는 WhoScored/Opta 터치 이벤트를 `core.encode`로만 인코딩했다.\n- PPDA는 기존 DB와 같은 정의: 상대 자기 진영 3/5의 패스 / 우리 상대 진영 2/5의 수비액션.\n- ⛔ 경기 종료 직후 초판이다. 공식 전체 회견·지연 전술 영상·전문 선수별 분석이 없어 `draft`로 둔다.\n- ⛔ 단일 경기 fit을 시즌 정본이나 이적 판정에 병합하지 않는다.\n",
+   "report_path": "reports/match-watch/2026-08-24-che-fulham.md",
+   "result": "3-2",
+   "season": "2026-27",
+   "shots_o": 14,
+   "shots_v": 18,
+   "sot_o": 6,
+   "sot_v": 6,
+   "source": "FotMob matchDetails matchId=5795372 (curl, 2026-08-25) — 라인업·득점·교체·팀/선수 스탯·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983550 이벤트 1659건 — 터치 좌표·5x5 그리드·PPDA / Chelsea FC 공식 리포트 · Guardian(Jonathan Wilson) · Sky Sports · El País · Cadena SER · AS (2026-08-24~25). / 리포트: reports/match-watch/2026-08-24-che-fulham.md · Guardian 분석 https://www.theguardian.com/football/2026/aug/24/premier-league-chelsea-xabi-alonso-fulham",
+   "stage": "Premier League",
+   "status": "draft",
+   "tactical_changes": "65분 Enzo와 Chavarría 동시 투입 뒤 Neto·Quenda·Estêvão로 리드 보호와 전방 체력을 교체했다.",
+   "tactical_description": "3-4-2-1. 38% 점유에서도 빠른 턴오버와 전방 3인 결합으로 xG 1.70·박스 터치 37을 만들었다.",
+   "tactical_features": "Palmer–João Pedro–Rogers 전원 득점 관여, Lacroix의 박스 침투, 양 윙백의 비대칭. PPDA 20.18로 높은 압박은 아니었다.",
+   "title": "Fulham 2-3 Chelsea — Xabi Alonso 공식전 데뷔",
+   "updated_at": "2026-08-25T08:00:00+09:00",
+   "venue": "A",
+   "xg_o": 1.34,
+   "xg_v": 1.7
+  },
   {
    "bigch_o": 0,
    "bigch_v": 2,
@@ -33964,40 +35108,40 @@
  ],
  "player_stats": [
   {
-   "avg_rating": 6.9,
-   "dw_pg": 3.08,
-   "ic_pg": 0.33,
-   "kp_pg": 1.45,
+   "avg_rating": 6.93,
+   "dw_pg": 3.22,
+   "ic_pg": 0.32,
+   "kp_pg": 1.56,
    "label": "로저스",
-   "minutes": 5658,
-   "n": 77,
-   "tk_pg": 0.78,
-   "xa_pg": 0.185,
-   "xg_pg": 0.245
+   "minutes": 5740,
+   "n": 78,
+   "tk_pg": 0.81,
+   "xa_pg": 0.182,
+   "xg_pg": 0.273
   },
   {
-   "avg_rating": 6.95,
-   "dw_pg": 0.61,
+   "avg_rating": 6.93,
+   "dw_pg": 0.6,
    "ic_pg": 0.02,
    "kp_pg": 0.14,
    "label": "로베르트 산체스",
-   "minutes": 5065,
-   "n": 67,
+   "minutes": 5155,
+   "n": 68,
    "tk_pg": 0.03,
-   "xa_pg": 0.003,
-   "xg_pg": null
+   "xa_pg": 0.002,
+   "xg_pg": 0.0
   },
   {
    "avg_rating": 6.73,
    "dw_pg": 2.67,
    "ic_pg": 0.89,
-   "kp_pg": 0.65,
+   "kp_pg": 0.64,
    "label": "말로 귀스토",
-   "minutes": 4173,
-   "n": 76,
+   "minutes": 4249,
+   "n": 77,
    "tk_pg": 1.41,
-   "xa_pg": 0.077,
-   "xg_pg": 0.148
+   "xa_pg": 0.076,
+   "xg_pg": 0.138
   },
   {
    "avg_rating": 6.87,
@@ -34024,16 +35168,16 @@
    "xg_pg": 0.103
   },
   {
-   "avg_rating": 6.62,
-   "dw_pg": 1.79,
-   "ic_pg": 0.46,
-   "kp_pg": 0.26,
+   "avg_rating": 6.63,
+   "dw_pg": 1.84,
+   "ic_pg": 0.45,
+   "kp_pg": 0.28,
    "label": "요렐 하토",
-   "minutes": 2710,
-   "n": 71,
-   "tk_pg": 0.87,
-   "xa_pg": 0.038,
-   "xg_pg": 0.115
+   "minutes": 2775,
+   "n": 72,
+   "tk_pg": 0.88,
+   "xa_pg": 0.037,
+   "xg_pg": 0.1
   },
   {
    "avg_rating": 7.14,
@@ -34048,100 +35192,100 @@
    "xg_pg": 0.076
   },
   {
-   "avg_rating": 7.12,
-   "dw_pg": 3.45,
-   "ic_pg": 0.44,
-   "kp_pg": 1.52,
+   "avg_rating": 7.11,
+   "dw_pg": 3.42,
+   "ic_pg": 0.43,
+   "kp_pg": 1.51,
    "label": "엔소 페르난데스",
-   "minutes": 5648,
-   "n": 74,
-   "tk_pg": 1.26,
-   "xa_pg": 0.194,
-   "xg_pg": 0.355
-  },
-  {
-   "avg_rating": 7.0,
-   "dw_pg": 2.68,
-   "ic_pg": 0.18,
-   "kp_pg": 1.42,
-   "label": "페드루 네투",
-   "minutes": 5112,
+   "minutes": 5673,
    "n": 75,
+   "tk_pg": 1.24,
+   "xa_pg": 0.19,
+   "xg_pg": 0.346
+  },
+  {
+   "avg_rating": 6.99,
+   "dw_pg": 2.69,
+   "ic_pg": 0.17,
+   "kp_pg": 1.4,
+   "label": "페드루 네투",
+   "minutes": 5126,
+   "n": 76,
    "tk_pg": 0.49,
-   "xa_pg": 0.201,
-   "xg_pg": 0.186
+   "xa_pg": 0.198,
+   "xg_pg": 0.181
   },
   {
-   "avg_rating": 7.07,
-   "dw_pg": 2.82,
-   "ic_pg": 0.45,
-   "kp_pg": 1.18,
+   "avg_rating": 7.12,
+   "dw_pg": 2.98,
+   "ic_pg": 0.44,
+   "kp_pg": 1.22,
    "label": "콜 파머",
-   "minutes": 3255,
-   "n": 47,
-   "tk_pg": 0.77,
-   "xa_pg": 0.108,
-   "xg_pg": 0.398
+   "minutes": 3338,
+   "n": 48,
+   "tk_pg": 0.8,
+   "xa_pg": 0.111,
+   "xg_pg": 0.392
   },
   {
-   "avg_rating": 7.08,
-   "dw_pg": 4.65,
+   "avg_rating": 7.1,
+   "dw_pg": 4.62,
    "ic_pg": 0.16,
-   "kp_pg": 0.69,
+   "kp_pg": 0.71,
    "label": "주앙 페드루",
-   "minutes": 4671,
-   "n": 72,
+   "minutes": 4761,
+   "n": 73,
    "tk_pg": 0.54,
    "xa_pg": 0.052,
-   "xg_pg": 0.539
+   "xg_pg": 0.535
   },
   {
    "avg_rating": 7.12,
-   "dw_pg": 2.72,
-   "ic_pg": 0.82,
-   "kp_pg": 0.75,
+   "dw_pg": 2.7,
+   "ic_pg": 0.83,
+   "kp_pg": 0.76,
    "label": "리스 제임스",
-   "minutes": 3640,
-   "n": 66,
-   "tk_pg": 1.23,
-   "xa_pg": 0.113,
+   "minutes": 3730,
+   "n": 67,
+   "tk_pg": 1.21,
+   "xa_pg": 0.112,
    "xg_pg": 0.09
   },
   {
    "avg_rating": 6.91,
-   "dw_pg": 2.45,
+   "dw_pg": 2.41,
    "ic_pg": 0.13,
-   "kp_pg": 0.91,
+   "kp_pg": 0.89,
    "label": "에스테방",
-   "minutes": 2621,
-   "n": 58,
-   "tk_pg": 0.53,
-   "xa_pg": 0.104,
-   "xg_pg": 0.306
+   "minutes": 2628,
+   "n": 59,
+   "tk_pg": 0.52,
+   "xa_pg": 0.101,
+   "xg_pg": 0.29
   },
   {
-   "avg_rating": 6.6,
-   "dw_pg": 8.0,
-   "ic_pg": 2.0,
+   "avg_rating": 6.78,
+   "dw_pg": 7.5,
+   "ic_pg": 1.5,
    "kp_pg": 0.0,
    "label": "아체암퐁",
-   "minutes": 217,
-   "n": 5,
-   "tk_pg": 4.0,
-   "xa_pg": null,
-   "xg_pg": null
+   "minutes": 307,
+   "n": 6,
+   "tk_pg": 4.5,
+   "xa_pg": 0.01,
+   "xg_pg": 0.0
   },
   {
-   "avg_rating": 6.9,
-   "dw_pg": 4.0,
-   "ic_pg": 0.0,
-   "kp_pg": 1.0,
+   "avg_rating": 7.04,
+   "dw_pg": 3.5,
+   "ic_pg": 0.5,
+   "kp_pg": 1.5,
    "label": "라비아",
-   "minutes": 150,
-   "n": 3,
-   "tk_pg": 1.0,
-   "xa_pg": null,
-   "xg_pg": null
+   "minutes": 215,
+   "n": 4,
+   "tk_pg": 2.0,
+   "xa_pg": 0.03,
+   "xg_pg": 0.23
   },
   {
    "avg_rating": 6.84,
@@ -34168,16 +35312,16 @@
    "xg_pg": null
   },
   {
-   "avg_rating": 6.78,
-   "dw_pg": 3.02,
-   "ic_pg": 0.76,
-   "kp_pg": 0.62,
+   "avg_rating": 6.77,
+   "dw_pg": 2.96,
+   "ic_pg": 0.75,
+   "kp_pg": 0.61,
    "label": "차바리아",
-   "minutes": 3533,
-   "n": 56,
-   "tk_pg": 1.33,
-   "xa_pg": 0.089,
-   "xg_pg": 0.047
+   "minutes": 3558,
+   "n": 57,
+   "tk_pg": 1.3,
+   "xa_pg": 0.087,
+   "xg_pg": 0.044
   },
   {
    "avg_rating": 6.5,
@@ -34193,15 +35337,15 @@
   },
   {
    "avg_rating": 6.82,
-   "dw_pg": 4.5,
-   "ic_pg": 0.5,
-   "kp_pg": 1.0,
+   "dw_pg": 3.0,
+   "ic_pg": 0.33,
+   "kp_pg": 0.67,
    "label": "퀜다",
-   "minutes": 303,
-   "n": 5,
-   "tk_pg": 0.5,
-   "xa_pg": null,
-   "xg_pg": null
+   "minutes": 311,
+   "n": 6,
+   "tk_pg": 0.33,
+   "xa_pg": 0.0,
+   "xg_pg": 0.0
   },
   {
    "avg_rating": 6.75,
@@ -34240,28 +35384,28 @@
    "xg_pg": null
   },
   {
-   "avg_rating": 6.7,
-   "dw_pg": 1.0,
-   "ic_pg": 0.0,
-   "kp_pg": 0.0,
+   "avg_rating": 7.13,
+   "dw_pg": 4.0,
+   "ic_pg": 1.0,
+   "kp_pg": 0.5,
    "label": "라크루아",
-   "minutes": 124,
-   "n": 2,
-   "tk_pg": 1.0,
-   "xa_pg": null,
-   "xg_pg": null
+   "minutes": 214,
+   "n": 3,
+   "tk_pg": 3.0,
+   "xa_pg": 0.2,
+   "xg_pg": 0.0
   },
   {
-   "avg_rating": 6.55,
-   "dw_pg": 0.0,
+   "avg_rating": 6.59,
+   "dw_pg": 2.0,
    "ic_pg": 0.0,
    "kp_pg": 0.0,
    "label": "콜윌",
-   "minutes": 259,
-   "n": 4,
-   "tk_pg": 0.0,
-   "xa_pg": null,
-   "xg_pg": null
+   "minutes": 349,
+   "n": 5,
+   "tk_pg": 1.0,
+   "xa_pg": 0.03,
+   "xg_pg": 0.01
   },
   {
    "avg_rating": 6.7,
@@ -35734,6 +36878,16 @@
     "n": 1,
     "season": "2026-27",
     "starts": 0
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.31,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 65,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    }
   ],
   "라크루아": [
@@ -35746,6 +36900,16 @@
     "n": 2,
     "season": "2026-27",
     "starts": 2
+   },
+   {
+    "assists": 1,
+    "avg_rating": 8.0,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    }
   ],
   "로베르트 산체스": [
@@ -35768,6 +36932,16 @@
     "n": 3,
     "season": "2026-27",
     "starts": 2
+   },
+   {
+    "assists": 0,
+    "avg_rating": 5.67,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    },
    {
     "assists": 1,
@@ -35850,6 +37024,16 @@
     "n": 2,
     "season": "2026-27",
     "starts": 2
+   },
+   {
+    "assists": 0,
+    "avg_rating": 8.65,
+    "competition": "Premier League",
+    "goals": 1,
+    "minutes": 82,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    },
    {
     "assists": 2,
@@ -35962,6 +37146,16 @@
     "n": 2,
     "season": "2026-27",
     "starts": 2
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.01,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    },
    {
     "assists": 4,
@@ -36084,6 +37278,16 @@
     "n": 1,
     "season": "2026-27",
     "starts": 0
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.69,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 76,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    },
    {
     "assists": 3,
@@ -36340,6 +37544,16 @@
     "n": 2,
     "season": "2026-27",
     "starts": 0
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.32,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    }
   ],
   "에수구": [
@@ -36374,6 +37588,16 @@
     "n": 3,
     "season": "2026-27",
     "starts": 1
+   },
+   {
+    "assists": 0,
+    "avg_rating": null,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 7,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 0
    },
    {
     "assists": 2,
@@ -36478,6 +37702,16 @@
     "starts": 0
    },
    {
+    "assists": 0,
+    "avg_rating": 6.41,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 25,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 0
+   },
+   {
     "assists": 3,
     "avg_rating": 7.15,
     "competition": "Premier League",
@@ -36576,6 +37810,16 @@
     "goals": null,
     "minutes": 80,
     "n": 2,
+    "season": "2026-27",
+    "starts": 1
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.08,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 65,
+    "n": 1,
     "season": "2026-27",
     "starts": 1
    },
@@ -36756,6 +38000,16 @@
     "starts": 3
    },
    {
+    "assists": 1,
+    "avg_rating": 8.47,
+    "competition": "Premier League",
+    "goals": 1,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   },
+   {
     "assists": 5,
     "avg_rating": 7.1,
     "competition": "Premier League",
@@ -36848,6 +38102,16 @@
     "starts": 0
    },
    {
+    "assists": 0,
+    "avg_rating": 5.98,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 25,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 0
+   },
+   {
     "assists": 2,
     "avg_rating": 6.8,
     "competition": "LaLiga",
@@ -36898,6 +38162,16 @@
     "n": 2,
     "season": "2026-27",
     "starts": 2
+   },
+   {
+    "assists": 1,
+    "avg_rating": 9.08,
+    "competition": "Premier League",
+    "goals": 1,
+    "minutes": 83,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    },
    {
     "assists": 1,
@@ -36990,6 +38264,16 @@
     "n": 2,
     "season": "2026-27",
     "starts": 1
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.67,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    }
   ],
   "퀜다": [
@@ -37002,6 +38286,16 @@
     "n": 5,
     "season": "2026-27",
     "starts": 4
+   },
+   {
+    "assists": 0,
+    "avg_rating": null,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 8,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 0
    }
   ],
   "트레보 찰로바": [
@@ -37148,6 +38442,16 @@
     "n": 2,
     "season": "2026-27",
     "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.88,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 14,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 0
    },
    {
     "assists": 6,

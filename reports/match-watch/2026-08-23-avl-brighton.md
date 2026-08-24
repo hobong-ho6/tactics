@@ -812,3 +812,46 @@ D+1은 「3경기 출전정지(아스날 홈·헐 시티 원정·노팅엄 포�
 
 ⇒ **`status`는 여전히 `draft`.** draft의 핵심 사유(**유튜브 전술 분석·전술 블로그 0건**)가 그대로 남아 있다.
 이번 회차는 사실 검증(정지 대상 경기·왓킨스 서사 3중화)에 배분했고 전술 2차 분석은 D+3로 넘긴다.
+
+---
+
+## D+3 추적 (2026-08-25, 최종 정기 창)
+
+### 새로 확인한 후속 분석
+
+- **My Old Man Said Ep.631, 2026-08-24**: 제목·공개 설명을 직접 확인했다. 무인정 스트라이커 선발,
+  Watkins 명단 제외, 23분 사이 4실점, 유효슈팅 0을 한 묶음의 스쿼드·구조 붕괴로 평가한다.
+- **Holtecast Ep.615, 2026-08-24**: 공개 설명은 「No striker = Big problem」과 Watkins 이적시장 방해를 핵심 의제로 명시한다.
+- **Seagulls Social S7E3, 2026-08-24**: Brighton 관점 52분 30초 경기 반응 에피소드가 게시됐다.
+- **The Athletic FC Podcast, 2026-08-24**: Villa 전담 Jacob Tanswell이 4–0 패배와 Watkins 불확실성을 다룬다.
+
+⚠️ 네 자료 모두 **오디오를 재생·전사하지 않았고 공개 설명만 확인**했다. 따라서 본문에 새 전술 동작이나 선수 발언을
+인용하지 않는다. 다만 D+1의 「공격수 부재와 이적시장 혼란이 구조 문제」라는 판정이 서로 독립적인 Villa·Brighton·전국 매체에서
+반복됐다는 점만 보강한다.
+
+### 0건 소스와 검색 범위
+
+| 소스 | 시도 | 결과 |
+|---|---|---|
+| 공식 전체 기자회견 | AVFC·Brighton 공식 사이트/YouTube, Emery/Hürzeler post-match full press conference | 새 전체본 0건. D+1의 양 감독 발언이 최종 1차 근거 |
+| 클럽 전술 영상 / YouTube | Tifo·The Athletic FC·Statman Dave·Seagulls Social/Central·Villa View 경기명 직격 | ⛔ 전술 브레이크다운 0건. 팟캐스트 반응만 4건 |
+| 전술 전문 블로그 | TFA·BTL·Spielverlagerung·Coaches' Voice·Opta 후속 | 새 전문 글 0건 |
+| 네덜란드어 | Bizot·Maatsen·De Cuyper 경기 분석 | 고유 전술 기사 0건 |
+| 스웨덴어 | Lindelöf självmål 4-0 분석 | 결과·자책골 사실 전달 외 신규 전술 근거 0건 |
+| 일본어 | Suzuki·Aston Villa·Brighton 경기 분석 | 이적·명단 기사 외 신규 경기 분석 0건 |
+| Brighton 관점 | Seagulls Social·Brighton 공식·Argus/Sussex Express | 반응 팟캐스트 1건, 새 텍스트 전술 분석 0건 |
+
+### 상태와 재시도 조건
+
+**`status='draft'`를 유지한다.** D+1~D+3 정기 검색은 완료했지만, 공식 전체 회견과 경기 전용 전술 영상·전문 블로그가
+끝내 나오지 않았다. 억지로 complete 처리하지 않는다. 향후 아래 중 하나가 나오면 비정기 재개한다.
+
+1. AVFC/Brighton의 전체 경기 후 회견 또는 클럽 전술 영상
+2. TFA·Coaches' Voice·The Athletic 등에서 이 경기 전용 전술 분석 게시
+3. 팟캐스트의 공식 전사문이나 타임스탬프별 전술 요약 공개
+
+**추가 출처**
+- My Old Man Said Ep.631: https://shows.acast.com/myoldmansaid
+- Holtecast Ep.615: https://shows.acast.com/holtecast-an-aston-villa-podcast/episodes/brighton-4-0-aston-villa-distractions-frustrations-and-red-m
+- Seagulls Social S7E3: https://shows.acast.com/seagulls-social
+- The Athletic FC Podcast, 2026-08-24: https://shows.acast.com/the-athletic-fc-podcast/episodes/how-alarming-is-man-uniteds-defeat-to-hull

@@ -79,3 +79,4 @@ INSERT INTO matches VALUES(85,16421055,'ATM','2026-27','2026-08-19','Malaga','La
 INSERT INTO matches VALUES(86,5795369,'AVL','2026-27','2026-08-23','Brighton & Hove Albion','Premier League','A','0-4',1,'Round 1',27.0);
 INSERT INTO matches VALUES(87,5795371,'LIV','2026-27','2026-08-23','Newcastle United','Premier League','A','2-2',1,'Round 1',61.0);
 INSERT INTO matches VALUES(88,16416302,'ATM','2026-27','2026-08-23','Villarreal','LaLiga','H','2-2 D',1,'라운드 2',52.0);
+INSERT INTO matches VALUES(89,5795372,'CHE','2026-27','2026-08-24','Fulham','Premier League','A','3-2',1,'Premier League',38.0);
