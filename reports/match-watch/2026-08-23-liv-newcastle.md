@@ -315,3 +315,58 @@ draft의 핵심 사유였던 **이라올라 1차 발언 원문**은 아직 남�
 **추가 출처**
 - Coaches' Voice, 2026-08-24: https://learning.coachesvoice.com/cv/newcastle-liverpool-tactics-august-2026/
 - Between The Posts, 2026-08-24: https://betweentheposts.net/newcastle-united-liverpool-new-era-higher-tempo-2-2/
+
+---
+
+## D+3 추적 (2026-08-25)
+
+> 스킬 §2-1a 마지막 회차. ⭐ **draft 차단 요인 2건이 모두 해소됐다.**
+
+### ✅✅ 해소 ① — 이라올라 기자회견 원문 (D+1·D+2 최우선 결손)
+
+**Liverpool FC 공식** 「In full: Andoni Iraola's press conference after Newcastle United 2-2 Liverpool」.
+D+2까지 「FC 처방 함의가 크다 — 원문 확정 필요」로 두 회차 이월했던 항목이다.
+
+| 주제 | 원문 |
+|---|---|
+| 전환 실점 | 「You don't want to concede transitions. **We have been preparing during the week for transitions**, but this is football and there is a reason why Newcastle are so good there.」 |
+| 선제골 | 「The first one I think **we should just finish the play**…we don't finish it properly and then you have to give credit to Elanga, who wins the race.」 |
+| 미드필드 | 「**I think it's just not personnel.** I understand, you are telling me basically that Ryan Gravenberch is the six and he is on the edge of the box, **but if he shoots and he scores we are saying what a play from Ryan Gravenberch**.」 |
+| 〃 | 「Situations [are] just not because one person is playing there, **it is something that we have to correct between a lot of players**.」 |
+| 교체 | 「…**these players from the bench that can alter games are going to be important for us**.」 (무뇨스 언급, 그 이전에 더 명백한 PK가 있었다는 주장 포함) |
+
+### ⭐⭐ 이것이 D+1의 흐라벤베르흐 충돌을 감독 수준에서 종결한다
+
+D+1은 영어권(학포 골 관여 = 긍정) ↔ 스페인어권(「apenas había intervenido」 = 부정)의 충돌을 **미해소**로 남겼고,
+Goal(Mark Doyle)의 「엘랑가 선제골 순간 더블 피벗 두 명 모두 상대 박스 안」이 부정 쪽 근거였다.
+
+**이라올라는 그 지적을 알고 있으면서 명시적으로 기각한다.** 「6번이 박스 가장자리에 있었다」는 비판에 대해
+**「슛을 넣었으면 우리는 흐라벤베르흐의 멋진 플레이라고 말하고 있을 것」**이라고 반문하고, 원인을 개인이 아니라
+**여러 선수 사이에서 교정할 문제**로 규정한다.
+
+⇒ ⭐ **FC 처방 함의(정본 변경 후보)**: 매체 리뷰들이 제시한 처방은 「전문 홀딩 6번 부재가 전환 공백을 만든다」였다.
+**감독 1차 발언은 그 처방을 채택하지 않는다** — 인선(personnel)으로 풀지 않겠다고 명시했다.
+⇒ 리버풀 프리셋에서 **피벗을 낮추거나 앵커형 6번을 두는 방향은 감독 의도와 반대**다.
+잔여수비 리스크는 **역할이 아니라 팀 지시(전환 대비)로 흡수**해야 한다.
+⚠️ 단 이것은 **의도**이고, 실측은 여전히 2실점 모두 전환이다. 의도와 결과를 분리해 기록한다.
+
+### ✅ 해소 ② — 전술 블로그 (지연 게시분)
+
+**Coaches' Voice 「Newcastle United 2 Liverpool 2: tactical analysis」(2026-08-24)** — D+1~D+2에 없던 지연 게시물이다.
+
+- **뉴캐슬은 4-4-1-1 + 광범위한 대인지향 마킹**: **위사 → 흐라벤베르흐 · 스퇴르 → 비르츠 · 마일리 → 소보슬라이**.
+  ⇒ §4의 「비르츠 고립」과 「피벗 우회」가 **우연이 아니라 상대의 설계**였다는 것이 확인된다.
+- **리버풀의 탈압박 해법**: 흐라벤베르흐가 **위사의 커버 섀도 밖으로 이동**해 수신 후 전진.
+  소보슬라이는 전진·하강을 번갈아 **마일리를 끌어내** 비르츠의 횡이동 공간을 만들었다.
+- **오술라는 볼사이드 CB의 뒷어깨로 반복 침투**했고, 이것이 전반 내내 리버풀 라인 뒤를 위협했다.
+- 엘랑가는 **케르케즈 뒤 공간**을 노려 선제골로 연결 — §4 서술과 독립 일치.
+
+⇒ 대인지향 마킹은 **개인 처방이 아니라 상대 대응**이므로 우리 선수 fit 값에 반영하지 않는다(obs 기록만).
+
+### 상태 판정
+
+⭐ **`draft` → `complete` 승격.** 근거: ⑴ 감독 1차 발언 **원문 확보**(리버풀 공식) ⑵ 전술 블로그 **확보**(Coaches' Voice)
+⑶ D+1 미해소 충돌(흐라벤베르흐) **종결** ⑷ D+2 구조 결손(교체 상대) **종결** ⑸ D+1~D+3 3일 창 **충족**.
+
+**잔여 결손(승격 후에도 유지)**: 🇪🇸 바스크어 도메인 직접 fetch **미시도** · 🇭🇺 헝가리어(소보슬라이) ·
+🇫🇷 프랑스어(자케) **미시도** · 유튜브 전술 영상 **미시청**. 이후 회차에서 나오면 「승격 후 정정」으로 추가한다.
