@@ -7,7 +7,7 @@
 <div class="panel report-picker">
   <label class="kv">경기 <select id="matchReportSel" aria-label="경기별 분석 리포트 선택"></select></label>
   <label class="kv">히트맵 <select id="matchPlayerSel" aria-label="경기 히트맵 선수 선택"></select></label>
-  <label class="kv">출전자 범위 <select id="heatView" aria-label="히트맵 출전자 범위"><option value="all">전체 출전자</option><option value="starters">선발 11명</option><option value="subs">교체 선수</option></select></label>
+  <label class="kv">출전자 범위 <select id="heatView" aria-label="히트맵 출전자 범위"><option value="starters" selected>선발 11명</option><option value="all">전체 출전자</option><option value="subs">교체 선수</option></select></label>
   <label class="kv">재현 XI <select id="presetView" aria-label="경기 재현 프리셋 시점"><option value="start">선발 XI</option><option value="final">교체 반영 종료 XI</option></select></label>
 </div>
 <div id="empty" class="panel dim" hidden>이 팀에는 완료된 경기 분석 리포트가 아직 없습니다.</div>
@@ -34,12 +34,22 @@ import { prose } from './assets/prose.js';
 
 const { team } = await mountHeader('match-report.html');
 const td = await loadTeam(team);
-/* 초안(draft)도 노출한다(2026-08-16 사용자 결정). 다만 완료본을 앞에 정렬해
-   기본 선택이 완료본이 되게 하고, 셀렉터·헤더·안내문에서 상태를 명확히 구분한다.
-   초안은 "자료가 부족해 경기 전용 프리셋을 세우지 못한 경기"라는 뜻이다. */
-const reports = (td.match_reports ?? []).slice().sort((a, b) =>
-  (a.status === 'complete' ? 0 : 1) - (b.status === 'complete' ? 0 : 1));
+/* 초안(draft)도 노출한다(2026-08-16 사용자 결정). 셀렉터·헤더·안내문에서 상태를 구분한다.
+   초안은 "자료가 부족해 경기 전용 프리셋을 세우지 못한 경기"라는 뜻이다.
+   ⭐ 2026-08-25: 경기가 쌓이면 드롭다운이 길어지므로 공식전과 프리시즌을 optgroup으로 나눈다.
+   기존의 "완료본 먼저" 정렬은 그 목적(기본 선택을 완료본으로)을 공식전 우선이 대체한다 —
+   프리시즌 친선이 draft로 남는 구조라 공식전을 앞에 두면 완료본이 먼저 온다. */
+const reports = td.match_reports ?? [];
 const isDraft = r => r?.status !== 'complete';
+/* matches.competition이 정본이다. 친선만 'Club Friendly'/'Club Friendly Games'로 들어온다
+   (PL·LaLiga·UEFA Super Cup은 공식전). competition이 비면 공식전으로 단정하지 않고 프리시즌에 둔다. */
+const isFriendly = r => /club friendly/i.test(r.competition ?? '') || !r.competition;
+/* export가 이미 날짜 DESC로 주므로 분할만 하고 내부 순서는 유지한다 */
+const GROUPS = [
+  ['공식전 (정규시즌·컵)', reports.filter(r => !isFriendly(r))],
+  ['프리시즌·친선', reports.filter(isFriendly)],
+].filter(([, rs]) => rs.length);
+const ordered = GROUPS.flatMap(([, rs]) => rs);
 const reportSel = document.getElementById('matchReportSel');
 const playerSel = document.getElementById('matchPlayerSel');
 const heatView = document.getElementById('heatView');
@@ -127,7 +137,8 @@ function renderPitch(r){
     drawChip(ctx,cv.width,cv.height,100-Number(p.avg_y),Number(p.avg_x),p.label);
   }
   document.getElementById('pitchCaption').innerHTML = requested
-    ? annotate(`<b>${esc(picked[0]?.label)}</b> · ${picked[0]?.started?'선발':'교체'} · 이 경기 ${esc(picked[0]?.minutes ?? '—')}분 · 히트포인트 ${esc(picked[0]?.hit_points ?? '—')}`)
+    ? annotate(`<b>${esc(picked[0]?.label)}</b> · ${picked[0]?.started?'선발':'교체'} · 이 경기 ${esc(picked[0]?.minutes ?? '—')}분 · 히트포인트 ${esc(picked[0]?.hit_points ?? '—')}`
+        + (maps.length ? '' : ' · <b>이 경기 히트맵 없음</b>(출전 시간이 짧아 원천에 포인트가 0)'))
     : annotate(`<b>${heatView.value==='starters'?'선발 합성':heatView.value==='subs'?'교체 합성':'전체 출전자 합성'}</b> · 유효 히트맵 ${maps.length}/${picked.length}명 · <b>이름 칩 = 해당 경기 실제 평균 위치</b>`);
 }
 function renderGamePreset(r){
@@ -196,13 +207,15 @@ function render(r){
   if ([...playerSel.options].some(o=>o.value===keep)) playerSel.value=keep;
   renderPitch(r);
 }
-function currentReport(){ return reports.find(r=>String(r.event_id)===reportSel.value) ?? reports[0]; }
+function currentReport(){ return ordered.find(r=>String(r.event_id)===reportSel.value) ?? ordered[0]; }
 if (!reports.length){
   reportSel.innerHTML='<option>리포트 없음</option>'; reportSel.disabled=true; playerSel.disabled=true;
   document.getElementById('empty').hidden=false;
 } else {
   document.getElementById('report').hidden=false;
-  reportSel.innerHTML=reports.map(r=>`<option value="${r.event_id}">${isDraft(r)?'[초안] ':''}${esc(r.date||r.report_date)} · ${esc(r.opponent)} · ${esc(r.result)}</option>`).join('');
+  const opt=r=>`<option value="${r.event_id}">${isDraft(r)?'[초안] ':''}${esc(r.date||r.report_date)} · ${esc(r.opponent)} · ${esc(r.result)}</option>`;
+  reportSel.innerHTML=GROUPS.map(([label,rs])=>
+    `<optgroup label="${esc(label)} ${rs.length}">${rs.map(opt).join('')}</optgroup>`).join('');
   const requested=new URLSearchParams(location.search).get('event');
   if (requested && reports.some(r=>String(r.event_id)===requested)) reportSel.value=requested;
   const show=()=>{const r=currentReport();render(r);const u=new URL(location.href);u.searchParams.set('event',r.event_id);history.replaceState(null,'',u)};

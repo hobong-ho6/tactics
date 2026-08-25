@@ -2,7 +2,12 @@
    정본은 파이썬+DB이고, 이 파일의 동치는 scripts/gates.py G5(JS 동치)가 보증한다.
    여기를 고치면 반드시 core/kernel.py와 같이 고치고 게이트를 돌릴 것. */
 
+/* map25가 없는 출전자가 섞일 수 있다(짧은 교체 출전 → 히트포인트 0). 예전에는 여기서
+   TypeError가 나 호출부의 .filter(Boolean)이 실행되지 못하고 캔버스 전체가 비었다
+   (AVL 브라이턴전 '전체 출전자' 실사례). 호출부가 이미 falsy를 걸러내도록 쓰여 있으므로
+   그 계약대로 null을 돌려준다. */
 export function decodeMap(code){
+  if (typeof code !== 'string' || code.length !== 25) return null;
   const a = new Float32Array(25);
   for (let i = 0; i < 25; i++) a[i] = code[i] === 'X' ? 1 : (+code[i]) / 10;
   return a;
