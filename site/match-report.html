@@ -27,8 +27,8 @@
 </main>
 <script type="module">
 import { mountHeader, loadTeam, isGkSlot } from './assets/data.js?v=20260816-gk-avgpos';
-import { decodeMap } from './assets/kernel.js';
-import { drawPitch, drawComposite, drawChip } from './assets/pitch.js';
+import { decodeMap } from './assets/kernel.js?v=20260825-decodemap-null';
+import { drawPitch, drawComposite, drawChip } from './assets/pitch.js?v=20260825-decodemap-null';
 import { annotate, mountGlossaryTips } from './assets/glossary.js';
 import { prose } from './assets/prose.js';
 
@@ -131,15 +131,22 @@ function renderPitch(r){
   const pool=heatView.value==='starters' ? r.players.filter(p=>p.started) :
     (heatView.value==='subs' ? r.players.filter(p=>!p.started) : r.players);
   const picked=requested ? r.players.filter(p=>String(p.player_id)===requested) : pool;
-  const maps=picked.map(p=>decodeMap(p.map25)).filter(Boolean); drawComposite(ctx,cv.width,cv.height,maps);
+  /* 히트맵을 못 구한 출전자가 섞여도 **보유자 기준으로 합성한다** — 범위 안에서 유효한 것만 걸러 쓴다.
+     ⚠️ 캡션을 그리기보다 먼저 쓴다: 예전에는 캡션이 맨 끝이라 중간에서 예외가 나면
+     피치는 비고 캡션은 직전 상태로 남아 「선발 합성 11/11」처럼 사실과 다르게 보였다. */
+  const withMap=picked.filter(p=>decodeMap(p.map25));
+  const missing=picked.length-withMap.length;
+  document.getElementById('pitchCaption').innerHTML = requested
+    ? annotate(`<b>${esc(picked[0]?.label)}</b> · ${picked[0]?.started?'선발':'교체'} · 이 경기 ${esc(picked[0]?.minutes ?? '—')}분 · 히트포인트 ${esc(picked[0]?.hit_points ?? '—')}`
+        + (withMap.length ? '' : ' · <b>이 경기 히트맵 없음</b>(출전 시간이 짧아 원천에 포인트가 0)'))
+    : annotate(`<b>${heatView.value==='starters'?'선발 합성':heatView.value==='subs'?'교체 합성':'전체 출전자 합성'}</b> · 유효 히트맵 ${withMap.length}/${picked.length}명`
+        + (missing?` <span class="dim">(히트맵 없는 ${missing}명 제외)</span>`:'')
+        + ` · <b>이름 칩 = 해당 경기 실제 평균 위치</b>`);
+  drawComposite(ctx,cv.width,cv.height,withMap.map(p=>decodeMap(p.map25)));
   for (const p of picked){
     if (!present(p.avg_x)||!present(p.avg_y)) continue;
     drawChip(ctx,cv.width,cv.height,100-Number(p.avg_y),Number(p.avg_x),p.label);
   }
-  document.getElementById('pitchCaption').innerHTML = requested
-    ? annotate(`<b>${esc(picked[0]?.label)}</b> · ${picked[0]?.started?'선발':'교체'} · 이 경기 ${esc(picked[0]?.minutes ?? '—')}분 · 히트포인트 ${esc(picked[0]?.hit_points ?? '—')}`
-        + (maps.length ? '' : ' · <b>이 경기 히트맵 없음</b>(출전 시간이 짧아 원천에 포인트가 0)'))
-    : annotate(`<b>${heatView.value==='starters'?'선발 합성':heatView.value==='subs'?'교체 합성':'전체 출전자 합성'}</b> · 유효 히트맵 ${maps.length}/${picked.length}명 · <b>이름 칩 = 해당 경기 실제 평균 위치</b>`);
 }
 function renderGamePreset(r){
   const s=r.game_setup, all=r.game_players??[];

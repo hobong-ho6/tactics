@@ -209,14 +209,29 @@ def run(db_path=None, verbose=True):
     root = Path(__file__).resolve().parent.parent
     serve_py = (root / "scripts" / "serve.py").read_text()
     data_js = (root / "site" / "assets" / "data.js").read_text()
+    # ⚠️ launch.json의 heatmap 인라인 핸들러는 HTML/JS에 no-store를 보내지 않는다(그 파일 상단 주석).
+    # 그래서 assets/*.js를 고쳐도 브라우저가 옛 사본을 계속 쓴다 — 2026-08-25에 실제로 발생했다:
+    # decodeMap 방어를 넣었는데 캐시된 구 kernel.js가 예외를 던져 히트맵이 계속 비었다.
+    # 공유 모듈(kernel.js·pitch.js)을 임포트할 때는 ?v= 캐시 무효화 쿼리를 달아 이를 막는다.
+    versioned_js = ("kernel.js", "pitch.js")
+    stale_js_imports = [
+        f"{html.name}:{mod}"
+        for html in sorted((root / "site").glob("*.html"))
+        for mod in versioned_js
+        if f"./assets/{mod}'" in html.read_text()
+    ]
     ok9 = (
         'Cache-Control", "no-store' in serve_py
         and "cache: 'no-store'" in data_js
         and "searchParams.set('_', Date.now()" in data_js
         and "scripts/serve.py" in (root / "scripts" / "serve.sh").read_text()
+        and not stale_js_imports
     )
     if verbose:
-        print(f"G9 프리뷰 최신성: 서버·JSON 캐시 우회 {'✅' if ok9 else '⛔'}")
+        print(f"G9 프리뷰 최신성: 서버·JSON 캐시 우회 · 무버전 JS 임포트 "
+              f"{len(stale_js_imports)} {'✅' if ok9 else '⛔'}")
+        if stale_js_imports:
+            print(f"   ⛔ ?v= 없는 공유 모듈 임포트: {', '.join(stale_js_imports)}")
     if not ok9:
         fails.append("G9")
 

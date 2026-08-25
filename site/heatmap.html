@@ -18,8 +18,8 @@
 B 패널은 FC 슬롯 좌표다. 두 칩의 어긋남이 곧 "실측과 처방 자리의 거리"다.</p>
 <script type="module">
 import { mountHeader, loadTeam, loadKernels, slotCandidates } from './assets/data.js?v=20260813-slot-candidates';
-import { Kernel, decodeMap } from './assets/kernel.js';
-import { drawPitch, drawComposite, drawChip } from './assets/pitch.js';
+import { Kernel, decodeMap } from './assets/kernel.js?v=20260825-decodemap-null';
+import { drawPitch, drawComposite, drawChip } from './assets/pitch.js?v=20260825-decodemap-null';
 
 const { team } = await mountHeader('heatmap.html');
 const [td, kd] = await Promise.all([loadTeam(team), loadKernels('FC26')]);

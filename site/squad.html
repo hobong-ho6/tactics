@@ -11,8 +11,8 @@
 <script type="module">
 import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell } from './assets/data.js?v=20260816-gk-avgpos';
 import { annotate, mountGlossaryTips } from './assets/glossary.js';
-import { Kernel } from './assets/kernel.js';
-import { miniGrid } from './assets/pitch.js';
+import { Kernel } from './assets/kernel.js?v=20260825-decodemap-null';
+import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
 
 const { team } = await mountHeader('squad.html');
 const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loadGameStats('FC26')]);
