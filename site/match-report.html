@@ -47,8 +47,6 @@ const presetView = document.getElementById('presetView');
 const esc = value => String(value ?? '').replace(/[&<>"']/g, c =>
   ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const present = value => value !== null && value !== undefined && value !== '';
-const bullets = value => String(value ?? '').split('|').filter(Boolean)
-  .map(x => `<li>${annotate(esc(x))}</li>`).join('');
 
 const statNames = {
   minutes:'출전 시간',rating:'평점',started:'선발',lineup_pos:'라인업 위치',pos_class:'평균위치 분류',
@@ -175,9 +173,9 @@ function render(r){
   renderGamePreset(r);
   document.getElementById('tactical').innerHTML=`
     <section><h3>전술 설명</h3>${prose(r.tactical_description)}</section>
-    <section><h3>전술적 특성</h3><ul>${bullets(r.tactical_features)}</ul></section>
-    <section><h3>경기 중 변화</h3><ol>${bullets(r.tactical_changes)}</ol></section>
-    <section><h3>게임 구현 함의</h3><ul>${bullets(r.game_implications)}</ul></section>`;
+    <section><h3>전술적 특성</h3>${prose(r.tactical_features)}</section>
+    <section><h3>경기 중 변화</h3>${prose(r.tactical_changes)}</section>
+    <section><h3>게임 구현 함의</h3>${prose(r.game_implications)}</section>`;
   document.getElementById('players').innerHTML=r.players.slice().sort((a,b)=>(b.started||0)-(a.started||0)).map(p=>`<details class="player-report">
     <summary><span class="badge ${p.started?'hi':'mid'}">${p.started?'선발':'교체'}</span> <b>${esc(p.position)}</b> ${esc(p.label)} · ${annotate(esc(p.tactical_role))}
       <span class="dim">${esc(p.minutes ?? '—')}분 / ${esc(p.rating ?? '—')}</span></summary>

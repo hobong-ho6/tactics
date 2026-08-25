@@ -270,7 +270,8 @@ def export_all(db_path=None, window="2026-summer"):
                        mpp.game_version,mpp.pos_label,mpp.role_id,gr.name role_name,
                        mpp.focus,mpp.fit_sim,mpp.starter,mpp.sort_order,mpp.rationale,
                        mpp.replaced_player_id,mpp.minute_on,
-                       mpp.source,mpp.confidence,s.x,s.y
+                       mpp.source,mpp.confidence,
+                       COALESCE(s.x,f.x) x, COALESCE(s.y,f.y) y
                 FROM match_player_prescriptions mpp
                 JOIN players p ON p.id=mpp.player_id
                 JOIN game_roles gr
@@ -278,8 +279,13 @@ def export_all(db_path=None, window="2026-summer"):
                 LEFT JOIN match_game_setups mgs ON mgs.report_id=mpp.report_id
                 LEFT JOIN slots s ON s.regime_id=? AND s.formation=mgs.formation
                                  AND s.pos=mpp.pos_label
+                -- 경기 포메이션이 slots에 없을 때의 기하 폴백. 커널이 이미
+                -- formation을 조건에 넣지 않고 첫 행을 쓰므로(core.kernel.best_fit_slot)
+                -- 같은 규칙을 따라야 fit_sim과 좌표의 출처가 일치한다.
+                LEFT JOIN slots f ON f.rowid=(SELECT MIN(f2.rowid) FROM slots f2
+                                              WHERE f2.regime_id=? AND f2.pos=mpp.pos_label)
                 WHERE mpp.report_id=? ORDER BY mpp.sort_order,p.id""",
-                (rid, report["id"]))
+                (rid, rid, report["id"]))
             report_file = ROOT / report["report_path"]
             report["report_markdown"] = (
                 report_file.read_text(encoding="utf-8") if report_file.is_file() else None)

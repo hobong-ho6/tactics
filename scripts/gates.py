@@ -357,6 +357,17 @@ def run(db_path=None, verbose=True):
         LEFT JOIN match_player_prescriptions mpp
           ON mpp.report_id=mr.id AND mpp.player_id=pm.player_id
         WHERE mr.status='complete' AND pm.minutes>0 AND mpp.player_id IS NULL""").fetchall()
+    # 경기 프리셋의 pos_label이 그 팀 slots 정본에 없으면 재현 피치의 x/y가 NULL이 되고
+    # 선수 칩 11개가 전부 같은 자리에 겹쳐 그려진다(2026-08-25 실제 발생 — AVL 브라이턴전).
+    # 두 경로로 깨졌다: ⑴ formation 문자열이 slots와 불일치 ⑵ pos_label 자체가 그 팀에 없음
+    # (CHE 3-4-2-1에 LDM·RDM은 존재하지 않는다 — 그 팀엔 LCM·RCM이다, 불변규칙 7).
+    # export는 ⑴을 기하 폴백으로 흡수하지만 ⑵는 흡수할 수 없다 — 여기서 잡는다.
+    orphan_preset_slots = con.execute("""
+        SELECT mpp.report_id,mpp.pos_label
+        FROM match_player_prescriptions mpp
+        JOIN match_reports mr ON mr.id=mpp.report_id
+        WHERE NOT EXISTS (SELECT 1 FROM slots s
+                          WHERE s.regime_id=mr.regime_id AND s.pos=mpp.pos_label)""").fetchall()
     # draft라도 선수 행이 통째로 비면 경기 화면의 실측 평균위치·히트맵이 빈 피치가 된다.
     # core/export.py는 match_reports.players를 match_player_reports에서만 채우므로
     # (players 소스가 단일하다) 이 표가 비면 UI에서 조용히 사라진다 — obs#216의 회귀.
@@ -373,7 +384,7 @@ def run(db_path=None, verbose=True):
     ok12 = (
         not incomplete_reports and not uncovered_report_players and not missing_report_files
         and not missing_match_presets and not uncovered_match_prescriptions
-        and not playerless_reports
+        and not playerless_reports and not orphan_preset_slots
         and '대표 실측(시즌·유효 표본)' in heatmap_html
         # A(실측) 패널은 슬롯 좌표가 아니라 선수의 실제 평균 위치에 칩을 찍어야 한다.
         # 이 세 줄이 함께 있어야 export의 avg_positions가 화면까지 도달한다.
@@ -400,7 +411,8 @@ def run(db_path=None, verbose=True):
         print(f"G12 경기 리포트: 불완전 {len(incomplete_reports)} · 선수행0 "
               f"{len(playerless_reports)} · 선수누락 "
               f"{len(uncovered_report_players)} · 원문누락 {len(missing_report_files)} · "
-              f"경기프리셋누락 {len(missing_match_presets)} · 선수처방누락 {len(uncovered_match_prescriptions)} "
+              f"경기프리셋누락 {len(missing_match_presets)} · 선수처방누락 {len(uncovered_match_prescriptions)} · "
+              f"슬롯없는프리셋 {len(orphan_preset_slots)} "
               f"{'✅' if ok12 else '⛔'}")
     if not ok12:
         fails.append("G12")
