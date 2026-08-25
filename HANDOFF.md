@@ -12,12 +12,12 @@
 ## 현재 상태
 
 > 마지막 갱신: **2026-08-25 저녁 KST** · 작업 PC `AD03230205ui-iMac.local` · 브랜치 `main` ·
-> 마지막 커밋 `f6c5116`(origin/main과 일치, push 완료). 이 문서 자체의 커밋은 그 다음에 얹힌다.
+> 마지막 커밋 `9e1a262`(origin/main과 일치, push 완료). 이 문서 자체의 커밋은 그 다음에 얹힌다.
 
 - DB: players 190 · player_matches **4,074** · team_match_stats **61** · match_reports **25** ·
-  match_player_reports **457** · squad_entries 125 · prescriptions **406** ·
+  match_player_reports **457** · squad_entries **126** · prescriptions **408** ·
   match_game_setups **10** · match_player_prescriptions **164** · transfer_targets **38** ·
-  transfer_outgoing **53** · player_duties **190** · observations **330**(최신 obs#330).
+  transfer_outgoing **53** · player_duties **190** · observations **331**(최신 obs#331).
 - 회귀: **G1~G12 전항 통과**(2026-08-25 마지막 확인).
 - ⭐ **적합값 드리프트: 차이 20 → 8 → 4**(obs#316 → obs#330). 좌우 이봉 분포 전수 점검 완료 —
   아래 「종결된 항목」 참조.
@@ -99,8 +99,11 @@ D+2는 **08-24 21시에 조기 실시 완료**, 08-25에 D+3 정기 검색도 �
   ⭐ **무뇨스는 이후 사용자 지시로 재판정 완료(obs#330)** — 분량(좌 22경기)보다 최근 기용(이라올라
   체제는 우측, 08-23 응구모하와 직접 맞교체)을 우선해 주 사이드를 **LM(.771) → RM(.834)** 로 전환.
   좌측 값은 `measured:side:L`에 보존. **파생 발견**: LIV 좌측(LM)이 학포 1명뿐으로 비어 — 학포가
-  맨시티/토트넘 이적으로 이탈하면 LM 후보 0명. 응구모하(pid=114, 개막전 RM 선발)는 `squad_entries`
-  행 자체가 없는 결손으로 남음. 커밋 `a626c77`·`a24d0ad`·`f6c5116`.
+  맨시티/토트넘 이적으로 이탈하면 LM 후보 0명. 커밋 `a626c77`·`a24d0ad`·`f6c5116`.
+- ✅ **응구모하(pid=114) `squad_entries` 결손 채움(obs#331)** — 개막전(08-23 뉴캐슬) RM 선발인데
+  행이 없었다. 같은 좌우 이봉 패턴(친선 4경기+PL 1경기, hp≥15)이나 무뇨스보다 판단이 단순했다 —
+  분량(우측 170분>좌측 90분)·최근기용·유일한 공식전 표본이 전부 우측을 가리켜 **RM wm_winger/Attack
+  .812**를 그대로 채택. 좌측(LM .837·n=2·프리시즌뿐)은 `measured:side:L`에 보존. 커밋 `9e1a262`.
 
 ### 2026-08-24 세션 (압축)
 
@@ -118,10 +121,9 @@ D+2는 **08-24 21시에 조기 실시 완료**, 08-25에 D+3 정기 검색도 �
 3. **PL 다음 라운드**: AVL/LIV/CHE 실제 경기마다 동일 파이프라인을 반복한다.
    가장 가까운 CHE 08-30 Brighton 홈에 앞서 08-27 Luton EFL컵도 match-watch 범위 여부를 확인한다.
 4. Atlético 이후 경기는 별도 match-watch 일정. 그리말도 실측이 채워지면 2경기 슬롯 기하·fit·sort_order 연쇄 재검증.
-5. ⭐ **LIV 좌측(LM) 영입 공백** — 무뇨스가 RM으로 전환되며 LM은 학포 1명뿐임이 드러났다(obs#330).
-   학포가 이적(맨시티/토트넘 2파, MEDIUM-HIGH)하면 LM 후보 0명 — 영입 축 검토 필요.
-6. **응구모하(pid=114) `squad_entries` 결손 채우기** — 개막전 RM 선발인데 행이 없다(obs#330).
-7. **전후(x축, 라인 높이) 이봉 점검은 아직 안 했다** — obs#328~330은 좌우(y축)만 봤다.
+5. ⭐ **LIV 좌측(LM) 영입 공백** — 무뇨스·응구모하 둘 다 RM으로 확정되며 LM은 학포 1명뿐임이
+   드러났다(obs#330·#331). 학포가 이적(맨시티/토트넘 2파, MEDIUM-HIGH)하면 LM 후보 0명 — 영입 축 검토 필요.
+6. **전후(x축, 라인 높이) 이봉 점검은 아직 안 했다** — obs#328~331은 좌우(y축)만 봤다.
 
 ### transfer-watch (마감 2026-09-01, D-7)
 1. ⭐⭐⭐ **레앙(AVL) — 정식 오퍼 제출 여부.** Di Marzio(협상 중) ↔ Moretto(단순 아이디어) 상충은
