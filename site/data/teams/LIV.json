@@ -3773,6 +3773,580 @@
     "stat_value": "0"
    }
   ],
+  "Rio Ngumoha": [
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_key": "red_cards",
+    "metric_kr": "레드카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 69.76744186046511,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "69.8"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_key": "yellow_cards",
+    "metric_kr": "옐로카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Duels won %",
+    "metric_key": "duel_won_percent",
+    "metric_kr": "듀얼 승률",
+    "per90": 54.76190476190476,
+    "percentile": 96,
+    "percentile_per90": 96,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "54.8"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Cross accuracy",
+    "metric_key": "crosses_succeeeded_accuracy",
+    "metric_kr": "크로스 정확도",
+    "per90": 33.333333333333336,
+    "percentile": 89,
+    "percentile_per90": 89,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "33.3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Pass accuracy",
+    "metric_key": "successful_passes_accuracy",
+    "metric_kr": "패스 정확도",
+    "per90": 86.97916666666667,
+    "percentile": 86,
+    "percentile_per90": 86,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "87.0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Fouls committed",
+    "metric_key": "fouls",
+    "metric_kr": "파울",
+    "per90": 0.6533575317604355,
+    "percentile": 85,
+    "percentile_per90": 75,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG against while on pitch",
+    "metric_key": "expected_goals_against_while_on_pitch",
+    "metric_kr": "출전 중 피xG",
+    "per90": 1.4619365145203855,
+    "percentile": 82,
+    "percentile_per90": 34,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "8.95"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "드리블 돌파 허용",
+    "per90": 0.6533575317604355,
+    "percentile": 80,
+    "percentile_per90": 60,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블",
+    "per90": 4.900181488203267,
+    "percentile": 79,
+    "percentile_per90": 100,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "30"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals conceded while on pitch",
+    "metric_key": "goals_conceded_while_on_pitch",
+    "metric_kr": "출전 중 실점",
+    "per90": 1.9600725952813067,
+    "percentile": 69,
+    "percentile_per90": 13,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "12"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dispossessed",
+    "metric_key": "dispossessed",
+    "metric_kr": "볼 탈취당함",
+    "per90": 1.9600725952813067,
+    "percentile": 65,
+    "percentile_per90": 24,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "12"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xA",
+    "metric_key": "expected_assists",
+    "metric_kr": "xA",
+    "per90": 0.3314315039536049,
+    "percentile": 53,
+    "percentile_per90": 98,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "2.03"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Successful crosses",
+    "metric_key": "crosses_succeeeded",
+    "metric_kr": "성공한 크로스",
+    "per90": 1.1433756805807622,
+    "percentile": 49,
+    "percentile_per90": 82,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "7"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Touches in opposition box",
+    "metric_key": "touches_opp_box",
+    "metric_kr": "상대 박스 터치",
+    "per90": 8.656987295825772,
+    "percentile": 47,
+    "percentile_per90": 95,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "53"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Big chances created",
+    "metric_key": "big_chance_created_team_title",
+    "metric_kr": "빅찬스 창출",
+    "per90": 0.4900181488203267,
+    "percentile": 46,
+    "percentile_per90": 90,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Chances created",
+    "metric_key": "chances_created",
+    "metric_kr": "기회 창출",
+    "per90": 2.613430127041742,
+    "percentile": 44,
+    "percentile_per90": 95,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "16"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xGOT",
+    "metric_key": "expected_goals_on_target",
+    "metric_kr": "xGOT",
+    "per90": 0.31256623796023386,
+    "percentile": 44,
+    "percentile_per90": 84,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "1.91"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_key": "goals",
+    "metric_kr": "골",
+    "per90": 0.32667876588021777,
+    "percentile": 43,
+    "percentile_per90": 86,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 50.0,
+    "percentile": 39,
+    "percentile_per90": 39,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "50.0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Fouls won",
+    "metric_key": "fouls_won",
+    "metric_kr": "파울 획득",
+    "per90": 1.9600725952813067,
+    "percentile": 37,
+    "percentile_per90": 84,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "12"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Shots on target",
+    "metric_key": "ShotsOnTarget",
+    "metric_kr": "유효 슛",
+    "per90": 0.9800362976406534,
+    "percentile": 36,
+    "percentile_per90": 89,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "6"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Blocked scoring attempt",
+    "metric_key": "blocked_shots",
+    "metric_kr": "슛 블록",
+    "per90": 0.16333938294010888,
+    "percentile": 32,
+    "percentile_per90": 68,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Duels won",
+    "metric_key": "duel_won",
+    "metric_kr": "듀얼 승",
+    "per90": 7.51361161524501,
+    "percentile": 32,
+    "percentile_per90": 94,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "46"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.2147096146689136,
+    "percentile": 30,
+    "percentile_per90": 67,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "1.31"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Shots",
+    "metric_key": "shots",
+    "metric_kr": "슛",
+    "per90": 2.613430127041742,
+    "percentile": 30,
+    "percentile_per90": 84,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "16"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.2147096146689136,
+    "percentile": 29,
+    "percentile_per90": 63,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "1.31"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Accurate passes",
+    "metric_key": "successful_passes",
+    "metric_kr": "정확한 패스",
+    "per90": 27.27767695099819,
+    "percentile": 27,
+    "percentile_per90": 66,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "167"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Touches",
+    "metric_key": "touches",
+    "metric_kr": "터치",
+    "per90": 57.65880217785844,
+    "percentile": 25,
+    "percentile_per90": 78,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "353"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Interceptions",
+    "metric_key": "interceptions",
+    "metric_kr": "인터셉트",
+    "per90": 0.4900181488203267,
+    "percentile": 24,
+    "percentile_per90": 50,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_key": "assists",
+    "metric_kr": "어시스트",
+    "per90": 0.16333938294010888,
+    "percentile": 22,
+    "percentile_per90": 67,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Top Speed",
+    "metric_key": "physical_metrics_topspeed",
+    "metric_kr": "최고 속도",
+    "per90": 32.29999923706055,
+    "percentile": 22,
+    "percentile_per90": 22,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "32.3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 0.4900181488203267,
+    "percentile": 21,
+    "percentile_per90": 28,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Possession won final 3rd",
+    "metric_key": "poss_won_att_3rd_team_title",
+    "metric_kr": "공격 3선 볼 획득",
+    "per90": 0.4900181488203267,
+    "percentile": 18,
+    "percentile_per90": 40,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Recoveries",
+    "metric_key": "recoveries",
+    "metric_kr": "볼 리커버리",
+    "per90": 3.103448275862069,
+    "percentile": 18,
+    "percentile_per90": 21,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "19"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Line-breaking passes",
+    "metric_key": "line_breaking_passes",
+    "metric_kr": "라인 브레이킹 패스",
+    "per90": 1.633393829401089,
+    "percentile": 15,
+    "percentile_per90": 20,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "10"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "클리어런스",
+    "per90": 0.4900181488203267,
+    "percentile": 14,
+    "percentile_per90": 21,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Total Distance Covered",
+    "metric_key": "physical_metrics_distance_covered",
+    "metric_kr": "총 이동거리",
+    "per90": 4339.341679900182,
+    "percentile": 14,
+    "percentile_per90": 27,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "26566.4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Number of Sprints",
+    "metric_key": "physical_metrics_number_of_sprints",
+    "metric_kr": "스프린트 횟수",
+    "per90": 4.083484573502722,
+    "percentile": 14,
+    "percentile_per90": 17,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "25"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Running",
+    "metric_key": "physical_metrics_running",
+    "metric_kr": "러닝 거리",
+    "per90": 930.3022669188124,
+    "percentile": 14,
+    "percentile_per90": 29,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "5695.5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Sprinting",
+    "metric_key": "physical_metrics_sprinting",
+    "metric_kr": "스프린트 거리",
+    "per90": 88.72974319596473,
+    "percentile": 14,
+    "percentile_per90": 17,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "543.2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Defensive actions",
+    "metric_key": "defensive_actions",
+    "metric_kr": "수비 액션",
+    "per90": 4.900181488203267,
+    "percentile": 13,
+    "percentile_per90": 9,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "30"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Tackles",
+    "metric_key": "matchstats.headers.tackles",
+    "metric_kr": "태클",
+    "per90": 0.6533575317604355,
+    "percentile": 9,
+    "percentile_per90": 9,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Clean sheets",
+    "metric_key": "clean_sheet_team_title",
+    "metric_kr": "클린시트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "0"
+   }
+  ],
   "맥 알리스터": [
    {
     "league": "Premier League",
@@ -22328,6 +22902,53 @@
     "Club Friendly Games"
    ]
   ],
+  "Rio Ngumoha": [
+   [
+    "2026-07-25",
+    6.2,
+    "Club Friendly"
+   ],
+   [
+    "2026-07-25",
+    6.3,
+    "Club Friendly"
+   ],
+   [
+    "2026-07-29",
+    7.2,
+    "Club Friendly"
+   ],
+   [
+    "2026-07-29",
+    7.5,
+    "Club Friendly"
+   ],
+   [
+    "2026-08-02",
+    6.5,
+    "Club Friendly"
+   ],
+   [
+    "2026-08-02",
+    7.0,
+    "Club Friendly"
+   ],
+   [
+    "2026-08-09",
+    6.2,
+    "Club Friendly"
+   ],
+   [
+    "2026-08-16",
+    6.7,
+    "Club Friendly Games"
+   ],
+   [
+    "2026-08-23",
+    6.37,
+    "Premier League"
+   ]
+  ],
   "Trey Nyoni": [
    [
     "2026-07-25",
@@ -23550,6 +24171,80 @@
     "metric": "Red cards",
     "metric_kr": "퇴장",
     "player_id": 70,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "0"
+   }
+  ],
+  "Rio Ngumoha": [
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "19"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "551"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "6.67"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 114,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 114,
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "value": "0"
@@ -31280,6 +31975,18 @@
    "xg_pg": null
   },
   {
+   "avg_rating": 6.66,
+   "dw_pg": 2.2,
+   "ic_pg": 0.0,
+   "kp_pg": 0.0,
+   "label": "Rio Ngumoha",
+   "minutes": 426,
+   "n": 9,
+   "tk_pg": 0.2,
+   "xa_pg": 0.02,
+   "xg_pg": 0.04
+  },
+  {
    "avg_rating": 7.0,
    "dw_pg": 1.25,
    "ic_pg": 1.75,
@@ -32508,6 +33215,44 @@
    "starter": 0,
    "x": 68,
    "y": null
+  },
+  {
+   "avg_rating": 6.65,
+   "fit_sim": 0.8365,
+   "focus": "Attack",
+   "game_version": "FC26",
+   "grid_club": null,
+   "kind": "measured:side:L",
+   "label": "Rio Ngumoha",
+   "map25": "00X3100630004010052000200",
+   "player_id": 114,
+   "pos_label": "LM",
+   "rationale": "[2026-08-25] **LM 전용 집계** — `player_matches`에서 `avg_y>=55`(불변규칙 9: 낮을수록 우측) 조건으로 `core.aggregate` 재집계(hp>=15). n=2(선덜랜드·리즈 프리시즌 친선) · 90분 · 평점 6.65 · LM(x=26) 적합 **0.837**. ⚠️ 반대편 행(measured:side:R, RM 0.812)과 합산·평균 금지 — 서로 다른 경기 집합이다. ⚠️ 표본 2경기는 최소 요건(2경기 이상)은 충족하나 매우 얇다 — 인선 근거로 쓰지 말 것. 참고 — 부 사이드(둘 다 프리시즌 친선, 공식전 0).",
+   "role_id": "wm_winger",
+   "sample_n": 2,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 26,
+   "y": null
+  },
+  {
+   "avg_rating": 6.86,
+   "fit_sim": 0.812,
+   "focus": "Attack",
+   "game_version": "FC26",
+   "grid_club": null,
+   "kind": "measured:side:R",
+   "label": "Rio Ngumoha",
+   "map25": "0014X00179000180101700000",
+   "player_id": 114,
+   "pos_label": "RM",
+   "rationale": "[2026-08-25] **RM 전용 집계** — `player_matches`에서 `avg_y<45`(불변규칙 9: 낮을수록 우측) 조건으로 `core.aggregate` 재집계(hp>=15). n=3(렉섬·코모 프리시즌 친선 + 08-23 뉴캐슬 PL 개막전) · 170분 · 평점 6.86 · RM(x=77) 적합 **0.812**. 반대편 행(measured:side:L, LM 0.837)과 합산·평균 금지. ⭐ 주 사이드로 채택한 근거: ⑴ 유일한 공식전 표본(뉴캐슬 PL 개막전 선발)이 이 사이드다 ⑵ 분량도 더 크다(170분 vs 90분) — 무뇨스(obs#330)처럼 최근/공식 기용이 분량과 갈리는 사례가 아니라 둘 다 우측을 가리킨다. 63분 무뇨스와 교체(IN, 툴x 82.4)된 그 경기다.",
+   "role_id": "wm_winger",
+   "sample_n": 3,
+   "season": "2026-27",
+   "starter": 1,
+   "x": 77,
+   "y": null
   }
  ],
  "profile": [
@@ -32703,6 +33448,38 @@
     "n": 2,
     "season": "2026-27",
     "starts": 2
+   }
+  ],
+  "Rio Ngumoha": [
+   {
+    "assists": 0,
+    "avg_rating": 6.7,
+    "competition": "Club Friendly",
+    "goals": 1,
+    "minutes": 301,
+    "n": 7,
+    "season": "2026-27",
+    "starts": 4
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.7,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 62,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.37,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 63,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    }
   ],
   "Trey Nyoni": [
@@ -35027,6 +35804,31 @@
    "team_code": "LIV"
   },
   {
+   "confidence": "⭐ 이 선수도 좌우를 모두 뛴 이봉 분포다(obs#328 규약 적용). 좌측 2경기(선덜랜드·리즈, 둘 다 프리시즌)는 `prescriptions` `measured:side:L`(LM 0.837·n=2·90분)에 보존했다. ⭐ 주 사이드를 RM으로 고정한 근거: 유일한 공식전 표본(08-23 뉴캐슬 PL 개막전 선발, 63분 무뇨스와 교체)이 우측이고, 분량도 우측이 크다(170분 vs 90분) — 무뇨스(obs#330)와 달리 분량·최근기용·공식전 셋 다 같은 방향을 가리킨다. ⚠️ 전체 표본이 5경기(260분)로 얇고 그중 3경기가 프리시즌 친선이다 — 시즌이 진행되면 재집계할 것. `players.primary_position='LW'`는 obs#327 규약대로 사이드 근거로 쓰지 않았다(실측·최근 기용을 우선). sort_order=12는 기존 깊이차트 최댓값(11, 무뇨스) 다음에 보수적으로 배치한 것이며, 실제 서열 재검토는 별건으로 남긴다(그는 개막전에 선발 출전했고 무뇨스는 교체 투입이었다).",
+   "fit_focus": "Attack",
+   "fit_role": "wm_winger",
+   "fit_sim": 0.812,
+   "formation": "4-2-3-1 Wide",
+   "grid_caveat": "⚠️ 표본 5경기 중 3경기가 프리시즌 친선, 공식전은 1경기(08-23 뉴캐슬)뿐이다.",
+   "grid_club": "Liverpool (프리시즌+PL 개막전)",
+   "label": "",
+   "map25": "0014X00179000180101700000",
+   "name_en": "Rio Ngumoha",
+   "name_kr": "Rio Ngumoha",
+   "player_id": 114,
+   "pos": "RM",
+   "rate_basis": "iraola2627",
+   "rate_note": "우측 3경기(170분) 평균 6.86 (measured:side:R)",
+   "rating": 6.86,
+   "regime_id": 3,
+   "slot_type": "WM",
+   "sort_order": 12,
+   "source": "SofaScore player 1881902, 이라올라 26/27 클럽경기 45분+·히트포인트15+ 5경기 중 우측(avg_y<45) 3경기(선덜랜드·리즈 프리시즌 친선 제외, 렉섬·코모 친선 + 08-23 뉴캐슬 PL 개막전) 균등가중 ; 구단 공식 라인업 https://www.liverpoolfc.com (2026-08-23 Newcastle 2-2 Liverpool)",
+   "source_kind": "squad",
+   "status": "OWNED",
+   "team_code": "LIV"
+  },
+  {
    "confidence": "MEDIUM-HIGH — 1티어(Romano) 관심 보도 + '선두' 언급. §2-0 검증 통과: 나이 18세 표기가 실제와 일치. ⚠️ 오퍼·협상 단계 보도 0건이라 HIGH 아님. ⚠️ **실측 PENDING** — SofaScore 미수집. ⚠️ 18세라 표본이 얕을 수 있다(다음 회차 수집 시 45분+ 경기 수 확인 필요). | [실측 전수 완료 2026-08-12] 2026-08-12 전수 실측(SofaScore 25/26). 종전 6경기 표본을 대체하지 않고 추가한다(불변규칙 2). ⚠️ 표본은 **이전/현 소속 클럽**의 것이고 우리 팀 전술이 아니다(obs#157·#158). 20경기 중 **4경기가 좌측**이라 obs#156 교훈대로 **우측 16경기만** 집계. 표본은 PSG. 45분+ 16경기(1003분) 집계. / 가격 조건부 무산 — PSG 번들 호가가 내려가면 §2 등급표로 재판정해 복원한다. [발행일 검증] 음바예 18세 · 세네갈 A대표 15경기 · PSG 42경기 표기 정합, 아클리우셰/토레스/곳츠 병기가 현재 창과 일치. ⚠️ **1티어 부인(08-13)과 2티어 긍정(08-14)이 하루 간격으로 충돌**하는 상태다 — 어느 쪽도 폐기하지 않고 양쪽을 병기한다. ⛔ Sky Sports 'Liverpool explore deal for PSG winger' 13569955는 **08-14 Quansah 13572821보다 ID가 작아 과거분**이다(§2-0 지표 4) — 1티어 신규가 아니다.\n⛔⭐ **[2026-08-18] 1티어가 개인합의를 정면 부인한다 — 그래서 HIGH가 아니라 MEDIUM-HIGH다.** **The Athletic 08-18**: 「senior Liverpool figures **strongly dismissed** suggestions that personal terms have already been agreed with the 18-year-old」 · 「their interest has been **only exploratory to date**」 · 「**neither the Barcola nor Mbaye transfer is currently progressing**」. ⇒ **개인합의(RMC 1소스) ↔ 탐색 단계(Athletic 1티어 + Le Parisien + L'Équipe)** 충돌이며, **금액 축·오퍼 미제출 축에서는 3소스가 일치**한다. 따라서 CONFIRMED·개인합의 단계로 올릴 수 없다. ⚠️ Athletic 원문은 **페이월**이라 relay 2건(daveockop 08-18 · parisfans 08-18 13:52)의 발행일 일치로 확정했고 **기자명은 확보하지 못했다**. ⚠️ **빌라 축 교차 경고**: 「빌라 제안액이 리버풀보다 높았다」는 서술이 나왔으나 **출처가 애그리게이터뿐이라 미채택**했다 — 우리 팀(AVL) 축과 겹치므로 다음 회차에 별도 추적할 것. ⭐ **복원 근거는 발행일이 깨끗하다** — 스노플레이크로 08-17 17:50 UTC를 확정했고 어제 회차 마감(08-17 12:49 UTC) 이후다. | [2026-08-20 14시] ⚠️ **1티어 내부 충돌 미해소** — Pearce(개인합의 부인) ↔ RMC Sport(개인 조건 합의)가 정면으로 어긋난다. 어느 쪽도 기각하지 않고 충돌 상태로 기록한다(불변규칙 3). Pearce 원문 발행일은 The Athletic 페이월로 **여전히 미확정**이다. ⭐⭐ **정정 — 비홈그론 17명 상한은 음바예에게 적용되지 않는다.** 리버풀 에이전트는 이 제약을 「바르콜라 + 음바예 동시 영입에 돈과 무관한 독립 제약」으로 보고했으나, **음바예는 18세로 U21이라 25인 명단에 포함되지 않고 2029-30까지 비홈그론 등록이 불필요하다.** ⇒ 제약은 **바르콜라에만** 걸린다. 이 정정은 오히려 **동시 영입의 장애를 하나 줄이므로 MEDIUM-HIGH 유지를 구조적으로 지지**한다. | [2026-08-21] MEDIUM-HIGH 유지 — **1티어 2건 충돌이 미해소**다(RMC 개인합의 ↔ 리버풀 임원의 「exploratory·categorically denied」). ⭐ 비홈그론 상한과 **무관**하다 — 2008년생 U21이라 2029-30까지 등록이 불필요하다. | ⭐ **[2026-08-21 21시 — MEDIUM 강등]** 결정적 근거는 **1티어(The Athletic)의 명시적 부인**이다 — §2-0에 「오퍼/합의 주장은 같은 시점 1티어의 명시적 부인으로 배제할 수 있다」는 지표(엔소 £102.5m 건과 동형)를 여기서도 적용했다. ⭐ **실측 자산 보존**(map25 · wm_widemid **0.878** · n=16 — ⚠️ 표본 16경기로 이 축에서 가장 얇다). **PSG가 바르콜라를 팔고 음바예를 붙이는 구조로 돌아오면 복원 검토.**\n[2026-08-22 09시] ⭐ **DEAD 유지 · 프랑스어 축이 근거를 강화했다.**\n**CulturePSG 기사 ID 60410, 2026-08-21 12:03, Jean Chemarin**: 「Liverpool **envoie 60 M€ sur un ailier, mais pas sur Mbaye**」 — 리버풀이 거리를 뒀고, PSG 요구는 **~€70m**인데 리버풀이 이를 과하다고 판단했으며, 음바예는 「**pisté, sans être une cible prioritaire**」였다. RMC Sport·The Athletic·Daily Mail·**James Pearce**를 인용한다.\n⭐ **ID 단조 증가 검증**: `60410` > 어제 확정한 `60407` > `60381`/`60380` ⇒ **이 매체의 최신 기사 확정**(§2-0 지표 4).\n⚠️ **잔여 충돌은 남아 있다** — Ben Jacobs·liverpool.com은 여전히 「바르콜라와 음바예 **양쪽** 개인 조건 합의」로 적는다. 그러나 1티어 부인(리버풀이 The Athletic에 「catégoriquement démenti」) + 프랑스 1티어의 **가격 논리**(€70m을 과하다고 판단)가 이를 상회한다 ⇒ **DEAD 유지.** | ⚠️ **복원했지만 08-21 리버풀 부인과의 충돌은 해소되지 않았다.** 부인은 「개인 조건 합의」를 대상으로 했고 L'Équipe·RMC는 「선수 측과 5년 합의」를 적는다 — **정면 충돌**이다. §2-0 지표④로 후행층(08-23)을 채택했으나, 리버풀 측 부인이 더 최신으로 재확인되면 되돌려야 한다. | ⚠️ 반대 방향 층 1건: **Foot01(3티어)** 「리버풀이 대화를 이탈해 민테로 전환」 — 3티어 단독이라 미채택하되 **08-21 부인과 방향이 같다는 점을 감점 요소로 기록**한다. | ⏰ 다음 회차: 리버풀 측 부인의 원문 날짜를 재확인해 어느 층이 후행인지 확정할 것. / ⛔ [2026-08-25] **강등하지 않은 이유**: 「리버풀이 트랙을 포기했다」의 최신층 원출처가 **hommedumatch·canal-supporters(프랑스 3티어)** 이고, **1티어의 명시적 철수 문언은 0건**이다. Romano 계보의 「limbo」는 철수가 아니라 **보류**다. §2 기준상 3티어 단독으로 등급을 내리지 않는다.",
    "fit_focus": "Build-Up",
    "fit_role": "wm_widemid",
@@ -35711,6 +36513,24 @@
    "rate_v": 7.03,
    "slot_type": "WM",
    "sort_order": 11
+  },
+  {
+   "fit_focus": "Attack",
+   "fit_role": "wm_winger",
+   "fit_sim": 0.812,
+   "grid_caveat": "⚠️ 표본 5경기 중 3경기가 프리시즌 친선, 공식전은 1경기(08-23 뉴캐슬)뿐이다.",
+   "grid_club": "Liverpool (프리시즌+PL 개막전)",
+   "label": "",
+   "lh": "OWNED",
+   "map25": "0014X00179000180101700000",
+   "name_en": "Rio Ngumoha",
+   "name_kr": "Rio Ngumoha",
+   "player_id": 114,
+   "rate_basis": "iraola2627",
+   "rate_note": "우측 3경기(170분) 평균 6.86 (measured:side:R)",
+   "rate_v": 6.86,
+   "slot_type": "WM",
+   "sort_order": 12
   }
  ],
  "transfer": {
