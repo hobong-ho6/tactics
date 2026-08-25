@@ -12,13 +12,13 @@
 ## 현재 상태
 
 > 마지막 갱신: **2026-08-25 밤 KST** · 작업 PC `AD03230205ui-iMac.local` · 브랜치 `main` ·
-> 마지막 커밋 `eeb1920`(origin/main과 일치, push 완료). 이 문서 자체의 커밋은 그 다음에 얹힌다.
+> 마지막 커밋 `fd7a0c1`(origin/main과 일치, push 완료). 이 문서 자체의 커밋은 그 다음에 얹힌다.
 
 - DB: players 190 · player_matches **4,074** · team_match_stats **61** · match_reports **25**
-  (**complete 9 · draft 16**) · match_player_reports **457** · squad_entries **126** ·
+  (**complete 10 · draft 15**) · match_player_reports **457** · squad_entries **126** ·
   prescriptions **408** · **slots 88** · match_game_setups **10** · match_player_prescriptions **164** ·
   transfer_targets **38** · transfer_outgoing **54** · player_duties **190** ·
-  observations **343**(최신 obs#343).
+  observations **344**(최신 obs#344).
 - 회귀: **G1~G12 전항 통과**(2026-08-25 마지막 확인). ⭐ 이날 **게이트 3건 신설** —
   G12 `orphan_preset_slots`(프리셋 pos_label이 그 팀 slots에 없으면 실패) ·
   G12 `xg_openplay_violations`(오픈플레이 xG > 전체 xG면 실패) ·
@@ -47,13 +47,13 @@
 |---|---|---|---|
 | AVL | Brighton 4–0 Aston Villa | 점유 27%, xG 0.31–3.67, 슛 6–21, PPDA 24.69. João Gomes 40′ 퇴장 | `draft` · `reports/match-watch/2026-08-23-avl-brighton.md` |
 | LIV | Newcastle 2–2 Liverpool | 점유 61%, xG 2.98–1.58, 슛 27–13, PPDA 5.95. Gakpo 52′, Szoboszlai 90+9′ PK | **`complete`** · `reports/match-watch/2026-08-23-liv-newcastle.md` |
-| CHE | Fulham 2–3 Chelsea | 점유 38%, **xG 2.24–1.33**(오픈플레이 **1.96**–1.28 · 세트피스 0.28 · **PK 0**), 슛 18–14, 막힌슛 7, PPDA 20.18. Palmer 1G1A | `draft` · `reports/match-watch/2026-08-24-che-fulham.md` |
+| CHE | Fulham 2–3 Chelsea | 점유 38%, **xG 2.24–1.33**(오픈플레이 **1.96**–1.28 · 세트피스 0.28 · **PK 0**), 슛 18–14, 막힌슛 7, PPDA 20.18. Palmer 1G1A | **`complete`** · `reports/match-watch/2026-08-24-che-fulham.md` |
 | ATM | 비야레알 2-2 (라리가 R2, 홈) | xG 0.78–3.60, 76′ DOGSO 퇴장, 주전 첫 가동 4-4-2 | **`complete`** · `reports/match-watch/2026-08-23-atm-villarreal.md` |
 
 ✅ **CHE 풀럼전(matchId 5795372) 전체 적재 완료.** FotMob 팀·선수 실측 + WhoScored/Opta 1,659 이벤트로
 출전 16명 좌표/map25와 PPDA를 만들었다. 실제 3-4-2-1에서 Palmer–João Pedro–Rogers 전원이 득점에 관여했고,
-Lacroix는 CCB에서 박스까지 올라가 도움을 기록했다. ⭐ **08-25 D+1 심층에서 전술 메커니즘·선수 평가·총평·xG를 채웠다**(obs#340) — 남은 결손은
-**공식 전체 회견본**과 **클럽 전술 영상** 2건뿐이고 그래서 여전히 `draft`다.
+Lacroix는 CCB에서 박스까지 올라가 도움을 기록했다. ✅ **08-25 D+1 심층으로 `complete` 승격**(obs#340·344) — 전술 메커니즘·선수 평가·총평·xG에 이어
+**공식 회견본(chelseafc.com + BBC MOTD)** 까지 확보했다. **남은 결손은 클럽 전술 영상 1건이고 비차단**이다.
 다음은 08-27 EFL컵(루턴 홈, id 6005665) · 08-30 브라이턴 홈.
 
 **D+N 창 정정** — 경기일이 08-23이므로 D+1은 **08-24**(완료)다. 본문에 08-25로 적혀 있던 것은
@@ -155,20 +155,21 @@ D+2는 **08-24 21시에 조기 실시 완료**, 08-25에 D+3 정기 검색도 �
   (2.24 = 1.96+0.28 · `xG non-penalty`=`xG`로 **PK 0건** 독립 확인). 구값은 confidence 보존.
   ⛔ **draft 유지** — 공식 전체 회견본·클럽 전술 영상 0건. 처방도 안 고쳤다(단일 경기로 슬롯 변경 금지).
 
-### 2026-08-24 세션 (압축)
+### 아카이브 (2026-08-24 이전)
 
-- 드리프트 6건 전량 데이터 오류 0건(원인은 `check_fit_drift.py`의 `pos_only`/포메이션 혼입) —
-  스크립트 수정으로 차이 20→8. NULL fit 13행은 최초 시드 누락으로 정체 확정, 8행 백필.
-  AVL/LIV D+2 조기 실시(교체 상대 확정, 2025년 기사 혼입 차단).
+- 2026-08-24: 드리프트 6건 전량 데이터 오류 0(원인은 `check_fit_drift.py`의 `pos_only`/포메이션 혼입) → 차이 20→8.
+  NULL fit 13행은 최초 시드 누락으로 확정, 8행 백필. AVL/LIV D+2 조기 실시.
 
 ## 다음 할 일
 
 ### match-watch
-1. ⭐ **CHE 풀럼전 D+2(08-26)·D+3(08-27)** — 남은 결손은 **알론소 공식 전체 회견본**과 **클럽 전술 영상** 2건뿐이다.
-   전술·선수 분석·총평·xG는 08-25 D+1 심층에서 채웠다(obs#340). 0건도 리포트에 기록하고 상태를 재판정한다.
-   ✅ **xG 동일 스냅샷 재수집은 완료**(`xg_v` 2.24 · `xg_op` 1.96/1.28, 검산 2중 통과).
-   ⏰ **미완 이월 — AVL 브라이턴전(`5795369`)의 xG는 아직 섞여 있다**: 저장 0.31 ↔ 재수집 0.29(Δ−0.02)로
-   **G12를 통과하지만** 세트피스 xG가 0.13 대신 0.11이어야 한다. 같은 방식의 동일 스냅샷 재수집이 필요하다.
+1. ⏰ **CHE 풀럼전 D+2(08-26)·D+3(08-27) — 남은 것은 「클럽 전술 영상」 1건뿐이다(비차단).**
+   08-25 D+1에 **`complete` 승격 완료**(obs#344) — 전술 메커니즘·선수 평가·총평·xG·**공식 회견본**을 다 채웠다.
+   ⭐ 회견의 최대 수확: 알론소가 후반을 **「공 없이 편안했고 경기를 통제했다」**로 규정해
+   **낮은 PPDA(20.18)가 실패가 아니라 의도**임을 1차 발언으로 확인했다. 문제는 총량이 아니라
+   **「압박할 순간 선택」이고 동점골 직후 10분**으로 특정됐다.
+   ⏰ D+2/D+3에는 **영상만 재검색**하고 0건이면 그대로 기록한다. 회견 영상 2건은 유튜브에 있으나 **미시청**이다
+   (docs/30: 듣지 않은 영상은 인용 금지) — 시청·전사하면 새 전술 문장을 얻을 수 있다.
 2. ✅ **[2026-08-25 완료] `overall_assessment` — 공식전 전수 채움 달성.**
    **6/25**이고 그 6건이 **공식전 전부**다(UEFA 슈퍼컵 1 · LaLiga 21·24 · PL 22·23·25).
    나머지 19건은 전부 프리시즌 친선으로 **사용자 확인상 미수집 확정**(일반 매체 총평이 희박하다).
