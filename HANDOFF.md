@@ -11,19 +11,21 @@
 
 ## 현재 상태
 
-> 마지막 갱신: **2026-08-25 08시 KST** · 작업 PC `AD03230205ui-iMac.local` · 브랜치 `main` ·
-> 시작 기준 커밋 `9d0295e`(origin/main과 일치). 이번 match-watch 커밋은 아래 완료 후 기록한다.
+> 마지막 갱신: **2026-08-25 저녁 KST** · 작업 PC `AD03230205ui-iMac.local` · 브랜치 `main` ·
+> 마지막 커밋 `a24d0ad`(origin/main과 일치, push 완료).
 
 - DB: players 190 · player_matches **4,074** · team_match_stats **61** · match_reports **25** ·
-  match_player_reports **457** · squad_entries 125 · prescriptions 394 ·
-  match_game_setups **10** · match_player_prescriptions **164** · transfer_targets 37 ·
-  player_duties **190** · observations **325**(최신 obs#325).
-- 회귀: **G1~G12 전항 통과**. G2 **3,007** 그리드 불일치 0, G6 고아 FK 0,
-  G7 appearances 앵커 `(14,6,4,93)`, G12 경기 리포트 결손 0.
-- ⭐ **적합값 드리프트: 차이 20 → 8, 일치 88 → 100**(obs#316). 아래 「종결된 항목」 참조.
-- ⛔ **curl·WebFetch로 FotMob API를 치지 말 것** — 페이지 컨텍스트 밖에서 막힌다(404/셸).
-  **Playwright로 페이지를 연 뒤 `page.evaluate` 안에서 fetch**하면 200이다. 이번 세션에서
-  `matchDetails`(교체 이벤트)·`teams` 일정을 이 방식으로 받았다.
+  match_player_reports **457** · squad_entries 125 · prescriptions **406** ·
+  match_game_setups **10** · match_player_prescriptions **164** · transfer_targets **38** ·
+  transfer_outgoing **53** · player_duties **190** · observations **329**(최신 obs#329).
+- 회귀: **G1~G12 전항 통과**(2026-08-25 마지막 확인).
+- ⭐ **적합값 드리프트: 차이 20 → 8 → 4**(obs#316 → obs#329). 좌우 이봉 분포 전수 점검 완료 —
+  아래 「종결된 항목」 참조.
+- ⛔ **curl·WebFetch로 FotMob·SofaScore API를 치지 말 것** — 페이지 컨텍스트 밖에서 막힌다(404/403).
+  **브라우저(Playwright 또는 in-app 브라우저)로 해당 오리진 페이지를 연 뒤 `page.evaluate`/JS 콘솔
+  안에서 fetch**하면 200이다. ⭐ 2026-08-25 확인: SofaScore API가 **서브에이전트(WebFetch) 컨텍스트에선
+  403**이었지만 **메인 세션 브라우저(sofascore.com 오리진)에선 200**이었다 — 사이트 차단이 아니라
+  호출 경로의 문제이므로, 403 보고를 받으면 먼저 브라우저 경로로 재확인한다.
 
 ### 2026-08-23 PL Round 1 수집
 
@@ -68,24 +70,44 @@ D+2는 **08-24 21시에 조기 실시 완료**, 08-25에 D+3 정기 검색도 �
 - 새 경기/후속 근거가 없으면 저장소를 변경하지 않는다.
 - 이적 감시는 cron `transfer-watch.sh`가 09:00/21:00 각 1행. macOS TCC/marker probe 검증 완료.
 
-## 종결된 항목 (2026-08-24 세션)
+## 종결된 항목
 
-- ✅ **드리프트 6건 판정 완료(obs#316) — 실제 오류는 0건이었다.** 원인은 데이터가 아니라 대조 도구다.
-  `check_fit_drift.py`가 ⑴ `pos_only`를 무시하고 ⑵ 포메이션을 섞어 argmax를 잡고 있었다.
-  라크루아(CCB 고정)·로저스(LW 고정, 우측은 duties가 **금지**)는 사이드 오탐,
-  에수구는 3-4-2-1 RCM(x=55) ↔ 3-4-3 RCM(x=60) **앵커 혼입**(불변규칙 7 위반 비교),
-  니콜자줄리는 사이드 고정이 미기록이라 오탐 → `pos_only='RAM'` 기록으로 해소.
-  보가르드 +.022·부엔디아 +.014·맥긴 +.007은 노이즈 구간이거나 문서화된 역할 선택.
-  **스크립트를 고쳤다** — 차이 20 → 8, 일치 88 → 100.
-- ✅ **NULL fit 13행의 정체 확정 = 최초 시드 행의 누락**(판단에 의한 NULL이 아니다).
-  전부 `squad_entries.id ≤ 17` · 날짜 스탬프 없는 `appearances measured`/`OWNED`이고,
-  2026-07-21에 추가된 **2차 슬롯** 행만 값을 갖고 있었다(맥긴: 주 포지션 WM은 NULL, 2차 DM·CAM은 값 있음).
-  **8행 백필 · 4행 보류 · 1행 대상 외.**
-- ✅ **AVL/LIV D+2 조기 실시(obs#317)** — LIV 63분 교체 상대 확정(맥알리스터 ← 비르츠),
-  스웨덴어 개척, 2025년 동일 카드 기사 혼입 차단, AVL 고메스 정지 대상 경기 일정 검증.
+### 2026-08-25 세션 (transfer-watch 09시 + Dutch 스윕, match-watch 사이드 이봉 점검)
+
+- ✅ **transfer-watch 09시 회차 — 신규 2 · 강등 1 · 원장 결함 1건 삭제 · 실측 1건.**
+  `reports/transfer-watch/2026-08-25.md` 참조. 커밋 `d427b8d`.
+  - **AVL 하파엘 레앙 신규(MEDIUM-HIGH)** — 1티어 2곳(Sky Italia·Di Marzio) 「trattativa in corso」,
+    단 오퍼 0건(Moretto가 같은 날 「단순 아이디어」로 적음)이라 HIGH 미승격.
+    **SofaScore 실측 완결**: 세리에A 6경기(404분) → 커널 최적 **wm_insidefwd/Balanced 0.834**(LM),
+    LST 0.747·ST 0.549·RM 0.280으로 좌측 전용 프로필. 커널 회귀 검증 통과.
+  - **LIV 코디 각포 신규 유출(MEDIUM-HIGH)** — 맨시티가 08-25 접촉(Romano/Di Marzio),
+    조건부(리버풀은 윙어 2명 영입 성사 시에만 매각, 1순위 바르콜라). 08-24 리포트의
+    「매수측 입찰 0건」 오류를 정정(토트넘 £60m가 08-15에 이미 거절당함).
+  - ⭐⭐ **원장 결함 삭제**: ATM `transfer_outgoing` 그린우드(player_id=180) 행이
+    **우리 자체 `player_tenures`로 직접 반증**됐다(ATM 시즌 없음, 실제는 마르세유→페네르바흐체).
+    ATM은 매수 후보였다가 07월에 철수한 것이었다 — 삭제.
+  - ATM 파르도 MEDIUM 강등(뉴캐슬·라이프치히가 ATM보다 앞섬), 알바레스 「잔류 수렴」 부분 철회
+    (ESPN 1티어가 아스날 마감주 실행 의사 명시).
+  - ⭐ **사용자 요청으로 각포 축 네덜란드어 추가 스윕** — 원발굴자 Mounir Boualin(Soccernews.nl) 확인,
+    club-to-club 접촉 0건 재확인, AD.nl/Elfrink가 접촉 시점을 「vorige week」로 적어 Romano
+    「today」와 **시점 불일치**(다음 회차 대조 과제로 남김). 리포트에 「추가 스윕」 절로 추가.
+- ✅ **좌우 이봉(bimodal) 분포 전수 점검(obs#328·#329)** — 확정 고정 40명 점검, 7명 이봉·4명은
+  전체 집계가 사이드 능력을 심각히 과소평가. **린델뢰프**(AVL CB) 전체집계 0.75 → 사이드분리
+  **LCB .952 / RCB .929**(둘 다 최상급, obs#316의 NULL 보류가 정답이었음을 확인). 무뇨스·오나나·
+  바클리·맥알리스터·자케도 사이드 전용값으로 갱신. `squad_entries` 6행 갱신 + `prescriptions`에
+  `measured:side:L/R` 12행 신설(UNIQUE 제약상 squad_entries에 좌우 두 행을 넣을 수 없어 분리).
+  ⚠️ **무뇨스는 미해결** — 분량은 좌측 우세(LM .771 고정)인데 질·최근 기용은 우측(RM .834)을 가리킨다.
+  커밋 `a626c77`·`a24d0ad`.
+
+### 2026-08-24 세션 (압축)
+
+- 드리프트 6건 전량 데이터 오류 0건(원인은 `check_fit_drift.py`의 `pos_only`/포메이션 혼입) —
+  스크립트 수정으로 차이 20→8. NULL fit 13행은 최초 시드 누락으로 정체 확정, 8행 백필.
+  AVL/LIV D+2 조기 실시(교체 상대 확정, 2025년 기사 혼입 차단).
 
 ## 다음 할 일
 
+### match-watch
 1. ⭐ **CHE 풀럼전 D+2(08-26)·D+3(08-27)** — 알론소 공식 전체 회견, 클럽 전술 영상,
    Palmer/Rogers/João Pedro 선수별 분석, 지연 전술 블로그를 재검색한다. 0건도 리포트에 기록한다.
 2. **AVL Brighton전은 비정기 재시도 조건부 draft** — 공식 전체 회견/클럽 전술 영상,
@@ -93,9 +115,25 @@ D+2는 **08-24 21시에 조기 실시 완료**, 08-25에 D+3 정기 검색도 �
 3. **PL 다음 라운드**: AVL/LIV/CHE 실제 경기마다 동일 파이프라인을 반복한다.
    가장 가까운 CHE 08-30 Brighton 홈에 앞서 08-27 Luton EFL컵도 match-watch 범위 여부를 확인한다.
 4. Atlético 이후 경기는 별도 match-watch 일정. 그리말도 실측이 채워지면 2경기 슬롯 기하·fit·sort_order 연쇄 재검증.
-5. **왓킨스 이적 정황을 계속 추적한다** — 개막전 20인 제외가 부상이 아니고 에메리가 사유 답변을 3회 거부했다.
-   이적 확정 시 `squad_entries` ST 행(fit 0.722)과 9번 처방 전체가 재판정 대상이다.
-6. Minteh는 2026-09-02에 개선 오퍼 0건이면 등급 재판정한다.
+5. **무뇨스 사이드 재판정** — 표본이 더 쌓이면(현재 좌 22 vs 우 12경기) 주 사이드를 LM(.771)에서
+   RM(.834)으로 바꿀지 재검토한다. 반대편 값은 `prescriptions measured:side:R`에 보존돼 있다.
+6. **전후(x축, 라인 높이) 이봉 점검은 아직 안 했다** — obs#328·#329는 좌우(y축)만 봤다.
+
+### transfer-watch (마감 2026-09-01, D-7)
+7. ⭐⭐⭐ **레앙(AVL) — 정식 오퍼 제출 여부.** Di Marzio(협상 중) ↔ Moretto(단순 아이디어) 상충은
+   오퍼 하나로 갈린다. 밀란 재개선선 €50m.
+8. ⭐⭐⭐ **고레츠카(AVL)·디사시(CHE) 구단 공식 발표** — 둘 다 Romano HWG+메디컬 완료 단계에서
+   구단 공식만 미발화. 발화 즉시 CONFIRMED 승격.
+9. ⭐⭐ **각포(LIV 유출) — Elfrink 「vorige week」 vs Romano 「today」 시점 대조** + 시티/토트넘 중
+   구단 간 대화로 올라가는 쪽 확인.
+10. **민테(LIV) 3차 입찰**·**바르콜라(LIV) 2차 서면 오퍼** — 둘 다 여러 회차 미발화이며 각포 매각의
+    선행조건이다.
+11. **왓킨스 이적 정황을 계속 추적한다** — 개막전 20인 제외가 부상이 아니고 에메리가 사유 답변을
+    3회 거부했다. 08-24 훈련 복귀로 방향이 갈렸다. 이적 확정 시 `squad_entries` ST 행(fit 0.722)과
+    9번 처방 전체가 재판정 대상이다.
+12. Minteh는 2026-09-02에 개선 오퍼 0건이면 등급 재판정한다.
+13. **FIFA art.10 국제 임대 쿼터 1차 규정문 확인** — CHE 임대 정리 축(잭슨·에수구·무드리크·워싱턴·
+    켈리먼) 전체가 「6칸 중 4칸」↔「스트라스부르 마지막 1칸」 수치 충돌 상태다.
 
 ## 데이터 수집 상태와 결손
 
