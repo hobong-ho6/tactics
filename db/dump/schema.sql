@@ -91,7 +91,7 @@ CREATE TABLE team_match_stats(      -- v1 그대로 (team → team_code만 정�
   cross_att_v INT, cross_acc_v INT, corners_v INT, corners_o INT,
   duelpct_v REAL, fouls_v INT, fouls_o INT,
   formation_v TEXT, formation_o TEXT,
-  source TEXT, confidence TEXT, ppda_v REAL, ppda_o REAL, ppda_num_v INTEGER, ppda_den_v INTEGER, ppda_num_o INTEGER, ppda_den_o INTEGER, ppda_method TEXT, aerial_won_v INTEGER, aerial_att_v INTEGER, aerial_won_o INTEGER, aerial_att_o INTEGER, dribble_succ_v INTEGER, dribble_att_v INTEGER, dribble_succ_o INTEGER, dribble_att_o INTEGER, tackles_v INTEGER, tackles_o INTEGER, interceptions_v INTEGER, interceptions_o INTEGER, clearances_v INTEGER, clearances_o INTEGER,
+  source TEXT, confidence TEXT, ppda_v REAL, ppda_o REAL, ppda_num_v INTEGER, ppda_den_v INTEGER, ppda_num_o INTEGER, ppda_den_o INTEGER, ppda_method TEXT, aerial_won_v INTEGER, aerial_att_v INTEGER, aerial_won_o INTEGER, aerial_att_o INTEGER, dribble_succ_v INTEGER, dribble_att_v INTEGER, dribble_succ_o INTEGER, dribble_att_o INTEGER, tackles_v INTEGER, tackles_o INTEGER, interceptions_v INTEGER, interceptions_o INTEGER, clearances_v INTEGER, clearances_o INTEGER, xg_op_v REAL, xg_op_o REAL, blocked_v INTEGER, blocked_o INTEGER,
   PRIMARY KEY(event_id, team_code)
 );
 CREATE TABLE player_shot_profile(   -- v1 그대로

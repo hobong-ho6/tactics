@@ -116,7 +116,11 @@ function teamStatRows(r){
   const rows = [
     ['포메이션',r.formation_v,r.formation_o],['점유율',r.possession != null ? `${r.possession}%` : null,
       r.possession != null ? `${100-Number(r.possession)}% (파생)` : null],
-    ['xG',r.xg_v,r.xg_o],['슈팅',r.shots_v,r.shots_o],['유효슈팅',r.sot_v,r.sot_o],
+    ['xG',r.xg_v,r.xg_o],
+    /* 오픈플레이 xG — 전체 xG에서 세트피스·PK를 뺀 몫. 「슛은 많은데 기회 질은 낮다」를
+       전체 xG만으로는 분리할 수 없어 정형 필드로 승격했다(migration 022). */
+    ['오픈플레이 xG',r.xg_op_v,r.xg_op_o],
+    ['슈팅',r.shots_v,r.shots_o],['유효슈팅',r.sot_v,r.sot_o],['막힌 슛',r.blocked_v,r.blocked_o],
     ['빅찬스',r.bigch_v,r.bigch_o],['패스',r.passes_v,r.passes_o],
     ['롱볼 성공/시도',present(r.long_acc_v)?`${r.long_acc_v}/${r.long_att_v}`:null,present(r.long_acc_o)?`${r.long_acc_o}/${r.long_att_o}`:null],
     ['크로스 성공/시도',present(r.cross_acc_v)?`${r.cross_acc_v}/${r.cross_att_v}`:null,null],

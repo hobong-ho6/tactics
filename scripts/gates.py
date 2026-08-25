@@ -377,6 +377,14 @@ def run(db_path=None, verbose=True):
     # 두 경로로 깨졌다: ⑴ formation 문자열이 slots와 불일치 ⑵ pos_label 자체가 그 팀에 없음
     # (CHE 3-4-2-1에 LDM·RDM은 존재하지 않는다 — 그 팀엔 LCM·RCM이다, 불변규칙 7).
     # export는 ⑴을 기하 폴백으로 흡수하지만 ⑵는 흡수할 수 없다 — 여기서 잡는다.
+    # 오픈플레이 xG는 전체 xG를 넘을 수 없다(전체 = 오픈플레이 + 세트피스 + PK, 모두 비음수).
+    # 2026-08-25에 실제로 위반이 생겼다: xg_v는 경기 직후 수집분인데 xg_op_v를 나중에 채워
+    # 스냅샷이 섞였고(CHE 풀럼전 1.96 > 1.70), 세트피스 xG가 -0.26이 됐다.
+    # 밀도 검사와 달리 이 불변식은 임계값이 임의적이지 않아 게이트로 세울 수 있다.
+    xg_openplay_violations = con.execute("""
+        SELECT event_id, team_code FROM team_match_stats
+        WHERE (xg_op_v IS NOT NULL AND xg_v IS NOT NULL AND xg_op_v > xg_v + 1e-9)
+           OR (xg_op_o IS NOT NULL AND xg_o IS NOT NULL AND xg_op_o > xg_o + 1e-9)""").fetchall()
     orphan_preset_slots = con.execute("""
         SELECT mpp.report_id,mpp.pos_label
         FROM match_player_prescriptions mpp
@@ -400,6 +408,7 @@ def run(db_path=None, verbose=True):
         not incomplete_reports and not uncovered_report_players and not missing_report_files
         and not missing_match_presets and not uncovered_match_prescriptions
         and not playerless_reports and not orphan_preset_slots
+        and not xg_openplay_violations
         and '대표 실측(시즌·유효 표본)' in heatmap_html
         # A(실측) 패널은 슬롯 좌표가 아니라 선수의 실제 평균 위치에 칩을 찍어야 한다.
         # 이 세 줄이 함께 있어야 export의 avg_positions가 화면까지 도달한다.
@@ -427,7 +436,7 @@ def run(db_path=None, verbose=True):
               f"{len(playerless_reports)} · 선수누락 "
               f"{len(uncovered_report_players)} · 원문누락 {len(missing_report_files)} · "
               f"경기프리셋누락 {len(missing_match_presets)} · 선수처방누락 {len(uncovered_match_prescriptions)} · "
-              f"슬롯없는프리셋 {len(orphan_preset_slots)} "
+              f"슬롯없는프리셋 {len(orphan_preset_slots)} · 오픈플레이xG모순 {len(xg_openplay_violations)} "
               f"{'✅' if ok12 else '⛔'}")
     if not ok12:
         fails.append("G12")

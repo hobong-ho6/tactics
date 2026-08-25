@@ -25872,6 +25872,8 @@
   {
    "bigch_o": 3,
    "bigch_v": 3,
+   "blocked_o": 4,
+   "blocked_v": 16,
    "competition": "Premier League",
    "confidence": "measured. 경기 종료 약 5시간 뒤 초판이라 지연 전술 영상·전문 블로그는 미반영. D+1~D+3 재검색 전까지 match report는 draft. D+3 지연 전술 전문 분석 확보; 영상 0건 검색 기록 후 complete. / [2026-08-25 D+3 완료 → complete] 스킬 §2-1a의 D+1·D+2·D+3 3일 창을 모두 소진했다. LIV: 감독 1차 발언 원문(Liverpool FC 공식 기자회견 전문)과 전술 블로그(Coaches' Voice 2026-08-24)를 확보해 draft 차단 요인 2건이 모두 해소됐고, D+1의 흐라벤베르흐 평가 충돌이 감독 발언으로 종결됐다. 잔여: 바스크어·헝가리어·프랑스어 미시도, 유튜브 미시청.\n[2026-08-25 총평] ⭐ 감독 발언은 **liverpoolfc.com 공식 회견 전문**이라 1차 출처다(obs#326과 동일 원천). ⚠️ 팬 여론은 Yahoo의 큐레이션이라 표본이 대표성을 갖지 않는다 — 방향성만 기록했다. ⚠️ Sky의 부정 평가와 This Is Anfield의 긍정 평가가 **같은 경기에 공존**한다 — 어느 쪽도 채택하지 않고 둘 다 적었다.\n[2026-08-25 서사 보강] ⚠️ 이 리포트는 08-24 초판에서 4개 서사 필드가 각각 한 줄(54/66/52/69자)이었다 — 같은 라운드 AVL 브라이턴전(859/670/760/1399자)과 밀도가 10배 차이났고, G12는 「비어 있지 않음」만 보므로 통과했다. ⭐ **새로 수집한 사실은 없다** — 이미 DB에 있던 obs#312(원인 귀속 정정)·#317(직접 맞교체)·#321(동점골 구조)·#326(감독의 홀딩6 기각)·#330(무뇨스 재판정)과 team_match_stats를 서사 필드로 접어 넣은 것이다. 값은 하나도 바꾸지 않았다.",
    "corners_o": 2,
@@ -26729,11 +26731,15 @@
    "updated_at": "2026-08-25",
    "venue": "A",
    "xg_o": 1.58,
+   "xg_op_o": 1.46,
+   "xg_op_v": 0.96,
    "xg_v": 2.98
   },
   {
    "bigch_o": 1,
    "bigch_v": 3,
+   "blocked_o": null,
+   "blocked_v": null,
    "competition": "Club Friendly Games",
    "confidence": "measured + 다국어 서사. 실측 18명 중 출전 16명 전원 적재, 유효 그리드(45분+·hp15+) 12명. ⛔ **친선 1경기이고 trail 국면이 0분**이다(23분 이후 전부 리드) — 리드 편향을 안고 있다. ⚠️ 상대(코모)가 패스 540회의 점유 지향 팀이라 태클↑·점유↓ 변화의 일부는 우리 의도가 아니라 상대 성향이다. ⛔ 전술 블로그·전술분석 영상 2종 미수행(커버리지 부재 — §8에 사유 기재). ⚠️ 살라·코나테 이적 주장은 미검증이라 squad_entries에 반영하지 않았다(obs#239).",
    "corners_o": 8,
@@ -27644,11 +27650,15 @@
    "updated_at": "2026-08-17",
    "venue": "H",
    "xg_o": null,
+   "xg_op_o": null,
+   "xg_op_v": null,
    "xg_v": null
   },
   {
    "bigch_o": null,
    "bigch_v": null,
+   "blocked_o": null,
+   "blocked_v": null,
    "competition": "Club Friendly",
    "confidence": "⛔ **draft — 원천 수치 전무.** 선수 스탯·평점·히트맵·팀 스탯이 소스에 존재하지 않는다(양성 대조군으로 확인). 따라서 전술 구조(빌드업·압박·전환) 서술이 없고, 경기 전용 프리셋도 만들지 않았다 — 단일 경기 fit을 산출할 히트맵이 없어 역할·포커스를 채우면 과대 표시가 된다. ⚠️ FotMob 포메이션 라벨은 자동 산출이라 백3/백4 판별 근거로 쓰지 않는다.",
    "corners_o": null,
@@ -28259,11 +28269,15 @@
    "updated_at": "2026-08-16",
    "venue": "H",
    "xg_o": null,
+   "xg_op_o": null,
+   "xg_op_v": null,
    "xg_v": null
   },
   {
    "bigch_o": 3,
    "bigch_v": 2,
+   "blocked_o": null,
+   "blocked_v": null,
    "competition": "Club Friendly Games",
    "confidence": "⛔ 공통 한계 3종: ⑴ 친선은 FotMob이 xG 미제공 ⑵ WhoScored가 클럽 친선 미커버라 PPDA 산출 불가 ⑶ SofaScore 403 지속으로 히트맵·map25 신규 확보 0 → 커널 적합 재산출 불가. status='draft'인 리포트는 위 한계로 필수 섹션(포메이션·선수 전원·경기 전용 프리셋)을 채울 수 없는 경기다. / ⚠️ [2026-08-15] status를 complete가 아니라 draft로 둔다 — 스킬 규약상 complete는 경기 전용 match_game_setups·선발 11명 match_player_prescriptions가 함께 있어야 하는데, SofaScore 403으로 map25를 신규 확보할 수 없어 단일 경기 fit을 계산할 수 없다. 근거 없이 프리셋을 만드는 대신 draft로 남긴다. / [2026-08-16 complete 승격] 경기 전용 match_game_setups 1행 + 출전 전원 match_player_prescriptions를 채웠다. ⚠️ **단일 경기 fit을 산출한 것은 map25가 있는 선수뿐**이고(리포트별 12~14명), 히트맵이 없는 짧은 교체 출전은 시즌 정본 역할을 옮기거나 미정으로 남겼다 — 미수집이며 0이 아니다.",
    "corners_o": 4,
@@ -29472,11 +29486,15 @@
    "updated_at": "2026-08-15",
    "venue": "H",
    "xg_o": null,
+   "xg_op_o": null,
+   "xg_op_v": null,
    "xg_v": null
   },
   {
    "bigch_o": 4,
    "bigch_v": 2,
+   "blocked_o": null,
+   "blocked_v": null,
    "competition": "Club Friendly",
    "confidence": "MEDIUM 스탯 / LOW 역할 — ⛔ map25·평균위치 미수집(SofaScore 403)이라 단일 경기 fit을 산출할 수 없고 경기 전용 프리셋을 만들지 않았다. ⛔ xG·PPDA 미확보. ⚠️ 선수 단위는 평점·교체시각·슬롯만 있다.",
    "corners_o": null,
@@ -30186,11 +30204,15 @@
    "updated_at": "2026-08-16",
    "venue": "H",
    "xg_o": null,
+   "xg_op_o": null,
+   "xg_op_v": null,
    "xg_v": null
   },
   {
    "bigch_o": 5,
    "bigch_v": 1,
+   "blocked_o": null,
+   "blocked_v": null,
    "competition": "Club Friendly",
    "confidence": "MEDIUM 스탯 / LOW 역할 — ⛔ map25·평균위치 미수집(SofaScore 403)이라 단일 경기 fit을 산출할 수 없고 경기 전용 프리셋을 만들지 않았다. ⛔ xG·PPDA 미확보. ⚠️ 선수 단위는 평점·교체시각·슬롯만 있다.",
    "corners_o": null,
@@ -30933,11 +30955,15 @@
    "updated_at": "2026-08-16",
    "venue": "H",
    "xg_o": null,
+   "xg_op_o": null,
+   "xg_op_v": null,
    "xg_v": null
   },
   {
    "bigch_o": 1,
    "bigch_v": 4,
+   "blocked_o": null,
+   "blocked_v": null,
    "competition": "Club Friendly",
    "confidence": "MEDIUM 스탯 / LOW 역할 — ⛔ map25·평균위치 미수집(SofaScore 403)이라 단일 경기 fit을 산출할 수 없고 경기 전용 프리셋을 만들지 않았다. ⛔ xG·PPDA 미확보. ⚠️ 선수 단위는 평점·교체시각·슬롯만 있다.",
    "corners_o": null,
@@ -31713,6 +31739,8 @@
    "updated_at": "2026-08-16",
    "venue": "H",
    "xg_o": null,
+   "xg_op_o": null,
+   "xg_op_v": null,
    "xg_v": null
   }
  ],
