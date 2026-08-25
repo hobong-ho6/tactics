@@ -19,6 +19,7 @@
       <div id="pitchCaption" class="kv"></div></section>
     <section class="panel"><h2>팀 전체 스탯</h2><div class="scrollx"><table id="teamStats"></table></div></section>
   </div>
+  <div class="panel" id="overall" hidden></div>
   <div class="panel" id="gamePreset"></div>
   <div class="panel"><h2>전술 분석</h2><div class="report-grid" id="tactical"></div></div>
   <div class="panel"><h2>선수별 히트맵·역할·전체 스탯</h2><div id="players" class="player-report-list"></div></div>
@@ -188,6 +189,11 @@ function render(r){
     <span>${annotate('유효슈팅')} <b>${esc(r.sot_v ?? '—')}–${esc(r.sot_o ?? '—')}</b></span>
     <span>${annotate('빅찬스')} <b>${esc(r.bigch_v ?? '—')}–${esc(r.bigch_o ?? '—')}</b></span></div>`;
   document.getElementById('teamStats').innerHTML=teamStatRows(r);
+  /* 총평 — 전술·선수 분석이 아닌 매체 평가·감독 회견의 비전술 대목·여론·시즌 맥락.
+     아직 수집하지 않은 경기가 있어 값이 없으면 패널 자체를 숨긴다. */
+  const oa=document.getElementById('overall');
+  oa.hidden=!r.overall_assessment;
+  if (r.overall_assessment) oa.innerHTML=`<h2>경기 총평·매체 평가 <small class="dim">전술·선수 분석과 별개의 전반적 평가</small></h2>${prose(r.overall_assessment)}`;
   renderGamePreset(r);
   document.getElementById('tactical').innerHTML=`
     <section><h3>전술 설명</h3>${prose(r.tactical_description)}</section>

@@ -9,3 +9,4 @@ INSERT INTO _migration_log VALUES('017-shot-profile-penalties','2026-08-21','pla
 INSERT INTO _migration_log VALUES('018-players-positions-alt','2026-08-21','primary_position을 FotMob 정규코드로 통일하고 원값(LCB·RB/DM 등 좌우·복합 표기)을 positions_alt에 보존한다');
 INSERT INTO _migration_log VALUES('019-market-values-and-status','2026-08-21','player_market_values(scisports 시계열)·player_status(부상·계약만료 스냅샷) 신설 — 이적 등급 판단의 근거를 산문에서 정형 필드로 옮긴다(민테 사례, obs#272)');
 INSERT INTO _migration_log VALUES('020-understat-player-matches','2026-08-21','understat_player_matches 신설 — 경기 단위 창조 지표(xA·키패스·xGChain·xGBuildup). 축11 슛 프로파일의 짝이고 minutes를 경기 단위로 남긴다');
+INSERT INTO _migration_log VALUES('2026-08-25','021-match-overall-assessment','match_reports.overall_assessment 추가 — 전술·선수 분석이 아닌 「경기 총평·매체 평가·여론」을 담는다. 기존 4개 서사 필드(tactical_description/features/changes, game_implications)는 전술 축이라 매체 총평·평점·감독 회견의 비전술 대목·시즌 맥락을 넣을 자리가 없었다(사용자 지시 2026-08-25). NULL 허용 — 기존 25행은 그대로 두고 채워 나간다. site는 prose()로 렌더한다.');

@@ -401,7 +401,7 @@ CREATE TABLE match_reports(
   source TEXT NOT NULL,
   confidence TEXT NOT NULL,
   created_at TEXT NOT NULL,
-  updated_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL, overall_assessment TEXT,
   UNIQUE(team_code,event_id)
 );
 CREATE TABLE match_player_reports(

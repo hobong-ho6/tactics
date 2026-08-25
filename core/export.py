@@ -227,7 +227,7 @@ def export_all(db_path=None, window="2026-summer"):
         match_reports = _rows(con, """
             SELECT mr.id, mr.event_id, mr.match_id, mr.season, mr.report_date, mr.title,
                    mr.status, mr.tactical_description, mr.tactical_features,
-                   mr.tactical_changes, mr.game_implications, mr.report_path,
+                   mr.tactical_changes, mr.game_implications, mr.overall_assessment, mr.report_path,
                    mr.source, mr.confidence, mr.created_at, mr.updated_at,
                    m.date, m.opponent, m.competition, m.venue, m.result, m.stage,
                    m.possession, ts.xg_v, ts.xg_o, ts.shots_v, ts.shots_o,
