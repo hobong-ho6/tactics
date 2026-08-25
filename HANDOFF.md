@@ -12,19 +12,19 @@
 ## 현재 상태
 
 > 마지막 갱신: **2026-08-25 밤 KST** · 작업 PC `AD03230205ui-iMac.local` · 브랜치 `main` ·
-> 마지막 커밋 `5a3b5ab`(origin/main과 일치, push 완료). 이 문서 자체의 커밋은 그 다음에 얹힌다.
+> 마지막 커밋 `d8e9000`(origin/main과 일치, push 완료). 이 문서 자체의 커밋은 그 다음에 얹힌다.
 
 - DB: players 190 · player_matches **4,074** · team_match_stats **61** · match_reports **25**
   (**complete 9 · draft 16**) · match_player_reports **457** · squad_entries **126** ·
   prescriptions **408** · **slots 88** · match_game_setups **10** · match_player_prescriptions **164** ·
   transfer_targets **38** · transfer_outgoing **54** · player_duties **190** ·
-  observations **340**(최신 obs#340).
+  observations **342**(최신 obs#342).
 - 회귀: **G1~G12 전항 통과**(2026-08-25 마지막 확인). ⭐ 이날 **게이트 3건 신설** —
   G12 `orphan_preset_slots`(프리셋 pos_label이 그 팀 slots에 없으면 실패) ·
   G12 `xg_openplay_violations`(오픈플레이 xG > 전체 xG면 실패) ·
   G9 무버전 JS 임포트 검사(공유 모듈은 `?v=` 필수).
 - ⭐ **스키마 확장 2건**(2026-08-25): `match_reports.overall_assessment`(migration 021 — 총평·매체 평가,
-  현재 **4/25 채움**) · `team_match_stats.xg_op_v/o`·`blocked_v/o`(migration 022 — 오픈플레이 xG·막힌 슛, **5경기**).
+  현재 **6/25 채움**) · `team_match_stats.xg_op_v/o`·`blocked_v/o`(migration 022 — 오픈플레이 xG·막힌 슛, **5경기**).
 - ⛔⛔ **xG 계열은 한 회차에 같은 스냅샷으로 수집한다** — `xg_v`·`xg_o`·`xg_op_*`를 따로 채우면
   **Opta 사후 개정 때문에 「오픈플레이 > 전체」라는 불가능한 값**이 된다(2026-08-25 CHE 실발생, Δ+0.54).
   FotMob matchDetails 한 응답에 xG·open play·set play·non-penalty·xGOT·Blocked shots가 전부 있다.
@@ -96,15 +96,11 @@ D+2는 **08-24 21시에 조기 실시 완료**, 08-25에 D+3 정기 검색도 �
   각포 신규 유출 MEDIUM-HIGH(+네덜란드어 추가 스윕으로 원발굴자 Boualin 확인) · 파르도 강등 · 알바레스 부분 철회 ·
   ⭐ **원장 결함 삭제**: ATM 그린우드 행이 **우리 `player_tenures`로 직접 반증**됐다(ATM 시즌 없음).
   전문은 `reports/transfer-watch/2026-08-25.md`.
-- ✅ **좌우 이봉(bimodal) 분포 전수 점검(obs#328·#329)** — 확정 고정 40명 점검, 7명 이봉·4명은
-  전체 집계가 사이드 능력을 심각히 과소평가. **린델뢰프**(AVL CB) 전체집계 0.75 → 사이드분리
-  **LCB .952 / RCB .929**(둘 다 최상급, obs#316의 NULL 보류가 정답이었음을 확인). 무뇨스·오나나·
-  바클리·맥알리스터·자케도 사이드 전용값으로 갱신. `squad_entries` 6행 갱신 + `prescriptions`에
-  `measured:side:L/R` 12행 신설(UNIQUE 제약상 squad_entries에 좌우 두 행을 넣을 수 없어 분리).
-  ⭐ **무뇨스는 이후 사용자 지시로 재판정 완료(obs#330)** — 분량(좌 22경기)보다 최근 기용(이라올라
-  체제는 우측, 08-23 응구모하와 직접 맞교체)을 우선해 주 사이드를 **LM(.771) → RM(.834)** 로 전환.
-  좌측 값은 `measured:side:L`에 보존. **파생 발견**: LIV 좌측(LM)이 학포 1명뿐으로 비어 — 학포가
-  맨시티/토트넘 이적으로 이탈하면 LM 후보 0명. 커밋 `a626c77`·`a24d0ad`·`f6c5116`.
+- ✅ **좌우 이봉 분포 전수 점검(obs#328~330)** — 40명 중 **7명 이봉**, 4명은 전체 집계가 사이드 능력을
+  심각히 과소평가했다. **린델뢰프 0.75 → LCB .952/RCB .929.** `squad_entries` 6행 갱신 +
+  `prescriptions`에 `measured:side:L/R` 12행 신설(UNIQUE 제약상 한 슬롯에 좌우 두 행 불가).
+  무뇨스는 사용자 지시로 **LM→RM 재판정**(분량보다 최근 기용 우선). **파생 발견: LIV LM이 학포 1명뿐이다.**
+  커밋 `a626c77`·`a24d0ad`·`f6c5116`.
 - ✅ **응구모하(pid=114) `squad_entries` 결손 채움(obs#331)** — 개막전(08-23 뉴캐슬) RM 선발인데
   행이 없었다. 같은 좌우 이봉 패턴(친선 4경기+PL 1경기, hp≥15)이나 무뇨스보다 판단이 단순했다 —
   분량(우측 170분>좌측 90분)·최근기용·유일한 공식전 표본이 전부 우측을 가리켜 **RM wm_winger/Attack
@@ -138,10 +134,9 @@ D+2는 **08-24 21시에 조기 실시 완료**, 08-25에 D+3 정기 검색도 �
   `event_id`가 **음수(FotMob 합성 키)**라 수집 불가, 가르나초는 4분 출전 **hp=0 확정 결손**.
   ⑷ 출전자 범위 기본값 **'선발 11명'**, 경기 드롭다운 **공식전/프리시즌 optgroup 분리**.
 - ✅ **경기 리포트에 「총평·매체 평가」 축 신설(obs#335)** — `match_reports.overall_assessment`(migration 021).
-  전술 4개 필드가 다 전술 축이라 매체 총평·평점·여론·시즌 맥락을 넣을 자리가 없었다. **4경기 수집**(22·23·24·25).
-  ⭐ **교차 검증 3건**: AVL 매체 인용 점유27%·xG0.31·박스터치4가 우리 값과 정확히 일치 · CHE 산체스 1/10이
-  obs#325 `goals prevented −0.78`과 같은 방향 · LIV 이라올라 회견이 obs#326과 동일 원천.
-  ⚠️ 신규 발견: **ATM 비야레알전 포메이션 표기 충돌**(우리 4-4-2 ↔ Infobae 「4-3-3 de Simeone」) — 미해소.
+  전술 4필드가 다 전술 축이라 매체 총평·평점·여론을 넣을 자리가 없었다. **현재 6/25 채움**(22·23·24·25·21·1).
+  ⭐ 교차 검증 3건(AVL 매체 인용 수치가 우리 값과 정확히 일치 · CHE 산체스 1/10 ↔ goals prevented −0.78 ·
+  LIV 이라올라 회견 ↔ obs#326 동일 원천). ⚠️ 신규 발견: **ATM 비야레알전 포메이션 표기 충돌** — 아래 「미해결」.
 - ✅ **LIV 뉴캐슬전 서사 보강(obs#336)** — 4개 필드가 **54/66/52/69자 → 652/905/584/834자**.
   원문 마크다운은 37KB인데 정형 필드가 한 줄이었다(자료 부족이 아니라 접히지 않은 것).
   **새 수집 0건** — obs#312·317·321·326·330 + team_match_stats를 재구성했고 값은 안 바꿨다.
