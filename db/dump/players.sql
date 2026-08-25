@@ -110,7 +110,7 @@ INSERT INTO players VALUES(114,'Rio Ngumoha',NULL,1881902,NULL,2008,'LW','2026-2
 INSERT INTO players VALUES(115,'Will Wright',NULL,1984100,NULL,2008,'ST','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1692224,'England',NULL,NULL);
 INSERT INTO players VALUES(116,'Trey Nyoni',NULL,1445945,NULL,2007,'DM','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1436258,'England',12203,NULL);
 INSERT INTO players VALUES(117,'Federico Chiesa','키에사',845386,NULL,1997,'RW','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=845386 부여(프리시즌 전수 수집).',784510,'Italy',NULL,NULL);
-INSERT INTO players VALUES(118,'Calum Scanlon','스캔런',NULL,NULL,2005,'LB','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1355539,'England',NULL,NULL);
+INSERT INTO players VALUES(118,'Calum Scanlon','캘럼 스캔런',NULL,NULL,2005,'LB','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 [2026-08-25] name_kr 「스캔런」 → 「캘럼 스캔런」. **동명이인 충돌 해소** — id=145 Cody Scanlon이 같은 name_kr을 쓰고 있었고 `player_game_stats`가 UNIQUE(game_version, roster_date, name_kr)이라 **FC27 09-10 수집에서 한 명이 다른 한 명을 덮어쓸 수 있었다**(docs/21 함정 항목의 미기재 사례). 알리송(Alysson)/알리송 베케르(Alisson) 선례와 같은 방식으로 이름을 붙여 구분했다.',1355539,'England',NULL,NULL);
 INSERT INTO players VALUES(119,'Freddie Woodman',NULL,NULL,NULL,1997,'GK','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',582276,'England',NULL,NULL);
 INSERT INTO players VALUES(120,'Luke Chambers',NULL,NULL,NULL,2004,'LM','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1249634,'England',NULL,NULL);
 INSERT INTO players VALUES(121,'Calvin Ramsay',NULL,NULL,NULL,2003,'RB','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1076952,'Scotland',NULL,NULL);
@@ -137,7 +137,7 @@ INSERT INTO players VALUES(141,'Tidiane Ndiaye','티디안 은디아예',2169894
 INSERT INTO players VALUES(142,'Calum Ramsay','램지',991227,NULL,NULL,'DF','[2026-08-19 프리시즌 전수 수집에서 신설] 리버풀 47번.',NULL,NULL,NULL,NULL);
 INSERT INTO players VALUES(143,'Luca Chambers','체임버스',1134530,NULL,NULL,'DF','[2026-08-19 프리시즌 전수 수집에서 신설] 리버풀 44번.',NULL,NULL,NULL,NULL);
 INSERT INTO players VALUES(144,'Junnosuke Abe','아베',2148398,NULL,NULL,'MF','[2026-08-19 프리시즌 전수 수집에서 신설] 리버풀 40번.',NULL,NULL,NULL,NULL);
-INSERT INTO players VALUES(145,'Cody Scanlon','스캔런',1188167,NULL,NULL,'MF','[2026-08-19 프리시즌 전수 수집에서 신설] 리버풀 48번.',NULL,NULL,NULL,NULL);
+INSERT INTO players VALUES(145,'Cody Scanlon','코디 스캔런',1188167,NULL,NULL,'MF','[2026-08-19 프리시즌 전수 수집에서 신설] 리버풀 48번. [2026-08-25] name_kr 「스캔런」 → 「코디 스캔런」. id=118 Calum Scanlon과의 동명이인 충돌 해소(위 참조).',NULL,NULL,NULL,NULL);
 INSERT INTO players VALUES(146,'Axel Disasi','디사시',NULL,NULL,1998,'CB','[2026-08-20] transfer-watch — CHE 유출 감시(MEDIUM-HIGH) 등재를 위해 추가. 25/26 후반기 웨스트햄 임대 17경기 1500분+, 계약 2029, 2023-08 모나코에서 €45m/£38.8m. 실측 히트맵·sofascore_id 없음(SofaScore 403).',696646,'France',NULL,NULL);
 INSERT INTO players VALUES(147,'Ishé Samuels-Smith','새뮤얼스-스미스',NULL,NULL,2006,'LB','[2026-08-20] transfer-watch 원장 감사 — CHE 임대 아웃 CONFIRMED 등재를 위해 추가. LB/CB · 2006년생(20). 실측 없음.',1419974,'England',NULL,NULL);
 INSERT INTO players VALUES(148,'Jan Oblak','오블락',69768,200389,1993,'GK','[2026-08-20] ATM 확장 — 26/27 라리가 R1 명단으로 등재(start). 등번호 13 · 경기일 기준 33세. ⚠️ birth_year는 비워 뒀다 — FotMob은 나이만 주고 2026−나이는 생일에 따라 ±1년 틀린다. ⚠️ sofascore_id 없음(SofaScore 403). | [2026-08-21] sofascore_id=69768 부여 — SofaScore 403 해제 후 `/api/v1/team/2836/players` 스쿼드 응답에서 정규화 이름 정확 일치로 매칭(SofaScore 표기 "Jan Oblak", pos G).',177126,'Slovenia',2261,NULL);

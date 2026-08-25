@@ -22,12 +22,23 @@
      ⚠️ sofifa 상세는 **로그인 세션에서만 열린다**(obs#234) — 수집 전 로그인 확인.
    - **2단계(09-10)**: PlayStyles·traits 채우기 + **이적 반영 로스터를 새 roster_date 행으로 추가**(덮어쓰지 않는다, 불변규칙 2).
    - EA 피치노트 원문 → `game_system_changes`에 area별 기입(FIFA→FC26 소급 요약도 이때 함께).
-   - ⭐ **3팀 전 스쿼드를 받는다.** 현재 FC26 베이스라인은 **빌라 22 · 첼시 2 · 리버풀 0**으로 편중돼 있어
-     **그대로 두면 첼시·리버풀의 FC26→FC27 델타를 낼 수 없다.** 가능하면 **FC26 베이스라인도 같은 범위로 보강**하라
+   - ⭐ **3팀 전 스쿼드를 받는다.** ⚠️ **[2026-08-25 실측 갱신 — 「빌라 22 · 첼시 2 · 리버풀 0」은 낡은 수치다]**
+     그 뒤 보강이 진행돼 지금은 **FC26 176명 · FC27 146명**이다. 델타의 실제 제약은 팀 편중이 아니라 **양쪽 교집합**이다:
+     **FC26∩FC27 = 99명**(델타 산출 가능) · **FC27만 47명**(FC26 베이스라인 없음) · **FC26만 77명**(FC27 미수집).
+     ⇒ 09-10 수집 시 **FC27만 있는 47명의 FC26 베이스라인을 함께 받는 것**이 델타 커버리지를 가장 크게 늘린다
      (sofifa는 전체 DB 공개 후에도 FC26 로스터를 계속 제공한다).
-   - ⚠️ **이름 충돌 함정**: 우리 `name_kr` 「알리송」은 **빌라의 Alysson(브라질 LM, OVR 70)** 이고 **리버풀 GK Alisson Becker가 아니다.**
-     `player_game_stats`는 **UNIQUE(game_version, roster_date, name_kr)** 이므로 리버풀 수집 시 충돌한다 —
-     **수집 전에 표시명 규약을 정할 것.**
+     재확인 질의: `WITH a AS (SELECT DISTINCT name_kr FROM player_game_stats WHERE game_version='FC26'), b AS (…'FC27') SELECT …`
+   - ✅ **[2026-08-25 해소] 이름 충돌 — 알리송 건은 이미 처리돼 있다.** `players`가
+     **`알리송`(59: Alysson, 빌라 RW/LM, OVR 70)** 과 **`알리송 베케르`(43: Alisson Becker, 리버풀 GK)** 로 이미 구분하고 있고
+     `player_game_stats`에도 두 이름이 별도 행으로 공존한다. 재조사 불필요.
+   - ⚠️⚠️ **[2026-08-25 신규 발견·해소] 그런데 문서가 지목하지 않은 실제 충돌이 하나 더 있었다 — `스캔런`.**
+     **118 Calum Scanlon**(LIV LB, 2005, 경기 3·유출행 1·리포트 3)과 **145 Cody Scanlon**(MF)이 **같은 name_kr을 쓰고 있었다.**
+     아직 `player_game_stats`에 없어 충돌이 발생하지 않았을 뿐, **09-10 수집에서 UNIQUE 제약에 걸려 한 명이 다른 한 명을 덮어쓸 수 있었다.**
+     ⇒ **`캘럼 스캔런` / `코디 스캔런`으로 분리했다**(알리송 선례와 동일 방식). `players` name_kr 중복은 이제 **0건**이다.
+     ⭐ **교훈**: 이 함정은 「알리송」 개별 사례가 아니라 **부류**다. 수집 전 반드시 전수 질의를 돌릴 것 —
+     `SELECT name_kr, COUNT(*) c FROM players WHERE name_kr IS NOT NULL AND trim(name_kr)!='' GROUP BY name_kr HAVING c>1`
+     ⚠️ `sofifa_name`이 같은 name_kr 안에서 갈리는 것(`A. Isak` ↔ `Alexander Isak`)은 **충돌이 아니라 원천의 약칭·정식명 차이**다 —
+     이걸 충돌로 세면 80건 이상 오탐이 난다. **판정은 `players` 쪽 name_kr 중복으로 한다.**
 2. **역할·커널 수집**: fut.gg `/api/fut/roles/` (키는 id, slug 아님 — obs#92 함정)
    → `game_roles`/`game_role_focus`/`game_role_variants` FC27 행. 좌표 변환은 docs/20 규약.
 3. **게이트 확장**: `core/kernel.py`의 EXPECTED에 FC27 정합값 추가, gates.py 앵커는
