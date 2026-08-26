@@ -93,6 +93,10 @@ Chelsea는 31초 만의 João Pedro 선제골, Morgan Rogers의 데뷔골, Cole 
 Counter를 지지한다. PPDA 20.18이라 High는 기각하고, 백3 평균 위치와 후반 리드 보호를 합쳐 line 50으로 둔다.
 이 값은 알론소의 시즌 정본이 아니라 **개막전 한 경기 재현값**이다.
 
+⭐ **[08-26 영상 반영, obs#348] 4값 전부 재확인** — 트리거 기반 압박(FMS: 10번의 와이드 CB 압박이 피벗 스텝업
+트리거, 90분 에너지 아님) · 수비 액션 평균 높이 **39.8m vs 33.8m**(Pedro, FotMob) · 5-2-3 협폭 미드블록이
+High 기각·line 50과 정합한다. 펜타곤 트랩(중앙 봉쇄→측면 유도)은 Balanced+협폭 구조의 근거.
+
 ### 출전 16명 처방 (`match_player_prescriptions`, `match_only=1`)
 
 | 슬롯 | 선수 | 역할/포커스 | fit | 표본 |
@@ -102,12 +106,12 @@ Counter를 지지한다. PPDA 20.18이라 High는 기각하고, 백3 평균 위�
 | CCB | Lacroix | cb_bpd/Aggressive | .885 | 90′, hp68 |
 | LCB | Colwill | cb_bpd/Aggressive | .707 | 90′, hp40 |
 | RM | Gusto | wm_winger/Balanced | .796 | 76′, hp42 |
-| RCM | James | cm_playmaker/Roaming | .727 | 90′, hp72 |
-| LCM | Lavia | cm_playmaker/Attack | .796 | 65′, hp34 |
+| RCM | James | ~~cm_playmaker/Roaming~~ → **cm_dlp/Build-Up** | .644 (argmax .727) | 90′, hp72 |
+| LCM | Lavia | ~~cm_playmaker/Attack~~ → **cm_b2b/Ball-Winning** | .726 (argmax .796) | 65′, hp34 |
 | LM | Hato | wm_winger/Balanced | .776 | 65′, hp40 |
-| RAM | Palmer | cam_halfwinger/Balanced | .751 | 83′, hp60 |
+| RAM | Palmer | ~~cam_halfwinger/Balanced~~ → **cam_playmaker/Roaming** | .672 (argmax .751) | 83′, hp60 |
 | LAM | Rogers | cam_playmaker/Roaming | .675 | 82′, hp40 |
-| ST | João Pedro | st_advanced/Support | .739 | 90′, hp40 |
+| ST | João Pedro | ~~st_advanced/Support~~ → **st_false9/Build-Up** | .698 (argmax .739) | 90′, hp40 |
 | LCM | Enzo | cm_playmaker/Roaming | .817 | 25′, hp25 ⚠️ |
 | LM | Chavarría | wm_widemid/Support | .720 | 25′, **hp12 ⛔** |
 | RM | Neto | wm_widemid/Defend | .587 | 14′, **hp14 ⛔** |
@@ -116,6 +120,16 @@ Counter를 지지한다. PPDA 20.18이라 High는 기각하고, 백3 평균 위�
 
 ⚠️ 교체 5명은 모두 45분 미만이고 뒤의 4명은 hp 15도 미달한다. DB 결손을 만들지 않기 위한 경기 전용 참고값이며,
 `prescriptions`·`slot_canon_roles`·시즌 정본에 병합하지 않는다.
+
+⭐⭐ **[08-26 영상 재판정, obs#348] 선발 4명의 역할/포커스를 커널 argmax에서 영상·1차 발언 판정으로 교체했다.**
+개별 경기 구현은 그 경기 전술의 재현이므로 분석 내용이 모두 반영돼야 한다(시즌 정본은 무변경).
+절차: 임무에 부합하는 역할 후보군을 좁힌 뒤 그 안에서 커널 fit 최고 조합 채택(argmax 기각 사유·Δ 병기).
+- **James → cm_dlp/Build-Up**: 백3 가변 하강·후방 소유 안정 4중 수렴(Telegraph·엘미하·Bains·Pedro). argmax는 하강 임무를 재현 못 함(Δ.083).
+- **Lavia → cm_b2b/Ball-Winning**: 트리거 압박 스텝업 + 백라인 커버 임무. Attack 포커스는 스텝업 히트맵의 산물(Δ.070).
+- **Palmer → cam_playmaker/Roaming**: 자유 역할 — 본인·감독 1차 발언 + 영상 4건(비르츠 유사 동선)(Δ.079).
+- **João Pedro → st_false9/Build-Up**: 「falso nueve」 하강 수령 + 상대 6번 커버섀도(Δ.041, 노이즈 구간).
+유지 7명도 영상 근거를 rationale에 기록했다(로저스=러너형 Roaming 정합 · 귀스토/하토=폭 창출+딥 유지 Balanced ·
+아쳄퐁/라크루아=전진 라이선스 Aggressive · 콜윌 캐비앗 · 산체스 스위퍼 아님 실증).
 
 ## 6. 실측과 서사의 충돌
 
@@ -292,8 +306,10 @@ LIV 뉴캐슬전은 **영상 없이 Coaches' Voice 분석만으로** 승격했�
 - 알론소의 라크루아 평(구단 공식): 「수비를, 지휘를, 중요해지는 것을 사랑한다 — **인성·리더십은 기술만큼 중요**」.
 - 한국 팬덤이 전방 3인을 **「CPR」**(콜 파머·주앙 페드루·로저스)로 명명(축수저) — 서사 지표.
 
-⛔ **처방·슬롯·fit은 바꾸지 않았다** — 전부 단일 경기 영상 서사이고, 기존 실측 판정(전환 효율·백3 메커니즘·산체스)을
-재확인·정밀화할 뿐 반전시키는 주장이 없다. 압박 배정(항목 2)은 다음 경기에서 재현되면 `team_tactic_setups` 반영을 검토한다.
+⛔ **시즌 정본(prescriptions·슬롯)은 바꾸지 않았다** — 단일 경기 근거로 시즌 축은 움직이지 않는다.
+⚠️ **[정정 2026-08-26]** 단 **경기 전용 처방은 다르다** — 개별 경기 구현은 그 경기 전술의 재현이므로
+분석 내용을 전부 반영해 **선발 4명의 역할/포커스를 재판정했다**(위 §5, obs#348).
+압박 배정(항목 2)은 다음 경기에서 재현되면 `team_tactic_setups` 반영을 검토한다.
 
 ## 9. 출처
 
