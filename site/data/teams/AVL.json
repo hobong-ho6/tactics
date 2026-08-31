@@ -207,7 +207,8 @@
   "일링주니어",
   "Ben Broggio",
   "안드레스 가르시아",
-  "도빈"
+  "도빈",
+  "지흐"
  ],
  "duties": [
   {
@@ -70223,6 +70224,16 @@
     "name_kr": "도빈",
     "rationale": "원장 결손 보완(2026-08-31 21시 적발). avfc.co.uk 구단 공식 「Dobbin departs」 2026-07-15로 이미 완료된 건이 transfer_outgoing에 없었다.",
     "source": "avfc.co.uk 구단 공식 2026-07-15 https://www.avfc.co.uk/news/2026/july/15/news-dobbin-departs/"
+   },
+   {
+    "confidence": "구단 공식 1차 소스 + 포르투갈어 매체 3곳 독립 확인(OFICIAL 표기). §2-0 통과: URL 경로 `/2026/july/15/`와 본문 발표일 일치, 병기 상황(신임 감독 Tiago Margarido·비토리아 두 번째 영입)이 26/27 현재층.",
+    "dest_club": "Vitória SC (Guimarães · 프리메이라리가 · 2026/27 시즌 임대)",
+    "last_news_date": "2026-07-15",
+    "likelihood": "CONFIRMED",
+    "name": "Oliwier Zych",
+    "name_kr": "지흐",
+    "rationale": "원장 결손 보완(2026-08-31 22시 델타 회차에서 해소). 21시 회차가 Sports Mole 집계 단독(3티어)이라 「등재 보류」로 남긴 건을 **avfc.co.uk 구단 공식**으로 확정했다. ⭐**멀티클럽 구조**: 빌라 구단주 **V Sports가 Vitória SAD 지분 29%를 보유**한다 — 첼시-스트라스부르(BlueCo) 축과 같은 유형의 내부 임대 경로다. 2004년 그단스크생, 2020년 빌라 아카데미 합류, **1군 출전 0**. 임대 이력 23/24 푸슈차 니에폴로미체 → 25/26 라쿠프 쳉스토호바(28경기, 컨퍼런스리그 16강).",
+    "source": "avfc.co.uk 구단 공식 2026-07-15 「Zych links up with Vitória Guimarães」 https://www.avfc.co.uk/news/2026/july/15/news-zych-links-up-with-vit-ria-guimar-es · 포르투갈어 확인 https://www.zerozero.pt/noticias/vitoria-sc-recebe-guarda-redes-do-aston-villa-por-emprestimo/1157708 · https://maisfutebol.iol.pt/transferencias/vitoria-guimaraes/oficial-v-guimaraes-reforca-baliza-no-aston-villa"
    }
   ],
   "targets": [

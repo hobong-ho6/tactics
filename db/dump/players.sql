@@ -196,3 +196,5 @@ INSERT INTO players VALUES(200,'Josh Feeney','피니',NULL,NULL,2005,'CB','2026-
 INSERT INTO players VALUES(201,'Lucca Brughmans','브뤼흐만스',NULL,NULL,2008,'GK','2026-08-31 transfer-watch 신규 등재 — 헹크 GK, 리버풀 구단간 공식 접촉(Romano, 1티어). 2.00m·헹크 등번호 51·계약 2030·1군 15경기 6클린시트. PL 규정상 2005년 이후 출생자는 25인 명단 비산입 — 비홈그로운 슬롯을 소비하지 않는 구조.',NULL,'Belgium',NULL,NULL);
 INSERT INTO players VALUES(202,'David Datro Fofana','다트로 포파나',NULL,NULL,NULL,'ST','2026-08-31 transfer-watch 등재 — 첼시 유출 결손 보완(Servette 완전이적)',NULL,NULL,NULL,NULL);
 INSERT INTO players VALUES(203,'Lewis Dobbin','도빈',NULL,NULL,NULL,'LW','2026-08-31 transfer-watch 등재 — 빌라 유출 결손 보완(Southampton 완전이적)',NULL,NULL,NULL,NULL);
+INSERT INTO players VALUES(204,'Caleb Wiley','케일럽 와일리',NULL,NULL,NULL,'LB','2026-08-31 transfer-watch 등재 — 첼시 유출 결손 보완(Preston North End 시즌 임대)',NULL,NULL,NULL,NULL);
+INSERT INTO players VALUES(205,'Oliwier Zych','지흐',NULL,NULL,NULL,'GK','2026-08-31 transfer-watch 등재 — 빌라 유출 결손 보완(Vitória SC 시즌 임대)',NULL,NULL,NULL,NULL);
