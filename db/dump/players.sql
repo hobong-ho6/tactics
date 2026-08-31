@@ -194,3 +194,5 @@ INSERT INTO players VALUES(198,'Jonathan David','조나단 데이비드',935564,
 INSERT INTO players VALUES(199,'Valentín Barco','바르코',1127057,NULL,2004,'LB','2026-08-31 match-watch 신규 등재 — 첼시 26/27 영입(chelseafc.com 「Summer transfers 2026」 영입 목록). 08-27 루턴전(EFL컵) LM/LCM 선발 90분·평점 7.4, 08-30 브라이턴전 82분 교체 투입. 좌측 전방위(LB·LWB·LM).',NULL,'Argentina',NULL,NULL);
 INSERT INTO players VALUES(200,'Josh Feeney','피니',NULL,NULL,2005,'CB','2026-08-31 transfer-watch 신규 등재 — 아스톤 빌라 아카데미 CB, 피터버러 유나이티드 시즌 임대 후보(Jacob Tanswell/The Athletic 1티어, 08-30). 사유는 피터버러 샘 휴즈 장기부상 대체.',NULL,'England',NULL,NULL);
 INSERT INTO players VALUES(201,'Lucca Brughmans','브뤼흐만스',NULL,NULL,2008,'GK','2026-08-31 transfer-watch 신규 등재 — 헹크 GK, 리버풀 구단간 공식 접촉(Romano, 1티어). 2.00m·헹크 등번호 51·계약 2030·1군 15경기 6클린시트. PL 규정상 2005년 이후 출생자는 25인 명단 비산입 — 비홈그로운 슬롯을 소비하지 않는 구조.',NULL,'Belgium',NULL,NULL);
+INSERT INTO players VALUES(202,'David Datro Fofana','다트로 포파나',NULL,NULL,NULL,'ST','2026-08-31 transfer-watch 등재 — 첼시 유출 결손 보완(Servette 완전이적)',NULL,NULL,NULL,NULL);
+INSERT INTO players VALUES(203,'Lewis Dobbin','도빈',NULL,NULL,NULL,'LW','2026-08-31 transfer-watch 등재 — 빌라 유출 결손 보완(Southampton 완전이적)',NULL,NULL,NULL,NULL);
