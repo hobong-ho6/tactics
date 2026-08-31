@@ -1309,3 +1309,5 @@ INSERT INTO player_tenures VALUES(192,'2023-24',NULL,'Monaco (32경기, 평점 6
 INSERT INTO player_tenures VALUES(192,'2022-23',NULL,'Reims (39경기, 평점 7.10)','ST',NULL,NULL);
 INSERT INTO player_tenures VALUES(192,'2021-22',NULL,'Middlesbrough (21경기, 평점 6.53) / Arsenal (4경기, 평점 6.28)','ST',NULL,NULL);
 INSERT INTO player_tenures VALUES(192,'2020-21',NULL,'Arsenal (6경기, 평점 6.82)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(58,'2026-27',NULL,'Aston Villa (1경기)','LW',NULL,NULL);
+INSERT INTO player_tenures VALUES(78,'2026-27',NULL,'Aston Villa (1경기)','LB',NULL,NULL);

@@ -734,21 +734,6 @@
    "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24). / reports/match-watch/2026-08-23-liv-newcastle.md"
   },
   {
-   "adherence": "⚠️ **판정 불가 — 압박·수비 데이터가 어느 소스에도 없다(확인 실패).** 한계로는 '오프볼 움직임의 다양성 부족'과 'far post를 노리는 아웃-투-인 런의 일관성 결여'가 지목됐다. 규율 축의 신호는 엇갈린다 — AFCON 복귀 후 출전이 급감했고 엔리케의 '감정 관리' 지적이 부담이었다는 측근 전언이 있는 반면(2026-02), 2026-04에는 엔리케가 'playing with more freedom'을 언급했다.",
-   "confidence": "⚠️ **시기 혼입 위험 높음**. ⑴ Anfield Insights가 **유스·시니어 지표를 명시적으로 분리하지 않는다**('12골 14도움'이 youth+senior 합산) — 위 퍼센타일이 어느 경쟁 단계 기준인지 **미확정**이다. ⑵ **TFA 자료는 France U16 2023/24**라 현재 임무 근거로 쓸 수 없고, '좌측 과부하 → 우측의 음바예를 스위치로 해방'이라는 구조 서술은 **U19 유스 맥락으로만** 보존했다. ⑶ **압박·수비 지표 전면 확인 실패** — 이라올라의 맨투맨 락온·인계 부담을 지지·반박할 자료가 0이다. ⑷ **본인 전술 발언 확인 실패**. ⑸ Foot Africa·Squawka·This Is Anfield **403 접근 실패**(특히 Squawka는 25/26 시니어 전용 분석으로 보여 압박 공백을 메울 1순위 재시도 대상). ⑹ 인용 매체 1건에서 리버풀 감독 표기가 Slot/Iraola로 엇갈려 해당 대목의 감독 귀속은 **미검증**으로 둔다. ⛔ **아직 리버풀 선수가 아니다** — 체제 적합 서술은 전부 가설이며, 이 행은 `transfer_targets` DEAD 상태와 무관하게 실측·서사 보존용이다.",
-   "duties": "우측 **정통 윙어(orthodox winger)**. wide forward가 아니라 터치라인형으로 분류된다. 우측에서의 임무는 **바이라인 지향의 직선 위협** — 움직이며 받아 대각으로 몰고 들어가 풀백이 뒤로 수비하게 만들고, 풀백–센터백 사이 채널을 반복 공략한다. 좌측 배치 시엔 임무가 **템포 변화·페인트로 패스 레인을 여는 조작형**으로 바뀐다.",
-   "execution": "캐리가 핵심 산출이다 — 프로그레시브 캐리 **8.79/90(94퍼센타일)** · 캐리 침투 129m/90(94퍼센타일) · 박스 진입 1.66/90(89퍼센타일) · take-on 5.14/90(90퍼센타일)이나 **성공률 33.9%(33퍼센타일)**. directness 0.57(1퍼센타일) = **직선이 아니라 곡선·페인트형 캐리**. 짧은 패스 정확도 86.5%, xA·오픈플레이 기회창출·박스 크로스 70퍼센타일 이상, 반면 **슛 2.5/90 미만**. 25/26 UCL 최고속도 33.6km/h. ⭐ 실측 정합: 45분+ 20경기 중 **우측 16 / 중앙 2 / 좌측 2**이고 우측 16경기 avg_x 64.9 · avg_y 25.6 → tool_x 74.4 · tool_y 64.9. 서사는 '우 60 / 좌 40'이라 하나 **우리 45분+ 표본에서는 우측이 80%로 서사보다 더 치우친다** — 서사의 좌측 출전 상당수가 45분 미만 교체일 가능성이 크다.",
-   "game_role_implication": "저장 적합 **wm_widemid/Build-Up .878**(sample_n 16, 클럽 기준). 폭 유지·바이라인 지향·크로스 상위 + 슛 볼륨 하위 = 인사이드 포워드가 아니라 **터치라인 윙어 계열**임을 시사하며 현 `opt_role`과 방향이 일치한다. ⭐ **박스 안 far-post 아웃-투-인 런 결여**는 게임상 '침투(get in behind) 지시'보다 **폭 유지 + 컷백 생산 지시**가 재현도가 높을 것을 시사한다. ⚠️ take-on 성공률 33.9%와 오프볼 다양성 부족은 18세 미성숙의 결과로, **즉시 전력보다 육성 칸**임을 시사한다.",
-   "label": "음바예",
-   "observed_from": "2025-08-17",
-   "observed_to": "2026-08-08",
-   "player_id": 86,
-   "position": "RM",
-   "sample_note": "서사 관찰 창은 25/26 PSG 시니어. 전술 전용 영상 **확인 실패** — 검색된 유튜브 3건은 전부 하이라이트/토크물이고 **미시청**이라 내용을 인용하지 않았다.",
-   "sample_scope": "PSG 클럽 15경기(45분+·히트포인트 15+) — Ligue 1 12 · UCL 1 · 클럽 친선 2. ⭐ 국가대표 5경기(AFCON 1·친선 2·WC 2)는 분리한다. 국가대표 평점 7.60이 클럽 6.81보다 현저히 높아 섞으면 왜곡된다.",
-   "source": "Anfield Insights 2026-08-05 https://anfieldinsights.substack.com/p/a-complete-guide-to-ibrahim-mbaye ; TransferHub 2026-08-05 https://transferhub.substack.com/p/profiling-psgs-ibrahim-mbaye-with ; ParisFans 2026-02-21(L'Équipe Landry Chauvin 재인용) https://www.parisfans.fr/autour-du-psg/mbaye-le-retour-au-psg-difficile-est-explique-899948.html ; Foot Africa 2026-04(엔리케 평가, Hoarau 전언) ; GFFN 2026-08 https://www.getfootballnewsfrance.com/2026/borussia-dortmund-make-ibrahim-mbaye-enquiry/ ; reports/transfer-watch/2026-08-15.md"
-  },
-  {
    "adherence": "TRANSFERRED — 오사수나 시즌 수행은 확인, 이라올라 체제와 살라 이탈 뒤 우측 기용은 공식전 0경기로 미검증.",
    "confidence": "HIGH 오사수나 원천·구단 Opta 요약 / LOW 리버풀 실행",
    "duties": "폭발적인 속도와 직접 드리블을 쓰며 양쪽 윙을 소화하고, 공을 잃은 뒤 복귀에도 가담하는 와이드 공격수. 좌우 혼합 그리드는 위치를 뭉개므로 반드시 측면별로 본다.",

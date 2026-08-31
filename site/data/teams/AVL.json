@@ -185,12 +185,28 @@
    "player_id": 78
   },
   {
+   "avg_x": 45.7,
+   "avg_y": 15.9,
+   "first_date": "2025-08-16",
+   "last_date": "2026-07-01",
+   "n": 35,
+   "player_id": 90
+  },
+  {
    "avg_x": 10.1,
    "avg_y": 49.9,
    "first_date": "2025-08-17",
    "last_date": "2026-06-29",
    "n": 29,
    "player_id": 132
+  },
+  {
+   "avg_x": 36.3,
+   "avg_y": 36.0,
+   "first_date": "2025-08-12",
+   "last_date": "2026-08-16",
+   "n": 50,
+   "player_id": 178
   }
  ],
  "departed": [
@@ -917,19 +933,19 @@
    "source": "Sky Sports 이적·프로필(2026-07) · ESPN(2026-07) · BBC Sport · readastonvilla.com(2026-07-21·2026-08-08) · myoldmansaid.com · 페레이라·잭슨 발언(Sky 인용) · YouTube 3건(미시청) / 내부: obs#143·#144·#129, player_duties, fotmob_detail_stats"
   },
   {
-   "adherence": "강정합",
-   "confidence": "서사+실측 정합 / ⚠️ **전술 데이터가 전부 LASK Linz(오스트리아) 25/26 임대 시즌**이고 빌라 자료는 **포르투 친선 1경기 직관기(3티어)** 가 유일하다. / 신규: 2025-07-19 사전계약 합의 후 LASK 임대 1년 → 2026-07 £4m~£4.75m로 완료(LASK 역대 2위 이적료), **맨시티 그룹과 경쟁에서 승리**. 계약 2029-06-30, 등번호 48, **프로 데뷔가 2025-02-23로 극히 최근**. 위상은 '밍스 33세·린델뢰프 기복'을 전제로 최소 백업 CB, 단 에메리가 추가 영입할 수 있다는 유보.",
-   "duties": "영상 종합(가설): 공중 지배(191cm)·후방 빌드업 개시·세트피스 골위협, CB/DM 겸업 가능 [2026-08-14 영상·서사 정기수집] **LASK Linz 25/26 임대 실측(3티어 집계)**: 2골 3어시, 2,271분, Fotmob 평균 **7.26**, 옐로 5. 90분당 **태클 1.62 · 인터셉트 0.75~0.98 · 클리어런스 6.34 · 헤더 클리어 3.47 · 정확한 롱볼 4.86 · 파울 0.59** — **파울이 매우 적으면서 클리어 볼륨이 크고 롱볼 배급량이 상당한 유형**이다. 오스트리아 분데스리가 CB 대비 어시스트·평점·득점 상위. 빌라 프리시즌(포르투 직관기): 계속 볼을 받으려 하고 가능하면 전진시켰다, 침착하되 무리하지 않는 수비, **역습 차단 스탠딩 태클**과 그 지점에 도달하는 **스피드**. ⇒ DB의 '공중 지배(191cm)·후방 빌드업 개시·세트피스 골위협' 규정과 **정합**한다.",
-   "execution": "실측: cb_bpd/Aggressive .883 (29경기) | ⭐ [obs#226 독일어권 수집 2026-08-16] ⭐ **LASK 공식 시즌 결산(2026-05-21)**: 「20세가 프로 첫 풀시즌을 치렀다는 게 믿기지 않을 만큼 **노련했다**」, **62.4%로 팀 내 최고 듀얼 승률**, **30경기 3골 3도움**. ⭐ **2골 모두 챔피언십 라운드 강팀전**(잘츠부르크 원정 평점 7.8 · 아우스트리아 빈 8.4) — 약체 상대 누적이 아니다. 데뷔는 19세에 **주장 치어라이스의 공백을 대신**해서였다(만원 관중, 라피트전 2:1 승). ⚠️ **체제 주의**: 위 수치는 **사크라멘투 이전 체제**의 산물이다. 신임 사크라멘투는 백4 회귀 + 지배적 점유를 지향하며 **치세와 보가르데가 두 번째 CB 자리를 놓고 경쟁**하는 구도로 바뀌었다(사크라멘투는 이후 징계로 즉시 사임). ⇒ 치세는 25/26에만 **최소 두 체제**를 겪었다. ⚠️ **스탯 불일치**: 우리 duties는 「2골 3어시·2,271분」인데 LASK 공식은 30경기 3골 3도움이다 — 리그 한정 vs 전 대회 차이로 보이나 **2,271분의 범위를 재확인해야 한다**.",
-   "game_role_implication": "cb_bpd/Aggressive 유지. DM 겸업은 실측 표본 생기면 검증",
+   "adherence": "강정합 ‖ [2026-08-31] 🔴⭐**이번 수집 최대 결과 — 온더볼 습관이 에메리 체제와 충돌한다.** **2026-07-28 레알 소시에다드 프리시즌 전반, 후방 짧은 빌드업 대신 롱볼을 차서 에메리가 벤치에서 눈에 띄게 분노했고 시세가 사과의 손을 들었다**(Max Wilkins, Villa News 2026-07-29). 그리고 **그 경기에서 45분만 뛰고 교체**됐다(`player_matches` 46분과 일치). 실측이 이를 설명한다 — 그는 짧은 전진형이 아니라 **롱볼 배급량이 큰 CB**다(정확 롱볼 4.32/90 = **77퍼센타일**, 롱볼 정확도 50.5% = 69퍼센타일 ⇒ **양은 많고 질은 평범**). ⇒ **LASK 백3에서 보상받던 습관이 에메리 체제에서 즉시 교정 대상이 됐다.** 원장 `adherence`의 「강정합」은 **부분 재검토 필요** — 공중·듀얼·태클·파울 축은 정합이나 **온더볼 축은 체제 전환 시 마이너스**다. ⚠️**공중볼 규정도 약화**: 24/25(15경기 소표본) 76.3%(94퍼센타일) → **25/26 전 시즌 61.4%(65퍼센타일)·승수 32퍼센타일**. 「191cm 공중 지배」는 **소표본 시즌에 기댄 규정**이다. ⚠️**인터셉트는 절대값은 맞으나 백분위가 14**다 — 가로채는 CB가 아니라 **클리어(6.34/68)·헤더클리어(3.47)로 걷어내는 CB**다.",
+   "confidence": "서사+실측 정합 / ⚠️ **전술 데이터가 전부 LASK Linz(오스트리아) 25/26 임대 시즌**이고 빌라 자료는 **포르투 친선 1경기 직관기(3티어)** 가 유일하다. / 신규: 2025-07-19 사전계약 합의 후 LASK 임대 1년 → 2026-07 £4m~£4.75m로 완료(LASK 역대 2위 이적료), **맨시티 그룹과 경쟁에서 승리**. 계약 2029-06-30, 등번호 48, **프로 데뷔가 2025-02-23로 극히 최근**. 위상은 '밍스 33세·린델뢰프 기복'을 전제로 최소 백업 CB, 단 에메리가 추가 영입할 수 있다는 유보. ‖ [2026-08-31] ⭐**독일어(오스트리아)에서만 결정적 사실 4건이 나왔다**(퀴바우어 백3 정본 · 사크라멘투 사임 경위 · 경고누적 결장 · 토르니치 정체) — **영어권에는 LASK 전술 임무를 다룬 자료가 0건**이었다(불변규칙 10 실증). ⚠️**원장 per90 수치군(태클 1.62·인터셉트 0.98·클리어 6.34·헤더클리어 3.47·롱볼 4.86)의 원출처는 astonvillanews James Barker 2026-05-30 「시세가 콘사를 앞선 항목」 기사**다 — 즉 **리그 수준이 다른 비교(오스트리아 분데스 vs PL)**이며 그대로 우열로 읽으면 안 된다. ⛔**미해소 최우선 1건**: **ÖFB컵 결승(2026-05-01) 포지션** — weltfussball 스니펫이 「4-3-3, Horvath–Cissé–Alemão 중원」으로 렌더링해 **DM 기용설**이 있으나 원문 3건(weltfussball·skysportaustria·oefb.at) 전부 403/미확보라 **확정하지 않았다**. 사실이면 「DM 겸업 가능」 가설의 최고 강도 근거가 된다. ⛔**세네갈 연령별 대표 소집 기록 0건**(A대표·U20 모두) — 현재까지 무캡으로 간주하되 부재증명은 아니다. ⛔시세 전용 전술 분석·개별 평점은 오스트리아 매체에도 **0건**.",
+   "duties": "영상 종합(가설): 공중 지배(191cm)·후방 빌드업 개시·세트피스 골위협, CB/DM 겸업 가능 [2026-08-14 영상·서사 정기수집] **LASK Linz 25/26 임대 실측(3티어 집계)**: 2골 3어시, 2,271분, Fotmob 평균 **7.26**, 옐로 5. 90분당 **태클 1.62 · 인터셉트 0.75~0.98 · 클리어런스 6.34 · 헤더 클리어 3.47 · 정확한 롱볼 4.86 · 파울 0.59** — **파울이 매우 적으면서 클리어 볼륨이 크고 롱볼 배급량이 상당한 유형**이다. 오스트리아 분데스리가 CB 대비 어시스트·평점·득점 상위. 빌라 프리시즌(포르투 직관기): 계속 볼을 받으려 하고 가능하면 전진시켰다, 침착하되 무리하지 않는 수비, **역습 차단 스탠딩 태클**과 그 지점에 도달하는 **스피드**. ⇒ DB의 '공중 지배(191cm)·후방 빌드업 개시·세트피스 골위협' 규정과 **정합**한다. ‖ ⚠️⚠️**[2026-08-31 player-collect · 체제 서술 정정]** 위 25/26 서술은 **틀렸다**. ①**정본 체제는 사크라멘투의 백4가 아니라 디트마어 퀴바우어의 3-4-1-2 백3**(2025-10-09~2026-05)이고, 시세는 그 백3의 **부동의 선발**(리그 26경기 전 선발)이었다. **사크라멘투는 공식전 9경기(리그 7)만에 2025-09-23 계약 해지**로 끝나 25/26을 규정할 수 없다. ②**「보가르데와 두 번째 CB 자리를 놓고 경쟁」 서술은 폐기한다** — 보가르데는 CB 경쟁자가 아니라 **백3 앞 중원/윙 라인**에서 뛰었다(퀴바우어 데뷔전 라인업: Jungwirth – **Cisse, Tornich, Andrade** – Jörgensen, Bogarde, Horvath, Bello – Danek). ③**「사크라멘투 징계로 즉시 사임」도 사실관계 오류**다 — 구단이 **코치진 중 1인**을 규율 위반으로 해고했고 사크라멘투는 **의리로 자신의 계약 해지를 요청**했다(이후 Record 인터뷰: 가족 사정이 결정적). 본인 징계·출장정지는 **없다**. ④프랑스어층 규정: 백3에서 **좌·우·중앙 스토퍼를 모두 소화**했고 팀 최고 꾸준함. ⑤결장은 로테이션이 아니라 **경고누적** — 우승 확정전(2026-05-17)에 출장정지로 빠지고 음부얌바가 대체했다.",
+   "execution": "실측: cb_bpd/Aggressive .883 (29경기) | ⭐ [obs#226 독일어권 수집 2026-08-16] ⭐ **LASK 공식 시즌 결산(2026-05-21)**: 「20세가 프로 첫 풀시즌을 치렀다는 게 믿기지 않을 만큼 **노련했다**」, **62.4%로 팀 내 최고 듀얼 승률**, **30경기 3골 3도움**. ⭐ **2골 모두 챔피언십 라운드 강팀전**(잘츠부르크 원정 평점 7.8 · 아우스트리아 빈 8.4) — 약체 상대 누적이 아니다. 데뷔는 19세에 **주장 치어라이스의 공백을 대신**해서였다(만원 관중, 라피트전 2:1 승). ⚠️ **체제 주의**: 위 수치는 **사크라멘투 이전 체제**의 산물이다. 신임 사크라멘투는 백4 회귀 + 지배적 점유를 지향하며 **치세와 보가르데가 두 번째 CB 자리를 놓고 경쟁**하는 구도로 바뀌었다(사크라멘투는 이후 징계로 즉시 사임). ⇒ 치세는 25/26에만 **최소 두 체제**를 겪었다. ⚠️ **스탯 불일치**: 우리 duties는 「2골 3어시·2,271분」인데 LASK 공식은 30경기 3골 3도움이다 — 리그 한정 vs 전 대회 차이로 보이나 **2,271분의 범위를 재확인해야 한다**. ‖ [2026-08-31] ⭐**「2,271분 범위 재확인 필요」 플래그 해소**: FotMob 「16경기 1,374분」은 **정규 라운드(Grunddurchgang)만**이고 **마이스터그루페**를 더하면 **리그 26경기 전 선발 ≒ 2,271분**이 된다. LASK 공식 「30경기 3골 3도움」은 **전 대회**(리그 26 + ÖFB컵 등)이며 **리그 2골 + 컵 1골 = 3골**로 정합한다 — **불일치가 아니다**. 퀴바우어 부임 직후 **첫 4경기 4연승 무실점**(구단 최초) 구간의 붙박이. LASK 구단 공식 시즌결산(2026-05-21): 「20세 첫 풀시즌이라는 게 믿기지 않을 만큼 노련」 · **팀 내 최고 듀얼 승률 62.4%**.",
+   "game_role_implication": "cb_bpd/Aggressive 유지. DM 겸업은 실측 표본 생기면 검증 ‖ [2026-08-31] ⭐**즉시전력 아님 — 육성 우세.** 근거 4건: ①**에메리 원발언**이 「콘사 대체 CB를 **하나 더** 원한다. 다만 **잠재력 있는 어린 선수** 모두 케바 시세가 프리시즌을 함께하고 있다」로 **이분**했다(대체는 따로 사겠다는 말). ②**슈퍼컵(2026-08-12 vs PSG) 벤치** — 선발 CB는 토레스·린델뢰프, 서열 4~5순위. ③콘사 이탈로 한 칸 올라가나 **완비사카를 CB 옵션으로도 계산**하고 있어 **두 영입이 같은 칸을 두고 겹친다**. ④**온더볼 교정에 걸리는 시간이 즉시전력화의 병목**이다. ⭐**적합한 축은 분명히 있다**: 역습 차단 **스탠딩 태클 + 그 지점 도달 스피드**(포르투전), **파울 0.59/90 = 82퍼센타일**(고라인에서 파울은 곧 위험지역 프리킥) ⇒ **속도·규율은 적합, 배급 스타일은 부적합**이라는 이분이 현재 가장 정확한 규정이다.",
    "label": "시세",
    "observed_from": null,
-   "observed_to": "2026-08-12",
+   "observed_to": "2026-08-31",
    "player_id": 57,
    "position": "RCB",
    "sample_note": "복수 경기·영상·스카우트 자료 종합. 개별 경기 목록은 기존 기록에 미기록되어 관찰 시작일은 확정하지 않음",
    "sample_scope": "multi_source",
-   "source": "obs#143"
+   "source": "obs#143 ‖ [2026-08-31 player-collect] 독일어(오스트리아): ooe.ORF.at·sport.ORF.at 2025-09-23(공영, 현지 1티어) · lask.at 구단 공식 시즌결산 2026-05-21 · ligaportal 2026-05-17 · 90minuten.at(2티어). 프랑스어: africafoot(John Attisso 2025-09-23)·senego(아프리카 온라인 3티어). 영어: astonvillanews Max Wilkins 2026-07-26·2026-07-29(빌라 전담 직관, 2~3티어) · James Barker 2026-05-30."
   },
   {
    "adherence": "정합 — 컷인형 윙어\n\n[2026-08-22 서사 정기수집 · 소스 4종]\n⭐⭐ **위치 주장 충돌을 실측으로 판정했다.** 본인은 1차 발언에서 「I'm right footed, so I like to **cut inside** and create chances」(AVFC 사이닝 인터뷰 2026-07-23)로 자기 정체성을 컷인형으로 말하는데, Squawka는 「**터치라인에서 출발해 밖에서 박스를 공격**하는 편이 더 산다」고 관측했다. ⇒ **우리 그리드가 Squawka를 지지한다**: 빌라 measured(WM) 열 분포가 **좌2열 86%**(열0 59 · 열1 27)이고 **중앙열은 6%**에 불과하다. 즉 **폭 유지형이 압도적이고 컷인은 부수 패턴**이다 — 자기 인식(컷인)은 **위치 주장이므로 기각**하고, 「컷인 후 슈팅」은 **온볼 마무리 패턴**으로만 보존한다(그리드 밖 층). ⚠️ 체제 분리: 텐 하흐 맨유 = 하프스페이스로 좁힌 전방 3인 + 풀백 오버랩 / 마레스카·로세니오르 첼시 = 느린 점유·풀백 오버랩 부재 ⇒ **상시 2대1**(The Athletic/Daniel Taylor 2026-02가 부진을 체제 구조에 귀속). ⛔ **알론소(26/27) 하 임무 관측은 0경기**다 — 첼시 25/26 임무는 마레스카·로세니오르 것으로만 표기한다.",
@@ -1112,19 +1128,34 @@
    "source": "(유튜브) **전용 전술 분석 채널 없음** — 하이라이트(77oY9G86RNw·_m-cQs81kXE)와 이적 토크(f-AT2lkvFIw·5N_2jahFKCU)뿐이고 **전부 미시청·게시일 미확보** (블로그) **Rivista Undici 2026-04-15** · **Gianluca Di Marzio 2026-04-15 09:51 Gerardo Guariglia** · **Esto es Atleti 2026-05-12 Frank Hurtado** · TuttoMercatoWeb 2025 가을 (기사) **livescore/Claret Villans Mark Oldacres**(무일자) · The Athletic/Jacob Tanswell 경유(**에메리 본인이 주도한 영입**이며 「physical profile of left-back」에 부합) · readastonvilla 2026-08-19 · astonvillareview(페이월) (1차) 루제리 본인 4건 — Gazzetta · Marca(「Ho giocato con Gasperini … il duro lavoro è l'unica cosa che ti fa crescere」) · Cronache di Spogliatoio(「ci ho messo un po' per ambientarmi」, 별명 「Tigre」) · 빌라 공식 발표 인터뷰(「really enchanted by the project of the team」)"
   },
   {
-   "adherence": "TARGET — 미영입(MEDIUM-HIGH). 웨스트햄 임무는 실측·서사로 확인했고 **에메리 체제 수행은 공식전 0경기로 미검증**. ⭐ **정합/긴장 판정 3건**: ⑴ **긴장** — 실측 위치는 공격형 윙백 커널에 0.932로 붙는데 현 체제 서사는 '윙백이 안 맞아 RB로 내렸다'고 명시한다. 위치 주장은 실측이 이기므로 슬롯은 유지하되, **Support 지시를 공격 가담 요구로 해석하면 안 된다**(상대 박스 터치 10퍼센타일이 서사를 지지). ⑵ **기각** — 'PL 최고의 태클러' 통설은 **맨유 시기 서사**이고 현재 실측 태클 14퍼센타일과 정면으로 어긋난다. 인터셉트 95·제쳐당함 92와 함께 읽으면 그는 **태클로 뺏는 선수가 아니라 붙어서 못 지나가게 하는 선수**다. ⑶ **정합** — 온더볼 한계(패스 레인지·전진 주저) 서사는 패스 정확도 20퍼센타일과 정합. ⚠️ 'BTL 2024-09 크로스가 약점' 서술은 실측 크로스 정확도 90퍼센타일과 충돌하나, 서사는 **양·기여도**를 실측은 **정확도**를 말한다(시도량이 적은 선택적 크로스). 서사 쪽이 2년 전·타 감독 시기라 실측 우선. ⭐ **[2026-08-14 Δ 산출 완료 — 긴장 ⑴ 종결]** 커널 Δ(1위−2위)=**0.1042 > .05**이므로 docs/30 4단계에 따라 **적합 우선**이다. 서사가 지지한 fb_fullback/Defend는 0.4117로 1위와 **Δ 0.5205**나 벌어져, '윙백이 안 맞는다'는 주장은 **역할 배정을 바꿀 이산 근거가 되지 못한다.** 긴장은 해소됐고 판정은 **실측 채택**이다.",
-   "confidence": "MEDIUM — 서사 소스(2~3티어)로 세운 가설이고 실측과 교차검증했다. ⛔ **1차 발언(본인·감독)이 임무를 서술한 사례는 웨스트햄 시기에서 미발견**이다(docs/30 파일럿과 동일 결과). 억지로 채우지 않았다. whufc.com 공식 인터뷰는 본문 확보 실패. ⛔ **유튜브 4종 전부 미시청** — 게시일도 3건이 미확인이다. 리드로만 썼다. ⛔ **Spielverlagerung·Coaches' Voice 완비사카 편 미발견**, TFA 개인 분석은 **2018/19 팰리스 편**뿐이라 미사용. ⚠️ **체제 혼동이 이 선수의 최대 함정이다** — 검색 1페이지 9건 중 현 체제(누누)를 다룬 것이 **0건**이었고 나머지는 전부 맨유/팰리스 시기다. 그대로 옮겼다면 태클 통설 오류를 실었을 것이다. ⚠️ **미해결**: 개막 2경기 미드필더 기용분이 25경기 그리드 표본에 섞여 위치를 안쪽으로 당겼을 가능성 — 경기 단위 검증 미수행. / ⚠️ regime_id=1(빌라·에메리)·season=2026-27로 기록했으나 **그는 아직 빌라 선수가 아니다** — 차바리아 선례를 따른 표기이며 근거는 전부 웨스트햄 소속 기록이다.",
-   "duties": "[웨스트햄 25/26 실측 임무 — 누누 체제] 기본은 **백4의 우측 전문 풀백**이다. 시즌은 셋으로 갈린다: ⑴ 개막 2경기 **미드필더 선발**(실패 후 벤치) → ⑵ 포터 시기 RB와 RWB를 오가며 리듬 상실 → ⑶ AFCON 복귀(2026-01) 이후 **누누의 4-2-3-1에서 RB 고정**, 이 구간이 최고 폼. ⭐ **윙백은 현 체제가 명시적으로 부적합 판정한 배치다** — 'he is weaker going forward, which is why the right-wing-back position doesn't suit his skill set'(West Ham Zone 2026-02-26). 수비 임무는 **1v1 대인 봉쇄**가 정체성이고 커버 지향·압박 높이는 낮다. 맨시티전에서 토디보·마브로파노스·디사시 3백 + 완비사카 RWB로 백5 전환한 사례가 있다. 공격 임무에서 **인버티드(하프스페이스 진입) 서술은 어느 소스에도 없다**. 온더볼은 짧고 안전한 패스 선호·전진 판단 주저로 일관되게 서술된다. ⚠️ 위 서술은 전부 **웨스트햄 시기 소스**이며 맨유 시기 자료와 섞지 않았다.",
-   "execution": "2025/26 PL 25경기 23선발 2,083분, 0골 2도움, 경고 4, 평점 6.80(FotMob)·6.59(SofaScore). 45분+ 25경기 그리드는 RB 슬롯 fb_att_wb/Support **fit_sim 0.932**. 90분당 백분위(동포지션): 인터셉트 95 · 제쳐당함 92 · 크로스 정확도 38.1%(90) — 강점축. 태클 1.43(**14**) · 상대 박스 터치 .65(**10**) · 경합 승리(12) · 패스 정확도 76.7%(20) — 제약축. 결장 사유: 위장염 3경기(2025-09-12~09-30) · 발가락(주사 치료) · AFCON 차출(2025-12~2026-01, DR콩고) · 2026-04 FA컵 리즈전은 부상이 아니라 월드컵 본선 확정 뒤 귀국 지연. ⭐ **현재(2026-08) 결장은 의료 사유가 아니라 스쿼드 제외다** — 프리시즌 미참가, 26/27 단체사진 불참, 2026-08-08 포츠머스전 EFL컵 스쿼드 제외. 관계 파탄에 의한 이탈이라 이적 협상에서 부상 리스크와 구분해야 한다.",
-   "game_role_implication": "RB 슬롯 fb_att_wb/Support 후보(0.932) — 단 **기능은 윙백이 아니다**. 에메리의 빌라 RB는 캐시가 윙백/와이드미드를 병행하며 전진 높이를 감당하는데, 완비사카는 **바로 그 축에서 현 체제로부터 부적합 판정**을 받았다. ⇒ **캐시의 1:1 대체가 아니라 '수비 국면 전용 백업'** 으로 처방하는 편이 실측·서사와 모두 정합한다. ⭐ **게임 원장과의 교차 긴장**: FC26 role_familiarity가 **Wingback+ (RB/Balanced) 하나뿐**이라 게임은 그를 윙백으로 규정하는데, 실제 체제 서사는 정반대다. 게임 내 구현 시 Fullback 계열 역할이 없다는 제약이 있으므로 **Wingback/Balanced에 수비 지향 지시를 얹는 방식**으로 갈 수밖에 없다. ⚠️ 커널 Δ 산출 전 처방 변경 금지(docs/30 4단계) — 아직 Δ를 산출하지 않았다. ⭐ **[2026-08-14 처방 확정]** Δ 산출 결과 **RB = fb_att_wb/Support 유지**로 확정했다(Δ=0.1042>.05, 적합 우선). 앞 문단의 'Wingback/Balanced에 수비 지향 지시를 얹는다'는 잠정안은 **폐기**한다 — fb_wingback/Balanced는 2위(0.8280)이지 1위가 아니다. 다만 **Support를 공격 가담 요구로 해석하지 말라**는 임무 층 주석은 그대로 유효하다(상대 박스 터치 10퍼센타일). ⇒ 최종: **역할은 실측대로 fb_att_wb/Support, 운용은 수비 국면 백업.**",
+   "adherence": "⚠️ **판정 불가 — 압박·수비 데이터가 어느 소스에도 없다(확인 실패).** 한계로는 '오프볼 움직임의 다양성 부족'과 'far post를 노리는 아웃-투-인 런의 일관성 결여'가 지목됐다. 규율 축의 신호는 엇갈린다 — AFCON 복귀 후 출전이 급감했고 엔리케의 '감정 관리' 지적이 부담이었다는 측근 전언이 있는 반면(2026-02), 2026-04에는 엔리케가 'playing with more freedom'을 언급했다. ‖ [2026-08-31] ⚠️⚠️**서사 반증 1건**: 「**His pressing intensity is considered one of his strongest qualities**… **high work rate**」라는 영어권 서술(빌라 이적 맥락, 2026-08-29)은 **수비 행동 24퍼센타일·듀얼 32퍼센타일로 반증**된다. 전방압박 81퍼센타일이 **부분적으로만** 지지할 뿐이다. ⚠️이 서사가 **하필 「에메리 미드블록·역압박 트리거에 중요하다」는 문장과 붙어** 유통된다 — **빌라 팬층 대상 정당화 서사로 보이며 채택 불가**. ⚠️**크로스도 서사를 배신한다**: 서사는 「크로스 70퍼센타일 이상」이라 하나 실측 `crosses_succeeded` 0.181/90 = **19퍼센타일**, **정확도 12.5% = 14퍼센타일** ⇒ **시도는 많고 성공은 하위 15%**다. 원장의 「크로스 상위」는 **시도 기준**이므로 **정정 필요**. ⭐**「정통 윙어 vs 인사이드 포워드」는 서사끼리도 자기모순**이다(프랑스어 「principalement ailier intérieur」 ↔ 영어 「data profile suggests an orthodox winger」) — **실측 채택: 터치라인형**. 단 ⚠️`touches_opp_box` 6.229/90 = **per90 87퍼센타일**로 순수 폭유지형치고 박스 진입 터치가 많다 ⇒ **폭을 유지하다 컷백 지점·니어포스트로 들어오는 절충형** 가능성.",
+   "confidence": "⚠️ **시기 혼입 위험 높음**. ⑴ Anfield Insights가 **유스·시니어 지표를 명시적으로 분리하지 않는다**('12골 14도움'이 youth+senior 합산) — 위 퍼센타일이 어느 경쟁 단계 기준인지 **미확정**이다. ⑵ **TFA 자료는 France U16 2023/24**라 현재 임무 근거로 쓸 수 없고, '좌측 과부하 → 우측의 음바예를 스위치로 해방'이라는 구조 서술은 **U19 유스 맥락으로만** 보존했다. ⑶ **압박·수비 지표 전면 확인 실패** — 이라올라의 맨투맨 락온·인계 부담을 지지·반박할 자료가 0이다. ⑷ **본인 전술 발언 확인 실패**. ⑸ Foot Africa·Squawka·This Is Anfield **403 접근 실패**(특히 Squawka는 25/26 시니어 전용 분석으로 보여 압박 공백을 메울 1순위 재시도 대상). ⑹ 인용 매체 1건에서 리버풀 감독 표기가 Slot/Iraola로 엇갈려 해당 대목의 감독 귀속은 **미검증**으로 둔다. ⛔ **아직 리버풀 선수가 아니다** — 체제 적합 서술은 전부 가설이며, 이 행은 `transfer_targets` DEAD 상태와 무관하게 실측·서사 보존용이다. ‖ [2026-08-31] ⭐**1차 발언 신규 6건**(전부 프랑스어·세네갈어권에서만): **루이스 엔리케 2025-12-14** 「Il a été plus libéré… a fait de bonnes actions, **tant avec que sans le ballon**」(= 오프더볼 축에 대한 감독 본인의 유일한 명시적 평가) · **2026-04-21** 「Je n'ai aucun regret sur Mbaye, mais il faut être prêt… C'est simplement la concurrence」 · **2026-04-22** 「il est très jeune, **il a besoin de la confiance**」 · **별건** 「**Parfois on est plus à l'aise en sélection qu'en club**」 ⇒ ⭐**감독이 클럽-대표팀 성적 괴리를 공개 인정** — 원장의 「국가대표 7.60 vs 클럽 6.81, 섞으면 왜곡」 분리 결정을 **감독 발언이 직접 뒷받침**한다. ⚠️**금액 맥락**: FotMob 추정 시장가치 **€22.8m** vs 지불액 **€55m ≒ 2.4배 프리미엄**. 빌라는 **레앙(→갈라타사라이) 실패 후 선회**한 「플랜 B」이고, PSG 측에는 **자체 육성 선수 역대 최고 매각액**(종전 사코 €23m)이다 — **파는 쪽이 승리로 규정한 거래**. ⚠️**Sawiris ↔ Al-Khelaïfi 회장 간 관계가 결정적이었다**는 서술이 프랑스·영국 양쪽에서 반복 — **스포팅 판단이 아닌 관계 기반 거래**일 소지. ⛔**근거 0건**: PSG 포메이션 특정(4-3-3 vs 4-2-3-1) · 본인의 **전술적 자기 서술** · U19 경기 리포트 · Breaking The Lines·Scouted Football·The Analyst · **에메리 본인의 음바예 언급** · **부상 이력(확인 자체를 못 했다)** · L'Équipe/RMC/Le Parisien 원문 직접 취득(전부 재인용). ⛔유튜브는 하이라이트만이고 **불어권에도 「décryptage tactique」형 영상이 존재하지 않는다**(도구 제약이 아니라 자료 부재).",
+   "duties": "우측 **정통 윙어(orthodox winger)**. wide forward가 아니라 터치라인형으로 분류된다. 우측에서의 임무는 **바이라인 지향의 직선 위협** — 움직이며 받아 대각으로 몰고 들어가 풀백이 뒤로 수비하게 만들고, 풀백–센터백 사이 채널을 반복 공략한다. 좌측 배치 시엔 임무가 **템포 변화·페인트로 패스 레인을 여는 조작형**으로 바뀐다. ‖ ⚠️⚠️**[2026-08-31 player-collect · 주소 정정]** 이 행은 **`regime_id=3`(리버풀)로 잘못 들어가 있었다**(그가 LIV 영입 후보였을 때 생성). 서사 서브에이전트 판별 결과 **`duties`·`execution`·`sample_scope`의 내용 자체는 PSG 클럽 실측 기반이라 재사용 가능**하므로, 내용을 지우지 않고 **`regime_id`를 1(빌라)로 정정**한다(불변규칙 7 — 그는 빌라 영입이다). ⛔**단 `adherence`·`confidence`의 「이라올라 맨투맨 락온·인계 부담」 프레임과 `game_role_implication`의 지시 처방은 승계하지 말 것** — 에메리의 요구(고라인·중앙압박·**측면 수비 분담**)는 이라올라의 맨투맨 인계와 다른 축이다. 아래 항목이 대체본이다. ⭐**신규 임무 사실**: **주발 오른발 확정**(우측 배치+오른발 = 터치라인형 분류를 역학적으로 지지) · 전 대회 측면 분포 **우측 18 / 좌측 10**(좌측 대부분이 45분 미만 조커 = 기존 추정 확인) · **U19 감독 Zoumana Camara의 원형 정의**: 「**volume·explosivité·pénétration**」 + 「**경기가 열렸을 때 중간 투입해 차이를 만드는** 유형」 ⇒ 유스 단계부터 **오픈 스페이스 전용기**로 설계됐다.",
+   "execution": "캐리가 핵심 산출이다 — 프로그레시브 캐리 **8.79/90(94퍼센타일)** · 캐리 침투 129m/90(94퍼센타일) · 박스 진입 1.66/90(89퍼센타일) · take-on 5.14/90(90퍼센타일)이나 **성공률 33.9%(33퍼센타일)**. directness 0.57(1퍼센타일) = **직선이 아니라 곡선·페인트형 캐리**. 짧은 패스 정확도 86.5%, xA·오픈플레이 기회창출·박스 크로스 70퍼센타일 이상, 반면 **슛 2.5/90 미만**. 25/26 UCL 최고속도 33.6km/h. ⭐ 실측 정합: 45분+ 20경기 중 **우측 16 / 중앙 2 / 좌측 2**이고 우측 16경기 avg_x 64.9 · avg_y 25.6 → tool_x 74.4 · tool_y 64.9. 서사는 '우 60 / 좌 40'이라 하나 **우리 45분+ 표본에서는 우측이 80%로 서사보다 더 치우친다** — 서사의 좌측 출전 상당수가 45분 미만 교체일 가능성이 크다. ‖ [2026-08-31] ⭐⭐**「압박·수비 판정 불가」가 해소됐다 — 그런데 두 갈래로 갈린다.** 25/26 Ligue 1 백분위: **전방압박(poss_won_att_3rd) 0.993/90 = per90 81퍼센타일(상위권)** ↔ **defensive_actions 2.076/90 = per90 26퍼센타일** · **duel_won 41.7% = 32퍼센타일** · **dribbled_past per90 89퍼센타일(= 자주 제쳐진다)** · FotMob trait **Defensive actions 24**. ⇒ **「압박은 하는데 수비 복귀·경합 승률은 낮은」 전형적 18세 윙어**다. ⚠️**xGA while on pitch per90 81퍼센타일** — PSG라는 압도적 팀에 있으면서 **그가 뛸 때 실점 기대값이 상위 81%로 높다**(소표본이나 경고 신호). ⭐**성장 궤적은 뚜렷하다**: duel_won% **28.0%(3pct) → 41.7%(32pct)**, recoveries 2.68(12pct) → 3.70(51pct), tackles 1.07(12pct) → 1.26(39pct) — **1시즌 만에 하위 3%에서 하위 32%로 이동**했다. 신체: **175cm/64kg — BMI 20.9, PL 윙어 기준 명백한 저체중**(부친이 프랑스-세네갈 복싱 챔피언 Souleymane Mbaye).",
+   "game_role_implication": "저장 적합 **wm_widemid/Build-Up .878**(sample_n 16, 클럽 기준). 폭 유지·바이라인 지향·크로스 상위 + 슛 볼륨 하위 = 인사이드 포워드가 아니라 **터치라인 윙어 계열**임을 시사하며 현 `opt_role`과 방향이 일치한다. ⭐ **박스 안 far-post 아웃-투-인 런 결여**는 게임상 '침투(get in behind) 지시'보다 **폭 유지 + 컷백 생산 지시**가 재현도가 높을 것을 시사한다. ⚠️ take-on 성공률 33.9%와 오프볼 다양성 부족은 18세 미성숙의 결과로, **즉시 전력보다 육성 칸**임을 시사한다. ‖ [2026-08-31] ⭐**에메리 RM 접점: 조건부 불일치 — 이중 요구 중 절반만 충족한다.** 부합 = 중앙(전방) 압박 81pct · 폭 유지+컷백(박스터치 87pct) · 구조적 로테이션 소화(패스 정확도 87pct). ⛔불일치 = **윙어의 수비 복귀·측면 수비 분담(24~32pct, 최대 리스크)** · **크로스 완성도(14pct)** · 고라인 뒷공간(xGA 81pct 경고). ⭐**그가 뒤가 안 되는 이유는 태만이 아니라 175cm/64kg의 physical immaturity + 18세**이며 **교정 가능한 결손**이다(유스 스카우팅이 지목한 최대 약점도 정확히 「수비 위치 선정」과 「속도 의존」). ⭐⭐**즉시전력/육성 판정: 육성 압도적.** ①1군 선발 표본이 2년 통틀어 **10회** ②**2026년 누적 190분·선발 1회** — 최근 8개월간 1군 경쟁에서 사실상 탈락한 상태로 이적했다(폼 검증 불가) ③**등번호 49번** = PSG의 예비 자원 등록 ④**Camara(그를 키운 감독)**: 「출전 시간과 **연속성**이 필요」 ⑤**Landry Chauvin**: 「**l'ascenseur émotionnel** — 너무 빨리 올라간 후유증」, 실제로 꺼졌다 ⑥**Pape Thiaw(세네갈 감독)**: 「**C'est un joyau, il faut bien le couvrir**(보석이다, 잘 감싸줘야 한다)」 — 그를 가장 많이 쓴 감독이 **보호 기용을 명시**했다. ⇒ **26/27 즉시 RM 주전은 부적합**, 2년 창(2028년 20세) 기준이면 RM 정본 후보로 타당.",
+   "label": "음바예",
+   "observed_from": "2025-08-17",
+   "observed_to": "2026-08-31",
+   "player_id": 86,
+   "position": "RM",
+   "sample_note": "서사 관찰 창은 25/26 PSG 시니어. 전술 전용 영상 **확인 실패** — 검색된 유튜브 3건은 전부 하이라이트/토크물이고 **미시청**이라 내용을 인용하지 않았다.",
+   "sample_scope": "PSG 클럽 15경기(45분+·히트포인트 15+) — Ligue 1 12 · UCL 1 · 클럽 친선 2. ⭐ 국가대표 5경기(AFCON 1·친선 2·WC 2)는 분리한다. 국가대표 평점 7.60이 클럽 6.81보다 현저히 높아 섞으면 왜곡된다.",
+   "source": "Anfield Insights 2026-08-05 https://anfieldinsights.substack.com/p/a-complete-guide-to-ibrahim-mbaye ; TransferHub 2026-08-05 https://transferhub.substack.com/p/profiling-psgs-ibrahim-mbaye-with ; ParisFans 2026-02-21(L'Équipe Landry Chauvin 재인용) https://www.parisfans.fr/autour-du-psg/mbaye-le-retour-au-psg-difficile-est-explique-899948.html ; Foot Africa 2026-04(엔리케 평가, Hoarau 전언) ; GFFN 2026-08 https://www.getfootballnewsfrance.com/2026/borussia-dortmund-make-ibrahim-mbaye-enquiry/ ; reports/transfer-watch/2026-08-15.md ‖ [2026-08-31 player-collect] 프랑스어 주력: Foot Mercato(Aurélien Léger-Moëc 2026-04-22) · CulturePSG 2024-09-24(PSG전문 1~2티어, Camara 인터뷰 Le Parisien 재인용) · Canal Supporters 2026-08-29. 세네갈: wiwsport 2025-12-29(세네갈 1티어, Thiaw 발언) · AfricaSoccer(Chauvin). 영어: Sky Sports 2026-08-28."
+  },
+  {
+   "adherence": "TARGET — 미영입(MEDIUM-HIGH). 웨스트햄 임무는 실측·서사로 확인했고 **에메리 체제 수행은 공식전 0경기로 미검증**. ⭐ **정합/긴장 판정 3건**: ⑴ **긴장** — 실측 위치는 공격형 윙백 커널에 0.932로 붙는데 현 체제 서사는 '윙백이 안 맞아 RB로 내렸다'고 명시한다. 위치 주장은 실측이 이기므로 슬롯은 유지하되, **Support 지시를 공격 가담 요구로 해석하면 안 된다**(상대 박스 터치 10퍼센타일이 서사를 지지). ⑵ **기각** — 'PL 최고의 태클러' 통설은 **맨유 시기 서사**이고 현재 실측 태클 14퍼센타일과 정면으로 어긋난다. 인터셉트 95·제쳐당함 92와 함께 읽으면 그는 **태클로 뺏는 선수가 아니라 붙어서 못 지나가게 하는 선수**다. ⑶ **정합** — 온더볼 한계(패스 레인지·전진 주저) 서사는 패스 정확도 20퍼센타일과 정합. ⚠️ 'BTL 2024-09 크로스가 약점' 서술은 실측 크로스 정확도 90퍼센타일과 충돌하나, 서사는 **양·기여도**를 실측은 **정확도**를 말한다(시도량이 적은 선택적 크로스). 서사 쪽이 2년 전·타 감독 시기라 실측 우선. ⭐ **[2026-08-14 Δ 산출 완료 — 긴장 ⑴ 종결]** 커널 Δ(1위−2위)=**0.1042 > .05**이므로 docs/30 4단계에 따라 **적합 우선**이다. 서사가 지지한 fb_fullback/Defend는 0.4117로 1위와 **Δ 0.5205**나 벌어져, '윙백이 안 맞는다'는 주장은 **역할 배정을 바꿀 이산 근거가 되지 못한다.** 긴장은 해소됐고 판정은 **실측 채택**이다. ‖ [2026-08-31] ⭐**핵심 정합**: 「태클로 뺏는 게 아니라 붙어서 못 지나가게 하는 선수」라는 원장 규정이 **대표팀 축에서 독립 재현**됐다 — WC 「드리블 피탈 0회」 ↔ 실측 `dribbled_past` 0.30/90 = **92퍼센타일**. ⛔**CB 전환의 최대 리스크는 공중볼**: `aerials_won_percent` **47.8 / 40퍼센타일**, 승수 0.95(33퍼센타일) — Football Insider도 같은 수치를 우려로 든다. ⛔**백4 중앙 CB 기용은 커리어 전체 전례 0회 = 완전 미검증.** 백3 우측은 누누가 25/26에 잠깐 쓴 선례가 있다(원장의 맨시티전 백5 기록과 일치).",
+   "confidence": "MEDIUM — 서사 소스(2~3티어)로 세운 가설이고 실측과 교차검증했다. ⛔ **1차 발언(본인·감독)이 임무를 서술한 사례는 웨스트햄 시기에서 미발견**이다(docs/30 파일럿과 동일 결과). 억지로 채우지 않았다. whufc.com 공식 인터뷰는 본문 확보 실패. ⛔ **유튜브 4종 전부 미시청** — 게시일도 3건이 미확인이다. 리드로만 썼다. ⛔ **Spielverlagerung·Coaches' Voice 완비사카 편 미발견**, TFA 개인 분석은 **2018/19 팰리스 편**뿐이라 미사용. ⚠️ **체제 혼동이 이 선수의 최대 함정이다** — 검색 1페이지 9건 중 현 체제(누누)를 다룬 것이 **0건**이었고 나머지는 전부 맨유/팰리스 시기다. 그대로 옮겼다면 태클 통설 오류를 실었을 것이다. ⚠️ **미해결**: 개막 2경기 미드필더 기용분이 25경기 그리드 표본에 섞여 위치를 안쪽으로 당겼을 가능성 — 경기 단위 검증 미수행. / ⚠️ regime_id=1(빌라·에메리)·season=2026-27로 기록했으나 **그는 아직 빌라 선수가 아니다** — 차바리아 선례를 따른 표기이며 근거는 전부 웨스트햄 소속 기록이다. ‖ [2026-08-31] ⚠️⚠️**실측 충돌 1건(스프린트)**: 서사 「WC 팀 내 스프린트 1위 194회(FIFA)」 ↔ 실측 PL 25/26 sprints **26퍼센타일**·주행거리 **14퍼센타일**. **단 최고속도 35.0km/h = 85퍼센타일.** ⇒ **모순이 아니라 기준계가 다르다** — WC 1위는 **콩고 스쿼드 대비 상대순위**·4경기 표본이다. **빌라 축에는 「총량」이 아니라 「순간 속도」로 해석해야 하고**, 에메리의 「pace 활용」 논리는 **최고속도 85퍼센타일이 지지**한다. ⚠️**출전시간 3값 불일치 미해소**(기사 1,643분 ↔ 원장 2,083분 ↔ FotMob ~2,316분) — **기사 수치 채택 금지**. ⛔**에메리 본인의 축어 발언 0건**(hammers.news 403) — 「Emery has already hailed…」류는 근거로 쓰지 말 것. ⚠️동료 전언(가르나초 「세계 최고의 1v1 수비수」)은 **맨유 체제 서사**이며 원장이 이미 기각한 통설과 같은 계열 — 재차 기각. ⛔유튜브·TFA·BTL·Spielverlagerung·Coaches Voice·The Analyst 전부 신규 0건. ⚠️**빌라 데뷔 미확인**(2026-08-31 아스널전 유력).",
+   "duties": "[웨스트햄 25/26 실측 임무 — 누누 체제] 기본은 **백4의 우측 전문 풀백**이다. 시즌은 셋으로 갈린다: ⑴ 개막 2경기 **미드필더 선발**(실패 후 벤치) → ⑵ 포터 시기 RB와 RWB를 오가며 리듬 상실 → ⑶ AFCON 복귀(2026-01) 이후 **누누의 4-2-3-1에서 RB 고정**, 이 구간이 최고 폼. ⭐ **윙백은 현 체제가 명시적으로 부적합 판정한 배치다** — 'he is weaker going forward, which is why the right-wing-back position doesn't suit his skill set'(West Ham Zone 2026-02-26). 수비 임무는 **1v1 대인 봉쇄**가 정체성이고 커버 지향·압박 높이는 낮다. 맨시티전에서 토디보·마브로파노스·디사시 3백 + 완비사카 RWB로 백5 전환한 사례가 있다. 공격 임무에서 **인버티드(하프스페이스 진입) 서술은 어느 소스에도 없다**. 온더볼은 짧고 안전한 패스 선호·전진 판단 주저로 일관되게 서술된다. ⚠️ 위 서술은 전부 **웨스트햄 시기 소스**이며 맨유 시기 자료와 섞지 않았다. ‖ [2026-08-31 player-collect] ⭐⭐**빌라는 그를 RB 단일로 쓸 계획이 아니다.** Football Insider(Wayne Veysey, 2026-08-15, 「Sources:」 자체 취재)가 **3개 역할**을 명시한다 — ①**백4의 중앙 센터백** ②**백3의 우측 CB** ③본 포지션 RB. 근거 논리가 정확히 에메리 축이다: 「**고라인 + 하이프레스 체제에서 그의 스피드를 활용**」 ⇒ **빌라는 그를 윙백 전진력이 아니라 「라인 뒤 커버 스피드」로 산다.** ⭐**「인버트 가능한가」라는 질문 자체가 바뀐다** — 계획은 미드필드 인버트가 아니라 **센터백으로의 내부 이동**이다. 원장의 「인버티드 서술 0건」은 여전히 참이고, 그 공백을 채우는 것이 인버트가 아니라 **CB 전환**이다. ⭐**신규 체제 — DR콩고 대표(드사브르)**: 2025-09 데뷔, **WC 2026 4경기 전 선발**, 백4 우측 풀백 고정, 임무는 **순수 수비 봉쇄** — 4경기 **드리블 피탈 0회**, 32강에서 **래시퍼드 장시간 봉쇄**.",
+   "execution": "2025/26 PL 25경기 23선발 2,083분, 0골 2도움, 경고 4, 평점 6.80(FotMob)·6.59(SofaScore). 45분+ 25경기 그리드는 RB 슬롯 fb_att_wb/Support **fit_sim 0.932**. 90분당 백분위(동포지션): 인터셉트 95 · 제쳐당함 92 · 크로스 정확도 38.1%(90) — 강점축. 태클 1.43(**14**) · 상대 박스 터치 .65(**10**) · 경합 승리(12) · 패스 정확도 76.7%(20) — 제약축. 결장 사유: 위장염 3경기(2025-09-12~09-30) · 발가락(주사 치료) · AFCON 차출(2025-12~2026-01, DR콩고) · 2026-04 FA컵 리즈전은 부상이 아니라 월드컵 본선 확정 뒤 귀국 지연. ⭐ **현재(2026-08) 결장은 의료 사유가 아니라 스쿼드 제외다** — 프리시즌 미참가, 26/27 단체사진 불참, 2026-08-08 포츠머스전 EFL컵 스쿼드 제외. 관계 파탄에 의한 이탈이라 이적 협상에서 부상 리스크와 구분해야 한다. ‖ [2026-08-31] WC 2026 4경기 전 선발·우즈베크전 풀타임 · **드리블 피탈 0회(「zéro dribble subi」)** · 온더볼 기여로 특정된 장면은 42분 크로스 1건뿐 · **FIFA 팀 내 스프린트 1위(194회)**. 계약: 2026-08-21 **시즌 임대 + 조건부 의무매입**(£18m 보도, 구단 미공표) — 웨스트햄은 £25m 완전이적을 원해 초기 임대 제안을 거절했다.",
+   "game_role_implication": "RB 슬롯 fb_att_wb/Support 후보(0.932) — 단 **기능은 윙백이 아니다**. 에메리의 빌라 RB는 캐시가 윙백/와이드미드를 병행하며 전진 높이를 감당하는데, 완비사카는 **바로 그 축에서 현 체제로부터 부적합 판정**을 받았다. ⇒ **캐시의 1:1 대체가 아니라 '수비 국면 전용 백업'** 으로 처방하는 편이 실측·서사와 모두 정합한다. ⭐ **게임 원장과의 교차 긴장**: FC26 role_familiarity가 **Wingback+ (RB/Balanced) 하나뿐**이라 게임은 그를 윙백으로 규정하는데, 실제 체제 서사는 정반대다. 게임 내 구현 시 Fullback 계열 역할이 없다는 제약이 있으므로 **Wingback/Balanced에 수비 지향 지시를 얹는 방식**으로 갈 수밖에 없다. ⚠️ 커널 Δ 산출 전 처방 변경 금지(docs/30 4단계) — 아직 Δ를 산출하지 않았다. ⭐ **[2026-08-14 처방 확정]** Δ 산출 결과 **RB = fb_att_wb/Support 유지**로 확정했다(Δ=0.1042>.05, 적합 우선). 앞 문단의 'Wingback/Balanced에 수비 지향 지시를 얹는다'는 잠정안은 **폐기**한다 — fb_wingback/Balanced는 2위(0.8280)이지 1위가 아니다. 다만 **Support를 공격 가담 요구로 해석하지 말라**는 임무 층 주석은 그대로 유효하다(상대 박스 터치 10퍼센타일). ⇒ 최종: **역할은 실측대로 fb_att_wb/Support, 운용은 수비 국면 백업.** ‖ [2026-08-31] ⭐RB 슬롯(x=87) 처방 fb_att_wb/Support 0.932 **유지 가능**(커널 재현 · tool_x 83.75로 슬롯보다 3.25 안쪽 = 전진 요구 낮은 방향이라 정합). 단 ⭐**「RB 슬롯 하나로 고정」 전제가 흔들린다 — RCB 후보 등재 검토 필요.** 영입 맥락도 **콘사(→아스날 £51m) 이탈의 부분 대체**이고 캐시(2029 계약)와의 RB 경쟁이 아니라 **CB 뎁스 보강 성격**이 섞여 있다.",
    "label": "완비사카",
    "observed_from": "2025-08",
-   "observed_to": "2026-05",
+   "observed_to": "2026-08-31",
    "player_id": 90,
    "position": "RB",
    "sample_note": "2025/26 PL 25경기(45분+·히트포인트 15+ 필터 통과분). 전부 웨스트햄 소속 기록이며 빌라 표본은 0이다.",
    "sample_scope": "season",
-   "source": "[전술 블로그] West Ham Zone 'Nuno must beware of system change after Wan-Bissaka reveal' 2026-02-26 Alex Oakhill https://www.westhamzone.com/statstactics/nuno-espirito-santo-must-beware-of-west-ham-change-after-aaron-wan-bissaka-reveal/ (누누 시기·핵심) ; The West Ham Way 2025-11-11 Neil Shaw-Smith (포터→누누 전환기) ; Premier League 공식 Talking Tactics 2025-08-29 Adrian Clarke (포터 시기) ; Breaking The Lines 2024-09-11 (⚠️ 로페테기 시기 — 현재 결론으로 쓰지 말 것) ; [기사] West Ham Zone/Yahoo 'Everything Nuno said on Wan-Bissaka' 2026-08-09 Pete Hanson https://sports.yahoo.com/articles/everything-nuno-said-aaron-wan-151000546.html ; [감독 발언] 누누 2026-08-09 'Yeah, we have to choose. We have to decide.' (방출 시사 — 역할 서술 아님) ; [강등] Premier League 공식 https://www.premierleague.com/en/news/4662359/west-ham-relegated-despite-win-over-leeds-on-final-day ; [유튜브] 4건 확인했으나 **전부 미시청 — 제목·검색요약 기준**이고 전부 맨유/웨스트햄 초기 시기라 근거로 쓰지 않았다 ; [실측] reports/transfer-watch/2026-08-14.md 13시 회차 · obs#202"
+   "source": "[전술 블로그] West Ham Zone 'Nuno must beware of system change after Wan-Bissaka reveal' 2026-02-26 Alex Oakhill https://www.westhamzone.com/statstactics/nuno-espirito-santo-must-beware-of-west-ham-change-after-aaron-wan-bissaka-reveal/ (누누 시기·핵심) ; The West Ham Way 2025-11-11 Neil Shaw-Smith (포터→누누 전환기) ; Premier League 공식 Talking Tactics 2025-08-29 Adrian Clarke (포터 시기) ; Breaking The Lines 2024-09-11 (⚠️ 로페테기 시기 — 현재 결론으로 쓰지 말 것) ; [기사] West Ham Zone/Yahoo 'Everything Nuno said on Wan-Bissaka' 2026-08-09 Pete Hanson https://sports.yahoo.com/articles/everything-nuno-said-aaron-wan-151000546.html ; [감독 발언] 누누 2026-08-09 'Yeah, we have to choose. We have to decide.' (방출 시사 — 역할 서술 아님) ; [강등] Premier League 공식 https://www.premierleague.com/en/news/4662359/west-ham-relegated-despite-win-over-leeds-on-final-day ; [유튜브] 4건 확인했으나 **전부 미시청 — 제목·검색요약 기준**이고 전부 맨유/웨스트햄 초기 시기라 근거로 쓰지 않았다 ; [실측] reports/transfer-watch/2026-08-14.md 13시 회차 · obs#202 ‖ [2026-08-31 player-collect] Football Insider/Wayne Veysey 2026-08-15 https://www.footballinsider247.com/aston-villa/sources-unai-emerys-plan-for-aaron-wan-bissaka-at-aston-villa-revealed · Actualite.cd 2026-07-02(콩고 1~2티어) · info.fr 2026-07-02 · allAfrica/FR 2025-08-20·2025-08-22 · avfc.co.uk 2026-08-21."
   },
   {
    "adherence": "⚠️ MEDIUM-LOW. 프리시즌 서사는 일관되게 긍정이나 **'공격 빌드업은 아직 보완이 필요하다'**(AVillaFan 07-29)는 반대 근거가 병존한다. 스카우트 소스도 '완성품과는 거리가 멀다'고 명시한다. ⚠️ **에메리 발언 0건**.",
@@ -1260,6 +1291,21 @@
    "sample_note": "⚠️ 체제 혼합 주의 — 자료가 6개 이상 체제에 걸쳐 있고 실측 표본(25/26 48경기)은 **Still/Eckert 단독**이다. 개별 영상 시청 0건(전술 분석 영상이 존재하지 않는다). regime_id=NULL — 아직 우리 선수가 아니다(불변규칙 7).",
    "sample_scope": "narrative:multi-regime(맨시티·켐파니×2·마틴·유리치·Eckert)",
    "source": "Breaking The Lines(@free__flowing) 2024-08-12 https://breakingthelines.com/player-analysis/taylor-harwood-bellis-the-rising-star-set-for-the-premier-league/ · Total Football Analysis 2019/20 맨시티 스카우팅 https://totalfootballanalysis.com/competitions/premier-league/taylor-harwood-bellis-2019-20-scout-report-tactical-analysis-tactics · WhoScored https://www.whoscored.com/players/384061/show/taylor-harwood-bellis (포지션 등록·스타일 태그) · Transfermarkt(.us) https://www.transfermarkt.us/taylor-harwood-bellis/profil/spieler/503977 · ⭐ Voetbalkrant(Dennis Rosiers) 2021-08-30 본인 원인터뷰(Onuachu 상대 수비 방법론) · VoetbalPrimeur.be 2021-10-30(HLN 전재, 켐파니 관련 본인 발언) · Anderlecht SD Peter Verbeke 2021-06 · 과르디올라 기자회견 2024-10 및 2019 카라바오컵 · 켐파니(번리, LancsLive 경유) · 리 카슬리 2024-11 · 러셀 마틴 · 토니 모브레이 · The Athletic(Ornstein+Tanswell) 2026-08-20 · The Sun(Jack Rosser) 2026-08-20 · Daily Echo(Dan Hargraves) 2026-08 · Correio da Manhã ~2026-08-17(이적 요청서 원출처, ⚠️원문 미열람) · Sky Sports 2026-05-19/20(스파이게이트) · FotMob playerStats(Championship 25/26·23/24·26/27, PL 24/25) 2026-08-21 수집"
+  },
+  {
+   "adherence": "⭐**커버형이 1차 근거로 확정됐다** — 잉글랜드 U21 2023 유로 결승(스페인전)에서 **THB가 두 CB 중 「더 깊은(deeper)」 쪽**이었고 Colwill이 미드필드까지 스텝업하는 스토퍼였다. 대회 **6경기 무실점**. ⇒ **파트너가 스토퍼일 때 THB가 자동으로 커버를 맡는 페어링 원리**. 포르투갈 8강 7/10 「공중에서 지배적」+라스트디치 블록, 반면 체코전 Pavel Sulc에게 뒷공간 피탈. ⛔**1v1·리커버리 속도는 하향 근거가 4중이 됐다**: TFA 2019/20 「1v1 균형 상실」 · BTL 2024 「스피드·민첩성 개선 필요」 · FotMob PL dribbled_past 백분위 7 · ⭐**2026-08-16 워트포드전 실장면**(Sky 매치리포트 독립 확인 — 스티븐스 백패스를 Iker Bravo가 가로챈 뒤 **THB를 「eased away from」 하고 득점**, 26/27 개막전·챔피언십 상대·21세 공격수에게 1v1 피탈).",
+   "confidence": "⚠️**아직 CONFIRMED가 아니다**(£30m 패키지·5년 2031·메디컬 진행·구단 공식 0). ⚠️⚠️**실측 표본이 챔피언십이다**(사우샘프턴 강등) — PL 고라인 투영 시 이 캐비앗이 이 명단의 다른 영입보다 무겁다. ⭐⭐**충돌 3건(불변규칙 3 — 지우지 않고 기록)**: **[A] 라인브레이킹 패스가 체제에 따라 정반대다.** Voetbalkrant 2021-08-30: 안더레흐트에서 「**라인을 넘기는 패스(het overslaan van linies)는 파트너 Wesley Hoedt에게 맡겼다**」 ↔ BTL: 번리에서 「primary progressor·롱볼 리그 2위」. **같은 감독(콤파니), 1년 간격, 정반대.** ⇒ **라인브레이킹은 고유 성향이 아니라 「파트너보다 그가 나은가」로 정해지는 상대적 역할**이다. **빌라 파트너는 Pau Torres(스페인 대표급 좌발 배급형) ⇒ THB가 다시 「양보하는 쪽」이 될 공산이 크다. 롱볼 백분위 98을 근거로 「빌라에서도 1차 배급자」라 읽으면 위험하다.** **[B] 공중볼은 서사가 실측보다 후하다** — aerials_won_percent 백분위 **37로 3시즌 고정**(60.3 챔십/55.8 PL/58.4 챔십)인데 서사는 「dominant in the air」. **서사가 「공격 세트피스 헤더」와 「수비 공중 듀얼 승률」을 구분하지 않는다** ⇒ 공격 헤더만 상향, **수비 공중 듀얼은 상향 금지**. **[C]** 원장의 「태클에 뛰어들지 않는다」 ↔ 콤파니 2021-11-08 원발언 「**우리는 굳이 그 발을 내밀고 싶어한다**」(PK 헌납, 「jeugdzonde」) ⇒ 모순이 아니라 「**위치로 못 막으면 발이 나간다**」는 메커니즘의 19세판 원형. PL 24/25 파울 백분위 2와 같은 축. ⚠️**원장 정정 2건**: ①「사우샘프턴 주장」은 부정확 — 정주장은 Jack Stephens이고 THB는 **25/26 마지막 6경기 대행**이다. ②안더레흐트 이탈 사유는 Magallán 단독이 아니라 **Magallán+Delcroix 복귀+Debast 대두의 3중 압박**. ⛔**미해소**: 유리치의 THB 개별 평가 0건 · 에메리 본인 발언 0건 · 수비 세트피스 담당(존/맨) 현행 체제 0건 · YouTube 전술영상 1건 존재하나 접근 실패(미시청·미인용) · HLN·Het Nieuwsblad(벨기에 1티어) 원문 0건. ⭐**다음 회차 최우선 결손: 독일어** — Eckert(베를린·바이에른/라이프치히 유스 출신)가 실측 표본 시즌의 감독이라 독일어 매체에 그의 CB 역할 규정이 있을 개연성이 가장 높다.",
+   "duties": "**[영입 진행(HIGH) · 에메리 체제 요구역할 — 아직 수행 0경기]** ⭐⭐**이번 수집 최대 발견: 에메리 구조가 THB에게 신규 학습이 아니다.** 실측 표본 시즌(25/26 사우샘프턴·Tonda Eckert)이 이미 **인포제션 3-2-5 + RB 인버트/드롭 + 맨오리엔티드 하이프레스 + 고라인**이었다. 즉 원장이 「에메리 하이라인과의 직접 결합 자료 0건」이라 적은 공백이 「**THB는 이미 그 구조에서 한 시즌을 뛰었다**」로 바뀐다. ⭐**풀백 인버트 경험 3중 축적**: 콤파니 안더레흐트(21/22, RB가 CB 「우측에 붙는」 백3 변형 — THB가 그 위치를 대신 점유한 변칙 확인) → 콤파니 번리(22/23, Maatsen 내로우 3-2-5에서 **THB가 넓게 벌린 우측 CB**) → Eckert(25/26~26/27, RB 인버트). ⭐**콤파니 두 체제의 기하학이 동일**하다 — THB는 반복적으로 「**백3의 가장 오른쪽 = 하프스페이스로 벌어지는 CB**」다. ⭐**오른발 + 좌발 파트너 페어링이 커리어 내내 고정**: Hoedt(안더레흐트)·Colwill(U21)·Bednarek(사우샘프턴) → **Pau Torres**(빌라).",
+   "execution": "**번리 22/27 「primary progressor」**: 콤파니가 수비수에게 롱볼을 권장했고 THB는 **정확 롱볼 6.7회/90 = 리그 2위**. **의도적 비대칭** — 오른발 THB(RCB)+오른발 GK Muric이 **좌측으로 대각 전환**을 선호, 반대편 윙어·LB가 하프스페이스 점유 ⇒ **주 무기는 우측→좌측 대각 롱패스**. 딥블록 상대(vs 카디프)에선 THB와 Al-Dakhil이 사실상 중앙 미드필더처럼 플레이. 팀 지표 PPDA 7.86 리그 최저(=최고 압박). **25/26 사우샘프턴**: PFA 챔피언십 ToTY(팀 내 유일) · 43경기 3,870분 · 7골 2도움 · 12클린시트 · **마지막 6경기 주장 대행**. Eckert 프리시즌 평가 「챔피언십 최고의 센터백」.",
+   "game_role_implication": "⭐**빌라 RCB 슬롯(x=63) 처방은 cb_bpd/Aggressive 0.899 유지**(커널 재산출 14/14 재현). 단 **가중 3건 조정 권고**: ①**구조 적합도 상향 가능** — 3-2-5·RB 인버트·맨오리엔티드 프레스가 이미 숙련이다. ②**1v1/리커버리 속도 추가 하향** — 4중 근거. ③⭐**배급 가중은 재검토 필요** — 아래 confidence의 충돌 A 참조. **커버/스토퍼 축은 「커버」로 확정**(U21 1차 근거).",
+   "label": "하우드-벨리스",
+   "observed_from": "2021-08-01",
+   "observed_to": "2026-08-16",
+   "player_id": 178,
+   "position": "RCB",
+   "sample_note": "⚠️ 체제 10개를 분리 검증했다(불변규칙 7). 서술마다 어느 체제인지 본문에 명기. 실측 표본은 25/26·26/27 **챔피언십**이 주류이고 PL은 24/25 34경기뿐이다.",
+   "sample_scope": "narrative:multi-regime(맨시티·콤파니 안더레흐트 21/22·콤파니 번리 22/23·러셀 마틴 사우샘프턴·유리치 백3 24/25·Still→Eckert 25/26~26/27·잉글랜드 U21 2023) + 실측 대조(FotMob 3시즌)",
+   "source": "서사 서브에이전트 전수 수집(2026-08-31 player-collect). Café Tactiques(Ben Griffis, 2021-08-21) https://cafetactiques.com/2021/08/21/vincent-kompany-back-3-buildup-with-anderlecht-analysis/ · Breaking The Lines 「How Burnley Returned to the Promised Land Under Vincent Kompany」 · Coaches' Voice 「Vincent Kompany tactics」 · TFA 팀분석(El-Daly 2024-08-09 / Mike 2026-04-24) · Voetbalkrant(Rosiers 2021-08-30 · Walckiers 2021-11-08 · Morren 2026-08-15) · southamptonfc.com(SFC Media 2023-12-06 본인 원인터뷰 · 2026-08 PFA ToTY) · Sky Sports 매치리포트 2026-08-16 · goal.com U21 2023."
   },
   {
    "adherence": "MEDIUM. 임무 순응(깊은 위치·연결)은 실측이 지지하나 **경쟁 서열에서는 밀렸다** — 키미히 확정, 그 다음이 파블로비치·비쇼프였고 고레츠카는 그 아래 로테이션이었다. 24/25 개막 시점에는 **중앙 5순위(키미히·파블로비치·라이머·팔리냐 뒤)로 시즌 초 28분**만 뛰었고, 그 상태에서 「콤파니 아래 새 니치를 찾아냈다」(Bundesliga.com 분석, 2025-03-26)로 반등한 이력이 있다 ⇒ **서열 하락에서 재적응한 전례가 있다**는 점은 순응도 쪽 긍정 근거다. 규율 리스크는 낮다 — 25/26 경고 4·퇴장 0(24/25 경고 2·퇴장 0), 파울 0.69/90(p55). ⭐ 1차 발언(본인): 「어쩌면 마지막 기회다. **해외에서 한 번 더 제대로 경쟁적인 축구를 하고 싶다**」(Sky 인터뷰, 2026-03 초 글라드바흐 4-1 승 직후). 이적 동기가 돈이 아니라 경쟁 환경이라는 **본인 진술이 존재한다** — 임금 요구 서사와 방향이 어긋나므로 둘을 함께 기록한다.",
@@ -32387,6 +32433,32 @@
    },
    {
     "league": "Premier League",
+    "metric": "Pass accuracy",
+    "metric_key": "successful_passes_accuracy",
+    "metric_kr": "패스 정확도",
+    "per90": 100.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "100.0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 100.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "100.0"
+   },
+   {
+    "league": "Premier League",
     "metric": "Tackles",
     "metric_key": "matchstats.headers.tackles",
     "metric_kr": "태클",
@@ -33037,6 +33109,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Tackles",
+    "metric_key": "matchstats.headers.tackles",
+    "metric_kr": "태클",
+    "per90": 9.0,
+    "percentile": 57,
+    "percentile_per90": 100,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "4"
+   },
+   {
+    "league": "Premier League",
     "metric": "xG",
     "metric_key": "expected_goals",
     "metric_kr": "xG(기대 득점)",
@@ -33060,6 +33145,19 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "1.28"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블",
+    "per90": 2.25,
+    "percentile": 55,
+    "percentile_per90": 94,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "Premier League",
@@ -33115,6 +33213,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Duels won %",
+    "metric_key": "duel_won_percent",
+    "metric_kr": "듀얼 승률",
+    "per90": 54.54545454545455,
+    "percentile": 53,
+    "percentile_per90": 53,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "54.5"
+   },
+   {
+    "league": "Premier League",
     "metric": "Pass accuracy",
     "metric_key": "successful_passes_accuracy",
     "metric_kr": "패스 정확도",
@@ -33125,6 +33236,19 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "85.6"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "드리블 돌파 허용",
+    "per90": 2.25,
+    "percentile": 45,
+    "percentile_per90": 4,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "Premier League",
@@ -33177,6 +33301,32 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "6"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Duels won",
+    "metric_key": "duel_won",
+    "metric_kr": "듀얼 승",
+    "per90": 13.5,
+    "percentile": 43,
+    "percentile_per90": 100,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "6"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG against while on pitch",
+    "metric_key": "expected_goals_against_while_on_pitch",
+    "metric_kr": "출전 중 피xG",
+    "per90": 5.805449903011322,
+    "percentile": 43,
+    "percentile_per90": 0,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "2.58"
    },
    {
     "league": "Premier League",
@@ -33245,6 +33395,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Dispossessed",
+    "metric_key": "dispossessed",
+    "metric_kr": "볼 탈취당함",
+    "per90": 2.25,
+    "percentile": 34,
+    "percentile_per90": 8,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
     "metric": "Blocked scoring attempt",
     "metric_key": "blocked_shots",
     "metric_kr": "슛 블록",
@@ -33271,6 +33434,32 @@
    },
    {
     "league": "Premier League",
+    "metric": "Fouls committed",
+    "metric_key": "fouls",
+    "metric_kr": "파울",
+    "per90": 4.5,
+    "percentile": 26,
+    "percentile_per90": 0,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Fouls won",
+    "metric_key": "fouls_won",
+    "metric_kr": "파울 획득",
+    "per90": 2.25,
+    "percentile": 26,
+    "percentile_per90": 81,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
     "metric": "Duels won %",
     "metric_key": "duel_won_percent",
     "metric_kr": "듀얼 승률",
@@ -33281,6 +33470,45 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "46.4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Chances created",
+    "metric_key": "chances_created",
+    "metric_kr": "기회 창출",
+    "per90": 2.25,
+    "percentile": 21,
+    "percentile_per90": 85,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "클리어런스",
+    "per90": 2.25,
+    "percentile": 21,
+    "percentile_per90": 79,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Defensive actions",
+    "metric_key": "defensive_actions",
+    "metric_kr": "수비 액션",
+    "per90": 15.749999999999998,
+    "percentile": 15,
+    "percentile_per90": 92,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "7"
    },
    {
     "league": "Premier League",
@@ -33310,6 +33538,45 @@
    },
    {
     "league": "Premier League",
+    "metric": "xA",
+    "metric_key": "expected_assists",
+    "metric_kr": "xA",
+    "per90": 0.012944047339260578,
+    "percentile": 11,
+    "percentile_per90": 19,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "0.01"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals conceded while on pitch",
+    "metric_key": "goals_conceded_while_on_pitch",
+    "metric_kr": "출전 중 실점",
+    "per90": 9.0,
+    "percentile": 8,
+    "percentile_per90": 0,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Line-breaking passes",
+    "metric_key": "line_breaking_passes",
+    "metric_kr": "라인 브레이킹 패스",
+    "per90": 6.75,
+    "percentile": 8,
+    "percentile_per90": 34,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "3"
+   },
+   {
+    "league": "Premier League",
     "metric": "xG against while on pitch",
     "metric_key": "expected_goals_against_while_on_pitch",
     "metric_kr": "출전 중 피xG",
@@ -33336,6 +33603,32 @@
    },
    {
     "league": "Premier League",
+    "metric": "Recoveries",
+    "metric_key": "recoveries",
+    "metric_kr": "볼 리커버리",
+    "per90": 4.5,
+    "percentile": 4,
+    "percentile_per90": 43,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Accurate passes",
+    "metric_key": "successful_passes",
+    "metric_kr": "정확한 패스",
+    "per90": 31.499999999999996,
+    "percentile": 4,
+    "percentile_per90": 26,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "14"
+   },
+   {
+    "league": "Premier League",
     "metric": "Dispossessed",
     "metric_key": "dispossessed",
     "metric_kr": "볼 탈취당함",
@@ -33359,6 +33652,32 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "49.88"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Touches",
+    "metric_key": "touches",
+    "metric_kr": "터치",
+    "per90": 56.25,
+    "percentile": 2,
+    "percentile_per90": 32,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "25"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_key": "yellow_cards",
+    "metric_kr": "옐로카드",
+    "per90": 2.25,
+    "percentile": 2,
+    "percentile_per90": 0,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "Premier League",
@@ -33463,6 +33782,136 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "56"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_key": "assists",
+    "metric_kr": "어시스트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Clean sheets",
+    "metric_key": "clean_sheet_team_title",
+    "metric_kr": "클린시트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_key": "goals",
+    "metric_kr": "골",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Total Distance Covered",
+    "metric_key": "physical_metrics_distance_covered",
+    "metric_kr": "총 이동거리",
+    "per90": 9800.81982421875,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "4355.9"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Number of Sprints",
+    "metric_key": "physical_metrics_number_of_sprints",
+    "metric_kr": "스프린트 횟수",
+    "per90": 2.25,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Running",
+    "metric_key": "physical_metrics_running",
+    "metric_kr": "러닝 거리",
+    "per90": 2556.44734954834,
+    "percentile": 0,
+    "percentile_per90": 57,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "1136.2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Sprinting",
+    "metric_key": "physical_metrics_sprinting",
+    "metric_kr": "스프린트 거리",
+    "per90": 38.168100357055664,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "17.0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Top Speed",
+    "metric_key": "physical_metrics_topspeed",
+    "metric_kr": "최고 속도",
+    "per90": 25.899999618530273,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "25.9"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_key": "red_cards",
+    "metric_kr": "레드카드",
+    "per90": 2.25,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Shots",
+    "metric_key": "shots",
+    "metric_kr": "슛",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "stat_value": "0"
    }
   ],
   "지르크지": [
@@ -46360,6 +46809,58 @@
     "PL"
    ]
   ],
+  "완비사카": [
+   [
+    "2026-03-22",
+    6.2,
+    "Premier League"
+   ],
+   [
+    "2026-03-31",
+    7.0,
+    "World Championship Qual., Inter-Confederation"
+   ],
+   [
+    "2026-05-02",
+    6.7,
+    "Premier League"
+   ],
+   [
+    "2026-05-10",
+    6.8,
+    "Premier League"
+   ],
+   [
+    "2026-05-17",
+    6.6,
+    "Premier League"
+   ],
+   [
+    "2026-06-09",
+    6.2,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-17",
+    6.9,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-24",
+    6.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-27",
+    7.0,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-01",
+    7.6,
+    "FIFA World Cup"
+   ]
+  ],
   "왓킨스": [
    [
     "2026-05-03",
@@ -46410,6 +46911,58 @@
     "2026-07-18",
     6.7,
     "FIFA World Cup"
+   ]
+  ],
+  "음바예": [
+   [
+    "2026-05-02",
+    7.4,
+    "Ligue 1"
+   ],
+   [
+    "2026-05-13",
+    7.6,
+    "Ligue 1"
+   ],
+   [
+    "2026-05-17",
+    6.7,
+    "Ligue 1"
+   ],
+   [
+    "2026-06-09",
+    6.5,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-16",
+    7.4,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-23",
+    7.3,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-26",
+    6.6,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-07-01",
+    6.5,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-08-05",
+    6.4,
+    "Club Friendly Games"
+   ],
+   [
+    "2026-08-08",
+    7.5,
+    "Club Friendly Games"
    ]
   ],
   "일링주니어": [
@@ -46932,6 +47485,58 @@
     "Club Friendly Games"
    ]
   ],
+  "하우드-벨리스": [
+   [
+    "2026-04-14",
+    7.8,
+    "Championship"
+   ],
+   [
+    "2026-04-18",
+    7.6,
+    "Championship"
+   ],
+   [
+    "2026-04-21",
+    6.6,
+    "Championship"
+   ],
+   [
+    "2026-04-25",
+    6.6,
+    "FA Cup"
+   ],
+   [
+    "2026-04-28",
+    6.7,
+    "Championship"
+   ],
+   [
+    "2026-05-02",
+    8.1,
+    "Championship"
+   ],
+   [
+    "2026-05-09",
+    8.3,
+    "Championship"
+   ],
+   [
+    "2026-05-12",
+    7.0,
+    "Championship"
+   ],
+   [
+    "2026-08-08",
+    8.1,
+    "EFL Cup"
+   ],
+   [
+    "2026-08-16",
+    7.2,
+    "Championship"
+   ]
+  ],
   "헤밍스": [
    [
     "2025-10-21",
@@ -47131,6 +47736,69 @@
     "player_id": 58,
     "pulled": "2026-08-11",
     "season": "2025/2026",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "player_id": 58,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "player_id": 58,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "player_id": 58,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 58,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 58,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 58,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 58,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
     "value": "0"
    }
   ],
@@ -48093,6 +48761,69 @@
     "player_id": 78,
     "pulled": "2026-08-11",
     "season": "2025/2026",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "player_id": 78,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "player_id": 78,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "player_id": 78,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 78,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 78,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "8"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 78,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 78,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
     "value": "0"
    }
   ],
@@ -49974,6 +50705,78 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "40"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "4.06"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 56,
+    "pulled": "2026-08-31",
+    "season": "2026/2027",
+    "value": "1"
    }
   ],
   "지르크지": [
@@ -58257,6 +59060,30 @@
    "xg_pg": 0.035
   },
   {
+   "avg_rating": 6.91,
+   "dw_pg": 1.64,
+   "ic_pg": 0.15,
+   "kp_pg": 0.49,
+   "label": "음바예",
+   "minutes": 1745,
+   "n": 67,
+   "tk_pg": 0.4,
+   "xa_pg": 0.078,
+   "xg_pg": 0.205
+  },
+  {
+   "avg_rating": 6.65,
+   "dw_pg": 2.25,
+   "ic_pg": 1.13,
+   "kp_pg": 0.45,
+   "label": "완비사카",
+   "minutes": 3623,
+   "n": 56,
+   "tk_pg": 0.91,
+   "xa_pg": 0.041,
+   "xg_pg": null
+  },
+  {
    "avg_rating": 7.01,
    "dw_pg": 0.46,
    "ic_pg": 0.0,
@@ -58267,6 +59094,18 @@
    "tk_pg": 0.0,
    "xa_pg": 0.005,
    "xg_pg": null
+  },
+  {
+   "avg_rating": 7.37,
+   "dw_pg": 4.57,
+   "ic_pg": 0.72,
+   "kp_pg": 0.45,
+   "label": "하우드-벨리스",
+   "minutes": 4503,
+   "n": 60,
+   "tk_pg": 0.73,
+   "xa_pg": 0.05,
+   "xg_pg": 0.143
   },
   {
    "avg_rating": 6.95,
@@ -63190,6 +64029,25 @@
    "focus": "Attack",
    "game_version": "FC26",
    "grid_club": "Chelsea",
+   "kind": "fc26:opt:ST",
+   "label": "잭슨",
+   "map25": "357324X673345312211100000",
+   "player_id": 76,
+   "pos_label": "ST",
+   "rationale": "2026-08-31 신설 — 잭슨은 `measured` 행(id=358)만 있고 26/27 처방 행이 없었다(축 결손 봉합). 값은 동일하며 덮어쓰지 않는다(불변규칙 2). ⚠️⚠️**grid_club=Chelsea인데 25/26 실측은 바이에른 임대분이다** — `player_tenures`·FotMob 수집이 25/26을 **Bundesliga**로 반환한다(케인 백업·로테이션 ST, 콤파니 체제). 즉 이 그리드는 **첼시가 아니라 바이에른에서 하던 일**이므로 `grid_club` 표기를 다음 회차에 정정할 것. ⭐fit_role이 `st_false9/Attack` 0.724로 **이 명단에서 가장 낮다** — 그는 빌라 ST 슬롯(x=50)의 정통 9번 요구와 거리가 있고 내려받는 유형이다. ⚠️첼시 26/27에서는 알론소가 그를 **LAM**으로 썼다는 별도 기록이 있다(`player_duties` regime=2).",
+   "role_id": "st_false9",
+   "sample_n": 28,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 50,
+   "y": null
+  },
+  {
+   "avg_rating": 6.92,
+   "fit_sim": 0.724,
+   "focus": "Attack",
+   "game_version": "FC26",
+   "grid_club": "Chelsea",
    "kind": "measured:season:full2526",
    "label": "잭슨",
    "map25": "357324X673345312211100000",
@@ -63261,6 +64119,101 @@
    "y": null
   },
   {
+   "avg_rating": 7.01,
+   "fit_sim": 0.878,
+   "focus": "Build-Up",
+   "game_version": "FC26",
+   "grid_club": "Paris Saint-Germain",
+   "kind": "fc26:opt:RM",
+   "label": "음바예",
+   "map25": "011231115X100261001300000",
+   "player_id": 86,
+   "pos_label": "RM",
+   "rationale": "2026-08-31 신설 — ⚠️⚠️**기존 처방 행(regime_id=3)은 리버풀 체제 기준 산출이다**(음바예가 LIV 영입 후보였을 때 생성 · w_wideplm/Build-Up 0.94 · LIV RM x=77). 그는 **빌라 영입**이므로 **AVL 체제(regime_id=1 · RM x=85) 기준 행을 신설**한다(불변규칙 7). **기존 regime=3 행은 덮지 않고 이력으로 남긴다**(불변규칙 2). AVL 기준 재산출값 **wm_widemid/Build-Up 0.878**은 LIV 기준 0.94보다 **낮다** — 같은 선수라도 슬롯 x가 다르면 적합이 달라진다는 실증이다. ⚠️표본 16경기 · grid_club=PSG(루이스 엔리케 체제). ⭐⭐**tool_x 74.42 vs AVL RM 슬롯 x=85 → 10.58 안쪽 — 이 명단에서 슬롯 대비 이탈이 가장 크다.** 실측상 그는 터치라인형이 아니라 안으로 접는다. `player_duties`의 「우측 **정통 윙어(orthodox winger)** · wide forward가 아니라 터치라인형」 서술과 **정면으로 어긋난다** ⇒ ⭐**충돌로 기록한다**(불변규칙 3 — 위치 주장은 실측이 이긴다).",
+   "role_id": "wm_widemid",
+   "sample_n": 16,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 85,
+   "y": null
+  },
+  {
+   "avg_rating": 7.01,
+   "fit_sim": 0.878,
+   "focus": "Build-Up",
+   "game_version": "FC26",
+   "grid_club": "Paris Saint-Germain",
+   "kind": "measured:season:full2526",
+   "label": "음바예",
+   "map25": "011231115X100261001300000",
+   "player_id": 86,
+   "pos_label": "RM",
+   "rationale": "2026-08-31 신설 — ⚠️⚠️**기존 처방 행(regime_id=3)은 리버풀 체제 기준 산출이다**(음바예가 LIV 영입 후보였을 때 생성 · w_wideplm/Build-Up 0.94 · LIV RM x=77). 그는 **빌라 영입**이므로 **AVL 체제(regime_id=1 · RM x=85) 기준 행을 신설**한다(불변규칙 7). **기존 regime=3 행은 덮지 않고 이력으로 남긴다**(불변규칙 2). AVL 기준 재산출값 **wm_widemid/Build-Up 0.878**은 LIV 기준 0.94보다 **낮다** — 같은 선수라도 슬롯 x가 다르면 적합이 달라진다는 실증이다. ⚠️표본 16경기 · grid_club=PSG(루이스 엔리케 체제). ⭐⭐**tool_x 74.42 vs AVL RM 슬롯 x=85 → 10.58 안쪽 — 이 명단에서 슬롯 대비 이탈이 가장 크다.** 실측상 그는 터치라인형이 아니라 안으로 접는다. `player_duties`의 「우측 **정통 윙어(orthodox winger)** · wide forward가 아니라 터치라인형」 서술과 **정면으로 어긋난다** ⇒ ⭐**충돌로 기록한다**(불변규칙 3 — 위치 주장은 실측이 이긴다).",
+   "role_id": "wm_widemid",
+   "sample_n": 16,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 85,
+   "y": null
+  },
+  {
+   "avg_rating": 6.59,
+   "fit_sim": 0.932,
+   "focus": "Support",
+   "game_version": "FC26",
+   "grid_club": "West Ham United",
+   "kind": "fc26:opt:RB",
+   "label": "완비사카",
+   "map25": "000140002X001290003900234",
+   "player_id": 90,
+   "pos_label": "RB",
+   "rationale": "2026-08-31 신설 — 완비사카는 실측·게임스탯·FotMob·Understat이 모두 적재됐는데 `prescriptions`만 0행이었다(축 결손 봉합 · 스즈키 id=362·잭슨 id=358 선례). ⭐`transfer_targets` 값을 덮지 않고 같은 값을 정형 필드로 옮긴다(불변규칙 2) — 그 행은 이적 감시 축, 이 행은 처방 축이다. 커널 재산출로 fb_att_wb/Support 0.932가 소수점 3자리까지 재현됐다(2026-08-31 회귀검증 14/14). ⚠️**grid_club=West Ham United** — 누누 체제에서 하던 일이다(불변규칙 7). ⭐**tool_x 83.75 vs AVL RB 슬롯 x=87 → 3.25 안쪽.** 에메리의 풀백 인버트 요구와 방향은 같으나 폭이 작다 — 수행 가능 여부는 서사 축에서 별도 판정.",
+   "role_id": "fb_att_wb",
+   "sample_n": 25,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 87,
+   "y": null
+  },
+  {
+   "avg_rating": 6.59,
+   "fit_sim": 0.932,
+   "focus": "Support",
+   "game_version": "FC26",
+   "grid_club": "West Ham United",
+   "kind": "measured:season:full2526",
+   "label": "완비사카",
+   "map25": "000140002X001290003900234",
+   "player_id": 90,
+   "pos_label": "RB",
+   "rationale": "2026-08-31 신설 — 완비사카는 실측·게임스탯·FotMob·Understat이 모두 적재됐는데 `prescriptions`만 0행이었다(축 결손 봉합 · 스즈키 id=362·잭슨 id=358 선례). ⭐`transfer_targets` 값을 덮지 않고 같은 값을 정형 필드로 옮긴다(불변규칙 2) — 그 행은 이적 감시 축, 이 행은 처방 축이다. 커널 재산출로 fb_att_wb/Support 0.932가 소수점 3자리까지 재현됐다(2026-08-31 회귀검증 14/14). ⚠️**grid_club=West Ham United** — 누누 체제에서 하던 일이다(불변규칙 7). ⭐**tool_x 83.75 vs AVL RB 슬롯 x=87 → 3.25 안쪽.** 에메리의 풀백 인버트 요구와 방향은 같으나 폭이 작다 — 수행 가능 여부는 서사 축에서 별도 판정.",
+   "role_id": "fb_att_wb",
+   "sample_n": 25,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 87,
+   "y": null
+  },
+  {
+   "avg_rating": 7.05,
+   "fit_sim": 0.975,
+   "focus": "Defend",
+   "game_version": "FC26",
+   "grid_club": "Parma",
+   "kind": "fc26:opt:GK",
+   "label": "스즈키 지온",
+   "map25": "0000000000000000010001X20",
+   "player_id": 132,
+   "pos_label": "GK",
+   "rationale": "2026-08-31 신설 — 스즈키는 `measured` 행(id=362)만 있고 26/27 처방 행이 없었다(축 결손 봉합). 값은 그 행과 동일하며 덮어쓰지 않는다(불변규칙 2). ⛔**fit_sim 0.975를 우열 근거로 읽지 말 것**(obs#220) — 측정된 GK 5명이 .961~.975 폭 0.014에 수렴한다. 변별은 **tool_y 10.06**(마르티네스보다 1.10 깊다)에서 나오고, 에메리 구조가 전진 스위핑을 요구하지 않으므로 이 방향은 정합 신호다(obs#154). ⚠️grid_club=Parma(잔류권 딥블록) — 빌라 고라인에서 같은 값이 나온다는 근거가 아니다(불변규칙 7).",
+   "role_id": "gk_goalkeeper",
+   "sample_n": 29,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 50,
+   "y": null
+  },
+  {
    "avg_rating": 7.05,
    "fit_sim": 0.975,
    "focus": "Defend",
@@ -63277,6 +64230,101 @@
    "season": "2025-26",
    "starter": 0,
    "x": null,
+   "y": null
+  },
+  {
+   "avg_rating": 7.47,
+   "fit_sim": 0.899,
+   "focus": "Aggressive",
+   "game_version": "FC26",
+   "grid_club": "Southampton",
+   "kind": "fc26:opt:RCB",
+   "label": "하우드-벨리스",
+   "map25": "001000013300264014X601454",
+   "player_id": 178,
+   "pos_label": "RCB",
+   "rationale": "2026-08-31 신설 — THB는 `player_matches`·`prescriptions`·`squad_entries`가 **전부 0행**이었다(축 결손 봉합). ⚠️**아직 CONFIRMED가 아니다**(HIGH · £30m 패키지 · 5년 2031 · 메디컬 진행 · 구단 공식 0) — regime_id=1은 '빌라 체제에 넣으면'의 투영이다. ⚠️⚠️**grid_club=Southampton — 이 그리드는 「챔피언십」에서 하던 일이다**(사우샘프턴 강등). **2부 리그 그리드를 빌라의 PL 고라인에 그대로 투영하지 말 것** — 이 캐비앗이 이 명단의 다른 영입보다 무겁다(불변규칙 7). ⭐tool_x 68.75 vs AVL RCB 슬롯 x=63 → **5.75 바깥** — 평균 위치가 슬롯보다 넓다.",
+   "role_id": "cb_bpd",
+   "sample_n": 38,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 63,
+   "y": null
+  },
+  {
+   "avg_rating": 7.47,
+   "fit_sim": 0.899,
+   "focus": "Aggressive",
+   "game_version": "FC26",
+   "grid_club": "Southampton",
+   "kind": "measured:season:full2526",
+   "label": "하우드-벨리스",
+   "map25": "001000013300264014X601454",
+   "player_id": 178,
+   "pos_label": "RCB",
+   "rationale": "2026-08-31 신설 — THB는 `player_matches`·`prescriptions`·`squad_entries`가 **전부 0행**이었다(축 결손 봉합). ⚠️**아직 CONFIRMED가 아니다**(HIGH · £30m 패키지 · 5년 2031 · 메디컬 진행 · 구단 공식 0) — regime_id=1은 '빌라 체제에 넣으면'의 투영이다. ⚠️⚠️**grid_club=Southampton — 이 그리드는 「챔피언십」에서 하던 일이다**(사우샘프턴 강등). **2부 리그 그리드를 빌라의 PL 고라인에 그대로 투영하지 말 것** — 이 캐비앗이 이 명단의 다른 영입보다 무겁다(불변규칙 7). ⭐tool_x 68.75 vs AVL RCB 슬롯 x=63 → **5.75 바깥** — 평균 위치가 슬롯보다 넓다.",
+   "role_id": "cb_bpd",
+   "sample_n": 38,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 63,
+   "y": null
+  },
+  {
+   "avg_rating": 7.42,
+   "fit_sim": 0.861,
+   "focus": "Build-Up",
+   "game_version": "FC26",
+   "grid_club": "무소속(자유계약 · 전 Bayern München)",
+   "kind": "fc26:opt:CAM",
+   "label": "고레츠카",
+   "map25": "0112026X91279511544102200",
+   "player_id": 190,
+   "pos_label": "CAM",
+   "rationale": "2026-08-31 신설 — `prescriptions` 0행 봉합. ⚠️⚠️**표본 6경기뿐이다** — fit_sim을 신뢰구간 없이 읽지 말 것. ⚠️grid_club=Bayern München(콤파니 체제, 불변규칙 7). ⭐**두 슬롯의 성격이 다르다**: **LDM(dm_dlp/Roaming 0.807)이 서사와 정합**한다 — 바이에른 25/26 정본 슬롯이 **8번이 아니라 6번**이었다는 독일 매체 총평과 일치하고 2026-08-31 FotMob 수집도 `primary_position=DM`을 반환했다. 반면 **CAM(cam_playmaker/Build-Up 0.861)은 커널 argmax가 만든 가설일 뿐 보도 근거가 0이다**(`player_duties`에 이미 그렇게 기록돼 있다) — **수치가 더 높다고 예상 배치로 읽지 말 것.**",
+   "role_id": "cam_playmaker",
+   "sample_n": 6,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 50,
+   "y": null
+  },
+  {
+   "avg_rating": 7.42,
+   "fit_sim": 0.807,
+   "focus": "Roaming",
+   "game_version": "FC26",
+   "grid_club": "무소속(자유계약 · 전 Bayern München)",
+   "kind": "fc26:opt:LDM",
+   "label": "고레츠카",
+   "map25": "0112026X91279511544102200",
+   "player_id": 190,
+   "pos_label": "LDM",
+   "rationale": "2026-08-31 신설 — `prescriptions` 0행 봉합. ⚠️⚠️**표본 6경기뿐이다** — fit_sim을 신뢰구간 없이 읽지 말 것. ⚠️grid_club=Bayern München(콤파니 체제, 불변규칙 7). ⭐**두 슬롯의 성격이 다르다**: **LDM(dm_dlp/Roaming 0.807)이 서사와 정합**한다 — 바이에른 25/26 정본 슬롯이 **8번이 아니라 6번**이었다는 독일 매체 총평과 일치하고 2026-08-31 FotMob 수집도 `primary_position=DM`을 반환했다. 반면 **CAM(cam_playmaker/Build-Up 0.861)은 커널 argmax가 만든 가설일 뿐 보도 근거가 0이다**(`player_duties`에 이미 그렇게 기록돼 있다) — **수치가 더 높다고 예상 배치로 읽지 말 것.**",
+   "role_id": "dm_dlp",
+   "sample_n": 6,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 38,
+   "y": null
+  },
+  {
+   "avg_rating": 7.42,
+   "fit_sim": 0.861,
+   "focus": "Build-Up",
+   "game_version": "FC26",
+   "grid_club": "무소속(자유계약 · 전 Bayern München)",
+   "kind": "measured:season:full2526",
+   "label": "고레츠카",
+   "map25": "0112026X91279511544102200",
+   "player_id": 190,
+   "pos_label": "CAM",
+   "rationale": "2026-08-31 신설 — `prescriptions` 0행 봉합. ⚠️⚠️**표본 6경기뿐이다** — fit_sim을 신뢰구간 없이 읽지 말 것. ⚠️grid_club=Bayern München(콤파니 체제, 불변규칙 7). ⭐**두 슬롯의 성격이 다르다**: **LDM(dm_dlp/Roaming 0.807)이 서사와 정합**한다 — 바이에른 25/26 정본 슬롯이 **8번이 아니라 6번**이었다는 독일 매체 총평과 일치하고 2026-08-31 FotMob 수집도 `primary_position=DM`을 반환했다. 반면 **CAM(cam_playmaker/Build-Up 0.861)은 커널 argmax가 만든 가설일 뿐 보도 근거가 0이다**(`player_duties`에 이미 그렇게 기록돼 있다) — **수치가 더 높다고 예상 배치로 읽지 말 것.**",
+   "role_id": "cam_playmaker",
+   "sample_n": 6,
+   "season": "2025-26",
+   "starter": 0,
+   "x": 50,
    "y": null
   }
  ],
@@ -65263,6 +66311,98 @@
     "starts": 1
    }
   ],
+  "완비사카": [
+   {
+    "assists": 0,
+    "avg_rating": 7.6,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   },
+   {
+    "assists": 2,
+    "avg_rating": 6.6,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 2084,
+    "n": 30,
+    "season": "2025-26",
+    "starts": 23
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.4,
+    "competition": "World Cup Qual. CAF ",
+    "goals": 0,
+    "minutes": 551,
+    "n": 6,
+    "season": "2025-26",
+    "starts": 6
+   },
+   {
+    "assists": 0,
+    "avg_rating": null,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": null,
+    "n": 5,
+    "season": "2025-26",
+    "starts": 4
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.63,
+    "competition": "Africa Cup of Nations",
+    "goals": 0,
+    "minutes": 300,
+    "n": 4,
+    "season": "2025-26",
+    "starts": 3
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.75,
+    "competition": "FA Cup",
+    "goals": 0,
+    "minutes": 120,
+    "n": 3,
+    "season": "2025-26",
+    "starts": 1
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.2,
+    "competition": "International Friendly Games",
+    "goals": 0,
+    "minutes": 93,
+    "n": 3,
+    "season": "2025-26",
+    "starts": 1
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.8,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 265,
+    "n": 3,
+    "season": "2025-26",
+    "starts": 3
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.0,
+    "competition": "World Championship Qual., Inter-Confederation",
+    "goals": 0,
+    "minutes": 120,
+    "n": 1,
+    "season": "2025-26",
+    "starts": 1
+   }
+  ],
   "왓킨스": [
    {
     "assists": 0,
@@ -65363,6 +66503,108 @@
     "n": 1,
     "season": "2024-25",
     "starts": 1
+   }
+  ],
+  "음바예": [
+   {
+    "assists": 0,
+    "avg_rating": 6.95,
+    "competition": "Club Friendly Games",
+    "goals": 1,
+    "minutes": 150,
+    "n": 2,
+    "season": "2026-27",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.5,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 47,
+    "n": 1,
+    "season": "2026-27",
+    "starts": null
+   },
+   {
+    "assists": 2,
+    "avg_rating": 6.79,
+    "competition": "Ligue 1",
+    "goals": 3,
+    "minutes": 997,
+    "n": 30,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.72,
+    "competition": "UEFA Champions League",
+    "goals": 0,
+    "minutes": 106,
+    "n": 16,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.9,
+    "competition": "Africa Cup of Nations",
+    "goals": 1,
+    "minutes": 125,
+    "n": 6,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 3,
+    "avg_rating": 7.72,
+    "competition": "International Friendly Games",
+    "goals": 1,
+    "minutes": 159,
+    "n": 4,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": null,
+    "competition": "FIFA Club World Cup",
+    "goals": 0,
+    "minutes": null,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.1,
+    "competition": "World Cup",
+    "goals": 1,
+    "minutes": 108,
+    "n": 3,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.9,
+    "competition": "FIFA Intercontinental Cup",
+    "goals": 0,
+    "minutes": 30,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.8,
+    "competition": "UEFA Super Cup",
+    "goals": 0,
+    "minutes": 23,
+    "n": 1,
+    "season": "2025-26",
+    "starts": null
    }
   ],
   "일링주니어": [
@@ -66103,6 +67345,68 @@
     "n": 1,
     "season": "2025-26",
     "starts": null
+   }
+  ],
+  "하우드-벨리스": [
+   {
+    "assists": 0,
+    "avg_rating": null,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": null,
+    "n": 4,
+    "season": "2026-27",
+    "starts": 3
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.2,
+    "competition": "Championship",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   },
+   {
+    "assists": 0,
+    "avg_rating": 8.1,
+    "competition": "EFL Cup",
+    "goals": 0,
+    "minutes": 90,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   },
+   {
+    "assists": 2,
+    "avg_rating": 7.37,
+    "competition": "Championship",
+    "goals": 7,
+    "minutes": 3900,
+    "n": 47,
+    "season": "2025-26",
+    "starts": 43
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.13,
+    "competition": "FA Cup",
+    "goals": 0,
+    "minutes": 360,
+    "n": 4,
+    "season": "2025-26",
+    "starts": 4
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.6,
+    "competition": "EFL Cup",
+    "goals": 0,
+    "minutes": 63,
+    "n": 3,
+    "season": "2025-26",
+    "starts": 1
    }
   ],
   "헤밍스": [
@@ -70416,7 +71720,7 @@
     "likelihood": "CONFIRMED",
     "map25": "357324X673345312211100000",
     "name": "Nicolas Jackson",
-    "name_kr": null,
+    "name_kr": "잭슨",
     "opt_focus": "Attack",
     "opt_role": "st_false9",
     "player_id": 76,
@@ -70440,7 +71744,7 @@
     "likelihood": "CONFIRMED",
     "map25": "77111X4111510006100010100",
     "name": "Alejandro Garnacho",
-    "name_kr": null,
+    "name_kr": "가르나초",
     "opt_focus": "Attack",
     "opt_role": "wm_winger",
     "player_id": 58,
@@ -70515,7 +71819,7 @@
     "name_kr": "마테오 루헤리",
     "opt_focus": "Support",
     "opt_role": "fb_att_wb",
-    "player_id": null,
+    "player_id": 78,
     "position": "LB",
     "rationale": "[2026-08-11 갱신] Romano(1티어, 08-11 22:41): **개인 조건 합의 완료**, 선수가 버밍엄으로 이동해 **메디컬·계약 서명 진행 가능**. 이적료는 종전 €20m 표기에서 **€25m + 애드온 €1.5m(총 €26.5m)** 로 정정. [경쟁구도] 리버풀·뉴캐슬 관심은 소멸, 빌라 단독 우위. 아틀레티코는 그리말도 영입 후 매각 의사. ⚠️ **CONFIRMED 아님** — 메디컬 완료·구단 공식 발표 0건이고 Romano의 'here we go'도 아직 없다. 슈퍼컵(08-12) 전 등록은 무산됐다. 다음 회차 CONFIRMED 전환 1순위. [2026-08-13] **메디컬 단계 진입** — Romano(1티어) 08-12 트윗 `2087469710958850427`: \"오늘 늦게 잉글랜드로 이동해 빌라 메디컬\". 08-11 \"here we go\" 후속이다. 08-13 현재 **구단 공식 발표 0건**이라 CONFIRMED 전환은 보류 — 다음 회차 1순위 그대로. 이적료 €25m + €1.5m 애드온(총 €26.5m) 불변. [2026-08-14 재확인] AS 2026-08-13 09:12 UTC: 선수가 버밍엄으로 이동해 최종 절차를 진행 중. 구단 공식 발표는 아직 없어 HIGH 유지, CONFIRMED 전환 보류. [2026-08-14 21시 재확인 — HIGH 유지, CONFIRMED 전환 보류] **구단 공식 발표가 여전히 0건**이다. 판별 근거: Sky Sports 'Premier League deals, ins and outs' 페이지가 **08-14 14:46 UK 갱신 시점에도 빌라 IN 목록에 루헤리를 싣지 않았다**(마잠비·고메스·시세·얼리·가르나초만 등재). Romano 08-14는 \"being announced soon\", 버밍엄월드는 \"48시간 내 메디컬\"까지다. 조건은 €25m 고정 + €1.5m 애드온(총 €26.5m), 개인 조건 합의·메디컬 단계로 불변. ⇒ **다음 회차 CONFIRMED 전환 1순위**(전환 시 squad_entries 승격 동반). [2026-08-15 재확인 — HIGH 유지, ⚠️**발표 지연이 만 하루를 넘겼다**] Sky \"PL deals, ins and outs\" 페이지가 **08-15 13:10 UK 갱신본에서도** 빌라 IN 목록에 루헤리를 싣지 않았다(등재분은 마잠비 £59.5m · 주앙 고메스 £38m · 시세 비공개 · Blade Earley 자유 · 가르나초 임대 5건뿐). 현재 시각 기준 46분 전 갱신본이라 실효 최신이다. 구단 공식 채널(avfc.co.uk)·아틀레티코 채널도 발표 없음 — **등번호·계약 기간 정보가 존재하지 않는다.** 조건 불변(€25m + €1.5m = €26.5m), 단계는 \"메디컬 완료·버밍엄 체류·계약 서명 대기\". ⇒ 어제 \"다음 회차 CONFIRMED 전환 1순위\"로 적었으나 **오늘도 전환 근거가 확보되지 않았다**. 단순 행정 대기인지 별건 사유인지 감시 대상으로 격상한다. [2026-08-16 재확인 — HIGH 유지 / ⚠️**발표 지연 4일째**] **Sky 'PL deals, ins and outs' 08-15 18:44 UK 갱신본**(어제 확인한 13:10보다 5시간 34분 신규)에도 빌라 IN 등재분은 마잠비·주앙 고메스·시세·Earley·가르나초 **5건 그대로이고 루헤리가 없다**. 완비사카도 없다. 타임라인: 메디컬 **08-12(수)** → Romano HWG **08-13** → 현재 **08-16 02:56 BST까지 발표 0** = 메디컬 기준 **만 3일 반**이다(어제 '만 하루'로 적은 것을 정정한다). ⚠️ **금액이 3분기로 미해소**다 — Romano €25m+€1.5m ↔ **Schira(2티어) €30m·2031년까지·연봉 €4m** ↔ The Athletic 약 €20m. [2026-08-17 — HIGH 유지 / ⚠️발표 지연 6일째, 1~2티어 신규 0건] 메디컬 08-12 → 발표 없음 = **만 5일**. 스페인어·이탈리아어를 병행 확인했으나 최신이 estoesatleti·eldesmarque **08-12**로 전부 구간 밖이다. 오늘 유일한 신규는 **Tom Collomosse(Daily Mail 빌라 담당) 08-16 밤** 「루헤리가 **24시간 내 스즈키와 함께 서명**할 예정」 — ⚠️ Daily Mail은 우리 티어표 2티어 목록에 없어 **등급 근거로 쓰지 않았다**(전담 기자라는 점만 가산). ⛔ 지연 사유는 오늘도 3티어 추정뿐이다 — myoldmansaid(08-16)의 「잘츠부르크 슈퍼컵 원정 → 곧바로 글라트바흐 친선전 일정 때문」은 본문이 스스로 'potentially'로 헤지한다. 어제의 insidefutbol「신원 배경 조사」와 함께 **둘 다 미채택**.\n⚠️ **[2026-08-18 — HIGH 유지 / 공식 발표 지연 7일째]** 1티어 최신이 **여전히 08-12**다. 오늘의 지연 설명은 3티어뿐이다(「빌라가 잘츠부르크 슈퍼컵 → 묀헨글라트바흐 친선으로 직행해 발표가 밀렸고 이번 주 초 확인 예상」).\n⚠️ **[2026-08-19 — HIGH 유지 / 발표 지연 8일째]** 1티어 최신이 **여전히 08-12**다. Romano 메디컬 트윗 `2087469710958850427` 스노플레이크 **08-12 09:22:17 UTC** 재확인(오늘 것이 아니다). 지연 사유 보도는 3티어뿐이다. **메디컬 후 8일 미발표는 이례적이며 구조·서류 이슈 가능성을 배제할 수 없다** — 경보 유지.\n⭐⭐ **[2026-08-19 21시 — HIGH → CONFIRMED]** **빌라 공식 발표 확인**: avfc.co.uk `/news/2026/august/19/signing-matteo-ruggeri-signing-confirmed/`\n(메인 세션 브라우저 직접 확인, 발표 시각 ≈2026-08-19 11:30 UTC). 본문 「Aston Villa is delighted to announce the signing of\nMatteo Ruggeri from Atlético Madrid … has completed a **permanent transfer** to B6」 — **완전이적 확정**(임대 아님).\n⇒ **메디컬(08-12) 후 8일 미발표라는 \"이례성 경보\"는 결국 단순 행정·일정 지연이었다** — 구조·서류 이슈는 발생하지 않았다.\n⚠️ **구단은 이적료·계약 기간·등번호를 공표하지 않았다** — 따라서 금액 3분기 충돌(Romano €25m+€1.5m ↔ Schira €30m/2031 ↔ Athletic ~€20m)은\n**공식으로 해소되지 않았고 단일값을 채택하지 않는다.** [경쟁구도] 종결 — 경쟁 클럽 없음.",
     "sample_n": 6,

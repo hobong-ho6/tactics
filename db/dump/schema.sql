@@ -574,3 +574,12 @@ CREATE TABLE IF NOT EXISTS "player_evaluations"(
   updated TEXT, fotmob_eval TEXT,
   UNIQUE(regime_id, player_id)
 );
+CREATE TABLE player_shirt_numbers (
+  id INTEGER PRIMARY KEY,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  team_code TEXT NOT NULL,
+  season TEXT NOT NULL,
+  shirt_number INTEGER,
+  source TEXT,
+  confidence TEXT,
+  UNIQUE(player_id, team_code, season));
