@@ -126,6 +126,21 @@ def g13_checks(con):
         SELECT team_code, GROUP_CONCAT(DISTINCT kind) FROM cls
          GROUP BY team_code HAVING COUNT(DISTINCT kind) > 1""").fetchall()
 
+    # ⑸ 클럽 코드 ↔ 리그 정합 — ⑷보다 강하다. ⑷는 「한 코드가 CLUB·NT 양쪽에 쓰이면」만 잡는데,
+    #    ⭐ 2026-09-01에 **AVL이 분데스리가·리그1·세리에A·챔피언십에 동시 출현**하는 107행이 발견됐다.
+    #    ⑷는 이걸 못 잡는다(AVL이 클럽 대회에만 쓰여 CLUB/NT가 섞이지 않는다) — 명시했던 한계가 실제로 발현했다.
+    #    원인: 09-01 1차 정리가 `transfer_targets` **CONFIRMED만** 스캔해서
+    #    ⓐ유출 선수(로저스) ⓑ임대 나간 선수(네델코비치·일링-주니어) ⓒ아직 HIGH인 영입 후보(하우드-벨리스)
+    #    ⓓ유스·이전 클럽(마조)을 통째로 놓쳤다.
+    #    불변식: **한 클럽 코드는 서로 다른 나라의 1부 리그에 동시에 나올 수 없다.**
+    #    코드 목록도 리그 소속도 하드코딩하지 않는다 — 리그 이름 집합만 쓰고 「2개 이상」을 위반으로 본다.
+    out["club_league_conflict"] = con.execute("""
+        SELECT team_code, GROUP_CONCAT(DISTINCT competition) FROM player_matches
+         WHERE team_code IS NOT NULL
+           AND competition IN ('Premier League','LaLiga','Bundesliga','Serie A','Ligue 1',
+                               'Championship','Eredivisie','Primeira Liga','Süper Lig')
+         GROUP BY team_code HAVING COUNT(DISTINCT competition) > 1""").fetchall()
+
     return out
 
 
@@ -134,6 +149,7 @@ G13_LABELS = {
     "dup_appearance": "이중기록",
     "orphan_match_link": "match링크결손",
     "mixed_team_code": "team_code대회불일치",
+    "club_league_conflict": "클럽코드리그충돌",
 }
 
 

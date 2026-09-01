@@ -65,6 +65,15 @@ CASES = [
                            AND pm.competition NOT LIKE '%World Cup%'
                            AND pm.competition NOT LIKE '%International Friendly%')""",
     ]),
+    ("club_league_conflict", "클럽 코드 ↔ 리그 충돌 (일링-주니어 AVL=Serie A 형)", [
+        # 클럽 코드가 붙은 행의 대회를 **다른 나라 1부 리그**로 바꾼다 ⇒ 그 코드가 두 리그에 걸린다.
+        # ⑷가 못 잡는 유형이다(CLUB/NT가 섞이지 않는다) — 2026-09-01에 AVL이 분데스·리그1·세리에A·
+        # 챔피언십에 동시 출현하는 116행이 이 방식으로 발견됐다.
+        """UPDATE player_matches SET competition = 'Eredivisie'
+            WHERE id = (SELECT MIN(pm.id) FROM player_matches pm
+                         WHERE pm.team_code IS NOT NULL
+                           AND pm.competition IN ('Premier League','LaLiga'))""",
+    ]),
 ]
 
 # 「FIFA Club World Cup」은 클럽 대회인데 '%World Cup%'에 걸린다. 이 함정을 다시 놓치면

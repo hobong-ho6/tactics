@@ -29,3 +29,9 @@ INSERT INTO teams VALUES('LUX','Luxembourg','룩셈부르크',NULL,NULL,'[2026-0
 INSERT INTO teams VALUES('JAM','Jamaica','자메이카',NULL,NULL,'[2026-09-01] ⚠️국가대표 — 참조 어휘.');
 INSERT INTO teams VALUES('SUI','Switzerland','스위스',NULL,NULL,'[2026-09-01] ⚠️국가대표 — 분석 대상 팀 아님, player_matches.team_code 참조 어휘.');
 INSERT INTO teams VALUES('ESP','Spain','스페인',NULL,NULL,'[2026-09-01] ⚠️국가대표 — 분석 대상 팀 아님, player_matches.team_code 참조 어휘.');
+INSERT INTO teams VALUES('SOU','Southampton','사우샘프턴',NULL,NULL,'[2026-09-01] ⚠️분석 대상 팀 아님 — player_matches.team_code 참조 어휘. 하우드-벨리스의 25/26 소속(빌라 영입은 아직 HIGH 단계다).');
+INSERT INTO teams VALUES('RBL','RB Leipzig','RB 라이프치히',NULL,NULL,'[2026-09-01] ⚠️분석 대상 팀 아님 — 참조 어휘. 네델코비치의 25/26 임대 소속.');
+INSERT INTO teams VALUES('MET','Metz','메스',NULL,NULL,'[2026-09-01] ⚠️분석 대상 팀 아님 — 참조 어휘. 마조의 25/26 소속(리그1).');
+INSERT INTO teams VALUES('ROM','AS Roma','AS 로마',NULL,NULL,'[2026-09-01] ⚠️분석 대상 팀 아님 — 참조 어휘. 베일리의 25/26 후반기 임대 소속.');
+INSERT INTO teams VALUES('WBA','West Bromwich Albion','웨스트브롬',NULL,NULL,'[2026-09-01] ⚠️분석 대상 팀 아님 — player_matches.team_code 참조 어휘. 일링-주니어의 25/26 전반기 임대 소속(챔피언십).');
+INSERT INTO teams VALUES('PIS','Pisa','피사',NULL,NULL,'[2026-09-01] ⚠️분석 대상 팀 아님 — 참조 어휘. 일링-주니어의 25/26 후반기 임대 소속(세리에A). ⚠️피사는 이후 세리에B로 강등됐다.');
