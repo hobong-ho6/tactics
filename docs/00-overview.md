@@ -9,7 +9,7 @@
 SofaScore(브라우저 오리진 수집) ─┐
 sofifa / EA 피치노트 ────────────┤→  db/tactics.db  →  scripts/export.py  →  site/data/*.json  →  site/*.html
 transfer-watch(스킬) ────────────┘        ↑                (게이트 통과 필수)
-                                   scripts/gates.py = 정본성 보증 (G1~G12)
+                                   scripts/gates.py = 정본성 보증 (G1~G13)
 ```
 
 ## 레이어 (db/migrations/001-schema.sql이 스키마 정본)
@@ -33,7 +33,14 @@ G5 JS 커널 동치(site/assets/kernel.js ↔ core/kernel.py, node) · G6 DB FK 
 G7 appearances 병합 앵커 · G8 공통 슬롯 후보 풀(중복·도달불가·이적누락 0) ·
 G9 프리뷰 최신성(no-store 서버 + JSON 캐시 우회) · G10 영상 레퍼런스(source 결손 0 + 기본 닫힘 UI) ·
 G11 현재 스쿼드 표시(확정 이탈·이적 후보·DEAD 숨김) ·
-G12 경기 리포트(필수 섹션·수집 선수 전원·원문·경기 분석 메뉴·MATCH ONLY 팀 설정/선발 11명 연결).
+G12 경기 리포트(필수 섹션·수집 선수 전원·원문·경기 분석 메뉴·MATCH ONLY 팀 설정/선발 11명 연결) ·
+**G13 조용한 이중화**(동일인 2-id · 이중 기록 · match 링크 결손 · team_code↔대회 성격 불일치).
+
+> ⭐ **G13은 2026-09-01 신설**(obs#374). **FK가 성립해서 G6가 원리적으로 못 잡는 부류**만 모았다 —
+> 넷 다 그날 손으로 세다 실물 결함을 발견해 게이트화한 것이고, 정리 전 백업 4종에서 전부 검출된다.
+> 특히 `team_code` 검사는 **코드 목록을 하드코딩하지 않고** 「한 코드가 클럽 대회와 대표팀 대회에
+> 동시에 쓰이면 위반」이라는 불변식을 쓴다(자기유지). ⚠️ 「FIFA **Club** World Cup」이
+> `%World Cup%`에 걸리는 함정을 제외해야 한다.
 
 ## 핵심 규약 (v1 교훈의 성문화 — 위반이 실제 사고를 냈던 것들)
 
@@ -58,7 +65,7 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 |---|---|---|
 | 실측 수집 | `core.sofascore.js_collect()` → 브라우저 → `parse_collected()` | sofascore.com 오리진 필수 |
 | 익스포트 | `python3 scripts/export.py` | 게이트 통과 후 site/data 재생성 + 프리뷰 미러 |
-| 게이트 | `python3 scripts/gates.py` | G1~G12 |
+| 게이트 | `python3 scripts/gates.py` | G1~G13 |
 | v1 재흡수 | `python3 scripts/migrate_v1.py` | ⚠️ 컷오버 완료 — 재실행하면 v2 신규분이 날아간다. 사용 금지(아카이브 참조용) |
 | 이적 감시 | transfer-watch 스킬 (매일 09/21시) | 4팀 루프 — 2026-08-20 ATM 편입, v2에 기록 |
 
