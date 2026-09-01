@@ -161,11 +161,11 @@
    "player_id": 75
   },
   {
-   "avg_x": 67.2,
-   "avg_y": 55.0,
+   "avg_x": 67.4,
+   "avg_y": 54.8,
    "first_date": "2025-09-09",
-   "last_date": "2026-08-09",
-   "n": 28,
+   "last_date": "2026-06-23",
+   "n": 27,
    "player_id": 76
   },
   {
@@ -45824,6 +45824,11 @@
   ],
   "로저스": [
    [
+    "2026-06-23",
+    6.5,
+    "FIFA World Cup"
+   ],
+   [
     "2026-06-27",
     6.4,
     "FIFA World Cup"
@@ -45847,11 +45852,6 @@
     "2026-07-18",
     6.5,
     "FIFA World Cup"
-   ],
-   [
-    "2026-08-15",
-    7.8,
-    "Club Friendly"
    ],
    [
     "2026-08-15",
@@ -47020,6 +47020,11 @@
   ],
   "잭슨": [
    [
+    "2026-05-31",
+    6.4,
+    "International Friendly Games"
+   ],
+   [
     "2026-06-09",
     6.2,
     "International Friendly Games"
@@ -47058,11 +47063,6 @@
     "2026-08-08",
     7.2,
     "Club Friendly Games"
-   ],
-   [
-    "2026-08-09",
-    7.1,
-    "Club Friendly"
    ],
    [
     "2026-08-09",
@@ -58749,13 +58749,13 @@
    "xg_pg": 0.12
   },
   {
-   "avg_rating": 6.93,
+   "avg_rating": 6.92,
    "dw_pg": 3.18,
    "ic_pg": 0.31,
    "kp_pg": 1.65,
    "label": "로저스",
-   "minutes": 5898,
-   "n": 80,
+   "minutes": 5836,
+   "n": 79,
    "tk_pg": 0.79,
    "xa_pg": 0.219,
    "xg_pg": 0.264
@@ -59030,8 +59030,8 @@
    "ic_pg": 0.06,
    "kp_pg": 0.68,
    "label": "잭슨",
-   "minutes": 2662,
-   "n": 70,
+   "minutes": 2576,
+   "n": 69,
    "tk_pg": 0.31,
    "xa_pg": 0.107,
    "xg_pg": 0.389
@@ -64816,16 +64816,6 @@
     "starts": null
    },
    {
-    "assists": 0,
-    "avg_rating": 7.6,
-    "competition": "Club Friendly",
-    "goals": 1,
-    "minutes": 124,
-    "n": 2,
-    "season": "2026-27",
-    "starts": 2
-   },
-   {
     "assists": 1,
     "avg_rating": 8.32,
     "competition": "Premier League",
@@ -64834,6 +64824,16 @@
     "n": 2,
     "season": "2026-27",
     "starts": 2
+   },
+   {
+    "assists": 0,
+    "avg_rating": 7.4,
+    "competition": "Club Friendly",
+    "goals": 1,
+    "minutes": 62,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
    },
    {
     "assists": 0,
@@ -66683,13 +66683,13 @@
    },
    {
     "assists": null,
-    "avg_rating": 6.75,
+    "avg_rating": 6.4,
     "competition": "Club Friendly",
     "goals": null,
-    "minutes": 122,
-    "n": 2,
+    "minutes": 36,
+    "n": 1,
     "season": "2026-27",
-    "starts": 1
+    "starts": 0
    },
    {
     "assists": 0,
