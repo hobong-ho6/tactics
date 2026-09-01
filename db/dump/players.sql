@@ -198,3 +198,4 @@ INSERT INTO players VALUES(202,'David Datro Fofana','다트로 포파나',NULL,N
 INSERT INTO players VALUES(203,'Lewis Dobbin','도빈',NULL,NULL,NULL,'LW','2026-08-31 transfer-watch 등재 — 빌라 유출 결손 보완(Southampton 완전이적)',NULL,NULL,NULL,NULL);
 INSERT INTO players VALUES(204,'Caleb Wiley','케일럽 와일리',NULL,NULL,NULL,'LB','2026-08-31 transfer-watch 등재 — 첼시 유출 결손 보완(Preston North End 시즌 임대)',NULL,NULL,NULL,NULL);
 INSERT INTO players VALUES(205,'Oliwier Zych','지흐',NULL,NULL,NULL,'GK','2026-08-31 transfer-watch 등재 — 빌라 유출 결손 보완(Vitória SC 시즌 임대)',NULL,NULL,NULL,NULL);
+INSERT INTO players VALUES(206,'Tommi O''Reilly','토미 오라일리',NULL,NULL,2003,'CAM','아스톤 빌라 아카데미 출신 CAM/RW(2003-12-15생). 25/26 크루 알렉산드라 임대 50경기 7골 14도움 · 크루 올해의 선수. 계약 2028. 26/27 에메리 프리시즌 구상 제외 → 동커스터 임대. [2026-09-01 transfer-watch 등재]',NULL,'Ireland',NULL,NULL);
