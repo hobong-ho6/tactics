@@ -1305,3 +1305,6 @@ INSERT INTO player_tenures VALUES(192,'2021-22',NULL,'Middlesbrough (21경기, �
 INSERT INTO player_tenures VALUES(192,'2020-21',NULL,'Arsenal (6경기, 평점 6.82)','ST',NULL,NULL);
 INSERT INTO player_tenures VALUES(58,'2026-27',NULL,'Aston Villa (1경기)','LW',NULL,NULL);
 INSERT INTO player_tenures VALUES(78,'2026-27',NULL,'Aston Villa (1경기)','LB',NULL,NULL);
+INSERT INTO player_tenures VALUES(76,'2026-27','AVL','Aston Villa (실전 데뷔 확인 09-01)',NULL,11,NULL);
+INSERT INTO player_tenures VALUES(90,'2026-27','AVL','Aston Villa (실전 데뷔 확인 09-01)',NULL,29,NULL);
+INSERT INTO player_tenures VALUES(132,'2026-27','AVL','Aston Villa (실전 데뷔 확인 09-01)',NULL,1,NULL);

@@ -1,0 +1,26 @@
+# 전사(자동 생성 자막) — iOaDuCzs4v8 (en)
+
+> GoonersLatest — 아르테타 경기 후 반응: Eze 영향·콘사 데뷔·이적 (2026-08-31)
+
+> 원본: https://www.youtube.com/watch?v=iOaDuCzs4v8 · 수집: scripts/yt_transcript.py
+> ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.
+
+**[00:02]** Good evening everyone. We'll try to get around as many as we can. You have a question, raise your hand and we'll we'll come to you. Who wants to kick off? >> Josh from the Sun. >> Hello. Just word from Kag. Talk me through his head about tonight at the start of the season as well. >> Well, I prefer to talk about the squad. I think it was a squad victory today and uh everybody that uh
+
+**[00:34]** that was involved in the game in any capacity made a difference for us and uh and that's a big message for uh for all of us because with the depth that we have and with the quality that we have if if we really make that count uh that's going to be a massive weapon for us. >> James ESPN. >> Yeah. You obviously lost it last season. So how important is it to sort of feel like this is a step? But that was still in my tummy and I spoke to the players about it. That image when the players were on the floor totally got it. Uh it
+
+**[01:04]** was a really difficult one to take and u yeah we use that to bring energy to bring more conviction and belief to understand the difficulty of the challenge that we had ahead especially against a team that was so successful last year and then they lost a few days ago in a in a really um big way and you expect a reaction in this stadium. It's a it's a really difficult one on big matches and and they they make those moments count and uh and today when we have to suffer we did suffer and when we
+
+**[01:35]** have to be really dominant we were so I'm really pleased to contrast it to last season but obviously then going back here to that semi just >> it was very different uh and that shows a lot of maturity that showed as well the trust that we have in the players to change momentum and to understand what the game needed and we brought a lot of leadership ship in the team. People really can hold the ball and have uh really dominates in spells through the ball and in duals. And I think they've done it and EPS comes in. It makes a
+
+**[02:06]** difference um to win the game. Ezri makes a debut in really difficult circumstances because it's not easy emotionally to come here and and play and it looks so composed, so calm, uh something in in control and u yeah for all those reasons I think that's the reason why we won the game. Oh, >> just on Epi coming in at Halime. Obviously, this time last year was kind of taking off at Halime. Um, so a very big contrast in what happened today. Uh, you said he played a role in winning the
+
+**[02:37]** game. How did you feel did and what were you looking for in comparison to what you see >> to trust him and uh and we knew that he could create an action. He created three actions that he put people almost looking at the goalkeeper one against one. Uh but as well I had to trust him when they make those rotation especially on the right side and cash goes. Last year he lost him we can see the goal and this year I think he had learned the lesson because every time something was happening he was at it and I think he
+
+**[03:07]** helped the team in a great way. >> Tom from London. >> It felt like a very tightly contested game. your limited ability to to zero shots on target in the match. That effort, determination, capacity, and the application of your team. Is that what's so key to winning these type of things? >> 100%. And in the Premier League away from home, when you come to this quality squad or these quality coaches that they know how to make life really tough for you, you really have to be at it. And uh I think consistently throughout the game and individually, I think we did that really well.
+
+**[03:37]** >> Just quickly, you obviously you've lost Leo and Gabby. We're expecting to see can we probably go at this point. You've only brought in Christos on the left. Are you looking for the deadline closes to fill up that that spot on? >> As I said, we are trying to improve the squad and till tomorrow night, we're going to try to do that. I've been disconnected from the world for 24 hours because I think my energy and focus has to be on the match. I will get back on it. Now, >> Matt from Telegraph. >> Okay. Just just kind of on that theme, do you think you've got enough variation
+
+**[04:08]** and options in forward areas or or do you need sort of >> depends if everybody's fit or not? So, we can talk about today, but that scenario might change. Uh we knew that with wheelie out we had an injury in the back line with Julia and now we're in big trouble. So, we had to do Ezri and today Mosca was he could not continue. So we know that the depth has to be really big when you are fighting for four competitions in the manner that we play as well. So we're going to try to do that. >> So could you just ask how scary is
+
+**[04:43]** >> fine but uh but he was feeling like he was about to to have something and uh and that's why we have the best that we have and that's why we have to bring. >> Okay guys, lovely. Thanks a lot. Thank you. Thank you.

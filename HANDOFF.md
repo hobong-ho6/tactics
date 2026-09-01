@@ -13,11 +13,11 @@
 > **2026-09-01 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 `d78df07`.
 > (이 문서의 갱신 커밋이 그 위에 하나 더 붙는다 — HEAD가 1커밋 앞서 있으면 정상.)
 
-- DB: players **200** · player_matches **4,175** · team_match_stats **65** · match_reports **29**
-  (**complete 14 · draft 15**) · match_player_reports **521** · squad_entries **131** ·
-  prescriptions **429** · slots **88** · match_game_setups **14** · match_player_prescriptions **229** ·
+- DB: players **200** · player_matches **4,190** · team_match_stats **66** · match_reports **30**
+  (**complete 14 · draft 16**) · match_player_reports **536** · squad_entries **131** ·
+  prescriptions **429** · slots **88** · match_game_setups **15** · match_player_prescriptions **244** ·
   transfer_targets **44** · transfer_outgoing **67** · player_duties **197** ·
-  player_shirt_numbers **26** · understat_player_matches **5,634** · observations **382** ·
+  player_shirt_numbers **26** · understat_player_matches **5,634** · observations **383** ·
   **teams 31**(분석 4 + 클럽 6 + 국가대표 21).
 - 회귀: **G1~G13 전항 통과**. ⭐ **G13은 2026-09-01 신설** — 아래 「무결성 정리」 참조.
 - ⏰ **2026-27 여름 이적창은 2026-09-01 23:00 BST에 닫혔다.** 사용자 지시로 `transfer-watch` 정기 루틴은 종료.
@@ -46,6 +46,28 @@
   잔여 건 정산 후 **자신을 삭제**한다. 종료 절차는 `reports/transfer-watch/2026-09-01.md` 맨 아래.
 
 ## 최근 작업
+
+### 2026-09-01 ⑵ — AVL 아스날전 신규 수집 (report 30, obs#350·383)
+
+08-31 AVL 0-1 Arsenal(PL R2) — **여름 스쿼드 대개편 후 첫 실전**. 지난 시즌 주전 5명
+(마르티네스·콘사·틸레만스·로저스·왓킨스)이 전원 이적, 스즈키(GK)·잭슨(ST, 클럽레코드 £65m)
+공식전 데뷔. `matches` 1(id 94) · `player_matches` 15 · `team_match_stats` 1 ·
+`match_reports` 1(id 30, draft) · `match_player_reports` 15 · `match_game_setups`/`prescriptions` 각 1/15.
+`player_tenures` 3행 신설(잭슨76·완비사카90·스즈키132 — 위 「무결성 정리」④가 지적한
+「AVL 클럽 실측 0건」 공백을 이 경기가 처음으로 채운다).
+
+- ⭐⭐ **SofaScore 403 재발** — HANDOFF 구절(08-19 이후 재개통)과 달리 이번 회차에 403 확인.
+  WhoScored/Opta `matchCentreData`(브라우저 인앱 오리진, `require.config.params["args"]`에서
+  직접 파싱)로 대체 성공 — 좌표계는 Cash(RB)·Maatsen(LB) 실측 좌우로 SofaScore와 동일 관례
+  (avg_x=공격방향·avg_y 낮음=오른쪽)임을 선검증했다.
+- ⭐ **PPDA 30.50(AVL) vs 11.67(Arsenal)** — 정의: 상대 진영 3/5 패스/우리 진영 2/5 수비액션
+  (Tackle+Interception+Foul+Challenge). 극단적 딥블록 — 브라이턴전 「밀려난 블록」 서술을 수치로 확인.
+- ⭐ **9번 스타일 전환**: 잭슨 st_false9/Build-Up(.723) — 왓킨스 st_advanced(채널러너)와 반대 방향.
+  표본 1경기, 다음 경기 재현 여부로 확정 필요.
+- 유튜브 전사 3건(에메리·아르테타 경기 후 반응 1차 발언, AFTV 상대팬 반응) — 클럽 전술 영상·
+  다국어(스페인어) 서사는 0건(경기 종료 수 시간 후라 구조적, D+1~D+3 재검색 필요).
+- ⚠️ WebSearch의 「고레츠카 AVL 데뷔」 주장은 1차 라인업 데이터(FotMob·WhoScored 20명 전원)에
+  없어 **채택하지 않음** — 검색엔진 시점 혼입 의심.
 
 ### 2026-09-01 ⑴ — 무결성 정리 4연쇄 (obs#368~374) ⭐ 이번 세션의 본체
 
