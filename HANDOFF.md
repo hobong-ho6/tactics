@@ -41,7 +41,9 @@
 ## 자동화
 
 - Codex heartbeat **id=3 「프리미어리그 3팀 경기 수집」**, 매일 08:00 KST.
-- `match-watch-weekly`: 매주 월 10시. R3 D+1~D+3 추적 일회성 3건이 09-01~09-03에 걸려 있다.
+- `match-watch-weekly`: 매주 월 10시. R3(CHE·LIV·ATM 4경기) D+1~D+3 추적 일회성 3건이 09-01~09-03에 걸려 있다.
+- ⭐ `match-watch-avl-arsenal-followup-d1/d2/d3`: AVL 아스날전(report 30) 전용 D+1~D+3, 09-02~09-04 11시.
+  R3 추적과 별개 — R3엔 AVL이 없어서 이번 세션이 신규 예약했다.
 - ⚠️ **`transfer-feed`는 반복 cron(09/21시)에서 일회성으로 바꿨다** — **09-02 09:00 KST 1회**만 돌고
   잔여 건 정산 후 **자신을 삭제**한다. 종료 절차는 `reports/transfer-watch/2026-09-01.md` 맨 아래.
 
