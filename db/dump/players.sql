@@ -96,7 +96,6 @@ INSERT INTO players VALUES(99,'Mamadou Sarr','마마두 사르',1154657,NULL,200
 INSERT INTO players VALUES(100,'Dastan Satpaev',NULL,NULL,NULL,2008,'ST','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1684584,'Kazakhstan',NULL,NULL);
 INSERT INTO players VALUES(101,'Aaron Anselmino',NULL,NULL,NULL,2005,'CB','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1494947,'Argentina',NULL,NULL);
 INSERT INTO players VALUES(102,'Olutayo Subuloye','수불로예',1899529,NULL,2007,'CB','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1899529 부여(프리시즌 전수 수집).',1682325,'England',NULL,NULL);
-INSERT INTO players VALUES(103,'Dário Essugo',NULL,NULL,NULL,2005,'DM','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1239595,'Portugal',NULL,NULL);
 INSERT INTO players VALUES(104,'Teddy Sharman-Lowe','샤먼로우',1009762,NULL,2003,'GK','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1009762 부여(프리시즌 전수 수집).',1117871,'England',NULL,NULL);
 INSERT INTO players VALUES(105,'Liam Delap','델랍',997087,NULL,2003,'ST','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=997087 부여(프리시즌 전수 수집).',1113903,'England',8868,NULL);
 INSERT INTO players VALUES(106,'Reggie Watson','레지 왓슨',2045421,NULL,2010,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=2045421 부여(프리시즌 전수 수집).',1837929,'England',NULL,NULL);
@@ -132,7 +131,7 @@ INSERT INTO players VALUES(136,'Reggie Walsh',NULL,NULL,NULL,2008,'AM','2026 프
 INSERT INTO players VALUES(137,'Rodrigo Fortes',NULL,NULL,NULL,2007,'LB','2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1706481,'Portugal',NULL,NULL);
 INSERT INTO players VALUES(138,'Ryan Kavuma-McQueen',NULL,NULL,NULL,2009,'LW','2026 프리시즌 출전으로 등재 (2026-08-16 match-watch) — FotMob 라인업 전용, 실측 스탯 없음',1681979,'England',NULL,NULL);
 INSERT INTO players VALUES(139,'Andrés García','안드레스 가르시아',NULL,NULL,2003,'RB','2025-01 레반테에서 약 £5m 영입. 빌라 통산 18경기(25/26 8경기·24/25 10경기). 2026-07-16 헤타페 시즌 임대.',1430406,'Spain',NULL,NULL);
-INSERT INTO players VALUES(140,'Dario Essugo','에수구',1110006,NULL,2005,'DM','[2026-08-19 프리시즌 전수 수집에서 신설] 첼시 14번.',1239595,'Portugal',13094,'MF');
+INSERT INTO players VALUES(140,'Dário Essugo','에수구',1110006,NULL,2005,'DM','[2026-08-19 프리시즌 전수 수집에서 신설] 첼시 14번. [2026-09-01] 중복 id 병합 — 구 `players.id=103`(Dário Essugo)을 이 행으로 합쳤다. 두 행 모두 fotmob_id 1239595·birth_year 2005·primary_position DM으로 동일인이 확정됐다. 103 쪽 참조는 player_matches 3건·match_player_reports 4건·player_duties 1건을 재지정했고, 완전 동일 이중적재 20행(fotmob_season_stats 8·fotmob_traits 6·player_tenures 6)과 같은 출전의 열등 사본 1행(player_matches id=3560, match_id=76 — FotMob 경유로 map25 없음)은 삭제했다. ⚠️ id 103은 재사용 금지.',1239595,'Portugal',13094,'MF');
 INSERT INTO players VALUES(141,'Tidiane Ndiaye','티디안 은디아예',2169894,NULL,NULL,'DF','[2026-08-19 프리시즌 전수 수집에서 신설] 리버풀 75번.',NULL,NULL,NULL,NULL);
 INSERT INTO players VALUES(142,'Calum Ramsay','램지',991227,NULL,NULL,'DF','[2026-08-19 프리시즌 전수 수집에서 신설] 리버풀 47번.',NULL,NULL,NULL,NULL);
 INSERT INTO players VALUES(143,'Luca Chambers','체임버스',1134530,NULL,NULL,'DF','[2026-08-19 프리시즌 전수 수집에서 신설] 리버풀 44번.',NULL,NULL,NULL,NULL);

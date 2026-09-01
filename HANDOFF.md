@@ -17,11 +17,13 @@
 > ⚠️ **직전 갱신은 08-25(`f05010f`)였다** — 08-26~09-01 사이 24개 커밋이 문서에 반영되지 않은 채 쌓여 있었고,
 > 이번 갱신이 그 공백을 git log 기준으로 복원한 것이다.
 
-- DB: players **201** · player_matches **4,254** · team_match_stats **65** · match_reports **29**
+- DB: players **200** · player_matches **4,253** · team_match_stats **65** · match_reports **29**
   (**complete 14 · draft 15**) · match_player_reports **521** · squad_entries **131** ·
   prescriptions **429** · slots **88** · match_game_setups **14** · match_player_prescriptions **228** ·
   transfer_targets **44** · transfer_outgoing **67** · player_duties **194** ·
-  **player_shirt_numbers 26**(신설) · understat_player_matches **5,634** · observations **367**.
+  **player_shirt_numbers 26**(신설) · understat_player_matches **5,634** · observations **369**.
+  (players −1 · player_matches −1 · fotmob_season_stats −8 · fotmob_traits −6 · player_tenures −6
+   = 에수구 중복 병합분. 아래 참조.)
 - ⏰⏰ **2026-27 여름 이적창이 2026-09-01 23:00 BST(= 09-02 00:00 CEST)에 닫혔다.**
   **사용자 지시로 `transfer-watch` 정기 루틴은 종료한다** — 남은 것은 **09-02 09:00 KST 마감 정산 1회뿐**이고,
   그 회차가 스스로 스케줄을 삭제한다(아래 「자동화」 참조).
@@ -66,6 +68,28 @@
   종료 절차는 `reports/transfer-watch/2026-09-01.md` 맨 아래에 있다.
 
 ## 종결된 항목
+
+### 2026-09-01 · ⭐⭐ 에수구 중복 id 병합 — **미해결 #1을 닫았다**(obs#368)
+
+- **`players` 103 → 140 병합.** 동일인 확정 근거는 **fotmob_id 1239595 동일**(+birth_year·position·nationality 일치).
+- **140을 살렸다** — 정체성(name_kr·sofascore_id 1110006·understat_id 13094·positions_alt)과
+  참조(market_values 56·understat 30·game_stats 2·shot_profile 1·status 1·squad_entries 1·**transfer_outgoing 1**)를
+  압도적으로 많이 갖는다. 103이 가진 것은 player_matches 4·match_player_reports 4·player_duties 1뿐이었다.
+- **삭제 20행(전 컬럼 대조로 완전 동일 확인)**: fotmob_season_stats 8 · fotmob_traits 6 · player_tenures 6.
+- ⭐ **삭제 1행(같은 출전의 열등 사본)**: player_matches id=3560 — 140의 id=3928과 **같은 match_id=76**
+  (2026-08-09 조호르, 90분, 평점 6.7)인데 3560은 FotMob 경유라 **hit_points·map25가 없고** 3928은
+  SofaScore 경유로 **hit_points 106 + map25**를 갖는다 ⇒ 그리드를 가진 쪽을 남겼다.
+  **이는 transfer-watch 런북이 경고한 「이중 기록 21쌍」(행 수 기반 질의의 이중 계상) 결함의 실제 사례다.**
+- **재지정 8행**: player_matches 3(match 73·74·75) · match_player_reports 4 · player_duties 1. 충돌 0.
+- **정체성 흡수**: name을 정자체 **`Dário Essugo`**로 올렸다. ⚠️ **id 103은 재사용 금지.**
+- ⚠️ **`player_duties`는 병합하지 않고 2행을 남겼다** — id=111(RCM, 첼시 공식 매치리포트 기반 **서사 상세**, 좌표 0)과
+  id=125(CM, **SofaScore 실측** 1경기)는 **같은 출전을 다른 회차가 다른 표기로 적은 것**이다.
+  UNIQUE(season,player_id,position)가 RCM≠CM이라 공존 가능하므로 **양쪽 confidence에 상호 참조를 남겼다.**
+  ⏰ **한 행으로 합치는 선택지는 열려 있다**(사용자 판단 대기 — 서사 근거는 RCM 행이 정본).
+- 검증: `PRAGMA foreign_key_check` 위반 0 · `integrity_check` ok · **G1~G12 전항 통과** ·
+  export 결과 사이트의 Essugo 라벨이 **두 표기(「Dário Essugo」 5 + 「에수구」 9) → 「에수구」 14로 단일화**됐다(손실 0).
+- ⚠️ **잔여 위험 스캔**: `fotmob_id`·`sofascore_id` 중복 **0건** — 같은 부류의 동일인 2-id는 더 없다.
+  단 **G6는 이 중복을 원리적으로 잡지 못한다**(두 id가 다 존재해 FK가 성립) ⇒ 아래 P3에 게이트 신설 항목을 남긴다.
 
 ### 2026-09-01 세션 (transfer-watch 마감 당일 · 커밋 `4eb0e0d`)
 
@@ -150,25 +174,28 @@
    무뇨스 좌측 표본이 오사수나 시절이라는 불변규칙 7 캐비앗은 그대로다.
 4. **P2 · 경기 전용 처방 재판정을 표준 파이프라인에 넣을지 확정** — 08-26 이후 R3 4경기에서 반복 적용됐다.
 5. **P3 · 병렬 중복 실행 방지**(obs#354) — 08-31에 같은 4경기를 2회 수집했다. 가드 미수립.
+   ⭐ **관련: 「이중 기록」 게이트 2종이 없다**(obs#368에서 실물 사례를 하나 제거했다) —
+   ⑴ `players`의 **fotmob_id/sofascore_id 중복 검사**(G6 사각지대 — 두 id가 다 존재하면 통과한다)
+   ⑵ `player_matches`의 **같은 (player_id, match_id)에 서로 다른 event_id가 두 행** 있는 경우.
+   ⚠️⚠️ ⑵는 **2026-09-01에 처음 전수를 셌다 — 런북의 「21쌍」이 아니라 실제 77쌍이다.**
+   프리시즌 6경기에 몰려 있다: match 77 Sunderland(15명) · 79 Leeds(14) · 75 Juventus(14) ·
+   78 Wrexham(12) · 80 Real Sociedad(11) · 76 Johor(11, 에수구분 1쌍은 병합에서 제거됨).
+   전부 **FotMob 행(map25 없음) + SofaScore 행(map25 있음)** 조합으로 추정되나 **행별 확인은 안 했다.**
+   ⇒ **행 수 기반 질의가 이 6경기에서 이중 계상된다.** 정리 규칙(어느 소스를 남길지)은 사용자 판단이 필요하다.
 6. **P3 · 그리말도(ATM) 실측**이 채워지면 슬롯 기하·fit 재검증.
 
 ## 미해결 — 판단이 필요한 것
 
-1. ⚠️⚠️ **`players` 에수구 중복(103/140)** — 동일 선수가 두 id로 존재하고 **참조가 갈려 있다**:
-   `103 Dário Essugo`(player_matches 4 · match_player_reports 4 · duties 1 · tenures 6) ·
-   `140 Dario Essugo`(sofascore_id 1110006 · squad_entries 1 · **transfer_outgoing 1** · player_matches 1 · duties 1 · tenures 6).
-   ⇒ **CHE 유출 행(140)이 실측 출전 기록(103)과 연결되지 않는다.** **G6는 두 id가 다 존재하므로 통과한다**(사각지대).
-   병합은 match 리포트·squad·prescriptions를 함께 건드리므로 **어느 id를 살리고 FK를 어디로 재지정할지 판단이 필요하다.**
-2. ⏰ **xG 개정 정책** — 「경기 직후 스냅샷을 정본으로 둘 것인가, 최신 개정을 따라갈 것인가」 규칙이 없다.
+1. ⏰ **xG 개정 정책** — 「경기 직후 스냅샷을 정본으로 둘 것인가, 최신 개정을 따라갈 것인가」 규칙이 없다.
    현재는 **draft면 최신, complete면 사용자 판단**으로 운용한다.
-3. ⏰ **ATM 비야레알전 포메이션 표기 충돌** — 우리·El Desmarque·COPE는 **4-4-2**, **Infobae 크로니카는 「4-3-3 de Simeone」**.
+2. ⏰ **ATM 비야레알전 포메이션 표기 충돌** — 우리·El Desmarque·COPE는 **4-4-2**, **Infobae 크로니카는 「4-3-3 de Simeone」**.
    obs#333(ATM 4-4-2 슬롯 신설)의 전제와 직결된다. ⭐ 단 실측 기하가 4-1-4-1에 더 가까워 처방을 이관하지 않은 판단은 이 충돌과 정합적이다.
-4. ⏰ **FC27 커널 미착수** — `game_roles`/`game_role_focus`/`game_role_variants`의 FC27 행이 **전부 0**이다.
+3. ⏰ **FC27 커널 미착수** — `game_roles`/`game_role_focus`/`game_role_variants`의 FC27 행이 **전부 0**이다.
    fut.gg `/api/fut/roles/` 수집은 발매(09-25) 전 역할 데이터 공개 여부가 불확실하다.
    `core/kernel.py` EXPECTED·gates 앵커의 FC27 확장은 커널 행이 생긴 뒤에만 가능하다.
    ⚠️ FC27 게임스탯 잔여 결손: **고레츠카 0행**(무소속이라 fut.gg 클럽 페이지에 없다 — 결손이지 미출시 아님, obs#362) ·
    **35속성은 완비사카·음바예 2명**(obs#364).
-5. ⏰ **`transfer_targets` 아하노르 행의 window 표기** — 「2026-summer 완전이적」이 아니라
+4. ⏰ **`transfer_targets` 아하노르 행의 window 표기** — 「2026-summer 완전이적」이 아니라
    **2026-summer 선계약 / 2027-07-01 등록**이다. 스키마상 이를 분리 표현할 자리가 없어 `rationale`에만 적었다.
 
 ## 데이터 수집 상태와 결손

@@ -1008,12 +1008,6 @@ INSERT INTO player_tenures VALUES(101,'2025',NULL,'Chelsea (1경기)','CB',NULL,
 INSERT INTO player_tenures VALUES(101,'2024',NULL,'Boca Juniors (18경기, 평점 7.20)','CB',NULL,NULL);
 INSERT INTO player_tenures VALUES(101,'2023',NULL,'Boca Juniors (5경기, 평점 7.16)','CB',NULL,NULL);
 INSERT INTO player_tenures VALUES(102,'2026',NULL,'Chelsea (1경기)','CB',NULL,NULL);
-INSERT INTO player_tenures VALUES(103,'2025-26',NULL,'Chelsea (10경기, 평점 7.02)','DM',NULL,NULL);
-INSERT INTO player_tenures VALUES(103,'2024-25',NULL,'Las Palmas (27경기, 평점 6.80) / Sporting CP (2경기, 평점 6.34)','DM',NULL,NULL);
-INSERT INTO player_tenures VALUES(103,'2023-24',NULL,'Chaves (14경기, 평점 6.90) / Sporting CP (10경기, 평점 6.92)','DM',NULL,NULL);
-INSERT INTO player_tenures VALUES(103,'2022-23',NULL,'Sporting CP B (12경기) / Sporting CP (10경기, 평점 6.50)','DM',NULL,NULL);
-INSERT INTO player_tenures VALUES(103,'2021-22',NULL,'Sporting CP B (15경기) / Sporting CP (2경기, 평점 7.36)','DM',NULL,NULL);
-INSERT INTO player_tenures VALUES(103,'2020-21',NULL,'Sporting CP (1경기)','DM',NULL,NULL);
 INSERT INTO player_tenures VALUES(104,'2026',NULL,'Chelsea (2경기)','GK',NULL,NULL);
 INSERT INTO player_tenures VALUES(104,'2025-26',NULL,'Bolton Wanderers (23경기, 평점 7.02)','GK',NULL,NULL);
 INSERT INTO player_tenures VALUES(104,'2024-25',NULL,'Doncaster Rovers (51경기, 평점 7.06)','GK',NULL,NULL);

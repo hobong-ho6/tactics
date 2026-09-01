@@ -694,12 +694,6 @@ INSERT INTO fotmob_traits VALUES(693,101,'2026-08-21','Stats compared to other c
 INSERT INTO fotmob_traits VALUES(694,101,'2026-08-21','Stats compared to other center-backs','Goals','득점',93,'fotmob.com/api/data (player 1494947, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
 INSERT INTO fotmob_traits VALUES(695,101,'2026-08-21','Stats compared to other center-backs','Shot attempts','슛 시도',54,'fotmob.com/api/data (player 1494947, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
 INSERT INTO fotmob_traits VALUES(696,101,'2026-08-21','Stats compared to other center-backs','Touches','터치',78,'fotmob.com/api/data (player 1494947, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
-INSERT INTO fotmob_traits VALUES(697,103,'2026-08-21','Stats compared to other midfielders','Chances created','기회 창출',88,'fotmob.com/api/data (player 1239595, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
-INSERT INTO fotmob_traits VALUES(698,103,'2026-08-21','Stats compared to other midfielders','Aerial duels','공중 볼 경합',68,'fotmob.com/api/data (player 1239595, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
-INSERT INTO fotmob_traits VALUES(699,103,'2026-08-21','Stats compared to other midfielders','Defensive actions','수비적 행동',68,'fotmob.com/api/data (player 1239595, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
-INSERT INTO fotmob_traits VALUES(700,103,'2026-08-21','Stats compared to other midfielders','Goals','득점',0,'fotmob.com/api/data (player 1239595, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
-INSERT INTO fotmob_traits VALUES(701,103,'2026-08-21','Stats compared to other midfielders','Shot attempts','슛 시도',17,'fotmob.com/api/data (player 1239595, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
-INSERT INTO fotmob_traits VALUES(702,103,'2026-08-21','Stats compared to other midfielders','Touches','터치',92,'fotmob.com/api/data (player 1239595, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
 INSERT INTO fotmob_traits VALUES(703,104,'2026-08-21','Stats compared to other keepers','Sweeper actions','스위퍼 액션',98,'fotmob.com/api/data (player 1117871, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
 INSERT INTO fotmob_traits VALUES(704,104,'2026-08-21','Stats compared to other keepers','Goals conceded','실점',88,'fotmob.com/api/data (player 1117871, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
 INSERT INTO fotmob_traits VALUES(705,104,'2026-08-21','Stats compared to other keepers','Save percentage','세이브율',9,'fotmob.com/api/data (player 1117871, scripts/collect_fotmob_players.py, 2026-08-21 수집)');
