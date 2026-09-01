@@ -21,7 +21,7 @@
   (**complete 14 · draft 15**) · match_player_reports **521** · squad_entries **131** ·
   prescriptions **429** · slots **88** · match_game_setups **14** · match_player_prescriptions **228** ·
   transfer_targets **44** · transfer_outgoing **67** · player_duties **194** ·
-  **player_shirt_numbers 26**(신설) · understat_player_matches **5,634** · observations **372**.
+  **player_shirt_numbers 26**(신설) · understat_player_matches **5,634** · observations **373**.
   (players −1 · fotmob_season_stats −8 · fotmob_traits −6 · player_tenures −6 = 에수구 병합분 ·
    player_matches −79 = 에수구 1 + **이중기록 77+1쌍 정리분**. 아래 참조.)
 - ⏰⏰ **2026-27 여름 이적창이 2026-09-01 23:00 BST(= 09-02 00:00 CEST)에 닫혔다.**
@@ -81,6 +81,27 @@
   FotMob 고유 결손도 실재했다 — `opponent` 22행 · `venue` 22행 · `started` 1행을 **백필**했다.
 - player_matches **4,253 → 4,176**. 정리 후 77행 전부 opponent·venue·started·map25 결손 0.
 - 검증: FK 0 · integrity ok · **G1~G12 전항 통과**(G7 앵커 (14,6,4,93) 불변). `player_matches.id` 참조 FK는 없음을 사전 확인.
+
+### 2026-09-01 · ⭐⭐ `team_code` 대표팀 축 406행 + 결손 18행 정리 (obs#373) — **오배정 잔여 0**
+
+- **국가대표 21개 코드 등재**: SEN·COD·FRA·EGY·ARG·ENG·CIV·NED·GER·POR·JPN·HUN·ECU·SWE·BRA·URU·SRB·LUX·JAM(+SUI·ESP).
+  클럽 행과 같이 `note`에 「분석 대상 팀 아님 — 참조 어휘」 명기. 연령별 대표(U17·U21)도 **같은 코드**이고 구분은 `competition`으로.
+  ⚠️ **`BAR`(바르셀로나) ↔ `BRA`(브라질) 혼동 주의.**
+- **매핑 정본은 `players.nationality`** — 대상 406행의 국적 결손 **0**이었고, 위험했던 케이스도 정확했다:
+  ⭐ **완비사카는 잉글랜드 출생이나 `nationality`가 DR Congo로 정확히 들어가 있었다.**
+  유일한 애매 표기 **케르케즈 「Hungary/Serbia」는 HUN으로 확정**(WC Qual. UEFA 6경기).
+- **정확히 406행 변경 · 새로 NULL 된 행 0**(백업 DB와 행 단위 대조). 추가로 **결손 18행 봉합**
+  (대표팀 경기인데 team_code가 원래 NULL — 만잠비 14/SUI · 무뇨스 2/ESP · 고레츠카 2/GER).
+- 🔴⭐⭐ **영향이 크다 — `avg_positions` 4팀 합계 1,800 → 1,559(−241).**
+  반다이크 74→60 · 비르츠 62→48 · 네투 66→53 · 각포 63→50 · 살라 53→40 · 마르티네스 57→45 ·
+  흐라벤베르흐 66→55 · 맥알리스터 57→46 · 소보슬러이 73→63.
+  ⚠️⚠️ **완비사카 10→0 · 잭슨 12→0** — 두 사람의 「빌라 실측」이 **전부 대표팀 경기였다**(8월 하순 합류라 클럽 표본이 없다).
+  사이트 AVL `avg_positions`에서 두 사람이 빠졌다(21명).
+  ⚠️ **히트맵 A(실측) 칩에만 해당한다** — `squad_entries`·`prescriptions`의 map25는 원래부터 `grid_club`으로
+  출처 팀을 명기해 왔으므로 영향받지 않는다.
+- 검증: 대표팀 대회 중 클럽코드/NULL 잔여 **0** · teams 미등재 코드 **0** ·
+  「합류 이전인데 새 팀 코드」 잔여 **0** · FK 0 · integrity ok · **G1~G12 전항 통과**.
+
 
 ### 2026-09-01 · ⭐⭐ `team_code` 클럽 축 333행 정리 (obs#371 → obs#372) · **대표팀 축은 미해소**
 
@@ -193,28 +214,23 @@
    ⭐ **다만 재발 감지 게이트 2종은 여전히 없다** —
    ⑴ `players`의 **fotmob_id/sofascore_id 중복 검사**(G6 사각지대 — 두 id가 다 존재하면 통과한다)
    ⑵ `player_matches`의 **같은 (player_id, match_id)에 서로 다른 event_id가 두 행** 있는 경우.
-   둘 다 이번에 손으로 셌고 각각 실물 결함을 하나씩 잡아냈다 ⇒ **게이트화 가치가 실증됐다.**
+   ⑶ `player_matches.team_code`가 **대회 성격과 어긋나는지**(대표팀 대회에 클럽 코드 등) 검사.
+   셋 다 이번에 손으로 셌고 각각 실물 결함을 잡아냈다 ⇒ **게이트화 가치가 실증됐다.**
+   특히 ⑶은 **team_code 오류가 G12의 조인을 무력화해 처방 결손을 은폐했던 사례**로 정당화된다.
 6. **P3 · 그리말도(ATM) 실측**이 채워지면 슬롯 기하·fit 재검증.
 
 ## 미해결 — 판단이 필요한 것
 
-1. 🔴⭐ **`team_code` 대표팀 축 — 406행 / 40명이 아직 클럽 코드다**(obs#371 잔여 · 클럽 축은 obs#372로 해소).
-   완비사카의 DR콩고 WC예선이 `AVL`, 각 팀 선수의 월드컵·A매치가 소속 클럽 코드로 찍혀 있다.
-   내역: FIFA World Cup 142 · International Friendly Games 118 · WC Qual. UEFA 82 · AFCON 28 ·
-   WC Qual. CAF 16 · WC Qual. CONMEBOL 12 · 기타 8.
-   ⏰ **결정 필요**: 국가대표를 `teams`에 넣을 것인가(40개 코드) / NULL 결손으로 둘 것인가.
-   ⚠️ 스키마 주석은 「클럽/대표팀 구분은 competition으로」라 하지만, team_code가 소속을 가리키는 칸인 이상
-   대표팀 경기에 클럽 코드를 넣는 것은 정합적이지 않다. **클럽 축과 달리 이건 손대지 않았다.**
-2. ⏰ **xG 개정 정책** — 「경기 직후 스냅샷을 정본으로 둘 것인가, 최신 개정을 따라갈 것인가」 규칙이 없다.
+1. ⏰ **xG 개정 정책** — 「경기 직후 스냅샷을 정본으로 둘 것인가, 최신 개정을 따라갈 것인가」 규칙이 없다.
    현재는 **draft면 최신, complete면 사용자 판단**으로 운용한다.
-3. ⏰ **ATM 비야레알전 포메이션 표기 충돌** — 우리·El Desmarque·COPE는 **4-4-2**, **Infobae 크로니카는 「4-3-3 de Simeone」**.
+2. ⏰ **ATM 비야레알전 포메이션 표기 충돌** — 우리·El Desmarque·COPE는 **4-4-2**, **Infobae 크로니카는 「4-3-3 de Simeone」**.
    obs#333(ATM 4-4-2 슬롯 신설)의 전제와 직결된다. ⭐ 단 실측 기하가 4-1-4-1에 더 가까워 처방을 이관하지 않은 판단은 이 충돌과 정합적이다.
-4. ⏰ **FC27 커널 미착수** — `game_roles`/`game_role_focus`/`game_role_variants`의 FC27 행이 **전부 0**이다.
+3. ⏰ **FC27 커널 미착수** — `game_roles`/`game_role_focus`/`game_role_variants`의 FC27 행이 **전부 0**이다.
    fut.gg `/api/fut/roles/` 수집은 발매(09-25) 전 역할 데이터 공개 여부가 불확실하다.
    `core/kernel.py` EXPECTED·gates 앵커의 FC27 확장은 커널 행이 생긴 뒤에만 가능하다.
    ⚠️ FC27 게임스탯 잔여 결손: **고레츠카 0행**(무소속이라 fut.gg 클럽 페이지에 없다 — 결손이지 미출시 아님, obs#362) ·
    **35속성은 완비사카·음바예 2명**(obs#364).
-5. ⏰ **`transfer_targets` 아하노르 행의 window 표기** — 「2026-summer 완전이적」이 아니라
+4. ⏰ **`transfer_targets` 아하노르 행의 window 표기** — 「2026-summer 완전이적」이 아니라
    **2026-summer 선계약 / 2027-07-01 등록**이다. 스키마상 이를 분리 표현할 자리가 없어 `rationale`에만 적었다.
 
 ## 데이터 수집 상태와 결손
