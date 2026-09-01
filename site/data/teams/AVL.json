@@ -161,11 +161,11 @@
    "player_id": 75
   },
   {
-   "avg_x": 67.4,
-   "avg_y": 54.8,
+   "avg_x": 66.8,
+   "avg_y": 56.3,
    "first_date": "2025-09-09",
    "last_date": "2026-06-23",
-   "n": 27,
+   "n": 12,
    "player_id": 76
   },
   {
@@ -177,27 +177,19 @@
    "player_id": 77
   },
   {
-   "avg_x": 46.9,
-   "avg_y": 86.1,
-   "first_date": "2025-08-03",
-   "last_date": "2026-08-01",
-   "n": 45,
-   "player_id": 78
-  },
-  {
-   "avg_x": 45.7,
-   "avg_y": 15.9,
-   "first_date": "2025-08-16",
+   "avg_x": 44.8,
+   "avg_y": 15.1,
+   "first_date": "2025-09-09",
    "last_date": "2026-07-01",
-   "n": 35,
+   "n": 10,
    "player_id": 90
   },
   {
-   "avg_x": 10.1,
-   "avg_y": 49.9,
-   "first_date": "2025-08-17",
+   "avg_x": 8.6,
+   "avg_y": 48.9,
+   "first_date": "2026-03-28",
    "last_date": "2026-06-29",
-   "n": 29,
+   "n": 7,
    "player_id": 132
   },
   {
@@ -47020,6 +47012,11 @@
   ],
   "잭슨": [
    [
+    "2026-05-16",
+    7.6,
+    "Bundesliga"
+   ],
+   [
     "2026-05-31",
     6.4,
     "International Friendly Games"
@@ -47048,11 +47045,6 @@
     "2026-07-01",
     6.5,
     "FIFA World Cup"
-   ],
-   [
-    "2026-08-05",
-    6.4,
-    "Club Friendly"
    ],
    [
     "2026-08-05",
@@ -59030,8 +59022,8 @@
    "ic_pg": 0.06,
    "kp_pg": 0.68,
    "label": "잭슨",
-   "minutes": 2576,
-   "n": 69,
+   "minutes": 2540,
+   "n": 68,
    "tk_pg": 0.31,
    "xa_pg": 0.107,
    "xg_pg": 0.389
@@ -66680,16 +66672,6 @@
     "n": 3,
     "season": "2026-27",
     "starts": 1
-   },
-   {
-    "assists": null,
-    "avg_rating": 6.4,
-    "competition": "Club Friendly",
-    "goals": null,
-    "minutes": 36,
-    "n": 1,
-    "season": "2026-27",
-    "starts": 0
    },
    {
     "assists": 0,

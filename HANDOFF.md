@@ -17,13 +17,13 @@
 > ⚠️ **직전 갱신은 08-25(`f05010f`)였다** — 08-26~09-01 사이 24개 커밋이 문서에 반영되지 않은 채 쌓여 있었고,
 > 이번 갱신이 그 공백을 git log 기준으로 복원한 것이다.
 
-- DB: players **200** · player_matches **4,176** · team_match_stats **65** · match_reports **29**
+- DB: players **200** · player_matches **4,175** · team_match_stats **65** · match_reports **29**
   (**complete 14 · draft 15**) · match_player_reports **521** · squad_entries **131** ·
   prescriptions **429** · slots **88** · match_game_setups **14** · match_player_prescriptions **228** ·
   transfer_targets **44** · transfer_outgoing **67** · player_duties **194** ·
-  **player_shirt_numbers 26**(신설) · understat_player_matches **5,634** · observations **371**.
+  **player_shirt_numbers 26**(신설) · understat_player_matches **5,634** · observations **372**.
   (players −1 · fotmob_season_stats −8 · fotmob_traits −6 · player_tenures −6 = 에수구 병합분 ·
-   player_matches −78 = 에수구 1 + **이중기록 77쌍 정리분**. 아래 참조.)
+   player_matches −79 = 에수구 1 + **이중기록 77+1쌍 정리분**. 아래 참조.)
 - ⏰⏰ **2026-27 여름 이적창이 2026-09-01 23:00 BST(= 09-02 00:00 CEST)에 닫혔다.**
   **사용자 지시로 `transfer-watch` 정기 루틴은 종료한다** — 남은 것은 **09-02 09:00 KST 마감 정산 1회뿐**이고,
   그 회차가 스스로 스케줄을 삭제한다(아래 「자동화」 참조).
@@ -82,39 +82,29 @@
 - player_matches **4,253 → 4,176**. 정리 후 77행 전부 opponent·venue·started·map25 결손 0.
 - 검증: FK 0 · integrity ok · **G1~G12 전항 통과**(G7 앵커 (14,6,4,93) 불변). `player_matches.id` 참조 FK는 없음을 사전 확인.
 
-### 2026-09-01 · 🔴 파생 발견 — `team_code`가 「경기 시점 소속」이 아니다 (obs#371, **미정리**)
+### 2026-09-01 · ⭐⭐ `team_code` 클럽 축 333행 정리 (obs#371 → obs#372) · **대표팀 축은 미해소**
 
-- 위 정리 중 잭슨 1행을 고치다 꼬리를 잡았다. **확정 영입 7명에서 407행**이 
-  **이적일 이전 경기인데 새 팀 코드**로 찍혀 있다 — 스키마가 이 칸을 「그 경기에서 소속」으로 명시하므로 **정의 위반**이다.
-- 바르콜라 68(LIV로 찍힘 — **2025-08-17 Ligue 1 경기까지** LIV다) · 잭슨 67 · 루제리 64 · 아라우호 58 ·
-  완비사카 56 · 차바리아 55 · 스즈키 39. ⚠️ **대표팀 경기도 클럽 코드다**(완비사카 DR콩고 WC예선 4경기 = AVL).
-- ⛔ **정리하지 않았다 — 결정이 필요하다**: `teams`에 **AVL·CHE·LIV·ATM 4개 코드뿐**이라
-  PSG·아탈란타·바르셀로나·웨스트햄·라요·파르마를 넣을 유효 코드가 없다.
-  「구 클럽을 teams에 추가」 / 「NULL 결손 처리」 / 「자유 텍스트 허용」 중 선택이 필요하고 파급이 각각 다르다.
-- ⚠️ **현재 상태는 일관되지 않다** — 잭슨의 match 76 **1행만** CHE로 정정했고(삭제될 FotMob 쌍이 정답을 줬다)
-  나머지 67행은 AVL 그대로다. **알고 남긴 것이며 전면 정리 시 함께 처리해야 한다.**
-
-### 2026-09-01 · ⭐⭐ 에수구 중복 id 병합 — **미해결 #1을 닫았다**(obs#368)
-
-- **`players` 103 → 140 병합.** 동일인 확정 근거는 **fotmob_id 1239595 동일**(+birth_year·position·nationality 일치).
-- **140을 살렸다** — 정체성(name_kr·sofascore_id 1110006·understat_id 13094·positions_alt)과
-  참조(market_values 56·understat 30·game_stats 2·shot_profile 1·status 1·squad_entries 1·**transfer_outgoing 1**)를
-  압도적으로 많이 갖는다. 103이 가진 것은 player_matches 4·match_player_reports 4·player_duties 1뿐이었다.
-- **삭제 20행(전 컬럼 대조로 완전 동일 확인)**: fotmob_season_stats 8 · fotmob_traits 6 · player_tenures 6.
-- ⭐ **삭제 1행(같은 출전의 열등 사본)**: player_matches id=3560 — 140의 id=3928과 **같은 match_id=76**
-  (2026-08-09 조호르, 90분, 평점 6.7)인데 3560은 FotMob 경유라 **hit_points·map25가 없고** 3928은
-  SofaScore 경유로 **hit_points 106 + map25**를 갖는다 ⇒ 그리드를 가진 쪽을 남겼다.
-  **이는 transfer-watch 런북이 경고한 「이중 기록 21쌍」(행 수 기반 질의의 이중 계상) 결함의 실제 사례다.**
-- **재지정 8행**: player_matches 3(match 73·74·75) · match_player_reports 4 · player_duties 1. 충돌 0.
-- **정체성 흡수**: name을 정자체 **`Dário Essugo`**로 올렸다. ⚠️ **id 103은 재사용 금지.**
-- ⚠️ **`player_duties`는 병합하지 않고 2행을 남겼다** — id=111(RCM, 첼시 공식 매치리포트 기반 **서사 상세**, 좌표 0)과
-  id=125(CM, **SofaScore 실측** 1경기)는 **같은 출전을 다른 회차가 다른 표기로 적은 것**이다.
-  UNIQUE(season,player_id,position)가 RCM≠CM이라 공존 가능하므로 **양쪽 confidence에 상호 참조를 남겼다.**
-  ⏰ **한 행으로 합치는 선택지는 열려 있다**(사용자 판단 대기 — 서사 근거는 RCM 행이 정본).
-- 검증: `PRAGMA foreign_key_check` 위반 0 · `integrity_check` ok · **G1~G12 전항 통과** ·
-  export 결과 사이트의 Essugo 라벨이 **두 표기(「Dário Essugo」 5 + 「에수구」 9) → 「에수구」 14로 단일화**됐다(손실 0).
-- ⚠️ **잔여 위험 스캔**: `fotmob_id`·`sofascore_id` 중복 **0건** — 같은 부류의 동일인 2-id는 더 없다.
-  단 **G6는 이 중복을 원리적으로 잡지 못한다**(두 id가 다 존재해 FK가 성립) ⇒ 아래 P3에 게이트 신설 항목을 남긴다.
+- **문제**: `team_code`가 「경기 시점 소속」이 아니라 「수집 시점 현 소속」으로 찍혀 있었다.
+  스키마가 이 칸을 「그 경기에서 소속」으로 명시하므로 **정의 위반**이다.
+  확정 영입 7명에서 **407행** = **클럽 333 + 대표팀 74**.
+- **사용자 결정(09-01): 구 클럽 코드를 `teams`에 추가하는 방향.** 클럽 333행만 처리했다.
+- **신규 teams 6행** — `PSG` · `BAY` · `BAR` · `WHU` · `RAY` · `PAR`.
+  ⚠️ `note`에 **「분석 대상 팀 아님 — player_matches.team_code 참조 어휘」**를 명기했다.
+  **regimes·slots·prescriptions 등 판단 테이블은 여전히 AVL·CHE·LIV·ATM 4팀뿐이다.**
+  ⭐ `BAY`는 등재 전에도 팔리냐 1행에서 쓰이던 **고아 코드**였고 정규화됐다 ⇒ **teams 미등재 코드 0**.
+  ⚠️ **루제리 25/26은 아탈란타가 아니라 아틀레티코(ATM)였다** — 초기 추정을 `player_tenures`로 교정했다.
+- **재배정**: 바르콜라 54→PSG · 잭슨 43→BAY + 5→CHE · 루제리 64→ATM · 아라우호 52→BAR ·
+  완비사카 38→WHU · 차바리아 55→RAY · 스즈키 28→PAR.
+- ⚠️⭐ **`avg_positions`(export)가 team_code로 필터하므로 사이트 표본이 크게 줄었다 — 오염이 걷힌 것이다**:
+  완비사카 AVL 35→**10** · 바르콜라 LIV 46→**8** · 아라우호 LIV 23→**4** · 스즈키 AVL 29→**7** ·
+  잭슨 AVL 27→**12** · 차바리아 CHE 40→**1** · **루제리 AVL 45→0**(전부 ATM 시절이었다).
+- ⭐⭐ **이 정리가 숨은 결손 2건을 드러냈다**:
+  ① **match_id 링크 결손 20행** 봉합 → 그 결과 **1차 77쌍에서 놓친 이중기록 1쌍**이 드러나 정리했다
+     (잭슨 08-05 유벤투스 — 한쪽 `match_id`가 NULL이라 키로 짝이 안 잡혔다).
+  ② **G12 「선수처방누락」 1건이 터졌다** — 잭슨의 08-08 밀란전(32분) 처방이 **없었는데**,
+     그 출전이 `AVL`로 태깅돼 G12 조인에 안 걸려 **결손이 은폐돼 있었다.** 커널로 채웠다(ST·st_false9·Build-Up·0.554).
+     ⇒ **team_code 오류는 데이터 오염일 뿐 아니라 게이트를 무력화한다**는 것이 실증됐다.
+- 검증: FK 0 · integrity ok · **G1~G12 전항 통과** · 잔여 68행(전부 대표팀).
 
 ### 2026-09-01 세션 (transfer-watch 마감 당일 · 커밋 `4eb0e0d`)
 
@@ -208,10 +198,13 @@
 
 ## 미해결 — 판단이 필요한 것
 
-1. 🔴⭐ **`player_matches.team_code`가 「경기 시점 소속」이 아니다 — 407행 / 7명**(obs#371).
-   스키마 정의 위반이고 **팀 단위 필터가 타 클럽 시절 경기를 끌어온다**(불변규칙 7의 대량 사례).
-   막힌 지점: `teams`에 4개 코드뿐이라 **구 클럽을 표현할 값이 없다**. ⇒ 「구 클럽 추가 / NULL 결손 / 자유 텍스트」 중 결정 필요.
-   ⚠️ 잭슨 1행만 정정돼 있어 **현재 일관되지 않다**. ⏰ 기존 산출물 오염 여부는 **미점검**(집계는 대개 regime_id·season으로 좁혀 왔다).
+1. 🔴⭐ **`team_code` 대표팀 축 — 406행 / 40명이 아직 클럽 코드다**(obs#371 잔여 · 클럽 축은 obs#372로 해소).
+   완비사카의 DR콩고 WC예선이 `AVL`, 각 팀 선수의 월드컵·A매치가 소속 클럽 코드로 찍혀 있다.
+   내역: FIFA World Cup 142 · International Friendly Games 118 · WC Qual. UEFA 82 · AFCON 28 ·
+   WC Qual. CAF 16 · WC Qual. CONMEBOL 12 · 기타 8.
+   ⏰ **결정 필요**: 국가대표를 `teams`에 넣을 것인가(40개 코드) / NULL 결손으로 둘 것인가.
+   ⚠️ 스키마 주석은 「클럽/대표팀 구분은 competition으로」라 하지만, team_code가 소속을 가리키는 칸인 이상
+   대표팀 경기에 클럽 코드를 넣는 것은 정합적이지 않다. **클럽 축과 달리 이건 손대지 않았다.**
 2. ⏰ **xG 개정 정책** — 「경기 직후 스냅샷을 정본으로 둘 것인가, 최신 개정을 따라갈 것인가」 규칙이 없다.
    현재는 **draft면 최신, complete면 사용자 판단**으로 운용한다.
 3. ⏰ **ATM 비야레알전 포메이션 표기 충돌** — 우리·El Desmarque·COPE는 **4-4-2**, **Infobae 크로니카는 「4-3-3 de Simeone」**.
