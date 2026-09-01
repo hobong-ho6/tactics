@@ -14,3 +14,6 @@ __pycache__/
 
 # cron 실행 로그 — 산출물이 아니다.
 logs/
+
+# db_diff.py --snapshot 산출물 — 파괴적 정리 전 대조용 임시 DB 사본이다(산출물 아님).
+db/.snapshots/

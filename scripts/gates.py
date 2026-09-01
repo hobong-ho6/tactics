@@ -22,9 +22,13 @@
   G12. 경기 리포트 — 완료본 필수 섹션·선수 전원·원문 파일·히트맵 메뉴가 모두 연결됨
        + draft 포함 모든 리포트가 선수 행을 최소 1개 갖는다(빈 피치 회귀 방지)
        + 경기 전용 FC 팀 설정·선발 11명 역할/포커스가 시즌 정본과 분리돼 있음
+  G13. 조용한 이중화 — 동일인 2-id / 이중 기록 / match 링크 결손 / team_code↔대회 성격 불일치
+       (2026-09-01 신설. **FK가 성립해서 G6가 원리적으로 못 잡는 부류**만 모았다 — obs#374.
+        검사식 정본은 g13_checks()이고, 회귀 테스트 scripts/test_g13_regression.py가 이를 공유한다.)
 
-사용: python3 scripts/gates.py          (전체)
-      from scripts.gates import run    (프로그램 내 호출)
+사용: python3 scripts/gates.py                      (전체)
+      python3 scripts/test_g13_regression.py        (G13 회귀 — 결함 합성 주입)
+      from scripts.gates import run                 (프로그램 내 호출)
 """
 import sqlite3
 import sys
@@ -59,6 +63,78 @@ ANCHORS = [
      85, "WM", "wm_widemid", "Build-Up", 0.833),
     ("하지무사 RM(상수)", None, HADJ_MOUSSA, 85, "WM", "wm_winger", "Attack", 0.821),
 ]
+
+
+def g13_checks(con):
+    """G13 「조용한 이중화」 4항을 실행해 {키: 위반행 리스트}를 돌려준다 — **읽기 전용**.
+
+    run()과 scripts/test_g13_regression.py가 **같은 SQL을 공유**하도록 분리했다.
+    회귀 테스트가 SQL을 복사해 가면 게이트를 고쳤을 때 테스트가 낡은 식을 검사하게 된다.
+
+    넷 다 FK가 성립해서 G6(foreign_key_check)가 원리적으로 못 잡는 부류다.
+    2026-09-01에 손으로 세다 각각 실물 결함을 발견해 게이트화했다(obs#368·#370·#372·#373·#374).
+    """
+    out = {}
+
+    # ⑴ 동일인 2-id — 같은 선수가 players에 두 행으로 존재하는 것.
+    #    실증: 에수구가 103/140 두 id로 있었고 **참조가 갈려** CHE 유출 행(140)이 실측 출전(103)과
+    #    이어지지 않았다. 두 id가 모두 존재하므로 foreign_key_check는 통과한다(G6 사각지대).
+    #    외부 소스 id가 겹치면 동일인이다 — fotmob_id/sofascore_id를 열쇠로 쓴다.
+    out["dup_person"] = con.execute("""
+        SELECT 'fotmob_id', fotmob_id, GROUP_CONCAT(id) FROM players
+         WHERE fotmob_id IS NOT NULL GROUP BY fotmob_id HAVING COUNT(*) > 1
+        UNION ALL
+        SELECT 'sofascore_id', sofascore_id, GROUP_CONCAT(id) FROM players
+         WHERE sofascore_id IS NOT NULL GROUP BY sofascore_id HAVING COUNT(*) > 1""").fetchall()
+
+    # ⑵ 이중 기록 — 같은 출전이 SofaScore·FotMob 두 소스로 각각 적재된 것.
+    #    UNIQUE(player_id, event_id)는 event_id가 다르므로 막지 못한다(FotMob은 −matchId 규약).
+    #    실증: 2026-09-01에 전수를 세니 런북이 적어 온 「21쌍」이 아니라 **77쌍**이었고,
+    #    행 수 기반 질의가 프리시즌 6경기에서 이중 계상되고 있었다.
+    out["dup_appearance"] = con.execute("""
+        SELECT player_id, match_id FROM player_matches
+         WHERE match_id IS NOT NULL GROUP BY player_id, match_id HAVING COUNT(*) > 1""").fetchall()
+
+    # ⑶ match 링크 결손 — ⑵의 사각지대를 메우는 짝이다.
+    #    match_id가 한쪽만 NULL이면 ⑵의 (player_id, match_id) 키로 짝이 잡히지 않는다.
+    #    실제로 잭슨 08-05 1쌍이 그렇게 숨어 있었고, 링크를 봉합하고 나서야 드러났다.
+    out["orphan_match_link"] = con.execute("""
+        SELECT pm.id FROM player_matches pm JOIN matches m ON m.event_id = pm.event_id
+         WHERE pm.match_id IS NULL""").fetchall()
+
+    # ⑷ team_code ↔ 대회 성격 정합 — team_code는 스키마상 「그 경기에서 소속」이다.
+    #    실증: 수집기가 「수집 시점 현 소속」을 찍어 바르콜라의 Ligue 1 경기가 LIV,
+    #    완비사카의 DR콩고 WC예선이 AVL이었다(클럽 333행 + 대표팀 406행).
+    #    ⭐ 코드 목록을 하드코딩하지 않는다 — **한 코드가 클럽 대회와 대표팀 대회에 동시에
+    #    쓰이면 위반**이라는 불변식으로 잡는다(클럽은 WC예선을 뛰지 않고 대표팀은 리그를 뛰지 않는다).
+    #    새 코드가 늘어도 자기유지되고, 정리 전 DB에서 AVL·CHE·LIV 3건을 실제로 잡는다.
+    #    ⚠️ 한계: 어떤 코드가 **오직 잘못된 쪽에만** 쓰이면 섞이지 않아 통과한다.
+    #    ⚠️ 「FIFA Club World Cup」은 클럽 대회인데 '%World Cup%'에 걸리므로 반드시 제외한다.
+    out["mixed_team_code"] = con.execute("""
+        WITH cls AS (
+          SELECT team_code,
+                 CASE WHEN competition NOT LIKE '%Club World Cup%' AND (
+                        competition LIKE '%World Cup Qual%'  OR competition LIKE '%FIFA World Cup%'
+                     OR competition LIKE '%Africa Cup%'      OR competition LIKE '%Nations League%'
+                     OR competition LIKE '%International Friendly%'
+                     OR competition LIKE '%Euro%Qual%'       OR competition LIKE '%Copa America%'
+                     OR competition LIKE '%Championship Qual%'
+                     OR competition LIKE '%Asian Cup%'       OR competition LIKE '%Gold Cup%')
+                      THEN 'NT' ELSE 'CLUB' END AS kind
+            FROM player_matches
+           WHERE team_code IS NOT NULL AND competition IS NOT NULL)
+        SELECT team_code, GROUP_CONCAT(DISTINCT kind) FROM cls
+         GROUP BY team_code HAVING COUNT(DISTINCT kind) > 1""").fetchall()
+
+    return out
+
+
+G13_LABELS = {
+    "dup_person": "동일인2id",
+    "dup_appearance": "이중기록",
+    "orphan_match_link": "match링크결손",
+    "mixed_team_code": "team_code대회불일치",
+}
 
 
 def run(db_path=None, verbose=True):
@@ -441,65 +517,16 @@ def run(db_path=None, verbose=True):
     if not ok12:
         fails.append("G12")
 
-    # G13 — 「조용한 이중화」 3종. 셋 다 FK가 성립해서 G6가 원리적으로 못 잡는 부류이고,
-    #       2026-09-01에 손으로 세다가 각각 실물 결함을 발견해 게이트화했다(obs#368·#370·#372·#373).
-    #
-    # ⑴ 동일인 2-id — 같은 선수가 players에 두 행으로 존재하는 것.
-    #    실증: 에수구가 103/140 두 id로 있었고 **참조가 갈려** CHE 유출 행(140)이 실측 출전(103)과
-    #    이어지지 않았다. 두 id가 모두 존재하므로 foreign_key_check는 통과한다(G6 사각지대).
-    #    외부 소스 id가 겹치면 동일인이다 — fotmob_id/sofascore_id를 열쇠로 쓴다.
-    dup_person = con.execute("""
-        SELECT 'fotmob_id', fotmob_id, GROUP_CONCAT(id) FROM players
-         WHERE fotmob_id IS NOT NULL GROUP BY fotmob_id HAVING COUNT(*) > 1
-        UNION ALL
-        SELECT 'sofascore_id', sofascore_id, GROUP_CONCAT(id) FROM players
-         WHERE sofascore_id IS NOT NULL GROUP BY sofascore_id HAVING COUNT(*) > 1""").fetchall()
-
-    # ⑵ 이중 기록 — 같은 출전이 SofaScore·FotMob 두 소스로 각각 적재된 것.
-    #    UNIQUE(player_id, event_id)는 event_id가 다르므로 막지 못한다(FotMob은 −matchId 규약).
-    #    실증: 2026-09-01에 전수를 세니 런북이 적어 온 「21쌍」이 아니라 **77쌍**이었고,
-    #    행 수 기반 질의가 프리시즌 6경기에서 이중 계상되고 있었다.
-    #    ⚠️ match_id가 한쪽만 NULL이면 이 검사도 놓친다 — 그래서 아래 ⑵-b로 링크 결손을 함께 본다
-    #    (실제로 잭슨 08-05 1쌍이 그렇게 숨어 있었다).
-    dup_appearance = con.execute("""
-        SELECT player_id, match_id FROM player_matches
-         WHERE match_id IS NOT NULL GROUP BY player_id, match_id HAVING COUNT(*) > 1""").fetchall()
-    orphan_match_link = con.execute("""
-        SELECT pm.id FROM player_matches pm JOIN matches m ON m.event_id = pm.event_id
-         WHERE pm.match_id IS NULL""").fetchall()
-
-    # ⑶ team_code ↔ 대회 성격 정합 — team_code는 스키마상 「그 경기에서 소속」이다.
-    #    실증: 수집기가 「수집 시점 현 소속」을 찍어 바르콜라의 Ligue 1 경기가 LIV,
-    #    완비사카의 DR콩고 WC예선이 AVL이었다(클럽 333행 + 대표팀 406행).
-    #    ⭐ 코드 목록을 하드코딩하지 않는다 — **한 코드가 클럽 대회와 대표팀 대회에 동시에
-    #    쓰이면 위반**이라는 불변식으로 잡는다(클럽은 WC예선을 뛰지 않고 대표팀은 리그를 뛰지 않는다).
-    #    새 코드가 늘어도 자기유지되고, 정리 전 DB에서 AVL·CHE·LIV 3건을 실제로 잡는다.
-    #    ⚠️ 한계: 어떤 코드가 **오직 잘못된 쪽에만** 쓰이면 섞이지 않아 통과한다.
-    #    ⚠️ 「FIFA Club World Cup」은 클럽 대회인데 '%World Cup%'에 걸리므로 반드시 제외한다.
-    mixed_team_code = con.execute("""
-        WITH cls AS (
-          SELECT team_code,
-                 CASE WHEN competition NOT LIKE '%Club World Cup%' AND (
-                        competition LIKE '%World Cup Qual%'  OR competition LIKE '%FIFA World Cup%'
-                     OR competition LIKE '%Africa Cup%'      OR competition LIKE '%Nations League%'
-                     OR competition LIKE '%International Friendly%'
-                     OR competition LIKE '%Euro%Qual%'       OR competition LIKE '%Copa America%'
-                     OR competition LIKE '%Championship Qual%'
-                     OR competition LIKE '%Asian Cup%'       OR competition LIKE '%Gold Cup%')
-                      THEN 'NT' ELSE 'CLUB' END AS kind
-            FROM player_matches
-           WHERE team_code IS NOT NULL AND competition IS NOT NULL)
-        SELECT team_code, GROUP_CONCAT(DISTINCT kind) FROM cls
-         GROUP BY team_code HAVING COUNT(DISTINCT kind) > 1""").fetchall()
-
-    ok13 = (not dup_person and not dup_appearance
-            and not orphan_match_link and not mixed_team_code)
+    # G13 — 「조용한 이중화」. 검사식은 g13_checks()가 정본이다(회귀 테스트와 공유).
+    g13 = g13_checks(con)
+    ok13 = not any(g13.values())
     if verbose:
-        print(f"G13 조용한 이중화: 동일인2id {len(dup_person)} · 이중기록 {len(dup_appearance)} · "
-              f"match링크결손 {len(orphan_match_link)} · team_code대회불일치 {len(mixed_team_code)} "
-              f"{'✅' if ok13 else '⛔ ' + str((dup_person[:3], dup_appearance[:3], orphan_match_link[:3], mixed_team_code[:3]))}")
+        summary = " · ".join(f"{G13_LABELS[k]} {len(v)}" for k, v in g13.items())
+        detail = "" if ok13 else " ⛔ " + str({k: v[:3] for k, v in g13.items() if v})
+        print(f"G13 조용한 이중화: {summary} {'✅' if ok13 else detail}")
     if not ok13:
         fails.append("G13")
+
 
     con.close()
     if verbose:

@@ -66,6 +66,8 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 | 실측 수집 | `core.sofascore.js_collect()` → 브라우저 → `parse_collected()` | sofascore.com 오리진 필수 |
 | 익스포트 | `python3 scripts/export.py` | 게이트 통과 후 site/data 재생성 + 프리뷰 미러 |
 | 게이트 | `python3 scripts/gates.py` | G1~G13 |
+| G13 회귀 | `python3 scripts/test_g13_regression.py` | 결함 4종을 **합성 주입**해 검출 확인 + 클럽월드컵 오탐 검사 |
+| 변경 대조 | `python3 scripts/db_diff.py --snapshot` → `… db_diff.py <스냅샷>` | 파괴적 정리가 의도한 것만 했는지 **행 단위** 증명(NOT NULL→NULL 감시) |
 | v1 재흡수 | `python3 scripts/migrate_v1.py` | ⚠️ 컷오버 완료 — 재실행하면 v2 신규분이 날아간다. 사용 금지(아카이브 참조용) |
 | 이적 감시 | transfer-watch 스킬 (매일 09/21시) | 4팀 루프 — 2026-08-20 ATM 편입, v2에 기록 |
 
