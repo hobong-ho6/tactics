@@ -122,6 +122,21 @@
 - 다국어(에메리 모국어 스페인어) 서사: 미수행 — 이번 회차는 영어 소스로 시간 제약, D+1 이후 스페인어 검색 예정.
 - 45분+ 출전 전원 개별 duties 서사: 미수행 — 다수가 데뷔·복귀전이라 축적된 duties가 없음. player_duties 갱신은 D+1 이후.
 
+## 경기 총평·매체 평가 (2026-09-01 수집)
+
+> 전술·선수 분석과 **별개 축**이다. 매체 총평·평점·감독 회견의 비전술 대목·여론·시즌 맥락을 모았다.
+> DB 정본은 `match_reports.overall_assessment`이고 이 절은 그 사본이다.
+
+- ⭐⭐ **에메리(우리 감독) 경기 후 1차 발언** — 「We performed like we planned and we compete like we planned... how we didn't achieve the result... is painful」. 전술 설계 실패가 아니라 마무리·개인 기여 문제로 자체 진단(xG 0.33·유효슈팅 0과 정합). 스즈키·잭슨 데뷔를 「fantastic」으로, 바클리의 선발 복귀를 「taking responsibility」로 평가. 대규모 이적에 대해 「we are not regretting anything」 — 계획된 리빌딩으로 프레이밍.
+- ⭐ **아르테타(상대 감독) 1차 발언** — 콘사의 아스날 데뷔(전 소속팀 상대)를 「composed, calm」으로 평가. AVL을 「a team that was so successful last year」·「this quality squad... they know how to make life really tough」로 평가 — 상대 관점에서 난도를 인정.
+- **AFTV(아스날 팬, 상대 관점)** — 「Villa Park, one of the toughest away stadiums to go to in the league」·「probably not the prettiest football we've played」. 아스날 자신의 공격진(하베르츠·외데고르)도 부진했다고 인정 — AVL의 무유효슈팅이 전적으로 AVL만의 문제는 아니었을 가능성.
+- ⭐ **이적 서사(WebSearch)**: 잭슨은 **에메리와 비야레알 시절 재회**(27경기 3골 3도움 기존 인연)이자 클럽 레코드 £65m — 아스날 상대 커리어는 4경기 연속 무승무골무도움. 스즈키는 일본 국가대표 월드컵에서 비니시우스 주니어 슈팅을 선방한 이력. 왓킨스는 알힐랄로 약 £50m 이적 확정.
+- ⚠️ **미확인 정정**: WebSearch 요약이 「고레츠카 AVL 데뷔」를 언급했으나 FotMob·WhoScored 1차 라인업(20명 전원)에 없어 채택하지 않았다 — 검색엔진 시점 혼입 의심(docs/30 패턴).
+
+**출처**: 유튜브 전사 3건(Footy Post-Game Hub — 에메리 반응 `svwb471jK9I` · GoonersLatest — 아르테타 반응 `iOaDuCzs4v8` · AFTV `-9Pz1RwmEUE`, 전부 2026-08-31 게시) · WebSearch(이적 서사).
+
+**한계**: ⛔ 전부 **자동 생성 자막** 기반 전사다 — verbatim 인용은 원문 대조 전까지 신중히. ⛔ 클럽 전술 영상·다국어(스페인어) 매체 총평은 0건(경기 종료 수 시간 후라 구조적) — D+1~D+3(09-02~04) 재검색 대상.
+
 ## 9. 데이터 반영과 한계
 
 - 신규: `matches` 1(id 94) · `player_matches` 15 · `team_match_stats` 1 · `match_reports` 1(id 30, draft) · `match_player_reports` 15 · `match_game_setups` 1 · `match_player_prescriptions` 15.
