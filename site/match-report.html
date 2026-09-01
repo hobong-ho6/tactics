@@ -185,9 +185,10 @@ function render(r){
     <p class="kv">${esc(r.date||r.report_date)} · ${esc(r.competition)} · ${esc(r.stage||'')} · ${esc(r.venue)} ·
     결과 <b>${esc(r.result)}</b> · event <code>${esc(r.event_id)}</code></p></div>
     <span class="badge ${isDraft(r)?'mid':'hi'}">${isDraft(r)?'초안':'완료'}</span></div>
-    ${isDraft(r)?`<p class="kv"><b>이 리포트는 초안입니다.</b> 원천 수치·출전 선수는 실제 수집분이지만,
+    ${isDraft(r)?(r.game_setup?`<p class="kv"><b>이 리포트는 초안입니다.</b> 원천 수치·출전 선수·경기 전용 FC 재현 프리셋(선발 11명 역할·포커스)까지
+      실제 수집분입니다 — 클럽 전술 영상·다국어 서사 등 서술형 근거가 아직 보강되지 않아 초안으로 남아 있습니다.</p>`:`<p class="kv"><b>이 리포트는 초안입니다.</b> 원천 수치·출전 선수는 실제 수집분이지만,
       <b>경기 전용 FC 재현 프리셋이 없습니다</b> — 이 경기의 히트맵(map25)을 확보하지 못해 단일 경기 적합을 산출할 수 없었기 때문입니다.
-      근거 없이 역할을 채우는 대신 비워 두었습니다. 완료본은 프리셋과 선발 11명 역할·포커스까지 있습니다.</p>`:''}
+      근거 없이 역할을 채우는 대신 비워 두었습니다. 완료본은 프리셋과 선발 11명 역할·포커스까지 있습니다.</p>`):''}
     <div class="report-metrics"><span>${annotate('점유율')} <b>${esc(r.possession ?? '미수집')}%</b></span>
     <span>슈팅 <b>${esc(r.shots_v ?? '—')}–${esc(r.shots_o ?? '—')}</b></span>
     <span>${annotate('유효슈팅')} <b>${esc(r.sot_v ?? '—')}–${esc(r.sot_o ?? '—')}</b></span>
