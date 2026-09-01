@@ -175,3 +175,9 @@ details.match-players>summary,details.report-source>summary{color:var(--acc);cur
 .gc-arrow{color:var(--ok);font-weight:700;letter-spacing:2px}
 .chips{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0}
 .chip{border:1px solid var(--line);border-radius:6px;padding:1px 7px;font-size:12px;font-weight:600}
+
+/* 등번호 배지 — 스쿼드 화면에서 선수명 앞에 붙는다. 2026-09-01 신설.
+   결손(NULL)이면 아예 렌더하지 않으므로 「빈 배지」 상태는 없다. */
+.shirtno{display:inline-block;min-width:1.7em;padding:0 .3em;border-radius:.3em;
+  background:#2a3446;color:#cfe0ff;font:600 .82em/1.5 ui-monospace,monospace;
+  text-align:center;vertical-align:.05em}

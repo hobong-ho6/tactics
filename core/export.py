@@ -98,9 +98,14 @@ def export_all(db_path=None, window="2026-summer"):
         squad = _rows(con, """SELECT s.player_id, COALESCE(s.label, p.name_kr, p.name) label,
                                      p.name name_en, COALESCE(p.name_kr, p.name) name_kr,
                                      s.slot_type, s.lh, s.map25, s.rate_v, s.rate_basis, s.rate_note,
-                                     s.fit_role, s.fit_focus, s.fit_sim, s.sort_order, s.grid_club, s.grid_caveat
+                                     s.fit_role, s.fit_focus, s.fit_sim, s.sort_order, s.grid_club,
+                                     s.grid_caveat, s.pos_only, sn.shirt_number
                               FROM squad_entries s JOIN players p ON p.id=s.player_id
-                              WHERE s.regime_id=? ORDER BY s.sort_order, label""", (rid,))
+                              LEFT JOIN player_shirt_numbers sn
+                                ON sn.player_id = s.player_id AND sn.team_code = ?
+                               AND sn.season = (SELECT MAX(season) FROM player_shirt_numbers
+                                                 WHERE team_code = ?)
+                              WHERE s.regime_id=? ORDER BY s.sort_order, label""", (code, code, rid))
         prescriptions = _rows(con, """
             SELECT pr.player_id, COALESCE(p.name_kr, p.name) label, pr.season, pr.game_version,
                    pr.kind, pr.pos_label, pr.x, pr.y, pr.role_id, pr.focus, pr.map25, pr.starter,
@@ -109,13 +114,20 @@ def export_all(db_path=None, window="2026-summer"):
             WHERE pr.regime_id=? ORDER BY pr.player_id, pr.kind""", (rid,))
         # 모든 화면이 공유하는 슬롯 후보 정본. squad/transfer를 페이지별로 다시 합치지 않는다.
         # v_slot_candidates가 (regime, formation, pos, player_id) 중복 제거와 승격 우선순위를 보장한다.
+        # shirt_number는 player_shirt_numbers를 LEFT JOIN해 붙인다 — v_slot_candidates(뷰)를
+        # 건드리지 않기 위해서다. 시즌은 그 팀의 최신 시즌을 쓴다(등번호는 시즌마다 재배정된다).
         slot_candidates = _rows(con, """
-            SELECT regime_id, team_code, formation, pos, slot_type, player_id, label,
-                   name_en, name_kr, source_kind, status, map25, rating, rate_basis,
-                   rate_note, fit_role, fit_focus, fit_sim, source, confidence,
-                   sort_order, grid_club, grid_caveat
-            FROM v_slot_candidates WHERE regime_id=?
-            ORDER BY formation, pos, source_kind, sort_order, label""", (rid,))
+            SELECT v.regime_id, v.team_code, v.formation, v.pos, v.slot_type, v.player_id, v.label,
+                   v.name_en, v.name_kr, v.source_kind, v.status, v.map25, v.rating, v.rate_basis,
+                   v.rate_note, v.fit_role, v.fit_focus, v.fit_sim, v.source, v.confidence,
+                   v.sort_order, v.grid_club, v.grid_caveat, sn.shirt_number
+            FROM v_slot_candidates v
+            LEFT JOIN player_shirt_numbers sn
+              ON sn.player_id = v.player_id AND sn.team_code = v.team_code
+             AND sn.season = (SELECT MAX(season) FROM player_shirt_numbers
+                               WHERE team_code = v.team_code)
+            WHERE v.regime_id=?
+            ORDER BY v.formation, v.pos, v.source_kind, v.sort_order, v.label""", (rid,))
         # 대표 평균위치 — 히트맵 비교(A·실측)가 슬롯 좌표가 아니라 선수의 실제 평균 위치에
         # 칩을 찍기 위한 값. 대표 히트맵(map25)과 같은 유효 표본 기준(45분+ · 히트포인트 15+)을
         # 쓴다. 좌표 변환은 화면에서 한다(docs/30: 툴x=100−소파y, 툴y=소파x).

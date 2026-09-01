@@ -19,6 +19,12 @@ const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loa
 const K = new Kernel(kd);
 const slots = td.slots.filter(s => s.formation === td.slots[0]?.formation);
 
+/* 등번호 — player_shirt_numbers를 export가 slot_candidates에 실어 보낸다.
+   ⚠️ NULL이면 표시하지 않는다(0으로 그리면 「0번」으로 오독된다). 갓 영입돼 FotMob 집계에
+   아직 안 잡힌 선수가 있을 수 있어 결손이 정상 상태다. */
+const shirt = q => q.shirt_number != null
+  ? `<span class="shirtno" title="등번호 ${q.shirt_number}">${q.shirt_number}</span> ` : '';
+
 const posSel=document.getElementById('posSel');
 posSel.innerHTML='<option value="">전체</option>'+slots.map(s2=>`<option>${s2.pos}</option>`).join('');
 posSel.addEventListener('change',build);
@@ -34,7 +40,7 @@ for (const s of slots){
                                                    : b.bf.sim - a.bf.sim);
   ranked.forEach(({ q, bf }, i) => rows.push(`<tr>
     <td>${i === 0 ? `<b>${s.pos}</b>` : ''}</td>
-    <td>${i === 0 ? '★ ' : ''}${q.label} ${sofifaLink(q.label, GS)}<br><small>${annotate(statLine(q.label, GS))}</small></td>
+    <td>${i === 0 ? '★ ' : ''}${shirt(q)}${q.label} ${sofifaLink(q.label, GS)}<br><small>${annotate(statLine(q.label, GS))}</small></td>
     <td>${gkPosCell(td, s.pos, q.player_id) ?? `${K.roleName[bf.role] ?? bf.role}/${bf.focus} <b>${bf.sim.toFixed(3)}</b>`}</td>
     <td>${q.rating ?? '—'} <small class="dim">${q.rate_note ?? ''}</small></td>
     <td>${miniGrid(q.map25, 60)}</td>

@@ -58,7 +58,7 @@ INSERT INTO players VALUES(57,'Modou Kéba Cissé','시세',1944705,77524,2005,'
 INSERT INTO players VALUES(58,'Alejandro Garnacho','가르나초',1135873,268438,2004,'LW','Chelsea → Aston Villa. SofaScore pid 1135873. 26/27 스쿼드 실측 (2026-08-11).',1203665,'Argentina',10552,NULL);
 INSERT INTO players VALUES(59,'Alysson','알리송',1631879,NULL,2006,'RW','Aston Villa (2026-01). SofaScore pid 1631879. 26/27 스쿼드 실측 (2026-08-11).',1656860,'Brazil',14446,NULL);
 INSERT INTO players VALUES(60,'Tammy Abraham','타미 아브라함',610766,NULL,1997,'ST','Aston Villa. SofaScore pid 610766. 26/27 스쿼드 실측 (2026-08-11).',749661,'England',702,NULL);
-INSERT INTO players VALUES(61,'Brian Madjo',NULL,2070311,NULL,2009,'ST',NULL,1729841,'Luxembourg',13810,'FW');
+INSERT INTO players VALUES(61,'Brian Madjo','마조',2070311,NULL,2009,'ST',NULL,1729841,'Luxembourg',13810,'FW');
 INSERT INTO players VALUES(63,'Josh Acheampong','아체암퐁',1403050,NULL,2006,'CB',NULL,1400216,'England',12535,'DF');
 INSERT INTO players VALUES(65,'Roméo Lavia','라비아',1069488,NULL,2004,'DM',NULL,1190867,'Belgium',10004,'MF');
 INSERT INTO players VALUES(66,'Marco Palestra','팔레스트라',1397736,NULL,2005,'RM',NULL,1473806,'Italy',11551,'MF');
@@ -66,8 +66,8 @@ INSERT INTO players VALUES(67,'Danny Welbeck','웰벡',33902,NULL,1990,'ST',NULL
 INSERT INTO players VALUES(69,'Ifeanyi Ndukwe','은두크웨',1929673,NULL,2008,'CB',NULL,1780239,'Austria',NULL,'DF');
 INSERT INTO players VALUES(70,'Kostas Tsimikas','치미카스',786259,NULL,1996,'LB',NULL,671529,'Greece',8852,'DF');
 INSERT INTO players VALUES(71,'Lewis Koumas',NULL,1403111,NULL,2005,'LW',NULL,1364042,'Wales',NULL,'MF');
-INSERT INTO players VALUES(72,'Alexander Isak',NULL,823941,NULL,1999,'ST',NULL,690107,'Sweden',5232,'FW');
-INSERT INTO players VALUES(73,'Giorgi Mamardashvili',NULL,930997,NULL,2000,'GK',NULL,948800,'Georgia',9693,NULL);
+INSERT INTO players VALUES(72,'Alexander Isak','이삭',823941,NULL,1999,'ST',NULL,690107,'Sweden',5232,'FW');
+INSERT INTO players VALUES(73,'Giorgi Mamardashvili','마마르다슈빌리',930997,NULL,2000,'GK',NULL,948800,'Georgia',9693,NULL);
 INSERT INTO players VALUES(74,'Wataru Endo',NULL,143040,NULL,1993,'DM',NULL,202643,'Japan',NULL,'MF');
 INSERT INTO players VALUES(75,'João Palhinha','팔리냐',364612,NULL,1995,'DM','transfer_targets 2026-summer AVL 후보 — 평가·듀티 기록용 등재 (2026-08-11)',524434,'Portugal',10715,NULL);
 INSERT INTO players VALUES(76,'Nicolas Jackson','잭슨',1085381,259197,2001,'ST','transfer_targets 2026-summer AVL 후보 — 평가·듀티 기록용 등재 (2026-08-11)',1197347,'Senegal',10048,NULL);
@@ -105,9 +105,9 @@ INSERT INTO players VALUES(109,'Mor Talla Ndiaye',NULL,NULL,NULL,NULL,NULL,'2026
 INSERT INTO players VALUES(111,'James McConnell','맥코넬',1138428,NULL,2004,'DM','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1138428 부여(프리시즌 전수 수집).',1231075,'England',NULL,NULL);
 INSERT INTO players VALUES(112,'Kieran Morrison','모리슨',1462781,NULL,2006,'RW','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1462781 부여(프리시즌 전수 수집).',1439550,'Northern Ireland',NULL,NULL);
 INSERT INTO players VALUES(113,'Harvey Elliott','엘리엇',955245,NULL,2003,'AM','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=955245 부여(프리시즌 전수 수집).',963964,'England',7546,NULL);
-INSERT INTO players VALUES(114,'Rio Ngumoha',NULL,1881902,NULL,2008,'LW','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1597668,'England',NULL,NULL);
+INSERT INTO players VALUES(114,'Rio Ngumoha','응구모하',1881902,NULL,2008,'LW','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1597668,'England',NULL,NULL);
 INSERT INTO players VALUES(115,'Will Wright',NULL,1984100,NULL,2008,'ST','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1692224,'England',NULL,NULL);
-INSERT INTO players VALUES(116,'Trey Nyoni',NULL,1445945,NULL,2007,'DM','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1436258,'England',12203,NULL);
+INSERT INTO players VALUES(116,'Trey Nyoni','뇨니',1445945,NULL,2007,'DM','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1436258,'England',12203,NULL);
 INSERT INTO players VALUES(117,'Federico Chiesa','키에사',845386,NULL,1997,'RW','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=845386 부여(프리시즌 전수 수집).',784510,'Italy',NULL,NULL);
 INSERT INTO players VALUES(118,'Calum Scanlon','캘럼 스캔런',NULL,NULL,2005,'LB','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 [2026-08-25] name_kr 「스캔런」 → 「캘럼 스캔런」. **동명이인 충돌 해소** — id=145 Cody Scanlon이 같은 name_kr을 쓰고 있었고 `player_game_stats`가 UNIQUE(game_version, roster_date, name_kr)이라 **FC27 09-10 수집에서 한 명이 다른 한 명을 덮어쓸 수 있었다**(docs/21 함정 항목의 미기재 사례). 알리송(Alysson)/알리송 베케르(Alisson) 선례와 같은 방식으로 이름을 붙여 구분했다.',1355539,'England',NULL,NULL);
 INSERT INTO players VALUES(119,'Freddie Woodman',NULL,NULL,NULL,1997,'GK','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',582276,'England',NULL,NULL);
