@@ -35,9 +35,15 @@ for (const s of slots){
   const cs = slotCandidates(td, s.pos, { includeTransfers: false });
   if (!cs.length){ rows.push(`<tr><td>${s.pos}</td><td colspan="5" class="dim">실측 후보 없음 — 공백 슬롯</td></tr>`); continue; }
   // GK는 적합이 변별하지 못하므로(obs#220) 적합순 정렬이 의미 없다 — 평점순으로 세운다.
+  // ⭐ 단 그 슬롯에 게임 처방 선발(fc26:opt starter=1)이 있으면 그 선수를 최상단에 둔다.
+  //    처방은 사람 판단이 들어간 정본이고, 이걸 안 하면 리포트 설정시트와 ★가 어긋난다
+  //    (2026-09-01 실제 발생 — AVL GK를 스즈키로 고정했는데 여기선 평점 1위 비조가 ★였다).
+  const rx1 = (td.prescriptions ?? []).filter(p => p.kind === `fc26:opt:${s.pos}` && p.starter);
+  const presStarter = rx1.length ? rx1[0].player_id : null;
   const ranked = cs.map(q => ({ q, bf: K.bestFit(q.map25, s.x, s.slot_type) }))
                    .sort((a, b) => isGkSlot(s.pos) ? (b.q.rating ?? 0) - (a.q.rating ?? 0)
-                                                   : b.bf.sim - a.bf.sim);
+                                                   : b.bf.sim - a.bf.sim)
+                   .sort((a, b) => (b.q.player_id === presStarter) - (a.q.player_id === presStarter));
   ranked.forEach(({ q, bf }, i) => rows.push(`<tr>
     <td>${i === 0 ? `<b>${s.pos}</b>` : ''}</td>
     <td>${i === 0 ? '★ ' : ''}${shirt(q)}${q.label} ${sofifaLink(q.label, GS)}<br><small>${annotate(statLine(q.label, GS))}</small></td>

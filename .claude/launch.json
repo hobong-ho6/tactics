@@ -1,6 +1,6 @@
 {
   "version": "0.0.1",
-  "_note": "preview daemon has no macOS TCC permission for ~/Documents — so this serves the /private/tmp/tactics-preview mirror, not the repo. The mirror is refreshed automatically by `python3 scripts/export.py` (it copies site/ wholesale), so no manual copy step is needed. Pages live in site/*.html; data in site/data/*.json. Reloading the browser is enough to pick up new data: site/assets/data.js fetches JSON with cache:'no-store' plus a Date.now() cache-buster (enforced by gate G9). NOTE: this inline handler does not send Cache-Control: no-store — use scripts/serve.sh instead if you need that for HTML/JS too.",
+  "_note": "preview daemon has no macOS TCC permission for ~/Documents — so this serves the /private/tmp/tactics-preview mirror, not the repo. The mirror is refreshed automatically by `python3 scripts/export.py` (it copies site/ wholesale), so no manual copy step is needed. Pages live in site/*.html; data in site/data/*.json. ⭐ 2026-09-01: the `heatmap` inline handler NOW sends Cache-Control: no-store for HTML/JS too — it previously did not, and a squad.html edit (등번호 배지) was invisible to the browser because of it. site/assets/data.js also fetches JSON with cache:'no-store' + a Date.now() cache-buster (gate G9).",
   "configurations": [
     {
       "name": "heatmap",
@@ -8,10 +8,11 @@
       "runtimeArgs": [
         "-I",
         "-c",
-        "import os,functools;from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler;port=int(os.environ.get('PORT','8123'));H=functools.partial(SimpleHTTPRequestHandler, directory='/private/tmp/tactics-preview');ThreadingHTTPServer(('127.0.0.1',port), H).serve_forever()"
+        "import os, functools\nfrom http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler\nclass H0(SimpleHTTPRequestHandler):\n    def end_headers(self):\n        self.send_header('Cache-Control','no-store, no-cache, must-revalidate, max-age=0')\n        self.send_header('Pragma','no-cache')\n        self.send_header('Expires','0')\n        super().end_headers()\nport = int(os.environ.get('PORT','8123'))\nH = functools.partial(H0, directory='/private/tmp/tactics-preview')\nThreadingHTTPServer(('127.0.0.1', port), H).serve_forever()\n"
       ],
       "port": 8123,
-      "autoPort": true
+      "autoPort": true,
+      "_note": "⭐ HTML/JS까지 no-store를 보낸다(2026-09-01 수정). 이전에는 안 보내서 HTML 편집이 브라우저에 도달하지 않았다."
     },
     {
       "name": "site-nocache",
