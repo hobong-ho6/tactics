@@ -320,3 +320,127 @@ Sky Sports(Nick Wright 분석) · ESPN · football.london(Bobby Vincent) · SI(J
    **DB를 직접 확인한 결과 DB에는 그런 라벨이 없다** — `pos_class`는 좌표에서 자동 파생되며, 이 리포트의 슬롯 배정
    (네투 RM=우WB, 구스토 RCM)은 **첼시 공식 라인업과 정확히 일치**한다. 08-29 transfer-watch 회차의 자체 오류
    (프롬프트 축약으로 없는 정정을 유발)와 **같은 계열의 실수**다. ⇒ **규약: 프롬프트에 실측 라벨을 손으로 적지 말고 질의 출력을 붙일 것.**
+
+---
+
+## D+1 추적 (2026-09-01)
+
+> match-watch §2-1a 「경기 후 3일 추적」 D+1 회차. **08-31 절은 수정하지 않는다**(불변규칙 2·3) —
+> 당일 판정을 뒤집는 항목은 아래 「당일 판정 정정」에 따로 적었다.
+
+### 🔴 당일 판정 정정 2건
+
+**정정 ①: 「⛔ PPDA 미수집」은 오기다 — 08-31에 이미 수집·적재돼 있었다.**
+위 §1「수집 엔드포인트·결손」과 §8「수집 한계」가 「PPDA 미수집 · WhoScored `matchCentreData` 경로 미시도」로
+적혀 있으나, `team_match_stats`를 조회하면 **이 경기 PPDA가 들어 있다** — `ppda_method`에 「원천=WhoScored
+matchCentreData(Opta) matchId=1983561 이벤트 1457건, **2026-08-31 수집**」까지 기재돼 있다.
+D+1에 **독립 재계산**한 결과 **8개 값이 소수점까지 전부 일치**했고 이벤트 건수(1457)도 같다.
+⇒ **데이터가 옳고 리포트 서술이 낡았다.** 08-31 세션이 §8을 쓴 뒤 세션 후반에 수집하고 §8을 갱신하지 않은 것으로 보인다.
+**규약: 「미수집」을 적기 전에 해당 테이블을 실제로 조회할 것**(obs#381).
+
+| PPDA (이 정의는 `ppda_method` 참조 — 타 출처와 직접 비교 금지) | 첼시 | 브라이턴 |
+|---|---|---|
+| **경기 전체** | **22.67** | 6.76 |
+| 전반 / 후반 | 21.45 / 24.00 | 7.38 / 6.08 |
+| **0~32분(3-0 완성 구간)** | **30.33** ⚠️분모 6 | 8.33 |
+| 32~90분 | 19.60 | 5.88 |
+
+**정정 ②(부분): §7의 3층 판정 중 「26% 극단값 = 피동」 층을 「점유율은 피동이지만 비압박은 의도」로 분리한다.**
+⭐⭐ **압박 강도가 가장 낮았던 구간은 3-0을 만든 0~32분이다**(PPDA 30.33). 즉 알론소의 자기비판
+(「결과를 갖고 너무 많이 플레이했다」·「너무 깊이 앉아 있었다」)은 **영역(territory)** 에 관한 진술이고
+**압박(pressing)** 에 관한 진술이 아니다 — 첼시는 **처음부터 압박하지 않았다.**
+⇒ §7의 「시즌 아이덴티티(저점유·전환 중심) = 의도」 층은 **강화**된다. 32분 이후 변한 것은 라인 높이다.
+⚠️ 0~32분 분모가 수비액션 6건뿐이라 **하위구간 수치는 인용하지 말고 방향 근거로만 쓴다.**
+다만 전·후반 분해(21.45 → 24.00)와 부호가 어긋나지 않고, 어느 창으로 잘라도 첼시가 20 이상이라는 결론은 흔들리지 않는다.
+
+⭐⭐ **압박은 상대 의존적이다** — 3일 전 루턴전(EFL컵 2R) 첼시 PPDA는 **13.13**으로 이 경기의 **58%** 수준이다.
+루턴전은 첼시 점유 74%였다. ⇒ 비압박은 **무조건적 원칙이 아니라 조건부 선택**이다. → obs#375
+
+### ⭐⭐ 유튜브 전술 분석 — 08-31 「0건」을 뒤집는다 (8건 확보)
+
+⚠️ **전부 「채널·제목·게시일·URL + 설명문」 기준이며 직접 시청하지 못했다.**
+자막(transcript) 추출은 실패했다 — `timedtext` 직접 fetch는 빈 응답(pot 파라미터 요구), UI 「스크립트 표시」
+클릭 후에도 `ytd-transcript-segment-renderer`가 렌더되지 않았다. **현재 유튜브 근거의 상한은 설명문이다**(obs#381).
+
+| 채널 | 제목 | 게시일 | 길이 | URL |
+|---|---|---|---|---|
+| ⭐⭐ **Tactical Analysis** | Chelsea Are Winning... But This Tactic Will NEVER Win Them The Title | **2026-08-31** | 4:25 | [gVmb3JTFcKU](https://www.youtube.com/watch?v=gVmb3JTFcKU) |
+| ⭐ **TM** | How Chelsea CONFUSED Brighton With Xabi Alonso Ball! | 2026-08-30 | 8:31 | [Bgoz7gnmug8](https://www.youtube.com/watch?v=Bgoz7gnmug8) |
+| ⭐ **Bains Analysis** | Chelsea Are Good… But Xabi Alonso Must Fix This | 2026-08-30 | 4:47 | [YK-UA0GEtsI](https://www.youtube.com/watch?v=YK-UA0GEtsI) |
+| **SW6 Pulse** | Chelsea 4-3 Brighton: Brilliant, Chaotic… and Completely Unsustainable | 2026-08-30 | 9:07 | [semdETt41Go](https://www.youtube.com/watch?v=semdETt41Go) |
+| **Football Tactics FC** | Chelsea Tactics vs Brighton, Xabi Alonso Tactics | 2026-08-30 | 6:40 | [OyoVXV5rbDQ](https://www.youtube.com/watch?v=OyoVXV5rbDQ) |
+| **Pitch Theory** | Chelsea 4–3 Brighton: Control or Chaos Under Xabi Alonso? | **2026-08-31** | 2:02 | [Eeif3KIPdE8](https://www.youtube.com/watch?v=Eeif3KIPdE8) |
+| **SiGeeTV Talks Football** | Xabi Alonso Has Changed Chelsea — Nobody's Noticed | **2026-08-31** | 15:05 | [VFLh4bz3dnY](https://www.youtube.com/watch?v=VFLh4bz3dnY) |
+| 🇧🇷 **Simonetti Análises** | ⚠️제목 오기 「CHELSEA 4 X 3 **FULHAM**」(설명문은 chelsea x brighton) | 2026-08-30 | 21:04 | [FKQ4ZYkPyts](https://www.youtube.com/watch?v=FKQ4ZYkPyts) |
+
+**고유 수확 (설명문 기준)**
+
+1. ⭐⭐ **압박 트리거 특정 — 「Tactical Analysis」(08-31)**: 「**the press isn't engaging until the opponent goes
+   wide**」(상대가 측면으로 갈 때까지 압박이 걸리지 않는다). **PPDA 22.67의 정성적 정체이며 Trivela의
+   4-4-2↔5-4-1 토글과는 다른 축(트리거)의 서술**이다. 같은 영상이 「**Dunk–Kadioglu–Kostoulas 트랩**이
+   반복적으로 볼을 되찾아 줬다」·「마르티네스의 롱볼은 **더 큰 중원 문제를 덮고 있다**」·「**조르지뉴형
+   템포 세터**가 없으면 우승 경쟁은 불가」를 제시한다.
+2. ✅ **32분 골 메커니즘 교차확인** — 같은 영상이 「**the Hato–Rogers move that set up João Pedro's goal**」로
+   적었다. §1의 「하토가 로저스와 원투 후 하프라인부터 폭주」와 **일치**한다.
+3. ⭐ **무실점 공백 수치 — SW6 Pulse**: 「첼시는 이제 **프리미어리그 18경기 연속 무실점이 없다**」.
+   §3 취약점 1(2경기 5실점)의 **시계열 배경**이다. ⚠️ 25/26 마레스카 체제를 포함하는 카운트이므로
+   **알론소 체제 지표로 쓰면 안 된다.**
+4. **Football Tactics FC**: 라비아·구스토 중원 기용을 **부상 위기 대응**으로 규정 — §3 취약점 3과 같은 결론.
+5. ⚠️ **Simonetti Análises(포르투갈어) 제목이 상대를 「FULHAM」으로 오기**했다. 내용은 브라이턴전이다.
+   **포르투갈어권 자료 인용 시 제목을 근거로 쓰지 말 것.**
+
+### ⭐⭐ 상대팀(브라이턴) 관점 — 이 회차 최고 수확
+
+[**WeAreBrighton.com** 「Chelsea 4-3 Brighton: Lots of fight but Albion need reinforcements」](https://www.wearebrighton.com/matchday/chelsea-4-3-brighton-lots-of-fight-but-albion-need-reinforcements/)
+
+⭐⭐ **26% 점유 승리의 상대 조건이 처음으로 특정됐다 — 브라이턴 백4는 두 명이 본직이 아니었다.**
+
+- **보스카글리**(CB/LB)가 백4 앞 중앙 미드필더로 섰다.
+- **마츠 비퍼**(중앙 미드필더)가 **오른쪽 풀백**으로 섰다.
+- **카디오글루**가 좌측 풀백. WeAreBrighton은 비퍼·카디오글루 둘 다 「poor afternoon」으로 평가하고
+  「**square pegs in round holes**」가 이렇게 많은 것은 영입이 필요하다는 증거라고 썼다.
+
+🔴 ⇒ **§2의 「역습 구조: 로저스가 카디오글루를 끌어내면 반대편 우WB 네투가 침투」(14분 골)를 재해석해야 한다.**
+네투가 침투한 **오른쪽은 중앙 미드필더가 풀백으로 서 있던 쪽**이다. 즉 이 메커니즘은
+**첼시의 설계 + 브라이턴의 급조 백4**가 겹친 결과이며, **상대가 정상 풀백을 세웠을 때도 재현되는지는 미검증**이다.
+⇒ §7 「다음 경기 재검증 항목」에 **5번을 추가**한다: **윙백 반대편 침투가 정상 백4 상대로도 통하는가.**
+
+- ⭐ **교체 타이밍 비판**: 3-2에서 휘르첼러가 기다렸고 **오스만이 16분 남기고 얄쿠예와 교체**됐는데,
+  **그 교체 60초 안에 파머가 4-2를 만들었다.** ⇒ §1 74분 파머 골의 국면 배경이다.
+- 실점 수비는 「atrocious」로 평가하면서도 32분 만에 0-3에서 되돌아온 투지는 칭찬했다.
+- ⭐ **기록**: 브라이턴은 **50년 만에 첼시 상대 리그 4경기 연속 3골 이상**을 넣은 팀이 됐다.
+
+[휘르첼러 추가 발언(VAVEL EN)](https://www.vavel.com/en/football/2026/08/30/brighton-hove-albion/1269636-hurzeler-says-brighton-were-not-brilliant-in-the-basics.html) —
+「**not brilliant in the basics**」·「balance를 놓쳤다」·「가장 후회되는 것은 **경기에 들어가는 시작이 너무 늦었다**는 것」.
+부상에 대해서는 「절대 불평하지 않는다, 다른 선수의 기회다」. ⇒ §8의 rest-defense 발언(「2~3미터」)과 같은 회견 계열이다.
+
+### 전술 블로그 — 재시도 결과
+
+- ⛔ **Breaking The Lines: 여전히 알론소 첼시 「실경기」 분석 0건.** 확인된 것은 전부 **부임 이전·타 체제**다 —
+  「Is Chelsea's or Liverpool's Squad Better for Xabi Alonso's Tactics?」·「What Chelsea Could Look Like Under
+  Xabi Alonso Without Spending a Penny」(스탯 기준일 **2026-05-22**)·「Tactical Analysis of Xabi Alonso's First
+  El Clásico as Real Madrid Manager」·레버쿠젠 프로필. **§2-0에 따라 현 첼시 결론으로 쓰지 않는다.**
+  ⇒ 08-31 판정(「BTL에 알론소 첼시 자료 없음」) **유지**.
+- ⛔ **Spielverlagerung · The Football Analyst: 이 경기 자료 0건**(08-31과 동일).
+- ⚠️ [**Si Phillips Talks Chelsea** 「brighton v chelsea tactical review」](https://siphillipstalkschelsea.substack.com/p/brighton-v-chelsea-tactical-review) —
+  **여전히 페이월.** 08-31과 상태 변화 없음.
+- ✅ [**Opta Analyst** 「Chelsea 4-3 Brighton Stats」](https://theanalyst.com/articles/chelsea-4-3-brighton-stats-palmer-joao-pedro-thriller) —
+  패싱 네트워크·xG 초크보드 제공. **§1 「제공사 편차」의 Opta 열 출처**로 확정 기재.
+
+### 다국어 커버리지 (D+1 회차)
+
+| 언어 | 시도한 검색어 | 결과 |
+|---|---|---|
+| **영어** | `Chelsea 4-3 Brighton tactical analysis youtube` · `"We Are Brighton" Chelsea 4-3 Brighton Hurzeler analysis August 2026` · `Breaking The Lines Xabi Alonso Chelsea tactical analysis 2026`(도메인 한정) | ⭐⭐ **WeAreBrighton 상대 관점 · 유튜브 8건** |
+| **포르투갈어** | 유튜브 `Chelsea Brighton tactical analysis Alonso` 결과 내 PT 채널 식별 | ⚠️ Simonetti Análises 1건(**제목 오기**). Trivela는 08-31에 이미 확보 — **신규 없음** |
+| **네덜란드어** | `Hato Chelsea Brighton linkerwingback analyse ... Nederlands` | ⛔ **무수확 · 오염 심각.** 반환된 요약이 「하토 LWB 평점 7,6」·「마레스카 발언」·「첼시 2-1 리버풀 에스테방 95분」을 섞었다 — **다른 시즌·다른 경기가 뒤엉킨 검색엔진 요약**이며 우리 실측(하토 SofaScore 7.0)과도 어긋난다. **전량 폐기.** 직독 가능한 NL 원문에 도달하지 못했다 |
+| **스페인어** | (08-31에 「크롤러 차단 심각·전술 분석 0건」으로 닫음) | **재시도하지 않았다** — 이 경기에 대한 ES 자료 부재는 08-31에 확인됐고, 이번 회차 ES 예산은 세비야전에 배정했다 |
+| **독일어** | (08-31에 「휘르첼러는 영어로 회견 · 부가가치 거의 없음」으로 닫음) | **재시도하지 않았다**(사유: 위) |
+
+### 다음 회차(D+2)로 넘기는 것
+
+1. ⭐⭐ **유튜브 자막 확보 경로** — 「Tactical Analysis」 `gVmb3JTFcKU`의 「측면 트리거」 주장을
+   **영상 본문으로 확인**해야 설명문 기준을 벗어난다.
+2. ⭐ **정상 백4 상대 재현성**(위 §상대팀 관점) — 아스날전(다음 경기)이 곧 이 검증이다.
+3. **Si Phillips 페이월** — 우회 불가면 3회차에서 종결 처리한다.
+4. 네덜란드어 **직독 원문**(VI·Voetbalzone) 재시도 — 검색엔진 요약이 아니라 URL 직접 접근.
