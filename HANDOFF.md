@@ -10,14 +10,14 @@
 
 ## 현재 상태
 
-> **2026-09-01 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 `9bab3e9`.
+> **2026-09-01 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 `d78df07`.
 > (이 문서의 갱신 커밋이 그 위에 하나 더 붙는다 — HEAD가 1커밋 앞서 있으면 정상.)
 
 - DB: players **200** · player_matches **4,175** · team_match_stats **65** · match_reports **29**
   (**complete 14 · draft 15**) · match_player_reports **521** · squad_entries **131** ·
   prescriptions **429** · slots **88** · match_game_setups **14** · match_player_prescriptions **229** ·
-  transfer_targets **44** · transfer_outgoing **67** · player_duties **194** ·
-  player_shirt_numbers **26** · understat_player_matches **5,634** · observations **374** ·
+  transfer_targets **44** · transfer_outgoing **67** · player_duties **197** ·
+  player_shirt_numbers **26** · understat_player_matches **5,634** · observations **382** ·
   **teams 31**(분석 4 + 클럽 6 + 국가대표 21).
 - 회귀: **G1~G13 전항 통과**. ⭐ **G13은 2026-09-01 신설** — 아래 「무결성 정리」 참조.
 - ⏰ **2026-27 여름 이적창은 2026-09-01 23:00 BST에 닫혔다.** 사용자 지시로 `transfer-watch` 정기 루틴은 종료.
@@ -101,6 +101,18 @@
 - 방법론: **부재증명 금지 페이지 2호**(`skysports.com/…done-deals`) · liverpoolfc.com Media watch 함정 6호 ·
   **검색엔진 요약 오염 신규 유형**.
 
+### 2026-09-01 ⑶ — R3 D+1 추적 (커밋 `d78df07`, 스케줄 세션)
+
+- 유튜브 18건(08-31 「0건」 반전) · 상대팀 관점 4건 · **미해결 충돌 3건 전부 종결**(obs#375~381).
+  ⭐ 알론소 저압박은 **리드 관리가 아니라 킥오프부터의 구조** · 소보슬러이 RB 이동을 **Opta 좌표로 확정** ·
+  포레스트 선제골 기원 충돌은 **「둘 다 맞다」**(같은 국면의 다른 깊이) ·
+  ⚠️ **비르츠 「실측 6.4 ↔ 서사 긍정」은 실측 대 서사가 아니라 제공사 간 편차였다**(08-31 판정 정정).
+- ⚠️⭐ **동시 실행 사고 직전까지 갔다**(obs#382) — 이 세션이 10:48에 커밋한 직후 10:51에 스케줄 세션이
+  같은 `db/tactics.db`에 썼다. **회피 규칙이 실증됐다: 다른 세션의 미커밋 DB 변경이 보이면
+  `.db`를 커밋에서 빼고 내 파일만 올린다**(그러지 않으면 dump·site/data가 .db와 어긋난다).
+  ⚠️ **스케줄 세션은 커밋만 하고 푸시하지 않았다** — 사람이 알아채지 못하면 다른 PC에서 그 작업은 없는 것이 된다.
+  잠금은 여전히 없다.
+
 ### 2026-08-30~31 PL Round 3 (커밋 `e175143`)
 
 | 팀 | 경기 | 핵심 실측 |
@@ -168,8 +180,11 @@
 ## 데이터 수집 상태와 결손
 
 - 대량 수집: `collect_fotmob_players.py` · `collect_understat_shots.py` · `collect_event.py`(이벤트 축).
-- 읽기 전용 진단 3종: `check_fit_drift.py` · `check_side_bimodality.py` · `check_height_bimodality.py`.
+- 읽기 전용 진단: `check_fit_drift.py` · `check_side_bimodality.py` · `check_height_bimodality.py`
   ⚠️ 셋 다 **진단만 한다** — 그리드 재적재·`pos_only`·처방 변경은 사람이 판단한다.
+  ⭐ **`test_g13_regression.py`**(G13에 결함 4종을 합성 주입해 검출 확인 + 클럽월드컵 오탐 검사) ·
+  ⭐ **`db_diff.py`**(스냅샷 대비 행 단위 대조 — **NOT NULL→NULL 전이를 따로 센다**.
+  `--snapshot`으로 기준을 뜬다. 게이트도 FK 검사도 「값이 조용히 지워졌다」는 못 잡는다).
 - ⛔⛔ **검색엔진 연도 혼입에 주의.** 같은 상대·같은 8월·유사 스코어의 전년도 경기는 발행일을 반드시 확인한다.
   ⭐ 2026-09-01에 **엔진 요약 자체가 오염되는 신규 유형** 확인 — 과거 시즌 사건을 현재 확정 사실로 제시한다.
   **엔진 요약은 근거로 채택 불가, 개별 URL 실물 확인만 사용.**
@@ -197,9 +212,15 @@
 6. push 전 `origin/main` 이동 여부를 다시 확인한다.
 7. 시즌 집계는 45분+·hit_points 15+만 사용하되, 경기 리포트는 짧은 교체 포함 실제 출전자 전원을 기록한다.
 8. match 전용 fit/전술은 시즌 `prescriptions`/`team_tactic_setups`에 자동 병합하지 않는다.
-9. **파괴적 정리 전에는 `cp db/tactics.db /tmp/…bak-…`로 백업한다** — 2026-09-01 정리 4연쇄에서
-   백업 DB와의 행 단위 대조가 **「새로 NULL 된 행 0」을 증명하는 유일한 수단**이었다.
-10. HANDOFF는 300줄 이하로 유지한다.
+9. ⚠️ **스케줄 세션(match-watch·transfer-watch)이 돈 뒤에는 `git log`와 `git status`를 함께 본다.**
+   2026-09-01에 D+1 세션이 **커밋만 하고 푸시하지 않은 채 종료**했다(obs#382) — 알아채지 못하면
+   다른 PC에서 그 작업은 존재하지 않는 것이 된다. 또 **다른 세션의 미커밋 DB 변경이 보이면
+   `db/tactics.db`를 내 커밋에서 빼라** — 그쪽이 아직 export·dump를 돌리지 않았다면
+   dump·site/data가 .db와 어긋난다(불변규칙 5 위반).
+10. **파괴적 정리 전에는 `python3 scripts/db_diff.py --snapshot`으로 스냅샷을 뜬다** — 2026-09-01 정리 4연쇄에서
+   스냅샷 대비 행 단위 대조가 **「새로 NULL 된 행 0」을 증명하는 유일한 수단**이었다
+   (`db_diff.py <스냅샷>`이 NOT NULL→NULL 전이를 따로 센다).
+11. HANDOFF는 300줄 이하로 유지한다.
 
 ## 핵심 방법론
 
