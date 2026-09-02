@@ -1063,6 +1063,21 @@
    "source": "FC Bayern 공식 — fcbayern.com/en/news/2025/09/nicolas-jackson-bayern-new-signing-with-street-football-in-his-blood · Bavarian Football Works — bavarianfootballworks.com/bayern-munich-opinion/185121 · Goal — goal.com (Kompany fit 분석·복귀 전망 기사 2건)"
   },
   {
+   "adherence": "부분 정합 — 홀드업·드롭인 성향은 1경기 표본에서 이미 확인됐다(gk 아님, st_false9 argmax). 채널 러너형 침투·마무리력은 표본 부족으로 판정 보류.",
+   "confidence": "⚠️ 자동 생성 자막 기반 인용. ⛔ 영상의 통계 그래픽(Wyscout 기반 존 등)은 자막에 담기지 않아 서술만 인용, 수치 직접 확인 불가.",
+   "duties": "Bains Analysis(2026-08-27): 왓킨스와 스타일이 유사하다 — 채널 러너형 침투(Newcastle 대비 통계 그래픽에서 왓킨스와 겹치는 존)와 홀드업 플레이 「접착제」 역할을 겸한다는 가설. 다만 왓킨스보다 중앙·딥에서 더 편안하고, 볼을 잡고 돌아서 드리블로 30~40야드 전진시키는 능력이 왓킨스에게 없던 새 축이라고 주장. 마무리는 첼시·바이에른 시절 xG 대비 저조(빅찬스 24개 실축)했으나 바이에른 마지막 시즌 처음으로 xG 초과 달성.",
+   "execution": "AVL 아스날전(08-31) 실측: st_false9/Build-Up .723, 라인 사이로 자주 하강(24터치), xA 0.10(팀 최고 창조 관여)이나 무슈팅·무득점. 채널 러너보다 드롭인형 성향이 더 강하게 나타남 — 영상의 「중앙·딥에서 편안함」 가설과 정합, 「채널 러너 유사성」 가설과는 다소 배치.",
+   "game_role_implication": "st_false9/Build-Up 유지(match_player_prescriptions와 일치). 왓킨스(st_advanced) 대체가 아니라 9번 스타일 자체의 전환일 가능성 — obs#350·383 참조. 표본 확대 필요.",
+   "label": "잭슨",
+   "observed_from": "2026-08-27",
+   "observed_to": "2026-08-31",
+   "player_id": 76,
+   "position": "ST",
+   "sample_note": "직전 소속 첼시·바이에른 뮌헨 데이터 종합 서술 + AVL 데뷔전 1경기 실측 대조",
+   "sample_scope": "multi_source",
+   "source": "Bains Analysis, YouTube, 2026-08-27, https://www.youtube.com/watch?v=2POgqu_eyzM (자동 생성 자막 기준) · report 30(2026-08-31 AVL-아스날) 실측 대조"
+  },
+  {
    "adherence": "MEDIUM-HIGH — 우측·컷인사이드·활동량 서사는 실측 정합. 다포지션 서사 중 CAM 주장은 실측이 기각(위치 주장은 실측 우선). 크로스 약점 서사는 실측 그리드와 무충돌(검증 불가 항목).",
    "confidence": "서사 소스(3티어급) — 2026-02 발행 확인(본문 21세 표기 = 2004년생 정합). 리버풀 우선매수권 보도(2026-02)는 DB 08-09 최신화(빌라 최선두·셀링클럽 블록)와 병존 — 경쟁 실체 신호로만 기록. 실측 표본 6경기.",
    "duties": "팔메이라스(아벨 페레이라)에서 왼발 인버티드 윙어 — 우측면에서 안으로 감아드는 유형(ScoutingStats 분류). 브라질 기자 Filipe Guedes: '강하고 빠르고 다재(양 윙·공미·중미 소화), 기술적이며 또래답지 않게 전술적으로 성숙, 오프더볼 활동량'. '더 강한 하비 엘리엇' 비유(Rousing The Kop, 2026-02). WhoScored 모델: 드리블 Very Strong·공중듀얼 Strong, 크로스·규율(경고/퇴장)이 약점. 2026 세리이A 4골 2도움·팟몹 평균 7.25, 리베르타도레스 1골 2도움. 득점력은 아직(통산 64경기 5골).",
@@ -1228,10 +1243,10 @@
    "source": "Fotmob/Opta API playerStats (playerId 1053679, entryId 0-0·1-0·2-0·3-0, 2026-08-16 직접 수집, 메인 세션 재검증) ; AIAPC 매치애널리스트협회 25/26 쿠에스타 https://assoanalisti.it/analisi-tattica-calcio-come-gioca-il-parma-match-analysis-di-carlos-cuesta/ ; AIAPC 24/25 키부 https://assoanalisti.it/analisi-tattica-calcio-come-gioca-il-parma-match-analysis-di-cristian-chivu/ ; Breaking The Lines 2025-02-13(페키아 24/25) https://old.breakingthelines.com/player-analysis/il-guerriero-giapponese-how-zion-suzuki-looks-to-keep-hopes-alive-for-fabio-pecchias-parma/ ; Sky Sports(Adam Bate, Dennis Rudel 인터뷰) https://www.skysports.com/football/news/11095/13561579/ ; parmalive 사설 https://www.parmalive.com/editoriale/suzuki-e-l-arma-tattica-del-lancio-da-70-metri-cosi-il-parma-si-aprira-spazi-di-manovra-anche-in-mezzo-al-campo-224577 ; obs#220 · obs#222 · reports/transfer-watch/2026-08-16.md ; SofaScore 자체 실측 29경기 ; Sportiva 마르코 파소토 2024-12-12 https://sportiva.shueisha.co.jp/clm/football/wfootball/2024/12/12/_gk/ ; Football ZONE 626210 ; 中日スポーツ 1263262 ; Fantacalcio 6641"
   },
   {
-   "adherence": "**미검증(영입확정 · 수행 0경기)** — 판정은 첫 출전 이후에 낸다. ⭐ **사전 정합 판정 2건**: ⑴ **정합** — '깊게 서고 스위핑을 하지 않는다'는 원소속 실측이 에메리 요구와 방향이 같다(obs#154 · obs#220 · obs#229). 4중 근거(우리 그리드 · Opta · AIAPC 서술 · **EA 역할 숙련 `gk_ballplaying`**)가 스위퍼 서사를 기각한다. ⑵ ⛔ **리스크 이월** — 슛 질 보정 후 선방 생산이 **세리에A 2시즌 연속 음수**(−0.99 · −1.36)이고 마르티네스는 +3.52다. **팀을 바꿔도 회복되지 않은 이력**이 있어(벨기에 +4.16 → 세리에A 음수 2회) 체제가 바뀌어도 따라올 가능성이 크다. ⚠️ 반대로 **배급 정확도는 팀 함수**로 확인됐으므로(벨기에 75.8% ↔ 파르마 61.9%) 빌라에서 오를 여지가 있다. ⛔ **세트피스 배치·수비라인 통솔은 원소속에서도 근거 0건**이라 빌라 첫 경기의 1순위 관측 대상이다.",
+   "adherence": "**미검증(영입확정 · 수행 0경기)** — 판정은 첫 출전 이후에 낸다. ⭐ **사전 정합 판정 2건**: ⑴ **정합** — '깊게 서고 스위핑을 하지 않는다'는 원소속 실측이 에메리 요구와 방향이 같다(obs#154 · obs#220 · obs#229). 4중 근거(우리 그리드 · Opta · AIAPC 서술 · **EA 역할 숙련 `gk_ballplaying`**)가 스위퍼 서사를 기각한다. ⑵ ⛔ **리스크 이월** — 슛 질 보정 후 선방 생산이 **세리에A 2시즌 연속 음수**(−0.99 · −1.36)이고 마르티네스는 +3.52다. **팀을 바꿔도 회복되지 않은 이력**이 있어(벨기에 +4.16 → 세리에A 음수 2회) 체제가 바뀌어도 따라올 가능성이 크다. ⚠️ 반대로 **배급 정확도는 팀 함수**로 확인됐으므로(벨기에 75.8% ↔ 파르마 61.9%) 빌라에서 오를 여지가 있다. ⛔ **세트피스 배치·수비라인 통솔은 원소속에서도 근거 0건**이라 빌라 첫 경기의 1순위 관측 대상이다. ‖ [2026-09-02 추가] **「미검증·0경기」가 해소됐다.** 1경기 표본이지만 방향은 명확 — Adam Bate 영상의 「스위퍼 키퍼」 서사보다 기존 정합 판정(⑴ 정합 — 깊게 서고 스위핑 안 함)이 실측으로 재확인됐다. 로빈슨 상황에서의 주저가 「스위퍼 아님」의 직접 증거(obs#348).",
    "confidence": "⛔ **에메리 체제 표본 0 — 이 행은 요구역할 기술과 사전 정합 판정까지이고 수행 평가가 아니다.** 첫 출전(개막 08-23 브라이턴 원정 이후) 뒤에 `execution`·`adherence`를 채운다. ⚠️ **원소속 관측을 이 체제 행으로 옮기지 않았다**(불변규칙 7) — 수치 정본은 `regime_id=NULL` 행(id=120)이고 그 행은 이적 전 기록으로 보존한다. 여기서는 방향 판정에만 인용했다. ⚠️ 인용된 원소속 값은 파르마(잔류권 딥블록) 시스템의 함수다 — 빌라에서 재현된다는 근거가 아니다. ⚠️ **양 구단 공식 발표는 여전히 0건이다**(2026-08-18 메인 세션이 avfc.co.uk 뉴스·parmacalcio1913.com/news 직접 파싱해 확인 — 빌라 최신은 FPL 프리뷰·글라드바흐전·일링 볼턴 임대, 파르마 최신은 로메로 영입·온드레이카 임대). ⇒ **DB에 못 박은 CONFIRMED 트리거(`avfc.co.uk 공식 발표`)는 미충족 상태이고, 이 승격은 사용자 지시에 따른 것이다.** 근거 상한: **메디컬 실시 확인**(Romano 1티어 08-17 07:21 UTC) + **개인 조건 5년 계약 합의**(Ornstein 1티어) + **£29.9m/€30m+€5m 구단 간 합의**(Sky UK 1티어 08-16) + **Moretto(2티어) '완료'**. ⛔ **'here we go'는 이 건에 붙지 않았다** — 일부 매체 헤드라인의 HWG는 태그 전용(轉用)이다(obs#234·transfer-watch 기록). ⚠️ obs#233(오늘 다른 세션)이 **'신호 하나로 등급을 올렸다가 24시간 만에 뒤집힌'** 마르티네스 사례를 남겼다 — 다만 스즈키는 **메디컬 이후** 단계이고 PSG 결렬은 **메디컬 직전**이었다는 점에서 국면이 다르다. ⇒ **공식 발표가 확인되면 이 캐비앗을 해제하고, 반대로 결렬되면 이 행들을 되돌려야 한다.**",
-   "duties": "**[영입확정 · 에메리 체제 요구역할 — 아직 수행 0경기]** GK 슬롯 요구는 `gk_goalkeeper/Defend`다: 박스 안 방어와 안전 배급을 우선하고 **전진 스위핑은 요구되지 않는다**(obs#154 — 에메리 구조는 GK에게 배후 청소를 맡기지 않는다). ⭐ 원소속(파르마) 관측이 이 요구와 **같은 방향**이다 — 자기 박스에 머물고, 박스 안 하이볼을 리그 최상위로 처리하며, 배후 공간 관리는 수비수 몫으로 지시받았다. 이월 관측의 상세는 **`regime_id=NULL` 행(id=120)** 에 보존돼 있다 — 그 행이 파르마 3체제(신트트라위던 / 페키아·키부 / 쿠에스타)의 원본이다. ⚠️ **빌라에서 달라질 축 2개**: ⑴ **배급 믹스** — 파르마 롱볼 비중 60.4%는 저위치 롱볼 시스템의 값이고 빌라의 짧은 빌드업은 다른 것을 요구한다 ⑵ **수비라인 높이** — 라인이 올라가면 평균 위치·배후 노출이 함께 변한다.",
-   "execution": "⛔ **에메리 체제 실측 0건** — 빌라 공식전·친선 출전이 없다(영입확정 2026-08-18, 개막 08-23 브라이턴 원정 이전). 이 칸은 **첫 출전 후 채운다.** 현재 근거는 전부 원소속 기록이며 수치 정본은 id=120 행이다: SofaScore 자체 실측 29경기 2602분 평점 7.05 · tool_y 10.06 · 펀칭 0.72/90 / Opta 25/26 세리에A 하이볼 처리 p88 · 스위퍼 행동 p71 · **선방으로 막은 실점 −1.36(p24)** · 패스 정확도 61.9%(p26).",
+   "duties": "**[영입확정 · 에메리 체제 요구역할 — 아직 수행 0경기]** GK 슬롯 요구는 `gk_goalkeeper/Defend`다: 박스 안 방어와 안전 배급을 우선하고 **전진 스위핑은 요구되지 않는다**(obs#154 — 에메리 구조는 GK에게 배후 청소를 맡기지 않는다). ⭐ 원소속(파르마) 관측이 이 요구와 **같은 방향**이다 — 자기 박스에 머물고, 박스 안 하이볼을 리그 최상위로 처리하며, 배후 공간 관리는 수비수 몫으로 지시받았다. 이월 관측의 상세는 **`regime_id=NULL` 행(id=120)** 에 보존돼 있다 — 그 행이 파르마 3체제(신트트라위던 / 페키아·키부 / 쿠에스타)의 원본이다. ⚠️ **빌라에서 달라질 축 2개**: ⑴ **배급 믹스** — 파르마 롱볼 비중 60.4%는 저위치 롱볼 시스템의 값이고 빌라의 짧은 빌드업은 다른 것을 요구한다 ⑵ **수비라인 높이** — 라인이 올라가면 평균 위치·배후 노출이 함께 변한다. ‖ [2026-09-02 추가, Adam Bate 영상] Frans Hoek(전 아약스·바르사·바이에른·맨유 GK코치, 일본 GK 육성 총괄) 계보의 「스위퍼 키퍼」 지향 신유형 서사 — A형(예측)·R형(반응) 겸비 주장. 세리에A 크로스 캐칭/하이클레임 2위, 낮은자세 반사 세이브 강점. ⭐ 영상이 직접 「아스톤 빌라는 빌드업에서 골키퍼 의존도가 높다」고 언급 — 기존 판정(gk_goalkeeper/Defend, 스위퍼 서사 기각)과 정면 배치되는 서사이나, 아래 09-01 실측이 기존 판정 쪽을 다시 지지했다.",
+   "execution": "⛔ **에메리 체제 실측 0건** — 빌라 공식전·친선 출전이 없다(영입확정 2026-08-18, 개막 08-23 브라이턴 원정 이전). 이 칸은 **첫 출전 후 채운다.** 현재 근거는 전부 원소속 기록이며 수치 정본은 id=120 행이다: SofaScore 자체 실측 29경기 2602분 평점 7.05 · tool_y 10.06 · 펀칭 0.72/90 / Opta 25/26 세리에A 하이볼 처리 p88 · 스위퍼 행동 p71 · **선방으로 막은 실점 −1.36(p24)** · 패스 정확도 61.9%(p26). ‖ [2026-09-02 추가] ⭐ AVL 공식전 데뷔 실측 확보(2026-08-31 아스날전) — gk_goalkeeper/Balanced fit **.926**(확정적), 90분 36터치 대부분 자기 진영 짧은 패스(avg_x=13.1). 로빈슨 침투 위기 상황에서 라인 전진을 주저(obs#348, 축수저 영상 분석) — **스위퍼형 행동은 관찰되지 않았다.**",
    "game_role_implication": "`gk_goalkeeper/Defend` 유지 — `squad_entries`·`prescriptions` 모두 이 값이다(fit .975, 단 GK 적합은 변별력이 없다: obs#220). ⚠️ **포커스를 `Build-Up`으로 올리지 않는다** — 빌라의 짧은 서킬레이션에서의 실적 증거가 **23/24 벨기에 75.8% 하나뿐**이다. ⭐ FC26 표식: PlayStyles **긴패스·디플렉터**, 역할 숙련 **볼플레잉 키퍼 +**(마르티네스와 동일), AcceleRATE Controlled Lengthy, 체형 Stocky(185+), OVR 74/POT 80 (obs#234). ⚠️ **마르티네스 85 → 스즈키 74는 능력치 축의 −11**이고 역할·포커스로 메울 수 있는 종류가 아니다. ⛔ 주전 서열은 이 행으로 판단하지 않는다 — 마르티네스 유벤투스 이적이 무산돼 GK 슬롯은 2인 경합이다(obs#233).",
    "label": "스즈키 지온",
    "observed_from": null,
@@ -1240,7 +1255,7 @@
    "position": "GK",
    "sample_note": "⛔ 에메리 체제 표본 0경기(영입확정 2026-08-18 · 빌라 첫 경기 미출전). 인용한 수치는 전부 원소속 기록이며 정본은 player_duties id=120(파르마 25/26 세리에A 20경기 1800분 + 24/25 37 + 23/24 벨기에 32 + 2026 월드컵 4, regime_id=NULL)이다. 빌라 표본은 0이므로 observed_from/to를 임의로 채우지 않고 NULL로 둔다.",
    "sample_scope": "unknown",
-   "source": "transfer_targets id=149 CONFIRMED 승격(2026-08-18) ; squad_entries id=68 ; prescriptions measured:season:full2526 ; player_duties id=120(원소속 관측 정본 · regime_id=NULL) ; obs#154 · obs#220 · obs#222 · obs#223 · obs#224 · obs#225 · obs#229 · obs#233 · obs#234 ; reports/transfer-watch/2026-08-16.md"
+   "source": "transfer_targets id=149 CONFIRMED 승격(2026-08-18) ; squad_entries id=68 ; prescriptions measured:season:full2526 ; player_duties id=120(원소속 관측 정본 · regime_id=NULL) ; obs#154 · obs#220 · obs#222 · obs#223 · obs#224 · obs#225 · obs#229 · obs#233 · obs#234 ; reports/transfer-watch/2026-08-16.md ; Adam Bate YouTube 2026-08-16 (자동생성자막) ; report 30(2026-08-31)"
   },
   {
    "adherence": "순응도는 **감독 의존적이고 편차가 크다.** 알레그리 체제에서는 규율 준수·리더로 정착했고(「Sento la responsabilità nello spogliatoio」, 감독이 이적에 veto를 걸고 「Barzagli rossonero」로 평가), 「내려서 공간을 덮는 것은 수치가 아니다 — 중요한 것은 **조급해지지 않는 것(non avere frenesia)**」이라는 저블록 순응 진술을 남겼다(Gazzetta 2026-04-24). ⭐ **frenesia(조급함)가 이 선수의 서사적 핵심 결함이고 백3의 커버가 그것을 덮어줬다** — milannews24는 백3 전환 후 「meno frenesia negli interventi」로 개선됐다고 기록한다. ⛔ 반면 **폰세카 체제**에서는 10월 중순 이후 세리에A 9경기 9분으로 강등됐고(감독은 공개적으로 「grande professionista」라 했으나 기용이 발언과 어긋난다), **아모림 체제(26/27)**에서는 개막 전 프로젝트 배제·분리 훈련·이적 통보를 받았다. ⚠️ **규율 리스크는 정량적이다** — 밀란 6시즌 **퇴장 4회, 그중 경고누적 3회**(사수올로전 24분 경고누적 퇴장 포함). FotMob 25/26: 옐로 6장(백분위 12)·레드 1장(백분위 1)·파울/90 1.264(백분위 13). ⚠️ 단 밀란 초기에는 **31경기 무경고**였으므로 성향이 아니라 **악화 궤적**으로 읽는다.",
@@ -1286,6 +1301,21 @@
    "sample_note": "⚠️ 체제 10개를 분리 검증했다(불변규칙 7). 서술마다 어느 체제인지 본문에 명기. 실측 표본은 25/26·26/27 **챔피언십**이 주류이고 PL은 24/25 34경기뿐이다.",
    "sample_scope": "narrative:multi-regime(맨시티·콤파니 안더레흐트 21/22·콤파니 번리 22/23·러셀 마틴 사우샘프턴·유리치 백3 24/25·Still→Eckert 25/26~26/27·잉글랜드 U21 2023) + 실측 대조(FotMob 3시즌)",
    "source": "서사 서브에이전트 전수 수집(2026-08-31 player-collect). Café Tactiques(Ben Griffis, 2021-08-21) https://cafetactiques.com/2021/08/21/vincent-kompany-back-3-buildup-with-anderlecht-analysis/ · Breaking The Lines 「How Burnley Returned to the Promised Land Under Vincent Kompany」 · Coaches' Voice 「Vincent Kompany tactics」 · TFA 팀분석(El-Daly 2024-08-09 / Mike 2026-04-24) · Voetbalkrant(Rosiers 2021-08-30 · Walckiers 2021-11-08 · Morren 2026-08-15) · southamptonfc.com(SFC Media 2023-12-06 본인 원인터뷰 · 2026-08 PFA ToTY) · Sky Sports 매치리포트 2026-08-16 · goal.com U21 2023."
+  },
+  {
+   "adherence": "판정 보류 — 데뷔 후 재검증 필요.",
+   "confidence": "⚠️ 자동 생성 자막 기반. 챔피언십 표본과 PL 표본을 혼합 서술하므로 리그 수준 차이를 감안해야 한다(영상 자체도 이를 자인). ⚠️ position='CB'로 신설 — 기존 'RCB' 행과 포지션 표기가 달라 별도 행이다.",
+   "duties": "Bains Analysis(2026-08-30): 하우드-벨리스는 볼 플레잉 센터백 — 챔피언십 시절 전진 패스 12.23/90(최상위 백분위), PL 표본에서도 파이널서드 패스·전진패스(4.93/90) 상위권. 최대 약점은 공중볼(51~54% 승률, 크로스오버 상황 판단 미흡·헤더 타이밍 부정확). 스피드는 시각적 인상과 달리 준수(최고속도 35.6km/h)하고 채널 커버는 실제로 준수. 콘사와 비교 시 수비 액션 「양」은 우위이나 「질」(공중볼 포함)은 콘사가 우위.",
+   "execution": "⏰ 미수집 — AVL 공식전 데뷔 전이라(2026-08-31 아스날전 명단에 없음) 실측 대조가 아직 불가능하다.",
+   "game_role_implication": "cb_bpd(볼 플레잉) 계열 배정이 유력 — 시즌 정본 편입은 실전 데뷔 후 표본 확보 시 진행. 기존 RCB 행(2026-27, 영입 진행 시점 작성)과 함께 참고.",
+   "label": "하우드-벨리스",
+   "observed_from": "2026-08-30",
+   "observed_to": "2026-08-30",
+   "player_id": 178,
+   "position": "CB",
+   "sample_note": "사우샘프턴·맨시티 아카데미 시절 통계 종합, AVL 실전 데뷔 전",
+   "sample_scope": "career",
+   "source": "Bains Analysis, YouTube, 2026-08-30, https://www.youtube.com/watch?v=6fFJbA-Fdio (자동 생성 자막 기준)"
   },
   {
    "adherence": "MEDIUM. 임무 순응(깊은 위치·연결)은 실측이 지지하나 **경쟁 서열에서는 밀렸다** — 키미히 확정, 그 다음이 파블로비치·비쇼프였고 고레츠카는 그 아래 로테이션이었다. 24/25 개막 시점에는 **중앙 5순위(키미히·파블로비치·라이머·팔리냐 뒤)로 시즌 초 28분**만 뛰었고, 그 상태에서 「콤파니 아래 새 니치를 찾아냈다」(Bundesliga.com 분석, 2025-03-26)로 반등한 이력이 있다 ⇒ **서열 하락에서 재적응한 전례가 있다**는 점은 순응도 쪽 긍정 근거다. 규율 리스크는 낮다 — 25/26 경고 4·퇴장 0(24/25 경고 2·퇴장 0), 파울 0.69/90(p55). ⭐ 1차 발언(본인): 「어쩌면 마지막 기회다. **해외에서 한 번 더 제대로 경쟁적인 축구를 하고 싶다**」(Sky 인터뷰, 2026-03 초 글라드바흐 4-1 승 직후). 이적 동기가 돈이 아니라 경쟁 환경이라는 **본인 진술이 존재한다** — 임금 요구 서사와 방향이 어긋나므로 둘을 함께 기록한다.",
@@ -72451,6 +72481,12 @@
     "source": "Doncaster Free Press 2026-08-26 「DONE DEAL … complete the signing of Tommi O'Reilly on a season-long loan from Aston Villa」 https://www.doncasterfreepress.co.uk/sport/football/doncaster-rovers/done-deal-doncaster-rovers-complete-the-signing-of-tommi-oreilly-on-a-season-long-loan-from-aston-villa-8942528 | Football Insider(2티어) 「Sources: Doncaster agree deal」 | ⭐[09-01 21시] **동커스터 구단 공식 개별 기사** https://www.doncasterroversfc.co.uk/news/2026/august/26/rovers-bolster-attacking-ranks-with-o-reilly-loan-addition-/ (2026-08-26)"
    }
   ],
+  "summary": {
+   "confidence": "⚠️ 전부 자동 생성 자막 기반 전사다 — verbatim 인용은 원문 대조 전까지 신중히. ⛔ 이 창의 「최종」 총평이 아니다 — 베일리(사우디, 09-06) 등 미결 건이 남아 있고, 새 선발진의 실전 성과는 표본 1경기(09-01 아스날전)뿐이라 이후 경기로 계속 갱신될 예정이다. 유튜브 매체 검색은 영어 중심(다국어 미실시) — 에메리 모국어 스페인어 반응은 아직 미수집.",
+   "source": "에메리 경기 후 프레스(Footy Post-Game Hub, YouTube svwb471jK9I, 2026-08-31 게시) · Bains Analysis 「Why Nicolas Jackson Is PERFECT for Aston Villa」(2POgqu_eyzM, 08-27) · Bains Analysis 「Why Taylor Harwood-Bellis Is Perfect for Aston Villa」(6fFJbA-Fdio, 08-30) · Adam Bate 「Zion Suzuki to Aston Villa!」(XxINWYd76FQ, 08-16) · obs#350·383·348(실측 대조) · reports/transfer-watch/2026-09-02.md(마감 정산).",
+   "summary": "## 2026-summer 이적창 마감 — AVL 종합 총평\n\n⭐⭐ **지난 시즌 주전 5명이 전원 이적한 세대교체 창**이었다 — 마르티네스(GK)·콘사(CB)·틸레만스(DM)·로저스(AM)·왓킨스(ST)가 모두 팀을 떠났다(왓킨스→알힐랄 약 £50m, 로저스→첼시, 콘사→아스날 £51m+, 마르티네스→첼시 £7.5m, 틸레만스→맨유). 대체 영입은 스즈키(GK, 파르마)·잭슨(ST, 첼시, 클럽 레코드 £65m)·하우드-벨리스(CB, 사우샘프턴, 콘사 직접 대체)·완비사카(RB)·가르나초(LM, 임대)·고레츠카(DM, 자유계약)·바클리·헤밍스(복귀 자원) 등으로 사실상 스쿼드의 절반이 새로 짜였다.\n\n**감독 자체 평가(에메리, 09-01 아스날전 경기 후 1차 발언)**: 「계획대로 수행했고 계획대로 경쟁했다 — 결과를 못 낸 것이 아플 뿐」이라며 이번 창을 **의도된 리빌딩**으로 프레이밍했다. 대규모 유출에 대해 「전혀 후회하지 않는다(we are not regretting anything)」고 밝혔고, 스즈키·잭슨의 데뷔를 「fantastic」으로, 바클리의 선발 복귀를 「책임을 지는 것」으로 평가했다.\n\n**영상 매체 종합**(2건, 자동 생성 자막 기준):\n- ⭐ **잭슨 — Bains Analysis**: 「왓킨스보다 중앙·딥에서 더 편안하고, 볼을 잡고 드리블로 30~40야드 전진시키는 새로운 축을 가져온다. 왓킨스보다 낫다고 본다」 — 단 마무리력은 첼시·바이에른 시절 xG 대비 저조했던 이력이 우려 요인으로 지목됨.\n- ⭐ **스즈키 — Adam Bate**: 「Frans Hoek 계보의 스위퍼 키퍼 신유형, 아스톤 빌라는 빌드업에서 골키퍼 의존도가 높아 이 영입이 흥미롭다」 — 단 실제 데뷔전(09-01)에서는 스위퍼형 전진 행동이 관찰되지 않아 이 서사와 실측이 갈렸다(obs#348).\n- 하우드-벨리스(Bains Analysis): 「최상위권 볼 플레잉 센터백, 다만 공중볼 판단이 약점」 — 아직 공식전 데뷔 전이라 실측 대조 대기.\n\n**실측과의 교차검증**: 09-01 아스날전(0-1 패)에서 새 선발진은 PPDA 30.50이라는 극단적 딥블록을 보였고(obs#383), 개막 2연패·2경기 무득점(2002년 이후 최초)을 기록했다. 감독의 「계획대로」라는 자체 평가와 낮은 결과 사이의 간극이 이번 창의 핵심 리스크로 남는다 — 세대교체 자체는 필요했다는 데 이견이 적지만, 새 조합이 실제로 작동하는지는 아직 표본 1경기뿐이다.\n\n**미해결**: 레온 베일리 유출(사우디, 09-06 마감)이 여전히 열려 있어, 이 창의 최종 유출 규모는 09-06 이후에나 확정된다.",
+   "updated": "2026-09-02"
+  },
   "targets": [
    {
     "avg_rating": 7.1,

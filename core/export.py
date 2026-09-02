@@ -163,6 +163,10 @@ def export_all(db_path=None, window="2026-summer"):
                                ORDER BY CASE kind WHEN 'in' THEN 0 WHEN 'deduct' THEN 1
                                         WHEN 'out' THEN 2 ELSE 3 END, amount_m DESC""",
                         (code, window))
+        summary_rows = _rows(con, """SELECT summary, source, confidence, updated
+                               FROM transfer_summary WHERE team_code=? AND window=?""",
+                        (code, window))
+        summary = summary_rows[0] if summary_rows else None
         # regime_id IS NULL = 아직 우리 선수가 아닌 영입 후보의 원소속 관측이다(불변규칙 7 —
         # 원소속 체제의 서사를 우리 체제 행으로 넣지 않는다). 그 행을 regime로만 걸러내면
         # 수집해 둔 서사가 어느 화면에도 뜨지 않아 페이지가 '영상 분석 미수행'이라고 잘못 적는다.
@@ -315,7 +319,7 @@ def export_all(db_path=None, window="2026-summer"):
             "evaluations": evals, "season_stats": season_stats, "fbref": fbref,
             "fotmob_season": fm_season,
             "setups": setups, "profile": profile,
-            "transfer": {"targets": targets, "outgoing": outgoing, "ledger": ledger}}))
+            "transfer": {"targets": targets, "outgoing": outgoing, "ledger": ledger, "summary": summary}}))
 
     con.close()
     return written

@@ -19,6 +19,7 @@ tr.deadrow>td:first-child{border-left:2px solid var(--bad);padding-left:6px}</st
   <button class="tab on" id="deadTgl"></button>
   <small class="dim">DEAD = 무산·강등·정체(STALE) 판정 건. 기본은 숨김 —
   툴의 후보 풀과 같은 기준이다. 펼치면 <b>왜 죽었는지</b>를 근거 행에서 확인할 수 있다.</small></div>
+<div class="panel" id="summaryPanel" hidden><h2>이적창 종합 총평 <small class="dim">— 영상·매체 종합, 전술·선수 분석과 별개 축</small></h2><div id="summaryBody"></div></div>
 <div class="panel"><h2>영입 후보</h2><table id="in"></table></div>
 <div class="grid2">
   <div class="panel"><h2>유출 감시</h2><table id="out"></table></div>
@@ -88,6 +89,15 @@ function drawOut(){
     <td>${badge(o.likelihood)}</td><td>${o.last_news_date ?? '—'}</td></tr>`
     + whyRow(o, 4)).join('')
    || '<tr><td colspan="4" class="dim">없음</td></tr>');
+}
+
+if (T.summary) {
+  document.getElementById('summaryPanel').hidden = false;
+  document.getElementById('summaryBody').innerHTML = prose(T.summary.summary)
+    + `<details style="margin-top:8px"><summary class="dim">출처·한계</summary>
+       <div class="kv" style="font-size:12.5px;margin-top:6px">
+         <b>출처</b>${prose(T.summary.source)}<b>한계</b>${prose(T.summary.confidence)}
+         <b>갱신</b> ${T.summary.updated}</div></details>`;
 }
 
 {

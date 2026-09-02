@@ -583,3 +583,12 @@ CREATE TABLE player_shirt_numbers (
   source TEXT,
   confidence TEXT,
   UNIQUE(player_id, team_code, season));
+CREATE TABLE transfer_summary(
+  team_code TEXT NOT NULL REFERENCES teams(code),
+  window TEXT NOT NULL,
+  summary TEXT NOT NULL,
+  source TEXT NOT NULL,
+  confidence TEXT NOT NULL,
+  updated TEXT NOT NULL,
+  PRIMARY KEY(team_code, window)
+);
