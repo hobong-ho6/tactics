@@ -6836,3 +6836,11 @@ INSERT INTO player_market_values VALUES(6835,192,'2026-05-01',21610920,19449828,
 INSERT INTO player_market_values VALUES(6836,192,'2026-06-01',23772012,21394810,26149213,'Monaco','fotmob.com/api/data (scisports, player 982677)');
 INSERT INTO player_market_values VALUES(6837,192,'2026-07-01',25550741,22995667,28105815,'Monaco','fotmob.com/api/data (scisports, player 982677)');
 INSERT INTO player_market_values VALUES(6838,192,'2026-08-01',22995667,20696100,25295233,'Monaco','fotmob.com/api/data (scisports, player 982677)');
+INSERT INTO player_market_values VALUES(6839,164,'2026-09-01',2033918,1627134,2440701,'Atlético Madrid','fotmob.com/api/data (scisports, player 389050)');
+INSERT INTO player_market_values VALUES(6840,168,'2026-09-01',16448769,14803892,18093645,'Atlético Madrid','fotmob.com/api/data (scisports, player 1173678)');
+INSERT INTO player_market_values VALUES(6841,169,'2026-09-01',389602,311682,467523,'Atlético Madrileño','fotmob.com/api/data (scisports, player 1692877)');
+INSERT INTO player_market_values VALUES(6842,172,'2026-09-01',84016674,75615006,92418341,'Atlético Madrid','fotmob.com/api/data (scisports, player 974753)');
+INSERT INTO player_market_values VALUES(6843,173,'2026-09-01',16313796,14682416,17945175,'Atlético Madrid','fotmob.com/api/data (scisports, player 440330)');
+INSERT INTO player_market_values VALUES(6844,175,'2026-09-01',1323056,1058444,1587667,'Atlético Madrid','fotmob.com/api/data (scisports, player 468931)');
+INSERT INTO player_market_values VALUES(6845,176,'2026-09-01',7681721,6529462,8833979,'Atlético Madrid','fotmob.com/api/data (scisports, player 1254394)');
+INSERT INTO player_market_values VALUES(6846,184,'2026-09-01',931009,744807,1117211,NULL,'fotmob.com/api/data (scisports, player 1527038)');

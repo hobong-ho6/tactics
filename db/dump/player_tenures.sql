@@ -1308,3 +1308,7 @@ INSERT INTO player_tenures VALUES(78,'2026-27',NULL,'Aston Villa (1경기)','LB'
 INSERT INTO player_tenures VALUES(76,'2026-27','AVL','Aston Villa (실전 데뷔 확인 09-01)',NULL,11,NULL);
 INSERT INTO player_tenures VALUES(90,'2026-27','AVL','Aston Villa (실전 데뷔 확인 09-01)',NULL,29,NULL);
 INSERT INTO player_tenures VALUES(132,'2026-27','AVL','Aston Villa (실전 데뷔 확인 09-01)',NULL,1,NULL);
+INSERT INTO player_tenures VALUES(168,'2026-27',NULL,'Atlético Madrid (1경기)','CM',NULL,NULL);
+INSERT INTO player_tenures VALUES(169,'2026-27',NULL,'Atlético Madrileño (1경기)',NULL,NULL,NULL);
+INSERT INTO player_tenures VALUES(170,'2026-27',NULL,'Atlético Madrileño (1경기)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(172,'2026-27',NULL,'Atlético Madrid (1경기, 평점 6.10)','ST',NULL,NULL);
