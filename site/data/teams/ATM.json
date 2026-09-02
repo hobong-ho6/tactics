@@ -33020,7 +33020,64 @@
   }
  ],
  "transfer": {
-  "ledger": [],
+  "ledger": [
+   {
+    "amount_m": 34.4,
+    "confidence": "measured",
+    "contract_years": 5.0,
+    "kind": "영입 지출",
+    "label": "쿠티 로메로 (Tottenham)",
+    "note": "원 표시 €40m(선지급 €33m+변동 €7m) — 구단 역사상 최고가 수비수"
+   },
+   {
+    "amount_m": 0.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "그리즈만 (→Orlando City)",
+    "note": "자유이적 · Designated Player 2년+옵션 1년"
+   },
+   {
+    "amount_m": 0.0,
+    "confidence": "이적료 원장에 미기록 — 구단 공식이 금액을 공개하지 않았거나 수집 결손",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "랑글레 (→Benfica)",
+    "note": "미공개 — 원장 정본에 금액 기록 없음"
+   },
+   {
+    "amount_m": 0.0,
+    "confidence": "이적료 원장에 미기록 — 구단 공식이 금액을 공개하지 않았거나 수집 결손",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "몰리나 (→AS Roma)",
+    "note": "미공개 — 원장 정본에 금액 기록 없음"
+   },
+   {
+    "amount_m": 0.0,
+    "confidence": "이적료 원장에 미기록 — 구단 공식이 금액을 공개하지 않았거나 수집 결손",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "알마다 (→River Plate)",
+    "note": "미공개 — 원장 정본에 금액 기록 없음"
+   },
+   {
+    "amount_m": 0.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "히메네스 (→Deportivo, 임대)",
+    "note": "2027-06까지, ATM 급여 50%+ 부담"
+   },
+   {
+    "amount_m": 0.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "영입 지출",
+    "label": "조나단 데이비드 (Juventus, 임대)",
+    "note": "무상 임대(prestito gratuito) · €25m 재량 매수옵션(분납)"
+   }
+  ],
   "outgoing": [
    {
     "confidence": "ATM 편입 후 첫 이적 원장 등재 (2026-08-21 transfer-watch). CONFIRMED — §4-3 STALE 판정 대상 아님.",

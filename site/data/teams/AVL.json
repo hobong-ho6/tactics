@@ -72125,12 +72125,36 @@
     "note": null
    },
    {
+    "amount_m": 65.0,
+    "confidence": "measured",
+    "contract_years": 5.0,
+    "kind": "영입 지출",
+    "label": "잭슨 (Chelsea)",
+    "note": "⚠️ Sports Mole 등 일부 매체는 £48m 표기(부재증명 금지 3호 후보) — 우리 채택값은 avfc.co.uk 「클럽 레코드」 서술과 정합하는 £65m"
+   },
+   {
     "amount_m": 59.5,
     "confidence": "⚠️ **완료(공식 발표) 건만**이며 진행 중 루머는 제외했다 — 루헤리·잭슨·완비사카·바르콜라·각포 등은 원장에 없다. ⚠️ **금액은 Sky 표기값**이고 구단 공시가 아니다. 애드온·셀온·급여는 포함되지 않는다 — 실제 회계 계상액과 다르다. ⛔ **임대는 금액 미표기**라 0으로 잡았다(임대료·의무매입은 별도 추적 대상). ⛔ **undisclosed는 0으로 잡지 않고 별도 카운트**한다 — 0으로 합산하면 순지출을 과소·과대 왜곡한다.",
     "contract_years": 5.0,
     "kind": "영입 지출",
     "label": "만잠비 (Freiburg)",
     "note": "5년 계약(2031) — ⭐1티어: Romano 유튜브 2026-07-16 「Manzambi will sign a five-year deal in the next hours」. ⚠️ 릴레이 경유(givemesport 3티어)이고 서명 전 발화다. 구단 공식 발표는 계약연수·이적료 둘 다 미공시(avfc.co.uk 원문 직접 확인). Romano 완료 트윗(2078167033645011305)은 금액만 적는다. 보조: Capology 2031 추정치가 일치."
+   },
+   {
+    "amount_m": 51.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "콘사 (→Arsenal)",
+    "note": "+애드온 £4m 별도(구단기록 아님, 기본료만 계상)"
+   },
+   {
+    "amount_m": 50.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "왓킨스 (→Al-Hilal)",
+    "note": "원 표시 €58.3m(2억5,350만 리얄) — £ 환산 근사치"
    },
    {
     "amount_m": 38.0,
@@ -72147,6 +72171,14 @@
     "kind": "매각 수입",
     "label": "틸레만스 (→Man Utd)",
     "note": null
+   },
+   {
+    "amount_m": 30.0,
+    "confidence": "measured",
+    "contract_years": 5.0,
+    "kind": "영입 지출",
+    "label": "하우드-벨리스 (Southampton)",
+    "note": "빌라 최초 입찰 £18m+애드온을 사우샘프턴이 거절, Sky Sports 「£30 million deal」 최종 보도"
    },
    {
     "amount_m": 29.9,
@@ -72186,6 +72218,14 @@
     "contract_years": null,
     "kind": "매각 수입",
     "label": "디뉴 (→PSG)",
+    "note": null
+   },
+   {
+    "amount_m": 7.5,
+    "confidence": "measured",
+    "contract_years": 3.0,
+    "kind": "매각 수입",
+    "label": "마르티네스 (→Chelsea)",
     "note": null
    },
    {
@@ -72262,11 +72302,27 @@
    },
    {
     "amount_m": 0.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "영입 지출",
+    "label": "고레츠카 (자유계약)",
+    "note": "자유계약 영입 — 이적료 없음"
+   },
+   {
+    "amount_m": 0.0,
     "confidence": "⚠️ **완료(공식 발표) 건만**이며 진행 중 루머는 제외했다 — 루헤리·잭슨·완비사카·바르콜라·각포 등은 원장에 없다. ⚠️ **금액은 Sky 표기값**이고 구단 공시가 아니다. 애드온·셀온·급여는 포함되지 않는다 — 실제 회계 계상액과 다르다. ⛔ **임대는 금액 미표기**라 0으로 잡았다(임대료·의무매입은 별도 추적 대상). ⛔ **undisclosed는 0으로 잡지 않고 별도 카운트**한다 — 0으로 합산하면 순지출을 과소·과대 왜곡한다.",
     "contract_years": null,
     "kind": "영입 지출",
     "label": "시세 (LASK)",
     "note": "미공개(undisclosed) — 합산 제외"
+   },
+   {
+    "amount_m": 0.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "영입 지출",
+    "label": "완비사카 (West Ham, 임대)",
+    "note": "시즌 임대 + 조건부 의무매입(발동 시 재산정)"
    }
   ],
   "outgoing": [

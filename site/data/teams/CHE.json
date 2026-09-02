@@ -45494,12 +45494,28 @@
  "transfer": {
   "ledger": [
    {
+    "amount_m": 125.0,
+    "confidence": "measured",
+    "contract_years": 5.0,
+    "kind": "매각 수입",
+    "label": "엔소 페르난데스 (→Man City)",
+    "note": "이삭과 공동 영국 기록 타이"
+   },
+   {
     "amount_m": 117.0,
     "confidence": "⚠️ **완료(공식 발표) 건만**이며 진행 중 루머는 제외했다 — 루헤리·잭슨·완비사카·바르콜라·각포 등은 원장에 없다. ⚠️ **금액은 Sky 표기값**이고 구단 공시가 아니다. 애드온·셀온·급여는 포함되지 않는다 — 실제 회계 계상액과 다르다. ⛔ **임대는 금액 미표기**라 0으로 잡았다(임대료·의무매입은 별도 추적 대상). ⛔ **undisclosed는 0으로 잡지 않고 별도 카운트**한다 — 0으로 합산하면 순지출을 과소·과대 왜곡한다.",
     "contract_years": 7.0,
     "kind": "영입 지출",
     "label": "로저스 (Aston Villa)",
     "note": "2033까지(7년) — chelseafc.com 공식"
+   },
+   {
+    "amount_m": 65.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "잭슨 (→Aston Villa)",
+    "note": "AVL 영입 지출과 동일 건 — 반대편 기록"
    },
    {
     "amount_m": 51.8,
@@ -45524,6 +45540,14 @@
     "kind": "매각 수입",
     "label": "안드레이 산투스 (→Man Utd)",
     "note": null
+   },
+   {
+    "amount_m": 45.0,
+    "confidence": "measured",
+    "contract_years": 5.0,
+    "kind": "매각 수입",
+    "label": "델랍 (→Nottingham Forest)",
+    "note": "구단기록 고정료. 애드온 포함 최대 £50m"
    },
    {
     "amount_m": 43.5,
@@ -45566,12 +45590,36 @@
     "note": "2031까지(5년) — chelseafc.com 선수 프로필"
    },
    {
+    "amount_m": 15.0,
+    "confidence": "measured",
+    "contract_years": 5.0,
+    "kind": "매각 수입",
+    "label": "기우 (→RB Leipzig)",
+    "note": "보너스 포함 추정 · 셀온 20% 별도"
+   },
+   {
     "amount_m": 8.7,
     "confidence": "⚠️ **완료(공식 발표) 건만**이며 진행 중 루머는 제외했다 — 루헤리·잭슨·완비사카·바르콜라·각포 등은 원장에 없다. ⚠️ **금액은 Sky 표기값**이고 구단 공시가 아니다. 애드온·셀온·급여는 포함되지 않는다 — 실제 회계 계상액과 다르다. ⛔ **임대는 금액 미표기**라 0으로 잡았다(임대료·의무매입은 별도 추적 대상). ⛔ **undisclosed는 0으로 잡지 않고 별도 카운트**한다 — 0으로 합산하면 순지출을 과소·과대 왜곡한다.",
     "contract_years": null,
     "kind": "영입 지출",
     "label": "Denner (Corinthians)",
     "note": null
+   },
+   {
+    "amount_m": 8.0,
+    "confidence": "measured",
+    "contract_years": 5.0,
+    "kind": "매각 수입",
+    "label": "워싱턴 (→Strasbourg)",
+    "note": "⚠️ 금액 상충 €8m(L'Équipe) ↔ €16m(Foot Mercato), 낮은 쪽 채택·병기 — 첼시 바이백+셀온 보유"
+   },
+   {
+    "amount_m": 7.0,
+    "confidence": "measured",
+    "contract_years": 5.0,
+    "kind": "매각 수입",
+    "label": "아다라비오요 (→Tottenham)",
+    "note": "+애드온 별도"
    },
    {
     "amount_m": 4.0,
@@ -45636,6 +45684,46 @@
     "kind": "매각 수입",
     "label": "가르나초 (→Aston Villa, 임대)",
     "note": "미공개(undisclosed) — 합산 제외"
+   },
+   {
+    "amount_m": 0.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "디사시 (→Crystal Palace, 임대)",
+    "note": "팰리스가 임금 100% 부담"
+   },
+   {
+    "amount_m": 0.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "무드리크 (→Tottenham, 임대)",
+    "note": "시즌 임대(스퍼스 임대료+급여 전액 부담) · 비의무 매수옵션 £75m"
+   },
+   {
+    "amount_m": 0.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "사르 (→Real Sociedad, 임대)",
+    "note": "매수옵션 없음"
+   },
+   {
+    "amount_m": 0.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "산체스 (→Como, 임대)",
+    "note": "prestito secco — 옵션·의무 모두 없음"
+   },
+   {
+    "amount_m": 0.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "에수구 (→Strasbourg, 임대)",
+    "note": "2027-06까지"
    },
    {
     "amount_m": 0.0,

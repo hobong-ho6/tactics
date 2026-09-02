@@ -37689,6 +37689,14 @@
  "transfer": {
   "ledger": [
    {
+    "amount_m": 106.0,
+    "confidence": "measured",
+    "contract_years": 5.0,
+    "kind": "영입 지출",
+    "label": "바르콜라 (PSG)",
+    "note": "고정 £106m + 애드온 최대 £123m. 구단 사상 2번째 최고액"
+   },
+   {
     "amount_m": 60.0,
     "confidence": "⚠️ **완료(공식 발표) 건만**이며 진행 중 루머는 제외했다 — 루헤리·잭슨·완비사카·바르콜라·각포 등은 원장에 없다. ⚠️ **금액은 Sky 표기값**이고 구단 공시가 아니다. 애드온·셀온·급여는 포함되지 않는다 — 실제 회계 계상액과 다르다. ⛔ **임대는 금액 미표기**라 0으로 잡았다(임대료·의무매입은 별도 추적 대상). ⛔ **undisclosed는 0으로 잡지 않고 별도 카운트**한다 — 0으로 합산하면 순지출을 과소·과대 왜곡한다.",
     "contract_years": 5.0,
@@ -37703,6 +37711,30 @@
     "kind": "영입 지출",
     "label": "빅토르 무뇨스 (Osasuna)",
     "note": "⚠️ 6년/2032는 보도값 — 구단 공식은 「long-term」까지만. 5년 상한이 걸려 결과 동일"
+   },
+   {
+    "amount_m": 28.5,
+    "confidence": "measured",
+    "contract_years": 6.0,
+    "kind": "영입 지출",
+    "label": "브뤼흐만스 (Genk)",
+    "note": "€33m+€2m — £ 환산 근사치. ⚠️ 26/27은 헹크 잔류(1월 조기 소환 옵션)"
+   },
+   {
+    "amount_m": 25.7,
+    "confidence": "measured",
+    "contract_years": 5.0,
+    "kind": "매각 수입",
+    "label": "커티스 존스 (→Inter)",
+    "note": "+애드온 £4.28m·셀온 10% 별도"
+   },
+   {
+    "amount_m": 1.3,
+    "confidence": "measured",
+    "contract_years": 3.0,
+    "kind": "매각 수입",
+    "label": "바이체티치 (→Celta de Vigo)",
+    "note": "원 표시 €1.5m+목표연동 보너스 — 리버풀 바이백+셀온 조항 보유"
    },
    {
     "amount_m": 0.7,
@@ -37738,6 +37770,14 @@
    },
    {
     "amount_m": 0.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "모리슨 (→Sheffield Wednesday, 임대)",
+    "note": null
+   },
+   {
+    "amount_m": 0.0,
     "confidence": "⚠️ **완료(공식 발표) 건만**이며 진행 중 루머는 제외했다 — 루헤리·잭슨·완비사카·바르콜라·각포 등은 원장에 없다. ⚠️ **금액은 Sky 표기값**이고 구단 공시가 아니다. 애드온·셀온·급여는 포함되지 않는다 — 실제 회계 계상액과 다르다. ⛔ **임대는 금액 미표기**라 0으로 잡았다(임대료·의무매입은 별도 추적 대상). ⛔ **undisclosed는 0으로 잡지 않고 별도 카운트**한다 — 0으로 합산하면 순지출을 과소·과대 왜곡한다.",
     "contract_years": null,
     "kind": "매각 수입",
@@ -37759,6 +37799,14 @@
     "kind": "매각 수입",
     "label": "스캔런 (→Cardiff, 임대)",
     "note": "미공개(undisclosed) — 합산 제외"
+   },
+   {
+    "amount_m": 0.0,
+    "confidence": "measured",
+    "contract_years": null,
+    "kind": "매각 수입",
+    "label": "엘리엇 (→Valencia, 임대)",
+    "note": "1년 임대·매수옵션 없음"
    },
    {
     "amount_m": 0.0,
