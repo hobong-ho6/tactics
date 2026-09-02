@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>세리머니 — tactics v2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+#celeSearch{width:100%;max-width:420px;padding:8px 12px;background:var(--panel);color:var(--txt);
+  border:1px solid var(--line);border-radius:8px;font-size:14px}
+#celeSearch:focus{outline:none;border-color:var(--acc)}
+.cele-group{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--panel)}
+.cele-group summary{cursor:pointer;color:var(--acc);user-select:none;list-style:none}
+.cele-group summary::-webkit-details-marker{display:none}
+.cele-group summary::before{content:'▸ ';display:inline-block;transition:transform .12s}
+.cele-group[open] summary::before{content:'▾ '}
+.cele-group table{margin-top:10px}
+</style></head><body>
+<div id="hdr"></div>
+<h1>세리머니 <small class="dim">FC26 — 발동 조작 참고자료 (DB 비대상 · 정적 레퍼런스)</small></h1>
+<div class="panel">
+  <label class="kv">검색 <input id="celeSearch" type="text" placeholder="세리머니 이름으로 검색 (한글/영문) — 예: 펄스, sleep, 백플립"></label>
+  <p class="dim" style="font-size:12px;margin-top:8px">검색어를 입력하면 일치하는 항목이 있는 카테고리가 자동으로 펼쳐집니다.
+  카테고리 제목을 클릭하면 접고 펼 수 있습니다. 입력은 <b>PS 기준</b>(원 스틱=R스틱, 방향은 오른쪽 스틱 기울임)이며
+  Xbox는 버튼명만 다릅니다(L1↔LB · R1↔RB · L2↔LT · R2↔RT · ◯↔B · □↔X · △↔Y · R3 동일).
+  ⚠️ 골 성공 후 <b>2초 이내</b>에 입력하지 않으면 기본 세리머니가 자동 발동합니다.</p>
+  <div id="celeGroups"></div>
+</div>
+<div class="panel"><h2>상황 트리거형 <small class="dim">버튼 조합이 아니라 경기 상황이 조건</small></h2>
+  <table id="celeCtx"></table></div>
+<p class="dim" style="font-size:12px">출처: FIFPlay(fifplay.com) 2026-09-02 수집. EA 공식 패치로 조합이 바뀌면 이 페이지의
+데이터 파일(<span class="mono">assets/celebrations.js</span>)만 갱신한다 — 손편집 지점은 그 파일 하나로 한정한다.</p>
+<script type="module">
+import { mountHeader } from './assets/data.js';
+import { mountCelebrationSearch, CONTEXT_CELEBRATIONS } from './assets/celebrations.js';
+await mountHeader('celebrations.html');
+
+const render = mountCelebrationSearch(document.getElementById('celeGroups'));
+const input = document.getElementById('celeSearch');
+input.addEventListener('input', () => render(input.value));
+
+document.getElementById('celeCtx').innerHTML =
+  '<tr><th>세리머니</th><th>발동 조건</th></tr>' +
+  CONTEXT_CELEBRATIONS.map(c => `<tr><td><b>${c.name_kr}</b><br><small class="dim">${c.name_en}</small></td>
+    <td class="dim">${c.trigger}</td></tr>`).join('');
+</script>
+</body></html>
