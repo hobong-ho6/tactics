@@ -1,20 +1,88 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><title>게임 시스템 — tactics v2</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="assets/style.css"></head><body>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.cele-group{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--bg2,rgba(255,255,255,.02))}
+.cele-group summary{cursor:pointer;color:var(--acc);user-select:none;list-style:none}
+.cele-group summary::-webkit-details-marker{display:none}
+.cele-group summary::before{content:'▸ ';display:inline-block}
+.cele-group[open] summary::before{content:'▾ '}
+.cele-group table{margin-top:10px}
+.gm-search{width:100%;max-width:420px;padding:8px 12px;background:var(--panel);color:var(--txt);
+  border:1px solid var(--line);border-radius:8px;font-size:14px}
+.gm-search:focus{outline:none;border-color:var(--acc)}
+</style></head><body>
 <div id="hdr"></div>
 <h1>FC 게임 시스템 분석 <small class="dim" id="gv"></small></h1>
 <div class="panel"><h2>시스템 분석 — 구현에 영향을 주는 확정 사실 <small class="dim">game_system_changes</small></h2>
   <table id="chg"></table></div>
-<div class="panel"><h2>역할 라이브러리 <small class="dim">역할 37 × 포커스 85 — EA 원문 정의·강화/희생 태그</small></h2>
+
+<div class="panel"><h2>조작 체계 <small class="dim">이동 속도·모디파이어 버튼 — PlayStyle 발동 조건의 전제</small></h2>
+  <table id="ctrlSpeed"></table>
+  <div class="kv" style="margin-top:12px"><b>모디파이어 버튼</b> <small class="dim">Xbox 기준, PS는 괄호</small></div>
+  <table id="ctrlMod"></table>
+  <ul id="ctrlTips" style="margin-top:10px;font-size:13px;line-height:1.7"></ul></div>
+
+<div class="panel"><h2>6대 스탯 <small class="dim">종합 스탯이 실제로 결정하는 것</small></h2>
+  <table id="statTbl"></table>
+  <p class="dim" id="statNote" style="font-size:12.5px;margin-top:8px"></p></div>
+
+<div class="panel"><h2>역할 라이브러리 <small class="dim">역할 37 × 포커스 85 — EA 원문 정의·강화/희생 태그 (오프더볼 · 우리 커널이 대응하는 층)</small></h2>
   <label class="kv">포지션군 <select id="grp"></select></label>
   <table id="roles"></table></div>
+
+<div class="panel"><h2>PlayStyles 카탈로그 <small class="dim">온더볼 — 커널과 별개 축, 6카테고리 35종</small></h2>
+  <label class="kv">검색 <input id="psSearch" class="gm-search" type="text" placeholder="PlayStyle 이름 검색 — 예: 프레스 프루븐, tiki taka"></label>
+  <div id="psGroups" style="margin-top:10px"></div>
+  <p class="dim" id="psNote" style="font-size:12.5px;margin-top:8px"></p></div>
+
 <div class="panel"><h2>팀 전술 파라미터 <small class="dim">game_tactic_params</small></h2><table id="prm"></table></div>
-<p class="dim">EA 피치노트 원문 분석·판정 이력 전문은 docs/20이 정본. FIFA→FC 변천사는 FC27 온보딩(docs/21) 때 소급 기입.</p>
+
+<div class="panel"><h2>세리머니 <small class="dim">발동 조작 — DB 비대상 정적 레퍼런스</small></h2>
+  <label class="kv">검색 <input id="celeSearch" class="gm-search" type="text" placeholder="세리머니 검색 — 예: 펄스, sleep, 백플립"></label>
+  <p class="dim" style="font-size:12px;margin-top:8px">PS 기준(오른쪽 스틱 기울임). Xbox는 버튼명만 다릅니다
+  (L1↔LB · R1↔RB · L2↔LT · R2↔RT · ◯↔B · □↔X · △↔Y · R3 동일). ⚠️ 골 성공 후 <b>2초 이내</b> 미입력 시 기본 세리머니 자동 발동.</p>
+  <div id="celeGroups" style="margin-top:6px"></div>
+  <div class="kv" style="margin-top:14px"><b>상황 트리거형</b> <small class="dim">버튼 조합이 아니라 경기 상황이 조건</small></div>
+  <table id="celeCtx"></table></div>
+
+<p class="dim">EA 피치노트 원문 분석·판정 이력 전문은 docs/20이 정본. PlayStyles·스탯·조작·세리머니 서사 정본은 docs/22.
+FIFA→FC 변천사는 FC27 온보딩(docs/21) 때 소급 기입.</p>
 <script type="module">
 import { mountHeader, loadKernels } from './assets/data.js';
 import { prose } from './assets/prose.js';
+import { CONTROLS, STATS, STATS_NOTE, PLAYSTYLE_CATEGORIES, PLAYSTYLES, PLAYSTYLE_NOTE, esc, mountSearchableCatalog } from './assets/gamemechanics.js';
+import { CATEGORIES as CELE_CATEGORIES, CELEBRATIONS, CONTEXT_CELEBRATIONS, mountCelebrationSearch } from './assets/celebrations.js';
 await mountHeader('game.html');
+
+// 조작 체계
+document.getElementById('ctrlSpeed').innerHTML = '<tr><th>속도</th><th>트리거</th></tr>' +
+  CONTROLS.speed.map(s => `<tr><td><b>${esc(s.label)}</b></td><td>${esc(s.trigger)}</td></tr>`).join('');
+document.getElementById('ctrlMod').innerHTML = '<tr><th>버튼</th><th>공격 시</th><th>수비 시</th></tr>' +
+  CONTROLS.modifiers.map(m => `<tr><td><b>${esc(m.btn)}</b></td><td>${esc(m.attack)}</td><td>${esc(m.defend)}</td></tr>`).join('');
+document.getElementById('ctrlTips').innerHTML = CONTROLS.tips.map(t => `<li>${esc(t)}</li>`).join('');
+
+// 6대 스탯
+document.getElementById('statTbl').innerHTML = '<tr><th>스탯</th><th>결정하는 것</th><th>주목할 세부 속성</th></tr>' +
+  STATS.map(s => `<tr><td><b>${esc(s.key)}</b><br><small class="dim">${esc(s.name)}</small></td><td>${esc(s.desc)}</td><td class="dim" style="font-size:12.5px">${esc(s.sub)}</td></tr>`).join('');
+document.getElementById('statNote').textContent = STATS_NOTE;
+
+// PlayStyles 카탈로그
+const psRender = mountSearchableCatalog(document.getElementById('psGroups'), {
+  items: PLAYSTYLES, categories: PLAYSTYLE_CATEGORIES,
+  matchText: p => p.name_kr + p.name_en + p.trigger + p.effect,
+  headerRow: '<tr><th>PlayStyle</th><th>발동 상황</th><th>효과</th></tr>',
+  renderRow: p => `<tr><td><b>${esc(p.name_kr)}</b><br><small class="dim">${esc(p.name_en)}</small></td><td>${esc(p.trigger)}</td><td>${esc(p.effect)}</td></tr>`,
+});
+document.getElementById('psSearch').addEventListener('input', e => psRender(e.target.value));
+document.getElementById('psNote').textContent = PLAYSTYLE_NOTE;
+
+// 세리머니
+const celeRender = mountCelebrationSearch(document.getElementById('celeGroups'));
+document.getElementById('celeSearch').addEventListener('input', e => celeRender(e.target.value));
+document.getElementById('celeCtx').innerHTML = '<tr><th>세리머니</th><th>발동 조건</th></tr>' +
+  CONTEXT_CELEBRATIONS.map(c => `<tr><td><b>${esc(c.name_kr)}</b><br><small class="dim">${esc(c.name_en)}</small></td><td class="dim">${esc(c.trigger)}</td></tr>`).join('');
 const kd = await loadKernels('FC26');
 document.getElementById('gv').textContent = kd.game_version;
 const AREA={engine:'엔진',roles:'역할',positioning:'포지셔닝',attributes:'속성',tactics:'전술',playstyles:'플레이스타일',meta:'메타'};
