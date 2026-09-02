@@ -81,6 +81,6 @@ INSERT INTO transfer_ledger VALUES(80,'ATM','2026-summer','영입 지출','쿠�
 INSERT INTO transfer_ledger VALUES(81,'ATM','2026-summer','영입 지출','조나단 데이비드 (Juventus, 임대)',0.0,'무상 임대(prestito gratuito) · €25m 재량 매수옵션(분납)','transfer_targets CONFIRMED 09-01 마감 정산','measured',NULL);
 INSERT INTO transfer_ledger VALUES(82,'ATM','2026-summer','매각 수입','그리즈만 (→Orlando City)',0.0,'자유이적 · Designated Player 2년+옵션 1년','transfer_outgoing 구단 공식','measured',NULL);
 INSERT INTO transfer_ledger VALUES(83,'ATM','2026-summer','매각 수입','히메네스 (→Deportivo, 임대)',0.0,'2027-06까지, ATM 급여 50%+ 부담','transfer_outgoing 09-01 심야 데포르 구단 공식','measured',NULL);
-INSERT INTO transfer_ledger VALUES(84,'ATM','2026-summer','매각 수입','몰리나 (→AS Roma)',0.0,'미공개 — 원장 정본에 금액 기록 없음','transfer_outgoing 08-12 공식','이적료 원장에 미기록 — 구단 공식이 금액을 공개하지 않았거나 수집 결손',NULL);
-INSERT INTO transfer_ledger VALUES(85,'ATM','2026-summer','매각 수입','랑글레 (→Benfica)',0.0,'미공개 — 원장 정본에 금액 기록 없음','transfer_outgoing 08-06말 공식','이적료 원장에 미기록 — 구단 공식이 금액을 공개하지 않았거나 수집 결손',NULL);
+INSERT INTO transfer_ledger VALUES(84,'ATM','2026-summer','매각 수입','몰리나 (→AS Roma)',14.59999999999999965,'원 표시 €17m(€14m 고정+€3m 보너스) — £ 환산 근사치. Gabboman(이탈리아어, 2026-08-05)','transfer_outgoing 08-12 공식','측정: 이탈리아어 1차 분석으로 금액 확정. 원장 결손 해소.',NULL);
+INSERT INTO transfer_ledger VALUES(85,'ATM','2026-summer','매각 수입','랑글레 (→Benfica)',0.0,'자유이적 확정(계약 잔여 2년, 2028 만료분을 합의 해지) — Bruno Francisco(포르투갈어, 2026-06-28) 「custo zero」','transfer_outgoing 08-06말 공식','측정: 포르투갈어 1차 소스로 자유이적 확정. 원장 결손 해소.',NULL);
 INSERT INTO transfer_ledger VALUES(86,'ATM','2026-summer','매각 수입','알마다 (→River Plate)',0.0,'미공개 — 원장 정본에 금액 기록 없음','transfer_outgoing ATM 구단 공식','이적료 원장에 미기록 — 구단 공식이 금액을 공개하지 않았거나 수집 결손',NULL);
