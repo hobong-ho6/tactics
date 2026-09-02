@@ -15,6 +15,7 @@
 | 시스템 구조·게이트·규약·진행 상태 | [docs/00-overview.md](docs/00-overview.md) ⭐정본 |
 | 감독 분석 (에메리/알론소/이라올라/시메오네 — PPDA 정본은 12) | docs/10 · 11 · 12 · 13 |
 | FC 게임 시스템 (v1 기준 — 게이트 표는 scripts/gates.py가 정본) | docs/20 |
+| PlayStyles·스탯·조작 등 게임플레이 메커니즘 (Role/커널과 별개 축) | docs/22 |
 | 데이터 수집 규칙 (좌표·함정 7종·SofaScore) | docs/30 |
 | 새 분석 축 사전등록 양식 | docs/60 |
 | v1 아카이브 (구 툴·구 DB — 읽기 전용) | archive/v1/ · data/ |

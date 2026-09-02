@@ -74,7 +74,8 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 ## 재설계 진행 상태 (2026-08-11)
 
 - [x] 0 체크포인트(`pre-redesign` 태그) · 1 스키마+마이그레이션 · 2 core/ · 3 export/JSON · 4 site/ 6페이지
-- [x] 5 CLAUDE.md 재작성 · docs/20 v2 배너 · HANDOFF (잔여: manager_profiles 시드, docs/22 신설)
+- [x] 5 CLAUDE.md 재작성 · docs/20 v2 배너 · HANDOFF (잔여: manager_profiles 시드)
+- [x] 5-1 docs/22 신설(2026-09-02) — PlayStyles·6대 스탯·조작 체계(Role/커널과 별개 온더볼 축)
 - [x] 6 컷오버 — 구 툴 archive/v1/ 이동, db_dump v2 전환, transfer-watch 스킬 v2·**3팀 확장**
       (팀 루프 AVL 전체 / CHE·LIV 스캔+기록, teams.fotmob_id가 소스 정본 —
       ⚠️ CHE 8455·LIV 8650은 첫 실행에서 검증)
