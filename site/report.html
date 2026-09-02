@@ -21,7 +21,7 @@
 결론(프로필 축·세팅)만 보여준다.</p>
 <script type="module">
 import { mountHeader, loadTeam, slotCandidates } from './assets/data.js?v=20260813-slot-candidates';
-import { mountGlossaryTips } from './assets/glossary.js';
+import { mountGlossaryTips } from './assets/glossary.js?v=20260902-safari-tooltip';
 import { prose } from './assets/prose.js';   // 긴 DB 산문은 공용 렌더러로 끊어 읽는다(player.html과 동일)
 
 const { team, regime } = await mountHeader('report.html');

@@ -48,7 +48,7 @@
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, slotCandidates, sofifaLink, isGkSlot, gkPosCell } from './assets/data.js?v=20260816-gk-avgpos';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
-import { annotate, mountGlossaryTips } from './assets/glossary.js';
+import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260902-safari-tooltip';
 import { prose } from './assets/prose.js';
 const { team, idx } = await mountHeader('player.html');
 const [td, GS, GS27] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({}))]);
@@ -243,7 +243,7 @@ function renderLeague(key, force, sel){
      ⇒ 시즌 내림차순으로 **가장 최신 (리그, 시즌) 하나만** 그리고, 나머지는 노트에 열거한다. */
   const buckets = new Map();
   for (const r of fbAll) {
-    const k = `${r.league} ${r.season}`;
+    const k = `${r.league} ${r.season}`;
     (buckets.get(k) ?? buckets.set(k, []).get(k)).push(r);
   }
   const seasonKey = s => String(s||'').replace(/[^\d]/g,'');   // '2025/2026'→'20252026', '2026'→'2026'

@@ -178,8 +178,14 @@ export function mountGlossaryTips(){
   if (document.body.dataset.glTips) return;
   document.body.dataset.glTips = '1';
   const hit = e => e.target.closest?.('abbr.gl');
+  // ⚠️ 사파리(특히 macOS 트랙패드·매직마우스)는 mouse 포인터에서 pointerover/pointerout을
+  // 안정적으로 쏘지 않는다(WebKit 다발 버그 리포트) — pointerover만 쓰면 사파리에서 툴팁이
+  // 전혀 안 뜬다. mouseover/mouseout(구식이지만 전 브라우저 100% 지원)을 나란히 붙여
+  // 크로스브라우저로 이중화한다. showTip/hideTip은 멱등이라 두 이벤트가 겹쳐 와도 안전하다.
   document.addEventListener('pointerover', e => { const el = hit(e); if (el) showTip(el); });
   document.addEventListener('pointerout',  e => { if (hit(e)) hideTip(); });
+  document.addEventListener('mouseover',   e => { const el = hit(e); if (el) showTip(el); });
+  document.addEventListener('mouseout',    e => { if (hit(e)) hideTip(); });
   document.addEventListener('focusin',     e => { const el = hit(e); if (el) showTip(el); });
   document.addEventListener('focusout',    e => { if (hit(e)) hideTip(); });
   // 터치: 탭하면 뜨고 바깥을 누르면 닫힌다
