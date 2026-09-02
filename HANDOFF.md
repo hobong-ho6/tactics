@@ -17,11 +17,18 @@
   (**complete 14 · draft 16**) · match_player_reports **536** · squad_entries **131** ·
   prescriptions **429** · slots **88** · match_game_setups **15** · match_player_prescriptions **244** ·
   transfer_targets **44** · transfer_outgoing **67** · player_duties **197** ·
-  player_shirt_numbers **26** · understat_player_matches **5,634** · observations **383** ·
+  player_shirt_numbers **26** · understat_player_matches **5,634** · observations **413** ·
   **teams 31**(분석 4 + 클럽 6 + 국가대표 21).
 - 회귀: **G1~G13 전항 통과**. ⭐ **G13은 2026-09-01 신설** — 아래 「무결성 정리」 참조.
-- ⏰ **2026-27 여름 이적창은 2026-09-01 23:00 BST에 닫혔다.** 사용자 지시로 `transfer-watch` 정기 루틴은 종료.
-  남은 것은 **09-02 09:00 KST 마감 정산 1회**뿐이고, 그 회차가 스스로 스케줄을 삭제한다.
+- ✅ **2026-27 여름 이적창 감시 완전 종료.** 09-02 09:30 자동 마감 정산(CONFIRMED 11·DEAD 8, obs#394~399) +
+  11시 사용자 재확인(응게상 1티어 상충 해소, obs#413)까지 마쳤다. `transfer-feed` 스케줄은 비활성화됨.
+  미결 5건(베일리·에메날로·르마르·바르가스·응게상)은 등급 동결 — 각자의 실효 시한(스코틀랜드 09-03·
+  터키 09-04·사우디 09-06)에 사용자 판단으로 개별 처리한다(정기 루틴은 없다).
+  ⭐ **스쿼드 프리즈는 DB 재작성이 아니라 아키텍처 검증으로 처리했다** — `squad_entries.lh`가 CONFIRMED
+  이적 후에도 `OWNED`로 남아 있는 건 정상이다. 모든 화면은 `slot_candidates()`가 `departed`(=
+  `transfer_outgoing WHERE likelihood='CONFIRMED'`를 매 export마다 즉시 계산)로 런타임 필터링하고,
+  G11이 이를 검증한다. 남은 진짜 공백은 G11이 지목한 2건(CHE CCB 토신·LIV RM 엘리엇 `fc26:opt` 선발
+  처방)뿐이고 스쿼드·설정시트 축의 과제다.
 
 ### 반복해서 사고를 냈던 규칙 (지우지 말 것)
 
