@@ -444,3 +444,206 @@ D+1에 **독립 재계산**한 결과 **8개 값이 소수점까지 전부 일�
 2. ⭐ **정상 백4 상대 재현성**(위 §상대팀 관점) — 아스날전(다음 경기)이 곧 이 검증이다.
 3. **Si Phillips 페이월** — 우회 불가면 3회차에서 종결 처리한다.
 4. 네덜란드어 **직독 원문**(VI·Voetbalzone) 재시도 — 검색엔진 요약이 아니라 URL 직접 접근.
+
+## D+2 추적 (2026-09-02)
+
+> match-watch §2-1a 「경기 후 3일 추적」 D+2 회차. **08-31·D+1 절은 수정하지 않는다**(불변규칙 2·3) —
+> 뒤집히는 항목은 아래 「판정 정정」에 따로 적었다.
+
+### ⭐⭐ 이 회차의 방법론 돌파 — 유튜브 자막을 확보했다. 「설명문 상한」이 풀렸다
+
+D+1이 obs#381로 등재한 「현재 유튜브 근거의 상한은 설명문이다」는 **해소됐다.**
+동시 진행 중인 다른 세션이 만든 **`scripts/yt_transcript.py`**(yt-dlp 자동생성 자막 → VTT 롤링중복 제거 → 전사 md)가
+저장소에 이미 있었고, 이 회차에서 3개 언어권 영상에 적용해 전부 성공했다.
+
+⚠️ **D+2가 직접 시도해 실패한 경로 3종을 함께 기록한다**(같은 실패를 반복하지 않기 위해):
+⑴ `timedtext` baseUrl 직접 fetch(페이지 컨텍스트·credentials 포함) → **HTTP 200 · 본문 길이 0**(pot 파라미터 요구),
+⑵ innertube `/youtubei/v1/get_transcript`(INNERTUBE_API_KEY + 페이지 context + getTranscriptEndpoint params) → **HTTP 400**,
+⑶ UI 「스크립트 표시」 버튼 클릭 후 `ytd-transcript-segment-renderer` 조회 → **클릭은 성공, 세그먼트 0개 렌더**.
+⇒ **브라우저 경로는 전부 막혀 있고 yt-dlp 경로만 열려 있다.** → obs#405
+
+산출물: `reports/transcripts/gVmb3JTFcKU.en.md`(114큐) 외 2건.
+⚠️ **자동 생성 자막이므로 고유명사 오인식이 심하다**(예: Iraola→"Eola/Rollola", Kadioglu→"Katyoglu",
+João Pedro→"Joel/Jao Pedro"). 인용 시 auto-caption임을 명기한다.
+
+---
+
+### 🔴 판정 정정 ① — D+1 정정 ②의 「첼시는 처음부터 압박하지 않았다」는 **과잉 서술이었다**
+
+D+1은 PPDA 22.67과 0~32분 30.33을 근거로 「알론소의 자기비판은 영역에 관한 것이고 압박에 관한 것이 아니다 —
+**첼시는 처음부터 압박하지 않았다**」고 적었다. **자막 본문이 이를 반증한다.**
+
+「Tactical Analysis」(`gVmb3JTFcKU`, 2026-08-31) 자막 [00:30]~[01:33] 축어:
+
+> "Lewis Dunk is on the ball **completely unpressed** and neither of his passing options are being closed down either.
+> … what Chelsea are actually doing is **inviting the pass wide, then springing the trap**. …
+> Dunk plays it out to Kadioglu on the touchline. **The moment that pass goes, Chelsea flip into an aggressive
+> man-to-man press.** Palmer cuts the return lane back to Dunk. Lavia takes Groß out of the picture entirely.
+> Gusto tracks Yalcouyé. Every easy option for Kadioglu is gone and he's forced into a risky pass into Kostoulas
+> who's swarmed the second the ball reaches him and gives it straight back. **That's the pattern for the whole match.**"
+
+🔴 ⇒ **PPDA 22.67은 「압박하지 않음」이 아니라 「조건부 압박」의 수치다.** PPDA는 상대 빌드업 구역의
+패스당 수비액션을 세므로, **측면 패스를 트리거로 삼는 함정형 압박은 구조적으로 높은(=소극적으로 보이는) PPDA를 만든다.**
+중앙을 봉쇄해 측면으로 유도하는 동안에는 수비액션이 발생하지 않기 때문이다.
+⇒ **정확한 서술은 「첼시는 무조건 압박하지 않았고, 측면 유도를 트리거로 조건부 압박했다」이다.**
+D+1의 「압박은 상대 의존적이다」(루턴 13.13 ↔ 브라이턴 22.67)는 **유지되지만, 그 위에 「같은 경기 안에서도
+국면 조건부다」라는 층이 하나 더 있다.** → obs#406
+
+⚠️ **이 정정은 §7의 3층 판정을 무너뜨리지 않는다** — 오히려 「시즌 아이덴티티(저점유·전환 중심) = 의도」 층을
+**설계 수준까지 구체화**한다. 저점유는 방치가 아니라 **유도-함정-전환**이라는 이름 붙은 메커니즘이었다.
+
+⭐ **같은 자막이 프리시즌 대비 변화를 명시한다** [00:30]:
+「프리시즌에는 상대 백라인을 쫓는 **공격적 전방 압박**을 봤다. 시즌이 시작된 뒤로 그 압박은 **완전히 달라 보인다**.」
+⇒ **저압박은 알론소가 부임과 함께 들여온 상수가 아니라 시즌 개막에 맞춰 넣은 변수다.** 재검증 항목으로 승격한다.
+
+---
+
+### 🔴 판정 정정 ② — D+1의 「브라이턴 2·3실점이 스로인 기원」은 **2·4실점**이다
+
+Opta 이벤트 qualifier를 직독하면 이 경기 7골의 세트피스 분류가 확정된다.
+
+| 시각(Opta) | 득점 | 팀 | Opta qualifier |
+|---|---|---|---|
+| 3:39 | 라비아 | CHE | **FromCorner** |
+| 13:09 | 네투 | CHE | **ThrowinSetPiece** |
+| 31:13 | 주앙 페드루 | CHE | FastBreak (오픈플레이) |
+| 34:48 | 얄쿠예 | BHA | **ThrowinSetPiece** |
+| 62:39 | 주앙 페드루 **자책** | → BHA | **FromCorner** · `OwnGoal` |
+| 73:46 | 파머 | CHE | **ThrowinSetPiece** |
+| 95:07 | 그로스 | BHA | **ThrowinSetPiece** |
+
+- ✅ **§3의 「첼시 4골 중 3골이 재시작 기원」은 Opta로 확정된다**(코너 1 + 스로인 2).
+- ✅ **§1의 63' 자책골 기재가 옳다** — `OwnGoal` 플래그로 확정. 스코어 4-3이 여기서 맞아떨어진다
+  (CHE 3골 + BHA 2골 → 73:46 파머로 **4-2**). D+1이 인용한 WeAreBrighton의 「3-2에서 교체 60초 안에 파머가 4-2」는
+  **36초**로 더 정확하다(오스만 투입 73:10 → 파머 73:46).
+- 🔴 **브라이턴이 넣은 골 중 스로인 기원은 1번째(34:48)와 3번째(95:07)다** — D+1의 「2·3실점」은 오기다.
+  첼시 실점 순번으로 세면 **2·4실점**이 아니라 **1·3실점**이며, D+1이 뒤섞었다.
+- 🔴🔴 **더 중요한 정정**: D+1은 이를 리버풀전과 묶어 「PL 3라운드에서 두 팀이 **같은 결함**을 보였다」로 적었다.
+  **이 경기에서 스로인은 결함이 아니라 양방향 무기였다** — 7골 중 **4골이 스로인 국면**이고 그중 **2골이 첼시 것**이다.
+  ⇒ 「첼시의 스로인 수비 취약」으로 일반화하면 안 된다. 리버풀 건과는 **성격이 다르다**(그쪽은 2실점 모두 스로인, 득점 0). → obs#406
+
+---
+
+### ⭐⭐ 「74분 5-4-1 전환은 의도」 — 좌표로 검증했다. **판정 지지**
+
+§7이 「후반 5-4-1은 의도된 74분 전환」으로 판정했으나 근거는 서사였다.
+⚠️ **Opta 포메이션 라벨로는 검증되지 않는다** — 첼시 포메이션 블록 4개(0·70·74·84분)가 **전부 `3421`**로 고정이다
+(리버풀 소보슬러이 건과 같은 라벨 한계 — obs#376·379). **좌표로 내려가면 보인다.**
+
+**첼시 수비액션 평균 x**(Tackle·Interception·Clearance·BallRecovery·Aerial·Challenge·BlockedPass·Foul·Save)
+
+| 구간 | n | 평균 x |
+|---|---|---|
+| 0~67분 | **105** | **34.6** |
+| 67~74분 | 11 ⚠️ | 38.2 |
+| **74분~종료** | **38** | **24.4** |
+
+⇒ **−10.2.** 분모가 105 대 38로 충분하다.
+
+**74분 이후 개인 수비액션 평균 x — 6명이 x<26에 몰린다**
+
+| 선수 | 0~67분 | 74분~종료 | Δ |
+|---|---|---|---|
+| 하토 (DML) | 28.0 | **9.8** | −18.2 |
+| 아체암퐁 (교체 CB) | — | **16.4** | — |
+| 라크루아 (DC) | 19.5 | **17.9** | −1.6 |
+| ⭐⭐ **로저스 (AMC)** | **62.5** | **18.2** | **−44.3** |
+| 바르코 (교체) | — | **20.8** | — |
+| 차바리아 (교체 LWB) | — | **25.2** | — |
+| — 여기서 끊긴다 — | | | |
+| 파머 | 35.6 | 36.9 | +1.3 |
+| 구스토 | 29.0 | 47.5 | +18.5 |
+| 주앙 페드루 (FW) | 59.9 | **48.6** | −11.3 |
+
+🔴 ⇒ **x<26 6명 / 중간 3명 / 최전방 주앙 페드루 단독.** 「5-4-1」의 형태가 좌표에 그대로 있다.
+**결정적 증거는 로저스다** — **10번이 −44.3을 내려가 센터백 높이(18.2)에서 수비했다.**
+공격형 미드필더가 자연 발생적으로 이 위치에 가지는 않는다. ⇒ **§7의 「의도된 전환」 판정을 지지한다.**
+⚠️ 개인별 n이 3~7로 작다 — **개별 수치가 아니라 밴딩(무리 짓기)과 로저스의 큰 변화폭이 논거다.**
+팀 합계(n=38)는 충분하다. → obs#407
+
+⚠️ **교체 타이밍은 67~71분이다**(Opta 축어): 67:28 라비아→R.제임스 · 67:33 포파나→아체암퐁 ·
+67:46 네투→카이세도 · 71:03 콜윌→차바리아 · 81:02 카이세도→바르코.
+⇒ **「74분 전환」은 교체 시점이 아니라 형태가 자리 잡은 시점**이다. 인원 교체는 67분에 시작됐다.
+
+---
+
+### ⭐⭐ 첼시 공식 전술 분석 — 「의도였다」고 **구단이 직접 주장한다**. 그래서 §7의 3층 판정이 더 중요해진다
+
+[chelseafc.com 「Analysis: Flying wingers, why possession isn't always king, and João Pedro at…」](https://www.chelseafc.com/en/news/article/analysis-flying-wingers-why-possession-isnt-always-king-and-joao-pedro-at)
+
+> "This was a **calculated game plan** from new manager Xabi Alonso, and it worked."
+> "Alonso **decided** he would allow Brighton to have more of the ball and would then look to utilise our counter-attacking threat."
+> (윙백) "Despite lining up as wing-backs in the static formation graphic… Neto was often one of our most advanced
+> players and Hato… was a real attacking threat, too."
+> ✅ "It was **Neto's cross from the byline which won the corner** that ultimately led to Romeo Lavia's opening goal."
+> → Opta의 라비아 골 `FromCorner`와 **정확히 일치**한다.
+
+🔴 ⇒ **구단 공식 채널은 26%를 「전면 의도」로 평탄화한다.** 그런데 **알론소 본인은 같은 경기를 자기비판했다**
+(「brilliant first half hour」·「**sitting too deep after that**」·「**played too much with the result in mind**」).
+⚠️ **구단 매체는 「우리 경기력이 의도였는가」에 대해 이해관계 있는 당사자다** — 중립 출처로 쓸 수 없다.
+⇒ **08-31 §7의 3층 판정(아이덴티티=의도 / 26% 극단값=피동+자멸 / 74분 전환=의도)은 이 회차에서 강화된다.**
+구단이 퍼뜨리는 평탄한 「전부 의도」 서사를 08-31이 이미 거부했고, **감독 본인의 축어가 그 거부를 지지한다.**
+⚠️ 단 정정 ①에 따라 **1층의 내용은 「저점유 방치」가 아니라 「유도-함정-전환 설계」로 갱신**된다.
+⛔ **이 기사는 압박과 후반 형태 변화를 전혀 다루지 않는다** — 위 74분 좌표 검증은 여전히 **우리 고유 근거**다.
+
+---
+
+### ⭐ 32분 3번째 골 — 3중 확정. 메커니즘까지 닫힌다
+
+| 출처 | 서술 |
+|---|---|
+| §1 (08-31) | 「하토가 로저스와 원투 후 하프라인부터 폭주」 |
+| 자막 축어 (D+2) | "**Hato wins it inside his own box**, plays it to Rogers, and immediately sprints into the space Brighton have vacated. Rogers finds him straight back **in acres of room** with only one defender to beat, and he squares it for João Pedro." |
+| Sports Illustrated | 하토 **7.6** · "**brilliant, lung-busting assist**" |
+
+⇒ **탈취 지점이 「자기 페널티박스 안」으로 특정됐다.** 08-31의 「하프라인부터」보다 더 먼 거리다.
+⇒ §2의 「역습 구조」 기술에 **탈취 위치**를 더할 수 있다. 하토 평점: SofaScore 7.0 ↔ SI 7.6 ↔ FotMob 시즌평균 7.33 —
+**obs#378 규약대로 종합평점 충돌은 미해결로 등재하지 않는다.**
+
+### ⭐ 기록 수치 2건 (자막 [02:04])
+
+> "Chelsea completed just **146 passes** all match, their **lowest in a Premier League game since 2003-04**,
+> and had only **25.6%** of the ball, the **lowest share on record for the club** in this league."
+
+⚠️ **제공사 충돌 1건**: Opta Analyst 계열 요약은 「시도 225 · 성공 **152**」로 적는다. **146 ↔ 152.**
+⇒ **둘 다 인용하지 말고 §1의 자체 수집값을 정본으로 둔다.** 점유율도 25.6 ↔ 26으로 갈린다.
+「구단 리그 역사상 최저 점유율」이라는 **기록의 방향**만 채택한다.
+
+### ⭐ 다음 경기가 곧 검증이다 — 자막이 D+1과 같은 결론에 독립적으로 도달했다
+
+자막 [03:37]: 「**9월 6일 에미리츠, 디펜딩 챔피언 아스날.** 아스날은 풀럼·브라이턴처럼 개인 실수로 공을 돌려주지 않고,
+긴 점유 시간을 낭비하지도 않는다. 이 첼시가 **준비된 상대를 두고 70분간 볼 없이 경기를 통제하지 못한다면**,
+2연승은 우승 도전이 아니라 경고 신호로 보이기 시작한다.」
+⇒ **D+1이 올린 재검증 항목(「윙백 반대편 침투가 정상 백4 상대로도 통하는가」)과 같은 경기를 가리킨다.**
+자막은 여기에 **「템포 세터 부재」**를 축으로 더한다 — 「조르지뉴형이 없다. **구스토도 라비아도 그 일을 하도록
+만들어진 선수가 아니다 — 러너이자 볼 위너이지 메트로놈이 아니다**」. D+1 설명문 기준 수확이 **본문으로 확정**됐다.
+
+### 다국어 커버리지 (D+2 회차)
+
+| 언어 | 시도한 검색어 | 결과 |
+|---|---|---|
+| **영어** | `Chelsea Brighton 4-3 tactical analysis Alonso low possession identity September 2026` · 자막 `gVmb3JTFcKU` | ⭐⭐ **첼시 공식 분석 · 자막 본문 · 기록 수치 2건** |
+| **네덜란드어** | `Hato Chelsea Brighton wingback analyse Voetbal International Voetbalzone september 2026` | ⚠️ **VI·Voetbalzone 원문 도달 실패**(D+1과 동일). 다만 D+1의 「오염으로 전량 폐기」와 달리 **이번엔 검증 가능한 NL 요약을 얻었다** — 하토 우측이 아닌 **좌WB**, 32분 런, SI 7.6. 내용은 영어권과 일치하며 **고유 수확은 없다**. ⇒ **NL은 이 경기에서 부가가치가 없다고 종결한다**(2회 시도) |
+| **포르투갈어** | (D+1에 Simonetti 제목 오기 1건으로 닫음) | 재시도하지 않았다 — 이번 회차 PT 예산은 **루턴전 에스테방**에 배정했다(D+1이 올린 항목) |
+| **스페인어·독일어** | 미실행 | D+1의 종결 사유 유지(ES 부재 확인 · 휘르첼러는 영어 회견) |
+
+### ⛔ 종결 처리
+
+- **Si Phillips Talks Chelsea 페이월** — D+1 예고대로 **3회차에서 종결**한다. 우회하지 않는다.
+- **Breaking The Lines · Spielverlagerung · The Football Analyst** — 3회 연속 0건. **구조적 부재로 종결.**
+
+### 🔴 새로 열린 미해결 1건 — **PL 라운드 라벨 「R3」이 의심스럽다**
+
+§1·D+1이 이 경기를 「프리미어리그 **R3**」으로 적었으나 세 가지가 어긋난다.
+⑴ `matches` 테이블에 첼시 PL 경기가 **풀럼(08-24)·브라이턴(08-30) 2건뿐**이고, 리버풀도 **뉴캐슬(08-23)·포레스트(08-29) 2건뿐**이다.
+⑵ 이 회차에 확보한 기록 서술이 둘 다 **「첫 두 경기」**를 말한다 — 알론소는 「**PL 첫 두 경기**에서 7골 이상을 넣은
+   4번째 감독」(로브슨·라우드루프·비엘사에 이어)이고, 리버풀은 「**첫 두 리그 경기**를 못 이긴 것이 14년 만에 두 번째」다.
+⑶ 반면 **ATM은 같은 기간 라리가 3경기**(말라가 08-19 · 비야레알 08-23 · 세비야 08-29)로 **J3 라벨이 정합**하다.
+⚠️ **두 해석이 모두 살아 있다**: ⓐ 라벨 오기(실제 R2) ⓑ R1 연기로 「치른 첫 두 경기」가 R2·R3.
+⇒ **단정하지 않는다.** 결정적 검사는 **PL 공식 R1 fixture 목록에 첼시·리버풀이 있는지**다. → D+3 항목.
+
+### 다음 회차(D+3)로 넘기는 것
+
+1. 🔴 **PL 라운드 라벨 검증**(위) — 맞다면 4개 리포트·`matches`의 라벨을 함께 봐야 한다.
+2. ⭐ **「프리시즌 고압박 → 시즌 저압박」 전환**(정정 ①) — 프리시즌 리포트(`2026-preseason-che.md`)의 PPDA와 대조.
+3. ⭐ **아스날전(09-06)** — 정상 백4 재현성 + 템포 세터 부재, 두 축이 같은 경기에서 검증된다.
