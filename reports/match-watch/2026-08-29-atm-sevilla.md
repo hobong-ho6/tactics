@@ -688,3 +688,211 @@ D+1은 「율만이 이 경기에서 서사 대상으로 지목된 적이 없다
    이 경기 표본은 1이고, 알바레스·쇠를로트 복귀 시 체계가 유지될지가 핵심이다(게임 구현 직결).
 3. ⚠️ **`player_duties` 갱신 후보** — 「푸빌 = 리베로(소유 국면 백3의 최심)」·「요렌테 = 소유 시 제3센터백 /
    수비 시 RB」·「그리말도 = 소유 시 폭 담당 고위치 / 수비 시 백4 합류」. **표본 1경기이므로 specific_match로만.**
+
+## D+3 추적 (2026-09-03) — 추적 종결
+
+> match-watch §2-1a 「경기 후 3일 추적」 **마지막 회차**. **08-31·D+1·D+2 절은 수정하지 않는다**(불변규칙 2·3) —
+> 뒤집히는 항목은 아래 「당일 판정 정정」에 적었다.
+
+### 🔴🔴🔴 이 회차 최대 수확 — **세비야 감독은 알메이다가 아니다. 3회차 검색 실패의 원인이 여기 있었다**
+
+**D+1이 「확정된 것 1건」으로 적은 「세비야 감독은 마티아스 알메이다이며 시메오네와 친구 관계다(ESPN Deportes)」는
+§2-0 화석이다.** 세비야는 **2026-03-24에 알메이다를 경질**하고 **루이스 가르시아 플라사**를 2027년 6월까지
+계약으로 선임했다 — [세비야FC 공식 발표](https://sevillafc.es/en/actualidad/noticias/oficial-statement-luis-garcia-plaza-new-head-coach) ·
+[Libertad Digital(2026-03-24)](https://www.libertaddigital.com/deportes/futbol/2026-03-24/luis-garcia-plaza-nuevo-entrenador-del-sevilla-fc-hasta-2027-tras-el-cese-de-matias-almeyda-7379616/) ·
+[Noticias de Gipuzkoa](https://www.noticiasdegipuzkoa.eus/futbol/2026/03/24/luis-garcia-plaza-nuevo-entrenador-sevilla-10862510.html).
+D+1이 인용한 ESPN Deportes 기사(「almeyda lindo reto medirse **amigo** simeone」)는 **알메이다 재임 중(전 시즌) 기사**다.
+
+🔴 **정정 ⓐ — D+2의 「이 영상의 사실 오류 2건」 중 ①은 오정정이다.**
+D+2는 PEDRO EL INGENIERO가 「세비야 감독을 **루이스 가르시아 플라사**로 3회 호명한다」를 **사실 오류로 적발**했다.
+**영상이 옳았고 우리가 틀렸다.** ⇒ D+2가 이를 근거로 내린 「**이 채널의 인명·사실 서술은 교차검증 없이 인용하지 않는다**」는
+**과잉 제재였다.** 남은 오류는 ⑵([07:05] 「세비야의 골, 특히 2번째와 3번째」 — 세비야는 1골)뿐이며 이는 문맥상 말실수다.
+⇒ **이 채널의 신뢰도를 원복한다.** 단 D+2가 실측으로 반증한 「루크만·그리말도가 바에나보다 앞」은 그대로 반증 상태다.
+
+🔴 **정정 ⓑ — 「세비야 측 1차 증언 3회 실패」의 원인이 특정됐다. 검색엔진 오염이 아니라 우리 검색어가 틀렸다.**
+D+0·D+1·D+2가 모두 `Almeyda + Sevilla 1-3 Atlético`로 검색했다. **그 이름의 감독은 이 경기에 없었다.**
+검색엔진이 2025-11 메트로폴리타노 0-3 건을 반복 반환한 것은 **오염이 아니라 정확한 응답**이었다 —
+알메이다가 실제로 세비야 감독이던 마지막 아틀레티코전이 그 경기다.
+⇒ ⭐ **규약 등재**: **상대팀 감독명은 단일 소스로 확정하지 말고 「경기일 시점」으로 검증한다.**
+감독명이 틀리면 그 경기의 상대 관점 자료 전체가 구조적으로 도달 불가능해진다. → obs#430
+
+---
+
+### ⭐⭐⭐ 그 결과 — **이 경기 「최대 결손」이던 세비야 측 1차 증언을 확보했다. 결손을 닫는다**
+
+**루이스 가르시아 플라사 (세비야), 2026-08-29 경기 후 회견**
+[ElDesmarque 「Luis García Plaza analiza en el postpartido…」(2026-08-30)](https://www.eldesmarque.com/futbol/liga-1a-division/20260829/sevilla-fc-atletico-madrid-luis-garcia-plaza-postpartido-jornada-3-laliga_18_020042670.html) ·
+[COPE Tiempo de Juego(2026-08-30)](https://www.cope.es/programas/tiempo-de-juego/noticias/enfado-luis-garcia-entrenador-sevilla-penalti-no-pitado-sobre-kike-salas-igual-dia-dijeron-no-roja-yuri-espero-jugada-salga-video-arbitros-20260830_3427101.html) ·
+[El Pespunte(2026-08-30)](https://www.elpespunte.es/articulo/sevilla-fc/luis-garcia-plaza-penalti-es-clarisimo-dudas/20260830002319148291.html)
+
+🔴🔴 **결정적 축어 — 상대 감독이 바에나 배치를 「전례 없는 것」으로 규정한다**
+> 「**Baena entre líneas, nunca habían jugado así**」
+> (**바에나가 라인 사이에 있었다. 그들은 한 번도 그렇게 뛴 적이 없다.**)
+> — 그리고 수비를 제대로 조정하지 못했고, 그것이 「te penaliza」(대가를 치르게 한다)고 이어 말했다.
+
+⇒ ⭐⭐ **D+1의 「바에나 falso nueve = 알바레스·쇠를로트 동시 부재에 대한 시메오네의 즉흥 해법」 판정과
+D+2의 「미끼(señuelos) 체계」 판정이 상대 감독의 1차 증언으로 독립 확증됐다.**
+「nunca habían jugado así」는 **상대 분석팀이 준비할 수 없었던 신규 배치**였다는 뜻이며,
+이는 D+2 자막(PEDRO EL INGENIERO)의 「촐로 시메오네는 이번 시즌 그것을 전부 바꾸고 있다」와 **같은 방향이다.**
+🔴 ⇒ **「이건 더 이상 시메오네의 아틀레티코가 아니다」라는 주장이 이제 ⑴전술 채널 ⑵우리 좌표 실측 ⑶상대 감독 증언
+3중으로 지지된다.** D+2가 자막 단독 근거로 「채택」했던 것을 **1차 증언으로 굳힌다.**
+
+**나머지 축어 (번역 병기)**
+- 전반 자인: 「**En la primera parte ellos han estado mejor, cuando ante un equipo como este no estás bien te castiga mucho**」
+  (전반에는 그들이 더 나았다. 이런 팀 상대로 좋지 않으면 크게 대가를 치른다.)
+- ⭐ 수비 국면 규정: 「**Estábamos llegando bien, pero en defensa no estábamos cómodos … cuando no estás cómodo, te penalizan mucho**」
+  (**전진은 잘 되고 있었는데 수비에서 편하지 않았다** … 편하지 않으면 크게 벌을 받는다.)
+  ⇒ **세비야는 「공격이 안 됐다」가 아니라 「수비가 불편했다」고 자기 진단한다.** 아래 슈팅 수와 정합한다.
+- 자기비판: 「**No hemos ajustado bien, y eso contra el Atlético lo pagas**」 (조정을 잘 못했고, 아틀레티코 상대로는 그 값을 치른다.)
+- ⭐ **수화 브레이크 후 조정**: 전반 급수 휴식 뒤 조정했으나 곧 바에나의 3-0(「golazo」)이 나왔다고 설명했다.
+- 후반: 「**En la segunda parte hemos seguido por esa línea, nos servía para crecer y competir bien**」 ·
+  「muy buena, con **mucha raza**」 (후반은 매우 좋았고 투지가 있었다.)
+- 🔴 **82분 PK 미선언 항의(신규 사건)**: **흐율만이 키케 살라스에게 범한 반칙**을 PK로 봤다.
+  「**No digáis que es posible, es penalti**」(가능성이라 말하지 마라, **PK다**) · 「**El penalti es clarísimo, no hay dudas**」.
+  전 주 산 마메스의 유리 퇴장 미선언과 묶어 심판 영상 공개를 요구했다.
+  ⚠️ **08-31 리포트·D+1·D+2 어디에도 이 82분 장면이 없다** — 신규 사건이며, **흐율만이 당사자**다(아래 덴마크어 절과 연결).
+- 「**Esto va a ser largo y hay que seguir**」 (이건 길게 갈 일이고 계속 가야 한다.)
+
+⚠️ **이적 맥락 1건**: 감독이 **오소(Oso)의 스트라스부르 이적**에 불만을 표하며 「대체가 쉽지 않다」고 했다.
+⭐ **스트라스부르는 BlueCo(첼시 소유주) 구단**이다 — 팀 축이 다르므로 이 리포트에서는 **기록만 한다**(불변규칙 7).
+
+---
+
+### 🔴 「20 대 10」 — 감독의 슈팅 수 주장을 우리 실측으로 검증했다. **맞다**
+
+> 「**en tiros creo que hemos tirado 20 veces y ellos 10**」 (슈팅은 우리가 20번, 그들이 10번 쐈다고 본다.)
+
+| 항목 | 감독 주장 | **우리 실측**(`team_match_stats` event 16416316) | 판정 |
+|---|---|---|---|
+| 세비야 슈팅 | **20** | **20** | ✅ 정확 일치 |
+| ATM 슈팅 | 10 | **12** | ⚠️ ±2 (감독 구두 추정, 「creo que」) |
+| 유효슛 | — | **5 : 5** (동률) | — |
+| 빅찬스 | — | ATM 2 : SEV 1 | — |
+| **xG** | — | **ATM 0.93 : SEV 0.90** | 🔴 **사실상 동률** |
+
+⇒ ⭐⭐ **상대 감독이 자기 팀 슈팅 우위를 정확히 기억하고 있었고, 그 기억이 우리 원천과 일치한다.**
+
+---
+
+### ⭐⭐ 추적 종결 판정 — 대상 판정 4「바에나 falso nueve」 + 「ATM은 xG가 결과 예측력을 갖지 못한다」
+
+**⑴ 「바에나 falso nueve」 → ✅ 유지. 3일치 자료로 오히려 강화됐고, 서술이 정밀해졌다.**
+
+| 회차 | 판정의 형태 |
+|---|---|
+| 08-31 | 서사만 — 「바에나가 최전방에서 2골」 |
+| D+1 | 🇪🇸 공통 서술 「falso nueve · 알바레스/쇠를로트 부재의 즉흥 해법」 + 유보 2건(마무리형 부재 · 저블록에 예측 가능) |
+| D+2 | 🇰🇷 「위치 스왑」 + 🇪🇸 자막 「**미끼(señuelos) 체계** — 바에나·이강인 교대, 침투는 측면 속도 자원」 |
+| **D+3** | 🔴 **상대 감독 1차 증언 「Baena entre líneas, nunca habían jugado así」** |
+
+⇒ **최종 서술: 「바에나 falso nueve」는 개인 역할명이 아니라 팀 메커니즘의 한 슬롯이다.**
+정확히는 **「바에나·이강인 2인이 라인 사이에서 교대로 미끼가 되어 센터백을 끌어내고, 측면 속도 자원(루크만·줄리아노·그리말도)이
+그 공간을 공격하는 체계」**이며, **상대는 이를 사전에 준비하지 못했다.**
+⚠️ **미해결로 남기는 것**: D+1의 유보 2건(⑴박스 안 rematador nato 부재 ⑵저블록 상대 예측 가능성)은
+**이 3일 안에 검증 불가능**하다 — 세비야는 저블록이 아니었고(D+2 확인), **다음 경기는 09-05 아틀레틱 클루브**로 국제휴식 뒤다.
+⇒ **추적 창 밖의 항목**이며 다음 경기 리포트로 이월한다.
+
+**⑵ 「ATM은 xG가 결과 예측력을 갖지 못한다(R2·R3 2경기 연속)」 → ⚠️ 유지하되 **서술을 좁힌다.**
+
+| 경기 | 슈팅 (ATM:상대) | **xG (ATM:상대)** | 결과 | xG 부호 ↔ 결과 부호 |
+|---|---|---|---|---|
+| **R2 비야레알 (08-23, 홈)** | **19 : 13** (우위) | **0.78 : 3.60** (−2.82) | **2-2 무** | 🔴 어긋남 |
+| **R3 세비야 (08-29, 원정)** | **12 : 20** (열세) | **0.93 : 0.90** (+0.03) | **3-1 승** | 🔴 어긋남 |
+
+🔴 ⇒ **2경기 연속으로 xG 부호와 결과 부호가 어긋난다. 그리고 슈팅 수 부호도 두 경기 모두 결과와 반대다.**
+⇒ **판정 유지.** 다만 D+3에서 **원인을 갈라 적는다** — 이는 「xG 모델이 ATM에서 틀린다」가 아니라
+**「ATM이 xG를 크게 초과 달성(overperform)한다」**이다. 세비야전 **xG 0.93으로 3골**(+2.07)이 그 실체다.
+⚠️ **표본 2이고, 초과달성은 회귀(regression)하는 지표다** — **「예측력이 없다」로 일반화하면 안 되고,
+「현재 2경기 연속 초과달성 중이며 이 상태가 지속되는지가 관찰 대상」까지만 말할 수 있다.**
+🔴 **게임 구현 함의**: `prescriptions`를 **xG 기반으로 조정하지 말라**는 뜻이다 —
+현재 ATM의 득점은 **찬스 양이 아니라 마무리 질**에서 나온다(D+2의 「골밖/박스밖」 3번째 골, 「golazo」 평가).
+
+---
+
+### 🇩🇰 D+2 항목 1 해소 — 덴마크어 흐율만. **감독 1차 평가를 확보했다**
+
+D+2가 「흐율만이 지목됐다」며 최하위에서 **D+3으로 상향**한 항목이다. **닫는다.**
+
+⭐⭐ **시메오네의 흐율만 평가 (2026-08-30)** —
+[ElDesmarque 「El mensaje de Simeone a Hjulmand y Álex Baena…」](https://www.eldesmarque.com/futbol/liga-1a-division/20260830/simeone-mensaje-hjulmand-alex-baena-atletico-madrid_18_020046916.html)
+
+> 「**Equilibrio, sobre todo.** Viene de un torneo que se juega más lento, que no tiene una velocidad como el
+> español o el inglés. Está intentando de a poco **ganar seguridad y velocidad**, sobre todo en su juego.」
+> (**무엇보다 균형이다.** 그는 더 느리게 치러지는 리그에서 왔고, 스페인이나 잉글랜드 같은 속도가 아니다.
+> 조금씩 **안정감과 속도를 얻으려 하고 있다.**)
+> 「**Tiene buen pase entre líneas, es fuerte de cabeza** … necesitamos de él y **le vamos a exigir** porque
+> tiene condiciones para poder ayudarnos.」
+> (**라인 사이 패스가 좋고 공중볼에 강하다** … 그가 필요하고 **요구할 것이다**, 우리를 도울 조건을 갖췄기 때문이다.)
+
+⇒ ⭐ **D+2 자막의 「흐율만 = 더 위치적인 피벗(el pivote más posicional)」 규정과 감독 평가가 정합한다** —
+감독이 첫 단어로 꼽은 것이 「equilibrio(균형)」다. **속도 적응이 미완이라는 것은 감독 본인의 진단**이다.
+⚠️ **스포르팅(포르투갈 리그) → 라리가 템포 적응**이 명시적 과제로 등재됐다 — **`player_duties` 갱신 후보**이며
+「위치적 피벗 · 라인 사이 패스 · 공중볼 강점 / 속도 적응 미완」이 그 내용이다. **표본 1경기이므로 specific_match로만.**
+
+🔴 **같은 회견에서 바에나에 대한 결정적 맥락 1건**:
+> 「Evidentemente, ese estímulo y ese impacto que le dio a su corazón y a su cabeza de **haber ganado el Mundial**…」
+> (분명히 **월드컵을 우승한 것**이 그의 마음과 머리에 준 자극과 충격이…)
+
+⇒ ⭐⭐ **바에나는 2026 월드컵 우승자다.** 시메오네가 현재 폼의 원인으로 **직접 지목**했다.
+「no hace falta hablar mucho, **las cosas se ven**」(많이 말할 필요 없다, **보이는 그대로다**).
+⚠️ **이는 전술 구조가 아니라 컨디션·심리 요인**이므로 **`prescriptions`의 근거로 쓰지 않는다.**
+다만 **「즉흥 해법이 brillantemente 작동한 이유」의 일부**로 기록한다.
+⚠️ 08-27 루턴전 리포트 D+2가 기록한 **바르코 야유 사건도 같은 월드컵 기원**이다 —
+2026 월드컵이 이 시즌 서사의 공통 배경으로 반복 등장한다.
+
+**흐율만 실측 대조 (⚠️ 제공사 편차, obs#378 규약대로 미해결 등재하지 않음)**
+
+| 출처 | 평점 | 출전 |
+|---|---|---|
+| Opta/WhoScored (D+1) | **7.15** · 터치 64 | D+1은 **91분 교체**로 기록 |
+| FotMob | 7.5 | **85분** |
+| SofaScore | 7.3 | — |
+
+⚠️ **출전 시간 충돌 1건이 새로 생겼다 — 85분 ↔ 91분.** D+1의 「91분」은 Opta 포메이션 블록(91분에 2개)에서
+파생한 값이고, FotMob은 85분으로 적는다. **어느 쪽도 이 리포트의 결론을 바꾸지 않으므로 병기만 하고 닫는다.**
+⚠️ 그리고 **82분 PK 논란의 당사자가 흐율만**이므로 그는 **최소 82분까지는 뛰었다** — 두 값 모두와 정합한다.
+
+### 다국어 커버리지 (D+3 회차)
+
+| 언어 | 시도한 검색어 | 결과 |
+|---|---|---|
+| 🇪🇸 **스페인어** | `Sevilla 1-3 Atlético Almeyda rueda de prensa … Estadio Deportivo` → **감독명 오류 발견** → `"Luis García Plaza" rueda de prensa Sevilla 1-3 Atlético 29 agosto 2026` · `"Luis García Plaza" Sevilla FC entrenador 2026/27` | 🔴🔴🔴 **이 회차 최대 수확** — 감독명 정정 · **세비야 1차 증언 확보(3회차 결손 해소)** · 82분 PK 논란 신규 · 시메오네 흐율만/바에나 평가 |
+| 🇩🇰 **덴마크어** | `Hjulmand Atlético Madrid Sevilla dansk analyse august 2026 Simeone` | ⚠️ **덴마크 매체 고유 분석 0건** — 반환된 것은 전부 스페인어 원문의 덴마크어 요약과 이적 배경(스포르팅 €40m, 2031년까지, Gabi 비교)이다. ⭐ **다만 이 경로로 시메오네의 흐율만 평가 원문에 도달했다** — 언어권 자체의 부가가치는 없지만 **검색 경로로서는 성공**이다. ⇒ **덴마크어는 종결** |
+| 🇰🇷 **한국어** | 미실행 | D+2가 이강인 축을 닫았다. **신규 검색 가치 없음**(다음 경기 전까지 신규 서사 없음) |
+| 🇮🇹 **이탈리아어**·🇵🇹 **포르투갈어** | 미실행 | D+1·D+2의 종결 사유 유지 |
+
+### ⛔ 미해결로 닫는 항목 (무엇을, 왜)
+
+1. ⏳ **바에나 거짓9번의 저블록 조건부성** — **추적 창 안에서 검증 불가능**. 세비야는 저블록이 아니었고
+   (자막 「동굴에서 나와 압박하려 할 때 마법이 일어났다」), 다음 경기는 **09-05 아틀레틱 클루브**로 국제휴식 뒤다.
+   ⇒ **다음 경기 리포트로 이월.** 게임 구현 직결 항목이므로 `st_false9` 처방은 **그때까지 변경하지 않는다.**
+2. ⏳ **미끼-침투 교대 체계의 재현성** — 표본 1. 위와 같은 사유로 이월.
+   ⭐ **핵심 조건**: 알바레스·쇠를로트 복귀 시 체계가 유지되는지. 시메오네는 알바레스를 「**un proceso personal**」로 규정했다(ESPN).
+3. ⚠️ **흐율만 출전 시간 85분 ↔ 91분** — 결론에 영향 없어 **병기 상태로 닫는다.**
+4. ⛔ **덴마크 매체 고유 분석** — 0건으로 종결. 흐율만 서사는 스페인어권이 상한이다.
+5. 🔴 **`transfer_ledger`에 ATM 26/27 영입이 한 건도 없다** — 아래 「원장 결손」 절 참조. **스키마가 아니라 적재 결손**이다.
+
+### 🔴 원장 결손 — `players`의 합류 시점 필드 문제를 판정한다 (스키마 변경 없음, 기록만)
+
+**사실 확인**
+- `players` 스키마에 `joined_at`류 필드는 **없다**(id·name·name_kr·sofascore_id·sofifa_id·birth_year·
+  primary_position·notes·fotmob_id·nationality·understat_id·positions_alt).
+  ATM 영입 4명의 `notes`에 있는 `[2026-08-20]`은 **우리 수집일**이지 합류 시점이 아니다.
+- 합류 시점 원장은 **`players`가 아니라 `transfer_ledger`**가 맡는 구조다(`window` 컬럼 = '2026-summer').
+- 🔴 **그런데 `transfer_ledger`의 ATM 2026-summer에 영입은 「쿠티 로메로 · 조나단 데이비드(임대)」 2건뿐이다.**
+  **루크만·푸빌·한츠코(Dávid Hancko)·바에나·흐율만 5명이 한 행도 없다.**
+
+**⇒ 판정: 이것은 스키마 결함이 아니라 우선적으로 「적재 결손」이다. 스키마를 바꿔도 5명은 여전히 원장에 없다.**
+
+**권고 (실행하지 않음 — 판단만 기록)**
+1. **먼저 적재**: ATM 26/27 영입 5건을 `transfer_ledger`에 넣는다. 흐율만은 이 회차에 근거를 확보했다
+   (**스포르팅 CP → €40m · 2031-06-30까지**). 나머지 4명은 별도 수집이 필요하다.
+2. **그 다음 스키마**: `players.joined_at` 신설은 **권하지 않는다** — 사람은 여러 번 이적하므로 1:1 컬럼은
+   구조적으로 틀리다. 대신 **`transfer_ledger`에 ⑴`deal_date TEXT` ⑵`player_id INTEGER REFERENCES players(id)`**
+   두 컬럼을 더하는 것이 옳다.
+   - `deal_date`가 필요한 이유: `window`는 창 단위라 **「8월 초 합류」와 「이적창 마감일 합류」를 구분하지 못한다.**
+     실제로 이 구분이 판정을 바꾼 사례가 있다 — 바르코의 루턴전 데뷔(08-27)는 8월 초 합류여서 가능했다.
+   - `player_id`가 필요한 이유: 현재 `label`이 「쿠티 로메로 (Tottenham)」 같은 **산문 문자열**이라
+     **불변규칙 6(라벨 문자열 조인 금지)에 정면으로 걸린다.** 지금은 사람 단위 조인이 아예 불가능하다.
+3. ⚠️ **이 회차에서는 아무것도 실행하지 않았다** — 스케줄 작업 지시가 「기록만」이고, 스키마 변경은
+   4팀 전체 원장에 영향을 주므로 대화 세션에서 결정할 사안이다.

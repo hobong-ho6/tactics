@@ -701,3 +701,161 @@ much more intense, much quicker on the ball with more sense of urgency」.
 2. ⭐ **프림퐁의 스코어 조건부 전진이 1경기 특성인지 이라올라 모델의 상수인지** — 뉴캐슬전(08-23) 이벤트로
    같은 국면 분해를 돌리면 **표본 2**가 된다. 방법은 위 ⑴~⑶과 동일.
 3. ⭐ **자케 +17.4의 성격** — 센터백의 전진이 지시인지 개인 판단인지. 자케는 76:02에 교체아웃(→아라우호)됐다.
+
+## D+3 추적 (2026-09-03) — 추적 종결
+
+> match-watch §2-1a 「경기 후 3일 추적」 **마지막 회차**. **08-31·D+1·D+2 절은 수정하지 않는다**(불변규칙 2·3).
+
+### 🔴🔴 D+2 항목 1 해소 — **PL 라운드 라벨은 「R3」이 아니라 「R2」다. 확정**
+
+D+2가 「두 해석이 모두 살아 있다: ⓐ라벨 오기 ⓑR1 연기」로 남긴 항목이다. **ⓐ가 맞다. ⓑ는 배제된다.**
+
+결정적 검사는 D+2가 지목한 그대로 **PL 공식 MW1 fixture 목록**이었다. 2026/27 프리미어리그 **매치위크 1은
+2026-08-21(금)~08-24(월)**이고 — 2026 FIFA 월드컵 때문에 통상보다 **1주 밀렸다** —
+그 안에 **우리 대상 경기 3건이 전부 들어 있다**:
+
+| MW1 일정 | 경기 |
+|---|---|
+| 08-23 (일) | **브라이턴 vs 아스톤 빌라** (= `matches` id 86, 우리 라벨 `Round 1` ✅) |
+| 08-23 (일) | **뉴캐슬 vs 리버풀** (= `matches` id 87, 우리 라벨 `Round 1` ✅) |
+| 08-24 (월) | **풀럼 vs 첼시** (= `matches` id 89 — MW1 마지막 경기) |
+
+⇒ 🔴 **따라서 08-29 리버풀-포레스트 · 08-30 첼시-브라이턴 · 08-31 빌라-아스날은 전부 매치위크 2다.**
+출처: [OneFootball 「Premier League opening weekend 2026/27」](https://onefootball.com/en/news/premier-league-opening-weekend-202627-fixtures-in-full-kick-off-times-and-tv-channels-43295457) ·
+[Wikipedia 2026–27 Premier League](https://en.wikipedia.org/wiki/2026%E2%80%9327_Premier_League) ·
+[Sunday Guardian 「Matchweek 1: Full Schedule」](https://sundayguardianlive.com/sports/premier-league-2026-27-matchweek-1-full-schedule-and-five-biggest-fixtures-to-watch-on-epl-opening-weekend-254453/)
+
+✅ **D+2가 제시한 방증 3개가 전부 이 결론과 맞는다**: ⑴`matches`에 두 팀 PL 경기가 2건뿐 ⑵두 팀 기록 서술이
+모두 「첫 두 경기」(알론소 7골 = 풀럼 3 + 브라이턴 4 · 리버풀 「첫 두 리그 경기 무승」) ⑶ATM은 라리가 J3 정합.
+⚠️ **`matches` 테이블 자체는 틀리지 않았다** — id 86·87의 `stage`가 `Round 1`로 정확하다.
+**틀린 것은 리포트 헤더의 서술뿐**이다(이 리포트 §1 「PL R3」 · 첼시-브라이턴 리포트 §1 「프리미어리그 R3」).
+⇒ **불변규칙 2·「당일 절 불수정」 관례에 따라 08-31 헤더는 고치지 않고 이 절에 정정을 기록한다.** → obs#431
+🔴 ⇒ **다음 경기 리포트부터 라운드 라벨을 `matches.stage`에서 가져오고 손으로 적지 않는다.**
+
+---
+
+### ⭐⭐ D+2 항목 2 진전 — 프림퐁의 스코어 조건부 전진은 **1경기 특성이 아니다. 서사 층에서 표본 2가 됐다**
+
+D+2는 「뉴캐슬전(08-23) 이벤트로 같은 국면 분해를 돌리면 표본 2가 된다」를 넘겼다.
+⚠️ **좌표 검증은 이 회차에 하지 못했다**(사유는 아래 미해결 절). **대신 서사 층에서 독립 확증 2건을 얻었다.**
+
+⭐⭐ [**VAVEL** 「Four goals in two games: Liverpool's defensive struggles under Iraola」(2026-08-30, Luca Crane)](https://www.vavel.com/en/football/2026/08/30/liverpool-fc/1269648-four-goals-in-two-games-liverpool-s-defensive-struggles.html)
+— **2경기 4실점을 하나의 구조로 묶은 첫 소스다.**
+
+> 「(4실점이) **all coming from transition moments**」
+> 「both **Frimpong and Kerkez struggling in Iraola's system** and leaving the Reds vulnerable」
+> 🔴 (포레스트 선제골 상황의 프림퐁) 「**he was nowhere to be found, standing closer to the halfway line**」
+> 🔴 「**The lack of a player who sits in front of the defence** leaves Liverpool's back line more vulnerable in transition」
+
+🔴🔴 ⇒ **「하프라인 근처에 서 있어 아무 데도 없었다」는 D+2의 좌표 실측(프림퐁 뒤짐 국면 x=63.1, Δ+19.1)의
+서사 판본이다.** 두 소스가 **서로를 모르고 같은 결론에 도달했다.**
+⇒ **D+2의 종합 판정(「보호를 무너뜨린 것은 피벗 쌍이 아니라 프림퐁과 자케다」)이 D+3에서 강화된다.**
+이제 독립 근거는 **6건**이다 — D+2의 4건(Fiffa Pundit · Yahoo · Anfield Index · 감독의 교체 처방) + VAVEL + 아래 ESPN.
+
+⭐ **ESPN 평점이 이를 수치로 확인한다** — [ESPN Player Ratings](https://www.espn.com/soccer/story/_/id/49760592/liverpool-vs-nottingham-forest-player-ratings-andoni-iraola-premier-league-alexander-isak-victor-munoz):
+**프림퐁 4/10**(⑴선제골 때 위치 이탈 ⑵포레스트의 이득 대부분이 그의 쪽에서 나왔다 ⑶불필요한 오프사이드로
+비르츠 골이 취소됐다). ⭐ **자케는 SI 8.1**로 「강하고 호전적이며 배급이 정확」 평가다.
+⇒ 🔴 **자케 평가는 D+2의 「자케 +17.4 = rest-defense 마지막 층이 올라갔다」와 부호가 반대다** —
+**개인 경기력은 최고였고 위치는 위험했다**는 뜻이며, 이는 아래 「자케 항목」의 성격을 규정한다.
+⭐ **부수 수치**: 양 풀백 합계 **크로스 6회 시도 0회 성공**. ⇒ 전진의 편익조차 없었다.
+
+**⭐ 콘테 부재라는 구조적 배경 1건 (신규)**: **코나테는 2026년 여름 레알 마드리드로 이적**했고
+(1년 전 알렉산더-아널드에 이은 2번째), **자케가 그 대체로 영입된 선수**다 —
+「좋은 볼 전진과 **넓은 공간을 수비하는 능력**이 이라올라의 접근에 맞는다」(ESPN).
+⇒ ⭐⭐ **자케의 높은 위치는 개인 판단이 아니라 영입 사유 자체일 가능성이 크다.** 「넓은 공간을 수비하는 CB」는
+**높은 라인을 전제하는 프로필**이다. ⇒ **D+2 항목 3(「자케 +17.4는 지시인가 개인 판단인가」)의 답이
+「지시(=영입 설계)」쪽으로 기운다.** ⚠️ 단 이는 영입 논리이지 이 경기 지시의 직접 증거가 아니다 — **MEDIUM으로 둔다.**
+
+---
+
+### ⭐⭐ 상대팀(포레스트) 관점 — 글라스너 축어 2건 신규. **실점 구조를 상대가 「같은 채널·같은 실수」로 규정한다**
+
+D+1은 글라스너의 「We opened the middle」(리버풀 2골의 구조)를 확보했다. **D+3에 반대 방향 — 포레스트 2골 쪽 —
+과 체력 축어를 얻었다.** [VAVEL 「Glasner: 'We all have the same feeling, proud of the performance'」(2026-08-29)](https://www.vavel.com/en/football/2026/08/29/premier-league/1269540-glasner-we-all-have-the-same-feeling-proud-of-the-performance.html) ·
+[TribalFootball](https://www.tribalfootball.com/article/glasner-rues-forest-s-missed-chance-after-liverpool-draw-05e6b633-dbe9-4ec9-9c6b-6f8e2cae4e05) ·
+[Goal.com UK](https://www.goal.com/en-gb/lists/oliver-glasner-nottingham-forest-signings-liverpool-draw-premier-league/blt5327475d312c5422)
+
+🔴🔴 **축어 ① — 실점 구조 자인**
+> 「Leading twice, creating so many chances, but on the other side we conceded **two goals more or less in the
+> same way through the same channel** and **twice it was the same mistake**.」
+> (두 번 앞섰고 그렇게 많은 기회를 만들었는데, 반대쪽에서 **두 골을 거의 같은 방식으로 같은 채널을 통해** 내줬고
+> **두 번 다 같은 실수**였다.)
+
+⇒ ⭐⭐ **리버풀 2골(이삭 60' · 무뇨스 82')이 「같은 채널·같은 실수」였다는 상대 감독의 특정이다.**
+D+1의 「We opened the middle and we know Liverpool always tries to pass into these gaps」와 합치면
+**그 채널은 중앙 간격**이다. ⇒ **리버풀 득점 경로가 상대 증언으로 2중 확정된다.**
+⚠️ **채널을 좌표로 특정하지는 못했다** — 「중앙」이라는 감독 표현까지가 상한이다.
+
+🔴 **축어 ② — 체력 임계점. 이게 §7 판정에 직접 걸린다**
+> 체력과 수비 집중력을 문제로 지목하며, **「60~65분 이후 수준이 떨어진다」**고 했다.
+> 함께 붙인 유보: 「6~7주밖에 함께하지 않아 아무것도 완전히 자리 잡지 않았다」(글라스너 신임 감독).
+
+🔴🔴 ⇒ **리버풀의 2골은 60분과 82분에 나왔다 — 상대가 자인한 체력 저하 구간 안에 전부 들어간다.**
+⇒ ⭐⭐ **§7의 「이라올라 모델의 비용은 다 내고 편익은 못 받았다」 판정이 여기서 더 나빠진다.**
+받은 편익(2골)조차 **자기 구조의 산출이 아니라 상대의 체력 저하 창(窓)에서 나왔을 가능성**이 있다.
+⚠️ **「전부 상대 탓」으로 뒤집으면 안 된다** — D+2가 확보한 이라올라 회견 축어(「**후반에 많이 개선됐다 — 훨씬
+강렬하고 볼을 더 빠르게 다뤘다**」)와 PPDA 전반 7.61 → 후반 4.30이 **리버풀 쪽 변화도 실재**했음을 보여 준다.
+⇒ **정확한 서술: 「후반 개선은 양쪽 요인의 합이며, 리버풀 단독 산출로 귀속할 수 없다.」**
+
+⭐ **포레스트 측 맥락 (D+1 보강)**
+- **점유 70:30 · 빅찬스 1:5로 포레스트 우위** — 「교과서적인 원정 역습 경기력」.
+- 글라스너: 팀이 「**proud of the performance**」이며 동점 허용 후 반응이 자랑스럽다, 이기지 못한 것은 「a little bit disappointed」.
+- 이적: BBC MOTD에 「**딜랩 하나 들어왔고 하나, 잘하면 둘 더**」를 확신한다고 말했다. **딜랩은 첼시에서 £50m 이적생**이고
+  교체로 들어와 활발했다 — ⚠️ **그 딜랩의 빠른 스로인이 PK를 만들었다**(D+2 ⑵ 확정).
+- 기록: 포레스트의 **안필드 무패가 3시즌으로 연장**됐다. 2026년 한 해 PL 골 관여는 **브루노 페르난데스 다음이 깁스-화이트**(13골).
+
+---
+
+### ⭐ 추적 종결 판정 — 대상 판정 3「이라올라 모델의 비용은 다 내고 편익은 못 받았다」
+
+**⇒ ✅ 유지한다. 3일치 자료가 판정을 뒤집지 않고 오히려 3개 축에서 강화했다. 단 반대 증거 1건을 병기한다.**
+
+| 축 | D+3에 추가된 근거 |
+|---|---|
+| **비용(수비 노출)** | VAVEL 「4실점 전부 전환 국면」·「수비 앞 6번 부재」 · ESPN 프림퐁 4/10 · 양 풀백 크로스 0/6 |
+| **편익 미수령** | 점유 70% ↔ **빅찬스 1:5** · xG 1.61:2.30 · 「리그 첫 두 경기 무승 = 14년 만에 두 번째」 |
+| **편익의 귀속마저 약하다** | 🔴 글라스너 「60~65분 이후 수준이 떨어진다」 ↔ 리버풀 2골이 60'·82' |
+| ⚠️ **반대 증거 1건** | 🔴 **이라올라는 PL 20경기 연속 무패에 도달한 12번째 감독이며, 두 클럽에 걸쳐 이룬 첫 감독이다**(본머스 18 + 리버풀 2) |
+
+🔴 **반대 증거를 어떻게 다룰지 명시한다**: 「20경기 무패」는 **18경기가 본머스 것**이므로 **불변규칙 7에 걸린다** —
+**리버풀 체제 지표로 쓸 수 없다.** 리버풀 부분은 **2경기 무패 = 2무**이고 이는 「무패」와 「무승」이 같은 사실이다.
+⇒ **판정은 유지되지만, 「비용을 다 냈다」는 표현이 「모델이 실패했다」로 읽히지 않게 해야 한다.**
+premierleague.com Alex Keble의 「본머스 점유 55% 초과 시 승률 7.7%」와 이 경기(69.5%)는 **여전히 같은 방향**이고,
+**표본 2경기로 모델 판정을 내리지 않는다**는 08-31의 유보가 그대로 유효하다.
+
+⚠️ **⛔ 폐기한 소스 1건 (§2-0 화석 3번째)**: SI/FanNation 「**Liverpool Win Thriller** Against Nottingham Forest
+After Scoring **Three Goals From Set-Pieces**」 — 이 경기는 **2-2 무승부이고 세트피스 득점이 없다**(D+2가 Opta로
+`RegularPlay`·`Penalty` 확정). **다른 경기 기사다. 인용 금지.**
+⇒ Goal.com 독일어판 2건에 이어 **이 경기 검색 결과의 3번째 화석**이다.
+
+### 다국어 커버리지 (D+3 회차)
+
+| 언어 | 시도한 검색어 | 결과 |
+|---|---|---|
+| **영어** | `Liverpool Nottingham Forest 2-2 Iraola tactical analysis September 2026 Frimpong Konaté` · `Nottingham Forest Glasner Liverpool 2-2 reaction analysis September 2026 Forest perspective` · `Premier League 2026/27 opening weekend fixtures … matchweek 1` | ⭐⭐ **PL R2 확정 · 글라스너 축어 2건 · VAVEL 수비 구조 · 코나테 이적 배경 · ESPN 프림퐁 4/10** |
+| **스페인어** | 미실행 | D+2가 「이라올라는 영어로 회견 · ES 고유 분석 0건」으로 **종결**. 유지 |
+| **독일어** | 미실행 | D+2가 kicker Einzelkritik 0건으로 **2회차 종결** + Goal.com DE 배제 등재. 유지 |
+| **헝가리어** | 미실행 | D+2가 「기존 HU 소스의 71분이 옳았다」로 닫았다. 신규 검색 불필요 |
+| **네덜란드어** | 미실행 | D+1·D+2 종결 사유 유지(각포 70:41 교체아웃) |
+
+### ⛔ 미해결로 닫는 항목 (무엇을, 왜)
+
+1. 🔴 **프림퐁 스코어 조건부 전진의 좌표 표본 2 — 미완으로 닫는다.**
+   **무엇**: 뉴캐슬전(08-23, event 5795371)에 D+2와 같은 국면별 평균 x 분해를 돌리는 일.
+   **왜 못 닫았나**: ⑴ **Opta 이벤트가 저장소에 캐시돼 있지 않다** — `find`로 확인한 결과 `matchCentreData`
+   원본이나 파생 파일이 **한 건도 없다**. D+2는 WhoScored에서 라이브로 받아 세션 내에서만 썼다.
+   ⑵ 뉴캐슬전의 **WhoScored matchId를 모른다**(포레스트전은 1983560, 첼시-브라이턴 1983561, 루턴 2020327).
+   ⑶ 재수집에는 브라우저 세션이 필요하고 **⚠️파싱은 중괄호 균형 스캔이 필수**(1.1MB 본문에서 정규식은 조용히 실패).
+   ⇒ 🔴 **규약 등재**: **`matchCentreData` 원본을 세션 종료 시 저장소에 남긴다.** 남기지 않으면 다음 회차가
+   같은 수집을 반복해야 하고, 이번처럼 **3일 창이 닫히면 검증이 영구 미완이 된다.** → obs#432
+   ⚠️ **다만 서사 층에서는 닫혔다** — VAVEL이 4실점을 하나의 구조로 묶었다(위). **결론의 방향은 확정, 정량화는 미완.**
+2. ⚠️ **자케 +17.4의 성격 (D+2 항목 3)** — **MEDIUM으로 닫는다.**
+   코나테 대체 영입 논리(「넓은 공간을 수비하는 능력」)가 「지시」쪽을 가리키고 SI 8.1이 개인 경기력을 지지하지만,
+   **이 경기 지시의 직접 증거는 없다.** 이라올라 회견에 자케 언급이 없다.
+3. ⚠️ **리버풀 2골의 「같은 채널」 좌표 특정** — 글라스너의 「중앙」이라는 표현까지가 상한이다. 미완.
+4. ✅ **이미 닫힌 것 (재시도 안 함)**: 선제골 기원(D+1 정정 ② — 「둘 다 맞다」) · 비르츠 평점(D+2 — obs#378로 종결) ·
+   스로인 수비 승격(D+2 — obs#410) · 소보슬러이 70:41 RB 이동(D+2 정정) · kicker(2회 종결) ·
+   ES 이라올라 회견(종결) · BTL·Spielverlagerung(3회 연속 0건 구조적 부재).
+5. ✅ **PPDA — 결손이 아니다.** 스케줄 지시가 「4경기 전부 미수집(3회차 연속 결손)」으로 적었으나
+   `team_match_stats`를 조회하면 **이 경기 PPDA(5.76 / 18.86)가 들어 있다.** D+1이 이미 정정한 항목이며
+   **지시문이 낡았다.** ⇒ obs#381의 규약(「미수집을 적기 전에 테이블을 조회할 것」)이 **3회 연속 필요했다.**
