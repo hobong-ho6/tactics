@@ -51860,7 +51860,7 @@
      "y": 64
     },
     {
-     "confidence": "measured(match-only)",
+     "confidence": "measured(match-only) | [2026-09-03 추가] 역할 코드 확정도: HIGH(실측 argmax, 2위와 Δ0.30). ⚠️ 단 「기능 판정」과는 갈린다 — 이 경기에서의 온볼 기능은 홀드업·전환 아웃렛이며(player_duties#199 D+2 갱신), 이는 PlayStyle·스탯 층으로 읽어야 한다. 이 프리셋의 Build-Up 포커스는 「짧은 관여」를 늘리는 축인데 실제 관여는 롱 전환·운반이었으므로 포커스 재현도 부분적임을 인지할 것 — 포커스 대안(Attack .622)은 Δ0.10으로 노이즈 밖이라 바꾸지 않는다.",
      "fit_sim": 0.723,
      "focus": "Build-Up",
      "game_version": "FC26",
@@ -51869,7 +51869,7 @@
      "name_en": "Nicolas Jackson",
      "player_id": 76,
      "pos_label": "ST",
-     "rationale": "4-2-3-1 Wide ST 슬롯; Opta 단일 경기 map25·hp24 커널 argmax.",
+     "rationale": "4-2-3-1 Wide ST 슬롯; Opta 단일 경기 map25·hp24 커널 argmax.\n\n[2026-09-03 추가 — D+2 판정 역전에도 역할 코드를 유지하는 근거] ① 이 경기 그리드(001031X611040001030100000, 71분·hp24)를 AVL ST 슬롯(x=50) 11개 역할·포커스 전부에 재계산하면 st_false9/Build-Up .723 → st_false9/Attack .622 → st_advanced/Support .423 → st_target/Balanced .297 순이다. 채널러너·홀드업 계열과의 격차 Δ0.30은 docs/20 ①의 노이즈 구간(Δ≤0.05)을 6배 넘어, 서사가 타이브레이커로 개입할 여지가 없다. ② D+2가 확보한 근거(홀드업·플릭온·채널 침투·40~50야드 운반 — Coaches' Voice·Bains Analysis)는 전부 온볼 기능이고 FC26 Role은 오프더볼(위치) 층이다(docs/20·22). 위치 실측이 가리키는 것은 명백히 라인 사이 하강이며 이는 역할 코드가 재현해야 할 대상이다. ③ 하강은 39% 점유 딥블록의 국면 함수로 진단됐다(obs D+2). 경기 전용 프리셋의 임무는 그 국면까지 포함해 이 경기를 재현하는 것이므로, 무공 4-4-2의 두 번째 스트라이커로 내려온 잭슨을 재현하려면 false9가 맞다. ④ 「잭슨이 어떤 선수인가」(시즌 정본 st_false9 vs st_advanced/홀드업)는 별개 질문이며 09-05 헐시티전(점유 우세 예상)이 판별 경기다 — 그 결과가 무엇이든 이 경기 프리셋은 이 경기의 발자국을 따라 st_false9로 남는다(obs#348 원칙: 개별 경기 구현 ↔ 시즌 정본 누적의 분리).",
      "replaced_player_id": null,
      "role_id": "st_false9",
      "role_name": "폴스 나인",
