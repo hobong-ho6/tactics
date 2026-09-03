@@ -295,7 +295,6 @@
 
 ## 참고 문서
 
-- `docs/20-fc-game-system.md`: 슬롯 x, 역할·포커스, 게임 구현 규칙.
-- `docs/30-data-rules.md`: 수집, 좌표, 그리드, 표본·결손 규칙.
+- `docs/20-fc-game-system.md`: 슬롯 x, 역할·포커스, 게임 구현 규칙. · `docs/30-data-rules.md`: 수집·좌표·표본·결손 규칙.
 - `docs/40-pipeline.md`: DB/export/dump/git 파이프라인. · `docs/50-transfer-policy.md`: 이적 등급·보존 정책.
 - `docs/60-research-methods.md`: 새 축 검증과 통계 기준. · `docs/22`: PlayStyles·스탯·조작(온더볼 축).
