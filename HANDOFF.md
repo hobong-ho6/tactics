@@ -222,21 +222,19 @@ FotMob 값을 `stats_json`에 보존·`opponent`/`venue` 백필) · ③④ `team
    **Infobae는 「4-3-3 de Simeone」**. obs#333(ATM 4-4-2 슬롯 신설)의 전제와 직결된다.
    ⭐ 단 실측 기하가 4-1-4-1에 더 가까워 처방을 이관하지 않은 판단은 이 충돌과 정합적이다.
 3. ⏰ **FC27 커널 미착수** — `game_roles`/`game_role_focus`/`game_role_variants`의 FC27 행이 **전부 0**.
-   fut.gg `/api/fut/roles/` 수집은 발매(09-25) 전 공개 여부가 불확실하다.
-   `core/kernel.py` EXPECTED·gates 앵커 확장은 커널 행이 생긴 뒤에만 가능.
-   ⚠️ FC27 게임스탯 잔여 결손: **고레츠카 0행**(무소속이라 fut.gg에 없다 — 결손이지 미출시 아님, obs#362) ·
-   **35속성은 완비사카·음바예 2명**(obs#364).
-4. ⏰ **`transfer_targets` 아하노르 행의 window 표기** — 「2026-summer 완전이적」이 아니라
-   **2026-summer 선계약 / 2027-07-01 등록**이다. 분리 표현할 스키마 자리가 없어 `rationale`에만 적었다.
+   fut.gg `/api/fut/roles/` 수집은 발매(09-25) 전 공개 여부 불확실. `core/kernel.py` EXPECTED·gates 앵커
+   확장은 커널 행이 생긴 뒤에만 가능. ⚠️ 게임스탯 잔여 결손: **고레츠카 0행**(무소속이라 fut.gg에 없다 —
+   결손이지 미출시 아님, obs#362) · **35속성은 완비사카·음바예 2명**(obs#364).
+4. ⏰ **`transfer_targets` 아하노르 window 표기** — 「2026-summer 완전이적」이 아니라 **2026-summer 선계약 /
+   2027-07-01 등록**. 분리 표현할 스키마 자리가 없어 `rationale`에만 적었다.
 
 ## 데이터 수집 상태와 결손
 
 - 대량 수집: `collect_fotmob_players.py` · `collect_understat_shots.py` · `collect_event.py`(이벤트 축).
-- 읽기 전용 진단: `check_fit_drift.py` · `check_side_bimodality.py` · `check_height_bimodality.py`
-  ⚠️ 셋 다 **진단만 한다** — 그리드 재적재·`pos_only`·처방 변경은 사람이 판단한다.
-  ⭐ **`test_g13_regression.py`**(G13에 결함 4종을 합성 주입해 검출 확인 + 클럽월드컵 오탐 검사) ·
-  ⭐ **`db_diff.py`**(스냅샷 대비 행 단위 대조 — **NOT NULL→NULL 전이를 따로 센다**.
-  `--snapshot`으로 기준을 뜬다. 게이트도 FK 검사도 「값이 조용히 지워졌다」는 못 잡는다).
+- 읽기 전용 진단: `check_fit_drift.py` · `check_side_bimodality.py` · `check_height_bimodality.py` —
+  ⚠️ 셋 다 **진단만 한다**(그리드 재적재·`pos_only`·처방 변경은 사람이 판단). ⭐ `test_g13_regression.py`
+  (결함 4종 합성 주입 + 클럽월드컵 오탐 검사) · ⭐ `db_diff.py`(스냅샷 대비 행 단위 대조 — **NOT NULL→NULL
+  전이를 따로 센다**. 게이트도 FK 검사도 「값이 조용히 지워졌다」는 못 잡는다).
 - ⛔⛔ **검색엔진 연도 혼입에 주의.** 같은 상대·같은 8월·유사 스코어의 전년도 경기는 발행일을 반드시 확인한다.
   ⭐ 2026-09-01에 **엔진 요약 자체가 오염되는 신규 유형** 확인 — 과거 시즌 사건을 현재 확정 사실로 제시한다.
   **엔진 요약은 근거로 채택 불가, 개별 URL 실물 확인만 사용.**
