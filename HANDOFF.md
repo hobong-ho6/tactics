@@ -262,14 +262,11 @@ FotMob 값을 `stats_json`에 보존·`opponent`/`venue` 백필) · ③④ `team
 6. push 전 `origin/main` 이동 여부를 다시 확인한다.
 7. 시즌 집계는 45분+·hit_points 15+만 사용하되, 경기 리포트는 짧은 교체 포함 실제 출전자 전원을 기록한다.
 8. match 전용 fit/전술은 시즌 `prescriptions`/`team_tactic_setups`에 자동 병합하지 않는다.
-9. ⚠️ **스케줄 세션(match-watch·transfer-watch)이 돈 뒤에는 `git log`와 `git status`를 함께 본다.**
-   2026-09-01에 D+1 세션이 **커밋만 하고 푸시하지 않은 채 종료**했다(obs#382) — 알아채지 못하면
-   다른 PC에서 그 작업은 존재하지 않는 것이 된다. 또 **다른 세션의 미커밋 DB 변경이 보이면
-   `db/tactics.db`를 내 커밋에서 빼라** — 그쪽이 아직 export·dump를 돌리지 않았다면
-   dump·site/data가 .db와 어긋난다(불변규칙 5 위반).
-10. **파괴적 정리 전에는 `python3 scripts/db_diff.py --snapshot`으로 스냅샷을 뜬다** — 2026-09-01 정리 4연쇄에서
-   스냅샷 대비 행 단위 대조가 **「새로 NULL 된 행 0」을 증명하는 유일한 수단**이었다
-   (`db_diff.py <스냅샷>`이 NOT NULL→NULL 전이를 따로 센다).
+9. ⚠️ **스케줄 세션이 돈 뒤에는 `git log`와 `git status`를 함께 본다.** 2026-09-01에 D+1 세션이 **커밋만 하고
+   푸시하지 않은 채 종료**했다(obs#382). 또 **다른 세션의 미커밋 DB 변경이 보이면 `db/tactics.db`를 내
+   커밋에서 빼라** — 그쪽이 export·dump를 안 돌렸다면 dump·site/data가 어긋난다(불변규칙 5 위반).
+10. **파괴적 정리 전에는 `python3 scripts/db_diff.py --snapshot`으로 스냅샷을 뜬다** — 09-01 정리 4연쇄에서
+   스냅샷 대비 행 단위 대조가 **「새로 NULL 된 행 0」을 증명하는 유일한 수단**이었다.
 11. HANDOFF는 300줄 이하로 유지한다.
 
 ## 핵심 방법론
