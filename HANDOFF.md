@@ -196,8 +196,8 @@ FotMob 값을 `stats_json`에 보존·`opponent`/`venue` 백필) · ③④ `team
 
 ## 다음 할 일
 
-1. ⏰ **P1 · `match-watch-avl-arsenal-followup-d3` 삭제** — 일반 세션에서 `delete_scheduled_task`(자기를 띄운
-   세션에서는 거부). 소진된 일회성이라 방치해도 무해하지만 목록이 지저분해진다.
+1. ✅ ~~`match-watch-avl-arsenal-followup-d3` 삭제~~ — **09-04 오후 일반 세션에서 `delete_scheduled_task` 완료**(사용자
+   승인). SKILL.md는 디스크에 남아 있다. 활성 일회성은 이제 **헐시티 4건**만이다.
 2. **P1 · PL Round 4** — AVL 헐시티전(09-05)은 **자동 4건 예약됨**(위 「자동화」). CHE·LIV·ATM R4는 전용 태스크
    없음 — 주간(09-07) 또는 `/match-watch` 수동. ⭐⭐ **헐시티전은 판별 경기**: report 30 D+2 절 끝 재검증 항목
    ⑴~⑽(잭슨 점유 우세 시 하강 재현? · 헤밍스 최종라인 핀 2경기 연속? · 스즈키 롱 배급이 약체 상대에도 유지? ·
