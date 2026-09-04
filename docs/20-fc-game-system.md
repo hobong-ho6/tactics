@@ -109,6 +109,13 @@ sqlite3 data/avl_analysis.db "SELECT focus,plus,negative FROM game_role_focus WH
 | **Support** (기본) | Wide Support, **Supports Play** | Lacks Mobility | 0.60 |
 | **Defend** (보상용) | Wide Support, **Stays Back** | **Supports Attacks** | 1.30 |
 
+> ⭐ **[2026-09-04 · migration 024] `game_role_focus.movement_kr` 신설** — 85조합 전부에 「움직임 해설」을 채웠다:
+> ⑴ EA 정의문 요지(번역) ⑵ **커널 질량으로 본 위치 경향**(자기진영/중원/전방 비율 · 터치라인/하프스페이스/중앙 열 ·
+> 깊이, 포지션군 대표 x에서 `Kernel.placed`) ⑶ ⚠️ 흔한 오독(예: `fb_att_wb`/Support = 「복귀 감소」≠「전진 강화」 ·
+> `wm_winger`/Balanced 자기진영 .12는 뱅크 불성립 · `cb_bpd`/Build-Up이 Aggressive보다 낮게 선다 · `cm_dlp`와 `dm_dlp`는
+> 같은 이름이라도 슬롯 타입에 따라 위치가 다르다). **정본은 여전히 `description`(EA 원문)** — 해설은 병기이며 커널 값이
+> 바뀌면 함께 고친다. 사이트 게임 시스템 → 역할 라이브러리에 렌더(사용자 지시, obs#443 후속).
+>
 > ⚠️ **fut.gg 소스 주의** (obs#92): ⑴ 역할 `slug`가 유일하지 않다 — **키는 `id`**.
 > ⑵ 역할 id 162(CAM Playmaker)에 **Winger 항목 2건이 오염**돼 있다.
 > ⑶ 좌/우 변형의 characteristics가 갈리는 행이 4건 있다(`side_conflict=1`).

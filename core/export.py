@@ -54,7 +54,7 @@ def export_all(db_path=None, window="2026-summer"):
         if not roles:
             continue                      # FC27 등 미수집 버전은 파일을 만들지 않는다
         focus = _rows(con, """SELECT role_id, focus, kernel25, plus, equal, negative,
-                                     ea_role_name, description
+                                     ea_role_name, description, movement_kr
                               FROM game_role_focus WHERE game_version=?
                               ORDER BY role_id, focus""", (gv,))
         variants = _rows(con, """SELECT role_id, focus, pitch_x, kernel25

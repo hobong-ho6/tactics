@@ -155,7 +155,7 @@ CREATE TABLE game_role_focus(       -- 커널 85개 — 모든 적합값의 뿌�
   plus TEXT, equal TEXT, negative TEXT,   -- JSON array — 강화/중립/희생 특성
   side_conflict INTEGER DEFAULT 0,  -- 1 = fut.gg 좌/우 변형이 서로 다른 값
   note TEXT, source TEXT,
-  kernel25 TEXT, kernel_source TEXT,
+  kernel25 TEXT, kernel_source TEXT, movement_kr TEXT,
   PRIMARY KEY(game_version, role_id, focus)
 );
 CREATE TABLE game_role_variants(    -- 위치 변형 217개 — placedMap의 실질 본체 (obs#94·#107)

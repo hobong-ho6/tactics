@@ -95,10 +95,11 @@ grp.innerHTML=groups.map(g=>`<option>${g}</option>`).join('');
 grp.addEventListener('change',renderRoles);
 function renderRoles(){
   const rs=kd.roles.filter(r=>r.position_type===grp.value);
-  document.getElementById('roles').innerHTML='<tr><th>역할</th><th>포커스</th><th>EA 정의</th><th>강화(+)</th><th>희생(−)</th></tr>'+
+  document.getElementById('roles').innerHTML='<tr><th>역할</th><th>포커스</th><th>움직임 해설 <small class="dim">— EA 정의 요지 + 커널 위치 경향(자기진영·전방·터치라인 비율) + ⚠️오독</small></th><th>EA 원문</th><th>강화(+)</th><th>희생(−)</th></tr>'+
    rs.flatMap(r=>kd.focus.filter(f=>f.role_id===r.role_id).map(f=>
-    `<tr><td><b>${r.name}</b> <small class="dim">${f.ea_role_name??r.role_id}</small></td><td>${f.focus}</td>
-     <td class="dim">${f.description??''} <small>(EA 원문 — 정의 왜곡 방지를 위해 원문 병기, 한글 전문 번역은 진행 중)</small></td><td>${_j(f.plus)}</td><td>${_j(f.negative)}</td></tr>`)).join('');
+    `<tr><td><b>${r.name}</b> <small class="dim">${f.ea_role_name??r.role_id}</small></td><td><b>${f.focus}</b></td>
+     <td style="min-width:320px">${prose(f.movement_kr??'<span class="dim">해설 미작성</span>')}</td>
+     <td class="dim" style="font-size:12px;min-width:220px">${f.description??''}</td><td>${_j(f.plus)}</td><td>${_j(f.negative)}</td></tr>`)).join('');
 }
 const TAG={'Aggressiveness':'적극성','Attack Support':'공격 지원','Attacking':'공격적','Attacking Runs':'공격 침투',
  'Build-Up Support':'빌드업 지원','Cover Side':'측면 커버','Creative':'창조적','Cut Inside':'안으로 파고듦',
