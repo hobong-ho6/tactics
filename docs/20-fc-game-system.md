@@ -114,6 +114,23 @@ sqlite3 data/avl_analysis.db "SELECT focus,plus,negative FROM game_role_focus WH
 > ⑶ 좌/우 변형의 characteristics가 갈리는 행이 4건 있다(`side_conflict=1`).
 > **설명문은 좌우 동일하고 신뢰할 수 있으니, 태그가 갈리면 설명문과 정합한 쪽을 채택한다.**
 
+### ⑨ 윙 혼잡 회피 — 풀백 전진은 같은 쪽 와이드가 결정한다 (obs#443, 2026-09-04)
+
+EA 원문 2문장(Gameplay Deep Dive): *"Tweaked Wide Mids and Fullbacks attacking Roles' positions to **avoid
+congestion in the wings**"* (FC IQ) · *"a Wingback can move forward **if there is open space in front of them**"*
+(포지셔닝). ⇒ **터치라인을 점유하는 와이드(winger·widemid/Support·wideplm) 뒤의 풀백은 올라가지 않는다** —
+버그가 아니라 설계된 충돌 회피다(사용자 인게임 체감으로 발견, EA 포럼 1차 보고와 일치).
+
+| 상황 | 풀백 | 근거 |
+|---|---|---|
+| 같은 쪽에 윙어(터치라인형) | **`fb_wingback`/Balanced** | 겹침 .553 vs att_wb/Support .816(obs#128 기하 — col0 row1~4만, 윙어 row0~1과 수직 분리) |
+| 전진 사이드(C6 = 해방 사이드) | **`fb_att_wb`** — 시즌 기본 Support, 더 올리려면 **Attack** | EA 정의: Support = 「rarely sprint back」(복귀 감소), Attack = 「push even higher」(전진 강화) |
+| 전진 사이드의 와이드 | **안쪽형**(insidefwd 「cutting inside」 / wideplm) | 풀백 앞 공간을 비워야 EA 조건이 성립 |
+
+⚠️ **`att_wb`/Support는 「덜 내려오는」 포커스지 「더 올라가는」 포커스가 아니다** — 풀백을 높이려고 Support를 주는 것은
+정의상 빗나간다. ⚠️ 양쪽 모두 att_wb는 C2(한 번에 한 쪽만, role_demands ⑵)·이 메커니즘·obs#95(반대쪽 풀백 억제) 셋을 어긴다.
+양성 대조군: CHE 08-27 루턴전 「에스테방 인사이드 → 구스토 오버랩」(두 골 모두, report 22). 효과 크기는 EA 비공개 · 인게임 A/B 미실시.
+
 ### ⑦ 미검증으로 남은 것
 
 - **라인 높이의 실효** — *"수비 라인이 오프사이드 유도 시 예전만큼 자동으로 올라가지 않는다"*.
