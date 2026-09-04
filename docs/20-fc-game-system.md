@@ -131,6 +131,15 @@ congestion in the wings**"* (FC IQ) · *"a Wingback can move forward **if there 
 정의상 빗나간다. ⚠️ 양쪽 모두 att_wb는 C2(한 번에 한 쪽만, role_demands ⑵)·이 메커니즘·obs#95(반대쪽 풀백 억제) 셋을 어긴다.
 양성 대조군: CHE 08-27 루턴전 「에스테방 인사이드 → 구스토 오버랩」(두 골 모두, report 22). 효과 크기는 EA 비공개 · 인게임 A/B 미실시.
 
+**적용 사례 (obs#444, 2026-09-04 — AVL 사이드 4칸 재점검)**
+- 가르나초 LM insidefwd/Attack .621 vs winger/Attack .771(Δ.15) — 인사이드포워드 커널은 포켓 질량 0.81로 CAM과 충돌 ⇒ 기각.
+- 마첸 wingback/B .862 vs att_wb/S .799(Δ.063, 실측 승) · 캐시 att_wb/S .898 vs wingback/B .891(Δ.007 → 숙련 fb_wingback) ·
+  맥긴 wideplm/A .761 vs widemid/S .728(Δ.033 → 숙련 wm_widemid + **RM 뱅크 0.00 vs 0.60**). 양쪽 att_wb = C2 위반.
+- **가르나초·마첸·맥긴·캐시 4인**: 사이드 교환 두 배치는 커널이 **완전 미러**(가정치) → C6·숙련으로 결정 =
+  가르나초 **RM** winger/A · 캐시 wingback/B · 마첸 LB att_wb(**Attack** — 겹침 .705 < Support .767) · 맥긴 LM wideplm/A.
+  대가: RM·LM 자기진영 0 → **뱅크 소멸**(공격 변형, 정본 대체 불가) · 마첸 레인 부분 개방(.705). 프리셋 미저장.
+- ⚠️ **obs#110 솔버 산출(우측 전진)은 obs#111 C6 하드화 이전 값** — 인용 시 순서 확인. 현 정본 = 좌측 전진.
+
 ### ⑦ 미검증으로 남은 것
 
 - **라인 높이의 실효** — *"수비 라인이 오프사이드 유도 시 예전만큼 자동으로 올라가지 않는다"*.
