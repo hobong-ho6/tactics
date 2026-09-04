@@ -10,15 +10,16 @@
 
 ## 현재 상태
 
-> **2026-09-04 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 `4022bfd`.
-> (이 문서의 갱신 커밋이 그 위에 하나 더 붙는다 — HEAD가 1커밋 앞서 있으면 정상.)
-> ✅ 워킹트리 깨끗·origin 일치. **아스날전 3일 추적 완전 종결** — report 30이 `complete`로 승격됐다.
+> **2026-09-04 KST (오후)** · PC `AD03230205ui-iMac.local` · `main` · 마지막 내용 커밋 `5266f12`.
+> (핸드오프 커밋들이 그 위에 붙는다 — HEAD가 1~2커밋 앞서 있으면 정상.)
+> ✅ 워킹트리 깨끗·origin 일치. **아스날전 3일 추적 완전 종결**(report 30 `complete`) +
+> ⭐ **FC26 「윙 혼잡 회피」 메커니즘 등재**(obs#443·444 · `game_system_changes` #9 · docs/20 **⑨**) — 아래 「09-04 ⑵」.
 
 - DB: players **200** · player_matches **4,190** · team_match_stats **66** · match_reports **30**
   (**complete 15 · draft 15**) · match_player_reports **536** · squad_entries **133** ·
   prescriptions **452** · slots **88** · match_game_setups **15** · match_player_prescriptions **244** ·
   transfer_targets **44** · transfer_outgoing **67** · player_duties **200** ·
-  player_shirt_numbers **116** · understat_player_matches **5,634** · observations **442** ·
+  player_shirt_numbers **116** · understat_player_matches **5,634** · observations **444** ·
   **teams 37** · **player_evaluations 120** · **transfer_summary 4**(migration 023).
 - 회귀: **G1~G13 전항 통과**(2026-09-04 재확인). G13은 09-01 신설 후 09-01 21시에 **⑸「클럽코드 리그충돌」**
   이 추가돼 현재 5항이다.
@@ -57,14 +58,30 @@
   ⭐ **헐시티전 4건**(09-03 신설) `match-watch-avl-hull-2026-09-05`(본수집 09-06 09:00, 경기 종료 확인 후 실행) +
   `-followup-d1/d2/d3`(09-07·08·09 11:00). ⇒ **AVL R4는 자동. CHE·LIV·ATM R4 경기는 전용 태스크 없음** —
   주간 태스크(09-07)가 잡거나 사람이 `/match-watch`로 시작한다.
-- **09-04 정리**: 아스날 팔로업 `-d1`·`-d2` **삭제 완료**. 🔴 `-d3`는 **삭제 거부로 남아 있다**(⇒「다음 할 일」1) —
-  ⭐ **자기를 띄운 스케줄 태스크는 그 세션 안에서 못 지운다.** 일회성이고 `fireAt`이 지나 재실행 위험은 없다.
-  ⇒ **규약: 자기 삭제형 일회성 태스크는 다음 세션에서 치운다**(실행 세션 내 자기 삭제는 구조적으로 불가능).
-  소진된 나머지 일회성 7건은 전부 `enabled:false`라 방치해도 무해 — 사용자가 범위를 「아스날 3건」으로 한정했다.
+- **09-04 정리 완료**: 아스날 팔로업 `-d1`·`-d2`(스케줄 세션)·`-d3`(오후 일반 세션, 사용자 승인) **전부 삭제**.
+  ⭐ **규약: 자기를 띄운 스케줄 태스크는 그 세션 안에서 못 지운다** → 자기 삭제형 일회성은 다음 세션에서 치운다.
+  소진된 나머지 일회성 7건은 전부 `enabled:false`라 방치해도 무해(사용자가 정리 범위를 「아스날 3건」으로 한정).
 
 ## 최근 작업
 
-### 2026-09-04 — 아스날전 D+3 종결 + 미확보 영역 다국어 재점검 (`573b3a0`·`4022bfd`, obs#435~442)
+### 2026-09-04 ⑵ — ⭐ FC26 윙 혼잡 회피 메커니즘 등재 · AVL 사이드 4칸 재점검 (`8f211fe`·`5266f12`, obs#443~444)
+
+- **출발점 = 사용자 인게임 체감** 「와이드미드/윙어를 두면 풀백이 높이 못 올라간다」. **EA 1차 원문이 그대로 명시**(Deep Dive,
+  verbatim 확보): 「Tweaked Wide Mids and Fullbacks attacking Roles' positions to **avoid congestion in the wings**」 ·
+  「a Wingback can move forward **if there is open space in front of them**」 ⇒ 버그가 아니라 설계된 충돌 회피. **`game_system_changes`
+  8행 어디에도 없던 누락** → #9 등재, docs/20 **⑨** 신설. ⚠️ **`fb_att_wb`/Support = 「rarely sprint back」(복귀 감소)이고
+  전진 강화는 Attack「push even higher」** — 풀백을 올리려고 Support를 주는 것은 정의상 빗나간다.
+- **짝짓기 규칙**: 윙어(터치라인형) 쪽 풀백 = `fb_wingback`/Balanced(겹침 .553 vs att_wb .816) · 전진 사이드(C6=해방 사이드)
+  풀백 = `fb_att_wb`(기본 Support, 변형 Attack) · 전진 사이드 와이드는 **측면을 비우는 안쪽형**. 양쪽 att_wb는 C2·메커니즘·
+  obs#95 셋 위반. 양성 대조군 CHE 루턴전 「에스테방 인사이드→구스토 오버랩」(report 22).
+- **4칸 판정**(obs#444): 가르나초 insidefwd .621 vs winger .771(포켓 0.81, CAM 충돌) **기각** · 캐시 Δ.007·맥긴 Δ.033은 노이즈 내라
+  **숙련**(fb_wingback·wm_widemid)이 결정 · 마첸 Δ.063은 실측 승(wingback/B) · 맥긴 wideplm/A는 **RM 뱅크 0.00**(obs#39, RM이
+  유일한 뱅크 칸). **가르나초·마첸·맥긴·캐시 4인** = 가르나초 **RM** winger/A · 캐시 wingback/B · 마첸 LB att_wb(**Attack**, 겹침 .705)
+  · 맥긴 LM wideplm/A — 두 배치가 **완전 미러(가정치)**라 C6+숙련으로 결정. 대가: **뱅크 소멸**(공격 변형). 프리셋 **미저장**(사용자).
+- 🔴 **정정 규약**: 09-03 「세트 B(우측 전진) 유일 정합」 답변은 **obs#110 시점** — 직후 obs#111이 C6를 하드화해 정본은 좌측 전진.
+  **obs#110 솔버 산출 인용 시 obs#111 이후인지 확인.** ⛔ 인게임 A/B 미실시 — 헐시티전 실측·사용자 체감으로 첫 검증 예정.
+
+### 2026-09-04 ⑴ — 아스날전 D+3 종결 + 미확보 영역 다국어 재점검 (`573b3a0`·`4022bfd`, obs#435~442)
 
 **⑴ D+3(스케줄, `573b3a0`)** — 3일 추적 마지막 회차. **report 30 `draft` → `complete` 승격**.
 
@@ -142,38 +159,17 @@
   **DB 비대상 정적 레퍼런스**(`assets/*.js`, export 무관).
 - ⚠️ 총평 작업에서 신규 영상 미채택(저조 채널·화석 검색). ⚠️ **미해소 상충**: 워싱턴(CHE) 이적료 €8m/€10m/€16m 3중 병기.
 
-### 2026-09-01 ⑵ — AVL 아스날전 신규 수집 (report 30, obs#350·383)
+### 2026-09-01 ⑵ — AVL 아스날전 신규 수집 (report 30 · 지금은 `complete`, obs#350·383)
 
-08-31 AVL 0-1 Arsenal(PL R2) — **여름 스쿼드 대개편 후 첫 실전**. 지난 시즌 주전 5명
-(마르티네스·콘사·틸레만스·로저스·왓킨스)이 전원 이적, 스즈키(GK)·잭슨(ST, 클럽레코드 £65m)
-공식전 데뷔. `matches` 1(id 94) · `player_matches` 15 · `team_match_stats` 1 ·
-`match_reports` 1(id 30, draft) · `match_player_reports` 15 · `match_game_setups`/`prescriptions` 각 1/15.
-`player_tenures` 3행 신설(잭슨76·완비사카90·스즈키132 — 위 「무결성 정리」④가 지적한
-「AVL 클럽 실측 0건」 공백을 이 경기가 처음으로 채운다).
-
-- ⭐⭐ **SofaScore 403 재발** → WhoScored/Opta `matchCentreData`(인앱 오리진, `require.config.params["args"]` 파싱)로 대체.
-  좌표 관례는 SofaScore와 동일(Cash·Maatsen 좌우로 선검증). PPDA 30.50 vs 11.67(정의는 리포트 §1) · 잭슨 st_false9 .723.
-- 이후 판정 변화는 전부 리포트의 D+1(09-02)·D+2(09-03) 절과 위 「09-03 ⑵」에 있다 — 고레츠카 데뷔 주장은 부재증명으로 종결(obs#404).
-
-### 2026-09-01 ⑴ — 무결성 정리 4연쇄 (obs#368~374)
-
-한 건을 고치자 다음이 드러나는 연쇄. **네 단계 모두 「FK는 성립하는데 조용히 이중화된」 부류**다:
-① 에수구 중복 id 병합(`players` 103→**140**) · ② 이중 기록 78쌍(SofaScore 정본, **평점이 66/77쌍에서 달라**
-FotMob 값을 `stats_json`에 보존·`opponent`/`venue` 백필) · ③④ `team_code` **739행** 재배정(「수집 시점 현 소속」
-→「경기 시점 소속」, 구 클럽·대표팀 코드 27행 신설, `note`에 「분석 대상 팀 아님 — 참조 어휘」) · ⑤ **G13 신설**.
-
-- 🔴⭐⭐ **파급 — `avg_positions`가 `team_code`로 필터하므로 4팀 유효표본 1,800 → 1,559(−241).**
-  ⚠️⚠️ **완비사카·잭슨·루제리는 소속팀 실측 0** — 전부 대표팀·전 소속팀 경기였다(8월 하순 합류).
-  **히트맵 A(실측) 칩에만 해당** — map25는 `grid_club`으로 출처를 명기해 왔으므로 영향 없다.
-- ⭐⭐ **교훈**: ① **team_code 오류는 게이트를 무력화한다**(잭슨 08-08 밀란전 처방 결손이 AVL 오태깅 탓에
-  G12 조인에 안 걸려 은폐돼 있었다) ② **정리 규칙은 한 번에 다 안 잡힌다**(②의 키가 한쪽 `match_id` NULL이면 무력).
-- **G13**: ⑴동일인 2-id ⑵이중 기록 ⑶match 링크 결손 ⑷`team_code`↔대회 성격 ⑸클럽코드 리그충돌.
-  ⭐ ⑷는 코드를 하드코딩하지 않고 「한 코드가 클럽·대표팀 대회에 **동시에** 쓰이면 위반」이라는 자기유지 불변식.
-  ⚠️ 「FIFA Club World Cup」이 `%World Cup%`에 걸리는 함정 제외 필수. ⚠️ 한계: ⑷는 **오직 잘못된 쪽에만**
-  쓰인 코드는 통과 · ⑵⑶은 `matches`가 같은 경기를 두 id로 갖는 경우를 못 본다.
+- 08-31 AVL 0-1 Arsenal(PL R2), 대개편 후 첫 실전(주전 5명+디뉴 이적, 스즈키·잭슨 데뷔). `matches` 94 · `player_matches` 15 ·
+  `player_tenures` 3행(잭슨·완비사카·스즈키 — 「AVL 클럽 실측 0건」 공백을 처음 채움). ⭐⭐ **SofaScore 403 재발** →
+  WhoScored/Opta `matchCentreData`(인앱 오리진) 대체, 좌표 관례 동일 선검증. 이후 판정은 전부 리포트 D+1~D+3 절과 「09-03 ⑵」·「09-04 ⑴」.
 
 ### 그 이전 (압축)
 
+- **09-01 무결성 정리 4연쇄**(obs#368~374) — 전부 「FK는 성립하는데 조용히 이중화된」 부류: 에수구 2-id 병합 · 이중 기록 78쌍
+  (SofaScore 정본, FotMob 평점은 `stats_json` 보존) · **`team_code` 739행** 「경기 시점 소속」 재배정 · **G13 신설**(5항, 자기유지 불변식).
+  🔴 파급: `avg_positions` 유효표본 −241 — **완비사카·잭슨·루제리 소속팀 실측 0**(히트맵 A 칩만 해당). ⭐ **team_code 오류는 게이트를 무력화한다**.
 - **09-01 transfer-watch 마감**(`4eb0e0d`) — ⭐⭐ **아하노르 = 아탈란타발 팰리스 임대 + 첼시 선계약(2027-07-01)**,
   「동일 구단 2명 임대 불가」 우회 — 완전영입 서술은 오답. 각포 무산이 4팀 축을 동시에 움직임.
 - **09-01 R3 D+1**(`d78df07`) — 충돌 3건 종결(obs#375~381). ⚠️ **동시 실행 회피 규칙 실증**(obs#382):
@@ -196,8 +192,8 @@ FotMob 값을 `stats_json`에 보존·`opponent`/`venue` 백필) · ③④ `team
 
 ## 다음 할 일
 
-1. ✅ ~~`match-watch-avl-arsenal-followup-d3` 삭제~~ — **09-04 오후 일반 세션에서 `delete_scheduled_task` 완료**(사용자
-   승인). SKILL.md는 디스크에 남아 있다. 활성 일회성은 이제 **헐시티 4건**만이다.
+1. **P2 · obs#443/#444 사이드 짝짓기 규칙 첫 검증** — 헐시티전 실측(마첸·캐시 avg_x, 같은 쪽 와이드 역할) + 사용자 인게임 A/B
+   체감(윙어 쪽 wingback/B · 반대쪽 att_wb/**Attack** · 반대쪽 와이드 안쪽형 → 풀백이 올라오는가). 결과는 obs#443에 덧붙인다.
 2. **P1 · PL Round 4** — AVL 헐시티전(09-05)은 **자동 4건 예약됨**(위 「자동화」). CHE·LIV·ATM R4는 전용 태스크
    없음 — 주간(09-07) 또는 `/match-watch` 수동. ⭐⭐ **헐시티전은 판별 경기**: report 30 D+2 절 끝 재검증 항목
    ⑴~⑽(잭슨 점유 우세 시 하강 재현? · 헤밍스 최종라인 핀 2경기 연속? · 스즈키 롱 배급이 약체 상대에도 유지? ·
@@ -278,6 +274,7 @@ FotMob 값을 `stats_json`에 보존·`opponent`/`venue` 백필) · ③④ `team
 - 히트맵은 요구 역할의 일부만 설명한다. duties·1차 발언·전술 영상이 명확하면 낮은 fit보다 우선할 수 있다.
   ⭐ 단 **경기 프리셋의 역할 코드는 그 경기의 위치 실측을 따른다**(09-03 잭슨 판정) — 서사가 뒤집은 것이 **온볼 기능**이면
   그건 PlayStyle 층(docs/22)이고, 커널 Δ가 노이즈 구간(≤0.05) 밖이면 서사로 역할을 덮지 않는다. 시즌 정본 판별은 별개.
+  ⭐ **풀백 전진은 같은 쪽 와이드 역할이 결정한다**(docs/20 ⑨, EA 「open space in front」) — 윙어 뒤 풀백은 wingback/B, 전진은 C6 해방 사이드에서만.
 - 단일 경기·퇴장·저점유 같은 교란은 confidence와 보고서에 함께 쓴다.
 - ⭐ **불변규칙 7(팀 축 혼선)은 실제로 세 번 터졌다** — 런북 슬롯 x 표(08-14·08-24) · 음바예 regime_id
   오배치(obs#355) · **`team_code` 739행 오배정**(obs#372·373). **타 팀 실측은 출처 팀·체제를 반드시 명기.**
@@ -295,6 +292,6 @@ FotMob 값을 `stats_json`에 보존·`opponent`/`venue` 백필) · ③④ `team
 
 ## 참고 문서
 
-- `docs/20-fc-game-system.md`: 슬롯 x, 역할·포커스, 게임 구현 규칙. · `docs/30-data-rules.md`: 수집·좌표·표본·결손 규칙.
+- `docs/20-fc-game-system.md`: 슬롯 x, 역할·포커스, 게임 구현 규칙, **⑨ 윙 혼잡·풀백 짝짓기**. · `docs/30-data-rules.md`: 수집·좌표·표본·결손 규칙.
 - `docs/40-pipeline.md`: DB/export/dump/git 파이프라인. · `docs/50-transfer-policy.md`: 이적 등급·보존 정책.
 - `docs/60-research-methods.md`: 새 축 검증과 통계 기준. · `docs/22`: PlayStyles·스탯·조작(온더볼 축).
