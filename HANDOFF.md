@@ -10,17 +10,17 @@
 
 ## 현재 상태
 
-> **2026-09-04 KST (오후)** · PC `AD03230205ui-iMac.local` · `main` · 마지막 내용 커밋 `5266f12`.
+> **2026-09-04 KST (저녁)** · PC `AD03230205ui-iMac.local` · `main` · 마지막 내용 커밋 `029f0c7`.
 > (핸드오프 커밋들이 그 위에 붙는다 — HEAD가 1~2커밋 앞서 있으면 정상.)
-> ✅ 워킹트리 깨끗·origin 일치. **아스날전 3일 추적 완전 종결**(report 30 `complete`) +
-> ⭐ **FC26 「윙 혼잡 회피」 메커니즘 등재**(obs#443·444 · `game_system_changes` #9 · docs/20 **⑨**) — 아래 「09-04 ⑵」.
+> ✅ 워킹트리 깨끗·origin 일치. **아스날전 3일 추적 완전 종결**(report 30 `complete`) + ⭐ **윙 혼잡 회피 메커니즘**(obs#443·444 ·
+> gsc#9 · docs/20 ⑨, 「09-04 ⑵」) + ⭐ **역할×포커스 85조합 움직임 해설**(`movement_kr`, migration 024, 「09-04 ⑶」).
 
 - DB: players **200** · player_matches **4,190** · team_match_stats **66** · match_reports **30**
   (**complete 15 · draft 15**) · match_player_reports **536** · squad_entries **133** ·
   prescriptions **452** · slots **88** · match_game_setups **15** · match_player_prescriptions **244** ·
   transfer_targets **44** · transfer_outgoing **67** · player_duties **200** ·
   player_shirt_numbers **116** · understat_player_matches **5,634** · observations **444** ·
-  **teams 37** · **player_evaluations 120** · **transfer_summary 4**(migration 023).
+  **teams 37** · **player_evaluations 120** · **transfer_summary 4**(migration 023) · ⭐ `game_role_focus.movement_kr` **85/85**(migration 024).
 - 회귀: **G1~G13 전항 통과**(2026-09-04 재확인). G13은 09-01 신설 후 09-01 21시에 **⑸「클럽코드 리그충돌」**
   이 추가돼 현재 5항이다.
 - ✅ **2026-27 여름 이적창 감시 완전 종료.** 09-02 09:30 자동 마감 정산(CONFIRMED 11·DEAD 8, obs#394~399) +
@@ -63,6 +63,17 @@
   소진된 나머지 일회성 7건은 전부 `enabled:false`라 방치해도 무해(사용자가 정리 범위를 「아스날 3건」으로 한정).
 
 ## 최근 작업
+
+### 2026-09-04 ⑶ — ⭐ 역할×포커스 85조합 「움직임 해설」 (`029f0c7`, migration 024)
+
+- 사용자 지시(단서 ① att_wb/Support≠전진 강화를 게임 가이드에 정리)로 **`game_role_focus.movement_kr` 신설, 85/85 채움**. 각 해설 =
+  ⑴ EA 정의문 요지 ⑵ **커널 질량으로 본 위치 경향**(자기진영/중원/전방 · 터치라인/하프스페이스/중앙 열 · 깊이, 포지션군 대표 x에서
+  `Kernel.placed`) ⑵ ⚠️ 오독·운용 노트. **정본은 여전히 `description`(EA 원문)** — 커널 값이 바뀌면 해설도 함께 고친다(docs/20 ⑧).
+  사이트 게임 시스템 → 역할 라이브러리에 「움직임 해설」 열 신설(브라우저 렌더 확인, 콘솔 에러 0).
+- ⭐ 이름과 실제가 갈리는 조합을 전부 ⚠️로 못 박았다: `cb_bpd`/Build-Up이 Aggressive보다 **낮게** 섬(.93 vs .78) · `cm_holding`/Defend가
+  Ball-Winning보다 깊음 · `fb_fullback`/Balanced는 자기진영 .91(사실상 수비형) · `fb_fullback`/Defend는 보유 시 **백3로 접힘**(에메리의
+  「하이브리드 백3 좌측」에 최근접) · `wm_wideplm`/Attack은 터치라인 .50 점유(풀백 앞을 비우지 않음) · `st_target`/Attack = `st_poacher`/Attack
+  위치 동일(차이는 PlayStyle 층) · `cm_dlp`↔`dm_dlp`는 슬롯 타입별로 위치가 다름 · `wm_winger`/Balanced 자기진영 .12는 뱅크 불성립.
 
 ### 2026-09-04 ⑵ — ⭐ FC26 윙 혼잡 회피 메커니즘 등재 · AVL 사이드 4칸 재점검 (`8f211fe`·`5266f12`, obs#443~444)
 
@@ -135,14 +146,10 @@
   그리스행이 진행 중이었다. ⇒ **현지 매체의 활발한 보도가 그 축의 생존을 보증하지 않는다**(08-31 「아랍어 0건 =
   축 약함」과 짝인 반대편 함정). 확정을 특정한 것은 **그리스어층**.
 - ⭐ 재프리즈는 이번에도 DB 재작성이 아니었다 — 베일리는 `prescriptions` 2행 모두 `starter=0`이라 선발 공백 0.
-- ⭐⭐ **빌라 공식 「2026/27 First Team Squad List」 30명을 1차 소스로 확보**해 등번호 전수 대조 — **28/30 일치**,
-  결손 2건만 보충. ⚠️ 명단은 베일리 이탈 발표 **이전** 게시라 베일리(31) 포함 — **실질 29명**으로 읽는다.
-- ⚠️ **`export.py` 프리뷰 미러는 디렉터리가 이미 있을 때만 갱신된다**(`if mirror.is_dir()`) — `/private/tmp`가
-  비워지면 조용히 건너뛰고 프리뷰 404. `mkdir -p /private/tmp/tactics-preview` 후 재export로 해결.
+- ⭐⭐ **빌라 공식 「2026/27 First Team Squad List」 30명을 1차 소스로 확보** — 등번호 **28/30 일치**, 결손 2건 보충. 명단은 베일리
+  이탈 발표 이전 게시라 **실질 29명**. ⚠️ `export.py` 프리뷰 미러는 `/private/tmp/tactics-preview`가 있을 때만 갱신 — 없으면 `mkdir -p` 후 재export.
 
-### 2026-09-02 — 이적창 사후 정리 · 평가 축 완결 · ⭐게임플레이 메커니즘 축 신설 (obs#414~421)
-
-문서에 없던 12커밋. 「마감 정산 이후」의 잔여 정리가 본체이고, 마지막에 **새 축 하나**가 열렸다.
+### 2026-09-02 — 이적창 사후 정리 · 평가 축 완결 · ⭐게임플레이 메커니즘 축 신설 (12커밋, obs#414~421)
 
 - `b3100ac` **G11 선발 공백 2건 충원**(CHE CCB→라크루아 .844 · LIV RM→무뇨스 .834), CHE phantom LDM/RDM
   starter 해제, `player_shirt_numbers` 26 → **114**. · `1cd0007` ATM 그리드 6명 해소, ⚠️**알렉사 푸리치
@@ -156,16 +163,12 @@
 - `5d838b2`·`48f1e2a`·`7843171` ⭐⭐ **신규 축 — FC26 게임플레이 메커니즘**(docs/22): 조작·6대 스탯·PlayStyles 35종.
   ⭐⭐ **docs/22는 docs/20(Roles·커널)과 다른 축** — PlayStyles는 **온더볼**, Roles는 오프더볼/커널 층이다.
   `player_game_stats.playstyles`는 **해석용 참고자료이며 커널 유사도 계산에 넣지 않는다.** 카탈로그는
-  **DB 비대상 정적 레퍼런스**(`assets/*.js`, export 무관).
-- ⚠️ 총평 작업에서 신규 영상 미채택(저조 채널·화석 검색). ⚠️ **미해소 상충**: 워싱턴(CHE) 이적료 €8m/€10m/€16m 3중 병기.
-
-### 2026-09-01 ⑵ — AVL 아스날전 신규 수집 (report 30 · 지금은 `complete`, obs#350·383)
-
-- 08-31 AVL 0-1 Arsenal(PL R2), 대개편 후 첫 실전(주전 5명+디뉴 이적, 스즈키·잭슨 데뷔). `matches` 94 · `player_matches` 15 ·
-  `player_tenures` 3행(잭슨·완비사카·스즈키 — 「AVL 클럽 실측 0건」 공백을 처음 채움). ⭐⭐ **SofaScore 403 재발** →
-  WhoScored/Opta `matchCentreData`(인앱 오리진) 대체, 좌표 관례 동일 선검증. 이후 판정은 전부 리포트 D+1~D+3 절과 「09-03 ⑵」·「09-04 ⑴」.
+  **DB 비대상 정적 레퍼런스**(`assets/*.js`, export 무관). ⚠️ 미해소 상충: 워싱턴(CHE) 이적료 €8m/€10m/€16m 3중 병기.
 
 ### 그 이전 (압축)
+
+- **09-01 AVL 아스날전 신규 수집**(report 30 → 지금은 `complete`, obs#350·383) — 대개편 후 첫 실전(스즈키·잭슨 데뷔), `matches` 94.
+  ⭐⭐ **SofaScore 403 재발** → WhoScored/Opta `matchCentreData`(인앱 오리진) 대체, 좌표 관례 동일 선검증. 판정은 리포트 D+1~D+3 절.
 
 - **09-01 무결성 정리 4연쇄**(obs#368~374) — 전부 「FK는 성립하는데 조용히 이중화된」 부류: 에수구 2-id 병합 · 이중 기록 78쌍
   (SofaScore 정본, FotMob 평점은 `stats_json` 보존) · **`team_code` 739행** 「경기 시점 소속」 재배정 · **G13 신설**(5항, 자기유지 불변식).
@@ -292,6 +295,6 @@
 
 ## 참고 문서
 
-- `docs/20-fc-game-system.md`: 슬롯 x, 역할·포커스, 게임 구현 규칙, **⑨ 윙 혼잡·풀백 짝짓기**. · `docs/30-data-rules.md`: 수집·좌표·표본·결손 규칙.
+- `docs/20-fc-game-system.md`: 슬롯 x, 역할·포커스, 게임 구현 규칙, **⑧ movement_kr 해설 · ⑨ 윙 혼잡·풀백 짝짓기**. · `docs/30-data-rules.md`: 수집·좌표·표본·결손 규칙.
 - `docs/40-pipeline.md`: DB/export/dump/git 파이프라인. · `docs/50-transfer-policy.md`: 이적 등급·보존 정책.
 - `docs/60-research-methods.md`: 새 축 검증과 통계 기준. · `docs/22`: PlayStyles·스탯·조작(온더볼 축).
