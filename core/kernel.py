@@ -51,7 +51,12 @@ class Kernel:
             n_var += 1
         n_combo = len(self.variants)
         con.close()
+        # 버전이 EXPECTED에 없으면(FC27 사전 적재 단계) assert 대신 경고만 — FC26 게이트(G1)는 불변.
+        # 카운트가 fut.gg FC27 응답으로 확정되면 EXPECTED에 행을 추가한다(docs/21 · obs#445).
         exp = self.EXPECTED.get(self.gv)
+        if exp is None:
+            import sys
+            print(f"⚠️ Kernel({self.gv}): EXPECTED 미등재 — 정합 assert 생략(사전 적재 단계)", file=sys.stderr)
         if exp:
             got = (len(self.role_group), n_combo, n_var)
             assert got == exp, (

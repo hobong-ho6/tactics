@@ -79,7 +79,9 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 - [x] 6 컷오버 — 구 툴 archive/v1/ 이동, db_dump v2 전환, transfer-watch 스킬 v2·**3팀 확장**
       (팀 루프 AVL 전체 / CHE·LIV 스캔+기록, teams.fotmob_id가 소스 정본 —
       ⚠️ CHE 8455·LIV 8650은 첫 실행에서 검증)
-- [ ] 7 FC27 온보딩 (9월): game_system_changes 소급 기입 + docs/21·22 작성
+- [~] 7 FC27 온보딩 (9월): ✅ **사전 조사 완료(09-04)** — `game_system_changes` FC27 #10~18(EA 피치노트 4건 verbatim) ·
+      docs/21 「사전 조사·준비물·트리거 순서」 · docs/22 §6 [FC27] · `scripts/migrate_fc27.py`(드라이런) · `core/kernel.py` EXPECTED 미등재 허용.
+      ⏳ 잔여: 09-10 전체 DB(PlayStyles) → 09-18 fut.gg roles FC27(⛔ 역할 목록 변화는 미공개) → 커널·게이트 앵커 확장 (obs#445)
 - 데이터 백로그: AVL squad_entries의 가르나초·알리송·아브라함 그리드가 구표본(v1 승계) —
   prescriptions 확장 표본으로 갱신 필요. 만잠비 fit 재산출값의 transfer_targets 반영은 완료.
 

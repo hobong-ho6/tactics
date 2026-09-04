@@ -146,6 +146,34 @@
 - 새 시즌(FC27 등)에서 PlayStyles 목록·효과가 바뀌면 **이 문서에 새 절을 추가**한다(불변규칙 2 — 기존 표는
   두고 "[FC27] 변경분"처럼 덧붙인다).
 
+## 6. [FC27] 변경분 — 사전 조사 (2026-09-04, EA 피치노트 verbatim · obs#445 · gsc #10~18)
+
+발매 09-25(얼리액세스 09-18). 아래는 **EA 1차 원문으로 확정된 것만** — 카탈로그의 이름·수는 바뀌지 않았다(신설·삭제 언급 없음).
+
+| 항목 | FC26(위 절) | FC27 |
+|---|---|---|
+| 조깅/스프린트·모디파이어 | §1 그대로 | 변화 없음(언급 없음) |
+| **Dinked Pass** | — | **완전 수동** — Ground Pass로 불가(더블탭=일반 패스), **Through Pass 더블탭 + 수동 조준** |
+| 곡선 런 / Pass & Follow | — | **신설** — Tap L1+R1(곡선 런) · L1+R1+X(패스 후 곡선 침투). Triggered Runs는 **거리 제한**(재트리거) |
+| Player Lock | — | 볼 캐리어 자동 회피 제거, CPU 패스 오차↑ |
+| Team Press | 수비 진영 너프(FC26) | **수비 3분의 1에서 효과 0** |
+| 숄더 챌린지 연타 | — | 팔을 뻗으며 **속도 손실** |
+| AcceleRATE | §2 참조(docs/20 ⑤) | **프로필 영향 축소** — 가속·질주 속성 비중↑, 여성 Lengthy 172cm |
+| Finesse Shot | 속도·정확도·커브↑ | 「선수 속성이 결과에 더 크게 작용」 |
+| Technical / Precision Header | — | PlayStyle ↔ PlayStyle+ 격차 축소 |
+| Intercept | 리치·소유 유지↑ | **더 강화**(리치↑·소유 유지↑) |
+| Rapid / Quick Step | 스프린트·가속 보너스 | 보너스 **축소** |
+| **Pinged Pass** | 패스 속도↑ + **받기 쉬워짐** | ⚠️ 「수신자 트랩 오차 감소」 **제거** — 속도 효과만 남는다 |
+| **Tiki Taka** | 첫터치·단패스 정확도↑ | ⚠️ 애니 속도 보너스·트랩 오차 감소 **제거** |
+| Jockey | 조키 속도↑ | 비보유자 기본 조키 가속↑, PS 보너스↓ |
+| Low Driven | 저구간 슛 속도↑ | **슛 속도 보너스 제거** |
+| Bruiser+ | — | 추가 이득 소폭 축소 |
+| PlayStyle+ 상한 | 아이템당 5 | **3** |
+| 수동 수비(Competitive) | — | AI 인터셉트 리치↓ · 수동 조키 속도↑ · 스탠딩 태클 범위↑ |
+
+⚠️ §3 카탈로그의 Pinged Pass·Tiki Taka·Low Driven 효과 문구는 **FC26 기준**이다 — FC27 플레이 시 위 표가 우선한다.
+⛔ 역할·포커스 목록 변화는 미공개(docs/21 「사전 조사」).
+
 Sources(2026-09-02 조사): [FUT.GG PlayStyles](https://www.fut.gg/playstyles/) ·
 [FUTBIN Press Proven](https://www.futbin.com/26/playstyles/press-proven) ·
 [Operation Sports — All FC26 PlayStyles](https://www.operationsports.com/all-ea-fc-26-playstyles-explained/) ·

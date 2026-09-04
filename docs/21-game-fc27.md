@@ -46,3 +46,40 @@
 4. **익스포트**: `scripts/export.py`가 kernels/FC27.json을 자동 생성(행만 있으면 됨).
    site/ 페이지는 버전 선택 UI 추가 전까지 FC26 고정 — 필요 시 data.js에 파라미터 추가.
 5. **변화 관찰 로그**: FC26 대비 역할 수·커널 diff를 obs로 1건 기록.
+
+## ⭐ 시스템 변화 사전 조사 (2026-09-04 · obs#445 · `game_system_changes` #10~18)
+
+EA 1차 피치노트 4건(Gameplay Deep Dive 07-29 · FUT Deep Dive · Career Deep Dive 07-31 · Closed Beta Feedback 09-03)을
+원문 직독. 3차 요약은 근거로 쓰지 않았다(docs/30).
+
+| 확정(EA verbatim) | 우리 매핑에의 함의 | gsc |
+|---|---|---|
+| **Attacking Spatial Awareness** — 「Roles can sometimes feel too strict」의 해법. 곡선 침투·Pass&Follow(L1+R1 / L1+R1+X) | FC26 ①의 강화판 → **역할 커널 결정성 추가 약화**. 노이즈 구간을 넓게 볼 근거(크기는 실측 후) | #10 |
+| Triggered Runs **거리 제한**(재트리거 필요) | 채널 러너 재현이 한 번의 런으로 안 됨 — 프리셋 메모 | #11 |
+| **AcceleRATE 영향 축소**, 가속·질주 속성 비중↑, 여성 Lengthy 172cm | docs/20 ⑤ 공식 유지·효과 축소 → 적합 가중치 불가 재확인 | #12 |
+| **PlayStyle 리밸런스 10종**, PS+ 상한 5→3, Bruiser+ 축소. Pinged Pass·Tiki Taka의 「트랩 오차 감소」 **제거** | docs/22 §3 효과 서술 10건 → [FC27] 절로 갱신. 커널 무관(온볼) | #13 |
+| **Team Press 수비 3분의 1 무효**, 낮은 깊이가 라인에 더 뚜렷 | 이라올라 손실↑ · 에메리 딥블록 국면은 더 정확히 재현 · 라인 높이 실효 재검증 상향 | #14 |
+| 수동 수비 강화(Competitive 전용): AI 리치↓·조키↑·태클 범위↑ | 수비 역할의 AI 실행력↓ — Intercept PS는 강화 | #15 |
+| Dinked Pass 수동(Through Pass 더블탭) · Player Lock 조정 | docs/22 §1 조작표 | #16 |
+| 커리어: **7포지션(주1+부6)·부포지션 무페널티**·Dynamic OVR·성장 프로필 6·슬라이더 25+10 | OOP 비용 추가 하락 → 측정 최적≠EA 기본 포지션의 게임 내 비용↓ | #17 |
+| 초기 TU에 큰 밸런스 변경 없음 | 발매 직후 1회 수집으로 안정 | #18 |
+
+⛔ **미확정 — 어느 피치노트에도 없다**: 역할·포커스 **신설/삭제/개명** · 팀 전술 파라미터(빌드업/수비접근/라인) 변화 ·
+남성 Lengthy 임계값 · 수치 일체. ⇒ **37/85/217 구조 유지 여부는 fut.gg `/api/fut/roles/` FC27 응답으로만 확정된다.**
+「없다」로 읽지 말 것 — 「미공개」다.
+
+### 마이그레이션 준비물 (2026-09-04 완료)
+
+- **`scripts/migrate_fc27.py`** — 드라이런 기본(읽기 전용): game_versions 행 · FC27 행 수 · `players.name_kr` 중복 0 ·
+  FC26∩FC27 게임스탯 커버리지 · FC26 커널 구조 (37,85,217) 불변 확인 · 다음 트리거 출력. `--roles <json> --check`로
+  fut.gg 응답의 id 유일성·역할/포커스 카운트 검증. **`--apply`는 스키마를 실제로 본 뒤 채운다**(현재는 의도적으로 비움 — 값 발명 금지).
+- **`core/kernel.py`** — `EXPECTED`에 없는 버전은 assert 대신 stderr 경고(사전 적재 단계에서 export가 죽지 않도록).
+  FC26 경로는 불변(G1 그대로). 카운트 확정 시 `EXPECTED["FC27"]` 추가.
+- `export.py`는 이미 `game_versions` 루프 + 빈 버전 스킵 — 행만 생기면 `kernels/FC27.json`이 자동 생성된다.
+
+### 트리거 순서
+
+1. **09-10** EA 전체 DB(PlayStyles 포함) → `player_game_stats` FC27 **새 roster_date 행** + playstyles 채움(1단계 행 덮지 않음).
+2. **09-18 얼리액세스** → fut.gg `/api/fut/roles/` FC27 응답 확보 → `migrate_fc27.py --roles … --check` → 카운트·diff 확정 → obs.
+3. `EXPECTED["FC27"]` 추가 → `gates.py` G1/G5에 FC27 앵커 **새 행**(FC26 앵커 유지) → `--apply`(사용자 승인) → export → G5 JS 동치 확인.
+4. 팀 전술 파라미터(`game_tactic_params` FC27)는 게임 내 설정 화면 확인 후 행 추가 — 피치노트에 변화 언급 없음.
