@@ -9,11 +9,11 @@
    "player_id": 1
   },
   {
-   "avg_x": 40.0,
+   "avg_x": 42.8,
    "avg_y": 13.3,
    "first_date": "2026-08-07",
-   "last_date": "2026-08-31",
-   "n": 4,
+   "last_date": "2026-09-05",
+   "n": 5,
    "player_id": 2
   },
   {
@@ -25,27 +25,27 @@
    "player_id": 4
   },
   {
-   "avg_x": 43.2,
-   "avg_y": 85.7,
+   "avg_x": 45.3,
+   "avg_y": 85.3,
    "first_date": "2025-08-06",
-   "last_date": "2026-08-31",
-   "n": 5,
+   "last_date": "2026-09-05",
+   "n": 6,
    "player_id": 6
   },
   {
-   "avg_x": 33.9,
-   "avg_y": 44.9,
+   "avg_x": 34.2,
+   "avg_y": 44.5,
    "first_date": "2025-10-23",
-   "last_date": "2026-08-31",
-   "n": 25,
+   "last_date": "2026-09-05",
+   "n": 26,
    "player_id": 7
   },
   {
-   "avg_x": 59.1,
-   "avg_y": 24.8,
+   "avg_x": 60.6,
+   "avg_y": 24.5,
    "first_date": "2026-08-12",
-   "last_date": "2026-08-31",
-   "n": 3,
+   "last_date": "2026-09-05",
+   "n": 4,
    "player_id": 10
   },
   {
@@ -57,19 +57,19 @@
    "player_id": 11
   },
   {
-   "avg_x": 43.7,
-   "avg_y": 41.0,
+   "avg_x": 45.8,
+   "avg_y": 40.6,
    "first_date": "2026-08-07",
-   "last_date": "2026-08-31",
-   "n": 4,
+   "last_date": "2026-09-05",
+   "n": 5,
    "player_id": 12
   },
   {
-   "avg_x": 53.2,
-   "avg_y": 63.5,
+   "avg_x": 55.3,
+   "avg_y": 59.8,
    "first_date": "2026-08-07",
-   "last_date": "2026-08-31",
-   "n": 4,
+   "last_date": "2026-09-05",
+   "n": 5,
    "player_id": 14
   },
   {
@@ -89,6 +89,14 @@
    "player_id": 16
   },
   {
+   "avg_x": 44.9,
+   "avg_y": 66.1,
+   "first_date": "2026-09-05",
+   "last_date": "2026-09-05",
+   "n": 1,
+   "player_id": 17
+  },
+  {
    "avg_x": 52.9,
    "avg_y": 43.9,
    "first_date": "2026-08-07",
@@ -105,11 +113,11 @@
    "player_id": 19
   },
   {
-   "avg_x": 51.1,
-   "avg_y": 52.3,
+   "avg_x": 51.5,
+   "avg_y": 53.0,
    "first_date": "2026-02-14",
-   "last_date": "2026-08-31",
-   "n": 11,
+   "last_date": "2026-09-05",
+   "n": 12,
    "player_id": 21
   },
   {
@@ -121,11 +129,11 @@
    "player_id": 26
   },
   {
-   "avg_x": 50.2,
-   "avg_y": 66.9,
+   "avg_x": 51.8,
+   "avg_y": 68.4,
    "first_date": "2026-08-07",
-   "last_date": "2026-08-31",
-   "n": 4,
+   "last_date": "2026-09-05",
+   "n": 5,
    "player_id": 30
   },
   {
@@ -153,11 +161,11 @@
    "player_id": 75
   },
   {
-   "avg_x": 61.9,
-   "avg_y": 54.3,
+   "avg_x": 66.7,
+   "avg_y": 56.2,
    "first_date": "2026-08-31",
-   "last_date": "2026-08-31",
-   "n": 1,
+   "last_date": "2026-09-05",
+   "n": 2,
    "player_id": 76
   },
   {
@@ -169,11 +177,11 @@
    "player_id": 77
   },
   {
-   "avg_x": 13.1,
-   "avg_y": 52.9,
+   "avg_x": 12.6,
+   "avg_y": 51.1,
    "first_date": "2026-08-31",
-   "last_date": "2026-08-31",
-   "n": 1,
+   "last_date": "2026-09-05",
+   "n": 2,
    "player_id": 132
   },
   {
@@ -841,7 +849,7 @@
   {
    "adherence": "MEDIUM — 이벤트 원천값과 Emery의 의도된 포지션 발언은 강하지만 공식 성인 표본이 한 경기뿐. ‖ [2026-09-03 D+2 추적, report 30] ⭐ **MEDIUM → MEDIUM-HIGH(기능 축)** — 「좌측 터치라인·최종라인 고정 와이드 아웃렛」이 **PL 2경기 연속 실측 좌표로 일치**하고(브라이턴 avg_y 74.2 / 아스날 y=78.3), D+2에 **전술 매체 3곳이 독립적으로 그 기능을 지정 임무로 기술**했다. ⛔ 유공 국면 표본은 여전히 얕다 — PL 2경기 **모두 팀이 크게 열세**(0-4, 0-1)다.",
    "confidence": "HIGH on raw event heatmap/statistics; MEDIUM on representative role / ⭐ **표본 정정**: DB는 sample_scope='specific_match'(슈퍼컵)로 두었으나 **그 이전에 1군 4경기가 있다** — 벤치 첫 등록 2025-11-23 리즈전, 2025-12-01 바젤전(UEL), 아스날전 데뷔, 25/26 통산 1군 4경기(UEL 2 + PL 교체 2). / 19세 161일로 **기록상 5번째 최연소 슈퍼컵 선발**. ⚠️ 생년월일 불일치 — 2007-03-04(다수) vs Transfermarkt 2007-04-03.",
-   "duties": "PSG 슈퍼컵 단일경기: 명목 LAM이지만 터치라인 고정 윙어보다 왼쪽 안쪽·낮은 지원자. 전방 압박, 회수, 짧은 연결로 Maatsen의 외곽 전진을 보조했다. ⭐ [2026-08-14 영상·서사 정기수집] **그는 본래 센트럴 미드필더다 — 슈퍼컵 판정의 프로필 근거가 확보됐다.** Wikipedia·PL 공식 프로필 모두 midfielder/central midfielder이고, ⭐ **에메리 본인이 그를 '엄청난 잠재력을 가진 센트럴 미드필더'** 로 규정했다. 프리시즌 내내 **더블 피벗**에서 평가받았고 이번 여름 전진 배치로 재배치된 이력도 확인된다. ⇒ DB가 슈퍼컵에서 '명목 LAM이지만 터치라인 고정 윙어보다 **왼쪽 안쪽·낮은 지원자**'로 판정한 것은 **일회성 관찰이 아니라 원 포지션이 그렇기 때문**이다. `position='LM'`은 **경기 배치이지 프로필이 아니다.** 양발(182cm)이라 좌우 배치 제약도 낮다. ⭐ 에메리 경기 후(2026-08-12): '경기 전에 어떻게 할지 정했고 **그 포지션들에서 선수들과 훈련해 뒀다**' — 좌측 배치가 **즉흥이 아니라 사전 준비**였음이 확인된다(임무 내용은 미언급).\n\n[2026-08-23 브라이턴 원정 0-4 (PL 26/27 R1) — 단일경기 실측·구단 공식 1차] ⭐ **PL 첫 선발이자 0-4에서 교체되지 않은 유일한 전방 선수(90분 완주)**. 실제 임무는 슈퍼컵 관측과 같은 「좌측 안쪽·낮은 지원자」가 아니라 **좌측 터치라인 고정형**이었다 — avg_x 49.7 / avg_y 74.2, 그리드가 좌측 열에 강하게 몰린다. 듀얼은 이겼다(지상 4/5·공중 2/4·태클 3·드리블 1/1)고 **최고 속도 26.7로 팀 1위**였으나 패스 6/13(46%)로 압박 하 볼 처리가 미숙했다. 커널 wm_widemid/Support fit 0.682. ⚠️ 19세·표본 1경기·50분간 10명 ⇒ 처방 확정 금지. 구단 공식이 \"maiden start in the league\"로 확인(avfc.co.uk 2026-08-23). obs#305. ‖ [2026-09-03 D+2 추적, report 30] 🔴 **아스날전(08-31) 판정 정정 — 「22터치로 관여 적음」이 아니라 「지정된 최종라인 와이드 아웃렛」이다.** 리포트 §5는 헤밍스를 「22터치로 관여 적음, 조기 교체(71분)」로 서술하고 `wm_widemid`/**Defend**(.542, **팀 최저 fit**)로 기록했으나, **22터치는 이탈의 증거가 아니라 최종라인 고정의 산술적 결과**다 — 터치라인 최상단에 핀되면 관여 횟수가 구조적으로 낮고 대신 **한 번의 수신이 곧 전진**이 된다. ⭐⭐ Coaches' Voice: 「**high and wide on the last line**」에 서서 **사카의 토레스 압박으로 벤 화이트가 밀려 올라간 배후 공간**을 점유했고 **스즈키의 롱 배급이 반복적으로 그를 겨냥**해 순간적 **4v4**를 만들었다; 전환 시에는 잭슨을 받치는 **중앙 지원 러너**로도 기능. ⭐ 🇯🇵footballchannel.jp: **29분** 스즈키의 라이너성 볼이 「**적진 좌측 헤밍스**에게 통해 **공격 스위치를 켰다**」 — 지정 타깃임이 분 단위로 특정된다. ⭐ Bains: 「the likes of **Hemmings**, Buendia, they **did get themselves into good opportunities** at times, but their **final pass** obviously did let them down」. ⭐ 잭슨 하이라이트 장면(가브리엘 헤더 경합 → 40~50야드 운반)의 **수신자도 박스의 헤밍스**였다(발을 맞추지 못함). ⇒ ⭐⭐ **브라이턴전(obs#305)의 「좌측 터치라인 고정형」과 PL 2경기 연속 일치**하므로, 슈퍼컵의 「왼쪽 안쪽·낮은 지원자」가 아니라 **이쪽이 26/27 PL 정본**이다.",
+   "duties": "PSG 슈퍼컵 단일경기: 명목 LAM이지만 터치라인 고정 윙어보다 왼쪽 안쪽·낮은 지원자. 전방 압박, 회수, 짧은 연결로 Maatsen의 외곽 전진을 보조했다. ⭐ [2026-08-14 영상·서사 정기수집] **그는 본래 센트럴 미드필더다 — 슈퍼컵 판정의 프로필 근거가 확보됐다.** Wikipedia·PL 공식 프로필 모두 midfielder/central midfielder이고, ⭐ **에메리 본인이 그를 '엄청난 잠재력을 가진 센트럴 미드필더'** 로 규정했다. 프리시즌 내내 **더블 피벗**에서 평가받았고 이번 여름 전진 배치로 재배치된 이력도 확인된다. ⇒ DB가 슈퍼컵에서 '명목 LAM이지만 터치라인 고정 윙어보다 **왼쪽 안쪽·낮은 지원자**'로 판정한 것은 **일회성 관찰이 아니라 원 포지션이 그렇기 때문**이다. `position='LM'`은 **경기 배치이지 프로필이 아니다.** 양발(182cm)이라 좌우 배치 제약도 낮다. ⭐ 에메리 경기 후(2026-08-12): '경기 전에 어떻게 할지 정했고 **그 포지션들에서 선수들과 훈련해 뒀다**' — 좌측 배치가 **즉흥이 아니라 사전 준비**였음이 확인된다(임무 내용은 미언급).\n\n[2026-08-23 브라이턴 원정 0-4 (PL 26/27 R1) — 단일경기 실측·구단 공식 1차] ⭐ **PL 첫 선발이자 0-4에서 교체되지 않은 유일한 전방 선수(90분 완주)**. 실제 임무는 슈퍼컵 관측과 같은 「좌측 안쪽·낮은 지원자」가 아니라 **좌측 터치라인 고정형**이었다 — avg_x 49.7 / avg_y 74.2, 그리드가 좌측 열에 강하게 몰린다. 듀얼은 이겼다(지상 4/5·공중 2/4·태클 3·드리블 1/1)고 **최고 속도 26.7로 팀 1위**였으나 패스 6/13(46%)로 압박 하 볼 처리가 미숙했다. 커널 wm_widemid/Support fit 0.682. ⚠️ 19세·표본 1경기·50분간 10명 ⇒ 처방 확정 금지. 구단 공식이 \"maiden start in the league\"로 확인(avfc.co.uk 2026-08-23). obs#305. ‖ [2026-09-03 D+2 추적, report 30] 🔴 **아스날전(08-31) 판정 정정 — 「22터치로 관여 적음」이 아니라 「지정된 최종라인 와이드 아웃렛」이다.** 리포트 §5는 헤밍스를 「22터치로 관여 적음, 조기 교체(71분)」로 서술하고 `wm_widemid`/**Defend**(.542, **팀 최저 fit**)로 기록했으나, **22터치는 이탈의 증거가 아니라 최종라인 고정의 산술적 결과**다 — 터치라인 최상단에 핀되면 관여 횟수가 구조적으로 낮고 대신 **한 번의 수신이 곧 전진**이 된다. ⭐⭐ Coaches' Voice: 「**high and wide on the last line**」에 서서 **사카의 토레스 압박으로 벤 화이트가 밀려 올라간 배후 공간**을 점유했고 **스즈키의 롱 배급이 반복적으로 그를 겨냥**해 순간적 **4v4**를 만들었다; 전환 시에는 잭슨을 받치는 **중앙 지원 러너**로도 기능. ⭐ 🇯🇵footballchannel.jp: **29분** 스즈키의 라이너성 볼이 「**적진 좌측 헤밍스**에게 통해 **공격 스위치를 켰다**」 — 지정 타깃임이 분 단위로 특정된다. ⭐ Bains: 「the likes of **Hemmings**, Buendia, they **did get themselves into good opportunities** at times, but their **final pass** obviously did let them down」. ⭐ 잭슨 하이라이트 장면(가브리엘 헤더 경합 → 40~50야드 운반)의 **수신자도 박스의 헤밍스**였다(발을 맞추지 못함). ⇒ ⭐⭐ **브라이턴전(obs#305)의 「좌측 터치라인 고정형」과 PL 2경기 연속 일치**하므로, 슈퍼컵의 「왼쪽 안쪽·낮은 지원자」가 아니라 **이쪽이 26/27 PL 정본**이다.\n\n⭐⭐ **[2026-09-06 match-watch 추가 — 헐전(2026-09-05) 실측·서사]** **「본래 센트럴 미드필더」라는 이 행의 기존 판정이 실측으로 다시 지지됐다.** 75분 좌측 와이드 선발(19세)로 **팀 유일 유효슛(200분 넘게 이어진 빌라의 유효슛 가뭄을 끝냈다)** 과 **팀 유일 빅찬스 창출**을 동시에 만들었다(평점 6.85, Read Aston Villa 8/10 MOTM). Read Aston Villa(2026-09-05): 「Emery used the 19-year-old in a more advanced role from the left, allowing him to **drift inside** and combine with Ian Maatsen」(번역: 에메리는 19세를 좌측에서 더 전진된 역할로 썼고, **안으로 파고들어** 마첸과 결합하게 했다). Squawka(2026-09-05)도 같은 축을 말한다 — 「Villa have deployed central midfielders out wide for years — Rogers, McGinn, Buendía, Hemmings — because Emery likes to attack down the middle」(번역: 빌라는 수년간 중앙 미드필더를 측면에 세워 왔다 — 에메리가 중앙으로 공격하길 좋아하기 때문). ⭐ **실측이 이를 뒷받침한다**: 단일 경기 `wm_winger`/Attack fit이 **.613으로 낮다**(터치라인 고정형과 위치가 안 맞는다) — 그런데 산출(유효슛·빅찬스 창출)은 안쪽 진입에서 나왔다. ⇒ **다음 표본에서 `wm_wideplm`·`wm_widemid` 대안을 검토할 근거**이고, obs#443의 「측면을 비우는 안쪽형 와이드」 축과도 정합한다(같은 쪽 마첸이 fb_att_wb/Support로 전진했다). ⭐ 무공 시에는 **최종라인에 합류했다**(자기 진영 수비액션 평균 x 21.5, 백4와 같은 높이 — obs#447). 배경: 여름 임대 요청(프레스턴·스완지·셰필드 Utd)을 **에메리가 직접 거부**하고 잔류시켰다(Read Aston Villa 2026-09-02).",
    "execution": "90분 6.2, 20/25패스, 1키패스, 3/9경합, 1태클, 2슈팅(1유효), 6회수. 평균위치 (58.11,73.31), 히트포인트 51, 맵25 66111X4430X41009403004000, 경기 적합 wm_widemid/Support .788.",
    "game_role_implication": "LM/LAM 지원·압박 가설. 공식전 2경기 이상 같은 위치 표본 전 대표 처방 승격 금지. ‖ [2026-09-03 D+2 추적, report 30] 🔴 ⛔ **`Defend` 포커스는 실측 기능과 반대 방향이다** — 최종라인 와이드 아웃렛에게 수비 가담 우선 포커스는 어긋난다. 다만 무공 시 **5-3-2 변형에서 와이드 미드가 백라인 높이까지 내려앉는다**는 사실이 확인됐으므로(Coaches' Voice), 헤밍스는 **무공 시 깊이 하강 / 유공 시 최종라인 핀의 양극 진폭**을 요구받았다고 읽는 것이 정확하다. 단일 포커스로 담기 어려운 케이스이며 **`wm_widemid`/`Balanced`가 두 국면의 절충으로 더 가깝다**. ⛔ 처방 변경은 하지 않는다(19세·PL 2경기·둘 다 팀 열세). obs#426.",
    "label": "헤밍스",
@@ -851,7 +859,7 @@
    "position": "LM",
    "sample_note": "2026-08-12 UEFA Super Cup PSG전 단일 경기 — SofaScore event 16260286와 경기 후 영상·기사 교차검증",
    "sample_scope": "multi_source",
-   "source": "SofaScore event 16260286 https://www.sofascore.com/api/v1/event/16260286 ; AS Emery interview 2026-08-12 https://as.com/futbol/internacional/unai-emery-habra-mas-cambios-f202608-n/ ; BeanymanSports post-match 2026-08-13 https://www.youtube.com/watch?v=cV0xoK0gK3w ; The Villa Park Podcast 2026-08-13 https://www.youtube.com/watch?v=NfejEXQj3sE ; reports/match-watch/2026-08-12-avl-psg-super-cup.md ; Coaches' Voice 2026-09-01 https://learning.coachesvoice.com/cv/aston-villa-arsenal-tactics-august-2026/ ; Bains Analysis 2026-09-01 https://www.youtube.com/watch?v=3ePF8hjITI4 (자동 생성 자막) ; footballchannel.jp 2026-09-01 ; ゲキサカ ; ESPN gameId 401879295 ; Arseblog 2026-09-01 ; obs#424~429"
+   "source": "SofaScore event 16260286 https://www.sofascore.com/api/v1/event/16260286 ; AS Emery interview 2026-08-12 https://as.com/futbol/internacional/unai-emery-habra-mas-cambios-f202608-n/ ; BeanymanSports post-match 2026-08-13 https://www.youtube.com/watch?v=cV0xoK0gK3w ; The Villa Park Podcast 2026-08-13 https://www.youtube.com/watch?v=NfejEXQj3sE ; reports/match-watch/2026-08-12-avl-psg-super-cup.md ; Coaches' Voice 2026-09-01 https://learning.coachesvoice.com/cv/aston-villa-arsenal-tactics-august-2026/ ; Bains Analysis 2026-09-01 https://www.youtube.com/watch?v=3ePF8hjITI4 (자동 생성 자막) ; footballchannel.jp 2026-09-01 ; ゲキサカ ; ESPN gameId 401879295 ; Arseblog 2026-09-01 ; obs#424~429 ; [2026-09-06] FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (헐전 실측) + ゲキサカ 2026-09-06(Yahoo!ニュース 전재) · Read Aston Villa 2026-09-05/09-02 · Squawka 2026-09-05(⛔403 요약 경유) · BBC Sport/Sky Sports 2026-09-05 · Villa News 2026-09-05"
   },
   {
    "adherence": "부분 일치 — 캐리 전진(온더볼)은 그리드 밖이라 미검증, 위치 주장은 실측이 정정\n\n[2026-08-22 서사 정기수집 · 소스 4종]\n⛔ **기존 가설 1건을 수정한다 — 「드리블 돌파보다 운반」은 4개 소스와 충돌한다**: TFA 「quick feet to get past the last standing defender」+바디 페인트 · 베르너 「1대1에 매우 편안하다」 · 슈스터 「좁은 공간 1대1」 · Sky 「테이크온 리그 top-20」 ⇒ **돌파도 실재한다**로 고친다. ⭐⭐ **위치 주장 재기각**: TFA의 「**스트라이커 위치까지 점유**」는 **이미 실측으로 기각된 「추가 스트라이커」 주장의 재출현**이다 — 재기각 대상으로 명시 기록한다. 베르너의 「측면이 더 낫다」도 실측이 약하게 반박(WM 0.652 < CAM 0.861). ⭐ **실측이 서사 분열을 해소한 사례**: 베르너=측면 / 슈스터=8번 / 본인=B2B로 **역할 합의가 없는데**, 우리 실측 CAM `cam_halfwinger` **0.861**(> LDM 0.713 > WM 0.652)이 **halfwinger = 중앙과 측면 사이**라는 점에서 양쪽을 절충 흡수한다. 그리고 **수비 액션 43퍼센타일이 LDM 0.713을 「역할로서」 의심하게 한다**(존≠기능).",
@@ -1066,7 +1074,7 @@
   {
    "adherence": "부분 정합 — 홀드업·드롭인 성향은 1경기 표본에서 이미 확인됐다(gk 아님, st_false9 argmax). 채널 러너형 침투·마무리력은 표본 부족으로 판정 보류. ‖ [2026-09-03 D+2 추적, report 30] 🔴 **「채널 러너 유사성 가설과는 다소 배치 / 판정 보류」를 정정한다 — 정합이다.** 09-01 실측의 「라인 사이 하강(24터치)」은 **팀이 39% 점유 딥블록에 있었던 국면 함수**(무공 4-4-2의 두 번째 스트라이커로 하강·압박 가담)이고, 볼을 가졌을 때의 기능은 **홀드업 → 플릭온 → 채널 침투 → 전환 운반**이었다. ⭐ xA 0.10의 출처도 재특정된다 — 창조 행위 2건(가브리엘 헤더 경합 후 40~50야드 운반 → 헤밍스 배급 / 종료 직전 맥긴 침투 패스)이 **전부 하강·라인 사이 연결이 아니라 전환·운반**에서 나왔다. ⇒ **마무리력만 판정 보류로 남는다**(무슈팅·무득점, 아스날 상대 커리어 5경기 연속 무공격포인트).",
    "confidence": "⚠️ 자동 생성 자막 기반 인용. ⛔ 영상의 통계 그래픽(Wyscout 기반 존 등)은 자막에 담기지 않아 서술만 인용, 수치 직접 확인 불가.",
-   "duties": "Bains Analysis(2026-08-27): 왓킨스와 스타일이 유사하다 — 채널 러너형 침투(Newcastle 대비 통계 그래픽에서 왓킨스와 겹치는 존)와 홀드업 플레이 「접착제」 역할을 겸한다는 가설. 다만 왓킨스보다 중앙·딥에서 더 편안하고, 볼을 잡고 돌아서 드리블로 30~40야드 전진시키는 능력이 왓킨스에게 없던 새 축이라고 주장. 마무리는 첼시·바이에른 시절 xG 대비 저조(빅찬스 24개 실축)했으나 바이에른 마지막 시즌 처음으로 xG 초과 달성.",
+   "duties": "Bains Analysis(2026-08-27): 왓킨스와 스타일이 유사하다 — 채널 러너형 침투(Newcastle 대비 통계 그래픽에서 왓킨스와 겹치는 존)와 홀드업 플레이 「접착제」 역할을 겸한다는 가설. 다만 왓킨스보다 중앙·딥에서 더 편안하고, 볼을 잡고 돌아서 드리블로 30~40야드 전진시키는 능력이 왓킨스에게 없던 새 축이라고 주장. 마무리는 첼시·바이에른 시절 xG 대비 저조(빅찬스 24개 실축)했으나 바이에른 마지막 시즌 처음으로 xG 초과 달성.\n\n⭐⭐ **[2026-09-06 match-watch 추가 — 헐전(2026-09-05) 판별 결과]** **「하강형이냐 정통 9번이냐」의 판별 경기에서 정통 9번 쪽이 나왔다.** 점유 74% 국면에서 avg_x **71.6**(아스날전 61.9 대비 **+9.8**), 터치는 오히려 선발 최소인 **29회**인데 **박스 안 터치 6회(21%)** ·xA 0.44·빅찬스 창출 1. 커널 순위가 완전히 역전됐다 — 아스날전 `st_false9`/Build-Up .723(1위) → 헐전 **.368(공동 4위)**, `st_advanced`/Support .423 → **.632(1위)**. 두 격차 모두 노이즈(Δ≤.05)의 5배 이상이다(obs#446). ⇒ 아스날전의 false9 값은 **기질이 아니라 팀이 볼을 못 가진 국면의 산물**이었다. ⭐ **서사 보강(🇯🇵 일본어 단독)**: ゲキサカ(2026-09-06)는 스즈키가 28·44분에 **자기 진영에서 중앙을 관통하는 땅볼로 「最前線の」(최전방의) 잭슨에게 직접 배급**했다고 기록했다 — 하강형이면 성립하지 않는 패스다. ⚠️ **서사는 「고립」을 말하지 않는다**: 터치 29회를 고립으로 명시한 매체는 **0건**이고 BBC는 오히려 「Jackson's movement caused problems for the Hull backline」이라고 썼다. 반면 Villa News는 「Villa need their striker to be much more decisive inside the box」로 마무리를 문제 삼는다(평점 5/10). ⛔ **에메리가 잭슨의 역할을 이름으로 설명한 발언은 9개 언어 전부에서 0건**이며, 클럽 공식 회견 전문 미확보라 「구조적 부재」가 아니라 **「미완」** 이다. ⛔ 표본 2경기(우세 1 · 열세 1)이고 상대 수준이 교란 변수라 시즌 정본(st_false9/Attack .724, n=28) **변경 없음**.",
    "execution": "AVL 아스날전(08-31) 실측: st_false9/Build-Up .723, 라인 사이로 자주 하강(24터치), xA 0.10(팀 최고 창조 관여)이나 무슈팅·무득점. 채널 러너보다 드롭인형 성향이 더 강하게 나타남 — 영상의 「중앙·딥에서 편안함」 가설과 정합, 「채널 러너 유사성」 가설과는 다소 배치. ‖ [2026-09-03 D+2 추적, report 30] 🔴 **08-27 경기 전 가설이 「보류」가 아니라 「적중」이었다.** 같은 채널(Bains Analysis)의 경기 후 영상이 세 가설을 전부 관측으로 채웠다 — **홀드업**「when the ball came into him, he was **trying to hold it up**」✅ · **플릭온으로 러너 띄우기**「trying to get those little **flick-ons for Aston Villa players to run off him**」✅ · **채널 러닝**「there were points where Jackson was **running the channel very, very well**」✅ · **자력 운반**「아스날 좌측 스로인을 **가브리엘 상대 헤더 경합으로 따내고 40~50야드 운반** → 박스의 헤밍스에게 배급」✅(가설의 「30~40야드」와 사실상 동일). 수비 국면도 「**4-4-2 형태에서 매우 규율 있게**」 전방 압박 가담. ⭐ Coaches' Voice(독립 경로): 「**a traditional false nine이 아니라 아웃렛**」, 「adjusted his position to make runs into the **space outside Arsenal's back three build-up structure**, so Emery's side could play forwards quickly」 — 축은 counter-attacking transitions이고 **헤밍스·부엔디아가 뒤에서 들어오는 중앙 지원 러너**였다(9번이 내려오는 false9 구조와 반대 방향).",
    "game_role_implication": "st_false9/Build-Up 유지(match_player_prescriptions와 일치). 왓킨스(st_advanced) 대체가 아니라 9번 스타일 자체의 전환일 가능성 — obs#350·383 참조. 표본 확대 필요. ‖ [2026-09-03 D+2 추적, report 30] ⚠️ **`st_false9`/Build-Up은 실측 argmax로는 유지하되 「기능 판정으로는 오독」임을 명기한다.** 매체 근거가 **3:1로 역전**됐다(반대: Coaches' Voice·Bains 경기후·The Athletic의 에메리 의도 「와이드 포워드 → 정통 9번 전환」 / 찬성: Yahoo/Bardell 1건 — 🇫🇷프랑스어 재확인 결과 **원문은 전환 속도·깊이 침투 절을 포함해 더 균형적**이고 D+1이 하강 절만 인용한 편향이 있었다). ⛔ 역할 코드는 바꾸지 않는다(불변규칙 3 — 좌표 argmax를 서사로 덮지 않는다). ⭐⭐ **09-05 헐시티전(PL R3 원정·약체 상대·점유 우세 예상)이 판별 경기다** — 점유 우세 국면에서도 하강이 재현되면 `st_false9` 확정, 채널·전환 축이 지배하면 **`st_advanced`(왓킨스 계열) 또는 홀드업 계열로 재배정**한다. obs#425.",
    "label": "잭슨",
@@ -1076,7 +1084,7 @@
    "position": "ST",
    "sample_note": "직전 소속 첼시·바이에른 뮌헨 데이터 종합 서술 + AVL 데뷔전 1경기 실측 대조 ‖ [D+2] 매체 근거 3:1 역전 — 09-05 헐시티전이 st_false9 vs 채널·홀드업 판별 경기.",
    "sample_scope": "multi_source",
-   "source": "Bains Analysis, YouTube, 2026-08-27, https://www.youtube.com/watch?v=2POgqu_eyzM (자동 생성 자막 기준) · report 30(2026-08-31 AVL-아스날) 실측 대조 ; Coaches' Voice 2026-09-01 https://learning.coachesvoice.com/cv/aston-villa-arsenal-tactics-august-2026/ ; Bains Analysis 2026-09-01 https://www.youtube.com/watch?v=3ePF8hjITI4 (자동 생성 자막) ; footballchannel.jp 2026-09-01 ; ゲキサカ ; ESPN gameId 401879295 ; Arseblog 2026-09-01 ; obs#424~429"
+   "source": "Bains Analysis, YouTube, 2026-08-27, https://www.youtube.com/watch?v=2POgqu_eyzM (자동 생성 자막 기준) · report 30(2026-08-31 AVL-아스날) 실측 대조 ; Coaches' Voice 2026-09-01 https://learning.coachesvoice.com/cv/aston-villa-arsenal-tactics-august-2026/ ; Bains Analysis 2026-09-01 https://www.youtube.com/watch?v=3ePF8hjITI4 (자동 생성 자막) ; footballchannel.jp 2026-09-01 ; ゲキサカ ; ESPN gameId 401879295 ; Arseblog 2026-09-01 ; obs#424~429 ; [2026-09-06] FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (헐전 실측) + ゲキサカ 2026-09-06(Yahoo!ニュース 전재) · Read Aston Villa 2026-09-05/09-02 · Squawka 2026-09-05(⛔403 요약 경유) · BBC Sport/Sky Sports 2026-09-05 · Villa News 2026-09-05"
   },
   {
    "adherence": "MEDIUM-HIGH — 우측·컷인사이드·활동량 서사는 실측 정합. 다포지션 서사 중 CAM 주장은 실측이 기각(위치 주장은 실측 우선). 크로스 약점 서사는 실측 그리드와 무충돌(검증 불가 항목).",
@@ -1246,7 +1254,7 @@
   {
    "adherence": "**미검증(영입확정 · 수행 0경기)** — 판정은 첫 출전 이후에 낸다. ⭐ **사전 정합 판정 2건**: ⑴ **정합** — '깊게 서고 스위핑을 하지 않는다'는 원소속 실측이 에메리 요구와 방향이 같다(obs#154 · obs#220 · obs#229). 4중 근거(우리 그리드 · Opta · AIAPC 서술 · **EA 역할 숙련 `gk_ballplaying`**)가 스위퍼 서사를 기각한다. ⑵ ⛔ **리스크 이월** — 슛 질 보정 후 선방 생산이 **세리에A 2시즌 연속 음수**(−0.99 · −1.36)이고 마르티네스는 +3.52다. **팀을 바꿔도 회복되지 않은 이력**이 있어(벨기에 +4.16 → 세리에A 음수 2회) 체제가 바뀌어도 따라올 가능성이 크다. ⚠️ 반대로 **배급 정확도는 팀 함수**로 확인됐으므로(벨기에 75.8% ↔ 파르마 61.9%) 빌라에서 오를 여지가 있다. ⛔ **세트피스 배치·수비라인 통솔은 원소속에서도 근거 0건**이라 빌라 첫 경기의 1순위 관측 대상이다. ‖ [2026-09-02 추가] **「미검증·0경기」가 해소됐다.** 1경기 표본이지만 방향은 명확 — Adam Bate 영상의 「스위퍼 키퍼」 서사보다 기존 정합 판정(⑴ 정합 — 깊게 서고 스위핑 안 함)이 실측으로 재확인됐다. 로빈슨 상황에서의 주저가 「스위퍼 아님」의 직접 증거(obs#348). ‖ [2026-09-03 D+2 추적, report 30] ⭐ **「배급 정확도는 팀 함수」 가설이 빌라에서 확인됐다 — 단 방향이 예상과 다르다.** 이 행은 「빌라에서 달라질 축 ⑴ 배급 믹스 — 파르마 롱볼 60.4%는 저위치 롱볼 시스템의 값이고 **빌라의 짧은 빌드업은 다른 것을 요구한다**」고 예측했으나, **실제로는 빌라가 롱볼 쪽을 요구했다**(팀 롱볼 14/40·35%, 아스날 하이프레스 대응). ⇒ 예측의 전제(「빌라 = 짧은 빌드업」)가 **상대·국면에 따라 성립하지 않는다**. ⭐ 🇯🇵 결정적 비교: 「전임 **에밀리아노 마르티네스는 배급이 강점이 아니었다**」 ⇒ 스즈키는 단순 업그레이드가 아니라 **경로 신설**(롱킥 한 번의 전진)이며, Bains는 이를 「Aston Villa found **solutions in the build-up that they haven't really found before**」로 규정했다. ⚠️ **75분 하베르츠 1대1**은 🇯🇵「골 좌측 하단 슛 호세이브」 ↔ D+1「결과적 오프사이드」로 **두 기록이 병존** — 세이브 성립 여부는 미확정. ⭐ 「스위퍼 아님」 판정은 D+2에서도 반박되지 않았다(어느 소스도 전진 스위핑을 기록하지 않았다).",
    "confidence": "⛔ **에메리 체제 표본 0 — 이 행은 요구역할 기술과 사전 정합 판정까지이고 수행 평가가 아니다.** 첫 출전(개막 08-23 브라이턴 원정 이후) 뒤에 `execution`·`adherence`를 채운다. ⚠️ **원소속 관측을 이 체제 행으로 옮기지 않았다**(불변규칙 7) — 수치 정본은 `regime_id=NULL` 행(id=120)이고 그 행은 이적 전 기록으로 보존한다. 여기서는 방향 판정에만 인용했다. ⚠️ 인용된 원소속 값은 파르마(잔류권 딥블록) 시스템의 함수다 — 빌라에서 재현된다는 근거가 아니다. ⚠️ **양 구단 공식 발표는 여전히 0건이다**(2026-08-18 메인 세션이 avfc.co.uk 뉴스·parmacalcio1913.com/news 직접 파싱해 확인 — 빌라 최신은 FPL 프리뷰·글라드바흐전·일링 볼턴 임대, 파르마 최신은 로메로 영입·온드레이카 임대). ⇒ **DB에 못 박은 CONFIRMED 트리거(`avfc.co.uk 공식 발표`)는 미충족 상태이고, 이 승격은 사용자 지시에 따른 것이다.** 근거 상한: **메디컬 실시 확인**(Romano 1티어 08-17 07:21 UTC) + **개인 조건 5년 계약 합의**(Ornstein 1티어) + **£29.9m/€30m+€5m 구단 간 합의**(Sky UK 1티어 08-16) + **Moretto(2티어) '완료'**. ⛔ **'here we go'는 이 건에 붙지 않았다** — 일부 매체 헤드라인의 HWG는 태그 전용(轉用)이다(obs#234·transfer-watch 기록). ⚠️ obs#233(오늘 다른 세션)이 **'신호 하나로 등급을 올렸다가 24시간 만에 뒤집힌'** 마르티네스 사례를 남겼다 — 다만 스즈키는 **메디컬 이후** 단계이고 PSG 결렬은 **메디컬 직전**이었다는 점에서 국면이 다르다. ⇒ **공식 발표가 확인되면 이 캐비앗을 해제하고, 반대로 결렬되면 이 행들을 되돌려야 한다.**",
-   "duties": "**[영입확정 · 에메리 체제 요구역할 — 아직 수행 0경기]** GK 슬롯 요구는 `gk_goalkeeper/Defend`다: 박스 안 방어와 안전 배급을 우선하고 **전진 스위핑은 요구되지 않는다**(obs#154 — 에메리 구조는 GK에게 배후 청소를 맡기지 않는다). ⭐ 원소속(파르마) 관측이 이 요구와 **같은 방향**이다 — 자기 박스에 머물고, 박스 안 하이볼을 리그 최상위로 처리하며, 배후 공간 관리는 수비수 몫으로 지시받았다. 이월 관측의 상세는 **`regime_id=NULL` 행(id=120)** 에 보존돼 있다 — 그 행이 파르마 3체제(신트트라위던 / 페키아·키부 / 쿠에스타)의 원본이다. ⚠️ **빌라에서 달라질 축 2개**: ⑴ **배급 믹스** — 파르마 롱볼 비중 60.4%는 저위치 롱볼 시스템의 값이고 빌라의 짧은 빌드업은 다른 것을 요구한다 ⑵ **수비라인 높이** — 라인이 올라가면 평균 위치·배후 노출이 함께 변한다. ‖ [2026-09-02 추가, Adam Bate 영상] Frans Hoek(전 아약스·바르사·바이에른·맨유 GK코치, 일본 GK 육성 총괄) 계보의 「스위퍼 키퍼」 지향 신유형 서사 — A형(예측)·R형(반응) 겸비 주장. 세리에A 크로스 캐칭/하이클레임 2위, 낮은자세 반사 세이브 강점. ⭐ 영상이 직접 「아스톤 빌라는 빌드업에서 골키퍼 의존도가 높다」고 언급 — 기존 판정(gk_goalkeeper/Defend, 스위퍼 서사 기각)과 정면 배치되는 서사이나, 아래 09-01 실측이 기존 판정 쪽을 다시 지지했다.",
+   "duties": "**[영입확정 · 에메리 체제 요구역할 — 아직 수행 0경기]** GK 슬롯 요구는 `gk_goalkeeper/Defend`다: 박스 안 방어와 안전 배급을 우선하고 **전진 스위핑은 요구되지 않는다**(obs#154 — 에메리 구조는 GK에게 배후 청소를 맡기지 않는다). ⭐ 원소속(파르마) 관측이 이 요구와 **같은 방향**이다 — 자기 박스에 머물고, 박스 안 하이볼을 리그 최상위로 처리하며, 배후 공간 관리는 수비수 몫으로 지시받았다. 이월 관측의 상세는 **`regime_id=NULL` 행(id=120)** 에 보존돼 있다 — 그 행이 파르마 3체제(신트트라위던 / 페키아·키부 / 쿠에스타)의 원본이다. ⚠️ **빌라에서 달라질 축 2개**: ⑴ **배급 믹스** — 파르마 롱볼 비중 60.4%는 저위치 롱볼 시스템의 값이고 빌라의 짧은 빌드업은 다른 것을 요구한다 ⑵ **수비라인 높이** — 라인이 올라가면 평균 위치·배후 노출이 함께 변한다. ‖ [2026-09-02 추가, Adam Bate 영상] Frans Hoek(전 아약스·바르사·바이에른·맨유 GK코치, 일본 GK 육성 총괄) 계보의 「스위퍼 키퍼」 지향 신유형 서사 — A형(예측)·R형(반응) 겸비 주장. 세리에A 크로스 캐칭/하이클레임 2위, 낮은자세 반사 세이브 강점. ⭐ 영상이 직접 「아스톤 빌라는 빌드업에서 골키퍼 의존도가 높다」고 언급 — 기존 판정(gk_goalkeeper/Defend, 스위퍼 서사 기각)과 정면 배치되는 서사이나, 아래 09-01 실측이 기존 판정 쪽을 다시 지지했다.\n\n⭐ **[2026-09-06 match-watch 추가 — 헐전(2026-09-05) 실측·서사]** PL 3경기째 선발, 이 경기 **프리미어리그 일본인 GK 최초 클린시트**(선방 4·실점 방지 +0.17·평점 7.58). ⛔ **「안전 배급」 요구와 실제 행동이 갈린다**: 이 경기 **롱볼 9/10(90%)**·30m+ 롱패스 10회로 팀 공동 1위였고, 🇯🇵 ゲキサカ(2026-09-06, 일본어에서만 서술)은 「前半28分、自陣ペナルティエリアライン上から中央を貫くグラウンダーパスで最前線のFWニコラス・ジャクソンへとボールを届けた。同44分にもグラウンダーでジャクソンに繋ぎ、チームが一気に前進した」(번역: 전반 28분 자기 진영 PA 라인 위에서 **중앙을 관통하는 땅볼 패스**로 최전방 잭슨에게 배급했다. 44분에도 땅볼로 잭슨에 연결해 팀이 단번에 전진했다)고 기록했다. 후반 8분에는 50m 이상 롱피드로 결정기 기점. ⇒ **딥블록 상대에서는 GK가 최종선까지 직접 건너뛰는 배급 통로로 쓰인다** — 요구 프로필의 「안전 배급」보다 공격적이다. ⭐ 스위핑은 여전히 0(Acted as sweeper 0)이라 **obs#154(에메리는 GK에게 배후 청소를 맡기지 않는다)는 유지된다** — 달라진 것은 스위핑이 아니라 **배급의 사거리**다. 단일 경기 커널 적합 gk_goalkeeper/**Balanced** .965 (시즌 정본 Defend .975와 노이즈 내 차이지만 이 경기 행동에는 Balanced가 더 가깝다). 표본 1경기 — 처방 변경 없음.",
    "execution": "⛔ **에메리 체제 실측 0건** — 빌라 공식전·친선 출전이 없다(영입확정 2026-08-18, 개막 08-23 브라이턴 원정 이전). 이 칸은 **첫 출전 후 채운다.** 현재 근거는 전부 원소속 기록이며 수치 정본은 id=120 행이다: SofaScore 자체 실측 29경기 2602분 평점 7.05 · tool_y 10.06 · 펀칭 0.72/90 / Opta 25/26 세리에A 하이볼 처리 p88 · 스위퍼 행동 p71 · **선방으로 막은 실점 −1.36(p24)** · 패스 정확도 61.9%(p26). ‖ [2026-09-02 추가] ⭐ AVL 공식전 데뷔 실측 확보(2026-08-31 아스날전) — gk_goalkeeper/Balanced fit **.926**(확정적), 90분 36터치 대부분 자기 진영 짧은 패스(avg_x=13.1). 로빈슨 침투 위기 상황에서 라인 전진을 주저(obs#348, 축수저 영상 분석) — **스위퍼형 행동은 관찰되지 않았다.** ‖ [2026-09-03 D+2 추적, report 30] ⭐⭐ **롱 배급 경로가 3중 독립 확증됐다(분 단위 특정).** 메커니즘: 아스날이 맨투맨 하이프레스(하베르츠→GK, 사카·촐리스→양 CB, 외데고르→피벗 레인, 루이스-스켈리→캐시 반쯤)를 걸자 **스즈키가 롱볼로 프레스를 건너뛰고**, 최종 라인까지 맨투맨이었기에 **맥긴이 세컨볼 경합을 따내고 캐시가 루이스-스켈리를 등지고 달려 단번에 40~50야드** 전진했다(Bains). 분 단위(🇯🇵footballchannel.jp·ゲキサカ): **27분** 좌발 띄운 볼 → 우측 SB **캐시** → **그 흐름이 마첸의 슈팅으로 연결**(⇒ **AVL 7슈팅 중 최소 1개가 골키퍼 배급 기점**, §5 마첸 xG 0.07·슛2 중 하나) · **29분** 라이너성 볼 → 적진 좌측 **헤밍스**(공격 스위치) · 29분 약 60야드 롱피드(Guardian 「見事な一撃」) · **33분** 우측을 달리는 **맥긴**. Coaches' Voice(독립): 「distribution **repeatedly drove the ball into that space, bypassing Arsenal's aggressive pressing structure**」 — 그 공간은 **벤 화이트 배후**이고 거기 **헤밍스가 high and wide on the last line**으로 서 있어 순간적 **4v4**가 성립. ⭐ **양발** 근거: 🇫🇷「distribution des deux pieds」·🇯🇵「両足からの配球が優秀」; Bains는 좌발 패스가 너무 좋아 「**왼발잡이인지 확인하러 갔다**」. 평점 보강: The 4th Official 6.5 · 현지 players-rated 7(팀 최고 동률·독자투표 1위) · FotMob 6.4.",
    "game_role_implication": "`gk_goalkeeper/Defend` 유지 — `squad_entries`·`prescriptions` 모두 이 값이다(fit .975, 단 GK 적합은 변별력이 없다: obs#220). ⚠️ **포커스를 `Build-Up`으로 올리지 않는다** — 빌라의 짧은 서킬레이션에서의 실적 증거가 **23/24 벨기에 75.8% 하나뿐**이다. ⭐ FC26 표식: PlayStyles **긴패스·디플렉터**, 역할 숙련 **볼플레잉 키퍼 +**(마르티네스와 동일), AcceleRATE Controlled Lengthy, 체형 Stocky(185+), OVR 74/POT 80 (obs#234). ⚠️ **마르티네스 85 → 스즈키 74는 능력치 축의 −11**이고 역할·포커스로 메울 수 있는 종류가 아니다. ⛔ 주전 서열은 이 행으로 판단하지 않는다 — 마르티네스 유벤투스 이적이 무산돼 GK 슬롯은 2인 경합이다(obs#233). ‖ [2026-09-03 D+2 추적, report 30] ⛔⭐ **`gk_goalkeeper/Defend` 유지 확정 — 그리고 「포커스를 `Build-Up`으로 올리지 않는다」는 기존 단서를 「D+2 근거로 재확인」으로 승격한다.** 이유가 명확해졌다: 이 행이 유보 사유로 든 것은 「빌라의 **짧은 서킬레이션** 실적 증거 부재」이고, **D+2가 확보한 대량 증거는 정확히 그 반대 종류(롱 배급)**다. FC26의 `Build-Up` 포커스는 **짧은 관여를 늘리는 축**이므로 여기서 상향하면 **오재현**이다. ⇒ 실측에 맞는 FC 표식은 이미 등재된 **PlayStyle 「긴패스」**이며, D+2는 그 **PlayStyle 근거를 강화**하고(3중 독립 확증) 여기에 **양발 배급**을 서사 근거로 추가한다. **역할·포커스 변경 없음.** obs#427.",
    "label": "스즈키 지온",
@@ -1256,7 +1264,7 @@
    "position": "GK",
    "sample_note": "⛔ 에메리 체제 표본 0경기(영입확정 2026-08-18 · 빌라 첫 경기 미출전). 인용한 수치는 전부 원소속 기록이며 정본은 player_duties id=120(파르마 25/26 세리에A 20경기 1800분 + 24/25 37 + 23/24 벨기에 32 + 2026 월드컵 4, regime_id=NULL)이다. 빌라 표본은 0이므로 observed_from/to를 임의로 채우지 않고 NULL로 둔다.",
    "sample_scope": "unknown",
-   "source": "transfer_targets id=149 CONFIRMED 승격(2026-08-18) ; squad_entries id=68 ; prescriptions measured:season:full2526 ; player_duties id=120(원소속 관측 정본 · regime_id=NULL) ; obs#154 · obs#220 · obs#222 · obs#223 · obs#224 · obs#225 · obs#229 · obs#233 · obs#234 ; reports/transfer-watch/2026-08-16.md ; Adam Bate YouTube 2026-08-16 (자동생성자막) ; report 30(2026-08-31) ; Coaches' Voice 2026-09-01 https://learning.coachesvoice.com/cv/aston-villa-arsenal-tactics-august-2026/ ; Bains Analysis 2026-09-01 https://www.youtube.com/watch?v=3ePF8hjITI4 (자동 생성 자막) ; footballchannel.jp 2026-09-01 ; ゲキサカ ; ESPN gameId 401879295 ; Arseblog 2026-09-01 ; obs#424~429"
+   "source": "transfer_targets id=149 CONFIRMED 승격(2026-08-18) ; squad_entries id=68 ; prescriptions measured:season:full2526 ; player_duties id=120(원소속 관측 정본 · regime_id=NULL) ; obs#154 · obs#220 · obs#222 · obs#223 · obs#224 · obs#225 · obs#229 · obs#233 · obs#234 ; reports/transfer-watch/2026-08-16.md ; Adam Bate YouTube 2026-08-16 (자동생성자막) ; report 30(2026-08-31) ; Coaches' Voice 2026-09-01 https://learning.coachesvoice.com/cv/aston-villa-arsenal-tactics-august-2026/ ; Bains Analysis 2026-09-01 https://www.youtube.com/watch?v=3ePF8hjITI4 (자동 생성 자막) ; footballchannel.jp 2026-09-01 ; ゲキサカ ; ESPN gameId 401879295 ; Arseblog 2026-09-01 ; obs#424~429 ; [2026-09-06] FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (헐전 실측) + ゲキサカ 2026-09-06(Yahoo!ニュース 전재) · Read Aston Villa 2026-09-05/09-02 · Squawka 2026-09-05(⛔403 요약 경유) · BBC Sport/Sky Sports 2026-09-05 · Villa News 2026-09-05"
   },
   {
    "adherence": "순응도는 **감독 의존적이고 편차가 크다.** 알레그리 체제에서는 규율 준수·리더로 정착했고(「Sento la responsabilità nello spogliatoio」, 감독이 이적에 veto를 걸고 「Barzagli rossonero」로 평가), 「내려서 공간을 덮는 것은 수치가 아니다 — 중요한 것은 **조급해지지 않는 것(non avere frenesia)**」이라는 저블록 순응 진술을 남겼다(Gazzetta 2026-04-24). ⭐ **frenesia(조급함)가 이 선수의 서사적 핵심 결함이고 백3의 커버가 그것을 덮어줬다** — milannews24는 백3 전환 후 「meno frenesia negli interventi」로 개선됐다고 기록한다. ⛔ 반면 **폰세카 체제**에서는 10월 중순 이후 세리에A 9경기 9분으로 강등됐고(감독은 공개적으로 「grande professionista」라 했으나 기용이 발언과 어긋난다), **아모림 체제(26/27)**에서는 개막 전 프로젝트 배제·분리 훈련·이적 통보를 받았다. ⚠️ **규율 리스크는 정량적이다** — 밀란 6시즌 **퇴장 4회, 그중 경고누적 3회**(사수올로전 24분 경고누적 퇴장 포함). FotMob 25/26: 옐로 6장(백분위 12)·레드 1장(백분위 1)·파울/90 1.264(백분위 13). ⚠️ 단 밀란 초기에는 **31경기 무경고**였으므로 성향이 아니라 **악화 궤적**으로 읽는다.",
@@ -45525,11 +45533,6 @@
  "form": {
   "가르나초": [
    [
-    "2026-03-07",
-    8.4,
-    "FA Cup"
-   ],
-   [
     "2026-03-14",
     6.7,
     "Premier League"
@@ -45572,6 +45575,11 @@
    [
     "2026-08-31",
     5.98,
+    "Premier League"
+   ],
+   [
+    "2026-09-05",
+    6.11,
     "Premier League"
    ]
   ],
@@ -45886,11 +45894,6 @@
   ],
   "린델뢰프": [
    [
-    "2026-05-24",
-    6.7,
-    "Premier League"
-   ],
-   [
     "2026-06-01",
     6.9,
     "International Friendly Games"
@@ -45933,6 +45936,11 @@
    [
     "2026-08-31",
     6.41,
+    "Premier League"
+   ],
+   [
+    "2026-09-05",
+    7.65,
     "Premier League"
    ]
   ],
@@ -46022,11 +46030,6 @@
   ],
   "마첸": [
    [
-    "2026-04-30",
-    6.8,
-    ""
-   ],
-   [
     "2026-05-03",
     5.7,
     ""
@@ -46070,14 +46073,14 @@
     "2026-08-31",
     6.12,
     "Premier League"
+   ],
+   [
+    "2026-09-05",
+    7.42,
+    "Premier League"
    ]
   ],
   "마테오 루헤리": [
-   [
-    "2026-04-14",
-    6.2,
-    "UEFA Champions League"
-   ],
    [
     "2026-04-18",
     6.2,
@@ -46122,6 +46125,11 @@
     "2026-08-01",
     6.5,
     "Club Friendly Games"
+   ],
+   [
+    "2026-09-05",
+    6.52,
+    "Premier League"
    ]
   ],
   "만잠비": [
@@ -46178,11 +46186,6 @@
   ],
   "맥긴": [
    [
-    "2026-04-25",
-    7.0,
-    "PL"
-   ],
-   [
     "2026-04-30",
     7.0,
     "EL"
@@ -46226,14 +46229,14 @@
     "2026-08-31",
     5.76,
     "Premier League"
+   ],
+   [
+    "2026-09-05",
+    5.74,
+    "Premier League"
    ]
   ],
   "밍스": [
-   [
-    "2026-02-21",
-    6.7,
-    "Premier League"
-   ],
    [
     "2026-03-04",
     6.4,
@@ -46278,14 +46281,14 @@
     "2026-08-23",
     6.17,
     "Premier League"
+   ],
+   [
+    "2026-09-05",
+    7.57,
+    "Premier League"
    ]
   ],
   "바클리": [
-   [
-    "2026-04-12",
-    7.0,
-    "Premier League"
-   ],
    [
     "2026-04-19",
     6.4,
@@ -46329,6 +46332,11 @@
    [
     "2026-08-31",
     7.31,
+    "Premier League"
+   ],
+   [
+    "2026-09-05",
+    7.2,
     "Premier League"
    ]
   ],
@@ -46438,11 +46446,6 @@
   ],
   "부엔디아": [
    [
-    "2026-05-03",
-    7.6,
-    "PL"
-   ],
-   [
     "2026-05-07",
     9.4,
     "EL"
@@ -46485,6 +46488,11 @@
    [
     "2026-08-31",
     6.46,
+    "Premier League"
+   ],
+   [
+    "2026-09-05",
+    6.23,
     "Premier League"
    ]
   ],
@@ -46594,11 +46602,6 @@
   ],
   "스즈키 지온": [
    [
-    "2026-04-25",
-    7.3,
-    "Serie A"
-   ],
-   [
     "2026-05-03",
     6.9,
     "Serie A"
@@ -46641,6 +46644,11 @@
    [
     "2026-08-31",
     6.43,
+    "Premier League"
+   ],
+   [
+    "2026-09-05",
+    7.58,
     "Premier League"
    ]
   ],
@@ -46750,11 +46758,6 @@
   ],
   "알리송": [
    [
-    "2025-10-26",
-    8.7,
-    "Brasileirao"
-   ],
-   [
     "2025-11-02",
     6.9,
     "Brasileirao"
@@ -46797,6 +46800,11 @@
    [
     "2026-08-31",
     6.2,
+    "Premier League"
+   ],
+   [
+    "2026-09-05",
+    6.02,
     "Premier League"
    ]
   ],
@@ -47062,11 +47070,6 @@
   ],
   "잭슨": [
    [
-    "2026-05-31",
-    6.4,
-    "International Friendly Games"
-   ],
-   [
     "2026-06-09",
     6.2,
     "International Friendly Games"
@@ -47109,6 +47112,11 @@
    [
     "2026-08-31",
     6.5,
+    "Premier League"
+   ],
+   [
+    "2026-09-05",
+    6.66,
     "Premier League"
    ]
   ],
@@ -47166,11 +47174,6 @@
   ],
   "카마라": [
    [
-    "2025-12-14",
-    6.5,
-    "PL"
-   ],
-   [
     "2025-12-21",
     6.9,
     "PL"
@@ -47214,14 +47217,14 @@
     "2026-08-31",
     6.85,
     "Premier League"
+   ],
+   [
+    "2026-09-05",
+    7.5,
+    "Premier League"
    ]
   ],
   "캐시": [
-   [
-    "2026-05-03",
-    7.0,
-    "PL"
-   ],
    [
     "2026-05-07",
     7.2,
@@ -47265,6 +47268,11 @@
    [
     "2026-08-31",
     6.74,
+    "Premier League"
+   ],
+   [
+    "2026-09-05",
+    6.75,
     "Premier League"
    ]
   ],
@@ -47582,11 +47590,6 @@
   ],
   "헤밍스": [
    [
-    "2025-10-28",
-    6.4,
-    "Football League Trophy"
-   ],
-   [
     "2025-11-05",
     7.1,
     "UEFA Youth League"
@@ -47629,6 +47632,11 @@
    [
     "2026-08-31",
     5.77,
+    "Premier League"
+   ],
+   [
+    "2026-09-05",
+    6.85,
     "Premier League"
    ]
   ]
@@ -51638,6 +51646,925 @@
   ]
  },
  "match_reports": [
+  {
+   "bigch_o": 1,
+   "bigch_v": 2,
+   "blocked_o": 0,
+   "blocked_v": 5,
+   "competition": "Premier League",
+   "confidence": "measured. 좌표 방위는 캐시(DR) ay=13.4 ↔ 마첸(DL) ay=83.5, 스즈키(GK) ax=12.1로 사전 실증 검증. ⚠️ 표본 1경기 — 판별 논점 3건 모두 n=2이며 정본 처방 변경 근거가 아니다. ⚠️ 상대는 승격팀·5-4-1 딥블록이라 74% 점유는 상대 의도의 산물이다. ⚠️ PPDA 분모 12로 얇다. ⚠️ 74% 점유의 수비액션은 정착 블록이 아니라 역압박이다.",
+   "corners_o": 3,
+   "corners_v": 4,
+   "created_at": "2026-09-06",
+   "cross_acc_v": 1,
+   "cross_att_v": 12,
+   "date": "2026-09-05",
+   "duelpct_v": 45.2,
+   "event_id": 5795440,
+   "formation_o": "5-4-1",
+   "formation_v": "4-2-3-1",
+   "fouls_o": 10,
+   "fouls_v": 5,
+   "game_implications": "【결론: 추가 관찰】세 판별 논점 모두 방향이 뚜렷하지만 전부 표본 2경기다. 특히 논점 ①은 Δ가 크지만 「점유 우세 1경기 vs 열세 1경기」의 대비라 국면 축을 분리한 3~4번째 표본이 필요하다. prescriptions·slot_canon_roles·team_tactic_setups 변경 없음.\n\n【이 경기 전용 팀 설정(MATCH ONLY)】FC26 / 4-2-3-1 Wide / 빌드업 Short Passing / 수비 접근 High / 라인 높이 68. 근거: 점유 74%·패스 694(90%)·상대 진영 패스 393으로 Short Passing이 명확하다(아스날전 Balanced와 다름). PPDA 14.67(아스날전 30.50의 절반 이하)로 High. 라인 높이는 백4 avg_x(린델뢰프 40.9·밍스 44.9·캐시 53.7·마첸 55.9, 평균 48.9)와 팀 수비액션 평균 x 36.3(역압박 성격)을 함께 보고 68로 둔다 — 아스날전 40·브라이턴전 38 대비 대폭 상향.\n\n【선발 11명 역할】GK 스즈키 gk_goalkeeper/Balanced .965(롱볼 9/10 배급 — Defend보다 Balanced가 이 경기 행동에 맞다) · RB 캐시 fb_att_wb/Support .910(시즌 정본 fb_wingback/Balanced와 다름) · RCB 린델뢰프 cb_bpd/Aggressive .800 · LCB 밍스 cb_bpd/Aggressive .802 · LB 마첸 fb_att_wb/Support .903 · RDM 카마라 dm_dlp/Roaming .793 · LDM 바클리 dm_dlp/Roaming .756 · RM 맥긴 wm_winger/Attack .774 · CAM 부엔디아 cam_classic10/Attack .879(⚠️ 시즌 정본 cam_playmaker/Roaming과 다름 — 이 경기는 침투형) · LM 헤밍스 wm_winger/Attack .613(fit 낮음 — 위치 분산) · ST 잭슨 st_advanced/Support .632(⭐ 아스날전 st_false9/Build-Up에서 전환). 교체 5명은 starter=0 + minute_on으로 기록하며, 가르나초·알리송은 명목 교체 대상이 아니라 실측 좌표 기준 슬롯으로 넣었다.\n\n【다음 경기 재검증 (2026-09-12 vs Nottingham Forest, 홈)】① 잭슨 — 점유 우세면 ax가 다시 70대인가, 열세면 60대로 내려가는가(국면-성향 분리 3번째 표본). ② 무공 형태 — 잭슨−부엔디아 수비액션 x 격차: 0에 가까우면 4-4-2, 15+면 4-4-1-1. ③ 양 풀백 동시 전진이 반복되는가, 딥블록 한정 대응이었나. ④ 캐시 이음새 — 상대 공격의 측면 편중률, 2경기 연속 50%+면 obs 승격. ⑤ 유효슛 비율 — 3경기 연속 무득점, 13슛 1유효가 우연인지 구조인지.",
+   "game_players": [
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.965,
+     "focus": "Balanced",
+     "game_version": "FC26",
+     "label": "스즈키 지온",
+     "minute_on": null,
+     "name_en": "Zion Suzuki",
+     "player_id": 132,
+     "pos_label": "GK",
+     "rationale": "롱볼 9/10·스위퍼 행동 0. 시즌 정본 Defend(.975)와 노이즈 내 차이지만 이 경기 배급 행동에는 Balanced가 맞다",
+     "replaced_player_id": null,
+     "role_id": "gk_goalkeeper",
+     "role_name": "골키퍼",
+     "sort_order": 1,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 1,
+     "x": 50,
+     "y": 6
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.91,
+     "focus": "Support",
+     "game_version": "FC26",
+     "label": "캐시",
+     "minute_on": null,
+     "name_en": "Matty Cash",
+     "player_id": 2,
+     "pos_label": "RB",
+     "rationale": "ax 53.7로 26/27 PL 최고 전진. ⚠️ 시즌 정본 fb_wingback/Balanced(.959)와 다르다 — 이 경기 한정",
+     "replaced_player_id": null,
+     "role_id": "fb_att_wb",
+     "role_name": "공격형 윙백",
+     "sort_order": 2,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 1,
+     "x": 87,
+     "y": 32
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.8,
+     "focus": "Aggressive",
+     "game_version": "FC26",
+     "label": "린델뢰프",
+     "minute_on": null,
+     "name_en": "Victor Lindelof",
+     "player_id": 7,
+     "pos_label": "RCB",
+     "rationale": "라인브레이킹 20·30m+ 롱패스 10·패스 95%. 역할은 시즌 정본과 동일하고 fit만 전진 폭 때문에 하락",
+     "replaced_player_id": null,
+     "role_id": "cb_bpd",
+     "role_name": "볼 플레잉 센터백",
+     "sort_order": 3,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 1,
+     "x": 63,
+     "y": 28
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.802,
+     "focus": "Aggressive",
+     "game_version": "FC26",
+     "label": "밍스",
+     "minute_on": null,
+     "name_en": "Tyrone Mings",
+     "player_id": 17,
+     "pos_label": "LCB",
+     "rationale": "ax 44.9 전진 + 세트피스 표적(슛 3)",
+     "replaced_player_id": null,
+     "role_id": "cb_bpd",
+     "role_name": "볼 플레잉 센터백",
+     "sort_order": 4,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 1,
+     "x": 37,
+     "y": 28
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.903,
+     "focus": "Support",
+     "game_version": "FC26",
+     "label": "마첸",
+     "minute_on": null,
+     "name_en": "Ian Maatsen",
+     "player_id": 6,
+     "pos_label": "LB",
+     "rationale": "스프린트 18(팀 1위)·xA 0.42·팀 유일 성공 크로스. 캐시와 동시 전진",
+     "replaced_player_id": null,
+     "role_id": "fb_att_wb",
+     "role_name": "공격형 윙백",
+     "sort_order": 5,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 1,
+     "x": 13,
+     "y": 32
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.793,
+     "focus": "Roaming",
+     "game_version": "FC26",
+     "label": "카마라",
+     "minute_on": null,
+     "name_en": "Boubacar Kamara",
+     "player_id": 12,
+     "pos_label": "RDM",
+     "rationale": "최종3분의1 패스 15·탈취당함 0·상대 박스 터치 0 — 완전한 후방 축",
+     "replaced_player_id": null,
+     "role_id": "dm_dlp",
+     "role_name": "딥라잉 플레이메이커",
+     "sort_order": 6,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 1,
+     "x": 62,
+     "y": 42
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.756,
+     "focus": "Roaming",
+     "game_version": "FC26",
+     "label": "바클리",
+     "minute_on": null,
+     "name_en": "Ross Barkley",
+     "player_id": 21,
+     "pos_label": "LDM",
+     "rationale": "터치 120(팀 1위)·라인브레이킹 18. 슛 4는 박스 밖 무산",
+     "replaced_player_id": null,
+     "role_id": "dm_dlp",
+     "role_name": "딥라잉 플레이메이커",
+     "sort_order": 7,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 1,
+     "x": 38,
+     "y": 42
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.774,
+     "focus": "Attack",
+     "game_version": "FC26",
+     "label": "맥긴",
+     "minute_on": null,
+     "name_en": "John McGinn",
+     "player_id": 10,
+     "pos_label": "RM",
+     "rationale": "ay 23.6 터치라인 점유·크로스 4회. ⚠️ 캐시(fb_att_wb)와 동측 — obs#443 혼잡 구성",
+     "replaced_player_id": null,
+     "role_id": "wm_winger",
+     "role_name": "윙어",
+     "sort_order": 8,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 1,
+     "x": 85,
+     "y": 64
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.879,
+     "focus": "Attack",
+     "game_version": "FC26",
+     "label": "부엔디아",
+     "minute_on": null,
+     "name_en": "Emiliano Buendia",
+     "player_id": 14,
+     "pos_label": "CAM",
+     "rationale": "⚠️ 시즌 정본 cam_playmaker/Roaming과 다르다. 박스진입패스 5·xG 0.61의 침투형",
+     "replaced_player_id": null,
+     "role_id": "cam_classic10",
+     "role_name": "클래식 10번",
+     "sort_order": 9,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 1,
+     "x": 50,
+     "y": 66
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.613,
+     "focus": "Attack",
+     "game_version": "FC26",
+     "label": "헤밍스",
+     "minute_on": null,
+     "name_en": "George Hemmings",
+     "player_id": 30,
+     "pos_label": "LM",
+     "rationale": "fit 낮음(위치 분산). 산출(유효슛·빅찬스 창출)은 안쪽 진입에서 나왔다 — 다음 표본에서 wm_wideplm 대안 검토",
+     "replaced_player_id": null,
+     "role_id": "wm_winger",
+     "role_name": "윙어",
+     "sort_order": 10,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 1,
+     "x": 14,
+     "y": 64
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.632,
+     "focus": "Support",
+     "game_version": "FC26",
+     "label": "잭슨",
+     "minute_on": null,
+     "name_en": "Nicolas Jackson",
+     "player_id": 76,
+     "pos_label": "ST",
+     "rationale": "⭐ 아스날전 st_false9/Build-Up(.723 1위)에서 역전. 이 경기 st_false9/Build-Up은 .368(6위). 박스 상주형 — obs#446",
+     "replaced_player_id": null,
+     "role_id": "st_advanced",
+     "role_name": "어드밴스드 포워드",
+     "sort_order": 11,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 1,
+     "x": 50,
+     "y": 87
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.943,
+     "focus": "Support",
+     "game_version": "FC26",
+     "label": "마테오 루헤리",
+     "minute_on": 75,
+     "name_en": "Matteo Ruggeri",
+     "player_id": 78,
+     "pos_label": "LB",
+     "rationale": "교체 75분(마첸 out). ay 91.4 극단 터치라인 · ⚠️ 23터치 표본",
+     "replaced_player_id": 6,
+     "role_id": "fb_att_wb",
+     "role_name": "공격형 윙백",
+     "sort_order": 12,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 0,
+     "x": 13,
+     "y": 32
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.875,
+     "focus": "Attack",
+     "game_version": "FC26",
+     "label": "가르나초",
+     "minute_on": 75,
+     "name_en": "Alejandro Garnacho",
+     "player_id": 58,
+     "pos_label": "LM",
+     "rationale": "교체 75분(명목은 부엔디아 out). ⚠️ 실측 좌표(ax 72.3·ay 90.1) 기준 LM으로 넣었다 — 명목 교체 슬롯 아님. 12터치",
+     "replaced_player_id": 14,
+     "role_id": "wm_winger",
+     "role_name": "윙어",
+     "sort_order": 13,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 0,
+     "x": 14,
+     "y": 64
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.904,
+     "focus": "Attack",
+     "game_version": "FC26",
+     "label": "알리송",
+     "minute_on": 75,
+     "name_en": "Alysson",
+     "player_id": 59,
+     "pos_label": "RM",
+     "rationale": "교체 75분(명목은 헤밍스 out). ⚠️ 실측 좌표(ay 17.2) 기준 RM — 가르나초와 좌우 교차 재배치. 13터치",
+     "replaced_player_id": 30,
+     "role_id": "wm_wideplm",
+     "role_name": "와이드 플레이메이커",
+     "sort_order": 14,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 0,
+     "x": 85,
+     "y": 64
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": 0.786,
+     "focus": "Support",
+     "game_version": "FC26",
+     "label": "완비사카",
+     "minute_on": 85,
+     "name_en": "Aaron Wan-Bissaka",
+     "player_id": 90,
+     "pos_label": "RB",
+     "rationale": "교체 85분(캐시 out) — 이음새 봉쇄 배치. ⚠️ 5분·12터치, 판단 불가",
+     "replaced_player_id": 2,
+     "role_id": "fb_att_wb",
+     "role_name": "공격형 윙백",
+     "sort_order": 15,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 0,
+     "x": 87,
+     "y": 32
+    },
+    {
+     "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+     "fit_sim": null,
+     "focus": "Build-Up",
+     "game_version": "FC26",
+     "label": "타미 아브라함",
+     "minute_on": 85,
+     "name_en": "Tammy Abraham",
+     "player_id": 60,
+     "pos_label": "ST",
+     "rationale": "교체 85분(잭슨 out). ⚠️ hit_points 4로 단일 경기 fit 산출 불가(.182) — fit_sim은 NULL로 두고 역할은 시즌 정본(st_false9/Build-Up .743, 아스날전 프리셋)을 승계했다",
+     "replaced_player_id": 76,
+     "role_id": "st_false9",
+     "role_name": "폴스 나인",
+     "sort_order": 16,
+     "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+     "starter": 0,
+     "x": 50,
+     "y": 87
+    }
+   ],
+   "game_setup": {
+    "build_up_style": "Short Passing",
+    "confidence": "measured(match-only). 시즌 team_tactic_setups·prescriptions·slot_canon_roles에 병합 금지.",
+    "defensive_approach": "High",
+    "formation": "4-2-3-1 Wide",
+    "game_version": "FC26",
+    "line_height": 68,
+    "match_only": 1,
+    "rationale": "점유 74%·패스 694(정확도 90%)·상대 진영 패스 393 대 자기 진영 231로 Short Passing이 명확하다 (아스날전 Balanced·39% 점유와 다른 국면). 롱볼 26/39(67%)가 있으나 이는 딥블록 위로 넘기는 보조 경로(스즈키 9/10·린델뢰프 30m+ 10회)이지 주 빌드업이 아니다. 수비 접근은 PPDA 14.67(아스날전 30.50·브라이턴전 24.69의 절반 이하)로 High. ⚠️ 단 PPDA 분모(상대 진영 수비액션) 12로 얇다 — 74% 점유 탓에 상대 패스 자체가 176회뿐이다. 라인 높이 68은 백4 avg_x(린델뢰프 40.9·밍스 44.9·캐시 53.7·마첸 55.9 · 평균 48.9)와 팀 수비액션 평균 x 36.3을 함께 본 값이다 — 후자는 정착 블록이 아니라 역압박 지점이라 그대로 라인 높이로 읽지 않았다. 아스날전 40·브라이턴전 38 대비 대폭 상향이며, 상대(승격팀 5-4-1 딥블록)가 만든 국면이라 시즌 기본값 48~52로 일반화하지 않는다.",
+    "report_id": 31,
+    "source": "FotMob matchDetails matchId=5795440 · WhoScored/Opta matchCentreData matchId=1983577 (2026-09-06)",
+    "tactic_code": ""
+   },
+   "id": 31,
+   "long_acc_o": 26,
+   "long_acc_v": 26,
+   "long_att_o": 54,
+   "long_att_v": 39,
+   "match_id": 95,
+   "opponent": "Hull City",
+   "overall_assessment": "점유 74%·xG 1.93·상대 박스 터치 24를 만들고 유효슛 1개로 무득점 — 3경기 연속 무득점이 됐다. 구조(중앙 이중 축 순환·백4 전진·PPDA 14.67)는 개막 후 가장 잘 작동했고 실패한 것은 마지막 20m다(크로스 1/12, 50·53분 빅찬스 연속 실축, 13슛 중 5블록). 판별 3건 성과: 잭슨은 우세 국면에서 하강하지 않고 박스에 상주해 커널 1위가 st_false9→st_advanced로 역전됐고, 아스날전 4-4-2 플랫은 좌표로 확증되는 동시에 이 경기엔 재현되지 않아 국면 의존 형태로 한정됐으며, 캐시 뒤 이음새는 점유 우세에서도 재현됐다(헐 공격 52.4% 편중). 전부 n=2 — 추가 관찰.",
+   "passes_o": 229,
+   "passes_v": 694,
+   "players": [
+    {
+     "assists": 0,
+     "avg_x": 53.72,
+     "avg_y": 13.39,
+     "characteristics": "최종3분의1 이벤트 21건(팀 2위)·박스진입패스 3·찬스 창출 1. 반면 수비액션 1·제쳐짐 2·지상경합 1/4·공중 1/3",
+     "confidence": "measured (선발 · 45분+ · hit_points 15+ 통과)",
+     "duels_lost": 5,
+     "duels_won": 2,
+     "game_implication": "단일 경기 fb_att_wb/Support .910. ⚠️ 시즌 정본은 fb_wingback/Balanced .959 — 이 경기는 정본보다 훨씬 공격적이다. ⚠️ 헐 공격의 52.4%가 이 쪽으로 왔다(자일스 크로스 8개) — 2경기 연속 이음새. obs#448",
+     "goals": 0,
+     "hit_points": 85,
+     "interceptions": 0,
+     "key_passes": 1,
+     "label": "캐시",
+     "lineup_pos": "D",
+     "map25": "000120002X000430001700002",
+     "minutes": 85,
+     "name_en": "Matty Cash",
+     "performance": "85분 평점 6.75 · 터치 85 · 패스 57/66 · 듀얼 2승5패 · avg(53.7, 13.4) — ax는 26/27 PL 최고(아스날전 47.9) · hit_points 85",
+     "player_id": 2,
+     "pos_class": "RB",
+     "position": "RB",
+     "rating": 6.75,
+     "recoveries": 1,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 1,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"RB\", \"opta_position\": \"DR\", \"shirt\": 2, \"fotmob_raw\": {\"FotMob rating\": [6.75, null], \"Minutes played\": [85, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Expected assists (xA)\": [0.03, null], \"xG + xA\": [0.03, null], \"Top speed\": [32.099998474121094, null], \"Distance covered\": [9243, null], \"Accurate passes\": [57, 66], \"Chances created\": [1, null], \"Shotmap\": [0, null], \"Fantasy points\": [6, null], \"Defensive actions\": [1, null], \"Touches\": [85, null], \"Touches in opposition box\": [3, null], \"Passes into final third\": [7, null], \"Line breaking passes\": [7, null], \"Accurate crosses\": [0, 1], \"Accurate long balls\": [1, 4], \"Dispossessed\": [0, null], \"Tackles\": [0, null], \"Blocks\": [0, null], \"Clearances\": [1, null], \"Headed clearance\": [1, null], \"Interceptions\": [0, null], \"Recoveries\": [1, null], \"Dribbled past\": [2, null], \"Ground duels won\": [1, 4], \"Aerial duels won\": [1, 3], \"Was fouled\": [1, null], \"Fouls committed\": [1, null], \"Duels won\": [2, null], \"Duels lost\": [5, null], \"Running\": [1755, 9243], \"Sprinting\": [270, 9243], \"Number of sprints\": [12, null]}}",
+     "tackles": 0,
+     "tactical_role": "완전 전진 윙백 — 공격 관여 팀 2위, 수비 기여 사실상 0",
+     "touches": 85,
+     "xa": 0.03,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 55.88,
+     "avg_y": 83.5,
+     "characteristics": "팀 유일 성공 크로스(1/2)·xA 0.42(팀 1위)·찬스 1. 스프린트 18회(팀 1위)로 반복 오버랩. 인터셉트 1·태클 1",
+     "confidence": "measured (선발 · 45분+ · hit_points 15+ 통과)",
+     "duels_lost": null,
+     "duels_won": 3,
+     "game_implication": "fb_att_wb/Support .903 — 시즌 measured(fb_wingback/Balanced .821)보다 높다. 캐시와 동시 전진해 에메리 정본 「한 번에 한 쪽」과 어긋난 국면(obs#448)",
+     "goals": 0,
+     "hit_points": 56,
+     "interceptions": 1,
+     "key_passes": 1,
+     "label": "마첸",
+     "lineup_pos": "D",
+     "map25": "31000X1100511002310021100",
+     "minutes": 75,
+     "name_en": "Ian Maatsen",
+     "performance": "75분 평점 7.42 · 터치 56 · 패스 36/40 · avg(55.9, 83.5) · hit_points 56",
+     "player_id": 6,
+     "pos_class": "LB",
+     "position": "LB",
+     "rating": 7.42,
+     "recoveries": 0,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 1,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"LB\", \"opta_position\": \"DL\", \"shirt\": 22, \"fotmob_raw\": {\"FotMob rating\": [7.42, null], \"Minutes played\": [75, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Expected assists (xA)\": [0.42, null], \"xG + xA\": [0.42, null], \"Top speed\": [33.5, null], \"Distance covered\": [8674, null], \"Accurate passes\": [36, 40], \"Chances created\": [1, null], \"Shotmap\": [0, null], \"Fantasy points\": [7, null], \"Defensive actions\": [3, null], \"Touches\": [56, null], \"Touches in opposition box\": [2, null], \"Successful dribbles\": [1, 1], \"Passes into final third\": [5, null], \"Line breaking passes\": [2, null], \"Accurate crosses\": [1, 2], \"Accurate long balls\": [1, 3], \"Dispossessed\": [0, null], \"Tackles\": [1, null], \"Blocks\": [0, null], \"Clearances\": [1, null], \"Headed clearance\": [1, null], \"Interceptions\": [1, null], \"Recoveries\": [0, null], \"Dribbled past\": [0, null], \"Ground duels won\": [2, 2], \"Aerial duels won\": [1, 1], \"Was fouled\": [null, null], \"Fouls committed\": [0, null], \"Duels won\": [3, null], \"Running\": [1803, 8674], \"Sprinting\": [352, 8674], \"Number of sprints\": [18, null]}}",
+     "tackles": 1,
+     "tactical_role": "전진 윙백 — 반복 오버랩",
+     "touches": 56,
+     "xa": 0.42,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 40.91,
+     "avg_y": 33.83,
+     "characteristics": "패스 105/110(95%)·라인브레이킹 20(팀 1위)·최종3분의1 11·30m+ 롱패스 10회(팀 1위)·롱볼 5/8. 제쳐짐 0·탈취당함 0·클리어 4(헤더 2)",
+     "confidence": "measured (선발 · 45분+ · hit_points 15+ 통과)",
+     "duels_lost": null,
+     "duels_won": 1,
+     "game_implication": "cb_bpd/Aggressive .800. 시즌 정본과 동일 역할이나 fit이 .968→.800으로 하락 — 전진 폭 확대 탓이지 역할 변화가 아니다",
+     "goals": 0,
+     "hit_points": 114,
+     "interceptions": 0,
+     "key_passes": 2,
+     "label": "린델뢰프",
+     "lineup_pos": "D",
+     "map25": "000000036000X900039400133",
+     "minutes": 90,
+     "name_en": "Victor Lindelof",
+     "performance": "90분 평점 7.65(팀 최고) · 터치 114 · avg(40.9, 33.8) — 자동 분류가 RB로 읽을 만큼 전진 · hit_points 114",
+     "player_id": 7,
+     "pos_class": "RCB",
+     "position": "RCB",
+     "rating": 7.65,
+     "recoveries": 3,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 1,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"RB\", \"opta_position\": \"DC\", \"shirt\": 3, \"fotmob_raw\": {\"FotMob rating\": [7.65, null], \"Minutes played\": [90, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Expected assists (xA)\": [0.08, null], \"xG + xA\": [0.08, null], \"Top speed\": [31.700000762939453, null], \"Distance covered\": [9448, null], \"Accurate passes\": [105, 110], \"Chances created\": [2, null], \"Shotmap\": [0, null], \"Fantasy points\": [6, null], \"Defensive actions\": [4, null], \"Touches\": [114, null], \"Touches in opposition box\": [1, null], \"Passes into final third\": [11, null], \"Line breaking passes\": [20, null], \"Accurate long balls\": [5, 8], \"Dispossessed\": [0, null], \"Tackles\": [0, null], \"Blocks\": [0, null], \"Clearances\": [4, null], \"Headed clearance\": [2, null], \"Interceptions\": [0, null], \"Recoveries\": [3, null], \"Dribbled past\": [0, null], \"Aerial duels won\": [1, 1], \"Was fouled\": [null, null], \"Fouls committed\": [0, null], \"Duels won\": [1, null], \"Running\": [1299, 9448], \"Sprinting\": [75, 9448], \"Number of sprints\": [5, null]}}",
+     "tackles": 0,
+     "tactical_role": "전진 배급자 — 백선에서 가장 공격적인 출발점",
+     "touches": 114,
+     "xa": 0.08,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 65.13,
+     "avg_y": 23.62,
+     "characteristics": "최종3분의1 이벤트 30건(팀 1위)·박스진입패스 6(팀 1위)·코너 2. 그러나 크로스 0/4·찬스 창출 0·탈취당함 5(팀 1위)·50분 빅찬스 실축(xG 0.68)",
+     "confidence": "measured (선발 · 45분+ · hit_points 15+ 통과)",
+     "duels_lost": 6,
+     "duels_won": 5,
+     "game_implication": "wm_winger/Attack .774. 시즌 measured는 wm_winger/Balanced .873. ⚠️ obs#443(윙 혼잡) — 캐시(fb_att_wb)와 동측에 겹쳤고 그 쪽 산출이 크로스 0/5·빅찬스 1실축이다",
+     "goals": 0,
+     "hit_points": 55,
+     "interceptions": 1,
+     "key_passes": 0,
+     "label": "맥긴",
+     "lineup_pos": "M",
+     "map25": "102090008X043230011400000",
+     "minutes": 90,
+     "name_en": "John McGinn",
+     "performance": "90분 평점 5.74(팀 최저) · 터치 55 · 패스 30/36 · 태클 2·인터셉트 1 · avg(65.1, 23.6) · hit_points 55",
+     "player_id": 10,
+     "pos_class": "RM",
+     "position": "RM",
+     "rating": 5.74,
+     "recoveries": 2,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 1,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"RM\", \"opta_position\": \"AMR\", \"shirt\": 7, \"fotmob_raw\": {\"FotMob rating\": [5.74, null], \"Minutes played\": [90, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Expected goals (xG)\": [0.68, null], \"Expected goals on target (xGOT)\": [null, null], \"Expected assists (xA)\": [0.03, null], \"xG + xA\": [0.7100000000000001, null], \"Total shots\": [1, null], \"Top speed\": [34.400001525878906, null], \"Distance covered\": [10222, null], \"Accurate passes\": [30, 36], \"Chances created\": [0, null], \"Shots on target\": [0, null], \"Shots off target\": [1, null], \"Shot accuracy\": [0, 1], \"Shotmap\": [1, null], \"Fantasy points\": [3, null], \"Defensive actions\": [5, null], \"Big chances missed\": [1, null], \"Touches\": [55, null], \"Touches in opposition box\": [1, null], \"Successful dribbles\": [0, 1], \"Passes into final third\": [5, null], \"Line breaking passes\": [5, null], \"Accurate crosses\": [0, 4], \"Accurate long balls\": [2, 3], \"Corners\": [2, null], \"Dispossessed\": [5, null], \"xG Non-penalty\": [0.68, null], \"Tackles\": [2, null], \"Blocks\": [0, null], \"Clearances\": [0, null], \"Interceptions\": [1, null], \"Recoveries\": [2, null], \"Dribbled past\": [0, null], \"Ground duels won\": [4, 10], \"Aerial duels won\": [1, 1], \"Was fouled\": [2, null], \"Fouls committed\": [1, null], \"Duels won\": [5, null], \"Duels lost\": [6, null], \"Running\": [1733, 10222], \"Sprinting\": [134, 10222], \"Number of sprints\": [7, null]}}",
+     "tackles": 2,
+     "tactical_role": "터치라인 윙어 — 양은 팀 최다, 질은 전부 실패",
+     "touches": 55,
+     "xa": 0.03,
+     "xg": 0.68
+    },
+    {
+     "assists": 0,
+     "avg_x": 54.17,
+     "avg_y": 38.81,
+     "characteristics": "최종3분의1 패스 15(팀 1위)·라인브레이킹 10·롱볼 3/4·회수 6·수비액션 10(팀 1위)·경합 7승. 탈취당함 0",
+     "confidence": "measured (선발 · 45분+ · hit_points 15+ 통과)",
+     "duels_lost": 8,
+     "duels_won": 7,
+     "game_implication": "dm_dlp/Roaming .793 — 시즌 정본과 동일. 상대 박스 터치 0으로 완전한 후방 축이다",
+     "goals": 0,
+     "hit_points": 115,
+     "interceptions": 1,
+     "key_passes": 1,
+     "label": "카마라",
+     "lineup_pos": "M",
+     "map25": "00000149X5017X10134201110",
+     "minutes": 90,
+     "name_en": "Boubacar Kamara",
+     "performance": "90분 평점 7.50 · 터치 114 · 패스 88/97 · 듀얼 7승8패 · avg(54.2, 38.8) · hit_points 115",
+     "player_id": 12,
+     "pos_class": "RDM",
+     "position": "RDM",
+     "rating": 7.5,
+     "recoveries": 6,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 1,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"RDM\", \"opta_position\": \"DMC\", \"shirt\": 8, \"fotmob_raw\": {\"FotMob rating\": [7.5, null], \"Minutes played\": [90, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Expected assists (xA)\": [0.07, null], \"xG + xA\": [0.07, null], \"Top speed\": [28, null], \"Distance covered\": [10743, null], \"Accurate passes\": [88, 97], \"Chances created\": [1, null], \"Shotmap\": [0, null], \"Fantasy points\": [3, null], \"Defensive actions\": [10, null], \"Touches\": [114, null], \"Touches in opposition box\": [0, null], \"Successful dribbles\": [0, 2], \"Passes into final third\": [15, null], \"Line breaking passes\": [10, null], \"Accurate long balls\": [3, 4], \"Dispossessed\": [0, null], \"Tackles\": [1, null], \"Blocks\": [0, null], \"Clearances\": [2, null], \"Headed clearance\": [2, null], \"Interceptions\": [1, null], \"Recoveries\": [6, null], \"Dribbled past\": [2, null], \"Ground duels won\": [4, 9], \"Aerial duels won\": [3, 6], \"Was fouled\": [3, null], \"Fouls committed\": [1, null], \"Duels won\": [7, null], \"Duels lost\": [8, null], \"Running\": [2442, 10743], \"Sprinting\": [67, 10743], \"Number of sprints\": [4, null]}}",
+     "tackles": 1,
+     "tactical_role": "중앙 순환 축 — 딥블록 앞 기준점",
+     "touches": 114,
+     "xa": 0.07,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 63.53,
+     "avg_y": 45.36,
+     "characteristics": "박스진입패스 5(팀 2위)·박스 터치 2·xG 0.61. 그러나 패스 정확도 68%(팀 최저)·공중 0/4·찬스 창출 0. 53분 빅찬스 실축(xG 0.54)",
+     "confidence": "measured (선발 · 45분+ · hit_points 15+ 통과)",
+     "duels_lost": 4,
+     "duels_won": 1,
+     "game_implication": "cam_classic10/Attack .879 — ⚠️ 시즌 정본 cam_playmaker/Roaming과 다르다. 이 경기는 연결이 아니라 침투가 주였고 그 침투가 산출로 이어지지 않았다",
+     "goals": 0,
+     "hit_points": 40,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "부엔디아",
+     "lineup_pos": "M",
+     "map25": "1011118X81031330314100000",
+     "minutes": 75,
+     "name_en": "Emiliano Buendia",
+     "performance": "75분 평점 6.23 · 터치 40 · 패스 23/34 · 듀얼 1승4패 · avg(63.5, 45.4) · hit_points 40",
+     "player_id": 14,
+     "pos_class": "CAM",
+     "position": "CAM",
+     "rating": 6.23,
+     "recoveries": 2,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 1,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"CAM\", \"opta_position\": \"AMC\", \"shirt\": 10, \"fotmob_raw\": {\"FotMob rating\": [6.23, null], \"Minutes played\": [75, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Expected goals (xG)\": [0.61, null], \"Expected goals on target (xGOT)\": [null, null], \"Expected assists (xA)\": [0.05, null], \"xG + xA\": [0.66, null], \"Total shots\": [2, null], \"Top speed\": [29.799999237060547, null], \"Distance covered\": [9574, null], \"Accurate passes\": [23, 34], \"Chances created\": [0, null], \"Shots on target\": [0, null], \"Shots off target\": [2, null], \"Shot accuracy\": [0, 2], \"Shotmap\": [1, null], \"Fantasy points\": [3, null], \"Defensive actions\": [2, null], \"Big chances missed\": [1, null], \"Touches\": [40, null], \"Touches in opposition box\": [2, null], \"Passes into final third\": [4, null], \"Line breaking passes\": [4, null], \"Accurate crosses\": [0, 1], \"Corners\": [1, null], \"Dispossessed\": [0, null], \"xG Non-penalty\": [0.61, null], \"Tackles\": [0, null], \"Blocks\": [0, null], \"Clearances\": [0, null], \"Interceptions\": [0, null], \"Recoveries\": [2, null], \"Dribbled past\": [0, null], \"Ground duels won\": [1, 1], \"Aerial duels won\": [0, 4], \"Was fouled\": [1, null], \"Fouls committed\": [0, null], \"Duels won\": [1, null], \"Duels lost\": [4, null], \"Running\": [2298, 9574], \"Sprinting\": [127, 9574], \"Number of sprints\": [6, null]}}",
+     "tackles": 0,
+     "tactical_role": "하프스페이스 침투형 10번 — 플레이메이커가 아니었다",
+     "touches": 40,
+     "xa": 0.05,
+     "xg": 0.61
+    },
+    {
+     "assists": 0,
+     "avg_x": 44.93,
+     "avg_y": 66.08,
+     "characteristics": "슛 3개(전부 세트피스·박스 언저리, 2블록 1빗나감)·클리어 4(헤더 3)·지상경합 3/3·공중 2/4",
+     "confidence": "measured (선발 · 45분+ · hit_points 15+ 통과)",
+     "duels_lost": 2,
+     "duels_won": 5,
+     "game_implication": "cb_bpd/Aggressive .802 — 유지. 세트피스 표적 역할은 역할·포커스가 아니라 세트피스 설정 축이다",
+     "goals": 0,
+     "hit_points": 91,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "밍스",
+     "lineup_pos": "D",
+     "map25": "01100362004X3110940014210",
+     "minutes": 90,
+     "name_en": "Tyrone Mings",
+     "performance": "90분 평점 7.57 · 터치 90 · 패스 73/80 · 듀얼 5승2패 · avg(44.9, 66.1) — 자동 분류가 LB로 읽을 만큼 전진 · hit_points 91",
+     "player_id": 17,
+     "pos_class": "LCB",
+     "position": "LCB",
+     "rating": 7.57,
+     "recoveries": 2,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 1,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"LB\", \"opta_position\": \"DC\", \"shirt\": 5, \"fotmob_raw\": {\"FotMob rating\": [7.57, null], \"Minutes played\": [90, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Expected goals (xG)\": [0.11, null], \"Expected goals on target (xGOT)\": [null, null], \"Expected assists (xA)\": [0.02, null], \"xG + xA\": [0.13, null], \"Total shots\": [3, null], \"Top speed\": [32.5, null], \"Distance covered\": [10112, null], \"Accurate passes\": [73, 80], \"Chances created\": [0, null], \"Shots on target\": [0, null], \"Shots off target\": [1, null], \"Blocked shots\": [2, null], \"Shot accuracy\": [0, 1], \"Shotmap\": [1, null], \"Fantasy points\": [6, null], \"Defensive actions\": [5, null], \"Touches\": [90, null], \"Touches in opposition box\": [3, null], \"Successful dribbles\": [1, 1], \"Passes into final third\": [8, null], \"Line breaking passes\": [8, null], \"Accurate long balls\": [2, 4], \"Dispossessed\": [0, null], \"xG Non-penalty\": [0.11, null], \"Tackles\": [1, null], \"Blocks\": [0, null], \"Clearances\": [4, null], \"Headed clearance\": [3, null], \"Interceptions\": [0, null], \"Recoveries\": [2, null], \"Dribbled past\": [0, null], \"Ground duels won\": [3, 3], \"Aerial duels won\": [2, 4], \"Was fouled\": [1, null], \"Fouls committed\": [0, null], \"Duels won\": [5, null], \"Duels lost\": [2, null], \"Running\": [1991, 10112], \"Sprinting\": [110, 10112], \"Number of sprints\": [7, null]}}",
+     "tackles": 1,
+     "tactical_role": "전진 센터백 + 세트피스 표적",
+     "touches": 90,
+     "xa": 0.02,
+     "xg": 0.11
+    },
+    {
+     "assists": 0,
+     "avg_x": 55.57,
+     "avg_y": 59.74,
+     "characteristics": "터치 120(팀 1위)·라인브레이킹 18·찬스 2·박스진입패스 1·슛 4(팀 1위, 2블록 2빗나감, xG 0.22). 공중 1/4·지상 2/7로 경합은 약하다. 탈취당함 3",
+     "confidence": "measured (선발 · 45분+ · hit_points 15+ 통과)",
+     "duels_lost": 8,
+     "duels_won": 3,
+     "game_implication": "dm_dlp/Roaming .756 — 시즌 정본(.861)보다 낮다. LDM 유지. 슛 4개가 전부 박스 밖 무산 — 진입 실패의 증상이지 역할 문제가 아니다",
+     "goals": 0,
+     "hit_points": 120,
+     "interceptions": 0,
+     "key_passes": 2,
+     "label": "바클리",
+     "lineup_pos": "M",
+     "map25": "001002X530167101122000100",
+     "minutes": 90,
+     "name_en": "Ross Barkley",
+     "performance": "90분 평점 7.20 · 패스 94/103 · 회수 4 · 듀얼 3승8패 · avg(55.6, 59.7) · hit_points 120",
+     "player_id": 21,
+     "pos_class": "LDM",
+     "position": "LDM",
+     "rating": 7.2,
+     "recoveries": 4,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 1,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"LDM\", \"opta_position\": \"DMC\", \"shirt\": 6, \"fotmob_raw\": {\"FotMob rating\": [7.2, null], \"Minutes played\": [90, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Expected goals (xG)\": [0.22, null], \"Expected goals on target (xGOT)\": [null, null], \"Expected assists (xA)\": [0.09, null], \"xG + xA\": [0.31, null], \"Total shots\": [4, null], \"Top speed\": [29, null], \"Distance covered\": [10566, null], \"Accurate passes\": [94, 103], \"Chances created\": [2, null], \"Shots on target\": [0, null], \"Shots off target\": [2, null], \"Blocked shots\": [2, null], \"Shot accuracy\": [0, 2], \"Shotmap\": [1, null], \"Fantasy points\": [3, null], \"Defensive actions\": [6, null], \"Touches\": [120, null], \"Touches in opposition box\": [3, null], \"Successful dribbles\": [2, 2], \"Passes into final third\": [10, null], \"Line breaking passes\": [18, null], \"Accurate long balls\": [1, 1], \"Dispossessed\": [3, null], \"xG Non-penalty\": [0.22, null], \"Tackles\": [0, null], \"Blocks\": [0, null], \"Clearances\": [2, null], \"Headed clearance\": [2, null], \"Interceptions\": [0, null], \"Recoveries\": [4, null], \"Dribbled past\": [2, null], \"Ground duels won\": [2, 7], \"Aerial duels won\": [1, 4], \"Was fouled\": [null, null], \"Fouls committed\": [0, null], \"Duels won\": [3, null], \"Duels lost\": [8, null], \"Running\": [1786, 10566], \"Sprinting\": [72, 10566], \"Number of sprints\": [4, null]}}",
+     "tackles": 0,
+     "tactical_role": "전진형 8번 — 팀 최다 터치이자 팀 최다 슛",
+     "touches": 120,
+     "xa": 0.09,
+     "xg": 0.22
+    },
+    {
+     "assists": 0,
+     "avg_x": 58.25,
+     "avg_y": 74.3,
+     "characteristics": "팀 유일 유효슛(xGOT 0.08)·빅찬스 창출 1·드리블 2/4·수비액션 7·회수 4. 반면 듀얼 4승8패(지상 3/9)·제쳐짐 2·파울 2로 몸싸움은 밀렸다",
+     "confidence": "measured (선발 · 45분+ · hit_points 15+ 통과)",
+     "duels_lost": 8,
+     "duels_won": 4,
+     "game_implication": "단일 경기 wm_winger/Attack .613 — fit이 낮다(위치가 넓게 흩어짐). 시즌 정본 wm_widemid/Support .788. 산출은 터치라인이 아니라 안쪽 진입에서 나왔다",
+     "goals": 0,
+     "hit_points": 32,
+     "interceptions": 0,
+     "key_passes": 1,
+     "label": "헤밍스",
+     "lineup_pos": "M",
+     "map25": "86000X4800240006602026000",
+     "minutes": 75,
+     "name_en": "George Hemmings",
+     "performance": "75분 평점 6.85 · 터치 32 · 패스 17/19 · 스프린트 15 · avg(58.2, 74.3) · hit_points 32",
+     "player_id": 30,
+     "pos_class": "LM",
+     "position": "LM",
+     "rating": 6.85,
+     "recoveries": 4,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 1,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"LDM\", \"opta_position\": \"AML\", \"shirt\": 53, \"fotmob_raw\": {\"FotMob rating\": [6.85, null], \"Minutes played\": [75, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Expected goals (xG)\": [0.07, null], \"Expected goals on target (xGOT)\": [0.08, null], \"Expected assists (xA)\": [0.14, null], \"xG + xA\": [0.21000000000000002, null], \"Total shots\": [1, null], \"Top speed\": [32.900001525878906, null], \"Distance covered\": [9096, null], \"Accurate passes\": [17, 19], \"Chances created\": [1, null], \"Big chances created\": [1, null], \"Shots on target\": [1, null], \"Shots off target\": [0, null], \"Shot accuracy\": [1, 1], \"Shotmap\": [1, null], \"Fantasy points\": [3, null], \"Defensive actions\": [7, null], \"Touches\": [32, null], \"Touches in opposition box\": [3, null], \"Successful dribbles\": [2, 4], \"Line breaking passes\": [2, null], \"Accurate crosses\": [0, 1], \"Dispossessed\": [0, null], \"Offsides\": [1, null], \"xG Non-penalty\": [0.07, null], \"Tackles\": [1, null], \"Blocks\": [0, null], \"Clearances\": [2, null], \"Headed clearance\": [1, null], \"Interceptions\": [0, null], \"Recoveries\": [4, null], \"Dribbled past\": [2, null], \"Ground duels won\": [3, 9], \"Aerial duels won\": [1, 3], \"Was fouled\": [null, null], \"Fouls committed\": [2, null], \"Duels won\": [4, null], \"Duels lost\": [8, null], \"Running\": [1902, 9096], \"Sprinting\": [364, 9096], \"Number of sprints\": [15, null]}}",
+     "tackles": 1,
+     "tactical_role": "좌측 와이드 — 팀 유일 유효슛과 유일 빅찬스 창출",
+     "touches": 32,
+     "xa": 0.14,
+     "xg": 0.07
+    },
+    {
+     "assists": 0,
+     "avg_x": 72.31,
+     "avg_y": 90.08,
+     "characteristics": "드리블 1/1·탈취당함 1·찬스 창출 0·수비액션 0. 코너 1",
+     "confidence": "measured 원천값 / ⚠️ LOW 역할 — 15분 이하·터치 4~23 표본. 리포트 근거로만 쓰고 시즌 집계 제외",
+     "duels_lost": 1,
+     "duels_won": 1,
+     "game_implication": "wm_winger/Attack .875 — ⚠️ 12터치. 실측 좌표 기준 LM으로 넣었다(명목 교체 슬롯 아님). obs#443 기준 좌측 윙어 + 좌측 전진 풀백(루헤리) 동시 배치라 혼잡 구성이다",
+     "goals": 0,
+     "hit_points": 12,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "가르나초",
+     "lineup_pos": "M",
+     "map25": "40000X1000100000000000000",
+     "minutes": 15,
+     "name_en": "Alejandro Garnacho",
+     "performance": "15분 평점 6.11 · 터치 12 · 패스 8/9 · avg(72.3, 90.1) · hit_points 12",
+     "player_id": 58,
+     "pos_class": "LM",
+     "position": "LM",
+     "rating": 6.11,
+     "recoveries": 0,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 0,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"LM\", \"opta_position\": \"Sub\", \"shirt\": 17, \"fotmob_raw\": {\"FotMob rating\": [6.11, null], \"Minutes played\": [15, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Top speed\": [28.899999618530273, null], \"Distance covered\": [2236, null], \"Accurate passes\": [8, 9], \"Chances created\": [0, null], \"Shotmap\": [0, null], \"Fantasy points\": [1, null], \"Defensive actions\": [0, null], \"Touches\": [12, null], \"Touches in opposition box\": [0, null], \"Successful dribbles\": [1, 1], \"Passes into final third\": [1, null], \"Corners\": [1, null], \"Dispossessed\": [1, null], \"Tackles\": [0, null], \"Blocks\": [0, null], \"Clearances\": [0, null], \"Interceptions\": [0, null], \"Recoveries\": [0, null], \"Dribbled past\": [0, null], \"Ground duels won\": [1, 2], \"Aerial duels won\": [0, 0], \"Was fouled\": [null, null], \"Fouls committed\": [0, null], \"Duels won\": [1, null], \"Duels lost\": [1, null], \"Running\": [496, 2236], \"Sprinting\": [63, 2236], \"Number of sprints\": [2, null]}}",
+     "tackles": 0,
+     "tactical_role": "교체 75분 — 명목은 부엔디아(CAM) 교체지만 실제로는 좌측 터치라인",
+     "touches": 12,
+     "xa": null,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 69.45,
+     "avg_y": 17.2,
+     "characteristics": "드리블 0/1·듀얼 0승2패·제쳐짐 1·최종3분의1 패스 2",
+     "confidence": "measured 원천값 / ⚠️ LOW 역할 — 15분 이하·터치 4~23 표본. 리포트 근거로만 쓰고 시즌 집계 제외",
+     "duels_lost": 2,
+     "duels_won": null,
+     "game_implication": "wm_wideplm/Attack .904 — ⚠️ 13터치. 가르나초와 함께 좌우 교차 재배치의 근거가 되는 좌표다",
+     "goals": 0,
+     "hit_points": 13,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "알리송",
+     "lineup_pos": "M",
+     "map25": "000040008X000040000000000",
+     "minutes": 15,
+     "name_en": "Alysson",
+     "performance": "15분 평점 6.02 · 터치 13 · 패스 10/11 · avg(69.5, 17.2) · hit_points 13",
+     "player_id": 59,
+     "pos_class": "RM",
+     "position": "RM",
+     "rating": 6.02,
+     "recoveries": 1,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 0,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"RM\", \"opta_position\": \"Sub\", \"shirt\": 47, \"fotmob_raw\": {\"FotMob rating\": [6.02, null], \"Minutes played\": [15, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Top speed\": [31.5, null], \"Distance covered\": [2388, null], \"Accurate passes\": [10, 11], \"Chances created\": [0, null], \"Shotmap\": [0, null], \"Fantasy points\": [1, null], \"Defensive actions\": [1, null], \"Touches\": [13, null], \"Touches in opposition box\": [0, null], \"Successful dribbles\": [0, 1], \"Passes into final third\": [2, null], \"Accurate long balls\": [1, 1], \"Dispossessed\": [0, null], \"Tackles\": [0, null], \"Blocks\": [0, null], \"Clearances\": [0, null], \"Interceptions\": [0, null], \"Recoveries\": [1, null], \"Dribbled past\": [1, null], \"Ground duels won\": [0, 2], \"Aerial duels won\": [0, 0], \"Was fouled\": [null, null], \"Fouls committed\": [0, null], \"Duels lost\": [2, null], \"Running\": [498, 2388], \"Sprinting\": [127, 2388], \"Number of sprints\": [5, null]}}",
+     "tackles": 0,
+     "tactical_role": "교체 75분 — 명목은 헤밍스(LM) 교체지만 실제로는 우측",
+     "touches": 13,
+     "xa": null,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 39.35,
+     "avg_y": 42.2,
+     "characteristics": "터치 4·태클 1·지상경합 1/1",
+     "confidence": "measured 원천값 / ⚠️ 판단 불가 — 5분 출전·평점 결손(NULL, 0 아님)",
+     "duels_lost": null,
+     "duels_won": 1,
+     "game_implication": "단일 경기 fit .182(hit_points 4) — 산출 불가 수준이라 처방 근거로 쓰지 않는다",
+     "goals": 0,
+     "hit_points": 4,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "타미 아브라함",
+     "lineup_pos": "F",
+     "map25": "00000000500050000X0000000",
+     "minutes": 5,
+     "name_en": "Tammy Abraham",
+     "performance": "5분 · 평점 미제공(NULL) · 패스 1/2 · avg(39.4, 42.2) · hit_points 4",
+     "player_id": 60,
+     "pos_class": "ST",
+     "position": "ST",
+     "rating": null,
+     "recoveries": 0,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 0,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"ST\", \"opta_position\": \"Sub\", \"shirt\": 18, \"fotmob_raw\": {\"Minutes played\": [5, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Top speed\": [23.100000381469727, null], \"Distance covered\": [1164, null], \"Accurate passes\": [1, 2], \"Chances created\": [0, null], \"Shotmap\": [0, null], \"Fantasy points\": [1, null], \"Defensive actions\": [1, null], \"Touches\": [4, null], \"Touches in opposition box\": [0, null], \"Dispossessed\": [0, null], \"Tackles\": [1, null], \"Blocks\": [0, null], \"Clearances\": [0, null], \"Interceptions\": [0, null], \"Recoveries\": [0, null], \"Dribbled past\": [0, null], \"Ground duels won\": [1, 1], \"Aerial duels won\": [0, 0], \"Was fouled\": [null, null], \"Fouls committed\": [0, null], \"Duels won\": [1, null], \"Running\": [255, 1164]}}",
+     "tackles": 1,
+     "tactical_role": "교체 85분 — 헐의 시간끌기 국면에 투입",
+     "touches": 4,
+     "xa": null,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 71.6,
+     "avg_y": 58.12,
+     "characteristics": "터치 29(선발 최소)인데 박스 안 터치 6(21%)·xA 0.44·빅찬스 창출 1·스프린트 14·오프사이드 1. 2분 헤더(xG .22) 실축, 슛 2개",
+     "confidence": "measured (선발 · 45분+ · hit_points 15+ 통과)",
+     "duels_lost": 2,
+     "duels_won": 4,
+     "game_implication": "⭐⭐ st_advanced/Support .632가 1위. 아스날전 1위였던 st_false9/Build-Up은 .368로 6위 추락(아스날전 .723). 순위 완전 역전 — 하강 성향이 아니라 국면 반응이다. obs#446. 표본 2경기라 시즌 정본(st_false9/Attack .724, n=28) 변경 근거는 아니다",
+     "goals": 0,
+     "hit_points": 30,
+     "interceptions": 0,
+     "key_passes": 1,
+     "label": "잭슨",
+     "lineup_pos": "F",
+     "map25": "532723X200282500000000000",
+     "minutes": 85,
+     "name_en": "Nicolas Jackson",
+     "performance": "85분 평점 6.66 · 패스 17/20 · 드리블 1/2 · 공중 2/3 · avg(71.6, 58.1) — 아스날전 61.9 대비 +9.8 전진 · hit_points 30",
+     "player_id": 76,
+     "pos_class": "ST",
+     "position": "ST",
+     "rating": 6.66,
+     "recoveries": 2,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 1,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"ST\", \"opta_position\": \"FW\", \"shirt\": 11, \"fotmob_raw\": {\"FotMob rating\": [6.66, null], \"Minutes played\": [85, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Expected goals (xG)\": [0.24, null], \"Expected goals on target (xGOT)\": [null, null], \"Expected assists (xA)\": [0.44, null], \"xG + xA\": [0.6799999999999999, null], \"Total shots\": [2, null], \"Top speed\": [34.099998474121094, null], \"Distance covered\": [9189, null], \"Accurate passes\": [17, 20], \"Chances created\": [1, null], \"Big chances created\": [1, null], \"Shots on target\": [0, null], \"Shots off target\": [1, null], \"Blocked shots\": [1, null], \"Shot accuracy\": [0, 1], \"Shotmap\": [1, null], \"Fantasy points\": [2, null], \"Defensive actions\": [2, null], \"Touches\": [29, null], \"Touches in opposition box\": [6, null], \"Successful dribbles\": [1, 2], \"Passes into final third\": [1, null], \"Line breaking passes\": [5, null], \"Accurate crosses\": [0, 1], \"Dispossessed\": [0, null], \"Offsides\": [1, null], \"xG Non-penalty\": [0.24, null], \"Tackles\": [0, null], \"Blocks\": [0, null], \"Clearances\": [0, null], \"Interceptions\": [0, null], \"Recoveries\": [2, null], \"Dribbled past\": [0, null], \"Ground duels won\": [2, 3], \"Aerial duels won\": [2, 3], \"Was fouled\": [1, null], \"Fouls committed\": [0, null], \"Duels won\": [4, null], \"Duels lost\": [2, null], \"Running\": [1275, 9189], \"Sprinting\": [308, 9189], \"Number of sprints\": [14, null]}}",
+     "tackles": 0,
+     "tactical_role": "⭐ 정통 9번 — 우세 국면에서 하강하지 않았다",
+     "touches": 29,
+     "xa": 0.44,
+     "xg": 0.24
+    },
+    {
+     "assists": 0,
+     "avg_x": 59.91,
+     "avg_y": 91.42,
+     "characteristics": "패스 20/20(100%)·크로스 0/2·인터셉트 1·회수 2",
+     "confidence": "measured 원천값 / ⚠️ LOW 역할 — 15분 이하·터치 4~23 표본. 리포트 근거로만 쓰고 시즌 집계 제외",
+     "duels_lost": null,
+     "duels_won": null,
+     "game_implication": "fb_att_wb/Support .943 — ⚠️ 15분·23터치 표본이라 방향 근거로만 쓴다",
+     "goals": 0,
+     "hit_points": 23,
+     "interceptions": 1,
+     "key_passes": 0,
+     "label": "마테오 루헤리",
+     "lineup_pos": "D",
+     "map25": "10000X0000500003000000000",
+     "minutes": 15,
+     "name_en": "Matteo Ruggeri",
+     "performance": "15분 평점 6.52 · 터치 23 · avg(59.9, 91.4) · hit_points 23",
+     "player_id": 78,
+     "pos_class": "LB",
+     "position": "LB",
+     "rating": 6.52,
+     "recoveries": 2,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 0,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"LB\", \"opta_position\": \"Sub\", \"shirt\": 13, \"fotmob_raw\": {\"FotMob rating\": [6.52, null], \"Minutes played\": [15, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Expected assists (xA)\": [0.01, null], \"xG + xA\": [0.01, null], \"Top speed\": [29, null], \"Distance covered\": [2175, null], \"Accurate passes\": [20, 20], \"Chances created\": [0, null], \"Shotmap\": [0, null], \"Fantasy points\": [1, null], \"Defensive actions\": [1, null], \"Touches\": [23, null], \"Touches in opposition box\": [0, null], \"Passes into final third\": [2, null], \"Line breaking passes\": [4, null], \"Accurate crosses\": [0, 2], \"Accurate long balls\": [1, 1], \"Dispossessed\": [0, null], \"Tackles\": [0, null], \"Blocks\": [0, null], \"Clearances\": [0, null], \"Interceptions\": [1, null], \"Recoveries\": [2, null], \"Dribbled past\": [0, null], \"Aerial duels won\": [0, 0], \"Was fouled\": [null, null], \"Fouls committed\": [0, null], \"Running\": [538, 2175], \"Sprinting\": [50, 2175], \"Number of sprints\": [2, null]}}",
+     "tackles": 0,
+     "tactical_role": "교체 75분 — 극단적 터치라인 폭",
+     "touches": 23,
+     "xa": 0.01,
+     "xg": null
+    },
+    {
+     "assists": 0,
+     "avg_x": 49.75,
+     "avg_y": 17.38,
+     "characteristics": "패스 9/9·최종3분의1 패스 3·클리어 1(헤더)",
+     "confidence": "measured 원천값 / ⚠️ 판단 불가 — 5분 출전·평점 결손(NULL, 0 아님)",
+     "duels_lost": null,
+     "duels_won": null,
+     "game_implication": "fb_att_wb/Support .786 — ⚠️ 5분·12터치. 판단 불가",
+     "goals": 0,
+     "hit_points": 12,
+     "interceptions": 0,
+     "key_passes": 0,
+     "label": "완비사카",
+     "lineup_pos": "D",
+     "map25": "000020000X000400000200204",
+     "minutes": 5,
+     "name_en": "Aaron Wan-Bissaka",
+     "performance": "5분 · 평점 미제공(NULL) · 터치 12 · avg(49.8, 17.4) · hit_points 12",
+     "player_id": 90,
+     "pos_class": "RB",
+     "position": "RB",
+     "rating": null,
+     "recoveries": 0,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 0,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"RB\", \"opta_position\": \"Sub\", \"shirt\": 29, \"fotmob_raw\": {\"Minutes played\": [5, null], \"Goals\": [0, null], \"Assists\": [0, null], \"Top speed\": [32.099998474121094, null], \"Distance covered\": [1166, null], \"Accurate passes\": [9, 9], \"Chances created\": [0, null], \"Shotmap\": [0, null], \"Fantasy points\": [1, null], \"Defensive actions\": [1, null], \"Touches\": [12, null], \"Touches in opposition box\": [0, null], \"Passes into final third\": [3, null], \"Dispossessed\": [0, null], \"Tackles\": [0, null], \"Blocks\": [0, null], \"Clearances\": [1, null], \"Headed clearance\": [1, null], \"Interceptions\": [0, null], \"Recoveries\": [0, null], \"Dribbled past\": [0, null], \"Aerial duels won\": [0, 0], \"Was fouled\": [null, null], \"Fouls committed\": [0, null], \"Running\": [236, 1166], \"Sprinting\": [63, 1166], \"Number of sprints\": [3, null]}}",
+     "tackles": 0,
+     "tactical_role": "교체 85분 — 캐시 쪽 이음새를 닫는 배치",
+     "touches": 12,
+     "xa": null,
+     "xg": null
+    },
+    {
+     "assists": null,
+     "avg_x": 12.09,
+     "avg_y": 49.25,
+     "characteristics": "선방 4(다이빙 1·박스 안 1)·실점 0. 롱볼 9/10(90%). 스위퍼 행동 0·하이클레임 1·펀칭 0. 회수 13",
+     "confidence": "measured (선발 · 45분+ · hit_points 15+ 통과)",
+     "duels_lost": null,
+     "duels_won": 1,
+     "game_implication": "gk_goalkeeper/Balanced .965. 시즌 정본 Defend .975와 노이즈 내 차이 — 유지. 롱볼 배급 비중이 커 Balanced가 이 경기 행동에는 더 맞다",
+     "goals": null,
+     "hit_points": 55,
+     "interceptions": 0,
+     "key_passes": null,
+     "label": "스즈키 지온",
+     "lineup_pos": "G",
+     "map25": "0000000000000000020001X10",
+     "minutes": 90,
+     "name_en": "Zion Suzuki",
+     "performance": "90분 평점 7.58 · xGOT 대비 실점 방지 +0.17 · 패스 36/38 · 터치 55 · avg(12.1, 49.3) · hit_points 55",
+     "player_id": 132,
+     "pos_class": "GK",
+     "position": "GK",
+     "rating": 7.58,
+     "recoveries": 13,
+     "source": "FotMob matchDetails 5795440 + WhoScored/Opta matchCentreData 1983577 (2026-09-06)",
+     "started": 1,
+     "stats_json": "{\"source_detail\": \"FotMob playerStats + Opta touch aggregation\", \"pos_class_auto\": \"GK\", \"opta_position\": \"GK\", \"shirt\": 1, \"fotmob_raw\": {\"FotMob rating\": [7.58, null], \"Minutes played\": [90, null], \"Saves\": [4, null], \"Goals conceded\": [0, null], \"xGOT faced\": [0.17, null], \"Goals prevented\": [0.17, null], \"Shotmap\": [1, null], \"Accurate passes\": [36, 38], \"Accurate long balls\": [9, 10], \"Diving save\": [1, null], \"Saves inside box\": [1, null], \"Acted as sweeper\": [0, null], \"Punches\": [0, null], \"Throws\": [9, null], \"High claim\": [1, null], \"Recoveries\": [13, null], \"Clearances\": [1, null], \"Touches\": [55, null], \"Fantasy points\": [10, null], \"Defensive actions\": [1, null], \"Duels won\": [1, null], \"Aerial duels won\": [1, 1], \"Was fouled\": [1, null], \"Fouls committed\": [0, null], \"Tackles\": [0, null], \"Passes into final third\": [2, null], \"Line breaking passes\": [10, null], \"Interceptions\": [0, null], \"Top speed\": [26.100000381469727, null], \"Distance covered\": [5224, null], \"Running\": [149, 5224], \"Sprinting\": [8, 5224], \"Number of sprints\": [1, null]}}",
+     "tackles": 0,
+     "tactical_role": "후방 배급 겸용 골키퍼 — 롱볼로 딥블록을 직접 넘겼다",
+     "touches": 55,
+     "xa": null,
+     "xg": null
+    }
+   ],
+   "possession": 74.0,
+   "report_date": "2026-09-06",
+   "report_markdown": "# 2026-09-05 Hull City 0-0 Aston Villa — 프리미어리그 26/27 R3\n\n> 수집일 2026-09-06 · **FotMob matchId `5795440`(= 원장 `event_id`)** · WhoScored/Opta matchId `1983577`\n> 프리미어리그 26/27 R3 · **빌라 원정**(MKM Stadium, 관중 24,425 · 주심 Michael Oliver)\n> 명목 포메이션 **AVL 4-2-3-1 / Hull 5-4-1**\n> ⛔ **SofaScore 미사용** — 2026-09-06 `sofascore.com/robots.txt` 403 재확인(obs#290 차단 지속).\n> 히트맵·평균위치·PPDA의 원천은 **Opta 터치 좌표(WhoScored matchCentreData)** 다.\n\n---\n\n## 1. 경기 개요와 원천 수치\n\n**Hull City 0 - 0 Aston Villa.** 빌라는 승격팀 원정에서 점유율 74%·xG 1.93을 쌓고도 무득점에 그쳤다.\n개막 3경기 무승(0-4 브라이턴 / 0-1 아스날 / 0-0 헐)이 됐고, **3경기 연속 무득점**이다.\n\n| 축 | AVL | Hull | 비고 |\n|---|---:|---:|---|\n| 점유율 | **74%** | 26% | 26/27 PL 최고(브라이턴 27% · 아스날 39%) |\n| xG (전체) | **1.93** | 0.57 | |\n| xG 오픈플레이 | 1.72 | 0.51 | |\n| xG 세트피스 | 0.20 | 0.06 | |\n| xGOT | **0.08** | 0.17 | ⭐ xG 1.93 → xGOT 0.08 |\n| 슈팅 | 13 | 11 | |\n| **유효슈팅** | **1** | 4 | ⭐ 헤밍스 13분 1개가 전부 |\n| 블록당함 | 5 | 0 | Hull 슛블록 5 |\n| 박스 안 슈팅 | 10 | 4 | |\n| 빅찬스 (놓침) | 2 (2) | 1 (1) | 맥긴 50' xG .68 · 부엔디아 53' xG .54 |\n| 패스 (정확도) | 694 (90%) | 229 (73%) | 자기 진영 231 / 상대 진영 393 |\n| 크로스 성공 | **1/12 (8%)** | 2/21 (10%) | |\n| 롱볼 성공 | 26/39 (67%) | 26/54 (48%) | |\n| 상대 박스 터치 | 24 | 9 | |\n| 코너 | 4 | 3 | |\n| 태클 / 인터셉트 | 7 / 4 | 16 / 16 | |\n| 클리어런스 | 18 | 16 | 헐의 롱볼 54회에 대응 |\n| 공중볼 | 14/31 (45%) | 17/31 (55%) | |\n| 파울 / 경고 | 5 / 0 | 10 / 2 | |\n| **PPDA** | **14.67** (176/12) | 34.67 (416/12) | 아스날전 30.50 → 절반 이하 |\n\n**xG 정합 검증(⛔ 같은 스냅샷 동시 수집)**: AVL 1.93 = 오픈플레이 1.72 + 세트피스 0.20 (1.92, 반올림 오차 .01) ·\nPK 0개라 non-penalty xG 1.93 = 전체 xG **일치 ✅**. Hull 0.57 = 0.51 + 0.06 **✅**.\nxG 계열 4종·블록·xGOT을 **2026-09-06 한 번의 FotMob 응답에서 동시 수집**했다(obs#337 재발 방지).\n\n**득점 국면**: 득점이 없어 **전 90분이 `level`** 이다. @lead/@trail 분리 집계 원료 없음.\n\n**교체**: 75' 루헤리↔마첸 · 가르나초↔부엔디아 · 알리송↔헤밍스(3장 동시) / 85' 아브라함↔잭슨 · 완비사카↔캐시.\nHull: 63' 소르바 토마스 · 64' 노턴-커피 · 71' 헤링턴 · 82' 예르퇴-달 · 82' 초.\n\n**수집 한계**\n- 결손(0 아님): 완비사카·아브라함 `rating`(5분 출전, FotMob 미제공) · 수비수/GK의 `xg`·`xa`.\n- 유효 히트맵 기준(45분+ · hit_points 15+) 통과: **선발 11명 전원**(hit_points 30~120).\n  교체 5명은 15분 이하라 리포트 근거로만 쓰고 대표 그리드·시즌 집계에는 넣지 않는다.\n- ⚠️ hit_points는 Opta 터치 이벤트 수라 **SofaScore 히트맵 포인트 수와 직접 비교 금지**.\n- 좌표 방위 실증 검증: 캐시(DR) `ay`=13.4 ↔ 마첸(DL) `ay`=83.5 ⇒ **낮은 y=우측**(소파 규약 일치) ·\n  스즈키(GK) `ax`=12.1 ⇒ **x=0이 자기 골문**. `core.encode.cells_from_points` 그대로 적용.\n\n---\n\n## 2. 전술 설명\n\n### 점유 구조·빌드업\n\n헐은 **5-4-1 딥블록**으로 내려앉았다(PPDA 34.67 — 사실상 압박 포기). 빌라는 74% 점유·694패스로\n전 경기를 상대 진영에서 보냈다(상대 진영 패스 393 대 자기 진영 231).\n\n- **백4가 통째로 전진했다.** 린델뢰프 `ax`=40.9 · 밍스 `ax`=44.9로, `core.classify.pos_class` 자동 분류가\n  두 센터백을 각각 **RB·LB로 오분류**할 만큼 높았다(수동 라벨은 Opta 포지션 DC 유지, 자동값은\n  `stats_json.pos_class_auto`에 별도 기록). 아스날전 백4(린델뢰프 36.1 · 토레스 31.2)와 대비된다.\n- **양쪽 풀백이 동시에 올라갔다.** 캐시 `ax`=53.7(26/27 PL 최고 · 아스날전 47.9) · 마첸 `ax`=55.9.\n  단일 경기 커널 적합도 **둘 다 `fb_att_wb`/Support**(캐시 .910 · 마첸 .903)로 같은 방향이다.\n  ⚠️ 이는 에메리 정본의 「한 번에 한 쪽만 올린다」(obs#4·#95)와 **어긋난다** — §6에서 다룬다.\n- **빌드업은 짧게, 전진은 길게.** 정확도 90%(624/694)의 짧은 순환이 기본이나, 30m+ 롱패스가\n  린델뢰프 10회·스즈키 10회로 상위였다. 스즈키는 롱볼 9/10 성공 — GK가 딥블록 위로 넘기는\n  경로를 실제로 썼다.\n- **최종 3분의 1 진입은 좌우 균형**(우 38.1% / 중앙 27.8% / 좌 34.0%, x≥70 이벤트 194건).\n  최다 관여는 맥긴 30 · 캐시 21 · 바클리 21 · 잭슨 20 · 부엔디아 19 · 마첸 18.\n\n### 비점유 구조·압박\n\n- **PPDA 14.67** — 아스날전 30.50, 브라이턴전 24.69 대비 **압박 강도가 두 배 이상**이다.\n  다만 분모(상대 진영 수비액션) 12로 얇다: 74% 점유 탓에 상대 패스 자체가 176회뿐이라\n  분자·분모가 함께 작다. **수치의 방향은 신뢰하되 크기는 신뢰하지 말 것.**\n- 팀 수비액션 평균 `x` = **36.3**(아스날전 35.8) — 거의 같다. 하지만 성격이 다르다:\n  아스날전은 정착된 딥블록, 이 경기는 대부분 **역압박(카운터프레스)** 이다. 같은 숫자를\n  같은 「라인 높이」로 읽으면 안 된다.\n- **무공 형태는 4-4-2 플랫이 아니었다** — §3에서 좌표로 상술한다.\n\n### 전환·rest-defense·세트피스\n\n- 헐의 공격 105건(x≥70) 중 **52.4%가 헐의 좌측**, 즉 **빌라의 우측(캐시 쪽)** 에 몰렸다.\n- 헐 크로스 21개 중 **라이언 자일스(LWB) 혼자 8개**. 자일스는 헐 최고 평점 7.6이고 최종 3분의 1\n  이벤트 22건으로 팀 최다다. **캐시 뒤가 이 경기의 유일한 통로였다.**\n- 세트피스: 빌라 코너 4개에서 xG 0.20(밍스 헤더 2회·바클리 헤더 1회). 헐은 벨루미가 65분\n  코너에서 **골대를 맞혔다**(xG 0.01).\n- 위험 순간은 두 번뿐: 벨루미 65' 골대, **맥버니 90' xG 0.30 실축**. 무승부가 운 좋은 쪽은 빌라다.\n\n---\n\n## 3. 전술적 특성\n\n### ⭐⭐ 반복 취약점 ① — 「박스 앞까지는 가는데 골문을 못 맞힌다」\n\nxG 1.93 · 박스 안 슈팅 10 · 상대 박스 터치 24를 만들고 **유효슈팅 1개**(헤밍스 13분, xGOT 0.08).\n빌라 13개 슛의 결말: **7 빗나감 · 5 블록 · 1 유효**.\n\n슛 분포가 문제의 성격을 드러낸다 — **가장 깊은 두 선수가 13개 중 7개를 쐈다**:\n\n| 선수 | 슛 | 비고 |\n|---|---:|---|\n| 바클리 (LDM) | 4 | 2 블록 · 2 빗나감 |\n| 밍스 (LCB) | 3 | 2 블록 · 1 빗나감 |\n| 잭슨 (ST) | 2 | 2분 헤더 xG .22 빗나감 · 1 블록 |\n| 부엔디아 (CAM) | 2 | **53' 빅찬스 xG .54 실축** |\n| 맥긴 (RM) | 1 | **50' 빅찬스 xG .68 실축** |\n| 헤밍스 (LM) | 1 | **팀 유일 유효슛** |\n\n두 빅찬스가 **50분·53분 3분 간격**에 몰렸고 둘 다 실축이다. 그 뒤 37분간 빌라의 xG는 0.12뿐이다.\n\n**크로스 1/12 (8%)** — 폭은 확보했으나 박스 안에서 전혀 연결되지 않았다. 맥긴 0/4가 최다 실패.\n\n### ⭐⭐ 반복 취약점 ② — 캐시 뒤 이음새(아스날전에 이어 2경기 연속)\n\n캐시는 `ax`=53.7로 26/27 PL 최고 높이까지 전진했고, 그 대가가 그대로 나타났다.\n\n| 캐시 수비 지표 | 값 |\n|---|---|\n| FotMob 수비 액션 | **1** |\n| 제쳐짐(dribbled past) | 2 |\n| 지상 경합 | 1/4 |\n| 공중 경합 | 1/3 |\n| 듀얼 승/패 | 2 / 5 |\n\n동시에 **헐 공격의 52.4%가 그 쪽**으로 왔고 자일스(헐 최고 평점 7.6)가 크로스 8개를 올렸다.\n아스날전 판정(「캐시의 높은 위치가 상대 로테이션에 노출되는 이음새」)이 **다른 상대·다른 국면에서\n재현됐다** — 열세 국면(39% 점유)에서도, 우세 국면(74% 점유)에서도 같은 곳이 뚫린다.\n\n⭐ **obs#443(윙 혼잡)과의 정합**: 이 경기 우측은 맥긴(`wm_winger`/Attack .774, 터치라인형)과\n캐시(`fb_att_wb`/Support .910)가 **같은 쪽에 겹쳤다**. 최종 3분의 1 관여는 팀 1·2위(맥긴 30·캐시 21)로\n가장 활발했으나 **산출은 크로스 0/5 · 빅찬스 1회 실축**이다. obs#443이 예측한 「윙어 + 전진 풀백 동측\n배치는 서로를 막는다」와 방향이 같다 — 다만 이 경기 1건은 상관이지 인과가 아니다.\n\n### 성공 패턴 — 중앙 이중 축의 순환\n\n카마라(터치 114 · 패스 88/97 · 최종3분의1 패스 15 · 회수 6)와 바클리(터치 120 · 94/103 · 라인브레이킹\n패스 18)는 헐의 5-4-1 앞에서 볼을 잃지 않았다(둘 합쳐 **탈취당함 3회**, 그중 바클리 3·카마라 0).\n린델뢰프는 105/110 · 라인브레이킹 20 · 최종3분의1 11로 백선에서 가장 전진적인 배급자였다.\n**구조가 실패한 것이 아니라 마지막 20m가 실패했다.**\n\n### ⭐⭐ 무공 형태 — 「4-4-2 플랫」 검증은 **측정 불가로 판정 보류**, 대신 비대칭 하강을 찾았다\n\nobs#402는 아스날전 무공 형태를 **4-4-2 플랫**으로 기록했으나 「⛔ 좌표 실측으로 교차검증하지 않았다」고\n남겨 뒀다. 이번 회차에서 양 경기의 Opta 수비액션 좌표로 검증을 시도했고, **두 가지 프록시가 서로 다른\n답을 냈으며 각각 실격 사유가 있다.**\n\n**⛔ 프록시 A(전체 수비액션 평균 x) — 폐기**\n\n| 선수 | 아스날전 (39% 점유) | 헐전 (74% 점유) |\n|---|---:|---:|\n| 잭슨 (ST) | 53.4 (n=4) | 65.6 (n=6) |\n| 부엔디아 (CAM) | 52.6 (n=14) | 49.4 (n=8) |\n| **잭슨 − 부엔디아** | **+0.8** | **+16.2** |\n\n이 값만 보면 「아스날=4-4-2 확증, 헐=4-4-1-1」로 읽힌다. **그렇게 읽으면 안 된다.**\n헐전은 점유 74%라 빌라 수비액션의 다수가 정착 블록이 아니라 **상대 진영 역압박**이고, 프록시 A는\n그 역압박을 형태로 오독한다. **팀 수비액션 평균 x가 두 경기 모두 35.8 / 36.3으로 거의 같다는 사실\n자체가 오염의 증거다** — 점유 39%와 74%의 블록이 같은 높이일 리 없다.\n\n**⛔ 프록시 B(자기 진영 `x`<50 한정) — 전방 2톱 판정에는 사용 불가**\n\n역압박을 배제하면 **스트라이커의 자기 진영 수비액션이 아스날전 n=2 · 헐전 n=1**밖에 남지 않는다.\n즉 **「잭슨이 부엔디아와 나란한 2톱이었는가」는 이벤트 데이터로 답할 수 없는 질문이다** —\n스트라이커는 자기 진영에서 수비 액션을 거의 하지 않기 때문이다.\n(참고로 프록시 B의 잭슨−부엔디아 격차는 아스날 +7.4 · 헐 +7.5로 **두 경기가 사실상 같다**.\n프록시 A가 만든 차이는 재현되지 않는다.)\n\n⇒ **obs#402는 유지도 반박도 되지 않았다.** 이 주장의 교차검증에는 이벤트 좌표가 아니라\n**국면 태그가 붙은 프레임 단위 평균 위치(트래킹)** 가 필요하고, 현재 접근 가능한 소스로는 불가하다.\n\n**⭐ 대신 확인된 것 — 와이드 미드필더의 비대칭 하강** (프록시 B, 자기 진영 한정)\n\n| 경기 | 최종라인에 합류한 와이드 | 위에 남은 와이드 | 백4 높이 |\n|---|---|---|---|\n| 아스날전 | **맥긴 20.8** (n=7) | 헤밍스 28.4 (n=11) | 캐시 22.1 · 토레스 20.4 · 린델뢰프 21.1 · 마첸 22.2 |\n| 헐전 | **헤밍스 21.5** (n=10) | 맥긴 37.4 (n=7) | 마첸 20.2 · 밍스 19.2 · 린델뢰프 16.2 · 캐시 25.3 |\n\n두 경기 모두 **한쪽 와이드만 최종라인에 합류하는 백5 변형**이고, **합류하는 쪽이 경기마다 바뀐다**.\n이는 캐시/마첸 중 한쪽만 전진하는 obs#4·#95의 「한 번에 한 쪽」과 **같은 비대칭 원리의 미드필드판**으로 보인다.\n\n**⚠️ 서사와의 충돌 — Squawka (2026-09-05)**\n「Emery ... turned his usual 4-4-2 out of possession into a **6-2-2**」(번역: 에메리는 평소의 무공 시\n4-4-2를 6-2-2로 바꿨다)이며, **부엔디아가 잭슨과 나란히 투톱으로 올라가고 맥긴·헤밍스가 「동시에」\n윙백으로 내려가 최종라인을 6명으로 확장**했다고 서술했다(아스날전에는 두 와이드가 「번갈아」\n내려갔다는 대비까지 붙였다).\n\n- **실측은 「동시」를 지지하지 않는다** — 헐전에서 내려간 것은 헤밍스뿐이고 맥긴은 37.4로 한 라인 위에 남았다.\n- **다만 「번갈아 vs 동시」의 대비 방향은 부분적으로 맞다**: 내려간 쪽이 아스날전 맥긴 → 헐전 헤밍스로 **바뀌었다**.\n- ⛔ **Squawka 원문은 WebFetch 403으로 verbatim 미확보**이고 인용은 검색엔진 요약 2회 교차확인분이다.\n  1차 원문 확인 전까지 이 충돌의 한쪽 항은 확정이 아니다 — **D+1~D+3 추적의 최우선 재시도 대상**.\n\n⚠️ 프록시 B의 개인별 n=7~11은 얇고, **평균값이라 경기 내 교대(알터네이션)를 가리지 못한다** —\n평균이 낮다고 「항상」 내려간 것은 아니다. 표본 2경기 — 관찰 단계.\n\n---\n\n## 4. 경기 중 변화\n\n1. **0-0 (1~45')** — 빌라가 즉시 점유를 잡았다. 잭슨이 2분 헤더(xG .22)를 빗맞혔고, 헤밍스가 13분에\n   경기 **유일한 유효슛**을 만들었다. 이후 전반은 헐의 5-4-1 앞 순환에 갇혔다. 전반 빌라 xG 0.56.\n2. **최대 압력 국면 (46~55')** — 후반 시작과 함께 두 빅찬스가 3분 간격으로 왔다.\n   50' 맥긴 왼발(xG .68) 실축 · 53' 부엔디아 오른발(xG .54) 실축. **이 10분이 경기였다.**\n3. **75' 3장 동시 교체 — 좌우 재배치** — 루헤리↔마첸(LB) · 가르나초↔부엔디아 · 알리송↔헤밍스.\n   실측 좌표가 명목 교체와 다르다: 가르나초는 부엔디아(CAM) 자리가 아니라 **좌측**(`ay`=90.1,\n   `ax`=72.3)에서 뛰었고, 알리송은 헤밍스(LM) 자리가 아니라 **우측**(`ay`=17.2)에서 뛰었다.\n   ⇒ 실제로는 **좌우가 교차 재배치**됐고 맥긴이 안쪽으로 이동한 형태다. (⚠️ 표본 12~13터치)\n   효과: 교체 후 15분 빌라 xG 0.12(코너 2회분) — **변화가 산출을 만들지 못했다.**\n4. **85' 아브라함↔잭슨 · 완비사카↔캐시** — 완비사카 투입으로 캐시 쪽 이음새를 닫는 배치.\n   그러나 **90분 맥버니가 xG 0.30을 빗맞히며** 오히려 빌라가 패배를 면했다.\n\n---\n\n## 5. 선수별 분석 — 출전 선수 전원 (16명)\n\n| 선수 | 위치·실제 역할 | 분/평점·핵심 스탯 | 평균 위치·히트맵 | 특성·수행 | FC 역할/포커스 함의 |\n|---|---|---|---|---|---|\n| **스즈키** | GK · 후방 배급 겸용 | 90' / **7.58** · 선방 4 · 실점 0 · **xGOT 대비 실점 방지 +0.17** · 패스 36/38 · **롱볼 9/10** · 회수 13 | `ax` 12.1 / `ay` 49.3 · hp 55 | 클린시트. 4세이브 중 다이빙 1·박스 안 1. **롱볼 90%** 로 딥블록을 직접 넘겼다. 스위퍼 행동 0 | `gk_goalkeeper`/Balanced **.965** (시즌 정본 Defend .975와 노이즈 내 차이) — **유지** |\n| **캐시** | RB · 완전 전진 윙백 | 85' / 6.75 · 터치 85 · 패스 57/66 · 찬스 1 · **수비액션 1 · 제쳐짐 2 · 듀얼 2/7** | `ax` **53.7**(26/27 PL 최고) / `ay` 13.4 · hp 85 | 공격 관여는 팀 2위(최종3분의1 21건·박스진입패스 3)지만 **수비 기여가 사실상 0**. 헐 공격 52%가 이 쪽 | 단일 경기 `fb_att_wb`/**Support .910**. ⚠️ 시즌 정본은 `fb_wingback`/Balanced .959 — **이 경기는 정본보다 훨씬 공격적으로 뛰었다**. 정본 변경 근거 아님(§7) |\n| **린델뢰프** | RCB · 전진 배급자 | 90' / **7.65** · 터치 114 · 패스 **105/110(95%)** · 라인브레이킹 **20** · 최종3분의1 11 · 롱볼 5/8 · 클리어 4 | `ax` 40.9 / `ay` 33.8 · hp 114 | 팀 최고 평점. 30m+ 롱패스 10회로 팀 1위. 제쳐짐 0·탈취당함 0 | `cb_bpd`/Aggressive **.800** — 시즌 정본과 동일 역할, fit은 .968→.800으로 하락(전진 폭 확대 탓) |\n| **밍스** | LCB · 전진 + 세트피스 표적 | 90' / **7.57** · 터치 90 · 패스 73/80 · **슛 3** · 클리어 4(헤더 3) · 듀얼 5/7 | `ax` 44.9 / `ay` 66.1 · hp 91 | 센터백이 슛 3개(전부 세트피스·박스 언저리). 지상 경합 3/3 | `cb_bpd`/Aggressive **.802** — 유지 |\n| **마첸** | LB · 전진 윙백 | 75' / **7.42** · 터치 56 · 패스 36/40 · **xA 0.42(팀 1위)** · 크로스 1/2 · 스프린트 **18회** | `ax` 55.9 / `ay` 83.5 · hp 56 | 팀 유일 성공 크로스. 스프린트 수 팀 1위 — 반복 오버랩 | `fb_att_wb`/Support **.903** (시즌 정본 `fb_wingback`/Balanced .821보다 높음) |\n| **카마라** | RDM · 중앙 순환 축 | 90' / **7.50** · 터치 114 · 패스 88/97 · **최종3분의1 패스 15(팀 1위)** · 회수 6 · **탈취당함 0** | `ax` 54.2 / `ay` 38.8 · hp 115 | 수비 액션 10(팀 1위)·경합 7승. 딥블록 앞에서 볼을 잃지 않는 기준점 | `dm_dlp`/Roaming **.793** — 시즌 정본과 동일 |\n| **바클리** | LDM · 전진형 8번 | 90' / 7.20 · 터치 **120(팀 1위)** · 패스 94/103 · **라인브레이킹 18** · 찬스 2 · **슛 4(팀 1위)** · 탈취당함 3 | `ax` 55.6 / `ay` 59.7 · hp 120 | 팀 최다 터치·최다 슛. 그러나 4슛 중 2블록·2빗나감(xG 0.22). 공중 1/4·지상 2/7로 경합은 약함 | `dm_dlp`/Roaming **.756** — 시즌 정본(.861)보다 낮음. LDM 유지 |\n| **맥긴** | RM · 터치라인 윙어 | 90' / **5.74(팀 최저)** · 터치 55 · 패스 30/36 · **크로스 0/4** · **탈취당함 5(팀 1위)** · **빅찬스 실축 1(xG .68)** | `ax` 65.1 / `ay` 23.6 · hp 55 | 최종3분의1 관여 30건(팀 1위)·박스진입패스 6(팀 1위)로 **양은 최다**인데 **질이 전부 실패**. 50분 결정적 실축 | `wm_winger`/**Attack .774** — 시즌 measured는 `wm_winger`/Balanced .873. ⚠️ obs#443: 캐시(att_wb)와 동측 겹침 |\n| **부엔디아** | CAM · 하프스페이스 침투 | 75' / 6.23 · 터치 40 · 패스 23/34(68%) · **빅찬스 실축 1(xG .54)** · **공중 0/4** · 박스진입패스 5 | `ax` 63.5 / `ay` 45.4 · hp 40 | 패스 정확도 68%는 팀 최저. 침투 위치는 좋았으나(박스 터치 2·xG .61) 마무리·연결 모두 실패 | `cam_classic10`/**Attack .879** — 시즌 정본 `cam_playmaker`/Roaming과 **다르다**(이 경기는 플레이메이커보다 침투형) |\n| **헤밍스** | LM · 좌측 와이드 | 75' / 6.85 · 터치 32 · **팀 유일 유효슛(xGOT .08)** · **빅찬스 창출 1** · 드리블 2/4 · 수비액션 7 · 제쳐짐 2 · 듀얼 4/12 | `ax` 58.2 / `ay` 74.3 · hp 32 | 어린 와이드가 팀 유일 유효슛과 유일 빅찬스 창출을 동시에 만들었다. 다만 경합 4/12로 몸싸움은 밀렸다 | 단일 경기 `wm_winger`/Attack **.613** (fit 낮음 — 위치가 넓게 흩어짐). 시즌 정본 `wm_widemid`/Support .788 |\n| **잭슨** | ST · **정통 9번(하강 없음)** | 85' / 6.66 · **터치 29(선발 최소)** · **박스 터치 6** · xG .24 · **xA 0.44** · **빅찬스 창출 1** · 오프사이드 1 · 스프린트 14 | `ax` **71.6** / `ay` 58.1 · hp 30 | ⭐ 아스날전(`ax` 61.9) 대비 **+9.8 전진**. 터치는 적고 박스 안 비중은 높다(6/29=21%) | ⭐⭐ **`st_advanced`/Support .632** — 아스날전 1위였던 `st_false9`/Build-Up은 **.368로 6위 추락**. §6 판별 결과 |\n| 루헤리 (교체 75') | LB | 15' / 6.52 · 터치 23 · **패스 20/20** · 크로스 0/2 | `ax` 59.9 / `ay` 91.4 · hp 23 | 극단적 터치라인 폭(`ay` 91.4). 패스 100% | `fb_att_wb`/Support .943 (⚠️ 15분 표본) |\n| 가르나초 (교체 75') | **LM**(명목은 부엔디아 교체) | 15' / 6.11 · 터치 12 · 드리블 1/1 · 탈취당함 1 | `ax` 72.3 / `ay` **90.1** | 명목상 CAM 교체지만 실제로는 **좌측 터치라인**. 15분에 산출 없음 | `wm_winger`/Attack .875 (⚠️ 12터치) |\n| 알리송 (교체 75') | **RM**(명목은 헤밍스 교체) | 15' / 6.02 · 터치 13 · 드리블 0/1 · 듀얼 0/2 | `ax` 69.5 / `ay` **17.2** | 명목상 LM 교체지만 실제로는 **우측**. 좌우 교차 재배치의 근거 | `wm_wideplm`/Attack .904 (⚠️ 13터치) |\n| 완비사카 (교체 85') | RB | 5' / **평점 미제공** · 터치 12 · **패스 9/9** · 최종3분의1 패스 3 | `ax` 49.8 / `ay` 17.4 | 캐시 쪽 이음새를 닫는 배치. 5분이라 판단 불가 | `fb_att_wb`/Support .786 (⚠️ 12터치) |\n| 아브라함 (교체 85') | ST | 5' / **평점 미제공** · 터치 4 · 태클 1 | `ax` 39.4 / `ay` 42.2 | 터치 4회 — 헐의 시간끌기 국면에 투입 | fit 산출 불가 수준(.182, hp 4) — **처방 근거로 쓰지 않는다** |\n\n> ⚠️ 교체 5명(15분 이하, hit_points 4~23)은 **리포트 근거로만** 쓰고 대표 그리드·시즌 처방 집계에 넣지 않는다.\n> ⚠️ 평점 결손 2건(완비사카·아브라함)은 **NULL**이며 0이 아니다(obs#132).\n\n---\n\n## 6. 전술 변화 판정\n\n### 유지된 것\n- **명목 포메이션 4-2-3-1**(WhoScored 포메이션 스냅샷 4회 전부 4231 — 경기 내 포메이션 변경 없음).\n- **중앙 이중 축(카마라 RDM · 바클리 LDM)** 과 그 좌우 배치. 아스날전과 동일.\n- **린델뢰프의 전진 배급자 역할** — 2경기 연속 팀 최고 수준 패스 지표.\n- **캐시 뒤 이음새** — 2경기 연속 상대의 주 통로(§3).\n\n### 새로 나타난 것\n- **양쪽 풀백 동시 전진**(캐시 53.7 · 마첸 55.9, 둘 다 `fb_att_wb`/Support 최적).\n  ⚠️ 에메리 정본 「한 번에 한 쪽」(obs#4·#95)과 **어긋난다**. 딥블록 상대 특수 대응인지\n  체제 변화인지는 **표본 1건으로 판단 불가**.\n- **압박 강도 급상승** — PPDA 30.50 → **14.67**. 다만 분모 12로 얇다.\n- **백4 라인 전진** — 센터백 `ax`가 자동 분류기에서 풀백으로 읽힐 만큼 높았다.\n\n### 직전 경기(아스날) 대비 변화 — 판별 논점 3건\n\n| 논점 | 아스날전(39% 점유) | 헐전(74% 점유) | 판정 |\n|---|---|---|---|\n| **① 잭슨 성향** | `st_false9`/Build-Up **.723** (1위) · `st_advanced`/Support .423 | `st_advanced`/Support **.632** (1위) · `st_false9`/Build-Up **.368** (6위) | ⭐⭐ **순위 완전 역전**. 두 Δ 모두 노이즈(.05) 훨씬 초과(+.300 / +.264). ⇒ 잭슨의 하강은 **성향이 아니라 국면 반응**이다 |\n| **② 무공 4-4-2 플랫** | 최종라인 합류 와이드 = **맥긴**(20.8) | 최종라인 합류 와이드 = **헤밍스**(21.5) | ⛔ **4-4-2 여부는 판정 보류(측정 불가)**. 대신 **비대칭 하강**(한쪽 와이드만·경기마다 좌우 교체)을 확인 |\n| **③ 캐시 이음새** | 상대 로테이션에 노출 | 헐 공격 52.4%가 그 쪽 · 자일스 크로스 8개 · 캐시 수비액션 1·제쳐짐 2 | **재현됨(n=2)**. 점유 우세/열세 무관 |\n\n### `observations` 반영\n- **obs#446** — 잭슨 국면 의존성(논점 ①).\n- **obs#447** — obs#402 4-4-2 플랫 검증 시도 → **측정 불가로 판정 보류**, 대신 와이드 비대칭 하강 + Squawka 「6-2-2」 충돌 기록(논점 ②).\n- **obs#448** — 캐시 이음새 2경기 연속 재현 + 양 풀백 동시 전진의 정본 이탈(논점 ③).\n- `manager_profiles` 변경 **없음** — 표본 1경기로 11축을 건드리지 않는다.\n\n---\n\n## 7. 게임 구현 판정\n\n### 결론: **추가 관찰**\n\n세 판별 논점 모두 방향이 뚜렷하지만 전부 **표본 2경기**다. 특히 논점 ①은 Δ가 크지만\n「점유 우세 1경기 vs 열세 1경기」의 대비라 **국면 축을 분리한 3~4번째 표본**이 필요하다.\n`prescriptions`·`slot_canon_roles`·`team_tactic_setups` **변경 없음**.\n\n### 이 경기 전용 팀 설정 (`match_game_setups` · MATCH ONLY)\n\n| 항목 | 값 |\n|---|---|\n| 게임 버전 | FC26 |\n| 포메이션 | 4-2-3-1 Wide |\n| 빌드업 | **Short Passing** |\n| 수비 접근 | **High** |\n| 라인 높이 | **68** |\n\n**근거**: 점유 74%·패스 694(90%)·상대 진영 패스 393으로 **Short Passing**이 명확하다(아스날전 Balanced와 다름).\nPPDA 14.67(아스날전 30.50의 절반 이하)·상대 진영 수비액션 비중으로 **High**.\n라인 높이는 백4 `avg_x`(린델뢰프 40.9 · 밍스 44.9 · 캐시 53.7 · 마첸 55.9, 평균 48.9)와\n팀 수비액션 평균 x 36.3(역압박 성격)을 함께 보고 **68**로 둔다 — 아스날전 40, 브라이턴전 38 대비 대폭 상향.\n\n### 이 경기 선발 11명 (`match_player_prescriptions`)\n\n| 슬롯 | 선수 | 역할 | 포커스 | 단일 경기 fit | 선택 이유 |\n|---|---|---|---|---:|---|\n| GK | 스즈키 | `gk_goalkeeper` | Balanced | .965 | 롱볼 9/10 배급 — Defend보다 Balanced가 이 경기 행동에 맞다 |\n| RB | 캐시 | `fb_att_wb` | Support | .910 | `ax` 53.7 완전 전진. 시즌 정본(`fb_wingback`/Balanced)과 다름 |\n| RCB | 린델뢰프 | `cb_bpd` | Aggressive | .800 | 라인브레이킹 20·롱패스 10 |\n| LCB | 밍스 | `cb_bpd` | Aggressive | .802 | 전진 + 세트피스 표적 |\n| LB | 마첸 | `fb_att_wb` | Support | .903 | 스프린트 18·xA .42 반복 오버랩 |\n| RDM | 카마라 | `dm_dlp` | Roaming | .793 | 최종3분의1 패스 15·탈취당함 0 |\n| LDM | 바클리 | `dm_dlp` | Roaming | .756 | 터치 120·라인브레이킹 18 |\n| RM | 맥긴 | `wm_winger` | Attack | .774 | 터치라인 점유형(`ay` 23.6·크로스 4회) |\n| CAM | 부엔디아 | `cam_classic10` | Attack | .879 | ⚠️ 시즌 정본 `cam_playmaker`/Roaming과 다름 — 이 경기는 침투형 |\n| LM | 헤밍스 | `wm_winger` | Attack | .613 | fit 낮음(위치 분산). 유효슛·빅찬스 창출은 안쪽 진입에서 나왔다 |\n| ST | 잭슨 | `st_advanced` | Support | .632 | ⭐ 아스날전 `st_false9`/Build-Up에서 전환. 박스 상주형 |\n\n교체 5명도 `match_player_prescriptions`에 `starter=0` + `minute_on`으로 기록한다\n(가르나초·알리송은 **명목 교체 대상이 아니라 실측 좌표 기준 슬롯**으로 넣는다).\n\n### 다음 경기 재검증 항목 (2026-09-12 vs Nottingham Forest, 홈)\n1. **잭슨** — 점유 우세면 `ax`가 다시 70대인가? 열세면 60대로 내려가는가? (국면-성향 분리 3번째 표본)\n2. **무공 형태** — 잭슨−부엔디아 수비액션 x 격차. 0에 가까우면 4-4-2, 15+면 4-4-1-1.\n3. **양 풀백 동시 전진**이 반복되는가, 아니면 딥블록 한정 대응이었나.\n4. **캐시 이음새** — 상대 공격의 측면 편중률. 2경기 연속 50%+면 obs 승격.\n5. **유효슛 비율** — 3경기 연속 무득점. 13슛 1유효가 우연인지 구조인지.\n\n> ⚠️ 이 설정은 `match_game_setups`·`match_player_prescriptions`의 **MATCH ONLY** 프리셋이다.\n> 시즌 전술이나 대표 선수 역할에 자동 병합하지 않는다.\n\n---\n\n## 8. 영상·기사·감독 발언\n\n*(§2-1 서사 수집 — 2026-09-06, D+1 시점. D+1~D+3 추적이 별도로 예약돼 있다.)*\n\n### 8-1. 감독 경기 후 회견\n\n> ⛔ **1차 소스 한계**: `avfc.co.uk` 공식 「What Emery said」는 WebFetch 본문 truncate로 **2회 실패**했다.\n> 아래 에메리 인용은 **BBC Sport판 전재본**(Yahoo Sports, 2026-09-05 19:25 UTC)과 Sky Sports·VAVEL에서\n> verbatim 확인한 것이다. **양 팀 클럽 공식 기자회견 전문은 미확보** — D+1 재시도 대상.\n\n**우나이 에메리 (아스톤 빌라)**\n\n- 「We planned this match the way we played. We were trying to dominate with our positioning, keeping\n  possession as much as possible.」\n  (번역: 우리가 경기한 방식 그대로 이 경기를 설계했다. 포지셔닝으로 지배하고 가능한 한 점유를 유지하려 했다.)\n  → **실측과 일치**: 점유 74%·상대 진영 패스 393. 74%는 헐의 딥블록이 준 것이기도 하지만, **빌라의 의도이기도 했다.**\n- 「We created around five good chances to score. The next step for us is to continue building the team\n  and try to correct a few things offensively.」\n  (번역: 득점할 만한 좋은 기회를 5개 정도 만들었다. 다음 단계는 팀을 계속 쌓아 올리고 공격에서 몇 가지를 교정하는 것이다.)\n- 「We weren't clinical. We had four very good chances to score and of course if we do the match can change.」\n  (번역: 우리는 결정적이지 못했다. 아주 좋은 기회가 4개 있었고, 넣었다면 경기는 달라질 수 있었다.)\n  → ⚠️ FotMob 빅찬스는 **2회**다. 에메리의 「4~5회」는 더 넓은 기준이다.\n- 「We are improving, but not enough.」 / 「This point is not enough, but I am accepting it.」\n  (번역: 개선되고 있지만 충분치 않다 / 이 승점은 충분하지 않지만 받아들인다.)\n- ⭐ **스쿼드 적응 — 이 회견의 핵심 문장**:\n  「The players who joined us need some adaption. Some are adapting quicker than others.」\n  (번역: 합류한 선수들에게는 적응이 필요하다. 어떤 이는 다른 이보다 빨리 적응하고 있다.)\n  「We worked four years in the same structure and we always felt comfortable ... In the last four years,\n  with the success we've had, we have had some days like today.」\n  (번역: 우리는 4년간 같은 구조로 일했고 늘 편안했다 … 지난 4년의 성공 속에서도 오늘 같은 날은 있었다.)\n- PK 어필(잭슨·캐시가 노벨 멘디의 푸시로 넘어진 두 장면)에 대해서는 「다시 보지 않았다」며 심판 얘기를 피했다\n  (스페인어 요약 경유 — Infobae/es.soccerway 2026-09-05).\n\n> 🔴 **에메리가 잭슨·헤밍스·맥긴·부엔디아·교체·결장자를 이름으로 언급한 발언은 9개 언어 전부에서 0건이다.**\n> 판별 논점 ①(잭슨 역할)에 대한 **본인 발언은 미확보**다. 이는 「구조적 부재」가 아니라 **「미완」**으로\n> 분류한다 — 클럽 공식 회견 전문 접근이 남아 있다.\n\n**세르게이 야키로비치 (헐 시티)** — BBC MOTD 전재본(Yahoo, 2026-09-05 18:56 UTC)에서 verbatim\n\n- 「I'm realistic. I think this is a realistic result. We gave everything we had. **They had two clear\n  chances**, we also could win the game at the end. ... Seven points, three games. Clean sheet.」\n  (번역: 나는 현실주의자다. 이건 현실적인 결과다. 우리는 가진 걸 다 쏟았다. **상대에게 명백한 기회는 두 번 있었고**,\n  우리도 막판에 이길 수 있었다. … 3경기 7점, 무실점.)\n  → ⭐ **상대 감독의 「명백한 기회 2회」가 우리 실측 빅찬스 2회와 정확히 일치한다.**\n- 「The big problem for me is who didn't have a pre-season. This is a very big problem.」\n  (번역: 내 큰 문제는 프리시즌을 못 치른 선수들이다. 이건 아주 큰 문제다.)\n- 🇭🇷 크로아티아어(Sportnet 2026-09-05): 「Zar očekujete da se borimo za Ligu prvaka?」\n  (번역: 우리가 챔스를 다투길 기대하는 겁니까?) — 목표는 「38~40점」.\n  ⚠️ 크로아티아어 매체의 빌라 평가(「좋은 팀이지만 새 선수들과 시간이 더 필요하다」)는\n  **검색 요약 경유이고 verbatim 미확보**다.\n\n### 8-2. 전술 글\n\n**⭐⭐ Squawka 「Sergej Jakirovic and Unai Emery's battle of unorthodox defensive tactics」**\n(2026-09-05, https://www.squawka.com/en/features/post-match-analysis-hull-city-vs-aston-villa-05-09-26/)\n— **이 경기 유일한 본격 전술 분석. ⛔ WebFetch 403으로 원문 verbatim 미확보**(검색엔진 요약 2회 교차확인).\n\n- 「Emery saw enough less than five minutes in and turned his usual **4-4-2 out of possession into a 6-2-2**」\n  (번역: 에메리는 5분도 안 돼 판단을 끝내고, 평소의 무공 시 4-4-2를 **6-2-2로 바꿨다**).\n- 계기: 헐의 첫 공격이 **자일스의 크로스**였고 맥버니가 1초 늦게 도착 — 에메리가 이 측면 크로스 루트를 차단하려 했다는 서술.\n- 구성: **부엔디아가 잭슨과 나란한 무공 시 투톱**, **맥긴·헤밍스가 「동시에」 윙백으로 하강해 최종라인 6명**.\n  아스날전에는 두 와이드가 **「번갈아」** 내려갔다는 대비.\n- ⚠️ **실측과 충돌** — §3 참조. 실측은 「동시」를 지지하지 않는다(헐전에 내려간 것은 헤밍스뿐, 맥긴 37.4).\n  「번갈아 vs 동시」의 **좌우 교체 방향은 부분적으로 일치**.\n- 에메리 역사 맥락: 「Villa have deployed central midfielders out wide for years — Rogers, McGinn, Buendía,\n  Hemmings — because Emery likes to attack down the middle」\n  (번역: 빌라는 수년간 중앙 미드필더를 측면에 세워 왔다 — 에메리가 중앙으로 공격하길 좋아하기 때문).\n  → 헤밍스의 `wm_winger` fit이 낮은 것(.613)과 방향이 같다: **원래 와이드가 아닌 선수를 와이드에 두는 설계**.\n\n**TFA · BTL · Spielverlagerung · Coaches' Voice — 이 경기 0건.**(아스날전은 있었다.)\n\n### 8-3. 기사\n\n- **Opta Analyst**(Harry Carr, 2026-09-05): 「Villa had 13 shots to Hull's 11, also registering a 73.5%\n  possession share and winning the expected goals battle by **1.74 xG to 0.58**, but still, their wait to\n  hit the net goes on.」 → ⚠️ **xG 충돌**(§9 참조).\n- **BBC Sport**(Adwaidh Rajan, 2026-09-05): 「Nicolas Jackson's movement caused problems for the Hull backline」.\n  왓킨스 공백을 「always going to leave a void」로 규정.\n- **Sky Sports**(Callum Bishop, 2026-09-05): 「Jackson brings energy, but you'd probably back none of the\n  new arrivals to be more clinical than Watkins inside the 18-yard box」\n  (번역: 잭슨은 에너지를 준다, 그러나 새 영입 중 누구도 박스 안에서 왓킨스보다 결정적일 것 같지 않다).\n- **평점 갈림**: 바클리는 Villa News 5/10인데 스페인어권(Infobae)은 **경기 MOM**(「95 pases correctos y 3 remates」).\n  린델뢰프는 Sofascore 7.8 MOTM(🇸🇪 「Svensken styrde Villas uppbyggnadsspel」 — 번역: 스웨덴인이 빌라의 빌드업을 조율했다).\n- **교체 논란**: 「it was surprising it took Emery 74 minutes to make substitutions」 + 「£47m Mbaye stayed on the bench」.\n  스티븐 워녹(BBC Radio 5 Live, 2026-09-05)은 가르나초에 대해 「He looks completely disinterested.\n  Unai Emery will be furious with his changes.」(번역: 완전히 무관심해 보인다. 에메리는 자기 교체에 분노할 것이다.)\n  → 실측 부합: 가르나초 15분 12터치·산출 0, 아브라함 5분 4터치.\n\n### 8-4. 선수 서사 — 언어별 수확\n\n- ⭐⭐ **스즈키 (🇯🇵 일본어에서만 나왔다 — 불변규칙 10 재실증)**: ゲキサカ(2026-09-06, Yahoo!ニュース 전재)\n  「前半28分、自陣ペナルティエリアライン上から**中央を貫くグラウンダーパス**で最前線のFWニコラス・ジャクソンへと\n  ボールを届けた。同44分にもグラウンダーでジャクソンに繋ぎ、チームが一気に前進した」\n  (번역: 전반 28분 자기 진영 PA 라인 위에서 **중앙을 관통하는 땅볼 패스**로 최전방 잭슨에게 배급했다.\n  44분에도 땅볼로 잭슨에 연결해 팀이 단번에 전진했다.) 후반 8분에는 50m 이상 롱피드로 결정기 기점.\n  **프리미어리그 일본인 GK 최초 클린시트.**\n  → ⭐ **판별 논점 ①의 보강 근거**: GK가 **최전방의 잭슨에게 직접** 땅볼을 꽂았다는 서술은\n  「잭슨이 최종선에 상주했다」는 실측(`ax` 71.6)과 방향이 같다. 하강형이라면 이 패스는 성립하지 않는다.\n  영어권 어느 매체도 이 장면을 쓰지 않았다.\n- ⭐ **헤밍스 (19세) — 팀 내 유일한 상승 서사**: Read Aston Villa 8/10 MOTM.\n  「Emery used the 19-year-old in a more advanced role from the left, allowing him to **drift inside** and\n  combine with Ian Maatsen」(번역: 에메리는 19세를 좌측에서 더 전진된 역할로 썼고, **안으로 파고들어** 마첸과\n  결합하게 했다). **200분 넘게 이어진 빌라의 유효슛 가뭄을 끝낸 슛.**\n  배경: 노팅엄 유스 → 2024-01 빌라, 잉글랜드 U19. **여름 임대 요청(프레스턴·스완지·셰필드 Utd)을 에메리가 직접 거부**(2026-09-02).\n  → ⭐ **처방 함의**: 「drift inside + 마첸과 결합」은 이 경기 `wm_winger`/Attack fit이 .613으로 낮았던 이유와\n  정확히 맞물린다. **다음 표본에서 `wm_wideplm`·`wm_widemid` 대안을 검토할 근거**(obs#443의 「안쪽형 와이드」 축과도 정합).\n- **잭슨**: 3분 헤더는 「rose between the Hull centre-backs」. 하프타임 직전 「almost certain to score」 상황에서\n  「became tangled with Mendy」(The Hull Story, Sam Hawcroft, 2026-09-05).\n  평가 갈림 — Villa News 5/10 「Villa need their striker to be much more decisive inside the box」 vs\n  BBC 「움직임이 헐 백라인을 괴롭혔다」.\n  🔴 **「잭슨이 고립됐다」고 명시한 매체는 0건이다** — 터치 29회는 현재 **우리 실측 단독 결론**이다.\n- **부엔디아** — 최저 평가(Villa News 3/10). 🇬🇧 헐 지역지: 「toe-poking over when it looked considerably\n  easier to hit the target」(번역: 골문을 맞히는 게 훨씬 쉬워 보이는 상황에서 발끝으로 넘겨버렸다).\n- **캐시** — 멘디의 푸시로 PK 어필, **VAR 개입 없음**. 🇵🇱 폴란드어 중계: 「Mendy miał szczęście, oceniając\n  na podstawie powtórki」(번역: 리플레이로 보면 멘디는 운이 좋았다).\n\n### 8-5. 헐 시티(상대) 관점\n\n- **The Hull Story**(Sam Hawcroft, 헐 전담, 2026-09-05): 빌라를 「just a shade more threat」로,\n  헐을 「organised, resolute and extremely difficult to beat」로 서술. 존 이건의 「magnificent sliding challenge」 강조.\n  → **빌라의 구조가 아니라 빌라의 마무리를 문제로 본다.** 우리 §3 판정(「구조가 아니라 마지막 20m가 실패했다」)과 일치.\n- 🇭🇷 크로아티아 매체(Index/Teleskop/Telegram, 2026-09-05): 헐은 **2017/18 허더즈필드 이후 첫\n  「3라운드까지 무실점 승격팀」**. Telegram.hr 본문은 헐의 로우블록과 조직적 컴팩트함을 분석.\n- ⚠️ **Hull Live / Hull Daily Mail 0건** — 검색 결과에 나오지 않았다.\n\n### 8-6. 결장·벤치 (과제 항목 4)\n\n| 선수 | 상태 |\n|---|---|\n| 고레츠카 | **스쿼드 제외** |\n| 하우드-벨리스 | **스쿼드 제외** |\n| 파우 토레스 | **벤치**(밍스에게 선발 밀림 — 아스날전 선발이었다) |\n| 조앙 고메스 | **출전정지**(브라이턴전 퇴장) |\n| 오나나 | **무릎/ACL 시즌아웃** |\n| 만잠비 · 마조 | 결장 |\n| 음바예(£47m) | **벤치 미출전** — 이 경기 최대 논쟁거리 |\n| **완비사카 · 가르나초** | ⭐ **둘 다 출전**(85' / 75') — 과제가 물은 「미출전 선수 포함 여부」에 대한 답 |\n\n### 8-7. 미수행 소스와 사유\n\n| 소스 종류 | 상태 |\n|---|---|\n| 유튜브 전술 분석 | **0건**. 하이라이트(NBC·Sky·TNT)만 존재. **D+1~D+3이 주 수집 시점**(스킬 §2-1a 전제와 일치) |\n| 전술 블로그 | **1건(부분)** — Squawka, ⛔ 403 원문 미확보. TFA·BTL·Spielverlagerung·Coaches' Voice 0건 |\n| 클럽 전담 기자 | 확보 — Read Aston Villa(⛔ 전 도메인 403 → 요약·전재 경유) · Villa News · BirminghamWorld · The Hull Story. **BirminghamLive/Ashley Preece 0건** |\n| 본인 발언 | **부분 확보** — 양 감독 BBC MOTD/Sky는 verbatim. ⛔ **양 팀 클럽 공식 회견 전문 미확보**(avfc.co.uk truncate 2회, hullcitytigers.com 미시도) |\n\n**D+1 우선 재시도 URL**: Squawka 분석(최우선) · readastonvilla 4건 · avfc.co.uk 회견 전문 · expressandstar · soccernews.\n\n**언어별 수행 결과** (⭐=신규 사실 획득)\n\n| 언어 | 결과 |\n|---|---|\n| 🇬🇧 영어 | 다수 확보 |\n| 🇯🇵 일본어 | ⭐⭐ **최대 수확** — 스즈키의 중앙 관통 배급(28'·44')·50m 롱피드는 **일본어에서만** 서술됐다. 보너스: 헐 守田英正 종아리 부상 3주 |\n| 🇭🇷 크로아티아어 | ⭐ **신규 언어축**(야키로비치 모국어) 5개 매체. 헐의 승격팀 무실점 기록 |\n| 🇪🇸 스페인어 | ⭐ 1건(에메리 PK 코멘트). Marca/AS/Relevo/El Desmarque 자체 기사 **0건** — Infobae(EFE)·soccerway만 |\n| 🇦🇷 스페인어(아르헨) | Olé·TyC **0건**. Infobae가 바클리를 MOM 평가 |\n| 🇵🇱 폴란드어 | 폴란드 매체 0건, 중계 코멘트만(캐시 PK) |\n| 🇸🇪 스웨덴어 | 스웨덴 매체 0건, Sofascore 기반 요약만(린델뢰프 7.8) |\n| 🇫🇷 프랑스어 | **경기 전용 0건**(잭슨 이적 배경만). 세네갈 매체 0건 |\n| 🇮🇹 이탈리아어 | Gazzetta 등 **0건**(루헤리 신규 서사 없음) |\n| 🇧🇷 포르투갈어 | Globo/UOL/ge **0건**(알리송 신규 서사 없음) |\n| 🇳🇱 네덜란드어 | VI/AD/Telegraaf **0건**(영문 전재 요약만) |\n\n**미시도 언어축과 사유** — 🇬🇷 그리스어(헐 GK 촐라키스, 팬투표 MOTM) **다음 사이클 필수** ·\n🇩🇿 아랍어(벨루미, 골대 강타) 미시도 · 🇩🇪 독일어(고레츠카) 결장자라 우선순위 하향 ·\n🇷🇸/보스니아어(멘디) · 🇮🇪 아일랜드(이건) · 🇰🇷 한국어 미시도.\n\n---\n\n## 9. 데이터 반영과 한계\n\n### DB에 추가한 행\n- `matches` **1행** (id=95, `event_id`=5795440, AVL/2026-27/2026-09-05/Hull City/Premier League/A/0-0, possession 74.0)\n- `player_matches` **16행** (출전 선수 전원 — 선발 11 + 교체 5)\n- `team_match_stats` **1행** (xG 4종 동시 수집 · PPDA 양방향)\n- `match_reports` 1행 + `match_player_reports` 16행\n- `match_game_setups` 1행 + `match_player_prescriptions` 16행 (선발 11 + 교체 5)\n- `observations` **4행** (#446 · #447 · #448 · #449)\n- `player_duties` **3행 append 갱신**(스즈키 GK · 헤밍스 LM · 잭슨 ST — 덮어쓰지 않았다)\n- `prescriptions` `kind='measured'` **6행 UPDATE + 5행 신규**(§4 집계 갱신, 아래)\n\n### §4 집계 갱신 — 표본 2→4경기로 역할 5건 역전 (obs#449)\n\n| 선수 | 직전 (n=2) | 갱신 (n) | 판정 |\n|---|---|---|---|\n| 캐시 RB | `fb_wingback`/Balanced .959 | **`fb_att_wb`/Support .892** (n=4) | ⚠️ 역전 |\n| 마첸 LB | `fb_wingback`/Balanced .821 | **`fb_att_wb`/Support .875** (n=4) | ⚠️ 역전 |\n| 카마라 RDM | `dm_holding`/Defend .795 | **`dm_dlp`/Roaming .826** (n=4) | ⚠️ 역전 |\n| 맥긴 RM | `wm_winger`/Balanced .873 | **`wm_winger`/Attack .801** (n=4) | ⚠️ 포커스 역전 |\n| 파우 토레스 LCB | `cb_bpd`/Build-Up .896 | **`cb_bpd`/Aggressive .911** (n=3) | ⚠️ 포커스 역전 |\n| 린델뢰프 RCB | `cb_bpd`/Aggressive .968 | `cb_bpd`/Aggressive .961 (n=4) | 유지 |\n| **신규 5행** | — | 부엔디아 CAM `cam_playmaker`/Build-Up .864 (n=2) · 바클리 LDM `dm_dlp`/Roaming .823 (n=2) · 헤밍스 LM `wm_widemid`/Support .566 (n=3) · 잭슨 ST `st_advanced`/Support .602 (n=2) · 스즈키 GK `gk_goalkeeper`/Balanced .939 (n=2) | |\n\n**⚠️ obs#443과의 긴장**: obs#443의 사이드 짝짓기 규칙은 「윙어 쪽 풀백 = `fb_wingback`, 반대쪽 = `fb_att_wb`」이고\n현 정본은 「좌측 전진(마첸) · 우측 절제(캐시)」다. 그런데 **4경기 집계는 두 풀백을 모두 `fb_att_wb`/Support로\n옮겨 놓았다.** 두 해석이 가능하고 **아직 가릴 수 없다** — ⓐ 체제가 양 풀백 동시 전진으로 바뀌었다,\nⓑ 표본 4경기의 점유율이 27%·39%·39%·74%로 극단 분산돼 **집계가 국면을 뭉갰다**.\n⭐ ⓑ 쪽 정황: **헐전 단일 경기 fit(캐시 .910·마첸 .903)이 집계값보다 높다** — att_wb 신호의 상당 부분이\n74% 점유 1경기에서 온다. 국면별(@dom/@tight) 분리는 버킷당 2경기가 필요한데 74% 표본이 1경기뿐이라 아직 불가.\n⛔ **정본(`fc26:opt:*`)·`slot_canon_roles`·`team_tactic_setups`는 변경하지 않았다** — 바뀐 것은\n`kind='measured'` 집계 행뿐이며 이는 스킬 §4의 기계적 갱신이다.\n\n### ⚠️ 외부 소스와의 수치 충돌\n\n| 항목 | 우리 원장 | 외부 | 판정 |\n|---|---|---|---|\n| **빌라 xG** | **1.93** (FotMob) | **1.74** (Opta Analyst · BBC · Sky) / 1.75 (Squawka) | **모델 차이**. 원장은 FotMob 계열로 통일돼 있어(브라이턴·아스날 행도 동일) **1.93을 유지**한다 — 소스를 섞으면 시즌 시계열이 깨진다. `team_match_stats.source`에 FotMob 명기. ⚠️ 외부 글을 인용할 때 1.74와 나란히 쓰지 말 것 |\n| 헐 xG | 0.57 | 0.58 (Opta) | 반올림 |\n| 점유 | 74% | 73.5% (Opta) / 73 (Sofascore) / 70 (Infobae) | 일치 |\n| 맥긴 빅찬스 xG | 0.68 (FotMob) | 0.62 (ESPN) | 모델 차이(경미) |\n| 부엔디아 xG | 0.61(경기 합계) | 「0.4 xG sitter」(단일 슈팅) | **층위가 다름 — 충돌 아님** |\n| 카마라 터치 | 114 (FotMob) | 109 (Villa News) | 소스 차이 |\n| 교체 시각 | 75' / 85' | 74'/75'/76' 혼재 | 실측 유지 |\n\n**⭐ 소스 충돌 1건을 원자료로 해결했다** — 잭슨 헤더(2분)의 크로스 공급자를 두고 매체가\n**마첸**(Sky·Infobae·네덜란드어)과 **헤밍스**(Read Aston Villa·폴란드어)로 갈렸다.\nOpta 이벤트가 답을 준다: **1:35 헤밍스 패스(x=72,y=61 → 84,76) → 1:37 마첸 크로스**\n(`Cross`+`IntentionalAssist`+`Chipped`+`KeyPass`, x=84 y=76) → **1:40 잭슨 헤더**.\n⇒ **크로스는 마첸, 그 직전 연결은 헤밍스**다. 양쪽 서사가 각각 절반씩 맞았다.\n\n### 한계\n- **표본 1경기.** 세 판별 논점 모두 n=2이며 정본 처방 변경 근거가 아니다.\n- **상대 수준**: 헐은 승격팀이고 5-4-1 딥블록을 세웠다. 74% 점유는 상대 의도의 산물이라\n  **빌라의 점유 능력 지표로 읽으면 안 된다.**\n- **스코어 효과 없음**(전 90분 `level`) — 이 점은 오히려 국면 오염이 없다는 장점이다.\n- **PPDA 분모 12**로 얇다. 방향은 신뢰하되 크기는 신뢰하지 말 것.\n- **무공 형태 측정의 성격 차이**: 74% 점유의 수비액션은 정착 블록이 아니라 역압박이다.\n  아스날전과 같은 수치라도 같은 의미가 아니다.\n- **포지션 혼입**: `core.classify.pos_class` 자동값이 센터백 2명을 풀백으로 읽었다.\n  분류기 오류가 아니라 **이 경기의 실측 자체**다(백4 전진). 수동 라벨은 Opta 포지션을 따랐고\n  자동값은 `stats_json.pos_class_auto`에 병기했다.\n- **결손값**: 완비사카·아브라함 평점, 수비수·GK의 xg/xa — 전부 NULL(0 아님).\n- **히트맵 원천**: Opta 터치 좌표. SofaScore 행과 `hit_points`를 직접 비교하면 안 된다.\n- **교체 좌표 표본**(12~23터치)은 방향 근거로만 쓴다.\n\n### 상태\n- `match_reports.status` = **complete** (필수 섹션 + 출전 16명 전원 선수 리포트 + 경기 전용 팀 설정 + 선수 처방 완비)\n- G1~G13 전항 통과.\n",
+   "report_path": "reports/match-watch/2026-09-05-avl-hull.md",
+   "result": "0-0",
+   "season": "2026-27",
+   "shots_o": 11,
+   "shots_v": 13,
+   "sot_o": 4,
+   "sot_v": 1,
+   "source": "FotMob matchDetails matchId=5795440(팀·선수 스탯·샷맵·라인업, curl 2026-09-06) + WhoScored/Opta matchCentreData matchId=1983577(Playwright 페이지 오리진 추출 — 터치 좌표 1,468 이벤트·PPDA·수비액션 좌표, 2026-09-06). ⛔ SofaScore 미사용(robots.txt 403 재확인 — obs#290 지속). || 서사(2026-09-06 D+1, 9개 언어): 에메리·야키로비치 경기 후 인터뷰(BBC MOTD 전재 verbatim, ⛔클럽 공식 회견 전문 미확보) · Squawka 전술 분석(⛔403 원문 미확보, 요약 2회 교차확인) · ゲキサカ 2026-09-06(🇯🇵 스즈키 배급 — 일본어에서만) · Read Aston Villa(헤밍스) · The Hull Story(상대 관점) · 🇭🇷 크로아티아어 5개 매체. 유튜브 전술 분석 0건(D+1~D+3이 주 수집 시점).",
+   "stage": "R3",
+   "status": "complete",
+   "tactical_changes": "【유지된 것】명목 포메이션 4-2-3-1(WhoScored 포메이션 스냅샷 4회 전부 4231 — 경기 내 포메이션 변경 없음) · 중앙 이중 축(카마라 RDM·바클리 LDM)과 좌우 배치(아스날전 동일) · 린델뢰프의 전진 배급자 역할(2경기 연속 팀 최고 수준 패스 지표) · 캐시 뒤 이음새(2경기 연속 상대의 주 통로).\n\n【새로 나타난 것】ⓐ 양쪽 풀백 동시 전진(캐시 53.7·마첸 55.9, 둘 다 fb_att_wb/Support 최적) — ⚠️ 에메리 정본 「한 번에 한 쪽」(obs#4·#95)과 어긋난다. 딥블록 상대 특수 대응인지 체제 변화인지는 표본 1건으로 판단 불가. ⓑ 압박 강도 급상승(PPDA 30.50 → 14.67, 단 분모 12로 얇음). ⓒ 백4 라인 전진 — 센터백 ax가 자동 분류기에서 풀백으로 읽힐 만큼 높았다.\n\n【경기 중 변화】① 0-0 전반: 빌라가 즉시 점유를 잡았고 잭슨 2분 헤더(xG .22) 실축, 헤밍스 13분에 경기 유일 유효슛. 이후 5-4-1 앞 순환에 갇혔다(전반 xG 0.56). ② 최대 압력 46~55분: 50' 맥긴 왼발(xG .68) 실축 · 53' 부엔디아 오른발(xG .54) 실축 — 이 10분이 경기였다. ③ 75' 3장 동시 교체(루헤리↔마첸·가르나초↔부엔디아·알리송↔헤밍스): 실측 좌표가 명목 교체와 다르다 — 가르나초는 CAM이 아니라 좌측(ay=90.1·ax=72.3), 알리송은 LM이 아니라 우측(ay=17.2)에서 뛰었다. 즉 좌우 교차 재배치이며 맥긴이 안쪽으로 이동한 형태다(⚠️ 표본 12~13터치). 효과: 교체 후 15분 xG 0.12(코너 2회분)로 변화가 산출을 만들지 못했다. ④ 85' 아브라함↔잭슨·완비사카↔캐시로 이음새를 닫는 배치. 그러나 90분 맥버니가 xG 0.30을 빗맞히며 오히려 빌라가 패배를 면했다.\n\n【직전 경기(아스날) 대비 판별 논점 3건】① 잭슨 성향: 아스날전 st_false9/Build-Up .723(1위)·st_advanced/Support .423 → 헐전 st_advanced/Support .632(1위)·st_false9/Build-Up .368(6위). 순위 완전 역전이고 두 Δ 모두 노이즈(.05)를 훨씬 초과(+.300 / +.264) ⇒ 잭슨의 하강은 성향이 아니라 국면 반응이다. ② 무공 4-4-2 플랫: ⛔ 판정 보류 — 이벤트 좌표로는 측정 불가로 확인됐다(위 참조). 대신 「한쪽 와이드만 최종라인에 합류하고 그 쪽이 경기마다 바뀐다」는 비대칭 하강을 확인했다(아스날=맥긴, 헐=헤밍스). Squawka의 「6-2-2·양 와이드 동시 하강」과는 충돌하며 Squawka 원문은 미확보다. ③ 캐시 이음새: 재현됨(n=2), 점유 우세/열세 무관.\n\n【반영】observations #446(잭슨 국면 의존성) · #447(obs#402 검증 시도 → 측정 불가 판정 보류 + 와이드 비대칭 하강 + Squawka 충돌) · #448(캐시 이음새 재현 + 양 풀백 동시 전진의 정본 이탈). manager_profiles 변경 없음 — 표본 1경기로 11축을 건드리지 않는다.",
+   "tactical_description": "【점유 구조·빌드업】헐이 5-4-1 딥블록으로 내려앉았고(PPDA 34.67 — 사실상 압박 포기) 빌라는 74% 점유·694패스(정확도 90%)로 전 경기를 상대 진영에서 보냈다(상대 진영 패스 393 대 자기 진영 231). ⓐ 백4가 통째로 전진했다 — 린델뢰프 ax=40.9·밍스 ax=44.9로 core.classify.pos_class 자동 분류가 두 센터백을 RB·LB로 읽을 만큼 높았다(수동 라벨은 Opta DC 유지, 자동값은 stats_json.pos_class_auto 병기). 아스날전 백4(린델뢰프 36.1·토레스 31.2)와 대비된다. ⓑ 양쪽 풀백이 동시에 올라갔다 — 캐시 ax=53.7(26/27 PL 최고, 아스날전 47.9)·마첸 ax=55.9, 단일 경기 커널 적합이 둘 다 fb_att_wb/Support(.910·.903). ⓒ 빌드업은 짧게·전진은 길게 — 30m+ 롱패스가 린델뢰프 10회·스즈키 10회 상위였고 스즈키 롱볼 9/10 성공으로 GK가 딥블록 위로 넘기는 경로를 실제로 썼다. ⓓ 최종 3분의1 진입(x>=70, 194건)은 좌우 균형(우 38.1%·중앙 27.8%·좌 34.0%), 관여 최다는 맥긴 30·캐시 21·바클리 21·잭슨 20.\n\n【비점유 구조·압박】PPDA 14.67로 아스날전 30.50·브라이턴전 24.69 대비 압박 강도가 두 배 이상이다. 다만 분모(상대 진영 수비액션) 12로 얇다 — 74% 점유 탓에 상대 패스 자체가 176회뿐이라 분자·분모가 함께 작다. 방향은 신뢰하되 크기는 신뢰하지 말 것. 팀 수비액션 평균 x=36.3(아스날전 35.8)로 거의 같으나 성격이 다르다: 아스날전은 정착된 딥블록, 이 경기는 대부분 역압박이다. 무공 형태는 4-4-2 플랫이 아니었다(전술적 특성 참조).\n\n【전환·rest-defense·세트피스】헐의 공격 105건(x>=70) 중 52.4%가 헐의 좌측 = 빌라의 우측(캐시 쪽)에 몰렸다. 헐 크로스 21개 중 라이언 자일스(LWB, 헐 최고 평점 7.6, 최종3분의1 이벤트 22건 팀 최다) 혼자 8개 — 캐시 뒤가 이 경기의 유일한 통로였다. 세트피스는 빌라 코너 4개에서 xG 0.20(밍스 헤더 2·바클리 헤더 1), 헐은 벨루미가 65분 코너에서 골대를 맞혔다. 위험 순간은 두 번뿐(벨루미 65' 골대, 맥버니 90' xG 0.30 실축) — 무승부가 운 좋은 쪽은 빌라다.",
+   "tactical_features": "【취약점 ① 박스 앞까지는 가는데 골문을 못 맞힌다】xG 1.93·박스 안 슈팅 10·상대 박스 터치 24를 만들고 유효슛 1개(헤밍스 13분, xGOT 0.08). 13슛의 결말은 7 빗나감·5 블록·1 유효다. 슛 분포가 성격을 드러낸다 — 가장 깊은 두 선수가 13개 중 7개를 쐈다: 바클리(LDM) 4·밍스(LCB) 3·잭슨 2·부엔디아 2·맥긴 1·헤밍스 1. 두 빅찬스가 50분(맥긴 xG .68)·53분(부엔디아 xG .54) 3분 간격에 몰렸고 둘 다 실축이며, 그 뒤 37분간 빌라의 xG는 0.12뿐이다. 크로스 1/12(8%) — 폭은 확보했으나 박스 안에서 전혀 연결되지 않았고 맥긴 0/4가 최다 실패다.\n\n【취약점 ② 캐시 뒤 이음새 — 아스날전에 이어 2경기 연속】캐시는 ax=53.7로 26/27 PL 최고 높이까지 전진했고 대가가 그대로 나타났다: 수비액션 1·제쳐짐 2·지상경합 1/4·공중경합 1/3·듀얼 2승5패. 동시에 헐 공격의 52.4%가 그 쪽으로 왔고 자일스가 크로스 8개를 올렸다. 아스날전 판정(캐시의 높은 위치가 상대 로테이션에 노출되는 이음새)이 다른 상대·다른 국면에서 재현됐다 — 열세(39% 점유)에서도 우세(74% 점유)에서도 같은 곳이 뚫린다. ⭐ obs#443(윙 혼잡)과 정합: 우측은 맥긴(wm_winger/Attack .774, 터치라인형)과 캐시(fb_att_wb/Support .910)가 같은 쪽에 겹쳤고, 최종3분의1 관여는 팀 1·2위(맥긴 30·캐시 21)로 가장 활발했으나 산출은 크로스 0/5·빅찬스 1회 실축이다. obs#443이 예측한 「윙어 + 전진 풀백 동측 배치는 서로를 막는다」와 방향이 같다 — 단 이 경기 1건은 상관이지 인과가 아니다.\n\n【성공 패턴 — 중앙 이중 축의 순환】카마라(터치 114·패스 88/97·최종3분의1 패스 15 팀1위·회수 6·탈취당함 0)와 바클리(터치 120 팀1위·94/103·라인브레이킹 18)는 헐의 5-4-1 앞에서 볼을 잃지 않았다. 린델뢰프는 105/110(95%)·라인브레이킹 20·최종3분의1 11로 백선에서 가장 전진적인 배급자였다. 구조가 실패한 것이 아니라 마지막 20m가 실패했다.\n\n【⭐⭐ 무공 형태 — 「4-4-2 플랫」 검증은 측정 불가로 판정 보류, 대신 비대칭 하강을 찾았다】obs#402는 아스날전 무공 형태를 4-4-2 플랫으로 기록하면서 「좌표 실측으로 교차검증하지 않았다」고 남겨 뒀다. 이번 회차에서 검증을 시도했고 두 프록시가 서로 다른 답을 냈으며 각각 실격 사유가 있다. ⛔ 프록시 A(전체 수비액션 평균 x) — 폐기: 잭슨−부엔디아 격차가 아스날전 +0.8(53.4 vs 52.6)·헐전 +16.2(65.6 vs 49.4)로 나와 「아스날=4-4-2, 헐=4-4-1-1」로 읽히지만, 헐전은 점유 74%라 수비액션의 다수가 정착 블록이 아니라 상대 진영 역압박이고 프록시 A는 그것을 형태로 오독한다. 팀 수비액션 평균 x가 두 경기 모두 35.8/36.3으로 거의 같다는 사실 자체가 오염의 증거다 — 점유 39%와 74%의 블록이 같은 높이일 리 없다. ⛔ 프록시 B(자기 진영 x<50 한정) — 전방 2톱 판정에는 사용 불가: 역압박을 배제하면 스트라이커의 자기 진영 수비액션이 아스날전 n=2·헐전 n=1밖에 남지 않는다. 즉 「잭슨이 부엔디아와 나란한 2톱이었는가」는 이벤트 데이터로 답할 수 없는 질문이다. 참고로 프록시 B의 잭슨−부엔디아 격차는 아스날 +7.4·헐 +7.5로 두 경기가 사실상 같아 프록시 A가 만든 차이는 재현되지 않는다. ⇒ obs#402는 유지도 반박도 되지 않았다. 이 주장의 교차검증에는 국면 태그가 붙은 프레임 단위 평균 위치(트래킹)가 필요하고 현재 소스로는 불가하다. ⭐ 대신 확인된 것 — 와이드 미드필더의 비대칭 하강(프록시 B): 아스날전은 맥긴 20.8(n=7)이 백4(캐시 22.1·토레스 20.4·린델뢰프 21.1·마첸 22.2)와 같은 높이로 내려갔고 헤밍스는 28.4(n=11)로 위에 남았다. 헐전은 반대로 헤밍스 21.5(n=10)가 백4(마첸 20.2·밍스 19.2·린델뢰프 16.2·캐시 25.3)와 같은 높이로 내려갔고 맥긴은 37.4(n=7)로 위에 남았다. 두 경기 모두 한쪽 와이드만 최종라인에 합류하는 백5 변형이고 합류하는 쪽이 경기마다 바뀐다 — 캐시/마첸 중 한쪽만 전진하는 obs#4·#95의 「한 번에 한 쪽」과 같은 비대칭 원리의 미드필드판으로 보인다. ⚠️ 서사와의 충돌(Squawka 2026-09-05): 「Emery turned his usual 4-4-2 out of possession into a 6-2-2」(번역: 평소의 무공 시 4-4-2를 6-2-2로 바꿨다)이며 부엔디아가 잭슨과 나란한 투톱으로 올라가고 맥긴·헤밍스가 「동시에」 윙백으로 내려가 최종라인을 6명으로 확장했다고 서술했다(아스날전은 「번갈아」라는 대비까지 붙였다). 실측은 「동시」를 지지하지 않는다 — 헐전에 내려간 것은 헤밍스뿐이고 맥긴은 37.4로 한 라인 위에 남았다. 다만 「번갈아 vs 동시」의 좌우 교체 방향은 부분적으로 맞다. ⛔ Squawka 원문은 403으로 verbatim 미확보이고 인용은 검색엔진 요약 2회 교차확인분이다 — D+1~D+3 추적의 최우선 재시도 대상. ⚠️ 프록시 B의 개인별 n=7~11은 얇고 평균값이라 경기 내 교대를 가리지 못한다. 표본 2경기 — 관찰 단계.",
+   "title": "2026-09-05 Hull City 0-0 Aston Villa — 프리미어리그 26/27 R3 (원정)",
+   "updated_at": "2026-09-06",
+   "venue": "A",
+   "xg_o": 0.57,
+   "xg_op_o": 0.51,
+   "xg_op_v": 1.72,
+   "xg_v": 1.93
+  },
   {
    "bigch_o": 2,
    "bigch_v": 0,
@@ -59526,14 +60453,14 @@
   },
   {
    "avg_rating": 6.78,
-   "dw_pg": 3.89,
-   "ic_pg": 0.67,
-   "kp_pg": 0.67,
+   "dw_pg": 3.7,
+   "ic_pg": 0.6,
+   "kp_pg": 0.71,
    "label": "캐시",
-   "minutes": 4651,
-   "n": 61,
-   "tk_pg": 2.0,
-   "xa_pg": 0.045,
+   "minutes": 4736,
+   "n": 62,
+   "tk_pg": 1.8,
+   "xa_pg": 0.042,
    "xg_pg": 0.128
   },
   {
@@ -59573,27 +60500,27 @@
    "xg_pg": 0.08
   },
   {
-   "avg_rating": 6.59,
-   "dw_pg": 2.52,
-   "ic_pg": 0.16,
-   "kp_pg": 0.48,
+   "avg_rating": 6.6,
+   "dw_pg": 2.54,
+   "ic_pg": 0.19,
+   "kp_pg": 0.5,
    "label": "마첸",
-   "minutes": 3008,
-   "n": 68,
-   "tk_pg": 1.16,
-   "xa_pg": 0.242,
+   "minutes": 3083,
+   "n": 69,
+   "tk_pg": 1.15,
+   "xa_pg": 0.272,
    "xg_pg": 0.074
   },
   {
-   "avg_rating": 6.58,
+   "avg_rating": 6.6,
    "dw_pg": 0.91,
-   "ic_pg": 0.37,
-   "kp_pg": 0.12,
+   "ic_pg": 0.36,
+   "kp_pg": 0.15,
    "label": "린델뢰프",
-   "minutes": 3296,
-   "n": 72,
+   "minutes": 3386,
+   "n": 73,
    "tk_pg": 0.22,
-   "xa_pg": 0.024,
+   "xa_pg": 0.025,
    "xg_pg": 0.127
   },
   {
@@ -59621,16 +60548,16 @@
    "xg_pg": 0.115
   },
   {
-   "avg_rating": 6.98,
-   "dw_pg": 3.63,
-   "ic_pg": 0.58,
-   "kp_pg": 1.45,
+   "avg_rating": 6.95,
+   "dw_pg": 3.7,
+   "ic_pg": 0.6,
+   "kp_pg": 1.33,
    "label": "맥긴",
-   "minutes": 3373,
-   "n": 50,
-   "tk_pg": 0.89,
-   "xa_pg": 0.096,
-   "xg_pg": 0.184
+   "minutes": 3463,
+   "n": 51,
+   "tk_pg": 0.95,
+   "xa_pg": 0.091,
+   "xg_pg": 0.223
   },
   {
    "avg_rating": 6.64,
@@ -59645,15 +60572,15 @@
    "xg_pg": null
   },
   {
-   "avg_rating": 6.99,
-   "dw_pg": 6.17,
-   "ic_pg": 1.17,
-   "kp_pg": 0.5,
+   "avg_rating": 7.01,
+   "dw_pg": 6.23,
+   "ic_pg": 1.15,
+   "kp_pg": 0.57,
    "label": "카마라",
-   "minutes": 2094,
-   "n": 32,
-   "tk_pg": 2.17,
-   "xa_pg": 0.04,
+   "minutes": 2184,
+   "n": 33,
+   "tk_pg": 2.08,
+   "xa_pg": 0.044,
    "xg_pg": 0.12
   },
   {
@@ -59669,16 +60596,16 @@
    "xg_pg": 0.264
   },
   {
-   "avg_rating": 6.92,
-   "dw_pg": 5.44,
-   "ic_pg": 0.5,
-   "kp_pg": 1.76,
+   "avg_rating": 6.91,
+   "dw_pg": 5.21,
+   "ic_pg": 0.47,
+   "kp_pg": 1.67,
    "label": "부엔디아",
-   "minutes": 3421,
-   "n": 63,
-   "tk_pg": 2.28,
-   "xa_pg": 0.172,
-   "xg_pg": 0.283
+   "minutes": 3496,
+   "n": 64,
+   "tk_pg": 2.16,
+   "xa_pg": 0.165,
+   "xg_pg": 0.305
   },
   {
    "avg_rating": 6.7,
@@ -59705,16 +60632,16 @@
    "xg_pg": 1.007
   },
   {
-   "avg_rating": 6.68,
-   "dw_pg": 1.71,
+   "avg_rating": 6.72,
+   "dw_pg": 1.79,
    "ic_pg": 0.4,
    "kp_pg": 0.14,
    "label": "밍스",
-   "minutes": 1944,
-   "n": 46,
-   "tk_pg": 0.26,
+   "minutes": 2034,
+   "n": 47,
+   "tk_pg": 0.28,
    "xa_pg": 0.023,
-   "xg_pg": 0.191
+   "xg_pg": 0.184
   },
   {
    "avg_rating": 6.83,
@@ -59741,16 +60668,16 @@
    "xg_pg": null
   },
   {
-   "avg_rating": 6.82,
-   "dw_pg": 2.3,
+   "avg_rating": 6.84,
+   "dw_pg": 2.32,
    "ic_pg": 0.11,
-   "kp_pg": 0.54,
+   "kp_pg": 0.59,
    "label": "바클리",
-   "minutes": 1237,
-   "n": 33,
-   "tk_pg": 0.63,
+   "minutes": 1327,
+   "n": 34,
+   "tk_pg": 0.61,
    "xa_pg": 0.072,
-   "xg_pg": 0.112
+   "xg_pg": 0.119
   },
   {
    "avg_rating": 8.16,
@@ -59825,16 +60752,16 @@
    "xg_pg": null
   },
   {
-   "avg_rating": 6.58,
-   "dw_pg": 5.44,
-   "ic_pg": 0.33,
-   "kp_pg": 0.5,
+   "avg_rating": 6.6,
+   "dw_pg": 5.3,
+   "ic_pg": 0.3,
+   "kp_pg": 0.55,
    "label": "헤밍스",
-   "minutes": 963,
-   "n": 18,
-   "tk_pg": 3.0,
-   "xa_pg": 0.012,
-   "xg_pg": null
+   "minutes": 1038,
+   "n": 19,
+   "tk_pg": 2.8,
+   "xa_pg": 0.044,
+   "xg_pg": 0.07
   },
   {
    "avg_rating": 7.2,
@@ -59873,38 +60800,38 @@
    "xg_pg": 0.16
   },
   {
-   "avg_rating": 6.96,
-   "dw_pg": 2.89,
-   "ic_pg": 0.21,
-   "kp_pg": 0.97,
+   "avg_rating": 6.94,
+   "dw_pg": 2.85,
+   "ic_pg": 0.2,
+   "kp_pg": 0.95,
    "label": "가르나초",
-   "minutes": 2190,
-   "n": 42,
-   "tk_pg": 0.72,
+   "minutes": 2205,
+   "n": 43,
+   "tk_pg": 0.7,
    "xa_pg": 0.137,
    "xg_pg": 0.225
   },
   {
-   "avg_rating": 6.82,
+   "avg_rating": 6.79,
    "dw_pg": 5.75,
-   "ic_pg": 0.5,
-   "kp_pg": 0.36,
+   "ic_pg": 0.48,
+   "kp_pg": 0.35,
    "label": "알리송",
-   "minutes": 1565,
-   "n": 28,
-   "tk_pg": 1.29,
+   "minutes": 1580,
+   "n": 29,
+   "tk_pg": 1.24,
    "xa_pg": 0.047,
    "xg_pg": 0.151
   },
   {
    "avg_rating": 6.9,
-   "dw_pg": 2.85,
-   "ic_pg": 0.31,
-   "kp_pg": 0.89,
+   "dw_pg": 2.78,
+   "ic_pg": 0.3,
+   "kp_pg": 0.86,
    "label": "타미 아브라함",
-   "minutes": 1999,
-   "n": 29,
-   "tk_pg": 0.58,
+   "minutes": 2004,
+   "n": 30,
+   "tk_pg": 0.59,
    "xa_pg": 0.098,
    "xg_pg": 0.508
   },
@@ -59933,16 +60860,16 @@
    "xg_pg": 0.171
   },
   {
-   "avg_rating": 6.86,
-   "dw_pg": 1.62,
+   "avg_rating": 6.85,
+   "dw_pg": 1.65,
    "ic_pg": 0.06,
    "kp_pg": 0.67,
    "label": "잭슨",
-   "minutes": 2611,
-   "n": 69,
-   "tk_pg": 0.31,
-   "xa_pg": 0.107,
-   "xg_pg": 0.389
+   "minutes": 2696,
+   "n": 70,
+   "tk_pg": 0.3,
+   "xa_pg": 0.116,
+   "xg_pg": 0.384
   },
   {
    "avg_rating": 6.93,
@@ -59960,12 +60887,12 @@
    "avg_rating": 6.69,
    "dw_pg": 2.43,
    "ic_pg": 0.89,
-   "kp_pg": 0.75,
+   "kp_pg": 0.74,
    "label": "마테오 루헤리",
-   "minutes": 3750,
-   "n": 65,
-   "tk_pg": 1.54,
-   "xa_pg": 0.141,
+   "minutes": 3765,
+   "n": 66,
+   "tk_pg": 1.52,
+   "xa_pg": 0.138,
    "xg_pg": 0.035
   },
   {
@@ -59983,23 +60910,23 @@
   {
    "avg_rating": 6.64,
    "dw_pg": 2.25,
-   "ic_pg": 1.13,
-   "kp_pg": 0.44,
+   "ic_pg": 1.11,
+   "kp_pg": 0.43,
    "label": "완비사카",
-   "minutes": 3635,
-   "n": 57,
-   "tk_pg": 0.91,
+   "minutes": 3640,
+   "n": 58,
+   "tk_pg": 0.89,
    "xa_pg": 0.041,
    "xg_pg": null
   },
   {
-   "avg_rating": 6.99,
-   "dw_pg": 0.46,
+   "avg_rating": 7.01,
+   "dw_pg": 0.47,
    "ic_pg": 0.0,
    "kp_pg": 0.03,
    "label": "스즈키 지온",
-   "minutes": 2962,
-   "n": 40,
+   "minutes": 3052,
+   "n": 41,
    "tk_pg": 0.0,
    "xa_pg": 0.005,
    "xg_pg": null
@@ -60240,23 +61167,23 @@
    "y": 48.3
   },
   {
-   "avg_rating": 5.97,
-   "fit_sim": 0.9585,
-   "focus": "Balanced",
+   "avg_rating": 6.36,
+   "fit_sim": 0.8919,
+   "focus": "Support",
    "game_version": "FC26",
    "grid_club": null,
    "kind": "measured",
    "label": "캐시",
-   "map25": "0000200023000190002X00125",
+   "map25": "0001200027000260012X00124",
    "player_id": 2,
    "pos_label": "RB",
-   "rationale": "[2026-08-31 match-watch R3 갱신] 26/27 클럽 공식전 **포지션-순수(RB) 2경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-12(Paris Saint-Germain) · 2026-08-23(Brighton & Hove Albion). 평균 평점 5.97 / 180분 / 툴 중심 (87.05, 38.38). 커널 FC26 · regime 1(AVL) · 슬롯 RB(x=87) → fb_wingback/Balanced 0.958. 신규 행.",
-   "role_id": "fb_wingback",
-   "sample_n": 2,
+   "rationale": "[2026-09-06 match-watch R4(헐) 갱신] 26/27 클럽 공식전 **포지션-순수(RB) 4경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-12(Paris Saint-Germain) · 2026-08-23(Brighton & Hove Albion) · 2026-08-31(Arsenal) · 2026-09-05(Hull City). 평균 평점 6.36 / 343분 / 툴 중심 (86.26, 44.58). 커널 FC26 · regime 1(AVL) → fb_att_wb/Support 0.892. ⚠️ **직전 회차(n=2) fb_wingback/Balanced 0.959에서 역할이 바뀌었다** — 표본 확대에 따른 집계 이동이며 정본(fc26:opt:*)은 건드리지 않았다.",
+   "role_id": "fb_att_wb",
+   "sample_n": 4,
    "season": "2026-27",
    "starter": 0,
-   "x": 87.05,
-   "y": 38.38
+   "x": 86.26,
+   "y": 44.58
   },
   {
    "avg_rating": null,
@@ -60620,23 +61547,23 @@
    "y": 32.9
   },
   {
-   "avg_rating": 5.33,
-   "fit_sim": 0.8955,
-   "focus": "Build-Up",
+   "avg_rating": 5.74,
+   "fit_sim": 0.9109,
+   "focus": "Aggressive",
    "game_version": "FC26",
    "grid_club": null,
    "kind": "measured",
    "label": "파우 토레스",
-   "map25": "0001041000133006X50026910",
+   "map25": "0000031000242005X40035710",
    "player_id": 4,
    "pos_label": "LCB",
-   "rationale": "[2026-08-31 match-watch R3 갱신] 26/27 클럽 공식전 **포지션-순수(LCB) 2경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-12(Paris Saint-Germain) · 2026-08-23(Brighton & Hove Albion). 평균 평점 5.33 / 153분 / 툴 중심 (31.42, 28.94). 커널 FC26 · regime 1(AVL) · 슬롯 LCB(x=37) → cb_bpd/Build-Up 0.896. 신규 행.",
+   "rationale": "[2026-09-06 match-watch R4(헐) 갱신] 26/27 클럽 공식전 **포지션-순수(LCB) 3경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-12(Paris Saint-Germain) · 2026-08-23(Brighton & Hove Albion) · 2026-08-31(Arsenal). 평균 평점 5.74 / 243분 / 툴 중심 (30.14, 29.68). 커널 FC26 · regime 1(AVL) → cb_bpd/Aggressive 0.911. ⚠️ **직전 회차(n=2) cb_bpd/Build-Up 0.895에서 역할이 바뀌었다** — 표본 확대에 따른 집계 이동이며 정본(fc26:opt:*)은 건드리지 않았다.",
    "role_id": "cb_bpd",
-   "sample_n": 2,
+   "sample_n": 3,
    "season": "2026-27",
    "starter": 0,
-   "x": 31.42,
-   "y": 28.94
+   "x": 30.14,
+   "y": 29.68
   },
   {
    "avg_rating": null,
@@ -60981,23 +61908,23 @@
    "y": 48.4
   },
   {
-   "avg_rating": 5.91,
-   "fit_sim": 0.8206,
-   "focus": "Balanced",
+   "avg_rating": 6.34,
+   "fit_sim": 0.8754,
+   "focus": "Support",
    "game_version": "FC26",
    "grid_club": null,
    "kind": "measured",
    "label": "마첸",
-   "map25": "410005300050100X000034100",
+   "map25": "420007300051100X100033100",
    "player_id": 6,
    "pos_label": "LB",
-   "rationale": "[2026-08-31 match-watch R3 갱신] 26/27 클럽 공식전 **포지션-순수(LB) 2경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-12(Paris Saint-Germain) · 2026-08-23(Brighton & Hove Albion). 평균 평점 5.91 / 172분 / 툴 중심 (14.3, 47.25). 커널 FC26 · regime 1(AVL) · 슬롯 LB(x=13) → fb_wingback/Balanced 0.821. 신규 행.",
-   "role_id": "fb_wingback",
-   "sample_n": 2,
+   "rationale": "[2026-09-06 match-watch R4(헐) 갱신] 26/27 클럽 공식전 **포지션-순수(LB) 4경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-12(Paris Saint-Germain) · 2026-08-23(Brighton & Hove Albion) · 2026-08-31(Arsenal) · 2026-09-05(Hull City). 평균 평점 6.34 / 337분 / 툴 중심 (14.28, 47.61). 커널 FC26 · regime 1(AVL) → fb_att_wb/Support 0.875.",
+   "role_id": "fb_att_wb",
+   "sample_n": 4,
    "season": "2026-27",
    "starter": 0,
-   "x": 14.3,
-   "y": 47.25
+   "x": 14.28,
+   "y": 47.61
   },
   {
    "avg_rating": null,
@@ -61266,23 +62193,23 @@
    "y": 31.2
   },
   {
-   "avg_rating": 4.99,
-   "fit_sim": 0.9677,
+   "avg_rating": 6.01,
+   "fit_sim": 0.9614,
    "focus": "Aggressive",
    "game_version": "FC26",
    "grid_club": null,
    "kind": "measured",
    "label": "린델뢰프",
-   "map25": "000000001000340009X301354",
+   "map25": "000000022000561017X301343",
    "player_id": 7,
    "pos_label": "RCB",
-   "rationale": "[2026-08-31 match-watch R3 갱신] 26/27 클럽 공식전 **포지션-순수(RCB) 2경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-12(Paris Saint-Germain) · 2026-08-23(Brighton & Hove Albion). 평균 평점 4.99 / 180분 / 툴 중심 (63.69, 28.3). 커널 FC26 · regime 1(AVL) · 슬롯 RCB(x=63) → cb_bpd/Aggressive 0.968. 신규 행.",
+   "rationale": "[2026-09-06 match-watch R4(헐) 갱신] 26/27 클럽 공식전 **포지션-순수(RCB) 4경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-12(Paris Saint-Germain) · 2026-08-23(Brighton & Hove Albion) · 2026-08-31(Arsenal) · 2026-09-05(Hull City). 평균 평점 6.01 / 360분 / 툴 중심 (64.31, 33.41). 커널 FC26 · regime 1(AVL) → cb_bpd/Aggressive 0.961.",
    "role_id": "cb_bpd",
-   "sample_n": 2,
+   "sample_n": 4,
    "season": "2026-27",
    "starter": 0,
-   "x": 63.69,
-   "y": 28.3
+   "x": 64.31,
+   "y": 33.41
   },
   {
    "avg_rating": null,
@@ -62026,23 +62953,23 @@
    "y": 63.6
   },
   {
-   "avg_rating": 6.79,
-   "fit_sim": 0.8729,
-   "focus": "Balanced",
+   "avg_rating": 6.27,
+   "fit_sim": 0.8012,
+   "focus": "Attack",
    "game_version": "FC26",
    "grid_club": null,
    "kind": "measured",
    "label": "맥긴",
-   "map25": "000360104X011190033110011",
+   "map25": "001380107X024260033200011",
    "player_id": 10,
    "pos_label": "RM",
-   "rationale": "[2026-08-31 match-watch R3 갱신] 26/27 클럽 공식전 **포지션-순수(RM) 2경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-12(Paris Saint-Germain) · 2026-08-23(Brighton & Hove Albion). 평균 평점 6.79 / 155분 / 툴 중심 (78.41, 59.14). 커널 FC26 · regime 1(AVL) · 슬롯 RM(x=85) → wm_winger/Balanced 0.873. 신규 행.",
+   "rationale": "[2026-09-06 match-watch R4(헐) 갱신] 26/27 클럽 공식전 **포지션-순수(RM) 4경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-12(Paris Saint-Germain) · 2026-08-23(Brighton & Hove Albion) · 2026-08-31(Arsenal) · 2026-09-05(Hull City). 평균 평점 6.27 / 335분 / 툴 중심 (75.47, 60.64). 커널 FC26 · regime 1(AVL) → wm_winger/Attack 0.801.",
    "role_id": "wm_winger",
-   "sample_n": 2,
+   "sample_n": 4,
    "season": "2026-27",
    "starter": 0,
-   "x": 78.41,
-   "y": 59.14
+   "x": 75.47,
+   "y": 60.64
   },
   {
    "avg_rating": null,
@@ -62520,23 +63447,23 @@
    "y": 44.9
   },
   {
-   "avg_rating": 5.93,
-   "fit_sim": 0.7948,
-   "focus": "Defend",
+   "avg_rating": 6.55,
+   "fit_sim": 0.826,
+   "focus": "Roaming",
    "game_version": "FC26",
    "grid_club": null,
    "kind": "measured",
    "label": "카마라",
-   "map25": "00102033240046123X9401520",
+   "map25": "00101048850169113X8401410",
    "player_id": 12,
    "pos_label": "RDM",
-   "rationale": "[2026-08-31 match-watch R3 갱신] 26/27 클럽 공식전 **포지션-순수(RDM) 2경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-12(Paris Saint-Germain) · 2026-08-23(Brighton & Hove Albion). 평균 평점 5.93 / 162분 / 툴 중심 (59.88, 41.09). 커널 FC26 · regime 1(AVL) · 슬롯 RDM(x=62) → dm_holding/Defend 0.795. 신규 행.",
-   "role_id": "dm_holding",
-   "sample_n": 2,
+   "rationale": "[2026-09-06 match-watch R4(헐) 갱신] 26/27 클럽 공식전 **포지션-순수(RDM) 4경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-12(Paris Saint-Germain) · 2026-08-23(Brighton & Hove Albion) · 2026-08-31(Arsenal) · 2026-09-05(Hull City). 평균 평점 6.55 / 342분 / 툴 중심 (59.57, 46.8). 커널 FC26 · regime 1(AVL) → dm_dlp/Roaming 0.826.",
+   "role_id": "dm_dlp",
+   "sample_n": 4,
    "season": "2026-27",
    "starter": 0,
-   "x": 59.88,
-   "y": 41.09
+   "x": 59.57,
+   "y": 46.8
   },
   {
    "avg_rating": null,
@@ -63202,6 +64129,25 @@
    "starter": 0,
    "x": 33.4,
    "y": 56.3
+  },
+  {
+   "avg_rating": 6.35,
+   "fit_sim": 0.8645,
+   "focus": "Build-Up",
+   "game_version": "FC26",
+   "grid_club": null,
+   "kind": "measured",
+   "label": "부엔디아",
+   "map25": "3112117X53136231332110000",
+   "player_id": 14,
+   "pos_label": "CAM",
+   "rationale": "[2026-09-06 match-watch R4(헐) 갱신] 26/27 클럽 공식전 **포지션-순수(CAM) 2경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-31(Arsenal) · 2026-09-05(Hull City). 평균 평점 6.35 / 165분 / 툴 중심 (51.06, 62.69). 커널 FC26 · regime 1(AVL) → cam_playmaker/Build-Up 0.864.",
+   "role_id": "cam_playmaker",
+   "sample_n": 2,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 51.06,
+   "y": 62.69
   },
   {
    "avg_rating": null,
@@ -64059,6 +65005,25 @@
    "y": 53
   },
   {
+   "avg_rating": 7.25,
+   "fit_sim": 0.8233,
+   "focus": "Roaming",
+   "game_version": "FC26",
+   "grid_club": null,
+   "kind": "measured",
+   "label": "바클리",
+   "map25": "000001X921169003561010100",
+   "player_id": 21,
+   "pos_label": "LDM",
+   "rationale": "[2026-09-06 match-watch R4(헐) 갱신] 26/27 클럽 공식전 **포지션-순수(LDM) 2경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-31(Arsenal) · 2026-09-05(Hull City). 평균 평점 7.25 / 168분 / 툴 중심 (39.48, 51.41). 커널 FC26 · regime 1(AVL) → dm_dlp/Roaming 0.823.",
+   "role_id": "dm_dlp",
+   "sample_n": 2,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 39.48,
+   "y": 51.41
+  },
+  {
    "avg_rating": 6.91,
    "fit_sim": 0.807,
    "focus": "Roaming",
@@ -64437,6 +65402,25 @@
    "starter": 0,
    "x": 44,
    "y": 47
+  },
+  {
+   "avg_rating": 6.37,
+   "fit_sim": 0.5657,
+   "focus": "Support",
+   "game_version": "FC26",
+   "grid_club": null,
+   "kind": "measured",
+   "label": "헤밍스",
+   "map25": "540108531023301X501053000",
+   "player_id": 30,
+   "pos_label": "LM",
+   "rationale": "[2026-09-06 match-watch R4(헐) 갱신] 26/27 클럽 공식전 **포지션-순수(LM) 3경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-23(Brighton & Hove Albion) · 2026-08-31(Arsenal) · 2026-09-05(Hull City). 평균 평점 6.37 / 236분 / 툴 중심 (24.38, 52.0). 커널 FC26 · regime 1(AVL) → wm_widemid/Support 0.566.",
+   "role_id": "wm_widemid",
+   "sample_n": 3,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 24.38,
+   "y": 52
   },
   {
    "avg_rating": null,
@@ -64933,6 +65917,25 @@
    "y": null
   },
   {
+   "avg_rating": 6.58,
+   "fit_sim": 0.6017,
+   "focus": "Support",
+   "game_version": "FC26",
+   "grid_club": null,
+   "kind": "measured",
+   "label": "잭슨",
+   "map25": "322322X411161301010100000",
+   "player_id": 76,
+   "pos_label": "ST",
+   "rationale": "[2026-09-06 match-watch R4(헐) 갱신] 26/27 클럽 공식전 **포지션-순수(ST) 2경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-31(Arsenal) · 2026-09-05(Hull City). 평균 평점 6.58 / 156분 / 툴 중심 (43.78, 66.72). 커널 FC26 · regime 1(AVL) → st_advanced/Support 0.602.",
+   "role_id": "st_advanced",
+   "sample_n": 2,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 43.78,
+   "y": 66.72
+  },
+  {
    "avg_rating": 6.92,
    "fit_sim": 0.724,
    "focus": "Attack",
@@ -65102,6 +66105,25 @@
    "starter": 1,
    "x": 50,
    "y": null
+  },
+  {
+   "avg_rating": 7.0,
+   "fit_sim": 0.9394,
+   "focus": "Balanced",
+   "game_version": "FC26",
+   "grid_club": null,
+   "kind": "measured",
+   "label": "스즈키 지온",
+   "map25": "0000000000000000120001X00",
+   "player_id": 132,
+   "pos_label": "GK",
+   "rationale": "[2026-09-06 match-watch R4(헐) 갱신] 26/27 클럽 공식전 **포지션-순수(GK) 2경기** 집계 — 45분+·히트포인트15+ 통과분: 2026-08-31(Arsenal) · 2026-09-05(Hull City). 평균 평점 7.0 / 180분 / 툴 중심 (48.91, 12.58). 커널 FC26 · regime 1(AVL) → gk_goalkeeper/Balanced 0.939.",
+   "role_id": "gk_goalkeeper",
+   "sample_n": 2,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 48.91,
+   "y": 12.58
   },
   {
    "avg_rating": 7.05,
@@ -65317,6 +66339,16 @@
  "season_stats": {
   "가르나초": [
    {
+    "assists": 0,
+    "avg_rating": 6.04,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 31,
+    "n": 3,
+    "season": "2026-27",
+    "starts": 0
+   },
+   {
     "assists": null,
     "avg_rating": null,
     "competition": "Club Friendly Games",
@@ -65325,16 +66357,6 @@
     "n": 2,
     "season": "2026-27",
     "starts": 2
-   },
-   {
-    "assists": 0,
-    "avg_rating": 5.98,
-    "competition": "Premier League",
-    "goals": 0,
-    "minutes": 16,
-    "n": 2,
-    "season": "2026-27",
-    "starts": 0
    },
    {
     "assists": 4,
@@ -65786,13 +66808,13 @@
    },
    {
     "assists": 0,
-    "avg_rating": 4.99,
+    "avg_rating": 5.88,
     "competition": "Premier League",
     "goals": 0,
-    "minutes": 180,
-    "n": 2,
+    "minutes": 270,
+    "n": 3,
     "season": "2026-27",
-    "starts": 2
+    "starts": 3
    },
    {
     "assists": null,
@@ -66051,6 +67073,16 @@
     "starts": 3
    },
    {
+    "assists": 0,
+    "avg_rating": 6.12,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 247,
+    "n": 3,
+    "season": "2026-27",
+    "starts": 3
+   },
+   {
     "assists": null,
     "avg_rating": null,
     "competition": "Club Friendly",
@@ -66059,16 +67091,6 @@
     "n": 2,
     "season": "2026-27",
     "starts": 1
-   },
-   {
-    "assists": 0,
-    "avg_rating": 5.47,
-    "competition": "Premier League",
-    "goals": 0,
-    "minutes": 172,
-    "n": 2,
-    "season": "2026-27",
-    "starts": 2
    },
    {
     "assists": 0,
@@ -66134,6 +67156,16 @@
   "마테오 루헤리": [
    {
     "assists": 0,
+    "avg_rating": 6.52,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 23,
+    "n": 2,
+    "season": "2026-27",
+    "starts": 0
+   },
+   {
+    "assists": 0,
     "avg_rating": 6.5,
     "competition": "Club Friendly Games",
     "goals": 0,
@@ -66141,16 +67173,6 @@
     "n": 1,
     "season": "2026-27",
     "starts": null
-   },
-   {
-    "assists": 0,
-    "avg_rating": null,
-    "competition": "Premier League",
-    "goals": 0,
-    "minutes": 8,
-    "n": 1,
-    "season": "2026-27",
-    "starts": 0
    },
    {
     "assists": 3,
@@ -66267,6 +67289,16 @@
   ],
   "맥긴": [
    {
+    "assists": 0,
+    "avg_rating": 6.0,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 262,
+    "n": 3,
+    "season": "2026-27",
+    "starts": 3
+   },
+   {
     "assists": null,
     "avg_rating": null,
     "competition": "Club Friendly Games",
@@ -66275,16 +67307,6 @@
     "n": 2,
     "season": "2026-27",
     "starts": 1
-   },
-   {
-    "assists": 0,
-    "avg_rating": 6.13,
-    "competition": "Premier League",
-    "goals": 0,
-    "minutes": 172,
-    "n": 2,
-    "season": "2026-27",
-    "starts": 2
    },
    {
     "assists": null,
@@ -66370,13 +67392,13 @@
    },
    {
     "assists": 0,
-    "avg_rating": 6.17,
+    "avg_rating": 6.87,
     "competition": "Premier League",
     "goals": 0,
-    "minutes": 16,
-    "n": 1,
+    "minutes": 106,
+    "n": 2,
     "season": "2026-27",
-    "starts": 0
+    "starts": 1
    },
    {
     "assists": 0,
@@ -66451,21 +67473,21 @@
     "starts": 3
    },
    {
+    "assists": 0,
+    "avg_rating": 6.84,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 242,
+    "n": 3,
+    "season": "2026-27",
+    "starts": 3
+   },
+   {
     "assists": null,
     "avg_rating": null,
     "competition": "Club Friendly",
     "goals": null,
     "minutes": null,
-    "n": 2,
-    "season": "2026-27",
-    "starts": 2
-   },
-   {
-    "assists": 0,
-    "avg_rating": 6.66,
-    "competition": "Premier League",
-    "goals": 0,
-    "minutes": 152,
     "n": 2,
     "season": "2026-27",
     "starts": 2
@@ -66717,6 +67739,16 @@
     "starts": 4
    },
    {
+    "assists": 0,
+    "avg_rating": 6.41,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 251,
+    "n": 3,
+    "season": "2026-27",
+    "starts": 3
+   },
+   {
     "assists": null,
     "avg_rating": null,
     "competition": "Club Friendly",
@@ -66725,16 +67757,6 @@
     "n": 2,
     "season": "2026-27",
     "starts": 1
-   },
-   {
-    "assists": 0,
-    "avg_rating": 6.5,
-    "competition": "Premier League",
-    "goals": 0,
-    "minutes": 176,
-    "n": 2,
-    "season": "2026-27",
-    "starts": 2
    },
    {
     "assists": 0,
@@ -66944,13 +67966,13 @@
    },
    {
     "assists": null,
-    "avg_rating": 6.43,
+    "avg_rating": 7.0,
     "competition": "Premier League",
     "goals": null,
-    "minutes": 90,
-    "n": 1,
+    "minutes": 180,
+    "n": 2,
     "season": "2026-27",
-    "starts": 1
+    "starts": 2
    },
    {
     "assists": 0,
@@ -67119,6 +68141,16 @@
   ],
   "알리송": [
    {
+    "assists": 0,
+    "avg_rating": 6.11,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 42,
+    "n": 3,
+    "season": "2026-27",
+    "starts": 0
+   },
+   {
     "assists": null,
     "avg_rating": null,
     "competition": "Club Friendly",
@@ -67127,16 +68159,6 @@
     "n": 2,
     "season": "2026-27",
     "starts": 1
-   },
-   {
-    "assists": 0,
-    "avg_rating": 6.2,
-    "competition": "Premier League",
-    "goals": 0,
-    "minutes": 27,
-    "n": 2,
-    "season": "2026-27",
-    "starts": 0
    },
    {
     "assists": null,
@@ -67213,12 +68235,12 @@
   ],
   "완비사카": [
    {
-    "assists": null,
+    "assists": 0,
     "avg_rating": 6.29,
     "competition": "Premier League",
-    "goals": null,
-    "minutes": 12,
-    "n": 1,
+    "goals": 0,
+    "minutes": 17,
+    "n": 2,
     "season": "2026-27",
     "starts": 0
    },
@@ -67591,14 +68613,14 @@
     "starts": 1
    },
    {
-    "assists": null,
-    "avg_rating": 6.5,
+    "assists": 0,
+    "avg_rating": 6.58,
     "competition": "Premier League",
-    "goals": null,
-    "minutes": 71,
-    "n": 1,
+    "goals": 0,
+    "minutes": 156,
+    "n": 2,
     "season": "2026-27",
-    "starts": 1
+    "starts": 2
    },
    {
     "assists": 0,
@@ -67766,6 +68788,16 @@
   "카마라": [
    {
     "assists": 0,
+    "avg_rating": 6.6,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 270,
+    "n": 3,
+    "season": "2026-27",
+    "starts": 3
+   },
+   {
+    "assists": 0,
     "avg_rating": 7.1,
     "competition": "Club Friendly Games",
     "goals": 0,
@@ -67773,16 +68805,6 @@
     "n": 2,
     "season": "2026-27",
     "starts": 1
-   },
-   {
-    "assists": 0,
-    "avg_rating": 6.15,
-    "competition": "Premier League",
-    "goals": 0,
-    "minutes": 180,
-    "n": 2,
-    "season": "2026-27",
-    "starts": 2
    },
    {
     "assists": null,
@@ -67857,6 +68879,16 @@
     "starts": 4
    },
    {
+    "assists": 0,
+    "avg_rating": 6.28,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 253,
+    "n": 3,
+    "season": "2026-27",
+    "starts": 3
+   },
+   {
     "assists": null,
     "avg_rating": null,
     "competition": "Club Friendly",
@@ -67865,16 +68897,6 @@
     "n": 2,
     "season": "2026-27",
     "starts": 0
-   },
-   {
-    "assists": 0,
-    "avg_rating": 6.04,
-    "competition": "Premier League",
-    "goals": 0,
-    "minutes": 168,
-    "n": 2,
-    "season": "2026-27",
-    "starts": 2
    },
    {
     "assists": 0,
@@ -67961,12 +68983,12 @@
     "starts": 1
    },
    {
-    "assists": null,
+    "assists": 0,
     "avg_rating": 5.97,
     "competition": "Premier League",
-    "goals": null,
-    "minutes": 19,
-    "n": 1,
+    "goals": 0,
+    "minutes": 24,
+    "n": 2,
     "season": "2026-27",
     "starts": 0
    },
@@ -68341,21 +69363,21 @@
     "starts": 3
    },
    {
+    "assists": 0,
+    "avg_rating": 6.37,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 236,
+    "n": 3,
+    "season": "2026-27",
+    "starts": 3
+   },
+   {
     "assists": null,
     "avg_rating": null,
     "competition": "Club Friendly",
     "goals": null,
     "minutes": 45,
-    "n": 2,
-    "season": "2026-27",
-    "starts": 2
-   },
-   {
-    "assists": 0,
-    "avg_rating": 6.13,
-    "competition": "Premier League",
-    "goals": 0,
-    "minutes": 161,
     "n": 2,
     "season": "2026-27",
     "starts": 2
