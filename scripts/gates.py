@@ -477,6 +477,19 @@ def run(db_path=None, verbose=True):
         SELECT event_id, team_code FROM team_match_stats
         WHERE (xg_op_v IS NOT NULL AND xg_v IS NOT NULL AND xg_op_v > xg_v + 1e-9)
            OR (xg_op_o IS NOT NULL AND xg_o IS NOT NULL AND xg_op_o > xg_o + 1e-9)""").fetchall()
+    # xG 값이 있으면 그 값이 어느 제공사·어느 스냅샷에서 왔는지 반드시 적혀 있어야 한다
+    # (migration 025). 제공사별 절대값이 달라 provenance 없이 여러 경기를 집계하면 조용히 섞인다 —
+    # 2026-09-06 축 검정에서 실제로 발현했다(obs#461·#463). 부등식 검사(위)는 이걸 잡지 못한다:
+    # ATM 비야레알전은 xg_v가 SofaScore이고 xg_op_v가 FotMob인데 부등식은 깨지 않아 통과했다.
+    xg_source_missing = con.execute("""
+        SELECT event_id, team_code FROM team_match_stats
+        WHERE xg_v IS NOT NULL AND (xg_source IS NULL OR trim(xg_source)='')""").fetchall()
+    # 'MIXED:'는 이미 알려진 레거시 결함이라 실패시키지 않는다(값을 덮어쓰지 않기로 했다).
+    # 대신 개수를 고정해 **새로 늘어나면 실패**시킨다 — 이게 드리프트를 막는 지점이다.
+    xg_source_mixed = con.execute("""
+        SELECT event_id, team_code FROM team_match_stats
+        WHERE xg_source LIKE 'MIXED:%'""").fetchall()
+    XG_MIXED_EXPECTED = 3   # ATM 말라가 · ATM 비야레알 · LIV 뉴캐슬 (2026-09-06 전수 분류)
     orphan_preset_slots = con.execute("""
         SELECT mpp.report_id,mpp.pos_label
         FROM match_player_prescriptions mpp
@@ -501,6 +514,8 @@ def run(db_path=None, verbose=True):
         and not missing_match_presets and not uncovered_match_prescriptions
         and not playerless_reports and not orphan_preset_slots
         and not xg_openplay_violations
+        and not xg_source_missing
+        and len(xg_source_mixed) <= XG_MIXED_EXPECTED
         and '대표 실측(시즌·유효 표본)' in heatmap_html
         # A(실측) 패널은 슬롯 좌표가 아니라 선수의 실제 평균 위치에 칩을 찍어야 한다.
         # 이 세 줄이 함께 있어야 export의 avg_positions가 화면까지 도달한다.
@@ -528,7 +543,8 @@ def run(db_path=None, verbose=True):
               f"{len(playerless_reports)} · 선수누락 "
               f"{len(uncovered_report_players)} · 원문누락 {len(missing_report_files)} · "
               f"경기프리셋누락 {len(missing_match_presets)} · 선수처방누락 {len(uncovered_match_prescriptions)} · "
-              f"슬롯없는프리셋 {len(orphan_preset_slots)} · 오픈플레이xG모순 {len(xg_openplay_violations)} "
+              f"슬롯없는프리셋 {len(orphan_preset_slots)} · 오픈플레이xG모순 {len(xg_openplay_violations)} · "
+              f"xG원천결손 {len(xg_source_missing)} · xG스냅샷혼합 {len(xg_source_mixed)}/{XG_MIXED_EXPECTED} "
               f"{'✅' if ok12 else '⛔'}")
     if not ok12:
         fails.append("G12")
