@@ -337,6 +337,13 @@ congestion in the wings**"* (FC IQ) · *"a Wingback can move forward **if there 
 3. 10번이 로저스(우편향 57.5)면: RM은 터치라인 고정형(맥긴 wm_widemid/Support) 필수 —
    인버티드형(산초·보웬·하지무사)은 전원 0.73+ 충돌. 좌측 점유가 18%→12%로 비므로
    LB를 공격형으로(마첸 또는 디뉴 포커스 Attack) 보상.
+   > ⭐ **[2026-09-06 obs#464] 이 규칙은 「중앙형 10번」의 함수다.** CAM 커널 × 와이드 커널 겹침(x=50 × 14/85):
+   > `cam_playmaker`/Roaming × insidefwd/Bal **.650**(최고) · /Att .538 · × wideplm/Att .316 · × widemid/Sup .044 /
+   > `cam_halfwinger`/Balanced(현 만잠비) × insidefwd/Att **.329**(최저) · × wideplm/Att .572 / **`cam_halfwinger`/Roaming × insidefwd/Att .238**.
+   > ⇒ **플레이메이커·클래식10 옆에는 wideplm/widemid, 하프윙어 옆에는 인사이드 포워드**가 보완이다. EA가 「사이드를 바꾼다」고
+   > 정의한 유일한 포커스는 `cam_halfwinger`/Roaming — playmaker/Roaming은 중앙 회랑(터치라인 0) 안의 자유라 스위칭이 아니다.
+   > 에메리 유공 국면 실측은 인사이드 포워드/Balanced를 지지(로저스 4슬라이스 1위·부엔디아 possH .782)하되 무공 뱅크(자기진영 0)는
+   > 어느 안쪽형도 못 만든다 — RM widemid/Support가 뱅크를 단독 부담(obs#39). 맥긴은 어느 국면에도 안쪽형이 아님.
 4. 타깃/드롭인형 ST(기라시·브로베이)는 CAM 포켓 침범 증가(0.74/0.80 vs 왓킨스 0.68) —
    패키지 H(ST false9 + LM wideplm) 적용, 왓킨스에게는 금지(채널 러너 st_advanced 0.77).
 5. RB(에메르송 0.94 캐시 동형)·GK 교체는 역할 패키지 변경 불요.
