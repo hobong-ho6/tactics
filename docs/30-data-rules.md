@@ -277,11 +277,19 @@ AVL·CHE·LIV 공통.
 - ⚠️ 유튜브 전술 분석은 **조회수·구독자와 정확도가 무관하다**. 원출처(경기 영상·데이터)를 밝히는
   채널을 우선하고, 밝히지 않으면 3티어로 고정한다.
 
-**⭐ AVL 필수 채널 2곳 (2026-09-07 신설 — 사용자 지시)**: 아스톤 빌라 영상 분석(경기 D+1~D+3 추적·
-선수 수집·시즌 서사) 회차마다 **UTV | Aston Villa Fan Channel(`@UTVFANCHANNEL`)** 과
-**The Villans(`@TheViIIans`)** 의 최신 업로드를 **반드시 목록 조회하고 해당 회차 관련 영상은 전사까지 확보**한다.
-두 채널은 선수 단위 분석(「HOW X FITS INTO THE EMERY SYSTEM」·「Scouting — …」)과 경기 리액션을 정기 발행한다.
-다른 채널을 찾았어도 이 둘을 건너뛰면 리포트에 「미수행 + 사유」를 적는다. 전사 확보 절차는 아래.
+**⭐ AVL 필수 채널 3곳 (2026-09-07 신설 — 사용자 지시 · 같은 날 밤 1곳 추가)**: 아스톤 빌라 영상 분석(경기 D+1~D+3 추적·
+선수 수집·시즌 서사) 회차마다 아래 세 채널의 최신 업로드를 **반드시 목록 조회하고 해당 회차 관련 영상은 전사까지 확보**한다.
+다른 채널을 찾았어도 이 셋을 건너뛰면 리포트에 「미수행 + 사유」를 적는다. 전사 확보 절차는 아래.
+
+| 채널 | 핸들 | 무엇을 얻나 | 티어 |
+|---|---|---|---|
+| **UTV \| Aston Villa Fan Channel** | `@UTVFANCHANNEL` | 선수 단위 분석(「HOW X FITS INTO THE EMERY SYSTEM」)·경기 리액션 | 3(영상) — 원출처 명시 시 승격 |
+| **The Villans** | `@TheViIIans` | 「Scouting — …」 선수 분석·경기 리액션 | 3(영상) |
+| **1874 : The Aston Villa Channel** | `@The1874Podcast` | 팬·저널리즘 **토크/팟캐스트**(구 The Villa View, 진행 Dan Bardell). ⭐ The Athletic 빌라 담당(Gregg Evans·Jacob Tanswell) 출연분은 **기자 1차 발언**의 원출처 — 이적·기용 의도·라커룸 서사 | 3(토크) / 기자 출연분은 **1~2티어로 승격** |
+
+⚠️ 1874는 전술 보드형 분석 채널이 아니다 — 위치·역할 주장의 근거로 쓰지 말고 **서사·인용·배경** 축으로 쓴다(실측 우선 규칙 그대로).
+Dan Bardell은 이미 DB에 「Yahoo/Bardell」로 인용돼 있다(report 30 D+1 잭슨 논점) — 같은 인물이므로 `source`에 채널·기사 어느 쪽인지 구분해 적는다.
+최신 목록: `yt-dlp --flat-playlist --print "%(id)s|%(title)s" https://www.youtube.com/@The1874Podcast/videos`(팟캐스트 탭은 `/podcasts`).
 
 **유튜브 자막 확보 경로 (2026-09-07 갱신)**:
 - ① `python3 scripts/yt_transcript.py VIDEO_ID LANG` (yt-dlp) — 기본 경로.
