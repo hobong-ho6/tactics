@@ -45842,11 +45842,6 @@
   ],
   "로저스": [
    [
-    "2026-06-23",
-    6.5,
-    "FIFA World Cup"
-   ],
-   [
     "2026-06-27",
     6.4,
     "FIFA World Cup"
@@ -45889,6 +45884,11 @@
    [
     "2026-08-30",
     8.0,
+    "Premier League"
+   ],
+   [
+    "2026-09-06",
+    7.2,
     "Premier League"
    ]
   ],
@@ -45946,11 +45946,6 @@
   ],
   "마르티네스": [
    [
-    "2026-05-20",
-    7.2,
-    "UEFA Europa League"
-   ],
-   [
     "2026-06-17",
     6.6,
     "FIFA World Cup"
@@ -45993,6 +45988,11 @@
    [
     "2026-08-30",
     8.1,
+    "Premier League"
+   ],
+   [
+    "2026-09-06",
+    8.4,
     "Premier League"
    ]
   ],
@@ -60440,13 +60440,13 @@
  ],
  "player_stats": [
   {
-   "avg_rating": 7.08,
-   "dw_pg": 0.69,
+   "avg_rating": 7.1,
+   "dw_pg": 0.68,
    "ic_pg": 0.0,
    "kp_pg": 0.08,
    "label": "마르티네스",
-   "minutes": 5596,
-   "n": 65,
+   "minutes": 5686,
+   "n": 66,
    "tk_pg": 0.02,
    "xa_pg": 0.003,
    "xg_pg": 0.0
@@ -60585,15 +60585,15 @@
   },
   {
    "avg_rating": 6.92,
-   "dw_pg": 3.18,
-   "ic_pg": 0.31,
-   "kp_pg": 1.65,
+   "dw_pg": 3.15,
+   "ic_pg": 0.3,
+   "kp_pg": 1.63,
    "label": "로저스",
-   "minutes": 5836,
-   "n": 79,
-   "tk_pg": 0.79,
-   "xa_pg": 0.219,
-   "xg_pg": 0.264
+   "minutes": 5923,
+   "n": 80,
+   "tk_pg": 0.78,
+   "xa_pg": 0.211,
+   "xg_pg": 0.252
   },
   {
    "avg_rating": 6.91,
@@ -66676,13 +66676,13 @@
    },
    {
     "assists": 1,
-    "avg_rating": 8.32,
+    "avg_rating": 7.95,
     "competition": "Premier League",
-    "goals": 1,
-    "minutes": 172,
-    "n": 2,
+    "goals": 2,
+    "minutes": 259,
+    "n": 3,
     "season": "2026-27",
-    "starts": 2
+    "starts": 3
    },
    {
     "assists": 0,
@@ -66920,13 +66920,13 @@
    },
    {
     "assists": 0,
-    "avg_rating": 8.1,
+    "avg_rating": 8.25,
     "competition": "Premier League",
     "goals": 0,
-    "minutes": 90,
-    "n": 1,
+    "minutes": 180,
+    "n": 2,
     "season": "2026-27",
-    "starts": 1
+    "starts": 2
    },
    {
     "assists": 1,
