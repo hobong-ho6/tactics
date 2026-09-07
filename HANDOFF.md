@@ -10,7 +10,7 @@
 
 ## 현재 상태
 
-> **2026-09-07 20:05 KST** · PC `AD03230205ui-iMac.local` · `main` · HEAD **`452d793`**(origin 일치, 워킹트리 깨끗).
+> **2026-09-07 20:05 KST** · PC `AD03230205ui-iMac.local` · `main` · HEAD **`dcf65f9`**(이 핸드오프 커밋 · origin 일치, 워킹트리 깨끗).
 > ⚠️ **PC 소유권 주의** — 09-07 11:10 갱신은 `AL02359162.local`(`/Users/user`, 신규 맥 — brew 없음, yt-dlp pip --user,
 > 프리뷰 미러 `/private/tmp/tactics-preview` 09-07 생성)이었다. 두 맥이 같은 날 번갈아 작업했다.
 > 09-07 밤(이 세션, iMac): **xG 혼합 정책 확정**(obs#466) + docs/30 ⑧ 성문화 + 경기 화면에 xG 원천 노출 — 아래 「09-07 밤」.
