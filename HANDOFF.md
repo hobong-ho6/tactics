@@ -10,17 +10,19 @@
 
 ## 현재 상태
 
-> **2026-09-06 KST (밤)** · PC `AD03230205ui-iMac.local` · `main` · 마지막 내용 커밋 `eb435b3`.
+> **2026-09-07 KST (오전)** · PC `/Users/user`(신규 맥 — brew 없음, yt-dlp는 pip --user) · `main`.
+> 마지막 내용 커밋 = 이 세션(유튜브 D+2, obs#472~480) — 그 바로 아래 `b8b3116`은 **동시 실행된 주간 스케줄 세션**(CHE R3 report 34, obs#467~471).
 > (핸드오프 커밋들이 그 위에 붙는다 — HEAD가 1~2커밋 앞서 있으면 정상.)
+> ⭐ 09-07 오전: 사용자 지시로 **AVL 필수 유튜브 채널 2곳**(UTV | Aston Villa Fan Channel · The Villans) 규약 신설 + 헐전 D+2 유튜브 26편 전사 — 아래 「09-07」.
 > ✅ 워킹트리 깨끗·origin 일치. 09-05~06: **헐전 종결**(report 31 `complete`, 판별 3논점 obs#446~449) · LIV R3·ATM R4(report 32·33) ·
 > 4팀 축 검정(obs#461~463) · ⭐ **포켓 충돌 = CAM 유형 함수 정정**(obs#464) · **migration 025 `xg_source`**(obs#465) — 아래 「09-06」.
 > ⚠️ 09-06 밤 **세션 3개가 동시 실행**됐다(헐 D+1 스케줄·수동 분석·이 세션) — 규칙 9로 충돌 없이 끝났으나 obs 번호 경합 1건(아래).
 
-- DB: players **200** · player_matches **4,237** · team_match_stats **69** · match_reports **33**
-  (**complete 18 · draft 15**) · match_player_reports **583** · squad_entries **133** ·
+- DB: players **200** · player_matches **4,237** · team_match_stats **69** · match_reports **34**
+  (**complete 19 · draft 15**) · match_player_reports **583** · squad_entries **133** ·
   prescriptions **465** · slots **88** · match_game_setups **18** · match_player_prescriptions **291** ·
   transfer_targets **44** · transfer_outgoing **67** · player_duties **200** ·
-  player_shirt_numbers **116** · understat_player_matches **5,634** · observations **465** ·
+  player_shirt_numbers **116** · understat_player_matches **5,634** · observations **480** ·
   **teams 37** · **player_evaluations 120** · **transfer_summary 4**(023) · `game_role_focus.movement_kr` **85/85**(024) ·
   ⭐ `team_match_stats.xg_source` **61/69**(025 — 나머지 8행은 26/27 이전 표본) · `game_system_changes` **18**(FC26 9 · FC27 9, 커널 행 0).
 - 회귀: **G1~G13 전항 통과**(2026-09-04 재확인). G13은 09-01 신설 후 09-01 21시에 **⑸「클럽코드 리그충돌」**
@@ -50,6 +52,8 @@
   → `reports/transcripts/`. 영상·음성 자체는 시청 불가(화면 전술보드는 자막에 없다).
   인용 시 confidence에 **auto-caption** 명기. ⏰ docs/30 「듣지 않은 영상은 인용 금지」에서
   **「전사를 읽은 영상」의 지위는 아직 미정의** — 규약 갱신은 사용자 판단 대기.
+  ⭐ **yt-dlp가 「The page needs to be reloaded」로 막히면**(09-07 신규 PC, 로그인 무관 봇 차단) 브라우저 pot 경로
+  `scripts/yt_transcript_json3.py`(정본 docs/30 「유튜브 자막 확보 경로」). 채널 목록 `--flat-playlist`는 안 막힌다.
 
 ## 자동화
 
@@ -65,6 +69,21 @@
   소진된 나머지 일회성 7건은 전부 `enabled:false`라 방치해도 무해(사용자가 정리 범위를 「아스날 3건」으로 한정).
 
 ## 최근 작업
+
+### 2026-09-07 오전 — ⭐ AVL 필수 유튜브 채널 2곳 규약 + 헐전 D+2 유튜브 26편 전사 (obs#472~480)
+
+- **사용자 지시 3건**: ⑴ UTVFANCHANNEL·TheVillans 참고 ⑵ **빌라 영상 분석 시 두 채널 항상 포함** → docs/30 「AVL 필수 채널 2곳」·
+  match-watch §2-1·메모리에 성문화 ⑶ 「mute로 분석 가능?/계정 필요?」 → 영상·음성은 어느 경로로도 보지 않고 자막만 읽는다,
+  계정 불필요·계정 정보는 받지 않는다(응답 완료).
+- **전사 26편**(UTV 12 · The Villans 7 · 헐 3 · 기타 4) — 헐전 리포트 **§8-8** 인벤토리·판정. 헐 구단 「Meyler 프리뷰」는 2015년 영상이라 제외.
+  수확: ⭐ 스즈키 배급 영어권 최초 구체 서술(「third center half in build-up」·53' 빅찬스 기점, obs#474) · **UCL 명단 23인 — THB·마조·시세 제외**
+  (1티어급, obs#476) · 고레츠카 아스날전 결장 = 체력 부족(에메리 2차 인용) · 만잠비 「pocket filler」는 정적 포켓 아님(obs#477, #464 비충돌) ·
+  풀백 비대칭 **방향**은 좌측 와이드 유형의 함수 가설(obs#478) · 무공 6-2-2는 5편 전부 침묵, UTV 「맥긴 인버트」는 실측과 충돌 → 실측 채택(obs#473).
+  `player_duties` 9행(#121·199·200·98·159·191·20·29·21)에 날짜 태그 블록 **덧붙임**(재작성 아님).
+- ⚠️ **obs 번호 경합 재발**: 10:06 주간 스케줄 세션이 obs#467~471을 먼저 커밋(`b8b3116`) → 이 세션은 삽입 직전 max(id) 재확인으로 #472~480.
+  **규약**: 긴 세션은 INSERT 직전에 `max(id)`를 다시 읽고 리포트 본문의 obs 번호는 INSERT 후에 채운다.
+- 미해결: 헐전 하프타임 폭 조정 주장 2건(obs#480)은 전후반 좌표가 없어 검증 불가 — **다음 경기부터 전·후반 분리 좌표 저장** 제안.
+  그리스어(촐라키스)·아랍어(벨루미) 유튜브 미탐색. `match-watch-avl-hull-followup-d1`(09-07 11:00)이 §8-8을 중복 수집하지 않도록 §8-7에 갱신 표기.
 
 ### 2026-09-05~06 — 헐전 종결 · LIV/ATM 수집 · 축 검정 · ⭐ 포켓 충돌 정정 · migration 025 (`45eb2e1`~`eb435b3`, obs#446~465)
 

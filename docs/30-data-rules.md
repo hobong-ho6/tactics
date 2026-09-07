@@ -277,6 +277,21 @@ AVL·CHE·LIV 공통.
 - ⚠️ 유튜브 전술 분석은 **조회수·구독자와 정확도가 무관하다**. 원출처(경기 영상·데이터)를 밝히는
   채널을 우선하고, 밝히지 않으면 3티어로 고정한다.
 
+**⭐ AVL 필수 채널 2곳 (2026-09-07 신설 — 사용자 지시)**: 아스톤 빌라 영상 분석(경기 D+1~D+3 추적·
+선수 수집·시즌 서사) 회차마다 **UTV | Aston Villa Fan Channel(`@UTVFANCHANNEL`)** 과
+**The Villans(`@TheViIIans`)** 의 최신 업로드를 **반드시 목록 조회하고 해당 회차 관련 영상은 전사까지 확보**한다.
+두 채널은 선수 단위 분석(「HOW X FITS INTO THE EMERY SYSTEM」·「Scouting — …」)과 경기 리액션을 정기 발행한다.
+다른 채널을 찾았어도 이 둘을 건너뛰면 리포트에 「미수행 + 사유」를 적는다. 전사 확보 절차는 아래.
+
+**유튜브 자막 확보 경로 (2026-09-07 갱신)**:
+- ① `python3 scripts/yt_transcript.py VIDEO_ID LANG` (yt-dlp) — 기본 경로.
+- ② yt-dlp가 「The page needs to be reloaded」로 막히면(2026-09-07 신규 PC에서 확인, 로그인 무관 봇 차단)
+  **브라우저 경로**: 영상 페이지를 열고 플레이어 API로 자막 트랙(en)을 켜 **mute 재생 2~3초** →
+  네트워크 목록에서 `/api/timedtext?…&pot=…&fmt=json3` URL을 복사 →
+  `python3 scripts/yt_transcript_json3.py VIDEO_ID LANG "URL" [메모]`. pot 토큰은 **영상 단위**라 재사용 불가.
+  채널 최신 목록은 `yt-dlp --flat-playlist --print "%(id)s|%(title)s" https://www.youtube.com/@채널/videos`로 받는다(차단 안 됨).
+- 영상·음성은 어느 경로로도 시청하지 않는다 — 화면 전술보드·소리는 자막에 없고, YouTube 계정도 필요 없다.
+
 ### ⭐⭐ 다국어 검색 규칙 (2026-08-16 신설 — 사용자 지시)
 
 **영어 검색만으로 끝내면 절반을 놓친다.** 선수 데이터든 팀·감독 전술 데이터든,
