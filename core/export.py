@@ -252,7 +252,7 @@ def export_all(db_path=None, window="2026-summer"):
                    ts.passes_o, ts.long_att_v, ts.long_acc_v, ts.long_att_o,
                    ts.long_acc_o, ts.cross_att_v, ts.cross_acc_v, ts.corners_v,
                    ts.corners_o, ts.duelpct_v, ts.fouls_v, ts.fouls_o,
-                   ts.formation_v, ts.formation_o
+                   ts.formation_v, ts.formation_o, ts.xg_source
             FROM match_reports mr
             LEFT JOIN matches m ON m.id=mr.match_id
             LEFT JOIN team_match_stats ts
