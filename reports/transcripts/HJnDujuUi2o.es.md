@@ -1,0 +1,20 @@
+# 전사(자동 생성 자막) — HJnDujuUi2o (es)
+
+> 원본: https://www.youtube.com/watch?v=HJnDujuUi2o · 수집: scripts/yt_transcript.py
+> ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.
+
+**[00:00]** ni ocasiones claras en la primera parte, no han enterado, pero ha habido dos goles en un minuto. ¿A qué se a qué crees que se debe esa falta de conexión al entrar la segunda parte? Bueno, creo que el partido e es lo que se vio, un primer tiempo importante con situaciones, con personalidad, con juego y 5 minutos o dos de poca tensión y, obviamente poca resolución a situaciones que las pudimos haber resuelto mucho mejor y que en este caso el Bilbao resolvió muy bien, eh,
+
+**[00:33]** aprovechó ese momento de desconexión y ya Después empezaba otro partido mucho más complejo, mucho más difícil, porque yo estaba mucho más organizado defensivamente, ganaron el partido justamente y no mucho más. La derecha, Antonio. Hola, Cholo. Buenas tardes. Antonio Ruiz, Cadena Cope. No sé si te duele más el resultado 3-0 o esa desconexión, desatención que condena tanto al equipo y que luego no hay una reacción clara,
+
+**[01:03]** ¿no? No hay una reacción de eh seguramente porque tenía menos espacios el rival lo hace muy bien. M a ver, eh, la verdad que es el partido estaba siendo muy bueno, estábamos con una con sensaciones buenas de cara al segundo tiempo, pero no pudimos resolver bien las situaciones que que acontecieron en ese ratito de esos 2 minutos y bueno, responsabilidad absolutamente nuestra, ¿no?, del cuerpo técnico porque no pudimos darle a ellos ese arranque del segundo tiempo que ameritaba y ellos no
+
+**[01:35]** lo pudieron resolver. izquierda. Pedro, hola, Diego Pedro Fernando directo en el carrusel Deportivo, de la cadena. La primera parte ha sido bastante buena del equipo y y el partido lo marca precisamente esos dos minutos. ¿Por qué? O ¿cuál es la razón por la que un equipo quizás que ha hecho una buena primera parte cuando sale del vestuario no sale con esa tensión que se necesita en partidos y campos así? Y porque el cuerpo técnico no le logró transmitir lo que se necesitaba para el arranque del segundo tiempo y ellos no lo pudieron eh encontrar por sí solos. A la derecha, Hugo.
+
+**[02:05]** Hola, Mí, ¿qué tal? Hugo Conesonda cero, eh, tendrás tiempo de analizar el partido, pero ahora en caliente. ¿Qué te vas más esperanzado con lo que viste la primera parte, muy distinto a lo del año pasado o con la segunda parte la que parece que se han repetido algunos errores del año pasado? Fuera de casa, me refiero. Gracias. Bueno, estamos en una etapa todavía de de construcción del equipo y evidentemente vamos a atravesar situaciones complejas. Eh, la verdad que empezamos muy bien dentro de lo esperado, eh, y bueno, estos 5 minutos
+
+**[02:35]** de hoy nos dieron un golpe para obviamente reaccionar a lo que tenemos y lo que tenemos que resolver. Hola, Diego. Pedro Almendro Movistar Plus. Te quería preguntar por un detalle que hemos visto ahora al final del partido. Han salido a entrenar los suplentes. Julián no ha salido. ¿Cómo lo valoras? En serio. Sí. No tengo nada que comentar. Última pregunta aquí en segunda
+
+**[03:05]** Sí, Mí José Marjeón Vasca, después de los dos goles, el equipo ha reaccionado un poquito, pero luego el Atlético ha defendido muy bien. ¿Te ha sorprendido esta defensa tan buena del Atlético hoy? No, a ver, conocemos al entrenador, tiene sus características eh muy claras. eh le está transmitiendo al equipo eso que que tiene. La verdad que trabajaron muy bien el bloque bajo porque ya ahí no pudimos nosotros, salvo la de Julián que patio fuera del área. Después la verdad que no tuvimos situaciones importantes, algunas de
+
+**[03:35]** Llorente, pero muy poco. Me gusta el Biluago, es un equipo importante, va a pelear por los primeros lugares y bueno, va a haber una competencia con el Villarreal, la Real Sociedad y bueno, y un montón de equipos que crecen para para bueno, para estar cada vez más cerca nuestro. Damos por finalizar la rensa.
