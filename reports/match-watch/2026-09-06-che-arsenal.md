@@ -335,3 +335,377 @@
 - **D+1~D+3 추적 미완**: 전술 블로그·유튜브 분석이 아직 없다. 후속 3회 수집이 예약돼 있고, 결과는 이 파일의 `## D+N 추적` 절에 **덧붙인다**(덮어쓰지 않는다).
 
 **G12**: 이번 회차 종료 시점 전항 통과(불완전 0 · 선수행0 0 · 선수누락 0 · 원문누락 0 · 경기프리셋누락 0 · 선수처방누락 0 · xG원천결손 0 · xG스냅샷혼합 3/3 유지).
+
+---
+
+## D+2 추적 (2026-09-08)
+
+> 이 절은 **덧붙임**이다(불변규칙 2). 위 당일 절은 고치지 않았고, 뒤집힌 판정은 아래 「당일 판정 정정」에 적는다.
+> ⭐ **당일 회차가 「사실상 0건」으로 닫았던 유튜브 전술 분석이 D+2에 4편 확보됐다** — 검색엔진 질의가 아니라
+> **유튜브 사이트 내부 검색**(`&sp=EgIIAw%3D%3D`, 업로드=이번 주)으로 훑은 결과다(obs#516 규약 적용, 두 번째 실증).
+
+### 확보한 1차 자료
+
+| # | 종류 | 채널·매체 | 제목 | 게시 | 확인 방식 |
+|---|---|---|---|---|---|
+| 1 | 전술 분석 | Football Made Simple | Arteta Found The Flaw In Alonso's System | 09-07 (D+1 심야) | **자동 자막 전사** `reports/transcripts/URlf-04YYLk.en.md` |
+| 2 | 전술 분석 | Zekko Football | Why Alonso's New Chelsea Tactics FAILED Against Arsenal | 09-08 새벽 | **자동 자막 전사** `fvy4fhYn8Bc.en.md` |
+| 3 | 펀딧 분석 | Sky Sports PL (캐러거·라이트·스터리지) | FULL Super Sunday post-match analysis | 09-07 | **자동 자막 전사** `6RuIVhy2X2M.en.md` |
+| 4 | 팬 채널(3티어) | George Benson Football Chelsea | 아스널 2-1 첼시에서 배운 6가지 | 09-07 | **자동 자막 전사** `pS8z69CMjCQ.en.md` |
+| 5 | **감독 회견 원문** | MightyBluesNews / BeanymanSports | 알론소 경기 후 회견 **전체** | 09-07 | **자동 자막 전사** `lqUvVPp4A1w.en.md` |
+| 6 | **감독 회견 원문** | HaytersTV | 아르테타 경기 후 회견 **전체** | 09-07 | **자동 자막 전사** `ipGsi40qJKM.en.md` |
+| 7 | 감독 회견 원문 | Arsenal 공식 | 아르테타 **경기 전** 회견(09-05) — 인용 출처 검증용 | 09-05 | **자동 자막 전사** `XJsTW81j9M8.en.md` |
+
+⚠️ 1~7 전부 **유튜브 자동 생성 자막**이다(영상·음성 미시청). 인명 오인식이 있다(「Chabby Alonzo」·「Califury」·「Achapong」·「Hatau」) —
+인용 시 confidence에 **auto-caption** 명기. 회견 전사는 발언자 귀속을 문맥으로 재확인했다.
+
+### ⭐⭐ 알론소 경기 후 회견 — 전문 확보 (당일 절은 Sky 요약 경유 5문장뿐이었다)
+
+> **"They overload a lot on the left side with many players."**
+> (그들은 **왼쪽**에 많은 선수로 크게 오버로드를 건다.)
+> ⭐ 당일 절의 Sky 판본은 「한쪽에 5~6명」이었다. 원문은 **어느 쪽인지 특정**한다 — 첼시 기준 좌측, 즉 **하토 쪽**이다.
+> 전술 분석 2편이 독립적으로 「아스날의 우측(사카·화이트) 오버로드」라고 서술해 방향이 일치한다.
+
+> ⭐⭐ **"We didn't want from the first minute to sit deep and to wait and to make a long game. We wanted it to be active. We wanted to be protagonist in the pressing, sometimes to go higher, sometimes lower, to have good possessions."**
+> (첫 분부터 깊이 앉아 기다리며 경기를 길게 끌 생각은 없었다. 능동적이길 원했다. **압박에서 주도자**이길 원했다 — 때로는 더 높게, 때로는 더 낮게 — 그리고 좋은 점유를 갖길 원했다.)
+> ⭐ **obs#469(PPDA 22.67→9.58, 라운드 사이 2.4배 요동)의 감독 1차 근거다.** 요동은 표본 잡음이나 상대 반응이 아니라 **설계된 가변성**이라고 감독 본인이 말한다.
+
+> (기자: 「이번 시즌 벌써 7실점이다. 그것을 바로잡는 것이 최우선 과제인가?」)
+> **"My priority is to win games. And for that normally it's easier when you don't concede many. So for sure this is something that we need to address. We want to be tighter, to be more clinical, more balanced. But this takes time as well."**
+> (내 최우선 과제는 경기를 이기는 것이다. 그러려면 보통 많이 실점하지 않는 편이 쉽다. 그러니 분명 이것은 우리가 다뤄야 할 문제다. 더 조밀하고, 더 결정적이고, 더 균형 잡히길 원한다. 하지만 이것도 시간이 걸린다.)
+
+> **"We wanted to compete. We wanted to win here. We came to win. We knew that we were not that far, but it went that way."**
+> (경쟁하고 싶었다. 여기서 이기고 싶었다. 이기러 왔다. 우리가 그렇게 멀지 않다는 걸 알았지만, 그렇게 흘러갔다.)
+
+> **"It's about assessing the risk. Probably last week we took him too early and I don't want to make the same mistake again."**
+> (리스크를 평가하는 문제다. 아마 지난주 우리는 그를 **너무 일찍 투입했고**, 같은 실수를 반복하고 싶지 않다.)
+> ⚠️ 부상 복귀 판단에 대한 발언이다. 영상 제목·채널 설명은 **모이세스 카이세도**를 지목하지만, 전사 본문에서는 이름이 나오는 대목이
+> 잘려 있어 **대상 선수를 전사만으로는 확정할 수 없다**. 카이세도는 이 경기 명단에 없다. ⇒ **미확정으로 남긴다.**
+
+> **"I'm happy with the players we have. For sure you need to deal with injuries… but we need them because they are top players and with them we are a better team."**
+> (있는 선수들에게 만족한다. 부상은 감당해야 하는 것이다… 하지만 그들이 필요하다. 톱 플레이어들이고 그들이 있으면 우리는 더 나은 팀이다.)
+
+**실측 대조**: 「득점 후 15분」 진단(당일 절)이 원문에서도 반복된다(`the next 15 minutes they were really pushing us hard… we were defending low`). 실측 `phase_lead 23분`과 정합.
+
+### ⭐ 아르테타 경기 후 회견 — 원문 확보, **당일 절의 인용 2건은 검증 실패**
+
+경기 후 회견 전사(#6)와 **경기 전** 회견 전사(#7) **어디에도** 당일 절이 Arsenal.com 경유로 인용한 두 문장
+(「you know exactly the game that you're going to play」·「The way they use the keeper as an extra player… it's unbelievable」)이 **없다**.
+당일 절이 이미 같은 페이지의 브루누 기마랑이스(뉴캐슬) 혼입을 이유로 신뢰도를 낮춰 뒀는데, 회견 원문 대조로 **출처 미확정**이 확인됐다.
+⛔ **이 인용 2건은 근거로 쓰지 않는다**(폐기가 아니라 보류 — 정확한 Arsenal.com URL이 확인되면 복원한다).
+⭐ 게다가 「GK를 여분의 선수로 쓴다」는 서술은 **이 경기의 전술 분석과 어긋난다** — 아래 「당일 판정 정정 ③」 참조.
+
+회견 원문에서 실제로 확인된 것(이 경기 관련):
+
+> **"I think it was an exceptional performance… the beginning was tough, but I enjoyed it because the team reacted in a spectacular way."**
+> (예외적인 경기력이었다고 생각한다… 시작은 힘들었지만, 팀이 굉장한 방식으로 반응했기 때문에 즐겼다.)
+
+> (로저스 실점 국면에 대해) **"There are something that we do badly in that goal that we discussed before, but credit to them as well — from that ball in the air, somebody's able to put the ball very close to the post and score against David, which is not easy."**
+> (그 실점에서 우리가 잘못한 것이 있고 전에 이야기했던 것이다. 다만 상대에게도 공을 돌려야 한다 — 그 공중볼에서 누군가 포스트에 아주 가깝게 공을 넣어 데이비드를 상대로 득점했고, 그건 쉬운 일이 아니다.)
+
+> ⭐⭐ (교체 투입 선수에 대해) **"I think he played 11 minutes. He had five or six training sessions. The way he played tonight against this opponent, playing man-to-man against João Pedro — he was phenomenal."**
+> (11분을 뛰었다고 본다. 훈련 세션을 대여섯 번 했다. 오늘 밤 이 상대를 맞아 뛴 방식, **주앙 페드루를 맨투맨으로 잡은 것** — 경이로웠다.)
+> ⭐ **아스날이 주앙 페드루에게 맨마킹을 붙였다**는 감독 1차 확인이다. 첼시 최전방 고립의 상대측 설계 근거.
+> ⚠️ 자동 자막이 질문과 답변의 선수 이름을 뒤섞어 **해당 아스날 선수의 이름은 특정하지 못했다**(신입, 훈련 5~6회).
+
+### ⭐⭐ 전술 분석 2편 + 펀딧이 수렴한 것 — 「백3」가 아니라 **백4↔백5 하이브리드**
+
+세 소스가 **독립적으로 같은 것**을 말한다.
+
+> Football Made Simple: **"because the Italian [Calafiori] was inverting high, deep, and all over the place, when Neto followed him, Acheampong was isolated wide and in effect, Chelsea were forced to defend in a back four with a massive gap appearing in this half space."**
+> (칼라피오리가 높게·깊게·사방으로 인버트했기 때문에, 네투가 그를 따라가면 아체암퐁이 와이드에 고립됐고, 사실상 첼시는 **이 하프스페이스에 거대한 틈이 생긴 백4로 수비하도록 강요당했다**.)
+
+> Zekko Football: **"They played a back five and a back four simultaneously, changing all the time depending on… positions of the opposition players [and] the actual game state."**
+> (그들은 백5와 백4를 **동시에** 썼고, 상대 선수들의 위치와 실제 게임 상태에 따라 계속 바꿨다.)
+
+> ⭐ Sky Sports 캐러거: **"Chelsea today, even if you think about the first half, Achapong was actually making overlapping runs. He was getting into the box. A center back in a back three would not make those runs. So in the main that was a back four today, but it was basically Neto follow Calafiori wherever he goes."**
+> (오늘 첼시는, 전반만 생각해도 아체암퐁이 실제로 **오버래핑 런**을 하고 있었다. 박스 안까지 들어갔다. **백3의 센터백은 그런 런을 하지 않는다.** 그러니 오늘은 주로 백4였고, 기본적으로 **네투가 칼라피오리를 어디든 따라가는** 것이었다.)
+
+**⭐⭐ 실측이 이 서사를 독립적으로 지지한다** (당일 수집한 평균 위치, 이번 회차에서 새로 대조):
+
+| 선수 | avg_x(깊이) | avg_y(y 낮음=우측) | 읽기 |
+|---|---|---|---|
+| 라크루아 | **38.3** | 38.0 | 후방 라인 |
+| 포파나 | **38.4** | 62.7 | 후방 라인 |
+| **하토**(LWB) | **39.0** | 79.5 | ⭐ **CB 둘과 같은 깊이** — 좌측은 윙백이 아니라 **레프트백** |
+| 리스 제임스 | 48.9 | 55.8 | 피벗 |
+| **아체암퐁**(RCB) | **50.0** | 24.0 | ⭐⭐ CB 둘보다 **11.7 높다** · 우측 하프스페이스 |
+| 네투(RWB) | 62.2 | 16.3 | 우측 최대 폭 |
+
+⇒ 후방 3인(하토·포파나·라크루아)이 x≈38로 **평평한 라인**을 이루고, **아체암퐁 혼자 50까지 전진**해 있다.
+**교과서적 백3가 아니라 「비대칭 백4 + 전진한 우측 수비수」**다. 서사와 실측이 같은 결론을 가리킨다.
+
+### 당일 판정 정정
+
+**① 「3-4-2-1은 변화가 아니라 연속」(obs#470)은 유지하되, 국면 층위를 분리해야 한다.**
+명목 라인업이 3-4-2-1인 것은 맞다. 그러나 **온볼에서는 비대칭 백4(전진 RCB), 무공에서는 상대 와이드 진출에 따라 4-4-2↔5-4-1을 오간다.**
+「백3 연속」을 구조 결론으로 쓰면 이 경기에 대해서는 오독이다. 정정은 새 obs로 기록한다(덮어쓰지 않는다).
+
+**② 「아체암퐁 hp=28은 비정상적으로 얕다 → fit 0.4556은 그 얕음의 결과」(당일 §9 한계·재검증 항목 3)는 원인 진단이 틀렸다.**
+얕은 것이 아니라 **전진해 있었다**(avg_x 50.0). 터치 21회는 **볼 관여가 없는 오프더볼 전진**의 결과다 —
+Football Made Simple: **"the right center back more often than not marched forward into the half space to allow Neto to stay wide"**
+(우측 센터백은 대개 하프스페이스로 전진해 네투가 넓게 남을 수 있게 했다). ⇒ **재검증 항목 3을 「볼 관여 얕음」에서
+「전진 CB 임무의 반복 여부 + 오프더볼 전진 대비 볼 관여 괴리」로 교체**한다.
+
+**③ 「첼시가 GK를 여분의 선수로 쓴다」(아르테타 인용 경유)는 이 경기에 대해서는 반증됐다.**
+Football Made Simple: **"Like Arsenal, they were willing to go long from their goalkeeper with Palmer and Rogers ready to fight for the second balls."**
+(아스날처럼 그들도 골키퍼에서 **길게 갈** 의향이 있었고, 파머와 로저스가 세컨볼을 다툴 준비를 했다.)
+실측 롱볼 18/49(37%)와 정합한다. ⇒ 인용 자체가 출처 미확정(위)인 데다 내용도 이 경기와 어긋난다 — **근거 사용 보류**.
+
+**④ 「윙백 좌우 비대칭(네투 62 vs 하토 39)」(재검증 항목 2)의 원인이 규명됐다.**
+감독 선호나 선수 성향이 아니라 **칼라피오리 대응**이다. 네투가 칼라피오리를 사람 기준으로 추종했고(캐러거), 그 결과
+우측만 폭이 살고 좌측은 평평한 백4가 됐다. ⇒ 재검증 질문을 **「상대 인버티드 풀백이 없는 경기에서도 이 비대칭이 재현되는가」**로 좁힌다.
+
+### ⭐⭐ 2실점의 메커니즘 — 두 소스가 같은 장면을 분해했다
+
+**동점골(25', 하베르츠)** — Zekko Football:
+> **"One small movement from Havertz really starts to unlock this. He moves from that central role, vacating one of the Chelsea center backs, and begins to help Saka. This creates a 2v1 situation onto Hato… Fofana is following the run, but he's not close enough because of the distance between himself and Lacroix."**
+> (하베르츠의 작은 움직임 하나가 이것을 푼다. 그는 중앙 역할에서 벗어나 **첼시 센터백 하나를 비워내고** 사카를 도우러 간다. 이것이 **하토에게 2v1**을 만든다… 포파나가 그 런을 따라가지만, **라크루아와의 거리 때문에** 충분히 가깝지 못하다.)
+> 이어서 **"because of the position of Odegaard, he stops Lacroix from being aggressive"**(외데고르의 위치 때문에 라크루아가 적극적으로 나가지 못한다) → 하베르츠 얼리 슛 → **"As Havertz takes the shot, Martinez isn't set."**(하베르츠가 슛할 때 마르티네스는 자세가 잡히지 않았다.)
+
+**결승골(50', 외데고르)** — Football Made Simple:
+> ⭐⭐ **"Chelsea only had a double pivot. So when we saw those wide overloads, a Chelsea pivot was often being dragged across… while it would help to cope with the wide overload, it left the remaining pivot with acres to defend if the center backs were not pushing up to assist. And for Odegaard's winner, we even see shades of this."**
+> (첼시는 **더블 피벗밖에 없었다**. 그래서 와이드 오버로드가 나오면 첼시 피벗 하나가 그쪽으로 끌려갔고… 그것이 와이드 오버로드에는 도움이 되지만, **센터백들이 올라와 돕지 않으면 남은 피벗 하나가 광활한 지역을 혼자 수비하게 남는다**. 외데고르의 결승골에서도 그 그림자가 보인다.)
+
+⇒ **구조 판정**: 이 경기 2실점은 개인 실책의 합이 아니라 **「더블 피벗 + 와이드 오버로드」의 산술**에서 나왔다.
+좌측(하토)에서는 수적 2v1, 중앙에서는 피벗 1명 잔류. 알론소 본인의 「왼쪽 오버로드」 진단과 같은 곳을 가리킨다.
+
+### ⭐ 라운드를 가로질러 반복되는 구조 — 파머·로저스의 「중앙 공격 / 와이드 수비」 부하
+
+> Football Made Simple: **"In our first analysis of Alonso's Chelsea against Fulham, we talked about the disadvantages of having players like Palmer and Rogers being expected to attack centrally but then defend wide, as the workload and their natural attacking instincts would leave them vulnerable, which Fulham made them pay for. Well, even though Rogers was wide in this match… Arsenal could still have success running off of him."**
+> (알론소 첼시에 대한 우리의 첫 분석인 풀럼전에서, 파머와 로저스 같은 선수들이 **중앙으로 공격하고 와이드로 수비하도록** 요구받는 것의 단점을 이야기했다 — 그 작업량과 타고난 공격 본능이 그들을 취약하게 만든다는 것이고, 풀럼이 그 대가를 치르게 했다. 이번 경기에서 로저스가 와이드에 있었음에도… 아스날은 여전히 그를 등지고 달려 성과를 냈다.)
+
+> Sky Sports 캐러거(파머에 대해): **"Palmer, we know he's a wonderful player, but would he do enough for the team defensively?"**
+> (파머, 우리는 그가 훌륭한 선수임을 안다. 그러나 그가 팀을 위해 수비적으로 충분히 해줄까?)
+
+⇒ **동일 채널이 풀럼전에서 이미 같은 지적을 했고 아스날전에서 재현됐다**는 점에서, 이것은 경기 한정이 아니라 **체제 형질 후보**다.
+다만 두 경기 모두 같은 분석자의 관찰이라 **독립 소스 1건이 더 필요**하다 — 다음 회차 재검증 항목으로 올린다.
+
+### 아스날의 대응 방식 — 상대팀 관점
+
+> Zekko Football: **"Instead of dropping into a back five and simply creating that numerical equality, what they actually did was be far more aggressive, working on 2v1 situations between wingers and fullbacks onto opposition players."**
+> (백5로 내려앉아 단순히 수적 동등을 만드는 대신, 그들이 실제로 한 것은 훨씬 더 공격적으로 나서서 **윙어와 풀백이 상대 선수에게 2v1을 거는 것**이었다.)
+
+⇒ 같은 문제(상대의 폭·인버티드 풀백)에 대해 **첼시는 「수적 동등」, 아스날은 「국지적 수적 우위」**로 답했다.
+알론소 본인의 원칙 서술("it's not about formation")과 맞물리는 대비다. 캐러거는 이 원칙 주장에 유보를 달았다:
+> **"He would argue, as he has done already, it's not about formation — but isn't it always the ones who play five at the back who say that?"**
+> (그는 이미 그래왔듯 포메이션의 문제가 아니라고 주장할 것이다 — 그런데 **백5를 쓰는 사람들이 늘 그렇게 말하지 않나?**)
+
+### 팬 채널(3티어) — 사실 항목만 채택
+
+- 라비아 60분 교체 배경: **"Lavia was decent on the ball, but he looked gassed out after 40 minutes."**(라비아는 볼을 다룰 때 괜찮았지만 40분 뒤에는 방전돼 보였다.) — 3티어 관찰이라 **체력 결론으로 쓰지 않는다**. 교체 시점(60')과 정합한다는 사실만 기록.
+- 콜윌이 아체암퐁에게 밀려 제외됐다는 서술 — 선발 선택 배경으로만 기록(1차 확인 미완).
+- 마르티네스 첫 실점 관여 비판(라크루아 다리 사이 통과). **Zekko·팬 채널 모두 「셋 되지 않은 상태의 얼리 슛」**을 말한다.
+- 가브리엘의 마르티네스 머리 가격에 VAR 체크가 없었다는 주장 — **판정 논란은 이 리포트 범위 밖**, 기록만.
+
+### 0건과 미수행 (D+2 시점)
+
+| 항목 | 결과 | 시도 |
+|---|---|---|
+| 스페인어 전술 분석 영상 | **0건**(경기 후) | 유튜브 내부검색 `Xabi Alonso Chelsea análisis táctico Arsenal`(업로드=이번 주) — 잡힌 것은 전부 영어 채널 |
+| 아르테타 회견의 문제 인용 원출처 | **미확인** | 경기 전·후 회견 전사 2건 대조 실패. Arsenal.com 정확한 URL 필요 |
+| 알론소 「너무 일찍 투입」 대상 선수 | **미확정** | 전사에 이름 대목 결손. 카이세도 지목은 영상 제목 기준이라 채택 불가 |
+| 전술 블로그 | 별도 서브에이전트 회차에서 확인 | 아래 「서브에이전트 회차」 절 |
+
+### ⛔⛔ 당일 판정 정정 ⑤ — 아르테타 인용 2건은 **다른 시즌 경기**의 것이다 (날짜 혼입 함정)
+
+원인이 규명됐다. Arsenal.com에 **제목이 거의 같은 회견 기사 두 개**가 있다.
+
+| URL 슬러그 | 실제 경기 | 판정 |
+|---|---|---|
+| `every-word-artetas-post-chelsea-press-conference-apV972X6joGN` | **이 경기**(로저스 선제 → 하베르츠·외데고르 역전, 모스케라 부상) | ✅ 채택 |
+| `every-word-from-artetas-post-chelsea-presser-a1kW85x3e3jV` | **다른 경기** — 라이스 부상 교체 · **첼시 퇴장** · **「5점 차 선두 회복」** | ⛔ 배제 |
+
+⭐ 메인 세션이 두 번째 URL을 **직접 열어 확인**했다: 문제의 문장 「The way they use the keeper as an extra player…」가
+**그 페이지에 있고**, 같은 페이지가 **첼시 퇴장**과 **5점 차 선두 회복**을 말한다. 이 경기는 3라운드로 아스날이 3전 전승 시점이고
+퇴장은 없었다(경고 첼시 4·아스날 2). ⇒ **이 경기가 아니다.** 서브에이전트 판정은 25/26 시즌 28라운드(2026-03-01)다.
+
+⛔⛔ **함정의 구조**: 같은 대진·**같은 스코어(Arsenal 2-1 Chelsea)**가 시즌을 건너뛰어 반복됐다. 매체 티어(공식 구단 사이트)로도,
+URL 슬러그로도, 검색 순위로도 잡히지 않는다. 잡아낸 지표는 **본문에 병기된 사건의 정합성**(퇴장·순위·부상자)뿐이다 —
+transfer-watch §2-0의 「동시 병기된 타 구단·타 선수 상황」 지표가 **경기 리포트 축에서도 동일하게 작동**한다.
+⇒ 이 경기 절에서 그 인용 2건에 근거한 서술은 모두 **철회**한다. 대신 확인된 이 경기 발언은 위 「아르테타 경기 후 회견」 절에 있다.
+
+### ⭐⭐ Coaches' Voice — 「0건」이 또 뒤집혔다 (세 번째)
+
+당일 회차가 「0건」으로 닫았으나 **2026-09-07자 이 경기 분석이 존재**했다
+([learning.coachesvoice.com](https://learning.coachesvoice.com/cv/arsenal-chelsea-tactics-sep-2026/), 메인 세션 직접 확인).
+헐전 D+2에서 같은 일이 있었고(obs#502), 이번이 **세 번째**다. ⇒ **Coaches' Voice는 「검색 0건」으로 닫지 말고 사이트를 직접 훑는다.**
+
+- 무공 **5-4-1 로우블록** — 중앙 침투 제한 + 미드필드 압축.
+- **네투**: "Neto dropped from his higher, more advanced position into a **right wing-back role on the defensive line**."
+  (네투는 더 높고 전진된 위치에서 **수비 라인의 오른쪽 윙백 역할로** 내려왔다.) · **하토**는 좌측 수비 라인으로 접혔다.
+- **아체암퐁**: 네투가 볼을 잡으면 공격을 지원하러 전진했고, **그것이 역습 시 수비 취약을 만들었다**.
+- ⭐⭐ **라크루아**: "Maxence Lacroix was drawn out wider to engage Havertz, leaving **big horizontal distances** between Chelsea's defensive line."
+  (라크루아가 하베르츠를 상대하러 더 넓게 끌려 나갔고, 첼시 수비 라인 사이에 **큰 수평 간격**을 남겼다.)
+- **동점골**: 하베르츠가 외데고르·사카 옆 우측으로 드리프트해 첼시 좌측에 **3v2 오버로드**를 만들고, 하베르츠가 우측 넓은 위치에서 볼을 잡았다.
+- **결승골**: 아스날이 좌측으로 순환한 뒤 **칼라피오리의 하프스페이스 침투가 복수의 수비수를 끌어당겨** 외데고르가 중앙에서 받아 마무리.
+
+⇒ **Football Made Simple·Zekko·Sky 캐러거·Coaches' Voice 네 소스가 서로 다른 각도에서 같은 인과를 말한다**:
+칼라피오리·하베르츠의 우측(첼시 좌측) 이동 → 네투·라크루아가 사람 기준으로 끌려감 → 수평 간격 → 하프스페이스·중앙 개방.
+
+### ⭐ 선발 배경 — 아체암퐁 기용은 **전술 선택이 아니라 대체**였다
+
+알론소 경기 전 회견(chelseafc.com 공식, 1차 소스):
+> **"Fitness. Levi [Colwill] had a little thing during the week, so we wanted not to take a risk at this stage of the season."**
+> (컨디션 문제다. 레비가 주중에 약간의 문제가 있어서 시즌 이 시점에 위험을 감수하고 싶지 않았다.)
+
+⇒ 당일 절이 다루지 않았던 배경이다. **「전진하는 우측 CB」라는 임무 자체는 유지하되, 그 임무를 맡은 사람은 대체 자원**이었다.
+게임 구현 판정에서 아체암퐁 개인 특성으로 역할을 고정하면 안 된다 — **슬롯의 임무가 먼저이고 사람은 가변**이다.
+⚠️ 60분 라비아↔귀스토 · 하토↔차바리아 **교체 의도에 대한 알론소 직접 발언은 1차 소스 0건**이다(chelseafc.com·ESPN·Yahoo 전수 조회).
+
+### ⭐ 「세트피스 2실점」 주장 판정 — **확인, 단 이 경기가 아니다**
+
+Arsenal.com 경기 **프리뷰**(경기 전 발행) 원문:
+> **"Conceding twice from set pieces already and looking quite nervy from balls sent into the box, there is a sense that Alonso's men have some work to do on their defensive game."**
+> (이미 세트피스에서 두 번 실점했고 박스로 들어오는 볼에 상당히 불안해 보이는 만큼, 알론소의 팀은 수비에서 할 일이 남았다는 인상이다.)
+
+⇒ **경기 전 시점의 누적치**(풀럼·브라이턴 2경기)이고 이 경기 실점 2골과는 무관하다. 당일 절의 「MEDIUM 이하 취급」 판정을
+**「확인됐으나 시점이 다르다」로 정정**한다. ⭐ 부수 확인: **이 경기 첼시 선제골(2' 로저스)도 세트피스였고 하토가 배급했다** —
+세트피스는 이 팀에게 양날이다.
+
+### 아스날 관점 — 상대측 서술
+
+- **Arseblog** 「Gunners too strong for work-in-progress Chelsea」(09-07): 첼시를 **「work-in-progress」**로 규정. 첼시 3-4-2-1 구조 분해나 60분 교체 언급은 **없다**.
+- ⭐ **Yardbarker/Goal** 「Two right-backs in midfield?!」(Yosua Arya, 09-07): **60분 라비아↔귀스토 이후 천연 라이트백 2명(제임스·귀스토)이 중원**을 이룬 구조를 비판.
+  결승골에서 **제임스가 외데고르를 놓쳤다**고 지목한다. ⚠️ 우리 실측은 결승골이 50분이라 **교체(60분) 이전**이다 —
+  기사의 인과 연결은 시점이 어긋난다. **「두 라이트백 중원」 지적 자체는 60~90분 구간에만 적용**해야 한다.
+  애슐리 영 인용: **"Teams will be seeing that Chelsea will sit in there and get men behind the ball, but there's still spaces through the lines."**
+  (팀들은 첼시가 물러서서 볼 뒤에 사람을 모으지만 **라인 사이 공간은 여전히 열려 있다**는 걸 알게 될 것이다.)
+- **The Athletic 아스날 담당: 0건**(검색 미노출).
+
+### 선수 1차 발언 (신규)
+
+> 라크루아([VAVEL](https://www.vavel.com/en/football/2026/09/07/chelsea-fc/1270533-lacroix-i-think-it-s-not-easy-to-play-there.html), 09-07):
+> **"I think it's not easy to play there but we did good. I think it was a good start but once they scored it got more and more difficult. We deserved more."**
+> (거기서 뛰는 건 쉽지 않지만 우리는 잘했다. 시작은 좋았지만 그들이 득점한 뒤로 점점 더 어려워졌다. 우리는 더 받을 자격이 있었다.)
+
+### 전술 블로그 — 사이트별 결과 (D+2)
+
+| 사이트 | 결과 |
+|---|---|
+| **Coaches' Voice** | ✅ **1건**(09-07) — 이번 회차 최대 수확. 「0건」 3회 연속 오판 종결 |
+| TheMastermindSite | ❌ 이 경기 없음(09-07자 외데고르 글은 3경기 종합, 첼시 언급 0) |
+| Total Football Analysis | ❌ Arsenal 카테고리 최신 2026-02. ⚠️ 검색에 걸리는 「Arsenal 2-1 Chelsea」는 **25/26 28R** — 배제 |
+| Spielverlagerung | ❌ 최신글 2026-07-19 |
+| Between the Lines | ❌ 0건 |
+
+### 다국어 커버리지 (D+2 · 당일 절 대비 증분만)
+
+| 언어 | 증분 | 비고 |
+|---|---|---|
+| 스페인어 | ⛔ **주요 매체 6곳 검색 차단**(marca·as·elpais·relevo·mundodeportivo·sport — API 400). 알론소 **스페인어 회견 원문 0건** | **브라우저 경로 재시도 필요** — 다음 회차 이월 |
+| 독일어 | **0건 유지**(2회 연속) | kicker·Sky DE 이 경기 자료 없음 |
+| 네덜란드어 | 직접 기사 **0건** | 하토 관련은 영어·Coaches' Voice 경유뿐 |
+| 포르투갈어 | ⭐ 에스테방 **3경기 연속 벤치**, 81분 투입 | 원문 2곳 **403·402 페이월** — 브라우저 재시도 이월 |
+| 프랑스어 | L'Équipe는 **이적 보도만**(€55m·2032년까지) | 이 경기 분석 0건 |
+
+### 선수별 서술 (D+2 · 1차 소스 확인분)
+
+**조시 아체암퐁 (전진형 우측 CB)** — 당일 절의 「비정상적으로 얕다」 해석을 대체한다.
+> Coaches' Voice: **"When Chelsea won possession he [Neto] was advanced on to the last line on the right-hand side, supported by advancing right centre-back Josh Acheampong."**
+> (첼시가 볼을 회수하면 네투는 우측 최전선까지 전진했고, **전진하는 우측 센터백 조시 아체암퐁이 이를 지원**했다.)
+> Evening Standard(5/10): **"A couple of nice runs on the overlap and did use his pace. Some good long-throw deliveries too."**
+> (오버랩으로 좋은 런을 두어 차례 했고 스피드를 활용했다. 좋은 롱스로인 배급도 있었다.) — ⭐ **롱스로인 담당**은 신규 정보.
+> Sports Illustrated(5.6): **"With Arsenal purring down their right, we didn't see much of Acheampong defensively. The young defender was also seldom involved."**
+> (아스날이 자기 우측으로 매끄럽게 흐르는 동안 아체암퐁을 수비적으로 볼 일이 별로 없었다. 이 어린 수비수는 관여 자체가 드물었다.)
+
+⇒ **터치 21회·hp 28은 임무의 결과다.** 볼 회로에서 벗어난 높이에 있었기 때문이지 부진이나 결손이 아니다.
+
+**⭐⭐ 결승골은 아체암퐁이 비운 자리에서 나왔다** — 인과 사슬이 닫혔다.
+> Coaches' Voice: **"Acheampong engaging — Calafiori made a half-space run. The latter attracted Lacroix and Neto — who had filled in for Acheampong."**
+> (아체암퐁이 나가 붙자 칼라피오리가 하프스페이스로 침투했다. 이 움직임이 라크루아와, **아체암퐁 자리를 메우고 있던 네투**를 끌어당겼다.)
+> 이어 **"With James unable to recover into a more central position to track the run in behind by Ødegaard"**
+> (제임스가 외데고르의 배후 침투를 추적하러 더 중앙으로 복귀하지 못한 채) → 외데고르 결승골.
+
+⇒ **동점골은 첼시 좌측(하토), 결승골은 첼시 우측(아체암퐁이 비운 쪽)**이다. 두 골이 **같은 설계의 양쪽 대가**다.
+결승골 책임의 주류 귀속은 **리스 제임스**(Coaches' Voice·NBC·football.london 3중 일치)이고, 구조적으로는
+「피벗이 촐리스·외데고르에게 횡으로 끌려난 뒤 중앙 복귀 실패」다.
+
+**요럴 하토 (좌측 윙백, 60분)** — 🇳🇱 네덜란드어 1차 확인.
+> VoetbalPrimeur(09-06): **"Na een vrije trap van Reece James won Jorrel Hato het kopduel, waarna de bal voor de voeten van Morgan Rogers viel."**
+> (리스 제임스의 프리킥에서 **하토가 헤더 경합을 이겼고**, 그 뒤 볼이 모건 로저스의 발 앞에 떨어졌다.) ⇒ 선제골 어시스트의 실제 형태.
+> football.london(6/10): **"The Dutchman was faced with the tough task of marking Saka but he stuck to it really well."**
+> (이 네덜란드 선수는 사카를 마크하는 힘든 임무를 맡았지만 정말 잘 버텨냈다.)
+> Sports Illustrated(7): **"Certainly not the long-term solution at wing back."** (좌측 윙백으로서 장기적 해답은 분명 아니다.)
+
+⭐ **60분 교체는 부진·부상이 아니다.** 하토·라비아 **동시 2장**이었고 사유는 「중원 통제 회복」이다(chelseafc.com·VoetbalPrimeur 일치).
+개인 사유 서술은 **어떤 언어권에서도 0건**. 오히려 라비아 교체 쪽에 의문이 제기됐다 —
+SI: **"A curious choice on the hour from Alonso to remove Lavia."**(라비아를 빼는 것은 알론소의 기이한 선택이었다.)
+⚠️ 팬 채널의 「라비아가 40분 만에 방전」 서술(3티어)과 매체의 「기이한 선택」이 갈린다. **미해결로 남긴다.**
+
+**⭐ 주앙 페드루 — 「고정 9번 + 등지고 받는 연결형」. false 9 근거는 불충분** (재검증 항목 1에 대한 답).
+> Coaches' Voice(수비 국면): **"João Pedro often screened the central pivot and was ready to release, while Cole Palmer and Morgan Rogers dropped either side of the midfield four."**
+> (주앙 페드루는 자주 **중앙 피벗을 차단**하며 튀어나갈 준비를 했고, 파머와 로저스가 미드필드 4의 양옆으로 내려왔다.)
+> SI/NBC(공격 국면): **"released Pedro Neto with a back-to-goal chop of over 50 yards."**
+> (**골대를 등진 채 50야드가 넘는** 전환 패스로 네투를 풀어줬다.)
+> 🇧🇷 포르투갈어 매체는 일관되게 **`centroavante`(고정 9번)**로 기술하고, **`falso nove`를 쓴 포르투갈어 1차 소스는 0건**이다.
+
+⇒ **obs#468(주앙 페드루 최적합 st_false9 → st_advanced 역전, n 2→4)을 서사가 독립적으로 지지한다.**
+수비 시 최전방 잔류(피벗 차단)는 false 9의 하강 패턴과 양립하지 않는다. **재검증 항목 1은 이 회차에서 「st_advanced 지지」로 진전**시킨다
+(단일 경기이므로 정본 변경은 아니다).
+
+**콜 파머 · 모건 로저스** — 수비 국면 분담은 **비대칭이 아니라 대칭**이었다.
+> Coaches' Voice: **"Cole Palmer and Morgan Rogers dropped either side of the midfield four."**
+> (파머와 로저스는 **미드필드 4의 양옆으로** 내려왔다.)
+⇒ 「한 명은 안쪽 포켓, 한 명은 하강」이라는 비대칭 분담을 지지하는 1차 서술은 **0건**이다. 공격 국면 분담 서술도 못 찾았다 —
+**다음 회차 수집 축으로 이월**한다.
+- 로저스: 전 매체 7점 이상(SI 7.7 첼시 최고), 선제골. ⚠️ **Foot Mercato 실측 경합 0/7 승**과 평점이 어긋난다 — 게임 판단 시 유의.
+- 파머: 전 매체 5~6.5로 혹평 일치. Evening Standard **"Saw plenty of the ball but no telling impact."**(볼은 많이 만졌지만 결정적 영향은 없었다.)
+  Foot Mercato: **최종 3선 패스 20회 성공 · 빅찬스 창출 1**. ⇒ 「조용했다」보다 **「관여는 많았고 산출이 없었다」**가 실측에 맞다.
+
+**에스테방** — 🇧🇷 **3경기 연속 벤치**, 81분 네투와 교체 투입.
+> dgabc(PT): **"ficou pela terceira vez seguida na reserva. Restando apenas 10 minutos, Alonso finalmente recorreu ao brasileiro."**
+> (3경기 연속 벤치에 머물렀다. 10분만 남기고서야 알론소는 마침내 이 브라질 선수를 꺼내 들었다.)
+> football.london(7/10, 교체 선수 최고): **"The Brazilian made Chelsea much more threatening after his introduction."**
+> (이 브라질 선수는 투입 후 첼시를 훨씬 더 위협적으로 만들었다.) — 더 일찍 투입했어야 한다는 문제 제기 동반.
+
+**에밀리아노 마르티네스** — ⛔ **빌드업 가담 서술은 어느 언어권에서도 0건**이다.
+🇪🇸 Infobae 원문(fetch 확인)은 세이브와 5분경 가브리에우의 안면 가격만 다루고 **배급·후방 빌드업 언급이 없다**. Coaches' Voice에도 없다.
+스페인어 검색에 걸리는 「발밑이 좋다」류는 전부 **빌라 시절 이적 프리뷰**라 배제했다(불변규칙 7).
+⭐ **아르테타의 이 경기 GK 관련 발언은 자기 팀 GK 라야에 대한 것**(「심장이 멎을 뻔했다」)이지 마르티네스가 아니다.
+⇒ 당일 절 정정 ③을 보강한다 — 「첼시가 GK를 빌드업 여분으로 쓴다」는 **이 경기에 대해 어떤 1차 소스도 지지하지 않는다.**
+- 동점골 책임은 매체가 갈린다: Evening Standard 4점(**"a suspect one to concede"** 내주기에 미심쩍은 실점) · football.london 5점(니어 포스트 포지셔닝) ↔ SI 7.5 · Foot Mercato 알고리즘 평점 **8.0(첼시 최고)**. **미해결로 기록.**
+
+**막상스 라크루아** — ⛔ 「실책」 특정 실패.
+🇫🇷 L'Équipe·RMC는 이 경기 기사 **0건**, Foot Mercato는 스탯 페이지만 있다. 「하베르츠 슛이 라크루아 다리 사이로 통과했다」는
+**3티어 팬 채널 서술이고 1차 소스로 확인되지 않았다 — 채택하지 않는다.**
+1차 소스가 말하는 것은 개인 실책이 아니라 구조다:
+> Coaches' Voice: **"Maxence Lacroix was drawn out wider to engage Havertz, leaving big horizontal distances between Chelsea's defensive line."**
+> (라크루아가 하베르츠를 상대하러 더 넓게 끌려 나갔고, 첼시 수비 라인 사이에 **큰 수평 간격**을 남겼다.)
+⚠️ 평점 분산이 이 경기 최대다: Evening Standard **4** ↔ football.london 6 ↔ NBC 6.5 ↔ SI 6.5.
+
+### ⛔ 새로 확인된 소스 충돌 (해소하지 않고 기록)
+
+| # | 항목 | 채택 | 충돌 주장 |
+|---|---|---|---|
+| 1 | **포메이션** | 3-4-2-1(실측·Coaches' Voice·🇳🇱·Foot Mercato) | ⭐ **chelseafc.com 공식 리포트가 4-2-3-1 · 아체암퐁 「우측 풀백」**으로 기술. 네덜란드 매체가 이 불일치를 명시 지적. ⇒ **구단 공식 리포트의 포메이션 기술은 신뢰하지 않는다.** ⚠️ 다만 이 「오기」가 캐러거의 「사실상 백4」 관찰과 **같은 방향**이라는 점은 우연이 아닐 수 있다 |
+| 2 | **교체 대응** | **네투 OUT 81' / 로저스 OUT 87'**(실측 출전시간·AOL·dgabc 일치) | chelseafc.com은 **반대로** 기술(로저스 81'·네투 87') |
+| 3 | **선제골 헤더 승자** | **하토**(🇳🇱 상세 서술 + 공식 어시스트 기록) | SI는 **라크루아**가 가브리에우를 공중에서 눌렀다고 서술 |
+| 4 | **선제골 마무리 형태** | 미확정 | 「박스 밖 첫 터치」(chelseafc·🇳🇱) ↔ 「volley」(SI·Standard) ↔ 「박스 안」(Playmaker Brasil) ↔ 「낮은 오른발 땅볼」(La Nación) — **4가지로 갈린다** |
+| 5 | **아체암퐁 × 촐리스** | 결승골 주책임은 **제임스**(3중 일치) | NBC 「촐리스에게 제쳐져 결승골로 이어짐」 ↔ football.london·Chronicle 「촐리스를 이겼다」 |
+
+### 막힌 URL (다음 회차 브라우저 재시도)
+
+`readchelsea.com` 평점(403) · `observador.pt`(402 페이월) · `mundiario.com`(403) ·
+🇪🇸 marca·as·elpais·relevo·mundodeportivo·sport(**WebSearch 도메인 차단** — 알론소 스페인어 회견 원문 미확보) ·
+`elobservador.com.uy` 「마르티네스의 중대한 실책」(미시도 — 동점골 책임 규명에 필요) · `portaldemocrata.com.br`(403)
+
+### D+2 회차 DB 반영
+
+| 테이블 | 내용 |
+|---|---|
+| `observations` | **#519~526 신규 8건** — ⑲ 백4↔백5 하이브리드(구조 정정) · ⑳ 아체암퐁 「얕음」 원인 정정 · ㉑ 2실점 구조 · ㉒ ⛔아르테타 인용 시즌 혼입 · ㉓ 0건 판정 2축 전복 · ㉔ 주앙 페드루 st_advanced 지지 · ㉕ 압박 높이 가변은 설계(obs#469 감독 근거) · ㉖ 선발·교체 배경 |
+| `player_duties` | **10행 addendum**(덧붙임, 덮어쓰기 없음) — 아체암퐁 32 · 하토 62 · 주앙 페드루 67 · 네투 65 · 파머 66 · 로저스 91 · 라크루아 122 · 제임스 68 · 마르티네스 193 · 에스테방 69 |
+| `reports/transcripts/` | 신규 7편 — `URlf-04YYLk` · `fvy4fhYn8Bc` · `6RuIVhy2X2M` · `pS8z69CMjCQ` · `lqUvVPp4A1w`(알론소 회견) · `ipGsi40qJKM`(아르테타 회견) · `XJsTW81j9M8`(아르테타 경기 전 회견) |
+
+⛔ **당일 절·실측·`match_game_setups`·`prescriptions`는 고치지 않았다.** 이 회차는 **해석과 서사만** 갱신한다 —
+단일 경기이고 커널 Δ 산출을 하지 않았으므로 처방 변경 근거가 아니다(§4 노이즈 규칙).
+
+### D+3(09-09)로 넘기는 것
+
+1. ⛔ **스페인어 주요 6개 매체 검색 차단**(marca·as·elpais·relevo·mundodeportivo·sport) — **브라우저 경로로 재시도**. 알론소 **스페인어 회견 원문** 미확보.
+2. 막힌 URL 재시도: `elobservador.com.uy`(「마르티네스의 중대한 실책」 — 동점골 책임 규명) · `readchelsea.com` 평점(403) · `observador.pt`(402) · `mundiario.com`(403).
+3. **파머·로저스의 공격 국면 분담** 서술 — 이 회차 0건. 무공 대칭 하강만 확인됐다.
+4. 알론소 「too early」 발언의 **대상 선수 확정**(ESPN은 카이세도로 특정하나 그는 명단 외).
+5. 「중앙 공격 / 와이드 수비」 부하 논점의 **독립 소스 1건** — 현재 근거 2건이 같은 분석 채널(풀럼전·아스날전)이다.
+6. 선제골 마무리 형태 4중 충돌(발리 / 박스 밖 첫 터치 / 박스 안 / 낮은 오른발) — 영상 확인 필요.
