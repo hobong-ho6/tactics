@@ -69745,6 +69745,18 @@
   },
   {
    "build_up_style": "Short Passing",
+   "confidence": "MEDIUM — 코드는 사용자 입력값(채팅). 변경 슬롯이 가르나초 한 자리인지 전술 화면으로 미확인 · 라인 높이 미확인.",
+   "defensive_approach": "Balanced",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "kind": "ingame:user-2026-09-08c",
+   "line_height": null,
+   "rationale": "사용자 테스트 전술 3 — id20(AZYMfMjy8otg)에서 **LM 가르나초만 wm_winger/Attack → wm_wideplm/Attack(정본)** 로 바꾼 단일 변수 A/B(사용자 진술 기준, 화면 미확인). 근거: 테스트 1·2에서 가르나초(비조작)의 게임 분포가 winger/Attack 커널 .34/.32 vs 정본 wideplm/Attack .74/.61로 2경기 연속 정본 우위(obs#537). 판별: ⑴ 가르나초 자기진영 비중·정본 커널 cos 변화 ⑵ 마첸(LB) 분포 변화 — 「옆 풀백이 와이드 위치를 정한다」(윙 혼잡 회피, docs/20 ⑨) 가설 ⑶ 재현성 기준선 .86~.91 대비 다른 슬롯 불변 확인. 캡처 폴더 reports/ingame/2026-09-08-avl-test3/.",
+   "season": "2026-27",
+   "tactic_code": "?ZWKtKhw6ere"
+  },
+  {
+   "build_up_style": "Short Passing",
    "confidence": "PROJECTED — 이적 미확정 포함(가르나초 MEDIUM-HIGH·에스투피냔 HIGH, 나머지 CONFIRMED/보유). 26/27 실측 축적 후 measured/optimal로 대체 예정. 만잠비·고메스·에스투피냔·가르나초 처방은 타클럽/대표팀 실측 기반이라 빌라 컨텍스트 재검증 필요.",
    "defensive_approach": "Balanced",
    "formation": "4-2-3-1 Wide",
