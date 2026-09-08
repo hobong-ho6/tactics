@@ -559,3 +559,329 @@ Into the Calderón 원문은 **같은 글 안에서 3회** 다른 메커니즘�
    D+1~D+2 내내 공란인 ①4장 교체 의도 ②C.로메로 백3 ③포메이션이 여기서 나올 수 있다.** 최우선.
 5. **슬로바키아어(한츠코)·덴마크어(율만)** — 여전히 미수행. 율만은 평점 3과 구체 서술(「너무 깊이 내려가 측면 위협을 불러들였다」)이
    확보돼 **우선순위 하위 사유가 소멸**했다. 덴마크어 검색 신규 편성 권장.
+
+---
+
+## D+3 추적 (2026-09-08)
+
+> **3일 창을 닫는 회차다.** D+1·D+2가 두 번 「0건」으로 닫았던 **전술 분석 유튜브가 해소됐다** —
+> 검색엔진이 아니라 **유튜브 사이트 내부 검색(업로드일 필터)**으로 직접 들어가자 2편이 나왔고, 둘 다
+> **D+1·D+2 게시**였다(즉 처음부터 존재했고 인덱싱만 늦었다). 결과적으로 **당일 판정 정정 3건**과
+> **리포트가 「서사 근거 0건」으로 닫은 축 1건의 해소**가 나왔다. 등재 obs: **#506~#516**,
+> `player_duties` **7행**(D+2가 「사용자 판단 필요」로 남긴 그리말도 항목 포함).
+
+### ⭐⭐ 1. 전술 분석 유튜브 2편 — D+3 최우선 과제 종결
+
+| 채널 | 제목 | 게시 | 회수 방식 |
+|---|---|---|---|
+| **Proyecto Hadi** (스페인어 전술 전문) | 「EL PLAN DE TERZIĆ QUE GOLEÓ A SIMEONE \| ANÁLISIS TÁCTICO ATHLETIC CLUB 3-0 ATLÉTICO DE MADRID」 | **2026-09-07**(D+2) | 자막 전사 · `reports/transcripts/NOTPLdq7Mn0.es.md`(618 cue) |
+| **Atlético Stats** (ATM 전담) | 「ATHLETIC 3-0 ATLETI: PALAZO EN SAN MAMÉS」 | **2026-09-06**(D+1) | 자막 전사 · `reports/transcripts/i_nG7i-vavk.es.md`(807 cue) |
+
+[youtube.com/watch?v=NOTPLdq7Mn0](https://www.youtube.com/watch?v=NOTPLdq7Mn0) ·
+[youtube.com/watch?v=i_nG7i-vavk](https://www.youtube.com/watch?v=i_nG7i-vavk)
+— **둘 다 직접 시청이 아니라 자막 전사 기준**이다. ⚠️ **auto-caption**: 고유명사 오인식이 심하다
+(「Terzić」→「Interstames·Tercichas」, 「Hjulmand」→「Yulman·Julman·Hulman」, 「Grimaldo」→「Alex」).
+화자 지칭 동일성은 문맥으로 확인했고, 전술 진술은 기존 텍스트 소스와 교차 검증했다.
+
+#### ⚠️⚠️ 당일 판정 정정 ① — obs#452의 **인과가 철회된다**(실측은 유지)
+
+당일·D+1은 「전반 PPDA 20.11의 수동성이 3실점을 불러왔다」로 읽었다. D+2는 여기에 교란 변수를 덧붙였을 뿐인데,
+**전술 분석 2편은 인과 자체를 부정한다.**
+
+> 「Athletic va está yendo a **apretar alto**, está yendo a orientar a un costado y **el Atlético consigue girarlo**」
+> (아틀레틱은 **높이 압박**하며 한쪽으로 몰아가려 했고, **아틀레티코는 그것을 돌려세웠다**)
+> 「son **desajustes en desajustes** que el Athletic pues va sufriendo en los primeros minutos」
+> (아틀레틱이 초반에 겪은 것은 **어긋남에 어긋남이 겹친 것**이다)
+
+즉 **초반에 압박한 쪽은 아틀레틱이었고, 그것을 깬 쪽이 아틀레티코였다.** 테르지치가 그 뒤 블록을 내렸다
+(「no va a presionar tan alto, sino en un **bloque medio, incluso un poco más bajo**」). 그리고 실점 장면에 대해:
+
+> 「los dos goles… **no tienen un trasfondo táctico tan grande**」 (두 골은… **그렇게 큰 전술적 배경이 없다**)
+> 「**No hay un rigor táctico en esta acción**」 (**이 장면에 전술적 엄밀함은 없다**)
+
+ATM 전담 채널의 전반 평가는 아예 반대 방향이다.
+> 「un primer tiempo… **incluso ilusionante**」 (**기대를 품게 하는** 전반) ·
+> 「**la primera parte es de irte 0-1**」 (전반은 **0-1로 앞서 나갈 만한** 내용이었다)
+
+⇒ **PPDA 20.11·xG 열세라는 실측은 유지한다.** 그러나 「수동성 → 3실점」이라는 **인과 주장은 철회**하고,
+PPDA 20.11을 **상당 부분 「상대가 하이프레스를 포기하고 내려앉아 상대 진영에 빼앗을 볼이 없었다」의 값**으로
+재해석한다. Deia의 「monólogo」·El Correo의 「Atlético romo en ataque」와도 이 쪽이 정합적이다. → **obs#506**.
+
+#### ⚠️ 당일 판정 정정 ② — **「C.로메로 투입 = 백3 전환」은 채택하지 않는다**
+
+리포트 §4는 Diario Río Negro **단일 출처**에 근거해 「윙어 자리에 센터백을 넣어 백3를 구성」으로 적었다.
+ATM 전담 분석은 이를 부정한다 — 최종 포진은 **4-4-2 유지 + 요렌테 전진**이다.
+
+> 「Hemos hecho muchos cambios, **hemos acabado más o menos en 442**… se ha puesto en **442 con Llorente y Julián arriba**」
+> (교체를 많이 했고 **대략 4-4-2로 끝냈다**… **요렌테와 훌리안을 위에 둔 4-4-2**로 세웠다)
+
+**⭐ 대신 훨씬 강한 사실이 나왔다 — 요렌테는 한 경기에 5개 포지션을 소화했다.**
+> 「**Llorente ha sido central, diestro, carrilero, ha sido delantero y ha sido extremo diestro**」
+> (**요렌테는 센터백이었고, 라이트백이었고, 윙백이었고, 최전방이었고, 우측 윙이었다**)
+
+테르지치가 산세트에 대해 말한 「4개 포지션에서 뛰었다」의 **ATM측 거울상**이다.
+⚠️ 화자가 좌우 배치를 스스로 정정하며 말해 **각 포지션의 구간(분)은 불확정** — 「5개 포지션」이라는 사실만 채택한다.
+⭐ 이 정정은 **obs#454(slots 4-4-2)를 강화하는 방향**이고, 「4-4-2 / 4-3-3 3중 충돌」은 4-4-2 쪽으로 기울되
+**감독 발언 0건이므로 미해소로 남긴다.** → **obs#508**.
+
+#### ⚠️ 당일 판정 정정 ③ — **2실점의 기점은 좌측 수비가 아니다**
+
+> 「entre gol y gol de **tiempo efectivo del balón en juego ha habido 14 segundos**, con una
+> **pérdida vergonzosa de Giuliano Simeone** mediante」
+> (골과 골 사이 **볼이 실제로 인플레이였던 시간은 14초**였고, 그 사이에 **줄리아노 시메오네의 수치스러운 볼 로스트**가 있었다)
+
+Into the Calderón의 「2-0까지 인플레이 43초」를 **구간 분해**한다(총 43초 = 재개~1실점 + 골-골 14초 — 모순 없이 포개진다).
+그리고 실점의 **기점**은 G.시메오네의 피탈이며, 좌측(그리말도/한츠코)은 **마무리 국면**이다 — 별개 층위로 읽는다.
+1실점 장면의 복귀 주행에 대한 평가도 obs#458·#493의 「poca tensión」 자인에 대한 **첫 외부 관찰 근거**다.
+> 「el **retorno defensivo** de esta jugada es **absolutamente anticompetitivo en primera división**… ese **trote de cochinero**」
+> (이 장면의 **수비 복귀**는 **1부 리그에서 절대적으로 비경쟁적**이다… 그 **느릿한 종종걸음**)
+> 「Tú **no puedes tener esa falta de activación, sobre todo después de encajar un gol**」
+> (**특히 실점한 직후에 그런 활성화 부족을 보일 수는 없다**)
+
+→ **obs#512**.
+
+#### ⭐⭐ obs#498(아틀레틱 백3) 독립 확인 — **최종 5-4-1이고, 목적이 명시된다**
+
+> 「**acaba de cerrando en 541**」 (**5-4-1로 닫으며 끝냈다**)
+> 「el hecho de tener **cinco jugadores en línea defensiva te facilita tener distancias más cortas en intervalos**
+> y sobre todo… cuando tienes que **bascular a un costado**」
+> (**수비 라인에 5명을 두면 간격 거리를 짧게 유지하기 쉬워지고**, 무엇보다 **한쪽으로 쏠려 이동해야 할 때** 그렇다)
+> 「cuando el Atlético genera estas superioridades o acumula mucha gente en un costado, **deja de haber superioridades**」
+> (아틀레티코가 이런 수적 우위를 만들거나 한쪽에 사람을 모을 때, **더는 수적 우위가 성립하지 않게 된다**)
+> 총평: 「una **partida de ajedrez que le gana Terzić a Simeone en lo táctico**」
+> (**전술에서 테르지치가 시메오네에게 이긴 체스 한 판**)
+
+Deia의 「센터백 3인」이 두 번째 독립 소스를 얻었고, **전환의 목적**(ATM의 측면 과부하 무력화)이 처음 서술됐다.
+⚠️ **전환 시각은 여전히 미명시** — 분 단위 구간 분할에는 쓸 수 없다. → **obs#507**.
+
+#### ⭐ obs#495 정밀화 — **우측 편중은 표류가 아니라 유일하게 작동한 진행 루트였다**
+
+> 「¿Cuál es la solución… que encuentra el Atlético? Pues el tema de las **superioridades en banda**…
+> **acumular mucho jugador cuando el Atlético juega en un costado**」
+> (아틀레티코가 찾아낸 해법은 **측면 수적 우위**… **한쪽에서 플레이할 때 많은 선수를 모으는 것**)
+> 「aquí tenéis **hasta tres futbolistas**… **Marcos Llorente saliendo de zona**」
+> (여기에 **선수가 셋까지** 있다… **요렌테가 존을 벗어나며**)
+> 「**Nico en la ayuda llega tarde**… no es ni mucho menos el más trabajador」
+> (**니코는 커버에 늦게 온다**… 결코 가장 성실한 선수가 아니다)
+
+ATM 전담 채널이 같은 것을 반대편에서 말한다.
+> 「el Atlético en balón se vio muy bien cuando **Kang-In Lee y Pablo Barrios se asociaban en ese sector derecho**,
+> que **hizo mucho más daño que el sector izquierdo**」
+> (**이강인과 바리오스가 우측 구역에서 연계할 때** 볼 소유가 아주 좋아 보였고, 그것이 **좌측보다 훨씬 큰 피해를 입혔다**)
+
+⇒ obs#495를 「비대칭이 병증」에서 **「비대칭이 곧 유일하게 작동한 진행 루트이며, 상대의 5-4-1이 그것을 봉쇄하자
+공격이 소멸했다」**로 정밀화한다. 실측 ay와 그대로 정합(요렌테 17.2 · G.시메오네 22.3 · 이강인 24.7 vs 루크만 80.4).
+→ **obs#509**.
+
+#### ⭐⭐ obs#459(최전방 장신 부재) — **스페인어권 1차 근거 확보, 단 가설이 재정의된다**
+
+리포트는 이 인과를 「**한국어권 유일**」로 닫았다. ATM 전담 분석이 독립적으로 같은 인과를 제기한다.
+
+> 「**¿para qué te sirve un gran centrador como Grimaldo si no hay un gran rematador?**」
+> (**뛰어난 헤더 마무리 선수가 없다면 그리말도 같은 뛰어난 크로서가 무슨 소용인가?**)
+
+크로스 20-3·빅찬스 0의 정확한 인과 진술이다. 다만 그들이 지목하는 결손은 「장신」이 아니라 **「진짜 9번」**이다.
+> 「**con un nueve de verdad, la figura del nueve**」 (**진짜 9번, 9번이라는 존재**)
+> 「con Baena arriba **no te da para ganar en estos campos y a estos rivales**」
+> (바에나를 위에 두면 **이런 원정 구장과 이런 상대를 이기기에는 부족하다**)
+> 「en el primer tiempo vimos a un **Baena inofensivo**」 (전반에 **무해한 바에나**를 봤다)
+
+⇒ 가설이 **3개**가 됐다. ⛔ **어느 것도 기각하지 않는다.**
+
+| 가설 | 근거 언어권 | 판별점 | 09-09 안필드에서 검증 가능? |
+|---|---|---|---|
+| ⓐ 최전방 **장신** 부재(쇠를로트) — obs#459 | 한국어 1 | 쇠를로트 복귀 시 크로스 전환율 회복 | ❌ **쇠를로트 근육 부상 결장 확정** → 09-13로 밀림 |
+| ⓑ **오프더볼 침투·연계 상대** 부재 — obs#496 | 영어 2 | 크로스 시도 감소 + 스루패스·배후 침투 증가 | △ 부분 |
+| ⓒ **진짜 9번(기준점형 최전방)** 부재 — obs#510 | **스페인어 1(신규)** | 알바레스 선발 시 박스 터치·빅찬스 회복 | ⭕ **알바레스 선발 예상 → ⓒ만 먼저 검증 가능** |
+
+#### ⚠️ obs#460·#494 강도 재배분 — **그리말도 문제의 귀책 축이 바뀐다**
+
+ATM 전담 분석은 그를 **경기 최악의 선수**로 지목하면서, 정작 **실점이 그쪽에서 나온 것은 부차적**이라 본다.
+
+> 「a nivel defensivo, bueno, que hayan llegado por ahí los goles… **puede ser casi anecdótico**,
+> pero **con balón ha sido duro. Duro, duro, duro. 16 pérdidas**」
+> (수비 측면에서 골이 그쪽으로 나온 것은… **거의 일화적일 수 있다**. 그러나 **볼을 가졌을 때가 혹독했다.
+> 혹독하고 혹독하고 혹독했다. 피탈 16회**)
+> 「muchas de ellas han sido **pases fáciles, pases que te generaban contras**」
+> (다수가 **쉬운 패스, 역습을 내주는 패스**였다)
+> 「ya no es el encaje, sino **las características del jugador**, que no sé si son para darle el carril…
+> o **para que reciba tan abierto**」
+> (이제 맞물림 문제가 아니라 **선수의 특성** 문제다. 그에게 그 레인을 주는 것이 맞는지… 아니면 **그렇게 넓게 받게 하는 것이** 맞는지)
+
+⇒ **방향은 유지, 귀책 축은 이동한다.** Into the Calderón은 **수비 위치 선정**을, Atlético Stats는 **온더볼 배급**을 지목한다.
+⛔ obs#460을 기각하지 않고 **두 축이 병존한다고 읽는다.** ⚠️ 「피탈 16회」는 이 채널 제시값이며 **우리 실측 대조 미수행**이다.
+D+2의 「스쿼드 유일 정통 LB」도 독립 확인됐다 — 「**¿cómo va a salir de suplente Grimaldo si no le has fichado un suplente?**」
+(**백업을 영입하지 않았는데 그를 어떻게 벤치로 내리나?**). → **obs#511**.
+
+#### ⭐ 이강인 39′ 경고 분기점 — **2개 독립 소스로 확정 + 교체 비용이 처음 드러났다**
+
+> 「tengo la sensación de que **esa amarilla le ha matado el partido** y que **cuando le han quitado…
+> no había absolutamente nada por dentro**」
+> (**그 경고가 그의 경기를 죽였다**는 느낌이고, **그를 빼자… 안쪽에는 절대적으로 아무것도 없었다**)
+
+D+2의 Into the Calderón 「that marked a before-and-after for him」과 독립 일치한다. 그리고 **59′ 교체의 실질 비용**
+(중앙 소멸)이 처음 서술됐다 — 감독 본인 설명은 여전히 0건이다.
+
+**⭐ 「루크만 3분 골대」는 확정 기각한다.** 리포트 §9는 단일 소스라 「채택 보류」로 뒀는데, 이 회차에 **총 5소스**가
+모두 이강인으로 귀속한다: Into the Calderón(「Turned Yuri Berchiche inside out」) · Atlético Stats(「**recorte en seco
+a Yuri Berchiche**, la cruza」) · Proyecto Hadi(「ese palo de **Kang-In Lee** es el minuto 2」) · Yahoo/AFP · LaLiga 공식 요약.
+⚠️ 시각만 소스별 2′/3′로 갈린다. → **obs#513**.
+
+#### ⭐⭐ 「원정 공격 노선」 — 리포트가 **「서사 근거 0건」으로 닫은 축이 해소됐다**
+
+§9의 한계는 「PPDA 15.13이 노선 변경인지 점유 부산물인지 판별 불가 — **서사 근거 0건**」이었다.
+ATM 전담 분석은 이를 **의도된 새 원정 플랜**으로 규정하고, 시메오네가 **이 패배를 이유로 철회할 것을 최대 위험**으로 꼽는다.
+
+> 「el año pasado nos cambió **un plan de juego fuera de casa** que nos habría dado mucho y
+> **que estábamos teniendo hoy, al menos durante toda la primera parte**」
+> (지난해 우리에게 많은 것을 줬을 **원정 경기 플랜**이 바뀌었는데, **오늘 우리는 그것을 갖고 있었다 — 최소한 전반 내내**)
+> 「**esta sería la gran derrota del Atlético de Madrid hoy. Que el Cholo dijera: oye, hasta aquí con esta propuesta**」
+> (**오늘 아틀레티코의 진짜 패배는 이것일 것이다. 촐로가 「이 노선은 여기까지」라고 말하는 것**)
+> 「**creo que es la propuesta y creo que no podemos echarnos atrás por haber perdido hoy**」
+> (**이것이 옳은 노선이고 오늘 졌다고 물러설 수 없다고 본다**)
+
+⚠️ **팬 매체의 해석이지 감독·구단 진술이 아니다**(신뢰도 중간). 다만 0건이던 축의 **최초 근거**이고 판별점이 명확해졌다 —
+09-09·09-13에서 PPDA 15 대역 + 60%대 점유가 반복되면 **노선**, 8 대역으로 복귀하면 **부산물 + 「촐로의 철회」**다.
+맥락 수치도 함께 나왔다: ATM은 현재 **리그에서 네 번째로 많이 실점한 팀**이다. → **obs#514**.
+
+### ⭐ 2. El Correo — **3회 실패 끝에 오리진 진입 성공, 그러나 본문은 페이월 확정**
+
+`elcorreo.com/athletic` 오리진 직접 진입으로 이 경기 관련 4개 URL을 확정했다.
+- 크로니카: **Jon Agiriano**, 「San Mamés disfruta con un nuevo Athletic」, **2026-09-05 21:05** —
+  [링크](https://www.elcorreo.com/athletic/athletic-atletico-jornada-4-liga-ea-sports-26-27-20260905113852-nt.html)
+- 1x1 평점: **Robert Basic**, 2026-09-05 21:00 · 라이브 블로그: Fernando Romero · 영상 요약
+
+⛔ **본문은 리드 1문장까지만 노출된다** — 쿠키 동의 벽 + 프리미엄 페이월. 비필수 쿠키는 정책상 수락하지 않았다.
+D+2의 「페이월 추정」이 **확정**됐다. 얻은 것은 부제의 판정 한 줄뿐이고, 이것이 오히려 obs#506과 정합한다.
+> 「El Athletic de Terzic supera con holgura a un **Atlético romo en ataque** al que fulminó con dos latigazos seguidos」
+> (테르지치의 아틀레틱이 **공격에서 무딘 아틀레티코**를 넉넉히 넘어섰고, 연속된 두 방으로 그를 끝냈다)
+
+### 3. EITB 바스크어 — **구조적 미도달로 확정한다**
+
+D+2가 남긴 「산세트 바스크어 영상 자막 회수」를 재시도했고, **스페인어 쌍둥이 기사까지 찾아냈다**
+(로버트 나바로, 2026-09-05 19:18 — [링크](https://kirolakeitb.eus/es/futbol/equipos/athletic-club/2026/09/05/robert-navarro-declaraciones-victoria-athletic-atletico-madrid-san-mames-laliga/)).
+⛔ **바스크어판·스페인어판 양쪽 모두 영상 임베드 + 헤드라인 구조이며 본문 텍스트가 존재하지 않는다.**
+EITB 자체 플레이어라 `yt_transcript.py` 적용 불가. ⇒ **구조적 미도달로 확정하고 다음 라운드에서 재시도하지 않는다.**
+
+순증은 선수 발언 2건뿐이다.
+> 로버트 나바로(2실점 득점자): 「**Hemos arrancado la 2ª parte de forma espectacular**」
+> (**우리는 후반을 압도적으로 출발했다**)
+> 오이한 산세트(헤드라인, 바스크어): 「**Partida ikaragarria egin dugu**」 (**우리는 엄청난 경기를 했다**)
+
+⛔ **양 팀 선수·감독 누구도 하프타임에 무엇을 바꿨는지 3일 내내 말하지 않았다** — Deia의 「바꿀 것이 없었다」가 종결 답이다.
+
+### 4. 신규 언어권 2개 — 슬로바키아어 **저밀도**, 덴마크어 **0건**
+
+- **슬로바키아어(한츠코)** — ⭐ 신규 수행. [teraz.sk](https://www.teraz.sk/sport/atletico-madrid-s-hanckom-prehralo-v-bil/990151-clanok.html)(2026-09-05 18:58) ·
+  dennikn.sk 확보. ⛔ **둘 다 통신사 단문이고 전술 서술 0건**이다.
+  > 「Slovenský obranca Dávid Hancko **odohral v drese hostí celý duel**」
+  > (슬로바키아 수비수 다비드 한츠코는 **원정 유니폼으로 경기 전체를 소화했다**)
+
+  이것이 전부다. ⇒ **슬로바키아어권은 전술 밀도가 없다 — 다음 라운드 우선순위 최하위로 내린다.**
+  부수 사실 2건: 관중 **48,425** · 주심 **José Luis Munuera Montero**.
+- **덴마크어(율만/Hjulmand)** — ⭐ 신규 수행, **덴마크어 매체 0건**. 대신 인도네시아어(gilabola.com,
+  「Hjulmand Tak Berdaya」= 율만은 무력했다)가 잡혔으나 전술 밀도 없음. D+2가 「우선순위 하위 사유 소멸」로
+  권고한 축인데, **실행 결과는 0건**이다.
+- 대신 **율만 평가는 전술 영상 쪽에서 채워졌다** — 평점 3(Into the Calderón)과 「전반 압도적」(Atlético Stats)의
+  충돌이 **전·후반 분리로 해소된다.**
+  > 「Hjulmand está muy bien en fase defensiva… **las vigilancias defensivas eran muy buenas, la activación tras
+  > pérdida es muy buena. Eso te permite vivir más en campo contrario**」
+  > (수비 국면에서 아주 좋았다… **수비 감시가 아주 좋았고 피탈 직후 활성화가 아주 좋다. 그것이 상대 진영에서 더 살 수 있게 해준다**)
+  > 「en la segunda parte Hjulmand pues **ha desaparecido**」 (후반에는 **사라졌다**)
+
+### 5. C.로메로 데뷔 — 31분의 상반된 두 얼굴
+
+⭐ **이 경기가 26/27 체제 데뷔전이다**(Libertad Digital: 「el 'Cuti' Romero, que debutaba」).
+> 「**entrar como un toro a ese corner, dos pases por dentro filtrados, buenísimos**」
+> (**코너에 황소처럼 들어갔고, 안쪽으로 찔러 넣은 아주 좋은 패스 2회**) — 훌리안에게 준 첫 스루패스는 「espectacular」
+> 「luego me ha dado sensación como de **muy pachorresco** todo el rato… **se quedaba bastante con el balón
+> cuando podía soltarlo antes**」
+> (그 뒤로는 계속 **아주 늘어지는** 느낌… **더 빨리 내줄 수 있을 때 볼을 상당히 오래 붙들었다**)
+> 「pensaba que Cristian Romero a estas iba **como un animal**, pensaba que era **un poquito más impetuoso**」
+> (그가 **야수처럼** 달려들 줄 알았고 **좀 더 격렬할** 줄 알았다)
+
+⚠️ **3실점 귀책이 3소스에서 서로 다른 인물을 지목한다** — 카르도소의 불완전 클리어(Deia) ·
+그리말도의 느린 반응(Into the Calderón) · **로메로의 템포 지연**(Atlético Stats, 「temporiza mucho」).
+⇒ **다중 원인으로 읽고 단일 귀책하지 않는다.**
+
+### 6. 09-09 안필드(리버풀·UCL)로의 인계 — obs#460의 판별점이 그대로 잡혔다
+
+**2개 독립 소스가 동일한 처방에 수렴한다: 그리말도를 빼고 한츠코를 좌측으로, 로메로를 센터백으로, 요렌테를 전진.**
+
+- El Gol Digital 2026-09-07 예상 XI: 「Oblak; **Llorente, Romero, Pubill, Hancko**; Lookman, Hjulmand, Barrios,
+  Giuliano; Baena, Julián Álvarez」 — **4-4-2 유지**, 로메로는 「**central**(센터백), 라이트백이 아니다」로 명시.
+  [링크](https://www.elgoldigital.com/futbol/atletico-de-madrid/atletico-liverpool-anfield-once-cuti-julian-2026)
+- Atlético Stats(경기 직후 처방): 「me está pidiendo ya **adelantar a Llorente y sacar al Cuti Romero detrás**」
+  (이미 **요렌테를 전진시키고 쿠티 로메로를 뒤에 세우라**고 요구하고 있다)
+- 확정 결장: **쇠를로트(근육 부상)** · **아르나우 오르티스(유럽대회 출전 정지)**. 조나단 데이비드는 경부 문제에서 회복.
+
+⚠️ **소스 충돌 존재**: 다른 예상은 그리말도 선발 유지 + 로메로 미포함으로 낸다
+(「Oblak; Llorente, Pubill, Hancko, Grimaldo; Giuliano, Barrios, Hjulmand; Lookman, Kang-In Lee, Baena」).
+좌측 처방도 「바에나 좌측」 대 「루크만 좌측」으로 갈린다. ⛔ **결과 판정에 쓰지 않는다** — 09-09 이후 실측으로 닫는다. → **obs#515**.
+
+### 7. ⛔ 3일 창을 닫으며 — 끝내 못 채운 것과 그 사유
+
+**감독 발언으로 채우지 못한 3항목을 「미확인 확정」으로 종결한다.**
+
+| 항목 | 3일 창 결과 |
+|---|---|
+| ① 58~59′ 4장 동시 교체의 구조적 의도 | ⛔ **미확인 확정.** 회견에서 질문 자체가 없었고(obs#493), D+3 안필드 프리뷰 회견은 **창 마감까지 미발행** |
+| ② C.로메로 투입의 구조적 이유 | ⛔ **미확인 확정.** 다만 매체 해석은 「백3」(Río Negro)와 「4-4-2 유지+요렌테 전진」(Atlético Stats)으로 갈리고 **후자를 채택**(obs#508) |
+| ③ 포메이션에 대한 감독 본인의 규정 | ⛔ **미확인 확정.** 매체는 4-4-2로 수렴하지만 감독 발언 0건 |
+
+⇒ **이 세 항목은 감독 축이 아니라 전술 채널·실측 축으로만 접근 가능하다**는 것이 3일 창의 결론이다.
+
+**미도달 소스와 사유(확정 — 다음 라운드가 반복하지 않게)**
+
+| 소스 | 시도 | 사유 | 다음 라운드 |
+|---|---|---|---|
+| theobjective.com | 브라우저 오리진 직접 | **Cloudflare 봇 검증 인터스티셜.** 정책상 우회하지 않음 | ⛔ 재시도 금지 |
+| atleticodemadrid.com(공식) | 브라우저 오리진 직접 | **동일한 봇 검증** | ⛔ 재시도 금지 |
+| liverpool.com | WebFetch | **tollbit 유료 게이트웨이로 302** | ⛔ 재시도 금지 |
+| **El Correo** | ⭐ 오리진 진입 **성공** | 본문은 쿠키 벽 + **프리미엄 페이월 확정** | ⛔ 본문은 포기, URL·저자·일시는 확보됨 |
+| **EITB 바스크어** | ⭐ 스페인어 쌍둥이까지 추적 | **영상 임베드 + 헤드라인만, 본문 텍스트 부재**(자체 플레이어) | ⛔ **구조적 미도달 확정** |
+| 슬로바키아어(한츠코) | ⭐ 신규 2매체 | 통신사 단문, **전술 서술 0건** | 우선순위 최하위 |
+| 덴마크어(율만) | ⭐ 신규 수행 | **0건** | 우선순위 최하위 |
+| 09-08 안필드 프리뷰 회견 | 스페인어 3회 + 클럽 사이트 | **창 마감 시점 미발행/미인덱싱** | ⭐ **다음 라운드 첫 항목** |
+| **전술 분석 유튜브** | ⭐⭐ 유튜브 **사이트 내부 검색** | **해소 — 2편 확보** | — |
+
+⭐⭐ **방법론 교훈(다음 라운드 행동 규칙)**: 지연 발행 전술 분석은 **검색엔진 질의를 신뢰하지 말 것.**
+D+1·D+2에 스페인어·영어로 4회 질의해 전부 0건이었으나, 두 영상은 **각각 D+1·D+2에 이미 게시돼 있었다.**
+⇒ **D+2~D+3에는 유튜브 사이트 내부 검색(업로드일 필터)으로 직접 스윕한다.** → **obs#516**.
+
+### 8. DB 반영
+
+- `observations` **11행 추가(#506~#516)** — append만. 기존 행은 **하나도 덮어쓰지 않았다**(불변규칙 2).
+- `player_duties` **7행 추가(id 202~208)** — ⭐ **D+2가 「사용자 판단 필요」로 남긴 그리말도 항목을 덮어쓰기 없이 해소했다.**
+  `UNIQUE(season, player_id, position)` 제약은 **`position` 값을 경기 한정 라벨로 두는 방식**으로 우회했고,
+  이는 이미 이 저장소에 있는 선례(id=197 히메네스 「미확정(교체 20분)」)와 동일한 패턴이다.
+  전원 `sample_scope='specific_match'` · `observed_from/to=2026-09-05`.
+
+| id | 선수 | position 라벨 | 순증의 핵 |
+|---|---|---|---|
+| 202 | 그리말도(167) | LB(2026-09-05 실측) | R1 자리표시(⛔ 관찰 근거 0)를 **실제 역할 서술로 대체 없이 승계**. 귀책 축 2개 병존 |
+| 203 | 요렌테(159) | RB→다중(CB·RB·윙백·FW·RW) | **한 경기 5개 포지션** |
+| 204 | C.로메로(174) | CB(데뷔·59′ 투입) | 데뷔 31분. 온더볼 즉효 / 대인 적극성 기대 미달 |
+| 205 | 이강인(162) | ST(명목)→우측 인사이드(실질) | R1 행과 **좌우가 반대**. 4개 언어권 수렴 |
+| 206 | 루크만(158) | ST(명목)→좌측 윙(고립) | R1 「단독 9번」과 **역할 축 자체가 다름** |
+| 207 | G.시메오네(161) | RM(선발·우측) | R1 행과 **좌우·출전 형태 모두 다름**. 2실점 기점 |
+| 208 | 율만(163) | CDM(선발·전반 호평/후반 소멸) | 평점 충돌을 **전·후반 분리로 해소** |
+
+⚠️ **DB 쓰기 중 id 충돌 1회**: `observations` 최초 삽입이 **동시 실행 중인 다른 스케줄 작업(AVL 축)의
+#500~#505 삽입과 충돌**해 실패했다(트랜잭션 전체 롤백). 안전 기준으로 재번호해 **#506~#516**으로 재삽입했고,
+먼저 들어간 `player_duties` 7행의 obs 상호참조도 함께 보정했다. **AVL 행은 건드리지 않았다.**
+⇒ ⚠️ **다음 라운드 주의**: `observations.id`를 하드코딩할 때 동시 작업과 충돌할 수 있다.
+
+### 9. 다음 라운드(09-09 안필드 이후) 인계
+
+1. ⭐ **09-08/09-09 시메오네 안필드 회견** — 3일 창 마감까지 미발행. **①4장 교체 의도 ②로메로 ③포메이션**이
+   여기서 나올 마지막 창구다.
+2. ⭐ **가설 ⓒ 우선 검증** — 알바레스 선발 예상이므로 **박스 터치·빅찬스가 회복되는가**. ⓐ(장신)는 쇠를로트
+   결장 확정으로 **09-13 소시에다드로 밀렸다.**
+3. ⭐ **obs#514 판별** — PPDA 15 대역 + 60%대 점유가 안필드에서 반복되는가(노선) 8 대역인가(부산물·철회).
+4. ⭐ **obs#460/#511 판별** — 그리말도 선발 제외 + 한츠코 좌측이 실제로 나오는가. 나오면 좌측 결손 진단이
+   구단 판단으로 확인된다. 나오지 않으면 「대체 옵션 없음」이 진단보다 강했다는 뜻이다.
+5. **아틀레틱 5-4-1 전환 시각** — 2소스 모두 분(分)을 명시하지 않았다. WhoScored 이벤트 타임라인으로
+   평균 위치 변화 시점을 역산하는 방법이 남아 있다.
+6. ⛔ **재시도하지 않을 소스**: theobjective · atleticodemadrid.com · liverpool.com · El Correo 본문 ·
+   EITB 본문 · 슬로바키아어 · 덴마크어(위 7절 표).
