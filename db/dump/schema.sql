@@ -621,3 +621,35 @@ CREATE TABLE ingame_captures(
   cosine REAL,
   note TEXT, source TEXT NOT NULL, confidence TEXT NOT NULL
 );
+CREATE VIEW v_ingame_capture_norm AS
+WITH c AS (
+  SELECT id, tactic_code, player_id, game_version, ref_kind, cosine, note, cells,
+         (note LIKE '%조작 오염%') AS controlled,
+         -- 자기진영 = 25칸 중 16~25번째(행3·행4) 가중치 합 / 전체
+         (SELECT SUM(CAST(value AS REAL)) FROM (
+            SELECT value, row_number() OVER () rn FROM json_each('[' || cells || ']')) WHERE rn > 15)
+         / (SELECT SUM(CAST(value AS REAL)) FROM json_each('[' || cells || ']')) * 100.0 AS own_pct
+  FROM ingame_captures),
+m AS (
+  SELECT tactic_code, AVG(own_pct) AS team_mean_own, COUNT(*) AS n_players
+  FROM c WHERE controlled = 0 AND ref_kind NOT LIKE 'kernel:gk_%' GROUP BY tactic_code)
+SELECT c.id, c.tactic_code, c.player_id, c.game_version, c.ref_kind, c.cosine, c.controlled,
+       ROUND(c.own_pct, 1) AS own_pct, ROUND(m.team_mean_own, 1) AS team_mean_own,
+       ROUND(c.own_pct - m.team_mean_own, 1) AS own_delta, m.n_players
+FROM c JOIN m ON m.tactic_code = c.tactic_code
+/* v_ingame_capture_norm(id,tactic_code,player_id,game_version,ref_kind,cosine,controlled,own_pct,team_mean_own,own_delta,n_players) */;
+CREATE VIEW v_kernel_fidelity AS
+SELECT game_version,
+       substr(ref_kind, 8, instr(ref_kind, '/') - 8)                          AS role_id,
+       substr(ref_kind, instr(ref_kind, '/') + 1,
+              instr(ref_kind, '@') - instr(ref_kind, '/') - 1)                AS focus,
+       COUNT(*) AS n, COUNT(DISTINCT tactic_code) AS n_matches, COUNT(DISTINCT player_id) AS n_players,
+       ROUND(AVG(cosine), 2) AS cos_avg, ROUND(MIN(cosine), 2) AS cos_min, ROUND(MAX(cosine), 2) AS cos_max,
+       CASE WHEN COUNT(*) >= 3 AND AVG(cosine) >= 0.6 THEN 'HIGH'
+            WHEN COUNT(*) >= 3 AND AVG(cosine) >= 0.45 THEN 'MID'
+            WHEN COUNT(*) >= 3 THEN 'LOW'
+            ELSE 'n<3' END AS fidelity
+FROM ingame_captures
+WHERE ref_kind LIKE 'kernel:%' AND note NOT LIKE '%조작 오염%'
+GROUP BY game_version, role_id, focus
+/* v_kernel_fidelity(game_version,role_id,focus,n,n_matches,n_players,cos_avg,cos_min,cos_max,fidelity) */;

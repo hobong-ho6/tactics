@@ -144,6 +144,9 @@ def export_all(db_path=None, window="2026-summer"):
                                ORDER BY season, kind""", (rid,))
         # 재현 불가 항목(reproduction_limits, migration 027) — 공통(regime_id NULL) + 이 체제. 화면은
         # 설정 시트 옆에 「재현 불가 N건」으로 센다 — 설정값을 읽을 때 기대치를 맞추기 위해서다(점검 7번).
+        # 인게임 커널 신뢰도(v_kernel_fidelity, migration 029) — 처방 화면이 역할/포커스 옆에 「게임검증 cos·n」을 붙인다.
+        fidelity = _rows(con, """SELECT game_version, role_id, focus, n, n_matches, n_players, cos_avg, cos_min, cos_max, fidelity
+                                 FROM v_kernel_fidelity""")
         limits = _rows(con, """SELECT id, game_version, regime_id, axis, real_feature, limitation,
                                       workaround, source, confidence, added
                                FROM reproduction_limits WHERE regime_id IS NULL OR regime_id=?
@@ -335,7 +338,7 @@ def export_all(db_path=None, window="2026-summer"):
             "match_reports": match_reports,
             "evaluations": evals, "season_stats": season_stats, "fbref": fbref,
             "fotmob_season": fm_season,
-            "setups": setups, "limits": limits, "profile": profile,
+            "setups": setups, "limits": limits, "kernel_fidelity": fidelity, "profile": profile,
             "transfer": {"targets": targets, "outgoing": outgoing, "ledger": ledger, "summary": summary}}))
 
     con.close()
