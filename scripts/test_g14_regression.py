@@ -1,21 +1,24 @@
 #!/usr/bin/env python3
-"""G14 후보 회귀 테스트 — 결함 3종을 **합성 주입**해 검사가 실제로 잡는지 본다.
+"""G14 「원장 정정 규약」 회귀 테스트 — 결함 3종을 **합성 주입**해 검사가 실제로 잡는지 본다.
 
 scripts/test_g13_regression.py와 같은 원칙이다: 검사식을 복사하지 않고
-scripts/g14_prototype.py의 g14_checks를 **import해서 공유**한다.
+scripts/gates.py의 g14_checks를 **import해서 공유**한다.
 복사하면 게이트를 고쳤을 때 테스트가 낡은 식을 검사한다.
+
+⭐ 2026-09-08 게이트 편입 완료(obs#518) — import 경로가 g14_prototype에서 scripts.gates로 바뀌었다.
 
 ⚠️ 원본 DB는 건드리지 않는다 — HEAD dump로 메모리 DB 2개(baseline·live)를 만들어
    live 쪽에만 결함을 주입한다. **읽기 전용 테스트다.**
 
-사용: .venv/bin/python scripts/test_g14_regression.py
+사용: python3 scripts/test_g14_regression.py
+종료 코드: 0 = 전항 통과, 1 = 실패.
 """
 import sqlite3
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent))
-from g14_prototype import baseline, g14_checks
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from scripts.gates import g14_baseline as baseline, g14_checks   # noqa: E402
 
 FAIL = []
 
@@ -78,6 +81,29 @@ def main():
     res = g14_checks(live, base)
     del os.environ["G14_ALLOW_REWRITE"]
     check("⑴ 명시 허용 시 통과", not [r for r in res["append_rewrite"] if r[1] == 1])
+    live.close(); base.close()
+
+    # ── 4b. ⑴ player_duties도 보호 대상이다(observations 전용이 아니다) ──
+    live, base = fresh()
+    rid = live.execute("SELECT MIN(id) FROM player_duties WHERE duties IS NOT NULL").fetchone()[0]
+    live.execute("UPDATE player_duties SET duties='덮어쓴 값' WHERE id=?", (rid,))
+    res = g14_checks(live, base)
+    check("⑴ player_duties 재작성 적발",
+          any(r[0] == "player_duties" and r[1] == rid for r in res["append_rewrite"]),
+          f"append_rewrite={res['append_rewrite'][:2]}")
+    live.close(); base.close()
+
+    # ── 4c. ⑴ NULL → 값은 결손 채움이라 통과해야 한다 ────────────────────
+    #    obs#132(결손을 0으로 채우지 말 것)와 짝이다 — 뒤늦게 근거를 채우는 것은 정상 작업이다.
+    live, base = fresh()
+    row = live.execute("SELECT MIN(id) FROM observations WHERE evidence IS NULL").fetchone()[0]
+    if row is not None:
+        live.execute("UPDATE observations SET evidence='뒤늦게 채운 근거' WHERE id=?", (row,))
+        res = g14_checks(live, base)
+        check("⑴ NULL→값 결손 채움은 통과(오탐 아님)",
+              not [r for r in res["append_rewrite"] if r[1] == row])
+    else:
+        print("  ⏭  ⑴ NULL→값: evidence가 NULL인 행이 없어 건너뜀")
     live.close(); base.close()
 
     # ── 5. ⑵ 한글 명사구 인접 반복 ──────────────────────────────────────

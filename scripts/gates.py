@@ -25,14 +25,30 @@
   G13. 조용한 이중화 — 동일인 2-id / 이중 기록 / match 링크 결손 / team_code↔대회 성격 불일치
        (2026-09-01 신설. **FK가 성립해서 G6가 원리적으로 못 잡는 부류**만 모았다 — obs#374.
         검사식 정본은 g13_checks()이고, 회귀 테스트 scripts/test_g13_regression.py가 이를 공유한다.)
+  G14. 원장 정정 규약 — 불변규칙 2(추가만·재작성 금지)를 **행 단위로 강제**한다. 3항:
+       ⑴ 원장재작성   보호 테이블의 기존 텍스트 필드가 **prefix를 보존하지 않고** 바뀌었다(또는 행 삭제).
+       ⑵ 구중복       한 필드 안에서 한글 명사구가 인접 반복됐다(편집 사고의 지문).
+       ⑶ claim↔evidence모순  같은 obs 행의 claim/evidence가 공유 명사구 뒤에서 극성이 반대다.
+       (2026-09-08 신설. **G1~G13 전항 통과 상태에서 obs#503이 제자리 덮어써진 사고**가 계기다 — obs#517.
+        기존 게이트는 전부 구조·수치 층이고 「행 내부 자연어」·「행의 편집 이력」은 사각지대였다.
+        ⭐ 불변식은 「변경 금지」가 아니라 **「prefix 보존(덧붙임만)」**이다 — 정당한 덧붙임을 오탐하지 않는다.
+        ⑵⑶은 **델타 검사**다: HEAD 이후 새로 생기거나 바뀐 obs 행만 본다. 보존해야 하는 과거 결함
+        (obs#503)이 영구 실패를 만들지 않게 한다. 검사식 정본은 g14_checks(),
+        회귀 테스트 scripts/test_g14_regression.py가 공유한다.
+        ⚠️ 정당한 재작성이 필요하면 `G14_ALLOW_REWRITE=observations:503,...`로 행을 지정해 통과시킨다.)
 
 사용: python3 scripts/gates.py                      (전체)
       python3 scripts/test_g13_regression.py        (G13 회귀 — 결함 합성 주입)
+      python3 scripts/test_g14_regression.py        (G14 회귀 — 결함 합성 주입)
+      python3 scripts/gates.py --g14-backtest 30    (G14 ⑴ 역검증: 최근 N커밋)
       from scripts.gates import run                 (프로그램 내 호출)
 """
-import sqlite3
-import sys
+import difflib
+import os
 import re
+import sqlite3
+import subprocess
+import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -63,6 +79,163 @@ ANCHORS = [
      85, "WM", "wm_widemid", "Build-Up", 0.833),
     ("하지무사 RM(상수)", None, HADJ_MOUSSA, 85, "WM", "wm_winger", "Attack", 0.821),
 ]
+
+
+G14_ROOT = Path(__file__).resolve().parent.parent
+
+# 테이블 → prefix 보존을 요구하는 텍스트 필드.
+#
+# ⛔ 대상을 좁힌 근거(git 히스토리 실측, 2026-09-08) — 넓히면 정상 작업이 막힌다:
+#   observations      재작성 8 / 커밋 160        → **강한 규약. 대상.**
+#   player_duties     덧붙임 375 · 재작성 207(대부분 v1 i18n·스키마 이관) → **대상(전방 검사만).**
+#   transfer_targets  69커밋 중 66이 편집(등급 갱신이 정상 작업)         → 대상 아님.
+#   prescriptions / match_reports  fit 재산출·draft→complete가 정상       → 대상 아님.
+G14_PROTECTED = {
+    "observations": ["claim", "evidence", "source", "confidence"],
+    "player_duties": ["duties", "execution", "adherence", "game_role_implication",
+                      "source", "confidence", "sample_note"],
+}
+
+# ⑵⑶ 자연어 검사는 observations에만 적용한다(claim/evidence 쌍 구조가 있는 유일한 테이블).
+G14_NEG = re.compile(r"(없다|없었다|없음|아니다|불가|0건|0장|0회|부재)")
+G14_POS = re.compile(r"(있다|있었다|가용|가능|1장|1건|뿐이다|존재한다)")
+G14_HAN = re.compile(r"[가-힣]")
+
+
+def _g14_sh(cmd):
+    r = subprocess.run(cmd, shell=True, capture_output=True, text=True, cwd=G14_ROOT)
+    return r.stdout
+
+
+def g14_baseline(commit="HEAD"):
+    """`commit` 시점 dump를 메모리 DB로 적재한다 — 이것이 「직전 정본」이다.
+
+    ⭐ dump 텍스트를 직접 비교하지 않고 sqlite에 태워 필드로 비교한다.
+       .dump가 특수문자 행을 unistr(...)로 직렬화하므로 텍스트 대조는 형식 차이로 오탐이 난다.
+    """
+    schema = _g14_sh(f"git show {commit}:db/dump/schema.sql")
+    if not schema.strip():
+        return None
+    con = sqlite3.connect(":memory:")
+    con.executescript(schema)
+    for table in G14_PROTECTED:
+        data = _g14_sh(f"git show {commit}:db/dump/{table}.sql")
+        if data.strip():
+            con.executescript(data)
+    return con
+
+
+def g14_strip_noise(t):
+    """수사적 반복이 정당한 구역을 제거한다 — 이 필터가 ⑵의 오탐 0을 만든다.
+
+    「」 안은 verbatim 인용이라 「Duro, duro, duro」·「혹독하고 혹독하고」 같은 반복이 정상이다.
+    코드·URL·마크다운 표 문법도 반복 패턴을 정상적으로 갖는다.
+    """
+    t = re.sub(r"「[^」]*」", " ", t)
+    t = re.sub(r"`[^`]*`", " ", t)
+    t = re.sub(r"https?://\S+|\S+\.(?:com|eus|es|ng|io|md|uk)\S*", " ", t)
+    t = re.sub(r"[|\-]{3,}", " ", t)
+    return t
+
+
+def g14_dup_phrase(text):
+    """한글 명사구 인접 반복(X + 짧은 연결 + X)."""
+    out = []
+    for m in re.finditer(r"([가-힣][가-힣 ]{5,25}?)([가-힣]{0,2} ?)\1", g14_strip_noise(text)):
+        unit = m.group(1)
+        if len(unit.strip()) >= 6:
+            out.append(unit.strip())
+    return out
+
+
+def g14_clash(claim, evid, minblk=8, win=14):
+    """claim·evidence의 공유 명사구 뒤 극성이 반대인 지점."""
+    out = []
+    sm = difflib.SequenceMatcher(None, claim, evid, autojunk=False)
+    for i, j, n in sm.get_matching_blocks():
+        if n < minblk:
+            continue
+        blk = claim[i:i + n]
+        if len(G14_HAN.findall(blk)) < 4:
+            continue
+        ta, tb = claim[i + n:i + n + win], evid[j + n:j + n + win]
+        if (G14_NEG.search(ta) and G14_POS.search(tb)) or (G14_POS.search(ta) and G14_NEG.search(tb)):
+            out.append((blk.strip()[-24:], ta.strip(), tb.strip()))
+    return out
+
+
+def g14_checks(con, base):
+    """{키: 위반 리스트} — **읽기 전용**. base가 None이면 ⑴을 건너뛴다(첫 커밋 등)."""
+    out = {"append_rewrite": [], "dup_phrase": [], "claim_evid_clash": []}
+
+    # ⑴ prefix 비보존 재작성 + 행 삭제
+    allow = {s.strip() for s in os.environ.get("G14_ALLOW_REWRITE", "").split(",") if s.strip()}
+    if base is not None:
+        for table, fields in G14_PROTECTED.items():
+            cols = ", ".join(["id"] + fields)
+            try:
+                old = {r[0]: r[1:] for r in base.execute(f"SELECT {cols} FROM {table}")}
+                new = {r[0]: r[1:] for r in con.execute(f"SELECT {cols} FROM {table}")}
+            except sqlite3.Error:
+                continue
+            # ⚠️ 빈 baseline 가드 — 2026-09-08에 실제로 물린 함정이다.
+            #    구 커밋은 dump가 data/dump/에 있어 `git show HEAD:db/dump/...`가 빈 문자열을
+            #    돌려주고, 그러면 old={}가 되어 **모든 재작성이 조용히 통과**한다(거짓 ✅).
+            #    baseline이 비었는데 현재는 행이 있으면 「검사 불가」를 위반으로 올린다.
+            if not old and new:
+                out["append_rewrite"].append(
+                    (table, 0, "(baseline 적재 실패 — 검사 불가)", "", ""))
+                continue
+            for rid, ovals in old.items():
+                key = f"{table}:{rid}"
+                if key in allow:
+                    continue
+                if rid not in new:
+                    out["append_rewrite"].append((table, rid, "(행 삭제)", "", ""))
+                    continue
+                for fld, o, n in zip(fields, ovals, new[rid]):
+                    if o == n:
+                        continue
+                    if o is None:                     # NULL → 값: 결손 채움이므로 허용
+                        continue
+                    if n is not None and n.startswith(o):
+                        continue                      # 덧붙임(prefix 보존) → 정상
+                    out["append_rewrite"].append(
+                        (table, rid, fld, (o or "")[:60], (n or "")[:60]))
+
+    # ⑵⑶ observations 자연어 층 — ⭐ **델타 검사다**(전수 아님).
+    #    전수로 두면 obs#503처럼 「불변규칙 2 때문에 일부러 고치지 않기로 한 행」이 영구 실패를 만든다.
+    #    (obs#503의 중복·모순은 obs#517이 정정 기록으로 닫았고, 행 자체는 보존한다 — 재작성 금지.)
+    #    ⇒ **HEAD 이후 새로 생기거나 텍스트가 바뀐 행만** 본다. 결함을 「도입 시점」에 잡는 것이 목적이다.
+    try:
+        rows = con.execute("SELECT id, claim, evidence, source, confidence "
+                           "FROM observations").fetchall()
+    except sqlite3.Error:
+        rows = []
+    if base is not None:
+        try:
+            prev = {r[0]: r[1:] for r in base.execute(
+                "SELECT id, claim, evidence, source, confidence FROM observations")}
+        except sqlite3.Error:
+            prev = {}
+        rows = [r for r in rows if prev.get(r[0]) != tuple(r[1:])]
+    for rid, c, e, s, cf in rows:
+        for fld, txt in (("claim", c), ("evidence", e), ("source", s), ("confidence", cf)):
+            if not txt:
+                continue
+            for unit in g14_dup_phrase(txt):
+                out["dup_phrase"].append((rid, fld, unit))
+        if c and e:
+            for blk, ta, tb in g14_clash(c, e):
+                out["claim_evid_clash"].append((rid, blk, ta, tb))
+    return out
+
+
+G14_LABELS = {
+    "append_rewrite": "원장재작성",
+    "dup_phrase": "구중복",
+    "claim_evid_clash": "claim↔evidence모순",
+}
 
 
 def g13_checks(con):
@@ -559,6 +732,22 @@ def run(db_path=None, verbose=True):
     if not ok13:
         fails.append("G13")
 
+    # G14 — 「원장 정정 규약」. 검사식은 g14_checks()가 정본이다(회귀 테스트와 공유).
+    #   baseline은 HEAD의 db/dump다 — 이 게이트는 export→dump 前에 돌므로 「직전 커밋 정본」과 대조된다.
+    g14_base = g14_baseline("HEAD")
+    g14 = g14_checks(con, g14_base)
+    if g14_base is not None:
+        g14_base.close()
+    ok14 = not any(g14.values())
+    if verbose:
+        summary = " · ".join(f"{G14_LABELS[k]} {len(g14[k])}" for k in G14_LABELS)
+        detail = "" if ok14 else " ⛔ " + str({k: v[:3] for k, v in g14.items() if v})
+        print(f"G14 원장 정정 규약: {summary} {'✅' if ok14 else detail}")
+        if not ok14:
+            print("    ⚠️ 정정은 새 obs 행으로 한다(불변규칙 2). 정당한 재작성이면 "
+                  "G14_ALLOW_REWRITE=<table>:<id>,... 로 지정해 통과시킨다.")
+    if not ok14:
+        fails.append("G14")
 
     con.close()
     if verbose:
@@ -575,5 +764,29 @@ def kernel_js_uri():
     return (Path(__file__).resolve().parent.parent / "site" / "assets" / "kernel.js").as_uri()
 
 
+def g14_backtest(n):
+    """최근 N커밋에 대해 G14 ⑴을 역검증한다(각 커밋을 그 부모와 대조) — 오탐률 확인용."""
+    commits = _g14_sh(f"git log --format=%h -n {n}").split()
+    print(f"G14 역검증: 최근 {len(commits)}커밋 (⑴ 원장재작성만)\n")
+    flagged = 0
+    for c in commits:
+        cur, par = g14_baseline(c), g14_baseline(c + "^")
+        if cur is None or par is None:
+            continue
+        hits = g14_checks(cur, par)["append_rewrite"]
+        cur.close(); par.close()
+        if hits:
+            flagged += 1
+            subj = _g14_sh(f"git log -1 --format=%s {c}").strip()[:56]
+            print(f"  ❌ {c} 재작성 {len(hits):3d}  {subj}")
+            for t, rid, fld, _o, _n in hits[:3]:
+                print(f"        {t}#{rid}.{fld}")
+    print(f"\n적발 커밋 {flagged} / {len(commits)}")
+
+
 if __name__ == "__main__":
+    if "--g14-backtest" in sys.argv:
+        i = sys.argv.index("--g14-backtest")
+        g14_backtest(int(sys.argv[i + 1]) if len(sys.argv) > i + 1 else 30)
+        sys.exit(0)
     sys.exit(0 if run() else 1)

@@ -9,7 +9,7 @@
 SofaScore(브라우저 오리진 수집) ─┐
 sofifa / EA 피치노트 ────────────┤→  db/tactics.db  →  scripts/export.py  →  site/data/*.json  →  site/*.html
 transfer-watch(스킬) ────────────┘        ↑                (게이트 통과 필수)
-                                   scripts/gates.py = 정본성 보증 (G1~G13)
+                                   scripts/gates.py = 정본성 보증 (G1~G14)
 ```
 
 ## 레이어 (db/migrations/001-schema.sql이 스키마 정본)
@@ -34,13 +34,24 @@ G7 appearances 병합 앵커 · G8 공통 슬롯 후보 풀(중복·도달불가
 G9 프리뷰 최신성(no-store 서버 + JSON 캐시 우회) · G10 영상 레퍼런스(source 결손 0 + 기본 닫힘 UI) ·
 G11 현재 스쿼드 표시(확정 이탈·이적 후보·DEAD 숨김) ·
 G12 경기 리포트(필수 섹션·수집 선수 전원·원문·경기 분석 메뉴·MATCH ONLY 팀 설정/선발 11명 연결) ·
-**G13 조용한 이중화**(동일인 2-id · 이중 기록 · match 링크 결손 · team_code↔대회 성격 불일치).
+**G13 조용한 이중화**(동일인 2-id · 이중 기록 · match 링크 결손 · team_code↔대회 성격 불일치) ·
+**G14 원장 정정 규약**(원장 재작성·구 중복·claim↔evidence 모순).
 
 > ⭐ **G13은 2026-09-01 신설**(obs#374). **FK가 성립해서 G6가 원리적으로 못 잡는 부류**만 모았다 —
 > 넷 다 그날 손으로 세다 실물 결함을 발견해 게이트화한 것이고, 정리 전 백업 4종에서 전부 검출된다.
 > 특히 `team_code` 검사는 **코드 목록을 하드코딩하지 않고** 「한 코드가 클럽 대회와 대표팀 대회에
 > 동시에 쓰이면 위반」이라는 불변식을 쓴다(자기유지). ⚠️ 「FIFA **Club** World Cup」이
 > `%World Cup%`에 걸리는 함정을 제외해야 한다.
+
+> ⭐⭐ **G14는 2026-09-08 신설**(obs#517·#518). 계기는 **G1~G13 전항 통과 상태에서 obs#503이 제자리
+> 덮어써진 사고**다(불변규칙 2 위반) — 기존 게이트는 전부 구조·수치 층이고 **「행 내부 자연어」와
+> 「행의 편집 이력」은 사각지대**였다. ⭐ 불변식을 「변경 금지」가 아니라 **「prefix 보존(덧붙임만)」**으로
+> 잡은 것이 핵심이다 — git 실측(2026-09-08)에서 observations는 정당한 **덧붙임 21건** 대비 재작성이
+> **8필드(2커밋)**뿐이었다. 「변경 금지」로 잡으면 그 21건이 전부 오탐이 된다.
+> 보호 대상은 `observations`·`player_duties`뿐이다 — `transfer_targets`(등급 갱신)·`prescriptions`(fit 재산출)·
+> `match_reports`(draft→complete)는 편집이 정상 작업이라 제외했다(같은 실측 근거).
+> ⑵⑶ 자연어 검사는 **델타 검사**다(HEAD 이후 새로 생기거나 바뀐 obs 행만) — 보존해야 하는 과거 결함
+> (obs#503)이 영구 실패를 만들지 않게 한다. ⚠️ 정당한 재작성은 `G14_ALLOW_REWRITE=observations:503`으로 통과시킨다.
 
 ## 핵심 규약 (v1 교훈의 성문화 — 위반이 실제 사고를 냈던 것들)
 
@@ -65,8 +76,10 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 |---|---|---|
 | 실측 수집 | `core.sofascore.js_collect()` → 브라우저 → `parse_collected()` | sofascore.com 오리진 필수 |
 | 익스포트 | `python3 scripts/export.py` | 게이트 통과 후 site/data 재생성 + 프리뷰 미러 |
-| 게이트 | `python3 scripts/gates.py` | G1~G13 |
+| 게이트 | `python3 scripts/gates.py` | G1~G14 |
 | G13 회귀 | `python3 scripts/test_g13_regression.py` | 결함 4종을 **합성 주입**해 검출 확인 + 클럽월드컵 오탐 검사 |
+| G14 회귀 | `python3 scripts/test_g14_regression.py` | 결함 3종 합성 주입 + **오탐 5종**(덧붙임·NULL 채움·verbatim 반복·동일 극성·allowlist) |
+| G14 역검증 | `python3 scripts/gates.py --g14-backtest 30` | 최근 N커밋을 각자의 부모와 대조 — 오탐률 확인(30커밋 중 적발 1 = 실제 사고 1건) |
 | 변경 대조 | `python3 scripts/db_diff.py --snapshot` → `… db_diff.py <스냅샷>` | 파괴적 정리가 의도한 것만 했는지 **행 단위** 증명(NOT NULL→NULL 감시) |
 | v1 재흡수 | `python3 scripts/migrate_v1.py` | ⚠️ 컷오버 완료 — 재실행하면 v2 신규분이 날아간다. 사용 금지(아카이브 참조용) |
 | 이적 감시 | transfer-watch 스킬 (매일 09/21시) | 4팀 루프 — 2026-08-20 ATM 편입, v2에 기록 |
