@@ -10,7 +10,7 @@
 
 ## 현재 상태
 
-> **2026-09-08 20:30 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 **`(이 커밋)`** — `fb9033b`·`4fdf9c5` 뒤 **편차 14행 재판정**(obs#535) · **✅ origin 일치**.
+> **2026-09-08 20:30 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 **`3633750`** — `fb9033b`·`4fdf9c5` 뒤 **편차 14행 재판정**(obs#535) · **✅ origin 일치**.
 > 09-08 ⑹ **프로젝트 점검 후속 7건**(사용자 지시): ⑴ 인게임 데이터 경로 조사 → docs/50 경량 재개 + `ingame_captures`(028) ⑵ **팀 설정 규칙 사전등록 + G15**
 > (백필 19행: 규칙 일치 **1** · 편차 **14** · 결손 4) ⑶ **국면 분리 그리드 컬럼**(`cells_poss/cells_def`) + `core/whoscored.py` ⑷ 숙련도는 FC27 로스터로 합의
 > ⑸ **G8+·G12 확장**이 처방 결함 실물 3종을 적발·정정(migration 027) ⑹ `manager_profiles` 4체제 26/27 덧붙임 20행 + SKILL DoD ⑺ `reproduction_limits` 12행 →
