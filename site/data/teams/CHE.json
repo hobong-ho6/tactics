@@ -30922,6 +30922,18 @@
   },
   {
    "added": "2026-09-08",
+   "axis": "validation",
+   "confidence": "HIGH",
+   "game_version": "FC26",
+   "id": 13,
+   "limitation": "수동 플레이 환경 — 게임 히트맵은 EA 커널 산출과 사용자 조작의 혼합이다. 조작 선수·볼 배급·팀 설정 3축 체감·기능·도착은 사용자에게 귀속되어 검증 불가. 증명 가능한 것은 비조작 선수의 오프볼 위치 ↔ 선택한 커널의 유사도 하나뿐",
+   "real_feature": "게임 내 재현 결과의 검증(실축 히트맵 ↔ 게임 히트맵)",
+   "regime_id": null,
+   "source": "docs/50 2026-09-08 · 사용자 제기",
+   "workaround": "비조작 선수만 대조 · 조작 선수는 오염 표기 · 같은 코드 3경기 이상 · 처방 변경 근거로 쓰지 않음(docs/50 「한계」 표)"
+  },
+  {
+   "added": "2026-09-08",
    "axis": "formation",
    "confidence": "HIGH",
    "game_version": "FC26",
