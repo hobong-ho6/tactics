@@ -10,7 +10,7 @@
 
 ## 현재 상태
 
-> **2026-09-08 20:30 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 **`fb9033b`**(+핸드오프 커밋) · **✅ origin 일치**.
+> **2026-09-08 20:30 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 **`(이 커밋)`** — `fb9033b`·`4fdf9c5` 뒤 **편차 14행 재판정**(obs#535) · **✅ origin 일치**.
 > 09-08 ⑹ **프로젝트 점검 후속 7건**(사용자 지시): ⑴ 인게임 데이터 경로 조사 → docs/50 경량 재개 + `ingame_captures`(028) ⑵ **팀 설정 규칙 사전등록 + G15**
 > (백필 19행: 규칙 일치 **1** · 편차 **14** · 결손 4) ⑶ **국면 분리 그리드 컬럼**(`cells_poss/cells_def`) + `core/whoscored.py` ⑷ 숙련도는 FC27 로스터로 합의
 > ⑸ **G8+·G12 확장**이 처방 결함 실물 3종을 적발·정정(migration 027) ⑹ `manager_profiles` 4체제 26/27 덧붙임 20행 + SKILL DoD ⑺ `reproduction_limits` 12행 →
@@ -21,8 +21,8 @@
   prescriptions **469** · slots **88** · match_game_setups **19** · match_player_prescriptions **306** ·
   transfer_targets **44** · transfer_outgoing **67** · player_duties **208** ·
   player_shirt_numbers **116** · understat_player_matches **5,634** · **teams 37** · **player_evaluations 120** · **transfer_summary 4** · `game_role_focus.movement_kr` **85/85** ·
-  `team_match_stats.xg_source` **62/70** · `game_system_changes` **18** · **reproduction_limits 12** · **ingame_captures 0** · observations **534** ·
-  `match_game_setups.rule_note` **19/19**(RULE 1 · DIVERGE 14 · NO-STATS 4) · `player_matches.cells_def` **0/3,363**(다음 경기부터).
+  `team_match_stats.xg_source` **62/70** · `game_system_changes` **18** · **reproduction_limits 12** · **ingame_captures 0** · observations **535** ·
+  `match_game_setups.rule_note` **19/19**(재판정 후 RULE 8 · DIVERGE 7(사유 명시) · NO-STATS 4) · `player_matches.cells_def` **0/3,363**(다음 경기부터).
 - 회귀: **G1~G15(+G8+) 전항 통과**(2026-09-08 20:30) · 회귀 테스트 3종(g13·g14·**g8x_g15**) 통과. ⭐⭐ **G14 「원장 정정 규약」 09-08 신설·편입**(obs#518) — 불변규칙 2를
   **행 단위로 강제**한다(⑴ 원장재작성 ⑵ 구중복 ⑶ claim↔evidence모순). 역검증 30커밋 중 적발 1 = 실제 사고 1건, **오탐 0**.
 - **이적창 후속 절차만 남았다** — 2026-27 여름창 감시는 종료(정기 루틴 없음), 미결 4건(에메날로·르마르·바르가스·응게상)은 등급 동결.
@@ -96,7 +96,8 @@
 - ⑴ **인게임 경로**(obs#534): **PS Remote Play(macOS) ⌘⇧4 캡처**가 최단(카메라 불필요) · PS App 자동 업로드(14일)·USB 대안 · Match Facts export는 **없다** ·
   전술 코드는 **12자 서버 공유 코드**, 커리어·킥오프에서도 「코드 사용」으로 동작. → `scripts/ingame_heatmap_to_grid.py`(합성 이미지 회귀 통과, **실물 미검증**) + `ingame_captures`.
 - ⑵ `core/team_settings.py` 규칙(Counter ≥13%롱볼∨≤40%점유 · Short ≤8%∧≥55% · High ≤8 PPDA · Deep >18) **사전등록** → `rule_note` 백필 → **G15**.
-  ⚠️ 편차 14행은 값 불변·신고만 — **재판정은 사용자 판단**(미해결 4).
+  ⭐ **편차 14행 재판정 완료**(사용자 지시, obs#535): 규칙 채택 **7**(1·21·22·23·28·30·33 — 최대 정정 ATM 말라가 Balanced/48→High/62, LIV 포레스트 →Short/High/62) ·
+  유지 **7**(측정된 교란 — 점유 인플레·전후반 PPDA·영상 블록 높이·경계값). 리포트 원문은 §7 뒤 addendum으로만 정정. docs/50에 Remote Play 단계별 절차 추가.
 - ⑶ `player_matches.cells_poss/cells_def/map25_*/phase_source` + `team_match_stats.def_x_v/o`(라인 프록시) + `core.whoscored.ppda/def_x/phase_cells`.
   ⛔ 브라우저 JS PPDA 재구현 금지(불변규칙 4). 기존 행은 원자료 없어 NULL — **다음 경기(브뤼헤·안필드)부터 필수**(SKILL §2·§3).
 - ⑸ 정정: 귀스토 RB starter 0 · CHE LDM/RDM 4행 `-deprecated` · mpp 교체 6행을 `slot_canon_roles` 정본으로. 백업 DB 역검증 4·4·1·6건 재검출.
@@ -236,11 +237,6 @@
    `/api/fut/roles/` FC27 → `migrate_fc27.py --roles --check` → `EXPECTED["FC27"]`·gates 앵커 **새 행** → `--apply`(승인).
    ⛔ 역할 목록 변화는 **미공개** — 확정 전 커널 행 금지. ⚠️ 게임스탯 결손: **고레츠카 0행**(무소속이라 fut.gg에 없다, obs#362) ·
    **35속성은 완비사카·음바예 2명**(obs#364).
-4. ⏰ **팀 설정 편차 14행 재판정 여부** — 규칙 사전등록 전 판정이라 값은 그대로 두고 `rule_note='DIVERGE (backfill)'`로 신고만 했다.
-   재판정하면 리포트 본문·경기 프리셋 화면이 함께 바뀌므로 **사용자 판단**. 규칙 임계값 자체도 `def_x`(라인 프록시) 누적 후 보정 대상.
-3. ⏰ **`transfer_targets` 아하노르 window 표기** — 「2026-summer 완전이적」이 아니라 **2026-summer 선계약 / 2027-07-01 등록**.
-   분리 표현할 스키마 자리가 없어 `rationale`에만 적었다.
-
 ## 데이터 수집 상태와 결손
 
 - 대량 수집: `collect_fotmob_players.py` · `collect_understat_shots.py` · `collect_event.py`(이벤트 축).

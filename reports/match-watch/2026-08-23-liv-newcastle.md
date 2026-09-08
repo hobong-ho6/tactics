@@ -387,3 +387,11 @@ Goal(Mark Doyle)의 「엘랑가 선제골 순간 더블 피벗 두 명 모두 �
 **출처**: Sky Sports 매치리포트 559452 · liverpoolfc.com 공식 회견 전문 · This Is Anfield 매치리포트 · Yahoo Sports 팬 여론 종합 · Anfield Index
 
 **한계**: ⭐ 감독 발언은 **liverpoolfc.com 공식 회견 전문**이라 1차 출처다(obs#326과 동일 원천). ⚠️ 팬 여론은 Yahoo의 큐레이션이라 표본이 대표성을 갖지 않는다 — 방향성만 기록했다. ⚠️ Sky의 부정 평가와 This Is Anfield의 긍정 평가가 **같은 경기에 공존**한다 — 어느 쪽도 채택하지 않고 둘 다 적었다.
+
+---
+
+## 정정 addendum — 경기 전용 팀 설정 재판정 (2026-09-08)
+
+팀 설정 매핑 규칙(docs/20 · `core/team_settings.py`) 사전 등록 후 사용자 지시로 재판정했다. 위 본문의 값은 당시 기록으로 보존하고,
+**정본(`match_game_setups`)은 아래로 바뀌었다**: **4-2-3-1 Wide · 빌드업 Balanced · 수비 High · 라인 72**.
+사유: 빌드업 Short→Balanced: 점유 61%지만 롱볼 10.3%(46회, 성공 48%)가 Short 상한 8%를 넘는다 — 리포트 취약점 ④가 지목한 롱볼 의존이 규칙에도 잡힌다. 선발 11명 역할·포커스는 변경 없음(obs#535).

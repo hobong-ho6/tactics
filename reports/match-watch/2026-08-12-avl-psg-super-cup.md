@@ -409,3 +409,11 @@ Opta 퀄리파이어: **`Volley` · `LeftFoot` · `FirstTouch` · `SmallBoxLeft`
 
 ⚠️ 이 컬럼들은 SofaScore가 아니라 **WhoScored(Opta)·FotMob 원천**이라 같은 행의 SofaScore 필드와 provenance가 다르다 — `confidence`에 기록했다.
 게이트 G1~G12 전항 통과, export·dump 재생성 완료.
+
+---
+
+## 정정 addendum — 경기 전용 팀 설정 재판정 (2026-09-08)
+
+팀 설정 매핑 규칙(docs/20 · `core/team_settings.py`) 사전 등록 후 사용자 지시로 재판정했다. 위 본문의 값은 당시 기록으로 보존하고,
+**정본(`match_game_setups`)은 아래로 바뀌었다**: **4-2-3-1 Wide · 빌드업 Counter · 수비 Balanced · 라인 48**.
+사유: 라인 45→48: PPDA 12.59는 Balanced 48~58 대역이고 원 근거(「0-0/1-2 라인 차이를 정적 근사」)는 45를 특정하지 않는다 — 대역 하단 48 채택. 선발 11명 역할·포커스는 변경 없음(obs#535).
