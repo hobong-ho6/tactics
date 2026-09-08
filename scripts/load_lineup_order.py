@@ -8,6 +8,9 @@
 """
 import csv, sqlite3, sys
 
+sys.path.insert(0, '.')
+from core.classify import pos_class as core_pos_class
+
 DB = 'data/avl_analysis.db'
 SS = {833956: 2, 827679: 3, 96538: 5, 976263: 6, 923973: 8, 331737: 9, 250223: 10,
       1089388: 11, 826204: 12, 948261: 13, 783126: 14, 555386: 16, 930245: 18,
@@ -30,14 +33,14 @@ CONF_NEW = ('HIGH on minutes/rating/avg coords (API). lineup_order는 라인업 
             '좌표 역산이 아니다. lineup_pos는 (formation, order) 파생 — 실측 y 레인과 대조 검증됨. '
             'pos_class는 minutes<45일 때 NULL(좌표 평균 신뢰불가).')
 
-def pos_class_band(ax, ay, mins):
-    """기존 행과 동일한 규약(0.4/0.6 레인 × 52 뎁스 밴딩)을 신규 행에도 적용."""
-    if mins is None or mins < 45 or ax is None or ay is None:
-        return None
-    lane = 'right' if ay < 40 else ('left' if ay > 60 else 'centre')
-    if ax < 52:
-        return f'pivot-{lane}'
-    return {'right': 'RM/AMR', 'left': 'LW/AML', 'centre': 'CAM'}[lane]
+def pos_class_band(ax, ay, mins, lineup_pos=None, lateral=None):
+    """⛔ 2026-09-08 폐기 — core.classify.pos_class로 위임한다.
+
+    이 함수는 원래 별도 어휘(pivot-right·LW/AML·CAM)를 만들어 냈고, 그 결과
+    `pos_class` 한 컬럼에 어휘가 3종 섞였다(migration 026이 정리). 불변규칙 4대로
+    분류 로직은 core에만 둔다 — 여기서 재구현하지 않는다.
+    """
+    return core_pos_class(ax, ay, lineup_pos, lateral, minutes=mins)
 
 def main():
     con = sqlite3.connect(DB)

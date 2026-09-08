@@ -48,7 +48,7 @@
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, slotCandidates, sofifaLink, isGkSlot, gkPosCell } from './assets/data.js?v=20260816-gk-avgpos';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
-import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260902-safari-tooltip';
+import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260908-phase-glossary';
 import { prose } from './assets/prose.js';
 const { team, idx } = await mountHeader('player.html');
 const [td, GS, GS27] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({}))]);
