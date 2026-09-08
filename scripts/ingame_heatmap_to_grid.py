@@ -51,7 +51,13 @@ def _pair(cands, gap, tol=15):
 
 
 def auto_box(a):
-    """피치 외곽 상자 (x0,y0,x1,y1). 좌·우선은 열 프로파일(PH 윈도우 회색 ≥85%), 세로는 GK 점 기준."""
+    """피치 외곽 상자 (x0,y0,x1,y1). 좌·우선은 열 프로파일(PH 윈도우 회색 ≥85%). 세로는 ⑴ GK 점(테스트 1 15/15) →
+    ⑵ GK 점이 없거나(GK 선수 선택 시 점이 흰색) 상자가 히트를 0으로 만들면 **하단 외곽선 행**으로 대체.
+    ⚠️ 선수표의 밝은 세로 강조선은 기준점으로 쓰지 않는다 — 목록 스크롤에 따라 위치가 바뀐다(테스트 1에서 −150~+216px 편차)."""
+    return _outline_gk_box(a)
+
+
+def _outline_gk_box(a):
     lum = a.mean(axis=2)
     sat = a.max(axis=2) - a.min(axis=2)
     grey = (lum > 60) & (sat < 40)
@@ -63,6 +69,7 @@ def auto_box(a):
         raise SystemExit("⛔ 피치 좌·우 외곽선을 찾지 못했다 — --box로 지정할 것")
     xl, xr = xs
     xc = (xl + xr) // 2
+    # ⑴ GK 점: 중앙 띠에서 어두운(lum<35) 픽셀이 30개+인 행의 연속 run 22~48px, 가장 아래 것
     dark = (lum[:, xc - 25:xc + 25] < 35).sum(axis=1)
     runs = []
     for y in [y for y in range(H) if dark[y] >= 30]:
@@ -71,10 +78,25 @@ def auto_box(a):
         else:
             runs.append([y])
     gk = [r for r in runs if 22 <= len(r) <= 48]
-    if not gk:
-        raise SystemExit("⛔ GK 포메이션 점을 찾지 못했다 — --box로 지정할 것")
-    yb = (gk[-1][0] + gk[-1][-1]) // 2 + GK_OFF
-    return (xl, yb - PH, xr, yb)
+    cands = []
+    if gk:
+        cands.append((gk[-1][0] + gk[-1][-1]) // 2 + GK_OFF)
+    # ⑵ 하단 외곽선: xl..xr 구간 회색 ≥60%인 행 클러스터 중 상단선(≈PH 위)도 30%+ 보이는 가장 아래 행
+    rows = grey[:, xl + 3:xr - 3].sum(axis=1)
+    width = xr - xl - 6
+    for yb in reversed(_clusters([y for y in range(H) if rows[y] >= 0.6 * width])):
+        yt = yb - PH
+        if yt >= 0 and rows[max(0, yt - 3):yt + 4].max() >= 0.3 * width:
+            cands.append(yb)
+            break
+    for yb in cands:
+        yt = yb - PH
+        if yt < 0:            # 하단이 이미지 밖으로 조금 잘린 캡처는 허용(슬라이싱이 클립) — 테스트 1 shot_05·13
+            continue
+        sub = a[yt:yb, xl:xr]
+        if ((sub[..., 1] > sub[..., 0] + 40) & (sub[..., 1] > sub[..., 2] + 40) & (sub[..., 1] > 110)).sum() > 0:
+            return (xl, yt, xr, yb)
+    raise SystemExit("⛔ 피치 세로 기준(GK 점·하단선)을 찾지 못했다 — --box로 지정할 것")
 
 
 def heat_cells(a, box, attack="up"):

@@ -69739,7 +69739,7 @@
    "game_version": "FC26",
    "kind": "ingame:user-2026-09-08b",
    "line_height": null,
-   "rationale": "사용자 테스트 전술 2 — id19(?ZWKd#Zw6mre)에서 **RM 맥긴만 wm_wideplm/Attack → wm_widemid/Support(정본)** 로 바꾼 단일 변수 A/B. 나머지 10슬롯 동일. 테스트 1경기 결과(ingame_captures 1~15)에서 맥긴·가르나초의 자기진영 분포가 5.9%·27.3%로 얇아 두 줄 4 뱅크가 서지 않았고, 정본 커널(widemid/Support)이 게임 커널보다 실측에 더 가까웠던 것이 변경 근거. 판별 지표: 다음 경기 맥긴 자기진영(행3~4) 비중과 cos(widemid/Support)이 오르는가 — 단 맥긴은 사용자 조작 선수라 오염 표기.",
+   "rationale": "사용자 테스트 전술 2 — id19(?ZWKd#Zw6mre)에서 **RM 맥긴만 wm_wideplm/Attack → wm_widemid/Support(정본)** 로 바꾼 단일 변수 A/B. 나머지 10슬롯 동일. 테스트 1경기 결과(ingame_captures 1~15)에서 맥긴·가르나초의 자기진영 분포가 5.9%·27.3%로 얇아 두 줄 4 뱅크가 서지 않았고, 정본 커널(widemid/Support)이 게임 커널보다 실측에 더 가까웠던 것이 변경 근거. 판별 지표: 다음 경기 맥긴 자기진영(행3~4) 비중과 cos(widemid/Support)이 오르는가 — 단 맥긴은 사용자 조작 선수라 오염 표기. [2026-09-08 결과] 테스트 2 플레이 완료(12-0, 점유 45%). 맥긴 자기진영 5.9%→38.9%, T1↔T2 유사도 .71(다른 92분 선수 .83~.91) — 단일 변수 변경이 실제 게임 분포를 바꿨다(obs#537). ingame_captures 16~29.",
    "season": "2026-27",
    "tactic_code": "AZYMfMjy8otg"
   },
