@@ -194,7 +194,7 @@
 0. ⭐⭐ **P1 · 09-09 세 회차(헐 d3·브뤼헤·CHE d3)부터 신규 필수 3항 적용** — ⑴ WhoScored 이벤트로 `core.whoscored` PPDA·`def_x`·**국면 그리드** 전원 적재
    ⑵ 경기 프리셋 `rule_note`(G15) ⑶ `manager_profiles` 갱신 판정. ⚠️ 스케줄 프롬프트는 SKILL을 읽으므로 자동 반영되지만 **첫 실행 결과를 확인**한다.
 0-1. **P1 · 사용자 — 인게임 캡처 첫 실물**: PS Remote Play로 전술 화면(코드) + 선수 히트맵 1장을 찍어 전달 → `ingame_heatmap_to_grid.py` 색 임계값·`--box` 검증 후
-   EXPERIMENTAL 해제. 전술 코드는 `team_tactic_setups.tactic_code`에 기입(현재 0/18).
+   EXPERIMENTAL 해제. 전술 코드: 사용자 인게임 버전 `?ZWKd#Zw6mre`(9번째 자리 6/b 미확정)를 `team_tactic_setups` id19 `ingame:user-2026-09-08`에 기록 — 정본과 4슬롯 차이(LM winger/A · RM wideplm/A · GK sweeper · RDM Ball-Winning). id16 처방 코드는 정본 11명 입력 후 발급받아 기입.
 0-2. **P2 · FC27 09-25 출시 후 4팀 숙련도(Role+/++)·PlayStyles 일괄 수집**(CHE 3/27 · LIV 0/24 · ATM 0/32) — docs/20 ② 타이브레이커의 전제.
 1. ⭐⭐ **P1 · 브뤼헤전(UCL MD1, 09-08 경기) — 헐전이 열어둔 논점 3건의 판별 경기.** 수집은 `-avl-brugge-2026-09-08`(09-09 13:00)이 돈다.
    ⑴ **② 무공 형태가 처음 측정된다**(레코가 공격 선언) — **잭슨−부엔디아 수비액션 x 격차**: 0 근접 → 4-4-2 / 15+ → 4-4-1-1
