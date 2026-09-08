@@ -69733,6 +69733,18 @@
   },
   {
    "build_up_style": "Short Passing",
+   "confidence": "HIGH — 코드는 사용자 입력값. 라인 높이 미확인.",
+   "defensive_approach": "Balanced",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "kind": "ingame:user-2026-09-08b",
+   "line_height": null,
+   "rationale": "사용자 테스트 전술 2 — id19(?ZWKd#Zw6mre)에서 **RM 맥긴만 wm_wideplm/Attack → wm_widemid/Support(정본)** 로 바꾼 단일 변수 A/B. 나머지 10슬롯 동일. 테스트 1경기 결과(ingame_captures 1~15)에서 맥긴·가르나초의 자기진영 분포가 5.9%·27.3%로 얇아 두 줄 4 뱅크가 서지 않았고, 정본 커널(widemid/Support)이 게임 커널보다 실측에 더 가까웠던 것이 변경 근거. 판별 지표: 다음 경기 맥긴 자기진영(행3~4) 비중과 cos(widemid/Support)이 오르는가 — 단 맥긴은 사용자 조작 선수라 오염 표기.",
+   "season": "2026-27",
+   "tactic_code": "AZYMfMjy8otg"
+  },
+  {
+   "build_up_style": "Short Passing",
    "confidence": "PROJECTED — 이적 미확정 포함(가르나초 MEDIUM-HIGH·에스투피냔 HIGH, 나머지 CONFIRMED/보유). 26/27 실측 축적 후 measured/optimal로 대체 예정. 만잠비·고메스·에스투피냔·가르나초 처방은 타클럽/대표팀 실측 기반이라 빌라 컨텍스트 재검증 필요.",
    "defensive_approach": "Balanced",
    "formation": "4-2-3-1 Wide",

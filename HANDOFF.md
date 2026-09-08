@@ -21,7 +21,7 @@
   prescriptions **469** · slots **88** · match_game_setups **19** · match_player_prescriptions **306** ·
   transfer_targets **44** · transfer_outgoing **67** · player_duties **208** ·
   player_shirt_numbers **116** · understat_player_matches **5,634** · **teams 37** · **player_evaluations 120** · **transfer_summary 4** · `game_role_focus.movement_kr` **85/85** ·
-  `team_match_stats.xg_source` **62/70** · `game_system_changes` **18** · **reproduction_limits 12** · **ingame_captures 0** · observations **535** ·
+  `team_match_stats.xg_source` **62/70** · `game_system_changes` **18** · **reproduction_limits 12** · **ingame_captures 15** · observations **536** ·
   `match_game_setups.rule_note` **19/19**(재판정 후 RULE 8 · DIVERGE 7(사유 명시) · NO-STATS 4) · `player_matches.cells_def` **0/3,363**(다음 경기부터).
 - 회귀: **G1~G15(+G8+) 전항 통과**(2026-09-08 20:30) · 회귀 테스트 3종(g13·g14·**g8x_g15**) 통과. ⭐⭐ **G14 「원장 정정 규약」 09-08 신설·편입**(obs#518) — 불변규칙 2를
   **행 단위로 강제**한다(⑴ 원장재작성 ⑵ 구중복 ⑶ claim↔evidence모순). 역검증 30커밋 중 적발 1 = 실제 사고 1건, **오탐 0**.
@@ -193,8 +193,9 @@
 
 0. ⭐⭐ **P1 · 09-09 세 회차(헐 d3·브뤼헤·CHE d3)부터 신규 필수 3항 적용** — ⑴ WhoScored 이벤트로 `core.whoscored` PPDA·`def_x`·**국면 그리드** 전원 적재
    ⑵ 경기 프리셋 `rule_note`(G15) ⑶ `manager_profiles` 갱신 판정. ⚠️ 스케줄 프롬프트는 SKILL을 읽으므로 자동 반영되지만 **첫 실행 결과를 확인**한다.
-0-1. **P1 · 사용자 — 인게임 캡처 첫 실물**: PS Remote Play로 전술 화면(코드) + 선수 히트맵 1장을 찍어 전달 → `ingame_heatmap_to_grid.py` 색 임계값·`--box` 검증 후
-   EXPERIMENTAL 해제. 전술 코드: 사용자 인게임 버전 `?ZWKd#Zw6mre`(9번째 자리 6/b 미확정)를 `team_tactic_setups` id19 `ingame:user-2026-09-08`에 기록 — 정본과 4슬롯 차이(LM winger/A · RM wideplm/A · GK sweeper · RDM Ball-Winning). id16 처방 코드는 정본 11명 입력 후 발급받아 기입.
+0-1. ⭐ **P1 · 인게임 A/B 2차 대기** — 테스트 1(id19 `?ZWKd#Zw6mre`) 15장 처리 완료(`ingame_captures` 1~15, obs#536): 스크립트 15/15 검증 ·
+   **히트맵은 위치 기반** · 와이드 Attack 뱅크 미형성 실증(맥긴 자기진영 5.9%·가르나초 27.3%). 테스트 2(id20 `AZYMfMjy8otg`, 맥긴만 widemid/Support) 스샷을
+   `reports/ingame/2026-09-08-avl-test2/`로 받으면 같은 절차 + **팀 통계 화면(점유율·상대 포메이션)** 요청. 조작 선수 4명(만잠비·맥긴·고레츠카·잭슨) `--controlled`.
 0-2. **P2 · FC27 09-25 출시 후 4팀 숙련도(Role+/++)·PlayStyles 일괄 수집**(CHE 3/27 · LIV 0/24 · ATM 0/32) — docs/20 ② 타이브레이커의 전제.
 1. ⭐⭐ **P1 · 브뤼헤전(UCL MD1, 09-08 경기) — 헐전이 열어둔 논점 3건의 판별 경기.** 수집은 `-avl-brugge-2026-09-08`(09-09 13:00)이 돈다.
    ⑴ **② 무공 형태가 처음 측정된다**(레코가 공격 선언) — **잭슨−부엔디아 수비액션 x 격차**: 0 근접 → 4-4-2 / 15+ → 4-4-1-1
