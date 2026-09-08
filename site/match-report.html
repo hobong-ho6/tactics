@@ -166,6 +166,15 @@ function renderPitch(r){
     drawChip(ctx,cv.width,cv.height,100-Number(p.avg_y),Number(p.avg_x),p.label);
   }
 }
+/* 팀 설정 규칙(core.team_settings · docs/20 「팀 설정 매핑 규칙」)과의 대조 — G15가 편차 신고를 강제한다.
+   기록값이 정본이고 규칙 제안은 병기다: 편차가 있으면 사유(rule_note)를 같은 줄에서 읽게 한다. */
+function ruleLine(s){
+  const g=s.rule_suggest; if(!g&&!s.rule_note) return '';
+  const sug=g?[g.build_up_style?`빌드업 ${g.build_up_style}`:null, g.defensive_approach?`수비 ${g.defensive_approach}`:null,
+    g.line_lo!=null?`라인 ${g.line_lo}~${g.line_hi}`:null, g.long_pct!=null?`(롱볼 ${g.long_pct}%)`:null].filter(Boolean).join(' · '):'';
+  const note=s.rule_note||''; const cls=note.startsWith('DIVERGE')?'mid':note.startsWith('RULE')?'hi':'';
+  return `<p class="kv">실측 규칙 제안: <b>${esc(sug||'스탯 결손')}</b> ${note?`<span class="badge ${cls}">${esc(note.split(':')[0].split(' ')[0])}</span> <small class="dim">${esc(note)}</small>`:''}</p>`;
+}
 function renderGamePreset(r){
   const s=r.game_setup, all=r.game_players??[];
   const el=document.getElementById('gamePreset');
@@ -181,6 +190,7 @@ function renderGamePreset(r){
     <div class="report-metrics"><span>포메이션 <b>${esc(s.formation)}</b></span>
       <span>빌드업 <b>${esc(s.build_up_style)}</b></span><span>수비 <b>${esc(s.defensive_approach)}</b></span>
       <span>라인 높이 <b>${esc(s.line_height)}</b></span><span>전술 코드 <b>${esc(s.tactic_code||'미검증')}</b></span></div>
+    ${ruleLine(s)}
     <div class="grid2"><div><div class="tacpitch match-tacpitch">${players.map(p=>
       `<div class="tchip" style="left:${p.x}%;bottom:${Math.max(4,p.y*.92+4)}%"><b>${esc(p.label)}</b>
        <span>${esc(p.pos_label)}</span><small>${annotate(esc(p.role_name||p.role_id))}<br>${annotate(esc(p.focus))}${p.starter?'':`<br>${esc(p.minute_on)}분 투입`}</small></div>`).join('')}</div></div>

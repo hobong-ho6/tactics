@@ -17,11 +17,12 @@ transfer-watch(스킬) ────────────┘        ↑       
 | 레이어 | 테이블 | 성격 |
 |---|---|---|
 | 축 | game_versions · regimes(감독·팀 페어) · teams · players(sofascore/sofifa id 컬럼) · seasons | 1급 엔티티 |
-| 실세계(사실) | matches · **player_matches**(구 appearances+grids+positions 통합) · team_match_stats | team_code+date로 자명 |
+| 실세계(사실) | matches · **player_matches**(구 appearances+grids+positions 통합 · **cells_poss/cells_def 국면 분리 그리드**) · team_match_stats(**ppda_v · def_x_v 라인 프록시**) | team_code+date로 자명 |
 | 경기 해석 | **match_reports** · **match_player_reports** · reports/match-watch 원문 | event_id+team_code로 사실층과 연결 |
 | 지식 | observations(obs# 전역 연속) · manager_profiles(11축) · player_duties | 관찰·판단 기록 |
 | 게임(버전별) | game_roles/…focus(커널 85)/…variants(변형 217) · player_game_stats(로스터 스냅샷) · **game_system_changes**(FIFA→FC 변천) | 버전 추가 = 행 추가 |
-| 매핑(판단) | slots(regime 기하) · prescriptions(정형 필드: fit_sim/sample_n/avg_rating) · squad_entries(player_id FK) · team_tactic_setups | regime_id 명시 |
+| 매핑(판단) | slots(regime 기하) · prescriptions(정형 필드: fit_sim/sample_n/avg_rating) · squad_entries(player_id FK) · team_tactic_setups · **reproduction_limits**(FC 설정 축에 없는 실축 요소 — 화면 「재현 불가 N건」) | regime_id 명시 |
+| 게임 검증 | **ingame_captures**(인게임 히트맵 스크린샷→map25→코사인, 기록만 — docs/50 경량 절차) | migration 028 |
 | 이적 | transfer_targets/outgoing/ledger | transfer-watch 스킬이 기록 |
 
 ## 게이트 (`python3 scripts/gates.py`) — 모든 DB 쓰기의 선행 조건
@@ -35,7 +36,16 @@ G9 프리뷰 최신성(no-store 서버 + JSON 캐시 우회) · G10 영상 레�
 G11 현재 스쿼드 표시(확정 이탈·이적 후보·DEAD 숨김) ·
 G12 경기 리포트(필수 섹션·수집 선수 전원·원문·경기 분석 메뉴·MATCH ONLY 팀 설정/선발 11명 연결) ·
 **G13 조용한 이중화**(동일인 2-id · 이중 기록 · match 링크 결손 · team_code↔대회 성격 불일치) ·
-**G14 원장 정정 규약**(원장 재작성·구 중복·claim↔evidence 모순).
+**G14 원장 정정 규약**(원장 재작성·구 중복·claim↔evidence 모순) ·
+**G8+ 게임 처방 정합**(kind 어휘 · fc26:opt pos∈slots · 역할군=slot_type · 선발 11명이 한 포메이션) ·
+**G12 확장**(경기 프리셋 역할군=slot_type) · **G15 팀 설정 규칙**(`core/team_settings.py` 규칙 vs 기록 — 편차는 `rule_note`에 신고).
+
+> ⭐ **G8+ · G12 확장 · G15는 2026-09-08 점검에서 신설**(사용자 지시 2·5번). G8+가 잡은 실물: CHE `fc26:opt` 선발 **12명**
+> (3-4-2-1 11 + 5-4-1 RB) · CHE `fc26:opt:LDM/RDM` 4행(그 포메이션에 없는 슬롯) · 경기 프리셋 교체 6행이 슬롯 역할군 밖
+> (`cm_b2b`를 RCB·LM·ST·LAM·RM에). 전부 migration 027로 정정. **`prescriptions.kind`는 이제 `KIND_RE`(gates.py) 형태로만
+> 허용된다** — 새 접두가 필요하면 게이트와 이 문서를 함께 고친다(pos_class 어휘 사고 obs#527의 재발 방지).
+> G15는 값을 강제하지 않는다 — 규칙(docs/20 「팀 설정 매핑 규칙」)과 다르면 `match_game_setups.rule_note`에 `DIVERGE: 사유`를
+> 적어야 통과한다. 백필 결과 **19행 중 규칙 일치 1 · 편차 14 · 스탯 결손 4** — 종전 설정값은 대부분 산문 판단이었다.
 
 > ⭐ **G13은 2026-09-01 신설**(obs#374). **FK가 성립해서 G6가 원리적으로 못 잡는 부류**만 모았다 —
 > 넷 다 그날 손으로 세다 실물 결함을 발견해 게이트화한 것이고, 정리 전 백업 4종에서 전부 검출된다.
@@ -76,7 +86,10 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 |---|---|---|
 | 실측 수집 | `core.sofascore.js_collect()` → 브라우저 → `parse_collected()` | sofascore.com 오리진 필수 |
 | 익스포트 | `python3 scripts/export.py` | 게이트 통과 후 site/data 재생성 + 프리뷰 미러 |
-| 게이트 | `python3 scripts/gates.py` | G1~G14 |
+| 게이트 | `python3 scripts/gates.py` | G1~G15 (+G8+) |
+| WhoScored 파생 | `core.whoscored.ppda/def_x/phase_cells` | PPDA·라인 프록시·국면 그리드 — 브라우저 JS 재구현 금지(불변규칙 4) |
+| 팀 설정 규칙 | `core.team_settings.suggest/compare` | 실측 → 빌드업·수비접근·라인 제안, G15가 편차 신고 강제 |
+| 인게임 캡처 | `python3 scripts/ingame_heatmap_to_grid.py IMG --attack right …` | 스크린샷 → map25 → 코사인(docs/50) |
 | G13 회귀 | `python3 scripts/test_g13_regression.py` | 결함 4종을 **합성 주입**해 검출 확인 + 클럽월드컵 오탐 검사 |
 | G14 회귀 | `python3 scripts/test_g14_regression.py` | 결함 3종 합성 주입 + **오탐 5종**(덧붙임·NULL 채움·verbatim 반복·동일 극성·allowlist) |
 | G14 역검증 | `python3 scripts/gates.py --g14-backtest 30` | 최근 N커밋을 각자의 부모와 대조 — 오탐률 확인(30커밋 중 적발 1 = 실제 사고 1건) |
@@ -151,7 +164,7 @@ G8이 슬롯별 중복·도달 불가 스쿼드 행·활성 이적 후보 누락
 
 - 실증(CHE 4건, 2026-08-19): CB 슬롯에 `fb_wingback` · WM 슬롯에 `cam_playmaker` 3건이 저장돼 있었다.
   **CHE 5-4-1에는 CAM 슬롯이 아예 없다.** 원인은 역할군을 무시한 전역 argmax로 추정된다.
-- ⚠️ **이를 검사하는 게이트가 없다.** G8 확장 후보이고, 그때까지는 팀 자산을 만질 때 수동 확인한다.
+- ✅ **2026-09-08 G8+로 게이트화됐다**(`g8_prescription_checks`) — 첫 실행에서 CHE 4행+선발 12명을 실제로 잡았다.
 - ⚠️ 값이 낮아졌다고 회귀로 판단하지 말 것 — `squad_entries.map25`는 `measured:season:full2526`이고
   구 rationale의 수치는 `measured`(소표본)일 수 있다. **어느 그리드에서 나온 값인지 먼저 확인한다.**
 

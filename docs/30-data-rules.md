@@ -367,3 +367,22 @@ gazzettadiparma.it · nikkei.com(회원).
   `prescriptions`나 `slot_canon_roles`를 바꾸지 않는다.
 - 별도로 `match_game_setups`와 `match_player_prescriptions`에 **해당 경기만의** FC 설정과 선발 11명의
   역할·포커스를 기록한다. 이는 재현용 `MATCH ONLY` 프리셋이며 시즌/감독 정본과 합치지 않는다.
+
+## ⭐ 국면 분리 그리드·WhoScored 파생 지표 (2026-09-08 신설 · migration 027 · 정본 `core/whoscored.py`)
+
+SofaScore 히트맵은 **터치 총합**이라 공수 국면이 한 장에 섞인다(docs/10 「방법론 한계」). 감독 전술의 본체는 국면 전환이고
+FC26 설정도 빌드업/수비접근으로 국면이 갈리므로, WhoScored `matchCentreData.events`에서 선수별로 두 장을 더 만든다.
+
+| 컬럼 (`player_matches`) | 내용 |
+|---|---|
+| `cells_poss` / `map25_poss` | 보유 국면 — Pass·TakeOn·BallTouch·슛 4종·Dispossessed 좌표의 5×5 카운트 |
+| `cells_def` / `map25_def` | 수비 국면 — Tackle·Interception·Challenge·Foul·Clearance·BlockedPass·Aerial·BallRecovery |
+| `phase_source` | `WhoScored matchId=… 이벤트 n건` (provenance 필수) |
+
+- 좌표 규약은 SofaScore와 동일(x=공격 방향, y 낮음=오른쪽 — 2026-09-01 Cash/Maatsen 검증)이라 `core.encode.cells_from_points`를 그대로 쓴다.
+- **팀 지표도 같은 이벤트에서**: `team_match_stats.ppda_v/o`(`core.whoscored.ppda`, 기존 정의 유지) · `def_x_v/o`(수비액션 x 평균 =
+  라인 높이 프록시, `def_x_method` 필수). ⛔ 브라우저 콘솔에서 JS로 다시 짜지 않는다 — 이벤트 JSON을 파이썬으로 넘겨 core로 계산한다.
+- 수집 경로: 브라우저에서 WhoScored 경기 페이지를 열고 `matchCentreData`를 JSON으로 받아(`scripts/`에 저장하지 않고 임시 파일)
+  `phase_cells(events, playerId)`를 출전 선수 전원에 돌린다. WhoScored playerId ↔ `players.id` 매핑은 이름+등번호로 확인(동일성 규약).
+- 기존 3,363행은 원자료가 없어 NULL(결손). 국면별 커널 대조(`Kernel.best_fit(map25_def, …)`)는 **버킷당 2경기**부터.
+- 첫 활용처: obs#449(풀백 att_wb 집계 역전 — 국면 혼입 판별) · obs#505(잭슨 하강 빈도) · 헐전 「잭슨−부엔디아 수비액션 x」의 정식화.

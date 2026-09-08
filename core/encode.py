@@ -39,10 +39,12 @@ def regression_check(conn):
     모든 DB 쓰기 스크립트가 시작 시 이걸 돌린다 — 인코더 회귀를 데이터가 잡는다."""
     bad = []
     total = 0
-    for pid, eid, cells_s, m25 in conn.execute(
-            "SELECT player_id, event_id, cells, map25 FROM player_matches "
-            "WHERE cells IS NOT NULL AND map25 IS NOT NULL"):
-        total += 1
-        if encode([int(x) for x in cells_s.split(",")]) != m25:
-            bad.append((pid, eid))
+    # 국면 분리 그리드(cells_poss/cells_def → map25_poss/map25_def, migration 027)도 같은 인코더를 쓴다.
+    for cells_col, map_col in (("cells", "map25"), ("cells_poss", "map25_poss"), ("cells_def", "map25_def")):
+        for pid, eid, cells_s, m25 in conn.execute(
+                f"SELECT player_id, event_id, {cells_col}, {map_col} FROM player_matches "
+                f"WHERE {cells_col} IS NOT NULL AND {map_col} IS NOT NULL"):
+            total += 1
+            if encode([int(x) for x in cells_s.split(",")]) != m25:
+                bad.append((pid, eid, map_col))
     return bad, total

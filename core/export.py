@@ -142,6 +142,12 @@ def export_all(db_path=None, window="2026-summer"):
                                       defensive_approach, line_height, tactic_code, rationale, confidence
                                FROM team_tactic_setups WHERE regime_id=?
                                ORDER BY season, kind""", (rid,))
+        # 재현 불가 항목(reproduction_limits, migration 027) — 공통(regime_id NULL) + 이 체제. 화면은
+        # 설정 시트 옆에 「재현 불가 N건」으로 센다 — 설정값을 읽을 때 기대치를 맞추기 위해서다(점검 7번).
+        limits = _rows(con, """SELECT id, game_version, regime_id, axis, real_feature, limitation,
+                                      workaround, source, confidence, added
+                               FROM reproduction_limits WHERE regime_id IS NULL OR regime_id=?
+                               ORDER BY regime_id IS NOT NULL, axis, id""", (rid,))
         profile = _rows(con, """SELECT axis, content, evidence, confidence, updated
                                 FROM manager_profiles WHERE regime_id=? ORDER BY axis""", (rid,))
         targets = _rows(con, """SELECT player_id, name, name_kr, short_label, slot, club, position,
@@ -252,7 +258,10 @@ def export_all(db_path=None, window="2026-summer"):
                    ts.passes_o, ts.long_att_v, ts.long_acc_v, ts.long_att_o,
                    ts.long_acc_o, ts.cross_att_v, ts.cross_acc_v, ts.corners_v,
                    ts.corners_o, ts.duelpct_v, ts.fouls_v, ts.fouls_o,
-                   ts.formation_v, ts.formation_o, ts.xg_source
+                   ts.formation_v, ts.formation_o, ts.xg_source, ts.ppda_v, ts.ppda_o,
+                   ts.def_x_v, ts.def_x_o,
+                   (SELECT MAX(pm.possession) FROM player_matches pm
+                     WHERE pm.event_id=mr.event_id AND pm.team_code=mr.team_code) pm_possession
             FROM match_reports mr
             LEFT JOIN matches m ON m.id=mr.match_id
             LEFT JOIN team_match_stats ts
@@ -279,9 +288,17 @@ def export_all(db_path=None, window="2026-summer"):
             setup = _rows(con, """
                 SELECT report_id,game_version,formation,build_up_style,
                        defensive_approach,line_height,tactic_code,match_only,
-                       rationale,source,confidence
+                       rationale,source,confidence,rule_note
                 FROM match_game_setups WHERE report_id=?""", (report["id"],))
             report["game_setup"] = setup[0] if setup else None
+            if report["game_setup"]:
+                # 규칙 제안(core.team_settings)을 기록값 옆에 병기 — G15가 편차 신고를 강제한다.
+                from .team_settings import suggest
+                # 점유는 G15와 같은 원천(player_matches.possession)을 우선한다 — matches.possession은 결손이 많다.
+                report["game_setup"]["rule_suggest"] = suggest(
+                    report.get("pm_possession") if report.get("pm_possession") is not None else report.get("possession"),
+                    report.get("passes_v"),
+                    report.get("long_att_v"), report.get("ppda_v"))
             report["game_players"] = _rows(con, """
                 SELECT mpp.player_id,COALESCE(p.name_kr,p.name) label,p.name name_en,
                        mpp.game_version,mpp.pos_label,mpp.role_id,gr.name role_name,
@@ -318,7 +335,7 @@ def export_all(db_path=None, window="2026-summer"):
             "match_reports": match_reports,
             "evaluations": evals, "season_stats": season_stats, "fbref": fbref,
             "fotmob_season": fm_season,
-            "setups": setups, "profile": profile,
+            "setups": setups, "limits": limits, "profile": profile,
             "transfer": {"targets": targets, "outgoing": outgoing, "ledger": ledger, "summary": summary}}))
 
     con.close()

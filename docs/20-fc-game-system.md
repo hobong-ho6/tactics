@@ -554,3 +554,21 @@ congestion in the wings**"* (FC IQ) · *"a Wingback can move forward **if there 
   **다르다**. 변환 시 docs/30-data-rules.md의 규약 표를 따를 것.
 - 로드맵: 하드코딩 프리셋 → `player_role_map`에서 export한 JSON 로딩으로 전환
   (DESIGN.md "Tool strategy" 참조). 새 시즌·새 버전이 코드 수정 없이 추가되는 상태가 목표.
+
+## ⭐ 팀 설정 매핑 규칙 — 실측 → 빌드업·수비접근·라인 (2026-09-08 사전 등록 · 정본은 `core/team_settings.py`)
+
+> 2026-09-08 점검: `match_game_setups` 19행의 팀 설정값이 회차마다 산문 판단으로 정해져 같은 실측에 다른 값이 여럿이었다.
+> 규칙을 **먼저 고정**하고 편차를 신고하게 한다(G15). 임계값은 FC26 옵션 정의(`game_tactic_params`)와 docs/12 PPDA 정본표에서
+> 정했고 **기존 19행에 맞춰 조정하지 않았다** — 백필 결과 규칙 일치 1 · 편차 14 · 스탯 결손 4. 편차는 규칙의 결함이 아니라 설명할 대상이다.
+
+| 축 | 입력 | 규칙 |
+|---|---|---|
+| 빌드업 | 롱볼 비율 = `long_att_v/passes_v` · 점유 | **Counter** ≥13% 또는 점유 ≤40% · **Short Passing** ≤8% 그리고 점유 ≥55% · 그 밖 **Balanced** |
+| 수비접근·라인 | PPDA(이 저장소 WhoScored 정의만) | **High** ≤8 → 라인 62~72 · **Balanced** 8<x≤12 → 55~62 / 12<x≤18 → 48~58 · **Deep** >18 → ≤45 |
+| Aggressive | — | **제안하지 않는다.** EA 정의가 「즉시 카운터프레스 + 오프사이드 트랩」 묶음이라 PPDA만으론 근거 부족. 카운터프레스 실측이 있을 때 편차 사유로 채택 |
+
+- ⚠️ PPDA는 자기 점유율이 높을수록 기계적으로 올라간다 — 점유 60%+에서 나온 큰 PPDA는 `DIVERGE` 사유로 정당하다(헐전 74%·14.67).
+- 라인 높이 **실측 프록시** `team_match_stats.def_x_v`(수비액션 x 평균, `core.whoscored.def_x`)가 쌓이면 이 표의 라인 대역을
+  실측으로 보정한다 — 그때까지 라인 대역은 옵션 정의에서 온 **사전값**이다.
+- 절차: 경기 프리셋 작성 시 `suggest()` 결과와 비교 → 같으면 `rule_note='RULE'`, 다르면 `'DIVERGE: <사유>'`, 스탯이 없으면
+  `'NO-STATS: <결손 축>'`. 화면(match-report)은 규칙 제안을 기록값 옆에 병기한다.

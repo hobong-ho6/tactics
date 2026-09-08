@@ -77,7 +77,7 @@ CREATE TABLE player_matches(
   stats_json TEXT,                  -- 위 컬럼 외 롱테일 (⚠️ 0은 API 키 생략의 확정값 — docs/30 ①)
   role_note TEXT,                   -- v1 appearances.role (서술)
   heat_note TEXT,                   -- v1 appearances.heat_zones + heat_summary (서술)
-  source TEXT, confidence TEXT,
+  source TEXT, confidence TEXT, cells_poss TEXT, cells_def TEXT, map25_poss TEXT, map25_def TEXT, phase_source TEXT,
   UNIQUE(player_id, event_id),
   CHECK(event_id IS NOT NULL OR match_id IS NOT NULL)
 );
@@ -91,7 +91,7 @@ CREATE TABLE team_match_stats(      -- v1 그대로 (team → team_code만 정�
   cross_att_v INT, cross_acc_v INT, corners_v INT, corners_o INT,
   duelpct_v REAL, fouls_v INT, fouls_o INT,
   formation_v TEXT, formation_o TEXT,
-  source TEXT, confidence TEXT, ppda_v REAL, ppda_o REAL, ppda_num_v INTEGER, ppda_den_v INTEGER, ppda_num_o INTEGER, ppda_den_o INTEGER, ppda_method TEXT, aerial_won_v INTEGER, aerial_att_v INTEGER, aerial_won_o INTEGER, aerial_att_o INTEGER, dribble_succ_v INTEGER, dribble_att_v INTEGER, dribble_succ_o INTEGER, dribble_att_o INTEGER, tackles_v INTEGER, tackles_o INTEGER, interceptions_v INTEGER, interceptions_o INTEGER, clearances_v INTEGER, clearances_o INTEGER, xg_op_v REAL, xg_op_o REAL, blocked_v INTEGER, blocked_o INTEGER, xg_source TEXT,
+  source TEXT, confidence TEXT, ppda_v REAL, ppda_o REAL, ppda_num_v INTEGER, ppda_den_v INTEGER, ppda_num_o INTEGER, ppda_den_o INTEGER, ppda_method TEXT, aerial_won_v INTEGER, aerial_att_v INTEGER, aerial_won_o INTEGER, aerial_att_o INTEGER, dribble_succ_v INTEGER, dribble_att_v INTEGER, dribble_succ_o INTEGER, dribble_att_o INTEGER, tackles_v INTEGER, tackles_o INTEGER, interceptions_v INTEGER, interceptions_o INTEGER, clearances_v INTEGER, clearances_o INTEGER, xg_op_v REAL, xg_op_o REAL, blocked_v INTEGER, blocked_o INTEGER, xg_source TEXT, def_x_v REAL, def_x_o REAL, def_x_method TEXT,
   PRIMARY KEY(event_id, team_code)
 );
 CREATE TABLE player_shot_profile(   -- v1 그대로
@@ -428,7 +428,7 @@ CREATE TABLE match_game_setups(
   rationale TEXT NOT NULL,
   source TEXT NOT NULL,
   confidence TEXT NOT NULL
-);
+, rule_note TEXT);
 CREATE TABLE match_player_prescriptions(
   report_id INTEGER NOT NULL REFERENCES match_reports(id) ON DELETE CASCADE,
   player_id INTEGER NOT NULL REFERENCES players(id),
@@ -591,4 +591,33 @@ CREATE TABLE transfer_summary(
   confidence TEXT NOT NULL,
   updated TEXT NOT NULL,
   PRIMARY KEY(team_code, window)
+);
+CREATE TABLE reproduction_limits(
+  id INTEGER PRIMARY KEY,
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  regime_id INTEGER REFERENCES regimes(id),       -- NULL = 전 체제 공통
+  axis TEXT NOT NULL,                              -- manager_profiles.axis 어휘 (pressing/buildup/formation/…)
+  real_feature TEXT NOT NULL,                      -- 실축에서 관측·요구되는 것
+  limitation TEXT NOT NULL,                        -- 게임 설정 축에 왜 없는가
+  workaround TEXT,                                 -- 근사 수단(있으면)
+  source TEXT NOT NULL, confidence TEXT NOT NULL,
+  added TEXT NOT NULL
+);
+CREATE TABLE ingame_captures(
+  id INTEGER PRIMARY KEY,
+  captured TEXT NOT NULL,                       -- YYYY-MM-DD
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  regime_id INTEGER REFERENCES regimes(id),
+  tactic_code TEXT,                             -- 그 경기에 쓴 FC 공유 코드(12자) — team_tactic_setups.tactic_code와 대조
+  report_id INTEGER REFERENCES match_reports(id),  -- 경기 전용 프리셋을 재현한 경우
+  player_id INTEGER REFERENCES players(id),
+  image_path TEXT NOT NULL,
+  attack_dir TEXT NOT NULL,                     -- up/down/left/right (스크린샷 안 공격 방향)
+  box TEXT,                                     -- 피치 픽셀 상자 x0,y0,x1,y1
+  cells TEXT NOT NULL,                          -- 25칸 가중치 CSV
+  map25 TEXT NOT NULL,
+  ref_kind TEXT,                                -- 'player:<id>:<kind>' | 'kernel:<role>/<focus>@x<n>'
+  ref_map25 TEXT,
+  cosine REAL,
+  note TEXT, source TEXT NOT NULL, confidence TEXT NOT NULL
 );

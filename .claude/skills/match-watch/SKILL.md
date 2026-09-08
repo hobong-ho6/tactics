@@ -28,6 +28,9 @@ description: 시즌 중 정기 경기 수집 — 3팀(AVL·CHE·LIV)의 선수 �
   lineup_pos(G/D/M/F)만으로는 포지션-순수 집계가 안 된다 (2026-08-11 방법론 보강).
 - **스코어 국면**: 같은 오리진에서 `/api/v1/event/<eid>/incidents`로 득점 시각을 받아
   stats_json에 `phase_lead/level/trail` 분(分)을 기록 — @lead/@trail 분리 집계의 원료.
+- ⭐ **국면 분리 그리드 필수**(2026-09-08 신설 · docs/30 「국면 분리 그리드」): WhoScored `matchCentreData.events`를 받아
+  출전 선수 전원에 `core.whoscored.phase_cells(events, wsPlayerId)` → `cells_poss/cells_def/map25_poss/map25_def/phase_source`.
+  ⛔ 브라우저 JS로 계산하지 않는다 — 이벤트 JSON을 파이썬에 넘긴다(불변규칙 4). 같은 이벤트로 §3의 PPDA·def_x도 낸다.
 
 ## 2-1. ⭐ 서사 수집 — 매 회차 의무 (2026-08-12 신설, 사용자 지시)
 
@@ -123,6 +126,16 @@ G12가 누락·원문 경로·UI 연결을 검사한다(초안도 선수 행이 
 `/api/v1/event/<eid>/statistics` → `team_match_stats` + `matches` 행 추가.
 CHE·LIV는 이것이 알론소·이라올라 **체제 첫 실측**이다 — 25/26 데이터와 섞지 말 것(규칙 7).
 
+### ⭐ PPDA·라인 프록시는 매 경기 필수 (2026-09-08 신설)
+`ppda_v/o`(+`ppda_num/den`, `ppda_method`=`core.whoscored.PPDA_METHOD`)와 `def_x_v/o`(+`def_x_method`)를 **같은 WhoScored 이벤트**에서
+`core.whoscored.ppda/def_x`로 계산해 채운다. 2026-09-08 점검에서 PPDA는 70경기 중 14경기, 라인 높이 실측은 0이었다 — 팀 설정
+3축(빌드업·수비접근·라인)을 실측으로 정할 수 없었던 원인이다.
+
+### ⭐ 경기 프리셋 팀 설정은 규칙과 대조한다 — `rule_note` 필수 (G15)
+`match_game_setups`를 쓸 때 `core.team_settings.suggest(점유, passes_v, long_att_v, ppda_v)`를 먼저 돌리고
+`compare()` 결과가 비면 `rule_note='RULE'`, 다르면 `'DIVERGE: <사유>'`(예: 점유 74% PPDA 인플레·감독 발언), 스탯이 없으면 `'NO-STATS: …'`.
+규칙 정본은 docs/20 「팀 설정 매핑 규칙」. 규칙보다 판단이 옳다고 보면 그대로 기록하되 **사유를 남긴다** — 게이트는 사유만 본다.
+
 ### ⛔⛔ xG 계열은 **한 회차에 같은 스냅샷으로** 수집한다 (2026-08-25 신설)
 
 `xg_v`·`xg_o`·`xg_op_v`·`xg_op_o`는 **반드시 같은 실행에서 함께 채운다.** 나중에 일부만 보충하면
@@ -173,7 +186,11 @@ provenance가 산문에만 있으면 **여러 경기를 가로질러 집계할 �
 ## 5. 완료 절차 (매 실행)
 `python3 scripts/export.py` → `scripts/db_dump.sh` →
 `git add db/tactics.db db/dump/ site/data/ reports/match-watch/ && git commit -m "data(match-watch): <라운드 요약>" && git push`
-종료 보고: 팀별 수집 경기 수 / 신규 선수 / 완료 리포트 / 집계·처방 변경 행 / G1~G12 상태.
+⭐ **`manager_profiles` 갱신 판정 필수**(2026-09-08 신설): 완료 리포트마다 영향받은 axis(formation·pressing·buildup·situational·
+rest_defense·set_pieces·role_demands·implementation)에 **덧붙임**(`content || '\n\n[날짜 …]'`, `updated` 갱신)하거나,
+갱신할 것이 없으면 종료 보고에 「profile 갱신 불필요 — 사유」를 적는다. 2026-09-08 점검에서 48행 전부 08-11~08-21 상태로
+공식전 13경기가 반영되지 않았고 CHE·LIV 프로필에 「공식전 0경기」 문구가 그대로 남아 있었다.
+종료 보고: 팀별 수집 경기 수 / 신규 선수 / 완료 리포트 / 집계·처방 변경 행 / **profile 갱신 axis** / G1~G15 상태.
 
 ## 특별 회차
 - **2026-08-12 슈퍼컵(AVL)**: 시즌 첫 실측 — obs#134~136(우측 와이드 선발) 검증을 §2와 함께 수행,

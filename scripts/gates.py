@@ -326,6 +326,95 @@ G13_LABELS = {
 }
 
 
+
+# ── G8 확장 · G15 — 2026-09-08 점검 후속(사용자 지시 5·2번). 검사식은 여기가 정본이다. ──
+import re as _re
+# prescriptions.kind 허용 어휘. pos_class(obs#527)와 같은 병(자유 어휘 60종)을 구조로 고정한다 —
+# 기존 값을 바꾸지 않고 **형태**만 묶는다. 새 접두를 만들려면 여기와 docs/00을 함께 고친다.
+KIND_RE = _re.compile(
+    r"^(fc26:opt:[A-Z]{2,3}(-deprecated)?"
+    r"|measured(:[A-Za-z0-9/_-]+)*(@(dom|tight))?"
+    r"|optimal(:[A-Za-z0-9/_-]+)?(-deprecated)?"
+    r"|role(:[A-Za-z0-9/_-]+)?"
+    r"|projected(:[A-Za-z0-9/_-]+)?(-deprecated)?"
+    r"|match:[A-Z]{3}-[0-9]+-[0-9]+)$")
+G8X_LABELS = {"kind_vocab": "kind어휘이탈", "opt_pos_orphan": "opt슬롯없음",
+              "opt_role_group": "opt역할군불일치", "opt_xi": "opt선발≠11/단일포메이션"}
+
+
+def g8_prescription_checks(con):
+    """게임 처방(prescriptions)이 그 체제의 slots 정본에 **입력 가능한 값**인지.
+    docs/00 「slot_type과 fit_role의 역할군은 반드시 일치해야 한다 (게이트 미보유)」를 게이트화했다.
+    2026-09-08 실물: CHE 선발 12명(3-4-2-1 + 5-4-1 RB) · CHE LDM/RDM 4행(슬롯 없음) · kind 60종."""
+    out = {k: [] for k in G8X_LABELS}
+    out["kind_vocab"] = [k for (k,) in con.execute("SELECT DISTINCT kind FROM prescriptions")
+                         if not KIND_RE.match(k)]
+    out["opt_pos_orphan"] = con.execute("""
+        SELECT p.id, p.regime_id, p.pos_label FROM prescriptions p
+        WHERE p.kind LIKE 'fc26:opt:%' AND p.kind NOT LIKE '%-deprecated'
+          AND NOT EXISTS (SELECT 1 FROM slots s WHERE s.regime_id=p.regime_id AND s.pos=p.pos_label)
+        """).fetchall()
+    out["opt_role_group"] = con.execute("""
+        SELECT p.id, p.regime_id, p.pos_label, p.role_id FROM prescriptions p
+        JOIN game_roles gr ON gr.role_id=p.role_id AND gr.game_version=COALESCE(p.game_version,'FC26')
+        WHERE p.kind LIKE 'fc26:opt:%' AND p.kind NOT LIKE '%-deprecated'
+          AND NOT EXISTS (SELECT 1 FROM slots s WHERE s.regime_id=p.regime_id AND s.pos=p.pos_label
+                            AND s.slot_type=gr.position_type)""").fetchall()
+    # 선발은 체제·버전당 정확히 11명이고, 11명의 pos가 **한 포메이션**의 슬롯에 전부 들어가야 한다.
+    for rid, gv in con.execute("""SELECT DISTINCT regime_id, COALESCE(game_version,'FC26')
+                                  FROM prescriptions WHERE kind LIKE 'fc26:opt:%' AND starter=1"""):
+        poss = [r[0] for r in con.execute("""SELECT pos_label FROM prescriptions
+            WHERE regime_id=? AND COALESCE(game_version,'FC26')=? AND kind LIKE 'fc26:opt:%'
+              AND kind NOT LIKE '%-deprecated' AND starter=1""", (rid, gv))]
+        fits = [f for (f,) in con.execute("SELECT DISTINCT formation FROM slots WHERE regime_id=?", (rid,))
+                if set(poss) <= {p for (p,) in con.execute(
+                    "SELECT pos FROM slots WHERE regime_id=? AND formation=?", (rid, f))}]
+        if len(poss) != 11 or len(set(poss)) != 11 or not fits:
+            out["opt_xi"].append((rid, gv, len(poss), fits))
+    return out
+
+
+def g12_role_group_orphans(con):
+    """경기 프리셋(match_player_prescriptions)의 역할이 그 슬롯의 역할군 밖이면 게임에 입력할 수 없다.
+    2026-09-08 실물 6행 — 교체 투입 자리표시 cm_b2b가 RCB·LM·ST·LAM·RM에 박혀 있었다."""
+    return con.execute("""
+        SELECT mpp.report_id, mpp.pos_label, mpp.role_id
+        FROM match_player_prescriptions mpp JOIN match_reports mr ON mr.id=mpp.report_id
+        JOIN game_roles gr ON gr.role_id=mpp.role_id AND gr.game_version=mpp.game_version
+        WHERE NOT EXISTS (SELECT 1 FROM slots s WHERE s.regime_id=mr.regime_id
+                            AND s.pos=mpp.pos_label AND s.slot_type=gr.position_type)""").fetchall()
+
+
+G15_LABELS = {"note_missing": "rule_note결손", "undeclared_diverge": "미신고편차",
+              "false_nostats": "거짓NO-STATS"}
+
+
+def g15_checks(con):
+    """팀 설정 3축 규칙(core.team_settings) 준수 — 「규칙과 같거나, 다르면 사유가 있다」.
+    규칙 자체는 사전 등록(docs/20)이며 여기서는 기록과 규칙의 **차이가 신고됐는지**만 본다."""
+    from core.team_settings import suggest, compare
+    out = {k: [] for k in G15_LABELS}
+    for rid, status, bu, da, lh, note, poss, ppda, passes, long_att in con.execute("""
+        SELECT mgs.report_id, mr.status, mgs.build_up_style, mgs.defensive_approach, mgs.line_height,
+               mgs.rule_note,
+               (SELECT MAX(possession) FROM player_matches pm
+                 WHERE pm.event_id=mr.event_id AND pm.team_code=mr.team_code),
+               ts.ppda_v, ts.passes_v, ts.long_att_v
+        FROM match_game_setups mgs JOIN match_reports mr ON mr.id=mgs.report_id
+        LEFT JOIN team_match_stats ts ON ts.event_id=mr.event_id AND ts.team_code=mr.team_code"""):
+        if not note or not note.strip():
+            if status == "complete":
+                out["note_missing"].append(rid)
+            continue
+        sug = suggest(poss, passes, long_att, ppda)
+        diff = compare(sug, bu, da, lh)
+        if diff and not note.startswith("DIVERGE"):
+            out["undeclared_diverge"].append((rid, diff))
+        if note.startswith("NO-STATS") and sug["build_up_style"] and sug["defensive_approach"]:
+            out["false_nostats"].append(rid)
+    return out
+
+
 def run(db_path=None, verbose=True):
     db_path = db_path or DB
     con = sqlite3.connect(db_path)
@@ -469,6 +558,16 @@ def run(db_path=None, verbose=True):
         print(f"G8 공통 슬롯 후보 풀: {detail} {'✅' if ok8 else '⛔'}")
     if not ok8:
         fails.append("G8")
+
+    # G8 확장 — 게임 처방이 slots 정본에 입력 가능한가(docs/00 「게이트 미보유」 항목의 게이트화, 2026-09-08).
+    g8x = g8_prescription_checks(con)
+    ok8x = not any(g8x.values())
+    if verbose:
+        summary = " · ".join(f"{G8X_LABELS[k]} {len(v)}" for k, v in g8x.items())
+        detail = "" if ok8x else " ⛔ " + str({k: v[:3] for k, v in g8x.items() if v})
+        print(f"G8+ 게임 처방 정합: {summary} {'✅' if ok8x else detail}")
+    if not ok8x:
+        fails.append("G8+")
 
     # G9 — 생성 JSON과 UI가 어긋나는 캐시 회귀를 정적 검사한다.
     root = Path(__file__).resolve().parent.parent
@@ -663,6 +762,7 @@ def run(db_path=None, verbose=True):
         SELECT event_id, team_code FROM team_match_stats
         WHERE xg_source LIKE 'MIXED:%'""").fetchall()
     XG_MIXED_EXPECTED = 3   # ATM 말라가 · ATM 비야레알 · LIV 뉴캐슬 (2026-09-06 전수 분류)
+    orphan_preset_roles = g12_role_group_orphans(con)
     orphan_preset_slots = con.execute("""
         SELECT mpp.report_id,mpp.pos_label
         FROM match_player_prescriptions mpp
@@ -685,7 +785,7 @@ def run(db_path=None, verbose=True):
     ok12 = (
         not incomplete_reports and not uncovered_report_players and not missing_report_files
         and not missing_match_presets and not uncovered_match_prescriptions
-        and not playerless_reports and not orphan_preset_slots
+        and not playerless_reports and not orphan_preset_slots and not orphan_preset_roles
         and not xg_openplay_violations
         and not xg_source_missing
         and len(xg_source_mixed) <= XG_MIXED_EXPECTED
@@ -716,7 +816,7 @@ def run(db_path=None, verbose=True):
               f"{len(playerless_reports)} · 선수누락 "
               f"{len(uncovered_report_players)} · 원문누락 {len(missing_report_files)} · "
               f"경기프리셋누락 {len(missing_match_presets)} · 선수처방누락 {len(uncovered_match_prescriptions)} · "
-              f"슬롯없는프리셋 {len(orphan_preset_slots)} · 오픈플레이xG모순 {len(xg_openplay_violations)} · "
+              f"슬롯없는프리셋 {len(orphan_preset_slots)} · 역할군밖프리셋 {len(orphan_preset_roles)} · 오픈플레이xG모순 {len(xg_openplay_violations)} · "
               f"xG원천결손 {len(xg_source_missing)} · xG스냅샷혼합 {len(xg_source_mixed)}/{XG_MIXED_EXPECTED} "
               f"{'✅' if ok12 else '⛔'}")
     if not ok12:
@@ -748,6 +848,18 @@ def run(db_path=None, verbose=True):
                   "G14_ALLOW_REWRITE=<table>:<id>,... 로 지정해 통과시킨다.")
     if not ok14:
         fails.append("G14")
+
+    # G15 — 팀 설정 규칙 준수(core.team_settings · docs/20 「팀 설정 매핑 규칙」). 2026-09-08 신설.
+    #   백필 결과 19행 중 규칙 일치 1 · 편차 14 · 스탯 결손 4 — 즉 지금까지의 설정값은 대부분 산문 판단이었다.
+    #   이 게이트는 값을 강제하지 않고 **편차 신고**(rule_note 'DIVERGE: 사유')를 강제한다.
+    g15 = g15_checks(con)
+    ok15 = not any(g15.values())
+    if verbose:
+        summary = " · ".join(f"{G15_LABELS[k]} {len(v)}" for k, v in g15.items())
+        detail = "" if ok15 else " ⛔ " + str({k: v[:3] for k, v in g15.items() if v})
+        print(f"G15 팀 설정 규칙: {summary} {'✅' if ok15 else detail}")
+    if not ok15:
+        fails.append("G15")
 
     con.close()
     if verbose:

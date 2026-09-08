@@ -31,7 +31,12 @@ document.getElementById('title').textContent =
 
 // FC26 설정 시트 — 팀 세팅(setups 최신 projected/optimal) + 슬롯별 게임 처방(fc26:opt)
 const su = td.setups.filter(x=>!/deprecated|reference/.test(x.kind) && /projected|optimal/.test(x.kind)).slice(-1)[0] ?? td.setups.slice(-1)[0];
-document.getElementById('teamset').innerHTML = su ? `<b>${su.formation??''}</b> · 빌드업 <b>${su.build_up_style??'—'}</b> · 수비 <b>${su.defensive_approach??'—'}</b> · 라인 <b>${su.line_height??'—'}</b> · (${su.kind}, ${su.season})` : '팀 세팅 미기록';
+/* 재현 불가 항목(reproduction_limits, migration 027) — 설정값 옆에 개수를 붙이고 목록은 접는다.
+   설정 시트를 읽는 사람이 「이 값이 담지 못하는 것」을 같은 화면에서 보게 하기 위해서다(2026-09-08 점검 7번). */
+const lim = td.limits ?? [];
+const limHtml = lim.length ? ` · <details style="display:inline-block"><summary style="display:inline;cursor:pointer">⚠ 재현 불가 <b>${lim.length}</b>건</summary>
+  <ul class="dim" style="margin:.4em 0 0 1em">${lim.map(l=>`<li><b>${l.axis}</b>${l.regime_id?'':' <small>(공통)</small>'} — ${l.real_feature}<br><small>${l.limitation}${l.workaround&&l.workaround!=='—'?` · 근사: ${l.workaround}`:''} · <i>${l.source}</i></small></li>`).join('')}</ul></details>` : '';
+document.getElementById('teamset').innerHTML = (su ? `<b>${su.formation??''}</b> · 빌드업 <b>${su.build_up_style??'—'}</b> · 수비 <b>${su.defensive_approach??'—'}</b> · 라인 <b>${su.line_height??'—'}</b> · 전술 코드 <b>${su.tactic_code||'미기입'}</b> · (${su.kind}, ${su.season})` : '팀 세팅 미기록') + limHtml;
 /* 한 regime에 복수 포메이션이 있을 수 있다(AVL 4-2-3-1 Wide + 4-4-2). 시즌 정본 화면은
    첫 포메이션만 쓴다 — 걸러내지 않으면 pos가 중복돼 좌표가 덮어써진다. */
 const canonSlots = td.slots.filter(s2=>s2.formation===td.slots[0]?.formation);
