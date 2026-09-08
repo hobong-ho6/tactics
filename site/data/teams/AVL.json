@@ -69709,13 +69709,13 @@
   },
   {
    "build_up_style": "Short Passing",
-   "confidence": "MEDIUM — 코드 12자 중 9번째 「6」은 「b」 가능성 잔존(사용자가 5번째 d 확정·전술 편집 확인). 720p 스트림 판독. 게임에서 「코드 사용」 입력 성공 시 HIGH로 올린다.",
+   "confidence": "HIGH — 사용자가 코드 12자 전부 확정(2026-09-08). 720p 판독 → 사용자 검증. 라인 높이만 미확인.",
    "defensive_approach": "Balanced",
    "formation": "4-2-3-1 Wide",
    "game_version": "FC26",
    "kind": "ingame:user-2026-09-08",
    "line_height": null,
-   "rationale": "사용자가 PS5(FC26 UT)에 실제로 입력한 전술 — PS Remote Play 캡처 2장(2026-09-08)에서 판독. 팀 설정 3축 중 포메이션·빌드업·수비접근은 시즌 처방(id16)과 일치, 라인 높이는 화면에 없어 미확인. 11명(화면 판독): GK 스즈키 gk_sweeper/Build-Up · LB 마첸 fb_att_wb/Support · LCB 린델뢰프 cb_bpd/Build-Up · RCB 시세 cb_bpd/Aggressive · RB 캐시 fb_att_wb/Support · LDM 고레츠카 dm_dlp/Roaming · RDM 카마라 dm_holding/Ball-Winning · LM 가르나초 wm_winger/Attack · CAM 만잠비 cam_playmaker/Roaming · RM 맥긴 wm_wideplm/Attack · ST 잭슨 st_advanced/Support. ⚠️ 정본(slot_canon_roles)과의 차이 4건: ⑴ LM winger/Attack — 자기진영 질량 .12로 뱅크 불성립(docs/20 ⑨·obs#443) ⑵ RM wideplm/Attack — 정본 widemid/Support(뱅크 복귀형) ⑶ GK sweeper — 실측 골라인 고정(obs#154) ⑷ RDM holding/Ball-Winning — 정본 Defend. 차이 사유(선호·숙련도·실험)는 사용자 미답. ⛔ 이 행은 사용자 인게임 버전의 기록이며 처방(id16)의 tactic_code가 아니다 — id16 코드는 정본 11명을 그대로 입력한 뒤 발급받아 기입한다.",
+   "rationale": "사용자가 PS5(FC26 UT)에 실제로 입력한 전술 — PS Remote Play 캡처 2장(2026-09-08)에서 판독. 팀 설정 3축 중 포메이션·빌드업·수비접근은 시즌 처방(id16)과 일치, 라인 높이는 화면에 없어 미확인. 11명(화면 판독): GK 스즈키 gk_sweeper/Build-Up · LB 마첸 fb_att_wb/Support · LCB 린델뢰프 cb_bpd/Build-Up · RCB 시세 cb_bpd/Aggressive · RB 캐시 fb_att_wb/Support · LDM 고레츠카 dm_dlp/Roaming · RDM 카마라 dm_holding/Ball-Winning · LM 가르나초 wm_winger/Attack · CAM 만잠비 cam_playmaker/Roaming · RM 맥긴 wm_wideplm/Attack · ST 잭슨 st_advanced/Support. ⚠️ 정본(slot_canon_roles)과의 차이 4건: ⑴ LM winger/Attack — 자기진영 질량 .12로 뱅크 불성립(docs/20 ⑨·obs#443) ⑵ RM wideplm/Attack — 정본 widemid/Support(뱅크 복귀형) ⑶ GK sweeper — 실측 골라인 고정(obs#154) ⑷ RDM holding/Ball-Winning — 정본 Defend. 차이 사유(선호·숙련도·실험)는 사용자 미답. ⛔ 이 행은 사용자 인게임 버전의 기록이며 처방(id16)의 tactic_code가 아니다 — id16 코드는 정본 11명을 그대로 입력한 뒤 발급받아 기입한다. [2026-09-08 사용자 확정] 코드 ?ZWKd#Zw6mre 전 글자 확정. 사용자 결정: 이 전술을 테스트 프리셋으로 플레이하고 Match Facts 히트맵을 전달 → ingame_captures 첫 실물 표본(정본과의 4슬롯 차이는 그대로 둔 채 측정한다).",
    "season": "2026-27",
    "tactic_code": "?ZWKd#Zw6mre"
   },
