@@ -51715,27 +51715,27 @@
    "role_id": "dm_holding"
   },
   {
-   "cos_avg": 0.42,
+   "cos_avg": 0.43,
    "cos_max": 0.6,
    "cos_min": 0.29,
    "fidelity": "LOW",
    "focus": "Support",
    "game_version": "FC26",
-   "n": 7,
-   "n_matches": 4,
+   "n": 6,
+   "n_matches": 3,
    "n_players": 3,
    "role_id": "fb_att_wb"
   },
   {
-   "cos_avg": 0.2,
-   "cos_max": 0.2,
+   "cos_avg": 0.31,
+   "cos_max": 0.42,
    "cos_min": 0.2,
    "fidelity": "n<3",
    "focus": "Balanced",
    "game_version": "FC26",
-   "n": 1,
+   "n": 2,
    "n_matches": 1,
-   "n_players": 1,
+   "n_players": 2,
    "role_id": "fb_wingback"
   },
   {
@@ -70926,6 +70926,18 @@
    "rationale": "사용자 테스트 전술 3 — id20(AZYMfMjy8otg)에서 **LM 가르나초만 wm_winger/Attack → wm_wideplm/Attack(정본)** 로 바꾼 단일 변수 A/B(사용자 진술 기준, 화면 미확인). 근거: 테스트 1·2에서 가르나초(비조작)의 게임 분포가 winger/Attack 커널 .34/.32 vs 정본 wideplm/Attack .74/.61로 2경기 연속 정본 우위(obs#537). 판별: ⑴ 가르나초 자기진영 비중·정본 커널 cos 변화 ⑵ 마첸(LB) 분포 변화 — 「옆 풀백이 와이드 위치를 정한다」(윙 혼잡 회피, docs/20 ⑨) 가설 ⑶ 재현성 기준선 .86~.91 대비 다른 슬롯 불변 확인. 캡처 폴더 reports/ingame/2026-09-08-avl-test3/. [2026-09-08 처리 후 보정] 사용자 진술로 확인된 변경은 한 슬롯이 아니라 셋이다: LM wideplm/Attack(부엔디아 전반·가르나초 후반) · **RB fb_wingback/Balanced**(캐시 전반·완비사카 후반 — 정본과 일치, 테스트 1·2의 att_wb/Support에서 변경) · RM 후반 음바예 winger/Attack(맥긴 widemid/Support는 전반만). 상대 Aachen SC 4-3-3, 7-0, 점유 42%. ⚠️ RB 두 명은 캡처가 없어 wingback/Balanced 효과는 측정 불가. ingame_captures 30~42(13행, shot_17은 시세 중복).",
    "season": "2026-27",
    "tactic_code": "?ZWKtKhw6ere"
+  },
+  {
+   "build_up_style": "Short Passing",
+   "confidence": "MEDIUM — 코드·변경 슬롯 사용자 진술. 라인 높이 미확인 · 팀 통계 캡처 없음(점유·스코어 결손).",
+   "defensive_approach": "Balanced",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "kind": "ingame:user-2026-09-08d",
+   "line_height": null,
+   "rationale": "사용자 테스트 전술 4 — id21(?ZWKtKhw6ere)에서 **LB 마첸만 fb_att_wb/Support → fb_wingback/Balanced** 로 바꾼 단일 변수 A/B(사용자 확정). 나머지: LM wideplm/Attack · RM widemid/Support · RB wingback/Balanced · GK sweeper/Build-Up 등 테스트 3 구성. 상대 온라인(SHAB7 BANI ESA, 4-1-3-2 추정), 교체 없음, 조작 잭슨·만잠비. 근거: 테스트 1~3에서 마첸 att_wb/Support 커널 cos .29/.43/.42(LOW)로 가장 안 맞는 자리. 결과(ingame_captures 49): wingback/Balanced cos 0.416(att_wb 기준이었다면 0.401), 자기진영 52.6%(팀 평균 37.3%, 편차 +15.3 — T1~T3 편차 −0.8/+21/+9.9), 군내 최적 fb_falseback/Balanced 0.76.",
+   "season": "2026-27",
+   "tactic_code": "6YSGpGdk2ana"
   },
   {
    "build_up_style": "Short Passing",
