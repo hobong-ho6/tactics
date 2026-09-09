@@ -89,3 +89,4 @@ INSERT INTO matches VALUES(95,5795440,'AVL','2026-27','2026-09-05','Hull City','
 INSERT INTO matches VALUES(96,16363261,'LIV','2026-27','2026-09-04','Ipswich Town','Premier League','A','2-0',1,'Round 3',55.0);
 INSERT INTO matches VALUES(97,16416317,'ATM','2026-27','2026-09-05','Athletic Club','LaLiga','A','0-3',1,'라운드 4',62.0);
 INSERT INTO matches VALUES(98,16363257,'CHE','2026-27','2026-09-06','Arsenal','Premier League','A','1-2',1,'Premier League',45.0);
+INSERT INTO matches VALUES(99,16938841,'AVL','2026-27','2026-09-08','Club Brugge KV','UEFA Champions League','A','2-3',1,'League Phase MD1',36.0);
