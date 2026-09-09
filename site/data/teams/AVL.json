@@ -70892,6 +70892,18 @@
    "tactic_code": null
   },
   {
+   "build_up_style": null,
+   "confidence": "PENDING — 코드만 확보. 역할 구성·팀 설정·모드 미확인",
+   "defensive_approach": null,
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC26",
+   "kind": "ingame:sim-2026-09-09a",
+   "line_height": null,
+   "rationale": "⭐ 첫 **시뮬레이션** 경기 전술(사용자 조작 0 — 22명 전원 AI). 목적: 커널 신뢰도 표(v_kernel_fidelity)에서 조작 오염 없는 표본을 얻고, 팀 설정 3축의 효과를 처음 읽을 수 있는지 확인(docs/50 「시뮬레이션」 논의). 슬롯별 역할·팀 설정·모드(커리어 시뮬레이션 관전 여부)·상대는 사용자 진술 대기. 다음 역할 A/B 대기 항목: 빌드업 Short Passing → Balanced(사용자 결정으로 보류). 캡처 폴더 reports/ingame/2026-09-09-avl-sim1/.",
+   "season": "2026-27",
+   "tactic_code": "9ZVJsJYv5dqd"
+  },
+  {
    "build_up_style": "Short Passing",
    "confidence": "HIGH — 사용자가 코드 12자 전부 확정(2026-09-08). 720p 판독 → 사용자 검증. 라인 높이만 미확인.",
    "defensive_approach": "Balanced",
