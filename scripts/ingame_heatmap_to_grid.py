@@ -28,7 +28,46 @@ from core import DB                          # noqa: E402
 from core.encode import encode               # noqa: E402
 from core.kernel import Kernel, cos, decode  # noqa: E402
 
-PH, PW, GK_OFF = 1013, 759, 48   # 피치 외곽 크기 · GK 점 중심→하단선 거리 (Remote Play 창 크기 고정 전제)
+PH0, PW0, GK_OFF0, ACC0 = 1013, 759, 48, 653   # 기준 창 크기(Remote Play 720p 창)에서의 피치 외곽·GK 점 오프셋·선수표 강조선 높이
+PH, PW, GK_OFF = PH0, PW0, GK_OFF0                # scale_from_accent()가 창 크기에 맞춰 갱신한다
+HEAT_MODE = "green"                              # UT 모드 = 초록 육각 / 커리어 모드 = 흰 육각 (--heat white)
+
+
+def scale_from_accent(a):
+    """선수표의 밝은 세로 강조선 **높이**(기준 653px)로 창 스케일을 잡는다 — 위치는 스크롤로 움직이지만 높이는 UI 고정.
+    커리어 모드 시뮬레이션 캡처(2026-09-09)는 창이 작아 590px → 0.90배였다. 못 찾으면 1.0."""
+    global PH, PW, GK_OFF
+    lum = a.mean(axis=2)
+    sat = a.max(axis=2) - a.min(axis=2)
+    m = (lum > 140) & (sat < 30)
+    H, W = m.shape
+    lens = []
+    for x in range(W):
+        col = m[:, x]
+        cur = mx = 0
+        for v in col:
+            cur = cur + 1 if v else 0
+            mx = max(mx, cur)
+        if 400 <= mx <= 700:
+            lens.append(mx)
+    if len(lens) < 6:
+        return 1.0
+    L = float(np.median(lens))
+    sc = L / ACC0
+    PH, PW, GK_OFF = int(round(PH0 * sc)), int(round(PW0 * sc)), int(round(GK_OFF0 * sc))
+    return sc
+
+
+def heat_mask(sub):
+    r, g, b = sub[..., 0], sub[..., 1], sub[..., 2]
+    if HEAT_MODE == "white":
+        lum = sub.mean(axis=2)
+        sat = sub.max(axis=2) - sub.min(axis=2)
+        # 흰 육각(밝기 ≥200·무채색). 피치 라인(≈100~180)·점 테두리는 대부분 걸러지고, 남는 얇은 선은 격자에 균등 잡음으로만 들어간다.
+        heat = (lum >= 200) & (sat < 40)
+        return heat, np.where(heat, lum / 255.0, 0.0)
+    heat = (g > r + 40) & (g > b + 40) & (g > 110)
+    return heat, np.where(heat, g / 255.0, 0.0)
 
 
 def _clusters(idx, gap=3):
@@ -61,6 +100,8 @@ def _outline_gk_box(a):
     lum = a.mean(axis=2)
     sat = a.max(axis=2) - a.min(axis=2)
     grey = (lum > 60) & (sat < 40)
+    if HEAT_MODE == "white":
+        grey &= lum < 190          # 흰 히트가 회색 마스크를 채워 외곽선 열을 가리는 것을 막는다(커리어 모드)
     H, W = grey.shape
     c = np.concatenate([np.zeros((1, W), int), np.cumsum(grey, axis=0)])
     colwin = (c[PH:] - c[:-PH]).max(axis=0)
@@ -81,6 +122,8 @@ def _outline_gk_box(a):
     cands = []
     if gk:
         cands.append((gk[-1][0] + gk[-1][-1]) // 2 + GK_OFF)
+        # ST 점(최상단 중앙, 상단선 +80px·스케일 비례) — GK 선수를 선택해 GK 점이 흰색일 때의 대체 기준(2026-09-09 시뮬 스즈키)
+        cands.append((gk[0][0] + gk[0][-1]) // 2 - int(round(80 * PH / PH0)) + PH)
     # ⑵ 하단 외곽선: xl..xr 구간 회색 ≥60%인 행 클러스터 중 상단선(≈PH 위)도 30%+ 보이는 가장 아래 행
     rows = grey[:, xl + 3:xr - 3].sum(axis=1)
     width = xr - xl - 6
@@ -94,7 +137,7 @@ def _outline_gk_box(a):
         if yt < 0:            # 하단이 이미지 밖으로 조금 잘린 캡처는 허용(슬라이싱이 클립) — 테스트 1 shot_05·13
             continue
         sub = a[yt:yb, xl:xr]
-        if ((sub[..., 1] > sub[..., 0] + 40) & (sub[..., 1] > sub[..., 2] + 40) & (sub[..., 1] > 110)).sum() > 0:
+        if heat_mask(sub)[0].sum() > 0:
             return (xl, yt, xr, yb)
     raise SystemExit("⛔ 피치 세로 기준(GK 점·하단선)을 찾지 못했다 — --box로 지정할 것")
 
@@ -102,9 +145,7 @@ def _outline_gk_box(a):
 def heat_cells(a, box, attack="up"):
     xl, yt, xr, yb = box
     sub = a[yt:yb, xl:xr].astype(int)
-    r, g, b = sub[..., 0], sub[..., 1], sub[..., 2]
-    heat = (g > r + 40) & (g > b + 40) & (g > 110)
-    w = np.where(heat, g / 255.0, 0.0)
+    heat, w = heat_mask(sub)
     H, W = w.shape
     ys, xs = np.mgrid[0:H, 0:W]
     fx, fy = (xs + 0.5) / W, (ys + 0.5) / H
@@ -136,9 +177,20 @@ def main():
     ap.add_argument("--save", action="store_true"); ap.add_argument("--controlled", action="store_true")
     ap.add_argument("--regime", type=int); ap.add_argument("--tactic-code"); ap.add_argument("--report-id", type=int)
     ap.add_argument("--note", default=""); ap.add_argument("--game-version", default="FC26")
+    ap.add_argument("--heat", default="green", choices=["green", "white"], help="히트맵 색: UT=green, 커리어 모드=white")
+    ap.add_argument("--scale", type=float, default=1.0, help="Remote Play 창 크기가 기준(720p 창)과 다를 때의 배율")
     a = ap.parse_args()
 
+    global HEAT_MODE
+    HEAT_MODE = a.heat
     arr = np.asarray(Image.open(a.image).convert("RGB")).astype(int)
+    # ⚠️ 강조선 높이 기반 자동 스케일은 쓰지 않는다 — 커리어 모드는 강조선 높이가 590px로 다르지만 피치는 같은 759px였다(2026-09-09 실측).
+    #    창 크기가 실제로 바뀐 캡처는 --scale로 지정한다.
+    sc = a.scale
+    if sc != 1.0:
+        global PH, PW, GK_OFF
+        PH, PW, GK_OFF = int(round(PH0 * sc)), int(round(PW0 * sc)), int(round(GK_OFF0 * sc))
+        print(f"창 스케일 {sc:.3f} → 피치 {PW}×{PH}px, GK 오프셋 {GK_OFF}")
     box = tuple(a.box) if a.box else auto_box(arr)
     cells, n = heat_cells(arr, box, a.attack)
     m25 = encode(cells)
@@ -184,7 +236,7 @@ def main():
                        VALUES(date('now'),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                     (a.game_version, a.regime, a.tactic_code, a.report_id, a.player_id, str(a.image), a.attack,
                      ",".join(map(str, box)), ",".join(map(str, cells)), m25, ref_kind, ref_map, sim, note,
-                     "scripts/ingame_heatmap_to_grid.py (Remote Play 720p 캡처 · 초록 육각 가중 · GK 점 기준 상자)",
+                     f"scripts/ingame_heatmap_to_grid.py (Remote Play 캡처 · {HEAT_MODE} 육각 가중 · GK 점/하단선 기준 상자 · 스케일 {sc:.2f})",
                      "MEDIUM — 위치 기반 게임 히트맵 vs 터치 기반 실측 원천 차이 · 사용자 플레이 스타일 혼입 · 단일 경기"))
         con.commit()
         print("ingame_captures INSERT ✅")
