@@ -770,3 +770,19 @@ role_demands** + 서사 회차 **buildup · rotation** (`content || '\n\n[2026-0
 ### G12·게이트
 
 - `python3 scripts/gates.py` — §종료 보고 참조.
+
+---
+
+## 8-3 addendum — D+1 영상 회수 (2026-09-09, 사용자 지시 「UTVFANCHANNEL 선수·전술 분석 영상」)
+
+| 채널 | 제목 | 게시일 | ID | 확인 방식 | 반영 |
+|---|---|---|---|---|---|
+| ⭐ **UTV \| Aston Villa Fan Channel** | HOW NICOLAS JACKSON IS CHANGING ASTON VILLA'S ATTACK (25:58) | 2026-09-09 | `cpIZf5nxK-4` | **auto-caption 전사** (`reports/transcripts/cpIZf5nxK-4.en.md`) | obs#567·#568 · `player_duties`#199 · §5 잭슨 덧붙임 |
+| UTV | HOW ZION SUZUKI IS UNLOCKING PREMIER LEAGUE DEFENCES | 2026-09-06 | `O3FsbsbSnSc` | 이미 전사 | ⛔ **헐전 자료**(report 31 §8-8·obs#474) — 브뤼헤전 축 아님 |
+| UTV | (전술 에피소드) | 예고 「내일 밤」= 09-10 | — | — | **D+2 회차 회수 대상** |
+
+**수확 3건.** ⑴ 잭슨 오프볼: 11' 골의 **미끼 러닝**(CB 딜레마 → 맥긴 1v1 고립) · 22' 골의 **홀드업→백힐**(조앙 고메스 기점) · 헤밍스 빅찬스의 라인 사이 패스 — 리액션 영상의 「공급받아야 산다」와 반대편 기능(공급자·미끼)이 처음 서술됐다.
+⑵ 낭독 수치: xG 1.29(우리 FotMob 1.17 — 제공사 차이, 저장값 불변) · 터치 39(+10) · 드리블 2/4 · 빅찬스 창출 1 · 패스 82%. ⑶ 히트맵 코멘트 「he steps back, and then you run … we need him to stretch the defense at the same time」 — 하강과 스트레치를 동시에 요구, obs#446(국면 반응)과 정합.
+**부수**: 포레스트(09-12) 백3 + 스텝업 CB 단서(obs 신규, 프리뷰용). 패스네트워크 「every player connected」 서술은 우리 실측(패스 337·전방 다량 경로 맥긴 33뿐)보다 후하다 — 3티어 인상 서술로만.
+⚠️ 전부 auto-caption·3티어. 골 장면 2건은 영상 재확인으로 승격 가능.
+
