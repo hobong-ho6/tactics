@@ -709,3 +709,377 @@ SI: **"A curious choice on the hour from Alonso to remove Lavia."**(라비아를
 4. 알론소 「too early」 발언의 **대상 선수 확정**(ESPN은 카이세도로 특정하나 그는 명단 외).
 5. 「중앙 공격 / 와이드 수비」 부하 논점의 **독립 소스 1건** — 현재 근거 2건이 같은 분석 채널(풀럼전·아스날전)이다.
 6. 선제골 마무리 형태 4중 충돌(발리 / 박스 밖 첫 터치 / 박스 안 / 낮은 오른발) — 영상 확인 필요.
+
+## D+3 추적 (2026-09-09)
+
+> 이 절도 **덧붙임**이다(불변규칙 2). 당일 절·D+2 절은 고치지 않았다.
+> ⭐ **D+2가 넘긴 6건 중 5건이 닫혔다.** 결정적 전환은 두 가지다 —
+> ⑴ **스페인 매체 브라우저 경로가 열렸다**(WebSearch API 차단 ≠ 접근 불가). marca·sport.es·relevo를 직접 읽었다.
+> ⑵ **D+2의 「Between the Lines 0건」은 사이트명 오기였다** — 실제 이름은 **Between the Posts**이고, 이 경기 전문 분석이 있었다.
+
+### 확보한 1차 자료 (D+3 신규)
+
+| # | 종류 | 매체 | 언어 | 확인 방식 |
+|---|---|---|---|---|
+| 1 | ⭐⭐ 전술 분석 | **Between the Posts**(Josh Manley, 09-07) | 🇬🇧 | 브라우저 직접 — 패스맵 포함 |
+| 2 | ⭐⭐ 전술 분석 | **tacticalfootballanalysis**(Joana Freitas, 09-08) | 🇬🇧 | 브라우저(후반 유료벽) |
+| 3 | ⭐ 전술 분석 | **Chelsea FC Online**(Nnanna Mba, 09-08) | 🇬🇧 | 브라우저 |
+| 4 | ⭐⭐ 경기 리포트 | **marca.com** 크로니카(Alberto Rubio, 09-06) | 🇪🇸 | **브라우저 — D+2 차단 돌파** |
+| 5 | ⭐⭐ 경기 리포트 | **sport.es**(Clàudia Espinosa, 09-06) | 🇪🇸 | **브라우저 — D+2 차단 돌파** |
+| 6 | 선수 프로필 | **relevo.com** 차바리아론(Miguel Ruiz, 08-27) | 🇪🇸 | 브라우저 |
+| 7 | ⭐ 매치 리포트·피처 3편 | **readchelsea.com**(James Chettle, 09-06·07) | 🇬🇧 | **브라우저 — D+2 403 돌파** |
+| 8 | ⭐ 상대팀 관점 | **readarsenal.com**(09-06·07) | 🇬🇧 | 브라우저 |
+| 9 | ⭐ 경기 리포트 | **vi.nl**(09-06) | 🇳🇱 | 브라우저 — 신규 |
+| 10 | 평점 종합 | **voetbalprimeur.nl**(09-07) | 🇳🇱 | 브라우저 — 신규 |
+| 11 | ⭐ 전 선수 평점 | **hommedumatch.fr**(Romain Mazzotti, 09-07) | 🇫🇷 | 브라우저 — **프랑스어 이 경기 첫 1차 소스** |
+| 12 | 감독 발언 | **NBC Sports** 알론소 반응 | 🇬🇧 | WebFetch |
+
+### ⭐⭐ D+3 과제 ① — 선제골(2' 로저스) 마무리 형태 **확정**. 4중 충돌은 대부분 **가짜 충돌**이었다
+
+**여섯 개 소스가 같은 것을 말한다**(그중 셋이 D+2에 없던 언어권이다).
+
+> 🇪🇸 marca: **"Morgan Rogers … empaló desde la frontal un balón peinado por Jorrel Hato."**
+> (모건 로저스가 **하토가 스친 볼**을 **박스 정면 밖에서 첫 터치로 내리찍었다**.)
+> 🇪🇸 sport.es: **"El ex del Villa empaló un balón en la frontal tras una falta lateral."**
+> (빌라 출신은 **측면 프리킥** 뒤 **박스 정면 밖에서 첫 터치로 때렸다**.)
+> 🇬🇧 Between the Posts: **"Rogers' volley from the edge of the box found the bottom corner."**
+> (로저스의 **박스 외곽 발리**가 **골대 아래 구석**으로 들어갔다.)
+> 🇬🇧 tacticalfootballanalysis: **"the ball fell to Rogers after a rebound, and he finished with a first-touch shot from outside the box."**
+> (**리바운드** 뒤 볼이 로저스에게 떨어졌고 그는 **박스 밖에서 첫 터치 슛**으로 마무리했다.)
+> 🇬🇧 ReadChelsea: **"before it dropped towards Rogers outside the area. The summer signing swept a first-time effort beyond David Raya."**
+> (볼이 **박스 밖** 로저스 쪽으로 떨어졌다. 이 여름 영입생은 **첫 터치 슛**을 라야 너머로 밀어 넣었다.)
+> 🇫🇷 HommeDuMatch: **"Morgan Rogers avait ouvert le score d'une reprise de volée sur coup de pied arrêté."**
+> (로저스가 **세트피스에서 발리**로 선제골을 넣었다.)
+
+⇒ **확정: 세트피스 → 박스 밖(프론탈) → 첫 터치 발리 → 골대 아래 구석.**
+⭐⭐ **D+2가 「4가지로 갈린다」고 본 것 중 3가지는 같은 사건의 다른 해상도였다.**
+「발리」(SI·Standard)·「박스 밖 첫 터치」(chelseafc·🇳🇱)·「낮은 오른발 땅볼」(La Nación)은 **서로 모순이 아니다** —
+발리 = 첫 터치, 프론탈 = 박스 밖, 낮은 땅볼 = bottom corner. **실제 오류는 「박스 안」(Playmaker Brasil) 하나뿐**이고 6:1로 반증됐다.
+⇒ **규약 교훈**: 소스 충돌표를 만들 때 **서술 해상도 차이를 사실 충돌로 계상하지 말 것.** 같은 사건을
+「동작」·「위치」·「궤적」 축으로 분해하면 충돌인지 보완인지 갈린다.
+
+**부수 성과 — D+2 충돌 #3(선제골 헤더 승자: 하토 ↔ 라크루아)도 해소됐다. 둘 다 맞다.**
+> ReadChelsea: **"James delivered a free-kick into the Arsenal penalty area and Maxence Lacroix won the initial aerial challenge. Jorrel Hato kept the second ball alive before it dropped towards Rogers."**
+> (제임스가 프리킥을 넣었고 **라크루아가 최초 공중 경합을 이겼다**. **하토가 세컨볼을 살려** 로저스 쪽으로 떨어뜨렸다.)
+⇒ **순차적인 두 사건**이다. SI(라크루아)는 1차 경합을, 🇳🇱 VoetbalPrimeur·vi.nl(하토)은 2차 경합을 서술했다.
+🇳🇱 vi.nl: **"Hato de bal voor de voeten van Morgan Rogers kon koppen."**(하토가 볼을 로저스의 발 앞으로 **헤더로** 보낼 수 있었다.)
+공식 어시스트가 하토인 것과도 정합한다. ⇒ **충돌 #3 폐기.**
+
+### ⭐⭐ D+3 과제 ③·⑤ — 파머·로저스 분담: **압박 높이에 따라 역할이 뒤바뀐다**
+
+D+2는 「무공 대칭 하강(Coaches' Voice)」만 확보했고 「비대칭 지지 0건 · 공격 국면 0건」으로 닫았다.
+**두 축 모두 뒤집힌다.** 그리고 D+2가 본 「대칭」은 **틀린 게 아니라 국면 한정**이었다.
+
+**⒜ 높은 압박 국면 = 4-4-2, 완전 비대칭**
+> tacticalfootballanalysis: **"Chelsea pressed in a 4-4-2 formation, with Palmer joining João Pedro in the front two, Rogers dropping into the midfield line and Hato dropping into the defensive line to form a back four."**
+> (첼시는 **4-4-2로 압박**했다 — **파머가 주앙 페드루와 함께 전방 2인**을 이루고, **로저스는 미드필드 라인으로 내려오고**, **하토는 수비 라인으로 내려와 백4를 만들었다**.)
+
+**⒝ 로우블록 국면 = 5-4-1, 대칭**(D+2 확보분, Coaches' Voice)
+> **"João Pedro screened the central pivot, while Cole Palmer and Morgan Rogers dropped either side of the midfield four."**
+
+⇒ ⭐⭐ **판정: 파머·로저스의 무공 역할은 고정 분담이 아니라 「압박 높이의 함수」다.**
+높게 갈 때 **파머는 올라가고 로저스는 내려온다**(비대칭). 낮게 앉을 때 **둘 다 미드필드 4의 양옆**(대칭).
+이것은 알론소 본인의 회견 발언과 정확히 맞물린다 — *"sometimes to go higher, sometimes lower"*(D+2 확보).
+**obs#525(압박 높이 가변은 설계)의 구체적 실행 형태가 이것이다.**
+⇒ D+2의 「비대칭 분담 지지 0건」은 **국면을 분리하지 않아서 생긴 결론**이었다. 정정 obs를 만든다.
+
+**⒞ 공격 국면 = 비대칭, 좌우 임무가 다르다** (D+2 0건 → 확보)
+> Between the Posts: **"All of this helped clear space for Palmer to drop deeper in the right halfspace, although he also had freedom to roam into central areas too. With the freedom given to him by Alonso, Palmer becomes something of a catalyst for Chelsea's attacks, drifting into deeper areas to pick up the ball and try to change the picture using his creativity."**
+> (이 모든 것이 **파머가 우측 하프스페이스에서 더 깊이 내려올** 공간을 열었고, 중앙으로 배회할 자유도 있었다. 알론소가 준 자유 덕에 **파머는 첼시 공격의 촉매**가 된다 — 더 깊은 지역으로 흘러 들어가 볼을 잡고 창의로 그림을 바꾸려 한다.)
+> Between the Posts: **"on the left side Hato and Rogers would rotate between left halfspace and left wing. Rogers and João Pedro were both key outlets for Chelsea with their ability to receive long balls and hold defenders off physically."**
+> (좌측에서는 **하토와 로저스가 좌측 하프스페이스와 좌측 윙을 로테이션**했다. **로저스와 주앙 페드루는 롱볼을 받아 수비수를 몸으로 버텨내는 능력**으로 첼시의 핵심 출구였다.)
+
+⇒ **공격 국면 분담 확정**:
+| | 파머(우) | 로저스(좌) |
+|---|---|---|
+| 기준 위치 | 우측 하프스페이스 | 좌측 하프스페이스↔좌측 윙 |
+| 이동 방향 | **하강**(딥으로 내려와 볼 픽업) | **하토와 수직 로테이션** |
+| 기능 | 촉매·창작(자유 부여) | **롱볼 타깃·등지고 버티기** |
+| 게임 함의 | 하강형 크리에이터 슬롯 | 물리형 와이드 리시버 슬롯 |
+
+⭐ **로저스의 「롱볼 받아 버티기」는 주앙 페드루와 같은 기능으로 묶인다** — obs#524(주앙 페드루 st_advanced 지지)와
+**같은 방향**이다. 첼시의 전진 경로는 「후방에서 길게 → 등지고 받는 두 명(주앙 페드루·로저스) → 세컨볼」이고,
+이는 D+2 정정 ③(GK에서 롱볼, 롱볼 18/49=37%)과도 정합한다.
+🇫🇷 HommeDuMatch가 **주앙 페드루의 피파울 6회**를 특기한 것이 이 「몸으로 버티는 출구」 기능의 실측 흔적이다.
+
+### ⭐⭐ D+3 과제 ⑤ — 「중앙 공격 / 와이드 수비」 부하: **독립 소스 2건 확보. 단 부하는 로저스에게 걸렸다**
+
+D+2의 근거 2건은 같은 채널(Football Made Simple의 풀럼전·아스날전)이라 독립성이 없었다. **서로 독립된 2건이 붙었다.**
+
+> ⭐ Between the Posts: **"Chelsea therefore found themselves in 4-4-2-like variations when defending, as Rogers also came back on the left side to track White."**
+> (첼시는 수비 시 **4-4-2 변형**에 놓였다 — **로저스도 좌측으로 내려와 화이트를 추적**했기 때문이다.)
+
+> ⭐ Chelsea FC Online: **"The most obvious change from Arteta was to push Havertz out to the right touchline to overload the left side of the Chelsea block. Sharing the turns with Odegaard, Bukayo Saka and Rice, the German constantly created three-on-two superiority against Rogers and Hato, gathering the ball in that very same right wide zone to score the equaliser."**
+> (아르테타의 가장 뚜렷한 조정은 **하베르츠를 우측 터치라인으로 밀어내 첼시 블록의 좌측을 오버로드**한 것이었다. 외데고르·사카·라이스와 번갈아 가며 이 독일 선수는 **로저스와 하토를 상대로 3대2 우위를 계속 만들었고**, 바로 그 우측 와이드 존에서 볼을 잡아 동점골을 넣었다.)
+
+⇒ ⭐⭐ **판정: 논점은 성립하되 대상이 바뀐다. 「파머와 로저스 둘 다」가 아니라 「로저스」다.**
+- 이 경기에서 **파머는 무공에 와이드로 내려가지 않았다** — 높은 압박에서는 **전방 2인**(TFA), 로우블록에서만 미드4 옆(CV).
+- 우측 와이드 수비는 파머가 아니라 **네투(미드필드 라인으로 상승)와 아체암퐁(촐리스 담당)**이 나눠 맡았다.
+- **좌측만 공격형 선수(로저스)가 풀백(화이트)을 추적**했고, **정확히 그 지점에서 3v2가 걸려 동점골이 나왔다.**
+⇒ **체제 형질 후보로 승격하되, 형질의 서술을 「파머·로저스의 중앙공격/와이드수비」에서
+「좌측 인사이드 포워드가 상대 우측 풀백을 추적하는 구조적 부하」로 좁힌다.**
+⚠️ 단 **반례가 있다.** ReadChelsea(풀럼전, 08-25)는 파머의 무공 기여를 **긍정 평가**했다 —
+Opta 기준 **볼 리커버리 7 · 듀얼 승 10**이고 *"Alonso wants his forwards to create chances without leaving the rest of the team exposed, and Palmer's work without the ball showed an encouraging willingness to meet that demand."*
+같은 풀럼전을 Football Made Simple은 「파머·로저스가 대가를 치렀다」고 봤다. **같은 경기에 대한 정반대 평가**다 —
+파머 축은 **미해결로 남긴다**(로저스 축만 닫혔다).
+
+### ⭐⭐ D+3 과제 ④ — 알론소 「too early」 대상 **확정: 모이세스 카이세도**. 그리고 「명단 외」는 모순이 아니라 **원인**이었다
+
+D+2는 「카이세도는 이 경기 명단에 없다」를 이유로 미확정 처리했다. **인과가 반대였다.**
+
+> 🇬🇧 NBC Sports(카이세도 부상 질문에 대한 답으로 명시 귀속): **"Not longer term, but we talk about assessing the risk. Probably last week we took him too early, and I don't want to make the same mistake."**
+> (장기 부상은 아니다. 다만 **리스크 평가**의 문제다. 아마 **지난주 우리가 그를 너무 일찍 투입했고**, 같은 실수를 반복하고 싶지 않다.)
+> 🇬🇧 알론소, Sky Sports 경유(ReadChelsea 인용): **"Caicedo was close but no point taking a risk at this point in the season."**
+> (카이세도는 근접했지만 시즌 이 시점에 리스크를 감수할 이유가 없다.)
+> 🇬🇧 ReadChelsea 사실 서술: **"Caicedo had returned against Brighton last weekend, only to ask to come off shortly afterwards when he again felt discomfort."**
+> (카이세도는 **지난 주말 브라이턴전에 복귀**했으나 곧 다시 불편을 느껴 **스스로 교체를 요청**했다.)
+
+⇒ **사슬이 닫혔다**: 2라운드(브라이턴) 조기 복귀 → 재악화·자진 교체 → **3라운드 명단 제외**.
+「너무 일찍 투입했다」의 대상 경기는 **지난주 브라이턴전**이고 대상 선수는 **카이세도**다. ESPN·NBC·Sky 3중 일치.
+⇒ **D+2의 「미확정」을 「확정」으로 정정**한다.
+
+**⭐⭐ 그리고 이것이 obs#521(더블 피벗의 산술)의 인적 원인이다.**
+> ReadChelsea: **"Caicedo's absence… left Alonso with an unusual midfield partnership. Reece James moved inside alongside Romeo Lavia."**
+> (카이세도의 결장이 알론소에게 **이례적인 중원 조합**을 남겼다. **리스 제임스가 안쪽으로 이동해 라비아 옆에 섰다**.)
+> Chelsea FC Online: **"Chelsea finished a game against the reigning champions with two natural right-backs in central midfield… That bit of improvisation is a consequence of a manic deadline day."**
+> (첼시는 디펜딩 챔피언과의 경기를 **천연 라이트백 2명을 중앙 미드필드에 두고** 끝냈다… 그 즉흥은 **광란의 마감일**의 결과다.)
+
+⇒ ⭐⭐ **판정: 이 경기의 더블 피벗은 설계가 아니라 비상 구성이다.**
+엔소 페르난데스 매각(→맨시티) + 라민 카마라 영입 무산(모나코 철회) + 카이세도 부상이 겹쳐,
+**본직 라이트백인 주장(제임스)이 피벗을 맡았다.** ⇒ **게임 구현에서 「제임스 = 피벗」을 알론소 체제의 정본 슬롯으로
+고정하면 안 된다.** obs#521의 구조 진단은 유지하되, **원인 층위에 「인적 비상」을 분리해 붙인다.**
+⚠️ D+2가 기록한 Yardbarker의 「두 라이트백 중원」 지적은 **시점이 60분 이후에 한정된다**는 D+2 판정이 맞고,
+여기에 **「제임스 단독으로는 선발부터」**를 덧붙인다.
+
+### ⭐⭐ 결승골(50') 인과 사슬 **완성** — D+2에 통째로 빠진 고리가 있었다: **하베르츠의 더미**
+
+D+2는 Coaches' Voice 경유로 「칼라피오리 하프스페이스 침투 → 라크루아·네투 흡인 → 제임스 복귀 실패」까지 봤다.
+**마무리 직전의 한 동작이 누락돼 있었다.** 여섯 소스가 독립적으로 그것을 말한다.
+
+> 🇪🇸 marca: **"Christos Tzolis cortó hacia el medio y filtró un pase que dejó pasar Havertz, magistral, para que Martin Odegaard fusilara al Chelsea."**
+> (촐리스가 중앙으로 꺾어 패스를 찔렀고, **하베르츠가 그것을 절묘하게 흘려보내** 외데고르가 첼시를 쏘아 맞혔다.)
+> 🇪🇸 sport.es: **"Medio gol fue obra de Havertz, que dejó pasar el balón con inteligencia para que su compañero se plantara solo ante el Dibu."**
+> (**골의 절반은 하베르츠의 작품**이었다 — 그가 **영리하게 볼을 흘려보내** 동료가 디부와 **단독으로** 맞서게 했다.)
+> 🇳🇱 vi.nl: **"Tzolis gaf een lage voorzet die Havertz bewust aan zich voorbij liet gaan."**
+> (촐리스가 **낮은 크로스**를 줬고 하베르츠가 **의도적으로 자기 옆을 지나가게 놔뒀다**.)
+> 🇬🇧 ReadChelsea: **"Havertz cleverly allowed a low ball across the penalty area to run beyond him, leaving Ødegaard with the space to finish."**
+> 🇬🇧 tacticalfootballanalysis: **"Tzolis broke Chelsea's defensive line with a pass, while Havertz's dummy and Ødegaard's well-timed run created the opportunity."**
+> 🇬🇧 ReadArsenal: **"Tzolis fired the ball towards Havertz, whose intelligent dummy opened the space for Ødegaard."**
+
+**전체 사슬**(Chelsea FC Online이 가장 완결된 판본을 준다):
+> **"Tzolis received on the left and drove infield, Riccardo Calafiori's half-space run attracted both Lacroix and Neto, and Lavia was drawn across as the ball-side midfielder. James failed to recover centrally to track Odegaard's run and the midfielder arrived unmarked to finish emphatically."**
+> (촐리스가 좌측에서 받아 **안쪽으로 몰았고**, **칼라피오리의 하프스페이스 침투가 라크루아와 네투를 함께 끌어당겼으며**, **라비아는 볼사이드 미드필더로 횡으로 끌려 나갔다**. **제임스가 중앙으로 복귀해 외데고르의 침투를 추적하지 못했고** 그는 **무마크로** 도착해 강하게 마무리했다.)
+
+⇒ ⭐⭐ **D+2가 「충돌」로 본 것(촐리스 ↔ 칼라피오리 ↔ 제임스)은 충돌이 아니라 한 사슬의 서로 다른 마디였다.**
+`촐리스 좌측 인필드 → 칼라피오리 하프스페이스 런(라크루아+네투 흡인) → 라비아 볼사이드 이동 →
+낮은 크로스 → **하베르츠 더미** → 제임스 중앙 복귀 실패 → 외데고르 무마크 마무리`
+**어시스트 공식 귀속은 촐리스**다(🇫🇷 HommeDuMatch: *"Tzolis … en délivrant une passe décisive pour le second but"*).
+
+**⭐ 「제임스 단독 책임」은 완화해야 한다.**
+> Between the Posts: **"Ødegaard was able to ghost into the box, untracked by Chelsea central midfielders or center-backs."**
+> (외데고르는 **첼시 중앙 미드필더들에게도 센터백들에게도 추적받지 않은 채** 박스로 스며들 수 있었다.)
+⇒ D+2의 「결승골 책임 주류 귀속은 리스 제임스(3중 일치)」에 **BTP의 「미드필더·센터백 전원 미추적」을 병기**한다.
+개인 귀속과 집단 귀속이 갈리며, **BTP가 유일하게 센터백까지 책임에 포함**한다.
+
+### ⭐ 동점골(25') — 어시스트 확정 + **책임의 무게중심이 마르티네스에서 피벗으로 옮겨간다**
+
+**어시스트 = 데클란 라이스**(🇳🇱·🇫🇷 두 언어권 독립 확인, D+2에 없던 사실):
+> 🇳🇱 vi.nl: **"De Duitser werd aangespeeld door Rice en schoot de bal daarna fenomenaal binnen."**
+> (이 독일 선수는 **라이스에게 패스를 받아** 그 뒤 경이롭게 차 넣었다.)
+> 🇫🇷 HommeDuMatch(라이스 7.5): **"il a distribué le jeu avec précision et a offert l'ouverture du score à Havertz."**
+> (그는 정확하게 경기를 배급했고 **하베르츠에게 선제 실점 장면을 만들어 줬다**.)
+
+**구조 원인 — 박스 앞 보호 결손**:
+> ⭐⭐ Between the Posts: **"The protection in front of the box from James and Lavia was also lacking in key moments, such as in Havertz's equalizing goal in the first half, where he was able to dribble across the edge of the box with insufficient pressure before getting a near-post finish off."**
+> (**제임스와 라비아의 박스 앞 보호가 핵심 순간에 결여**돼 있었다 — 전반 하베르츠의 동점골이 그렇다. 그는 **충분한 압박 없이 박스 외곽을 가로질러 드리블**한 뒤 **니어 포스트 마무리**를 만들어냈다.)
+
+**슛 형태**(3개 소스 일치): 박스 **외곽**, **왼발**, **니어 포스트**, 낮게.
+> 🇪🇸 marca: **"tiró la diagonal hacia el medio y batió al 'Dibu' con un tiro al palo corto con la zurda."** (안쪽으로 대각 이동 후 **왼발 니어 포스트** 슛)
+> 🇬🇧 ReadChelsea: **"beating Martinez with a low left-footed effort from the edge of the penalty area."**
+
+**⭐ 마르티네스 책임 재판정 — D+2의 「미해결」에서 진전.**
+D+2가 본 평점 분산은 **실제로는 소수 대 다수**다. 이번 회차에 🇫🇷 평점이 추가되며 우호 쪽이 늘었다.
+
+| 매체 | 평점 | 논조 |
+|---|---|---|
+| Evening Standard | **4** | *"a suspect one to concede"* |
+| football.london | **5** | 니어 포스트 포지셔닝 |
+| 🇪🇸 marca | (무평점) | **"batió al 'Dibu' -pudo hacer más-"**(디부를 이겼다 — **더 할 수 있었다**) |
+| 🇫🇷 HommeDuMatch | **7** | **"un match exceptionnel avec huit arrêts"**(**8세이브**의 예외적 경기) |
+| Sports Illustrated | 7.5 | — |
+| Foot Mercato(알고리즘) | **8.0** | 첼시 최고 |
+
+⇒ **판정**: 니어 포스트 비판은 3개 소스(Standard·football.london·marca)로 **실재하되 소수**이고,
+**세이브 산출(8회)로 평가하는 다수는 우호적**이다. 그리고 **1차 전술 분석(BTP)은 개인이 아니라 피벗의 박스 앞 보호 결손을 지목**한다.
+⇒ **책임 귀속을 「미해결」에서 「구조 우위 · 개인 부차」로 진전**시킨다. 게임 구현에서 GK 실책 특성을 조정할 근거가 아니다.
+🇳🇱 vi.nl과 🇪🇸 marca가 각각 **마르티네스의 결정적 선방 2~3회**(18' 사카 근접 슛 · 69' 사카 · 하베르츠의 알 넣기 패스 이후)를 별도로 특기한 것도 같은 방향이다.
+
+### ⭐⭐ obs#519(백4↔백5 하이브리드)에 **직접 1차 근거** — 하토가 수비 라인으로 내려온다
+
+D+2는 이 판정을 실측(하토 avg_x 39.0 = CB와 같은 깊이)과 서사(FMS·Zekko·캐러거)의 **간접 수렴**으로 세웠다.
+**메커니즘을 명시한 1차 서술이 나왔다.**
+
+> tacticalfootballanalysis: **"Hato dropping into the defensive line to form a back four."**
+> (**하토가 수비 라인으로 내려와 백4를 형성**했다.)
+> Between the Posts: **"In defensive phases, Neto was often pushed up into the midfield line to stay close to Calafiori… This left Acheampong as the one who would play against Tzolis on the left, and Chelsea therefore found themselves in 4-4-2-like variations."**
+> (수비 국면에서 **네투는 칼라피오리에 붙어 있으려고 자주 미드필드 라인으로 밀려 올라갔다**… 이것이 **아체암퐁을 좌측에서 촐리스를 상대하는 사람**으로 남겼고, 그래서 첼시는 **4-4-2 변형**에 놓였다.)
+
+⇒ **완전한 4-4-2 형성 메커니즘**(D+2는 조각만 갖고 있었다):
+`네투 ↑ 미드필드 라인(칼라피오리 추종) + 하토 ↓ 수비 라인 + 아체암퐁 → 우측 풀백 역할(촐리스 담당) + 로저스 ↓ 좌측(화이트 추적)`
+⇒ 명목 3-4-2-1이 **무공에서 4-4-2로 접힌다**. **실측 하토 avg_x 39.0의 원인이 이것이다.**
+
+**⭐ 아체암퐁 avg_x 50.0의 원인도 이중이었다** — D+2는 온볼 측면만 봤다.
+> Between the Posts(온볼): **"the very active forward movements of Acheampong down the right side, often underlapping Neto who held the width on the right."**
+> (**아체암퐁의 매우 활발한 우측 전진 움직임**, 폭을 유지한 **네투를 자주 언더랩**했다.)
+> Between the Posts(무공): **"This left Acheampong as the one who would play against Tzolis."**
+⇒ **온볼에서는 네투를 언더랩하는 전진 CB, 무공에서는 촐리스를 맡는 우측 풀백.** 두 국면 모두 그를 앞에 둔다.
+D+2 정정 ②(「얕음」이 아니라 「전진」)를 유지하면서 **무공 층위를 추가**한다.
+🇫🇷 HommeDuMatch(6): *"un match correct en défense, bien que discret dans la construction du jeu"*(수비는 무난, **빌드업에서는 조용**) — 터치 21회와 정합.
+
+### ⭐ 60분 교체(하토→차바리아 · 라비아→귀스토)의 **전술적 의도** — D+2 「1차 소스 0건」에서 진전
+
+감독 직접 발언은 **여전히 0건**이다. 그러나 전술 분석 2건이 **구조적 의도**를 서술한다.
+
+> Between the Posts: **"Gusto became part of Chelsea's right-sided rotations allowing James to take a more consistently deeper role, while Chavarría played on the outside of Rogers as wing-back."**
+> (**귀스토가 첼시의 우측 로테이션에 합류**해 **제임스가 더 일관되게 낮은 역할**을 맡을 수 있게 했고, **차바리아는 로저스 바깥에서 윙백으로** 뛰었다.)
+> ReadChelsea: **"Chelsea improved following the changes. Cole Palmer began finding more room between Arsenal's lines."**
+> (교체 뒤 첼시는 나아졌다. **파머가 아스날의 라인 사이에서 더 많은 공간을 찾기 시작했다**.)
+
+⇒ **의도 재구성**: ⑴ 제임스를 **피벗에 낮게 고정**(우측 전진 임무를 귀스토에게 이관) ⑵ 좌측에 **진짜 윙백을 배치해
+로저스를 앞에 풀어줌**. D+2가 확보한 공식 사유 「중원 통제 회복」과 모순되지 않고 **같은 것의 구조적 서술**이다.
+⭐ 🇪🇸 relevo의 차바리아 프로필(08-27)이 이 배치의 배경을 준다:
+> **"En ese tablero de ajedrez dinámico que suelen ser sus equipos, los carrileros no actúan solo como defensores de banda, sino como auténticos elementos tácticos encargados de estirar la anchura del campo."**
+> (그의 팀이 늘 그렇듯 역동적인 체스판에서, **카리예로(윙백)는 측면 수비수로만 기능하지 않고 경기장의 폭을 늘리는 진짜 전술적 요소**다.)
+⇒ ⭐ **알론소 체제의 명시된 모델에서 윙백은 폭을 담당한다.** 그렇다면 **하토의 avg_x 39.0(수비 라인 합류)은 모델의 실행이 아니라 모델로부터의 이탈**이고,
+60분 교체는 **그 이탈을 되돌리려는 조치**로 읽힌다. ⚠️ relevo 기사는 **경기 전 영입 프로필**이라 이 경기 분석이 아니다 — 배경 근거로만 쓴다.
+
+**⚠️ 라비아 교체 논점(D+2 미해결)에 진전.** 🇫🇷 HommeDuMatch가 라비아에게 **6.5**를 주며
+*"A été efficace dans la récupération du ballon"*(볼 회수에서 효율적이었다)고 평했다.
+⇒ **매체 2곳(SI 「기이한 선택」 · HommeDuMatch 6.5)이 라비아를 긍정 평가**하고, 「40분 만에 방전」은 **3티어 팬 채널 단독**이다.
+⇒ 「체력설 ↔ 기이한 선택」의 대칭 대립을 **「체력설은 3티어 단독, 2티어 이상은 반대」로 비대칭화**한다. 확정은 아니다.
+
+### 상대팀(아스날) 관점 — D+2 대비 실질 증분
+
+D+2는 Arseblog·Yardbarker뿐이었고 The Athletic은 0건이었다. **전용 아스날 매체와 전술 블로그가 붙었다.**
+
+> ReadArsenal, 아르테타 회견(외데고르에 대해): 자신감이 **"one of the highest I have seen him"**이고
+> 결장이 길었던 만큼 **"a point to prove"**(증명할 것이 있다)가 있다.
+> ⭐ Squawka 실측 인용: 외데고르 **77분 · 65터치 · 패스 48/54 · 라인브레이킹 패스 16 · 파이널서드 패스 6 · 찬스 창출 4 · 빅찬스 창출 2 · 볼 탈취 3 · 1골**.
+
+> Between the Posts: **"In many of Arsenal's second-half possession phases, Ødegaard was playing a deeper role compared to the first half. He also had plenty of positional freedom to drop into Arsenal's second line and provide connections in buildup."**
+> (아스날의 후반 점유 국면 다수에서 **외데고르는 전반보다 더 낮은 역할**을 했다. **2선으로 내려와 빌드업 연결을 제공**할 위치 자유도 충분했다.)
+
+> Between the Posts: **"White had the freedom to rotate with Saka and Ødegaard in a right-sided triangle, while Havertz also often drifted into this area. Arsenal's movement around the edges of the box on this side was excellent."**
+> (**화이트가 사카·외데고르와 우측 삼각형에서 로테이션**할 자유가 있었고, 하베르츠도 자주 이 지역으로 흘러들었다. **이쪽 박스 모서리 주변의 아스날 움직임은 탁월**했다.)
+
+⇒ **첼시 좌측(하토·로저스)에 걸린 부하는 「하베르츠 한 명의 이동」이 아니라 「화이트·사카·외데고르·하베르츠 4인의 우측 삼각 로테이션」**이다.
+D+2의 「알론소가 말한 왼쪽 오버로드」에 **구성원과 메커니즘**이 붙었다.
+
+**⭐⭐ 라운드를 가로지르는 형질 — 「박스 모서리 조합 플레이」에 대한 취약** (item ⑤와 별개 축의 독립 증거)
+> Between the Posts: **"The ease with which opponents are able to get into the penalty box with combination play around the corners of the box also cost Chelsea a goal against Fulham. It seems to be a key area of concern for Alonso's team at the moment."**
+> (상대가 **박스 모서리 주변 조합 플레이로 페널티 박스에 들어오는 용이함**이 **풀럼전에서도 첼시에 실점을 안겼다**. 현재 알론소 팀의 **핵심 우려 영역**으로 보인다.)
+⇒ Football Made Simple과 **완전히 독립된 소스**가, **다른 축으로**, **같은 라운드 교차 반복**을 지적한다.
+⇒ **체제 형질 후보 2호**: 「박스 모서리(하프스페이스 코너) 조합 방어 취약」. 풀럼전·아스날전 2경기.
+
+### ⛔⛔ 날짜·시즌 혼입 함정 — **이번 회차에도 1건 적발**(obs#522 유형 재발, 두 번째)
+
+WebSearch가 상위에 올린 **soccerway "The Regista: Chelsea vs Arsenal tactical review — Palmer promising but Blues let lead slip"**를
+파머 역할 근거로 채택할 뻔했다. WebFetch로 1차 확인한 결과:
+
+| 지표 | 이 경기 | soccerway 기사 |
+|---|---|---|
+| 스코어 | Arsenal **2-1** Chelsea | **2-2** 무승부 |
+| 첼시 감독 | 사비 알론소 | **마우리시오 포체티노** |
+| 득점자 | 로저스 / 하베르츠·외데고르 | 파머(PK)·**무드리크** / 트로사르 |
+| 로저스 언급 | 선제골 | **0회**(존재하지 않는 선수) |
+| 파머 역할 | 우측 하프스페이스 하강 | **false 9** |
+
+⇒ ⛔ **배제.** 제목의 「Chelsea vs Arsenal tactical review」와 「Palmer」만 보면 이 경기와 구별되지 않는다.
+⭐ **이번에 작동한 지표는 obs#522와 동일하다 — 본문에 병기된 사건의 정합성**(감독 이름·득점자·스코어).
+특히 **무드리크·포체티노**라는 **이 체제에 존재할 수 없는 고유명사**가 즉시 판별을 줬다.
+⇒ **규약 보강**: 전술 리뷰를 채택하기 전 **「이 체제에 존재할 수 없는 고유명사」를 본문에서 먼저 검색**한다
+(감독·이적한 선수·직전 시즌 주전). 티어·URL·검색 순위보다 빠르고 확실하다.
+
+**부수 정합성 검증 통과 지표**(이번 회차에 채택한 소스 전부에 적용):
+🇳🇱 vi.nl 순위표 `ARS 3경기 9점 · CHE 4위 6점 8득7실` · marca `콜리더 9점, 첼시 4위 6점` ·
+Chelsea FC Online `첼시 4위, 아스날 9점` — **모두 26/27 3라운드와 일치**. 3개 언어권에서 교차 확인했다.
+⚠️ 🇳🇱 vi.nl이 **"voor het tweede seizoen op een rij met 2-1 gewonnen"**(**2시즌 연속** 2-1 승리)라고 명시한다 —
+obs#522의 함정 구조(같은 대진·같은 스코어의 시즌 반복)를 **네덜란드 매체가 직접 증언**한다.
+
+### 신규 사실 (분류 외)
+
+- ⭐ 🇳🇱 vi.nl: **"Nog nooit slaagde een Premier League-club erin om in de eerste drie wedstrijden van het seizoen binnen vijf minuten te scoren."**
+  (프리미어리그 역사상 어느 클럽도 **시즌 첫 3경기에서 모두 5분 이내에 득점**한 적이 없었다.)
+  ⇒ 알론소 첼시의 「빠른 시작」은 인상이 아니라 **리그 사상 최초 기록**이다. 1' 풀럼 · 4' 브라이턴 · 2' 아스날.
+  **obs#525(설계된 압박 가변성)와 함께 「초반 능동성」을 체제 형질로 볼 근거가 된다.**
+- 🇳🇱 vi.nl: 첼시의 마지막 아스날전 승리는 **2019-12-29**.
+- ⭐ 🇵🇹/🇧🇷: **에스테방이 10번을 원하지만 그 자리에 파머와 로저스가 있어** 윙어로밖에 출전 기회가 없다는 것이
+  포르투갈어권의 반복 독법이다. D+2의 「3경기 연속 벤치」에 **구조적 이유**가 붙는다 — 슬롯 경합이지 폼 문제가 아니다.
+- 🇪🇸 marca: 아르테타와 알론소는 **안티구오코**(산세바스티안)에서 함께 시작했고 선수로 7번 맞붙어 **알론소가 3승 2무 2패 우세**.
+  이 경기가 **감독으로서 첫 대결**이다. ⭐ 🇪🇸 sport.es는 **이라올라도 같은 안티구오코 출신**임을 덧붙인다
+  (이 프로젝트의 3개 감독 축이 한 유소년 클럽에서 갈라져 나왔다).
+- Arsenal 교체(tacticalfootballanalysis): 66' 칼라피오리→인카피에 · 루이스-스켈리→수비멘디 / 76' 외데고르→메리노 · 하베르츠→교케레시 / 90' 사카→마두에케.
+- ⭐ **D+2 충돌 #2(교체 시각) 해소**: tacticalfootballanalysis가 **네투 OUT 81'(→에스테방) · 로저스 OUT 87'(→웰벡)**로
+  실측·AOL·dgabc와 **일치**한다. ⇒ **chelseafc.com 공식 리포트가 틀렸다**는 D+2 판정이 4번째 소스로 확증됐다.
+  신규: 로저스의 교체 투입 상대는 **대니 웰벡**이다.
+- 취소골(11~12') 상세: **라이스 프리킥 → 가브리엘 포스트 강타 → 리바운드 칼라피오리 득점 → 콘사 오프사이드로 취소**(🇳🇱 vi.nl·ReadChelsea 일치).
+  ⇒ D+2·당일 절이 「칼라피오리 취소골」로만 적은 것에 **원인(콘사 오프사이드)과 경로**가 붙었다.
+
+### 🇫🇷 프랑스어 — 이 경기 첫 1차 소스 (D+2는 0건이었다)
+
+HommeDuMatch 전 선수 평점(09-07). D+2가 「L'Équipe·RMC 0건, Foot Mercato는 스탯만」으로 닫은 축이 열렸다.
+
+| 첼시 | 평점 | 요지 |
+|---|---|---|
+| 마르티네스 | **7** | 8세이브, 예외적 경기 |
+| 아체암퐁 | 6 | 수비 무난, **빌드업에서 조용** |
+| 라크루아 | 6 | 듀얼에서 용감히 싸웠으나 **경고** |
+| 포파나 | **6.5** | **수비적으로 가장 활동적** — 인터셉트·듀얼 승 다수 |
+| 네투 | 6.5 | (→에스테방 6.5, 유효슛 1) |
+| 라비아 | **6.5** | **볼 회수에서 효율적** (→귀스토 6) |
+| 제임스 | 6.5 | 공격 가담 시도, 수비적으로도 엄정 |
+| 하토 | 6.5 | 초반 빠른 어시스트 (→차바리아 6) |
+| 파머 | **6** | 여러 차례 시도했으나 **정확성 부족**, **경고** |
+| 로저스 | **7** | 선제골, 위협적 (→웰벡 6) |
+| 주앙 페드루 | 6.5 | **피파울 6회로 상대 수비를 압박**, 지연 경고 |
+
+⭐ **포파나가 첼시 수비 최고 평가**인 것은 D+2가 다루지 않은 축이다(D+2는 라크루아·아체암퐁 중심).
+⭐ **파머 6 + 경고**는 영어권 5~6.5 혹평과 일치 — **4개 언어권이 파머에 대해 수렴**한다.
+
+### 0건과 미해소 (D+3)
+
+| 항목 | 결과 | 시도한 것 |
+|---|---|---|
+| 🇩🇪 독일어 | **0건 유지 (3회 연속)** | `Havertz Arsenal Chelsea Tor Analyse Xabi Alonso Taktik September 2026 kicker` — 반환된 것은 전부 영어 소스의 독일어 요약이고 **독일어 1차 매체 URL은 0건**. kicker·Sky DE 이 경기 자료 없음 확인 |
+| 🇪🇸 elpais.com | **0건** | 브라우저로 `elpais.com/deportes/futbol/` 직접 훑음 — 첼시·아스날·알론소 링크 **0개** |
+| 🇪🇸 mundodeportivo.com | ⛔ **브라우저 정책 차단** | 이 환경에서 열 수 없음 — 미해소로 이월 |
+| 🇺🇾 elobservador.com.uy | ⛔ **미해소** | 브라우저 2회 시도, **Cloudflare 봇 검증 페이지**에서 정지. CAPTCHA 우회는 하지 않는다 ⇒ **「마르티네스의 중대한 실책」 원문 미확보** (단 책임 논점 자체는 위에서 다른 6개 소스로 진전시켰다) |
+| 🇧🇷 portaldemocrata.com.br | ⛔ **사이트 장애** | 403이 아니라 `Erro ao estabelecer uma conexão com o banco de dados`(DB 연결 실패) |
+| 🇵🇹 observador.pt · mundiario.com | **미시도** | 우선순위에서 밀림 — 페이월(402)·403이라 기대 수익 낮다고 판단 |
+| 유튜브 전사 | ⛔ **HTTP 429 지속** | `yt-dlp` 자막 다운로드가 **4회 연속 429**(45초·20초 백오프 포함). `--list-subs`는 통과하므로 **자막 엔드포인트 한정 레이트리밋**이다. json3 폴백도 동일 429 |
+| The Athletic 아스날 담당 | **0건 유지** | 검색 미노출 |
+| 파머의 「와이드 수비 부하」 | **미해결** | 로저스 축은 닫혔으나 파머 축은 **소스가 정반대**(FMS 부정 ↔ ReadChelsea 긍정, 둘 다 풀럼전) |
+
+**⭐ 다음 회차용 유튜브 후보**(사이트 내부 검색으로 확보한 ID, 전사 미완):
+`eSNTV-2ve64`(Arsenal 2–1 Chelsea: The Champions' Response — ⚠️ **자막 없음 확인**, 재시도 무의미) ·
+`k9YZDKQxsZI`(Arsenal have CHANGED — en·es 자막 있음) · `ZjSmghKwDgU`(알론소 회견, 엔소·로저스·카이세도 — en·es 자막 있음) ·
+`9AU-TEjgIGg`(Arsenal swarm vs Chelsea trident — en·es 자막 있음) · `-53yKbte__k`(사비 알론소는 왜 공을 소유하려 하지 않는가).
+
+### D+3 회차 DB 반영
+
+| 테이블 | 내용 |
+|---|---|
+| `observations` | **신규 10건 (#557~566)** — ㉗ 선제골 형태 확정·가짜충돌 규약 · ㉘ 파머·로저스 무공 역할이 압박높이의 함수(D+2 「대칭」 정정) · ㉙ 공격 국면 비대칭 분담 · ㉚ 와이드수비 부하는 로저스 축(독립 2건) · ㉛ 카이세도 확정 + 더블피벗은 비상구성 · ㉜ 결승골 사슬 완성(하베르츠 더미) · ㉝ 마르티네스 책임 구조우위 · ㉞ 백4 형성 메커니즘 1차근거 · ㉟ 박스모서리 취약 = 체제형질 2호 · ㊱ ⛔ 날짜혼입 2번째 적발 + 고유명사 판별 규약 |
+| `player_duties` | **8행 addendum**(`[2026-09-09 D+3 추가]` prefix, 덮어쓰기 없음) — 파머 66 · 로저스 91 · 아체암퐁 32 · 하토 62 · 네투 65 · 제임스 68 · 마르티네스 193 · 에스테방 69 |
+
+⛔ **당일 절·D+2 절·실측·`match_game_setups`·`prescriptions`·`match_player_prescriptions`는 고치지 않았다.**
+단일 경기이고 커널 Δ 산출을 하지 않았으므로 처방 변경 근거가 아니다.
+
+### D+4 이후로 넘기는 것
+
+1. **파머의 무공 와이드 부하** — 소스가 정면 충돌(같은 풀럼전에 대해 FMS 부정 ↔ ReadChelsea 긍정). 제3의 1차 소스 필요.
+2. **유튜브 전사 4편**(위 ID 목록) — 429 해소 후 재시도. 특히 `-53yKbte__k`(알론소의 점유 회피)는 **체제 철학 축**이다.
+3. 🇪🇸 mundodeportivo(정책 차단) · 🇺🇾 elobservador(Cloudflare) — **다른 경로 필요**.
+4. **「좌측 인사이드 포워드가 상대 우측 풀백을 추적하는 부하」가 다른 상대에게도 재현되는가** — 체제 형질 승격 조건.
+5. **「박스 모서리 조합 방어 취약」(체제 형질 2호)** — 현재 2경기(풀럼·아스날). 3경기째 확인 필요.
+6. **카이세도 복귀 후 피벗 구성** — 이 경기 더블 피벗이 비상 구성으로 확정된 이상, **정본 피벗은 아직 실측된 적이 없다.**
