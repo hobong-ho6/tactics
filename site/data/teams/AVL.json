@@ -51739,14 +51739,26 @@
    "role_id": "fb_wingback"
   },
   {
-   "cos_avg": 0.49,
-   "cos_max": 0.54,
-   "cos_min": 0.44,
-   "fidelity": "MID",
+   "cos_avg": 0.71,
+   "cos_max": 0.71,
+   "cos_min": 0.71,
+   "fidelity": "n<3",
    "focus": "Build-Up",
    "game_version": "FC26",
-   "n": 3,
-   "n_matches": 3,
+   "n": 1,
+   "n_matches": 1,
+   "n_players": 1,
+   "role_id": "gk_ballplaying"
+  },
+  {
+   "cos_avg": 0.46,
+   "cos_max": 0.49,
+   "cos_min": 0.44,
+   "fidelity": "n<3",
+   "focus": "Build-Up",
+   "game_version": "FC26",
+   "n": 2,
+   "n_matches": 2,
    "n_players": 1,
    "role_id": "gk_sweeper"
   },
@@ -70905,13 +70917,13 @@
   },
   {
    "build_up_style": "Short Passing",
-   "confidence": "MEDIUM — 코드 사용자 입력 · 역할은 테스트 4 구성 가정(확인 대기) · 팀 설정은 이전 코드와 동일 가정 · 라인 미확인",
+   "confidence": "MEDIUM-HIGH — 코드·역할 구성 사용자 확정. 라인 높이 미확인.",
    "defensive_approach": "Balanced",
    "formation": "4-2-3-1 Wide",
    "game_version": "FC26",
    "kind": "ingame:sim-2026-09-09a",
    "line_height": null,
-   "rationale": "⭐ 첫 **시뮬레이션** 경기 전술(사용자 조작 0 — 22명 전원 AI). 목적: 커널 신뢰도 표(v_kernel_fidelity)에서 조작 오염 없는 표본을 얻고, 팀 설정 3축의 효과를 처음 읽을 수 있는지 확인(docs/50 「시뮬레이션」 논의). 슬롯별 역할·팀 설정·모드(커리어 시뮬레이션 관전 여부)·상대는 사용자 진술 대기. 다음 역할 A/B 대기 항목: 빌드업 Short Passing → Balanced(사용자 결정으로 보류). 캡처 폴더 reports/ingame/2026-09-09-avl-sim1/. [2026-09-09 처리] 커리어 모드 **관전 시뮬레이션**(사용자 확인). Aston Villa 2-0 Leicester City, 94분, 점유 36/64, 슛 5-1, xG 2.3-0.4, 패스 63-113. 히트맵은 흰색(커리어 UI) — 스크립트 --heat white 신설. 11명 전원 94분(교체 없음). ingame_captures 54~64(shot_12는 하우드-벨리스 중복). 역할 구성은 미진술 → 테스트 4(LM wideplm/A · RM widemid/S · LB/RB wingback/B · GK sweeper/BU · LDM dlp/R · RDM holding/BW · CB Build-Up/Aggressive · CAM playmaker/R · ST advanced/S)로 가정.",
+   "rationale": "⭐ 첫 **시뮬레이션** 경기 전술(사용자 조작 0 — 22명 전원 AI). 목적: 커널 신뢰도 표(v_kernel_fidelity)에서 조작 오염 없는 표본을 얻고, 팀 설정 3축의 효과를 처음 읽을 수 있는지 확인(docs/50 「시뮬레이션」 논의). 슬롯별 역할·팀 설정·모드(커리어 시뮬레이션 관전 여부)·상대는 사용자 진술 대기. 다음 역할 A/B 대기 항목: 빌드업 Short Passing → Balanced(사용자 결정으로 보류). 캡처 폴더 reports/ingame/2026-09-09-avl-sim1/. [2026-09-09 처리] 커리어 모드 **관전 시뮬레이션**(사용자 확인). Aston Villa 2-0 Leicester City, 94분, 점유 36/64, 슛 5-1, xG 2.3-0.4, 패스 63-113. 히트맵은 흰색(커리어 UI) — 스크립트 --heat white 신설. 11명 전원 94분(교체 없음). ingame_captures 54~64(shot_12는 하우드-벨리스 중복). 역할 구성은 미진술 → 테스트 4(LM wideplm/A · RM widemid/S · LB/RB wingback/B · GK sweeper/BU · LDM dlp/R · RDM holding/BW · CB Build-Up/Aggressive · CAM playmaker/R · ST advanced/S)로 가정. [2026-09-09 사용자 확정] 역할 구성 = 테스트 4와 동일, 단 GK gk_ballplaying/Build-Up(테스트 1~4의 sweeper/Build-Up에서 변경). 시뮬 GK 자기진영 95.3% · goalkeeper/Defend 커널 0.916 · ballplaying 커널 0.712 — 볼플레잉 키퍼도 골라인 고정(obs#154 정합).",
    "season": "2026-27",
    "tactic_code": "9ZVJsJYv5dqd"
   },
