@@ -1446,20 +1446,20 @@
    "updated": "2026-09-02"
   },
   {
-   "confidence": "LOW — 실측 그리드 미산출, 대부분 서사·리더십 평가",
-   "fit_alonso": "MEDIUM — Alonso 본인이 2019년부터 관찰한 리더십·압박강도 조절 능력을 영입 근거로 직접 언급. 전술 포지션(딥 미드필더 vs 로테이션)은 아직 유동적으로 서술됨.",
+   "confidence": "MEDIUM — 실측 그리드·CHE 슬롯 적합값 산출 완료(RDM .816). 단 2026-27시즌 CHE 체제 실전 출전은 여전히 0.",
+   "fit_alonso": "MEDIUM — Alonso 본인이 2019년부터 관찰한 리더십·압박강도 조절 능력을 영입 근거로 직접 언급. 전술 포지션(딥 미드필더 vs 로테이션)은 아직 유동적으로 서술됨. [2026-09-10] 실측 적합값 산출: RDM(우측 더블피벗) dm_dlp/Roaming .816 — Alonso가 언급한 「리더십·압박강도 조절」 서사와 별개로, 온볼 위치·패스 패턴은 우측 딥라잉 플레이메이커에 가깝다. prescriptions(kind=measured:season, RDM) 참고.",
    "fit_emery": "LOW — 에메리 체제 실측·duties 없음.",
    "fit_iraola": "LOW — 이라올라 체제 실측·duties 없음, 이적 후보 아닌 CHE 소속.",
    "fotmob_eval": null,
    "label": "조던 헨더슨",
    "name_en": "Jordan Henderson",
-   "overall": "B(잠정) — 실측 그리드·적합값 미산출(CHE 슬롯 테이블에 DM 전용 슬롯 부재 — LCM/RCM 매핑 보류). 2024-25 아약스(Farioli) 시즌 단일 6번 전환 실측 근거는 있으나 2025-26 브렌트포드 시즌 서사 조사는 이번 회차에서 수행하지 못함(브리핑 오류).",
+   "overall": "B(잠정) — 실측 그리드·적합값 미산출(CHE 슬롯 테이블에 DM 전용 슬롯 부재 — LCM/RCM 매핑 보류). 2024-25 아약스(Farioli) 시즌 단일 6번 전환 실측 근거는 있으나 2025-26 브렌트포드 시즌 서사 조사는 이번 회차에서 수행하지 못함(브리핑 오류). [2026-09-10 갱신] CHE Alonso 4-2-3-1 Wide 슬롯에 DM(LDM/RDM) 신설 — 브렌트포드 2025-26 PL 실측(22경기)을 투영한 결과 RDM 적합 .816(dm_dlp/Roaming), LDM .737. 등급 B(잠정)→B(실측 근거 보강, 단 CHE 체제 자체 출전 0은 그대로).",
    "player_id": 210,
-   "source": "chelseafc.com(Alonso·Henderson 1차 인터뷰) · NOS.nl(아약스 시절) · fotmob_season_stats",
-   "stat_eval": "fotmob_season_stats(2025-26 PL, 32경기 1골3도움 평점6.7) · player_tenures 확인.",
+   "source": "chelseafc.com(Alonso·Henderson 1차 인터뷰) · NOS.nl(아약스 시절) · fotmob_season_stats + prescriptions(player_id=210, regime_id=2, RDM, fit .816, 2026-09-10)",
+   "stat_eval": "fotmob_season_stats(2025-26 PL, 32경기 1골3도움 평점6.7) · player_tenures 확인. [2026-09-10] core.kernel best_fit_slot 재계산 — map25 0000122358278X73779502331, CHE regime RDM(x60,y42) 대조 필요.",
    "strengths": "패스 순환·경기 조율·경험. 약점: 35세 활동량·커버리지 한계 — 본인도 인지.",
    "traits": "딥라잉 피벗/6번 — 리버풀 시절 8번에서 아약스에서 단일 홀딩으로 전환, 리더십·문화적 영향력이 전술과 별도로 두드러짐.",
-   "updated": null
+   "updated": "2026-09-10"
   },
   {
    "confidence": "MEDIUM — 현 체제 1차 발언은 확보됐으나 실전 표본은 사실상 0",
