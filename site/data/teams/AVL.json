@@ -45850,11 +45850,6 @@
   ],
   "로저스": [
    [
-    "2026-06-27",
-    6.4,
-    "FIFA World Cup"
-   ],
-   [
     "2026-07-06",
     6.5,
     "FIFA World Cup"
@@ -45898,6 +45893,11 @@
     "2026-09-06",
     7.2,
     "Premier League"
+   ],
+   [
+    "2026-09-09",
+    7.2,
+    "EFL Cup"
    ]
   ],
   "린델뢰프": [
@@ -61822,13 +61822,13 @@
    "xg_pg": 0.084
   },
   {
-   "avg_rating": 6.92,
-   "dw_pg": 3.15,
-   "ic_pg": 0.3,
-   "kp_pg": 1.63,
+   "avg_rating": 6.93,
+   "dw_pg": 3.2,
+   "ic_pg": 0.29,
+   "kp_pg": 1.69,
    "label": "로저스",
-   "minutes": 5923,
-   "n": 80,
+   "minutes": 5968,
+   "n": 81,
    "tk_pg": 0.78,
    "xa_pg": 0.211,
    "xg_pg": 0.252
@@ -67923,21 +67923,21 @@
     "starts": 3
    },
    {
-    "assists": 0,
-    "avg_rating": 7.4,
-    "competition": "Club Friendly",
-    "goals": 1,
-    "minutes": 62,
-    "n": 1,
+    "assists": 3,
+    "avg_rating": 6.75,
+    "competition": "EFL Cup",
+    "goals": 0,
+    "minutes": 113,
+    "n": 2,
     "season": "2026-27",
     "starts": 1
    },
    {
     "assists": 0,
-    "avg_rating": 6.3,
-    "competition": "EFL Cup",
-    "goals": 0,
-    "minutes": 68,
+    "avg_rating": 7.4,
+    "competition": "Club Friendly",
+    "goals": 1,
+    "minutes": 62,
     "n": 1,
     "season": "2026-27",
     "starts": 1
