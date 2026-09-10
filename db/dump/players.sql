@@ -99,7 +99,7 @@ INSERT INTO players VALUES(102,'Olutayo Subuloye','수불로예',1899529,NULL,20
 INSERT INTO players VALUES(104,'Teddy Sharman-Lowe','샤먼로우',1009762,NULL,2003,'GK','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1009762 부여(프리시즌 전수 수집).',1117871,'England',NULL,NULL);
 INSERT INTO players VALUES(105,'Liam Delap','델랍',997087,NULL,2003,'ST','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=997087 부여(프리시즌 전수 수집).',1113903,'England',8868,NULL);
 INSERT INTO players VALUES(106,'Reggie Watson','레지 왓슨',2045421,NULL,2010,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=2045421 부여(프리시즌 전수 수집).',1837929,'England',NULL,NULL);
-INSERT INTO players VALUES(107,'Gaga Slonina','슬로니나',978787,NULL,2004,'GK','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=978787 부여(프리시즌 전수 수집).',1031220,'USA',NULL,NULL);
+INSERT INTO players VALUES(107,'Gaga Slonina','슬로니나',978787,NULL,2004,'GK','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=978787 부여(프리시즌 전수 수집). | [2026-09-10] fut.gg 카드 표기는 ''Gabriel Slonina'' — 우리 정본 ''Gaga Slonina''와 동일인(수동 매칭, player_game_stats FC27 2026-09-10행).',1031220,'USA',NULL,NULL);
 INSERT INTO players VALUES(108,'Joseph Gomez',NULL,NULL,NULL,1997,'CB','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',568571,'England',NULL,NULL);
 INSERT INTO players VALUES(109,'Mor Talla Ndiaye',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1933860,NULL,NULL,NULL);
 INSERT INTO players VALUES(111,'James McConnell','맥코넬',1138428,NULL,2004,'DM','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1138428 부여(프리시즌 전수 수집).',1231075,'England',NULL,NULL);
@@ -198,3 +198,9 @@ INSERT INTO players VALUES(203,'Lewis Dobbin','도빈',NULL,NULL,NULL,'LW','2026
 INSERT INTO players VALUES(204,'Caleb Wiley','케일럽 와일리',NULL,NULL,NULL,'LB','2026-08-31 transfer-watch 등재 — 첼시 유출 결손 보완(Preston North End 시즌 임대)',NULL,NULL,NULL,NULL);
 INSERT INTO players VALUES(205,'Oliwier Zych','지흐',NULL,NULL,NULL,'GK','2026-08-31 transfer-watch 등재 — 빌라 유출 결손 보완(Vitória SC 시즌 임대)',NULL,NULL,NULL,NULL);
 INSERT INTO players VALUES(206,'Tommi O''Reilly','토미 오라일리',NULL,NULL,2003,'CAM','아스톤 빌라 아카데미 출신 CAM/RW(2003-12-15생). 25/26 크루 알렉산드라 임대 50경기 7골 14도움 · 크루 올해의 선수. 계약 2028. 26/27 에메리 프리시즌 구상 제외 → 동커스터 임대. [2026-09-01 transfer-watch 등재]',NULL,'Ireland',NULL,NULL);
+INSERT INTO players VALUES(207,'Hugo Ekitiké','에키티케',1048422,NULL,2002,'ST','2026-09 이적시장 신규 등록 — sofascore_id로 신원 확인, FC27(fut.gg) 스탯 연결 (player-collect 14축 서사 수집은 범위 밖, 후속 필요)',NULL,'France',NULL,NULL);
+INSERT INTO players VALUES(208,'Giovanni Leoni','조반니 레오니',1473137,NULL,2006,'CB','2026-09 이적시장 신규 등록 — sofascore_id로 신원 확인, FC27(fut.gg) 스탯 연결 (player-collect 14축 서사 수집은 범위 밖, 후속 필요)',NULL,'Italy',NULL,NULL);
+INSERT INTO players VALUES(209,'Conor Bradley','코너 브래들리',1008402,NULL,2003,'RB','2026-09 이적시장 신규 등록 — sofascore_id로 신원 확인, FC27(fut.gg) 스탯 연결 (player-collect 14축 서사 수집은 범위 밖, 후속 필요)',NULL,'Northern Ireland',NULL,NULL);
+INSERT INTO players VALUES(210,'Jordan Henderson','조던 헨더슨',42694,NULL,1990,'DM','원 소속 첼시 기존 스쿼드 선수(부상 복귀) — 이번에 처음 players 테이블 등록. 이적 신규 아님. sofascore_id로 신원 확인, FC27(fut.gg) 스탯 연결',NULL,'England',NULL,NULL);
+INSERT INTO players VALUES(211,'Emanuel Emegha','에마누엘 에메하',1048333,NULL,2003,'ST','2026-09 이적시장 신규 등록 — sofascore_id로 신원 확인, FC27(fut.gg) 스탯 연결 (player-collect 14축 서사 수집은 범위 밖, 후속 필요)',NULL,'Netherlands',NULL,NULL);
+INSERT INTO players VALUES(212,'Vítězslav Jaroš','비테슬라프 야로시',927359,NULL,2001,'GK','2026-09 이적시장 신규 등록 — sofascore_id로 신원 확인, FC27(fut.gg) 스탯 연결 (player-collect 14축 서사 수집은 범위 밖, 후속 필요)',NULL,'Czechia',NULL,NULL);
