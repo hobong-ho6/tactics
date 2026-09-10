@@ -10,17 +10,17 @@
 
 ## 현재 상태
 
-> **2026-09-08 23:40 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 **`8b6dee9`** — 직전 `a24217e` · **✅ origin 일치 · 워킹트리 깨끗**.
-> 09-08 ⑺ **인게임 캡처 첫 실물 2경기(29장) 처리 + A/B 1차**(사용자 플레이): 스크립트 실물 UI 정본화(GK 점·하단선 기준) · **FC26 히트맵은 위치 기반** 확정 ·
-> ⭐ **맥긴 RM wideplm/Attack→widemid/Support 한 슬롯 변경으로 자기진영 5.9%→38.9%**(비조작 청정 표본, obs#537) · 재현성 기준선 T1↔T2 .86~.91 ·
-> 가르나초 winger/Attack 2경기 연속 정본(wideplm) 우위 · GK 포커스는 위치 무효. 상세는 「최근 작업」 첫 항목. 같은 날 앞 세션(⑹ 점검 후속 7건·편차 14행 재판정)도 이 PC.
+> **2026-09-10 23:55 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 **`(핸드오프 커밋)`** — 직전 `c970189` · **✅ origin 일치** · ⚠️ 미추적 폴더 `reports/ingame/*`(스크린샷 PNG, 용량 탓 커밋 여부 사용자 판단).
+> 09-09~10 ⑻ **인게임 A/B 3·4·5 + 첫 시뮬레이션 + 커널 신뢰도 뷰**: 6경기 75장 처리. ⭐⭐ **시뮬(조작 0) 그리드 ≈ 사용자 그리드(.72~.97)** → 커널 LOW(FB·WM·ST Support)는 조작 탓이 아니라 EA 커널 불일치 ·
+> **빌드업 Short→Balanced는 위치 분포 무영향** · 왼쪽 LM/LB 안쪽 정착은 라벨·조작·빌드업 어느 것으로도 안 바뀜(남은 후보: 포메이션 기하 / 우측 균형 반응) · `v_kernel_fidelity`(029) → 처방 시트 「게임검증」 열.
+> 같은 기간 **스케줄 세션 8커밋**(브뤼헤 MD1 수집 `6f87f95`·D+1 `aecafd7`, 헐 D+3, CHE 아스날 D+3·리즈 EFL컵, FC27 로스터 `fe390ec`, player-collect 6명 `1453c47`, CHE 4-2-3-1 슬롯 신설 `a3acd40`) — **이 세션은 검토하지 않았다**, 커밋 메시지·obs#539~586 참조.
 
 - DB: players **200** · player_matches **4,252** · team_match_stats **70** · match_reports **34**
   (**complete 19 · draft 15**) · match_player_reports **598** · squad_entries **133** ·
   prescriptions **469** · slots **88** · match_game_setups **19** · match_player_prescriptions **306** ·
   transfer_targets **44** · transfer_outgoing **67** · player_duties **208** ·
   player_shirt_numbers **116** · understat_player_matches **5,634** · **teams 37** · **player_evaluations 120** · **transfer_summary 4** · `game_role_focus.movement_kr` **85/85** ·
-  `team_match_stats.xg_source` **62/70** · `game_system_changes` **18** · **reproduction_limits 12** · **ingame_captures 29**(T1 15 · T2 14) · team_tactic_setups **20**(ingame:user 2행) · observations **537** ·
+  `team_match_stats.xg_source` **62/70** · `game_system_changes` **18** · **reproduction_limits 13** · **ingame_captures 75**(T1 15·T2 14·T3 13·T4 11·SIM 11·T5 11) · team_tactic_setups **24**(ingame 6행) · observations **588** · match_reports **36** · player_matches **4,922** ·
   `match_game_setups.rule_note` **19/19**(재판정 후 RULE 8 · DIVERGE 7(사유 명시) · NO-STATS 4) · `player_matches.cells_def` **0/3,363**(다음 경기부터).
 - 회귀: **G1~G15(+G8+) 전항 통과**(2026-09-08 20:30) · 회귀 테스트 3종(g13·g14·**g8x_g15**) 통과. ⭐⭐ **G14 「원장 정정 규약」 09-08 신설·편입**(obs#518) — 불변규칙 2를
   **행 단위로 강제**한다(⑴ 원장재작성 ⑵ 구중복 ⑶ claim↔evidence모순). 역검증 30커밋 중 적발 1 = 실제 사고 1건, **오탐 0**.
@@ -88,19 +88,22 @@
 
 ## 최근 작업
 
-### 2026-09-08 ⑺ — ⭐⭐ 인게임 캡처 실물 29장 · A/B 1차 (`1aeefa2`·`8a623fd`·`a24217e`, obs#536·537, captures 1~29)
+### 2026-09-09~10 ⑻ — ⭐⭐ 인게임 A/B 3·4·5 · 시뮬 1 · 커널 신뢰도 뷰 (`fadba9d`…`c970189`, obs#538·567·568·587·588, captures 30~85)
 
-- **경로 확정**: PS Remote Play(Mac) ⌘⇧4 캡처 720p로 충분(1080p 옵션은 PS5엔 자동). 전술 코드 12자 화면 판독 → `team_tactic_setups` id19 `?ZWKd#Zw6mre`(사용자 확정) · id20 `AZYMfMjy8otg`(맥긴만 widemid/Support).
-  사용자 인게임 전술은 정본과 4슬롯 차이(LM winger/A · RM wideplm/A · GK sweeper · RDM Ball-Winning) — **처방 코드가 아니라 별도 kind `ingame:user-*` 행**으로 기록.
-- **스크립트 정본화**(`scripts/ingame_heatmap_to_grid.py`): 피치 상자 = 외곽선 열 프로파일(좌·우) + **GK 포메이션 점**(세로, 하단선 −48px) → GK 선택 화면(점 흰색)은 하단선 행 대체 ·
-  하단 잘린 캡처 허용 · ⛔ **선수표 세로 강조선은 목록 스크롤로 움직여 기준점 불가**(−150~+216px) · 배경이 외곽선 덮은 1장만 `--box`. 히트 = 밝은 초록 육각 g값 가중. 29/29.
-- ⭐ **FC26 Match Facts 히트맵은 위치 기반**(14분 출전자도 연속 분포) ⇒ 실측(터치 기반)과 원천 다름 — 판정 축은 **게임 커널 코사인**, 실측 코사인은 참고치.
-- ⭐⭐ **A/B 1차**(obs#537): 맥긴 자기진영 **5.9→38.9%**, T1↔T2 유사도 **.71**(다른 92분 선수 .83~.91) — 변경 슬롯만 변했다. 맥긴은 **비조작**(사용자 확인)이라 청정.
-  ⚠️ 팀 전체 자기진영도 +10pt(점유 45%·수비 시간) → 슬롯 효과는 기준선 위에서만 읽는다. **재현성 기준선 .86~.91 → .75 미만이면 「변화」.**
-- 부수: 가르나초 winger/Attack cos .34/.32 vs 정본 wideplm .74/.61(2경기 연속, 비조작) · 스즈키 sweeper/Build-Up이 골라인 고정(goalkeeper/Defend .92) — obs#154 정합 ·
-  마첸 att_wb/Support .29/.43(군내 최적 falseback) · 잭슨 advanced/Support 중원 하강 반복(조작 오염, 보류). 상대 Brent Athletic(CPU) 포메이션 미확인.
-- docs/50: 한계 표(증명 가능 = 비조작 선수 오프볼 위치↔커널 하나) · Remote Play 단계별 · 조작 오염 규칙 · 첫 실물·A/B 결과. `reproduction_limits` validation 행 추가.
-- ⚠️ **위젯**: `show_widget`에 JS 템플릿 렌더가 한 번 깨졌다(첫 위젯은 정상) → 정적 HTML(`<i style=opacity>` 25칸)로 다시 그려 성공. 그리드 위젯은 정적으로.
+- **T3** `?ZWKtKhw6ere`(LM wideplm/A, RB wingback/B, RM 후반 음바예): LM을 wideplm으로 바꾸자 **뱅크 대신 더 높이**(부엔디아 0%·가르나초 0.8%) — 커널 자체가 자기진영 0. 맥긴 widemid 재현 T2↔T3 .94.
+- **T4** `6YSGpGdk2ana`(마첸만 att_wb→wingback/B): 마첸 그리드 4경기 .88~.94 동일 — **풀백 라벨 무효**. 군내 최적은 늘 falseback.
+- **SIM 1** `9ZVJsJYv5dqd`(커리어 관전, 빌라 2-0 레스터, GK ballplaying/BU): ⭐⭐ **시뮬≈사용자**(잭슨 .72~.94·만잠비 .73~.86·맥긴 .97) ⇒ 조작 오염은 형태를 못 바꾼다.
+  스크립트 `--heat white`(커리어 흰 히트맵)·ST 점 기준(GK 화면)·강조선 스케일 폐기(스크롤로 이동). GK 역할 두 종 모두 골라인 고정(goalkeeper/Defend .92).
+- **T5** `4YQEnEbi&YS4`(**빌드업 Balanced** 단일 변수, 전술 화면 캡처로 11명 HIGH): **전원 이전 경기와 .77~.97 동일** — 빌드업은 히트맵에 무영향. ⚠️ 패스네트워크 2장 때문에 선수 매핑 한 칸 밀림 → cos 0.0 이상치로 발견·재적재. **처리 전 썸네일에서 이름 대조 필수.**
+- **뷰**(029): `v_kernel_fidelity`(역할별 게임↔커널 cos, n≥3 HIGH/MID/LOW) → report.html 「게임검증」 열 · `v_ingame_capture_norm`(팀 평균 대비 자기진영 편차 — 기준선이 27.7~50.4%로 흔들려 절대값 금지).
+  현재: dm_dlp/R .78 HIGH · cb_bpd/A .64 HIGH · cb_bpd/BU .60 · wideplm/A .54 · holding/BW .49 · widemid/S .45 MID · **att_wb/S .43 · wingback/B .31 · winger/A .21 LOW**.
+- 기타: 전술 코드는 오프라인 해독 불가 — **EA 웹앱에 코드 임포트 → Roles 화면 캡처**로 역할 확정(사용자가 로그인) · compare.html 「합류확정」→「신규」(`f4398cf`, lh 값 보존) ·
+  브뤼헤 D+1~3 스케줄 **23:00**으로 이동 · UTV 잭슨 D+1 영상 전사(`cpIZf5nxK-4`, obs#567·568 — 미끼 러닝·백힐 기점, 포레스트 백3 단서) · FC27 PlayStyles **09-10 밤 기준 아직 미공개**(EA 페이지 확인).
+
+### 2026-09-08 ⑺ — 인게임 캡처 실물 29장 · A/B 1차 (`1aeefa2`·`8a623fd`·`a24217e`, obs#536·537, captures 1~29)
+
+- Remote Play 캡처 경로 확정 · 스크립트 정본화(외곽선+GK 점, 강조선은 스크롤로 움직여 기준점 불가) · **FC26 히트맵은 위치 기반** · ⭐⭐ **맥긴 wideplm/A→widemid/S로 자기진영 5.9→38.9%**(비조작) ·
+  재현성 기준선 .86~.91 · 가르나초 winger/A 2경기 정본(wideplm) 우위 · 위젯은 정적 HTML로. docs/50 한계 표(증명 가능 = 비조작 오프볼 위치↔커널 하나).
 
 ### 2026-09-08 ⑹ — ⭐⭐ 프로젝트 점검 후속 7건 (`fb9033b`, obs#531~534, migration 027·028)
 
@@ -192,26 +195,18 @@
 
 ## 다음 할 일
 
-0. ⭐⭐ **P1 · 09-09 세 회차(헐 d3·브뤼헤·CHE d3)부터 신규 필수 3항 적용** — ⑴ WhoScored 이벤트로 `core.whoscored` PPDA·`def_x`·**국면 그리드** 전원 적재
-   ⑵ 경기 프리셋 `rule_note`(G15) ⑶ `manager_profiles` 갱신 판정. ⚠️ 스케줄 프롬프트는 SKILL을 읽으므로 자동 반영되지만 **첫 실행 결과를 확인**한다.
-0-1. ⭐ **P1 · 인게임 A/B 3차** — 테스트 3 = id20에서 **가르나초만 winger/Attack → wideplm/Attack**(사용자가 플레이 후 코드 전달 예정). 폴더 `reports/ingame/2026-09-08-avl-test3/`.
-   필수 동봉: 선수 히트맵(최소 맥긴·가르나초·마첸·카마라·시세) · **팀 통계 화면 1장**(점유율) · 상대 포메이션 · 조작 선수. 판독: 가르나초 자기진영·정본 커널 cos, 마첸 변화(윙 혼잡 회피 가설).
-   그 다음 후보: 잭슨 Support→Versatile(조작 선수라 비조작 경기 필요) · 마첸 att_wb 재현 여부(.29/.43). ⛔ 캡처 단독으로 처방을 바꾸지 않는다(docs/50 한계 표).
+0. ⭐⭐ **P1 · 다음 인게임 A/B = 「우측을 안쪽형으로」(사용자 결정 09-10)** — T5 구성에서 **맥긴 RM widemid/Support → wideplm/Attack + 캐시 RB wingback/Balanced → falseback/Balanced**만 바꿔 사용자 플레이 1경기.
+   판별: 왼쪽 마첸·부엔디아(또는 가르나초)의 열0(터치라인) 질량이 22~39%·1~18% 대역을 벗어나 **바깥으로 밀리면 「우측 균형 반응」**, 그대로면 **4-2-3-1 Wide 슬롯 기하** → 그 다음 포메이션 A/B(Narrow/4-3-3).
+   폴더 `reports/ingame/2026-09-1x-avl-test6/` 생성 후 동봉: 전술 화면(코드·11명 역할) · 히트맵 11장 · 팀 통계 1장 · 조작 선수. ⚠️ 처리 전 썸네일 이름 대조.
+   그 뒤 시뮬로 **수비 접근·라인 높이** 단일 변수(팀 설정 3축 중 미검증 2축). ⛔ 캡처 단독으로 처방 변경 금지(docs/50).
+0-1. **P1 · 스케줄 세션 산출 검토** — 09-09~10 8커밋(브뤼헤 MD1·D+1, 헐 D+3, CHE 아스날 D+3·리즈, FC27 로스터, player-collect 6명, **CHE 4-2-3-1 Wide 슬롯 신설 `a3acd40`**)을 이 세션이 읽지 않았다.
+   특히 `a3acd40`은 CHE 슬롯 어휘가 바뀐 구조 변경 — G8+/slot_canon 정합·docs/11 반영 여부 확인. 브뤼헤전 신규 필수 3항(PPDA·def_x·국면 그리드·rule_note·profile 갱신) 적용 여부도 첫 확인 대상.
 0-2. **P2 · FC27 09-25 출시 후 4팀 숙련도(Role+/++)·PlayStyles 일괄 수집**(CHE 3/27 · LIV 0/24 · ATM 0/32) — docs/20 ② 타이브레이커의 전제.
-1. ⭐⭐ **P1 · 브뤼헤전(UCL MD1, 09-08 경기) — 헐전이 열어둔 논점 3건의 판별 경기.** 수집은 `-avl-brugge-2026-09-08`(09-09 13:00)이 돈다.
-   ⑴ **② 무공 형태가 처음 측정된다**(레코가 공격 선언) — **잭슨−부엔디아 수비액션 x 격차**: 0 근접 → 4-4-2 / 15+ → 4-4-1-1
-   (Coaches' Voice 「4-4-2 → 5-3-2」의 3번째 표본). ⑵ **obs#502** — **경기 초반 15분**(로우블록 진입 전 높은 라인)에 풀백–CB
-   하프스페이스가 뚫리는가(측면 편중 3경기 연속 50%+면 obs 승격). ⑶ **obs#505** — ⛔ **평균 위치 금지**, 하강 빈도 분포로.
-   ⑷ ⭐신규 **④ 압박 대응** — 「tertiary pass 실패」의 첫 실측 + 스즈키 롱패스가 1선 우회로 작동하는가.
-   ⚠️ **CL은 PL 시즌 시계열과 분리 기록**(G13). ⭐ 대조군: 트레솔디가 잭슨과 같은 하강형인데 배후 러너 문제를 겪는가.
+1. **P1 · 브뤼헤전 D+2(09-11 23:00)·D+3(09-12 23:00) 회차 확인** — UTV 전술 에피소드(D+1 예고) 회수 · 재검증 7항(report 35 §7)은 **09-12 포레스트전(PL R4 홈)** 에서 판정: 잭슨 국면 반응 ①, 풀백 좌우 복귀 ②, 무공 4-4-2 4번째 표본 ③, def_x 2번째 실측 ⑦. 포레스트 **백3+스텝업 CB** 단서(obs#568) 프리뷰에.
 2. ⭐ **P1 · 09-09 안필드(리버풀·UCL, ATM R1) — 아틀레틱전 진단 4건의 직접 판별 경기.** ⑴ **가설 ⓒ 우선**: 알바레스 선발 예상 →
    **박스 터치·빅찬스 회복 여부**(ⓐ장신은 쇠를로트 결장으로 09-13로 밀렸다). ⑵ **obs#514**: PPDA **15 대역+60%대 점유**면 원정 공격 노선,
    **8 대역 복귀**면 부산물. ⑶ **obs#460/#511**: **그리말도 제외 + 한츠코 좌측**이 나오는가(obs#515는 결과 판정에 쓰지 않는다).
    ⑷ **감독 발언 3공란의 마지막 창구**. ⚠️ 확정 결장: 쇠를로트(근육) · 아르나우 오르티스(유럽대회 정지).
-3. **P1 · 헐전 D+3**(09-09 11:00, 마지막 회차) — 남은 것은 **3회 연속 0건 3종**(6-2-2 독립 확인 · TFA/BTL/Spielverlagerung ·
-   🇰🇷 한국어) + expressandstar 본문(페이월). ⚠️ 브뤼헤전으로 매체 관심이 이동해 **수확 기대치는 낮다** — 0건이면 검색어와 함께 종결.
-   ⭐ 헐전이 남긴 재검증: 헤밍스 LM fit .613(위치 분산) → **wm_wideplm 대안** 검토 · 부엔디아 CAM이 classic10/Attack .879
-   (정본 playmaker/Roaming과 다름 — obs#464 세트 A/B와 직결).
 4. **P1 · obs#449 ⓐ/ⓑ 판별 — 양 풀백 att_wb 집계 역전이 체제 변화인가 국면 혼입인가.** 필요 조건: 점유 국면별(@dom/@tight)
    분리 집계가 **버킷당 2경기**. 74% 표본은 헐전 1경기뿐 → 다음 우세 경기 후 판정. 그때까지 **obs#443 짝짓기 규칙·정본(좌 전진·우 절제) 유지**.
    사용자 인게임 A/B 체감(윙어 쪽 wingback/B · 반대쪽 att_wb/**Attack**)은 여전히 미수집.
