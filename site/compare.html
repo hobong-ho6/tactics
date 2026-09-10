@@ -26,8 +26,10 @@ function pool(slot){
     rate: q.rating, note: q.rate_note, dbFit: q.fit_sim, sourceKind: q.source_kind
   }));
 }
+/* squad_entries.lh='CONFIRMED'는 「이번 창에 확정 영입된 선수」라는 출처 표시다(docs/00 라벨 규약). 이적창이 닫힌 뒤(2026-09-01)에는
+   전원 합류가 끝났으므로 「합류확정」이 아니라 「신규」로 읽는다 — 2026-09-09 사용자 지적(스쿼드 동결 후에도 합류확정 배지 잔존). */
 const badge = lh => !lh || lh === 'OWNED' ? '<span class="badge own">보유</span>'
-  : /^CONFIRMED/.test(lh) ? '<span class="badge hi">합류확정</span>'
+  : /^CONFIRMED/.test(lh) ? '<span class="badge hi">신규</span>'
   : /^HIGH/.test(lh) ? `<span class="badge hi">${lh.split(' ')[0]}</span>`
   : `<span class="badge mid">${lh.split(' ')[0]}</span>`;
 
