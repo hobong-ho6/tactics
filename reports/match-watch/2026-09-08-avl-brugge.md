@@ -786,3 +786,286 @@ role_demands** + 서사 회차 **buildup · rotation** (`content || '\n\n[2026-0
 **부수**: 포레스트(09-12) 백3 + 스텝업 CB 단서(obs 신규, 프리뷰용). 패스네트워크 「every player connected」 서술은 우리 실측(패스 337·전방 다량 경로 맥긴 33뿐)보다 후하다 — 3티어 인상 서술로만.
 ⚠️ 전부 auto-caption·3티어. 골 장면 2건은 영상 재확인으로 승격 가능.
 
+---
+
+## D+1 추적 (2026-09-10)
+
+> ⛔ 위의 기존 절은 **수정하지 않았다**(불변규칙 2). 이 절은 **추가**이며, 당일 판정을 뒤집는 항목은
+> 아래 「당일 판정 정정」에 적고 **새 `observations` 행**으로만 기록했다(G14 — `UPDATE` 금지).
+> 신규 obs **#570~#578**(9건) · `player_duties` **4행 덧붙임**(#199 잭슨 · #87 파우 토레스 · #27 부엔디아 ·
+> #121 스즈키) · `manager_profiles` **rotation 1축 덧붙임**. ⛔ 실측·`match_game_setups`·
+> `match_player_prescriptions` **미변경**.
+
+### D+1-0. 이 회차의 최대 산출 — 한 줄로
+
+⭐⭐ **「잭슨 하강형이라 배후 러너가 없다」는 논점은 잭슨 자신을 러너에서 제외했을 때만 성립한다.**
+43분 골의 배후 러너는 **잭슨 본인**이었고(구단 공식·상대국 매체·상대 분석가·스페인 특파원·영국 분석
+매체 5중), 22분 골에서는 반대로 **박스 밖 피벗 후 백힐**로 기점이 됐다. 우리 실측(온볼 x 60.7 <
+부엔디아 63.2)과 모순이 아니다 — `poss_x`는 **온볼 위치**를, 이 서술들은 **오프볼 러닝**을 잰다.
+⇒ obs#545·#446·#568을 **기각하지 않고 정밀화**했다(obs#570).
+
+### D+1-1. 양 감독 회견 — 원문 확보 상태
+
+| 대상 | D+0 상태 | D+1 결과 |
+|---|---|---|
+| **에메리 사후 회견** | ✅ 원문+번역 확보(avfc.co.uk 공식 3편 + BeanymanSports `dlQTpbG_mxk` 전사) | **추가 원문 0건.** 🇪🇸 스페인어 사후 회견 전사는 **존재하지 않는다**(AS·MARCA·Relevo 사이트 내부 색인 직접 확인 — 아래 D+1-5) |
+| **이반 레코 사후 회견** | ✅ 원문+번역 확보(구단 공식 라이브 `B-9hoJZf9rQ`, 자막 `en-orig`) | ⭐ **네덜란드어 1차 인용 3건 추가**(Sporza·Voetbalkrant·VoetbalPrimeur) — 아래 |
+| **레코 사전 회견**(프리뷰 미결, LOW-MEDIUM) | ⛔ 요약 경유 | ⚠️ **부분 종결** — voetbalbelgie.be(2026-09-07)에서 네덜란드어 직접 인용 2문장 확보. 전문은 여전히 미확보 |
+
+⭐ **레코 — 포츠 옹호(사후, 네덜란드어 1차)**
+> 「**Hij maakte 1 à 2 dure foutjes.** Freddie komt van de beste competitie ter wereld, maar speelde
+> een totaal ander voetbal.」
+> (번역: **그는 값비싼 실수 한두 개를 했다.** 프레디는 세계 최고의 리그에서 왔지만 완전히 다른 축구를
+> 했다.)
+
+⭐ **레코 — 11분 골에 대한 재진술**
+> 「**Toen moest ik denken aan mijn twee woorden. De tegenstander was slimmer in die situatie.**」
+> (번역: **그때 나는 내 두 단어를 생각해야 했다. 그 상황에서 상대가 더 똑똑했다.**)
+> ⇒ D+0의 「brave and smart」 진술과 같은 축이며, **「상대가 더 똑똑했다」로 표현을 바꿨다**.
+
+⭐ **레코 — 사전 회견(프리뷰 미결 항목, 네덜란드어 1차)** (voetbalbelgie.be, 2026-09-07)
+> 「We kijken er enorm naar uit. Zoals Brandon zei, **hebben we ons beste niveau nog niet gehaald**.」
+> 「Op Jan Breydel zijn er al veel speciale Champions League-avonden geweest. **Vorm maakt op zo'n dag
+> niet veel uit.** Ik leef met vertrouwen toe naar morgen.」
+> (번역: 우리는 몹시 기대한다. 브랜던이 말한 대로 **우리는 아직 최고 수준에 도달하지 않았다**. /
+> 얀 브레이델에는 이미 특별한 챔피언스리그 밤이 많았다. **그런 날엔 폼이 큰 의미가 없다.** 나는 내일을
+> 자신감으로 맞이한다.)
+
+### D+1-2. ⭐⭐ 상대측 D+1 전술 분석 — 이 회차 최고 품질 소스
+
+**Tom Boudeweel**(Sporza 라디오 분석가, Erben Decleir 공동, **2026-09-09 09:51**)
+
+> 「Dan is dat **1 op 1 druk zetten over het hele veld**, wat Club Brugge ook zelfs in de Champions
+> League **al een paar jaar** doet.」 / 「Maar als je dat **niet als het hele team doet, als een echt
+> blok**, dan wordt dat afgestraft en dan ziet het er **een beetje naïef** uit natuurlijk.」
+> (번역: 그건 **전 필드에서 1대1로 압박을 거는 것**이고, 브뤼헤가 챔피언스리그에서도 **몇 년째** 하는
+> 방식이다. / 그러나 그것을 **팀 전체가, 진짜 한 블록으로 하지 않으면** 응징당하고 당연히 **약간
+> 순진해** 보인다.)
+
+⇒ ⭐⭐ **D+0의 Bains Analysis 압박 도식(포브스→파우 토레스, 우측백→마첸, RCB→헤밍스)이 상대국 1차
+분석과 독립 일치**했다. 「지역 압박」이 아니라 **대인 인수인계**였다(obs#573).
+⚠️ **재현 조건 경고**: 이 경기 산출(21슛·xG 3.22·전반 유효 7)은 **대인 압박 상대에서의 값**이다.
+헐전(지역 블록, 13슛 1유효)과 같은 시계열로 읽을 수 없다 — **재검증 축에 「상대 압박 유형」을 추가**한다.
+
+> 「Als je dan naar dat derde tegendoelpunt kijkt. **Je verliest de bal, heel diep op de helft van de
+> tegenstander.**」 / 조머: 「Hij heeft **meteen na de wedstrijd toegegeven** dat hij zo ver niet mocht
+> uitkomen.」
+> (번역: 세 번째 실점을 보라. **볼을 잃는다, 상대 진영 아주 깊은 곳에서.** / 그는 **경기 직후 본인이**
+> 그렇게 멀리 나오지 말았어야 했다고 인정했다.)
+
+**Wim Conings**(VoetbalPrimeur.be, **2026-09-09 14:02**) — ⭐⭐ 우리 논점의 직답
+
+> 「**Voor de lange bal van Aston Villa getrapt wordt hebben Lee Hanbeom en Brandon Mechele ruim vijf
+> meter voorsprong op spits Nicholas Jackson. Maar dan nog verliezen ze het sprintduel.**」
+> 「[Hanbeom] is zeker **in grote ruimtes eerder log**」 / 「In de stadsderby wist Cercle Brugge ook al
+> flink wat kansen te versieren met **snelle lopende mensen tussen Hanbeom en Mechele**.」
+> (번역: **빌라의 롱볼이 차이기 전에 이한범과 브랜던 메헬레는 스트라이커 니콜라스 잭슨보다 5m 이상
+> 앞서 있다. 그런데도 그들은 스프린트 경합을 진다.** / [이한범은] 확실히 **큰 공간에서는 다소 둔하다**.
+> / 시내 더비에서도 체르클레 브뤼헤가 **이한범과 메헬레 사이로 빠르게 달리는 사람들**로 기회를 꽤
+> 만들어 냈다.)
+> ⇒ ⭐ **감쇠 요인**: 잭슨의 배후 성공은 **상대 CB 쌍의 속도 결손**이라는 조건에 실려 있다.
+> 오르도녜스가 있었다면 다른 값이 나왔을 수 있다 — 재현성 판정에 이 조건을 남긴다.
+
+### D+1-3. ⭐ 11분 골 「정지」 논란 종결 — obs#555 미해소 ⑶
+
+**한스 바나컨**(브뤼헤 주장, Sporza 2026-09-08 게시·09-09 갱신)
+> 「**Ik deed teken om hem naar buiten te schieten.** Het hielp hen wel in de actie. **Het moment dat
+> hij begint te dribbelen, staat hij recht.** Ik heb gezegd dat ik het niet fairplay vond.」
+> (번역: **나는 볼을 밖으로 차라고 신호했다.** 그것이 그들의 그 장면에 도움이 된 건 맞다.
+> **그가 드리블을 시작하는 순간 그(부엔디아)는 서 있다.** 나는 그것이 페어플레이가 아니라고 말했다.)
+
+**브랜던 메헬레**
+> 「Veel jongens hebben hun debuut gemaakt op dit niveau. **Dit soort ervaringen heb je nodig om beter
+> te worden.**」 (번역: 많은 선수가 이 수준에서 데뷔했다. **더 나아지려면 이런 경험이 필요하다.**)
+
+⇒ ⚠️ **두 인과가 병존하며 어느 하나로 단정하지 않는다**(obs#572):
+ⓐ **브뤼헤 선수 판단 정지**(바나컨·레코·메헬레) ⓑ **구조 결손**(자기 매체 VoetbalPrimeur의 「아무도
+나가서 막을 책임을 느끼지 않았다」·Boudeweel의 「한 블록으로 하지 않으면」).
+⇒ **11분 골은 「감쇠 처리」 대상이 아니다** — 파우 토레스의 무저항 전진은 두 소스가 동의한다.
+단 **이 한 장면의 커널 함의는 하향**한다. ⛔ 주심 판단·영상 재확인은 **여전히 미수행**.
+
+### D+1-4. ⭐⭐ 3득점 형태 전건 특정 (obs#571)
+
+| 골 | 형태 | 사슬 | 독립 소스 |
+|---|---|---|---|
+| **11' 맥긴** | **빌드업 캐리** | 파우 토레스 자기 진영→박스 앞 **무저항 캐리** → 패스 → 맥긴이 수비수로 GK 시야를 가린 **먼 구석 배치슛** | 구단 공식 · AS · VoetbalPrimeur · 맥긴 본인(D+0) |
+| **22' 부엔디아** | **홀드업 연계 + 컷백** | 잭슨 **박스 밖 피벗(등지고) → 백힐** → 조앙 고메스가 마커를 몸으로 제압, **골라인까지** 몰고 컷백 → 부엔디아 **도착 마무리** | 🇵🇹(백힐 명시) · AS(「a lo Drogba」) · 구단 공식(cut back) · UTV(obs#567) |
+| **43' 잭슨** | **전환 롱패스** | 빌라가 **브뤼헤 쪽에서 볼 회수** → **파우 토레스 롱 다이애고널** → 잭슨이 CB 쌍을 스프린트로 이기고 GK 우회 → 빈 골문 | 구단 공식 · Boudeweel · Conings · AS · The Villans |
+
+⭐ **롱패스 트리거는 GK 전유가 아니다.** 이 경기 유일한 롱패스 득점의 기점은 스즈키가 아니라
+**LCB 파우 토레스**였고, **스즈키 롱볼 15회 5성공(33%)은 득점에 직접 연결되지 않았다.**
+⇒ obs#548(1선 압박 우회 실패)은 **「후방 순환으로는 못 넘겼고, 회수 직후 한 번의 롱패스로 넘겼다」**로
+정밀화된다. 세트피스 득점 **0**은 xG 분해(오픈플레이 2.82 / 세트피스 0.40)와 정합한다.
+
+⚠️ **11분 마무리 기법은 소스 충돌로 미확정**: AS 「**golazo de rosca con la zurda … desde fuera del
+área**」(왼발 감아 찬 박스 밖 골) vs 구단 공식 「stroked … into the far corner」 vs 맥긴 본인 「place it
+in the corner rather than smashing it」. **지점**(박스 밖 = 우리 실측 x85.7)은 3자 일치, **발·기법은 미확정**.
+⚠️ Corriere dello Sport(2026-09-08 23:05)는 4개 실점 국면을 **전부 조머 실책**으로 계열화했다
+(11분 「errore … sblocca il risultato」 · 22분 「lapse」 · 43분 「**una papera piuttosto clamorosa, uscendo
+a vuoto su una palla lunga**」). ⇒ **설계와 실책은 같은 장면의 두 면**이다 — 맥긴이 시야선을 가린 것과
+조머가 늦은 것은 배타적이지 않다.
+
+### D+1-5. ⛔⛔ 당일 판정 정정 (새 obs 행으로만 기록 — obs#577)
+
+| # | D+0 판정 | D+1 실물 확인 | 정정 |
+|---|---|---|---|
+| ① | §8-8 「🇪🇸 스페인 주요 6개 매체가 **크롤러를 도메인 차단** ⇒ 접근 불가, 사람이 직접 열어야 한다」 | **차단은 WebSearch·WebFetch 경로 한정**이고 **브라우저로는 200**이다. `as.com/futbol/champions/` 색인 → 「Emery se desquita en Europa」 **크로니카 전문 + 양팀 명단·교체·득점·경고 전건** 확보 | ⛔ **「접근 불가」 → 「경로 오류」.** MARCA·Relevo는 브라우저 색인 직접 확인 결과 **진짜 0건**이나 이는 **「취재 안 함」**이며 차단이 아니다 |
+| ② | §8-3 「**The Villans** 사후 영상 **0건**. 채널 업로드 8건을 직접 열거해 확인」 | **2026-09-09 사후 영상 실재**(`m4z54R9Xrlk`, 25:21) | ⛔ **오판.** 브라우저 채널 그리드가 **JS 렌더 실패**로 0건을 냈다 — `yt-dlp --flat-playlist`로는 즉시 나왔다 |
+| ③ | §8-7 ⑹ 「부엔디아 롤은 텍스트로 결정할 수 없다 — 전 소스가 「박스 도착형」인데 DB는 「라인 사이 수신형」」 | 도착형이 **4개 언어권**(구단 공식·AS·🇵🇹·Opta·Coaches' Voice), 수신형은 readastonvilla 한 갈래 | ⚠️ **도착형 쪽으로 기울었다**(obs#575). 단 hp 38로 정본 변경 근거는 아니다 |
+| ④ | §8-8 「전사 5건이 `/tmp/ytsub/`에만 있다 — 정식 보존은 별도 작업」 | `reports/transcripts/`로 **5건 전건 보존 완료** | ✅ **해소** |
+
+⭐⭐ **규약 갱신 제안(obs#577)** — obs#516 유형 **5번째 재발**이므로 어휘를 고정한다:
+1. 「0건」을 쓸 때 **어느 경로로 0건인지** 반드시 함께 적는다 — 엔진 / WebFetch / 브라우저 / **사이트 내부 색인**.
+2. **403·400은 다른 경로를 시도하기 전까지 결론이 아니다.**
+3. 유튜브 채널 확인은 검색이 아니라 **업로드 열거**로 한다 —
+   `yt-dlp --flat-playlist -I 1:10 https://www.youtube.com/@<채널>/videos`.
+   ⛔ 이 브라우저에서 **채널 `/videos` 그리드는 렌더되지 않는다**(새 실패 유형).
+
+### D+1-6. 영상 (채널 · 제목 · 게시일 · ID · 확인 방식)
+
+| 채널 | 제목 | 게시일 | ID | 확인 방식 | 반영 |
+|---|---|---|---|---|---|
+| ⭐⭐ **1874 : The Aston Villa Channel** | Aston Villa Q&A: McGinn's European Impact, Hemmings Impresses & **Garnacho Myth Busting** (32:33) | **2026-09-09** | `iQlRkLh50pQ` | **auto-caption 전사**(`reports/transcripts/iQlRkLh50pQ.en.md`) | obs#574·#576 |
+| ⭐⭐ **The Villans**(@TheViIIans) | European First Win, John Mcginn First Goal - Does This Sound Familiar? (25:21) | **2026-09-09** | `m4z54R9Xrlk` | **auto-caption 전사**(`m4z54R9Xrlk.en.md`) | obs#574·#576 · `player_duties`#121 · **D+0 「0건」 정정** |
+| **The Villans** | I Analysed Oliver Glasner's Nottingham Forest System (22:24) | **2026-09-10** | `6Tytmc_UKek` | 열거만(미전사) | ⛔ **포레스트전 프리뷰 축** — 이 경기 아님. D+2/프리뷰 회차로 |
+| **UTV** | ANALYSING HOW ASTON VILLA'S ATTACK FINALLY CLICKS INTO GEAR (40:25) | **2026-09-07** | `hzPzYHm8QsU` | 열거만 | ⛔ **경기 전** 업로드 — 이 경기 아님 |
+| **UTV** | (예고된 전술 에피소드) | 예고 「내일 밤」=09-10 | — | ⛔ **아직 미게시**(채널 최신 = `cpIZf5nxK-4`, 09-09) | **D+2 회수 대상** |
+
+⭐ **전사 정식 보존 완료(D+0 미결 항목 해소)** — `/tmp/ytsub/` → `reports/transcripts/`:
+`B-9hoJZf9rQ.en.md`(264큐) · `dlQTpbG_mxk.en.md`(136) · `z3QtUD65Jiw.en.md`(182) ·
+`mlw5BA0WlyM.en.md`(552) · `c6oW6AHlnBM.en.md`(595). **전부 auto-caption**이다.
+
+#### 핵심 서술
+
+⭐⭐ **1874 — 가르나초·음바예 미출전에 대한 3티어 최장 서술**
+> 「he's **not necessarily ready** to come and play in the Premier League in the Champions League right
+> now and just **follow out the tactical instructions** that Emery gives. Like there's **so much going
+> on and off the ball at Villa** … **it's very complex**」 /
+> 「it wasn't the timing with Villa 3-2 up to be **throwing on expansive wingers** — Villa weren't
+> chasing anything, they were **protecting**, so the subs that he made were geared around that」
+> (번역: 그는 지금 프리미어리그·챔피언스리그에 나와 에메리가 주는 **전술 지시를 그대로 수행할 준비가
+> 반드시 되어 있진 않다**. 빌라에는 **온·오프더볼로 들어가는 게 너무 많고** … **매우 복잡하다**. /
+> 3-2로 앞선 상황에 **확장형 윙어를 투입할 타이밍이 아니었다** — 빌라는 무엇을 쫓고 있지 않았고
+> **지키는** 중이었으니 그가 한 교체는 그에 맞춰져 있었다.)
+
+⛔⛔ **그런데 이 국면 논리는 반증 방향이다** — 빌라는 **같은 국면에 알리송(윙어)을 넣었다.**
+구단 공식은 그 기능을 「showing bright touches and an **explosive turn of pace and trickery to drag
+his side up the pitch** and help see out three league phase points」로 적었다.
+The Villans는 알리송을 「he's a Brazilian winger, but **he's not afraid to get stuck in** … he'll run
+around, **he'll track back**」로 적었다.
+⇒ **설명 갈래를 재편했다**(obs#574): ⓐ 감독 = 러너 자원·준비 중(obs#553 유지) ⓑ Guardian = 교체 준비
+미비(유지) ⓒ **전술 지시 수행 준비도**(← ⓒ 국면 논리를 대체) ⓓ **데뷔 적응 비용**(The Villans:
+「it shows the **intensity** of playing for this Unai Emery team」 — 조앙 고메스·완비사카도 데뷔전에서
+최선이 아니었다). ⛔ 어느 하나로 단정하지 않는다.
+⛔ **회견에 가르나초 직접 질문은 D+1에도 발견되지 않았다**(영어·스페인어·네덜란드어 전부).
+
+⭐ **1874 — 카마라 68분 교체 사유**(질문 9의 직답)
+> 「Kamara is just **feeling his way in** at the moment … he **didn't start preseason** so he's still
+> building. He's been playing with different partners — **his regular partners are not here** (Onana,
+> Tielemans) … he's had **so many injuries and we need to look after him** … **he won't play on
+> Wednesday against Coventry. He'll play against Forest.**」
+> (번역: 카마라는 지금 **감을 되찾는 중**이다 … 그는 **프리시즌을 시작하지 않았고** 아직 몸을 만들고
+> 있다. 다른 파트너들과 뛰고 있다 — **평소 파트너들이 여기 없다**(오나나·티엘레망스) … 부상이 **너무
+> 많았고 우리는 그를 관리해야 한다** … **수요일 코번트리전에는 뛰지 않는다. 포레스트전에 뛴다.**)
+> ⇒ **부하 관리 확정**. §0-1의 「카마라 과부하 우려 적중」과 정합(obs#576).
+
+⭐ **The Villans — 스즈키 세이브 기술**(질문 7 부수)
+> 「I saw Martinez a lot last season with parry shots **out into the six-yard box** and we conceded quite
+> a few goals from that … he wasn't pushing them back out into the six-yard box. He was pushing them
+> **further afield**.」
+> ⚠️ 같은 화자가 스즈키를 「Sissoko」로, 마첸을 「Matty Cash」로 오인식했다 — **auto-caption 신뢰도 경고**.
+> Cash는 이 경기 결장이므로 「Matty Cash가 인터셉트」 대목은 **주체 미확정**으로 남긴다.
+
+### D+1-7. 전술 블로그 — 사이트 내부 색인 직접 확인
+
+| 사이트 | 확인 경로 | 결과 |
+|---|---|---|
+| **Coaches' Voice** | `learning.coachesvoice.com/category/analysis/`(정본 경로) 1페이지 **육안 열거** | ⛔ **여전히 MD1 분석 없음.** 최신은 「**Arsenal 2 Chelsea 1: tactical analysis**」(2026-09) → **D+2·D+3 재시도 대상** |
+| ⭐⭐ **Sporza**(🇧🇪 공영) | 기사 URL 직접 | ✅ **최고 품질**(Boudeweel 분석 + 11분 논란) |
+| ⭐⭐ **VoetbalPrimeur.be** | 기사 URL 직접 | ✅ **2편 추가**(Conings CB 속도 · Boudeweel 재수록) |
+| **Voetbalkrant / voetbalbelgie.be** | 기사 URL 직접 | ✅ 바나컨 반응 · 레코 사전 회견 |
+| The Football Analyst · Breaking The Lines · Spielverlagerung · themastermindsite · Between The Posts · TFA | D+0에 색인 확인 완료 | ⛔ **재확인 미실시**(D+0 이후 24시간, 갱신 가능성 낮음) → **D+2 대상** |
+
+### D+1-8. ⭐⭐ 언어축별 수확 (불변규칙 10) — 0건은 검색어와 경로를 함께 적었다
+
+| 언어 | 이 회차 검색어·경로 | 결과 |
+|---|---|---|
+| 🇳🇱 **네덜란드(1차축)** | `Club Brugge Aston Villa analyse tactiek Potts Vanaken pressing lessen` · `Leko persconferentie "dure les" reactie` (엔진) → **개별 URL 실물 확인** | ⭐⭐ **최대 수확** — Boudeweel 압박 분석 · Conings CB 속도 분석 · 바나컨 1차 인용 · 레코 사후·사전 원문 추가 |
+| 🇬🇧 영어 | avfc.co.uk 「Six talking points」(**브라우저**) · readastonvilla(**브라우저**, WebFetch 403) · 유튜브 **채널 업로드 열거** | ⭐⭐ **최대 수확** — 구단 공식 D+1 6개 항목 · 「전반 유효 7」 인과 3요소 · 신규 영상 2편 |
+| 🇪🇸 **스페인** | `as.com/futbol/champions/` · `marca.com/futbol/champions-league.html` · `relevo.com/futbol/unai-emery/` **브라우저 색인 직접** | ⭐ **AS 크로니카 전문 확보**(D+0 「접근 불가」 정정). ⛔ **MARCA 0건 · Relevo 0건**(태그 최신 2025-05-25) = **취재 안 함** |
+| 🇵🇹 포르투갈 | `João Gomes Aston Villa Brugges Liga dos Campeões assistência análise` | ⭐⭐ **22분 골 사슬의 백힐을 명시한 유일 언어축** + 고메스 스탯(지상 듀얼 8승·클리어 5) + **포레스트전 결장 확정** |
+| 🇩🇪 독일 | `Goretzka Aston Villa Verletzung Knie Update Rückkehr` → **eurosport.de 실물 확인** | ⭐ **결장자 축 유지가 옳았다** — 에메리 독일어 원문 2문장 + 고레츠카 본인 원문 확보(아래) |
+| 🇮🇹 이탈리아 | `Tresoldi Bruges Aston Villa pagelle rigore isolato analisi` → **corrieredellosport.it 실물 확인** | ⭐ 조머 4개 실책 계열화 확보. ⛔ **Gazzetta·Corriere della Sera pagelle 여전히 0건**(페이월+JS) |
+| 🇰🇷 한국 | `이한범 브뤼헤 아스톤 빌라 챔피언스리그 데뷔 평가` | ⚠️ **D+0 대비 증분 거의 없음** — 평점(FotMob 6.6 / SofaScore 6.9)·터치 114·경합 7/9·패스 94%는 기수록. 신규는 **후반 38분 박스 내 개인기 탈압박 장면** 1건 |
+| 🇯🇵 일본 | `鈴木彩艶 ブルージュ ロングキック 分析` → **footballchannel(Yahoo 경유) 실물 확인** | ⭐ Aston Villa Review **8점** 「パスはいつも通り、レンジの広さと質の両面で素晴らしかった」 + **AS 재인용**(「ブルッヘが攻め、鈴木が止め、アストン・ヴィラが耐えた」) |
+| 🇸🇪 **스웨덴** | `Lindelöf Aston Villa Brugge Champions League betyg svensk`(엔진, 4대 매체 지정) | ⛔ **0건 — 그런데 경로 문제가 겹쳤다**: `aftonbladet.se`·`expressen.se`는 **엔진 400**이다. D+0의 「0건」은 이 경로로 낸 것이므로 **브라우저 재시도가 필요**하다 → **D+2 대상** |
+| 🇫🇷 프랑스 | (D+0에 L'Avenir 최고 품질 확보) | ⛔ **재시도 미실시** — D+0 수확이 이미 회견 프랑스어 전문이라 우선순위 하향 |
+| 🏴󠁧󠁢󠁳󠁣󠁴󠁿 스코틀랜드 · 🇸🇳 세네갈 · 🇦🇷 아르헨티나 · 🏴 바스크 | (D+0 수확 있음 / 0건) | ⛔ **재시도 미실시** — D+1 증분 기대가 낮다고 판단. **사유 기록**(불변규칙 10) |
+
+⭐ **고레츠카 — 결장자 축의 D+1 증분**(🇩🇪 Eurosport.de, 2026-09-08)
+> 고레츠카: 「**Unglücklicherweise hat mein Körper auf die erhöhte Belastung reagiert.** Es ist
+> frustrierend, aber ich brauche nun eine kurze Pause, um auf mein bestes Niveau zu kommen.」
+> (번역: **불행히도 내 몸이 높아진 부하에 반응했다.** 좌절스럽지만 지금은 최고 수준에 이르기 위해
+> 짧은 휴식이 필요하다.)
+> 에메리: 「**Es ist sein Knie, das Probleme macht.**」 / 「Seine Verletzung ist frustrierend.
+> **Mit seinem Level ist er ein Spieler, der uns helfen kann.**」
+> (번역: **문제를 일으키는 건 그의 무릎이다.** / 그의 부상은 좌절스럽다. **그의 수준이라면 우리를 도울
+> 수 있는 선수다.**)
+> ⚠️ 「브뤼헤·노팅엄·코번트리·토트넘 4경기 결장, 데뷔 최속 10월 10일 브렌트포드전」은 **BILD 요약
+> 경유**이며 1차 확인 전이므로 **채택하지 않았다**(obs#482 규약).
+
+### D+1-9. 특별히 답을 찾을 질문 9개 — 각각의 답
+
+| # | 질문 | D+1 답 |
+|---|---|---|
+| **1** | 음바예·가르나초 또 미출전 — 에메리가 질문받았거나 설명했는가 | ⛔ **직접 질문은 D+1에도 0건**(영어·스페인어·네덜란드어). 설명 갈래는 **4개로 재편**(obs#574): 감독=러너 자원 / Guardian=교체 준비 미비 / **전술 지시 수행 준비도** / **데뷔 적응 비용**. ⛔⛔ **「수세 국면이라 윙어 불가」는 알리송 투입으로 반증 방향** |
+| **2** | 부엔디아 중앙 10번 역할 서술 | ⭐ **「최종 3분의 1 도착·마무리형」으로 4개 언어권 수렴**(obs#575). 「라인 사이 수신형」은 readastonvilla 한 갈래. 커널 0.43 붕괴와 **정합 방향**이나 hp 38로 정본 변경 불가 — 재검증 ④에 **자기 진영 패스 수·박스 내 터치 수** 판별 추가 |
+| **3** | 3득점 형태 | ⭐⭐ **전건 특정**(obs#571): **빌드업 캐리 1 · 홀드업 백힐 연계 1 · 전환 롱패스 1 · 세트피스 0.** 롱패스 기점은 **GK가 아니라 LCB**였다 |
+| **4** | 2실점 — 우측(완비사카) 대 좌측(마첸) 중 어디가 지목되는가 | **우측이 지목된다.** AS: 「Jan Virgili … no dudó en **encarar a Wan-Bissaka** y asistir … a Vetlesen」 / 「La **misma banda** por la que llegó el 2-3 … la mano, clara, de Wan-Bissaka」. ⭐ **마첸은 오히려 호평**됐다(birminghammail 7 · The Villans 「another stormer … solid six or seven every game」) — **우리 실측 평점 5.9(팀 최저)와 충돌**(⇒ obs#555 규약: 평점을 근거로 쓰지 않는다). ⭐ 1874가 **메커니즘을 계열화**: 「Arsenal and the first Brugge goal last night — the **quite similar cut back goal**」 ⇒ obs#547의 「우측 기원」 유지 + **컷백 반복 패턴**이 새 축 |
+| **5** | 잭슨 하강 장면과 배후 러너 등장 여부 | ⭐⭐ **답이 뒤집혔다**(obs#570): 43분 골의 **배후 러너는 잭슨 본인**이다(구단 공식 「a long pass came over the top … for Jackson to chase」). 22분엔 반대로 **본인이 홀드업 기점**. ⇒ **온볼 하강 + 오프볼 배후 위협의 이중 임무.** ⚠️ 감쇠: 상대 CB 쌍(이한범·메헬레)의 **속도 결손 조건**에 실려 있다(Conings) |
+| **6** | 트레솔디가 배후 러너를 얻었는가 — 대조군 | ⛔ **얻지 못했다**(D+0 obs#556 유지·보강). VoetbalPrimeur: 「**geïsoleerd**」 「Club vindt hem **minder gemakkelijk in de opbouw**」 「vanaf de flanken … **minder constante aanvoer**」. D+1 증분은 **부수 사실**뿐 — 토트넘 스카우트 파견(TEAMtalk 경유, MEDIUM) · Barça 이번 여름 관심(AS 「objetivo culé este verano」 — D+0의 「로마 €35m 거절」과 **다른 구단**이므로 둘 다 병기) |
+| **7** | 스즈키 롱패스가 브뤼헤 압박을 넘기는 데 쓰였는가(33%) | ⚠️ **부분**. 압박 유형은 **전 필드 대인 1대1**로 확정됐고(Boudeweel) 롱패스가 그 압박의 해법 축인 것은 맞으나, ⛔ **이 경기 롱패스 득점의 기점은 스즈키가 아니라 파우 토레스**였다. 스즈키 평가는 **배급 질**(Aston Villa Review 8점 「レンジの広さと質」)과 **세이브 기술 변화**(파리 방향)로 갈렸다. ⇒ obs#548 정밀화 |
+| **8** | 카마라·조앙 고메스 더블 피벗 분담 | ⭐ **독립 3중 지지 완성**: 우리 def_x(27.1 / 35.8, 격차 8.7) · Bains(「Kamara was the one holding, João Gomes was clearly the one pushing forward」) · The Villans(「Kamara who **positionally reads the game really well**」 + 고메스의 「mazy runs」·「gliding with the ball」). ⚠️ **단 포레스트전 재검증 불가** — 조앙 고메스 국내 징계 잔여(obs#576) |
+| **9** | 카마라 68분 교체 — 부하 관리인가 | ✅ **부하 관리 확정**(obs#576). 「didn't start preseason … we need to look after him … he won't play on Wednesday against Coventry. He'll play against Forest」(1874) + 에메리 D+0 원문(「Kamara, Wan-Bissaka, both especially — they were tight」) |
+
+### D+1-10. 새 observations
+
+| obs | scope | 요지 |
+|---|---|---|
+| **#570** | in_possession | ⭐⭐ **하강(온볼)과 배후 위협(오프볼)은 배타적이지 않다** — 43분 골의 배후 러너는 잭슨 본인. obs#545·#446·#568 **정밀화**(기각 아님) |
+| **#571** | build_up | ⭐⭐ **3득점 형태 전건 특정** — 빌드업 캐리 1 · 홀드업 백힐 1 · 전환 롱패스 1 · 세트피스 0. 롱패스 기점은 LCB |
+| **#572** | defence | ⭐ **11분 골 「정지」 논란 종결**(obs#555 ⑶) — 바나컨 1차. 두 인과(판단 정지 / 구조 결손) 병존 |
+| **#573** | defence | ⭐⭐ **상대 압박 유형 정본화** — 전 필드 대인 1대1. **재검증 축에 「상대 압박 유형」 추가** |
+| **#574** | squad | ⭐⭐ **「수세 국면이라 윙어 불가」 반증** — 같은 국면에 알리송 투입. 설명 갈래 4개로 재편 |
+| **#575** | in_possession | ⭐ **부엔디아 = 도착·마무리형**으로 4개 언어권 수렴. §8-7 ⑹ 기울기 확정 |
+| **#576** | reference | ⚠️ **조앙 고메스 포레스트전 결장** → 피벗 분담 재검증 연기 + 카마라 부하 관리 확정 |
+| **#577** | reference | ⛔⛔ **「도메인 차단 = 접근 불가」 오판 정정**(obs#516 5번째 재발) + 「0건」 표기 규약 3항 |
+| **#578** | in_possession | ⭐ **파우 토레스 = 이탈한 티엘레망스의 전진 배급을 흡수한 LCB** — 어시스트 2개의 **형태가 서로 달랐다**(캐리 후 근거리 / 롱 다이애고널) |
+
+`player_duties` **4행 덧붙임**: #199 잭슨(이중 임무) · #87 파우 토레스(롱 레인지 배급 축) ·
+#27 부엔디아(도착형 기울기) · #121 스즈키(세이브 기술 · 롱패스 기점 정정). ⛔ **덧붙임만**(G14 prefix 보존).
+`manager_profiles` **rotation 1축 덧붙임**(알리송 투입 = 「윙어 불가」 설명 반증). ⛔ D+0이 덧붙인
+formation·pressing·situational·role_demands·buildup은 **중복 회피로 손대지 않았다**.
+
+### D+1-11. D+2 회차로 넘길 미해소 항목
+
+1. ⭐⭐ **UTV 예고 전술 에피소드**(「내일 밤」=09-10) **아직 미게시** — 채널 업로드 열거로 회수.
+2. ⭐ **🇸🇪 스웨덴어(린델뢰프) 재시도 — 경로를 바꿔서.** D+0·D+1의 0건은 **엔진 400 경로**였다(obs#577).
+   `aftonbladet.se`·`expressen.se`를 **브라우저 색인**으로 열어야 결론이 된다.
+3. ⭐ **🇧🇪 `hln.be`·`nieuwsblad.be`·`gva.be` 브라우저 재시도** — 같은 이유다.
+   특히 **Wim Conings의 Het Nieuwsblad 원판**(VoetbalPrimeur판만 확보)과 HLN 평점표.
+4. **Coaches' Voice MD1 분석** — 정본 경로로 계속 감시(D+2·D+3).
+5. **The Football Analyst · Spielverlagerung · themastermindsite · Between The Posts · TFA** 색인 재확인
+   (D+0 이후 미실시).
+6. ⛔ **UEFA.com 공식 리포트** — matchId 미확보로 404 재현(`2044702` 시도 실패). 대회 페이지 경로 탐색 필요.
+7. ⛔ **🇮🇹 Gazzetta·Corriere della Sera pagelle** — 페이월+JS, 미해결.
+8. ⚠️ **영상 육성 확인 3건**(D+0 §8-7 ⑺) 중 **⑶(11분 정지)은 당사자 진술로 종결**됐다.
+   남은 것은 ⑴ 에메리 「he's not the player with qualities to running behind」의 지칭 대상
+   ⑵ 세이스 침투가 오버랩인지 언더랩인지.
+9. **11분 마무리 기법**(발·감아 차기 여부) 소스 충돌 — 영상 재확인 대상.
+10. ⚠️ **포레스트전 프리뷰 축 자료 2건이 이미 나왔다**(The Villans `6Tytmc_UKek` 09-10 글라스너 시스템 분석
+    · obs#568 백3 단서) — **이 경기 축이 아니므로 프리뷰 회차로 넘긴다.**
+
+### D+1-12. 게이트
+
+`python3 scripts/gates.py` → **G1~G15(+G8+) 전항 통과**(2026-09-10).
