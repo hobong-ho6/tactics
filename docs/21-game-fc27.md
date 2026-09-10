@@ -80,6 +80,8 @@ EA 1차 피치노트 4건(Gameplay Deep Dive 07-29 · FUT Deep Dive · Career De
 ### 트리거 순서
 
 1. **09-10** EA 전체 DB(PlayStyles 포함) → `player_game_stats` FC27 **새 roster_date 행** + playstyles 채움(1단계 행 덮지 않음).
+   ⚠️ 실제 확인(2026-09-10, obs#579): 이적 반영 로스터(OVR/6대스탯/35속성/AcceleRATE)는 official로 live이나
+   **PlayStyles는 여전히 EA 미확정**(fut.gg는 커뮤니티 투표 %뿐) — "09-10"은 EA 원문("9월 중")이 아니라 커뮤니티 포럼 추정이었다.
 2. **09-18 얼리액세스** → fut.gg `/api/fut/roles/` FC27 응답 확보 → `migrate_fc27.py --roles … --check` → 카운트·diff 확정 → obs.
 3. `EXPECTED["FC27"]` 추가 → `gates.py` G1/G5에 FC27 앵커 **새 행**(FC26 앵커 유지) → `--apply`(사용자 승인) → export → G5 JS 동치 확인.
 4. 팀 전술 파라미터(`game_tactic_params` FC27)는 게임 내 설정 화면 확인 후 행 추가 — 피치노트에 변화 언급 없음.
