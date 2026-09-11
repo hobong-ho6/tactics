@@ -10,8 +10,10 @@
 
 ## 현재 상태
 
-> **2026-09-11 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 **`c0a6946`** — 직전 `4108bba` ·
-> **✅ origin 일치** · ⚠️ 미추적 폴더 `reports/ingame/*`(이전 세션 스크린샷, 이번 세션 미관여, 커밋 여부 사용자 판단).
+> **2026-09-11 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 **`f4bb1cc`** — 직전 `c0a6946` ·
+> **✅ origin 일치**(push 완료) · ⚠️ 미추적 폴더 `reports/ingame/*`(이전 세션 스크린샷, 이번 세션 미관여, 커밋 여부 사용자 판단).
+> **09-11 스케줄 태스크(브뤼헤전 D+2 추적)**: `reports/match-watch/2026-09-08-avl-brugge.md`에 D+2 절 추가(obs#609~613·615,
+> 결번 #614는 자기 검증 중 되돌림). 상세는 아래 「최근 작업」 참조.
 > **09-11 세션 요약**: FC27(EA 공식 확정, 09-10) PlayStyles·키·몸무게·카드이미지를 4팀 전원(AVL·CHE·LIV·ATM) 수집,
 > `player.html`을 fut.gg식 카드+메뉴로 재구성, `player_evaluations` 128행(98명 갱신 포함) 리프레시,
 > **squad_entries에서 CONFIRMED 이적 완료 선수 32행 삭제**(핵심 정책 변경, 아래 참조).
@@ -93,6 +95,21 @@
 - ⭐ AVL 영상 회차는 **필수 채널 3곳**(UTV · The Villans · 1874, docs/30 표)을 항상 조회한다.
 
 ## 최근 작업
+
+### 2026-09-11 ⑽ — 브뤼헤전(09-08) D+2 추적, 스케줄 태스크 (`f4bb1cc`)
+
+- D+1이 남긴 미해소 항목을 재작업: **에메리 회견 육성 재구성**으로 「he's not the player with qualities
+  to running behind but he tried … fantastic, Emiliano」의 지칭 대상을 **헤밍스**로 특정(부엔디아·잭슨
+  둘 다 아니었음, obs#609). 세이스 오버랩/언더랩 소스 충돌은 미해소로 남김(obs#610).
+- 🇧🇪 벨기에 3도메인(hln.be·nieuwsblad.be·gva.be)이 브라우저 경로로 다시 열려 VP-Rapport 개별 평점
+  확보(obs#613). UEFA.com matchId 확정(2049556, 서술형 리포트 자체가 사이트 구조상 없음, obs#611).
+  Coaches' Voice 정본 경로 재확인 — 진짜 0건(obs#612).
+- ⛔⛔ **자기 오류 정정 사례**: `cpIZf5nxK-4`(UTV 잭슨 분석 영상)를 D+2 신규 발견으로 오인해
+  전사·obs·player_duties에 반영했다가, git log 대조로 **D+1 당일 `§8-3 addendum`에 이미 전사·반영**돼
+  있었음을 발견하고 전량 되돌렸다(전사 파일 `git checkout --`, obs 삭제 → 결번 **#614**, player_duties
+  중복 문단 제거). **불변규칙 2 위반을 커밋 전에 자체 검증으로 잡은 사례** — 다음 세션도 새 발견을
+  DB에 쓰기 전 `git log -- <파일>`로 기존 반영 여부를 먼저 확인할 것.
+- 결장자 갱신: 마조(Madjo) 결장 사유가 발목 부상으로 신규 확인(obs#615). 게이트 전항 통과, export·dump·push 완료.
 
 ### 2026-09-11 ⑼ — FC27 4팀 전량 수집(PlayStyles·키·몸무게·카드) + player.html 재구성 + 종합평가 98명 + squad_entries 이적정리 32행 (`2205d24`…`4108bba`)
 
