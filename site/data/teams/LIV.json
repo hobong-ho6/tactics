@@ -26170,23 +26170,6 @@
     "Premier League"
    ]
   ],
-  "모리슨": [
-   [
-    "2026-07-25",
-    7.7,
-    "Club Friendly"
-   ],
-   [
-    "2026-07-29",
-    6.4,
-    "Club Friendly"
-   ],
-   [
-    "2026-08-02",
-    6.8,
-    "Club Friendly"
-   ]
-  ],
   "무뇨스": [
    [
     "2026-04-05",
@@ -26675,28 +26658,6 @@
     "2026-08-09",
     6.0,
     "Club Friendly"
-   ]
-  ],
-  "은두크웨": [
-   [
-    "2026-07-25",
-    6.6,
-    "Club Friendly"
-   ],
-   [
-    "2026-07-29",
-    7.4,
-    "Club Friendly"
-   ],
-   [
-    "2026-08-02",
-    5.8,
-    "Club Friendly"
-   ],
-   [
-    "2026-08-09",
-    6.7,
-    "Club Friendly Games"
    ]
   ],
   "음바예": [
@@ -27579,80 +27540,6 @@
     "player_id": 50,
     "pulled": "2026-08-11",
     "season": "2025/2026",
-    "value": "0"
-   }
-  ],
-  "모리슨": [
-   {
-    "league": "League One",
-    "metric": "Goals",
-    "metric_kr": "골",
-    "player_id": 112,
-    "pulled": "2026-08-21",
-    "season": "2026/2027",
-    "value": "0"
-   },
-   {
-    "league": "League One",
-    "metric": "Assists",
-    "metric_kr": "어시스트",
-    "player_id": 112,
-    "pulled": "2026-08-21",
-    "season": "2026/2027",
-    "value": "0"
-   },
-   {
-    "league": "League One",
-    "metric": "Started",
-    "metric_kr": "선발",
-    "player_id": 112,
-    "pulled": "2026-08-21",
-    "season": "2026/2027",
-    "value": "0"
-   },
-   {
-    "league": "League One",
-    "metric": "Matches",
-    "metric_kr": "경기",
-    "player_id": 112,
-    "pulled": "2026-08-21",
-    "season": "2026/2027",
-    "value": "1"
-   },
-   {
-    "league": "League One",
-    "metric": "Minutes played",
-    "metric_kr": "출전 시간",
-    "player_id": 112,
-    "pulled": "2026-08-21",
-    "season": "2026/2027",
-    "value": "21"
-   },
-   {
-    "league": "League One",
-    "metric": "Rating",
-    "metric_kr": "평점",
-    "player_id": 112,
-    "pulled": "2026-08-21",
-    "season": "2026/2027",
-    "value": "6.45"
-   },
-   {
-    "league": "League One",
-    "metric": "Yellow cards",
-    "metric_kr": "경고",
-    "player_id": 112,
-    "pulled": "2026-08-21",
-    "season": "2026/2027",
-    "value": "0"
-   },
-   {
-    "league": "League One",
-    "metric": "Red cards",
-    "metric_kr": "퇴장",
-    "player_id": 112,
-    "pulled": "2026-08-21",
-    "season": "2026/2027",
     "value": "0"
    }
   ],
@@ -28540,71 +28427,6 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "value": "0"
-   }
-  ],
-  "은두크웨": [
-   {
-    "league": "2. Liga",
-    "metric": "Goals",
-    "metric_kr": "골",
-    "player_id": 69,
-    "pulled": "2026-08-21",
-    "season": "2025/2026",
-    "value": "0"
-   },
-   {
-    "league": "2. Liga",
-    "metric": "Assists",
-    "metric_kr": "어시스트",
-    "player_id": 69,
-    "pulled": "2026-08-21",
-    "season": "2025/2026",
-    "value": "1"
-   },
-   {
-    "league": "2. Liga",
-    "metric": "Started",
-    "metric_kr": "선발",
-    "player_id": 69,
-    "pulled": "2026-08-21",
-    "season": "2025/2026",
-    "value": "11"
-   },
-   {
-    "league": "2. Liga",
-    "metric": "Matches",
-    "metric_kr": "경기",
-    "player_id": 69,
-    "pulled": "2026-08-21",
-    "season": "2025/2026",
-    "value": "12"
-   },
-   {
-    "league": "2. Liga",
-    "metric": "Minutes played",
-    "metric_kr": "출전 시간",
-    "player_id": 69,
-    "pulled": "2026-08-21",
-    "season": "2025/2026",
-    "value": "897"
-   },
-   {
-    "league": "2. Liga",
-    "metric": "Yellow cards",
-    "metric_kr": "경고",
-    "player_id": 69,
-    "pulled": "2026-08-21",
-    "season": "2025/2026",
-    "value": "0"
-   },
-   {
-    "league": "2. Liga",
-    "metric": "Red cards",
-    "metric_kr": "퇴장",
-    "player_id": 69,
-    "pulled": "2026-08-21",
-    "season": "2025/2026",
-    "value": "1"
    }
   ],
   "음바예": [
@@ -37751,18 +37573,6 @@
    "xg_pg": 0.388
   },
   {
-   "avg_rating": 6.63,
-   "dw_pg": 2.75,
-   "ic_pg": 0.0,
-   "kp_pg": 0.0,
-   "label": "은두크웨",
-   "minutes": 305,
-   "n": 4,
-   "tk_pg": 1.5,
-   "xa_pg": null,
-   "xg_pg": null
-  },
-  {
    "avg_rating": 6.62,
    "dw_pg": 1.75,
    "ic_pg": 0.5,
@@ -37857,18 +37667,6 @@
    "tk_pg": 1.68,
    "xa_pg": 0.027,
    "xg_pg": 0.13
-  },
-  {
-   "avg_rating": 6.97,
-   "dw_pg": 0.33,
-   "ic_pg": 0.0,
-   "kp_pg": 1.0,
-   "label": "모리슨",
-   "minutes": 213,
-   "n": 4,
-   "tk_pg": 0.33,
-   "xa_pg": null,
-   "xg_pg": null
   },
   {
    "avg_rating": 6.4,
@@ -39674,28 +39472,6 @@
     "starts": null
    }
   ],
-  "모리슨": [
-   {
-    "assists": 0,
-    "avg_rating": 6.97,
-    "competition": "Club Friendly",
-    "goals": 1,
-    "minutes": 180,
-    "n": 3,
-    "season": "2026-27",
-    "starts": 2
-   },
-   {
-    "assists": null,
-    "avg_rating": null,
-    "competition": "Club Friendly Games",
-    "goals": null,
-    "minutes": 33,
-    "n": 1,
-    "season": "2026-27",
-    "starts": 0
-   }
-  ],
   "무뇨스": [
    {
     "assists": 0,
@@ -40731,28 +40507,6 @@
     "competition": "Club Friendly Games",
     "goals": null,
     "minutes": 57,
-    "n": 1,
-    "season": "2026-27",
-    "starts": 1
-   }
-  ],
-  "은두크웨": [
-   {
-    "assists": 0,
-    "avg_rating": 6.6,
-    "competition": "Club Friendly",
-    "goals": 0,
-    "minutes": 260,
-    "n": 3,
-    "season": "2026-27",
-    "starts": 2
-   },
-   {
-    "assists": 0,
-    "avg_rating": 6.7,
-    "competition": "Club Friendly Games",
-    "goals": 0,
-    "minutes": 45,
     "n": 1,
     "season": "2026-27",
     "starts": 1
@@ -42141,32 +41895,6 @@
    "team_code": "LIV"
   },
   {
-   "confidence": "실측 그리드는 원 수집 그대로. 평점은 rationale 본문 파싱값이라 구조화 필드가 아니다.\n⭐⭐ **[2026-08-19 이라올라 실측 전환]** 그리드를 **25/26 슬롯 체제 → 이라올라 26/27**로 교체했다(불변규칙 7 팀축 혼입 해소). 출처: 프리시즌 4-2-3-1 **3경기 집계**(`core.aggregate`), 135분 · 평균 평점 6.43 · 실측 툴x **55.98** · 툴y 49.86 · lineup_pos=M. 슬롯 `FB`(x=56, 실측 이동 앵커) 커널 최적 = `fb_falseback`/Balanced **0.73**. ⚠️ 프리시즌 친선 표본이고 공식전 0경기다(08-23 뉴캐슬 첫 경기).",
-   "fit_focus": "Balanced",
-   "fit_role": "fb_falseback",
-   "fit_sim": 0.73,
-   "formation": "4-2-3-1 Wide",
-   "grid_caveat": "⚠️ 프리시즌 친선 3경기 · 공식전 0경기(08-23 뉴캐슬 첫 경기)",
-   "grid_club": "Liverpool (이라올라 26/27)",
-   "label": "커티스 존스",
-   "map25": "2002045344047X40158400230",
-   "name_en": "Curtis Jones",
-   "name_kr": "커티스 존스",
-   "player_id": 46,
-   "pos": "LB",
-   "rate_basis": "iraola2627",
-   "rate_note": "이라올라 프리시즌 3경기 135분 평균 6.43",
-   "rating": 6.43,
-   "regime_id": 3,
-   "shirt_number": null,
-   "slot_type": "FB",
-   "sort_order": 9,
-   "source": "player_role_map(kind=measured) 파생 — 2026-08-11 팀 축 배선",
-   "source_kind": "squad",
-   "status": "OWNED",
-   "team_code": "LIV"
-  },
-  {
    "confidence": "실측 그리드는 원 수집 그대로. 평점은 rationale 본문 파싱값이라 구조화 필드가 아니다.\n⭐⭐ **[2026-08-19 이라올라 실측 전환]** 그리드를 **25/26 슬롯 체제 → 이라올라 26/27**로 교체했다(불변규칙 7 팀축 혼입 해소). 출처: 프리시즌 4-2-3-1 **2경기 집계**(`core.aggregate`), 149분 · 평균 평점 6.85 · 실측 툴x **35.87** · 툴y 34.58 · lineup_pos=D. 슬롯 `CB`(x=36, 실측 이동 앵커) 커널 최적 = `cb_bpd`/Aggressive **0.922**. ⚠️ 프리시즌 친선 표본이고 공식전 0경기다(08-23 뉴캐슬 첫 경기).",
    "fit_focus": "Aggressive",
    "fit_role": "cb_bpd",
@@ -42401,58 +42129,6 @@
    "team_code": "LIV"
   },
   {
-   "confidence": "실측 그리드는 원 수집 그대로. 평점은 rationale 본문 파싱값이라 구조화 필드가 아니다.\n⭐⭐ **[2026-08-19 이라올라 실측 전환]** 그리드를 **25/26 슬롯 체제 → 이라올라 26/27**로 교체했다(불변규칙 7 팀축 혼입 해소). 출처: 프리시즌 4-2-3-1 **3경기 집계**(`core.aggregate`), 135분 · 평균 평점 6.43 · 실측 툴x **55.98** · 툴y 49.86 · lineup_pos=M. 슬롯 `FB`(x=56, 실측 이동 앵커) 커널 최적 = `fb_falseback`/Balanced **0.73**. ⚠️ 프리시즌 친선 표본이고 공식전 0경기다(08-23 뉴캐슬 첫 경기).",
-   "fit_focus": "Balanced",
-   "fit_role": "fb_falseback",
-   "fit_sim": 0.73,
-   "formation": "4-2-3-1 Wide",
-   "grid_caveat": "⚠️ 프리시즌 친선 3경기 · 공식전 0경기(08-23 뉴캐슬 첫 경기)",
-   "grid_club": "Liverpool (이라올라 26/27)",
-   "label": "커티스 존스",
-   "map25": "2002045344047X40158400230",
-   "name_en": "Curtis Jones",
-   "name_kr": "커티스 존스",
-   "player_id": 46,
-   "pos": "RB",
-   "rate_basis": "iraola2627",
-   "rate_note": "이라올라 프리시즌 3경기 135분 평균 6.43",
-   "rating": 6.43,
-   "regime_id": 3,
-   "shirt_number": null,
-   "slot_type": "FB",
-   "sort_order": 9,
-   "source": "player_role_map(kind=measured) 파생 — 2026-08-11 팀 축 배선",
-   "source_kind": "squad",
-   "status": "OWNED",
-   "team_code": "LIV"
-  },
-  {
-   "confidence": "⭐⭐ **[2026-08-19 이라올라 실측 전환]** 그리드를 **25/26 슬롯 체제 → 이라올라 26/27**로 교체했다(불변규칙 7 팀축 혼입 해소). 출처: 프리시즌 4-2-3-1 **4경기 집계**(`core.aggregate`), 305분 · 평균 평점 6.62 · 실측 툴x **69.6** · 툴y 32.46 · lineup_pos=D. 슬롯 `CB`(x=68, 실측 이동 앵커) 커널 최적 = `cb_bpd`/Aggressive **0.925**. ⚠️ 프리시즌 친선 표본이고 공식전 0경기다(08-23 뉴캐슬 첫 경기).",
-   "fit_focus": "Aggressive",
-   "fit_role": "cb_bpd",
-   "fit_sim": 0.925,
-   "formation": "4-2-3-1 Wide",
-   "grid_caveat": "⚠️ 프리시즌 친선 4경기 · 공식전 0경기",
-   "grid_club": "Liverpool (이라올라 26/27)",
-   "label": "은두크웨",
-   "map25": "000000000100152012X200232",
-   "name_en": "Ifeanyi Ndukwe",
-   "name_kr": "은두크웨",
-   "player_id": 69,
-   "pos": "RCB",
-   "rate_basis": "iraola2627",
-   "rate_note": "이라올라 프리시즌 4경기 305분 평균 6.62",
-   "rating": 6.62,
-   "regime_id": 3,
-   "shirt_number": null,
-   "slot_type": "CB",
-   "sort_order": 4,
-   "source": "[2026-08-19] 이라올라 실측 기반 신규 행 · core.aggregate + core.kernel",
-   "source_kind": "squad",
-   "status": "OWNED",
-   "team_code": "LIV"
-  },
-  {
    "confidence": "⭐ **좌우 분리 적용**(obs#156). 21경기 혼합 RCB .838 → 우측 14경기만 **RCB cb_bpd/Aggressive .903**. 좌측 7경기만 재면 LCB .850이라 **양쪽 다 가능하나 우측이 주 표본이자 argmax**다. 표본이 렌 소속 21경기로 충분(1853분).\n⭐⭐ **[2026-08-19 이라올라 실측 전환]** 그리드를 **25/26 슬롯 체제 → 이라올라 26/27**로 교체했다(불변규칙 7 팀축 혼입 해소). 출처: 프리시즌 4-2-3-1 **1경기 집계**(`core.aggregate`), 45분 · 평균 평점 8.2 · 실측 툴x **62.4** · 툴y 35.92 · lineup_pos=D. 슬롯 `CB`(x=68, 실측 이동 앵커) 커널 최적 = `cb_bpd`/Aggressive **0.827**. ⚠️ 프리시즌 친선 표본이고 공식전 0경기다(08-23 뉴캐슬 첫 경기). / [2026-08-25 사이드 분리 · obs#328] **RCB 전용 그리드로 전환**(n=9·745분·평점 7.12). ⛔ **옛 전체집계 그리드 원문 보존**: map25=`0010000101101X11126101331` (fit 0.827) — 파기하지 않는다. 그 값은 좌우 스틴트를 평균한 것이라 어느 사이드도 대표하지 못했다. ⭐ **반대편 사이드는 `prescriptions`의 `measured:side:*` 행에 보존**했다 — `squad_entries`는 `UNIQUE(regime_id,player_id,slot_type)`이라 한 슬롯에 두 행을 둘 수 없다. 반대편: LCB 적합 0.802.",
    "fit_focus": "Aggressive",
    "fit_role": "cb_bpd",
@@ -42603,58 +42279,6 @@
    "shirt_number": 42,
    "slot_type": "DM",
    "sort_order": 7,
-   "source": "[2026-08-19] 이라올라 실측 기반 신규 행 · core.aggregate + core.kernel",
-   "source_kind": "squad",
-   "status": "OWNED",
-   "team_code": "LIV"
-  },
-  {
-   "confidence": "⭐⭐ **[2026-08-19 이라올라 실측 전환]** 그리드를 **25/26 슬롯 체제 → 이라올라 26/27**로 교체했다(불변규칙 7 팀축 혼입 해소). 출처: 프리시즌 4-2-3-1 **2경기 집계**(`core.aggregate`), 108분 · 평균 평점 6.75 · 실측 툴x **72.45** · 툴y 54.03 · lineup_pos=M. 슬롯 `WM`(x=77, 실측 이동 앵커) 커널 최적 = `wm_wideplm`/Attack **0.858**. ⚠️ 프리시즌 친선 표본이고 공식전 0경기다(08-23 뉴캐슬 첫 경기).",
-   "fit_focus": "Attack",
-   "fit_role": "wm_wideplm",
-   "fit_sim": 0.858,
-   "formation": "4-2-3-1 Wide",
-   "grid_caveat": "⚠️ 프리시즌 친선 2경기 · 공식전 0경기",
-   "grid_club": "Liverpool (이라올라 26/27)",
-   "label": "엘리엇",
-   "map25": "000000239X012380006401010",
-   "name_en": "Harvey Elliott",
-   "name_kr": "엘리엇",
-   "player_id": 113,
-   "pos": "RM",
-   "rate_basis": "iraola2627",
-   "rate_note": "이라올라 프리시즌 2경기 108분 평균 6.75",
-   "rating": 6.75,
-   "regime_id": 3,
-   "shirt_number": 19,
-   "slot_type": "WM",
-   "sort_order": 7,
-   "source": "[2026-08-19] 이라올라 실측 기반 신규 행 · core.aggregate + core.kernel",
-   "source_kind": "squad",
-   "status": "OWNED",
-   "team_code": "LIV"
-  },
-  {
-   "confidence": "⭐⭐ **[2026-08-19 이라올라 실측 전환]** 그리드를 **25/26 슬롯 체제 → 이라올라 26/27**로 교체했다(불변규칙 7 팀축 혼입 해소). 출처: 프리시즌 4-2-3-1 **3경기 집계**(`core.aggregate`), 180분 · 평균 평점 6.97 · 실측 툴x **60.85** · 툴y 57.61 · lineup_pos=M. 슬롯 `WM`(x=77, 실측 이동 앵커) 커널 최적 = `wm_winger`/Attack **0.706**. ⚠️ 프리시즌 친선 표본이고 공식전 0경기다(08-23 뉴캐슬 첫 경기).",
-   "fit_focus": "Attack",
-   "fit_role": "wm_winger",
-   "fit_sim": 0.706,
-   "formation": "4-2-3-1 Wide",
-   "grid_caveat": "⚠️ 프리시즌 친선 3경기 · 공식전 0경기",
-   "grid_club": "Liverpool (이라올라 26/27)",
-   "label": "모리슨",
-   "map25": "210386101X611034101362111",
-   "name_en": "Kieran Morrison",
-   "name_kr": "모리슨",
-   "player_id": 112,
-   "pos": "RM",
-   "rate_basis": "iraola2627",
-   "rate_note": "이라올라 프리시즌 3경기 180분 평균 6.97",
-   "rating": 6.97,
-   "regime_id": 3,
-   "shirt_number": null,
-   "slot_type": "WM",
-   "sort_order": 9,
    "source": "[2026-08-19] 이라올라 실측 기반 신규 행 · core.aggregate + core.kernel",
    "source_kind": "squad",
    "status": "OWNED",
@@ -43140,26 +42764,6 @@
    "sort_order": 3
   },
   {
-   "fit_focus": "Aggressive",
-   "fit_role": "cb_bpd",
-   "fit_sim": 0.925,
-   "grid_caveat": "⚠️ 프리시즌 친선 4경기 · 공식전 0경기",
-   "grid_club": "Liverpool (이라올라 26/27)",
-   "label": "은두크웨",
-   "lh": "OWNED",
-   "map25": "000000000100152012X200232",
-   "name_en": "Ifeanyi Ndukwe",
-   "name_kr": "은두크웨",
-   "player_id": 69,
-   "pos_only": "RCB",
-   "rate_basis": "iraola2627",
-   "rate_note": "이라올라 프리시즌 4경기 305분 평균 6.62",
-   "rate_v": 6.62,
-   "shirt_number": null,
-   "slot_type": "CB",
-   "sort_order": 4
-  },
-  {
    "fit_focus": "Roaming",
    "fit_role": "dm_dlp",
    "fit_sim": 0.9,
@@ -43320,26 +42924,6 @@
    "sort_order": 7
   },
   {
-   "fit_focus": "Attack",
-   "fit_role": "wm_wideplm",
-   "fit_sim": 0.858,
-   "grid_caveat": "⚠️ 프리시즌 친선 2경기 · 공식전 0경기",
-   "grid_club": "Liverpool (이라올라 26/27)",
-   "label": "엘리엇",
-   "lh": "OWNED",
-   "map25": "000000239X012380006401010",
-   "name_en": "Harvey Elliott",
-   "name_kr": "엘리엇",
-   "player_id": 113,
-   "pos_only": "RM",
-   "rate_basis": "iraola2627",
-   "rate_note": "이라올라 프리시즌 2경기 108분 평균 6.75",
-   "rate_v": 6.75,
-   "shirt_number": 19,
-   "slot_type": "WM",
-   "sort_order": 7
-  },
-  {
    "fit_focus": "Support",
    "fit_role": "fb_att_wb",
    "fit_sim": 0.918,
@@ -43378,46 +42962,6 @@
    "shirt_number": 7,
    "slot_type": "CAM",
    "sort_order": 8
-  },
-  {
-   "fit_focus": "Attack",
-   "fit_role": "wm_winger",
-   "fit_sim": 0.706,
-   "grid_caveat": "⚠️ 프리시즌 친선 3경기 · 공식전 0경기",
-   "grid_club": "Liverpool (이라올라 26/27)",
-   "label": "모리슨",
-   "lh": "OWNED",
-   "map25": "210386101X611034101362111",
-   "name_en": "Kieran Morrison",
-   "name_kr": "모리슨",
-   "player_id": 112,
-   "pos_only": "RM",
-   "rate_basis": "iraola2627",
-   "rate_note": "이라올라 프리시즌 3경기 180분 평균 6.97",
-   "rate_v": 6.97,
-   "shirt_number": null,
-   "slot_type": "WM",
-   "sort_order": 9
-  },
-  {
-   "fit_focus": "Balanced",
-   "fit_role": "fb_falseback",
-   "fit_sim": 0.73,
-   "grid_caveat": "⚠️ 프리시즌 친선 3경기 · 공식전 0경기(08-23 뉴캐슬 첫 경기)",
-   "grid_club": "Liverpool (이라올라 26/27)",
-   "label": "커티스 존스",
-   "lh": "OWNED",
-   "map25": "2002045344047X40158400230",
-   "name_en": "Curtis Jones",
-   "name_kr": "커티스 존스",
-   "player_id": 46,
-   "pos_only": null,
-   "rate_basis": "iraola2627",
-   "rate_note": "이라올라 프리시즌 3경기 135분 평균 6.43",
-   "rate_v": 6.43,
-   "shirt_number": null,
-   "slot_type": "FB",
-   "sort_order": 9
   },
   {
    "fit_focus": "Support",
