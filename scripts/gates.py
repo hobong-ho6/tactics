@@ -290,6 +290,9 @@ def g13_checks(con):
                         competition LIKE '%World Cup Qual%'  OR competition LIKE '%FIFA World Cup%'
                      OR competition LIKE '%Africa Cup%'      OR competition LIKE '%Nations League%'
                      OR competition LIKE '%International Friendly%'
+                     -- 2026-09-12 확장(obs#618): 본선·연령별 대표팀 대회가 CLUB으로 분류돼 CZE·FRA·NED가 거짓 혼입으로 잡혔다.
+                     OR competition = 'EURO'                 OR competition LIKE '%U21%'
+                     OR competition LIKE '%U19%'             OR competition LIKE '%European Championship%'
                      OR competition LIKE '%Euro%Qual%'       OR competition LIKE '%Copa America%'
                      OR competition LIKE '%Championship Qual%'
                      OR competition LIKE '%Asian Cup%'       OR competition LIKE '%Gold Cup%')

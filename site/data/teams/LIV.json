@@ -97,6 +97,14 @@
    "player_id": 54
   },
   {
+   "avg_x": 41.0,
+   "avg_y": 54.2,
+   "first_date": "2026-01-24",
+   "last_date": "2026-03-06",
+   "n": 3,
+   "player_id": 56
+  },
+  {
    "avg_x": 32.5,
    "avg_y": 30.4,
    "first_date": "2026-07-25",
@@ -257,11 +265,19 @@
    "player_id": 145
   },
   {
-   "avg_x": 66.7,
-   "avg_y": 56.5,
-   "first_date": "2025-08-25",
+   "avg_x": 67.1,
+   "avg_y": 79.5,
+   "first_date": "2026-04-11",
+   "last_date": "2026-04-11",
+   "n": 1,
+   "player_id": 171
+  },
+  {
+   "avg_x": 66.6,
+   "avg_y": 57.1,
+   "first_date": "2025-08-04",
    "last_date": "2026-04-08",
-   "n": 29,
+   "n": 32,
    "player_id": 207
   },
   {
@@ -273,19 +289,27 @@
    "player_id": 208
   },
   {
-   "avg_x": 50.4,
-   "avg_y": 17.8,
-   "first_date": "2023-12-14",
+   "avg_x": 50.5,
+   "avg_y": 18.1,
+   "first_date": "2023-07-19",
    "last_date": "2026-01-08",
-   "n": 48,
+   "n": 56,
    "player_id": 209
   },
   {
-   "avg_x": 8.7,
-   "avg_y": 48.9,
-   "first_date": "2024-10-30",
-   "last_date": "2024-10-30",
+   "avg_x": 39.6,
+   "avg_y": 39.2,
+   "first_date": "2026-03-03",
+   "last_date": "2026-03-03",
    "n": 1,
+   "player_id": 210
+  },
+  {
+   "avg_x": 9.2,
+   "avg_y": 50.0,
+   "first_date": "2024-07-26",
+   "last_date": "2024-10-30",
+   "n": 3,
    "player_id": 212
   }
  ],
@@ -34804,6 +34828,26 @@
      "starter": 0,
      "x": 45,
      "y": 42
+    },
+    {
+     "confidence": "HIGH 적합(단일 경기 실측 커널, hp 16으로 임계 15 근접 — 표본 얇음) / ⚠️ 단일 경기 프리셋이며 시즌 정본(prescriptions·team_tactic_setups)을 덮지 않는다.",
+     "fit_sim": 0.964,
+     "focus": "Build-Up",
+     "game_version": "FC26",
+     "label": "무뇨스",
+     "minute_on": null,
+     "name_en": "Víctor Muñoz",
+     "player_id": 88,
+     "pos_label": "LM",
+     "rationale": "빅토르 무뇨스 — 31분 · 평점 6.6(후반 교체, 케르케즈와 같은 31분). LM 슬롯(lineup_pos F·avg_y 88 → 툴x 12, 좌측 터치라인 열 집중 그리드)에 **이 경기 히트맵**을 대어 산출한 단일 경기 적합 0.964(core.kernel.best_fit_slot). ⚠️ [2026-09-12 추가] 이 행은 리포트 작성 당시 player_matches 3489의 team_code가 NULL이라 G12 조인에서 빠져 누락됐던 것을 obs#618 정리 후 채운 것이다.",
+     "replaced_player_id": null,
+     "role_id": "wm_widemid",
+     "role_name": "와이드 미드필더",
+     "sort_order": 99,
+     "source": "SofaScore player 1145642 event 16284988 (player_matches id=3489, hit_points 16); match_reports.id=3",
+     "starter": 0,
+     "x": 26,
+     "y": 64
     },
     {
      "confidence": "LOW — fit_sim 미산출 / ⚠️ 단일 경기 프리셋이며 시즌 정본(prescriptions·team_tactic_setups)을 덮지 않는다. ⚠️ role/focus는 개별 실측이 아니라 슬롯 정본에서 왔다 — 이 선수의 이 경기 적합을 주장하지 않는다.",
