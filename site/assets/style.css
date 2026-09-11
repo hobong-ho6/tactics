@@ -39,6 +39,27 @@ canvas.pitch{width:100%;max-width:380px;margin:0 auto;border-radius:10px;display
 button.tab{background:none;border:1px solid var(--line);color:var(--dim);border-radius:8px;
   padding:4px 12px;margin-left:6px;cursor:pointer;font-size:12px}
 button.tab.on{background:var(--acc);border-color:var(--acc);color:#14100b;font-weight:700}
+/* 선수 메뉴(fut.gg식 카드/스탯/분석 재구성) — button.tab(수집풀·리그 하위탭)과 별개 축 */
+.menubar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+button.mtab{background:none;border:1px solid var(--line);color:var(--dim);border-radius:8px;
+  padding:6px 16px;cursor:pointer;font-size:13px;font-weight:600}
+button.mtab.on{background:var(--acc);border-color:var(--acc);color:#14100b}
+.pscard{display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start}
+.futcard-img{width:150px;height:auto;flex-shrink:0;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
+/* PlayStyle 칩 — 아이콘+텍스트(fut.gg 카드 하단 배지 참고) */
+.pschips{display:flex;flex-wrap:wrap;gap:10px}
+.pschip{display:flex;flex-direction:column;align-items:center;width:62px;text-align:center;font-size:10.5px;color:var(--dim)}
+/* 아이콘 원본이 검은 선화(투명 배경)라 어두운 테마에 묻힌다 — 밝은 배지 배경을 깔아 대비를 만든다 */
+.pschip img{width:22px;height:22px;margin-bottom:3px;background:#eef0f3;border-radius:8px;padding:5px;box-sizing:content-box}
+.pschip .pschip-noicon{width:22px;height:22px;margin-bottom:3px;padding:5px;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--line);border-radius:8px;box-sizing:content-box}
+.pschip.plus{color:var(--acc);font-weight:700}
+.pschip.plus img{background:linear-gradient(135deg,#f6dd8c,#c99a2e)}
+.pscard .gcard{min-width:190px}
+.pscard .gc-ovr{font-size:34px}
+.bioline{margin-bottom:8px}
+.bioline b{color:var(--dim);font-weight:600;font-size:12px;margin-right:3px}
+.bioline span{margin-right:16px}
 .evalgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px;margin-top:10px}
 .evalgrid section{border:1px solid var(--line);border-radius:10px;padding:10px 13px}
 .evalgrid section h3{margin:0 0 7px;font-size:13px;color:var(--acc);font-weight:700}

@@ -4,6 +4,7 @@
   "age": 25,
   "attrs": null,
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 39,
   "dri": 84,
@@ -24,13 +25,15 @@
   "sofifa_id": 233731,
   "sofifa_name": "A. Isak",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€96.5M"
+  "value_eur": "€96.5M",
+  "weight_kg": null
  },
  "Andrew Robertson": {
   "accelerate": null,
   "age": 31,
   "attrs": null,
   "best_pos": "LB",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 78,
   "dri": 77,
@@ -51,13 +54,15 @@
   "sofifa_id": 216267,
   "sofifa_name": "A. Robertson",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€18.5M"
+  "value_eur": "€18.5M",
+  "weight_kg": null
  },
  "Andrey N. dos Santos": {
   "accelerate": null,
   "age": 21,
   "attrs": null,
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 80,
   "dri": 79,
@@ -78,13 +83,15 @@
   "sofifa_id": 273018,
   "sofifa_name": "Andrey Santos",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€42.5M"
+  "value_eur": "€42.5M",
+  "weight_kg": null
  },
  "Andrés García Robledo": {
   "accelerate": null,
   "age": 22,
   "attrs": null,
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 68,
   "dri": 73,
@@ -105,13 +112,15 @@
   "sofifa_id": 275468,
   "sofifa_name": "Andrés García",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€6.5M"
+  "value_eur": "€6.5M",
+  "weight_kg": null
  },
  "Bradley Burrowes": {
   "accelerate": null,
   "age": 17,
   "attrs": null,
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 35,
   "dri": 66,
@@ -132,13 +141,15 @@
   "sofifa_id": 80816,
   "sofifa_name": "B. Burrowes",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€1.8M"
+  "value_eur": "€1.8M",
+  "weight_kg": null
  },
  "Calvin Ramsay": {
   "accelerate": null,
   "age": 21,
   "attrs": null,
   "best_pos": "RB",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 58,
   "dri": 64,
@@ -159,13 +170,15 @@
   "sofifa_id": 252897,
   "sofifa_name": "C. Ramsay",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€1.5M"
+  "value_eur": "€1.5M",
+  "weight_kg": null
  },
  "Conor Bradley": {
   "accelerate": null,
   "age": 21,
   "attrs": null,
   "best_pos": "RWB",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 76,
   "dri": 75,
@@ -186,13 +199,15 @@
   "sofifa_id": 264298,
   "sofifa_name": "C. Bradley",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€25M"
+  "value_eur": "€25M",
+  "weight_kg": null
  },
  "Dário Cassia Luís Essugo": {
   "accelerate": null,
   "age": 20,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 74,
   "dri": 73,
@@ -213,13 +228,15 @@
   "sofifa_id": 261530,
   "sofifa_name": "Dário Essugo",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€11.5M"
+  "value_eur": "€11.5M",
+  "weight_kg": null
  },
  "Filip Jörgensen": {
   "accelerate": null,
   "age": 23,
   "attrs": null,
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 45,
   "dri": 78,
@@ -240,13 +257,15 @@
   "sofifa_id": 258485,
   "sofifa_name": "F. Jörgensen",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€13.5M"
+  "value_eur": "€13.5M",
+  "weight_kg": null
  },
  "Freddie Woodman": {
   "accelerate": null,
   "age": 28,
   "attrs": null,
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 47,
   "dri": 71,
@@ -267,13 +286,15 @@
   "sofifa_id": 222514,
   "sofifa_name": "F. Woodman",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€1.3M"
+  "value_eur": "€1.3M",
+  "weight_kg": null
  },
  "Gabriel Slonina": {
   "accelerate": null,
   "age": 21,
   "attrs": null,
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 45,
   "dri": 70,
@@ -294,13 +315,15 @@
   "sofifa_id": 248158,
   "sofifa_name": "G. Slonina",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€2.6M"
+  "value_eur": "€2.6M",
+  "weight_kg": null
  },
  "Giorgi Mamardashvili": {
   "accelerate": null,
   "age": 24,
   "attrs": null,
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 48,
   "dri": 83,
@@ -321,13 +344,15 @@
   "sofifa_id": 262621,
   "sofifa_name": "G. Mamardashvili",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€38.5M"
+  "value_eur": "€38.5M",
+  "weight_kg": null
  },
  "Giovanni Leoni": {
   "accelerate": null,
   "age": 18,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 71,
   "dri": 52,
@@ -348,13 +373,15 @@
   "sofifa_id": 70824,
   "sofifa_name": "G. Leoni",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€3M"
+  "value_eur": "€3M",
+  "weight_kg": null
  },
  "Harvey Davies": {
   "accelerate": null,
   "age": 21,
   "attrs": null,
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 29,
   "dri": 60,
@@ -375,13 +402,15 @@
   "sofifa_id": 271977,
   "sofifa_name": "H. Davies",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€650K"
+  "value_eur": "€650K",
+  "weight_kg": null
  },
  "Harvey Elliott": {
   "accelerate": null,
   "age": 22,
   "attrs": null,
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 53,
   "dri": 81,
@@ -402,13 +431,15 @@
   "sofifa_id": 246174,
   "sofifa_name": "H. Elliott",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€21.5M"
+  "value_eur": "€21.5M",
+  "weight_kg": null
  },
  "Hugo Ekitiké": {
   "accelerate": null,
   "age": 23,
   "attrs": null,
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 33,
   "dri": 85,
@@ -429,13 +460,15 @@
   "sofifa_id": 257289,
   "sofifa_name": "H. Ekitiké",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€74.5M"
+  "value_eur": "€74.5M",
+  "weight_kg": null
  },
  "J. 알바레스": {
   "accelerate": "Explosive",
   "age": 25,
   "attrs": "{\"가속\": 86, \"질주 속도\": 85, \"공격 위치 선정\": 88, \"결정력\": 88, \"슈팅력\": 88, \"중거리슛\": 86, \"발리 슛\": 84, \"페널티킥\": 78, \"시야\": 83, \"크로스\": 77, \"프리킥 정확도\": 80, \"짧은 패스\": 83, \"긴 패스\": 78, \"커브\": 87, \"민첩성\": 87, \"균형 감각\": 87, \"반응력\": 88, \"볼컨트롤\": 88, \"드리블\": 87, \"침착\": 86, \"차단력\": 52, \"헤딩 정확도\": 78, \"수비 위치 선정\": 60, \"스탠딩 태클\": 55, \"슬라이딩 태클\": 46, \"점프\": 86, \"체력\": 85, \"힘\": 72, \"공격성\": 86}",
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 58,
   "dri": 87,
@@ -456,13 +489,15 @@
   "sofifa_id": 246191,
   "sofifa_name": "J. Alvarez",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€91M"
+  "value_eur": "€91M",
+  "weight_kg": null
  },
  "James McConnell": {
   "accelerate": null,
   "age": 20,
   "attrs": null,
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 61,
   "dri": 67,
@@ -483,13 +518,15 @@
   "sofifa_id": 278292,
   "sofifa_name": "J. McConnell",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€2.5M"
+  "value_eur": "€2.5M",
+  "weight_kg": null
  },
  "Jamie Gittens": {
   "accelerate": null,
   "age": 20,
   "attrs": null,
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 27,
   "dri": 84,
@@ -510,13 +547,15 @@
   "sofifa_id": 266032,
   "sofifa_name": "J. Gittens",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€22M"
+  "value_eur": "€22M",
+  "weight_kg": null
  },
  "Jesse Derry": {
   "accelerate": null,
   "age": 18,
   "attrs": null,
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 28,
   "dri": 71,
@@ -537,13 +576,15 @@
   "sofifa_id": 85333,
   "sofifa_name": "J. Derry",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€3.1M"
+  "value_eur": "€3.1M",
+  "weight_kg": null
  },
  "Joe Gomez": {
   "accelerate": null,
   "age": 28,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 79,
   "dri": 71,
@@ -564,13 +605,15 @@
   "sofifa_id": 225100,
   "sofifa_name": "J. Gomez",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€15M"
+  "value_eur": "€15M",
+  "weight_kg": null
  },
  "Josh Acheampong": {
   "accelerate": null,
   "age": 19,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 74,
   "dri": 69,
@@ -591,13 +634,15 @@
   "sofifa_id": 71651,
   "sofifa_name": "J. Acheampong",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€8.5M"
+  "value_eur": "€8.5M",
+  "weight_kg": null
  },
  "Kostas Tsimikas": {
   "accelerate": null,
   "age": 29,
   "attrs": null,
   "best_pos": "LB",
+  "card_image_url": null,
   "club": "AS Roma (임대)",
   "def": 75,
   "dri": 75,
@@ -618,13 +663,15 @@
   "sofifa_id": 232223,
   "sofifa_name": "K. Tsimikas",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€9.5M"
+  "value_eur": "€9.5M",
+  "weight_kg": null
  },
  "Levi Colwill": {
   "accelerate": null,
   "age": 22,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 81,
   "dri": 72,
@@ -645,13 +692,15 @@
   "sofifa_id": 262859,
   "sofifa_name": "L. Colwill",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€27.5M"
+  "value_eur": "€27.5M",
+  "weight_kg": null
  },
  "Mamadou Sarr": {
   "accelerate": null,
   "age": 19,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 78,
   "dri": 57,
@@ -672,13 +721,15 @@
   "sofifa_id": 275507,
   "sofifa_name": "M. Sarr",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€19M"
+  "value_eur": "€19M",
+  "weight_kg": null
  },
  "Marc Cucurella Saseta": {
   "accelerate": null,
   "age": 26,
   "attrs": null,
   "best_pos": "LB",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 83,
   "dri": 80,
@@ -699,13 +750,15 @@
   "sofifa_id": 239231,
   "sofifa_name": "Marc Cucurella",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€53.5M"
+  "value_eur": "€53.5M",
+  "weight_kg": null
  },
  "Marc Guiu Paz": {
   "accelerate": null,
   "age": 19,
   "attrs": null,
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 36,
   "dri": 69,
@@ -726,13 +779,15 @@
   "sofifa_id": 278813,
   "sofifa_name": "Marc Guiu",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€4.5M"
+  "value_eur": "€4.5M",
+  "weight_kg": null
  },
  "Rhys Williams": {
   "accelerate": null,
   "age": 24,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 60,
   "dri": 52,
@@ -753,13 +808,15 @@
   "sofifa_id": 247601,
   "sofifa_name": "R. Williams",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€450K"
+  "value_eur": "€450K",
+  "weight_kg": null
  },
  "Rio Ngumoha": {
   "accelerate": null,
   "age": 16,
   "attrs": null,
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 35,
   "dri": 77,
@@ -780,13 +837,15 @@
   "sofifa_id": 80376,
   "sofifa_name": "R. Ngumoha",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€6M"
+  "value_eur": "€6M",
+  "weight_kg": null
  },
  "Romeo Lavia": {
   "accelerate": null,
   "age": 21,
   "attrs": null,
   "best_pos": "CDM",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 77,
   "dri": 78,
@@ -807,13 +866,15 @@
   "sofifa_id": 263620,
   "sofifa_name": "R. Lavia",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€27M"
+  "value_eur": "€27M",
+  "weight_kg": null
  },
  "Shumaira Mheuka": {
   "accelerate": null,
   "age": 17,
   "attrs": null,
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 31,
   "dri": 65,
@@ -834,13 +895,15 @@
   "sofifa_id": 77540,
   "sofifa_name": "S. Mheuka",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€2.1M"
+  "value_eur": "€2.1M",
+  "weight_kg": null
  },
  "Stefan Bajcetic Maquieira": {
   "accelerate": null,
   "age": 20,
   "attrs": null,
   "best_pos": "CDM",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 71,
   "dri": 73,
@@ -861,13 +924,15 @@
   "sofifa_id": 271975,
   "sofifa_name": "Stefan Bajcetic",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€6.5M"
+  "value_eur": "€6.5M",
+  "weight_kg": null
  },
  "Teddy Sharman-Lowe": {
   "accelerate": null,
   "age": 22,
   "attrs": null,
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 40,
   "dri": 64,
@@ -888,13 +953,15 @@
   "sofifa_id": 257126,
   "sofifa_name": "T. Sharman-Lowe",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€1.1M"
+  "value_eur": "€1.1M",
+  "weight_kg": null
  },
  "Tosin Adarabioyo": {
   "accelerate": "Lengthy",
   "age": 27,
   "attrs": "{\"가속\": 63, \"질주 속도\": 76, \"공격 위치 선정\": 35, \"결정력\": 40, \"슈팅력\": 60, \"중거리슛\": 54, \"발리 슛\": 30, \"페널티킥\": 37, \"시야\": 60, \"크로스\": 43, \"프리킥 정확도\": 33, \"짧은 패스\": 77, \"긴 패스\": 73, \"커브\": 53, \"민첩성\": 42, \"균형 감각\": 35, \"반응력\": 76, \"볼컨트롤\": 75, \"드리블\": 62, \"침착\": 77, \"차단력\": 77, \"헤딩 정확도\": 76, \"수비 위치 선정\": 78, \"스탠딩 태클\": 80, \"슬라이딩 태클\": 77, \"점프\": 84, \"체력\": 68, \"힘\": 84, \"공격성\": 78}",
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 78,
   "dri": 64,
@@ -915,13 +982,15 @@
   "sofifa_id": 222104,
   "sofifa_name": "T. Adarabioyo",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€14M"
+  "value_eur": "€14M",
+  "weight_kg": null
  },
  "Trey Nyoni": {
   "accelerate": null,
   "age": 18,
   "attrs": null,
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 53,
   "dri": 69,
@@ -942,13 +1011,15 @@
   "sofifa_id": 279128,
   "sofifa_name": "T. Nyoni",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€1.8M"
+  "value_eur": "€1.8M",
+  "weight_kg": null
  },
  "Wataru Endo": {
   "accelerate": null,
   "age": 32,
   "attrs": null,
   "best_pos": "CDM",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 79,
   "dri": 76,
@@ -969,13 +1040,15 @@
   "sofifa_id": 232487,
   "sofifa_name": "W. Endo",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€11.5M"
+  "value_eur": "€11.5M",
+  "weight_kg": null
  },
  "Ármin Pécsi": {
   "accelerate": null,
   "age": 20,
   "attrs": null,
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 51,
   "dri": 67,
@@ -996,13 +1069,15 @@
   "sofifa_id": 79922,
   "sofifa_name": "Á. Pécsi",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€1.2M"
+  "value_eur": "€1.2M",
+  "weight_kg": null
  },
  "가르나초": {
   "accelerate": "Mostly Explosive",
   "age": 21,
   "attrs": "{\"크로스\": 75, \"결정력\": 77, \"헤딩 정확도\": 44, \"짧은 패스\": 74, \"발리 슛\": 79, \"드리블\": 78, \"커브\": 75, \"프리킥 정확도\": 61, \"긴 패스\": 66, \"볼컨트롤\": 77, \"가속\": 88, \"질주 속도\": 84, \"민첩성\": 87, \"반응력\": 77, \"균형 감각\": 85, \"슈팅력\": 78, \"점프\": 57, \"체력\": 74, \"힘\": 42, \"중거리슛\": 78, \"공격성\": 66, \"차단력\": 40, \"공격 위치 선정\": 78, \"시야\": 73, \"페널티킥\": 56, \"침착\": 71, \"방어인식\": 36, \"스탠딩 태클\": 37, \"슬라이딩 태클\": 29, \"GK 몸 날리기\": 6, \"GK 핸들링\": 15, \"GK 킥력\": 14, \"GK 위치 선정\": 13, \"GK 반사신경\": 7}",
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 37,
   "dri": 79,
@@ -1023,13 +1098,15 @@
   "sofifa_id": 268438,
   "sofifa_name": "A. Garnacho",
   "source": "https://sofifa.com/player/268438/",
-  "value_eur": "€22.5M"
+  "value_eur": "€22.5M",
+  "weight_kg": null
  },
  "게상": {
   "accelerate": null,
   "age": 24,
   "attrs": "{\"크로스\": 77, \"결정력\": 78, \"헤딩 정확도\": 76, \"짧은 패스\": 75, \"발리 슛\": 71, \"드리블\": 80, \"커브\": 70, \"프리킥 정확도\": 52, \"긴 패스\": 69, \"볼컨트롤\": 79, \"가속\": 79, \"질주 속도\": 86, \"민첩성\": 75, \"반응력\": 76, \"균형 감각\": 62, \"슈팅력\": 78, \"점프\": 91, \"체력\": 76, \"힘\": 84, \"중거리슛\": 72, \"공격성\": 61, \"차단력\": 25, \"공격 위치 선정\": 79, \"시야\": 69, \"페널티킥\": 61, \"침착\": 78, \"방어인식\": 32, \"스탠딩 태클\": 41, \"슬라이딩 태클\": 18, \"GK 몸 날리기\": 7, \"GK 핸들링\": 10, \"GK 킥력\": 7, \"GK 위치 선정\": 6, \"GK 반사신경\": 5}",
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Crystal Palace",
   "def": 36,
   "dri": 78,
@@ -1050,13 +1127,15 @@
   "sofifa_id": 258444,
   "sofifa_name": "E. Guessand",
   "source": "https://sofifa.com/player/258444/",
-  "value_eur": "€21M"
+  "value_eur": "€21M",
+  "weight_kg": null
  },
  "게예": {
   "accelerate": null,
   "age": 26,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "Villarreal CF",
   "def": 78,
   "dri": 78,
@@ -1077,13 +1156,15 @@
   "sofifa_id": 241707,
   "sofifa_name": "P. Gueye",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€24.5M"
+  "value_eur": "€24.5M",
+  "weight_kg": null
  },
  "고레츠카": {
   "accelerate": "Lengthy",
   "age": 31,
   "attrs": "{\"가속\": 72, \"질주 속도\": 81, \"공격 위치 선정\": 84, \"결정력\": 76, \"슈팅력\": 83, \"중거리슛\": 82, \"발리 슛\": 74, \"페널티킥\": 60, \"시야\": 79, \"크로스\": 74, \"프리킥 정확도\": 70, \"짧은 패스\": 85, \"긴 패스\": 84, \"커브\": 76, \"민첩성\": 74, \"균형 감각\": 71, \"반응력\": 85, \"볼컨트롤\": 82, \"드리블\": 80, \"침착\": 82, \"차단력\": 85, \"헤딩 정확도\": 84, \"수비 위치 선정\": 75, \"스탠딩 태클\": 83, \"슬라이딩 태클\": 75, \"점프\": 84, \"체력\": 69, \"힘\": 87, \"공격성\": 83}",
   "best_pos": "CDM",
+  "card_image_url": null,
   "club": "Bayern München",
   "def": 80,
   "dri": 79,
@@ -1104,13 +1185,15 @@
   "sofifa_id": 209658,
   "sofifa_name": "L. Goretzka",
   "source": "sofifa.com/players?keyword=Goretzka (검색 컬럼 스크레이프 · 로스터 2026-07-23 · 인앱 브라우저 경유) · fut.gg /players/209658-leon-goretzka/26-209658/ (세부 29속성·AcceleRATE·PlayStyles·체격 · 2026-08-22 수집)",
-  "value_eur": "€21.5M"
+  "value_eur": "€21.5M",
+  "weight_kg": null
  },
  "고메스": {
   "accelerate": "Controlled",
   "age": 24,
   "attrs": "{\"크로스\": 64, \"결정력\": 64, \"헤딩 정확도\": 68, \"짧은 패스\": 78, \"발리 슛\": 55, \"드리블\": 73, \"커브\": 60, \"프리킥 정확도\": 63, \"긴 패스\": 77, \"볼컨트롤\": 77, \"가속\": 56, \"질주 속도\": 52, \"민첩성\": 74, \"반응력\": 75, \"균형 감각\": 82, \"슈팅력\": 75, \"점프\": 69, \"체력\": 78, \"힘\": 68, \"중거리슛\": 65, \"공격성\": 84, \"차단력\": 79, \"공격 위치 선정\": 68, \"시야\": 73, \"페널티킥\": 69, \"침착\": 72, \"방어인식\": 74, \"스탠딩 태클\": 81, \"슬라이딩 태클\": 77, \"GK 몸 날리기\": 7, \"GK 핸들링\": 14, \"GK 킥력\": 10, \"GK 위치 선정\": 14, \"GK 반사신경\": 13}",
   "best_pos": null,
+  "card_image_url": null,
   "club": "Wolverhampton Wanderers",
   "def": 77,
   "dri": 75,
@@ -1131,13 +1214,15 @@
   "sofifa_id": 273463,
   "sofifa_name": "João Gomes",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€19.5M"
+  "value_eur": "€19.5M",
+  "weight_kg": null
  },
  "곤살베스": {
   "accelerate": null,
   "age": 27,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "Sporting CP",
   "def": 63,
   "dri": 83,
@@ -1158,13 +1243,15 @@
   "sofifa_id": 240950,
   "sofifa_name": "Pedro Gonçalves",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€32.5M"
+  "value_eur": "€32.5M",
+  "weight_kg": null
  },
  "구드문드손": {
   "accelerate": null,
   "age": 28,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "Fiorentina",
   "def": 36,
   "dri": 82,
@@ -1185,13 +1272,15 @@
   "sofifa_id": 238004,
   "sofifa_name": "A. Guðmundsson",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€14.5M"
+  "value_eur": "€14.5M",
+  "weight_kg": null
  },
  "그레이": {
   "accelerate": null,
   "age": 19,
   "attrs": "{\"크로스\": 68, \"결정력\": 59, \"헤딩 정확도\": 68, \"짧은 패스\": 78, \"발리 슛\": 55, \"드리블\": 75, \"커브\": 69, \"프리킥 정확도\": 55, \"긴 패스\": 75, \"볼컨트롤\": 77, \"가속\": 70, \"질주 속도\": 73, \"민첩성\": 66, \"반응력\": 77, \"균형 감각\": 67, \"슈팅력\": 66, \"점프\": 75, \"체력\": 77, \"힘\": 72, \"중거리슛\": 60, \"공격성\": 72, \"차단력\": 76, \"공격 위치 선정\": 68, \"시야\": 73, \"페널티킥\": 57, \"침착\": 78, \"방어인식\": 75, \"스탠딩 태클\": 76, \"슬라이딩 태클\": 74, \"GK 몸 날리기\": 15, \"GK 핸들링\": 12, \"GK 킥력\": 13, \"GK 위치 선정\": 6, \"GK 반사신경\": 5}",
   "best_pos": "CDM",
+  "card_image_url": null,
   "club": "Tottenham Hotspur",
   "def": 75,
   "dri": 75,
@@ -1212,13 +1301,15 @@
   "sofifa_id": 270208,
   "sofifa_name": "A. Gray",
   "source": "https://sofifa.com/player/270208/",
-  "value_eur": "€21.5M"
+  "value_eur": "€21.5M",
+  "weight_kg": null
  },
  "그리말도": {
   "accelerate": null,
   "age": 29,
   "attrs": null,
   "best_pos": "LM",
+  "card_image_url": null,
   "club": "Bayer 04 Leverkusen",
   "def": 74,
   "dri": 85,
@@ -1239,13 +1330,15 @@
   "sofifa_id": 210035,
   "sofifa_name": "Grimaldo",
   "source": "sofifa 키워드 검색 FC26 roster 2026-07-23 (roster id 260046) — https://sofifa.com/players?keyword=<name>&showCol[]=… (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€53M"
+  "value_eur": "€53M",
+  "weight_kg": null
  },
  "기라시": {
   "accelerate": null,
   "age": 29,
   "attrs": "{\"크로스\": 65, \"결정력\": 85, \"헤딩 정확도\": 86, \"짧은 패스\": 81, \"발리 슛\": 83, \"드리블\": 81, \"커브\": 76, \"프리킥 정확도\": 67, \"긴 패스\": 72, \"볼컨트롤\": 84, \"가속\": 73, \"질주 속도\": 71, \"민첩성\": 76, \"반응력\": 84, \"균형 감각\": 77, \"슈팅력\": 90, \"점프\": 90, \"체력\": 84, \"힘\": 85, \"중거리슛\": 80, \"공격성\": 76, \"차단력\": 33, \"공격 위치 선정\": 88, \"시야\": 79, \"페널티킥\": 80, \"침착\": 87, \"방어인식\": 42, \"스탠딩 태클\": 44, \"슬라이딩 태클\": 36, \"GK 몸 날리기\": 11, \"GK 핸들링\": 8, \"GK 킥력\": 12, \"GK 위치 선정\": 12, \"GK 반사신경\": 8}",
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Borussia Dortmund",
   "def": 45,
   "dri": 82,
@@ -1266,13 +1359,15 @@
   "sofifa_id": 215441,
   "sofifa_name": "S. Guirassy",
   "source": "https://sofifa.com/player/215441/",
-  "value_eur": "€54M"
+  "value_eur": "€54M",
+  "weight_kg": null
  },
  "네델코비치": {
   "accelerate": null,
   "age": 19,
   "attrs": null,
   "best_pos": "RB",
+  "card_image_url": null,
   "club": "RB Leipzig (임대)",
   "def": 68,
   "dri": 69,
@@ -1293,13 +1388,15 @@
   "sofifa_id": 74207,
   "sofifa_name": "K. Nedeljković",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€4.8M"
+  "value_eur": "€4.8M",
+  "weight_kg": null
  },
  "누사": {
   "accelerate": null,
   "age": 20,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "RB Leipzig",
   "def": 42,
   "dri": 84,
@@ -1320,13 +1417,15 @@
   "sofifa_id": 262863,
   "sofifa_name": "A. Nusa",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€31M"
+  "value_eur": "€31M",
+  "weight_kg": null
  },
  "닉 볼테마데": {
   "accelerate": null,
   "age": 23,
   "attrs": "{\"크로스\": 46, \"결정력\": 82, \"헤딩 정확도\": 80, \"짧은 패스\": 80, \"발리 슛\": 73, \"드리블\": 85, \"커브\": 59, \"프리킥 정확도\": 42, \"긴 패스\": 64, \"볼컨트롤\": 83, \"가속\": 64, \"질주 속도\": 69, \"민첩성\": 73, \"반응력\": 81, \"균형 감각\": 68, \"슈팅력\": 82, \"점프\": 85, \"체력\": 76, \"힘\": 83, \"중거리슛\": 66, \"공격성\": 63, \"차단력\": 35, \"공격 위치 선정\": 83, \"시야\": 79, \"페널티킥\": 77, \"침착\": 83, \"방어인식\": 32, \"스탠딩 태클\": 44, \"슬라이딩 태클\": 30, \"GK 다이빙\": 11, \"GK 핸들링\": 8, \"GK 킥력\": 13, \"GK 위치 선정\": 9, \"GK 반사신경\": 8}",
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Newcastle United",
   "def": 41,
   "dri": 82,
@@ -1347,13 +1446,15 @@
   "sofifa_id": 254022,
   "sofifa_name": "N. Woltemade",
   "source": "https://sofifa.com/player/254022/",
-  "value_eur": "€32M"
+  "value_eur": "€32M",
+  "weight_kg": null
  },
  "다니 마르티네스": {
   "accelerate": null,
   "age": 21,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 61,
   "dri": 51,
@@ -1374,13 +1475,15 @@
   "sofifa_id": 82755,
   "sofifa_name": "Dani Martinez",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€925K"
+  "value_eur": "€925K",
+  "weight_kg": null
  },
  "델랍": {
   "accelerate": null,
   "age": 22,
   "attrs": null,
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 30,
   "dri": 75,
@@ -1401,13 +1504,15 @@
   "sofifa_id": 259031,
   "sofifa_name": "L. Delap",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€17M"
+  "value_eur": "€17M",
+  "weight_kg": null
  },
  "두글라스 루이스": {
   "accelerate": null,
   "age": 27,
   "attrs": null,
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 75,
   "dri": 80,
@@ -1428,13 +1533,15 @@
   "sofifa_id": 236499,
   "sofifa_name": "Douglas Luiz",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€16.5M"
+  "value_eur": "€16.5M",
+  "weight_kg": null
  },
  "디뉴": {
   "accelerate": "Controlled",
   "age": 31,
   "attrs": "{\"가속\": 70, \"질주 속도\": 68, \"공격 위치 선정\": 73, \"결정력\": 60, \"슈팅력\": 81, \"중거리슛\": 76, \"발리 슛\": 68, \"페널티킥\": 60, \"시야\": 75, \"크로스\": 86, \"프리킥 정확도\": 83, \"짧은 패스\": 78, \"긴 패스\": 73, \"커브\": 83, \"민첩성\": 72, \"균형 감각\": 78, \"반응력\": 80, \"볼컨트롤\": 77, \"드리블\": 76, \"침착\": 79, \"차단력\": 77, \"헤딩 정확도\": 73, \"수비 위치 선정\": 77, \"스탠딩 태클\": 79, \"슬라이딩 태클\": 78, \"점프\": 77, \"체력\": 80, \"힘\": 69, \"공격성\": 76}",
   "best_pos": "LB",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 77,
   "dri": 76,
@@ -1455,13 +1562,15 @@
   "sofifa_id": 200458,
   "sofifa_name": "L. Digne",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€15.5M"
+  "value_eur": "€15.5M",
+  "weight_kg": null
  },
  "딘 헨더슨": {
   "accelerate": null,
   "age": 28,
   "attrs": "{\"크로스\": 14, \"결정력\": 9, \"헤딩 정확도\": 13, \"짧은 패스\": 45, \"발리 슛\": 5, \"드리블\": 13, \"커브\": 13, \"프리킥 정확도\": 10, \"긴 패스\": 48, \"볼컨트롤\": 35, \"가속\": 55, \"질주 속도\": 56, \"민첩성\": 61, \"반응력\": 81, \"균형 감각\": 56, \"슈팅력\": 59, \"점프\": 69, \"체력\": 32, \"힘\": 64, \"중거리슛\": 6, \"공격성\": 35, \"차단력\": 11, \"공격 위치 선정\": 8, \"시야\": 55, \"페널티킥\": 16, \"침착\": 60, \"방어인식\": 15, \"스탠딩 태클\": 14, \"슬라이딩 태클\": 14, \"GK 다이빙\": 83, \"GK 핸들링\": 79, \"GK 킥력\": 79, \"GK 위치 선정\": 81, \"GK 반사신경\": 82}",
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Crystal Palace",
   "def": 55,
   "dri": 82,
@@ -1482,13 +1591,15 @@
   "sofifa_id": 233306,
   "sofifa_name": "D. Henderson",
   "source": "https://sofifa.com/player/233306/",
-  "value_eur": "€24M"
+  "value_eur": "€24M",
+  "weight_kg": null
  },
  "라비아": {
   "accelerate": null,
   "age": 21,
   "attrs": null,
   "best_pos": "CDM",
+  "card_image_url": null,
   "club": "Chelsea FC",
   "def": 77,
   "dri": 78,
@@ -1509,13 +1620,15 @@
   "sofifa_id": 263620,
   "sofifa_name": "R. Lavia",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€27M"
+  "value_eur": "€27M",
+  "weight_kg": null
  },
  "라스킨": {
   "accelerate": null,
   "age": 24,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "Rangers FC",
   "def": 74,
   "dri": 78,
@@ -1536,13 +1649,15 @@
   "sofifa_id": 239810,
   "sofifa_name": "N. Raskin",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€19.5M"
+  "value_eur": "€19.5M",
+  "weight_kg": null
  },
  "라크루아": {
   "accelerate": null,
   "age": 25,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Crystal Palace",
   "def": 81,
   "dri": 67,
@@ -1563,13 +1678,15 @@
   "sofifa_id": 244067,
   "sofifa_name": "M. Lacroix",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€28.5M"
+  "value_eur": "€28.5M",
+  "weight_kg": null
  },
  "래시포드": {
   "accelerate": null,
   "age": 27,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "FC Barcelona(임대, 소유 Man Utd)",
   "def": 33,
   "dri": 81,
@@ -1590,13 +1707,15 @@
   "sofifa_id": 231677,
   "sofifa_name": "M. Rashford",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€32.5M"
+  "value_eur": "€32.5M",
+  "weight_kg": null
  },
  "레미로": {
   "accelerate": null,
   "age": 30,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "Real Sociedad",
   "def": 45,
   "dri": 83,
@@ -1617,13 +1736,15 @@
   "sofifa_id": 227127,
   "sofifa_name": "Álex Remiro",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€20.5M"
+  "value_eur": "€20.5M",
+  "weight_kg": null
  },
  "레스테스": {
   "accelerate": null,
   "age": 20,
   "attrs": "{\"크로스\": 17, \"결정력\": 9, \"헤딩 정확도\": 12, \"짧은 패스\": 51, \"발리 슛\": 7, \"드리블\": 8, \"커브\": 13, \"프리킥 정확도\": 13, \"긴 패스\": 48, \"볼컨트롤\": 17, \"가속\": 38, \"질주 속도\": 44, \"민첩성\": 38, \"반응력\": 72, \"균형 감각\": 42, \"슈팅력\": 60, \"점프\": 62, \"체력\": 39, \"힘\": 65, \"중거리슛\": 7, \"공격성\": 22, \"차단력\": 13, \"공격 위치 선정\": 9, \"시야\": 62, \"페널티킥\": 15, \"침착\": 55, \"방어인식\": 11, \"스탠딩 태클\": 16, \"슬라이딩 태클\": 14, \"GK 몸 날리기\": 79, \"GK 핸들링\": 75, \"GK 킥력\": 80, \"GK 위치 선정\": 78, \"GK 반사신경\": 80}",
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Toulouse FC",
   "def": 40,
   "dri": 80,
@@ -1644,13 +1765,15 @@
   "sofifa_id": 265526,
   "sofifa_name": "G. Restes",
   "source": "https://sofifa.com/player/265526/",
-  "value_eur": "€23.5M"
+  "value_eur": "€23.5M",
+  "weight_kg": null
  },
  "레앙": {
   "accelerate": null,
   "age": 26,
   "attrs": "{\"크로스\": 84, \"결정력\": 82, \"헤딩 정확도\": 72, \"짧은 패스\": 83, \"발리 슛\": 74, \"드리블\": 87, \"커브\": 79, \"프리킥 정확도\": 60, \"긴 패스\": 70, \"볼컨트롤\": 86, \"가속\": 93, \"질주 속도\": 93, \"민첩성\": 84, \"반응력\": 83, \"균형 감각\": 79, \"슈팅력\": 80, \"점프\": 89, \"체력\": 75, \"힘\": 79, \"중거리슛\": 74, \"공격성\": 60, \"차단력\": 24, \"공격 위치 선정\": 76, \"시야\": 81, \"페널티킥\": 63, \"침착\": 83, \"방어인식\": 22, \"스탠딩 태클\": 24, \"슬라이딩 태클\": 21, \"GK 몸 날리기\": 10, \"GK 핸들링\": 12, \"GK 킥력\": 15, \"GK 위치 선정\": 11, \"GK 반사신경\": 9}",
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "AC Milan",
   "def": 28,
   "dri": 86,
@@ -1671,13 +1794,15 @@
   "sofifa_id": 241721,
   "sofifa_name": "Rafael Leão",
   "source": "https://sofifa.com/player/241721/",
-  "value_eur": "€49.5M"
+  "value_eur": "€49.5M",
+  "weight_kg": null
  },
  "로베르트 산체스": {
   "accelerate": null,
   "age": 27,
   "attrs": null,
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 59,
   "dri": 82,
@@ -1698,13 +1823,15 @@
   "sofifa_id": 228789,
   "sofifa_name": "Robert Sánchez",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€22M"
+  "value_eur": "€22M",
+  "weight_kg": null
  },
  "로빈 리세르": {
   "accelerate": null,
   "age": 20,
   "attrs": "{\"크로스\": 12, \"결정력\": 8, \"헤딩 정확도\": 9, \"짧은 패스\": 48, \"발리 슛\": 6, \"드리블\": 15, \"커브\": 18, \"프리킥 정확도\": 10, \"긴 패스\": 45, \"볼컨트롤\": 22, \"가속\": 36, \"질주 속도\": 44, \"민첩성\": 31, \"반응력\": 74, \"균형 감각\": 25, \"슈팅력\": 62, \"점프\": 64, \"체력\": 36, \"힘\": 71, \"중거리슛\": 7, \"공격성\": 32, \"차단력\": 15, \"공격 위치 선정\": 9, \"시야\": 36, \"페널티킥\": 11, \"침착\": 38, \"방어인식\": 13, \"스탠딩 태클\": 13, \"슬라이딩 태클\": 10, \"GK 다이빙\": 79, \"GK 핸들링\": 74, \"GK 킥력\": 82, \"GK 위치 선정\": 75, \"GK 반사신경\": 80}",
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "RC Lens",
   "def": 39,
   "dri": 80,
@@ -1725,13 +1852,15 @@
   "sofifa_id": 271918,
   "sofifa_name": "R. Risser",
   "source": "https://sofifa.com/player/271918/",
-  "value_eur": "€23.5M"
+  "value_eur": "€23.5M",
+  "weight_kg": null
  },
  "로이드 켈리": {
   "accelerate": null,
   "age": 26,
   "attrs": "{\"크로스\": 66, \"결정력\": 37, \"헤딩 정확도\": 78, \"짧은 패스\": 76, \"발리 슛\": 39, \"드리블\": 69, \"커브\": 55, \"프리킥 정확도\": 44, \"긴 패스\": 72, \"볼컨트롤\": 75, \"가속\": 68, \"질주 속도\": 69, \"민첩성\": 55, \"반응력\": 76, \"균형 감각\": 55, \"슈팅력\": 58, \"점프\": 85, \"체력\": 79, \"힘\": 80, \"중거리슛\": 40, \"공격성\": 76, \"차단력\": 80, \"공격 위치 선정\": 52, \"시야\": 68, \"페널티킥\": 45, \"침착\": 78, \"방어인식\": 84, \"스탠딩 태클\": 80, \"슬라이딩 태클\": 79, \"GK 다이빙\": 9, \"GK 핸들링\": 13, \"GK 킥력\": 10, \"GK 위치 선정\": 8, \"GK 반사신경\": 12}",
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Juventus",
   "def": 79,
   "dri": 70,
@@ -1752,13 +1881,15 @@
   "sofifa_id": 231512,
   "sofifa_name": "L. Kelly",
   "source": "https://sofifa.com/player/231512/",
-  "value_eur": "€15.5M"
+  "value_eur": "€15.5M",
+  "weight_kg": null
  },
  "로저스": {
   "accelerate": "Controlled",
   "age": 22,
   "attrs": "{\"가속\": 74, \"질주 속도\": 79, \"공격 위치 선정\": 81, \"결정력\": 80, \"슈팅력\": 76, \"중거리슛\": 75, \"발리 슛\": 74, \"페널티킥\": 60, \"시야\": 83, \"크로스\": 75, \"프리킥 정확도\": 55, \"짧은 패스\": 82, \"긴 패스\": 78, \"커브\": 76, \"민첩성\": 80, \"균형 감각\": 74, \"반응력\": 82, \"볼컨트롤\": 84, \"드리블\": 86, \"침착\": 85, \"차단력\": 68, \"헤딩 정확도\": 64, \"수비 위치 선정\": 68, \"스탠딩 태클\": 72, \"슬라이딩 태클\": 49, \"점프\": 79, \"체력\": 83, \"힘\": 80, \"공격성\": 70}",
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 67,
   "dri": 85,
@@ -1779,13 +1910,15 @@
   "sofifa_id": 260247,
   "sofifa_name": "M. Rogers",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€56M"
+  "value_eur": "€56M",
+  "weight_kg": null
  },
  "로피": {
   "accelerate": null,
   "age": 23,
   "attrs": "{\"크로스\": 63, \"결정력\": 60, \"헤딩 정확도\": 70, \"짧은 패스\": 72, \"발리 슛\": 51, \"드리블\": 77, \"커브\": 60, \"프리킥 정확도\": 45, \"긴 패스\": 75, \"볼컨트롤\": 75, \"가속\": 76, \"질주 속도\": 76, \"민첩성\": 67, \"반응력\": 65, \"균형 감각\": 63, \"슈팅력\": 71, \"점프\": 84, \"체력\": 75, \"힘\": 80, \"중거리슛\": 62, \"공격성\": 76, \"차단력\": 69, \"공격 위치 선정\": 65, \"시야\": 73, \"페널티킥\": 55, \"침착\": 70, \"방어인식\": 68, \"스탠딩 태클\": 71, \"슬라이딩 태클\": 68, \"GK 몸 날리기\": 14, \"GK 핸들링\": 11, \"GK 킥력\": 14, \"GK 위치 선정\": 6, \"GK 반사신경\": 15}",
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "UD Almería",
   "def": 69,
   "dri": 74,
@@ -1806,13 +1939,15 @@
   "sofifa_id": 259190,
   "sofifa_name": "D. Lopy",
   "source": "https://sofifa.com/player/259190/",
-  "value_eur": "€6.5M"
+  "value_eur": "€6.5M",
+  "weight_kg": null
  },
  "루카스 베리발": {
   "accelerate": null,
   "age": 19,
   "attrs": "{\"크로스\": 68, \"결정력\": 65, \"헤딩 정확도\": 54, \"짧은 패스\": 80, \"발리 슛\": 54, \"드리블\": 79, \"커브\": 75, \"프리킥 정확도\": 65, \"긴 패스\": 79, \"볼컨트롤\": 78, \"가속\": 77, \"질주 속도\": 73, \"민첩성\": 73, \"반응력\": 77, \"균형 감각\": 73, \"슈팅력\": 70, \"점프\": 72, \"체력\": 79, \"힘\": 70, \"중거리슛\": 69, \"공격성\": 77, \"차단력\": 77, \"공격 위치 선정\": 75, \"시야\": 78, \"페널티킥\": 53, \"침착\": 80, \"방어인식\": 69, \"스탠딩 태클\": 76, \"슬라이딩 태클\": 72, \"GK 다이빙\": 7, \"GK 핸들링\": 13, \"GK 킥력\": 13, \"GK 위치 선정\": 10, \"GK 반사신경\": 9}",
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "Tottenham Hotspur",
   "def": 72,
   "dri": 78,
@@ -1833,13 +1968,15 @@
   "sofifa_id": 272926,
   "sofifa_name": "L. Bergvall",
   "source": "https://sofifa.com/player/272926/",
-  "value_eur": "€30M"
+  "value_eur": "€30M",
+  "weight_kg": null
  },
  "루크만": {
   "accelerate": "Explosive",
   "age": 27,
   "attrs": "{\"가속\": 90, \"질주 속도\": 83, \"공격 위치 선정\": 87, \"결정력\": 87, \"슈팅력\": 86, \"중거리슛\": 80, \"발리 슛\": 80, \"페널티킥\": 62, \"시야\": 80, \"크로스\": 66, \"프리킥 정확도\": 56, \"짧은 패스\": 80, \"긴 패스\": 62, \"커브\": 72, \"민첩성\": 93, \"균형 감각\": 81, \"반응력\": 86, \"볼컨트롤\": 88, \"드리블\": 89, \"침착\": 80, \"차단력\": 35, \"헤딩 정확도\": 71, \"수비 위치 선정\": 30, \"스탠딩 태클\": 23, \"슬라이딩 태클\": 24, \"점프\": 82, \"체력\": 73, \"힘\": 63, \"공격성\": 68}",
   "best_pos": "CF",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 32,
   "dri": 85,
@@ -1860,13 +1997,15 @@
   "sofifa_id": 230899,
   "sofifa_name": "A. Lookman",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€39.5M"
+  "value_eur": "€39.5M",
+  "weight_kg": null
  },
  "르노르망": {
   "accelerate": "Lengthy",
   "age": 28,
   "attrs": "{\"가속\": 60, \"질주 속도\": 69, \"공격 위치 선정\": 21, \"결정력\": 22, \"슈팅력\": 45, \"중거리슛\": 22, \"발리 슛\": 38, \"페널티킥\": 34, \"시야\": 48, \"크로스\": 35, \"프리킥 정확도\": 25, \"짧은 패스\": 81, \"긴 패스\": 74, \"커브\": 34, \"민첩성\": 54, \"균형 감각\": 62, \"반응력\": 83, \"볼컨트롤\": 74, \"드리블\": 55, \"침착\": 73, \"차단력\": 83, \"헤딩 정확도\": 85, \"수비 위치 선정\": 84, \"스탠딩 태클\": 86, \"슬라이딩 태클\": 82, \"점프\": 86, \"체력\": 70, \"힘\": 86, \"공격성\": 76}",
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 81,
   "dri": 63,
@@ -1887,13 +2026,15 @@
   "sofifa_id": 233486,
   "sofifa_name": "R. Le Normand",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€24.5M"
+  "value_eur": "€24.5M",
+  "weight_kg": null
  },
  "르마르": {
   "accelerate": "Controlled",
   "age": 29,
   "attrs": "{\"가속\": 72, \"질주 속도\": 72, \"공격 위치 선정\": 77, \"결정력\": 73, \"슈팅력\": 78, \"중거리슛\": 76, \"발리 슛\": 75, \"페널티킥\": 69, \"시야\": 79, \"크로스\": 79, \"프리킥 정확도\": 80, \"짧은 패스\": 80, \"긴 패스\": 77, \"커브\": 84, \"민첩성\": 79, \"균형 감각\": 79, \"반응력\": 77, \"볼컨트롤\": 81, \"드리블\": 80, \"침착\": 80, \"차단력\": 75, \"헤딩 정확도\": 54, \"수비 위치 선정\": 55, \"스탠딩 태클\": 76, \"슬라이딩 태클\": 69, \"점프\": 64, \"체력\": 60, \"힘\": 57, \"공격성\": 63}",
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Girona FC (임대)",
   "def": 67,
   "dri": 81,
@@ -1914,13 +2055,15 @@
   "sofifa_id": 213565,
   "sofifa_name": "T. Lemar",
   "source": "sofifa 키워드 검색 FC26 roster 2026-07-23 (roster id 260046) — https://sofifa.com/players?keyword=<name>&showCol[]=… (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€10.5M"
+  "value_eur": "€10.5M",
+  "weight_kg": null
  },
  "리스 제임스": {
   "accelerate": null,
   "age": 25,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 83,
   "dri": 78,
@@ -1941,13 +2084,15 @@
   "sofifa_id": 238074,
   "sofifa_name": "R. James",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€48.5M"
+  "value_eur": "€48.5M",
+  "weight_kg": null
  },
  "린델뢰프": {
   "accelerate": "Lengthy",
   "age": 30,
   "attrs": "{\"가속\": 51, \"질주 속도\": 53, \"공격 위치 선정\": 51, \"결정력\": 42, \"슈팅력\": 72, \"중거리슛\": 52, \"발리 슛\": 38, \"페널티킥\": 60, \"시야\": 72, \"크로스\": 62, \"프리킥 정확도\": 53, \"짧은 패스\": 78, \"긴 패스\": 79, \"커브\": 67, \"민첩성\": 61, \"균형 감각\": 60, \"반응력\": 76, \"볼컨트롤\": 73, \"드리블\": 66, \"침착\": 81, \"차단력\": 79, \"헤딩 정확도\": 75, \"수비 위치 선정\": 79, \"스탠딩 태클\": 77, \"슬라이딩 태클\": 75, \"점프\": 76, \"체력\": 65, \"힘\": 76, \"공격성\": 76}",
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 77,
   "dri": 67,
@@ -1968,13 +2113,15 @@
   "sofifa_id": 221660,
   "sofifa_name": "V. Lindelöf",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€6M"
+  "value_eur": "€6M",
+  "weight_kg": null
  },
  "마르코스 요렌테": {
   "accelerate": "Controlled",
   "age": 30,
   "attrs": "{\"가속\": 87, \"질주 속도\": 91, \"공격 위치 선정\": 79, \"결정력\": 80, \"슈팅력\": 84, \"중거리슛\": 79, \"발리 슛\": 66, \"페널티킥\": 65, \"시야\": 79, \"크로스\": 76, \"프리킥 정확도\": 63, \"짧은 패스\": 81, \"긴 패스\": 80, \"커브\": 78, \"민첩성\": 83, \"균형 감각\": 74, \"반응력\": 81, \"볼컨트롤\": 82, \"드리블\": 81, \"침착\": 79, \"차단력\": 80, \"헤딩 정확도\": 67, \"수비 위치 선정\": 77, \"스탠딩 태클\": 82, \"슬라이딩 태클\": 74, \"점프\": 84, \"체력\": 92, \"힘\": 77, \"공격성\": 80}",
   "best_pos": "RB",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 79,
   "dri": 82,
@@ -1995,13 +2142,15 @@
   "sofifa_id": 226161,
   "sofifa_name": "Marcos Llorente",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€46.5M"
+  "value_eur": "€46.5M",
+  "weight_kg": null
  },
  "마르티네스": {
   "accelerate": null,
   "age": 32,
   "attrs": "{\"가속\": 55, \"질주 속도\": 57, \"반응력\": 81, \"다이빙\": 83, \"핸들링\": 82, \"킥\": 82, \"포지셔닝\": 85, \"반사신경\": 85}",
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 56,
   "dri": 85,
@@ -2022,13 +2171,15 @@
   "sofifa_id": 202811,
   "sofifa_name": "E. Martínez",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€26.5M"
+  "value_eur": "€26.5M",
+  "weight_kg": null
  },
  "마첸": {
   "accelerate": "Explosive",
   "age": 23,
   "attrs": "{\"가속\": 88, \"질주 속도\": 87, \"공격 위치 선정\": 68, \"결정력\": 64, \"슈팅력\": 72, \"중거리슛\": 68, \"발리 슛\": 57, \"페널티킥\": 45, \"시야\": 72, \"크로스\": 77, \"프리킥 정확도\": 62, \"짧은 패스\": 79, \"긴 패스\": 70, \"커브\": 71, \"민첩성\": 86, \"균형 감각\": 86, \"반응력\": 78, \"볼컨트롤\": 80, \"드리블\": 81, \"침착\": 76, \"차단력\": 76, \"헤딩 정확도\": 58, \"수비 위치 선정\": 74, \"스탠딩 태클\": 72, \"슬라이딩 태클\": 78, \"점프\": 70, \"체력\": 74, \"힘\": 52, \"공격성\": 73}",
   "best_pos": "LWB",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 73,
   "dri": 81,
@@ -2049,13 +2200,15 @@
   "sofifa_id": 248465,
   "sofifa_name": "I. Maatsen",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€24.5M"
+  "value_eur": "€24.5M",
+  "weight_kg": null
  },
  "마테오 루헤리": {
   "accelerate": "Lengthy",
   "age": 24,
   "attrs": "{\"가속\": 78, \"질주 속도\": 78, \"공격 위치 선정\": 75, \"결정력\": 61, \"슈팅력\": 69, \"중거리슛\": 50, \"발리 슛\": 53, \"페널티킥\": 40, \"시야\": 65, \"크로스\": 76, \"프리킥 정확도\": 50, \"짧은 패스\": 78, \"긴 패스\": 74, \"커브\": 71, \"민첩성\": 60, \"균형 감각\": 59, \"반응력\": 76, \"볼컨트롤\": 76, \"드리블\": 72, \"침착\": 68, \"차단력\": 70, \"헤딩 정확도\": 65, \"수비 위치 선정\": 71, \"스탠딩 태클\": 75, \"슬라이딩 태클\": 74, \"점프\": 77, \"체력\": 80, \"힘\": 68, \"공격성\": 74}",
   "best_pos": "LB",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 72,
   "dri": 71,
@@ -2076,13 +2229,15 @@
   "sofifa_id": 259584,
   "sofifa_name": "Matteo Ruggeri",
   "source": "sofifa.com/player/259584/matteo-ruggeri/260031 (검색 경유) · ea.com/games/ea-sports-fc/ratings/player-ratings/matteo-ruggeri/259584 · fcratings.com/matteo-ruggeri-259584",
-  "value_eur": "€16.0M"
+  "value_eur": "€16.0M",
+  "weight_kg": null
  },
  "마티아스 소울레": {
   "accelerate": null,
   "age": 22,
   "attrs": "{\"크로스\": 75, \"결정력\": 76, \"헤딩 정확도\": 58, \"짧은 패스\": 78, \"발리 슛\": 69, \"드리블\": 82, \"커브\": 83, \"프리킥 정확도\": 79, \"긴 패스\": 74, \"볼컨트롤\": 84, \"가속\": 85, \"질주 속도\": 80, \"민첩성\": 83, \"반응력\": 77, \"균형 감각\": 78, \"슈팅력\": 76, \"점프\": 71, \"체력\": 86, \"힘\": 55, \"중거리슛\": 81, \"공격성\": 42, \"차단력\": 31, \"공격 위치 선정\": 78, \"시야\": 76, \"페널티킥\": 69, \"침착\": 70, \"방어인식\": 28, \"스탠딩 태클\": 40, \"슬라이딩 태클\": 38, \"GK 다이빙\": 15, \"GK 핸들링\": 8, \"GK 킥력\": 11, \"GK 위치 선정\": 15, \"GK 반사신경\": 14}",
   "best_pos": "LM",
+  "card_image_url": null,
   "club": "AS Roma",
   "def": 36,
   "dri": 82,
@@ -2103,13 +2258,15 @@
   "sofifa_id": 265695,
   "sofifa_name": "M. Soulé",
   "source": "https://sofifa.com/player/265695/matias-soule/",
-  "value_eur": "€28M"
+  "value_eur": "€28M",
+  "weight_kg": null
  },
  "만잠비": {
   "accelerate": null,
   "age": 19,
   "attrs": "{\"크로스\": 58, \"결정력\": 71, \"헤딩 정확도\": 63, \"짧은 패스\": 79, \"발리 슛\": 61, \"커브\": 56, \"긴 패스\": 73, \"볼컨트롤\": 80, \"가속\": 81, \"질주 속도\": 75, \"민첩성\": 80, \"반응력\": 78, \"균형 감각\": 78, \"슈팅력\": 80, \"점프\": 78, \"체력\": 77, \"힘\": 69, \"중거리슛\": 69, \"차단력\": 75, \"공격 위치 선정\": 75, \"시야\": 74, \"페널티킥\": 53, \"침착\": 73, \"방어인식\": 66, \"스탠딩 태클\": 74, \"슬라이딩 태클\": 59, \"GK 몸 날리기\": 8, \"GK 핸들링\": 10, \"GK 킥력\": 8, \"GK 위치 선정\": 13, \"GK 반사신경\": 9}",
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "SC Freiburg",
   "def": 69,
   "dri": 82,
@@ -2130,13 +2287,15 @@
   "sofifa_id": 276694,
   "sofifa_name": "J. Manzambi",
   "source": "https://sofifa.com/players?keyword=Manzambi&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 직접 스크레이프) — ⭐ **소속팀 `SC Freiburg 2024 ~ 2030` · 국적 `Switzerland` · 포지션 `CM,CDM,CAM` 3요소 대조 완료**(docs/30 선수 동일성 확인 규약)",
-  "value_eur": "€22.5M"
+  "value_eur": "€22.5M",
+  "weight_kg": null
  },
  "말렌": {
   "accelerate": null,
   "age": 26,
   "attrs": "{\"크로스\": 72, \"결정력\": 81, \"헤딩 정확도\": 69, \"짧은 패스\": 77, \"발리 슛\": 81, \"드리블\": 84, \"커브\": 76, \"프리킥 정확도\": 61, \"긴 패스\": 61, \"볼컨트롤\": 81, \"가속\": 89, \"질주 속도\": 84, \"민첩성\": 86, \"반응력\": 80, \"균형 감각\": 86, \"슈팅력\": 84, \"점프\": 74, \"체력\": 69, \"힘\": 66, \"중거리슛\": 71, \"공격성\": 65, \"차단력\": 31, \"공격 위치 선정\": 84, \"시야\": 71, \"페널티킥\": 74, \"침착\": 79, \"방어인식\": 29, \"스탠딩 태클\": 33, \"슬라이딩 태클\": 35, \"GK 몸 날리기\": 7, \"GK 핸들링\": 9, \"GK 킥력\": 9, \"GK 위치 선정\": 10, \"GK 반사신경\": 14}",
   "best_pos": "CF",
+  "card_image_url": null,
   "club": "Roma",
   "def": 35,
   "dri": 83,
@@ -2157,13 +2316,15 @@
   "sofifa_id": 231447,
   "sofifa_name": "D. Malen",
   "source": "https://sofifa.com/player/231447/",
-  "value_eur": "€23.5M"
+  "value_eur": "€23.5M",
+  "weight_kg": null
  },
  "말로 귀스토": {
   "accelerate": null,
   "age": 22,
   "attrs": null,
   "best_pos": "RWB",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 73,
   "dri": 78,
@@ -2184,13 +2345,15 @@
   "sofifa_id": 259307,
   "sofifa_name": "M. Gusto",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€25M"
+  "value_eur": "€25M",
+  "weight_kg": null
  },
  "맥 알리스터": {
   "accelerate": null,
   "age": 26,
   "attrs": null,
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 77,
   "dri": 83,
@@ -2211,13 +2374,15 @@
   "sofifa_id": 239837,
   "sofifa_name": "A. Mac Allister",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€63M"
+  "value_eur": "€63M",
+  "weight_kg": null
  },
  "맥긴": {
   "accelerate": "Controlled",
   "age": 30,
   "attrs": "{\"가속\": 69, \"질주 속도\": 69, \"공격 위치 선정\": 77, \"결정력\": 76, \"슈팅력\": 84, \"중거리슛\": 77, \"발리 슛\": 75, \"페널티킥\": 55, \"시야\": 79, \"크로스\": 76, \"프리킥 정확도\": 61, \"짧은 패스\": 81, \"긴 패스\": 80, \"커브\": 76, \"민첩성\": 77, \"균형 감각\": 85, \"반응력\": 81, \"볼컨트롤\": 80, \"드리블\": 81, \"침착\": 77, \"차단력\": 79, \"헤딩 정확도\": 57, \"수비 위치 선정\": 79, \"스탠딩 태클\": 82, \"슬라이딩 태클\": 75, \"점프\": 74, \"체력\": 92, \"힘\": 79, \"공격성\": 86}",
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 77,
   "dri": 80,
@@ -2238,13 +2403,15 @@
   "sofifa_id": 210881,
   "sofifa_name": "J. McGinn",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€25M"
+  "value_eur": "€25M",
+  "weight_kg": null
  },
  "멘도사": {
   "accelerate": null,
   "age": 20,
   "attrs": null,
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 66,
   "dri": 73,
@@ -2265,13 +2432,15 @@
   "sofifa_id": 278523,
   "sofifa_name": "Rodri Mendoza",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€4.5M"
+  "value_eur": "€4.5M",
+  "weight_kg": null
  },
  "모리바": {
   "accelerate": null,
   "age": 22,
   "attrs": "{\"크로스\": 60, \"결정력\": 73, \"헤딩 정확도\": 67, \"짧은 패스\": 80, \"발리 슛\": 57, \"드리블\": 78, \"커브\": 62, \"프리킥 정확도\": 59, \"긴 패스\": 78, \"볼컨트롤\": 77, \"가속\": 76, \"질주 속도\": 73, \"민첩성\": 70, \"반응력\": 77, \"균형 감각\": 65, \"슈팅력\": 73, \"점프\": 81, \"체력\": 81, \"힘\": 78, \"중거리슛\": 73, \"공격성\": 77, \"차단력\": 79, \"공격 위치 선정\": 73, \"시야\": 78, \"페널티킥\": 55, \"침착\": 79, \"방어인식\": 75, \"스탠딩 태클\": 77, \"슬라이딩 태클\": 71, \"GK 몸 날리기\": 9, \"GK 핸들링\": 14, \"GK 킥력\": 15, \"GK 위치 선정\": 10, \"GK 반사신경\": 12}",
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "RC Celta",
   "def": 75,
   "dri": 76,
@@ -2292,13 +2461,15 @@
   "sofifa_id": 259233,
   "sofifa_name": "I. Moriba",
   "source": "https://sofifa.com/player/259233/",
-  "value_eur": "€21.5M"
+  "value_eur": "€21.5M",
+  "weight_kg": null
  },
  "모이세스 카이세도": {
   "accelerate": null,
   "age": 23,
   "attrs": null,
   "best_pos": "CDM",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 85,
   "dri": 81,
@@ -2319,13 +2490,15 @@
   "sofifa_id": 256079,
   "sofifa_name": "M. Caicedo",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€107M"
+  "value_eur": "€107M",
+  "weight_kg": null
  },
  "무뇨스": {
   "accelerate": null,
   "age": 21,
   "attrs": null,
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "CA Osasuna",
   "def": 47,
   "dri": 79,
@@ -2346,13 +2519,15 @@
   "sofifa_id": 76042,
   "sofifa_name": "Víctor Muñoz",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€31.5M"
+  "value_eur": "€31.5M",
+  "weight_kg": null
  },
  "무소": {
   "accelerate": null,
   "age": 31,
   "attrs": "{\"가속\": 46, \"질주 속도\": 42, \"반응력\": 70, \"다이빙\": 79, \"핸들링\": 77, \"킥\": 73, \"포지셔닝\": 81, \"반사신경\": 82}",
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 46,
   "dri": 82,
@@ -2373,13 +2548,15 @@
   "sofifa_id": 214979,
   "sofifa_name": "J. Musso",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€11M"
+  "value_eur": "€11M",
+  "weight_kg": null
  },
  "미겔 요렌테": {
   "accelerate": null,
   "age": 17,
   "attrs": null,
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 26,
   "dri": 61,
@@ -2400,13 +2577,15 @@
   "sofifa_id": 85338,
   "sofifa_name": "Miguel Cubo",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€1.2M"
+  "value_eur": "€1.2M",
+  "weight_kg": null
  },
  "밍스": {
   "accelerate": "Lengthy",
   "age": 32,
   "attrs": "{\"가속\": 49, \"질주 속도\": 66, \"공격 위치 선정\": 53, \"결정력\": 37, \"슈팅력\": 61, \"중거리슛\": 42, \"발리 슛\": 34, \"페널티킥\": 45, \"시야\": 57, \"크로스\": 70, \"프리킥 정확도\": 37, \"짧은 패스\": 75, \"긴 패스\": 75, \"커브\": 53, \"민첩성\": 34, \"균형 감각\": 42, \"반응력\": 75, \"볼컨트롤\": 67, \"드리블\": 68, \"침착\": 71, \"차단력\": 76, \"헤딩 정확도\": 77, \"수비 위치 선정\": 78, \"스탠딩 태클\": 78, \"슬라이딩 태클\": 80, \"점프\": 80, \"체력\": 51, \"힘\": 85, \"공격성\": 86}",
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 78,
   "dri": 64,
@@ -2427,13 +2606,15 @@
   "sofifa_id": 212419,
   "sofifa_name": "T. Mings",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€9M"
+  "value_eur": "€9M",
+  "weight_kg": null
  },
  "바디아실": {
   "accelerate": null,
   "age": 24,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 76,
   "dri": 62,
@@ -2454,13 +2635,15 @@
   "sofifa_id": 242578,
   "sofifa_name": "B. Badiashile",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€9.5M"
+  "value_eur": "€9.5M",
+  "weight_kg": null
  },
  "바르가스": {
   "accelerate": null,
   "age": 26,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "Sevilla FC",
   "def": 56,
   "dri": 80,
@@ -2481,13 +2664,15 @@
   "sofifa_id": 238581,
   "sofifa_name": "R. Vargas",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€15.5M"
+  "value_eur": "€15.5M",
+  "weight_kg": null
  },
  "바르콜라": {
   "accelerate": null,
   "age": 22,
   "attrs": null,
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "Paris Saint-Germain",
   "def": 39,
   "dri": 84,
@@ -2508,13 +2693,15 @@
   "sofifa_id": 264652,
   "sofifa_name": "B. Barcola",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€61.5M"
+  "value_eur": "€61.5M",
+  "weight_kg": null
  },
  "바리오스": {
   "accelerate": "Explosive",
   "age": 22,
   "attrs": "{\"가속\": 81, \"질주 속도\": 79, \"공격 위치 선정\": 74, \"결정력\": 70, \"슈팅력\": 72, \"중거리슛\": 72, \"발리 슛\": 55, \"페널티킥\": 62, \"시야\": 80, \"크로스\": 57, \"프리킥 정확도\": 48, \"짧은 패스\": 83, \"긴 패스\": 81, \"커브\": 60, \"민첩성\": 78, \"균형 감각\": 72, \"반응력\": 81, \"볼컨트롤\": 82, \"드리블\": 81, \"침착\": 78, \"차단력\": 81, \"헤딩 정확도\": 57, \"수비 위치 선정\": 69, \"스탠딩 태클\": 80, \"슬라이딩 태클\": 69, \"점프\": 74, \"체력\": 85, \"힘\": 66, \"공격성\": 66}",
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 75,
   "dri": 83,
@@ -2535,13 +2722,15 @@
   "sofifa_id": 272449,
   "sofifa_name": "Pablo Barrios",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€52.5M"
+  "value_eur": "€52.5M",
+  "weight_kg": null
  },
  "바에나": {
   "accelerate": "Controlled",
   "age": 23,
   "attrs": "{\"가속\": 79, \"질주 속도\": 79, \"공격 위치 선정\": 82, \"결정력\": 77, \"슈팅력\": 77, \"중거리슛\": 76, \"발리 슛\": 69, \"페널티킥\": 68, \"시야\": 84, \"크로스\": 85, \"프리킥 정확도\": 80, \"짧은 패스\": 87, \"긴 패스\": 82, \"커브\": 78, \"민첩성\": 80, \"균형 감각\": 76, \"반응력\": 82, \"볼컨트롤\": 84, \"드리블\": 83, \"침착\": 74, \"차단력\": 66, \"헤딩 정확도\": 58, \"수비 위치 선정\": 67, \"스탠딩 태클\": 66, \"슬라이딩 태클\": 64, \"점프\": 71, \"체력\": 78, \"힘\": 60, \"공격성\": 76}",
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 66,
   "dri": 81,
@@ -2562,13 +2751,15 @@
   "sofifa_id": 257279,
   "sofifa_name": "Álex Baena",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€46M"
+  "value_eur": "€46M",
+  "weight_kg": null
  },
  "바클리": {
   "accelerate": "Lengthy",
   "age": 31,
   "attrs": "{\"가속\": 52, \"질주 속도\": 53, \"공격 위치 선정\": 76, \"결정력\": 76, \"슈팅력\": 83, \"중거리슛\": 79, \"발리 슛\": 70, \"페널티킥\": 65, \"시야\": 79, \"크로스\": 73, \"프리킥 정확도\": 73, \"짧은 패스\": 80, \"긴 패스\": 79, \"커브\": 74, \"민첩성\": 60, \"균형 감각\": 61, \"반응력\": 76, \"볼컨트롤\": 80, \"드리블\": 79, \"침착\": 79, \"차단력\": 63, \"헤딩 정확도\": 68, \"수비 위치 선정\": 60, \"스탠딩 태클\": 68, \"슬라이딩 태클\": 63, \"점프\": 68, \"체력\": 63, \"힘\": 70, \"공격성\": 71}",
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 64,
   "dri": 76,
@@ -2589,13 +2780,15 @@
   "sofifa_id": 199189,
   "sofifa_name": "R. Barkley",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€8.5M"
+  "value_eur": "€8.5M",
+  "weight_kg": null
  },
  "바투리나": {
   "accelerate": null,
   "age": 22,
   "attrs": "{\"크로스\": 76, \"결정력\": 70, \"헤딩 정확도\": 59, \"짧은 패스\": 81, \"발리 슛\": 70, \"드리블\": 84, \"커브\": 77, \"프리킥 정확도\": 75, \"긴 패스\": 78, \"볼컨트롤\": 83, \"가속\": 79, \"질주 속도\": 77, \"민첩성\": 78, \"반응력\": 78, \"균형 감각\": 86, \"슈팅력\": 75, \"점프\": 74, \"체력\": 76, \"힘\": 69, \"중거리슛\": 72, \"공격성\": 49, \"차단력\": 58, \"공격 위치 선정\": 70, \"시야\": 80, \"페널티킥\": 72, \"침착\": 79, \"방어인식\": 68, \"스탠딩 태클\": 64, \"슬라이딩 태클\": 60, \"GK 몸 날리기\": 7, \"GK 핸들링\": 5, \"GK 킥력\": 7, \"GK 위치 선정\": 10, \"GK 반사신경\": 6}",
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Como",
   "def": 63,
   "dri": 83,
@@ -2616,13 +2809,15 @@
   "sofifa_id": 262842,
   "sofifa_name": "M. Baturina",
   "source": "https://sofifa.com/player/262842/",
-  "value_eur": "€27M"
+  "value_eur": "€27M",
+  "weight_kg": null
  },
  "반스": {
   "accelerate": null,
   "age": 27,
   "attrs": "{\"크로스\": 75, \"결정력\": 82, \"헤딩 정확도\": 46, \"짧은 패스\": 76, \"발리 슛\": 68, \"드리블\": 82, \"커브\": 79, \"프리킥 정확도\": 69, \"긴 패스\": 68, \"볼컨트롤\": 82, \"가속\": 80, \"질주 속도\": 85, \"민첩성\": 78, \"반응력\": 79, \"균형 감각\": 77, \"슈팅력\": 82, \"점프\": 70, \"체력\": 74, \"힘\": 71, \"중거리슛\": 83, \"공격성\": 53, \"차단력\": 43, \"공격 위치 선정\": 81, \"시야\": 80, \"페널티킥\": 65, \"침착\": 77, \"방어인식\": 44, \"스탠딩 태클\": 43, \"슬라이딩 태클\": 40, \"GK 다이빙\": 6, \"GK 핸들링\": 5, \"GK 킥력\": 11, \"GK 위치 선정\": 8, \"GK 반사신경\": 10}",
   "best_pos": null,
+  "card_image_url": null,
   "club": "Newcastle United",
   "def": 43,
   "dri": 81,
@@ -2643,13 +2838,15 @@
   "sofifa_id": 234742,
   "sofifa_name": "H. Barnes",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€22.5M"
+  "value_eur": "€22.5M",
+  "weight_kg": null
  },
  "발로건": {
   "accelerate": "Controlled",
   "age": 25,
   "attrs": "{\"가속\": 82, \"질주 속도\": 85, \"공격 위치 선정\": 78, \"결정력\": 79, \"슈팅력\": 79, \"중거리슛\": 72, \"발리 슛\": 77, \"페널티킥\": 71, \"시야\": 62, \"크로스\": 58, \"프리킥 정확도\": 52, \"짧은 패스\": 69, \"긴 패스\": 57, \"커브\": 59, \"민첩성\": 76, \"균형 감각\": 76, \"반응력\": 76, \"볼컨트롤\": 77, \"드리블\": 78, \"침착\": 77, \"차단력\": 18, \"헤딩 정확도\": 75, \"수비 위치 선정\": 18, \"스탠딩 태클\": 15, \"슬라이딩 태클\": 16, \"점프\": 86, \"체력\": 65, \"힘\": 73, \"공격성\": 56}",
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "AS Monaco",
   "def": 23,
   "dri": 78,
@@ -2670,13 +2867,15 @@
   "sofifa_id": 247463,
   "sofifa_name": "F. Balogun",
   "source": "sofifa.com/players?keyword=<name> (검색 컬럼 스크레이프 · 로스터 2026-07-23 · 인앱 브라우저 경유) · fut.gg /players/rating-predictions/clubs/{11-man-utd|69-as-monaco} (FC27 확정, 2026-08-23 수집)",
-  "value_eur": "€25.5M"
+  "value_eur": "€25.5M",
+  "weight_kg": null
  },
  "베일리": {
   "accelerate": null,
   "age": 27,
   "attrs": null,
   "best_pos": "LW",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 38,
   "dri": 82,
@@ -2697,13 +2896,15 @@
   "sofifa_id": 229906,
   "sofifa_name": "L. Bailey",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€15M"
+  "value_eur": "€15M",
+  "weight_kg": null
  },
  "보가르드": {
   "accelerate": "Controlled",
   "age": 21,
   "attrs": "{\"가속\": 65, \"질주 속도\": 68, \"공격 위치 선정\": 50, \"결정력\": 44, \"슈팅력\": 67, \"중거리슛\": 38, \"발리 슛\": 41, \"페널티킥\": 55, \"시야\": 68, \"크로스\": 53, \"프리킥 정확도\": 43, \"짧은 패스\": 73, \"긴 패스\": 71, \"커브\": 58, \"민첩성\": 58, \"균형 감각\": 65, \"반응력\": 70, \"볼컨트롤\": 71, \"드리블\": 67, \"침착\": 68, \"차단력\": 70, \"헤딩 정확도\": 60, \"수비 위치 선정\": 68, \"스탠딩 태클\": 72, \"슬라이딩 태클\": 67, \"점프\": 70, \"체력\": 65, \"힘\": 70, \"공격성\": 71}",
   "best_pos": "CDM",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 72,
   "dri": 70,
@@ -2724,13 +2925,15 @@
   "sofifa_id": 264209,
   "sofifa_name": "L. Bogarde",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€8M"
+  "value_eur": "€8M",
+  "weight_kg": null
  },
  "보웬": {
   "accelerate": null,
   "age": 28,
   "attrs": "{\"크로스\": 80, \"결정력\": 84, \"헤딩 정확도\": 82, \"짧은 패스\": 80, \"발리 슛\": 73, \"드리블\": 82, \"커브\": 75, \"프리킥 정확도\": 70, \"긴 패스\": 73, \"볼컨트롤\": 82, \"가속\": 78, \"질주 속도\": 74, \"민첩성\": 79, \"반응력\": 84, \"균형 감각\": 81, \"슈팅력\": 80, \"점프\": 84, \"체력\": 83, \"힘\": 66, \"중거리슛\": 80, \"공격성\": 62, \"차단력\": 37, \"공격 위치 선정\": 83, \"시야\": 79, \"페널티킥\": 75, \"침착\": 80, \"방어인식\": 49, \"스탠딩 태클\": 41, \"슬라이딩 태클\": 37, \"GK 몸 날리기\": 14, \"GK 핸들링\": 8, \"GK 킥력\": 14, \"GK 위치 선정\": 10, \"GK 반사신경\": 7}",
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "West Ham United",
   "def": 46,
   "dri": 82,
@@ -2751,13 +2954,15 @@
   "sofifa_id": 224371,
   "sofifa_name": "J. Bowen",
   "source": "https://sofifa.com/player/224371/",
-  "value_eur": "€36.5M"
+  "value_eur": "€36.5M",
+  "weight_kg": null
  },
  "부엔디아": {
   "accelerate": "Controlled",
   "age": 28,
   "attrs": "{\"가속\": 74, \"질주 속도\": 60, \"공격 위치 선정\": 75, \"결정력\": 74, \"슈팅력\": 77, \"중거리슛\": 75, \"발리 슛\": 68, \"페널티킥\": 62, \"시야\": 78, \"크로스\": 78, \"프리킥 정확도\": 74, \"짧은 패스\": 80, \"긴 패스\": 75, \"커브\": 81, \"민첩성\": 84, \"균형 감각\": 90, \"반응력\": 74, \"볼컨트롤\": 80, \"드리블\": 81, \"침착\": 77, \"차단력\": 60, \"헤딩 정확도\": 75, \"수비 위치 선정\": 67, \"스탠딩 태클\": 68, \"슬라이딩 태클\": 61, \"점프\": 77, \"체력\": 60, \"힘\": 61, \"공격성\": 83}",
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 66,
   "dri": 82,
@@ -2778,13 +2983,15 @@
   "sofifa_id": 226162,
   "sofifa_name": "E. Buendía",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€14M"
+  "value_eur": "€14M",
+  "weight_kg": null
  },
  "브로베이": {
   "accelerate": null,
   "age": 23,
   "attrs": "{\"크로스\": 36, \"결정력\": 75, \"헤딩 정확도\": 71, \"짧은 패스\": 73, \"발리 슛\": 66, \"드리블\": 68, \"커브\": 49, \"프리킥 정확도\": 44, \"긴 패스\": 53, \"볼컨트롤\": 77, \"가속\": 82, \"질주 속도\": 85, \"민첩성\": 65, \"반응력\": 78, \"균형 감각\": 87, \"슈팅력\": 79, \"점프\": 93, \"체력\": 61, \"힘\": 94, \"중거리슛\": 66, \"공격성\": 78, \"차단력\": 26, \"공격 위치 선정\": 82, \"시야\": 58, \"페널티킥\": 62, \"침착\": 78, \"방어인식\": 28, \"스탠딩 태클\": 23, \"슬라이딩 태클\": 24, \"GK 몸 날리기\": 10, \"GK 핸들링\": 11, \"GK 킥력\": 15, \"GK 위치 선정\": 8, \"GK 반사신경\": 13}",
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Sunderland",
   "def": 30,
   "dri": 72,
@@ -2805,13 +3012,15 @@
   "sofifa_id": 251810,
   "sofifa_name": "B. Brobbey",
   "source": "https://sofifa.com/player/251810/",
-  "value_eur": "€17M"
+  "value_eur": "€17M",
+  "weight_kg": null
  },
  "비르츠": {
   "accelerate": null,
   "age": 22,
   "attrs": null,
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 54,
   "dri": 88,
@@ -2832,13 +3041,15 @@
   "sofifa_id": 256630,
   "sofifa_name": "F. Wirtz",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€116.5M"
+  "value_eur": "€116.5M",
+  "weight_kg": null
  },
  "비조": {
   "accelerate": null,
   "age": 34,
   "attrs": "{\"가속\": 45, \"질주 속도\": 47, \"반응력\": 76, \"다이빙\": 78, \"핸들링\": 75, \"킥\": 72, \"포지셔닝\": 79, \"반사신경\": 78}",
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 46,
   "dri": 78,
@@ -2859,13 +3070,15 @@
   "sofifa_id": 200110,
   "sofifa_name": "M. Bizot",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€2.4M"
+  "value_eur": "€2.4M",
+  "weight_kg": null
  },
  "빅토르 요한손": {
   "accelerate": null,
   "age": 26,
   "attrs": "{\"크로스\": 11, \"결정력\": 6, \"헤딩 정확도\": 11, \"짧은 패스\": 34, \"발리 슛\": 8, \"드리블\": 13, \"커브\": 13, \"프리킥 정확도\": 13, \"긴 패스\": 52, \"볼컨트롤\": 11, \"가속\": 42, \"질주 속도\": 38, \"민첩성\": 45, \"반응력\": 70, \"균형 감각\": 42, \"슈팅력\": 53, \"점프\": 57, \"체력\": 27, \"힘\": 54, \"중거리슛\": 5, \"공격성\": 19, \"차단력\": 6, \"공격 위치 선정\": 5, \"시야\": 45, \"페널티킥\": 14, \"침착\": 32, \"방어인식\": 9, \"스탠딩 태클\": 12, \"슬라이딩 태클\": 10, \"GK 다이빙\": 75, \"GK 핸들링\": 71, \"GK 킥력\": 70, \"GK 위치 선정\": 73, \"GK 반사신경\": 77}",
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Stoke City",
   "def": 40,
   "dri": 77,
@@ -2886,13 +3099,15 @@
   "sofifa_id": 241643,
   "sofifa_name": "V. Johansson",
   "source": "https://sofifa.com/player/241643/",
-  "value_eur": "€4M"
+  "value_eur": "€4M",
+  "weight_kg": null
  },
  "사라": {
   "accelerate": null,
   "age": 26,
   "attrs": "{\"크로스\": 82, \"결정력\": 72, \"헤딩 정확도\": 68, \"짧은 패스\": 84, \"발리 슛\": 67, \"드리블\": 80, \"커브\": 84, \"프리킥 정확도\": 79, \"긴 패스\": 85, \"볼컨트롤\": 83, \"가속\": 75, \"질주 속도\": 75, \"민첩성\": 79, \"반응력\": 79, \"균형 감각\": 76, \"슈팅력\": 83, \"점프\": 78, \"체력\": 79, \"힘\": 73, \"중거리슛\": 76, \"공격성\": 79, \"차단력\": 65, \"공격 위치 선정\": 78, \"시야\": 83, \"페널티킥\": 68, \"침착\": 80, \"방어인식\": 70, \"스탠딩 태클\": 66, \"슬라이딩 태클\": 59, \"GK 몸 날리기\": 14, \"GK 핸들링\": 14, \"GK 킥력\": 10, \"GK 위치 선정\": 6, \"GK 반사신경\": 9}",
   "best_pos": null,
+  "card_image_url": null,
   "club": "Galatasaray SK",
   "def": 67,
   "dri": 81,
@@ -2913,13 +3128,15 @@
   "sofifa_id": 270571,
   "sofifa_name": "Gabriel Sara",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€27.5M"
+  "value_eur": "€27.5M",
+  "weight_kg": null
  },
  "산초": {
   "accelerate": null,
   "age": 25,
   "attrs": null,
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 35,
   "dri": 86,
@@ -2940,13 +3157,15 @@
   "sofifa_id": 233049,
   "sofifa_name": "J. Sancho",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€21M"
+  "value_eur": "€21M",
+  "weight_kg": null
  },
  "살라": {
   "accelerate": null,
   "age": 33,
   "attrs": null,
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 45,
   "dri": 87,
@@ -2967,13 +3186,15 @@
   "sofifa_id": 209331,
   "sofifa_name": "M. Salah",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€64M"
+  "value_eur": "€64M",
+  "weight_kg": null
  },
  "서머빌": {
   "accelerate": null,
   "age": 23,
   "attrs": "{\"크로스\": 74, \"결정력\": 78, \"헤딩 정확도\": 50, \"짧은 패스\": 74, \"발리 슛\": 61, \"드리블\": 82, \"커브\": 74, \"프리킥 정확도\": 65, \"긴 패스\": 53, \"볼컨트롤\": 79, \"가속\": 91, \"질주 속도\": 88, \"민첩성\": 91, \"반응력\": 75, \"균형 감각\": 87, \"슈팅력\": 74, \"점프\": 72, \"체력\": 74, \"힘\": 46, \"중거리슛\": 66, \"공격성\": 47, \"차단력\": 18, \"공격 위치 선정\": 78, \"시야\": 74, \"페널티킥\": 69, \"침착\": 77, \"방어인식\": 44, \"스탠딩 태클\": 38, \"슬라이딩 태클\": 26, \"GK 몸 날리기\": 9, \"GK 핸들링\": 9, \"GK 킥력\": 15, \"GK 위치 선정\": 11, \"GK 반사신경\": 10}",
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "West Ham United",
   "def": 36,
   "dri": 82,
@@ -2994,13 +3215,15 @@
   "sofifa_id": 251954,
   "sofifa_name": "C. Summerville",
   "source": "https://sofifa.com/player/251954/",
-  "value_eur": "€21M"
+  "value_eur": "€21M",
+  "weight_kg": null
  },
  "세이스": {
   "accelerate": null,
   "age": 20,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "Club Brugge KV",
   "def": 68,
   "dri": 72,
@@ -3021,13 +3244,15 @@
   "sofifa_id": 71305,
   "sofifa_name": "J. Seys",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€9.5M"
+  "value_eur": "€9.5M",
+  "weight_kg": null
  },
  "소보슬라이": {
   "accelerate": null,
   "age": 24,
   "attrs": null,
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 73,
   "dri": 84,
@@ -3048,13 +3273,15 @@
   "sofifa_id": 236772,
   "sofifa_name": "D. Szoboszlai",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€88M"
+  "value_eur": "€88M",
+  "weight_kg": null
  },
  "쇠를로트": {
   "accelerate": null,
   "age": 29,
   "attrs": null,
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 37,
   "dri": 74,
@@ -3075,13 +3302,15 @@
   "sofifa_id": 216549,
   "sofifa_name": "A. Sørloth",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€36.5M"
+  "value_eur": "€36.5M",
+  "weight_kg": null
  },
  "스즈키": {
   "accelerate": "Controlled Lengthy",
   "age": 23,
   "attrs": "{\"크로스\": 12, \"결정력\": 6, \"헤딩 정확도\": 12, \"짧은 패스\": 21, \"발리 슛\": 7, \"드리블\": 14, \"커브\": 13, \"긴 패스\": 23, \"볼컨트롤\": 11, \"가속\": 55, \"질주 속도\": 58, \"민첩성\": 59, \"반응력\": 72, \"균형 감각\": 33, \"슈팅력\": 53, \"점프\": 73, \"체력\": 23, \"힘\": 78, \"중거리슛\": 8, \"차단력\": 7, \"공격 위치 선정\": 7, \"시야\": 46, \"페널티킥\": 18, \"침착\": 39, \"방어인식\": 8, \"스탠딩 태클\": 16, \"슬라이딩 태클\": 13, \"GK 몸 날리기\": 73, \"GK 핸들링\": 72, \"GK 킥력\": 71, \"GK 위치 선정\": 74, \"GK 반사신경\": 76, \"프리킥 정확도\": 11, \"공격성\": 26}",
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Parma",
   "def": 56,
   "dri": 76,
@@ -3102,13 +3331,15 @@
   "sofifa_id": 255981,
   "sofifa_name": "Z. Suzuki",
   "source": "https://sofifa.com/players?keyword=Zion+Suzuki (FC26 roster 2026-07-23, 검색 페이지 컬럼 스크레이프 2026-08-16) + https://sofifa.com/player/255981/ (상세 페이지 2026-08-18 직접 수집 — 페이지 로스터 표기 '2026. 7. 23.'로 이 행과 동일 시점)",
-  "value_eur": "€5.5M"
+  "value_eur": "€5.5M",
+  "weight_kg": null
  },
  "시세": {
   "accelerate": "Controlled",
   "age": 19,
   "attrs": "{\"가속\": 71, \"질주 속도\": 67, \"공격 위치 선정\": 29, \"결정력\": 38, \"슈팅력\": 40, \"중거리슛\": 36, \"발리 슛\": 35, \"페널티킥\": 46, \"시야\": 49, \"크로스\": 37, \"프리킥 정확도\": 34, \"짧은 패스\": 62, \"긴 패스\": 54, \"커브\": 33, \"민첩성\": 58, \"균형 감각\": 60, \"반응력\": 56, \"볼컨트롤\": 59, \"드리블\": 41, \"침착\": 54, \"차단력\": 62, \"헤딩 정확도\": 65, \"수비 위치 선정\": 58, \"스탠딩 태클\": 67, \"슬라이딩 태클\": 64, \"점프\": 73, \"체력\": 66, \"힘\": 64, \"공격성\": 60}",
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "LASK Linz 2025~2028",
   "def": 69,
   "dri": 53,
@@ -3129,13 +3360,15 @@
   "sofifa_id": 77524,
   "sofifa_name": "M. Cissé",
   "source": "sofifa 검색 페이지 FC26 roster 2026-07-23 (roster id 260046) — https://sofifa.com/players?keyword=<name>&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€2.7M"
+  "value_eur": "€2.7M",
+  "weight_kg": null
  },
  "아데예미": {
   "accelerate": null,
   "age": 23,
   "attrs": "{\"크로스\": 73, \"결정력\": 81, \"헤딩 정확도\": 75, \"짧은 패스\": 74, \"발리 슛\": 71, \"드리블\": 84, \"커브\": 69, \"프리킥 정확도\": 62, \"긴 패스\": 69, \"볼컨트롤\": 80, \"가속\": 96, \"질주 속도\": 96, \"민첩성\": 86, \"반응력\": 82, \"균형 감각\": 81, \"슈팅력\": 86, \"점프\": 93, \"체력\": 77, \"힘\": 67, \"중거리슛\": 76, \"공격성\": 59, \"차단력\": 31, \"공격 위치 선정\": 82, \"시야\": 74, \"페널티킥\": 70, \"침착\": 76, \"방어인식\": 25, \"스탠딩 태클\": 34, \"슬라이딩 태클\": 49, \"GK 몸 날리기\": 12, \"GK 핸들링\": 12, \"GK 킥력\": 7, \"GK 위치 선정\": 12, \"GK 반사신경\": 7}",
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Borussia Dortmund",
   "def": 36,
   "dri": 82,
@@ -3156,13 +3389,15 @@
   "sofifa_id": 251852,
   "sofifa_name": "K. Adeyemi",
   "source": "https://sofifa.com/player/251852/",
-  "value_eur": "€43.5M"
+  "value_eur": "€43.5M",
+  "weight_kg": null
  },
  "아라우호": {
   "accelerate": null,
   "age": 26,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "FC Barcelona",
   "def": 79,
   "dri": 59,
@@ -3183,13 +3418,15 @@
   "sofifa_id": 253163,
   "sofifa_name": "R. Araujo",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€30M"
+  "value_eur": "€30M",
+  "weight_kg": null
  },
  "알렉사 푸리치": {
   "accelerate": null,
   "age": 21,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 67,
   "dri": 50,
@@ -3210,13 +3447,15 @@
   "sofifa_id": 73558,
   "sofifa_name": "A. Purić",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€2.1M"
+  "value_eur": "€2.1M",
+  "weight_kg": null
  },
  "알리송": {
   "accelerate": null,
   "age": 19,
   "attrs": null,
   "best_pos": "LM",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 34,
   "dri": 72,
@@ -3237,13 +3476,15 @@
   "sofifa_id": 82968,
   "sofifa_name": "Alysson",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€3.8M"
+  "value_eur": "€3.8M",
+  "weight_kg": null
  },
  "알리송 베케르": {
   "accelerate": null,
   "age": 32,
   "attrs": null,
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 56,
   "dri": 87,
@@ -3264,13 +3505,15 @@
   "sofifa_id": 212831,
   "sofifa_name": "Alisson",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€45M"
+  "value_eur": "€45M",
+  "weight_kg": null
  },
  "에메르송 호얄": {
   "accelerate": null,
   "age": null,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "Flamengo",
   "def": null,
   "dri": null,
@@ -3291,13 +3534,15 @@
   "sofifa_id": null,
   "sofifa_name": "Emerson Royal",
   "source": "https://sofifa.com/players?keyword=Emerson",
-  "value_eur": null
+  "value_eur": null,
+  "weight_kg": null
  },
  "에스테방": {
   "accelerate": null,
   "age": 18,
   "attrs": null,
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 33,
   "dri": 84,
@@ -3318,13 +3563,15 @@
   "sofifa_id": 76687,
   "sofifa_name": "Estêvão",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€37M"
+  "value_eur": "€37M",
+  "weight_kg": null
  },
  "에스투피냔": {
   "accelerate": "Controlled Explosive",
   "age": 27,
   "attrs": "{\"크로스\": 79, \"결정력\": 48, \"헤딩 정확도\": 70, \"짧은 패스\": 79, \"발리 슛\": 38, \"드리블\": 80, \"커브\": 78, \"프리킥 정확도\": 79, \"긴 패스\": 72, \"볼컨트롤\": 79, \"가속\": 77, \"질주 속도\": 76, \"민첩성\": 74, \"반응력\": 77, \"균형 감각\": 73, \"슈팅력\": 67, \"점프\": 77, \"체력\": 81, \"힘\": 68, \"중거리슛\": 65, \"공격성\": 70, \"차단력\": 79, \"공격 위치 선정\": 70, \"시야\": 72, \"페널티킥\": 65, \"침착\": 72, \"방어인식\": 72, \"스탠딩 태클\": 78, \"슬라이딩 태클\": 76, \"GK 몸 날리기\": 14, \"GK 핸들링\": 7, \"GK 킥력\": 14, \"GK 위치 선정\": 7, \"GK 반사신경\": 7}",
   "best_pos": null,
+  "card_image_url": null,
   "club": "AC Milan",
   "def": 75,
   "dri": 78,
@@ -3345,13 +3592,15 @@
   "sofifa_id": 237942,
   "sofifa_name": "P. Estupiñán",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€17M"
+  "value_eur": "€17M",
+  "weight_kg": null
  },
  "엔소 페르난데스": {
   "accelerate": null,
   "age": 24,
   "attrs": null,
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 73,
   "dri": 82,
@@ -3372,13 +3621,15 @@
   "sofifa_id": 247090,
   "sofifa_name": "E. Fernández",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€73M"
+  "value_eur": "€73M",
+  "weight_kg": null
  },
  "엘마스": {
   "accelerate": null,
   "age": 25,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "Napoli(임대)",
   "def": 65,
   "dri": 80,
@@ -3399,13 +3650,15 @@
   "sofifa_id": 241390,
   "sofifa_name": "E. Elmas",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€11.5M"
+  "value_eur": "€11.5M",
+  "weight_kg": null
  },
  "오나나": {
   "accelerate": "Lengthy",
   "age": 23,
   "attrs": "{\"가속\": 64, \"질주 속도\": 82, \"공격 위치 선정\": 67, \"결정력\": 57, \"슈팅력\": 75, \"중거리슛\": 67, \"발리 슛\": 51, \"페널티킥\": 39, \"시야\": 76, \"크로스\": 58, \"프리킥 정확도\": 42, \"짧은 패스\": 80, \"긴 패스\": 77, \"커브\": 72, \"민첩성\": 49, \"균형 감각\": 52, \"반응력\": 75, \"볼컨트롤\": 78, \"드리블\": 76, \"침착\": 74, \"차단력\": 76, \"헤딩 정확도\": 78, \"수비 위치 선정\": 78, \"스탠딩 태클\": 80, \"슬라이딩 태클\": 79, \"점프\": 85, \"체력\": 76, \"힘\": 83, \"공격성\": 83}",
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 81,
   "dri": 74,
@@ -3426,13 +3679,15 @@
   "sofifa_id": 257057,
   "sofifa_name": "A. Onana",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€32M"
+  "value_eur": "€32M",
+  "weight_kg": null
  },
  "오베드 바르가스": {
   "accelerate": "Controlled",
   "age": 19,
   "attrs": "{\"가속\": 76, \"질주 속도\": 73, \"공격 위치 선정\": 70, \"결정력\": 51, \"슈팅력\": 55, \"중거리슛\": 49, \"발리 슛\": 44, \"페널티킥\": 47, \"시야\": 69, \"크로스\": 57, \"프리킥 정확도\": 44, \"짧은 패스\": 69, \"긴 패스\": 64, \"커브\": 53, \"민첩성\": 79, \"균형 감각\": 78, \"반응력\": 79, \"볼컨트롤\": 72, \"드리블\": 71, \"침착\": 70, \"차단력\": 68, \"헤딩 정확도\": 48, \"수비 위치 선정\": 65, \"스탠딩 태클\": 65, \"슬라이딩 태클\": 60, \"점프\": 53, \"체력\": 78, \"힘\": 43, \"공격성\": 68}",
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 67,
   "dri": 72,
@@ -3453,13 +3708,15 @@
   "sofifa_id": 263701,
   "sofifa_name": "O. Vargas",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€4.8M"
+  "value_eur": "€4.8M",
+  "weight_kg": null
  },
  "오블락": {
   "accelerate": null,
   "age": 32,
   "attrs": "{\"가속\": 42, \"질주 속도\": 53, \"반응력\": 85, \"다이빙\": 85, \"핸들링\": 90, \"킥\": 78, \"포지셔닝\": 86, \"반사신경\": 87}",
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 46,
   "dri": 87,
@@ -3480,13 +3737,15 @@
   "sofifa_id": 200389,
   "sofifa_name": "J. Oblak",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€45M"
+  "value_eur": "€45M",
+  "weight_kg": null
  },
  "와튼": {
   "accelerate": null,
   "age": 21,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "Crystal Palace",
   "def": 76,
   "dri": 78,
@@ -3507,13 +3766,15 @@
   "sofifa_id": 259240,
   "sofifa_name": "A. Wharton",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€38M"
+  "value_eur": "€38M",
+  "weight_kg": null
  },
  "완비사카": {
   "accelerate": "Controlled",
   "age": 27,
   "attrs": "{\"크로스\": 72, \"결정력\": 46, \"헤딩 정확도\": 56, \"짧은 패스\": 75, \"발리 슛\": 43, \"드리블\": 78, \"커브\": 74, \"프리킥 정확도\": 45, \"긴 패스\": 58, \"볼컨트롤\": 73, \"가속\": 79, \"질주 속도\": 79, \"민첩성\": 77, \"반응력\": 77, \"균형 감각\": 70, \"슈팅력\": 70, \"점프\": 75, \"체력\": 75, \"힘\": 71, \"중거리슛\": 44, \"공격성\": 73, \"차단력\": 79, \"공격 위치 선정\": 72, \"시야\": 68, \"페널티킥\": 44, \"침착\": 78, \"방어인식\": 78, \"스탠딩 태클\": 79, \"슬라이딩 태클\": 88, \"GK 몸 날리기\": 9, \"GK 핸들링\": 8, \"GK 킥력\": 6, \"GK 위치 선정\": 8, \"GK 반사신경\": 8}",
   "best_pos": "RB",
+  "card_image_url": null,
   "club": "West Ham United",
   "def": 77,
   "dri": 76,
@@ -3534,13 +3795,15 @@
   "sofifa_id": 229880,
   "sofifa_name": "A. Wan-Bissaka",
   "source": "cmtracker FC26 roster 2026-06-30 https://cmtracker.net/en/players/26063000/229880/aaron-wan-bissaka (역할숙련도·AcceleRATE·체형·플레이스타일 확보) ; sofifa 검색 페이지 FC26 roster 2026-07-23 https://sofifa.com/players?keyword=Wan-Bissaka (35속성 교차검증·EUR 가치) ; EA 공식 https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/aaron-wan-bissaka/229880 (플레이스타일 원장)",
-  "value_eur": "€17M"
+  "value_eur": "€17M",
+  "weight_kg": null
  },
  "왓킨스": {
   "accelerate": "Controlled",
   "age": 29,
   "attrs": "{\"가속\": 77, \"질주 속도\": 77, \"공격 위치 선정\": 87, \"결정력\": 85, \"슈팅력\": 84, \"중거리슛\": 76, \"발리 슛\": 84, \"페널티킥\": 74, \"시야\": 77, \"크로스\": 67, \"프리킥 정확도\": 63, \"짧은 패스\": 79, \"긴 패스\": 64, \"커브\": 74, \"민첩성\": 78, \"균형 감각\": 70, \"반응력\": 85, \"볼컨트롤\": 79, \"드리블\": 81, \"침착\": 77, \"차단력\": 55, \"헤딩 정확도\": 85, \"수비 위치 선정\": 45, \"스탠딩 태클\": 46, \"슬라이딩 태클\": 36, \"점프\": 89, \"체력\": 88, \"힘\": 76, \"공격성\": 76}",
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 50,
   "dri": 78,
@@ -3561,13 +3824,15 @@
   "sofifa_id": 221697,
   "sofifa_name": "O. Watkins",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€30.5M"
+  "value_eur": "€30.5M",
+  "weight_kg": null
  },
  "요렐 하토": {
   "accelerate": null,
   "age": 19,
   "attrs": null,
   "best_pos": "LB",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 75,
   "dri": 74,
@@ -3588,13 +3853,15 @@
   "sofifa_id": 272978,
   "sofifa_name": "J. Hato",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€29M"
+  "value_eur": "€29M",
+  "weight_kg": null
  },
  "웨슬리 포파나": {
   "accelerate": null,
   "age": 24,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 80,
   "dri": 71,
@@ -3615,13 +3882,15 @@
   "sofifa_id": 248695,
   "sofifa_name": "W. Fofana",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€21.5M"
+  "value_eur": "€21.5M",
+  "weight_kg": null
  },
  "웰벡": {
   "accelerate": null,
   "age": 34,
   "attrs": null,
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Brighton & Hove Albion",
   "def": 45,
   "dri": 77,
@@ -3642,13 +3911,15 @@
   "sofifa_id": 186146,
   "sofifa_name": "D. Welbeck",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€10.5M"
+  "value_eur": "€10.5M",
+  "weight_kg": null
  },
  "윌리엄 오슬라": {
   "accelerate": null,
   "age": 21,
   "attrs": "{\"크로스\": 49, \"결정력\": 74, \"헤딩 정확도\": 68, \"짧은 패스\": 65, \"발리 슛\": 66, \"드리블\": 77, \"커브\": 59, \"프리킥 정확도\": 41, \"긴 패스\": 42, \"볼컨트롤\": 71, \"가속\": 86, \"질주 속도\": 89, \"민첩성\": 68, \"반응력\": 68, \"균형 감각\": 62, \"슈팅력\": 74, \"점프\": 86, \"체력\": 59, \"힘\": 76, \"중거리슛\": 65, \"공격성\": 55, \"차단력\": 18, \"공격 위치 선정\": 70, \"시야\": 57, \"페널티킥\": 68, \"침착\": 67, \"방어인식\": 23, \"스탠딩 태클\": 16, \"슬라이딩 태클\": 18, \"GK 다이빙\": 13, \"GK 핸들링\": 6, \"GK 킥력\": 9, \"GK 위치 선정\": 9, \"GK 반사신경\": 7}",
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Newcastle United",
   "def": 24,
   "dri": 73,
@@ -3669,13 +3940,15 @@
   "sofifa_id": 270519,
   "sofifa_name": "W. Osula",
   "source": "https://sofifa.com/player/270519/",
-  "value_eur": "€7M"
+  "value_eur": "€7M",
+  "weight_kg": null
  },
  "율만": {
   "accelerate": "Lengthy",
   "age": 26,
   "attrs": "{\"가속\": 69, \"질주 속도\": 71, \"공격 위치 선정\": 78, \"결정력\": 76, \"슈팅력\": 82, \"중거리슛\": 80, \"발리 슛\": 62, \"페널티킥\": 54, \"시야\": 82, \"크로스\": 72, \"프리킥 정확도\": 61, \"짧은 패스\": 81, \"긴 패스\": 80, \"커브\": 70, \"민첩성\": 70, \"균형 감각\": 74, \"반응력\": 81, \"볼컨트롤\": 80, \"드리블\": 76, \"침착\": 82, \"차단력\": 83, \"헤딩 정확도\": 68, \"수비 위치 선정\": 79, \"스탠딩 태클\": 82, \"슬라이딩 태클\": 78, \"점프\": 79, \"체력\": 91, \"힘\": 81, \"공격성\": 83}",
   "best_pos": "CDM",
+  "card_image_url": null,
   "club": "Sporting CP",
   "def": 80,
   "dri": 77,
@@ -3696,13 +3969,15 @@
   "sofifa_id": 244669,
   "sofifa_name": "M. Hjulmand",
   "source": "sofifa 키워드 검색 FC26 roster 2026-07-23 (roster id 260046) — https://sofifa.com/players?keyword=<name>&showCol[]=… (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€43M"
+  "value_eur": "€43M",
+  "weight_kg": null
  },
  "은두크웨": {
   "accelerate": null,
   "age": 17,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "FK Austria Wien",
   "def": 59,
   "dri": 41,
@@ -3723,13 +3998,15 @@
   "sofifa_id": 79271,
   "sofifa_name": "I. Ndukwe",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€675K"
+  "value_eur": "€675K",
+  "weight_kg": null
  },
  "은디아예": {
   "accelerate": null,
   "age": 25,
   "attrs": "{\"크로스\": 75, \"결정력\": 79, \"헤딩 정확도\": 59, \"짧은 패스\": 76, \"발리 슛\": 71, \"드리블\": 89, \"커브\": 76, \"프리킥 정확도\": 55, \"긴 패스\": 63, \"볼컨트롤\": 84, \"가속\": 87, \"질주 속도\": 86, \"민첩성\": 84, \"반응력\": 81, \"균형 감각\": 81, \"슈팅력\": 78, \"점프\": 76, \"체력\": 76, \"힘\": 66, \"중거리슛\": 72, \"공격성\": 47, \"차단력\": 49, \"공격 위치 선정\": 80, \"시야\": 78, \"페널티킥\": 80, \"침착\": 86, \"방어인식\": 44, \"스탠딩 태클\": 39, \"슬라이딩 태클\": 32, \"GK 몸 날리기\": 7, \"GK 핸들링\": 9, \"GK 킥력\": 7, \"GK 위치 선정\": 15, \"GK 반사신경\": 8}",
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "Everton",
   "def": 44,
   "dri": 86,
@@ -3750,13 +4027,15 @@
   "sofifa_id": 261188,
   "sofifa_name": "I. Ndiaye",
   "source": "https://sofifa.com/player/261188/",
-  "value_eur": "€36.5M"
+  "value_eur": "€36.5M",
+  "weight_kg": null
  },
  "음바예": {
   "accelerate": null,
   "age": 17,
   "attrs": null,
   "best_pos": "RW",
+  "card_image_url": null,
   "club": "Paris Saint-Germain",
   "def": 28,
   "dri": 78,
@@ -3777,13 +4056,15 @@
   "sofifa_id": 74449,
   "sofifa_name": "I. Mbaye",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€8.5M"
+  "value_eur": "€8.5M",
+  "weight_kg": null
  },
  "이강인": {
   "accelerate": null,
   "age": 24,
   "attrs": null,
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Paris Saint-Germain",
   "def": 52,
   "dri": 83,
@@ -3804,13 +4085,15 @@
   "sofifa_id": 243780,
   "sofifa_name": "Lee Kang In",
   "source": "sofifa 키워드 검색 FC26 roster 2026-07-23 (roster id 260046) — https://sofifa.com/players?keyword=<name>&showCol[]=… (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€29M"
+  "value_eur": "€29M",
+  "weight_kg": null
  },
  "일링주니어": {
   "accelerate": null,
   "age": 21,
   "attrs": null,
   "best_pos": "LM",
+  "card_image_url": null,
   "club": "Pisa (임대)",
   "def": 56,
   "dri": 75,
@@ -3831,13 +4114,15 @@
   "sofifa_id": 272379,
   "sofifa_name": "S. Iling-Junior",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€5.5M"
+  "value_eur": "€5.5M",
+  "weight_kg": null
  },
  "자케": {
   "accelerate": null,
   "age": 19,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Stade Rennais",
   "def": 75,
   "dri": 62,
@@ -3858,13 +4143,15 @@
   "sofifa_id": 278903,
   "sofifa_name": "J. Jacquet",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€15M"
+  "value_eur": "€15M",
+  "weight_kg": null
  },
  "잭슨": {
   "accelerate": "Controlled Lengthy",
   "age": 24,
   "attrs": "{\"크로스\": 62, \"결정력\": 81, \"헤딩 정확도\": 76, \"짧은 패스\": 77, \"발리 슛\": 76, \"드리블\": 81, \"커브\": 72, \"프리킥 정확도\": 50, \"긴 패스\": 62, \"볼컨트롤\": 79, \"가속\": 81, \"질주 속도\": 83, \"민첩성\": 72, \"반응력\": 79, \"균형 감각\": 71, \"슈팅력\": 79, \"점프\": 89, \"체력\": 81, \"힘\": 77, \"중거리슛\": 70, \"공격성\": 72, \"차단력\": 40, \"공격 위치 선정\": 83, \"시야\": 73, \"페널티킥\": 60, \"침착\": 77, \"방어인식\": 30, \"스탠딩 태클\": 40, \"슬라이딩 태클\": 30, \"GK 몸 날리기\": 12, \"GK 핸들링\": 7, \"GK 킥력\": 12, \"GK 위치 선정\": 7, \"GK 반사신경\": 7}",
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "FC Bayern München (대출)",
   "def": 40,
   "dri": 79,
@@ -3885,13 +4172,15 @@
   "sofifa_id": 259197,
   "sofifa_name": "N. Jackson",
   "source": "https://sofifa.com/player/259197/nicolas-jackson/260046/",
-  "value_eur": "€24.5M"
+  "value_eur": "€24.5M",
+  "weight_kg": null
  },
  "주앙 페드루": {
   "accelerate": null,
   "age": 23,
   "attrs": null,
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 38,
   "dri": 83,
@@ -3912,13 +4201,15 @@
   "sofifa_id": 252042,
   "sofifa_name": "João Pedro",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€44M"
+  "value_eur": "€44M",
+  "weight_kg": null
  },
  "줄리아노 시메오네": {
   "accelerate": "Controlled",
   "age": 22,
   "attrs": "{\"가속\": 92, \"질주 속도\": 91, \"공격 위치 선정\": 78, \"결정력\": 76, \"슈팅력\": 76, \"중거리슛\": 66, \"발리 슛\": 62, \"페널티킥\": 62, \"시야\": 76, \"크로스\": 76, \"프리킥 정확도\": 46, \"짧은 패스\": 77, \"긴 패스\": 66, \"커브\": 56, \"민첩성\": 85, \"균형 감각\": 83, \"반응력\": 79, \"볼컨트롤\": 78, \"드리블\": 82, \"침착\": 77, \"차단력\": 44, \"헤딩 정확도\": 69, \"수비 위치 선정\": 42, \"스탠딩 태클\": 43, \"슬라이딩 태클\": 39, \"점프\": 87, \"체력\": 84, \"힘\": 79, \"공격성\": 81}",
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 56,
   "dri": 82,
@@ -3939,13 +4230,15 @@
   "sofifa_id": 253396,
   "sofifa_name": "Giuliano",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€44.5M"
+  "value_eur": "€44.5M",
+  "weight_kg": null
  },
  "지르크지": {
   "accelerate": "Lengthy",
   "age": 25,
   "attrs": "{\"가속\": 74, \"질주 속도\": 68, \"공격 위치 선정\": 78, \"결정력\": 77, \"슈팅력\": 76, \"중거리슛\": 75, \"발리 슛\": 75, \"페널티킥\": 77, \"시야\": 79, \"크로스\": 58, \"프리킥 정확도\": 66, \"짧은 패스\": 78, \"긴 패스\": 72, \"커브\": 68, \"민첩성\": 76, \"균형 감각\": 61, \"반응력\": 74, \"볼컨트롤\": 85, \"드리블\": 85, \"침착\": 79, \"차단력\": 40, \"헤딩 정확도\": 71, \"수비 위치 선정\": 40, \"스탠딩 태클\": 36, \"슬라이딩 태클\": 35, \"점프\": 86, \"체력\": 69, \"힘\": 84, \"공격성\": 60}",
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Manchester United",
   "def": 42,
   "dri": 82,
@@ -3966,13 +4259,15 @@
   "sofifa_id": 250961,
   "sofifa_name": "J. Zirkzee",
   "source": "sofifa.com/players?keyword=<name> (검색 컬럼 스크레이프 · 로스터 2026-07-23 · 인앱 브라우저 경유) · fut.gg /players/rating-predictions/clubs/{11-man-utd|69-as-monaco} (FC27 확정, 2026-08-23 수집)",
-  "value_eur": "€16M"
+  "value_eur": "€16M",
+  "weight_kg": null
  },
  "지모-알로바": {
   "accelerate": null,
   "age": 18,
   "attrs": "{\"크로스\": 57, \"결정력\": 62, \"헤딩 정확도\": 46, \"짧은 패스\": 63, \"발리 슛\": 46, \"드리블\": 66, \"커브\": 56, \"프리킥 정확도\": 44, \"긴 패스\": 60, \"볼컨트롤\": 65, \"가속\": 84, \"질주 속도\": 82, \"민첩성\": 77, \"반응력\": 59, \"균형 감각\": 74, \"슈팅력\": 63, \"점프\": 68, \"체력\": 55, \"힘\": 64, \"중거리슛\": 58, \"공격성\": 43, \"차단력\": 40, \"공격 위치 선정\": 60, \"시야\": 63, \"페널티킥\": 45, \"침착\": 64, \"방어인식\": 39, \"스탠딩 태클\": 41, \"슬라이딩 태클\": 32, \"GK 다이빙\": 15, \"GK 핸들링\": 14, \"GK 킥력\": 6, \"GK 위치 선정\": 8, \"GK 반사신경\": 11}",
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "West Bromwich Albion (loan, Aston Villa 소속)",
   "def": 39,
   "dri": 66,
@@ -3993,13 +4288,15 @@
   "sofifa_id": 76255,
   "sofifa_name": "J. Jimoh-Aloba",
   "source": "https://sofifa.com/player/76255/",
-  "value_eur": "€1.7M"
+  "value_eur": "€1.7M",
+  "weight_kg": null
  },
  "차바리아": {
   "accelerate": null,
   "age": 27,
   "attrs": null,
   "best_pos": "LB",
+  "card_image_url": null,
   "club": "Rayo Vallecano",
   "def": 74,
   "dri": 74,
@@ -4020,13 +4317,15 @@
   "sofifa_id": 258371,
   "sofifa_name": "Pep Chavarría",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€13.5M"
+  "value_eur": "€13.5M",
+  "weight_kg": null
  },
  "카르도소": {
   "accelerate": null,
   "age": 23,
   "attrs": null,
   "best_pos": "CDM",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 79,
   "dri": 77,
@@ -4047,13 +4346,15 @@
   "sofifa_id": 259516,
   "sofifa_name": "Johnny Cardoso",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€27.5M"
+  "value_eur": "€27.5M",
+  "weight_kg": null
  },
  "카를로스 마르틴": {
   "accelerate": null,
   "age": 23,
   "attrs": null,
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Rayo Vallecano (임대)",
   "def": 39,
   "dri": 70,
@@ -4074,13 +4375,15 @@
   "sofifa_id": 265396,
   "sofifa_name": "Carlos Martín",
   "source": "sofifa 키워드 검색 FC26 roster 2026-07-23 (roster id 260046) — https://sofifa.com/players?keyword=<name>&showCol[]=… (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€3.2M"
+  "value_eur": "€3.2M",
+  "weight_kg": null
  },
  "카마라": {
   "accelerate": "Controlled",
   "age": 25,
   "attrs": "{\"가속\": 62, \"질주 속도\": 65, \"공격 위치 선정\": 62, \"결정력\": 47, \"슈팅력\": 67, \"중거리슛\": 63, \"발리 슛\": 28, \"페널티킥\": 63, \"시야\": 75, \"크로스\": 64, \"프리킥 정확도\": 47, \"짧은 패스\": 84, \"긴 패스\": 77, \"커브\": 59, \"민첩성\": 66, \"균형 감각\": 72, \"반응력\": 81, \"볼컨트롤\": 80, \"드리블\": 73, \"침착\": 85, \"차단력\": 85, \"헤딩 정확도\": 72, \"수비 위치 선정\": 84, \"스탠딩 태클\": 86, \"슬라이딩 태클\": 80, \"점프\": 78, \"체력\": 81, \"힘\": 79, \"공격성\": 80}",
   "best_pos": "CDM",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 83,
   "dri": 79,
@@ -4101,13 +4404,15 @@
   "sofifa_id": 236987,
   "sofifa_name": "B. Kamara",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€47.5M"
+  "value_eur": "€47.5M",
+  "weight_kg": null
  },
  "카마라(모나코)": {
   "accelerate": null,
   "age": 21,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "AS Monaco",
   "def": 71,
   "dri": 79,
@@ -4128,13 +4433,15 @@
   "sofifa_id": 275138,
   "sofifa_name": "L. Camara",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€28M"
+  "value_eur": "€28M",
+  "weight_kg": null
  },
  "캐시": {
   "accelerate": "Controlled",
   "age": 27,
   "attrs": "{\"가속\": 74, \"질주 속도\": 75, \"공격 위치 선정\": 71, \"결정력\": 66, \"슈팅력\": 77, \"중거리슛\": 64, \"발리 슛\": 55, \"페널티킥\": 44, \"시야\": 66, \"크로스\": 77, \"프리킥 정확도\": 48, \"짧은 패스\": 74, \"긴 패스\": 71, \"커브\": 70, \"민첩성\": 73, \"균형 감각\": 67, \"반응력\": 79, \"볼컨트롤\": 76, \"드리블\": 75, \"침착\": 72, \"차단력\": 76, \"헤딩 정확도\": 49, \"수비 위치 선정\": 77, \"스탠딩 태클\": 80, \"슬라이딩 태클\": 80, \"점프\": 67, \"체력\": 86, \"힘\": 68, \"공격성\": 84}",
   "best_pos": "RB",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 78,
   "dri": 76,
@@ -4155,13 +4462,15 @@
   "sofifa_id": 227174,
   "sofifa_name": "M. Cash",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€25M"
+  "value_eur": "€25M",
+  "weight_kg": null
  },
  "커티스 존스": {
   "accelerate": null,
   "age": 24,
   "attrs": null,
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 72,
   "dri": 82,
@@ -4182,13 +4491,15 @@
   "sofifa_id": 242434,
   "sofifa_name": "C. Jones",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€28.5M"
+  "value_eur": "€28.5M",
+  "weight_kg": null
  },
  "케르케즈": {
   "accelerate": "Controlled",
   "age": 21,
   "attrs": "{\"가속\": 88, \"질주 속도\": 87, \"공격 위치 선정\": 76, \"결정력\": 53, \"슈팅력\": 80, \"중거리슛\": 53, \"발리 슛\": 53, \"페널티킥\": 50, \"시야\": 76, \"크로스\": 81, \"프리킥 정확도\": 52, \"짧은 패스\": 77, \"긴 패스\": 68, \"커브\": 77, \"민첩성\": 83, \"균형 감각\": 84, \"반응력\": 78, \"볼컨트롤\": 77, \"드리블\": 77, \"침착\": 76, \"차단력\": 78, \"헤딩 정확도\": 60, \"수비 위치 선정\": 78, \"스탠딩 태클\": 80, \"슬라이딩 태클\": 83, \"점프\": 74, \"체력\": 90, \"힘\": 75, \"공격성\": 83}",
   "best_pos": "LWB",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 76,
   "dri": 78,
@@ -4209,13 +4520,15 @@
   "sofifa_id": 260908,
   "sofifa_name": "M. Kerkez",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€35M"
+  "value_eur": "€35M",
+  "weight_kg": null
  },
  "케이타": {
   "accelerate": null,
   "age": 23,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "Parma",
   "def": 71,
   "dri": 75,
@@ -4236,13 +4549,15 @@
   "sofifa_id": 261539,
   "sofifa_name": "M. Keita",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€4.4M"
+  "value_eur": "€4.4M",
+  "weight_kg": null
  },
  "코나테": {
   "accelerate": null,
   "age": 26,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 84,
   "dri": 69,
@@ -4263,13 +4578,15 @@
   "sofifa_id": 237678,
   "sofifa_name": "I. Konaté",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€43.5M"
+  "value_eur": "€43.5M",
+  "weight_kg": null
  },
  "코네": {
   "accelerate": null,
   "age": 24,
   "attrs": null,
   "best_pos": null,
+  "card_image_url": null,
   "club": "Roma",
   "def": 76,
   "dri": 82,
@@ -4290,13 +4607,15 @@
   "sofifa_id": 250723,
   "sofifa_name": "K. Koné",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€30M"
+  "value_eur": "€30M",
+  "weight_kg": null
  },
  "코케": {
   "accelerate": "Controlled",
   "age": 33,
   "attrs": "{\"가속\": 62, \"질주 속도\": 60, \"공격 위치 선정\": 76, \"결정력\": 69, \"슈팅력\": 82, \"중거리슛\": 75, \"발리 슛\": 57, \"페널티킥\": 67, \"시야\": 83, \"크로스\": 85, \"프리킥 정확도\": 77, \"짧은 패스\": 83, \"긴 패스\": 81, \"커브\": 84, \"민첩성\": 68, \"균형 감각\": 81, \"반응력\": 80, \"볼컨트롤\": 81, \"드리블\": 77, \"침착\": 84, \"차단력\": 80, \"헤딩 정확도\": 61, \"수비 위치 선정\": 78, \"스탠딩 태클\": 79, \"슬라이딩 태클\": 70, \"점프\": 72, \"체력\": 83, \"힘\": 75, \"공격성\": 78}",
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 76,
   "dri": 77,
@@ -4317,13 +4636,15 @@
   "sofifa_id": 193747,
   "sofifa_name": "Koke",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€16M"
+  "value_eur": "€16M",
+  "weight_kg": null
  },
  "콘사": {
   "accelerate": "Controlled",
   "age": 27,
   "attrs": "{\"가속\": 72, \"질주 속도\": 78, \"공격 위치 선정\": 50, \"결정력\": 55, \"슈팅력\": 69, \"중거리슛\": 32, \"발리 슛\": 69, \"페널티킥\": 38, \"시야\": 75, \"크로스\": 65, \"프리킥 정확도\": 38, \"짧은 패스\": 78, \"긴 패스\": 72, \"커브\": 64, \"민첩성\": 67, \"균형 감각\": 68, \"반응력\": 84, \"볼컨트롤\": 78, \"드리블\": 73, \"침착\": 81, \"차단력\": 83, \"헤딩 정확도\": 80, \"수비 위치 선정\": 85, \"스탠딩 태클\": 85, \"슬라이딩 태클\": 80, \"점프\": 86, \"체력\": 79, \"힘\": 78, \"공격성\": 76}",
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 85,
   "dri": 75,
@@ -4344,13 +4665,15 @@
   "sofifa_id": 227678,
   "sofifa_name": "E. Konsa",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€42.5M"
+  "value_eur": "€42.5M",
+  "weight_kg": null
  },
  "콜 파머": {
   "accelerate": null,
   "age": 23,
   "attrs": null,
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 50,
   "dri": 86,
@@ -4371,13 +4694,15 @@
   "sofifa_id": 257534,
   "sofifa_name": "C. Palmer",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€93M"
+  "value_eur": "€93M",
+  "weight_kg": null
  },
  "쿠티 로메로": {
   "accelerate": null,
   "age": 27,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Tottenham Hotspur",
   "def": 83,
   "dri": 65,
@@ -4398,13 +4723,15 @@
   "sofifa_id": 232488,
   "sofifa_name": "C. Romero",
   "source": "sofifa 키워드 검색 FC26 roster 2026-07-23 (roster id 260046) — https://sofifa.com/players?keyword=<name>&showCol[]=… (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€32.5M"
+  "value_eur": "€32.5M",
+  "weight_kg": null
  },
  "퀜다": {
   "accelerate": null,
   "age": 18,
   "attrs": null,
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Sporting CP",
   "def": 41,
   "dri": 79,
@@ -4425,13 +4752,15 @@
   "sofifa_id": 279044,
   "sofifa_name": "Geovany Quenda",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€17.5M"
+  "value_eur": "€17.5M",
+  "weight_kg": null
  },
  "퀴뇨네스": {
   "accelerate": null,
   "age": 28,
   "attrs": "{\"크로스\": 58, \"결정력\": 83, \"헤딩 정확도\": 80, \"짧은 패스\": 74, \"발리 슛\": 71, \"드리블\": 82, \"커브\": 53, \"프리킥 정확도\": 66, \"긴 패스\": 69, \"볼컨트롤\": 78, \"가속\": 89, \"질주 속도\": 88, \"민첩성\": 82, \"반응력\": 78, \"균형 감각\": 68, \"슈팅력\": 80, \"점프\": 95, \"체력\": 87, \"힘\": 89, \"중거리슛\": 71, \"공격성\": 60, \"차단력\": 21, \"공격 위치 선정\": 82, \"시야\": 81, \"페널티킥\": 78, \"침착\": 67, \"방어인식\": 25, \"스탠딩 태클\": 46, \"슬라이딩 태클\": 28, \"GK 몸 날리기\": 8, \"GK 핸들링\": 12, \"GK 킥력\": 11, \"GK 위치 선정\": 8, \"GK 반사신경\": 12}",
   "best_pos": null,
+  "card_image_url": null,
   "club": "Al Qadsiah FC",
   "def": 36,
   "dri": 79,
@@ -4452,13 +4781,15 @@
   "sofifa_id": 234579,
   "sofifa_name": "J. Quiñones",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€26.5M"
+  "value_eur": "€26.5M",
+  "weight_kg": null
  },
  "키에사": {
   "accelerate": null,
   "age": 27,
   "attrs": null,
   "best_pos": "RW",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 44,
   "dri": 83,
@@ -4479,13 +4810,15 @@
   "sofifa_id": 235805,
   "sofifa_name": "F. Chiesa",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€22.5M"
+  "value_eur": "€22.5M",
+  "weight_kg": null
  },
  "타미 아브라함": {
   "accelerate": null,
   "age": 27,
   "attrs": null,
   "best_pos": "ST",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 36,
   "dri": 74,
@@ -4506,13 +4839,15 @@
   "sofifa_id": 231352,
   "sofifa_name": "T. Abraham",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€11.5M"
+  "value_eur": "€11.5M",
+  "weight_kg": null
  },
  "태버니어": {
   "accelerate": null,
   "age": 26,
   "attrs": "{\"크로스\": 77, \"결정력\": 73, \"헤딩 정확도\": 50, \"짧은 패스\": 74, \"발리 슛\": 62, \"드리블\": 80, \"커브\": 80, \"프리킥 정확도\": 70, \"긴 패스\": 70, \"볼컨트롤\": 77, \"가속\": 83, \"질주 속도\": 82, \"민첩성\": 78, \"반응력\": 77, \"균형 감각\": 79, \"슈팅력\": 86, \"점프\": 70, \"체력\": 79, \"힘\": 62, \"중거리슛\": 75, \"공격성\": 60, \"차단력\": 59, \"공격 위치 선정\": 72, \"시야\": 78, \"페널티킥\": 74, \"침착\": 76, \"방어인식\": 59, \"스탠딩 태클\": 66, \"슬라이딩 태클\": 57, \"GK 몸 날리기\": 9, \"GK 핸들링\": 14, \"GK 킥력\": 6, \"GK 위치 선정\": 12, \"GK 반사신경\": 8}",
   "best_pos": "LM",
+  "card_image_url": null,
   "club": "AFC Bournemouth",
   "def": 60,
   "dri": 79,
@@ -4533,13 +4868,15 @@
   "sofifa_id": 237477,
   "sofifa_name": "M. Tavernier",
   "source": "https://sofifa.com/player/237477/",
-  "value_eur": "€15.5M"
+  "value_eur": "€15.5M",
+  "weight_kg": null
  },
  "토신": {
   "accelerate": "Lengthy",
   "age": 27,
   "attrs": "{\"가속\": 63, \"질주 속도\": 76, \"공격 위치 선정\": 35, \"결정력\": 40, \"슈팅력\": 60, \"중거리슛\": 54, \"발리 슛\": 30, \"페널티킥\": 37, \"시야\": 60, \"크로스\": 43, \"프리킥 정확도\": 33, \"짧은 패스\": 77, \"긴 패스\": 73, \"커브\": 53, \"민첩성\": 42, \"균형 감각\": 35, \"반응력\": 76, \"볼컨트롤\": 75, \"드리블\": 62, \"침착\": 77, \"차단력\": 77, \"헤딩 정확도\": 76, \"수비 위치 선정\": 78, \"스탠딩 태클\": 80, \"슬라이딩 태클\": 77, \"점프\": 84, \"체력\": 68, \"힘\": 84, \"공격성\": 78}",
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Chelsea FC 2024~2028",
   "def": 78,
   "dri": 64,
@@ -4560,13 +4897,15 @@
   "sofifa_id": 222104,
   "sofifa_name": "T. Adarabioyo",
   "source": "sofifa 검색 페이지 FC26 roster 2026-07-23 (roster id 260046) — https://sofifa.com/players?keyword=<name>&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€14M"
+  "value_eur": "€14M",
+  "weight_kg": null
  },
  "톰모리": {
   "accelerate": null,
   "age": 27,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "AC Milan 2021~2027",
   "def": 82,
   "dri": 68,
@@ -4587,13 +4926,15 @@
   "sofifa_id": 232756,
   "sofifa_name": "F. Tomori",
   "source": "sofifa 검색 페이지 FC26 roster 2026-07-23 (roster id 260046) — https://sofifa.com/players?keyword=<name>&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€27.5M"
+  "value_eur": "€27.5M",
+  "weight_kg": null
  },
  "트래포드": {
   "accelerate": null,
   "age": 22,
   "attrs": "{\"크로스\": 17, \"결정력\": 8, \"헤딩 정확도\": 15, \"짧은 패스\": 56, \"발리 슛\": 9, \"드리블\": 23, \"커브\": 23, \"프리킥 정확도\": 12, \"긴 패스\": 53, \"볼컨트롤\": 33, \"가속\": 54, \"질주 속도\": 52, \"민첩성\": 52, \"반응력\": 75, \"균형 감각\": 51, \"슈팅력\": 57, \"점프\": 64, \"체력\": 40, \"힘\": 55, \"중거리슛\": 9, \"공격성\": 28, \"차단력\": 20, \"공격 위치 선정\": 14, \"시야\": 60, \"페널티킥\": 16, \"침착\": 64, \"방어인식\": 21, \"스탠딩 태클\": 16, \"슬라이딩 태클\": 19, \"GK 몸 날리기\": 77, \"GK 핸들링\": 75, \"GK 킥력\": 76, \"GK 위치 선정\": 75, \"GK 반사신경\": 78}",
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "Manchester City",
   "def": 53,
   "dri": 78,
@@ -4614,13 +4955,15 @@
   "sofifa_id": 263063,
   "sofifa_name": "J. Trafford",
   "source": "https://sofifa.com/player/263063/",
-  "value_eur": "€18.5M"
+  "value_eur": "€18.5M",
+  "weight_kg": null
  },
  "트레보 찰로바": {
   "accelerate": null,
   "age": 25,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 81,
   "dri": 70,
@@ -4641,13 +4984,15 @@
   "sofifa_id": 230918,
   "sofifa_name": "T. Chalobah",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€23.5M"
+  "value_eur": "€23.5M",
+  "weight_kg": null
  },
  "트로사르": {
   "accelerate": null,
   "age": 30,
   "attrs": "{\"크로스\": 79, \"결정력\": 83, \"헤딩 정확도\": 65, \"짧은 패스\": 82, \"발리 슛\": 80, \"드리블\": 84, \"커브\": 83, \"프리킥 정확도\": 69, \"긴 패스\": 77, \"볼컨트롤\": 84, \"가속\": 87, \"질주 속도\": 75, \"민첩성\": 92, \"반응력\": 82, \"균형 감각\": 85, \"슈팅력\": 83, \"점프\": 74, \"체력\": 76, \"힘\": 55, \"중거리슛\": 78, \"공격성\": 47, \"차단력\": 18, \"공격 위치 선정\": 83, \"시야\": 81, \"페널티킥\": 75, \"침착\": 84, \"방어인식\": 30, \"스탠딩 태클\": 31, \"슬라이딩 태클\": 18, \"GK 다이빙\": 14, \"GK 핸들링\": 8, \"GK 킥력\": 11, \"GK 위치 선정\": 7, \"GK 반사신경\": 7}",
   "best_pos": "LW",
+  "card_image_url": null,
   "club": "Arsenal",
   "def": 30,
   "dri": 85,
@@ -4668,13 +5013,15 @@
   "sofifa_id": 207421,
   "sofifa_name": "L. Trossard",
   "source": "https://sofifa.com/player/207421/",
-  "value_eur": "€35M"
+  "value_eur": "€35M",
+  "weight_kg": null
  },
  "트루빈": {
   "accelerate": null,
   "age": 23,
   "attrs": "{\"크로스\": 11, \"결정력\": 9, \"헤딩 정확도\": 40, \"짧은 패스\": 37, \"발리 슛\": 6, \"드리블\": 13, \"커브\": 13, \"프리킥 정확도\": 13, \"긴 패스\": 32, \"볼컨트롤\": 29, \"가속\": 49, \"질주 속도\": 38, \"민첩성\": 36, \"반응력\": 76, \"균형 감각\": 45, \"슈팅력\": 58, \"점프\": 76, \"체력\": 33, \"힘\": 69, \"중거리슛\": 8, \"공격성\": 28, \"차단력\": 9, \"공격 위치 선정\": 21, \"시야\": 64, \"페널티킥\": 18, \"침착\": 50, \"방어인식\": 9, \"스탠딩 태클\": 11, \"슬라이딩 태클\": 11, \"GK 몸 날리기\": 77, \"GK 핸들링\": 76, \"GK 킥력\": 77, \"GK 위치 선정\": 83, \"GK 반사신경\": 84}",
   "best_pos": "GK",
+  "card_image_url": null,
   "club": "SL Benfica",
   "def": 45,
   "dri": 84,
@@ -4695,13 +5042,15 @@
   "sofifa_id": 250753,
   "sofifa_name": "A. Trubin",
   "source": "https://sofifa.com/player/250753/",
-  "value_eur": "€36M"
+  "value_eur": "€36M",
+  "weight_kg": null
  },
  "틸레만스": {
   "accelerate": "Controlled",
   "age": 28,
   "attrs": "{\"가속\": 51, \"질주 속도\": 57, \"공격 위치 선정\": 77, \"결정력\": 77, \"슈팅력\": 85, \"중거리슛\": 76, \"발리 슛\": 83, \"페널티킥\": 75, \"시야\": 87, \"크로스\": 80, \"프리킥 정확도\": 78, \"짧은 패스\": 87, \"긴 패스\": 88, \"커브\": 84, \"민첩성\": 62, \"균형 감각\": 77, \"반응력\": 85, \"볼컨트롤\": 86, \"드리블\": 79, \"침착\": 88, \"차단력\": 75, \"헤딩 정확도\": 70, \"수비 위치 선정\": 74, \"스탠딩 태클\": 77, \"슬라이딩 태클\": 80, \"점프\": 68, \"체력\": 87, \"힘\": 69, \"공격성\": 64}",
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 75,
   "dri": 80,
@@ -4722,13 +5071,15 @@
   "sofifa_id": 216393,
   "sofifa_name": "Y. Tielemans",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€54M"
+  "value_eur": "€54M",
+  "weight_kg": null
  },
  "파우 토레스": {
   "accelerate": "Lengthy",
   "age": 28,
   "attrs": "{\"가속\": 66, \"질주 속도\": 67, \"공격 위치 선정\": 66, \"결정력\": 31, \"슈팅력\": 58, \"중거리슛\": 40, \"발리 슛\": 41, \"페널티킥\": 42, \"시야\": 77, \"크로스\": 64, \"프리킥 정확도\": 54, \"짧은 패스\": 81, \"긴 패스\": 80, \"커브\": 74, \"민첩성\": 56, \"균형 감각\": 52, \"반응력\": 80, \"볼컨트롤\": 79, \"드리블\": 64, \"침착\": 82, \"차단력\": 81, \"헤딩 정확도\": 85, \"수비 위치 선정\": 83, \"스탠딩 태클\": 82, \"슬라이딩 태클\": 81, \"점프\": 84, \"체력\": 71, \"힘\": 73, \"공격성\": 73}",
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 82,
   "dri": 69,
@@ -4749,13 +5100,15 @@
   "sofifa_id": 241464,
   "sofifa_name": "Pau Torres",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€18M"
+  "value_eur": "€18M",
+  "weight_kg": null
  },
  "판 다이크": {
   "accelerate": null,
   "age": 33,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 89,
   "dri": 71,
@@ -4776,13 +5129,15 @@
   "sofifa_id": 203376,
   "sofifa_name": "V. van Dijk",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€43.5M"
+  "value_eur": "€43.5M",
+  "weight_kg": null
  },
  "팔레스트라": {
   "accelerate": null,
   "age": 20,
   "attrs": null,
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "Cagliari (임대)",
   "def": 67,
   "dri": 78,
@@ -4803,13 +5158,15 @@
   "sofifa_id": 278339,
   "sofifa_name": "M. Palestra",
   "source": "sofifa.com FC26 roster 2026-07-23 (실제 Chrome 페이지 컨텍스트 fetch — showCol로 pi·ae·oa·pt·pac·sho·pas·dri·def·phy·hi·pf·bp·vl 컬럼 추가) https://sofifa.com/players?keyword=<성씨>",
-  "value_eur": "€12M"
+  "value_eur": "€12M",
+  "weight_kg": null
  },
  "팔리냐": {
   "accelerate": "Controlled Lengthy",
   "age": 29,
   "attrs": "{\"크로스\": 60, \"결정력\": 66, \"헤딩 정확도\": 81, \"짧은 패스\": 77, \"발리 슛\": 55, \"드리블\": 75, \"커브\": 66, \"프리킥 정확도\": 45, \"긴 패스\": 77, \"볼컨트롤\": 76, \"가속\": 51, \"질주 속도\": 53, \"민첩성\": 49, \"반응력\": 79, \"균형 감각\": 47, \"슈팅력\": 81, \"점프\": 82, \"체력\": 77, \"힘\": 84, \"중거리슛\": 67, \"공격성\": 91, \"차단력\": 84, \"공격 위치 선정\": 69, \"시야\": 71, \"페널티킥\": 57, \"침착\": 84, \"방어인식\": 81, \"스탠딩 태클\": 85, \"슬라이딩 태클\": 85, \"GK 몸 날리기\": 14, \"GK 핸들링\": 10, \"GK 킥력\": 8, \"GK 위치 선정\": 7, \"GK 반사신경\": 7}",
   "best_pos": null,
+  "card_image_url": null,
   "club": "Tottenham(임대, 소유 Bayern)",
   "def": 83,
   "dri": 72,
@@ -4830,13 +5187,15 @@
   "sofifa_id": 229391,
   "sofifa_name": "Palhinha",
   "source": "https://sofifa.com/players 검색 컬럼 (FC26 roster 2026-07-16)",
-  "value_eur": "€26M"
+  "value_eur": "€26M",
+  "weight_kg": null
  },
  "페드루 네투": {
   "accelerate": null,
   "age": 25,
   "attrs": null,
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "Chelsea",
   "def": 40,
   "dri": 83,
@@ -4857,13 +5216,15 @@
   "sofifa_id": 238616,
   "sofifa_name": "Pedro Neto",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€36.5M"
+  "value_eur": "€36.5M",
+  "weight_kg": null
  },
  "페르난데스": {
   "accelerate": null,
   "age": 20,
   "attrs": "{\"크로스\": 77, \"결정력\": 69, \"헤딩 정확도\": 56, \"짧은 패스\": 80, \"발리 슛\": 75, \"드리블\": 80, \"커브\": 79, \"프리킥 정확도\": 70, \"긴 패스\": 79, \"볼컨트롤\": 79, \"가속\": 73, \"질주 속도\": 67, \"민첩성\": 84, \"반응력\": 79, \"균형 감각\": 81, \"슈팅력\": 79, \"점프\": 69, \"체력\": 83, \"힘\": 62, \"중거리슛\": 78, \"공격성\": 60, \"차단력\": 75, \"공격 위치 선정\": 75, \"시야\": 80, \"페널티킥\": 64, \"침착\": 78, \"방어인식\": 69, \"스탠딩 태클\": 77, \"슬라이딩 태클\": 74, \"GK 몸 날리기\": 6, \"GK 핸들링\": 5, \"GK 킥력\": 12, \"GK 위치 선정\": 8, \"GK 반사신경\": 5}",
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "West Ham United",
   "def": 72,
   "dri": 80,
@@ -4884,13 +5245,15 @@
   "sofifa_id": 270857,
   "sofifa_name": "Mateus Fernandes",
   "source": "https://sofifa.com/player/270857/",
-  "value_eur": "€27M"
+  "value_eur": "€27M",
+  "weight_kg": null
  },
  "페르난데스-파르도": {
   "accelerate": null,
   "age": 20,
   "attrs": "{\"크로스\": 69, \"결정력\": 71, \"헤딩 정확도\": 51, \"짧은 패스\": 73, \"발리 슛\": 62, \"드리블\": 79, \"커브\": 64, \"프리킥 정확도\": 60, \"긴 패스\": 60, \"볼컨트롤\": 77, \"가속\": 90, \"질주 속도\": 93, \"민첩성\": 81, \"반응력\": 73, \"균형 감각\": 76, \"슈팅력\": 83, \"점프\": 77, \"체력\": 74, \"힘\": 73, \"중거리슛\": 76, \"공격성\": 58, \"차단력\": 36, \"공격 위치 선정\": 70, \"시야\": 68, \"페널티킥\": 70, \"침착\": 76, \"방어인식\": 41, \"스탠딩 태클\": 36, \"슬라이딩 태클\": 32, \"GK 몸 날리기\": 14, \"GK 핸들링\": 9, \"GK 킥력\": 6, \"GK 위치 선정\": 13, \"GK 반사신경\": 8}",
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "Lille OSC",
   "def": 39,
   "dri": 78,
@@ -4911,13 +5274,15 @@
   "sofifa_id": 276048,
   "sofifa_name": "M. Fernandez-Pardo",
   "source": "https://sofifa.com/player/276048/",
-  "value_eur": "€16.5M"
+  "value_eur": "€16.5M",
+  "weight_kg": null
  },
  "푸빌": {
   "accelerate": null,
   "age": 22,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 80,
   "dri": 74,
@@ -4938,13 +5303,15 @@
   "sofifa_id": 266039,
   "sofifa_name": "Pubill",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€40M"
+  "value_eur": "€40M",
+  "weight_kg": null
  },
  "프림퐁": {
   "accelerate": null,
   "age": 24,
   "attrs": null,
   "best_pos": "RM",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 72,
   "dri": 84,
@@ -4965,13 +5332,15 @@
   "sofifa_id": 253149,
   "sofifa_name": "J. Frimpong",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€36.5M"
+  "value_eur": "€36.5M",
+  "weight_kg": null
  },
  "하우드-벨리스": {
   "accelerate": "Lengthy",
   "age": 23,
   "attrs": "{\"가속\": 64, \"질주 속도\": 66, \"공격 위치 선정\": 44, \"결정력\": 29, \"슈팅력\": 59, \"중거리슛\": 28, \"발리 슛\": 33, \"페널티킥\": 43, \"시야\": 62, \"크로스\": 41, \"프리킥 정확도\": 34, \"짧은 패스\": 75, \"긴 패스\": 77, \"커브\": 47, \"민첩성\": 60, \"균형 감각\": 64, \"반응력\": 73, \"볼컨트롤\": 70, \"드리블\": 63, \"침착\": 75, \"차단력\": 74, \"헤딩 정확도\": 76, \"수비 위치 선정\": 74, \"스탠딩 태클\": 74, \"슬라이딩 태클\": 73, \"점프\": 83, \"체력\": 74, \"힘\": 76, \"공격성\": 75}",
   "best_pos": "CDM",
+  "card_image_url": null,
   "club": "Southampton FC 2024~2028",
   "def": 74,
   "dri": 66,
@@ -4992,13 +5361,15 @@
   "sofifa_id": 252793,
   "sofifa_name": "T. Harwood-Bellis",
   "source": "sofifa 검색 페이지 FC26 roster 2026-07-23 (roster id 260046) — https://sofifa.com/players?keyword=<name>&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집) · fut.gg /players/252793-taylor-harwood-bellis/26-252793/",
-  "value_eur": "€8M"
+  "value_eur": "€8M",
+  "weight_kg": null
  },
  "하지 무사": {
   "accelerate": null,
   "age": 23,
   "attrs": "{\"크로스\": 69, \"결정력\": 72, \"헤딩 정확도\": 47, \"짧은 패스\": 69, \"발리 슛\": 61, \"드리블\": 86, \"커브\": 77, \"프리킥 정확도\": 63, \"긴 패스\": 60, \"볼컨트롤\": 82, \"가속\": 83, \"질주 속도\": 77, \"민첩성\": 92, \"반응력\": 69, \"균형 감각\": 80, \"슈팅력\": 68, \"점프\": 62, \"체력\": 71, \"힘\": 50, \"중거리슛\": 70, \"공격성\": 35, \"차단력\": 21, \"공격 위치 선정\": 72, \"시야\": 64, \"페널티킥\": 50, \"침착\": 64, \"방어인식\": 29, \"스탠딩 태클\": 29, \"슬라이딩 태클\": 36, \"GK 몸 날리기\": 7, \"GK 핸들링\": 5, \"GK 킥력\": 15, \"GK 위치 선정\": 12, \"GK 반사신경\": 6}",
   "best_pos": "RW",
+  "card_image_url": null,
   "club": "Feyenoord",
   "def": 30,
   "dri": 83,
@@ -5019,13 +5390,15 @@
   "sofifa_id": 70726,
   "sofifa_name": "A. Hadj-Moussa",
   "source": "https://sofifa.com/player/70726/",
-  "value_eur": "€12M"
+  "value_eur": "€12M",
+  "weight_kg": null
  },
  "학포": {
   "accelerate": null,
   "age": 26,
   "attrs": null,
   "best_pos": "LM",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 47,
   "dri": 83,
@@ -5046,13 +5419,15 @@
   "sofifa_id": 242516,
   "sofifa_name": "C. Gakpo",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€39.5M"
+  "value_eur": "€39.5M",
+  "weight_kg": null
  },
  "한츠코": {
   "accelerate": "Lengthy",
   "age": 27,
   "attrs": "{\"가속\": 76, \"질주 속도\": 77, \"공격 위치 선정\": 69, \"결정력\": 63, \"슈팅력\": 76, \"중거리슛\": 68, \"발리 슛\": 42, \"페널티킥\": 69, \"시야\": 68, \"크로스\": 66, \"프리킥 정확도\": 72, \"짧은 패스\": 80, \"긴 패스\": 76, \"커브\": 60, \"민첩성\": 73, \"균형 감각\": 55, \"반응력\": 84, \"볼컨트롤\": 78, \"드리블\": 73, \"침착\": 77, \"차단력\": 80, \"헤딩 정확도\": 82, \"수비 위치 선정\": 83, \"스탠딩 태클\": 82, \"슬라이딩 태클\": 83, \"점프\": 85, \"체력\": 74, \"힘\": 87, \"공격성\": 77}",
   "best_pos": "LB",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 83,
   "dri": 75,
@@ -5073,13 +5448,15 @@
   "sofifa_id": 247103,
   "sofifa_name": "D. Hancko",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€35M"
+  "value_eur": "€35M",
+  "weight_kg": null
  },
  "헤밍스": {
   "accelerate": null,
   "age": 18,
   "attrs": null,
   "best_pos": "CAM",
+  "card_image_url": null,
   "club": "Aston Villa",
   "def": 61,
   "dri": 67,
@@ -5100,13 +5477,15 @@
   "sofifa_id": 82350,
   "sofifa_name": "G. Hemmings",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€1.6M"
+  "value_eur": "€1.6M",
+  "weight_kg": null
  },
  "흐라벤베르흐": {
   "accelerate": null,
   "age": 23,
   "attrs": null,
   "best_pos": "CM",
+  "card_image_url": null,
   "club": "Liverpool",
   "def": 81,
   "dri": 86,
@@ -5127,13 +5506,15 @@
   "sofifa_id": 246104,
   "sofifa_name": "R. Gravenberch",
   "source": "https://sofifa.com/players?tm[]=<2|5|9>&showCol[]=… (FC26 roster 2026-07-23, 2026-08-19 메인 세션 브라우저 팀 필터 스크레이프). ⭐ 재수집 URL 규약: `tm[]`=팀id(AVL 2 · CHE 5 · LIV 9), `showCol[]`에 ae,oa,pt,bp,hi,pf,vl,wg,tt,ir + **pac,sho,pas,dri,def,phy** + 원능력치(cr,fi,he,sh,vo,cu,lo,bl,ac,sp,ag,ba,so,ju,st,sr,ln,in,po,pe,ma,sa,sl,vi,cm,re,dp) + GK(gd,gh,gc,gp,gr). 국적·풀네임·sofifa_id는 행 DOM에서 추출한다(img.flag[title] · a[data-tippy-content] · href /player/<id>/).",
-  "value_eur": "€84M"
+  "value_eur": "€84M",
+  "weight_kg": null
  },
  "히메네스": {
   "accelerate": null,
   "age": 30,
   "attrs": null,
   "best_pos": "CB",
+  "card_image_url": null,
   "club": "Atlético Madrid",
   "def": 84,
   "dri": 62,
@@ -5154,6 +5535,7 @@
   "sofifa_id": 216460,
   "sofifa_name": "J. Giménez",
   "source": "sofifa 팀 스크레이프 FC26 roster 2026-07-23 (team 240, roster id 260046) — https://sofifa.com/players?tm[]=240&showCol[]=pac,sho,pas,dri,def,phy,oa,pt,bp,hi,pf,vl,wg,ae (in-app 브라우저, 2026-08-21 수집)",
-  "value_eur": "€30M"
+  "value_eur": "€30M",
+  "weight_kg": null
  }
 }

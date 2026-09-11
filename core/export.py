@@ -75,7 +75,7 @@ def export_all(db_path=None, window="2026-summer"):
         #    **최신 행이 마지막에 와서 이기게** 고정한다 — 종전에는 어느 행이 이길지 비결정적이었다.
         #    `player_id`·`roster_date`·`source`는 화면이 id 우선 조인·시점·공식여부를 읽는 데 쓴다.
         gs = _rows(con, """SELECT name_kr, player_id, roster_date, sofifa_name, sofifa_id, club,
-                                  positions, best_pos, age, height_cm,
+                                  positions, best_pos, age, height_cm, weight_kg, card_image_url,
                                   value_eur, preferred_foot, accelerate,
                                   ovr, pot, pac, sho, pas, dri, def, phy, playstyles, role_familiarity, attrs,
                                   source

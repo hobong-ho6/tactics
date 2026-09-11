@@ -187,7 +187,9 @@ function hideTip(){ if (TIP) TIP.style.display = 'none'; }
 export function mountGlossaryTips(){
   if (document.body.dataset.glTips) return;
   document.body.dataset.glTips = '1';
-  const hit = e => e.target.closest?.('abbr.gl');
+  // ⚠️ '.gl'로 넓게 잡는다 — abbr.gl(용어 밑줄) 외에 다른 요소(예: PlayStyle 칩 div.gl)도
+  // 같은 위임 툴팁을 쓸 수 있게 하기 위함. 기존 abbr.gl 동작은 그대로 유지된다(부분집합).
+  const hit = e => e.target.closest?.('.gl');
   // ⚠️ 사파리(특히 macOS 트랙패드·매직마우스)는 mouse 포인터에서 pointerover/pointerout을
   // 안정적으로 쏘지 않는다(WebKit 다발 버그 리포트) — pointerover만 쓰면 사파리에서 툴팁이
   // 전혀 안 뜬다. mouseover/mouseout(구식이지만 전 브라우저 100% 지원)을 나란히 붙여

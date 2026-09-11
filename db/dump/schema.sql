@@ -186,7 +186,7 @@ CREATE TABLE player_game_stats(
   attrs TEXT, playstyles TEXT, traits TEXT,
   role_familiarity TEXT, role_detail TEXT,
   accelerate TEXT, body_type TEXT, preferred_foot TEXT,
-  detail_date TEXT, source TEXT, confidence TEXT, nationality TEXT, full_name TEXT,
+  detail_date TEXT, source TEXT, confidence TEXT, nationality TEXT, full_name TEXT, weight_kg INTEGER, card_image_url TEXT,
   UNIQUE(game_version, roster_date, name_kr)
 );
 CREATE TABLE game_system_changes(

@@ -4,9 +4,23 @@
 <link rel="stylesheet" href="assets/style.css"></head><body>
 <div id="hdr"></div>
 <h1>선수 분석 <small class="dim">실측 히트맵 · 경기 스탯 · 게임 스탯 · 영상 분석 파일럿</small></h1>
-<div class="panel"><label class="kv">그룹 <select id="grp"></select></label> <label class="kv">선수 <select id="who"></select></label> <span id="sf"></span> <span id="bio" class="dim"></span></div>
+<div class="panel"><label class="kv">그룹 <select id="grp"></select></label> <label class="kv">선수 <select id="who"></select></label> <span id="sf"></span></div>
+
+<div class="panel" id="playercard"></div>
+
+<div class="menubar">
+  <button class="mtab on" data-view="card">카드 · 종합평가</button>
+  <button class="mtab" data-view="match">경기 스탯</button>
+  <button class="mtab" data-view="game">게임 스탯</button>
+  <button class="mtab" data-view="analysis">영상 분석</button>
+</div>
+
+<section data-panel="card">
 <div class="panel" id="evalpanel" style="display:none"><h2>종합 평가 <small class="dim">— 실측·게임스탯·감독 전술축을 종합한 판단(산출: player_evaluations)</small></h2>
  <div id="evalbody"></div></div>
+</section>
+
+<section data-panel="match" style="display:none">
 <div id="gridwarn"></div>
 <div class="cardrow" id="grids"></div>
 <p class="dim" style="font-size:12px">그리드 읽는 법 — 위=공격 방향·왼쪽=좌측 터치라인. <b>measured</b>=주 포지션 전체 실측 ·
@@ -17,7 +31,7 @@
 <div class="kv" style="margin:8px 0 2px"><b>시즌 성적</b> <small class="dim">— 대회별 출전·득점·평점(실측 player_matches 집계)</small></div>
 <div id="season" class="scrollx"></div>
 <div class="kv" style="margin:14px 0 2px"><b>비교 기준</b>
-  <button class="tab on" data-tab="pool" id="poolTab">수집 풀 (SofaScore 실측)</button><button class="tab" data-tab="league">리그 전체 (FotMob/Opta)</button></div>
+  <button class="tab" data-tab="pool" id="poolTab">수집 풀 (SofaScore 실측)</button><button class="tab on" data-tab="league">리그 전체 (FotMob/Opta)</button></div>
 <div id="tabnote" class="dim" style="font-size:12px;margin-bottom:6px"></div>
 <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
    <div><div class="dim" style="font-size:12px;margin-bottom:2px">6축 백분위 <b>— SofaScore 실측 / 수집 풀 기준</b></div><div id="radar"></div></div><div style="flex:1;min-width:220px"><div id="pct" style="margin-top:4px"></div></div></div>
@@ -41,15 +55,23 @@
 <p class="dim" style="font-size:12px">탭으로 <b>모집단과 원천이 함께</b> 바뀐다 — <b>수집 풀</b>은 우리가 <b>SofaScore</b>로 직접 실측한
 <b>수집 대상 전 팀</b> 선수 안에서의 상대 위치, <b>리그 전체</b>는 <b>FotMob(Opta 원자료)</b>이 산출한 같은 포지션 리그 선수 대비 백분위다.
 두 축은 원천도 모집단도 달라 값이 직접 비교되지 않는다. ⚠️ 영입 후보는 우리 실측 풀에 없어 <b>FotMob 축만</b> 표시된다.</p></div>
+</section>
+
+<section data-panel="game" style="display:none">
 <div class="panel"><h2>게임 스탯 <small class="dim">— FC26 ↔ FC27 및 그 차이</small></h2><div id="gstat" class="kv"></div><p class="dim" style="font-size:12px;margin:8px 0 0">Δ는 <b>우리 DB의 FC26 최신 로스터</b>와 FC27을 직접 대조한 값이다. ⚠️ 매체가 표기하는 Δ와 다를 수 있다 — 그쪽은 FC26 <b>출시판</b> 기준이고 우리 FC26 행은 <b>시즌 말 라이브판</b>이라 부호가 뒤집힌다(obs#249). <b>예측</b> 배지가 붙은 값은 EA 미확정이라 공식 드롭 후 바뀐다.</p></div>
+</section>
+
+<section data-panel="analysis" style="display:none">
 <div class="panel"><h2>영상·스카우트 분석 (가설 → 실측 교차검증)</h2>
 <p class="dim">각 분석은 <b>분석 기준일·표본 범위</b>를 함께 표시한다. <b>레퍼런스 보기</b>를 펼치면 저장된 원문·내부 근거를 직접 확인할 수 있다. 기간을 복원할 수 없는 과거 기록은 임의 추정하지 않고 <b>기간 미기록</b>으로 표시한다.</p>
 <div id="duty"></div></div>
+</section>
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, slotCandidates, sofifaLink, isGkSlot, gkPosCell } from './assets/data.js?v=20260816-gk-avgpos';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
 import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260908-phase-glossary';
 import { prose } from './assets/prose.js';
+import { PLAYSTYLES } from './assets/playstyle-icons.js';
 const { team, idx } = await mountHeader('player.html');
 const [td, GS, GS27] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({}))]);
 /* 백분위·유사프로필 모집단 = 활성 regime 전체. ⛔ 팀 코드를 하드코딩하지 않는다 —
@@ -174,11 +196,18 @@ function pickRows(map, sel){
     if (k && map[k]) return map[k];
   return [];
 }
-let TAB = 'pool';   // 백분위 모집단: pool = 수집 대상 전 팀(POOL_CODES) / league = Fotmob 리그 전체
+let TAB = 'league';   // 백분위 모집단: pool = 수집 대상 전 팀(POOL_CODES) / league = Fotmob 리그 전체(기본값)
 document.querySelectorAll('button.tab').forEach(b=>b.addEventListener('click',()=>{
   TAB = b.dataset.tab;
   document.querySelectorAll('button.tab').forEach(x=>x.classList.toggle('on', x===b));
   render();
+}));
+/* 선수 메뉴 — 카드/경기 스탯/게임 스탯/영상 분석. button.tab(수집풀·리그)과 별개 축이라 클래스를 나눴다. */
+document.querySelectorAll('button.mtab').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('button.mtab').forEach(x=>x.classList.toggle('on', x===b));
+  document.querySelectorAll('section[data-panel]').forEach(s=>{
+    s.style.display = s.dataset.panel === b.dataset.view ? '' : 'none';
+  });
 }));
 const grp = document.getElementById('grp'), who = document.getElementById('who');
 grp.innerHTML = Object.keys(groups).map(g=>`<option>${g}</option>`).join('');
@@ -284,6 +313,58 @@ function renderFotmobEval(sel){
       <small class="dim">— 위 리그 백분위만 근거로 내린 판단(실측 히트맵·커널 적합과 독립)</small></div>
     ${prose(e.fotmob_eval)}</div>`;
 }
+/* fut.gg식 선수 카드 — OVR·포지션·6스탯·키/몸무게·주발·PlayStyles를 한 화면에.
+   FC27이 있으면 그걸 대표로 쓰고(가장 최신), 없으면 FC26으로 폴백한다.
+   age·가치는 FC27에 아직 없어(obs#249) FC26쪽(g0)에서 보충한다. */
+function renderCard(sel, g0, g26, g27, isGkRow){
+  const el = document.getElementById('playercard');
+  const gg = g27 ?? g26;
+  if (!gg){ el.innerHTML = '<span class="dim">게임 스탯 없음(FC26·FC27 로스터에 모두 없음)</span>'; return; }
+  const tier = v => v==null ? '' : v >= 75 ? 'var(--ok)' : v >= 60 ? 'var(--warn)' : 'var(--bad)';
+  const SIX = isGkRow
+    ? [['pac','DIV'],['sho','HAN'],['pas','KIC'],['dri','REF'],['def','SPD'],['phy','POS']]
+    : [['pac','PAC'],['sho','SHO'],['pas','PAS'],['dri','DRI'],['def','DEF'],['phy','PHY']];
+  const foot = { Left:'왼발', Right:'오른발' }[gg.preferred_foot ?? g0?.preferred_foot] ?? '—';
+  const styles = String(gg.playstyles ?? '').split(/[;,]/).map(s=>s.trim()).filter(Boolean);
+  const pschip = raw => {
+    const plus = raw.endsWith('+');
+    const name = plus ? raw.slice(0, -1) : raw;
+    const def = PLAYSTYLES[name];
+    const tip = def ? (plus ? def.plus : def.base) : '';
+    return `<div class="pschip gl${plus ? ' plus' : ''}" tabindex="0" data-tip="${esc(tip)}" title="${esc(tip)}">
+      ${def ? `<img src="${esc(def.icon)}" alt="">` : '<span class="pschip-noicon">?</span>'}
+      <span>${esc(name)}${plus ? '+' : ''}</span></div>`;
+  };
+  const chips = styles.length
+    ? styles.map(pschip).join('')
+    : '<span class="dim">보유 PlayStyle 없음</span>';
+  const img = gg.card_image_url
+    ? `<img src="${esc(gg.card_image_url)}" alt="${esc(sel.name)} ${g27 ? 'FC27' : 'FC26'} 카드" class="futcard-img" loading="lazy">`
+    : '';
+  el.innerHTML = `
+    <div class="pscard">
+      ${img}
+      <div class="gcard">
+        <div class="gc-ovr" style="color:${tier(gg.ovr)}">${gg.ovr ?? '—'}</div>
+        <div class="gc-pos">${esc(gg.best_pos ?? gg.positions ?? '')}</div>
+        <div class="gc-six">${SIX.map(([k,L]) => `<span><em>${L}</em>${gg[k] ?? '—'}</span>`).join('')}</div>
+        <div class="gc-ver dim">${g27 ? 'FC27' : 'FC26'}<br><small>${esc(gg.roster_date ?? '')}</small></div>
+      </div>
+      <div style="flex:1;min-width:240px">
+        <div class="kv bioline">
+          <span><b>나이</b>${g0?.age ?? '—'}세</span>
+          <span><b>키</b>${gg.height_cm ?? g0?.height_cm ?? '—'}cm</span>
+          <span><b>몸무게</b>${gg.weight_kg ?? '—'}kg</span>
+          <span><b>주발</b>${foot}</span>
+          <span><b>가치</b>${g0?.value_eur ?? '—'}</span>
+          <span><b>클럽</b>${esc(gg.club ?? g0?.club ?? '')}</span>
+        </div>
+        <div class="kv" style="margin-bottom:3px;font-size:12px"><b>PlayStyles</b>
+          <small class="dim">— ${g27 ? 'FC27 · fut.gg EA 공식' : 'FC26'}</small></div>
+        <div class="pschips">${chips}</div>
+      </div>
+    </div>`;
+}
 function render(){
   const sel = groups[grp.value][+who.value]; if (!sel) return;
   const n = sel.name;
@@ -295,7 +376,6 @@ function render(){
   const gsKey = [key, n, sel.tt?.short_label].find(k => k && GS[k]) ?? key;
   document.getElementById('sf').innerHTML = sofifaLink(gsKey, GS, sel.en);
   const g0 = GS[gsKey];
-  document.getElementById('bio').textContent = g0 ? ` ${g0.age}세 · ${g0.height_cm??'?'}cm · ${g0.preferred_foot==='Left'?'왼발':g0.preferred_foot==='Right'?'오른발':''} · 가치 ${g0.value_eur??'?'} · ${g0.club??''}` : '';
   if (sel.tt){   // 영입 추적 — transfer_targets 데이터로 렌더
     const t = sel.tt;
     document.getElementById('grids').innerHTML = t.map25
@@ -403,6 +483,7 @@ function render(){
   /* ⚠️ GK는 같은 6칸에 DIV/HAN/KIC/REF/SPD/POS가 들어간다(수집 규약) — 라벨을 바꿔야 한다.
      안 바꾸면 마르티네스의 SPD 하락이 「DEF −6」으로 표시돼 없는 의미를 읽게 된다. */
   const isGkRow = /(^|[^A-Z])GK([^A-Z]|$)/.test(`${g27?.best_pos ?? g?.best_pos ?? ''} ${g27?.positions ?? g?.positions ?? ''}`);
+  renderCard(sel, g0, g, g27, isGkRow);
   /* fut.gg와 같은 6그룹 구성. 그룹값은 6종합 스탯이고 멤버는 세부 속성이다. */
   const GROUPS = isGkRow
     ? [['DIVING','pac',['다이빙']],['HANDLING','sho',['핸들링']],['KICKING','pas',['킥']],
@@ -474,7 +555,7 @@ function render(){
             <span class="gv" style="color:${gv != null ? tier(gv) : ''}">${gv ?? '—'}</span>
             ${dBadge(gx, gy)}</header>${rows}</section>`;
       }).join('');
-      html += `<details style="margin-top:10px"><summary class="dim">📊 세부 속성 ${names.length}개 — 펼쳐서 FC26↔FC27 비교 ${
+      html += `<details open style="margin-top:10px"><summary class="dim">📊 세부 속성 ${names.length}개 — FC26↔FC27 비교 ${
           both.length ? `<small>(대조 가능 ${both.length}개 · 변동 <b>${moved}</b>개)</small>`
                       : '<small>(한쪽만 있어 대조 불가)</small>'}</summary>
         <div class="agrid">${cards}</div>
@@ -491,9 +572,11 @@ function render(){
   }
   document.getElementById('gstat').innerHTML = html;
   // ⭐ player_id 우선 — 라벨 조인은 표기 규약이 갈리면 조용히 0행이 된다(불변규칙 6).
-  const ds = sel.pid != null && td.duties.some(d=>d.player_id===sel.pid)
+  const ds = (sel.pid != null && td.duties.some(d=>d.player_id===sel.pid)
     ? td.duties.filter(d=>d.player_id===sel.pid)
-    : td.duties.filter(d=>d.label===key);
+    : td.duties.filter(d=>d.label===key))
+    // 최신 분석이 먼저 나오도록 정렬 — 기준일은 observed_to(없으면 observed_from). 둘 다 없으면 맨 뒤.
+    .slice().sort((a,b) => (b.observed_to||b.observed_from||'').localeCompare(a.observed_to||a.observed_from||''));
   // 산문 4칸을 표의 좁은 열에 넣으면 세로 국수가 된다 — 분석 1건 = 카드 1장으로 읽는다.
   // 순서는 근거의 사슬(주장 → 실측 → 판정 → 게임 함의)을 그대로 따른다.
   const section = (title, text, span) => text
