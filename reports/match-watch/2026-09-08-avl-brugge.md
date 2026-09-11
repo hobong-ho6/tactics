@@ -1069,3 +1069,120 @@ formation·pressing·situational·role_demands·buildup은 **중복 회피로 �
 ### D+1-12. 게이트
 
 `python3 scripts/gates.py` → **G1~G15(+G8+) 전항 통과**(2026-09-10).
+
+---
+
+## D+2 추적 (2026-09-11)
+
+### D+2-0. 이 회차의 최대 산출 — 한 줄로
+
+⭐⭐ **에메리 회견의 마지막 미해소 육성 확인이 닫혔다** — 「he's not the player with qualities to
+running behind but he tried」의 지칭 대상은 부엔디아도 잭슨도 아니라 **조지 헤밍스**였다(obs#609).
+⚠️ 그리고 D+1-11 ①번(「UTV 예고 전술 에피소드, 아직 미게시」)은 **이번 회차의 신규 발견이 아니라
+D+1 자신의 기록 누락이었다** — `cpIZf5nxK-4`(HOW NICOLAS JACKSON IS CHANGING ASTON VILLA'S ATTACK)는
+같은 날(D+1, 2026-09-09) 앞쪽 「§8-3 addendum」 절에서 **이미 전사·반영**(obs#567·#568,
+`player_duties`#199)됐는데, 뒤쪽 D+1 본문의 「D+1-11 다음 회차 이월」 목록을 쓸 때 자신의 addendum을
+빠뜨리고 그 영상을 "아직 미게시"로 다시 적었다. ⇒ **재수집 없이 이 항목을 닫는다** — 새 obs·전사
+추가 없음(중복 방지).
+
+### D+2-1. 영상 육성 확인 3건 — 최종 상태
+
+| # | 질문 | 상태 |
+|---|---|---|
+| ⑴ | 에메리 「not the player with qualities to running behind」 대상 | ✅ **종결.** vtt 타임스탬프를 이어 붙이면 직전 문장이 「George is helping so so much to run in behind with Jackson」이고 바로 이어 「He's not the player with qualities to running behind, but he tried…」가 나온다 — 선행사는 **George(헤밍스)**다. 「Fantastic, Emiliano」는 별개 문장에서 부엔디아를 향한 독립 칭찬(obs#609, `player_duties`#89 덧붙임). ⚠️ auto-caption 재구성(MEDIUM) |
+| ⑵ | 세이스 침투가 오버랩인지 언더랩인지 | ⛔ **미해소, 소스만 특정됨.** Bains Analysis 본인 음성이 명시적으로 「overlapping」이라 말하는데, 별도 영어권 분석 요약은 「underlapping」을 쓴다. 같은 장면인지 다른 장면인지도 미확정(obs#610) — D+3 후보 |
+| ⑶ | 11분 골 직전 정지 여부 | D+1에 이미 종결(바나컨 1차 진술, obs#572) — 이번 회차 재작업 없음 |
+
+### D+2-2. UEFA.com·Coaches' Voice — 두 건 다 「정당한 0건/실체 없음」으로 닫힘
+
+- **UEFA.com**: matchId를 `2049556`으로 확정(브라우저 직접 열람). 그러나 새 사이트 구조는 이 URL에
+  심판·구장·날씨 메타데이터만 제공하고 별도 서술형 "공식 매치 리포트" 페이지가 없다 — 404가 아니라
+  **콘텐츠 자체가 없다**로 종결(obs#611).
+- **Coaches' Voice**: 정본 경로(`learning.coachesvoice.com/category/analysis/`)로 직접 열람.
+  브뤼헤전 관련 글 0건, 빌라 관련 유일 항목은 2026 유로파리그 결승(빌라 3-0 프라이부르크) 분석뿐이다.
+  ⇒ obs#516/#577과 달리 이번은 **경로가 맞았는데도 실체가 없는 정당한 0건**(obs#612).
+
+### D+2-3. ⭐ 벨기에 3개 도메인 차단 해제 — obs#516 유형 6번째 재현
+
+`hln.be`·`nieuwsblad.be`·`gva.be`를 브라우저로 직접 열람하니 이번에도 열렸다(WebFetch/엔진 경로만
+막혀 있었다). 확보한 것:
+- **마르크 데흐리서**(HLN 평론가)가 브뤼헤 신규 영입진을 「아직 개성이 부족하다」고 혹평.
+- **조머 본인 인용**: 「내가 라인을 지켰어야 했다」(1선 실점 자책).
+- **VP-Rapport 개별 평점**(VoetbalPrimeur, 10점 만점): 조머 5 · 메헬레 6 · 이한범 5 · 세이스 6 ·
+  바나컨 5 · 트레솔디 6. ⚠️ 평점 자체는 obs#555 규약(평점을 근거로 쓰지 않는다)에 따라 참고용(obs#613).
+
+### D+2-4. 🇮🇹 이탈리아·🇪🇸 스페인 축 — 재시도했으나 실질적으로 닫히지 않음
+
+- **Gazzetta·Corriere dello Sport 트레솔디 pagelle**: 검색·직접 탐색 모두 개별 pagelle 페이지를
+  특정하지 못했다(페이월+JS 추정 유지). D+3 이월.
+- **스페인어 정본(에메리 스페인어 원문·가르나초 직접 질문 여부)**: `marca.com`은 도메인 차단이 아니라
+  해당 URL이 **404**(사이트 구조상 검색 경로 자체가 리다이렉트됨) — 이전 회차의 "크롤러 차단" 판정을
+  일부 정정한다. AS·Soccerway 재인용 경로로도 **가르나초 직접 질문은 여전히 0건**(영어·스페인어·
+  네덜란드어 전부, 3회차 누적 재확인). 스페인어 원문 에메리 발언은 사전 인터뷰(먼치 파우 토레스 복귀
+  확인 등)만 확보되고 브뤼헤전 사후 회견의 스페인어 1차 텍스트는 여전히 미확보.
+
+### D+2-5. ⛔ UTV 예고 전술 에피소드 — 「미해소 항목」 자체가 착오였다
+
+D+1-11 ①번(「내일 밤=09-10 예고, 아직 미게시, 채널 최신=`cpIZf5nxK-4`」)을 다시 회수하려고
+`cpIZf5nxK-4`(HOW NICOLAS JACKSON IS CHANGING ASTON VILLA'S ATTACK, 25:58, UTV)를 열어보니
+**그 영상은 이미 같은 날(D+1, 09-09) 「§8-3 addendum」 절에서 전사·반영이 끝나 있었다**
+(obs#567·#568, `player_duties`#199 덧붙임, `reports/transcripts/cpIZf5nxK-4.en.md`). D+1 세션이
+본문 뒷부분(D+1-11 이월 목록)을 쓸 때 자신이 앞서 addendum에서 이미 처리한 항목을 빠뜨리고
+"아직 미게시"로 다시 올린 것이다. ⇒ **재수집·재전사 없이 종결** — 새 obs·중복 전사를 만들지 않는다.
+
+### D+2-6. 결장자·로테이션 갱신 (2026-09-12 포레스트전 전제)
+
+고레츠카·만잠비·오나나 — 무릎 부상 결장 유지. **마조(Madjo)는 발목 부상**으로 결장(D+1까지 사유
+미상이었던 것이 이번에 확인). 조앙 고메스는 국내 출전정지 잔여로 결장 확정(obs#576 유지). 캐시는
+근육 피로로 여전히 game-time decision. 완비사카는 브뤼헤전 페널티 헌납으로 스크루티니 받는 중이나
+캐시 결장 시 재선발 유력. 카마라는 조앙 고메스 결장으로 로스 바클리와 새 파트너십이 유력. 하우드-
+벨리스는 UCL 명단 제외였으나 훈련 복귀로 린델뢰프와 경쟁 구도(obs#615). ⚠️ 이 항목은 다음 경기
+프리뷰 축이므로 이번 리포트의 결론은 변경하지 않는다.
+
+### D+2-7. 전사 보존 상태 재확인
+
+`/tmp/ytsub/`의 5건(`B-9hoJZf9rQ`·`dlQTpbG_mxk`·`z3QtUD65Jiw`·`mlw5BA0WlyM`·`c6oW6AHlnBM`)은
+**D+1에 이미 `reports/transcripts/`로 정식 보존 완료**된 상태였다(git log 확인, `aecafd7`). 이번
+회차는 신규 전사를 추가하지 않았다 — `dlQTpbG_mxk`(에메리 회견)는 기존 보존본을 재열람해 obs#609의
+재구성에 썼을 뿐이고, `cpIZf5nxK-4`도 위 D+2-5처럼 이미 보존돼 있었다.
+
+### D+2-8. 언어축별 수확 (불변규칙 10)
+
+| 언어축 | 검색어/경로 | 결과 |
+|---|---|---|
+| 🇧🇪 네덜란드(벨기에) | hln.be/nieuwsblad.be 직접 열람, `VP-Rapport Club Brugge Aston Villa` | ⭐ 개별 평점 6명 확보 + 데흐리서·조머 인용 |
+| 🇪🇸 스페인어 | `marca.com` 직접 열람, `Emery rueda de prensa Brugge Villa Garnacho pregunta` | ⛔ marca.com 404(차단 아님), 가르나초 직접 질문 3회차 연속 0건 |
+| 🇮🇹 이탈리아 | `Tresoldi pagelle Club Brugge Aston Villa Gazzetta Corriere` | ⛔ 0건(페이월+JS 추정, 미확인) |
+| 🇬🇧 영어(유튜브) | UTV/The Villans 채널 내부 검색·스크롤 | ⛔ 신규 게시물 없음 — `cpIZf5nxK-4`는 D+1에 이미 확보된 자료였음(D+2-5) |
+| 🇩🇪🇨🇭 독일·스위스 | `Matty Cash injury`, `Aston Villa Nottingham Forest team news` | ⭐ 결장자 갱신(마조 발목 신규) |
+
+### D+2-9. 새 observations
+
+| obs | scope | 요지 |
+|---|---|---|
+| **#609** | reference | ⭐⭐ 에메리 회견 육성 재구성 — 「not qualities to running behind」 대상은 헤밍스, 「fantastic Emiliano」는 별개 문장 |
+| **#610** | defence | ⚠️ 세이스 오버랩/언더랩 소스 충돌 — 미해소, 소스만 특정(Bains=overlap) |
+| **#611** | reference | ⛔ UEFA.com matchId 확정(2049556) — 서술형 리포트 자체가 사이트 구조에 없음 |
+| **#612** | reference | ⭐ Coaches' Voice 정본 경로 확인 — 진짜 0건 |
+| **#613** | squad | ⭐ 벨기에 3도메인 차단 해제 — VP-Rapport 개별 평점 확보 |
+| **#615** | squad | ⚠️ 포레스트전 결장자·로테이션 갱신(마조 발목 신규 확인) |
+
+`player_duties` **2행 덧붙임**: #89 헤밍스(회견 육성 재구성) · #199 잭슨(ASR 해소 정정 한 문단만 —
+`cpIZf5nxK-4` 관련 중복 문단은 작성 중 발견해 되돌렸다). ⛔ **덧붙임만**(G14 prefix 보존, 게이트
+확인 완료). `manager_profiles` 변경 없음(이번 회차에 새 축 없음). ⚠️ **obs#614는 결번이다** —
+`cpIZf5nxK-4`를 신규 발견으로 착각해 넣었다가 D+1 기존 반영 확인 후 삭제했다(불변규칙 2 위반 방지
+목적의 정정, id 재사용 없음).
+
+### D+2-10. D+3으로 넘길 항목
+
+1. ⛔ **세이스 오버랩/언더랩** — 영상 프레임 직접 재생 확인 필요(현재는 서로 다른 auto-caption/
+   요약 텍스트 충돌만 있음).
+2. ⛔ **이탈리아 Gazzetta·Corriere 트레솔디 pagelle** — 3회차 연속 미해결.
+3. ⚠️ **부엔디아 롤(하강·로밍·포켓 수신) 1차 소스** — 이번 회차에 신규 탐색 없음, 여전히 hp 38로
+   정본 변경 보류.
+4. ⚠️ **스페인어 사후 회견 원문** — 사전 인터뷰만 확보, 사후 회견 스페인어 1차 텍스트 미확보.
+5. **UEFA 기술 리포트·Opta 주간 분석** — 아직 발행 전(경기 후 3일 축, obs#8-8 항목 8).
+
+### D+2-11. 게이트
+
+`python3 scripts/gates.py` → **G1~G15(+G8+) 전항 통과**(2026-09-11).
