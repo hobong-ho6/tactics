@@ -80,8 +80,27 @@ def export_all(db_path=None, window="2026-summer"):
                                   ovr, pot, pac, sho, pas, dri, def, phy, playstyles, role_familiarity, attrs,
                                   source
                            FROM player_game_stats WHERE game_version=?
+                             AND COALESCE(source,'') NOT LIKE '%collect_futgg_history%'
                            ORDER BY name_kr, roster_date""", (gv,))
+        # ⛔ 출시판 시계열 행(collect_futgg_history.py)은 여기서 제외한다 — 이 파일은 name_kr 키라 sofifa 표시명과
+        #    players.name_kr이 다른 선수(스즈키 지온↔스즈키)에서 출시판 행이 라이브판을 가로채 카드 비교의 기준 시점이 바뀐다.
+        #    시계열은 아래 history.json(player_id 키)이 담는다.
+        if not gs:
+            continue
         written.append(_write(SITE_DATA / "game_stats" / f"{gv}.json", {g["name_kr"]: g for g in gs}))
+
+    # ── game_stats/history.json — 버전별 변화 추적(player_id 키, 2026-09-12 신설) ──
+    # ⭐ 한 버전에 시점이 둘이다: 「출시판」(fut.gg base 아이템 — collect_futgg_history.py, FC27 fut.gg 공식 드롭)과
+    #    「라이브판」(sofifa 시즌 중 로스터). 기준 시점을 섞으면 Δ 부호가 뒤집힌다(obs#249) — kind로 갈라 내보낸다.
+    hist = {}
+    for r in _rows(con, """SELECT player_id, game_version, roster_date, ovr, pac, sho, pas, dri, def, phy,
+                                  positions, best_pos, playstyles, club, source
+                           FROM player_game_stats WHERE player_id IS NOT NULL
+                           ORDER BY player_id, game_version, roster_date"""):
+        src = r.pop("source") or ""
+        r["kind"] = "출시판" if ("collect_futgg_history" in src or r["game_version"] == "FC27") else "라이브판"
+        hist.setdefault(str(r.pop("player_id")), []).append(r)
+    written.append(_write(SITE_DATA / "game_stats" / "history.json", hist))
 
     # ── teams/{CODE}.json ────────────────────────────────────────────
     for rg in regimes:

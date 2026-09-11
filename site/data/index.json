@@ -1,6 +1,11 @@
 {
  "game_versions": [
   {
+   "code": "FC25",
+   "notes": "[2026-09-12] 버전별 변화 추적용 — fut.gg 출시판 base 아이템(collect_futgg_history.py)",
+   "released": "2024-09-27"
+  },
+  {
    "code": "FC26",
    "notes": "v1 전 데이터의 대상 버전",
    "released": "2025-09-26"

@@ -13632,6 +13632,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_key": "yellow_cards",
+    "metric_kr": "옐로카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
     "metric": "Duels won %",
     "metric_key": "duel_won_percent",
     "metric_kr": "듀얼 승률",
@@ -13642,6 +13655,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "54.8"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG against while on pitch",
+    "metric_key": "expected_goals_against_while_on_pitch",
+    "metric_kr": "출전 중 피xG",
+    "per90": 0.6326341919782685,
+    "percentile": 92,
+    "percentile_per90": 91,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "0.58"
    },
    {
     "league": "Premier League",
@@ -13749,6 +13775,58 @@
    },
    {
     "league": "Premier League",
+    "metric": "Fouls committed",
+    "metric_key": "fouls",
+    "metric_kr": "파울",
+    "per90": 1.0975609756097562,
+    "percentile": 65,
+    "percentile_per90": 52,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Top Speed",
+    "metric_key": "physical_metrics_topspeed",
+    "metric_kr": "최고 속도",
+    "per90": 33.20000076293945,
+    "percentile": 58,
+    "percentile_per90": 58,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "33.2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 50.0,
+    "percentile": 58,
+    "percentile_per90": 58,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "50.0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Cross accuracy",
+    "metric_key": "crosses_succeeeded_accuracy",
+    "metric_kr": "크로스 정확도",
+    "per90": 20.0,
+    "percentile": 55,
+    "percentile_per90": 55,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "20.0"
+   },
+   {
+    "league": "Premier League",
     "metric": "xA",
     "metric_key": "expected_assists",
     "metric_kr": "xA",
@@ -13759,6 +13837,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "2.03"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals conceded while on pitch",
+    "metric_key": "goals_conceded_while_on_pitch",
+    "metric_kr": "출전 중 실점",
+    "per90": 2.1951219512195124,
+    "percentile": 53,
+    "percentile_per90": 21,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "2"
    },
    {
     "league": "Premier League",
@@ -13785,6 +13876,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "53"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Pass accuracy",
+    "metric_key": "successful_passes_accuracy",
+    "metric_kr": "패스 정확도",
+    "per90": 81.81818181818181,
+    "percentile": 47,
+    "percentile_per90": 47,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "81.8"
    },
    {
     "league": "Premier League",
@@ -13840,6 +13944,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Dispossessed",
+    "metric_key": "dispossessed",
+    "metric_kr": "볼 탈취당함",
+    "per90": 2.1951219512195124,
+    "percentile": 42,
+    "percentile_per90": 12,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
     "metric": "Long ball accuracy",
     "metric_key": "long_ball_succeeeded_accuracy",
     "metric_kr": "롱볼 정확도",
@@ -13850,6 +13967,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "50.0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Successful crosses",
+    "metric_key": "crosses_succeeeded",
+    "metric_kr": "성공한 크로스",
+    "per90": 1.0975609756097562,
+    "percentile": 38,
+    "percentile_per90": 70,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "Premier League",
@@ -13905,6 +14035,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Possession won final 3rd",
+    "metric_key": "poss_won_att_3rd_team_title",
+    "metric_kr": "공격 3선 볼 획득",
+    "per90": 1.0975609756097562,
+    "percentile": 32,
+    "percentile_per90": 80,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
     "metric": "xG excl. penalty",
     "metric_key": "non_penalty_xg",
     "metric_kr": "xG(PK 제외)",
@@ -13931,6 +14074,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블",
+    "per90": 2.1951219512195124,
+    "percentile": 30,
+    "percentile_per90": 82,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
     "metric": "xG",
     "metric_key": "expected_goals",
     "metric_kr": "xG",
@@ -13941,6 +14097,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "1.31"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Duels won %",
+    "metric_key": "duel_won_percent",
+    "metric_kr": "듀얼 승률",
+    "per90": 40.0,
+    "percentile": 29,
+    "percentile_per90": 29,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "40.0"
    },
    {
     "league": "Premier League",
@@ -14048,6 +14217,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Fouls won",
+    "metric_key": "fouls_won",
+    "metric_kr": "파울 획득",
+    "per90": 1.0975609756097562,
+    "percentile": 17,
+    "percentile_per90": 45,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
     "metric": "Line-breaking passes",
     "metric_key": "line_breaking_passes",
     "metric_kr": "라인 브레이킹 패스",
@@ -14058,6 +14240,32 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "10"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.044121949865323744,
+    "percentile": 15,
+    "percentile_per90": 17,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "0.04"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.044121949865323744,
+    "percentile": 15,
+    "percentile_per90": 17,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "0.04"
    },
    {
     "league": "Premier League",
@@ -14126,6 +14334,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "xA",
+    "metric_key": "expected_assists",
+    "metric_kr": "xA",
+    "per90": 0.052175302876204976,
+    "percentile": 14,
+    "percentile_per90": 24,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "0.05"
+   },
+   {
+    "league": "Premier League",
     "metric": "Defensive actions",
     "metric_key": "defensive_actions",
     "metric_kr": "수비 액션",
@@ -14136,6 +14357,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "30"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Accurate passes",
+    "metric_key": "successful_passes",
+    "metric_kr": "정확한 패스",
+    "per90": 19.75609756097561,
+    "percentile": 12,
+    "percentile_per90": 33,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "18"
    },
    {
     "league": "Premier League",
@@ -14152,6 +14386,162 @@
    },
    {
     "league": "Premier League",
+    "metric": "Tackles",
+    "metric_key": "matchstats.headers.tackles",
+    "metric_kr": "태클",
+    "per90": 1.0975609756097562,
+    "percentile": 8,
+    "percentile_per90": 33,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Sprinting",
+    "metric_key": "physical_metrics_sprinting",
+    "metric_kr": "스프린트 거리",
+    "per90": 203.0122208013767,
+    "percentile": 8,
+    "percentile_per90": 24,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "185.0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Touches in opposition box",
+    "metric_key": "touches_opp_box",
+    "metric_kr": "상대 박스 터치",
+    "per90": 2.1951219512195124,
+    "percentile": 8,
+    "percentile_per90": 20,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Duels won",
+    "metric_key": "duel_won",
+    "metric_kr": "듀얼 승",
+    "per90": 4.390243902439025,
+    "percentile": 5,
+    "percentile_per90": 39,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Total Distance Covered",
+    "metric_key": "physical_metrics_distance_covered",
+    "metric_kr": "총 이동거리",
+    "per90": 9649.706793064024,
+    "percentile": 5,
+    "percentile_per90": 6,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "8792.0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Recoveries",
+    "metric_key": "recoveries",
+    "metric_kr": "볼 리커버리",
+    "per90": 2.1951219512195124,
+    "percentile": 5,
+    "percentile_per90": 14,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Number of Sprints",
+    "metric_key": "physical_metrics_number_of_sprints",
+    "metric_kr": "스프린트 횟수",
+    "per90": 8.78048780487805,
+    "percentile": 3,
+    "percentile_per90": 17,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "8"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Shots",
+    "metric_key": "shots",
+    "metric_kr": "슛",
+    "per90": 1.0975609756097562,
+    "percentile": 3,
+    "percentile_per90": 20,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Touches",
+    "metric_key": "touches",
+    "metric_kr": "터치",
+    "per90": 42.80487804878049,
+    "percentile": 3,
+    "percentile_per90": 27,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "39"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Defensive actions",
+    "metric_key": "defensive_actions",
+    "metric_kr": "수비 액션",
+    "per90": 3.292682926829268,
+    "percentile": 2,
+    "percentile_per90": 9,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Line-breaking passes",
+    "metric_key": "line_breaking_passes",
+    "metric_kr": "라인 브레이킹 패스",
+    "per90": 2.1951219512195124,
+    "percentile": 2,
+    "percentile_per90": 15,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Running",
+    "metric_key": "physical_metrics_running",
+    "metric_kr": "러닝 거리",
+    "per90": 1673.996496433165,
+    "percentile": 2,
+    "percentile_per90": 3,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "1525.2"
+   },
+   {
+    "league": "Premier League",
     "metric": "Clean sheets",
     "metric_key": "clean_sheet_team_title",
     "metric_kr": "클린시트",
@@ -14161,6 +14551,58 @@
     "player_id": 114,
     "pulled": "2026-08-21",
     "season": "2025/2026",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_key": "assists",
+    "metric_kr": "어시스트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Clean sheets",
+    "metric_key": "clean_sheet_team_title",
+    "metric_kr": "클린시트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_key": "goals",
+    "metric_kr": "골",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_key": "red_cards",
+    "metric_kr": "레드카드",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
     "stat_value": "0"
    }
   ],
@@ -27393,6 +27835,78 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "player_id": 116,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "player_id": 116,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "player_id": 116,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 116,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 116,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "19"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "player_id": 116,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "6.36"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 116,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 116,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "0"
    }
   ],
   "마마르다슈빌리": [
@@ -28574,6 +29088,78 @@
     "player_id": 114,
     "pulled": "2026-08-21",
     "season": "2025/2026",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "82"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "6.24"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 114,
+    "pulled": "2026-09-12",
+    "season": "2026/2027",
     "value": "0"
    }
   ],

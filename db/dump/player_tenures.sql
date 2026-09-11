@@ -1359,3 +1359,16 @@ INSERT INTO player_tenures VALUES(212,'2023-24',NULL,'Sturm Graz (21경기, 평�
 INSERT INTO player_tenures VALUES(212,'2022-23',NULL,'Stockport County (13경기, 평점 6.71)','GK',NULL,NULL);
 INSERT INTO player_tenures VALUES(212,'2021-22',NULL,'Notts County (15경기)','GK',NULL,NULL);
 INSERT INTO player_tenures VALUES(212,'2021',NULL,'St. Patrick''s Athletic (38경기)','GK',NULL,NULL);
+INSERT INTO player_tenures VALUES(114,'2026-27',NULL,'Liverpool (3경기, 평점 6.36)','LW',NULL,NULL);
+INSERT INTO player_tenures VALUES(116,'2026-27',NULL,'Liverpool (2경기, 평점 6.36)','DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(183,'2026-27',NULL,'Club Atlético de Madrid III (1경기)','GK',NULL,NULL);
+INSERT INTO player_tenures VALUES(185,'2026-27',NULL,'Real Madrid C (1경기)','LW',NULL,NULL);
+INSERT INTO player_tenures VALUES(198,'2026-27',NULL,'Atlético Madrid (1경기, 평점 5.76) / Juventus (1경기, 평점 7.14)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(198,'2025-26',NULL,'Juventus (46경기, 평점 6.72)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(198,'2024-25',NULL,'Lille (49경기, 평점 7.36)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(198,'2023-24',NULL,'Lille (47경기, 평점 7.30)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(198,'2022-23',NULL,'Lille (40경기, 평점 7.55)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(198,'2021-22',NULL,'Lille (48경기, 평점 7.00)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(198,'2020-21',NULL,'Lille (48경기, 평점 6.79)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(198,'2019-20',NULL,'Gent (40경기, 평점 7.40)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(198,'2018-19',NULL,'Gent (43경기, 평점 6.80)','ST',NULL,NULL);

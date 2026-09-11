@@ -58,7 +58,7 @@
 </section>
 
 <section data-panel="game" style="display:none">
-<div class="panel"><h2>게임 스탯 <small class="dim">— FC26 ↔ FC27 및 그 차이</small></h2><div id="gstat" class="kv"></div><p class="dim" style="font-size:12px;margin:8px 0 0">Δ는 <b>우리 DB의 FC26 최신 로스터</b>와 FC27을 직접 대조한 값이다. ⚠️ 매체가 표기하는 Δ와 다를 수 있다 — 그쪽은 FC26 <b>출시판</b> 기준이고 우리 FC26 행은 <b>시즌 말 라이브판</b>이라 부호가 뒤집힌다(obs#249). <b>예측</b> 배지가 붙은 값은 EA 미확정이라 공식 드롭 후 바뀐다.</p></div>
+<div class="panel"><h2>게임 스탯 <small class="dim">— FC26 ↔ FC27 및 그 차이</small></h2><div id="ghist" style="margin-bottom:12px"></div><div id="gstat" class="kv"></div><p class="dim" style="font-size:12px;margin:8px 0 0">Δ는 <b>우리 DB의 FC26 최신 로스터</b>와 FC27을 직접 대조한 값이다. ⚠️ 매체가 표기하는 Δ와 다를 수 있다 — 그쪽은 FC26 <b>출시판</b> 기준이고 우리 FC26 행은 <b>시즌 말 라이브판</b>이라 부호가 뒤집힌다(obs#249). <b>예측</b> 배지가 붙은 값은 EA 미확정이라 공식 드롭 후 바뀐다.</p></div>
 </section>
 
 <section data-panel="analysis" style="display:none">
@@ -73,7 +73,7 @@ import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260908-pha
 import { prose } from './assets/prose.js';
 import { PLAYSTYLES } from './assets/playstyle-icons.js';
 const { team, idx } = await mountHeader('player.html');
-const [td, GS, GS27] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({}))]);
+const [td, GS, GS27, HIST] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history')]);
 /* 백분위·유사프로필 모집단 = 활성 regime 전체. ⛔ 팀 코드를 하드코딩하지 않는다 —
    2026-08-20 ATM 편입 때 이 배열이 ['AVL','CHE','LIV']로 남아 ATM 선수가 모집단에서 통째로 빠졌다.
    index.json의 regimes가 SSOT이고 `end IS NULL`이 활성 조건이다(DB 뷰와 같은 규약). */
@@ -365,6 +365,52 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       </div>
     </div>`;
 }
+/* ── 버전별 변화 (FC25 출시 → FC26 출시 → FC26 시즌말 라이브 → FC27 출시) ──
+   history.json은 player_id 키. 같은 버전·같은 kind에 로스터가 여럿이면 최신 roster_date 하나만 보인다
+   (FC27은 08-18 부분 드롭·08-21·08-31 예측 행이 있고 09-10판이 정본). ⚠️ 출시판↔라이브판은 기준 시점이 다르다 —
+   행 순서대로 이웃 Δ를 보이되 kind를 표기해 obs#249의 부호 반전을 읽는 사람이 알게 한다. */
+function renderHistory(sel, isGkRow){
+  const el = document.getElementById('ghist');
+  const rows = (sel.pid != null && HIST[String(sel.pid)]) || [];
+  if (rows.length < 2){ el.innerHTML = ''; return; }
+  const pick = {};
+  for (const r of rows){ const k = `${r.game_version}|${r.kind}`; if (!pick[k] || r.roster_date > pick[k].roster_date) pick[k] = r; }
+  const seq = Object.values(pick).sort((a,b) => (a.roster_date||'').localeCompare(b.roster_date||''));
+  if (seq.length < 2){ el.innerHTML = ''; return; }
+  const SIX = isGkRow
+    ? [['pac','DIV'],['sho','HAN'],['pas','KIC'],['dri','REF'],['def','SPD'],['phy','POS']]
+    : [['pac','PAC'],['sho','SHO'],['pas','PAS'],['dri','DRI'],['def','DEF'],['phy','PHY']];
+  const tier = v => v == null ? '' : v >= 75 ? 'var(--ok)' : v >= 60 ? 'var(--warn)' : 'var(--bad)';
+  const cell = (cur, prev, k) => {
+    const v = cur[k]; if (v == null) return '<td class="dim">—</td>';
+    const p = prev?.[k]; const d = (p == null) ? null : v - p;
+    const dd = d == null || d === 0 ? '' : `<small style="color:${d > 0 ? 'var(--ok)' : 'var(--bad)'}">${d > 0 ? '+' : ''}${d}</small>`;
+    return `<td style="text-align:right"><b style="color:${tier(v)}">${v}</b> ${dd}</td>`;
+  };
+  const ps = r => String(r?.playstyles ?? '').split(/[;,]/).map(x => x.trim()).filter(Boolean);
+  const psDiff = (cur, prev) => {
+    const a = new Set(ps(prev)), b = new Set(ps(cur));
+    const add = [...b].filter(x => !a.has(x)), del = [...a].filter(x => !b.has(x));
+    if (!prev) return `<small class="dim">${b.size}종</small>`;
+    return [add.map(x => `<span style="color:var(--ok)">+${esc(x)}</span>`).join(' '),
+            del.map(x => `<span style="color:var(--bad)">−${esc(x)}</span>`).join(' ')].filter(Boolean).join(' ') || '<small class="dim">동일</small>';
+  };
+  const trs = seq.map((r, i) => {
+    const prev = seq[i - 1];
+    return `<tr><td><b>${esc(r.game_version)}</b> <small class="dim">${esc(r.kind)}<br>${esc(r.roster_date ?? '')}</small></td>
+      ${cell(r, prev, 'ovr')}${SIX.map(([k]) => cell(r, prev, k)).join('')}
+      <td><small>${esc(r.best_pos ?? r.positions ?? '')}</small></td>
+      <td><small>${esc(r.club ?? '')}</small></td>
+      <td>${psDiff(r, prev)}</td></tr>`;
+  }).join('');
+  el.innerHTML = `<div class="kv" style="margin-bottom:4px"><b>버전별 변화</b>
+      <small class="dim">— ${seq.length}시점 · Δ는 바로 위 행 대비</small></div>
+    <div style="overflow-x:auto"><table style="font-size:12px;white-space:nowrap;width:auto;min-width:100%">
+      <thead><tr><th>버전·시점</th><th>OVR</th>${SIX.map(([,L]) => `<th>${L}</th>`).join('')}<th>포지션</th><th>클럽</th><th>PlayStyles 변화</th></tr></thead>
+      <tbody>${trs}</tbody></table></div>
+    <p class="dim" style="font-size:12px;margin:6px 0 0"><b>출시판</b>은 fut.gg base 아이템(각 버전 EA 공개 시점 값, 라이브 갱신 미반영),
+      <b>라이브판</b>은 sofifa 시즌 중 로스터다. 기준 시점이 다른 두 행 사이의 Δ는 「시즌 중 라이브 조정 + 차기작 재평가」가 합쳐진 값이다(obs#249).</p>`;
+}
 function render(){
   const sel = groups[grp.value][+who.value]; if (!sel) return;
   const n = sel.name;
@@ -571,6 +617,7 @@ function render(){
       <small>— FC26 PlayStyles</small></div>`;
   }
   document.getElementById('gstat').innerHTML = html;
+  renderHistory(sel, isGkRow);
   // ⭐ player_id 우선 — 라벨 조인은 표기 규약이 갈리면 조용히 0행이 된다(불변규칙 6).
   const ds = (sel.pid != null && td.duties.some(d=>d.player_id===sel.pid)
     ? td.duties.filter(d=>d.player_id===sel.pid)

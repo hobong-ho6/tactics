@@ -131,3 +131,10 @@ INSERT INTO player_status VALUES(130,210,'2026-09-10','injury','Wrist injury','S
 INSERT INTO player_status VALUES(131,210,'2026-09-10','contract_end','2028-06-30',NULL,NULL,'fotmob.com/api/data (player 156008, scripts/collect_fotmob_players.py, 2026-09-10 수집)',NULL);
 INSERT INTO player_status VALUES(132,211,'2026-09-10','contract_end','2033-06-30',NULL,NULL,'fotmob.com/api/data (player 1183148, scripts/collect_fotmob_players.py, 2026-09-10 수집)',NULL);
 INSERT INTO player_status VALUES(133,212,'2026-09-10','contract_end','2028-06-30',NULL,NULL,'fotmob.com/api/data (player 1068920, scripts/collect_fotmob_players.py, 2026-09-10 수집)',NULL);
+INSERT INTO player_status VALUES(134,61,'2026-09-12','injury','Knock','October 2026','2026-08-14','fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-09-12 수집)','⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.');
+INSERT INTO player_status VALUES(135,61,'2026-09-12','contract_end','2032-06-30',NULL,NULL,'fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-09-12 수집)',NULL);
+INSERT INTO player_status VALUES(136,114,'2026-09-12','contract_end','2028-06-30',NULL,NULL,'fotmob.com/api/data (player 1597668, scripts/collect_fotmob_players.py, 2026-09-12 수집)',NULL);
+INSERT INTO player_status VALUES(137,116,'2026-09-12','contract_end','2030-06-30',NULL,NULL,'fotmob.com/api/data (player 1436258, scripts/collect_fotmob_players.py, 2026-09-12 수집)',NULL);
+INSERT INTO player_status VALUES(138,157,'2026-09-12','contract_end','2028-06-30',NULL,NULL,'fotmob.com/api/data (player 1297989, scripts/collect_fotmob_players.py, 2026-09-12 수집)',NULL);
+INSERT INTO player_status VALUES(139,208,'2026-09-12','injury','Cruciate ligament injury','October 2026','2025-09-23','fotmob.com/api/data (player 1609209, scripts/collect_fotmob_players.py, 2026-09-12 수집)','⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.');
+INSERT INTO player_status VALUES(140,208,'2026-09-12','contract_end','2031-06-30',NULL,NULL,'fotmob.com/api/data (player 1609209, scripts/collect_fotmob_players.py, 2026-09-12 수집)',NULL);
