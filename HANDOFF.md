@@ -10,8 +10,8 @@
 
 ## 현재 상태
 
-> **2026-09-11 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋은 이 핸드오프 커밋(아래 「마지막 커밋」 참조) —
-> 직전 `4108bba` · **✅ origin 일치** · ⚠️ 미추적 폴더 `reports/ingame/*`(이전 세션 스크린샷, 이번 세션 미관여, 커밋 여부 사용자 판단).
+> **2026-09-11 KST** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 **`c0a6946`** — 직전 `4108bba` ·
+> **✅ origin 일치** · ⚠️ 미추적 폴더 `reports/ingame/*`(이전 세션 스크린샷, 이번 세션 미관여, 커밋 여부 사용자 판단).
 > **09-11 세션 요약**: FC27(EA 공식 확정, 09-10) PlayStyles·키·몸무게·카드이미지를 4팀 전원(AVL·CHE·LIV·ATM) 수집,
 > `player.html`을 fut.gg식 카드+메뉴로 재구성, `player_evaluations` 128행(98명 갱신 포함) 리프레시,
 > **squad_entries에서 CONFIRMED 이적 완료 선수 32행 삭제**(핵심 정책 변경, 아래 참조).
