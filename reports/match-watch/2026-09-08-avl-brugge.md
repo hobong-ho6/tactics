@@ -1186,3 +1186,38 @@ D+1-11 ①번(「내일 밤=09-10 예고, 아직 미게시, 채널 최신=`cpIZf
 ### D+2-11. 게이트
 
 `python3 scripts/gates.py` → **G1~G15(+G8+) 전항 통과**(2026-09-11).
+
+
+## D+3 추적 (2026-09-12) — 스케줄 태스크 부재로 세션 내 수행
+
+> 스케줄 목록에 D+3 태스크가 없어(09-12 23:00 예정분 미생성) 이 세션이 대신 수행했다. 영상은 auto-caption 전사(reports/transcripts/ `x6RV_fk2DVc`·`7Afj8XxiVW0`·`tq5_q0cl5hM` + 직전 실행 전사 4편), 기사는 직접 열람.
+
+### 신규 자료
+- **3채널(UTV·The Villans·1874) 09-10~12 업로드**: 전부 포레스트 프리뷰·회견 리액션 축. UTV 「예고 전술 에피소드」는 별도 영상 없음(D+2 판정 유지). UTV 에메리 09-11 프리매치 회견 전체 `x6RV_fk2DVc` 전사.
+- **유튜브 사이트 내부 검색(이번 주)**: 브뤼헤전 전술 분석 신규 1건 — Mango Talks Ball `tq5_q0cl5hM`(09-09, 3티어). 나머지는 시뮬·베팅 스팸.
+- **기사**: VAVEL 글라스너(포레스트) 09-11 · Birmingham Live 캐시·만잠비 · Sports Mole 마조 「Ankle」 · VoetbalPrimeur/Voetbalkrant 레코 안트베르프전 회견(빌라전 직접 회고 없음).
+
+### 미해소 항목 결과
+| 항목 | 판정 |
+|---|---|
+| obs#610 세이스 오버랩/언더랩 | ⭐ **국면 차이로 해체**(정정 obs#630, MEDIUM) — 언더랩은 전반 단일 장면(Virgili 리턴볼→크로스), 오버랩은 후반 반복 패턴(Bains). |
+| obs#609 헤밍스 | ✅ 유지 — 에메리 재호명 「now needs add numbers but he is performing in the level more or less we want」. Mango 「closer to Jackson… allowed Maatsen to provide the width」(obs#440 지지). |
+| obs#615 마조 | ✅ 유지·보강 — 발목(Sports Mole 단일), 구단은 부위 미공개·포레스트전 결장 재확인. |
+| 재검증 ①②③ | ⏳ 포레스트전 진행 중 — XI 변경 1(바클리↔고메스), 완비사카 RB·마첸 LB 유지(캐시 「small injury」 결장). 글라스너 「the back four and the two sixes」로 빌라를 백4+더블6 블록으로 준비(⚠️ 「last year」는 사실 오류 — 완비사카·고메스 신입). |
+| 🇮🇹 트레솔디 pagelle · 🇪🇸 사후 회견 1차 텍스트 | ⛔ 4회차 연속 0건 / 0건 유지. |
+| 부엔디아 롤 | 3티어 1건 추가(Mango 「wants the ball at feet… not really a runner in behind」, 3자 침투는 고메스·헤밍스·맥긴) — obs#575와 충돌 없음. |
+
+### 새 발언(원문+번역, auto-caption)
+- 에메리 09-11: 「Ross Barkley sharing with João, and João's performance on Tuesday was really fantastic. Tomorrow he can't play but Ross Barkley, he knows everything we want offensively, defensively」(바클리는 조앙과 자리를 나눠 왔고 화요일 조앙은 환상적이었다. 내일 그는 못 뛰지만 바클리는 우리가 공수에서 원하는 걸 전부 안다) · 「playing more or less the same players with one or two changes」(한두 명만 바꿔 거의 같은 선수들로) · 「the spine players… Pau, John McGinn, Kamara, Cash, Maatsen… very important now helping the teammates we are joining」(척추 선수들이 합류하는 동료를 돕는 데 지금 매우 중요하다).
+- 에메리 — **가르나초 첫 직접 질문**: 「He played a few minutes, was not enough — first the minutes he played and second the things he showed. But progressively I am seeing him better」(몇 분 뛰었고 충분하지 않았다 — 뛴 시간도, 보여준 것도. 그러나 점진적으로 나아지는 걸 본다). ⇒ 종전 「직접 질문 0건」은 **사후 회견 한정**으로 범위 명시. 완비사카·잭슨 직접 언급 없음.
+- 글라스너(포레스트) 09-11: 「They showed exactly how they are playing against Brugge. In possession, clear structure」 · 「Suzuki has an incredible long strike… they are a big threat on transition」(브뤼헤전에서 어떻게 뛰는지 정확히 보여줬다. 스즈키 롱킥과 전환이 큰 위협) — §8-8 🇯🇵 축·obs#571을 상대 감독이 준비 포인트로 명시(1티어).
+- Mango(3티어): 카마라 「just to protect the back four… allowed João Gomes to get around the pitch」(독립 4번째 지지) · 완비사카 19′ 「too square on… gets manipulated too easily」.
+
+### 당일 판정 정정 후보
+1. obs#610 → 「소스 충돌」이 아니라 「국면 차이」(정정 obs#630). 2. 「가르나초 직접 질문 0건」 → 「사후 회견 한정」(범위 명시, obs#631). 3. The Villans `pO6Pxey6GY0` 「맥긴 중앙 복귀」는 3티어 단일·실측(RM 선발)과 어긋나 채택 보류. 4. D+1·D+2의 다른 판정을 뒤집는 자료 없음.
+
+### 0건(검색어·언어)
+🇰🇷 「아스톤 빌라 브뤼헤 3-2 에메리 잭슨 부엔디아 맥긴 분석 9월 10~12일」 0건 · 🇪🇸 `Emery "Brujas" Aston Villa … site:as.com|marca.com|efe.com` 1차 텍스트 0건(비야레알 시절 영상 배제) · TFA `?s=Aston+Villa`(최신 2026-04)·Spielverlagerung(최신 2022) 사이트 색인 0건, BTL 검색 페이지 미렌더 · 🇮🇹 `Tresoldi pagelle` 0건 · 🇧🇪 `Leko … Aston Villa reactie` 신규는 안트베르프전용.
+
+### 종결
+D+1~D+3 추적 완료. `match_reports` 35는 complete 유지, 시즌 정본 변경 없음. `manager_profiles` rotation 축 덧붙임. 재검증 ①②③은 포레스트전 회차로 이관.
