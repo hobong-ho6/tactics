@@ -65,7 +65,7 @@ INSERT INTO players VALUES(66,'Marco Palestra','팔레스트라',1397736,278339,
 INSERT INTO players VALUES(67,'Danny Welbeck','웰벡',33902,186146,1990,'ST',NULL,113836,'England',501,'FW');
 INSERT INTO players VALUES(69,'Ifeanyi Ndukwe','은두크웨',1929673,NULL,2008,'CB',NULL,1780239,'Austria',NULL,'DF');
 INSERT INTO players VALUES(70,'Kostas Tsimikas','치미카스',786259,232223,1996,'LB',NULL,671529,'Greece',8852,'DF');
-INSERT INTO players VALUES(71,'Lewis Koumas',NULL,1403111,NULL,2005,'LW',NULL,1364042,'Wales',NULL,'MF');
+INSERT INTO players VALUES(71,'Lewis Koumas','쿠마스',1403111,NULL,2005,'LW',NULL,1364042,'Wales',NULL,'MF');
 INSERT INTO players VALUES(72,'Alexander Isak','이삭',823941,233731,1999,'ST',NULL,690107,'Sweden',5232,'FW');
 INSERT INTO players VALUES(73,'Giorgi Mamardashvili','마마르다슈빌리',930997,262621,2000,'GK',NULL,948800,'Georgia',9693,NULL);
 INSERT INTO players VALUES(74,'Wataru Endo',NULL,143040,NULL,1993,'DM',NULL,202643,'Japan',NULL,'MF');
