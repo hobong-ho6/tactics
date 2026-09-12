@@ -55,3 +55,8 @@ INSERT INTO teams VALUES('BHA','Brighton & Hove Albion','브라이턴',NULL,NULL
 INSERT INTO teams VALUES('NIR','Northern Ireland','북아일랜드',NULL,NULL,'[2026-09-12] player_matches.team_code NULL 잔여 정리(obs#618)로 등재 — 경기 시점 소속 표기용, sofascore_id 미확보');
 INSERT INTO teams VALUES('ITA','Italy','이탈리아',NULL,NULL,'[2026-09-12] player_matches.team_code NULL 잔여 정리(obs#618)로 등재 — 경기 시점 소속 표기용, sofascore_id 미확보');
 INSERT INTO teams VALUES('CZE','Czechia','체코',NULL,NULL,'[2026-09-12] player_matches.team_code NULL 잔여 정리(obs#618)로 등재 — 경기 시점 소속 표기용, sofascore_id 미확보');
+INSERT INTO teams VALUES('NOR','Norway','노르웨이',NULL,NULL,'[2026-09-12] 쇠를로트 대표팀 실측 적재용');
+INSERT INTO teams VALUES('USA','United States','미국',NULL,NULL,'[2026-09-12] 바르가스 대표팀(성인·U-20) 실측 적재용');
+INSERT INTO teams VALUES('CAN','Canada','캐나다',NULL,NULL,'[2026-09-12] 조나단 데이비드 대표팀 실측 적재용');
+INSERT INTO teams VALUES('JUV','Juventus','유벤투스',NULL,NULL,'[2026-09-12] 조나단 데이비드 25/26·26/27 8월 소속 — 경기 시점 소속 표기용');
+INSERT INTO teams VALUES('SEA','Seattle Sounders','시애틀 사운더스',NULL,NULL,'[2026-09-12] 바르가스 2025 MLS·리그스컵 소속 — 경기 시점 소속 표기용');

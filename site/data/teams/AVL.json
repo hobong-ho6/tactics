@@ -46229,34 +46229,19 @@
   ],
   "고레츠카": [
    [
-    "2026-03-21",
-    6.4,
-    "Bundesliga"
-   ],
-   [
-    "2026-03-27",
-    5.7,
-    "International Friendly Games"
-   ],
-   [
-    "2026-04-04",
-    6.4,
-    "Bundesliga"
-   ],
-   [
-    "2026-04-11",
-    8.2,
-    "Bundesliga"
-   ],
-   [
-    "2026-04-19",
-    6.4,
-    "Bundesliga"
+    "2026-04-22",
+    6.8,
+    "DFB Pokal"
    ],
    [
     "2026-04-25",
     7.0,
     "Bundesliga"
+   ],
+   [
+    "2026-04-28",
+    6.5,
+    "UEFA Champions League"
    ],
    [
     "2026-05-02",
@@ -46272,6 +46257,21 @@
     "2026-05-16",
     7.3,
     "Bundesliga"
+   ],
+   [
+    "2026-06-06",
+    6.8,
+    "International Friendly Games"
+   ],
+   [
+    "2026-06-14",
+    6.9,
+    "FIFA World Cup"
+   ],
+   [
+    "2026-06-20",
+    6.9,
+    "FIFA World Cup"
    ],
    [
     "2026-06-29",
@@ -62850,16 +62850,16 @@
    "xg_pg": 0.143
   },
   {
-   "avg_rating": 6.95,
-   "dw_pg": 2.6,
-   "ic_pg": 0.5,
-   "kp_pg": 0.9,
+   "avg_rating": 6.92,
+   "dw_pg": 1.84,
+   "ic_pg": 0.53,
+   "kp_pg": 0.58,
    "label": "고레츠카",
-   "minutes": 786,
-   "n": 10,
-   "tk_pg": 1.1,
-   "xa_pg": 0.096,
-   "xg_pg": 0.483
+   "minutes": 3212,
+   "n": 74,
+   "tk_pg": 0.65,
+   "xa_pg": 0.103,
+   "xg_pg": 0.238
   }
  ],
  "prescriptions": [
@@ -68469,6 +68469,106 @@
     "n": 1,
     "season": "25/26",
     "starts": 0
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.11,
+    "competition": "Bundesliga",
+    "goals": 2,
+    "minutes": 1323,
+    "n": 26,
+    "season": "2025-26",
+    "starts": 17
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.69,
+    "competition": "UEFA Champions League",
+    "goals": 0,
+    "minutes": 191,
+    "n": 14,
+    "season": "2025-26",
+    "starts": 1
+   },
+   {
+    "assists": 1,
+    "avg_rating": 6.6,
+    "competition": "DFB Pokal",
+    "goals": 0,
+    "minutes": 120,
+    "n": 6,
+    "season": "2025-26",
+    "starts": 0
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.13,
+    "competition": "World Cup Qual. UEFA",
+    "goals": 0,
+    "minutes": 438,
+    "n": 6,
+    "season": "2025-26",
+    "starts": 5
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.8,
+    "competition": "Club Friendly Games",
+    "goals": 0,
+    "minutes": 119,
+    "n": 3,
+    "season": "2025-26",
+    "starts": 2
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.7,
+    "competition": "International Friendly Games",
+    "goals": 0,
+    "minutes": 39,
+    "n": 3,
+    "season": "2025-26",
+    "starts": 0
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.9,
+    "competition": "World Cup",
+    "goals": 0,
+    "minutes": 30,
+    "n": 3,
+    "season": "2025-26",
+    "starts": 0
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.6,
+    "competition": "FIFA Club World Cup",
+    "goals": 0,
+    "minutes": 10,
+    "n": 1,
+    "season": "2025-26",
+    "starts": 0
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.8,
+    "competition": "Franz Beckenbauer Supercup",
+    "goals": 0,
+    "minutes": 89,
+    "n": 1,
+    "season": "2025-26",
+    "starts": 1
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.0,
+    "competition": "Telekom Cup",
+    "goals": 0,
+    "minutes": 67,
+    "n": 1,
+    "season": "2025-26",
+    "starts": 1
    }
   ],
   "네델코비치": [

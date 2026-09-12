@@ -271,8 +271,10 @@ def g13_checks(con):
     # ⑶ match 링크 결손 — ⑵의 사각지대를 메우는 짝이다.
     #    match_id가 한쪽만 NULL이면 ⑵의 (player_id, match_id) 키로 짝이 잡히지 않는다.
     #    실제로 잭슨 08-05 1쌍이 그렇게 숨어 있었고, 링크를 봉합하고 나서야 드러났다.
+    #    ⚠️ 2026-09-12: matches는 「우리 팀 한쪽」 행이므로 team_code까지 맞춰 조인한다 — 상대편 선수의 같은 event 행
+    #    (예: 조나단 데이비드 JUV, 첼시-유벤투스 친선 16284982)은 링크 대상이 아니다(obs#618 team_code 규약).
     out["orphan_match_link"] = con.execute("""
-        SELECT pm.id FROM player_matches pm JOIN matches m ON m.event_id = pm.event_id
+        SELECT pm.id FROM player_matches pm JOIN matches m ON m.event_id = pm.event_id AND m.team_code = pm.team_code
          WHERE pm.match_id IS NULL""").fetchall()
 
     # ⑷ team_code ↔ 대회 성격 정합 — team_code는 스키마상 「그 경기에서 소속」이다.
@@ -293,6 +295,8 @@ def g13_checks(con):
                      -- 2026-09-12 확장(obs#618): 본선·연령별 대표팀 대회가 CLUB으로 분류돼 CZE·FRA·NED가 거짓 혼입으로 잡혔다.
                      OR competition = 'EURO'                 OR competition LIKE '%U21%'
                      OR competition LIKE '%U19%'             OR competition LIKE '%European Championship%'
+                     OR competition LIKE '%U-20%'            OR competition LIKE '%U18%'
+                     OR competition LIKE '%U17%'             OR competition LIKE '%U-17%'
                      OR competition LIKE '%Euro%Qual%'       OR competition LIKE '%Copa America%'
                      OR competition LIKE '%Championship Qual%'
                      OR competition LIKE '%Asian Cup%'       OR competition LIKE '%Gold Cup%')
