@@ -92,3 +92,57 @@
 
 - 추가 행: `matches` 101(LIV)·102(ATM) · `player_matches` 31행(+벤치 3) — cells_poss/def·map25_poss/def·phase_source 전원, stats_json phase_* · `team_match_stats` 2행(FotMob 한 스냅샷, xg_source=FotMob, PPDA·def_x WhoScored) · `slots` ATM 3-4-2-1 11행 · `match_reports` 37·38(draft→서사 병합 후 complete) · `match_game_setups` 2 · `match_player_prescriptions` 32 · `match_player_reports` 32.
 - 한계: 단일 경기·UCL 대회 축(PL 시계열과 분리) · SofaScore statistics 미수집(403) · ATM 슬롯 기하 단일 경기 · D+3 일괄 수집이라 당일/D+1 판정 분리 불가.
+
+
+## D+3 병합 절 (2026-09-12) — §2-1·§2-1a 서사 층
+
+> D+1~D+3을 한 회차로 병합했다(경기일 09-09, 수집 09-12). 영상은 전부 **자동 자막 전사 기준**(reports/transcripts/), 기사는 직접 열람. Marca·AS·MD·Relevo·The Athletic·Liverpool Echo 텍스트는 도메인 차단이라 유튜브 채널·EFE 전재·신디케이션으로 대체했다.
+
+### 2′. 전술 설명 — 서사 보강
+
+**리버풀(이라올라)**
+- 점유: 아라우호 보수 RB·케르케즈 높은 LB의 비대칭 백4, 소보슬라이–맥 알리스터 피벗은 **둘 다 박스 도착을 허용**한다 — 이라올라 「It's good that midfielders can add goals… it's inside them, for Gravenberch, Szoboszlai, Mac Allister」(「구조·위치 유지를 말하지만 박스 도착은 그들 본성이다」). 비르츠가 허브(Football Hacking 「primary structural hub」), 바르콜라는 우측 채널 러너(「Wirtz wants defenders looking at him, Barcola wants them looking away」 min91), 응구모하 좌측 1대1 드리블러.
+- 빌드업: 백4에서 채널로 조기 롱볼(아라우호→바르콜라, 입스위치전과 동일), 맥 알리스터 수직 패스, 짧은 시퀀스·세컨드볼 회수(두 골 모두). 점유 45%에 xG 2배 — 「possession is not penetration」(Red Tactics).
+- 비점유: **4-4-2 미드블록(비르츠 좌ST·이삭 우ST)** + 존→맨 혼합. 아틀레티코 백3+윙백의 여분 1명을 0~17분 처리 못 했다 — 이라올라 「Atlético has used a structure that they haven't used before this season and it has cost us a little bit to match up properly… we had a couple of minutes where we adjusted things」(「이번 시즌 쓰지 않던 구조라 매치업에 시간이 걸렸다. 실점 뒤 2분 조정하고 훨씬 잘 맞았다」). 실측 PPDA 전반 20.8 → 후반 13.5가 이 진술과 일치한다.
+- Rest-defense: **미해결**(Red Tactics 「isn't fixed」) — 피벗 둘이 볼 쪽으로 동시 이동해 6번 공간이 비었다(17′ 실점·알바레스 원거리 슛). 1v1 후방(자케·판 다이크)이 버텨 「never felt vulnerable at 2-1」(Anfield Wrap).
+- 전환: 최대 강점 — 상대 코너/턴오버 즉시 비르츠→바르콜라 스루(「most transition-effective team」 TM Talks Ball). 세트피스: 코너 7, 직접 득점 없음(50′은 코너 클리어 세컨드볼).
+
+**아틀레티코(시메오네)**
+- 포진: **이번 시즌 첫 백3** — 점유 3-4-2-1(Atlético Stats 「Yo te diría 3 4 2 1」·FotMob), 비점유 5-3-2~5-4-1(이라올라 「They played with a back five, in a 5-3-2」·TFA 3-5-2). 푸빌–로메로(중앙, 시즌 첫 선발)–한츠코(좌), 윙백 요렌테(우, 「muy alto desde el principio」)·줄리아노(좌, 본래 우측), 더블 피벗 바리오스·코케, 2선 이강인·바에나, 알바레스 9. 「4-4-2」로 적은 것은 명단 나열 기사(EFE 라인업·El Desmarque 라인업)뿐이다. 59′ 그리말도 투입 후 줄리아노 우측 복귀 → 사실상 백4, WhoScored formations 3-5-2(0~74)→3-4-2-1(74~78)→**4-4-2(78~)**.
+- 빌드업: 백3+피벗으로 리버풀 1차 압박에 +1 확보 → 윙백 우회(This Is Anfield 「easy to bypass Liverpool's press and find the wing-backs」). 로메로 전진 배급, 바리오스 측면 전환→요렌테, 알바레스·이강인 하강 연계. 개막 20분 점유 62~65%. **대가**: 자기 진영 볼 로스트(이강인 40′ = 1-1 기점, 그리말도·바리오스·바에나·푸빌).
+- 압박/블록: 초반 전방 압박(로메로가 상대 박스까지 동행) → 17′ 리드 후 ~27′부터 후퇴(El Gol Digital·AFP 「se replegó」, Sporting News ~27′) → 후반 저블록 수세. 실측 PPDA 전반 17.4 → **후반 9.5**(추격). 시메오네 자인: 「Necesitamos interpretar mejor los momentos del partido que hay que seguir jugando de una manera o de otra… por eso terminamos recibiendo los dos goles」(「어떤 방식으로 계속 갈지 순간을 더 잘 읽어야 한다. 그래서 두 골을 먹었다」).
+- Rest-defense: 박스 프론탈(2선 침입자) 미커버가 2-1 실점·반복 결함(Atlético Stats 「defender la frontal del área… los centrocampistas tienden a meterse casi en línea de centrales」). 두 실점 모두 코케 다리 사이로 슛이 통과.
+- 전환: 라인 뒤 침투자는 요렌테 하나(17′). 그 외 「movilidad al pie」·오프더볼 침투 부재(obs#496 지속). 세트피스: 코너 클리어 뒤 실점, 후반 크로스→한츠코·율만 헤더 2회 무효.
+- 교체: 59′ 이강인·코케 OUT(그리말도·루크만) → 73′ 데이비드(바에나) → 77′ 르노르망·율만(로메로·바리오스). 비판 수렴(COPE 미로·Pase Atrás·Atlético Stats): **연결고리 3인(이강인·바리오스·바에나) 전원 제거 → 「equipo plano」**, 플랜B 부재. 시메오네 「Los cambios empezaron a aparecer cuando perdíamos, buscando otras soluciones」 — 백3 채택 이유 질문에는 답하지 않았다.
+
+### 3′. 전술적 특성 — 판별 항목 결과
+
+| 항목 | 결과 |
+|---|---|
+| (a) 좌우 배치 | 바르콜라 **우** 선발(첫 선발, 60′ 경련), 응구모하 **좌** 선발, 학포 결장(내전근). 60′ 교체 후 **프림퐁 우·무뇨스 좌**로 스왑(DB avg_y 11.5/79.7 + 상대 평점 교차 확인). |
+| (b) 풀백 | 인버트 없음. 아라우호 보수+채널 롱볼+선택적 박스 도착(40′ 백힐 어시스트, 슛 3) — 이라올라 「defending really well his side… we underrate his offensive side」. 케르케즈 높은 좌 기준점(40′ 탈취 시발 / 17′ 추적 번복, 집계 최저 5.88). |
+| (c) 압박 | PPDA 공표값 0건 → **자체 산출 16.44(전반 20.8·후반 13.5)**. 시즌 상수 5.76·High와 크게 어긋남 — 백3 매치업 실패가 원인(이라올라 자인). |
+| (d) ATM 포메이션 | **백3+윙백**(3-4-2-1/5-3-2 하이브리드). 실점 후 5-4-1 전환 서술 0건, 78′ 4-4-2 회귀. obs#454·#508 「4-4-2 유지」의 반례 = 「빅 유럽 원정 조정」(TFA). |
+| (e) 9번 | **알바레스 깜짝 선발 90분**(전날 「todavía no lo veo para que empiece」 → 아침 대화 후 번복), 슛 3·어시 1, 그러나 중원 하강형(「Julián no debe olvidar que es el nueve」 Atlético Stats). 쇠를로트 부상 잔류, 아르나우 오르티스 UEFA 잔여 징계. 팀 박스 터치 18 vs 33. |
+| (f) 좌측 | 그리말도 벤치·한츠코 **좌CB(백3)**·로메로 중앙 — obs#460·#511 적중. 그러나 좌 윙백 줄리아노(El Desmarque 3·Pase Atrás 1)·한츠코 채널에서 1-1 발원, 그리말도 투입 후 El Desmarque 2(「sufrió ante Frimpong」). |
+| (g) 득점 | 17′ 오픈플레이(알바레스 하강→요렌테 라인 뒤 침투, 케르케즈 트랩 실기) · 40′ 하이 리게인(케르케즈 탈취/이강인 로스트)→바르콜라 슛 선방→세컨드볼→아라우호 백힐→소보슬라이 · 50′ 코너 클리어 세컨드볼 맥 알리스터 왼발 20야드(세트피스 직접 아님). |
+
+### 6′. 전술 변화 판정 — 서사 반영
+
+- 리버풀 유지: 4-2-3-1·dlp 더블 피벗·정통 윙어·전환 우위. 새로 나타난 것: 백3 상대 비점유 매치업 실패 → 라이브 조정(이라올라 「we've corrected quite well live… in four games, three times we've come back」). 반복 결함: rest-defense 6번 공간(2번째 지목). `manager_profiles` pressing·rest_defense·role_demands·situational 덧붙임.
+- 아틀레티코 새로 나타난 것: **첫 백3**, 알바레스 선발, 로메로 선발, 줄리아노 좌 윙백. 반복 결함: 리드 국면 후퇴·프론탈 미커버·연결고리 교체. `manager_profiles` formation·situational·rest_defense·role_demands 덧붙임. obs#454·508·510·511·514·460 판정 갱신(아래 obs 목록).
+
+### 8′. 영상·기사·감독 발언 — 소스 목록
+
+- **감독 1차 발언**: 이라올라 회견 전문 2편(This Is Anfield `gR_pzueBN2s` 09-10 · LFC `xBiwApe6wfk`, 자막 전사) + TNT/EFE 인터뷰(⚠️ EFE 스페인어판 「pensaba que saldrían con cinco defensas」는 영어 원문과 뜻이 뒤집힌 번역 오류 — 영어판 채택) · 시메오네 회견 전문(Mundo Deportivo `3E_7R6so73Q` es 전사 · AnfieldArmyNews `TyE61f5CQ9I` 통역 자막 · EFE/Infobae 09-09·09-10 · VAVEL ES 09-10 · El Desmarque 09-09 플래시). 시메오네는 리버풀 구조에 대해 한마디도 하지 않았다.
+- **유튜브 전술 분석(자막 전사)**: The Golden Sky 29:49(09-11) · min91 23:28(09-11) · Red Tactics with Neil 12:41(09-11) · Anfield Index Media Matters 15:13(09-10) · TM Talks Ball 13:59(09-10) · Ben Eddy 10:50 · talkSPORT 6:55 · Atlético Stats 19:01(09-10)·29:52(09-11, es) · Mundo Maldini(09-09, es) · Pase Atrás TV(09-10, es). 목록만: Stephen Garrett 26:40 · Atleti Fanatics 1:04 · El Enganche · ESPN FC · TNT 소보슬라이 인터뷰.
+- **전술 글**: tacticalfootballanalysis.com(Danny Corcoran, 09-11 — ⚠️ TFA와 다른 사이트) · Football Hacking(Saulo Faria, xT·패스 네트워크, 09-10) · It Was Always Liverpool(09-10) · The Anfield Wrap 리뷰(09-10) · Opta Analyst 스탯(09-09) · El Debate·VAVEL ES·Infobae/EFE 크로니카(09-09) · El Gol Digital 프리뷰(09-08)·리뷰(09-09). 403/402: This Is Anfield 5건·Liverpool.com 4건·Into the Calderón·Esto es Atleti 3건. 0건: Breaking The Lines·Coaches' Voice·TFA(totalfootballanalysis)·Panenka·Ecos del Balón·Spielverlagerung·The Athletic(차단).
+- **평점**: ESPN·Rousing The Kop·Express(AOL)·LFC Globe·TIA 집계(Mac Allister 7.73 최고·Kerkez 5.88 최저) / El Desmarque uno por uno·Football España·Pase Atrás(ATM). 🇰🇷 데일리스포츠한국(3-5-2 표기·이강인 투톱).
+- **미수행·사유**: PPDA 공표값 0건(자체 산출로 대체) · 이라올라 스페인어 원어 발언(회견이 영어 진행) · 헝가리어·프랑스어·독일어·슬로바키아어·노르웨이어 축 미시도(판별 항목이 영어·스페인어에서 닫혀 시간 배분상 생략 — 선수 개별 서사 단계에서 보완) · 알바레스 개인 박스 터치·빅찬스(SofaScore 403).
+- **체제·발행일 검증**: 전 자료 2026-09-08~09-11 게시분. 2025-09-17 리버풀 3-2 아틀레티코(슬롯 체제)·UEFA In the Zone 소보슬라이(2026-03)·시메오네 09-08 「posesión sin tiro」(경기 전) 배제.
+
+### 9′. 종결 판정
+
+- `match_reports` 37(LIV)·38(ATM) **complete**: 필수 8절 + 출전 32명 `match_player_reports` + 경기 전용 팀 설정 2 + 선발 22명·교체 10명 처방. D+1~D+3 예약은 하지 않는다 — 이미 D+3 경과분을 이 절에 병합했다.
+- 시즌 처방·팀 전술 정본 변경 없음(단일 경기·UCL 축). ATM 3-4-2-1 슬롯은 잠정(LOW-MEDIUM).
+- 다음 경기 재검증: ⑴ 리버풀 PPDA(풀럼전 09-12) ⑵ 아라우호 RB 3번째 표본 ⑶ ATM 백3 재등장(라리가 R5) ⑷ 알바레스 하강 vs 침투 ⑸ ATM 프론탈 커버.
