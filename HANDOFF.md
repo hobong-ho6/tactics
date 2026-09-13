@@ -10,7 +10,7 @@
 
 ## 현재 상태
 
-> **2026-09-13 KST(야간)** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 **`5d1762d`** · **✅ origin 일치** ·
+> **2026-09-13 KST(야간)** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 **`dd8e08c`** · **✅ origin 일치** ·
 > ⚠️ 미추적 폴더 `reports/ingame/*`(커밋 여부 사용자 판단, 09-08~09-10분 그대로 누적 중).
 > **스케줄 태스크 목록 확정(09-13 야간 재정리)**: 활성 6건 = 정기 3(unifi 월 10:03 · match-watch 월 10:06 · `henderson-che-debut-recollect` 매일 09:07)
 > + 일회성 3(`match-watch-avl-forest-followup-d2` 09-14 23:00 · `-d3` 09-15 23:00 · `match-watch-che-hull-followup-d2` 09-14 23:00, **CHE는 사용자 지시로 D+2에서 종결·D+3 없음**).
