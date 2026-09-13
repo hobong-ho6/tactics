@@ -600,7 +600,9 @@ function render(){
       : `<span class="badge mid">${String(s).replace(/^20(\d\d)-(\d\d)$/, '$1/$2')}</span>`;
     const pres = td.prescriptions.filter(p=>p.label===key&&p.map25&&p.kind.startsWith('measured'))
       .slice().sort((a,b)=>String(b.season??'').localeCompare(String(a.season??'')));   // 최신 시즌 먼저
-    document.getElementById('grids').innerHTML = (pres.length?pres:CURRENT.filter(q=>q.player_id===sel.pid).map(q=>({kind:'measured(스쿼드)',map25:q.map25,sample_n:null,avg_rating:q.rating})))   // ⚠️ 스쿼드 그리드는 시즌을 단정하지 않는다(선수별 출처가 갈린다)
+    document.getElementById('grids').innerHTML = (pres.length?pres:CURRENT.filter(q=>q.player_id===sel.pid).map(q=>({kind:'measured(스쿼드)',map25:q.map25,sample_n:null,avg_rating:q.rating}))
+        // ⛔ 자리표시(25칸 전부 0)는 실측이 아니다 — core/encode.py는 최대값 0이면 None을 낸다. 히트맵으로 그리지 않는다.
+        .filter(q=>q.map25 && !/^0{25}$/.test(q.map25)))   // ⚠️ 스쿼드 그리드는 시즌을 단정하지 않는다(선수별 출처가 갈린다)
       .map(p=>{
         const kl = kindLabel(p.kind);
         return `<div class="pcard">${seasonBadge(p.season)}
