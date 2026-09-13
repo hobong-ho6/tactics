@@ -65,3 +65,31 @@
 ## 9. 데이터 반영과 한계
 - 추가: `matches` · `player_matches` 16행(국면 그리드·stats_json phase 포함) · `team_match_stats` 1행(xg_source=FotMob, PPDA·def_x WhoScored) · `match_reports` 39(draft) · `match_game_setups` 1 · `match_player_prescriptions` 16 · `match_player_reports` 16.
 - 한계: 단일 경기 · 롱볼/크로스 시도 역산 · 서사 층 미병합(draft).
+
+
+## D+1 서사 병합 (2026-09-13)
+
+### 감독 발언(원문+번역)
+- 에메리(avfc.co.uk 「EMERY ON FOREST LOSS」 09-12): 「The first half, we played really fantastic, like we were planning and building the team. We stopped them, dominated, created chances」(전반은 우리가 계획하고 만들어 온 그대로 환상적이었다) · ⭐「The second half was completely different; **I don't know why**. They started by scoring quickly and **we lost our shape, we lost our position**」(후반은 완전히 달랐다. 왜 그런지 모르겠다. 형태와 위치를 잃었다) · 「Usually we are being compact and not conceding so many chances」(평소 우리는 컴팩트하게 유지하며 이렇게 많은 기회를 내주지 않는다) · 「We made changes in the second half and we drew level… but the injury to Maatsen was penalising us」.
+- 에메리(마첸 부상): 「it was a tackle that normally the VAR should call the referee to watch. From my point of view, **it should be a red card**」(보통 VAR이 주심을 불렀어야 할 태클이다. 내 관점에선 레드카드다). 부상 기간은 「maybe it is a long time」.
+- 에메리(잭슨 교체, Hayters TV): ⭐「Nico Jackson had a yellow card and the referee was telling us that he needed to keep calm… I know Jackson and he could have one action with his power being dangerous for another yellow. **It was my decision**」 ⇒ **전술이 아니라 퇴장 리스크 관리**.
+- 에메리(데뷔 2인): 「**Manzambi**, after a long time, this is the first minutes he's played, and **Mbaye** showed us his skill, **threatening them on the left side**」.
+- 글라스너(포레스트): ⭐「Yesterday we had the circumstances when we got the results of the scans at 9.30 in the evening」 · 「**I knocked at Ola's and Ousmane's door and told them they will start in a back three**」(어제 밤 9시 30분에 스캔 결과를 받았고, 올라와 우스만의 방문을 두드려 백3로 선발 출전한다고 말했다) ⇒ **백3는 빌라 맞춤 설계가 아니라 CB 2명 이탈로 강제된 것**. 후반 조정은 「moved the ball quicker and switched from left to right」 하나.
+
+### 판별 결과
+| 항목 | 결과 |
+|---|---|
+| (a) 잭슨 false9 | ⛔ **유효 표본 아님** — 45분·hp 13, 경고 리스크로 교체, avg_x 71.6 최전방 고정. 재검증 ① 이월. |
+| (b) 풀백 좌우 | ⭐ **좌측 과부하**로 답 — 마첸(avg_x 53.2)이 완비사카(48.0)보다 전진했는데 헤밍스와 레인 중복 + 밍스 중앙 수축(avg_y 68.5→60.5) → 후반 1v1 고립, 결승골이 그 좌측 관통. 완비사카는 억제형(fb_wingback/Balanced .915). |
+| (c) 무공 4-4-2 | ⛔ **성립 안 함** — 후반은 무형태(에메리 「I don't know why」, UTV 「there was no structure」). 4번째 표본 미달. |
+| (d) 25′ 교체 | **파우 토레스 오른쪽 햄스트링 부상** → 밍스 IN(부상 교체). |
+| (e) 후반 붕괴 원인 | 첫 실점이 후반 45초 **자멸형 턴오버**(바클리 자기 진영 + 카마라 플릭) → 형태 상실 → 압박 빈도는 유지(PPDA 9.73)인데 슈팅 3:17. UTV는 「45~60분 붕괴가 에메리 체제 반복 고질(composed to casual)」이라 주장(3티어 단일). |
+| (f) 교체 3인 | 알리송 45분 7.4 동점 헤더 · **음바예 27분 데뷔, 팀 유일한 전진 속도·동점골 기점** · 만잠비 27분 장기 결장 후 복귀. |
+
+⚠️ **실측·서사 충돌**: 밍스 실측 평점 7.3(필드 최고 tie) ↔ 매체 5/10. 불변규칙 3에 따라 실측 채택하고 충돌을 기록한다.
+
+### 소스·0건
+UTV 전사 2편(auto-caption) · avfc.co.uk · Hayters TV · Yahoo 전재 · AstonVillaNews 평점. **0건**: Birmingham Live(검색 노출 자체 없음) · 1874 경기 후 영상 · 스페인어·독일어 1차 소스 각 0건 · Express&Star·Read Aston Villa·Heavy 403 · The Athletic 페이월. The Villans는 DOM 렌더 실패로 확인 불가.
+
+### 종결
+`match_reports` 39 **complete**. 시즌 정본 변경 없음. obs#638~642. 부상 2건(파우 토레스·마첸)을 `player_status`에 적재(09-12 발생, 09-13 수집).

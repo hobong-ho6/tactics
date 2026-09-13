@@ -375,6 +375,7 @@ function renderCard(sel, g0, g26, g27, isGkRow){
    ⚠️ 스냅샷이므로 신선도를 함께 보여준다 — stale_days가 크면 「현재 상태」로 읽으면 안 된다.
    부상 표기는 FotMob 원문(영문)을 정본으로 두고 한글은 보조 라벨이다(원문이 없는 값은 그대로 노출). */
 const INJ_KR = {
+  'Red card suspension (3 matches)':'퇴장 징계 3경기',
   'Cruciate ligament injury':'십자인대', 'Knee injury':'무릎', 'Hamstring injury':'햄스트링',
   'Muscle injury':'근육', 'Groin injury':'서혜부', 'Achilles tendon injury':'아킬레스건',
   'Ankle injury':'발목', 'Calf injury':'종아리', 'Thigh injury':'허벅지', 'Back injury':'허리',
@@ -386,7 +387,7 @@ function renderStatus(sel){
   const el = document.getElementById('pstatus');
   const rows = (td.player_status ?? []).filter(r => sel.pid != null && r.player_id === sel.pid);
   if (!rows.length){ el.innerHTML = ''; return; }
-  const inj = rows.filter(r => r.kind === 'injury');
+  const inj = rows.filter(r => r.kind === 'injury' || r.kind === 'suspension');
   const con = rows.find(r => r.kind === 'contract_end');
   const fresh = d => d == null ? '' : d <= 1 ? '오늘 수집' : d <= 7 ? `${d}일 전 수집` : `<b style="color:var(--warn)">${d}일 전 수집 — 갱신 필요</b>`;
   const ret = t => { if (!t) return '미제시'; return RET_KR[t] ? `${RET_KR[t]}` : esc(t); };
@@ -396,17 +397,18 @@ function renderStatus(sel){
       const kr = INJ_KR[r.value];
       const label = kr ? `${kr} <small class="dim">(${esc(r.value)})</small>` : esc(r.value ?? '부상');
       const doubt = /doubt/i.test(r.detail ?? '');
+      const susp = r.kind === 'suspension';
       return `<div class="panel injcard${r.played_after ? ' contra' : ''}">
-        <div class="kv"><span class="badge inj">${r.played_after ? '기록 모순' : doubt ? '출전 불투명' : '부상'}</span>
+        <div class="kv"><span class="badge inj">${susp ? '출전 정지' : r.played_after ? '기록 모순' : doubt ? '출전 불투명' : '부상'}</span>
           <b>${label}</b></div>
         <div class="kv injgrid">
-          <span><b>복귀 예상</b>${ret(r.detail)}</span>
+          <span><b>${susp ? '복귀' : '복귀 예상'}</b>${ret(r.detail)}</span>
           <span><b>소스 갱신일</b>${esc(r.as_of ?? '미제시')}</span>
           <span><b>스냅샷</b>${esc(r.pulled ?? '')} <small class="dim">${fresh(r.stale_days)}</small></span>
           ${r.played_after ? `<span style="color:var(--warn)"><b>⚠️ 이후 출전</b>${esc(r.played_after)} ${r.played_after_minutes ?? '?'}분</span>` : ''}
           ${con ? `<span><b>계약 만료</b>${esc(con.value ?? '미수집')}</span>` : ''}
         </div>
-        ${r.played_after ? `<p class="dim" style="font-size:12px;margin:6px 0 0;color:var(--warn)">
+        ${r.played_after && !susp ? `<p class="dim" style="font-size:12px;margin:6px 0 0;color:var(--warn)">
           ⚠️ <b>소스 모순</b> — 이 부상 기록의 갱신일(${esc(r.as_of ?? r.pulled)}) 이후 <b>${esc(r.played_after)}에 ${r.played_after_minutes ?? '?'}분 출전</b>했다.
           집계 사이트가 해소된 부상을 내리지 않은 경우가 많다. <b>실측 출전이 이긴다</b> — 현재 가용으로 읽되, 구단 공식·감독 회견으로 재확인할 것.</p>` : ''}
         <p class="dim" style="font-size:12px;margin:6px 0 0">출처 ${esc((r.source ?? '').split('(')[0])} ·

@@ -62,3 +62,28 @@
 ## 9. 데이터 반영과 한계
 - 추가: `matches` · `player_matches` 16행 · `team_match_stats` 1행 · `match_reports` 41(draft) · 설정 1 · 처방 16 · 선수 리포트 16.
 - 한계: 단일 경기 · 시도 수 역산 · 서사 미병합.
+
+
+## D+1 서사 병합 (2026-09-13)
+
+### 감독 발언(원문+번역)
+- 이라올라: 「When you draw, especially at home, you can't be happy. Today we **lacked a bit of freshness** and we did not do enough offensively to make the difference」(홈에서 비기면 만족할 수 없다. 오늘은 신선함이 조금 부족했고 차이를 만들 만큼 공격하지 못했다) · ⭐「I think it's the **first game since I'm here that we've had problems to create chances** to score goals」(내가 온 이후 득점 기회를 만드는 데 문제가 있었던 첫 경기다) · 「our best chances coming from **set-plays**, the crossbar, the one from Alex [Isak]」 · 「it's the **worst turnaround** in terms of 60-something hours between the games, after a very big game the other day」 · ⭐「especially in the first half, we were **arriving late to the presses**. It's clear」.
+- 스페인어 매체 요약(Infobae/Yahoo): 「세트피스 한 방이나 번뜩이는 한 순간으로 이겨야 하는 종류의 경기」.
+
+### 판별 결과
+| 항목 | 결과 |
+|---|---|
+| (a) 빅찬스 4개 무산 | **창출 구조 문제**(감독 자인) — 최고 기회는 세트피스, 14슛 중 5개가 박스 밖. 90분까지 양 팀 xG ~0.72 동률, 격차는 추가시간 이삭 0.31에서 사후 발생. |
+| (b) 박스 터치 18:24 | **이상 징후 아님** — 풀럼은 이 경기 전까지 PL 상대 박스터치 1위. 그 24를 xG 0.70에 묶은 것은 수비 성과(자케 8.5·듀얼 8/9·공중 5/5·골라인 클리어). **문제는 우리의 18**. |
+| (c) 압박 | PPDA 9.67(전반 10.53·후반 8.50)로 시즌 대역 복귀 — 아틀레티코전 16.44가 백3 매치업의 함수였다는 해석의 2번째 표본. 단 감독은 전반 압박 지연을 인정. **PPDA 공표값은 어느 매체도 보도 0건**. |
+| (d) rest-defense 6번 공간 | **3번째 관찰 확정**, 기전은 다르다 — 「피벗 둘 다 전진 성향이라 애초에 잔류가 없음」(소보슬라이·흐라벤베르흐 그라운드 듀얼 16중 3승, 소보슬라이 1/9). |
+| (e) 로테이션 | 선발 변경 3명(치미카스·흐라벤베르흐·무뇨스) **전원 60분 이전 아웃**. 감독은 「대부분 피지컬」이라 했으나 치미카스는 패스 65%로 경기력 쪽 — 충돌 기록. 무뇨스만 설계(「윙어에게 60분 전력」). |
+| (f) 각포·케르케즈 | 각포 내전근에서 **복귀**(60′ 우측 30분). 케르케즈의 09-09 교체는 부상이 아니라 쥐(이라올라 「just cramping」) — 09-12 하프타임 투입. |
+
+⚠️ **xG 소스 갈림**: FotMob 1.28:0.70 ↔ Opta 1.13:0.71. 우리 정본은 FotMob(xg_source 고정).
+
+### 소스·0건
+유튜브 전사 3편(c5etzTzcUQs·N-oZ3Cn_XDc·mtmL8cH18Qo, auto-caption) · 이라올라 회견 영어·스페인어 병기 · David Lynch 실측 분석 · Infobae/Yahoo. **0건**: PPDA 공표값.
+
+### 종결
+`match_reports` 41 **complete**. 시즌 정본 변경 없음. obs#643~645.
