@@ -256,6 +256,92 @@ function renderEval(n, sel){
         <b>근거</b>${prose(e.source)}<b>신뢰도</b>${prose(e.confidence)}${
           e.updated?`<b>갱신</b> ${e.updated}`:''}</div></details>`;
 }
+/* ⭐ 그리드 kind 번역 (2026-09-13, 사용자 지적 「각 카드별 라벨이 뭘 의미하는지 모르겠다」).
+   ⛔ 종전엔 `measured:season:LWAML` 같은 **DB 내부 어휘를 그대로** 카드에 찍었다.
+   ⇒ 한글 제목 + 툴팁으로 풀되, **원문 kind는 작게 남겨** DB 추적성을 잃지 않는다(발명 금지·은폐 금지). */
+const KIND_SEG = {
+  season:['시즌 전체','그 시즌 출전 경기를 모두 합친 표본'],
+  full2526:['25/26 전수','25/26 시즌 경기를 다시 전부 수집해 만든 표본 — 보통 가장 크고 신뢰도가 높다'],
+  'villa-only':['빌라 소속분만','빌라에서 뛴 경기만 골라낸 표본'],
+  'CP-loan':['팰리스 임대','크리스털 팰리스 임대 시절 경기만'],
+  bundesliga:['분데스리가','분데스리가 경기만'], europa:['유로파리그','유로파리그 경기만'],
+  pokal:['DFB 포칼','독일 컵대회 경기만'], worldcup:['월드컵','월드컵 경기만(대표팀)'],
+  national:['대표팀','대표팀 경기만'], 'laliga-r1':['라리가 R1','라리가 1라운드 경기'],
+  CAM:['공격형 MF로','공격형 미드필더로 뛴 경기만'], 'CAM-central':['공격형 MF(중앙)','공격형 미드필더 중 중앙에 선 경기만'],
+  LWAML:['좌측 윙으로','좌측 윙·좌측 공격형으로 뛴 경기만'], RMAMR:['우측 윙으로','우측 MF·우측 공격형으로 뛴 경기만'],
+  pivotleft:['좌측 피벗으로','중원 2인 중 왼쪽에 선 경기만'], pivotright:['우측 피벗으로','중원 2인 중 오른쪽에 선 경기만'],
+  pivotcentre:['중앙 피벗으로','중원 중앙에 선 경기만'],
+  'pivot-left':['좌측 피벗으로','중원 2인 중 왼쪽에 선 경기만'], 'pivot-right':['우측 피벗으로','중원 2인 중 오른쪽에 선 경기만'],
+  RM:['우측 MF로','우측 미드필더로 뛴 경기만'], ST:['스트라이커로','최전방 공격수로 뛴 경기만'],
+  F:['공격수로','공격수로 분류된 경기만'], M:['미드필더로','미드필더로 분류된 경기만'],
+  L:['좌측','좌측에서 뛴 경기만'], R:['우측','우측에서 뛴 경기만'],
+  side:['',''], possH:['점유 높을 때','우리 팀 점유율이 높았던 경기만 — 상대가 내려앉은 국면'],
+  possL:['점유 낮을 때','우리 팀 점유율이 낮았던 경기만 — 수세 국면'],
+};
+const KIND_MOD = {
+  dom:['우세 경기만','2골 차 이상으로 이긴 경기만 모은 표본 — 여유 있을 때의 위치'],
+  tight:['접전만','점수 차가 작았던 경기만 모은 표본 — 긴장된 국면의 위치'],
+};
+function kindLabel(kind){
+  const raw = String(kind ?? '');
+  if (raw === 'measured(스쿼드)') return { title:'스쿼드 그리드', tip:'선수 화면 공통으로 쓰는 대표 그리드(`squad_entries`). 선수마다 출처 시즌이 달라 시즌 배지를 달지 않는다.', raw };
+  const [body, mod] = raw.split('@');
+  const segs = body.split(':').filter(s => s && s !== 'measured');
+  const parts = [], tips = [];
+  for (const s of segs){
+    const hit = KIND_SEG[s];
+    if (hit){ if (hit[0]) parts.push(hit[0]); if (hit[1]) tips.push(hit[1]); }
+    else { parts.push(s); tips.push(`「${s}」는 아직 한글 풀이가 등록되지 않은 내부 구분자다`); }   // ⛔ 모르면 감추지 않고 드러낸다
+  }
+  if (mod){ const m = KIND_MOD[mod]; if (m){ parts.push(m[0]); tips.push(m[1]); } else { parts.push(mod); } }
+  const title = parts.length ? parts.join(' · ') : '전체 실측';
+  if (!parts.length) tips.push('그 포지션에서 뛴 경기를 모두 합친 기본 표본');
+  return { title, tip: tips.join(' / '), raw };
+}
+
+/* ⭐ 시즌 요약 — (리그, 시즌)별로 끊어 그린다 (2026-09-13, 사용자 지적).
+   ⛔ 종전엔 헤더가 `fms[0]` 하나였는데 카드는 **전 묶음을 이어 붙였다** — 스즈키는 5묶음 35장이
+   「Serie A 2025/2026」 한 줄 아래 통째로 붙어 대부분의 카드에 **라벨이 틀렸다**.
+   바로 위 fbref 블록은 같은 문제를 이미 처리해 뒀는데(버킷 분리) 이쪽만 빠져 있었다. */
+const METRIC_TIP = {
+  '출전':'그 시즌에 실제로 뛴 경기 수(교체 출전 포함).',
+  '경기':'그 시즌에 실제로 뛴 경기 수(교체 출전 포함).',
+  '선발':'경기 시작부터 뛴 횟수. 교체로 들어온 경기는 빠진다.',
+  '출전 시간':'그 시즌에 뛴 총 시간(분). 경기 수보다 실제 비중을 잘 보여준다.',
+  '분':'그 시즌에 뛴 총 시간(분).',
+  '평점':'경기마다 매겨진 수행 점수의 평균. 6.5=평범, 7.0+=준수, 7.5+=상위권. 제공사 모델이 매기므로 절대 기준이 아니다.',
+  '골':'직접 넣은 득점 수.',
+  '어시':'득점으로 바로 이어진 마지막 패스 수.',
+  '실점':'⚠️ 골키퍼 지표 — 그가 뛴 동안 팀이 먹은 골 수. 낮을수록 좋지만 **팀 수비 수준에 크게 좌우**되므로 혼자만의 성적으로 읽으면 안 된다.',
+  '클린시트':'무실점으로 끝낸 경기 수. 이것도 팀 수비의 결과가 크다.',
+  '선방률':'상대의 유효슈팅 중 막아낸 비율(%). 실점 수보다 골키퍼 개인 기여를 잘 보여준다.',
+  '선방으로 막은 실점':'기대 실점(슛의 위치·질로 계산한 값)보다 실제로 몇 골 덜 먹었는지. **양수면 기대보다 잘 막았다**는 뜻이고, 음수면 기대보다 더 먹었다는 뜻이다. 골키퍼 개인 능력에 가장 가까운 지표.',
+  'PK 선방':'페널티킥을 막아낸 횟수 / 상대한 횟수.',
+  '경고':'받은 옐로카드 수.', '퇴장':'받은 레드카드 수(경고 2회 누적 포함).',
+};
+function seasonSummary(fms){
+  if (!fms.length) return '';
+  // (리그, 시즌)로 묶고 시즌 내림차순 — 최신이 위로.
+  const b = new Map();
+  for (const s of fms){
+    const k = `${s.league} ${s.season}`;
+    (b.get(k) ?? b.set(k, []).get(k)).push(s);
+  }
+  const key = s => String(s||'').replace(/[^\d]/g,'');
+  return [...b.entries()].sort((x,y)=>key(y[1][0].season).localeCompare(key(x[1][0].season)))
+    .map(([label, items]) => `
+      <div class="kv" style="margin-top:12px;border-top:1px solid var(--line);padding-top:8px">
+        <b>${esc(label)}</b> <small class="dim">— 시즌 요약 · 지표 ${items.length}개</small></div>
+      <div class="cardrow" style="margin-top:4px">${items.map(s=>{
+        const name = s.metric_kr || s.metric;
+        const tip = METRIC_TIP[name];
+        return `<div class="pcard" style="min-width:96px;text-align:center"><b style="font-size:16px">${esc(String(s.value))}</b><br>
+          ${tip ? `<abbr class="gl" tabindex="0" data-tip="${esc(tip)}" title="${esc(tip)}"><small class="dim">${esc(name)}</small></abbr>`
+                : `<small class="dim">${esc(name)}</small>`}</div>`;
+      }).join('')}</div>`).join('')
+    + `<p class="dim" style="font-size:12px;margin:8px 0 0">⚠️ 묶음마다 <b>리그·시즌·소속팀이 다르다</b> — 가로로 이어 읽지 말고
+       <b>한 묶음씩</b> 보라. 지표 이름에 마우스를 올리면 뜻이 나온다.</p>`;
+}
 /* 백분위 막대 — 두 모집단이 같은 표현을 쓴다 */
 function bar(name,val,pct,tip){
   const col=pct>=70?'var(--ok)':pct>=40?'var(--warn)':'var(--bad)';
@@ -299,11 +385,7 @@ function renderLeague(key, force, sel){
         return bar(m.metric_kr||m.metric, v, pct, `${m.metric} — 시즌 합계 ${v}${p90} · 동포지션 백분위 ${pct}`);
       }).join('')
       : '<span class="dim">백분위 없음 — 수집 풀 탭을 보라.</span>')
-    + (fms.length ? `<div class="kv" style="margin-top:10px"><b>${fms[0].league} ${fms[0].season}</b>
-         <small class="dim">— 시즌 요약</small></div>
-         <div class="cardrow" style="margin-top:4px">${fms.map(s=>
-           `<div class="pcard" style="min-width:96px;text-align:center"><b style="font-size:16px">${s.value}</b><br>
-            <small class="dim">${s.metric_kr||s.metric}</small></div>`).join('')}</div>` : '');
+    + seasonSummary(fms);
   return true;
 }
 /* Fotmob 스탯만으로 내린 평가 — 비교 기준 영역 하단. 실측·커널과 독립된 제2의 시선이다. */
@@ -518,15 +600,25 @@ function render(){
     const pres = td.prescriptions.filter(p=>p.label===key&&p.map25&&p.kind.startsWith('measured'))
       .slice().sort((a,b)=>String(b.season??'').localeCompare(String(a.season??'')));   // 최신 시즌 먼저
     document.getElementById('grids').innerHTML = (pres.length?pres:CURRENT.filter(q=>q.player_id===sel.pid).map(q=>({kind:'measured(스쿼드)',map25:q.map25,sample_n:null,avg_rating:q.rating})))   // ⚠️ 스쿼드 그리드는 시즌을 단정하지 않는다(선수별 출처가 갈린다)
-      .map(p=>`<div class="pcard">${seasonBadge(p.season)} <b>${p.kind}</b> <small class="dim">${p.pos_label??''}</small><br>${miniGrid(p.map25)}<br>
-        <small class="dim">n=${p.sample_n??'—'} · 평점 ${p.avg_rating??'—'} · ${
-          gkPosCell(td, p.pos_label ?? sq0?.slot_type, sel.pid) ?? `sim ${p.fit_sim??'—'}`}</small></div>`).join('') || '<span class="dim">실측 그리드 없음</span>';
+      .map(p=>{
+        const kl = kindLabel(p.kind);
+        return `<div class="pcard">${seasonBadge(p.season)}
+          <abbr class="gl" tabindex="0" data-tip="${esc(kl.tip)}" title="${esc(kl.tip)}"><b>${esc(kl.title)}</b></abbr>
+          <small class="dim">${esc(p.pos_label ?? '')}</small><br>${miniGrid(p.map25)}<br>
+          <small class="dim">n=${p.sample_n??'—'} · 평점 ${p.avg_rating??'—'} · ${
+            gkPosCell(td, p.pos_label ?? sq0?.slot_type, sel.pid) ?? `sim ${p.fit_sim??'—'}`}</small><br>
+          <small class="dim" style="font-size:10px;opacity:.55">${esc(kl.raw)}</small></div>`;
+      }).join('') || '<span class="dim">실측 그리드 없음</span>';
     const st = td.player_stats.find(s=>s.label===key);
   document.getElementById('pstat').innerHTML = st ? annotate(`경기 <b>${st.n}</b> · 분 <b>${st.minutes??'—'}</b> · 평점 <b>${st.avg_rating??'—'}</b> · xG <b>${st.xg_pg??'—'}</b> · xA <b>${st.xa_pg??'—'}</b> · 키패스 <b>${st.kp_pg??'—'}</b> · 듀얼승 <b>${st.dw_pg??'—'}</b> · 태클 <b>${st.tk_pg??'—'}</b> · 인터셉트 <b>${st.ic_pg??'—'}</b>`) : '<span class="dim">경기 스탯 없음 (match-watch 수집 대기)</span>';
     // 시즌 성적 — 대회별 (Fotmob 선수 페이지 참고)
     const ss=pickRows(td.season_stats, sel);
     document.getElementById('season').innerHTML = ss.length
-      ? `<table><tr><th>시즌</th><th>대회</th><th>경기</th><th>선발</th><th>분</th><th>골</th><th>어시</th><th>평점</th></tr>`
+      ? `<table><tr><th>시즌</th><th>대회</th>${
+          [['경기','실제로 뛴 경기 수(교체 출전 포함)'],['선발','경기 시작부터 뛴 횟수. 교체 출전은 빠진다'],
+           ['분','그 대회에서 뛴 총 시간(분)'],['골','직접 넣은 득점 수'],['어시','득점으로 바로 이어진 마지막 패스 수'],
+           ['평점','경기 수행 점수의 평균. 6.5=평범 · 7.0+=준수 · 7.5+=상위권']]
+          .map(([n,t])=>`<th><abbr class="gl" tabindex="0" data-tip="${esc(t)}" title="${esc(t)}">${n}</abbr></th>`).join('')}</tr>`
         + ss.map(s=>`<tr><td>${s.season}</td><td>${s.competition}</td><td>${s.n}</td><td>${s.starts??'—'}</td>
             <td>${s.minutes??'—'}</td><td>${s.goals??0}</td><td>${s.assists??0}</td><td><b>${s.avg_rating??'—'}</b></td></tr>`).join('')
         + '</table>'
