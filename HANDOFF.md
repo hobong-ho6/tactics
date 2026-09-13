@@ -19,13 +19,22 @@
 > **09-13 아침 세션 요약**: **PL R4 3경기 전량 수집·complete**(AVL 1-2 포레스트 report 39 · CHE 2-2 헐 40 · LIV 0-0 풀럼 41, 실측 48명·국면 그리드·PPDA/def_x·처방 27행 재산출, obs#632~646) + **부상·결장 축 라이브 시스템 편입**(`player_status` export·player.html 카드·출전 교차검증) + 브뤼헤전 D+3 완료(obs#630·631, 09-12).
 > 09-11·09-12 세션 요약은 「최근 작업」 참조(FC27 4팀 PlayStyles/키/몸무게/카드 수집·player.html 재구성·squad_entries CONFIRMED 이적 32행 삭제·FC25→FC27 게임스탯 176행 시계열 등).
 > ⛔⛔ **정책 유지**: `squad_entries.lh`가 이적 완료 후에도 OWNED로 남는 건 **비정상** — 매 세션 `squad_entries ⋈ transfer_outgoing(likelihood='CONFIRMED')` 대조해 즉시 삭제할 것.
+> **09-13 낮 세션 요약**(`a705eaa`…`782f83e`): ⑴ **선수 화면 전면 손질** — 시즌 요약이 5묶음 35장을 한 헤더 아래 붙이던 버그 수정 ·
+> 그리드 kind 한글화(`measured:season:LWAML`→「시즌 전체 · 좌측 윙으로」) · **스탯 툴팁 130여 종 신설**(`site/assets/stat-tips.js`, 선수당 최대 128개) ·
+> 히트맵 **기준 시즌 축**(25/26 정본 ↔ 26/27 현재, compare.html 토글) · map25 원문 노출 제거 · 자리표시(전부 0) 그리드를 실측에서 분리 ·
+> 종합평가 등급 파싱 버그(`—` 없으면 문장이 배지·본문에 두 번) 수정. ⑵ **평가 결손 전면 해소** — 공식전 출전자 4명 신규(바르코 B ⭐ 등록 LB인데 알론소는 중앙 MF로만 씀) +
+> **fotmob_eval 16명 작성 → 4팀 결손 0**. ⑶ ⭐⭐ **평가 갱신을 4단 트리거로 규약화**(obs#697, match-watch §4-1) — 달력 주기 폐기,
+> `sample_*` 정형 컬럼 5종 신설 + `scripts/refresh_eval_samples.py`로 T1 자동화, 화면에 **「N경기 전 기준」 신선도 배지**.
+> ⑷ ⭐⭐ **외부 대조축 발견**(obs#700~702) — **Brom Squad Gaming**(우리와 같은 일을 하는 채널, 4팀 전부 수록)과 대조해 **마첸·왓킨스 완전 일치**,
+> **캐시는 「안으로 접혀 임시 백3」=falseback**으로 우리 다음 A/B 가설을 독립 지지. **Geografifa** 통제 실험에서 **EA 시뮬은 프레스티지가 결과를 가르고
+> 포메이션은 「선수 선발 필터」**임을 관측 ⇒ **시뮬은 위치 측정에만 쓴다**는 경계가 생겼다(아래 「다음 할 일 0」에 반영).
 
 - DB(09-13 야간 재확인): players **206**(id 최대 212, 6명 신규 헨더슨·에키티케·레오니·브래들리·에메하·야로시 포함) · player_matches **5,518** ·
   team_match_stats **70** · match_reports **41**(**complete 26**) · match_player_reports **598** · **squad_entries 117**(신규 6명 등록 포함) ·
   prescriptions **484** · slots **110**(CHE 4-2-3-1 Wide DM 슬롯 11개 신설) · match_game_setups **19** · match_player_prescriptions **306** ·
-  observations **652**(obs#649까지) ·
+  observations **701**(obs#702까지) ·
   transfer_targets **44** · transfer_outgoing **67** · player_duties **208** ·
-  player_shirt_numbers **116** · understat_player_matches **5,634** · **teams 37** · **player_evaluations 128** · **transfer_summary 4** · `game_role_focus.movement_kr` **85/85** ·
+  player_shirt_numbers **116** · understat_player_matches **5,634** · **teams 37** · **player_evaluations 132**(표본 정형 컬럼 `sample_*` 5종 신설·132행 백필 · fotmob_eval 결손 **0**) · **transfer_summary 4** · `game_role_focus.movement_kr` **85/85** ·
   `team_match_stats.xg_source` **62/70** · `game_system_changes` **18** · **reproduction_limits 13** · **ingame_captures 75**(T1 15·T2 14·T3 13·T4 11·SIM 11·T5 11) · team_tactic_setups **24**(ingame 6행) · observations **588** · match_reports **36** · player_matches **4,922** ·
   `match_game_setups.rule_note` **19/19**(재판정 후 RULE 8 · DIVERGE 7(사유 명시) · NO-STATS 4) · `player_matches.cells_def` **0/3,363**(다음 경기부터) ·
   `player_game_stats`(FC27, roster_date=2026-09-10) **131행**(AVL·CHE·LIV 103 + ATM 26 + 완비사카·하우드-벨리스·미겔요렌테 보강 3) —
@@ -108,26 +117,6 @@
 - ⚠️ **동시 세션 주의**: 이 세션 도중 다른 세션이 워킹트리에 docs/30·match-watch SKILL.md 변경(Jacob Tanswell 필수 조회 규칙, 09-13 사용자 지시)을
   남겨둔 것을 발견해 함께 커밋함. 여러 PC/세션이 같은 저장소를 동시에 쓸 수 있다 — 커밋 전 `git status`로 남의 변경분을 식별할 것.
 
-### 2026-09-12 ⑾ — 결손 수집 · FC25→FC27 게임스탯 시계열 · 종합평가 19명 (`0aa7c79`·`1c6241b`, obs#616)
-
-- **FotMob 결손 15명**(`collect_fotmob_players.py --resolve-ids`): detail +144·season +38·traits +12·market +84·status +7. 조나단 데이비드 fotmob 939569
-  (Lille→Juventus→ATM 텐유어). 니콜자줄리 포지션 DB CM ↔ FotMob AM 불일치는 덮지 않고 보고만. 유스 6명(도밍게스·카스티요·모레노·라하도·미겔 요렌테·니콜자줄리)은 표본 자체가 없다.
-- ⭐⭐ **FC25·FC26 출시판 시계열**: fut.gg `/api/fut/player-item-definitions/{25,26}/{eaId}/`가 **curl 200**(브라우저 불필요) — 34속성·PS(+)·키·몸무게·AcceleRATE·`createdAt`.
-  EA id는 FC27 09-10 행 `card_image_url`의 `27-{eaId}`에서 회수(sofifa_id=EA id, 48명 채움). **fut.gg base 아이템 = 출시판 값**(왓킨스 FC26 base 84 = fut.gg Δ 기준 ↔ sofifa 시즌말 82)
-  ⇒ `roster_date=createdAt`, 기존 sofifa 라이브판과 공존. 폐지 PS id 24=Trivela(페이지 확인), 4/18/27은 추정+런타임 검증. 카드 없음 20건(유스·비지원 리그)은 결손 유지.
-  export `game_stats/history.json`(player_id 키, kind 출시판/라이브판) 신설, `{GV}.json`은 라이브판만(name_kr 가로채기 방지) — FC25.json은 만들지 않는다.
-- ⛔ **동일성 사고 1건**: 09-10 리스 제임스 행이 로렌 제임스(첼시 위민, eaId 265249)의 키 175/몸무게 77/PS 7종/카드로 오염 — OVR·6종합·attrs는 리스 본인. 정정 + obs#616.
-  ⇒ **fut.gg 이름 검색은 남녀 카드를 섞는다 — EA id·gender로 특정**(스크립트에 gender==1+이름 토큰 검사 내장).
-- **종합평가 19명**(AVL 3·CHE 10·LIV 6, 병렬 에이전트 4개 → SQL 검토 후 적용, 덧붙임만). 잠정 등급 변경: 아체암퐁 B+→B · 팔레스트라 A-→B(공식전 5경기 0분, 사유 미수집) ·
-  웰벡 C+→B- · 라크루아 A-→B+ · 콜윌 B+→B · 켄다 fit MEDIUM-HIGH→MEDIUM. ⚠️ CHE(a) 5행이 **이중 적용**돼(파일 내 BEGIN/COMMIT + 내 래퍼 충돌) 중복 덧붙임을 자체 검증으로 제거 — 에이전트 SQL은 BEGIN/COMMIT 유무를 먼저 본다.
-
-### 2026-09-11 ⑩ — 브뤼헤전(09-08) D+2 추적, 스케줄 태스크 (`f4bb1cc`)
-
-- 에메리 회견 육성 재구성으로 지칭 대상을 **헤밍스**로 특정(obs#609). 🇧🇪 벨기에 3도메인 재개통(obs#613), Coaches' Voice 진짜 0건(obs#612).
-- ⛔⛔ **자기 오류 정정 사례**: `cpIZf5nxK-4` 영상을 D+2 신규 발견으로 오인했다가 `git log` 대조로 D+1 당일 이미 반영된 적을 발견,
-  전량 되돌림(결번 **#614**). **다음 세션도 새 발견을 DB에 쓰기 전 `git log -- <파일>`로 기존 반영 여부부터 확인할 것.**
-- 마조(Madjo) 결장 사유 발목 부상 신규 확인(obs#615).
-
 ### 2026-09-11 ⑼ — FC27 4팀 전량 수집(PlayStyles·키·몸무게·카드) + player.html 재구성 + 종합평가 98명 + squad_entries 이적정리 32행 (`2205d24`…`4108bba`)
 
 - **FC27 확정 데이터 수집**: EA 공식 09-10 드롭이 실제로 PlayStyles까지 포함해 라이브됨을 fut.gg로 재확인(이전 세션 obs#579의 "여전히 미확정"은 하루 뒤인 09-11에 뒤집혔다).
@@ -159,6 +148,9 @@
   브뤼헤 D+1~3 스케줄 **23:00**으로 이동 · UTV 잭슨 D+1 영상 전사(`cpIZf5nxK-4`, obs#567·568 — 미끼 러닝·백힐 기점, 포레스트 백3 단서) · FC27 PlayStyles **09-10 밤 기준 아직 미공개**(EA 페이지 확인).
 
 ### 그 이전 (압축)
+
+- **09-12 ⑾**(`0aa7c79`·`1c6241b`, obs#616) — FotMob 결손 15명 보강 · ⭐⭐ **FC25·FC26 출시판 시계열**(fut.gg `/api/fut/player-item-definitions/{25,26}/{eaId}/`가 **curl 200**, EA id는 FC27 `card_image_url`의 `27-{eaId}`에서 회수 · **fut.gg base=출시판**이라 sofifa 라이브판과 공존 · export `game_stats/history.json` 신설) · 종합평가 19명. ⛔ **동일성 사고**: 리스 제임스 행이 **로렌 제임스(첼시 위민)** 카드로 오염 — fut.gg 이름 검색은 남녀를 섞는다, **EA id·gender로 특정**할 것. ⛔ 에이전트 SQL의 BEGIN/COMMIT과 래퍼가 충돌해 5행 이중 적용 — 적용 전 BEGIN/COMMIT 유무를 볼 것.
+- **09-11 ⑩**(`f4bb1cc`) — 브뤼헤 D+2: 에메리 회견 지칭 대상을 **헤밍스**로 특정(obs#609) · 🇧🇪 3도메인 재개통(obs#613). ⛔⛔ **자기 오류 정정**: `cpIZf5nxK-4`를 신규 발견으로 오인했다가 `git log` 대조로 D+1에 이미 반영된 것을 확인해 전량 되돌림(결번 #614) — **새 발견을 DB에 쓰기 전 `git log -- <파일>`로 기존 반영 여부부터 확인할 것.**
 
 - **09-08 ⑺·⑹** — 인게임 캡처 1차(`1aeefa2`·`8a623fd`·`a24217e`, Remote Play 경로 확정·맥긴 wideplm→widemid 재분류) · 프로젝트 점검 7건
   (`fb9033b`, obs#531~535 — `core/team_settings.py` 규칙화→**G15** 신설, `cells_poss/def`·`def_x` 컬럼 도입, `reproduction_limits` 12행).
@@ -200,10 +192,19 @@
 
 ## 다음 할 일
 
-0. ⭐⭐ **P1 · 다음 인게임 A/B = 「우측을 안쪽형으로」(사용자 결정 09-10)** — T5 구성에서 **맥긴 RM widemid/Support → wideplm/Attack + 캐시 RB wingback/Balanced → falseback/Balanced**만 바꿔 사용자 플레이 1경기.
-   판별: 왼쪽 마첸·부엔디아(또는 가르나초)의 열0(터치라인) 질량이 22~39%·1~18% 대역을 벗어나 **바깥으로 밀리면 「우측 균형 반응」**, 그대로면 **4-2-3-1 Wide 슬롯 기하** → 그 다음 포메이션 A/B(Narrow/4-3-3).
-   폴더 `reports/ingame/2026-09-1x-avl-test6/` 생성 후 동봉: 전술 화면(코드·11명 역할) · 히트맵 11장 · 팀 통계 1장 · 조작 선수. ⚠️ 처리 전 썸네일 이름 대조.
-   그 뒤 시뮬로 **수비 접근·라인 높이** 단일 변수(팀 설정 3축 중 미검증 2축). ⛔ 캡처 단독으로 처방 변경 금지(docs/50).
+0. ⭐⭐ **P1 · 다음 인게임 A/B(T6) = 「캐시 falseback」 단일 변수 (2026-09-13 사용자 결정으로 재설계)**
+   **⛔ 종전 계획(맥긴 wideplm + 캐시 falseback 동시 변경)을 폐기했다** — 두 변수를 함께 바꾸면 결과가 애매할 때 **귀속이 안 된다.**
+   Geografifa 통제 실험(obs#702)의 교훈이 「단일 변수만 바꿔라」이고, 마침 **캐시 가설에 외부 독립 지지가 생겼다**(아래).
+   ⇒ **T5 구성을 그대로 두고 `캐시 RB wingback/Balanced → falseback/Balanced` 하나만 바꿔 사용자 플레이 1경기.** 맥긴 건은 T7로 미룬다.
+   - **왜 캐시인가**: Brom Squad Gaming이 캐시를 「versatile fullback … **tucks inside to form a temporary back three**」(안으로 접혀 임시 백3를 만든다)로 적었다 —
+     **falseback 정의 그대로**이고 우리 현행 처방(`fb_wingback/Balanced`)과 어긋난다(obs#700). 우리 가설과 **독립 수렴**한 셈이라 검증 우선순위가 올라갔다.
+   - **판별**: ⑴ **캐시 본인** 그리드가 안쪽(열1~2)으로 이동하는가 — 이것이 1차 판정이다.
+     ⑵ 파생으로 왼쪽 마첸·부엔디아(또는 가르나초)의 열0(터치라인) 질량이 22~39%·1~18% 대역을 벗어나 **바깥으로 밀리면 「우측 균형 반응」**, 그대로면 **4-2-3-1 Wide 슬롯 기하**.
+   - 폴더 `reports/ingame/2026-09-1x-avl-test6/` 생성 후 동봉: 전술 화면(코드·11명 역할) · 히트맵 11장 · 팀 통계 1장 · 조작 선수. ⚠️ 처리 전 썸네일 이름 대조(T5에서 패스네트워크 2장 혼입으로 매핑이 한 칸 밀린 이력).
+   - ⛔ 캡처 단독으로 처방 변경 금지(docs/50).
+   - ⛔⛔ **「그 뒤 시뮬로 수비 접근·라인 높이 검증」 계획도 폐기한다** — obs#702가 **커리어 시뮬 결과는 프레스티지가 가르고 포메이션은 「선수 선발 필터」로만 쓰인다**고 관측했다.
+     시뮬은 **위치(히트맵) 측정에만** 쓴다(우리 SIM 1이 그렇게 썼고 사용자 그리드와 .72~.97로 일치했다). **승점·결과로 전술을 비교하면 프레스티지를 측정하게 된다.**
+     ⇒ 팀 설정 2축(수비 접근·라인 높이)도 **사용자 직접 플레이 A/B**로만 검증한다.
 0-1. ✅ **[09-13 야간 해소] CHE 4-2-3-1 Wide 슬롯(`a3acd40`) 후속 반영 완료** — 게이트(G8+/slot_canon) 통과 확인하며 헨더슨 RDM 처방·squad_entries·evaluations까지 연결(위 「최근 작업 ⑿」). docs/11(감독 분석 문서) 텍스트 반영은 **미착수**로 남음 — 다음 세션 후보.
 0-2. **P2 · FC27 09-18 얼리액세스 후 4팀 역할·숙련도(Role+/++) 수집** — ⭐ **PlayStyles·키·몸무게·카드이미지는 09-11 완료**(4팀 131행, **FC25·FC26 출시판 시계열은 09-12 완료**),
     `2205d24`…`4108bba`). 남은 건 fut.gg `/api/fut/roles/` FC27 응답(역할·포커스 목록, docs/20 ② 타이브레이커의 전제) — 09-18 이전 확정 불가.
