@@ -16,7 +16,6 @@
 import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell } from './assets/data.js?v=20260816-gk-avgpos';
 import { Kernel } from './assets/kernel.js?v=20260825-decodemap-null';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
-import { mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';   // .gl 위임 툴팁 엔진
 
 const { team } = await mountHeader('compare.html');
 const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loadGameStats('FC26')]);
@@ -40,10 +39,6 @@ for (const p of td.prescriptions ?? []){
    실측이 없는 선수 자리를 채워 둔 값이다(현재 ATM 5명). 히트맵처럼 그리면 「데이터가 있는데 비어 있다」로 오독된다.
    ⇒ 랭킹에서 빼고 별도로 열거한다(2026-09-13, 사용자 지적 「히트맵 밑 숫자」 조사 중 발견). */
 const isPlaceholderGrid = m => !m || /^0{25}$/.test(m);
-
-const MAP25_TIP = '히트맵의 원본 인코딩값이다. 25칸(5×5)을 왼쪽부터 한 줄씩 이어 쓴 것으로, '
-  + '앞이 공격 방향·뒤가 자기 골문 쪽이고 각 줄은 왼쪽 터치라인부터다. '
-  + 'X = 가장 자주 있었던 칸, 9~1 = 그 칸 대비 비율(10분의 몇), 0 = 거의 없었음.';
 
 let SEASON = '2025-26';
 document.querySelectorAll('button.tab[data-season]').forEach(b => b.addEventListener('click', () => {
@@ -109,11 +104,11 @@ function render(){
       <td>${gkPosCell(td, slot.pos, r.player_id) ?? `<b>${r.sim.toFixed(3)}</b>`}</td>
       <td class="dim">${gk ? '' : (r.dbFit != null ? r.dbFit.toFixed(3) : '—')}</td>
       <td>${r.rate ?? '—'}</td><td class="dim">${r.note ?? ''}</td></tr>`).join('');
+  /* ⛔ map25 원문 문자열은 화면에 찍지 않는다(2026-09-13 사용자 지시 — 읽을 필요 없는 내부 인코딩값).
+     값 자체는 DB·export JSON에 그대로 있으니 필요하면 거기서 본다. */
   document.getElementById('cards').innerHTML = rows.slice(0, 4).map(r => `
     <div class="pcard"><b>${r.label}</b> <span class="badge mid">${seasonTag}</span><br>${miniGrid(r.map25)}<br>
-    <small class="dim">${r.note ?? ''}</small><br>
-    <abbr class="gl" tabindex="0" data-tip="${MAP25_TIP}" title="${MAP25_TIP}"><span class="dim mono">${r.map25}</span></abbr></div>`).join('');
+    <small class="dim">${r.note ?? ''}</small></div>`).join('');
 }
 render();
-mountGlossaryTips();
 </script></body></html>
