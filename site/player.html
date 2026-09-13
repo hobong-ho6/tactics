@@ -229,7 +229,31 @@ function renderEval(n, sel){
   // player_id·영문명을 우선 키로 쓰고 라벨은 마지막 수단이다.
   const e = (td.evaluations||[]).find(x =>
     (sel.pid && x.player_id===sel.pid) || (sel.en && x.name_en===sel.en) || strip(x.label)===n);
-  if (!e){ panel.style.display='none'; return; }
+  /* ⛔ 평가가 없을 때 패널을 **조용히 숨기지 않는다**(2026-09-13 사용자 지시).
+     숨기면 「평가가 없다」와 「평가 항목 자체가 없다」가 화면에서 구분되지 않는다 — 결손 ≠ 0.
+     ⇒ 왜 없는지를 실측 표본으로 판정해 적는다: 표본 부족이면 「보류」, 표본이 있으면 「미작성(작업 대상)」. */
+  if (!e){
+    panel.style.display='';
+    const key0 = sel.kr || n;
+    const st0 = (td.player_stats||[]).find(s => s.label===key0);
+    const nM = st0?.n ?? 0, minM = st0?.minutes ?? 0;
+    const thin = nM < 3 || minM < 90;   // 3경기·90분 미만이면 전술 판정의 근거가 되지 못한다
+    panel.querySelector('#evalbody').innerHTML = thin
+      ? `<div class="evalhead">
+           <span class="badge grade" style="color:var(--dim);border-color:var(--dim)">보류</span>
+           <div><b>실측 표본이 부족해 종합 평가를 보류했다.</b>
+             현재 수집된 공식전 표본은 <b>${nM}경기 · ${minM}분</b>이다(SofaScore 실측 집계).
+             이 프로젝트는 <b>3경기 또는 90분</b>에 못 미치는 표본으로는 역할·전술 적합을 판정하지 않는다 —
+             단일·소표본으로 내린 판정은 다음 경기에 뒤집히기 때문이다.
+             ⛔ <b>근거가 없어서 비워 둔 것이지, 평가가 나쁘다는 뜻이 아니다.</b>
+             표본이 쌓이면 자동으로 작성 대상이 된다.</div></div>`
+      : `<div class="evalhead">
+           <span class="badge grade" style="color:var(--warn);border-color:var(--warn)">미작성</span>
+           <div><b>표본은 충분한데 종합 평가가 아직 작성되지 않았다.</b>
+             현재 표본 <b>${nM}경기 · ${minM}분</b> — 판정 기준(3경기·90분)을 넘는다.
+             ⇒ <b>작업 누락</b>이므로 다음 수집 회차의 대상이다.</div></div>`;
+    return;
+  }
   panel.style.display='';
   const gradeCol = g => /^S/.test(g)?'var(--ok)':/^A/.test(g)?'var(--ok)':/^B/.test(g)?'var(--warn)':'var(--bad)';
   const fitBadge = (mgr, v) => { if(!v) return '';
@@ -402,7 +426,20 @@ function renderFotmobEval(sel){
   const el = document.getElementById('fmeval');
   const e = (td.evaluations||[]).find(x =>
     (sel.pid && x.player_id===sel.pid) || (sel.en && x.name_en===sel.en));
-  if (!e?.fotmob_eval){ el.innerHTML=''; return; }
+  /* ⛔ 조용히 비우지 않는다(2026-09-13 사용자 지적 — 「경기 스탯 탭에 평가가 없는 경우」).
+     블록이 통째로 사라지면 「평가가 없다」와 「그런 항목이 없다」가 구분되지 않는다.
+     ⇒ 리그 백분위(fbref) 보유량으로 사유를 갈라 적는다. */
+  if (!e?.fotmob_eval){
+    const rows = pickRows(td.fbref, sel).length;
+    el.innerHTML = `<div style="margin-top:12px;border-left:3px solid var(--line);padding:8px 0 8px 12px">
+      <div class="kv" style="margin-bottom:4px"><b>스탯 기반 평가</b>
+        <small class="dim">— 위 리그 백분위만 근거로 내린 판단</small>
+        <span class="badge" style="color:${rows ? 'var(--warn)' : 'var(--dim)'};border-color:${rows ? 'var(--warn)' : 'var(--dim)'}">${rows ? '미작성' : '보류'}</span></div>
+      <div class="dim" style="font-size:13px">${rows
+        ? `⚠️ <b>리그 백분위 지표 ${rows}개가 수집돼 있는데 평가문이 아직 작성되지 않았다</b> — 근거는 있으므로 <b>작업 누락</b>이고, 다음 수집 회차의 대상이다.`
+        : `<b>리그 백분위(FotMob) 자체가 미수집이라 보류했다.</b> 이 평가는 백분위만을 근거로 쓰는 항목이라 원자료 없이는 만들 수 없다. ⛔ <b>근거가 없어서 비워 둔 것이지 평가가 나쁘다는 뜻이 아니다.</b>`}</div></div>`;
+    return;
+  }
   el.innerHTML = `<div style="margin-top:12px;border-left:3px solid var(--acc);padding:8px 0 8px 12px">
     <div class="kv" style="margin-bottom:4px"><b>스탯 기반 평가</b>
       <small class="dim">— 위 리그 백분위만 근거로 내린 판단(실측 히트맵·커널 적합과 독립)</small></div>
