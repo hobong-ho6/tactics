@@ -571,7 +571,7 @@ CREATE TABLE IF NOT EXISTS "player_evaluations"(
   fit_iraola TEXT,
   source TEXT,
   confidence TEXT,
-  updated TEXT, fotmob_eval TEXT,
+  updated TEXT, fotmob_eval TEXT, sample_season TEXT, sample_n INTEGER, sample_minutes INTEGER, sample_avg_rating REAL, sample_as_of TEXT,
   UNIQUE(regime_id, player_id)
 );
 CREATE TABLE player_shirt_numbers (

@@ -187,8 +187,41 @@ provenance가 산문에만 있으면 **여러 경기를 가로질러 집계할 �
 - 경기별 판정을 직전 완료 리포트와 비교해 `유지/변화`를 적는다. 같은 변화가 누적되면 observation으로
   승격하고, 실제 처방 변경은 표본·서사·커널 적합이 함께 지지할 때만 한다.
 
+## 4-1. ⭐⭐ 선수 평가 갱신 — 4단 트리거 (2026-09-13 신설, 사용자 논의)
+
+**⛔ 달력 주기로 돌리지 않는다.** 실측: 09-11에 83명을 일괄 갱신했는데 **09-12 한 라운드만으로 29명이 1경기 뒤처졌다.**
+월 단위 주기는 그 사이 4~6경기를 방치하고, 매 경기 전수 재작성은 비용이 감당되지 않는다(98명 갱신 1회 = 배경 에이전트 다수).
+
+⭐ **평가는 한 덩어리가 아니다 — 필드마다 반감기가 다르므로 층을 갈라 건드린다.**
+
+| 트리거 | 언제 | 무엇을 | 비용 |
+|---|---|---|---|
+| **T1 경기 직후** | 매 수집 회차 (= 이 런북 안) | **표본 정형 컬럼만** — `scripts/refresh_eval_samples.py --apply` | 스크립트 1회 |
+| **T2 임계 도달** | ⑴ 표본이 **3경기·90분**을 처음 넘음(판정 개시선) ⑵ measured 슬롯 argmax가 바뀜 ⑶ `fit_sim` Δ>0.05 | **서술층 재작성**(traits·strengths·stat_eval·fit_*) | 해당 선수만 |
+| **T3 이벤트** | 이적 확정(in/out) · 장기 부상 · 감독 회견의 서열 변화 · 게임 버전 드롭 | 해당 선수 전면 재검토 | 건별 |
+| **T4 월 1회 점검** | 매월 | **전수 재작성이 아니라 결손·모순 스캔만** — 갱신 대상 목록만 뽑는다 | 쿼리 |
+
+- ⛔ **`overall`(등급)은 T1에서 절대 건드리지 않는다.** 매 경기 흔들면 등급이 신호가 아니라 노이즈가 된다.
+  등급 변경은 T2·T3에서만, 그것도 표본·서사·커널이 **함께** 지지할 때다(4절 처방 변경 규칙과 같은 기준).
+- ⛔ **`updated`는 「판단을 다시 내린 날」이다** — T1의 수치 재계산으로 올리지 않는다(스크립트도 건드리지 않는다).
+- ⭐ **표본 수치를 산문에 묻지 않는다**(CLAUDE.md DoD). `sample_season/n/minutes/avg_rating/as_of` 정형 컬럼이 정본이고,
+  산문에는 **역할·판단**만 쓴다. 이 분리 덕에 T1이 자동화된다 — 종전엔 경기 하나만 늘어도 산문을 다시 써야 했다.
+- 화면은 `updated` 이후 치른 공식전 수를 세어 **「N경기 전 기준」 배지**를 띄운다(player.html). 주기가 무엇이든 읽는 쪽이 신선도를 즉시 안다.
+
+**T4 점검 쿼리**(갱신 대상 뽑기):
+```sql
+SELECT r.team_code, COALESCE(p.name_kr,p.name), pe.updated, pe.sample_n,
+       (SELECT COUNT(DISTINCT m.event_id) FROM player_matches m
+         WHERE m.player_id=p.id AND m.date > pe.updated AND m.minutes IS NOT NULL
+           AND m.competition NOT LIKE '%Friendly%') AS 경기후
+FROM squad_entries se JOIN regimes r ON r.id=se.regime_id AND r.end IS NULL
+JOIN players p ON p.id=se.player_id
+JOIN player_evaluations pe ON pe.player_id=p.id AND pe.regime_id=r.id
+GROUP BY r.team_code, p.id HAVING 경기후 >= 3 ORDER BY 경기후 DESC;
+```
+
 ## 5. 완료 절차 (매 실행)
-`python3 scripts/export.py` → `scripts/db_dump.sh` →
+`python3 scripts/refresh_eval_samples.py --apply`(**T1 — 4-1절**) → `python3 scripts/export.py` → `scripts/db_dump.sh` →
 `git add db/tactics.db db/dump/ site/data/ reports/match-watch/ && git commit -m "data(match-watch): <라운드 요약>" && git push`
 ⭐ **`manager_profiles` 갱신 판정 필수**(2026-09-08 신설): 완료 리포트마다 영향받은 axis(formation·pressing·buildup·situational·
 rest_defense·set_pieces·role_demands·implementation)에 **덧붙임**(`content || '\n\n[날짜 …]'`, `updated` 갱신)하거나,

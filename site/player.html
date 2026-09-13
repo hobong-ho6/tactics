@@ -273,10 +273,27 @@ function renderEval(n, sel){
   const mOv = ov.match(/^\s*([SABCDF][+\-]?)\s*(?:—|→|-|:)?\s*([\s\S]*)$/);
   const grade = mOv ? mOv[1] : '';
   const ovBody = mOv ? mOv[2].trim() : ov.trim();
+  /* ⭐ 신선도 배지 (2026-09-13 신설, 사용자 논의 「평가는 어떤 주기로 갱신하나」).
+     판단을 내린 날(`updated`) 이후 그 선수가 **공식전을 몇 경기 더 치렀는지**를 세어 붙인다.
+     주기를 어떻게 잡든 **읽는 사람이 신뢰도를 즉시 알 수 있게** 하는 것이 먼저다.
+     표본 수치는 이제 정형 컬럼(sample_*)에 있으므로 산문을 파싱하지 않는다. */
+  /* 경기 단위 날짜는 `form`(최근 10경기 [날짜, 평점, 상대])에 있다 — 이것으로 updated 이후 경기를 센다.
+     ⚠️ form은 최근 10경기 한정이라 11경기 이상 지난 평가는 10으로 포화된다(과소 표기는 아니다). */
+  const fmRows = pickRows(td.form, sel);
+  const nSince = e.updated ? fmRows.filter(f => String(f[0]) > String(e.updated)).length : 0;
+  const freshBadge = !e.updated ? ''
+    : nSince === 0
+      ? `<span class="badge" style="color:var(--ok);border-color:var(--ok)" title="이 평가를 내린 뒤 치른 공식전이 없다">최신 · ${e.updated}</span>`
+      : `<span class="badge" style="color:var(--warn);border-color:var(--warn)" title="이 평가를 내린 뒤 ${nSince}경기를 더 치렀다 — 그만큼 현실과 벌어져 있을 수 있다">${nSince}경기 전 기준 · ${e.updated}</span>`;
+  const sampleLine = (e.sample_n != null)
+    ? `<div class="dim" style="font-size:12px;margin-top:4px">표본 <b>${e.sample_n}경기 · ${e.sample_minutes ?? 0}분</b>${
+        e.sample_avg_rating != null ? ` · 평균 ${e.sample_avg_rating}` : ''}${
+        e.sample_as_of ? ` · 최종 ${e.sample_as_of}` : ''} <small>(${e.sample_season ?? ''} 공식전, 친선 제외)</small></div>`
+    : '';
   panel.querySelector('#evalbody').innerHTML = `
     <div class="evalhead">
       ${grade ? `<span class="badge grade" style="color:${gradeCol(grade)};border-color:${gradeCol(grade)}">${grade}</span>` : ''}
-      <div>${prose(ovBody)}</div></div>
+      <div>${freshBadge}${prose(ovBody)}${sampleLine}</div></div>
     <div class="evalgrid">
       ${evalSection('선수 특성', e.traits)}
       ${evalSection('특장점 · 약점', e.strengths)}

@@ -240,7 +240,9 @@ def export_all(db_path=None, window="2026-summer"):
         evals = _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, p.name name_en, e.player_id,
                                      e.overall, e.traits, e.strengths, e.stat_eval, e.fotmob_eval,
                                      e.fit_emery, e.fit_alonso, e.fit_iraola,
-                                     e.source, e.confidence, e.updated
+                                     e.source, e.confidence, e.updated,
+                                     -- 표본 정형 필드(T1) — 화면이 「이 평가가 몇 경기 전 기준인지」를 계산하는 데 쓴다
+                                     e.sample_season, e.sample_n, e.sample_minutes, e.sample_avg_rating, e.sample_as_of
                               FROM player_evaluations e JOIN players p ON p.id=e.player_id
                               WHERE e.regime_id=?
                                  OR (e.regime_id IS NULL AND e.player_id IN
