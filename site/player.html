@@ -76,6 +76,7 @@ import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
 import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
 import { prose } from './assets/prose.js';
 import { PLAYSTYLES } from './assets/playstyle-icons.js';
+import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20260913-stat-tips';
 const { team, idx } = await mountHeader('player.html');
 const [td, GS, GS27, HIST] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history')]);
 /* 백분위·유사프로필 모집단 = 활성 regime 전체. ⛔ 팀 코드를 하드코딩하지 않는다 —
@@ -347,7 +348,7 @@ function bar(name,val,pct,tip){
   const col=pct>=70?'var(--ok)':pct>=40?'var(--warn)':'var(--bad)';
   const tag=pct>=85?'엘리트':pct>=70?'우수':pct>=40?'평균':pct>=20?'평균 이하':'하위';
   return `<div style="display:flex;align-items:center;gap:8px;margin:4px 0" title="${tip}">
-    <span style="width:110px" class="dim">${name}</span>
+    <span style="width:110px" class="dim">${statTip(name)}</span>
     <b style="width:52px;text-align:right">${val}</b>
     <div style="flex:1;background:rgba(255,255,255,.08);border-radius:6px;height:14px">
       <div style="width:${pct}%;background:${col};height:14px;border-radius:6px"></div></div>
@@ -433,7 +434,7 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       <div class="gcard">
         <div class="gc-ovr" style="color:${tier(gg.ovr)}">${gg.ovr ?? '—'}</div>
         <div class="gc-pos">${esc(gg.best_pos ?? gg.positions ?? '')}</div>
-        <div class="gc-six">${SIX.map(([k,L]) => `<span><em>${L}</em>${gg[k] ?? '—'}</span>`).join('')}</div>
+        <div class="gc-six">${SIX.map(([k,L]) => `<span><em>${statTip(L)}</em>${gg[k] ?? '—'}</span>`).join('')}</div>
         <div class="gc-ver dim">${g27 ? 'FC27' : 'FC26'}<br><small>${esc(gg.roster_date ?? '')}</small></div>
       </div>
       <div style="flex:1;min-width:240px">
@@ -610,7 +611,7 @@ function render(){
           <small class="dim" style="font-size:10px;opacity:.55">${esc(kl.raw)}</small></div>`;
       }).join('') || '<span class="dim">실측 그리드 없음</span>';
     const st = td.player_stats.find(s=>s.label===key);
-  document.getElementById('pstat').innerHTML = st ? annotate(`경기 <b>${st.n}</b> · 분 <b>${st.minutes??'—'}</b> · 평점 <b>${st.avg_rating??'—'}</b> · xG <b>${st.xg_pg??'—'}</b> · xA <b>${st.xa_pg??'—'}</b> · 키패스 <b>${st.kp_pg??'—'}</b> · 듀얼승 <b>${st.dw_pg??'—'}</b> · 태클 <b>${st.tk_pg??'—'}</b> · 인터셉트 <b>${st.ic_pg??'—'}</b>`) : '<span class="dim">경기 스탯 없음 (match-watch 수집 대기)</span>';
+  document.getElementById('pstat').innerHTML = st ? [['경기',st.n],['분',st.minutes],['평점',st.avg_rating],['xG',st.xg_pg],['xA',st.xa_pg],['키패스',st.kp_pg],['듀얼승',st.dw_pg],['태클',st.tk_pg],['인터셉트',st.ic_pg]].map(([n,v])=>`${statTip(n)} <b>${v??'—'}</b>`).join(' · ') : '<span class="dim">경기 스탯 없음 (match-watch 수집 대기)</span>';
     // 시즌 성적 — 대회별 (Fotmob 선수 페이지 참고)
     const ss=pickRows(td.season_stats, sel);
     document.getElementById('season').innerHTML = ss.length
@@ -647,7 +648,9 @@ function render(){
       const grid=[1,.66,.33].map(f=>`<polygon points="${axes.map((_,i)=>pt(i,R*f)).join(' ')}" fill="none" stroke="rgba(255,255,255,.15)"/>`).join('');
       const shape=`<polygon points="${pcts.map((p,i)=>pt(i,R*Math.max(.05,p))).join(' ')}" fill="rgba(255,138,61,.35)" stroke="var(--acc)"/>`;
       const labels=axes.map(([k,name],i)=>{const [x,y]=pt(i,R+22).split(',');
-        return `<text x="${x}" y="${y}" fill="var(--dim)" font-size="10" text-anchor="middle">${name} ${Math.round(pcts[i]*100)}%</text>`;}).join('');
+        const rt = STAT_TIPS[name];
+        return `<text x="${x}" y="${y}" fill="var(--dim)" font-size="10" text-anchor="middle"${
+          rt ? ` class="gl" tabindex="0" data-tip="${esc(rt)}"` : ''}>${name} ${Math.round(pcts[i]*100)}%</text>`;}).join('');
       document.getElementById('radar').innerHTML=`<svg viewBox="0 0 320 240" style="width:100%;max-width:320px;height:auto" role="img" aria-label="6축 백분위 레이더">${grid}${shape}${labels}</svg>`;
     } else document.getElementById('radar').innerHTML='';
     // 폼 스파크라인 — hover 판정용 투명 원(r=9)을 위에 겹치고, 정보는 캡션에 표시(네이티브 <title>은 3px 원에서 사실상 안 뜬다)
@@ -718,7 +721,7 @@ function render(){
         <div class="gc-ovr" style="color:${tier(o.ovr)}">${o.ovr}</div>
         <div class="gc-pos">${o.best_pos ?? o.positions ?? ''}</div>
         <div class="gc-six">${SIX.map(([k,L]) =>
-          `<span><em>${L}</em>${o[k] ?? '—'}</span>`).join('')}</div>
+          `<span><em>${statTip(L)}</em>${o[k] ?? '—'}</span>`).join('')}</div>
         <div class="gc-ver dim">${ver}<br><small>${o.roster_date ?? ''}</small></div>
       </div>` : `<div class="gcard empty dim">${ver}<br><small>행 없음</small></div>`;
     const chips = [['ovr','OVR'], ...SIX].map(([k,L]) => {
@@ -746,7 +749,7 @@ function render(){
       const cards = GROUPS.map(([label, gk, members]) => {
         const rows = members.filter(m => (a27?.[m] ?? a26?.[m]) != null).map(m => {
           const x = a26?.[m] ?? null, y = a27?.[m] ?? null, v = y ?? x;
-          return `<div class="arow"><span class="an">${m}</span>
+          return `<div class="arow"><span class="an">${statTip(m)}</span>
             <span class="ad">${dBadge(x, y)}</span>
             <span class="av" style="color:${tier(v)}">${v}</span>
             <span class="abar"><i style="width:${Math.min(100, v)}%;background:${tier(v)}"></i></span></div>`;
