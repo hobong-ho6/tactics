@@ -93,3 +93,14 @@ UTV 전사 2편(auto-caption) · avfc.co.uk · Hayters TV · Yahoo 전재 · Ast
 
 ### 종결
 `match_reports` 39 **complete**. 시즌 정본 변경 없음. obs#638~642. 부상 2건(파우 토레스·마첸)을 `player_status`에 적재(09-12 발생, 09-13 수집).
+
+### D+1 추가 조사 (2026-09-13, 2차 패스)
+
+기존 D+1 병합 이후 한 번 더 훑었다 — The Villans(@TheViIIans, DOM 렌더 실패로 여전히 미확인)·1874 팟캐스트(신규 에피소드 0건)·전술 블로그(TFA·spielverlagerung·BTL·Coaches' Voice, 이 경기 전용 글 0건)·포레스트 전담 매체(Nottinghamshire Live 검색 노출 0건)는 **전부 0건**(시도 검색어: "Aston Villa Nottingham Forest tactical analysis second half collapse", "spielverlagerung Aston Villa Forest Emery", "Nottinghamshire Live Aston Villa" 등). 경기 전 프리뷰 영상(villaparkpod 게스트 출연) 1건만 발견했으나 사후 분석이 아니라 이번 D+N 추적 대상이 아니다.
+
+글라스너 기자회견에서 소폭 신규 원문 확보(기존 확보분과 취지 동일, 문장만 보강):
+- 「We were too impatient and eager… In the second half we moved the ball quicker and switched from left to right and we saw the confidence grow.」(너무 조급하고 성급했다… 후반엔 더 빠르게 볼을 돌리고 좌우 전환을 해서 자신감이 붙는 걸 봤다)
+- 델랍 득점: 「Liam Delap's hit didn't surprise me because I see it in training… I feel this goal gave him a lot of confidence.」(델랍의 슈팅은 훈련에서 봐서 놀랍지 않았다… 이 골이 그에게 자신감을 많이 줬다고 느낀다)
+- 에메리에 대한 유머: 「I spoke to him before the game and told him that it was still 5-2 to him, in terms of European trophies won… Oliver Glasner, stay humble.」(경기 전 그에게 유럽대항전 트로피 수는 여전히 5-2로 그가 앞선다고 말했다… 겸손하자, 올리버 글라스너)
+
+⚠️ **검색엔진 요약 잡음 확인·해소**: 이번 조사에서 스코어(1-2/2-1)·카드 대상(마첸 파울 유발/McAtee 경고)·득점 시각 표기가 소스마다 엇갈린다는 우려가 나왔으나, 자체 실측(`matches.id=103`, SofaScore event 16363639)과 본 리포트 §1·D+1 절 대조 결과 **우리 DB가 정확하다** — 1-2 AVL 패배(46′ 델랍·74′ 알리송·88′ 이고르 제수스), 「레드카드」는 마첸이 받은 카드가 아니라 **마첸을 향한 포레스트 태클을 에메리가 사후에 「레드카드감이었다」고 평한 것**(§D+1 감독 발언 절 참조)이다. 혼선은 검색엔진 요약의 잡음이었지 실제 데이터 충돌이 아니다.
