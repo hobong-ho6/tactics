@@ -93,3 +93,6 @@ INSERT INTO matches VALUES(99,16938841,'AVL','2026-27','2026-09-08','Club Brugge
 INSERT INTO matches VALUES(100,16950621,'CHE','2026-27','2026-09-09','Leeds United','EFL Cup','H','6-3',1,'EFL Cup 3R',NULL);
 INSERT INTO matches VALUES(101,16938798,'LIV','2026-27','2026-09-09','Atlético Madrid','UEFA Champions League','H','2-1',1,'League phase MD1',45.0);
 INSERT INTO matches VALUES(102,16938798,'ATM','2026-27','2026-09-09','Liverpool FC','UEFA Champions League','A','1-2',1,'League phase MD1',55.0);
+INSERT INTO matches VALUES(103,16363639,'AVL','2026-27','2026-09-12','Nottingham Forest','Premier League','H','1-2',1,'Round 4',54.0);
+INSERT INTO matches VALUES(104,16363641,'CHE','2026-27','2026-09-12','Hull City','Premier League','H','2-2',1,'Round 4',68.0);
+INSERT INTO matches VALUES(105,16363264,'LIV','2026-27','2026-09-12','Fulham','Premier League','H','0-0',1,'Round 4',56.0);

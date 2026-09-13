@@ -6,6 +6,7 @@
 <h1>선수 분석 <small class="dim">실측 히트맵 · 경기 스탯 · 게임 스탯 · 영상 분석 파일럿</small></h1>
 <div class="panel"><label class="kv">그룹 <select id="grp"></select></label> <label class="kv">선수 <select id="who"></select></label> <span id="sf"></span></div>
 
+<div id="pstatus"></div>
 <div class="panel" id="playercard"></div>
 
 <div class="menubar">
@@ -369,6 +370,56 @@ function renderCard(sel, g0, g26, g27, isGkRow){
    history.json은 player_id 키. 같은 버전·같은 kind에 로스터가 여럿이면 최신 roster_date 하나만 보인다
    (FC27은 08-18 부분 드롭·08-21·08-31 예측 행이 있고 09-10판이 정본). ⚠️ 출시판↔라이브판은 기준 시점이 다르다 —
    행 순서대로 이웃 Δ를 보이되 kind를 표기해 obs#249의 부호 반전을 읽는 사람이 알게 한다. */
+/* ── 부상·계약 상태 (2026-09-13 신설 — 사용자 지시: 실측+게임을 합친 라이브 시스템) ──
+   teams/{CODE}.json의 player_status는 **스냅샷 테이블의 선수·종류별 최신 1행**이다.
+   ⚠️ 스냅샷이므로 신선도를 함께 보여준다 — stale_days가 크면 「현재 상태」로 읽으면 안 된다.
+   부상 표기는 FotMob 원문(영문)을 정본으로 두고 한글은 보조 라벨이다(원문이 없는 값은 그대로 노출). */
+const INJ_KR = {
+  'Cruciate ligament injury':'십자인대', 'Knee injury':'무릎', 'Hamstring injury':'햄스트링',
+  'Muscle injury':'근육', 'Groin injury':'서혜부', 'Achilles tendon injury':'아킬레스건',
+  'Ankle injury':'발목', 'Calf injury':'종아리', 'Thigh injury':'허벅지', 'Back injury':'허리',
+  'Shoulder injury':'어깨', 'Wrist injury':'손목', 'Foot injury':'발', 'Hip injury':'고관절',
+  'Knock':'타박', 'Physical discomfort':'컨디션 저하', 'Illness':'질병', 'Suspended':'출전 정지',
+};
+const RET_KR = { 'Doubtful':'출전 불투명', 'Out':'결장', 'Unknown':'미제시', 'Expected':'복귀 예상' };
+function renderStatus(sel){
+  const el = document.getElementById('pstatus');
+  const rows = (td.player_status ?? []).filter(r => sel.pid != null && r.player_id === sel.pid);
+  if (!rows.length){ el.innerHTML = ''; return; }
+  const inj = rows.filter(r => r.kind === 'injury');
+  const con = rows.find(r => r.kind === 'contract_end');
+  const fresh = d => d == null ? '' : d <= 1 ? '오늘 수집' : d <= 7 ? `${d}일 전 수집` : `<b style="color:var(--warn)">${d}일 전 수집 — 갱신 필요</b>`;
+  const ret = t => { if (!t) return '미제시'; return RET_KR[t] ? `${RET_KR[t]}` : esc(t); };
+  let html = '';
+  if (inj.length){
+    html += inj.map(r => {
+      const kr = INJ_KR[r.value];
+      const label = kr ? `${kr} <small class="dim">(${esc(r.value)})</small>` : esc(r.value ?? '부상');
+      const doubt = /doubt/i.test(r.detail ?? '');
+      return `<div class="panel injcard${r.played_after ? ' contra' : ''}">
+        <div class="kv"><span class="badge inj">${r.played_after ? '기록 모순' : doubt ? '출전 불투명' : '부상'}</span>
+          <b>${label}</b></div>
+        <div class="kv injgrid">
+          <span><b>복귀 예상</b>${ret(r.detail)}</span>
+          <span><b>소스 갱신일</b>${esc(r.as_of ?? '미제시')}</span>
+          <span><b>스냅샷</b>${esc(r.pulled ?? '')} <small class="dim">${fresh(r.stale_days)}</small></span>
+          ${r.played_after ? `<span style="color:var(--warn)"><b>⚠️ 이후 출전</b>${esc(r.played_after)} ${r.played_after_minutes ?? '?'}분</span>` : ''}
+          ${con ? `<span><b>계약 만료</b>${esc(con.value ?? '미수집')}</span>` : ''}
+        </div>
+        ${r.played_after ? `<p class="dim" style="font-size:12px;margin:6px 0 0;color:var(--warn)">
+          ⚠️ <b>소스 모순</b> — 이 부상 기록의 갱신일(${esc(r.as_of ?? r.pulled)}) 이후 <b>${esc(r.played_after)}에 ${r.played_after_minutes ?? '?'}분 출전</b>했다.
+          집계 사이트가 해소된 부상을 내리지 않은 경우가 많다. <b>실측 출전이 이긴다</b> — 현재 가용으로 읽되, 구단 공식·감독 회견으로 재확인할 것.</p>` : ''}
+        <p class="dim" style="font-size:12px;margin:6px 0 0">출처 ${esc((r.source ?? '').split('(')[0])} ·
+          ⚠️ 복귀 시점은 <b>소스 추정</b>이며 구단 공식 발표가 아니다. 게임 재현 시 이 선수는 해당 기간 <b>선발 후보에서 제외</b>하고, 대체 슬롯 후보를 처방 화면에서 확인한다.</p>
+      </div>`;
+    }).join('');
+  } else if (con){
+    html = `<div class="panel injcard ok"><div class="kv"><span class="badge">가용</span>
+      <b>부상 없음</b> <small class="dim">— ${esc(con.pulled ?? '')} 스냅샷 ${fresh(con.stale_days)}</small></div>
+      <div class="kv injgrid"><span><b>계약 만료</b>${esc(con.value ?? '미수집')}</span></div></div>`;
+  }
+  el.innerHTML = html;
+}
 function renderHistory(sel, isGkRow){
   const el = document.getElementById('ghist');
   const rows = (sel.pid != null && HIST[String(sel.pid)]) || [];
@@ -415,6 +466,7 @@ function render(){
   const sel = groups[grp.value][+who.value]; if (!sel) return;
   const n = sel.name;
   const key = sel.kr || n;   // DB 맵의 키(players.name_kr)
+  renderStatus(sel);
   renderEval(n, sel);
   renderFotmobEval(sel);
   // game_stats는 sofifa 표시명(짧은 라벨)으로 키가 잡혀 있어 players.name_kr와 어긋날 수 있다

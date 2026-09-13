@@ -1400,6 +1400,45 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 100.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "100.0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Pass accuracy",
+    "metric_key": "successful_passes_accuracy",
+    "metric_kr": "패스 정확도",
+    "per90": 96.15384615384616,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "96.2"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Yellow cards",
+    "metric_key": "yellow_cards",
+    "metric_kr": "옐로카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Big chances created",
     "metric_key": "big_chance_created_team_title",
     "metric_kr": "빅찬스 창출",
@@ -1816,6 +1855,32 @@
    },
    {
     "league": "LaLiga",
+    "metric": "xG against while on pitch",
+    "metric_key": "expected_goals_against_while_on_pitch",
+    "metric_kr": "출전 중 피xG",
+    "per90": 2.613436395471746,
+    "percentile": 82,
+    "percentile_per90": 0,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1.60"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dispossessed",
+    "metric_key": "dispossessed",
+    "metric_kr": "볼 탈취당함",
+    "per90": 1.6363636363636362,
+    "percentile": 80,
+    "percentile_per90": 24,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Pass accuracy",
     "metric_key": "successful_passes_accuracy",
     "metric_kr": "패스 정확도",
@@ -1930,6 +1995,45 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "51"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블",
+    "per90": 6.545454545454545,
+    "percentile": 71,
+    "percentile_per90": 100,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "4"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Goals conceded while on pitch",
+    "metric_key": "goals_conceded_while_on_pitch",
+    "metric_kr": "출전 중 실점",
+    "per90": 3.2727272727272725,
+    "percentile": 71,
+    "percentile_per90": 0,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 57.142857142857146,
+    "percentile": 71,
+    "percentile_per90": 71,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "57.1"
    },
    {
     "league": "LaLiga",
@@ -2128,6 +2232,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Duels won %",
+    "metric_key": "duel_won_percent",
+    "metric_kr": "듀얼 승률",
+    "per90": 44.44444444444444,
+    "percentile": 49,
+    "percentile_per90": 49,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "44.4"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Interceptions",
     "metric_key": "interceptions",
     "metric_kr": "인터셉트",
@@ -2177,6 +2294,19 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "17"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xGOT",
+    "metric_key": "expected_goals_on_target",
+    "metric_kr": "xGOT",
+    "per90": 0.5812363516200673,
+    "percentile": 36,
+    "percentile_per90": 67,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.36"
    },
    {
     "league": "LaLiga",
@@ -2245,6 +2375,32 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 1.6363636363636362,
+    "percentile": 29,
+    "percentile_per90": 84,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Accurate passes",
+    "metric_key": "successful_passes",
+    "metric_kr": "정확한 패스",
+    "per90": 40.90909090909091,
+    "percentile": 27,
+    "percentile_per90": 100,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "25"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Dispossessed",
     "metric_key": "dispossessed",
     "metric_kr": "볼 탈취당함",
@@ -2255,6 +2411,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "33"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Chances created",
+    "metric_key": "chances_created",
+    "metric_kr": "기회 창출",
+    "per90": 3.2727272727272725,
+    "percentile": 24,
+    "percentile_per90": 96,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
    },
    {
     "league": "LaLiga",
@@ -2284,6 +2453,32 @@
    },
    {
     "league": "LaLiga",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.4500000097534873,
+    "percentile": 22,
+    "percentile_per90": 56,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.28"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.4500000097534873,
+    "percentile": 22,
+    "percentile_per90": 62,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.28"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Duels won %",
     "metric_key": "duel_won_percent",
     "metric_kr": "듀얼 승률",
@@ -2307,6 +2502,32 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "25.79"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Shots on target",
+    "metric_key": "ShotsOnTarget",
+    "metric_kr": "유효 슛",
+    "per90": 1.6363636363636362,
+    "percentile": 20,
+    "percentile_per90": 80,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xA",
+    "metric_key": "expected_assists",
+    "metric_kr": "xA",
+    "per90": 0.0873878693038767,
+    "percentile": 20,
+    "percentile_per90": 73,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.05"
    },
    {
     "league": "LaLiga",
@@ -2388,6 +2609,32 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Shots",
+    "metric_key": "shots",
+    "metric_kr": "슛",
+    "per90": 3.2727272727272725,
+    "percentile": 9,
+    "percentile_per90": 71,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Touches",
+    "metric_key": "touches",
+    "metric_kr": "터치",
+    "per90": 68.72727272727273,
+    "percentile": 9,
+    "percentile_per90": 100,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "42"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Dribbled past",
     "metric_key": "dribbled_past",
     "metric_kr": "드리블 돌파 허용",
@@ -2398,6 +2645,97 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "22"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Duels won",
+    "metric_key": "duel_won",
+    "metric_kr": "듀얼 승",
+    "per90": 6.545454545454545,
+    "percentile": 2,
+    "percentile_per90": 78,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "4"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Recoveries",
+    "metric_key": "recoveries",
+    "metric_kr": "볼 리커버리",
+    "per90": 1.6363636363636362,
+    "percentile": 2,
+    "percentile_per90": 40,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Assists",
+    "metric_key": "assists",
+    "metric_kr": "어시스트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Clean sheets",
+    "metric_key": "clean_sheet_team_title",
+    "metric_kr": "클린시트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Goals",
+    "metric_key": "goals",
+    "metric_kr": "골",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Red cards",
+    "metric_key": "red_cards",
+    "metric_kr": "레드카드",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Touches in opposition box",
+    "metric_key": "touches_opp_box",
+    "metric_kr": "상대 박스 터치",
+    "per90": 1.6363636363636362,
+    "percentile": 0,
+    "percentile_per90": 2,
+    "player_id": 172,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    }
   ],
   "그리말도": [
@@ -2623,6 +2961,45 @@
     "stat_value": "1602"
    },
    {
+    "league": "LaLiga",
+    "metric": "Dispossessed",
+    "metric_key": "dispossessed",
+    "metric_kr": "볼 탈취당함",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Red cards",
+    "metric_key": "red_cards",
+    "metric_kr": "레드카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Yellow cards",
+    "metric_key": "yellow_cards",
+    "metric_kr": "옐로카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Shots on target",
     "metric_key": "ShotsOnTarget",
@@ -2831,6 +3208,32 @@
     "stat_value": "127"
    },
    {
+    "league": "LaLiga",
+    "metric": "Shots on target",
+    "metric_key": "ShotsOnTarget",
+    "metric_kr": "유효 슛",
+    "per90": 0.6666666666666667,
+    "percentile": 89,
+    "percentile_per90": 92,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Shots",
+    "metric_key": "shots",
+    "metric_kr": "슛",
+    "per90": 1.3333333333333335,
+    "percentile": 89,
+    "percentile_per90": 87,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "4"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Fouls won",
     "metric_key": "fouls_won",
@@ -2922,6 +3325,32 @@
     "stat_value": "49"
    },
    {
+    "league": "LaLiga",
+    "metric": "xGOT",
+    "metric_key": "expected_goals_on_target",
+    "metric_kr": "xGOT",
+    "per90": 0.05779999991257986,
+    "percentile": 85,
+    "percentile_per90": 85,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.17"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 3.0,
+    "percentile": 85,
+    "percentile_per90": 89,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "9"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Cross accuracy",
     "metric_key": "crosses_succeeeded_accuracy",
@@ -2974,6 +3403,32 @@
     "stat_value": "5"
    },
    {
+    "league": "LaLiga",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블",
+    "per90": 1.6666666666666665,
+    "percentile": 81,
+    "percentile_per90": 83,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "5"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 64.28571428571429,
+    "percentile": 81,
+    "percentile_per90": 81,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "64.3"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Long ball accuracy",
     "metric_key": "long_ball_succeeeded_accuracy",
@@ -3013,6 +3468,45 @@
     "stat_value": "86.4"
    },
    {
+    "league": "LaLiga",
+    "metric": "Successful crosses",
+    "metric_key": "crosses_succeeeded",
+    "metric_kr": "성공한 크로스",
+    "per90": 1.0,
+    "percentile": 79,
+    "percentile_per90": 85,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.03936666746934255,
+    "percentile": 79,
+    "percentile_per90": 74,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.12"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.03936666746934255,
+    "percentile": 79,
+    "percentile_per90": 74,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.12"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Clean sheets",
     "metric_key": "clean_sheet_team_title",
@@ -3050,6 +3544,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "28.7"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 62.5,
+    "percentile": 74,
+    "percentile_per90": 74,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "62.5"
    },
    {
     "league": "Bundesliga",
@@ -3104,6 +3611,45 @@
     "stat_value": "16"
    },
    {
+    "league": "LaLiga",
+    "metric": "Blocked scoring attempt",
+    "metric_key": "blocked_shots",
+    "metric_kr": "슛 블록",
+    "per90": 0.6666666666666667,
+    "percentile": 68,
+    "percentile_per90": 77,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Tackles",
+    "metric_key": "matchstats.headers.tackles",
+    "metric_kr": "태클",
+    "per90": 3.0,
+    "percentile": 68,
+    "percentile_per90": 75,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "9"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Touches in opposition box",
+    "metric_key": "touches_opp_box",
+    "metric_kr": "상대 박스 터치",
+    "per90": 1.6666666666666665,
+    "percentile": 68,
+    "percentile_per90": 68,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "5"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Clearances",
     "metric_key": "clearances",
@@ -3130,6 +3676,19 @@
     "stat_value": "16"
    },
    {
+    "league": "LaLiga",
+    "metric": "Touches",
+    "metric_key": "touches",
+    "metric_kr": "터치",
+    "per90": 77.33333333333333,
+    "percentile": 62,
+    "percentile_per90": 70,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "232"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Duels won",
     "metric_key": "duel_won",
@@ -3141,6 +3700,19 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "85"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Defensive actions",
+    "metric_key": "defensive_actions",
+    "metric_kr": "수비 액션",
+    "per90": 6.666666666666666,
+    "percentile": 60,
+    "percentile_per90": 64,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "20"
    },
    {
     "league": "Bundesliga",
@@ -3156,6 +3728,84 @@
     "stat_value": "48.5"
    },
    {
+    "league": "LaLiga",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "클리어런스",
+    "per90": 2.3333333333333335,
+    "percentile": 58,
+    "percentile_per90": 53,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "7"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Cross accuracy",
+    "metric_key": "crosses_succeeeded_accuracy",
+    "metric_kr": "크로스 정확도",
+    "per90": 16.666666666666668,
+    "percentile": 58,
+    "percentile_per90": 58,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "16.7"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Duels won",
+    "metric_key": "duel_won",
+    "metric_kr": "듀얼 승",
+    "per90": 5.666666666666666,
+    "percentile": 58,
+    "percentile_per90": 66,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "17"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Fouls committed",
+    "metric_key": "fouls",
+    "metric_kr": "파울",
+    "per90": 0.6666666666666667,
+    "percentile": 58,
+    "percentile_per90": 64,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Duels won %",
+    "metric_key": "duel_won_percent",
+    "metric_kr": "듀얼 승률",
+    "per90": 56.666666666666664,
+    "percentile": 57,
+    "percentile_per90": 57,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "56.7"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Pass accuracy",
+    "metric_key": "successful_passes_accuracy",
+    "metric_kr": "패스 정확도",
+    "per90": 85.61151079136691,
+    "percentile": 57,
+    "percentile_per90": 57,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "85.6"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Dribbles success rate",
     "metric_key": "won_contest_subtitle",
@@ -3167,6 +3817,32 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "44.4"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Aerials won",
+    "metric_key": "aerials_won",
+    "metric_kr": "공중 경합 승",
+    "per90": 1.0,
+    "percentile": 55,
+    "percentile_per90": 53,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Accurate passes",
+    "metric_key": "successful_passes",
+    "metric_kr": "정확한 패스",
+    "per90": 39.66666666666667,
+    "percentile": 55,
+    "percentile_per90": 62,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "119"
    },
    {
     "league": "Bundesliga",
@@ -3208,6 +3884,19 @@
     "stat_value": "11"
    },
    {
+    "league": "LaLiga",
+    "metric": "xA",
+    "metric_key": "expected_assists",
+    "metric_kr": "xA",
+    "per90": 0.048975199460983276,
+    "percentile": 49,
+    "percentile_per90": 51,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.15"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Duels won %",
     "metric_key": "duel_won_percent",
@@ -3245,6 +3934,32 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "24"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Aerials won %",
+    "metric_key": "aerials_won_percent",
+    "metric_kr": "공중 경합 승률",
+    "per90": 42.857142857142854,
+    "percentile": 40,
+    "percentile_per90": 40,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "42.9"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Recoveries",
+    "metric_key": "recoveries",
+    "metric_kr": "볼 리커버리",
+    "per90": 3.0,
+    "percentile": 40,
+    "percentile_per90": 28,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "9"
    },
    {
     "league": "Bundesliga",
@@ -3299,6 +4014,19 @@
     "stat_value": "29.05"
    },
    {
+    "league": "LaLiga",
+    "metric": "Interceptions",
+    "metric_key": "interceptions",
+    "metric_kr": "인터셉트",
+    "per90": 0.6666666666666667,
+    "percentile": 28,
+    "percentile_per90": 38,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Yellow cards",
     "metric_key": "yellow_cards",
@@ -3309,6 +4037,19 @@
     "player_id": 167,
     "pulled": "2026-08-21",
     "season": "2024/2025",
+    "stat_value": "4"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "드리블 돌파 허용",
+    "per90": 1.3333333333333335,
+    "percentile": 25,
+    "percentile_per90": 23,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
     "stat_value": "4"
    },
    {
@@ -3336,6 +4077,32 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "13"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xG against while on pitch",
+    "metric_key": "expected_goals_against_while_on_pitch",
+    "metric_kr": "출전 중 피xG",
+    "per90": 1.9688666661580405,
+    "percentile": 21,
+    "percentile_per90": 15,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "5.91"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Goals conceded while on pitch",
+    "metric_key": "goals_conceded_while_on_pitch",
+    "metric_kr": "출전 중 실점",
+    "per90": 2.0,
+    "percentile": 21,
+    "percentile_per90": 21,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "6"
    },
    {
     "league": "Bundesliga",
@@ -3453,6 +4220,45 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Assists",
+    "metric_key": "assists",
+    "metric_kr": "어시스트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Clean sheets",
+    "metric_key": "clean_sheet_team_title",
+    "metric_kr": "클린시트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Goals",
+    "metric_key": "goals",
+    "metric_kr": "골",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
    }
   ],
   "다니 마르티네스": [
@@ -4461,6 +5267,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블",
+    "per90": 0.6143344709897611,
+    "percentile": 59,
+    "percentile_per90": 55,
+    "player_id": 158,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Cross accuracy",
     "metric_key": "crosses_succeeeded_accuracy",
     "metric_kr": "크로스 정확도",
@@ -4565,6 +5384,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Chances created",
+    "metric_key": "chances_created",
+    "metric_kr": "기회 창출",
+    "per90": 0.6143344709897611,
+    "percentile": 40,
+    "percentile_per90": 37,
+    "player_id": 158,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Pass accuracy",
     "metric_key": "successful_passes_accuracy",
     "metric_kr": "패스 정확도",
@@ -4575,6 +5407,32 @@
     "pulled": "2026-08-21",
     "season": "2026/2027",
     "stat_value": "73.9"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 50.0,
+    "percentile": 39,
+    "percentile_per90": 39,
+    "player_id": 158,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "50.0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 28.571428571428573,
+    "percentile": 39,
+    "percentile_per90": 39,
+    "player_id": 158,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "28.6"
    },
    {
     "league": "LaLiga",
@@ -4886,6 +5744,19 @@
     "player_id": 158,
     "pulled": "2026-08-21",
     "season": "2025/2026",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 0.30716723549488056,
+    "percentile": 13,
+    "percentile_per90": 14,
+    "player_id": 158,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
     "stat_value": "1"
    },
    {
@@ -5646,6 +6517,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "드리블 돌파 허용",
+    "per90": 0.5421686746987953,
+    "percentile": 36,
+    "percentile_per90": 42,
+    "player_id": 150,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Headed shots",
     "metric_key": "headed_shots",
     "metric_kr": "헤더 슛",
@@ -5836,6 +6720,19 @@
     "percentile_per90": 10,
     "player_id": 150,
     "pulled": "2026-08-21",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Penalties conceded",
+    "metric_key": "penalty_conceded_title",
+    "metric_kr": "PK 헌납",
+    "per90": 0.5421686746987953,
+    "percentile": 1,
+    "percentile_per90": 1,
+    "player_id": 150,
+    "pulled": "2026-09-13",
     "season": "2026/2027",
     "stat_value": "1"
    },
@@ -6404,6 +7301,19 @@
   "마르코스 요렌테": [
    {
     "league": "LaLiga",
+    "metric": "Aerials won %",
+    "metric_key": "aerials_won_percent",
+    "metric_kr": "공중 경합 승률",
+    "per90": 100.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 159,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "100.0"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Dispossessed",
     "metric_key": "dispossessed",
     "metric_kr": "볼 탈취당함",
@@ -6612,6 +7522,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Shots on target",
+    "metric_key": "ShotsOnTarget",
+    "metric_kr": "유효 슛",
+    "per90": 0.8,
+    "percentile": 89,
+    "percentile_per90": 100,
+    "player_id": 159,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Possession won final 3rd",
     "metric_key": "poss_won_att_3rd_team_title",
     "metric_kr": "공격 3선 볼 획득",
@@ -6716,6 +7639,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Interceptions",
+    "metric_key": "interceptions",
+    "metric_kr": "인터셉트",
+    "per90": 2.4000000000000004,
+    "percentile": 81,
+    "percentile_per90": 92,
+    "player_id": 159,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "6"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Tackles",
     "metric_key": "matchstats.headers.tackles",
     "metric_kr": "태클",
@@ -6726,6 +7662,45 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "59"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xGOT",
+    "metric_key": "expected_goals_on_target",
+    "metric_kr": "xGOT",
+    "per90": 0.043079999089241025,
+    "percentile": 77,
+    "percentile_per90": 79,
+    "player_id": 159,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.11"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.04243999719619751,
+    "percentile": 74,
+    "percentile_per90": 75,
+    "player_id": 159,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.11"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.04243999719619751,
+    "percentile": 74,
+    "percentile_per90": 75,
+    "player_id": 159,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.11"
    },
    {
     "league": "LaLiga",
@@ -6791,6 +7766,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "93"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Chances created",
+    "metric_key": "chances_created",
+    "metric_kr": "기회 창출",
+    "per90": 1.2000000000000002,
+    "percentile": 62,
+    "percentile_per90": 74,
+    "player_id": 159,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "3"
    },
    {
     "league": "LaLiga",
@@ -6872,6 +7860,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "드리블 돌파 허용",
+    "per90": 0.8,
+    "percentile": 45,
+    "percentile_per90": 51,
+    "player_id": 159,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Cross accuracy",
     "metric_key": "crosses_succeeeded_accuracy",
     "metric_kr": "크로스 정확도",
@@ -6901,6 +7902,19 @@
     "metric": "Aerials won",
     "metric_key": "aerials_won",
     "metric_kr": "공중 경합 승",
+    "per90": 0.8,
+    "percentile": 40,
+    "percentile_per90": 45,
+    "player_id": 159,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Aerials won",
+    "metric_key": "aerials_won",
+    "metric_kr": "공중 경합 승",
     "per90": 0.412,
     "percentile": 38,
     "percentile_per90": 13,
@@ -6921,6 +7935,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "43.5"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Touches in opposition box",
+    "metric_key": "touches_opp_box",
+    "metric_kr": "상대 박스 터치",
+    "per90": 1.2000000000000002,
+    "percentile": 36,
+    "percentile_per90": 49,
+    "player_id": 159,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "3"
    },
    {
     "league": "LaLiga",
@@ -6947,6 +7974,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "26"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Fouls won",
+    "metric_key": "fouls_won",
+    "metric_kr": "파울 획득",
+    "per90": 0.8,
+    "percentile": 34,
+    "percentile_per90": 36,
+    "player_id": 159,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
    },
    {
     "league": "LaLiga",
@@ -7430,6 +8470,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "33.3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Fouls committed",
+    "metric_key": "fouls",
+    "metric_kr": "파울",
+    "per90": 0.8411214953271028,
+    "percentile": 73,
+    "percentile_per90": 70,
+    "player_id": 154,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "LaLiga",
@@ -8054,6 +9107,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "6"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Fouls won",
+    "metric_key": "fouls_won",
+    "metric_kr": "파울 획득",
+    "per90": 0.8411214953271028,
+    "percentile": 11,
+    "percentile_per90": 33,
+    "player_id": 154,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "LaLiga",
@@ -8698,6 +9764,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "xGOT",
+    "metric_key": "expected_goals_on_target",
+    "metric_kr": "xGOT",
+    "per90": 0.2291632671745456,
+    "percentile": 92,
+    "percentile_per90": 88,
+    "player_id": 155,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.75"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Interceptions",
     "metric_key": "interceptions",
     "metric_kr": "인터셉트",
@@ -8721,6 +9800,19 @@
     "pulled": "2026-08-21",
     "season": "2026/2027",
     "stat_value": "3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Headed shots",
+    "metric_key": "headed_shots",
+    "metric_kr": "헤더 슛",
+    "per90": 0.30612244897959184,
+    "percentile": 86,
+    "percentile_per90": 89,
+    "player_id": 155,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "LaLiga",
@@ -8799,6 +9891,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "55.0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Touches in opposition box",
+    "metric_key": "touches_opp_box",
+    "metric_kr": "상대 박스 터치",
+    "per90": 2.142857142857143,
+    "percentile": 80,
+    "percentile_per90": 72,
+    "player_id": 155,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "7"
    },
    {
     "league": "LaLiga",
@@ -8916,6 +10021,32 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "1394"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Shots on target",
+    "metric_key": "ShotsOnTarget",
+    "metric_kr": "유효 슛",
+    "per90": 0.6122448979591837,
+    "percentile": 77,
+    "percentile_per90": 78,
+    "player_id": 155,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Cross accuracy",
+    "metric_key": "crosses_succeeeded_accuracy",
+    "metric_kr": "크로스 정확도",
+    "per90": 33.333333333333336,
+    "percentile": 77,
+    "percentile_per90": 77,
+    "player_id": 155,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "33.3"
    },
    {
     "league": "LaLiga",
@@ -9166,6 +10297,32 @@
    },
    {
     "league": "LaLiga",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.045948977373084246,
+    "percentile": 64,
+    "percentile_per90": 62,
+    "player_id": 155,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.15"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.045948977373084246,
+    "percentile": 64,
+    "percentile_per90": 62,
+    "player_id": 155,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.15"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Big chances created",
     "metric_key": "big_chance_created_team_title",
     "metric_kr": "빅찬스 창출",
@@ -9270,6 +10427,45 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Successful crosses",
+    "metric_key": "crosses_succeeeded",
+    "metric_kr": "성공한 크로스",
+    "per90": 0.30612244897959184,
+    "percentile": 56,
+    "percentile_per90": 59,
+    "player_id": 155,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Fouls committed",
+    "metric_key": "fouls",
+    "metric_kr": "파울",
+    "per90": 0.6122448979591837,
+    "percentile": 56,
+    "percentile_per90": 80,
+    "player_id": 155,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Blocked scoring attempt",
+    "metric_key": "blocked_shots",
+    "metric_kr": "슛 블록",
+    "per90": 0.30612244897959184,
+    "percentile": 53,
+    "percentile_per90": 62,
+    "player_id": 155,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Dribbled past",
     "metric_key": "dribbled_past",
     "metric_kr": "드리블 돌파 허용",
@@ -9361,6 +10557,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Tackles",
+    "metric_key": "matchstats.headers.tackles",
+    "metric_kr": "태클",
+    "per90": 1.2244897959183674,
+    "percentile": 38,
+    "percentile_per90": 24,
+    "player_id": 155,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "4"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Blocked scoring attempt",
     "metric_key": "blocked_shots",
     "metric_kr": "슛 블록",
@@ -9410,6 +10619,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "25"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "클리어런스",
+    "per90": 0.30612244897959184,
+    "percentile": 17,
+    "percentile_per90": 19,
+    "player_id": 155,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "LaLiga",
@@ -9516,6 +10738,19 @@
     "pulled": "2026-08-21",
     "season": "2026/2027",
     "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Interceptions",
+    "metric_key": "interceptions",
+    "metric_kr": "인터셉트",
+    "per90": 1.1297071129707112,
+    "percentile": 100,
+    "percentile_per90": 96,
+    "player_id": 160,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "3"
    },
    {
     "league": "LaLiga",
@@ -9948,6 +11183,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Touches in opposition box",
+    "metric_key": "touches_opp_box",
+    "metric_kr": "상대 박스 터치",
+    "per90": 4.895397489539749,
+    "percentile": 56,
+    "percentile_per90": 60,
+    "player_id": 160,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "13"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Dribbled past",
     "metric_key": "dribbled_past",
     "metric_kr": "드리블 돌파 허용",
@@ -10104,6 +11352,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Defensive actions",
+    "metric_key": "defensive_actions",
+    "metric_kr": "수비 액션",
+    "per90": 1.506276150627615,
+    "percentile": 38,
+    "percentile_per90": 40,
+    "player_id": 160,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "4"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Accurate long balls",
     "metric_key": "long_balls_accurate",
     "metric_kr": "정확한 롱볼",
@@ -10247,6 +11508,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "클리어런스",
+    "per90": 0.37656903765690375,
+    "percentile": 20,
+    "percentile_per90": 33,
+    "player_id": 160,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Dispossessed",
     "metric_key": "dispossessed",
     "metric_kr": "볼 탈취당함",
@@ -10322,6 +11596,19 @@
     "pulled": "2026-08-21",
     "season": "2026/2027",
     "stat_value": "25.0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "드리블 돌파 허용",
+    "per90": 1.1297071129707112,
+    "percentile": 9,
+    "percentile_per90": 20,
+    "player_id": 160,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "3"
    },
    {
     "league": "LaLiga",
@@ -14367,6 +15654,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Penalty save %",
+    "metric_key": "penalty_save_percent",
+    "metric_kr": "PK 선방률",
+    "per90": 0.0,
+    "percentile": 48,
+    "percentile_per90": 48,
+    "player_id": 148,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.0"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Sweeper clearances",
     "metric_key": "keeper_sweeper",
     "metric_kr": "스위퍼 클리어",
@@ -14484,6 +15784,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "High claims",
+    "metric_key": "keeper_high_claim",
+    "metric_kr": "하이 클레임",
+    "per90": 0.25,
+    "percentile": 4,
+    "percentile_per90": 13,
+    "player_id": 148,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Penalties saved",
     "metric_key": "penalty_saves",
     "metric_kr": "PK 선방",
@@ -14505,6 +15818,32 @@
     "percentile_per90": 0,
     "player_id": 148,
     "pulled": "2026-08-21",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Penalty goals conceded",
+    "metric_key": "penalty_goals_conceded",
+    "metric_kr": "PK 실점",
+    "per90": 0.5,
+    "percentile": 0,
+    "percentile_per90": 9,
+    "player_id": 148,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Penalties saved",
+    "metric_key": "penalty_saves",
+    "metric_kr": "PK 선방",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 148,
+    "pulled": "2026-09-13",
     "season": "2026/2027",
     "stat_value": "0"
    },
@@ -14589,6 +15928,32 @@
     "stat_value": "0"
    },
    {
+    "league": "LaLiga",
+    "metric": "Red cards",
+    "metric_key": "red_cards",
+    "metric_kr": "레드카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 100.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "100.0"
+   },
+   {
     "league": "Liga Portugal",
     "metric": "Clean sheets",
     "metric_key": "clean_sheet_team_title",
@@ -14639,6 +16004,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "1988"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Duels won %",
+    "metric_key": "duel_won_percent",
+    "metric_kr": "듀얼 승률",
+    "per90": 73.07692307692308,
+    "percentile": 96,
+    "percentile_per90": 96,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "73.1"
    },
    {
     "league": "Liga Portugal",
@@ -14849,6 +16227,45 @@
     "stat_value": "29"
    },
    {
+    "league": "LaLiga",
+    "metric": "Chances created",
+    "metric_key": "chances_created",
+    "metric_kr": "기회 창출",
+    "per90": 2.5609756097560976,
+    "percentile": 89,
+    "percentile_per90": 93,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "7"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Interceptions",
+    "metric_key": "interceptions",
+    "metric_kr": "인터셉트",
+    "per90": 2.1951219512195124,
+    "percentile": 89,
+    "percentile_per90": 91,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "6"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Defensive actions",
+    "metric_key": "defensive_actions",
+    "metric_kr": "수비 액션",
+    "per90": 7.682926829268293,
+    "percentile": 88,
+    "percentile_per90": 88,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "21"
+   },
+   {
     "league": "Liga Portugal",
     "metric": "xA",
     "metric_key": "expected_assists",
@@ -14901,6 +16318,19 @@
     "stat_value": "64.2"
    },
    {
+    "league": "LaLiga",
+    "metric": "Fouls won",
+    "metric_key": "fouls_won",
+    "metric_kr": "파울 획득",
+    "per90": 2.1951219512195124,
+    "percentile": 83,
+    "percentile_per90": 83,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "6"
+   },
+   {
     "league": "Liga Portugal",
     "metric": "Shots on target",
     "metric_key": "ShotsOnTarget",
@@ -14912,6 +16342,32 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "7"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Pass accuracy",
+    "metric_key": "successful_passes_accuracy",
+    "metric_kr": "패스 정확도",
+    "per90": 91.92546583850931,
+    "percentile": 82,
+    "percentile_per90": 82,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "91.9"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "클리어런스",
+    "per90": 2.1951219512195124,
+    "percentile": 81,
+    "percentile_per90": 80,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "6"
    },
    {
     "league": "Liga Portugal",
@@ -14927,6 +16383,71 @@
     "stat_value": "21"
    },
    {
+    "league": "LaLiga",
+    "metric": "Aerials won",
+    "metric_key": "aerials_won",
+    "metric_kr": "공중 경합 승",
+    "per90": 1.4634146341463417,
+    "percentile": 80,
+    "percentile_per90": 86,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "4"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Duels won",
+    "metric_key": "duel_won",
+    "metric_kr": "듀얼 승",
+    "per90": 6.951219512195122,
+    "percentile": 77,
+    "percentile_per90": 80,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "19"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Tackles",
+    "metric_key": "matchstats.headers.tackles",
+    "metric_kr": "태클",
+    "per90": 2.9268292682926833,
+    "percentile": 76,
+    "percentile_per90": 83,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "8"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Accurate passes",
+    "metric_key": "successful_passes",
+    "metric_kr": "정확한 패스",
+    "per90": 54.146341463414636,
+    "percentile": 70,
+    "percentile_per90": 79,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "148"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Aerials won %",
+    "metric_key": "aerials_won_percent",
+    "metric_kr": "공중 경합 승률",
+    "per90": 66.66666666666667,
+    "percentile": 69,
+    "percentile_per90": 69,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "66.7"
+   },
+   {
     "league": "Liga Portugal",
     "metric": "Clearances",
     "metric_key": "clearances",
@@ -14938,6 +16459,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "26"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Touches",
+    "metric_key": "touches",
+    "metric_kr": "터치",
+    "per90": 75.0,
+    "percentile": 66,
+    "percentile_per90": 78,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "205"
    },
    {
     "league": "Liga Portugal",
@@ -14953,6 +16487,32 @@
     "stat_value": "2"
    },
    {
+    "league": "LaLiga",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "드리블 돌파 허용",
+    "per90": 0.3658536585365854,
+    "percentile": 62,
+    "percentile_per90": 79,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dispossessed",
+    "metric_key": "dispossessed",
+    "metric_kr": "볼 탈취당함",
+    "per90": 0.3658536585365854,
+    "percentile": 61,
+    "percentile_per90": 74,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
     "league": "Liga Portugal",
     "metric": "Dribbles",
     "metric_key": "dribbles_succeeded",
@@ -14964,6 +16524,97 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "8"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xA",
+    "metric_key": "expected_assists",
+    "metric_kr": "xA",
+    "per90": 0.08117795535703985,
+    "percentile": 58,
+    "percentile_per90": 53,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.22"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 62.5,
+    "percentile": 58,
+    "percentile_per90": 58,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "62.5"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 1.8292682926829267,
+    "percentile": 58,
+    "percentile_per90": 62,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "5"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Recoveries",
+    "metric_key": "recoveries",
+    "metric_kr": "볼 리커버리",
+    "per90": 4.75609756097561,
+    "percentile": 58,
+    "percentile_per90": 68,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "13"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Blocked scoring attempt",
+    "metric_key": "blocked_shots",
+    "metric_kr": "슛 블록",
+    "per90": 0.3658536585365854,
+    "percentile": 53,
+    "percentile_per90": 70,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Fouls committed",
+    "metric_key": "fouls",
+    "metric_kr": "파울",
+    "per90": 1.0975609756097562,
+    "percentile": 43,
+    "percentile_per90": 53,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Possession won final 3rd",
+    "metric_key": "poss_won_att_3rd_team_title",
+    "metric_kr": "공격 3선 볼 획득",
+    "per90": 0.3658536585365854,
+    "percentile": 43,
+    "percentile_per90": 55,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "Liga Portugal",
@@ -15018,6 +16669,19 @@
     "stat_value": "14"
    },
    {
+    "league": "LaLiga",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블",
+    "per90": 0.3658536585365854,
+    "percentile": 23,
+    "percentile_per90": 37,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
     "league": "Liga Portugal",
     "metric": "Dispossessed",
     "metric_key": "dispossessed",
@@ -15029,6 +16693,84 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "13"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.006914633984972792,
+    "percentile": 22,
+    "percentile_per90": 20,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.02"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.006914633984972792,
+    "percentile": 22,
+    "percentile_per90": 20,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.02"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Goals conceded while on pitch",
+    "metric_key": "goals_conceded_while_on_pitch",
+    "metric_kr": "출전 중 실점",
+    "per90": 1.8292682926829267,
+    "percentile": 20,
+    "percentile_per90": 21,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "5"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xG against while on pitch",
+    "metric_key": "expected_goals_against_while_on_pitch",
+    "metric_kr": "출전 중 피xG",
+    "per90": 2.040622001740991,
+    "percentile": 18,
+    "percentile_per90": 8,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "5.58"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Shots",
+    "metric_key": "shots",
+    "metric_kr": "슛",
+    "per90": 0.3658536585365854,
+    "percentile": 18,
+    "percentile_per90": 24,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Yellow cards",
+    "metric_key": "yellow_cards",
+    "metric_kr": "옐로카드",
+    "per90": 0.3658536585365854,
+    "percentile": 9,
+    "percentile_per90": 23,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "Liga Portugal",
@@ -15055,6 +16797,58 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "8"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Assists",
+    "metric_key": "assists",
+    "metric_kr": "어시스트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Clean sheets",
+    "metric_key": "clean_sheet_team_title",
+    "metric_kr": "클린시트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Goals",
+    "metric_key": "goals",
+    "metric_kr": "골",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Penalties conceded",
+    "metric_key": "penalty_conceded_title",
+    "metric_kr": "PK 헌납",
+    "per90": 0.3658536585365854,
+    "percentile": 0,
+    "percentile_per90": 2,
+    "player_id": 163,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    }
   ],
   "이강인": [
@@ -15174,6 +16968,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "45"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블",
+    "per90": 3.5217391304347827,
+    "percentile": 96,
+    "percentile_per90": 93,
+    "player_id": 162,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "9"
    },
    {
     "league": "Ligue 1",
@@ -15306,6 +17113,32 @@
     "stat_value": "92.9"
    },
    {
+    "league": "LaLiga",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 1.9565217391304348,
+    "percentile": 84,
+    "percentile_per90": 93,
+    "player_id": 162,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "5"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 75.0,
+    "percentile": 84,
+    "percentile_per90": 84,
+    "player_id": 162,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "75.0"
+   },
+   {
     "league": "Ligue 1",
     "metric": "Dribbles",
     "metric_key": "dribbles_succeeded",
@@ -15421,6 +17254,19 @@
     "pulled": "2026-08-21",
     "season": "2026/2027",
     "stat_value": "0.05"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Interceptions",
+    "metric_key": "interceptions",
+    "metric_kr": "인터셉트",
+    "per90": 0.391304347826087,
+    "percentile": 69,
+    "percentile_per90": 80,
+    "player_id": 162,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "Ligue 1",
@@ -15774,6 +17620,19 @@
     "stat_value": "4"
    },
    {
+    "league": "LaLiga",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 50.0,
+    "percentile": 38,
+    "percentile_per90": 38,
+    "player_id": 162,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "50.0"
+   },
+   {
     "league": "Ligue 1",
     "metric": "Fouls committed",
     "metric_key": "fouls",
@@ -15785,6 +17644,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "18"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Possession won final 3rd",
+    "metric_key": "poss_won_att_3rd_team_title",
+    "metric_kr": "공격 3선 볼 획득",
+    "per90": 0.391304347826087,
+    "percentile": 33,
+    "percentile_per90": 40,
+    "player_id": 162,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "Ligue 1",
@@ -15827,6 +17699,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "클리어런스",
+    "per90": 0.391304347826087,
+    "percentile": 20,
+    "percentile_per90": 36,
+    "player_id": 162,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Fouls won",
     "metric_key": "fouls_won",
     "metric_kr": "파울 획득",
@@ -15850,6 +17735,32 @@
     "pulled": "2026-08-21",
     "season": "2026/2027",
     "stat_value": "23"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Fouls committed",
+    "metric_key": "fouls",
+    "metric_kr": "파울",
+    "per90": 1.9565217391304348,
+    "percentile": 18,
+    "percentile_per90": 13,
+    "player_id": 162,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "5"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Touches in opposition box",
+    "metric_key": "touches_opp_box",
+    "metric_kr": "상대 박스 터치",
+    "per90": 2.3478260869565215,
+    "percentile": 18,
+    "percentile_per90": 11,
+    "player_id": 162,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "6"
    },
    {
     "league": "Ligue 1",
@@ -15902,6 +17813,19 @@
     "pulled": "2026-08-21",
     "season": "2026/2027",
     "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "드리블 돌파 허용",
+    "per90": 1.9565217391304348,
+    "percentile": 0,
+    "percentile_per90": 2,
+    "player_id": 162,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "5"
    },
    {
     "league": "LaLiga",
@@ -16767,6 +18691,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 100.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 161,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "100.0"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Red cards",
     "metric_key": "red_cards",
     "metric_kr": "레드카드",
@@ -17066,6 +19003,32 @@
    },
    {
     "league": "LaLiga",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.10528676211833954,
+    "percentile": 80,
+    "percentile_per90": 78,
+    "player_id": 161,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.32"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.10528676211833954,
+    "percentile": 80,
+    "percentile_per90": 78,
+    "player_id": 161,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.32"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Duels won %",
     "metric_key": "duel_won_percent",
     "metric_kr": "듀얼 승률",
@@ -17105,6 +19068,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Tackles",
+    "metric_key": "matchstats.headers.tackles",
+    "metric_kr": "태클",
+    "per90": 2.6470588235294117,
+    "percentile": 76,
+    "percentile_per90": 73,
+    "player_id": 161,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "8"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Aerials won %",
     "metric_key": "aerials_won_percent",
     "metric_kr": "공중 경합 승률",
@@ -17131,6 +19107,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Cross accuracy",
+    "metric_key": "crosses_succeeeded_accuracy",
+    "metric_kr": "크로스 정확도",
+    "per90": 25.0,
+    "percentile": 69,
+    "percentile_per90": 69,
+    "player_id": 161,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "25.0"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Accurate passes",
     "metric_key": "successful_passes",
     "metric_kr": "정확한 패스",
@@ -17154,6 +19143,19 @@
     "pulled": "2026-08-21",
     "season": "2026/2027",
     "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xGOT",
+    "metric_key": "expected_goals_on_target",
+    "metric_kr": "xGOT",
+    "per90": 0.050591910257935524,
+    "percentile": 66,
+    "percentile_per90": 66,
+    "player_id": 161,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.15"
    },
    {
     "league": "LaLiga",
@@ -17222,6 +19224,32 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Successful crosses",
+    "metric_key": "crosses_succeeeded",
+    "metric_kr": "성공한 크로스",
+    "per90": 0.33088235294117646,
+    "percentile": 56,
+    "percentile_per90": 61,
+    "player_id": 161,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Fouls committed",
+    "metric_key": "fouls",
+    "metric_kr": "파울",
+    "per90": 0.6617647058823529,
+    "percentile": 56,
+    "percentile_per90": 79,
+    "player_id": 161,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Interceptions",
     "metric_key": "interceptions",
     "metric_kr": "인터셉트",
@@ -17230,6 +19258,32 @@
     "percentile_per90": 93,
     "player_id": 161,
     "pulled": "2026-08-21",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Blocked scoring attempt",
+    "metric_key": "blocked_shots",
+    "metric_kr": "슛 블록",
+    "per90": 0.33088235294117646,
+    "percentile": 53,
+    "percentile_per90": 65,
+    "player_id": 161,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Shots on target",
+    "metric_key": "ShotsOnTarget",
+    "metric_kr": "유효 슛",
+    "per90": 0.33088235294117646,
+    "percentile": 49,
+    "percentile_per90": 60,
+    "player_id": 161,
+    "pulled": "2026-09-13",
     "season": "2026/2027",
     "stat_value": "1"
    },
@@ -17257,6 +19311,19 @@
     "player_id": 161,
     "pulled": "2026-08-21",
     "season": "2025/2026",
+    "stat_value": "3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Fouls won",
+    "metric_key": "fouls_won",
+    "metric_kr": "파울 획득",
+    "per90": 0.9926470588235294,
+    "percentile": 45,
+    "percentile_per90": 47,
+    "player_id": 161,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
     "stat_value": "3"
    },
    {
@@ -17336,6 +19403,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "81.8"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "클리어런스",
+    "per90": 0.6617647058823529,
+    "percentile": 34,
+    "percentile_per90": 33,
+    "player_id": 161,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
    },
    {
     "league": "LaLiga",
@@ -17430,6 +19510,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 0.33088235294117646,
+    "percentile": 13,
+    "percentile_per90": 16,
+    "player_id": 161,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Dispossessed",
     "metric_key": "dispossessed",
     "metric_kr": "볼 탈취당함",
@@ -17466,6 +19559,19 @@
     "pulled": "2026-08-21",
     "season": "2026/2027",
     "stat_value": "29"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "드리블 돌파 허용",
+    "per90": 1.9852941176470589,
+    "percentile": 6,
+    "percentile_per90": 8,
+    "player_id": 161,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "6"
    },
    {
     "league": "LaLiga",
@@ -19698,6 +21804,32 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Cross accuracy",
+    "metric_key": "crosses_succeeeded_accuracy",
+    "metric_kr": "크로스 정확도",
+    "per90": 33.333333333333336,
+    "percentile": 77,
+    "percentile_per90": 77,
+    "player_id": 156,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "33.3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Successful crosses",
+    "metric_key": "crosses_succeeeded",
+    "metric_kr": "성공한 크로스",
+    "per90": 0.9326424870466321,
+    "percentile": 73,
+    "percentile_per90": 80,
+    "player_id": 156,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Interceptions",
     "metric_key": "interceptions",
     "metric_kr": "인터셉트",
@@ -19932,6 +22064,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 50.0,
+    "percentile": 49,
+    "percentile_per90": 49,
+    "player_id": 156,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "50.0"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Shots on target",
     "metric_key": "ShotsOnTarget",
     "metric_kr": "유효 슛",
@@ -20049,6 +22194,32 @@
    },
    {
     "league": "LaLiga",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.017207253318994156,
+    "percentile": 29,
+    "percentile_per90": 34,
+    "player_id": 156,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.04"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.017207253318994156,
+    "percentile": 29,
+    "percentile_per90": 34,
+    "player_id": 156,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.04"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Dispossessed",
     "metric_key": "dispossessed",
     "metric_kr": "볼 탈취당함",
@@ -20088,6 +22259,45 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블",
+    "per90": 0.46632124352331605,
+    "percentile": 23,
+    "percentile_per90": 44,
+    "player_id": 156,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Touches in opposition box",
+    "metric_key": "touches_opp_box",
+    "metric_kr": "상대 박스 터치",
+    "per90": 0.46632124352331605,
+    "percentile": 22,
+    "percentile_per90": 31,
+    "player_id": 156,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Interceptions",
+    "metric_key": "interceptions",
+    "metric_kr": "인터셉트",
+    "per90": 0.46632124352331605,
+    "percentile": 20,
+    "percentile_per90": 35,
+    "player_id": 156,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
     "metric": "xG against while on pitch",
     "metric_key": "expected_goals_against_while_on_pitch",
     "metric_kr": "출전 중 피xG",
@@ -20098,6 +22308,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "32.46"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "클리어런스",
+    "per90": 0.46632124352331605,
+    "percentile": 17,
+    "percentile_per90": 28,
+    "player_id": 156,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "LaLiga",
@@ -22433,6 +24656,32 @@
     "stat_value": "0"
    },
    {
+    "league": "LaLiga",
+    "metric": "Goals",
+    "metric_key": "goals",
+    "metric_kr": "골",
+    "per90": 0.3658536585365854,
+    "percentile": 100,
+    "percentile_per90": 95,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Red cards",
+    "metric_key": "red_cards",
+    "metric_kr": "레드카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
     "league": "LaLiga2",
     "metric": "Dribbles",
     "metric_key": "dribbles_succeeded",
@@ -22589,6 +24838,32 @@
     "stat_value": "9"
    },
    {
+    "league": "LaLiga",
+    "metric": "xGOT",
+    "metric_key": "expected_goals_on_target",
+    "metric_kr": "xGOT",
+    "per90": 0.16635365602446767,
+    "percentile": 92,
+    "percentile_per90": 95,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.45"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Cross accuracy",
+    "metric_key": "crosses_succeeeded_accuracy",
+    "metric_kr": "크로스 정확도",
+    "per90": 50.0,
+    "percentile": 91,
+    "percentile_per90": 91,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "50.0"
+   },
+   {
     "league": "LaLiga2",
     "metric": "Duels won %",
     "metric_key": "duel_won_percent",
@@ -22665,6 +24940,19 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "11"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Successful crosses",
+    "metric_key": "crosses_succeeeded",
+    "metric_kr": "성공한 크로스",
+    "per90": 0.3658536585365854,
+    "percentile": 87,
+    "percentile_per90": 97,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "LaLiga2",
@@ -22785,6 +25073,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 60.0,
+    "percentile": 76,
+    "percentile_per90": 76,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "60.0"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Shots on target",
     "metric_key": "ShotsOnTarget",
     "metric_kr": "유효 슛",
@@ -22888,6 +25189,45 @@
     "stat_value": "0.92"
    },
    {
+    "league": "LaLiga",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.05648780704998388,
+    "percentile": 72,
+    "percentile_per90": 75,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.15"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Fouls won",
+    "metric_key": "fouls_won",
+    "metric_kr": "파울 획득",
+    "per90": 1.0975609756097562,
+    "percentile": 72,
+    "percentile_per90": 84,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.05648780704998388,
+    "percentile": 72,
+    "percentile_per90": 75,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.15"
+   },
+   {
     "league": "LaLiga2",
     "metric": "Big chances created",
     "metric_key": "big_chance_created_team_title",
@@ -22925,6 +25265,32 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "102"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Shots on target",
+    "metric_key": "ShotsOnTarget",
+    "metric_kr": "유효 슛",
+    "per90": 0.3658536585365854,
+    "percentile": 71,
+    "percentile_per90": 87,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Aerials won %",
+    "metric_key": "aerials_won_percent",
+    "metric_kr": "공중 경합 승률",
+    "per90": 71.42857142857143,
+    "percentile": 70,
+    "percentile_per90": 70,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "71.4"
    },
    {
     "league": "LaLiga2",
@@ -22980,6 +25346,45 @@
    },
    {
     "league": "LaLiga",
+    "metric": "xA",
+    "metric_key": "expected_assists",
+    "metric_kr": "xA",
+    "per90": 0.018740294546615785,
+    "percentile": 64,
+    "percentile_per90": 64,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0.05"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 3.292682926829268,
+    "percentile": 63,
+    "percentile_per90": 70,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "9"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Shots",
+    "metric_key": "shots",
+    "metric_kr": "슛",
+    "per90": 0.7317073170731708,
+    "percentile": 63,
+    "percentile_per90": 72,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Blocked scoring attempt",
     "metric_key": "blocked_shots",
     "metric_kr": "슛 블록",
@@ -22993,6 +25398,32 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Pass accuracy",
+    "metric_key": "successful_passes_accuracy",
+    "metric_kr": "패스 정확도",
+    "per90": 91.27906976744185,
+    "percentile": 62,
+    "percentile_per90": 62,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "91.3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Accurate passes",
+    "metric_key": "successful_passes",
+    "metric_kr": "정확한 패스",
+    "per90": 57.4390243902439,
+    "percentile": 61,
+    "percentile_per90": 66,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "157"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Dribbled past",
     "metric_key": "dribbled_past",
     "metric_kr": "드리블 돌파 허용",
@@ -23003,6 +25434,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Recoveries",
+    "metric_key": "recoveries",
+    "metric_kr": "볼 리커버리",
+    "per90": 4.024390243902439,
+    "percentile": 59,
+    "percentile_per90": 67,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "11"
    },
    {
     "league": "LaLiga",
@@ -23084,6 +25528,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Duels won",
+    "metric_key": "duel_won",
+    "metric_kr": "듀얼 승",
+    "per90": 4.390243902439025,
+    "percentile": 55,
+    "percentile_per90": 62,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "12"
+   },
+   {
+    "league": "LaLiga",
     "metric": "xG against while on pitch",
     "metric_key": "expected_goals_against_while_on_pitch",
     "metric_kr": "출전 중 피xG",
@@ -23094,6 +25551,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "19.98"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Touches",
+    "metric_key": "touches",
+    "metric_kr": "터치",
+    "per90": 76.46341463414635,
+    "percentile": 53,
+    "percentile_per90": 64,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "209"
    },
    {
     "league": "LaLiga",
@@ -23120,6 +25590,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "1174"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Touches in opposition box",
+    "metric_key": "touches_opp_box",
+    "metric_kr": "상대 박스 터치",
+    "per90": 0.7317073170731708,
+    "percentile": 51,
+    "percentile_per90": 62,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "2"
    },
    {
     "league": "LaLiga",
@@ -23174,6 +25657,19 @@
     "stat_value": "4"
    },
    {
+    "league": "LaLiga",
+    "metric": "Aerials won",
+    "metric_key": "aerials_won",
+    "metric_kr": "공중 경합 승",
+    "per90": 1.8292682926829267,
+    "percentile": 50,
+    "percentile_per90": 58,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "5"
+   },
+   {
     "league": "LaLiga2",
     "metric": "Dribbled past",
     "metric_key": "dribbled_past",
@@ -23185,6 +25681,19 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "11"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Tackles",
+    "metric_key": "matchstats.headers.tackles",
+    "metric_kr": "태클",
+    "per90": 1.4634146341463417,
+    "percentile": 49,
+    "percentile_per90": 61,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "4"
    },
    {
     "league": "LaLiga",
@@ -23266,6 +25775,32 @@
    },
    {
     "league": "LaLiga",
+    "metric": "xG against while on pitch",
+    "metric_key": "expected_goals_against_while_on_pitch",
+    "metric_kr": "출전 중 피xG",
+    "per90": 1.7040730685722536,
+    "percentile": 38,
+    "percentile_per90": 28,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "4.66"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Duels won %",
+    "metric_key": "duel_won_percent",
+    "metric_kr": "듀얼 승률",
+    "per90": 50.0,
+    "percentile": 32,
+    "percentile_per90": 32,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "50.0"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Accurate long balls",
     "metric_key": "long_balls_accurate",
     "metric_kr": "정확한 롱볼",
@@ -23276,6 +25811,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "24"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Blocked scoring attempt",
+    "metric_key": "blocked_shots",
+    "metric_kr": "슛 블록",
+    "per90": 0.3658536585365854,
+    "percentile": 29,
+    "percentile_per90": 41,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "LaLiga2",
@@ -23289,6 +25837,19 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "6"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Goals conceded while on pitch",
+    "metric_key": "goals_conceded_while_on_pitch",
+    "metric_kr": "출전 중 실점",
+    "per90": 1.8292682926829267,
+    "percentile": 24,
+    "percentile_per90": 30,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "5"
    },
    {
     "league": "LaLiga",
@@ -23317,6 +25878,19 @@
     "stat_value": "38.1"
    },
    {
+    "league": "LaLiga",
+    "metric": "Defensive actions",
+    "metric_key": "defensive_actions",
+    "metric_kr": "수비 액션",
+    "per90": 4.024390243902439,
+    "percentile": 17,
+    "percentile_per90": 5,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "11"
+   },
+   {
     "league": "LaLiga2",
     "metric": "Dispossessed",
     "metric_key": "dispossessed",
@@ -23328,6 +25902,58 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "16"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "클리어런스",
+    "per90": 2.1951219512195124,
+    "percentile": 16,
+    "percentile_per90": 7,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "6"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dispossessed",
+    "metric_key": "dispossessed",
+    "metric_kr": "볼 탈취당함",
+    "per90": 0.3658536585365854,
+    "percentile": 14,
+    "percentile_per90": 24,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Yellow cards",
+    "metric_key": "yellow_cards",
+    "metric_kr": "옐로카드",
+    "per90": 0.3658536585365854,
+    "percentile": 13,
+    "percentile_per90": 29,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Fouls committed",
+    "metric_key": "fouls",
+    "metric_kr": "파울",
+    "per90": 1.8292682926829267,
+    "percentile": 11,
+    "percentile_per90": 16,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "5"
    },
    {
     "league": "LaLiga2",
@@ -23356,6 +25982,19 @@
     "stat_value": "40"
    },
    {
+    "league": "LaLiga",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "드리블 돌파 허용",
+    "per90": 1.0975609756097562,
+    "percentile": 7,
+    "percentile_per90": 13,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "3"
+   },
+   {
     "league": "LaLiga2",
     "metric": "Penalties conceded",
     "metric_key": "penalty_conceded_title",
@@ -23367,6 +26006,32 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Assists",
+    "metric_key": "assists",
+    "metric_kr": "어시스트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Clean sheets",
+    "metric_key": "clean_sheet_team_title",
+    "metric_kr": "클린시트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "0"
    }
   ],
   "한츠코": [
@@ -23463,6 +26128,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블",
+    "per90": 1.5,
+    "percentile": 100,
+    "percentile_per90": 95,
+    "player_id": 151,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "6"
+   },
+   {
+    "league": "LaLiga",
     "metric": "Goals conceded while on pitch",
     "metric_key": "goals_conceded_while_on_pitch",
     "metric_kr": "출전 중 실점",
@@ -23512,6 +26190,19 @@
     "pulled": "2026-08-21",
     "season": "2026/2027",
     "stat_value": "6"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 100.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 151,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "100.0"
    },
    {
     "league": "LaLiga",
@@ -23814,6 +26505,19 @@
    },
    {
     "league": "LaLiga",
+    "metric": "Possession won final 3rd",
+    "metric_key": "poss_won_att_3rd_team_title",
+    "metric_kr": "공격 3선 볼 획득",
+    "per90": 0.25,
+    "percentile": 83,
+    "percentile_per90": 87,
+    "player_id": 151,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "LaLiga",
     "metric": "xG",
     "metric_key": "expected_goals",
     "metric_kr": "xG",
@@ -23939,6 +26643,19 @@
     "percentile_per90": 80,
     "player_id": 151,
     "pulled": "2026-08-21",
+    "season": "2026/2027",
+    "stat_value": "3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Blocked scoring attempt",
+    "metric_key": "blocked_shots",
+    "metric_kr": "슛 블록",
+    "per90": 0.75,
+    "percentile": 76,
+    "percentile_per90": 63,
+    "player_id": 151,
+    "pulled": "2026-09-13",
     "season": "2026/2027",
     "stat_value": "3"
    },
@@ -24136,6 +26853,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "87.6"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "드리블 돌파 허용",
+    "per90": 0.25,
+    "percentile": 36,
+    "percentile_per90": 62,
+    "player_id": 151,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "LaLiga",
@@ -25608,6 +28338,78 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "270"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "7.03"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 167,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
    }
   ],
   "다니 마르티네스": [
@@ -25903,6 +28705,78 @@
     "player_id": 175,
     "pulled": "2026-08-21",
     "season": "2025/2026",
+    "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "player_id": 175,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "player_id": 175,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "player_id": 175,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 175,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "2"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 175,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "56"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "player_id": 175,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "6.8"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 175,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 175,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
     "value": "0"
    }
   ],
@@ -26828,6 +29702,24 @@
     "pulled": "2026-08-21",
     "season": "2026/2027",
     "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Goals conceded",
+    "metric_kr": "실점",
+    "player_id": 148,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "6"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Saved penalties",
+    "metric_kr": "PK 선방",
+    "player_id": 148,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0/2"
    }
   ],
   "율만": [
@@ -27261,6 +30153,15 @@
     "pulled": "2026-09-02",
     "season": "2026/2027",
     "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "player_id": 168,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "6.14"
    }
   ],
   "카를로스 마르틴": [
@@ -27333,6 +30234,78 @@
     "metric_kr": "퇴장",
     "player_id": 152,
     "pulled": "2026-08-21",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "HNL",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "player_id": 152,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "HNL",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "player_id": 152,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "HNL",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "player_id": 152,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "HNL",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 152,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "HNL",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 152,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "27"
+   },
+   {
+    "league": "HNL",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "player_id": 152,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "6.27"
+   },
+   {
+    "league": "HNL",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 152,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "HNL",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 152,
+    "pulled": "2026-09-13",
     "season": "2026/2027",
     "value": "0"
    }
@@ -27483,6 +30456,78 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "value": "2"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "player_id": 174,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "player_id": 174,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "player_id": 174,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 174,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 174,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "31"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "player_id": 174,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "6.54"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 174,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 174,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
    }
   ],
   "페르난데스-파르도": [
@@ -27630,6 +30675,78 @@
     "player_id": 166,
     "pulled": "2026-08-21",
     "season": "2025/2026",
+    "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "3"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "246"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "6.89"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "LaLiga",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 166,
+    "pulled": "2026-09-13",
+    "season": "2026/2027",
     "value": "0"
    }
   ],
@@ -33109,6 +36226,333 @@
    "tk_pg": 0.47,
    "xa_pg": 0.049,
    "xg_pg": 0.516
+  }
+ ],
+ "player_status": [
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 148,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 177126, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2028-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 150,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 609516, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2029-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 151,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 727897, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2030-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 152,
+   "pulled": "2026-08-21",
+   "source": "fotmob.com/api/data (player 1282015, scripts/collect_fotmob_players.py, 2026-08-21 수집)",
+   "stale_days": 23,
+   "value": "2029-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 154,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 1419969, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2031-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 155,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 1338192, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2030-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 156,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 184533, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2027-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 157,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 1297989, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2028-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 158,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 690516, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2030-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 159,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 602563, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2027-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 160,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 942372, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2030-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 161,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 1226147, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2030-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 162,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 940976, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2031-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 163,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 950199, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2031-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 164,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 389050, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2028-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 166,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 1323897, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2030-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 167,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 288406, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2030-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 168,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 1173678, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2030-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 172,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 974753, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2030-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 173,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 440330, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2028-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 174,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 789066, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2031-06-30"
+  },
+  {
+   "as_of": null,
+   "confidence": null,
+   "detail": null,
+   "kind": "contract_end",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 176,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 1254394, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "2030-06-30"
+  },
+  {
+   "as_of": "2026-09-12",
+   "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+   "detail": "About 1-2 weeks",
+   "kind": "injury",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 155,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 1338192, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "Muscle injury"
+  },
+  {
+   "as_of": "2026-08-12",
+   "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+   "detail": "September 2026",
+   "kind": "injury",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 173,
+   "pulled": "2026-09-13",
+   "source": "fotmob.com/api/data (player 440330, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+   "stale_days": 0,
+   "value": "Muscle injury"
+  },
+  {
+   "as_of": "2026-09-01",
+   "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+   "detail": "Doubtful",
+   "kind": "injury",
+   "played_after": "2026-09-07",
+   "played_after_minutes": 35,
+   "player_id": 175,
+   "pulled": "2026-09-02",
+   "source": "fotmob.com/api/data (player 468931, scripts/collect_fotmob_players.py, 2026-09-02 수집)",
+   "stale_days": 11,
+   "value": "Physical discomfort"
   }
  ],
  "prescriptions": [

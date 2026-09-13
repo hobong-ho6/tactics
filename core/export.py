@@ -157,6 +157,27 @@ def export_all(db_path=None, window="2026-summer"):
             WHERE team_code=? AND avg_x IS NOT NULL AND avg_y IS NOT NULL
               AND minutes>=45 AND hit_points>=15
             GROUP BY player_id""", (code,))
+        # ⭐ 부상·계약 상태(player_status, 2026-09-13 신설 — 사용자 지시 「부상 상태·복귀 일정을 선수 화면에」).
+        #    스냅샷 테이블이라 **선수·종류별 최신 pulled 한 행만** 내보낸다. `stale_days`는 화면이 신선도를
+        #    표시하기 위한 값 — 라이브 시스템에서 오래된 스냅샷을 현재 상태처럼 읽지 않게 한다.
+        status = _rows(con, """
+            SELECT s.player_id, s.kind, s.value, s.detail, s.as_of, s.pulled, s.source, s.confidence,
+                   CAST(julianday('now') - julianday(s.pulled) AS INTEGER) stale_days,
+                   -- ⭐ 교차검증: 이 스냅샷의 as_of 이후에 실제로 뛴 기록이 있으면 소스가 낡은 것이다.
+                   --    2026-09-13 실증 — 만잠비는 FotMob이 07-07자 「무릎·Doubtful」인데 09-12에 27분 뛰었다.
+                   --    라이브 시스템에서 이 모순을 화면이 직접 경고한다(값은 덮지 않는다 — 소스 원문 보존).
+                   (SELECT MAX(pm.date) FROM player_matches pm
+                     WHERE pm.player_id=s.player_id AND pm.minutes>0
+                       AND pm.date > COALESCE(s.as_of, s.pulled)) played_after,
+                   (SELECT pm.minutes FROM player_matches pm
+                     WHERE pm.player_id=s.player_id AND pm.minutes>0
+                       AND pm.date > COALESCE(s.as_of, s.pulled)
+                     ORDER BY pm.date DESC LIMIT 1) played_after_minutes
+              FROM player_status s
+              JOIN (SELECT player_id, kind, MAX(pulled) mx FROM player_status GROUP BY player_id, kind) t
+                ON t.player_id=s.player_id AND t.kind=s.kind AND t.mx=s.pulled
+             WHERE s.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?)
+             ORDER BY s.kind, s.player_id""", (rid,))
         setups = _rows(con, """SELECT season, game_version, kind, formation, build_up_style,
                                       defensive_approach, line_height, tactic_code, rationale, confidence
                                FROM team_tactic_setups WHERE regime_id=?
@@ -358,6 +379,7 @@ def export_all(db_path=None, window="2026-summer"):
             "evaluations": evals, "season_stats": season_stats, "fbref": fbref,
             "fotmob_season": fm_season,
             "setups": setups, "limits": limits, "kernel_fidelity": fidelity, "profile": profile,
+            "player_status": status,
             "transfer": {"targets": targets, "outgoing": outgoing, "ledger": ledger, "summary": summary}}))
 
     con.close()

@@ -202,3 +202,11 @@ details.match-players>summary,details.report-source>summary{color:var(--acc);cur
 .shirtno{display:inline-block;min-width:1.7em;padding:0 .3em;border-radius:.3em;
   background:#2a3446;color:#cfe0ff;font:600 .82em/1.5 ui-monospace,monospace;
   text-align:center;vertical-align:.05em}
+
+/* 부상·계약 상태 스트립 (player.html #pstatus, 2026-09-13) */
+.injcard{border-left:3px solid var(--bad);margin-bottom:10px}
+.injcard.ok{border-left-color:var(--ok)}
+.badge.inj{border-color:var(--bad);color:var(--bad)}
+.injgrid{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:6px;font-size:13px}
+.injgrid b{color:var(--txt);margin-right:6px}
+.injcard.contra{border-left-color:var(--warn)}
