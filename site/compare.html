@@ -6,6 +6,9 @@
 <h1>선수 비교 <small class="dim">후보 풀 = 현재 잔류 스쿼드 실측 — 확정 이탈·이적 루머 제외, DB 이력은 보존</small></h1>
 <div class="panel">
   <label class="kv">슬롯 <select id="slotSel"></select></label>
+  <span class="kv" style="margin-left:14px"><b>기준 시즌</b>
+    <button class="tab on" data-season="2025-26">25/26 정본 (전수)</button><button class="tab" data-season="2026-27">26/27 현재</button></span>
+  <div id="seasonNote" class="dim" style="font-size:12px;margin-top:6px"></div>
 </div>
 <div class="panel"><h2 id="rankTitle"></h2><table id="rank"></table></div>
 <div class="cardrow" id="cards"></div>
@@ -19,12 +22,41 @@ const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loa
 const K = new Kernel(kd);
 const slots = td.slots.filter(s => s.formation === td.slots[0]?.formation);
 
+/* ⭐ 기준 시즌 축 (2026-09-13 신설, 사용자 지적).
+   ⛔ 종전엔 `squad_entries.map25` 하나만 썼는데 그 그리드는 사실상 **25/26 전수 실측**이다
+   (rate_note가 「RM 21경기」·「LB 16경기」처럼 지난 시즌 표본을 가리킨다). 화면엔 그 사실이 어디에도 없었다.
+   ⇒ 26/27 실측(`prescriptions` season='2026-27' kind='measured')을 **별도 축**으로 고르게 한다.
+   ⛔ 두 시즌을 한 랭킹에 섞지 않는다 — 표본 크기·체제가 달라 sim이 같은 척도가 아니다. */
+const GRID2627 = new Map();
+for (const p of td.prescriptions ?? []){
+  if (p.season === '2026-27' && p.kind === 'measured' && p.map25 && p.player_id != null){
+    const prev = GRID2627.get(p.player_id);
+    if (!prev || (p.sample_n ?? 0) > (prev.sample_n ?? 0)) GRID2627.set(p.player_id, p);
+  }
+}
+let SEASON = '2025-26';
+document.querySelectorAll('button.tab[data-season]').forEach(b => b.addEventListener('click', () => {
+  SEASON = b.dataset.season;
+  document.querySelectorAll('button.tab[data-season]').forEach(x => x.classList.toggle('on', x === b));
+  render();
+}));
+
 /* 현재 스쿼드만 비교한다. 이적 후보와 확정 이탈은 DB에 보존하되 여기서는 숨긴다. */
 function pool(slot){
-  return slotCandidates(td, slot.pos, { includeTransfers: false }).map(q => ({
+  const base = slotCandidates(td, slot.pos, { includeTransfers: false }).map(q => ({
     player_id: q.player_id, label: q.label, map25: q.map25, lh: q.status,
     rate: q.rating, note: q.rate_note, dbFit: q.fit_sim, sourceKind: q.source_kind
   }));
+  if (SEASON === '2025-26') return { rows: base, missing: [] };
+  // 26/27 축 — 실측 그리드가 있는 선수만 랭킹에 세우고, 없는 선수는 따로 열거한다(조용한 폴백 금지).
+  const rows = [], missing = [];
+  for (const c of base){
+    const g = GRID2627.get(c.player_id);
+    if (g) rows.push({ ...c, map25: g.map25, rate: g.avg_rating ?? c.rate, dbFit: g.fit_sim,
+                       note: `${g.pos_label ?? ''} ${g.sample_n ?? '—'}경기 (26/27 실측)`.trim() });
+    else missing.push(c.label);
+  }
+  return { rows, missing };
 }
 /* squad_entries.lh='CONFIRMED'는 「이번 창에 확정 영입된 선수」라는 출처 표시다(docs/00 라벨 규약). 이적창이 닫힌 뒤(2026-09-01)에는
    전원 합류가 끝났으므로 「합류확정」이 아니라 「신규」로 읽는다 — 2026-09-09 사용자 지적(스쿼드 동결 후에도 합류확정 배지 잔존). */
@@ -40,14 +72,20 @@ selEl.addEventListener('change', render);
 function render(){
   const slot = slots.find(s => s.pos === selEl.value) ?? slots[0];
   const gk = isGkSlot(slot.pos);
-  const rows = pool(slot).map(c => {
+  const { rows: cands, missing } = pool(slot);
+  document.getElementById('seasonNote').innerHTML = SEASON === '2025-26'
+    ? '기준: <b>25/26 전수 실측</b>(`squad_entries` 그리드) — 표본이 크고 체제가 한 시즌 통째라 <b>정본</b>이다. 26/27 체제 변화는 반영되지 않는다.'
+    : `기준: <b>26/27 현재 실측</b>(\`prescriptions\` measured) — <b>⚠️ 표본 2~7경기로 얇다.</b> 시즌 정본이 아니라 <b>현재 경향</b>으로만 읽을 것.`
+      + (missing.length ? `<br>⛔ <b>26/27 실측 없음 ${missing.length}명</b>(랭킹에서 제외, 25/26 값으로 대체하지 않았다): ${missing.join(' · ')}` : '');
+  const rows = cands.map(c => {
     const bf = K.bestFit(c.map25, slot.x, slot.slot_type);   // 라이브 산출 — dbFit과 대조 가능
     return { ...c, ...bf };
   // GK는 적합이 변별하지 못한다(obs#220) — 적합순 랭킹 자체가 성립하지 않으므로 평점순으로 세운다.
   }).sort((a, b) => gk ? (b.rate ?? 0) - (a.rate ?? 0) : b.sim - a.sim);
+  const seasonTag = SEASON === '2025-26' ? '25/26 정본' : '26/27 현재';
   document.getElementById('rankTitle').textContent = gk
-    ? `${slot.pos} 슬롯 — 평점 랭킹 (${rows.length}명 · GK는 커널 적합이 변별력을 갖지 못해 평균 위치로 대체)`
-    : `${slot.pos} 슬롯 적합 랭킹 (커널 x=${slot.x} · ${slot.slot_type}군 ${rows.length}명)`;
+    ? `${slot.pos} 슬롯 — 평점 랭킹 [${seasonTag}] (${rows.length}명 · GK는 커널 적합이 변별력을 갖지 못해 평균 위치로 대체)`
+    : `${slot.pos} 슬롯 적합 랭킹 [${seasonTag}] (커널 x=${slot.x} · ${slot.slot_type}군 ${rows.length}명)`;
   document.getElementById('rank').innerHTML =
     `<tr><th>#</th><th>선수</th><th>적합 역할/포커스</th><th>${gk ? '평균 위치' : 'sim'}</th><th>DB값</th><th>평점</th><th>근거</th></tr>` +
     rows.map((r, i) => `<tr><td>${i+1}</td><td>${r.label} ${badge(r.lh)} ${sofifaLink(r.label, GS)}<br><small>${statLine(r.label, GS)}</small></td>
@@ -56,7 +94,8 @@ function render(){
       <td class="dim">${gk ? '' : (r.dbFit != null ? r.dbFit.toFixed(3) : '—')}</td>
       <td>${r.rate ?? '—'}</td><td class="dim">${r.note ?? ''}</td></tr>`).join('');
   document.getElementById('cards').innerHTML = rows.slice(0, 4).map(r => `
-    <div class="pcard"><b>${r.label}</b><br>${miniGrid(r.map25)}<br>
+    <div class="pcard"><b>${r.label}</b> <span class="badge mid">${seasonTag}</span><br>${miniGrid(r.map25)}<br>
+    <small class="dim">${r.note ?? ''}</small><br>
     <span class="dim mono">${r.map25}</span></div>`).join('');
 }
 render();
