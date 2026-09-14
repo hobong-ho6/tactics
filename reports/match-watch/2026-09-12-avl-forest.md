@@ -183,3 +183,38 @@ D+1이 클럽 기사(avfc.co.uk)로 인용한 문장들이 영상에서 **거의
 #### 남은 0건
 - **에메리 풀 프레스 컨퍼런스 영상**: AVL 공식 채널(`@avfcofficial`)은 최근 30편을 확인한 결과 경기 후 **플래시 인터뷰만 게시**하며 풀 회견 영상은 올리지 않는다 — 이 경기도 동일. 잭슨 교체 사유 등 회견 전용 대목은 D+1의 Hayters TV 인용이 여전히 유일한 경로다.
 - 「Matchday Pass」(`rOxhTOFVNo8`, NFO 공식 경기 영상물)는 전사 대상이 아닌 편집 영상으로 판단해 수집하지 않았다.
+
+### D+2 보강 2 — 3차 패스 (2026-09-14 심야)
+
+D+1 2회·D+2 2회에 이은 **이 경기 5번째 패스**. 앞선 패스들이 「0건」으로 닫았던 축 중
+**전술 블로그(Coaches' Voice)** 하나가 열렸고, 3티어에 의존하던 판정 2건이 **1티어로 승격**됐다.
+새 obs 3건(#735~737). 빌라 선수 개인 축의 신규 서사는 **0건**이라 `player_duties` 추가 없음.
+
+#### 새로 확보한 소스
+| 소스 | 발행 | 성격 |
+|---|---|---|
+| Coaches' Voice 「Oliver Glasner tactics and style of play」 | 2024-11-01 | ⭐⭐ **2티어 전술 교리** — ⛔ **팰리스 시절 서술**(체제 불일치 명기) |
+| ESPN 경기 분석 (gameId 401879284) | 2026-09-12 | ⭐ 1티어 — 포레스트 우측 축·결승골 사슬 |
+| Football Insider 깁스-화이트 스탯 | 2026-09-12 | 상대 선수 계량(제공사 미표기) |
+| BBC 「the fans' verdict」(Yahoo 전재) | **2026-09-14** | 1티어 지면 / 3티어 내용 — D+2 여론 스냅샷 |
+| VAVEL 「Glasner: an evolving tactician」 | 2026-09-11 | 경기 전 감독 프로필 — **이 경기 자료가 아니라 추적 대상 밖**(기록만) |
+
+#### 새 판정
+| # | 항목 | 결과 |
+|---|---|---|
+| ⑾ | ⭐⭐ **obs#711 정밀화 — 트랩은 「중앙」이 아니라 「측면 깔때기」** | obs#735 — Coaches' Voice: 「The nine and 10s narrowed to funnel the ball outwards」(9번과 10번들이 좁혀 볼을 바깥으로 흘려보낸다). 빌라가 만난 중앙 밀집은 **가두는 그물이 아니라 측면으로 밀어내는 벽**이었고, 탈출구는 **설계상 측면에 열려 있었다**. obs#712의 빌라 **우측 xG 0.00**과 합치면 실패의 정체가 바뀐다 — 「나갈 곳이 없었다」가 아니라 **「열려 있던 측면 출구를 끝까지 쓰지 않았다」**. obs#711을 뒤집지 않고 인과를 한 칸 내린다. ⚠️ 출처가 팰리스 시절 교리라 이 경기 적용은 우리 추론이다. |
+| ⑿ | ⭐ **포레스트 우측 축 1티어 확증 + 어시스트 충돌 종결** | obs#736 — ESPN이 독립적으로 「포레스트는 주로 우측으로 공격했고 무뇨스의 크로스가 기회를 만들었다」고 기술. 결승골은 「Munoz's cross was flicked on by Gibbs-White into the path of Jesus」 ⇒ D+2의 VAVEL 충돌은 **우리 정본(기점 무뇨스·어시스트 깁스-화이트) 승리로 종결**. 깁스-화이트 기회창출 **7**·어시스트 1·정확 크로스 4, 무뇨스 SofaScore **8.0** — 빌라 실점 축과 상대 최고 수행자가 **같은 측면**에 겹친다(obs#639·#713과 한 줄). |
+| ⒀ | ⚠️ **공개 서사 오염 경고** | obs#737 — BBC 팬 평결(09-14)에서 「The subs and timing of them were a bit baffling… manager's error of judgement maybe」(교체와 타이밍이 당혹스러웠다… 감독의 판단 착오였을지도). **이 읽기는 틀렸다** — obs#713대로 교체 창은 25′ 부상으로 강제 소모됐고 87′ 형태 변화는 선택이 아니라 10명의 산물이다. 이후 회차에서 「에메리 교체 실책」류 서술을 만나면 obs#713을 먼저 대조한다. 단 같은 지면의 「기회창출 기준 포레스트가 이길 만했다」는 우리 실측(xG 0.82:2.28·빅찬스 2:6)과 **일치** — 여론이 틀린 지점은 교체 축에 한정된다. |
+
+#### ⛔ 검증 실패로 **기각한** 수치·인용 (다음 회차가 다시 줍지 않도록 기록)
+- **xG 1.92 : 0.86**: 검색엔진 요약이 Sky Sports 기사의 수치인 것처럼 제시했으나, Sky·ESPN 원문을 직접 열어 보니 **두 기사 모두 xG를 싣지 않는다**. 출처 없는 합성값이므로 기각한다. 정본은 **FotMob 0.82:2.28** 유지(슈팅 7:22는 양쪽 일치).
+- **COPE 「Emery explota contra el VAR」**: D+2에 2026-05-01자 위양성으로 차단한 그 기사가 **이번 검색에서도 다시 최상위 노출**됐고, 이번엔 요약이 「81분 맥아티의 마첸 태클」이라는 *이 경기* 정보까지 덧붙여 더 그럴듯해졌다. **같은 위양성이 반복 재생산되는 축**임을 확정 기록한다 — URL 슬러그의 `20260501`로 판별할 것.
+- **에메리가 VAR을 「pésima」라 했고 주심은 칭찬했다**: 스페인어 검색 요약에만 있고 **1차 출처 확인 실패** — 기록만 하고 채택하지 않는다.
+
+#### 0건과 시도한 검색 (3차 패스)
+- **영어 전술 분석(이 경기 전용)**: 「"Nottingham Forest" Villa 2-1 tactical analysis Glasner midfield trap Gibbs-White youtube breakdown」 · 「Nottingham Forest Aston Villa tactical analysis Glasner back three September 2026」 → 이 경기 전용 전술 영상·글 **0건**(나온 것은 감독 일반론·FM 전술·프리뷰뿐). TFA·spielverlagerung 여전히 0건.
+- **스페인어(에메리)**: 「Emery Aston Villa rueda de prensa derrota Nottingham Forest análisis táctico segunda parte español」 → 1차 소스 **0건**(위 COPE 위양성만). 3개 패스 연속 0건.
+- **포레스트 지역 매체**: 「Nottinghamshire Live Forest player ratings Villa Park Diomande Muñoz Glasner verdict」 → Nottinghamshire Live 노출 **0건**(D+1·D+2에 이어 3회 연속).
+- **Jacob Tanswell(@J_Tanswell)**: 재조회했으나 D+1 확보분(잭슨 경고 교체·아브라함 비침투·명단 제한) 외 **신규 0건**.
+- **Read Aston Villa**: `HTTP 403` 3회 연속 유지 — 미확인(09-12 잭슨 교체·09-13 알리송 기사 2건이 잠겨 있다).
+- **미수행**: 필수 채널 3곳(@UTVFANCHANNEL·@TheViIIans·@The1874Podcast)은 D+2 2차 패스에서 신규분까지 전사 완료했고 이번 패스에서 **추가 업로드 확인은 하지 않았다**(사유: 같은 날 이미 전수 확인 — D+3 회차의 대상으로 넘긴다).

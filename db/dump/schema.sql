@@ -653,3 +653,23 @@ FROM ingame_captures
 WHERE ref_kind LIKE 'kernel:%' AND note NOT LIKE '%조작 오염%'
 GROUP BY game_version, role_id, focus
 /* v_kernel_fidelity(game_version,role_id,focus,n,n_matches,n_players,cos_avg,cos_min,cos_max,fidelity) */;
+CREATE TABLE player_card_items(
+  id INTEGER PRIMARY KEY,
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  ea_item_id INTEGER NOT NULL,      -- fut.gg eaId. 프로모 카드는 base와 다른 id를 받는다
+  base_ea_id INTEGER,               -- 그 선수의 base eaId (= player_game_stats 카드 URL의 27-{id})
+  is_base INTEGER NOT NULL DEFAULT 0,
+  player_id INTEGER REFERENCES players(id),
+  name_kr TEXT NOT NULL,            -- 표시용 (조인 금지 — 사람 조인은 player_id)
+  rarity_ea_id INTEGER, rarity_name TEXT,     -- 'Rare' / 'Team of the Week' / …
+  released_at TEXT,                 -- 아이템 createdAt(EA 공개일) — 시점 축
+  club TEXT, positions TEXT, best_pos TEXT,
+  ovr INTEGER, pac INTEGER, sho INTEGER, pas INTEGER, dri INTEGER, def INTEGER, phy INTEGER,
+  attrs TEXT, playstyles TEXT,      -- attrs는 한글 라벨 JSON(다른 표와 같은 키), playstyles는 '…, …+' 문자열
+  roles_plus TEXT, roles_plus_plus TEXT,      -- ⛔ FC27 역할 id는 카탈로그 미공개라 **raw id 목록**으로 둔다
+  skill_moves INTEGER, weak_foot INTEGER, accelerate TEXT, preferred_foot TEXT,
+  card_image_url TEXT, futgg_url TEXT,
+  source TEXT, confidence TEXT,
+  UNIQUE(game_version, ea_item_id)
+);
+CREATE INDEX ix_card_items_player ON player_card_items(player_id, game_version);
