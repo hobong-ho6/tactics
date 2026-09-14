@@ -62,6 +62,11 @@
 </section>
 
 <section data-panel="game" style="display:none">
+<div class="panel"><h2>카드 버전 <small class="dim">— 기본 카드 + 시즌 중 나온 특별 카드</small></h2>
+<div id="gcards"></div>
+<p class="dim" style="font-size:12px;margin:8px 0 0">fut.gg <code>all-versions</code> API에서 받은 <b>아이템 목록</b>이다 —
+위의 「게임 스탯」(능력치 정본)과 다른 축이라 <b>특별 카드 수치를 분석에 쓰지 않는다</b>.
+새 카드는 <code>scripts/collect_futgg_cards.py</code>를 다시 돌리면 추가된다.</p></div>
 <div class="panel"><h2>게임 스탯 <small class="dim">— FC26 ↔ FC27 및 그 차이</small></h2><div id="ghist" style="margin-bottom:12px"></div><div id="gstat" class="kv"></div><p class="dim" style="font-size:12px;margin:8px 0 0">Δ는 <b>우리 DB의 FC26 최신 로스터</b>와 FC27을 직접 대조한 값이다. ⚠️ 매체가 표기하는 Δ와 다를 수 있다 — 그쪽은 FC26 <b>출시판</b> 기준이고 우리 FC26 행은 <b>시즌 말 라이브판</b>이라 부호가 뒤집힌다(obs#249). <b>예측</b> 배지가 붙은 값은 EA 미확정이라 공식 드롭 후 바뀐다.</p></div>
 </section>
 
@@ -78,7 +83,7 @@ import { prose } from './assets/prose.js';
 import { PLAYSTYLES } from './assets/playstyle-icons.js';
 import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20260913-stat-tips';
 const { team, idx } = await mountHeader('player.html');
-const [td, GS, GS27, HIST] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history')]);
+const [td, GS, GS27, HIST, CARDS] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history'), loadGameStats('cards')]);
 /* 백분위·유사프로필 모집단 = 활성 regime 전체. ⛔ 팀 코드를 하드코딩하지 않는다 —
    2026-08-20 ATM 편입 때 이 배열이 ['AVL','CHE','LIV']로 남아 ATM 선수가 모집단에서 통째로 빠졌다.
    index.json의 regimes가 SSOT이고 `end IS NULL`이 활성 조건이다(DB 뷰와 같은 규약). */
@@ -473,7 +478,8 @@ function renderCard(sel, g0, g26, g27, isGkRow){
   const SIX = isGkRow
     ? [['pac','DIV'],['sho','HAN'],['pas','KIC'],['dri','REF'],['def','SPD'],['phy','POS']]
     : [['pac','PAC'],['sho','SHO'],['pas','PAS'],['dri','DRI'],['def','DEF'],['phy','PHY']];
-  const foot = { Left:'왼발', Right:'오른발' }[gg.preferred_foot ?? g0?.preferred_foot] ?? '—';
+  // ⚠️ 값 어휘가 원천마다 다르다 — sofifa는 Left/Right, fut.gg는 왼쪽/오른쪽(2026-09-14 FC27 주발 수집분).
+  const foot = { Left:'왼발', Right:'오른발', '왼쪽':'왼발', '오른쪽':'오른발' }[gg.preferred_foot ?? g0?.preferred_foot] ?? '—';
   const styles = String(gg.playstyles ?? '').split(/[;,]/).map(s=>s.trim()).filter(Boolean);
   const pschip = raw => {
     const plus = raw.endsWith('+');
@@ -569,6 +575,42 @@ function renderStatus(sel){
       <div class="kv injgrid"><span><b>계약 만료</b>${esc(con.value ?? '미수집')}</span></div></div>`;
   }
   el.innerHTML = html;
+}
+/* ── 카드 버전 (2026-09-14, 사용자 지시 「새 카드가 나오면 그 카드도 확인할 수 있게」) ──
+   cards.json은 player_id 키 · OVR 내림차순. 기본 카드 1장뿐이면(=아직 특별 카드 없음) 그 사실을 적는다.
+   ⛔ 여기 수치는 **아이템 능력치**다 — 실측·커널 분석에는 쓰지 않는다(게임 스탯 패널이 정본). */
+function renderCardVersions(sel, isGkRow){
+  const el = document.getElementById('gcards');
+  const rows = (sel.pid != null && CARDS[String(sel.pid)]) || [];
+  if (!rows.length){ el.innerHTML = '<span class="dim">카드 목록 미수집(fut.gg에 base 카드가 없는 선수).</span>'; return; }
+  const SIX = isGkRow
+    ? [['pac','DIV'],['sho','HAN'],['pas','KIC'],['dri','REF'],['def','SPD'],['phy','POS']]
+    : [['pac','PAC'],['sho','SHO'],['pas','PAS'],['dri','DRI'],['def','DEF'],['phy','PHY']];
+  const tier = v => v == null ? '' : v >= 75 ? 'var(--ok)' : v >= 60 ? 'var(--warn)' : 'var(--bad)';
+  const base = rows.find(r => r.is_base);
+  const card = r => {
+    const d = base && !r.is_base && r.ovr != null && base.ovr != null ? r.ovr - base.ovr : null;
+    return `<div class="cardver">
+      ${r.card_image_url ? `<img src="${esc(r.card_image_url)}" alt="" loading="lazy">` : ''}
+      <div>
+        <div class="kv"><b style="color:${tier(r.ovr)};font-size:18px">${r.ovr ?? '—'}</b>
+          <span>${esc(r.best_pos ?? '')}</span>
+          <span class="badge${r.is_base ? '' : ' hi'}">${r.is_base ? '기본' : esc(r.rarity_name ?? '특별')}</span>
+          ${d != null && d !== 0 ? `<span class="chip" style="border-color:var(--ok);color:var(--ok)">기본 대비 ${d > 0 ? '+' : ''}${d}</span>` : ''}
+          <small class="dim">${esc(r.released_at ?? '')}</small></div>
+        <div class="gc-six">${SIX.map(([k, L]) => `<span><em>${statTip(L)}</em>${r[k] ?? '—'}</span>`).join('')}</div>
+        <div class="dim" style="font-size:12px">${[
+          r.skill_moves && `스킬 ${r.skill_moves}★`, r.weak_foot && `약발 ${r.weak_foot}★`,
+          r.accelerate, r.playstyles && `PS ${String(r.playstyles).split(/[;,]/).length}종`,
+          r.futgg_url && `<a href="https://www.fut.gg${esc(r.futgg_url)}" target="_blank" rel="noopener">fut.gg ↗</a>`,
+        ].filter(Boolean).join(' · ')}</div>
+      </div></div>`;
+  };
+  const promo = rows.filter(r => !r.is_base);
+  el.innerHTML = `<div class="kv" style="margin-bottom:6px"><b>${rows.length}장</b>
+      <small class="dim">— 기본 ${rows.length - promo.length} · 특별 ${promo.length}${
+        promo.length ? '' : ' (아직 없음 — FC27 출시 2026-09-25 이후 등장)'}</small></div>
+    <div class="cardvers">${rows.map(card).join('')}</div>`;
 }
 function renderHistory(sel, isGkRow){
   const el = document.getElementById('ghist');
@@ -841,6 +883,7 @@ function render(){
   }
   document.getElementById('gstat').innerHTML = html;
   renderHistory(sel, isGkRow);
+  renderCardVersions(sel, isGkRow);
   // ⭐ player_id 우선 — 라벨 조인은 표기 규약이 갈리면 조용히 0행이 된다(불변규칙 6).
   const ds = (sel.pid != null && td.duties.some(d=>d.player_id===sel.pid)
     ? td.duties.filter(d=>d.player_id===sel.pid)
@@ -849,11 +892,27 @@ function render(){
     .slice().sort((a,b) => (b.observed_to||b.observed_from||'').localeCompare(a.observed_to||a.observed_from||''));
   // 산문 4칸을 표의 좁은 열에 넣으면 세로 국수가 된다 — 분석 1건 = 카드 1장으로 읽는다.
   // 순서는 근거의 사슬(주장 → 실측 → 판정 → 게임 함의)을 그대로 따른다.
+  /* ⭐ 반영 배지(2026-09-14, 사용자 지시 「수집만 하면 의미 없다」) — 이 분석이 처방에 닿았는지.
+     정본은 player_duties.applied_status이고 G16이 결손을 막는다. CONFLICT는 **할 일 목록**이다. */
+  const APPLIED = {
+    MATCH:    ['ok',   '처방 일치',   '분석이 가리킨 역할이 이 선수의 처방과 일치한다(자동 대조).'],
+    CONFLICT: ['bad',  '처방과 충돌', '분석이 명시한 역할이 어떤 처방과도 다르다 — 사람 판정 대기.'],
+    NO_RX:    ['warn', '처방 없음',   '분석은 있는데 이 선수의 처방 행이 아직 없다.'],
+    PROSE:    ['dim',  '역할코드 없음','산문만 있어 기계가 반영 여부를 볼 수 없다.'],
+    APPLIED:  ['ok',   '반영함',      '사람이 판정해 처방을 바꿨다.'],
+    HELD:     ['ok',   '검토·유지',   '사람이 검토했고 처방을 그대로 뒀다.'],
+    REJECTED: ['warn', '기각',        '사람이 검토해 채택하지 않았다.'],
+  };
+  const appliedBadge = d => {
+    const a = APPLIED[d.applied_status]; if (!a) return '';
+    const [cls, label, tip] = a;
+    return ` <span class="badge ${cls==='dim'?'':cls} gl" data-tip="${esc(tip + (d.applied_note ? ' — ' + d.applied_note : ''))}">${label}</span>`;
+  };
   const section = (title, text, span) => text
     ? `<section${span?' class="span"':''}><h3>${title}</h3>${prose(text)}</section>` : '';
   document.getElementById('duty').innerHTML = ds.length ? ds.map(d=>`
     <article class="dutycard">
-      <header><span class="badge">${esc(d.position)}</span>${analysisWindow(d)}</header>
+      <header><span class="badge">${esc(d.position)}</span>${analysisWindow(d)}${appliedBadge(d)}</header>
       <div class="dutygrid">
         ${section('① 영상·스카우트 주장 (가설)', d.duties)}
         ${section('② 실측 대조', d.execution)}

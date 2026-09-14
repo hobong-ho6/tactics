@@ -102,6 +102,18 @@ def export_all(db_path=None, window="2026-summer"):
         hist.setdefault(str(r.pop("player_id")), []).append(r)
     written.append(_write(SITE_DATA / "game_stats" / "history.json", hist))
 
+    # ── game_stats/cards.json — 카드 버전(base + 프로모, player_id 키, 2026-09-14 신설) ──
+    # ⭐ player_game_stats(능력치 정본)와 다른 축이다 — 같은 선수에게 시즌 중 계속 붙는 **아이템 목록**.
+    #    OVR 내림차순으로 내보내 화면이 「가장 높은 카드」를 먼저 보여준다.
+    cards = {}
+    for r in _rows(con, """SELECT player_id, game_version, ea_item_id, is_base, rarity_name, released_at,
+                                  ovr, pac, sho, pas, dri, def, phy, positions, best_pos, playstyles,
+                                  skill_moves, weak_foot, accelerate, card_image_url, futgg_url
+                           FROM player_card_items WHERE player_id IS NOT NULL
+                           ORDER BY player_id, game_version DESC, ovr DESC, released_at DESC"""):
+        cards.setdefault(str(r.pop("player_id")), []).append(r)
+    written.append(_write(SITE_DATA / "game_stats" / "cards.json", cards))
+
     # ── teams/{CODE}.json ────────────────────────────────────────────
     for rg in regimes:
         rid, code = rg["id"], rg["team_code"]
@@ -225,7 +237,8 @@ def export_all(db_path=None, window="2026-summer"):
         #   두 테이블의 표기 규약이 갈리면 화면이 '영상 분석 미수행'이라고 잘못 적는다.
         duties = _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, d.player_id, d.position, d.duties,
                                       d.execution, d.adherence, d.game_role_implication, d.source, d.confidence,
-                                      d.observed_from, d.observed_to, d.sample_scope, d.sample_note
+                                      d.observed_from, d.observed_to, d.sample_scope, d.sample_note,
+                                      d.applied_status, d.applied_note
                                FROM player_duties d JOIN players p ON p.id=d.player_id
                                WHERE d.regime_id=?
                                   OR (d.regime_id IS NULL AND d.player_id IN

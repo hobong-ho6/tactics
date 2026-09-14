@@ -55,6 +55,11 @@ button.mtab.on{background:var(--acc);border-color:var(--acc);color:#14100b}
   border:1px solid var(--line);border-radius:8px;box-sizing:content-box}
 .pschip.plus{color:var(--acc);font-weight:700}
 .pschip.plus img{background:linear-gradient(135deg,#f6dd8c,#c99a2e)}
+/* 카드 버전 목록(2026-09-14) — 한 선수의 base + 특별 카드를 나란히 */
+.cardvers{display:flex;flex-wrap:wrap;gap:14px}
+.cardver{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line);border-radius:10px;padding:10px;min-width:300px;flex:1 1 320px}
+.cardver img{width:74px;height:auto;flex-shrink:0}
+.cardver .gc-six{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0}
 .pscard .gcard{min-width:190px}
 .pscard .gc-ovr{font-size:34px}
 .bioline{margin-bottom:8px}

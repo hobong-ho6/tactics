@@ -10,6 +10,19 @@
 
 ## 현재 상태
 
+> **2026-09-14 KST** · `main` · ⭐⭐ **G16 「분석 반영 추적」 신설** — 사용자 지시 「데이터만 수집하는 건 아무 의미 없음」에서 나왔다.
+> `player_duties.applied_status`(MATCH 132 · PROSE 88 · CONFLICT 16 · NO_RX 2)·`applied_note` 신설(migration 031),
+> 게이트가 **판정 결손·어휘 이탈·사람 판정 사유 결손**을 막는다(CONFLICT는 실패가 아니라 **할 일 목록**이고 게이트 출력에 건수가 뜬다).
+> 선수 「영상 분석」 탭 카드마다 반영 배지. ⛔ **obs#738은 obs#741이 정정했다** — 반영률을 rationale **문자열**로 재면 0%로 보이지만
+> **역할 코드**로 재면 **88%(132/150)**다. 진짜 결손은 「반영 안 됨」이 아니라 「반영됐는지 DB가 말해주지 못함」이었다.
+> 리포트 `reports/ingame/2026-09-14-analysis-reflection-audit.md`(미해결 CONFLICT 16건 목록 = 다음 할 일).
+> **FC27 카드 버전 축 신설** — `player_card_items`(migration 030) + `scripts/collect_futgg_cards.py`,
+> fut.gg `/api/fut/players/v2/all-versions/{eaId}/` 한 번에 전 버전·전 카드. FC27 96장 **전부 base**(특별 카드는 09-25 출시 후).
+> ⛔ `player_game_stats`에 섞지 않았다(UNIQUE 충돌·시즌 질의 오염). 선수 화면 「게임 스탯」 탭 상단에 **카드 버전** 패널.
+> **FC27 09-10 스냅샷 결손 4축 보강**(주발·나이 0→131/131 · 대체 포지션 · attrs 116→131 · AcceleRATE 103→130) ·
+> ⛔ **동일성 사고 2건째**(다트로↔웨슬리 포파나 — 같은 팀·같은 성이라 gender·이름 검사를 둘 다 통과, **eaId 중복**만이 신호였다).
+> ⚠️ **동시 세션 주의**: 이 세션의 DB 변경 일부가 다른 세션 커밋 `433935b`에 함께 실려 나갔다 — 커밋 전 `git log -- db/tactics.db` 확인.
+>
 > **2026-09-13 KST(야간)** · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 **`dd8e08c`** · **✅ origin 일치** ·
 > ⚠️ 미추적 폴더 `reports/ingame/*`(커밋 여부 사용자 판단, 09-08~09-10분 그대로 누적 중).
 > **스케줄 태스크 목록 확정(09-13 야간 재정리)**: 활성 6건 = 정기 3(unifi 월 10:03 · match-watch 월 10:06 · `henderson-che-debut-recollect` 매일 09:07)

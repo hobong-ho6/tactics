@@ -135,7 +135,7 @@ CREATE TABLE player_duties(         -- v1 그대로 (team → regime_id)
   position TEXT NOT NULL,
   duties TEXT NOT NULL, execution TEXT, adherence TEXT,
   game_role_implication TEXT,
-  source TEXT, confidence TEXT, observed_from TEXT, observed_to TEXT, sample_scope TEXT, sample_note TEXT,
+  source TEXT, confidence TEXT, observed_from TEXT, observed_to TEXT, sample_scope TEXT, sample_note TEXT, applied_status TEXT, applied_note TEXT,
   UNIQUE(season, player_id, position)
 );
 CREATE TABLE game_roles(

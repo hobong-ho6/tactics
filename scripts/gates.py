@@ -868,6 +868,28 @@ def run(db_path=None, verbose=True):
     if not ok15:
         fails.append("G15")
 
+    # G16 — 분석이 처방에 닿았는지를 행마다 기록한다. 2026-09-14 신설(사용자 지시
+    #       「데이터만 수집하는 건 아무 의미 없다」). 수집은 두꺼운데 반영 경로가 산문뿐이라
+    #       「검토하고 유지했다」와 「아무도 보지 않았다」가 구분되지 않았다(obs#738·#740).
+    #       ⛔ 여기서 막는 것은 **판정 결손**이지 판정 내용이 아니다 — CONFLICT는 정상 상태(사람 판정 대기)이고
+    #          목록으로 보이기만 하면 된다. 어휘를 벗어난 값은 오타이므로 막는다.
+    G16_OK = ("MATCH", "CONFLICT", "NO_RX", "PROSE", "APPLIED", "HELD", "REJECTED")
+    g16_missing = con.execute("""SELECT id FROM player_duties
+                                 WHERE applied_status IS NULL OR trim(applied_status)=''""").fetchall()
+    g16_bad = con.execute("SELECT id, applied_status FROM player_duties WHERE applied_status NOT IN (%s)"
+                          % ",".join("?" * len(G16_OK)), G16_OK).fetchall()
+    g16_nonote = con.execute("""SELECT id FROM player_duties
+                                WHERE applied_status IN ('REJECTED','APPLIED','HELD')
+                                  AND (applied_note IS NULL OR trim(applied_note)='')""").fetchall()
+    conflicts = con.execute("SELECT COUNT(*) FROM player_duties WHERE applied_status='CONFLICT'").fetchone()[0]
+    ok16 = not (g16_missing or g16_bad or g16_nonote)
+    if verbose:
+        detail = f"❌ 판정결손 {len(g16_missing)} · 어휘이탈 {len(g16_bad)} · 사람판정 사유결손 {len(g16_nonote)}"
+        print(f"G16 분석 반영 추적: 판정결손 {len(g16_missing)} · 어휘이탈 {len(g16_bad)} · "
+              f"사람판정 사유결손 {len(g16_nonote)} · (미해결 CONFLICT {conflicts}건) {'✅' if ok16 else detail}")
+    if not ok16:
+        fails.append("G16")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")
