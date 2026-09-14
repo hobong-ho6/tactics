@@ -1,5 +1,7 @@
 # 전사(자동 생성 자막) — HtPgFuvPe6Q (en)
 
+> 1874 - Aston Villa's Game Management COSTS Them Against Forest
+
 > 원본: https://www.youtube.com/watch?v=HtPgFuvPe6Q · 수집: scripts/yt_transcript.py
 > ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.
 
