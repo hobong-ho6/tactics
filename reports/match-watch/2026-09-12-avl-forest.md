@@ -151,3 +151,35 @@ D+1(2회 패스)까지 「전술 소스 0건」으로 닫았던 축이 **D+2에 
 - **마첸 태클 시각**: 소스별 81′~83′ 분산. 정본은 **실측 83분**(출전 종료 시각).
 - **결승골 어시스트**: 우리 정본 깁스-화이트 ↔ VAVEL은 무뇨스. Sky Sports가 「우측에서 전개 → 깁스-화이트가 제수스에게 플릭」으로 기술 — **정본 유지**(무뇨스는 기점, 어시스트는 깁스-화이트).
 - **밍스 평점** 충돌(실측 7.3 ↔ 매체 5/10)은 D+1 기록 그대로 유지된다.
+
+### D+2 보강 — 구단 공식 회견 풀영상 (재탐색 성공)
+
+⚠️ **직전 보고의 「구단 공식 채널 접근 불가」는 채널 핸들을 잘못 짚은 것이었다.** 정정한다 —
+`@avfcofficial` · `@NottinghamForestFC`가 맞고, 회견 영상은 **전부 공개되어 있었다**. 4편 전사 확보.
+
+| 영상 | 채널 | 전사 | 성격 |
+|---|---|---|---|
+| 「The second half was completely different」 Unai Emery on Forest defeat | AVL 공식 | `gnasukF6eJQ.en.md` | 에메리 경기 후 — **D+1 클럽 기사 인용을 영상 1차로 격상** |
+| Oliver Glasner's Reaction | NFO 공식 | `3I_VEflSMlY.en.md` | ⭐ 글라스너 경기 후 — 하프타임 개입·백3 사정 완결 |
+| Oliver Glasner Press Conference (AVL전) | NFO 공식 | `SW1aUWWC9Wk.en.md` | ⭐⭐ **경기 전 회견 — 상대 감독의 빌라 스카우팅 리포트** |
+| Liam Delap's Reaction | NFO 공식 | `Gq5LkB0jUYA.en.md` | 상대 선수 1차 — 하이라인 표적 |
+
+**소스 등급이 올라갔다.** D+1·D+2 전반부의 상대측 정보는 3티어 팬 채널 전언이었는데, 이제 같은 내용이
+구단 공식 채널의 감독·선수 1차 발언으로 확인된다.
+
+#### 새 판정 (전부 상대측 1차)
+| # | 항목 | 결과 |
+|---|---|---|
+| ⑺ | ⭐⭐ **재검증 ③ 승격** | obs#725 — 글라스너는 **경기 전에** 빌라를 「very compact 4-4-2 block, always front footed」로 스카우팅했다(근거로 브뤼헤전 3번째 골 지목). 즉 무공 4-4-2는 **상대 분석실이 정본으로 아는 빌라의 기본 형태**다. obs#638의 「이 경기는 4번째 표본이 아니다」는 유지되나 의미가 뒤집힌다 — 형태가 없었던 게 아니라 **알려진 기본 형태를 유지하지 못한 이탈**이다. 재검증 ③을 「표본 수집」 → **「이탈 조건 규명」**으로 승격한다. |
+| ⑻ | ⭐ **상대 하프타임 개입** | obs#726 — 글라스너: 「at half-time we encouraged the players, **showed them the space we want to need**」 + 「we also **increased the pace of our attack**」. ⇒ 후반 낙차는 빌라 자멸 단독이 아니라 **상대의 표적 지정이 맞물린 결과**. 단, 「어느 공간」인지는 감독이 명시하지 않았다 — obs#712(포레스트 우측 xG 1.66)와의 연결은 우리 추론이다. |
+| ⑼ | **포레스트 백3 = 3중 강제** | obs#727 — 밀렌코비치·자이르 쿠냐 둘 다 햄스트링(버밍엄 이동 직전 발견, 스캔 결과 밤 9시 30분). ⭐ **무리요는 양쪽 무릎 문제로 워밍업 통과 여부조차 불확실한 상태로 출전** — 감독은 그가 못 뛴다고 할 경우까지 대비하고 있었다. 3티어 전언이던 「무리요 무릎」이 감독 1차로 확인됐다. 디오망데는 PL 데뷔로 백3 중앙, 「잭슨과 이후 아브라함을 상대로 거의 모든 듀얼을 이겼다」(감독 평) — obs#714에 **상대 수비수 측 설명** 추가. |
+| ⑽ | **하이라인 표적** | obs#728 — 델랍: 「they keep high line, so they did well」 · 전반에 대해 「**어디를 때릴지 알고 있었는데 실행이 안 됐다**」. ⇒ 포레스트 후반 반전은 새 계획이 아니라 **기존 계획의 실행 정확도 상승**. 우리 실측 수비액션 평균 x 43.0(상대 34.0)이 그 표적의 실체. 9번 배후 침투가 사라진 상태(obs#714)에서 라인만 높으면 배후가 그대로 남는다. |
+
+#### 에메리 회견 — 영상 1차 verbatim (D+1 인용의 원문 확인)
+D+1이 클럽 기사(avfc.co.uk)로 인용한 문장들이 영상에서 **거의 그대로** 확인됐다. 추가로 잡힌 대목:
+- 「they showed us their power to play against us here creating chances, and **they create chances more than normal because usually we were being compact and we were not conceding so many chances for the opponent the last matches**」(그들은 여기서 우리를 상대로 기회를 만드는 힘을 보여줬다. 그리고 평소보다 많은 기회를 만들었다 — 보통 우리는 컴팩트하게 유지해 최근 경기들에서 상대에게 이렇게 많은 기회를 주지 않았기 때문이다) ⇒ 감독 자신이 이 경기를 **평소 대비 이탈**로 규정한다(obs#725의 「이탈」 판정과 같은 방향).
+- 「in that moment we were more or less again recovering our good balance during the game, **but the injury of Maatsen was again penalizing us**」(그 시점에 우리는 경기 중 좋은 균형을 어느 정도 되찾고 있었는데, 마첸의 부상이 다시 우리를 벌했다) ⇒ obs#713(10명 강제 재편)과 정합.
+
+#### 남은 0건
+- **에메리 풀 프레스 컨퍼런스 영상**: AVL 공식 채널(`@avfcofficial`)은 최근 30편을 확인한 결과 경기 후 **플래시 인터뷰만 게시**하며 풀 회견 영상은 올리지 않는다 — 이 경기도 동일. 잭슨 교체 사유 등 회견 전용 대목은 D+1의 Hayters TV 인용이 여전히 유일한 경로다.
+- 「Matchday Pass」(`rOxhTOFVNo8`, NFO 공식 경기 영상물)는 전사 대상이 아닌 편집 영상으로 판단해 수집하지 않았다.
