@@ -8,6 +8,13 @@
 
 ⛔ **사람이 내린 판정(APPLIED/HELD/REJECTED)은 건드리지 않는다** — 자동 4종만 재계산한다.
 
+⛔⛔ **「자동 4종만 재계산」은 `applied_status`에만 참이고 `applied_note`에는 거짓이었다**(2026-09-15 사고).
+   자동 상태의 **사유에도 사람이 쓴 교정이 들어 있다** — ATM PROSE 9행의 「재판정 조건: map25 수집」이
+   틀렸다고 손으로 고쳐놨는데 이 스크립트가 재실행에서 **자동 템플릿으로 통째로 덮었다**.
+   G14는 `applied_note`를 보호 목록에 두지 않아 잡지 못했고, dump diff를 직접 읽어서야 발견했다.
+   ⇒ 이제 **상태가 실제로 바뀔 때만 사유를 다시 쓴다**(`--force-note`로 강제 가능).
+   ⭐ 부류: **「자동 재계산」 스크립트는 자기가 쓴 필드에 사람 손이 섞였는지 먼저 물어야 한다.**
+
 ⭐ **슬롯 계열(`w_` 윙 ↔ `wm_` 와이드 미드)은 같은 역할로 본다** (09-15 정정).
    둘은 **역할이 아니라 슬롯이 다른 것**이고 슬롯은 `slots` 표가 정한다 —
    바르콜라 `w_wideplm`(LW 분석) ↔ 우리 `wm_wideplm`(LM 슬롯)을 충돌로 세면 오탐이다.
@@ -39,6 +46,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--pulled", default=dt.date.today().isoformat())
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--force-note", action="store_true",
+                    help="⛔ 자동 상태의 기존 사유까지 템플릿으로 덮어쓴다 — 사람이 쓴 교정이 날아간다(2026-09-15 사고)")
     a = ap.parse_args()
 
     con = sqlite3.connect(DB)
@@ -52,8 +61,8 @@ def main():
             have[r["player_id"]].add(r[c])
 
     note0 = f"[{a.pulled} 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄)."
-    changed, counts = [], defaultdict(int)
-    for d in con.execute("""SELECT id, player_id, game_role_implication imp, applied_status
+    changed, kept, counts = [], [], defaultdict(int)
+    for d in con.execute("""SELECT id, player_id, game_role_implication imp, applied_status, applied_note
                             FROM player_duties
                             WHERE applied_status IS NULL OR applied_status IN (%s)"""
                          % ",".join("?" * len(AUTO)), AUTO):
@@ -75,12 +84,27 @@ def main():
         if st != d["applied_status"]:
             changed.append((d["id"], d["applied_status"], st))
         if not a.dry_run:
-            con.execute("UPDATE player_duties SET applied_status=?, applied_note=? WHERE id=?",
-                        (st, note0 + extra, d["id"]))
+            # ⛔⛔ **상태가 그대로면 사유를 건드리지 않는다**(2026-09-15 사고 후 추가).
+            #    자동 상태(PROSE·MATCH·NO_RX·CONFLICT)의 사유에도 **사람이 쓴 교정이 들어 있다** —
+            #    09-15에 ATM PROSE 9행의 「재판정 조건: map25 수집」이 틀렸다고 손으로 고쳐놨는데,
+            #    이 스크립트가 재실행에서 그걸 **자동 템플릿으로 통째로 덮었다**(G14는 applied_note를
+            #    보호 목록에 두지 않아 잡지 못했다). 종전 주석의 「자동 4종만 재계산」은
+            #    **상태**에만 참이었고 **사유**에는 거짓이었다.
+            #    ⇒ 사유는 **판정이 실제로 바뀔 때만** 다시 쓴다. `--force-note`로 강제 가능.
+            if st != d["applied_status"] or a.force_note or not (d["applied_note"] or "").strip():
+                con.execute("UPDATE player_duties SET applied_status=?, applied_note=? WHERE id=?",
+                            (st, note0 + extra, d["id"]))
+                kept.append(None)
+            else:
+                con.execute("UPDATE player_duties SET applied_status=? WHERE id=?", (st, d["id"]))
+                kept.append(d["id"])
     if not a.dry_run:
         con.commit()
     print(f"자동 판정 {sum(counts.values())}행:", dict(counts))
     print(f"상태 변경 {len(changed)}행:", changed[:20])
+    if not a.dry_run:
+        n_kept = len([x for x in kept if x is not None])
+        print(f"⭐ 사유 보존 {n_kept}행(상태 불변 — 사람이 쓴 교정을 덮지 않는다) · 사유 재작성 {len(kept) - n_kept}행")
     held = con.execute("""SELECT applied_status, COUNT(*) FROM player_duties
                           WHERE applied_status NOT IN (%s) GROUP BY 1""" % ",".join("?" * len(AUTO)), AUTO).fetchall()
     print("사람 판정(건드리지 않음):", {r[0]: r[1] for r in held})

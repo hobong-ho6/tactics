@@ -74773,21 +74773,21 @@
   },
   {
    "avg_rating": null,
-   "fit_sim": null,
-   "focus": "Support",
+   "fit_sim": 0.8119,
+   "focus": "Attack",
    "game_version": "FC26",
    "grid_club": null,
    "kind": "fc26:opt:RM",
    "label": "맥긴",
-   "map25": null,
+   "map25": "101391116X123470034300011",
    "player_id": 10,
    "pos_label": "RM",
-   "rationale": "v1 SQUAD_SLOTS opt(게임 처방) 이관 2026-08-11 — 판단근거 원문은 archive/v1 주석 [선발 XI — obs#110 확정 인선, 2026-08-11 기록]",
-   "role_id": "wm_widemid",
-   "sample_n": null,
+   "rationale": "v1 SQUAD_SLOTS opt(게임 처방) 이관 2026-08-11 — 판단근거 원문은 archive/v1 주석 [선발 XI — obs#110 확정 인선, 2026-08-11 기록] [2026-09-15 교정: wm_widemid/Support → **wm_winger/Attack** · 사용자 지시 「규약대로 즉시 교정」+「실제 스쿼드 기준으로 적용하자, 캐시는 RM에서 뛴적이 없어」] docs/30 7단계 ⑴ 적용 — **26/27 포지션-순수 RM 실측이 Δ>.05로 단독 확정**한다: prescriptions#418 = 6경기·515분(45분+·hp15+ **6/6 통과**) → `wm_winger/Attack` **.8119**, 2위 winger/Balanced .7501, **Δ.0618 > .05**. ⛔ 종전 값의 근거는 **26/27이 아니었다** — ⑴ #10 `optimal`은 `season=2025-26` 행이고 map25도 없다(duties+숙련 판단) ⑵ #134·#135 시즌그리드도 `season=2025-26`(most-played pos_class n=21) ⑶ 이 행(#249)은 v1 SQUAD_SLOTS 이관분으로 **map25·fit이 비어 있었다**. ⑷ ⭐ **C1 설계가 전제한 「RM 캐시 widemid/Support .835」는 실체가 없다** — 캐시의 실측 행은 전부 RB이고 RM 행(#251)은 map25·fit 없는 슬롯 후보 항목, 통산 RM 출전 **0경기**다(사용자 지적). ⑸ **실제 26/27 우측 와이드 출전자는 맥긴뿐이다**(6경기 515분 · 카마라 1경기 · 알리송 1경기). ⚠️ **C1(두 줄 4) 대가를 명시한다**: winger/Attack의 자기진영 질량은 **0.00**(obs#39 사다리)이라 RM이 부담하던 뱅크 0.60이 사라진다. 실제 스쿼드에서는 좌측이 분담한다 — 헤밍스 26/27 measured(#470, 6경기 461분) = `wm_winger/Balanced` 뱅크 **0.30**. 단 LM 주전이 가르나초(winger/Attack, 뱅크 0.00)면 전방 4인 뱅크가 **0.00**이 된다 ⇒ **LM 주전 확정이 C1 재성립의 선행 조건**. ⛔ T1↔T2 인게임 A/B(obs#537, 자기진영 5.9→38.9%)는 **widemid/Support의 「결과」를 측정한 것**이고 맥긴의 실제 역할을 측정한 것이 아니다 — 재현 목표에서 Δ>.05 실측을 덮지 못한다.",
+   "role_id": "wm_winger",
+   "sample_n": 6,
    "season": "2026-27",
    "starter": 0,
-   "x": null,
+   "x": 85,
    "y": null
   },
   {
@@ -83839,14 +83839,14 @@
   },
   {
    "confidence": "HIGH",
-   "focus": "Support",
+   "focus": "Attack",
    "formation": "4-2-3-1 Wide",
    "game_version": "FC26",
    "pos": "RM",
-   "rationale": "미드블록 뱅크 복귀의 게임 대응 — EA 정의 \"복귀해 수비 지원\"(implementation ⑵). 안쪽 이동·컷인은 역할이 아니라 PlayStyles 층(role_demands ⚙️④).",
-   "role_id": "wm_widemid",
+   "rationale": "미드블록 뱅크 복귀의 게임 대응 — EA 정의 \"복귀해 수비 지원\"(implementation ⑵). 안쪽 이동·컷인은 역할이 아니라 PlayStyles 층(role_demands ⚙️④). [2026-09-15 교정: wm_widemid/Support → **wm_winger/Attack**] 26/27 실측이 슬롯 정본을 바꿨다 — 이 슬롯의 실제 주전은 맥긴(6경기 515분, 유일 출전자)이고 포지션-순수 실측이 `wm_winger/Attack` .8119로 **Δ.0618 > .05 단독 확정**이다(docs/30 7단계 ⑴). 종전 값 근거는 25/26 판단 + 「RM 캐시 .835」였고 **캐시는 RM 통산 0경기**다(실체 없는 전제). ⚠️ **대가**: 뱅크 0.60 → 0.00(obs#39 사다리). C1(두 줄 4)은 **좌측 분담으로만 재성립**한다 — 헤밍스 winger/Balanced 0.30 또는 LM을 widemid 계열로. **LM 주전 확정 전까지 C1은 절반 이하 상태로 기록한다.**",
+   "role_id": "wm_winger",
    "source": "manager_profiles(1) implementation ⑵·role_demands ⑸",
-   "updated": "2026-08-12"
+   "updated": "2026-09-15"
   },
   {
    "confidence": "MEDIUM-HIGH",
