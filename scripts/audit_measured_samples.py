@@ -34,7 +34,13 @@ from core.aggregate import player_aggregate             # noqa: E402
 OK = {"GK": ("GK",), "LB": ("LB",), "RB": ("RB",), "LCB": ("LCB",), "RCB": ("RCB",),
       "CCB": ("CCB", "CB"), "LDM": ("LDM",), "RDM": ("RDM",), "CDM": ("CDM",),
       "LCM": ("LCM",), "RCM": ("RCM",), "CAM": ("CAM",),
-      "LM": ("LM", "LAM"), "RM": ("RM", "RAM"), "ST": ("ST",), "LST": ("LST",), "RST": ("RST",)}
+      "LM": ("LM", "LAM"), "RM": ("RM", "RAM"), "ST": ("ST",), "LST": ("LST",), "RST": ("RST",),
+      "LAM": ("LAM",), "RAM": ("RAM",), "LW": ("LW",), "RW": ("RW",), "CM": ("CM",)}
+
+# ⭐ 사람이 판정을 끝낸 행의 표식(2026-09-15 신설). 오염이 **전부 결함은 아니므로**
+#    — pos_label이 우리 슬롯이거나(RDM↔RCM), pos_class 자체가 현상인 경우(false9→CAM) —
+#    판정이 끝난 행을 계속 ⛔로 띄우면 **영구 오탐**이 되어 게이트로 못 올린다.
+ADJUDICATED = "[표본판정"
 DATE = re.compile(r"(20\d\d-\d\d-\d\d)\(")
 SEG = re.compile(r"\[20\d\d-\d\d-\d\d[^\]]*\]")
 
@@ -45,7 +51,7 @@ def name(con, pid):
 
 def audit_dates(con):
     """⑴ rationale이 열거한 일자의 pos_class 대조."""
-    bad = []
+    bad, done = [], []
     for r in con.execute("SELECT id, player_id, pos_label, sample_n, rationale FROM prescriptions "
                          "WHERE kind LIKE 'measured%' AND rationale LIKE '%(%'"):
         parts = SEG.split(r["rationale"] or "")
@@ -65,15 +71,17 @@ def audit_dates(con):
             elif m[0] is not None and m[0] not in allow:
                 off.append((d, m[0]))
         if off or miss or (r["sample_n"] and r["sample_n"] != len(dates)):
-            bad.append((r["id"], name(con, r["player_id"]), r["pos_label"],
-                        r["sample_n"], len(dates), off, miss))
-    return bad
+            rec = (r["id"], name(con, r["player_id"]), r["pos_label"],
+                   r["sample_n"], len(dates), off, miss)
+            (done if ADJUDICATED in (r["rationale"] or "") else bad).append(rec)
+    return bad, done
 
 
 def audit_reproduce(con, season):
     """⑵ 포지션-순수 재집계로 map25 재현 여부. (재현, 불일치, 표본부족, 어휘밖)"""
-    ok, diff, thin, unk = [], [], [], []
-    for r in con.execute("SELECT id, player_id, pos_label, sample_n, minutes, map25 FROM prescriptions "
+    ok, diff, thin, unk, done = [], [], [], [], []
+    for r in con.execute("SELECT id, player_id, pos_label, sample_n, minutes, map25, rationale "
+                         "FROM prescriptions "
                          "WHERE kind='measured' AND map25 IS NOT NULL AND season=?", (season,)):
         allow = OK.get((r["pos_label"] or "").strip())
         if not allow:
@@ -84,13 +92,16 @@ def audit_reproduce(con, season):
                                where=f"season=? AND minutes>=45 AND pos_class IN ({ph})",
                                params=(season, *allow))
         row = (r["id"], name(con, r["player_id"]), r["pos_label"], r["sample_n"], r["minutes"])
+        adj = ADJUDICATED in (r["rationale"] or "")
         if not agg:
-            thin.append(row)
+            (done if adj else thin).append(row)
         elif agg["map25"] == r["map25"]:
             ok.append(row)
+        elif adj:
+            done.append(row)
         else:
             diff.append(row + (agg["n"], agg["minutes"]))
-    return ok, diff, thin, unk
+    return ok, diff, thin, unk, done
 
 
 def main():
@@ -100,8 +111,8 @@ def main():
     con = sqlite3.connect(DB)
     con.row_factory = sqlite3.Row
 
-    bad = audit_dates(con)
-    print(f"=== ⑴ 일자 대조 — 이상 {len(bad)}행 ===")
+    bad, done1 = audit_dates(con)
+    print(f"=== ⑴ 일자 대조 — 미판정 이상 {len(bad)}행 · 판정완료 {len(done1)}행 ===")
     for i, nm, pos, nd, nl, off, miss in sorted(bad):
         print(f"  #{i} {nm} [{pos}] 선언 n={nd} · 열거 {nl}건")
         for d, c in off:
@@ -109,9 +120,9 @@ def main():
         for d in miss:
             print(f"      ⛔ {d} player_matches에 행 없음")
 
-    ok, diff, thin, unk = audit_reproduce(con, a.season)
-    print(f"\n=== ⑵ 집계 재현({a.season}) — ✅{len(ok)} · ⛔불일치 {len(diff)} · "
-          f"⛔⛔표본부족 {len(thin)} · 어휘밖 {len(unk)} ===")
+    ok, diff, thin, unk, done2 = audit_reproduce(con, a.season)
+    print(f"\n=== ⑵ 집계 재현({a.season}) — ✅재현 {len(ok)} · ⛔불일치 {len(diff)} · "
+          f"⛔⛔표본부족 {len(thin)} · ⊘판정완료 {len(done2)} · 어휘밖 {len(unk)} ===")
     print("\n  ⛔ map25 불일치 (선언 → 포지션-순수 재집계)")
     for i, nm, pos, nd, md, na, ma in sorted(diff, key=lambda x: (x[3] or 0) - x[5], reverse=True):
         kind = "오염" if (nd or 0) > na else "노후" if (nd or 0) < na else "동수·다른구성"
