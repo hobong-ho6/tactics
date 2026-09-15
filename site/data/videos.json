@@ -1,6 +1,125 @@
 {
  "all": [
   {
+   "channel": "1874",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · ⭐ [2026-09-15] 게시일을 팟캐스트 RSS의 정확한 pubDate(2026-09-14)로 보정(길이 3264초 · GUID 6c35a856-b034-11f1-b).",
+   "id": 41,
+   "key_points": [
+    "① 신입 통합론 반박 — 스즈키·잭슨·완비사카는 이미 선발이고 고메스는 퇴장, 고레츠카·바요·만잠비는 부상이었다. 실제로 「쓰지 않은」 자원은 **가르나초와 하우드-벨리스 둘뿐**이라는 결론.",
+    "② ⭐⭐ **잭슨 고립이 구조적이다** — 원문 「when you look at the average positional maps, he's miles away from everybody else」 = 「평균 위치 맵을 보면 그는 다른 모두와 한참 떨어져 있다」. 원인 진단: 바클리·카마라가 틸레만스처럼 **전진 패스 후 재이동**을 못 하고, 부엔디아의 10번 위치 규율이 약하다.",
+    "② 타미 아브라함 = 백업 9번으로 불성립 — 투입 후 압박·복귀 트래킹이 「절벽처럼 떨어진다」. 마조 부상으로 유일 백업인 상태가 위험. 단 「구단이 이적 출구를 제안했고 본인이 거절했다」는 사실을 함께 지적.",
+    "③ 마첸 6~8주 이탈 → 루헤리 건강 유지가 필수 조건. **맥긴 좌측백 재사용은 반대**(전진 기여를 잃는다).",
+    "④ 글라스너 열세(hex) — 과거 셀허스트에서 백3를 급조했던 것처럼 「평소 안 하던 선택」을 한다는 관찰. 이번엔 전반 강제 교체 1 + 하프타임 2 + 60분 2로 **교체를 소진한 뒤 마첸 부상으로 10명 마감**. ⚠️ 다른 진행자는 「헐전에서 소극적 교체로 비난받은 직후라 lose-lose였다」고 반박 — 양론 병존.",
+    "⑤ 음바예가 유일한 명확한 긍정 — 순수 스피드·직선성으로 피지컬한 포레스트 상대 탈압박 성공. 만잠비는 첫 터치를 라인 밖으로 보내는 등 기대 이하.",
+    "⭐ 상대 분석: 포레스트가 **공격의 약 60%를 우측으로** 돌렸다(무뇨스) — 이전 경기들은 니코 윌리엄스 좌측 편중이었다. 슐라거가 부엔디아를 끌고 다녀 10번 공간을 비우게 만들었다는 지적. 포레스트 백3 구성도 예상과 달랐다(올레아 RCB)."
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [
+    {
+     "claim": "⭐ 포레스트전 후반 붕괴의 **기제가 특정됐다 — 글라스너의 중앙 트랩이다**. obs#638은 「무형태」로만 닫았으나, D+2 전술 디브리프가 프레임 단위로 보여준 것은 무형태가 아니라 **잘못된 형태**다: 포레스트가 빌라의 더블 피벗(바클리·카마라) 주위에 **5명**을 두고(전방 3명이 패스 레인 차단 + 중앙 2명이 점프) 2v5를 만들었는데, 빌라는 끝까지 **중앙으로만** 볼을 넣었고 폭을 쓰지 않았다. 회수 즉시 백4가 그대로 노출됐다(델랍 선제골이 정확히 이 패턴 — 바클리 패스 차단 → 슐라거 → 전환). 이는 글라스너의 서명 기제다 — 팰리스 시절 워튼이 틸레만스에게 하던 것과 동일. ⇒ obs#638을 **뒤집지 않고 정밀화**한다: 압박 빈도(PPDA 9.73)는 유지됐고, 무너진 것은 **소유 국면의 폭**이다.",
+     "id": 711,
+     "scope": "defence"
+    }
+   ],
+   "published": "2026-09-14",
+   "published_approx": 0,
+   "report_id": 39,
+   "summary": "1874의 월요일 정리 쇼 — 포레스트 패배에서 배운 5가지. ⭐ 가장 값진 부분은 「신입을 안 쓴다」는 여론 비판을 진행자들이 스쿼드 상황으로 **직접 반박**한 대목과, **잭슨 고립이 구조적 문제**라고 짚은 2번 항목이다. 두 진행자가 교체 타이밍을 두고 정면으로 갈려서 양쪽 논거가 다 남아 있다.",
+   "team_code": "AVL",
+   "title": "5 Things We Learned From Forest Defeat",
+   "transcript_path": "reports/transcripts/TEWTwrP1aAI.en.md",
+   "url": "https://www.youtube.com/watch?v=TEWTwrP1aAI",
+   "video_id": "TEWTwrP1aAI"
+  },
+  {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · ⭐ [2026-09-15] 게시일을 팟캐스트 RSS의 정확한 pubDate(2026-09-14)로 보정(길이 1710초 · GUID upthevillapodcast.po).",
+   "id": 32,
+   "key_points": [
+    "⭐ **교체 판단의 자기 수정** — 「I was initially pretty annoyed with Emery's substitutions, but **the more I thought about it, I don't really think you can plan for what happened** — especially the two at halftime were **unique situations** with Jackson's yellow card」. 잭슨 경고 장면을 생방송에서 놓쳤다가 다시 보고 「심판이 벤치에 경고했다는 말을 들으니 **조금 더 이해가 된다**」고 인정.",
+    "⭐⭐ **역설적 지적** — 「**I don't know why we play risky everywhere else except the final third**」 = 「**왜 최종 서드만 빼고 다른 모든 곳에서는 위험하게 플레이하는지 모르겠다**」. 구체 예로 「카마라의 백플립(뒤로 넘기는 플레이)이 꽤 답답했다 — 그게 적절한 자리는 없다」를 들었다. ⇒ **위험 감수의 배분이 거꾸로다**라는 주장.",
+    "⭐ **잭슨 교체의 대안 논쟁** — 진행자: 「**중앙 미드가 경고를 받으면 위험하고 풀백도 위험하지만, 스트라이커는 「다이빙 들어가지 마라」고 말하면 되는 게 아닌가**」. 또 「잭슨은 배후로 침투하는 성향이고 **그게 우리 플레이 방식에 큰 영향을 준다**」며 교체 비용을 강조. ⇒ 에메리의 공식 설명(아브라함은 침투 성향이 아니라 윙어도 함께 넣었다)과 **정면으로 맞물리는 논점**.",
+    "⭐ 긍정 항목 — 「**스즈키가 큰 선방 두 번으로 버티는 데 확실히 도움**이 됐다 · **알리송의 골은 정말 좋았다** · **맥긴의 크로스가 꽤 정확해졌다**」.",
+    "⭐ 총론 — 「**work in progress** · 새 선수가 너무 많아 한동안은 이럴 것」이라는 유보를 반복하면서도 「**누구도 비판을 초월하지 않는다** · 관리(management)의 실수처럼 보였다」고 균형을 뒀다.",
+    "⛔ **auto-caption 오인식** — 에메리가 「Henry」로, 주앙 고메스가 「Xiao Gomez」로 적히는 구간이 있다."
+   ],
+   "kind": "선수스카우팅",
+   "lang": "en",
+   "obs_points": [
+    {
+     "claim": "⭐ **빌라 4-2-3-1의 아웃볼은 스트라이커의 배후 침투에 걸려 있다 — 그것이 사라지면 빌드업이 중앙으로 접힌다.** 45′ 잭슨→아브라함 교체 후 후반 빌라는 배후로 달리는 선수가 없었고, **동료들이 채널로 볼을 넣는 시도 자체를 멈췄다**(아브라함이 달리지 않는다는 걸 알기 때문). 그 결과 아웃볼이 사라지고 obs#711의 중앙 트랩에 스스로 걸어 들어갔다. 압박 축에서도 같은 손실 — 아브라함·부엔디아 전방 2인의 압박은 「존재하지 않았다」. ⇒ 재검증 ①(잭슨 false9)의 축을 바꾼다: 물어야 할 것은 「잭슨이 내려오는가」가 아니라 **「9번의 배후 침투가 팀 빌드업의 폭을 만드는가」**이며, 아브라함 교체는 그 자연 대조군이 됐다.",
+     "id": 714,
+     "scope": "role_demands"
+    }
+   ],
+   "published": "2026-09-14",
+   "published_approx": 0,
+   "report_id": 39,
+   "summary": "The Villans의 **포레스트전(1-2) 패널 리액션**(미국에서 합류한 Matt 등). ⭐ 핵심은 **하프타임 교체를 놓고 「처음엔 화났지만 생각해보니 계획할 수 없는 일이었다」로 입장을 수정한 대목**과, ⭐⭐ **「왜 최종 서드만 빼고 다른 모든 곳에서는 위험하게 플레이하는지 모르겠다」**는 역설적 지적이다.",
+   "team_code": "AVL",
+   "title": "One Thing We Learn't, Honest Villa Fans Feelings",
+   "transcript_path": "reports/transcripts/NGzBCdaiIKU.en.md",
+   "url": "https://www.youtube.com/watch?v=NGzBCdaiIKU",
+   "video_id": "NGzBCdaiIKU"
+  },
+  {
+   "channel": "UTV",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · ⭐ [2026-09-15] 게시일을 팟캐스트 RSS의 정확한 pubDate(2026-09-13)로 보정(길이 2506초 · GUID upthevillapodcast.po).",
+   "id": 66,
+   "key_points": [
+    "⭐⭐ **상대의 하프타임 변화 4항** — 「Glasner's changed his tactical setup. **They've got more width. They're tighter. They're more aggressive. They're winning duels.** And there is a **greater intensity** from Nottingham Forest」 ⇒ 폭·조밀도·공격성·듀얼·강도.",
+    "⭐⭐ **빌라 쪽 후반 상태 열거** — 「We've come out for the second half **too passive, no intensity, no tactical awareness, going through the motions, no one with a grip on the game, no press, no striker focal point, and no tactical switch-up**」 = 「너무 수동적·강도 없음·전술 인지 없음·기계적으로 움직임·경기를 움켜쥔 사람 없음·**압박 없음·초점이 되는 스트라이커 없음·전술 전환 없음**」.",
+    "⭐⭐ **교체가 압박을 없앴다는 인과** — 「Emery has decided to take Jackson off and Hemmings and replace them with Allison and Tammy Abraham. **This has altered our tactical approach massively with us maybe not being able to press from the front**」 ⇒ 두 교체가 **전방 압박 능력 자체를 제거**했다는 진단.",
+    "⭐⭐ **에메리 회견을 직접 인용해 반박 구조를 만들었다** — 「(에메리는) 심판이 벤치에 경고했기 때문에 잭슨을 뺐고, **아브라함은 배후로 침투하는 성향이 아니기 때문에** 알리송(윙어)도 함께 넣어야 했다고 말했다… 그리고 **「왜 우리가 형태를 잃었는지 모르겠다, 다시 경기를 보고 이해하고 싶다」**고 했다」 → 진행자: 「**내가 지금 보여주겠다**」. ⇒ ⭐ 우리 obs 축에서 **감독 자기 진단의 공백을 외부 분석이 메운 사례**로 다룰 수 있다.",
+    "⭐ **분석 자산 목록** — 「평균 위치 · 패싱 네트워크 · **진행 국면(progressive phase)** · **파이널서드 국면** · 스탯·데이터·전술판」. ⇒ UTV의 국면 분해 도구가 이 경기에도 쓰였다(obs#750의 「국면별 평균 위치 도입」 후속 확인).",
+    "⭐ 태도 — 「누구를 스케이프고트로 삼는 게 아니다. **보디무어 히스에서 분석관이 하듯** 작동하지 않은 것을 골라낸다」며 팬 감정과 분석을 분리하려 했다."
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [
+    {
+     "claim": "⭐ 포레스트전 후반 붕괴의 **기제가 특정됐다 — 글라스너의 중앙 트랩이다**. obs#638은 「무형태」로만 닫았으나, D+2 전술 디브리프가 프레임 단위로 보여준 것은 무형태가 아니라 **잘못된 형태**다: 포레스트가 빌라의 더블 피벗(바클리·카마라) 주위에 **5명**을 두고(전방 3명이 패스 레인 차단 + 중앙 2명이 점프) 2v5를 만들었는데, 빌라는 끝까지 **중앙으로만** 볼을 넣었고 폭을 쓰지 않았다. 회수 즉시 백4가 그대로 노출됐다(델랍 선제골이 정확히 이 패턴 — 바클리 패스 차단 → 슐라거 → 전환). 이는 글라스너의 서명 기제다 — 팰리스 시절 워튼이 틸레만스에게 하던 것과 동일. ⇒ obs#638을 **뒤집지 않고 정밀화**한다: 압박 빈도(PPDA 9.73)는 유지됐고, 무너진 것은 **소유 국면의 폭**이다.",
+     "id": 711,
+     "scope": "defence"
+    }
+   ],
+   "published": "2026-09-13",
+   "published_approx": 0,
+   "report_id": 39,
+   "summary": "UTV의 **포레스트전(1-2) 전술 디브리프 — 후반 전용 분석**. ⭐⭐ 이 영상이 포레스트전 자료 중 가장 값지다: **에메리 회견의 「왜인지 모르겠다」에 정면으로 답하는 형식**이고, ⭐⭐ **하프타임에 글라스너가 바꾼 것을 4항으로 특정**(폭 확대·더 조밀·더 공격적·듀얼 승리·강도 상승)한 뒤, 빌라 쪽 붕괴를 **「압박 없음·초점 스트라이커 없음·전술 전환 없음」**으로 열거했다.",
+   "team_code": "AVL",
+   "title": "THIS CAN'T HAPPEN AGAIN",
+   "transcript_path": "reports/transcripts/lKvqWRiKwLM.en.md",
+   "url": "https://www.youtube.com/watch?v=lKvqWRiKwLM",
+   "video_id": "lKvqWRiKwLM"
+  },
+  {
+   "channel": "1874",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · ⭐ [2026-09-15] 게시일을 팟캐스트 RSS의 정확한 pubDate(2026-09-12)로 보정(길이 1854초 · GUID 322b5c0a-aedb-11f1-8).",
+   "id": 29,
+   "key_points": [
+    "전반 자평: 편안하고 지배적이었다. 린델뢰프가 결정적 기회를 놓쳤고(「골키퍼 얼굴로 차 넣었다」) 「16분 만에 이미 많은 일이 있었다」고 회고.",
+    "⭐⭐ **맥긴 우측 = 전통 윙어처럼 높고 넓게** — 원문 「he was playing the game quite high and wide as well... like a traditional winger」. 뒤에 완비사카가 있어 폭을 직접 잡았고 포레스트를 괴롭혔다. **교체로 맥긴을 좌측으로 옮기면서 그 효과가 사라졌다**는 진단.",
+    "헤밍스 전반 평가 — **위치 선정은 훌륭했는데 동료들의 패스 타이밍·강도가 전부 나빴다**(「not one of them got the timing or the weight of the pass right」). 즉 결과 부진의 원인을 본인에게 두지 않았다.",
+    "교체 경위 — 파우 토레스 햄스트링(4주 예상)으로 전반에 교체 브레이크를 이미 썼고, 그래서 하프타임 교체를 서둘렀을 수 있다는 해석. 밍스 투입 자체는 문제없다고 봤다.",
+    "타미 아브라함 — 「지난번 봤을 때보다 2~3야드 느려 보인다 · 무거워 보인다」. 프리시즌에 무슨 일이 있었는지 의문 제기(추측임을 스스로 명시).",
+    "글라스너 열세 — 에메리는 펩·아르테타·콤파니·PSG를 이겼는데 글라스너에게만 반복해서 막힌다는 대조."
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-12",
+   "published_approx": 0,
+   "report_id": 39,
+   "summary": "1874 경기 당일 라이브 반응(현장 관전). 제목 그대로 **「game management」가 비판의 축**이다 — 전반은 편안하게 지배했는데 후반 킥오프 1분 뒤 실점하며 흐름을 통째로 넘겨줬다는 구성. ⭐ 전술적으로 값진 관찰은 **맥긴의 우측 고·광폭 배치**가 전반에 먹혔고 교체가 그걸 해체했다는 대목이다.",
+   "team_code": "AVL",
+   "title": "Aston Villa's Game Management COSTS Them Against Forest",
+   "transcript_path": "reports/transcripts/HtPgFuvPe6Q.en.md",
+   "url": "https://www.youtube.com/watch?v=HtPgFuvPe6Q",
+   "video_id": "HtPgFuvPe6Q"
+  },
+  {
    "channel": "All Villa No Filler - An Aston Villa Podcast",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 131,
@@ -811,7 +930,7 @@
   },
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · ⭐ [2026-09-15] 게시일을 팟캐스트 RSS의 정확한 pubDate(2026-09-07)로 보정(길이 2130초 · GUID 40482b44-aab0-11f1-8).",
    "id": 12,
    "key_points": [
     "⭐⭐ **경기 구조 예측 적중** — 「Hull didn't really drop off as expected. They kind of held a line as a **mid block** and it was down to Villa to try and play through them」 = 「헐은 예상대로 물러서지 않았다. **미드블록**으로 라인을 유지했고 뚫어야 하는 건 빌라였다」. 이어 **「if possession was high for Villa, we do sometimes struggle when the onus is on us to break down an opponent」** = 「빌라 점유가 높으면 상대를 허무는 책임이 우리에게 있을 때 때때로 고전한다」 ⇒ **점유 우위가 곧 위협이 아니라는 자기 진단**.",
@@ -824,8 +943,8 @@
    "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
-   "published": "2026-09-06",
-   "published_approx": 1,
+   "published": "2026-09-07",
+   "published_approx": 0,
    "report_id": 31,
    "summary": "1874의 헐전 0-0 정리 쇼(Sky Sports News 데이비드 리드 합류). ⭐ 가장 값진 건 **경기 양상을 프리뷰에서 정확히 예측했다고 밝힌 대목**이다 — 「헐은 예상대로 내려서지 않고 **미드블록으로 라인을 유지**했고, 뚫어야 하는 쪽이 빌라였다」. 그리고 **빌라는 점유가 높을 때 상대를 허무는 데 어려움을 겪는다**는 자기 팀 약점을 구조적으로 짚었다.",
    "team_code": "AVL",
@@ -1222,6 +1341,31 @@
    "video_id": "sYdWj0D64kI"
   },
   {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · ⭐ [2026-09-15] 게시일을 팟캐스트 RSS의 정확한 pubDate(2026-09-04)로 보정(길이 1886초 · GUID 5b4b0760-a85b-11f1-a).",
+   "id": 77,
+   "key_points": [
+    "⭐⭐ **최대 리스크 = 멘털·성격** — 「for me, the biggest question marks are over **his mentality, his character**, not necessarily what we might see from him immediately technically and what we could see from him technically in the future」 = 「내게 가장 큰 물음표는 **멘털리티와 성격**이고, 즉시 보일 기술이나 미래의 기술이 아니다」.",
+    "⭐ **PL 준비도 판정** — 「do I think he's **Premier League ready? Not necessarily just yet**, but is he a high quality, high potential young player? **Yes, of course**」 ⇒ 즉시 전력과 잠재력을 분리.",
+    "⭐⭐ **구조적 압박** — 「Villa, given the financial situation we're in, have made a **really big bet** on (음바예) to be essentially **the face of this new-look project**. So there are going to be **expectations from day one**」 = 「재정 상황상 빌라는 그를 사실상 **새 프로젝트의 얼굴**로 두는 **큰 베팅**을 했다. 그래서 **1일차부터 기대가 붙는다**」.",
+    "⭐ 환경 변화 — 「PSG 아카데미를 거쳐 **월드클래스 스타들에 둘러싸여 있던 어린 선수**가 아니게 된다 · 빌라도 좋은 스쿼드지만 **매일 자신을 증명해야 하는 집단**으로 걸어 들어가는 것이고 그게 도전이 될 것」.",
+    "진행자 입장 — 「원석(raw)이지만 **즉시 임팩트를 낼 수 있는 선수** · 20인 스쿼드에서 빼놓지는 않을 것이고 최소한 매주 벤치에서 들어올 것」. 별도로 Pythagoras in Boots의 스카우팅 영상이 자기 기대치를 낮췄다고 밝히며 시청을 권유(**교차 참고 소스 단서**).",
+    "⏰ 맥락 — PSG와 **12월 초 챔피언스리그 리그 페이즈에서 재격돌** 예정이라는 사실을 언급. ⇒ 음바예의 친정 상대 경기가 예정돼 있다."
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-04",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "1874 × 프랑스 축구 전문가 Jonathan Johnson(PSG 담당)의 음바예 심층 대담. ⭐⭐ 결정적 진단은 **「기술이 아니라 멘털리티·성격이 가장 큰 물음표」**라는 것이다 — 「지금 프리미어리그에 준비됐냐면 반드시 그렇지 않다 · 다만 높은 잠재력은 확실하다」. ⭐ 그리고 **「재정 상황상 빌라가 그에게 새 프로젝트의 얼굴로 큰 베팅을 했고 1일차부터 기대가 붙는다」**는 구조적 압박을 지적했다.",
+   "team_code": "AVL",
+   "title": "Ibrahim Mbaye: The Lowdown on Aston Villa's EXCITING New Signing",
+   "transcript_path": "reports/transcripts/sO9iE3J1dO8.en.md",
+   "url": "https://www.youtube.com/watch?v=sO9iE3J1dO8",
+   "video_id": "sO9iE3J1dO8"
+  },
+  {
    "channel": "The Villans",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 22,
@@ -1292,31 +1436,6 @@
    "transcript_path": "reports/transcripts/qbdDJ6o6TFo.en.md",
    "url": "https://www.youtube.com/watch?v=qbdDJ6o6TFo",
    "video_id": "qbdDJ6o6TFo"
-  },
-  {
-   "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
-   "id": 77,
-   "key_points": [
-    "⭐⭐ **최대 리스크 = 멘털·성격** — 「for me, the biggest question marks are over **his mentality, his character**, not necessarily what we might see from him immediately technically and what we could see from him technically in the future」 = 「내게 가장 큰 물음표는 **멘털리티와 성격**이고, 즉시 보일 기술이나 미래의 기술이 아니다」.",
-    "⭐ **PL 준비도 판정** — 「do I think he's **Premier League ready? Not necessarily just yet**, but is he a high quality, high potential young player? **Yes, of course**」 ⇒ 즉시 전력과 잠재력을 분리.",
-    "⭐⭐ **구조적 압박** — 「Villa, given the financial situation we're in, have made a **really big bet** on (음바예) to be essentially **the face of this new-look project**. So there are going to be **expectations from day one**」 = 「재정 상황상 빌라는 그를 사실상 **새 프로젝트의 얼굴**로 두는 **큰 베팅**을 했다. 그래서 **1일차부터 기대가 붙는다**」.",
-    "⭐ 환경 변화 — 「PSG 아카데미를 거쳐 **월드클래스 스타들에 둘러싸여 있던 어린 선수**가 아니게 된다 · 빌라도 좋은 스쿼드지만 **매일 자신을 증명해야 하는 집단**으로 걸어 들어가는 것이고 그게 도전이 될 것」.",
-    "진행자 입장 — 「원석(raw)이지만 **즉시 임팩트를 낼 수 있는 선수** · 20인 스쿼드에서 빼놓지는 않을 것이고 최소한 매주 벤치에서 들어올 것」. 별도로 Pythagoras in Boots의 스카우팅 영상이 자기 기대치를 낮췄다고 밝히며 시청을 권유(**교차 참고 소스 단서**).",
-    "⏰ 맥락 — PSG와 **12월 초 챔피언스리그 리그 페이즈에서 재격돌** 예정이라는 사실을 언급. ⇒ 음바예의 친정 상대 경기가 예정돼 있다."
-   ],
-   "kind": "경기반응",
-   "lang": "en",
-   "obs_points": [],
-   "published": "2026-09-03",
-   "published_approx": 1,
-   "report_id": null,
-   "summary": "1874 × 프랑스 축구 전문가 Jonathan Johnson(PSG 담당)의 음바예 심층 대담. ⭐⭐ 결정적 진단은 **「기술이 아니라 멘털리티·성격이 가장 큰 물음표」**라는 것이다 — 「지금 프리미어리그에 준비됐냐면 반드시 그렇지 않다 · 다만 높은 잠재력은 확실하다」. ⭐ 그리고 **「재정 상황상 빌라가 그에게 새 프로젝트의 얼굴로 큰 베팅을 했고 1일차부터 기대가 붙는다」**는 구조적 압박을 지적했다.",
-   "team_code": "AVL",
-   "title": "Ibrahim Mbaye: The Lowdown on Aston Villa's EXCITING New Signing",
-   "transcript_path": "reports/transcripts/sO9iE3J1dO8.en.md",
-   "url": "https://www.youtube.com/watch?v=sO9iE3J1dO8",
-   "video_id": "sO9iE3J1dO8"
   },
   {
    "channel": "UTV | Aston Villa Fan Channel × The Villans",
@@ -1669,7 +1788,7 @@
   },
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · ⭐ [2026-09-15] 게시일을 팟캐스트 RSS의 정확한 pubDate(2026-08-28)로 보정(길이 2044초 · GUID 52b0882c-a311-11f1-9).",
    "id": 43,
    "key_points": [
     "⭐⭐ **영입 순서의 이상함(기자 관찰)** — 「the **right wing target was very clear** — it was either him or (다른 후보 2명)… when Garnacho went and happened **before** that, I thought: are they changing their plans? Because contacts were telling me they were **so insistent at the start of the summer about this right winger** — 「we have to sign a right winger」… **it felt weird because they were so up on (음바예)**」. ⇒ **우측 윙어가 1순위 과제였는데 좌측 자원(가르나초)이 먼저 왔다**는 순서 불일치가 기록됐다(우리 인선 해석의 단서).",
@@ -1681,8 +1800,8 @@
    "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
-   "published": "2026-08-29",
-   "published_approx": 1,
+   "published": "2026-08-28",
+   "published_approx": 0,
    "report_id": null,
    "summary": "1874 × 제이콥 탠스웰 — **음바예 영입 협상 내막**. ⭐⭐ 가장 값진 건 **영입 순서의 이상함을 기자가 직접 짚은 대목**이다: 「구단은 **여름 내내 「우측 윙어를 반드시 사야 한다」**고 했는데 **가르나초가 먼저 갔다** — 계획을 바꾼 건가 싶었고 이상했다. 그만큼 음바예에 확고했으니까」. ⭐ 협상 구조도 「가족·에이전시가 얽히고 중간에 대리인이 추가돼 파트가 많았다」고 서술.",
    "team_code": "AVL",
@@ -1690,6 +1809,31 @@
    "transcript_path": "reports/transcripts/UZKqkoXnIgU.en.md",
    "url": "https://www.youtube.com/watch?v=UZKqkoXnIgU",
    "video_id": "UZKqkoXnIgU"
+  },
+  {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · ⭐ [2026-09-15] 게시일을 팟캐스트 RSS의 정확한 pubDate(2026-08-28)로 보정(길이 1049초 · GUID db5e45e8-a2bb-11f1-b).",
+   "id": 65,
+   "key_points": [
+    "⭐⭐ **바이에른 이탈 원인 = 임금·주기** — 「it was clear that when he left Bayern… he's probably going to have to take some sort of a **wage cut. He was on big big wages**… that factors quite heavily into their reasoning to let him go」 + 「**Some of the players that Bayern have got rid of down the years, it's no knock on them**. Like Pep Guardiola said when he got rid of Tony Kroos, **you can't keep everyone**」 ⇒ 「방출 = 기량 하락」이라는 해석을 명시적으로 기각.",
+    "⭐⭐ **유일한 실질 유보 = 프리시즌 부재** — 「Always a little bit **reticent about someone who hasn't had a proper full team preseason**」 → 후반에도 「**그 프리시즌을 못 치른 것과 피지컬을 끌어올리는 것**의 문제일 뿐」이라고 반복. ⇒ 부상 결장으로 실현된 리스크의 사전 지목.",
+    "⭐ 영입 등급 평가 — 「**1년 반 전이라면 빌라가 이 퀄리티의 선수를 데려오는 걸 상상할 수 없었다** · 페이스가 올라오면 거대한 자산이 될 것」. 진행자도 「31세지만 **내가 가장 설렌 영입**」이라며 「미드필드 제너럴」로 규정.",
+    "⭐⭐ **리더십의 내용을 구체화** — 「on and off the pitch does the right thing · **소수자 권리를 위해 목소리를 낸다** · 코로나 시기 키미히와 함께 **「We Kick Corona」**를 만들어 수백만 유로를 모금했다 · **평균적인 축구선수가 아니다**」 ⇒ 「드레싱룸에서 차이를 만들 사람이라면 **자기 신념을 지킬 용기가 있는 사람**이라는 게 결정적」.",
+    "⭐ 적응 소요 — 「**he's someone who's not green, he won't need time to settle in**」 = 「풋내기가 아니라 적응 시간이 필요하지 않을 사람」. 이탈 예상 행선지로는 「밀란이 가장 자주 연결됐다」고 밝혔다.",
+    "⭐ 바이에른 맥락 — 「2020~21 무렵의 구상은 **그와 키미히가 바이에른·독일 중원의 심장**이 되는 것이었지만, 절친임에도 **피치 위에서는 기대만큼 맞물리지 않았다**」."
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-08-28",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "1874 × 유럽축구 전문가 Andy Brassell의 고레츠카 대담. ⭐⭐ 가장 값진 건 **바이에른이 그를 보낸 이유를 「기량 하락이 아니라 임금·주기 문제」로 설명**한 것이다(「펩이 크로스를 보낼 때 했던 말처럼 — 모두를 붙잡을 수는 없다」). ⭐ 그리고 **「제대로 된 팀 프리시즌을 치르지 않았다」는 유보**를 두 번 반복해 강조했다.",
+   "team_code": "AVL",
+   "title": "Andy Brassell On What Leon Goretzka Will Offer Aston Villa",
+   "transcript_path": "reports/transcripts/l6EaQuegWug.en.md",
+   "url": "https://www.youtube.com/watch?v=l6EaQuegWug",
+   "video_id": "l6EaQuegWug"
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
@@ -1720,31 +1864,6 @@
    "transcript_path": "reports/transcripts/NZxB5racnr8.en.md",
    "url": "https://www.youtube.com/watch?v=NZxB5racnr8",
    "video_id": "NZxB5racnr8"
-  },
-  {
-   "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
-   "id": 65,
-   "key_points": [
-    "⭐⭐ **바이에른 이탈 원인 = 임금·주기** — 「it was clear that when he left Bayern… he's probably going to have to take some sort of a **wage cut. He was on big big wages**… that factors quite heavily into their reasoning to let him go」 + 「**Some of the players that Bayern have got rid of down the years, it's no knock on them**. Like Pep Guardiola said when he got rid of Tony Kroos, **you can't keep everyone**」 ⇒ 「방출 = 기량 하락」이라는 해석을 명시적으로 기각.",
-    "⭐⭐ **유일한 실질 유보 = 프리시즌 부재** — 「Always a little bit **reticent about someone who hasn't had a proper full team preseason**」 → 후반에도 「**그 프리시즌을 못 치른 것과 피지컬을 끌어올리는 것**의 문제일 뿐」이라고 반복. ⇒ 부상 결장으로 실현된 리스크의 사전 지목.",
-    "⭐ 영입 등급 평가 — 「**1년 반 전이라면 빌라가 이 퀄리티의 선수를 데려오는 걸 상상할 수 없었다** · 페이스가 올라오면 거대한 자산이 될 것」. 진행자도 「31세지만 **내가 가장 설렌 영입**」이라며 「미드필드 제너럴」로 규정.",
-    "⭐⭐ **리더십의 내용을 구체화** — 「on and off the pitch does the right thing · **소수자 권리를 위해 목소리를 낸다** · 코로나 시기 키미히와 함께 **「We Kick Corona」**를 만들어 수백만 유로를 모금했다 · **평균적인 축구선수가 아니다**」 ⇒ 「드레싱룸에서 차이를 만들 사람이라면 **자기 신념을 지킬 용기가 있는 사람**이라는 게 결정적」.",
-    "⭐ 적응 소요 — 「**he's someone who's not green, he won't need time to settle in**」 = 「풋내기가 아니라 적응 시간이 필요하지 않을 사람」. 이탈 예상 행선지로는 「밀란이 가장 자주 연결됐다」고 밝혔다.",
-    "⭐ 바이에른 맥락 — 「2020~21 무렵의 구상은 **그와 키미히가 바이에른·독일 중원의 심장**이 되는 것이었지만, 절친임에도 **피치 위에서는 기대만큼 맞물리지 않았다**」."
-   ],
-   "kind": "경기반응",
-   "lang": "en",
-   "obs_points": [],
-   "published": "2026-08-27",
-   "published_approx": 1,
-   "report_id": null,
-   "summary": "1874 × 유럽축구 전문가 Andy Brassell의 고레츠카 대담. ⭐⭐ 가장 값진 건 **바이에른이 그를 보낸 이유를 「기량 하락이 아니라 임금·주기 문제」로 설명**한 것이다(「펩이 크로스를 보낼 때 했던 말처럼 — 모두를 붙잡을 수는 없다」). ⭐ 그리고 **「제대로 된 팀 프리시즌을 치르지 않았다」는 유보**를 두 번 반복해 강조했다.",
-   "team_code": "AVL",
-   "title": "Andy Brassell On What Leon Goretzka Will Offer Aston Villa",
-   "transcript_path": "reports/transcripts/l6EaQuegWug.en.md",
-   "url": "https://www.youtube.com/watch?v=l6EaQuegWug",
-   "video_id": "l6EaQuegWug"
   },
   {
    "channel": "Bains Analysis",
@@ -1801,30 +1920,6 @@
    "transcript_path": "reports/transcripts/hEk2lfrKOOk.en.md",
    "url": "https://www.youtube.com/watch?v=hEk2lfrKOOk",
    "video_id": "hEk2lfrKOOk"
-  },
-  {
-   "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
-   "id": 57,
-   "key_points": [
-    "⭐⭐ **에메리의 창 관련 태도(기자 전언)** — 「Emery alluded to afterwards (that) **if it was up to him, he would never have the transfer window open** (while the season starts)」 = 「그의 뜻대로라면 **이적창이 열린 상태로 시즌을 시작하지 않을 것**이라고 경기 후 암시했다」. 기자는 「많은 구단이 같은 상황이지만 **빌라는 변화량·불확실성 때문에 그게 증폭된다**」고 덧붙였다.",
-    "⭐⭐ **부진 예측이 아니라 「구조적 지연」으로 규정** — 「**a lot of the business wasn't going to be done until the back end of the window** — financial regulations, not having to buy after selling. So there was always going to be a **reactionary** sense to it… **they were never going to be properly ready at this point**」 = 「재정 규정 탓에 **거래 대부분이 창 후반에야 이뤄질 수밖에 없었고**, 그래서 **반응적** 성격이 있었다… **이 시점에 제대로 준비될 수가 없었다**」.",
-    "⭐ **이 경기의 지위 판정** — 「it's going to be a game that's going to be **viewed in isolation** with a lot of mitigation. **I don't see this becoming a trend at all**. It's just one of those games where Villa just weren't ready」 ⇒ 08-25 시점에 이미 **「일회성」 판정**을 내렸다(이후 아스날전 회복으로 부분 확인).",
-    "⭐ **준비 지연의 개별 사유 열거** — 「**월드컵** 때문에 선수들이 늦게 복귀 · 마조 부상 · (주앙) 고메스는 2~4주 결장 예정이었다 · 만잠비 · 그리고 **마르티네스·왓킨스·베일리 등을 빼고 나면** 다른 선수들이 있었다면 더 좋은 팀을 낼 수 있었을 것」.",
-    "⚠️ 진행자 입장 — 「**12개월 전과 똑같은 느낌** · 모든 게 분절돼 있다 · **시즌 시작을 매번 이렇게 상대에게 앞서가게 주는 건 안 된다**」며 「경기를 그냥 지워버릴 수는 없다」고 반박. ⇒ 기자(맥락 강조)와 팬 진행자(누적 비용 강조)의 시각 차이가 그대로 남았다."
-   ],
-   "kind": "경기반응",
-   "lang": "en",
-   "obs_points": [],
-   "published": "2026-08-25",
-   "published_approx": 1,
-   "report_id": null,
-   "summary": "1874 × 탠스웰(The Athletic) — **브라이턴 0-4 개막 참패 직후 대담**. ⭐⭐ 가장 값진 건 **에메리 본인의 태도를 기자가 전한 대목**이다: 「**자기 뜻대로라면 이적창이 열려 있는 상태에서 시즌을 시작하지 않을 것**이라고 경기 후 암시했다」. ⭐ 그리고 **「이 경기는 고립해서 볼 경기이고 추세가 되지 않을 것」**이라는 판정을 그 시점에 내렸다.",
-   "team_code": "AVL",
-   "title": "Jacob Tanswell: Brighton Defeat, Ollie Watkins & Transfer Latest",
-   "transcript_path": "reports/transcripts/ghO6TndTi9s.en.md",
-   "url": "https://www.youtube.com/watch?v=ghO6TndTi9s",
-   "video_id": "ghO6TndTi9s"
   },
   {
    "channel": "Football Made Simple",
@@ -1900,6 +1995,30 @@
    "transcript_path": "reports/transcripts/gb5Zf0eBtlk.ko.md",
    "url": "https://www.youtube.com/watch?v=gb5Zf0eBtlk",
    "video_id": "gb5Zf0eBtlk"
+  },
+  {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · ⭐ [2026-09-15] 게시일을 팟캐스트 RSS의 정확한 pubDate(2026-08-24)로 보정(길이 3145초 · GUID e0c04d2a-9fb3-11f1-8).",
+   "id": 57,
+   "key_points": [
+    "⭐⭐ **에메리의 창 관련 태도(기자 전언)** — 「Emery alluded to afterwards (that) **if it was up to him, he would never have the transfer window open** (while the season starts)」 = 「그의 뜻대로라면 **이적창이 열린 상태로 시즌을 시작하지 않을 것**이라고 경기 후 암시했다」. 기자는 「많은 구단이 같은 상황이지만 **빌라는 변화량·불확실성 때문에 그게 증폭된다**」고 덧붙였다.",
+    "⭐⭐ **부진 예측이 아니라 「구조적 지연」으로 규정** — 「**a lot of the business wasn't going to be done until the back end of the window** — financial regulations, not having to buy after selling. So there was always going to be a **reactionary** sense to it… **they were never going to be properly ready at this point**」 = 「재정 규정 탓에 **거래 대부분이 창 후반에야 이뤄질 수밖에 없었고**, 그래서 **반응적** 성격이 있었다… **이 시점에 제대로 준비될 수가 없었다**」.",
+    "⭐ **이 경기의 지위 판정** — 「it's going to be a game that's going to be **viewed in isolation** with a lot of mitigation. **I don't see this becoming a trend at all**. It's just one of those games where Villa just weren't ready」 ⇒ 08-25 시점에 이미 **「일회성」 판정**을 내렸다(이후 아스날전 회복으로 부분 확인).",
+    "⭐ **준비 지연의 개별 사유 열거** — 「**월드컵** 때문에 선수들이 늦게 복귀 · 마조 부상 · (주앙) 고메스는 2~4주 결장 예정이었다 · 만잠비 · 그리고 **마르티네스·왓킨스·베일리 등을 빼고 나면** 다른 선수들이 있었다면 더 좋은 팀을 낼 수 있었을 것」.",
+    "⚠️ 진행자 입장 — 「**12개월 전과 똑같은 느낌** · 모든 게 분절돼 있다 · **시즌 시작을 매번 이렇게 상대에게 앞서가게 주는 건 안 된다**」며 「경기를 그냥 지워버릴 수는 없다」고 반박. ⇒ 기자(맥락 강조)와 팬 진행자(누적 비용 강조)의 시각 차이가 그대로 남았다."
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-08-24",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "1874 × 탠스웰(The Athletic) — **브라이턴 0-4 개막 참패 직후 대담**. ⭐⭐ 가장 값진 건 **에메리 본인의 태도를 기자가 전한 대목**이다: 「**자기 뜻대로라면 이적창이 열려 있는 상태에서 시즌을 시작하지 않을 것**이라고 경기 후 암시했다」. ⭐ 그리고 **「이 경기는 고립해서 볼 경기이고 추세가 되지 않을 것」**이라는 판정을 그 시점에 내렸다.",
+   "team_code": "AVL",
+   "title": "Jacob Tanswell: Brighton Defeat, Ollie Watkins & Transfer Latest",
+   "transcript_path": "reports/transcripts/ghO6TndTi9s.en.md",
+   "url": "https://www.youtube.com/watch?v=ghO6TndTi9s",
+   "video_id": "ghO6TndTi9s"
   },
   {
    "channel": "Bains Analysis",
@@ -2024,6 +2143,30 @@
    "transcript_path": "reports/transcripts/VfMaFmxIXjM.en.md",
    "url": "https://www.youtube.com/watch?v=VfMaFmxIXjM",
    "video_id": "VfMaFmxIXjM"
+  },
+  {
+   "channel": "알론소 경기 전 회견 (2026-08-20 Cobham, BeanymanSports)",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · ⭐ [2026-09-15] 게시일을 팟캐스트 RSS의 정확한 pubDate(2026-08-26)로 보정(길이 2424초 · GUID fda43ef0-a153-11f1-b). · ⛔⛔ [2026-09-15 오염 정정] 직전 「RSS pubDate 보정」이 이 행을 2026-08-26으로 덮었으나 **오매칭**이다 — 전사 헤더의 정본은 **2026-08-20(코브햄)**이다. 원인: 제목이 한글(「CHE 풀럼전 사전 회견」)이라 정규화하면 키가 `che` 3글자로 줄어 아무 제목에나 부분일치했다. discover_podcast_episodes.py에 **정규화 키 최소 길이 가드**를 넣어 재발을 막았다.",
+   "id": 49,
+   "key_points": [
+    "⭐⭐ **주앙 페드루 = 9번이자 리더** — 「He's got the **number nine shirt** now as well… he's not just a great player. **He has a great personality.** And I think that his development **as a great player and as a leader is very noticeable every day, in each game**… now we need to **help him reaching his goals**」 ⇒ ⭐ 우리 CHE ST 처방(`st_advanced/Support`)의 인선 근거를 보강하는 **감독 1차 발언**.",
+    "⭐ **스쿼드 자평** — 「I'm really happy. I think that we have made **many right choices. Very good balance in terms of quality, in terms of personality, maturity, different stages of their careers, with good momentum**」 ⇒ 추가 영입 질문에 「필요 없다」는 취지로 답(창 마감 전 시점).",
+    "⭐ **엔소 관련 답변** — 「**Enzo is a Chelsea player. He's a top, top player.** He's training really, really well since he started **10 days ago** with the team, **very integrated**, and we are happy with him. He's getting ready for Monday」 → 「본인이 남고 싶다고 말했나」는 질문에는 **직접 답을 피하고** 「훈련을 정말 잘하고 태도가 아주 좋다」고만 답했다. ⚠️ 이후 엔소는 이적했다(우리 squad_entries 09-11 정리 대상) ⇒ **감독 회견이 이적 결과를 예고하지 않은 사례**로 기록 가치가 있다.",
+    "⭐ 프리시즌 평가 — 「6주를 준비했다 · **첫날부터 있던 선수와 늦게 합류한 선수가 갈린다** · 그래도 프리미어리그를 시작하려는 욕구·야망·배고픔이 매 훈련에 있다」 ⇒ 알론소 체제 첫 시즌의 **통합 단계 차이**를 감독이 인지.",
+    "⭐ 이 행의 용도 — 풀럼전(3-2 승) **경기 후 회견 2편**(`4qMbWAZoj6A`·`Ejy6uF4wzZk`)과 이어 읽으면 **사전 기대 → 결과 자평**의 쌍이 된다."
+   ],
+   "kind": "감독회견",
+   "lang": "en-GB",
+   "obs_points": [],
+   "published": "2026-08-20",
+   "published_approx": 0,
+   "report_id": 25,
+   "summary": "**알론소 풀럼전 「경기 전」 회견(08-20 코브햄) — CHE 축 1차 소스**. ⭐⭐ 값진 건 **주앙 페드루에 대한 규정**이다: 「9번 등번호를 받았고… **위대한 선수로서의 성장과 리더로서의 성장이 매일, 매 경기 눈에 띈다**」. ⭐ 그리고 **스쿼드 구성을 「질·인성·성숙도·커리어 단계의 좋은 균형」**으로 자평하며 추가 영입 필요를 부인했다.",
+   "team_code": null,
+   "title": "CHE 풀럼전 사전 회견",
+   "transcript_path": "reports/transcripts/ZhA2s-Pz0ss.en-GB.md",
+   "url": "https://www.youtube.com/watch?v=ZhA2s-Pz0ss",
+   "video_id": "ZhA2s-Pz0ss"
   },
   {
    "channel": "FcInterNews Official Channel",
@@ -2813,63 +2956,6 @@
    "video_id": "cgk1tLlUK_o"
   },
   {
-   "channel": "1874",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
-   "id": 29,
-   "key_points": [
-    "전반 자평: 편안하고 지배적이었다. 린델뢰프가 결정적 기회를 놓쳤고(「골키퍼 얼굴로 차 넣었다」) 「16분 만에 이미 많은 일이 있었다」고 회고.",
-    "⭐⭐ **맥긴 우측 = 전통 윙어처럼 높고 넓게** — 원문 「he was playing the game quite high and wide as well... like a traditional winger」. 뒤에 완비사카가 있어 폭을 직접 잡았고 포레스트를 괴롭혔다. **교체로 맥긴을 좌측으로 옮기면서 그 효과가 사라졌다**는 진단.",
-    "헤밍스 전반 평가 — **위치 선정은 훌륭했는데 동료들의 패스 타이밍·강도가 전부 나빴다**(「not one of them got the timing or the weight of the pass right」). 즉 결과 부진의 원인을 본인에게 두지 않았다.",
-    "교체 경위 — 파우 토레스 햄스트링(4주 예상)으로 전반에 교체 브레이크를 이미 썼고, 그래서 하프타임 교체를 서둘렀을 수 있다는 해석. 밍스 투입 자체는 문제없다고 봤다.",
-    "타미 아브라함 — 「지난번 봤을 때보다 2~3야드 느려 보인다 · 무거워 보인다」. 프리시즌에 무슨 일이 있었는지 의문 제기(추측임을 스스로 명시).",
-    "글라스너 열세 — 에메리는 펩·아르테타·콤파니·PSG를 이겼는데 글라스너에게만 반복해서 막힌다는 대조."
-   ],
-   "kind": "경기반응",
-   "lang": "en",
-   "obs_points": [],
-   "published": null,
-   "published_approx": 0,
-   "report_id": 39,
-   "summary": "1874 경기 당일 라이브 반응(현장 관전). 제목 그대로 **「game management」가 비판의 축**이다 — 전반은 편안하게 지배했는데 후반 킥오프 1분 뒤 실점하며 흐름을 통째로 넘겨줬다는 구성. ⭐ 전술적으로 값진 관찰은 **맥긴의 우측 고·광폭 배치**가 전반에 먹혔고 교체가 그걸 해체했다는 대목이다.",
-   "team_code": "AVL",
-   "title": "Aston Villa's Game Management COSTS Them Against Forest",
-   "transcript_path": "reports/transcripts/HtPgFuvPe6Q.en.md",
-   "url": "https://www.youtube.com/watch?v=HtPgFuvPe6Q",
-   "video_id": "HtPgFuvPe6Q"
-  },
-  {
-   "channel": "1874",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
-   "id": 41,
-   "key_points": [
-    "① 신입 통합론 반박 — 스즈키·잭슨·완비사카는 이미 선발이고 고메스는 퇴장, 고레츠카·바요·만잠비는 부상이었다. 실제로 「쓰지 않은」 자원은 **가르나초와 하우드-벨리스 둘뿐**이라는 결론.",
-    "② ⭐⭐ **잭슨 고립이 구조적이다** — 원문 「when you look at the average positional maps, he's miles away from everybody else」 = 「평균 위치 맵을 보면 그는 다른 모두와 한참 떨어져 있다」. 원인 진단: 바클리·카마라가 틸레만스처럼 **전진 패스 후 재이동**을 못 하고, 부엔디아의 10번 위치 규율이 약하다.",
-    "② 타미 아브라함 = 백업 9번으로 불성립 — 투입 후 압박·복귀 트래킹이 「절벽처럼 떨어진다」. 마조 부상으로 유일 백업인 상태가 위험. 단 「구단이 이적 출구를 제안했고 본인이 거절했다」는 사실을 함께 지적.",
-    "③ 마첸 6~8주 이탈 → 루헤리 건강 유지가 필수 조건. **맥긴 좌측백 재사용은 반대**(전진 기여를 잃는다).",
-    "④ 글라스너 열세(hex) — 과거 셀허스트에서 백3를 급조했던 것처럼 「평소 안 하던 선택」을 한다는 관찰. 이번엔 전반 강제 교체 1 + 하프타임 2 + 60분 2로 **교체를 소진한 뒤 마첸 부상으로 10명 마감**. ⚠️ 다른 진행자는 「헐전에서 소극적 교체로 비난받은 직후라 lose-lose였다」고 반박 — 양론 병존.",
-    "⑤ 음바예가 유일한 명확한 긍정 — 순수 스피드·직선성으로 피지컬한 포레스트 상대 탈압박 성공. 만잠비는 첫 터치를 라인 밖으로 보내는 등 기대 이하.",
-    "⭐ 상대 분석: 포레스트가 **공격의 약 60%를 우측으로** 돌렸다(무뇨스) — 이전 경기들은 니코 윌리엄스 좌측 편중이었다. 슐라거가 부엔디아를 끌고 다녀 10번 공간을 비우게 만들었다는 지적. 포레스트 백3 구성도 예상과 달랐다(올레아 RCB)."
-   ],
-   "kind": "경기반응",
-   "lang": "en",
-   "obs_points": [
-    {
-     "claim": "⭐ 포레스트전 후반 붕괴의 **기제가 특정됐다 — 글라스너의 중앙 트랩이다**. obs#638은 「무형태」로만 닫았으나, D+2 전술 디브리프가 프레임 단위로 보여준 것은 무형태가 아니라 **잘못된 형태**다: 포레스트가 빌라의 더블 피벗(바클리·카마라) 주위에 **5명**을 두고(전방 3명이 패스 레인 차단 + 중앙 2명이 점프) 2v5를 만들었는데, 빌라는 끝까지 **중앙으로만** 볼을 넣었고 폭을 쓰지 않았다. 회수 즉시 백4가 그대로 노출됐다(델랍 선제골이 정확히 이 패턴 — 바클리 패스 차단 → 슐라거 → 전환). 이는 글라스너의 서명 기제다 — 팰리스 시절 워튼이 틸레만스에게 하던 것과 동일. ⇒ obs#638을 **뒤집지 않고 정밀화**한다: 압박 빈도(PPDA 9.73)는 유지됐고, 무너진 것은 **소유 국면의 폭**이다.",
-     "id": 711,
-     "scope": "defence"
-    }
-   ],
-   "published": null,
-   "published_approx": 0,
-   "report_id": 39,
-   "summary": "1874의 월요일 정리 쇼 — 포레스트 패배에서 배운 5가지. ⭐ 가장 값진 부분은 「신입을 안 쓴다」는 여론 비판을 진행자들이 스쿼드 상황으로 **직접 반박**한 대목과, **잭슨 고립이 구조적 문제**라고 짚은 2번 항목이다. 두 진행자가 교체 타이밍을 두고 정면으로 갈려서 양쪽 논거가 다 남아 있다.",
-   "team_code": "AVL",
-   "title": "5 Things We Learned From Forest Defeat",
-   "transcript_path": "reports/transcripts/TEWTwrP1aAI.en.md",
-   "url": "https://www.youtube.com/watch?v=TEWTwrP1aAI",
-   "video_id": "TEWTwrP1aAI"
-  },
-  {
    "channel": "ANALYSING HOW ASTON VILLA'S ATTACK FINALLY CLICKS INTO GEAR (UTV x The Villans)",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 60,
@@ -3402,68 +3488,6 @@
    "video_id": "AN3IxVKDruM"
   },
   {
-   "channel": "The Villans",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
-   "id": 32,
-   "key_points": [
-    "⭐ **교체 판단의 자기 수정** — 「I was initially pretty annoyed with Emery's substitutions, but **the more I thought about it, I don't really think you can plan for what happened** — especially the two at halftime were **unique situations** with Jackson's yellow card」. 잭슨 경고 장면을 생방송에서 놓쳤다가 다시 보고 「심판이 벤치에 경고했다는 말을 들으니 **조금 더 이해가 된다**」고 인정.",
-    "⭐⭐ **역설적 지적** — 「**I don't know why we play risky everywhere else except the final third**」 = 「**왜 최종 서드만 빼고 다른 모든 곳에서는 위험하게 플레이하는지 모르겠다**」. 구체 예로 「카마라의 백플립(뒤로 넘기는 플레이)이 꽤 답답했다 — 그게 적절한 자리는 없다」를 들었다. ⇒ **위험 감수의 배분이 거꾸로다**라는 주장.",
-    "⭐ **잭슨 교체의 대안 논쟁** — 진행자: 「**중앙 미드가 경고를 받으면 위험하고 풀백도 위험하지만, 스트라이커는 「다이빙 들어가지 마라」고 말하면 되는 게 아닌가**」. 또 「잭슨은 배후로 침투하는 성향이고 **그게 우리 플레이 방식에 큰 영향을 준다**」며 교체 비용을 강조. ⇒ 에메리의 공식 설명(아브라함은 침투 성향이 아니라 윙어도 함께 넣었다)과 **정면으로 맞물리는 논점**.",
-    "⭐ 긍정 항목 — 「**스즈키가 큰 선방 두 번으로 버티는 데 확실히 도움**이 됐다 · **알리송의 골은 정말 좋았다** · **맥긴의 크로스가 꽤 정확해졌다**」.",
-    "⭐ 총론 — 「**work in progress** · 새 선수가 너무 많아 한동안은 이럴 것」이라는 유보를 반복하면서도 「**누구도 비판을 초월하지 않는다** · 관리(management)의 실수처럼 보였다」고 균형을 뒀다.",
-    "⛔ **auto-caption 오인식** — 에메리가 「Henry」로, 주앙 고메스가 「Xiao Gomez」로 적히는 구간이 있다."
-   ],
-   "kind": "선수스카우팅",
-   "lang": "en",
-   "obs_points": [
-    {
-     "claim": "⭐ **빌라 4-2-3-1의 아웃볼은 스트라이커의 배후 침투에 걸려 있다 — 그것이 사라지면 빌드업이 중앙으로 접힌다.** 45′ 잭슨→아브라함 교체 후 후반 빌라는 배후로 달리는 선수가 없었고, **동료들이 채널로 볼을 넣는 시도 자체를 멈췄다**(아브라함이 달리지 않는다는 걸 알기 때문). 그 결과 아웃볼이 사라지고 obs#711의 중앙 트랩에 스스로 걸어 들어갔다. 압박 축에서도 같은 손실 — 아브라함·부엔디아 전방 2인의 압박은 「존재하지 않았다」. ⇒ 재검증 ①(잭슨 false9)의 축을 바꾼다: 물어야 할 것은 「잭슨이 내려오는가」가 아니라 **「9번의 배후 침투가 팀 빌드업의 폭을 만드는가」**이며, 아브라함 교체는 그 자연 대조군이 됐다.",
-     "id": 714,
-     "scope": "role_demands"
-    }
-   ],
-   "published": null,
-   "published_approx": 0,
-   "report_id": 39,
-   "summary": "The Villans의 **포레스트전(1-2) 패널 리액션**(미국에서 합류한 Matt 등). ⭐ 핵심은 **하프타임 교체를 놓고 「처음엔 화났지만 생각해보니 계획할 수 없는 일이었다」로 입장을 수정한 대목**과, ⭐⭐ **「왜 최종 서드만 빼고 다른 모든 곳에서는 위험하게 플레이하는지 모르겠다」**는 역설적 지적이다.",
-   "team_code": "AVL",
-   "title": "One Thing We Learn't, Honest Villa Fans Feelings",
-   "transcript_path": "reports/transcripts/NGzBCdaiIKU.en.md",
-   "url": "https://www.youtube.com/watch?v=NGzBCdaiIKU",
-   "video_id": "NGzBCdaiIKU"
-  },
-  {
-   "channel": "UTV",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
-   "id": 66,
-   "key_points": [
-    "⭐⭐ **상대의 하프타임 변화 4항** — 「Glasner's changed his tactical setup. **They've got more width. They're tighter. They're more aggressive. They're winning duels.** And there is a **greater intensity** from Nottingham Forest」 ⇒ 폭·조밀도·공격성·듀얼·강도.",
-    "⭐⭐ **빌라 쪽 후반 상태 열거** — 「We've come out for the second half **too passive, no intensity, no tactical awareness, going through the motions, no one with a grip on the game, no press, no striker focal point, and no tactical switch-up**」 = 「너무 수동적·강도 없음·전술 인지 없음·기계적으로 움직임·경기를 움켜쥔 사람 없음·**압박 없음·초점이 되는 스트라이커 없음·전술 전환 없음**」.",
-    "⭐⭐ **교체가 압박을 없앴다는 인과** — 「Emery has decided to take Jackson off and Hemmings and replace them with Allison and Tammy Abraham. **This has altered our tactical approach massively with us maybe not being able to press from the front**」 ⇒ 두 교체가 **전방 압박 능력 자체를 제거**했다는 진단.",
-    "⭐⭐ **에메리 회견을 직접 인용해 반박 구조를 만들었다** — 「(에메리는) 심판이 벤치에 경고했기 때문에 잭슨을 뺐고, **아브라함은 배후로 침투하는 성향이 아니기 때문에** 알리송(윙어)도 함께 넣어야 했다고 말했다… 그리고 **「왜 우리가 형태를 잃었는지 모르겠다, 다시 경기를 보고 이해하고 싶다」**고 했다」 → 진행자: 「**내가 지금 보여주겠다**」. ⇒ ⭐ 우리 obs 축에서 **감독 자기 진단의 공백을 외부 분석이 메운 사례**로 다룰 수 있다.",
-    "⭐ **분석 자산 목록** — 「평균 위치 · 패싱 네트워크 · **진행 국면(progressive phase)** · **파이널서드 국면** · 스탯·데이터·전술판」. ⇒ UTV의 국면 분해 도구가 이 경기에도 쓰였다(obs#750의 「국면별 평균 위치 도입」 후속 확인).",
-    "⭐ 태도 — 「누구를 스케이프고트로 삼는 게 아니다. **보디무어 히스에서 분석관이 하듯** 작동하지 않은 것을 골라낸다」며 팬 감정과 분석을 분리하려 했다."
-   ],
-   "kind": "경기반응",
-   "lang": "en",
-   "obs_points": [
-    {
-     "claim": "⭐ 포레스트전 후반 붕괴의 **기제가 특정됐다 — 글라스너의 중앙 트랩이다**. obs#638은 「무형태」로만 닫았으나, D+2 전술 디브리프가 프레임 단위로 보여준 것은 무형태가 아니라 **잘못된 형태**다: 포레스트가 빌라의 더블 피벗(바클리·카마라) 주위에 **5명**을 두고(전방 3명이 패스 레인 차단 + 중앙 2명이 점프) 2v5를 만들었는데, 빌라는 끝까지 **중앙으로만** 볼을 넣었고 폭을 쓰지 않았다. 회수 즉시 백4가 그대로 노출됐다(델랍 선제골이 정확히 이 패턴 — 바클리 패스 차단 → 슐라거 → 전환). 이는 글라스너의 서명 기제다 — 팰리스 시절 워튼이 틸레만스에게 하던 것과 동일. ⇒ obs#638을 **뒤집지 않고 정밀화**한다: 압박 빈도(PPDA 9.73)는 유지됐고, 무너진 것은 **소유 국면의 폭**이다.",
-     "id": 711,
-     "scope": "defence"
-    }
-   ],
-   "published": null,
-   "published_approx": 0,
-   "report_id": 39,
-   "summary": "UTV의 **포레스트전(1-2) 전술 디브리프 — 후반 전용 분석**. ⭐⭐ 이 영상이 포레스트전 자료 중 가장 값지다: **에메리 회견의 「왜인지 모르겠다」에 정면으로 답하는 형식**이고, ⭐⭐ **하프타임에 글라스너가 바꾼 것을 4항으로 특정**(폭 확대·더 조밀·더 공격적·듀얼 승리·강도 상승)한 뒤, 빌라 쪽 붕괴를 **「압박 없음·초점 스트라이커 없음·전술 전환 없음」**으로 열거했다.",
-   "team_code": "AVL",
-   "title": "THIS CAN'T HAPPEN AGAIN",
-   "transcript_path": "reports/transcripts/lKvqWRiKwLM.en.md",
-   "url": "https://www.youtube.com/watch?v=lKvqWRiKwLM",
-   "video_id": "lKvqWRiKwLM"
-  },
-  {
    "channel": "박종윤 [프리시즌 체크] 알론소의 첼시는 어떤가? (2026-08 초, 프리시즌 분석)",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 31,
@@ -3557,30 +3581,6 @@
    "transcript_path": "reports/transcripts/ipGsi40qJKM.en.md",
    "url": "https://www.youtube.com/watch?v=ipGsi40qJKM",
    "video_id": "ipGsi40qJKM"
-  },
-  {
-   "channel": "알론소 경기 전 회견 (2026-08-20 Cobham, BeanymanSports)",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
-   "id": 49,
-   "key_points": [
-    "⭐⭐ **주앙 페드루 = 9번이자 리더** — 「He's got the **number nine shirt** now as well… he's not just a great player. **He has a great personality.** And I think that his development **as a great player and as a leader is very noticeable every day, in each game**… now we need to **help him reaching his goals**」 ⇒ ⭐ 우리 CHE ST 처방(`st_advanced/Support`)의 인선 근거를 보강하는 **감독 1차 발언**.",
-    "⭐ **스쿼드 자평** — 「I'm really happy. I think that we have made **many right choices. Very good balance in terms of quality, in terms of personality, maturity, different stages of their careers, with good momentum**」 ⇒ 추가 영입 질문에 「필요 없다」는 취지로 답(창 마감 전 시점).",
-    "⭐ **엔소 관련 답변** — 「**Enzo is a Chelsea player. He's a top, top player.** He's training really, really well since he started **10 days ago** with the team, **very integrated**, and we are happy with him. He's getting ready for Monday」 → 「본인이 남고 싶다고 말했나」는 질문에는 **직접 답을 피하고** 「훈련을 정말 잘하고 태도가 아주 좋다」고만 답했다. ⚠️ 이후 엔소는 이적했다(우리 squad_entries 09-11 정리 대상) ⇒ **감독 회견이 이적 결과를 예고하지 않은 사례**로 기록 가치가 있다.",
-    "⭐ 프리시즌 평가 — 「6주를 준비했다 · **첫날부터 있던 선수와 늦게 합류한 선수가 갈린다** · 그래도 프리미어리그를 시작하려는 욕구·야망·배고픔이 매 훈련에 있다」 ⇒ 알론소 체제 첫 시즌의 **통합 단계 차이**를 감독이 인지.",
-    "⭐ 이 행의 용도 — 풀럼전(3-2 승) **경기 후 회견 2편**(`4qMbWAZoj6A`·`Ejy6uF4wzZk`)과 이어 읽으면 **사전 기대 → 결과 자평**의 쌍이 된다."
-   ],
-   "kind": "감독회견",
-   "lang": "en-GB",
-   "obs_points": [],
-   "published": null,
-   "published_approx": 0,
-   "report_id": 25,
-   "summary": "**알론소 풀럼전 「경기 전」 회견(08-20 코브햄) — CHE 축 1차 소스**. ⭐⭐ 값진 건 **주앙 페드루에 대한 규정**이다: 「9번 등번호를 받았고… **위대한 선수로서의 성장과 리더로서의 성장이 매일, 매 경기 눈에 띈다**」. ⭐ 그리고 **스쿼드 구성을 「질·인성·성숙도·커리어 단계의 좋은 균형」**으로 자평하며 추가 영입 필요를 부인했다.",
-   "team_code": null,
-   "title": "CHE 풀럼전 사전 회견",
-   "transcript_path": "reports/transcripts/ZhA2s-Pz0ss.en-GB.md",
-   "url": "https://www.youtube.com/watch?v=ZhA2s-Pz0ss",
-   "video_id": "ZhA2s-Pz0ss"
   },
   {
    "channel": "축수저 [경기 분석] 풀럼 vs 첼시 (2026-08-25, PL R1 경기 분석)",
@@ -3685,21 +3685,21 @@
    88
   ],
   "39": [
+   41,
+   32,
+   66,
+   29,
    131,
    127,
    136,
    96,
    94,
    111,
-   29,
-   41,
    58,
    16,
    10,
    26,
-   40,
-   32,
-   66
+   40
   ],
   "40": [
    120
