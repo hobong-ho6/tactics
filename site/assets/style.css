@@ -215,3 +215,12 @@ details.match-players>summary,details.report-source>summary{color:var(--acc);cur
 .injgrid{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:6px;font-size:13px}
 .injgrid b{color:var(--txt);margin-right:6px}
 .injcard.contra{border-left-color:var(--warn)}
+
+/* 경기 영상 분석 카드 (2026-09-15) — 전사 요약·핵심 포인트·관찰 기록 3층 */
+.vidcard{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:12px}
+.vidcard header{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13px;margin-bottom:4px}
+.vidcard header a{font-size:12px}
+.vidtitle{font-weight:700;margin-bottom:6px}
+.vidsum{margin-bottom:6px}
+.vidpoints{margin:6px 0 0;padding-left:20px}
+.vidpoints li{margin-bottom:5px;line-height:1.55}

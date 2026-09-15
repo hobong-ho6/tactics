@@ -673,3 +673,25 @@ CREATE TABLE player_card_items(
   UNIQUE(game_version, ea_item_id)
 );
 CREATE INDEX ix_card_items_player ON player_card_items(player_id, game_version);
+CREATE TABLE match_videos(
+  id INTEGER PRIMARY KEY,
+  video_id TEXT NOT NULL,           -- 유튜브 id (전사 파일명의 앞부분)
+  lang TEXT,                        -- 전사 언어 (en/es/pt/…)
+  report_id INTEGER REFERENCES match_reports(id) ON DELETE SET NULL,  -- 경기 귀속(없으면 NULL = 시즌·선수 축)
+  regime_id INTEGER REFERENCES regimes(id),   -- 팀 축 필터용 (불변규칙 6 — 팀은 team_code/regime로 조인)
+  team_code TEXT REFERENCES teams(code),
+  channel TEXT NOT NULL,            -- 채널명 (UTV | Aston Villa Fan Channel · The Villans · 1874 …)
+  title TEXT,                       -- 영상 제목
+  published TEXT,                   -- 게시일. '경' 접미가 붙은 추정치는 published_approx=1
+  published_approx INTEGER NOT NULL DEFAULT 0,
+  url TEXT,
+  transcript_path TEXT,             -- reports/transcripts/{id}.{lang}.md
+  kind TEXT,                        -- 경기반응 / 전술분석 / 선수스카우팅 / 감독회견 / 상대팀 / 프리시즌
+  summary TEXT,                     -- ⑶ 사람이 쓴 핵심 요약 (NULL = 아직 안 씀)
+  key_points TEXT,                  -- ⑶ 줄바꿈 구분 핵심 포인트
+  obs_refs TEXT,                    -- ⑵ 이 전사를 인용한 observations id 목록(CSV) — 자동 산출
+  source TEXT, confidence TEXT,
+  UNIQUE(video_id, lang)
+);
+CREATE INDEX ix_match_videos_report ON match_videos(report_id);
+CREATE INDEX ix_match_videos_team ON match_videos(team_code, published);

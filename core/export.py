@@ -114,6 +114,26 @@ def export_all(db_path=None, window="2026-summer"):
         cards.setdefault(str(r.pop("player_id")), []).append(r)
     written.append(_write(SITE_DATA / "game_stats" / "cards.json", cards))
 
+    # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──
+    # ⭐ 세 층을 그대로 내보낸다: 메타(파싱) · obs_points(검증된 판정) · summary/key_points(사람 요약).
+    #    `by_report`는 경기 화면이, `all`은 채널 브라우징이 쓴다.
+    obs_by_id = {r["id"]: r for r in _rows(con, """SELECT id, claim, scope, confidence FROM observations""")}
+    videos, by_report = [], {}
+    for v in _rows(con, """SELECT id, video_id, lang, report_id, team_code, channel, title, published,
+                                  published_approx, url, transcript_path, kind, summary, key_points,
+                                  obs_refs, confidence
+                           FROM match_videos
+                           ORDER BY (published IS NULL), published DESC, channel"""):
+        refs = [int(x) for x in (v.pop("obs_refs") or "").split(",") if x.strip().isdigit()]
+        # ⛔ obs 전문을 그대로 싣는다 — 화면에서 요약하지 않는다(원장 텍스트가 정본이다)
+        v["obs_points"] = [{"id": i, "claim": obs_by_id[i]["claim"], "scope": obs_by_id[i]["scope"]}
+                           for i in refs if i in obs_by_id]
+        v["key_points"] = [x for x in (v["key_points"] or "").split("\n") if x.strip()]
+        videos.append(v)
+        if v["report_id"]:
+            by_report.setdefault(str(v["report_id"]), []).append(v["id"])
+    written.append(_write(SITE_DATA / "videos.json", {"all": videos, "by_report": by_report}))
+
     # ── teams/{CODE}.json ────────────────────────────────────────────
     for rg in regimes:
         rid, code = rg["id"], rg["team_code"]

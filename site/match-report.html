@@ -22,6 +22,11 @@
   <div class="panel" id="overall" hidden></div>
   <div class="panel" id="gamePreset"></div>
   <div class="panel"><h2>전술 분석</h2><div class="report-grid" id="tactical"></div></div>
+  <div class="panel" id="videoPanel"><h2>이 경기 영상 분석 <small class="dim">— 전사에서 뽑은 요약·핵심</small></h2>
+    <div id="videos"></div>
+    <p class="dim" style="font-size:12px;margin:8px 0 0">⚠️ 요약은 <b>유튜브 자동 생성 자막(전사)을 읽고</b> 쓴 것이다(영상 미시청) —
+      인물명·수치는 실측과 교차검증이 필요하다(전사 오인식 대조표: docs/30). 인용은 원문+번역 병기.
+      <b>관찰 기록</b> 칩은 그 영상이 근거로 인용된 <code>observations</code> 원문이다.</p></div>
   <div class="panel"><h2>선수별 히트맵·역할·전체 스탯</h2><div id="players" class="player-report-list"></div></div>
   <div class="panel"><details class="report-source"><summary>전체 분석 원문·레퍼런스 펼치기</summary>
     <div id="sourceMeta"></div><pre id="markdown"></pre></details></div>
@@ -34,6 +39,9 @@ import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-sel
 import { prose } from './assets/prose.js';
 
 const { team } = await mountHeader('match-report.html');
+/* 영상 인덱스 — match_videos export(2026-09-15). 없으면 패널을 숨긴다(구버전 데이터 호환). */
+const VID = await fetch(`data/videos.json?t=${Date.now()}`, { cache: 'no-store' })
+  .then(r => r.ok ? r.json() : null).catch(() => null);
 const td = await loadTeam(team);
 /* 초안(draft)도 노출한다(2026-08-16 사용자 결정). 셀렉터·헤더·안내문에서 상태를 구분한다.
    초안은 "자료가 부족해 경기 전용 프리셋을 세우지 못한 경기"라는 뜻이다.
@@ -203,6 +211,41 @@ function renderGamePreset(r){
     <details class="report-source"><summary>이 경기 설정의 근거·한계</summary>${prose(s.rationale)}
       ${prose(s.source)}${prose(s.confidence)}</details>`;
 }
+/* ── 이 경기 영상 분석 (2026-09-15, 사용자 지시 「UTV·The Villans 주요 내용을 우리 페이지에서」) ──
+   세 층을 그대로 보여준다: 요약(사람) · 핵심 포인트(사람) · 관찰 기록(검증된 obs 원문).
+   ⛔ 요약이 없는 영상도 숨기지 않는다 — 「요약 없음」과 「내용 없음」은 다르다(메타·obs는 그대로 쓸모 있다). */
+const bold = t => t.replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
+const VKIND = { 감독회견:'hi', 전술분석:'hi', 경기반응:'', 선수스카우팅:'mid', 상대팀:'mid', 프리시즌:'mid' };
+function renderVideos(r){
+  const panel = document.getElementById('videoPanel');
+  if (!VID){ panel.hidden = true; return; }
+  const ids = new Set(VID.by_report?.[String(r.report_id ?? r.id)] ?? []);
+  const rows = VID.all.filter(v => ids.has(v.id));
+  panel.hidden = false;
+  if (!rows.length){
+    document.getElementById('videos').innerHTML =
+      '<p class="dim">이 경기에 귀속된 전사가 아직 없습니다 — 전사는 있으나 상대팀·날짜로 경기를 특정하지 못한 건일 수 있습니다(<code>scripts/index_transcripts.py</code>).</p>';
+    return;
+  }
+  const withSummary = rows.filter(v => v.summary).length;
+  document.getElementById('videos').innerHTML =
+    `<div class="kv" style="margin-bottom:8px"><b>${rows.length}편</b>
+       <small class="dim">— 요약 작성 ${withSummary} · 미작성 ${rows.length - withSummary}</small></div>`
+    + rows.map(v => `<article class="vidcard">
+      <header>
+        <span class="badge ${VKIND[v.kind] ?? ''}">${esc(v.kind ?? '미분류')}</span>
+        <b>${esc(v.channel)}</b>
+        <span class="dim">${esc(v.published ?? '게시일 미기재')}${v.published_approx ? '경' : ''}</span>
+        <a href="${esc(v.url)}" target="_blank" rel="noopener">유튜브 ↗</a>
+      </header>
+      <div class="vidtitle">${esc(v.title ?? '(제목 미기재)')}</div>
+      ${v.summary ? `<div class="vidsum">${prose(v.summary)}</div>` : ''}
+      ${v.key_points.length ? `<ul class="vidpoints">${v.key_points.map(x => `<li>${annotate(bold(esc(x)))}</li>`).join('')}</ul>` : ''}
+      ${v.obs_points.length ? `<details class="refs"><summary>관찰 기록 ${v.obs_points.length}건 — 이 영상이 근거로 인용된 원장</summary>
+        ${v.obs_points.map(o => `<div class="kv" style="margin-top:6px"><b>obs#${o.id}</b> <span class="dim">${esc(o.scope)}</span></div>${prose(o.claim)}`).join('')}</details>` : ''}
+      ${!v.summary ? `<p class="dim" style="font-size:12px;margin:6px 0 0">⏰ 요약 미작성 — 전사는 확보돼 있다(<code>${esc(v.transcript_path)}</code>).</p>` : ''}
+    </article>`).join('');
+}
 function render(r){
   document.getElementById('summary').innerHTML=`<div class="match-report-head"><div><h2>${esc(r.title)}</h2>
     <p class="kv">${esc(r.date||r.report_date)} · ${esc(r.competition)} · ${esc(r.stage||'')} · ${esc(r.venue)} ·
@@ -223,6 +266,7 @@ function render(r){
   oa.hidden=!r.overall_assessment;
   if (r.overall_assessment) oa.innerHTML=`<h2>경기 총평·매체 평가 <small class="dim">전술·선수 분석과 별개의 전반적 평가</small></h2>${prose(r.overall_assessment)}`;
   renderGamePreset(r);
+  renderVideos(r);
   document.getElementById('tactical').innerHTML=`
     <section><h3>전술 설명</h3>${prose(r.tactical_description)}</section>
     <section><h3>전술적 특성</h3>${prose(r.tactical_features)}</section>
