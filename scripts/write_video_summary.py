@@ -62,8 +62,18 @@ def resolve_player(con, name):
                      f"player_id를 직접 지정하라: {[dict(r) for r in rows]}")
 
 
-def insert_claims(con, vid, claims, pulled):
-    """구현 주장 적재. 재실행 안전 — 같은 영상의 기존 주장을 지우고 다시 넣는다(주장은 원장이 아니다)."""
+def insert_claims(con, vid, claims, pulled, force=False):
+    """구현 주장 적재.
+
+    ⛔⛔ **사람이 손으로 고친 verdict를 덮지 않는다**(2026-09-15, 할 일 18 — `refresh_duty_applied.py` 사고와 같은 부류).
+       종전에는 영상별로 **DELETE + 재삽입**이라, 사람이 `verdict`를 `PENDING`→`APPLIED`로 고친 뒤
+       같은 JSON을 다시 돌리면 **그 판정이 조용히 날아갔다**.
+       ⇒ 이제 **기존 주장이 있으면 건너뛴다**. 갱신이 필요하면 `--force-claims`로 명시한다.
+    """
+    existing = con.execute(
+        "SELECT COUNT(*) FROM video_impl_claims WHERE video_id=?", (vid,)).fetchone()[0]
+    if existing and not force:
+        return -existing          # 음수 = 보존된 행 수(호출부가 구분한다)
     con.execute("DELETE FROM video_impl_claims WHERE video_id=?", (vid,))
     for c in claims:
         axis = c.get("axis")
@@ -95,6 +105,8 @@ def main():
     ap.add_argument("--force", action="store_true", help="기존 요약도 덮어쓴다")
     ap.add_argument("--claims-only", action="store_true",
                     help="요약은 건드리지 않고 impl_claims만 적재(기존 요약 101편 백필용)")
+    ap.add_argument("--force-claims", action="store_true",
+                    help="⛔ 기존 구현 주장을 지우고 다시 넣는다 — **사람이 고친 verdict가 날아간다**(할 일 18)")
     a = ap.parse_args()
 
     data = json.loads(Path(a.json_path).read_text(encoding="utf-8"))
@@ -103,7 +115,7 @@ def main():
     cur = con.cursor()
     cur.execute("BEGIN IMMEDIATE")
     tail = TAIL.format(d=a.pulled)
-    n, nc, skip, miss = 0, 0, [], []
+    n, nc, kept_claims, skip, miss = 0, 0, 0, [], []
     for vid, d in data.items():
         row = cur.execute(
             "SELECT id, summary, confidence FROM match_videos WHERE video_id=?", (vid,)).fetchone()
@@ -111,7 +123,11 @@ def main():
             miss.append(vid)
             continue
         if d.get("impl_claims") is not None:
-            nc += insert_claims(cur, vid, d["impl_claims"], a.pulled)
+            got = insert_claims(cur, vid, d["impl_claims"], a.pulled, a.force_claims)
+            if got < 0:
+                kept_claims += -got
+            else:
+                nc += got
         if a.claims_only:
             continue
         if row["summary"] and not a.force:
@@ -129,7 +145,8 @@ def main():
     todo = con.execute("""SELECT COUNT(*) FROM match_videos v WHERE v.summary IS NOT NULL
                           AND NOT EXISTS(SELECT 1 FROM video_impl_claims c
                                          WHERE c.video_id=v.video_id)""").fetchone()[0]
-    print(f"적재 요약 {n}편 · 구현 주장 {nc}행 · 기존 보존 {len(skip)} · 미등록 {miss or 0}")
+    print(f"적재 요약 {n}편 · 구현 주장 {nc}행 · 기존 요약 보존 {len(skip)} · "
+          f"⭐ **기존 주장 보존 {kept_claims}행**(--force-claims로 덮어쓴다) · 미등록 {miss or 0}")
     print(f"진행률 요약 {done}/{tot}편 ({done / tot:.0%}) · ⭐ **claims 미작성 {todo}편**(G17이 건수로 보고)")
 
 

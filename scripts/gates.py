@@ -947,6 +947,51 @@ def run(db_path=None, verbose=True):
     if not ok17:
         fails.append("G17")
 
+    # G18 — `measured` 집계가 규칙대로 만들어졌는지. 2026-09-15 신설(할 일 22, obs#772·773).
+    #       계기: 헤밍스 #470이 스스로 「포지션-순수(LM) 6경기」라 적고도 `pos_class=LDM` 경기를 포함했다.
+    #       ⛔ 여기서 막는 것은 **규칙 위반**이지 오염 여부가 아니다 — 오염이 전부 결함은 아니기 때문이다
+    #          (슬롯 어휘 차이 `RDM`↔`RCM` · false9가 CAM으로 분류되는 현상 · 진짜 위치 불일치가 섞여 있다).
+    #          ⇒ 사람이 판정을 끝낸 행은 rationale에 **`[표본판정`** 표식을 남기고, 게이트는 그것을 존중한다.
+    #       ⛔⛔ **친선·대표팀을 제외한다** — `core.aggregate`는 대회를 거르지 않고 호출부가 걸어야 하는데,
+    #          지금까지는 친선의 `pos_class`가 대부분 NULL이라 **우연히** 빠지고 있었다(obs#773).
+    G18_EX = ("Club Friendly", "Club Friendly Games", "FIFA World Cup", "UEFA Youth League")
+    G18_OK = {"GK": ("GK",), "LB": ("LB",), "RB": ("RB",), "LCB": ("LCB",), "RCB": ("RCB",),
+              "CCB": ("CCB", "CB"), "LDM": ("LDM",), "RDM": ("RDM",), "CDM": ("CDM",),
+              "LCM": ("LCM",), "RCM": ("RCM",), "CAM": ("CAM",),
+              "LM": ("LM", "LAM"), "RM": ("RM", "RAM"), "ST": ("ST",), "LST": ("LST",),
+              "RST": ("RST",), "LAM": ("LAM",), "RAM": ("RAM",), "LW": ("LW",), "RW": ("RW",),
+              "CM": ("CM",)}
+    comp_sql = "competition NOT IN (%s)" % ",".join("?" * len(G18_EX))
+    g18_bad, g18_thin, g18_done, g18_unk = [], [], 0, []
+    # ⛔ `player_aggregate`는 모듈 최상단에서 이미 임포트돼 있다(G4가 쓴다) — 지역 임포트로 가리지 말 것.
+    rows18 = [dict(zip(("id", "player_id", "pos_label", "map25", "rationale"), x)) for x in con.execute(
+        "SELECT id, player_id, pos_label, map25, rationale FROM prescriptions "
+        "WHERE kind='measured' AND map25 IS NOT NULL AND season='2026-27'").fetchall()]
+    for r18 in rows18:
+        adj = "[표본판정" in (r18["rationale"] or "")
+        allow = G18_OK.get((r18["pos_label"] or "").strip())
+        if not allow:
+            (g18_unk if not adj else []).append(r18["id"])
+            continue
+        ph18 = ",".join("?" * len(allow))
+        agg18 = player_aggregate(
+            r18["player_id"],
+            where=f"season='2026-27' AND minutes>=45 AND {comp_sql} AND pos_class IN ({ph18})",
+            params=(*G18_EX, *allow))
+        if adj:
+            g18_done += 1
+        elif not agg18:
+            g18_thin.append(r18["id"])
+        elif agg18["map25"] != r18["map25"]:
+            g18_bad.append(r18["id"])
+    ok18 = not (g18_bad or g18_thin or g18_unk)
+    if verbose:
+        detail = f"❌ 재집계 불일치 {g18_bad} · 표본미달 {g18_thin} · pos_label어휘밖 {g18_unk}"
+        print(f"G18 표본 집계 정합: 재집계 불일치 {len(g18_bad)} · 표본미달 {len(g18_thin)} · "
+              f"pos_label어휘밖 {len(g18_unk)} · (⊘사람판정 완료 {g18_done}행) {'✅' if ok18 else detail}")
+    if not ok18:
+        fails.append("G18")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")
