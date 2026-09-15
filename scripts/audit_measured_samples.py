@@ -41,6 +41,13 @@ OK = {"GK": ("GK",), "LB": ("LB",), "RB": ("RB",), "LCB": ("LCB",), "RCB": ("RCB
 #    — pos_label이 우리 슬롯이거나(RDM↔RCM), pos_class 자체가 현상인 경우(false9→CAM) —
 #    판정이 끝난 행을 계속 ⛔로 띄우면 **영구 오탐**이 되어 게이트로 못 올린다.
 ADJUDICATED = "[표본판정"
+
+# ⛔⛔ **클럽 공식전만 집계에 넣는다**(docs/30 obs#126 「친선경기는 실측을 주지 않는다」).
+#    2026-09-15 실증: `core.aggregate`는 대회를 거르지 않고 **호출부가 걸러야 하는데**,
+#    지금까지는 친선 경기의 `pos_class`가 대부분 NULL이라 **우연히** 빠지고 있었다.
+#    그 NULL을 백필하는 순간 친선이 집계에 들어온다 ⇒ **명시 필터가 필수다.**
+EXCLUDE_COMP = ("Club Friendly", "Club Friendly Games", "FIFA World Cup", "UEFA Youth League")
+COMP_SQL = "competition NOT IN (%s)" % ",".join("?" * len(EXCLUDE_COMP))
 USED = "사용 경기"      # 재집계가 남기는 「사용 경기 N건(...): 날짜…」 목록의 표식
 DATE = re.compile(r"(20\d\d-\d\d-\d\d)\(")
 SEG = re.compile(r"\[20\d\d-\d\d-\d\d[^\]]*\]")
@@ -100,8 +107,8 @@ def audit_reproduce(con, season):
             continue
         ph = ",".join("?" * len(allow))
         agg = player_aggregate(r["player_id"],
-                               where=f"season=? AND minutes>=45 AND pos_class IN ({ph})",
-                               params=(season, *allow))
+                               where=f"season=? AND minutes>=45 AND {COMP_SQL} AND pos_class IN ({ph})",
+                               params=(season, *EXCLUDE_COMP, *allow))
         row = (r["id"], name(con, r["player_id"]), r["pos_label"], r["sample_n"], r["minutes"])
         adj = ADJUDICATED in (r["rationale"] or "")
         if not agg:
