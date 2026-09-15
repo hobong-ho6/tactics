@@ -38364,6 +38364,25 @@
    "y": 64.54
   },
   {
+   "avg_rating": 6.48,
+   "fit_sim": 0.7431,
+   "focus": "Attack",
+   "game_version": "FC26",
+   "grid_club": null,
+   "kind": "measured:ST",
+   "label": "루크만",
+   "map25": "692106X630943100613010000",
+   "player_id": 158,
+   "pos_label": "ST",
+   "rationale": "[2026-09-15 할 일 24 · 다중 포지션 2번째 축 신설] **루크만는 한 축만으로 설명되지 않는다** — 기존 축은 #475 LM(공식전 순수 2경기 124분)인데 **`pos_class=ST` 공식전 순수 2경기(166분)**가 별도로 존재한다. ⭐ 한 행에 섞으면 「뭉개진 그리드」가 된다(core/aggregate docstring) ⇒ **축을 나눈다**. ⛔ `kind='measured'`는 (player,regime,season,gv,kind) UNIQUE라 기존 관례대로 **`measured:ST` 접미**를 쓴다. `core.aggregate`(공식전·45분+·hp15+ · pos_class=ST) → 평점 6.48 · 툴 중심 (31.21, 64.3). `best_fit_slot(regime 4, ST)` = **`st_false9/Attack` 0.7431**. ⭐ **사용 경기 2건**: 2026-08-19(Malaga, LaLiga, 90분) · 2026-09-13(Real Sociedad, LaLiga, 76분). ⚠️ **표본이 규약 하한(2경기)이다** — 증가 시 재산출. [표본판정 2026-09-15] 신설과 동시 종결.",
+   "role_id": "st_false9",
+   "sample_n": 2,
+   "season": "2026-27",
+   "starter": 0,
+   "x": 37,
+   "y": null
+  },
+  {
    "avg_rating": 6.77,
    "fit_sim": 0.699,
    "focus": "Build-Up",

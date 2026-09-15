@@ -962,7 +962,7 @@ def run(db_path=None, verbose=True):
               "RST": ("RST",), "LAM": ("LAM",), "RAM": ("RAM",), "LW": ("LW",), "RW": ("RW",),
               "CM": ("CM",)}
     comp_sql = "competition NOT IN (%s)" % ",".join("?" * len(G18_EX))
-    g18_bad, g18_thin, g18_done, g18_unk = [], [], 0, []
+    g18_bad, g18_thin, g18_done, g18_unk, g18_masked = [], [], 0, [], []
     # ⛔ `player_aggregate`는 모듈 최상단에서 이미 임포트돼 있다(G4가 쓴다) — 지역 임포트로 가리지 말 것.
     rows18 = [dict(zip(("id", "player_id", "pos_label", "map25", "rationale"), x)) for x in con.execute(
         "SELECT id, player_id, pos_label, map25, rationale FROM prescriptions "
@@ -980,6 +980,18 @@ def run(db_path=None, verbose=True):
             params=(*G18_EX, *allow))
         if adj:
             g18_done += 1
+            # ⭐⭐ **표식이 「친선 혼입」을 가리지 않게 한다**(2026-09-15 실증 — obs#783).
+            #    `[표본판정` 표식은 **공식전 필터가 생기기 전에** 붙었고, 그 뒤 재집계 때
+            #    G18이 표식 행을 건너뛰어 **5행의 친선 혼입이 검사되지 않았다**.
+            #    ⇒ 표식 행도 **「친선 포함으로는 재현되는데 공식전만으로는 안 되는」 경우**를 따로 센다.
+            #    ⛔ 실패로 세지 않는다(어휘 불일치·혼합 유지가 정당한 통과라서) — **건수로 보고**한다.
+            agg_all = player_aggregate(
+                r18["player_id"],
+                where=f"season='2026-27' AND minutes>=45 AND pos_class IN ({ph18})",
+                params=allow)
+            if agg_all and agg_all["map25"] == r18["map25"] and (
+                    not agg18 or agg18["map25"] != r18["map25"]):
+                g18_masked.append(r18["id"])
         elif not agg18:
             g18_thin.append(r18["id"])
         elif agg18["map25"] != r18["map25"]:
@@ -988,7 +1000,9 @@ def run(db_path=None, verbose=True):
     if verbose:
         detail = f"❌ 재집계 불일치 {g18_bad} · 표본미달 {g18_thin} · pos_label어휘밖 {g18_unk}"
         print(f"G18 표본 집계 정합: 재집계 불일치 {len(g18_bad)} · 표본미달 {len(g18_thin)} · "
-              f"pos_label어휘밖 {len(g18_unk)} · (⊘사람판정 완료 {g18_done}행) {'✅' if ok18 else detail}")
+              f"pos_label어휘밖 {len(g18_unk)} · (⊘사람판정 {g18_done}행 · "
+              f"⚠️친선의존 {len(g18_masked)}{('건 ' + str(g18_masked)) if g18_masked else '건'}) "
+              f"{'✅' if ok18 else detail}")
     if not ok18:
         fails.append("G18")
 
