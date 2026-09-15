@@ -1,6 +1,75 @@
 {
  "all": [
   {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "LOW(이 경기 축) — 범위 밖이나 **커버리지 전수 확인**의 근거로 유효.",
+   "id": 158,
+   "impl_claims": [],
+   "key_points": [
+    "포레스트전 전용 신규 내용 0건",
+    "1874의 포레스트전 산출물이 3편임을 진행자가 직접 확인 — 우리 보유분과 일치(커버리지 누락 없음)",
+    "맥긴 90분 연속(브뤼헤·포레스트) 부하 언급"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-15",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "1874의 **코번트리 프리뷰**. ⛔ 포레스트전 전용 분석 아님. 진행자가 「포레스트전 이후 매치 리액션·정규쇼·5 Things 디브리프를 냈다」고 직접 열거하는데, 그 3편이 **우리가 D+1·D+2에 이미 전사한 HtPgFuvPe6Q·Qjz3WMsRFAM·TEWTwrP1aAI와 정확히 일치**한다 ⇒ 1874 축 커버리지 전수 확인.",
+   "team_code": "AVL",
+   "title": "Coventry City v Aston Villa Preview | How Seriously Will Emery Take the Carabao Cup?",
+   "transcript_path": "reports/transcripts/2o8o5LchYiE.en.md",
+   "url": "https://www.youtube.com/watch?v=2o8o5LchYiE",
+   "video_id": "2o8o5LchYiE"
+  },
+  {
+   "channel": "The Villans",
+   "confidence": "LOW(이 경기 축) — 범위 밖. 스쿼드 축 자료로만 유효.",
+   "id": 157,
+   "impl_claims": [],
+   "key_points": [
+    "코번트리전 로테이션·하우드-벨리스 선발 논의가 본문의 전부",
+    "포레스트전 관련은 만잠비→음바예 연결 1건(기존 obs#642와 중복)"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-15",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "The Villans의 **코번트리 카라바오컵 프리뷰**(로테이션 선발 예상). ⛔ 포레스트전 전용 분석 아님 — D+3 추적 대상 밖으로 판정하고 기록만 남긴다. 포레스트전 언급은 「만잠비→음바예 스루볼이 매우 매끄러웠다」 1건뿐으로 obs#642와 동일 취지.",
+   "team_code": "AVL",
+   "title": "Emery Must UNLEASH His New Players, Harwood-Bellis To Start & Another Midland Club Hates Villa.",
+   "transcript_path": "reports/transcripts/5yb2xJsv8_U.en.md",
+   "url": "https://www.youtube.com/watch?v=5yb2xJsv8_U",
+   "video_id": "5yb2xJsv8_U"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM — 3티어 팬 채널·auto-caption. 가치는 obs#711 기제를 독립 재지목한 데 있다.",
+   "id": 156,
+   "impl_claims": [],
+   "key_points": [
+    "바클리는 온더볼 유지형이지 지면 커버형이 아니다 (「that's not Barkley」)",
+    "선제골 국면에서 바클리가 위치를 벗어나 달려들었다고 지목",
+    "「you needed that midfield against Forest to be super combative」 — 이 상대에 요구되던 피벗 자질",
+    "대안으로 보가르드(위치 유지형) + 카마라를 8번으로 올리는 구성을 제시"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-15",
+   "published_approx": 0,
+   "report_id": 39,
+   "summary": "UTV의 코번트리(카라바오컵) 선발 예상 방송이나, [12:58]~[14:03]에 **포레스트전 피벗 인선에 대한 사후 평가**가 들어 있다. ⭐ 글라스너의 워튼→틸레만스 점프 기제를 UTV 전술 디브리프(lKvqWRiKwLM)와 **독립적으로 다시 지목**하고, 그 상대에 바클리를 세운 선택 자체를 문제 삼는다. 「Barkley got done for that Delap goal because he dived in out of position」.",
+   "team_code": "AVL",
+   "title": "WILL UNAI EMERY PLAY VILLA 2.0?",
+   "transcript_path": "reports/transcripts/bZDlOHhRLug.en.md",
+   "url": "https://www.youtube.com/watch?v=bZDlOHhRLug",
+   "video_id": "bZDlOHhRLug"
+  },
+  {
    "channel": "UTV | Aston Villa Fan Channel",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 153,
@@ -268,7 +337,7 @@
    "obs_points": [],
    "published": "2026-09-12",
    "published_approx": 0,
-   "report_id": null,
+   "report_id": 39,
    "summary": "UTV의 **AVL 1-2 포레스트 경기 직후 반응**(2026-09-12, 현장 관전). ⭐⭐ 가장 값진 관찰은 **「위험을 잘못된 곳에서 감수한다」**는 구조적 지적이다 — **파이널 서드에서는 아무도 리스크를 지지 않는데, 자기 박스 앞·중앙 좁은 공간에서는 리스크를 진다**. ⭐ 그리고 **마첸의 좌측 고립**(맥긴이 더블링을 안 온다)을 후반 붕괴의 원인으로 지목한다.",
    "team_code": "AVL",
    "title": "CONCERING SECOND HALF!",
@@ -5696,8 +5765,10 @@
    88
   ],
   "39": [
+   156,
    147,
    131,
+   138,
    127,
    136,
    96,
