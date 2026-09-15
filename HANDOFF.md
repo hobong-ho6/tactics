@@ -2,10 +2,8 @@
 
 ## 프로젝트
 
-- 실제 감독 전술을 실측으로 분해해 FC26 전술로 재현한다.
-- 대상: Aston Villa/Unai Emery(주), Chelsea/Xabi Alonso, Liverpool/Andoni Iraola, Atlético/Diego Simeone.
-- 저장소: `/Users/ad03230205/Documents/tactics`, 브랜치 `main`. DB 정본 `db/tactics.db`
-  (`db/dump/`·`site/data/`는 파생물).
+- 실제 감독 전술을 실측으로 분해해 FC26 전술로 재현한다. 대상: **AVL/에메리(주) · CHE/알론소 · LIV/이라올라 · ATM/시메오네**.
+- 저장소 `/Users/ad03230205/Documents/tactics` · `main` · DB 정본 `db/tactics.db`(`db/dump/`·`site/data/`는 파생물).
 - 규약 정본: `CLAUDE.md`, `docs/00-overview.md`. 런북: `.claude/skills/{transfer-watch,match-watch,player-collect}/SKILL.md`.
 
 ## 현재 상태
