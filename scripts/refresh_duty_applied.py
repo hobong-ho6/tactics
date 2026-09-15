@@ -124,7 +124,55 @@ def main():
     held = con.execute("""SELECT applied_status, COUNT(*) FROM player_duties
                           WHERE applied_status NOT IN (%s) GROUP BY 1""" % ",".join("?" * len(AUTO)), AUTO).fetchall()
     print("사람 판정(건드리지 않음):", {r[0]: r[1] for r in held})
-    print("다음: python3 scripts/gates.py && python3 scripts/export.py && scripts/db_dump.sh")
+
+    # ⭐⭐ **재판정 조건 충족 후보 보고**(2026-09-15 신설 — 할 일 34, obs#785).
+    #    왜: HELD 34행이 「재판정 조건: 역할 자체를 다투는 새 근거(역할 코드 명시 분석 또는 커널 Δ)」를
+    #    걸어놨는데, 그 뒤 처방이 대거 바뀌었음에도 **아무도 조건을 확인하지 않아 5행이 방치돼 있었다.**
+    #    ⛔ 판정 시점을 `applied_note`의 날짜로 파싱하는 방식은 취하지 않는다 — 표기가 흔들리고
+    #       「처방이 바뀌었는지」를 날짜로 알 수 없다. 대신 **지금 대조를 다시 해서 사람 판정과 어긋나는 상태**를 센다.
+    #    ⇒ 이번 재검증에서 실제로 나온 3부류와 정확히 대응한다.
+    # ⭐ 무효화된 측정 행을 가진 선수 — map25는 있는데 role_id가 비워진 행(obs#770·783 패턴).
+    #    「기존 처방을 그대로 둔다」로 HELD한 근거가 사라진 경우를 잡는다.
+    voided = {r[0] for r in con.execute(
+        "SELECT DISTINCT player_id FROM prescriptions "
+        "WHERE map25 IS NOT NULL AND role_id IS NULL AND season='2026-27'")}
+    review = {"닿았을 수 있다": [], "다시 갈렸다": [], "근거가 무효화됐다": []}
+    for d in con.execute("""SELECT id, player_id, game_role_implication imp, applied_status,
+                                   applied_note,
+                                   (SELECT COALESCE(name_kr, name) FROM players WHERE id=player_id) nm
+                            FROM player_duties
+                            WHERE applied_status NOT IN (%s)""" % ",".join("?" * len(AUTO)), AUTO):
+        mine = have.get(d["player_id"], set())
+        note = d["applied_note"] or ""
+        # ⛔ **「처방이 아예 없다」는 후보가 아니다** — 사라진 게 아니라 애초에 없는 선수다
+        #    (obs#748이 수집 불가로 종결한 ATM 3명 · 유스 선수들). 자동 판정이라면 `NO_RX`에 해당하고
+        #    **상태가 변한 것이 아니라서** 회차마다 떠도 할 일이 되지 않는다. ⇒ 세지 않는다.
+        # ⭐ **측정 행이 무효화된 경우만 잡는다**(map25는 있는데 role이 비었다 — obs#770·783 패턴):
+        #    「기존 처방을 그대로 둔다」로 HELD한 **근거 자체가 사라진** 상태다.
+        #    ⛔ 사람이 이미 사유에 「무효화」를 적었으면 확인이 끝난 것이므로 억제한다 —
+        #       그렇지 않으면 회차마다 같은 4행이 떠서 신호가 죽는다.
+        if (d["player_id"] in voided and d["applied_status"] in ("HELD", "APPLIED")
+                and "무효화" not in note):
+            review["근거가 무효화됐다"].append((d["id"], d["nm"], d["applied_status"]))
+        found = {x for x in roles if x in (d["imp"] or "")}
+        if not found or not mine:
+            continue                      # 역할 코드가 없으면 층 판단이라 역할 대조로는 재검증할 수 없다
+        hit = {x for x in found if canon(x) in {canon(y) for y in mine}}
+        if hit and d["applied_status"] in ("HELD", "REJECTED"):
+            review["닿았을 수 있다"].append((d["id"], d["nm"], d["applied_status"], sorted(hit)))
+        elif not hit and d["applied_status"] == "APPLIED":
+            review["다시 갈렸다"].append((d["id"], d["nm"], sorted(found), sorted(mine)))
+    tot = sum(len(v) for v in review.values())
+    print(f"\n⏰ **재판정 조건 충족 후보 {tot}건** (⛔ 사람 판정은 자동으로 바꾸지 않는다 — 보고만)")
+    for k, lst in review.items():
+        if not lst:
+            continue
+        print(f"  [{k}] {len(lst)}건")
+        for row in lst:
+            print("     " + " · ".join(str(x) for x in row))
+    if not tot:
+        print("  (없음 — 사람 판정이 현재 처방과 정합한다)")
+    print("\n다음: python3 scripts/gates.py && python3 scripts/export.py && scripts/db_dump.sh")
 
 
 if __name__ == "__main__":
