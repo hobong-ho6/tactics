@@ -15,9 +15,12 @@
    ⇒ 이제 **상태가 실제로 바뀔 때만 사유를 다시 쓴다**(`--force-note`로 강제 가능).
    ⭐ 부류: **「자동 재계산」 스크립트는 자기가 쓴 필드에 사람 손이 섞였는지 먼저 물어야 한다.**
 
-⭐ **슬롯 계열(`w_` 윙 ↔ `wm_` 와이드 미드)은 같은 역할로 본다** (09-15 정정).
-   둘은 **역할이 아니라 슬롯이 다른 것**이고 슬롯은 `slots` 표가 정한다 —
-   바르콜라 `w_wideplm`(LW 분석) ↔ 우리 `wm_wideplm`(LM 슬롯)을 충돌로 세면 오탐이다.
+⭐⭐ **슬롯 접두가 다른 같은 역할을 충돌로 세지 않는다** (09-15 정정 → 09-15 확장).
+   역할은 `slots` 표가 정하는 슬롯과 별개 축이다 — 바르콜라 `w_wideplm`(LW 분석) ↔
+   우리 `wm_wideplm`(LM 슬롯)을 충돌로 세면 오탐이다(obs#743).
+   ⛔ 그런데 그 정정이 **`w_`/`wm_` 한 쌍만** 고쳤다. 전수 확인하니 어간 **7개**가 여러 접두에 걸쳐 있고
+   `dlp`·`holding`(cm/dm) · `halfwinger`·`playmaker`(cam/cm) **4쌍이 오탐으로 남아 있었다**(obs#785).
+   ⇒ 이제 `canon()`이 **접두를 전부 뗀다**.
 
 사용:
     .venv/bin/python scripts/refresh_duty_applied.py --dry-run
@@ -37,9 +40,22 @@ from core import DB                                     # noqa: E402
 AUTO = ("MATCH", "CONFLICT", "NO_RX", "PROSE")
 
 
+# 슬롯 접두 정본 — `game_roles.role_id`의 접두는 이 9종이다(2026-09-15 전수 확인).
+SLOT_PREFIX = re.compile(r"^(cam|cb|cm|dm|fb|gk|st|wm|w)_")
+
+
 def canon(role):
-    """슬롯 계열을 지우고 역할 어간만 남긴다 — `w_wideplm`·`wm_wideplm` → `wide_wideplm`."""
-    return re.sub(r"^wm?_", "wide_", role or "")
+    """**슬롯 접두를 떼고 역할 어간만 남긴다** — 같은 역할이 슬롯마다 다른 접두를 갖기 때문이다.
+
+    ⭐ 2026-09-15 확장(obs#785). obs#743은 `w_`/`wm_` 한 쌍만 고쳤는데,
+    전수 확인 결과 **어간 7개가 여러 접두에 걸쳐 있었다**:
+      `dlp`(cm/dm) · `holding`(cm/dm) · `halfwinger`(cam/cm) · `playmaker`(cam/cm) ·
+      `insidefwd`·`wideplm`·`winger`(w/wm).
+    ⇒ 나머지 4쌍(cm/dm · cam/cm)이 **오탐으로 남아 있었다** — 소보슬라이 `#195`가 실증
+    (분석 `cm_halfwinger` ↔ 보유 `cam_halfwinger`를 불일치로 셌다).
+    ⛔ 접두를 전부 떼도 **어간 충돌은 없다**(위 7개만 중복이고 전부 인접 슬롯군이다).
+    """
+    return SLOT_PREFIX.sub("", role or "")
 
 
 def main():
@@ -60,7 +76,7 @@ def main():
         for r in con.execute(q):
             have[r["player_id"]].add(r[c])
 
-    note0 = f"[{a.pulled} 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄)."
+    note0 = f"[{a.pulled} 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 접두가 다른 같은 역할은 동일하게 봄 — canon()이 접두를 뗀다)."
     changed, kept, counts = [], [], defaultdict(int)
     for d in con.execute("""SELECT id, player_id, game_role_implication imp, applied_status, applied_note
                             FROM player_duties
