@@ -73,6 +73,22 @@ description: 시즌 중 정기 경기 수집 — 3팀(AVL·CHE·LIV)의 선수 �
   남은 `CONFLICT`를 **그 회차에 판정한다**(`APPLIED`/`HELD`/`REJECTED` + 사유).
   ⛔ `HELD`는 **재판정 조건**을 반드시 적는다 — 조건 없는 유지는 사실상 방치다.
   판정 기준 5단계(스쿼드 밖 → 층 → 표본 → 기하 → 커널 Δ)는 docs/30 「영상·서사 소스 절차」 6단계가 정본.
+- ⭐⭐⭐ **요약을 쓴 영상은 같은 회차에 「구현 주장」까지 행으로 남긴다**
+  (2026-09-15 신설, 사용자 승인 「요약 규약도 바꿔줘」. 정본 docs/30 **8단계** · **G17이 막는다**):
+  ```bash
+  .venv/bin/python scripts/write_video_summary.py /tmp/batch.json   # summary+key_points+impl_claims 동시
+  ```
+  JSON에 `impl_claims`를 넣는다 — `axis`(role/focus/team_axis/instruction/limit/**none**) ·
+  대상(`player`/`team_code` + `role_id`·`focus`·`field`·`value`) · `quote`(원문+번역) ·
+  `verdict`(APPLIED/HELD/REJECTED/PENDING/NA) · `verdict_note`.
+  ⛔ **주장이 없는 영상도 `{"axis":"none"}` 한 행을 넣는다** — 안 넣으면 「주장 없음」과 「미작성」이 구분되지 않는다.
+  ⛔ `role_id`·`focus`는 **우리 어휘만**(G17이 `game_roles`·`game_role_focus`와 대조한다).
+  ⭐ **주장을 넣기 전에 docs/30 7단계 「축별 결정권 표」를 먼저 본다** — Δ>.05 구간의 역할 주장은
+  넣자마자 `REJECTED`가 되고(실측 우선 구간), **Δ≤.05 구간에서는 영상이 tie-break 권한을 갖는다**.
+  압박·마킹·국면전환·**팀 설정 3축**은 실측이 값을 갖지 않으므로 **영상이 1차 소스**다.
+- ⭐⭐ **Δ≤.05는 「실측 무결정」으로 명시한다**(2026-09-15 신설, obs#763. 처방 184행 중 **46%가 이 구간**):
+  커널 1·2위 격차가 .05 이하면 처방 `rationale`에 **「실측 무결정 Δ0.0xx」와 2위 후보를 함께 적고**,
+  영상·회견 근거가 있으면 그것이 판정한다. ⛔ **1위를 조용히 채택하지 않는다** — EA 노이즈를 확정으로 승격시키는 것이다.
 
 ## 2-1a. ⭐⭐ 경기 후 3일 추적 — 매 경기 의무 (2026-08-23 신설, 사용자 지시)
 

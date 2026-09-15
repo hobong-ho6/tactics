@@ -695,3 +695,22 @@ CREATE TABLE match_videos(
 );
 CREATE INDEX ix_match_videos_report ON match_videos(report_id);
 CREATE INDEX ix_match_videos_team ON match_videos(team_code, published);
+CREATE TABLE video_impl_claims(
+  id INTEGER PRIMARY KEY,
+  video_id TEXT NOT NULL,           -- match_videos.video_id (lang은 묶지 않는다 — 주장은 언어와 무관)
+  axis TEXT NOT NULL,               -- role / focus / team_axis / instruction / limit / none
+  player_id INTEGER REFERENCES players(id),
+  team_code TEXT REFERENCES teams(code),
+  role_id TEXT,                     -- 우리 역할 어휘(kernel role_group의 키) — ⛔ 자유 문자열 금지
+  focus TEXT,                       -- Attack / Support / Balanced / Build-Up / Roaming / Ball-Winning / Aggressive …
+  field TEXT,                       -- team_axis·instruction·limit에서 무엇을 건드리는가
+  value TEXT,                       -- 그 필드의 주장값
+  quote TEXT,                       -- ⭐ 전사 원문 인용(불변규칙 11 — 한국어 번역 병기)
+  verdict TEXT NOT NULL,            -- APPLIED / HELD / REJECTED / PENDING / NA
+  verdict_note TEXT,                -- ⛔ HELD·REJECTED는 사유·재판정 조건 필수(G17)
+  source TEXT, confidence TEXT,
+  added TEXT NOT NULL DEFAULT (date('now'))
+);
+CREATE INDEX ix_vic_video ON video_impl_claims(video_id);
+CREATE INDEX ix_vic_axis ON video_impl_claims(axis, verdict);
+CREATE INDEX ix_vic_player ON video_impl_claims(player_id);

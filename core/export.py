@@ -118,6 +118,16 @@ def export_all(db_path=None, window="2026-summer"):
     # ⭐ 세 층을 그대로 내보낸다: 메타(파싱) · obs_points(검증된 판정) · summary/key_points(사람 요약).
     #    `by_report`는 경기 화면이, `all`은 채널 브라우징이 쓴다.
     obs_by_id = {r["id"]: r for r in _rows(con, """SELECT id, claim, scope, confidence FROM observations""")}
+    # ⭐ 네 번째 층 — 구현 주장(migration 033, docs/30 8단계). 요약이 「구현의 무엇을 건드리는가」를
+    #    정형 행으로 갖는다. 화면은 이걸로 배지를 그린다(자유 서술에서 추출하지 않는다).
+    claims_by_vid = {}
+    for c in _rows(con, """SELECT c.video_id, c.axis, c.role_id, c.focus, c.field, c.value,
+                                  c.verdict, c.verdict_note, c.quote, c.team_code,
+                                  COALESCE(p.name_kr, p.name) AS player
+                           FROM video_impl_claims c
+                           LEFT JOIN players p ON p.id = c.player_id
+                           ORDER BY c.axis, c.id"""):
+        claims_by_vid.setdefault(c.pop("video_id"), []).append(c)
     videos, by_report = [], {}
     for v in _rows(con, """SELECT id, video_id, lang, report_id, team_code, channel, title, published,
                                   published_approx, url, transcript_path, kind, summary, key_points,
@@ -129,6 +139,8 @@ def export_all(db_path=None, window="2026-summer"):
         v["obs_points"] = [{"id": i, "claim": obs_by_id[i]["claim"], "scope": obs_by_id[i]["scope"]}
                            for i in refs if i in obs_by_id]
         v["key_points"] = [x for x in (v["key_points"] or "").split("\n") if x.strip()]
+        # ⛔ 「주장 없음(none)」과 「미작성(빈 배열)」을 구분해 내보낸다 — DB에서와 같은 구분이다
+        v["impl_claims"] = claims_by_vid.get(v["video_id"], [])
         videos.append(v)
         if v["report_id"]:
             by_report.setdefault(str(v["report_id"]), []).append(v["id"])

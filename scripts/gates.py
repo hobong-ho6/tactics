@@ -890,6 +890,63 @@ def run(db_path=None, verbose=True):
     if not ok16:
         fails.append("G16")
 
+    # G17 — 영상 요약을 「구현 어휘」로 남겼는지. 2026-09-15 신설(사용자 승인 「요약 규약도 바꿔줘」,
+    #       근거 obs#762·763: 요약 101편 중 역할 코드 8편·팀 설정 3축 0편이라 기계 대조가 불가능했다).
+    #       ⛔ 여기서 막는 것은 **정합성**이다 — 어휘 이탈·판정 결손·`none`에 값이 붙은 모순.
+    #          **미작성 백로그는 실패가 아니다**(G16의 CONFLICT와 같은 취급 — 건수만 보여준다).
+    #          요약 없는 영상에 claims를 요구하지 않는다(요약이 선행 조건).
+    G17_AXIS = ("role", "focus", "team_axis", "instruction", "limit", "none")
+    G17_VERDICT = ("APPLIED", "HELD", "REJECTED", "PENDING", "NA")
+    g17_axis = con.execute("SELECT id, axis FROM video_impl_claims WHERE axis NOT IN (%s)"
+                           % ",".join("?" * len(G17_AXIS)), G17_AXIS).fetchall()
+    g17_verdict = con.execute("SELECT id, verdict FROM video_impl_claims WHERE verdict NOT IN (%s)"
+                              % ",".join("?" * len(G17_VERDICT)), G17_VERDICT).fetchall()
+    # HELD·REJECTED는 사유·재판정 조건 필수(docs/30 8단계)
+    g17_nonote = con.execute("""SELECT id FROM video_impl_claims
+                                WHERE verdict IN ('HELD','REJECTED')
+                                  AND (verdict_note IS NULL OR trim(verdict_note)='')""").fetchall()
+    # `none`은 「읽었고 주장 없음」이라 대상 칼럼이 비어 있어야 한다 — 값이 붙으면 축을 잘못 골랐다
+    g17_none_bad = con.execute("""SELECT id FROM video_impl_claims WHERE axis='none'
+                                    AND (player_id IS NOT NULL OR role_id IS NOT NULL
+                                         OR focus IS NOT NULL OR field IS NOT NULL
+                                         OR value IS NOT NULL OR verdict<>'NA')""").fetchall()
+    # 축마다 최소 대상이 있어야 한다(발명 방지의 반대편 — 빈 주장 방지)
+    g17_empty = con.execute("""SELECT id, axis FROM video_impl_claims WHERE
+                                 (axis='role'        AND (player_id IS NULL OR role_id IS NULL))
+                              OR (axis='focus'       AND (player_id IS NULL OR focus IS NULL))
+                              OR (axis='team_axis'   AND (team_code IS NULL OR field IS NULL OR value IS NULL))
+                              OR (axis='instruction' AND (field IS NULL OR value IS NULL))
+                              OR (axis='limit'       AND field IS NULL)""").fetchall()
+    # ⛔ 역할·포커스 어휘는 게임 카탈로그에서 받는다(자유 문자열 금지) — 없는 코드는 오타다
+    #    (09-15 PROSE 정리에서 `cm_regista`·`dm_anchor`처럼 우리에 없는 코드를 산문에 적은 이력이 나왔다)
+    known_roles = {r[0] for r in con.execute("SELECT DISTINCT role_id FROM game_roles")}
+    known_focus = {r[0] for r in con.execute("SELECT DISTINCT focus FROM game_role_focus")}
+    g17_role_vocab = [(i, r) for i, r in con.execute(
+        "SELECT id, role_id FROM video_impl_claims WHERE role_id IS NOT NULL") if r not in known_roles]
+    g17_role_vocab += [(i, f) for i, f in con.execute(
+        "SELECT id, focus FROM video_impl_claims WHERE focus IS NOT NULL") if f not in known_focus]
+    # 고아 video_id(match_videos에 없는 영상의 주장)
+    g17_orphan = con.execute("""SELECT c.id FROM video_impl_claims c
+                                WHERE NOT EXISTS(SELECT 1 FROM match_videos v
+                                                 WHERE v.video_id=c.video_id)""").fetchall()
+    g17_todo = con.execute("""SELECT COUNT(*) FROM match_videos v
+                              WHERE v.summary IS NOT NULL
+                                AND NOT EXISTS(SELECT 1 FROM video_impl_claims c
+                                               WHERE c.video_id=v.video_id)""").fetchone()[0]
+    g17_pending = con.execute("SELECT COUNT(*) FROM video_impl_claims WHERE verdict='PENDING'").fetchone()[0]
+    ok17 = not (g17_axis or g17_verdict or g17_nonote or g17_none_bad
+                or g17_empty or g17_role_vocab or g17_orphan)
+    if verbose:
+        detail = (f"❌ axis이탈 {len(g17_axis)} · verdict이탈 {len(g17_verdict)} · 사유결손 {len(g17_nonote)} · "
+                  f"none모순 {len(g17_none_bad)} · 빈주장 {len(g17_empty)} · 역할어휘 {len(g17_role_vocab)} · "
+                  f"고아 {len(g17_orphan)}")
+        print(f"G17 영상 구현 주장: axis이탈 {len(g17_axis)} · verdict이탈 {len(g17_verdict)} · "
+              f"사유결손 {len(g17_nonote)} · none모순 {len(g17_none_bad)} · 빈주장 {len(g17_empty)} · "
+              f"역할어휘 {len(g17_role_vocab)} · 고아 {len(g17_orphan)} · "
+              f"(claims 미작성 {g17_todo}편 · PENDING {g17_pending}건) {'✅' if ok17 else detail}")
+    if not ok17:
+        fails.append("G17")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")
