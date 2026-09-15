@@ -43,6 +43,13 @@ CHANNEL_TEAM = {
     "AVFC 공식": ("AVL", "감독회견"),
     "첼시 구단 공식": ("CHE", "감독회견"),
     "리버풀 공식": ("LIV", "감독회견"),
+    # ⚠️ 팀 전용 분석 채널 — 팀을 못 박지 않으면 **자기 팀 이름이 상대팀 힌트로 오작동한다**
+    #    (실증: 「The Liverpool FC TV」의 LIV-포레스트전 분석이 「liverpool」 힌트 때문에
+    #     ATM-리버풀전(r38)에 붙었다 — 2026-09-15 적발)
+    "The Liverpool FC TV": ("LIV", "전술분석"),
+    "Hull City Fan Central": (None, "상대팀"),
+    "Forest Fan TV": (None, "상대팀"),
+    "AFTV(아스날 팬)": (None, "상대팀"),
 }
 # 제목·메모에 나오는 상대팀 표기 → matches.opponent 매칭 키워드
 OPPONENT_HINTS = {
@@ -191,11 +198,19 @@ def main():
 
     # ⛔ summary/key_points는 UPDATE 대상에서 제외한다(사람이 쓴 층 보존)
     ins = upd = 0
+    conflicts = []
     for r in rows:
-        ex = cur.execute("SELECT id FROM match_videos WHERE video_id=? AND lang IS ?",
+        ex = cur.execute("SELECT id, report_id FROM match_videos WHERE video_id=? AND lang IS ?",
                          (r["video_id"], r["lang"])).fetchone()
         cols = [k for k in r if k not in ("video_id", "lang")]
         if ex:
+            # ⛔ `report_id`는 **채움 전용**이다 — 사람이 고친 경기 귀속을 휴리스틱이 덮으면
+            #    같은 오류가 회차마다 되살아난다(2026-09-15 The Liverpool FC TV 오귀속 수습 후 규칙화).
+            #    내 추정과 저장값이 다르면 덮지 않고 **보고**한다.
+            if ex["report_id"] is not None:
+                if r["report_id"] != ex["report_id"]:
+                    conflicts.append((r["video_id"], ex["report_id"], r["report_id"]))
+                r = {**r, "report_id": ex["report_id"]}
             cur.execute(f"UPDATE match_videos SET {', '.join(f'{c}=:{c}' for c in cols)} WHERE id=:_id",
                         {**r, "_id": ex["id"]})
             upd += 1
@@ -204,7 +219,10 @@ def main():
             cur.execute(f"INSERT INTO match_videos({','.join(keys)}) VALUES({','.join(f':{k}' for k in keys)})", r)
             ins += 1
     con.commit()
-    print(f"신규 {ins} · 갱신 {upd} (summary/key_points는 보존)")
+    print(f"신규 {ins} · 갱신 {upd} (summary/key_points·기존 report_id는 보존)")
+    if conflicts:
+        print("⚠️ 경기 귀속 추정이 저장값과 다름 — 덮지 않았다(사람이 판정): "
+              + ", ".join(f"{v}: 저장 r{a} ↔ 추정 r{b}" for v, a, b in conflicts))
     print("다음: python3 scripts/gates.py && python3 scripts/export.py && scripts/db_dump.sh")
 
 
