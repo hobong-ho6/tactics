@@ -137,25 +137,39 @@
    "id": 109,
    "impl_claims": [
     {
-     "axis": "none",
+     "axis": "role",
      "field": null,
-     "focus": null,
-     "player": null,
-     "quote": null,
-     "role_id": null,
+     "focus": "Roaming",
+     "player": "맥 알리스터",
+     "quote": "「**Gravenberch is not my number six… So going forward, Alexis Mac Allister is my number six**」(**흐라벤베르흐가 내 6번이 아니다… 앞으로 맥 알리스터가 내 6번이다**) · 「Every time Mac Allister played, **we looked like a team that could move the ball forward when we need to and then defend when we needed to**」(그가 뛸 때마다 **필요할 때 전진시키고 필요할 때 수비하는 팀으로 보였다**)",
+     "role_id": "dm_dlp",
      "team_code": null,
      "value": null,
-     "verdict": "NA",
-     "verdict_note": null
+     "verdict": "PENDING",
+     "verdict_note": "⚠️⚠️ **우리 `#491` 맥 알리스터는 role·focus·fit이 전부 NULL이다** — obs#770에서 **클럽 공식전에 2경기 이상 가진 `pos_class`가 하나도 없어**(RDM 1·LDM 1·CAM 1) 집계를 무효화했다. 그런데 **이 영상과 `BG7OGbbKmY0`(「그가 돌아가자 팀이 돌아갔다」, 48터치)가 그를 딥라잉 6번으로 지목**한다 ⇒ **서사 2소스가 실측 공백을 가리키고 있다.** ⛔ 값을 발명하지 않는다 — 처방 없음 유지. **마감 조건: PL·UCL에서 같은 `pos_class` 2경기**가 쌓이면 즉시 재산출하고 이 서사와 argmax를 대조한다(7월 대표팀 5경기는 `FIFA World Cup`이라 공식전 집계에서 제외됨, obs#773)."
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "focus": null,
+     "player": "흐라벤베르흐",
+     "quote": "「**he's not naturally a six**… **He doesn't have the awareness to play as a six**… we looked a lot more exposed」(**그는 천성적 6번이 아니다**… **6번으로 뛸 인지 능력이 없다**… 우리는 훨씬 더 노출됐다)",
+     "role_id": "dm_dlp",
+     "team_code": null,
+     "value": null,
+     "verdict": "REJECTED",
+     "verdict_note": "⛔ **실측이 반대 방향이다**(docs/30 7단계 ⑷ 반박권 행사) — 우리 `#368` 흐라벤베르흐는 **LDM 순수 2경기(119분)** 재집계에서 `dm_dlp/Roaming` **.7633**(2위 `dm_dlp/Build-Up` .6485, **Δ.1148 > .05 단독 확정**)이다. 즉 **커널은 그를 그 자리에 잘 맞는다고 본다.** ⚠️ 다만 두 가지 유보: ⑴ **표본이 2경기로 규약 하한**이다(obs#772에서 「얇은 표본 3건」으로 표시) ⑵ **영상의 주장은 「적합」이 아니라 「수비 인지」**라 층이 다르다 — 커널은 **위치 분포**를 보고 영상은 **판단 능력**을 본다(docs/22 PlayStyle·능력치 층). ⇒ 역할 변경 없음. **재판정 조건: LDM 순수 표본이 4경기 이상으로 늘었을 때 재산출** + 실점 국면의 6번 공간 노출을 실측으로 확인."
     }
    ],
    "key_points": [
-    "⭐⭐ **결과의 무게를 상대 상태로 규정** — 「**the worst result of the season so far — a nil-nil draw against Fulham**, a team that **haven't picked up a point in the Premier League up until today. One of the worst sides in the Premier League right now, that have just lost their manager and are in complete turmoil**」(**지금까지 시즌 최악의 결과 — 풀럼과 0-0 무승부**. **오늘까지 프리미어리그에서 승점을 한 점도 못 딴 팀**이고 **지금 리그 최악의 팀 중 하나이며, 막 감독을 잃고 완전한 혼란 상태**다).",
-    "⭐⭐ **「좋은 것·나쁜 것·추한 것」 3단 구조** — 「with this Liverpool team, what we've seen is **the good, the bad, and the ugly**」(이 리버풀에서 우리가 본 것은 **좋은 것, 나쁜 것, 추한 것**이다). 「against Ipswich we showed our quality… **against Atletico Madrid, a much tougher opponent in the Champions League, we were able to tactically tweak ourselves. We saw the best of [Iraola] where he comes out and says why he got something wrong. He was able to change it. And then we showed our quality in the second half**」(입스위치전에선 퀄리티를 보여줬고… **훨씬 어려운 상대인 ATM전에서는 전술적으로 스스로를 조정할 수 있었다. 무엇을 잘못했는지 스스로 말하는 이라올라의 최고 모습을 봤다. 그는 바꿀 수 있었다. 그리고 후반에 퀄리티를 보여줬다**).",
-    "⭐ **변동성을 예고된 것으로 틀 짓는다** — 「we need to understand that **we need patience with this Liverpool team**. I've been saying it since the start of the season: **we are going to have so many ups and downs**」(**이 리버풀에는 인내가 필요하다**는 것을 이해해야 한다. 시즌 시작부터 말해왔다 — **오르내림이 아주 많을 것**이라고). ⇒ `kURILCR5GQA`의 「1월쯤 제 모습」·`iHtB-noxtgg`의 「90분 내내는 아니다」와 **같은 프레임**이다.",
-    "⚠️ **우려 3가지의 내용은 발췌 구간 밖** — 「today I think I saw **three problems that we need to be aware of going forward**」(오늘 **앞으로 인식해야 할 세 가지 문제**를 봤다고 생각한다)까지만 담겼다. ⏰ **본론 미수집** — 필요하면 해당 구간 재독.",
-    "⭐ **시즌 성적 맥락** — ATM전 승리와 입스위치전 뒤의 낙관을 인정하되(「there's nothing wrong with that. **You're allowed to be happy when your football team wins a match**」 = 팀이 이겼을 때 기뻐해도 된다), 풀럼전으로 되돌아왔다는 구성.",
-    "⛔ **auto-caption 오인식** — 입스위치가 「Ipsswitch/Ipsswich」, 「EAC」·「Gako」·「Marco」는 선수명 오인식으로 보이나 **식별 불가**(문맥상 입스위치전 활약자). 「optimis」(optimism), 「niln nil」(nil-nil)."
+    "⭐⭐⭐ **우려 1 = 맥 알리스터 선발 제외가 「이라올라의 첫 실수」** — 「**the big mistake today was not to start Alexis Mac Allister, and this is probably Iraola's first mistake as a Liverpool manager**」(**오늘의 큰 실수는 맥 알리스터를 선발로 쓰지 않은 것**이고 이것이 아마 **리버풀 감독으로서 이라올라의 첫 실수**다).",
+    "⭐⭐⭐ **흐라벤베르흐는 천성적 6번이 아니다** — 「**Gravenberch — he's not naturally a six. He was obviously put in there by Slot and he did well, but for whatever reason he has not been able to continue that form**… **him starting in the six, we've seen — like we did against Newcastle — that he's not comfortable in there. He's not able to play in there and we looked a lot more exposed**… **He doesn't have the awareness to play as a six**」(**흐라벤베르흐는 천성적 6번이 아니다. 슬롯이 거기 넣었고 잘했지만 어떤 이유에선지 그 폼을 이어가지 못한다**… **그가 6번으로 선발 출전하면 — 뉴캐슬전에서 봤듯 — 그 자리가 편하지 않다. 거기서 플레이하지 못하고 우리는 훨씬 더 노출됐다**… **6번으로 뛸 인지 능력이 없다**). ⚠️ 그를 **슬롯 첫 시즌 세계 최고 6번 중 하나**로 평가했던 것과 대비한다(영 플레이어 오브 더 이어).",
+    "⭐⭐⭐ **맥 알리스터가 6번일 때 팀이 달라진다** — 「**Mac Allister, who came on and played in the six against Newcastle, who came on today and played in the six, who started against Atlético Madrid and against Ipswich — we looked a much better team. We looked like a team that was in control. Every time Mac Allister played, we looked like a team that could move the ball forward when we need to and then defend when we needed to**」(**뉴캐슬전에 교체로 6번을 봤고, 오늘도 교체로 6번을 봤고, ATM전과 입스위치전에는 선발이었던 맥 알리스터 — 우리는 훨씬 나은 팀으로 보였다. 통제하는 팀 같았다. 그가 뛸 때마다 필요할 때 볼을 전진시키고 필요할 때 수비하는 팀으로 보였다**).",
+    "⭐⭐ **결론 — 「맥 알리스터가 내 6번이다」** — 「the most important thing for Iraola now is to learn from this: **'I don't have a six. I didn't bring in a six. I didn't bring in a midfielder like a Kamara that can naturally play there. But what I do know is Gravenberch is not my number six… So going forward, Alexis Mac Allister is my number six'**」(이라올라가 배워야 할 가장 중요한 것 — **「나에게 6번이 없다. 6번을 영입하지 않았다. 카마라처럼 천성적으로 거기서 뛸 미드필더를 데려오지 않았다. 하지만 아는 것은 흐라벤베르흐가 내 6번이 아니라는 것… 그러니 앞으로 맥 알리스터가 내 6번이다」**).",
+    "⭐ **파급 효과 — 전방이 살아난다** — 「when Mac Allister came on, **we got Wirtz more involved in the game. Gakpo was getting more involved, impacting the game further up. There was a lovely little interchange of play between Mac Allister and** [이삭] — got the shot off, **nearly got a penalty**… **there was a lot more impetus within the team**」(그가 들어오자 **비르츠가 경기에 더 관여했고 가크포도 더 관여하며 더 높은 곳에서 영향을 줬다. 맥 알리스터와의 멋진 연계**로 슛이 나왔고 **거의 페널티가 될 뻔했다**… **팀에 훨씬 더 추진력이 있었다**).",
+    "⭐ **결과의 무게를 상대 상태로 규정** — 「**the worst result of the season so far — a nil-nil draw against Fulham**, a team that **haven't picked up a point in the Premier League up until today… one of the worst sides in the Premier League right now, that have just lost their manager and are in complete turmoil**」(**시즌 최악의 결과 — 풀럼과 0-0 무승부**. **오늘까지 승점 0점**이고 **막 감독을 잃고 완전한 혼란 상태인 리그 최악의 팀 중 하나**).",
+    "⭐ **변동성을 예고된 것으로 틀 짓는다** — 「**we need patience with this Liverpool team. I've been saying it since the start of the season: we are going to have so many ups and downs**」(**이 리버풀에는 인내가 필요하다**. 시즌 시작부터 말해왔다 — **오르내림이 아주 많을 것**이라고). 「with this Liverpool team, what we've seen is **the good, the bad, and the ugly**」.",
+    "⛔ **auto-caption 오인식** — 흐라벤베르흐가 「Graham Merch / grain / Ryan Graham」(⚠️ 심한 오인식 — **Ryan Gravenberch**), 맥 알리스터가 「Alexis Mallister」, 이라올라가 「Iola/Areola」, 아르네 슬롯이 「Arie slots」, 입스위치가 「Ipsswitch」, 가크포가 「Gakpa」, ATM이 「Atletting Madrid」. **인물 귀속은 실측 라인업 대조 필요.**"
    ],
    "kind": null,
    "lang": "en",
@@ -163,7 +177,7 @@
    "published": "2026-09-12",
    "published_approx": 0,
    "report_id": null,
-   "summary": "Jamie Storey의 **LIV 0-0 풀럼 후 「이라올라의 첫 실수와 3가지 주요 우려」**(2026-09-12). ⭐⭐ ATM전 승리 직후의 낙관을 **가장 빠르게 되돌린 자료**다 — **승점 없던 풀럼(감독까지 잃고 혼란 중)과 홈 무승부**를 「시즌 최악의 결과」로 규정한다. ⭐ 그러면서도 **「인내가 필요하다」**는 틀을 유지하며 우려 3가지를 제시한다(발췌 구간엔 목록 도입부까지).",
+   "summary": "Jamie Storey의 **LIV 0-0 풀럼 후 「이라올라의 첫 실수와 3가지 우려」**(2026-09-12). ⭐⭐⭐ **핵심은 6번(홀딩) 자리 논쟁**이다 — 「**맥 알리스터를 선발로 쓰지 않은 것이 이라올라의 첫 실수**」이고, **흐라벤베르흐는 천성적 6번이 아니다**라고 단언한다. ⭐ 승점 없던 풀럼과의 홈 무승부를 「시즌 최악의 결과」로 규정하면서도 **「인내가 필요하다」** 틀을 유지한다.",
    "team_code": null,
    "title": "Iraola Made His FIRST Mistake l The 3 Main Concerns After Liverpool 0-0 Fulham.",
    "transcript_path": "reports/transcripts/N-oZ3Cn_XDc.en.md",
@@ -625,25 +639,27 @@
    "id": 95,
    "impl_claims": [
     {
-     "axis": "none",
+     "axis": "role",
      "field": null,
-     "focus": null,
-     "player": null,
-     "quote": null,
-     "role_id": null,
+     "focus": "Attack",
+     "player": "가르나초",
+     "quote": "「**attitude is good. It's positive, his attitude**… **training's fine, but the matches — we need to lock in a little bit more**」(**태도가 좋다. 그의 태도는 긍정적이다**… **훈련은 괜찮은데 경기에서는 조금 더 집중해야 한다**)",
+     "role_id": "wm_winger",
      "team_code": null,
      "value": null,
-     "verdict": "NA",
-     "verdict_note": null
+     "verdict": "HELD",
+     "verdict_note": "⭐ 감독이 **훈련↔경기 격차**를 지목했다 — 즉 **아직 주전이 아닌 이유를 감독이 설명**한 것이다. 우리는 obs#768에서 **LM 주전을 헤밍스로 확정**했고(`wm_widemid/Support`, C1 뱅크 0.60), 가르나초는 `squad_entries` WM `wm_winger/Attack` .771로 **대안 후보**로만 보유 중이다 ⇒ 처방 변경 없음. ⚠️ **재판정 조건**: ⓐ 가르나초가 LM 선발로 포지션-순수 2경기 이상 뛰면 재산출 ⓑ 할 일 20(C2/C6 재판정)에서 **좌측 뱅크 부담이 다른 칸으로 옮겨지면** 그의 `winger/Attack`(뱅크 0.00)이 다시 후보가 된다. ⛔ 이 인용은 **진행자의 재진술**이라 verbatim 근거로는 약하다 — 원 회견 전사 확보 시 교체."
     }
    ],
    "key_points": [
-    "⭐⭐ **「구조」 반복 카운트** — 「some of the questions he's been asked today are like **'you're taking your time to get your players in, what are you waiting for?'** and he's mentioning like **the structure — I've probably written down 'structure' about four times on here**」(오늘 받은 질문 중엔 **「선수 투입에 시간을 들이는데 뭘 기다리나?」** 같은 게 있었고, 그는 **구조**를 언급한다 — **여기 「structure」를 네 번쯤 적었다**). ⇒ ⭐ **에메리의 우선순위가 「새 선수 투입」이 아니라 「구조 정착」**임을 기자단 질문과 감독 답변의 대비로 보여준다.",
-    "⭐ **다른 구단과의 대비** — 「as fans we can look at other Premier League clubs and go '**well, Chelsea put their new players in, or Man United put the new players in, Bournemouth put new players in**'」(팬으로서 다른 PL 구단을 보며 「**첼시는 새 선수를 넣었고, 맨유도, 본머스도 넣었는데**」라고 할 수 있다). ⇒ 에메리의 **점진 통합** 노선이 예외적임을 팬 관점에서 확인.",
-    "**회견 인용 재진술** — 「he's said that **the players knowing how we want to perform, build the new team to adapt, to know how to set our standards. We achieved it — not yet Premier League, getting better**」(**선수들이 우리가 원하는 수행 방식을 아는 것, 적응할 새 팀을 만드는 것, 우리 기준을 세우는 법을 아는 것**. **달성했다 — 프리미어리그에서는 아직, 나아지고 있다**). ⇒ 원 회견(`x6RV_fk2DVc`·`8RE9ovIglEw`)과 일치.",
-    "**가르나초 질문이 있었다** — 「He's been talking about **Garnacho. He got asked about Garnacho**」(그는 **가르나초**에 대해 말했다 — **질문을 받았다**). ⚠️ 이 전사에는 **답변 내용이 담기지 않았다** — 원 회견 전사 2종에도 가르나초 대목이 없어 **미수집 구간**이다. ⏰ 가르나초는 우리 LM 축의 대안 후보(squad_entries WM `wm_winger/Attack` .771)라 **답변 확보 가치가 있다**.",
-    "⚠️ **전술 정보 밀도가 낮다** — 진행자 본인이 「if I start waffling, it might be even longer」(내가 늘어지면 더 길어질 수 있다)라 할 만큼 잡담·채팅 인사 비중이 크다. **구조 카운트와 가르나초 미수집 지적**만 취했다.",
-    "⛔ **auto-caption** — 영어이고 인물명 오인식은 적다. 다만 팬 채널 특유의 구어라 문장 경계가 흐리다."
+    "⭐⭐ **「구조」 반복 카운트** — 「some of the questions he's been asked today are like **'you're taking your time to get your players in, what are you waiting for?'** and he's mentioning like **the structure — I've probably written down 'structure' about four times on here**」(오늘 받은 질문 중엔 **「선수 투입에 시간을 들이는데 뭘 기다리나?」** 같은 게 있었고, 그는 **구조**를 언급한다 — **「structure」를 네 번쯤 적었다**). ⇒ ⭐ **에메리의 우선순위가 「새 선수 투입」이 아니라 「구조 정착」**임을 기자단 질문과 답변의 대비로 보여준다.",
+    "⭐⭐⭐ **가르나초 답변(할 일 28 ⓐ 해소)** — 「He got asked about Garnacho and he said **attitude is good. It's positive, his attitude. He wants…** and he did mention sort of that **training's fine, but the matches — we need to lock in a little bit more**. So I think **he seems impressed with Garnacho, but he's just got to keep working hard and his performances should get better**」(가르나초에 대해 질문받고 **태도가 좋다. 그의 태도는 긍정적이다**라고 했고, **훈련은 괜찮은데 경기에서는 조금 더 집중해야 한다**고 언급했다. **가르나초에게 인상을 받은 것 같지만 계속 열심히 해야 하고 경기력이 나아져야 한다**). ⇒ ⭐⭐ **우리 LM 축의 대안 후보**(squad_entries WM `wm_winger/Attack` .771)에 대한 감독 평가다 — **훈련↔경기 격차**를 지목했으므로 **헤밍스 주전(obs#768) 유지의 서사 근거**가 된다.",
+    "⭐⭐ **시스템 정착의 축 = 경험 6인** — 「that's where sort of like **the experience of Barkley, Mings, McGinn, Maatsen, Pau [Torres], Lindelöf is really important**」(**바클리·밍스·맥긴·마첸·파우 토레스·린델뢰프의 경험이 정말 중요한** 지점이다). ⇒ ⭐ 에메리 회견의 「두 축 동시 진행」에서 **「경쟁하는 축」을 지탱하는 인원**을 특정한 것이고, `#469` 바클리 처방(`dm_dlp/Roaming` .8873)의 서사 근거와 겹친다.",
+    "⭐ **계획은 바뀌지 않는다** — 「**gradual** — how they are performing in training sessions, collectively, individually, analyzing each match, showing the structure, our plan, **comparing last three years the idea plan is not changing**」(**점진적**이다 — 훈련에서의 수행, 집단적·개별적으로, 각 경기 분석, 구조와 계획을 보여주는 것, **지난 3년과 비교해도 아이디어와 계획은 바뀌지 않는다**).",
+    "⭐ **다른 구단과의 대비** — 「as fans we can look at other Premier League clubs and go '**well, Chelsea put their new players in, or Man United, or Bournemouth**'」(팬으로서 다른 PL 구단을 보며 「**첼시는 새 선수를 넣었고, 맨유도, 본머스도**」라고 할 수 있다). ⇒ 에메리의 **점진 통합** 노선이 예외적임을 확인.",
+    "**회견 인용 재진술** — 「**the players knowing how we want to perform, build the new team to adapt… We achieved it — not yet Premier League, getting better**」 — 원 회견 전사 2종(`x6RV_fk2DVc`·`8RE9ovIglEw`)과 일치.",
+    "⭐ **방법론 — 팬 반응 채널이 원 전사의 결손을 메웠다** — 가르나초 답변은 **회견 원문 전사 2종 모두에 없었다**(질문만 있고 답변 구간이 누락). 반응 채널이 **요약으로 전달한 덕에 확보**됐다. ⇒ ⭐⭐ **「원문이 최선이지만 반응 채널이 결손을 메울 수 있다」**는 부류 — 단 **재진술이라 verbatim 인용으로 쓰면 안 된다**(불변규칙 11의 「요약 경유 시 열화」).",
+    "⛔ **auto-caption** — 영어이고 인물명 오인식은 적다(가르나초·바클리·밍스·맥긴 정상). 다만 팬 채널 구어라 문장 경계가 흐리고, **가르나초 답변은 진행자의 재진술**이지 감독의 직접 발화가 아니다."
    ],
    "kind": "감독회견",
    "lang": "en",
@@ -651,7 +667,7 @@
    "published": "2026-09-11",
    "published_approx": 0,
    "report_id": null,
-   "summary": "UTV의 **에메리 회견 반응**(2026-09-11). 회견 원문이 아니라 **팬 채널의 해석**이다. ⭐ 값진 대목은 진행자가 **「structure」라는 단어를 회견 중 네 번 적었다**고 센 것이다 — 에메리의 프레임이 「인선 투입」이 아니라 **「구조 먼저」**임을 외부에서 카운트한 셈이다. ⚠️ 전술 구조 서술은 없고 **분위기·기대 해석**이 대부분이다.",
+   "summary": "UTV의 **에메리 회견 반응**(2026-09-11). 회견 원문이 아니라 **팬 채널의 해석**이다. ⭐ 값진 대목은 두 가지: ⑴ 진행자가 **「structure」를 회견 중 네 번 적었다**고 센 것 ⑵ ⭐⭐ **가르나초에 대한 에메리의 답변을 전한 것** — 「태도는 좋다, 훈련은 괜찮은데 경기에서 더 집중해야 한다」. ⭐ 그리고 **경험 있는 6인(바클리·밍스·맥긴·마첸·파우 토레스·린델뢰프)**을 시스템 정착의 축으로 지목한다.",
    "team_code": "AVL",
    "title": "UNAI EMERY PRESS CONFERENCE REACTION",
    "transcript_path": "reports/transcripts/7Afj8XxiVW0.en.md",
@@ -926,16 +942,16 @@
    "id": 134,
    "impl_claims": [
     {
-     "axis": "none",
-     "field": null,
+     "axis": "instruction",
+     "field": "second_half_change",
      "focus": null,
      "player": null,
-     "quote": null,
+     "quote": "「Chelsea made **four changes: Reece James on for Reggie Watson, Pedro Neto on for Gusto, Palmer on for Estêvão, and Morgan Rogers on for Gittens**. And **very quickly you could see that Palmer and Rogers had been told to stay narrow and overload the midfield**」(첼시가 **4교체를 했다 — 리스 제임스↔레지 왓슨, 페드루 네투↔귀스토, 파머↔에스테방, 모건 로저스↔기텐스**. 그리고 **파머와 로저스가 좁게 서서 중원을 과부하시키라는 지시를 받았음이 아주 빠르게 보였다**)",
      "role_id": null,
-     "team_code": null,
-     "value": null,
-     "verdict": "NA",
-     "verdict_note": null
+     "team_code": "CHE",
+     "value": "하프타임 4교체 + 「좁게 서서 중원 과부하」 지시 — 리스 제임스↔왓슨, 네투↔귀스토, 파머↔에스테방, 로저스↔기텐스",
+     "verdict": "HELD",
+     "verdict_note": "⭐⭐ **할 일 28 ⓒ 해소** — 후반 변경의 정체가 확정됐다: **4교체 + 「좁게 서서 중원 과부하」 지시**다. `K6PKQW16wv0`(리즈 관점)이 「로저스·파머·리스 제임스가 첼시의 얼굴을 완전히 바꿨다」고 한 것의 **첼시 쪽 세부**이고, 교체 명단이 **두 소스에서 일치**한다. ⭐ 추가 지시도 특정됐다 — 네투·차바리아는 「**상대 공격이 올 때는 수비하고 공간이 생기면 공격하라**」, **리스 제임스와 바르코는 백라인에 내려가고 다른 한 명이 올라간다**(로테이션). ⛔ 그러나 `reproduction_limits` `situational` 축이 「단일 정적 프리셋은 전·후반 차이를 담지 못한다」로 이미 막아 둔 영역이라 **FC26에 옮길 설정이 없다** ⇒ 변경 없음. ⭐ **재판정 조건: `match_game_setups`를 전·후반으로 분리할지** — 이 경기는 전·후반이 다른 팀이었다는 증언이 **2소스**이고 교체·지시까지 특정됐으므로 **분리 설계의 첫 시험대**로 쓸 수 있다."
     },
     {
      "axis": "team_axis",
@@ -945,9 +961,9 @@
      "quote": "「**three at the back in build-up** — Lacroix in the centre, Colwill, Acheampong」(**빌드업에서 백3** — 중앙 라크루아·콜윌·아체암퐁) / 「out of possession, **it shifted more to a 4-4-2**」(무공 시 **4-4-2로 이동**)",
      "role_id": null,
      "team_code": "CHE",
-     "value": "3-4-3 (빌드업) ↔ 4-4-2 (무공) · 2026-09-09 EFL Cup 리즈전",
-     "verdict": "PENDING",
-     "verdict_note": "⭐⭐ **obs#773이 남긴 결손의 직접 단서다** — 그 경기 `player_matches.formation`이 NULL이라 **15행이 pos_class 분류 불가**로 남았다. 이 자료가 선발 11명을 우리 실측과 **전원 일치**시키며 3-4-3(빌드업)을 제시한다. ⛔ **아직 `formation`을 채우지 않았다** — ⑴ 팬 채널은 3티어 소스이고 ⑵ `player_matches.formation`은 SofaScore 원천 필드라 **출처를 섞으면 안 된다**(값을 발명하지 않는다). ⇒ **마감 조건: SofaScore에서 그 경기 formation을 직접 수집**(브라우저 경로, docs/30). 이 자료는 **수집 후 대조용 예상값**으로 쓴다. ⚠️ 우리 라인업 카운트(GK+4D+3M+3F)는 4-3-3처럼 보이지만, 윙백 2명이 각각 D·M으로 분류된 것이라면 **3-4-3과 모순되지 않는다.**"
+     "value": "4-3-3 (SofaScore 정본) · 영상의 「빌드업 백3 ↔ 무공 4-4-2」는 국면 서술",
+     "verdict": "REJECTED",
+     "verdict_note": "⛔ **명목 포메이션 주장으로는 기각한다** — obs#777에서 SofaScore 원천(`event/16950621/lineups`)을 브라우저 경로로 조회한 결과 **첼시는 `4-3-3`**이었다(리즈가 3-4-2-1). ⭐ **모순은 아니다**: 영상은 **국면별 형태**(빌드업 백3 / 무공 4-4-2)를 서술했고 SofaScore는 **명목 포진**을 기록한다 — **층이 다르다.** ⇒ ⭐⭐ **부류로 기록**: 「팬 채널의 포메이션 서술은 국면 서술일 수 있다」. 우리가 영상 값을 직접 채우지 않고 **수집 후 대조용으로만 쓴 판단이 옳았다**(3티어 소스 보류 원칙). ⭐ 국면 형태 자체는 `reproduction_limits` `formation` 축(「FC26은 국면별 포메이션을 갖지 않는다」)에 이미 등록된 한계에 해당한다."
     }
    ],
    "key_points": [

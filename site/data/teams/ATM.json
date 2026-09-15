@@ -31624,6 +31624,18 @@
    "workaround": "컴팩트=수비접근×라인×역할·포커스의 창발 속성으로 다룬다(obs#27). 국면 분리 실측(cells_poss/cells_def)으로 역할 선택을 국면별로 검증"
   },
   {
+   "added": "2026-09-15",
+   "axis": "in_possession",
+   "confidence": "MEDIUM-HIGH — 4소스가 독립 지목했고 그중 1건은 상대팀(리즈) 관점이라 자기 팀 미화 동기가 없다. ⚠️ 다만 **전부 서사 소스**다(영상·라디오). 실측으로는 아직 측정 지표가 없어(위 workaround ⏰) 「재현 불가」의 정도를 정량화하지 못했다. ⚠️ auto-caption 전사 기반이므로 인용은 원문+번역 병기(불변규칙 11). ⭐ 같은 현상이 **리버풀·리즈 두 팀에서 같은 언어로** 나왔다는 점이 팀 특이성이 아니라 **하이프레스 일반의 대가**임을 시사한다.",
+   "game_version": "FC26",
+   "id": 14,
+   "limitation": "⛔ FC26에 **rest-defense 설정 축이 없다**. 팀 설정 3축(빌드업 스타일·수비 접근·라인 높이)은 **볼을 가진 상태와 잃은 상태를 각각** 규정할 뿐, 「점유 중 뒤에 몇 명을 어떤 모양으로 남기는가」를 직접 지정하지 못한다. ⇒ 하이프레스 팀에서 **압박이 깨진 순간 패스 한 번에 백라인이 노출되는 현상**이 그대로 재현되지 않는다.",
+   "real_feature": "rest-defense — 점유 중 볼 뒤에 남겨두는 형태(볼을 잃는 순간의 잔여 수비 배치)",
+   "regime_id": null,
+   "source": "영상 4소스 독립 지목(obs#774): 67TNBKbdUDw(Red Tactics, LIV) · kURILCR5GQA(Ben Eddy, LIV) · CQfQUokBtQo(talkSPORT, LIV) · K6PKQW16wv0(LockyLeeds, 리즈 관점). + 이라올라 회견 1차(gR_pzueBN2s·xBiwApe6wfk)의 「하이프레스에는 대가가 있다」 맥락.",
+   "workaround": "⭐ **역할 조합의 창발 속성으로만 간접 조절한다** — ⑴ **피벗 포커스**(dm/cm의 Defend·Ball-Winning ↔ Roaming·Build-Up)가 피벗의 잔류 깊이를 가른다 ⑵ **풀백 전진도**(fb_wingback/Balanced ↔ fb_att_wb/Attack)가 잃는 순간의 폭 노출을 가른다 ⑶ **와이드의 자기진영 질량**(obs#39 뱅크 사다리)이 복귀량을 가른다. ⛔ 세 축을 동시에 만지면 귀속이 안 된다 — 인게임 A/B는 **단일 변수**로(obs#702). ⏰ 측정 방법: 볼 상실 직후 상대 백라인 도달까지의 패스 수를 세는 지표가 우리에게 없다 — **신규 축 후보**."
+  },
+  {
    "added": "2026-09-08",
    "axis": "pressing",
    "confidence": "HIGH",
