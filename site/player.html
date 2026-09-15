@@ -469,7 +469,7 @@ function renderFotmobEval(sel){
 }
 /* fut.gg식 선수 카드 — OVR·포지션·6스탯·키/몸무게·주발·PlayStyles를 한 화면에.
    FC27이 있으면 그걸 대표로 쓰고(가장 최신), 없으면 FC26으로 폴백한다.
-   age·가치는 FC27에 아직 없어(obs#249) FC26쪽(g0)에서 보충한다. */
+   나이는 FC27 131/131 채움(2026-09-14 아이템 정의 API)이라 FC27을 먼저 쓴다. **가치(value_eur)는 FC27에 여전히 없어** FC26쪽(g0)에서 보충한다. */
 function renderCard(sel, g0, g26, g27, isGkRow){
   const el = document.getElementById('playercard');
   const gg = g27 ?? g26;
@@ -507,7 +507,7 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       </div>
       <div style="flex:1;min-width:240px">
         <div class="kv bioline">
-          <span><b>나이</b>${g0?.age ?? '—'}세</span>
+          <span><b>나이</b>${gg.age ?? g0?.age ?? '—'}세</span>
           <span><b>키</b>${gg.height_cm ?? g0?.height_cm ?? '—'}cm</span>
           <span><b>몸무게</b>${gg.weight_kg ?? '—'}kg</span>
           <span><b>주발</b>${foot}</span>
@@ -874,7 +874,8 @@ function render(){
         FC26·FC27 모두 <b>fut.gg 상세</b>에서 받아 소스를 일치시켰다 — sofifa(FC26) ↔ fut.gg(FC27) 혼합을 피했다.
         ⚠️ 단 <b>여기의 FC26은 fut.gg 출시판</b>이고 위 카드의 FC26 6종합은 <b>우리 DB 시즌 말 라이브판</b>이다 —
         <b>두 층의 기준 시점이 다르므로</b> 세부 Δ와 6종합 Δ를 합산하지 말 것.
-        ⛔ <b>PlayStyles는 FC27에 아직 없다</b>(그 페이지의 목록은 커뮤니티 투표 %이지 EA 확정값이 아니다 — 09-10판이 정본, obs#249).</p></details>`;
+        ✅ <b>FC27 PlayStyles는 09-10 EA 공식 드롭으로 확정됐다</b>(4팀 131명 중 <b>87명 보유·44명은 EA 확정 0종</b> — 결손이 아니다.
+        09-14에 다른 API 경로로 재확인). ⚠️ 상한이 <b>PS+ 5→3</b>으로 줄었고 실제로는 보유자 12명이 전원 1종뿐이다(obs#733).</p></details>`;
     } else {
       html += '<div class="dim" style="font-size:12px;margin-top:8px">세부 속성 미수집(fut.gg 상세에 해당 선수 카드가 없다).</div>';
     }

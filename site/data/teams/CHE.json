@@ -340,7 +340,7 @@
  "duties": [
   {
    "adherence": "**판정 불가 — 표본 1경기.** 알론소가 그에게 요구하는 임무를 밝힌 발언·보도가 0건이고, 첼시 체제 위치 실측도 없다. 다음 정기 수집에서 3경기 이상 쌓인 뒤 재판정한다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: gk_ballplaying, gk_goalkeeper.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: gk_ballplaying, gk_goalkeeper.",
    "applied_status": "MATCH",
    "confidence": "**LOW — 가설 행이다.** ⑴ 첼시 체제 표본이 **1경기**뿐이고 ⑵ 알론소의 GK 임무 서술이 **0건**이며 ⑶ 위치 그리드는 **빌라 실측 이관본**이다. 이 행은 G10(현재 스쿼드 전원 duties 보유)을 충족시키기 위한 최소 기록이지, 첼시에서의 역할 판정이 아니다. ⚠️ 나이 33세(1992-09생)·계약 3년 구조는 빌라의 「스쿼드 평균연령 인하」 매도 논리와 정합하나, 첼시 측 장기 계획 문언은 확인되지 않았다. | [2026-09-08 D+2] MEDIUM(부재 증명이라 「아직 서술이 없다」와 「하지 않는다」를 구분해야 한다). ⚠️ 1경기 · 스페인어 주요 6개 매체가 검색 차단이라 미탐색 구간이 남아 있다.",
    "duties": "⚠️ **가설 행이다 — 알론소 체제 첼시의 GK 요구를 서술한 1차 자료는 아직 없다.** 2026-08-30 chelseafc.com 공식 영입(3년 계약, £7.5m)에 따른 `squad_entries` 승격에 맞춰 만든 최소 기록이다.\n⭐ **영입의 성격이 임무를 규정한다: 스쿼드 보강이 아니라 GK 1선 교체다.** 트리거는 로베르트 산체스의 풀럼전(3-2) 2실책이었고, 마르티네스는 **발표 당일 08-30 브라이턴전에 곧바로 선발**로 나섰다. 산체스는 같은 경기 명단에서 완전히 제외됐다.\n⚠️ **불변규칙 7 — 빌라 임무 서술을 그대로 옮기지 않았다.** 에메리 체제에서 확립된 임무(「압박 아래에서도 풀백·CB 배급이 고정 원칙」·「박스 장악」·「스위핑은 상시가 아니라 상황부」, player_duties#1)는 **빌라 것이며 알론소 체제의 요구와 같다는 보장이 없다.** 알론소 체제 첼시의 빌드업이 GK에게 요구하는 관여 빈도·전진 깊이는 별도 관측이 필요하다.\n\n[2026-09-08 D+2 추가 — 아스날전 한정] ⛔⛔ **가설 행의 핵심 전제가 반증 방향이다.** 이 경기에 대해 **GK 빌드업 가담을 서술한 1차 자료는 전 언어권 0건**이다 — 🇪🇸 Infobae 원문은 세이브와 5분경 가브리에우의 안면 가격만 다루고 배급·후방 빌드업 언급이 없으며, Coaches' Voice 전술 분석에도 없다. 스페인어에서 걸리는 「발밑」 서술은 전부 **빌라 시절 이적 프리뷰**라 배제했다(불변규칙 7). ⭐ 반대 방향 증거: Football Made Simple 「they were **willing to go long from their goalkeeper** with Palmer and Rogers ready to fight for the second balls」(골키퍼에서 길게 갈 의향이 있었고 파머·로저스가 세컨볼을 다퉜다) — 실측 롱볼 18/49(37%)와 정합. ⛔ 「첼시가 GK를 여분의 선수로 쓴다」는 아르테타 인용은 **25/26 시즌 다른 경기 회견**임이 확인됐다(obs#522) — 이 행의 근거로 쓰지 말 것. ⚠️ 동점골 책임은 매체가 갈린다: Evening Standard 4 「a suspect one to concede」 · football.london 5(니어 포스트) ↔ SI 7.5 · Foot Mercato 알고리즘 8.0(첼시 최고). 세이브 8회.\n\n[2026-09-09 D+3 추가] 동점골 책임 논점이 **「구조 우위 · 개인 부차」로 진전**했다(아스날 원정 26/27 R3, D+2는 미해결). 평점 분산은 실제로는 소수 대 다수다 — 니어 포스트 비판 3소스(Evening Standard 4 · football.london 5 · marca(ES) \"batió al Dibu -pudo hacer más-\") ↔ 세이브 산출로 평가하는 다수(FR HommeDuMatch **7**, \"un match exceptionnel avec huit arrêts\" **8세이브** · SI 7.5 · Foot Mercato 8.0 첼시 최고). 그리고 1차 전술 분석은 개인이 아니라 **피벗의 박스 앞 보호 결손**을 지목한다 — Between the Posts: \"The protection in front of the box from James and Lavia was also lacking in key moments, such as in Havertz's equalizing goal... he was able to dribble across the edge of the box with insufficient pressure before getting a near-post finish off.\" ⇒ **게임 구현에서 GK 실책 특성을 조정할 근거가 아니다.** vi.nl(NL)·marca(ES)가 각각 결정적 선방(18·69분 사카, 하베르츠의 알 넣기 패스 이후)을 별도 특기한다. ⛔ **빌드업 가담 서술은 D+3에도 어느 언어권에서도 0건**이다 — D+2의 정정 ③을 유지한다. 🇺🇾 elobservador의 「중대한 실책」 기사는 Cloudflare 봇 검증으로 **미확보**. obs#563.",
@@ -357,7 +357,7 @@
   },
   {
    "adherence": "PRESEASON PENDING — 감독의 역할 설명에는 정합하나 첼시 경기 표본이 생기기 전까지 수행 판정 보류.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cam_playmaker, wm_insidefwd.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cam_playmaker, wm_insidefwd.",
    "applied_status": "MATCH",
    "confidence": "HIGH 감독 발언·빌라 실측 / LOW 첼시 실행 — 공식전 0경기 | [2026-09-08 D+2] MEDIUM-HIGH(평점·행동 서술 다수 + 실측 경합 수치). ⚠️ 경합 0/7은 단일 매체(Foot Mercato) 집계다.",
    "duties": "알론소가 직접 요구한 임무는 스트라이커와 10번 가까이의 포켓에서 연결하고, 왼쪽 출발을 기본으로 우측까지 바꾸는 유연한 2선 공격수다.\n\n[2026-09-08 D+2 추가 — 아스날전 한정] 2분 선제골(리스 제임스 프리킥 → 하토 헤더 → 마무리)로 첼시 최고 평점을 받았다(SI 7.7 · Evening Standard 7 · football.london 7 · NBC 7 · The Chelsea Chronicle 9는 이상치). 무공에서는 **파머와 대칭으로 미드필드 4의 양옆에 하강**했다(Coaches' Voice). ⚠️⚠️ **평점과 어긋나는 실측 1건**: Foot Mercato 기준 **경합 0/7 승**이다 — 「좌측에서 넓게 뛰며 몸싸움으로 버틴다」는 서술을 이 경기 실측이 지지하지 않는다. 게임 구현에서 물리 대결 성향을 올릴 근거로 쓰지 말 것. ⚠️ 경기가 진행될수록 관여가 줄었다는 지적이 복수 매체에 공통이고(NBC 「failed to affect the game for spells」), 아스날은 그를 등지고 달려 성과를 냈다(Football Made Simple). 87분 웰벡과 교체.\n\n[2026-09-09 D+3 추가] 좌측 공격 국면 임무 확보(아스날 원정 26/27 R3) — 하토와 **좌측 하프스페이스↔좌측 윙을 수직 로테이션**하고, **롱볼을 받아 수비수를 몸으로 버티는 「물리형 출구」**다. Between the Posts: \"on the left side Hato and Rogers would rotate between left halfspace and left wing. Rogers and João Pedro were both key outlets for Chelsea with their ability to receive long balls and hold defenders off physically.\"(좌측에서는 하토와 로저스가 로테이션했다. 로저스와 주앙 페드루는 롱볼을 받아 수비수를 몸으로 버텨내는 능력으로 첼시의 핵심 출구였다.) ⇒ 주앙 페드루와 **같은 기능 묶음**이고 obs#524(주앙 페드루 st_advanced)와 같은 방향이다. ⭐⭐ 무공에서는 **좌측으로 내려와 상대 우측 풀백(화이트)을 추적**했고, 정확히 그 지점에 아스날의 우측 삼각 로테이션이 3v2를 걸어 동점골이 나왔다 — Between the Posts: \"Rogers also came back on the left side to track White.\" · Chelsea FC Online: \"the German constantly created three-on-two superiority against Rogers and Hato, gathering the ball in that very same right wide zone to score the equaliser.\" ⇒ 「좌측 인사이드 포워드가 상대 우측 풀백을 추적하는 구조적 부하」는 **로저스 축에서 독립 소스 2건으로 성립**한다(체제 형질 후보 1호). 선제골은 세트피스 세컨볼을 **박스 밖 첫 터치 발리**로 마무리(6소스 확정, obs#557). 87분 대니 웰벡과 교체. 평점 FR HommeDuMatch 7. obs#557·#559·#560.",
@@ -374,7 +374,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "measured single match; sub-45m samples are descriptive only.",
    "duties": "좌측 포켓 연결·침투 10번",
@@ -391,7 +391,7 @@
   },
   {
    "adherence": "MEDIUM — 배급 취약 서사는 패스·롱볼 정확도 백분위(62/46)가 지지한다. 그러나 그로부터 도출되는 '스위퍼형 골키퍼가 필요하다'는 함의는 실측 그리드가 기각한다(gk_sweeper 0.773).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: gk_goalkeeper.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: gk_goalkeeper.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급, 구단 공식 리뷰는 1차) — 2026-07~08 발행 확인. ⚠️ 체제 캐비앗: 우리 실측 6경기와 팟몹 25/26 리그 스탯은 모두 마레스카·로즈니어 체제 산물이며 알론소 체제 표본은 0이다(첫 공식전 8/24 풀럼).",
    "duties": "25/26 전 대회 50경기(49선발) 4,844분·클린시트 15로 첼시 최다 출전. 리그는 35경기 41실점·9클린시트, 선방률 67.59%. 페트르 체흐 이후 첫 첼시 골키퍼 리그 도움을 기록했다(뉴캐슬 원정, 롱볼→주앙 페드루). 서사의 초점은 발밑 배급 논란이며 스콜스는 \"알론소가 원하는 방식으로 뛸 수 없다\"며 새 골키퍼를 예측했다. 26/27 알론소 체제에서는 토트넘 친선 결장(경미 부상)에 펜더스가 임대 복귀해 경쟁 구도이나, 개막전(8/24 풀럼) 예상 선발로 지목됐다.",
@@ -408,7 +408,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "measured single match; sub-45m samples are descriptive only.",
    "duties": "후방 골키퍼",
@@ -425,7 +425,7 @@
   },
   {
    "adherence": "HIGH — '전진해 안쪽에서 받는 풀백, 크로서 아님'이 실측 그리드(fb_att_wb 0.862)와 백분위(전진·회수 상위 / 크로스 중하위) 양쪽에서 확인된다. obs#46의 '윙백은 크로서가 아니라 득점자'와 같은 방향이다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: fb_att_wb.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: fb_att_wb.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급, 코치스 보이스는 2티어급 경기 분석) — 2026-04~07 발행 확인. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 공식전 0경기. 이적 보도는 추측 티어로 분류.",
    "duties": "마레스카 체제 우측 풀백 로테이션의 한 축. 전술 분석은 그를 명목상 풀백이나 실제로는 우측 상위 지역까지 올라가 수적우위를 만드는 인원으로 서술한다 — 리스 제임스가 볼을 운반할 때 구스토가 더 중앙·전방으로 들어가 받으며 상대 수비 조직을 흐트리고 파머의 배후 침투를 열어준다. 반대 방향의 근거도 있다. 코치스 보이스의 첼시 0-3 맨시티(2026-04) 분석은 그를 표적으로 지목했다(오라일리의 안쪽 침투로 도쿠에게 접근로를 만들어 1v1 반복). 26/27 여름 맨시티·PSG 관심 보도가 있고 첼시는 £75m를 요구했다.",
@@ -442,7 +442,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "measured single match; sub-45m samples are descriptive only.",
    "duties": "우측 폭·전진 윙백\n\n[2026-09-13 D+1 2차] 팬 반응(givemesport.com, 2026-09-12): SNS에서 귀스토 78분 활약을 집중 비판(볼 소유권 상실 다수·태클 성공 0 주장) — 실측(interceptions 2·tackles 0·duels_won 0/2, player_matches match_id=104)과 부분 부합. ⚠️ 팬 SNS 재인용 기사는 3티어 — 평가 근거로 쓰지 않고 참고만.",
@@ -459,7 +459,7 @@
   },
   {
    "adherence": "HIGH(위치) / MEDIUM-HIGH(기능) — 백3 우측 전용 0.953과 인터셉트 2.086/90(백분위 97)이 강정합한다. 패스 정확도 백분위 89도 BPD 라벨을 지지한다. 단 퇴장 2회(백분위 1)는 Aggressive 포커스의 비용을 확인하며, 알론소 체제 공식전 표본은 0경기다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cb_bpd.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cb_bpd.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급) + FotMob 25/26 PL 상세 41지표 — 2026-08-14 수집. ⚠️ 체제 캐비앗: 실측 그리드와 리그 스탯은 25/26 마레스카·로즈니어 체제 산물이며 알론소 공식전은 0경기다.",
    "duties": "25/26은 첼시 커리어 최다 가용 시즌이었다 — 전 대회 38경기(31선발), 리그 25경기 1,727분(20선발). 부상 이력이 지배하던 이전 세 시즌과 대비되는 지점이다. 결점은 규율로, 커리어 첫 두 번의 리그 퇴장이 모두 이 시즌에 나왔다(최종전 선덜랜드전 62분 퇴장 포함). 26/27 알론소 체제에서는 밀란전 3-0(3-4-2-1 데뷔)의 호평을 근거로 백3 우측 선발이 예상되나, £52m 라크루아 영입으로 자리는 확정되지 않았다. 알론소는 센터백을 '4~5명' 규모로 유지하겠다고 밝혔다.",
@@ -476,7 +476,7 @@
   },
   {
    "adherence": "HIGH — '주전 중앙 센터백·빌드업 지분'이 실측 중심 좌표와 패스 백분위 양쪽에서 일치한다. 서사와 실측이 충돌하는 지점이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "서사 소스(3티어급, 이적 확정은 1차 보도 다수 일치) — 2026-08-09 발행 확인. ⚠️ 실측 표본 3경기로 얕다. ⚠️ 체제 캐비앗: 그리드·팟몹 모두 25/26 마레스카·로즈니어 체제.",
    "duties": "⚠️ 2026-08-09 코모로 완전이적 확정(€30m 고정 + €6m 옵션, 5년 계약, 셀온 조항 포함) — 26/27 첼시 스쿼드가 아니다. 25/26에는 전 대회 47경기(41선발) 4,149분으로 첼시 센터백 중 압도적 최다 출전이었고 4골(아스날전 헤더 포함), 11월 4클린시트 구간에서 포파나와 짝을 이뤘다. 라크루아 영입 후 잉여 분류됐다.",
@@ -493,7 +493,7 @@
   },
   {
    "adherence": "HIGH — '좌측 전용·볼플레잉·과도한 전진 개입' 세 가지가 위치(0.930)·패스(95)·태클/인터셉트(85/87)에서 모두 확인된다. 다만 '좌측 풀백 겸업' 라벨은 실측이 기각한다(LB 0.717).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cb_bpd.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cb_bpd.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급) — TFA 리포트는 아약스 시절(24/25) 기준이므로 현재 서술의 근거로는 스타일 항목만 채용하고 25/26 첼시 사실관계는 SI·Strictly Chelsea(2025-10~2026-04)로 보강. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 0경기. | [2026-09-08 D+2] MEDIUM-HIGH(🇳🇱 1차 + 전술 소스 + 실측 일치). ⚠️ 1경기.",
    "duties": "아약스에서 €46.5m(보너스 제외)에 2025-08-03 영입, 2032년 계약. 왼발잡이로 좌측 센터백과 좌측 풀백을 겸하며 아약스 최연소 주장 기록. 25/26 출전은 계획보다 빨랐고, 구단 스카우트 올로핀자나는 첫 시즌에 큰 부담을 지울 계획이 아니었다고 인정했다 — 콜윌·토신·포파나 부상으로 좌측 풀백이 아닌 센터백 선발이 앞당겨졌다. 지적된 약점은 두 가지다. 마커를 따라 지나치게 높이 올라가 배후를 비운다는 것, 그리고 강한 공격수와의 직접 경합에서 밀린다는 것.\n\n[2026-09-08 D+2 추가 — 아스날전 한정] 🇳🇱 1차 확인: 선제골 어시스트의 실제 형태는 **세트피스 헤더 경합 승리**다 — VoetbalPrimeur: 「Na een vrije trap van Reece James **won Jorrel Hato het kopduel**, waarna de bal voor de voeten van Morgan Rogers viel」(리스 제임스의 프리킥에서 하토가 헤더 경합을 이겼고 볼이 로저스의 발 앞에 떨어졌다). 임무: football.london 「faced with the tough task of **marking Saka** but he stuck to it really well」(사카를 마크하는 힘든 임무를 맡았으나 잘 버텼다). ⭐ 실측·서사 모두 **좌측은 「높은 윙백」이 아니었다** — Coaches' Voice 「Hato tucked back in on the left」, 실측 avg_x 38.98로 CB 둘과 같은 깊이(obs#519). 우측(네투 62.2)과의 비대칭은 설계다. ⚠️ 하베르츠·사카의 2v1이 이 쪽에서 만들어져 동점골이 나왔다. **60분 교체는 부진·부상이 아니라 라비아와 동시 2장 = 「중원 통제 회복」 패키지**이고 개인 사유 서술은 전 언어권 0건이다. 매체 평가는 갈린다 — SI 7점이면서 「Certainly not the long-term solution at wing back」(좌측 윙백으로서 장기 해답은 분명 아니다).\n\n[2026-09-09 D+3 추가] 실측 avg_x 39.0(CB 둘과 같은 깊이)의 **직접 원인이 1차 서술로 확인**됐다(아스날 원정 26/27 R3) — 무공에서 **수비 라인으로 내려와 백4를 형성**한다. tacticalfootballanalysis: \"Hato dropping into the defensive line to form a back four.\" ⇒ obs#519(백4↔백5 하이브리드)의 메커니즘 근거. ⚠️ **이것은 알론소 모델의 실행이 아니라 이탈일 수 있다** — relevo(ES, 08-27 차바리아 프로필)는 알론소 체제의 카리예로를 \"no actúan solo como defensores de banda, sino como auténticos elementos tácticos encargados de estirar la anchura del campo\"(측면 수비수로만 기능하지 않고 경기장의 폭을 늘리는 진짜 전술적 요소)로 규정한다. 60분 차바리아 교체는 그 이탈을 되돌리려는 조치로 읽힌다 — Between the Posts: \"Chavarría played on the outside of Rogers as wing-back.\" 공격 국면에서는 **로저스와 좌측 하프스페이스↔윙을 수직 로테이션**한다. 선제골 기여는 **세컨볼 헤더**이고(vi.nl: \"Hato de bal voor de voeten van Morgan Rogers kon koppen\"), 1차 공중 경합 승자는 라크루아다 — 두 사건이며 D+2 충돌 #3은 폐기됐다. 평점 NL 종합 Standard 6·Sun 6·SI 7, football.london은 사카 마킹과 \"briljant glijdend blok\"(외데고르 공격을 끊은 훌륭한 슬라이딩 블록)을 특기. 브라이턴전에 이어 **2경기 연속 어시스트**. obs#557·#559·#564.",
@@ -510,7 +510,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: fb_att_wb.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: fb_att_wb.",
    "applied_status": "MATCH",
    "confidence": "measured single match; sub-45m samples are descriptive only. / [D+2] 윙백 표본 3경기·백4 LB 표본 1경기(45분) — 결론 방향은 실측·서사 일치(MEDIUM-HIGH).",
    "duties": "높은 좌측 윙백\n\n[2026-09-13 D+1 2차] 알론소 확장 인용(gbnews/AOL): 하토 실점 관여를 「too soft to give them this hope … that momentum that we had changed the mood and the score of the game」로 규정, 교체는 「Tactical. We wanted a player with another profile」(기존 obs#635와 일치). 헐 GK 촐라키스(Konstantinos Tzolakis)의 롱볼이 기점이라는 세부가 si.com(ES)에서 확인됨(28' 바운드 판단 실패 경위 보강).\n\n[2026-09-14 D+2] 역할별 실측 분리: 3-4-2-1 좌측 윙백 3경기 7.08·7.00·7.10(평균 7.06) ↔ 헐전 백4 전통 LB 5.90. Δ −1.16 — 「하토가 못한다」가 아니라 **백4 LB 역할이 그의 취약점을 노출한다**(obs#703). 네덜란드 매체(VI·Voetbalzone)도 SI 분석을 인용해 같은 구분을 적었다.",
@@ -527,7 +527,7 @@
   },
   {
    "adherence": "HIGH — '통제형 볼위너, 창조자 아님'이 위치·기능 양쪽에서 확인된다. 남는 긴장은 하나뿐이다. 커널 최적 역할명이 창조형(dm_dlp)인데 기능축 실측은 명백한 볼위너다 — obs#116이 이미 '카이세도는 첼시의 카마라'로 기록한 미해결 지점이며, 이번 서사 조사도 같은 결론에 도달했다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: dm_dlp.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: dm_dlp.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급) — 25/26 시즌 진행분 및 2026-07 발행 확인. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 0경기.",
    "duties": "25/26 리그 31경기 2,626분(30선발), 3골 1도움. 경고 11회로 리그 최다에 퇴장 1회 — 듀얼 중심 스타일의 가장 선명한 통계적 서명이다. 분석 서사는 그를 '볼위닝 엔진'으로 규정하되, 압박 아래에서의 침착함·전진 패스 의지·템포 조절이 늘어 파괴자에서 완성형 미드필더로 진화했다고 본다. 마레스카는 \"현 시점 세계 최고의 수비형 미드필더 중 하나, 아니 최고\"라고 말했다. 다만 언더라잉은 통제·파괴 쪽에 크게 치우쳐 있다는 단서가 붙는다(수비 지수 78.88 대 공격 위협 69.45, 리그 101위).",
@@ -544,7 +544,7 @@
   },
   {
    "adherence": "HIGH — 마레스카의 '박스 도착' 발언이 기대 득점·유효슛 백분위로 직접 확인된다. 다만 '중앙 10번'이라는 위치 라벨은 실측 중심 x=35.3이 좌측으로 밀어낸다 — 위치는 실측을 채택한다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: wm_wideplm.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: wm_wideplm.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급) — 25/26 시즌 중 발행. ⚠️ 검색으로 '좌측 편향'을 명시한 전용 분석 기사는 확보되지 않았다 — 좌측 판정은 전적으로 우리 실측 그리드 근거다. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제.",
    "duties": "25/26 리그 10골 4도움 3,121분, 팟몹 평균 7.3, 경고 10. 팟몹은 그를 이제 수비형이 아닌 공격형 미드필더로 분류한다. 역할 변화의 1차 근거는 마레스카 발언이다 — 경기와 포지션 이해가 크게 늘었고 \"이제 박스에 도착한다\"며 그것이 공격 자원에게 요구하는 바라고 했다. 로즈니어 체제에서는 중앙 공격 지역 로밍 재량을 받았다. 세트피스 키커이기도 하다(빌라전 FA컵 프리킥, 짧은 코너로 파머 결승골 유도).",
@@ -561,7 +561,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "measured single match; sub-45m samples are descriptive only.",
    "duties": "후반 볼 순환 피벗",
@@ -578,7 +578,7 @@
   },
   {
    "adherence": "MEDIUM — '우측이 낫다'는 실측이 강하게 지지한다(RM 0.875 대 LM 0.316). 그러나 '중앙 10번 전환' 실험 서사는 실측이 지지하지 않는다 — 중심 x=65.4와 전방 질량 0.59는 중앙 미드필드가 아니라 우측 전방이다. 서사 기각, 실측 채택.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: wm_winger.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: wm_winger.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급) — 2025~2026 발행 확인. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 0경기. | [2026-09-08 D+2] MEDIUM-HIGH(전술 서술 3소스 + 실측). ⚠️ 대인 추종은 이 상대(칼라피오리) 고유일 수 있다.",
    "duties": "25/26 전 대회 38경기 중 우측 23·좌측 13·중앙 2로 배치됐고 산출은 우측이 우세했다(우측 5골 3도움 대 좌측 2골 1도움, 90분당도 동일 방향). 스콰카의 논지는 그가 혼돈형·기동형 드리블러라 좌측 터치라인에 묶으면 '제치고 크로스'로 선택지가 좁아지고, 우측에서 안으로 접을 때 선택지가 늘어난다는 것이다. 로즈니어는 여기서 더 나아가 중앙 10번으로도 실험했다(헐시티전, 바르셀로나전 최전방 드리프트). 리그 34경기 30선발 5골 6도움, 크로스 187회.\n\n[2026-09-08 D+2 추가 — 아스날전 한정] 우측 윙백으로 선발돼 **기본 위치가 「높고 전진된」 쪽**이었고 수비 시에만 라인으로 내려왔다 — Coaches' Voice: 「Neto **dropped from his higher, more advanced position** into a right wing-back role on the defensive line」. ⭐ 그의 전진에 **우측 CB(아체암퐁)가 연동**해 우측은 2인 전진 블록이 됐다(좌측 하토는 단독 접힘). 실측 avg_x 62.2 vs 하토 38.98 — 좌우 비대칭은 설계다(obs#519). ⚠️ 임무의 다른 절반은 **칼라피오리 대인 추종**이었다 — Sky 캐러거: 「basically Neto follow Calafiori wherever he goes」. 그가 따라 나가면 아체암퐁이 와이드에 고립돼 사실상 백4가 됐다. ⚠️ 매체 평가 분열: Evening Standard 7(골대 강타·「지칠 줄 모르고」) ↔ football.london 5(「end product was pretty poor」). SI: 「The idea of Neto at wing back is certainly better than the reality」(윙백 네투라는 발상은 확실히 현실보다 낫다). 81분 에스테방과 교체.\n\n[2026-09-09 D+3 추가] 무공 임무가 명시됐다(아스날 원정 26/27 R3) — 명목 우측 윙백이나 **수비 국면에 미드필드 라인으로 올라가 상대 인버티드 풀백(칼라피오리)에 붙는다**. Between the Posts: \"In defensive phases, Neto was often pushed up into the midfield line to stay close to Calafiori.\"(수비 국면에서 네투는 칼라피오리에 붙어 있으려고 자주 미드필드 라인으로 밀려 올라갔다.) ⇒ 이것이 아체암퐁을 우측 풀백 역할로 밀어내고 첼시를 4-4-2로 접히게 한 **연쇄의 시작점**이다(obs#564). 온볼에서는 **우측 폭을 고정**하고 아체암퐁이 언더랩한다 — \"Neto who held the width on the right\". 결승골 국면에서는 칼라피오리의 하프스페이스 침투에 라크루아와 함께 끌려갔다. 81분 에스테방과 교체(4번째 소스 tacticalfootballanalysis가 확증 — chelseafc.com 공식 리포트의 반대 기술은 오기다). FR HommeDuMatch 6.5. obs#562·#564.",
@@ -595,7 +595,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "measured single match; sub-45m samples are descriptive only.",
    "duties": "후반 우측 운반자\n\n[2026-09-13 D+1 2차] themastermindsite.com(시즌 통합 전술 블로그, 2026-09-12)이 인게임 장면 묘사: 볼이 측면에서 정체되자 알론소가 「push, push, higher, push!」를 외쳐 팀 전체가 전진, 볼 탈환 후 네투 쪽 역습 전환으로 이어졌다고 서술 — 특정 시각 미표기, 이 경기 내 장면인지 시즌 다른 경기 사례인지 기사 자체가 분리하지 않음(obs#652 참조).",
@@ -612,7 +612,7 @@
   },
   {
    "adherence": "MEDIUM — '우측 하프스페이스 배치'는 실측 강정합. 그러나 '터치라인에 고립됐다'는 비판은 실측이 부분 기각한다 — 중심 x=65는 터치라인(x=86)이 아니라 하프스페이스다. '중앙 10번이 맞다'는 여론도 실측 CAM 0.676이 지지하지 않는다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: wm_wideplm.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: wm_wideplm.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급, Premier League 공식 분석은 2티어급) — 25/26 시즌 중~시즌 후 발행. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 0경기. | [2026-09-08 D+2] MEDIUM(서사는 확보했으나 수비 부하 논점의 독립 소스가 부족하다). ⚠️ 1경기.",
    "duties": "로즈니어 체제에서 주로 우측과 우측 하프스페이스에 배치됐다 — 마레스카 시절의 전방 프리롤을 좁힌 것으로, 오버래핑 풀백과의 조합을 위한 설계였고 엔소에게 중앙 로밍을 넘긴 결과이기도 하다. 부상으로 파행된 시즌이었고 리그 26경기 10골 1도움에 그쳤다(전 시즌 골관여 17→10). 비판의 초점은 터치라인 고립이며, 미켈은 10번 기용을, 투헬은 대표팀에서 중앙 해방을 택했다. 데이터 서사는 다르게 읽는다 — 빅찬스 빌드업 관여는 늘고 슈터로 공급받는 빈도는 줄었으나 위협 프로필 자체는 그대로라는 것이다. 26/27 알론소 예상 XI에서는 로저스와 함께 2×10 중 하나이며 '비르츠형 인버티드' 역할이 기대된다.\n\n[2026-09-08 D+2 추가 — 아스날전 한정] 무공에서 **로저스와 대칭으로** 미드필드 4의 양옆에 내려왔다 — Coaches' Voice: 「Cole Palmer and Morgan Rogers **dropped either side of the midfield four**」. ⇒ 「한 명은 안쪽 포켓·한 명은 하강」이라는 **비대칭 분담을 지지하는 1차 서술은 0건**이다(obs#524). 온볼에서는 창조 주도자로 안으로 접혔고 볼을 잡으러 계속 내려왔으며, 아스날이 사람을 붙여 깊은 곳까지 밀어냈다(Football Made Simple). ⚠️ 산출 부재가 공통 평가다 — Evening Standard 5 「Saw plenty of the ball but **no telling impact**」(볼은 많이 만졌지만 결정적 영향은 없었다), NBC 5.5, football.london 5. 실측은 「조용했다」가 아니라 **「관여 많고 산출 없음」**을 지지한다(최종 3선 패스 20회 성공·빅찬스 창출 1, Foot Mercato). ⚠️ 수비 부하 논점: 같은 분석 채널이 풀럼전에서 이미 「중앙 공격 / 와이드 수비」 조합의 부담을 지적했고 이 경기에서 재현됐다 — 다만 두 관찰이 **같은 분석자**라 독립 소스 1건이 더 필요하다.\n\n[2026-09-09 D+3 추가] 공격 국면 임무가 처음으로 1차 서술됐다(아스날 원정 26/27 R3) — 우측 하프스페이스에서 **더 깊이 하강해** 볼을 픽업하는 「촉매」이고, 중앙으로 배회할 자유가 부여돼 있다. Between the Posts: \"All of this helped clear space for Palmer to drop deeper in the right halfspace, although he also had freedom to roam into central areas too. With the freedom given to him by Alonso, Palmer becomes something of a catalyst for Chelsea's attacks, drifting into deeper areas to pick up the ball and try to change the picture using his creativity.\"(이 모든 것이 파머가 우측 하프스페이스에서 더 깊이 내려올 공간을 열었고, 중앙 배회 자유도 있었다. 알론소가 준 자유 덕에 파머는 첼시 공격의 촉매가 된다.) ⇒ 게임 슬롯 함의: **하강형 크리에이터**이며 전방 고정형이 아니다. 무공 임무는 **압박 높이에 따라 뒤바뀐다** — 높은 압박에서는 주앙 페드루와 **전방 2인**(tacticalfootballanalysis: \"Palmer joining João Pedro in the front two\"), 로우블록에서는 미드필드 4의 옆(Coaches' Voice). ⚠️ 「중앙 공격 / 와이드 수비」 부하 논점은 **파머에게는 미해결**이다 — 같은 풀럼전에 대해 Football Made Simple은 부정, ReadChelsea는 긍정(Opta 볼 리커버리 7·듀얼 승 10)으로 정반대다. 이 경기 평점은 4개 언어권이 수렴해 혹평(EN 5~6.5 · FR HommeDuMatch 6 + 경고). obs#558·#559·#560.",
@@ -629,7 +629,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "measured single match; sub-45m samples are descriptive only.",
    "duties": "우측 하프스페이스 창조자",
@@ -646,7 +646,7 @@
   },
   {
    "adherence": "HIGH — 폴스나인·드롭 서사가 그리드(CAM 0.718 > ST 0.624)와 파울 유도·경합 백분위로 이중 확인된다. 다만 로즈니어의 '중앙 고정' 교정 효과는 우리 6경기 표본으로 분리 검증되지 않는다 — 시즌 후반 표본이 따로 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: st_false9.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: st_false9.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급, Between the Posts·TFA는 전술 전문 매체) — 25/26 시즌 중~후 발행. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제이며 알론소 체제 0경기. | [2026-09-08 D+2] MEDIUM-HIGH(무공·공격 양 국면 서술 + 🇧🇷 용어 일치). ⚠️ 1경기 · 국면 편향 미통제.",
    "duties": "애초 영입 의도가 순수 9번이 아니었다 — 델랍 뒤에서 연결하고 내려와 만들며 제공권을 보태는 역할이었고, 프로필 비교 대상으로 피르미누가 거론됐다. 마레스카 체제 실행은 폴스나인에 가까웠다. 맨시티전에서는 반복적으로 내려와 시티 센터백을 끌어냄으로써 네투·에스테방에게 1v1 채널을 열었다. 문제는 구조였다 — 파머·엔소·주앙 페드루가 모두 내려오려 해 셋을 동시에 넣기 어려웠다. 로즈니어는 이를 교정해 그를 중앙에 고정시켰고 박스 안 터치·슈팅이 급증하며 연초 이후 팀 내 최다 골관여를 기록했다. 26/27 알론소 예상 XI에서도 최전방이다.\n\n[2026-09-08 D+2 추가 — 아스날전 한정] ⭐ **하강형 false 9가 아니라 「최전방 고정 + 등지고 받는 연결형 9번」**이었다. 무공: Coaches' Voice 「João Pedro often **screened the central pivot** and was ready to release」(자주 중앙 피벗을 차단하며 튀어나갈 준비를 했다) — 최전방 잔류이고 하강 패턴과 양립하지 않는다. 공격: 「released Pedro Neto with a **back-to-goal chop of over 50 yards**」(골대를 등진 채 50야드가 넘는 전환 패스로 네투를 풀어줬다). 🇧🇷 포르투갈어 매체는 일관되게 `centroavante`(고정 9번)로 쓰고 **`falso nove`를 쓴 포르투갈어 1차 소스는 0건**이다. ⇒ obs#468(최적합 st_false9 → st_advanced 역전)을 서사가 독립 지지한다(obs#524). ⚠️ 아스날은 그에게 **맨마킹을 붙였다** — 아르테타 회견: 「playing man-to-man against João Pedro — he was phenomenal」. ⚠️ 이 경기는 점유 45% 열세다 — 우세 경기에서 하강형이 나오는지는 미검증(잭슨 obs#446형 국면 반응 가능성 미배제).",
@@ -663,7 +663,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "measured single match; sub-45m samples are descriptive only.",
    "duties": "침투+홀드업 9번",
@@ -680,7 +680,7 @@
   },
   {
    "adherence": "HIGH — '중앙 인버티드 딥 플레이메이커'가 위치(RDM 0.772)와 패스·롱볼 백분위 양쪽에서 확인된다. 유일한 반증은 '크로싱이 줄었다'는 서술로, 90분당 효율 기준으로는 성립하지 않는다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: dm_dlp.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: dm_dlp.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급, Premier League 공식 분석은 2티어급) — 2026-01 이후 발행 확인. ⚠️ 실측 표본 3경기. ⚠️ 체제 캐비앗: 실측·팟몹 모두 25/26 마레스카·로즈니어 체제. | [2026-09-08 D+2] MEDIUM-HIGH(책임 귀속 3중 일치 + 구조 서술 2소스). ⚠️ Yardbarker의 인과 연결은 시점이 어긋난다.",
    "duties": "25/26 리그 9선발 중 7회는 명목상 우측 풀백이었으나 히트맵상 터치를 중앙에 크게 몰았고, 토트넘·아스날·바이에른·바르셀로나전은 정식 중앙 미드필더로 선발됐다. 설계 의도는 두 갈래다 — 엘리트 패스 레인지를 중앙에서 쓰고, 터치라인 스프린트 부하(햄스트링 병력의 원인으로 지목)를 줄이는 것. 빌드업에서는 백3 + 안쪽 두 명의 딥 식스 구조에서 그가 한 축이고, 반대편 윙백이 접히면 그가 센터백 사이로 내려간다. 크로스는 4.52/90으로 과거 약 6/90보다 줄었다. 한 스카우트 리포트는 그를 선발보다 '슈퍼 서브'로 쓰는 편이 낫다고 본다.\n\n[2026-09-08 D+2 추가 — 아스날전 한정] 이 경기 결승골(50분 외데고르)의 **개인 책임 귀속이 그에게 3중으로 모인다** — Coaches' Voice 「With James **unable to recover into a more central position** to track the run in behind by Ødegaard」 · NBC 6.5 「lost Odegaard on the goal. That was big」 · football.london 5 「should have been more alert to the danger」. ⭐ 다만 구조 판정은 개인이 아니다: 첼시는 **더블 피벗뿐**이라 와이드 오버로드가 피벗 하나를 끌어내면 남은 하나가 광활한 중앙을 혼자 맡는다(Football Made Simple, obs#521). Coaches' Voice도 「Lavia and James were attracted to Tzolis and Ødegaard」로 같은 인과를 쓴다. ⭐ 온볼에서는 **아스날의 라이스처럼 CB 사이로 내려와 배급**했고(Zekko), 아스날 블록 앞에서 경기를 조율했다(Football Made Simple). 선제골 프리킥 키커. ⚠️ 60분 이후 라비아→귀스토 교체로 **천연 라이트백 2명이 중원**을 이룬 구조가 비판받았다(Yardbarker) — 단 결승골은 50분이라 그 구간 밖이다.\n\n[2026-09-09 D+3 추가] ⭐⭐ 이 경기 피벗 배치는 **설계가 아니라 비상 구성**임이 확정됐다(아스날 원정 26/27 R3). 카이세도 부상(2라운드 브라이턴전 조기 복귀 후 재악화) + 엔소 페르난데스 맨시티 이적 + 라민 카마라 영입 무산이 겹쳐, 본직 라이트백인 주장이 **선발부터** 라비아 옆 피벗을 맡았다. ReadChelsea: \"Caicedo's absence left Alonso with an unusual midfield partnership. Reece James moved inside alongside Romeo Lavia.\" · Chelsea FC Online: \"two natural right-backs in central midfield... That bit of improvisation is a consequence of a manic deadline day.\" ⇒ ⛔ **게임 구현에서 「제임스 = 피벗」을 알론소 체제의 정본 슬롯으로 고정하면 안 된다.** 알론소 체제 첼시의 정본 피벗 구성은 아직 한 번도 실측된 적이 없다. 60분 귀스토 투입 후에는 **더 일관되게 낮은 역할**로 고정됐다 — Between the Posts: \"Gusto became part of Chelsea's right-sided rotations allowing James to take a more consistently deeper role.\" 실점 관여: 동점골에서 라비아와 함께 **박스 앞 보호 결손**(BTP), 결승골에서 외데고르 추적 실패 — 단 BTP는 센터백까지 포함한 **집단 미추적**으로 서술해 개인 단독 귀속을 완화한다. 선제골 프리킥 배급자. FR HommeDuMatch 6.5. obs#561·#562·#563.",
@@ -697,7 +697,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: dm_dlp.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: dm_dlp.",
    "applied_status": "MATCH",
    "confidence": "measured single match; sub-45m samples are descriptive only.",
    "duties": "우측 피벗·전환 안전장치\n\n[2026-09-14 D+2] 헐전 RDM 기용은 **세트피스 전담**을 포함했다 — 슛 3개 전부 프리킥, 코너 7·크로스 7 직접 처리, 정확패스 팀 최다(실측 86중 81). 78′ 귀스토 교체 후 RB로 이동(obs#706).",
@@ -714,7 +714,7 @@
   },
   {
    "adherence": "MEDIUM-HIGH(기능) / MEDIUM(위치) — 드리블 3.089/90(백분위 95)과 xG·xA/90 상위 17%·13%가 공격 재능 서사를 지지한다. 다만 터치라인 고정은 중심 x=76.1이 완화하고, 중앙 전환 예고는 3경기 위치 표본 및 알론소 공식전 0경기로 아직 판정할 수 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: wm_widemid.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: wm_widemid.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급, Premier League 공식 분석은 2티어급) + FotMob 25/26 PL 상세 41지표 — 2026-08-14 수집. ⚠️ 실측 위치 3경기. ⚠️ 체제 캐비앗: 실측과 리그 스탯은 25/26 마레스카·로즈니어 체제다. | [2026-09-08 D+2] MEDIUM(🇧🇷 1차 + 영어 평점 일치). ⚠️ 9분 표본이라 역할 판정 불가.",
    "duties": "팔메이라스에서 £29m로 합류해 25/26이 첼시 데뷔 시즌이었다. 팔메이라스에서는 우측 윙어로 주로 넓게 유지했고 인버티드 우측 풀백과 공격형 미드필더의 지원을 받았다. 첼시에서 마레스카는 장기적으로 파머식 중앙화를 예고하면서도 당분간 윙어로 기용했고, 넓게 선발해도 중앙 터치를 허용했다. 웨스트햄 5-1에서는 엔소·주앙 페드루와 함께 델랍 뒤 세 명이 움직이는 구조의 한 축이었다. 10/4 리버풀전 95분 결승골이 분기점. 스콰카는 그를 리그 윙어·와이드 미드필더 중 최고 점수(75%)로 평가했다. 순수 스피드형은 아니다 — 최고 속도 32.75km/h로 팀 내 11위에 불과하다. 26/27 알론소 3-4-2-1에서는 전방 3인 중 하나로 안으로 들어오는 역할이 예상되며, 그를 윙백으로 쓰는 시나리오는 명시적으로 부정됐다.\n\n[2026-09-08 D+2 추가 — 아스날전 한정] 🇧🇷 **3경기 연속 벤치**였고 81분 네투와 교체 투입돼 9분을 뛰었다 — dgabc: 「ficou pela **terceira vez seguida na reserva**. Restando apenas 10 minutos, Alonso finalmente recorreu ao brasileiro」(3경기 연속 벤치에 머물렀다. 10분만 남기고서야 알론소는 마침내 이 브라질 선수를 꺼내 들었다). 투입 효과는 호평이다 — football.london 7/10(교체 선수 최고) 「made Chelsea much more threatening after his introduction」, 89분 개인기 후 박스 밖 슛을 라야가 선방. ⇒ **서열은 밀려 있으나 투입 시 산출은 나온다**는 대비가 3경기째 반복된다. ⚠️ 실측 hp=8(9분)로 그리드 무효 — 시즌 집계에 들어가지 않는다.\n\n[2026-09-09 D+3 추가] 3경기 연속 벤치의 **구조적 이유**가 붙었다(D+2는 사실만 기록) — 🇵🇹/🇧🇷 매체의 반복 독법은 **본인이 10번을 원하지만 그 자리에 파머와 로저스가 있어** 윙어로밖에 출전 기회가 없다는 것이다. ⇒ **폼 문제가 아니라 슬롯 경합**이고, 게임 구현에서 그의 최적 슬롯을 10번으로 잡으면 이 체제에서는 출전 자체가 막힌다. 아스날전 81분 네투와 교체 투입해 89분 강한 감아차기로 라야의 손끝 선방을 끌어냈다(FR HommeDuMatch 6.5, 유효슛 1). ⚠️ 🇧🇷 portaldemocrata 원문은 D+3에도 미확보(403이 아니라 사이트 DB 연결 장애). obs#561 맥락.",
@@ -731,7 +731,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "measured single match; sub-45m samples are descriptive only.",
    "duties": "막판 우측 포켓 교체",
@@ -748,7 +748,7 @@
   },
   {
    "adherence": "MEDIUM — 서사의 '넓게 섰다 안으로 접힘'·'왕복 풀백 아님'은 실측 tool_x 75.6(RB보다 안쪽)·avg_x 43.0(낮은 전진도)과 정합. 다만 백3 RCB인지 백4 RB인지는 **실측이 판별하지 못한다** — 두 슬롯 적합차 Δ.003.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cb_bpd, fb_wingback.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cb_bpd, fb_wingback.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급) — 가설 지위(docs/30 영상·서사 절차 2단계). 위치 주장은 실측 우선. ⚠️ 1경기 표본. FBref 백분위 403 미확보. 신장 185cm vs 1.90m 소스 충돌. 알론소 체제 선발 지위도 소스 충돌(‘untouchable’ vs ‘두 형태 모두 선발 예상 안 됨’). | [2026-09-08 D+2] MEDIUM-HIGH(전술 서술 4소스 + 실측 좌표 일치). ⚠️ 1경기 · 상대가 인버티드 풀백(칼라피오리)을 쓴 경기다. | [2026-09-10 D+1] LOW-MEDIUM(평점 기사 1소스, 컵 로테이션 1경기). 전술 분석 소스 0건.",
    "duties": "우측 볼전진 수비수. 서사: 본직 라이트 CB이며 백3의 우측 또는 백4의 RB·인버티드 FB·DM까지 겸업하는 다역. 1페이즈에서 넓게 서다가 살짝 안으로 접히는 유형이며 전통적 상하 왕복 풀백이 '아니다'라고 명시됨. 밀란전에서는 상대 레프트윙어(레앙) 대인 처리를 맡았다고 보도.\n\n[2026-09-08 D+2 추가 — 아스날전(2026-09-06) 한정] ⭐⭐ 「넓게 서다 살짝 접히는」 유형이 아니라 **전진형 우측 CB**로 쓰였다. Coaches' Voice: 「When Chelsea won possession he[Neto] was advanced on to the last line on the right-hand side, **supported by advancing right centre-back Josh Acheampong**」(첼시가 볼을 회수하면 네투는 우측 최전선까지 전진했고, 전진하는 우측 센터백 아체암퐁이 이를 지원했다). Sky 캐러거: 「making overlapping runs… **getting into the box**. A center back in a back three would not make those runs」(오버랩 런을 했고 박스 안까지 들어갔다. 백3의 CB는 그런 런을 하지 않는다). 실측 avg_x 50.0으로 다른 두 CB(38.3·38.4)보다 11.7 높다. ⇒ 터치 21회·hp 28은 부진이 아니라 **볼 회로 밖 높이에 있었던 결과**다(obs#520). ⚠️ 결승골은 그가 비운 자리에서 나왔다 — 칼라피오리 하프스페이스 침투가 라크루아와 「아체암퐁 자리를 메우던」 네투를 끌어당겼다. ⭐ 신규: **롱스로인 담당**(Evening Standard). ⚠️ 이 선발은 전술 선택이 아니라 **콜윌 컨디션 문제에 따른 대체**다(알론소 경기 전 회견) — 임무는 슬롯에 귀속되고 사람은 가변이다.\n\n[2026-09-09 D+3 추가] avg_x 50.0(CB 둘보다 11.7 높음)의 원인이 **이중**임이 밝혀졌다(아스날 원정 26/27 R3) — ⑴ **온볼**: 폭을 유지한 네투를 **언더랩**하는 전진 CB. Between the Posts: \"the very active forward movements of Acheampong down the right side, often underlapping Neto who held the width on the right.\"(아체암퐁의 매우 활발한 우측 전진 움직임, 폭을 유지한 네투를 자주 언더랩했다.) ⑵ **무공**: 네투가 칼라피오리를 따라 미드필드 라인으로 올라가면서 **촐리스를 상대하는 우측 풀백 역할**을 떠맡았다. Between the Posts: \"This left Acheampong as the one who would play against Tzolis on the left, and Chelsea therefore found themselves in 4-4-2-like variations.\" ⇒ **두 국면 모두 그를 앞에 둔다.** D+2 정정 ②(「얕음」이 아니라 「전진」)를 유지하면서 무공 층위를 추가한다. FR HommeDuMatch 6: \"un match correct en défense, bien que discret dans la construction du jeu\"(수비는 무난, 빌드업에서는 조용) — 터치 21회와 정합. obs#564.\n\n[2026-09-10 D+1 추가 — 리즈전(2026-09-09, 카라바오컵 R3) 한정] 백4의 **RB**로 90분. 아스날전에서 축적한 전진형 프로파일의 **이면**이 드러났다 — Chelsea FC Online 5/10: 「constantly flustered as the visitors attacked on the transition」(전환 공격에 시종 흔들렸다). 초반 연계 자체는 양호. ⇒ 전진 성향은 유지되나 되돌아오는 커버 부담이 비용으로 나타나는 경기가 존재한다. ⚠️ 컵 로테이션 1경기·평점 기사(3티어) 단일 소스.",
@@ -765,7 +765,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "measured single match; sub-45m samples are descriptive only.",
    "duties": "넓은 우측 커버 CB\n\n[2026-09-11 D+2] 2026-09-09 리즈(홈, EFL컵 3R)에서는 **RB로 선발**(90분·7.1, 팀 내 최고 평점급 수비수). D+1 확보 서술 「constantly flustered as the visitors attacked on the transition」(전환 공격에 시종 흔들렸다, CFC Online 5/10)의 원인 축이 D+2에 특정됐다 — 전반 중앙 2인(바르코+16세 왓슨)이 듀얼·세컨드볼을 못 잡아 리즈가 우측으로 반복 전개했고(48' 실점도 암파두의 우측 전진 기점), 아체암퐁의 전진형 성향이 되돌아오는 커버 부담으로 전환됐다(obs#602). ⇒ **개인 성향의 비용이 아니라 중앙 차단 실패가 선행 원인**이라는 층위를 추가한다.",
@@ -782,7 +782,7 @@
   },
   {
    "adherence": "HIGH — 서사의 '딥 스크린 + 압박저항 + 라인 사이 배급'이 dm_dlp(딥라잉 플레이메이커) .913과 강정합. 정량 근거도 방향 일치: 라인 사이 패스 성공 4.57/90 PL 미드필더 1위·볼 상실 5.75/90 3번째로 적음(24/25). '중앙 이탈 없음' vs Roaming 포커스는 경미한 긴장이나 Δ가 노이즈 밖이라 적합 우선.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: dm_dlp.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: dm_dlp.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급) — 가설 지위(docs/30 영상·서사 절차 2단계). 위치 주장은 실측 우선. ⚠️ 부상 이력이 지배적 캐비앗(24/25 선발 10회, 26-07 햄스트링). PFF 등급은 404로 검색 스니펫 경유 — 저신뢰. 피벗 구성도 소스 충돌(카이세도+엔소 예상 vs 실제 카이세도+라비아 선발).",
    "duties": "백라인 앞 딥 스크린. 서사: 단독 6번 또는 더블 피벗의 한 축이며 '중앙을 거의 벗어나지 않는' 규율형. 압박 저항이 반복 지명된 최대 강점. 밀란전에서는 모드리치 대인 마킹 임무. 본인 발언상 카이세도가 파괴자 역할을 분담.",
@@ -799,7 +799,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "measured single match; sub-45m samples are descriptive only.",
    "duties": "전진 연결형 피벗",
@@ -816,7 +816,7 @@
   },
   {
    "adherence": "MEDIUM-HIGH — 측면은 **실측이 서사를 기각**(우측 예측 → 좌측 실측, docs/30 3단계 '위치 주장은 실측이 이긴다'). 높이·폭 주장은 실측 확인(tool_x 16.1·avg_x 65.9). 기능 주장(드리블·크로스)은 그리드 밖 층이라 가설 유지.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: wm_widemid, wm_winger.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: wm_widemid, wm_winger.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급) — 가설 지위(docs/30 영상·서사 절차 2단계). 위치 주장은 실측 우선. ⚠️ 소스 내부 모순 다수: 공중볼을 '강점'으로 쓴 리포트가 자기 수치로 48%를 제시(2월판은 51.4%를 약점으로 분류); 피지컬 지배력·리스크 성향도 소스간 정반대. 1경기 표본.",
    "duties": "매우 높고 넓은 공격형 윙백. 서사: 본직은 **라이트** 백/윙백이며 양측면·백3 3번째 CB·인버티드 FB까지 되는 '유니콘' 다역. 1v1 고립을 의도적으로 부여받는 유형. 드리블 다량·양발 크로스가 핵심 무기.",
@@ -833,7 +833,7 @@
   },
   {
    "adherence": "MEDIUM — '드롭오프' 위치 주장은 실측 강확인(동일 경기 내 ST 두 명 전진도 대조). 다만 ⚠️ hp=18로 그리드 유효 문턱(15, docs/30 ③)을 겨우 넘겨 그리드 형태 신뢰도는 낮다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: st_advanced, st_false9.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: st_advanced, st_false9.",
    "applied_status": "MATCH",
    "confidence": "서사 소스(3티어급) — 가설 지위(docs/30 영상·서사 절차 2단계). 위치 주장은 실측 우선. ⚠️ **26/27 첼시 역할을 다룬 전술 소스가 없다** — 스타일 서술 전량이 브라이턴 시절(2024~2026). 35세·단기 계약. hp=18 경계 표본. 첼시 내 비중도 소스 충돌(depth 옵션 vs '핵심 역할'). | [2026-09-10 D+1] MEDIUM(스타일 서술 확보 — 26/27 첼시 역할 소스 결손이 일부 해소됐으나 여전히 평점 기사 1소스·컵 1경기).",
    "duties": "베테랑 백업 9번. 서사: 데제르비 체제에서는 폴스나인, 휘르첼러 체제 24/25부터는 순수 центре포워드. 움직임의 핵심은 **내려받기** — 짧게 떨어져 CB를 끌어내 배후를 열고, CB-풀백 사이 하프스페이스에 위치. 압박의 기준점(프레스 리더)이며 등지고 받아 연결하는 역할.\n\n[2026-09-10 D+1 추가 — 리즈전(2026-09-09) 한정] ⭐ 최전방 90분 멀티골(65'·90+4'). Chelsea FC Online 8/10: 「Ran the channels tirelessly」(지치지 않고 채널을 파고들었다) — 영리한 마무리·위치선정. ⚠️ **이 서술은 §5에서 산출한 커널 fit `st_false9/Attack`(sim .703)과 성격이 어긋난다** — false9는 내려받아 연결하는 유형인데 실제 수행은 뒷공간 채널 침투형(포처/타깃 성격)이다. 단일 컵 경기라 처방을 바꾸지 않고 재검증 항목으로 올린다(obs#595). ⚠️ 65' 골에는 상대 GK 체터러 실책 요인이 실려 있다(Yahoo 리즈 평점 4/10: 「Danny Welbeck's strike was straight at him」).\n\n⭐ [2026-09-11 D+2] 2026-09-09 리즈(홈, EFL컵 3R): 멀티골(65'·90+4'). **커널 fit `st_false9`와 성격이 어긋난다는 판정이 4소스로 승격**(obs#606) — false9(내려받아 연결)가 아니라 **박스 안 마무리형 + 채널 침투형**이다. ⒜ Chelsea FC Online 「Ran the channels tirelessly」(지치지 않고 채널을 파고들었다) ⒝ 하셀바인크(Sky Sports) 「wants **to be on the end of things**」(마무리 지점에 있고 싶어한다), 「did the business for Brighton」 ⒞ 알론소 「Danny has done great for sure」 + 프레이밍 「접근법을 크게 바꾸지 않고도 투입할 수 있는 경험 있는 대안」 ⒟ 실측 골 2개 상황(채널 침투 마무리·헤더). **리그 서열은 주앙 페드로 우위**이며 헐시티전(09-12) 첫 리그 선발은 미정.",
@@ -850,7 +850,7 @@
   },
   {
    "adherence": "MEDIUM-HIGH(체제별 분해). 콤파니 서사(딥존 발동·레이오프·좌측 흐름)와 실측 그리드는 **강정합**이다. ⭐ **에메리가 명시적으로 금지한 습관(드롭·좌측 이탈)이 실측에서 그대로 관측된다** — 즉 '임무를 안 지킨다'가 아니라 **체제가 요구한 임무가 서로 반대였다**. 순응도 자체는 콤파니의 공개 옹호로 뒷받침된다. ⚠️ 규율 리스크 1건: 레버쿠젠전 전반 퇴장(25/26 레드 1장과 일치).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: st_advanced, st_false9.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: st_advanced, st_false9.",
    "applied_status": "MATCH",
    "confidence": "MEDIUM-HIGH. ⭐⭐ **체제 혼입이 최대 리스크** — 이 선수는 4개 체제(에메리·포체티노/마레스카·콤파니·알론소) + 대표팀 축이 겹친다. ⭐ **중대 정정: 25/26은 마레스카·로즈니어 첼시가 아니라 바이에른(콤파니) 임대다** — 클럽 경기가 Bundesliga 26·UCL 13·DFB Pokal 4·CWC 3이다. **에메리 밑 잭슨 실측은 존재하지 않는다**(2022/23 비야레알 자료 미보유) — 빌라 적합 서술은 전부 가설이다. ❌ **충돌 ①**: 서사 다수의 '압박 개시·하이 리커버리가 강점' ↔ 실측 리커버리 2.17/90·수비적 행동 백분위 31·클럽 46경기 태클 9. **실측이 이긴다**. ❌ **충돌 ②**: Opta(24/25 PL) **배후 침투 비중 28%**(딜랍 46.1%) ↔ '배후 침투가 본질'이라는 서사. **배후 vs 등지고 받기 ≈ 3:7**이 실측이며 이 선수 프로필의 가장 중요한 단일 수치다. ⚠️ The Athletic 좌측윙 보도는 **재중계 경유·발행일 미확정**이라 가설 지위다. ⚠️ 표본 편중(분데스 45분+ 12경기 중 5경기가 3~5월 폼 회복기). ⛔ 전용 유튜브 개인 분석 **0건**(검색된 것은 하이라이트·토크물이며 미시청이라 인용하지 않았다). ⚠️ **`player_matches.team_code` 오태깅** — 바이에른·세네갈 64경기가 전부 'AVL'로 기록돼 있다(팔리냐 obs#210과 동형).",
    "duties": "⭐ **26/27 알론소 체제에서 그는 9번이 아니다.** 조호르전(08-09) 3-4-3에서 `lineup_pos=LAM` — **딜랍 뒤/왼쪽**의 전방 3선 좌측으로 선발됐다. The Athletic(Simon Johnson)은 첼시가 그를 **좌측 윙으로도 본다**고 보도했고, 알론소는 'Nico is part of the squad' 이상의 역할 언급을 하지 않았다. ⚠️ 체제별로 요구 임무가 서로 반대였다 — **에메리(비야레알 22/23)는 '폴스나인처럼 내려오는 것을 그만두고 고정 9번으로 남아라'며 드롭을 금지**했고, **콤파니(바이에른 25/26)는 '딥존에서 동력을 발동'하는 드롭을 전제로 썼다**.",
@@ -867,7 +867,7 @@
   },
   {
    "adherence": "TRANSFERRED — 이전 팀 임무는 실측으로 확인, 첼시·알론소 체제 수행은 공식전 0경기로 미검증.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: fb_att_wb.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: fb_att_wb.",
    "applied_status": "MATCH",
    "confidence": "HIGH 라요 55경기 원천 / LOW 첼시 역할 투영 | [2026-09-10 D+1] MEDIUM(2소스 일치로 PK 획득자 확정, 파울 대상 이설 1건 잔존).",
    "duties": "라요에서 높은 좌측 폭과 전진을 반복한 공격형 레프트백. 첼시에서는 하토와 경쟁하며 알론소의 비대칭 윙백/풀백 구조에서 외곽 전진 옵션을 제공하는 것이 예상 임무다.\n\n[2026-09-10 D+1 추가 — 리즈전(2026-09-09) 한정] 백4의 **LB**로 90분. ⚠️ **당일 리포트 정정**: 53' PK는 그가 범한 파울이 아니라 **그가 얻어낸 것**이다 — VAVEL 「Daniel James fouled Pep Chavarria in the box」, Chelsea FC Online 「earned the match-winning penalty」. 즉 좌측 박스 침투가 동점 국면의 시발점. 수비 국면 평가는 6/10 「Kept his head above water」(겨우 버텨냈다) 수준. ⚠️ 파울 대상이 네투였다는 이설(YEP 전언)이 있어 미해소.",
@@ -884,7 +884,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "measured single match; sub-45m samples are descriptive only.",
    "duties": "리드 보호 좌측 윙백",
@@ -901,7 +901,7 @@
   },
   {
    "adherence": "LOW-MEDIUM — 스카우트 서사(볼 유지·전진 패스가 강점, 리커버리·인터셉트는 약점)와 조호르전 정성 평가(빌드업 곤란)가 **방향이 어긋난다**. 좌표가 없어 실측 중재가 불가하다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "MEDIUM-LOW. ⛔ **좌표·map25 0** — SofaScore 403 + FotMob 친선 미제공으로 커널 적합(fit_sim) 산출이 불가하다. `game_role_implication`은 **역할 확정이 아니라 시사·보류**다. ⚠️ **풀럼 시절(마르쿠 실바) 서술이 스카우트 자료의 다수**다. 25/26 PL 705분·평균 6.87은 **마레스카·로즈니어 체제 값**이라 알론소 귀속 금지. ⚠️ scoutingstats.ai 프로필은 **게시일 확인 실패**라 보조 근거로만 썼다. ⛔ 전용 유튜브 개인 분석 **0건**(검색된 것은 하이라이트·토크물이며 미시청이라 인용하지 않았다). \n⚠️ **[2026-08-19]** 종전 `source`는 「Chelsea 공식 …」 서술만 있고 **URL·이벤트 ID가 없어 클릭 근거가 성립하지 않았다**(G10 실패). 그가 `squad_entries`에 편입되면서 드러난 결손이고, 실측 이벤트 참조를 추가해 해소했다.",
    "duties": "**백4일 때(유벤투스) LCB — 좌측 반쪽.** **백3일 때(조호르) CCB — 백3 중앙**, 즉 수불로예(우)·안셀미노(좌) 사이의 가장 낮은 꼭짓점이다. ⭐ 이는 알론소 서사(obs#175)의 **'볼플레잉 CB 2명 사이에 더 힘 있는 CB 1명'** 구조에서 **토신을 중앙 파워 CB로 놓았다**는 뜻이며, **obs#198이 '3-4-2-1 CCB는 공석·미정'으로 남긴 슬롯에 실제 배치 사례 1건**을 제공한다.",
@@ -918,8 +918,8 @@
   },
   {
    "adherence": "LOW-MEDIUM — 서사(윙백 소화 가능·고압박 적성)와 배치 사실은 일치하나 **좌표 실측이 0**이라 docs/30 3단계 대조 자체가 불가능하다. 조호르전 현지 평가는 오히려 **'수비수 일을 시킨 공격수'**로 기텐스와 묶어 규율 부족을 지적했다(3-3 실점 3).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 분석 fb_att_wb ↔ 보유 처방 cam_halfwinger, wm_wideplm — 사람 판정 대기.",
-   "applied_status": "CONFLICT",
+   "applied_note": "[2026-09-15 사람 판정] 퀜다 우측 fb_att_wb 시사는 유지하되 처방 신설 금지 — 좌표(map25)가 없어 fit 산출이 불가하다(행 자체에 명시). 재판정 조건: 해당 경기 SofaScore 좌표 확보. (자동 판정 이력: CONFLICT)",
+   "applied_status": "HELD",
    "confidence": "MEDIUM-LOW. ⛔ **좌표·map25 0** — SofaScore 403 + FotMob 친선 미제공으로 커널 적합(fit_sim) 산출이 불가하다. `game_role_implication`은 **역할 확정이 아니라 시사·보류**다. ⚠️ TFA 리포트는 **본문 대부분 유료벽**이고 전술 주장('알론소는 윙백에게 공격적 점프 압박을 요구')은 **레버쿠젠 원형 기반 예측**이라 첼시 실행 근거가 아니다. ⚠️ 스포르팅 자료 혼입 위험. ⚠️ **TFA는 그를 '라이트백/라이트 윙백'으로 규정하는데 Sky는 왼발잡이라고 적는다 — 상충 미해소**. ⛔ 전용 유튜브 개인 분석 **0건**(검색된 것은 하이라이트·토크물이며 미시청이라 인용하지 않았다). ⚠️ 밀란전 교체 시점이 첼시 공식 59분 vs 우리 리포트 58분으로 1분 차가 있다(DB 출전분 32분은 59분 교체와 정합).",
    "duties": "폭 담당 우측 아웃렛. **백4일 때(유벤투스 08-05)** 우측 미드필더로 선발해 기텐스와 좌우 대칭 윙어를 이뤘고, **백3일 때(밀란 08-08 교체·조호르 08-09 선발)** 우측 **윙백**으로 내려 5레인의 우측 최외곽을 단독 점유한다. 밀란전 교체 투입은 **네투가 맡던 우 윙백 자리를 그대로 인계**받은 것이다. ⚠️ 스포르팅에서 아모림의 3-4-2-1 아래 **윙어 → 윙백으로 개조된 이력**이 있어 이 전환이 초행은 아니다(스포르팅 24/25~25/26 자료).",
    "execution": "실측 3경기 — 유벤투스 RM 46분 6.2 · 밀란 교체 32분 6.9 · 조호르 RM 90분 **7.2**(경고 75'). ⛔ **3경기 모두 avg_x/avg_y 결손**이라 전진도·폭을 수치로 검증하지 못한다. 정성 관찰만 존재 — 밀란전 교체 후 74분 근포스트 강타·팔레스트라에게 슛 연결, '후반 윙백들이 안으로 접어 박스에서 슛하는 쪽으로 이동'(Roundtable 2026-08-08).",
@@ -935,7 +935,7 @@
   },
   {
    "adherence": "single-match observation",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "measured single match; sub-45m samples are descriptive only.",
    "duties": "막판 좌측 포켓 교체",
@@ -952,7 +952,7 @@
   },
   {
    "adherence": "MEDIUM — 2경기 표본이고 포메이션이 서로 다르다(4-4-2 ↔ 3-4-3)라 docs/30의 포지션-순수 원칙에서 벗어난 집계다. 위치 판독은 「중앙 밴드」까지만 유효하다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "실측 MEASURED(SofaScore) 2경기 — 단 포메이션 혼합 집계이고 전부 프리시즌 친선이다.",
    "duties": "중앙 공격형 미드필더. 유벤투스전(4-4-2)·조호르전(3-4-3)에 모두 선발로 90분 가까이 뛴 유스 자원. 두 경기 모두 중앙 밴드에 머물렀다.",
@@ -969,7 +969,7 @@
   },
   {
    "adherence": "LOW — 배치는 확인되나 좌표가 없어 '윙백으로 얼마나 내려왔는가'를 판정할 수 없다. 조호르전 정성 평가는 부정적이다(윙백 규율 부족, 실점 3).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "MEDIUM-LOW. ⛔ **좌표·map25 0** — SofaScore 403 + FotMob 친선 미제공으로 커널 적합(fit_sim) 산출이 불가하다. `game_role_implication`은 **역할 확정이 아니라 시사·보류**다. ⚠️ **도르트문트 시절 자료 혼입 위험 크다**. 25/26 첼시 27경기(12선발)는 **마레스카·로즈니어 체제 값**이다. ⚠️ **다수 매체가 '윙백으로 쓴다는 징후 없음 — 일관되게 윙어'로 서술하는데 조호르전 실제 배치는 좌 윙백**이다 — 서사와 배치의 충돌을 그대로 기록한다. ⛔ 전용 유튜브 개인 분석 **0건**(검색된 것은 하이라이트·토크물이며 미시청이라 인용하지 않았다). ",
    "duties": "좌측 폭 담당. **백4일 때(유벤투스)** 좌 미드필더/윙어, **백3일 때(조호르)** 좌 **윙백**. ⭐ 본인이 **'지난 시즌도 두 윙어를 쓰는 4-3-3이었다'**고 말해 스스로를 윙백이 아닌 **좌측 어태커**로 규정한다 — **알론소의 배치와 본인 자기규정이 어긋나는 드문 사례**다.",
@@ -986,7 +986,7 @@
   },
   {
    "adherence": "판정 불가 — 3경기 합계 64분, 좌표 0.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "LOW. ⛔ **좌표·map25 0** — SofaScore 403 + FotMob 친선 미제공으로 커널 적합(fit_sim) 산출이 불가하다. `game_role_implication`은 **역할 확정이 아니라 시사·보류**다. ⚠️ 보카 후니오르스·도르트문트·스트라스부르 임대 시절 자료가 대부분이다. ⚠️ **부상 부위·복귀 시점은 '햄스트링 추정'까지만 확인** — 구단 공식 진단은 확인 실패다. ⛔ 전용 유튜브 개인 분석 **0건**(검색된 것은 하이라이트·토크물이며 미시청이라 인용하지 않았다). ",
    "duties": "교체·로테이션 CB. **백4일 때(유벤투스)** 후반 교체 CB, **백3일 때** 밀란전 79분 하토와 교체돼 백3의 좌측을 이어받았고 조호르전에는 `LCB`로 선발했다. 즉 **세 경기 모두 좌측 반쪽**이다.",
@@ -1003,8 +1003,8 @@
   },
   {
    "adherence": "판정 불가(표본 미달). 우리 실측 1경기·PK 2골로는 순응도를 잴 수 없다. 외부 자료 기준으로는 **입스위치에서 HIGH**(압박 976회·홀드업 80+는 요구 임무의 초과 수행), **마레스카 체제에서 LOW-MEDIUM** — 다만 이것이 **불복이 아니라 시스템 부적합**이라는 것이 Squawka·Opta·PL 세 소스의 공통 진단이다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 이 선수의 처방 행이 아직 없다.",
-   "applied_status": "NO_RX",
+   "applied_note": "[2026-09-15 사람 판정] 스쿼드 밖(델랍 이적) — 반영 대상 아님. 당시 판정: st_advanced 계열 지시·st_false9 반증이나 map25 0행으로 fit 산출 불가. (자동 판정 이력: NO_RX)",
+   "applied_status": "REJECTED",
    "confidence": "LOW-MEDIUM. ⚠️ **최대 한계: 우리 실측이 1경기·PK 2골이고 그리드가 0이다** — 이 행의 정량 내용은 사실상 전부 외부 인용이다. ⚠️ **체제 혼입 위험이 잭슨보다 크다** — 유통 자료의 압도적 다수가 입스위치(맥케나) 시절이고, **그 수치를 첼시 딜랍에 그대로 붙이는 것이 바로 Squawka가 지적한 오류**다. 팀 점유율이 40% ↔ 60%대로 뒤집힌다. ⚠️ 로즈니어 대행 구간·알론소 체제의 딜랍 임무 서술 확인 실패. ⚠️ **공중 경합 승률 4종 소스 전부 확보 실패**. ⚠️ 25/26 출전 기록 소스 충돌(PL 28경기 1골 vs 전 대회 41경기 2골 4도움) — 독립 검증 실패. ⛔ 전용 유튜브 개인 분석 **0건**(검색된 것은 하이라이트·토크물이며 미시청이라 인용하지 않았다). ",
    "duties": "⑴ **입스위치(맥케나 24/25)** — 저점유(리그 최저 40%) 직접 축구의 **유일한 전방 출구**로 배후 침투 + 홀드업 + 전방 압박의 3중 부하를 혼자 졌다(팀 36골 중 12골). ⑵ **첼시(마레스카 25/26)** — 고점유 구조에서 **연결형 9번**을 요구받았고 이것이 프로필과 정면 충돌했다. ⑶ **첼시(알론소 26/27)** — 조호르전 3-4-3의 **최전방 9번**(잭슨이 그 왼쪽/뒤). ⚠️ **알론소의 딜랍 직접 발언은 확인 실패**이며 보도는 전부 '선발 기용 자체가 메시지'라는 기자 해석이다.",
    "execution": "⛔ **우리 DB 실측은 1경기뿐이다** — 조호르(2026-08-09) 90분 · FotMob 평점 **9.0** · PK 2골(수집 전 경기 통틀어 최고 평점). **map25·좌표·터치·듀얼 전부 미수집이며 0이 아니다.** ⭐ 외부 실측(Opta, 2025-06-25, **입스위치 24/25**): 오프더볼 런 594회 중 **배후 침투 46.1%**(잭슨 28%) · 전 지역 압박 **976회**(PL 5위 이내) · 홀드업 80+회(PL ST 4위 이내) · 박스 내 슛 48회 · **12골/9.3xG(+2.7)** · 슛 전환율 **17.7%**(잭슨 13.2%) · 듀얼 413회 성공률 38% · 슛으로 끝난 볼 캐리 26회(PL 중앙 공격수 1위). ⚠️ **첼시 25/26 붕괴**: PL 28경기 1,100분 **1골**, npxG/90 0.24. 햄스트링·어깨 부상으로 리듬이 끊겼다.",
@@ -1020,7 +1020,7 @@
   },
   {
    "adherence": "HIGH(위치) / LOW(역할) — 위치는 CCB 앵커와 Δ0.5로 정합하나 **1경기 표본**이고 데뷔전이다. 수비 국면 근거가 거의 없다(태클 1).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cb_bpd.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cb_bpd.",
    "applied_status": "MATCH",
    "confidence": "실측 MEASURED(SofaScore) — 단 프리시즌 친선 1경기이고 알론소 공식전 0경기다. 등번호 미배정 상태(첼시 공식 스쿼드 페이지). / measured single match; sub-45m samples are descriptive only. | [2026-09-08 D+2] MEDIUM(구조 서술은 1차 소스 확보, 개인 실책 주장은 기각·미확인). ⚠️ 평점 분산이 커 매체 합의가 없다. | [2026-09-10 D+1] LOW-MEDIUM(평점 기사 1소스, 컵 로테이션 1경기).",
    "duties": "백3 중앙. 소시에다드전 첼시 데뷔전에서 라크루아가 백3의 **중앙**을 맡았다(콜윌 좌·포파나 우). 볼 소유 시 전진 없이 중앙에 남아 배급하는 형태.\n\n[2026-09-08 D+2 추가 — 아스날전 한정] ⛔ **「실책으로 실점에 관여」 서술은 1차 소스로 확인되지 않았다** — 🇫🇷 L'Équipe·RMC는 이 경기 기사 0건, Foot Mercato는 스탯 페이지뿐이다. 「하베르츠 슛이 라크루아 다리 사이로 통과했다」는 **3티어 팬 채널 서술이라 채택하지 않는다**. 1차 소스가 말하는 것은 개인 실책이 아니라 구조다 — Coaches' Voice: 「Maxence Lacroix was **drawn out wider to engage Havertz**, leaving **big horizontal distances** between Chelsea's defensive line」(하베르츠를 상대하러 더 넓게 끌려 나갔고 수비 라인 사이에 큰 수평 간격을 남겼다). 그 원인은 같은 문장이 지목하듯 **아체암퐁의 전진**이다(obs#521). ⚠️ 이 경기 최대 평점 분산: Evening Standard 4 「Looked a bit behind the pace of the game」 ↔ football.london 6 「Won plenty in the air」 ↔ NBC 6.5 「No problems on the day」 ↔ SI 6.5. 58분 경고. 본인: 「I think it's not easy to play there but we did good… We deserved more」(VAVEL).\n\n[2026-09-10 D+1 추가 — 리즈전(2026-09-09) 한정] 백4의 **RCB**로 90분(등록 레퍼토리에 없는 4-3-3 컵 로테이션). Chelsea FC Online 5/10: 공중전은 안정적이나 「a mixed evening」이었고 48' 아로슨 실점 장면에서 「easily brushed aside」(쉽게 밀려났다). ⚠️ 컵 로테이션 1경기·평점 기사 단일 소스.\n\n⚠️ [2026-09-11 D+2 정정] 2026-09-09 리즈(홈, EFL컵 3R, 백4의 **RCB**): **리즈의 2·3번째 실점 모두에 개인 책임이 특정됐다**(obs#598). SI(Casillas): 「Lacroix, Chelsea's season standout defender, was **culpable on both Leeds goals**: getting **muscled off the ball by Nmecha** and **failing to mark Calvert-Lewin** in the box」(시즌 최고 수비수였던 라크루아가 리즈의 두 골 모두에 책임이 있었다 — 은메차에게 몸으로 밀려 볼을 빼앗겼고 박스 안에서 캘버트루인을 마킹하지 못했다). Chelsea FC Online 평점 5/10 「easily brushed aside」(48' 장면)와 방향 일치. ⇒ **피지컬 듀얼 열세 + 박스 내 마킹**이 2축 취약점으로 잡힌다. 당일 리포트 §5의 「빌드업 안정, 크로스 수비 다소 고전」은 과도하게 완만한 서술이었다.",
@@ -1037,7 +1037,7 @@
   },
   {
    "adherence": "HIGH(위치) / MEDIUM(역할) — 위치 Δ−1.9로 정합. ⚠️ 경합 0승3패는 표본이 작아(3회) 성향 판정에 못 쓴다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cb_bpd.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cb_bpd.",
    "applied_status": "MATCH",
    "confidence": "실측 MEASURED(SofaScore) — 프리시즌 친선 1경기, 알론소 공식전 0경기. / measured single match; sub-45m samples are descriptive only. | [2026-09-10 D+1] LOW-MEDIUM(평점 기사 1소스 + 감독 발언 교차).",
    "duties": "백3 좌측. 소시에다드전에서 백3의 좌측을 맡아 좌측 윙백(팔레스트라) 뒤를 덮었다. 첼시 6번.\n\n[2026-09-10 D+1 추가 — 리즈전(2026-09-09) 한정] 백4의 **LCB**로 76분 후 교체. Chelsea FC Online 5/10: 부상 복귀전으로 「Poor throughout a laboured evening」(버거운 경기 내내 부진). 알론소는 경기 후 부상은 아니라고 명시(「it's just some little things… we don't expect that this is an injury」). ⇒ 76' 교체는 부하 관리 해석과 정합. ⚠️ 컵 로테이션 1경기.",
@@ -1054,7 +1054,7 @@
   },
   {
    "adherence": "LOW — 좌표·이벤트 스탯이 모두 없어 서사 검증 수단이 없다. **유일한 구체 관찰이 실점 관여 1건**이다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "LOW-MEDIUM. ⛔ **좌표·map25 0** — SofaScore 403 + FotMob 친선 미제공으로 커널 적합(fit_sim) 산출이 불가하다. `game_role_implication`은 **역할 확정이 아니라 시사·보류**다. ⚠️⚠️ **검색된 에수구 자료의 거의 전부가 마레스카 체제 발언(2025-08~11)이며 알론소의 에수구 언급은 확인 실패**다. ⚠️ 스포르팅·라스팔마스 임대 자료 혼입 위험. ⛔ 전용 유튜브 개인 분석 **0건**(검색된 것은 하이라이트·토크물이며 미시청이라 인용하지 않았다). ⚠️ 25/26은 대퇴 수술로 사실상 시즌 아웃이라 직전 시즌 표본 자체가 없다. ‖ ⚠️[2026-09-01 id 병합] player_id 103 → 140 재지정. **이 행(RCM)과 같은 선수의 CM 행은 같은 출전(2026-08-09 조호르)을 다른 회차가 기록한 것이다** — RCM은 첼시 공식 매치리포트 표기(서사 상세, 좌표 0), CM은 SofaScore 표기(실측 보유). 위치 라벨이 다를 뿐 다른 경기가 아니다.",
    "duties": "피벗. **백4일 때(유벤투스)** 후반 교체로 중원 투입. **백3일 때(조호르)** `RCM`으로 90분 선발하고 **주장 완장**을 찼다 — 니콜-자줄리와 더블 피벗을 구성해 백3 앞을 가렸다. 서사: 볼 회수와 1v1 수비가 핵심, 볼 유지·찬스 창출이 약점, 전진 캐리 의사는 있음.",
@@ -1071,7 +1071,7 @@
   },
   {
    "adherence": "MEDIUM — 위치는 RCM과 Δ+5.1로 정합하나 **1경기 표본**이고 상대(조호르)가 저수준이라 볼 관여량이 부풀려졌을 수 있다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "실측 MEASURED(SofaScore) 1경기 — 프리시즌 친선, 상대 수준 낮음(조호르 다룰 타짐). ‖ ⚠️[2026-09-01 id 병합] **이 행(CM)과 같은 선수의 RCM 행은 같은 출전(2026-08-09 조호르)을 다른 회차가 기록한 것이다** — CM은 SofaScore 표기(실측 보유), RCM은 첼시 공식 매치리포트 표기(서사 상세, 좌표 0). 서사 근거는 RCM 행이 정본이다.",
    "duties": "중앙 미드필더. 조호르전 90분 선발. 첼시 14번.",
@@ -1088,7 +1088,7 @@
   },
   {
    "adherence": "판정 보류 — 데뷔전 1경기이고 상대가 리그2 소속이다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "**스탯 축 HIGH** — 자체 원천(SofaScore)으로 교차검증 완료(2026-09-02), D+1의 「유튜브 설명문 단일 출처」 경고는 해소됐다. **역할 축 MEDIUM** — 사유는 스탯 신뢰도가 아니라 **표본 1경기·상대 리그2**다. ⚠️ 두 축을 분리해 읽을 것. ⚠️ 데뷔전 첫 15분간 모든 터치가 야유받았다(월드컵 벨링엄 소동) — 「적대적 환영에도 불구하고」라는 서사 프레임이 평가를 위로 밀 수 있으므로 실측을 정본으로 둔다. | [2026-09-10 D+1] MEDIUM(실점 기점은 1차 서술 소스, 평가는 평점 기사 1소스).",
    "duties": "⭐ 2026-08-27 루턴(홈, EFL컵 2R, 2-0): **첼시 데뷔전을 좌측 풀백이 아니라 중앙 미드필더로 치렀다** — 리스 제임스와 짝을 이뤄 중원에 섰고 **좌측으로 흘러 나가며 볼 전진을 담당**했다. 라인 사이 이동과 빌드업 관여가 역할의 핵심이었다.\n\n[2026-09-10 D+1 추가 — 리즈전(2026-09-09) 한정] 좌측 CM 90분·평점 8.2. Chelsea FC Online 8/10 「Tenacious and combative」(끈질기고 투쟁적). ⚠️ 다만 48' 실점의 **기점이 그의 턴오버**다 — VAVEL: 「Barco lost possession, Leeds worked it wide to Ethan Ampadu who crossed, Nmecha flicked on and Aaronson strode onto the ball unmarked」. ⇒ 「교체 직후 진용 미정착」이라는 팀 층위 해석에 **개인 턴오버 + 마크 부재**를 더해야 한다. 80' 첼시 데뷔골·90+4' 웰벡 골 관여로 만회.\n\n⭐ [2026-09-11 D+2] 2026-09-09 리즈(홈, EFL컵 3R, 6-3): **2경기 연속 중앙 미드필더 기용**이 스페인어권 1차 소스로 재확인됐다 — 442.perfil: 「**Jugó como volante, no como lateral**」(풀백이 아니라 볼란테로 뛰었다). 루턴전 데뷔(08-27)에 이어 컵 2경기 모두 CM. 서열 배경 명시: 「Con **Enzo Fernández vendido y Caicedo lesionado**, el inicio de temporada debía ser una oportunidad para él, pero Alonso venía prefiriendo a **Malo Gusto**」(엔조 매각·카이세도 부상으로 시즌 초가 그의 기회여야 했으나 알론소는 구스토를 선호해 왔다) ⇒ 중앙 서열 경쟁 상대는 **구스토**.\n\n⭐ [2026-09-12 D+3] 리즈전 기능 규정 보강 — 좌측 CM이라는 위치 라벨보다 **「템포를 조절하는 메트로놈」**이 정확하다. TM 전사(9gY9SXk_hdw): 매번 전진 패스를 강제하지 않고 위험하면 다시 순환해 상대 블록을 움직인 뒤, 패스가 열렸을 때 한 번에 네 명을 제거하는 전진 패스를 선택한다. 웰벡 벽패스 뒤 차바리아의 배후 침투를 띄운 장면이 대표 사례. ⚠️ **조건부**다 — TM은 그가 단독 피벗이 아니라 카이세도·라비아·리스 제임스 같은 **더 신체적인 파트너**를 옆에 두어야 한다고 반복한다(§D+2의 「16세 왓슨과의 조합 실패」와 정합). AS(ES, 2026-09-11, Simón Escudero)는 그를 「Xabi Alonso inventa un ''Enzo''」로 프레이밍했으나 **매체 프레임이지 확정 서열이 아니므로** 처방 변경 근거로 쓰지 않는다(기사 수치 89터치·패스 88%·수비기여 13·듀얼 12승·태클 7·클리어 3은 D+2 확보분과 일치).",
@@ -1105,7 +1105,7 @@
   },
   {
    "adherence": "본인: 35세 나이·활동량 우려를 스스로 선제 언급('내가 뭘 줄 수 있는지 알아줬으면').",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "medium",
    "duties": "아직 데뷔 전(손목 부상 재활). Alonso: 2019년 리버풀 주장 시절부터 관찰한 라커룸 영향력·압박 강도 조절 능력을 영입 근거로 명시.",
@@ -1122,7 +1122,7 @@
   },
   {
    "adherence": "타겟맨/홀드업보다 배후 침투·최종 수비라인 위협에 초점 — 스트라스부르 시절 평가(침투형)와 정합.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: st_advanced.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: st_advanced.",
    "applied_status": "MATCH",
    "confidence": "high",
    "duties": "Alonso 직접 인용(기자회견): '최종 라인에서 공간을 받는 위협형으로 본다(I see him playing on the last line, where he has space; he is such a big threat)'.",
@@ -50762,7 +50762,7 @@
    "player_id": 1,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 268375, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2029-06-30"
   },
   {
@@ -50775,7 +50775,7 @@
    "player_id": 13,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 883080, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2033-06-30"
   },
   {
@@ -50788,7 +50788,7 @@
    "player_id": 32,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1197250, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2030-06-30"
   },
   {
@@ -50801,7 +50801,7 @@
    "player_id": 33,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 917802, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2029-06-30"
   },
   {
@@ -50814,7 +50814,7 @@
    "player_id": 35,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1413846, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2032-06-30"
   },
   {
@@ -50827,7 +50827,7 @@
    "player_id": 36,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1137668, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2033-06-30"
   },
   {
@@ -50840,7 +50840,7 @@
    "player_id": 38,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 843040, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2031-06-30"
   },
   {
@@ -50853,7 +50853,7 @@
    "player_id": 39,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1096353, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2033-06-30"
   },
   {
@@ -50866,7 +50866,7 @@
    "player_id": 40,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1021382, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2034-06-30"
   },
   {
@@ -50879,7 +50879,7 @@
    "player_id": 41,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 807729, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2032-06-30"
   },
   {
@@ -50892,7 +50892,7 @@
    "player_id": 42,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1580774, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2033-06-30"
   },
   {
@@ -50905,7 +50905,7 @@
    "player_id": 63,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1400216, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2029-06-30"
   },
   {
@@ -50918,7 +50918,7 @@
    "player_id": 65,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1190867, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2030-06-30"
   },
   {
@@ -50931,7 +50931,7 @@
    "player_id": 66,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1473806, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2033-06-30"
   },
   {
@@ -50944,7 +50944,7 @@
    "player_id": 67,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 113836, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2028-06-30"
   },
   {
@@ -50957,7 +50957,7 @@
    "player_id": 80,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 988805, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2031-06-30"
   },
   {
@@ -50970,7 +50970,7 @@
    "player_id": 95,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1530314, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2034-06-30"
   },
   {
@@ -50983,7 +50983,7 @@
    "player_id": 97,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1113692, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2032-06-30"
   },
   {
@@ -50996,7 +50996,7 @@
    "player_id": 130,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 950485, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2032-06-30"
   },
   {
@@ -51009,7 +51009,7 @@
    "player_id": 131,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1096400, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2029-06-30"
   },
   {
@@ -51022,7 +51022,7 @@
    "player_id": 210,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 156008, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2028-06-30"
   },
   {
@@ -51035,7 +51035,7 @@
    "player_id": 211,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1183148, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2033-06-30"
   },
   {
@@ -51048,7 +51048,7 @@
    "player_id": 36,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1137668, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "Knock"
   },
   {
@@ -51061,7 +51061,7 @@
    "player_id": 66,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1473806, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "Physical discomfort"
   },
   {
@@ -51074,7 +51074,7 @@
    "player_id": 210,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 156008, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "Wrist injury"
   },
   {
@@ -51087,7 +51087,7 @@
    "player_id": 211,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1183148, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "Hamstring injury"
   }
  ],

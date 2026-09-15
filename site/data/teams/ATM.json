@@ -244,7 +244,7 @@
  "duties": [
   {
    "adherence": "평점 7.01. 실점 0이지만 말라가 xG가 0.15뿐이라 부하 자체가 낮았다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: gk_goalkeeper.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: gk_goalkeeper.",
    "applied_status": "MATCH",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "백5 뒤의 최종 차단자. 빌드업 +1로 내려오지 않는다(알론소 GK와 정반대 축).",
@@ -261,7 +261,7 @@
   },
   {
    "adherence": "지시 이행 양호.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: gk_goalkeeper.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: gk_goalkeeper.",
    "applied_status": "MATCH",
    "confidence": "MEDIUM — 실측 1경기 + D+1 서사 교차. ⚠️ 원정·84분까지 0-0·마지막 6분 3골로 교란이 분리되지 않았다. ⚠️ 서사 일부는 Into the Calderón 영역 경유 인용이다(스페인어 원문은 Infobae·VAVEL 부분만 대조). ⚠️ 5-3-2→5-4-1(≈42′)→보유 시 4-3-3 전환 시각은 현지 분석 서술이며 우리 이벤트로 독립 확인하지 못했다. ⚠️ 영상 미시청(유튜브 전술분석 1편 존재하나 제목·설명만 확인) — D+2~D+3 재확인 대상.",
    "duties": "백3 뒤 최후방. 빌드업 관여는 낮고(패스 34) 뒤 공간 정리 비중이 높다(회수 10).",
@@ -278,8 +278,8 @@
   },
   {
    "adherence": "평점 6.05(팀 최저). 37분 경고 후 하프타임에 교체됐다 — 경고 관리 성격.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 분석 cb_wideback ↔ 보유 처방 fb_att_wb — 사람 판정 대기.",
-   "applied_status": "CONFLICT",
+   "applied_note": "[2026-09-15 사람 판정] cb_wideback/Support .321은 역할 부적합이 아니라 **기하 불일치**(슬롯 x=31 ↔ 실측 17.3, Δ−14)로 판단 — 처방 fb_att_wb/Support 유지. 재판정 조건: ATM 백3 슬롯 기하 재산출(현재 LOW-MEDIUM 잠정). (자동 판정 이력: CONFLICT)",
+   "applied_status": "HELD",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "백3 좌측. 실측상 좌측 윙백과 거의 같은 레인(툴x 17.3)에서 넓게 방어했다.",
    "execution": "16세. 45분만 소화하고 하프타임에 교체. 듀얼 3승 6패, 파울 4.",
@@ -295,7 +295,7 @@
   },
   {
    "adherence": "평점 7.56. 90분 소화하며 중앙을 지켰다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cb_bpd.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cb_bpd.",
    "applied_status": "MATCH",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "백3 중앙 = rest-defense 기준점. 라인 스윙(pendulum)의 조율축.",
@@ -312,7 +312,7 @@
   },
   {
    "adherence": "**평점 8.66 — 팀 최고.** 70분 이강인 결승골을 어시스트했다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cb_bpd.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cb_bpd.",
    "applied_status": "MATCH",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "⭐ 백3 우측이면서 **전진 배급의 주 출구**. 이 경기 아틀레티코 빌드업의 축이었다.",
@@ -329,7 +329,7 @@
   },
   {
    "adherence": "백3 좌측 역할을 두 경기 연속 같은 방식으로 수행.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cb_wideback.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cb_wideback.",
    "applied_status": "MATCH",
    "confidence": "MEDIUM — 실측 1경기 + D+1 서사 교차. ⚠️ 원정·84분까지 0-0·마지막 6분 3골로 교란이 분리되지 않았다. ⚠️ 서사 일부는 Into the Calderón 영역 경유 인용이다(스페인어 원문은 Infobae·VAVEL 부분만 대조). ⚠️ 5-3-2→5-4-1(≈42′)→보유 시 4-3-3 전환 시각은 현지 분석 서술이며 우리 이벤트로 독립 확인하지 못했다. ⚠️ 영상 미시청(유튜브 전술분석 1편 존재하나 제목·설명만 확인) — D+2~D+3 재확인 대상.",
    "duties": "백3 좌측이나 「defendiendo muy lateralizado, siempre atento de la espalda de Grimaldo」(매우 측면화되어 수비하며 늘 그리말도의 등 뒤를 주시)로 사실상 좌측 수비수다.",
@@ -346,8 +346,8 @@
   },
   {
    "adherence": "평점 6.13. 57분에 교체됐다(이강인).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 분석 fb_att_wb, fb_wingback ↔ 보유 처방 wm_winger — 사람 판정 대기.",
-   "applied_status": "CONFLICT",
+   "applied_note": "[2026-09-15 사람 판정] 실측 최적 fb_att_wb .792가 정본 fb_wingback/Support와 갈리지만 말라가전 좌측 피압(상대 우측 공격 39%)·듀얼 1승7패가 겹친 단일 경기다 — 처방 유지. 재판정 조건: 정상 경기 표본 1건 추가. (자동 판정 이력: CONFLICT)",
+   "applied_status": "HELD",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "백5의 좌측 윙백. 폭을 담당하되 수비 라인으로 복귀한다.",
    "execution": "듀얼 1승 7패 · 파울 4로 수비 국면에서 고전. 상대 박스 터치 6.",
@@ -363,7 +363,7 @@
   },
   {
    "adherence": "평점 7.51. 90분 소화.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: fb_att_wb.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: fb_att_wb.",
    "applied_status": "MATCH",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "백5의 우측 윙백. 폭 담당 + 전진 지원.",
@@ -380,8 +380,8 @@
   },
   {
    "adherence": "평점 7.08. 57분 교체(줄리아노).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 분석 wm_insidefwd ↔ 보유 처방 cm_b2b, wm_widemid — 사람 판정 대기.",
-   "applied_status": "CONFLICT",
+   "applied_note": "[2026-09-15 사람 판정] wm_insidefwd .776은 「안쪽으로 접힌다」는 정본 요구와 부합하지만 슬롯 LM(x=13)과 실측 35.3의 Δ+22가 커 기하가 맞지 않는다 — 처방 cm_b2b/Ball-Winning 유지. 재판정 조건: ATM 슬롯 기하 재산출. (자동 판정 이력: CONFLICT)",
+   "applied_status": "HELD",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "도식상 좌측 미드필더. 실측은 훨씬 중앙(툴x 35.3)이었다.",
    "execution": "슈팅 3(온타깃 2)·xG 0.22로 선발 중 최다 기대득점. 상대 박스 터치 6·파이널서드 패스 7.",
@@ -397,7 +397,7 @@
   },
   {
    "adherence": "평점 7.96(팀 2위). 90분 소화.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "중앙 2의 볼 위닝 축. 중앙 봉쇄와 회수 후 전환의 첫 연결.",
@@ -414,7 +414,7 @@
   },
   {
    "adherence": "평점 7.35. 78분 교체(율만).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: dm_dlp.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: dm_dlp.",
    "applied_status": "MATCH",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "중앙 2의 배급축. 빌드업 1-3-2-5의 「2」.",
@@ -431,7 +431,7 @@
   },
   {
    "adherence": "평점 6.58. 57분 교체(바에나). ⚠️ 히트포인트 18로 표본이 얇다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: wm_insidefwd.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: wm_insidefwd.",
    "applied_status": "MATCH",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "도식상 우측 미드필더. 채널 수비 + 역습 출구.",
@@ -448,7 +448,7 @@
   },
   {
    "adherence": "평점 6.77. 90분 소화했으나 무득점이고 팀의 빅찬스 3실패에 관여했다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: st_advanced, st_false9.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: st_advanced, st_false9.",
    "applied_status": "MATCH",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "단독 9번. 압박의 첫 기준점 + 역습 시 채널 침투.",
@@ -465,7 +465,7 @@
   },
   {
    "adherence": "⚠️ 판정을 개인에게 귀속하지 않는다 — 부여된 좌측 단독 돌파 과제 자체가 지원 없이 설계됐다는 것이 3개 언어권 공통 진단이다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "높음 — 실측 + 3개 언어권 독립 수렴(obs#495). ⚠️ **auto-caption**(Atlético Stats). ⚠️ 롭슨 인용은 **2차 인용이며 1차 ESPN 중계 영상은 미시청**. ⚠️ 표본 1경기.",
    "duties": "⭐⭐ **명목 ST가 아니라 좌측 윙에서 고립됐다** — 「is now cutting an isolated figure once more in **the barren, deserted land of the left wing**… often starting with the ball in a standing position tasked with finding a way through a well-organised Athletic defense **all by himself**」(황량하게 버려진 좌측 윙에서 다시 고립된 존재가 됐다… 종종 정지 상태로 볼을 받아 잘 조직된 수비를 **혼자 힘으로** 뚫으라는 요구를 받았다). 원인은 개인이 아니라 **구조적 좌우 비대칭**이다 — 팀 플레이 전체가 우측으로 흘러 좌측에 연계 상대가 남지 않았다(obs#495·#509).",
@@ -482,7 +482,7 @@
   },
   {
    "adherence": "⭐ 방향 제시는 있다 — ItC 4: 「Definitely looked more comfortable after 60 minutes when the team reverted to a more recognisable 4-3-3. His partnership down the left with Grimaldo is one that needs to improve, but feels like it has the chance of working very well」(60분 이후 4-3-3으로 되돌아갔을 때 확실히 더 편해 보였다. 그리말도와의 좌측 파트너십은 개선이 필요하지만 아주 잘 작동할 가능성이 있어 보인다, 영역 경유).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: st_advanced, st_false9, wm_insidefwd.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: st_advanced, st_false9, wm_insidefwd.",
    "applied_status": "MATCH",
    "confidence": "MEDIUM — 실측 1경기 + D+1 서사 교차. ⚠️ 원정·84분까지 0-0·마지막 6분 3골로 교란이 분리되지 않았다. ⚠️ 서사 일부는 Into the Calderón 영역 경유 인용이다(스페인어 원문은 Infobae·VAVEL 부분만 대조). ⚠️ 5-3-2→5-4-1(≈42′)→보유 시 4-3-3 전환 시각은 현지 분석 서술이며 우리 이벤트로 독립 확인하지 못했다. ⚠️ 영상 미시청(유튜브 전술분석 1편 존재하나 제목·설명만 확인) — D+2~D+3 재확인 대상.",
    "duties": "명목 최전방 9번. 지시는 「el Atlético formó con Lookman como '9' aislado」(아틀레티코는 루크먼을 고립된 9번으로 세웠다)였고, 좌측 표류(툴x 24.8, 슬롯 Δ−12.2)는 본인 성향이다. ≈42′ 5-4-1 전환 후에는 측면 근무자가 됐다.",
@@ -499,8 +499,8 @@
   },
   {
    "adherence": "평점 6.51. 45분 소화.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 분석 cb_wideback ↔ 보유 처방 cm_halfwinger, fb_att_wb, fb_fullback, fb_wingback, wm_winger — 사람 판정 대기.",
-   "applied_status": "CONFLICT",
+   "applied_note": "[2026-09-15 사람 판정] 도밍게스(#127)와 동일한 기하 불일치(슬롯 31 ↔ 실측 15.8) — 처방 유지. 재판정 조건 동일. (자동 판정 이력: CONFLICT)",
+   "applied_status": "HELD",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "하프타임 투입. 백3 좌측을 그대로 이어받았다(실측 툴x 15.8).",
    "execution": "터치 41·정확패스 31로 도밍게스(24/13)보다 관여가 늘었다. 듀얼 1승 3패.",
@@ -516,7 +516,7 @@
   },
   {
    "adherence": "⭐ 높다 — 포지션 지시 변경을 경기 중 4회 흡수했고 각 국면에서 기능했다. 전술 분석은 그를 ATM의 **유효 전진 루트의 핵**으로 서술한다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "높음 — 4개 독립 소스. ⚠️ **auto-caption**(전술 채널 2편). ⚠️ 화자가 좌우 배치를 스스로 정정하며 말해 **각 포지션의 정확한 구간(분)은 불확정**이다 — 「5개 포지션」이라는 사실만 채택한다. ⭐ 테르지치가 산세트에 대해 말한 「4개 포지션」의 ATM측 거울상이다.",
    "duties": "⭐⭐ **한 경기에 5개 포지션을 소화했다** — 「Llorente ha sido central, diestro, carrilero, ha sido delantero y ha sido extremo diestro」(센터백이었고, 라이트백이었고, 윙백이었고, 최전방이었고, 우측 윙이었다). 선발은 우측 수비였고 **C.로메로 투입(59′) 이후 전진**해 최종 4-4-2의 전방으로 끝났다. 아울러 **우측 과부하의 존 이탈 축**이었다 — 「Marcos Llorente saliendo de zona」가 유리 베르치체의 등 공간을 반복 공략했다.",
@@ -533,7 +533,7 @@
   },
   {
    "adherence": "⚠️ 60분 교체 후 동료에게 불만을 드러냈다(ItC 4). ⚠️ 이 선수는 이미 한 경기 5포지션 기록이 있다(obs#508) — 다중 위치 혼입에 주의.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cm_halfwinger, fb_wingback.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cm_halfwinger, fb_wingback.",
    "applied_status": "MATCH",
    "confidence": "MEDIUM — 실측 1경기 + D+1 서사 교차. ⚠️ 원정·84분까지 0-0·마지막 6분 3골로 교란이 분리되지 않았다. ⚠️ 서사 일부는 Into the Calderón 영역 경유 인용이다(스페인어 원문은 Infobae·VAVEL 부분만 대조). ⚠️ 5-3-2→5-4-1(≈42′)→보유 시 4-3-3 전환 시각은 현지 분석 서술이며 우리 이벤트로 독립 확인하지 못했다. ⚠️ 영상 미시청(유튜브 전술분석 1편 존재하나 제목·설명만 확인) — D+2~D+3 재확인 대상.",
    "duties": "⭐ 명목 중앙 MF, 실측 툴x 78.5(슬롯 Δ+22.5). **표류가 아니라 지시였다** — ≈42′ 5-4-1 전환에서 「소시에다드가 공격을 가장 많이 쏟던 측면」에 의도적으로 배치돼 푸빌 등 뒤를 막았다.",
@@ -550,7 +550,7 @@
   },
   {
    "adherence": "**평점 7.52 · 85분 득점.** 교체 투입 두 골 중 두 번째.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: wm_wideplm.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: wm_wideplm.",
    "applied_status": "MATCH",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "⚽ 57분 투입. 우측에서 안쪽으로 들어오는 공격 자원.",
@@ -567,7 +567,7 @@
   },
   {
    "adherence": "시메오네 진단: 「La Real Sociedad trabajó muy bien sobre el juego asociativo de Kang-In Lee y Baena, lo que nos hizo no tener profundidad」(소시에다드가 이강인·바에나의 연계에 아주 잘 대응했고, 그 때문에 우리는 종심을 갖지 못했다). 59분 첫 교체 대상.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cam_playmaker, st_false9.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cam_playmaker, st_false9.",
    "applied_status": "MATCH",
    "confidence": "MEDIUM — 실측 1경기 + D+1 서사 교차. ⚠️ 원정·84분까지 0-0·마지막 6분 3골로 교란이 분리되지 않았다. ⚠️ 서사 일부는 Into the Calderón 영역 경유 인용이다(스페인어 원문은 Infobae·VAVEL 부분만 대조). ⚠️ 5-3-2→5-4-1(≈42′)→보유 시 4-3-3 전환 시각은 현지 분석 서술이며 우리 이벤트로 독립 확인하지 못했다. ⚠️ 영상 미시청(유튜브 전술분석 1편 존재하나 제목·설명만 확인) — D+2~D+3 재확인 대상.",
    "duties": "좌측 10번. 상대의 전 필드 맨투맨 추격 압박(「presionar hombre a hombre con persecuciones individuales por todo el campo」 전 필드에서 개인 추격으로 맨투맨 압박)에 연계가 끊겼다.",
@@ -584,8 +584,8 @@
   },
   {
    "adherence": "평점 6.61. 33분 소화.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 분석 fb_att_wb ↔ 보유 처방 wm_widemid, wm_wideplm, wm_winger — 사람 판정 대기.",
-   "applied_status": "CONFLICT",
+   "applied_note": "[2026-09-15 사람 판정] fb_att_wb .787은 **표본 기준 미달(33분)** — 45분+ 규약에 걸려 처방 wm_wideplm/Attack 유지. 재판정 조건: 45분+ 표본. (자동 판정 이력: CONFLICT)",
+   "applied_status": "HELD",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "57분 투입. 좌측 넓은 레인을 담당했다(실측 툴x 16.4).",
    "execution": "듀얼 4승 2패 · 공중볼 4승. 터치 29.",
@@ -601,7 +601,7 @@
   },
   {
    "adherence": "⚠️ 낮다 — 폭 유지라는 부여 과제는 수행했으나(우측 과부하 성립) **전환 국면의 활성화가 부여 기준에 미달**했다는 평가가 명시적이다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "중간~높음 — 실측 좌표와 평점 2는 확고하고, 2실점 기점 귀속은 **ATM 전담 채널 단독**이다(다른 소스는 마무리 국면만 서술). ⚠️ **auto-caption**. ⚠️ 표본 1경기. ⚠️ 부자 관계에 대한 수사(「su padre」)는 **평가 근거로 쓰지 않는다**.",
    "duties": "⭐ **id=139(R1 「57분 투입·좌측 넓은 레인」)과 좌우·출전 형태가 모두 다르다** — 이 경기는 **선발이며 우측**이다(실측 ay 22.3). 우측 과부하 3인 중 한 명으로 폭을 담당했다. ⚠️ **2실점의 기점**이 그의 볼 로스트였고, 실점 직후 활성화 부족이 별도로 지목됐다(obs#512).",
@@ -618,7 +618,7 @@
   },
   {
    "adherence": "시메오네: 「A run in the 92nd minute from midfield against three defenders is something only a few can pull off」(92분에 미드필드부터 수비수 셋을 상대로 달리는 건 소수만 해낼 수 있는 일이다, 영역 경유).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: wm_widemid, wm_winger.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: wm_widemid, wm_winger.",
    "applied_status": "MATCH",
    "confidence": "MEDIUM — 실측 1경기 + D+1 서사 교차. ⚠️ 원정·84분까지 0-0·마지막 6분 3골로 교란이 분리되지 않았다. ⚠️ 서사 일부는 Into the Calderón 영역 경유 인용이다(스페인어 원문은 Infobae·VAVEL 부분만 대조). ⚠️ 5-3-2→5-4-1(≈42′)→보유 시 4-3-3 전환 시각은 현지 분석 서술이며 우리 이벤트로 독립 확인하지 못했다. ⚠️ 영상 미시청(유튜브 전술분석 1편 존재하나 제목·설명만 확인) — D+2~D+3 재확인 대상.",
    "duties": "우측 카릴레로(윙백). 상대 좌측(세르히오)에 대한 대인 압박 책임자 — 현지 도해 「forzando que Giuliano avance a por Sergio」(줄리아노가 세르히오를 향해 전진하도록 강제하며). 60분 이후 4-3-3 전환에서 더 전통적인 전방 역할로 올라갔다.",
@@ -635,8 +635,8 @@
   },
   {
    "adherence": "**평점 7.87(팀 3위) · 70분 결승골**(어시 한츠코).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 분석 wm_wideplm ↔ 보유 처방 cam_halfwinger, cm_b2b, cm_halfwinger, st_false9 — 사람 판정 대기.",
-   "applied_status": "CONFLICT",
+   "applied_note": "[2026-09-15 사람 판정] wm_wideplm .805도 표본 미달(33분)이고 57분 구조 변경이 섞였다 — 처방 cm_b2b/Ball-Winning 유지. 재판정 조건: 45분+ 표본. (자동 판정 이력: CONFLICT)",
+   "applied_status": "HELD",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "⚽ 57분 투입. 좌측 내부에서 공격 가담(실측 툴x 29.4).",
    "execution": "슈팅 3(온타깃 1)·xG 0.13·태클 3·듀얼 4승 1패. 33분 만에 터치 23.",
@@ -652,7 +652,7 @@
   },
   {
    "adherence": "⭐ 전반은 높다(「Looked lively throughout the half」) / ⚠️ 경고 이후 하강. 부여된 명목 슬롯 자체가 실질과 어긋나 **지시 준수 여부를 라벨 기준으로 판정할 수 없다**.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "높음 — 실측 좌표 + **4개 언어권 소스**(영어 ATM 전담 · 스페인어 2 · 한국어)가 우측 인사이드 실질에 수렴. ⚠️ **auto-caption**(전술 채널 2편). ⚠️ 표본 1경기.",
    "duties": "⭐⭐ **명목 ST 라벨과 실질 역할의 불일치가 서사 3소스로 확정됐다.** 실질은 **우측 최종 3분의 1에서 폭 유지와 중앙 좁히기를 오가는 인사이드 자원**이다 — 「moving around the final third to keep width or narrow the pitch to overload the middle」. 바리오스와의 우측 연계가 ATM의 **가장 위험한 조합**이었고, 전술 분석은 그가 「**no tiene una referencia clara**」(명확한 위치 기준점이 없다)고 서술한다.",
@@ -669,7 +669,7 @@
   },
   {
    "adherence": "⚠️ 시메오네는 교체 사유를 끝내 말하지 않고 결과론 방어만 했다 — 「If the game had ended with a different result, people would have asked why I took out Álex Baena and Kang-in Lee」(경기가 다른 결과로 끝났다면 사람들은 내가 왜 바에나와 이강인을 뺐냐고 물었을 것이다, 영역 경유). ⚠️ Marca·AS 평점 코멘트는 한국어 중역만 확보돼 인용하지 않았다(불변규칙 11).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cam_halfwinger, st_false9.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cam_halfwinger, st_false9.",
    "applied_status": "MATCH",
    "confidence": "MEDIUM — 실측 1경기 + D+1 서사 교차. ⚠️ 원정·84분까지 0-0·마지막 6분 3골로 교란이 분리되지 않았다. ⚠️ 서사 일부는 Into the Calderón 영역 경유 인용이다(스페인어 원문은 Infobae·VAVEL 부분만 대조). ⚠️ 5-3-2→5-4-1(≈42′)→보유 시 4-3-3 전환 시각은 현지 분석 서술이며 우리 이벤트로 독립 확인하지 못했다. ⚠️ 영상 미시청(유튜브 전술분석 1편 존재하나 제목·설명만 확인) — D+2~D+3 재확인 대상.",
    "duties": "우측 10번. ⚠️ 위치 서술이 3중 충돌한다 — 한국 매체 「좌측 미드필드/윙어」, 바스크 분석 「5-4-1의 단독 최전방」(「un nuevo 5-4-1 que dejaba solo en punta a Kang-in Lee」 이강인을 최전방에 홀로 두는 새로운 5-4-1), 실측 툴(78.6, 54.3) = **우측 넓게**. **실측을 채택한다**(불변규칙: 위치 주장은 실측이 이긴다).",
@@ -686,7 +686,7 @@
   },
   {
    "adherence": "평점 6.26. 표본이 거의 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: dm_dlp.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: dm_dlp.",
    "applied_status": "MATCH",
    "confidence": "[2026-08-20] ⚠️ **원천 FotMob**(SofaScore 사이트 전역 403 대체 경로). 좌표 방위는 실증 검증(오블락 cx=13 ⇒ 자기 골문 cx=0 · 다니 cy=9.1 ↔ 마르틴 cy=55.0 ⇒ 낮은 cy=우측). ⛔ **PPDA 없음**(WhoScored 미접근) — 압박 관련 판단의 신뢰도가 낮다. ⚠️ **표본 1경기**이고 ATM 확장 첫 경기다. ⛔⛔ **개별 스카우트·영상 서사는 미수집이다** — 이 행의 `duties`는 **이 경기 1경기 관찰에서 도출한 역할 서술**이고 docs/30의 영상·서사 절차(스카우트 리포트 수집)는 착수하지 않았다. 따라서 서사 기반 주장(성향·기질·과거 경력)은 **의도적으로 비워 뒀다** — 추정으로 채우지 않았다.",
    "duties": "78분 투입. 코케의 중앙 배급 역할을 이어받았다.",
@@ -703,7 +703,7 @@
   },
   {
    "adherence": "⭐ 전반 높음 / ⚠️ 후반 미달. ⚠️ 팀 전체가 무너진 국면과 분리되지 않는다 — 「colectivamente el segundo tiempo el equipo se cae y eso pasa factura a jugadores incluso como Pablo Barrios」.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "중간~높음 — 전·후반 분리 서술은 ATM 전담 채널 단독이나 Into the Calderón 평점 3 및 Proyecto Hadi의 기술 실수 지목과 **모순 없이 결합**한다. ⚠️ **auto-caption**(「Hjulmand」→「Yulman/Julman/Hulman」으로 다양하게 오인식됨 — 화자 지칭 동일성은 문맥으로 확인). ⛔ **덴마크어 매체는 0건**이라 모국어권 교차 검증을 못 했다(obs#516).",
    "duties": "⭐ **id=141(R1 「78분 투입」)의 후속 — 이 경기는 선발이다.** 전반의 역할은 **압박 도약과 수비 감시로 팀을 상대 진영에 살게 하는 축**이었다. 「Hjulmand está muy bien en fase defensiva, permitiendo que… cuando el balón se mantuviese en campo rival… **las vigilancias defensivas eran muy buenas, la activación tras pérdida es muy buena. Eso te permite vivir más en campo contrario**」(수비 국면에서 아주 좋았고… 볼이 상대 진영에 머물 때… **수비 감시가 아주 좋았고 피탈 직후 활성화가 아주 좋다. 그것이 상대 진영에서 더 살 수 있게 해준다**).",
@@ -720,7 +720,7 @@
   },
   {
    "adherence": "⛔ 어느 평가도 단독 채택하지 않았다 — 전진 패스 실측으로 판정할 항목.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cm_b2b, dm_dlp.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cm_b2b, dm_dlp.",
    "applied_status": "MATCH",
    "confidence": "MEDIUM — 실측 1경기 + D+1 서사 교차. ⚠️ 원정·84분까지 0-0·마지막 6분 3골로 교란이 분리되지 않았다. ⚠️ 서사 일부는 Into the Calderón 영역 경유 인용이다(스페인어 원문은 Infobae·VAVEL 부분만 대조). ⚠️ 5-3-2→5-4-1(≈42′)→보유 시 4-3-3 전환 시각은 현지 분석 서술이며 우리 이벤트로 독립 확인하지 못했다. ⚠️ 영상 미시청(유튜브 전술분석 1편 존재하나 제목·설명만 확인) — D+2~D+3 재확인 대상.",
    "duties": "백3 앞 단독 피벗. 요렌테가 우측으로 내려앉아 있는 동안 중앙 커버가 그 한 명으로 줄어드는 구간이 반복됐다(rest-defense 취약점).",
@@ -737,7 +737,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건을 충족시키기 위해 만들었고, 내용은 **「관찰 없음」을 명시**하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ 선수별 스카우트·영상 서사는 ATM 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1 명단에는 있었으나 **미출전**이라 관찰 근거가 0이다. 슬롯 GK는 FotMob `usualPlayingPositionId`·등번호에서 온 **추정**이다. 추정으로 성향·임무를 쓰지 않았다 — 출전하면 실측으로 채운다.",
@@ -754,7 +754,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건을 충족시키기 위해 만들었고, 내용은 **「관찰 없음」을 명시**하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ 선수별 스카우트·영상 서사는 ATM 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1 명단에는 있었으나 **미출전**이라 관찰 근거가 0이다. 슬롯 LCB는 FotMob `usualPlayingPositionId`·등번호에서 온 **추정**이다. 추정으로 성향·임무를 쓰지 않았다 — 출전하면 실측으로 채운다.",
@@ -771,7 +771,7 @@
   },
   {
    "adherence": "판정 불가(노출 부족).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "HIGH(노출량·평점 사실) / 역할은 **판정 불가가 결론**이다. ⭐ ED 7 ↔ VAVEL 4 충돌은 20분·14터치에 대한 논평 분산이므로 **미해결 등재에서 내린다**(obs#380).",
    "duties": "⚠️ 2026-08-29 세비야 원정(J3, 1-3): **26/27 체제 첫 실제 출전이다** — 72분 교체 투입으로 약 20분. ⛔ **역할을 서술할 수 없다.** 터치 14회로는 평균 위치 추정이 불안정해 슬롯을 확정하지 않는다. (요렌테(DR)가 72분에 함께 교체아웃됐으므로 우측·중앙 어느 쪽으로 들어갔는지가 미확정 지점이다.)",
@@ -788,7 +788,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건을 충족시키기 위해 만들었고, 내용은 **「관찰 없음」을 명시**하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ 선수별 스카우트·영상 서사는 ATM 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1 명단에는 있었으나 **미출전**이라 관찰 근거가 0이다. 슬롯 RB는 FotMob `usualPlayingPositionId`·등번호에서 온 **추정**이다. 추정으로 성향·임무를 쓰지 않았다 — 출전하면 실측으로 채운다.",
@@ -805,7 +805,7 @@
   },
   {
    "adherence": "⚠️ 지시 이탈이 아니라 성향으로 보인다 — 시메오네는 제지 대신 ≈42′ 5-4-1로 요렌테를 그 측면에 내려 **덮었다**. 시메오네: 「Pubill se lo ganó con su trabajo」(푸빌은 자기 노력으로 그 자리를 얻었다).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cb_wideback.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cb_wideback.",
    "applied_status": "MATCH",
    "confidence": "MEDIUM — 실측 1경기 + D+1 서사 교차. ⚠️ 원정·84분까지 0-0·마지막 6분 3골로 교란이 분리되지 않았다. ⚠️ 서사 일부는 Into the Calderón 영역 경유 인용이다(스페인어 원문은 Infobae·VAVEL 부분만 대조). ⚠️ 5-3-2→5-4-1(≈42′)→보유 시 4-3-3 전환 시각은 현지 분석 서술이며 우리 이벤트로 독립 확인하지 못했다. ⚠️ 영상 미시청(유튜브 전술분석 1편 존재하나 제목·설명만 확인) — D+2~D+3 재확인 대상.",
    "duties": "백3 우측이나 툴x 81.2로 사실상 우측 풀백 폭. ⭐ 마크를 공격적으로 쫓아나가며 등 뒤 공간을 연다 — 이것이 백3의 구조적 비용이다.",
@@ -822,7 +822,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건을 충족시키기 위해 만들었고, 내용은 **「관찰 없음」을 명시**하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ 선수별 스카우트·영상 서사는 ATM 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1 명단에는 있었으나 **미출전**이라 관찰 근거가 0이다. 슬롯 LB는 FotMob `usualPlayingPositionId`·등번호에서 온 **추정**이다. 추정으로 성향·임무를 쓰지 않았다 — 출전하면 실측으로 채운다.",
@@ -839,7 +839,7 @@
   },
   {
    "adherence": "⚠️ **부여 역할과 프로필의 불일치**가 두 소스 공통 진단이다 — 「ya no es el encaje, sino **las características del jugador**」(맞물림이 아니라 **선수의 특성** 문제). 시메오네식 풀백으로 성공 가능한지에 명시적 의문이 붙었다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "중간~높음 — 2개 독립 소스가 결론은 일치하고 **귀책 메커니즘은 갈린다**(수비 위치 선정 vs 온더볼 배급). ⚠️ **auto-caption**(Atlético Stats). ⚠️ **표본 1경기**(26/27 3경기 출전 중 이 경기만 관찰). ⛔ id=145를 덮어쓰지 않았다 — id=197(히메네스) 선례에 따른 경기 한정 append다.",
    "duties": "⭐ **id=145(R1 미출전 자리표시)의 후속 관찰 — 실제 역할 서술이 처음 성립한다.** 명목 좌측 풀백이나 실질은 **매우 넓게 벌려 받는 크로스 공급원**이다. 아틀레티코 좌측 진행의 유일한 출구이면서, 이 경기에서는 그 출구가 작동하지 않았다. ⚠️ **스쿼드 유일의 정통 LB** — 루제리·훌리오 디아스가 여름에 방출되고 다니 마르티네스는 1부 무경험이어서 **대체 옵션이 없는 자리**다(2소스 독립 확인).",
@@ -856,7 +856,7 @@
   },
   {
    "adherence": "시메오네: 「No arrancó bien, pero parece que necesitaba un partido así. Charlamos un montón antes del partido」(시즌 출발이 좋지 않았지만 이런 경기가 필요했던 것 같다. 경기 전에 아주 많이 이야기했다).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: fb_att_wb, wm_widemid.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: fb_att_wb, wm_widemid.",
    "applied_status": "MATCH",
    "confidence": "MEDIUM — 실측 1경기 + D+1 서사 교차. ⚠️ 원정·84분까지 0-0·마지막 6분 3골로 교란이 분리되지 않았다. ⚠️ 서사 일부는 Into the Calderón 영역 경유 인용이다(스페인어 원문은 Infobae·VAVEL 부분만 대조). ⚠️ 5-3-2→5-4-1(≈42′)→보유 시 4-3-3 전환 시각은 현지 분석 서술이며 우리 이벤트로 독립 확인하지 못했다. ⚠️ 영상 미시청(유튜브 전술분석 1편 존재하나 제목·설명만 확인) — D+2~D+3 재확인 대상.",
    "duties": "⭐ 좌측 카릴레로. **전진이 상시가 아니라 조건부였다** — 상대 좌윙 바레네체아에게 맨마킹으로 묶여 71분(그의 교체 아웃)까지 수비에 붙잡혔고 그 뒤 전방 진출이 열렸다. 득점(84′ PK)·도움(90′)이 전부 그 이후다.",
@@ -873,7 +873,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건을 충족시키기 위해 만들었고, 내용은 **「관찰 없음」을 명시**하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ 선수별 스카우트·영상 서사는 ATM 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1 명단에는 있었으나 **미출전**이라 관찰 근거가 0이다. 슬롯 CDM는 FotMob `usualPlayingPositionId`·등번호에서 온 **추정**이다. 추정으로 성향·임무를 쓰지 않았다 — 출전하면 실측으로 채운다.",
@@ -890,7 +890,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건을 충족시키기 위해 만들었고, 내용은 **「관찰 없음」을 명시**하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ 선수별 스카우트·영상 서사는 ATM 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1 명단에는 있었으나 **미출전**이라 관찰 근거가 0이다. 슬롯 RCM는 FotMob `usualPlayingPositionId`·등번호에서 온 **추정**이다. 추정으로 성향·임무를 쓰지 않았다 — 출전하면 실측으로 채운다.",
@@ -907,7 +907,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건을 충족시키기 위해 만들었고, 내용은 **「관찰 없음」을 명시**하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ 선수별 스카우트·영상 서사는 ATM 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1 명단에는 있었으나 **미출전**이라 관찰 근거가 0이다. 슬롯 LM는 FotMob `usualPlayingPositionId`·등번호에서 온 **추정**이다. 추정으로 성향·임무를 쓰지 않았다 — 출전하면 실측으로 채운다.",
@@ -924,7 +924,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건 충족용이고 내용은 「관찰 없음」을 명시하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ ATM 선수별 스카우트·영상 서사는 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1(08-19 말라가) **경기일 명단 자체에 없었다** — 관찰 근거가 0이다. 슬롯 배정은 FotMob `positionIdsDesc` 기반 **추정**이다. 추정으로 성향·임무를 쓰지 않았다.",
@@ -941,7 +941,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건 충족용이고 내용은 「관찰 없음」을 명시하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ ATM 선수별 스카우트·영상 서사는 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1(08-19 말라가) **경기일 명단 자체에 없었다** — 관찰 근거가 0이다. 슬롯 배정은 FotMob `positionIdsDesc` 기반 **추정**이다. 추정으로 성향·임무를 쓰지 않았다.",
@@ -958,7 +958,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건 충족용이고 내용은 「관찰 없음」을 명시하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ ATM 선수별 스카우트·영상 서사는 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1(08-19 말라가) **경기일 명단 자체에 없었다** — 관찰 근거가 0이다. 슬롯 배정은 FotMob `positionIdsDesc` 기반 **추정**이다. 추정으로 성향·임무를 쓰지 않았다.",
@@ -975,7 +975,7 @@
   },
   {
    "adherence": "⚠️ 판정 보류 — **31분 노출**이고 팀이 2-0으로 무너진 뒤의 국면이다. 「pensaba que Cristian Romero a estas iba **como un animal**, pensaba que era **un poquito más impetuoso**」(그가 **야수처럼** 달려들 줄 알았고 **좀 더 격렬할** 줄 알았다)는 기대와의 괴리가 명시됐다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "중간 — 데뷔·31분 표본. 세부 서술은 ATM 전담 채널 **단독**이고 Into the Calderón은 평점 4만 준다. ⚠️ **auto-caption**. ⚠️ 3실점 귀책은 **카르도소의 불완전 클리어(Deia) · 그리말도의 느린 반응(Into the Calderón) · 로메로의 템포 지연(Atlético Stats)** 3소스가 각기 다른 인물을 지목한다 — **다중 원인으로 읽고 단일 귀책하지 않는다.**",
    "duties": "⭐ **id=151(R1 명단 외 자리표시)의 후속 — 26/27 체제 데뷔 경기다.** 59′ 4장 동시 교체의 일부로 **센터백**으로 투입돼 푸빌과 짝을 이뤘고, 요렌테를 전진시키는 구조 변경을 유발했다. ⚠️ **「윙어 자리에 센터백 → 백3 전환」은 채택하지 않는다** — ATM 전담 분석은 최종 포진을 **4-4-2 유지**로 본다(obs#508).",
@@ -992,7 +992,7 @@
   },
   {
    "adherence": "⭐ 이적 후 정착 완료 신호. 시메오네: 「El club hizo un gran esfuerzo para traer al Cuti」(구단은 쿠티를 데려오려 큰 노력을 했다).",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: cb_bpd.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: cb_bpd.",
    "applied_status": "MATCH",
    "confidence": "MEDIUM — 실측 1경기 + D+1 서사 교차. ⚠️ 원정·84분까지 0-0·마지막 6분 3골로 교란이 분리되지 않았다. ⚠️ 서사 일부는 Into the Calderón 영역 경유 인용이다(스페인어 원문은 Infobae·VAVEL 부분만 대조). ⚠️ 5-3-2→5-4-1(≈42′)→보유 시 4-3-3 전환 시각은 현지 분석 서술이며 우리 이벤트로 독립 확인하지 못했다. ⚠️ 영상 미시청(유튜브 전술분석 1편 존재하나 제목·설명만 확인) — D+2~D+3 재확인 대상.",
    "duties": "백3 한가운데. 자기 구역 + 좌우 CB 커버 + 지휘. 현지 도해는 한츠코와 2v1로 오야르사발을 잡으면서 동시에 푸빌 등 뒤를 메우는 것으로 그린다.",
@@ -1009,7 +1009,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건 충족용이고 내용은 「관찰 없음」을 명시하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ ATM 선수별 스카우트·영상 서사는 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1(08-19 말라가) **경기일 명단 자체에 없었다** — 관찰 근거가 0이다. 슬롯 배정은 FotMob `positionIdsDesc` 기반 **추정**이다. 추정으로 성향·임무를 쓰지 않았다.",
@@ -1026,7 +1026,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건 충족용이고 내용은 「관찰 없음」을 명시하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ ATM 선수별 스카우트·영상 서사는 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1(08-19 말라가) **경기일 명단 자체에 없었다** — 관찰 근거가 0이다. 슬롯 배정은 FotMob `positionIdsDesc` 기반 **추정**이다. 추정으로 성향·임무를 쓰지 않았다.",
@@ -1043,7 +1043,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건 충족용이고 내용은 「관찰 없음」을 명시하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ ATM 선수별 스카우트·영상 서사는 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1(08-19 말라가) **경기일 명단 자체에 없었다** — 관찰 근거가 0이다. 슬롯 배정은 FotMob `positionIdsDesc` 기반 **추정**이다. 추정으로 성향·임무를 쓰지 않았다.",
@@ -1060,7 +1060,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건 충족용이고 내용은 「관찰 없음」을 명시하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ ATM 선수별 스카우트·영상 서사는 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1(08-19 말라가) **경기일 명단 자체에 없었다** — 관찰 근거가 0이다. 슬롯 배정은 FotMob `positionIdsDesc` 기반 **추정**이다. 추정으로 성향·임무를 쓰지 않았다.",
@@ -1077,7 +1077,7 @@
   },
   {
    "adherence": "⛔ 판정 불가 — 관찰이 없다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 역할 코드가 없어 기계 판정 불가 — 반영 여부는 사람이 적어야 한다.",
    "applied_status": "PROSE",
    "confidence": "[2026-08-21] ⛔ **결손 행이다.** G10(스쿼드 전원 duties 보유) 요건 충족용이고 내용은 「관찰 없음」을 명시하는 것이 전부다. 추정으로 채우지 않았다. ⚠️ ATM 선수별 스카우트·영상 서사는 전원 미수집이다(docs/30 영상·서사 절차 미착수).",
    "duties": "⛔ **역할 서술 없음.** 26/27 라리가 R1(08-19 말라가) **경기일 명단 자체에 없었다** — 관찰 근거가 0이다. 슬롯 배정은 FotMob `positionIdsDesc` 기반 **추정**이다. 추정으로 성향·임무를 쓰지 않았다.",
@@ -1094,7 +1094,7 @@
   },
   {
    "adherence": "**MEDIUM (유베 25/26 실적 기준) — 상방 리스크 있음.** 유베 정량: 태클 **0.91/90**(포지션 내 56 퍼센타일) · 인터셉트 0.30/90 · 볼 리커버리 48 · **최종 3선 볼 획득 7** · 클리어 3 · 파울 19 · **세리에A 옐로 0**(무리한 파울로 압박하는 타입이 아니다) · **수비 액션 퍼센타일 16~23%로 낮다**. ⚠️ 반면 **릴 시절(타 체제, 2023 창)은 압박 92 퍼센타일 · 성공 압박 93 퍼센타일**이었고 수비 듀얼 3.36/90(성공률 64.29%)로 「a fiend on the press」 평가였다 — 중앙으로 볼이 들어오면 내려와 볼 캐리어를 압박해 릴이 뒤에서 공간을 좁히게 만드는 **트리거** 역할이었다. ⇒ **HIGH를 주지 않은 이유: HIGH를 지지하는 정량이 전부 릴 체제·2023년 창이고, 근거로 쓸 수 있는 가장 최근 체제(유베 25/26)의 정량은 16~23 퍼센타일이다.** ⚠️ 이 하락이 ⑴ 역할 이탈·의욕 저하인지 ⑵ 지표 정의상 과소평가인지(공개 집계에 pressures가 없어 **볼 획득이 아니라 압박 볼륨으로 기여하는 스트라이커를 구조적으로 과소평가**한다) ⑶ 유베의 낮은 블록 탓인지 **분리 불가**다. ⚠️ 출전 단편화(20분 미만 카메오 다수)로 per-90 수비 표본이 압축돼 있다. ⭐ 서사 측 신호는 일관되게 긍정적이다 — ATM 영입 논거를 다룬 현지 매체 3곳이 공히 「**압박에 대한 헌신(compromiso en la presión)**」을 시메오네 요구조건과의 정합점으로 들고, Telemadrid는 그를 「**시메오네가 기다린 병사(el soldado que esperaba Simeone)**」로 표제화했다.",
-   "applied_note": "[2026-09-14 백필] 자동 대조 결과다(사람 승인 아님) — 분석이 명시한 역할 코드 ↔ 그 선수의 prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조. 일치 역할: st_false9.",
+   "applied_note": "[2026-09-15 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 계열 w_/wm_는 동일 역할로 봄). 일치 역할: st_false9.",
    "applied_status": "MATCH",
    "confidence": "⚠️⚠️ **시기 혼입 경계선을 명시한다.** **릴(2020~2025) 자료는 전부 타 체제**다 — 자기규정·감독 지시·압박 92/93 퍼센타일·박스터치 5.22/90을 유베·ATM 임무 근거로 쓰지 않았다(불변규칙 7). **유베 25/26이 현재 판정의 유일한 정당 근거**이고, **ATM 26/27은 실측 0으로 전부 가설**이다(ATM 데뷔는 09-05 아틀레틱전 예상). ⚠️⚠️ **우리 실측 표본이 하방 편향일 수 있다** — 그는 세리에A를 **35경기 1,782분** 뛰었는데 **우리 수집은 6경기만 커버**했고(45분+·히트포인트 15+ 필터), 저장 평점 6.45가 공개 시즌 전체 6.6~6.7보다 낮다. ⏰ **표본 확장이 필요하다.** ⛔ **접근 실패 5건**: ultimouomo.com 본문 403(×2) · fbref.com 스카우팅 리포트 403(per-90 퍼센타일 원표 미확보) · estoesatleti.es 403(×2) · whoscored.com 403 · intothecalderon.com 403. ⛔ **확인 실패**: 유베 25/26 **압박 지표(pressures·최종3선 압박)** — Opta/FBref 공개 집계에서 폐지·비공개라 **릴 92/93 퍼센타일과 직접 비교가 불가능하다** · 박스 내 터치 per-90(총합 105만 확보, 분모 혼입) · **투도르기(25/26 초반) 사용 방식**(검색 미반환) · WC2026 3골의 성격(해트트릭 여부) · **시메오네·데이비드 본인 발언 0**(프레젠테이션 기자회견 기록 미발견 — ATM 역할 서술은 전부 매체 해석이다). ⚠️ **수치 충돌은 병기했다**: 득점 6G(FotMob·FootyStats·Soccerway) ↔ 8G(유베 공식, 전대회) ↔ 「세리에A+UCL+코파 7골」(UU). FBref는 부분 시즌 캐시(17경기 740분 1G)이므로 시즌 총계로 쓰면 안 된다. 퍼센타일 레이더가 스냅샷마다 이동하므로(수비 16→23%, 공중 10→11%) **단일 스냅샷 인용을 금지한다.** ⛔⛔ **오염 경고 — SofaScore 유래 서술을 전부 배제했다**: SofaScore 페이지 fetch가 「아틀레티코 마드리드에서 유벤투스로 임대」로 **임대 방향을 반전**해 반환했다(실제는 반대). ⛔ 영상 미시청. ⛔ 네덜란드어(헨트 2018~2020)는 **의도적 미수행** — 2체제 이전 자료로 판정 기여도가 없고 시기 혼입 위험만 키운다.",
    "duties": "⚠️ **체제를 분리해 읽어야 한다.** ⑴ **유벤투스 25/26(우리 실측의 근거 체제)**: 부여된 1차 임무는 **순수 9번 고정 + 유일한 득점원**이었고 그는 여기서 실패했다. L'Ultimo Uomo의 진단이 정확하다 — 그의 정체는 **「공간형 공격수(attaccante da spazi) · 깊이형 · 트랜지션형」**이고 세리에A는 공간이 없는 리그이며 그는 공간 없이 하는 법을 배우지 못했다(「더러운 리그에 온 깔끔한 선수」). **작동한 유일한 상황 = GK와 1대1로 풀려 나갔을 때.** ⑵ **릴 2020~2025(타 체제 자료)**: 본인 자기규정 「나는 피봇(pivot)형 선수가 아니다」, 감독 지시는 「**배후 침투를 반복하고 최종 라인에서 뛰라**」(L'Équipe). 시즌마다 임무가 바뀌었다 — 갈티에 피봇 → 21/22 **하강(décrochage) 담당** → 폰세카기 수비 복귀 우선(침투 미활용) → 24/25 제네지오 **원톱 단독 전역 임무**. 릴 공식 프로필은 「박스 여우가 아니다 — 등지고 받는 **서포트 스트라이커**로도 변모, 마지막 몇 미터에서 이타적」. ⑶ **ATM 26/27(가설 · 실측 0)**: 구단·현지 매체 공통 서술은 「보통 센터포워드로 뛰지만 강점은 마무리 너머에 있다 — 기동성, 동료와 대화하는 능력, 스피드, 공격적 다목적성」이고, 예상 배치는 **알바레스와 투톱**(가장 유력) 또는 원톱 기준점, 혹은 **메디아푼타로 하강**이다. ⚠️ **알바레스·쇠를로트·데이비드 3명이 2자리** 문제가 미해결이다.",
@@ -37616,7 +37616,7 @@
    "player_id": 148,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 177126, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2028-06-30"
   },
   {
@@ -37629,7 +37629,7 @@
    "player_id": 150,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 609516, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2029-06-30"
   },
   {
@@ -37642,7 +37642,7 @@
    "player_id": 151,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 727897, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2030-06-30"
   },
   {
@@ -37655,7 +37655,7 @@
    "player_id": 152,
    "pulled": "2026-08-21",
    "source": "fotmob.com/api/data (player 1282015, scripts/collect_fotmob_players.py, 2026-08-21 수집)",
-   "stale_days": 24,
+   "stale_days": 25,
    "value": "2029-06-30"
   },
   {
@@ -37668,7 +37668,7 @@
    "player_id": 154,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1419969, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2031-06-30"
   },
   {
@@ -37681,7 +37681,7 @@
    "player_id": 155,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1338192, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2030-06-30"
   },
   {
@@ -37694,7 +37694,7 @@
    "player_id": 156,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 184533, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2027-06-30"
   },
   {
@@ -37707,7 +37707,7 @@
    "player_id": 157,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1297989, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2028-06-30"
   },
   {
@@ -37720,7 +37720,7 @@
    "player_id": 158,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 690516, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2030-06-30"
   },
   {
@@ -37733,7 +37733,7 @@
    "player_id": 159,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 602563, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2027-06-30"
   },
   {
@@ -37746,7 +37746,7 @@
    "player_id": 160,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 942372, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2030-06-30"
   },
   {
@@ -37759,7 +37759,7 @@
    "player_id": 161,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1226147, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2030-06-30"
   },
   {
@@ -37772,7 +37772,7 @@
    "player_id": 162,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 940976, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2031-06-30"
   },
   {
@@ -37785,7 +37785,7 @@
    "player_id": 163,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 950199, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2031-06-30"
   },
   {
@@ -37798,7 +37798,7 @@
    "player_id": 164,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 389050, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2028-06-30"
   },
   {
@@ -37811,7 +37811,7 @@
    "player_id": 166,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1323897, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2030-06-30"
   },
   {
@@ -37824,7 +37824,7 @@
    "player_id": 167,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 288406, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2030-06-30"
   },
   {
@@ -37837,7 +37837,7 @@
    "player_id": 168,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1173678, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2030-06-30"
   },
   {
@@ -37850,7 +37850,7 @@
    "player_id": 172,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 974753, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2030-06-30"
   },
   {
@@ -37863,7 +37863,7 @@
    "player_id": 173,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 440330, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2028-06-30"
   },
   {
@@ -37876,7 +37876,7 @@
    "player_id": 174,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 789066, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2031-06-30"
   },
   {
@@ -37889,7 +37889,7 @@
    "player_id": 176,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1254394, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "2030-06-30"
   },
   {
@@ -37902,7 +37902,7 @@
    "player_id": 155,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1338192, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "Muscle injury"
   },
   {
@@ -37915,7 +37915,7 @@
    "player_id": 173,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 440330, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 1,
+   "stale_days": 2,
    "value": "Muscle injury"
   },
   {
@@ -37928,7 +37928,7 @@
    "player_id": 175,
    "pulled": "2026-09-02",
    "source": "fotmob.com/api/data (player 468931, scripts/collect_fotmob_players.py, 2026-09-02 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "Physical discomfort"
   }
  ],
