@@ -41,6 +41,7 @@ OK = {"GK": ("GK",), "LB": ("LB",), "RB": ("RB",), "LCB": ("LCB",), "RCB": ("RCB
 #    — pos_label이 우리 슬롯이거나(RDM↔RCM), pos_class 자체가 현상인 경우(false9→CAM) —
 #    판정이 끝난 행을 계속 ⛔로 띄우면 **영구 오탐**이 되어 게이트로 못 올린다.
 ADJUDICATED = "[표본판정"
+USED = "사용 경기"      # 재집계가 남기는 「사용 경기 N건(...): 날짜…」 목록의 표식
 DATE = re.compile(r"(20\d\d-\d\d-\d\d)\(")
 SEG = re.compile(r"\[20\d\d-\d\d-\d\d[^\]]*\]")
 
@@ -54,8 +55,16 @@ def audit_dates(con):
     bad, done = [], []
     for r in con.execute("SELECT id, player_id, pos_label, sample_n, rationale FROM prescriptions "
                          "WHERE kind LIKE 'measured%' AND rationale LIKE '%(%'"):
-        parts = SEG.split(r["rationale"] or "")
-        dates = next((d for d in (DATE.findall(s) for s in reversed(parts)) if d), [])
+        ra = r["rationale"] or ""
+        # ⭐ 「사용 경기」 명시 목록이 있으면 그것만 읽는다(2026-09-15 추가).
+        #    ⛔ 없으면 마지막 일자 포함 구간을 쓰는데, 그 방식은 **제외 사유로 언급한 일자**를
+        #       사용 일자와 구분하지 못한다(헤밍스 #470에서 실증: 「2026-08-23(브라이턴)의 pos_class는 LDM」이
+        #       제외 설명인데 사용 일자로 세어졌다). 재집계 시 「사용 경기」 목록을 반드시 쓴다.
+        if USED in ra:
+            dates = DATE.findall(ra[ra.rindex(USED):])
+        else:
+            parts = SEG.split(ra)
+            dates = next((d for d in (DATE.findall(s) for s in reversed(parts)) if d), [])
         if not dates:
             continue
         dates = sorted(set(dates))
@@ -85,7 +94,9 @@ def audit_reproduce(con, season):
                          "WHERE kind='measured' AND map25 IS NOT NULL AND season=?", (season,)):
         allow = OK.get((r["pos_label"] or "").strip())
         if not allow:
-            unk.append((r["id"], name(con, r["player_id"]), r["pos_label"]))
+            # ⭐ 서술 라벨(`LWB(3-4-2-1)` 등)은 판정이 끝났으면 어휘밖으로 세지 않는다
+            rec = (r["id"], name(con, r["player_id"]), r["pos_label"])
+            (done if ADJUDICATED in (r["rationale"] or "") else unk).append(rec)
             continue
         ph = ",".join("?" * len(allow))
         agg = player_aggregate(r["player_id"],
