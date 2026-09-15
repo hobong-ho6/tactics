@@ -20,6 +20,7 @@
 """
 import argparse
 import datetime as dt
+import json
 import re
 import sqlite3
 import sys
@@ -30,6 +31,9 @@ sys.path.insert(0, str(ROOT))
 from core import DB                                     # noqa: E402
 
 TX = ROOT / "reports" / "transcripts"
+# ⭐ 헤더에 채널이 없는 전사의 **보강 메타**(scripts/backfill_transcript_meta.py가 유튜브 원천에서 받아 쌓는다).
+#    ⛔ 전사 파일을 고치지 않기 위한 폴백이다 — 원본은 「수집 당시 그대로」 남고 보강분은 자기 provenance를 갖는다.
+META_BACKFILL = TX / "_meta_backfill.json"
 
 # 채널 → (팀 코드, 종류 기본값). 팀 팬채널은 팀이 확정된다.
 CHANNEL_TEAM = {
@@ -50,6 +54,32 @@ CHANNEL_TEAM = {
     "Hull City Fan Central": (None, "상대팀"),
     "Forest Fan TV": (None, "상대팀"),
     "AFTV(아스날 팬)": (None, "상대팀"),
+    # ⭐ 2026-09-15 보강 54편에서 새로 드러난 채널 — 팀 축을 못 박아 상대팀 힌트 오작동을 막는다
+    "UTV": ("AVL", "경기반응"),
+    "UP THE VILLA": ("AVL", "경기반응"),
+    "All Villa No Filler - An Aston Villa Podcast": ("AVL", "경기반응"),
+    "Footy Post-Game Hub": ("AVL", "감독회견"),
+    "Mango Talks Ball": ("AVL", "경기반응"),
+    "Liverpool FC": ("LIV", "감독회견"),
+    "This Is Anfield": ("LIV", "감독회견"),
+    "AnfieldArmyNews": ("LIV", "감독회견"),
+    "Anfield Index Extra": ("LIV", "전술분석"),
+    "David Lynch - Liverpool FC": ("LIV", "전술분석"),
+    "Red Tactics with Neil": ("LIV", "전술분석"),
+    "The Golden Sky | Liverpool FC Fan Channel": ("LIV", "전술분석"),
+    "RLC Chelsea": ("CHE", "전술분석"),
+    "MightyBluesNews": ("CHE", "감독회견"),
+    "Atlético Stats": ("ATM", "전술분석"),
+    "Pase Atras TV": ("ATM", "전술분석"),
+    "ATLÉTICO DE MADRID NOTICIAS DE HOY": ("ATM", "감독회견"),
+    "Diario AS": ("ATM", "감독회견"),
+    # ⛔ 팀 축이 없는 채널(중립·게임 재현·상대팀)은 None으로 둔다 — 잘못된 팀 부여가 더 나쁘다
+    "Brom Squad Gaming": (None, "게임재현"),
+    "Geografifa": (None, "게임재현"),
+    "BeanymanSports": (None, "감독회견"),
+    "talkSPORT": (None, "경기반응"),
+    "Mundo Deportivo": (None, "감독회견"),
+    "LockyLeeds": (None, "상대팀"),
 }
 # 제목·메모에 나오는 상대팀 표기 → matches.opponent 매칭 키워드
 OPPONENT_HINTS = {
@@ -74,6 +104,7 @@ KIND_HINTS = [
     (r"tactical analysis|전술 ?분석|build-?up|analysis:", "전술분석"),
     (r"things we learned|reaction|review|fall to|defeat|draw at|win", "경기반응"),
     (r"preseason|프리시즌|pre-?season", "프리시즌"),
+    (r"EA FC ?2\d|career mode|recreated in|tactics recreated", "게임재현"),
 ]
 
 
@@ -137,14 +168,24 @@ def main():
     obs_src = [dict(r) for r in con.execute(
         "SELECT id, source FROM observations WHERE source LIKE '%reports/transcripts/%'")]
 
-    rows, no_meta, unlinked = [], [], 0
+    backfill = (json.loads(META_BACKFILL.read_text(encoding="utf-8"))
+                if META_BACKFILL.exists() else {})
+    rows, no_meta, unlinked, backfilled = [], [], 0, 0
     for path in sorted(TX.glob("*.md")):
         parts = path.name.split(".")
         vid, lang = parts[0], (parts[1] if len(parts) > 2 else None)
         h = parse_header(path)
         if not h["channel"]:
-            no_meta.append(path.name)
-            continue
+            # ⭐ 유튜브 원천 보강분으로 폴백(2026-09-15). 없으면 여전히 채널 미상으로 제외한다.
+            b = backfill.get(vid)
+            if b and b.get("channel"):
+                h = {**h, "channel": b["channel"], "title": b.get("title"),
+                     "published": b.get("published"), "approx": 0,
+                     "note": (h.get("note") or "") + " [메타 보강: YouTube 원천]"}
+                backfilled += 1
+            else:
+                no_meta.append(path.name)
+                continue
         team, kind = CHANNEL_TEAM.get(h["channel"], (None, None))
         kind = guess_kind(f"{h['title'] or ''} {h['note']}") or kind
         blob = f"{h['title'] or ''} {h['note']}".lower()
@@ -179,14 +220,17 @@ def main():
             channel=h["channel"], title=h["title"], published=h["published"],
             published_approx=h["approx"], url=h["url"], transcript_path=rel, kind=kind,
             obs_refs=",".join(map(str, refs)) or None,
-            source=f"전사 헤더 파싱 + observations 역인용 산출 (scripts/index_transcripts.py, {a.pulled})",
+            source=(f"{'전사 헤더 파싱' if '[메타 보강' not in (h['note'] or '') else 'YouTube 원천 보강(oEmbed 채널·제목 + uploadDate 게시일)'}"
+                    f" + observations 역인용 산출 (scripts/index_transcripts.py, {a.pulled})"),
             confidence=("MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. "
                         "⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — "
                         "인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). "
                         "경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다."),
         ))
 
-    print(f"전사 {len(rows) + len(no_meta)}편 · 인덱스 {len(rows)} · 메타 없음 {len(no_meta)} · 경기 미귀속 {unlinked}")
+    print(f"전사 {len(rows) + len(no_meta)}편 · 인덱스 {len(rows)}"
+          f"(헤더 {len(rows) - backfilled} + **보강 {backfilled}**) · "
+          f"메타 없음 {len(no_meta)} · 경기 미귀속 {unlinked}")
     if a.dry_run:
         for r in rows[:15]:
             print(f"  {r['video_id']:<14} {(r['channel'] or '')[:28]:<28} "
