@@ -54,6 +54,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 
 <section data-tab="cat" style="display:none">
   <div class="panel"><h2>지금 열린 진화 <small class="dim" id="catn"></small></h2>
+    <div class="menubar" id="catteam"></div>
     <div class="evo-grid" id="cat"></div>
     <p class="dim" style="font-size:12px;margin-top:8px">「적용 가능」은 <b>우리 DB 선수 중</b> fut.gg가 이 진화를 포함한 경로를 열어 준 선수다.
     <span class="chip" style="border-color:var(--ok);color:var(--ok)">녹색</span>=처방 역할이 결과 카드에서 Role++ ·
@@ -154,7 +155,15 @@ document.querySelectorAll('.menubar [data-tab]').forEach(b => b.addEventListener
 
 /* ── 카탈로그 ── */
 const RANKED = {}; for (const [pid, rows] of Object.entries(EVO.paths || {})) RANKED[pid] = rank(+pid, rows);
-function renderCatalog(){
+function teamBar(el, team, onPick){
+  const codes = ['ALL', ...idx.regimes.map(r => r.team_code)];
+  el.innerHTML = codes.map(c => `<button class="act ghost${c === team ? ' on' : ''}" data-c="${c}">${c === 'ALL' ? '전체' : esc(idx.regimes.find(r => r.team_code === c)?.team_kr || c)}</button>`).join('');
+  el.querySelectorAll('button').forEach(b => b.addEventListener('click', () => onPick(b.dataset.c)));
+}
+let CAT_TEAM = localStorage.getItem('evo_cat_team') || 'AVL';
+function renderCatalog(team = CAT_TEAM){
+  CAT_TEAM = team; localStorage.setItem('evo_cat_team', team);
+  teamBar(document.getElementById('catteam'), team, renderCatalog);
   const cat = EVO.catalog || [];
   document.getElementById('catn').textContent = `— ${cat.filter(c => !c.is_expired).length}종 열림 · ${cat.filter(c => c.is_expired).length}종 만료`;
   const days = t => t ? Math.ceil((new Date(t) - Date.now()) / 864e5) : null;
@@ -162,6 +171,7 @@ function renderCatalog(){
     // 이 진화를 포함한 경로를 가진 우리 선수 — 첫 단계로 포함하면 바로 적용 가능, 아니면 N단계째
     const apps = [];
     for (const [pid, rows] of Object.entries(RANKED)) for (const r of rows){
+      if (team !== 'ALL' && TEAM_OF[pid] !== team) break;
       const k = r.ids.indexOf(c.evo_id); if (k < 0) continue;
       apps.push({ pid: +pid, tier: r.tier, k, d: r.d, name: r.name_kr }); break;
     }
@@ -175,7 +185,7 @@ function renderCatalog(){
         ${c.unlock_text ? `<span class="dim">${esc(c.unlock_text)}</span>` : ''}</div>
       <div>${J(c.requirements_text, []).map(r => `<span class="req">${esc(r.label)}: ${esc(r.value)}</span>`).join('')}</div>
       <div style="margin-top:6px;font-size:12px"><b>업그레이드</b> ${J(c.total_upgrades_text, []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ') || '<span class="dim">없음(도입용)</span>'}</div>
-      <div style="margin-top:6px;font-size:12px"><b>우리 선수 적용 가능 ${apps.length}명</b> <small class="dim">(fut.gg 전체 ${c.number_of_players?.toLocaleString?.() ?? '—'}명)</small>
+      <div style="margin-top:6px;font-size:12px"><b>${team === 'ALL' ? '우리 선수' : esc(idx.regimes.find(r => r.team_code === team)?.team_kr || team)} 적용 가능 ${apps.length}명</b> <small class="dim">(fut.gg 전체 ${c.number_of_players?.toLocaleString?.() ?? '—'}명)</small>
         <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}">${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || '<span class="dim">없음</span>'}</div></div>
       ${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>` : ''}
     </div>`;
@@ -187,10 +197,7 @@ function renderCatalog(){
 
 /* ── 선수별 패스 ── */
 function renderPaths(team, focusPid){
-  const sel = document.getElementById('teamsel');
-  const codes = ['ALL', ...idx.regimes.map(r => r.team_code)];
-  sel.innerHTML = codes.map(c => `<button class="act ghost${c === team ? ' on' : ''}" data-c="${c}">${c === 'ALL' ? '전체' : esc(idx.regimes.find(r => r.team_code === c)?.team_kr || c)}</button>`).join('');
-  sel.querySelectorAll('button').forEach(b => b.addEventListener('click', () => renderPaths(b.dataset.c)));
+  teamBar(document.getElementById('teamsel'), team, renderPaths);
   const pids = Object.keys(RANKED).map(Number).filter(p => team === 'ALL' || TEAM_OF[p] === team)
     .sort((a, b) => (RANKED[b][0]?.tier ?? 0) - (RANKED[a][0]?.tier ?? 0) || (RANKED[b][0]?.d ?? 0) - (RANKED[a][0]?.d ?? 0));
   document.getElementById('paths').innerHTML = pids.map(pid => {
@@ -290,6 +297,6 @@ function renderClub(){
     || '<li class="dim">기록 없음</li>';
 }
 
-renderClub(); renderCatalog(); renderPaths('ALL');
+renderClub(); renderCatalog(); renderPaths(CAT_TEAM);
 </script>
 </body></html>
