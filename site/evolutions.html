@@ -396,9 +396,12 @@ function renderClub(){
   }));
 
   // 추가 폼 — 우리 DB 선수 → 그 선수의 FC27 카드
-  const pids = Object.keys(NAME_OF).map(Number).sort((a, b) => (TEAM_OF[a] + NAME_OF[a]).localeCompare(TEAM_OF[b] + NAME_OF[b], 'ko'));
+  // 팀 필터 → 선수 (사용자 지시 2026-09-18 「목록이 너무 길어서 팀 필터를 하나 넣고 거기서 선수를 선택」). 기본은 카탈로그 탭과 같은 팀.
+  const addTeam = localStorage.getItem('evo_add_team') || CAT_TEAM;
+  const pidsOf = team => Object.keys(NAME_OF).map(Number).filter(p => TEAM_OF[p] === team).sort((a, b) => NAME_OF[a].localeCompare(NAME_OF[b], 'ko'));
   document.getElementById('addp').innerHTML = `<form class="form" id="addf">
-    <div><label>선수</label><select name="pid">${pids.map(p => `<option value="${p}">${esc(TEAM_OF[p])} · ${esc(NAME_OF[p])}</option>`).join('')}</select></div>
+    <div><label>팀</label><select name="team">${idx.regimes.map(r => `<option value="${r.team_code}"${r.team_code === addTeam ? ' selected' : ''}>${esc(r.team_kr)}</option>`).join('')}</select></div>
+    <div><label>선수</label><select name="pid"></select></div>
     <div><label>카드</label><select name="item"></select></div>
     <div><label>입수일</label><input type="date" name="acquired" value="${new Date().toISOString().slice(0, 10)}"></div>
     <div><label>입수 경로</label><select name="how"><option>팩</option><option>이적시장</option><option>SBC</option><option>보상</option><option>시작 선수</option></select></div>
@@ -406,7 +409,9 @@ function renderClub(){
   const f = document.getElementById('addf'), itemSel = f.querySelector('[name=item]');
   const fillItems = () => { const cs = CARDS[f.pid.value] || [];
     itemSel.innerHTML = cs.map(c => `<option value="${c.ea_item_id}">${c.is_base ? '기본' : esc(c.rarity_name || '특별')} OVR ${c.ovr} ${esc(c.best_pos || '')}</option>`).join('') || '<option value="">카드 미수집</option>'; };
-  f.pid.addEventListener('change', fillItems); fillItems();
+  const fillPids = () => { localStorage.setItem('evo_add_team', f.team.value);
+    f.pid.innerHTML = pidsOf(f.team.value).map(p => `<option value="${p}">${esc(NAME_OF[p])}</option>`).join(''); fillItems(); };
+  f.team.addEventListener('change', fillPids); f.pid.addEventListener('change', fillItems); fillPids();
   f.addEventListener('submit', async e => { e.preventDefault(); const pid = +f.pid.value;
     say(document.getElementById('addm'), await api('player', { account: acc.name, name: NAME_OF[pid], player_id: pid,
       ea_item: itemSel.value ? +itemSel.value : null, acquired: f.acquired.value, how: f.how.value })); });
