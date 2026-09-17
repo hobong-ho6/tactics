@@ -735,7 +735,7 @@ CREATE TABLE player_evolutions(
   roles_plus_after TEXT,            -- ⭐ 결과 카드 Role+ raw id JSON (roles 카탈로그 plusEaId로 해석)
   roles_plus_plus_after TEXT,       -- ⭐ 결과 카드 Role++ raw id JSON (plusPlusEaId로 해석)
   source TEXT, confidence TEXT,
-  pulled TEXT NOT NULL,             -- 수집일 — 진화는 기간제라 시점이 정본이다
+  pulled TEXT NOT NULL, path_json TEXT, path_choices TEXT,             -- 수집일 — 진화는 기간제라 시점이 정본이다
   UNIQUE(game_version, base_ea_id, path_key, pulled)
 );
 CREATE INDEX ix_player_evolutions_player ON player_evolutions(player_id, game_version);
@@ -749,3 +749,65 @@ CREATE TABLE fc_role_familiarity_map(
   source TEXT, confidence TEXT, pulled TEXT NOT NULL,
   PRIMARY KEY(game_version, ea_id, kind)
 );
+CREATE TABLE fc_evolutions(
+  id INTEGER PRIMARY KEY,
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  evo_id INTEGER NOT NULL,              -- fut.gg evolution id (= 034 path_key의 구성 요소)
+  name TEXT NOT NULL,
+  slug TEXT, url TEXT, description TEXT,
+  category TEXT,                        -- categoryName (없으면 NULL)
+  unlock_text TEXT,                     -- customUnlockable / sbcName / objectiveGroupName 중 있는 것
+  coins_cost INTEGER, points_cost INTEGER, token_cost INTEGER,
+  repeatability INTEGER,                -- repeatabilityCount (1=1회, n=반복 가능 횟수)
+  is_reward INTEGER NOT NULL DEFAULT 0, -- isRewardEvolution (시즌패스·목표 보상)
+  is_gk INTEGER NOT NULL DEFAULT 0,
+  is_timed INTEGER NOT NULL DEFAULT 0,
+  training_time INTEGER,                -- 초 (훈련 캠프형)
+  created_at TEXT, end_time TEXT, end_submission_time TEXT,
+  requirements_text TEXT,               -- JSON [{label,value}] — 사람이 읽는 요구조건
+  total_upgrades_text TEXT,             -- JSON [{label,value,maxValue}]
+  levels TEXT,                          -- JSON 단계별 upgrades·challenges·upgradeOptions (선택형은 options로 갈린다)
+  allowed_prior_ids TEXT,               -- JSON — 이 진화 전에 거쳐야/거칠 수 있는 진화 id
+  number_of_players INTEGER,            -- fut.gg 집계 적용 가능 선수 수(전체 DB 기준)
+  is_expired INTEGER NOT NULL DEFAULT 0,
+  source TEXT, confidence TEXT,
+  pulled TEXT NOT NULL,                 -- 진화는 기간제 — 시점이 정본
+  UNIQUE(game_version, evo_id, pulled)
+);
+CREATE INDEX ix_fc_evolutions_gv ON fc_evolutions(game_version, is_expired, end_time);
+CREATE TABLE fut_accounts(
+  id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL UNIQUE,            -- 표시명 (예: 'main-ps5')
+  platform TEXT,                        -- PS / Xbox / PC
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  notes TEXT,
+  created TEXT NOT NULL
+);
+CREATE TABLE fut_club_players(
+  id INTEGER PRIMARY KEY,
+  account_id INTEGER NOT NULL REFERENCES fut_accounts(id),
+  player_id INTEGER REFERENCES players(id),   -- 우리 DB 선수면 연결(조인 규칙: player_id)
+  ea_item_id INTEGER,                         -- 보유 아이템(카드) id — player_card_items.ea_item_id
+  name TEXT NOT NULL,                         -- 표시용
+  acquired TEXT, acquired_how TEXT,           -- 입수일·경로(팩/이적시장/보상/SBC)
+  status TEXT NOT NULL DEFAULT 'owned' CHECK(status IN ('owned','sold','discarded')),
+  current_ovr INTEGER, current_six TEXT,      -- 마지막 기록 시점 상태(진화 적용 후 갱신)
+  current_playstyles TEXT, current_roles_plus TEXT, current_roles_plus_plus TEXT,
+  evo_count INTEGER NOT NULL DEFAULT 0,       -- 적용한 진화 단계 수(로그와 일치해야 한다)
+  notes TEXT,
+  updated TEXT NOT NULL,
+  UNIQUE(account_id, ea_item_id)
+);
+CREATE TABLE fut_evolution_log(
+  id INTEGER PRIMARY KEY,
+  club_player_id INTEGER NOT NULL REFERENCES fut_club_players(id),
+  evo_id INTEGER NOT NULL, evo_name TEXT NOT NULL,
+  level INTEGER,                              -- 다단계 진화의 단계(1부터)
+  applied_at TEXT NOT NULL, completed_at TEXT,
+  ovr_before INTEGER, ovr_after INTEGER,
+  six_before TEXT, six_after TEXT,            -- JSON
+  attrs_delta TEXT,                           -- JSON {한글 라벨: +n}
+  playstyles_after TEXT, roles_plus_after TEXT, roles_plus_plus_after TEXT,
+  source TEXT, confidence TEXT, notes TEXT
+);
+CREATE INDEX ix_fut_evolution_log_cp ON fut_evolution_log(club_player_id, applied_at);

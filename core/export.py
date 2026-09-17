@@ -124,7 +124,8 @@ def export_all(db_path=None, window="2026-summer"):
                                   evolution_ids, evolution_names, evolution_urls, steps,
                                   coins_cost, points_cost, training_time, is_expired,
                                   ovr_before, ovr_after, upgrades, six_before, six_after,
-                                  playstyles_after, roles_plus_after, roles_plus_plus_after, pulled
+                                  playstyles_after, roles_plus_after, roles_plus_plus_after, pulled,
+                                  path_json, path_choices
                            FROM player_evolutions
                             WHERE player_id IS NOT NULL
                               AND pulled=(SELECT MAX(pulled) FROM player_evolutions)
@@ -132,8 +133,23 @@ def export_all(db_path=None, window="2026-summer"):
         evos.setdefault(str(r.pop("player_id")), []).append(r)
     rolemap = _rows(con, """SELECT game_version, ea_id, kind, slug, name, position_name
                             FROM fc_role_familiarity_map ORDER BY game_version, kind, ea_id""")
+    # 카탈로그(fc_evolutions, 최신 pulled) + 내 구단 원장(fut_*) — 진화 메뉴(evolutions.html)가 읽는다 (migration 036)
+    catalog = _rows(con, """SELECT game_version, evo_id, name, slug, url, description, category, unlock_text,
+                                   coins_cost, points_cost, token_cost, repeatability, is_reward, is_gk, is_timed,
+                                   training_time, created_at, end_time, end_submission_time, requirements_text,
+                                   total_upgrades_text, levels, allowed_prior_ids, number_of_players, is_expired, pulled
+                            FROM fc_evolutions WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions)
+                            ORDER BY is_expired, end_time, evo_id""")
+    accounts = _rows(con, "SELECT id, name, platform, game_version, notes, created FROM fut_accounts ORDER BY id")
+    club = _rows(con, """SELECT id, account_id, player_id, ea_item_id, name, acquired, acquired_how, status,
+                                current_ovr, current_six, current_playstyles, current_roles_plus, current_roles_plus_plus,
+                                evo_count, notes, updated FROM fut_club_players ORDER BY account_id, status, name""")
+    log = _rows(con, """SELECT id, club_player_id, evo_id, evo_name, level, applied_at, completed_at, ovr_before, ovr_after,
+                               six_before, six_after, attrs_delta, playstyles_after, roles_plus_after, roles_plus_plus_after, notes
+                        FROM fut_evolution_log ORDER BY applied_at, id""")
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
-                          {"paths": evos, "role_map": rolemap}))
+                          {"paths": evos, "role_map": rolemap, "catalog": catalog,
+                           "club": {"accounts": accounts, "players": club, "log": log}}))
 
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──
     # ⭐ 세 층을 그대로 내보낸다: 메타(파싱) · obs_points(검증된 판정) · summary/key_points(사람 요약).

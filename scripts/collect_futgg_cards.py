@@ -62,6 +62,32 @@ def main():
         m = re.search(r"/27-(\d+)\.", r["card_image_url"])
         if m:
             targets[int(m.group(1))] = (r["player_id"], r["name_kr"])
+    # ⭐ 2026-09-17 폴백(사용자 지시 「게임카드 없는 선수들은 모두 모으고」): FC27 game_stats에 카드 URL이 없는 스쿼드 선수는
+    #    이름 검색 API로 base eaId를 찾는다. ⛔ 남자(gender==1)·이름 토큰 교차·**유일 일치**일 때만 받는다(obs#616 로렌 제임스 사고).
+    q2 = """SELECT DISTINCT p.id, COALESCE(p.name_kr, p.name) kr, p.name en
+            FROM squad_entries se JOIN regimes r ON r.id=se.regime_id AND r.end IS NULL
+            JOIN players p ON p.id=se.player_id
+            WHERE p.id NOT IN (SELECT player_id FROM player_game_stats WHERE game_version='FC27' AND card_image_url LIKE '%/27-%')"""
+    if a.team:
+        q2 += " AND r.team_code IN (%s)" % ",".join("?" * len(a.team))
+    unresolved = []
+    for r in con.execute(q2, a.team):
+        toks = [t for t in re.split(r"[\s\-]+", (r["en"] or "").lower()) if len(t) > 2]
+        hit = {}
+        for tok in (toks[-1:] or toks):
+            for it in (get(f"{API}/players/v2/27/?name={tok}") or {}).get("data", []):
+                if it.get("gender") != 1:
+                    continue
+                full = f"{it.get('firstName','')} {it.get('lastName','')} {it.get('commonName') or ''}".lower()
+                if all(t in full for t in toks):
+                    hit[it.get("basePlayerEaId")] = it.get("commonName") or it.get("lastName")
+        if len(hit) == 1:
+            ea = next(iter(hit)); targets[ea] = (r["id"], r["kr"])
+            print(f"  검색 폴백: {r['kr']} → base {ea} ({hit[ea]})")
+        else:
+            unresolved.append((r["kr"], r["en"], list(hit.values())[:4]))
+    if unresolved:
+        print("  ⚠️ 검색 폴백 미해결(유일 일치 아님):", unresolved)
     print(f"대상 {len(targets)}명 · 게임 {a.games}")
 
     cur = con.cursor()
@@ -98,7 +124,10 @@ def main():
                 roles_plus_plus=json.dumps(it.get("rolesPlusPlus") or []),
                 skill_moves=it.get("skillMoves"), weak_foot=it.get("weakFoot"),
                 accelerate=accelerate_label(it.get("accelerateType")), preferred_foot=FOOT.get(it.get("foot")),
-                card_image_url=None, futgg_url=it.get("url"),
+                # 이미지: 목록 API cardImageUrl이 우선이고, 없으면 정의의 cardImagePath로 만든다(2026-09-17 — 20장이 NULL이었다)
+                card_image_url=("https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/" + it["cardImagePath"])
+                               if it.get("cardImagePath") else None,
+                futgg_url=it.get("url"),
                 source=f"fut.gg /api/fut/players/v2/all-versions/{ea}/ ({a.pulled} 수집, collect_futgg_cards.py)",
                 confidence="HIGH — EA 확정 아이템 정의. ⛔ Role+/++는 카탈로그 미공개라 raw id 목록이다(docs/21 ②).",
             ))
@@ -117,7 +146,7 @@ def main():
             m = meta.get(r["ea_item_id"], {})
             r["rarity_name"] = m.get("rarityName")
             r["club"] = (m.get("club") or {}).get("name")
-            r["card_image_url"] = m.get("cardImageUrl")
+            r["card_image_url"] = m.get("cardImageUrl") or r["card_image_url"]
 
     promo = [r for r in rows if not r["is_base"]]
     print(f"\n수집 {len(rows)}장 (base {len(rows)-len(promo)} · 프로모 {len(promo)})")
@@ -131,7 +160,7 @@ def main():
         return
 
     cols = list(rows[0]) if rows else []
-    sql = ("INSERT INTO player_card_items(%s) VALUES(%s) ON CONFLICT(game_version, ea_item_id) DO NOTHING"
+    sql = ("INSERT INTO player_card_items(%s) VALUES(%s) ON CONFLICT(game_version, ea_item_id) DO UPDATE SET card_image_url=COALESCE(player_card_items.card_image_url, excluded.card_image_url)"
            % (",".join("def" if c == "def_" else c for c in cols), ",".join(f":{c}" for c in cols)))
     before = con.execute("SELECT COUNT(*) FROM player_card_items").fetchone()[0]
     for r in rows:

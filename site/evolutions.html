@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko"><head><meta charset="utf-8"><title>진화·내 구단 — tactics v2</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.evo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
+.evo-card{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--panel)}
+.evo-card.expired{opacity:.55}
+.evo-card h3{margin:0 0 6px;font-size:15px}
+.req{display:inline-block;padding:1px 7px;border:1px solid var(--line);border-radius:6px;font-size:12px;margin:2px 2px 0 0}
+.steps{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start;margin-top:8px}
+.step{border:1px solid var(--line);border-radius:8px;padding:8px;min-width:150px;font-size:12px;background:rgba(255,255,255,.02)}
+.step img{width:72px;display:block;margin-bottom:4px}
+.step.best{border-color:var(--ok)}
+.up{color:var(--ok)} .dn{color:var(--bad)}
+.tier2{border-left:3px solid var(--ok)} .tier1{border-left:3px solid var(--warn)} .tier0{border-left:3px solid var(--line)}
+.plist{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.plist button{background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:3px 8px;cursor:pointer;font-size:12px}
+.plist button.t2{border-color:var(--ok);color:var(--ok)} .plist button.t1{border-color:var(--warn);color:var(--warn)}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;align-items:end;margin:8px 0}
+.form label{font-size:12px;color:var(--dim)} .form input,.form select{width:100%;padding:6px 8px;background:var(--bg,#111);color:var(--txt);border:1px solid var(--line);border-radius:6px}
+.form button,.act{background:var(--acc);color:#14100b;border:0;border-radius:8px;padding:7px 12px;font-weight:700;cursor:pointer}
+.act.ghost{background:none;color:var(--txt);border:1px solid var(--line);font-weight:400}
+.act.ghost.on{border-color:var(--acc);color:var(--acc)}
+.msg{font-size:12px;white-space:pre-wrap;margin-top:6px}
+.msg.err{color:var(--bad)} .msg.ok{color:var(--ok)}
+details.path summary{cursor:pointer;list-style:none} details.path summary::-webkit-details-marker{display:none}
+.timeline li{margin:4px 0;font-size:13px}
+</style></head><body>
+<div id="hdr"></div>
+<h1>진화 · 내 얼티밋 구단 <small class="dim" id="asof"></small></h1>
+<p class="dim" style="font-size:13px;margin:-6px 0 10px">진화 카탈로그·선수별 패스는 fut.gg가 EA 정의에서 계산한 <b>사실</b>이고,
+「누구에게 적용하면 좋은가」는 <b>이 화면이 그 선수의 처방 역할과 대조해</b> 만든다(처방이 바뀌면 추천도 바뀐다).
+내 구단 원장은 DB(<code>fut_*</code>)가 정본 — 여기서 기록하면 서버가 DB에 쓰고 곧바로 재-export한다.</p>
+
+<div class="menubar">
+  <button class="act ghost on" data-tab="club">내 구단</button>
+  <button class="act ghost" data-tab="cat">진화 카탈로그</button>
+  <button class="act ghost" data-tab="paths">선수별 진화 패스</button>
+</div>
+
+<section data-tab="club">
+  <div class="panel"><h2>계정 <small class="dim">— fut_accounts</small></h2>
+    <div id="acc"></div></div>
+  <div class="panel"><h2>보유 선수 <small class="dim">— 현재 상태 · 진화 횟수 · 다음 추천</small></h2>
+    <div id="owned"></div></div>
+  <div class="panel"><h2>선수 추가 <small class="dim">— 우리 DB 선수와 그 선수의 FC27 카드 중 보유한 것</small></h2>
+    <div id="addp"></div></div>
+  <div class="panel"><h2>진화 기록 <small class="dim">— fut_evolution_log (시간순)</small></h2>
+    <ul class="timeline" id="log"></ul></div>
+  <p class="dim" style="font-size:12px"><b>내 팀 자동 불러오기:</b> EA 구단 데이터는 <b>FC Community API 승인 파트너</b>(fut.gg GG Club 등)만 받는다.
+  우리는 파트너가 아니라 직접 못 끌어온다 — 이 원장이 정본이고, GG Club에 연결한 세션을 읽는 임포터는 별도 작업이다.</p>
+</section>
+
+<section data-tab="cat" style="display:none">
+  <div class="panel"><h2>지금 열린 진화 <small class="dim" id="catn"></small></h2>
+    <div class="evo-grid" id="cat"></div>
+    <p class="dim" style="font-size:12px;margin-top:8px">「적용 가능」은 <b>우리 DB 선수 중</b> fut.gg가 이 진화를 포함한 경로를 열어 준 선수다.
+    <span class="chip" style="border-color:var(--ok);color:var(--ok)">녹색</span>=처방 역할이 결과 카드에서 Role++ ·
+    <span class="chip" style="border-color:var(--warn);color:var(--warn)">노랑</span>=Role+ · 회색=처방 역할과 무관(능력치만 오른다).</p></div>
+</section>
+
+<section data-tab="paths" style="display:none">
+  <div class="panel"><h2>선수별 진화 패스 <small class="dim">— 팀별 · 처방 대조 순위</small></h2>
+    <div class="menubar" id="teamsel"></div>
+    <div id="paths"></div></div>
+</section>
+
+<script type="module">
+import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
+
+const { idx } = await mountHeader('evolutions.html');
+const [EVO, CARDS, K26, ...TEAMS] = await Promise.all([
+  loadGameStats('evolutions'), loadGameStats('cards'), loadKernels('FC26').catch(() => ({roles: []})),
+  ...idx.regimes.map(r => loadTeam(r.team_code).then(t => [r.team_code, t]).catch(() => [r.team_code, null])),
+]);
+const ROLE_KR = Object.fromEntries((K26.roles || []).map(r => [r.role_id, r.name]));
+const TEAM_OF = {}, NAME_OF = {}, PRES = {};
+for (const [code, t] of TEAMS){
+  if (!t) continue;
+  for (const s of t.squad || []){ TEAM_OF[s.player_id] = code; NAME_OF[s.player_id] = s.name_kr || s.label; }
+  for (const p of t.prescriptions || []){
+    if (!p.role_id || p.player_id == null) continue;
+    if (!PRES[p.player_id] || String(p.season || '') > String(PRES[p.player_id].season || '')) PRES[p.player_id] = p;
+  }
+}
+document.getElementById('asof').textContent = EVO.catalog?.[0] ? `— 카탈로그 수집일 ${EVO.catalog[0].pulled} · FC27` : '';
+
+/* ── 추천 규칙 (player.html의 「진화 제안」과 같은 규칙) ──
+   ① 결과 카드가 처방 역할을 Role++로 주는가 → ② Role+ → ③ OVR 상승 → ④ 비용. 포지션은 role_id 접두사에서 읽는다. */
+const EVO_ALIAS = { bpd:'ballplayingdefender', b2b:'boxtobox', dlp:'deeplyingplaymaker', att_wb:'attackingwingback', insidefwd:'insideforward', wideplm:'wideplaymaker' };
+const EVO_POS = { gk:['GK'], cb:['CB'], fb:['LB','RB'], dm:['CDM'], cm:['CM'], cam:['CAM'], w:['LW','RW'], wm:['LM','RM'], st:['ST'] };
+const norm = s => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+const roleKey = rid => { const tail = String(rid || '').split('_').slice(1).join('_'); return norm(EVO_ALIAS[tail] ?? tail); };
+const BYID = {}; for (const r of EVO.role_map || []) BYID[`${r.kind}:${r.ea_id}`] = r;
+const decode = (ids, kind) => (J(ids, []) || []).map(i => BYID[`${kind}:${i}`]).filter(Boolean);
+function matcher(pid){
+  const pres = PRES[pid]; if (!pres) return { pres: null, m: () => false };
+  const want = roleKey(pres.role_id), pos = EVO_POS[String(pres.role_id).split('_')[0]];
+  return { pres, m: r => norm(r.name) === want && (!pos || pos.includes(r.position_name)) };
+}
+function rank(pid, rows){
+  const { pres, m } = matcher(pid);
+  return rows.filter(r => !r.is_expired).map(r => {
+    const pp = decode(r.roles_plus_plus_after, 'plusplus'), pl = decode(r.roles_plus_after, 'plus');
+    const tier = pp.some(m) ? 2 : pl.some(m) ? 1 : 0;
+    return { ...r, pp, pl, tier, m, pres, d: (r.ovr_after ?? 0) - (r.ovr_before ?? 0),
+             cost: (r.coins_cost || 0) + (r.points_cost || 0) * 1000, ids: J(r.evolution_ids, []), path: J(r.path_json, []) };
+  }).sort((a, b) => b.tier - a.tier || b.d - a.d || a.cost - b.cost || a.steps - b.steps);
+}
+const presLabel = pres => pres ? `${esc(ROLE_KR[pres.role_id] || pres.role_id)} <small class="dim">${esc(pres.pos_label ?? '')} ${esc(pres.focus ?? '')}</small>` : '<span class="dim">처방 없음</span>';
+
+/* 단계 카드 — step 0은 적용 전 기준 카드 */
+function stepsHTML(p){
+  const steps = p.path || [];
+  return `<div class="steps">${steps.map((s, i) => {
+    const prev = steps[i - 1];
+    const six = Object.entries(s.six || {}).map(([k, v]) => {
+      const d = prev && prev.six ? v - prev.six[k] : 0;
+      return `<span>${k} <b>${v ?? '—'}</b>${d ? `<small class="${d > 0 ? 'up' : 'dn'}">${d > 0 ? '+' : ''}${d}</small>` : ''}</span>`;
+    }).join(' ');
+    const roles = [...(s.roles_plus_plus || []).map(i => [BYID[`plusplus:${i}`], '++']), ...(s.roles_plus || []).map(i => [BYID[`plus:${i}`], '+'])]
+      .filter(([r]) => r).map(([r, k]) => `<span class="req"${p.m && p.m(r) ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}>${esc(r.position_name)} ${esc(r.name)}${k}</span>`).join('');
+    return `<div class="step${i === steps.length - 1 && p.tier ? ' best' : ''}">
+      ${s.card_image_url ? `<img src="${esc(s.card_image_url)}" alt="" loading="lazy">` : ''}
+      <b>${i === 0 ? '적용 전' : `${i}단계 후`}</b> · OVR <b>${s.ovr ?? '—'}</b>${prev && s.ovr - prev.ovr ? ` <small class="up">+${s.ovr - prev.ovr}</small>` : ''}
+      <div style="margin:4px 0">${six}</div>
+      ${(s.playstyles || []).length ? `<div class="dim">PS ${(s.playstyles || []).map(esc).join(', ')}</div>` : ''}
+      <div style="margin-top:3px">${roles || '<small class="dim">역할 숙련 없음</small>'}</div></div>`;
+  }).join('')}</div>`;
+}
+const costText = r => [r.coins_cost ? `${Number(r.coins_cost).toLocaleString()} 코인` : null, r.points_cost ? `${r.points_cost} 포인트` : null,
+  r.training_time ? `훈련 ${Math.round(r.training_time / 3600)}h` : null].filter(Boolean).join(' · ') || '무료';
+function pathHTML(p, i){
+  const why = !p.pres ? '처방 없음 — 능력치만 본 순위' : p.tier === 2 ? '처방 역할 Role++ ✓' : p.tier === 1 ? '처방 역할 Role+' : '처방 역할과 무관';
+  return `<details class="path pcard tier${p.tier}" style="margin:6px 0"${i === 0 ? ' open' : ''}>
+    <summary class="kv">${i === 0 ? '<span class="badge hi">최적 제안</span>' : `<span class="badge">${i + 1}순위</span>`}
+      <b>${esc(p.evolution_names)}</b> <span class="chip">${p.steps}단계</span>
+      <span class="chip${p.d ? '' : ' dim'}"${p.d ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}>OVR ${p.ovr_before}→${p.ovr_after}${p.d ? ` (+${p.d})` : ''}</span>
+      <small class="dim">${esc(costText(p))} · ${why}</small></summary>
+    ${p.upgrades ? `<div class="dim" style="font-size:12px;margin-top:4px">${esc(Object.entries(J(p.upgrades, {})).map(([k, v]) => `${k} +${v}`).join(' · '))}</div>` : ''}
+    ${stepsHTML(p)}
+    <div style="margin-top:4px">${String(p.evolution_urls || '').split('\n').filter(Boolean).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>`).join(' ')}</div>
+  </details>`;
+}
+
+/* ── 탭 ── */
+document.querySelectorAll('.menubar [data-tab]').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.menubar [data-tab]').forEach(x => x.classList.toggle('on', x === b));
+  document.querySelectorAll('section[data-tab]').forEach(s => s.style.display = s.dataset.tab === b.dataset.tab ? '' : 'none');
+}));
+
+/* ── 카탈로그 ── */
+const RANKED = {}; for (const [pid, rows] of Object.entries(EVO.paths || {})) RANKED[pid] = rank(+pid, rows);
+function renderCatalog(){
+  const cat = EVO.catalog || [];
+  document.getElementById('catn').textContent = `— ${cat.filter(c => !c.is_expired).length}종 열림 · ${cat.filter(c => c.is_expired).length}종 만료`;
+  const days = t => t ? Math.ceil((new Date(t) - Date.now()) / 864e5) : null;
+  document.getElementById('cat').innerHTML = cat.map(c => {
+    // 이 진화를 포함한 경로를 가진 우리 선수 — 첫 단계로 포함하면 바로 적용 가능, 아니면 N단계째
+    const apps = [];
+    for (const [pid, rows] of Object.entries(RANKED)) for (const r of rows){
+      const k = r.ids.indexOf(c.evo_id); if (k < 0) continue;
+      apps.push({ pid: +pid, tier: r.tier, k, d: r.d, name: r.name_kr }); break;
+    }
+    apps.sort((a, b) => b.tier - a.tier || a.k - b.k || b.d - a.d);
+    const dl = days(c.end_submission_time || c.end_time);
+    return `<div class="evo-card${c.is_expired ? ' expired' : ''}">
+      <h3>${esc(c.name)} ${c.repeatability > 1 ? `<span class="chip">반복 ${c.repeatability}회</span>` : ''}${c.is_reward ? '<span class="chip">보상형</span>' : ''}</h3>
+      <div class="dim" style="font-size:12px">${esc(c.description || '')}</div>
+      <div class="kv" style="margin:6px 0;font-size:12px"><span>${esc(costText(c))}</span>
+        ${dl != null ? `<span class="${dl <= 7 ? 'dn' : ''}">마감 ${esc(String(c.end_submission_time || c.end_time).slice(0, 10))} (${dl >= 0 ? `D-${dl}` : '지남'})</span>` : ''}
+        ${c.unlock_text ? `<span class="dim">${esc(c.unlock_text)}</span>` : ''}</div>
+      <div>${J(c.requirements_text, []).map(r => `<span class="req">${esc(r.label)}: ${esc(r.value)}</span>`).join('')}</div>
+      <div style="margin-top:6px;font-size:12px"><b>업그레이드</b> ${J(c.total_upgrades_text, []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ') || '<span class="dim">없음(도입용)</span>'}</div>
+      <div style="margin-top:6px;font-size:12px"><b>우리 선수 적용 가능 ${apps.length}명</b> <small class="dim">(fut.gg 전체 ${c.number_of_players?.toLocaleString?.() ?? '—'}명)</small>
+        <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}">${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || '<span class="dim">없음</span>'}</div></div>
+      ${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>` : ''}
+    </div>`;
+  }).join('');
+  document.getElementById('cat').querySelectorAll('button[data-p]').forEach(b => b.addEventListener('click', () => {
+    document.querySelector('.menubar [data-tab="paths"]').click(); renderPaths(TEAM_OF[b.dataset.p] || 'ALL', +b.dataset.p);
+  }));
+}
+
+/* ── 선수별 패스 ── */
+function renderPaths(team, focusPid){
+  const sel = document.getElementById('teamsel');
+  const codes = ['ALL', ...idx.regimes.map(r => r.team_code)];
+  sel.innerHTML = codes.map(c => `<button class="act ghost${c === team ? ' on' : ''}" data-c="${c}">${c === 'ALL' ? '전체' : esc(idx.regimes.find(r => r.team_code === c)?.team_kr || c)}</button>`).join('');
+  sel.querySelectorAll('button').forEach(b => b.addEventListener('click', () => renderPaths(b.dataset.c)));
+  const pids = Object.keys(RANKED).map(Number).filter(p => team === 'ALL' || TEAM_OF[p] === team)
+    .sort((a, b) => (RANKED[b][0]?.tier ?? 0) - (RANKED[a][0]?.tier ?? 0) || (RANKED[b][0]?.d ?? 0) - (RANKED[a][0]?.d ?? 0));
+  document.getElementById('paths').innerHTML = pids.map(pid => {
+    const rows = RANKED[pid]; if (!rows.length) return '';
+    return `<div class="panel" id="pp${pid}" style="margin:8px 0;${pid === focusPid ? 'outline:2px solid var(--acc)' : ''}">
+      <div class="kv"><b style="font-size:15px">${esc(NAME_OF[pid] || rows[0].name_kr)}</b> <span class="chip">${esc(TEAM_OF[pid] || '')}</span>
+        <span>처방: ${presLabel(rows[0].pres)}</span> <small class="dim">경로 ${rows.length}건</small>
+        <a href="player.html" style="font-size:12px">선수 화면 →</a></div>
+      ${rows.map(pathHTML).join('')}</div>`;
+  }).join('') || '<span class="dim">이 팀에 열린 진화 경로가 없다.</span>';
+  if (focusPid) document.getElementById(`pp${focusPid}`)?.scrollIntoView({ block: 'start' });
+}
+
+/* ── 내 구단 ── */
+const api = async (cmd, body) => {
+  const cli = `python3 scripts/fut_club.py ${cmd === 'player_set' ? 'player-set' : cmd}${cmd === 'account' ? ` add ${body.name}` : cmd === 'player' ? ' add' : ''} ` +
+    Object.entries(body).filter(([k, v]) => v != null && v !== '' && !(cmd === 'account' && k === 'name'))
+      .map(([k, v]) => `--${k.replace(/_/g, '-')} ${JSON.stringify(String(v))}`).join(' ');
+  try {
+    const r = await fetch(`/api/fut/${cmd}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    const j = await r.json().catch(() => ({ ok: false, message: `HTTP ${r.status}` }));
+    return { ...j, cli };
+  } catch(e){ return { ok: false, message: `쓰기 API 없음(정적 배포본). 아래 명령을 저장소에서 실행할 것:\n${cli}`, cli }; }
+};
+const say = (el, r) => { el.innerHTML = `<div class="msg ${r.ok ? 'ok' : 'err'}">${esc(r.message)}</div>`; if (r.ok) setTimeout(() => location.reload(), 900); };
+let ACC = localStorage.getItem('fut_account') || EVO.club?.accounts?.[0]?.name || null;
+function renderClub(){
+  const C = EVO.club || { accounts: [], players: [], log: [] };
+  const acc = C.accounts.find(a => a.name === ACC) || C.accounts[0]; ACC = acc?.name || null;
+  document.getElementById('acc').innerHTML = `
+    <div class="kv">${C.accounts.map(a => `<button class="act ghost${a.name === ACC ? ' on' : ''}" data-a="${esc(a.name)}">${esc(a.name)} <small class="dim">${esc(a.platform || '')} ${esc(a.game_version)}</small></button>`).join('') || '<span class="dim">등록된 계정 없음 — 아래에서 만든다.</span>'}</div>
+    <form class="form" id="accf"><div><label>계정 표시명</label><input name="name" required placeholder="main"></div>
+      <div><label>플랫폼</label><select name="platform"><option>PS5</option><option>Xbox</option><option>PC</option></select></div>
+      <div><label>게임</label><input name="game" value="FC27"></div><button>계정 추가</button></form><div id="accm"></div>`;
+  document.querySelectorAll('#acc button[data-a]').forEach(b => b.addEventListener('click', () => { localStorage.setItem('fut_account', b.dataset.a); ACC = b.dataset.a; renderClub(); }));
+  document.getElementById('accf').addEventListener('submit', async e => { e.preventDefault(); const f = new FormData(e.target);
+    say(document.getElementById('accm'), await api('account', { name: f.get('name'), platform: f.get('platform'), game: f.get('game') })); });
+  if (!acc){ document.getElementById('owned').innerHTML = document.getElementById('addp').innerHTML = '<span class="dim">계정을 먼저 만든다.</span>'; document.getElementById('log').innerHTML = ''; return; }
+
+  const owned = C.players.filter(p => p.account_id === acc.id);
+  const logs = C.log.filter(l => owned.some(p => p.id === l.club_player_id));
+  document.getElementById('owned').innerHTML = owned.length ? owned.map(p => {
+    const card = (CARDS[String(p.player_id)] || []).find(c => c.ea_item_id === p.ea_item_id);
+    const done = new Set(logs.filter(l => l.club_player_id === p.id).map(l => l.evo_id));
+    const next = (RANKED[p.player_id] || []).filter(r => !r.ids.some(i => done.has(i)))[0];
+    const six = J(p.current_six, {});
+    return `<div class="pcard tier${next?.tier ?? 0}" style="margin:6px 0">
+      <div class="kv">${card?.card_image_url ? `<img class="futcard-img" src="${esc(card.card_image_url)}" alt="" style="width:56px">` : ''}
+        <b style="font-size:15px">${esc(p.name)}</b> <span class="badge${p.status === 'owned' ? ' hi' : ''}">${esc(p.status)}</span>
+        <span class="chip">OVR ${p.current_ovr ?? '—'}</span> <span class="chip">진화 ${p.evo_count}회</span>
+        ${card ? `<small class="dim">${esc(card.rarity_name || (card.is_base ? '기본' : ''))} · ${esc(card.best_pos || '')}</small>` : ''}
+        <small class="dim">입수 ${esc(p.acquired || '—')} ${esc(p.acquired_how || '')}</small>
+        <span>처방: ${presLabel(PRES[p.player_id])}</span></div>
+      <div class="gc-six" style="margin:4px 0">${Object.entries(six).map(([k, v]) => `<span><em>${k}</em>${v}</span>`).join('')}</div>
+      ${p.current_playstyles ? `<div class="dim" style="font-size:12px">PS ${esc(p.current_playstyles)}</div>` : ''}
+      ${p.status === 'owned' ? `<div class="form" style="grid-template-columns:2fr 1fr 1fr auto auto">
+        <div><label>진화 적용 기록</label><select data-evo="${p.id}">${(RANKED[p.player_id] || []).flatMap(r => r.ids.map((id, k) => ({ id, k, r })))
+          .filter((x, i, arr) => arr.findIndex(y => y.id === x.id) === i && !done.has(x.id))
+          .map(x => `<option value="${x.id}">${esc(x.r.evolution_names.split(' → ')[x.k])} — 경로 ${esc(x.r.evolution_names)} (→OVR ${x.r.path[x.k + 1]?.ovr ?? x.r.ovr_after})${x.r.tier ? ' ★처방' : ''}</option>`).join('') || '<option value="">이 선수에게 열린 진화 없음</option>'}</select></div>
+        <div><label>적용일</label><input type="date" data-date="${p.id}" value="${new Date().toISOString().slice(0, 10)}"></div>
+        <div><label>메모</label><input data-note="${p.id}" placeholder="선택"></div>
+        <button class="act" data-apply="${p.id}">적용 기록</button>
+        <button class="act ghost" data-sell="${p.id}">판매/방출</button></div><div id="pm${p.id}"></div>` : ''}
+      ${next ? `<div style="font-size:12px;margin-top:4px"><b>다음 추천:</b> ${esc(next.evolution_names)} — ${next.tier === 2 ? '처방 역할 Role++' : next.tier === 1 ? '처방 역할 Role+' : '능력치만'} · OVR ${next.ovr_before}→${next.ovr_after}</div>` : ''}
+    </div>`;
+  }).join('') : '<span class="dim">보유 선수 없음 — 아래에서 추가한다.</span>';
+  document.querySelectorAll('button[data-apply]').forEach(b => b.addEventListener('click', async () => {
+    const id = b.dataset.apply, evo = document.querySelector(`select[data-evo="${id}"]`).value;
+    if (!evo) return;
+    say(document.getElementById(`pm${id}`), await api('evolve', { account: acc.name, player: id, evo: +evo,
+      date: document.querySelector(`input[data-date="${id}"]`).value, note: document.querySelector(`input[data-note="${id}"]`).value || null }));
+  }));
+  document.querySelectorAll('button[data-sell]').forEach(b => b.addEventListener('click', async () => {
+    const st = prompt('상태 (sold / discarded)', 'sold'); if (!st) return;
+    say(document.getElementById(`pm${b.dataset.sell}`), await api('player_set', { account: acc.name, player: b.dataset.sell, status: st }));
+  }));
+
+  // 추가 폼 — 우리 DB 선수 → 그 선수의 FC27 카드
+  const pids = Object.keys(NAME_OF).map(Number).sort((a, b) => (TEAM_OF[a] + NAME_OF[a]).localeCompare(TEAM_OF[b] + NAME_OF[b], 'ko'));
+  document.getElementById('addp').innerHTML = `<form class="form" id="addf">
+    <div><label>선수</label><select name="pid">${pids.map(p => `<option value="${p}">${esc(TEAM_OF[p])} · ${esc(NAME_OF[p])}</option>`).join('')}</select></div>
+    <div><label>카드</label><select name="item"></select></div>
+    <div><label>입수일</label><input type="date" name="acquired" value="${new Date().toISOString().slice(0, 10)}"></div>
+    <div><label>입수 경로</label><select name="how"><option>팩</option><option>이적시장</option><option>SBC</option><option>보상</option><option>시작 선수</option></select></div>
+    <button>보유 등록</button></form><div id="addm"></div>`;
+  const f = document.getElementById('addf'), itemSel = f.querySelector('[name=item]');
+  const fillItems = () => { const cs = CARDS[f.pid.value] || [];
+    itemSel.innerHTML = cs.map(c => `<option value="${c.ea_item_id}">${c.is_base ? '기본' : esc(c.rarity_name || '특별')} OVR ${c.ovr} ${esc(c.best_pos || '')}</option>`).join('') || '<option value="">카드 미수집</option>'; };
+  f.pid.addEventListener('change', fillItems); fillItems();
+  f.addEventListener('submit', async e => { e.preventDefault(); const pid = +f.pid.value;
+    say(document.getElementById('addm'), await api('player', { account: acc.name, name: NAME_OF[pid], player_id: pid,
+      ea_item: itemSel.value ? +itemSel.value : null, acquired: f.acquired.value, how: f.how.value })); });
+
+  document.getElementById('log').innerHTML = logs.map(l => { const p = owned.find(x => x.id === l.club_player_id);
+    return `<li><b>${esc(l.applied_at)}</b> ${esc(p?.name || '')} ← ${esc(l.evo_name)} <span class="chip">OVR ${l.ovr_before ?? '—'}→${l.ovr_after ?? '—'}</span>
+      ${l.playstyles_after ? `<small class="dim">PS ${esc(J(l.playstyles_after, []).join(', '))}</small>` : ''} ${l.notes ? `<small class="dim">— ${esc(l.notes)}</small>` : ''}</li>`; }).join('')
+    || '<li class="dim">기록 없음</li>';
+}
+
+renderClub(); renderCatalog(); renderPaths('ALL');
+</script>
+</body></html>
