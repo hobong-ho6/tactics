@@ -2,17 +2,60 @@
  "all": [
   {
    "channel": "All Villa No Filler",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 186,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "limit",
+     "field": "selection_gate",
+     "focus": null,
+     "player": "음바예",
+     "quote": "「is he defensively going to do the job for us yet… do I maybe go with Allison on the right who will do the defensive duties」(아직 수비 임무를 해낼 수 있는가… 수비 임무를 해줄 알리송을 오른쪽에)",
+     "role_id": null,
+     "team_code": null,
+     "value": "away_defensive_workload",
+     "verdict": "PENDING",
+     "verdict_note": "새 판정 후보(3티어 단일) — 검증 지점: 토트넘 원정(다음 PL) 선발 여부와 우측 선택(음바예/알리송). 실측 수비 지표(태클·회수)는 이 경기 미비교."
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "focus": "Attack",
+     "player": "바클리",
+     "quote": "「push forward a bit or go in the 10 role… quickly recycle it, pick out a good pass and hit one from distance」(조금 전진하거나 10번 롤로… 빠른 재순환·좋은 패스·중거리)",
+     "role_id": "cm_playmaker",
+     "team_code": null,
+     "value": null,
+     "verdict": "HELD",
+     "verdict_note": "실측 LDM avg_x 49.77 = 피벗 중 최전방(보가르드 40.1)·평점 7.8 — 이미 전진형으로 뛰었다. 현 경기 처방은 LDM 축이라 CM 어휘 대조는 measured 재산출(피벗 표본 2경기) 후. 재판정 조건: 바클리 LDM 공식전 2경기째 pos_class 집계 → 커널 1·2위 Δ 확인."
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "focus": "Build-Up",
+     "player": "하우드-벨리스",
+     "quote": "「Harwood-Bellis is putting it [into the same area] but tends to lift it a bit more」(하우드-벨리스도 같은 지역에 넣는데 조금 더 띄운다)",
+     "role_id": "cb_bpd",
+     "team_code": null,
+     "value": null,
+     "verdict": "PENDING",
+     "verdict_note": "슬롯 정본 LCB cb_bpd/Build-Up과 방향 정합(파우 토레스 대체 궤도). 데뷔 1경기(RCB 90분, hp 89) — 2경기째 후 커널."
+    }
+   ],
+   "key_points": [
+    "「if he can just be in that double pivot and push forward a bit or go in the 10 role… he can quickly recycle it, pick out a good pass and hit one from distance」(더블 피벗에서 조금 전진하거나 10번 롤로… 빠른 재순환·좋은 패스·중거리) — 바클리 = 하이 피벗/10번 처방, 첫 실점 기원 「a really loose ball from Ross Barkley」",
+    "「just two whipped corners in. Nothing fancy about them. We scored two goals out of them」(그냥 휘어 감은 코너 두 개, 화려할 것 없다, 두 골) — 루틴 아님·배달 품질",
+    "「what Pau likes to do is he whips a ball at great pace through the midfield… Harwood-Bellis is putting it [into the same area] but tends to lift it a bit more」(파우는 중원 틈으로 빠른 볼을 꽂는다… 하우드-벨리스도 같은 지역에 넣는데 조금 더 띄운다) — BPD 라인브레이킹 축 유지, 궤적만 다름",
+    "「my only concern with Embay [that] Unai might have is… is he defensively going to do the job for us yet… do I maybe go with Allison on the right who will do the defensive duties」(에메리의 유일한 우려는 원정에서 그가 아직 수비 임무를 해낼 수 있는가 — 수비 임무를 해줄 알리송을 오른쪽에 쓸 수도) — ⭐ 음바예 선발 게이트 = 원정 수비 부담",
+    "「he might have the best distribution of a goalkeeper I can think of at the moment」(현재 떠올릴 수 있는 GK 중 배급 최고일지도) — 스즈키 · 음바예 PSG 시절은 왼쪽(쿤데 상대)이었는데 이날은 오른쪽 배치"
+   ],
    "kind": "전술분석",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-17",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "All Villa No Filler 리뷰(32:21). 스쿼드 상단과 하단의 질 격차가 극심하다는 「양극화」 판정, 바클리의 최적 용법은 베이스 피벗이 아니라 더블 피벗에서 전진하거나 10번 롤(빠른 재순환·좋은 패스·중거리)이라는 처방, 첫 실점 기원도 바클리의 느슨한 볼. 코너 2골은 「그냥 휘어 감은 코너 두 개, 화려할 것 없다」 — 복잡한 루틴이 아니라 배달 품질+니어포스트 점유. 하우드-벨리스의 배급을 파우 토레스와 같은 지역(중원 틈→10번/스트라이커 발밑)으로 보되 「조금 더 띄운다」고 비교. 스즈키 배급은 「떠올릴 수 있는 GK 중 최고일지도」. 음바예는 「폭죽 같은 선수」, 첫 어시스트가 코너에서 나온 것을 반겼고, 차기 선발 게이트는 원정 수비 부담이라고 짚었다.",
    "team_code": "AVL",
    "title": "An Aston Villa Podcast — MATCH REVIEW! COVENTRY 1-3 ASTON VILLA",
    "transcript_path": "reports/transcripts/qS27lBoSUqw.en.md",
@@ -21,17 +64,32 @@
   },
   {
    "channel": "Coop De Villa",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 185,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "「I can't remember the last time Villa had a winger that had fullbacks shaking in their boots because this guy is quick, he is skillful, he is direct and he is 18」(상대 풀백을 벌벌 떨게 하는 윙어가 있었던 게 언제인지 기억이 안 난다 — 빠르고 기술적이고 직선적이며 18세)"
+   ],
    "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-17",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "Coop De Villa 리뷰(22:48). 음바예를 「상대 풀백을 벌벌 떨게 하는 윙어 — 빠르고 기술적이고 직선적이며 18세」로 규정, 빌라에 그런 윙어가 있었던 게 언제인지 기억이 안 난다고 했다. 그 밖은 팬층 공통 판정(아브라함 회복·피벗 약점)에 수렴.",
    "team_code": "AVL",
    "title": "Villa Ease Past Coventry & Progress in the Carabao Cup!",
    "transcript_path": "reports/transcripts/kinFJBpR0-s.en.md",
@@ -40,17 +98,32 @@
   },
   {
    "channel": "Every Week We Follow",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 184,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "「he just wants the ball. Seems like he always wants the ball. Quick feet」(그는 그냥 볼을 원한다 — 늘 볼을 원하는 것처럼 보인다, 발이 빠르다) — 음바예"
+   ],
    "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-17",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "Every Week We Follow 리액션(40:05). 음바예에 대해 「그는 그냥 볼을 원한다, 늘 볼을 원하는 것처럼 보인다, 발이 빠르다」. 그 밖은 반응층.",
    "team_code": "AVL",
    "title": "Abraham BRACE Sends Villa Through - Coventry Reaction",
    "transcript_path": "reports/transcripts/ikDmkyRHW0o.en.md",
@@ -59,17 +132,32 @@
   },
   {
    "channel": "Justin Talks Villa",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 174,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "팬 반응층 — 공통 판정 3개(아브라함 회복·음바예 수확·피벗 약점)에 수렴, 신규 전술 주장 없음"
+   ],
    "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-17",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "Justin Talks Villa 「The Warm Down」(15:43). 경기 반응층 — 아브라함 2골로 비판에 답했다는 것, 음바예 데뷔 선발의 인상, 더블 피벗 불안이 주 내용. 새 전술 판정은 없다.",
    "team_code": "AVL",
    "title": "VILLA DISMISS THE SKY BLUES | THE WARM DOWN",
    "transcript_path": "reports/transcripts/EKDVMxPGUIk.en.md",
@@ -78,17 +166,33 @@
   },
   {
    "channel": "Villa In The Car",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 176,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "「he gave the keeper the eyes if he was going to put it in to the keeper's far post and he tried to hit it near post like he did in the Forest game… but he's just put it past the post」(파포스트로 넣을 듯 시선을 주고 니어포스트로 때렸다 — 포레스트전처럼 — 포스트를 빗나갔다) — 33′ 맥긴 빅찬스 미스",
+    "공통 판정 3개: 아브라함 신뢰 회복 · 음바예 최대 수확 · 보가르드-바클리 더블 피벗 = 유일한 약점"
+   ],
    "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-17",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "Villa In The Car 선수 평점 리뷰(20:44). 아브라함 신뢰 회복·음바예 최대 수확·보가르드-바클리 피벗이 유일한 약점이라는 팬층 공통 판정에 수렴한다. 33분 맥긴 빅찬스 미스를 상세 복기 — 파포스트로 넣을 듯 시선을 주고 지난 시즌 유로파 포레스트전처럼 니어포스트로 때렸으나 포스트를 살짝 빗나갔다.",
    "team_code": "AVL",
    "title": "Aston Villa vs Coventry City — Post Match Reaction and player ratings",
    "transcript_path": "reports/transcripts/HzDdaVoSTUk.en.md",
@@ -97,17 +201,32 @@
   },
   {
    "channel": "Villa in NOIR",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 181,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "「he was willing to force the game. He was pushing the line. He was making runs in behind」(경기를 밀어붙이려 했다, 라인을 밀어올렸다, 배후로 침투했다) — 음바예, 실측 팀 최전방(avg_x 69.05)과 정합"
+   ],
    "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-17",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "Villa in NOIR 매치 리액션(11:30). 음바예에 대해 「경기를 밀어붙이려 했고 라인을 밀어올렸고 배후로 침투했다」 — 실측 avg_x 69.05(팀 최전방)와 정합. 그 밖은 반응층.",
    "team_code": "AVL",
    "title": "COVENTRY CITY 1-3 ASTON VILLA | MATCH REACTION",
    "transcript_path": "reports/transcripts/cing5Zl0IaE.en.md",
@@ -116,17 +235,48 @@
   },
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 175,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "winger_width",
+     "focus": null,
+     "player": "음바예",
+     "quote": "「he obviously wanted Embay to hold that width on the right hand side」(그에게 우측 폭을 유지시키려 한 게 명확히 보였다)",
+     "role_id": null,
+     "team_code": null,
+     "value": "hold_touchline_right",
+     "verdict": "PENDING",
+     "verdict_note": "실측 avg_y 27.63 → 툴x 72.4: 맥긴(67.8)보다 바깥이나 터치라인(완비사카 85)은 아니다 — 「폭 유지」 방향은 맞고 정도는 중간. FC 역할로는 wm_winger/Balanced(터치라인) vs wm_insidefwd 갈림. 2번째 선발 표본 후 커널 대조."
+    },
+    {
+     "axis": "instruction",
+     "field": "rb_build_up_shape",
+     "focus": null,
+     "player": "완비사카",
+     "quote": "「Aaron Wasaka kind of tucked in and made a back three alongside Mings and Harwood Bellis」(완비사카가 안으로 접혀 백3를 만들었다)",
+     "role_id": null,
+     "team_code": null,
+     "value": "tuck_in_hybrid_back3",
+     "verdict": "REJECTED",
+     "verdict_note": "UTV(Lr4ktnv-FeE)와 같은 주장 · 같은 사유로 기각 — 실측 툴x 85.3(터치라인). 2소스 일치가 실측을 이기지 않는다(불변규칙 3)."
+    }
+   ],
+   "key_points": [
+    "「you could see he obviously wanted Embay to hold that width on the right hand side」(에메리가 음바예에게 우측 폭을 유지시키려 한 게 명확히 보였다) — 인사이드 컷이 아니라 터치라인 유지 지시, 맥긴 중앙 10번과 한 세트",
+    "「Aaron Wasaka kind of tucked in and made a back three alongside Mings and Harwood Bellis」(완비사카가 안으로 접혀 밍스·하우드-벨리스와 백3를 만들었다) — UTV와 독립 2차 확인이나 실측(툴x 85)과 불일치",
+    "「we give it away in silly positions… turning into trouble. And when the Coventry goal came, I felt like it was coming」(엉뚱한 위치에서 볼을 내주고… 코번트리 골이 나왔을 때 올 게 왔다고 느꼈다) — 실점 = 빌드업 자책",
+    "토르프 FK 「a phenomenal free kick… I don't think you can do anything about that」(엄청난 프리킥 — 할 수 있는 게 없다) — 비조 면책(UTV 5점과 대립)",
+    "「Barkley is very very useful from set pieces. That's the third goal off the top of my head」(바클리는 세트피스에서 매우 유용하다 — 기억으로 세 번째 골) · 가르나초 「to not get on tonight is pretty bizarre」(오늘 출전조차 못 한 건 꽤 기괴하다)"
+   ],
    "kind": "전술분석",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-16",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "1874의 경기 리뷰(26:36) — 채널 목록에는 안 보이고 검색에서만 나온 편이라 「D+1 리뷰 미게시」 판정이 뒤집혔다. 맥긴이 중앙 10번으로 뛰었고 에메리가 음바예에게 우측 폭을 유지시키려 한 것이 보였다고 했다. 완비사카가 안으로 접혀 밍스·하우드-벨리스와 백3를 이뤘다는 관측은 UTV와 독립적으로 같다(⚠️ 우리 실측은 폭 유지). 실점은 빌드업 자책(「엉뚱한 위치에서 볼을 내주고… 압박 속으로 들어갔다」)이고 토르프 프리킥 자체는 비조 면책. 비조 교체는 부상 추정. 바클리 세트피스 득점은 반복 패턴(번리전과 유사). 가르나초 미출전이 최대 화두.",
    "team_code": "AVL",
    "title": "MATCH REACTION: Comfortable in Coventry, as Tammy answers his critics",
    "transcript_path": "reports/transcripts/EmS_1gJ6g9c.en.md",
@@ -135,17 +285,48 @@
   },
   {
    "channel": "AVFC 공식",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 177,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "cup_competition_stance",
+     "focus": null,
+     "player": null,
+     "quote": "「This is a way for a trophy. This is a way as well for Europe」(트로피로 가는 길이자 유럽으로 가는 길)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "europe_route_not_rotation_filler",
+     "verdict": "NA",
+     "verdict_note": "게임 설정 축이 아니다 — 컵 선발을 「로테이션 소화」로 읽지 말라는 해석 근거(manager_profiles rotation 축). 1차 자료·auto-caption."
+    },
+    {
+     "axis": "instruction",
+     "field": "added_asset",
+     "focus": null,
+     "player": "음바예",
+     "quote": "「adding individual skills like today and [Mbaye] his speed」(오늘처럼 개인 기량을 더하는 것 — 그의 스피드)",
+     "role_id": null,
+     "team_code": null,
+     "value": "speed_direct_running",
+     "verdict": "PENDING",
+     "verdict_note": "docs/22 PlayStyle·능력치 층(Rapid/Quick Step) — 역할 처방이 아니라 카드 선택 근거. 실측 전진운반 93.5m와 정합. 클럽 첫 선발 1경기라 PENDING."
+    }
+   ],
+   "key_points": [
+    "「This is a way for a trophy. This is a way as well for Europe」(이건 트로피로 가는 길이자 유럽으로 가는 길이기도 하다) — 컵 = 유럽 진출 경로로 규정",
+    "「adding individual skills like today and [Mbaye] his speed」(오늘처럼 개인 기량을 더하는 것 — 그의 스피드) — 감독이 음바예의 스피드를 새 자산으로 지목(auto-caption 「and by」=Mbaye)",
+    "「Tyler match today was fantastic」(=Taylor 하우드-벨리스, 오늘 경기 환상적) · 「Tommy Abraham is giving us confidence」(=Tammy, 자신감을 준다)",
+    "다음 라운드 본머스 원정 · 토트넘 원정 전 「hopefully we can recover some players」(부상자 일부가 돌아오길)",
+    "가르나초 미출전·비조 부상 직접 언급 0 — 클립 길이 한계"
+   ],
    "kind": "감독회견",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-16",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "에메리의 경기 후 공식 회견 클립(2:28). 컵대회의 목적을 「팀 만들기 + 새 선수 적응」과 「트로피 경쟁 = 유럽 진출 경로」 둘로 못박아, 카라바오컵을 로테이션 소화가 아니라 유럽으로 가는 길로 규정했다. 팀에 새로 더해진 개인 기량으로 음바예의 스피드를 직접 지목했고, 하우드-벨리스·아브라함·맥긴·바클리·로저스를 이름으로 칭찬했다. 다음 라운드 본머스 원정 확정, 토트넘 원정 전 부상자 일부 복귀 희망. 가르나초 미출전·비조 부상은 언급 없음(질문 2개짜리 짧은 클립).",
    "team_code": "AVL",
    "title": "\"We are motivated\" | Unai Emery on win over Coventry City | POST MATCH",
    "transcript_path": "reports/transcripts/JPauDiMsUw0.en.md",
@@ -154,17 +335,32 @@
   },
   {
    "channel": "For The Love of Paul McGrath",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 182,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "반응층 — 신규 전술 주장 없음 · `U4Ki5y9_C60`와 동일 콘텐츠(둘 다 2422초)"
+   ],
    "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-16",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "For The Love of Paul McGrath 「Final Whistle Pod」(40:22, 동일 콘텐츠 `U4Ki5y9_C60` 중복 업로드). 경기 반응층 — 공통 판정 3개에 수렴. 새 전술 판정은 없다.",
    "team_code": "AVL",
    "title": "FINAL WHISTLE POD: COVENTRY vs ASTON VILLA",
    "transcript_path": "reports/transcripts/hbYNxXvgV9U.en.md",
@@ -173,17 +369,33 @@
   },
   {
    "channel": "Heart of the Holte",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 173,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "아브라함: 포레스트전 최악(hp 2 접점 부재) → 2골 — 「신뢰 회복」 서사의 팬층 버전",
+    "신규 전술 주장 없음"
+   ],
    "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-16",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "Heart of the Holte 「Tammy Abraham Is BACK」(16:43). 아브라함의 포레스트전 최악에서 2골로의 반전이 주제. 음바예의 첫 선발과 세트피스 2골도 언급. 새 전술 판정은 없다.",
    "team_code": "AVL",
    "title": "Tammy Abraham Is BACK - The Villa Filler Pod",
    "transcript_path": "reports/transcripts/3xQrmZlQlRI.en.md",
@@ -192,17 +404,49 @@
   },
   {
    "channel": "Sky Blue Fans TV",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 179,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "limit",
+     "field": "set_piece_defence",
+     "focus": null,
+     "player": null,
+     "quote": "「As soon as I saw the wall go back as far as it did, I [knew] he could score here」(벽이 그만큼 물러나는 걸 본 순간 여기서 넣겠다 싶었다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "free_kick_wall_too_deep",
+     "verdict": "PENDING",
+     "verdict_note": "1실점(토르프 FK) 원인 3설 대립 — UTV 비조 책임(「움직이지도 않았다」) · 1874 면책(「할 수 있는 게 없다」) · 코번트리 「벽 세팅」. 프레임 확인 전 판정 보류. FC 구현엔 직접 축 없음(수비 세트피스 설정은 게임에 노출되지 않음)."
+    },
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "「from about the 25th minute onwards we got this high press on… they had Hamer up almost like a front two and then… three midfielders in behind them… two players cutting off an angle and the other one trying to press」(25분경부터 하이프레스 — 하머를 투톱처럼, 미드필더 셋 뒤에, 둘이 각도 차단·하나가 압박) — 27~35′ 우위 구간의 상대 측 설명",
+    "「I don't think that's how we'll be when it comes to a Premier League game」(PL 경기에선 이렇게 안 할 것) — 컵 한정 프레싱 자인",
+    "「we cannot even give up one mistake because one mistake is punished and then they scored the other two goals from a set pieces」(실수 하나도 내줄 수 없다 — 하나가 응징되고 나머지 둘은 세트피스) · 1실점 = 「trying to play half offside and ball watching」(어설픈 오프사이드 트랩+볼 워칭)",
+    "「Ross Barkley front post free header… on the edge of the six yard box. He cannot have that」(바클리 프런트포스트 프리 헤더, 6야드 박스 언저리 무마크) — 니어포스트 패턴을 상대도 확인",
+    "「As soon as I saw the wall go back as far as it did, I [knew] he could score here」(벽이 그만큼 물러나는 걸 본 순간 넣겠다 싶었다) — 토르프 FK 실점의 제3설: 빌라 벽 세팅 · 「I'm convinced he scores nine out of 10 of them」(10번 중 9번 넣는다)",
+    "「apart from that, they haven't really tested us」(그 외에는 우리를 시험하지 않았다) — 빅찬스 4:0·xG 2.69와 상충(자국 편향 보정 대상) · 자기 진영 패스 성공 90%"
+   ],
    "kind": "상대팀",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-16",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "코번트리 팬 채널의 라이브 팟캐스트(53:18) — 상대 관점 정본. 25분경부터 하머를 투톱처럼 올리고 미드필더 셋을 뒤에 둔 하이프레스(둘이 각도 차단·하나가 압박)로 15분간 슈팅 5개를 만들었으나 「프리미어리그 경기에선 이렇게 안 할 것」이라 컵 한정임을 자인. 빌라 3골을 「실수 1 + 세트피스 2」로 분해하고 1실점은 바비 토머스의 어설픈 오프사이드 트랩·볼 워칭. 빌라의 오픈플레이 위협은 인정하지 않았다(빅찬스 4:0·xG 2.69와 상충). 바클리 3번째 골을 「6야드 박스 언저리 프런트포스트 프리 헤더」로 묘사해 니어포스트 패턴을 같은 언어로 확인. 토르프 프리킥은 벽이 너무 물러난 순간 골을 예감했다고 — 빌라 벽 세팅 문제로 기록 가능. 자기 진영 패스 성공 90% = 빌라가 코번트리를 자기 진영에 가둔 구조를 상대가 자인.",
    "team_code": null,
    "title": "Coventry City FC LIVE Podcast | Villa (H) REACTION",
    "transcript_path": "reports/transcripts/M54FnnHg-Ac.en.md",
@@ -211,17 +455,48 @@
   },
   {
    "channel": "The Claret & Blue Podcast",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 180,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "gk_long_distribution_target",
+     "focus": null,
+     "player": "스즈키 지온",
+     "quote": "「I like the idea of him pinging it to [Mbaye]… with him running in behind」(스즈키가 음바예에게 꽂아주고 그가 배후로 침투하는 그림)",
+     "role_id": null,
+     "team_code": null,
+     "value": "mbaye_run_in_behind",
+     "verdict": "PENDING",
+     "verdict_note": "제안이지 관측이 아니다 — 스즈키 롱패스 수신자 분포 미수집. 다음 스즈키+음바예 동시 출전 경기의 WhoScored 패스 이벤트로 판정."
+    },
+    {
+     "axis": "limit",
+     "field": "double_pivot",
+     "focus": null,
+     "player": null,
+     "quote": "「when Barkley and Bogard were on the ball, my gut was going 'no, what are they going to do? Something bad's going to happen'」(바클리와 보가르드가 볼을 잡으면 직감적으로 나쁜 일이 생기겠다 싶었다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "barkley_bogarde_pairing_unstable_on_ball",
+     "verdict": "HELD",
+     "verdict_note": "실측 평점 바클리 7.8·보가르드 7.4(SofaScore) ↔ 서사 5점 — 충돌(D+1 미해결 목록과 같은 건). 재판정 조건: 고메스 복귀 후 「고메스-보가르드」 vs 「바클리-보가르드」 피벗 짝 표본 각 2경기의 자기진영 상실 비교."
+    }
+   ],
+   "key_points": [
+    "「he wasn't pushing Ollie Watkins out of the side as we possibly expected him to do」(기대했던 것처럼 왓킨스를 밀어내지 못했다) — 2골 = 서열 역전이 아니라 신뢰 회복 시작",
+    "「I like the idea of him pinging it to [Mbaye]… with him running in behind」(스즈키가 음바예에게 꽂아주고 그가 배후로 침투하는 그림이 좋다) — 스즈키 롱볼 타깃 헤밍스→음바예 전환 제안",
+    "「when Barkley and Bogard were on the ball, my gut was going 'no… Something bad's going to happen'」(둘이 볼을 잡으면 나쁜 일이 생기겠다 싶었다) — 더블 피벗 부정",
+    "「He has got that in his locker in corners… get that near post」(코너에선 그게 그의 무기다 — 니어포스트) — 바클리 세트피스 능력은 인정",
+    "고메스 「calf discomfort」(종아리 불편) 다음날 테스트 · 비조 교체 「I don't know what's happened」(무슨 일인지 모른다)"
+   ],
    "kind": "전술분석",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-16",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "BirminghamLive 기자 팟캐스트(49:32). 아브라함 2골을 「신뢰 회복의 시작」으로만 두고 왓킨스 서열 역전은 아니라고 선을 그었다. 스즈키의 롱볼 타깃이 헤밍스에서 음바예의 배후 침투로 옮겨갈 수 있다는 새 축을 제시했고, 바클리·보가르드 더블 피벗은 볼을 잡을 때마다 불안했다고 부정 판정했다(바클리 코너 능력은 별개로 인정). 결론은 「신인(하우드-벨리스·음바예·만잠비)이 좋았고 고참(밍스·보가르드·바클리)이 문제」라는 구도. 부상 정보: 고메스 종아리 불편, 비조 교체 사유는 방송 시점 미확인.",
    "team_code": "AVL",
    "title": "Tammy Abraham's brace sees Aston Villa beat Coventry with ease",
    "transcript_path": "reports/transcripts/ZWveSji6X6s.en.md",
@@ -230,17 +505,35 @@
   },
   {
    "channel": "The Villa Park Podcast",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 183,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "1골: 「George Hemings who played a wonderful ball through after he collected it from Rogeri outside of the foot right into Tammy Abraham's path. The Coventry defense was so square」(헤밍스가 로저스에게 받아 발 바깥쪽으로 아브라함 진로에 완벽한 스루패스, 수비 라인이 너무 일자) — 좌측 로저스→헤밍스 조합·플랫백4 배후",
+    "2골 생성: 바클리 30야드 슛 → 벤틀리 선방 → 그 코너에서 득점(2차 세트피스)",
+    "「He reads the game well… good blocks… nice passes… He doesn't do himself any harm in terms of potentially coming in on Saturday」(경기를 잘 읽고 좋은 블록·패스 — 토요일 선발 가능성에 해가 없다) — 하우드-벨리스 데뷔",
+    "음바예: 「Linking up with John McInn really well. Linking up with Tammy Abraham really well… Maybe he's got one or two too many tri[cks]」(맥긴·아브라함과 매우 잘 연계… 기술 시도가 한두 개 과했다)"
+   ],
    "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-16",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "Villa Park Podcast(13:42). 선발 11명을 전량 읊었고(비조 / 완비사카·하우드-벨리스(데뷔)·밍스·로저스 / 바클리·보가르드 / 음바예·맥긴·헤밍스 / 아브라함), 1골을 「왼쪽에서 헤밍스가 로저스에게 받아 발 바깥쪽으로 아브라함 진로에 스루패스, 코번트리 수비 라인이 너무 일자」로 상세 복기했다. 2골은 바클리 30야드 슛을 벤틀리가 쳐낸 뒤의 코너(2차 세트피스). 하우드-벨리스 데뷔는 「경기를 잘 읽고 좋은 블록·패스, 토요일 선발 가능성에 해가 없다」. 음바예는 맥긴·아브라함과 연계가 좋았고 스피드가 보이나 「기술 시도가 한두 개 과했다」 — 유일한 부정 지적.",
    "team_code": "AVL",
    "title": "ABRAHAM AT THE DOUBLE AS VILLA PROGRESS!!",
    "transcript_path": "reports/transcripts/if8UoAcl8qo.en.md",
@@ -249,17 +542,49 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 178,
-   "impl_claims": [],
-   "key_points": [],
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "rb_build_up_shape",
+     "focus": null,
+     "player": "완비사카",
+     "quote": "「Wasaka more staying at home in a hybrid back three」(완비사카는 하이브리드 백3에서 집을 지켰다)",
+     "role_id": null,
+     "team_code": null,
+     "value": "tuck_in_hybrid_back3",
+     "verdict": "REJECTED",
+     "verdict_note": "실측 불일치: 완비사카 avg_y 14.69 → 툴x 85.3(터치라인). 백3로 접혔다면 툴x가 CB 대역(58~70)으로 들어와야 한다. 전진 억제(avg_x 41 < LB 47)는 정합하므로 「억제형 풀백(fb_wingback/Balanced)」 처방은 그대로. 1874(EmS_1gJ6g9c)도 같은 주장 — 2소스지만 둘 다 평균위치 그래픽의 y축 해석 오류로 판단."
+    },
+    {
+     "axis": "limit",
+     "field": "set_pieces",
+     "focus": null,
+     "player": null,
+     "quote": "「Them set pieces are starting to look good at the near post… We've done him twice」(세트피스가 니어포스트에서 좋아지고 있다… 두 번 해냈다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "near_post_target_repeated",
+     "verdict": "HELD",
+     "verdict_note": "D+1 판별 (b)는 「설계 루틴 아님 — 배급 품질+상대 마킹 실패」였다. 니어포스트 반복(2골 모두)은 새 관측. 재판정 조건: §7 재검증 ⑷ — 다음 경기 코너 니어포스트 타깃 3번째 표본이면 「루틴」으로 승격."
+    }
+   ],
+   "key_points": [
+    "「Wasaka more staying at home in a hybrid back three. Bogard protecting on that right hand side. Barkley progressive inside the opposition half」(완비사카는 하이브리드 백3에서 집을 지켰고, 보가르드가 우측 보호, 바클리는 상대 진영으로 전진) — 평균위치 그래픽 기준",
+    "⛔ 실측 대조: 완비사카 avg_y 14.69(툴x 85.3 = 터치라인 폭 유지) · avg_x 41.15(LB 루헤리 47.2보다 −6 = 전진 억제). 「억제형」은 정합, 「백3로 접힘」은 불일치 → 실측 채택(불변규칙 3)",
+    "「Them set pieces are starting to look good at the near post… We've done him twice with the header and the little flick on for Tammy」(세트피스가 니어포스트에서 좋아지고 있다 — 헤더와 태미에게 가는 플릭온으로 두 번) — 세트플레이 xG 1.44와 정합",
+    "비조 「he never even moved」(움직이지도 않았다) 5점 ↔ 스즈키 「Instantly, it's like night and day」(즉시 밤과 낮 차이) 7.5점 · 「Look where Suzuki plays. He's practically a center back」(스즈키가 서는 위치를 봐라, 사실상 센터백)",
+    "음바예 10점: 「We want pace. We want him direct… His ball retention is good」(스피드·직선성… 볼 간수도 좋다) · 보가르드 5점: 「Giving the ball away, going down too easy in the wrong areas」(볼을 내주고 잘못된 지역에서 너무 쉽게 넘어진다)",
+    "평점 전량: 하우드-벨리스 8 · 음바예 10 · 아브라함 9 · 맥긴 8 · 바클리 8 · 로저스 10 · 밍스 7 · 만잠비 7 · 알리송 7 · 스즈키 7.5 · 부엔디아 6 · 비조 5 · 보가르드 5"
+   ],
    "kind": "전술분석",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-16",
    "published_approx": 0,
    "report_id": 43,
-   "summary": null,
+   "summary": "UTV의 두 번째 리뷰(37:16) — 전술 밀도가 가장 높다. 평균 위치 그래픽을 보며 하우드-벨리스가 중앙, 완비사카가 「집을 지키는」 하이브리드 백3, 보가르드가 우측 보호, 바클리가 상대 진영으로 전진하는 구조를 읊었다. 세트피스가 니어포스트에서 두 번(헤더·플릭온) 통했다고 판정을 못박았고, 비조는 프리킥에 「움직이지도 않았다」며 5점, 스즈키는 「밤과 낮 차이」로 7.5점을 줬다. 음바예 10점(「우리에겐 스피드가 없었으니까」), 로저스 10점 MOTM, 보가르드 5점. ⚠️ 「백3 내재화」는 우리 실측과 어긋난다 — 완비사카 avg_y 14.7(툴x 85, 터치라인 폭 유지)·avg_x 41(전진 억제).",
    "team_code": "AVL",
    "title": "WE HAVE SERIOUS PACE WITH MBAYE | ASTON VILLA BEAT COVENTRY 3-1",
    "transcript_path": "reports/transcripts/Lr4ktnv-FeE.en.md",

@@ -94,3 +94,39 @@
 
 ### 종결
 `match_reports` 43 **complete**. 시즌 정본 변경 없음(컵 로테이션·하부 리그 상대). obs#812~815.
+
+## D+1 추적 보강 — 유튜브 전수 14편 (2026-09-18)
+
+사용자 지시 「코번트리전의 모든 영상 및 전술·선수 분석 영상 수집」. 서브에이전트 3경로 스윕(채널 목록 → 검색 → 채널명 재검색) → **신규 14편 전사**(기보유 3편 포함 총 17편, `match_videos` report 43). 전부 **auto-caption**(Mbaye→Embay/and Bay, Bizot→Bez, Wan-Bissaka→Wasaka 등 — 인용은 원문 그대로, 해석은 보정). 요약·key_points 14편 + `video_impl_claims` 21행(G17). 원자료 digest는 세션 임시파일이었고 전사 원문은 `reports/transcripts/`.
+
+| # | 영상 | 채널 | 종류 | 핵심 |
+|---|---|---|---|---|
+| 1 | `JPauDiMsUw0` | AVFC 공식 | 감독회견 | 컵 = 「트로피로 가는 길이자 **유럽으로 가는 길**」 · 음바예 스피드 지목 |
+| 2 | `ZWveSji6X6s` | Claret & Blue(기자) | 전술분석 | 스즈키 롱볼→음바예 배후 제안 · 바클리-보가르드 피벗 부정 · 고메스 종아리 |
+| 3 | `Lr4ktnv-FeE` | UTV | 전술분석·평점 | 하이브리드 백3(⛔ 실측 불일치) · 니어포스트 2회 · 비조 5/스즈키 7.5 · 음바예 10 |
+| 4 | `EmS_1gJ6g9c` | 1874 | 전술분석 | 음바예 **우측 폭 유지 지시** · 백3(⛔) · 실점=빌드업 자책 · 비조 면책 |
+| 5 | `qS27lBoSUqw` | All Villa No Filler | 전술·선수 | 바클리 하이 피벗/10번 처방 · 코너 「화려할 것 없다」 · **음바예 선발 게이트 = 원정 수비** |
+| 6 | `M54FnnHg-Ac` | Sky Blue Fans TV | **상대팀 관점** | 25~40′ 하이프레스(컵 한정 자인) · 실점 3 = 실수 1+세트피스 2 · FK **벽이 물러났다** |
+| 7~14 | `if8UoAcl8qo` `HzDdaVoSTUk` `kinFJBpR0-s` `EKDVMxPGUIk` `3xQrmZlQlRI` `cing5Zl0IaE` `hbYNxXvgV9U` `ikDmkyRHW0o` | 팬채널 8곳 | 경기반응 | 공통 판정 3개로 수렴 — 아브라함 신뢰 회복 · 음바예 최대 수확 · 피벗이 유일한 약점 |
+
+### 판정 (실측 대조)
+| 항목 | 서사 | 실측 | 판정 |
+|---|---|---|---|
+| **완비사카 「안으로 접혀 하이브리드 백3」** (UTV·1874 독립 2소스) | 백3 내재화, 보가르드 우측 보호 | avg_y 14.69 → **툴x 85.3(터치라인)** · avg_x 41.15 < LB 루헤리 47.2 | ⛔ **기각**(obs#825) — 「전진 억제」는 정합, 「내재화」는 좌표가 부정. 억제형 풀백(`fb_wingback/Balanced`) 유지. 두 채널 모두 평균위치 그래픽의 좌우축을 깊이로 오독한 것으로 판단. |
+| **음바예 「우측 폭 유지」 지시** (1874) | 터치라인 유지, 맥긴 중앙 10번과 세트 | 툴x 72.4 — 맥긴 67.8보다 바깥, 터치라인 85는 아님 · avg_x 69.05 팀 최전방 | PENDING — 방향 정합, 정도 중간. `player_duties` 245 **HELD**(재판정: 클럽 2경기째 커널). |
+| 음바예 선발 게이트 = **원정 수비 부담** (All Villa No Filler) | 「알리송을 오른쪽에 쓸 수도」 | 수비 지표 미비교 | 새 판정 후보(obs#826) — 검증 지점: 토트넘 원정 우측 선택. |
+| 세트피스 **니어포스트 반복** (UTV·코번트리 팬 동일 언어) | 「두 번 해냈다」·「프런트포스트 프리 헤더」 | 40′·59′ 코너 2골 모두 니어포스트 | HELD — D+1 (b) 「설계 루틴 아님」 유지, 타깃 반복은 3번째 표본에서 재판정. `manager_profiles` set_pieces 덧붙임. |
+| 27′ 실점 원인 | UTV 비조 책임 ↔ 1874 면책 ↔ 코번트리 **벽 세팅** ↔ ANF 바클리 루즈볼 | 프레임 미확인 | **3설 대립 보류**(obs#827). FC 구현 축 없음. |
+| 바클리 용법 | 베이스 피벗 ✗ → 하이 피벗/10번 | LDM인데 avg_x 49.77 = 피벗 최전방, 7.8 | 실측이 이미 그 방향(obs#828). `cm_playmaker/Attack` 주장은 HELD — 피벗 표본 2경기 후 커널. |
+| 하우드-벨리스 배급 | 「파우와 같은 지역, 조금 더 띄운다」 | RCB 90분 hp 89 | 슬롯 정본 `cb_bpd/Build-Up`과 정합 — PENDING(데뷔 1경기). |
+| 에메리 컵 목적 | 「유럽으로 가는 길」 | — | `manager_profiles` rotation 덧붙임 — 컵 선발을 로테이션 소화로 읽지 말 것. |
+
+### 당일·D+1 판정 정정
+- **「1874는 D+1에 리뷰 미게시」 → 뒤집힘**: `EmS_1gJ6g9c`(09-16 게시)는 채널 `/videos` 목록에서 누락되고 검색에서만 나왔다. ⇒ **3경로 스윕 규칙**(obs#829) — 어느 한 경로만 썼다면 가장 가치 높은 3편(1874 리뷰·UTV 음바예·코번트리 팬)을 전부 놓쳤다.
+- `COJ71S37huk` 제목이 업로더에 의해 「REACTING TO UNAI EMERY'S COMMENTS ON ALEJANDRO GARNACHO」로 교체됨 — DB 갱신.
+
+### 0건·제외
+0건 채널 4곳(UP THE VILLA · Mango Talks Ball · Footy Post-Game Hub · FOOTBALL REACTION). 0건 쿼리: `Emery Coventry press conference`(전부 2018~19 아스날) · `Ross Barkley Aston Villa Coventry`(전부 중복). 제외 30여 편: 하이라이트·AI 예측물·게임 시뮬·라이브 코멘터리·09-16 이전 게시(음바예 영입 시점 자료 — 선수 축으로는 유효, 별건). ⚠️ 여전히 **Tanswell 0건**(브라우저 경로 미시도) · 스페인어·프랑스어(음바예 모국어권) 미시도 — 불변규칙 10 결손 존속.
+
+### 반영
+`match_videos` 14행(귀속 43) · summary/key_points 14 · `video_impl_claims` 21(REJECTED 2 · HELD 3 · PENDING 6 · NA 1 · none 9) · obs#825~829 · `player_duties` 245(음바예, HELD) · `manager_profiles` rotation·set_pieces 덧붙임. 시즌 정본 변경 없음.
