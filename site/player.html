@@ -67,6 +67,11 @@
 <p class="dim" style="font-size:12px;margin:8px 0 0">fut.gg <code>all-versions</code> API에서 받은 <b>아이템 목록</b>이다 —
 위의 「게임 스탯」(능력치 정본)과 다른 축이라 <b>특별 카드 수치를 분석에 쓰지 않는다</b>.
 새 카드는 <code>scripts/collect_futgg_cards.py</code>를 다시 돌리면 추가된다.</p></div>
+<div class="panel"><h2>진화 제안 <small class="dim">— 이 선수를 어떻게 키울 것인가</small></h2>
+<div id="gevo"></div>
+<p class="dim" style="font-size:12px;margin:8px 0 0">fut.gg 진화 경로 API에서 받은 <b>사실</b>(단계·비용·델타·결과 역할)이고,
+<b>「최적」 판정은 이 화면이 그 선수의 처방 역할과 대조해 만든다</b> — 처방이 바뀌면 추천도 바뀐다(DB는 순위를 담지 않는다).
+⚠️ 진화는 <b>기간제</b>라 수집일 기준 스냅샷이며 만료되면 사라진다.</p></div>
 <div class="panel"><h2>게임 스탯 <small class="dim">— FC26 ↔ FC27 및 그 차이</small></h2><div id="ghist" style="margin-bottom:12px"></div><div id="gstat" class="kv"></div><p class="dim" style="font-size:12px;margin:8px 0 0">Δ는 <b>우리 DB의 FC26 최신 로스터</b>와 FC27을 직접 대조한 값이다. ⚠️ 매체가 표기하는 Δ와 다를 수 있다 — 그쪽은 FC26 <b>출시판</b> 기준이고 우리 FC26 행은 <b>시즌 말 라이브판</b>이라 부호가 뒤집힌다(obs#249). <b>예측</b> 배지가 붙은 값은 EA 미확정이라 공식 드롭 후 바뀐다.</p></div>
 </section>
 
@@ -83,7 +88,7 @@ import { prose } from './assets/prose.js';
 import { PLAYSTYLES } from './assets/playstyle-icons.js';
 import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20260913-stat-tips';
 const { team, idx } = await mountHeader('player.html');
-const [td, GS, GS27, HIST, CARDS] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history'), loadGameStats('cards')]);
+const [td, GS, GS27, HIST, CARDS, EVO] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history'), loadGameStats('cards'), loadGameStats('evolutions').catch(()=>({paths:{},role_map:[]}))]);
 /* 백분위·유사프로필 모집단 = 활성 regime 전체. ⛔ 팀 코드를 하드코딩하지 않는다 —
    2026-08-20 ATM 편입 때 이 배열이 ['AVL','CHE','LIV']로 남아 ATM 선수가 모집단에서 통째로 빠졌다.
    index.json의 regimes가 SSOT이고 `end IS NULL`이 활성 조건이다(DB 뷰와 같은 규약). */
@@ -609,8 +614,85 @@ function renderCardVersions(sel, isGkRow){
   const promo = rows.filter(r => !r.is_base);
   el.innerHTML = `<div class="kv" style="margin-bottom:6px"><b>${rows.length}장</b>
       <small class="dim">— 기본 ${rows.length - promo.length} · 특별 ${promo.length}${
-        promo.length ? '' : ' (아직 없음 — FC27 출시 2026-09-25 이후 등장)'}</small></div>
+        promo.length ? '' : ' (이 선수는 아직 없음 — 09-15 FC27 사전 드롭에서 10명만 받았다)'}</small></div>
     <div class="cardvers">${rows.map(card).join('')}</div>`;
+}
+/* ── 진화 제안 (2026-09-17, 사용자 지시 「어떻게 진화하면 좋을지도 수집해서 페이지 내에서 최적의 제안을 보여줘」) ──
+   ⭐ 순위는 **여기서** 만든다 — DB(player_evolutions)는 사실만 담는다. 처방 역할이 바뀌면 추천도 따라 바뀌어야 하기 때문이다.
+   기준 3단: ① 결과 카드가 그 선수의 **처방 역할**을 Role++(숙련)로 주는가 → ② Role+인가 → ③ OVR 상승·비용.
+   ⚠️ FC27 `game_roles` 커널은 아직 없다(obs#629). 역할 id 해석은 `fc_role_familiarity_map`(fut.gg roles 카탈로그)만 쓴다. */
+const EVO_ALIAS = { bpd:'ballplayingdefender', b2b:'boxtobox', dlp:'deeplyingplaymaker',
+  att_wb:'attackingwingback', insidefwd:'insideforward', wideplm:'wideplaymaker' };
+/* 포지션은 **role_id 접두사**에서 읽는다 — `prescriptions.pos_label`은 'pivot-left@dom'·'LW/AML'처럼
+   전술 표기가 섞여 있어 FC27 포지션명과 대조가 안 된다(실증: 'LCB'가 CB와 매칭 실패). */
+const EVO_POS = { gk:['GK'], cb:['CB'], fb:['LB','RB'], dm:['CDM'], cm:['CM'],
+                  cam:['CAM'], w:['LW','RW'], wm:['LM','RM'], st:['ST'] };
+const evoNorm = s => String(s||'').toLowerCase().replace(/[^a-z0-9]/g,'');
+function evoRoleKey(role_id){                   // 'w_wideplm' → 'wideplaymaker'
+  const tail = String(role_id||'').split('_').slice(1).join('_');
+  return evoNorm(EVO_ALIAS[tail] ?? tail);
+}
+function renderEvo(sel){
+  const el = document.getElementById('gevo'); if (!el) return;
+  const rows = (sel.pid != null && EVO.paths?.[String(sel.pid)]) || [];
+  // 처방(가장 최신 시즌의 게임 처방)을 먼저 잡는다 — 이것이 순위의 기준이다.
+  const pres = td.prescriptions.filter(p => p.player_id === sel.pid && p.role_id)
+    .sort((a,b) => String(b.season||'').localeCompare(String(a.season||'')))[0];
+  if (!rows.length){
+    el.innerHTML = `<span class="dim">진화 경로 없음 — fut.gg가 이 선수에게 여는 경로가 현재 0건이다(수집일 기준).
+      ⭐ 고평가 선수는 대부분 OVR 상한에 걸려 경로가 없다. ${pres ? '' : ''}</span>`;
+    return;
+  }
+  const want = pres ? evoRoleKey(pres.role_id) : null;
+  const wantPos = pres?.role_id ? EVO_POS[String(pres.role_id).split('_')[0]] ?? null : null;
+  const byId = {};
+  for (const r of (EVO.role_map || [])) byId[`${r.kind}:${r.ea_id}`] = r;
+  const decode = (json, kind) => { let ids = []; try { ids = JSON.parse(json || '[]'); } catch(e){}
+    return ids.map(i => byId[`${kind}:${i}`]).filter(Boolean); };
+  const matches = r => want && (evoNorm(r.name) === want) && (!wantPos || wantPos.includes(r.position_name));
+  const scored = rows.map(r => {
+    const pp = decode(r.roles_plus_plus_after, 'plusplus'), pl = decode(r.roles_plus_after, 'plus');
+    const tier = pp.some(matches) ? 2 : pl.some(matches) ? 1 : 0;
+    const cost = (r.coins_cost || 0) + (r.points_cost || 0) * 1000;   // 포인트는 유료 재화 — 코인보다 비싸게 친다
+    return { ...r, pp, pl, tier, cost, d: (r.ovr_after ?? 0) - (r.ovr_before ?? 0) };
+  }).filter(r => !r.is_expired)
+    .sort((a,b) => b.tier - a.tier || b.d - a.d || a.cost - b.cost || a.steps - b.steps);
+  if (!scored.length){ el.innerHTML = '<span class="dim">유효 경로 없음 — 수집된 경로가 모두 만료됐다.</span>'; return; }
+  const best = scored[0];
+  const six = j => { try { return JSON.parse(j || '{}'); } catch(e){ return {}; } };
+  const dSix = r => { const a = six(r.six_before), b = six(r.six_after);
+    return Object.keys(b).filter(k => (b[k] ?? 0) - (a[k] ?? 0) > 0)
+      .map(k => `${k} +${b[k] - a[k]}`).join(' · '); };
+  const cost = r => [r.coins_cost ? `${r.coins_cost.toLocaleString()} 코인` : null,
+    r.points_cost ? `${r.points_cost} 포인트` : null,
+    r.training_time ? `훈련 ${Math.round(r.training_time / 3600)}시간` : null].filter(Boolean).join(' · ') || '무료';
+  const roleChips = r => [...r.pp.map(x => [x, '++']), ...r.pl.map(x => [x, '+'])]
+    .map(([x, k]) => `<span class="chip"${matches(x) ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}>${esc(x.position_name)} ${esc(x.name)} ${k}</span>`).join(' ');
+  const card = (r, i) => `<div class="pcard" style="margin-bottom:8px${i === 0 ? ';border-left:3px solid var(--ok)' : ''}">
+    <div class="kv">${i === 0 ? '<span class="badge hi">최적 제안</span>' : `<span class="badge">${i + 1}순위</span>`}
+      <b>${esc(r.evolution_names)}</b>
+      <span class="chip">${r.steps}단계</span>
+      ${r.d ? `<span class="chip" style="border-color:var(--ok);color:var(--ok)">OVR ${r.ovr_before}→${r.ovr_after} (+${r.d})</span>`
+            : `<span class="chip dim">OVR ${r.ovr_after ?? '—'} 유지</span>`}
+      <small class="dim">${esc(cost(r))}</small></div>
+    ${dSix(r) ? `<div style="font-size:12px;margin-top:4px">${esc(dSix(r))}</div>` : ''}
+    ${r.upgrades ? `<div class="dim" style="font-size:12px">${esc(Object.entries(JSON.parse(r.upgrades)).map(([k, v]) => `${k} +${v}`).join(' · '))}</div>` : ''}
+    <div style="margin-top:4px">${roleChips(r) || '<small class="dim">결과 역할 숙련 정보 없음</small>'}</div>
+    ${r.evolution_urls ? `<div style="margin-top:4px">${r.evolution_urls.split('\n').map(u => `<a href="${esc(u)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>`).join(' ')}</div>` : ''}
+  </div>`;
+  const why = !pres
+    ? '⚠️ 이 선수에게 <b>게임 처방이 없어</b> 역할 대조를 못 했다 — 아래 순위는 OVR 상승·비용만 본 것이다.'
+    : best.tier === 2
+      ? `처방 <b>${esc(pres.pos_label ?? '')} ${esc(pres.role_id)}</b>를 결과 카드가 <b>Role++(숙련)</b>로 준다 — 처방 그대로 쓰면서 능력치만 올린다.`
+      : best.tier === 1
+        ? `처방 <b>${esc(pres.pos_label ?? '')} ${esc(pres.role_id)}</b>가 결과 카드에서 <b>Role+</b>까지만 된다 — 쓸 수는 있으나 숙련 보너스는 없다.`
+        : `⚠️ 어느 경로도 처방 <b>${esc(pres.pos_label ?? '')} ${esc(pres.role_id)}</b>를 Role+ 이상으로 만들지 못한다 — 아래는 <b>능력치 상승만</b> 보고 매긴 순위다. 처방을 바꿀 생각이 아니면 진화 우선순위가 낮다.`;
+  el.innerHTML = `<div style="font-size:13px;margin-bottom:8px">${why}</div>
+    ${scored.map(card).join('')}
+    <small class="dim">경로 ${scored.length}건 · 수집일 ${esc(best.pulled ?? '')} · ${esc(best.game_version ?? '')}</small>
+    ${scored.every(r => !r.cost && !r.pp.length)
+      ? `<div class="dim" style="font-size:12px;margin-top:4px">⚠️ 이 스냅샷의 경로는 <b>전부 무료·Role++ 없음</b>이다 —
+          FC27 출시(2026-09-25) 전이라 도입용 진화만 열려 있다. 유료·다단계 경로는 출시 후 재수집해야 나온다.</div>` : ''}`;
 }
 function renderHistory(sel, isGkRow){
   const el = document.getElementById('ghist');
@@ -885,6 +967,7 @@ function render(){
   document.getElementById('gstat').innerHTML = html;
   renderHistory(sel, isGkRow);
   renderCardVersions(sel, isGkRow);
+  renderEvo(sel);
   // ⭐ player_id 우선 — 라벨 조인은 표기 규약이 갈리면 조용히 0행이 된다(불변규칙 6).
   const ds = (sel.pid != null && td.duties.some(d=>d.player_id===sel.pid)
     ? td.duties.filter(d=>d.player_id===sel.pid)

@@ -714,3 +714,38 @@ CREATE TABLE video_impl_claims(
 CREATE INDEX ix_vic_video ON video_impl_claims(video_id);
 CREATE INDEX ix_vic_axis ON video_impl_claims(axis, verdict);
 CREATE INDEX ix_vic_player ON video_impl_claims(player_id);
+CREATE TABLE player_evolutions(
+  id INTEGER PRIMARY KEY,
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  player_id INTEGER REFERENCES players(id),
+  base_ea_id INTEGER NOT NULL,      -- 진화 대상 base 카드(= player_card_items.base_ea_id)
+  name_kr TEXT NOT NULL,            -- 표시용 (조인 금지)
+  path_key TEXT NOT NULL,           -- 이 경로를 식별하는 evolution id 사슬 '2499' / '2488>2491'
+  evolution_ids TEXT NOT NULL,      -- JSON 배열
+  evolution_names TEXT NOT NULL,    -- ' → '로 이은 단계 이름
+  evolution_urls TEXT,              -- fut.gg 경로 URL(들), 줄바꿈 구분
+  steps INTEGER NOT NULL,           -- 단계 수
+  coins_cost INTEGER, points_cost INTEGER,
+  training_time INTEGER,            -- 초
+  is_expired INTEGER NOT NULL DEFAULT 0,
+  ovr_before INTEGER, ovr_after INTEGER,
+  upgrades TEXT,                    -- 속성 델타 JSON(한글 라벨 — 다른 표와 같은 키)
+  six_before TEXT, six_after TEXT,  -- 6대 스탯 JSON(PAC/SHO/PAS/DRI/DEF/PHY, GK는 DIV/HAN/KIC/REF/SPD/POS)
+  playstyles_after TEXT,            -- 결과 카드 PlayStyles ('…, …+')
+  roles_plus_after TEXT,            -- ⭐ 결과 카드 Role+ raw id JSON (roles 카탈로그 plusEaId로 해석)
+  roles_plus_plus_after TEXT,       -- ⭐ 결과 카드 Role++ raw id JSON (plusPlusEaId로 해석)
+  source TEXT, confidence TEXT,
+  pulled TEXT NOT NULL,             -- 수집일 — 진화는 기간제라 시점이 정본이다
+  UNIQUE(game_version, base_ea_id, path_key, pulled)
+);
+CREATE INDEX ix_player_evolutions_player ON player_evolutions(player_id, game_version);
+CREATE TABLE fc_role_familiarity_map(
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  ea_id INTEGER NOT NULL,           -- plusEaId 또는 plusPlusEaId
+  kind TEXT NOT NULL CHECK(kind IN ('plus','plusplus')),
+  slug TEXT NOT NULL,               -- 'cm-box-to-box'
+  name TEXT NOT NULL,               -- 'Box-To-Box'
+  position_name TEXT,               -- 'CM'
+  source TEXT, confidence TEXT, pulled TEXT NOT NULL,
+  PRIMARY KEY(game_version, ea_id, kind)
+);

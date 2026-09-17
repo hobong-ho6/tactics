@@ -114,6 +114,27 @@ def export_all(db_path=None, window="2026-summer"):
         cards.setdefault(str(r.pop("player_id")), []).append(r)
     written.append(_write(SITE_DATA / "game_stats" / "cards.json", cards))
 
+    # ── game_stats/evolutions.json — 진화 경로와 결과 카드 (2026-09-17 신설, 사용자 지시
+    #    「어떻게 진화하면 좋을지도 수집해서 페이지 내에서 최적의 제안을 보여줘」).
+    #    ⭐ 카드와 층이 다르다: cards.json은 **이미 발매된 아이템**, 여기는 **적용하면 생기는 결과**다.
+    #    ⛔ 「최적」 순위를 여기서 굳히지 않는다 — 화면이 그 선수의 처방 역할과 대조해 만든다.
+    #    Role+/++가 raw id라 `fc_role_familiarity_map`을 함께 내보낸다(FC27 커널은 아직 없다 — obs#629).
+    evos = {}
+    for r in _rows(con, """SELECT game_version, player_id, base_ea_id, name_kr, path_key,
+                                  evolution_ids, evolution_names, evolution_urls, steps,
+                                  coins_cost, points_cost, training_time, is_expired,
+                                  ovr_before, ovr_after, upgrades, six_before, six_after,
+                                  playstyles_after, roles_plus_after, roles_plus_plus_after, pulled
+                           FROM player_evolutions
+                            WHERE player_id IS NOT NULL
+                              AND pulled=(SELECT MAX(pulled) FROM player_evolutions)
+                           ORDER BY player_id, (ovr_after - ovr_before) DESC, steps"""):
+        evos.setdefault(str(r.pop("player_id")), []).append(r)
+    rolemap = _rows(con, """SELECT game_version, ea_id, kind, slug, name, position_name
+                            FROM fc_role_familiarity_map ORDER BY game_version, kind, ea_id""")
+    written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
+                          {"paths": evos, "role_map": rolemap}))
+
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──
     # ⭐ 세 층을 그대로 내보낸다: 메타(파싱) · obs_points(검증된 판정) · summary/key_points(사람 요약).
     #    `by_report`는 경기 화면이, `all`은 채널 브라우징이 쓴다.
