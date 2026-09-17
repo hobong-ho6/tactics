@@ -53,6 +53,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
   <div class="panel"><h2>계정 <small class="dim">— fut_accounts</small></h2>
     <div id="acc"></div></div>
   <div class="panel"><h2>보유 선수 <small class="dim">— 현재 상태 · 진화 횟수 · 다음 추천</small></h2>
+    <p class="dim" style="font-size:12px;margin:0 0 6px">⭐ 진화를 기록하면 <b>1회성 진화는 이 계정에서 소진</b>돼 다른 선수의 경로·추천에서 빠지고(카탈로그·선수별 패스·전술 구현 탭 전부), 각 선수의 최적 패스가 다시 매겨진다. 반복형은 횟수만큼 남는다.</p>
     <div id="owned"></div></div>
   <div class="panel"><h2>선수 추가 <small class="dim">— 우리 DB 선수와 그 선수의 FC27 카드 중 보유한 것</small></h2>
     <div id="addp"></div></div>
@@ -164,7 +165,33 @@ document.querySelectorAll('.menubar [data-tab]').forEach(b => b.addEventListener
 }));
 
 /* ── 카탈로그 ── */
-const RANKED = {}; for (const [pid, rows] of Object.entries(EVO.paths || {})) RANKED[pid] = rank(+pid, rows);
+/* ── 소진 모델 (사용자 지시 2026-09-18 「특정 선수에게 진화를 적용하면 1회성 진화는 다른 선수에게 적용할 수 없다 —
+   나머지 선수들에겐 사라지고 최적 패스를 다시 찾아야 한다」) ──
+   계정 원장(fut_evolution_log)에서 진화별 적용 횟수를 세고 repeatability(카탈로그, 없으면 1)에 닿으면 「소진」.
+   소진된 진화를 포함한 경로는 **그 진화를 쓴 선수 본인 외** 모든 선수에게서 빠진다 → 순위가 자동으로 다시 매겨진다. */
+let ACC = localStorage.getItem('fut_account') || EVO.club?.accounts?.[0]?.name || null;
+const REPEAT = {}; for (const c of EVO.catalog || []) REPEAT[c.evo_id] = c.repeatability || 1;
+function accountObj(){ const C = EVO.club || { accounts: [] }; return C.accounts.find(a => a.name === ACC) || C.accounts[0] || null; }
+function consumedMap(){
+  const C = EVO.club || { accounts: [], players: [], log: [] }; const acc = accountObj(); if (!acc) return {};
+  const own = Object.fromEntries(C.players.filter(p => p.account_id === acc.id).map(p => [p.id, p]));
+  const m = {};
+  for (const l of C.log){ const p = own[l.club_player_id]; if (!p) continue;
+    (m[l.evo_id] ??= { count: 0, by: [] }); m[l.evo_id].count++; m[l.evo_id].by.push({ name: p.name, pid: p.player_id, date: l.applied_at }); }
+  for (const k in m) m[k].exhausted = m[k].count >= (REPEAT[k] ?? 1);
+  return m;
+}
+let CONSUMED = consumedMap();
+let OWNED = new Set();
+const pathOpen = (r, pid) => r.ids.every(i => !CONSUMED[i]?.exhausted || CONSUMED[i].by.some(b => b.pid === pid));
+let RANKED = {};
+function buildRanked(){
+  const acc = accountObj();
+  OWNED = new Set((EVO.club?.players || []).filter(p => acc && p.account_id === acc.id && p.status === 'owned').map(p => p.player_id));
+  RANKED = {};
+  for (const [pid, rows] of Object.entries(EVO.paths || {})) RANKED[pid] = rank(+pid, rows).filter(r => pathOpen(r, +pid));
+}
+buildRanked();
 function teamBar(el, team, onPick){
   const codes = ['ALL', ...idx.regimes.map(r => r.team_code)];
   el.innerHTML = codes.map(c => `<button class="act ghost${c === team ? ' on' : ''}" data-c="${c}">${c === 'ALL' ? '전체' : esc(idx.regimes.find(r => r.team_code === c)?.team_kr || c)}</button>`).join('');
@@ -175,20 +202,28 @@ function renderCatalog(team = CAT_TEAM){
   CAT_TEAM = team; localStorage.setItem('evo_cat_team', team);
   teamBar(document.getElementById('catteam'), team, renderCatalog);
   const cat = EVO.catalog || [];
-  document.getElementById('catn').textContent = `— ${cat.filter(c => !c.is_expired).length}종 열림 · ${cat.filter(c => c.is_expired).length}종 만료`;
+  const nUsed = Object.values(CONSUMED).filter(u => u.exhausted).length;
+  document.getElementById('catn').textContent = `— ${cat.filter(c => !c.is_expired).length}종 열림 · ${cat.filter(c => c.is_expired).length}종 만료` + (ACC ? ` · 계정 ${ACC} 기준 소진 ${nUsed}종` : '');
   const days = t => t ? Math.ceil((new Date(t) - Date.now()) / 864e5) : null;
   document.getElementById('cat').innerHTML = cat.map(c => {
     // 이 진화를 포함한 경로를 가진 우리 선수 — 첫 단계로 포함하면 바로 적용 가능, 아니면 N단계째
+    const used = CONSUMED[c.evo_id];
     const apps = [];
     for (const [pid, rows] of Object.entries(RANKED)) for (const r of rows){
       if (team !== 'ALL' && TEAM_OF[pid] !== team) break;
       const k = r.ids.indexOf(c.evo_id); if (k < 0) continue;
-      apps.push({ pid: +pid, tier: r.tier, k, d: r.d, name: r.name_kr }); break;
+      const base = (CARDS[pid] || []).find(x => x.is_base);
+      apps.push({ pid: +pid, tier: r.tier, k, d: r.d, name: r.name_kr, owned: OWNED.has(+pid), price: base ? priceOf(base.item_id) : null, path: r }); break;
     }
-    apps.sort((a, b) => b.tier - a.tier || a.k - b.k || b.d - a.d);
+    // 진화별 최적 선수: 처방 역할 적중 → 내 구단 보유(사서 쓸 필요 없음) → 즉시 적용(첫 단계) → OVR 상승 → 시세 낮은 순
+    apps.sort((a, b) => b.tier - a.tier || (b.owned - a.owned) || a.k - b.k || b.d - a.d || (a.price ?? 9e9) - (b.price ?? 9e9));
+    const best = apps[0];
     const dl = days(c.end_submission_time || c.end_time);
-    return `<div class="evo-card${c.is_expired ? ' expired' : ''}">
-      <h3>${esc(c.name)} ${c.repeatability > 1 ? `<span class="chip">반복 ${c.repeatability}회</span>` : ''}${c.is_reward ? '<span class="chip">보상형</span>' : ''}</h3>
+    return `<div class="evo-card${c.is_expired || used?.exhausted ? ' expired' : ''}">
+      <h3>${esc(c.name)} ${c.repeatability > 1 ? `<span class="chip">반복 ${c.repeatability}회</span>` : '<span class="chip dim">1회성</span>'}${c.is_reward ? '<span class="chip">보상형</span>' : ''}
+        ${used ? `<span class="chip" style="border-color:var(--bad);color:var(--bad)">${used.exhausted ? '소진' : `사용 ${used.count}/${REPEAT[c.evo_id]}`} — ${used.by.map(b => `${esc(b.name)} ${esc(b.date)}`).join(', ')}</span>` : ''}</h3>
+      ${best && !used?.exhausted ? `<div class="pcard tier${best.tier}" style="margin:6px 0;padding:6px 10px"><span class="badge hi">이 진화 최적 선수</span> <b>${esc(best.name)}</b>
+        <small class="dim">${best.tier === 2 ? '처방 역할 Role++' : best.tier === 1 ? '처방 역할 Role+' : '처방 역할 무관(능력치만)'} · ${best.owned ? '내 구단 보유' : `미보유 · ${fmtPrice(best.price)}`} · ${best.k ? `${best.k + 1}단계째(선행 ${best.k})` : '즉시 적용'}${best.d ? ` · OVR +${best.d}` : ''}</small></div>` : ''}
       <div class="dim" style="font-size:12px">${esc(c.description || '')}</div>
       <div class="kv" style="margin:6px 0;font-size:12px"><span>${esc(costText(c))}</span>
         ${dl != null ? `<span class="${dl <= 7 ? 'dn' : ''}">마감 ${esc(String(c.end_submission_time || c.end_time).slice(0, 10))} (${dl >= 0 ? `D-${dl}` : '지남'})</span>` : ''}
@@ -196,7 +231,7 @@ function renderCatalog(team = CAT_TEAM){
       <div>${J(c.requirements_text, []).map(r => `<span class="req">${esc(r.label)}: ${esc(r.value)}</span>`).join('')}</div>
       <div style="margin-top:6px;font-size:12px"><b>업그레이드</b> ${J(c.total_upgrades_text, []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ') || '<span class="dim">없음(도입용)</span>'}</div>
       <div style="margin-top:6px;font-size:12px"><b>${team === 'ALL' ? '우리 선수' : esc(idx.regimes.find(r => r.team_code === team)?.team_kr || team)} 적용 가능 ${apps.length}명</b> <small class="dim">(fut.gg 전체 ${c.number_of_players?.toLocaleString?.() ?? '—'}명)</small>
-        <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}">${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || '<span class="dim">없음</span>'}</div></div>
+        <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}${a.owned ? ' · 보유' : ''}">${a.owned ? '★ ' : ''}${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || '<span class="dim">없음' + (used?.exhausted ? '(소진)' : '') + '</span>'}</div></div>
       ${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>` : ''}
     </div>`;
   }).join('');
@@ -240,7 +275,7 @@ function bestPathFor(pid, m){
     const pp = decode(r.roles_plus_plus_after, 'plusplus'), pl = decode(r.roles_plus_after, 'plus');
     return { ...r, m, tier: pp.some(m) ? 2 : pl.some(m) ? 1 : 0, d: (r.ovr_after ?? 0) - (r.ovr_before ?? 0), ids: J(r.evolution_ids, []), path: J(r.path_json, []), pp, pl,
              cost: (r.coins_cost || 0) + (r.points_cost || 0) * 1000 };
-  }).sort((a, b) => b.tier - a.tier || b.d - a.d || a.cost - b.cost)[0] || null;
+  }).filter(r => pathOpen(r, pid)).sort((a, b) => b.tier - a.tier || b.d - a.d || a.cost - b.cost)[0] || null;
 }
 let TAC_TEAM = localStorage.getItem('evo_tac_team') || 'AVL';
 function renderTactic(team = TAC_TEAM){
@@ -304,7 +339,6 @@ const api = async (cmd, body) => {
   } catch(e){ return { ok: false, message: `쓰기 API 없음(정적 배포본). 아래 명령을 저장소에서 실행할 것:\n${cli}`, cli }; }
 };
 const say = (el, r) => { el.innerHTML = `<div class="msg ${r.ok ? 'ok' : 'err'}">${esc(r.message)}</div>`; if (r.ok) setTimeout(() => location.reload(), 900); };
-let ACC = localStorage.getItem('fut_account') || EVO.club?.accounts?.[0]?.name || null;
 function renderClub(){
   const C = EVO.club || { accounts: [], players: [], log: [] };
   const acc = C.accounts.find(a => a.name === ACC) || C.accounts[0]; ACC = acc?.name || null;
@@ -313,7 +347,7 @@ function renderClub(){
     <form class="form" id="accf"><div><label>계정 표시명</label><input name="name" required placeholder="main"></div>
       <div><label>플랫폼</label><select name="platform"><option>PS5</option><option>Xbox</option><option>PC</option></select></div>
       <div><label>게임</label><input name="game" value="FC27"></div><button>계정 추가</button></form><div id="accm"></div>`;
-  document.querySelectorAll('#acc button[data-a]').forEach(b => b.addEventListener('click', () => { localStorage.setItem('fut_account', b.dataset.a); ACC = b.dataset.a; renderClub(); }));
+  document.querySelectorAll('#acc button[data-a]').forEach(b => b.addEventListener('click', () => { localStorage.setItem('fut_account', b.dataset.a); ACC = b.dataset.a; CONSUMED = consumedMap(); buildRanked(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); }));
   document.getElementById('accf').addEventListener('submit', async e => { e.preventDefault(); const f = new FormData(e.target);
     say(document.getElementById('accm'), await api('account', { name: f.get('name'), platform: f.get('platform'), game: f.get('game') })); });
   if (!acc){ document.getElementById('owned').innerHTML = document.getElementById('addp').innerHTML = '<span class="dim">계정을 먼저 만든다.</span>'; document.getElementById('log').innerHTML = ''; return; }
@@ -322,8 +356,12 @@ function renderClub(){
   const logs = C.log.filter(l => owned.some(p => p.id === l.club_player_id));
   document.getElementById('owned').innerHTML = owned.length ? owned.map(p => {
     const card = (CARDS[String(p.player_id)] || []).find(c => c.ea_item_id === p.ea_item_id);
-    const done = new Set(logs.filter(l => l.club_player_id === p.id).map(l => l.evo_id));
-    const next = (RANKED[p.player_id] || []).filter(r => !r.ids.some(i => done.has(i)))[0];
+    // 적용한 진화 사슬(시간순). fut.gg 경로는 「이 카드에서 이 순서로 밟는 사슬」이라 **접두가 일치하는 경로만** 이어 붙일 수 있다 —
+    // 다른 단일 경로를 「다음」으로 보이면 이미 진화한 카드가 요구조건을 넘어 실제로는 못 넣는 경우가 생긴다.
+    const applied = logs.filter(l => l.club_player_id === p.id).sort((a, b) => String(a.applied_at).localeCompare(String(b.applied_at)) || a.id - b.id).map(l => l.evo_id);
+    const done = new Set(applied);
+    const cont = (RANKED[p.player_id] || []).filter(r => r.ids.length > applied.length && applied.every((id, i) => r.ids[i] === id));
+    const next = cont[0];
     const six = J(p.current_six, {});
     return `<div class="pcard tier${next?.tier ?? 0}" style="margin:6px 0">
       <div class="kv">${card?.card_image_url ? `<img class="futcard-img" src="${esc(card.card_image_url)}" alt="" style="width:56px">` : ''}
@@ -335,14 +373,15 @@ function renderClub(){
       <div class="gc-six" style="margin:4px 0">${Object.entries(six).map(([k, v]) => `<span><em>${k}</em>${v}</span>`).join('')}</div>
       ${p.current_playstyles ? `<div class="dim" style="font-size:12px">PS ${esc(p.current_playstyles)}</div>` : ''}
       ${p.status === 'owned' ? `<div class="form" style="grid-template-columns:2fr 1fr 1fr auto auto">
-        <div><label>진화 적용 기록</label><select data-evo="${p.id}">${(RANKED[p.player_id] || []).flatMap(r => r.ids.map((id, k) => ({ id, k, r })))
-          .filter((x, i, arr) => arr.findIndex(y => y.id === x.id) === i && !done.has(x.id))
-          .map(x => `<option value="${x.id}">${esc(x.r.evolution_names.split(' → ')[x.k])} — 경로 ${esc(x.r.evolution_names)} (→OVR ${x.r.path[x.k + 1]?.ovr ?? x.r.ovr_after})${x.r.tier ? ' ★처방' : ''}</option>`).join('') || '<option value="">이 선수에게 열린 진화 없음</option>'}</select></div>
+        <div><label>진화 적용 기록${applied.length ? ` <small>(${applied.length}회 적용 후 이어지는 경로 ${cont.length}건)</small>` : ''}</label><select data-evo="${p.id}">${cont.map(r => ({ id: r.ids[applied.length], k: applied.length, r }))
+          .filter((x, i, arr) => arr.findIndex(y => y.id === x.id) === i)
+          .map(x => `<option value="${x.id}">${esc(x.r.evolution_names.split(' → ')[x.k])} — 경로 ${esc(x.r.evolution_names)} (→OVR ${x.r.path[x.k + 1]?.ovr ?? x.r.ovr_after})${x.r.tier ? ' ★처방' : ''}</option>`).join('') || `<option value="">${applied.length ? '이 카드에 이어 붙일 경로 없음(fut.gg 기준 · 소진 반영)' : '이 선수에게 열린 진화 없음'}</option>`}</select></div>
         <div><label>적용일</label><input type="date" data-date="${p.id}" value="${new Date().toISOString().slice(0, 10)}"></div>
         <div><label>메모</label><input data-note="${p.id}" placeholder="선택"></div>
         <button class="act" data-apply="${p.id}">적용 기록</button>
         <button class="act ghost" data-sell="${p.id}">판매/방출</button></div><div id="pm${p.id}"></div>` : ''}
-      ${next ? `<div style="font-size:12px;margin-top:4px"><b>다음 추천:</b> ${esc(next.evolution_names)} — ${next.tier === 2 ? '처방 역할 Role++' : next.tier === 1 ? '처방 역할 Role+' : '능력치만'} · OVR ${next.ovr_before}→${next.ovr_after}</div>` : ''}
+      ${next ? `<div style="font-size:12px;margin-top:4px"><b>다음 추천:</b> ${esc(next.evolution_names.split(' → ')[applied.length])} <small class="dim">(경로 ${esc(next.evolution_names)})</small> — ${next.tier === 2 ? '처방 역할 Role++' : next.tier === 1 ? '처방 역할 Role+' : '능력치만'} · 경로 완주 시 OVR ${next.ovr_after}</div>`
+        : applied.length ? '<div class="dim" style="font-size:12px;margin-top:4px">다음 추천 없음 — 이어 붙일 경로가 없거나 남은 진화가 소진됐다.</div>' : ''}
     </div>`;
   }).join('') : '<span class="dim">보유 선수 없음 — 아래에서 추가한다.</span>';
   document.querySelectorAll('button[data-apply]').forEach(b => b.addEventListener('click', async () => {

@@ -150,6 +150,7 @@
   ⛔ **스케줄 태스크는 자기 자신을 삭제할 수 없다** — 비활성화만 되고 삭제는 일반 세션에서 `mcp__scheduled-tasks__delete_scheduled_task`로 한다.
 - ⛔ **미복원 1건(사용자 결정 09-17: 복원하지 않음)**: `weekly-unifi-now-sync`(월 10:03) — **이 저장소 밖 타 프로젝트**라 프롬프트 내용을 모른다. 필요하면 해당 프로젝트 세션에서 직접 만든다.
 - **일회성 3건(09-18)**: `mw-d2-liv-tottenham-0915`(21:00) · `mw-d2-avl-coventry-0916`(21:30) · `mw-d2-atm-osasuna-0916`(22:00).
+- **정기 4번째(09-18 등록, 사용자 지시)**: `futgg-prices-daily`(**매일 09:15+지터 → 09:20**) — FC27 카드 시세 스냅샷(`collect_futgg_prices.py`) → export·dump·커밋. 시장 미형성(출시 09-25 전)이면 NULL 스냅샷을 그대로 쌓고 「미형성」 보고. 첫 실행에서 도구 승인이 걸릴 수 있다 — 「Run now」로 선승인 권장.
 - Codex heartbeat **id=3 「프리미어리그 3팀 경기 수집」**, 매일 08:00 KST (저장소 밖 · 별도 관리).
 - ⭐ AVL 영상 회차는 **필수 채널 3곳**(UTV · The Villans · 1874, docs/30 표) + **Jacob Tanswell**(The Athletic, X `@J_Tanswell`)을 항상 조회한다.
 
@@ -183,7 +184,15 @@ ATM 3-4-2-1 슬롯 확정 · FC27 09-18 얼리액세스.
 
 00. ⭐⭐ **P1 · 진화·내 구단 축 후속(⑲)** — ⑴ **FC27 시장이 열리면 `collect_futgg_prices.py --games 27` 일일 실행**(스케줄 등록은 사용자 판단) → 「전술 구현」 탭 순위가 시세로 재정렬된다.
     ⑵ **출시(09-25) 후 진화 재수집**(`collect_futgg_evolutions.py --games 27 --fill-catalog`) — 지금은 도입용 무료 진화만 열려 Role++ 0건이다.
-    ⑶ **GG Club 임포터**: 사용자가 브라우저 패널에서 fut.gg 로그인 + EA 연결을 직접 하면 그 세션의 GG Club 페이지를 읽어 `fut_club_players`로 옮긴다(로그인은 대행 불가).
+    ⑵-b ✅ 09-18 **소진 모델** 반영: 1회성 진화(repeatability 1)는 계정에서 한 선수에게 기록되면 다른 선수의 경로·추천·전술 구현 탭에서 빠지고 순위가 재계산된다.
+       카탈로그가 **진화별 최적 선수**(처방 적중 → 내 구단 보유 → 즉시 적용 → OVR → 시세)도 보여준다(사용자 「선수별 진화도 있고 진화별 선수도 있고」).
+       내 구단 「다음 추천」은 **적용 사슬 접두가 일치하는 fut.gg 경로만** 잇는다(진화한 카드는 요구조건을 넘어 단일 경로를 못 넣는 경우가 있다).
+    ⑶ **FC 웹앱 팀 싱크 — 조사 결과(09-18)**: EA 웹앱(ea.com/ea-sports-fc/ultimate-team/web-app)은 EA 로그인 필수 SPA고 구단 데이터는 세션 SID를 붙인 `utas…ea.com` API에서 온다.
+       ⛔ **로그인 대행·API 자동 호출은 하지 않는다**(EA 이용약관 자동화 금지 — 계정 제재 위험). 실행 가능한 경로 셋:
+       **A(권장) GG Club** — fut.gg는 FC Community API **승인 파트너**다. 사용자가 브라우저 패널에서 fut.gg 로그인 → 「Connect your EA Account」(EA 로그인은 EA 페이지에서 사용자가 직접) → 자동 싱크.
+         그 뒤 내가 GG Club 구단 페이지를 **읽기만** 해서 JSON을 만들고 `python3 scripts/fut_club.py import club.json --account main --source "gg-club YYYY-MM-DD"`로 적재한다(✅ import 서브커맨드 준비됨).
+       **B** 사용자가 웹앱 Club → Players 화면을 패널에서 직접 열어 두면 **보이는 DOM만** 읽어 같은 JSON을 만든다(API 호출·클릭 자동화 없음). 회색 지대 — 사용자 판단.
+       **C** 수동 JSON. 어느 경로든 정본은 `fut_club_players`이고 이후 진화 기록은 화면/CLI로 한다.
     ⑷ 진화 카탈로그 2495(숨김) 확보 방법 · FC27 `game_roles` 커널(obs#629) 확보 후 `fc_role_familiarity_map`과 대조.
     ⑸ 카드 없는 4명(니콜자줄리·도밍게스·모레노·라하도)은 fut.gg에 없다 — FC27 미수록으로 확정할지 재확인.
 0. ⭐⭐ **P1 · 다음 인게임 A/B(T6) = 「캐시 falseback」 단일 변수**(2026-09-13 사용자 결정)

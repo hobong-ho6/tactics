@@ -13,6 +13,7 @@
     python3 scripts/fut_club.py account add main --platform PS5 --game FC27
     python3 scripts/fut_club.py player add --account main --name 보가르드 --player-id 11 --ea-item 264209 --acquired 2026-09-26 --how 팩
     python3 scripts/fut_club.py evolve --account main --player 보가르드 --evo 2493 [--level 1] [--date 2026-09-26] [--note …]
+    python3 scripts/fut_club.py import /tmp/club.json --account main --source "gg-club 2026-09-26"
     python3 scripts/fut_club.py list --account main
 """
 import argparse
@@ -122,6 +123,23 @@ def cmd_player_set(con, a):
     print(f"갱신: {rows[0]['name']} status={a.status or rows[0]['status']}")
 
 
+def cmd_import(con, a):
+    """JSON 목록 → 보유 선수 일괄 등록 (GG Club/웹앱에서 사용자가 받아 온 목록의 적재 경로 — 자동 수집은 아니다).
+    형식: [{"name": "...", "ea_item_id": 264209, "acquired": "2026-09-26", "how": "팩"}, ...]
+    ea_item_id가 player_card_items에 있으면 player_id·현재 스탯을 자동으로 붙인다. 이미 있는 (account, ea_item_id)는 건너뛴다."""
+    acc = account(con, a.account)
+    items = json.load(open(a.path, encoding="utf-8"))
+    have = {r[0] for r in con.execute("SELECT ea_item_id FROM fut_club_players WHERE account_id=?", (acc["id"],))}
+    ins = skip = 0
+    for it in items:
+        if it.get("ea_item_id") in have:
+            skip += 1; continue
+        ns = argparse.Namespace(account=a.account, name=it["name"], player_id=it.get("player_id"), ea_item=it.get("ea_item_id"),
+                                acquired=it.get("acquired"), how=it.get("how") or a.how, notes=it.get("notes") or f"import {TODAY} ({a.source})")
+        cmd_player_add(con, ns); ins += 1
+    print(f"임포트 {ins}명 · 기존 {skip}명 건너뜀 (출처: {a.source})")
+
+
 def run(con, cmd, **kw):
     """serve.py 쓰기 API용 진입점 — CLI와 같은 함수를 같은 규약으로 실행한다(발명 금지·출처 기록 동일)."""
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
@@ -153,11 +171,14 @@ def main():
     s.add_argument("--ovr-after", type=int); s.add_argument("--six-after", help='JSON {"PAC":..}')
     s = sub.add_parser("player-set"); s.add_argument("--account", required=True); s.add_argument("--player", required=True)
     s.add_argument("--status", choices=["owned", "sold", "discarded"]); s.add_argument("--notes")
+    s = sub.add_parser("import"); s.add_argument("path"); s.add_argument("--account", required=True)
+    s.add_argument("--source", default="manual", help="목록 출처 표기(예: gg-club 2026-09-26 · webapp-club-page)"); s.add_argument("--how")
     s = sub.add_parser("list"); s.add_argument("--account", required=True)
     a = ap.parse_args()
     con = sqlite3.connect(DB); con.row_factory = sqlite3.Row
     con.execute("PRAGMA foreign_keys=ON")
-    {"account": cmd_account, "player": cmd_player_add, "player-set": cmd_player_set, "evolve": cmd_evolve, "list": cmd_list}[a.cmd](con, a)
+    {"account": cmd_account, "player": cmd_player_add, "player-set": cmd_player_set, "evolve": cmd_evolve,
+     "import": cmd_import, "list": cmd_list}[a.cmd](con, a)
     con.commit()
     if a.cmd != "list":
         print("다음: python3 scripts/export.py && scripts/db_dump.sh")
