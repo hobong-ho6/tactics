@@ -64,3 +64,35 @@
 ## 9. 데이터 반영과 한계
 - 추가: `matches` · `player_matches` 16행 · `team_match_stats` 1행 · `match_reports` 45(draft) · 설정 1 · 처방 16 · 선수 리포트 16.
 - 한계: 단일 경기 · 시도 수 역산 · 서사 미병합.
+
+
+## D+1 서사 병합 (2026-09-17)
+
+### 시메오네 발언(원문 + 한국어 번역)
+- 경기 성격: 「Veníamos interpretando los partidos anteriores por pasajes: bien el primer tiempo en Bilbao y Liverpool, el segundo en San Sebastián… Esta vez tuvimos más regularidad en todo el partido」(「지난 경기들은 **구간으로** 해석해 왔다 — 빌바오와 리버풀에서는 전반, 산세바스티안에서는 후반이 좋았다… 이번에는 **경기 전체에서 더 꾸준했다**.」)
+- ⭐ 선발 원칙: 「Los partidos y las alineaciones las busco en relación al rival. Para el próximo no me quedo con lo de este porque el rival no es el mismo」(「경기와 선발 라인업은 **상대와의 관계 속에서** 정한다. 다음 경기에는 이번 것을 그대로 가져가지 않는다 — 상대가 같지 않기 때문이다.」)
+- 카르도소: 「Que juegue como jugó hoy… Son los caminos para que el entrenador piense en él」(「오늘 한 것처럼 뛰면 된다… 그것이 감독이 그를 생각하게 만드는 길이다.」)
+- 쿠티 로메로: 「Tiene mucha personalidad y jerarquía y lo necesitamos tal cual lo ven」(「그는 성격과 위계를 갖고 있고, 우리는 보이는 그대로의 그가 필요하다.」)
+- Atlético Stats(전사, auto-caption): 「lo bien que le sienta a la estructura que **el nueve quiera ser nueve**」(「**9번이 9번이기를 원하는 것**이 구조에 얼마나 잘 맞는지」) · 「Johnny lateralizando… y Grimaldo **haz lo que te dé la gana**」(「조니가 측면화하고, 그리말도는 **하고 싶은 대로 하라**」) · 「Coke… **es invertir las posiciones**」(「코케가 운반한다 — **위치를 뒤집는 것**이다」).
+
+### 판별 결과
+| 항목 | 결과 |
+|---|---|
+| (a) 조나단 데이비드 | ⭐⭐ **「진짜 9번 부재」 가설의 답이 맞다 — 근거는 득점이 아니라 구조다.** 최종 라인 고정(avg_x 73.19)으로 팀 박스터치 **49**, 안필드 알바레스 하강형의 **18**과 같은 축의 양 끝. 98분 만에 공격P 3. ⚠️ **서열은 미확정** — 더비(09-20)가 다음 표본. |
+| (b) 알바레스 결장 | **부상**(로테이션 아님). 시메오네 D-1 회견 결장 확정 + EFE 「lesionados」 독립 기재. ⛔ **DB 결손이었다** — 이 회차에 `player_status`에 채웠다(부위 미특정). |
+| (c) 이강인 9.0 | **포지션 변경이 아니라 전진 깊이**다(`pos_class=RM` 5경기 불변, avg_x 48.0→**64.77 시즌 최고**). 메커니즘은 **코케와의 위치 교환**. 🇰🇷 3매체: ATM 이적 후 첫 풀타임·라리가 공식 MVP·WhoScored 9.2. |
+| (d) 4-4-2 복귀 | ⛔ **「백3 = 유럽 원정 한정」 가설 기각** — 09-13 아노에타는 **라리가 원정**인데 백3였다(DB 자체 반증). 시메오네의 선발 원칙(상대별 설계)상 **4-4-2도 「기본형 복귀」가 아니다**. ⚠️ 「원정=백3」는 2:1로 존속. |
+| (e)(f) 루크만·그리말도 | ⭐ **하나의 메커니즘** — 루크만 툴x 20.0은 성향이 아니라 15분에 바에나와 스왑한 뒤의 **폭 고정**이고, 목적은 **그리말도를 인테리오르로 푸는 것**이었다(카르도소가 상대 진영 좌측 풀백을 대신 점유). **obs#806 조건 충족 첫 사례**. |
+| (g) 빅찬스 7개 무산 | 팀 결함으로 지목되지 않는다 — **상대 GK 7세이브**(3소스 수렴)와 바에나·루크만 2인의 정확도로 귀속. 시메오네는 마무리를 언급하지 않았다. |
+
+### ⚠️ DB ↔ 외부 불일치(정정·기록)
+- **라운드**: DB `Round 5` → **`Round 6`으로 정정**(FotMob `matchRound=6` + 외부 전 소스 jornada 6).
+- 점유: DB 61.4(듀얼 비율 컬럼) vs FotMob 68 — 컬럼 정의 차이.
+- 그리말도 `pos_class=LCB`·카르도소 `LM` — ⭐ **오류가 아닐 수 있다**(좌측 4인 회전의 실제 배치를 포착). 역산 대상으로 남긴다.
+- 오사수나 포메이션: DB/WhoScored **5-4-1** ↔ EFE 4-4-2 — 팬 채널이 「백3+윙백」으로 실측 쪽에 수렴해 **EFE 미채택**.
+
+### 소스·0건
+전사 2편(Atlético Stats `b8_ux1y9Msg`·EQUIS Y CETA `j6kt0MTfVtc`, auto-caption) · estoesatleti.es·El Desmarque·Infobae/EFE·madridactual · 🇰🇷 3매체. **0건**: ⛔ **Marca·AS·Relevo·MD 4매체 동시 검색 미도달**(브라우저 경로 재시도 필요) · 시메오네의 **이강인·데이비드·그리말도·루크만 경기 후 평가 0건**(선수 언급은 카르도소·로메로 2인뿐) · El Desmarque 「이강인 9점」 원문 미확보(한국어 재인용 2건만). ⛔ **불변규칙 10 결손 자진신고 — 데이비드의 프랑스어(릴)·이탈리아어(유벤투스) 미검색**.
+
+### 종결
+`match_reports` 45 **complete**. 시즌 4-4-2 정본과 일치하되 「기본형」으로 못 박지 않는다. obs#820~824.

@@ -66,3 +66,31 @@
 ## 9. 데이터 반영과 한계
 - 추가: `matches` · `player_matches` 16행(국면 그리드·stats_json phase 포함) · `team_match_stats` 1행(xg_source=FotMob, PPDA·def_x WhoScored) · `match_reports` 43(draft) · `match_game_setups` 1 · `match_player_prescriptions` 16 · `match_player_reports` 16.
 - 한계: 단일 경기 · **하부 리그 상대** · 시도 수 역산 · 서사 층 미병합(draft).
+
+
+## D+1 서사 병합 (2026-09-17)
+
+### 감독·1차 발언(원문 + 한국어 번역)
+- 에메리(GK 교체): 「Marco felt pain in his back. We decided to change him and hopefully it's not a big injury.」(「마르코가 등에 통증을 느꼈다. 교체하기로 결정했고 큰 부상이 아니길 바란다.」) ⇒ **계획된 컵 분할 출전이 아니라 부상**이다. UTV도 「교체 카드 1장을 GK에 써서 4장만 남았다」고 지적했다.
+- 램파드(코번트리): 「it was too simple, that's on us」(「너무 단순했다, 그건 우리 책임이다」) — 빌라 세트피스 2골을 **자기 팀 마킹 실패**로 귀속.
+- UTV(전사 `COJ71S37huk`, auto-caption): 「the furthest forward on average was actually Mbaye, not Abraham」(「평균적으로 가장 앞에 있었던 건 사실 음바예였지 아브라함이 아니었다」).
+
+### 판별 결과
+| 항목 | 결과 |
+|---|---|
+| (a) 하프타임 GK 교체 | **부상**(비조 등 통증). 비조는 컵 전담이 아니라 백업이고 스즈키가 리그·UCL 1옵션. `player_status`에 반영. |
+| (b) 세트피스 xG 1.44 | **설계 루틴 아님** — 「배급 품질 + 상대 마킹 실패」로 **양 진영 독립 합의**. 40′ 음바예 인스윙 코너 → 바클리 무마크 헤더, 59′ 맥긴 코너 → 바클리 플릭온 → 아브라함. ⇒ FC 팀 세트피스 속성 상향 근거로 쓰지 않는다. |
+| (c) 아브라함 2골 | 낮은 평균 위치는 하강형이 아니라 **러너가 추월한 결과**(음바예 69.05 · 맥긴 61.88 > 아브라함 58.86). 슛 3개 중 2골의 **저볼륨 고효율 박스 피니셔**. |
+| (d) 바클리·고메스 | ⛔ **주앙 고메스는 이 경기도 징계 결장** — obs#787의 「09-16 복귀」 전제가 틀렸다. 「바클리 LDM = 결원」 2경기 연속. 바클리는 65패스·1골 1어시이나 **27′ 실점의 기점 파울이 본인**. |
+| (e) 음바예 | **클럽 첫 선발** — key pass 3·전진운반 93.5m·코너 어시스트, 맥긴과 세트피스 결정권 공유. 평균 툴y 69.05로 팀 최전방. |
+| (f) 잭슨 5.9 | 부진이 아니라 **hp 2 = 접점 부재**. 에메리 언급 0건. |
+| (g) 코번트리 | 9인 로테이션 4-2-3-1, 27~35′만 우위, **빅찬스 0**. |
+
+### 소스·0건
+전사 3편(UTV `COJ71S37huk`·The Villans `j4X7fUHz1Ao`·코번트리 공식 `UJR9vJXQbFk`, 전부 auto-caption) · Read Aston Villa 전술분석 · PA·VAVEL·Sky. **0건·차단**: ⛔ **Tanswell(@J_Tanswell) 0건**(x.com 402 + 검색 인덱스 미반영 — **브라우저 경로 미시도**, 다음 회차 과제) · avfc.co.uk 회견 본문 클라이언트 렌더링으로 추출 불가 · Coventry Telegraph 402 · **스페인어 0건**(카라바오컵 3R은 스페인 매체 미취재로 판단) · 일본어·프랑스어 미시도.
+
+### 미해결 충돌
+보가르드 서사 평점 4~5 ↔ SofaScore 7.4 · 루헤리 평가 · 고메스 징계 적용 범위(리그/컵) · 잭슨 포레스트전 교체 사유 · 하우드-벨리스 「데뷔」 표기.
+
+### 종결
+`match_reports` 43 **complete**. 시즌 정본 변경 없음(컵 로테이션·하부 리그 상대). obs#812~815.
