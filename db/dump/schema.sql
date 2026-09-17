@@ -811,3 +811,17 @@ CREATE TABLE fut_evolution_log(
   source TEXT, confidence TEXT, notes TEXT
 );
 CREATE INDEX ix_fut_evolution_log_cp ON fut_evolution_log(club_player_id, applied_at);
+CREATE TABLE player_card_prices(
+  id INTEGER PRIMARY KEY,
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  ea_item_id INTEGER NOT NULL,          -- player_card_items.ea_item_id
+  player_id INTEGER REFERENCES players(id),
+  price INTEGER,                        -- 코인. NULL = 시세 미형성(hasPrice=0)
+  has_price INTEGER NOT NULL DEFAULT 0,
+  momentum REAL,                        -- fut.gg momentumPercentage (추세)
+  platform TEXT NOT NULL DEFAULT 'console',   -- fut.gg 기본 표시 플랫폼
+  source TEXT, confidence TEXT,
+  pulled TEXT NOT NULL,
+  UNIQUE(game_version, ea_item_id, platform, pulled)
+);
+CREATE INDEX ix_player_card_prices_item ON player_card_prices(game_version, ea_item_id, pulled);

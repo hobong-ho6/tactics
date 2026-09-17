@@ -108,7 +108,8 @@ def export_all(db_path=None, window="2026-summer"):
     cards = {}
     for r in _rows(con, """SELECT player_id, game_version, ea_item_id, is_base, rarity_name, released_at,
                                   ovr, pac, sho, pas, dri, def, phy, positions, best_pos, playstyles,
-                                  skill_moves, weak_foot, accelerate, card_image_url, futgg_url
+                                  skill_moves, weak_foot, accelerate, card_image_url, futgg_url,
+                                  roles_plus, roles_plus_plus, ea_item_id AS item_id
                            FROM player_card_items WHERE player_id IS NOT NULL
                            ORDER BY player_id, game_version DESC, ovr DESC, released_at DESC"""):
         cards.setdefault(str(r.pop("player_id")), []).append(r)
@@ -147,8 +148,12 @@ def export_all(db_path=None, window="2026-summer"):
     log = _rows(con, """SELECT id, club_player_id, evo_id, evo_name, level, applied_at, completed_at, ovr_before, ovr_after,
                                six_before, six_after, attrs_delta, playstyles_after, roles_plus_after, roles_plus_plus_after, notes
                         FROM fut_evolution_log ORDER BY applied_at, id""")
+    # 시세 — 최신 pulled만(ea_item_id 키). NULL은 「미형성」이며 화면이 그렇게 쓴다(migration 037)
+    prices = {str(r.pop("ea_item_id")): r for r in _rows(con, """SELECT ea_item_id, price, has_price, momentum, platform, pulled
+                                                              FROM player_card_prices
+                                                              WHERE pulled=(SELECT MAX(pulled) FROM player_card_prices)""")}
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
-                          {"paths": evos, "role_map": rolemap, "catalog": catalog,
+                          {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices,
                            "club": {"accounts": accounts, "players": club, "log": log}}))
 
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──
