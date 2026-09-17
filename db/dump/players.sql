@@ -100,7 +100,7 @@ INSERT INTO players VALUES(104,'Teddy Sharman-Lowe','샤먼로우',1009762,NULL,
 INSERT INTO players VALUES(105,'Liam Delap','델랍',997087,NULL,2003,'ST','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=997087 부여(프리시즌 전수 수집).',1113903,'England',8868,NULL);
 INSERT INTO players VALUES(106,'Reggie Watson','레지 왓슨',2045421,NULL,2010,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=2045421 부여(프리시즌 전수 수집).',1837929,'England',NULL,NULL);
 INSERT INTO players VALUES(107,'Gaga Slonina','슬로니나',978787,NULL,2004,'GK','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=978787 부여(프리시즌 전수 수집). | [2026-09-10] fut.gg 카드 표기는 ''Gabriel Slonina'' — 우리 정본 ''Gaga Slonina''와 동일인(수동 매칭, player_game_stats FC27 2026-09-10행).',1031220,'USA',NULL,NULL);
-INSERT INTO players VALUES(108,'Joseph Gomez',NULL,NULL,NULL,1997,'CB','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',568571,'England',NULL,NULL);
+INSERT INTO players VALUES(108,'Joseph Gomez','조 고메스',318927,NULL,1997,'CB','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',568571,'England',NULL,NULL);
 INSERT INTO players VALUES(109,'Mor Talla Ndiaye',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음',1933860,NULL,NULL,NULL);
 INSERT INTO players VALUES(111,'James McConnell','맥코넬',1138428,NULL,2004,'DM','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1138428 부여(프리시즌 전수 수집).',1231075,'England',NULL,NULL);
 INSERT INTO players VALUES(112,'Kieran Morrison','모리슨',1462781,NULL,2006,'RW','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15 수집) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=1462781 부여(프리시즌 전수 수집).',1439550,'Northern Ireland',NULL,NULL);
