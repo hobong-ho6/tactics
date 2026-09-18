@@ -101,3 +101,89 @@ xG: 우리 DB(FotMob) 1.85:2.24 / SofaScore·TIA 1.53:2.30 / EFE 1.53:2.34 — �
 
 ### 종결
 `match_reports` 44 **complete**. 시즌 정본 변경 없음. obs#816~819.
+
+
+## D+3 추적 (2026-09-18)
+
+D+2 이월 3건(실측 시간분해 · 맥코넬 위치 충돌 · 세트피스 구조 교차검증)과 차단 재시도·미수행 언어를 닫았다.
+새 원천: **WhoScored matchCentreData(matchId 2027825, Opta 이벤트 1553)** 직접 수신 + `match_shots` 29행(FotMob shotmap) + 전사 2편.
+
+### ⭐⭐ 당일 판정 정정 — 「62′ 교체 후 통제 상실」은 오픈플레이 실측이 지지하지 않는다
+
+토트넘 총 xG 2.24를 **기원 × 시간**으로 분해했다(FotMob `situation` + WhoScored 이벤트).
+
+| 구간 | 상대 슛 | 오픈플레이 xG | 세트피스 xG |
+|---|---|---|---|
+| ① 0~61′ (교체 전) | 8 | **0.791** | 0.055 |
+| ② 62~68′ (교체 직후·실점 전) | 2 | 0.119 | 0.000 |
+| ③ 69′~ (실점 후) | 7 | **0.146** | **1.129** |
+
+- **세트플레이 xG 1.18의 96%(1.129)가 69′ 실점 이후**에 나왔다. 「후반 xG 1.52」는 하프 단위 집계가 만든 착시이고 실체는 세트피스다.
+- 교체 이후 33분간 상대 **오픈플레이** xG는 0.265(분당 0.0080)로 교체 이전 62분(0.791 · 분당 0.0128)보다 **오히려 낮다**.
+- 구간별 리버풀 PPDA / def_x: 0~21′ 8.11/35.3 · 21~54′ 9.80/51.4 · 54~62′ 14.33/39.7(⚠️표본 3) · **62~69′ 2.57/46.5(경기 최고 압박)** · 69′~ 12.00/34.2.
+- 토트넘의 리버풀 최종서드 터치: 62~69′ 2.0/분 → 69′~ **3.3/분**. 코너 9개 중 3개가 0~61′, **6개가 62′ 이후이고 그중 5개가 69′ 이후**(77·77·84·85·92′).
+
+⇒ 블록이 내려앉은 시점은 **교체(62′)가 아니라 실점(69′)**이다. D+2 절은 수정하지 않고 이 절에 정정을 남긴다(불변규칙 2). → **obs#833**
+
+### 빅찬스 4개 분해 (D+2 이월 종결)
+
+| # | 시각 | 선수 | 기원 | 결과 | xG |
+|---|---|---|---|---|---|
+| 1 | 10′ | 베리발 | 오픈플레이 | 세이브 | 0.223 |
+| 2 | 31′ | 쿠두스 | **패스트브레이크** | 실축 | 0.407 |
+| 3 | 68′ | 갤러거 | **코너** | **득점** | 0.870 |
+| 4 | 88′ | 사비뉴 | **패스트브레이크** | 실축 | 0.146 |
+
+**4개 중 지속 빌드업으로 블록을 깬 것은 1개뿐**이고 2개는 전환, 1개는 세트피스다. 리버풀 빅찬스 2개(15′ 쿠마스·82′ 소보슬라이)는 모두 오픈플레이.
+⇒ 이 경기 **설정된 블록 자체는 뚫리지 않았다** — 실점 경로는 세트피스와 전환이다. → **obs#834**
+
+### ⭐ 맥코넬 위치 충돌 해소 (D+2 미해결분 종결)
+
+명목 10번 ↔ 실측 우측 편향은 **모순이 아니라 라벨과 기능의 차이**였다.
+
+- WhoScored 라인업 포지션 **AMC**. 같은 경기 이벤트 38개 평균 y **24.3**, **27/38(71%)이 우측 1/3**(y<33.3), 좌측 1/3은 1개. SofaScore avg_y 25.0을 **다른 제공사가 재현**했다.
+- 본인 발언(liverpoolfc.com): 「The press is really simple in that position, you've just got to go, and on the ball I like receiving it in the pockets and driving.」(「그 자리에서 압박은 아주 단순하다 — 그냥 가면 된다. 볼을 갖고는 포켓에서 받아 몰고 나가는 걸 좋아한다.」) · 「I like playing there, that's where I came up when I was younger.」(「그 자리에서 뛰는 게 좋다 — 어릴 때 거기서 자랐다.」)
+- 클럽 공식: 「a more advanced role than he has done previously in the senior team」(「1군에서 종전보다 더 전진한 역할」).
+
+⇒ 기능은 **우측 하프스페이스 포켓 수신 + 전진 드리블 + 단순 전방 압박**. 현 처방 `cam_halfwinger/Balanced`(fit 0.559, 무결정 Δ0.042)와 방향이 일치하므로 **처방 변경 없음**. → **obs#835**
+
+### 세트피스 수비 축 교차검증 — 「구조 지목 0건」 유지, 「수치 언급 0건」 해제
+
+D+2에 0건이던 유튜브 전술 분석을 이번 주 필터(`sp=EgIIAw%3D%3D`)로 재훑어 **2편 확보**했다(둘 다 TM Talks Ball).
+
+- `4Zly8FIdpr4`(09-17, 토트넘 관점): 「shots inside the box expected goals **xG set play** every single statistic which suggests the team should win Tottenham Hotspur were better」(「박스 안 슈팅, 기대득점, **세트플레이 xG** — 승리했어야 한다고 말하는 모든 지표에서 토트넘이 더 나았다」, auto-caption). 세트플레이 xG를 **수치로 언급한 첫 매체**이지만 **리버풀 수비 구조로 진단하지는 않는다**.
+- `gaZwLEsP4wY`(09-15, 리버풀 관점): 세트피스를 전혀 다루지 않는다. 대신 선제골 구조를 프레임 단위로 분해하고 리버풀 압박 인원을 센다.
+
+⚠️ **D+2의 「유튜브 전술분석 0건」은 게시 지연이 아니라 우리 검색 커버리지 실패였다** — 2편 중 1편은 **경기 당일 게시분**이다.
+⚠️ 배경 자료(Opta Analyst·Sky Sports 세트피스 분석, 캐러거 존 마킹 귀책론, 판 다이크 「second phase가 killer」)는 전부 **25/26 슬롯 체제**라 이라올라 체제 결론으로 쓸 수 없다(불변규칙 7·발행일 검증). → **obs#836**
+
+### 차단 재시도 — 403/402는 사이트 차단이 아니었다
+
+브라우저 경로(mcp__Claude_Browser__)로 재시도하자 **두 도메인 모두 전문 정상 수신**됐다. D+2의 「This Is Anfield 403×4 · liverpool.com 402」는 `WebFetch` 경로의 한계였다.
+
+- This Is Anfield 「5 talking points as Nyoni makes his case」(James Nalton, 09-15) 전문 확보.
+- liverpool.com 「Trey Nyoni agreement reached」(James Findlater, 09-15 19:37 — **킥오프 전**) 전문 확보. 레드냅: 「[Gravenberch] vacates the position because he's got such great energy… sometimes I think he gets a bit bored playing in the six.」(「그라벤베르흐는 에너지가 워낙 좋아 그 자리를 비운다… 6번에서 가끔 지루해하는 것 같다.」) — obs#644의 귀책을 맥 알리스터가 아니라 **그라벤베르흐**에게 돌리는 외부 서술로, obs#817의 「짝 선택의 함수」 가설과 같은 방향. ⚠️ 경기 전 코멘트라 이 경기 표본은 아니다. → **obs#837**
+
+### 상대 관점 · 압박 축 재확인
+
+`4Zly8FIdpr4`: 「look how many Liverpool players commit to the press. 1 2 3 4 5 6」(「리버풀이 압박에 몇 명을 투입하는지 보라. 1 2 3 4 5 6」, auto-caption) — obs#818의 「트리거 시 전면 맨투맨」을 **상대 관점에서 재확인**. 데 제르비 설계는 갤러거·벤탄쿠르가 최종 라인까지 내려와 리버풀을 유인하고 그 뒤 공간을 여는 미끼 구조라고 서술한다.
+`gaZwLEsP4wY`: 선제골 구조 — 「you've essentially got four players out of the game with one long ball」(「롱볼 하나로 사실상 네 명이 경기에서 빠진다」) · 벤탄쿠르의 고압박 복귀를 「It's a structural issue here」(「여기서는 구조적 문제다」)라고 상대 구조 문제로 지목.
+
+### 미수행 언어 축 — 결과
+
+| 언어 | 검색어 | 결과 |
+|---|---|---|
+| **바스크어**(이라올라) | `Iraola Liverpool Tottenham Carabao Cup analisia Bournemouth entrenatzailea taktika` | **0건** — 바스크어 1차 매체의 이 경기 전술 서술 없음. 결과는 전부 영어·스페인어 재번역이었다. |
+| **이탈리아어**(데 제르비) | `De Zerbi Tottenham Liverpool Coppa di Lega analisi tattica Anfield 3-1 settembre 2026` | **1건 채택** — 「Gli Spurs hanno avuto molto possesso ma hanno faticato a superare il pressing energico del Liverpool — un problema strutturale per una squadra costruita sul palleggio dezerbiano」(「스퍼스는 점유를 많이 했지만 리버풀의 강도 높은 압박을 넘어서지 못했다 — 데 제르비식 팔레지오로 지은 팀에게는 구조적 문제다」, ANSA·il Fatto Quotidiano 계열 09-16). **obs#818을 상대국 매체가 지지**. |
+| **헝가리어**(소보슬라이·케르케즈) | `Szoboszlai Kerkez Liverpool Tottenham Ligakupa 3-1 Anfield gól elemzés taktika` | **전술 구조 0건** — Nemzeti Sport·Index.hu 원문을 직접 확인했으나 둘 다 골 서술·평점 중심이고 수비 구조·압박 서술이 없다. Index.hu는 실점을 **마마르다슈빌리 위치 선정 오류**로 귀속해 obs#816의 「전원 개인 실책 귀속」 패턴을 헝가리어권에서도 재확인했다. |
+
+### 0건·미확보
+
+- **전사 실패 1편**: `MQDaSTPobpo`(All Red Liverpool 「What we learned…」, 09-16, 챕터 13 — 「James McConnell Did Exactly What Was Asked」·「The Double Pivot We Finally Got To See」 포함). yt-dlp 자막 차단, json3 폴백은 timedtext URL이 필요해 미수행. **다음 회차 우선 대상**.
+- 전술 블로그(TFA·BTL·Spielverlagerung·Coaches' Voice)의 **이 경기 전용 글은 여전히 0건**.
+- 이라올라의 세트피스 수비 언급 **0건**(회견 전사·기사 재확인).
+
+### 종결
+
+`match_reports` 44 **complete** 유지. 시즌 정본·처방·팀 설정 **변경 없음**. 신규 obs#833~837 · 영상 요약 2편(`gaZwLEsP4wY`·`4Zly8FIdpr4`) + impl_claims 2행(`axis=none`).
+**3일 추적 종료** — D+1·D+2·D+3 모두 수행 완료.
