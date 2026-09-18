@@ -81,14 +81,14 @@
 <div id="duty"></div></div>
 </section>
 <script type="module">
-import { mountHeader, loadTeam, loadGameStats, slotCandidates, sofifaLink, isGkSlot, gkPosCell } from './assets/data.js?v=20260816-gk-avgpos';
+import { mountHeader, loadTeam, loadGameStats, loadKernels, slotCandidates, sofifaLink, isGkSlot, gkPosCell } from './assets/data.js?v=20260918-evo';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
 import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
 import { prose } from './assets/prose.js';
 import { PLAYSTYLES } from './assets/playstyle-icons.js';
 import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20260913-stat-tips';
 const { team, idx } = await mountHeader('player.html');
-const [td, GS, GS27, HIST, CARDS, EVO] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history'), loadGameStats('cards'), loadGameStats('evolutions').catch(()=>({paths:{},role_map:[]}))]);
+const [td, GS, GS27, HIST, CARDS, EVO, K26] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history'), loadGameStats('cards'), loadGameStats('evolutions').catch(()=>({paths:{},role_map:[]})), loadKernels('FC26').catch(()=>({roles:[]}))]);
 /* 백분위·유사프로필 모집단 = 활성 regime 전체. ⛔ 팀 코드를 하드코딩하지 않는다 —
    2026-08-20 ATM 편입 때 이 배열이 ['AVL','CHE','LIV']로 남아 ATM 선수가 모집단에서 통째로 빠졌다.
    index.json의 regimes가 SSOT이고 `end IS NULL`이 활성 조건이다(DB 뷰와 같은 규약). */
@@ -498,17 +498,31 @@ function renderCard(sel, g0, g26, g27, isGkRow){
   const chips = styles.length
     ? styles.map(pschip).join('')
     : '<span class="dim">보유 PlayStyle 없음</span>';
-  const img = gg.card_image_url
-    ? `<img src="${esc(gg.card_image_url)}" alt="${esc(sel.name)} ${g27 ? 'FC27' : 'FC26'} 카드" class="futcard-img" loading="lazy">`
+  /* ⭐ 대표 카드 (2026-09-18, 사용자 지시 「카드가 여러 개면 다 보여주고 그 중 대표 카드를 고를 수 있게」).
+     기본값: 내 구단 보유 카드 → 기본 카드. 선택은 브라우저(localStorage)에 남는다 — DB 사실이 아니라 보기 설정이다. */
+  const cards = (sel.pid != null ? (CARDS[String(sel.pid)] || []) : []).filter(c => c.game_version === 'FC27');
+  const repKey = `repcard:${sel.pid}`;
+  const ownedItem = (EVO.club?.players || []).find(p => p.player_id === sel.pid && p.status === 'owned')?.ea_item_id;
+  const rep = cards.find(c => String(c.item_id) === localStorage.getItem(repKey)) || cards.find(c => c.item_id === ownedItem) || cards.find(c => c.is_base) || null;
+  const disp = rep ? { ...gg, ovr: rep.ovr, pac: rep.pac, sho: rep.sho, pas: rep.pas, dri: rep.dri, def: rep.def, phy: rep.phy,
+                       best_pos: rep.best_pos, positions: rep.positions, playstyles: rep.playstyles, card_image_url: rep.card_image_url,
+                       roster_date: rep.released_at, _label: rep.is_base ? '기본 카드' : (rep.rarity_name || '특별 카드') } : gg;
+  const stylesR = String(disp.playstyles ?? '').split(/[;,]/).map(s=>s.trim()).filter(Boolean);
+  const chipsR = stylesR.length ? stylesR.map(pschip).join('') : '<span class="dim">보유 PlayStyle 없음</span>';
+  const strip = cards.length > 1 ? `<div class="kv" style="margin-top:8px;gap:8px"><small class="dim">카드 ${cards.length}장 — 대표 카드 선택:</small>${cards.map(c =>
+      `<button class="cardpick${c === rep ? ' on' : ''}" data-item="${c.item_id}" title="${esc(c.is_base ? '기본' : c.rarity_name || '특별')} · ${esc(c.released_at || '')}">
+         ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="">` : ''}<span>${c.ovr} <small>${esc(c.is_base ? '기본' : c.rarity_name || '특별')}</small>${c.item_id === ownedItem ? ' ★' : ''}</span></button>`).join('')}</div>` : '';
+  const img = disp.card_image_url
+    ? `<img src="${esc(disp.card_image_url)}" alt="${esc(sel.name)} ${g27 ? 'FC27' : 'FC26'} 카드" class="futcard-img" loading="lazy">`
     : '';
   el.innerHTML = `
     <div class="pscard">
       ${img}
       <div class="gcard">
-        <div class="gc-ovr" style="color:${tier(gg.ovr)}">${gg.ovr ?? '—'}</div>
-        <div class="gc-pos">${esc(gg.best_pos ?? gg.positions ?? '')}</div>
-        <div class="gc-six">${SIX.map(([k,L]) => `<span><em>${statTip(L)}</em>${gg[k] ?? '—'}</span>`).join('')}</div>
-        <div class="gc-ver dim">${g27 ? 'FC27' : 'FC26'}<br><small>${esc(gg.roster_date ?? '')}</small></div>
+        <div class="gc-ovr" style="color:${tier(disp.ovr)}">${disp.ovr ?? '—'}</div>
+        <div class="gc-pos">${esc(disp.best_pos ?? disp.positions ?? '')}</div>
+        <div class="gc-six">${SIX.map(([k,L]) => `<span><em>${statTip(L)}</em>${disp[k] ?? '—'}</span>`).join('')}</div>
+        <div class="gc-ver dim">${rep ? esc(disp._label) : (g27 ? 'FC27' : 'FC26')}<br><small>${esc(disp.roster_date ?? '')}</small></div>
       </div>
       <div style="flex:1;min-width:240px">
         <div class="kv bioline">
@@ -521,9 +535,11 @@ function renderCard(sel, g0, g26, g27, isGkRow){
         </div>
         <div class="kv" style="margin-bottom:3px;font-size:12px"><b>PlayStyles</b>
           <small class="dim">— ${g27 ? 'FC27 · fut.gg EA 공식' : 'FC26'}</small></div>
-        <div class="pschips">${chips}</div>
+        <div class="pschips">${rep ? chipsR : chips}</div>
+        ${strip}
       </div>
     </div>`;
+  el.querySelectorAll('button.cardpick').forEach(b => b.addEventListener('click', () => { localStorage.setItem(repKey, b.dataset.item); render(); }));
 }
 /* ── 버전별 변화 (FC25 출시 → FC26 출시 → FC26 시즌말 라이브 → FC27 출시) ──
    history.json은 player_id 키. 같은 버전·같은 kind에 로스터가 여럿이면 최신 roster_date 하나만 보인다
@@ -650,13 +666,20 @@ function renderEvo(sel){
   const decode = (json, kind) => { let ids = []; try { ids = JSON.parse(json || '[]'); } catch(e){}
     return ids.map(i => byId[`${kind}:${i}`]).filter(Boolean); };
   const matches = r => want && (evoNorm(r.name) === want) && (!wantPos || wantPos.includes(r.position_name));
+  // 역할 가중 점수 = Σ(game_role_key_attrs 가중 × 속성 Δ) — evolutions.html과 같은 규칙(2026-09-18)
+  const KW = {}; for (const k of K26.role_key_attrs || []) (KW[k.role_id] ??= {})[k.attr] = k.weight;
+  const w = pres && KW[pres.role_id];
+  const rscore = r => { let up = {}; try { up = JSON.parse(r.upgrades || '{}'); } catch(e){}
+    const parts = w ? Object.entries(up).filter(([a, d]) => w[a] && d).map(([a, d]) => ({ a, d, s: w[a] * d })).sort((x, y) => y.s - x.s) : [];
+    return { score: parts.reduce((t, x) => t + x.s, 0), top: parts.slice(0, 3) }; };
   const scored = rows.map(r => {
     const pp = decode(r.roles_plus_plus_after, 'plusplus'), pl = decode(r.roles_plus_after, 'plus');
     const tier = pp.some(matches) ? 2 : pl.some(matches) ? 1 : 0;
     const cost = (r.coins_cost || 0) + (r.points_cost || 0) * 1000;   // 포인트는 유료 재화 — 코인보다 비싸게 친다
-    return { ...r, pp, pl, tier, cost, d: (r.ovr_after ?? 0) - (r.ovr_before ?? 0) };
+    const rs = rscore(r);
+    return { ...r, pp, pl, tier, cost, rs, score: rs.score, d: (r.ovr_after ?? 0) - (r.ovr_before ?? 0) };
   }).filter(r => !r.is_expired)
-    .sort((a,b) => b.tier - a.tier || b.d - a.d || a.cost - b.cost || a.steps - b.steps);
+    .sort((a,b) => b.tier - a.tier || b.score - a.score || b.d - a.d || a.cost - b.cost || a.steps - b.steps);
   if (!scored.length){ el.innerHTML = '<span class="dim">유효 경로 없음 — 수집된 경로가 모두 만료됐다.</span>'; return; }
   const best = scored[0];
   const six = j => { try { return JSON.parse(j || '{}'); } catch(e){ return {}; } };
@@ -674,6 +697,7 @@ function renderEvo(sel){
       <span class="chip">${r.steps}단계</span>
       ${r.d ? `<span class="chip" style="border-color:var(--ok);color:var(--ok)">OVR ${r.ovr_before}→${r.ovr_after} (+${r.d})</span>`
             : `<span class="chip dim">OVR ${r.ovr_after ?? '—'} 유지</span>`}
+      ${w ? `<span class="chip"${r.score > 0 ? ' style="border-color:var(--ok);color:var(--ok)"' : ' dim'}>역할 가중 ${r.score > 0 ? '+' : ''}${r.score}${r.rs.top.length ? ` <small>(${esc(r.rs.top.map(x => `${x.a} +${x.d}`).join(' · '))})</small>` : ''}</span>` : ''}
       <small class="dim">${esc(cost(r))}</small></div>
     ${dSix(r) ? `<div style="font-size:12px;margin-top:4px">${esc(dSix(r))}</div>` : ''}
     ${r.upgrades ? `<div class="dim" style="font-size:12px">${esc(Object.entries(JSON.parse(r.upgrades)).map(([k, v]) => `${k} +${v}`).join(' · '))}</div>` : ''}
@@ -746,7 +770,12 @@ function render(){
   // game_stats는 sofifa 표시명(짧은 라벨)으로 키가 잡혀 있어 players.name_kr와 어긋날 수 있다
   // (스즈키 지온↔스즈키 · 주앙 고메스↔고메스). 영입 후보는 transfer_targets.short_label로 한 번 더 찾는다.
   const gsKey = [key, n, sel.tt?.short_label].find(k => k && GS[k]) ?? key;
-  document.getElementById('sf').innerHTML = sofifaLink(gsKey, GS, sel.en);
+  // ⭐ 게임 스탯 외부 링크는 FC27(fut.gg)이 1차다(사용자 지시 2026-09-18) — FC26 sofifa는 보조.
+  const baseCard = (sel.pid != null && (CARDS[String(sel.pid)] || []).find(c => c.is_base)) || null;
+  document.getElementById('sf').innerHTML = (baseCard?.futgg_url
+      ? `<a href="https://www.fut.gg${esc(baseCard.futgg_url)}" target="_blank" rel="noopener" title="fut.gg에서 FC27 카드 보기">FC27↗</a> · `
+      : `<a href="https://www.fut.gg/players/?name=${encodeURIComponent(sel.en || sel.name)}" target="_blank" rel="noopener" title="fut.gg FC27 검색">FC27↗</a> · `)
+    + sofifaLink(gsKey, GS, sel.en).replace('FC26↗', '<small>FC26↗</small>');
   const g0 = GS[gsKey];
   if (sel.tt){   // 영입 추적 — transfer_targets 데이터로 렌더
     const t = sel.tt;

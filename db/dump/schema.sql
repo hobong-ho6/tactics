@@ -825,3 +825,13 @@ CREATE TABLE player_card_prices(
   UNIQUE(game_version, ea_item_id, platform, pulled)
 );
 CREATE INDEX ix_player_card_prices_item ON player_card_prices(game_version, ea_item_id, pulled);
+CREATE TABLE game_role_key_attrs(
+  id INTEGER PRIMARY KEY,
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  role_id TEXT NOT NULL,
+  attr TEXT NOT NULL,
+  weight INTEGER NOT NULL CHECK(weight BETWEEN 1 AND 3),
+  source TEXT NOT NULL DEFAULT 'docs/20·22 역할 설명 기반 판단 (2026-09-18)',
+  confidence TEXT NOT NULL DEFAULT 'MEDIUM — EA 미공개, 역할 서술에서 판단한 가중',
+  UNIQUE(game_version, role_id, attr)
+);

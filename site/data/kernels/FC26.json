@@ -937,6 +937,1443 @@
   }
  ],
  "game_version": "FC26",
+ "role_key_attrs": [
+  {
+   "attr": "시야",
+   "role_id": "cam_classic10",
+   "weight": 3
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "cam_classic10",
+   "weight": 3
+  },
+  {
+   "attr": "결정력",
+   "role_id": "cam_classic10",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "cam_classic10",
+   "weight": 2
+  },
+  {
+   "attr": "침착",
+   "role_id": "cam_classic10",
+   "weight": 2
+  },
+  {
+   "attr": "드리블",
+   "role_id": "cam_classic10",
+   "weight": 1
+  },
+  {
+   "attr": "반응력",
+   "role_id": "cam_classic10",
+   "weight": 1
+  },
+  {
+   "attr": "중거리슛",
+   "role_id": "cam_classic10",
+   "weight": 1
+  },
+  {
+   "attr": "드리블",
+   "role_id": "cam_halfwinger",
+   "weight": 3
+  },
+  {
+   "attr": "가속",
+   "role_id": "cam_halfwinger",
+   "weight": 2
+  },
+  {
+   "attr": "결정력",
+   "role_id": "cam_halfwinger",
+   "weight": 2
+  },
+  {
+   "attr": "민첩성",
+   "role_id": "cam_halfwinger",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "cam_halfwinger",
+   "weight": 2
+  },
+  {
+   "attr": "시야",
+   "role_id": "cam_halfwinger",
+   "weight": 1
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "cam_halfwinger",
+   "weight": 1
+  },
+  {
+   "attr": "커브",
+   "role_id": "cam_halfwinger",
+   "weight": 1
+  },
+  {
+   "attr": "시야",
+   "role_id": "cam_playmaker",
+   "weight": 3
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "cam_playmaker",
+   "weight": 3
+  },
+  {
+   "attr": "드리블",
+   "role_id": "cam_playmaker",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "cam_playmaker",
+   "weight": 2
+  },
+  {
+   "attr": "침착",
+   "role_id": "cam_playmaker",
+   "weight": 2
+  },
+  {
+   "attr": "긴 패스",
+   "role_id": "cam_playmaker",
+   "weight": 1
+  },
+  {
+   "attr": "민첩성",
+   "role_id": "cam_playmaker",
+   "weight": 1
+  },
+  {
+   "attr": "커브",
+   "role_id": "cam_playmaker",
+   "weight": 1
+  },
+  {
+   "attr": "결정력",
+   "role_id": "cam_shadow",
+   "weight": 3
+  },
+  {
+   "attr": "공격 위치 선정",
+   "role_id": "cam_shadow",
+   "weight": 3
+  },
+  {
+   "attr": "가속",
+   "role_id": "cam_shadow",
+   "weight": 2
+  },
+  {
+   "attr": "질주 속도",
+   "role_id": "cam_shadow",
+   "weight": 2
+  },
+  {
+   "attr": "침착",
+   "role_id": "cam_shadow",
+   "weight": 2
+  },
+  {
+   "attr": "반응력",
+   "role_id": "cam_shadow",
+   "weight": 1
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "cam_shadow",
+   "weight": 1
+  },
+  {
+   "attr": "슈팅력",
+   "role_id": "cam_shadow",
+   "weight": 1
+  },
+  {
+   "attr": "긴 패스",
+   "role_id": "cb_bpd",
+   "weight": 3
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "cb_bpd",
+   "weight": 3
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "cb_bpd",
+   "weight": 3
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "cb_bpd",
+   "weight": 2
+  },
+  {
+   "attr": "시야",
+   "role_id": "cb_bpd",
+   "weight": 2
+  },
+  {
+   "attr": "차단력",
+   "role_id": "cb_bpd",
+   "weight": 2
+  },
+  {
+   "attr": "침착",
+   "role_id": "cb_bpd",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "cb_bpd",
+   "weight": 1
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "cb_defender",
+   "weight": 3
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "cb_defender",
+   "weight": 3
+  },
+  {
+   "attr": "차단력",
+   "role_id": "cb_defender",
+   "weight": 3
+  },
+  {
+   "attr": "점프",
+   "role_id": "cb_defender",
+   "weight": 2
+  },
+  {
+   "attr": "헤딩 정확도",
+   "role_id": "cb_defender",
+   "weight": 2
+  },
+  {
+   "attr": "힘",
+   "role_id": "cb_defender",
+   "weight": 2
+  },
+  {
+   "attr": "반응력",
+   "role_id": "cb_defender",
+   "weight": 1
+  },
+  {
+   "attr": "슬라이딩 태클",
+   "role_id": "cb_defender",
+   "weight": 1
+  },
+  {
+   "attr": "공격성",
+   "role_id": "cb_stopper",
+   "weight": 3
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "cb_stopper",
+   "weight": 3
+  },
+  {
+   "attr": "힘",
+   "role_id": "cb_stopper",
+   "weight": 3
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "cb_stopper",
+   "weight": 2
+  },
+  {
+   "attr": "차단력",
+   "role_id": "cb_stopper",
+   "weight": 2
+  },
+  {
+   "attr": "헤딩 정확도",
+   "role_id": "cb_stopper",
+   "weight": 2
+  },
+  {
+   "attr": "가속",
+   "role_id": "cb_stopper",
+   "weight": 1
+  },
+  {
+   "attr": "슬라이딩 태클",
+   "role_id": "cb_stopper",
+   "weight": 1
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "cb_wideback",
+   "weight": 3
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "cb_wideback",
+   "weight": 3
+  },
+  {
+   "attr": "가속",
+   "role_id": "cb_wideback",
+   "weight": 2
+  },
+  {
+   "attr": "질주 속도",
+   "role_id": "cb_wideback",
+   "weight": 2
+  },
+  {
+   "attr": "차단력",
+   "role_id": "cb_wideback",
+   "weight": 2
+  },
+  {
+   "attr": "체력",
+   "role_id": "cb_wideback",
+   "weight": 2
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "cb_wideback",
+   "weight": 1
+  },
+  {
+   "attr": "크로스",
+   "role_id": "cb_wideback",
+   "weight": 1
+  },
+  {
+   "attr": "체력",
+   "role_id": "cm_b2b",
+   "weight": 3
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "cm_b2b",
+   "weight": 2
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "cm_b2b",
+   "weight": 2
+  },
+  {
+   "attr": "차단력",
+   "role_id": "cm_b2b",
+   "weight": 2
+  },
+  {
+   "attr": "힘",
+   "role_id": "cm_b2b",
+   "weight": 2
+  },
+  {
+   "attr": "결정력",
+   "role_id": "cm_b2b",
+   "weight": 1
+  },
+  {
+   "attr": "공격 위치 선정",
+   "role_id": "cm_b2b",
+   "weight": 1
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "cm_b2b",
+   "weight": 1
+  },
+  {
+   "attr": "중거리슛",
+   "role_id": "cm_b2b",
+   "weight": 1
+  },
+  {
+   "attr": "긴 패스",
+   "role_id": "cm_dlp",
+   "weight": 3
+  },
+  {
+   "attr": "시야",
+   "role_id": "cm_dlp",
+   "weight": 3
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "cm_dlp",
+   "weight": 3
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "cm_dlp",
+   "weight": 2
+  },
+  {
+   "attr": "침착",
+   "role_id": "cm_dlp",
+   "weight": 2
+  },
+  {
+   "attr": "반응력",
+   "role_id": "cm_dlp",
+   "weight": 1
+  },
+  {
+   "attr": "차단력",
+   "role_id": "cm_dlp",
+   "weight": 1
+  },
+  {
+   "attr": "드리블",
+   "role_id": "cm_halfwinger",
+   "weight": 3
+  },
+  {
+   "attr": "가속",
+   "role_id": "cm_halfwinger",
+   "weight": 2
+  },
+  {
+   "attr": "민첩성",
+   "role_id": "cm_halfwinger",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "cm_halfwinger",
+   "weight": 2
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "cm_halfwinger",
+   "weight": 2
+  },
+  {
+   "attr": "결정력",
+   "role_id": "cm_halfwinger",
+   "weight": 1
+  },
+  {
+   "attr": "시야",
+   "role_id": "cm_halfwinger",
+   "weight": 1
+  },
+  {
+   "attr": "체력",
+   "role_id": "cm_halfwinger",
+   "weight": 1
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "cm_holding",
+   "weight": 3
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "cm_holding",
+   "weight": 3
+  },
+  {
+   "attr": "차단력",
+   "role_id": "cm_holding",
+   "weight": 3
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "cm_holding",
+   "weight": 2
+  },
+  {
+   "attr": "체력",
+   "role_id": "cm_holding",
+   "weight": 2
+  },
+  {
+   "attr": "힘",
+   "role_id": "cm_holding",
+   "weight": 1
+  },
+  {
+   "attr": "시야",
+   "role_id": "cm_playmaker",
+   "weight": 3
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "cm_playmaker",
+   "weight": 3
+  },
+  {
+   "attr": "드리블",
+   "role_id": "cm_playmaker",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "cm_playmaker",
+   "weight": 2
+  },
+  {
+   "attr": "침착",
+   "role_id": "cm_playmaker",
+   "weight": 2
+  },
+  {
+   "attr": "긴 패스",
+   "role_id": "cm_playmaker",
+   "weight": 1
+  },
+  {
+   "attr": "민첩성",
+   "role_id": "cm_playmaker",
+   "weight": 1
+  },
+  {
+   "attr": "중거리슛",
+   "role_id": "cm_playmaker",
+   "weight": 1
+  },
+  {
+   "attr": "체력",
+   "role_id": "dm_boxcrasher",
+   "weight": 3
+  },
+  {
+   "attr": "결정력",
+   "role_id": "dm_boxcrasher",
+   "weight": 2
+  },
+  {
+   "attr": "공격 위치 선정",
+   "role_id": "dm_boxcrasher",
+   "weight": 2
+  },
+  {
+   "attr": "중거리슛",
+   "role_id": "dm_boxcrasher",
+   "weight": 2
+  },
+  {
+   "attr": "힘",
+   "role_id": "dm_boxcrasher",
+   "weight": 2
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "dm_boxcrasher",
+   "weight": 1
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "dm_boxcrasher",
+   "weight": 1
+  },
+  {
+   "attr": "차단력",
+   "role_id": "dm_boxcrasher",
+   "weight": 1
+  },
+  {
+   "attr": "헤딩 정확도",
+   "role_id": "dm_boxcrasher",
+   "weight": 1
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "dm_centrehalf",
+   "weight": 3
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "dm_centrehalf",
+   "weight": 3
+  },
+  {
+   "attr": "차단력",
+   "role_id": "dm_centrehalf",
+   "weight": 2
+  },
+  {
+   "attr": "헤딩 정확도",
+   "role_id": "dm_centrehalf",
+   "weight": 2
+  },
+  {
+   "attr": "힘",
+   "role_id": "dm_centrehalf",
+   "weight": 2
+  },
+  {
+   "attr": "점프",
+   "role_id": "dm_centrehalf",
+   "weight": 1
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "dm_centrehalf",
+   "weight": 1
+  },
+  {
+   "attr": "긴 패스",
+   "role_id": "dm_dlp",
+   "weight": 3
+  },
+  {
+   "attr": "시야",
+   "role_id": "dm_dlp",
+   "weight": 3
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "dm_dlp",
+   "weight": 3
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "dm_dlp",
+   "weight": 2
+  },
+  {
+   "attr": "침착",
+   "role_id": "dm_dlp",
+   "weight": 2
+  },
+  {
+   "attr": "반응력",
+   "role_id": "dm_dlp",
+   "weight": 1
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "dm_dlp",
+   "weight": 1
+  },
+  {
+   "attr": "차단력",
+   "role_id": "dm_dlp",
+   "weight": 1
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "dm_holding",
+   "weight": 3
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "dm_holding",
+   "weight": 3
+  },
+  {
+   "attr": "차단력",
+   "role_id": "dm_holding",
+   "weight": 3
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "dm_holding",
+   "weight": 2
+  },
+  {
+   "attr": "공격성",
+   "role_id": "dm_holding",
+   "weight": 1
+  },
+  {
+   "attr": "체력",
+   "role_id": "dm_holding",
+   "weight": 1
+  },
+  {
+   "attr": "침착",
+   "role_id": "dm_holding",
+   "weight": 1
+  },
+  {
+   "attr": "힘",
+   "role_id": "dm_holding",
+   "weight": 1
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "dm_widehalf",
+   "weight": 3
+  },
+  {
+   "attr": "긴 패스",
+   "role_id": "dm_widehalf",
+   "weight": 2
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "dm_widehalf",
+   "weight": 2
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "dm_widehalf",
+   "weight": 2
+  },
+  {
+   "attr": "차단력",
+   "role_id": "dm_widehalf",
+   "weight": 2
+  },
+  {
+   "attr": "체력",
+   "role_id": "dm_widehalf",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "dm_widehalf",
+   "weight": 1
+  },
+  {
+   "attr": "가속",
+   "role_id": "fb_att_wb",
+   "weight": 3
+  },
+  {
+   "attr": "질주 속도",
+   "role_id": "fb_att_wb",
+   "weight": 3
+  },
+  {
+   "attr": "체력",
+   "role_id": "fb_att_wb",
+   "weight": 3
+  },
+  {
+   "attr": "크로스",
+   "role_id": "fb_att_wb",
+   "weight": 3
+  },
+  {
+   "attr": "드리블",
+   "role_id": "fb_att_wb",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "fb_att_wb",
+   "weight": 1
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "fb_att_wb",
+   "weight": 1
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "fb_att_wb",
+   "weight": 1
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "fb_falseback",
+   "weight": 3
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "fb_falseback",
+   "weight": 3
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "fb_falseback",
+   "weight": 2
+  },
+  {
+   "attr": "시야",
+   "role_id": "fb_falseback",
+   "weight": 2
+  },
+  {
+   "attr": "차단력",
+   "role_id": "fb_falseback",
+   "weight": 2
+  },
+  {
+   "attr": "침착",
+   "role_id": "fb_falseback",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "fb_falseback",
+   "weight": 1
+  },
+  {
+   "attr": "체력",
+   "role_id": "fb_falseback",
+   "weight": 1
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "fb_fullback",
+   "weight": 3
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "fb_fullback",
+   "weight": 3
+  },
+  {
+   "attr": "가속",
+   "role_id": "fb_fullback",
+   "weight": 2
+  },
+  {
+   "attr": "질주 속도",
+   "role_id": "fb_fullback",
+   "weight": 2
+  },
+  {
+   "attr": "차단력",
+   "role_id": "fb_fullback",
+   "weight": 2
+  },
+  {
+   "attr": "체력",
+   "role_id": "fb_fullback",
+   "weight": 2
+  },
+  {
+   "attr": "슬라이딩 태클",
+   "role_id": "fb_fullback",
+   "weight": 1
+  },
+  {
+   "attr": "크로스",
+   "role_id": "fb_fullback",
+   "weight": 1
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "fb_inverted",
+   "weight": 3
+  },
+  {
+   "attr": "드리블",
+   "role_id": "fb_inverted",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "fb_inverted",
+   "weight": 2
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "fb_inverted",
+   "weight": 2
+  },
+  {
+   "attr": "시야",
+   "role_id": "fb_inverted",
+   "weight": 2
+  },
+  {
+   "attr": "차단력",
+   "role_id": "fb_inverted",
+   "weight": 2
+  },
+  {
+   "attr": "민첩성",
+   "role_id": "fb_inverted",
+   "weight": 1
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "fb_inverted",
+   "weight": 1
+  },
+  {
+   "attr": "체력",
+   "role_id": "fb_inverted",
+   "weight": 1
+  },
+  {
+   "attr": "질주 속도",
+   "role_id": "fb_wingback",
+   "weight": 3
+  },
+  {
+   "attr": "체력",
+   "role_id": "fb_wingback",
+   "weight": 3
+  },
+  {
+   "attr": "가속",
+   "role_id": "fb_wingback",
+   "weight": 2
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "fb_wingback",
+   "weight": 2
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "fb_wingback",
+   "weight": 2
+  },
+  {
+   "attr": "크로스",
+   "role_id": "fb_wingback",
+   "weight": 2
+  },
+  {
+   "attr": "드리블",
+   "role_id": "fb_wingback",
+   "weight": 1
+  },
+  {
+   "attr": "차단력",
+   "role_id": "fb_wingback",
+   "weight": 1
+  },
+  {
+   "attr": "반사신경",
+   "role_id": "gk_ballplaying",
+   "weight": 3
+  },
+  {
+   "attr": "킥",
+   "role_id": "gk_ballplaying",
+   "weight": 3
+  },
+  {
+   "attr": "핸들링",
+   "role_id": "gk_ballplaying",
+   "weight": 3
+  },
+  {
+   "attr": "다이빙",
+   "role_id": "gk_ballplaying",
+   "weight": 2
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "gk_ballplaying",
+   "weight": 2
+  },
+  {
+   "attr": "포지셔닝",
+   "role_id": "gk_ballplaying",
+   "weight": 2
+  },
+  {
+   "attr": "침착",
+   "role_id": "gk_ballplaying",
+   "weight": 1
+  },
+  {
+   "attr": "다이빙",
+   "role_id": "gk_goalkeeper",
+   "weight": 3
+  },
+  {
+   "attr": "반사신경",
+   "role_id": "gk_goalkeeper",
+   "weight": 3
+  },
+  {
+   "attr": "포지셔닝",
+   "role_id": "gk_goalkeeper",
+   "weight": 3
+  },
+  {
+   "attr": "핸들링",
+   "role_id": "gk_goalkeeper",
+   "weight": 3
+  },
+  {
+   "attr": "반응력",
+   "role_id": "gk_goalkeeper",
+   "weight": 1
+  },
+  {
+   "attr": "반사신경",
+   "role_id": "gk_sweeper",
+   "weight": 3
+  },
+  {
+   "attr": "포지셔닝",
+   "role_id": "gk_sweeper",
+   "weight": 3
+  },
+  {
+   "attr": "가속",
+   "role_id": "gk_sweeper",
+   "weight": 2
+  },
+  {
+   "attr": "다이빙",
+   "role_id": "gk_sweeper",
+   "weight": 2
+  },
+  {
+   "attr": "질주 속도",
+   "role_id": "gk_sweeper",
+   "weight": 2
+  },
+  {
+   "attr": "핸들링",
+   "role_id": "gk_sweeper",
+   "weight": 2
+  },
+  {
+   "attr": "반응력",
+   "role_id": "gk_sweeper",
+   "weight": 1
+  },
+  {
+   "attr": "결정력",
+   "role_id": "st_advanced",
+   "weight": 3
+  },
+  {
+   "attr": "공격 위치 선정",
+   "role_id": "st_advanced",
+   "weight": 3
+  },
+  {
+   "attr": "가속",
+   "role_id": "st_advanced",
+   "weight": 2
+  },
+  {
+   "attr": "질주 속도",
+   "role_id": "st_advanced",
+   "weight": 2
+  },
+  {
+   "attr": "침착",
+   "role_id": "st_advanced",
+   "weight": 2
+  },
+  {
+   "attr": "드리블",
+   "role_id": "st_advanced",
+   "weight": 1
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "st_advanced",
+   "weight": 1
+  },
+  {
+   "attr": "슈팅력",
+   "role_id": "st_advanced",
+   "weight": 1
+  },
+  {
+   "attr": "시야",
+   "role_id": "st_false9",
+   "weight": 3
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "st_false9",
+   "weight": 3
+  },
+  {
+   "attr": "결정력",
+   "role_id": "st_false9",
+   "weight": 2
+  },
+  {
+   "attr": "드리블",
+   "role_id": "st_false9",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "st_false9",
+   "weight": 2
+  },
+  {
+   "attr": "민첩성",
+   "role_id": "st_false9",
+   "weight": 1
+  },
+  {
+   "attr": "반응력",
+   "role_id": "st_false9",
+   "weight": 1
+  },
+  {
+   "attr": "침착",
+   "role_id": "st_false9",
+   "weight": 1
+  },
+  {
+   "attr": "결정력",
+   "role_id": "st_poacher",
+   "weight": 3
+  },
+  {
+   "attr": "공격 위치 선정",
+   "role_id": "st_poacher",
+   "weight": 3
+  },
+  {
+   "attr": "반응력",
+   "role_id": "st_poacher",
+   "weight": 2
+  },
+  {
+   "attr": "침착",
+   "role_id": "st_poacher",
+   "weight": 2
+  },
+  {
+   "attr": "가속",
+   "role_id": "st_poacher",
+   "weight": 1
+  },
+  {
+   "attr": "슈팅력",
+   "role_id": "st_poacher",
+   "weight": 1
+  },
+  {
+   "attr": "헤딩 정확도",
+   "role_id": "st_poacher",
+   "weight": 1
+  },
+  {
+   "attr": "헤딩 정확도",
+   "role_id": "st_target",
+   "weight": 3
+  },
+  {
+   "attr": "힘",
+   "role_id": "st_target",
+   "weight": 3
+  },
+  {
+   "attr": "결정력",
+   "role_id": "st_target",
+   "weight": 2
+  },
+  {
+   "attr": "공격 위치 선정",
+   "role_id": "st_target",
+   "weight": 2
+  },
+  {
+   "attr": "점프",
+   "role_id": "st_target",
+   "weight": 2
+  },
+  {
+   "attr": "균형 감각",
+   "role_id": "st_target",
+   "weight": 1
+  },
+  {
+   "attr": "슈팅력",
+   "role_id": "st_target",
+   "weight": 1
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "st_target",
+   "weight": 1
+  },
+  {
+   "attr": "결정력",
+   "role_id": "w_insidefwd",
+   "weight": 3
+  },
+  {
+   "attr": "가속",
+   "role_id": "w_insidefwd",
+   "weight": 2
+  },
+  {
+   "attr": "공격 위치 선정",
+   "role_id": "w_insidefwd",
+   "weight": 2
+  },
+  {
+   "attr": "드리블",
+   "role_id": "w_insidefwd",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "w_insidefwd",
+   "weight": 2
+  },
+  {
+   "attr": "질주 속도",
+   "role_id": "w_insidefwd",
+   "weight": 2
+  },
+  {
+   "attr": "슈팅력",
+   "role_id": "w_insidefwd",
+   "weight": 1
+  },
+  {
+   "attr": "침착",
+   "role_id": "w_insidefwd",
+   "weight": 1
+  },
+  {
+   "attr": "시야",
+   "role_id": "w_wideplm",
+   "weight": 3
+  },
+  {
+   "attr": "드리블",
+   "role_id": "w_wideplm",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "w_wideplm",
+   "weight": 2
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "w_wideplm",
+   "weight": 2
+  },
+  {
+   "attr": "커브",
+   "role_id": "w_wideplm",
+   "weight": 2
+  },
+  {
+   "attr": "크로스",
+   "role_id": "w_wideplm",
+   "weight": 2
+  },
+  {
+   "attr": "긴 패스",
+   "role_id": "w_wideplm",
+   "weight": 1
+  },
+  {
+   "attr": "민첩성",
+   "role_id": "w_wideplm",
+   "weight": 1
+  },
+  {
+   "attr": "가속",
+   "role_id": "w_winger",
+   "weight": 3
+  },
+  {
+   "attr": "드리블",
+   "role_id": "w_winger",
+   "weight": 3
+  },
+  {
+   "attr": "질주 속도",
+   "role_id": "w_winger",
+   "weight": 3
+  },
+  {
+   "attr": "민첩성",
+   "role_id": "w_winger",
+   "weight": 2
+  },
+  {
+   "attr": "크로스",
+   "role_id": "w_winger",
+   "weight": 2
+  },
+  {
+   "attr": "결정력",
+   "role_id": "w_winger",
+   "weight": 1
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "w_winger",
+   "weight": 1
+  },
+  {
+   "attr": "결정력",
+   "role_id": "wm_insidefwd",
+   "weight": 3
+  },
+  {
+   "attr": "가속",
+   "role_id": "wm_insidefwd",
+   "weight": 2
+  },
+  {
+   "attr": "공격 위치 선정",
+   "role_id": "wm_insidefwd",
+   "weight": 2
+  },
+  {
+   "attr": "드리블",
+   "role_id": "wm_insidefwd",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "wm_insidefwd",
+   "weight": 2
+  },
+  {
+   "attr": "질주 속도",
+   "role_id": "wm_insidefwd",
+   "weight": 2
+  },
+  {
+   "attr": "슈팅력",
+   "role_id": "wm_insidefwd",
+   "weight": 1
+  },
+  {
+   "attr": "침착",
+   "role_id": "wm_insidefwd",
+   "weight": 1
+  },
+  {
+   "attr": "체력",
+   "role_id": "wm_widemid",
+   "weight": 3
+  },
+  {
+   "attr": "수비 위치 선정",
+   "role_id": "wm_widemid",
+   "weight": 2
+  },
+  {
+   "attr": "스탠딩 태클",
+   "role_id": "wm_widemid",
+   "weight": 2
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "wm_widemid",
+   "weight": 2
+  },
+  {
+   "attr": "크로스",
+   "role_id": "wm_widemid",
+   "weight": 2
+  },
+  {
+   "attr": "드리블",
+   "role_id": "wm_widemid",
+   "weight": 1
+  },
+  {
+   "attr": "질주 속도",
+   "role_id": "wm_widemid",
+   "weight": 1
+  },
+  {
+   "attr": "차단력",
+   "role_id": "wm_widemid",
+   "weight": 1
+  },
+  {
+   "attr": "시야",
+   "role_id": "wm_wideplm",
+   "weight": 3
+  },
+  {
+   "attr": "드리블",
+   "role_id": "wm_wideplm",
+   "weight": 2
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "wm_wideplm",
+   "weight": 2
+  },
+  {
+   "attr": "짧은 패스",
+   "role_id": "wm_wideplm",
+   "weight": 2
+  },
+  {
+   "attr": "커브",
+   "role_id": "wm_wideplm",
+   "weight": 2
+  },
+  {
+   "attr": "크로스",
+   "role_id": "wm_wideplm",
+   "weight": 2
+  },
+  {
+   "attr": "긴 패스",
+   "role_id": "wm_wideplm",
+   "weight": 1
+  },
+  {
+   "attr": "민첩성",
+   "role_id": "wm_wideplm",
+   "weight": 1
+  },
+  {
+   "attr": "가속",
+   "role_id": "wm_winger",
+   "weight": 3
+  },
+  {
+   "attr": "드리블",
+   "role_id": "wm_winger",
+   "weight": 3
+  },
+  {
+   "attr": "질주 속도",
+   "role_id": "wm_winger",
+   "weight": 3
+  },
+  {
+   "attr": "민첩성",
+   "role_id": "wm_winger",
+   "weight": 2
+  },
+  {
+   "attr": "크로스",
+   "role_id": "wm_winger",
+   "weight": 2
+  },
+  {
+   "attr": "결정력",
+   "role_id": "wm_winger",
+   "weight": 1
+  },
+  {
+   "attr": "볼컨트롤",
+   "role_id": "wm_winger",
+   "weight": 1
+  },
+  {
+   "attr": "체력",
+   "role_id": "wm_winger",
+   "weight": 1
+  }
+ ],
  "roles": [
   {
    "focuses": "[\"Versatile\", \"Wide\", \"Attack\"]",

@@ -64,10 +64,13 @@ def export_all(db_path=None, window="2026-summer"):
                                WHERE game_version=? ORDER BY param, option""", (gv,))
         changes = _rows(con, """SELECT area, change, evidence, impact, source, confidence, recorded
                                FROM game_system_changes WHERE game_version=? ORDER BY id""", (gv,))
+        # 역할별 핵심 속성 가중(migration 038) — 진화 순위의 「역할 가중 점수」 원료. 판단값(MEDIUM)이며 커널(kernel25)과 별개 층.
+        key_attrs = _rows(con, """SELECT role_id, attr, weight FROM game_role_key_attrs
+                                  WHERE game_version=? ORDER BY role_id, weight DESC, attr""", (gv,))
         written.append(_write(SITE_DATA / "kernels" / f"{gv}.json",
                               {"game_version": gv, "roles": roles, "focus": focus,
                                "variants": variants, "tactic_params": params,
-                               "system_changes": changes}))
+                               "system_changes": changes, "role_key_attrs": key_attrs}))
 
     # ── game_stats/{GV}.json — sofifa 스탯·플레이스타일 (name_kr 키, 표시 전용) ──
     for (gv,) in con.execute("SELECT DISTINCT game_version FROM player_game_stats"):

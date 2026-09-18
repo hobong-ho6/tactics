@@ -69,7 +69,8 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
     <div class="evo-grid" id="cat"></div>
     <p class="dim" style="font-size:12px;margin-top:8px">「적용 가능」은 <b>우리 DB 선수 중</b> fut.gg가 이 진화를 포함한 경로를 열어 준 선수다.
     <span class="chip" style="border-color:var(--ok);color:var(--ok)">녹색</span>=처방 역할이 결과 카드에서 Role++ ·
-    <span class="chip" style="border-color:var(--warn);color:var(--warn)">노랑</span>=Role+ · 회색=처방 역할과 무관(능력치만 오른다).</p></div>
+    <span class="chip" style="border-color:var(--warn);color:var(--warn)">노랑</span>=Role+ · 회색=처방 역할과 무관(능력치만 오른다).
+    ⚖ <b>역할 가중 점수</b> = Σ(역할별 핵심 속성 가중 3/2/1 × 속성 Δ) — 같은 등급 안에서 「처방 역할에 유효한 상승」이 큰 쪽이 앞선다(가중은 판단값 · <code>game_role_key_attrs</code>).</p></div>
 </section>
 
 <section data-tab="paths" style="display:none">
@@ -118,10 +119,21 @@ function rank(pid, rows){
   return rows.filter(r => !r.is_expired).map(r => {
     const pp = decode(r.roles_plus_plus_after, 'plusplus'), pl = decode(r.roles_plus_after, 'plus');
     const tier = pp.some(m) ? 2 : pl.some(m) ? 1 : 0;
-    return { ...r, pp, pl, tier, m, pres, d: (r.ovr_after ?? 0) - (r.ovr_before ?? 0),
+    const rs = roleScore(pres, r.upgrades);
+    return { ...r, pp, pl, tier, m, pres, rs, score: rs.score, d: (r.ovr_after ?? 0) - (r.ovr_before ?? 0),
              cost: (r.coins_cost || 0) + (r.points_cost || 0) * 1000, ids: J(r.evolution_ids, []), path: J(r.path_json, []) };
-  }).sort((a, b) => b.tier - a.tier || b.d - a.d || a.cost - b.cost || a.steps - b.steps);
+  }).sort((a, b) => b.tier - a.tier || b.score - a.score || b.d - a.d || a.cost - b.cost || a.steps - b.steps);
 }
+/* 역할 가중 점수 (2026-09-18, 사용자 지시 「역할별 핵심 속성 가중 점수 넣어줘」) — Σ(가중 × 속성 Δ). 가중은 game_role_key_attrs(판단값·MEDIUM).
+   tier(처방 역할 Role++/+) 다음 정렬 키다 — 「OVR +1」이 아니라 「처방 역할에 유효한 상승」으로 순위를 가른다. */
+const KEYW = {}; for (const r of K26.role_key_attrs || []) (KEYW[r.role_id] ??= {})[r.attr] = r.weight;
+function roleScore(pres, upgradesJson){
+  const w = pres && KEYW[pres.role_id]; const up = J(upgradesJson, {}) || {};
+  if (!w) return { score: 0, top: [], known: false };
+  const parts = Object.entries(up).filter(([a, d]) => w[a] && d).map(([a, d]) => ({ a, d, s: w[a] * d })).sort((x, y) => y.s - x.s);
+  return { score: parts.reduce((t, x) => t + x.s, 0), top: parts.slice(0, 3), known: true };
+}
+const scoreChip = r => r.known ? `<span class="chip"${r.score > 0 ? ' style="border-color:var(--ok);color:var(--ok)"' : ' dim'} title="${esc(r.top.map(x => `${x.a} +${x.d}×${x.s / x.d}`).join(' · '))}">역할 가중 ${r.score > 0 ? '+' : ''}${r.score}${r.top.length ? ` <small>(${esc(r.top.map(x => `${x.a} +${x.d}`).join(' · '))})</small>` : ''}</span>` : '';
 const presLabel = pres => pres ? `${esc(ROLE_KR[pres.role_id] || pres.role_id)} <small class="dim">${esc(pres.pos_label ?? '')} ${esc(pres.focus ?? '')}</small>` : '<span class="dim">처방 없음</span>';
 
 /* 단계 카드 — step 0은 적용 전 기준 카드 */
@@ -151,6 +163,7 @@ function pathHTML(p, i){
     <summary class="kv">${i === 0 ? '<span class="badge hi">최적 제안</span>' : `<span class="badge">${i + 1}순위</span>`}
       <b>${esc(p.evolution_names)}</b> <span class="chip">${p.steps}단계</span>
       <span class="chip${p.d ? '' : ' dim'}"${p.d ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}>OVR ${p.ovr_before}→${p.ovr_after}${p.d ? ` (+${p.d})` : ''}</span>
+      ${p.rs ? scoreChip(p.rs) : ''}
       <small class="dim">${esc(costText(p))} · ${why}</small></summary>
     ${p.upgrades ? `<div class="dim" style="font-size:12px;margin-top:4px">${esc(Object.entries(J(p.upgrades, {})).map(([k, v]) => `${k} +${v}`).join(' · '))}</div>` : ''}
     ${stepsHTML(p)}
@@ -213,17 +226,17 @@ function renderCatalog(team = CAT_TEAM){
       if (team !== 'ALL' && TEAM_OF[pid] !== team) break;
       const k = r.ids.indexOf(c.evo_id); if (k < 0) continue;
       const base = (CARDS[pid] || []).find(x => x.is_base);
-      apps.push({ pid: +pid, tier: r.tier, k, d: r.d, name: r.name_kr, owned: OWNED.has(+pid), price: base ? priceOf(base.item_id) : null, path: r }); break;
+      apps.push({ pid: +pid, tier: r.tier, k, d: r.d, score: r.score, rs: r.rs, name: r.name_kr, owned: OWNED.has(+pid), price: base ? priceOf(base.item_id) : null, path: r }); break;
     }
-    // 진화별 최적 선수: 처방 역할 적중 → 내 구단 보유(사서 쓸 필요 없음) → 즉시 적용(첫 단계) → OVR 상승 → 시세 낮은 순
-    apps.sort((a, b) => b.tier - a.tier || (b.owned - a.owned) || a.k - b.k || b.d - a.d || (a.price ?? 9e9) - (b.price ?? 9e9));
+    // 진화별 최적 선수: 처방 역할 적중 → 내 구단 보유(사서 쓸 필요 없음) → 즉시 적용(첫 단계) → 역할 가중 점수 → OVR 상승 → 시세 낮은 순
+    apps.sort((a, b) => b.tier - a.tier || (b.owned - a.owned) || a.k - b.k || b.score - a.score || b.d - a.d || (a.price ?? 9e9) - (b.price ?? 9e9));
     const best = apps[0];
     const dl = days(c.end_submission_time || c.end_time);
     return `<div class="evo-card${c.is_expired || used?.exhausted ? ' expired' : ''}">
       <h3>${esc(c.name)} ${c.repeatability > 1 ? `<span class="chip">반복 ${c.repeatability}회</span>` : '<span class="chip dim">1회성</span>'}${c.is_reward ? '<span class="chip">보상형</span>' : ''}
         ${used ? `<span class="chip" style="border-color:var(--bad);color:var(--bad)">${used.exhausted ? '소진' : `사용 ${used.count}/${REPEAT[c.evo_id]}`} — ${used.by.map(b => `${esc(b.name)} ${esc(b.date)}`).join(', ')}</span>` : ''}</h3>
       ${best && !used?.exhausted ? `<div class="pcard tier${best.tier}" style="margin:6px 0;padding:6px 10px"><span class="badge hi">이 진화 최적 선수</span> <b>${esc(best.name)}</b>
-        <small class="dim">${best.tier === 2 ? '처방 역할 Role++' : best.tier === 1 ? '처방 역할 Role+' : '처방 역할 무관(능력치만)'} · ${best.owned ? '내 구단 보유' : `미보유 · ${fmtPrice(best.price)}`} · ${best.k ? `${best.k + 1}단계째(선행 ${best.k})` : '즉시 적용'}${best.d ? ` · OVR +${best.d}` : ''}</small></div>` : ''}
+        <small class="dim">${best.tier === 2 ? '처방 역할 Role++' : best.tier === 1 ? '처방 역할 Role+' : '처방 역할 무관(능력치만)'} · ${best.owned ? '내 구단 보유' : `미보유 · ${fmtPrice(best.price)}`} · ${best.k ? `${best.k + 1}단계째(선행 ${best.k})` : '즉시 적용'}${best.d ? ` · OVR +${best.d}` : ''}</small> ${best.rs ? scoreChip(best.rs) : ''}</div>` : ''}
       <div class="dim" style="font-size:12px">${esc(c.description || '')}</div>
       <div class="kv" style="margin:6px 0;font-size:12px"><span>${esc(costText(c))}</span>
         ${dl != null ? `<span class="${dl <= 7 ? 'dn' : ''}">마감 ${esc(String(c.end_submission_time || c.end_time).slice(0, 10))} (${dl >= 0 ? `D-${dl}` : '지남'})</span>` : ''}
@@ -231,7 +244,7 @@ function renderCatalog(team = CAT_TEAM){
       <div>${J(c.requirements_text, []).map(r => `<span class="req">${esc(r.label)}: ${esc(r.value)}</span>`).join('')}</div>
       <div style="margin-top:6px;font-size:12px"><b>업그레이드</b> ${J(c.total_upgrades_text, []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ') || '<span class="dim">없음(도입용)</span>'}</div>
       <div style="margin-top:6px;font-size:12px"><b>${team === 'ALL' ? '우리 선수' : esc(idx.regimes.find(r => r.team_code === team)?.team_kr || team)} 적용 가능 ${apps.length}명</b> <small class="dim">(fut.gg 전체 ${c.number_of_players?.toLocaleString?.() ?? '—'}명)</small>
-        <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}${a.owned ? ' · 보유' : ''}">${a.owned ? '★ ' : ''}${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || '<span class="dim">없음' + (used?.exhausted ? '(소진)' : '') + '</span>'}</div></div>
+        <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}${a.owned ? ' · 보유' : ''}${a.score ? ` · 역할 가중 +${a.score}` : ''}">${a.owned ? '★ ' : ''}${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${a.score ? `<small class="up"> ⚖${a.score}</small>` : a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || '<span class="dim">없음' + (used?.exhausted ? '(소진)' : '') + '</span>'}</div></div>
       ${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>` : ''}
     </div>`;
   }).join('');
@@ -269,13 +282,14 @@ function cardTier(card, m){
   if (!card) return 0;
   return decode(card.roles_plus_plus, 'plusplus').some(m) ? 2 : decode(card.roles_plus, 'plus').some(m) ? 1 : 0;
 }
-function bestPathFor(pid, m){
+function bestPathFor(pid, m, roleIdOfM){
   const rows = (EVO.paths || {})[String(pid)] || [];
   return rows.filter(r => !r.is_expired).map(r => {
     const pp = decode(r.roles_plus_plus_after, 'plusplus'), pl = decode(r.roles_plus_after, 'plus');
-    return { ...r, m, tier: pp.some(m) ? 2 : pl.some(m) ? 1 : 0, d: (r.ovr_after ?? 0) - (r.ovr_before ?? 0), ids: J(r.evolution_ids, []), path: J(r.path_json, []), pp, pl,
+    const rs = roleScore({ role_id: roleIdOfM }, r.upgrades);
+    return { ...r, m, rs, score: rs.score, tier: pp.some(m) ? 2 : pl.some(m) ? 1 : 0, d: (r.ovr_after ?? 0) - (r.ovr_before ?? 0), ids: J(r.evolution_ids, []), path: J(r.path_json, []), pp, pl,
              cost: (r.coins_cost || 0) + (r.points_cost || 0) * 1000 };
-  }).filter(r => pathOpen(r, pid)).sort((a, b) => b.tier - a.tier || b.d - a.d || a.cost - b.cost)[0] || null;
+  }).filter(r => pathOpen(r, pid)).sort((a, b) => b.tier - a.tier || b.score - a.score || b.d - a.d || a.cost - b.cost)[0] || null;
 }
 let TAC_TEAM = localStorage.getItem('evo_tac_team') || 'AVL';
 function renderTactic(team = TAC_TEAM){
@@ -295,12 +309,12 @@ function renderTactic(team = TAC_TEAM){
     const base = cards.find(c => c.is_base) || cards[0];
     // 그 선수 카드들 중 슬롯 역할에 가장 맞는 카드(특별 카드가 Role++를 새로 줄 수 있다)
     const bestCard = cards.map(c => ({ c, tier: cardTier(c, m), price: priceOf(c.item_id) })).sort((a, b) => b.tier - a.tier || (a.price ?? 9e9) - (b.price ?? 9e9))[0] || null;
-    const path = pid != null ? bestPathFor(pid, m) : null;
+    const path = pid != null ? bestPathFor(pid, m, sl.role_id) : null;
     const reach = Math.max(bestCard?.tier ?? 0, path?.tier ?? 0);
     // 대안: 우리 DB 다른 선수 중 이 슬롯 역할을 기본 카드로 Role++/+ 갖거나 진화로 만드는 선수(시세 낮은 순)
     const alts = Object.keys(NAME_OF).map(Number).filter(p => p !== pid && TEAM_OF[p] === team).map(p => {
       const cs = CARDS[String(p)] || []; const b = cs.find(c => c.is_base) || cs[0];
-      const ct = cardTier(b, m), bp = bestPathFor(p, m);
+      const ct = cardTier(b, m), bp = bestPathFor(p, m, sl.role_id);
       return { p, tier: Math.max(ct, bp?.tier ?? 0), ct, bp, price: b ? priceOf(b.item_id) : null };
     }).filter(a => a.tier > 0).sort((a, b) => b.tier - a.tier || (a.price ?? 9e9) - (b.price ?? 9e9)).slice(0, 4);
     const prio = (bestCard?.tier === 2) ? 1 : reach > 0 ? 2 : 3;

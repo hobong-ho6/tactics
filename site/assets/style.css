@@ -232,3 +232,8 @@ details.match-players>summary,details.report-source>summary{color:var(--acc);cur
 .claimtgt{font-size:13px}
 .claimquote{font-size:12px;line-height:1.5;margin:4px 0 0;padding-left:8px;border-left:2px solid var(--line);color:var(--dim)}
 .claimnote{font-size:12px;line-height:1.55;margin:4px 0 0}
+
+/* 대표 카드 선택(player.html, 2026-09-18) */
+.cardpick{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:3px 8px 3px 3px;cursor:pointer;font-size:12px}
+.cardpick img{width:28px;display:block}
+.cardpick.on{border-color:var(--acc);color:var(--acc)}

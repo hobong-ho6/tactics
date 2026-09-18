@@ -85,6 +85,7 @@ def step_of(card, i, playstyle):
     ps = [playstyle.get(x, f"PS#{x}") for x in card.get("playstyles") or []] + \
          [playstyle.get(x, f"PS#{x}") + "+" for x in card.get("playstylesPlus") or []]
     return dict(step=i, evo_id=card.get("evolutionId"), ovr=card.get("overall"), six=six_of(card),
+                attrs={ATTR_KR[k]: card[k] for k in ATTR_KR if card.get(k) is not None},   # 34속성 — 역할 가중 점수의 원료
                 position=card.get("position"), playstyles=ps,
                 roles_plus=card.get("rolesPlus") or [], roles_plus_plus=card.get("rolesPlusPlus") or [],
                 card_image_url=(IMG + card["cardImagePath"]) if card.get("cardImagePath") else None)
@@ -162,6 +163,9 @@ def main():
                 start, end = (chain[0] if chain else {}), (chain[-1] if chain else {})
                 up = {ATTR_KR[k]: v for k, v in (p.get("upgrades") or {}).items()
                       if k in ATTR_KR and v}
+                if not up and len(chain) >= 2:      # fut.gg upgrades가 전부 0으로 오는 경로가 있다 — 결과 카드 − 기준 카드로 직접 낸다
+                    up = {ATTR_KR[k]: end[k] - start[k] for k in ATTR_KR
+                          if end.get(k) is not None and start.get(k) is not None and end[k] != start[k]}
                 row = dict(
                     game_version=gv, player_id=pid, base_ea_id=ea, name_kr=kr, path_key=key,
                     evolution_ids=json.dumps(ids),
@@ -194,8 +198,9 @@ def main():
                 cur.execute(
                     f"INSERT INTO player_evolutions({cols}) VALUES({','.join('?' * len(row))}) "
                     "ON CONFLICT(game_version, base_ea_id, path_key, pulled) "
-                    "DO UPDATE SET path_json=excluded.path_json, path_choices=excluded.path_choices "
-                    "WHERE player_evolutions.path_json IS NULL",
+                    "DO UPDATE SET path_json=excluded.path_json, path_choices=excluded.path_choices, "
+                    "upgrades=COALESCE(player_evolutions.upgrades, excluded.upgrades) "
+                    "WHERE player_evolutions.upgrades IS NULL OR player_evolutions.path_json NOT LIKE '%\"attrs\"%'",
                     tuple(row.values()))
                 ins += cur.rowcount
                 skip += 1 - cur.rowcount
