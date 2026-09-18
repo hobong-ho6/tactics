@@ -82,6 +82,7 @@
 </section>
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels, slotCandidates, sofifaLink, isGkSlot, gkPosCell } from './assets/data.js?v=20260918-evo';
+import { pizza, dumbbell, formRibbon } from './assets/playerviz.js?v=20260918';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
 import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
 import { prose } from './assets/prose.js';
@@ -437,7 +438,11 @@ function renderLeague(key, force, sel){
          (${others.join(' · ')}). <b>모집단이 달라 섞어 읽으면 안 되므로</b> 최신 시즌만 표시한다.</span>` : '')
     : 'Fotmob 리그 백분위 미수집 — 주 리그 출전이 없거나 아직 수집되지 않은 선수다.';
   const rows = fb.slice().sort((a,b)=>(b.percentile_per90??b.percentile??0)-(a.percentile_per90??a.percentile??0));
-  document.getElementById('pct').innerHTML =
+  // ⭐ 피자 차트(FBref/StatsBomb 스카우팅 형식) — 조각 = 지표, 반지름 = 동포지션 백분위, 색 = 공격/창조·소유/수비. 막대 목록은 표 뷰로 아래에 남긴다.
+  const pctEl = document.getElementById('pct');
+  const pz = rows.length ? pizza(rows, { W: Math.min(380, Math.max(300, (pctEl.clientWidth || 380) - 8)), gk: rows.some(r => r.metric_key === 'saves') }) : '';   // GK는 FotMob 지표 집합 자체가 다르다(saves 존재)
+  pctEl.innerHTML =
+    (pz ? `<div class="mviz" style="margin:0 0 10px"><div class="vz" style="padding:8px 6px">${pz}</div></div><details><summary class="dim" style="cursor:pointer;font-size:12px">지표 전체 막대 보기 (${rows.length})</summary>` : '') +
     (rows.length ? rows.map(m=>{
         const pct = m.percentile_per90 ?? m.percentile ?? 0;
         const v = m.stat_value ?? '—';
@@ -445,6 +450,7 @@ function renderLeague(key, force, sel){
         return bar(m.metric_kr||m.metric, v, pct, `${m.metric} — 시즌 합계 ${v}${p90} · 동포지션 백분위 ${pct}`);
       }).join('')
       : '<span class="dim">백분위 없음 — 수집 풀 탭을 보라.</span>')
+    + (pz ? '</details>' : '')
     + seasonSummary(fms);
   return true;
 }
@@ -779,11 +785,15 @@ function renderHistory(sel, isGkRow){
       <td><small>${esc(r.club ?? '')}</small></td>
       <td>${psDiff(r, prev)}</td></tr>`;
   }).join('');
+  const dbSeq = seq.map(r => ({ ...r, _label: `${r.game_version} ${r.kind}` }));
+  const dbKeys = [['ovr', 'OVR'], ...SIX.map(([k, L]) => [k, L])];
   el.innerHTML = `<div class="kv" style="margin-bottom:4px"><b>버전별 변화</b>
-      <small class="dim">— ${seq.length}시점 · Δ는 바로 위 행 대비</small></div>
+      <small class="dim">— ${seq.length}시점 · 점 = 시점(진할수록 최신) · 숫자 = 최신값과 첫 시점 대비 Δ</small></div>
+    <div class="mviz" style="margin:0 0 10px"><div class="vz">${dumbbell(dbSeq, dbKeys, { W: Math.min(680, Math.max(320, (el.clientWidth || 520) - 30)) })}</div></div>
+    <details><summary class="dim" style="cursor:pointer;font-size:12px">시점별 표 보기</summary>
     <div style="overflow-x:auto"><table style="font-size:12px;white-space:nowrap;width:auto;min-width:100%">
       <thead><tr><th>버전·시점</th><th>OVR</th>${SIX.map(([,L]) => `<th>${L}</th>`).join('')}<th>포지션</th><th>클럽</th><th>PlayStyles 변화</th></tr></thead>
-      <tbody>${trs}</tbody></table></div>
+      <tbody>${trs}</tbody></table></div></details>
     <p class="dim" style="font-size:12px;margin:6px 0 0"><b>출시판</b>은 fut.gg base 아이템(각 버전 EA 공개 시점 값, 라이브 갱신 미반영),
       <b>라이브판</b>은 sofifa 시즌 중 로스터다. 기준 시점이 다른 두 행 사이의 Δ는 「시즌 중 라이브 조정 + 차기작 재평가」가 합쳐진 값이다(obs#249).</p>`;
 }
@@ -900,16 +910,12 @@ function render(){
     // 폼 스파크라인 — hover 판정용 투명 원(r=9)을 위에 겹치고, 정보는 캡션에 표시(네이티브 <title>은 3px 원에서 사실상 안 뜬다)
     const fm=pickRows(td.form, sel);
     const formEl=document.getElementById('form');
-    formEl.innerHTML = fm.length ? (()=>{
-      const w=320,h=60,min=5.5,max=9.5;
-      const px=i=>10+i*(w-20)/Math.max(1,fm.length-1), py=r=>h-8-(Math.min(max,Math.max(min,r))-min)/(max-min)*(h-18);
-      const line=fm.map((f,i)=>`${px(i)},${py(f[1])}`).join(' ');
-      const dots=fm.map((f,i)=>`<circle cx="${px(i)}" cy="${py(f[1])}" r="3" fill="${f[1]>=7.5?'var(--ok)':f[1]>=6.5?'var(--warn)':'var(--bad)'}" pointer-events="none"/>`).join('');
-      const hits=fm.map((f,i)=>`<circle cx="${px(i)}" cy="${py(f[1])}" r="9" fill="transparent" data-i="${i}" style="cursor:pointer"><title>${f[0]} ${f[2]} — ${f[1]}</title></circle>`).join('');
-      return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;max-width:${w}px;height:auto"><polyline points="${line}" fill="none" stroke="rgba(255,255,255,.35)"/>${dots}${hits}</svg>
-        <small class="dim" id="formcap">${fm[0][0]} ~ ${fm[fm.length-1][0]} · 점에 마우스를 올리면 경기 정보</small>`;
-    })() : '<span class="dim">경기별 평점 없음</span>';
-    formEl.querySelectorAll('circle[data-i]').forEach(c=>c.addEventListener('mouseenter',()=>{
+    // 폼 리본(playerviz.js) — 6.5/7.5 기준 띠·시즌 경계·구간색 점. 컨테이너 픽셀 폭으로 그린다.
+    formEl.innerHTML = fm.length
+      ? formRibbon(fm, { W: Math.min(720, Math.max(320, (formEl.clientWidth || 520) - 4)) })
+        + `<small class="dim" id="formcap">${fm[0][0]} ~ ${fm[fm.length-1][0]} · ${fm.length}경기 · 평균 ${(fm.reduce((t,f)=>t+f[1],0)/fm.length).toFixed(2)} · 점 위에 마우스를 올리면 경기 정보</small>`
+      : '<span class="dim">경기별 평점 없음</span>';
+    formEl.querySelectorAll('rect[data-i]').forEach(c=>c.addEventListener('mouseenter',()=>{
       const f=fm[+c.dataset.i];
       document.getElementById('formcap').innerHTML=`<b>${f[0]}</b> · ${f[2]} · 평점 <b>${f[1]}</b>`;
     }));
