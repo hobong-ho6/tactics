@@ -115,22 +115,86 @@ export function halves(r, team, W = 560){
     <div class="lg"><span><i style="background:${US}"></i>${esc(team)}</span><span><i style="background:${THEM}"></i>${esc(r.opponent || '상대')}</span></div></div>`;
 }
 
+
+/* ── 4. xG 레이스 — 누적 xG 계단선(두 팀 한 축) + 득점 표식 + HT선. 축구 분석 사이트의 표준 형식(Understat·FotMob).
+   ⚠️ 한 경기 안에서는 한 제공사 xG만 쓴다(match_shots.provider) — 제공사 혼합 금지. */
+export function xgRace(r, team, W = 760){
+  const shots = (r.shots || []).filter(s => s.xg != null).sort((a, b) => a.minute - b.minute);
+  if (!shots.length) return `<div class="vz"><h4>xG 레이스</h4><span class="dim" style="font-size:12px">${(r.shots || []).length ? '이 대회는 제공사가 슛별 xG를 주지 않는다(친선·일부 컵)' : '슛 데이터 미수집'}.</span></div>`;
+  const prov = shots[0].provider; const H = 210, L = 36, R = 44, T = 16, B = 26;
+  const end = Math.max(90, ...shots.map(s => s.minute)) + 1;
+  const tot = { v: 0, o: 0 }; const pts = { v: [[0, 0]], o: [[0, 0]] }; const goals = [];
+  for (const s of shots){ tot[s.side] += s.xg; pts[s.side].push([s.minute, tot[s.side]]); if (s.outcome === 'goal') goals.push({ ...s, cum: tot[s.side] }); }
+  const maxY = Math.max(tot.v, tot.o, 0.5) * 1.12;
+  const x = m => L + (W - L - R) * (m / end), y = v => T + (H - T - B) * (1 - v / maxY);
+  const step = (arr, col) => { let d = `M${x(0)},${y(0)}`; let py = 0;
+    for (const [m, v] of arr.slice(1)){ d += ` H${x(m)} V${y(v)}`; py = v; } d += ` H${x(end)}`;
+    return `<path d="${d}" fill="none" stroke="${col}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>`; };
+  const ticks = [0, 15, 30, 45, 60, 75, 90].filter(t => t <= end).map(t => `<text x="${x(t)}" y="${H - 8}" text-anchor="middle" class="dim sm">${t}′</text>`).join('');
+  const ys = [0, maxY / 2, maxY].map(v => `<line x1="${L}" x2="${W - R}" y1="${y(v)}" y2="${y(v)}" stroke="${GRID}"/><text x="${L - 6}" y="${y(v) + 3.5}" text-anchor="end" class="dim sm">${v.toFixed(1)}</text>`).join('');
+  const gm = goals.map(g => { const col = g.side === 'v' ? US : THEM;
+    return `<g class="hit" data-tip="${esc(`${g.minute}′ ${g.side === 'v' ? team : (r.opponent || '상대')} 득점 · ${g.player_name || ''} · 슛 xG ${fmt(g.xg, 2)} · 누적 ${fmt(g.cum, 2)}`)}">
+      <circle cx="${x(g.minute)}" cy="${y(g.cum)}" r="7" fill="${SURF}"/><circle cx="${x(g.minute)}" cy="${y(g.cum)}" r="5" fill="${col}"/></g>`; }).join('');
+  const endLab = (side, col) => `<text x="${W - R + 6}" y="${y(tot[side]) + 3.5}" class="sm"><tspan font-weight="700">${fmt(tot[side], 2)}</tspan></text>`;
+  return `<div class="vz"><h4>xG 레이스 <span class="dim">— 누적 기대득점 · 점 = 득점 · ${esc(prov)} 모델</span></h4>
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="누적 xG">${ys}
+      <line x1="${x(45)}" x2="${x(45)}" y1="${T}" y2="${H - B}" stroke="var(--line)"/><text x="${x(45)}" y="${T - 4}" text-anchor="middle" class="dim sm">HT</text>
+      ${step(pts.o, THEM)}${step(pts.v, US)}${gm}${endLab('v', US)}${endLab('o', THEM)}${ticks}
+      <rect class="xhair" x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}" fill="transparent" data-l="${L}" data-w="${W - L - R}" data-end="${end}"/></svg>
+    <div class="lg"><span><i style="background:${US}"></i>${esc(team)} ${fmt(tot.v, 2)}</span><span><i style="background:${THEM}"></i>${esc(r.opponent || '상대')} ${fmt(tot.o, 2)}</span></div></div>`;
+}
+
+/* ── 5. 슛 맵 — 한 피치, 두 팀이 반대 골문을 공격(우리 → 오른쪽). 점 넓이 ∝ xG, 채움 = 득점, 테두리만 = 그 외. */
+export function shotMap(r, team, W = 760){
+  const shots = (r.shots || []); if (!shots.length) return '';
+  const PW = 105, PH = 68, pad = 14, sc = (W - pad * 2) / PW, H = PH * sc + pad * 2 + 6;
+  const X = v => pad + v * sc, Y = v => pad + v * sc;
+  // 제공사 좌표 → 피치(m). SofaScore: x = 공격 골라인까지 거리(%), y = 폭(%) · FotMob: x 0~105(공격 방향), y 0~68
+  const toPitch = s => { let px, py;
+    if (s.provider === 'FotMob'){ px = s.x; py = s.y; } else { px = PW - (s.x ?? 50) / 100 * PW; py = (s.y ?? 50) / 100 * PH; }
+    if (s.side === 'o'){ px = PW - px; py = PH - py; } return [px, py]; };
+  const pitch = `<rect x="${X(0)}" y="${Y(0)}" width="${PW * sc}" height="${PH * sc}" fill="none" stroke="var(--line)"/>
+    <line x1="${X(PW / 2)}" x2="${X(PW / 2)}" y1="${Y(0)}" y2="${Y(PH)}" stroke="var(--line)"/><circle cx="${X(PW / 2)}" cy="${Y(PH / 2)}" r="${9.15 * sc}" fill="none" stroke="var(--line)"/>
+    ${[0, PW - 16.5].map(bx => `<rect x="${X(bx)}" y="${Y(PH / 2 - 20.16)}" width="${16.5 * sc}" height="${40.32 * sc}" fill="none" stroke="var(--line)"/>`).join('')}
+    ${[0, PW - 5.5].map(bx => `<rect x="${X(bx)}" y="${Y(PH / 2 - 9.16)}" width="${5.5 * sc}" height="${18.32 * sc}" fill="none" stroke="var(--line)"/>`).join('')}`;
+  const dots = shots.slice().sort((a, b) => (b.xg ?? 0) - (a.xg ?? 0)).map(s => { const [px, py] = toPitch(s); const col = s.side === 'v' ? US : THEM;
+    const rr = s.xg == null ? 4 : 3 + 9 * Math.sqrt(s.xg); const goal = s.outcome === 'goal';
+    const tip = `${s.minute}′ ${s.side === 'v' ? team : (r.opponent || '상대')} · ${s.player_name || ''} · ${{ goal:'득점', save:'선방', miss:'빗나감', block:'블록', post:'골대' }[s.outcome] || s.outcome}${s.xg != null ? ` · xG ${fmt(s.xg, 2)}` : ''}${s.situation ? ` · ${s.situation}` : ''}`;
+    return `<g class="hit" data-tip="${esc(tip)}"><circle cx="${X(px)}" cy="${Y(py)}" r="${rr + 6}" fill="transparent"/>
+      ${goal ? `<circle cx="${X(px)}" cy="${Y(py)}" r="${rr + 2}" fill="${SURF}"/><circle cx="${X(px)}" cy="${Y(py)}" r="${rr}" fill="${col}"/>`
+             : `<circle cx="${X(px)}" cy="${Y(py)}" r="${rr}" fill="${col}" fill-opacity=".14" stroke="${col}" stroke-width="1.5"/>`}</g>`; }).join('');
+  const n = side => shots.filter(s => s.side === side).length, g = side => shots.filter(s => s.side === side && s.outcome === 'goal').length;
+  return `<div class="vz"><h4>슛 맵 <span class="dim">— ${esc(team)} → 오른쪽 골문 · ${esc(r.opponent || '상대')} → 왼쪽 · 점 크기 = xG · 채움 = 득점</span></h4>
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="슛 맵">${pitch}${dots}
+      <text x="${X(PW) - 4}" y="${Y(PH) + 12}" text-anchor="end" class="dim sm">${esc(team)} 슛 ${n('v')} · 득점 ${g('v')}</text>
+      <text x="${X(0) + 4}" y="${Y(PH) + 12}" class="dim sm">${esc(r.opponent || '상대')} 슛 ${n('o')} · 득점 ${g('o')}</text></svg></div>`;
+}
+
 /* 컨테이너 렌더 + 호버 툴팁(마크가 히트 타깃, 값은 라벨·표로도 읽힌다).
    ⭐ SVG는 컨테이너 픽셀 폭으로 그린다(viewBox 확대 금지 — 넓은 화면에서 글자·점이 비대해진다). 창 크기가 바뀌면 다시 그린다. */
 export function renderMatchViz(el, r, team){
   el.className = 'mviz';
-  el.innerHTML = '<div class="vz wide" data-k="t"></div><div class="vz" data-k="b"></div><div class="vz" data-k="h"></div><div class="tip" hidden></div>';
+  el.innerHTML = '<div class="vz wide" data-k="t"></div><div class="vz" data-k="x"></div><div class="vz" data-k="s"></div><div class="vz" data-k="b"></div><div class="vz" data-k="h"></div><div class="tip" hidden></div>';
   const tip = el.querySelector('.tip');
   const draw = () => {
     for (const box of el.querySelectorAll('.vz')){
       const w = Math.max(320, Math.floor(box.clientWidth - 26));      // 패널 패딩 12×2 + 테두리
       const k = box.dataset.k;
-      const html = k === 't' ? timeline(r, team, Math.min(w, 1240)) : k === 'b' ? butterfly(r, team, Math.min(w, 760)) : halves(r, team, Math.min(w, 760));
+      const html = k === 't' ? timeline(r, team, Math.min(w, 1240)) : k === 'x' ? xgRace(r, team, Math.min(w, 760)) : k === 's' ? shotMap(r, team, Math.min(w, 760)) : k === 'b' ? butterfly(r, team, Math.min(w, 760)) : halves(r, team, Math.min(w, 760));
       // 각 함수는 <div class="vz …">…</div> 래퍼를 돌려준다 → 안쪽만 옮긴다
       const tmp = document.createElement('div'); tmp.innerHTML = html;
       const inner = tmp.firstElementChild;
       box.innerHTML = inner ? inner.innerHTML : ''; box.hidden = !inner;
     }
+    el.querySelectorAll('.xhair').forEach(rc => {
+      const shots = (r.shots || []).filter(s => s.xg != null).sort((a, b) => a.minute - b.minute);
+      rc.addEventListener('pointermove', e => {
+        const b = rc.getBoundingClientRect(); const m = Math.round(Math.max(0, Math.min(1, (e.clientX - b.left) / b.width)) * Number(rc.dataset.end));
+        const cum = { v: 0, o: 0 }; for (const s of shots) if (s.minute <= m) cum[s.side] += s.xg;
+        tip.textContent = `${m}′ · ${team} ${cum.v.toFixed(2)} · ${r.opponent || '상대'} ${cum.o.toFixed(2)}`; tip.hidden = false;
+        tip.style.left = Math.min(e.clientX + 12, window.innerWidth - 300) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; });
+      rc.addEventListener('pointerleave', () => { tip.hidden = true; });
+    });
     el.querySelectorAll('.hit').forEach(g => {
       g.addEventListener('pointerenter', () => { tip.textContent = g.dataset.tip; tip.hidden = false; });
       g.addEventListener('pointermove', e => { tip.style.left = Math.min(e.clientX + 12, window.innerWidth - 300) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; });

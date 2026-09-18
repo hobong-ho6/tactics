@@ -172,6 +172,7 @@ CHE·LIV는 이것이 알론소·이라올라 **체제 첫 실측**이다 — 25
 `/api/v1/event/<eid>/incidents`의 득점·교체·카드(+GK 교체·VAR)를 **`match_events`**(minute·side·kind·player_id·assist·스코어)에,
 FotMob matchDetails 하프별 점유·xG·슈팅과 WhoScored 하프별 PPDA를 **`match_period_stats`**(1H/2H)에 넣는다 — 경기 분석 화면의
 타임라인·하프 비교·팀 대조 차트(`site/assets/matchviz.js`)가 이 두 표를 그린다. 산문(tactical_changes)에만 적으면 화면이 그릴 수 없다.
+⭐ **슛 단위도 정형으로**(migration 041 `match_shots`): SofaScore `/event/<eid>/shotmap`(xg·xgot·좌표·결과·상황). ⚠️ **컵·친선은 SofaScore가 슛 xG를 주지 않는다** → FotMob matchDetails `content.shotmap.shots`로 대체(제공사 `provider` 명기 — 한 경기 안에서 혼합 금지). xG 레이스·슛 맵이 이 표를 그린다.
 
 ### ⭐ PPDA·라인 프록시는 매 경기 필수 (2026-09-08 신설)
 `ppda_v/o`(+`ppda_num/den`, `ppda_method`=`core.whoscored.PPDA_METHOD`)와 `def_x_v/o`(+`def_x_method`)를 **같은 WhoScored 이벤트**에서

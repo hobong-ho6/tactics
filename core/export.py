@@ -464,6 +464,8 @@ def export_all(db_path=None, window="2026-summer"):
                                              FROM match_events WHERE match_id=? ORDER BY minute, id""", (report["match_id"],)) if report.get("match_id") else []
             report["periods"] = _rows(con, """SELECT period, possession_v, xg_v, xg_o, shots_v, shots_o, sot_v, sot_o, ppda_v, ppda_o
                                               FROM match_period_stats WHERE match_id=? ORDER BY period""", (report["match_id"],)) if report.get("match_id") else []
+            report["shots"] = _rows(con, """SELECT minute, added, side, player_id, player_name, xg, xgot, outcome, situation, body_part, x, y, provider
+                                            FROM match_shots WHERE match_id=? ORDER BY minute, id""", (report["match_id"],)) if report.get("match_id") else []
             report_file = ROOT / report["report_path"]
             report["report_markdown"] = (
                 report_file.read_text(encoding="utf-8") if report_file.is_file() else None)

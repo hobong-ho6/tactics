@@ -874,3 +874,18 @@ CREATE TABLE match_period_stats(
   source TEXT NOT NULL, confidence TEXT,
   UNIQUE(match_id, period)
 );
+CREATE TABLE match_shots(
+  id INTEGER PRIMARY KEY,
+  match_id INTEGER NOT NULL REFERENCES matches(id),
+  minute INTEGER NOT NULL, added INTEGER,
+  side TEXT NOT NULL CHECK(side IN ('v','o')),
+  player_id INTEGER REFERENCES players(id), player_name TEXT,
+  xg REAL, xgot REAL,
+  outcome TEXT,                 -- goal / save / miss / block / post (제공사 어휘를 정규화)
+  situation TEXT,               -- regular / corner / set-piece / fast-break / penalty / free-kick (제공사 어휘 그대로)
+  body_part TEXT,
+  x REAL, y REAL,               -- 제공사 좌표 그대로(SofaScore: 공격 방향 x 0~100, y 0~100 · FotMob: x 0~105, y 0~68) — 화면이 provider별로 변환
+  provider TEXT NOT NULL,       -- 'SofaScore' | 'FotMob'
+  source TEXT NOT NULL, confidence TEXT
+);
+CREATE INDEX ix_match_shots_m ON match_shots(match_id, minute);
