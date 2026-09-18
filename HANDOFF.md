@@ -8,7 +8,7 @@
 
 ## 현재 상태
 
-> **2026-09-18 KST · 세션 ㉔ 「시각화 완주」 · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 `7b4961f`**(푸시 완료 · 작업 트리 깨끗).
+> **2026-09-18 KST · 세션 ㉔ 「시각화 완주」 · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 `3c31b65`**(푸시 완료 · 작업 트리 깨끗).
 > 사용자 지시 「데이터는 많은데 전달이 안 된다 — 다른 축구 분석 사이트를 조사해 개선」에 따라 **전 메뉴 시각화 1차를 끝냈다**. 모듈 4개(경기·선수·스쿼드·진화·리포트).
 >
 > | 메뉴 | 그림 | 모듈 |
@@ -280,9 +280,7 @@
 - 스크립트 층: **대량 수집** `collect_fotmob_players.py`·`collect_understat_shots.py`·`collect_event.py`·fut.gg 계열(`collect_futgg_{history,cards,evolutions,prices}.py`) ·
   **읽기 전용 진단**(판단은 사람) `check_fit_drift.py`·`check_side_bimodality.py`·`check_height_bimodality.py`·`audit_measured_samples.py`(`[표본판정]` 존중)·`db_diff.py`(NOT NULL→NULL 전이) · 회귀 `test_g13/g14/g8x_g15_regression.py` ·
   **채움 전용**(사람 손을 덮지 않음) `backfill_pos_class.py`·`index_transcripts.py`·`refresh_duty_applied.py`·`write_video_summary.py` · **원장 쓰기** `fut_club.py`·`tactic_changes.py`.
-- ⛔⛔ **검색엔진 연도 혼입 주의.** 같은 상대·같은 달·유사 스코어의 전년도 경기는 발행일을 반드시 확인한다.
-  ⭐ **엔진 요약 자체가 오염되는 유형**도 있다(과거 시즌 사건을 현재 확정 사실로 제시) — **엔진 요약은 근거로 채택 불가, 개별 URL 실물 확인만.**
-  ⚠️ **verbatim 인용은 요약 경유 시 열화된다.** 실질만 채택하고 인용문은 원문 확보 전까지 쓰지 않는다.
+- ⛔⛔ **검색엔진 연도 혼입 주의** — 같은 상대·같은 달의 전년도 경기는 발행일을 반드시 확인한다. ⭐ **엔진 요약 자체가 오염되는 유형**도 있어(과거 사건을 현재 사실로 제시) 요약은 근거로 채택하지 않고, verbatim 인용은 원문 확보 전까지 쓰지 않는다.
 - Understat은 빅5(+RFPL)만(챔피언십·에레디비시·리가2 없음). Sofifa 35속성/playstyles·FBref 12축은 403 결손.
 - ⏰ **AVL LM/RM 슬롯 x 재검토는 표본 부족으로 보류**(obs#349). 재시도 조건: 정상 경기 누적 + 해당 경기 `cells` 수집.
 - ⭐ **1차 소스 메모**: `laliga.com/clubs/{club}/transfers`는 등록 기준 1차 소스로 유효하나 날짜가 **행정 등록일**이라 구단 발표일과 다를 수 있다
