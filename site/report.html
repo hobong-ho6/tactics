@@ -21,6 +21,7 @@
   <p class="dim" style="font-size:12.5px;margin:0 0 8px">두 종류가 섞이지 않게 나눈다. <b>설정 변경</b>(<code>tactic_change_log</code>) = 슬롯 정본 역할·팀 설정 3축·선발 처방이 실제로 <b>바뀐</b> 기록(before → after · 사유).
   <b>경기 반영</b> = 경기 분석이 프로필 축에 덧붙인 관찰(<code>[날짜 경기]</code> 표식) — 대부분 시즌 결론을 <b>유지·보강·한정</b>하는 근거이고, 그 자체가 설정 변경은 아니다.
   개별 경기 재현 프리셋(<code>match_game_setups</code>)은 여기 없다 — 경기 분석 메뉴가 담당한다.</p>
+  <div id="histviz" class="vzcard" style="display:block;margin:0 0 10px"></div>
   <div class="menubar" id="histf"></div><ul id="hist" style="list-style:none;padding:0;margin:0"></ul></div>
 
 <p class="dim">서사·분석 전문은 docs/1x 감독 문서가 정본이다 — 이 페이지는 DB에 확정 기록된
@@ -29,7 +30,8 @@
 import { mountHeader, loadTeam, slotCandidates } from './assets/data.js?v=20260813-slot-candidates';
 import { mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
 import { prose } from './assets/prose.js';
-import { roleLabel, focusLabel, humanize, mountRawToggle } from './assets/labels.js?v=20260918';   // 긴 DB 산문은 공용 렌더러로 끊어 읽는다(player.html과 동일)
+import { roleLabel, focusLabel, humanize, mountRawToggle } from './assets/labels.js?v=20260918';
+import { laneTimeline, mountTips as histTips } from './assets/histviz.js?v=20260918';   // 긴 DB 산문은 공용 렌더러로 끊어 읽는다(player.html과 동일)
 
 const { team, regime } = await mountHeader('report.html');
 const td = await loadTeam(team);
@@ -184,12 +186,28 @@ const lastCanon = (td.slot_canon ?? []).map(c => c.updated).filter(Boolean).sort
 document.getElementById('asof').innerHTML =
   `<span><b>시즌 전술 최종 갱신</b> <span class="badge hi">${[lastChange, lastProfile, lastCanon].filter(Boolean).sort().slice(-1)[0] ?? '—'}</span></span>
    <span class="dim">설정 변경 마지막 <b>${lastChange ?? '—'}</b>(${changes.filter(c => c.before != null).length}건) · 슬롯 정본 <b>${lastCanon ?? '—'}</b> · 프로필 마지막 경기 반영 <b>${lastReflect ?? lastProfile ?? '—'}</b>(${reflections.length}건)</span>`;
-let HF = 'all';
+let HF = 'all', HDATE = null;   // HDATE = 타임라인에서 고른 날짜(목록을 그날로 좁힌다)
+/* 층별 4레인 타임라인 — 「언제 무엇이 바뀌었나」를 한 줄로 본다. 목록(아래)이 표 뷰다. */
+function drawHistViz(){
+  const el = document.getElementById('histviz');
+  const evs = [
+    ...changes.map(c => ({ date: c.date, lane: c.layer, title: `${c.key}: ${c.before == null ? '신설 → ' + (c.after ?? '') : c.after == null ? (c.before + ' → 삭제') : `${c.before} → ${c.after}`}` })),
+    ...reflections.map(r => ({ date: r.date, lane: 'reflect', title: `${AXES[r.axis] ?? r.axis}${r.tag ? ' ' + r.tag : ''}` })),
+  ];
+  if (!evs.length){ el.innerHTML = '<span class="dim" style="font-size:12px">기록 없음</span>'; return; }
+  const W = Math.min(1100, Math.max(320, (el.clientWidth || (document.body.clientWidth - 68)) - 26));
+  el.innerHTML = laneTimeline(evs, { W });
+  histTips(el, (date) => { HDATE = (HDATE === date ? null : date); drawHist(); document.getElementById('histf').scrollIntoView({ block: 'nearest' }); });
+}
 function drawHist(){
   document.getElementById('histf').innerHTML = [['all', '전부'], ['change', '설정 변경만'], ['reflect', '경기 반영만']]
     .map(([k, l]) => `<button class="act ghost${HF === k ? ' on' : ''}" data-f="${k}" style="background:none;border:1px solid var(--line);color:${HF === k ? 'var(--acc)' : 'var(--txt)'};border-radius:8px;padding:4px 10px;cursor:pointer">${l}</button>`).join('');
   document.querySelectorAll('#histf button').forEach(b => b.addEventListener('click', () => { HF = b.dataset.f; drawHist(); }));
-  const items = [...changes, ...reflections].filter(x => HF === 'all' || x.kind === HF).sort((a, b) => b.date.localeCompare(a.date));
+  const items = [...changes, ...reflections].filter(x => (HF === 'all' || x.kind === HF) && (!HDATE || x.date === HDATE)).sort((a, b) => b.date.localeCompare(a.date));
+  const fbar = document.getElementById('histf');
+  if (HDATE) fbar.insertAdjacentHTML('beforeend',
+    `<button class="act ghost" id="histclear" style="background:none;border:1px solid var(--acc);color:var(--acc);border-radius:8px;padding:4px 10px;cursor:pointer">${HDATE} 만 보기 해제 ✕</button>`);
+  document.getElementById('histclear')?.addEventListener('click', () => { HDATE = null; drawHist(); });
   document.getElementById('hist').innerHTML = items.map(x => x.kind === 'change'
     ? `<li style="padding:6px 0;border-bottom:1px solid var(--line)"><span class="badge ${x.before == null ? '' : 'mid'}">${x.date}</span> <b>${LAYER_KR[x.layer] ?? x.layer}</b> <code>${x.key}</code>
          ${x.before == null ? `<span class="dim">신설 →</span> <b>${humanize(x.after ?? '')}</b>` : x.after == null ? `<b>${humanize(x.before)}</b> <span class="dim">→ 삭제</span>` : `<span class="dim">${humanize(x.before)}</span> → <b>${humanize(x.after)}</b>`}
@@ -197,7 +215,8 @@ function drawHist(){
     : `<li style="padding:6px 0;border-bottom:1px solid var(--line)"><span class="badge">${x.date}</span> <span class="dim">경기 반영 ·</span> <b>${AXES[x.axis] ?? x.axis}</b> <small class="dim">${x.tag}</small>
          <div style="font-size:13px;margin-top:2px">${prose(x.text)}</div></li>`).join('') || '<li class="dim">기록 없음</li>';
 }
-drawHist();
+drawHistViz(); drawHist();
+new ResizeObserver(() => drawHistViz()).observe(document.getElementById('histviz'));
 
 
 mountGlossaryTips(); mountRawToggle(document.getElementById('asof'));
