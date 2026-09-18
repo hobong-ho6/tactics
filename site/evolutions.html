@@ -373,6 +373,26 @@ const api = async (cmd, body) => {
   } catch(e){ return { ok: false, message: `쓰기 API 없음(정적 배포본). 아래 명령을 저장소에서 실행할 것:\n${cli}`, cli }; }
 };
 const say = (el, r) => { el.innerHTML = `<div class="msg ${r.ok ? 'ok' : 'err'}">${esc(r.message)}</div>`; if (r.ok) setTimeout(() => location.reload(), 900); };
+/* ── 케미스트리 스타일 추천 (2026-09-19, 사용자 지시 「선수에게 부여할 호크나 엔진 이런 케미」) ──
+   점수 = Σ(역할 가중 × **실제로 오르는 양**). ⛔ 부스트 숫자를 그대로 더하지 않는다 — 속성 상한이 99라
+   이미 97인 속성에 +9를 줘도 2밖에 안 오른다. 그 낭비를 빼야 「이 선수에게」 맞는 스타일이 나온다.
+   ⚠️ 부스트는 **개인 케미 3점**일 때 값이다(1~2점이면 줄어든다) — 위 케미 XI에서 3점인 선수에게 붙일 것.
+   처방 역할이 없는 선수(우리 DB 밖)는 포지션 기본 역할로 계산하고 화면에 그렇게 적는다. */
+const CHEM_STYLES = EVO.chem_styles || [];
+const POS_ROLE = { GK: 'gk_goalkeeper', CB: 'cb_defender', LB: 'fb_fullback', RB: 'fb_fullback',
+                   CDM: 'dm_holding', CM: 'cm_b2b', CAM: 'cam_playmaker', LM: 'wm_widemid', RM: 'wm_widemid',
+                   LW: 'w_winger', RW: 'w_winger', ST: 'st_advanced' };
+function styleRank(attrsJson, roleId, isGk){
+  const w = KEYW[roleId] || {}, at = J(attrsJson, {}) || {};
+  if (!CHEM_STYLES.length || !Object.keys(at).length || !Object.keys(w).length) return [];
+  return CHEM_STYLES.filter(s => !!s.is_gk === !!isGk).map(s => {
+    const parts = Object.entries(J(s.boosts, {}) || {}).map(([a, v]) => {
+      const gain = Math.min(v, Math.max(0, 99 - (at[a] ?? 0)));
+      return { a, gain, s: (w[a] || 0) * gain };
+    }).filter(x => x.s > 0).sort((x, y) => y.s - x.s);
+    return { name: s.name, score: parts.reduce((t, x) => t + x.s, 0), top: parts.slice(0, 3) };
+  }).sort((a, b) => b.score - a.score);
+}
 /* ── 케미스트리 제안 (2026-09-19, 사용자 지시 「적용할 케미스트리도 제안해줘」) ──
    FC27 기준선: 클럽 2/4/7명 · 리그 3/5/8명 · 국적 2/5/8명 → 각 1/2/3점, 선수 1명당 3점 상한, 팀 33점 만점.
    ⛔ 포지션이 맞지 않으면 그 선수는 0점이고 **카운트에도 들어가지 않는다** — 그래서 이건 「슬롯 배치 문제」다.
@@ -431,11 +451,17 @@ function renderChem(owned){
   const color = v => v === 3 ? 'var(--ok)' : v === 2 ? 'var(--warn)' : v ? 'var(--warn)' : 'var(--bad)';
   const rows = slots.map((s, i) => {
     const p = xi[i];
-    if (!p) return `<tr><td><b>${s}</b></td><td colspan="4" class="dim">이 포지션을 볼 수 있는 보유 카드가 없다 — 공백</td></tr>`;
+    if (!p) return `<tr><td><b>${s}</b></td><td colspan="5" class="dim">이 포지션을 볼 수 있는 보유 카드가 없다 — 공백</td></tr>`;
     const v = chemPer.get(p.id);
+    const pres = PRES[p.player_id], roleId = pres?.role_id || POS_ROLE[s];
+    const st = styleRank(p.attrs, roleId, s === 'GK');
+    const gains = st[0] ? st[0].top.map(x => `${x.a}+${x.gain}`).join(' · ') : '';
     return `<tr><td><b>${s}</b></td>
       <td>${esc(p.name)} <small class="dim">OVR ${chemOvr(p) || '—'}</small></td>
       <td style="color:${color(v)}"><b>${v}</b>/3</td>
+      <td>${st[0] ? `<b>${esc(st[0].name)}</b><small class="dim"> ${esc(gains)}</small>
+             <br><small class="dim">차선 ${st.slice(1, 3).map(x => esc(x.name)).join(' · ')} · 기준 ${pres ? '처방' : '포지션 기본'} ${esc(ROLE_KR[roleId] || roleId || '—')}</small>`
+           : '<span class="dim">속성 미수집 — 추천 불가</span>'}</td>
       <td class="dim">${esc(p.nation || '?')} · ${esc(p.league || '?')} · ${esc(p.club || '?')}</td>
       <td class="dim">${esc(p.positions || '')}</td></tr>`;
   }).join('');
@@ -452,13 +478,16 @@ function renderChem(owned){
       <span class="chip" style="border-color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};font-size:15px"><b>팀 케미 ${total}</b>/33</span>
       <span class="chip">평균 OVR ${filled.length ? Math.round(filled.reduce((s, p) => s + chemOvr(p), 0) / filled.length) : '—'}</span>
       <small class="dim">보유 ${pool.length}장 중 ${CHEM_F} 기준</small></div>
-    <table>${`<tr><th>슬롯</th><th>선수</th><th>케미</th><th>국적 · 리그 · 클럽</th><th>가능 포지션</th></tr>`}${rows}</table>
+    <table>${`<tr><th>슬롯</th><th>선수</th><th>케미</th><th>추천 스타일</th><th>국적 · 리그 · 클럽</th><th>가능 포지션</th></tr>`}${rows}</table>
     <p class="dim" style="font-size:12px;margin:8px 0 0">구성: ${comp}</p>
     ${total < 33 && gaps.length ? `<p style="font-size:13px;margin:6px 0 0">다음 문턱: ${gaps.slice(0, 4).join(' · ')}</p>` : ''}
     ${total >= 33 ? `<p style="font-size:13px;margin:6px 0 0">만점이다 — 이 조합에서는 <b>케미가 아니라 카드 품질·역할 적합</b>이 다음 제약이다.</p>` : ''}
     ${special.length ? `<p class="dim" style="font-size:12px">⚠️ 아이콘·히어로 ${special.length}명이 XI에 있다 — 이들이 모든 리그에 주는 +1은 여기서 세지 않아 <b>실제 케미는 이 값 이상</b>일 수 있다.</p>` : ''}
     <p class="dim" style="font-size:12px">클럽 2/4/7 · 리그 3/5/8 · 국적 2/5/8명에서 1/2/3점(선수당 3점 상한).
-    포지션이 맞지 않는 선수는 0점이고 카운트에도 안 들어간다. <b>감독 보너스(+1)는 빼고 셌다</b> — 감독을 맞추면 이보다 높다.</p>`;
+    포지션이 맞지 않는 선수는 0점이고 카운트에도 안 들어간다. <b>감독 보너스(+1)는 빼고 셌다</b> — 감독을 맞추면 이보다 높다.</p>
+    <p class="dim" style="font-size:12px">추천 스타일은 <b>처방 역할의 핵심 속성</b>에 실제로 얹히는 양으로 고른다(99 상한 반영) —
+    부스트 총합이 큰 스타일이 아니라 <b>그 역할에 쓰이는 속성</b>을 올리는 쪽이 위로 온다. 표기는 최대 케미(3점) 기준이다.
+    ⚠️ 지금 무엇이 붙어 있는지는 우리 원장에 아직 없다 — GG Club 싱크가 값을 주지만 적재 전이다.</p>`;
 }
 function renderClub(){
   const C = EVO.club || { accounts: [], players: [], log: [] };

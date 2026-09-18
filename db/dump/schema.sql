@@ -905,3 +905,14 @@ CREATE TABLE fc_meta_snapshots(
   UNIQUE(game_version, pulled, kind, category, item)
 );
 CREATE INDEX ix_fc_meta_snapshots ON fc_meta_snapshots(game_version, pulled, kind);
+CREATE TABLE fc_chemistry_styles(
+  id INTEGER PRIMARY KEY,
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  style_id INTEGER NOT NULL,        -- fut.gg 내부 id(1=Basic … 24=Cat). EA 소모품 id와 다르다
+  name TEXT NOT NULL,               -- 'Hawk' · 'Engine' …
+  is_gk INTEGER NOT NULL DEFAULT 0,
+  boosts TEXT NOT NULL,             -- {"공격 위치 선정": 9, …} — 최대 케미(3) 기준 한글 속성 라벨 JSON
+  pulled TEXT NOT NULL,
+  source TEXT NOT NULL, confidence TEXT NOT NULL,
+  UNIQUE(game_version, style_id)
+);
