@@ -92,6 +92,16 @@ def export_all(db_path=None, window="2026-summer"):
             continue
         written.append(_write(SITE_DATA / "game_stats" / f"{gv}.json", {g["name_kr"]: g for g in gs}))
 
+    # ── game_stats/meta.json — 「지금 메타」 스냅샷(migration 042). 최신 pulled + 과거 날짜 목록.
+    #    ⛔ 우리 감독 재현(team_tactic_setups)과 다른 층이다 — 화면이 섞어 쓰지 않도록 파일부터 분리한다.
+    meta_rows = _rows(con, """SELECT game_version, pulled, kind, category, item, value, alternatives, scope, priority,
+                                     rationale, source, confidence
+                              FROM fc_meta_snapshots
+                              WHERE pulled=(SELECT MAX(pulled) FROM fc_meta_snapshots)
+                              ORDER BY kind, priority IS NULL, priority, category, item""")
+    meta_dates = [r["pulled"] for r in _rows(con, "SELECT DISTINCT pulled FROM fc_meta_snapshots ORDER BY pulled DESC")]
+    written.append(_write(SITE_DATA / "game_stats" / "meta.json", {"rows": meta_rows, "pulled_dates": meta_dates}))
+
     # ── game_stats/history.json — 버전별 변화 추적(player_id 키, 2026-09-12 신설) ──
     # ⭐ 한 버전에 시점이 둘이다: 「출시판」(fut.gg base 아이템 — collect_futgg_history.py, FC27 fut.gg 공식 드롭)과
     #    「라이브판」(sofifa 시즌 중 로스터). 기준 시점을 섞으면 Δ 부호가 뒤집힌다(obs#249) — kind로 갈라 내보낸다.

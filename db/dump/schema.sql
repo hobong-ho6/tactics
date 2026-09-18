@@ -889,3 +889,19 @@ CREATE TABLE match_shots(
   source TEXT NOT NULL, confidence TEXT
 );
 CREATE INDEX ix_match_shots_m ON match_shots(match_id, minute);
+CREATE TABLE fc_meta_snapshots(
+  id INTEGER PRIMARY KEY,
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  pulled TEXT NOT NULL,
+  kind TEXT NOT NULL CHECK(kind IN ('setting','tactic')),
+  category TEXT NOT NULL,          -- passing / shooting / defending / switching / camera / control / formation / team_setting
+  item TEXT NOT NULL,              -- 설정 이름 또는 포메이션 이름
+  value TEXT,                      -- 권장값 또는 사용률 요약
+  alternatives TEXT,               -- 갈리는 선택지·수치 범위
+  scope TEXT,                      -- competitive / general / pro / community
+  priority INTEGER CHECK(priority BETWEEN 1 AND 3),
+  rationale TEXT,                  -- 왜 그런가(가능하면 FC27 시스템 변경과 연결)
+  source TEXT NOT NULL, confidence TEXT NOT NULL,
+  UNIQUE(game_version, pulled, kind, category, item)
+);
+CREATE INDEX ix_fc_meta_snapshots ON fc_meta_snapshots(game_version, pulled, kind);

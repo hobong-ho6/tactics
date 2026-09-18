@@ -12,12 +12,24 @@
 .gm-search{width:100%;max-width:420px;padding:8px 12px;background:var(--panel);color:var(--txt);
   border:1px solid var(--line);border-radius:8px;font-size:14px}
 .gm-search:focus{outline:none;border-color:var(--acc)}
+/* 메타 표 — 설명 칸이 좁아 세로 국수가 되던 것을 고정 폭으로 (2026-09-19) */
+.metatbl{table-layout:fixed;width:100%}
+.metatbl td:nth-child(1){width:22%} .metatbl td:nth-child(2){width:24%} .metatbl td:nth-child(3){width:54%}
+#metaTac{table-layout:fixed;width:100%}
+#metaTac td:nth-child(1),#metaTac th:nth-child(1){width:22%} #metaTac td:nth-child(2),#metaTac th:nth-child(2){width:26%}
 </style></head><body>
 <div id="hdr"></div>
 <h1>FC 게임 시스템 분석 <small class="dim" id="gv"></small></h1>
 <div class="panel"><h2>시스템 분석 — 구현에 영향을 주는 확정 사실 <small class="dim">game_system_changes</small></h2>
   <table id="chg"></table></div>
 
+<div class="panel"><h2>지금 메타 <small class="dim">— 커뮤니티·프로가 쓰는 설정과 포메이션 · 날짜별 스냅샷</small></h2>
+  <p class="dim" style="font-size:12.5px;margin:0 0 8px">⛔ 이 표는 <b>메타</b>이고, 리포트의 전술 시트는 <b>에메리 재현</b>이다 — 층이 다르니 섞어 읽지 말 것.
+  우선순위는 <b>우리 판단</b>(효과 크고 위험 낮은 것부터)이고 출처의 주장이 아니다.</p>
+  <div id="metaNote" class="dim" style="font-size:12px;margin-bottom:6px"></div>
+  <div id="metaSet"></div>
+  <div class="kv" style="margin:12px 0 4px"><b>포메이션·팀 설정 사용률</b></div>
+  <table id="metaTac"></table></div>
 <div class="panel"><h2>조작 체계 <small class="dim">이동 속도·모디파이어 버튼 — PlayStyle 발동 조건의 전제</small></h2>
   <table id="ctrlSpeed"></table>
   <div class="kv" style="margin-top:12px"><b>모디파이어 버튼</b> <small class="dim">Xbox 기준, PS는 괄호</small></div>
@@ -50,11 +62,39 @@
 <p class="dim">EA 피치노트 원문 분석·판정 이력 전문은 docs/20이 정본. PlayStyles·스탯·조작·세리머니 서사 정본은 docs/22.
 FIFA→FC 변천사는 FC27 온보딩(docs/21) 때 소급 기입.</p>
 <script type="module">
-import { mountHeader, loadKernels } from './assets/data.js';
+import { mountHeader, loadKernels, loadGameStats } from './assets/data.js';
 import { prose } from './assets/prose.js';
 import { CONTROLS, STATS, STATS_NOTE, PLAYSTYLE_CATEGORIES, PLAYSTYLES, PLAYSTYLE_NOTE, esc, mountSearchableCatalog } from './assets/gamemechanics.js';
 import { CATEGORIES as CELE_CATEGORIES, CELEBRATIONS, CONTEXT_CELEBRATIONS, mountCelebrationSearch } from './assets/celebrations.js';
 await mountHeader('game.html');
+/* 「지금 메타」 — game_stats/meta.json(migration 042). 설정은 우선순위 묶음으로, 전술은 표로. */
+const META = await loadGameStats('meta').catch(() => ({ rows: [], pulled_dates: [] }));
+const bold = t => String(t).replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
+{
+  const rows = META.rows || [];
+  const PR = { 1: ['먼저 바꿀 것', 'var(--ok)'], 2: ['적응 후', 'var(--warn)'], 3: ['주의·비권장', 'var(--bad)'] };
+  document.getElementById('metaNote').innerHTML = rows.length
+    ? `수집 ${rows[0].pulled} · ${META.pulled_dates.length}개 스냅샷${META.pulled_dates.length > 1 ? `(이전: ${META.pulled_dates.slice(1, 4).join(' · ')})` : ''} · 출처는 항목 hover`
+    : '메타 스냅샷 미수집';
+  const set = rows.filter(r => r.kind === 'setting');
+  document.getElementById('metaSet').innerHTML = [1, 2, 3, null].map(p => {
+    const g = set.filter(r => (r.priority ?? null) === p); if (!g.length) return '';
+    const [label, col] = PR[p] ?? ['참고', 'var(--dim)'];
+    return `<div style="margin:8px 0"><div class="kv" style="margin-bottom:4px"><span class="badge" style="border-color:${col};color:${col}">${label}</span>
+        <small class="dim">${g.length}항목</small></div>
+      <table class="metatbl">${g.map(r => `<tr title="${esc(r.source)}">
+        <td><small class="dim">${esc(r.category)}</small><br><b>${esc(r.item)}</b></td>
+        <td><b style="color:${col}">${esc(r.value ?? '')}</b></td>
+        <td><small>${bold(esc(r.rationale ?? ''))}${r.alternatives ? `<br><span class="dim">대안: ${bold(esc(r.alternatives))}</span>` : ''}</small></td></tr>`).join('')}</table></div>`;
+  }).join('');
+  const tac = rows.filter(r => r.kind === 'tactic');
+  document.getElementById('metaTac').innerHTML = tac.length
+    ? '<tr><th>항목</th><th>사용률·값</th><th>세부·메모</th></tr>' + tac.map(r => `<tr title="${esc(r.source)}">
+        <td><small class="dim">${esc(r.category)}</small><br><b>${esc(r.item)}</b></td>
+        <td>${bold(esc(r.value ?? ''))}</td>
+        <td><small>${bold(esc(r.rationale ?? ''))}${r.alternatives ? `<br><span class="dim">${bold(esc(r.alternatives))}</span>` : ''}</small></td></tr>`).join('')
+    : '<tr><td class="dim">미수집</td></tr>';
+}
 
 // 조작 체계
 document.getElementById('ctrlSpeed').innerHTML = '<tr><th>속도</th><th>트리거</th></tr>' +
