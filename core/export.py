@@ -458,6 +458,12 @@ def export_all(db_path=None, window="2026-summer"):
                                               WHERE f2.regime_id=? AND f2.pos=mpp.pos_label)
                 WHERE mpp.report_id=? ORDER BY mpp.sort_order,p.id""",
                 (rid, rid, report["id"]))
+            # 타임라인·하프별 정형 행(migration 040) — 경기 화면 차트(matchviz.js)의 원료. 없으면 빈 배열(화면이 「미수집」으로 쓴다).
+            report["events"] = _rows(con, """SELECT minute, added, side, kind, player_id, player_name, assist_player_id, assist_name,
+                                                    player_out_id, player_out_name, score_v, score_o, note
+                                             FROM match_events WHERE match_id=? ORDER BY minute, id""", (report["match_id"],)) if report.get("match_id") else []
+            report["periods"] = _rows(con, """SELECT period, possession_v, xg_v, xg_o, shots_v, shots_o, sot_v, sot_o, ppda_v, ppda_o
+                                              FROM match_period_stats WHERE match_id=? ORDER BY period""", (report["match_id"],)) if report.get("match_id") else []
             report_file = ROOT / report["report_path"]
             report["report_markdown"] = (
                 report_file.read_text(encoding="utf-8") if report_file.is_file() else None)

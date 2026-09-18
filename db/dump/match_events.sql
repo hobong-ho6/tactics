@@ -1,0 +1,12 @@
+INSERT INTO match_events VALUES(1,107,7,NULL,'v','goal',60,'타미 아브라함',30,'헤밍스',NULL,NULL,1,0,NULL,'reports/match-watch/2026-09-16-avl-coventry.md §1 (SofaScore incidents 원천, 2026-09-18 정형화)','HIGH');
+INSERT INTO match_events VALUES(2,107,27,NULL,'o','goal',NULL,'토르프',NULL,NULL,NULL,NULL,1,1,NULL,'reports/match-watch/2026-09-16-avl-coventry.md §1','HIGH');
+INSERT INTO match_events VALUES(3,107,40,NULL,'v','goal',21,'바클리',86,'음바예',NULL,NULL,2,1,NULL,'reports/match-watch/2026-09-16-avl-coventry.md §1','HIGH');
+INSERT INTO match_events VALUES(4,107,59,NULL,'v','goal',60,'타미 아브라함',21,'바클리',NULL,NULL,3,1,NULL,'reports/match-watch/2026-09-16-avl-coventry.md §1','HIGH');
+INSERT INTO match_events VALUES(5,107,46,NULL,'v','gk_change',132,'스즈키 지온',NULL,NULL,19,'비조',NULL,NULL,'비조 등 통증(에메리 회견) — 시즌 첫 하프타임 GK 교체','리포트 §1·D+1 (a)','HIGH');
+INSERT INTO match_events VALUES(6,107,64,NULL,'v','sub',55,'만잠비',NULL,NULL,10,'맥긴',NULL,NULL,NULL,'리포트 §1','HIGH');
+INSERT INTO match_events VALUES(7,107,64,NULL,'v','sub',14,'부엔디아',NULL,NULL,86,'음바예',NULL,NULL,NULL,'리포트 §1','HIGH');
+INSERT INTO match_events VALUES(8,107,69,NULL,'v','sub',76,'잭슨',NULL,NULL,60,'타미 아브라함',NULL,NULL,NULL,'리포트 §1','HIGH');
+INSERT INTO match_events VALUES(9,107,79,NULL,'v','sub',59,'알리송',NULL,NULL,30,'헤밍스',NULL,NULL,NULL,'리포트 §1','HIGH');
+INSERT INTO match_events VALUES(10,107,26,NULL,'v','yellow',21,'바클리',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'리포트 §1 (27′ 실점의 기점 파울)','HIGH');
+INSERT INTO match_events VALUES(11,107,43,NULL,'v','yellow',90,'완비사카',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'리포트 §1','HIGH');
+INSERT INTO match_events VALUES(12,107,90,NULL,'v','yellow',14,'부엔디아',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'리포트 §1','HIGH');

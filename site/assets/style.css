@@ -2,6 +2,8 @@
 :root{
   --bg:#0b0f14; --panel:#121826; --line:rgba(255,255,255,.12);
   --txt:#e8ecf3; --dim:#9aa7b8; --acc:#ff8a3d; --ok:#4cd97b; --warn:#ffd54d; --bad:#ff6b6b;
+  /* 데이터 시각화 시리즈색 — 다크 서피스(#121826)에서 dataviz 검증기 통과(2026-09-18): 우리 팀 / 상대 */
+  --viz-us:#d95926; --viz-them:#3987e5; --viz-grid:rgba(255,255,255,.08);
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--txt);
@@ -243,3 +245,18 @@ details.match-players>summary,details.report-source>summary{color:var(--acc);cur
 .refs-inline{display:block;margin-top:3px;color:var(--dim);font-size:11px;opacity:.8}
 .rawtoggle{font-size:11px;padding:2px 8px;margin-left:auto;background:none;border:1px solid var(--line);color:var(--dim);border-radius:8px;cursor:pointer}
 details.claimnote summary{list-style:none} details.claimnote summary::-webkit-details-marker{display:none}
+
+/* 경기 시각화(matchviz.js) */
+.mviz{display:grid;grid-template-columns:1fr;gap:14px;margin:10px 0}
+.mviz .vz{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.mviz h4{margin:0 0 6px;font-size:13px;color:var(--dim);font-weight:600}
+.mviz svg{width:100%;max-width:760px;height:auto;display:block;overflow:visible;margin:0 auto}
+.mviz .vz.wide svg{max-width:none}
+.mviz text{font:11px -apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;fill:var(--txt)}
+.mviz text.dim{fill:var(--dim)} .mviz text.sm{font-size:10px}
+.mviz .lg{display:flex;gap:14px;font-size:12px;color:var(--dim);margin-top:4px;flex-wrap:wrap}
+.mviz .lg i{display:inline-block;width:12px;height:4px;border-radius:2px;vertical-align:middle;margin-right:5px}
+.mviz .hit{cursor:default} .mviz .hit:hover{filter:brightness(1.25)}
+.mviz .tip{position:fixed;z-index:50;background:#0b0f14;border:1px solid var(--line);border-radius:8px;padding:6px 9px;font-size:12px;pointer-events:none;max-width:280px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+.mviz .tip b{font-size:13px}
+@media(min-width:1100px){.mviz{grid-template-columns:3fr 2fr}.mviz .vz.wide{grid-column:1/-1}}

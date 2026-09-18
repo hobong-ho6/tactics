@@ -34,6 +34,9 @@
 >   진화: 09-18 스냅샷 167경로/53명(pulled 날짜별 적층; 09-17 174경로는 attrs 없음) · 카탈로그 13/14종(2495 숨김) · 현 스냅샷 Role++ 0·유료 0(출시 전 도입용만).
 >   `fc_role_familiarity_map` 98행으로 FC27 Role+/++ 해석 — **FC27 `game_roles` 커널은 여전히 없다**(obs#629).
 >
+> **㉓ 경기 시각화 1차**(migration 040): `match_events`·`match_period_stats` 정형 층 + `site/assets/matchviz.js`(타임라인·팀 대조 버터플라이·하프 비교, dataviz 규약 — 시리즈색 `--viz-us #d95926`/`--viz-them #3987e5` 다크 서피스 검증 통과).
+> report 43만 원문에서 정형화(이벤트 12·하프 2). ⏰ 다른 경기는 `match_events` 비어 「미수집」 표시 — match-watch §3에 incidents→match_events·하프 스탯 단계 추가(다음 회차부터). 사용자 지시 「모든 메뉴의 텍스트를 시각적으로」는 계속 진행(할 일 00-⑸).
+>
 > **⑳ 코번트리전(report 43) 유튜브 전수 14편 반영**(`e9166fa`) — 요약 14 · `video_impl_claims` 21 · obs#825~829 · `player_duties` 245(음바예 HELD) · 프로필 rotation·set_pieces 덧붙임 · 리포트 「D+1 추적 보강」.
 > ⭐⭐ **obs#825 「완비사카 하이브리드 백3」(UTV·1874 2소스) 기각** — 실측 avg_y 14.69→툴x 85.3(터치라인). 2소스 일치가 실측을 이기지 않는다(불변규칙 3). 전진 억제는 정합 → 억제형 풀백 유지.
 > ⭐ obs#826 음바예 **「선발 게이트 = 원정 수비 부담」**(3티어 단일) · 에메리 1차 「his speed」 · 1874 「우측 폭 유지 지시」(툴x 72.4 = 방향 정합). 검증: **토트넘 원정 우측 선택**.
@@ -169,6 +172,7 @@
     ⑴ **FC27 출시(09-25) 후 재수집** — `collect_futgg_evolutions.py --games 27 --fill-catalog`(유료·다단계·Role++ 진화가 그때 열린다) · 시세는 `futgg-prices-daily`가 매일 돌린다(첫 실행 「Run now」 선승인).
     ⑵ **GG Club 임포터** — 사용자가 fut.gg 로그인 + EA 연결을 직접 마치면(A안 결정) 패널에서 GG Club 구단 페이지를 **읽기만** 해 JSON → `fut_club.py import --account main --source "gg-club YYYY-MM-DD"`. ⛔ 로그인 대행·EA API 호출 금지.
     ⑶ 진화 카탈로그 2495(숨김) 확보 방법 · FC27 `game_roles` 커널(obs#629) 확보 후 `fc_role_familiarity_map`·`game_role_key_attrs` 대조 · 카드 없는 4명 FC27 미수록 확정 여부.
+    ⑸ **시각화 확장(사용자 지시 「모든 메뉴의 텍스트 정보를 시각적으로」)** — 다음 순서: ⓐ 기존 경기 44·45(+이전 완료본)의 incidents·하프 스탯 소급 적재 ⓑ 선수 화면 「버전별 변화」→ 덤벨/스파크라인, 평가 등급 타임라인 ⓒ 리포트 「전술 갱신 히스토리」→ 층별 타임라인 ⓓ 스쿼드 화면 슬롯 적합도 히트맵 ⓔ 진화 탭 6스탯 Δ 덤벨. 규약은 dataviz 스킬(형 선택→색 역할→검증기→마크 스펙→호버→표 뷰).
     ⑷ 라벨 사전(`labels.js` FIELD_KR/VALUE_KR/METRIC_KR) 보강 — 사용자가 읽다 어색한 문구를 말하면 등재. 역할 가중(038)은 판단값이라 이견 시 UPDATE 허용.
 0. ⭐⭐ **P1 · 다음 인게임 A/B(T6) = 「캐시 falseback」 단일 변수**(2026-09-13 사용자 결정)
    ⛔ 종전의 **2변수 동시 변경 계획은 폐기**됐다 — 귀속이 안 된다(obs#702 통제 실험의 교훈).

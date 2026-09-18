@@ -156,6 +156,11 @@ G12가 누락·원문 경로·UI 연결을 검사한다(초안도 선수 행이 
 `/api/v1/event/<eid>/statistics` → `team_match_stats` + `matches` 행 추가.
 CHE·LIV는 이것이 알론소·이라올라 **체제 첫 실측**이다 — 25/26 데이터와 섞지 말 것(규칙 7).
 
+### ⭐ 타임라인·하프별 수치는 정형 행으로 (2026-09-18 신설 · migration 040)
+`/api/v1/event/<eid>/incidents`의 득점·교체·카드(+GK 교체·VAR)를 **`match_events`**(minute·side·kind·player_id·assist·스코어)에,
+FotMob matchDetails 하프별 점유·xG·슈팅과 WhoScored 하프별 PPDA를 **`match_period_stats`**(1H/2H)에 넣는다 — 경기 분석 화면의
+타임라인·하프 비교·팀 대조 차트(`site/assets/matchviz.js`)가 이 두 표를 그린다. 산문(tactical_changes)에만 적으면 화면이 그릴 수 없다.
+
 ### ⭐ PPDA·라인 프록시는 매 경기 필수 (2026-09-08 신설)
 `ppda_v/o`(+`ppda_num/den`, `ppda_method`=`core.whoscored.PPDA_METHOD`)와 `def_x_v/o`(+`def_x_method`)를 **같은 WhoScored 이벤트**에서
 `core.whoscored.ppda/def_x`로 계산해 채운다. 2026-09-08 점검에서 PPDA는 70경기 중 14경기, 라인 높이 실측은 0이었다 — 팀 설정
