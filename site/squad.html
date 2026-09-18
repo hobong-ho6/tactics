@@ -5,7 +5,11 @@
 <div id="hdr"></div>
 <h1>스쿼드 · 베스트 11 <small class="dim">슬롯별 실측 최적 인선 — 평점·적합 근거 병기 · 그리드=실측(경기 데이터), 게임 커널 히트맵은 히트맵 비교 B패널</small></h1>
 <div class="panel"><label class="kv">슬롯 <select id="posSel"><option value="">전체</option></select></label></div>
-<div class="panel"><table id="tbl"></table></div>
+<div class="panel"><h2>베스트 XI · 슬롯 깊이 <small class="dim">— 왼쪽: 슬롯별 1순위 배치(색 = 적합 강도) · 오른쪽: 후보 분포와 1~2순위 격차</small></h2>
+  <div id="sviz" class="mviz"></div>
+  <p class="dim" style="font-size:12px;margin:6px 0 0">1순위는 <b>커널 적합 최상위</b>(GK는 평점)이고, 게임 처방 선발이 있으면 그 선수를 1순위로 둔다 —
+  두 기준이 갈리면 ◎(처방 선발)와 채운 점이 어긋나 보인다. Δ가 <b>0.05 이하</b>면 커널이 판정하지 못하는 구간이라 「경합」으로 적는다.</p></div>
+<div class="panel"><details open><summary class="dim" style="cursor:pointer">슬롯별 후보 표 — 적합·평점·실측 그리드</summary><table id="tbl"></table></details></div>
 <p class="dim">적합(sim)은 커널 라이브 산출값. DB 저장값과 어긋나면 익스포트가 낡은 것 —
 <span class="mono">python3 scripts/export.py</span>를 다시 돌릴 것.</p>
 <script type="module">
@@ -13,6 +17,7 @@ import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofi
 import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
 import { Kernel } from './assets/kernel.js?v=20260825-decodemap-null';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
+import { pitchXI, depthStrip, mountTips } from './assets/squadviz.js?v=20260918';
 
 const { team } = await mountHeader('squad.html');
 const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loadGameStats('FC26')]);
@@ -28,7 +33,12 @@ const shirt = q => q.shirt_number != null
 const posSel=document.getElementById('posSel');
 posSel.innerHTML='<option value="">전체</option>'+slots.map(s2=>`<option>${s2.pos}</option>`).join('');
 posSel.addEventListener('change',build);
+/* ⭐ 시각화용 행 — 표와 **같은 정렬 규칙**을 쓴다(처방 선발 최우선 → GK는 평점순 → 그 밖 적합순).
+   표만 고치고 그림이 다른 규칙을 쓰면 같은 화면에서 ★와 1순위가 어긋난다.
+   ⚠️ 모듈 스코프에 둔다 — build() 안에 const로 두면 drawViz()가 못 본다(2026-09-18). */
+let vrows = [];
 function build(){
+vrows = [];
 const rows = [];
 for (const s of slots){
   if (posSel.value && s.pos !== posSel.value) continue;
@@ -44,6 +54,17 @@ for (const s of slots){
                    .sort((a, b) => isGkSlot(s.pos) ? (b.q.rating ?? 0) - (a.q.rating ?? 0)
                                                    : b.bf.sim - a.bf.sim)
                    .sort((a, b) => (b.q.player_id === presStarter) - (a.q.player_id === presStarter));
+  const gk = isGkSlot(s.pos);
+  vrows.push({
+    pos: s.pos, x: s.x, y: s.y, isGk: gk,
+    cands: ranked.map(({ q, bf }) => ({
+      label: q.label, shirt: q.shirt_number, rating: q.rating,
+      sim: gk ? null : bf.sim, roleName: K.roleName[bf.role] ?? bf.role, focus: bf.focus,
+      starter: q.player_id === presStarter })),
+    top: ranked.length ? { label: ranked[0].q.label, shirt: ranked[0].q.shirt_number, rating: ranked[0].q.rating,
+      sim: gk ? null : ranked[0].bf.sim, roleName: K.roleName[ranked[0].bf.role] ?? ranked[0].bf.role, focus: ranked[0].bf.focus } : null,
+    gap: (!gk && ranked.length > 1) ? ranked[0].bf.sim - ranked[1].bf.sim : null,
+  });
   ranked.forEach(({ q, bf }, i) => rows.push(`<tr>
     <td>${i === 0 ? `<b>${s.pos}</b>` : ''}</td>
     <td>${i === 0 ? '★ ' : ''}${shirt(q)}${q.label} ${sofifaLink(q.label, GS)}<br><small>${annotate(statLine(q.label, GS))}</small></td>
@@ -56,7 +77,31 @@ for (const s of slots){
 document.getElementById('tbl').innerHTML =
   `<tr><th>슬롯</th><th>선수</th><th>커널 적합(라이브)</th><th>평점</th><th>실측 그리드</th><th>DB 저장값</th></tr>`
   + rows.join('');
+drawViz();
 }
+
+/* 그림 — 피치(왼쪽)와 깊이 스트립(오른쪽). 컨테이너 픽셀 폭으로 그리고 창 크기가 바뀌면 다시 그린다. */
+function drawViz(){
+  const el = document.getElementById('sviz');
+  const field = vrows.filter(r => !r.isGk), gks = vrows.filter(r => r.isGk);
+  const sims = field.flatMap(r => r.cands.map(c => c.sim)).filter(v => v != null);
+  const lo = sims.length ? Math.max(0.3, Math.floor(Math.min(...sims) * 20) / 20) : 0.6;
+  const hi = sims.length ? Math.min(1, Math.ceil(Math.max(...sims) * 20) / 20) : 1;
+  const rates = gks.flatMap(r => r.cands.map(c => c.rating)).filter(v => v != null);
+  el.innerHTML = `<div class="vz"></div><div class="vz"></div>`;
+  const [left, right] = el.querySelectorAll('.vz');
+  const w = b => Math.max(300, Math.floor(b.clientWidth - 26));
+  left.innerHTML = `<h4>베스트 XI <span class="dim">— ${vrows.length}슬롯 · 색이 옅으면 그 자리 적합이 낮다</span></h4>`
+    + pitchXI(vrows, { W: Math.min(w(left), 520), lo, hi });
+  right.innerHTML = `<h4>슬롯 깊이·경쟁 <span class="dim">— 커널 적합 기준</span></h4>`
+    + depthStrip(field, { W: Math.min(w(right), 720), key: 'sim', lo, hi, label: '커널 적합' })
+    + (gks.length ? `<h4 style="margin-top:12px">골키퍼 <span class="dim">— GK는 커널 적합이 변별하지 못해(obs#220) 평점 축으로 따로 본다</span></h4>`
+        + depthStrip(gks, { W: Math.min(w(right), 720), key: 'rating', label: '평점',
+            lo: rates.length ? Math.floor(Math.min(...rates) * 2) / 2 - 0.5 : 6, hi: rates.length ? Math.ceil(Math.max(...rates) * 2) / 2 + 0.5 : 8, tie: 0.2 }) : '');
+  mountTips(el);
+}
+let _ro;
+if (!_ro){ let t; _ro = new ResizeObserver(() => { clearTimeout(t); t = setTimeout(drawViz, 150); }); _ro.observe(document.getElementById('sviz')); }
 build();
 mountGlossaryTips();
 </script></body></html>
