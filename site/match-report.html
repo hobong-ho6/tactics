@@ -22,7 +22,9 @@
   </div>
   <div class="panel" id="overall" hidden></div>
   <div class="panel" id="gamePreset"></div>
-  <div class="panel"><h2>선수별 히트맵·역할·전체 스탯</h2><div id="players" class="player-report-list"></div></div>
+  <div class="panel"><h2>선수별 히트맵·역할·전체 스탯</h2>
+    <div id="pviz" class="mviz" style="grid-template-columns:1fr;margin:0 0 12px"></div>
+    <div id="players" class="player-report-list"></div></div>
   <div class="panel"><h2>전술 분석</h2><div class="report-grid" id="tactical"></div></div>
   <div class="panel" id="videoPanel"><h2>이 경기 영상 분석 <small class="dim">— 전사에서 뽑은 요약·핵심</small></h2>
     <div id="videos"></div>
@@ -38,7 +40,7 @@ import { decodeMap } from './assets/kernel.js?v=20260825-decodemap-null';
 import { drawPitch, drawComposite, drawChip } from './assets/pitch.js?v=20260825-decodemap-null';
 import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
 import { roleLabel, focusLabel, claimLabel, humanize, VERDICT_KR, AXIS_KR, mountRawToggle } from './assets/labels.js?v=20260918';
-import { renderMatchViz } from './assets/matchviz.js?v=20260918';
+import { renderMatchViz, playerRows } from './assets/matchviz.js?v=20260918b';
 import { prose } from './assets/prose.js';
 
 const { team, regime } = await mountHeader('match-report.html');
@@ -305,7 +307,21 @@ function render(r){
     <section><h3>전술적 특성</h3>${prose(r.tactical_features)}</section>
     <section><h3>경기 중 변화</h3>${prose(r.tactical_changes)}</section>
     <section><h3>게임 구현 함의</h3>${prose(r.game_implications)}</section>`;
-  document.getElementById('players').innerHTML=r.players.slice().sort((a,b)=>(b.started||0)-(a.started||0)).map(p=>`<details class="player-report">
+  /* 출전 구간·평점 한 장 — 16명을 카드로만 두면 비교가 안 된다(카드는 상세, 이 그림은 조망) */
+  const pv = document.getElementById('pviz');
+  pv.innerHTML = playerRows(r, regime?.team_kr || team, Math.min(Math.max(320, (pv.clientWidth || (document.body.clientWidth - 68)) - 26), 1100));
+  pv.querySelectorAll('.hit').forEach(g => g.addEventListener('click', () => {
+    const el = document.querySelector(`details.player-report[data-pid="${g.dataset.pid}"]`);
+    if (el){ el.open = true; el.scrollIntoView({ block: 'center' }); }
+  }));
+  let _ptip = pv.querySelector('.tip');
+  if (!_ptip){ _ptip = document.createElement('div'); _ptip.className = 'tip'; _ptip.hidden = true; pv.appendChild(_ptip); }
+  pv.querySelectorAll('.hit').forEach(g => {
+    g.addEventListener('pointerenter', () => { _ptip.textContent = g.dataset.tip; _ptip.hidden = false; });
+    g.addEventListener('pointermove', e => { _ptip.style.left = Math.min(e.clientX + 12, window.innerWidth - 320) + 'px'; _ptip.style.top = (e.clientY + 14) + 'px'; });
+    g.addEventListener('pointerleave', () => { _ptip.hidden = true; });
+  });
+  document.getElementById('players').innerHTML=r.players.slice().sort((a,b)=>(b.started||0)-(a.started||0)).map(p=>`<details class="player-report" data-pid="${p.player_id ?? ''}">
     <summary><span class="badge ${p.started?'hi':'mid'}">${p.started?'선발':'교체'}</span> <b>${esc(p.position)}</b> ${esc(p.label)} · ${annotate(esc(p.tactical_role))}
       <span class="dim">${esc(p.minutes ?? '—')}분 / ${esc(p.rating ?? '—')}</span></summary>
     <div class="player-report-body">${miniMap(p.map25)}<div>

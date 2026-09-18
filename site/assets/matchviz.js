@@ -170,6 +170,57 @@ export function shotMap(r, team, W = 760){
       <text x="${X(0) + 4}" y="${Y(PH) + 12}" class="dim sm">${esc(r.opponent || '상대')} 슛 ${n('o')} · 득점 ${g('o')}</text></svg></div>`;
 }
 
+
+/* ── 6. 선수 평점·출전 구간 (2026-09-18, 사용자 지시 「모든 메뉴의 텍스트를 시각적으로」의 마지막 항목).
+   왼쪽 = 출전 구간 간트(선발은 0′부터, 교체는 투입 분부터 — 교체 이벤트로 구간을 만든다),
+   오른쪽 = 평점 막대(축 5.5~10, 색은 사이트 공통 품질 어휘). 접점(hit_points)은 막대 끝에 숫자로 병기한다.
+   ⛔ 평점과 분을 같은 축에 겹치지 않는다 — 구간은 시간축, 평점은 평점축으로 나란히 둔다. */
+export function playerRows(r, team, W = 900){
+  const ps = (r.players || []).slice();
+  if (!ps.length) return '';
+  const subs = (r.events || []).filter(e => e.kind === 'sub' || e.kind === 'gk_change');
+  const inAt = {}, outAt = {};
+  for (const e of subs){
+    if (e.player_id != null) inAt[e.player_id] = e.minute; else if (e.player_name) inAt['n:' + e.player_name] = e.minute;
+    if (e.player_out_id != null) outAt[e.player_out_id] = e.minute; else if (e.player_out_name) outAt['n:' + e.player_out_name] = e.minute;
+  }
+  const key = p => (p.player_id != null ? p.player_id : 'n:' + p.label);
+  const end = Math.max(90, ...(r.events || []).map(e => e.minute));
+  const rows = ps.map(p => { const k = key(p);
+    const start = p.started ? 0 : (inAt[k] ?? (end - (p.minutes ?? 0)));
+    const stop = outAt[k] ?? (p.started && p.minutes != null && p.minutes < end ? start + p.minutes : end);
+    return { ...p, start: Math.max(0, start), stop: Math.min(end, Math.max(start, stop)) }; })
+    .sort((a, b) => (b.started || 0) - (a.started || 0) || (b.rating ?? 0) - (a.rating ?? 0));
+  const L = 118, GAP = 26, T = 30, rowH = 22, H = T + rows.length * rowH + 14;
+  const ganttW = Math.round((W - L - GAP) * 0.52), ratW = W - L - GAP - ganttW;
+  const gx = m => L + ganttW * (m / end);
+  const rx0 = L + ganttW + GAP, lo = 5.5, hi = 10;
+  const rx = v => rx0 + (ratW - 44) * ((Math.min(hi, Math.max(lo, v)) - lo) / (hi - lo));
+  const col = v => v == null ? 'rgba(255,255,255,.25)' : v >= 7.5 ? 'var(--ok)' : v >= 6.5 ? 'var(--warn)' : 'var(--bad)';
+  const ticks = [0, 15, 30, 45, 60, 75, 90].filter(t => t <= end).map(t =>
+    `<line x1="${gx(t)}" x2="${gx(t)}" y1="${T - 8}" y2="${H - 8}" stroke="${GRID}"/><text x="${gx(t)}" y="${T - 12}" text-anchor="middle" font-size="10" fill="var(--dim)">${t}′</text>`).join('');
+  const rticks = [6, 7, 8, 9].map(v =>
+    `<line x1="${rx(v)}" x2="${rx(v)}" y1="${T - 8}" y2="${H - 8}" stroke="${GRID}"/><text x="${rx(v)}" y="${T - 12}" text-anchor="middle" font-size="10" fill="var(--dim)">${v}</text>`).join('');
+  const body = rows.map((p, i) => { const y = T + i * rowH + 13;
+    const tip = `${p.position ?? ''} ${p.label} · ${p.started ? '선발' : '교체'} · ${p.start}′~${p.stop}′(${p.minutes ?? '—'}분) · 평점 ${p.rating ?? '—'} · 접점 ${p.hit_points ?? '—'}`;
+    return `<g class="hit" data-tip="${esc(tip)}" data-pid="${p.player_id ?? ''}" style="cursor:pointer">
+      <text x="${L - 8}" y="${y + 4}" text-anchor="end" font-size="11" fill="var(--txt)">${esc(p.label)}</text>
+      <text x="6" y="${y + 4}" font-size="9.5" fill="${p.started ? 'var(--acc)' : 'var(--dim)'}">${p.started ? '선발' : '교체'}</text>
+      <text x="36" y="${y + 4}" font-size="9.5" fill="var(--dim)">${esc(p.position ?? '')}</text>
+      <rect x="${gx(p.start)}" y="${y - 6}" width="${Math.max(2, gx(p.stop) - gx(p.start))}" height="12" rx="3" fill="${US}" fill-opacity="${p.started ? .8 : .45}"/>
+      <text x="${gx(p.stop) + 5}" y="${y + 4}" font-size="9.5" fill="var(--dim)">${p.minutes ?? '—'}′</text>
+      ${p.rating != null ? `<rect x="${rx0}" y="${y - 6}" width="${Math.max(2, rx(p.rating) - rx0)}" height="12" rx="3" fill="${col(p.rating)}" fill-opacity=".85"/>
+        <text x="${rx(p.rating) + 6}" y="${y + 4}" font-size="10.5" font-weight="700" fill="var(--txt)">${p.rating}</text>
+        <text x="${W - 6}" y="${y + 4}" text-anchor="end" font-size="9.5" fill="var(--dim)">접점 ${p.hit_points ?? '—'}</text>`
+        : `<text x="${rx0}" y="${y + 4}" font-size="10" fill="var(--dim)">평점 미수집</text>`}</g>`; }).join('');
+  return `<div class="vz wide"><h4>선수별 출전 구간·평점 <span class="dim">— 왼쪽: 언제 뛰었나 · 오른쪽: 평점(6.5 평범 · 7.5 상위) · 이름을 누르면 아래 상세가 열린다</span></h4>
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="선수별 출전 구간과 평점">
+      <text x="${L}" y="${T - 12}" font-size="10" fill="var(--dim)">출전 구간</text>
+      <text x="${rx0}" y="${T - 12}" font-size="10" fill="var(--dim)">평점</text>${ticks}${rticks}${body}</svg>
+    <div class="lg"><span><i style="background:${US}"></i>선발 구간</span><span><i style="background:${US};opacity:.45"></i>교체 구간</span>
+      <span><i style="background:var(--ok)"></i>7.5+</span><span><i style="background:var(--warn)"></i>6.5~7.5</span><span><i style="background:var(--bad)"></i>6.5 미만</span></div></div>`;
+}
+
 /* 컨테이너 렌더 + 호버 툴팁(마크가 히트 타깃, 값은 라벨·표로도 읽힌다).
    ⭐ SVG는 컨테이너 픽셀 폭으로 그린다(viewBox 확대 금지 — 넓은 화면에서 글자·점이 비대해진다). 창 크기가 바뀌면 다시 그린다. */
 export function renderMatchViz(el, r, team){
