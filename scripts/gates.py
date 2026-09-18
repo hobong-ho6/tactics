@@ -122,10 +122,13 @@ G14_HAN = re.compile(r"[가-힣]")
 #   ⑵ FotMob침범  source가 「FotMob … matchId=N」을 적시하는데 event_id == N 이다(−N이어야 한다).
 #                 → matches까지 같은 잘못된 id로 적재돼 ⑴이 못 보는 부류(AVL/CHE/LIV 정규전 5경기).
 #
-# ⛔ 아래 baseline은 **닫힌 과거 목록**이다 — 게이트 신설 시점에 이미 존재하던 9경기.
+# ⛔ 아래 baseline은 **닫힌 과거 목록**이다 — 게이트 신설 시점에 이미 존재하던 9경기 중 남은 8경기.
 #    불변규칙 2에 따라 되돌려 덮어쓰지 않고 예외로 명시한다(정정 경위는 obs 참조).
 #    ⭐ 새 위반은 baseline에 추가하지 말고 **수집을 고쳐라** — 여기에 줄이 늘면 규약이 죽는다.
-G20_BASELINE_STALE = {(5868012, 85), (16284994, 82), (16311585, 70), (16489297, 72)}
+#    ✅ 2026-09-18 해소: ATM 08-19 말라가전 `(5868012, 85)` 제거 — 사용자 지시로 event를
+#       16421055(= matches.event_id 정본)로 **병합**했다(player_matches 16 + team_match_stats 1
+#       + match_reports 1 = 18행, 3테이블 동시). 맞지 않는 예외를 남기면 baseline이 썩는다(obs#832).
+G20_BASELINE_STALE = {(16284994, 82), (16311585, 70), (16489297, 72)}
 G20_BASELINE_FOTMOB = {5795369, 5795371, 5795372, 5795426, 5795440}
 G20_FOTMOB_RE = re.compile(r"FotMob[^/]*?matchId=(\d+)")
 
