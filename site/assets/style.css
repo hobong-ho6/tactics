@@ -252,7 +252,12 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .mviz{display:grid;grid-template-columns:1fr;gap:14px;margin:10px 0}
 .mviz .vz{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
 .mviz h4{margin:0 0 6px;font-size:13px;color:var(--dim);font-weight:600}
-.mviz svg{display:block;overflow:visible;max-width:100%;margin:0 auto}
+.mviz svg{display:block;overflow:visible;max-width:100%;height:auto;margin:0 auto}
+/* 단일 차트 카드 — .mviz의 2열 그리드에 들어가면 폭이 절반으로 눌린다(2026-09-18 피자 199px 사고) */
+.vzcard{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:inline-block}
+.vzcard svg{display:block;overflow:visible;max-width:100%;height:auto;margin:0 auto}
+.vzcard .lg{display:flex;gap:14px;font-size:12px;color:var(--dim);margin-top:6px;flex-wrap:wrap;justify-content:center}
+.vzcard .lg i{display:inline-block;width:12px;height:4px;border-radius:2px;vertical-align:middle;margin-right:5px}
 .mviz .vz{min-width:0}
 .mviz text{font:11px -apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;fill:var(--txt)}
 .mviz text.dim{fill:var(--dim)} .mviz text.sm{font-size:10px}
