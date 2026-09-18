@@ -282,6 +282,9 @@ def export_all(db_path=None, window="2026-summer"):
                                ORDER BY regime_id IS NOT NULL, axis, id""", (rid,))
         profile = _rows(con, """SELECT axis, content, evidence, confidence, updated
                                 FROM manager_profiles WHERE regime_id=? ORDER BY axis""", (rid,))
+        # 설정 층 변경 이력(migration 039) — 리포트 「전술 갱신 히스토리」. 서사 층 히스토리는 profile.content의 [날짜 …] 표식을 화면이 파싱한다.
+        tactic_changes = _rows(con, """SELECT layer, key, before, after, changed_at, reason, source
+                                       FROM tactic_change_log WHERE regime_id=? ORDER BY changed_at DESC, id DESC""", (rid,))
         targets = _rows(con, """SELECT player_id, name, name_kr, short_label, slot, club, position,
                                        likelihood, last_news_date, map25, sample_n, avg_rating,
                                        tool_x, tool_y,
@@ -470,7 +473,7 @@ def export_all(db_path=None, window="2026-summer"):
             "match_reports": match_reports,
             "evaluations": evals, "season_stats": season_stats, "fbref": fbref,
             "fotmob_season": fm_season,
-            "setups": setups, "limits": limits, "kernel_fidelity": fidelity, "profile": profile,
+            "setups": setups, "limits": limits, "kernel_fidelity": fidelity, "profile": profile, "tactic_changes": tactic_changes,
             "player_status": status,
             "transfer": {"targets": targets, "outgoing": outgoing, "ledger": ledger, "summary": summary}}))
 

@@ -1006,6 +1006,27 @@ def run(db_path=None, verbose=True):
     if not ok18:
         fails.append("G18")
 
+    # G19 — 시즌 전술 「설정 층」 변경은 사유와 함께 로그에 남아야 한다. 2026-09-18 신설(migration 039, 사용자 질문
+    #       「개별 경기를 분석하면서 리포트의 시즌 전술이 업데이트되고 있는 거지? 갱신일과 왜 변화되었는지 히스토리를」).
+    #       core/tactic_state.state()가 편 현재 상태 ↔ tactic_change_log를 시간순으로 재생한 마지막 상태가 다르면 실패.
+    #       ⇒ slot_canon_roles·team_tactic_setups·starter 처방을 바꿨으면 같은 회차에 `scripts/tactic_changes.py --reason "…"`.
+    from core.tactic_state import state as _tstate
+    g19_cur = _tstate(con)
+    g19_log = {}
+    for r19 in con.execute("SELECT layer, regime_id, key, after FROM tactic_change_log ORDER BY changed_at, id"):
+        k19 = (r19[0], r19[1], r19[2])
+        if r19[3] is None:
+            g19_log.pop(k19, None)
+        else:
+            g19_log[k19] = r19[3]
+    g19_bad = [k for k in set(g19_cur) | set(g19_log) if g19_cur.get(k) != g19_log.get(k)]
+    ok19 = not g19_bad
+    if verbose:
+        print(f"G19 전술 설정 변경 로그: 미기록 변경 {len(g19_bad)} · (로그 {len(g19_log)}키) "
+              f"{'✅' if ok19 else '❌ ' + str(sorted(g19_bad, key=str)[:6]) + ' → scripts/tactic_changes.py --reason'}")
+    if not ok19:
+        fails.append("G19")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")

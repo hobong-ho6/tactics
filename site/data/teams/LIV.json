@@ -56336,6 +56336,413 @@
    "sort_order": 12
   }
  ],
+ "tactic_changes": [
+  {
+   "after": "무뇨스: wm_winger/Attack",
+   "before": "엘리엇: wm_wideplm/Attack",
+   "changed_at": "2026-09-02",
+   "key": "RM",
+   "layer": "starter",
+   "reason": "data(squad): G11 선발 공백 충원(CCB=라크루아·RM=무뇨스) + 등번호 정정 3건·신규 7건 (obs#414~415)",
+   "source": "git:b3100ac"
+  },
+  {
+   "after": "이삭: st_false9/Attack",
+   "before": null,
+   "changed_at": "2026-09-01",
+   "key": "ST",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "엘리엇: wm_wideplm/Attack",
+   "before": "학포: wm_insidefwd/Balanced",
+   "changed_at": "2026-09-01",
+   "key": "RM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "뇨니: dm_dlp/Roaming",
+   "before": "흐라벤베르흐: dm_dlp/Roaming",
+   "changed_at": "2026-09-01",
+   "key": "RDM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "자케: cb_bpd/Aggressive",
+   "before": "판 다이크: cb_bpd/Aggressive",
+   "changed_at": "2026-09-01",
+   "key": "RCB",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "프림퐁: fb_att_wb/Support",
+   "before": "커티스 존스: fb_wingback/Support",
+   "changed_at": "2026-09-01",
+   "key": "RB",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "학포: wm_wideplm/Attack",
+   "before": "살라: wm_winger/Attack",
+   "changed_at": "2026-09-01",
+   "key": "LM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "흐라벤베르흐: dm_dlp/Roaming",
+   "before": "맥 알리스터: dm_dlp/Roaming",
+   "changed_at": "2026-09-01",
+   "key": "LDM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "판 다이크: cb_bpd/Aggressive",
+   "before": "코나테: cb_bpd/Aggressive",
+   "changed_at": "2026-09-01",
+   "key": "LCB",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "케르케즈: fb_att_wb/Support",
+   "before": "프림퐁: fb_att_wb/Support",
+   "changed_at": "2026-09-01",
+   "key": "LB",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "비르츠: cam_playmaker/Roaming",
+   "before": "비르츠: cam_halfwinger/Balanced",
+   "changed_at": "2026-09-01",
+   "key": "CAM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "st_advanced/Attack",
+   "before": null,
+   "changed_at": "2026-08-19",
+   "key": "4-2-3-1 Wide|ST",
+   "layer": "slot_canon",
+   "reason": "feat(liv): 이라올라 슬롯 정본 11행 + 긴 산문 렌더를 3페이지에 prose() 적용",
+   "source": "git:45d40d3"
+  },
+  {
+   "after": "wm_wideplm/Attack",
+   "before": null,
+   "changed_at": "2026-08-19",
+   "key": "4-2-3-1 Wide|RM",
+   "layer": "slot_canon",
+   "reason": "feat(liv): 이라올라 슬롯 정본 11행 + 긴 산문 렌더를 3페이지에 prose() 적용",
+   "source": "git:45d40d3"
+  },
+  {
+   "after": "dm_boxcrasher/Balanced",
+   "before": null,
+   "changed_at": "2026-08-19",
+   "key": "4-2-3-1 Wide|RDM",
+   "layer": "slot_canon",
+   "reason": "feat(liv): 이라올라 슬롯 정본 11행 + 긴 산문 렌더를 3페이지에 prose() 적용",
+   "source": "git:45d40d3"
+  },
+  {
+   "after": "cb_stopper/Aggressive",
+   "before": null,
+   "changed_at": "2026-08-19",
+   "key": "4-2-3-1 Wide|RCB",
+   "layer": "slot_canon",
+   "reason": "feat(liv): 이라올라 슬롯 정본 11행 + 긴 산문 렌더를 3페이지에 prose() 적용",
+   "source": "git:45d40d3"
+  },
+  {
+   "after": "fb_wingback/Support",
+   "before": null,
+   "changed_at": "2026-08-19",
+   "key": "4-2-3-1 Wide|RB",
+   "layer": "slot_canon",
+   "reason": "feat(liv): 이라올라 슬롯 정본 11행 + 긴 산문 렌더를 3페이지에 prose() 적용",
+   "source": "git:45d40d3"
+  },
+  {
+   "after": "wm_wideplm/Attack",
+   "before": null,
+   "changed_at": "2026-08-19",
+   "key": "4-2-3-1 Wide|LM",
+   "layer": "slot_canon",
+   "reason": "feat(liv): 이라올라 슬롯 정본 11행 + 긴 산문 렌더를 3페이지에 prose() 적용",
+   "source": "git:45d40d3"
+  },
+  {
+   "after": "dm_holding/Ball-Winning",
+   "before": null,
+   "changed_at": "2026-08-19",
+   "key": "4-2-3-1 Wide|LDM",
+   "layer": "slot_canon",
+   "reason": "feat(liv): 이라올라 슬롯 정본 11행 + 긴 산문 렌더를 3페이지에 prose() 적용",
+   "source": "git:45d40d3"
+  },
+  {
+   "after": "cb_stopper/Aggressive",
+   "before": null,
+   "changed_at": "2026-08-19",
+   "key": "4-2-3-1 Wide|LCB",
+   "layer": "slot_canon",
+   "reason": "feat(liv): 이라올라 슬롯 정본 11행 + 긴 산문 렌더를 3페이지에 prose() 적용",
+   "source": "git:45d40d3"
+  },
+  {
+   "after": "fb_wingback/Support",
+   "before": null,
+   "changed_at": "2026-08-19",
+   "key": "4-2-3-1 Wide|LB",
+   "layer": "slot_canon",
+   "reason": "feat(liv): 이라올라 슬롯 정본 11행 + 긴 산문 렌더를 3페이지에 prose() 적용",
+   "source": "git:45d40d3"
+  },
+  {
+   "after": "gk_goalkeeper/Defend",
+   "before": null,
+   "changed_at": "2026-08-19",
+   "key": "4-2-3-1 Wide|GK",
+   "layer": "slot_canon",
+   "reason": "feat(liv): 이라올라 슬롯 정본 11행 + 긴 산문 렌더를 3페이지에 prose() 적용",
+   "source": "git:45d40d3"
+  },
+  {
+   "after": "cam_playmaker/Roaming",
+   "before": null,
+   "changed_at": "2026-08-19",
+   "key": "4-2-3-1 Wide|CAM",
+   "layer": "slot_canon",
+   "reason": "feat(liv): 이라올라 슬롯 정본 11행 + 긴 산문 렌더를 3페이지에 prose() 적용",
+   "source": "git:45d40d3"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Balanced · 수비 High · 라인 64",
+   "before": "4-2-3-1 · 빌드업 Balanced · 수비 High · 라인 64",
+   "changed_at": "2026-08-19",
+   "key": "2026-27|projected",
+   "layer": "team_setup",
+   "reason": "fix(che): FC26 5-4-1 정합 — DM→CM 슬롯 교체, 역할군 불일치 4건 해소 (obs#254)",
+   "source": "git:61bf315"
+  },
+  {
+   "after": "학포: wm_insidefwd/Balanced",
+   "before": "Cody Gakpo: wm_insidefwd/Balanced",
+   "changed_at": "2026-08-11",
+   "key": "RM",
+   "layer": "starter",
+   "reason": "data(fix): squad_entries→fc26:opt 후보 동기화(3팀) — 설정 시트와 히트맵·스쿼드 후보 풀 일치",
+   "source": "git:4b03e91"
+  },
+  {
+   "after": "흐라벤베르흐: dm_dlp/Roaming",
+   "before": "Ryan Gravenberch: dm_dlp/Roaming",
+   "changed_at": "2026-08-11",
+   "key": "RDM",
+   "layer": "starter",
+   "reason": "data(fix): squad_entries→fc26:opt 후보 동기화(3팀) — 설정 시트와 히트맵·스쿼드 후보 풀 일치",
+   "source": "git:4b03e91"
+  },
+  {
+   "after": "판 다이크: cb_bpd/Aggressive",
+   "before": "Virgil van Dijk: cb_bpd/Aggressive",
+   "changed_at": "2026-08-11",
+   "key": "RCB",
+   "layer": "starter",
+   "reason": "data(fix): squad_entries→fc26:opt 후보 동기화(3팀) — 설정 시트와 히트맵·스쿼드 후보 풀 일치",
+   "source": "git:4b03e91"
+  },
+  {
+   "after": "커티스 존스: fb_wingback/Support",
+   "before": "Curtis Jones: fb_wingback/Support",
+   "changed_at": "2026-08-11",
+   "key": "RB",
+   "layer": "starter",
+   "reason": "data(fix): squad_entries→fc26:opt 후보 동기화(3팀) — 설정 시트와 히트맵·스쿼드 후보 풀 일치",
+   "source": "git:4b03e91"
+  },
+  {
+   "after": "살라: wm_winger/Attack",
+   "before": "Mohamed Salah: wm_winger/Attack",
+   "changed_at": "2026-08-11",
+   "key": "LM",
+   "layer": "starter",
+   "reason": "data(fix): squad_entries→fc26:opt 후보 동기화(3팀) — 설정 시트와 히트맵·스쿼드 후보 풀 일치",
+   "source": "git:4b03e91"
+  },
+  {
+   "after": "맥 알리스터: dm_dlp/Roaming",
+   "before": "Alexis Mac Allister: dm_dlp/Roaming",
+   "changed_at": "2026-08-11",
+   "key": "LDM",
+   "layer": "starter",
+   "reason": "data(fix): squad_entries→fc26:opt 후보 동기화(3팀) — 설정 시트와 히트맵·스쿼드 후보 풀 일치",
+   "source": "git:4b03e91"
+  },
+  {
+   "after": "코나테: cb_bpd/Aggressive",
+   "before": "Ibrahima Konaté: cb_bpd/Aggressive",
+   "changed_at": "2026-08-11",
+   "key": "LCB",
+   "layer": "starter",
+   "reason": "data(fix): squad_entries→fc26:opt 후보 동기화(3팀) — 설정 시트와 히트맵·스쿼드 후보 풀 일치",
+   "source": "git:4b03e91"
+  },
+  {
+   "after": "프림퐁: fb_att_wb/Support",
+   "before": "Jeremie Frimpong: fb_att_wb/Support",
+   "changed_at": "2026-08-11",
+   "key": "LB",
+   "layer": "starter",
+   "reason": "data(fix): squad_entries→fc26:opt 후보 동기화(3팀) — 설정 시트와 히트맵·스쿼드 후보 풀 일치",
+   "source": "git:4b03e91"
+  },
+  {
+   "after": "알리송 베케르: gk_goalkeeper/Defend",
+   "before": "Alisson: gk_goalkeeper/Defend",
+   "changed_at": "2026-08-11",
+   "key": "GK",
+   "layer": "starter",
+   "reason": "data(fix): squad_entries→fc26:opt 후보 동기화(3팀) — 설정 시트와 히트맵·스쿼드 후보 풀 일치",
+   "source": "git:4b03e91"
+  },
+  {
+   "after": "비르츠: cam_halfwinger/Balanced",
+   "before": "Florian Wirtz: cam_halfwinger/Balanced",
+   "changed_at": "2026-08-11",
+   "key": "CAM",
+   "layer": "starter",
+   "reason": "data(fix): squad_entries→fc26:opt 후보 동기화(3팀) — 설정 시트와 히트맵·스쿼드 후보 풀 일치",
+   "source": "git:4b03e91"
+  },
+  {
+   "after": "4-2-3-1 · 빌드업 Balanced · 수비 High · 라인 64",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2026-27|projected",
+   "layer": "team_setup",
+   "reason": "data(che-liv): FC26 설정 시트 3팀 완성 — CHE 알론소 처방 승격(10행+LB공백), LIV 실측 최근접 잠정 XI(LOW 명기) + 구현 매핑 축",
+   "source": "git:8735d68"
+  },
+  {
+   "after": "Cody Gakpo: wm_insidefwd/Balanced",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "RM",
+   "layer": "starter",
+   "reason": "data(che-liv): FC26 설정 시트 3팀 완성 — CHE 알론소 처방 승격(10행+LB공백), LIV 실측 최근접 잠정 XI(LOW 명기) + 구현 매핑 축",
+   "source": "git:8735d68"
+  },
+  {
+   "after": "Ryan Gravenberch: dm_dlp/Roaming",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "RDM",
+   "layer": "starter",
+   "reason": "data(che-liv): FC26 설정 시트 3팀 완성 — CHE 알론소 처방 승격(10행+LB공백), LIV 실측 최근접 잠정 XI(LOW 명기) + 구현 매핑 축",
+   "source": "git:8735d68"
+  },
+  {
+   "after": "Virgil van Dijk: cb_bpd/Aggressive",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "RCB",
+   "layer": "starter",
+   "reason": "data(che-liv): FC26 설정 시트 3팀 완성 — CHE 알론소 처방 승격(10행+LB공백), LIV 실측 최근접 잠정 XI(LOW 명기) + 구현 매핑 축",
+   "source": "git:8735d68"
+  },
+  {
+   "after": "Curtis Jones: fb_wingback/Support",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "RB",
+   "layer": "starter",
+   "reason": "data(che-liv): FC26 설정 시트 3팀 완성 — CHE 알론소 처방 승격(10행+LB공백), LIV 실측 최근접 잠정 XI(LOW 명기) + 구현 매핑 축",
+   "source": "git:8735d68"
+  },
+  {
+   "after": "Mohamed Salah: wm_winger/Attack",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "LM",
+   "layer": "starter",
+   "reason": "data(che-liv): FC26 설정 시트 3팀 완성 — CHE 알론소 처방 승격(10행+LB공백), LIV 실측 최근접 잠정 XI(LOW 명기) + 구현 매핑 축",
+   "source": "git:8735d68"
+  },
+  {
+   "after": "Alexis Mac Allister: dm_dlp/Roaming",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "LDM",
+   "layer": "starter",
+   "reason": "data(che-liv): FC26 설정 시트 3팀 완성 — CHE 알론소 처방 승격(10행+LB공백), LIV 실측 최근접 잠정 XI(LOW 명기) + 구현 매핑 축",
+   "source": "git:8735d68"
+  },
+  {
+   "after": "Ibrahima Konaté: cb_bpd/Aggressive",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "LCB",
+   "layer": "starter",
+   "reason": "data(che-liv): FC26 설정 시트 3팀 완성 — CHE 알론소 처방 승격(10행+LB공백), LIV 실측 최근접 잠정 XI(LOW 명기) + 구현 매핑 축",
+   "source": "git:8735d68"
+  },
+  {
+   "after": "Jeremie Frimpong: fb_att_wb/Support",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "LB",
+   "layer": "starter",
+   "reason": "data(che-liv): FC26 설정 시트 3팀 완성 — CHE 알론소 처방 승격(10행+LB공백), LIV 실측 최근접 잠정 XI(LOW 명기) + 구현 매핑 축",
+   "source": "git:8735d68"
+  },
+  {
+   "after": "Alisson: gk_goalkeeper/Defend",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "GK",
+   "layer": "starter",
+   "reason": "data(che-liv): FC26 설정 시트 3팀 완성 — CHE 알론소 처방 승격(10행+LB공백), LIV 실측 최근접 잠정 XI(LOW 명기) + 구현 매핑 축",
+   "source": "git:8735d68"
+  },
+  {
+   "after": "Florian Wirtz: cam_halfwinger/Balanced",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "CAM",
+   "layer": "starter",
+   "reason": "data(che-liv): FC26 설정 시트 3팀 완성 — CHE 알론소 처방 승격(10행+LB공백), LIV 실측 최근접 잠정 XI(LOW 명기) + 구현 매핑 축",
+   "source": "git:8735d68"
+  },
+  {
+   "after": "4-2-3-1 · 빌드업 None · 수비 None · 라인 None",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2025-26|measured",
+   "layer": "team_setup",
+   "reason": "cutover(v2): 구 툴 아카이브 + transfer-watch 3팀 확장 — 재설계 단계 5·6 완료",
+   "source": "git:43e9a75"
+  }
+ ],
  "transfer": {
   "ledger": [
    {

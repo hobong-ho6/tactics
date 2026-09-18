@@ -85955,6 +85955,494 @@
    "sort_order": 81
   }
  ],
+ "tactic_changes": [
+  {
+   "after": "wm_widemid/Support",
+   "before": "wm_wideplm/Attack",
+   "changed_at": "2026-09-15",
+   "key": "4-2-3-1 Wide|LM",
+   "layer": "slot_canon",
+   "reason": "feat(avl): LM 주전 헤밍스 확정 · C1 재계산 → 전방4 뱅크 0.60 복구 (obs#768)",
+   "source": "git:d034fc6"
+  },
+  {
+   "after": "wm_winger/Attack",
+   "before": "wm_widemid/Support",
+   "changed_at": "2026-09-15",
+   "key": "4-2-3-1 Wide|RM",
+   "layer": "slot_canon",
+   "reason": "fix(mcginn): 맥긴 RM → wm_winger/Attack 교정 실행 · obs#765 철회 (obs#766·767)",
+   "source": "git:df18751"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Balanced · 수비 Balanced · 라인 None",
+   "before": null,
+   "changed_at": "2026-09-10",
+   "key": "2026-27|ingame:user-2026-09-10e",
+   "layer": "team_setup",
+   "reason": "data(ingame): 테스트 5(4YQEnEbi&YS4, 빌드업 Balanced 단일 변수) 11장 — 위치 분포 변화 없음, 왼쪽 안쪽 정착은 빌드업 무관; 매핑 오류 재적재 (captures 75~85)",
+   "source": "git:c970189"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 None",
+   "before": "4-2-3-1 Wide · 빌드업 None · 수비 None · 라인 None",
+   "changed_at": "2026-09-09",
+   "key": "2026-27|ingame:sim-2026-09-09a",
+   "layer": "team_setup",
+   "reason": "data(ingame): 시뮬레이션 1(9ZVJsJYv5dqd, 커리어 관전, 빌라 2-0 레스터) 11장 — 시뮬 그리드≈사용자 그리드(조작 선수 포함 .72~.97), 커널 LOW는 EA 커널 불일치; 스크립트 white heat·ST 점 기준",
+   "source": "git:a7a6f8d"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 None · 수비 None · 라인 None",
+   "before": null,
+   "changed_at": "2026-09-09",
+   "key": "2026-27|ingame:sim-2026-09-09a",
+   "layer": "team_setup",
+   "reason": "data(ingame): 시뮬레이션 1 전술 코드 9ZVJsJYv5dqd 등록 (id23, PENDING), 빌드업 A/B는 대기 항목으로",
+   "source": "git:1ae4ef4"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 None",
+   "before": null,
+   "changed_at": "2026-09-09",
+   "key": "2026-27|ingame:user-2026-09-08d",
+   "layer": "team_setup",
+   "reason": "data(ingame): 테스트 4 정정 — 마첸만 att_wb→wingback/Balanced(사용자 확정), 캐시 wingback/Balanced 유지 확인, setup id22 등록",
+   "source": "git:325e34a"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 None",
+   "before": null,
+   "changed_at": "2026-09-09",
+   "key": "2026-27|ingame:user-2026-09-08c",
+   "layer": "team_setup",
+   "reason": "data(ingame): 테스트 3 전술 코드 ?ZWKtKhw6ere 등록 (id21, 가르나초 wideplm/Attack A/B)",
+   "source": "git:df9abec"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 None",
+   "before": null,
+   "changed_at": "2026-09-08",
+   "key": "2026-27|ingame:user-2026-09-08b",
+   "layer": "team_setup",
+   "reason": "data(ingame): 첫 실물 15장 처리 — ingame_captures 1~15, 스크립트 실물 UI 정본화(GK 점 기준·초록 육각), 테스트 2 코드 AZYMfMjy8otg 등록 (obs#536)",
+   "source": "git:1aeefa2"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 None",
+   "before": null,
+   "changed_at": "2026-09-08",
+   "key": "2026-27|ingame:user-2026-09-08",
+   "layer": "team_setup",
+   "reason": "data(ingame): 사용자 인게임 전술 코드 ?ZWKd#Zw6mre 기록 (team_tactic_setups id19, ingame:user-2026-09-08) — 정본과 4슬롯 차이 명기",
+   "source": "git:dc23ec6"
+  },
+  {
+   "after": "스즈키 지온: gk_goalkeeper/Defend",
+   "before": "비조: gk_goalkeeper/Defend",
+   "changed_at": "2026-09-01",
+   "key": "GK",
+   "layer": "starter",
+   "reason": "fix(preview): 인라인 핸들러가 HTML/JS에 no-store를 보내게 수정 — 등번호 미표시의 진짜 원인 (obs#392) + GK 스즈키 고정·고아 처방 정리 (obs#393)",
+   "source": "git:ed226c1"
+  },
+  {
+   "after": "잭슨: st_false9/Attack",
+   "before": "왓킨스: st_advanced/Versatile",
+   "changed_at": "2026-09-01",
+   "key": "ST",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "음바예: wm_widemid/Build-Up",
+   "before": "맥긴: wm_widemid/Support",
+   "changed_at": "2026-09-01",
+   "key": "RM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "카마라: dm_dlp/Roaming",
+   "before": "카마라: dm_holding/Defend",
+   "changed_at": "2026-09-01",
+   "key": "RDM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "린델뢰프: cb_bpd/Aggressive",
+   "before": "콘사: cb_bpd/Aggressive",
+   "changed_at": "2026-09-01",
+   "key": "RCB",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "완비사카: fb_att_wb/Support",
+   "before": "캐시: fb_wingback/Balanced",
+   "changed_at": "2026-09-01",
+   "key": "RB",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "헤밍스: wm_widemid/Support",
+   "before": "부엔디아: wm_wideplm/Attack",
+   "changed_at": "2026-09-01",
+   "key": "LM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "바클리: dm_dlp/Roaming",
+   "before": "오나나: dm_holding/Roaming",
+   "changed_at": "2026-09-01",
+   "key": "LDM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "밍스: cb_bpd/Aggressive",
+   "before": "파우 토레스: cb_bpd/Build-Up",
+   "changed_at": "2026-09-01",
+   "key": "LCB",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "마테오 루헤리: fb_att_wb/Support",
+   "before": "마첸: fb_att_wb/Support",
+   "changed_at": "2026-09-01",
+   "key": "LB",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "비조: gk_goalkeeper/Defend",
+   "before": "마르티네스: gk_goalkeeper/Defend",
+   "changed_at": "2026-09-01",
+   "key": "GK",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "st_advanced/Versatile",
+   "before": null,
+   "changed_at": "2026-08-12",
+   "key": "4-2-3-1 Wide|ST",
+   "layer": "slot_canon",
+   "reason": "feat(canon): 슬롯별 전술 정본 세트 신설 — 인선 무관 에메리 FC26 번역 11칸 (obs#193, migration 008)",
+   "source": "git:416cb5d"
+  },
+  {
+   "after": "wm_widemid/Support",
+   "before": null,
+   "changed_at": "2026-08-12",
+   "key": "4-2-3-1 Wide|RM",
+   "layer": "slot_canon",
+   "reason": "feat(canon): 슬롯별 전술 정본 세트 신설 — 인선 무관 에메리 FC26 번역 11칸 (obs#193, migration 008)",
+   "source": "git:416cb5d"
+  },
+  {
+   "after": "dm_holding/Defend",
+   "before": null,
+   "changed_at": "2026-08-12",
+   "key": "4-2-3-1 Wide|RDM",
+   "layer": "slot_canon",
+   "reason": "feat(canon): 슬롯별 전술 정본 세트 신설 — 인선 무관 에메리 FC26 번역 11칸 (obs#193, migration 008)",
+   "source": "git:416cb5d"
+  },
+  {
+   "after": "cb_bpd/Aggressive",
+   "before": null,
+   "changed_at": "2026-08-12",
+   "key": "4-2-3-1 Wide|RCB",
+   "layer": "slot_canon",
+   "reason": "feat(canon): 슬롯별 전술 정본 세트 신설 — 인선 무관 에메리 FC26 번역 11칸 (obs#193, migration 008)",
+   "source": "git:416cb5d"
+  },
+  {
+   "after": "fb_wingback/Balanced",
+   "before": null,
+   "changed_at": "2026-08-12",
+   "key": "4-2-3-1 Wide|RB",
+   "layer": "slot_canon",
+   "reason": "feat(canon): 슬롯별 전술 정본 세트 신설 — 인선 무관 에메리 FC26 번역 11칸 (obs#193, migration 008)",
+   "source": "git:416cb5d"
+  },
+  {
+   "after": "wm_wideplm/Attack",
+   "before": null,
+   "changed_at": "2026-08-12",
+   "key": "4-2-3-1 Wide|LM",
+   "layer": "slot_canon",
+   "reason": "feat(canon): 슬롯별 전술 정본 세트 신설 — 인선 무관 에메리 FC26 번역 11칸 (obs#193, migration 008)",
+   "source": "git:416cb5d"
+  },
+  {
+   "after": "dm_holding/Roaming",
+   "before": null,
+   "changed_at": "2026-08-12",
+   "key": "4-2-3-1 Wide|LDM",
+   "layer": "slot_canon",
+   "reason": "feat(canon): 슬롯별 전술 정본 세트 신설 — 인선 무관 에메리 FC26 번역 11칸 (obs#193, migration 008)",
+   "source": "git:416cb5d"
+  },
+  {
+   "after": "cb_bpd/Build-Up",
+   "before": null,
+   "changed_at": "2026-08-12",
+   "key": "4-2-3-1 Wide|LCB",
+   "layer": "slot_canon",
+   "reason": "feat(canon): 슬롯별 전술 정본 세트 신설 — 인선 무관 에메리 FC26 번역 11칸 (obs#193, migration 008)",
+   "source": "git:416cb5d"
+  },
+  {
+   "after": "fb_att_wb/Support",
+   "before": null,
+   "changed_at": "2026-08-12",
+   "key": "4-2-3-1 Wide|LB",
+   "layer": "slot_canon",
+   "reason": "feat(canon): 슬롯별 전술 정본 세트 신설 — 인선 무관 에메리 FC26 번역 11칸 (obs#193, migration 008)",
+   "source": "git:416cb5d"
+  },
+  {
+   "after": "gk_goalkeeper/Defend",
+   "before": null,
+   "changed_at": "2026-08-12",
+   "key": "4-2-3-1 Wide|GK",
+   "layer": "slot_canon",
+   "reason": "feat(canon): 슬롯별 전술 정본 세트 신설 — 인선 무관 에메리 FC26 번역 11칸 (obs#193, migration 008)",
+   "source": "git:416cb5d"
+  },
+  {
+   "after": "cam_playmaker/Roaming",
+   "before": null,
+   "changed_at": "2026-08-12",
+   "key": "4-2-3-1 Wide|CAM",
+   "layer": "slot_canon",
+   "reason": "feat(canon): 슬롯별 전술 정본 세트 신설 — 인선 무관 에메리 FC26 번역 11칸 (obs#193, migration 008)",
+   "source": "git:416cb5d"
+  },
+  {
+   "after": "왓킨스: st_advanced/Versatile",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "ST",
+   "layer": "starter",
+   "reason": "data(xi): prescriptions.starter 플래그 + obs#110 확정 XI 11명 기록 — 설정 시트가 선발 우선 표시",
+   "source": "git:5df00a7"
+  },
+  {
+   "after": "맥긴: wm_widemid/Support",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "RM",
+   "layer": "starter",
+   "reason": "data(xi): prescriptions.starter 플래그 + obs#110 확정 XI 11명 기록 — 설정 시트가 선발 우선 표시",
+   "source": "git:5df00a7"
+  },
+  {
+   "after": "카마라: dm_holding/Defend",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "RDM",
+   "layer": "starter",
+   "reason": "data(xi): prescriptions.starter 플래그 + obs#110 확정 XI 11명 기록 — 설정 시트가 선발 우선 표시",
+   "source": "git:5df00a7"
+  },
+  {
+   "after": "콘사: cb_bpd/Aggressive",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "RCB",
+   "layer": "starter",
+   "reason": "data(xi): prescriptions.starter 플래그 + obs#110 확정 XI 11명 기록 — 설정 시트가 선발 우선 표시",
+   "source": "git:5df00a7"
+  },
+  {
+   "after": "캐시: fb_wingback/Balanced",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "RB",
+   "layer": "starter",
+   "reason": "data(xi): prescriptions.starter 플래그 + obs#110 확정 XI 11명 기록 — 설정 시트가 선발 우선 표시",
+   "source": "git:5df00a7"
+  },
+  {
+   "after": "부엔디아: wm_wideplm/Attack",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "LM",
+   "layer": "starter",
+   "reason": "data(xi): prescriptions.starter 플래그 + obs#110 확정 XI 11명 기록 — 설정 시트가 선발 우선 표시",
+   "source": "git:5df00a7"
+  },
+  {
+   "after": "오나나: dm_holding/Roaming",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "LDM",
+   "layer": "starter",
+   "reason": "data(xi): prescriptions.starter 플래그 + obs#110 확정 XI 11명 기록 — 설정 시트가 선발 우선 표시",
+   "source": "git:5df00a7"
+  },
+  {
+   "after": "파우 토레스: cb_bpd/Build-Up",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "LCB",
+   "layer": "starter",
+   "reason": "data(xi): prescriptions.starter 플래그 + obs#110 확정 XI 11명 기록 — 설정 시트가 선발 우선 표시",
+   "source": "git:5df00a7"
+  },
+  {
+   "after": "마첸: fb_att_wb/Support",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "LB",
+   "layer": "starter",
+   "reason": "data(xi): prescriptions.starter 플래그 + obs#110 확정 XI 11명 기록 — 설정 시트가 선발 우선 표시",
+   "source": "git:5df00a7"
+  },
+  {
+   "after": "마르티네스: gk_goalkeeper/Defend",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "GK",
+   "layer": "starter",
+   "reason": "data(xi): prescriptions.starter 플래그 + obs#110 확정 XI 11명 기록 — 설정 시트가 선발 우선 표시",
+   "source": "git:5df00a7"
+  },
+  {
+   "after": "만잠비: cam_halfwinger/Balanced",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "CAM",
+   "layer": "starter",
+   "reason": "data(xi): prescriptions.starter 플래그 + obs#110 확정 XI 11명 기록 — 설정 시트가 선발 우선 표시",
+   "source": "git:5df00a7"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 48",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2026-27|projected:right-release-C-deprecated",
+   "layer": "team_setup",
+   "reason": "cutover(v2): 구 툴 아카이브 + transfer-watch 3팀 확장 — 재설계 단계 5·6 완료",
+   "source": "git:43e9a75"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 52",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2026-27|projected:left-release-A-deprecated",
+   "layer": "team_setup",
+   "reason": "cutover(v2): 구 툴 아카이브 + transfer-watch 3팀 확장 — 재설계 단계 5·6 완료",
+   "source": "git:43e9a75"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 52",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2026-27|projected:interior-left-B2-deprecated",
+   "layer": "team_setup",
+   "reason": "cutover(v2): 구 툴 아카이브 + transfer-watch 3팀 확장 — 재설계 단계 5·6 완료",
+   "source": "git:43e9a75"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 52",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2026-27|projected:interior-left-B1-deprecated",
+   "layer": "team_setup",
+   "reason": "cutover(v2): 구 툴 아카이브 + transfer-watch 3팀 확장 — 재설계 단계 5·6 완료",
+   "source": "git:43e9a75"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 52",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2026-27|projected:emery-2627",
+   "layer": "team_setup",
+   "reason": "cutover(v2): 구 툴 아카이브 + transfer-watch 3팀 확장 — 재설계 단계 5·6 완료",
+   "source": "git:43e9a75"
+  },
+  {
+   "after": "4-2-2-2 · 빌드업 Short Passing · 수비 Balanced · 라인 52",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2026-27|projected:2up-4222-deprecated",
+   "layer": "team_setup",
+   "reason": "cutover(v2): 구 툴 아카이브 + transfer-watch 3팀 확장 — 재설계 단계 5·6 완료",
+   "source": "git:43e9a75"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 52",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2026-27|projected-deprecated",
+   "layer": "team_setup",
+   "reason": "cutover(v2): 구 툴 아카이브 + transfer-watch 3팀 확장 — 재설계 단계 5·6 완료",
+   "source": "git:43e9a75"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 High · 라인 67",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2025-26|optimal:vs-weak",
+   "layer": "team_setup",
+   "reason": "cutover(v2): 구 툴 아카이브 + transfer-watch 3팀 확장 — 재설계 단계 5·6 완료",
+   "source": "git:43e9a75"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Deep · 라인 43",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2025-26|optimal:vs-strong",
+   "layer": "team_setup",
+   "reason": "cutover(v2): 구 툴 아카이브 + transfer-watch 3팀 확장 — 재설계 단계 5·6 완료",
+   "source": "git:43e9a75"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 47",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2025-26|optimal:rogers10",
+   "layer": "team_setup",
+   "reason": "cutover(v2): 구 툴 아카이브 + transfer-watch 3팀 확장 — 재설계 단계 5·6 완료",
+   "source": "git:43e9a75"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Deep · 라인 45",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2025-26|optimal:lead",
+   "layer": "team_setup",
+   "reason": "cutover(v2): 구 툴 아카이브 + transfer-watch 3팀 확장 — 재설계 단계 5·6 완료",
+   "source": "git:43e9a75"
+  },
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 52",
+   "before": null,
+   "changed_at": "2026-08-11",
+   "key": "2025-26|optimal",
+   "layer": "team_setup",
+   "reason": "cutover(v2): 구 툴 아카이브 + transfer-watch 3팀 확장 — 재설계 단계 5·6 완료",
+   "source": "git:43e9a75"
+  }
+ ],
  "transfer": {
   "ledger": [
    {

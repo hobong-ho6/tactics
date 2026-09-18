@@ -43945,6 +43945,449 @@
    "sort_order": 91
   }
  ],
+ "tactic_changes": [
+  {
+   "after": "루크만: st_false9/Build-Up",
+   "before": null,
+   "changed_at": "2026-09-01",
+   "key": "ST",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "줄리아노 시메오네: wm_wideplm/Attack",
+   "before": null,
+   "changed_at": "2026-09-01",
+   "key": "RM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "이강인: cm_b2b/Ball-Winning",
+   "before": null,
+   "changed_at": "2026-09-01",
+   "key": "RCM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "쿠티 로메로: cb_bpd/Aggressive",
+   "before": null,
+   "changed_at": "2026-09-01",
+   "key": "RCB",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "호르헤 도밍게스: fb_att_wb/Support",
+   "before": null,
+   "changed_at": "2026-09-01",
+   "key": "RB",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "바에나: wm_wideplm/Attack",
+   "before": null,
+   "changed_at": "2026-09-01",
+   "key": "LM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "바리오스: cm_playmaker/Roaming",
+   "before": null,
+   "changed_at": "2026-09-01",
+   "key": "LCM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "한츠코: cb_bpd/Aggressive",
+   "before": null,
+   "changed_at": "2026-09-01",
+   "key": "LCB",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "다니 마르티네스: fb_att_wb/Support",
+   "before": null,
+   "changed_at": "2026-09-01",
+   "key": "LB",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "오블락: gk_goalkeeper/Defend",
+   "before": null,
+   "changed_at": "2026-09-01",
+   "key": "GK",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "코케: dm_dlp/Roaming",
+   "before": null,
+   "changed_at": "2026-09-01",
+   "key": "CDM",
+   "layer": "starter",
+   "reason": "feat(squad): FC26 설정시트 최적 재구성(4팀 11/11) + 등번호 수집·표시 (obs#389~391)",
+   "source": "git:600f024"
+  },
+  {
+   "after": "4-1-4-1 · 빌드업 Short Passing · 수비 Balanced · 라인 45",
+   "before": "5-4-1 · 빌드업 Short Passing · 수비 Balanced · 라인 45",
+   "changed_at": "2026-08-20",
+   "key": "2026-27|measured",
+   "layer": "team_setup",
+   "reason": "fix(atm): 시즌 정본 포메이션도 4-1-4-1로 정정 — slots와 불일치 해소",
+   "source": "git:5682a6b"
+  },
+  {
+   "after": null,
+   "before": "st_advanced/Support",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|ST",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": null,
+   "before": "wm_widemid/Defend",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|RM",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": null,
+   "before": "dm_dlp/Build-Up",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|RDM",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": null,
+   "before": "cb_stopper/Aggressive",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|RCB",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": null,
+   "before": "fb_wingback/Support",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|RB",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": null,
+   "before": "wm_widemid/Defend",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|LM",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": null,
+   "before": "dm_holding/Ball-Winning",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|LDM",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": null,
+   "before": "cb_stopper/Aggressive",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|LCB",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": null,
+   "before": "fb_wingback/Support",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|LB",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": null,
+   "before": "gk_goalkeeper/Defend",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|GK",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": null,
+   "before": "cb_defender/Balanced",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|CCB",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": "st_advanced/Support",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "4-1-4-1|ST",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": "wm_widemid/Defend",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "4-1-4-1|RM",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": "cm_b2b/Balanced",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "4-1-4-1|RCM",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": "cb_stopper/Aggressive",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "4-1-4-1|RCB",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": "fb_wingback/Support",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "4-1-4-1|RB",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": "wm_widemid/Defend",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "4-1-4-1|LM",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": "cm_b2b/Balanced",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "4-1-4-1|LCM",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": "cb_stopper/Aggressive",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "4-1-4-1|LCB",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": "fb_wingback/Support",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "4-1-4-1|LB",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": "gk_goalkeeper/Defend",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "4-1-4-1|GK",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": "dm_holding/Ball-Winning",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "4-1-4-1|CDM",
+   "layer": "slot_canon",
+   "reason": "fix(atm): 좌우 반전 정정 + PPDA 7.77 + sofascore_id 2836 (obs#258)",
+   "source": "git:a3e0255"
+  },
+  {
+   "after": "dm_dlp/Build-Up",
+   "before": "dm_dlp/Support",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|RDM",
+   "layer": "slot_canon",
+   "reason": "data(atm): 라리가 R1 전수 적재 — 스쿼드·처방·경기 리포트 (FotMob 대체 경로)",
+   "source": "git:7adb92d"
+  },
+  {
+   "after": "cb_stopper/Aggressive",
+   "before": "cb_defender/Aggressive",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|RCB",
+   "layer": "slot_canon",
+   "reason": "data(atm): 라리가 R1 전수 적재 — 스쿼드·처방·경기 리포트 (FotMob 대체 경로)",
+   "source": "git:7adb92d"
+  },
+  {
+   "after": "cb_stopper/Aggressive",
+   "before": "cb_defender/Aggressive",
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|LCB",
+   "layer": "slot_canon",
+   "reason": "data(atm): 라리가 R1 전수 적재 — 스쿼드·처방·경기 리포트 (FotMob 대체 경로)",
+   "source": "git:7adb92d"
+  },
+  {
+   "after": "5-4-1 · 빌드업 Short Passing · 수비 Balanced · 라인 45",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "2026-27|measured",
+   "layer": "team_setup",
+   "reason": "feat(atm): 시메오네·아틀레티코 4번째 팀 확장 — 전술 정본까지 (라리가 R1 기준)",
+   "source": "git:ffb60c0"
+  },
+  {
+   "after": "st_advanced/Support",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|ST",
+   "layer": "slot_canon",
+   "reason": "feat(atm): 시메오네·아틀레티코 4번째 팀 확장 — 전술 정본까지 (라리가 R1 기준)",
+   "source": "git:ffb60c0"
+  },
+  {
+   "after": "wm_widemid/Defend",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|RM",
+   "layer": "slot_canon",
+   "reason": "feat(atm): 시메오네·아틀레티코 4번째 팀 확장 — 전술 정본까지 (라리가 R1 기준)",
+   "source": "git:ffb60c0"
+  },
+  {
+   "after": "dm_dlp/Support",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|RDM",
+   "layer": "slot_canon",
+   "reason": "feat(atm): 시메오네·아틀레티코 4번째 팀 확장 — 전술 정본까지 (라리가 R1 기준)",
+   "source": "git:ffb60c0"
+  },
+  {
+   "after": "cb_defender/Aggressive",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|RCB",
+   "layer": "slot_canon",
+   "reason": "feat(atm): 시메오네·아틀레티코 4번째 팀 확장 — 전술 정본까지 (라리가 R1 기준)",
+   "source": "git:ffb60c0"
+  },
+  {
+   "after": "fb_wingback/Support",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|RB",
+   "layer": "slot_canon",
+   "reason": "feat(atm): 시메오네·아틀레티코 4번째 팀 확장 — 전술 정본까지 (라리가 R1 기준)",
+   "source": "git:ffb60c0"
+  },
+  {
+   "after": "wm_widemid/Defend",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|LM",
+   "layer": "slot_canon",
+   "reason": "feat(atm): 시메오네·아틀레티코 4번째 팀 확장 — 전술 정본까지 (라리가 R1 기준)",
+   "source": "git:ffb60c0"
+  },
+  {
+   "after": "dm_holding/Ball-Winning",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|LDM",
+   "layer": "slot_canon",
+   "reason": "feat(atm): 시메오네·아틀레티코 4번째 팀 확장 — 전술 정본까지 (라리가 R1 기준)",
+   "source": "git:ffb60c0"
+  },
+  {
+   "after": "cb_defender/Aggressive",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|LCB",
+   "layer": "slot_canon",
+   "reason": "feat(atm): 시메오네·아틀레티코 4번째 팀 확장 — 전술 정본까지 (라리가 R1 기준)",
+   "source": "git:ffb60c0"
+  },
+  {
+   "after": "fb_wingback/Support",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|LB",
+   "layer": "slot_canon",
+   "reason": "feat(atm): 시메오네·아틀레티코 4번째 팀 확장 — 전술 정본까지 (라리가 R1 기준)",
+   "source": "git:ffb60c0"
+  },
+  {
+   "after": "gk_goalkeeper/Defend",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|GK",
+   "layer": "slot_canon",
+   "reason": "feat(atm): 시메오네·아틀레티코 4번째 팀 확장 — 전술 정본까지 (라리가 R1 기준)",
+   "source": "git:ffb60c0"
+  },
+  {
+   "after": "cb_defender/Balanced",
+   "before": null,
+   "changed_at": "2026-08-20",
+   "key": "5-4-1|CCB",
+   "layer": "slot_canon",
+   "reason": "feat(atm): 시메오네·아틀레티코 4번째 팀 확장 — 전술 정본까지 (라리가 R1 기준)",
+   "source": "git:ffb60c0"
+  }
+ ],
  "transfer": {
   "ledger": [
    {

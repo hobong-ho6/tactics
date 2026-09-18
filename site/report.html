@@ -9,13 +9,19 @@
 #canon td:nth-child(3),#canon td:nth-child(4){white-space:nowrap}</style></head><body>
 <div id="hdr"></div>
 <h1 id="title"></h1>
+<div id="asof" class="kv" style="margin:-6px 0 10px;font-size:13px"></div>
 <div class="panel"><h2>⭐ FC26 설정 시트 — 게임에 그대로 입력</h2>
   <div id="teamset" class="kv"></div><div id="pitch2"></div><table id="sheet"></table></div>
 <div class="panel"><h2>전술 정본 — 인선 무관 <small class="dim">slot_canon_roles — 감독이 요구하는
   슬롯 임무의 게임 번역. 위 설정 시트(인선 프리셋)가 이와 다르면 편차다</small></h2>
   <div id="pitchCanon"></div><table id="canon"></table></div>
-<div class="panel"><h2>감독 프로필 <small class="dim">manager_profiles — 11축</small></h2>
+<div class="panel"><h2>감독 프로필 <small class="dim">manager_profiles — 11축 · 「확정 결론」은 시즌 정본, 경기별 관찰은 접힌 「경기 반영」에 따로</small></h2>
   <table id="profile"></table></div>
+<div class="panel"><h2>전술 갱신 히스토리 <small class="dim">— 언제 · 무엇이 · 왜 바뀌었나</small></h2>
+  <p class="dim" style="font-size:12.5px;margin:0 0 8px">두 종류가 섞이지 않게 나눈다. <b>설정 변경</b>(<code>tactic_change_log</code>) = 슬롯 정본 역할·팀 설정 3축·선발 처방이 실제로 <b>바뀐</b> 기록(before → after · 사유).
+  <b>경기 반영</b> = 경기 분석이 프로필 축에 덧붙인 관찰(<code>[날짜 경기]</code> 표식) — 대부분 시즌 결론을 <b>유지·보강·한정</b>하는 근거이고, 그 자체가 설정 변경은 아니다.
+  개별 경기 재현 프리셋(<code>match_game_setups</code>)은 여기 없다 — 경기 분석 메뉴가 담당한다.</p>
+  <div class="menubar" id="histf"></div><ul id="hist" style="list-style:none;padding:0;margin:0"></ul></div>
 
 <p class="dim">서사·분석 전문은 docs/1x 감독 문서가 정본이다 — 이 페이지는 DB에 확정 기록된
 결론(프로필 축·세팅)만 보여준다.</p>
@@ -141,15 +147,56 @@ const AXES = { philosophy:'철학', traits:'전술적 특징', role_demands:'역
   buildup:'빌드업', rest_defense:'rest-defense', set_pieces:'세트피스',
   rotation:'로테이션', market:'이적 정책', implementation:'⭐ 게임 구현' };
 
+/* ⭐ 프로필 content는 덧붙임 전용이다(불변규칙 2): 「확정 결론」 뒤에 경기 분석이 `[YYYY-MM-DD 경기] …` 문단을 붙인다.
+   한 셀에 같이 펼치면 시즌 결론과 경기별 관찰이 섞여 보인다(사용자 지적 2026-09-18 「코번트리전 코멘트가 있는 걸로 봐선 데이터가
+   섞인 건지 전체 전술 변경의 근거인지 헷갈리네」) → 표식으로 갈라 결론은 본문, 경기 반영은 접힌 목록으로. */
+const TAG = /\[(20\d\d-\d\d-\d\d)([^\]]*)\]/g;
+function splitDated(text){
+  const t = String(text ?? ''); const idx = []; let m;
+  while ((m = TAG.exec(t))) idx.push({ i: m.index, len: m[0].length, date: m[1], tag: m[2].trim() });
+  if (!idx.length) return { base: t, entries: [] };
+  const base = t.slice(0, idx[0].i).trim();
+  const entries = idx.map((x, k) => ({ date: x.date, tag: x.tag, text: t.slice(x.i + x.len, idx[k + 1]?.i ?? t.length).trim() }));
+  return { base, entries };
+}
+const PROFILE_SPLIT = Object.fromEntries((td.profile ?? []).map(p => [p.axis, splitDated(p.content)]));
 /* 근거(evidence)는 축마다 수백 자라 셀에 펼치면 결론이 묻힌다 → details로 접는다. */
 document.getElementById('profile').innerHTML =
   `<tr><th>축</th><th>확정 결론</th><th>근거</th><th>갱신</th></tr>` +
-  (td.profile.length ? td.profile.map(p => `<tr><td><b>${AXES[p.axis] ?? p.axis}</b></td>
-     <td>${prose(p.content)}</td>
+  (td.profile.length ? td.profile.map(p => { const sp = PROFILE_SPLIT[p.axis];
+     return `<tr><td><b>${AXES[p.axis] ?? p.axis}</b></td>
+     <td>${prose(sp.base)}${sp.entries.length ? `<details class="refs" style="margin-top:6px"><summary>경기 반영 ${sp.entries.length}건 — 결론을 유지·보강·한정한 관찰</summary>
+        ${sp.entries.map(e => `<div style="margin:8px 0 2px"><span class="badge">${e.date}${e.tag ? ' ' + e.tag : ''}</span></div>${prose(e.text)}`).join('')}</details>` : ''}</td>
      <td>${p.evidence ? `<details class="refs"><summary>근거 보기</summary>${prose(p.evidence)}</details>` : ''}</td>
-     <td>${p.updated ?? ''}</td></tr>`).join('')
+     <td>${p.updated ?? ''}${sp.entries.length ? `<br><small class="dim">마지막 경기 반영</small>` : ''}</td></tr>`; }).join('')
    : `<tr><td colspan="4" class="dim">아직 프로필 축이 기록되지 않았다 — docs 문서에서 이관 예정
       (manager_profiles 테이블에 INSERT 후 재익스포트)</td></tr>`);
+
+/* ── 전술 갱신 히스토리 + 최종 갱신일 ── */
+const LAYER_KR = { slot_canon: '슬롯 정본', team_setup: '팀 설정', starter: '선발 처방' };
+const changes = (td.tactic_changes ?? []).map(c => ({ kind: 'change', date: c.changed_at, layer: c.layer, key: c.key, before: c.before, after: c.after, reason: c.reason, source: c.source }));
+const reflections = (td.profile ?? []).flatMap(p => PROFILE_SPLIT[p.axis].entries.map(e => ({ kind: 'reflect', date: e.date, axis: p.axis, tag: e.tag, text: e.text })));
+const lastChange = changes[0]?.date ?? null;
+const lastReflect = reflections.map(r => r.date).sort().slice(-1)[0] ?? null;
+const lastProfile = (td.profile ?? []).map(p => p.updated).filter(Boolean).sort().slice(-1)[0] ?? null;
+const lastCanon = (td.slot_canon ?? []).map(c => c.updated).filter(Boolean).sort().slice(-1)[0] ?? null;
+document.getElementById('asof').innerHTML =
+  `<span><b>시즌 전술 최종 갱신</b> <span class="badge hi">${[lastChange, lastProfile, lastCanon].filter(Boolean).sort().slice(-1)[0] ?? '—'}</span></span>
+   <span class="dim">설정 변경 마지막 <b>${lastChange ?? '—'}</b>(${changes.filter(c => c.before != null).length}건) · 슬롯 정본 <b>${lastCanon ?? '—'}</b> · 프로필 마지막 경기 반영 <b>${lastReflect ?? lastProfile ?? '—'}</b>(${reflections.length}건)</span>`;
+let HF = 'all';
+function drawHist(){
+  document.getElementById('histf').innerHTML = [['all', '전부'], ['change', '설정 변경만'], ['reflect', '경기 반영만']]
+    .map(([k, l]) => `<button class="act ghost${HF === k ? ' on' : ''}" data-f="${k}" style="background:none;border:1px solid var(--line);color:${HF === k ? 'var(--acc)' : 'var(--txt)'};border-radius:8px;padding:4px 10px;cursor:pointer">${l}</button>`).join('');
+  document.querySelectorAll('#histf button').forEach(b => b.addEventListener('click', () => { HF = b.dataset.f; drawHist(); }));
+  const items = [...changes, ...reflections].filter(x => HF === 'all' || x.kind === HF).sort((a, b) => b.date.localeCompare(a.date));
+  document.getElementById('hist').innerHTML = items.map(x => x.kind === 'change'
+    ? `<li style="padding:6px 0;border-bottom:1px solid var(--line)"><span class="badge ${x.before == null ? '' : 'mid'}">${x.date}</span> <b>${LAYER_KR[x.layer] ?? x.layer}</b> <code>${x.key}</code>
+         ${x.before == null ? `<span class="dim">신설 →</span> <b>${x.after ?? ''}</b>` : x.after == null ? `<b>${x.before}</b> <span class="dim">→ 삭제</span>` : `<span class="dim">${x.before}</span> → <b>${x.after}</b>`}
+         <br><small class="dim">사유: ${x.reason}${x.source?.startsWith('git:') ? ` · <code>${x.source.slice(4)}</code>` : ''}</small></li>`
+    : `<li style="padding:6px 0;border-bottom:1px solid var(--line)"><span class="badge">${x.date}</span> <span class="dim">경기 반영 ·</span> <b>${AXES[x.axis] ?? x.axis}</b> <small class="dim">${x.tag}</small>
+         <div style="font-size:13px;margin-top:2px">${prose(x.text)}</div></li>`).join('') || '<li class="dim">기록 없음</li>';
+}
+drawHist();
 
 
 mountGlossaryTips();

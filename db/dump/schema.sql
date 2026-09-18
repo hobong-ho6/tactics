@@ -835,3 +835,15 @@ CREATE TABLE game_role_key_attrs(
   confidence TEXT NOT NULL DEFAULT 'MEDIUM — EA 미공개, 역할 서술에서 판단한 가중',
   UNIQUE(game_version, role_id, attr)
 );
+CREATE TABLE tactic_change_log(
+  id INTEGER PRIMARY KEY,
+  regime_id INTEGER NOT NULL REFERENCES regimes(id),
+  layer TEXT NOT NULL CHECK(layer IN ('slot_canon','team_setup','starter')),
+  key TEXT NOT NULL,                 -- slot_canon: 'formation|pos' · team_setup: 'season|kind' · starter: 'pos_label'
+  before TEXT,                       -- NULL = 신설
+  after TEXT,                        -- NULL = 삭제
+  changed_at TEXT NOT NULL,          -- 날짜(YYYY-MM-DD)
+  reason TEXT NOT NULL,              -- 왜 바뀌었나 — obs# 참조 권장
+  source TEXT NOT NULL               -- 'git:<hash>' (backfill) 또는 'tactic_changes.py <날짜>'
+);
+CREATE INDEX ix_tactic_change_log_r ON tactic_change_log(regime_id, changed_at);
