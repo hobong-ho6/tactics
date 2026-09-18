@@ -250,8 +250,8 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .mviz{display:grid;grid-template-columns:1fr;gap:14px;margin:10px 0}
 .mviz .vz{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
 .mviz h4{margin:0 0 6px;font-size:13px;color:var(--dim);font-weight:600}
-.mviz svg{width:100%;max-width:760px;height:auto;display:block;overflow:visible;margin:0 auto}
-.mviz .vz.wide svg{max-width:none}
+.mviz svg{display:block;overflow:visible;max-width:100%;margin:0 auto}
+.mviz .vz{min-width:0}
 .mviz text{font:11px -apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;fill:var(--txt)}
 .mviz text.dim{fill:var(--dim)} .mviz text.sm{font-size:10px}
 .mviz .lg{display:flex;gap:14px;font-size:12px;color:var(--dim);margin-top:4px;flex-wrap:wrap}

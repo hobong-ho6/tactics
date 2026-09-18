@@ -7,11 +7,11 @@ const num = v => (v == null || v === '' ? null : Number(v));
 const fmt = (v, d = 0) => v == null ? '—' : Number(v).toLocaleString(undefined, { maximumFractionDigits: d, minimumFractionDigits: d });
 
 /* ── 1. 타임라인 ── 0~90(+추가) 분. 스코어 국면을 옅은 띠로, 득점은 큰 점(우리 위·상대 아래), 교체/카드는 작은 표식. */
-export function timeline(r, team){
+export function timeline(r, team, W = 900){
   const ev = (r.events || []).slice().sort((a, b) => a.minute - b.minute);
   if (!ev.length) return `<div class="vz wide"><h4>타임라인</h4><span class="dim" style="font-size:12px">이벤트 미수집 — match_events가 비어 있다(수집 회차가 채운다).</span></div>`;
   const end = Math.max(90, ...ev.map(e => e.minute)) + 2;
-  const W = 900, H = 176, L = 28, R = 20, x = m => L + (W - L - R) * (m / end), mid = 88;   // 득점 라벨(±12·±22)과 보조 표식(±40)을 겹치지 않게 띄운다
+  const H = 176, L = 28, R = 20, x = m => L + (W - L - R) * (m / end), mid = 88;   // 득점 라벨(±12·±22)과 보조 표식(±40)을 겹치지 않게 띄운다
   // 스코어 국면 띠 — 득점류 이벤트로 (score_v, score_o) 궤적을 만든다
   const goals = ev.filter(e => /goal$/.test(e.kind) && e.score_v != null);
   let bands = '', sv = 0, so = 0, from = 0;
@@ -51,13 +51,13 @@ export function timeline(r, team){
   }).join('');
   const nSub = ev.filter(e => e.kind === 'sub' || e.kind === 'gk_change').length, nCard = ev.filter(e => /yellow|red/.test(e.kind)).length;
   return `<div class="vz wide"><h4>타임라인 <span class="dim">— 득점 ${goals.length} · 교체 ${nSub} · 카드 ${nCard} · 위 = ${esc(team)}, 아래 = ${esc(r.opponent || '상대')}</span></h4>
-    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="경기 타임라인">${bands}${ticks}${half}${axis}
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="경기 타임라인">${bands}${ticks}${half}${axis}
       <text x="${L}" y="${mid - 58}" class="dim sm">${esc(team)}</text><text x="${L}" y="${mid + 64}" class="dim sm">${esc(r.opponent || '상대')}</text>${marks}</svg>
     <div class="lg"><span><i style="background:${US}"></i>리드 구간</span><span><i style="background:${THEM}"></i>열세 구간</span><span>● 득점(도움)</span><span>▲ 교체 <span style="color:var(--warn)">▲</span> GK 교체</span><span><span style="color:var(--warn)">▮</span> 경고</span></div></div>`;
 }
 
 /* ── 2. 팀 대조 — 버터플라이. 한 행 = 한 지표, 가운데 라벨, 왼쪽 우리(주황) / 오른쪽 상대(파랑). 값은 막대 끝에 직접 라벨(행 수 ≤ 10). */
-export function butterfly(r, team){
+export function butterfly(r, team, W = 560){
   const v = k => num(r[k]);
   const rows = [
     { label:'점유율 %', a: v('possession'), b: v('possession') == null ? null : 100 - v('possession'), max: 100, d: 0 },
@@ -72,7 +72,7 @@ export function butterfly(r, team){
     { label:'수비 액션 평균 위치', a: v('def_x_v'), b: v('def_x_o'), d: 1, max: 100 },
   ].filter(x => x.a != null || x.b != null);
   if (!rows.length) return '';
-  const W = 560, rowH = 26, top = 22, H = top + rows.length * rowH + 8, C = W / 2, span = 190, bar = 12;
+  const rowH = 26, top = 22, H = top + rows.length * rowH + 8, C = W / 2, span = Math.max(90, C - 60 - 64), bar = 12;   // 가운데 라벨 폭 120 + 값 라벨 여백
   const svgRows = rows.map((x, i) => {
     const y = top + i * rowH, m = x.max ?? Math.max(x.a ?? 0, x.b ?? 0, x.aTot ?? 0, x.bTot ?? 0, 1e-9);
     const wa = span * ((x.aTot ?? x.a ?? 0) / m), wb = span * ((x.bTot ?? x.b ?? 0) / m);
@@ -93,14 +93,14 @@ export function butterfly(r, team){
         <text x="${C + 66 + Math.max(wb, 0) + 4}" y="${y + 12}" class="sm">${lb}</text></g></g>`;
   }).join('');
   return `<div class="vz"><h4>팀 대조 <span class="dim">— 왼쪽 ${esc(team)} · 오른쪽 ${esc(r.opponent || '상대')}. xG·슈팅의 어두운 안쪽 = 오픈플레이·유효슈팅</span></h4>
-    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="팀 스탯 대조"><line x1="${C}" x2="${C}" y1="${top - 6}" y2="${H - 6}" stroke="${GRID}"/>${svgRows}</svg>
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="팀 스탯 대조"><line x1="${C}" x2="${C}" y1="${top - 6}" y2="${H - 6}" stroke="${GRID}"/>${svgRows}</svg>
     <div class="lg"><span><i style="background:${US}"></i>${esc(team)}</span><span><i style="background:${THEM}"></i>${esc(r.opponent || '상대')}</span><span><i style="background:${US};opacity:.35"></i>시도(연한) / 성공(진한)</span></div></div>`;
 }
 
 /* ── 3. 하프 비교 — 전·후반 xG(그룹 막대)와 점유(미터). 분리 표본이 없으면 그리지 않는다. */
-export function halves(r, team){
+export function halves(r, team, W = 560){
   const ps = r.periods || []; if (!ps.length) return '';
-  const W = 560, H = 150, gw = 150, x0 = 90, base = 118;
+  const H = 150, gw = Math.min(150, Math.max(110, (W - 140) / ps.length - 60)), x0 = 70, base = 118;
   const m = Math.max(...ps.flatMap(p => [num(p.xg_v) || 0, num(p.xg_o) || 0]), 0.5);
   const bars = ps.map((p, i) => { const gx = x0 + i * (gw + 60); const h = v => 70 * ((num(v) || 0) / m);
     const a = h(p.xg_v), b = h(p.xg_o); const poss = num(p.possession_v);
@@ -111,19 +111,33 @@ export function halves(r, team){
       ${poss != null ? `<g class="hit" data-tip="${esc(`점유 ${team} ${fmt(poss)}% · ${r.opponent || '상대'} ${fmt(100 - poss)}%`)}"><rect x="${gx + 60}" y="${base - 26}" width="${gw - 60}" height="8" rx="4" fill="${THEM}" opacity=".35"/><rect x="${gx + 60}" y="${base - 26}" width="${(gw - 60) * poss / 100}" height="8" rx="4" fill="${US}"/><text x="${gx + 60}" y="${base - 4}" class="sm">점유 ${fmt(poss)}%</text></g>` : ''}
     </g>`; }).join('');
   return `<div class="vz"><h4>하프 비교 <span class="dim">— xG(막대)와 점유(띠)</span></h4>
-    <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="하프별 비교"><line x1="${x0 - 10}" x2="${W - 20}" y1="${base}" y2="${base}" stroke="var(--line)"/><text x="${x0 - 14}" y="${base + 4}" text-anchor="end" class="dim sm">xG</text>${bars}</svg>
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="하프별 비교"><line x1="${x0 - 10}" x2="${W - 20}" y1="${base}" y2="${base}" stroke="var(--line)"/><text x="${x0 - 14}" y="${base + 4}" text-anchor="end" class="dim sm">xG</text>${bars}</svg>
     <div class="lg"><span><i style="background:${US}"></i>${esc(team)}</span><span><i style="background:${THEM}"></i>${esc(r.opponent || '상대')}</span></div></div>`;
 }
 
-/* 컨테이너 렌더 + 호버 툴팁(마크가 히트 타깃, 값은 라벨·표로도 읽힌다) */
+/* 컨테이너 렌더 + 호버 툴팁(마크가 히트 타깃, 값은 라벨·표로도 읽힌다).
+   ⭐ SVG는 컨테이너 픽셀 폭으로 그린다(viewBox 확대 금지 — 넓은 화면에서 글자·점이 비대해진다). 창 크기가 바뀌면 다시 그린다. */
 export function renderMatchViz(el, r, team){
   el.className = 'mviz';
-  el.innerHTML = timeline(r, team) + butterfly(r, team) + halves(r, team);
-  let tip = el.querySelector('.tip');
-  if (!tip){ tip = document.createElement('div'); tip.className = 'tip'; tip.hidden = true; el.appendChild(tip); }
-  el.querySelectorAll('.hit').forEach(g => {
-    g.addEventListener('pointerenter', e => { tip.textContent = g.dataset.tip; tip.hidden = false; });
-    g.addEventListener('pointermove', e => { tip.style.left = Math.min(e.clientX + 12, window.innerWidth - 300) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; });
-    g.addEventListener('pointerleave', () => { tip.hidden = true; });
-  });
+  el.innerHTML = '<div class="vz wide" data-k="t"></div><div class="vz" data-k="b"></div><div class="vz" data-k="h"></div><div class="tip" hidden></div>';
+  const tip = el.querySelector('.tip');
+  const draw = () => {
+    for (const box of el.querySelectorAll('.vz')){
+      const w = Math.max(320, Math.floor(box.clientWidth - 26));      // 패널 패딩 12×2 + 테두리
+      const k = box.dataset.k;
+      const html = k === 't' ? timeline(r, team, Math.min(w, 1240)) : k === 'b' ? butterfly(r, team, Math.min(w, 760)) : halves(r, team, Math.min(w, 760));
+      // 각 함수는 <div class="vz …">…</div> 래퍼를 돌려준다 → 안쪽만 옮긴다
+      const tmp = document.createElement('div'); tmp.innerHTML = html;
+      const inner = tmp.firstElementChild;
+      box.innerHTML = inner ? inner.innerHTML : ''; box.hidden = !inner;
+    }
+    el.querySelectorAll('.hit').forEach(g => {
+      g.addEventListener('pointerenter', () => { tip.textContent = g.dataset.tip; tip.hidden = false; });
+      g.addEventListener('pointermove', e => { tip.style.left = Math.min(e.clientX + 12, window.innerWidth - 300) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; });
+      g.addEventListener('pointerleave', () => { tip.hidden = true; });
+    });
+  };
+  draw();
+  if (el._ro) el._ro.disconnect();
+  let t = null; el._ro = new ResizeObserver(() => { clearTimeout(t); t = setTimeout(draw, 120); }); el._ro.observe(el);
 }

@@ -35,7 +35,10 @@
 >   `fc_role_familiarity_map` 98행으로 FC27 Role+/++ 해석 — **FC27 `game_roles` 커널은 여전히 없다**(obs#629).
 >
 > **㉓ 경기 시각화 1차**(migration 040): `match_events`·`match_period_stats` 정형 층 + `site/assets/matchviz.js`(타임라인·팀 대조 버터플라이·하프 비교, dataviz 규약 — 시리즈색 `--viz-us #d95926`/`--viz-them #3987e5` 다크 서피스 검증 통과).
-> report 43만 원문에서 정형화(이벤트 12·하프 2). ⏰ 다른 경기는 `match_events` 비어 「미수집」 표시 — match-watch §3에 incidents→match_events·하프 스탯 단계 추가(다음 회차부터). 사용자 지시 「모든 메뉴의 텍스트를 시각적으로」는 계속 진행(할 일 00-⑸).
+> ✅ **45경기 전부 소급 적재**(이벤트 878행 · 하프 37경기): SofaScore incidents/statistics(브라우저 fetch) 38경기 + **FotMob** 5경기(`matches.event_id`가 7자리인 AVL/LIV/CHE 초반 PL 5경기는 SofaScore가 아니라 FotMob id다 — 5795369 등).
+> ⚠️ FotMob 이벤트의 homeScore/awayScore는 **득점 전** 값이라 득점 순서로 재계산(note 표기). 자책골은 두 제공사 모두 **득점한 팀(수혜)** 쪽 isHome — side는 수혜 팀. 우리 팀 이벤트 선수 연결 83.8%(sofascore_id/fotmob_id 없는 선수는 이름만).
+> ⚠️ **`matches.result` 표기가 섞여 있다**: AVL 원정 6경기(69·70·72·81·82·99)는 홈-원정 순, 나머지는 우리-상대 순 — 이벤트 러닝 스코어와 대조해 발견. 값은 건드리지 않았다(사용자 판단 · 화면은 events 스코어를 쓴다).
+> 차트는 **컨테이너 픽셀 폭으로 그린다**(viewBox 확대 금지 — 넓은 화면에서 글자가 비대해졌다, 사용자 「디자인 비율 조정」) · 경기 화면 패널 순서: 선수별 → 전술 분석(사용자 지시). match-watch §3에 incidents→match_events·하프 단계 추가. 시각화 확장은 할 일 00-⑸.
 >
 > **⑳ 코번트리전(report 43) 유튜브 전수 14편 반영**(`e9166fa`) — 요약 14 · `video_impl_claims` 21 · obs#825~829 · `player_duties` 245(음바예 HELD) · 프로필 rotation·set_pieces 덧붙임 · 리포트 「D+1 추적 보강」.
 > ⭐⭐ **obs#825 「완비사카 하이브리드 백3」(UTV·1874 2소스) 기각** — 실측 avg_y 14.69→툴x 85.3(터치라인). 2소스 일치가 실측을 이기지 않는다(불변규칙 3). 전진 억제는 정합 → 억제형 풀백 유지.
