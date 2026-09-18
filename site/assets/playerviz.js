@@ -45,12 +45,12 @@ export function pizza(rows, { W = 360, gk = false } = {}){
 /* 버전 덤벨 — 항목(OVR·6스탯)마다 한 줄, 시점(FC25 출시 → FC26 출시 → FC26 라이브 → FC27)을 점으로 잇는다. 최신 시점이 진하다. */
 export function dumbbell(seq, keys, { W = 520 } = {}){
   if (!seq || seq.length < 2) return '';
-  const rowH = 24, L = 56, R = 26, T = 22, H = T + keys.length * rowH + 6;
+  const rowH = 28, L = 56, R = 60, T = 24, H = T + keys.length * rowH + 6;
   const vals = keys.flatMap(([k]) => seq.map(s => s[k]).filter(v => v != null));
-  const lo = Math.max(0, Math.floor((Math.min(...vals) - 4) / 5) * 5), hi = Math.min(99, Math.ceil((Math.max(...vals) + 3) / 5) * 5);
+  const lo = Math.max(0, Math.min(...vals) - 6), hi = Math.min(99, Math.max(...vals) + 4);   // 값 대역에 붙여 점이 한쪽에 몰리지 않게
   const x = v => L + (W - L - R) * ((v - lo) / Math.max(1, hi - lo));
   const shade = i => 0.35 + 0.65 * (i / Math.max(1, seq.length - 1));
-  const ticks = []; for (let v = lo; v <= hi; v += 10) ticks.push(v);
+  const stepT = (hi - lo) > 40 ? 10 : 5; const ticks = []; for (let v = Math.ceil(lo / stepT) * stepT; v <= hi; v += stepT) ticks.push(v);
   const grid = ticks.map(v => `<line x1="${x(v)}" x2="${x(v)}" y1="${T - 6}" y2="${H - 4}" stroke="var(--viz-grid)"/><text x="${x(v)}" y="${T - 10}" text-anchor="middle" class="dim" font-size="10">${v}</text>`).join('');
   const rows = keys.map(([k, label], i) => { const y = T + i * rowH + 12; const pts = seq.map((s, j) => ({ v: s[k], j })).filter(p => p.v != null);
     if (!pts.length) return '';
@@ -67,7 +67,7 @@ export function dumbbell(seq, keys, { W = 520 } = {}){
 /* 폼 리본 — 경기별 평점. 6.5/7.5 기준선(띠), 시즌 경계(40일 이상 공백) 점선, 점 색 = 구간. 캡션 hover는 호출측이 붙인다. */
 export function formRibbon(fm, { W = 520 } = {}){
   if (!fm || !fm.length) return '';
-  const H = 96, L = 30, R = 12, T = 10, B = 22, min = 5.5, max = 9.5;
+  const H = 130, L = 30, R = 12, T = 12, B = 24, min = 5.5, max = 9.5;
   const px = i => L + i * (W - L - R) / Math.max(1, fm.length - 1), py = r => T + (H - T - B) * (1 - (Math.min(max, Math.max(min, r)) - min) / (max - min));
   const band = (a, b, col) => `<rect x="${L}" y="${py(b)}" width="${W - L - R}" height="${py(a) - py(b)}" fill="${col}" opacity=".07"/>`;
   const bands = band(7.5, max, 'var(--ok)') + band(6.5, 7.5, 'var(--warn)') + band(min, 6.5, 'var(--bad)');

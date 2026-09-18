@@ -72,7 +72,7 @@ export function butterfly(r, team, W = 560){
     { label:'수비 액션 평균 위치', a: v('def_x_v'), b: v('def_x_o'), d: 1, max: 100 },
   ].filter(x => x.a != null || x.b != null);
   if (!rows.length) return '';
-  const rowH = 26, top = 22, H = top + rows.length * rowH + 8, C = W / 2, span = Math.max(90, C - 60 - 64), bar = 12;   // 가운데 라벨 폭 120 + 값 라벨 여백
+  const rowH = 28, top = 22, H = top + rows.length * rowH + 8, C = W / 2, span = Math.max(90, C - 60 - 64), bar = 13;   // 가운데 라벨 폭 120 + 값 라벨 여백
   const svgRows = rows.map((x, i) => {
     const y = top + i * rowH, m = x.max ?? Math.max(x.a ?? 0, x.b ?? 0, x.aTot ?? 0, x.bTot ?? 0, 1e-9);
     const wa = span * ((x.aTot ?? x.a ?? 0) / m), wb = span * ((x.bTot ?? x.b ?? 0) / m);
@@ -100,9 +100,9 @@ export function butterfly(r, team, W = 560){
 /* ── 3. 하프 비교 — 전·후반 xG(그룹 막대)와 점유(미터). 분리 표본이 없으면 그리지 않는다. */
 export function halves(r, team, W = 560){
   const ps = r.periods || []; if (!ps.length) return '';
-  const H = 150, gw = Math.min(150, Math.max(110, (W - 140) / ps.length - 60)), x0 = 70, base = 118;
+  const H = 200, gw = Math.min(220, Math.max(130, (W - 120) / ps.length - 50)), x0 = 70, base = 160;
   const m = Math.max(...ps.flatMap(p => [num(p.xg_v) || 0, num(p.xg_o) || 0]), 0.5);
-  const bars = ps.map((p, i) => { const gx = x0 + i * (gw + 60); const h = v => 70 * ((num(v) || 0) / m);
+  const bars = ps.map((p, i) => { const gx = x0 + i * (gw + 60); const h = v => 110 * ((num(v) || 0) / m);
     const a = h(p.xg_v), b = h(p.xg_o); const poss = num(p.possession_v);
     return `<g>
       <text x="${gx + 36}" y="16" text-anchor="middle" class="dim">${p.period === '1H' ? '전반' : p.period === '2H' ? '후반' : p.period}</text>
@@ -121,7 +121,7 @@ export function halves(r, team, W = 560){
 export function xgRace(r, team, W = 760){
   const shots = (r.shots || []).filter(s => s.xg != null).sort((a, b) => a.minute - b.minute);
   if (!shots.length) return `<div class="vz"><h4>xG 레이스</h4><span class="dim" style="font-size:12px">${(r.shots || []).length ? '이 대회는 제공사가 슛별 xG를 주지 않는다(친선·일부 컵)' : '슛 데이터 미수집'}.</span></div>`;
-  const prov = shots[0].provider; const H = 210, L = 36, R = 44, T = 16, B = 26;
+  const prov = shots[0].provider; const H = Math.round(W * 0.42), L = 36, R = 44, T = 18, B = 26;   // 슛 맵(105:68)과 같은 행 — 높이를 폭에 비례시켜 짝을 맞춘다
   const end = Math.max(90, ...shots.map(s => s.minute)) + 1;
   const tot = { v: 0, o: 0 }; const pts = { v: [[0, 0]], o: [[0, 0]] }; const goals = [];
   for (const s of shots){ tot[s.side] += s.xg; pts[s.side].push([s.minute, tot[s.side]]); if (s.outcome === 'goal') goals.push({ ...s, cum: tot[s.side] }); }
@@ -180,7 +180,7 @@ export function renderMatchViz(el, r, team){
     for (const box of el.querySelectorAll('.vz')){
       const w = Math.max(320, Math.floor(box.clientWidth - 26));      // 패널 패딩 12×2 + 테두리
       const k = box.dataset.k;
-      const html = k === 't' ? timeline(r, team, Math.min(w, 1240)) : k === 'x' ? xgRace(r, team, Math.min(w, 760)) : k === 's' ? shotMap(r, team, Math.min(w, 760)) : k === 'b' ? butterfly(r, team, Math.min(w, 760)) : halves(r, team, Math.min(w, 760));
+      const html = k === 't' ? timeline(r, team, Math.min(w, 1240)) : k === 'x' ? xgRace(r, team, Math.min(w, 720)) : k === 's' ? shotMap(r, team, Math.min(w, 720)) : k === 'b' ? butterfly(r, team, Math.min(w, 720)) : halves(r, team, Math.min(w, 720));
       // 각 함수는 <div class="vz …">…</div> 래퍼를 돌려준다 → 안쪽만 옮긴다
       const tmp = document.createElement('div'); tmp.innerHTML = html;
       const inner = tmp.firstElementChild;

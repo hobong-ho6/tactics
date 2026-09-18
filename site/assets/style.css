@@ -259,4 +259,5 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .mviz .hit{cursor:default} .mviz .hit:hover{filter:brightness(1.25)}
 .mviz .tip{position:fixed;z-index:50;background:#0b0f14;border:1px solid var(--line);border-radius:8px;padding:6px 9px;font-size:12px;pointer-events:none;max-width:280px;box-shadow:0 6px 20px rgba(0,0,0,.4)}
 .mviz .tip b{font-size:13px}
-@media(min-width:1100px){.mviz{grid-template-columns:3fr 2fr}.mviz .vz.wide{grid-column:1/-1}}
+@media(min-width:1100px){.mviz{grid-template-columns:1fr 1fr}.mviz .vz.wide{grid-column:1/-1}}
+.mviz .vz{display:flex;flex-direction:column;justify-content:flex-start}
