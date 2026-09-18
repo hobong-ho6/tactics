@@ -38,7 +38,7 @@
   <button class="tab" data-tab="pool" id="poolTab">수집 풀 (SofaScore 실측)</button><button class="tab on" data-tab="league">리그 전체 (FotMob/Opta)</button></div>
 <div id="tabnote" class="dim" style="font-size:12px;margin-bottom:6px"></div>
 <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
-   <div><div class="dim" style="font-size:12px;margin-bottom:2px">6축 백분위 <b>— SofaScore 실측 / 수집 풀 기준</b></div><div id="radar" class="vzcard"></div></div><div style="flex:1;min-width:220px"><div id="pct" style="margin-top:4px"></div></div></div>
+   <div><div class="dim" style="font-size:12px;margin-bottom:2px">6축 백분위 <b>— SofaScore 실측 / 같은 포지션군</b> <span id="radarpop"></span></div><div id="radar" class="vzcard"></div></div><div style="flex:1;min-width:220px"><div id="pct" style="margin-top:4px"></div></div></div>
  <div id="fmeval"></div>
  <div class="kv" style="margin-top:10px"><b>최근 폼</b> <small class="dim">— 최근 10경기 평점 추이(SofaScore)</small></div>
  <div id="form"></div>
@@ -104,6 +104,20 @@ const POOL_LABEL = _TEAMS
   .map(t => (idx.regimes.find(r => r.team_code === t.regime.team_code)?.team_kr) || t.regime.team_code)
   .join('·');
 const POOL = _TEAMS.flatMap(t=>t.player_stats);
+/* ⭐ 백분위 모집단은 **같은 포지션군**이다(2026-09-18). 군은 export의 pos_group(공식전 pos_class 최빈값)을 접어 쓴다:
+   DM·CM = 중앙 미드필더 · CAM·WM = 2선·측면. 군 표본이 8명 미만이면 비교가 성립하지 않으므로 전체 풀로 폴백하고 그 사실을 캡션에 적는다. */
+const POS_FOLD = { GK:'GK', CB:'CB', FB:'FB', DM:'MID', CM:'MID', CAM:'AMW', WM:'AMW', ST:'ST' };
+const POS_KR = { GK:'골키퍼', CB:'센터백', FB:'풀백', MID:'중앙 미드필더', AMW:'2선·측면', ST:'스트라이커' };
+const foldPos = g => POS_FOLD[g] ?? null;
+function posPool(st){
+  const g = foldPos(st?.pos_group);
+  const rows = g ? POOL.filter(p => foldPos(p.pos_group) === g) : [];
+  return rows.length >= 8
+    ? { rows, note: `${POS_KR[g]} ${rows.length}명 기준` }
+    : { rows: POOL, note: g ? `전 포지션 ${POOL.length}명 기준(${POS_KR[g]} 표본 ${rows.length}명으로 부족)` : `전 포지션 ${POOL.length}명 기준(포지션 미확정)` };
+}
+const pctOf = (rows, k, v) => { const vals = rows.map(p => p[k]).filter(x => x != null).sort((a,b)=>a-b);
+  return vals.length ? Math.round(vals.filter(x => x <= v).length / vals.length * 100) : 0; };
 const currentCandidates = t => {
   const seen = new Set();
   // 복수 포메이션 대비 — 시즌 정본 포메이션만 순회한다.
@@ -881,24 +895,29 @@ function render(){
         + '</table>'
       : '<span class="dim">시즌 성적 없음</span>';
     if (!renderLeague(key, false, sel)) {
+      const pool = posPool(st);
       document.getElementById('tabnote').textContent =
-        `출처 SofaScore 실측 — 수집 ${_TEAMS.length}팀(${POOL_LABEL}) 풀 내 상대 위치. 숫자 = 이 값보다 낮은 선수의 비율(%).`
+        `출처 SofaScore 실측 — 수집 ${_TEAMS.length}팀(${POOL_LABEL}) 중 ${pool.note}. 숫자 = 이 값보다 낮은 선수의 비율(%).`
         + (_FAILED.length ? ` ⚠️ 로드 실패로 제외된 팀: ${_FAILED.join(', ')}` : '');
       const METRICS=[['avg_rating','평점'],['xg_pg','xG'],['xa_pg','xA'],['kp_pg','키패스'],['dw_pg','듀얼승'],['tk_pg','태클'],['ic_pg','인터셉트']];
       document.getElementById('pct').innerHTML = st ? METRICS.map(([k,name])=>{
         const v=st[k]; if(v==null) return '';
-        const vals=POOL.map(p=>p[k]).filter(x=>x!=null).sort((a,b)=>a-b);
-        const pct=Math.round(vals.filter(x=>x<=v).length/vals.length*100);
-        return bar(name, v, pct, `수집 풀 상위 ${100-pct}%`);
+        const pct=pctOf(pool.rows, k, v);
+        return bar(name, v, pct, `${pool.note} 상위 ${100-pct}%`);
       }).join('') : '';
     }
-    // ⬡ 레이더 — 축은 SofaScore 실측(v_player_profile)이고 백분위 모집단도 수집 풀이다.
-    //   ⚠️ FotMob 레이더가 아니다(형식만 그 프로필을 참고했다) — 라벨에 출처를 못박아 둔다.
+    /* ⬡ 레이더 — 축은 SofaScore 실측(v_player_profile)이고 모집단은 **같은 포지션군**이다.
+       ⛔ 2026-09-18 이전에는 전 포지션을 한 풀에 넣어, GK가 스트라이커와 같은 모집단에서 xG 백분위를 받았다(사용자 지적).
+       ⚠️ GK는 이 6축 자체가 GK의 일을 담지 못한다(우리 실측 집계에 선방·클레임이 없다) — 레이더를 그리지 않고 리그 탭(FotMob)으로 보낸다. */
     const axes=[['xg_pg','득점 위협'],['xa_pg','기회 창출'],['kp_pg','키패스'],['dw_pg','경합'],['tk_pg','태클'],['ic_pg','인터셉트']];
-    if (st){
-      const pcts=axes.map(([k])=>{const v=st[k]; if(v==null)return 0;
-        const vals=POOL.map(p=>p[k]).filter(x=>x!=null).sort((a,b)=>a-b);
-        return vals.filter(x=>x<=v).length/vals.length;});
+    const radarEl = document.getElementById('radar');
+    if (st && st.pos_group === 'GK'){
+      radarEl.innerHTML = `<div class="dim" style="font-size:12.5px;padding:10px 12px;max-width:440px">
+        이 6축(득점 위협·기회 창출·키패스·경합·태클·인터셉트)은 <b>골키퍼의 일을 담지 못한다</b> — 우리 실측 집계에 선방·클레임 축이 없다.
+        골키퍼는 위 <b>리그 전체(FotMob)</b> 탭의 선방·배급·지배 백분위로 본다.</div>`;
+    } else if (st){
+      const pool = posPool(st);
+      const pcts=axes.map(([k])=>{const v=st[k]; if(v==null)return 0; return pctOf(pool.rows, k, v)/100;});
       const CX=235,CY=215,R=162;   // 피자 바깥 반지름(164)과 같은 크기 — 라벨 고리 R+22, 여백 53px
       const pt=(i,r)=>{const a=Math.PI/2+i*Math.PI/3;return `${CX+r*Math.cos(a)},${CY-r*Math.sin(a)}`;};
       const grid=[1,.66,.33].map(f=>`<polygon points="${axes.map((_,i)=>pt(i,R*f)).join(' ')}" fill="none" stroke="rgba(255,255,255,.12)"/>`).join('');
@@ -907,8 +926,8 @@ function render(){
         const rt = STAT_TIPS[name];
         return `<text x="${x}" y="${y}" fill="var(--dim)" font-size="11" text-anchor="middle"${
           rt ? ` class="gl" tabindex="0" data-tip="${esc(rt)}"` : ''}>${name} ${Math.round(pcts[i]*100)}%</text>`;}).join('');
-      document.getElementById('radar').innerHTML=`<svg width="470" height="440" viewBox="0 0 470 440" style="max-width:100%;height:auto;display:block" role="img" aria-label="6축 백분위 레이더">${grid}${shape}${labels}</svg>`;
-    } else document.getElementById('radar').innerHTML='';
+      radarEl.innerHTML=`<svg width="470" height="440" viewBox="0 0 470 440" style="max-width:100%;height:auto;display:block" role="img" aria-label="6축 백분위 레이더">${grid}${shape}${labels}</svg>`;
+    } else radarEl.innerHTML='';
     // 폼 스파크라인 — hover 판정용 투명 원(r=9)을 위에 겹치고, 정보는 캡션에 표시(네이티브 <title>은 3px 원에서 사실상 안 뜬다)
     const fm=pickRows(td.form, sel);
     const formEl=document.getElementById('form');

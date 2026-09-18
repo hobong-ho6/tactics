@@ -325,8 +325,24 @@ def export_all(db_path=None, window="2026-summer"):
                                       (SELECT player_id FROM transfer_targets
                                        WHERE team_code=? AND window=? AND player_id IS NOT NULL))
                                ORDER BY p.id""", (rid, code, window))
-        pstats = _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, v.n, v.avg_rating, v.minutes,
-                                      v.xg_pg, v.xa_pg, v.kp_pg, v.dw_pg, v.tk_pg, v.ic_pg
+        # ⭐ pos_group — 백분위 모집단을 **같은 포지션군**으로 자르기 위한 파생값(2026-09-18, 사용자 지적
+        #   「6축 백분위가 포지션에 상관없이 모두 동일해?」 — 종전에는 GK를 스트라이커와 같은 풀에서 xG 백분위로 셌다).
+        #   공식전 `pos_class` 최빈값을 슬롯군(GK/CB/FB/DM/CM/WM/CAM/ST)으로 접는다. 표본이 없으면 NULL이고 화면이 전체 풀로 폴백한다.
+        pstats = _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, v.player_id, v.n, v.avg_rating, v.minutes,
+                                      v.xg_pg, v.xa_pg, v.kp_pg, v.dw_pg, v.tk_pg, v.ic_pg,
+                                      (SELECT CASE
+                                          WHEN pm.pos_class='GK' THEN 'GK'
+                                          WHEN pm.pos_class LIKE '%CB' THEN 'CB'
+                                          WHEN pm.pos_class IN ('LB','RB','LWB','RWB') THEN 'FB'
+                                          WHEN pm.pos_class LIKE '%DM' THEN 'DM'
+                                          WHEN pm.pos_class LIKE '%CM' OR pm.pos_class='CM' THEN 'CM'
+                                          WHEN pm.pos_class IN ('LM','RM','LW','RW','LAM','RAM') THEN 'WM'
+                                          WHEN pm.pos_class='CAM' THEN 'CAM'
+                                          WHEN pm.pos_class LIKE '%ST' OR pm.pos_class='ST' THEN 'ST' END
+                                       FROM player_matches pm
+                                       WHERE pm.player_id=v.player_id AND pm.pos_class IS NOT NULL
+                                         AND pm.competition NOT LIKE '%Friendly%'
+                                       GROUP BY 1 ORDER BY COUNT(*) DESC LIMIT 1) pos_group
                                FROM v_player_profile v JOIN players p ON p.id=v.player_id
                                WHERE v.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
                                      UNION SELECT player_id FROM prescriptions WHERE regime_id=?)""", (rid, rid))

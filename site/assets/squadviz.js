@@ -3,8 +3,9 @@
    한 그림에 한 축(⛔ 적합과 평점을 같은 축에 섞지 않는다 — GK는 별도 카드) · 표 뷰(아래 기존 표)는 남긴다. */
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
 const US = 'var(--viz-us)', SURF = 'var(--panel)', GRID = 'var(--viz-grid)';
-/* 단일 색 램프(파랑) — 어두울수록 낮고 밝을수록 높다. 크기 전용이라 팀색(주황)과 섞지 않는다. */
-const RAMP = ['#16324f', '#1d4a74', '#256199', '#2e79bf', '#3987e5'];
+/* 적합 강도 = 「약·중·강」 품질 상태라 사이트의 평점·백분위와 **같은 색 어휘**를 쓴다(단색 램프는 어두운 배경에서 단계가 안 갈렸다 —
+   사용자 지적 2026-09-18). ⛔ 색만으로 읽히게 두지 않는다: 칩·행에 적합 수치를 항상 함께 적는다. */
+const RAMP = ['#ff6b6b', '#ffa06b', '#ffd54d', '#9fdb6a', '#4cd97b'];
 const rampOf = t => RAMP[Math.max(0, Math.min(RAMP.length - 1, Math.round(t * (RAMP.length - 1))))];
 
 /* ── 1. 베스트 XI 피치 — 슬롯 좌표에 1순위(또는 처방 선발)를 놓는다. 색 = 그 슬롯의 적합 강도, 부제 = 역할/포커스. */
@@ -32,7 +33,8 @@ export function pitchXI(rows, { W = 560, lo = 0.6, hi = 1 } = {}){
       <text x="${cx + cw / 2}" y="${cy + 19}" text-anchor="middle" font-size="10" fill="var(--dim)">${esc(r.pos)}</text>
       <text x="${cx + cw / 2}" y="${cy + 31}" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--txt)">${esc(name)}</text>
       <text x="${cx + cw / 2}" y="${cy + 42}" text-anchor="middle" font-size="9.5" fill="var(--dim)">${esc(sub)}</text></g>`; }).join('');
-  const legend = RAMP.map((c, i) => `<span><i style="background:${c}"></i>${i === 0 ? `약 ${lo.toFixed(2)}` : i === RAMP.length - 1 ? `강 ${hi.toFixed(2)}` : ''}</span>`).join('');
+  const mid = (lo + hi) / 2;
+  const legend = RAMP.map((c, i) => `<span><i style="background:${c}"></i>${i === 0 ? `약 ${lo.toFixed(2)}` : i === 2 ? `중 ${mid.toFixed(2)}` : i === RAMP.length - 1 ? `강 ${hi.toFixed(2)}` : ''}</span>`).join('');
   return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="베스트 XI 피치">${pitch}${chips}</svg>
     <div class="lg">${legend}<span class="dim">색 = 슬롯 1순위의 커널 적합</span></div>`;
 }
@@ -41,7 +43,7 @@ export function pitchXI(rows, { W = 560, lo = 0.6, hi = 1 } = {}){
    1~2순위 격차가 작으면(≤.05) 「경합」으로 표시한다(실측 무결정 구간과 같은 눈금). */
 export function depthStrip(rows, { W = 720, key = 'sim', lo = 0.6, hi = 1, label = '커널 적합', tie = 0.05 } = {}){
   if (!rows.length) return '';
-  const rowH = 30, L = 74, R = 118, T = 26, H = T + rows.length * rowH + 10;
+  const rowH = 30, L = 74, R = 132, T = 26, H = T + rows.length * rowH + 10;   // R = 오른쪽 「N명 · Δ」 칸(이름과 겹치지 않게 고정)
   const x = v => L + (W - L - R) * ((v - lo) / (hi - lo));
   const ticks = []; const stepT = (hi - lo) > 1 ? 0.5 : 0.1;
   for (let v = lo; v <= hi + 1e-9; v += stepT) ticks.push(Math.round(v * 100) / 100);
@@ -62,9 +64,14 @@ export function depthStrip(rows, { W = 720, key = 'sim', lo = 0.6, hi = 1, label
         ${c.starter ? `<circle cx="${cx}" cy="${y}" r="8.5" fill="none" stroke="${US}" stroke-opacity=".55"/>` : ''}</g>`; }).join('');
     const gap = vals.length > 1 ? Math.max(...vals) - vals.slice().sort((a, b) => b - a)[1] : null;
     const tight = gap != null && gap <= tie;
+    /* 1순위 이름 — 점 오른쪽에 두면 오른쪽 「N명·Δ」 칸과 겹친다(2026-09-18 지적).
+       오른쪽 여유가 이름 길이에 못 미치면 점 **왼쪽**에 붙인다(그쪽은 스프레드 선이라 글자가 읽힌다). */
+    const tx = x(Math.max(...vals)), room = (W - R - 6) - (tx + 12), need = top.label.length * 11.5;
+    const nameRight = room >= need;
     return `<g><text x="${L - 8}" y="${y + 4}" text-anchor="end" font-size="11" font-weight="600" fill="var(--txt)">${esc(r.pos)}</text>
       ${spread}${dots}
-      <text x="${x(Math.max(...vals)) + 12}" y="${y + 4}" font-size="11" fill="var(--txt)">${esc(top.label)}</text>
+      <text x="${nameRight ? tx + 12 : tx - 12}" y="${y + 4}" text-anchor="${nameRight ? 'start' : 'end'}" font-size="11" fill="var(--txt)"
+        style="paint-order:stroke;stroke:var(--panel);stroke-width:3px;stroke-linejoin:round">${esc(top.label)}</text>
       <text x="${W - 8}" y="${y + 4}" text-anchor="end" font-size="10" fill="${tight ? 'var(--warn)' : 'var(--dim)'}">${r.cands.length}명${gap != null ? ` · Δ${gap.toFixed(key === 'sim' ? 3 : 2)}${tight ? ' 경합' : ''}` : ''}</text></g>`; }).join('');
   return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="슬롯별 후보 ${label} 분포">
       <text x="${L - 8}" y="${T - 12}" text-anchor="end" font-size="10" fill="var(--dim)">${esc(label)}</text>${grid}${body}</svg>
