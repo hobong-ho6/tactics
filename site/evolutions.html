@@ -57,6 +57,9 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
   <div class="panel"><h2>보유 선수 <small class="dim">— 현재 상태 · 진화 횟수 · 다음 추천</small></h2>
     <p class="dim" style="font-size:12px;margin:0 0 6px">⭐ 진화를 기록하면 <b>1회성 진화는 이 계정에서 소진</b>돼 다른 선수의 경로·추천에서 빠지고(카탈로그·선수별 패스·전술 구현 탭 전부), 각 선수의 최적 패스가 다시 매겨진다. 반복형은 횟수만큼 남는다.</p>
     <div id="owned"></div></div>
+  <div class="panel"><h2>케미스트리 제안 <small class="dim">— 보유 카드로 짤 수 있는 최고 케미 11명</small></h2>
+    <div class="menubar" id="chemform"></div>
+    <div id="chem"></div></div>
   <div class="panel"><h2>선수 추가 <small class="dim">— 우리 DB 선수와 그 선수의 FC27 카드 중 보유한 것</small></h2>
     <div id="addp"></div></div>
   <div class="panel"><h2>진화 기록 <small class="dim">— fut_evolution_log (시간순)</small></h2>
@@ -370,6 +373,93 @@ const api = async (cmd, body) => {
   } catch(e){ return { ok: false, message: `쓰기 API 없음(정적 배포본). 아래 명령을 저장소에서 실행할 것:\n${cli}`, cli }; }
 };
 const say = (el, r) => { el.innerHTML = `<div class="msg ${r.ok ? 'ok' : 'err'}">${esc(r.message)}</div>`; if (r.ok) setTimeout(() => location.reload(), 900); };
+/* ── 케미스트리 제안 (2026-09-19, 사용자 지시 「적용할 케미스트리도 제안해줘」) ──
+   FC27 기준선: 클럽 2/4/7명 · 리그 3/5/8명 · 국적 2/5/8명 → 각 1/2/3점, 선수 1명당 3점 상한, 팀 33점 만점.
+   ⛔ 포지션이 맞지 않으면 그 선수는 0점이고 **카운트에도 들어가지 않는다** — 그래서 이건 「슬롯 배치 문제」다.
+   ⚠️ 감독 보너스(+1)는 빼고 센다(보수적). 아이콘·히어로가 모든 리그에 +1을 주는 규칙도 계산하지 않는다 —
+      보유분이 생기면 경고를 띄운다. 그 밖의 추가 기여는 fut.gg가 준 chem_extra를 그대로 더한다. */
+const CHEM_TIERS = { club: [[7, 3], [4, 2], [2, 1]], league: [[8, 3], [5, 2], [3, 1]], nation: [[8, 3], [5, 2], [2, 1]] };
+const CHEM_FORMS = { '4-2-3-1': ['GK', 'LB', 'CB', 'CB', 'RB', 'CDM', 'CDM', 'LM', 'CAM', 'RM', 'ST'],
+                     '4-3-3':   ['GK', 'LB', 'CB', 'CB', 'RB', 'CDM', 'CM', 'CM', 'LW', 'ST', 'RW'],
+                     '4-4-2':   ['GK', 'LB', 'CB', 'CB', 'RB', 'LM', 'CM', 'CM', 'RM', 'ST', 'ST'] };
+const CHEM_KEYS = [['club', '클럽'], ['league', '리그'], ['nation', '국적']];
+let CHEM_F = localStorage.getItem('fut_chem_form') || '4-2-3-1';
+const chemOvr = p => p.card_ovr ?? p.current_ovr ?? 0;
+function chemOf(xi){
+  const cnt = { club: {}, league: {}, nation: {} };
+  for (const p of xi) for (const [k] of CHEM_KEYS){
+    if (!p[k]) continue;
+    cnt[k][p[k]] = (cnt[k][p[k]] || 0) + 1 + (J(p.chem_extra, {})[k] || 0);
+  }
+  const tier = (n, tb) => { for (const [need, pt] of tb) if (n >= need) return pt; return 0; };
+  const per = xi.map(p => Math.min(3, CHEM_KEYS.reduce((s, [k]) => s + (p[k] ? tier(cnt[k][p[k]], CHEM_TIERS[k]) : 0), 0)));
+  return { per, cnt, total: per.reduce((a, b) => a + b, 0) };
+}
+/* 탐욕 + 무작위 재시작. 최적해 보장은 없지만 47장 규모에서는 매번 같은 상한에 닿는다.
+   점수는 **케미 우선, 동점이면 OVR 합** — 케미를 위해 약한 카드를 넣는 일을 막는다. */
+function chemBestXI(pool, slots){
+  const canPlay = (p, s) => String(p.positions || '').split('/').includes(s);
+  let best = null;
+  for (let t = 0; t < 120; t++){
+    const order = pool.slice().sort(() => Math.random() - 0.5), used = new Set(), xi = [];
+    for (const s of slots){
+      let pick = null, sc = -1;
+      for (const c of order){
+        if (used.has(c.id) || !canPlay(c, s)) continue;
+        const v = chemOf(xi.filter(Boolean).concat(c)).total * 100 + chemOvr(c);
+        if (v > sc){ sc = v; pick = c; }
+      }
+      if (pick) used.add(pick.id);
+      xi.push(pick);
+    }
+    const filled = xi.filter(Boolean);
+    const key = chemOf(filled).total * 1000 + filled.reduce((s, p) => s + chemOvr(p), 0);
+    if (!best || key > best.key) best = { key, xi };
+  }
+  return best;
+}
+function renderChem(owned){
+  const box = document.getElementById('chem'), bar = document.getElementById('chemform');
+  bar.innerHTML = Object.keys(CHEM_FORMS).map(f => `<button class="act ghost${f === CHEM_F ? ' on' : ''}" data-cf="${f}">${f}</button>`).join('');
+  bar.querySelectorAll('button[data-cf]').forEach(b => b.addEventListener('click', () => {
+    CHEM_F = b.dataset.cf; localStorage.setItem('fut_chem_form', CHEM_F); renderChem(owned); }));
+  const pool = owned.filter(p => p.status === 'owned' && p.positions);
+  if (!pool.length){ box.innerHTML = '<span class="dim">카드 정보가 붙은 보유 선수가 없다 — <code>collect_futgg_cards.py</code>를 먼저 돌린다.</span>'; return; }
+  const slots = CHEM_FORMS[CHEM_F], { xi } = chemBestXI(pool, slots), filled = xi.filter(Boolean);
+  const { per, cnt, total } = chemOf(filled);
+  const chemPer = new Map(filled.map((p, i) => [p.id, per[i]]));
+  const color = v => v === 3 ? 'var(--ok)' : v === 2 ? 'var(--warn)' : v ? 'var(--warn)' : 'var(--bad)';
+  const rows = slots.map((s, i) => {
+    const p = xi[i];
+    if (!p) return `<tr><td><b>${s}</b></td><td colspan="4" class="dim">이 포지션을 볼 수 있는 보유 카드가 없다 — 공백</td></tr>`;
+    const v = chemPer.get(p.id);
+    return `<tr><td><b>${s}</b></td>
+      <td>${esc(p.name)} <small class="dim">OVR ${chemOvr(p) || '—'}</small></td>
+      <td style="color:${color(v)}"><b>${v}</b>/3</td>
+      <td class="dim">${esc(p.nation || '?')} · ${esc(p.league || '?')} · ${esc(p.club || '?')}</td>
+      <td class="dim">${esc(p.positions || '')}</td></tr>`;
+  }).join('');
+  // 「한 명만 더」 — 지금 XI에서 다음 문턱까지 몇 명이 모자란지. 33점이면 더 볼 것이 없다.
+  const gaps = [];
+  for (const [k, kr] of CHEM_KEYS) for (const [name, n] of Object.entries(cnt[k])){
+    const next = CHEM_TIERS[k].slice().reverse().find(([need]) => need > n);
+    if (next && next[0] - n <= 2) gaps.push(`${kr} <b>${esc(name)}</b> ${n}명 → ${next[0]}명이면 그 선수들이 ${next[1]}점(지금 ${CHEM_TIERS[k].find(([need]) => n >= need)?.[1] ?? 0}점) · ${next[0] - n}명 부족`);
+  }
+  const comp = CHEM_KEYS.map(([k, kr]) => `<b>${kr}</b> ` + Object.entries(cnt[k]).sort((a, b) => b[1] - a[1]).slice(0, 3)
+    .map(([n, c]) => `${esc(n)} ${c}`).join(' · ')).join(' / ');
+  const special = filled.filter(p => p.is_icon || p.is_hero);
+  box.innerHTML = `<div class="kv" style="margin-bottom:6px">
+      <span class="chip" style="border-color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};font-size:15px"><b>팀 케미 ${total}</b>/33</span>
+      <span class="chip">평균 OVR ${filled.length ? Math.round(filled.reduce((s, p) => s + chemOvr(p), 0) / filled.length) : '—'}</span>
+      <small class="dim">보유 ${pool.length}장 중 ${CHEM_F} 기준</small></div>
+    <table>${`<tr><th>슬롯</th><th>선수</th><th>케미</th><th>국적 · 리그 · 클럽</th><th>가능 포지션</th></tr>`}${rows}</table>
+    <p class="dim" style="font-size:12px;margin:8px 0 0">구성: ${comp}</p>
+    ${total < 33 && gaps.length ? `<p style="font-size:13px;margin:6px 0 0">다음 문턱: ${gaps.slice(0, 4).join(' · ')}</p>` : ''}
+    ${total >= 33 ? `<p style="font-size:13px;margin:6px 0 0">만점이다 — 이 조합에서는 <b>케미가 아니라 카드 품질·역할 적합</b>이 다음 제약이다.</p>` : ''}
+    ${special.length ? `<p class="dim" style="font-size:12px">⚠️ 아이콘·히어로 ${special.length}명이 XI에 있다 — 이들이 모든 리그에 주는 +1은 여기서 세지 않아 <b>실제 케미는 이 값 이상</b>일 수 있다.</p>` : ''}
+    <p class="dim" style="font-size:12px">클럽 2/4/7 · 리그 3/5/8 · 국적 2/5/8명에서 1/2/3점(선수당 3점 상한).
+    포지션이 맞지 않는 선수는 0점이고 카운트에도 안 들어간다. <b>감독 보너스(+1)는 빼고 셌다</b> — 감독을 맞추면 이보다 높다.</p>`;
+}
 function renderClub(){
   const C = EVO.club || { accounts: [], players: [], log: [] };
   const acc = C.accounts.find(a => a.name === ACC) || C.accounts[0]; ACC = acc?.name || null;
@@ -385,6 +475,7 @@ function renderClub(){
 
   const owned = C.players.filter(p => p.account_id === acc.id);
   const logs = C.log.filter(l => owned.some(p => p.id === l.club_player_id));
+  renderChem(owned);
   document.getElementById('owned').innerHTML = owned.length ? owned.map(p => {
     const card = (CARDS[String(p.player_id)] || []).find(c => c.ea_item_id === p.ea_item_id);
     // 적용한 진화 사슬(시간순). fut.gg 경로는 「이 카드에서 이 순서로 밟는 사슬」이라 **접두가 일치하는 경로만** 이어 붙일 수 있다 —

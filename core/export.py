@@ -156,9 +156,16 @@ def export_all(db_path=None, window="2026-summer"):
                             FROM fc_evolutions WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions)
                             ORDER BY is_expired, end_time, evo_id""")
     accounts = _rows(con, "SELECT id, name, platform, game_version, notes, created FROM fut_accounts ORDER BY id")
-    club = _rows(con, """SELECT id, account_id, player_id, ea_item_id, name, acquired, acquired_how, status,
-                                current_ovr, current_six, current_playstyles, current_roles_plus, current_roles_plus_plus,
-                                evo_count, notes, updated FROM fut_club_players ORDER BY account_id, status, name""")
+    # 보유 선수 — 케미스트리 원료(국적·리그·클럽·포지션, migration 044)를 카드 표에서 붙여 함께 내보낸다.
+    # 화면이 케미 XI를 계산하려면 이 4개가 있어야 한다. 조인은 아이템 id로만 한다(이름 조인 금지).
+    club = _rows(con, """SELECT f.id, f.account_id, f.player_id, f.ea_item_id, f.name, f.acquired, f.acquired_how, f.status,
+                                f.current_ovr, f.current_six, f.current_playstyles, f.current_roles_plus,
+                                f.current_roles_plus_plus, f.evo_count, f.notes, f.updated,
+                                c.ovr AS card_ovr, c.positions, c.nation, c.league, c.club, c.is_icon, c.is_hero,
+                                c.chem_extra, c.card_image_url
+                         FROM fut_club_players f
+                         LEFT JOIN player_card_items c ON c.ea_item_id=f.ea_item_id AND c.game_version='FC27'
+                         ORDER BY f.account_id, f.status, f.name""")
     log = _rows(con, """SELECT id, club_player_id, evo_id, evo_name, level, applied_at, completed_at, ovr_before, ovr_after,
                                six_before, six_after, attrs_delta, playstyles_after, roles_plus_after, roles_plus_plus_after, notes
                         FROM fut_evolution_log ORDER BY applied_at, id""")

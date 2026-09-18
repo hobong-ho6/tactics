@@ -140,6 +140,7 @@ def main():
                                if it.get("cardImagePath") else None,
                 futgg_url=it.get("url"),
                 acquisition=None, is_special=None, first_seen=a.pulled,   # 획득 경로·특별카드 여부는 아래 목록 API에서 채운다
+                nation=None, league=None, chem_extra=None, is_icon=None, is_hero=None,  # 케미스트리 원료도 목록 API에서(044)
                 source=f"fut.gg /api/fut/players/v2/all-versions/{ea}/ ({a.pulled} 수집, collect_futgg_cards.py)",
                 confidence="HIGH — EA 확정 아이템 정의. ⛔ Role+/++는 카탈로그 미공개라 raw id 목록이다(docs/21 ②).",
             ))
@@ -163,6 +164,14 @@ def main():
                 r["acquisition"] = "SBC" if m.get("isSbc") else "Objective" if m.get("isObjective") else "Pack/Market"
                 r["is_special"] = 1 if m.get("isSpecial") else 0
             r["club"] = (m.get("club") or {}).get("name")
+            # ⭐ 케미스트리 원료 — 아이콘·히어로의 추가 기여는 규칙을 우리가 쓰지 않고 fut.gg 값을 그대로 담는다(migration 044).
+            r["nation"] = (m.get("nation") or {}).get("name")
+            r["league"] = (m.get("league") or {}).get("name")
+            r["chem_extra"] = json.dumps({"club": m.get("extraClubChemistry") or 0,
+                                          "league": m.get("extraLeagueChemistry") or 0,
+                                          "nation": m.get("extraNationChemistry") or 0})
+            r["is_icon"] = 1 if m.get("isIcon") else 0
+            r["is_hero"] = 1 if m.get("isHero") else 0
             r["card_image_url"] = m.get("cardImageUrl") or r["card_image_url"]
 
     known = {x[0] for x in con.execute("SELECT ea_item_id FROM player_card_items WHERE game_version IN (%s)"
@@ -200,7 +209,13 @@ def main():
            "card_image_url=COALESCE(player_card_items.card_image_url, excluded.card_image_url), "
            "acquisition=COALESCE(excluded.acquisition, player_card_items.acquisition), "
            "is_special=COALESCE(excluded.is_special, player_card_items.is_special), "
-           "first_seen=COALESCE(player_card_items.first_seen, excluded.first_seen)"
+           "first_seen=COALESCE(player_card_items.first_seen, excluded.first_seen), "
+           "club=COALESCE(excluded.club, player_card_items.club), "
+           "nation=COALESCE(excluded.nation, player_card_items.nation), "
+           "league=COALESCE(excluded.league, player_card_items.league), "
+           "chem_extra=COALESCE(excluded.chem_extra, player_card_items.chem_extra), "
+           "is_icon=COALESCE(excluded.is_icon, player_card_items.is_icon), "
+           "is_hero=COALESCE(excluded.is_hero, player_card_items.is_hero)"
            % (",".join("def" if c == "def_" else c for c in cols), ",".join(f":{c}" for c in cols)))
     before = con.execute("SELECT COUNT(*) FROM player_card_items").fetchone()[0]
     for r in rows:

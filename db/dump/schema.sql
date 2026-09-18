@@ -669,7 +669,7 @@ CREATE TABLE player_card_items(
   roles_plus TEXT, roles_plus_plus TEXT,      -- ⛔ FC27 역할 id는 카탈로그 미공개라 **raw id 목록**으로 둔다
   skill_moves INTEGER, weak_foot INTEGER, accelerate TEXT, preferred_foot TEXT,
   card_image_url TEXT, futgg_url TEXT,
-  source TEXT, confidence TEXT, acquisition TEXT, is_special INTEGER, first_seen TEXT,
+  source TEXT, confidence TEXT, acquisition TEXT, is_special INTEGER, first_seen TEXT, nation TEXT, league TEXT, chem_extra TEXT, is_icon INTEGER, is_hero INTEGER,
   UNIQUE(game_version, ea_item_id)
 );
 CREATE INDEX ix_card_items_player ON player_card_items(player_id, game_version);
