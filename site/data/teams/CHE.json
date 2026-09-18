@@ -51078,15 +51078,15 @@
   },
   {
    "as_of": "2026-08-04",
-   "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
-   "detail": "September 2026",
+   "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다. ⭐ 변화: 09-13 스냅샷의 복귀 예상 「September 2026」이 사라지고 expectedReturnDateParam=null·fallback=Doubtful로 바뀌었다(복귀 지연 신호). as_of(2026-08-04)는 소스의 lastUpdated로 동일.",
+   "detail": "Doubtful",
    "kind": "injury",
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 210,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 156008, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "pulled": "2026-09-18",
+   "source": "fotmob.com/api/data (player 156008, Playwright 직접 조회, 2026-09-18 수집)",
+   "stale_days": 0,
    "value": "Wrist injury"
   },
   {
