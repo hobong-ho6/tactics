@@ -37,6 +37,10 @@
         회귀 테스트 scripts/test_g14_regression.py가 공유한다.
         ⚠️ 정당한 재작성이 필요하면 `G14_ALLOW_REWRITE=observations:503,...`로 행을 지정해 통과시킨다.)
 
+  G20. event_id 공간 정합 — 양수 event_id는 SofaScore 전용(FotMob은 −matchId). 2항: 정본불일치 / FotMob침범.
+       (2026-09-18 신설. ATM 08-19 말라가전이 두 event_id로 쪼개진 것을 주간 회차가 발견했다 — G13 사각지대.
+        검사식·baseline·근거는 G20_BASELINE_* 상수 주석이 정본. 재발 방지의 본체는 match-watch §1 스킵 판정이다.)
+
 사용: python3 scripts/gates.py                      (전체)
       python3 scripts/test_g13_regression.py        (G13 회귀 — 결함 합성 주입)
       python3 scripts/test_g14_regression.py        (G14 회귀 — 결함 합성 주입)
@@ -100,6 +104,30 @@ G14_PROTECTED = {
 G14_NEG = re.compile(r"(없다|없었다|없음|아니다|불가|0건|0장|0회|부재)")
 G14_POS = re.compile(r"(있다|있었다|가용|가능|1장|1건|뿐이다|존재한다)")
 G14_HAN = re.compile(r"[가-힣]")
+
+
+# G20 — 양수 event_id 공간은 SofaScore 전용이다. 2026-09-18 신설(주간 회차에서 발견).
+#
+# 규약: SofaScore 수집은 `event_id = event id`(양수), FotMob 수집은 **`event_id = −matchId`**(음수).
+# 음수 규약이 있는 이유가 바로 이것이다 — 두 제공사의 id가 같은 컬럼에서 섞이면 경기 동일성이 깨진다.
+# ⭐ 실증(2026-09-18): 정규전 6경기가 **FotMob matchId를 양수 그대로** 넣어 SofaScore 공간을 침범했고,
+#    ATM 08-19 말라가전이 실제로 **5868012(16명) / 16421055(3명)** 두 event로 쪼개졌다.
+#    G13은 `(player_id, match_id)`로 검사하는데 두 쪽의 선수가 겹치지 않아 통과했다(G13 사각지대).
+# ⚠️ 재발을 막는 본체는 게이트가 아니라 **수집 스킵 판정**이다(match-watch §1 — `matches` 기준 대조).
+#    이 게이트는 그 판정이 뚫렸을 때 커밋 전에 잡는 안전망이다.
+#
+# 검사 2항 — 두 항이 잡는 대상이 다르다(둘 다 필요하다):
+#   ⑴ 정본불일치  pm.event_id > 0 인데 자기 match_id가 가리키는 matches.event_id와 다르다.
+#                 → 경기 정본 id를 matches가 이미 들고 있는데 선수 행만 낡은 id에 머문 부류(ATM 말라가형).
+#   ⑵ FotMob침범  source가 「FotMob … matchId=N」을 적시하는데 event_id == N 이다(−N이어야 한다).
+#                 → matches까지 같은 잘못된 id로 적재돼 ⑴이 못 보는 부류(AVL/CHE/LIV 정규전 5경기).
+#
+# ⛔ 아래 baseline은 **닫힌 과거 목록**이다 — 게이트 신설 시점에 이미 존재하던 9경기.
+#    불변규칙 2에 따라 되돌려 덮어쓰지 않고 예외로 명시한다(정정 경위는 obs 참조).
+#    ⭐ 새 위반은 baseline에 추가하지 말고 **수집을 고쳐라** — 여기에 줄이 늘면 규약이 죽는다.
+G20_BASELINE_STALE = {(5868012, 85), (16284994, 82), (16311585, 70), (16489297, 72)}
+G20_BASELINE_FOTMOB = {5795369, 5795371, 5795372, 5795426, 5795440}
+G20_FOTMOB_RE = re.compile(r"FotMob[^/]*?matchId=(\d+)")
 
 
 def _g14_sh(cmd):
@@ -1026,6 +1054,27 @@ def run(db_path=None, verbose=True):
               f"{'✅' if ok19 else '❌ ' + str(sorted(g19_bad, key=str)[:6]) + ' → scripts/tactic_changes.py --reason'}")
     if not ok19:
         fails.append("G19")
+
+    # G20 — 양수 event_id 공간은 SofaScore 전용(정의·근거는 모듈 상단 상수 주석).
+    g20_stale = [(r[0], r[1]) for r in con.execute("""
+        SELECT DISTINCT pm.event_id, m.id FROM player_matches pm JOIN matches m ON m.id = pm.match_id
+         WHERE pm.event_id > 0 AND m.event_id IS NOT NULL AND m.event_id > 0
+           AND pm.event_id <> m.event_id""")]
+    g20_stale = [k for k in g20_stale if k not in G20_BASELINE_STALE]
+    g20_fotmob = sorted({
+        eid for eid, src in con.execute(
+            "SELECT DISTINCT event_id, source FROM player_matches "
+            " WHERE event_id > 0 AND source IS NOT NULL")
+        if any(int(n) == eid for n in G20_FOTMOB_RE.findall(src))
+        and eid not in G20_BASELINE_FOTMOB})
+    ok20 = not (g20_stale or g20_fotmob)
+    if verbose:
+        detail = f"❌ 정본불일치 {g20_stale[:4]} · FotMob침범 {g20_fotmob[:4]} → 수집 스킵 판정을 matches 기준으로 볼 것"
+        print(f"G20 event_id 공간 정합: 정본불일치 {len(g20_stale)} · FotMob침범 {len(g20_fotmob)} · "
+              f"(baseline {len(G20_BASELINE_STALE) + len(G20_BASELINE_FOTMOB)}경기 제외) "
+              f"{'✅' if ok20 else detail}")
+    if not ok20:
+        fails.append("G20")
 
     con.close()
     if verbose:

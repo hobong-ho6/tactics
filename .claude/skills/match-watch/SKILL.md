@@ -13,12 +13,24 @@ description: 시즌 중 정기 경기 수집 — 3팀(AVL·CHE·LIV)의 선수 �
 ## 1. 라운드 확인 (팀 루프: AVL → CHE → LIV)
 - `SELECT code, sofascore_id FROM teams` (AVL 40 · CHE 38 · LIV 44).
 - 브라우저를 sofascore.com/robots.txt 오리진에 띄우고 `/api/v1/team/<id>/events/last/0`으로
-  직전 경기(들) event_id 확보. 이미 적재된 event는 건너뛴다:
-  `SELECT DISTINCT event_id FROM player_matches WHERE event_id IN (...)`.
+  직전 경기(들) event_id 확보.
+- ⭐⭐ **적재 여부는 `matches`로 판정한다 — `player_matches.event_id`로 대조하지 않는다**
+  (2026-09-18 신설, **G20이 막는다**):
+  ```sql
+  SELECT id, event_id FROM matches WHERE team_code=? AND date=?;   -- 행이 있으면 적재됨 → 건너뛴다
+  ```
+  `matches`에는 `UNIQUE(team_code, date, opponent, competition)`가 있어 **경기 1개 = 1행**이 보장되지만,
+  `player_matches.event_id`는 **제공사마다 값이 갈린다**(SofaScore event id / FotMob −matchId).
+  ⛔ **실증(2026-09-18)**: event_id로 대조하던 탓에 ATM 08-19 말라가전이 「미적재」로 보여 재수집됐고,
+  같은 경기가 **5868012(16명) / 16421055(3명)** 두 event로 쪼개졌다. 두 쪽 선수가 겹치지 않아
+  **G13 ⑵ `(player_id, match_id)` 검사를 통과**했다 — 조용히 갈린 것이다.
+  ⚠️ 날짜는 현지 킥오프 기준이라 UTC 변환에서 하루 밀릴 수 있다 — `date` 일치가 안 잡히면 ±1일을 확인한다.
 
 ## 2. 선수 실측 수집
 - 라인업 API로 **출전 선수 전원** → `core.sofascore.js_collect()` 스니펫으로 일괄 수집
   → `parse_collected()` → `player_matches` INSERT (source·confidence 필수).
+- ⛔ **`event_id` 부호 규약**: SofaScore 수집은 event id 그대로(양수), **FotMob 수집은 `−matchId`**(음수).
+  양수 공간은 SofaScore 전용이다 — FotMob matchId를 양수로 넣으면 경기 동일성이 깨진다(G20 ⑵).
 - 45분 미만 교체 출전도 스탯·역할 리포트에는 포함한다. 단 대표 히트맵·시즌 처방 집계는 기존 기준
   (**45분+ · hit_points 15+**)을 통과한 행만 쓴다. 짧은 표본을 0이나 결손으로 바꾸지 않는다.
 - 신입 선수는 `players`에 승격(sofascore_id 컬럼) 후 적재.
