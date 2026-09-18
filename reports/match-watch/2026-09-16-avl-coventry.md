@@ -130,3 +130,136 @@
 
 ### 반영
 `match_videos` 14행(귀속 43) · summary/key_points 14 · `video_impl_claims` 21(REJECTED 2 · HELD 3 · PENDING 6 · NA 1 · none 9) · obs#825~829 · `player_duties` 245(음바예, HELD) · `manager_profiles` rotation·set_pieces 덧붙임. 시즌 정본 변경 없음.
+
+## D+2 추적 (2026-09-18)
+
+§2-1a 3일 추적의 D+2 회차. **최우선 과제였던 Tanswell 1차 소스를 확보했고, 그 결과 D+1 판정 3건이 뒤집혔다.**
+D+1에서 팬채널 17편으로 쌓은 서사보다 **기자 1인의 실시간 현장 기록**이 밀도가 높았다 — 이번 회차 정정은 전부 이 경로에서 나왔다.
+
+### ⑴ ⛔ Tanswell 확보 — 브라우저가 아니라 Bluesky가 답이었다 (obs#838)
+
+| 시도 경로 | 결과 |
+|---|---|
+| x.com HTTP 직접(D+1) | **402 차단** |
+| **브라우저로 x.com/J_Tanswell**(D+2 신규) | 프로필·bio·팔로워는 렌더링되나 **타임라인은 로그인 벽** — 게시물 0건 |
+| **Bluesky 공개 API**(D+2 신규) | ⭐ **전량 확보** — 09-16 경기 실시간 기록 **22건** + 09-17 기사 요약 2건 |
+| nytimes.com/athletic · theathletic.com 본문 | ⛔ 차단(브라우저 안전 제한 + curl 403) — 기사 **본문은 미확보**, 본인 요약 게시로 대체 |
+| readastonvilla.com 개별 URL 2건 | ⛔ 404(검색 인덱스 요약만 존재) |
+
+우회의 열쇠는 **차단된 X 프로필의 bio 자체**였다 — 거기 적힌 BlueSky 링크를 따라가 `jacobtanswell.bsky.social`(The Athletic 발급 인증 배지 valid)을 확정하고 무인증 공개 API로 읽었다.
+⇒ 규칙화: **X가 막히면 대상 bio에서 Bluesky·Mastodon 핸들을 찾아 공개 API로 간다.** docs/30 「AVL 필수 기자 1인」에 핸들을 등재할 것.
+
+### ⑵ ⛔⛔ 당일·D+1 판정 정정 3건
+
+**정정 ①  세트피스 — 「설계 루틴 아님」을 철회한다** (obs#814 → **obs#839**)
+
+> 「Barkley… making his usual near-post run from Mbaye's corner. Poor marking but **a planned set piece** from #AVFC - before the corner, **McGinn looked over to Emery, who told him to aim towards the near post**.」
+> (바클리가 음바예의 코너에서 늘 하던 니어포스트 침투를 했다. 마킹은 형편없었지만 이건 빌라의 **계획된 세트피스**다 — 코너 직전 **맥긴이 에메리를 쳐다봤고, 에메리가 니어포스트를 노리라고 지시했다**.)
+
+현장에서 **벤치 교신을 목격한 기록**이다. 여기에 「A good night for new set piece coach, Pal Fjelde, too.」(신임 세트피스 코치 폴 피엘데에게도 좋은 밤이었다) — 빌라에 **신임 세트피스 코치**가 있다는 사실 자체가 D+1에 없었다.
+D+1이 근거로 삼은 **「양 진영 독립 합의」 구조가 오독**이었다: 램파드의 「too simple, that's on us」는 **자기 팀 마킹을 자책한 진술**이지 빌라의 설계 유무를 부정한 것이 아니다.
+⇒ 마킹 실패는 사실, **루틴 부재는 사실이 아니다.** FC 구현: 세트피스 축 전면 배제 철회, 「바클리=니어포스트 러너 / 맥긴·음바예=인스윙 배급」을 담당자 지정 수준으로 반영. 속성 상향은 하부 리그 아닌 표본 1건 더 대기.
+
+**정정 ②  주앙 고메스 — 「징계 결장」이 아니라 「종아리 결장」, 징계 범위는 PL 3경기** (obs#812 → **obs#840**)
+
+- 08-23 브라이튼전 퇴장 3경기 징계 = **아스날·헐·포레스트(전부 PL)** → **09-12 포레스트전으로 종료**.
+- 직접 증거: 징계 기간 중 **CL 브뤼헤전 선발 출전** — 국내 징계가 유럽 대회에 미치지 않는다.
+- 09-16 결장 사유는 **종아리 불편**: 「The Brazilian is experiencing some 'discomfort', which is why he has not been selected」(그 브라질 선수가 「불편」을 겪고 있어 명단에 선발되지 않았다).
+- 에메리(스퍼스 D-1): 「If it's going well, he might be available for Saturday. It is uncertain for now.」(잘 풀리면 토요일에 가용할 수도 있다. 지금은 불확실하다.)
+
+⇒ obs#787의 **원래 범위 판정이 옳았고 obs#812가 틀렸다.** 다만 파생 결론 **「바클리 LDM = 결원 2경기 연속」은 사유만 바뀐 채 유지**된다(포레스트=징계, 코번트리=부상).
+⚠️ D+1 전사 `ZWveSji6X6s`가 이미 「고메스 종아리」를 말했으나 징계설에 밀려 채택되지 않았다 — **서사가 맞았던 사례**로 기록한다.
+
+**정정 ③  완비사카 백3 — 기각은 유지, 「그래픽 오독」 귀인은 철회** (obs#825 → **obs#841**)
+
+킥오프 직후 현장 기록이 **3번째 독립 소스**로 나왔다: 「Wan-Bissaka is inverting to play as third CB, with Harwood-Bellis in the middle of the back three. Due to having natural width, Mbaye and Ruggeri are on the flanks.」(완비사카가 안으로 들어가 3번째 CB로 뛰고, 하우드-벨리스가 백3의 가운데다. 폭은 음바예와 루헤리가 담당한다.)
+그런데 **같은 기자가 후반엔 정반대**를 적는다: 「Wan-Bissaka making late runs high as Mbaye drifts in and McGinn moves out-wide」(음바예가 안으로 흘러들고 맥긴이 바깥으로 나가면서 완비사카가 늦게 높이 침투한다).
+
+⇒ **우측은 고정 형태가 아니라 국면별 로테이션**이었고, 90분 평균은 두 반대 역할의 평균이다.
+**기각 결론은 유지**한다 — 결정적 수치는 **음바예 툴x 72.4 < 완비사카 85.3**, 즉 「음바예가 폭·완비사카가 안쪽」이라는 서사와 90분 평균이 **반대**다.
+그러나 D+1이 붙였던 「두 채널이 평균위치 그래픽의 축을 오독했다」는 설명은 **철회**한다 — 이 소스는 그래픽을 보지 않았다. 불변규칙 3은 실측 우선이지 **서사의 동기 추정까지 정당화하지 않는다.**
+재판정 조건: 국면 그리드(phase)로 lead/level 구간을 갈라 완비사카 좌표를 분리 집계.
+
+### ⑶ 미해결 충돌 5건 — 4건 종결 · 1건 미진전
+
+| # | 항목 | D+2 결과 |
+|---|---|---|
+| ⑴ | 보가르드 서사 4~5 ↔ SofaScore 7.4 | ✅ **해소(모순 아님 — 층이 다르다)**. 재시청 판정 「he's even worse again on the second viewing… He was incredibly passive」(두 번째 시청에서 더 나빴다… 극도로 수동적이었다)가 때리는 것은 **전진·주도의 부재**이고, 7.4를 만든 건 **완료 행동량**(duels_won 11 팀 최다·tackles 3·패스 47/51). 실측이 지지: avg_x 40.1로 **바클리(49.77)보다 −9.7 최후방**. ⇒ 「많이 이기되 아무 데로도 가지 않는 피벗」. `dm_holding`은 정합, **Roaming 포커스는 재판정 대상**. obs#843 |
+| ⑵ | 루헤리 평가 | ⛔ **0건 — 미진전.** D+2 신규 자료 5편·다국어 3축 어디에도 루헤리 개별 평가가 없다(이탈리아어 축 미시도 — **D+3 과제**). |
+| ⑶ | 잭슨 포레스트전 교체 사유 | ✅ **확정 — 부진이 아니라 퇴장 위험 관리.** 에메리: 「Nico Jackson had a yellow card and the referee was telling us that he needed to keep calm… I know Jackson and he could have one action with his power being dangerous for another yellow. **It was my decision.**」(잭슨은 경고가 있었고 심판이 진정해야 한다고 말했다… 나는 잭슨을 안다 — 힘이 실린 동작 하나가 두 번째 경고로 위험할 수 있었다. **내 결정이었다**.) ⇒ 파생: 09-12 「교체 5장 조기 소진」의 기점이 전술 선택이 아니라 **징계 리스크 회피**였다. obs#845 |
+| ⑷ | 하우드-벨리스 「데뷔」 표기 | ✅ **확정 — 「풀 데뷔(첫 선발)」와 「데뷔(첫 출전)」의 혼용이었다.** 구단 공식은 THB·루헤리·음바예 3인의 「full debuts」로 발표했으나, 루헤리(08-23 8분·09-05 15분)·음바예(09-12 27분)는 출전 이력이 있었고 **THB만 빌라 공식전 첫 출전이자 첫 선발**이다 — **구단 표기와 우리 DB가 서로를 검증**했다. obs#844 |
+| ⑸ | 27′ 실점 3설 대립(obs#827) | ◐ **진전 — 최고 신뢰 소스가 2설을 지지.** 「Barkley booked for a foul on edge of the box, **having been caught on the ball**. Subsequent free-kick goes in, with **Bizot rooted to the spot**.」(바클리가 **볼을 잡힌 채** 박스 외곽에서 파울로 경고. 이어진 프리킥이 들어갔고 **비조는 제자리에 굳어 있었다**.) ⇒ 기원=바클리 볼 소유 실패(ANF설), 실점 순간=GK 초동(UTV설)에 각각 무게. **벽 세팅설(코번트리 팬)은 여전히 미검증** — 프레임 확인 전 최종 채택 보류 유지. |
+
+### ⑷ 비조 부상 후속 — 기간·전망 **여전히 미제시**(D+2 목표 미달) (obs#847)
+
+에메리 추가 발언은 「Of course, it's not my expectation a big injury.」(물론 큰 부상일 거라 예상하진 않는다.)로 **표현만 바뀌었을 뿐 기간·검사 결과·복귀 시점 어느 것도 특정되지 않았다.**
+⚠️ **부위 서술이 갈린다**: 에메리는 「등 통증」, 현장 기록은 「Marco Bizot **hobbling off** at half time」(하프타임에 **절뚝이며** 나간다)로 **하지 증상**이고, 일본어 매체도 The Athletic을 인용해 「ビゾットは前半終了時に**足を引きずる**様子を見せていた」(비조는 전반 종료 시 **다리를 절뚝이는** 모습을 보였다)로 옮겼다. 양립 가능하나(요추·좌골 방사통) **구단 공식 진단 0건**.
+스퍼스전 **doubt**(캐시·고메스·마조와 함께). 스즈키가 리그·UCL 1옵션이므로 영향은 **컵·백업 뎁스 한정**.
+`player_status`에 **2026-09-18 스냅샷 신규 행** 추가(비조 1 · 고메스 2 — 기존 행 UPDATE 없음).
+
+### ⑸ ⭐ 불변규칙 10 결손 보완 — 3개 언어 **전부 신규 확보**(D+1 0건·미시도 → D+2 0건 없음) (obs#846)
+
+⛔ **D+1 판정 정정**: 「카라바오컵 3R은 스페인 매체 미취재로 판단」은 **검색을 하지 않고 내린 추정**이었다(0건 기록이 아니라 미시도). 실제로는 **EFE 통신이 경기 기사와 회견 기사를 각각 송고**했다.
+
+| 언어 | 검색어 | 결과 |
+|---|---|---|
+| 🇪🇸 스페인어(에메리 모국어) | `Unai Emery rueda de prensa Aston Villa Coventry Copa de la Liga Mbaye` | **2건**(infobae·unitel, 둘 다 EFE) — **영어권에 없던 verbatim** |
+| 🇯🇵 일본어(스즈키) | `鈴木彩艶 アストン・ヴィラ コベントリー カラバオカップ 後半 出場` | **6건 이상**(footballchannel 2·soccer-king·goal.jp·livedoor·DAZN) |
+| 🇫🇷 프랑스어(음바예) | `Ibrahim Mbaye Aston Villa Coventry première titularisation Emery français` | **6건**(culturepsg·wiwsport 2·foot-africa·dsports·senegal7) |
+| 🇮🇹 이탈리아어(루헤리) | — | ⛔ **미시도 — D+3 과제**(충돌 ⑵의 유일한 미진전 경로) |
+
+**스페인어 — 에메리 verbatim**(가르나초 서열, 영어권 요약본보다 길다)
+
+> 「Tiene que seguir trabajando. **Trabajo, trabajo, entrenamiento y más trabajo.**」(계속 일해야 한다. **노력, 노력, 훈련, 그리고 더 많은 노력.**)
+> 「Está progresando, pero **hay futbolistas delante suyo ahora mismo**.」(발전하고 있지만 **지금은 그의 앞에 있는 선수들이 있다**.)
+> 「Garnacho está un poco por detrás por algunas circunstancias que ocurrieron en pretemporada. Es momento de ser paciente y de darle el tiempo que necesite.」(가르나초는 **프리시즌에 일어난 몇몇 상황** 때문에 조금 뒤처져 있다. 인내하고 그에게 필요한 시간을 줄 때다.)
+> 「Mbaye también lo ha hecho bien. **Queremos un equipo competitivo y jugadores que puedan competir en el estilo que tenemos.**」(음바예도 잘해줬다. **우리는 경쟁력 있는 팀과, 우리가 가진 스타일로 경쟁할 수 있는 선수들을 원한다.**)
+
+**일본어 — 스즈키 배급이 머리기사**: 「**素晴らしい浮き球のパス**」(**훌륭한 로빙 패스**)가 「後半の残り時間のパターンを作った」(후반 남은 시간의 패턴을 만들었다) · 별건으로 「**極上すぎる40m縦パス**」(**지나치게 훌륭한 40m 종패스**)로 상대 4명을 무력화.
+⇒ obs#828의 열린 제안(「스즈키 롱볼 타깃을 헤밍스→음바예 배후로」)은 **타깃 변경은 여전히 미검증**이나, **배급 능력 전제는 2개 언어권 독립 확인**(영어권 1874도 「he's a brilliant distributor」 정말 훌륭한 배급수다)으로 강화된다.
+부수 수확(상대팀 축): 코번트리 선발에 **사카모토 타츠히로(坂元達裕)**가 있었고 57분 교체됐다.
+
+**프랑스어 — 음바예 축**: 「l'ancien Parisien a été titularisé **sur l'aile droite** à Coventry, avec John McGinn en numéro dix」(전 파리 선수가 코번트리에서 **우측 윙으로** 선발됐고 존 맥긴이 10번이었다) — 포레스트전 **왼쪽** 투입과 대비. 실측 대조가 **우리 DB와 전부 일치**(64분·25/27 93%·4 chances created·터치 48/박스 내 7·크로스 성공 4·7.0). 이적 사실 확정: PSG→빌라 **2026-09-01 완전이적 5,500만 유로 초과**, 만 18세 세네갈 대표.
+
+교훈: **「그 대회는 그 나라가 안 볼 것」이라는 추정으로 언어 축을 건너뛰지 말 것** — 통신사(EFE)는 대회 등급과 무관하게 송고한다.
+
+### ⑹ 음바예 — D+1 PENDING이 확정으로 (obs#842)
+
+「우측 폭 유지 + 배후 침투」가 **독립 4소스**로 모인다(현장 기자 · 정지화면 전술분석 · 1874 · 프랑스어권).
+
+> 「As he was signed to play, Mbaye starts on the right.」(영입된 목적 그대로 음바예가 우측에 선다)
+> 「**Having a right winger who constantly threatens in behind was a priority for Emery and his staff this summer.**」(**배후를 끊임없이 위협하는 우측 윙어는 이번 여름 에메리와 스태프의 최우선 과제였다**)
+> 「he stretches the opposition defense immediately **just with his starting point** as he forces the fullback to break away from a narrow defensive shape」(**시작 위치만으로** 상대 수비를 즉시 벌리고 풀백을 좁은 블록에서 끌어낸다)
+
+⭐ **툴x 72.4가 터치라인(85)이 아닌 이유가 설명된다** — 맥긴·완비사카와의 **설계된 자리바꿈**이다:
+「McGinn… drifting over to the inside channel and overloading the right side with Mbaye. They have combined really well, **sometimes swapping positions**.」(맥긴이 안쪽 채널로 흘러 음바예와 우측을 과부하시켰다. 아주 잘 맞물렸고 **때로 자리를 맞바꿨다**.)
+즉 **기본은 폭이고, 평균이 안쪽인 것은 로테이션의 결과**다.
+
+수비 축 **첫 긍정 관찰**: 「he put in some seriously hard yards to track his man and do the defensive part of his work」(매치업을 따라가며 상당한 거리를 뛰었고 수비 몫도 했다) — 단 화자가 「새 선수라 인상을 남기려는 과정일 수 있다」고 유보했으므로 **obs#826의 원정 수비 게이트는 열린 채로 둔다**(검증 지점: 09-19 스퍼스 원정 우측 선발).
+
+부수: **맥긴 CAM의 커널 무결정 중 역할 축이 닫힌다** — `cam_halfwinger`(중앙 배치 + 우측 드리프트)가 독립 2소스로 확인됐다. ⚠️ **포커스 축(Roaming↔Attack)은 여전히 무결정.**
+
+### ⑺ 필수 3채널 D+2 게시분 — 게시는 3곳 전부, **소득은 1곳뿐**
+
+| 채널 | 영상 | 게시 | 경기 축 소득 |
+|---|---|---|---|
+| UTV | `fKDbTccRjGk` 스퍼스 프리뷰 | 09-18 | ⛔ **0** — 화자가 「This is being recorded **before Coventry**」(이건 코번트리전 **이전에** 녹화한 것이다)라고 자인 |
+| The Villans | `At5v2hKj1vI` GW5 예상 | 09-18 | ⛔ **0** — 라운드 승부 예상물 |
+| **1874** | `WajH4NOz_D0` 스퍼스 프리뷰 | 09-18 | ✅ **보가르드 재시청 재판정**(충돌 ⑴ 해소) · 스즈키 배급 독립 확인 |
+
+⇒ **1874는 D+1 시점 미게시가 아니었다**(obs#829에서 이미 정정) — D+2에도 3채널 중 유일하게 경기 축 내용을 담았다.
+검색 경로(obs#829 3경로 규칙)에서 **채널 목록에 없던 2편**을 추가 확보: `mZYZ5LVPtDA`(Talk Villa — **음바예 정지화면 전술분석**, 이번 회차 최고 밀도) · `p7YDUThRRXQ`(Villa Park Podcast — 맥긴 중앙·THB 데뷔).
+⭐ 후자가 **출처 경로를 교차 확인**해줬다: 「Emery spoke about him in his press conference after the game **to Jacob Tanswell**」(에메리가 경기 후 회견에서 **제이콥 탠스웰에게** 그에 대해 말했다) — 가르나초 발언의 1차 질문자가 Tanswell임을 제3자가 확인.
+
+### 반영
+
+- `observations` **#838~847**(10행 — 정정 3 · 해소 4 · 방법론 2 · 후속 1). ⛔ 기존 행 UPDATE 0.
+- `player_status` **3행 신규**(비조 09-18 · 고메스 injury/suspension 09-18). ⛔ 기존 행 UPDATE 0.
+- `match_videos` **5행 신규**(경기 43 귀속 3 · 프리뷰 2) + summary/key_points 5 + `video_impl_claims` **10행**(APPLIED 2 · HELD 3 · PENDING 1 · NA 4).
+- `player_duties` **5행 execution 덧붙임**(음바예 245 · 보가르드 242 · 하우드-벨리스 194 · 완비사카 96 · 맥긴 25).
+- `manager_profiles` **set_pieces 정정 덧붙임**(obs#839).
+- **시즌 정본 변경 없음** — 컵 로테이션·하부 리그 상대(불변규칙 유지). 세트피스 축은 판정이 바뀌었으나 **속성 상향은 표본 1건 더 대기**.
+
+### D+3 과제
+
+⑴ **이탈리아어 축**(루헤리 — 충돌 ⑵의 유일한 미진전 경로) ⑵ **비조 진단·기간**(D+2 미달) ⑶ 27′ 실점 **벽 거리 프레임 확인** ⑷ 09-19 스퍼스 원정 선발로 **obs#826 원정 수비 게이트**·완비사카/캐시 우측 선택 검증 ⑸ The Athletic 본문 우회 경로(현재 전 경로 차단).

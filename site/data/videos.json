@@ -1,6 +1,127 @@
 {
  "all": [
   {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 190,
+   "impl_claims": [
+    {
+     "axis": "limit",
+     "field": "progression",
+     "focus": null,
+     "player": "보가르드",
+     "quote": "「I watched it back again today and… he's even worse again on the second viewing… He was incredibly passive」(오늘 다시 돌려봤는데 두 번째 시청에서 더 나빴다… 극도로 수동적이었다)",
+     "role_id": null,
+     "team_code": null,
+     "value": "피벗 진취성 결여(수동성)",
+     "verdict": "HELD",
+     "verdict_note": "D+1 미해결 충돌 1번을 닫지는 않되 **성격을 특정**한다 — 실측은 duels_won 11·tackles 3·패스 47/51(92%)로 **행동량**이 높고, 서사가 때리는 것은 **전진·주도**의 부재다(avg_x 40.1로 피벗 최전방 바클리 49.77보다 −9.7, 진영 최후방 피벗). 두 층이 서로 다른 것을 재고 있으므로 SofaScore 7.4와 서사 평점 4~5는 모순이 아니다. 재판정 조건: 고메스 복귀 후 같은 슬롯의 전진패스·프로그레시브 캐리 대조."
+    },
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "보가르드 재시청 하향: 「I wouldn't put Bogarde anywhere near that position after his game against Coventry. I watched it back again today and I was like, 'Oh, he's even worse again on the second viewing'… He was incredibly passive」(코번트리전을 보고 나면 그 자리 근처에도 두지 않겠다. 오늘 다시 돌려봤는데 두 번째 시청에서 더 나빴다… 극도로 수동적이었다)",
+    "화자 스스로 균형을 명시: 「I'm not going in on him two-footed. He had a bad game」(작정하고 깎아내리는 게 아니다. 나쁜 경기를 했을 뿐이다)",
+    "스즈키 배급: 「He did a couple of nice passes again in the second half against Cov… he's a brilliant distributor」(코번트리전 후반에도 좋은 패스를 몇 개 했다 — 정말 훌륭한 배급수다) — 일본어 매체의 「素晴らしい浮き球のパス」(훌륭한 로빙 패스) 평가와 독립 일치",
+    "우측 선발 예상: 「Cash will come back in for Wan-Bissaka」(캐시가 완비사카 대신 복귀할 것) · 음바예는 「Mbaye is probably done enough to say I should be starting on Saturday」(토요일 선발이라 할 만큼은 해냈다)",
+    "⚠️ 녹화 시점 한계 자인: 「the press conference hasn't taken place at the time that Neil and I have done this preview」(닐과 내가 이 프리뷰를 만든 시점에 회견은 아직 열리지 않았다) — 부상 정보는 이 영상 기준으로 채택하지 않는다"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": 43,
+   "summary": "스퍼스 프리뷰(25분)이지만 코번트리전 재시청 판정을 담아 경기 43에 귀속한다. 핵심은 **보가르드 재판정** — 화자가 경기를 다시 돌려보고 D+1 평가를 더 낮췄다(「두 번째 시청에서 더 나빴다」·「극도로 수동적」). 이는 D+1 미해결 충돌 1번(서사 평점 4~5 ↔ SofaScore 7.4)의 실체를 「수치 대 서사」가 아니라 **행동량 대 진취성**이라는 다른 축의 문제로 특정해준다. 부수적으로 스즈키 배급을 다시 상찬하고, 우측 선발은 캐시 복귀로 완비사카를 대체할 것으로 예상한다.",
+   "team_code": "AVL",
+   "title": "Tottenham Hotspur v Aston Villa: A HUGE Game for Both Sides",
+   "transcript_path": "reports/transcripts/WajH4NOz_D0.en.md",
+   "url": "https://www.youtube.com/watch?v=WajH4NOz_D0",
+   "video_id": "WajH4NOz_D0"
+  },
+  {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 189,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "라운드 전체 예상물 — 코번트리전 회고·전술 언급 없음",
+    "D+2 필수 3채널 확인의 0건 기록(게시 있음 · 경기 축 소득 없음)"
+   ],
+   "kind": "프리뷰",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "The Villans의 GW5 예상(10분) — 코번트리전 D+2 게시분이지만 **코번트리전 내용 0**이다. 프리미어리그 라운드 전체 승부 예상이고 빌라 언급도 스퍼스전 결과 예상에 그친다. 3채널 D+2 확인의 「게시는 있었으나 소득 없음」 기록으로만 남긴다.",
+   "team_code": "AVL",
+   "title": "PREMIER LEAGUE GAMEWEEK 5 PREDICTIONS",
+   "transcript_path": "reports/transcripts/At5v2hKj1vI.en.md",
+   "url": "https://www.youtube.com/watch?v=At5v2hKj1vI",
+   "video_id": "At5v2hKj1vI"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 191,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "화자 자인: 「This is being recorded before Coventry」(이건 코번트리전 이전에 녹화한 것이다) — 코번트리전 판정 근거로 쓸 수 없다",
+    "스퍼스 스카우팅: 세트피스 2·3차 공격에서 실점 반복 · 「there's a lot of crosses going into the box and not a lot in the box」(박스로 들어가는 크로스는 많은데 박스 안에 사람이 적다) — 측면 편중",
+    "빌라 미드필드 2를 카마라+고메스로 가정하고 스퍼스 중원 과부하를 경고(녹화 시점 한계)"
+   ],
+   "kind": "프리뷰",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "UTV의 스퍼스 프리뷰(32분) — 코번트리전 D+2 게시분이지만 **코번트리전 내용은 사실상 0**이다. 전술 파트를 화자가 「This is being recorded before Coventry」(이건 코번트리전 이전에 녹화한 것이다)라고 명시하고, 내용은 스퍼스의 세트피스 2·3차 공격과 측면 크로스 편중 스카우팅이다. 미드필드 조합도 코번트리전 이전 가정(카마라+고메스)으로 말한다. ⇒ 경기 43에 귀속하지 않는다.",
+   "team_code": "AVL",
+   "title": "TOTTENHAM HOTSPUR v ASTON VILLA | MATCH PREVIEW (2026-09-18 게시, 32분, 코번트리전 D+2 · 스퍼스 프리뷰(전술 파트는 코번트리전 이전 녹화))",
+   "transcript_path": "reports/transcripts/fKDbTccRjGk.en.md",
+   "url": "https://www.youtube.com/watch?v=fKDbTccRjGk",
+   "video_id": "fKDbTccRjGk"
+  },
+  {
    "channel": "All Villa No Filler",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 186,
@@ -166,7 +287,7 @@
   },
   {
    "channel": "TM Talks Ball",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 187,
    "impl_claims": [
     {
@@ -188,18 +309,144 @@
     "데 제르비 설계: 갤러거·벤탄쿠르가 최종 라인까지 내려와 리버풀 압박을 유인하고 그 뒤 공간을 연다는 미끼 구조. 상대팀 관점 자료가 우리 압박 구조를 더 구체적으로 서술한 사례(§2-1a 상대 관점 규정의 실증).",
     "채점 축 주의: 이 영상은 결과가 아니라 「시스템대로 기능했는가」를 축으로 삼는다 — 토트넘 우호 편향이 있으므로 형용사가 아닌 구체 행동 서술만 채택했다(불변규칙 10 보정 규칙)."
    ],
-   "kind": "상대팀",
+   "kind": null,
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-17",
    "published_approx": 0,
    "report_id": 44,
    "summary": "같은 채널의 토트넘 관점 편(2026-09-17 게시 = D+2). 결과와 별개로 토트넘이 데 제르비의 시스템대로 기능하고 있었다는 논지이며, 안필드에서 점유·슈팅·박스 터치·xG·**세트플레이 xG**를 모두 앞섰다는 점을 근거로 든다 — 우리 실측 세트플레이 xG 0.08:1.18을 **수치로 언급한 첫 매체**다. 다만 이를 리버풀 수비 세트피스의 **구조 결함으로 지목하지는 않고** 토트넘 우위의 증거로만 쓴다. 빌드업 장면에서는 「리버풀 선수 6명이 압박에 투입된다」고 세어 보이며, 갤러거·벤탄쿠르가 최종 라인까지 내려와 리버풀을 유인한 뒤 뒤 공간을 여는 것이 데 제르비 설계라고 설명한다.",
-   "team_code": "LIV",
+   "team_code": null,
    "title": "Nobody Realises Just HOW GOOD Tottenham Are…",
    "transcript_path": "reports/transcripts/4Zly8FIdpr4.en.md",
    "url": "https://www.youtube.com/watch?v=4Zly8FIdpr4",
    "video_id": "4Zly8FIdpr4"
+  },
+  {
+   "channel": "Talk Villa",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 192,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "width",
+     "focus": null,
+     "player": "음바예",
+     "quote": "「he stretches the opposition defense immediately just with his starting point as he forces the fullback to break away from a narrow defensive shape」(시작 위치만으로 상대 수비를 즉시 벌리고, 풀백이 좁은 수비 형태에서 떨어져 나오게 만든다)",
+     "role_id": null,
+     "team_code": null,
+     "value": "우측 터치라인 폭 유지(기본 위치)",
+     "verdict": "APPLIED",
+     "verdict_note": "D+1 PENDING(1874 단독)에서 승격 — 독립 4소스(1874·Talk Villa·Tanswell 현장·프랑스어 매체)가 「우측 폭」으로 일치하고, 실측 툴x 72.4(맥긴 67.8보다 바깥, 터치라인 85는 아님)는 Tanswell이 관찰한 맥긴·완비사카와의 설계된 자리바꿈으로 설명된다 — 즉 기본은 폭, 평균이 안쪽인 것은 로테이션의 결과다."
+    },
+    {
+     "axis": "instruction",
+     "field": "in_behind_runs",
+     "focus": null,
+     "player": "음바예",
+     "quote": "「There's the space. That's where it's going to open up. I want you to attack it and make those runs in behind to give us a threat down the right channel」(저기가 공간이다. 저기가 열릴 곳이다. 저길 공략해 배후로 뛰어서 우측 채널에 위협을 만들어라)",
+     "role_id": null,
+     "team_code": null,
+     "value": "우측 채널 배후 침투(지시)",
+     "verdict": "HELD",
+     "verdict_note": "화자가 에메리의 말을 재구성한 것이지 전사된 지시가 아니다(정지화면 해설). 방향은 Tanswell의 「배후를 상시 위협하는 우측 윙어가 이번 여름 최우선 과제였다」와 정합. 재판정 조건: 스퍼스 원정 이후 음바예의 배후 스루패스 수신 이벤트."
+    },
+    {
+     "axis": "limit",
+     "field": "defensive_work",
+     "focus": null,
+     "player": "음바예",
+     "quote": "「I thought he put in some seriously hard yards to track his man and do the defensive part of his work as well… is that part of the process of he's new here, he wants to impress」(자기 매치업을 따라가며 상당히 힘든 거리를 뛰었고 수비 몫도 해냈다 — 다만 새로 왔고 인상을 남기려는 과정의 일부인가)",
+     "role_id": null,
+     "team_code": null,
+     "value": "원정 수비 임무 수행 — 첫 긍정 관찰",
+     "verdict": "PENDING",
+     "verdict_note": "obs#826의 열린 질문(「원정에서 수비 임무를 해낼 수 있는가」)에 대한 첫 영상 근거이지만 화자 스스로 지속성을 유보했고 상대가 챔피언십 팀이다. 재판정 조건: 스퍼스 원정(09-19) 우측 선발 여부와 그 경기 수비 지표."
+    }
+   ],
+   "key_points": [
+    "폭: 「whether it's his own preference to get tight to the sideline or if that is a direct instruction from Emery, he stretches the opposition defense immediately just with his starting point」(터치라인에 붙는 것이 본인 성향인지 에메리의 직접 지시인지는 몰라도, 시작 위치만으로 상대 수비를 즉시 벌린다) — 09-12 포레스트전은 왼쪽, 09-16은 오른쪽",
+    "배후 침투는 지시: 「He was clearly told by Emery, 'There's the space… I want you to attack it and make those runs in behind to give us a threat down the right channel'」(에메리가 분명히 말해뒀다 — 저기가 공간이다, 저길 공략해 배후로 뛰어 우측 채널에 위협을 만들어라)",
+    "이중 압박 유인 → 프리맨 창출: 「teams are no doubt going to start doubling up on him… that should invariably leave space and a free man」(팀들이 그에게 둘씩 붙기 시작할 것이고, 그러면 반드시 공간과 프리맨이 생긴다) — 수혜자로 완비사카·캐시의 오버랩/언더랩 지목",
+    "수비 가담 관찰: 「I thought he put in some seriously hard yards to track his man and do the defensive part of his work as well」(자기 매치업을 따라가며 상당히 힘든 거리를 뛰었고 수비 몫도 해냈다) — 단 「새 선수라 인상을 남기려는 것일 수 있고 나중에 줄어들 수도」라고 유보",
+    "양발 위협: 바이라인 크로스와 안쪽 컷인 모두 — 「he is not a one-trick pony」(한 가지만 하는 선수가 아니다)",
+    "에메리 우측 윙어 원형 계보에 편입 — 베일리·디아비·알리송(왼발 우측 윙어)"
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-17",
+   "published_approx": 0,
+   "report_id": 43,
+   "summary": "코번트리전 음바예 전용 정지화면 전술분석(11분). 핵심 주장은 「음바예의 값은 드리블이 아니라 시작 위치가 만드는 폭」이다 — 터치라인에 붙어 서는 것만으로 상대 풀백을 좁은 수비 블록에서 끌어내 중앙에 공간을 연다. 맥긴이 계속 그를 찾았고, 배후 우측 채널 침투는 지시된 움직임이라고 본다. 부수적으로 수비 가담(트래킹)을 직접 관찰했다고 적었다 — obs#826의 열린 질문에 대한 첫 영상 근거. 에메리의 우측 윙어 원형(베일리·디아비·알리송)에 음바예를 넣는다.",
+   "team_code": null,
+   "title": "An Aston Villa Podcast — Ibrahim Mbaye SHINES in full Aston Villa debut | Talk Villa tactics",
+   "transcript_path": "reports/transcripts/mZYZ5LVPtDA.en.md",
+   "url": "https://www.youtube.com/watch?v=mZYZ5LVPtDA",
+   "video_id": "mZYZ5LVPtDA"
+  },
+  {
+   "channel": "The Villa Park Podcast",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 193,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "focus": null,
+     "player": "맥긴",
+     "quote": "「he has the freedom to go out onto that right side from the central areas and Mbaye particularly has that intelligence to cut inside and dovetail with him」(중앙에서 우측으로 나갈 자유가 있고, 음바예는 안쪽으로 접어 그와 맞물린다)",
+     "role_id": "cam_halfwinger",
+     "team_code": null,
+     "value": null,
+     "verdict": "APPLIED",
+     "verdict_note": "커널이 cam_halfwinger/Roaming .502를 내면서 Δ0.012 무결정이었던 구간 중 **역할 축**을 서사가 닫는다 — 「중앙 배치 + 우측으로 드리프트」는 halfwinger의 정의 그대로이고, Tanswell 현장 관찰(「McGinn drifting over to the inside channel and overloading the right side with Mbaye, sometimes swapping positions」 맥긴이 안쪽 채널로 흘러 음바예와 우측을 과부하시켰고 때로 자리를 맞바꿨다)이 독립 2소스를 만든다. ⚠️ **포커스 축(Roaming↔Attack)은 여전히 무결정**으로 남긴다."
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "focus": null,
+     "player": "하우드-벨리스",
+     "quote": "「he's from that old school of centre halves… but what he's also got is that ability to put his foot on the ball and pass into midfield」(구식 센터백 계보이지만, 발로 잡고 미드필드로 찔러주는 능력까지 있다)",
+     "role_id": "cb_bpd",
+     "team_code": null,
+     "value": null,
+     "verdict": "HELD",
+     "verdict_note": "슬롯 정본 cb_bpd/Build-Up과 방향 정합이고 D+1의 「파우 토레스와 같은 지역, 조금 더 띄운다」와도 겹친다. 그러나 **빌라 공식전 1경기·하부 리그 상대**라 승격하지 않는다. 재판정 조건: 스퍼스 원정 이후 프리미어리그 2경기 표본."
+    }
+   ],
+   "key_points": [
+    "맥긴 중앙 복귀: 「having McGinn in that central area at this moment in time I think is so important… too many times over the last couple of weeks he's been isolated out on that right hand side. Hull City, he was isolated. Brighton, he was the same」(지금 시점에 맥긴을 중앙에 두는 건 아주 중요하다 — 최근 몇 주 너무 자주 우측에 고립됐다. 헐전도, 브라이튼전도 마찬가지였다)",
+    "맥긴↔음바예 자리바꿈: 「he has the freedom to go out onto that right side from the central areas and Mbaye particularly has that intelligence to cut inside and dovetail with him」(그는 중앙에서 우측으로 나갈 자유가 있고, 음바예는 특히 안쪽으로 접어 그와 맞물리는 지능이 있다)",
+    "하우드-벨리스: 「a really assured debut」(아주 침착한 데뷔) · 「he's from that old school of centre halves. He'll put his body on the line. He'll win headers… but what he's also got is that ability to put his foot on the ball and pass into midfield」(구식 센터백 계보 — 몸을 던지고 헤더를 이긴다. 거기에 발로 잡고 미드필드로 찔러주는 능력까지 있다) · 화자의 맨오브더매치",
+    "THB의 CL 명단 제외는 스쿼드 선택이었고 파우 토레스 부상으로 자리가 열렸다는 인식 — 좌측 CB에 린델로프와 조합하는 안도 제시",
+    "음바예 유보: 「a few points where he maybe could have released it a little bit quicker… threw in a few stepovers when he didn't really need to」(조금 더 빨리 내줄 수 있던 장면이 몇 번 있었고, 굳이 필요 없는 스텝오버를 몇 번 넣었다) — if8UoAcl8qo의 「기술 시도 한두 개 과했다」와 같은 지적",
+    "⭐ 출처 경로 확인: 「Emery spoke about him in his press conference after the game to Jacob Tanswell」(에메리가 경기 후 회견에서 제이콥 탠스웰에게 그에 대해 말했다) — 가르나초 발언의 1차 질문자가 Tanswell임을 제3자가 확인"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-17",
+   "published_approx": 0,
+   "report_id": 43,
+   "summary": "코번트리전 반추(16분). 다섯 논점 중 셋이 우리 축에 걸린다 — ⑴ 맥긴을 중앙으로 되돌린 것이 이 경기 최대 소득이고(직전 경기들에서 우측에 고립돼 있었다), 그 중앙 맥긴과 음바예가 서로 자리를 바꿔가며 우측을 과부하시켰다 ⑵ 하우드-벨리스는 「데뷔」로 명시되고 구식 CB + 발밑 배급의 이중 축으로 평가된다(화자의 MOM) ⑶ 가르나초에 대한 에메리 발언이 Tanswell의 질문에서 나왔다고 명시 — 우리 1차 소스 경로의 교차 확인.",
+   "team_code": null,
+   "title": "MANZAMBI AND MBAYE COOKING! | MCGINN CENTRAL! | THB SOLID DEBUT! | GARNACHO QUESTIONS?",
+   "transcript_path": "reports/transcripts/p7YDUThRRXQ.en.md",
+   "url": "https://www.youtube.com/watch?v=p7YDUThRRXQ",
+   "video_id": "p7YDUThRRXQ"
   },
   {
    "channel": "Villa In The Car",
@@ -742,7 +989,7 @@
   },
   {
    "channel": "TM Talks Ball",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 188,
    "impl_claims": [
     {
@@ -765,14 +1012,14 @@
     "맥코넬: 「Great pressing from him… the legs in the middle of the park」(「그의 압박은 훌륭했다… 중원의 다리 역할」). 단 지상 듀얼 4/10·공중 0/4를 한계로 든다 — 명목 10번이지만 평가 축은 압박·활동량이다.",
     "⚠️ 62′ 교체 서사: 「once you took off McConnell and Nyoni, the levels dropped」(「맥코넬과 뇨니를 뺀 순간 수준이 떨어졌다」, auto-caption). D+3 실측 분해는 오픈플레이 기준으로 반대 방향이다(69′ 실점 후에야 블록이 내려갔고, 상대 급증분은 세트피스였다)."
    ],
-   "kind": "전술분석",
+   "kind": null,
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-15",
    "published_approx": 0,
    "report_id": 44,
    "summary": "TM Talks Ball의 리버풀 관점 전술 분석(2026-09-15 게시, D+2 회차에서 놓쳤던 편). 선제골 21′ 맥 알리스터 장면을 프레임 단위로 뜯어, 토트넘이 압박에 4명을 투입한 상태에서 고메스의 롱볼 한 번에 그 4명이 전부 무력화됐고 학포가 토신과 1대1을 잡았다고 설명한다. 쿠마스가 중앙에서 안쪽으로 파고들어 상대 수비를 끌어낸 덕에 학포의 컷인 레인이 열렸다는 것이 이 골의 핵심 구조라고 본다. 이라올라를 「학포의 장점을 극대화하는 최고의 감독」으로 규정하고 학포에게 필요한 것은 언더랩이라고 정리한다. 62′ 교체에 대해서는 「맥코넬과 뇨니를 뺀 뒤 수준이 떨어졌다」는 통상적 서사를 반복한다 — ⚠️ 우리 실측 시간분해(obs 신규)는 이 주장을 오픈플레이 기준으로 지지하지 않는다.",
-   "team_code": "LIV",
+   "team_code": null,
    "title": "How Andoni Iraola’s Liverpool OUTCLASSED Tottenham With Their Second Team!",
    "transcript_path": "reports/transcripts/gaZwLEsP4wY.en.md",
    "url": "https://www.youtube.com/watch?v=gaZwLEsP4wY",
@@ -7014,10 +7261,13 @@
    162
   ],
   "43": [
+   190,
    186,
    185,
    184,
    174,
+   192,
+   193,
    176,
    181,
    175,
