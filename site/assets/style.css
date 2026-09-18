@@ -116,6 +116,8 @@ details.refs a{overflow-wrap:anywhere}
 .prose .pb.hi{border-color:var(--acc)} .prose .pb.warn{border-color:var(--warn)}
 .prose .pb.bad{border-color:var(--bad)} .prose .pb.plain{border-color:rgba(255,255,255,.07)}
 .prose .pm{margin-right:5px;font-size:12px}
+/* ⚠️ 블록 = 제약·주의 같은 보조 참고 — 본문보다 작고 흐리게(사용자 지시 2026-09-18) */
+.prose .pb.note{font-size:12.5px;color:var(--dim);line-height:1.6} .prose .pb.note b{color:var(--dim);font-weight:600}
 .prose b{color:var(--txt);font-weight:700}
 .prose .pi{display:block;padding-left:19px;text-indent:-19px;margin-top:5px}
 .prose .pn{color:var(--acc);margin-right:4px}

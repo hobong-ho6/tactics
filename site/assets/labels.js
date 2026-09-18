@@ -89,10 +89,16 @@ export function humanizeText(text){
   if (isRaw()) return { html: text, refs: [] };
   const refs = [];
   let t = text;
-  for (const re of REF_RES) t = t.replace(re, m => { refs.push(m.replace(/^\(|\)$/g, '').trim()); return ''; });
-  // 참조를 뺀 자리의 껍데기 정리: 빈 괄호 · 「( — 」 · 「 — )」 · 「·」 연속 · 공백
-  t = t.replace(/\(\s*[—·,;:]*\s*\)/g, '').replace(/\(\s*[—·,]\s*/g, '(').replace(/\s*[—·,]\s*\)/g, ')')
-       .replace(/\s*·\s*·\s*/g, ' · ').replace(/\s{2,}/g, ' ').replace(/\s+([,.)])/g, '$1').replace(/^\s*[—·,]\s*/, '').trim();
+  // 참조는 자리표시자(\u0000)로 바꾼 뒤 **그 주변만** 정리한다. ⛔ 조각 전체를 trim하거나 앞머리 구두점을 지우면 안 된다 —
+  //    이 함수는 태그(<b>) 사이의 텍스트 조각 단위로 불리므로, 전체 trim은 「낫다 — 25/26」의 공백·대시를 삭제해 「낫다25/26」을 만든다(2026-09-18 사고).
+  for (const re of REF_RES) t = t.replace(re, m => { refs.push(m.replace(/^\(|\)$/g, '').trim()); return '\u0000'; });
+  if (t.includes('\u0000')){
+    t = t.replace(/\(\s*\u0000(?:\s*[—·,;:]\s*\u0000)*\s*\)/g, '\u0000')           // (obs#1 · obs#2) → 자리표시자 하나
+         .replace(/\(\s*[—·,;:]?\s*\u0000\s*[—·,;:]?\s*/g, '(').replace(/\s*[—·,;:]?\s*\u0000\s*[—·,;:]?\s*\)/g, ')')   // ( — obs# · 본문) → (본문)
+         .replace(/\s*[·,]\s*\u0000/g, '').replace(/\u0000\s*[·,]\s*/g, '')          // 「· obs#」 「obs# ·」 → 제거
+         .replace(/[ \t]*\u0000[ \t]*/g, ' ')                                          // 남은 자리표시자는 공백 하나로
+         .replace(/\(\s*\)/g, '').replace(/ {2,}/g, ' ').replace(/ ([,.)])/g, '$1');
+  }
   t = t.replace(ROLE_RE, (m, _p, focus) => { const rid = m.split('/')[0]; const kr = ROLE_KR[rid];
     return kr ? `<span class="hz" title="${esc(m)}">${kr}${focus ? '(' + (FOCUS_KR[focus] ?? focus) + ')' : ''}</span>` : m; });
   t = t.replace(METRIC_RE, m => `<span class="hz" title="${esc(m)}">${METRIC_KR[m]}</span>`);

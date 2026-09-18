@@ -28,6 +28,12 @@ function split(text){
     last = m.index + m[0].length;
   }
   out.push({ mark, body: text.slice(last) });
+  // 「⑵ ⭐ 세트피스…」처럼 열거 글리프 뒤에 곧바로 마커가 오면 글리프가 앞 블록 끝에 홀로 남아 「(2)」 빈 줄이 생긴다(2026-09-18 지적)
+  //  → 꼬리의 열거 글리프를 다음 블록 앞으로 넘긴다.
+  for (let i = 0; i < out.length - 1; i++){
+    const tail = out[i].body.match(/([⑴⑵⑶⑷⑸⑹⑺⑻⑼⑽])\s*$/);
+    if (tail){ out[i].body = out[i].body.slice(0, tail.index); out[i + 1].body = tail[1] + ' ' + out[i + 1].body; }
+  }
   return out.filter(b => b.body.trim());
 }
 
@@ -61,7 +67,7 @@ export function prose(text){
     const refs = [];
     const inner = body(b.body).split(/(<[^>]*>)/).map(part => { if (part.startsWith('<')) return part;
       const r = humanizeText(part); refs.push(...r.refs); return r.html; }).join('');
-    return `<p class="pb ${b.mark ? sev(b.mark) : 'plain'}">${
+    return `<p class="pb ${b.mark ? sev(b.mark) : 'plain'}${b.mark && sev(b.mark) === 'warn' ? ' note' : ''}">${
       b.mark ? `<span class="pm">${b.mark}</span>` : ''}${inner}${refsChip(refs)}</p>`; }).join('');
   return `<div class="prose">${annotate(html)}</div>`;
 }
