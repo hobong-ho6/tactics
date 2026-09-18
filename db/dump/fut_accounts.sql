@@ -1,1 +1,1 @@
-INSERT INTO fut_accounts VALUES(1,'main','PS5','FC27',NULL,'2026-09-18');
+INSERT INTO fut_accounts VALUES(1,'main','PS5','FC27','2026-09-19 fut.gg GG Club 조회: 활성 스쿼드 「Hobong」 4-2-3-1 · fut.gg 계산 케미 33/33 — 우리 케미 계산기 결과와 일치(검증). 보유 47명(09-18 싱크 상태) · 케미 스타일 전원 미적용(Basic 250 / GK Basic 273)','2026-09-18');
