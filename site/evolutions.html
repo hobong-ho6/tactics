@@ -9,6 +9,8 @@
 .evo-card h3{margin:0 0 6px;font-size:15px}
 .req{display:inline-block;padding:1px 7px;border:1px solid var(--line);border-radius:6px;font-size:12px;margin:2px 2px 0 0}
 .steps{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start;margin-top:8px}
+.evo-dumb{margin:8px 0 2px;max-width:440px}
+.evo-dumb svg{display:block;max-width:100%;height:auto}
 .step{border:1px solid var(--line);border-radius:8px;padding:8px;min-width:150px;font-size:12px;background:rgba(255,255,255,.02)}
 .step img{width:72px;display:block;margin-bottom:4px}
 .step.best{border-color:var(--ok)}
@@ -66,6 +68,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <section data-tab="cat" style="display:none">
   <div class="panel"><h2>지금 열린 진화 <small class="dim" id="catn"></small></h2>
     <div class="menubar" id="catteam"></div>
+    <div id="catviz" class="mviz" style="grid-template-columns:1fr;margin:0 0 12px"></div>
     <div class="evo-grid" id="cat"></div>
     <p class="dim" style="font-size:12px;margin-top:8px">「적용 가능」은 <b>우리 DB 선수 중</b> fut.gg가 이 진화를 포함한 경로를 열어 준 선수다.
     <span class="chip" style="border-color:var(--ok);color:var(--ok)">녹색</span>=처방 역할이 결과 카드에서 Role++ ·
@@ -81,8 +84,11 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
+import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
+// 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
+const vizW = (el, cap, pad = 26) => Math.min(cap, Math.max(320, (el?.clientWidth || (document.body.clientWidth - 68)) - pad));
 
 const { idx } = await mountHeader('evolutions.html');
 const [EVO, CARDS, K26, ...TEAMS] = await Promise.all([
@@ -166,6 +172,7 @@ function pathHTML(p, i){
       ${p.rs ? scoreChip(p.rs) : ''}
       <small class="dim">${esc(costText(p))} · ${why}</small></summary>
     ${p.upgrades ? `<div class="dim" style="font-size:12px;margin-top:4px">${esc(Object.entries(J(p.upgrades, {})).map(([k, v]) => `${k} +${v}`).join(' · '))}</div>` : ''}
+    <div class="evo-dumb">${sixDumbbell(J(p.six_before, {}), J(p.six_after, {}), { W: 420, gk: /GK/.test(String(p.path && p.path[0] && p.path[0].position) || '') })}</div>
     ${stepsHTML(p)}
     <div style="margin-top:4px">${String(p.evolution_urls || '').split('\n').filter(Boolean).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>`).join(' ')}</div>
   </details>`;
@@ -248,6 +255,11 @@ function renderCatalog(team = CAT_TEAM){
       ${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>` : ''}
     </div>`;
   }).join('');
+  // 마감 타임라인 — 진화는 기간제라 「언제까지」가 1차 정보다(카드 그리드는 상세, 이 그림은 전체 조망)
+  const cv = document.getElementById('catviz');
+  cv.innerHTML = `<div class="vz"><h4>마감 타임라인 <span class="dim">— 막대 = 남은 기간 · 회색 = 이 계정에서 소진</span></h4>${
+    deadlineChart(cat, { W: vizW(cv, 900), consumed: CONSUMED })}</div>`;
+  evoTips(cv);
   document.getElementById('cat').querySelectorAll('button[data-p]').forEach(b => b.addEventListener('click', () => {
     document.querySelector('.menubar [data-tab="paths"]').click(); renderPaths(TEAM_OF[b.dataset.p] || 'ALL', +b.dataset.p);
   }));
@@ -266,6 +278,7 @@ function renderPaths(team, focusPid){
         <a href="player.html" style="font-size:12px">선수 화면 →</a></div>
       ${rows.map(pathHTML).join('')}</div>`;
   }).join('') || '<span class="dim">이 팀에 열린 진화 경로가 없다.</span>';
+  evoTips(document.getElementById('paths'));
   if (focusPid) document.getElementById(`pp${focusPid}`)?.scrollIntoView({ block: 'start' });
 }
 
@@ -321,7 +334,10 @@ function renderTactic(team = TAC_TEAM){
     return { sl, pres, pid, base, bestCard, path, reach, alts, prio, price: bestCard?.price ?? null };
   }).sort((a, b) => a.prio - b.prio || (a.price ?? 9e9) - (b.price ?? 9e9) || a.sl.pos.localeCompare(b.sl.pos));
   let total = 0, priced = 0;
-  document.getElementById('tac').innerHTML = rows.map((r, i) => {
+  // 슬롯 준비도 한 줄 요약 — 11칸이 곧 상태다(아래 목록은 상세·근거)
+  const rd = readiness(rows.map(r => ({ pos: r.sl.pos, name: r.pres?.label ?? (r.pid != null ? NAME_OF[r.pid] : null), reach: r.reach, price: r.price })),
+                       { W: vizW(document.getElementById('tac'), 900, 8) });
+  document.getElementById('tac').innerHTML = `<div class="vzcard" style="display:block;margin:0 0 12px">${rd}</div>` + rows.map((r, i) => {
     if (r.price != null){ total += r.price; priced++; }
     const c = r.bestCard?.c;
     const why = r.prio === 1 ? '기본 카드가 처방 역할 Role++ — 즉시 구매' : r.prio === 2
@@ -339,6 +355,7 @@ function renderTactic(team = TAC_TEAM){
       ${r.alts.length ? `<div style="font-size:12px;margin-top:4px"><b>대안(우리 DB)</b> ${r.alts.map(a => `<span class="req${a.tier === 2 ? '' : ''}" style="${a.tier === 2 ? 'border-color:var(--ok)' : 'border-color:var(--warn)'}">${esc(NAME_OF[a.p])} ${a.ct ? `카드 Role${a.ct === 2 ? '++' : '+'}` : `진화→Role${a.bp.tier === 2 ? '++' : '+'}`} · ${fmtPrice(a.price)}</span>`).join(' ')}</div>` : ''}
     </div>`;
   }).join('') + `<div class="kv" style="margin-top:8px"><b>합계</b> ${priced ? `${total.toLocaleString()} 코인 (${priced}/${rows.length} 슬롯 시세 있음)` : '<span class="dim">시세 미형성 — 시장이 열리면 합계가 생긴다</span>'}</div>`;
+  evoTips(document.getElementById('tac'));
 }
 
 /* ── 내 구단 ── */
