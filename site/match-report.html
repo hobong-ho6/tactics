@@ -12,14 +12,16 @@
 </div>
 <div id="empty" class="panel dim" hidden>이 팀에는 완료된 경기 분석 리포트가 아직 없습니다.</div>
 <main id="report" hidden>
-  <div class="panel" id="summary"></div>
-  <div id="viz"></div>
+  <!-- 히트맵은 위 선택 막대(히트맵·출전자 범위)가 직접 조작하는 대상이라 **바로 아래**에 둔다
+       (2026-09-19 사용자 지시 「히트맵과 메뉴가 너무 멀어졌음」 — 종전엔 요약·타임라인 뒤였다). -->
   <div class="grid2 match-overview">
     <section class="panel"><h2>실제 경기 히트맵 <small class="dim">선택한 경기만 사용</small></h2>
       <canvas class="pitch" id="matchPitch" width="640" height="860"></canvas>
       <div id="pitchCaption" class="kv"></div></section>
     <section class="panel"><h2>팀 전체 스탯</h2><div class="scrollx"><table id="teamStats"></table></div></section>
   </div>
+  <div class="panel" id="summary"></div>
+  <div id="viz"></div>
   <div class="panel" id="overall" hidden></div>
   <div class="panel" id="gamePreset"></div>
   <div class="panel"><h2>선수별 히트맵·역할·전체 스탯</h2>
