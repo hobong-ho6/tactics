@@ -500,18 +500,45 @@ function renderCard(sel, g0, g26, g27, isGkRow){
     : '<span class="dim">보유 PlayStyle 없음</span>';
   /* ⭐ 대표 카드 (2026-09-18, 사용자 지시 「카드가 여러 개면 다 보여주고 그 중 대표 카드를 고를 수 있게」).
      기본값: 내 구단 보유 카드 → 기본 카드. 선택은 브라우저(localStorage)에 남는다 — DB 사실이 아니라 보기 설정이다. */
-  const cards = (sel.pid != null ? (CARDS[String(sel.pid)] || []) : []).filter(c => c.game_version === 'FC27');
+  let cards = (sel.pid != null ? (CARDS[String(sel.pid)] || []) : []).filter(c => c.game_version === 'FC27');
   const repKey = `repcard:${sel.pid}`;
-  const ownedItem = (EVO.club?.players || []).find(p => p.player_id === sel.pid && p.status === 'owned')?.ea_item_id;
-  const rep = cards.find(c => String(c.item_id) === localStorage.getItem(repKey)) || cards.find(c => c.item_id === ownedItem) || cards.find(c => c.is_base) || null;
+  const club = (EVO.club?.players || []).find(p => p.player_id === sel.pid && p.status === 'owned');
+  const ownedItem = club?.ea_item_id;
+  /* ⭐ 진화 카드 (2026-09-18, 사용자 질문 「카드를 진화하면 선수 메뉴에 진화 카드도 노출되고 기본 카드를 선택할 수 있는 거지?」)
+     내 구단 원장(fut_club_players 현재 스탯 + fut_evolution_log)에서 만드는 **가상 카드** — 발매 아이템이 아니라 내 계정의 상태다.
+     이미지는 fut.gg 경로의 결과 카드(path_json 해당 단계)에서, 없으면 원본 카드 이미지. 진화 1회 이상이면 기본 대표 카드가 된다. */
+  let evoCard = null;
+  if (club && club.evo_count > 0){
+    const logs = (EVO.club?.log || []).filter(l => l.club_player_id === club.id)
+      .sort((a, b) => String(a.applied_at).localeCompare(String(b.applied_at)) || a.id - b.id);
+    const applied = logs.map(l => l.evo_id);
+    const src = cards.find(c => c.item_id === ownedItem) || cards.find(c => c.is_base) || {};
+    let six = {}; try { six = JSON.parse(club.current_six || '{}'); } catch(e){}
+    const K = isGkRow ? ['DIV','HAN','KIC','REF','SPD','POS'] : ['PAC','SHO','PAS','DRI','DEF','PHY'];
+    const v = (i, alt) => six[K[i]] ?? six[alt] ?? null;
+    let img = null;
+    for (const r of (EVO.paths?.[String(sel.pid)] || [])){
+      let ids = []; try { ids = JSON.parse(r.evolution_ids || '[]'); } catch(e){}
+      if (ids.length >= applied.length && applied.every((id, i) => ids[i] === id)){
+        let path = []; try { path = JSON.parse(r.path_json || '[]'); } catch(e){}
+        img = path[applied.length]?.card_image_url || null; if (img) break;
+      }
+    }
+    evoCard = { item_id: `evo:${club.id}`, is_base: 0, rarity_name: `진화 ${club.evo_count}회`, evo: true,
+      ovr: club.current_ovr, pac: v(0,'PAC'), sho: v(1,'SHO'), pas: v(2,'PAS'), dri: v(3,'DRI'), def: v(4,'DEF'), phy: v(5,'PHY'),
+      best_pos: src.best_pos, positions: src.positions, playstyles: club.current_playstyles ?? src.playstyles,
+      card_image_url: img || src.card_image_url, released_at: logs.at(-1)?.applied_at, evo_names: logs.map(l => l.evo_name) };
+    cards = [evoCard, ...cards];
+  }
+  const rep = cards.find(c => String(c.item_id) === localStorage.getItem(repKey)) || evoCard || cards.find(c => c.item_id === ownedItem) || cards.find(c => c.is_base) || null;
   const disp = rep ? { ...gg, ovr: rep.ovr, pac: rep.pac, sho: rep.sho, pas: rep.pas, dri: rep.dri, def: rep.def, phy: rep.phy,
                        best_pos: rep.best_pos, positions: rep.positions, playstyles: rep.playstyles, card_image_url: rep.card_image_url,
-                       roster_date: rep.released_at, _label: rep.is_base ? '기본 카드' : (rep.rarity_name || '특별 카드') } : gg;
+                       roster_date: rep.released_at, _label: rep.evo ? `내 구단 진화 카드 · ${rep.evo_names.join(' → ')}` : rep.is_base ? '기본 카드' : (rep.rarity_name || '특별 카드') } : gg;
   const stylesR = String(disp.playstyles ?? '').split(/[;,]/).map(s=>s.trim()).filter(Boolean);
   const chipsR = stylesR.length ? stylesR.map(pschip).join('') : '<span class="dim">보유 PlayStyle 없음</span>';
   const strip = cards.length > 1 ? `<div class="kv" style="margin-top:8px;gap:8px"><small class="dim">카드 ${cards.length}장 — 대표 카드 선택:</small>${cards.map(c =>
       `<button class="cardpick${c === rep ? ' on' : ''}" data-item="${c.item_id}" title="${esc(c.is_base ? '기본' : c.rarity_name || '특별')} · ${esc(c.released_at || '')}">
-         ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="">` : ''}<span>${c.ovr} <small>${esc(c.is_base ? '기본' : c.rarity_name || '특별')}</small>${c.item_id === ownedItem ? ' ★' : ''}</span></button>`).join('')}</div>` : '';
+         ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="">` : ''}<span>${c.ovr} <small>${esc(c.is_base ? '기본' : c.rarity_name || '특별')}</small>${c.evo || c.item_id === ownedItem ? ' ★' : ''}</span></button>`).join('')}</div>` : '';
   const img = disp.card_image_url
     ? `<img src="${esc(disp.card_image_url)}" alt="${esc(sel.name)} ${g27 ? 'FC27' : 'FC26'} 카드" class="futcard-img" loading="lazy">`
     : '';
