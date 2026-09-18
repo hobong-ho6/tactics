@@ -153,15 +153,8 @@
 
 - **09-17~18 ⑲~㉒**(`36ea37e`…`23c4429`, migration 034~039) — 진화·내 구단·시세·라벨·전술 히스토리(상세는 현재 상태). ⭐ fut.gg 진화 API는 `paths/v2/{baseEaId}`(특별 카드 id 404 · 카탈로그 API 없음 — 응답 내장 객체 사용) ·
   가격 API 403 · GG Club = EA 승인 파트너 경로. ⛔ 서브에이전트 전사 헤더 순서(「제목 - 채널」)가 인덱서를 속였다 — 규약은 「채널 — 제목 (게시일, 길이, 메모)」.
-- **09-11~12 ⑼·⑾**(`2205d24`…`4108bba` · `0aa7c79`·`1c6241b`, obs#616) — FC27 4팀 전량 수집 + FC25·FC26 **출시판 시계열**.
-  ⭐ fut.gg 벌크 API `/api/fut/players/v2/27/?club_id=N` + `/all-versions/{eaId}`.
-  ⛔ **동일성 사고**: 리스 제임스 행이 **로렌 제임스(첼시 위민)** 카드로 오염 — 이름 검색은 남녀를 섞는다, **EA id·gender로 특정**할 것.
-- **09-11 ⑩**(`f4bb1cc`) — ⛔⛔ 신규 발견으로 오인한 영상이 D+1에 이미 반영돼 있었다(결번 #614) —
-  **새 발견을 DB에 쓰기 전 `git log -- <파일>`로 기존 반영 여부부터 확인할 것.**
-- **09-08~10 ⑹·⑺·⑻**(`1aeefa2`…`c970189`, obs#531~535·538·567·587) — 인게임 캡처 1차(Remote Play) · A/B 3·4·5 · 시뮬 1 ·
-  `core/team_settings.py` 규칙화 → **G15** · `cells_poss/def`·`def_x` · `reproduction_limits` 12행.
-  ⭐ **T1↔T2 = 「RM 맥긴 wideplm/Attack → widemid/Support」 단일 변수 실험**, 자기진영 5.9%→38.9%(obs#537).
-  ⭐ **obs#702**(시뮬은 프레스티지가 가른다 — 승점으로 전술 비교 금지)가 여기서 나왔다.
+- **09-08~12 ⑹~⑾**(`1aeefa2`…`4108bba`, obs#531~616) — 인게임 캡처 1차·A/B 3~5·시뮬 1 · `core/team_settings.py`→**G15** · `cells_poss/def`·`def_x` · FC27 4팀 전량 + FC25/26 **출시판 시계열**(fut.gg `?club_id=N`·`/all-versions/{eaId}`).
+  ⭐ **obs#702** 시뮬은 프레스티지가 가른다(승점으로 전술 비교 금지) · ⛔ 동일성 사고: 리스 제임스↔로렌 제임스 — **EA id·gender로 특정** · ⛔ 새 발견을 쓰기 전 `git log -- <파일>`로 기존 반영 확인(결번 #614).
 - ⏰ 그 이전 이력은 `git log`와 `observations`에서 조회한다.
 
 ## 진행 중 작업 (WIP)
@@ -248,13 +241,9 @@
    **35속성은 완비사카·음바예 2명**(obs#364).
 ## 데이터 수집 상태와 결손
 
-- 대량 수집: `collect_fotmob_players.py` · `collect_understat_shots.py` · `collect_event.py`(이벤트 축).
-- ⭐ **읽기 전용 진단·감사**(전부 **진단만** 한다 — 판단은 사람이): `check_fit_drift.py` · `check_side_bimodality.py` ·
-  `check_height_bimodality.py` · **`audit_measured_samples.py`**(09-15 신설 — 「포지션-순수」 선언 검증, `[표본판정]` 표식 존중) ·
-  `db_diff.py`(**NOT NULL→NULL 전이를 따로 센다** — FK 검사는 「값이 조용히 지워졌다」를 못 잡는다).
-  회귀 테스트 `test_g13/g14/g8x_g15_regression.py`(결함 합성 주입).
-- ⭐ **채움 전용 스크립트**(사람 손을 덮지 않는다): `backfill_pos_class.py`(09-15 신설) · `index_transcripts.py`(report_id) ·
-  `refresh_duty_applied.py`(`--force-note`) · `write_video_summary.py`(`--force`/`--force-claims`).
+- 스크립트 층: **대량 수집** `collect_fotmob_players.py`·`collect_understat_shots.py`·`collect_event.py`·fut.gg 계열(`collect_futgg_{history,cards,evolutions,prices}.py`) ·
+  **읽기 전용 진단**(판단은 사람) `check_fit_drift.py`·`check_side_bimodality.py`·`check_height_bimodality.py`·`audit_measured_samples.py`(`[표본판정]` 존중)·`db_diff.py`(NOT NULL→NULL 전이) · 회귀 `test_g13/g14/g8x_g15_regression.py` ·
+  **채움 전용**(사람 손을 덮지 않음) `backfill_pos_class.py`·`index_transcripts.py`·`refresh_duty_applied.py`·`write_video_summary.py` · **원장 쓰기** `fut_club.py`·`tactic_changes.py`.
 - ⛔⛔ **검색엔진 연도 혼입 주의.** 같은 상대·같은 달·유사 스코어의 전년도 경기는 발행일을 반드시 확인한다.
   ⭐ **엔진 요약 자체가 오염되는 유형**도 있다(과거 시즌 사건을 현재 확정 사실로 제시) — **엔진 요약은 근거로 채택 불가, 개별 URL 실물 확인만.**
   ⚠️ **verbatim 인용은 요약 경유 시 열화된다.** 실질만 채택하고 인용문은 원문 확보 전까지 쓰지 않는다.
