@@ -93,6 +93,9 @@ def cmd_evolve(con, a):
     if ovr_after is None:
         sys.exit("⛔ 적용 후 OVR을 알 수 없다 — 이 선수·진화의 path_json이 없으니 --ovr-after/--six-after를 직접 넘길 것")
     src = ("player_evolutions.path_json (fut.gg 계산 결과 카드)" if after else "사용자 입력값")
+    # ⭐ --in-progress: 「시작했다」는 사실만 남긴다(2026-09-19). 진화는 챌린지·훈련이 남으면 **스탯이 아직 안 올라간다** —
+    #    완료 전에 current_* 를 올리면 화면이 없는 능력치를 보여준다. 소진·다음 추천 계산에는 포함된다(카드가 그 경로에 묶였으므로).
+    #    완료되면 `complete` 서브커맨드로 그때 스탯을 반영한다.
     con.execute("""INSERT INTO fut_evolution_log(club_player_id, evo_id, evo_name, level, applied_at, completed_at,
                      ovr_before, ovr_after, six_before, six_after, playstyles_after, roles_plus_after, roles_plus_plus_after,
                      source, confidence, notes) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
@@ -102,6 +105,11 @@ def cmd_evolve(con, a):
                  json.dumps((after or {}).get("roles_plus_plus")) if after else None,
                  f"scripts/fut_club.py evolve ({TODAY} 기록) · 적용 후 값 출처: {src}",
                  "MEASURED(사용자 행위) — 적용 사실은 사용자 보고. 적용 후 스탯은 " + src + ".", a.note))
+    if getattr(a, "in_progress", False):
+        con.execute("UPDATE fut_club_players SET evo_count=evo_count+1, updated=? WHERE id=?", (TODAY, cp["id"]))
+        print(f"진화 시작 기록: {cp['name']} ← {evo_name} (lv{a.level}) · 완주 시 OVR {cp['current_ovr']} → {ovr_after} "
+              f"· 스탯은 **완료 시** 반영(`complete` 커맨드) · 시작일 {a.date}")
+        return
     con.execute("""UPDATE fut_club_players SET current_ovr=?, current_six=?, current_playstyles=COALESCE(?, current_playstyles),
                      current_roles_plus=COALESCE(?, current_roles_plus), current_roles_plus_plus=COALESCE(?, current_roles_plus_plus),
                      evo_count=evo_count+1, updated=? WHERE id=?""",
@@ -110,6 +118,25 @@ def cmd_evolve(con, a):
                  json.dumps(after["roles_plus"]) if after else None, json.dumps(after["roles_plus_plus"]) if after else None,
                  TODAY, cp["id"]))
     print(f"진화 기록: {cp['name']} ← {evo_name} (lv{a.level}) OVR {cp['current_ovr']} → {ovr_after} · 적용일 {a.date}")
+
+
+def cmd_complete(con, a):
+    """진행 중이던 진화를 완료 처리 — 그때 비로소 current_* 를 로그의 after 값으로 올린다."""
+    acc = account(con, a.account)
+    cp = club_player(con, acc["id"], a.player)
+    log = con.execute("""SELECT * FROM fut_evolution_log WHERE club_player_id=? AND completed_at IS NULL
+                         AND (?=0 OR evo_id=?) ORDER BY applied_at, id LIMIT 1""",
+                      (cp["id"], 1 if a.evo else 0, a.evo or 0)).fetchone()
+    if not log:
+        raise SystemExit(f"⛔ {cp['name']}에게 진행 중인 진화가 없다")
+    con.execute("UPDATE fut_evolution_log SET completed_at=? WHERE id=?", (a.date, log["id"]))
+    con.execute("""UPDATE fut_club_players SET current_ovr=?, current_six=COALESCE(?, current_six),
+                     current_playstyles=COALESCE(?, current_playstyles), current_roles_plus=COALESCE(?, current_roles_plus),
+                     current_roles_plus_plus=COALESCE(?, current_roles_plus_plus), updated=? WHERE id=?""",
+                (a.ovr_after or log["ovr_after"], a.six_after or log["six_after"],
+                 ", ".join(json.loads(log["playstyles_after"])) if log["playstyles_after"] else None,
+                 log["roles_plus_after"], log["roles_plus_plus_after"], TODAY, cp["id"]))
+    print(f"진화 완료: {cp['name']} ← {log['evo_name']} · OVR {log['ovr_before']} → {a.ovr_after or log['ovr_after']} · 완료일 {a.date}")
 
 
 def cmd_player_set(con, a):
@@ -143,9 +170,10 @@ def cmd_import(con, a):
 def run(con, cmd, **kw):
     """serve.py 쓰기 API용 진입점 — CLI와 같은 함수를 같은 규약으로 실행한다(발명 금지·출처 기록 동일)."""
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
-                    level=1, date=TODAY, completed=None, note=None, ovr_after=None, six_after=None, status=None, op="add")
+                    level=1, date=TODAY, completed=None, note=None, ovr_after=None, six_after=None, status=None, op="add",
+                    in_progress=False, evo=None)
     a = argparse.Namespace(**{**defaults, **kw})
-    fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve}[cmd]
+    fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete}[cmd]
     fn(con, a)
 
 
@@ -169,6 +197,10 @@ def main():
     s.add_argument("--evo", type=int, required=True); s.add_argument("--level", type=int, default=1)
     s.add_argument("--date", default=TODAY); s.add_argument("--completed"); s.add_argument("--note")
     s.add_argument("--ovr-after", type=int); s.add_argument("--six-after", help='JSON {"PAC":..}')
+    s.add_argument("--in-progress", action="store_true", help="시작만 기록(챌린지·훈련이 남아 스탯은 아직 안 올랐다)")
+    s = sub.add_parser("complete"); s.add_argument("--account", required=True); s.add_argument("--player", required=True)
+    s.add_argument("--evo", type=int); s.add_argument("--date", default=TODAY)
+    s.add_argument("--ovr-after", type=int); s.add_argument("--six-after")
     s = sub.add_parser("player-set"); s.add_argument("--account", required=True); s.add_argument("--player", required=True)
     s.add_argument("--status", choices=["owned", "sold", "discarded"]); s.add_argument("--notes")
     s = sub.add_parser("import"); s.add_argument("path"); s.add_argument("--account", required=True)
@@ -178,7 +210,7 @@ def main():
     con = sqlite3.connect(DB); con.row_factory = sqlite3.Row
     con.execute("PRAGMA foreign_keys=ON")
     {"account": cmd_account, "player": cmd_player_add, "player-set": cmd_player_set, "evolve": cmd_evolve,
-     "import": cmd_import, "list": cmd_list}[a.cmd](con, a)
+     "complete": cmd_complete, "import": cmd_import, "list": cmd_list}[a.cmd](con, a)
     con.commit()
     if a.cmd != "list":
         print("다음: python3 scripts/export.py && scripts/db_dump.sh")

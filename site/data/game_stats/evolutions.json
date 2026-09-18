@@ -348,7 +348,44 @@
     "platform": "PS5"
    }
   ],
-  "log": [],
+  "log": [
+   {
+    "applied_at": "2026-09-19",
+    "attrs_delta": null,
+    "club_player_id": 25,
+    "completed_at": null,
+    "evo_id": 2488,
+    "evo_name": "Intro to Pathway Evolutions",
+    "id": 1,
+    "level": 1,
+    "notes": "추천 경로 1단계(→ Repeat Delivery로 이어짐) · 챌린지 1개 남음",
+    "ovr_after": 70,
+    "ovr_before": 70,
+    "playstyles_after": "[\"Inventive\"]",
+    "roles_plus_after": "[]",
+    "roles_plus_plus_after": "[]",
+    "six_after": "{\"PAC\": 76, \"SHO\": 65, \"PAS\": 65, \"DRI\": 73, \"DEF\": 34, \"PHY\": 60}",
+    "six_before": "{\"PAC\": 76, \"SHO\": 65, \"PAS\": 65, \"DRI\": 73, \"DEF\": 34, \"PHY\": 60}"
+   },
+   {
+    "applied_at": "2026-09-19",
+    "attrs_delta": null,
+    "club_player_id": 30,
+    "completed_at": null,
+    "evo_id": 2494,
+    "evo_name": "Striker Glow Up [SP 7]",
+    "id": 2,
+    "level": 1,
+    "notes": "추천 1순위 Striker Glow Up [SP 7] · 4레벨 진행",
+    "ovr_after": 75,
+    "ovr_before": 65,
+    "playstyles_after": "[\"Game Changer\"]",
+    "roles_plus_after": "[44]",
+    "roles_plus_plus_after": "[]",
+    "six_after": "{\"PAC\": 77, \"SHO\": 79, \"PAS\": 56, \"DRI\": 69, \"DEF\": 22, \"PHY\": 77}",
+    "six_before": "{\"PAC\": 70, \"SHO\": 65, \"PAS\": 50, \"DRI\": 58, \"DEF\": 22, \"PHY\": 74}"
+   }
+  ],
   "players": [
    {
     "account_id": 1,
@@ -378,7 +415,7 @@
     "current_roles_plus_plus": "[]",
     "current_six": "{\"PAC\": 76, \"SHO\": 65, \"PAS\": 65, \"DRI\": 73, \"DEF\": 34, \"PHY\": 60}",
     "ea_item_id": 82968,
-    "evo_count": 0,
+    "evo_count": 1,
     "id": 25,
     "name": "Alysson",
     "notes": "gg-club 2568732-943018729983 · 70 RM (2026-09-19 싱크 · 입수일 미상)",
@@ -864,7 +901,7 @@
     "current_roles_plus_plus": "[]",
     "current_six": "{\"PAC\": 70, \"SHO\": 65, \"PAS\": 50, \"DRI\": 58, \"DEF\": 22, \"PHY\": 74}",
     "ea_item_id": 80652,
-    "evo_count": 0,
+    "evo_count": 1,
     "id": 30,
     "name": "Madjo",
     "notes": "gg-club 2568732-943063496880 · 65 ST (2026-09-19 싱크 · 입수일 미상)",

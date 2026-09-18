@@ -398,6 +398,8 @@ function renderClub(){
       <div class="kv">${card?.card_image_url ? `<img class="futcard-img" src="${esc(card.card_image_url)}" alt="" style="width:56px">` : ''}
         <b style="font-size:15px">${esc(p.name)}</b> <span class="badge${p.status === 'owned' ? ' hi' : ''}">${esc(p.status)}</span>
         <span class="chip">OVR ${p.current_ovr ?? '—'}</span> <span class="chip">진화 ${p.evo_count}회</span>
+        ${(EVO.club?.log || []).some(l => l.club_player_id === p.id && !l.completed_at)
+          ? `<span class="badge mid" title="챌린지·훈련이 남아 스탯은 아직 오르지 않았다">진행 중 ${(EVO.club.log.filter(l => l.club_player_id === p.id && !l.completed_at).map(l => l.evo_name).join(', '))}</span>` : ''}
         ${card ? `<small class="dim">${esc(card.rarity_name || (card.is_base ? '기본' : ''))} · ${esc(card.best_pos || '')}</small>` : ''}
         <small class="dim">입수 ${esc(p.acquired || '—')} ${esc(p.acquired_how || '')}</small>
         <span>처방: ${presLabel(PRES[p.player_id])}</span></div>
@@ -449,6 +451,7 @@ function renderClub(){
 
   document.getElementById('log').innerHTML = logs.map(l => { const p = owned.find(x => x.id === l.club_player_id);
     return `<li><b>${esc(l.applied_at)}</b> ${esc(p?.name || '')} ← ${esc(l.evo_name)} <span class="chip">OVR ${l.ovr_before ?? '—'}→${l.ovr_after ?? '—'}</span>
+      ${l.completed_at ? `<span class="badge hi">완료 ${esc(l.completed_at)}</span>` : '<span class="badge mid">진행 중 — 완주 시 반영</span>'}
       ${l.playstyles_after ? `<small class="dim">PS ${esc(J(l.playstyles_after, []).join(', '))}</small>` : ''} ${l.notes ? `<small class="dim">— ${esc(l.notes)}</small>` : ''}</li>`; }).join('')
     || '<li class="dim">기록 없음</li>';
 }
