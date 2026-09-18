@@ -45,3 +45,5 @@ INSERT INTO fut_club_players VALUES(44,1,NULL,72248,'Rossi',NULL,'GG Club 싱크
 INSERT INTO fut_club_players VALUES(45,1,NULL,86022,'Socarrás',NULL,'GG Club 싱크','owned',NULL,NULL,NULL,NULL,NULL,0,'gg-club 2568732-942911118734 · 57 RB (2026-09-19 싱크 · 입수일 미상)','2026-09-19');
 INSERT INTO fut_club_players VALUES(46,1,NULL,83961,'Kong Bae Hyeon',NULL,'GG Club 싱크','owned',NULL,NULL,NULL,NULL,NULL,0,'gg-club 2568732-942911118761 · 57 CB (2026-09-19 싱크 · 입수일 미상)','2026-09-19');
 INSERT INTO fut_club_players VALUES(47,1,NULL,71628,'Akpan',NULL,'GG Club 싱크','owned',NULL,NULL,NULL,NULL,NULL,0,'gg-club 2568732-942911975574 · 52 LB (2026-09-19 싱크 · 입수일 미상)','2026-09-19');
+INSERT INTO fut_club_players VALUES(48,1,90,229880,'완비사카',NULL,'GG Club 외 신규(사용자 보고)','owned',78,'{"PAC": 79, "SHO": 51, "PAS": 68, "DRI": 73, "DEF": 76, "PHY": 73}','Block, Intercept, Anticipate, Rapid, Slide Tackle+','[]','[]',1,NULL,'2026-09-19');
+INSERT INTO fut_club_players VALUES(49,1,78,259584,'루제리',NULL,'GG Club 외 신규(사용자 보고)','owned',78,'{"PAC": 78, "SHO": 61, "PAS": 74, "DRI": 71, "DEF": 73, "PHY": 75}','Whipped Pass','[]','[]',1,NULL,'2026-09-19');
