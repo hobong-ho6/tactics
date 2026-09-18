@@ -247,7 +247,7 @@ GROUP BY r.team_code, p.id HAVING 경기후 >= 3 ORDER BY 경기후 DESC;
 ```
 
 ## 5. 완료 절차 (매 실행)
-`python3 scripts/refresh_eval_samples.py --apply`(**T1 — 4-1절**) → `python3 scripts/export.py` → `scripts/db_dump.sh` →
+`python3 scripts/refresh_eval_samples.py --apply`(**T1 — 4-1절**) → **슬롯 정본·팀 설정·선발 처방을 바꿨으면** `python3 scripts/tactic_changes.py --reason "obs#… 사유"`(**G19가 막는다** — 리포트 「전술 갱신 히스토리」의 원천, 2026-09-18) → `python3 scripts/export.py` → `scripts/db_dump.sh` →
 `git add db/tactics.db db/dump/ site/data/ reports/match-watch/ && git commit -m "data(match-watch): <라운드 요약>" && git push`
 ⭐ **`manager_profiles` 갱신 판정 필수**(2026-09-08 신설): 완료 리포트마다 영향받은 axis(formation·pressing·buildup·situational·
 rest_defense·set_pieces·role_demands·implementation)에 **덧붙임**(`content || '\n\n[날짜 …]'`, `updated` 갱신)하거나,

@@ -5,6 +5,7 @@
    글리프 색은 폰트가 정하므로(⭐⚠️⛔는 color가 듣지 않는다) 심각도는 블록 왼쪽 띠로 표시한다. */
 
 import { annotate } from './glossary.js';
+import { humanizeText, refsChip } from './labels.js';   // 코드값·내부 참조 → 읽는 말 (2026-09-18)
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g,
   c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -55,8 +56,12 @@ export function prose(text){
   const src = String(text ?? '').trim();
   if (!src) return '';
   const chunks = esc(src).split(/\s*\|\s*|\n+/).filter(x => x.trim());
-  const html = chunks.flatMap(split).map(b =>
-    `<p class="pb ${b.mark ? sev(b.mark) : 'plain'}">${
-      b.mark ? `<span class="pm">${b.mark}</span>` : ''}${body(b.body)}</p>`).join('');
+  const html = chunks.flatMap(split).map(b => {
+    // 태그(<b>·칩)를 건너뛰고 텍스트만 변환 — 내부 참조(obs#·docs/…)는 빼서 블록 끝에 「참조」로 모은다
+    const refs = [];
+    const inner = body(b.body).split(/(<[^>]*>)/).map(part => { if (part.startsWith('<')) return part;
+      const r = humanizeText(part); refs.push(...r.refs); return r.html; }).join('');
+    return `<p class="pb ${b.mark ? sev(b.mark) : 'plain'}">${
+      b.mark ? `<span class="pm">${b.mark}</span>` : ''}${inner}${refsChip(refs)}</p>`; }).join('');
   return `<div class="prose">${annotate(html)}</div>`;
 }

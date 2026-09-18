@@ -20,6 +20,14 @@
 > `fc_role_familiarity_map` 98행(fut.gg roles `plusEaId/plusPlusEaId`)으로 FC27 Role+/++를 해석한다 — **FC27 `game_roles` 커널은 여전히 없다**(obs#629).
 > 부수: 코번트리전(report 43) **영상 14편 전사·인덱싱·귀속 완료(총 17편)**.
 >
+> **2026-09-18 KST ㉑** · ✅ **리포트 「전술 갱신 히스토리」 + 읽기용 라벨 층**(`e9484f4`·이번 커밋, migration 039).
+> 사용자 질문 「개별 경기를 분석하면서 시즌 전술이 업데이트되고 있는 거지?」에 대한 답을 화면에 박았다: 시즌 전술은 **설정 층 3개**(슬롯 정본·팀 설정·선발 처방 — 실제로 바뀌면 `tactic_change_log`)와
+> **서사 층**(manager_profiles — 경기 분석이 `[날짜 경기]` 문단을 덧붙여 결론을 **유지·보강·한정**)으로 갈린다. 리포트 상단에 최종 갱신일·층별 갱신일, 「전술 갱신 히스토리」(설정 변경 ↔ 경기 반영 필터), 프로필 표는 결론/경기 반영 분리.
+> ⭐ `core/tactic_state.py`(설정 층 키→값 정본) · `scripts/tactic_changes.py`(git 이력 61커밋 196행 backfill · 이후 `--reason`) · **G19**(로그 없는 설정 변경은 export 실패) — match-watch §5에 단계 추가.
+> ⭐ **읽기용 라벨 층 `site/assets/labels.js`**(사용자 지시 「코드값·클로드용 주석이 많다 — 사용자가 읽기 쉽게」): 역할/포커스 코드→한글, 컬럼명→읽는 말, 구현 주장 field/value 슬러그→문장, 판정 영문→한글,
+> 내부 참조(obs#·docs/·migration·G17·scripts/·커밋)는 본문에서 빼서 블록 끝 「참조:」로 모은다. `prose.js`가 블록마다 적용하므로 duties·평가·프로필·claims 전부 해당. 원문은 hover(title) · 「원문 코드 표기로」 토글(localStorage `reader_raw`).
+> ⛔ DB 텍스트는 그대로다(불변규칙 2) — 변환은 화면에서만. 사전에 없는 슬러그는 밑줄→띄어쓰기 폴백. 새 field/value 슬러그를 만들면 `FIELD_KR/VALUE_KR`에 같이 넣을 것.
+>
 > **2026-09-18 KST ⑳** · ✅ **코번트리전(report 43) 유튜브 전수 14편 반영** — 요약·key_points 14 · `video_impl_claims` 21(REJECTED 2·HELD 3·PENDING 6·NA 1·none 9) · obs#825~829 · `player_duties` 245(음바예 HELD) · `manager_profiles` rotation·set_pieces 덧붙임 · 리포트 「D+1 추적 보강」 절.
 > ⭐⭐ **obs#825 — 「완비사카 하이브리드 백3」(UTV·1874 독립 2소스) 기각**: 실측 avg_y 14.69 → 툴x 85.3(터치라인). 전진 억제(avg_x 41 < LB 47)는 정합 ⇒ 억제형 풀백 유지, 「내재화」는 좌표가 부정. **2소스 일치가 실측을 이기지 않는다**(불변규칙 3) — 두 채널 모두 평균위치 그래픽의 좌우축을 깊이로 오독한 것으로 판단.
 > ⭐ obs#826 — 음바예 새 판정 후보 **「선발 게이트 = 원정 수비 부담」**(3티어 단일) · 에메리 1차 인용 「his speed」 · 1874 「우측 폭 유지 지시」(실측 툴x 72.4 = 방향 정합·정도 중간). 검증 지점: **토트넘 원정 우측 선택(음바예/알리송)**.
@@ -286,6 +294,9 @@ ATM 3-4-2-1 슬롯 확정 · FC27 09-18 얼리액세스.
   (`atleticodemadrid.com`은 403). 결손과 0을 구분한다(`docs/30`).
 
 ## 고정 작업 규칙
+
+- ⭐ **설정 층(슬롯 정본·팀 설정·선발 처방)을 바꾸면 같은 회차에 `python3 scripts/tactic_changes.py --reason "obs#… 사유"`** — G19가 막는다(2026-09-18). 서사 층(manager_profiles)은 `[YYYY-MM-DD 경기] …` 덧붙임이 곧 히스토리다.
+- ⭐ 화면 문구는 **읽는 사람 기준**이다 — 역할 코드·컬럼명·obs#를 그대로 쓰지 말고 `labels.js`(roleLabel·claimLabel·humanize)를 통과시킨다. 새 슬러그는 사전에 등재.
 
 1. 시작 시 `git status --short`. 로컬 변경이 있으면 fetch/pull하지 말고 내용부터 확인한다. 깨끗할 때만 `git fetch && git pull --rebase origin main`.
 2. 다른 PC/세션 변경을 버리거나 덮지 않는다. 특히 `db/tactics.db`는 충돌 시 기계 병합 금지.

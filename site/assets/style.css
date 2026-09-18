@@ -237,3 +237,9 @@ details.match-players>summary,details.report-source>summary{color:var(--acc);cur
 .cardpick{display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:3px 8px 3px 3px;cursor:pointer;font-size:12px}
 .cardpick img{width:28px;display:block}
 .cardpick.on{border-color:var(--acc);color:var(--acc)}
+
+/* 읽기용 라벨(labels.js) — 원문 코드는 hover */
+.hz{border-bottom:1px dotted rgba(255,255,255,.28);cursor:help}
+.refs-inline{display:block;margin-top:3px;color:var(--dim);font-size:11px;opacity:.8}
+.rawtoggle{font-size:11px;padding:2px 8px;margin-left:auto;background:none;border:1px solid var(--line);color:var(--dim);border-radius:8px;cursor:pointer}
+details.claimnote summary{list-style:none} details.claimnote summary::-webkit-details-marker{display:none}

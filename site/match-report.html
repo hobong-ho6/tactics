@@ -36,6 +36,7 @@ import { mountHeader, loadTeam, isGkSlot } from './assets/data.js?v=20260816-gk-
 import { decodeMap } from './assets/kernel.js?v=20260825-decodemap-null';
 import { drawPitch, drawComposite, drawChip } from './assets/pitch.js?v=20260825-decodemap-null';
 import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
+import { roleLabel, focusLabel, claimLabel, humanize, VERDICT_KR, AXIS_KR, mountRawToggle } from './assets/labels.js?v=20260918';
 import { prose } from './assets/prose.js';
 
 const { team } = await mountHeader('match-report.html');
@@ -242,7 +243,7 @@ function renderVideos(r){
       ${v.summary ? `<div class="vidsum">${prose(v.summary)}</div>` : ''}
       ${v.key_points.length ? `<ul class="vidpoints">${v.key_points.map(x => `<li>${annotate(bold(esc(x)))}</li>`).join('')}</ul>` : ''}
       ${v.obs_points.length ? `<details class="refs"><summary>관찰 기록 ${v.obs_points.length}건 — 이 영상이 근거로 인용된 원장</summary>
-        ${v.obs_points.map(o => `<div class="kv" style="margin-top:6px"><b>obs#${o.id}</b> <span class="dim">${esc(o.scope)}</span></div>${prose(o.claim)}`).join('')}</details>` : ''}
+        ${v.obs_points.map(o => `<div class="kv" style="margin-top:6px"><b>관측 기록 #${o.id}</b> <span class="dim">${esc(o.scope)}</span></div>${prose(o.claim)}`).join('')}</details>` : ''}
       ${claimsHtml(v)}
       ${!v.summary ? `<p class="dim" style="font-size:12px;margin:6px 0 0">⏰ 요약 미작성 — 전사는 확보돼 있다(<code>${esc(v.transcript_path)}</code>).</p>` : ''}
     </article>`).join('');
@@ -251,12 +252,12 @@ function renderVideos(r){
    ⛔ 요약 산문에서 추출하지 않는다 — `video_impl_claims` 행을 그대로 그린다.
    ⭐ axis='none'(읽었고 주장 없음)과 빈 배열(아직 미작성)을 다르게 보여준다. */
 const VERDICT_CLS = { APPLIED:'hi', REJECTED:'', HELD:'mid', PENDING:'mid', NA:'' };
-const AXIS_KR = { role:'역할', focus:'포커스', team_axis:'팀 설정', instruction:'인스트럭션', limit:'재현 한계', none:'주장 없음' };
+/* 코드값은 읽는 말로(labels.js) — 원문은 hover(title)에 남는다 */
 function claimTarget(c){
-  if (c.axis === 'role')  return `${esc(c.player ?? '?')} → <code>${esc(c.role_id)}</code>${c.focus ? '/' + esc(c.focus) : ''}`;
-  if (c.axis === 'focus') return `${esc(c.player ?? '?')} → 포커스 <code>${esc(c.focus)}</code>`;
+  if (c.axis === 'role')  return `${esc(c.player ?? '?')} → ${roleLabel(c.role_id, c.focus)}`;
+  if (c.axis === 'focus') return `${esc(c.player ?? '?')} → 포커스 ${focusLabel(c.focus)}`;
   if (c.axis === 'none')  return '<span class="dim">전사를 읽었고 구현에 닿는 주장이 없다</span>';
-  return `${c.team_code ? esc(c.team_code) + ' ' : ''}${c.player ? esc(c.player) + ' ' : ''}<code>${esc(c.field)}</code>${c.value ? ' = ' + esc(c.value) : ''}`;
+  return `${c.team_code ? esc(c.team_code) + ' ' : ''}${c.player ? esc(c.player) + ' ' : ''}${claimLabel(c.field, c.value)}`;
 }
 function claimsHtml(v){
   const cs = v.impl_claims ?? [];
@@ -265,14 +266,14 @@ function claimsHtml(v){
       ? '<p class="dim" style="font-size:12px;margin:6px 0 0">⏰ 구현 주장 미작성 — 요약은 있으나 어느 축을 건드리는지 아직 정형화되지 않았다(G17이 건수로 보고).</p>'
       : '';
   }
-  return `<div class="vidclaims"><div class="kv" style="margin-bottom:4px"><b>구현 주장 ${cs.length}건</b>
-      <small class="dim">— 실측이 침묵하는 축은 전술 분석이 결정한다(docs/30 7단계)</small></div>`
+  return `<div class="vidclaims"><div class="kv" style="margin-bottom:4px"><b>이 영상이 게임 구현에 말하는 것 ${cs.length}건</b>
+      <small class="dim">— 실측(히트맵·커널)이 판정하지 못하는 축은 영상·회견이 결정한다</small></div>`
     + cs.map(c => `<div class="vidclaim">
-        <span class="badge ${VERDICT_CLS[c.verdict] ?? ''}">${esc(c.verdict)}</span>
+        <span class="badge ${VERDICT_CLS[c.verdict] ?? ''}" title="${esc(c.verdict)}">${esc(VERDICT_KR[c.verdict] ?? c.verdict)}</span>
         <span class="claimaxis">${esc(AXIS_KR[c.axis] ?? c.axis)}</span>
         <span class="claimtgt">${claimTarget(c)}</span>
         ${c.quote ? `<div class="claimquote">${annotate(bold(esc(c.quote)))}</div>` : ''}
-        ${c.verdict_note ? `<div class="claimnote">${annotate(bold(esc(c.verdict_note)))}</div>` : ''}
+        ${c.verdict_note ? `<details class="claimnote"><summary style="cursor:pointer;font-size:12px;color:var(--dim)">판정 메모 — 왜 이 판정인가</summary>${annotate(humanize(bold(esc(c.verdict_note))))}</details>` : ''}
       </div>`).join('') + '</div>';
 }
 function render(r){
