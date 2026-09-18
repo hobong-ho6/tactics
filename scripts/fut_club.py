@@ -88,6 +88,14 @@ def cmd_evolve(con, a):
     if evo_name is None:
         r = con.execute("SELECT name FROM fc_evolutions WHERE evo_id=? ORDER BY pulled DESC", (a.evo,)).fetchone()
         evo_name = r["name"] if r else f"evo#{a.evo}"
+    # ⛔ 경로는 **기본 카드 기준**이다 — 이미 다른 진화를 밟은 카드에 그대로 쓰면 OVR이 거꾸로 내려간다
+    #    (2026-09-19 실측: 마조 75 → 66). 경로의 출발 OVR이 현재와 다르면 값을 받아 쓰지 않는다.
+    if after and cp["current_ovr"] is not None:
+        base_ovr = json.loads(pe["path_json"])[0].get("ovr") if pe["path_json"] else None
+        if base_ovr is not None and base_ovr != cp["current_ovr"]:
+            print(f"⚠️ 경로 기준 카드 OVR {base_ovr} ≠ 현재 {cp['current_ovr']} — 이미 진화를 밟은 카드다. "
+                  f"경로 값을 버리고 --ovr-after/--six-after를 쓴다.")
+            after = None
     ovr_after = a.ovr_after or (after or {}).get("ovr")
     six_after = a.six_after or (json.dumps(after["six"]) if after else None)
     if ovr_after is None:
