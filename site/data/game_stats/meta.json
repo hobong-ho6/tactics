@@ -242,6 +242,20 @@
    "value": "4~6"
   },
   {
+   "alternatives": "기본(Default) = 게임 언어를 따라감 · 임페리얼(Imperial) = 피트/야드",
+   "category": "visual",
+   "confidence": "MEDIUM — 설정 위치·효과는 일치 확인. FC27에서 버그 재발 여부는 미확인",
+   "game_version": "FC27",
+   "item": "측정 시스템 (Measurement System)",
+   "kind": "setting",
+   "priority": 2,
+   "pulled": "2026-09-19",
+   "rationale": "표시 전용 설정이라 플레이 물리에는 영향이 없다. 다만 **우리 분석 파이프라인이 전부 미터법**이다 — 선수 키 cm, SofaScore·FotMob 슛 거리 m. 임페리얼로 두면 게임이 야드로 읽어줘 실측(m)과 비교할 때 1yd=0.914m만큼(약 9%) 어긋난 채로 눈대중하게 된다. ⚠️ 재시작하면 미터법이 안 먹고 임페리얼로 보이는 버그 보고가 FC26에서 다수 있었다(임페리얼↔미터법 토글로 갱신). 매 세션 카드 화면의 키 표기(cm)로 확인할 것.",
+   "scope": "general",
+   "source": "EA Forums FC26 측정 시스템 버그 스레드 13003689·12995584 · magicgameworld FC26 imperial/metric 가이드 (2026-09-19 조회)",
+   "value": "미터법(Metric)"
+  },
+  {
    "alternatives": null,
    "category": "control",
    "confidence": "MEDIUM — 출시 2일차 커뮤니티 합의. EA 1차(딥다이브)로 뒷받침되는 항목만 HIGH에 가깝다. ⚠️ 가이드끼리 갈리는 항목은 alternatives에 적었다.",

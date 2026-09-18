@@ -658,6 +658,10 @@ function renderCardVersions(sel, isGkRow){
     : [['pac','PAC'],['sho','SHO'],['pas','PAS'],['dri','DRI'],['def','DEF'],['phy','PHY']];
   const tier = v => v == null ? '' : v >= 75 ? 'var(--ok)' : v >= 60 ? 'var(--warn)' : 'var(--bad)';
   const base = rows.find(r => r.is_base);
+  /* 획득 방법 — fut.gg 목록 API의 SBC/목표 플래그에서 온다. 값이 없으면 「미조회」로 적는다(팩으로 단정하지 않는다). */
+  const HOW = { SBC: 'SBC로 획득', Objective: '목표(Objectives)로 획득', 'Pack/Market': '팩·이적시장' };
+  const NEWDAYS = 14;
+  const isNew = r => r.released_at && (Date.now() - Date.parse(r.released_at)) / 864e5 <= NEWDAYS;
   const card = r => {
     const d = base && !r.is_base && r.ovr != null && base.ovr != null ? r.ovr - base.ovr : null;
     return `<div class="cardver">
@@ -666,8 +670,10 @@ function renderCardVersions(sel, isGkRow){
         <div class="kv"><b style="color:${tier(r.ovr)};font-size:18px">${r.ovr ?? '—'}</b>
           <span>${esc(r.best_pos ?? '')}</span>
           <span class="badge${r.is_base ? '' : ' hi'}">${r.is_base ? '기본' : esc(r.rarity_name ?? '특별')}</span>
+          ${isNew(r) ? '<span class="chip" style="border-color:var(--viz-us);color:var(--viz-us)">NEW</span>' : ''}
           ${d != null && d !== 0 ? `<span class="chip" style="border-color:var(--ok);color:var(--ok)">기본 대비 ${d > 0 ? '+' : ''}${d}</span>` : ''}
           <small class="dim">${esc(r.released_at ?? '')}</small></div>
+        <div class="dim" style="font-size:12px">${HOW[r.acquisition] ?? '획득 방법 미조회'}</div>
         <div class="gc-six">${SIX.map(([k, L]) => `<span><em>${statTip(L)}</em>${r[k] ?? '—'}</span>`).join('')}</div>
         <div class="dim" style="font-size:12px">${[
           r.skill_moves && `스킬 ${r.skill_moves}★`, r.weak_foot && `약발 ${r.weak_foot}★`,
@@ -678,6 +684,7 @@ function renderCardVersions(sel, isGkRow){
   };
   const promo = rows.filter(r => !r.is_base);
   el.innerHTML = `<div class="kv" style="margin-bottom:6px"><b>${rows.length}장</b>
+      ${rows.some(isNew) ? `<span class="chip" style="border-color:var(--viz-us);color:var(--viz-us)">최근 ${NEWDAYS}일 신규 ${rows.filter(isNew).length}장</span>` : ''}
       <small class="dim">— 기본 ${rows.length - promo.length} · 특별 ${promo.length}${
         promo.length ? '' : ' (이 선수는 아직 없음 — 09-15 FC27 사전 드롭에서 10명만 받았다)'}</small></div>
     <div class="cardvers">${rows.map(card).join('')}</div>`;

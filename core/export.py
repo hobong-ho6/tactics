@@ -122,7 +122,8 @@ def export_all(db_path=None, window="2026-summer"):
     for r in _rows(con, """SELECT player_id, game_version, ea_item_id, is_base, rarity_name, released_at,
                                   ovr, pac, sho, pas, dri, def, phy, positions, best_pos, playstyles,
                                   skill_moves, weak_foot, accelerate, card_image_url, futgg_url,
-                                  roles_plus, roles_plus_plus, ea_item_id AS item_id
+                                  roles_plus, roles_plus_plus, ea_item_id AS item_id,
+                                  acquisition, is_special, first_seen
                            FROM player_card_items WHERE player_id IS NOT NULL
                            ORDER BY player_id, game_version DESC, ovr DESC, released_at DESC"""):
         cards.setdefault(str(r.pop("player_id")), []).append(r)

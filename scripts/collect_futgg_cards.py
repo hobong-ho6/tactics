@@ -88,6 +88,17 @@ def main():
             unresolved.append((r["kr"], r["en"], list(hit.values())[:4]))
     if unresolved:
         print("  ⚠️ 검색 폴백 미해결(유일 일치 아님):", unresolved)
+    if not a.team:      # 팀 한정 실행이 아니면 **내 구단 보유분**도 함께 본다(2026-09-19 사용자 지시)
+        for r in con.execute("""SELECT DISTINCT c.base_ea_id, COALESCE(c.name_kr, f.name) kr, c.player_id
+                                FROM fut_club_players f JOIN player_card_items c ON c.ea_item_id=f.ea_item_id
+                                WHERE f.status='owned' AND c.base_ea_id IS NOT NULL"""):
+            targets.setdefault(r["base_ea_id"], (r["player_id"], r["kr"]))
+        # 우리 카드 표에 없는 보유 선수는 **아이템 id를 base 후보로** 넣는다 — 대부분 base 카드다.
+        # ⚠️ 특별 카드면 all-versions 응답의 basePlayerEaId가 달라 기존 mismatch 가드가 걸러낸다(적재하지 않고 보고).
+        for r in con.execute("""SELECT f.ea_item_id, f.name FROM fut_club_players f
+                                WHERE f.status='owned' AND f.ea_item_id IS NOT NULL
+                                  AND f.ea_item_id NOT IN (SELECT ea_item_id FROM player_card_items)"""):
+            targets.setdefault(r["ea_item_id"], (None, r["name"]))
     print(f"대상 {len(targets)}명 · 게임 {a.games}")
 
     cur = con.cursor()
@@ -128,6 +139,7 @@ def main():
                 card_image_url=("https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/" + it["cardImagePath"])
                                if it.get("cardImagePath") else None,
                 futgg_url=it.get("url"),
+                acquisition=None, is_special=None, first_seen=a.pulled,   # 획득 경로·특별카드 여부는 아래 목록 API에서 채운다
                 source=f"fut.gg /api/fut/players/v2/all-versions/{ea}/ ({a.pulled} 수집, collect_futgg_cards.py)",
                 confidence="HIGH — EA 확정 아이템 정의. ⛔ Role+/++는 카탈로그 미공개라 raw id 목록이다(docs/21 ②).",
             ))
@@ -145,13 +157,36 @@ def main():
                 continue
             m = meta.get(r["ea_item_id"], {})
             r["rarity_name"] = m.get("rarityName")
+            # ⭐ 획득 경로 — SBC/목표가 아니면 팩·이적시장이다(2026-09-19).
+            #    ⚠️ 목록 API 응답이 없는 아이템은 NULL로 남긴다 — 「미조회」와 「팩」을 구분해야 한다.
+            if r["ea_item_id"] in meta:
+                r["acquisition"] = "SBC" if m.get("isSbc") else "Objective" if m.get("isObjective") else "Pack/Market"
+                r["is_special"] = 1 if m.get("isSpecial") else 0
             r["club"] = (m.get("club") or {}).get("name")
             r["card_image_url"] = m.get("cardImageUrl") or r["card_image_url"]
 
+    known = {x[0] for x in con.execute("SELECT ea_item_id FROM player_card_items WHERE game_version IN (%s)"
+                                       % ",".join(f"'FC{g}'" for g in a.games))}
+    fresh = [r for r in rows if r["ea_item_id"] not in known]
+    # ⭐ 「처음 본 카드」와 「새로 나온 카드」는 다르다 — 대상 명단을 넓히면 옛 카드도 처음 보인다.
+    #    알림은 **발매일 기준 14일 이내**만 신규 발매로 올리고, 나머지는 수집 확장으로 따로 적는다.
+    cutoff = (dt.date.fromisoformat(a.pulled) - dt.timedelta(days=14)).isoformat()
+    released = [r for r in fresh if (r["released_at"] or "")[:10] >= cutoff]
+    backfill = [r for r in fresh if r not in released]
     promo = [r for r in rows if not r["is_base"]]
     print(f"\n수집 {len(rows)}장 (base {len(rows)-len(promo)} · 프로모 {len(promo)})")
     for r in sorted(promo, key=lambda x: (-x["ovr"] or 0)):
         print(f"  {r['game_version']} {r['name_kr']:<14} OVR {r['ovr']:<3} {r['rarity_name'] or '?':<32} {r['released_at']}")
+    HOW = {"SBC": "SBC(스쿼드 빌딩 챌린지)", "Objective": "목표(Objectives)", "Pack/Market": "팩 또는 이적시장"}
+    if released:
+        print(f"\n⭐ 신규 발매 카드 {len(released)}장 (발매 {cutoff} 이후):")
+        for r in sorted(released, key=lambda x: -(x["ovr"] or 0)):
+            print(f"   {r['name_kr']:<14} OVR {r['ovr']:<3} {r['rarity_name'] or '?':<26} "
+                  f"{HOW.get(r['acquisition'], '획득 경로 미조회')} · 발매 {r['released_at']}")
+    else:
+        print("\n신규 발매 카드 없음(이번 회차)")
+    if backfill:
+        print(f"수집 범위 확장으로 처음 담긴 기존 카드 {len(backfill)}장 — 알림 대상 아님")
     if mismatch:
         print("⛔ basePlayerEaId 불일치 — 적재하지 않음(카드 URL 오염 의심):")
         for m in mismatch:
@@ -160,7 +195,12 @@ def main():
         return
 
     cols = list(rows[0]) if rows else []
-    sql = ("INSERT INTO player_card_items(%s) VALUES(%s) ON CONFLICT(game_version, ea_item_id) DO UPDATE SET card_image_url=COALESCE(player_card_items.card_image_url, excluded.card_image_url)"
+    # 채움 전용 upsert — 이미 있는 값은 덮지 않고 **빈 칸만** 메운다(사람 손·이전 수집을 덮지 않는다).
+    sql = ("INSERT INTO player_card_items(%s) VALUES(%s) ON CONFLICT(game_version, ea_item_id) DO UPDATE SET "
+           "card_image_url=COALESCE(player_card_items.card_image_url, excluded.card_image_url), "
+           "acquisition=COALESCE(excluded.acquisition, player_card_items.acquisition), "
+           "is_special=COALESCE(excluded.is_special, player_card_items.is_special), "
+           "first_seen=COALESCE(player_card_items.first_seen, excluded.first_seen)"
            % (",".join("def" if c == "def_" else c for c in cols), ",".join(f":{c}" for c in cols)))
     before = con.execute("SELECT COUNT(*) FROM player_card_items").fetchone()[0]
     for r in rows:
