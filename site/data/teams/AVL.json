@@ -90507,6 +90507,18 @@
    "tactic_code": "4YQEnEbi&YS4"
   },
   {
+   "build_up_style": "Balanced",
+   "confidence": "HIGH — fut.gg 전술 화면 판독(역할·포커스·코드 전 항목). 적합 수치는 우리 가중(MEDIUM)",
+   "defensive_approach": "Balanced",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "kind": "ingame:user-2026-09-19",
+   "line_height": 50,
+   "rationale": "사용자가 실제 인게임에 입력한 전술(2026-09-19, fut.gg GG Club 전술 화면에서 판독 — 「Default Tactic · Balanced • Balanced (50)」).\n11칸: GK 스즈키 볼 플레잉 키퍼/Build-Up · RB 완비사카 윙백/Balanced · RCB 린델뢰프 볼 플레잉 센터백/Aggressive ·\nLCB 파우 토레스 볼 플레잉 센터백/Build-Up · LB 루제리 윙백/Balanced · RDM 카마라 홀딩/Defend ·\nLDM 고레츠카 딥라잉 플레이메이커/Roaming · RM 맥긴 와이드 플레이메이커/Attack · LM 음바예 인사이드 포워드/Attack ·\nCAM 만잠비 플레이메이커/Roaming · ST 잭슨 어드밴스드 포워드/Versatile.\n⭐ 내 제안 대비: 라인 50 채택 · LDM DLP 채택 · ST Versatile 채택. 좌우 교체 대신 **역할을 바꿔** 해결했다\n(맥긴 와이드 플레이메이커 82.1 = 그의 최적, 음바예 인사이드 포워드 79.9 = 최적 윙어 81.8과 1.9 차이) — 구조를 지키면서 적합을 올린 선택이다.\n평균 적합 78.6. 남은 괴리: GK 볼 플레잉 키퍼 61.9(최적 골키퍼 75.8 · Δ13.9) · RCB 스토퍼 대비 −2.7 · RB 풀백 대비 −1.1.\n⚠️ 빌드업이 정본 Short Passing이 아니라 **Balanced**다 — 에메리 재현 축에서 재검토 대상(실측 passes_v·점유로 판정).",
+   "season": "2026-27",
+   "tactic_code": "8ZUKLGXm48ac"
+  },
+  {
    "build_up_style": "Short Passing",
    "confidence": "PROJECTED — 이적 미확정 포함(가르나초 MEDIUM-HIGH·에스투피냔 HIGH, 나머지 CONFIRMED/보유). 26/27 실측 축적 후 measured/optimal로 대체 예정. 만잠비·고메스·에스투피냔·가르나초 처방은 타클럽/대표팀 실측 기반이라 빌라 컨텍스트 재검증 필요.",
    "defensive_approach": "Balanced",
@@ -93455,6 +93467,15 @@
   }
  ],
  "tactic_changes": [
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Balanced · 수비 Balanced · 라인 50",
+   "before": null,
+   "changed_at": "2026-09-19",
+   "key": "2026-27|ingame:user-2026-09-19",
+   "layer": "team_setup",
+   "reason": "2026-09-19 사용자 인게임 전술 판독(fut.gg 전술 화면) — 코드 8ZUKLGXm48ac, 라인 50·빌드업 Balanced",
+   "source": "tactic_changes.py 2026-09-19"
+  },
   {
    "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 50",
    "before": null,
