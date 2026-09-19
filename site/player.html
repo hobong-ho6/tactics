@@ -562,7 +562,10 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       /* ⭐ 결과 카드 이미지가 없으면 **기본 아트 위에 우리 수치를 덮어 그린다**(2026-09-19 사용자 지시
          「진화 카드가 없으면 … 카드의 스탯만 고쳐서 보여줘」). fut.gg 아트는 OVR·6대 스탯이 그림에 인쇄돼 있어
          그대로 두면 진화 전 값이 보인다 — 그 자리에 현재 값을 덮고, 덮었다는 사실을 캡션에 적는다. */
-      card_image_url: img || src.card_image_url, patch_art: !img && !!src.card_image_url,
+      card_image_url: img || src.simple_card_url || src.card_image_url,
+      patch_art: !img && !!(src.simple_card_url || src.card_image_url),
+      simple_base: !img && !!src.simple_card_url,          // 심플 카드면 6대 스탯·이름을 우리가 그린다
+      name_art: sel.name,
       released_at: logs.at(-1)?.applied_at, evo_names: logs.map(l => l.evo_name) };
     cards = [evoCard, ...cards];
   }
@@ -576,37 +579,42 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       `<button class="cardpick${c === rep ? ' on' : ''}" data-item="${c.item_id}" title="${esc(c.is_base ? '기본' : c.rarity_name || '특별')} · ${esc(c.released_at || '')}">
          ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="">` : ''}<span>${c.ovr} <small>${esc(c.is_base ? '기본' : c.rarity_name || '특별')}</small>${c.evo || c.item_id === ownedItem ? ' ★' : ''}</span></button>`).join('')}</div>` : '';
   const artSix = SIX.map(([k, L]) => `<span><em>${L}</em>${disp[k] ?? '—'}</span>`).join('');
-  /* 카드 아트와 색을 맞춘다 — 덮개가 검은 박스로 뜨면 위화감이 크다(2026-09-19 사용자 지적).
-     카드 그림에서 해당 자리의 실제 배경색을 캔버스로 뽑아 덮개 배경에 쓰고, 밝기에 따라 글자색을 정한다.
-     ⚠️ CDN이 CORS를 막으면 캔버스가 오염돼 예외가 난다 — 그때는 CSS 기본값(반투명 어둠)으로 물러난다. */
-  const paintPatch = () => {
-    const box = document.querySelector('.futcard-patch'); if (!box) return;
-    const im = box.querySelector('img'); if (!im) return;
-    const run = () => {
-      try {
-        const c = document.createElement('canvas'), w = im.naturalWidth, h = im.naturalHeight;
-        if (!w) return;
-        c.width = w; c.height = h;
-        const cx = c.getContext('2d'); cx.drawImage(im, 0, 0);
-        const pick = (rx, ry) => { const d = cx.getImageData(Math.round(w * rx), Math.round(h * ry), 1, 1).data;
-          return { rgb: `rgb(${d[0]},${d[1]},${d[2]})`, lum: (d[0] * 299 + d[1] * 587 + d[2] * 114) / 1000 }; };
-        const put = (sel, rx, ry) => { const el = box.querySelector(sel); if (!el) return;
-          const p = pick(rx, ry); el.style.background = p.rgb; el.style.color = p.lum > 140 ? '#1b1b1b' : '#f2ead8';
-          el.style.textShadow = 'none'; };
-        put('.fp-ovr', 0.12, 0.20); put('.fp-pos', 0.12, 0.32); put('.fp-six', 0.5, 0.86);
-      } catch (e) { /* CORS 오염 — CSS 기본 덮개를 그대로 쓴다 */ }
-    };
-    im.crossOrigin = 'anonymous';
-    im.complete ? run() : im.addEventListener('load', run, { once: true });
-  };
+  /* ⭐ 진화 카드 (2026-09-19) — 인쇄된 수치는 **건드리지 않는다**.
+     금속 질감 아트 위에서 숫자를 지우고 다시 쓰면 확대할 때 반드시 자국이 남는다(실측으로 확인).
+     대신 fut.gg의 **「심플 카드」**(6대 스탯·이름이 인쇄돼 있지 않다, migration 049)를 바탕으로 쓰고,
+     비어 있는 하단에 **이름과 진화 후 6대 스탯을 우리가 그려 넣는다** — 덮는 게 아니라 채우는 것이라 자국이 없다.
+     좌상단 OVR은 기본 카드 값이라, 카드 밖 배지로 「진화 후 OVR」을 따로 표시한다. */
+  function repaintEvoCard(im, vals){
+    try {
+      const W = im.naturalWidth, H = im.naturalHeight; if (!W) return null;
+      const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+      const cx = cv.getContext('2d', { willReadFrequently: true }); cx.drawImage(im, 0, 0);
+      if (!vals.simple) return cv;                      // 심플 카드가 아니면 손대지 않는다
+      const px = cx.getImageData(0, Math.round(H * 0.20), W, 2).data;   // 글자색은 카드 상단 어두운 픽셀에서
+      let ink = [30, 30, 30];
+      for (let i = 0; i < px.length; i += 4){
+        if (px[i + 3] > 40 && px[i] + px[i + 1] + px[i + 2] < ink[0] + ink[1] + ink[2]) ink = [px[i], px[i + 1], px[i + 2]];
+      }
+      cx.fillStyle = `rgb(${ink[0]},${ink[1]},${ink[2]})`;
+      cx.textAlign = 'center'; cx.textBaseline = 'middle';
+      /* 심플 카드에서 엠블럼 아래 빈 띠는 한 줄(약 0.79~0.93H)뿐이다 — **숫자 한 줄만** 넣는다.
+         라벨과 이름은 옆 패널에 이미 있어 넣지 않는다(넣으면 카드 밖으로 잘린다 — 실측 확인). */
+      const lx = W * 0.10, rx = W * 0.90, cw = (rx - lx) / 6;
+      vals.six.forEach(([label, v], i) => {
+        const c = lx + cw * (i + 0.5);
+        cx.globalAlpha = .55; cx.font = `600 ${Math.round(H * 0.019)}px Arial,sans-serif`;
+        cx.fillText(label, c, H * 0.838);
+        cx.globalAlpha = 1; cx.font = `700 ${Math.round(H * 0.033)}px "DIN Alternate",Arial,sans-serif`;
+        cx.fillText(v == null ? '—' : String(v), c, H * 0.878);
+      });
+      return cv;
+    } catch (e){ return null; }
+  }
   const img = disp.card_image_url
     ? (rep?.patch_art
-        ? `<div class="futcard-patch" title="진화 후 수치를 카드 그림 위에 덮어 표시한다 — 그림 자체는 기본 카드 아트다">
-             <img src="${esc(disp.card_image_url)}" alt="${esc(sel.name)} 진화 카드(수치 덮어 표시)" loading="lazy">
-             <span class="fp-ovr">${disp.ovr ?? '—'}</span>
-             <span class="fp-pos">${esc(disp.best_pos ?? '')}</span>
-             <span class="fp-six">${artSix}</span>
-             <span class="fp-tag">진화 반영</span></div>`
+        ? `<div class="futcard-patch" title="이 진화 단계의 결과 카드 그림이 없어, 기본 카드 아트의 인쇄 수치를 현재 값으로 다시 그렸다">
+             <img src="${esc(disp.card_image_url)}" alt="${esc(sel.name)} 진화 카드" crossorigin="anonymous">
+             <span class="fp-tag">진화 후 ${disp.ovr ?? '—'}</span></div>`
         : `<img src="${esc(disp.card_image_url)}" alt="${esc(sel.name)} ${g27 ? 'FC27' : 'FC26'} 카드" class="futcard-img" loading="lazy">`)
     : '';
   el.innerHTML = `
@@ -636,7 +644,13 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       </div>
     </div>`;
   el.querySelectorAll('button.cardpick').forEach(b => b.addEventListener('click', () => { localStorage.setItem(repKey, b.dataset.item); render(); }));
-  if (rep?.patch_art) paintPatch();
+  if (rep?.patch_art){
+    const box = el.querySelector('.futcard-patch'), im = box?.querySelector('img');
+    const go = () => { const cv = repaintEvoCard(im, { ovr: disp.ovr, pos: disp.best_pos, name: rep.name_art,
+        simple: !!rep.simple_base, six: SIX.map(([k, L]) => [L, disp[k]]) });
+      if (cv){ cv.className = 'futcard-canvas'; im.replaceWith(cv); } };
+    if (im) im.complete ? go() : im.addEventListener('load', go, { once: true });
+  }
 }
 /* ── 버전별 변화 (FC25 출시 → FC26 출시 → FC26 시즌말 라이브 → FC27 출시) ──
    history.json은 player_id 키. 같은 버전·같은 kind에 로스터가 여럿이면 최신 roster_date 하나만 보인다

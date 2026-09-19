@@ -269,17 +269,8 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 @media(min-width:1100px){.mviz{grid-template-columns:1fr 1fr}.mviz .vz.wide{grid-column:1/-1}}
 .mviz .vz{display:flex;flex-direction:column;justify-content:flex-start}
 
-/* 진화 카드 — fut.gg 아트에 인쇄된 수치 위에 **현재 값을 덮어** 그린다(2026-09-19 사용자 지시).
-   ⚠️ 좌표는 FUT 카드 아트 비율(폭 기준 %)에 맞춘 값이다. 아트 레이아웃이 바뀌면 여기만 고치면 된다. */
+/* 진화 카드 — 인쇄된 수치를 캔버스에서 다시 그린다(2026-09-19). 덮개 박스는 쓰지 않는다. */
 .futcard-patch{position:relative;width:150px;flex-shrink:0;container-type:inline-size;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
-.futcard-patch img{width:100%;height:auto;display:block}
-.futcard-patch .fp-ovr,.futcard-patch .fp-pos,.futcard-patch .fp-six{position:absolute;color:#1b1b1b;
-  background:#cfc9bd;line-height:1}   /* 색은 JS가 카드 그림에서 뽑아 덮어쓴다(paintPatch) — 여기 값은 실패 시 폴백 */
-.futcard-patch .fp-ovr{left:14.5%;top:22.5%;width:25%;text-align:center;font-size:13cqw;font-weight:700;padding:5px 0 3px;border-radius:3px}
-.futcard-patch .fp-pos{left:14.5%;top:33.6%;width:25%;text-align:center;font-size:7cqw;padding:2px 0;border-radius:3px}
-.futcard-patch .fp-six{left:5%;right:5%;bottom:19.5%;display:grid;grid-template-columns:repeat(6,1fr);gap:1px;
-  padding:3px 2px;border-radius:3px;font-size:6cqw}
-.futcard-patch .fp-six span{display:flex;flex-direction:column;align-items:center;gap:1px}
-.futcard-patch .fp-six em{font-style:normal;opacity:.7;font-size:4.4cqw}
+.futcard-patch img,.futcard-patch .futcard-canvas{width:100%;height:auto;display:block}
 .futcard-patch .fp-tag{position:absolute;right:3%;top:3%;background:var(--viz-us);color:#fff;font-size:5cqw;
   padding:1px 6px;border-radius:8px;font-weight:600;opacity:.92}
