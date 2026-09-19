@@ -430,7 +430,8 @@ function styleRank(attrsJson, roleId, isGk){
     const at2 = afterStyle(at, J(s.boosts, {}) || {});
     const before = faceOf(at, isGk), after = faceOf(at2, isGk);
     return { name: s.name, score: parts.reduce((t, x) => t + x.s, 0), top: parts.slice(0, 3),
-             parts, six: before.map(([k, v], i) => [k, v, after[i][1]]) };
+             parts, boosts: J(s.boosts, {}) || {}, is_gk: s.is_gk,
+             six: before.map(([k, v], i) => [k, v, after[i][1]]) };
   }).sort((a, b) => b.score - a.score);
 }
 /* ── 케미스트리 제안 (2026-09-19, 사용자 지시 「적용할 케미스트리도 제안해줘」) ──
@@ -521,17 +522,36 @@ function chemBestXI(pool, slots){
   return best;
 }
 /* 추천 근거와 적용 후 6대 스탯을 접힘으로 보여준다 — 표가 넓어지지 않게 details로 둔다. */
+/* ⭐ 부스터 카드 (2026-09-19 사용자 지시 「각 부스터 카드 이미지와 어떤 능력치를 얼만큼 올리는지 · 항상 보일 필요는 없다」)
+   fut.gg·EA가 케미 스타일 이미지를 공개하지 않아(아이콘 폰트뿐) **우리가 그린다**:
+   이름 + 6대 스탯 변화 막대 + 올라가는 개별 속성 전체. 접힘 안에 두어 평소에는 보이지 않는다. */
+function boosterCard(x, rank){
+  if (!x) return '';
+  const six = (x.six || []).map(([k, b, a]) => {
+    const d = a - b, pct = Math.max(0, Math.min(100, a));
+    return `<div class="bc-row"><em>${k}</em>
+      <span class="bc-bar"><i style="width:${pct}%;background:${d > 0 ? 'var(--ok)' : 'var(--line)'}"></i></span>
+      <b>${b}${d > 0 ? `<span style="color:var(--ok)">→${a}</span>` : ''}</b></div>`;
+  }).join('');
+  const ups = Object.entries(x.boosts || {}).sort((a, b) => b[1] - a[1])
+    .map(([a, v]) => `<span class="bc-up">${esc(a)} <b>+${v}</b></span>`).join('');
+  return `<div class="bcard${rank ? ' alt' : ''}">
+    <div class="bc-head"><b>${esc(x.name)}</b>${rank ? `<span class="chip dim">차선 ${rank}</span>` : '<span class="chip" style="border-color:var(--ok);color:var(--ok)">추천</span>'}
+      <small class="dim">역할 점수 ${Math.round(x.score)}</small></div>
+    <div class="bc-six">${six}</div>
+    <div class="bc-ups">${ups || '<span class="dim">상승 없음</span>'}</div></div>`;
+}
 function styleDetail(st){
   if (!st || !st[0]) return '';
   const top = st[0];
-  const six = (top.six || []).map(([k, b, a]) => `${k} ${b}${a > b ? `→<b style="color:var(--ok)">${a}</b>` : ''}`).join(' · ');
   const why = (top.parts || []).slice(0, 5).map(x => `${esc(x.a)} +${x.gain}<small class="dim">×가중${(x.s / x.gain) || 0}</small>`).join(' · ');
-  const alt = st.slice(1, 3).map(x => `${esc(x.name)} ${Math.round(x.score)}`).join(' · ');
-  return `<details style="margin-top:2px"><summary class="dim" style="font-size:11px;cursor:pointer">근거·적용 후</summary>
-    <div style="font-size:11px;line-height:1.7">
-      <div><b>점수 ${Math.round(top.score)}</b> = Σ(역할 가중 × 실제 상승분) — ${why || '해당 역할 핵심 속성에 걸리는 상승 없음'}</div>
-      <div><b>적용 후 6대 스탯</b> ${six || '—'}</div>
-      <div class="dim">차선 ${alt || '—'}</div></div></details>`;
+  return `<details style="margin-top:2px"><summary class="dim" style="font-size:11px;cursor:pointer">부스터 카드·근거 보기</summary>
+    <div style="font-size:11px;line-height:1.6;margin-top:4px">
+      <div style="margin-bottom:4px"><b>점수 ${Math.round(top.score)}</b> = Σ(역할 가중 × 실제 상승분) — ${why || '해당 역할 핵심 속성에 걸리는 상승 없음'}</div>
+      <div class="bcards">${boosterCard(top, 0)}${st.slice(1, 3).map((x, i) => boosterCard(x, i + 1)).join('')}</div>
+      <div class="dim" style="margin-top:4px">막대는 <b>적용 후 값</b>(99 기준) · 초록 화살표가 실제 상승분이다.
+      개별 속성 상승은 **최대 케미(3점)** 기준이고, 2점이면 9→6·6→4·3→2, 1점이면 9→3·6→2·3→1로 줄어든다.</div>
+    </div></details>`;
 }
 function renderChem(owned, all = owned){
   const box = document.getElementById('chem'), bar = document.getElementById('chemform');
