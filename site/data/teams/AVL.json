@@ -53736,11 +53736,6 @@
   ],
   "로저스": [
    [
-    "2026-07-11",
-    6.5,
-    "FIFA World Cup"
-   ],
-   [
     "2026-07-15",
     7.1,
     "FIFA World Cup"
@@ -53783,6 +53778,11 @@
    [
     "2026-09-12",
     7.9,
+    "Premier League"
+   ],
+   [
+    "2026-09-18",
+    6.9,
     "Premier League"
    ]
   ],
@@ -53840,11 +53840,6 @@
   ],
   "마르티네스": [
    [
-    "2026-06-22",
-    6.8,
-    "FIFA World Cup"
-   ],
-   [
     "2026-06-28",
     6.6,
     "FIFA World Cup"
@@ -53887,6 +53882,11 @@
    [
     "2026-09-12",
     6.8,
+    "Premier League"
+   ],
+   [
+    "2026-09-18",
+    7.5,
     "Premier League"
    ]
   ],
@@ -80328,13 +80328,13 @@
  ],
  "player_stats": [
   {
-   "avg_rating": 7.09,
-   "dw_pg": 0.67,
+   "avg_rating": 7.1,
+   "dw_pg": 0.68,
    "ic_pg": 0.0,
-   "kp_pg": 0.08,
+   "kp_pg": 0.09,
    "label": "마르티네스",
-   "minutes": 5776,
-   "n": 67,
+   "minutes": 5866,
+   "n": 68,
    "player_id": 1,
    "pos_group": "GK",
    "tk_pg": 0.01,
@@ -80497,17 +80497,17 @@
   },
   {
    "avg_rating": 6.94,
-   "dw_pg": 3.29,
-   "ic_pg": 0.29,
-   "kp_pg": 1.65,
+   "dw_pg": 3.4,
+   "ic_pg": 0.28,
+   "kp_pg": 1.63,
    "label": "로저스",
-   "minutes": 6058,
-   "n": 82,
+   "minutes": 6148,
+   "n": 83,
    "player_id": 13,
    "pos_group": "WM",
-   "tk_pg": 0.81,
-   "xa_pg": 0.203,
-   "xg_pg": 0.25
+   "tk_pg": 0.79,
+   "xa_pg": 0.198,
+   "xg_pg": 0.254
   },
   {
    "avg_rating": 6.91,
@@ -80941,7 +80941,7 @@
    "player_id": 2,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 729731, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2029-06-30"
   },
   {
@@ -80954,7 +80954,7 @@
    "player_id": 4,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 792645, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2028-06-30"
   },
   {
@@ -80967,7 +80967,7 @@
    "player_id": 6,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 966026, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2030-06-30"
   },
   {
@@ -80980,7 +80980,7 @@
    "player_id": 7,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 258269, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2027-06-30"
   },
   {
@@ -80993,7 +80993,7 @@
    "player_id": 8,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1185748, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2029-06-30"
   },
   {
@@ -81006,7 +81006,7 @@
    "player_id": 10,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 356406, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2028-06-30"
   },
   {
@@ -81019,7 +81019,7 @@
    "player_id": 11,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1190033, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2028-06-30"
   },
   {
@@ -81032,7 +81032,7 @@
    "player_id": 12,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 816325, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2030-06-30"
   },
   {
@@ -81045,7 +81045,7 @@
    "player_id": 14,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 610184, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2027-06-30"
   },
   {
@@ -81058,7 +81058,7 @@
    "player_id": 17,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 419664, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2027-06-30"
   },
   {
@@ -81071,7 +81071,7 @@
    "player_id": 19,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 195782, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2027-06-30"
   },
   {
@@ -81084,7 +81084,7 @@
    "player_id": 21,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 215384, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2027-06-30"
   },
   {
@@ -81097,7 +81097,7 @@
    "player_id": 55,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1520063, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2030-06-30"
   },
   {
@@ -81110,7 +81110,7 @@
    "player_id": 56,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1174672, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2031-06-30"
   },
   {
@@ -81123,7 +81123,7 @@
    "player_id": 57,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1714552, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2029-06-30"
   },
   {
@@ -81136,7 +81136,7 @@
    "player_id": 58,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1203665, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2032-06-30"
   },
   {
@@ -81149,7 +81149,7 @@
    "player_id": 59,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2031-06-30"
   },
   {
@@ -81162,7 +81162,7 @@
    "player_id": 60,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 749661, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2030-06-30"
   },
   {
@@ -81175,7 +81175,7 @@
    "player_id": 61,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "2032-06-30"
   },
   {
@@ -81188,7 +81188,7 @@
    "player_id": 76,
    "pulled": "2026-08-21",
    "source": "fotmob.com/api/data (player 1197347, scripts/collect_fotmob_players.py, 2026-08-21 수집)",
-   "stale_days": 28,
+   "stale_days": 29,
    "value": "2033-06-30"
   },
   {
@@ -81201,7 +81201,7 @@
    "player_id": 86,
    "pulled": "2026-08-31",
    "source": "fotmob.com/api/data (player 1593857, scripts/collect_fotmob_players.py, 2026-08-31 수집)",
-   "stale_days": 18,
+   "stale_days": 19,
    "value": "2028-06-30"
   },
   {
@@ -81214,7 +81214,7 @@
    "player_id": 90,
    "pulled": "2026-08-21",
    "source": "fotmob.com/api/data (player 760320, scripts/collect_fotmob_players.py, 2026-08-21 수집)",
-   "stale_days": 28,
+   "stale_days": 29,
    "value": "2031-06-30"
   },
   {
@@ -81227,7 +81227,7 @@
    "player_id": 178,
    "pulled": "2026-08-31",
    "source": "fotmob.com/api/data (player 966021, scripts/collect_fotmob_players.py, 2026-08-31 수집)",
-   "stale_days": 18,
+   "stale_days": 19,
    "value": "2028-06-30"
   },
   {
@@ -81240,7 +81240,7 @@
    "player_id": 2,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 729731, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "Physical discomfort"
   },
   {
@@ -81253,7 +81253,7 @@
    "player_id": 4,
    "pulled": "2026-09-14",
    "source": "서사(AVL·D+2): 1874 매치 리액션(HtPgFuvPe6Q, 2026-09-12) [06:09] 전사 reports/transcripts/HtPgFuvPe6Q.en.md",
-   "stale_days": 4,
+   "stale_days": 5,
    "value": "Hamstring injury"
   },
   {
@@ -81266,7 +81266,7 @@
    "player_id": 6,
    "pulled": "2026-09-14",
    "source": "서사(AVL·D+2): 1874 「5 Things We Learned From Forest Defeat」(TEWTwrP1aAI, 2026-09-14) [28:21] 전사 reports/transcripts/TEWTwrP1aAI.en.md",
-   "stale_days": 4,
+   "stale_days": 5,
    "value": "Ankle injury"
   },
   {
@@ -81279,7 +81279,7 @@
    "player_id": 8,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1185748, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "Cruciate ligament injury"
   },
   {
@@ -81292,7 +81292,7 @@
    "player_id": 19,
    "pulled": "2026-09-18",
    "source": "웹 수집 2026-09-18 D+2 회차 — Read Aston Villa 2026-09-17(에메리 추가 발언) · Tanswell Bluesky 실시간 T19:51 · footballchannel.jp 2026-09-17(The Athletic 인용). obs#847",
-   "stale_days": 0,
+   "stale_days": 1,
    "value": "Back injury (하지 절뚝임 동반)"
   },
   {
@@ -81305,7 +81305,7 @@
    "player_id": 55,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1520063, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "Knee injury"
   },
   {
@@ -81318,7 +81318,7 @@
    "player_id": 56,
    "pulled": "2026-09-18",
    "source": "웹 수집 2026-09-18 D+2 회차 — Yahoo Sports 2026-09-16 「The Brazilian is experiencing some 'discomfort'」(브라질 선수가 「불편」을 겪고 있다) · 에메리 스퍼스 D-1 회견(Read Aston Villa 2026-09-17 전재). obs#840",
-   "stale_days": 0,
+   "stale_days": 1,
    "value": "Calf discomfort"
   },
   {
@@ -81331,7 +81331,7 @@
    "player_id": 60,
    "pulled": "2026-08-21",
    "source": "fotmob.com/api/data (player 749661, scripts/collect_fotmob_players.py, 2026-08-21 수집)",
-   "stale_days": 28,
+   "stale_days": 29,
    "value": "Knock"
   },
   {
@@ -81344,7 +81344,7 @@
    "player_id": 61,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "Knock"
   },
   {
@@ -81357,7 +81357,7 @@
    "player_id": 190,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 343748, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 5,
+   "stale_days": 6,
    "value": "Knee injury"
   },
   {
@@ -81370,7 +81370,7 @@
    "player_id": 56,
    "pulled": "2026-09-18",
    "source": "웹 수집 2026-09-18 D+2 회차 — Read Aston Villa 2026-09-13 「ban ends before Coventry」(코번트리전 전에 징계가 끝난다) · CL 브뤼헤전 선발 기록. obs#840 (obs#241의 열린 범위 판정을 닫는 새 스냅샷 — 기존 행은 보존)",
-   "stale_days": 0,
+   "stale_days": 1,
    "value": "Red card suspension (3 matches) — SERVED"
   }
  ],
@@ -87241,6 +87241,16 @@
   "로저스": [
    {
     "assists": 1,
+    "avg_rating": 7.73,
+    "competition": "Premier League",
+    "goals": 3,
+    "minutes": 439,
+    "n": 5,
+    "season": "2026-27",
+    "starts": 5
+   },
+   {
+    "assists": 1,
     "avg_rating": 6.65,
     "competition": "World Cup",
     "goals": 0,
@@ -87248,16 +87258,6 @@
     "n": 5,
     "season": "2026-27",
     "starts": null
-   },
-   {
-    "assists": 1,
-    "avg_rating": 7.94,
-    "competition": "Premier League",
-    "goals": 3,
-    "minutes": 349,
-    "n": 4,
-    "season": "2026-27",
-    "starts": 4
    },
    {
     "assists": 3,
@@ -87505,13 +87505,13 @@
    },
    {
     "assists": 0,
-    "avg_rating": 7.77,
+    "avg_rating": 7.7,
     "competition": "Premier League",
     "goals": 0,
-    "minutes": 270,
-    "n": 3,
+    "minutes": 360,
+    "n": 4,
     "season": "2026-27",
-    "starts": 3
+    "starts": 4
    },
    {
     "assists": 1,

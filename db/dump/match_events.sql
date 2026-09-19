@@ -876,3 +876,17 @@ INSERT INTO match_events VALUES(875,95,82,0,'o','sub',NULL,'Jens Hjertø-Dahl',N
 INSERT INTO match_events VALUES(876,95,82,0,'o','sub',NULL,'Mohamed-Ali Cho',NULL,NULL,NULL,'Mohamed Belloumi',NULL,NULL,NULL,'FotMob matchDetails?matchId=5795440 events (2026-09-18 소급)','HIGH — FotMob 공식 이벤트');
 INSERT INTO match_events VALUES(877,95,85,0,'v','sub',NULL,'Tammy Abraham',NULL,NULL,NULL,'Nicolas Jackson',NULL,NULL,NULL,'FotMob matchDetails?matchId=5795440 events (2026-09-18 소급)','HIGH — FotMob 공식 이벤트');
 INSERT INTO match_events VALUES(878,95,85,0,'v','sub',NULL,'Aaron Wan-Bissaka',NULL,NULL,NULL,'Matty Cash',NULL,NULL,NULL,'FotMob matchDetails?matchId=5795440 events (2026-09-18 소급)','HIGH — FotMob 공식 이벤트');
+INSERT INTO match_events VALUES(879,110,61,NULL,'o','goal',NULL,'Jaidon Anthony',NULL,'Jannik Schuster',NULL,NULL,0,1,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
+INSERT INTO match_events VALUES(880,110,69,NULL,'o','sub',NULL,'Mamadou Sangare',NULL,NULL,NULL,'Yehor Yarmoliuk',NULL,NULL,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
+INSERT INTO match_events VALUES(881,110,69,NULL,'o','sub',NULL,'Aaron Hickey',NULL,NULL,NULL,'Michael Kayode',NULL,NULL,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
+INSERT INTO match_events VALUES(882,110,71,NULL,'v','sub',63,'Josh Acheampong',NULL,NULL,33,'Wesley Fofana',NULL,NULL,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
+INSERT INTO match_events VALUES(883,110,71,NULL,'v','sub',95,'Geovany Quenda',NULL,NULL,67,'Danny Welbeck',NULL,NULL,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
+INSERT INTO match_events VALUES(884,110,81,NULL,'o','sub',NULL,'El Hadji Malick Diouf',NULL,NULL,NULL,'Keane Lewis-Potter',NULL,NULL,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
+INSERT INTO match_events VALUES(885,110,81,NULL,'o','sub',NULL,'Dango Ouattara',NULL,NULL,NULL,'Jaidon Anthony',NULL,NULL,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
+INSERT INTO match_events VALUES(886,110,83,NULL,'o','goal',NULL,'Igor Thiago',NULL,NULL,NULL,NULL,0,2,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
+INSERT INTO match_events VALUES(887,110,84,NULL,'o','yellow',NULL,'Igor Thiago',NULL,NULL,NULL,NULL,NULL,NULL,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
+INSERT INTO match_events VALUES(888,110,85,NULL,'o','yellow',NULL,'Mamadou Sangare',NULL,NULL,NULL,NULL,NULL,NULL,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
+INSERT INTO match_events VALUES(889,110,87,NULL,'o','sub',NULL,'Fabio Carvalho',NULL,NULL,NULL,'Mikkel Damsgaard',NULL,NULL,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
+INSERT INTO match_events VALUES(890,110,87,NULL,'v','sub',42,'Estêvão',NULL,NULL,38,'Pedro Neto',NULL,NULL,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
+INSERT INTO match_events VALUES(891,110,87,NULL,'v','sub',96,'Mahdi Nicoll-Jazuli',NULL,NULL,199,'Valentín Barco',NULL,NULL,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
+INSERT INTO match_events VALUES(892,110,94,4,'o','goal',NULL,'Fabio Carvalho',NULL,NULL,NULL,NULL,0,3,'SofaScore incident 원문 분류','SofaScore /api/v1/event/16363649/incidents','measured');
