@@ -90424,6 +90424,18 @@
   },
   {
    "build_up_style": "Short Passing",
+   "confidence": "MEDIUM — 역할 가중은 판단값(MEDIUM)이고 적합 차이가 1 이하인 칸은 유지로 처리했다. 포커스는 속성으로 검증되지 않는다",
+   "defensive_approach": "Balanced",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "kind": "fut:emery-statfit-2026-09-19",
+   "line_height": 50,
+   "rationale": "⭐ 카드 능력치 적합으로 재설정한 게임 구현안(2026-09-19 사용자 지시 「스탯 기반으로 에메리 전술 구현 역할·포커스 재설정」).\n기준: 역할 적합 = Σ(역할 가중 × 카드 속성) / Σ(가중 × 99). 정본 슬롯 역할(slot_canon_roles)과 대조해 **괴리가 큰 칸만** 바꾼다.\n[바꾼 4칸] ⑴ RM·LM 좌우 교체 — 음바예 wm_winger/Attack(81.8) · 맥긴 wm_widemid/Support(81.0).\n현 배치(맥긴 RM 77.5 · 음바예 LM 64.0)는 합계 141.5인데 교체하면 162.8이다. **구조(RM 해방·LM 뱅크)는 그대로 두고 사람만 바꾼다.**\n⑵ RCB 린델뢰프 cb_bpd → **cb_stopper/Aggressive**(78.8→81.5). 압박측 CB의 step-out 성격을 역할로 직접 표현한다.\n전개측(LCB 파우 토레스 cb_bpd/Build-Up 79.2)은 유지 — 비대칭 구조는 obs#33 그대로다.\n⑶ RB 완비사카 fb_wingback → **fb_fullback/Balanced**(77.2→78.3). 정본의 「잔류·수비 기여측」 성격과 더 맞다.\n⑷ LDM 고레츠카 dm_holding/Roaming → **dm_dlp/Roaming**(82.2→83.1). 전진 배급 가담을 역할로 옮긴다.\n[유지 7칸] GK 스즈키 gk_goalkeeper/Defend(75.8, 스위퍼 70.7보다 우위) · LB 루제리 fb_att_wb/Support(78.5 최적) ·\nLCB 파우 cb_bpd/Build-Up · RDM 카마라 dm_holding/Defend(84.4 ≈ 최적 84.8, 차이 무의미) ·\nCAM 만잠비 cam_playmaker/Roaming(79.7 ≈ 하프윙어 80.0) · ST 잭슨 st_advanced/Versatile(80.1 ≈ 포처 80.5).\n⛔ **시즌 정본(slot_canon_roles)은 건드리지 않는다** — 이건 내 구단 카드로 구현할 때의 배치안이고, 정본은 실측이 정한다.\n⚠️ 포커스는 우리 가중에 없다(속성으로 판정 불가) — EA 역할 설명과 에메리 구조 요구에서 그대로 가져왔다.",
+   "season": "2026-27",
+   "tactic_code": null
+  },
+  {
+   "build_up_style": "Short Passing",
    "confidence": "MEDIUM-HIGH — 코드·역할 구성 사용자 확정. 라인 높이 미확인.",
    "defensive_approach": "Balanced",
    "formation": "4-2-3-1 Wide",
@@ -93443,6 +93455,15 @@
   }
  ],
  "tactic_changes": [
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 50",
+   "before": null,
+   "changed_at": "2026-09-19",
+   "key": "2026-27|fut:emery-statfit-2026-09-19",
+   "layer": "team_setup",
+   "reason": "사용자 지시(2026-09-19) 「스탯 기반으로 에메리 전술 구현 역할·포커스 재설정」 — 카드 적합으로 4칸 변경(좌우 교체·RCB 스토퍼·RB 풀백·LDM DLP), 7칸 유지. 시즌 정본 불변",
+   "source": "tactic_changes.py 2026-09-19"
+  },
   {
    "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 50",
    "before": null,
