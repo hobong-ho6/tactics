@@ -562,9 +562,9 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       /* ⭐ 결과 카드 이미지가 없으면 **기본 아트 위에 우리 수치를 덮어 그린다**(2026-09-19 사용자 지시
          「진화 카드가 없으면 … 카드의 스탯만 고쳐서 보여줘」). fut.gg 아트는 OVR·6대 스탯이 그림에 인쇄돼 있어
          그대로 두면 진화 전 값이 보인다 — 그 자리에 현재 값을 덮고, 덮었다는 사실을 캡션에 적는다. */
-      card_image_url: img || src.simple_card_url || src.card_image_url,
-      patch_art: !img && !!(src.simple_card_url || src.card_image_url),
-      simple_base: !img && !!src.simple_card_url,          // 심플 카드면 6대 스탯·이름을 우리가 그린다
+      card_image_url: img || src.card_image_url,          // ⭐ 원본 전체 카드를 쓴다 — 이름·라벨 배치를 그대로 살린다
+      patch_art: !img && !!src.card_image_url,
+      simple_base: false,
       name_art: sel.name,
       released_at: logs.at(-1)?.applied_at, evo_names: logs.map(l => l.evo_name) };
     cards = [evoCard, ...cards];
@@ -589,48 +589,82 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       const W = im.naturalWidth, H = im.naturalHeight; if (!W) return null;
       const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
       const cx = cv.getContext('2d', { willReadFrequently: true }); cx.drawImage(im, 0, 0);
-      if (!vals.simple) return cv;                      // 심플 카드가 아니면 손대지 않는다
-      const px = cx.getImageData(0, Math.round(H * 0.20), W, 2).data;   // 글자색은 카드 상단 어두운 픽셀에서
-      let ink = [30, 30, 30];
-      for (let i = 0; i < px.length; i += 4){
-        if (px[i + 3] > 40 && px[i] + px[i + 1] + px[i + 2] < ink[0] + ink[1] + ink[2]) ink = [px[i], px[i + 1], px[i + 2]];
-      }
-      cx.fillStyle = `rgb(${ink[0]},${ink[1]},${ink[2]})`;
-      cx.textAlign = 'center'; cx.textBaseline = 'middle';
-      const at = (x, y) => { const d = cx.getImageData(x | 0, y | 0, 1, 1).data; return [d[0], d[1], d[2], d[3]]; };
-      /* ⭐ 원본 카드는 **엠블럼 바로 위**에 6대 스탯 줄이 있다 — 심플 카드도 같은 자리에 넣는다
-         (2026-09-19 사용자 지적 「원본 형태와 동일하게」). 엠블럼 아래 방패 끝은 좁아 6칸이 겹친다(실측). */
-      let badgeTop = null, badgeBottom = null;
-      const satRow = y => { let s2 = 0, n = 0;
-        for (let x = Math.round(W * 0.15); x < W * 0.85; x += 3){ const c = at(x, y); if (c[3] < 40) continue; n++;
-          if (Math.max(c[0], c[1], c[2]) - Math.min(c[0], c[1], c[2]) > 45) s2++; }
-        return n ? s2 / n : 0; };
-      for (let y = Math.round(H * 0.55); y < H * 0.92; y++){
-        if (satRow(y) > 0.15){ if (badgeTop == null) badgeTop = y; badgeBottom = y; }
-      }
-      if (badgeTop != null){
-        const gap = H * 0.012;
-        const valY = Math.round(badgeTop - gap - H * 0.018), labelY = Math.round(valY - H * 0.030);
-        const span = y => { let l = 0, r = W - 1;
-          while (l < W && at(l, y)[3] < 40) l++;
-          while (r > 0 && at(r, y)[3] < 40) r--;
-          return [l, r]; };
-        const [l1, r1] = span(valY), pad = (r1 - l1) * 0.05;
-        const lx = l1 + pad, rx = r1 - pad, cw = (rx - lx) / 6;
-        // 글자가 사진 위에 얹히므로 얇은 바탕을 깔아 대비를 준다 — 원본 카드도 이 자리에 띠가 있다.
-        cx.save();
-        cx.globalAlpha = .82; cx.fillStyle = '#d9d5cd';
-        cx.fillRect(lx - pad * 0.6, labelY - H * 0.022, (rx - lx) + pad * 1.2, (valY - labelY) + H * 0.040);
-        cx.restore();
-        cx.fillStyle = `rgb(${ink[0]},${ink[1]},${ink[2]})`;
-        vals.six.forEach(([label, v], i) => {
-          const c = lx + cw * (i + 0.5);
-          cx.globalAlpha = .65; cx.font = `600 ${Math.round(H * 0.021)}px Arial,sans-serif`;
-          cx.fillText(label, c, labelY);
-          cx.globalAlpha = 1; cx.font = `700 ${Math.round(H * 0.034)}px "DIN Alternate",Arial,sans-serif`;
-          cx.fillText(v == null ? '—' : String(v), c, valY);
-        });
-        cx.globalAlpha = 1;
+      const D = cx.getImageData(0, 0, W, H).data;
+      const at = (x, y) => { const i = ((y | 0) * W + (x | 0)) * 4; return [D[i], D[i + 1], D[i + 2], D[i + 3]]; };
+      const lum = c => (c[0] * 299 + c[1] * 587 + c[2] * 114) / 1000;
+      /* 글자 행 묶음 찾기 — 행 중앙값 밝기에서 크게 벗어난 픽셀을 잉크로 센다 */
+      const bandsIn = (x0, x1, y0, y1, th = 0.08) => {
+        const out = []; let cur = null;
+        for (let y = y0; y < y1; y++){
+          const vs = []; for (let x = x0; x < x1; x += 2){ const c = at(x, y); if (c[3] < 40) continue; vs.push(lum(c)); }
+          let ink = 0;
+          if (vs.length){ const st = vs.slice().sort((a, b) => a - b), bg = st[st.length >> 1];
+            ink = vs.filter(v => Math.abs(v - bg) > 45).length / vs.length; }
+          if (ink > th){ cur = cur || { a: y, b: y }; cur.b = y; }
+          else if (cur){ if (cur.b - cur.a > 2) out.push(cur); cur = null; }
+        }
+        if (cur && cur.b - cur.a > 2) out.push(cur);
+        return out;
+      };
+      /* ⭐ 지우기 — **열마다 위아래 행 색을 세로 보간**한다. 카드 판은 위에서 아래로 그라데이션이라
+         한 색으로 칠하면 네모가 보이지만, 보간하면 원래 판처럼 이어진다(2026-09-19 실측으로 방식 확정). */
+      const erase = (x0, x1, b, pad = 2) => {
+        const yA = Math.max(0, b.a - pad - 1), yB = Math.min(H - 1, b.b + pad + 1);
+        for (let x = x0; x < x1; x++){
+          const cA = at(x, yA), cB = at(x, yB);
+          if (cA[3] < 40 && cB[3] < 40) continue;
+          for (let y = b.a - pad; y <= b.b + pad; y++){
+            const t = (y - yA) / Math.max(1, yB - yA);
+            const c = [0, 1, 2].map(k => Math.round(cA[k] * (1 - t) + cB[k] * t));
+            cx.fillStyle = `rgb(${c[0]},${c[1]},${c[2]})`; cx.fillRect(x, y, 1, 1);
+          }
+        }
+      };
+      const inkColor = (x0, x1, b) => {
+        let best = null;
+        for (let y = b.a; y <= b.b; y++) for (let x = x0; x < x1; x++){
+          const c = at(x, y); if (c[3] < 40) continue;
+          const v = lum(c); if (best == null || v < best.v) best = { v, c: `rgb(${c[0]},${c[1]},${c[2]})` };
+        }
+        return best ? best.c : '#222';
+      };
+      const draw = (txt, cxx, b, weight, scale = 1) => {
+        const h = (b.b - b.a + 1) * scale;
+        cx.textAlign = 'center'; cx.textBaseline = 'middle';
+        cx.font = `${weight} ${Math.round(h * 1.05)}px "DIN Alternate","Arial Narrow",Arial,sans-serif`;
+        cx.fillText(txt, cxx, (b.a + b.b) / 2 + 1);
+      };
+      // ① 좌상단 OVR·포지션 (원본 카드 그대로의 자리)
+      const ox0 = Math.round(W * 0.12), ox1 = Math.round(W * 0.34);
+      const ob = bandsIn(ox0, ox1, Math.round(H * 0.11), Math.round(H * 0.42));
+      if (ob[0]){ const col = inkColor(ox0, ox1, ob[0]); erase(ox0, ox1, ob[0]); cx.fillStyle = col;
+                  draw(String(vals.ovr ?? '—'), (ox0 + ox1) / 2, ob[0], 700); }
+      if (ob[1] && vals.pos){ const col = inkColor(ox0, ox1, ob[1]); erase(ox0, ox1, ob[1]); cx.fillStyle = col;
+                  draw(vals.pos, (ox0 + ox1) / 2, ob[1], 600); }
+      // ② 하단 6대 스탯 — **값 줄만** 바꾼다(이름·라벨은 원본 그대로 두어 배치가 같다)
+      const sx0 = Math.round(W * 0.06), sx1 = Math.round(W * 0.94);
+      const sb = bandsIn(sx0, sx1, Math.round(H * 0.62), Math.round(H * 0.82));
+      const labelB = sb.length >= 2 ? sb[sb.length - 2] : null, valB = sb.length >= 2 ? sb[sb.length - 1] : sb[0];
+      if (valB){
+        // 라벨 줄에서 6칸의 x 중심을 읽어 값 위치를 정확히 맞춘다
+        let centers = [];
+        if (labelB){
+          const colInk = [];
+          for (let x = sx0; x < sx1; x++){
+            let ink = 0, n = 0;
+            for (let y = labelB.a; y <= labelB.b; y++){ const c = at(x, y); if (c[3] < 40) continue; n++;
+              const bgc = at(Math.max(sx0, x - 10), y); if (Math.abs(lum(c) - lum(bgc)) > 40) ink++; }
+            colInk.push(n && ink / n > 0.25);
+          }
+          let st = null;
+          colInk.forEach((v, i) => { if (v && st == null) st = i; else if (!v && st != null){
+            if (i - st > 3) centers.push(sx0 + (st + i) / 2); st = null; } });
+        }
+        if (centers.length !== 6){ const cw = (sx1 - sx0) / 6; centers = [0,1,2,3,4,5].map(i => sx0 + cw * (i + 0.5)); }
+        const col = inkColor(sx0, sx1, valB);
+        erase(sx0, sx1, valB);
+        cx.fillStyle = col;
+        vals.six.forEach(([, v], i) => draw(v == null ? '—' : String(v), centers[i], valB, 700));
       }
       return cv;
     } catch (e){ return null; }
