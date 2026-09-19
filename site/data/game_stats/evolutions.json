@@ -393,6 +393,50 @@
    "url": "https://www.fut.gg/evolutions/2492-intro-to-repeatable-evolutions/"
   }
  ],
+ "chem_meta": [
+  {
+   "alternatives": "Sentinel(이미 빠른 CB) · Backbone(빌드업 비중 큰 CB)",
+   "item": "CB 센터백",
+   "rationale": "FC26에서 Shadow가 속도 +6로 하향되고 차단력이 +3로 깎여 **Anchor의 값어치가 올라갔다**. 가이드 공통 규칙은 「카드가 실제로 모자란 축을 올려라」 — 속도가 낮은 CB에만 Shadow, 이미 빠르면 Sentinel.",
+   "source": "fifauteam FC27 chemistry styles · skycoach FC27 best styles by position · MMOPIXEL position guide (2026-09-19 조회)",
+   "value": "Shadow (느린 CB) / Anchor (균형)"
+  },
+  {
+   "alternatives": "Engine(공격 가담형) · Powerhouse(크로스·공중 경합)",
+   "item": "FB 풀백",
+   "rationale": "윙어 대인 방어에 회복 속도가 먼저다. 공격 가담이 큰 풀백은 Engine, 크로스가 무기면 Powerhouse. **Catalyst는 메타 기본값이 아니라 공격형 한정 선택지**다.",
+   "source": "skycoach FC27 · MMOPIXEL (2026-09-19 조회)",
+   "value": "Shadow / Anchor"
+  },
+  {
+   "alternatives": "Powerhouse(패스+태클) · Architect(피지컬+패스)",
+   "item": "CDM·CM 중앙",
+   "rationale": "역할이 갈린다 — 뒤를 잠그면 Anchor, 전진 배급이면 Engine·Maestro. Powerhouse는 시야·패스·스탠딩 태클을 동시에 올려 **딥라잉 플레이메이커에 잘 맞는다**.",
+   "source": "fifauteam FC27 · playhub FC26 가이드 (2026-09-19 조회)",
+   "value": "Anchor(수비형) / Engine·Maestro(배급형)"
+  },
+  {
+   "alternatives": "Hunter(느린 공격수) · Hawk(피지컬형) · Marksman(드리블형)",
+   "item": "ST 스트라이커",
+   "rationale": "이미 빠른 공격수에게 Hunter를 붙이는 건 낭비다 — 「모자란 축을 올려라」가 FC26 이후 공통 권고. 마무리가 약하면 Finisher.",
+   "source": "fifauteam FC27 · skycoach (2026-09-19 조회)",
+   "value": "Finisher"
+  },
+  {
+   "alternatives": "Catalyst(배급 겸업) · Finisher(컷인 마무리)",
+   "item": "윙어 LW/RW·LM/RM",
+   "rationale": "침투형이면 Hunter, 연계·드리블형이면 Engine. FC27 메타 예상 사용 상위권은 Hunter·Shadow·Engine·Anchor·Finisher·Hawk다.",
+   "source": "operationsports FC26 · skycoach FC27 (2026-09-19 조회)",
+   "value": "Engine / Hunter"
+  },
+  {
+   "alternatives": "Wall(다이빙+킥) · Shield(반사+킥)",
+   "item": "GK 골키퍼",
+   "rationale": "세이브 축을 어디에 둘지의 문제다. 발밑 배급을 쓰는 골키퍼면 킥이 붙는 Wall·Shield도 후보.",
+   "source": "fifauteam FC27 chemistry styles (2026-09-19 조회)",
+   "value": "Glove(핸들링·다이빙) / Cat(반응·포지셔닝)"
+  }
+ ],
  "chem_styles": [
   {
    "boosts": "{\"질주 속도\": 3, \"공격 위치 선정\": 3, \"슈팅력\": 3, \"페널티킥\": 3, \"시야\": 3, \"짧은 패스\": 3, \"긴 패스\": 3, \"커브\": 3, \"민첩성\": 3, \"볼컨트롤\": 3, \"드리블\": 3, \"침착\": 3, \"수비 위치 선정\": 3, \"스탠딩 태클\": 3, \"슬라이딩 태클\": 3, \"힘\": 3}",

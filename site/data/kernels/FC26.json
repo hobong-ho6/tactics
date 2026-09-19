@@ -1114,12 +1114,22 @@
    "weight": 3
   },
   {
+   "attr": "가속",
+   "role_id": "cb_bpd",
+   "weight": 2
+  },
+  {
    "attr": "스탠딩 태클",
    "role_id": "cb_bpd",
    "weight": 2
   },
   {
    "attr": "시야",
+   "role_id": "cb_bpd",
+   "weight": 2
+  },
+  {
+   "attr": "질주 속도",
    "role_id": "cb_bpd",
    "weight": 2
   },
@@ -1154,7 +1164,17 @@
    "weight": 3
   },
   {
+   "attr": "가속",
+   "role_id": "cb_defender",
+   "weight": 2
+  },
+  {
    "attr": "점프",
+   "role_id": "cb_defender",
+   "weight": 2
+  },
+  {
+   "attr": "질주 속도",
    "role_id": "cb_defender",
    "weight": 2
   },

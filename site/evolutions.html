@@ -383,6 +383,12 @@ const say = (el, r) => { el.innerHTML = `<div class="msg ${r.ok ? 'ok' : 'err'}"
    ⚠️ 부스트는 **개인 케미 3점**일 때 값이다(1~2점이면 줄어든다) — 위 케미 XI에서 3점인 선수에게 붙일 것.
    처방 역할이 없는 선수(우리 DB 밖)는 포지션 기본 역할로 계산하고 화면에 그렇게 적는다. */
 const CHEM_STYLES = EVO.chem_styles || [];
+/* 메타 관습 대조층(2026-09-19, 사용자 요청) — 우리 가중 계산과 **다른 기준**을 나란히 둔다.
+   커뮤니티 가이드 합의이지 EA 권장이 아니다. 갈리면 그 선수만 들여다보면 된다. */
+const CHEM_META = EVO.chem_meta || [];
+const META_KEY = { GK: 'GK', CB: 'CB', LB: 'FB', RB: 'FB', CDM: 'CDM', CM: 'CDM', CAM: 'CDM',
+                   LM: '윙어', RM: '윙어', LW: '윙어', RW: '윙어', ST: 'ST' };
+const metaFor = slot => CHEM_META.find(m => m.item.startsWith(META_KEY[slot] || '')) || null;
 const POS_ROLE = { GK: 'gk_goalkeeper', CB: 'cb_defender', LB: 'fb_fullback', RB: 'fb_fullback',
                    CDM: 'dm_holding', CM: 'cm_b2b', CAM: 'cam_playmaker', LM: 'wm_widemid', RM: 'wm_widemid',
                    LW: 'w_winger', RW: 'w_winger', ST: 'st_advanced' };
@@ -504,7 +510,7 @@ function renderChem(owned){
         <b>지금 쓰는 스쿼드</b> <span class="chip">${esc(SQ.title || '')}</span>
         <span class="chip" style="border-color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'}">케미 ${total}/33</span>
         <small class="dim">— fut.gg 싱크 ${esc(SQ.synced_at)} 기준</small></div>
-      <table><tr><th>슬롯</th><th>선수</th><th>케미</th><th>붙인 스타일</th><th>추천</th></tr>
+      <table><tr><th>슬롯</th><th>선수</th><th>케미</th><th>붙인 스타일</th><th>추천(우리 가중)</th><th>메타 관습</th></tr>
       ${slots11.map((s, i) => { const p = byItem.get(s.ea_item_id);
         if (!p) return `<tr><td><b>${FORM_SLOTS[i] || i}</b></td><td colspan="4" class="dim">원장에 없는 카드(싱크 필요)</td></tr>`;
         const now = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
@@ -516,9 +522,11 @@ function renderChem(owned){
           <td>${esc(p.name)} <small class="dim">OVR ${chemOvr(p) || '—'}</small></td>
           <td style="color:${v === 3 ? 'var(--ok)' : v ? 'var(--warn)' : 'var(--bad)'}"><b>${v}</b>/3</td>
           <td>${now && !['Basic', 'GK Basic'].includes(now) ? `<b>${esc(now)}</b>` : '<span class="dim">미적용</span>'}</td>
-          <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}</td></tr>`;
+          <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}</td>
+          <td class="dim">${(m => m ? esc(m.value) : '—')(metaFor(FORM_SLOTS[i]))}</td></tr>`;
       }).join('')}</table>
-      <p class="dim" style="font-size:12px;margin:6px 0 0">아래 「제안」은 <b>보유 카드로 짤 수 있는 최적</b>이라 지금 구성과 다를 수 있다 —
+      <p class="dim" style="font-size:12px;margin:6px 0 0">「추천」은 <b>우리 역할 가중</b>(판단값)으로 계산한 것이고,
+      「메타 관습」은 <b>커뮤니티 가이드 합의</b>다 — 둘 다 EA 공식이 아니며 갈릴 수 있다. 갈리는 칸이 들여다볼 자리다.<br>아래 「제안」은 <b>보유 카드로 짤 수 있는 최적</b>이라 지금 구성과 다를 수 있다 —
       바꿀 이유를 고를 때 쓰는 참고값이고, 이 표가 <b>실제 상태</b>다.</p></div>`;
   }
   const pool = owned.filter(p => p.status === 'owned' && p.positions);
@@ -529,7 +537,7 @@ function renderChem(owned){
   const color = v => v === 3 ? 'var(--ok)' : v === 2 ? 'var(--warn)' : v ? 'var(--warn)' : 'var(--bad)';
   const rows = slots.map((s, i) => {
     const p = xi[i];
-    if (!p) return `<tr><td><b>${s}</b></td><td colspan="5" class="dim">이 포지션을 볼 수 있는 보유 카드가 없다 — 공백</td></tr>`;
+    if (!p) return `<tr><td><b>${s}</b></td><td colspan="6" class="dim">이 포지션을 볼 수 있는 보유 카드가 없다 — 공백</td></tr>`;
     const v = chemPer.get(p.id);
     const pres = PRES[p.player_id], roleId = pres?.role_id || POS_ROLE[s];
     const st = styleRank(p.attrs, roleId, s === 'GK');
@@ -546,6 +554,7 @@ function renderChem(owned){
       <td>${nowTxt}${st[0] ? `<b>${esc(st[0].name)}</b><small class="dim"> ${esc(gains)}</small>
              <br><small class="dim">차선 ${st.slice(1, 3).map(x => esc(x.name)).join(' · ')} · 기준 ${pres ? '처방' : '포지션 기본'} ${esc(ROLE_KR[roleId] || roleId || '—')}</small>`
            : '<span class="dim">속성 미수집 — 추천 불가</span>'}</td>
+      <td class="dim">${(m => m ? `${esc(m.value)}<br><small>대안 ${esc(m.alternatives || '')}</small>` : '—')(metaFor(s))}</td>
       <td class="dim">${esc(p.nation || '?')} · ${esc(p.league || '?')} · ${esc(p.club || '?')}</td>
       <td class="dim">${esc(p.positions || '')}</td></tr>`;
   }).join('');
@@ -562,7 +571,7 @@ function renderChem(owned){
       <span class="chip" style="border-color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};font-size:15px"><b>팀 케미 ${total}</b>/33</span>
       <span class="chip">평균 OVR ${filled.length ? Math.round(filled.reduce((s, p) => s + chemOvr(p), 0) / filled.length) : '—'}</span>
       <small class="dim">보유 ${pool.length}장 중 ${CHEM_F} 기준</small></div>
-    <table>${`<tr><th>슬롯</th><th>선수</th><th>케미</th><th>추천 스타일</th><th>국적 · 리그 · 클럽</th><th>가능 포지션</th></tr>`}${rows}</table>
+    <table>${`<tr><th>슬롯</th><th>선수</th><th>케미</th><th>추천 스타일</th><th>메타 관습</th><th>국적 · 리그 · 클럽</th><th>가능 포지션</th></tr>`}${rows}</table>
     <p class="dim" style="font-size:12px;margin:8px 0 0">구성: ${comp}</p>
     ${total < 33 && gaps.length ? `<p style="font-size:13px;margin:6px 0 0">다음 문턱: ${gaps.slice(0, 4).join(' · ')}</p>` : ''}
     ${total >= 33 ? `<p style="font-size:13px;margin:6px 0 0">만점이다 — 이 조합에서는 <b>케미가 아니라 카드 품질·역할 적합</b>이 다음 제약이다.</p>` : ''}

@@ -185,6 +185,9 @@ def export_all(db_path=None, window="2026-summer"):
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
                           {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices,
                            "chem_styles": chem_styles, "squad": squad, "squad_slots": squad_slots,
+                           "chem_meta": _rows(con, """SELECT item, value, alternatives, rationale, source
+                                                     FROM fc_meta_snapshots WHERE category='chem_style'
+                                                     AND pulled=(SELECT MAX(pulled) FROM fc_meta_snapshots WHERE category='chem_style')"""),
                            "club": {"accounts": accounts, "players": club, "log": log}}))
 
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──

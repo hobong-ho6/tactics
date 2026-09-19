@@ -285,3 +285,7 @@ INSERT INTO game_role_key_attrs VALUES(284,'FC26','st_target','공격 위치 선
 INSERT INTO game_role_key_attrs VALUES(285,'FC26','st_target','짧은 패스',1,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
 INSERT INTO game_role_key_attrs VALUES(286,'FC26','st_target','균형 감각',1,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
 INSERT INTO game_role_key_attrs VALUES(287,'FC26','st_target','슈팅력',1,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
+INSERT INTO game_role_key_attrs VALUES(288,'FC26','cb_bpd','가속',2,'2026-09-19 보정 — 속도 축 결손(사용자 지적)','MEDIUM — EA 미공개. 회복 속도는 센터백 역할 수행의 전제라 2로 둔다');
+INSERT INTO game_role_key_attrs VALUES(289,'FC26','cb_bpd','질주 속도',2,'2026-09-19 보정 — 속도 축 결손(사용자 지적)','MEDIUM — 상동');
+INSERT INTO game_role_key_attrs VALUES(290,'FC26','cb_defender','가속',2,'2026-09-19 보정 — 속도 축 결손(사용자 지적)','MEDIUM — 상동');
+INSERT INTO game_role_key_attrs VALUES(291,'FC26','cb_defender','질주 속도',2,'2026-09-19 보정 — 속도 축 결손(사용자 지적)','MEDIUM — 상동');
