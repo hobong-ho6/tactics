@@ -597,16 +597,41 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       }
       cx.fillStyle = `rgb(${ink[0]},${ink[1]},${ink[2]})`;
       cx.textAlign = 'center'; cx.textBaseline = 'middle';
-      /* 심플 카드에서 엠블럼 아래 빈 띠는 한 줄(약 0.79~0.93H)뿐이다 — **숫자 한 줄만** 넣는다.
-         라벨과 이름은 옆 패널에 이미 있어 넣지 않는다(넣으면 카드 밖으로 잘린다 — 실측 확인). */
-      const lx = W * 0.10, rx = W * 0.90, cw = (rx - lx) / 6;
-      vals.six.forEach(([label, v], i) => {
-        const c = lx + cw * (i + 0.5);
-        cx.globalAlpha = .55; cx.font = `600 ${Math.round(H * 0.019)}px Arial,sans-serif`;
-        cx.fillText(label, c, H * 0.838);
-        cx.globalAlpha = 1; cx.font = `700 ${Math.round(H * 0.033)}px "DIN Alternate",Arial,sans-serif`;
-        cx.fillText(v == null ? '—' : String(v), c, H * 0.878);
-      });
+      const at = (x, y) => { const d = cx.getImageData(x | 0, y | 0, 1, 1).data; return [d[0], d[1], d[2], d[3]]; };
+      /* ⭐ 원본 카드는 **엠블럼 바로 위**에 6대 스탯 줄이 있다 — 심플 카드도 같은 자리에 넣는다
+         (2026-09-19 사용자 지적 「원본 형태와 동일하게」). 엠블럼 아래 방패 끝은 좁아 6칸이 겹친다(실측). */
+      let badgeTop = null, badgeBottom = null;
+      const satRow = y => { let s2 = 0, n = 0;
+        for (let x = Math.round(W * 0.15); x < W * 0.85; x += 3){ const c = at(x, y); if (c[3] < 40) continue; n++;
+          if (Math.max(c[0], c[1], c[2]) - Math.min(c[0], c[1], c[2]) > 45) s2++; }
+        return n ? s2 / n : 0; };
+      for (let y = Math.round(H * 0.55); y < H * 0.92; y++){
+        if (satRow(y) > 0.15){ if (badgeTop == null) badgeTop = y; badgeBottom = y; }
+      }
+      if (badgeTop != null){
+        const gap = H * 0.012;
+        const valY = Math.round(badgeTop - gap - H * 0.018), labelY = Math.round(valY - H * 0.030);
+        const span = y => { let l = 0, r = W - 1;
+          while (l < W && at(l, y)[3] < 40) l++;
+          while (r > 0 && at(r, y)[3] < 40) r--;
+          return [l, r]; };
+        const [l1, r1] = span(valY), pad = (r1 - l1) * 0.05;
+        const lx = l1 + pad, rx = r1 - pad, cw = (rx - lx) / 6;
+        // 글자가 사진 위에 얹히므로 얇은 바탕을 깔아 대비를 준다 — 원본 카드도 이 자리에 띠가 있다.
+        cx.save();
+        cx.globalAlpha = .82; cx.fillStyle = '#d9d5cd';
+        cx.fillRect(lx - pad * 0.6, labelY - H * 0.022, (rx - lx) + pad * 1.2, (valY - labelY) + H * 0.040);
+        cx.restore();
+        cx.fillStyle = `rgb(${ink[0]},${ink[1]},${ink[2]})`;
+        vals.six.forEach(([label, v], i) => {
+          const c = lx + cw * (i + 0.5);
+          cx.globalAlpha = .65; cx.font = `600 ${Math.round(H * 0.021)}px Arial,sans-serif`;
+          cx.fillText(label, c, labelY);
+          cx.globalAlpha = 1; cx.font = `700 ${Math.round(H * 0.034)}px "DIN Alternate",Arial,sans-serif`;
+          cx.fillText(v == null ? '—' : String(v), c, valY);
+        });
+        cx.globalAlpha = 1;
+      }
       return cv;
     } catch (e){ return null; }
   }
