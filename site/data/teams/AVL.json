@@ -90412,6 +90412,18 @@
   },
   {
    "build_up_style": "Short Passing",
+   "confidence": "MEDIUM — 구조는 정본(HIGH), 인선 대응과 라인 높이 50은 판단. FC27 실측 0경기 상태에서의 첫 적용안이다",
+   "defensive_approach": "Balanced",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "kind": "fut:emery-current-squad-2026-09-19",
+   "line_height": 50,
+   "rationale": "내 얼티밋 보유 XI에 에메리 정본 구조(slot_canon_roles)를 그대로 얹은 적용안. 배정: GK 스즈키 gk_goalkeeper/Defend · LB 루제리 fb_att_wb/Support · LCB 파우 토레스 cb_bpd/Build-Up(왼발 전개측) · RCB 린델뢰프 cb_bpd/Aggressive · RB 완비사카 fb_wingback/Balanced(잔류측) · LDM 고레츠카 dm_holding/Roaming · RDM 카마라 dm_holding/Defend(앵커) · LM 음바예 wm_widemid/Support(뱅크 담당) · CAM 만잠비 cam_playmaker/Roaming · RM 맥긴 wm_winger/Attack(26/27 실측 .8119 단독 확정) · ST 잭슨 st_advanced/Versatile. ⭐ FC27 변경 반영 3건: ⑴ Team Press가 수비 3분의 1에서 무효이고 수비수 압박 효율이 낮아져 **미드블록 구조가 게임 기본 동작과 정합** — 팀 프레스는 켜되 전방에서만 기대한다. ⑵ 낮은 수비 깊이가 라인에 더 뚜렷이 반영된다는 EA 진술에 따라 라인 높이를 **50**으로 잡아 미드블록을 재현한다(사용자 현재 커스텀 60에서 하향 제안 — 실측 def_x·PPDA로 재판정). ⑶ AcceleRATE 영향 축소·속도 속성 비중 상승으로 **속도 부스터의 값어치가 FC26보다 크다** — 케미 스타일 선택에 반영(느린 CB는 Anchor/Shadow). ⚠️ 음바예를 wm_widemid/Support에 두는 것은 구조(전방4 뱅크) 때문이고 선수 프로필(PAC 90)과는 긴장 관계다 — 바꾸려면 맥긴과 좌우를 맞바꾸되 맥긴의 실측 winger/Attack 적합을 포기해야 한다.",
+   "season": "2026-27",
+   "tactic_code": null
+  },
+  {
+   "build_up_style": "Short Passing",
    "confidence": "MEDIUM-HIGH — 코드·역할 구성 사용자 확정. 라인 높이 미확인.",
    "defensive_approach": "Balanced",
    "formation": "4-2-3-1 Wide",
@@ -93431,6 +93443,15 @@
   }
  ],
  "tactic_changes": [
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 50",
+   "before": null,
+   "changed_at": "2026-09-19",
+   "key": "2026-27|fut:emery-current-squad-2026-09-19",
+   "layer": "team_setup",
+   "reason": "사용자 지시(2026-09-19) 「현재 스쿼드 기준으로도 에메리 전술 적용」 — 보유 XI에 정본 구조를 얹은 FC27 첫 적용안. FC27 변경(Team Press 수비3분의1 무효 · 라인 높이 반영 강화 · AcceleRATE 영향 축소)을 반영해 라인 높이 50으로 제안",
+   "source": "tactic_changes.py 2026-09-19"
+  },
   {
    "after": "wm_widemid/Support",
    "before": "wm_wideplm/Attack",

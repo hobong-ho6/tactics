@@ -2279,12 +2279,27 @@
    "weight": 3
   },
   {
+   "attr": "크로스",
+   "role_id": "wm_widemid",
+   "weight": 3
+  },
+  {
+   "attr": "가속",
+   "role_id": "wm_widemid",
+   "weight": 2
+  },
+  {
+   "attr": "드리블",
+   "role_id": "wm_widemid",
+   "weight": 2
+  },
+  {
    "attr": "수비 위치 선정",
    "role_id": "wm_widemid",
    "weight": 2
   },
   {
-   "attr": "스탠딩 태클",
+   "attr": "질주 속도",
    "role_id": "wm_widemid",
    "weight": 2
   },
@@ -2294,17 +2309,7 @@
    "weight": 2
   },
   {
-   "attr": "크로스",
-   "role_id": "wm_widemid",
-   "weight": 2
-  },
-  {
-   "attr": "드리블",
-   "role_id": "wm_widemid",
-   "weight": 1
-  },
-  {
-   "attr": "질주 속도",
+   "attr": "스탠딩 태클",
    "role_id": "wm_widemid",
    "weight": 1
   },

@@ -246,14 +246,6 @@ INSERT INTO game_role_key_attrs VALUES(245,'FC26','wm_wideplm','드리블',2,'do
 INSERT INTO game_role_key_attrs VALUES(246,'FC26','wm_wideplm','볼컨트롤',2,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
 INSERT INTO game_role_key_attrs VALUES(247,'FC26','wm_wideplm','긴 패스',1,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
 INSERT INTO game_role_key_attrs VALUES(248,'FC26','wm_wideplm','민첩성',1,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
-INSERT INTO game_role_key_attrs VALUES(249,'FC26','wm_widemid','체력',3,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
-INSERT INTO game_role_key_attrs VALUES(250,'FC26','wm_widemid','크로스',2,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
-INSERT INTO game_role_key_attrs VALUES(251,'FC26','wm_widemid','짧은 패스',2,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
-INSERT INTO game_role_key_attrs VALUES(252,'FC26','wm_widemid','스탠딩 태클',2,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
-INSERT INTO game_role_key_attrs VALUES(253,'FC26','wm_widemid','수비 위치 선정',2,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
-INSERT INTO game_role_key_attrs VALUES(254,'FC26','wm_widemid','차단력',1,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
-INSERT INTO game_role_key_attrs VALUES(255,'FC26','wm_widemid','질주 속도',1,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
-INSERT INTO game_role_key_attrs VALUES(256,'FC26','wm_widemid','드리블',1,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
 INSERT INTO game_role_key_attrs VALUES(257,'FC26','st_advanced','결정력',3,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
 INSERT INTO game_role_key_attrs VALUES(258,'FC26','st_advanced','공격 위치 선정',3,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
 INSERT INTO game_role_key_attrs VALUES(259,'FC26','st_advanced','가속',2,'docs/20·22 역할 설명 기반 판단 (2026-09-18)','MEDIUM — EA 미공개, 역할 서술에서 판단한 가중');
@@ -289,3 +281,12 @@ INSERT INTO game_role_key_attrs VALUES(288,'FC26','cb_bpd','가속',2,'2026-09-1
 INSERT INTO game_role_key_attrs VALUES(289,'FC26','cb_bpd','질주 속도',2,'2026-09-19 보정 — 속도 축 결손(사용자 지적)','MEDIUM — 상동');
 INSERT INTO game_role_key_attrs VALUES(290,'FC26','cb_defender','가속',2,'2026-09-19 보정 — 속도 축 결손(사용자 지적)','MEDIUM — 상동');
 INSERT INTO game_role_key_attrs VALUES(291,'FC26','cb_defender','질주 속도',2,'2026-09-19 보정 — 속도 축 결손(사용자 지적)','MEDIUM — 상동');
+INSERT INTO game_role_key_attrs VALUES(292,'FC26','wm_widemid','체력',3,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 왕복이 이 역할의 전제. 종전 유지');
+INSERT INTO game_role_key_attrs VALUES(293,'FC26','wm_widemid','크로스',3,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 「stay wide to support」의 산출물. 2→3 상향');
+INSERT INTO game_role_key_attrs VALUES(294,'FC26','wm_widemid','가속',2,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 종전 표에 아예 없었다(결손). 폭을 유지하며 오르내리려면 필요');
+INSERT INTO game_role_key_attrs VALUES(295,'FC26','wm_widemid','질주 속도',2,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 1→2 상향');
+INSERT INTO game_role_key_attrs VALUES(296,'FC26','wm_widemid','짧은 패스',2,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 점유 지원. 종전 유지');
+INSERT INTO game_role_key_attrs VALUES(297,'FC26','wm_widemid','드리블',2,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 1→2 상향');
+INSERT INTO game_role_key_attrs VALUES(298,'FC26','wm_widemid','수비 위치 선정',2,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — Defend 포커스에서 수비 라인으로 내려간다. 종전 유지');
+INSERT INTO game_role_key_attrs VALUES(299,'FC26','wm_widemid','스탠딩 태클',1,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 수비는 조건부(when needed)라 2→1 하향');
+INSERT INTO game_role_key_attrs VALUES(300,'FC26','wm_widemid','차단력',1,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 종전 유지');
