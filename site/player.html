@@ -628,11 +628,13 @@ function renderCard(sel, g0, g26, g27, isGkRow){
         }
         return best ? best.c : '#222';
       };
-      const draw = (txt, cxx, b, weight, scale = 1) => {
+      /* 글자 크기 — 잉크 행 높이는 글자의 **본문 높이**라 그대로 쓰면 원본보다 작아 보인다(2026-09-19 사용자 지적).
+         숫자는 1.32배, 포지션 같은 대문자 라벨은 1.2배로 키운다. */
+      const draw = (txt, cxx, b, weight, scale = 1.32) => {
         const h = (b.b - b.a + 1) * scale;
         cx.textAlign = 'center'; cx.textBaseline = 'middle';
-        cx.font = `${weight} ${Math.round(h * 1.05)}px "DIN Alternate","Arial Narrow",Arial,sans-serif`;
-        cx.fillText(txt, cxx, (b.a + b.b) / 2 + 1);
+        cx.font = `${weight} ${Math.round(h)}px "DIN Alternate","Arial Narrow",Arial,sans-serif`;
+        cx.fillText(txt, cxx, (b.a + b.b) / 2 + 0.5);
       };
       // ① 좌상단 OVR·포지션 (원본 카드 그대로의 자리)
       const ox0 = Math.round(W * 0.12), ox1 = Math.round(W * 0.34);
@@ -640,7 +642,7 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       if (ob[0]){ const col = inkColor(ox0, ox1, ob[0]); erase(ox0, ox1, ob[0]); cx.fillStyle = col;
                   draw(String(vals.ovr ?? '—'), (ox0 + ox1) / 2, ob[0], 700); }
       if (ob[1] && vals.pos){ const col = inkColor(ox0, ox1, ob[1]); erase(ox0, ox1, ob[1]); cx.fillStyle = col;
-                  draw(vals.pos, (ox0 + ox1) / 2, ob[1], 600); }
+                  draw(vals.pos, (ox0 + ox1) / 2, ob[1], 600, 1.2); }
       // ② 하단 6대 스탯 — **값 줄만** 바꾼다(이름·라벨은 원본 그대로 두어 배치가 같다)
       const sx0 = Math.round(W * 0.06), sx1 = Math.round(W * 0.94);
       const sb = bandsIn(sx0, sx1, Math.round(H * 0.62), Math.round(H * 0.82));

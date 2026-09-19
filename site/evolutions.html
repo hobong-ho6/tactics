@@ -541,6 +541,35 @@ function boosterCard(x, rank){
     <div class="bc-six">${six}</div>
     <div class="bc-ups">${ups || '<span class="dim">상승 없음</span>'}</div></div>`;
 }
+/* 24종 참고 — 표 대신 **부스터 카드 격자**로 보여준다(2026-09-19 사용자 지시 「여기도 시각화·카드 이미지」).
+   선수와 무관한 일반 정보라 6대 스탯 「영향도」로 그린다: Σ(구성 가중 × 부스트) — 그 스타일이 어느 축을 움직이는지. */
+const STYLE_GROUP = [
+  ['공격', [2, 3, 4, 5, 6]], ['창조·연결', [7, 8, 9, 10, 11]],
+  ['수비', [12, 13, 14, 15, 16]], ['속도', [17, 18, 19]], ['기본', [1]], ['골키퍼', [20, 21, 22, 23, 24]],
+];
+function faceImpact(boosts, isGk){
+  const keys = isGk ? GK_KEYS : SIX_KEYS;
+  return keys.map(k => { const d = FACE[k];
+    const v = d ? Object.entries(d.w).reduce((t, [a, w]) => t + w * (boosts[a] || 0), 0) : 0;
+    return [k, Math.round(v * 10) / 10]; });
+}
+function styleRefGrid(){
+  return STYLE_GROUP.map(([label, ids]) => {
+    const cards = CHEM_STYLES.filter(s => ids.includes(s.style_id)).map(s => {
+      const b = J(s.boosts, {}) || {};
+      const imp = faceImpact(b, s.is_gk), mx = Math.max(1, ...imp.map(x => x[1]));
+      const rows = imp.map(([k, v]) => `<div class="bc-row"><em>${k}</em>
+        <span class="bc-bar"><i style="width:${Math.round(v / mx * 100)}%;background:${v >= mx * 0.6 ? 'var(--ok)' : v > 0 ? 'var(--warn)' : 'transparent'}"></i></span>
+        <b>${v ? '+' + v.toFixed(1) : '—'}</b></div>`).join('');
+      const ups = Object.entries(b).sort((x, y) => y[1] - x[1])
+        .map(([a, v]) => `<span class="bc-up"${v >= 9 ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}>${esc(a)} <b>+${v}</b></span>`).join('');
+      return `<div class="bcard"><div class="bc-head"><b>${esc(s.name)}</b>
+          <small class="dim">${s.is_gk ? 'GK' : '필드'}</small></div>
+        <div class="bc-six">${rows}</div><div class="bc-ups">${ups}</div></div>`;
+    }).join('');
+    return cards ? `<h4 style="margin:10px 0 4px;font-size:13px">${label}</h4><div class="bcards">${cards}</div>` : '';
+  }).join('');
+}
 function styleDetail(st){
   if (!st || !st[0]) return '';
   const top = st[0];
@@ -649,10 +678,7 @@ function renderChem(owned, all = owned){
     ${total < 33 && gaps.length ? `<p style="font-size:13px;margin:6px 0 0">다음 문턱: ${gaps.slice(0, 4).join(' · ')}</p>` : ''}
     ${total >= 33 ? `<p style="font-size:13px;margin:6px 0 0">만점이다 — 이 조합에서는 <b>케미가 아니라 카드 품질·역할 적합</b>이 다음 제약이다.</p>` : ''}
     <details style="margin-top:10px"><summary class="dim" style="cursor:pointer">케미스트리 스타일 24종 — 무엇이 얼마나 오르나(최대 케미 3 기준)</summary>
-      <table style="margin-top:6px"><tr><th>스타일</th><th>구분</th><th>속성 상승</th></tr>
-        ${CHEM_STYLES.map(x => `<tr><td><b>${esc(x.name)}</b></td><td class="dim">${x.is_gk ? 'GK' : '필드'}</td>
-          <td class="dim">${Object.entries(J(x.boosts, {}) || {}).sort((a, b) => b[1] - a[1])
-            .map(([k, v]) => `${esc(k)} <b>+${v}</b>`).join(' · ')}</td></tr>`).join('')}</table>
+      ${styleRefGrid()}
       <p class="dim" style="font-size:12px;margin:6px 0 0">개인 케미가 3이 아니면 줄어든다 — <b>2점: 9→6 · 6→4 · 3→2</b>,
       <b>1점: 9→3 · 6→2 · 3→1</b>, 0점이면 아무 효과가 없다. 값 출처는 fut.gg 웹앱 구현(EA 미공개).</p></details>
     ${special.length ? `<p class="dim" style="font-size:12px">⚠️ 아이콘·히어로 ${special.length}명이 XI에 있다 — 이들이 모든 리그에 주는 +1은 여기서 세지 않아 <b>실제 케미는 이 값 이상</b>일 수 있다.</p>` : ''}
