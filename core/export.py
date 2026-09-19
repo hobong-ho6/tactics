@@ -179,9 +179,12 @@ def export_all(db_path=None, window="2026-summer"):
     # 케미스트리 스타일 24종(migration 045) — 화면이 역할 가중과 곱해 추천 순위를 만든다.
     chem_styles = _rows(con, """SELECT style_id, ea_id, name, is_gk, boosts FROM fc_chemistry_styles
                                 WHERE game_version='FC27' ORDER BY is_gk, style_id""")
+    # 실제 스쿼드(migration 050) — 「제안」과 대조하려면 지금 쓰는 XI가 있어야 한다.
+    squad = _rows(con, "SELECT * FROM fut_squads")
+    squad_slots = _rows(con, "SELECT account_id, grp, idx, ea_item_id, gg_player_id FROM fut_squad_slots ORDER BY grp DESC, idx")
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
                           {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices,
-                           "chem_styles": chem_styles,
+                           "chem_styles": chem_styles, "squad": squad, "squad_slots": squad_slots,
                            "club": {"accounts": accounts, "players": club, "log": log}}))
 
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──

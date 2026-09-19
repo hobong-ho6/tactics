@@ -916,3 +916,19 @@ CREATE TABLE fc_chemistry_styles(
   source TEXT NOT NULL, confidence TEXT NOT NULL, ea_id INTEGER,
   UNIQUE(game_version, style_id)
 );
+CREATE TABLE fut_squads(
+  account_id INTEGER PRIMARY KEY REFERENCES fut_accounts(id),
+  title TEXT, formation_id TEXT,
+  manager_nation_id INTEGER, manager_league_id INTEGER,   -- 케미 감독 보너스(+1) 판정에 쓴다
+  build_up_style_id INTEGER, defensive_approach_id INTEGER, custom_def_value INTEGER,
+  synced_at TEXT NOT NULL, source TEXT NOT NULL
+);
+CREATE TABLE fut_squad_slots(
+  account_id INTEGER NOT NULL REFERENCES fut_accounts(id),
+  grp TEXT NOT NULL,            -- FIELD / SUBSTITUTE
+  idx INTEGER NOT NULL,         -- 포메이션 슬롯 순서(FIELD 0=GK …)
+  ea_item_id INTEGER,
+  gg_player_id TEXT,
+  synced_at TEXT NOT NULL,
+  PRIMARY KEY(account_id, grp, idx)
+);

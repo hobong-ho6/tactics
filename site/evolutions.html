@@ -489,6 +489,38 @@ function renderChem(owned){
   bar.innerHTML = Object.keys(CHEM_FORMS).map(f => `<button class="act ghost${f === CHEM_F ? ' on' : ''}" data-cf="${f}">${f}</button>`).join('');
   bar.querySelectorAll('button[data-cf]').forEach(b => b.addEventListener('click', () => {
     CHEM_F = b.dataset.cf; localStorage.setItem('fut_chem_form', CHEM_F); renderChem(owned); }));
+  /* ⭐ 실제 스쿼드 먼저 (2026-09-19, 사용자 지적 「난 지금 스즈키 쓰는데 추천이 지금 구성과 다르다」).
+     제안은 「보유로 짤 수 있는 최적」이라 실제 XI와 다를 수 있다 — 지금 쓰는 XI를 먼저 보여주고 그 아래에 제안을 둔다. */
+  const SQ = (EVO.squad || [])[0];
+  const slots11 = (EVO.squad_slots || []).filter(x => x.grp === 'FIELD').sort((a, b) => a.idx - b.idx);
+  const FORM_SLOTS = ['GK', 'RB', 'CB', 'CB', 'LB', 'CDM', 'CDM', 'RM', 'LM', 'CAM', 'ST'];   // f4231a 슬롯 순서
+  const byItem = new Map(owned.map(p => [p.ea_item_id, p]));
+  let curHtml = '';
+  if (SQ && slots11.length){
+    const cur = slots11.map(s => byItem.get(s.ea_item_id)).filter(Boolean);
+    const { per, total } = chemOf(cur);
+    const chemBy = new Map(cur.map((p, i) => [p.id, per[i]]));
+    curHtml = `<div class="panel" style="margin:0 0 12px"><div class="kv" style="margin-bottom:6px">
+        <b>지금 쓰는 스쿼드</b> <span class="chip">${esc(SQ.title || '')}</span>
+        <span class="chip" style="border-color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'}">케미 ${total}/33</span>
+        <small class="dim">— fut.gg 싱크 ${esc(SQ.synced_at)} 기준</small></div>
+      <table><tr><th>슬롯</th><th>선수</th><th>케미</th><th>붙인 스타일</th><th>추천</th></tr>
+      ${slots11.map((s, i) => { const p = byItem.get(s.ea_item_id);
+        if (!p) return `<tr><td><b>${FORM_SLOTS[i] || i}</b></td><td colspan="4" class="dim">원장에 없는 카드(싱크 필요)</td></tr>`;
+        const now = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
+        const roleId = PRES[p.player_id]?.role_id || POS_ROLE[FORM_SLOTS[i]];
+        const st = styleRank(p.attrs, roleId, FORM_SLOTS[i] === 'GK');
+        const v = chemBy.get(p.id) ?? 0;
+        const same = now && st[0] && now === st[0].name;
+        return `<tr><td><b>${FORM_SLOTS[i] || i}</b></td>
+          <td>${esc(p.name)} <small class="dim">OVR ${chemOvr(p) || '—'}</small></td>
+          <td style="color:${v === 3 ? 'var(--ok)' : v ? 'var(--warn)' : 'var(--bad)'}"><b>${v}</b>/3</td>
+          <td>${now && !['Basic', 'GK Basic'].includes(now) ? `<b>${esc(now)}</b>` : '<span class="dim">미적용</span>'}</td>
+          <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}</td></tr>`;
+      }).join('')}</table>
+      <p class="dim" style="font-size:12px;margin:6px 0 0">아래 「제안」은 <b>보유 카드로 짤 수 있는 최적</b>이라 지금 구성과 다를 수 있다 —
+      바꿀 이유를 고를 때 쓰는 참고값이고, 이 표가 <b>실제 상태</b>다.</p></div>`;
+  }
   const pool = owned.filter(p => p.status === 'owned' && p.positions);
   if (!pool.length){ box.innerHTML = '<span class="dim">카드 정보가 붙은 보유 선수가 없다 — <code>collect_futgg_cards.py</code>를 먼저 돌린다.</span>'; return; }
   const slots = CHEM_FORMS[CHEM_F], { xi } = chemBestXI(pool, slots), filled = xi.filter(Boolean);
@@ -526,7 +558,7 @@ function renderChem(owned){
   const comp = CHEM_KEYS.map(([k, kr]) => `<b>${kr}</b> ` + Object.entries(cnt[k]).sort((a, b) => b[1] - a[1]).slice(0, 3)
     .map(([n, c]) => `${esc(n)} ${c}`).join(' · ')).join(' / ');
   const special = filled.filter(p => p.is_icon || p.is_hero);
-  box.innerHTML = `<div class="kv" style="margin-bottom:6px">
+  box.innerHTML = curHtml + `<div class="kv" style="margin-bottom:6px"><b>제안</b>
       <span class="chip" style="border-color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};font-size:15px"><b>팀 케미 ${total}</b>/33</span>
       <span class="chip">평균 OVR ${filled.length ? Math.round(filled.reduce((s, p) => s + chemOvr(p), 0) / filled.length) : '—'}</span>
       <small class="dim">보유 ${pool.length}장 중 ${CHEM_F} 기준</small></div>
