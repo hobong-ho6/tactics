@@ -510,7 +510,7 @@ function renderChem(owned){
         <b>지금 쓰는 스쿼드</b> <span class="chip">${esc(SQ.title || '')}</span>
         <span class="chip" style="border-color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'}">케미 ${total}/33</span>
         <small class="dim">— fut.gg 싱크 ${esc(SQ.synced_at)} 기준</small></div>
-      <table><tr><th>슬롯</th><th>선수</th><th>케미</th><th>붙인 스타일</th><th>추천(우리 가중)</th><th>메타 관습</th></tr>
+      <table><tr><th>슬롯</th><th>선수</th><th>케미</th><th>붙인 스타일</th><th>추천 — 에메리 처방 기준</th><th>메타 관습</th></tr>
       ${slots11.map((s, i) => { const p = byItem.get(s.ea_item_id);
         if (!p) return `<tr><td><b>${FORM_SLOTS[i] || i}</b></td><td colspan="4" class="dim">원장에 없는 카드(싱크 필요)</td></tr>`;
         const now = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
@@ -571,7 +571,7 @@ function renderChem(owned){
       <span class="chip" style="border-color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};font-size:15px"><b>팀 케미 ${total}</b>/33</span>
       <span class="chip">평균 OVR ${filled.length ? Math.round(filled.reduce((s, p) => s + chemOvr(p), 0) / filled.length) : '—'}</span>
       <small class="dim">보유 ${pool.length}장 중 ${CHEM_F} 기준</small></div>
-    <table>${`<tr><th>슬롯</th><th>선수</th><th>케미</th><th>추천 스타일</th><th>메타 관습</th><th>국적 · 리그 · 클럽</th><th>가능 포지션</th></tr>`}${rows}</table>
+    <table>${`<tr><th>슬롯</th><th>선수</th><th>케미</th><th>추천 스타일 — 처방 역할 기준</th><th>메타 관습</th><th>국적 · 리그 · 클럽</th><th>가능 포지션</th></tr>`}${rows}</table>
     <p class="dim" style="font-size:12px;margin:8px 0 0">구성: ${comp}</p>
     ${total < 33 && gaps.length ? `<p style="font-size:13px;margin:6px 0 0">다음 문턱: ${gaps.slice(0, 4).join(' · ')}</p>` : ''}
     ${total >= 33 ? `<p style="font-size:13px;margin:6px 0 0">만점이다 — 이 조합에서는 <b>케미가 아니라 카드 품질·역할 적합</b>이 다음 제약이다.</p>` : ''}
