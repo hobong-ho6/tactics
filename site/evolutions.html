@@ -641,6 +641,26 @@ function renderChem(owned, all = owned){
     const cur = slots11.map(s => byItem.get(s.ea_item_id)).filter(Boolean);
     const { per, total } = chemOf(cur);
     const chemBy = new Map(cur.map((p, i) => [p.id, per[i]]));
+    /* ⭐ 교체 명단도 같이 본다(2026-09-19 사용자 지시 「후보 선수들도 케미스트리 추천」).
+       교체는 슬롯 역할이 없다 — **카드의 주 포지션**으로 기본 역할을 잡고, 처방이 있으면 그것을 쓴다.
+       ⚠️ 교체는 투입 전까지 개인 케미가 0이라 부스터 효과도 0이다 — 그 사실을 표에 적는다. */
+    const benchSlots = (EVO.squad_slots || []).filter(x => x.grp === 'SUBSTITUTE').sort((a, b) => a.idx - b.idx);
+    const benchRows = benchSlots.map(s2 => byItem.get(s2.ea_item_id)).filter(Boolean).map(p => {
+      const pos = String(p.positions || '').split('/')[0] || '';
+      const roleId = PRES[p.player_id]?.role_id || POS_ROLE[pos];
+      const st = styleRank(p.attrs, roleId, pos === 'GK');
+      const now = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
+      const same = now && st[0] && now === st[0].name;
+      return `<tr><td class="dim">${esc(pos)}</td>
+        <td>${esc(p.name)} <small class="dim">OVR ${chemOvr(p) || '—'}${p.club === 'Aston Villa' ? '' : ' · ' + esc(p.club || '?')}</small></td>
+        <td class="dim">${esc(ROLE_KR[roleId] || roleId || '—')}</td>
+        <td>${now && !['Basic', 'GK Basic'].includes(now) ? `<b>${esc(now)}</b>` : '<span class="dim">미적용</span>'}</td>
+        <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}${styleDetail(st)}</td></tr>`;
+    }).join('');
+    const benchHtml = benchRows ? `<details style="margin-top:10px"><summary class="dim" style="cursor:pointer">교체 명단 ${benchSlots.length}명 — 케미 스타일 추천</summary>
+      <table style="margin-top:6px"><tr><th>주 포지션</th><th>선수</th><th>기준 역할</th><th>붙인 스타일</th><th>추천</th></tr>${benchRows}</table>
+      <p class="dim" style="font-size:12px;margin:6px 0 0">⚠️ 교체 선수는 <b>투입 전까지 개인 케미가 0</b>이라 스타일 효과도 0이다 —
+      선발로 올릴 계획이 있는 선수부터 붙이는 게 낫다. 기준 역할은 슬롯이 없어 <b>카드 주 포지션</b>(처방이 있으면 처방)으로 잡았다.</p></details>` : '';
     curHtml = `<div class="panel" style="margin:0 0 12px"><div class="kv" style="margin-bottom:6px">
         <b>지금 쓰는 스쿼드</b> <span class="chip">${esc(SQ.title || '')}</span>
         <span class="chip" style="border-color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'}">케미 ${total}/33</span>
@@ -662,6 +682,7 @@ function renderChem(owned, all = owned){
           <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}${styleDetail(st)}</td>
           <td class="dim">${(m => m ? esc(m.value) : '—')(metaFor(FORM_SLOTS[i]))}</td></tr>`;
       }).join('')}</table>
+      ${benchHtml}
       <p class="dim" style="font-size:12px;margin:6px 0 0">「추천」은 <b>우리 역할 가중</b>(판단값)으로 계산한 것이고,
       「메타 관습」은 <b>커뮤니티 가이드 합의</b>다 — 둘 다 EA 공식이 아니며 갈릴 수 있다. 갈리는 칸이 들여다볼 자리다.<br>아래 「제안」은 <b>보유 카드로 짤 수 있는 최적</b>이라 지금 구성과 다를 수 있다 —
       바꿀 이유를 고를 때 쓰는 참고값이고, 이 표가 <b>실제 상태</b>다.</p></div>`;
