@@ -506,7 +506,17 @@ function renderCard(sel, g0, g26, g27, isGkRow){
     ? [['pac','DIV'],['sho','HAN'],['pas','KIC'],['dri','REF'],['def','SPD'],['phy','POS']]
     : [['pac','PAC'],['sho','SHO'],['pas','PAS'],['dri','DRI'],['def','DEF'],['phy','PHY']];
   // ⚠️ 값 어휘가 원천마다 다르다 — sofifa는 Left/Right, fut.gg는 왼쪽/오른쪽(2026-09-14 FC27 주발 수집분).
-  const foot = { Left:'왼발', Right:'오른발', '왼쪽':'왼발', '오른쪽':'오른발' }[gg.preferred_foot ?? g0?.preferred_foot] ?? '—';
+  /* ⭐ 신체 정보는 **FC27 카드로 메운다**(2026-09-19, 사용자 지시 「fc27기준 상세 스탯 …을 채워줘」).
+     sofifa 기반 player_game_stats는 FC27 미수집분이 많아 나이·키·몸무게가 통째로 비어 있었다(472행 중 121행만 보유). */
+  const baseCard27 = (sel.pid != null ? (CARDS[String(sel.pid)] || []) : [])
+    .filter(c => c.game_version === 'FC27').sort((a, b) => (b.is_base ?? 0) - (a.is_base ?? 0))[0] || null;
+  const ageOf = bd => { if (!bd) return null; const d = new Date(bd), n = new Date();
+    return n.getFullYear() - d.getFullYear() - ((n.getMonth(), n < new Date(n.getFullYear(), d.getMonth(), d.getDate())) ? 1 : 0); };
+  const bio = { age: gg.age ?? g0?.age ?? ageOf(baseCard27?.birthdate),
+                height_cm: gg.height_cm ?? g0?.height_cm ?? baseCard27?.height_cm,
+                weight_kg: gg.weight_kg ?? g0?.weight_kg ?? baseCard27?.weight_kg,
+                src: (gg.age == null && g0?.age == null && baseCard27?.birthdate) ? 'fut.gg 카드' : null };
+  const foot = { Left:'왼발', Right:'오른발', '왼쪽':'왼발', '오른쪽':'오른발' }[gg.preferred_foot ?? g0?.preferred_foot ?? baseCard27?.preferred_foot] ?? '—';
   const styles = String(gg.playstyles ?? '').split(/[;,]/).map(s=>s.trim()).filter(Boolean);
   const pschip = raw => {
     const plus = raw.endsWith('+');
@@ -549,7 +559,10 @@ function renderCard(sel, g0, g26, g27, isGkRow){
     evoCard = { item_id: `evo:${club.id}`, is_base: 0, rarity_name: `진화 ${club.evo_count}회`, evo: true,
       ovr: club.current_ovr, pac: v(0,'PAC'), sho: v(1,'SHO'), pas: v(2,'PAS'), dri: v(3,'DRI'), def: v(4,'DEF'), phy: v(5,'PHY'),
       best_pos: src.best_pos, positions: src.positions, playstyles: club.current_playstyles ?? src.playstyles,
-      card_image_url: img || src.card_image_url, released_at: logs.at(-1)?.applied_at, evo_names: logs.map(l => l.evo_name) };
+      /* ⛔ 경로 이미지가 없으면 **기본 카드 아트로 대체하지 않는다**(2026-09-19 사용자 보고 「진화 카드 선택했는데 카드가 안 바뀜」).
+         fut.gg 카드 아트는 OVR·6대 스탯이 **그림에 찍혀 있어** 진화 전 수치를 그대로 보여준다 — 옆의 실제 수치와 어긋나 오독된다.
+         (마조처럼 단계를 이어 밟아 fut.gg 사전계산 경로와 일치하지 않으면 결과 카드 이미지가 없다.) */
+      card_image_url: img, no_art: !img, released_at: logs.at(-1)?.applied_at, evo_names: logs.map(l => l.evo_name) };
     cards = [evoCard, ...cards];
   }
   const rep = cards.find(c => String(c.item_id) === localStorage.getItem(repKey)) || evoCard || cards.find(c => c.item_id === ownedItem) || cards.find(c => c.is_base) || null;
@@ -571,13 +584,15 @@ function renderCard(sel, g0, g26, g27, isGkRow){
         <div class="gc-ovr" style="color:${tier(disp.ovr)}">${disp.ovr ?? '—'}</div>
         <div class="gc-pos">${esc(disp.best_pos ?? disp.positions ?? '')}</div>
         <div class="gc-six">${SIX.map(([k,L]) => `<span><em>${statTip(L)}</em>${disp[k] ?? '—'}</span>`).join('')}</div>
-        <div class="gc-ver dim">${rep ? esc(disp._label) : (g27 ? 'FC27' : 'FC26')}<br><small>${esc(disp.roster_date ?? '')}</small></div>
+        <div class="gc-ver dim">${rep ? esc(disp._label) : (g27 ? 'FC27' : 'FC26')}<br><small>${esc(disp.roster_date ?? '')}</small>
+          ${rep?.no_art ? '<br><small>카드 이미지 없음 — fut.gg 아트에는 <b>진화 전</b> 수치가 찍혀 있어 쓰지 않는다. 위 수치가 현재 값이다.</small>' : ''}</div>
       </div>
       <div style="flex:1;min-width:240px">
         <div class="kv bioline">
-          <span><b>나이</b>${gg.age ?? g0?.age ?? '—'}세</span>
-          <span><b>키</b>${gg.height_cm ?? g0?.height_cm ?? '—'}cm</span>
-          <span><b>몸무게</b>${gg.weight_kg ?? '—'}kg</span>
+          <span><b>나이</b>${bio.age ?? '—'}세</span>
+          <span><b>키</b>${bio.height_cm ?? '—'}cm</span>
+          <span><b>몸무게</b>${bio.weight_kg ?? '—'}kg</span>
+          ${bio.src ? `<span class="dim" title="sofifa 로스터에 이 선수의 FC27 행이 없어 카드 정의에서 가져왔다">출처 ${bio.src}</span>` : ''}
           <span><b>주발</b>${foot}</span>
           <span><b>가치</b>${g0?.value_eur ?? '—'}</span>
           <span><b>클럽</b>${esc(gg.club ?? g0?.club ?? '')}</span>
@@ -1019,7 +1034,9 @@ function render(){
         fut.gg가 카드에 표시하는 Δ는 <b>FC26 출시판</b> 기준이라 <b>값이 다를 수 있다</b>(obs#249. 실측: 왓킨스 fut.gg −1 ↔ 우리 +1).</p>`;
     /* ── 세부 속성: 기본 접힘. 펼치면 fut.gg식 6그룹 비교 ─────────── */
     const pa = t => { try { return t ? JSON.parse(t) : null; } catch (e) { return null; } };
-    const a26 = pa(g?.attrs), a27 = pa(g27?.attrs);
+    // FC27 attrs가 sofifa 쪽에 없으면 **카드 정의(fut.gg)** 로 메운다 — 같은 fut.gg 원천이라 FC26 비교 축도 유지된다.
+    const a26 = pa(g?.attrs), a27 = pa(g27?.attrs) ?? pa(baseCard27?.attrs);
+    const a27FromCard = !pa(g27?.attrs) && !!pa(baseCard27?.attrs);
     if (a26 || a27) {
       const names = [...new Set([...Object.keys(a26 ?? {}), ...Object.keys(a27 ?? {})])];
       const both = names.filter(k => a26?.[k] != null && a27?.[k] != null);
@@ -1048,6 +1065,48 @@ function render(){
         <b>두 층의 기준 시점이 다르므로</b> 세부 Δ와 6종합 Δ를 합산하지 말 것.
         ✅ <b>FC27 PlayStyles는 09-10 EA 공식 드롭으로 확정됐다</b>(4팀 131명 중 <b>87명 보유·44명은 EA 확정 0종</b> — 결손이 아니다.
         09-14에 다른 API 경로로 재확인). ⚠️ 상한이 <b>PS+ 5→3</b>으로 줄었고 실제로는 보유자 12명이 전원 1종뿐이다(obs#733).</p></details>`;
+      /* ⭐ 스탯 분석 (2026-09-19, 사용자 지시 「스탯에 따른 선수 분석도 채워줘」) ──
+         처방 역할의 핵심 속성(game_role_key_attrs 가중 3/2/1)에 FC27 값이 얼마나 차 있는지 본다.
+         ⛔ 커널 적합(sim)과 다른 축이다 — 저건 **위치·기하**, 이건 **능력치**다. 둘을 합산하지 않는다.
+         가중은 판단값(MEDIUM)이라 결론이 아니라 읽는 단서로 쓴다. */
+      const pres27 = (td.prescriptions || []).filter(p => p.player_id === sel.pid && p.role_id)
+        .sort((x, y) => String(y.season || '').localeCompare(String(x.season || '')))[0];
+      const KWa = {}; for (const k of K26.role_key_attrs || []) (KWa[k.role_id] ??= {})[k.attr] = k.weight;
+      const ROLE_KR27 = Object.fromEntries((K26.roles || []).map(r => [r.role_id, r.name]));
+      const wA = pres27 ? KWa[pres27.role_id] : null;
+      if (a27) {
+        const vals = Object.entries(a27).filter(([, v]) => v != null).sort((x, y) => y[1] - x[1]);
+        const strong = vals.slice(0, 5), weak = vals.slice(-5).reverse();
+        let keyHtml = '<span class="dim">처방 역할이 없어 역할 기준 진단은 생략한다(절대값만 본다).</span>', fitLine = '';
+        if (wA) {
+          const ks = Object.entries(wA).map(([a, w]) => ({ a, w, v: a27[a] ?? null }))
+            .filter(k => k.v != null).sort((x, y) => y.w - x.w || y.v - x.v);
+          const den = ks.reduce((t, k) => t + k.w * 99, 0), num = ks.reduce((t, k) => t + k.w * k.v, 0);
+          const pct = den ? Math.round(num / den * 100) : null;
+          const lack = ks.filter(k => k.w >= 2 && k.v < 70);
+          keyHtml = ks.map(k => `<div class="arow"><span class="an">${statTip(k.a)} <small class="dim">가중 ${k.w}</small></span>
+              <span class="av" style="color:${tier(k.v)}">${k.v}</span>
+              <span class="abar"><i style="width:${Math.min(100, k.v)}%;background:${tier(k.v)}"></i></span></div>`).join('');
+          fitLine = `<div class="kv" style="margin-bottom:6px"><span class="chip" style="border-color:${pct >= 75 ? 'var(--ok)' : pct >= 62 ? 'var(--warn)' : 'var(--bad)'};color:${pct >= 75 ? 'var(--ok)' : pct >= 62 ? 'var(--warn)' : 'var(--bad)'}">
+              속성 충족도 <b>${pct}%</b></span>
+            <small class="dim">— 처방 <b>${esc(ROLE_KR27[pres27.role_id] || pres27.role_id)}</b>의 핵심 속성 ${ks.length}개를 가중 평균한 값(99 만점 대비)</small></div>
+            <p style="font-size:13px;margin:0 0 6px">${lack.length
+              ? `가중 2 이상인 핵심 속성 중 <b>${lack.map(k => `${k.a} ${k.v}`).join(' · ')}</b>가 70 미만이다 — 이 역할로 쓰려면 여기가 먼저 메워져야 한다(진화·카드 교체).`
+              : '가중 2 이상 핵심 속성이 모두 70 이상이다 — 이 역할을 맡기는 데 능력치 쪽 걸림돌은 없다.'}</p>`;
+        }
+        html += `<details open style="margin-top:10px"><summary class="dim">📐 스탯 분석 — FC27 값 기준${a27FromCard ? ' <small>(카드 정의에서 보충)</small>' : ''}</summary>
+          ${fitLine}
+          <div class="agrid"><section class="agrp"><header><b>처방 역할 핵심 속성</b></header>${keyHtml}</section>
+            <section class="agrp"><header><b>가장 높은 5개</b></header>${strong.map(([a, v]) =>
+              `<div class="arow"><span class="an">${statTip(a)}</span><span class="av" style="color:${tier(v)}">${v}</span>
+               <span class="abar"><i style="width:${Math.min(100, v)}%;background:${tier(v)}"></i></span></div>`).join('')}</section>
+            <section class="agrp"><header><b>가장 낮은 5개</b></header>${weak.map(([a, v]) =>
+              `<div class="arow"><span class="an">${statTip(a)}</span><span class="av" style="color:${tier(v)}">${v}</span>
+               <span class="abar"><i style="width:${Math.min(100, v)}%;background:${tier(v)}"></i></span></div>`).join('')}</section></div>
+          <p class="dim" style="font-size:12px;margin:8px 0 0">⛔ 이 값은 <b>능력치 축</b>이다 — 스쿼드 화면의 커널 적합(sim)은 <b>위치·기하 축</b>이라 둘을 더하지 않는다.
+          역할별 핵심 속성·가중(3/2/1)은 EA 미공개라 <b>docs/20·22 역할 설명에서 우리가 판단한 값</b>이다(신뢰도 MEDIUM).
+          ${isGkRow ? '골키퍼는 6대 스탯 자체가 다른 축(DIV·HAN·KIC·REF·SPD·POS)이라 필드 선수와 직접 비교하지 않는다.' : ''}</p></details>`;
+      }
     } else {
       html += '<div class="dim" style="font-size:12px;margin-top:8px">세부 속성 미수집(fut.gg 상세에 해당 선수 카드가 없다).</div>';
     }

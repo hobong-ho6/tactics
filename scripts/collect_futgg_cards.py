@@ -134,6 +134,7 @@ def main():
                 roles_plus=json.dumps(it.get("rolesPlus") or []),
                 roles_plus_plus=json.dumps(it.get("rolesPlusPlus") or []),
                 skill_moves=it.get("skillMoves"), weak_foot=it.get("weakFoot"),
+                height_cm=it.get("height"), weight_kg=it.get("weight"), birthdate=it.get("dateOfBirth"),
                 accelerate=accelerate_label(it.get("accelerateType")), preferred_foot=FOOT.get(it.get("foot")),
                 # 이미지: 목록 API cardImageUrl이 우선이고, 없으면 정의의 cardImagePath로 만든다(2026-09-17 — 20장이 NULL이었다)
                 card_image_url=("https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/" + it["cardImagePath"])
@@ -215,7 +216,10 @@ def main():
            "league=COALESCE(excluded.league, player_card_items.league), "
            "chem_extra=COALESCE(excluded.chem_extra, player_card_items.chem_extra), "
            "is_icon=COALESCE(excluded.is_icon, player_card_items.is_icon), "
-           "is_hero=COALESCE(excluded.is_hero, player_card_items.is_hero)"
+           "is_hero=COALESCE(excluded.is_hero, player_card_items.is_hero), "
+           "height_cm=COALESCE(excluded.height_cm, player_card_items.height_cm), "
+           "weight_kg=COALESCE(excluded.weight_kg, player_card_items.weight_kg), "
+           "birthdate=COALESCE(excluded.birthdate, player_card_items.birthdate)"
            % (",".join("def" if c == "def_" else c for c in cols), ",".join(f":{c}" for c in cols)))
     before = con.execute("SELECT COUNT(*) FROM player_card_items").fetchone()[0]
     for r in rows:
