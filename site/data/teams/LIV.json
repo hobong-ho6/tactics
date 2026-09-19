@@ -35046,11 +35046,6 @@
   ],
   "음바예": [
    [
-    "2026-05-17",
-    6.7,
-    "Ligue 1"
-   ],
-   [
     "2026-06-09",
     6.5,
     "International Friendly Games"
@@ -35094,6 +35089,11 @@
     "2026-09-16",
     7.0,
     "EFL Cup"
+   ],
+   [
+    "2026-09-19",
+    6.3,
+    "Premier League"
    ]
   ],
   "응구모하": [
@@ -58603,16 +58603,16 @@
    "xg_pg": 0.133
   },
   {
-   "avg_rating": 6.9,
-   "dw_pg": 1.65,
+   "avg_rating": 6.89,
+   "dw_pg": 1.63,
    "ic_pg": 0.14,
-   "kp_pg": 0.55,
+   "kp_pg": 0.54,
    "label": "음바예",
-   "minutes": 1836,
-   "n": 69,
+   "minutes": 1851,
+   "n": 70,
    "player_id": 86,
    "pos_group": "WM",
-   "tk_pg": 0.41,
+   "tk_pg": 0.4,
    "xa_pg": 0.08,
    "xg_pg": 0.196
   },
@@ -62085,6 +62085,16 @@
     "starts": null
    },
    {
+    "assists": 0,
+    "avg_rating": 6.5,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 42,
+    "n": 2,
+    "season": "2026-27",
+    "starts": 0
+   },
+   {
     "assists": 1,
     "avg_rating": 7.0,
     "competition": "EFL Cup",
@@ -62093,16 +62103,6 @@
     "n": 1,
     "season": "2026-27",
     "starts": 1
-   },
-   {
-    "assists": 0,
-    "avg_rating": 6.7,
-    "competition": "Premier League",
-    "goals": 0,
-    "minutes": 27,
-    "n": 1,
-    "season": "2026-27",
-    "starts": 0
    },
    {
     "assists": 0,
