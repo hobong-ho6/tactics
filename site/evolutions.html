@@ -525,6 +525,27 @@ function chemBestXI(pool, slots){
 /* ⭐ 부스터 카드 (2026-09-19 사용자 지시 「각 부스터 카드 이미지와 어떤 능력치를 얼만큼 올리는지 · 항상 보일 필요는 없다」)
    fut.gg·EA가 케미 스타일 이미지를 공개하지 않아(아이콘 폰트뿐) **우리가 그린다**:
    이름 + 6대 스탯 변화 막대 + 올라가는 개별 속성 전체. 접힘 안에 두어 평소에는 보이지 않는다. */
+/* ⭐ 케미 스타일 카드 모양 (2026-09-19 사용자 지시 「케미스트리 카드 모양도 넣어줘」)
+   EA·fut.gg가 스타일 아이템 이미지를 공개하지 않아(아이콘 폰트뿐) **인게임 소모품 카드를 본떠 직접 그린다**:
+   성격별 색 + 약칭 + 이름 띠 + 올리는 6대 스탯 점. 색 구분은 표에서 성격을 즉시 읽게 하는 장치다. */
+const STYLE_TONE = id => id === 1 ? ['#8e949e', '#5b616b'] : id <= 6 ? ['#e0703a', '#a8411a']
+  : id <= 11 ? ['#3fb883', '#1d7a52'] : id <= 16 ? ['#4a90e2', '#25548f']
+  : id <= 19 ? ['#a06ae0', '#5f3596'] : ['#e0b23c', '#96741d'];
+function styleToken(x, size = 46){
+  const [c1, c2] = STYLE_TONE(x.style_id || 1);
+  const ab = String(x.name || '').replace(/[^A-Za-z]/g, '').slice(0, 3).toUpperCase();
+  const faces = (x.six || []).filter(([, b, a]) => a > b).map(([k]) => k);
+  const h = Math.round(size * 1.34);
+  return `<svg class="cstoken" width="${size}" height="${h}" viewBox="0 0 46 62" aria-label="${esc(x.name)} 케미스트리 스타일 카드">
+    <defs><linearGradient id="g${x.style_id}" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs>
+    <path d="M3 5 Q3 2 6 2 L40 2 Q43 2 43 5 L43 47 Q43 52 23 60 Q3 52 3 47 Z" fill="url(#g${x.style_id})" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/>
+    <text x="23" y="26" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" opacity=".95">${ab}</text>
+    <text x="23" y="38" text-anchor="middle" font-size="7" fill="#fff" opacity=".85">${esc((faces.join('·') || (x.is_gk ? 'GK' : '')).slice(0, 11))}</text>
+    <rect x="3" y="42" width="40" height="9" fill="rgba(0,0,0,.35)"/>
+    <text x="23" y="48.6" text-anchor="middle" font-size="6.4" fill="#fff">${esc(String(x.name).slice(0, 10))}</text>
+  </svg>`;
+}
 function boosterCard(x, rank){
   if (!x) return '';
   const six = (x.six || []).map(([k, b, a]) => {
@@ -536,9 +557,10 @@ function boosterCard(x, rank){
   const ups = Object.entries(x.boosts || {}).sort((a, b) => b[1] - a[1])
     .map(([a, v]) => `<span class="bc-up">${esc(a)} <b>+${v}</b></span>`).join('');
   return `<div class="bcard${rank ? ' alt' : ''}">
-    <div class="bc-head"><b>${esc(x.name)}</b>${rank ? `<span class="chip dim">차선 ${rank}</span>` : '<span class="chip" style="border-color:var(--ok);color:var(--ok)">추천</span>'}
-      <small class="dim">역할 점수 ${Math.round(x.score)}</small></div>
-    <div class="bc-six">${six}</div>
+    <div class="bc-top">${styleToken(x)}<div style="flex:1;min-width:0">
+      <div class="bc-head"><b>${esc(x.name)}</b>${rank ? `<span class="chip dim">차선 ${rank}</span>` : '<span class="chip" style="border-color:var(--ok);color:var(--ok)">추천</span>'}
+        <small class="dim">역할 점수 ${Math.round(x.score)}</small></div>
+      <div class="bc-six">${six}</div></div></div>
     <div class="bc-ups">${ups || '<span class="dim">상승 없음</span>'}</div></div>`;
 }
 /* 24종 참고 — 표 대신 **부스터 카드 격자**로 보여준다(2026-09-19 사용자 지시 「여기도 시각화·카드 이미지」).
@@ -563,9 +585,12 @@ function styleRefGrid(){
         <b>${v ? '+' + v.toFixed(1) : '—'}</b></div>`).join('');
       const ups = Object.entries(b).sort((x, y) => y[1] - x[1])
         .map(([a, v]) => `<span class="bc-up"${v >= 9 ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}>${esc(a)} <b>+${v}</b></span>`).join('');
-      return `<div class="bcard"><div class="bc-head"><b>${esc(s.name)}</b>
-          <small class="dim">${s.is_gk ? 'GK' : '필드'}</small></div>
-        <div class="bc-six">${rows}</div><div class="bc-ups">${ups}</div></div>`;
+      const tok = styleToken({ name: s.name, style_id: s.style_id, is_gk: s.is_gk,
+        six: imp.map(([k, v]) => [k, 0, v > 0 ? 1 : 0]) });
+      return `<div class="bcard"><div class="bc-top">${tok}<div style="flex:1;min-width:0">
+          <div class="bc-head"><b>${esc(s.name)}</b><small class="dim">${s.is_gk ? 'GK' : '필드'}</small></div>
+          <div class="bc-six">${rows}</div></div></div>
+        <div class="bc-ups">${ups}</div></div>`;
     }).join('');
     return cards ? `<h4 style="margin:10px 0 4px;font-size:13px">${label}</h4><div class="bcards">${cards}</div>` : '';
   }).join('');
