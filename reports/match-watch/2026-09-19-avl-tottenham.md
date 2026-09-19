@@ -86,7 +86,38 @@ xG 세트피스 0.57의 출처다.
 국면 분리 그리드가 4-4-2 블록을 다시 확증한다: 수비 액션이 **잭슨 행0~1 / 부엔디아·맥긴 행1~3 /
 피벗 2 행3 / 백4 행3~4**로 층이 뚜렷하다. 특히 **맥긴의 수비 셀 11개 중 9개가 우측 열3~4**,
 **루헤리의 수비 셀 28개 중 18개가 좌측 열0~1의 행3~4**에 몰렸다 — 측면을 각자 막고 중앙은 피벗이 닫는,
-브뤼헤전과 같은 4-2-2-2형 스태거다. 5-3-2 전환은 이 경기에서도 관측되지 않았다.
+브뤼헤전과 같은 4-2-2-2형 스태거다.
+
+### ⭐⭐ 후반 우측 편중 백5 — 감독 자인 + 실측 (2026-09-19 D+0 서사 반영, 당일 판정 정정)
+
+**처음 이 리포트는 「5-3-2 전환은 관측되지 않았다」고 적었다. 그것은 틀렸다.**
+경기 후 회견에서 **에메리 본인이 후반 백5를 인정**했고, WhoScored 이벤트를 전·후반으로 나누니 실측도 맞는다.
+
+> 원문 「sometimes with back four is not enough to defend completely the … side of the field,
+> and someday we are the first half we use it more **[Kamara] dropping dropping**, and someday is
+> **a five center back** being in the back four inside, and **the second half we needed more with John McGinn**.」
+> (때로는 백4로는 측면을 완전히 수비하기에 충분하지 않다. 어떤 날은 전반처럼 **카마라를 더 내려서** 쓰고,
+> 어떤 날은 **센터백 5명**이 백4 안쪽에 들어가는 형태가 된다. 그리고 **후반에는 존 맥긴으로 더 필요했다**.)
+> — TNT Sports `k6dbBj7Tz7w` (2026-09-19), ⚠️ **auto-caption** — 「camera」는 Kamara의 오인식.
+
+**실측(WhoScored matchId 1983589, 수비액션 159건을 전·후반으로 분리)**
+
+| | 전반 | 후반 | Δ |
+|---|---|---|---|
+| **맥긴 수비액션 x** | 56.3 (n3) | **32.1** (n8) | **−24.2** |
+| 맥긴 수비액션 y | 32.8 | **18.2** (우측 터치라인) | −14.6 |
+| 부엔디아 수비액션 x | 35.6 (n6) | **47.6** (n14) | **+12.0** |
+| 팀 def_x | 32.3 (n69) | 29.5 (n90) | −2.8 |
+
+맥긴은 **후반 57′·58′·77′에 x 11.8 · 14.1 · 16.2에서 수비**했다 — 같은 시간대 백4 라인
+(캐시 17.4 · 린델뢰프 16.5 · 밍스 15.2 · 루헤리 21.4)과 **같은 깊이**다. 전반에는 그 대역 수비액션이 0건이었다.
+
+다만 **대칭 5-3-2가 아니다.** 좌측의 부엔디아는 반대로 12점 올라갔다. 즉 이 경기의 후반 형태는
+**우측만 5로 만든 편중 백5**(캐시 + 맥긴이 우측 채널을 겹쳐 막고, 좌측은 4를 유지)다.
+에메리 발언의 「side of the field」(측면)가 단수인 것과 정합한다.
+
+⭐ 가장 깊었던 구간은 **경기 막판이 아니라 50~86′(def_x 26.1)**이다. 교체 4장 이후(87′~)는 오히려 34.6으로
+올라간다 — 「리드를 지키려 더 내려앉았다」는 통상 서사와 반대이고, 두 실점이 그 올라간 구간에서 나왔다.
 
 주앙 고메스가 태클 5·경합 8승8패로 피벗의 파괴 몫을 전담했고(파울 13회 중 상당수가 이 축),
 카마라는 42패스·터치 48로 배급 쪽에 섰다. **피벗 두 명의 역할이 갈렸다** — 종전 「둘 다 dm_holding 계열」
@@ -153,6 +184,9 @@ rest-defense는 리드 국면에서 의도적으로 더 내려앉았다. 다만 
 4. **마지막 국면 (84′~90+8′)** — 교체 4장 직후 2실점. 갤러거 86′(오픈플레이)·판 헤케 90+8′(세트피스 헤더).
    교체로 들어간 4명의 합산 터치가 27회뿐이고 경합 패가 11회다 — **새로 들어간 인원이 볼을 지키지 못했고,
    그 결과 마지막 10분이 통째로 토트넘 진영이 아니라 빌라 진영에서 진행됐다.**
+   ⚠️ 단 **수비액션 def_x는 이 구간에 26.1 → 34.6으로 올라간다.** 「더 내려앉아서 실점했다」가 아니라
+   **블록이 오히려 풀렸다**는 뜻이다. 갤러거의 슛은 캐시를 맞고 굴절됐고(Reuters·NBC), 판 헤케는
+   로버트슨 배급을 받은 파포스트 헤더다.
 
 ---
 
@@ -187,12 +221,18 @@ rest-defense는 리드 국면에서 의도적으로 더 내려앉았다. 다만 
 **유지된 것**
 
 - 4-2-3-1 Wide 90분 불변(WhoScored 포메이션 변화 0). 시즌 내 포메이션 불변 서술 유지.
-- 무공 정착 블록 4-4-2(잭슨 1선, 부엔디아·맥긴이 미드 4의 와이드) — 브뤼헤전 실측의 두 번째 사례.
+- 무공 정착 블록 4-4-2(잭슨 1선, 부엔디아·맥긴이 미드 4의 와이드) — **전반 한정**. 브뤼헤전 실측의 두 번째 사례.
 - 「풀백은 한 번에 한 명만 전진」 — 좌측(루헤리) 전진·우측(완비사카/캐시) 고정.
 - 상대 맨투맨 하이프레스 → 의도적 GK 롱킥 경로(스즈키 패스 성공률 58%).
 - 역습 실점 0(두 실점 모두 정지 국면·세트피스).
 
 **새로 나타난 것**
+
+0. ⭐⭐ **후반 우측 편중 백5 — `manager_profiles.formation` 정정 대상.** 현 프로필은
+   「4-2-3-1 고정, 국면 변형은 라인·역할로만 / 5-3-2 전환은 브뤼헤전에서 관측되지 않았다」인데,
+   이 경기는 **감독 자인 + 실측**이 동시에 성립한 첫 사례다(맥긴 수비 x 56.3 → 32.1). 다만 대칭 5-3-2가
+   아니라 **한쪽만 5로 만드는 변형**이므로, 프로필에는 「5-3-2 전환」이 아니라
+   「**국면·측면 의존 편중 백5**」로 적어야 한다. D+3 회차에서 `formation` 축에 덧붙인다.
 
 1. ⭐ **def_x 30.6 — 26/27 최저이자 `optimal:vs-strong`(라인 43)보다 낮다.** 강팀 원정에서
    기존 프리셋보다 더 내려앉는 대역이 실측으로 열렸다. PPDA 13.24와 짝지으면
@@ -208,9 +248,12 @@ rest-defense는 리드 국면에서 의도적으로 더 내려앉았다. 다만 
 **직전 경기 대비 변화** — 코번트리전(EFL컵, 점유 57%·PPDA 9.86·def_x 36.4, 대폭 로테이션)과는
 정반대 국면이다. 두 경기를 나란히 두면 에메리의 상황 대응 진폭이 **한 주 안에** 다시 확인된다.
 
-**`manager_profiles` 반영** — 다음 축에 덧붙인다(§ 완료 절차에서 실행):
+**`manager_profiles` 반영** — 다음 축에 덧붙인다(D+3 회차에서 실행):
+**`formation`(우측 편중 백5 — 감독 자인 + 실측, 「5-3-2 미관측」 서술 정정)** ·
 `pressing`(PPDA 13.24 + def_x 30.6 대역 추가) · `situational`(강팀 원정 저점유 전환 승리 2회 연속) ·
-`rest_defense`(피벗 역할 분화 관찰 + 리드 후 2실점) · `set_pieces`(코너 허용 11·세트피스 실점).
+`buildup`(⭐ 데 제르비의 「빌라 롱볼 전 시즌 대비 +86%」 — 상대 감독의 정량 사전 스카우팅이 우리 축 갱신을 독립 확인) ·
+`rest_defense`(피벗 역할 분화 관찰 + 리드 후 2실점 · def_x가 막판에 오히려 26.1 → 34.6으로 풀린다) ·
+`set_pieces`(코너 허용 11·세트피스 실점).
 
 ---
 
@@ -261,7 +304,178 @@ rest-defense는 리드 국면에서 의도적으로 더 내려앉았다. 다만 
 
 ## 8. 영상·기사·감독 발언
 
-*(수집 중 — D+0 서사 회차 결과로 채운다. §2-1a에 따라 D+1~D+3 추적을 별도로 예약했다.)*
+> D+0 회차(경기 종료 ~10시간 후) 수집분. **외국어 인용은 원문 + 한국어 번역 병기**(불변규칙 11).
+> 전사 기반 인용은 **auto-caption**이며 인물명·수치는 실측과 교차검증했다.
+
+### 8-1. 에메리 경기 후 회견
+
+**① 후반 백5 — 본인 확인** · TNT Sports Football, 「Unai Emery REACTS after Aston Villa end winless run」,
+2026-09-19 게시, `k6dbBj7Tz7w` · 전사 `reports/transcripts/k6dbBj7Tz7w.en.md` (자막 기준, auto-caption)
+→ 인용·실측 대조는 §2 「후반 우측 편중 백5」 참조.
+
+**② 게임 플랜 = 수비 → GK → 전환** · Aston Villa FC 공식, 2026-09-19, `Jp52xd-xLt8`
+
+> 원문 「**The game plan we planned** … **We were defending collectively strong the first half. We needed the keeper.
+> We needed defend a lot of corners defensively and we were resilience, but as well when we could get some transition
+> we were trying to threaten them.**」
+> (**우리가 세운 게임 플랜** … **전반에 집단적으로 강하게 수비했다. 골키퍼가 필요했다. 코너를 수비적으로 많이
+> 막아내야 했고 우리는 회복력이 있었다. 동시에 전환을 얻을 수 있을 때는 그들을 위협하려 했다.**)
+
+> 원문 「keeping the result with nil nil was **out of process to try to grow up during the match**」
+> (0-0으로 결과를 유지하는 것이 **경기 중 성장하려는 과정의 일부**였다.)
+
+⇒ **36% 점유는 사고가 아니라 사전 설계다.** 「수비 · 골키퍼 · 코너 · 전환」 네 낱말이 그대로 실측이 됐다
+(def_x 30.6 · 스즈키 선방 5 · 코너 1-11 · 오픈플레이 xG가 전체 xG와 동일).
+
+**③ 만잠비 — 「구조 안에서의 자유」** · Jacob Tanswell(The Athletic) Bluesky, 2026-09-19T14:34Z verbatim
+
+> 원문 「**Manzambi played a good match but not understanding yet everything with his position.** But
+> **his qualities are over the tactical idea of what we are achieving** … **he must feel free to exploit his
+> qualities but always under our structure**.」
+> (**만잠비는 좋은 경기를 했지만 자기 포지션에 관해 아직 모든 것을 이해하지는 못했다.** 다만 **그의 자질은
+> 우리가 구현하려는 전술적 아이디어를 넘어선다** … **자기 자질을 자유롭게 발휘해야 하지만 언제나 우리 구조 안에서**여야 한다.)
+
+⇒ `role_demands` 축(「지시를 이행하고 구조 안에서 판단하는 선수 선호」)의 **가장 명료한 1차 문장**이다.
+
+**④ 잭슨 — 「힘을 처음 보여준 경기」** · Read Aston Villa, 2026-09-19 15:55 발행
+
+> 원문 「**Maybe it is the first match where Jackson showed his power**, because before he didn't completely show
+> that he understood everything we wanted from him in the previous games.」
+> (**아마 잭슨이 자기 파워를 보여준 첫 경기일 것이다.** 이전 경기들에서는 우리가 그에게 원하는 걸 전부
+> 이해했다는 걸 완전히 보여주지 못했으니까.)
+
+⇒ 코번트리전 「잭슨 5.9 = 접점 부재, 감독 언급 0건」(obs#815)의 **후속이 닫혔다**.
+
+**⑤ 경기 전 회견(D-1, 2026-09-18) — 인선 맥락**
+결장 7명(비조·오나나·시세·마첸·고레츠카·마조 + 아센시오·파우 토레스). 고메스·캐시는 「more or less with the
+group but I must be sure they are 100%」(대체로 그룹과 함께 있지만 100%인지 확인해야 한다) → 둘 다 가용.
+⚠️ 같은 회견에서 **음바예·헤밍스·마조 3인 공개 지적** — 「until now, have not been good enough in the Premier
+League」(지금까지 프리미어리그에서 충분히 좋지 않았다). 직후 경기에서 **음바예 선발 제외(84′ 투입)** ·
+**헤밍스 72′ 투입**. obs#826 「원정 수비 게이트」 가설이 **기각되지 않았다**(단 감독의 직접 설명은 0건 — HELD 유지).
+
+### 8-2. 데 제르비(토트넘) 경기 후 회견 — ⭐⭐ 빌라 롱볼을 수치로 사전 스카우팅
+
+BeanymanSports, 2026-09-19, `kJZ0G7WvLWY` · 전사 `reports/transcripts/kJZ0G7WvLWY.en.md` (auto-caption)
+
+> 원문 「we conceded **one unacceptable goal from long goal kick with a long ball**, and **we knew before the game
+> because this season Aston Villa are playing 86% more long balls than last season**, and **we spoke in many many
+> meetings yesterday and two days ago**.」
+> (우리는 **롱 골킥에서 롱볼로 용납할 수 없는 골을 하나 내줬다**. 그리고 **경기 전에 알고 있었다 — 올 시즌
+> 아스톤 빌라는 지난 시즌보다 롱볼을 86% 더 많이 하고 있으니까**. **어제와 이틀 전 수많은 미팅에서 그 얘기를 했다**.)
+
+⇒ **이번 회차 최대 발견.** `manager_profiles.buildup`의 26/27 갱신(「상대 의존 폭이 저점유·고다이렉트로 확장」)을
+**상대 감독이 「전 시즌 대비 +86%」라는 정량 수치로 독립 확인**했다. 더 중요한 것은 **대비했는데도 그 루트로
+실점했다**는 점이다 — 67′ 잭슨 골의 경로(스즈키 롱킥 → 만잠비 플릭 → 잭슨)는 🇫🇷 wiwsport · 🇯🇵 footballchannel ·
+🇮🇹 Sky Sport Italia 3개 언어권이 동일하게 서술했고, 브뤼헤전에서 정식화한 GK 롱킥 경로의 **3번째 표본이자
+첫 득점 전환**이다.
+
+> 원문 「**Aston Villa is not a so bad team, it's good team, good players.**」(아스톤 빌라는 나쁜 팀이 아니다.
+> 좋은 팀이고 좋은 선수들이다.) / 「**Too easy for them to score, no? To score one goal we have to create 20 chances
+> and the others, just one half chance — no, not even, because the goal kick is not a chance.**」
+> (**저들은 너무 쉽게 득점하지 않았나? 우리는 한 골 넣으려면 20번의 기회를 만들어야 하는데, 상대는 반쪽짜리
+> 기회 하나 — 아니 그것도 아니다, 골킥은 기회가 아니니까.**)
+
+⚠️ 데 제르비의 빌라 인식은 **구조 분석이 아니라 효율**로 수렴한다 — 회견 전체에서 빌라의 블록·압박 구조를
+전술적으로 서술한 대목은 **0건**이다.
+
+### 8-3. 선수별 새 서사 (다국어)
+
+- **만잠비** · 🇩🇪 watson.ch(2026-09-19 15:33): 「**Ursprünglich im Zentrum aufgestellt, ist Manzambi überall
+  anzutreffen, presst, erobert Bälle und lanciert Angriffe.**」(원래 중앙에 배치됐지만 만잠비는 **어디에서나
+  발견되며, 압박하고, 볼을 탈취하고, 공격을 개시한다**.) · 🇩🇪 kicker 제목 「**Manzambi krönt seine
+  Startelfpremiere noch vor der Pause**」(만잠비, **하프타임 전에** 선발 데뷔전을 장식하다).
+  ⭐ Tanswell 현장 관찰: 「**Kamara is dropping between the CBs**, so #AVFC can keep building in a **back three** …
+  **Manzambi dropping deeper and alongside Gomes — far deeper than Rogers would pick the ball up**」
+  (카마라가 CB 사이로 내려가 빌라는 백3로 빌드업을 유지한다 … **만잠비는 더 깊이, 고메스 옆까지 내려온다 —
+  로저스가 볼을 받던 높이보다 훨씬 깊다**.) ⇒ `player_duties`의 「LDM(클럽 실측) / CAM(빌라 배치)」 **양쪽이
+  한 경기에서 동시 관측**됐다. Opta: PL 첫 선발 골+도움은 **빌라 역사상 2번째**(2005 케빈 필립스 이후).
+  ⚠️ 18′경 물리치료진 투입 기록이 있고 72′ 교체됐다 — **교체 사유 설명 0건**(D+1 조회 항목).
+- **부엔디아** · Opta: **토트넘 상대 4경기 연속 골** · 최근 PL 6골 중 4골이 **박스 밖**(리그 2위).
+  Tanswell 골 장면: 「Spurs are ragged and **Gomes drives straight through**. After the ball goes back inside the
+  pitch, **Buendia lets fly. Top left corner.**」(스퍼스가 너덜너덜해졌고 **고메스가 곧장 뚫고 들어간다**.
+  볼이 안쪽으로 돌아오자 **부엔디아가 때렸다. 왼쪽 상단 구석.**)
+- **스즈키 지온** · 🇯🇵 footballchannel: 11′ 사비우 근거리 반응 세이브 → 세컨볼 한 손 차단, 20′ 아치 그레이
+  중거리 저지, **67′ 롱패스가 추가골 기점**. 총평 「**高精度キック**」(고정밀 킥).
+  ⚠️ Tanswell은 반대 방향도 기록했다: 「**Double save from Suzuki after a really poor, lax giveaway between him
+  and Wan-Bissaka**」(스즈키와 완비사카 사이의 아주 나쁘고 느슨한 볼 로스트 뒤 스즈키의 더블 세이브)
+  — 빌드업 실수가 세이브의 원인이었다는 뜻이다.
+- **잭슨** · 골 체인 3개 언어 교차 확인: 🇫🇷 wiwsport 「Jackson … reçoit une passe de Manzambi qui avait récupéré
+  **un long dégagement de Suzuki**, **contrôle de la poitrine**」(잭슨이 **스즈키의 롱 클리어런스**를 회수한
+  만잠비의 패스를 받아 **가슴 트래핑**) · 🇯🇵 footballchannel 「**鈴木のロングパスが2点目の起点**」(스즈키의
+  롱패스가 두 번째 골의 기점) · 🇮🇹 Sky Sport Italia 「**destro rasoterra da 20 metri su assist di Manzambi**」.
+  ⚠️ 후반 시작 30초 만에 경고 — Tanswell: 「Emery talked yesterday about **Jackson not picking up unnecessary
+  bookings**. **30 seconds into the second half, he gets one.**」 ⇒ obs#845(포레스트전 45분 교체 = 퇴장 리스크
+  관리)의 **연속 관리 대상** 재확인.
+- **루헤리** · ⚠️ **양 진영 평가가 정면 충돌한다.** 빌라 쪽 Aston Villa Review 4점 「struggled with the evolving
+  challenge of Spurs' right flank」(변화하는 스퍼스 우측의 도전에 고전했다) + Tanswell 「**Spurs targeting
+  Ruggeri** … **#AVFC getting overloaded down their left.**」(스퍼스가 루헤리를 노린다 … 빌라가 좌측에서
+  과부하를 당하고 있다). 반대로 토트넘 쪽 HotspurHQ는 **사비우에게 4점**을 주며 「**quickly contained by
+  Matteo Ruggeri**」(루헤리에게 빠르게 봉쇄됐다)라고 적었다. 🇮🇹 TMW 「**Ruggeri debutta dal 1′ contro
+  De Zerbi**」(루헤리, 데 제르비 상대로 선발 데뷔) — **PL 첫 선발**. **판정 보류**(D+1~D+3 재검토).
+- **주앙 고메스** · Tanswell 사전 임무: 「Spurs a threat with Savio's pace against Ruggeri … so **Gomes will need
+  to keep coming across to cover**」(사비오의 스피드가 루헤리를 상대로 위협적이므로 **고메스가 계속 건너와
+  커버해야 할 것이다**.) ⇒ §2의 「피벗 역할 분화」와 정합한다 — 고메스의 파괴 몫은 성향이 아니라 **좌측 커버
+  지시**였을 수 있다. 수비액션 y가 전반 72.5(좌측) → 후반 50.3(중앙)으로 이동한 것도 같은 방향이다.
+- **카마라** · ⭐ Tanswell: 「**Kamara is dropping between the CBs, so #AVFC can keep building in a back three.**」
+  + 에메리 본인의 「first half we use it more [Kamara] dropping dropping」. ⇒ `manager_profiles.buildup`의 기존
+  백3 경로(3-2-5 · 콘사 RB 변환)와 다른 **피벗 하강형 백3** 후보. **HELD** — 재판정 조건은 §8-5 참조.
+- **맥긴** · Tanswell: 「#AVFC happy for **McGinn to slide along Cash, be in a back five mid-block (5-3-2)**」
+  (빌라는 **맥긴이 캐시 옆으로 미끄러져 백5 미드블록(5-3-2)**을 이루는 형태에 만족한다.) ⇒ 실측으로 확인됐고
+  obs#151(맥긴 RM 인사이드 포워드 기각)과 충돌하지 않는다 — **무보유 국면 임무**이기 때문이다.
+- **완비사카 → 캐시** · AVR 완비사카 5점 「Showcased his one-on-one defending in the early minutes but **took a few
+  risks with his physicality** and was substituted at half time.」(초반에 1대1 수비를 보여줬지만 **자기 피지컬로
+  몇 번 위험을 감수했다**. 하프타임에 교체됐다.) — **감독 설명 0건, 부상/전술 미확정**(D+1 최우선 조회).
+
+### 8-4. 실측과의 충돌·정정
+
+| # | 항목 | 외부 | 우리 값 | 판정 |
+|---|---|---|---|---|
+| ① | 만잠비 득점 시각 | 45+4′ (Opta·kicker·Sky It 등 6개 언어권) | `minute=49, added=4` | 🟢 **충돌 아님** — 우리 규약이 「90+3은 93」이므로 45+4 = 49다. 서사 회차가 규약을 모르고 충돌로 올린 건이며 DB는 정확하다. |
+| ② | 갤러거 / 판 헤케 | 85′ / 90+5′ (Opta) | 86′ / 90+8′ (SofaScore·구단) | 🟡 제공사 1~3분 차 — 서사 판단에 영향 없음, 병기만 한다. |
+| ③ | 「판 데 벤 부상 교체」 | — | — | 🔴 **교체되지 않았다.** 45′경 치료로 일시 이탈 후 복귀해 풀타임. 데 제르비 본인 「we concede the first goal … **in 10 players just for one minute**」(단 1분간 10명이던 상황에서 첫 골을 내줬다). 전반 부상 교체는 **포로(19′ → 아치 그레이)**다. |
+| ④ | 「무공 4-4-2 고정」 | — | 리포트 초판 서술 | 🔴 **정정됨** — 후반은 우측 편중 백5(§2). |
+| ⑤ | 소스 오류 2건 | HotspurHQ가 빌라 GK를 「Emiliano Martínez」로 오기 · wiwsport 본문이 스코어를 3-1로 오기 | — | 인용에서 배제했다. |
+
+### 8-5. 구현 주장 (`video_impl_claims` 5행 — G17)
+
+| 영상 | axis · field | value | verdict |
+|---|---|---|---|
+| `Jp52xd-xLt8` | instruction · `away_vs_top_game_plan` | `defend_deep_then_transition` | **APPLIED** |
+| `k6dbBj7Tz7w` | instruction · `defensive_shape_second_half` | `back_five_right_side_shift` | **APPLIED** |
+| `k6dbBj7Tz7w` | instruction · `buildup_back_three_source` | `pivot_drop_kamara` | **HELD** |
+| `kJZ0G7WvLWY` | team_axis · `build_up_style` | `Counter` | **APPLIED** |
+| `kJZ0G7WvLWY` | instruction · `gk_long_kick_route` | `goal_kick_to_ten_flick_to_nine` | **APPLIED** |
+
+⛔ HELD 1건의 **재판정 조건**: 이번 수집은 WhoScored **보유 이벤트를 분(分) 없이** 받아 전반만 분리할 수
+없었다. 다음 회차에 보유 이벤트를 `expandedMinute` 포함으로 재수집해 **전반 카마라 보유 x와 CB 라인 x
+(린델뢰프·밍스)를 대조**한다. 격차가 8 이하로 좁혀지면 APPLIED, 아니면 REJECTED.
+(경기 전체 평균 카마라 40.3 vs CB 25.7·26.1만으로는 판정할 수 없다.)
+
+### 8-6. 소스 커버리지 (D+0)
+
+| 종류 | 상태 | 내용 / 미수행 사유 |
+|---|---|---|
+| 1. 유튜브 전술 분석 | ◐ 부분 | ⭐ **AVL 필수 3채널 전부 이 경기 영상 0건**(D+0 ~10h 시점) — UTV `fKDbTccRjGk` · The Villans `JmmZ2jzDzJQ`(제목 「Mbaye To Start」 — 실제로는 선발 제외) · 1874 `WajH4NOz_D0` 모두 **프리뷰**다. 대신 **회견 원본 3편 전사 확보**. 리뷰 영상은 D+1 예상. |
+| 2. 전술 블로그 | ⛔ **0건** | TFA · Between the Lines · Spielverlagerung · Coaches' Voice 전부 D+0 미발행. 대체로 The Analyst(Opta) 데이터 기사 1편. |
+| 3. 기사 | ✅ | ⭐⭐ **Tanswell 확보** — Bluesky `jacobtanswell.bsky.social` 공개 API로 경기 전~중 22건 + 경기 후 에메리 인용 1건. The Athletic 본문·Birmingham Mail·football.london·BBC·Guardian은 **크롤러 차단**. 대체: Read Aston Villa 3편 · Aston Villa Review · Yardbarker · Goal · NBC · Reuters. |
+| 4. 본인 발언 | ✅ | **양 팀 감독 회견 전문 전사 확보** + 에메리 D-1 회견. ⛔ 미확보: avfc.co.uk 회견 본문(클라이언트 렌더링) · tottenhamhotspur.com 「Every word」(D+0 미발행). |
+
+**언어별 시도 검색어(0건 포함)**
+
+| 언어 | 결과 |
+|---|---|
+| 🇪🇸 스페인어 | EFE 크로니카 2건 + 🇦🇷 Vermouth Deportivo 1건. **회견 verbatim 0건**(Marca·AS·Relevo·El Desmarque 미발행). 검색어 `Emery Aston Villa Tottenham crónica rueda de prensa` · `Buendía golazo Tottenham rueda de prensa post partido` · `Emery declaraciones tras ganar Tottenham 19 septiembre 2026` |
+| 🇯🇵 일본어 | **3건**(soccer-king 2 · footballchannel 1) — 스즈키 세이브 타임스탬프 + 에메리 평가 재번역. 검색어 `鈴木彩艶 トッテナム アストン・ヴィラ` · `鈴木彩艶 セーブ プレミアリーグ` |
+| 🇩🇪 독일어/스위스 | **4건**(watson.ch · kicker · Tages-Anzeiger · bluewin) — 만잠비 전술 묘사 verbatim |
+| 🇮🇹 이탈리아어 | TMW 1 + Sky Sport Italia 1. **pagelle 0건 · 데 제르비 이탈리아어 인용 0건**. 검색어 `Ruggeri Aston Villa Tottenham pagelle` · `De Zerbi Tottenham Aston Villa conferenza stampa` · `Tuttosport Gazzetta De Zerbi 3-2 dichiarazioni` |
+| 🇸🇪 스웨덴어 | 1건(Fotbollskanalen, 라인업·골 묘사만). **린델뢰프 개별 평가 0건** |
+| 🇫🇷 프랑스어/세네갈 | wiwsport 2건. **음바예 84′ 투입 전용 기사 0건**(L'Équipe·RMC·Senego) |
+| 🇧🇷 포르투갈어 | ⛔ **0건** — Trivela·GE·Lance·UOL 전부 미커버. 검색어 `João Gomes Aston Villa Tottenham atuação` · `Aston Villa vence Tottenham João Gomes Kamara meio-campo crônica` |
+| 🏴 상대팀 관점 | **4건**(Cartilage Free Captain · HotspurHQ · Read Tottenham · 팬채널 리액션). Spurs Web·The Fan Debate·LWOS는 D+0 미발행 |
+
+**D+1 이후 과제**: ① 필수 3채널 리뷰 영상 ② 전술 블로그(TFA·Between the Lines) ③ **완비사카 HT 교체 사유**
+④ **만잠비 72′ 교체가 부상인지** ⑤ 후반 2실점에 대한 에메리 진단(회견 2편 어디에도 **0건**) ⑥ avfc.co.uk·
+tottenhamhotspur.com 회견 전문 ⑦ 🇮🇹 pagelle · 🇸🇪 린델뢰프 평점 ⑧ 루헤리 평가 충돌 판정.
 
 ---
 

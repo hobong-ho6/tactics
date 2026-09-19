@@ -1,8 +1,144 @@
 {
  "all": [
   {
+   "channel": "Aston Villa Football Club",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 194,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "away_vs_top_game_plan",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「we knew before the match, we needed defense and we needed to be so so resilient defensively. We needed the keeper saving us.」(경기 전부터 우리는 알고 있었다 — 수비가 필요하고 수비적으로 대단히 견뎌야 한다는 것을. 골키퍼가 우리를 구해줘야 했다.) — auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "defend_deep_then_transition",
+     "verdict": "APPLIED",
+     "verdict_note": "실측이 전면 지지한다: def_x 30.6(26/27 최저, optimal:vs-strong 라인 43보다 낮다) · PPDA 13.24 · 상대 진영 패스 102회 · 3골 전부 오픈플레이(세트피스 xG 0.00) · fast-break 슈팅 3회. match_game_setups(report 47)에 Counter/Balanced/라인 48로 이미 기록했다. 시즌 정본은 바꾸지 않는다(단일 경기)."
+    }
+   ],
+   "key_points": [
+    "게임 플랜 자인 — 원문 「The game plan we planned … We were defending collectively strong the first half. We needed the keeper. We needed defend a lot of corners defensively and we were resilience, but as well when we could get some transition we were trying to threaten them.」(우리가 세운 게임 플랜 … 전반에 집단적으로 강하게 수비했다. 골키퍼가 필요했다. 코너를 수비적으로 많이 막아내야 했고 우리는 회복력이 있었다. 동시에 전환을 얻을 수 있을 때는 그들을 위협하려 했다.)",
+    "0-0 유지가 목표의 일부 — 원문 「keeping the result with nil nil was out of process to try to grow up during the match」(0-0으로 결과를 유지하는 것이 경기 중 성장하려는 과정의 일부였다).",
+    "신입 통합 — 원문 「We must adapt the new players and we need to create and to build a structure feeling comfort, one getting confidence」(새 선수들을 적응시켜야 하고, 편안함을 느끼는 구조를 만들고 세워야 한다. 그러면서 자신감을 얻는 것이다). 선발 11명 중 6명이 여름 영입.",
+    "실측 정합: def_x 30.6(26/27 최저) · PPDA 13.24 · 코너 1-11 허용 · 빌라 오픈플레이 xG 1.16이 전체 xG와 동일(세트피스 0.00) — 「수비·GK·코너·전환」 네 낱말이 그대로 수치로 나온다."
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "아스톤 빌라 구단 공식 채널의 에메리 경기 후 인터뷰(토트넘 원정 3-2 승). 에메리는 결과가 아니라 **사전에 세운 게임 플랜**을 먼저 말한다 — 원정에서 집단적으로 수비하고, 골키퍼가 구해주고, 코너를 막아내고, 전환을 잡았을 때 위협한다는 것. 0-0을 유지하는 것이 「성장 과정의 일부」였다고 표현해 저점유가 사고가 아니라 설계였음을 직접 밝힌다. 선발 11명 중 6명이 여름 영입이라는 질문에는 「편안함을 느끼는 구조를 만들고 세우면 자신감이 따라온다」고 답했다. 잭슨·만잠비·부엔디아 3인의 득점을 「환상적」이라 평했다.",
+   "team_code": "AVL",
+   "title": "🗣️ \"We are DELIGHTED with how the players have responded\" | Unai Emery on Spurs victory | POST MATCH",
+   "transcript_path": "reports/transcripts/Jp52xd-xLt8.en.md",
+   "url": "https://www.youtube.com/watch?v=Jp52xd-xLt8",
+   "video_id": "Jp52xd-xLt8"
+  },
+  {
+   "channel": "BeanymanSports",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 196,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "gk_long_kick_route",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「we conceded one unacceptable goal from long goal kick with a long ball」(우리는 롱 골킥에서 롱볼로 용납할 수 없는 골을 하나 내줬다.) — auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "goal_kick_to_ten_flick_to_nine",
+     "verdict": "APPLIED",
+     "verdict_note": "67′ 잭슨 골(xG 0.060)의 경로를 상대 감독이 직접 특정했다. 스즈키 패스 38회 중 성공 22(58%)·롱킥 비중이 이 루트의 실측 근거이고, 브뤼헤전에서 정식화한 「맨투맨 하이프레스 → 의도적 GK 백패스 → 스즈키 롱킥」의 3번째 표본이자 **첫 득점 전환**이다. 상대가 사전에 대비했는데도 성립했다는 점이 추가 정보다."
+    },
+    {
+     "axis": "team_axis",
+     "field": "build_up_style",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「this season Aston Villa are playing 86% more long balls than last season, and we spoke in many many meetings yesterday and two days ago」(올 시즌 아스톤 빌라는 지난 시즌보다 롱볼을 86% 더 많이 하고 있어서, 어제와 이틀 전 수많은 미팅에서 그 얘기를 했다.) — auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Counter",
+     "verdict": "APPLIED",
+     "verdict_note": "상대 감독의 **정량 사전 스카우팅**이 우리 buildup 축 갱신(25/26 Short Passing → 26/27 상대 의존 고다이렉트)을 독립 확인했다. 이 경기 실측 롱볼 14.5%는 26/27 최고이고 core.team_settings.suggest도 Counter를 제안해 match_game_setups(report 47)에 Counter로 기록했다. ⛔ 시즌 정본 team_tactic_setups(Short Passing)는 바꾸지 않는다 — 에메리의 빌드업은 상대 의존이고 헐전 롱볼 5.6%가 같은 시즌에 있다."
+    }
+   ],
+   "key_points": [
+    "⭐⭐ 빌라 롱볼 +86% 사전 인지 — 원문 「we conceded one unacceptable goal from long goal kick with a long ball, and we knew before the game because this season Aston Villa are playing 86% more long balls than last season, and we spoke in many many meetings yesterday and two days ago.」(우리는 롱 골킥에서 롱볼로 용납할 수 없는 골을 하나 내줬다. 경기 전에 알고 있었다 — 올 시즌 아스톤 빌라는 지난 시즌보다 롱볼을 86% 더 많이 하고 있으니까. 어제와 이틀 전 수많은 미팅에서 그 얘기를 했다.)",
+    "빌라 평가 — 원문 「Aston Villa is not a so bad team, it's good team, good players.」(아스톤 빌라는 나쁜 팀이 아니다. 좋은 팀이고 좋은 선수들이다.) / 「Too easy for them to score, no? To score one goal we have to create 20 chances and the others, just one half chance — no, not even, because the goal kick is not a chance.」(저들은 너무 쉽게 득점하지 않았나? 우리는 한 골 넣으려면 20번의 기회를 만들어야 하는데, 상대는 반쪽짜리 기회 하나 — 아니 그것도 아니다, 골킥은 기회가 아니니까.)",
+    "후반 붕괴 자기 진단 — 원문 「we lost balance because we were losing … and we forced the pass. We lost ball and Aston Villa … played more in counter」(지고 있어서 밸런스를 잃었고 패스를 무리했다. 볼을 잃었고 아스톤 빌라는 더 역습으로 나왔다.)",
+    "실측 정합: 빌라 롱볼 시도 48/패스 331 = **14.5%로 26/27 최고**(브뤼헤 원정 13.4% · 아스날전 11.8%). 67′ 잭슨의 두 번째 골이 바로 그 경로(스즈키 롱킥 → 만잠비 플릭 → 잭슨)이며 프랑스어·일본어·이탈리아어 매체 3곳이 골 체인을 동일하게 서술했다.",
+    "⚠️ auto-caption 오인식: Kudus→「Cudis/Goodison」, Mateus Fernandes→「Matos/Medis」, Solanke→「Saleni」, Bentancur→「Betangur」, counter→「contra」."
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "BeanymanSports가 담은 토트넘 데 제르비 감독의 경기 후 회견. ⭐ 이 전사의 핵심은 **상대 감독이 빌라의 롱볼 증가를 정량 수치로 사전 스카우팅했다고 자인한 대목**이다 — 「올 시즌 아스톤 빌라는 지난 시즌보다 롱볼을 86% 더 많이 하고 있어서 어제와 이틀 전 수많은 미팅에서 그 얘기를 했다」고 말한 뒤, 그럼에도 롱 골킥에서 실점한 것을 「용납할 수 없다」고 했다. 빌라에 대한 평가는 구조 분석이 아니라 효율로 수렴한다 — 「우리는 한 골 넣으려면 20번의 기회를 만들어야 하는데 저들은 너무 쉽게 넣었다」. 회견 전체에서 빌라의 블록·압박 구조를 전술적으로 서술한 대목은 없다.",
+   "team_code": "AVL",
+   "title": "DE ZERBI: “I DIDN'T SPEAK WITH THE PLAYERS TODAY!” 😳 Tottenham 2-3 Aston Villa ⚽ Premier League",
+   "transcript_path": "reports/transcripts/kJZ0G7WvLWY.en.md",
+   "url": "https://www.youtube.com/watch?v=kJZ0G7WvLWY",
+   "video_id": "kJZ0G7WvLWY"
+  },
+  {
+   "channel": "TNT Sports Football",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 195,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "defensive_shape_second_half",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「sometimes with back four is not enough to defend completely the … side of the field … the second half we needed more with John McGinn」(때로는 백4로는 측면을 완전히 수비하기에 충분하지 않다 … 후반에는 존 맥긴으로 더 필요했다.) — auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "back_five_right_side_shift",
+     "verdict": "APPLIED",
+     "verdict_note": "실측이 독립 확인한다 — 맥긴 수비액션 x 전반 56.3 → 후반 32.1, y 32.8 → 18.2. 후반 57′·58′·77′ 수비액션이 x 11.8~16.2로 백4 라인 깊이이고 전반에는 그 대역이 0건이다. 단 좌측은 부엔디아가 반대로 35.6 → 47.6으로 올라가 대칭 5-3-2가 아니라 **우측 편중 백5**다. 리포트 §2·§6에 이 형태로 기록하고 manager_profiles.formation의 「5-3-2 전환 미관측」 서술을 정정 대상으로 올린다."
+    },
+    {
+     "axis": "instruction",
+     "field": "buildup_back_three_source",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「someday we are the first half we use it more [Kamara] dropping dropping」(어떤 날은 전반처럼 카마라를 더 내려서 쓴다.) — auto-caption, Kamara가 「camera」로 오인식",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "pivot_drop_kamara",
+     "verdict": "HELD",
+     "verdict_note": "**재판정 조건**: 이번 수집은 WhoScored 보유 이벤트를 분(分) 없이 받아 전반만 분리할 수 없었다. 다음 회차에 보유 이벤트를 expandedMinute 포함으로 재수집해 **전반 카마라 보유 x와 CB 라인 x(린델뢰프·밍스)를 대조**한다. 두 값의 격차가 8 이하로 좁혀지면 APPLIED, 아니면 REJECTED. 현재 경기 전체 평균(카마라 40.3 vs CB 25.7·26.1)만으로는 판정할 수 없다. manager_profiles.buildup의 기존 백3 경로(3-2-5·콘사 RB 변환)와 다른 새 경로 후보다."
+    }
+   ],
+   "key_points": [
+    "⭐ 후반 백5 자인 — 원문 「sometimes with back four is not enough to defend completely the … side of the field, and someday we are the first half we use it more [Kamara] dropping dropping, and someday is a five center back being in the back four inside, and the second half we needed more with John McGinn」(때로는 백4로는 측면을 완전히 수비하기에 충분하지 않다. 어떤 날은 전반처럼 카마라를 더 내려서 쓰고, 어떤 날은 센터백 5명이 백4 안쪽에 들어가는 형태가 된다. 그리고 후반에는 존 맥긴으로 더 필요했다.) ⚠️ auto-caption이 Kamara를 「camera」로 오인식했다.",
+    "상황 대응 원칙 — 원문 「understanding when we need to sacrifice in this direction defensively or offensively — it depends each match, we must adapt.」(수비 쪽으로 희생할지 공격 쪽으로 희생할지를 이해해야 하고, 그건 경기마다 다르다. 우리는 적응해야 한다.)",
+    "사전 설계 — 원문 「we knew before the match, we needed defense … the best match we played in the Premier League this year at the moment.」(경기 전부터 수비가 필요하다는 걸 알고 있었다 … 현재로선 올 시즌 프리미어리그 최고의 경기다.)",
+    "실측 교차검증(WhoScored matchId 1983589): 맥긴 수비액션 평균 x가 전반 56.3 → 후반 32.1(Δ−24.2), y 32.8 → 18.2(우측 터치라인 쪽). 후반 57′·58′·77′에는 x 11.8~16.2에서 수비했다 — 백4 라인(캐시 17.4·린델뢰프 16.5·밍스 15.2·루헤리 21.4)과 같은 깊이다. 전반에는 그 대역 수비액션이 0건이었다."
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "TNT Sports의 에메리 경기 후 인터뷰. ⭐ 이 전사의 핵심은 **후반 백5 전환을 감독 본인이 인정한 대목**이다. 진행자가 「후반에 페널티 박스 앞에서 사실상 백5로 갔고 맥긴이 아주 깊게 내려갔다」고 짚자 에메리는 「때로는 백4로 측면을 완전히 수비하기에 충분하지 않다」며, 전반에는 카마라를 내려 쓰고 후반에는 맥긴으로 그것을 했다고 답한다. 또한 「수비 쪽으로 희생할지 공격 쪽으로 희생할지는 경기마다 다르고 우리는 적응해야 한다」는 문장으로 상황 대응 원칙을 직접 언어화했다. 이 경기를 「올 시즌 프리미어리그에서 우리가 한 최고의 경기」로 평가했다.",
+   "team_code": "AVL",
+   "title": "Unai Emery REACTS after Aston Villa end winless run with victory against Spurs",
+   "transcript_path": "reports/transcripts/k6dbBj7Tz7w.en.md",
+   "url": "https://www.youtube.com/watch?v=k6dbBj7Tz7w",
+   "video_id": "k6dbBj7Tz7w"
+  },
+  {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 190,
    "impl_claims": [
     {
@@ -52,7 +188,7 @@
   },
   {
    "channel": "The Villans",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 189,
    "impl_claims": [
     {
@@ -72,7 +208,7 @@
     "라운드 전체 예상물 — 코번트리전 회고·전술 언급 없음",
     "D+2 필수 3채널 확인의 0건 기록(게시 있음 · 경기 축 소득 없음)"
    ],
-   "kind": "프리뷰",
+   "kind": "선수스카우팅",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-18",
@@ -87,7 +223,7 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 191,
    "impl_claims": [
     {
@@ -108,7 +244,7 @@
     "스퍼스 스카우팅: 세트피스 2·3차 공격에서 실점 반복 · 「there's a lot of crosses going into the box and not a lot in the box」(박스로 들어가는 크로스는 많은데 박스 안에 사람이 적다) — 측면 편중",
     "빌라 미드필드 2를 카마라+고메스로 가정하고 스퍼스 중원 과부하를 경고(녹화 시점 한계)"
    ],
-   "kind": "프리뷰",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-18",
@@ -324,7 +460,7 @@
   },
   {
    "channel": "Talk Villa",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 192,
    "impl_claims": [
     {
@@ -387,7 +523,7 @@
   },
   {
    "channel": "The Villa Park Podcast",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 193,
    "impl_claims": [
     {
@@ -435,7 +571,7 @@
     "음바예 유보: 「a few points where he maybe could have released it a little bit quicker… threw in a few stepovers when he didn't really need to」(조금 더 빨리 내줄 수 있던 장면이 몇 번 있었고, 굳이 필요 없는 스텝오버를 몇 번 넣었다) — if8UoAcl8qo의 「기술 시도 한두 개 과했다」와 같은 지적",
     "⭐ 출처 경로 확인: 「Emery spoke about him in his press conference after the game to Jacob Tanswell」(에메리가 경기 후 회견에서 제이콥 탠스웰에게 그에 대해 말했다) — 가르나초 발언의 1차 질문자가 Tanswell임을 제3자가 확인"
    ],
-   "kind": "경기반응",
+   "kind": null,
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-17",
@@ -7291,6 +7427,11 @@
   "45": [
    166,
    167
+  ],
+  "47": [
+   194,
+   196,
+   195
   ]
  }
 }
