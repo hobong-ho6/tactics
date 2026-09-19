@@ -57,7 +57,7 @@ def main():
              con.execute("SELECT ea_item_id, player_id, name_kr, best_pos FROM player_card_items WHERE game_version='FC27'")}
 
     ins = upd = same = 0
-    conflicts, applied_styles = [], []
+    conflicts, applied_styles, done = [], [], []
     for r in rows:
         card = cards.get(r["ea"]) or {}
         gk = (card.get("best_pos") == "GK")
@@ -79,6 +79,16 @@ def main():
         # ③ 어긋남 검출 — 원장이 기록한 현재 OVR과 EA 실제값이 다르면 보고한다(진화 기록 오류 신호)
         if cur["current_ovr"] is not None and cur["current_ovr"] != r["ovr"]:
             conflicts.append((cur["name"], cur["current_ovr"], r["ovr"], cur["evo_count"]))
+        # ⭐ 진화 완주 추정 (2026-09-19, 사용자 질문 「fut.gg 데이터로 진화 완료 여부는 파악하기 어렵나?」)
+        #    fut.gg는 **경로**를 주지 않지만 완주 흔적은 셋이 남는다:
+        #      ⑴ 아이템 id에 `-N` 반복 접미 ⑵ isInProgressEvolution 플래그 ⑶ **OVR·스탯 상승**
+        #    ⛔ 자동으로 완료 처리하지 않는다 — 어떤 진화였는지는 데이터에 없으므로 사람이 확정한다.
+        pend = con.execute("""SELECT evo_name, ovr_after FROM fut_evolution_log
+                              WHERE club_player_id=? AND completed_at IS NULL ORDER BY applied_at LIMIT 1""",
+                           (cur["id"],)).fetchone()
+        if pend and (r["ovr"] > (cur["current_ovr"] or 0) or "-" in str(r.get("gg") or "").rsplit("-", 1)[-1][:1]
+                     or str(r.get("gg") or "").count("-") > 1):
+            done.append((cur["name"], pend["evo_name"], cur["current_ovr"], r["ovr"], pend["ovr_after"]))
         changed = (cur["current_ovr"] != r["ovr"] or cur["current_six"] != six
                    or cur["chem_style_ea"] != r.get("cs") or cur["chem_points"] != r.get("cp"))
         con.execute("""UPDATE fut_club_players SET current_ovr=?, current_six=?, chem_style_ea=?, chem_points=?,
@@ -99,6 +109,10 @@ def main():
         print("\n적용된 케미 스타일:")
         for n, s, cp in applied_styles:
             print(f"   {n:<16} {s:<10} 개인 케미 {cp}")
+    if done:
+        print("\n⭐ 진화 완주로 보이는 선수 — `fut_club.py complete`로 닫을 것(어떤 진화였는지는 fut.gg가 주지 않는다):")
+        for n_, evo, before, after, expect in done:
+            print(f"   {n_:<16} {evo:<32} 원장 {before} → EA {after}" + (f" (기록상 완주 시 {expect})" if expect else ""))
     if conflicts:
         print("\n⚠️ 원장 ↔ EA 불일치 — 진화 기록을 다시 봐야 한다:")
         for n, mine, ea, ec in conflicts:

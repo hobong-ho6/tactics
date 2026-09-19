@@ -795,7 +795,7 @@ CREATE TABLE fut_club_players(
   current_playstyles TEXT, current_roles_plus TEXT, current_roles_plus_plus TEXT,
   evo_count INTEGER NOT NULL DEFAULT 0,       -- 적용한 진화 단계 수(로그와 일치해야 한다)
   notes TEXT,
-  updated TEXT NOT NULL, chem_style_ea INTEGER, chem_points INTEGER, gg_player_id TEXT, synced_at TEXT,
+  updated TEXT NOT NULL, chem_style_ea INTEGER, chem_points INTEGER, gg_player_id TEXT, synced_at TEXT, current_attrs TEXT,
   UNIQUE(account_id, ea_item_id)
 );
 CREATE TABLE fut_evolution_log(

@@ -185,6 +185,8 @@ def export_all(db_path=None, window="2026-summer"):
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
                           {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices,
                            "chem_styles": chem_styles, "squad": squad, "squad_slots": squad_slots,
+                           "canon_roles": _rows(con, """SELECT pos, role_id, focus, game_version FROM slot_canon_roles
+                                                       WHERE regime_id=1 AND formation='4-2-3-1 Wide'"""),
                            "face_stats": _rows(con, """SELECT abbr, is_gk, attr, weight FROM fc_face_stats
                                                       WHERE game_version='FC27' ORDER BY is_gk, abbr"""),
                            "chem_meta": _rows(con, """SELECT item, value, alternatives, rationale, source

@@ -543,6 +543,12 @@ function renderChem(owned){
   const SQ = (EVO.squad || [])[0];
   const slots11 = (EVO.squad_slots || []).filter(x => x.grp === 'FIELD').sort((a, b) => a.idx - b.idx);
   const FORM_SLOTS = ['GK', 'RB', 'CB', 'CB', 'LB', 'CDM', 'CDM', 'RM', 'LM', 'CAM', 'ST'];   // f4231a 슬롯 순서
+  /* ⭐ 역할은 **그 자리가 요구하는 것**을 먼저 쓴다(2026-09-19, 음바예·맥긴 좌우 교체로 드러난 문제).
+     선수의 시즌 처방을 쓰면 자리를 바꿔도 역할이 따라와서, 좌우를 맞바꾼 순간 추천이 뒤집히지 않는다.
+     정본 슬롯(slot_canon_roles, 4-2-3-1 Wide)을 **fut.gg 슬롯 순서에 대응**시킨다(우→좌 순).
+     LCB/RCB·LDM/RDM는 좌우가 갈리므로 인덱스로 맞춘다. */
+  const CANON = Object.fromEntries((EVO.canon_roles || []).map(r => [r.pos, r]));
+  const CANON_BY_IDX = ['GK', 'RB', 'RCB', 'LCB', 'LB', 'RDM', 'LDM', 'RM', 'LM', 'CAM', 'ST'];
   const byItem = new Map(owned.map(p => [p.ea_item_id, p]));
   let curHtml = '';
   if (SQ && slots11.length){
@@ -553,16 +559,18 @@ function renderChem(owned){
         <b>지금 쓰는 스쿼드</b> <span class="chip">${esc(SQ.title || '')}</span>
         <span class="chip" style="border-color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'}">케미 ${total}/33</span>
         <small class="dim">— fut.gg 싱크 ${esc(SQ.synced_at)} 기준</small></div>
-      <table><tr><th>슬롯</th><th>선수</th><th>케미</th><th>붙인 스타일</th><th>추천 — 에메리 처방 기준</th><th>메타 관습</th></tr>
+      <table><tr><th>슬롯</th><th>선수</th><th>이 자리 역할(에메리)</th><th>케미</th><th>붙인 스타일</th><th>추천 — 이 자리 기준</th><th>메타 관습</th></tr>
       ${slots11.map((s, i) => { const p = byItem.get(s.ea_item_id);
-        if (!p) return `<tr><td><b>${FORM_SLOTS[i] || i}</b></td><td colspan="4" class="dim">원장에 없는 카드(싱크 필요)</td></tr>`;
+        if (!p) return `<tr><td><b>${FORM_SLOTS[i] || i}</b></td><td colspan="6" class="dim">원장에 없는 카드(싱크 필요)</td></tr>`;
         const now = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
-        const roleId = PRES[p.player_id]?.role_id || POS_ROLE[FORM_SLOTS[i]];
+        const canon = CANON[CANON_BY_IDX[i]];
+        const roleId = canon?.role_id || PRES[p.player_id]?.role_id || POS_ROLE[FORM_SLOTS[i]];
         const st = styleRank(p.attrs, roleId, FORM_SLOTS[i] === 'GK');
         const v = chemBy.get(p.id) ?? 0;
         const same = now && st[0] && now === st[0].name;
-        return `<tr><td><b>${FORM_SLOTS[i] || i}</b></td>
+        return `<tr><td><b>${FORM_SLOTS[i] || i}</b><br><small class="dim">${esc(CANON_BY_IDX[i])}</small></td>
           <td>${esc(p.name)} <small class="dim">OVR ${chemOvr(p) || '—'}</small></td>
+          <td class="dim">${canon ? `${esc(ROLE_KR[canon.role_id] || canon.role_id)}<br><small>${esc(canon.focus)}</small>` : '—'}</td>
           <td style="color:${v === 3 ? 'var(--ok)' : v ? 'var(--warn)' : 'var(--bad)'}"><b>${v}</b>/3</td>
           <td>${now && !['Basic', 'GK Basic'].includes(now) ? `<b>${esc(now)}</b>` : '<span class="dim">미적용</span>'}</td>
           <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}${styleDetail(st)}</td>

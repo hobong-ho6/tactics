@@ -1,4 +1,72 @@
 {
+ "canon_roles": [
+  {
+   "focus": "Roaming",
+   "game_version": "FC26",
+   "pos": "CAM",
+   "role_id": "cam_playmaker"
+  },
+  {
+   "focus": "Defend",
+   "game_version": "FC26",
+   "pos": "GK",
+   "role_id": "gk_goalkeeper"
+  },
+  {
+   "focus": "Support",
+   "game_version": "FC26",
+   "pos": "LB",
+   "role_id": "fb_att_wb"
+  },
+  {
+   "focus": "Build-Up",
+   "game_version": "FC26",
+   "pos": "LCB",
+   "role_id": "cb_bpd"
+  },
+  {
+   "focus": "Roaming",
+   "game_version": "FC26",
+   "pos": "LDM",
+   "role_id": "dm_holding"
+  },
+  {
+   "focus": "Support",
+   "game_version": "FC26",
+   "pos": "LM",
+   "role_id": "wm_widemid"
+  },
+  {
+   "focus": "Balanced",
+   "game_version": "FC26",
+   "pos": "RB",
+   "role_id": "fb_wingback"
+  },
+  {
+   "focus": "Aggressive",
+   "game_version": "FC26",
+   "pos": "RCB",
+   "role_id": "cb_bpd"
+  },
+  {
+   "focus": "Defend",
+   "game_version": "FC26",
+   "pos": "RDM",
+   "role_id": "dm_holding"
+  },
+  {
+   "focus": "Attack",
+   "game_version": "FC26",
+   "pos": "RM",
+   "role_id": "wm_winger"
+  },
+  {
+   "focus": "Versatile",
+   "game_version": "FC26",
+   "pos": "ST",
+   "role_id": "st_advanced"
+  }
+ ],
  "catalog": [
   {
    "allowed_prior_ids": "[]",
@@ -695,7 +763,7 @@
     "applied_at": "2026-09-19",
     "attrs_delta": null,
     "club_player_id": 48,
-    "completed_at": null,
+    "completed_at": "2026-09-19",
     "evo_id": 2490,
     "evo_name": "Intro to Training Camp EVOs",
     "id": 5,
@@ -713,7 +781,7 @@
     "applied_at": "2026-09-19",
     "attrs_delta": null,
     "club_player_id": 49,
-    "completed_at": null,
+    "completed_at": "2026-09-19",
     "evo_id": 2502,
     "evo_name": "Fullback Fork",
     "id": 6,
@@ -2383,11 +2451,11 @@
     "chem_points": 3,
     "chem_style_ea": 250,
     "club": "Aston Villa",
-    "current_ovr": 78,
-    "current_playstyles": "Whipped Pass",
-    "current_roles_plus": "[]",
+    "current_ovr": 83,
+    "current_playstyles": "Whipped Pass, Jockey, Inventive",
+    "current_roles_plus": "[9, 28]",
     "current_roles_plus_plus": "[]",
-    "current_six": "{\"PAC\": 78, \"SHO\": 61, \"PAS\": 74, \"DRI\": 71, \"DEF\": 73, \"PHY\": 75}",
+    "current_six": "{\"PAC\": 83, \"SHO\": 61, \"PAS\": 74, \"DRI\": 71, \"DEF\": 78, \"PHY\": 80}",
     "ea_item_id": 259584,
     "evo_count": 1,
     "id": 49,
@@ -2539,8 +2607,8 @@
     "chem_style_ea": 250,
     "club": "Aston Villa",
     "current_ovr": 78,
-    "current_playstyles": "Block, Intercept, Anticipate, Rapid, Slide Tackle+",
-    "current_roles_plus": "[]",
+    "current_playstyles": "Rapid, Block, Intercept, Anticipate, Slide Tackle+",
+    "current_roles_plus": "[24, 3, 5]",
     "current_roles_plus_plus": "[]",
     "current_six": "{\"PAC\": 79, \"SHO\": 51, \"PAS\": 68, \"DRI\": 73, \"DEF\": 76, \"PHY\": 73}",
     "ea_item_id": 229880,
@@ -2551,7 +2619,7 @@
     "league": "Premier League",
     "name": "완비사카",
     "nation": "DR Congo",
-    "notes": null,
+    "notes": " · 2026-09-19 훈련 캠프 소개 진화 완주 — 보상은 Role+ RB 풀백(능력치 변화 없음)",
     "player_id": 90,
     "positions": "RB/RM",
     "status": "owned",
@@ -6553,7 +6621,7 @@
    "formation_id": "4",
    "manager_league_id": 13,
    "manager_nation_id": 45,
-   "source": "fut.gg GG Club /api/gg-club/active-squad/ (브라우저 조회, 2026-09-19)",
+   "source": "fut.gg GG Club /api/gg-club/active-squad/ (브라우저 조회, 2026-09-19) · 2026-09-19 사용자 보고로 RM/LM 교체 반영(다음 싱크에서 재확인)",
    "synced_at": "2026-09-19",
    "title": "Hobong"
   }
@@ -6694,14 +6762,14 @@
   },
   {
    "account_id": 1,
-   "ea_item_id": 210881,
+   "ea_item_id": 50406097,
    "gg_player_id": null,
    "grp": "FIELD",
    "idx": 7
   },
   {
    "account_id": 1,
-   "ea_item_id": 50406097,
+   "ea_item_id": 210881,
    "gg_player_id": null,
    "grp": "FIELD",
    "idx": 8
