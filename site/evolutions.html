@@ -533,11 +533,11 @@ function styleDetail(st){
       <div><b>적용 후 6대 스탯</b> ${six || '—'}</div>
       <div class="dim">차선 ${alt || '—'}</div></div></details>`;
 }
-function renderChem(owned){
+function renderChem(owned, all = owned){
   const box = document.getElementById('chem'), bar = document.getElementById('chemform');
   bar.innerHTML = Object.keys(CHEM_FORMS).map(f => `<button class="act ghost${f === CHEM_F ? ' on' : ''}" data-cf="${f}">${f}</button>`).join('');
   bar.querySelectorAll('button[data-cf]').forEach(b => b.addEventListener('click', () => {
-    CHEM_F = b.dataset.cf; localStorage.setItem('fut_chem_form', CHEM_F); renderChem(owned); }));
+    CHEM_F = b.dataset.cf; localStorage.setItem("fut_chem_form", CHEM_F); renderChem(owned, all); }));
   /* ⭐ 실제 스쿼드 먼저 (2026-09-19, 사용자 지적 「난 지금 스즈키 쓰는데 추천이 지금 구성과 다르다」).
      제안은 「보유로 짤 수 있는 최적」이라 실제 XI와 다를 수 있다 — 지금 쓰는 XI를 먼저 보여주고 그 아래에 제안을 둔다. */
   const SQ = (EVO.squad || [])[0];
@@ -549,7 +549,9 @@ function renderChem(owned){
      LCB/RCB·LDM/RDM는 좌우가 갈리므로 인덱스로 맞춘다. */
   const CANON = Object.fromEntries((EVO.canon_roles || []).map(r => [r.pos, r]));
   const CANON_BY_IDX = ['GK', 'RB', 'RCB', 'LCB', 'LB', 'RDM', 'LDM', 'RM', 'LM', 'CAM', 'ST'];
-  const byItem = new Map(owned.map(p => [p.ea_item_id, p]));
+  /* ⚠️ 실제 XI는 **빌라 필터와 무관하게** 다 보여준다 — 지금 쓰는 스쿼드에 타 구단 카드가 있으면
+     그 사실이 보여야 한다(2026-09-19: 데 케텔라레가 「원장에 없는 카드」로 떴다). 필터는 제안 풀에만 건다. */
+  const byItem = new Map(all.map(p => [p.ea_item_id, p]));
   let curHtml = '';
   if (SQ && slots11.length){
     const cur = slots11.map(s => byItem.get(s.ea_item_id)).filter(Boolean);
@@ -666,7 +668,7 @@ function renderClub(){
     localStorage.setItem('fut_villa_only', VILLA_ONLY ? '0' : '1'); renderClub(); });
 
   const logs = C.log.filter(l => owned.some(p => p.id === l.club_player_id));
-  renderChem(owned);
+  renderChem(owned, all);
   document.getElementById('owned').innerHTML = owned.length ? owned.map(p => {
     const card = (CARDS[String(p.player_id)] || []).find(c => c.ea_item_id === p.ea_item_id);
     // 적용한 진화 사슬(시간순). fut.gg 경로는 「이 카드에서 이 순서로 밟는 사슬」이라 **접두가 일치하는 경로만** 이어 붙일 수 있다 —
