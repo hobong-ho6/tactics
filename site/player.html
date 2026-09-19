@@ -576,6 +576,29 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       `<button class="cardpick${c === rep ? ' on' : ''}" data-item="${c.item_id}" title="${esc(c.is_base ? '기본' : c.rarity_name || '특별')} · ${esc(c.released_at || '')}">
          ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="">` : ''}<span>${c.ovr} <small>${esc(c.is_base ? '기본' : c.rarity_name || '특별')}</small>${c.evo || c.item_id === ownedItem ? ' ★' : ''}</span></button>`).join('')}</div>` : '';
   const artSix = SIX.map(([k, L]) => `<span><em>${L}</em>${disp[k] ?? '—'}</span>`).join('');
+  /* 카드 아트와 색을 맞춘다 — 덮개가 검은 박스로 뜨면 위화감이 크다(2026-09-19 사용자 지적).
+     카드 그림에서 해당 자리의 실제 배경색을 캔버스로 뽑아 덮개 배경에 쓰고, 밝기에 따라 글자색을 정한다.
+     ⚠️ CDN이 CORS를 막으면 캔버스가 오염돼 예외가 난다 — 그때는 CSS 기본값(반투명 어둠)으로 물러난다. */
+  const paintPatch = () => {
+    const box = document.querySelector('.futcard-patch'); if (!box) return;
+    const im = box.querySelector('img'); if (!im) return;
+    const run = () => {
+      try {
+        const c = document.createElement('canvas'), w = im.naturalWidth, h = im.naturalHeight;
+        if (!w) return;
+        c.width = w; c.height = h;
+        const cx = c.getContext('2d'); cx.drawImage(im, 0, 0);
+        const pick = (rx, ry) => { const d = cx.getImageData(Math.round(w * rx), Math.round(h * ry), 1, 1).data;
+          return { rgb: `rgb(${d[0]},${d[1]},${d[2]})`, lum: (d[0] * 299 + d[1] * 587 + d[2] * 114) / 1000 }; };
+        const put = (sel, rx, ry) => { const el = box.querySelector(sel); if (!el) return;
+          const p = pick(rx, ry); el.style.background = p.rgb; el.style.color = p.lum > 140 ? '#1b1b1b' : '#f2ead8';
+          el.style.textShadow = 'none'; };
+        put('.fp-ovr', 0.12, 0.20); put('.fp-pos', 0.12, 0.32); put('.fp-six', 0.5, 0.86);
+      } catch (e) { /* CORS 오염 — CSS 기본 덮개를 그대로 쓴다 */ }
+    };
+    im.crossOrigin = 'anonymous';
+    im.complete ? run() : im.addEventListener('load', run, { once: true });
+  };
   const img = disp.card_image_url
     ? (rep?.patch_art
         ? `<div class="futcard-patch" title="진화 후 수치를 카드 그림 위에 덮어 표시한다 — 그림 자체는 기본 카드 아트다">
@@ -613,6 +636,7 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       </div>
     </div>`;
   el.querySelectorAll('button.cardpick').forEach(b => b.addEventListener('click', () => { localStorage.setItem(repKey, b.dataset.item); render(); }));
+  if (rep?.patch_art) paintPatch();
 }
 /* ── 버전별 변화 (FC25 출시 → FC26 출시 → FC26 시즌말 라이브 → FC27 출시) ──
    history.json은 player_id 키. 같은 버전·같은 kind에 로스터가 여럿이면 최신 roster_date 하나만 보인다

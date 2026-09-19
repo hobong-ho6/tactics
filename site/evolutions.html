@@ -37,6 +37,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 
 <div class="menubar">
   <button class="act ghost on" data-tab="club">내 구단</button>
+  <button class="act ghost" data-tab="chem">케미스트리</button>
   <button class="act ghost" data-tab="cat">진화 카탈로그</button>
   <button class="act ghost" data-tab="paths">선수별 진화 패스</button>
   <button class="act ghost" data-tab="tactic">전술 구현 · 구매 우선순위</button>
@@ -57,15 +58,18 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
   <div class="panel"><h2>보유 선수 <small class="dim">— 현재 상태 · 진화 횟수 · 다음 추천</small></h2>
     <p class="dim" style="font-size:12px;margin:0 0 6px">⭐ 진화를 기록하면 <b>1회성 진화는 이 계정에서 소진</b>돼 다른 선수의 경로·추천에서 빠지고(카탈로그·선수별 패스·전술 구현 탭 전부), 각 선수의 최적 패스가 다시 매겨진다. 반복형은 횟수만큼 남는다.</p>
     <div id="owned"></div></div>
-  <div class="panel"><h2>케미스트리 제안 <small class="dim">— 보유 카드로 짤 수 있는 최고 케미 11명</small></h2>
-    <div class="menubar" id="chemform"></div>
-    <div id="chem"></div></div>
   <div class="panel"><h2>선수 추가 <small class="dim">— 우리 DB 선수와 그 선수의 FC27 카드 중 보유한 것</small></h2>
     <div id="addp"></div></div>
   <div class="panel"><h2>진화 기록 <small class="dim">— fut_evolution_log (시간순)</small></h2>
     <ul class="timeline" id="log"></ul></div>
   <p class="dim" style="font-size:12px"><b>내 팀 자동 불러오기:</b> EA 구단 데이터는 <b>FC Community API 승인 파트너</b>(fut.gg GG Club 등)만 받는다.
   우리는 파트너가 아니라 직접 못 끌어온다 — 이 원장이 정본이고, GG Club에 연결한 세션을 읽는 임포터는 별도 작업이다.</p>
+</section>
+
+<section data-tab="chem" style="display:none">
+  <div class="panel"><h2>케미스트리 제안 <small class="dim">— 보유 카드로 짤 수 있는 최고 케미 11명 · 선수별 추천 스타일</small></h2>
+    <div class="menubar" id="chemform"></div>
+    <div id="chem"></div></div>
 </section>
 
 <section data-tab="cat" style="display:none">
@@ -420,6 +424,31 @@ function chemOf(xi){
 function chemBestXI(pool, slots){
   const canPlay = (p, s) => String(p.positions || '').split('/').includes(s);
   let best = null;
+  /* ⭐ 씨앗 시작 — 무작위 재시작만으로는 「한 클럽으로 XI를 채우는」 해를 못 찾는다(62장에서 실패).
+     보유가 많은 클럽·리그를 먼저 채워 보고 시작하면 케미 최적해가 탐색 범위에 들어온다. */
+  const seeds = [];
+  for (const key of ['club', 'league']){
+    const cnt = {};
+    for (const p of pool) if (p[key]) cnt[p[key]] = (cnt[p[key]] || 0) + 1;
+    for (const [name] of Object.entries(cnt).sort((a, b) => b[1] - a[1]).slice(0, 3)) seeds.push({ key, name });
+  }
+  for (const sd of seeds){
+    const used = new Set(), xi = [];
+    for (const s of slots){                       // ① 씨앗 그룹에서 최고 OVR로 채우고
+      const c = pool.filter(p => !used.has(p.id) && p[sd.key] === sd.name && canPlay(p, s))
+                    .sort((a, b) => chemOvr(b) - chemOvr(a))[0];
+      if (c) used.add(c.id);
+      xi.push(c || null);
+    }
+    for (let i = 0; i < slots.length; i++){       // ② 빈 슬롯만 전체 풀에서 메운다
+      if (xi[i]) continue;
+      const c = pool.filter(p => !used.has(p.id) && canPlay(p, slots[i])).sort((a, b) => chemOvr(b) - chemOvr(a))[0];
+      if (c){ used.add(c.id); xi[i] = c; }
+    }
+    const f = xi.filter(Boolean);
+    const key = chemOf(f).total * 1000 + f.reduce((t, p) => t + chemOvr(p), 0);
+    if (!best || key > best.key) best = { key, xi };
+  }
   for (let t = 0; t < 120; t++){
     const order = pool.slice().sort(() => Math.random() - 0.5), used = new Set(), xi = [];
     for (const s of slots){
@@ -435,6 +464,23 @@ function chemBestXI(pool, slots){
     const filled = xi.filter(Boolean);
     const key = chemOf(filled).total * 1000 + filled.reduce((s, p) => s + chemOvr(p), 0);
     if (!best || key > best.key) best = { key, xi };
+  }
+  /* ⭐ 개선 패스 — 탐욕은 보유 카드가 늘면 케미 최적을 놓친다(62장에서 29/33으로 주저앉았다).
+     슬롯마다 모든 미사용 후보로 바꿔 보고 (케미, OVR합) 사전식으로 나아지면 채택한다. 더 나아지지 않을 때까지. */
+  const score = xi => { const f = xi.filter(Boolean);
+    return chemOf(f).total * 1000 + f.reduce((s, p) => s + chemOvr(p), 0); };
+  for (let pass = 0; pass < 6; pass++){
+    let moved = false;
+    for (let i = 0; i < slots.length; i++){
+      const used = new Set(best.xi.filter(Boolean).map(p => p.id));
+      for (const c of pool){
+        if (used.has(c.id) || !canPlay(c, slots[i])) continue;
+        const trial = best.xi.slice(); trial[i] = c;
+        const k = score(trial);
+        if (k > best.key){ best = { key: k, xi: trial }; moved = true; }
+      }
+    }
+    if (!moved) break;
   }
   return best;
 }
