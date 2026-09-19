@@ -430,7 +430,7 @@ function styleRank(attrsJson, roleId, isGk){
     const at2 = afterStyle(at, J(s.boosts, {}) || {});
     const before = faceOf(at, isGk), after = faceOf(at2, isGk);
     return { name: s.name, score: parts.reduce((t, x) => t + x.s, 0), top: parts.slice(0, 3),
-             parts, boosts: J(s.boosts, {}) || {}, is_gk: s.is_gk,
+             parts, boosts: J(s.boosts, {}) || {}, is_gk: s.is_gk, ea_id: s.ea_id, style_id: s.style_id,
              six: before.map(([k, v], i) => [k, v, after[i][1]]) };
   }).sort((a, b) => b.score - a.score);
 }
@@ -531,6 +531,16 @@ function chemBestXI(pool, slots){
 const STYLE_TONE = id => id === 1 ? ['#8e949e', '#5b616b'] : id <= 6 ? ['#e0703a', '#a8411a']
   : id <= 11 ? ['#3fb883', '#1d7a52'] : id <= 16 ? ['#4a90e2', '#25548f']
   : id <= 19 ? ['#a06ae0', '#5f3596'] : ['#e0b23c', '#96741d'];
+/* ⭐ 실제 케미 스타일 아이콘 (2026-09-19 사용자 제안 「futbin이나 웹에서 이미지 확인되지 않나」)
+   ⛔ FUTBIN은 봇 차단(캡차)이라 쓰지 않는다. **FUTWIZ CDN이 EA id 그대로**(250=Basic … 273=GK Basic) 제공해
+   24장을 `site/assets/chemstyles/`에 받아 두고 로컬에서 쓴다(개인용 · 원저작권은 EA).
+   이미지가 없으면 아래 SVG 토큰으로 물러난다. */
+function styleIcon(x, size = 46){
+  return x.ea_id ? `<img class="cstoken" src="assets/chemstyles/${x.ea_id}.png" width="${size}" height="${size}"
+      alt="${esc(x.name)} 케미스트리 스타일" loading="lazy"
+      onerror="this.outerHTML=this.dataset.fb" data-fb="${esc(styleToken(x, size))}">`
+    : styleToken(x, size);
+}
 function styleToken(x, size = 46){
   const [c1, c2] = STYLE_TONE(x.style_id || 1);
   const ab = String(x.name || '').replace(/[^A-Za-z]/g, '').slice(0, 3).toUpperCase();
@@ -557,7 +567,7 @@ function boosterCard(x, rank){
   const ups = Object.entries(x.boosts || {}).sort((a, b) => b[1] - a[1])
     .map(([a, v]) => `<span class="bc-up">${esc(a)} <b>+${v}</b></span>`).join('');
   return `<div class="bcard${rank ? ' alt' : ''}">
-    <div class="bc-top">${styleToken(x)}<div style="flex:1;min-width:0">
+    <div class="bc-top">${styleIcon(x, 44)}<div style="flex:1;min-width:0">
       <div class="bc-head"><b>${esc(x.name)}</b>${rank ? `<span class="chip dim">차선 ${rank}</span>` : '<span class="chip" style="border-color:var(--ok);color:var(--ok)">추천</span>'}
         <small class="dim">역할 점수 ${Math.round(x.score)}</small></div>
       <div class="bc-six">${six}</div></div></div>
@@ -585,8 +595,8 @@ function styleRefGrid(){
         <b>${v ? '+' + v.toFixed(1) : '—'}</b></div>`).join('');
       const ups = Object.entries(b).sort((x, y) => y[1] - x[1])
         .map(([a, v]) => `<span class="bc-up"${v >= 9 ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}>${esc(a)} <b>+${v}</b></span>`).join('');
-      const tok = styleToken({ name: s.name, style_id: s.style_id, is_gk: s.is_gk,
-        six: imp.map(([k, v]) => [k, 0, v > 0 ? 1 : 0]) });
+      const tok = styleIcon({ name: s.name, style_id: s.style_id, ea_id: s.ea_id, is_gk: s.is_gk,
+        six: imp.map(([k, v]) => [k, 0, v > 0 ? 1 : 0]) }, 44);
       return `<div class="bcard"><div class="bc-top">${tok}<div style="flex:1;min-width:0">
           <div class="bc-head"><b>${esc(s.name)}</b><small class="dim">${s.is_gk ? 'GK' : '필드'}</small></div>
           <div class="bc-six">${rows}</div></div></div>
@@ -704,7 +714,7 @@ function renderChem(owned, all = owned){
     ${total >= 33 ? `<p style="font-size:13px;margin:6px 0 0">만점이다 — 이 조합에서는 <b>케미가 아니라 카드 품질·역할 적합</b>이 다음 제약이다.</p>` : ''}
     <details style="margin-top:10px"><summary class="dim" style="cursor:pointer">케미스트리 스타일 24종 — 무엇이 얼마나 오르나(최대 케미 3 기준)</summary>
       ${styleRefGrid()}
-      <p class="dim" style="font-size:12px;margin:6px 0 0">개인 케미가 3이 아니면 줄어든다 — <b>2점: 9→6 · 6→4 · 3→2</b>,
+      <p class="dim" style="font-size:12px;margin:6px 0 0">아이콘 출처: FUTWIZ CDN(EA id 기준) — 개인용으로 내려받아 <code>site/assets/chemstyles/</code>에 둔다. 원저작권은 EA.<br>개인 케미가 3이 아니면 줄어든다 — <b>2점: 9→6 · 6→4 · 3→2</b>,
       <b>1점: 9→3 · 6→2 · 3→1</b>, 0점이면 아무 효과가 없다. 값 출처는 fut.gg 웹앱 구현(EA 미공개).</p></details>
     ${special.length ? `<p class="dim" style="font-size:12px">⚠️ 아이콘·히어로 ${special.length}명이 XI에 있다 — 이들이 모든 리그에 주는 +1은 여기서 세지 않아 <b>실제 케미는 이 값 이상</b>일 수 있다.</p>` : ''}
     <p class="dim" style="font-size:12px">클럽 2/4/7 · 리그 3/5/8 · 국적 2/5/8명에서 1/2/3점(선수당 3점 상한).
