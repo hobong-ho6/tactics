@@ -2777,6 +2777,230 @@
    }
   ]
  },
+ "face_stats": [
+  {
+   "abbr": "DEF",
+   "attr": "수비 위치 선정",
+   "is_gk": 0,
+   "weight": 0.3
+  },
+  {
+   "abbr": "DEF",
+   "attr": "스탠딩 태클",
+   "is_gk": 0,
+   "weight": 0.3
+  },
+  {
+   "abbr": "DEF",
+   "attr": "슬라이딩 태클",
+   "is_gk": 0,
+   "weight": 0.1
+  },
+  {
+   "abbr": "DEF",
+   "attr": "차단력",
+   "is_gk": 0,
+   "weight": 0.2
+  },
+  {
+   "abbr": "DEF",
+   "attr": "헤딩 정확도",
+   "is_gk": 0,
+   "weight": 0.1
+  },
+  {
+   "abbr": "DRI",
+   "attr": "균형 감각",
+   "is_gk": 0,
+   "weight": 0.05
+  },
+  {
+   "abbr": "DRI",
+   "attr": "드리블",
+   "is_gk": 0,
+   "weight": 0.45
+  },
+  {
+   "abbr": "DRI",
+   "attr": "민첩성",
+   "is_gk": 0,
+   "weight": 0.1
+  },
+  {
+   "abbr": "DRI",
+   "attr": "반응력",
+   "is_gk": 0,
+   "weight": 0.05
+  },
+  {
+   "abbr": "DRI",
+   "attr": "볼컨트롤",
+   "is_gk": 0,
+   "weight": 0.3
+  },
+  {
+   "abbr": "DRI",
+   "attr": "침착",
+   "is_gk": 0,
+   "weight": 0.05
+  },
+  {
+   "abbr": "PAC",
+   "attr": "가속",
+   "is_gk": 0,
+   "weight": 0.45
+  },
+  {
+   "abbr": "PAC",
+   "attr": "질주 속도",
+   "is_gk": 0,
+   "weight": 0.55
+  },
+  {
+   "abbr": "PAS",
+   "attr": "긴 패스",
+   "is_gk": 0,
+   "weight": 0.15
+  },
+  {
+   "abbr": "PAS",
+   "attr": "시야",
+   "is_gk": 0,
+   "weight": 0.2
+  },
+  {
+   "abbr": "PAS",
+   "attr": "짧은 패스",
+   "is_gk": 0,
+   "weight": 0.35
+  },
+  {
+   "abbr": "PAS",
+   "attr": "커브",
+   "is_gk": 0,
+   "weight": 0.05
+  },
+  {
+   "abbr": "PAS",
+   "attr": "크로스",
+   "is_gk": 0,
+   "weight": 0.2
+  },
+  {
+   "abbr": "PAS",
+   "attr": "프리킥 정확도",
+   "is_gk": 0,
+   "weight": 0.05
+  },
+  {
+   "abbr": "PHY",
+   "attr": "공격성",
+   "is_gk": 0,
+   "weight": 0.2
+  },
+  {
+   "abbr": "PHY",
+   "attr": "점프",
+   "is_gk": 0,
+   "weight": 0.05
+  },
+  {
+   "abbr": "PHY",
+   "attr": "체력",
+   "is_gk": 0,
+   "weight": 0.25
+  },
+  {
+   "abbr": "PHY",
+   "attr": "힘",
+   "is_gk": 0,
+   "weight": 0.5
+  },
+  {
+   "abbr": "SHO",
+   "attr": "결정력",
+   "is_gk": 0,
+   "weight": 0.45
+  },
+  {
+   "abbr": "SHO",
+   "attr": "공격 위치 선정",
+   "is_gk": 0,
+   "weight": 0.05
+  },
+  {
+   "abbr": "SHO",
+   "attr": "발리 슛",
+   "is_gk": 0,
+   "weight": 0.05
+  },
+  {
+   "abbr": "SHO",
+   "attr": "슈팅력",
+   "is_gk": 0,
+   "weight": 0.2
+  },
+  {
+   "abbr": "SHO",
+   "attr": "중거리슛",
+   "is_gk": 0,
+   "weight": 0.2
+  },
+  {
+   "abbr": "SHO",
+   "attr": "페널티킥",
+   "is_gk": 0,
+   "weight": 0.05
+  },
+  {
+   "abbr": "DIV",
+   "attr": "다이빙",
+   "is_gk": 1,
+   "weight": 1.0
+  },
+  {
+   "abbr": "HAN",
+   "attr": "핸들링",
+   "is_gk": 1,
+   "weight": 1.0
+  },
+  {
+   "abbr": "KIC",
+   "attr": "킥",
+   "is_gk": 1,
+   "weight": 1.0
+  },
+  {
+   "abbr": "POS",
+   "attr": "포지셔닝",
+   "is_gk": 1,
+   "weight": 1.0
+  },
+  {
+   "abbr": "REF",
+   "attr": "반사신경",
+   "is_gk": 1,
+   "weight": 1.0
+  },
+  {
+   "abbr": "REF",
+   "attr": "반응력",
+   "is_gk": 1,
+   "weight": 0.0
+  },
+  {
+   "abbr": "SPD",
+   "attr": "가속",
+   "is_gk": 1,
+   "weight": 0.6
+  },
+  {
+   "abbr": "SPD",
+   "attr": "질주 속도",
+   "is_gk": 1,
+   "weight": 0.4
+  }
+ ],
  "paths": {
   "11": [
    {

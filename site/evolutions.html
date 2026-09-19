@@ -392,6 +392,22 @@ const metaFor = slot => CHEM_META.find(m => m.item.startsWith(META_KEY[slot] || 
 const POS_ROLE = { GK: 'gk_goalkeeper', CB: 'cb_defender', LB: 'fb_fullback', RB: 'fb_fullback',
                    CDM: 'dm_holding', CM: 'cm_b2b', CAM: 'cam_playmaker', LM: 'wm_widemid', RM: 'wm_widemid',
                    LW: 'w_winger', RW: 'w_winger', ST: 'st_advanced' };
+/* ⭐ 붙인 뒤 6대 스탯 (2026-09-19, 사용자 지시 「붙인 후 스탯의 변경도 볼수있게」)
+   6대 스탯은 개별 속성의 가중 평균이다(fc_face_stats, migration 051) — 부스트는 개별 속성에만 들어오므로
+   이 표로 되계산해야 「PAC가 몇이 되는가」를 말할 수 있다. 반올림 규칙도 게임 구현과 같게 floor(x+0.501)로 둔다. */
+const FACE = (EVO.face_stats || []).reduce((m, r) => { (m[r.abbr] ??= { is_gk: r.is_gk, w: {} }).w[r.attr] = r.weight; return m; }, {});
+const SIX_KEYS = ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY'], GK_KEYS = ['DIV', 'HAN', 'KIC', 'REF', 'SPD', 'POS'];
+function faceOf(at, isGk){
+  const keys = isGk ? GK_KEYS : SIX_KEYS;
+  return keys.map(k => { const d = FACE[k]; if (!d) return [k, null];
+    const v = Object.entries(d.w).reduce((t, [a, w]) => t + w * (at[a] ?? 0), 0);
+    return [k, Math.min(99, Math.floor(v + 0.501))]; });
+}
+function afterStyle(at, boosts){
+  const out = { ...at };
+  for (const [a, v] of Object.entries(boosts)) out[a] = Math.min(99, (out[a] ?? 0) + v);
+  return out;
+}
 function styleRank(attrsJson, roleId, isGk){
   const w = KEYW[roleId] || {}, at = J(attrsJson, {}) || {};
   if (!CHEM_STYLES.length || !Object.keys(at).length || !Object.keys(w).length) return [];
@@ -400,7 +416,10 @@ function styleRank(attrsJson, roleId, isGk){
       const gain = Math.min(v, Math.max(0, 99 - (at[a] ?? 0)));
       return { a, gain, s: (w[a] || 0) * gain };
     }).filter(x => x.s > 0).sort((x, y) => y.s - x.s);
-    return { name: s.name, score: parts.reduce((t, x) => t + x.s, 0), top: parts.slice(0, 3) };
+    const at2 = afterStyle(at, J(s.boosts, {}) || {});
+    const before = faceOf(at, isGk), after = faceOf(at2, isGk);
+    return { name: s.name, score: parts.reduce((t, x) => t + x.s, 0), top: parts.slice(0, 3),
+             parts, six: before.map(([k, v], i) => [k, v, after[i][1]]) };
   }).sort((a, b) => b.score - a.score);
 }
 /* ── 케미스트리 제안 (2026-09-19, 사용자 지시 「적용할 케미스트리도 제안해줘」) ──
@@ -490,6 +509,19 @@ function chemBestXI(pool, slots){
   }
   return best;
 }
+/* 추천 근거와 적용 후 6대 스탯을 접힘으로 보여준다 — 표가 넓어지지 않게 details로 둔다. */
+function styleDetail(st){
+  if (!st || !st[0]) return '';
+  const top = st[0];
+  const six = (top.six || []).map(([k, b, a]) => `${k} ${b}${a > b ? `→<b style="color:var(--ok)">${a}</b>` : ''}`).join(' · ');
+  const why = (top.parts || []).slice(0, 5).map(x => `${esc(x.a)} +${x.gain}<small class="dim">×가중${(x.s / x.gain) || 0}</small>`).join(' · ');
+  const alt = st.slice(1, 3).map(x => `${esc(x.name)} ${Math.round(x.score)}`).join(' · ');
+  return `<details style="margin-top:2px"><summary class="dim" style="font-size:11px;cursor:pointer">근거·적용 후</summary>
+    <div style="font-size:11px;line-height:1.7">
+      <div><b>점수 ${Math.round(top.score)}</b> = Σ(역할 가중 × 실제 상승분) — ${why || '해당 역할 핵심 속성에 걸리는 상승 없음'}</div>
+      <div><b>적용 후 6대 스탯</b> ${six || '—'}</div>
+      <div class="dim">차선 ${alt || '—'}</div></div></details>`;
+}
 function renderChem(owned){
   const box = document.getElementById('chem'), bar = document.getElementById('chemform');
   bar.innerHTML = Object.keys(CHEM_FORMS).map(f => `<button class="act ghost${f === CHEM_F ? ' on' : ''}" data-cf="${f}">${f}</button>`).join('');
@@ -522,7 +554,7 @@ function renderChem(owned){
           <td>${esc(p.name)} <small class="dim">OVR ${chemOvr(p) || '—'}</small></td>
           <td style="color:${v === 3 ? 'var(--ok)' : v ? 'var(--warn)' : 'var(--bad)'}"><b>${v}</b>/3</td>
           <td>${now && !['Basic', 'GK Basic'].includes(now) ? `<b>${esc(now)}</b>` : '<span class="dim">미적용</span>'}</td>
-          <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}</td>
+          <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}${styleDetail(st)}</td>
           <td class="dim">${(m => m ? esc(m.value) : '—')(metaFor(FORM_SLOTS[i]))}</td></tr>`;
       }).join('')}</table>
       <p class="dim" style="font-size:12px;margin:6px 0 0">「추천」은 <b>우리 역할 가중</b>(판단값)으로 계산한 것이고,
@@ -552,7 +584,7 @@ function renderChem(owned){
       <td>${esc(p.name)} <small class="dim">OVR ${chemOvr(p) || '—'}</small></td>
       <td style="color:${color(v)}"><b>${v}</b>/3</td>
       <td>${nowTxt}${st[0] ? `<b>${esc(st[0].name)}</b><small class="dim"> ${esc(gains)}</small>
-             <br><small class="dim">차선 ${st.slice(1, 3).map(x => esc(x.name)).join(' · ')} · 기준 ${pres ? '처방' : '포지션 기본'} ${esc(ROLE_KR[roleId] || roleId || '—')}</small>`
+             <br><small class="dim">기준 ${pres ? '처방' : '포지션 기본'} ${esc(ROLE_KR[roleId] || roleId || '—')}</small>${styleDetail(st)}`
            : '<span class="dim">속성 미수집 — 추천 불가</span>'}</td>
       <td class="dim">${(m => m ? `${esc(m.value)}<br><small>대안 ${esc(m.alternatives || '')}</small>` : '—')(metaFor(s))}</td>
       <td class="dim">${esc(p.nation || '?')} · ${esc(p.league || '?')} · ${esc(p.club || '?')}</td>
