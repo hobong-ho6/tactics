@@ -1082,8 +1082,11 @@ function render(){
     /* ── 세부 속성: 기본 접힘. 펼치면 fut.gg식 6그룹 비교 ─────────── */
     const pa = t => { try { return t ? JSON.parse(t) : null; } catch (e) { return null; } };
     // FC27 attrs가 sofifa 쪽에 없으면 **카드 정의(fut.gg)** 로 메운다 — 같은 fut.gg 원천이라 FC26 비교 축도 유지된다.
-    const a26 = pa(g?.attrs), a27 = pa(g27?.attrs) ?? pa(baseCard27?.attrs);
-    const a27FromCard = !pa(g27?.attrs) && !!pa(baseCard27?.attrs);
+    // ⚠️ 이 블록은 renderCard와 다른 함수라 baseCard27을 다시 잡는다(2026-09-19 ReferenceError 수정)
+    const card27 = (sel.pid != null ? (CARDS[String(sel.pid)] || []) : [])
+      .filter(c => c.game_version === 'FC27').sort((a, b) => (b.is_base ?? 0) - (a.is_base ?? 0))[0] || null;
+    const a26 = pa(g?.attrs), a27 = pa(g27?.attrs) ?? pa(card27?.attrs);
+    const a27FromCard = !pa(g27?.attrs) && !!pa(card27?.attrs);
     if (a26 || a27) {
       const names = [...new Set([...Object.keys(a26 ?? {}), ...Object.keys(a27 ?? {})])];
       const both = names.filter(k => a26?.[k] != null && a27?.[k] != null);

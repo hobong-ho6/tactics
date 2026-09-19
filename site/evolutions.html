@@ -170,6 +170,15 @@ function stepsHTML(p){
 }
 const costText = r => [r.coins_cost ? `${Number(r.coins_cost).toLocaleString()} 코인` : null, r.points_cost ? `${r.points_cost} 포인트` : null,
   r.training_time ? `훈련 ${Math.round(r.training_time / 3600)}h` : null].filter(Boolean).join(' · ') || '무료';
+/* 적용 후 6대 스탯을 **숫자로도** 적는다(2026-09-19 사용자 지시) — 덤벨 그림만으로는 값을 못 읽는다. */
+function sixText(before, after){
+  const b = J(before, {}) || {}, a = J(after, {}) || {};
+  const keys = Object.keys(a).length ? Object.keys(a) : Object.keys(b);
+  if (!keys.length) return '';
+  return keys.map(k => { const x = b[k], y = a[k];
+    return y != null && x != null && y !== x
+      ? `${k} ${x}→<b style="color:var(--ok)">${y}</b>` : `${k} ${y ?? x ?? '—'}`; }).join(' · ');
+}
 function pathHTML(p, i){
   const why = !p.pres ? '처방 없음 — 능력치만 본 순위' : p.tier === 2 ? '처방 역할 Role++ ✓' : p.tier === 1 ? '처방 역할 Role+' : '처방 역할과 무관';
   return `<details class="path pcard tier${p.tier}" style="margin:6px 0"${i === 0 ? ' open' : ''}>
@@ -179,6 +188,7 @@ function pathHTML(p, i){
       ${p.rs ? scoreChip(p.rs) : ''}
       <small class="dim">${esc(costText(p))} · ${why}</small></summary>
     ${p.upgrades ? `<div class="dim" style="font-size:12px;margin-top:4px">${esc(Object.entries(J(p.upgrades, {})).map(([k, v]) => `${k} +${v}`).join(' · '))}</div>` : ''}
+    <div class="dim" style="font-size:12px;margin-top:4px"><b>적용 후 6대 스탯</b> ${sixText(p.six_before, p.six_after)}</div>
     <div class="evo-dumb">${sixDumbbell(J(p.six_before, {}), J(p.six_after, {}), { W: 420, gk: /GK/.test(String(p.path && p.path[0] && p.path[0].position) || '') })}</div>
     ${stepsHTML(p)}
     <div style="margin-top:4px">${String(p.evolution_urls || '').split('\n').filter(Boolean).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>`).join(' ')}</div>
@@ -250,7 +260,8 @@ function renderCatalog(team = CAT_TEAM){
       <h3>${esc(c.name)} ${c.repeatability > 1 ? `<span class="chip">반복 ${c.repeatability}회</span>` : '<span class="chip dim">1회성</span>'}${c.is_reward ? '<span class="chip">보상형</span>' : ''}
         ${used ? `<span class="chip" style="border-color:var(--bad);color:var(--bad)">${used.exhausted ? '소진' : `사용 ${used.count}/${REPEAT[c.evo_id]}`} — ${used.by.map(b => `${esc(b.name)} ${esc(b.date)}`).join(', ')}</span>` : ''}</h3>
       ${best && !used?.exhausted ? `<div class="pcard tier${best.tier}" style="margin:6px 0;padding:6px 10px"><span class="badge hi">이 진화 최적 선수</span> <b>${esc(best.name)}</b>
-        <small class="dim">${best.tier === 2 ? '처방 역할 Role++' : best.tier === 1 ? '처방 역할 Role+' : '처방 역할 무관(능력치만)'} · ${best.owned ? '내 구단 보유' : `미보유 · ${fmtPrice(best.price)}`} · ${best.k ? `${best.k + 1}단계째(선행 ${best.k})` : '즉시 적용'}${best.d ? ` · OVR +${best.d}` : ''}</small> ${best.rs ? scoreChip(best.rs) : ''}</div>` : ''}
+        <small class="dim">${best.tier === 2 ? '처방 역할 Role++' : best.tier === 1 ? '처방 역할 Role+' : '처방 역할 무관(능력치만)'} · ${best.owned ? '내 구단 보유' : `미보유 · ${fmtPrice(best.price)}`} · ${best.k ? `${best.k + 1}단계째(선행 ${best.k})` : '즉시 적용'}${best.d ? ` · OVR +${best.d}` : ''}</small> ${best.rs ? scoreChip(best.rs) : ''}
+        <div class="dim" style="font-size:11px;margin-top:3px"><b>적용 후</b> OVR ${best.path.ovr_before}→${best.path.ovr_after} · ${sixText(best.path.six_before, best.path.six_after)}</div></div>` : ''}
       <div class="dim" style="font-size:12px">${esc(c.description || '')}</div>
       <div class="kv" style="margin:6px 0;font-size:12px"><span>${esc(costText(c))}</span>
         ${dl != null ? `<span class="${dl <= 7 ? 'dn' : ''}">마감 ${esc(String(c.end_submission_time || c.end_time).slice(0, 10))} (${dl >= 0 ? `D-${dl}` : '지남'})</span>` : ''}
@@ -634,7 +645,18 @@ function renderClub(){
     say(document.getElementById('accm'), await api('account', { name: f.get('name'), platform: f.get('platform'), game: f.get('game') })); });
   if (!acc){ document.getElementById('owned').innerHTML = document.getElementById('addp').innerHTML = '<span class="dim">계정을 먼저 만든다.</span>'; document.getElementById('log').innerHTML = ''; return; }
 
-  const owned = C.players.filter(p => p.account_id === acc.id);
+  /* ⭐ 빌라 전용 보기 (2026-09-19 사용자 지시 「아스톤 빌라가 아닌 선수들은 웹에서 제거 — 결국 빌라로만 구성할 거야」).
+     ⛔ 원장에서 지우지 않는다. 보유 사실은 남기고 **화면에서만** 거른다 — 토글로 언제든 되돌린다. */
+  const VILLA_ONLY = localStorage.getItem('fut_villa_only') !== '0';
+  const all = C.players.filter(p => p.account_id === acc.id);
+  const owned = VILLA_ONLY ? all.filter(p => p.club === 'Aston Villa') : all;
+  const hidden = all.length - owned.length;
+  document.getElementById('acc').insertAdjacentHTML('beforeend',
+    `<div class="kv" style="margin-top:6px"><button class="act ghost${VILLA_ONLY ? ' on' : ''}" id="villaTgl">빌라 전용 보기</button>
+      <small class="dim">${VILLA_ONLY ? `빌라 ${owned.length}명만 표시 — 다른 구단 ${hidden}명은 숨김(원장에는 남아 있다)` : `전체 ${all.length}명 표시`}</small></div>`);
+  document.getElementById('villaTgl').addEventListener('click', () => {
+    localStorage.setItem('fut_villa_only', VILLA_ONLY ? '0' : '1'); renderClub(); });
+
   const logs = C.log.filter(l => owned.some(p => p.id === l.club_player_id));
   renderChem(owned);
   document.getElementById('owned').innerHTML = owned.length ? owned.map(p => {
