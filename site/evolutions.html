@@ -403,6 +403,23 @@ const metaFor = slot => CHEM_META.find(m => m.item.startsWith(META_KEY[slot] || 
 const POS_ROLE = { GK: 'gk_goalkeeper', CB: 'cb_defender', LB: 'fb_fullback', RB: 'fb_fullback',
                    CDM: 'dm_holding', CM: 'cm_b2b', CAM: 'cam_playmaker', LM: 'wm_widemid', RM: 'wm_widemid',
                    LW: 'w_winger', RW: 'w_winger', ST: 'st_advanced' };
+/* ⭐ 자리 역할이 없는 선수(교체 등)는 **그 포지션의 역할 중 적합이 가장 높은 것**을 쓴다
+   (2026-09-19 사용자 지적 「마조는 타겟맨이 더 맞지 않나」 — 고정 기본값 st_advanced가 193cm·힘 91을 못 봤다).
+   적합 = Σ(가중 × 현재 속성) / Σ(가중 × 99). 처방이 있으면 처방이 우선이다. */
+const POS_PREFIX = { GK: 'gk_', CB: 'cb_', LB: 'fb_', RB: 'fb_', CDM: 'dm_', CM: 'cm_', CAM: 'cam_',
+                     LM: 'wm_', RM: 'wm_', LW: 'w_', RW: 'w_', ST: 'st_' };
+function roleFit(at, roleId){
+  const w = KEYW[roleId] || {}; const den = Object.values(w).reduce((t, v) => t + v * 99, 0);
+  if (!den) return 0;
+  return Object.entries(w).reduce((t, [a, v]) => t + v * (at[a] ?? 0), 0) / den * 100;
+}
+function bestRoleFor(attrsJson, pos){
+  const at = J(attrsJson, {}) || {}, pre = POS_PREFIX[pos];
+  if (!pre || !Object.keys(at).length) return null;
+  const cands = Object.keys(KEYW).filter(r => r.startsWith(pre));
+  if (!cands.length) return null;
+  return cands.map(r => ({ r, f: roleFit(at, r) })).sort((a, b) => b.f - a.f)[0];
+}
 /* ⭐ 붙인 뒤 6대 스탯 (2026-09-19, 사용자 지시 「붙인 후 스탯의 변경도 볼수있게」)
    6대 스탯은 개별 속성의 가중 평균이다(fc_face_stats, migration 051) — 부스트는 개별 속성에만 들어오므로
    이 표로 되계산해야 「PAC가 몇이 되는가」를 말할 수 있다. 반올림 규칙도 게임 구현과 같게 floor(x+0.501)로 둔다. */
@@ -647,13 +664,14 @@ function renderChem(owned, all = owned){
     const benchSlots = (EVO.squad_slots || []).filter(x => x.grp === 'SUBSTITUTE').sort((a, b) => a.idx - b.idx);
     const benchRows = benchSlots.map(s2 => byItem.get(s2.ea_item_id)).filter(Boolean).map(p => {
       const pos = String(p.positions || '').split('/')[0] || '';
-      const roleId = PRES[p.player_id]?.role_id || POS_ROLE[pos];
+      const auto = PRES[p.player_id] ? null : bestRoleFor(p.attrs, pos);
+      const roleId = PRES[p.player_id]?.role_id || auto?.r || POS_ROLE[pos];
       const st = styleRank(p.attrs, roleId, pos === 'GK');
       const now = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
       const same = now && st[0] && now === st[0].name;
       return `<tr><td class="dim">${esc(pos)}</td>
         <td>${esc(p.name)} <small class="dim">OVR ${chemOvr(p) || '—'}${p.club === 'Aston Villa' ? '' : ' · ' + esc(p.club || '?')}</small></td>
-        <td class="dim">${esc(ROLE_KR[roleId] || roleId || '—')}</td>
+        <td class="dim">${esc(ROLE_KR[roleId] || roleId || '—')}${auto ? `<br><small>자동 선택 · 적합 ${auto.f.toFixed(0)}%</small>` : ''}</td>
         <td>${now && !['Basic', 'GK Basic'].includes(now) ? `<b>${esc(now)}</b>` : '<span class="dim">미적용</span>'}</td>
         <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}${styleDetail(st)}</td></tr>`;
     }).join('');
