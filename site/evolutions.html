@@ -456,10 +456,16 @@ function renderChem(owned){
     const pres = PRES[p.player_id], roleId = pres?.role_id || POS_ROLE[s];
     const st = styleRank(p.attrs, roleId, s === 'GK');
     const gains = st[0] ? st[0].top.map(x => `${x.a}+${x.gain}`).join(' · ') : '';
+    /* 지금 붙어 있는 스타일 — GG Club 싱크가 준 EA 소모품 id(250 Basic·273 GK Basic = 미적용) */
+    const nowStyle = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
+    const nowTxt = p.chem_style_ea == null ? ''
+      : (nowStyle && !['Basic', 'GK Basic'].includes(nowStyle)
+          ? `<div class="kv" style="gap:4px"><span class="chip" style="border-color:${nowStyle === st[0]?.name ? 'var(--ok)' : 'var(--warn)'};color:${nowStyle === st[0]?.name ? 'var(--ok)' : 'var(--warn)'}">지금 ${esc(nowStyle)}</span>${nowStyle === st[0]?.name ? '' : '<small class="dim">추천과 다름</small>'}</div>`
+          : '<div><small class="dim">지금 미적용</small></div>');
     return `<tr><td><b>${s}</b></td>
       <td>${esc(p.name)} <small class="dim">OVR ${chemOvr(p) || '—'}</small></td>
       <td style="color:${color(v)}"><b>${v}</b>/3</td>
-      <td>${st[0] ? `<b>${esc(st[0].name)}</b><small class="dim"> ${esc(gains)}</small>
+      <td>${nowTxt}${st[0] ? `<b>${esc(st[0].name)}</b><small class="dim"> ${esc(gains)}</small>
              <br><small class="dim">차선 ${st.slice(1, 3).map(x => esc(x.name)).join(' · ')} · 기준 ${pres ? '처방' : '포지션 기본'} ${esc(ROLE_KR[roleId] || roleId || '—')}</small>`
            : '<span class="dim">속성 미수집 — 추천 불가</span>'}</td>
       <td class="dim">${esc(p.nation || '?')} · ${esc(p.league || '?')} · ${esc(p.club || '?')}</td>

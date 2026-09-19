@@ -795,7 +795,7 @@ CREATE TABLE fut_club_players(
   current_playstyles TEXT, current_roles_plus TEXT, current_roles_plus_plus TEXT,
   evo_count INTEGER NOT NULL DEFAULT 0,       -- 적용한 진화 단계 수(로그와 일치해야 한다)
   notes TEXT,
-  updated TEXT NOT NULL,
+  updated TEXT NOT NULL, chem_style_ea INTEGER, chem_points INTEGER, gg_player_id TEXT, synced_at TEXT,
   UNIQUE(account_id, ea_item_id)
 );
 CREATE TABLE fut_evolution_log(
@@ -913,6 +913,6 @@ CREATE TABLE fc_chemistry_styles(
   is_gk INTEGER NOT NULL DEFAULT 0,
   boosts TEXT NOT NULL,             -- {"공격 위치 선정": 9, …} — 최대 케미(3) 기준 한글 속성 라벨 JSON
   pulled TEXT NOT NULL,
-  source TEXT NOT NULL, confidence TEXT NOT NULL,
+  source TEXT NOT NULL, confidence TEXT NOT NULL, ea_id INTEGER,
   UNIQUE(game_version, style_id)
 );

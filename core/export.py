@@ -163,7 +163,8 @@ def export_all(db_path=None, window="2026-summer"):
                                 f.current_ovr, f.current_six, f.current_playstyles, f.current_roles_plus,
                                 f.current_roles_plus_plus, f.evo_count, f.notes, f.updated,
                                 c.ovr AS card_ovr, c.positions, c.nation, c.league, c.club, c.is_icon, c.is_hero,
-                                c.chem_extra, c.card_image_url, c.attrs
+                                c.chem_extra, c.card_image_url, c.attrs,
+                                f.chem_style_ea, f.chem_points, f.synced_at
                          FROM fut_club_players f
                          LEFT JOIN player_card_items c ON c.ea_item_id=f.ea_item_id AND c.game_version='FC27'
                          ORDER BY f.account_id, f.status, f.name""")
@@ -175,7 +176,7 @@ def export_all(db_path=None, window="2026-summer"):
                                                               FROM player_card_prices
                                                               WHERE pulled=(SELECT MAX(pulled) FROM player_card_prices)""")}
     # 케미스트리 스타일 24종(migration 045) — 화면이 역할 가중과 곱해 추천 순위를 만든다.
-    chem_styles = _rows(con, """SELECT style_id, name, is_gk, boosts FROM fc_chemistry_styles
+    chem_styles = _rows(con, """SELECT style_id, ea_id, name, is_gk, boosts FROM fc_chemistry_styles
                                 WHERE game_version='FC27' ORDER BY is_gk, style_id""")
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
                           {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices,
