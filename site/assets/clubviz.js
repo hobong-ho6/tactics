@@ -107,8 +107,13 @@ export function fcSideEmpty(meta = {}, xi = []) {
 
 export const FC_CSS = `
 .fc-wrap{--fcg1:#0f3d24;--fcg2:#0a2e1b}
-.fc-layout{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
-.fc-main{min-width:0;max-width:760px}
+/* ⚠️ 칼럼을 1fr로 두면 안 된다(2026-09-20 사용자 지적 「중간에 공백이 많다」): 1fr은 남는 폭을 전부
+   먹는데 .fc-main은 자기 최대 폭에서 멈추므로, 넓은 화면에서 **피치와 사이드 사이에 800px짜리 빈
+   구멍**이 생겼다. 두 칼럼을 내용 폭 상한으로 묶고 justify-content로 가운데 모은다 — 남는 여백은
+   가운데가 아니라 바깥에 생긴다. */
+.fc-layout{display:grid;grid-template-columns:minmax(0,760px) minmax(340px,420px);
+  gap:20px;align-items:start;justify-content:center}
+.fc-main{min-width:0}
 /* ⭐ 크기 규칙(2026-09-20) — 이 세 줄이 「비율이 안 맞고 정보가 작다」의 실제 해법이다:
    ⑴ **높이를 뷰포트에 맞춘다**(width:100%가 아니라 height 기준) — 폭은 비율에서 파생되므로
       화면이 낮으면 알아서 줄고, 높으면 720px까지 커진다. 종전엔 width:100%라 높이가 1,600px까지 늘었다.
@@ -201,10 +206,12 @@ function chemBlock(p, styles) {
     : Object.entries(raw0).map(([k, v]) => [k, num(v) ?? 0]);
   const cp = p.chem_points ?? 0;
   const scale = cp >= 3 ? 1 : cp === 2 ? 2 / 3 : cp === 1 ? 1 / 3 : 0;
+  /* ⭐ 실제 적용값은 **이 패널에서 가장 중요한 숫자**다(2026-09-20 사용자 지시 「눈에 잘 띄지 않으니 색조정」).
+     본문 색(--up)을 그대로 쓰면 스타일 표기값과 구분이 안 된다 — 초록 배경 pill로 띄운다. */
   const rows = pairs.sort((a, b) => b[1] - a[1]).map(([attr, raw]) => {
     const eff = Math.round(raw * scale);
     return `<tr><td>${esc(attr)}</td><td class="dim">+${raw}</td>
-      <td><b class="${eff > 0 ? 'up' : 'dim'}">${eff > 0 ? '+' + eff : '0'}</b></td></tr>`;
+      <td><span class="fc-boost${eff > 0 ? '' : ' zero'}">${eff > 0 ? '+' + eff : '0'}</span></td></tr>`;
   }).join('');
   return `<div class="fc-chemhead">
       <img src="assets/chemstyles/${st.ea_id}.png" alt=""><b>${esc(st.name)}</b>
@@ -274,4 +281,8 @@ export const FC_DETAIL_CSS = `
 .fc-attrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:2px 10px}
 .fc-attr{display:flex;justify-content:space-between;font-size:12px;padding:2px 0;border-bottom:1px dotted var(--line)}
 .fc-attr span{color:var(--dim)}
+/* 케미 부스트 실제 적용값 — 표에서 즉시 눈에 들어와야 한다. */
+.fc-boost{display:inline-block;min-width:34px;text-align:center;font-weight:800;font-size:12.5px;
+  color:#062b12;background:var(--ok);border-radius:99px;padding:1px 8px}
+.fc-boost.zero{color:var(--dim);background:transparent;border:1px solid var(--line);font-weight:600}
 `;
