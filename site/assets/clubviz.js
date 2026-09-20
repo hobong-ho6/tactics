@@ -11,22 +11,23 @@ const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '
 
 /* 4-2-3-1 (2) 좌표 — x: 0(좌)~100(우) · y: 0(우리 골문)~100(상대 골문). 슬롯 순서는 위 규약대로 우→좌.
    ⚠️⚠️ **겹침 규칙**(2026-09-20, 브라우저에서 사각형 교차를 실제로 재서 고침 — 추정으로 하지 말 것):
-   카드 한 장은 폭 = 피치 폭의 `--fccard`, 높이 = **피치 높이의 약 24%**다(카드 아트가 3:4보다 세로로
-   길고 아래 pill이 붙는다). 따라서 두 슬롯은 다음 중 **하나 이상**을 만족해야 겹치지 않는다:
-     · |Δy| ≥ 25   또는   · |Δx| ≥ 16(= --fccard)
-   종전 좌표는 GK↔CB·CDM↔CAM·CAM↔ST 5쌍이 실제로 겹쳤다. 좌표를 바꿀 때 이 두 부등식을 다시 검산한다.
-   그래서 CB·CDM을 x 37/63 → **34/66**으로 벌렸다(CAM·GK와 정확히 16 떨어진다). */
+   카드 한 장은 폭 = 피치 폭의 `--fccard`, 높이 ≈ 피치 높이의 `ar×fccard×1.545 + 3%`다
+   (카드 아트가 3:4보다 세로로 길고 아래 pill이 붙는다). 따라서 두 슬롯은 다음 중 **하나 이상**을
+   만족해야 겹치지 않는다:  · |Δy| ≥ 카드높이%   또는   · |Δx| ≥ --fccard
+   ⭐ 2026-09-21: 카드를 16% → **17.5%**로 키웠다(사용자 지시 「주발·포지션이 잘 안 보인다」).
+   카드 높이%가 24 → 26으로 늘어 좌표를 다시 풀었다 — CB·CDM을 x 32/68로 벌려 CAM·GK와 18 띄우고,
+   같은 열에 서는 CB↔CDM은 Δy 27로, CAM↔ST는 Δy 27로 잡았다. 좌표를 바꾸면 이 부등식을 다시 검산한다. */
 const SPOTS = [
   { x: 50, y: 4 },   // 0 GK
-  { x: 86, y: 30 },  // 1 RB
-  { x: 66, y: 25 },  // 2 CB(우)
-  { x: 34, y: 25 },  // 3 CB(좌)
-  { x: 14, y: 30 },  // 4 LB
-  { x: 66, y: 50 },  // 5 CDM(우)
-  { x: 34, y: 50 },  // 6 CDM(좌)
-  { x: 87, y: 72 },  // 7 RM
-  { x: 13, y: 72 },  // 8 LM
-  { x: 50, y: 72 },  // 9 CAM
+  { x: 88, y: 28 },  // 1 RB
+  { x: 68, y: 23 },  // 2 CB(우)
+  { x: 32, y: 23 },  // 3 CB(좌)
+  { x: 12, y: 28 },  // 4 LB
+  { x: 68, y: 50 },  // 5 CDM(우)
+  { x: 32, y: 50 },  // 6 CDM(좌)
+  { x: 88, y: 72 },  // 7 RM
+  { x: 12, y: 72 },  // 8 LM
+  { x: 50, y: 70 },  // 9 CAM
   { x: 50, y: 97 },  // 10 ST
 ];
 
@@ -152,8 +153,8 @@ export const FC_CSS = `
    ⚠️ --fccard를 키울 때는 SPOTS 주석의 겹침 부등식을 다시 검산한다.
    ⭐ overflow:visible — GK(y4)·ST(y97) 카드는 잔디 밖으로 조금 나간다. 잘라내면 카드가 반쪽이 되므로
       자르지 않고, 대신 위아래 margin으로 이웃 요소와의 자리를 비워둔다. */
-.fc-pitch{position:relative;aspect-ratio:85/100;height:min(760px,calc(100vh - 250px));
-  width:auto;max-width:100%;margin:26px auto 48px;--fccard:16%;border-radius:10px;
+.fc-pitch{position:relative;aspect-ratio:85/100;height:min(820px,calc(100vh - 210px));
+  width:auto;max-width:100%;margin:28px auto 52px;--fccard:17.5%;border-radius:10px;
   background:repeating-linear-gradient(0deg,var(--fcg1) 0 7%,var(--fcg2) 7% 14%);
   border:1px solid var(--line);overflow:visible}
 .fc-lines{position:absolute;inset:8px;border:2px solid rgba(255,255,255,.18);border-radius:4px}
@@ -176,9 +177,9 @@ export const FC_CSS = `
    인게임과 같이 **어두운 원 + 흰 실루엣**으로 간다 — 카드의 금색과 싸우지 않는다.
    filter가 배경까지 반전시키므로 span으로 감싸고 **img에만** 반전을 건다. */
 .fc-chem{position:absolute;right:-2%;top:8%;width:23%;aspect-ratio:1;border-radius:50%;
-  background:rgba(10,16,24,.88);box-shadow:0 0 0 1px rgba(255,255,255,.22),0 2px 5px rgba(0,0,0,.5);
+  background:#fff;box-shadow:0 0 0 1.5px rgba(0,0,0,.55),0 2px 5px rgba(0,0,0,.45);
   display:grid;place-items:center}
-.fc-chem img{width:72%;display:block;filter:brightness(0) invert(1)}
+.fc-chem img{width:74%;display:block;filter:brightness(0)}
 /* ⚠️ 배지를 카드 **밖**(top:-7px)에 두면 안 된다(2026-09-20 사용자 지적 「카드 위에 텍스트 안 보임」):
    슬롯은 형제 요소라 DOM 순서상 뒤에 오는 슬롯이 그 위에 그려지고, 벤치에서는 줄 밖으로 잘렸다.
    카드 아트 **안쪽 상단 중앙**(OVR·포지션 인쇄가 없는 빈 영역)에 얹는다. */
@@ -201,7 +202,7 @@ export const FC_CSS = `
 .fc-benchrow.drag{cursor:grabbing;user-select:none}
 .fc-benchrow.drag .fc-card{transform:none}
 .fc-benchrow img{-webkit-user-drag:none;user-drag:none}
-.fc-benchrow .fc-card{flex:0 0 auto;width:92px}
+.fc-benchrow .fc-card{flex:0 0 auto;width:104px}
 .fc-note{font-size:11px;color:var(--dim);margin:10px 0 0}
 /* 사이드 패널 — 스크롤을 따라다니고, 길면 자기 안에서만 스크롤한다. */
 .fc-side{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;
@@ -333,19 +334,17 @@ function recoBlock(p, reco, styles) {
       <td><b>${esc(s.name)}</b>${same ? ' <small class="dim">= 지금</small>' : ''}</td>
       <td style="text-align:right">${Math.round(s.score)}</td></tr>`;
   }).join('');
+  const head = `<thead><tr><th></th><th>스타일</th><th style="text-align:right">역할 점수</th></tr></thead>`;
   const top = reco.ranked[0];
   const why = (top.top || []).map(x => `${x.a} +${x.gain}`).join(' · ');
   return `<h4>추천 케미스트리</h4>
     <p class="dim" style="font-size:11.5px;margin:0 0 6px">기준 역할 <b>${esc(reco.roleKr || '—')}</b>
       <small>(${esc(basisKr || '')})</small></p>
-    <table class="tbl fc-recotbl"><tbody>${rows}</tbody></table>
+    <table class="tbl fc-recotbl">${head}<tbody>${rows}</tbody></table>
     <p class="dim" style="font-size:11.5px;margin:6px 0 0">점수 = Σ(역할 가중 × <b>실제 상승분</b>) —
       ${why ? esc(why) : '해당 역할 핵심 속성에 걸리는 상승 없음'}.
       ⚠️ 속성 상한 99라 이미 높은 칸에 붙는 부스트는 낭비로 빠진다.
       ${reco.bench ? '<br>⚠️ 교체 선수는 <b>투입 전까지 개인 케미가 0</b>이라 스타일 효과도 0이다.' : ''}</p>
-    ${reco.meta ? `<p class="dim" style="font-size:11.5px;margin:6px 0 0">
-      <b>메타 관습</b> ${esc(reco.meta.value || '')}${reco.meta.alternatives ? ` <small>(대안 ${esc(reco.meta.alternatives)})</small>` : ''}
-      — 커뮤니티 가이드 합의이지 EA 권장이 아니다. 위 계산과 갈리면 그 선수만 들여다보면 된다.</p>` : ''}
     <p class="dim" style="font-size:11.5px;margin:6px 0 0">⛔ <b>fut.gg 선수별 케미 등급·커뮤니티 투표율은 아직 수집하지 않았다</b> — 원장에 없어 표시하지 않는다.</p>`;
 }
 
@@ -389,7 +388,8 @@ export const FC_DETAIL_CSS = `
 .fc-pslist{display:flex;flex-wrap:wrap;gap:6px}
 .fc-ps{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;
   background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:3px 9px 3px 4px}
-.fc-ps img{width:18px;height:18px;display:block}
+.fc-ps img{width:19px;height:19px;display:block;padding:2px;box-sizing:border-box;
+  background:#fff;border-radius:50%;filter:brightness(0)}
 .fc-ps.plus{border-color:var(--ok)}
 .fc-ps.plus i{font-style:normal;font-weight:800;color:var(--ok);margin-left:1px}
 .fc-recotbl td{font-size:12px}
@@ -398,7 +398,7 @@ export const FC_DETAIL_CSS = `
 .fc-dhead h3{margin:0 0 2px;font-size:16px}
 .fc-chemhead{display:flex;gap:8px;align-items:center;margin-bottom:6px}
 .fc-chemhead img{width:26px;padding:4px;box-sizing:border-box;border-radius:50%;
-  background:rgba(10,16,24,.88);box-shadow:0 0 0 1px rgba(255,255,255,.22);filter:brightness(0) invert(1)}
+  background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.5);filter:brightness(0)}
 .fc-attrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:2px 10px}
 .fc-attr{display:flex;justify-content:space-between;font-size:12px;padding:2px 0;border-bottom:1px dotted var(--line)}
 .fc-attr span{color:var(--dim)}

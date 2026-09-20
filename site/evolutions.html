@@ -109,7 +109,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260921a';
+import { fcPitch, fcSideEmpty, enableDragScroll, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260921b';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
