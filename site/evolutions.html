@@ -109,7 +109,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260920j';
+import { fcPitch, fcSideEmpty, enableDragScroll, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260920k';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -275,6 +275,7 @@ function renderNow(){
   document.querySelectorAll('#nowpitch .fc-benchrow .fc-card').forEach((el, i) => {
     el.addEventListener('click', () => openDetail(benchRows[i]?.player, null, el));
   });
+  enableDragScroll(document.querySelector('#nowpitch .fc-benchrow'));
 
   const bench = (EVO.squad_slots || []).filter(s => s.grp === 'BENCH').sort((a,b)=>a.idx-b.idx);
   document.getElementById('nowxi').innerHTML = `<h3 style="margin:14px 0 6px">교체 명단 <small class="dim">${bench.length}명</small></h3>

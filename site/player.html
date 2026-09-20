@@ -249,6 +249,20 @@ function fillWho(){
 grp.addEventListener('change', ()=>{ fillWho(); render(); });
 who.addEventListener('change', render);
 fillWho();
+/* ⭐ 딥링크 `player.html?id=<player_id>` (2026-09-20, 사용자 지적 「선수 프로필 열기가 선수 메뉴로만 이동」).
+   종전에는 쿼리 파라미터를 아무도 읽지 않아 다른 화면에서 건 링크가 전부 **첫 선수**를 열었다.
+   pid로 그룹·선수를 찾아 select를 맞춘다 — 한 선수가 여러 그룹에 있으면 먼저 찾은 그룹을 쓴다.
+   ⚠️ 못 찾으면 조용히 기본값으로 둔다(id가 영입 추적·이탈로 목록에 없을 수 있다). */
+(() => {
+  const want = Number(new URLSearchParams(location.search).get('id'));
+  if (!want) return;
+  for (const [g, list] of Object.entries(groups)) {
+    const i = list.findIndex(x => x.pid === want);
+    if (i < 0) continue;
+    grp.value = g; fillWho(); who.value = String(i);
+    return;
+  }
+})();
 /* 종합 평가 패널 — player_evaluations 산출물. 없으면 패널 자체를 숨긴다. */
 function renderEval(n, sel){
   const panel = document.getElementById('evalpanel');

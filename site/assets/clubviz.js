@@ -5,6 +5,8 @@
       다시 쓰면 확대할 때 자국이 남는다). 진화로 값이 달라진 카드만 **카드 밖에 배지**로 현재 OVR을 알린다.
    ⭐ 배치는 fut.gg 슬롯 순서 규약을 따른다(f4231a: 0 GK · 1 RB · 2 CB · 3 CB · 4 LB · 5 CDM · 6 CDM ·
       7 RM · 8 LM · 9 CAM · 10 ST, **우→좌**). */
+import { PLAYSTYLES } from './playstyle-icons.js';
+
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
 /* 4-2-3-1 (2) 좌표 — x: 0(좌)~100(우) · y: 0(우리 골문)~100(상대 골문). 슬롯 순서는 위 규약대로 우→좌.
@@ -85,6 +87,33 @@ export function fcPitch(xi, bench, meta = {}) {
   </div>`;
 }
 
+/* 가로 스크롤 영역을 마우스로 끌어서 민다(2026-09-20 사용자 지시 「교체영역 드래그로 스크롤」).
+   ⚠️ 드래그가 끝날 때 click이 뒤따라 발생해 **카드 상세가 잘못 열린다** — 5px 넘게 움직였으면
+   다음 click 한 번을 캡처 단계에서 삼킨다(그냥 클릭했을 때는 그대로 열려야 한다). */
+export function enableDragScroll(el) {
+  if (!el) return;
+  let down = false, sx = 0, sl = 0, moved = 0;
+  el.addEventListener('pointerdown', e => {
+    if (e.button !== 0) return;
+    down = true; moved = 0; sx = e.clientX; sl = el.scrollLeft;
+    el.setPointerCapture(e.pointerId); el.classList.add('drag');
+  });
+  el.addEventListener('pointermove', e => {
+    if (!down) return;
+    const dx = e.clientX - sx;
+    moved = Math.max(moved, Math.abs(dx));
+    el.scrollLeft = sl - dx;
+  });
+  const up = () => {
+    if (!down) return;
+    down = false; el.classList.remove('drag');
+    if (moved > 5) el.addEventListener('click',
+      ev => { ev.stopPropagation(); ev.preventDefault(); }, { capture: true, once: true });
+  };
+  el.addEventListener('pointerup', up);
+  el.addEventListener('pointercancel', up);
+}
+
 /* 아무 카드도 고르지 않았을 때의 사이드 패널 — 빈 칸으로 두지 않고 **팀 설정 + 11칸 역할**을 보여준다.
    카드 pill에서 뺀 역할·포커스가 여기 온전히 들어간다(잘림 없이). */
 export function fcSideEmpty(meta = {}, xi = []) {
@@ -142,8 +171,15 @@ export const FC_CSS = `
 .fc-art.ph{display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:3/4;
   background:var(--panel);border:1px solid var(--line);border-radius:6px;line-height:1.2;font-size:11px;color:var(--dim)}
 .fc-art.ph b{font-size:20px;color:var(--txt)}
-.fc-chem{position:absolute;right:-6%;top:12%;width:30%;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
-.fc-evo{position:absolute;left:50%;top:-7px;transform:translateX(-50%);font-size:9.5px;font-weight:700;
+/* 카드에 붙은 케미 스타일 아이콘 — 원본 PNG가 검은 실루엣이라 금색 카드 위에서 묻혔다
+   (2026-09-20 사용자 지시 「카드 위에 붙은 부스터 아이콘 색조정」). 부스트 pill과 **같은 초록**
+   원형 배경을 깔아 대비를 준다. 상세 패널 아이콘(.fc-chemhead img)도 같은 규칙을 쓴다. */
+.fc-chem{position:absolute;right:-6%;top:10%;width:32%;box-sizing:border-box;padding:3px;
+  background:var(--ok);border-radius:50%;box-shadow:0 0 0 1.5px rgba(0,0,0,.5),0 2px 5px rgba(0,0,0,.55)}
+/* ⚠️ 배지를 카드 **밖**(top:-7px)에 두면 안 된다(2026-09-20 사용자 지적 「카드 위에 텍스트 안 보임」):
+   슬롯은 형제 요소라 DOM 순서상 뒤에 오는 슬롯이 그 위에 그려지고, 벤치에서는 줄 밖으로 잘렸다.
+   카드 아트 **안쪽 상단 중앙**(OVR·포지션 인쇄가 없는 빈 영역)에 얹는다. */
+.fc-evo{position:absolute;left:50%;top:4px;transform:translateX(-50%);font-size:9.5px;font-weight:700;
   background:var(--ok);color:#06240f;border-radius:99px;padding:1px 6px;white-space:nowrap;z-index:2}
 .fc-evo.inline{position:static;transform:none;display:inline-block}
 /* 포지션·역할 pill — 카드 바로 아래 한 줄(fut.gg와 같은 자리). */
@@ -157,7 +193,11 @@ export const FC_CSS = `
 .fc-pips i.on{background:var(--ok)}
 .fc-bench{margin-top:14px}
 .fc-bench h4{margin:0 0 6px;font-size:13px}
-.fc-benchrow{display:flex;gap:10px;overflow-x:auto;padding:4px 0 8px}
+/* 벤치 — 가로 스크롤 + 드래그로 밀 수 있다(enableDragScroll). */
+.fc-benchrow{display:flex;gap:10px;overflow-x:auto;padding:4px 0 8px;cursor:grab}
+.fc-benchrow.drag{cursor:grabbing;user-select:none}
+.fc-benchrow.drag .fc-card{transform:none}
+.fc-benchrow img{-webkit-user-drag:none;user-drag:none}
 .fc-benchrow .fc-card{flex:0 0 auto;width:92px}
 .fc-note{font-size:11px;color:var(--dim);margin:10px 0 0}
 /* 사이드 패널 — 스크롤을 따라다니고, 길면 자기 안에서만 스크롤한다. */
@@ -217,7 +257,29 @@ function chemBlock(p, styles) {
       <img src="assets/chemstyles/${st.ea_id}.png" alt=""><b>${esc(st.name)}</b>
       <span class="chip ${cp >= 3 ? 'ok' : 'dim'}">개인 케미 ${cp}/3</span></div>
     ${cp === 0 ? '<p class="dim" style="margin:4px 0">⚠️ 개인 케미 0이라 <b>부스트가 전혀 적용되지 않는다</b>(붙여둬도 효과 0).</p>' : ''}
-    <table class="tbl"><thead><tr><th>속성</th><th>스타일 표기</th><th>실제 적용</th></tr></thead><tbody>${rows}</tbody></table>`;
+    <table class="tbl fc-chemtbl"><thead><tr><th>속성</th><th>표기</th><th>적용</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+/* PlayStyle — 이름만 쓰지 않고 아이콘을 붙인다(2026-09-20 사용자 지시 「플레이스타일도 아이콘으로」).
+   아이콘·설명은 `assets/playstyle-icons.js`(fut.gg /api/fut/playstyles/ 원문)를 그대로 쓴다.
+   ⚠️ 이름이 사전에 없으면 **아이콘 없이 이름만** 남긴다 — 빈 칸으로 만들지 않는다. */
+function psBlock(csv) {
+  if (!csv) return '';
+  const items = String(csv).split(',').map(s => s.trim()).filter(Boolean).map(nm => {
+    const d = PLAYSTYLES[nm];
+    return `<span class="fc-ps" title="${esc(d ? (d.base || '') : nm)}">
+      ${d?.icon ? `<img src="${esc(d.icon)}" alt="" loading="lazy">` : ''}${esc(nm)}</span>`;
+  }).join('');
+  return `<h4>PlayStyle</h4><div class="fc-pslist">${items}</div>`;
+}
+
+/* 「N회」만 쓰면 오해가 난다(2026-09-20 사용자 지적 「4회짜리인데 5회로 나옴」):
+   원장의 세는 단위는 **적용 횟수**라 4단계짜리를 한 번 밟아도 1회인데, 읽는 쪽은 **단계 수**로 본다.
+   둘을 함께 적어 애매함을 없앤다. */
+function evoCountLabel(p, log) {
+  const mine = (log || []).filter(l => l.club_player_id === p.id && !l.is_void);
+  const n = p.evo_count ?? 0;
+  return `<small class="dim">${n}회${mine.length > n ? ` · 총 ${mine.length}단계` : ''}</small>`;
 }
 
 function evoBlock(p, log) {
@@ -264,20 +326,30 @@ export function cardDetail(p, ctx = {}) {
       ${ctx.team ? `<div class="plist" style="margin-top:4px"><button disabled>빌드업 ${esc(ctx.team.build_up_style)}</button>
       <button disabled>수비 ${esc(ctx.team.defensive_approach)}</button><button disabled>라인 ${ctx.team.line_height}</button></div>` : ''}` : ''}
     <h4>현재 카드 스탯</h4>${sixRow(cur, base)}
-    ${p.current_playstyles ? `<p style="font-size:12px;margin:6px 0 0"><span class="dim">PlayStyle</span> <b>${esc(p.current_playstyles)}</b></p>` : ''}
-    <h4>진화 상태 <small class="dim">${p.evo_count ?? 0}회</small></h4>${evoBlock(p, ctx.log)}
+    ${psBlock(p.current_playstyles)}
+    <h4>진화 상태 ${evoCountLabel(p, ctx.log)}</h4>${evoBlock(p, ctx.log)}
     <h4>적용된 케미스트리</h4>${chemBlock(p, ctx.chem_styles)}
     <h4>상세 스탯</h4>${attrBlock(p)}
   </div>`;
 }
 
 export const FC_DETAIL_CSS = `
+/* ⚠️ 사이드 패널은 420px다 — 표를 그대로 두면 마지막 열이 패널 밖으로 밀려 잘린다
+   (2026-09-20 사용자 지적 「케미스트리 색 변경 안 됨」의 실제 원인은 색이 아니라 **열 잘림**이었다).
+   table-layout:fixed로 폭을 강제하고 숫자 열을 오른쪽에 고정한다. */
+.fc-detail .tbl{width:100%;table-layout:fixed}
+.fc-detail .tbl th,.fc-detail .tbl td{padding:3px 5px;font-size:12px;overflow:hidden;text-overflow:ellipsis}
+.fc-chemtbl th:nth-child(n+2),.fc-chemtbl td:nth-child(n+2){width:58px;text-align:right}
 .fc-detail h4{margin:14px 0 6px;font-size:13px}
+.fc-pslist{display:flex;flex-wrap:wrap;gap:6px}
+.fc-ps{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;
+  background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:3px 9px 3px 4px}
+.fc-ps img{width:18px;height:18px;display:block}
 .fc-dhead{display:flex;gap:12px;align-items:flex-start}
 .fc-dart{width:96px;flex:0 0 auto}
 .fc-dhead h3{margin:0 0 2px;font-size:16px}
 .fc-chemhead{display:flex;gap:8px;align-items:center;margin-bottom:6px}
-.fc-chemhead img{width:26px}
+.fc-chemhead img{width:28px;box-sizing:border-box;padding:3px;background:var(--ok);border-radius:50%}
 .fc-attrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:2px 10px}
 .fc-attr{display:flex;justify-content:space-between;font-size:12px;padding:2px 0;border-bottom:1px dotted var(--line)}
 .fc-attr span{color:var(--dim)}
