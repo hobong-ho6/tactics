@@ -605,6 +605,17 @@ UTV의 프레임 분석을 **Opta 이벤트 시퀀스로 검증했고 일치한�
 
 **D+2 이후 과제**: ① 🇮🇹 「italiani all'estero」 pagelle(월~화 발행) ② 🇨🇭 SRF·Nau.ch·20 Minuten 원문 — 만잠비 72′ 종결용 ③ Coaches' Voice·StatsBomb/Tifo 재시도 ④ 유튜브 `KCsvWv_eDeg`·`4J67XYRC8Uk` 회견 리액션 전사 — 완비사카 HT·후반 2실점의 남은 경로 ⑤ **The Athletic 09-20 기사(67′ 골 전용 해부)는 사용자 브라우저로만 접근 가능** ⑥ 만잠비 치료 시점(18′ vs 30′) 영상 확인 ⑦ 루헤리 인터셉트 6·클리어런스 8을 **좌측 피침투 실측과 대조**해 「많이 막음 = 많이 당함」 해석 닫기 ⑧ GK 골킥 숏/롱 분해 제공사 대조.
 
+### D+1-8. 미확보·제외 판단 (병렬 세션 메모 흡수분 — 메모는 삭제됨)
+
+**🟡 미확보로 남은 것 3건**
+1. **The Athletic 본문**(nytimes.com 도메인 차단) — 09-20 Tanswell 전술 기사 「Three passes and a goal」(67′ 골 전용 해부). 인용문은 확보했으나 본문은 **사용자 브라우저로만** 접근 가능.
+2. **Tanswell X 부엔디아 포스트의 「Emery wanted …」 이후 문장** — 비로그인 X에서 잘렸다(로그인 세션 필요). ⭐ 확보분: 「**Ran over 12km today. 0.6km more than any other #AVFC player**」(오늘 12km 이상 주행, 다른 어떤 빌라 선수보다 0.6km 많다) — **부엔디아의 무보유 주행량은 우리 실측에 없는 축**이다.
+3. **The Athletic 라이브블로그 58′ 루헤리 항목**(「Cheeky nutmeg from Ruggeri」) — 페이월로 전문 미확인, **인용 보류**.
+
+**⛔ 등재에서 제외한 전사 1편** — `ofp0s7RaNoc`(Cash talk's Football)은 **PL 전 경기 골 모음 포맷**이라 이 경기 비중이 서두 ~2분뿐이고 본문에 타 경기 내용이 섞여 있다.
+⇒ 등재하면 경기 화면 「이 경기 영상 분석」 패널이 오독을 부른다. **다음 회차가 같은 영상을 재후보로 올리지 않도록 여기에 사유를 남긴다.**
+⏰ 미등재 2편(`U4OewDAQMCk` MAH · `QkA0fScs5s8` Chris Cowlin: Spurs Chat, 둘 다 상대팀 축)은 **등재 가치가 있다** — G17상 `impl_claims` 1행(주장 없으면 `axis:none`)이 필요하다.
+
 ### D+1-7. ⚠️ 병렬 세션 병합 기록 (2026-09-20)
 
 이 경기 D+1 추적을 **두 세션이 병렬로** 수행했다. 다른 세션은 **DB를 건드리지 않고** 인계 메모

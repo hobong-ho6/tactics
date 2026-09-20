@@ -434,6 +434,14 @@ The Athletic 아스톤 빌라 담당. **AVL 관련 모든 회차(경기 수집 D
 | Embay / Imbula / Bye | Mbaye(음바예) | 3종 표기 혼재 |
 | Gacho | Garnacho(가르나초) | grep 「garnacho」로는 안 잡힌다 |
 | Matson | Maatsen(마첸) | |
+| Rogeri / Rogério / Roger / **Reguilon** | **Ruggeri(루헤리)** | 2026-09-20 신규. ⛔ **Reguilon은 실존 풀백**이라 「그럴듯하게」 성립한다 — Matty Cash↔Maatsen과 같은 부류 |
+| Wasaka / Wambasaka / Juan Bisaka | Wan-Bissaka(완비사카) | 3종 표기 혼재 |
+| Kamar / **camera** | Kamara(카마라) | ⚠️ `camera`는 **일반 명사라 grep에 안 걸린다** |
+| Wendia / Benua / Bendia / **Miliano** | Buendía(부엔디아) | ⛔⛔ 회견 자막의 **「Emiliano / Miliano」는 부엔디아**다 — **마르티네스가 아니다**(26/27 빌라 GK는 스즈키). 소스 2곳이 실제로 이 오류를 냈다 |
+| Van Heeka | van Hecke(판 헤케) | |
+| Ming | Mings(밍스) | |
+| Robinson | Robertson(로버트슨) | ⚠️ 둘 다 실존 선수 |
+| Joe Gomez | **João Gomes(주앙 고메스)** | ⛔ **Joe Gomez는 리버풀 실존 선수**다 — 팀 축까지 뒤바뀐다 |
 
 ⇒ **규칙**: ⑴ 전사에서 인물을 인용할 때 **합류 시점·이적료·포지션 같은 부속 사실로 교차 검증**한다.
 ⑵ grep은 **철자 변형을 함께** 건다(`grep -i "mbay\|mbai\|embai"`). ⑶ 확신이 없으면 **원문 철자를 그대로 두고
