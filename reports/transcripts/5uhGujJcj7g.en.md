@@ -1,0 +1,52 @@
+# 전사(자동 생성 자막) — 5uhGujJcj7g (en)
+
+> 원본: https://www.youtube.com/watch?v=5uhGujJcj7g · 수집: scripts/yt_transcript.py
+> ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.
+
+**[00:01]** Before you watch the fan cam, I want to give a massive shout-out to the Chelsea Fan Newsletter, which is the best newsletter you can watch out there. It comes out every Monday and Friday, and it's totally free. There's a QR code on screen, as well as a link in the description. Click the link or scan the QR code and subscribe. It literally takes 20 seconds, and let me know what you think about it. It's a very good way of interacting uh with myself via um the channel, and I look forward to uh seeing what you think.
+
+**[00:31]** Hello everyone from Chelsea Fan TV. I hope you're all doing very well. I'm outside uh Brentford with Neil Barnett. Neil, um thanks for coming down, mate. We had a We had a chat before the game, and I've had a chat with you in the past anyway, and you've criticized Lacroix. Uh you You've never been a fan. I personally always thought he was okay, uh but today there's no denying he was poor, and we've lost the game 3-0. >> Yeah, I don't want to pick on Lacroix at all, uh but I do want to say this. Um There's been a lot of reaction by
+
+**[01:03]** supporters uh about the way the ownership has run the club and the way that Roman Abramovich ran the club. Uh and in comparison to that, we've spent a lot of money. I do not think this team is of the standard of the Ruud Gullit managed team, the Luca Vialli managed team, uh and the ownership then of Ken Bates and the
+
+**[01:34]** work of Colin Hutchinson and Matthew Harding. I don't think it's of that level. Uh and that's something that people have got to look at. And I'm not going to pick on Lacroix. I think he's I think he's a He's won the FA Cup. Uh He's won the the Conference League. I think he's a play I I he's a Premier League player. Uh but all I want to say is this. Go back to the end of the last century and say Marcel Desailly
+
+**[02:05]** Frank Leboeuf Coming to this century, John Terry William Gallas Ricardo Carvalho And we can go on and on through uh after that Alex uh Gary Cahill David Luiz um on and on right up to Thiago Silva. What are we doing in in in our defense generally and our signings and our team building? Some people have got to look at
+
+**[02:35]** themselves and say how we got to this Brentford 3 Chelsea nil. How have we got to this? Because this is not a one-off game. This is a regression. >> Do you think this is a sign of of things to come through in the season then? >> No, it's a sign of how things are. Um and and uh last season we won only one of our 38 league games 1-0.
+
+**[03:05]** Tottenham away. Uh No, two. We beat Brentford actually. Did we 1-0 I think at home? Uh we won some cup games 1-0. Uh uh but um No, we beat Brentford 2-0. It was It was That was our last league clean sheet. Tottenham was the only 1-0 win last season. You can't not win games 1-0 ever
+
+**[03:35]** and be a good team. You can't. Uh it it it's a it's a manifestation of your attitude. It's a manifestation of your qualities. It's a manifest manifestation of your desire. And and everyone on about the fact that we haven't got to clean sheet now for 21 league games. It's terrible. But we haven't won 1-0 since November the 1st last year. At top And >> As a As a poor Tottenham side as well.
+
+**[04:07]** >> And yeah. >> Very poor Tottenham side. >> Win against Tottenham, don't really count, do they? >> [laughter] >> But But yeah, so so um it's it's uh We've had some wonderful wonderful moments this season. The football's been fantastic at times. The front three have been brilliant. They were Tonight it didn't work. I thought our best player tonight was Jordan Henderson. And and uh it Just everything went wrong. But it was something that happened under Enzo Maresca a lot.
+
+**[04:38]** And it's beginning to happen now under under Xavi. >> What's that? >> That I don't understand. Why do you keep substituting defenders? Surely you you you pick your defense and and then you substitute people further up. But we keep substituting defenders. Is it because they're not good enough? Why do you keep substituting defenders? >> keep conceding goals, Niel, so I mean >> It's I don't get it. I don't get it. We played around with three at the back. We played around with four at the back.
+
+**[05:09]** With this group of players, I personally prefer three at the back. Um I don't think the center backs are good enough to have just two of them or comfortable enough in the two. Uh and and I I think that Palmer and Rogers excel in the space that 3-4-2-1 gives them. And uh when you play four at the back I I just don't think they find the same amount of space. >> Why do you think the front line struggled today, though? >> Service.
+
+**[05:39]** Um lack of intensity. Um miss João Pedro. Um And and I mean it was completely different midfield, so uh I I didn't really understand the shape of the team today because Cole Palmer wasn't really a number 10. He He was He was playing more to the right and he was quite deep at times in midfield and Morgan Rogers was wider left and I don't know. I didn't really understand what they were trying to do today. I've got
+
+**[06:09]** to admit. >> I I I don't understand. I mean, I was with you at Arsenal nil and you were saying to me at times it's four, at times it's a three, sometimes we're defending it's a five. And I feel like that today as well where I think, "Oh, it's definitely a four." And then I go, "Oh, no, it looks like a five." On the ball, off the ball, it's different. But I feel like if I'm struggling with that clarity there's a part of me that also thinks, "How are the players feeling about the system?" >> the football. That's how football is now. I haven't got a problem with that. I thought it was about four today but with Fofana at right back and Cherrier
+
+**[06:40]** at left back. But, you know, I mean, I don't want to be mean to any individual. But if you buy a guy from Rayo Vallecano, maybe he's a Rayo Vallecano quality player. And if you buy a guy from Strasbourg, maybe he's a Strasbourg quality player. You know, and and I'm telling you now, if you buy a guy from Brighton if you buy a team from Brighton, which is basically what Chelsea have done over the last four years, you will turn into Brighton. I Now, I would like to turn into Brighton. They've sold us their team and they're better than we are.
+
+**[07:11]** >> And you really believe that? >> Well, they're above us in the table. >> I mean >> But I'm not sure they are at the moment. >> Do you Do you Do you think this is a good time to have an international break? >> No. >> Yeah, you want to go into an international break on a victory, obviously. No. No, but but I think it's uh We just got to stop buying so many players and we got to have a group that we can really can be tighter.
+
+**[07:43]** And it's just you know Look at it this way. We play mostly with two wingers. So who are our wingers? Our wingers are Neto, Rogers is playing on the wing mostly now or from wide. We've got Estevao, Gittens, Kwenda, um we've got on loan we've got
+
+**[08:14]** people like By the way, we've got Pires coming back and playing. Uh uh >> He's training with the squad now? >> Well, yeah, but he's he's in the under 21s, yeah. >> Next gen. Next gen. >> And and but then we've got out uh on loan people people like um Cavuma McQueen, uh um Jesse Derry, uh We we've we've we've just got countless countless wingers.
+
+**[08:45]** What are we going to do with them all? And we keep getting more. Uh I I don't understand what's going on in the transfer market. Um It's Estevao's got to play. Estevao's got to play. >> I was shocked he didn't come on earlier. >> The manager The manager's not taken to him so far. Um I believe in Chav Lonzo. But he's not taken to Estevao. I believe in Estevao.
+
+**[09:17]** He's got to show more. He's got to show the manager more cuz the manager's not convinced. >> Yeah, I mean, just to finish off Neil, last question. I mean, do you feel like this is going to be a tough season for us in the sense of not really much of an improvement on last year or do you still think that even though we struggled a lot last year, we've improved enough that we can still get Champions League football and we'll be good enough to have another crack at it in the summer and really cement some of the signings that we've made and give Alonso a bit
+
+**[09:47]** more backing. >> Um >> Cuz cuz they did back him, didn't they? But it's still not enough. I mean, it's quite obvious to see. >> I think we buy too many players. I think there are too many employees on the football side. Uh I think we need a tighter team. Uh fewer sporting directors. Um probably need fewer coaching staff. Uh we definitely need fewer players.
+
+**[10:19]** Um tonight we had a center back at right back. Um we had um a guy who's made most of his first team football at left back in midfield. Um we we were just we were all over the shop and and we're signing these so-called bargains for the future. Let let me just give you one other example of of what I cannot stand.
+
+**[10:49]** Um Josh Onomah is 20. He was when he was 19, all we ever heard was this club loves Josh. This club loves Josh. So, why the hell did we go out and buy 20-year-old Antoine Semenyo? And by the way, what's happened to Antoine Semenyo? And why do we go out and buy 20-year-old Mohamed Mohamed Diarra? Mamadou Diarra, sorry. Mamadou Diarra. >> Yeah, shocker on his debut. I remember it very well against PSG. >> Uh well, that wasn't his debut. That was his Champions League debut for us, but
+
+**[11:20]** but but he he um Yeah, he yeah. He's He's not the quickest at turning. Um why are we sign Why are we gridlocking the path into the first team? And uh it's it's we have overloads at wingers, we have overloads at young center backs, and we have gaps elsewhere. And I just don't see joined-up handwriting in the work that's going on in the football club at the
+
+**[11:51]** moment. >> We'll see what happens, Neil. Thank you very much for coming on, mate. >> And and for those of you who don't know what joined-up handwriting is because you can only use your fingers on keyboards, it's something that I used to do. >> [laughter] >> Fair enough. Thank you very much, Neil. Appreciate your time. You have a good one, mate.

@@ -37,6 +37,43 @@
    "video_id": "yn-UvcWhAio"
   },
   {
+   "channel": "Fußball Denker",
+   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
+   "id": 211,
+   "impl_claims": [
+    {
+     "axis": "limit",
+     "field": "back_three_not_auto_stability",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「**Dreierkette bedeutet nicht automatisch defensive Sicherheit.**」(**백3가 자동으로 수비 안정을 뜻하지 않는다.**) · 「Die Dreierkette bekommt plötzlich **Probleme in Räumen, die eigentlich abgesichert sein sollten**」(백3가 **원래 보호돼야 할 공간에서** 문제를 겪는다.) — auto-caption, 🇩🇪",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": "space_behind_wingbacks",
+     "verdict": "HELD",
+     "verdict_note": "⛔ **재판정 조건**: 「보호돼야 할 공간」이 구체적으로 어디인지 영상이 좌표로 특정하지 않는다. ⇒ 우리 국면 그리드(이 경기 14명 신규 채움)로 **윙백 배후 구역의 상대 보유 셀 밀도**를 내고, 백4 경기와 대조되면 판정한다. ⭐ 현재 정황은 방향이 맞다: 첼시 def_x 41.0(높음)인데 3실점했고, 상대는 **역습 위협을 게임플랜으로 명시**했다(앤드루스 회견). ⚠️ 이 영상은 **시즌 3경기 아크**(7실점)를 다루므로 이 경기 단독 근거로 쓰면 과대 적용이다."
+    }
+   ],
+   "key_points": [
+    "⭐⭐ 원문 「**Dreierkette bedeutet nicht automatisch defensive Sicherheit.**」(**백3가 자동으로 수비 안정을 뜻하지 않는다.**) — auto-caption",
+    "⭐ 원문 「Die **Dreierkette bekommt plötzlich Probleme in Räumen, die eigentlich abgesichert sein sollten**.」(백3가 **원래 보호돼야 할 공간에서 갑자기 문제를 겪는다**.)",
+    "원문 「**Gegentore entstehen selten durch einen einzigen Fehler.**」(**실점은 단일 실수로 생기는 일이 드물다.**)",
+    "원문 「… **seit 19 Ligaspielen keine einzige weiße Weste**」(**19리그 경기째 클린시트가 한 번도 없다**) ⚠️ 무클린시트 수치가 소스마다 19·21·22로 갈린다 — **미확정**."
+   ],
+   "kind": "전술분석",
+   "lang": "de",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "🇩🇪 **독일어 전술 채널** — D+2 에이전트가 「독일어 축 0건·이월」로 닫았던 공백이 여기서 닫힌다. ⚠️ 포맷은 이 경기 단독이 아니라 **시즌 초반 3경기(7실점) 아크**이고 브렌트포드전을 그 안에서 다룬다 — 출처 성격을 그렇게 적어야 한다. ⭐ 핵심 논지는 **「백3가 자동으로 수비 안정을 뜻하지 않는다」**이고, 백3가 **원래 보호돼야 할 공간에서 문제를 겪는다**고 본다. 또 실점이 **단일 실수가 아니라 누적**에서 나온다고 규정한다 — 우리 obs#894(하프타임에 특정된 표적)와 층이 다르지만 방향은 같다.",
+   "team_code": "CHE",
+   "title": "7 Gegentore: Alonso hat ein Taktik-Problem!",
+   "transcript_path": "reports/transcripts/XoqRKPT4D68.de.md",
+   "url": "https://www.youtube.com/watch?v=XoqRKPT4D68",
+   "video_id": "XoqRKPT4D68"
+  },
+  {
    "channel": "The Villans",
    "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
    "id": 198,
@@ -363,6 +400,111 @@
    "video_id": "o4uZGgoQS_o"
   },
   {
+   "channel": "CHELSEA FAN TV",
+   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
+   "id": 215,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
+    }
+   ],
+   "key_points": [
+    "원문 「**substituting defenders? Surely you pick your defense and then you substitute people further up**」(**수비수를 교체한다고? 수비는 고르고 앞쪽 선수를 교체하는 게 당연하지 않나**) · 「**keep conceding goals**… I don't get it」(**계속 실점한다**… 이해가 안 된다.) — auto-caption",
+    "⇒ 검증 축: 71′ 전후 def_x·실점 타이밍 대조(2·3번째 골이 83′·90+4′)."
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "⭐ **71′ 포파나 교체 축을 제목으로 내건 유일한 영상**(닐 바넷 — 첼시 구단 역사가/해설). 논지는 「수비를 고르고 **앞쪽 선수를 교체하는 게 상식인데 왜 수비수를 계속 빼느냐**」이고, 실점 누적과 연결한다. ⇒ D+2 에이전트가 올린 「71′ 포파나 교체가 수비 응집 저하의 변곡점」 주장과 **같은 축**이다. ⛔ 단 인과 주장이 아니라 의문 제기 수준이라 구현 주장으로는 올리지 않았다.",
+   "team_code": "CHE",
+   "title": "Why Does Alonso Keep Substituting Defenders? | Brentford 3-0 Chelsea | Fan Cam (Neil Barnett)",
+   "transcript_path": "reports/transcripts/5uhGujJcj7g.en.md",
+   "url": "https://www.youtube.com/watch?v=5uhGujJcj7g",
+   "video_id": "5uhGujJcj7g"
+  },
+  {
+   "channel": "ChelseaFootlab",
+   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
+   "id": 213,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
+    }
+   ],
+   "key_points": [
+    "원문 「I had to take some time to **actually think about what just happened** … if I should just go by the **reactionary videos** everybody has been dropping, and I think I was a bit like that in the first video」(무슨 일이 있었는지 **실제로 생각할 시간이 필요했다** … 모두가 올린 **반응적 영상**대로만 간다면… 내 첫 영상도 좀 그랬다.) — auto-caption",
+    "⭐ 방법론 시사: 같은 채널의 D+0 리액션과 D+1 재고를 **같은 티어로 다루면 안 된다**."
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "첼시 전용 분석 채널의 **재고(再考)판** — 본인이 같은 경기로 이미 리액션 영상을 냈고, 「반응적으로 말한 것」과 거리를 두고 다시 보겠다고 명시하며 시작한다. ⭐ 그 자체가 유용한 신호다: **D+0 리액션과 D+1 재고가 같은 채널에서 갈린다**. 백3(「three at the back」)를 다룬다. ⛔ 다만 우리 실측을 뒤집을 새 사실은 없어 구현 주장으로는 올리지 않았다.",
+   "team_code": "CHE",
+   "title": "Chelsea's 3-0 Defeat Explained: Where Xabi Alonso Got It Wrong",
+   "transcript_path": "reports/transcripts/B4sxBZjIfuI.en.md",
+   "url": "https://www.youtube.com/watch?v=B4sxBZjIfuI",
+   "video_id": "B4sxBZjIfuI"
+  },
+  {
+   "channel": "Football Uncoded",
+   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
+   "id": 214,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
+    }
+   ],
+   "key_points": [
+    "⭐ 프레이밍 — 원문 「Chelsea Football Club have lost **Enzo Fernández** and they have brought in **Andrey Santos**, and tonight against Brentford, Chelsea gave us our **first look at what this team is becoming without one of their most important midfielders**」(첼시는 **엔소 페르난데스**를 잃고 **안드레이 산투스**를 데려왔다. 오늘 브렌트포드전에서 **가장 중요한 미드필더 없이 이 팀이 어떻게 되어가는지 처음 보여줬다**.) — auto-caption",
+    "⚠️ **산투스 영입 주장은 우리 원장과 대조되지 않았다** — 검증 전 사실로 쓰지 말 것."
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "⭐ 경기를 **엔소 페르난데스 이탈 후 첫 모습**으로 프레이밍한다. ⚠️ **중요한 사실 주장 1건**: 첼시가 대체로 **안드레이 산투스를 영입했다**고 말한다 — 이는 팬 채널(Blue Lions TV)의 「다른 미드필더를 안 데려왔다」와 **정면 충돌**하고, **우리 `squad_entries`에도 산투스가 없다**. ⇒ 스쿼드 축 검증 대상(obs 참조).",
+   "team_code": "CHE",
+   "title": "How Brentford Exposed Chelsea's Biggest Weakness | Brentford 3–0 Chelsea",
+   "transcript_path": "reports/transcripts/iltNYp8lk6o.en.md",
+   "url": "https://www.youtube.com/watch?v=iltNYp8lk6o",
+   "video_id": "iltNYp8lk6o"
+  },
+  {
    "channel": "More Lyes",
    "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Shabby/Jab Alonzo=Alonso · Mi/Maddy=Nicoll-Jazuli · Yanel=Janelt · Kevin Ch=Schade. 인물명은 이 경기 라인업 실측과 대조했다.",
    "id": 208,
@@ -444,6 +586,41 @@
    "transcript_path": "reports/transcripts/k6dbBj7Tz7w.en.md",
    "url": "https://www.youtube.com/watch?v=k6dbBj7Tz7w",
    "video_id": "k6dbBj7Tz7w"
+  },
+  {
+   "channel": "The Football Connect",
+   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
+   "id": 216,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
+    }
+   ],
+   "key_points": [
+    "⚠️ 제목-내용 불일치 실증 — 원문 「You were **dismantled**. This was a dismantling and bottling job」(**해체당했다**. 해체이자 자멸이었다.) 수준의 서술이 본문 다수. — auto-caption",
+    "⇒ **다음 회차는 제목의 「tactical analysis」를 신뢰하지 말고 본문 밀도로 판정할 것.**"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "⚠️ **제목은 「Tactical Analysis」인데 내용은 리액션**이다. 서두 1분이 감탄사·「dismantling」 서술이고 구조 분석이 없다. ⇒ ⭐ **제목으로 티어를 매기면 안 된다는 실증** — kind를 「전술분석」이 아니라 **「경기반응」**으로 낮춰 등재했다. ⛔ 인용할 만한 구조 서술이 없어 구현 주장은 `axis:none`이다.",
+   "team_code": "CHE",
+   "title": "How Brentford Exposed Chelsea's Midfield Crisis! | Brentford 3-0 Chelsea Tactical Analysis",
+   "transcript_path": "reports/transcripts/FFl2vf7LpZs.en.md",
+   "url": "https://www.youtube.com/watch?v=FFl2vf7LpZs",
+   "video_id": "FFl2vf7LpZs"
   },
   {
    "channel": "The Tottenham Blueprint",
@@ -649,6 +826,77 @@
    "transcript_path": "reports/transcripts/5Vz7-8SLg5o.en.md",
    "url": "https://www.youtube.com/watch?v=5Vz7-8SLg5o",
    "video_id": "5Vz7-8SLg5o"
+  },
+  {
+   "channel": "Ralf on VAR",
+   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
+   "id": 210,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "back_three_viability",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「**The back three system is very difficult. A lot of coaches have tried the system and they have failed.**… it is a system that is good **when your players understand it**」(**백3 시스템은 매우 어렵다. 많은 감독이 시도했고 실패했다.**… **선수들이 이해할 때** 좋은 시스템이다.) — auto-caption · 3티어",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": "needs_time_to_gel_else_back_four",
+     "verdict": "HELD",
+     "verdict_note": "⛔ **재판정 조건**: 이 주장은 **시스템 적합성에 대한 일반론**이고 이 경기 실측으로 판정되지 않는다. 우리 실측이 말할 수 있는 것은 **이 경기 백3가 PPDA 8.38·def_x 41.0의 높은 압박과 함께 쓰였고 3실점했다**는 사실뿐이다(obs#892). ⇒ 판정하려면 **백3 ↔ 백4 경기 간 대조**가 필요하다: 알론소 체제에서 **백4로 선 경기 2경기 이상**이 쌓이면 def_x·PPDA·실점 패턴을 같은 축에서 비교한다. ⚠️ 층 구분: obs#893(상대 감독의 「치아구 더블마크」)은 **왜 골랐나**, 이 주장은 **왜 안 되나**다 — 둘은 경쟁 가설이 아니라 다른 질문이다. ⛔ 3티어 유튜버의 일반론이므로 단독으로 시즌 정본을 움직이지 않는다."
+    }
+   ],
+   "key_points": [
+    "⭐ 백3 난점 — 원문 「**The back three system is very difficult. A lot of coaches have tried the system and they have failed.** Ruben Amorim came to Manchester United… that was what led to his dismissal」(**백3 시스템은 매우 어렵다. 많은 감독이 시도했고 실패했다.** 아모림이 맨유에 와서 같은 시스템을 시도했고 그것이 경질로 이어졌다.) — auto-caption",
+    "⭐ 조건부 긍정 — 원문 「it is a system that is good. **When your players understand it**… it's much more based on **defending in numbers and then attacking in numbers**」(좋은 시스템이다. **선수들이 이해할 때**… 훨씬 더 **숫자로 수비하고 숫자로 공격하는** 것에 기반한다.)",
+    "⭐ 대안 — 원문 「I'm not saying right wing back, **right back position**」(우측 윙백이 아니라 **라이트백 포지션**이라고 말하는 것이다.) — 귀스토 지칭"
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "⭐⭐ **우리 백3 판정 축을 정면으로 다루는 유일한 영상.** 논지는 「백3 시스템 자체가 나쁜 게 아니라 **선수들이 이해하기 전까지는 어렵다**」이고, 아모림의 맨유 실패를 같은 부류로 든다. 대안으로 **말로 귀스토를 윙백이 아니라 「라이트백」으로** 쓰는 백4를 제시한다. ⇒ obs#893(상대 감독은 백3를 「치아구 더블마크」로 설명)과 **다른 층의 설명**이다 — 상대는 *왜 골랐나*를, 이 영상은 *왜 안 되나*를 말한다.",
+   "team_code": "CHE",
+   "title": "Brentford 3-0 Chelsea : A Back Four Would Have Changed Everything",
+   "transcript_path": "reports/transcripts/4iwS1CTVXr4.en.md",
+   "url": "https://www.youtube.com/watch?v=4iwS1CTVXr4",
+   "video_id": "4iwS1CTVXr4"
+  },
+  {
+   "channel": "Sky Sports Premier League",
+   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
+   "id": 212,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
+    }
+   ],
+   "key_points": [
+    "⭐ 원문 「fragile and… once they've conceded that set piece, it's almost like you don't want it to be a mindset, but it's like, **\"Oh, here we go again\"**」(취약하다… 세트피스를 한 번 내주고 나면, 심리가 되지 않길 바라지만 **「또 시작이군」** 같은 상태가 된다.) — auto-caption",
+    "원문 「**set pieces can win or lose football matches**」(세트피스가 경기를 이기게도 지게도 한다.) · 「defending better than anyone, **it's a collective**」(수비를 잘하는 건 **집단**의 일이다.)"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "⭐ **펀딧 층(게리 카힐 — 전 첼시 CB · 제이미 레드냅)**. 티어가 팬 채널보다 높다. 핵심은 세트피스 실점이 **기술 문제가 아니라 반복에 따른 심리 상태**로 굳는다는 지적이고, 수비를 **집단(collective)** 문제로 본다. obs#894(표적 자인)와 결합하면 「표적이 됐고 → 반복됐고 → 심리가 됐다」의 3단으로 읽힌다.",
+   "team_code": "CHE",
+   "title": "\"Chelsea are fragile\" | Gary Cahill & Jamie Redknapp react to Brentford 3-0 Chelsea",
+   "transcript_path": "reports/transcripts/TXjdbiTmcz0.en.md",
+   "url": "https://www.youtube.com/watch?v=TXjdbiTmcz0",
+   "video_id": "TXjdbiTmcz0"
   },
   {
    "channel": "The Villans",
@@ -7927,11 +8175,18 @@
    167
   ],
   "46": [
+   211,
    207,
+   215,
+   213,
+   214,
    208,
+   216,
    204,
    205,
    206,
+   210,
+   212,
    209
   ],
   "47": [
