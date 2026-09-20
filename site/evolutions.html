@@ -36,7 +36,8 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 내 구단 원장은 DB(<code>fut_*</code>)가 정본 — 여기서 기록하면 서버가 DB에 쓰고 곧바로 재-export한다.</p>
 
 <div class="menubar">
-  <button class="act ghost on" data-tab="club">내 구단</button>
+  <button class="act ghost on" data-tab="now">지금 내 팀</button>
+  <button class="act ghost" data-tab="club">내 구단</button>
   <button class="act ghost" data-tab="chem">케미스트리</button>
   <button class="act ghost" data-tab="cat">진화 카탈로그</button>
   <button class="act ghost" data-tab="paths">선수별 진화 패스</button>
@@ -52,7 +53,19 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
     ⚠️ 시세는 fut.gg 콘솔 기본값의 최신 스냅샷이고 <b>시장 미형성이면 「미형성」</b>으로 쓴다(0이 아니다) — 시장이 열리면 <code>scripts/collect_futgg_prices.py</code>가 채우고 순위가 다시 매겨진다.</p></div>
 </section>
 
-<section data-tab="club">
+<section data-tab="now">
+  <div class="panel">
+    <h2>지금 내 팀 <small class="dim">— fut.gg GG Club에서 읽은 <b>인게임 실제 설정</b></small></h2>
+    <p class="dim" style="font-size:12px;margin:0 0 8px">
+      ⛔ 이 영역은 <b>내 얼티밋 구단의 실제 상태</b>다 — 감독 재현(슬롯 정본·<code>team_tactic_setups</code>)과 <b>다른 층</b>이고 서로 덮지 않는다.
+      수치는 전부 EA 싱크 실측이며 <b>추정·계산값이 아니다</b>.
+    </p>
+    <div id="nowmeta"></div>
+    <div id="nowtac"></div>
+    <div id="nowxi"></div>
+  </div>
+</section>
+<section data-tab="club" style="display:none">
   <div class="panel"><h2>계정 <small class="dim">— fut_accounts</small></h2>
     <div id="acc"></div></div>
   <div class="panel"><h2>보유 선수 <small class="dim">— 현재 상태 · 진화 횟수 · 다음 추천</small></h2>
@@ -197,6 +210,54 @@ function pathHTML(p, i){
 }
 
 /* ── 탭 ── */
+/* ── 「지금 내 팀」 — 인게임 실제 설정(migration 054) ──
+   ⛔ 계산하지 않는다. EA 싱크에서 읽은 값을 **그대로** 보여주고 갱신일을 함께 띄운다. */
+function renderNow(){
+  const T = (EVO.tactics || [])[0];
+  const R = EVO.tactic_roles || [];
+  const meta = document.getElementById('nowmeta');
+  if (!T){ meta.innerHTML = '<p class="dim">인게임 전술 스냅샷이 없다 — <code>/club-sync</code>로 받는다.</p>'; return; }
+  const iso = (T.last_updated_at || '').replace('T',' ').replace('Z',' UTC');
+  meta.innerHTML = `<div class="pcard" style="padding:8px 12px;margin:0 0 10px">
+      <b style="font-size:15px">${esc(T.squad_name || '-')}</b>
+      <span class="chip">${esc(T.formation || '-')}</span>
+      <span class="chip" style="border-color:var(--ok);color:var(--ok)">케미 ${T.chemistry ?? '-'}/33</span>
+      <span class="chip dim">코드 ${esc(T.tactic_code || '-')}</span>
+      <div class="dim" style="font-size:12px;margin-top:4px">
+        읽은 날 <b>${esc(T.pulled)}</b> · 내가 마지막으로 바꾼 시각 <b>${esc(iso || '미상')}</b>
+      </div></div>`;
+
+  document.getElementById('nowtac').innerHTML = `<h3 style="margin:10px 0 6px">팀 설정</h3>
+    <div class="plist" style="margin-bottom:10px">
+      <button disabled>빌드업 <b>${esc(T.build_up_style || '-')}</b></button>
+      <button disabled>수비 접근 <b>${esc(T.defensive_approach || '-')}</b></button>
+      <button disabled>라인 높이 <b>${T.line_height ?? '-'}</b>${T.is_custom_def ? ' <small>(커스텀)</small>' : ''}</button>
+    </div>
+    <h3 style="margin:10px 0 6px">11칸 역할 · 포커스</h3>
+    <table class="tbl"><thead><tr><th>자리</th><th>선수</th><th>역할</th><th>포커스</th></tr></thead><tbody>
+    ${R.map((r, i) => {
+      const p = xiAt(i);
+      return `<tr><td><b>${esc(r.position_name)}</b></td>
+        <td>${p ? `${esc(p.name)} <small class="dim">${p.current_ovr ?? ''}</small>` : '<span class="dim">—</span>'}</td>
+        <td>${esc(r.role_name)}</td><td>${esc(r.focus)}</td></tr>`;
+    }).join('')}</tbody></table>`;
+
+  const bench = (EVO.squad_slots || []).filter(s => s.grp === 'BENCH').sort((a,b)=>a.idx-b.idx);
+  document.getElementById('nowxi').innerHTML = `<h3 style="margin:14px 0 6px">교체 명단 <small class="dim">${bench.length}명</small></h3>
+    <div class="plist">${bench.map(s => { const p = playerBySlot(s); return p
+      ? `<button data-p="${p.player_id ?? ''}">${esc(p.name)} <small class="up">${p.current_ovr ?? ''}</small></button>` : ''; }).join('')}</div>`;
+}
+/* 선발 슬롯 i번째 ↔ 보유 카드 */
+function playerBySlot(s){
+  const C = EVO.club || { players: [] };
+  return C.players.find(p => p.gg_player_id === s.gg_player_id) ||
+         C.players.find(p => p.ea_item_id === s.ea_item_id) || null;
+}
+function xiAt(i){
+  const s = (EVO.squad_slots || []).filter(x => x.grp === 'XI').sort((a,b)=>a.idx-b.idx)[i];
+  return s ? playerBySlot(s) : null;
+}
+
 document.querySelectorAll('.menubar [data-tab]').forEach(b => b.addEventListener('click', () => {
   document.querySelectorAll('.menubar [data-tab]').forEach(x => x.classList.toggle('on', x === b));
   document.querySelectorAll('section[data-tab]').forEach(s => s.style.display = s.dataset.tab === b.dataset.tab ? '' : 'none');
@@ -778,7 +839,7 @@ function renderClub(){
     <form class="form" id="accf"><div><label>계정 표시명</label><input name="name" required placeholder="main"></div>
       <div><label>플랫폼</label><select name="platform"><option>PS5</option><option>Xbox</option><option>PC</option></select></div>
       <div><label>게임</label><input name="game" value="FC27"></div><button>계정 추가</button></form><div id="accm"></div>`;
-  document.querySelectorAll('#acc button[data-a]').forEach(b => b.addEventListener('click', () => { localStorage.setItem('fut_account', b.dataset.a); ACC = b.dataset.a; CONSUMED = consumedMap(); buildRanked(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); }));
+  document.querySelectorAll('#acc button[data-a]').forEach(b => b.addEventListener('click', () => { localStorage.setItem('fut_account', b.dataset.a); ACC = b.dataset.a; CONSUMED = consumedMap(); buildRanked(); renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); }));
   document.getElementById('accf').addEventListener('submit', async e => { e.preventDefault(); const f = new FormData(e.target);
     say(document.getElementById('accm'), await api('account', { name: f.get('name'), platform: f.get('platform'), game: f.get('game') })); });
   if (!acc){ document.getElementById('owned').innerHTML = document.getElementById('addp').innerHTML = '<span class="dim">계정을 먼저 만든다.</span>'; document.getElementById('log').innerHTML = ''; return; }
@@ -868,6 +929,6 @@ function renderClub(){
     || '<li class="dim">기록 없음</li>';
 }
 
-renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic();
+renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic();
 </script>
 </body></html>

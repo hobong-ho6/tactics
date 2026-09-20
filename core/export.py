@@ -185,6 +185,12 @@ def export_all(db_path=None, window="2026-summer"):
     # 실제 스쿼드(migration 050) — 「제안」과 대조하려면 지금 쓰는 XI가 있어야 한다.
     squad = _rows(con, "SELECT * FROM fut_squads")
     squad_slots = _rows(con, "SELECT account_id, grp, idx, ea_item_id, gg_player_id FROM fut_squad_slots ORDER BY grp DESC, idx")
+    # ⭐ 내 구단 **인게임 전술**(migration 054) — 최신 pulled 1회차만. 날짜별로 쌓이므로 화면은 최신만 읽고 갱신일을 함께 띄운다.
+    #   ⛔ 감독 재현(`team_tactic_setups`)과 **다른 층**이다 — 화면에서도 섞지 않는다.
+    tactics = _rows(con, """SELECT * FROM fut_tactics
+                            WHERE pulled=(SELECT MAX(pulled) FROM fut_tactics)""")
+    tactic_roles = _rows(con, """SELECT position_id, position_name, role_ea_id, role_name, focus FROM fut_tactic_roles
+                                 WHERE pulled=(SELECT MAX(pulled) FROM fut_tactic_roles) ORDER BY position_id""")
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
                           {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices,
                            "chem_styles": chem_styles, "squad": squad, "squad_slots": squad_slots,
@@ -195,6 +201,7 @@ def export_all(db_path=None, window="2026-summer"):
                            "chem_meta": _rows(con, """SELECT item, value, alternatives, rationale, source
                                                      FROM fc_meta_snapshots WHERE category='chem_style'
                                                      AND pulled=(SELECT MAX(pulled) FROM fc_meta_snapshots WHERE category='chem_style')"""),
+                           "tactics": tactics, "tactic_roles": tactic_roles,
                            "club": {"accounts": accounts, "players": club, "log": log}}))
 
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──
