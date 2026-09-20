@@ -7,28 +7,36 @@
       7 RM · 8 LM · 9 CAM · 10 ST, **우→좌**). */
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
-/* 4-2-3-1 (2) 좌표 — x: 0(좌)~100(우) · y: 0(우리 골문)~100(상대 골문). 슬롯 순서는 위 규약대로 우→좌. */
+/* 4-2-3-1 (2) 좌표 — x: 0(좌)~100(우) · y: 0(우리 골문)~100(상대 골문). 슬롯 순서는 위 규약대로 우→좌.
+   ⚠️⚠️ **겹침 규칙**(2026-09-20, 브라우저에서 사각형 교차를 실제로 재서 고침 — 추정으로 하지 말 것):
+   카드 한 장은 폭 = 피치 폭의 `--fccard`, 높이 = **피치 높이의 약 24%**다(카드 아트가 3:4보다 세로로
+   길고 아래 pill이 붙는다). 따라서 두 슬롯은 다음 중 **하나 이상**을 만족해야 겹치지 않는다:
+     · |Δy| ≥ 25   또는   · |Δx| ≥ 16(= --fccard)
+   종전 좌표는 GK↔CB·CDM↔CAM·CAM↔ST 5쌍이 실제로 겹쳤다. 좌표를 바꿀 때 이 두 부등식을 다시 검산한다.
+   그래서 CB·CDM을 x 37/63 → **34/66**으로 벌렸다(CAM·GK와 정확히 16 떨어진다). */
 const SPOTS = [
-  { x: 50, y: 5 },   // 0 GK
-  { x: 86, y: 25 },  // 1 RB
-  { x: 63, y: 18 },  // 2 CB(우)
-  { x: 37, y: 18 },  // 3 CB(좌)
-  { x: 14, y: 25 },  // 4 LB
-  { x: 63, y: 44 },  // 5 CDM(우)
-  { x: 37, y: 44 },  // 6 CDM(좌)
-  { x: 87, y: 66 },  // 7 RM
-  { x: 13, y: 66 },  // 8 LM
-  { x: 50, y: 63 },  // 9 CAM
-  { x: 50, y: 86 },  // 10 ST
+  { x: 50, y: 4 },   // 0 GK
+  { x: 86, y: 30 },  // 1 RB
+  { x: 66, y: 25 },  // 2 CB(우)
+  { x: 34, y: 25 },  // 3 CB(좌)
+  { x: 14, y: 30 },  // 4 LB
+  { x: 66, y: 50 },  // 5 CDM(우)
+  { x: 34, y: 50 },  // 6 CDM(좌)
+  { x: 87, y: 72 },  // 7 RM
+  { x: 13, y: 72 },  // 8 LM
+  { x: 50, y: 72 },  // 9 CAM
+  { x: 50, y: 97 },  // 10 ST
 ];
 
 const chemPips = n => `<span class="fc-pips">${[0, 1, 2].map(i =>
   `<i class="${i < (n ?? 0) ? 'on' : ''}"></i>`).join('')}</span>`;
 
-/* 카드 한 장 — 아트가 있으면 아트, 없으면 대체 타일. */
-function card(p, role, posName, { w = 92 } = {}) {
-  if (!p) return `<div class="fc-card empty" style="width:${w}px">
-      <div class="fc-art ph">비어 있음</div><div class="fc-pos">${esc(posName ?? '')}</div></div>`;
+/* 카드 한 장 — 아트가 있으면 아트, 없으면 대체 타일.
+   ⭐ 이름을 카드 밖에 다시 쓰지 않는다(2026-09-20). 아트에 이미 인쇄돼 있어 중복이고, 그 한 줄 때문에
+      카드 높이가 늘어 슬롯이 겹쳤다. 아트가 없는 대체 타일에만 이름을 넣는다. */
+function card(p, role, posName, { bench = false } = {}) {
+  if (!p) return `<div class="fc-card empty${bench ? ' bench' : ''}">
+      <div class="fc-art ph">비어 있음</div><div class="fc-tag">${esc(posName ?? '')}</div></div>`;
   const evolved = p.card_ovr != null && p.current_ovr != null && p.card_ovr !== p.current_ovr;
   const art = p.card_image_url
     ? `<img class="fc-art" src="${esc(p.card_image_url)}" alt="${esc(p.name)} 카드" loading="lazy">`
@@ -36,78 +44,131 @@ function card(p, role, posName, { w = 92 } = {}) {
   const chem = p.chem_style_ea
     ? `<img class="fc-chem" src="assets/chemstyles/${p.chem_style_ea}.png" alt="케미 스타일" loading="lazy">`
     : '';
-  return `<div class="fc-card" style="width:${w}px" data-p="${esc(p.player_id ?? '')}"
+  /* ⚠️ 역할명은 pill에 넣지 않는다(2026-09-20 실측): 카드 폭이 피치의 16%라 「Advanced Forward」가
+     「Advanc…」로 잘렸고, 안 잘리게 pill을 넓히면 옆 카드와 겹친다. 역할·포커스는 **사이드 패널**과
+     툴팁에 온전히 있다 — 잘린 글자를 보여주느니 안 보여주는 편이 낫다. fut.gg도 카드 밑엔 포지션만 둔다. */
+  const tag = `<div class="fc-tag">${posName ? `<b>${esc(posName)}</b>` : ''}${chemPips(p.chem_points)}</div>`;
+  return `<div class="fc-card${bench ? ' bench' : ''}" data-p="${esc(p.player_id ?? '')}" tabindex="0"
        title="${esc(p.name)} · OVR ${p.current_ovr ?? '-'}${evolved ? ` (카드 인쇄 ${p.card_ovr})` : ''}${role ? ` · ${role.role_name}/${role.focus}` : ''}">
     <div class="fc-artwrap">${art}${chem}
       ${evolved ? `<span class="fc-evo">EVO ${p.current_ovr}</span>` : ''}</div>
-    <div class="fc-name">${esc(p.name)}</div>
-    ${posName ? `<div class="fc-pos">${esc(posName)}${chemPips(p.chem_points)}</div>` : chemPips(p.chem_points)}
-    ${role ? `<div class="fc-role">${esc(role.role_name)}<small>${esc(role.focus)}</small></div>` : ''}
+    ${tag}
   </div>`;
 }
 
-/* ── 피치 + 선발 11 + 교체 명단. rows = [{player, role, posName}] 11개(슬롯 순서). */
+/* ── 2단 레이아웃: 좌측 피치+벤치 / 우측 sticky 상세 패널.
+   레이아웃 근거(2026-09-20, 사용자 지시 「fut.gg나 다른 사이트 참고해서 최적의 UX」): fut.gg Squad Builder를
+   직접 열어 확인한 구성을 따랐다 — ⑴ 피치와 사이드 패널의 **2단**, ⑵ 카드가 피치 폭의 약 1/5로 **크다**,
+   ⑶ 포지션은 카드 **아래 pill**. 종전에는 피치가 `aspect-ratio:3/4` + 본문 전체 폭이라 높이가 1,600px까지
+   늘어 한 화면에 카드 한 장만 들어왔다 — 폭을 제한하고 카드를 %로 키워 11명이 한 화면에 들어온다.
+   rows = [{player, role, posName}] 11개(슬롯 순서). */
 export function fcPitch(xi, bench, meta = {}) {
   const spots = xi.map((r, i) => {
     const s = SPOTS[i] || { x: 50, y: 50 };
     return `<div class="fc-slot" style="left:${s.x}%;bottom:${s.y}%">${card(r.player, r.role, r.posName)}</div>`;
   }).join('');
-  const benchCards = bench.map(r => card(r.player, null, r.player?.positions?.split(',')[0] ?? '', { w: 74 })).join('');
-  const chem = meta.chemistry ?? null;
+  const benchCards = bench.map(r =>
+    card(r.player, null, r.player?.positions?.split(',')[0] ?? '', { bench: true })).join('');
   return `
   <div class="fc-wrap">
-    <div class="fc-head">
-      <b>${esc(meta.squad_name ?? '내 스쿼드')}</b>
-      <span class="chip">${esc(meta.formation ?? '')}</span>
-      ${chem != null ? `<span class="chip ${chem >= 33 ? 'ok' : ''}">케미 ${chem}/33</span>` : ''}
-      ${meta.build_up_style ? `<span class="chip dim">빌드업 ${esc(meta.build_up_style)}</span>` : ''}
-      ${meta.defensive_approach ? `<span class="chip dim">수비 ${esc(meta.defensive_approach)}${meta.line_height != null ? ` · 라인 ${meta.line_height}` : ''}</span>` : ''}
+    <div class="fc-layout">
+      <div class="fc-main">
+        <div class="fc-pitch">
+          <div class="fc-lines" aria-hidden="true"></div>
+          ${spots}
+        </div>
+        <div class="fc-bench"><h4>교체 <small>${bench.length}명</small></h4><div class="fc-benchrow">${benchCards}</div></div>
+        <p class="fc-note">카드 아트에 인쇄된 OVR·포지션·이름은 <b>건드리지 않는다</b> — 진화로 값이 달라진 카드만 <span class="fc-evo inline">EVO</span> 배지로 현재 OVR을 알린다.</p>
+      </div>
+      <aside class="fc-side" id="fcside">${fcSideEmpty(meta, xi)}</aside>
     </div>
-    <div class="fc-pitch">
-      <div class="fc-lines" aria-hidden="true"></div>
-      ${spots}
-    </div>
-    <div class="fc-bench"><h4>교체 <small>${bench.length}명</small></h4><div class="fc-benchrow">${benchCards}</div></div>
-    <p class="fc-note">카드 아트에 인쇄된 OVR·포지션은 <b>건드리지 않는다</b> — 진화로 값이 달라진 카드만 <span class="fc-evo inline">EVO</span> 배지로 현재 OVR을 알린다.</p>
+  </div>`;
+}
+
+/* 아무 카드도 고르지 않았을 때의 사이드 패널 — 빈 칸으로 두지 않고 **팀 설정 + 11칸 역할**을 보여준다.
+   카드 pill에서 뺀 역할·포커스가 여기 온전히 들어간다(잘림 없이). */
+export function fcSideEmpty(meta = {}, xi = []) {
+  const rows = xi.filter(r => r.role).map(r => `<tr>
+      <td><b>${esc(r.role.position_name)}</b></td>
+      <td>${r.player ? esc(r.player.name) : '<span class="dim">—</span>'}</td>
+      <td>${esc(r.role.role_name)}<br><small class="dim">${esc(r.role.focus)}</small></td></tr>`).join('');
+  return `<div class="fc-sidebox">
+    <h4 style="margin:0 0 8px">팀 설정 <small class="dim">인게임 실측</small></h4>
+    <div class="fc-kv"><span>포메이션</span><b>${esc(meta.formation ?? '-')}</b></div>
+    <div class="fc-kv"><span>빌드업</span><b>${esc(meta.build_up_style ?? '-')}</b></div>
+    <div class="fc-kv"><span>수비 접근</span><b>${esc(meta.defensive_approach ?? '-')}</b></div>
+    <div class="fc-kv"><span>라인 높이</span><b>${meta.line_height ?? '-'}${meta.is_custom_def ? ' <small class="dim">커스텀</small>' : ''}</b></div>
+    <div class="fc-kv"><span>팀 케미</span><b class="${(meta.chemistry ?? 0) >= 33 ? 'up' : ''}">${meta.chemistry ?? '-'}/33</b></div>
+    <p class="dim" style="font-size:12px;margin:10px 0 8px">카드를 누르면 <b>진화·현재 스탯·상세 스탯·적용 케미·프로필</b>이 여기 열린다.</p>
+    ${rows ? `<h4 style="margin:12px 0 6px">11칸 역할 · 포커스</h4>
+      <table class="tbl fc-roletbl"><tbody>${rows}</tbody></table>` : ''}
   </div>`;
 }
 
 export const FC_CSS = `
 .fc-wrap{--fcg1:#0f3d24;--fcg2:#0a2e1b}
-.fc-head{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin:0 0 8px}
-.fc-head .chip.ok{border-color:var(--ok);color:var(--ok)}
-.fc-pitch{position:relative;width:100%;aspect-ratio:3/4;min-height:520px;border-radius:10px;
+.fc-layout{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+.fc-main{min-width:0;max-width:760px}
+/* ⭐ 크기 규칙(2026-09-20) — 이 세 줄이 「비율이 안 맞고 정보가 작다」의 실제 해법이다:
+   ⑴ **높이를 뷰포트에 맞춘다**(width:100%가 아니라 height 기준) — 폭은 비율에서 파생되므로
+      화면이 낮으면 알아서 줄고, 높으면 720px까지 커진다. 종전엔 width:100%라 높이가 1,600px까지 늘었다.
+   ⑵ 비율을 실제 잔디(68:105)가 아니라 **85:100**으로 넓힌다 — 같은 높이에서 폭이 커져 카드가 커진다.
+      인게임 스쿼드 화면도 실측 비율이 아니라 이렇게 압축해 그린다.
+   ⑶ 카드 폭은 **피치 폭의 %** 다(고정 px가 아니다). 카드가 작아 보이던 원인이 고정 92px였다.
+   ⚠️ --fccard를 키울 때는 SPOTS 주석의 겹침 부등식을 다시 검산한다.
+   ⭐ overflow:visible — GK(y4)·ST(y97) 카드는 잔디 밖으로 조금 나간다. 잘라내면 카드가 반쪽이 되므로
+      자르지 않고, 대신 위아래 margin으로 이웃 요소와의 자리를 비워둔다. */
+.fc-pitch{position:relative;aspect-ratio:85/100;height:min(760px,calc(100vh - 250px));
+  width:auto;max-width:100%;margin:26px auto 48px;--fccard:16%;border-radius:10px;
   background:repeating-linear-gradient(0deg,var(--fcg1) 0 7%,var(--fcg2) 7% 14%);
-  border:1px solid var(--line);overflow:hidden}
+  border:1px solid var(--line);overflow:visible}
 .fc-lines{position:absolute;inset:8px;border:2px solid rgba(255,255,255,.18);border-radius:4px}
 .fc-lines::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:2px solid rgba(255,255,255,.18)}
-.fc-lines::after{content:"";position:absolute;left:50%;top:50%;width:22%;aspect-ratio:1;transform:translate(-50%,-50%);
+.fc-lines::after{content:"";position:absolute;left:50%;top:50%;width:26%;aspect-ratio:1;transform:translate(-50%,-50%);
   border:2px solid rgba(255,255,255,.18);border-radius:50%}
-.fc-slot{position:absolute;transform:translate(-50%,50%)}
-.fc-card{text-align:center;cursor:pointer}
-.fc-card.empty{opacity:.45}
+.fc-slot{position:absolute;width:var(--fccard);transform:translate(-50%,50%)}
+.fc-card{text-align:center;cursor:pointer;border-radius:8px;outline:none;transition:transform .12s}
+.fc-card:hover,.fc-card:focus-visible{transform:translateY(-3px)}
+.fc-card.sel .fc-artwrap{filter:drop-shadow(0 0 0 2px var(--ok))}
+.fc-card.sel .fc-tag{border-color:var(--ok)}
+.fc-card.empty{opacity:.45;cursor:default}
 .fc-artwrap{position:relative;line-height:0}
 .fc-art{width:100%;display:block;filter:drop-shadow(0 3px 6px rgba(0,0,0,.55))}
 .fc-art.ph{display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:3/4;
   background:var(--panel);border:1px solid var(--line);border-radius:6px;line-height:1.2;font-size:11px;color:var(--dim)}
 .fc-art.ph b{font-size:20px;color:var(--txt)}
-.fc-chem{position:absolute;right:-5px;top:14%;width:30%;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
-.fc-evo{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);font-size:9.5px;font-weight:700;
-  background:var(--ok);color:#06240f;border-radius:99px;padding:1px 6px;white-space:nowrap}
+.fc-chem{position:absolute;right:-6%;top:12%;width:30%;filter:drop-shadow(0 2px 4px rgba(0,0,0,.6))}
+.fc-evo{position:absolute;left:50%;top:-7px;transform:translateX(-50%);font-size:9.5px;font-weight:700;
+  background:var(--ok);color:#06240f;border-radius:99px;padding:1px 6px;white-space:nowrap;z-index:2}
 .fc-evo.inline{position:static;transform:none;display:inline-block}
-.fc-name{font-size:11.5px;font-weight:700;margin-top:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.fc-pos{font-size:10px;color:var(--dim);display:flex;gap:4px;align-items:center;justify-content:center}
-.fc-role{font-size:9.5px;color:var(--txt);opacity:.85;line-height:1.25}
-.fc-role small{display:block;color:var(--dim)}
-.fc-pips{display:inline-flex;gap:2px}
+/* 포지션·역할 pill — 카드 바로 아래 한 줄(fut.gg와 같은 자리). */
+.fc-tag{display:inline-flex;gap:5px;align-items:center;justify-content:center;margin-top:-2px;
+  background:rgba(4,10,7,.82);border:1px solid var(--line);border-radius:99px;padding:2px 8px;
+  font-size:10px;line-height:1.5;max-width:100%}
+.fc-tag b{font-weight:700}
+.fc-tag span{color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fc-pips{display:inline-flex;gap:2px;flex:0 0 auto}
 .fc-pips i{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.22)}
 .fc-pips i.on{background:var(--ok)}
 .fc-bench{margin-top:14px}
 .fc-bench h4{margin:0 0 6px;font-size:13px}
-.fc-benchrow{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}
-.fc-benchrow .fc-card{flex:0 0 auto}
+.fc-benchrow{display:flex;gap:10px;overflow-x:auto;padding:4px 0 8px}
+.fc-benchrow .fc-card{flex:0 0 auto;width:92px}
 .fc-note{font-size:11px;color:var(--dim);margin:10px 0 0}
-@media (max-width:760px){.fc-pitch{min-height:440px}.fc-slot .fc-card{width:70px!important}}
+/* 사이드 패널 — 스크롤을 따라다니고, 길면 자기 안에서만 스크롤한다. */
+.fc-side{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}
+.fc-kv{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:4px 0;border-bottom:1px dotted var(--line)}
+.fc-kv span{color:var(--dim)}
+.fc-roletbl td{font-size:11.5px;padding:3px 6px;vertical-align:top}
+/* 선택된 카드로 돌아가는 길 — 상세를 열면 사이드 맨 위에 「팀 설정으로」 버튼이 붙는다. */
+.fc-back{font-size:11.5px;margin-bottom:8px}
+@media (max-width:1060px){
+  .fc-layout{grid-template-columns:1fr}
+  .fc-main{max-width:none}
+  .fc-side{position:static;max-height:none}
+}
+@media (max-width:560px){.fc-pitch{--fccard:19%;height:min(560px,calc(100vh - 170px))}.fc-tag span{display:none}}
 `;
 
 /* ── 카드 상세 패널 (2026-09-20, 사용자 지시 「전술·진화 상태·현재 카드 스탯·상세 스탯·적용 케미·선수 프로필을

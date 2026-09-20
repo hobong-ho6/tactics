@@ -62,8 +62,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
     </p>
     <div id="nowmeta"></div>
     <div id="nowpitch"></div>
-    <div id="nowdetail" class="panel" style="display:none;margin-top:12px"></div>
-    <details style="margin-top:12px"><summary class="dim" style="cursor:pointer;font-size:12px">표로 보기 — 팀 설정 · 11칸 역할/포커스 · 교체 명단</summary>
+        <details style="margin-top:12px"><summary class="dim" style="cursor:pointer;font-size:12px">표로 보기 — 팀 설정 · 11칸 역할/포커스 · 교체 명단</summary>
       <div id="nowtac"></div>
       <div id="nowxi"></div>
     </details>
@@ -110,7 +109,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260920c';
+import { fcPitch, fcSideEmpty, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260920i';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -253,19 +252,28 @@ function renderNow(){
       .map(s => ({ player: playerBySlot(s) }));
   document.getElementById('nowpitch').innerHTML = fcPitch(xiRows, benchRows, T);
 
-  /* 카드 클릭 → 상세(전술·진화·현재 스탯·상세 스탯·케미·프로필). 슬롯 index로 역할을 붙인다. */
-  const detail = document.getElementById('nowdetail');
-  const openDetail = (p, role) => {
+  /* 카드 클릭 → 상세를 **피치 옆 사이드 패널**에 연다(2026-09-20 UX 개편 — 종전에는 피치 아래라
+     카드를 누를 때마다 스크롤을 내려야 했다). 슬롯 index로 역할을 붙인다. */
+  const side = document.getElementById('fcside');
+  const openDetail = (p, role, el) => {
     if (!p) return;
-    detail.style.display = '';
-    detail.innerHTML = cardDetail(p, { role, team: T, log: (EVO.club || {}).log, chem_styles: EVO.chem_styles });
-    detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    document.querySelectorAll('#nowpitch .fc-card.sel').forEach(x => x.classList.remove('sel'));
+    (el?.querySelector('.fc-card') || el)?.classList.add('sel');
+    side.innerHTML = '<div class="fc-back"><a class="act" href="#" data-back>← 팀 설정으로</a></div>'
+      + cardDetail(p, { role, team: T, log: (EVO.club || {}).log, chem_styles: EVO.chem_styles });
+    side.querySelector('[data-back]').addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelectorAll('#nowpitch .fc-card.sel').forEach(x => x.classList.remove('sel'));
+      side.innerHTML = fcSideEmpty(T, xiRows);
+    });
+    side.scrollTop = 0;
+    if (window.matchMedia('(max-width:1060px)').matches) side.scrollIntoView({ behavior:'smooth', block:'start' });
   };
   document.querySelectorAll('#nowpitch .fc-slot').forEach((el, i) => {
-    el.addEventListener('click', () => openDetail(xiRows[i]?.player, xiRows[i]?.role));
+    el.addEventListener('click', () => openDetail(xiRows[i]?.player, xiRows[i]?.role, el));
   });
   document.querySelectorAll('#nowpitch .fc-benchrow .fc-card').forEach((el, i) => {
-    el.addEventListener('click', () => openDetail(benchRows[i]?.player, null));
+    el.addEventListener('click', () => openDetail(benchRows[i]?.player, null, el));
   });
 
   const bench = (EVO.squad_slots || []).filter(s => s.grp === 'BENCH').sort((a,b)=>a.idx-b.idx);
