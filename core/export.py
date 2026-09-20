@@ -165,6 +165,8 @@ def export_all(db_path=None, window="2026-summer"):
                                 f.current_roles_plus_plus, f.evo_count, f.notes, f.updated,
                                 c.ovr AS card_ovr, c.positions, c.nation, c.league, c.club, c.is_icon, c.is_hero,
                                 c.chem_extra, c.card_image_url, c.attrs,
+                                -- 스킬무브·약발·주발(2026-09-21 사용자 요청) — 카드 표에만 있다.
+                                c.skill_moves, c.weak_foot, c.preferred_foot, c.accelerate,
                                 f.chem_style_ea, f.chem_points, f.synced_at
                          FROM fut_club_players f
                          LEFT JOIN player_card_items c ON c.ea_item_id=f.ea_item_id AND c.game_version='FC27'

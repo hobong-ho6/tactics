@@ -332,14 +332,14 @@ function recoBlock(p, reco, styles) {
   const rows = reco.ranked.map((s, i) => {
     const same = nowName && s.name === nowName;
     return `<tr${i ? ' style="opacity:.62"' : ''}>
-      <td>${i ? `<span class="dim">차선 ${i}</span>` : '<span class="fc-boost">추천</span>'}</td>
+      <td>${i ? `<span class="dim">차선 ${i}</span>` : '<span class="fc-boost">에메리 추천</span>'}</td>
       <td><b>${esc(s.name)}</b>${same ? ' <small class="dim">= 지금</small>' : ''}</td>
       <td style="text-align:right">${Math.round(s.score)}</td></tr>`;
   }).join('');
-  const head = `<thead><tr><th></th><th>스타일</th><th style="text-align:right">역할 점수</th></tr></thead>`;
+  const head = `<thead><tr><th></th><th>스타일</th><th style="text-align:right">에메리 점수</th></tr></thead>`;
   const top = reco.ranked[0];
   const why = (top.top || []).map(x => `${x.a} +${x.gain}`).join(' · ');
-  return `<h4>추천 케미스트리</h4>
+  return `<h4>추천 케미스트리 <small class="dim">— 에메리 전술 기준</small></h4>
     <p class="dim" style="font-size:11.5px;margin:0 0 6px">기준 역할 <b>${esc(reco.roleKr || '—')}</b>
       <small>(${esc(basisKr || '')})</small></p>
     <table class="tbl fc-recotbl">${head}<tbody>${rows}</tbody></table>
@@ -377,6 +377,34 @@ function futggBlock(fg, nowName) {
       투표율은 <b>인기이지 정답이 아니다</b> — 위 역할 점수와 갈리면 역할 점수를 따른다.</p></div>`;
 }
 
+/* 스킬무브·약발·주발·AcceleRATE + Role+/++ (2026-09-21 사용자 지시 「스킬과 주발과 역할 정보를 추가해」).
+   ⛔ Role+/++는 원장에 **raw ea_id**로 들어 있다(docs/21 ②) — `role_map`으로 이름을 붙이고,
+      매핑에 없으면 지어내지 않고 id를 그대로 보여준다(결손을 감추지 않는다). */
+const STARS = (n, max = 5) => n == null ? '—'
+  : '★'.repeat(n) + `<span class="dim">${'★'.repeat(Math.max(0, max - n))}</span>`;
+
+function traitRow(p, roleMap) {
+  /* id 공간은 kind마다 갈린다(plus 1–49 · plusplus 101–149) — kind까지 맞춰 찾는다. */
+  const names = (ids, kind) => {
+    const arr = parse(ids); if (!Array.isArray(arr) || !arr.length) return [];
+    /* ⚠️ 이름만 쓰면 **같은 이름이 중복으로 보인다** — 역할명은 포지션마다 별도 id다
+       (16=CDM Deep-Lying Playmaker · 20=CM Deep-Lying Playmaker). 포지션을 앞에 붙여 구분한다. */
+    return arr.map(id => {
+      const r = (roleMap || []).find(x => x.ea_id === id && x.kind === kind);
+      return r ? `${r.position_name} ${r.name}` : `#${id}`;
+    });
+  };
+  const pp = names(p.current_roles_plus_plus, 'plusplus'), pl = names(p.current_roles_plus, 'plus');
+  const foot = p.preferred_foot ? String(p.preferred_foot).replace('오른쪽', '오른발').replace('왼쪽', '왼발') : null;
+  return `<h4>스킬 · 주발 · 역할</h4>
+    <div class="fc-kv"><span>스킬무브</span><b>${STARS(num(p.skill_moves))}</b></div>
+    <div class="fc-kv"><span>약발</span><b>${STARS(num(p.weak_foot))}</b></div>
+    <div class="fc-kv"><span>주발</span><b>${esc(foot || '—')}</b></div>
+    <div class="fc-kv"><span>AcceleRATE</span><b>${esc(p.accelerate || '—')}</b></div>
+    <div class="fc-kv"><span>Role++</span><b>${pp.length ? esc(pp.join(', ')) : '<span class="dim">없음</span>'}</b></div>
+    <div class="fc-kv"><span>Role+</span><b>${pl.length ? esc(pl.join(', ')) : '<span class="dim">없음</span>'}</b></div>`;
+}
+
 export function cardDetail(p, ctx = {}) {
   if (!p) return '';
   const cur = parse(p.current_six), base = parse(p.card_six) || null;
@@ -397,6 +425,7 @@ export function cardDetail(p, ctx = {}) {
       <button disabled>역할 <b>${esc(role.role_name)}</b></button><button disabled>포커스 <b>${esc(role.focus)}</b></button></div>
       ${ctx.team ? `<div class="plist" style="margin-top:4px"><button disabled>빌드업 ${esc(ctx.team.build_up_style)}</button>
       <button disabled>수비 ${esc(ctx.team.defensive_approach)}</button><button disabled>라인 ${ctx.team.line_height}</button></div>` : ''}` : ''}
+    ${traitRow(p, ctx.role_map)}
     <h4>현재 카드 스탯</h4>${sixRow(cur, base)}
     ${psBlock(p.current_playstyles)}
     <h4>진화 상태 ${evoCountLabel(p, ctx.log)}</h4>${evoBlock(p, ctx.log)}
@@ -417,8 +446,10 @@ export const FC_DETAIL_CSS = `
 .fc-pslist{display:flex;flex-wrap:wrap;gap:6px}
 .fc-ps{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;
   background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:3px 9px 3px 4px}
-.fc-ps img{width:19px;height:19px;display:block;padding:2px;box-sizing:border-box;
-  background:#fff;border-radius:50%;filter:brightness(0)}
+/* ⚠️ img에 background와 filter를 **함께 주지 않는다**(2026-09-21): filter는 배경까지 적용돼
+   흰 배경이 검은 원이 된다. fut.gg PlayStyle 아이콘은 원본이 이미 흰 배경 + 검은 그림이라
+   아무것도 덧칠할 필요가 없다 — 모서리만 둥글린다. */
+.fc-ps img{width:19px;height:19px;display:block;border-radius:50%;background:#fff}
 .fc-ps.plus{border-color:var(--ok)}
 .fc-ps.plus i{font-style:normal;font-weight:800;color:var(--ok);margin-left:1px}
 .fc-recotbl td{font-size:12px}
@@ -432,7 +463,7 @@ export const FC_DETAIL_CSS = `
 .fc-dhead h3{margin:0 0 2px;font-size:16px}
 .fc-chemhead{display:flex;gap:8px;align-items:center;margin-bottom:6px}
 .fc-chemhead img{width:26px;padding:4px;box-sizing:border-box;border-radius:50%;
-  background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.5);filter:brightness(0)}
+  background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.5)}
 .fc-attrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:2px 10px}
 .fc-attr{display:flex;justify-content:space-between;font-size:12px;padding:2px 0;border-bottom:1px dotted var(--line)}
 .fc-attr span{color:var(--dim)}
