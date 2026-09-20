@@ -319,7 +319,12 @@ def g13_checks(con):
     out["mixed_team_code"] = con.execute("""
         WITH cls AS (
           SELECT team_code,
-                 CASE WHEN competition NOT LIKE '%Club World Cup%' AND (
+                 CASE WHEN competition NOT LIKE '%Club World Cup%'
+                       -- 2026-09-20 확장: 클럽 유스팀이 뛰는 **클럽 대회**가 '%U21%'에 걸려 NT로 오분류됐다
+                       -- (AVL U21의 EFL Trophy·U21 Premier League 2). 연령별 '대표팀' 대회만 NT여야 한다.
+                       AND competition NOT LIKE '%EFL Trophy%'
+                       AND competition NOT LIKE '%Premier League 2%'
+                       AND competition NOT LIKE '%Premier League International Cup%' AND (
                         competition LIKE '%World Cup Qual%'  OR competition LIKE '%FIFA World Cup%'
                      OR competition LIKE '%Africa Cup%'      OR competition LIKE '%Nations League%'
                      OR competition LIKE '%International Friendly%'

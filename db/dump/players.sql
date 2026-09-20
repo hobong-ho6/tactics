@@ -119,7 +119,7 @@ INSERT INTO players VALUES(124,'Joshua Sonni-Lambie',NULL,NULL,NULL,NULL,NULL,'2
 INSERT INTO players VALUES(125,'TJ Carroll',NULL,NULL,NULL,NULL,NULL,'2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1559638,NULL,NULL,NULL);
 INSERT INTO players VALUES(126,'James Wright',NULL,1138445,NULL,2004,'GK','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1340673,'England',NULL,NULL);
 INSERT INTO players VALUES(127,'Aidan Borland',NULL,NULL,NULL,2007,'DM','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1614550,'Scotland',NULL,NULL);
-INSERT INTO players VALUES(128,'Jamaldeen Jimoh-Aloba',NULL,NULL,NULL,2006,'AM','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1557236,'England',NULL,NULL);
+INSERT INTO players VALUES(128,'Jamaldeen Jimoh-Aloba','지모알로바',1410178,NULL,2006,'AM','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1557236,'England',NULL,NULL);
 INSERT INTO players VALUES(129,'Ben Broggio',NULL,NULL,NULL,2007,'LW','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-15) — 실측 히트맵 없음',1407239,'England',NULL,NULL);
 INSERT INTO players VALUES(130,'Maxence Lacroix','라크루아',879674,244067,2000,'CB','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-16) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=879674 부여(프리시즌 전수 수집).',950485,'France',8853,NULL);
 INSERT INTO players VALUES(131,'Levi Colwill','콜윌',996911,262859,2003,'CB','2026-27 프리시즌 출전으로 승격 (FotMob 2026-08-16) — 실측 히트맵 없음 | [2026-08-19] sofascore_id=996911 부여(프리시즌 전수 수집).',1096400,'England',10805,NULL);

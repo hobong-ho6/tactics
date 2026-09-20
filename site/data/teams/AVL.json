@@ -257,6 +257,14 @@
    "player_id": 90
   },
   {
+   "avg_x": 44.4,
+   "avg_y": 57.7,
+   "first_date": "2026-08-18",
+   "last_date": "2026-08-18",
+   "n": 1,
+   "player_id": 128
+  },
+  {
    "avg_x": 11.0,
    "avg_y": 50.6,
    "first_date": "2026-08-31",
@@ -1654,6 +1662,23 @@
    "sample_note": "⚠️ **U18/U19 주장 이력과 1군 임무를 등치하지 말 것.** 25/26 리그2 임대분은 수치 미확보.",
    "sample_scope": "1군은 월솔전 45분 1건(스탯 미제공) + 유스 U18/U19",
    "source": "avfc.co.uk Scholar of the Year 2025-06-09 https://www.avfc.co.uk/news/2025/june/09/borland-wins-scholar-of-the-year/ ; avfc.co.uk U21 프로필 ; avfc.co.uk 월솔 공식 리포트 2026-07-21 ; Bescot Banter 2026-07-21"
+  },
+  {
+   "adherence": "표본 부족으로 판단 불가 — 1군 체제 요구에 대한 순응도를 볼 경기가 없다.",
+   "applied_note": "재판정 조건: **1군 공식전 45분+ 출전 2경기**가 쌓이거나 부상 복귀 후 U21 3경기가 누적되면 임무·처방을 다시 낸다. 그전까지는 squad_entries 등재만 유지하고 처방·평가를 만들지 않는다.",
+   "applied_status": "HELD",
+   "confidence": "⚠️ **U21 표본 1경기**. 1군 임무 서술이 아니다 — 경쟁 수준이 달라 에메리 체제 요구역할의 근거로 쓰지 않는다. ⛔ 현재 **어깨 부상 이탈 중**(2026-08-21 이후 U21 5경기 연속 명단 제외). 원문 「the midfielder’s shoulder problem meant any potential transfer had to be postponed」(이 미드필더의 어깨 문제로 이적 가능성은 연기될 수밖에 없었다) — 여름 막바지 웨스트햄 문의가 이 부상으로 보류됐다.",
+   "duties": "에메리 체제 1군 임무는 **아직 정의되지 않았다** — 프리시즌 친선 4경기(합계 32분 이하 확인분)와 U21 경기가 전부이고 1군 공식전 출전은 0이다. U21에서는 3-4-2-1의 **좌측 중앙 미드필더**로 선발됐다.",
+   "execution": "2026-08-18 위건전(U21, 73분 선발) 실측: 패스 34회 중 31회 성공(91%)·터치 44·볼캐리 11회(전진 캐리 0)·태클 1·인터셉트 1·리커버리 2. 자기 진영 패스 18/18(100%)·상대 진영 13/16. ⚠️ 평균 위치 x44.4·y57.7로 **좌측 하프스페이스의 깊은 지점**에 머물렀고 pos_class는 LDM으로 분류됐다 — 명목 포지션(AM)보다 뒤에서 뛰었다. 전진 캐리 0·슛 0은 이 경기에서 **연결 역할에 그쳤다**는 뜻이다.",
+   "game_role_implication": "⛔ **게임 역할 처방을 만들지 않는다.** 커널 참고값은 cam_playmaker/Build-Up 0.406이지만 U21 1경기 그리드에서 나온 값이라 신뢰 구간 밖이다. 1군 공식전 표본이 쌓이기 전에는 처방하지 않는다.",
+   "label": "지모알로바",
+   "observed_from": "2026-07-21",
+   "observed_to": "2026-08-21",
+   "player_id": 128,
+   "position": "CAM",
+   "sample_note": "U21 1경기 73분(2026-08-18 EFL Trophy v Wigan, 히트맵 51점) + 1군 프리시즌 친선 4경기(원천 수치 미수집 행). ⛔ 미수행: **유튜브 전술 분석·전술 블로그 0건** — U21·부상 이탈 선수라 그 경기 단위 분석물이 존재하지 않는다(검색 「Jamaldeen Jimoh-Aloba injury/loan/shoulder」 영어, 2026-09-20). ⛔ 본인·감독 1차 발언 0건 — 회견에서 언급되지 않았다. 다국어(불변규칙 10): 잉글랜드 출생·잉글랜드 리그라 모국어와 현지어가 영어로 일치해 추가 언어권 미수행.",
+   "sample_scope": "specific_match",
+   "source": "실측: SofaScore /api/v1/event/16802009/player/1410178/{heatmap,statistics}·/lineups 직독(2026-09-20). 서사: The Athletic / Jacob Tanswell 여름 이적시장 결산 — 운반체 readastonvilla.com/2026/09/02/42542/ (2026-09-02 21:49). 명단 제외 추적: SofaScore team/36541 일정 + event/<eid>/lineups 대조(2026-09-20). 배경: expressandstar.com 2026-01-31(16세에 약 £1m·WBA 셀온 조항)."
   },
   {
    "adherence": "MEDIUM-HIGH — 빌드업 관여·박스 장악 임무는 실측·정량 모두 확인된다. ⭐ **'스위퍼 키퍼' 서사는 기각한다(3중 근거)**: ⑴ 우리 그리드 실측 tool_y 10.06(가장 깊은 축) ⑵ AIAPC(이탈리아 매치애널리스트협회) 2026-02 현 체제 분석 \"non agisce da sweeper-keeper rimanendo nella propria area\" ⑶ Opta 스위퍼 행동 빈도가 마르티네스와 동급이라 **'더 나온다'는 주장의 근거가 없다**. ⛔ 잔여 결손: 세트피스 수비에서의 역할·수비라인 통솔 근거 0건. ⭐ [obs#225] 통솔은 **직접 근거를 얻었으나 파소토 1건 · 2대 전 체제(페키아)** 다. 라인 높이·오프사이드 트랩 관여는 여전히 0건. **세트피스 출동 여부(행동)도 2회차 수색에서 근거 0건** — obs#224가 정량화한 것은 결과이지 배치가 아니다.",
@@ -41053,6 +41078,489 @@
     "stat_value": "0"
    }
   ],
+  "지모알로바": [
+   {
+    "league": "Championship",
+    "metric": "Red cards",
+    "metric_key": "red_cards",
+    "metric_kr": "레드카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "0"
+   },
+   {
+    "league": "Championship",
+    "metric": "Yellow cards",
+    "metric_key": "yellow_cards",
+    "metric_kr": "옐로카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "0"
+   },
+   {
+    "league": "Championship",
+    "metric": "Goals conceded while on pitch",
+    "metric_key": "goals_conceded_while_on_pitch",
+    "metric_kr": "출전 중 실점",
+    "per90": 1.0285714285714285,
+    "percentile": 94,
+    "percentile_per90": 86,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "4"
+   },
+   {
+    "league": "Championship",
+    "metric": "xG against while on pitch",
+    "metric_key": "expected_goals_against_while_on_pitch",
+    "metric_kr": "출전 중 피xG",
+    "per90": 1.2112199919564384,
+    "percentile": 93,
+    "percentile_per90": 69,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "4.71"
+   },
+   {
+    "league": "Championship",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "드리블 돌파 허용",
+    "per90": 0.7714285714285715,
+    "percentile": 86,
+    "percentile_per90": 46,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "3"
+   },
+   {
+    "league": "Championship",
+    "metric": "Fouls committed",
+    "metric_key": "fouls",
+    "metric_kr": "파울",
+    "per90": 1.8,
+    "percentile": 83,
+    "percentile_per90": 13,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "7"
+   },
+   {
+    "league": "Championship",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 50.0,
+    "percentile": 64,
+    "percentile_per90": 64,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "50.0"
+   },
+   {
+    "league": "Championship",
+    "metric": "Dispossessed",
+    "metric_key": "dispossessed",
+    "metric_kr": "볼 탈취당함",
+    "per90": 2.314285714285714,
+    "percentile": 56,
+    "percentile_per90": 4,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "9"
+   },
+   {
+    "league": "Championship",
+    "metric": "Big chances created",
+    "metric_key": "big_chance_created_team_title",
+    "metric_kr": "빅찬스 창출",
+    "per90": 0.5142857142857142,
+    "percentile": 51,
+    "percentile_per90": 100,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "2"
+   },
+   {
+    "league": "Championship",
+    "metric": "xA",
+    "metric_key": "expected_assists",
+    "metric_kr": "xA",
+    "per90": 0.3025940997259957,
+    "percentile": 49,
+    "percentile_per90": 100,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "1.18"
+   },
+   {
+    "league": "Championship",
+    "metric": "Assists",
+    "metric_key": "assists",
+    "metric_kr": "어시스트",
+    "per90": 0.2571428571428571,
+    "percentile": 39,
+    "percentile_per90": 96,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "1"
+   },
+   {
+    "league": "Championship",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블",
+    "per90": 1.542857142857143,
+    "percentile": 39,
+    "percentile_per90": 94,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "6"
+   },
+   {
+    "league": "Championship",
+    "metric": "Touches in opposition box",
+    "metric_key": "touches_opp_box",
+    "metric_kr": "상대 박스 터치",
+    "per90": 3.085714285714286,
+    "percentile": 36,
+    "percentile_per90": 90,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "12"
+   },
+   {
+    "league": "Championship",
+    "metric": "Cross accuracy",
+    "metric_key": "crosses_succeeeded_accuracy",
+    "metric_kr": "크로스 정확도",
+    "per90": 12.5,
+    "percentile": 29,
+    "percentile_per90": 29,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "12.5"
+   },
+   {
+    "league": "Championship",
+    "metric": "Fouls won",
+    "metric_key": "fouls_won",
+    "metric_kr": "파울 획득",
+    "per90": 2.057142857142857,
+    "percentile": 27,
+    "percentile_per90": 91,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "8"
+   },
+   {
+    "league": "Championship",
+    "metric": "Chances created",
+    "metric_key": "chances_created",
+    "metric_kr": "기회 창출",
+    "per90": 1.542857142857143,
+    "percentile": 26,
+    "percentile_per90": 84,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "6"
+   },
+   {
+    "league": "Championship",
+    "metric": "xGOT",
+    "metric_key": "expected_goals_on_target",
+    "metric_kr": "xGOT",
+    "per90": 0.05574857251984733,
+    "percentile": 26,
+    "percentile_per90": 51,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "0.22"
+   },
+   {
+    "league": "Championship",
+    "metric": "Successful crosses",
+    "metric_key": "crosses_succeeeded",
+    "metric_kr": "성공한 크로스",
+    "per90": 0.2571428571428571,
+    "percentile": 24,
+    "percentile_per90": 55,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "1"
+   },
+   {
+    "league": "Championship",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 35.294117647058826,
+    "percentile": 21,
+    "percentile_per90": 21,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "35.3"
+   },
+   {
+    "league": "Championship",
+    "metric": "Shots",
+    "metric_key": "shots",
+    "metric_kr": "슛",
+    "per90": 1.2857142857142856,
+    "percentile": 19,
+    "percentile_per90": 71,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "5"
+   },
+   {
+    "league": "Championship",
+    "metric": "Shots on target",
+    "metric_key": "ShotsOnTarget",
+    "metric_kr": "유효 슛",
+    "per90": 0.2571428571428571,
+    "percentile": 16,
+    "percentile_per90": 52,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "1"
+   },
+   {
+    "league": "Championship",
+    "metric": "Duels won",
+    "metric_key": "duel_won",
+    "metric_kr": "듀얼 승",
+    "per90": 6.685714285714286,
+    "percentile": 16,
+    "percentile_per90": 86,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "26"
+   },
+   {
+    "league": "Championship",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.04939714372158051,
+    "percentile": 16,
+    "percentile_per90": 41,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "0.19"
+   },
+   {
+    "league": "Championship",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.04939714372158051,
+    "percentile": 16,
+    "percentile_per90": 41,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "0.19"
+   },
+   {
+    "league": "Championship",
+    "metric": "Tackles",
+    "metric_key": "matchstats.headers.tackles",
+    "metric_kr": "태클",
+    "per90": 2.571428571428571,
+    "percentile": 15,
+    "percentile_per90": 77,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "10"
+   },
+   {
+    "league": "Championship",
+    "metric": "Interceptions",
+    "metric_key": "interceptions",
+    "metric_kr": "인터셉트",
+    "per90": 1.2857142857142856,
+    "percentile": 12,
+    "percentile_per90": 78,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "5"
+   },
+   {
+    "league": "Championship",
+    "metric": "Duels won %",
+    "metric_key": "duel_won_percent",
+    "metric_kr": "듀얼 승률",
+    "per90": 41.26984126984127,
+    "percentile": 11,
+    "percentile_per90": 11,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "41.3"
+   },
+   {
+    "league": "Championship",
+    "metric": "Pass accuracy",
+    "metric_key": "successful_passes_accuracy",
+    "metric_kr": "패스 정확도",
+    "per90": 73.2394366197183,
+    "percentile": 11,
+    "percentile_per90": 11,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "73.2"
+   },
+   {
+    "league": "Championship",
+    "metric": "Defensive actions",
+    "metric_key": "defensive_actions",
+    "metric_kr": "수비 액션",
+    "per90": 3.857142857142857,
+    "percentile": 7,
+    "percentile_per90": 24,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "15"
+   },
+   {
+    "league": "Championship",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 0.7714285714285715,
+    "percentile": 7,
+    "percentile_per90": 13,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "3"
+   },
+   {
+    "league": "Championship",
+    "metric": "Touches",
+    "metric_key": "touches",
+    "metric_kr": "터치",
+    "per90": 43.97142857142857,
+    "percentile": 6,
+    "percentile_per90": 10,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "171"
+   },
+   {
+    "league": "Championship",
+    "metric": "Aerials won %",
+    "metric_key": "aerials_won_percent",
+    "metric_kr": "공중 경합 승률",
+    "per90": 22.22222222222222,
+    "percentile": 5,
+    "percentile_per90": 5,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "22.2"
+   },
+   {
+    "league": "Championship",
+    "metric": "Recoveries",
+    "metric_key": "recoveries",
+    "metric_kr": "볼 리커버리",
+    "per90": 2.571428571428571,
+    "percentile": 4,
+    "percentile_per90": 3,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "10"
+   },
+   {
+    "league": "Championship",
+    "metric": "Accurate passes",
+    "metric_key": "successful_passes",
+    "metric_kr": "정확한 패스",
+    "per90": 13.371428571428572,
+    "percentile": 4,
+    "percentile_per90": 3,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "52"
+   },
+   {
+    "league": "Championship",
+    "metric": "Aerials won",
+    "metric_key": "aerials_won",
+    "metric_kr": "공중 경합 승",
+    "per90": 0.5142857142857142,
+    "percentile": 2,
+    "percentile_per90": 12,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "2"
+   },
+   {
+    "league": "Championship",
+    "metric": "Clean sheets",
+    "metric_key": "clean_sheet_team_title",
+    "metric_kr": "클린시트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "0"
+   },
+   {
+    "league": "Championship",
+    "metric": "Goals",
+    "metric_key": "goals",
+    "metric_kr": "골",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2025/2026",
+    "stat_value": "0"
+   }
+  ],
   "카마라": [
    {
     "league": "Premier League",
@@ -55066,6 +55574,13 @@
     "Premier League"
    ]
   ],
+  "지모알로바": [
+   [
+    "2026-08-18",
+    6.5,
+    "EFL Trophy (U21)"
+   ]
+  ],
   "카마라": [
    [
     "2026-01-07",
@@ -59920,6 +60435,152 @@
     "player_id": 191,
     "pulled": "2026-08-23",
     "season": "2025/2026",
+    "value": "0"
+   }
+  ],
+  "지모알로바": [
+   {
+    "league": "Premier League 2",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "player_id": 128,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "1"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "player_id": 128,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "1"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "player_id": 128,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "4"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 128,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "4"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 128,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "348"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "player_id": 128,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "6.68"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 128,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "1"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 128,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "1"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Goals",
+    "metric_kr": "골",
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Assists",
+    "metric_kr": "어시스트",
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Started",
+    "metric_kr": "선발",
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2026/2027",
+    "value": "1"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2026/2027",
+    "value": "76"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2026/2027",
+    "value": "7.41"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2026/2027",
+    "value": "0"
+   },
+   {
+    "league": "Premier League 2",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 128,
+    "pulled": "2026-09-20",
+    "season": "2026/2027",
     "value": "0"
    }
   ],
@@ -73531,7 +74192,7 @@
      "hit_points": null,
      "interceptions": null,
      "key_passes": null,
-     "label": "Jamaldeen Jimoh-Aloba",
+     "label": "지모알로바",
      "lineup_pos": "M",
      "map25": null,
      "minutes": null,
@@ -79577,7 +80238,7 @@
      "hit_points": null,
      "interceptions": null,
      "key_passes": null,
-     "label": "Jamaldeen Jimoh-Aloba",
+     "label": "지모알로바",
      "lineup_pos": null,
      "map25": null,
      "minutes": 14,
@@ -80650,7 +81311,7 @@
      "hit_points": null,
      "interceptions": null,
      "key_passes": null,
-     "label": "Jamaldeen Jimoh-Aloba",
+     "label": "지모알로바",
      "lineup_pos": null,
      "map25": null,
      "minutes": 18,
@@ -81915,7 +82576,7 @@
      "hit_points": null,
      "interceptions": null,
      "key_passes": null,
-     "label": "Jamaldeen Jimoh-Aloba",
+     "label": "지모알로바",
      "lineup_pos": null,
      "map25": null,
      "minutes": null,
@@ -82561,6 +83222,20 @@
    "xg_pg": null
   },
   {
+   "avg_rating": 6.5,
+   "dw_pg": 2.0,
+   "ic_pg": 1.0,
+   "kp_pg": null,
+   "label": "지모알로바",
+   "minutes": 105,
+   "n": 5,
+   "player_id": 128,
+   "pos_group": "DM",
+   "tk_pg": 1.0,
+   "xa_pg": null,
+   "xg_pg": null
+  },
+  {
    "avg_rating": 7.03,
    "dw_pg": 0.45,
    "ic_pg": 0.0,
@@ -83032,6 +83707,19 @@
    "source": "reports/match-watch/2026-09-19-avl-tottenham.D1-findings.md(흡수 후 삭제) · 에메리 D-1 회견",
    "stale_days": 0,
    "value": "return_expected"
+  },
+  {
+   "as_of": "2026-09-02",
+   "confidence": "원문 「Villa were willing to allow Jimoh-Aloba to leave if the right opportunity emerged. However, the midfielder's shoulder problem meant any potential transfer had to be postponed.」 (빌라는 적절한 기회가 오면 지모알로바를 내보낼 의향이 있었다. 그러나 이 미드필더의 어깨 문제로 이적 가능성은 연기될 수밖에 없었다.) ⚠️ 부상 사실은 1차 소스(Tanswell)지만 **부상명·수술 여부·복귀 시점은 공개되지 않았다** — 「어깨」 이상은 결손이다. ⚠️ FotMob `injuryInformation`은 null(2026-09-20) — 집계 소스가 U21 부상을 담지 않는 것으로 보인다.",
+   "detail": "복귀 시점 미공개. 실측: 2026-08-21 브라이튼 U21전 이후 U21 5경기 연속 명단 제외(08-28·09-02·09-11·09-15·09-18).",
+   "kind": "injury",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 128,
+   "pulled": "2026-09-20",
+   "source": "The Athletic / Jacob Tanswell 보도 — 운반체 readastonvilla.com/2026/09/02/42542/ (2026-09-02 21:49, 09-03 00:22 갱신) · 명단 제외는 SofaScore /api/v1/event/<eid>/lineups 직독(2026-09-20)",
+   "stale_days": 0,
+   "value": "어깨 부상 (훈련 중 발생)"
   },
   {
    "as_of": "2026-09-07",
@@ -91306,6 +91994,38 @@
     "starts": null
    }
   ],
+  "지모알로바": [
+   {
+    "assists": null,
+    "avg_rating": null,
+    "competition": "Club Friendly",
+    "goals": null,
+    "minutes": null,
+    "n": 2,
+    "season": "2026-27",
+    "starts": 0
+   },
+   {
+    "assists": null,
+    "avg_rating": null,
+    "competition": "Club Friendly Games",
+    "goals": null,
+    "minutes": 32,
+    "n": 2,
+    "season": "2026-27",
+    "starts": 0
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.5,
+    "competition": "EFL Trophy (U21)",
+    "goals": 0,
+    "minutes": 73,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   }
+  ],
   "카마라": [
    {
     "assists": 1,
@@ -92390,6 +93110,32 @@
    "slot_type": "CAM",
    "sort_order": 62,
    "source": "appearances measured (2026-07-21 슬롯 추가)",
+   "source_kind": "squad",
+   "status": "OWNED",
+   "team_code": "AVL"
+  },
+  {
+   "confidence": "⚠️ **1군 공식전 실측 0경기**. 그리드·적합은 전부 **U21 경기 1개**에서 나왔다 — 경쟁 수준이 달라 1군 슬롯 처방 근거로 쓰지 않는다. fit_sim 0.406은 신뢰 구간 밖이다(참고값). ⛔ 현재 **어깨 부상**으로 08-21 이후 U21 5경기 연속 명단 제외(player_status 2026-09-20 행). prescriptions·player_evaluations는 표본 미달로 미작성.",
+   "fit_focus": "Build-Up",
+   "fit_role": "cam_playmaker",
+   "fit_sim": 0.406,
+   "formation": "4-2-3-1 Wide",
+   "grid_caveat": "⚠️ U21 표본 1경기(EFL Trophy). 1군 대표 그리드가 아니다.",
+   "grid_club": null,
+   "label": "지모알로바",
+   "map25": "00000121129642463X1201000",
+   "name_en": "Jamaldeen Jimoh-Aloba",
+   "name_kr": "지모알로바",
+   "player_id": 128,
+   "pos": "CAM",
+   "rate_basis": "u21_1match",
+   "rate_note": "U21 1경기 평점 6.5 (2026-08-18 Wigan) — 1군 공식전 표본 0",
+   "rating": 6.5,
+   "regime_id": 1,
+   "shirt_number": 20,
+   "slot_type": "CAM",
+   "sort_order": 99,
+   "source": "[2026-09-20 신규 등재] 구단 공식 2026/27 First Team Squad List(avfc.co.uk, 등번호 20 — player_shirt_numbers id=115) · 식별: SofaScore 1410178 / FotMob 1557236 (생년월일 2006-10-02·England·M·등번호 20 3중 일치) · 그리드는 SofaScore 실측 1경기(2026-08-18 EFL Trophy, AVL U21 v Wigan, 73분·평점 6.5·히트맵 51점)",
    "source_kind": "squad",
    "status": "OWNED",
    "team_code": "AVL"
@@ -95150,6 +95896,26 @@
    "shirt_number": 53,
    "slot_type": "WM",
    "sort_order": 81
+  },
+  {
+   "fit_focus": "Build-Up",
+   "fit_role": "cam_playmaker",
+   "fit_sim": 0.406,
+   "grid_caveat": "⚠️ U21 표본 1경기(EFL Trophy). 1군 대표 그리드가 아니다.",
+   "grid_club": null,
+   "label": "지모알로바",
+   "lh": "OWNED",
+   "map25": "00000121129642463X1201000",
+   "name_en": "Jamaldeen Jimoh-Aloba",
+   "name_kr": "지모알로바",
+   "player_id": 128,
+   "pos_only": "CAM",
+   "rate_basis": "u21_1match",
+   "rate_note": "U21 1경기 평점 6.5 (2026-08-18 Wigan) — 1군 공식전 표본 0",
+   "rate_v": 6.5,
+   "shirt_number": 20,
+   "slot_type": "CAM",
+   "sort_order": 99
   }
  ],
  "tactic_changes": [
