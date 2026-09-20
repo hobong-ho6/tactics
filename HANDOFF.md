@@ -127,10 +127,12 @@ D+2·D+3이 닫을 것: claim #139 **빌드업 국면 한정 재판정** · #143
 ⑶ **전사 3편 `match_videos` 미등재** — `U4OewDAQMCk`(MAH) · `QkA0fScs5s8`(Spurs Chat) · `ofp0s7RaNoc`(Cash talk's).
   ⛔ G17상 **`impl_claims` 1행 필수**(주장 없으면 `{"axis":"none"}`). ⚠️ `ofp0s7RaNoc`는 **PL 전 경기 모음 포맷**이라 이 경기 비중이 서두 ~2분뿐이다 —
   **제외가 낫고**, 제외하면 사유를 소스 커버리지에 남겨 다음 회차가 재후보로 올리지 않게 한다.
-  ⚠️ 등재된 `FP7obsFLxRQ`는 **채널명이 「채널 미상(oEmbed Unauthorized)」로 결손**이다 — 실제 값은 **Alice - ECILA Football**
-  (2026-09-19, 18:47, 상대팀+전술). ⚠️ 이 전사는 **루헤리를 「Reguilon」으로 오인식**한다.
+  ✅ `FP7obsFLxRQ` 채널명 결손은 **채움 완료**(Alice - ECILA Football). ⚠️ 이 전사는 **루헤리를 「Reguilon」으로 오인식**한다.
 📌 미추적 잔여(이전 세션 산출, 사용자 판단): `reports/ingame/2026-09-0{8,9,10}-avl-*` 4폴더 · 위 전사 3편.
 📌 **삭제 후보**: `reports/match-watch/2026-09-19-avl-tottenham.D1-findings.md` — 병렬 세션 인계 메모. `02fd522`에서 리포트 D+1 절·obs로 **전량 흡수됨**.
+✅ **`pulled`·`scope` 규약 docs/30 반영 완료**(09-20 사용자 지시, obs#883) — 마이그레이션 없이 기존 free-text 필드(`phase_source` · `team_match_stats.source`)에 토큰으로 적고, match-watch §3에 실행 단계를 넣었다.
+⭐ **가능하면 `scope=full`로 받는다**(16종 화이트리스트면 카드·교체·세이브가 없어 「카드가 없다」류를 판정할 수 없다). ⏰ **전용 컬럼 + G12 확장은 사전등록 후보**(현재는 문자열 규약이라 기계 강제 없음).
+⏰ 사용자 판단 대기: `refresh_duty_applied` **재판정 후보 3건**(알리송·음바예·헨더슨 — 스퍼스전 축 밖이라 미처리).
 ⏰ 외부 입력 대기: FC27 출시 **09-25**(진화·시세 재수집) · 인게임 A/B(T6·C2/C6) · 맥 알리스터 공식전 2경기 · 다음 GG Club 싱크(`/club-sync`).
 ⚠️ **공유 DB에 동시 세션이 붙는다**(09-18에 실제로 시각화 세션 ↔ match-watch 세션이 겹쳤다) — 커밋 전 `git status`로 **내 것만 명시 스테이징**할 것.
 

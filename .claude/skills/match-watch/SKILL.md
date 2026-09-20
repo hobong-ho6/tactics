@@ -174,6 +174,12 @@ FotMob matchDetails 하프별 점유·xG·슈팅과 WhoScored 하프별 PPDA를 
 타임라인·하프 비교·팀 대조 차트(`site/assets/matchviz.js`)가 이 두 표를 그린다. 산문(tactical_changes)에만 적으면 화면이 그릴 수 없다.
 ⭐ **슛 단위도 정형으로**(migration 041 `match_shots`): SofaScore `/event/<eid>/shotmap`(xg·xgot·좌표·결과·상황). ⚠️ **컵·친선은 SofaScore가 슛 xG를 주지 않는다** → FotMob matchDetails `content.shotmap.shots`로 대체(제공사 `provider` 명기 — 한 경기 안에서 혼합 금지). xG 레이스·슛 맵이 이 표를 그린다.
 
+### ⭐⭐ 이벤트 수집은 `pulled`·`scope`를 함께 적는다 (2026-09-20 신설 · obs#883 · 정본 docs/30)
+⛔ **Opta는 xG뿐 아니라 이벤트 자체도 사후 개정한다** — 같은 경기를 다시 받으면 좌표·타입이 재분류돼 값이 이동한다(스퍼스전 실증: 양방향 차분 60건/44건 · def_x 30.6→30.9).
+⇒ `player_matches.phase_source`에 **`pulled=YYYY-MM-DD · scope=<full|whitelist16>`**, `team_match_stats.source` 끝에 **` · events: matchId=… pulled=… scope=…`** 를 넣는다.
+⭐ **가능하면 `scope=full`로 받아라**(16종 화이트리스트로 받으면 Save·교체·카드·코너가 아예 없다 — 그 스냅샷으로 **「카드가 없다」류를 판정하면 안 된다**).
+⛔ 재수집으로 값이 달라져도 **리포트가 인용한 값을 조용히 덮지 않는다** — D+N 절에 「수치 정정」으로 적고 obs를 남긴다(§2-1a).
+
 ### ⭐ PPDA·라인 프록시는 매 경기 필수 (2026-09-08 신설)
 `ppda_v/o`(+`ppda_num/den`, `ppda_method`=`core.whoscored.PPDA_METHOD`)와 `def_x_v/o`(+`def_x_method`)를 **같은 WhoScored 이벤트**에서
 `core.whoscored.ppda/def_x`로 계산해 채운다. 2026-09-08 점검에서 PPDA는 70경기 중 14경기, 라인 높이 실측은 0이었다 — 팀 설정

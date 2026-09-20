@@ -170,6 +170,41 @@
    "video_id": "ahxMgX0BH2c"
   },
   {
+   "channel": "Alice - ECILA Football",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표). · [2026-09-20 결손 채움] 채널명은 oEmbed Unauthorized로 미상이었으나 병렬 세션이 확인했다(Alice - ECILA Football, 2026-09-19 18:47). 제목 원문은 여전히 미확보. ⚠️ 이 전사는 루헤리를 「Reguilon」으로 오인식한다.",
+   "id": 202,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 「빌라가 더 나은 GK와 더 나은 9번을 가졌다」는 선수 질 비교 논지.",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. 채널 미상(oEmbed Unauthorized). 구조·국면 서술이 없어 구현 재료로 쓰지 않는다."
+    }
+   ],
+   "key_points": [
+    "논지 — 원문 「Aston Villa won that game because they have a better goalkeeper and they have a better striker than Tottenham Hotspur」(빌라가 그 경기를 이긴 건 토트넘보다 나은 골키퍼와 나은 스트라이커를 가졌기 때문이다.)",
+    "⚠️ 채널 미상 — 인용 시 「채널 미상」으로 표기할 것. 재조회 대상."
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "⚠️ **채널·제목 미상**(YouTube oEmbed가 Unauthorized 반환). 전사 본문으로 보아 잉글랜드 전술 유튜버의 양 팀 리뷰다. 논지는 단순하다 — 빌라가 이긴 이유는 **토트넘보다 나은 골키퍼와 나은 스트라이커를 가졌기 때문**이며, 토트넘은 영입을 많이 하고도 진짜 9번을 사지 않았다는 것. 구조·국면 서술이 없어 구현 축 주장으로 쓸 재료가 아니다.",
+   "team_code": "AVL",
+   "title": "Tottenham 2-3 Aston Villa — 양 팀 리뷰(제목 원문 미확보)",
+   "transcript_path": "reports/transcripts/FP7obsFLxRQ.en.md",
+   "url": "https://www.youtube.com/watch?v=FP7obsFLxRQ",
+   "video_id": "FP7obsFLxRQ"
+  },
+  {
    "channel": "Aston Villa Football Club",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 194,
@@ -376,41 +411,6 @@
    "transcript_path": "reports/transcripts/XRJgUjer1cc.en.md",
    "url": "https://www.youtube.com/watch?v=XRJgUjer1cc",
    "video_id": "XRJgUjer1cc"
-  },
-  {
-   "channel": "채널 미상 (oEmbed Unauthorized)",
-   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
-   "id": 202,
-   "impl_claims": [
-    {
-     "axis": "none",
-     "field": null,
-     "focus": null,
-     "player": null,
-     "quote": "구현 축 주장 없음 — 「빌라가 더 나은 GK와 더 나은 9번을 가졌다」는 선수 질 비교 논지.",
-     "role_id": null,
-     "team_code": "AVL",
-     "value": null,
-     "verdict": "NA",
-     "verdict_note": "axis=none. 채널 미상(oEmbed Unauthorized). 구조·국면 서술이 없어 구현 재료로 쓰지 않는다."
-    }
-   ],
-   "key_points": [
-    "논지 — 원문 「Aston Villa won that game because they have a better goalkeeper and they have a better striker than Tottenham Hotspur」(빌라가 그 경기를 이긴 건 토트넘보다 나은 골키퍼와 나은 스트라이커를 가졌기 때문이다.)",
-    "⚠️ 채널 미상 — 인용 시 「채널 미상」으로 표기할 것. 재조회 대상."
-   ],
-   "kind": "경기반응",
-   "lang": "en",
-   "obs_points": [],
-   "published": "2026-09-19",
-   "published_approx": 0,
-   "report_id": 47,
-   "summary": "⚠️ **채널·제목 미상**(YouTube oEmbed가 Unauthorized 반환). 전사 본문으로 보아 잉글랜드 전술 유튜버의 양 팀 리뷰다. 논지는 단순하다 — 빌라가 이긴 이유는 **토트넘보다 나은 골키퍼와 나은 스트라이커를 가졌기 때문**이며, 토트넘은 영입을 많이 하고도 진짜 9번을 사지 않았다는 것. 구조·국면 서술이 없어 구현 축 주장으로 쓸 재료가 아니다.",
-   "team_code": "AVL",
-   "title": "제목 미상 — 빌라·토트넘 양 팀 리뷰",
-   "transcript_path": "reports/transcripts/FP7obsFLxRQ.en.md",
-   "url": "https://www.youtube.com/watch?v=FP7obsFLxRQ",
-   "video_id": "FP7obsFLxRQ"
   },
   {
    "channel": "1874 : The Aston Villa Channel",
@@ -7709,12 +7709,12 @@
    198,
    197,
    199,
+   202,
    194,
    201,
    196,
    195,
-   203,
-   202
+   203
   ]
  }
 }
