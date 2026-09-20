@@ -328,6 +328,75 @@
    "video_id": "kJZ0G7WvLWY"
   },
   {
+   "channel": "Blue Lions TV",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Shabby/Jab Alonzo=Alonso · Mi/Maddy=Nicoll-Jazuli · Yanel=Janelt · Kevin Ch=Schade. 인물명은 이 경기 라인업 실측과 대조했다.",
+   "id": 207,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 팬 채널 평가·구조 제안(4-3-3 전환 등)은 3티어 의견이라 주장으로 올리지 않는다.",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⛔ 「파머를 내려라」·「4-3-3」 제안은 팬 의견이므로 구현 재료로 쓰지 않는다."
+    }
+   ],
+   "key_points": [
+    "헨더슨 2실점 관여 주장 — 원문 「**why are you attempting a driven pass like that through the entire Brentford block** … **getting dispossessed like that. He's then not able to win that tackle when the transition is going**」(**왜 브렌트포드 블록 전체를 관통하는 드리븐 패스를 시도하나** … **그렇게 볼을 빼앗기고, 전환이 진행될 때 그 태클도 이기지 못한다**.) — auto-caption · 3티어",
+    "구조 원인 — 원문 「you're letting **Enzo Fernandez go. Not getting in another midfield player** when he's going, **it's not ideal**」(**엔소를 보내면서 다른 미드필더를 안 데려온 건 이상적이지 않다**.)"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "첼시 팬 채널(3티어)의 D+1 리액션. ⚠️ **2번째 실점에 헨더슨의 볼 소유 상실을 기점으로 지목**하는 서술이 있다 — 다른 소스 2건과 방향이 같아 기록해 둔다. 또 **엔소 페르난데스 이적 후 미드필더 미영입**을 피벗 결손의 구조적 원인으로 본다 — 헨더슨·바르코 피벗을 「선택」이 아니라 **잔여 자원**으로 재분류할지의 재료다. ⛔ 팬 의견이므로 구현 축 주장으로는 쓰지 않는다.",
+   "team_code": "CHE",
+   "title": "XABI ALONSO HAS A SERIOUS PROBLEM…",
+   "transcript_path": "reports/transcripts/o4uZGgoQS_o.en.md",
+   "url": "https://www.youtube.com/watch?v=o4uZGgoQS_o",
+   "video_id": "o4uZGgoQS_o"
+  },
+  {
+   "channel": "More Lyes",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Shabby/Jab Alonzo=Alonso · Mi/Maddy=Nicoll-Jazuli · Yanel=Janelt · Kevin Ch=Schade. 인물명은 이 경기 라인업 실측과 대조했다.",
+   "id": 208,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 개인 슛 선택 비판(3티어).",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none."
+    }
+   ],
+   "key_points": [
+    "네투 — 원문 「every time he shoots is **a little bit of a lottery ticket**… forcing a shot when **his body is not ready or even positioned**」(그가 슛할 때마다 **약간 복권 같다**… **몸이 준비되지도, 자세가 잡히지도 않았을 때** 슛을 강행한다.) — auto-caption · 3티어"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "팬 리액션(3티어). 네투의 슛 선택을 구체적 행동으로 비판한 대목이 있어 남긴다 — 「몸이 준비되지 않은 상태의 강행 슛」. 구조 서술은 없다.",
+   "team_code": "CHE",
+   "title": "BRENTFORD JUST EMBARRASSED CHELSEA 3-0!",
+   "transcript_path": "reports/transcripts/oY0jz8-W_7Y.en.md",
+   "url": "https://www.youtube.com/watch?v=oY0jz8-W_7Y",
+   "video_id": "oY0jz8-W_7Y"
+  },
+  {
    "channel": "TNT Sports Football",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 195,
@@ -463,6 +532,125 @@
    "video_id": "WajH4NOz_D0"
   },
   {
+   "channel": "BeanymanSports",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Shabby/Jab Alonzo=Alonso · Mi/Maddy=Nicoll-Jazuli · Yanel=Janelt · Kevin Ch=Schade. 인물명은 이 경기 라인업 실측과 대조했다.",
+   "id": 204,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "back_three_reason",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「The way Chelsea set up was **very very respectful of us**… they **double marked him practically for large parts of the game**」(첼시의 셋업은 우리를 매우 존중하는 것이었다… 경기의 상당 부분 **사실상 더블 마크**를 붙였다.) — auto-caption, **상대 감독**",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": "double_mark_opposing_nine",
+     "verdict": "HELD",
+     "verdict_note": "⛔ **재판정 조건**: 상대 감독의 귀속이지 알론소 본인 진술이 아니다(피벗·백3 구성 질문은 회견에서 0건). ⇒ ⑴ 알론소가 백3 채택 사유를 진술하거나 ⑵ **상대 9번 유형이 다른 경기에서 백3/백4가 갈리는 2번째 표본**이 생기면 판정한다. 현재 실측 정황: 이 경기 첼시 PPDA **8.38**·def_x **41.0**으로 **높은 라인·강한 압박**이었다 — 「물러서서 존중」과는 다른 그림이라 앤드루스의 「respectful」은 **라인 높이가 아니라 대인 배치(더블마크)**를 가리키는 것으로 읽어야 한다. ⚠️ 두 축을 섞지 말 것."
+    },
+    {
+     "axis": "limit",
+     "field": "set_piece_target_switch",
+     "focus": null,
+     "player": null,
+     "quote": "야넬트(브렌트포드) 원문 「**We did target [the back post] at half-time. There was a big gap**」(**우리는 하프타임에 뒤포스트를 노렸다. 큰 공간이 있었다**.) — Sky Sports 2026-09-19 서면",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": "back_post_after_half_time",
+     "verdict": "APPLIED",
+     "verdict_note": "⭐⭐ **상대 선수가 첫 실점을 「하프타임에 특정한 표적」으로 자인했다** — 전반 앞포스트 2회 → 후반 뒤포스트 전환. 즉 실점은 우연이 아니라 **같은 루틴의 포스트 전환에 대응하지 못한 결손**이다. 알론소 본인도 같은 국면을 「우측 스로인–코너 연속」으로 묶어 규정했다. 정황 지지: 콜윌 자인(세트피스 5실점) · Opta 세트피스 누적 23실점(리그 공동 최악). ⇒ 게임 구현 함의는 **세트피스 수비 지시 축**이고, AVL 스퍼스전 claim #143(세트피스 마킹, HELD)과 **같은 부류**다 — 두 팀에서 같은 축이 동시에 열렸다. ⛔ 단일 경기라 팀 설정·슬롯 정본은 변경하지 않는다."
+    }
+   ],
+   "key_points": [
+    "⭐⭐ 백3 = 치아구 더블마크 — 원문 「The way Chelsea set up was **very very respectful of us**… they **double marked him practically for large parts of the game** because they were that respectful of him」(첼시의 셋업은 **우리를 매우 존중하는 것**이었다… 그를 그만큼 존중했기에 **경기의 상당 부분 사실상 더블 마크**를 붙였다.) — auto-caption",
+    "⭐ 앤드루스의 게임플랜 — 원문 「even from defending deep from certain situations we have serious counter attacking threat」(깊게 수비하는 상황에서도 심각한 역습 위협을 갖는다.)",
+    "⭐ 샤데 규정 — 원문 「He's a **pressing machine. His work rate is outstanding**」(그는 **프레싱 머신**이다. 활동량이 탁월하다.) — 2·3번째 골의 기점이다.",
+    "⚠️ 피벗 구성 질문 0건."
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "⭐⭐ **이번 회차 최대 수확** — 알론소 회견(00:04~02:38)과 **키스 앤드루스(브렌트포드) 전체 회견(03:34~10:16)**이 한 영상에 연속으로 들어 있다. 상대 감독이 **첼시의 셋업을 「지나치게 존중한 형태」로 규정하고 그 이유를 이고르 치아구 더블마크로 설명**한다 — 우리 백3 채택 사유의 외부 증언이다. ⚠️ 알론소 회견에서 **더블피벗(헨더슨·바르코) 구성 사유를 묻는 질문은 0건**이다 — 기자단은 「10대 3명 투입」만 물었다. 피벗 구성 사유는 본인 진술로 확보 불가.",
+   "team_code": "CHE",
+   "title": "🔴 LIVE | Xabi Alonso and Keith Andrews | Brentford 3-0 Chelsea",
+   "transcript_path": "reports/transcripts/7J0YLBV25vc.en.md",
+   "url": "https://www.youtube.com/watch?v=7J0YLBV25vc",
+   "video_id": "7J0YLBV25vc"
+  },
+  {
+   "channel": "Chelsea Football Club",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Shabby/Jab Alonzo=Alonso · Mi/Maddy=Nicoll-Jazuli · Yanel=Janelt · Kevin Ch=Schade. 인물명은 이 경기 라인업 실측과 대조했다.",
+   "id": 205,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 감독의 실점 국면 규정·선수 평가·태도 진술이다. 내용은 observations로 옮겼다.",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⭐ 헨더슨 평가(감독 긍정 ↔ 매체 4/10)와 실점 국면 규정은 obs로 기록했다."
+    }
+   ],
+   "key_points": [
+    "⭐ 실점 국면 규정 — 원문 「there were some moments that we were **especially from this right side they were throwing and the corner went this way** … **in that area we could have been more clinical on the defending**」(**특히 우측에서 그들이 스로인을 던지고 코너가 이 방향으로 갔던 순간들이 있었다** … **그 영역에서 수비를 더 정확하게 할 수 있었다**.) — auto-caption",
+    "⭐⭐ 헨더슨 평가 — 원문 「**He has had a very good impact. I'm happy with his performance, the way he has taken responsibility, connect with the players, so it's probably the most positive thing about today**」(**매우 좋은 임팩트를 냈다. 경기력, 책임을 떠맡은 방식, 선수들과 연결된 방식에 만족한다. 아마 오늘의 가장 긍정적인 부분일 것이다**.) — auto-caption",
+    "원문 「**no excuses.** You need to deal with injuries … **with this team we can do better**」(**변명 없다.** 부상은 감당해야 한다 … **이 팀으로도 더 잘할 수 있다**.)"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "구단 공식의 **기자회견과 별개인 단독 인터뷰**. ⭐ 여기에만 두 가지가 있다: ⑴ 알론소가 **첫 실점을 「우측 스로인–코너 연속 국면」으로 묶어 규정**한 것 ⑵ **헨더슨 데뷔에 대한 강한 긍정 평가**. ⭐⭐ 후자는 영국 매체 종합 평점 4/10과 **정면 충돌**한다. 또 부상 결장을 핑계로 쓰지 않겠다고 못박는다.",
+   "team_code": "CHE",
+   "title": "ALONSO reacts post-Brentford",
+   "transcript_path": "reports/transcripts/sXId17-8tzk.en.md",
+   "url": "https://www.youtube.com/watch?v=sXId17-8tzk",
+   "video_id": "sXId17-8tzk"
+  },
+  {
+   "channel": "MightyBluesNews",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Shabby/Jab Alonzo=Alonso · Mi/Maddy=Nicoll-Jazuli · Yanel=Janelt · Kevin Ch=Schade. 인물명은 이 경기 라인업 실측과 대조했다.",
+   "id": 206,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 교체 사유(머릿수·훈련 태도) 진술.",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none."
+    }
+   ],
+   "key_points": [
+    "⭐ 교체 사유 — 원문 「with 2-0, we brought **Maddy** that he has a great energy that **at the moment in the middle we were short of numbers**. The other ones are Gio and Neste… because **they have been training well. They are part of the squad**」(0-2에서 **니콜자줄리**를 넣었다. 에너지가 좋고 **그 시점에 중앙의 머릿수가 부족했다**. 다른 둘은… **훈련을 잘 해왔고 스쿼드의 일원이기 때문**이다.) — auto-caption, 인물명은 라인업으로 특정"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "10대 3명 투입 사유가 여기 있다. ⭐ 「보드에 보내는 메시지」라는 외부 해석과 달리 **본인 설명은 실무적**이다 — 중앙 머릿수 부족과 훈련 태도. 세트피스·멘털리티 관련 문답도 포함.",
+   "team_code": "CHE",
+   "title": "Xabi Alonso on Chelsea mentality, set pieces and teenage subs",
+   "transcript_path": "reports/transcripts/5Vz7-8SLg5o.en.md",
+   "url": "https://www.youtube.com/watch?v=5Vz7-8SLg5o",
+   "video_id": "5Vz7-8SLg5o"
+  },
+  {
    "channel": "The Villans",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 189,
@@ -594,6 +782,40 @@
    "transcript_path": "reports/transcripts/qS27lBoSUqw.en.md",
    "url": "https://www.youtube.com/watch?v=qS27lBoSUqw",
    "video_id": "qS27lBoSUqw"
+  },
+  {
+   "channel": "Chelsea Football Club",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Shabby/Jab Alonzo=Alonso · Mi/Maddy=Nicoll-Jazuli · Yanel=Janelt · Kevin Ch=Schade. 인물명은 이 경기 라인업 실측과 대조했다.",
+   "id": 209,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — **경기 전 회견**이라 이 경기 진단이 아니다.",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⚠️ 경기 전(D-1) 회견 — 경기 후 진단으로 인용 금지."
+    }
+   ],
+   "key_points": [
+    "⚠️ 경기 전 회견 — 경기 후 진단 인용 금지. 피벗 구성 사유 0건."
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-17",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "⚠️ **경기 전(D-1) 회견이다** — 경기 후 진단으로 인용하면 안 된다. 라인업 사전 공개가 없어 피벗 구성 사유도 없다. 이 경기 회차의 **배경 자료**로만 등재한다.",
+   "team_code": "CHE",
+   "title": "Alonso Press Conference | 17/09/26",
+   "transcript_path": "reports/transcripts/eYeU6iQyl7A.en.md",
+   "url": "https://www.youtube.com/watch?v=eYeU6iQyl7A",
+   "video_id": "eYeU6iQyl7A"
   },
   {
    "channel": "Coop De Villa",
@@ -7703,6 +7925,14 @@
   "45": [
    166,
    167
+  ],
+  "46": [
+   207,
+   208,
+   204,
+   205,
+   206,
+   209
   ],
   "47": [
    200,

@@ -113,3 +113,69 @@
 - SofaScore 통계 기사: https://www.sofascore.com/news/brentford-3-0-chelsea-numbers-that-told-the-story
 - Brentford 경기 전 공식 분석: https://www.brentfordfc.com/en/news/article/match-previews-brentford-v-chelsea-premier-league-18-09-2026
 - FotMob 경기: https://www.fotmob.com/en-GB/matches/chelsea-vs-brentford/2spihp
+
+---
+
+## D+2 추적 (2026-09-20)
+
+> 이 회차는 **실측 결손 해소 + 서사 0편 공백 메우기**가 목적이었다. D+1까지 `match_videos` 0편·PPDA/def_x 미수집 상태였다.
+> ⛔ D+0·D+1 절은 수정하지 않았다 — 정정·보강은 이 절에 적는다(불변규칙 2·3).
+
+### D+2-1. ⭐⭐ 실측 결손 해소 — PPDA·def_x·국면 그리드
+
+WhoScored matchCentreData `1983573`을 **전량 수신**(이벤트 1516건·32종, `pulled=2026-09-20 scope=full`)해 `core.whoscored`로 재집계했다.
+
+| | 첼시 | 브렌트포드 |
+|---|---|---|
+| **PPDA** | **8.38** (268/32) | 18.39 (331/18) |
+| **def_x** (라인 프록시) | **41.0** (n=157) | 33.1 (n=156) |
+
+⇒ 첼시는 **상대보다 2배 이상 공격적으로 압박했고 라인도 8 높았다.** 그 상태로 0-3 패다.
+국면 그리드는 출전 15명 중 **14명 신규 채움**(헨더슨 1행은 09-19 수집분 보존 — 채움 전용, 덮지 않는다).
+
+⭐ 같은 라운드 AVL(PPDA 13.24 · def_x 30.6 — 원정 강팀전 로우블록)과 **정반대 축**이다.
+⛔ **두 경기를 「어느 접근이 옳은가」로 비교하면 안 된다** — 상대·홈원정·전력차가 다르다(불변규칙 7). 이 수치는 **CHE 26/27 압박 축의 첫 실측**으로만 쓴다. obs#892.
+
+✅ **파생 정정**: `match_game_setups`의 `rule_note`가 「NO-STATS」에서 **「RULE」로 교체**됐다 — PPDA가 생겨 그 표기가 거짓이 됐고 **G15가 잡았다**.
+`core.team_settings.suggest(점유 59·패스 497·롱볼 48·PPDA 8.38)` = Balanced/Balanced/라인 55~62로, 기존 임시값(Balanced/Balanced/**55**)이 **규칙 범위 안**이라 그대로 확정된다.
+
+### D+2-2. ⭐⭐ 상대 감독이 우리 백3의 이유를 설명했다
+
+알론소 회견에는 **백3·피벗 구성 사유 질문이 0건**이다(기자단은 「10대 3명 투입」만 물었다). 대신 상대 감독이 설명했다 —
+원문 「The way Chelsea set up was **very very respectful of us** … they **double marked him practically for large parts of the game**」(첼시의 셋업은 **우리를 매우 존중하는 것**이었다 … **경기의 상당 부분 사실상 더블 마크**를 붙였다), 이고르 치아구 지칭. 회견에서 **두 번 반복**했다.
+
+⛔ **중요한 구분**: 「respectful」을 **물러선 블록**으로 읽으면 실측과 어긋난다 — 첼시는 PPDA 8.38·def_x 41.0으로 **높고 공격적**이었다.
+⇒ 이 진술은 **라인 높이가 아니라 대인 배치(더블마크)** 축이다. 두 축을 섞지 말 것. `video_impl_claims`에 **HELD**(재판정 조건: 알론소 본인 진술 **또는** 상대 9번 유형에 따라 백3/백4가 갈리는 2번째 표본). obs#893.
+
+### D+2-3. ⭐⭐ 첫 실점은 하프타임에 특정된 표적이었다
+
+야넬트(브렌트포드) 원문 「**We did target [the back post] at half-time. There was a big gap**」(**우리는 하프타임에 뒤포스트를 노렸다. 큰 공간이 있었다**).
+전반 앞포스트 2회 → 후반 **뒤포스트 전환**이다. ⇒ 실점의 성격은 「세트피스 약점」 일반이 아니라 **같은 루틴의 포스트 전환에 대응하지 못한 결손**이다. `video_impl_claims` **APPLIED**.
+
+⭐ 알론소 본인은 같은 국면을 원문 「**especially from this right side they were throwing and the corner went this way** … **in that area we could have been more clinical on the defending**」로 **우측 스로인–코너 연속 국면**으로 묶어 규정했다 — 우리 §4가 61′와 90+4′를 분리 서술한 것과 달리 **감독은 둘을 같은 축으로 본다**.
+정황: 콜윌 자인 「**at times we've been bullied [at set-pieces]**」 · Opta 세트피스 누적 **23실점(리그 공동 최악)**.
+⭐⭐ **AVL 스퍼스전 claim #143(세트피스 마킹, HELD)과 같은 부류가 두 팀에서 동시에 열렸다.** obs#894.
+
+### D+2-4. 선수 서사
+
+- **헨더슨** — ⭐⭐ **감독 평가와 매체 평가가 정반대다.** 알론소 「**the most positive thing about today**」 ↔ 영국 매체 종합 **4/10**(「slow distribution and **sideways passing**」).
+  ⭐ 둘 다 부분적으로 맞을 수 있다 — 「**Henderson was tasked with tracking Mikkel Damsgaard, and he did that job well**」로 **무보유 임무는 긍정**된다 ⇒ **무보유 수행 ↔ 보유 배급**으로 축이 갈린다는 가설이고 obs#855~857의 「안전한 순환형 피벗」과 정합한다.
+  ⚠️ 소스 3건이 2번째 실점의 기점을 그의 볼 소유 상실로 지목 — ⛔ 프레임 확인 전 보류. obs#895.
+- **바르코** — ⚠️ **야유는 경기력이 아니라 2026 월드컵 아르헨-잉글랜드 4강의 잔상**이다(현지 매체 2곳). 평가 해석에서 분리해야 한다.
+  🇦🇷 실측 65터치·패스 정확 92%·라인브레이킹 11인데 **상대 박스 터치 단 1회**. ⚠️ 우리 SofaScore값(패스 47/51·평점 7.0)과 제공사 차이 — 병기한다. obs#896.
+- **에스테방** — 87′ 투입. PL 선발 0회·누적 **23분**이 브라질 매체에서 별도 서사로 성장 중.
+- **(상대) 슈스터** — MOM·클리어 12회·첫 실점 헤더 어시스트. ⚠️ **국적 오류 주의**: 「German」 표기가 있으나 **오스트리아**가 맞다(구단 공식·앤드루스 회견 확인).
+
+### D+2-5. 소스 커버리지·배제
+
+| 종류 | 상태 | 내용 |
+|---|---|---|
+| 감독 발언 | ✅ | 알론소 회견 + **구단 공식 단독 인터뷰**(헨더슨 평가는 여기에만) · ⭐ **앤드루스 전체 회견** 확보 |
+| 상대팀 관점 | ✅ | 앤드루스 회견 · 야넬트(Sky) · 슈스터 |
+| 유튜브 전술 분석 | ⛔ **0건** | 전술 전용 채널의 **단독 분석 영상 없음**. 확보분은 회견물 4 + 팬 리액션 2. ⚠️ **채널 `/videos`·`/streams` 직접 스윕은 미수행** — 「부재」로 승격하지 말 것 |
+| 전술 블로그 | ◐ | Chelsea FC Online 1편(전술 단독). ⛔ **TFA·The Analyst 이 경기 0건** |
+
+⛔ **배제 4건**: ⑴ Goal.com 구판 평점(카이세도 부상 결장인데 등장 — 2025-09 2-2 경기) ⑵ 83′ 실점을 「콜윌–포파나」로 쓴 소스(**포파나는 71′ 교체 아웃**) ⑶ 슈스터 「German」 표기 ⑷ `eYeU6iQyl7A`는 **경기 전 회견**.
+⭐ **소스 판정 정정**: 「TFA 도메인 소멸」은 **사실이 아니다** — 살아 있고 이 경기 축 자료가 없을 뿐이다. ⚠️ **스페인어 축은 알론소의 레알 마드리드 경질 기사가 결과를 지배**한다(불변규칙 10 「이전 부임국」 함정의 마드리드판). obs#897.
+
+⏰ **D+3 이월**: 유튜브 4경로 직접 스윕 · 🇩🇪 kicker(야넬트·샤데 독일 대표 축) · 🇧🇷 ge/UOL 직접 · **수치 충돌 2건**(세트피스 실점 4↔5 · 무클린시트 21↔22) · Between the Lines·Spielverlagerung 생사.
