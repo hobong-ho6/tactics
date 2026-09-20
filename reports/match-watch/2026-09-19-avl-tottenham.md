@@ -486,3 +486,144 @@ tottenhamhotspur.com 회견 전문 ⑦ 🇮🇹 pagelle · 🇸🇪 린델뢰프
 - WhoScored matchCentreData `matchId=1983589` (Opta) — PPDA·def_x·국면 분리 그리드
 - 한계: 토트넘 선수 개인 실측 미수집(관리 4팀 축 밖). 빌라 세트피스 수비의 개인 마킹 배치는
   이벤트 데이터로 특정되지 않아 영상 확인 대상으로 남겼다.
+
+---
+
+## D+1 추적 (2026-09-20)
+
+> 수집 방식: 서브에이전트 3축 병렬(AVL 필수 3채널·Tanswell / 전술 블로그·토트넘 관점 / 다국어 7개 언어권) + 메인 세션의 WhoScored 재수집·실측 판정.
+> ⛔ **당일(D+0) 절은 수정하지 않았다.** 뒤집힌 판정은 아래 「당일 판정 정정」에 적는다(불변규칙 2·3).
+
+### D+1-1. ⭐⭐ HELD 1건 종결 — 「카마라 피벗 하강형 백3」 REJECTED
+
+D+0이 건 재판정 조건(전반 카마라 보유 x와 CB 라인 x의 격차가 8 이하면 APPLIED)을 집행했다.
+WhoScored matchCentreData `1983589`를 **`period`·`minute` 포함으로 재수집**(이벤트 1,627건 · 빌라 692건)해 `core.whoscored`로 재집계했다.
+
+| 전반 보유 국면 | x | n |
+|---|---|---|
+| 카마라 | **41.3** | 37 |
+| 린델뢰프 | 28.0 | 20 |
+| 밍스 | 31.6 | 30 |
+| **CB 라인(2인 합산)** | **30.2** | 50 |
+
+**Δ = 11.1** → 임계 밖. 자기 진영(x<50)으로 좁혀도 **8.8**로 여전히 밖이다. 후반은 Δ 14.8로 더 벌어진다.
+
+⭐ **기각의 범위를 좁혔다**: 좌우로는 카마라(y 43.0)가 린델뢰프(32.5)와 밍스(70.7) **사이**에 있고, 전반 보유 37건 중 **7건(19%)이 CB 라인 깊이 이하**이며 그중 6건은 두 CB 사이였다.
+⇒ 「내려오는 장면이 있다」는 참이고 「백3로 **상시** 빌드업한다」는 거짓이다. 에메리 회견 원문의 「**someday** we are the first half we use it more dropping」(어떤 날은 전반처럼 더 내려서 쓴다)도 상시가 아니라 **선택적**이라고 말한다. obs#866.
+
+⛔⛔ **단 이 판정은 같은 회차에 철회됐다 — 임계 설계 자체가 잘못됐다.** `video_impl_claims` #139는 **REJECTED → HELD**로 되돌렸다.
+계기는 Jacob Tanswell(The Athletic) 2026-09-20 정식 기사 본문이다 — 원문 「A quarter of an hour into the match, **when Villa built from the back**, Manzambi dropped deep, occasionally alongside Joao Gomes, as **Boubacar Kamara moved into a back three**.」(경기 15분 무렵 **빌라가 후방 빌드업을 할 때** 만잠비가 깊게 내려왔고 때때로 주앙 고메스 옆에 섰으며, **카마라는 백3로 이동했다**.)
+이 서술은 **국면(후방 빌드업)·시점(15분 무렵)을 명시적으로 한정**한다. 그런데 D+0이 건 조건은 「전반 보유 **전체**의 평균 격차」였다 — **국면 한정 행동을 전체 평균으로 검정하면 구조적으로 기각된다**(카마라 전반 보유 최대 x는 87.8이다 · 희석). 실제로 국면을 좁히면 19%라는 신호가 보인다.
+⇒ **새 재판정 조건**: 골킥·자기 진영 시작 시퀀스만 추려 **빌드업 국면 한정**으로 대조한다. 격차 8 이하면 APPLIED. obs#879(방법론).
+
+### D+1-2. 당일 판정 정정·보강
+
+| # | 항목 | D+0 | D+1 | 판정 |
+|---|---|---|---|---|
+| ⑥ | **필수 3채널 리뷰** | 「0건 — D+1 예상」 | **3채널 전부 확보** | 🔴 **정정.** 1874 `ahxMgX0BH2c`는 **게시 시각이 09-19 14:09Z로 D+0 회차보다 앞선다** — 「안 올라왔다」가 아니라 **우리가 보는 탭에 없었다**(「실시간 스트림」 탭 전용). obs#876 |
+| ⑦ | **86% 롱볼 수치 출처** | auto-caption 전사 1건 | 구단 공식 회견 전문 + 🇮🇹 서면 2매체 | 🟢 **보강 + 한정.** auto-caption 의존 해소. ⛔ 단 **Opta 공표 수치가 아니다** — 토트넘 내부 스카우팅이며 제공사 미상. 「Opta에 따르면」은 허위 귀속. obs#875 |
+| ⑧ | **루헤리 평가 충돌** | 판정 보류(AVR 4 ↔ 타 소스) | 「전반 고전 → 후반 개선」 | 🟢 **해소.** 평점 분열은 평가자가 본 **구간**의 차이였다. obs#874 |
+| ⑨ | 완비사카 HT 교체 | 사유 0건 | ✅ **종결** | 🟢 **닫혔다.** Birmingham Live(John Townley, 빌라 전담 1티어) 원문 「**Wan-Bissaka continued at right-back while Cash wasn't quite ready to start today. He wasn't effective enough in possession and was replaced by Cash at the break.**」(완비사카는 캐시가 선발할 만큼 준비되지 않아 계속 우측 풀백으로 나섰다. 볼 소유에서 충분히 효과적이지 못해 하프타임에 캐시로 교체됐다.) ⇒ **가용성 + 경기력**. obs#867·#872·#880 |
+| ⑩ | 만잠비 72′ 교체 | 부상 여부 미확정 | **부상 아님 사실상 확정** | 🟢 **부상설 종결**(스위스 대표팀 소집 명단 포함 — obs#873 재판정 조건 충족). 사유는 **체력 관리** 가설(「he looked spent」·「65% 정도로 뛰고 있다」)이나 직접 진술 0건. ⚠️ 치료 시점 18′ vs 30′ 충돌은 미해결. obs#873·#885 |
+| ⑪ | 후반 2실점 감독 진단 | 0건 | **0건 유지** | 🔴 **영구 0건 처리.** 회견 2편 + D+1 기사 9편 전수 확인. UTV 프레임 분석으로 대체. obs#878 |
+| ⑫ | 선제골 경로 | 만잠비 / 어시스트 카마라 | 상대팀 채널 「로버트슨 → **맥긴** → 박스 패스」 | 🟡 **실측 유지.** 3티어 팬 회상 vs Opta. 만잠비 본인도 「부바카르(카마라)가 슈팅하려는 걸 봤다」고 말해 우리 기록과 정합 |
+| ⑬ | 86′ 실점 최종 굴절 | 미기록 | TNT 「매티 캐시의 굴절」 | 🔴 **미검증.** Opta 골 시퀀스에 **캐시 터치가 없다**. DB에 반영하지 않았다. obs#871 |
+
+### D+1-3. 새 실측 — 후반 우측은 「이중 하강」이었다
+
+§2의 「후반 우측 편중 백5」에 성분이 하나 더 붙었다. 미드필더만 내려간 것이 아니라 **풀백도 함께 내려갔다.**
+
+| 우측 | 전반 | 후반 | Δ |
+|---|---|---|---|
+| 미드필더(맥긴) 수비액션 x | 56.3 | **32.1** | −24.2 |
+| 풀백 수비액션 x | 33.1 (완비사카, n=6) | **17.2** (캐시, n=7) | −15.9 |
+
+⭐ **상대팀 채널이 이 구조를 독립 서술**했다 — 원문 「They started bringing their midfield very deep to protect the sides … **McGinn was dropping in on the right as well to protect us against Marmoush**」(측면을 보호하려고 미드필드를 아주 깊이 내리기 시작했다 … 맥긴도 우측으로 내려앉아 마르무시에 대비했다). **의도(측면 보호)까지 붙은 서술**이라 def_x 26.1이 강요가 아니라 지시였다는 쪽 근거가 세졌다. obs#868.
+
+**좌측은 내려가지 않았다.** 부엔디아 수비액션은 **건수만** 늘었다 — 전반 9건 → 후반 16건(+78%)이고 평균 깊이 x는 **전반 44.1 → 후반 42.7로 사실상 불변**이다.
+⭐ 영상 서술의 「helping out a lot more(훨씬 더 많이 돕는다)」도 **빈도** 진술이고 실측도 빈도에서만 움직인다 — 두 축이 일치한다.
+⛔ **「좌측이 더 내려앉았다」로 읽으면 오독**이다. 내려간 것은 우측뿐이고, 그래서 **대칭 5-3-2가 아니라 우측 편중 백5**다. obs#870.
+
+> ⚠️ **당일 수치 정정(값은 덮지 않는다 — 불변규칙 2)**: §2 표의 부엔디아 행 「전반 35.6 → 후반 47.6(Δ+12.0)」은 **전수 탐색에서 재현되지 않았다**(필터 × 분할 × 선수 × 축 전 조합 0건).
+> 같은 표의 맥긴 행은 소수점까지 재현된다. 재계산값은 **44.1 → 42.7(Δ−1.4)**이다. **결론(「좌측은 안 내려갔다」)은 살아남고, 틀린 것은 「반대로 12점 올라갔다」 부분**이다.
+> 원인 후보: 이 경기 전반은 `expandedMinute` 기준 **52분까지** 이어지는데(만잠비 골 49′) D+0 스냅샷에는 `period`도 `minute`도 없었다(필드 5개뿐). obs#884.
+> ⇒ ⭐ **파생 수치를 적을 때는 산출 경로(필터·분할 기준·스냅샷)를 함께 적는다.**
+
+⛔ **「전반 20~25분에 이미 5-3-2」(Bains)는 기각**했다 — 맥긴 수비액션 x가 전반 0~20′ 55.7 · 20′~HT 58.4로 **오히려 올라가고**, 전반에 백라인 깊이(x<20) 수비액션은 **0건**이다. obs#869.
+
+### D+1-4. 86′ 실점의 성격 — 구조 붕괴가 아니라 2차 처리 실패
+
+UTV의 프레임 분석을 **Opta 이벤트 시퀀스로 검증했고 일치한다.**
+
+> 루헤리 Aerial → 루헤리 Interception ×2 → 밍스 Clearance(x 13.8) → **루헤리 BallRecovery(x 21.7) → 루헤리 Dispossessed**(쿠두스 Tackle) → 루헤리 BlockedPass → **부엔디아 TakeOn 실패**(그레이 Tackle) → 쿠두스 → 마르무시 → 쿠두스(어시스트) → 갤러거 Goal
+
+원문 「We have one opportunity to deal with it here. **Rejieri**, clear it. We then have another opportunity here. **Buendía, win the ball. Clear it. We don't.**」(여기서 처리할 기회가 한 번 있었다. 루헤리, 걷어내라. 또 한 번 기회가 있었다. 부엔디아, 볼을 따내라. 걷어내라. 우리는 못 했다.) ※ `Rejieri`=Ruggeri auto-caption 오인식
+
+⇒ **구현 함의는 라인·수비접근 축이 아니라 세컨볼 대응이다.** obs#865(87′~ 블록이 풀렸다)와 합치면 「리드 관리 실패」의 내용이 **라인 하강이 아니라 2차 처리**로 좁혀진다. obs#871.
+
+### D+1-5. 신규 구현 주장 (`video_impl_claims` 9행 — G17)
+
+| 영상 | axis · field | value | verdict |
+|---|---|---|---|
+| `BTW1C1UCPN0` UTV | instruction · `concession_second_ball_clear` | `second_clear_fail_ruggeri_buendia` | **APPLIED** (Opta 시퀀스 일치) |
+| `BTW1C1UCPN0` UTV | instruction · `set_piece_defending_marking` | `mark_drop_under_flight_fail` | **HELD** |
+| `BTW1C1UCPN0` UTV | instruction · `gk_role_in_buildup` | `gk_as_eleventh_outfield` | **HELD** |
+| `kj4gz1QXrl8` The Villans | instruction · `halftime_left_side_cover` | `winger_tucks_to_support_lb` | **APPLIED** |
+| `noampLJzxn0` Bains | instruction · `defensive_shape_first_half` | `mid_block_to_532_at_20min` | **REJECTED** (실측 기각) |
+| `XRJgUjer1cc` Blueprint(상대팀) | instruction · `defensive_shape_second_half` | `back_five_right_side_shift` | **APPLIED** (제3자 독립 확인) |
+| `ahxMgX0BH2c` 1874 · `yn-UvcWhAio` 구단 · `FP7obsFLxRQ` 미상 | none | — | NA |
+
+⛔ **HELD 2건의 재판정 조건** — ⑴ 세트피스 마킹: 개인 마킹 배치는 우리 이벤트 데이터로 특정되지 않는다(프레임 1소스). **독립 2번째 프레임 소스** 또는 **세트피스 실점 2경기째 누적** 중 하나가 생기면 재판정.
+⑵ GK 빌드업: 제시된 수치(론치 성공률 47% · 골킥 9회 · 패스 32회 중 롱 15)가 **우리 실측(패스 38회·성공 22)과 총계부터 어긋난다** — 같은 스냅샷으로 골킥 숏/롱 분해를 받아 대조한 뒤 판정.
+
+⚠️ **가설 후보(인과 아님)**: 세트피스 코치 **오스틴 맥피가 2026-07 첼시로 이적**했고 25/26 빌라는 세트피스 득점 유럽 공동 1위(29골)였다. **이번 경기를 맥피 부재와 연결한 분석은 0건**이므로 시즌 누적 추적 대상으로만 남긴다.
+
+### D+1-6. 소스 커버리지 (D+1)
+
+| 종류 | 상태 | 내용 / 미수행 사유 |
+|---|---|---|
+| 1. 유튜브 전술 분석 | ✅ | **필수 3채널 전부 + 4편 추가, 전사 7편 등재**(`match_videos` 197~203). ⭐ 1874는 **`/streams` 탭에서만** 발견 — 스윕 규칙에 ㉣ 추가(obs#876) |
+| 2. 전술 블로그 | ◐ 부분 | Read Aston Villa(09-20) 1건 + The Analyst(Opta) 1건. ⛔ **TFA · Between the Lines · Spielverlagerung · Coaches' Voice는 D+1에도 0건**(Coaches' Voice는 보통 며칠 뒤 발행 — D+2~D+3 재시도) |
+| 3. 기사 | ✅ | VAVEL 2 · Claret Villans · ESPN · TNT · Read Aston Villa 3 · **Birmingham Live(John Townley) 평점 기사·회견 전문** · Spurs Web · Spurs Odyssey · Football Italia. ⛔ **The Athletic 본문·가디언은 도메인 차단**(단 Tanswell 정식 기사 인용문은 확보). ⚠️ **소스 판정 2건 정정** — Birmingham Live는 **URL 직접 접근으로 열린다**(검색 인덱싱 0건을 「접근 불가」로 승격하지 말 것) · avfc.co.uk는 **같은 URL로 1회 재navigate하면 본문이 뜬다**(쿠키 배너 우회, 2회 재현). obs#881 |
+| 4. 본인 발언 | ✅ | ⭐ **tottenhamhotspur.com 공식 회견 전문 D+1 발행분 확보**(D+0 미발행 해소) · **avfc.co.uk 에메리 회견·맥긴 인터뷰·콘사 이적 공지 본문 확보**(재navigate 경로) · 구단 만잠비 인터뷰. ⭐⭐ **에메리가 「롱볼은 설계」를 1차 진술로 확인**(obs#882) · **맥긴이 67′ 골을 「훈련된 패턴」으로 확인**(claim #141 보강) |
+
+**언어별 D+1 결과 (0건은 검색어를 남긴다 — D+2가 반복하지 않게)**
+
+| 언어 | 결과 |
+|---|---|
+| 🇮🇹 | **3건(D+0 0건 → 반전)** — ilnapolista · Napoli Magazine(데 제르비 회견 verbatim, 86% 독립 확인) · Football Italia(루헤리 FotMob 7.5). ⛔ **Gazzetta·Tuttosport·CdS·TMW 자체 숫자 pagelle는 0건**(「italiani all'estero」 코너는 월~화 발행 — D+2~3 재시도). 검색어 `Ruggeri pagelle Tottenham Aston Villa voto` · `"italiani all'estero" Ruggeri Tonali voti quinta giornata TMW` |
+| 🇯🇵 | **3건 신규** — 東スポWEB(09-20, 롱킥 루트 독립 보도 · BBC 평가 재번역). ⛔ **스즈키 본인 코멘트 0건 유지**. 검색어 `鈴木彩艶 アストンヴィラ トッテナム 戦 ロングキック 起点 コメント` |
+| 🇩🇪🇨🇭 | 1건 검증(Blick — 만잠비 「Feierabend」). ⛔ **72′ 교체 사유 직접 서술 0건** · SRF·Nau.ch·20 Minuten 원문 미검증(D+2 과제). 검색어 `Manzambi Auswechslung 72. Minute Verletzung Aston Villa Tottenham` |
+| 🇫🇷🇸🇳 | 2건(Seneweb·wiwsport). ⛔ **음바예 전용 기사 0건 유지**(L'Équipe·RMC·Foot Mercato·Senego 미커버) |
+| 🇪🇸🇦🇷 | 아르헨 5건(부엔디아 골라소, **미검증**). ⛔ **에메리 회견 verbatim 스페인어 0건 — 3회차 연속**(Marca·AS·Relevo·El Desmarque·MD) |
+| 🇧🇷 | ⛔ **본토 매체 0건 — 2회차 연속**(GE·Lance·UOL·Trivela·ESPN Brasil). 고메스 분석은 영문 Read Aston Villa가 유일(태클 5·인터셉트 3·11.5km·라인브레이킹 패스 7) |
+| 🇸🇪 | ⛔ **린델뢰프 개별 평가 0건 — 2회차 연속**. ⚠️ **연도 함정**: Fotbollskanalen 「Godkända Lindelöf-betyg」는 **2026-05-10 번리전** 기사다 |
+| 🏴 상대팀 | ✅ 공식 전문 + HotspurHQ · Spurs Web · To The Lane And Back · The Tottenham Blueprint. ❌ Cartilage Free Captain 도메인 차단 · Last Word on Spurs·The Fan Debate 0건 |
+
+⚠️ **소스 품질 — 상시 배제 목록에 추가**(obs#877): **빌라 GK를 「Martinez」로 오기하는 소스군**이 2회차 연속 나왔다(D+0 HotspurHQ · D+1 Yahoo/The 4th Official). 둘 다 **선수 평점 기사**다.
+⇒ **평점 기사는 GK 이름으로 신선도를 먼저 검사한다**(저비용 판별자). 연도 함정 2건도 함께 걸렀다(위 🇸🇪 · soccerway.es 2024-10-19).
+
+**D+2 이후 과제**: ① 🇮🇹 「italiani all'estero」 pagelle(월~화 발행) ② 🇨🇭 SRF·Nau.ch·20 Minuten 원문 — 만잠비 72′ 종결용 ③ Coaches' Voice·StatsBomb/Tifo 재시도 ④ 유튜브 `KCsvWv_eDeg`·`4J67XYRC8Uk` 회견 리액션 전사 — 완비사카 HT·후반 2실점의 남은 경로 ⑤ **The Athletic 09-20 기사(67′ 골 전용 해부)는 사용자 브라우저로만 접근 가능** ⑥ 만잠비 치료 시점(18′ vs 30′) 영상 확인 ⑦ 루헤리 인터셉트 6·클리어런스 8을 **좌측 피침투 실측과 대조**해 「많이 막음 = 많이 당함」 해석 닫기 ⑧ GK 골킥 숏/롱 분해 제공사 대조.
+
+### D+1-7. ⚠️ 병렬 세션 병합 기록 (2026-09-20)
+
+이 경기 D+1 추적을 **두 세션이 병렬로** 수행했다. 다른 세션은 **DB를 건드리지 않고** 인계 메모
+`reports/match-watch/2026-09-19-avl-tottenham.D1-findings.md`만 남겼고, 이 절이 그것을 병합한 결과다.
+(HANDOFF 「공유 DB에 동시 세션이 붙으면 내 것만 명시 스테이징한다」의 정상 동작 사례 — 충돌 0건.)
+
+병합으로 **내 판정 1건이 철회되고 2건이 정정**됐다:
+
+| 항목 | 내 D+1 초판 | 병합 후 | 근거 |
+|---|---|---|---|
+| claim #139 카마라 백3 | **REJECTED** | **HELD**(철회) | The Athletic 정식 기사가 **국면 한정**으로 서술 — D+0 임계가 「전체 평균」이라 오설정. obs#879 |
+| obs#870 하프타임 좌측 조정 | 「수비 가담이 늘고 **깊어졌다**」 | 「**빈도만** 늘었다, 깊이는 불변」 | 전반 전체 44.1 → 후반 42.7. 하위 구간 비교(n=3)가 과대 해석을 낳았다 |
+| 소스 접근성 | Birmingham Live·avfc.co.uk **접근 불가** | **둘 다 접근 가능** | URL 직접 접근 / 재navigate 경로. obs#881 |
+
+⭐ **추가로 얻은 1차 진술 3건**(내 3축 스윕이 도메인 차단으로 놓친 것): 에메리의 「롱볼은 설계」 자백(obs#882) ·
+맥긴의 「67′ 골은 훈련된 패턴」(claim #141 보강) · Townley의 완비사카 교체 사유(obs#880).
+
+⭐⭐ **방법론 수확 2건**: ⑴ **Opta는 이벤트 자체도 사후 개정한다**(양방향 차분 60/44건 — 종전 규약은 「xG만 개정」)
+⑵ **국면 한정 행동을 전체 평균으로 검정하면 구조적으로 기각된다**. obs#883·#879.
+
+⚠️ **미해결로 남긴 것**: 만잠비 치료 시점(18′ vs 30′) · 루헤리 86′ 볼 로스트 책임의 영상 확인 ·
+GK 골킥 숏/롱 분해 제공사 대조 · PPDA·def_x·국면 그리드에 **수집 시각·범위를 남기는 규약**의 docs/30 반영 여부(사용자 판단).

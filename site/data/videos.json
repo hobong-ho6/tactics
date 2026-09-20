@@ -2,6 +2,175 @@
  "all": [
   {
    "channel": "Aston Villa Football Club",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
+   "id": 200,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 선수 본인 경기 후 인터뷰(득점 장면 설명·적응 서사).",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⭐ 득점 장면 본인 설명이 우리 어시스트 기록(카마라)과 정합함을 확인했다. ⚠️ 72′ 교체·전반 치료 질문은 인터뷰에 0건. ※ axis=none 규약상 대상 칼럼은 비운다 — 만잠비 귀속 내용은 player_duties·observations로 옮겼다(G17)."
+    }
+   ],
+   "key_points": [
+    "득점 장면 본인 설명 — 원문 「I saw Boubacar he want to shoot and I have a good position and then I am alone. I just take the ball and I shoot」(부바카르가 슈팅하려는 걸 봤고 나는 좋은 위치에 있었다. 그리고 나는 혼자였다. 그냥 볼을 잡고 슈팅했다.) ⇒ 우리 실측의 어시스트 기록(카마라)과 정합한다.",
+    "원정 국면 인식 — 원문 「We know we play away and that's always difficult in the Premier League. And with defense, they can push」(우리는 원정임을 알고 있고 프리미어리그 원정은 항상 어렵다. 수비적으로 상대가 밀어붙일 수 있다.)",
+    "⚠️ 72′ 교체·전반 치료 언급 0건."
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "구단 공식 채널의 만잠비 경기 후 인터뷰. PL 첫 골 장면을 본인이 설명한다 — 카마라가 슈팅하려는 것을 보고 자신이 좋은 위치에 혼자 있어 볼을 잡고 슈팅했다는 것. 원정의 어려움과 「강하게 버티고 이기는 것」의 중요성을 말하고, 팀이 첫날부터 도와줬다는 적응 서사를 붙인다. ⚠️ **72′ 교체나 전반 치료에 대한 질문·답변은 인터뷰에 0건**이다 — 미결 ④를 닫아주지 못한다.",
+   "team_code": "AVL",
+   "title": "\"We can go into the international break happy\" | Johan Manzambi on Spurs victory | POST MATCH",
+   "transcript_path": "reports/transcripts/yn-UvcWhAio.en.md",
+   "url": "https://www.youtube.com/watch?v=yn-UvcWhAio",
+   "video_id": "yn-UvcWhAio"
+  },
+  {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
+   "id": 198,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "halftime_left_side_cover",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「tactical tweak at halftime that Emry got going on that left side with Wendia helping out a lot more and I think it allowed Roger to be more free」(에메리가 하프타임에 좌측에서 부엔디아가 훨씬 더 많이 커버하도록 전술을 손봤고, 그것이 루헤리를 더 자유롭게 만들었다고 본다.) — auto-caption, Wendia=Buendía · Roger=Ruggeri",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "winger_tucks_to_support_lb",
+     "verdict": "APPLIED",
+     "verdict_note": "⭐ 실측이 방향을 지지한다. 부엔디아 수비액션: **전반 9건 → 후반 16건**으로 늘었고, 깊이는 전반 20′~HT **x평균 54.1 → 후반 42.7**로 내려왔다. 전반 0~20′ 구간만 24.1로 낮은데 이는 **사비뉴 상대 좌측 과부하**(Bains·Tanswell 서술)와 정합한다 — 즉 전반 초반 강요된 하강 → 20′ 이후 반등 → HT 조정으로 안정적 커버. ⇒ 게임 구현 함의: 좌측 와이드의 Support 성향(수비 가담) 유지 근거. ⛔ 단일 경기이므로 슬롯 정본은 변경하지 않는다."
+    }
+   ],
+   "key_points": [
+    "⭐⭐ 하프타임 좌측 조정 — 원문 「tactical tweak at halftime that Emry got going on that left side with Wendia helping out a lot more and I think it allowed Roger to be more free」(에메리가 하프타임에 좌측에서 부엔디아가 훨씬 더 많이 커버하도록 전술을 손봤고, 그것이 루헤리를 더 자유롭게 만들었다고 본다.) ※ Wendia=Buendía · Roger=Ruggeri",
+    "⭐ 게임 플랜 규정 — 원문 「it's the classic Emery almost an away leg in Europe style — sit back, circle pressure and then pass through or top of them」(전형적인 에메리, 거의 유럽 원정 2차전 스타일이다 — 물러서서 압력을 둘러싸고 통과 패스나 넘기는 패스로 나간다.)",
+    "⚠️ 한계 지적 — 원문 「My worry is that that defensive [setup] relies upon so much of one in the system and two in the players next to you」(걱정은 그 수비 방식이 첫째 시스템에, 둘째 옆 동료들에게 너무 많이 의존한다는 점이다.)"
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "The Villans의 D+1 리뷰. 핵심 소득은 **하프타임 좌측 조정의 구체적 내용**이다 — 루헤리가 전반 사비뉴에게 고전하자 에메리가 부엔디아를 좌측 커버로 더 내렸고 그 결과 루헤리가 풀려났다는 서술. 이는 우리 실측(부엔디아 수비액션 전반 9건 → 후반 16건, 전반 20′~HT x평균 54.1 → 후반 42.7)과 방향이 일치한다. 또 이 경기 게임 플랜을 「에메리의 유럽 원정 2차전 스타일」로 규정하고, 그 방식이 시스템과 옆 동료 의존도가 높다는 한계를 지적한다.",
+   "team_code": "AVL",
+   "title": "Scary Manzambi Combo, Unai Methods and Proper Striker Jackson",
+   "transcript_path": "reports/transcripts/kj4gz1QXrl8.en.md",
+   "url": "https://www.youtube.com/watch?v=kj4gz1QXrl8",
+   "video_id": "kj4gz1QXrl8"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
+   "id": 197,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "concession_second_ball_clear",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「We have one opportunity to deal with it here. Rejieri, clear it. We then have another opportunity here. Buendía, win the ball. Clear it. We don't.」(여기서 처리할 기회가 한 번 있었다. 루헤리, 걷어내라. 여기서 또 한 번 기회가 있었다. 부엔디아, 볼을 따내라. 걷어내라. 우리는 못 했다.) — auto-caption, Rejieri=Ruggeri",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "second_clear_fail_ruggeri_buendia",
+     "verdict": "APPLIED",
+     "verdict_note": "⭐ **Opta 이벤트 시퀀스가 이 서술을 그대로 확인한다.** 86′(Opta 85′) 장면: 루헤리 Aerial → 루헤리 Interception ×2 → 밍스 Clearance(x 13.8) → **루헤리 BallRecovery(x 21.7) → 루헤리 Dispossessed(쿠두스 Tackle)** → 루헤리 BlockedPass → **부엔디아 TakeOn 실패**(그레이 Tackle) → 쿠두스 BallRecovery → 쿠두스 → 마르무시 → 쿠두스 어시스트 → 갤러거 Goal. 즉 실점 원인은 블록 구조 붕괴가 아니라 **자기 진영 2차 볼 처리 2회 연속 실패**다. ⇒ 게임 구현 함의는 라인/수비접근 축이 아니라 **세컨볼 대응**이며, 이번 회차에 팀 설정은 바꾸지 않는다."
+    },
+    {
+     "axis": "instruction",
+     "field": "set_piece_defending_marking",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「blockers and grabbers that are grabbing our players that are stopping us when this ball goes to Van Heeka」(우리 선수를 붙잡아 판 헤케에게 볼이 갈 때 우리가 못 가게 막는 블로커·그래버) · 「three players for Villa here who are beyond Ming」(밍스보다 뒤에 있는 빌라 선수가 셋이다) — auto-caption, Van Heeka=van Hecke · Ming=Mings",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "mark_drop_under_flight_fail",
+     "verdict": "HELD",
+     "verdict_note": "⛔ **재판정 조건**: 세트피스의 개인 마킹 배치는 우리 이벤트 데이터로 특정되지 않는다(리포트 「레퍼런스·한계」에 이미 명시). 현재 근거는 **영상 프레임 1소스**뿐이다. ⇒ 다음 회차에 ⑴ 독립 2번째 프레임 소스(다른 채널·기사) ⑵ 또는 세트피스 실점 2경기째 누적 중 하나가 생기면 재판정한다. 정황 지지: 코너 1-11 · 상대 세트피스 xG 0.57 vs 우리 0.00 · 1874의 「세트피스 양방향 비대칭」 서술. ⚠️ 별건 가설(인과 아님): 세트피스 코치 오스틴 맥피가 2026-07 첼시로 이적했고 25/26 빌라는 세트피스 득점 유럽 공동 1위였다 — **이번 경기를 맥피 부재와 연결한 분석은 0건**이므로 시즌 누적 추적 대상으로만 남긴다."
+    },
+    {
+     "axis": "instruction",
+     "field": "gk_role_in_buildup",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「Most teams go 'we've got 10 outfield players and a goalkeeper.' Aston Villa have got 11 outfield players.」(대부분의 팀은 「필드 플레이어 10명과 골키퍼 1명이 있다」고 한다. 아스톤 빌라는 필드 플레이어가 11명이다.) — auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "gk_as_eleventh_outfield",
+     "verdict": "HELD",
+     "verdict_note": "⛔ **재판정 조건**: 근거로 제시된 수치(론치 성공률 47% · 골킥 9회 · 패스 32회 정확도 72% 중 롱 15)가 **우리 실측에 없는 축**이다. 우리 값은 스즈키 패스 38회·성공 22(58%)로 **패스 총계부터 어긋난다**(제공사 차이 가능). ⇒ FotMob·SofaScore에서 GK 골킥 숏/롱 분해를 같은 스냅샷으로 받아 대조한 뒤 판정한다. 방향 자체는 obs#864(롱볼 26/27 증가)·claim #141(GK 롱킥 루트 득점 전환)과 정합해 기각 후보는 아니다."
+    }
+   ],
+   "key_points": [
+    "⭐ 스즈키 = 11번째 필드 플레이어 — 원문 「Most teams go 'we've got 10 outfield players and a goalkeeper.' Aston Villa have got 11 outfield players.」(대부분의 팀은 「필드 플레이어 10명과 골키퍼 1명이 있다」고 한다. 아스톤 빌라는 필드 플레이어가 11명이다.)",
+    "⭐ 스즈키 수치(미검증·교차확인 대상) — 원문 「He faced seven shots, five saves, two conceded.」(슛 7개를 상대해 5세이브·2실점) · 「32 passes, 72% accuracy, 15 have gone long. Launch completion, 47%. Goal kicks nine.」(패스 32회 정확도 72%, 그중 15회 롱패스. 론치 성공률 47%. 골킥 9회.)",
+    "⭐⭐ 86′ 실점 = 2차 클리어 2회 실패 — 원문 「We have one opportunity to deal with it here. Rejieri, clear it. We then have another opportunity here. Buendía, win the ball. Clear it. We don't.」(여기서 처리할 기회가 한 번 있었다. 루헤리, 걷어내라. 여기서 또 한 번 기회가 있었다. 부엔디아, 볼을 따내라. 걷어내라. 우리는 못 했다.) ※ Rejieri=Ruggeri 오인식",
+    "⭐⭐ 90+8′ 세트피스 실점 3중 지적 — 원문 「blockers and grabbers that are grabbing our players that are stopping us when this ball goes to Van Heeka」(우리 선수를 붙잡아 판 헤케에게 볼이 갈 때 우리가 못 가게 막는 블로커·그래버) · 「three players for Villa here who are beyond Ming」(밍스보다 뒤에 있는 빌라 선수가 셋이다) ※ Van Heeka=van Hecke · Ming=Mings"
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "UTV의 D+1 리뷰. 이번 회차에서 **후반 2실점을 화면 프레임 단위로 분해한 유일한 소스**이고, 스즈키를 「11번째 필드 플레이어」로 놓는 빌드업 해석을 제시한다. 86′ 갤러거 실점은 구조 붕괴가 아니라 **2차 클리어 연속 실패**(루헤리 → 부엔디아)로 지목했고, 이 서술은 Opta 이벤트 시퀀스와 **정확히 일치한다**(우리 검증). 90+8′ 판 헤케 세트피스 실점은 ⑴ 밍스가 볼 낙하지점 아래로 들어감 ⑵ 밍스보다 뒤에 빌라 선수 3명이 있었음 ⑶ 스퍼스의 블로킹·그래빙에 대응 없음의 3중 지적이다. 스즈키 수치는 우리 실측에 없는 축(론치 성공률·골킥 분해)을 담고 있어 교차검증 대상으로 남긴다.",
+   "team_code": "AVL",
+   "title": "HOW ZION SUZUKI IS CHEAT CODE FOR ASTON VILLA",
+   "transcript_path": "reports/transcripts/BTW1C1UCPN0.en.md",
+   "url": "https://www.youtube.com/watch?v=BTW1C1UCPN0",
+   "video_id": "BTW1C1UCPN0"
+  },
+  {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
+   "id": 199,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 선수 평가·주심 판정·세트피스 체감 서사 중심이다.",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. 완비사카 HT 교체 관련 평가와 세트피스 양방향 비대칭 관찰은 observations로 옮겼다(구현 축 주장이 아니라 관찰·평가이므로)."
+    }
+   ],
+   "key_points": [
+    "완비사카 — 원문 「I was actually quite relieved when he came off at halftime for Matty Cash cuz I thought he was having a really torrid time」(캐시로 하프타임에 교체됐을 때 솔직히 안도했다. 정말 혹독한 시간을 보내고 있다고 봤으니까.) · 「Out of all the new signings, I think he might be the one that needs the most time.」(새 영입 중 가장 시간이 필요한 선수일 수 있다.)",
+    "세트피스 양방향 비대칭 — 원문 「Spurs carried a threat from set pieces. We had a few — I didn't feel we really ever looked like we were going to make anything happen」(스퍼스는 세트피스에서 위협을 가졌다. 우리도 몇 개 있었지만 뭔가 일어날 것 같다는 느낌이 전혀 없었다.)",
+    "⚠️ 구현 축 주장 없음 — 선수 평가·주심 서사 중심이라 video_impl_claims는 axis=none으로 등재했다."
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "1874의 경기 직후 라이브 리액션. ⚠️ **채널의 「동영상」 탭이 아니라 「실시간 스트림」 탭에만 있었다** — D+0 회차가 이 채널을 0건으로 닫은 원인이 이것으로 특정된다. 내용은 구현 축 주장보다 선수 평가와 경기 운영 서사가 중심이다. 완비사카 하프타임 교체에 「안도했다」며 적응 필요를 지적하고, 세트피스는 **양방향 비대칭**(스퍼스는 매번 위협적, 우리는 뭔가 일어날 것 같지 않았다)으로 읽는다. 후반 막판 실점은 주심 판정과 집중력에 귀인한다.",
+   "team_code": "AVL",
+   "title": "MANZAMBI & JACKSON TORMENT TOTTENHAM as Villa win at Spurs AGAIN!",
+   "transcript_path": "reports/transcripts/ahxMgX0BH2c.en.md",
+   "url": "https://www.youtube.com/watch?v=ahxMgX0BH2c",
+   "video_id": "ahxMgX0BH2c"
+  },
+  {
+   "channel": "Aston Villa Football Club",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
    "id": 194,
    "impl_claims": [
@@ -36,6 +205,42 @@
    "transcript_path": "reports/transcripts/Jp52xd-xLt8.en.md",
    "url": "https://www.youtube.com/watch?v=Jp52xd-xLt8",
    "video_id": "Jp52xd-xLt8"
+  },
+  {
+   "channel": "Bains Analysis",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
+   "id": 201,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "defensive_shape_first_half",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「it almost seemed like Aston Villa at times were defending in a 5-3-2」(빌라가 때때로 5-3-2로 수비하는 것처럼 보였다) · 「first 20, 25 minutes where Tottenham were the better side」(토트넘이 더 나았던 첫 20~25분) — auto-caption, 전환 시점을 **전반**에 둔다",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "mid_block_to_532_at_20min",
+     "verdict": "REJECTED",
+     "verdict_note": "⛔ **실측 기각.** 맥긴 수비액션 x: 전반 0~20′ **55.7**(n=1) · 전반 20′~HT **58.4**(n=2, 41.9·74.9) · 후반 **32.1**(n=8, 최저 11.8·14.1·16.2). 전반에는 백라인 깊이(x<20) 수비액션이 **0건**이고 20′ 이후에도 하강 신호가 없다 — 오히려 평균이 올라간다. 반면 상대팀 채널 The Tottenham Blueprint는 같은 현상을 **명시적으로 「in the second half」**라 했고 우리 실측과 일치한다. ⇒ Bains의 시점 서술은 기각하고 **후반 전환(§2·claim #138) 정본을 유지**한다. ⭐ 단 Bains가 관찰한 「전반 좌측 고전」 자체는 실측과 맞는다(부엔디아 전반 0~20′ 수비액션 x 24.1) — **틀린 것은 시점과 형태 귀속이지 관찰이 아니다.**"
+    }
+   ],
+   "key_points": [
+    "⚠️ 기각된 주장 — 원문 「it almost seemed like Aston Villa at times were defending in a 5-3-2」(빌라가 때때로 5-3-2로 수비하는 것처럼 보였다) + 「first 20, 25 minutes where Tottenham were the better side」(토트넘이 더 나았던 첫 20~25분)로 시점을 전반에 둔다. ⇒ 실측 기각.",
+    "⭐ 루헤리 시간 분할 — 원문 「first 20 minutes he was up against Savinho who can cause a lot of full-backs problems, and Savinho had a better of it」(첫 20분은 많은 풀백을 괴롭히는 사비뉴를 상대했고 사비뉴가 우위였다) → 이후 개선.",
+    "⭐ 스즈키 — 원문 「first 20, 25 minutes, Suzuki pulled out a couple of very, very good saves to keep Aston Villa in the game」(첫 20~25분 스즈키가 아주 좋은 세이브 몇 개로 빌라를 경기에 붙잡아뒀다.)"
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "Bains Analysis의 전술 리뷰. ⭐ 핵심 주장은 **「전반 20~25분 사이에 4-4-2 미드블록에서 5-3-2로 전환했다」**는 시점 서술인데, 이는 우리 실측(후반 전환)과 정면 충돌하며 **실측 재집계로 기각됐다**(맥긴 수비액션 전반 20′~HT x평균 58.4 vs 후반 32.1). 다만 「전반 20분간 사비뉴가 루헤리에게 우위였다」·「경기가 흐르면서 루헤리가 개선됐다」는 시간 분할 서술은 D+0의 루헤리 평가 충돌을 해소하는 데 기여한다.",
+   "team_code": "AVL",
+   "title": "This New Aston Villa Are Going to Shock Everyone",
+   "transcript_path": "reports/transcripts/noampLJzxn0.en.md",
+   "url": "https://www.youtube.com/watch?v=noampLJzxn0",
+   "video_id": "noampLJzxn0"
   },
   {
    "channel": "BeanymanSports",
@@ -114,7 +319,7 @@
      "team_code": "AVL",
      "value": "pivot_drop_kamara",
      "verdict": "HELD",
-     "verdict_note": "**재판정 조건**: 이번 수집은 WhoScored 보유 이벤트를 분(分) 없이 받아 전반만 분리할 수 없었다. 다음 회차에 보유 이벤트를 expandedMinute 포함으로 재수집해 **전반 카마라 보유 x와 CB 라인 x(린델뢰프·밍스)를 대조**한다. 두 값의 격차가 8 이하로 좁혀지면 APPLIED, 아니면 REJECTED. 현재 경기 전체 평균(카마라 40.3 vs CB 25.7·26.1)만으로는 판정할 수 없다. manager_profiles.buildup의 기존 백3 경로(3-2-5·콘사 RB 변환)와 다른 새 경로 후보다."
+     "verdict_note": "[2026-09-20 D+1 재판정] **REJECTED** — D+0가 건 조건(전반 카마라 보유 x vs CB 라인 x, Δ≤8이면 APPLIED)을 WhoScored matchId=1983589 재수집(period·minute 포함)으로 집행했다. 전반 카마라 41.3(n=37) vs CB 라인 30.2(n=50) → **Δ=11.1**로 임계 밖. 자기 진영(x<50)만 봐도 Δ=8.8. ⭐ 단 좌우로는 두 CB 사이(y 43.0 / 32.5·70.7)이고 전반 보유의 19%가 CB 라인 깊이 이하여서 **행동은 존재하나 상시 구조가 아니다** — 회견 원문의 「someday」와 정합적이다. obs#866. ⛔ 빌드업 축·슬롯 정본은 변경하지 않는다(단일 경기, 기각 방향). ‖ [2026-09-20 D+1 재-재판정] ⛔ **REJECTED를 철회하고 HELD로 되돌린다 — D+0이 건 임계 자체가 잘못 설계됐다.** 「전반 보유 전체의 평균 x 격차 ≤8」은 **국면 한정 행동을 평균으로 검정하는 오류**다. 빌드업 국면에서만 내려오는 선수는 전반 전체 평균으로는 절대 CB 라인에 닿지 않는다(희석). ⭐ 계기: Jacob Tanswell(The Athletic) 2026-09-20 정식 기사 본문이 이 행동을 **국면·시점 한정으로 명시**했다 — 원문 「A quarter of an hour into the match, **when Villa built from the back**, Manzambi dropped deep, occasionally alongside Joao Gomes, as **Boubacar Kamara moved into a back three**.」(경기 15분 무렵 **빌라가 후방 빌드업을 할 때** 만잠비가 깊게 내려왔고 때때로 주앙 고메스 옆에 섰으며, **카마라는 백3로 이동했다**.) — 1티어 기자 서면. 우리 실측도 같은 것을 보고 있었다: 전반 보유 37건 중 **7건(19%)이 CB 라인 깊이 이하**이고 그중 6건이 두 CB 사이였다(obs#866). ⇒ **새 재판정 조건**: 골킥·자기 진영 시작 시퀀스만 추려 **빌드업 국면 한정**으로 카마라 x와 CB 라인 x를 대조한다(평균 전체 비교 금지). 격차가 8 이하면 APPLIED. ⛔ 그 전까지 빌드업 축·슬롯 정본은 불변."
     }
    ],
    "key_points": [
@@ -135,6 +340,77 @@
    "transcript_path": "reports/transcripts/k6dbBj7Tz7w.en.md",
    "url": "https://www.youtube.com/watch?v=k6dbBj7Tz7w",
    "video_id": "k6dbBj7Tz7w"
+  },
+  {
+   "channel": "The Tottenham Blueprint",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
+   "id": 203,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "defensive_shape_second_half",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「in the second half … They started bringing their midfield very deep to protect the sides … McGinn was dropping in on the right as well to protect us against Marmoush.」(후반에 … 측면을 보호하려고 미드필드를 아주 깊이 내리기 시작했다 … 맥긴도 우측으로 내려앉아 마르무시에 대비했다.) — auto-caption, **상대팀 채널**",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "back_five_right_side_shift",
+     "verdict": "APPLIED",
+     "verdict_note": "⭐⭐ **상대팀 관찰자의 독립 확인**이다(claim #138은 감독 자인 + 우리 실측이었고, 여기에 제3자 축이 붙었다). 추가 실측 보강 1건: **우측 풀백의 깊이가 교체로 더 내려갔다** — 완비사카 전반 수비액션 x평균 **33.1**(n=6) → 캐시 후반 **17.2**(n=7, 5.6·8.1·8.5·9.2·16.0). 즉 후반 우측은 맥긴 하강(56.3→32.1)과 풀백 하강(33.1→17.2)이 겹친 **이중 하강**이다. ⚠️ 출처 성격: 이 영상은 이 경기 전용 분석이 아니라 시즌 리뷰 포맷이며 해당 구간만 이 경기를 다룬다. 3티어 팬 채널·auto-caption."
+    }
+   ],
+   "key_points": [
+    "⭐⭐ 후반 구조 독립 확인 — 원문 「And then in the second half … Villa figured us out a little bit. They started bringing their midfield very deep to protect the sides, especially Savio who was having a lot of joy against the Villa left back. They protected that very well. McGinn was dropping in on the right as well to protect us against Marmoush.」(그리고 후반에 … 빌라가 우리를 어느 정도 파악했다. 측면을 보호하려고 미드필드를 아주 깊이 내리기 시작했다 — 특히 빌라 왼쪽 풀백 상대로 재미를 보던 사비우를. 그 부분을 아주 잘 보호했다. 맥긴도 우측으로 내려앉아 마르무시에 대비했다.)",
+    "⚠️ 선제골 경로 충돌 — 원문 「Robertson … made a decision which was the wrong one. Gave the ball straight to McGinn.」(로버트슨이 잘못된 판단을 했다. 볼을 맥긴에게 그대로 줬다.) ⇒ 우리 실측 어시스트는 카마라. 3티어 팬 회상이므로 실측 유지.",
+    "⭐ 잭슨 매치업 — 원문 「today against Villa, I thought he [van Hecke] struggled on a lot of occasions especially the one that led up to the Jackson goal」(오늘 빌라전에서 판 헤케는 여러 차례 고전했다. 특히 잭슨 골로 이어진 장면에서.)"
+   ],
+   "kind": "상대팀",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "⭐⭐ **상대팀(토트넘) 채널**. 포맷은 이 경기 전용 분석이 아니라 **인터내셔널 브레이크 시점의 시즌 선수 리뷰**이고(64줄 중 빌라 언급 5회), 그 안에 이 경기 후반을 다룬 구간이 있다. 그 구간이 **우리 §2 「후반 우측 편중 백5」를 상대팀 관찰자가 독립 확인**해 준다 — 「미드필드를 아주 깊이 내려 측면을 보호」했고 「맥긴도 우측으로 내려앉았다」는 서술에 **의도(측면 보호)**까지 붙어 있어, def_x 26.1이 강요가 아니라 지시였다는 쪽 근거를 강화한다. ⚠️ 같은 대목이 선제골 경로를 「로버트슨 → 맥긴 → 박스 패스」로 서술하는데 우리 실측 어시스트는 카마라다(충돌 기록).",
+   "team_code": "AVL",
+   "title": "We NEED MORE From These Players!!! | Tottenham 2-3 Aston Villa",
+   "transcript_path": "reports/transcripts/XRJgUjer1cc.en.md",
+   "url": "https://www.youtube.com/watch?v=XRJgUjer1cc",
+   "video_id": "XRJgUjer1cc"
+  },
+  {
+   "channel": "채널 미상 (oEmbed Unauthorized)",
+   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
+   "id": 202,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 「빌라가 더 나은 GK와 더 나은 9번을 가졌다」는 선수 질 비교 논지.",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. 채널 미상(oEmbed Unauthorized). 구조·국면 서술이 없어 구현 재료로 쓰지 않는다."
+    }
+   ],
+   "key_points": [
+    "논지 — 원문 「Aston Villa won that game because they have a better goalkeeper and they have a better striker than Tottenham Hotspur」(빌라가 그 경기를 이긴 건 토트넘보다 나은 골키퍼와 나은 스트라이커를 가졌기 때문이다.)",
+    "⚠️ 채널 미상 — 인용 시 「채널 미상」으로 표기할 것. 재조회 대상."
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "⚠️ **채널·제목 미상**(YouTube oEmbed가 Unauthorized 반환). 전사 본문으로 보아 잉글랜드 전술 유튜버의 양 팀 리뷰다. 논지는 단순하다 — 빌라가 이긴 이유는 **토트넘보다 나은 골키퍼와 나은 스트라이커를 가졌기 때문**이며, 토트넘은 영입을 많이 하고도 진짜 9번을 사지 않았다는 것. 구조·국면 서술이 없어 구현 축 주장으로 쓸 재료가 아니다.",
+   "team_code": "AVL",
+   "title": "제목 미상 — 빌라·토트넘 양 팀 리뷰",
+   "transcript_path": "reports/transcripts/FP7obsFLxRQ.en.md",
+   "url": "https://www.youtube.com/watch?v=FP7obsFLxRQ",
+   "video_id": "FP7obsFLxRQ"
   },
   {
    "channel": "1874 : The Aston Villa Channel",
@@ -7429,9 +7705,16 @@
    167
   ],
   "47": [
+   200,
+   198,
+   197,
+   199,
    194,
+   201,
    196,
-   195
+   195,
+   203,
+   202
   ]
  }
 }
