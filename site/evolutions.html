@@ -56,7 +56,8 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
   <div class="panel"><h2>계정 <small class="dim">— fut_accounts</small></h2>
     <div id="acc"></div></div>
   <div class="panel"><h2>보유 선수 <small class="dim">— 현재 상태 · 진화 횟수 · 다음 추천</small></h2>
-    <p class="dim" style="font-size:12px;margin:0 0 6px">⭐ 진화를 기록하면 <b>1회성 진화는 이 계정에서 소진</b>돼 다른 선수의 경로·추천에서 빠지고(카탈로그·선수별 패스·전술 구현 탭 전부), 각 선수의 최적 패스가 다시 매겨진다. 반복형은 횟수만큼 남는다.</p>
+    <p class="dim" style="font-size:12px;margin:0 0 6px">⭐ 진화를 기록하면 <b>그 진화는 이 계정에서 소진</b>돼 다른 선수의 경로·추천에서 빠지고(카탈로그·선수별 패스·전술 구현 탭 전부), 각 선수의 최적 패스가 다시 매겨진다. 반복형은 <b>횟수만큼</b> 남는다.<br>
+      세는 단위는 <b>적용 횟수(1단계 기록)</b>이고 단계별 행이 아니다 — 4단계짜리를 한 번 밟아도 <b>1회</b>다. 무효로 판정된 기록(<code>is_void</code>)은 세지 않는다.</p>
     <div id="owned"></div></div>
   <div class="panel"><h2>선수 추가 <small class="dim">— 우리 DB 선수와 그 선수의 FC27 카드 중 보유한 것</small></h2>
     <div id="addp"></div></div>
@@ -213,7 +214,14 @@ function consumedMap(){
   const C = EVO.club || { accounts: [], players: [], log: [] }; const acc = accountObj(); if (!acc) return {};
   const own = Object.fromEntries(C.players.filter(p => p.account_id === acc.id).map(p => [p.id, p]));
   const m = {};
+  /* ⭐⭐ 세는 단위는 **적용 횟수(run)**이지 로그 행 수가 아니다 (2026-09-20 정정).
+     ⑴ 반복 배급은 4단계짜리라 한 번 적용해도 행이 4개 쌓인다 — 그대로 세면 1회가 4회로 잡혀
+        repeatability 2짜리가 첫 선수만으로 소진됐다. ⇒ **1단계 행만** 센다.
+     ⑵ `is_void` 행은 세지 않는다(migration 053) — 마조 Striker Glow Up은 실측으로 「적용된 적 없음」이
+        확인됐는데도 소진으로 잠겨 다른 선수가 쓸 수 없었다. */
   for (const l of C.log){ const p = own[l.club_player_id]; if (!p) continue;
+    if (l.is_void) continue;
+    if ((l.level ?? 1) !== 1) continue;
     (m[l.evo_id] ??= { count: 0, by: [] }); m[l.evo_id].count++; m[l.evo_id].by.push({ name: p.name, pid: p.player_id, date: l.applied_at }); }
   for (const k in m) m[k].exhausted = m[k].count >= (REPEAT[k] ?? 1);
   return m;

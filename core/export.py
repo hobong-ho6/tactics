@@ -169,8 +169,11 @@ def export_all(db_path=None, window="2026-summer"):
                          FROM fut_club_players f
                          LEFT JOIN player_card_items c ON c.ea_item_id=f.ea_item_id AND c.game_version='FC27'
                          ORDER BY f.account_id, f.status, f.name""")
+    # ⭐ `is_void`(migration 053)를 함께 내보낸다 — 화면의 소진 계산이 **무효 행을 세면 안 된다**
+    #   (마조 Striker Glow Up은 적용된 적이 없는데 소진으로 잠겨 있었다).
     log = _rows(con, """SELECT id, club_player_id, evo_id, evo_name, level, applied_at, completed_at, ovr_before, ovr_after,
-                               six_before, six_after, attrs_delta, playstyles_after, roles_plus_after, roles_plus_plus_after, notes
+                               six_before, six_after, attrs_delta, playstyles_after, roles_plus_after, roles_plus_plus_after,
+                               is_void, notes
                         FROM fut_evolution_log ORDER BY applied_at, id""")
     # 시세 — 최신 pulled만(ea_item_id 키). NULL은 「미형성」이며 화면이 그렇게 쓴다(migration 037)
     prices = {str(r.pop("ea_item_id")): r for r in _rows(con, """SELECT ea_item_id, price, has_price, momentum, platform, pulled
