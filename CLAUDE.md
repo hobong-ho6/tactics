@@ -18,6 +18,7 @@
 | PlayStyles·스탯·조작 등 게임플레이 메커니즘 (Role/커널과 별개 축) | docs/22 |
 | 데이터 수집 규칙 (좌표·함정 7종·SofaScore) | docs/30 |
 | 새 분석 축 사전등록 양식 | docs/60 |
+| **반복해서 사고를 냈던 규칙**(재발 이력이 있는 것만 · ⛔ 지우지 않는다) | [docs/70-lessons.md](docs/70-lessons.md) ⭐세션 시작 시 |
 | v1 아카이브 (구 툴·구 DB — 읽기 전용) | archive/v1/ · data/ |
 
 ## 불변 규칙
