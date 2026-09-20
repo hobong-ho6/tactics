@@ -109,7 +109,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260921b';
+import { fcPitch, fcSideEmpty, enableDragScroll, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260921c';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -265,9 +265,11 @@ function renderNow(){
     const auto = (!canon && !PRES[p.player_id]) ? bestRoleFor(p.attrs, pos) : null;
     const roleId = canon?.role_id || PRES[p.player_id]?.role_id || auto?.r || POS_ROLE[pos];
     const ranked = styleRank(p.attrs, roleId, pos === 'GK');
+    /* fut.gg 신호(migration 055)는 **카드 단위**(ea_item_id)다 — 같은 선수라도 카드가 다르면 갈린다. */
+    const fgRows = (EVO.chem_signals || []).filter(r => r.ea_item_id === p.ea_item_id);
     return { roleId, roleKr: ROLE_KR[roleId] || roleId, basis: canon ? 'slot' : PRES[p.player_id] ? 'pres' : auto ? 'auto' : 'pos',
              autoFit: auto ? Math.round(auto.f) : null, ranked: ranked.slice(0, 3),
-             meta: metaFor(pos), bench: slotIdx == null };
+             futgg: { rows: fgRows }, bench: slotIdx == null };
   };
   const openDetail = (p, role, el, slotIdx) => {
     if (!p) return;

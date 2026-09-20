@@ -971,3 +971,15 @@ CREATE TABLE fut_tactic_roles (
   focus        TEXT,
   PRIMARY KEY (account_id, pulled, position_id)
 );
+CREATE TABLE futgg_chem_signals (
+  id INTEGER PRIMARY KEY,
+  ea_item_id INTEGER NOT NULL,
+  pulled TEXT NOT NULL,              -- 수집일 (스냅샷이므로 날짜가 정본)
+  style_name TEXT NOT NULL,          -- fut.gg 표기 그대로 (Basic/Sniper/…)
+  accelerate TEXT,                   -- 그 스타일 적용 시 AcceleRATE: Controlled/Explosive/Lengthy
+  vote_pct REAL,                     -- 커뮤니티 투표 비율(%) · 투표 없으면 NULL
+  source TEXT,
+  confidence TEXT,
+  UNIQUE(ea_item_id, pulled, style_name)
+);
+CREATE INDEX ix_futgg_chem_item ON futgg_chem_signals(ea_item_id, pulled);

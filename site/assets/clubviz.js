@@ -50,11 +50,15 @@ function card(p, role, posName, { bench = false } = {}) {
   /* ⚠️ 역할명은 pill에 넣지 않는다(2026-09-20 실측): 카드 폭이 피치의 16%라 「Advanced Forward」가
      「Advanc…」로 잘렸고, 안 잘리게 pill을 넓히면 옆 카드와 겹친다. 역할·포커스는 **사이드 패널**과
      툴팁에 온전히 있다 — 잘린 글자를 보여주느니 안 보여주는 편이 낫다. fut.gg도 카드 밑엔 포지션만 둔다. */
-  const tag = `<div class="fc-tag">${posName ? `<b>${esc(posName)}</b>` : ''}${chemPips(p.chem_points)}</div>`;
+  /* ⚠️ EVO 배지를 카드 아트 **위에 얹으면 안 된다**(2026-09-21 사용자 지적 「evo 뱃지가 다 잘려서 나옴」).
+     fut.gg 카드 이미지는 위아래에 투명 여백이 있어 top:4%가 그림 밖이고, 거기 뜬 배지는 이웃 슬롯에
+     가려 잘린다. 카드 **아래 pill 줄**로 내리면 항상 온전히 보이고 잘릴 자리가 없다. */
+  const tag = `<div class="fc-tag">${posName ? `<b>${esc(posName)}</b>` : ''}` +
+    (evolved ? `<span class="fc-evo">EVO ${p.current_ovr}</span>` : '') +
+    `${chemPips(p.chem_points)}</div>`;
   return `<div class="fc-card${bench ? ' bench' : ''}" data-p="${esc(p.player_id ?? '')}" tabindex="0"
        title="${esc(p.name)} · OVR ${p.current_ovr ?? '-'}${evolved ? ` (카드 인쇄 ${p.card_ovr})` : ''}${role ? ` · ${role.role_name}/${role.focus}` : ''}">
-    <div class="fc-artwrap">${art}${chem}
-      ${evolved ? `<span class="fc-evo">EVO ${p.current_ovr}</span>` : ''}</div>
+    <div class="fc-artwrap">${art}${chem}</div>
     ${tag}
   </div>`;
 }
@@ -180,12 +184,10 @@ export const FC_CSS = `
   background:#fff;box-shadow:0 0 0 1.5px rgba(0,0,0,.55),0 2px 5px rgba(0,0,0,.45);
   display:grid;place-items:center}
 .fc-chem img{width:74%;display:block;filter:brightness(0)}
-/* ⚠️ 배지를 카드 **밖**(top:-7px)에 두면 안 된다(2026-09-20 사용자 지적 「카드 위에 텍스트 안 보임」):
-   슬롯은 형제 요소라 DOM 순서상 뒤에 오는 슬롯이 그 위에 그려지고, 벤치에서는 줄 밖으로 잘렸다.
-   카드 아트 **안쪽 상단 중앙**(OVR·포지션 인쇄가 없는 빈 영역)에 얹는다. */
-.fc-evo{position:absolute;left:50%;top:4px;transform:translateX(-50%);font-size:9.5px;font-weight:700;
-  background:var(--ok);color:#06240f;border-radius:99px;padding:1px 6px;white-space:nowrap;z-index:2}
-.fc-evo.inline{position:static;transform:none;display:inline-block}
+/* EVO 배지 — 카드 아래 pill 줄 안에 산다(위 card() 주석 참조). 떠 있지 않으므로 잘리지 않는다. */
+.fc-evo{font-size:9.5px;font-weight:800;background:var(--ok);color:#06240f;
+  border-radius:99px;padding:0 5px;white-space:nowrap}
+.fc-evo.inline{display:inline-block}
 /* 포지션·역할 pill — 카드 바로 아래 한 줄(fut.gg와 같은 자리). */
 .fc-tag{display:inline-flex;gap:5px;align-items:center;justify-content:center;margin-top:-2px;
   background:rgba(4,10,7,.82);border:1px solid var(--line);border-radius:99px;padding:2px 8px;
@@ -341,11 +343,38 @@ function recoBlock(p, reco, styles) {
     <p class="dim" style="font-size:11.5px;margin:0 0 6px">기준 역할 <b>${esc(reco.roleKr || '—')}</b>
       <small>(${esc(basisKr || '')})</small></p>
     <table class="tbl fc-recotbl">${head}<tbody>${rows}</tbody></table>
+    ${futggBlock(reco.futgg, nowName)}
     <p class="dim" style="font-size:11.5px;margin:6px 0 0">점수 = Σ(역할 가중 × <b>실제 상승분</b>) —
       ${why ? esc(why) : '해당 역할 핵심 속성에 걸리는 상승 없음'}.
       ⚠️ 속성 상한 99라 이미 높은 칸에 붙는 부스트는 낭비로 빠진다.
       ${reco.bench ? '<br>⚠️ 교체 선수는 <b>투입 전까지 개인 케미가 0</b>이라 스타일 효과도 0이다.' : ''}</p>
-    <p class="dim" style="font-size:11.5px;margin:6px 0 0">⛔ <b>fut.gg 선수별 케미 등급·커뮤니티 투표율은 아직 수집하지 않았다</b> — 원장에 없어 표시하지 않는다.</p>`;
+`;
+}
+
+/* fut.gg 신호 (2026-09-21 수집, migration 055) — 우리 계산과 **다른 축**이라 따로 둔다.
+   ⚠️⚠️ fut.gg의 스타일 옆 배지는 **케미 등급이 아니다**. 실측으로 확정했다(카마라 전 스타일 C /
+   음바페 Sniper·Architect만 C) — 그 스타일을 붙였을 때의 **AcceleRATE**다. 「등급」으로 읽으면
+   순위를 매기는 값으로 오해한다. 투표율은 **인기이지 정답이 아니다**. */
+function futggBlock(fg, nowName) {
+  if (!fg || !fg.rows?.length) return `<p class="dim" style="font-size:11.5px;margin:8px 0 0">
+    <b>fut.gg 신호</b> — 이 카드는 아직 수집되지 않았다(결손).</p>`;
+  const voted = fg.rows.filter(r => r.vote_pct != null).sort((a, b) => b.vote_pct - a.vote_pct).slice(0, 3);
+  const bars = voted.map(r => `<div class="fc-vote"><span>${esc(r.style_name)}${r.style_name === nowName ? ' <small class="dim">= 지금</small>' : ''}</span>
+      <i><b style="width:${Math.min(100, r.vote_pct)}%"></b></i><em>${r.vote_pct}%</em></div>`).join('');
+  /* 현재 붙인 스타일의 AcceleRATE를 먼저 보여준다 — 스타일을 바꾸면 가속 타입이 바뀔 수 있다. */
+  const cur = fg.rows.find(r => r.style_name === nowName);
+  const byAccel = {};
+  for (const r of fg.rows) if (r.accelerate) (byAccel[r.accelerate] ??= []).push(r.style_name);
+  const accelSummary = Object.entries(byAccel).sort((a, b) => b[1].length - a[1].length)
+    .map(([k, v]) => `${k} ${v.length}종`).join(' · ');
+  return `<div class="fc-futgg">
+    <h4 style="margin:12px 0 6px">fut.gg 신호 <small class="dim">커뮤니티</small></h4>
+    ${cur ? `<div class="fc-kv"><span>지금 스타일의 AcceleRATE</span><b>${esc(cur.accelerate || '—')}</b></div>` : ''}
+    <div class="fc-kv"><span>스타일별 AcceleRATE</span><b style="font-weight:600">${esc(accelSummary || '—')}</b></div>
+    ${bars ? `<div style="margin-top:6px">${bars}</div>`
+           : '<p class="dim" style="font-size:11.5px;margin:6px 0 0">커뮤니티 투표 없음(결손 — 0표라는 뜻이지 비추천이 아니다).</p>'}
+    <p class="dim" style="font-size:11.5px;margin:6px 0 0">⚠️ fut.gg 배지는 <b>등급이 아니라 그 스타일을 붙였을 때의 AcceleRATE</b>다(실측 확인).
+      투표율은 <b>인기이지 정답이 아니다</b> — 위 역할 점수와 갈리면 역할 점수를 따른다.</p></div>`;
 }
 
 export function cardDetail(p, ctx = {}) {
@@ -393,6 +422,11 @@ export const FC_DETAIL_CSS = `
 .fc-ps.plus{border-color:var(--ok)}
 .fc-ps.plus i{font-style:normal;font-weight:800;color:var(--ok);margin-left:1px}
 .fc-recotbl td{font-size:12px}
+.fc-vote{display:flex;align-items:center;gap:6px;font-size:11.5px;margin:3px 0}
+.fc-vote span{flex:0 0 96px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fc-vote i{flex:1;height:7px;border-radius:99px;background:var(--bg);overflow:hidden}
+.fc-vote i b{display:block;height:100%;background:var(--acc);border-radius:99px}
+.fc-vote em{flex:0 0 36px;text-align:right;font-style:normal;font-weight:700}
 .fc-dhead{display:flex;gap:12px;align-items:flex-start}
 .fc-dart{width:96px;flex:0 0 auto}
 .fc-dhead h3{margin:0 0 2px;font-size:16px}

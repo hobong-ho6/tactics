@@ -194,6 +194,10 @@ def export_all(db_path=None, window="2026-summer"):
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
                           {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices,
                            "chem_styles": chem_styles, "squad": squad, "squad_slots": squad_slots,
+                           # fut.gg 케미 신호(migration 055) — 최신 pulled만. 배지는 등급이 아니라 AcceleRATE다.
+                           "chem_signals": _rows(con, """SELECT ea_item_id, style_name, accelerate, vote_pct
+                                                           FROM futgg_chem_signals
+                                                          WHERE pulled=(SELECT MAX(pulled) FROM futgg_chem_signals)"""),
                            "canon_roles": _rows(con, """SELECT pos, role_id, focus, game_version FROM slot_canon_roles
                                                        WHERE regime_id=1 AND formation='4-2-3-1 Wide'"""),
                            "face_stats": _rows(con, """SELECT abbr, is_gk, attr, weight FROM fc_face_stats
