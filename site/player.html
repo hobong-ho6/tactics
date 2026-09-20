@@ -674,9 +674,20 @@ function renderCard(sel, g0, g26, g27, isGkRow){
           }
           let st = null;
           colInk.forEach((v, i) => { if (v && st == null) st = i; else if (!v && st != null){
-            if (i - st > 3) centers.push(sx0 + (st + i) / 2); st = null; } });
+            if (i - st > 2) centers.push(sx0 + (st + i) / 2); st = null; } });
+          /* 라벨 세 글자가 붙어 한 덩어리로 잡히거나 글자별로 쪼개지면 6칸이 안 나온다 —
+             7칸 이상이면 **가장 넓은 6개**를 고른다(2026-09-20 사용자 지적 「진화카드 스탯 간격」). */
+          if (centers.length > 6){
+            const gaps = centers.slice(1).map((c, i) => c - centers[i]);
+            while (centers.length > 6){
+              let k = 0; for (let i = 1; i < gaps.length; i++) if (gaps[i] < gaps[k]) k = i;
+              centers.splice(k + 1, 1); gaps.splice(k, 1);
+            }
+          }
         }
-        if (centers.length !== 6){ const cw = (sx1 - sx0) / 6; centers = [0,1,2,3,4,5].map(i => sx0 + cw * (i + 0.5)); }
+        /* 폴백 범위가 6~94%면 값이 라벨보다 바깥으로 퍼져 어긋난다 — 실제 스탯 줄은 그보다 좁다. */
+        if (centers.length !== 6){ const a = Math.round(W * 0.11), b2 = Math.round(W * 0.89);
+          const cw = (b2 - a) / 6; centers = [0,1,2,3,4,5].map(i => a + cw * (i + 0.5)); }
         const col = inkColor(sx0, sx1, valB);
         erase(sx0, sx1, valB);
         cx.fillStyle = col;

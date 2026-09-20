@@ -44,7 +44,7 @@ function card(p, role, posName, { bench = false } = {}) {
     ? `<img class="fc-art" src="${esc(p.card_image_url)}" alt="${esc(p.name)} 카드" loading="lazy">`
     : `<div class="fc-art ph"><b>${p.current_ovr ?? ''}</b><span>${esc(p.name)}</span></div>`;
   const chem = p.chem_style_ea
-    ? `<img class="fc-chem" src="assets/chemstyles/${p.chem_style_ea}.png" alt="케미 스타일" loading="lazy">`
+    ? `<span class="fc-chem"><img src="assets/chemstyles/${p.chem_style_ea}.png" alt="케미 스타일" loading="lazy"></span>`
     : '';
   /* ⚠️ 역할명은 pill에 넣지 않는다(2026-09-20 실측): 카드 폭이 피치의 16%라 「Advanced Forward」가
      「Advanc…」로 잘렸고, 안 잘리게 pill을 넓히면 옆 카드와 겹친다. 역할·포커스는 **사이드 패널**과
@@ -171,11 +171,14 @@ export const FC_CSS = `
 .fc-art.ph{display:flex;flex-direction:column;align-items:center;justify-content:center;aspect-ratio:3/4;
   background:var(--panel);border:1px solid var(--line);border-radius:6px;line-height:1.2;font-size:11px;color:var(--dim)}
 .fc-art.ph b{font-size:20px;color:var(--txt)}
-/* 카드에 붙은 케미 스타일 아이콘 — 원본 PNG가 검은 실루엣이라 금색 카드 위에서 묻혔다
-   (2026-09-20 사용자 지시 「카드 위에 붙은 부스터 아이콘 색조정」). 부스트 pill과 **같은 초록**
-   원형 배경을 깔아 대비를 준다. 상세 패널 아이콘(.fc-chemhead img)도 같은 규칙을 쓴다. */
-.fc-chem{position:absolute;right:-6%;top:10%;width:32%;box-sizing:border-box;padding:3px;
-  background:var(--ok);border-radius:50%;box-shadow:0 0 0 1.5px rgba(0,0,0,.5),0 2px 5px rgba(0,0,0,.55)}
+/* 카드에 붙은 케미 스타일 아이콘 — 원본 PNG가 검은 실루엣이라 금색 카드 위에서 묻힌다.
+   ⚠️ 초록 배경은 폐기했다(2026-09-20 사용자 지시 「녹색은 너무 안 어울려 · 좀 더 작게」).
+   인게임과 같이 **어두운 원 + 흰 실루엣**으로 간다 — 카드의 금색과 싸우지 않는다.
+   filter가 배경까지 반전시키므로 span으로 감싸고 **img에만** 반전을 건다. */
+.fc-chem{position:absolute;right:-2%;top:8%;width:23%;aspect-ratio:1;border-radius:50%;
+  background:rgba(10,16,24,.88);box-shadow:0 0 0 1px rgba(255,255,255,.22),0 2px 5px rgba(0,0,0,.5);
+  display:grid;place-items:center}
+.fc-chem img{width:72%;display:block;filter:brightness(0) invert(1)}
 /* ⚠️ 배지를 카드 **밖**(top:-7px)에 두면 안 된다(2026-09-20 사용자 지적 「카드 위에 텍스트 안 보임」):
    슬롯은 형제 요소라 DOM 순서상 뒤에 오는 슬롯이 그 위에 그려지고, 벤치에서는 줄 밖으로 잘렸다.
    카드 아트 **안쪽 상단 중앙**(OVR·포지션 인쇄가 없는 빈 영역)에 얹는다. */
@@ -266,9 +269,14 @@ function chemBlock(p, styles) {
 function psBlock(csv) {
   if (!csv) return '';
   const items = String(csv).split(',').map(s => s.trim()).filter(Boolean).map(nm => {
-    const d = PLAYSTYLES[nm];
-    return `<span class="fc-ps" title="${esc(d ? (d.base || '') : nm)}">
-      ${d?.icon ? `<img src="${esc(d.icon)}" alt="" loading="lazy">` : ''}${esc(nm)}</span>`;
+    /* ⭐ PlayStyle+는 **이름 끝 `+`**로 표현된다(2026-09-20 확인 — `Dead Ball+`).
+       사전은 `+` 없는 이름으로 키가 잡혀 있어, 떼고 조회하지 않으면 아이콘이 통째로 빠진다. */
+    const plus = /\+$/.test(nm);
+    const base = nm.replace(/\s*\+$/, '');
+    const d = PLAYSTYLES[base];
+    const tip = d ? (plus ? (d.plus || d.base) : d.base) || '' : base;
+    return `<span class="fc-ps${plus ? ' plus' : ''}" title="${esc(base)}${plus ? '+' : ''} — ${esc(tip)}">
+      ${d?.icon ? `<img src="${esc(d.icon)}" alt="" loading="lazy">` : ''}${esc(base)}${plus ? '<i>+</i>' : ''}</span>`;
   }).join('');
   return `<h4>PlayStyle</h4><div class="fc-pslist">${items}</div>`;
 }
@@ -305,6 +313,42 @@ function attrBlock(p) {
     <div class="fc-attrs">${items}</div>`;
 }
 
+/* 추천 케미 스타일 (2026-09-20 사용자 지시 「적용 케미에 추천 케미도 표시 — fut.gg 스코어와
+   에메리 전술 구현에 필요한 케미 **두 가지 정보를 모두**」).
+   ⑴ **에메리 기준**: 정본 슬롯 역할 가중 × 실제 상승분(상한 99 반영). 계산은 케미스트리 탭과 동일.
+   ⑵ **메타 관습**: 커뮤니티 가이드 합의(fifauteam·nealguides 등). 우리 계산과 **다른 기준**이라 나란히 둔다.
+   ⛔ fut.gg의 선수별 케미 등급·커뮤니티 투표율은 **아직 원장에 없다** — 없는 값을 지어내지 않고
+      그 사실을 화면에 적는다(결손은 0이 아니다). */
+function recoBlock(p, reco, styles) {
+  if (!reco) return '';
+  if (!reco.ranked?.length) return `<h4>추천 케미스트리</h4>
+    <p class="dim">29속성 미수집이라 추천을 계산할 수 없다(결손 — 추천 없음이 아니다).</p>`;
+  const nowName = (styles || []).find(s => s.ea_id === p.chem_style_ea)?.name;
+  const basisKr = { slot: '정본 슬롯 역할(에메리 재현)', pres: '이 선수의 시즌 처방',
+                    auto: `속성 기반 자동 선택 · 적합 ${reco.autoFit}%`, pos: '카드 주 포지션 기본 역할' }[reco.basis];
+  const rows = reco.ranked.map((s, i) => {
+    const same = nowName && s.name === nowName;
+    return `<tr${i ? ' style="opacity:.62"' : ''}>
+      <td>${i ? `<span class="dim">차선 ${i}</span>` : '<span class="fc-boost">추천</span>'}</td>
+      <td><b>${esc(s.name)}</b>${same ? ' <small class="dim">= 지금</small>' : ''}</td>
+      <td style="text-align:right">${Math.round(s.score)}</td></tr>`;
+  }).join('');
+  const top = reco.ranked[0];
+  const why = (top.top || []).map(x => `${x.a} +${x.gain}`).join(' · ');
+  return `<h4>추천 케미스트리</h4>
+    <p class="dim" style="font-size:11.5px;margin:0 0 6px">기준 역할 <b>${esc(reco.roleKr || '—')}</b>
+      <small>(${esc(basisKr || '')})</small></p>
+    <table class="tbl fc-recotbl"><tbody>${rows}</tbody></table>
+    <p class="dim" style="font-size:11.5px;margin:6px 0 0">점수 = Σ(역할 가중 × <b>실제 상승분</b>) —
+      ${why ? esc(why) : '해당 역할 핵심 속성에 걸리는 상승 없음'}.
+      ⚠️ 속성 상한 99라 이미 높은 칸에 붙는 부스트는 낭비로 빠진다.
+      ${reco.bench ? '<br>⚠️ 교체 선수는 <b>투입 전까지 개인 케미가 0</b>이라 스타일 효과도 0이다.' : ''}</p>
+    ${reco.meta ? `<p class="dim" style="font-size:11.5px;margin:6px 0 0">
+      <b>메타 관습</b> ${esc(reco.meta.value || '')}${reco.meta.alternatives ? ` <small>(대안 ${esc(reco.meta.alternatives)})</small>` : ''}
+      — 커뮤니티 가이드 합의이지 EA 권장이 아니다. 위 계산과 갈리면 그 선수만 들여다보면 된다.</p>` : ''}
+    <p class="dim" style="font-size:11.5px;margin:6px 0 0">⛔ <b>fut.gg 선수별 케미 등급·커뮤니티 투표율은 아직 수집하지 않았다</b> — 원장에 없어 표시하지 않는다.</p>`;
+}
+
 export function cardDetail(p, ctx = {}) {
   if (!p) return '';
   const cur = parse(p.current_six), base = parse(p.card_six) || null;
@@ -329,6 +373,7 @@ export function cardDetail(p, ctx = {}) {
     ${psBlock(p.current_playstyles)}
     <h4>진화 상태 ${evoCountLabel(p, ctx.log)}</h4>${evoBlock(p, ctx.log)}
     <h4>적용된 케미스트리</h4>${chemBlock(p, ctx.chem_styles)}
+    ${recoBlock(p, ctx.reco, ctx.chem_styles)}
     <h4>상세 스탯</h4>${attrBlock(p)}
   </div>`;
 }
@@ -345,11 +390,15 @@ export const FC_DETAIL_CSS = `
 .fc-ps{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;
   background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:3px 9px 3px 4px}
 .fc-ps img{width:18px;height:18px;display:block}
+.fc-ps.plus{border-color:var(--ok)}
+.fc-ps.plus i{font-style:normal;font-weight:800;color:var(--ok);margin-left:1px}
+.fc-recotbl td{font-size:12px}
 .fc-dhead{display:flex;gap:12px;align-items:flex-start}
 .fc-dart{width:96px;flex:0 0 auto}
 .fc-dhead h3{margin:0 0 2px;font-size:16px}
 .fc-chemhead{display:flex;gap:8px;align-items:center;margin-bottom:6px}
-.fc-chemhead img{width:28px;box-sizing:border-box;padding:3px;background:var(--ok);border-radius:50%}
+.fc-chemhead img{width:26px;padding:4px;box-sizing:border-box;border-radius:50%;
+  background:rgba(10,16,24,.88);box-shadow:0 0 0 1px rgba(255,255,255,.22);filter:brightness(0) invert(1)}
 .fc-attrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:2px 10px}
 .fc-attr{display:flex;justify-content:space-between;font-size:12px;padding:2px 0;border-bottom:1px dotted var(--line)}
 .fc-attr span{color:var(--dim)}

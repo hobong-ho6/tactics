@@ -109,7 +109,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260920k';
+import { fcPitch, fcSideEmpty, enableDragScroll, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260921a';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -255,12 +255,27 @@ function renderNow(){
   /* 카드 클릭 → 상세를 **피치 옆 사이드 패널**에 연다(2026-09-20 UX 개편 — 종전에는 피치 아래라
      카드를 누를 때마다 스크롤을 내려야 했다). 슬롯 index로 역할을 붙인다. */
   const side = document.getElementById('fcside');
-  const openDetail = (p, role, el) => {
+  /* ⭐ 케미 스타일 추천 (2026-09-20, 사용자 지시 「적용 케미에 추천 케미도 표시」).
+     기준 역할은 **정본 슬롯**(에메리 재현)이 먼저고, 슬롯이 없는 교체는 처방 → 자동 선택 순으로 잡는다.
+     ⛔ 계산은 케미스트리 탭과 **같은 styleRank**를 쓴다 — 여기서 다시 구현하지 않는다(두 화면이 갈리면 안 된다). */
+  const recoFor = (p, slotIdx) => {
+    const pos = slotIdx != null ? FORM_SLOTS[slotIdx]
+      : (String(p.positions || '').split('/')[0] || '');
+    const canon = slotIdx != null ? CANON[CANON_BY_IDX[slotIdx]] : null;
+    const auto = (!canon && !PRES[p.player_id]) ? bestRoleFor(p.attrs, pos) : null;
+    const roleId = canon?.role_id || PRES[p.player_id]?.role_id || auto?.r || POS_ROLE[pos];
+    const ranked = styleRank(p.attrs, roleId, pos === 'GK');
+    return { roleId, roleKr: ROLE_KR[roleId] || roleId, basis: canon ? 'slot' : PRES[p.player_id] ? 'pres' : auto ? 'auto' : 'pos',
+             autoFit: auto ? Math.round(auto.f) : null, ranked: ranked.slice(0, 3),
+             meta: metaFor(pos), bench: slotIdx == null };
+  };
+  const openDetail = (p, role, el, slotIdx) => {
     if (!p) return;
     document.querySelectorAll('#nowpitch .fc-card.sel').forEach(x => x.classList.remove('sel'));
     (el?.querySelector('.fc-card') || el)?.classList.add('sel');
     side.innerHTML = '<div class="fc-back"><a class="act" href="#" data-back>← 팀 설정으로</a></div>'
-      + cardDetail(p, { role, team: T, log: (EVO.club || {}).log, chem_styles: EVO.chem_styles });
+      + cardDetail(p, { role, team: T, log: (EVO.club || {}).log, chem_styles: EVO.chem_styles,
+                        reco: recoFor(p, slotIdx) });
     side.querySelector('[data-back]').addEventListener('click', e => {
       e.preventDefault();
       document.querySelectorAll('#nowpitch .fc-card.sel').forEach(x => x.classList.remove('sel'));
@@ -270,10 +285,10 @@ function renderNow(){
     if (window.matchMedia('(max-width:1060px)').matches) side.scrollIntoView({ behavior:'smooth', block:'start' });
   };
   document.querySelectorAll('#nowpitch .fc-slot').forEach((el, i) => {
-    el.addEventListener('click', () => openDetail(xiRows[i]?.player, xiRows[i]?.role, el));
+    el.addEventListener('click', () => openDetail(xiRows[i]?.player, xiRows[i]?.role, el, i));
   });
   document.querySelectorAll('#nowpitch .fc-benchrow .fc-card').forEach((el, i) => {
-    el.addEventListener('click', () => openDetail(benchRows[i]?.player, null, el));
+    el.addEventListener('click', () => openDetail(benchRows[i]?.player, null, el, null));
   });
   enableDragScroll(document.querySelector('#nowpitch .fc-benchrow'));
 
@@ -494,6 +509,12 @@ const api = async (cmd, body) => {
   } catch(e){ return { ok: false, message: `쓰기 API 없음(정적 배포본). 아래 명령을 저장소에서 실행할 것:\n${cli}`, cli }; }
 };
 const say = (el, r) => { el.innerHTML = `<div class="msg ${r.ok ? 'ok' : 'err'}">${esc(r.message)}</div>`; if (r.ok) setTimeout(() => location.reload(), 900); };
+/* ⭐ 정본 슬롯 역할(에메리 재현) — 「케미스트리」탭과 「지금 내 팀」 상세가 **같은 기준**을 써야 해서
+   모듈 스코프에 둔다(2026-09-20). 선수의 시즌 처방이 아니라 **그 자리가 요구하는 역할**이 먼저다. */
+const CANON = Object.fromEntries((EVO.canon_roles || []).map(r => [r.pos, r]));
+const CANON_BY_IDX = ['GK', 'RB', 'RCB', 'LCB', 'LB', 'RDM', 'LDM', 'RM', 'LM', 'CAM', 'ST'];
+const FORM_SLOTS = ['GK', 'RB', 'CB', 'CB', 'LB', 'CDM', 'CDM', 'RM', 'LM', 'CAM', 'ST'];
+
 /* ── 케미스트리 스타일 추천 (2026-09-19, 사용자 지시 「선수에게 부여할 호크나 엔진 이런 케미」) ──
    점수 = Σ(역할 가중 × **실제로 오르는 양**). ⛔ 부스트 숫자를 그대로 더하지 않는다 — 속성 상한이 99라
    이미 97인 속성에 +9를 줘도 2밖에 안 오른다. 그 낭비를 빼야 「이 선수에게」 맞는 스타일이 나온다.
@@ -749,13 +770,11 @@ function renderChem(owned, all = owned){
      제안은 「보유로 짤 수 있는 최적」이라 실제 XI와 다를 수 있다 — 지금 쓰는 XI를 먼저 보여주고 그 아래에 제안을 둔다. */
   const SQ = (EVO.squad || [])[0];
   const slots11 = (EVO.squad_slots || []).filter(x => x.grp === 'FIELD').sort((a, b) => a.idx - b.idx);
-  const FORM_SLOTS = ['GK', 'RB', 'CB', 'CB', 'LB', 'CDM', 'CDM', 'RM', 'LM', 'CAM', 'ST'];   // f4231a 슬롯 순서
   /* ⭐ 역할은 **그 자리가 요구하는 것**을 먼저 쓴다(2026-09-19, 음바예·맥긴 좌우 교체로 드러난 문제).
      선수의 시즌 처방을 쓰면 자리를 바꿔도 역할이 따라와서, 좌우를 맞바꾼 순간 추천이 뒤집히지 않는다.
      정본 슬롯(slot_canon_roles, 4-2-3-1 Wide)을 **fut.gg 슬롯 순서에 대응**시킨다(우→좌 순).
      LCB/RCB·LDM/RDM는 좌우가 갈리므로 인덱스로 맞춘다. */
-  const CANON = Object.fromEntries((EVO.canon_roles || []).map(r => [r.pos, r]));
-  const CANON_BY_IDX = ['GK', 'RB', 'RCB', 'LCB', 'LB', 'RDM', 'LDM', 'RM', 'LM', 'CAM', 'ST'];
+  /* CANON·CANON_BY_IDX·FORM_SLOTS는 모듈 스코프로 올렸다 — 「지금 내 팀」 상세 패널도 같은 기준을 쓴다. */
   /* ⚠️ 실제 XI는 **빌라 필터와 무관하게** 다 보여준다 — 지금 쓰는 스쿼드에 타 구단 카드가 있으면
      그 사실이 보여야 한다(2026-09-19: 데 케텔라레가 「원장에 없는 카드」로 떴다). 필터는 제안 풀에만 건다. */
   const byItem = new Map(all.map(p => [p.ea_item_id, p]));
