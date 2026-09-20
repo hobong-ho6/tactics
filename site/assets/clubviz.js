@@ -109,3 +109,108 @@ export const FC_CSS = `
 .fc-note{font-size:11px;color:var(--dim);margin:10px 0 0}
 @media (max-width:760px){.fc-pitch{min-height:440px}.fc-slot .fc-card{width:70px!important}}
 `;
+
+/* ── 카드 상세 패널 (2026-09-20, 사용자 지시 「전술·진화 상태·현재 카드 스탯·상세 스탯·적용 케미·선수 프로필을
+      모두 확인할 수 있도록」) ─────────────────────────────────────────────────────────────
+   ⛔ 여기서도 계산하지 않는다. 단 **케미 감쇠**만은 게임 규칙이라 적용해 보여준다(3점=full · 2점=2/3 · 1점=1/3).
+   ⚠️ 29속성(`attrs`)은 **기준 카드**의 값이다 — 진화한 카드는 상승분이 빠져 있어 6대 스탯과 어긋난다.
+      숨기지 않고 **어긋난다는 사실을 함께 적는다**(결손을 0으로 만들지 않는다). */
+const SIX = ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY'];
+const SIX_KR = { PAC: '속도', SHO: '슛', PAS: '패스', DRI: '드리블', DEF: '수비', PHY: '피지컬' };
+const num = v => (v == null || v === '' ? null : Number(v));
+const parse = j => { try { return typeof j === 'string' ? JSON.parse(j) : (j || null); } catch { return null; } };
+
+function sixRow(cur, base) {
+  return `<table class="tbl"><thead><tr><th>스탯</th>${SIX.map(k => `<th>${k}</th>`).join('')}</tr></thead>
+    <tbody><tr><td class="dim">현재</td>${SIX.map(k => `<td><b>${cur?.[k] ?? '—'}</b></td>`).join('')}</tr>
+    ${base ? `<tr><td class="dim">기준 카드</td>${SIX.map(k => {
+      const d = num(cur?.[k]) != null && num(base?.[k]) != null ? num(cur[k]) - num(base[k]) : null;
+      return `<td>${base?.[k] ?? '—'}${d ? ` <small class="${d > 0 ? 'up' : 'dim'}">${d > 0 ? '+' : ''}${d}</small>` : ''}</td>`;
+    }).join('')}</tr>` : ''}</tbody></table>`;
+}
+
+/* 케미 스타일 부스트 — 개인 케미 점수만큼 감쇠해 보여준다. */
+function chemBlock(p, styles) {
+  const st = (styles || []).find(s => s.ea_id === p.chem_style_ea);
+  if (!st) return '<p class="dim">케미 스타일 정보 없음</p>';
+  /* `boosts`는 **속성→값 객체**다(배열이 아니다 — 2026-09-20 확인). 배열 형태도 들어올 수 있어 둘 다 받는다. */
+  const raw0 = parse(st.boosts) || {};
+  const pairs = Array.isArray(raw0)
+    ? raw0.map(b => [b.attr ?? b.attribute ?? '', num(b.value) ?? 0])
+    : Object.entries(raw0).map(([k, v]) => [k, num(v) ?? 0]);
+  const cp = p.chem_points ?? 0;
+  const scale = cp >= 3 ? 1 : cp === 2 ? 2 / 3 : cp === 1 ? 1 / 3 : 0;
+  const rows = pairs.sort((a, b) => b[1] - a[1]).map(([attr, raw]) => {
+    const eff = Math.round(raw * scale);
+    return `<tr><td>${esc(attr)}</td><td class="dim">+${raw}</td>
+      <td><b class="${eff > 0 ? 'up' : 'dim'}">${eff > 0 ? '+' + eff : '0'}</b></td></tr>`;
+  }).join('');
+  return `<div class="fc-chemhead">
+      <img src="assets/chemstyles/${st.ea_id}.png" alt=""><b>${esc(st.name)}</b>
+      <span class="chip ${cp >= 3 ? 'ok' : 'dim'}">개인 케미 ${cp}/3</span></div>
+    ${cp === 0 ? '<p class="dim" style="margin:4px 0">⚠️ 개인 케미 0이라 <b>부스트가 전혀 적용되지 않는다</b>(붙여둬도 효과 0).</p>' : ''}
+    <table class="tbl"><thead><tr><th>속성</th><th>스타일 표기</th><th>실제 적용</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+function evoBlock(p, log) {
+  const mine = (log || []).filter(l => l.club_player_id === p.id).sort((a, b) => a.id - b.id);
+  if (!mine.length) return '<p class="dim">적용한 진화 없음.</p>';
+  return `<table class="tbl"><thead><tr><th>진화</th><th>단계</th><th>상태</th><th>OVR</th></tr></thead><tbody>
+    ${mine.map(l => {
+      const state = l.is_void ? '<span class="dim">무효</span>'
+        : l.completed_at ? `완료 <small class="dim">${esc(l.completed_at)}</small>`
+        : '<b class="up">진행 중</b>';
+      return `<tr${l.is_void ? ' style="opacity:.5"' : ''}><td>${esc(l.evo_name)}</td><td>${l.level ?? '-'}</td>
+        <td>${state}</td><td class="dim">${l.ovr_before ?? '-'} → ${l.ovr_after ?? '-'}</td></tr>`;
+    }).join('')}</tbody></table>`;
+}
+
+function attrBlock(p) {
+  const a = parse(p.attrs);
+  if (!a) return '<p class="dim">상세 스탯 미수집(결손 — 0이 아니다).</p>';
+  const stale = p.card_ovr != null && p.current_ovr != null && p.card_ovr !== p.current_ovr;
+  const items = Object.entries(a).map(([k, v]) => `<div class="fc-attr"><span>${esc(k)}</span><b>${v}</b></div>`).join('');
+  return `${stale ? `<p class="dim" style="margin:0 0 6px">⚠️ 이 29속성은 <b>기준 카드(OVR ${p.card_ovr})</b>의 값이라
+      <b>진화 상승분이 빠져 있다</b> — 위 6대 스탯(현재 OVR ${p.current_ovr})과 어긋난다. EA는 진화 후 개별 속성을 공개하지 않는다.</p>` : ''}
+    <div class="fc-attrs">${items}</div>`;
+}
+
+export function cardDetail(p, ctx = {}) {
+  if (!p) return '';
+  const cur = parse(p.current_six), base = parse(p.card_six) || null;
+  const role = ctx.role;
+  const prof = p.player_id
+    ? `<a class="act" href="player.html?id=${p.player_id}">선수 프로필 열기 ↗</a>`
+    : `<span class="chip dim">⚠️ 우리 DB에 등재되지 않은 선수 — 프로필 없음</span>`;
+  return `<div class="fc-detail">
+    <div class="fc-dhead">
+      <img class="fc-dart" src="${esc(p.card_image_url || '')}" alt="">
+      <div>
+        <h3>${esc(p.name)} <small class="dim">OVR ${p.current_ovr ?? '-'}${p.card_ovr !== p.current_ovr ? ` <span class="up">(카드 인쇄 ${p.card_ovr})</span>` : ''}</small></h3>
+        <div class="dim" style="font-size:12px">${esc(p.positions || '')} · ${esc(p.club || '')} · ${esc(p.league || '')} · ${esc(p.nation || '')}</div>
+        <div style="margin-top:6px">${prof}</div>
+      </div>
+    </div>
+    ${role ? `<h4>이 자리의 전술</h4><div class="plist"><button disabled>${esc(role.position_name)}</button>
+      <button disabled>역할 <b>${esc(role.role_name)}</b></button><button disabled>포커스 <b>${esc(role.focus)}</b></button></div>
+      ${ctx.team ? `<div class="plist" style="margin-top:4px"><button disabled>빌드업 ${esc(ctx.team.build_up_style)}</button>
+      <button disabled>수비 ${esc(ctx.team.defensive_approach)}</button><button disabled>라인 ${ctx.team.line_height}</button></div>` : ''}` : ''}
+    <h4>현재 카드 스탯</h4>${sixRow(cur, base)}
+    ${p.current_playstyles ? `<p style="font-size:12px;margin:6px 0 0"><span class="dim">PlayStyle</span> <b>${esc(p.current_playstyles)}</b></p>` : ''}
+    <h4>진화 상태 <small class="dim">${p.evo_count ?? 0}회</small></h4>${evoBlock(p, ctx.log)}
+    <h4>적용된 케미스트리</h4>${chemBlock(p, ctx.chem_styles)}
+    <h4>상세 스탯</h4>${attrBlock(p)}
+  </div>`;
+}
+
+export const FC_DETAIL_CSS = `
+.fc-detail h4{margin:14px 0 6px;font-size:13px}
+.fc-dhead{display:flex;gap:12px;align-items:flex-start}
+.fc-dart{width:96px;flex:0 0 auto}
+.fc-dhead h3{margin:0 0 2px;font-size:16px}
+.fc-chemhead{display:flex;gap:8px;align-items:center;margin-bottom:6px}
+.fc-chemhead img{width:26px}
+.fc-attrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:2px 10px}
+.fc-attr{display:flex;justify-content:space-between;font-size:12px;padding:2px 0;border-bottom:1px dotted var(--line)}
+.fc-attr span{color:var(--dim)}
+`;
