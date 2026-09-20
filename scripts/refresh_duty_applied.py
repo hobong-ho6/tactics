@@ -70,11 +70,16 @@ def main():
     con.row_factory = sqlite3.Row
     roles = {r[0] for r in con.execute("SELECT DISTINCT role_id FROM game_role_focus")}
     have = defaultdict(set)
-    for q, c in (("SELECT player_id, role_id FROM prescriptions WHERE role_id IS NOT NULL", "role_id"),
-                 ("SELECT player_id, role_id FROM match_player_prescriptions WHERE role_id IS NOT NULL", "role_id"),
-                 ("SELECT player_id, fit_role FROM squad_entries WHERE fit_role IS NOT NULL", "fit_role")):
+    # ⭐ 출처별로도 따로 담는다(2026-09-20) — 「닿았을 수 있다」 보고에 근거의 층을 표기하기 위해서다.
+    #   시즌 처방 ↔ 경기 전용 프리셋 ↔ fit_role은 **층이 다르다**(고정 작업 규칙 5).
+    season_role, match_role, fit_role = defaultdict(set), defaultdict(set), defaultdict(set)
+    for q, c, bucket in (
+            ("SELECT player_id, role_id FROM prescriptions WHERE role_id IS NOT NULL", "role_id", season_role),
+            ("SELECT player_id, role_id FROM match_player_prescriptions WHERE role_id IS NOT NULL", "role_id", match_role),
+            ("SELECT player_id, fit_role FROM squad_entries WHERE fit_role IS NOT NULL", "fit_role", fit_role)):
         for r in con.execute(q):
             have[r["player_id"]].add(r[c])
+            bucket[r["player_id"]].add(r[c])
 
     note0 = f"[{a.pulled} 자동 재계산] 사람 승인 아님 — 분석이 명시한 역할 코드 ↔ prescriptions·match_player_prescriptions·squad_entries.fit_role 전량 대조(슬롯 접두가 다른 같은 역할은 동일하게 봄 — canon()이 접두를 뗀다)."
     changed, kept, counts = [], [], defaultdict(int)
@@ -137,6 +142,7 @@ def main():
         "SELECT DISTINCT player_id FROM prescriptions "
         "WHERE map25 IS NOT NULL AND role_id IS NULL AND season='2026-27'")}
     review = {"닿았을 수 있다": [], "다시 갈렸다": [], "근거가 무효화됐다": []}
+    suppressed = []          # 사람이 「조건 미충족」으로 확인을 끝낸 행(2026-09-20 · obs#888)
     for d in con.execute("""SELECT id, player_id, game_role_implication imp, applied_status,
                                    applied_note,
                                    (SELECT COALESCE(name_kr, name) FROM players WHERE id=player_id) nm
@@ -158,8 +164,28 @@ def main():
         if not found or not mine:
             continue                      # 역할 코드가 없으면 층 판단이라 역할 대조로는 재검증할 수 없다
         hit = {x for x in found if canon(x) in {canon(y) for y in mine}}
+        # ⛔⛔ **억제 토큰 — 2026-09-20 신설(obs#888).** 이 부류에는 억제 경로가 **아예 없어서**
+        #    조건이 충족되지 않은 행이 회차마다 그대로 다시 떴다(알리송 #31은 09-17에 이미 오탐으로
+        #    판정했는데 09-20에 또 올라왔다). obs#786이 경고한 「같은 행이 회차마다 떠서 신호가 죽는다」가
+        #    「근거가 무효화됐다」 부류에만 막혀 있었던 것이다. ⇒ 사람이 사유에 **「조건 미충족」**을 적으면 억제한다.
+        #    ⭐ 억제는 판정이 아니라 **확인이 끝났다는 표시**다 — 조건이 실제로 충족되면 사람이 토큰을 지운다.
+        if hit and "조건 미충족" in note:
+            suppressed.append((d["id"], d["nm"]))
+            hit = set()
         if hit and d["applied_status"] in ("HELD", "REJECTED"):
-            review["닿았을 수 있다"].append((d["id"], d["nm"], d["applied_status"], sorted(hit)))
+            # ⭐ **근거의 출처를 함께 보고한다**(2026-09-20 신설). `have`에는 시즌 처방·**경기 전용 프리셋**·
+            #    `squad_entries.fit_role`이 섞여 있는데, 재판정 조건은 대개 **시즌 표본**을 말한다.
+            #    ⛔ 경기 전용(`match_player_prescriptions`)은 고정 작업 규칙 5에 따라 시즌 정본에 병합되지 않으므로
+            #       그것만으로 「닿았다」고 읽으면 **층이 다른 근거로 시즌 조건을 닫는 것**이 된다(알리송 #31 실측 사례).
+            src = []
+            if {canon(y) for y in season_role.get(d["player_id"], set())} & {canon(x) for x in hit}:
+                src.append("시즌처방")
+            if {canon(y) for y in match_role.get(d["player_id"], set())} & {canon(x) for x in hit}:
+                src.append("경기전용")
+            if {canon(y) for y in fit_role.get(d["player_id"], set())} & {canon(x) for x in hit}:
+                src.append("fit_role")
+            review["닿았을 수 있다"].append(
+                (d["id"], d["nm"], d["applied_status"], sorted(hit), "+".join(src) or "?"))
         elif not hit and d["applied_status"] == "APPLIED":
             review["다시 갈렸다"].append((d["id"], d["nm"], sorted(found), sorted(mine)))
     tot = sum(len(v) for v in review.values())
@@ -171,7 +197,14 @@ def main():
         for row in lst:
             print("     " + " · ".join(str(x) for x in row))
     if not tot:
-        print("  (없음 — 사람 판정이 현재 처방과 정합한다)")
+        print("  (없음 — 사람 판정이 현재 처방과 정합한다)" if not suppressed
+              else "  (신규 없음)")
+    # ⭐ 억제분은 **따로 보고한다**(2026-09-20 · obs#888) — 「0건」과 「억제 N건」은 다른 상태다.
+    #    합쳐서 「정합」이라 쓰면 다음 세션이 **조건이 충족된 줄로 오해한다**.
+    if suppressed:
+        print(f"  ⏸ 억제 {len(suppressed)}건 — 사람이 「조건 미충족」으로 확인을 끝낸 행이다(조건이 실제로 충족되면 그 토큰을 지운다):")
+        for did, nm in suppressed:
+            print(f"     {did} · {nm}")
     print("\n다음: python3 scripts/gates.py && python3 scripts/export.py && scripts/db_dump.sh")
 
 
