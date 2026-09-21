@@ -42,6 +42,8 @@ def main():
     ap.add_argument("--account", required=True)
     ap.add_argument("--pulled", default=TODAY)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--force-overwrite", action="store_true",
+                    help="진화 선수 보호를 해제하고 EA 값으로 전부 덮는다(진화 기록이 틀렸다고 확정했을 때만)")
     a = ap.parse_args()
 
     con = sqlite3.connect(DB)
@@ -53,11 +55,21 @@ def main():
     styles = {r["ea_id"]: r["name"] for r in con.execute("SELECT ea_id, name FROM fc_chemistry_styles WHERE ea_id IS NOT NULL")}
     have = {r["ea_item_id"]: dict(r) for r in
             con.execute("SELECT * FROM fut_club_players WHERE account_id=?", (acc["id"],))}
+    # ⛔⛔ 진화 보호(2026-09-21 신설, 사용자 지시 「진화 선수들은 싱크 시 덮이지 않도록」).
+    #    fut.gg는 EA 싱크를 눌러야 갱신되므로 **우리 원장보다 낡을 수 있다**. 그 상태로 덮으면
+    #    방금 기록한 진화가 통째로 되돌아간다(실증: 지모알로바 78 → 73).
+    #    ⇒ 진화 로그가 있는 선수는 **EA 값이 원장보다 낮을 때만** 스탯을 보호한다.
+    #       (EA가 더 높으면 fut.gg가 최신이라는 뜻이므로 그대로 받는다 — 진화 완주 반영 경로를 막지 않는다.)
+    #    ⚠️ 보호는 `current_ovr`·`current_six`에만 건다. 케미 스타일·개인 케미는 진화와 무관하고
+    #       EA가 정본이라 항상 갱신한다.
+    evolved = {r["club_player_id"] for r in
+               con.execute("""SELECT DISTINCT club_player_id FROM fut_evolution_log
+                              WHERE COALESCE(is_void,0)=0""")}
     cards = {r["ea_item_id"]: dict(r) for r in
              con.execute("SELECT ea_item_id, player_id, name_kr, best_pos FROM player_card_items WHERE game_version='FC27'")}
 
     ins = upd = same = 0
-    conflicts, applied_styles, done = [], [], []
+    conflicts, applied_styles, done, protected = [], [], [], []
     for r in rows:
         card = cards.get(r["ea"]) or {}
         gk = (card.get("best_pos") == "GK")
@@ -91,12 +103,23 @@ def main():
         if pend and (r["ovr"] > (cur["current_ovr"] or 0) or "-" in str(r.get("gg") or "").rsplit("-", 1)[-1][:1]
                      or str(r.get("gg") or "").count("-") > 1):
             done.append((cur["name"], pend["evo_name"], cur["current_ovr"], r["ovr"], pend["ovr_after"]))
-        changed = (cur["current_ovr"] != r["ovr"] or cur["current_six"] != six
-                   or cur["chem_style_ea"] != r.get("cs") or cur["chem_points"] != r.get("cp"))
-        con.execute("""UPDATE fut_club_players SET current_ovr=?, current_six=?, chem_style_ea=?, chem_points=?,
-                         gg_player_id=?, synced_at=?, updated=? WHERE id=?""",
-                    (r["ovr"], six, r.get("cs"), r.get("cp"), r.get("gg"), a.pulled,
-                     TODAY if changed else cur["updated"], cur["id"]))
+        # ⛔ 진화 보호 — 위 `evolved` 주석 참조. EA가 낮으면 스탯을 지키고 케미만 갱신한다.
+        protect = (not a.force_overwrite and cur["id"] in evolved
+                   and cur["current_ovr"] is not None and r["ovr"] < cur["current_ovr"])
+        if protect:
+            protected.append((cur["name"], cur["current_ovr"], r["ovr"]))
+            changed = (cur["chem_style_ea"] != r.get("cs") or cur["chem_points"] != r.get("cp"))
+            con.execute("""UPDATE fut_club_players SET chem_style_ea=?, chem_points=?,
+                             gg_player_id=?, synced_at=?, updated=? WHERE id=?""",
+                        (r.get("cs"), r.get("cp"), r.get("gg"), a.pulled,
+                         TODAY if changed else cur["updated"], cur["id"]))
+        else:
+            changed = (cur["current_ovr"] != r["ovr"] or cur["current_six"] != six
+                       or cur["chem_style_ea"] != r.get("cs") or cur["chem_points"] != r.get("cp"))
+            con.execute("""UPDATE fut_club_players SET current_ovr=?, current_six=?, chem_style_ea=?, chem_points=?,
+                             gg_player_id=?, synced_at=?, updated=? WHERE id=?""",
+                        (r["ovr"], six, r.get("cs"), r.get("cp"), r.get("gg"), a.pulled,
+                         TODAY if changed else cur["updated"], cur["id"]))
         upd += changed
         same += (not changed)
 
@@ -115,10 +138,17 @@ def main():
         print("\n⭐ 진화 완주로 보이는 선수 — `fut_club.py complete`로 닫을 것(어떤 진화였는지는 fut.gg가 주지 않는다):")
         for n_, evo, before, after, expect in done:
             print(f"   {n_:<16} {evo:<32} 원장 {before} → EA {after}" + (f" (기록상 완주 시 {expect})" if expect else ""))
+    if protected:
+        print(f"\n🛡️ 진화 보호 {len(protected)}명 — EA가 원장보다 낮아 **스탯을 덮지 않았다**(케미만 갱신):")
+        for n, mine, ea in protected:
+            print(f"   {n:<16} 원장 {mine} ← 유지 · EA {ea} ← 무시")
+        print("   ⇒ fut.gg가 아직 EA를 싱크하지 않은 상태다. 「Sync Club」 후 다시 돌리면 값이 맞춰진다.")
+        print("   ⛔ 진화 기록이 틀렸다고 확정했을 때만 `--force-overwrite`로 덮는다.")
     if conflicts:
         print("\n⚠️ 원장 ↔ EA 불일치 — 진화 기록을 다시 봐야 한다:")
         for n, mine, ea, ec in conflicts:
-            print(f"   {n:<16} 원장 {mine} ↔ EA {ea} (원장 진화 {ec}회)")
+            tag = "  🛡️보호됨" if any(x[0] == n for x in protected) else ""
+            print(f"   {n:<16} 원장 {mine} ↔ EA {ea} (원장 진화 {ec}회){tag}")
     if gone:
         print(f"\n원장에는 보유인데 EA 구단에 없음 {len(gone)}명 — **자동으로 처분 처리하지 않는다**: {', '.join(gone)}")
     print("\n다음: python3 scripts/export.py && scripts/db_dump.sh")
