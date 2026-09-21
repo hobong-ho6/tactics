@@ -284,13 +284,15 @@ function psBlock(csv) {
   return `<h4>PlayStyle</h4><div class="fc-pslist">${items}</div>`;
 }
 
-/* 「N회」만 쓰면 오해가 난다(2026-09-20 사용자 지적 「4회짜리인데 5회로 나옴」):
-   원장의 세는 단위는 **적용 횟수**라 4단계짜리를 한 번 밟아도 1회인데, 읽는 쪽은 **단계 수**로 본다.
-   둘을 함께 적어 애매함을 없앤다. */
+/* 「회」 = **밟은 단계 수**다(2026-09-21 사용자 결정 — 읽는 쪽 모델에 맞췄다. 4단계 완주 = 4회).
+   ⚠️ **소진 판정은 다른 축**이다: 그건 「그 진화를 몇 번 적용했나」라서 1단계 기록만 센다
+   (evolutions.html의 consumedMap). 여기 숫자를 소진 계산에 가져다 쓰면 반복형 잔여가 틀린다.
+   ⛔ `evo_count`가 원장과 어긋나면 **원장(유효 로그 행 수)을 믿는다** — 스크립트가 +1 하는 값이라
+   과거 재계산·중복 기록의 흔적이 남을 수 있다. */
 function evoCountLabel(p, log) {
   const mine = (log || []).filter(l => l.club_player_id === p.id && !l.is_void);
-  const n = p.evo_count ?? 0;
-  return `<small class="dim">${n}회${mine.length > n ? ` · 총 ${mine.length}단계` : ''}</small>`;
+  const n = mine.length || p.evo_count || 0;
+  return `<small class="dim">${n}회 <span title="「회」는 밟은 단계 수다(4단계 완주 = 4회)">(단계)</span></small>`;
 }
 
 function evoBlock(p, log) {

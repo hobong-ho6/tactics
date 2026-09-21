@@ -73,7 +73,8 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
     <div id="acc"></div></div>
   <div class="panel"><h2>보유 선수 <small class="dim">— 현재 상태 · 진화 횟수 · 다음 추천</small></h2>
     <p class="dim" style="font-size:12px;margin:0 0 6px">⭐ 진화를 기록하면 <b>그 진화는 이 계정에서 소진</b>돼 다른 선수의 경로·추천에서 빠지고(카탈로그·선수별 패스·전술 구현 탭 전부), 각 선수의 최적 패스가 다시 매겨진다. 반복형은 <b>횟수만큼</b> 남는다.<br>
-      세는 단위는 <b>적용 횟수(1단계 기록)</b>이고 단계별 행이 아니다 — 4단계짜리를 한 번 밟아도 <b>1회</b>다. 무효로 판정된 기록(<code>is_void</code>)은 세지 않는다.</p>
+      ⭐ <b>「회」는 밟은 단계 수다</b>(2026-09-21 사용자 결정) — 4단계짜리를 완주하면 <b>4회</b>다. 무효로 판정된 기록(<code>is_void</code>)은 세지 않는다.<br>
+      ⚠️ <b>소진 판정은 이것과 다른 축</b>이다 — 소진은 「그 진화를 <b>몇 번 적용했나</b>」라서 <b>1단계 기록만</b> 센다(4단계 완주 = 적용 1회). 둘을 섞으면 반복형 잔여가 틀린다.</p>
     <div id="owned"></div></div>
   <div class="panel"><h2>선수 추가 <small class="dim">— 우리 DB 선수와 그 선수의 FC27 카드 중 보유한 것</small></h2>
     <div id="addp"></div></div>
@@ -109,7 +110,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260921f';
+import { fcPitch, fcSideEmpty, enableDragScroll, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260921g';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
