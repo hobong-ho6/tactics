@@ -30,21 +30,28 @@ description: 내 얼티밋 구단 동기화 — fut.gg GG Club에서 현재 스�
    ⛔ 버튼이 없다고 「로그인이 풀렸다」로 오판하지 말 것.
    ⭐ **읽기는 쿨다운과 무관하다** — 선수 목록·플레이스타일 조회는 언제든 되고, 마지막 싱크 시점의 값을 준다.
    ⭐ 버튼은 **뷰포트 1280px 이상**에서만 보인다(`max-xl:!hidden`). 좁으면 DOM에 있어도 크기가 0이라 클릭이 안 된다.
-4. `fetch` 훅을 설치하고 **페이지를 전부 넘겨** 응답을 모은다(30장/페이지):
-   ```js
-   window.__c=[]; const of_=window.fetch;
-   window.fetch=async(...a)=>{const r=await of_(...a); try{const u=(typeof a[0]==='string'?a[0]:a[0].url)||'';
-     if(u.includes('/api/gg-club/players')) window.__c.push(await r.clone().json());}catch(e){} return r;};
-   // 페이지 버튼(1,2,3…)을 2~3회 순회하며 2.5초씩 대기 → 중복 제거
+4. ⭐⭐ **수집은 `scripts/collect_ggclub.py`로 한다**(2026-09-21 신설 — 사용자 지시 「스크립트를 만들어서 싱크해」).
+   ⛔ **브라우저 출력을 대화로 받아 파일에 옮겨 적지 말 것** — 100명 캡처가 컨텍스트를 두 번 통과해 회차당 약 **1만 토큰**이 샜다.
+   스크립트가 API를 직접 부르면 보유가 몇 명이든 **컨텍스트 비용은 0**이고, 표준출력은 요약 몇 줄뿐이다.
    ```
-   ⚠️ 한 번 순회로는 누락된다(실측). **같은 페이지를 두 번 이상** 밟아 unique 수가 더 안 늘 때까지 돈다.
-5. 활성 스쿼드는 별도다: `/gg-club/my/squads/` → `/gg-club/my/` 로 SPA 이동하면
-   `/api/gg-club/active-squad/`가 다시 불린다. `activeGroupPositions`에서 `positionIdx ↔ playerEaId`를 받는다.
+   .venv/bin/python scripts/collect_ggclub.py --print-snippet   # ① 토큰 추출 스니펫
+   # ② 로그인된 GG Club 탭에서 스니펫 실행 → Authorization 헤더 JSON 한 줄
+   FUTGG_AUTH='<그 JSON>' .venv/bin/python scripts/collect_ggclub.py --apply-squad   # ③ 전량 + 스쿼드
+   ```
+   - ⚠️ `/api/gg-club/…`는 **Authorization 헤더 없으면 404**다(쿠키만으로는 안 된다). 토큰 수명은 **약 1시간**.
+   - ⚠️ 기본 urllib UA로는 **403**(Cloudflare) — 스크립트가 `Mozilla/5.0`·Origin·Referer를 붙인다.
+   - ⛔ 토큰은 **디스크에 쓰지 않는다**. 환경변수로 1회만 넘기고, 대화에 노출됐으면 사용자에게 알린다.
+   - ⛔ **로컬 HTTP 브리지(브라우저 → 127.0.0.1 POST)는 쓰지 말 것** — 2026-09-21에 만들어 봤으나
+     브라우저 패널이 **https→http를 하드 차단**한다(`Access-Control-Allow-Private-Network`를 붙여도 `Failed to fetch`).
+   - ⭐ 검증됨(2026-09-21): 스크립트 산출물이 손수집본과 **100/100 필드 불일치 0**.
+5. 페이지 순회·활성 스쿼드는 스크립트가 함께 처리한다(`?page=N` + `/api/gg-club/active-squad/`).
+   `--apply-squad`면 `fut_squad_slots`까지 갱신한다(FIELD→XI · SUBSTITUTE→BENCH).
    슬롯 순서(f4231a): `0 GK · 1 RB · 2 CB · 3 CB · 4 LB · 5 CDM · 6 CDM · 7 RM · 8 LM · 9 CAM · 10 ST` (우→좌).
 
 ## 3. 원장 반영
 
-1. 캡처를 `[{"ea","n","ovr","six":[6],"cs","cp","gg","added","paid"}, …]` 형태로 `/tmp/ggclub-YYYYMMDD.json`에 저장.
+1. 캡처 파일은 `collect_ggclub.py`가 `/tmp/ggclub-YYYYMMDD.json`에 이미 써 뒀다
+   (`[{"ea","n","ovr","six":[6],"cs","cp","gg","added","paid"}, …]`).
 2. `.venv/bin/python scripts/fut_club_sync.py /tmp/ggclub-YYYYMMDD.json --account main`
    - 신규는 추가, 기존은 OVR·6대 스탯·케미 스타일·개인 케미 갱신.
    - ⭐ **EA에 없는 보유 행은 「판 것」으로 보고 처분한다**(2026-09-20 사용자 지시 「판 선수는 확인 안 하고 없으면 업데이트하면 될 것 같고」).
