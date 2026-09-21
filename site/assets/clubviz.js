@@ -53,8 +53,11 @@ function card(p, role, posName, { bench = false } = {}) {
   /* ⚠️ EVO 배지를 카드 아트 **위에 얹으면 안 된다**(2026-09-21 사용자 지적 「evo 뱃지가 다 잘려서 나옴」).
      fut.gg 카드 이미지는 위아래에 투명 여백이 있어 top:4%가 그림 밖이고, 거기 뜬 배지는 이웃 슬롯에
      가려 잘린다. 카드 **아래 pill 줄**로 내리면 항상 온전히 보이고 잘릴 자리가 없다. */
+  /* ⭐ 배지는 「EVO 80」이 아니라 **인쇄값▸현재값**으로 쓴다(2026-09-21 사용자 지적
+     「어떤 의미인지도 모르겠어」). 「EVO 80」은 기준이 빠져 80이 무엇 대비인지 알 수 없었다 —
+     `78▸80`이면 카드에 찍힌 78이 진화로 80이 됐다는 사실이 숫자만으로 전달된다. */
   const tag = `<div class="fc-tag">${posName ? `<b>${esc(posName)}</b>` : ''}` +
-    (evolved ? `<span class="fc-evo">EVO ${p.current_ovr}</span>` : '') +
+    (evolved ? `<span class="fc-evo" title="카드에 인쇄된 OVR ${p.card_ovr} → 진화 적용 후 현재 ${p.current_ovr}">${p.card_ovr}▸${p.current_ovr}</span>` : '') +
     `${chemPips(p.chem_points)}</div>`;
   return `<div class="fc-card${bench ? ' bench' : ''}" data-p="${esc(p.player_id ?? '')}" tabindex="0"
        title="${esc(p.name)} · OVR ${p.current_ovr ?? '-'}${evolved ? ` (카드 인쇄 ${p.card_ovr})` : ''}${role ? ` · ${role.role_name}/${role.focus}` : ''}">
@@ -85,7 +88,9 @@ export function fcPitch(xi, bench, meta = {}) {
           ${spots}
         </div>
         <div class="fc-bench"><h4>교체 <small>${bench.length}명</small></h4><div class="fc-benchrow">${benchCards}</div></div>
-        <p class="fc-note">카드 아트에 인쇄된 OVR·포지션·이름은 <b>건드리지 않는다</b> — 진화로 값이 달라진 카드만 <span class="fc-evo inline">EVO</span> 배지로 현재 OVR을 알린다.</p>
+        <p class="fc-note">카드 아트에 인쇄된 OVR·포지션·이름은 <b>건드리지 않는다</b> —
+          진화로 값이 달라진 카드에만 <span class="fc-evo inline">78▸80</span> 배지를 붙인다
+          (<b>카드에 찍힌 OVR ▸ 진화 적용 후 현재 OVR</b>). 배지가 없으면 인쇄값이 곧 현재값이다.</p>
       </div>
       <aside class="fc-side" id="fcside">${fcSideEmpty(meta, xi)}</aside>
     </div>
@@ -98,25 +103,31 @@ export function fcPitch(xi, bench, meta = {}) {
 export function enableDragScroll(el) {
   if (!el) return;
   let down = false, sx = 0, sl = 0, moved = 0;
+  /* ⛔ `setPointerCapture`를 쓰면 안 된다(2026-09-21 사용자 지적 「교체 영역 카드를 눌러도 프로필이
+     안 나온다」): 포인터가 컨테이너에 잡혀 pointerup이 카드가 아닌 컨테이너에서 끝나고, 브라우저가
+     click을 **공통 조상에서** 발생시켜 카드의 click 핸들러가 영영 불리지 않는다.
+     캡처 대신 window에 move/up을 달면 드래그도 되고 클릭도 산다. */
   el.addEventListener('pointerdown', e => {
     if (e.button !== 0) return;
     down = true; moved = 0; sx = e.clientX; sl = el.scrollLeft;
-    el.setPointerCapture(e.pointerId); el.classList.add('drag');
+    el.classList.add('drag');
   });
-  el.addEventListener('pointermove', e => {
+  const move = e => {
     if (!down) return;
     const dx = e.clientX - sx;
     moved = Math.max(moved, Math.abs(dx));
-    el.scrollLeft = sl - dx;
-  });
+    if (moved > 3) el.scrollLeft = sl - dx;   // 손떨림으로 스크롤이 튀지 않게 문턱을 둔다
+  };
   const up = () => {
     if (!down) return;
     down = false; el.classList.remove('drag');
+    /* 실제로 끌었을 때만 뒤따르는 click 한 번을 삼킨다. 단순 클릭(움직임 5px 이하)은 그대로 통과한다. */
     if (moved > 5) el.addEventListener('click',
       ev => { ev.stopPropagation(); ev.preventDefault(); }, { capture: true, once: true });
   };
-  el.addEventListener('pointerup', up);
-  el.addEventListener('pointercancel', up);
+  window.addEventListener('pointermove', move);
+  window.addEventListener('pointerup', up);
+  window.addEventListener('pointercancel', up);
 }
 
 /* 아무 카드도 고르지 않았을 때의 사이드 패널 — 빈 칸으로 두지 않고 **팀 설정 + 11칸 역할**을 보여준다.
@@ -184,9 +195,10 @@ export const FC_CSS = `
   background:#fff;box-shadow:0 0 0 1.5px rgba(0,0,0,.55),0 2px 5px rgba(0,0,0,.45);
   display:grid;place-items:center}
 .fc-chem img{width:74%;display:block;filter:brightness(0)}
-/* EVO 배지 — 카드 아래 pill 줄 안에 산다(위 card() 주석 참조). 떠 있지 않으므로 잘리지 않는다. */
-.fc-evo{font-size:9.5px;font-weight:800;background:var(--ok);color:#06240f;
-  border-radius:99px;padding:0 5px;white-space:nowrap}
+/* EVO 배지 — 카드 아래 pill 줄 안에 산다(위 card() 주석 참조). 떠 있지 않으므로 잘리지 않는다.
+   ⚠️ 9.5px는 작아서 읽히지 않았다(2026-09-21) — 키우고 자간을 줘 숫자가 붙어 보이지 않게 한다. */
+.fc-evo{font-size:11px;font-weight:800;letter-spacing:.2px;background:var(--ok);color:#04220d;
+  border-radius:99px;padding:1px 6px;white-space:nowrap;line-height:1.45}
 .fc-evo.inline{display:inline-block}
 /* 포지션·역할 pill — 카드 바로 아래 한 줄(fut.gg와 같은 자리). */
 .fc-tag{display:inline-flex;gap:5px;align-items:center;justify-content:center;margin-top:-2px;
@@ -205,6 +217,8 @@ export const FC_CSS = `
 .fc-benchrow.drag .fc-card{transform:none}
 .fc-benchrow img{-webkit-user-drag:none;user-drag:none}
 .fc-benchrow .fc-card{flex:0 0 auto;width:104px}
+/* 벤치는 포지션 표기가 길다(CDM/CM/CAM) — pill이 카드보다 넓어지도록 두고 줄바꿈은 막는다. */
+.fc-benchrow .fc-tag{max-width:none;font-size:9.5px;padding:2px 6px}
 .fc-note{font-size:11px;color:var(--dim);margin:10px 0 0}
 /* 사이드 패널 — 스크롤을 따라다니고, 길면 자기 안에서만 스크롤한다. */
 .fc-side{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;
@@ -254,16 +268,25 @@ function chemBlock(p, styles) {
   const scale = cp >= 3 ? 1 : cp === 2 ? 2 / 3 : cp === 1 ? 1 / 3 : 0;
   /* ⭐ 실제 적용값은 **이 패널에서 가장 중요한 숫자**다(2026-09-20 사용자 지시 「눈에 잘 띄지 않으니 색조정」).
      본문 색(--up)을 그대로 쓰면 스타일 표기값과 구분이 안 된다 — 초록 배경 pill로 띄운다. */
-  const rows = pairs.sort((a, b) => b[1] - a[1]).map(([attr, raw]) => {
+  /* ⚠️ 「표기」와 「적용」을 늘 두 열로 보이면 **개인 케미 3점에서는 항상 같은 값**이라 의미 없는 중복이다
+     (2026-09-21 사용자 지적). 감쇠가 실제로 걸릴 때(1~2점)만 두 열로 가르고, 그 밖에는 한 열로 합친다. */
+  const damped = scale !== 1;
+  const sorted = pairs.sort((a, b) => b[1] - a[1]);
+  const rows = sorted.map(([attr, raw]) => {
     const eff = Math.round(raw * scale);
-    return `<tr><td>${esc(attr)}</td><td class="dim">+${raw}</td>
-      <td><span class="fc-boost${eff > 0 ? '' : ' zero'}">${eff > 0 ? '+' + eff : '0'}</span></td></tr>`;
+    return `<tr><td>${esc(attr)}</td>` +
+      (damped ? `<td class="dim">+${raw}</td>` : '') +
+      `<td><span class="fc-boost${eff > 0 ? '' : ' zero'}">${eff > 0 ? '+' + eff : '0'}</span></td></tr>`;
   }).join('');
   return `<div class="fc-chemhead">
       <img src="assets/chemstyles/${st.ea_id}.png" alt=""><b>${esc(st.name)}</b>
       <span class="chip ${cp >= 3 ? 'ok' : 'dim'}">개인 케미 ${cp}/3</span></div>
     ${cp === 0 ? '<p class="dim" style="margin:4px 0">⚠️ 개인 케미 0이라 <b>부스트가 전혀 적용되지 않는다</b>(붙여둬도 효과 0).</p>' : ''}
-    <table class="tbl fc-chemtbl"><thead><tr><th>속성</th><th>표기</th><th>적용</th></tr></thead><tbody>${rows}</tbody></table>`;
+    <table class="tbl fc-chemtbl"><thead><tr><th>속성</th>${damped ? '<th>표기</th>' : ''}<th>적용</th></tr></thead>
+      <tbody>${rows}</tbody></table>
+    ${damped
+      ? `<p class="dim" style="font-size:11.5px;margin:4px 0 0">개인 케미 ${cp}/3이라 스타일 표기값의 <b>${cp === 2 ? '2/3' : '1/3'}</b>만 들어간다 — 왼쪽이 표기, 오른쪽이 실제.</p>`
+      : `<p class="dim" style="font-size:11.5px;margin:4px 0 0">개인 케미 3/3이라 <b>표기값이 그대로 전부 적용된다</b>(감쇠 없음).</p>`}`;
 }
 
 /* PlayStyle — 이름만 쓰지 않고 아이콘을 붙인다(2026-09-20 사용자 지시 「플레이스타일도 아이콘으로」).
@@ -331,14 +354,22 @@ function recoBlock(p, reco, styles) {
   const nowName = (styles || []).find(s => s.ea_id === p.chem_style_ea)?.name;
   const basisKr = { slot: '정본 슬롯 역할(에메리 재현)', pres: '이 선수의 시즌 처방',
                     auto: `속성 기반 자동 선택 · 적합 ${reco.autoFit}%`, pos: '카드 주 포지션 기본 역할' }[reco.basis];
+  /* ⚠️ 1·2위가 같은 점수면 「추천」은 사실상 임의 선택이다 — 프로젝트 규약(실측 무결정)대로 그 사실을 적는다. */
+  const tied = reco.ranked.length > 1 && Math.round(reco.ranked[0].score) === Math.round(reco.ranked[1].score);
   const rows = reco.ranked.map((s, i) => {
     const same = nowName && s.name === nowName;
     return `<tr${i ? ' style="opacity:.62"' : ''}>
-      <td>${i ? `<span class="dim">차선 ${i}</span>` : '<span class="fc-boost">에메리 추천</span>'}</td>
+      <td>${i ? `<span class="dim">차선 ${i}</span>`
+        : `<span class="fc-boost${tied ? ' zero' : ''}">${tied ? '동점' : '에메리 추천'}</span>`}</td>
       <td><b>${esc(s.name)}</b>${same ? ' <small class="dim">= 지금</small>' : ''}</td>
       <td style="text-align:right">${Math.round(s.score)}</td></tr>`;
   }).join('');
-  const head = `<thead><tr><th></th><th>스타일</th><th style="text-align:right">에메리 점수</th></tr></thead>`;
+  /* ⭐ 「에메리 점수」가 무엇인지 표에서 바로 알 수 있어야 한다(2026-09-21 사용자 지시 「툴팁으로 설명」). */
+  const SCORE_TIP = '이 자리의 정본 역할(에메리 재현)이 중요하게 보는 속성마다 가중치를 매기고, '
+    + '그 케미 스타일이 실제로 올려주는 양(속성 상한 99를 넘는 몫은 버린다)을 곱해 합한 값입니다. '
+    + '높을수록 이 역할 수행에 보탬이 큽니다. 절대 단위가 아니라 스타일끼리 비교하는 용도입니다.';
+  const head = `<thead><tr><th></th><th>스타일</th>
+    <th style="text-align:right"><span class="fc-help" title="${esc(SCORE_TIP)}">에메리 점수</span></th></tr></thead>`;
   const top = reco.ranked[0];
   const why = (top.top || []).map(x => `${x.a} +${x.gain}`).join(' · ');
   return `<h4>추천 케미스트리 <small class="dim">— 에메리 전술 기준</small></h4>
@@ -346,6 +377,8 @@ function recoBlock(p, reco, styles) {
       <small>(${esc(basisKr || '')})</small></p>
     <table class="tbl fc-recotbl">${head}<tbody>${rows}</tbody></table>
     ${futggBlock(reco.futgg, nowName)}
+    ${tied ? `<p class="dim" style="font-size:11.5px;margin:4px 0 0">⚠️ 상위 스타일이 <b>동점</b>이다 —
+      이 역할 기준으로는 구분되지 않는다. 아래 fut.gg 신호(AcceleRATE·투표)나 취향으로 고르면 된다.</p>` : ''}
     <p class="dim" style="font-size:11.5px;margin:6px 0 0">점수 = Σ(역할 가중 × <b>실제 상승분</b>) —
       ${why ? esc(why) : '해당 역할 핵심 속성에 걸리는 상승 없음'}.
       ⚠️ 속성 상한 99라 이미 높은 칸에 붙는 부스트는 낭비로 빠진다.
@@ -367,12 +400,23 @@ function futggBlock(fg, nowName) {
   const cur = fg.rows.find(r => r.style_name === nowName);
   const byAccel = {};
   for (const r of fg.rows) if (r.accelerate) (byAccel[r.accelerate] ??= []).push(r.style_name);
+  /* ⭐ 개수만 세면 「무엇을 붙여야 바뀌는지」를 알 수 없다(2026-09-21 사용자 지적).
+     현재와 **다른** 타입을 만드는 스타일을 이름으로 적는다 — 그게 이 표의 유일한 행동 가능 정보다. */
+  const curAccel = cur?.accelerate || null;
+  const changers = Object.entries(byAccel).filter(([k]) => k !== curAccel)
+    .sort((a, b) => b[1].length - a[1].length);
   const accelSummary = Object.entries(byAccel).sort((a, b) => b[1].length - a[1].length)
     .map(([k, v]) => `${k} ${v.length}종`).join(' · ');
+  const changeHtml = !curAccel ? ''
+    : changers.length
+      ? `<div style="margin-top:4px">${changers.map(([k, v]) =>
+          `<div class="fc-kv"><span>${esc(k)}로 바뀜</span><b style="font-weight:400;text-align:right;font-size:11.5px">${esc(v.join(', '))}</b></div>`).join('')}</div>`
+      : `<p class="dim" style="font-size:11.5px;margin:4px 0 0">어떤 스타일을 붙여도 <b>${esc(curAccel)}</b> 그대로다 — 이 카드는 AcceleRATE가 바뀌지 않는다.</p>`;
   return `<div class="fc-futgg">
     <h4 style="margin:12px 0 6px">fut.gg 신호 <small class="dim">커뮤니티</small></h4>
     ${cur ? `<div class="fc-kv"><span>지금 스타일의 AcceleRATE</span><b>${esc(cur.accelerate || '—')}</b></div>` : ''}
     <div class="fc-kv"><span>스타일별 AcceleRATE</span><b style="font-weight:600">${esc(accelSummary || '—')}</b></div>
+    ${changeHtml}
     ${bars ? `<div style="margin-top:6px">${bars}</div>`
            : '<p class="dim" style="font-size:11.5px;margin:6px 0 0">커뮤니티 투표 없음(결손 — 0표라는 뜻이지 비추천이 아니다).</p>'}
     <p class="dim" style="font-size:11.5px;margin:6px 0 0">⚠️ fut.gg 배지는 <b>등급이 아니라 그 스타일을 붙였을 때의 AcceleRATE</b>다(실측 확인).
@@ -398,7 +442,22 @@ function traitRow(p, roleMap) {
   };
   const pp = names(p.current_roles_plus_plus, 'plusplus'), pl = names(p.current_roles_plus, 'plus');
   const foot = p.preferred_foot ? String(p.preferred_foot).replace('오른쪽', '오른발').replace('왼쪽', '왼발') : null;
-  return `<h4>스킬 · 주발 · 역할</h4>
+  /* ⭐ 수행 가능 포지션과 그 포지션에서 고를 수 있는 역할(2026-09-21 사용자 지시 「선수의 역할이 없어
+     수행할 수 있는 포지션과 역할도 추가」). Role+/++가 비어 있어도 **고를 수 있는 역할은 존재한다** —
+     숙련(+)이 없을 뿐이다. 보유한 숙련은 굵게 표시해 구분한다. */
+  const owned = new Set([...pp, ...pl]);
+  const posRoles = String(p.positions || '').split('/').map(x => x.trim()).filter(Boolean).map(pos => {
+    const list = (roleMap || []).filter(r => r.kind === 'plus' && r.position_name === pos);
+    if (!list.length) return `<div class="fc-kv"><span>${esc(pos)}</span><b class="dim">역할 목록 미수집</b></div>`;
+    const names = list.map(r => owned.has(`${r.position_name} ${r.name}`)
+      ? `<b class="up">${esc(r.name)}+</b>` : esc(r.name)).join(', ');
+    return `<div class="fc-kv"><span>${esc(pos)}</span><b style="font-weight:400;text-align:right">${names}</b></div>`;
+  }).join('');
+  return `<h4>수행 가능 포지션 · 역할</h4>
+    ${posRoles || '<p class="dim">카드 포지션 미수집.</p>'}
+    <p class="dim" style="font-size:11.5px;margin:4px 0 0">그 포지션에서 <b>고를 수 있는 역할 전부</b>다.
+      <b class="up">굵은 초록+</b>는 이 카드가 <b>숙련(Role+/++)</b>을 가진 역할 — 없다고 못 쓰는 건 아니고 보너스가 없을 뿐이다.</p>
+    <h4>스킬 · 주발 · 역할 숙련</h4>
     <div class="fc-kv"><span>스킬무브</span><b>${STARS(num(p.skill_moves))}</b></div>
     <div class="fc-kv"><span>약발</span><b>${STARS(num(p.weak_foot))}</b></div>
     <div class="fc-kv"><span>주발</span><b>${esc(foot || '—')}</b></div>
@@ -455,6 +514,7 @@ export const FC_DETAIL_CSS = `
 .fc-ps.plus{border-color:var(--ok)}
 .fc-ps.plus i{font-style:normal;font-weight:800;color:var(--ok);margin-left:1px}
 .fc-recotbl td{font-size:12px}
+.fc-help{border-bottom:1px dotted var(--dim);cursor:help}
 .fc-vote{display:flex;align-items:center;gap:6px;font-size:11.5px;margin:3px 0}
 .fc-vote span{flex:0 0 96px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .fc-vote i{flex:1;height:7px;border-radius:99px;background:var(--bg);overflow:hidden}
