@@ -1,0 +1,154 @@
+{
+ "focus": [],
+ "game_version": "FC27",
+ "role_key_attrs": [],
+ "roles": [],
+ "system_changes": [
+  {
+   "area": "roles",
+   "change": "⭐ Attacking Spatial Awareness — 「Roles가 너무 엄격하게 느껴진다」는 진단에 EA가 내놓은 해법. AI 공격수가 주변 공간을 인식해 곡선 침투(Triggered Curved Runs)·Pass & Follow Runs로 움직인다. ⛔ 역할·포커스의 신설/삭제/개명은 어느 피치노트에도 없다(2026-09-04 기준 미공개).",
+   "confidence": "EA 1차 verbatim(HIGH) · 역할 목록 변화 여부는 미확인(UNKNOWN)",
+   "evidence": "FUT Deep Dive: 「Roles can sometimes feel too strict in gameplay, so in FC 27 we are introducing Attacking Spatial Awareness to help players recognise open space more naturally and make more decisive runs in attack.」 · Gameplay Deep Dive: 「makes AI attackers more aware of the space around them and how they move into it. … attackers would also run into crowded areas or struggle to find more effective space. In FC 27, they now make smarter, more contextual curved runs」 · 조작: 곡선 런 Tap L1+R1 / Pass&Follow L1+R1+X.",
+   "impact": "FC26 ①(「less constrained by their Roles」)의 연장·강화 — **역할 커널의 결정성이 한 단계 더 약해진다**. 우리 코사인 적합의 구조적 상한이 더 내려가므로 FC27 커널에서는 노이즈 구간(Δ≤0.05)을 넓게 볼 근거가 생긴다(크기는 실측 후 결정). ⚠️ 37/85/217 구조가 유지되는지는 fut.gg /api/fut/roles/ FC27 응답으로만 확정 — Kernel.EXPECTED 확장은 그때.",
+   "recorded": "2026-09-04",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-07-29) · https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-fut-deep-dive"
+  },
+  {
+   "area": "engine",
+   "change": "Triggered Runs 거리 제한 — 한 번의 트리거로 달리는 거리가 제한되고, 계속 달리게 하려면 다시 트리거해야 한다(클로즈드 베타 피드백 반영).",
+   "confidence": "EA 1차 verbatim(HIGH) · 거리 수치 비공개",
+   "evidence": "Beta Feedback Update: 「Triggered Runs will now have a limited distance. You'll need to trigger another run if you want the player [to continue]」 — 「reduces some of the benefits Lengthy players could gain over extended distances」.",
+   "impact": "채널 러너형(st_advanced/Support·wm_winger/Attack)의 게임 내 침투 거리가 짧아진다 — 실측 「배후 침투」 서사를 게임에 옮길 때 한 번의 런으로 재현되지 않을 수 있음. 경기 프리셋 설명에 「런 재트리거 필요」 메모.",
+   "recorded": "2026-09-04",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
+  },
+  {
+   "area": "attributes",
+   "change": "AcceleRATE 영향 축소 — Explosive/Controlled/Lengthy 간 차이를 줄이고 가속력·질주속도 속성 비중을 높임. 여성 Lengthy 키 하한 172cm(5'8\").",
+   "confidence": "EA 1차 verbatim(HIGH) · 남성 임계값 불변 여부 미확인",
+   "evidence": "Beta Feedback Update: 「We've slightly reduced the impact of AcceleRATE profiles on a player's running performance, bringing Explosive, Controlled, and Lengthy players a little closer together … greater emphasis on a player's Acceleration and Sprint Speed Attributes」 · 「female players will need to be at least 5'8\" (172 cm) to be eligible for Lengthy」.",
+   "impact": "docs/20 ⑤ 분류 공식(남 183cm 등)은 유지되나 **효과 크기가 줄어** 적합 가중치로 쓸 이유가 더 없어진다. 남성 임계값 변경 언급 없음 — 09-25 이후 sofifa/fut.gg accelerate 라벨 재대조 필요.",
+   "recorded": "2026-09-04",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
+  },
+  {
+   "area": "playstyles",
+   "change": "PlayStyle 리밸런스 10종 + PlayStyle+ 상한 5→3(아이템당). Finesse Shot(속성 비중↑) · Technical(+와 격차↓) · Intercept(리치↑·소유 유지↑) · Rapid(드리블 속도 보너스↓) · Quick Step(가속 보너스↓) · Pinged Pass(수신자 트랩 오차 감소 효과 제거) · Tiki Taka(애니 속도 보너스·트랩 오차 감소 제거) · Jockey(비보유자 조키 가속↑·보너스↓) · Precision Header(정확도 보너스 재조정) · Low Driven(슛 속도 보너스 제거). Bruiser+ 추가 이득 소폭 축소.",
+   "confidence": "EA 1차 verbatim(HIGH) · 09-10 전체 DB 공개 시 신설/삭제 재확인",
+   "evidence": "Gameplay Deep Dive 각 항목 verbatim: 「We've updated Finesse Shot to make player attributes play a bigger role in shot outcome」 · 「Removed the effect that slightly reduced trap error on the pass receiver」(Pinged Pass) · 「Removed the animation playback speed boost and the effect that slightly reduced trap error」(Tiki Taka) · 「Removed the shot speed boost previously applied to low-driven shots」 · FUT Deep Dive: 「reducing the maximum number of PlayStyle+ available on a single Item from five to three」 · Beta: 「slightly reduced the additional benefit provided by Bruiser+」. 신설·삭제 PlayStyle 언급 없음.",
+   "impact": "docs/22 §3 카탈로그(35종)는 이름은 유지되되 **효과 서술 10건을 FC27 절로 갱신**해야 한다(특히 Pinged Pass·Tiki Taka의 「받기 쉬워짐」 문구는 FC27에서 거짓). player_game_stats.playstyles 해석 시 버전 주의. 온볼 층이라 커널 무관.",
+   "recorded": "2026-09-04",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-07-29) · https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-fut-deep-dive · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
+  },
+  {
+   "area": "tactics",
+   "change": "Team Press — 자기 수비 3분의 1에서는 효과 없음(FC26 ⑥ 「수비 진영 너프」의 완성형). 낮은 수비 깊이 설정이 라인 위치에 더 뚜렷하게 반영.",
+   "confidence": "EA 1차 verbatim(HIGH) · 수치 비공개",
+   "evidence": "Beta Feedback Update: 「Team Press will now have no effect while the ball is in your defensive third」 · 「defenders can still step towards their marked players, but will be less effective at applying pressure」 · 「lower depth settings are more clearly reflected in how your defensive line positions itself」.",
+   "impact": "FC26 ⑥의 진영별 비대칭이 **수비 3분의 1 완전 무효**로 굳어진다 — 이라올라(고압박) 재현 손실이 더 커지고, 에메리 딥블록 국면(PPDA 30 계열)은 게임에서 「팀 프레스 없음 + 낮은 깊이」로 오히려 정확히 재현된다. 라인 높이 실효(FC26 ⑦ 미검증)는 FC27에서 「더 뚜렷」해진다는 EA 진술 — 재검증 우선순위 상향.",
+   "recorded": "2026-09-04",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
+  },
+  {
+   "area": "engine",
+   "change": "수동 수비 강화(Competitive 전용) — AI 수비수 인터셉트 리치 축소, 수동 조작 수비수 조키 속도↑·스탠딩 태클 범위↑. AI 수비수는 「포지셔닝 지원 역할」로.",
+   "confidence": "EA 1차 verbatim(HIGH)",
+   "evidence": "Gameplay Deep Dive: 「we're reducing the influence of AI-controlled defenders, putting more power into the hands of the manual defender」 · 「We've also reduced AI defensive reach for interceptions」 · 「manually-controlled defenders have increased jockey speed」 · 「increased the range of manually-triggered stand tackles」 · 「The following changes to AI Defending only apply to Competitive gameplay」.",
+   "impact": "수비 역할(cb_*/dm_holding)의 **AI 실행력이 낮아진다** — 커널(위치)은 그대로지만 「막아내는 결과」는 사용자 조작 의존. Intercept PlayStyle은 반대로 강화(#13) — AI 수비 재현은 PlayStyle 층으로 보상. Authentic(커리어)에는 미적용.",
+   "recorded": "2026-09-04",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-07-29)"
+  },
+  {
+   "area": "engine",
+   "change": "Dinked Pass 완전 수동 — Ground Pass 입력으로는 불가(더블탭=일반 그라운드 패스), Through Pass 더블탭 + 수동 조준. Player Lock 시 볼 캐리어 자동 회피 제거·CPU 패스 오차↑.",
+   "confidence": "EA 1차 verbatim(HIGH)",
+   "evidence": "Beta Feedback Update: 「Dinked Passes can no longer be performed using the Ground Pass input」 · 「double tap Through Pass and manually aim where you want the ball to go」 · 「the ball carrier will no longer automatically dribble around or avoid defenders」(Player Lock).",
+   "impact": "docs/22 §1 조작표 갱신 대상(FC27 절). 전술 재현과 무관한 조작 층.",
+   "recorded": "2026-09-04",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
+  },
+  {
+   "area": "meta",
+   "change": "커리어 모드 — 선수당 최대 7포지션(주 1 + 부 6), 부 포지션에서는 OOP 페널티 없음, Dynamic OVR(폼·사기·경기체력), 포지션별 Baseline OVR 부활, 성장 프로필 6종, 슬라이더 25+10(CPU 상대/동료 분리). Authentic: CPU 전술 다양화·피지컬 접촉 강화·CPU 파울 증가.",
+   "confidence": "EA 1차 verbatim(HIGH) · 숙련도 산식은 비공개",
+   "evidence": "Career Deep Dive: 「Players will now have up to seven positions they can perform in」 · 「Players performing in any of their six secondary preferred positions will not be penalised for playing outside their main position」 · 「dynamic determination of a player's Baseline OVR based on the position they play in」 · 「Six distinct Growth Profiles」 · 「CPU-controlled players will also commit more fouls」.",
+   "impact": "**포지션 유연성이 게임 데이터 축으로 들어온다** — FC26 ②(OOP 페널티 대폭 감소)에서 한 발 더 나가 부 포지션은 무페널티. 우리 「측정 최적 ≠ EA 기본 포지션」 사례(맥긴 RM, 캐시 att_wb 등)의 게임 내 비용이 더 낮아진다. 커리어 축 데이터(7포지션 목록)는 09-10 DB에서 수집 대상 — player_game_stats.positions 해석 갱신.",
+   "recorded": "2026-09-04",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-career-mode-deep-dive (2026-07-31)"
+  },
+  {
+   "area": "meta",
+   "change": "출시 초기 밸런스 정책 — 「초기 타이틀 업데이트에서 큰 게임플레이 밸런스 변경을 하지 않는다」. 발매 09-25(얼리액세스 09-18). ⛔ 역할 목록·팀 전술 파라미터 변화는 어느 피치노트에도 없음.",
+   "confidence": "EA 1차 verbatim(HIGH)",
+   "evidence": "Beta Feedback Update: 「we do not plan on making significant gameplay balance changes in our early Title Updates」 · 「we don't want to react quickly to early trends with significant balance changes」.",
+   "impact": "FC27 커널·파라미터 수집을 **발매 직후 1회로 잡아도 초기 TU로 흔들릴 위험이 작다**(FC26은 TU 1.4/1.5가 역할 위치를 바꿨다 — docs/20 ①). 역할 목록 미공개 상태이므로 09-18 얼리액세스 시점의 fut.gg /api/fut/roles/ 응답이 마이그레이션 트리거.",
+   "recorded": "2026-09-04",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
+  },
+  {
+   "area": "roles",
+   "change": "⭐ 역할은 유지된다 — Attacking Spatial Awareness는 역할을 대체하지 않고 **함께 작동**한다. 「roles still determining which runs a player can make from their position」(역할은 여전히 그 선수가 자기 위치에서 어떤 침투를 할 수 있는지를 결정한다).",
+   "confidence": "MEDIUM-HIGH — EA 1차 진술의 2차 인용",
+   "evidence": "FC27 게임플레이 딥다이브·베타 피드백 정리 기사 (2026-09-19 D+0 확인)",
+   "impact": "우리 역할 커널의 **존재 근거가 유지**된다 — 다만 공간 인식이 겹치면서 같은 역할에서도 움직임 분산이 커지므로 Δ 노이즈 구간을 FC26보다 넓게 잡을 근거가 된다(크기는 FC27 실측 후).",
+   "recorded": "2026-09-19",
+   "source": "ea.com FC27 gameplay deep dive · closed beta feedback update (2차 정리 기사 경유)"
+  },
+  {
+   "area": "tactics",
+   "change": "Team Press는 **수비 3분의 1에서 무효**이고, 그 위에서도 **수비수는 미드필더·공격수보다 압박 효율이 낮다**. 팀메이트 컨테인도 완화 — AI 동료가 볼 캐리어를 더 먼 거리에서 마크한다(수동 전환 필요).",
+   "confidence": "MEDIUM-HIGH",
+   "evidence": "베타 피드백 업데이트 정리 — 「defenders press less effectively than midfielders and forwards」",
+   "impact": "에메리 재현에 **유리**하다: 미드블록에서 중원이 먼저 걸고 백4는 자리를 지키는 구조가 게임 기본 동작이 된다. ⚠️ 반대로 RCB Aggressive의 step-out 빈도는 FC26보다 줄 수 있다 — 실측 관찰 항목.",
+   "recorded": "2026-09-19",
+   "source": "ea.com FC27 closed beta feedback update (2차 정리 기사 경유, 2026-09-19 확인)"
+  },
+  {
+   "area": "meta",
+   "change": "프로모 선수는 **base 포지션에 Role++를 기본 보유**한다(런치 업데이트). PlayStyle+ 상한은 3으로 확정.",
+   "confidence": "MEDIUM — 2차 인용. fut.gg 카드 데이터로 교차검증 필요",
+   "evidence": "FC27 Launch Update 피치노트 정리 — 「All promo players will have Role++ for their base positions」",
+   "impact": "진화·카드 선택 기준이 바뀐다 — 프로모 카드는 처방 역할이 base 포지션과 맞으면 **숙련(Role++)이 자동 충족**된다. 진화로 Role++를 얻으러 갈 이유가 줄고, PS+ 상한 3 때문에 PlayStyle+ 획득 진화의 상대 가치가 오른다.",
+   "recorded": "2026-09-19",
+   "source": "FC27 Launch Update pitch notes (2차 정리, 2026-09-19 확인)"
+  },
+  {
+   "area": "playstyles",
+   "change": "⭐⭐ 패서의 PlayStyle이 리시버의 퍼스트 터치를 덮어주던 경로가 끊겼다 — 핑드 패스·티키타카에서 「패스 수신자의 트랩 오차를 약간 줄여주던 효과」가 제거됐다. 티키타카는 애니메이션 재생 속도 부스트도 함께 잃었다.",
+   "confidence": "HIGH — EA 1차(피치노트) · 4개 언어권 공식판 독립 확인",
+   "evidence": "원문 「Pinged Pass — Removed the effect that slightly reduced trap error on the pass receiver. This change ensures that the PlayStyle primarily enhances pass delivery rather than providing an additional first-touch advantage to an unrelated player.」(「핑드 패스 — 패스 수신자의 트랩 오차를 약간 줄여주던 효과를 제거했다. 이 변경으로 해당 PlayStyle은 무관한 선수에게 추가적인 퍼스트 터치 이점을 주는 대신 패스 전달력 자체를 향상시키는 데 주력하게 된다.」) — EA FC27 Gameplay Deep Dive. 독일어판 「Wir haben den Effekt entfernt, durch den die Ballannahme-Fehlerquote beim passempfangenden Profi leicht verringert wurde.」(「패스를 받는 선수의 볼 수신 오차율을 소폭 낮춰주던 효과를 제거했다.」) · 프랑스어판 「Suppression de l'effet qui réduisait légèrement l'erreur de contrôle pour le receveur de passe」(「패스 수신자의 컨트롤 오차를 소폭 줄여주던 효과 삭제」) · 포르투갈어판 「o efeito que reduzia levemente o erro de domínio em atletas que recebiam o passe」(「패스를 받는 선수의 트래핑 오차를 약간 줄여주던 효과」). 영·독·불·포르투갈 4개 언어권 EA 공식판에서 독립 확인.",
+   "impact": "⛔ 「패서를 좋게 만들면 리시버의 퍼스트 터치도 좋아진다」는 FC26까지만 성립한다. FC27 처방에서는 **리시버 본인의 볼컨트롤·침착·First Touch PlayStyle을 각자 따로 평가**해야 하고, 패서의 PlayStyle로 리시버의 결점을 가리는 설계(티키타카형 짧은 연계)는 폐기한다. 진화 선택에서도 리시버 측 원 스탯의 가치가 상대적으로 올라간다.",
+   "recorded": "2026-09-21",
+   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)"
+  },
+  {
+   "area": "attributes",
+   "change": "⭐ 신규 Off-Balance Dribbling의 입력 속성은 **Balance·Agility·Dribbling**이고 **볼컨트롤은 배제**됐다. 즉 「접촉·경합 중 볼 유지」 축과 「정적 수신(트랩)」 축이 서로 다른 스탯 묶음으로 갈라져 있다.",
+   "confidence": "HIGH — EA 1차(피치노트) · 영·독·불 3개 언어권 대조",
+   "evidence": "원문 「Driven by Balance, Agility and Dribbling Attributes」(「Balance·Agility·Dribbling 속성으로 구동되며」) — EA FC27 Gameplay Deep Dive. 독일어판은 판정 조건을 더 구체적으로 쓴다: 「Wenn ein Dribbelprofi mit den benötigten Werten von einem Zusammenprall, einem Rempler oder einem Schulterrempler getroffen wird, geht der Profi in eine Dribbling-im-Stolpern-Animation über.」(「필요한 수치를 갖춘 드리블 선수가 충돌·몸싸움·어깨싸움을 당하면, 그 선수는 '비틀거리며 드리블' 애니메이션으로 전환된다.」) — 「benötigten Werten」(필요한 수치)이라는 표현은 계단형 게이팅을 시사하나 EA가 컷 수치를 공개하지 않았다.",
+   "impact": "「압박 속에서 공을 지킨다」는 하나의 체감이 게임 내부에서는 **두 개의 판정식**으로 갈라진다 — 수신은 볼컨트롤·인터셉트·침착, 접촉 유지는 Balance·Agility·Dribbling. 처방에서 두 축을 섞지 말 것. ⚠️ gamereactor.fr 핸즈온 기사가 「볼컨트롤이 좋은 선수가 소유권을 유지한다」고 썼으나 EA 공식 프랑스어판과 충돌하므로 EA를 채택한다.",
+   "recorded": "2026-09-21",
+   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)"
+  },
+  {
+   "area": "attributes",
+   "change": "⛔⛔ 반응력(Reactions)은 EA 1차 자료에 **정의도 작용 서술도 없다**(부재 증거). FC25·FC26·FC27 게임플레이 딥다이브 전문과 EA Help 전체에서 기능 설명이 0건이고, FC26 퍼스트 터치 인자 목록에도 빠져 있다. FC27 문서에 등장하는 Reactions는 Pro 아키타입 마스터리 보상 표의 **항목명**일 뿐이다.",
+   "confidence": "HIGH(부재 증거) — 1차 문서 전수 스캔으로 확인. ⚠️ 「없다」는 것이지 「작동하지 않는다」가 아니다",
+   "evidence": "FC27 Gameplay Deep Dive 전수 키워드 스캔: Reactions 0회 · Ball Control 0회 · Composure 0회 · First Touch 0회. Closed Beta Feedback Update·Career Deep Dive·Ratings Deep Dive도 전부 0회. help.ea.com에 FC27 속성 설명 문서 자체가 없다(검색 21건 전량 확인). 널리 퍼진 통설 「반응력은 조작 중인 선수에게도 적용된다」(es.fifauteam.com)는 2/2 반증으로 기각 — 측정 근거 0건이고 영어 원문과 스페인어 번역판이 **동일 출처**라 다국어 교차검증에 해당하지 않으며 FIFA16 이후 재검증 없이 복제돼 왔다.",
+   "impact": "⑴ 「반응력 = 세컨볼·리바운드·루즈볼 경합」은 **D등급(통설, 1차 근거 없음)**이다 — 리포트·처방에서 등급을 밝히지 않고 쓰지 말 것. ⑵ 「AI 전용」도 「양쪽 적용」도 **둘 다 근거가 없다**. ⑶ 조작 주체(유저 vs AI)에 따라 달라진다고 EA가 명시한 유일한 항목은 **수비 리치 한 건뿐**이다(FC27, Competitive 한정). ⑷ 우리 「자율 판단 지수」가 반응력에 가중 .25를 주는 것은 여전히 **파생 휴리스틱**이며 EA 공식이 아님을 유지 표기한다. ⇒ 필요한 것은 프랙티스 아레나 A/B 실측(리바운드 볼 획득률·첫 터치 성공률)이다.",
+   "recorded": "2026-09-21",
+   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)"
+  },
+  {
+   "area": "attributes",
+   "change": "침착(Composure)에 대해 EA 1차로 확인되는 기능은 **둘뿐**이다 — ⑴ 퍼스트 터치 난이도 계산의 입력 속성(FC26) ⑵ 페널티킥 Composure Circle의 수축 속도·퍼펙트 타이밍 창 크기(FC25). 그 외 서술은 1차 근거가 없다.",
+   "confidence": "HIGH — EA 1차 2건 확인 + 통설 1건 2/2 반증",
+   "evidence": "널리 퍼진 「침착 = 압박 인지 반경」 정의는 2/2 반증으로 기각됐다. 스페인어권 원문 「Este atributo determina a qué distancia el jugador con la pelota comienza a sentir la presión del oponente.」(「이 속성은 볼을 가진 선수가 상대의 압박을 느끼기 시작하는 거리를 결정한다.」 / es.fifauteam.com) · 독일어권 용어집 「Ruhe: Dieser Wert zeigt, ab Entfernung der Spieler durch einen Gegenspieler unter Druck gerät.」(「침착: 이 값은 선수가 상대 선수에 의해 어느 거리부터 압박을 받게 되는지를 보여준다.」 원문 오탈자 그대로 / onefootball.com) — 그러나 둘은 독립 관측이 아니라 **동일 계보의 복제**라 다국어 교차검증으로 카운트할 수 없다.",
+   "impact": "침착을 **'거리 파라미터'가 아니라 '압박 하 액션 오차 계수(퍼스트 터치 포함)'로 기록**한다. 거리 해석은 채택하지 않는다. 슈팅 전용 스탯이라는 반대쪽 통념도 틀렸다 — EA 1차가 퍼스트 터치 입력으로 명시한다.",
+   "recorded": "2026-09-21",
+   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)"
+  }
+ ],
+ "tactic_params": [],
+ "variants": []
+}

@@ -51,8 +51,12 @@ def export_all(db_path=None, window="2026-summer"):
     for (gv,) in con.execute("SELECT code FROM game_versions"):
         roles = _rows(con, """SELECT role_id, name, name_en, position_type, focuses
                               FROM game_roles WHERE game_version=? ORDER BY role_id""", (gv,))
-        if not roles:
-            continue                      # FC27 등 미수집 버전은 파일을 만들지 않는다
+        changes = _rows(con, """SELECT area, change, evidence, impact, source, confidence, recorded
+                               FROM game_system_changes WHERE game_version=? ORDER BY id""", (gv,))
+        if not roles and not changes:
+            continue                      # 커널도 시스템 사실도 없는 버전은 파일을 만들지 않는다
+        # ⭐ 역할 커널이 없어도 system_changes가 있으면 파일을 쓴다(2026-09-21) — FC27은 역할 목록 확정 전이라
+        #    커널이 비어 있는데, 그 때문에 FC27 시스템 사실 16건이 웹에서 통째로 안 보이고 있었다.
         focus = _rows(con, """SELECT role_id, focus, kernel25, plus, equal, negative,
                                      ea_role_name, description, movement_kr
                               FROM game_role_focus WHERE game_version=?
@@ -62,8 +66,6 @@ def export_all(db_path=None, window="2026-summer"):
                                  ORDER BY role_id, focus, pitch_x""", (gv,))
         params = _rows(con, """SELECT param, option, description FROM game_tactic_params
                                WHERE game_version=? ORDER BY param, option""", (gv,))
-        changes = _rows(con, """SELECT area, change, evidence, impact, source, confidence, recorded
-                               FROM game_system_changes WHERE game_version=? ORDER BY id""", (gv,))
         # 역할별 핵심 속성 가중(migration 038) — 진화 순위의 「역할 가중 점수」 원료. 판단값(MEDIUM)이며 커널(kernel25)과 별개 층.
         key_attrs = _rows(con, """SELECT role_id, attr, weight FROM game_role_key_attrs
                                   WHERE game_version=? ORDER BY role_id, weight DESC, attr""", (gv,))

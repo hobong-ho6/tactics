@@ -2741,6 +2741,15 @@
    "impact": "풀백 전진은 같은 쪽 와이드 역할이 결정한다 — 터치라인형(winger·widemid·wideplm) 뒤의 풀백은 올라가지 않으므로 wingback/Balanced로 두고, 전진시킬 풀백의 앞은 안쪽형 와이드로 비운다(C6와 결합: 윙어는 절제 사이드). 「풀백을 올리려고 양쪽 att_wb/Support」는 정의·메커니즘·C2 모두 위반. obs#443.",
    "recorded": "2026-09-04",
    "source": "EA 피치노트 1차(2026-09-04 직독) · game_role_focus · obs#443"
+  },
+  {
+   "area": "attributes",
+   "change": "⭐ 퍼스트 터치 난이도는 볼컨트롤 단독 판정이 아니다 — **볼컨트롤·인터셉트·침착 3개 속성의 복합**이며, 그 위에 상황 변수 6종(선수 속도 대비 볼 속도·볼 높이·요구 이탈 각도·상대 압박·터치에 쓴 신체 부위·뻗는 정도)이 얹힌다. 또한 L2/LT 홀드가 이동 속도를 대가로 컨트롤을 크게 개선하며, 입력이 이를수록 컨트롤이 좋아진다.",
+   "confidence": "HIGH — EA 1차(피치노트) 원문 인용",
+   "evidence": "원문 「Factors influencing the difficulty of a first touch include ball speed relative to the player's speed, ball height, requested exit angle, opponent pressure, the part of the body used for the touch, the extent of stretching, and player attributes such as Ball Control, Interceptions, and Composure.」(「퍼스트 터치의 난이도에 영향을 주는 요인에는 선수 속도 대비 볼 속도, 볼 높이, 요구되는 이탈 각도, 상대의 압박, 터치에 사용된 신체 부위, 뻗는 정도, 그리고 볼컨트롤·인터셉트·침착 같은 선수 속성이 포함된다.」) · 「holding L2 || LT will greatly improve the players ability to control the ball at the trade-off of player's move speed. Earlier timing of this input will result in increased control.」(「L2/LT를 누르고 있으면 선수의 이동 속도를 대가로 공을 다루는 능력이 크게 향상된다. 이 입력을 더 일찍 넣을수록 컨트롤이 더 좋아진다.」) — EA FC26 Gameplay Deep Dive. 포르투갈어판도 동일: 「qualidades de atleta como controle de bola, interceptações e frieza」(「볼컨트롤·인터셉트·침착 같은 선수 스탯」).",
+   "impact": "⑴ 「퍼스트 터치 = 볼컨트롤」 통념은 EA 1차 서술과 다르다 — 인터셉트·침착도 같은 식의 항이다. ⑵ 「압박 하 수신」은 별도 계수가 아니라 **같은 판정식의 한 항**이다. ⑶ 낮은 볼컨트롤의 트랩 열세는 **조작(L2/LT)으로 일부 메울 수 있다** — 스탯만으로 체감을 귀속하면 안 되고, 통제 실측을 설계할 때 이 입력을 고정하지 않으면 결과가 무효다.",
+   "recorded": "2026-09-21",
+   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)"
   }
  ],
  "tactic_params": [
