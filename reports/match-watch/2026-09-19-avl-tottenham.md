@@ -653,3 +653,221 @@ claim #137(`away_vs_top_game_plan = defend_deep_then_transition`, APPLIED)의 **
 
 ⚠️ **미해결로 남긴 것**: 만잠비 치료 시점(18′ vs 30′) · 루헤리 86′ 볼 로스트 책임의 영상 확인 ·
 GK 골킥 숏/롱 분해 제공사 대조 · PPDA·def_x·국면 그리드에 **수집 시각·범위를 남기는 규약**의 docs/30 반영 여부(사용자 판단).
+
+## D+2 추적 (2026-09-21)
+
+> 수집 방식: 메인 세션의 **WhoScored 재수집·실측 판정**(pulled=2026-09-21 scope=full · 1,627 이벤트 · 집계는 `core.whoscored`) + 서브에이전트 3축 병렬(영상 스윕 4경로 / 다국어 7개 언어권 / 전술 블로그·기자).
+> ⛔ **D+0·D+1 절은 수정하지 않았다.** 뒤집힌 판정은 아래에 「판정 정정」으로 적는다(불변규칙 2·3).
+> ⭐ 스냅샷 동일성 검증: 전반 보유 전체 카마라 41.3 / CB라인 30.2 / Δ11.1로 **D+1 수치를 소수점까지 재현**했다 — 같은 Opta 개정본이다.
+
+### D+2-1. ⭐⭐ HELD 2건 종결 — 둘 다 REJECTED
+
+#### ⑴ claim #139 「카마라 피벗 하강형 백3」 — **REJECTED(확정)**
+
+D+1이 건 재판정 조건(**빌드업 국면 한정** 대조, 격차 8 이하면 APPLIED)을 집행했다. 골킥·자기 진영(x<40) 시작 시퀀스만 추려 대조했다.
+
+| 국면 | 카마라 x | CB라인 x | Δ | 판정 |
+|---|---|---|---|---|
+| 전반 빌드업 전체(시퀀스 41 · 이벤트 145) | 33.9 (n=20) | 23.3 (n=35) | **10.6** | ❌ |
+| 전반 10~30′(Tanswell 시점 한정) | 29.5 (n=11) | 18.1 (n=15) | **11.4** | ❌ |
+| **골킥 시퀀스 한정**(4개) | 27.2 (n=2) | 11.2 (n=5) | **16.0** | ❌ |
+| 전경기 빌드업 | 34.9 (n=26) | 23.9 (n=54) | 11.1 | ❌ |
+
+국면을 좁힐수록 오히려 격차가 **벌어진다**. D+1의 임계 재설계는 정당했지만 결론은 바뀌지 않았다.
+
+⭐ **기각의 범위는 「상시 구조」에 한정된다.** 시퀀스 단위로 보면 카마라·CB 동시 관여 13개 중 **4개(31%)가 Δ≤8**이고, 그 4개는 전부 **전반 1′·5′·14′·30′**에 몰려 있으며 36′ 이후에는 0개다.
+⇒ 「경기 초반에 가끔 내려선다」는 **참**, 「백3가 빌드업의 기본 형태」는 **거짓**. obs#920.
+
+⛔ **부가 주장도 기각**: Tanswell의 「만잠비가 깊게 내려와 고메스 옆에 섰다」 — 빌드업 국면 만잠비 x=**51.0**(n=10) vs 고메스 37.9(n=12)로 **13 더 높고**, 전반 내내 오히려 올라갔다(0~15′ 54.0 → 15~30′ 58.7 → 30~53′ 63.0). 좌우도 y 43.6 vs 70.3으로 다른 레인이다.
+
+#### ⑵ claim #144 「GK를 11번째 필드 플레이어로」 — **REJECTED**
+
+조건(골킥 숏/롱 분해를 같은 스냅샷으로 대조)을 **두 제공사로** 집행했다.
+
+> **Opta: 골킥 7회 · 롱 7 · 숏 0 · 성공 3(43%)** — 숏 골킥이 한 번도 없다.
+
+스즈키 패스 43 중 롱 27(성공 10·37%) · 숏 16(성공 **16/16**). 숏이 100% 정확한데도 그 숏은 **오픈플레이 자기 진영**이지 재시작이 아니다(SofaScore: 자기 진영 14/15 vs 상대 진영 7/23).
+⇒ 빌드업에서 GK는 참여자가 아니라 **발사대**다. obs#922.
+⛔ 단 스위퍼·세컨볼 관여는 실재한다(KeeperSweeper 1/1 · BallRecovery 12 · 볼캐리 9회 52m) — 기각은 `gk_role_in_buildup` 축 한정이다.
+
+### D+2-2. ⭐⭐ 기각의 진짜 이유는 「축이 틀렸다」였다 — 감독 1차 진술
+
+claim #139를 두 회차에 걸쳐 기각했는데, **에메리 회견 전문(TNT판 `k6dbBj7Tz7w`)이 그 이유를 설명한다.** 질문도 답도 **수비 국면**에 관한 것이다.
+
+> 질문 「second half you went into really a back five on the edge of your penalty area, McGinn went back and played really deep…」
+> 에메리 「Yeah, **sometimes with back four is not enough to defend completely** … **the first half we use it more Kamara dropping, dropping, and someday is a five, center back being in the back four inside, and the second half we needed more with John McGinn.**」
+> (후반에 사실상 페널티 박스 끝단에서 백5로 갔고 맥긴이 내려가 아주 깊게 뛰었다 / 그렇다. **때로는 백4로는 완전히 수비하기에 충분하지 않다** … **전반에는 카마라를 더 많이 내려, 내려 썼고, 어떤 때는 5가 된다 — 센터백이 백4 안쪽에 들어가는 식으로. 그리고 후반에는 존 맥긴으로 그걸 더 해줄 필요가 있었다.**) · confidence: auto-caption
+
+⇒ **행동은 참, 라벨이 거짓이다.** 기자(Tanswell)는 같은 행동을 「빌드업」으로, 감독은 「수비 완결성」으로 라벨링했다.
+⭐ Tanswell의 관찰 시각(Bluesky 11:47:25Z ≈ **16′**)은 우리가 찾은 Δ≤8 시퀀스 구간(1′·5′·14′·30′) **안에 있다** — 그가 본 것은 실재한다.
+⛔ 단 축을 수비로 바꿔도 **깊이는 실측되지 않는다**: 전반 수비액션 카마라 x=38.6(n=9) vs CB라인 19.4(n=17) → **Δ=19.3**으로 더 벌어진다.
+⇒ REJECTED는 유지하고, 올바른 축의 주장을 **claim #178**(`pivot_drop_purpose = defensive_completion_not_buildup`, **APPLIED**)로 새로 세웠다 — 단 **깊이·형태(백3/백5)는 APPLIED 범위에서 제외**한다. obs#931.
+
+> ⛔⛔ **방법론**: 재판정 조건을 걸 때 **국면(obs#879)뿐 아니라 「어느 축의 행동인가」도 함께 고정해야 한다.** 축이 틀리면 국면을 아무리 정확히 좁혀도 기각만 반복된다.
+
+### D+2-3. ⭐⭐ 후반 「우측 편중 백5」의 원인이 상대측에서 실측됐다
+
+obs#868의 백5는 **자생적 형태가 아니라 토트넘의 하프타임 측면 전환에 대한 응답**이다.
+
+| 토트넘 최종 1/3(x>65) 보유 | 빌라 좌측(루헤리) | 중앙 | 빌라 우측(완비사카·캐시) |
+|---|---|---|---|
+| **전반** | **64** | 29 | 39 |
+| **후반** | 57 | 26 | **84** (+115%) |
+
+15분 구간으로 쪼개면 전반 15~30′에 빌라 좌측 **30**으로 정점, 후반 **60~75′에 빌라 우측 32**로 정점이다.
+
+선수 단위로도 갈린다(y 낮음 = 그 팀의 우측):
+
+| 선수 | 전반 | 후반 |
+|---|---|---|
+| 사비뉴 | y **12.6** (n=34) — 빌라 좌측 | y 55.4 (n=41) — 중앙 이동 |
+| 로버트슨(LB) | y 75.1 (n=**29**) | y 80.8 (n=**51**) — 빌라 우측, 이벤트 +76% |
+| 마르무시 | y 73.8 | y 67.9 — 빌라 우측 |
+| 쿠두스(HT 투입) | — | y 29.5 — 빌라 좌측을 이어받음 |
+
+⭐ 상대팀 채널의 「McGinn was dropping in on the right as well to **protect us against Marmoush**」(맥긴도 우측으로 내려앉아 마르무시에 대비했다)가 **선수 이름 수준에서 실측과 일치**한다 — 마르무시는 실제로 후반 빌라 우측에 있었다.
+⇒ **게임 구현 함의**: 이 백5는 조건부 조정이므로 **시즌 정본 포메이션·라인 축을 바꾸지 않는다**(claim #138·#150 APPLIED의 성격을 「조건부」로 한정). obs#921.
+
+> 좌우 규약 검증: 포로(RB) 전반 y24.7 · 그레이(포로 대체 RB) y21.0/14.8 · 루헤리(LB) y≈93 — **낮은 y가 그 팀의 우측**임이 양 팀에서 확인된다.
+
+### D+2-4. ⭐ 루헤리 해석 정정 — 「많이 막음 = 많이 당함」은 성립하지 않는다
+
+D+1이 남긴 과제 ⑦을 닫는다. **표적이 된 전반에 오히려 개입이 적었다.**
+
+| | 토트넘의 빌라 좌측 진입 | 루헤리 수비액션 | x평균 |
+|---|---|---|---|
+| 전반 | **64**(최다 구간) | **8건** | 15.2 |
+| 후반 | 57 | **20건** (+150%) | 21.6 |
+
+⇒ 많은 수비 스탯은 좌측 피침투의 증거가 아니라 **팀 전체 저블록의 산물**이다(후반 점유 29% · def_x 30.6).
+전반의 고전은 「많이 막느라 바빴다」가 아니라 **개입 자체를 못 했다**(사비뉴 y12.6·n34에게 통과당함) 쪽이고, D+1의 「전반 고전 → 후반 개선」(obs#874)과 정합한다. obs#925.
+⚠️ 수치 정정: D+1이 인용한 「인터셉트 6」은 오늘 스냅샷에서 **5**다(Opta 사후 개정 — obs#883 재현). **리포트 인용값은 덮지 않는다.**
+
+### D+2-5. ⭐⭐ 선제골 기점 3자 충돌이 Opta로 정리됐다
+
+매체가 세 갈래로 갈렸다: ⓐ「카마라 어시스트」(ukcalcio·TMW·EFE·SofaScore) ⓑ「카마라의 빗맞은 슛을 밀어넣음」(Blick) ⓒ「로버트슨의 클리어링 미스」(watson.ch/sda).
+
+> 48′26 부엔디아 Pass 실패 → 48′28 벤탄쿠르 Interception → 48′28 로버트슨 Clearance → **48′29 로버트슨 `Error`(`LeadingToGoal`)** → **48′31 맥긴 Pass(`IntentionalAssist`+`ShotAssist`+`KeyPass`)** → **48′32 카마라 `MissedShots`(BoxCentre·MissLeft·Blocked)** → 48′33 만잠비 Goal(`FirstTouch`·SmallBoxCentre)
+
+⇒ **ⓑ와 ⓒ가 둘 다 맞고 서로 보완적이며, ⓐ는 어시스트 집계 관행이다.** 카마라의 접촉은 `Pass`가 아니라 `MissedShots`다.
+⭐ 만잠비 본인의 「부바카르가 슈팅하려는 걸 봤다」가 Opta와 정확히 일치한다 — 그는 패스가 아니라 **슛**을 본 것이다.
+⇒ 1874·The Holy Trinity Show의 「카마라가 볼을 안 보고 있는 것 같다」는 의문은 **성립하지 않는다**(패스가 아니었으므로).
+⛔ `player_matches`의 SofaScore 어시스트 기록(카마라 assists=1)은 **덮지 않는다** — 제공사 집계이고 리포트가 인용한 값이다. obs#927.
+
+### D+2-6. ⭐⭐ 만잠비 치료 시점 충돌 종결 — 별개 2회가 아니다
+
+**만잠비 치료는 1회뿐이고(34~40′), 18′ 정지는 토트넘 포로의 부상 교체였다.**
+
+| 소스 | 포로(스퍼스 RB) | 만잠비 |
+|---|---|---|
+| **Opta** | 18′ SubOff(출전 **19분**) → 그레이 | **34′52″ 벤탄쿠르에게 파울 당함**(같은 분 Card 없음) |
+| Birmingham Live 라이브 | 17′ 치료 → 19′ 교체 | **엔트리 없음** |
+| Hayters 라이브 | — | **36′ 1회** |
+| VAVEL 라이브 | 20′ 치료 | **40′ 1회** |
+| Tanswell(Bluesky) | — | 「**Bentancur should be booked. Yet he's not.** Physios on for Manzambi」 |
+
+Blick의 「30분경 벤탄쿠르 태클 뒤」는 이 사건과 **같은 것**이고, D+0의 「18′경 물리치료진」은 **귀속 오류**다(빌라의 전반 교체는 0건).
+⭐ 가해자를 특정한 유일한 소스(Tanswell)와 Opta가 **파울·무카드까지 일치**한다.
+⇒ 72′ 교체 사유의 무게가 「체력 관리」 단독에서 **「무릎 충격 + 부하 관리」 복합**으로 이동한다 — The Holy Trinity Show가 「the butcher Bentancur coming in on **the exact same knee**」(벤탄쿠르가 **정확히 같은 무릎**으로 들어왔다)로 부위를 특정했고, Blick은 만잠비가 **월드컵 16강 직전 무릎 부상**으로 여름 내내 재활했다고 적는다.
+⛔ 단 **어느 소스도 이것을 교체와 직접 연결하지 않았다** — 교체 사유의 직접 진술은 여전히 0건(obs#885 유지). obs#924.
+
+> ⛔⛔ **이 항목은 같은 회차에 두 번 정정됐다(둘 다 커밋 전).** 초판은 「만잠비가 당한 파울 0건 ⇒ 벤탄쿠르설 기각」이었는데 **Opta `Foul` outcome 규약을 거꾸로 읽은 것**이었다. 2판은 「별개 2회가 맞다」였는데 라이브블로그 4종 대조로 **1회**임이 확정돼 다시 정정했다.
+
+### D+2-7. ⛔⛔ 방법론 — Opta `Foul` outcome 규약을 확정한다
+
+> **`Unsuccessful` = 그 선수가 파울을 **범했다** · `Successful` = 파울을 **당했다**.**
+> `Offensive`/`Defensive` 자격은 **국면 표시일 뿐 가해/피해를 뜻하지 않는다.**
+
+확정 근거 2종(둘 다 「이미 답을 아는 사건」):
+1. **카드 대조** — 51′ 반헤케 Yellow ↔ 같은 분 TOT Foul `Unsuccessful`(반헤케) · 91′ 캐시 Yellow ↔ 같은 분 AVL Foul `Unsuccessful`(캐시). **경고받은 쪽이 Unsuccessful**이다.
+2. **팀 총계 대조** — AVL Unsuccessful **13** · TOT Unsuccessful **9** ↔ 공식 기록 「파울 토트넘 9 : 빌라 13」과 정확히 일치.
+
+⚠️ 이번 회차에 실제로 거꾸로 읽어 **서사 소스를 실측으로 기각할 뻔했다.** ⇒ **규약을 추론으로 채우고 그 위에 판정을 쌓지 않는다. 판정 전에 「이미 답을 아는 사건」으로 규약을 먼저 고정한다.** obs#926 (docs/70-lessons 반영 후보).
+
+### D+2-8. 나머지 판정 갱신
+
+| claim | 이전 | D+2 | 근거 |
+|---|---|---|---|
+| **#143** 세트피스 마킹 | HELD | 🟢 **APPLIED** | 재판정 조건 ⑴(독립 2번째 소스) 충족 + Opta 확정: 97′28 반헤케 Goal `Head+BoxCentre+SetPiece+FirstTouch`, 어시스트는 로버트슨의 `Cross+FreekickTaken`(**코너가 아니라 프리킥**). ⛔ 개인 마킹 배치는 여전히 미특정 — **이 해상도까지만** APPLIED |
+| **#142** 86′ 2차 처리 실패 | APPLIED | 🟢 **APPLIED 유지·보강** | 새 스냅샷에서 시퀀스 전체가 재현(85′21 루헤리 Aerial → … → 85′38 **루헤리 Dispossessed** → 85′40 **부엔디아 TakeOn 실패** → 쿠두스 → 갤러거). ⭐ **D+2 스윕의 「Townley 단독·교차검증 실패」 판단을 기각한다** — 라이브블로그가 선수를 안 적은 것은 반대 증거가 아니고, **Opta가 루헤리의 Dispossessed를 직접 기록**한다 |
+| **#141** GK 롱킥 루트 | APPLIED | 🟢 **확증** | 66′08 스즈키 Pass(**`Longball`+`GoalKick`**) → 잭슨 BallTouch → 만잠비 Pass(`IntentionalGoalAssist`) → 잭슨 TakeOn(반더벤 제침) → Goal(`Volley`). 감독이 일본어 경유로 이 연결을 진술했고 데 제르비가 상대편에서 확인 |
+| **#137** 원정 게임플랜 | APPLIED | 🟢 **3번째 독립 확인** | 에메리 「keeping the result with nil nil was **our process**」 · 맥긴 전언 「감독은 하프타임에 최소 0-0을 기대했다」 · 상대 코치 채널 「Villa's perfect willingness to sit in, congest, and then play long over us」 |
+
+### D+2-9. 신규 구현 주장 (`video_impl_claims` #165~#178 — G17)
+
+| 영상 | axis · field | value | verdict |
+|---|---|---|---|
+| `D7zbh9-q8d8` 1874 | instruction · `long_ball_target_zone` | `behind_advanced_fullbacks` | **APPLIED** |
+| `D7zbh9-q8d8` 1874 | instruction · `long_ball_pin_effect` | `pins_opposition_fullbacks` | **HELD** |
+| `D7zbh9-q8d8` 1874 | instruction · `pivot_partnership_ball_dominance` | `kamara_gomes_neither_dominant` | **PENDING** |
+| `-5lhUwdm9QU` UTV | instruction · `defensive_shape_second_half` | `back_five_to_back_six` | **APPLIED** |
+| `-5lhUwdm9QU` UTV | instruction · `deep_block_runner_tracking` | `mcginn_fails_to_track_runners` | **HELD** |
+| `-9ar6UOF958` Townley | instruction · `rb_rotation_criterion` | `wanbissaka_defence_cash_possession` | **APPLIED** |
+| `dgEOoi6Pdrc` Holy Trinity | instruction · `away_vs_top_game_plan` | `defend_deep_then_transition` | **APPLIED** |
+| `dgEOoi6Pdrc` Holy Trinity | instruction · `set_piece_defending_marking` | `mark_drop_under_flight_fail` | **APPLIED** |
+| `kV4Mha-L0aA` 🇯🇵 サカチャンネル | instruction · `gk_long_kick_route` | `goal_kick_to_ten_flick_to_nine` | **APPLIED** |
+| `v6cVSXOaS8E` OhSoSpurs(상대팀) | instruction · `away_vs_top_game_plan` | `defend_deep_then_transition` | **APPLIED** |
+| `QkA0fScs5s8` Spurs Chat(상대팀) | team_axis · `build_up_style` | `Counter` | **APPLIED** |
+| `QkA0fScs5s8` Spurs Chat(상대팀) | instruction · `lead_management_after_three_nil` | `switch_off_concede_two` | **HELD** |
+| `k6dbBj7Tz7w` 에메리 회견 | instruction · `pivot_drop_purpose` | `defensive_completion_not_buildup` | **APPLIED** |
+| `U4OewDAQMCk` MAH | none | — | NA |
+
+⛔ **HELD 3건의 재판정 조건** — ⑴ **롱볼 억제 효과**: 실측이 반대 방향이다(로버트슨 후반 이벤트 29→51, +76%). 롱볼 시도 직후 60초 창으로 좁혀 상대 풀백 x가 유의하게 낮으면 APPLIED. ⑵ **러너 추적 실패**: 우리 이벤트는 「개입하지 못한 것」을 담지 않는다 — 독립 2소스 특정 또는 2경기째 누적. ⑶ **3-0 이후 이완**: 리드 3골 이후 구간의 PPDA·def_x를 별도 산출해 직전 구간 대비 유의하게 나빠지면 APPLIED, 아니면 REJECTED(대안 가설이 이미 더 구체적이다 — 86′는 2차 처리 실패, 97′는 세트피스).
+
+### D+2-10. 후반 2실점 — 「하나의 이완」이 아니라 두 개의 다른 실패
+
+양 팀 팬 채널이 공통으로 「3-0 이후 스위치를 껐다」로 읽지만 **두 실점의 구조가 다르다**: **86′는 2차 처리 실패**(오픈플레이 · claim #142) · **97′는 세트피스**(프리킥 크로스 헤더, 이번 시즌 PL 첫 세트피스 실점 · claim #143).
+⇒ 하나로 묶으면 두 개의 다른 처방이 뭉개진다.
+
+가장 구체적인 전술 진단은 Read Aston Villa(2026-09-21)의 것이다.
+
+> 「**direct football creates a different challenge when protecting a lead. A vertical pass that fails to reach its target can return possession immediately to the opposition. When the score is 3-0, the risk may be worthwhile. When the opponent has just scored and momentum is changing, keeping the ball for another 30 seconds can be considerably more valuable.**」
+> (다이렉트 풋볼은 리드를 지킬 때 다른 과제를 만든다. 목표에 닿지 못한 수직 패스는 곧바로 상대에게 소유권을 돌려준다. 3-0일 때 그 리스크는 감수할 만하다. 상대가 막 득점해 모멘텀이 바뀌는 상황에서는 볼을 30초 더 갖고 있는 편이 훨씬 가치 있을 수 있다.)
+
+⭐ **실례가 실점 직전에 실제로 있다**: 84′29 스즈키 Longball 실패 → 반헤케 BallRecovery로 즉시 소유권이 넘어가고 그 흐름이 85′46 갤러거 골로 이어진다.
+⇒ **게임 구현 함의: 「리드 관리」는 라인 축이 아니라 「3골 리드 이후 전개 설정을 다이렉트 → 균형·짧은 패스로 전환」 쪽 처방이다.** ⛔ 단일 경기이므로 정본 변경 근거로 쓰지 않는다. obs#930.
+⚠️ D+1의 obs#878(**감독** 진단 「영구 0건」)은 유지된다 — 위 진단은 전부 기자·분석가·선수의 것이다.
+
+### D+2-11. 소스 커버리지 (D+2)
+
+| 종류 | 상태 | 내용 / 미수행 사유 |
+|---|---|---|
+| 1. 유튜브 전술 분석 | ✅ | **신규 8편 등재·전사**(`match_videos` 217~224). ⭐ 1874가 **정확히 D+2(09-21)에 「5 Things We Learned」 발행** — §2-1a의 「지연 게시」 전제가 다시 확인됐다. UTV 경기 직후 반응(`-5lhUwdm9QU`)은 또 **`/streams` 탭에만** 있었다(obs#876 재현) |
+| 2. 전술 블로그 | 🔴 **0건 — 축을 닫는다** | **9곳 전부 최신글 목록을 직접 열어** 확인했고 이 경기 0건. ⛔ **Tifo·btlanalysis·Breaking The Lines는 사실상 소멸**(리다이렉트 체인·DNS 미존재·RSS 6월 정지) → **스윕 명단에서 제거**. 살아 있는 TFA·Mastermind는 09-19~20에 브라이턴·아스널 기사를 냈다 — **빌라-스퍼스는 장문 전술 매체의 관심 밖**이다. obs#929 |
+| 3. 기사 | ✅ | Birmingham Live 4편(Townley) · Read Aston Villa 3편 · To The Lane And Back 2편 · Irish Times · ukcalcio · TMW 2 · DerbyDerbyDerby · Blick 3 · watson.ch · SRF · 中日スポーツ · Goal.com JP · FOOTBALL ZONE 2 · SOCCER DIGEST · Senego · EFE · Fotbollskanalen. ⚠️ **Ashley Preece는 2023년 퇴사** — 빌라 담당은 **John Townley 단독**이다(스윕 명단 갱신) |
+| 4. 본인 발언 | ✅ | ⭐⭐ **에메리 회견 전문 2판**(구단·TNT) — 카마라 하강의 **목적**을 1차 진술로 확보(claim #178). 맥긴(TNT·Birmingham Live) · 부엔디아 · 잭슨(BBC 경유) · 만잠비(Villa TV) · 데 제르비 회견 전문(스퍼스 팟캐스트 11분) · 야킨(스위스 대표팀) |
+| 5. ⭐ 기자 SNS | ✅ **신규 경로** | **Tanswell Bluesky 공개 API로 25건 확보** — D+1에 「X에서 잘림」으로 미확보였던 포스트를 **전문 + 본인 답글까지** 회수했다. X는 비로그인 타임라인이 로드되지 않는다 ⇒ **Bluesky를 1차 경로로 승격**. obs#928 |
+
+**언어별 D+2 결과 (0건은 검색어를 남긴다)**
+
+| 언어 | 결과 |
+|---|---|
+| 🇮🇹 | **4건**(ukcalcio · TMW ×2 · DerbyDerbyDerby). ⛔⛔ **루헤리 숫자 평점은 「검색 실패」가 아니라 「매체가 다루지 않음」으로 확정** — 찾던 월요일 「italiani all'estero」 코너(DerbyDerbyDerby 09-21 09:45)를 **슬라이드 5장 전부 열어** 확인했고, **평점 체계가 있는 코너인데(돈나룸마에 6.8 부여) 루헤리를 한 줄도 다루지 않는다.** ⇒ **이 축을 닫는다.** 신규 0건 검색어: `Ruggeri pagelle italiani all'estero Premier League quinta giornata` · `"Ruggeri" Aston Villa Tottenham 19 settembre 2026` · `gazzetta.it italiani all'estero pagelle Ruggeri Palestra Tonali` · `calciomercato.com italiani all'estero Ruggeri voto`. ⚠️ gazzetta.it 검색은 JS 로딩이라 본문 0 |
+| 🇨🇭🇩🇪 | **5건**(Blick ×3 · watson.ch · SRF). ⭐ **30′ 부상 장면 신규 확보**(Blick: 「Nach einer halben Stunde liegt Manzambi nach einem harten Einsteigen von Bentancur am Boden」/30분경 만잠비가 벤탄쿠르의 거친 태클에 쓰러진다) — **Opta 34′52″와 합치**. ⭐ 야킨 「Wir sind absolut happy, dass er wieder zu 100 Prozent fit ist」(그가 다시 100% 몸 상태를 되찾아 정말 행복하다). ⛔ **72′ 교체 사유 직접 진술은 여전히 0건.** nau.ch·20min.ch는 이 경기 인덱싱 0건(도메인 직접 접근 미시도) · kicker.de 1건 미조회. ⚠️ Blick 일부 기사에 「KI-generiert」 표기 |
+| 🇯🇵 | **5건**(中日スポーツ · Goal.com JP · FOOTBALL ZONE ×2 · SOCCER DIGEST) + 영상 1편(`kV4Mha-L0aA`). ⭐⭐ **영어권에 없던 게임플랜 서술 확보** — 스즈키 롱킥의 타깃이 「역습 시 우측의 만잠비」. ⭐ 에메리 「ビルドアップではロングボールを選択することもできる … 実際今日の我々の2点目でもそれをやってくれた」(빌드업에서 롱볼을 선택할 수도 있다 … 실제로 오늘 우리 두 번째 골에서도 그것을 해줬다). ⛔ **스즈키 본인 코멘트 4회차 연속 0건** — 일본 대표팀 소집 후(9/22~23) 재시도가 효율적 |
+| 🇪🇸 | ⛔ **에메리 스페인어 verbatim 4회차 연속 0건.** EFE 통신 1건뿐이고 **에메리 발언 인용 0**이다. ⇒ **구조적 부재로 결론**을 권고한다(에메리는 영국 현지 회견을 영어로 하고 스페인 매체는 EFE를 그대로 받는다). ⛔ EFE는 반헤케 골을 「anotó en propia puerta」(자책골)로 **오기** — 배제. 0건 매체: marca · as · relevo · elgoldigital · mundodeportivo |
+| 🇫🇷🇸🇳 | 1건(Senego). ⭐ **신규 축**: 세네갈 대표팀 감독이 **파트리크 비에이라**로 바뀌었고 잭슨이 **그의 첫 소집 명단**에 들었다. ⛔ L'Équipe·RMC·Foot Mercato 0건 · 음바예 개별 서사 0건 |
+| 🇸🇪 | ⛔ **린델뢰프 개별 평가 0건 — 3회차 연속.** Fotbollskanalen 경기 리포트에 라인업 표기(「Nilsson Lindelöf」)만. Aftonbladet·Expressen 0건. ⚠️ 연도 함정 4건 회피 확인 |
+| 🇧🇷 | ⛔ **본토 매체 0건 — 3회차 연속**(GE·Lance·UOL·Trivela). 검색 결과가 전부 2026-07 이적 시점으로 회귀한다 |
+| 🏴 상대팀 | ✅ OhSoSpurs(프로 코치) · Chris Cowlin: Spurs Chat(회견 전문 11분) · To The Lane And Back ×2 · Irish Times |
+
+**⚠️ 매체 간 사실 충돌 — 실측으로 정리한 것**
+
+| 충돌 | 정리 |
+|---|---|
+| 선제골 기점(3버전) | **Opta로 종결** — 로버트슨 `Error` → 맥긴 `IntentionalAssist` → 카마라 `MissedShots` → 만잠비(D+2-5) |
+| 만잠비 치료 시점 | **종결 — 1회(34~40′), 18′은 포로**(D+2-6) |
+| 득점 시각 | 만잠비 45+1/45+4/48/49로 갈림 → Opta 1기 **48′33″**, DB `match_events` 49′. **전반 추가시간만 확정**이고 나머지는 규약 차이 |
+| 잭슨 골 시각 | 66′(EFE) vs **67′**(그 외 전부) → **67′ 채택**(Opta 66′16″) |
+| 반헤케 골 | EFE만 「자책골」 — **오기, 배제** |
+| 86′ 최종 굴절 | TNT·NBC 「캐시 굴절」 — **이번 스냅샷에도 Opta 이벤트 없음**. 굴절은 Opta가 별도 이벤트로 남기지 않는 종류라 **미검증 유지**(obs#871) |
+| 「롱볼 86%」 | ⚠️ **2차 인용이고 원천은 데 제르비 회견 하나다** — 여러 매체가 실었어도 **동일 원천의 중복이지 교차검증이 아니다**(불변규칙 12). 「Opta에 따르면」은 허위 귀속(obs#875) |
+
+**D+3 이후 과제**: ① 🇨🇭 blick.ch 내부 검색으로 만잠비 인터뷰 1차 URL(현재 애그리게이터만) · kicker.de · nau.ch/20min 도메인 직접 접근 ② 🇯🇵 스즈키 본인 코멘트 — 대표팀 소집 후(9/22~) Number Web·ゲキサカ·Sports Navi ③ 🇧🇷 ge.globo 도메인 내 검색 ④ 미전사 3편(`wY_0dKnv0jY` UTV 워치얼롱 2시간48분 · `7TJfTLcbBMA` Villa On Tour · `fKDbTccRjGk` UTV 09-18 전술 프리뷰) ⑤ The Athletic 09-20 기사는 **Tanswell 포스트에 무료 공개(gift) 링크가 붙어 있어 사용자 브라우저로 열 수 있다** ⑥ Read Aston Villa·Birmingham Live의 D+2 미조회분(밍스/파우 토레스 논지 · 고메스 · **마첸 6~8주 이탈**) ⑦ 🇮🇹 루헤리 평점 축은 **닫는다**(위) ⑧ 🇪🇸 에메리 스페인어 축도 **닫기를 권고**.
+
+**⛔ 등재 제외 판정 (다음 회차가 재후보로 올리지 않게)**
+- `4J67XYRC8Uk` — **다른 경기다.** 25/26 시즌 35라운드 홈 패배 회견(「we finished today the day 35 with 58 points」). **연도 함정 적중.**
+- `KCsvWv_eDeg`(UTV 09-18) · `nUvtgLG_Chg`(The Analyst 09-18) · `k_rZ-GQKO2I`(Tifo 09-15) — **전부 경기 전 프리뷰**. 이 경기 사후 자료가 아니다. ⚠️ 단 `KCsvWv_eDeg`는 「스퍼스전이라면 캐시가 적임」이라는 **사전 예측이 실제 기용과 반대**여서 완비사카 항목에 메모로 남겼다.
+- `URuGIoscvXg` — **2026-09-12 포레스트전**이다.
+- UTV 쇼츠 4편(`OOUarVOD0ME`·`0MGqfCLrYrM`·`QdUiu3oLheo`·`23SgNgzLn98`) — 감정 반응 포맷, 전술 내용 없음(제목·포맷 기준 판단).
+- `ofp0s7RaNoc`(D+1 판정) 유지.

@@ -1,6 +1,118 @@
 {
  "all": [
   {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 217,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "long_ball_target_zone",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「if their fullbacks come forward, there's space behind their fullbacks … a lot of that was by design」(그들의 풀백이 전진하면 그 뒤에 공간이 생긴다 … 상당 부분이 설계된 것이었다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "behind_advanced_fullbacks",
+     "verdict": "APPLIED",
+     "verdict_note": "실측이 지지한다. Opta(pulled 2026-09-21 scope=full): 스즈키 롱볼 27회(성공 10) · 골킥 7회 전부 롱 · 이 경기 롱볼 비중 14.5%는 26/27 최고(obs#864). 에메리 본인이 「롱볼은 설계」를 1차 진술했고(obs#882) 상대 감독이 경기 전 정량 스카우팅으로 독립 확인했다(claim #140). ⛔ 시즌 정본 team_tactic_setups(Short Passing)는 바꾸지 않는다 — 에메리의 빌드업은 상대 의존이고 헐전 롱볼 5.6%가 같은 시즌에 있다."
+    },
+    {
+     "axis": "instruction",
+     "field": "long_ball_pin_effect",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「it made sure that Archie Gray had to stay back. It made sure that Andy Robertson had to stay back」(아치 그레이가 뒤에 남아야 했고 앤디 로버트슨도 뒤에 남아야 했다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "pins_opposition_fullbacks",
+     "verdict": "HELD",
+     "verdict_note": "⛔ 실측이 부분적으로만 지지한다. 토트넘 풀백의 전진 빈도를 보유 이벤트로 대리 측정하면 로버트슨(LB)은 전반 n=29 → 후반 n=51로 **오히려 76% 늘었고** y도 75.1→80.8로 더 벌어졌다 — 후반에는 억제되지 않았다. 그레이는 전반 n=20 → 후반 n=21로 불변. ⇒ 「묶어뒀다」는 전반 한정 서술일 수 있으나 채널은 구간을 특정하지 않았다. ⛔ 재판정 조건: 전반/후반을 나눈 상대 풀백 전진 지표(터치 x 평균·파이널서드 진입 수)를 롱볼 시도 직후 60초 창으로 좁혀 산출한다. 그 창에서 풀백 x가 유의하게 낮으면 APPLIED."
+    },
+    {
+     "axis": "instruction",
+     "field": "pivot_partnership_ball_dominance",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「Neither of them want to be massively ball dominant」(둘 다 볼을 크게 지배하려 하지 않는다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "kamara_gomes_neither_dominant",
+     "verdict": "PENDING",
+     "verdict_note": "이 경기 실측: 카마라 패스 42(성공 35)·터치 48 · 주앙 고메스 패스·터치는 비슷한 대역이고 어느 쪽도 팀 배급을 독점하지 않는다. 다만 「지배하려 하지 않는다」는 성향 주장이라 단일 경기로 판정하지 않는다. ⛔ 재판정 조건: 두 선수 동시 선발 3경기에서 팀 패스 점유율 상위 1·2위를 CB가 차지하는 패턴이 반복되면 APPLIED."
+    }
+   ],
+   "key_points": [
+    "롱볼 설계 주장 — 원문 「they're big in possession and they use their fullbacks. So, if their fullbacks come forward, there's space behind their fullbacks … I think a lot of that was by design at the weekend」(그들은 점유가 강하고 풀백을 쓴다. 풀백이 전진하면 그 뒤에 공간이 생긴다 … 상당 부분이 설계된 것이었다고 본다) · confidence: auto-caption",
+    "롱볼의 억제 효과 — 원문 「it made sure that Archie Gray had to stay back. It made sure that Andy Robertson had to stay back」(그래서 아치 그레이가 뒤에 남아야 했고, 앤디 로버트슨도 뒤에 남아야 했다) · auto-caption. ⚠️ 실측은 후반에 로버트슨 이벤트가 29→51로 오히려 늘어 이 효과가 전반 한정일 가능성을 시사한다(obs 참조)",
+    "카마라 진단 — 원문 「the uncomfortability comes from a new partnership there. Neither of them want to be massively ball dominant … he's coming back after his second ACL」(불편함은 거기 새 파트너십에서 온다. 둘 다 볼을 크게 지배하려 하지 않는다 … 그는 두 번째 ACL 이후 복귀 중이다) · auto-caption",
+    "진행자 인용 Opta 수치: 빌라 롱패스 약 15% vs 토트넘 5.9% · 파이널서드 패스 224-70. ⚠️ 방송 낭독분이라 1차 확인 불가 — 근거 등급 D(통설) 아닌 2차 인용으로 취급",
+    "34분 전술 변경 관찰(좌측 풀백 보호를 고메스 쪽으로 이동)은 auto-caption 판독이 불완전해 인용하지 않는다"
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-21",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "1874의 D+2(09-21) 「5 Things We Learned」. 이 경기를 ⓐ 의도된 롱볼 설계 ⓑ 만잠비의 PL 첫 선발 ⓒ 카마라-고메스 새 파트너십의 불편함 세 축으로 읽는다. 진행자가 Opta 수치를 인용해 빌라 롱패스 비율 약 15%(토트넘 5.9%)·패스 성공률 83.3%·파이널서드 총 패스 토트넘 224 대 빌라 70을 들고, 이것이 우연이 아니라 상대 풀백 배후 공간을 노린 설계라고 주장한다. 스즈키의 롱킥이 상대 풀백(그레이·로버트슨)을 뒤에 묶어두는 억제 효과를 냈다는 관찰이 이 채널 고유 기여다. 카마라 부진은 개인 문제가 아니라 「둘 다 볼을 지배하려 하지 않는」 새 조합 + 두 번째 ACL 복귀 맥락으로 설명한다.",
+   "team_code": "AVL",
+   "title": "5 Things We Learned … Going Long & Manzambi Changes Everything",
+   "transcript_path": "reports/transcripts/D7zbh9-q8d8.en.md",
+   "url": "https://www.youtube.com/watch?v=D7zbh9-q8d8",
+   "video_id": "D7zbh9-q8d8"
+  },
+  {
+   "channel": "The Holy Trinity Show",
+   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 220,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "away_vs_top_game_plan",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「the manager was expecting at minimum nil-nil at halftime」(감독은 하프타임에 최소한 0-0을 기대하고 있었다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "defend_deep_then_transition",
+     "verdict": "APPLIED",
+     "verdict_note": "claim #137의 **3번째 독립 확인**이다 — 에메리 본인(「keeping the result with nil nil was our process to try to grow up during the match」/0-0으로 결과를 유지하는 것이 경기 중 성장하려는 우리의 프로세스였다) · 맥긴(이 전언) · 실측(def_x 30.6 · PPDA 13.24 · 전반 점유 43%). 시즌 정본은 바꾸지 않는다(단일 경기)."
+    },
+    {
+     "axis": "instruction",
+     "field": "set_piece_defending_marking",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「a pretty simple straight set piece that just cleared the head of Tyrone Mings」(밍스의 머리를 넘긴 아주 단순한 세트피스)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "mark_drop_under_flight_fail",
+     "verdict": "APPLIED",
+     "verdict_note": "⭐ claim #143이 건 재판정 조건(**독립 2번째 소스**)이 충족됐고 실측이 메커니즘을 확인한다. Opta 97′28 반헤케 골 quals = **Head + BoxCentre + SetPiece + FirstTouch**, 어시스트는 로버트슨의 **Cross + FreekickTaken**(프리킥이지 코너가 아니다). ⇒ 「세트피스 크로스가 박스 중앙에서 공중 경합을 이기고 헤더로 마무리됐다」까지 확정된다. ⛔ 잔여 한계: **개인 마킹 배치**(누가 누구를 놓쳤는가)는 우리 이벤트 데이터로 여전히 특정되지 않는다 — 「밍스의 머리를 넘었다」는 영상 서술 1소스에 의존한다. 이 해상도까지만 APPLIED로 닫는다."
+    }
+   ],
+   "key_points": [
+    "전반 게임플랜 — 원문 「John McGinn admitted after this game that the manager was expecting at minimum nil-nil at halftime」(맥긴이 경기 후 감독은 하프타임에 최소한 0-0을 기대하고 있었다고 인정했다) · auto-caption. 에메리 본인의 「keeping the result with nil nil was our process」와 합치",
+    "세트피스 실점 — 원문 「a pretty simple straight set piece that just cleared the head of Tyrone Mings … that was the first set piece goal we've conceded in the Premier League this season」(타이론 밍스의 머리를 넘긴 아주 단순한 세트피스 … 이번 시즌 PL 첫 세트피스 실점이었다). Opta 합치: 97′28 반헤케 골 quals = Head+BoxCentre+SetPiece, 로버트슨의 FreekickTaken 크로스",
+    "만잠비 부상 — 원문 「Manzambi was down receiving treatment following the butcher Bentancur coming in on the exact same knee」(벤탄쿠르가 정확히 같은 무릎으로 들어온 뒤 만잠비가 쓰러져 치료를 받았다) · auto-caption. Opta 34′52″ 벤탄쿠르 파울과 합치(obs 참조)",
+    "선제골 의문 — 원문 「it seems like Kamara is actually looking off the ball」(카마라는 실제로 볼을 안 보고 있는 것처럼 보인다) ⇒ Opta가 해소: 카마라 이벤트는 Pass가 아니라 MissedShots(BoxCentre·RightFoot·MissLeft)다. 슛이었으므로 「볼을 안 봤다」는 의문 자체가 성립하지 않는다",
+    "맥긴의 만잠비 평 — 원문 「Manzambi's first half was poor」(만잠비의 전반이 형편없었다)"
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-21",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "The Holy Trinity Show의 D+2(09-21) 리뷰. 이 회차의 고유 기여는 세 가지다 — ⓐ 맥긴이 경기 후 「감독은 하프타임에 최소 0-0을 기대했다」고 말했다는 전언(에메리 본인 진술과 3중 교차) ⓑ 90+8 실점이 이번 시즌 PL 첫 세트피스 실점이며 볼이 밍스의 머리를 넘어갔다는 서술 ⓒ 만잠비가 벤탄쿠르의 태클에 「정확히 같은 무릎」을 맞았다는 부위 특정. 선제골에 대해서는 「카마라가 볼을 안 보고 있는 것처럼 보인다」며 어시스트 의도에 의문을 제기하는데, Opta가 이 의문을 해소한다(카마라의 접촉은 패스가 아니라 빗나간 슛이다).",
+   "team_code": "AVL",
+   "title": "Tottenham Hotspur 2 Aston Villa 3 | English Premier League",
+   "transcript_path": "reports/transcripts/dgEOoi6Pdrc.en.md",
+   "url": "https://www.youtube.com/watch?v=dgEOoi6Pdrc",
+   "video_id": "dgEOoi6Pdrc"
+  },
+  {
    "channel": "Aston Villa Football Club",
    "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
    "id": 200,
@@ -74,6 +186,42 @@
    "video_id": "XoqRKPT4D68"
   },
   {
+   "channel": "OhSoSpurs",
+   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 222,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "away_vs_top_game_plan",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「Villa's perfect willingness to sit in, congest, and then play long over us」(빌라의, 내려앉아 밀집하고 우리 머리 위로 길게 넘기려는 완벽한 의지)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "defend_deep_then_transition",
+     "verdict": "APPLIED",
+     "verdict_note": "⭐ **상대 코치 시각의 독립 확인**이다(claim #137 보강). 우리 실측(def_x 30.6 · PPDA 13.24 · 후반 점유 29% · 롱볼 14.5%)과 상대 감독의 사전 스카우팅(claim #140)과 같은 방향이다. 제3자·적대적 소스가 같은 구조를 서술했다는 점이 추가 정보다. 시즌 정본은 바꾸지 않는다."
+    }
+   ],
+   "key_points": [
+    "빌라 게임플랜 — 원문 「Villa's perfect willingness to sit in, congest, and then play long over us. It — we just were unable to deal with it」(빌라의, 내려앉아 밀집하고 우리 머리 위로 길게 넘기려는 완벽한 의지. 우리는 그걸 전혀 다루지 못했다) · auto-caption",
+    "원문 「Villa did literally need to just spanner it long」(빌라는 말 그대로 그냥 길게 후려차기만 하면 됐다)",
+    "선제골 평 — 원문 「Aston Villa didn't create anything. It was a very hopeful, quick ball in behind」(빌라가 뭘 만들어낸 게 아니다. 아주 요행 같은, 빠른 배후 볼이었다) ⚠️ 상대 축 편향. Opta는 로버트슨의 Error(LeadingToGoal)를 기록해 「상대 실책 기점」 쪽을 지지한다"
+   ],
+   "kind": "상대팀",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "스퍼스 축 채널 OhSoSpurs의 「Pro Coach Explains」(09-20). 상대 관점에서 빌라의 게임플랜을 「내려앉아 밀집하고 머리 위로 길게 넘기는 것」으로 요약하고, 스퍼스가 그것을 전혀 다루지 못했다고 인정한다. 빌라의 롱볼 전술이 상대 코치 시각에서도 설계로 읽혔다는 점이 값이고, 만잠비의 선제골은 「요행 같은 배후 볼」로 평가절하한다(상대 축 편향 감안).",
+   "team_code": "AVL",
+   "title": "Pro Coach Explains | Tottenham 2-3 Aston Villa",
+   "transcript_path": "reports/transcripts/v6cVSXOaS8E.en.md",
+   "url": "https://www.youtube.com/watch?v=v6cVSXOaS8E",
+   "video_id": "v6cVSXOaS8E"
+  },
+  {
    "channel": "The Villans",
    "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
    "id": 198,
@@ -124,7 +272,7 @@
      "team_code": "AVL",
      "value": "second_clear_fail_ruggeri_buendia",
      "verdict": "APPLIED",
-     "verdict_note": "⭐ **Opta 이벤트 시퀀스가 이 서술을 그대로 확인한다.** 86′(Opta 85′) 장면: 루헤리 Aerial → 루헤리 Interception ×2 → 밍스 Clearance(x 13.8) → **루헤리 BallRecovery(x 21.7) → 루헤리 Dispossessed(쿠두스 Tackle)** → 루헤리 BlockedPass → **부엔디아 TakeOn 실패**(그레이 Tackle) → 쿠두스 BallRecovery → 쿠두스 → 마르무시 → 쿠두스 어시스트 → 갤러거 Goal. 즉 실점 원인은 블록 구조 붕괴가 아니라 **자기 진영 2차 볼 처리 2회 연속 실패**다. ⇒ 게임 구현 함의는 라인/수비접근 축이 아니라 **세컨볼 대응**이며, 이번 회차에 팀 설정은 바꾸지 않는다."
+     "verdict_note": "⭐ **Opta 이벤트 시퀀스가 이 서술을 그대로 확인한다.** 86′(Opta 85′) 장면: 루헤리 Aerial → 루헤리 Interception ×2 → 밍스 Clearance(x 13.8) → **루헤리 BallRecovery(x 21.7) → 루헤리 Dispossessed(쿠두스 Tackle)** → 루헤리 BlockedPass → **부엔디아 TakeOn 실패**(그레이 Tackle) → 쿠두스 BallRecovery → 쿠두스 → 마르무시 → 쿠두스 어시스트 → 갤러거 Goal. 즉 실점 원인은 블록 구조 붕괴가 아니라 **자기 진영 2차 볼 처리 2회 연속 실패**다. ⇒ 게임 구현 함의는 라인/수비접근 축이 아니라 **세컨볼 대응**이며, 이번 회차에 팀 설정은 바꾸지 않는다.\n\n[2026-09-21 D+2 재검증] **APPLIED 유지 — 새 스냅샷에서 시퀀스가 소수점까지 재현된다.** pulled=2026-09-21 scope=full로 다시 받아 84′00~85′46 전 구간을 펼쳤고 D+1이 적은 고리가 그대로 나온다: 85′21 루헤리 Aerial → Interception ×2(85′21·85′31) → 85′35 **밍스 Clearance(Head, x13.8)** → 85′37 **루헤리 BallRecovery(x21.7)** → 85′38 **루헤리 Dispossessed(쿠두스 Tackle)** → 85′39 루헤리 BlockedPass → 85′40 **부엔디아 TakeOn 실패(그레이 Tackle)** → 쿠두스 BallRecovery → 쿠두스 → 마르무시 → 쿠두스(IntentionalAssist·BigChanceCreated) → 85′46 갤러거 Goal. ⭐ **D+2 스윕의 반대 해석을 기각한다**: 라이브블로그 4종이 86′ 실점 경위에 루헤리를 지목하지 않았다는 이유로 「Townley 단독 주장 · 교차검증 실패」로 낮추자는 판단이 있었으나, **Opta가 루헤리의 Dispossessed를 직접 기록**하고 있다. ⇒ 라이브블로그의 침묵은 반대 증거가 아니다(실시간 기록은 실점 경위를 선수 단위로 적지 않는다). ⛔ 단 **최종 상실은 부엔디아의 TakeOn 실패**이고 루헤리의 Dispossessed는 그 앞 고리다 — value가 두 이름을 모두 담고 있는 것이 정확하다. ⚠️ 사족 정정: TNT의 「매티 캐시의 굴절」은 이 스냅샷에도 없다(obs#871 유지). 다만 NBC 라이브가 같은 굴절을 적었다 — 굴절은 Opta 이벤트로 남지 않는 종류라 **미검증으로 유지**하고 DB에 반영하지 않는다."
     },
     {
      "axis": "instruction",
@@ -135,8 +283,8 @@
      "role_id": null,
      "team_code": "AVL",
      "value": "mark_drop_under_flight_fail",
-     "verdict": "HELD",
-     "verdict_note": "⛔ **재판정 조건**: 세트피스의 개인 마킹 배치는 우리 이벤트 데이터로 특정되지 않는다(리포트 「레퍼런스·한계」에 이미 명시). 현재 근거는 **영상 프레임 1소스**뿐이다. ⇒ 다음 회차에 ⑴ 독립 2번째 프레임 소스(다른 채널·기사) ⑵ 또는 세트피스 실점 2경기째 누적 중 하나가 생기면 재판정한다. 정황 지지: 코너 1-11 · 상대 세트피스 xG 0.57 vs 우리 0.00 · 1874의 「세트피스 양방향 비대칭」 서술. ⚠️ 별건 가설(인과 아님): 세트피스 코치 오스틴 맥피가 2026-07 첼시로 이적했고 25/26 빌라는 세트피스 득점 유럽 공동 1위였다 — **이번 경기를 맥피 부재와 연결한 분석은 0건**이므로 시즌 누적 추적 대상으로만 남긴다."
+     "verdict": "APPLIED",
+     "verdict_note": "⛔ **재판정 조건**: 세트피스의 개인 마킹 배치는 우리 이벤트 데이터로 특정되지 않는다(리포트 「레퍼런스·한계」에 이미 명시). 현재 근거는 **영상 프레임 1소스**뿐이다. ⇒ 다음 회차에 ⑴ 독립 2번째 프레임 소스(다른 채널·기사) ⑵ 또는 세트피스 실점 2경기째 누적 중 하나가 생기면 재판정한다. 정황 지지: 코너 1-11 · 상대 세트피스 xG 0.57 vs 우리 0.00 · 1874의 「세트피스 양방향 비대칭」 서술. ⚠️ 별건 가설(인과 아님): 세트피스 코치 오스틴 맥피가 2026-07 첼시로 이적했고 25/26 빌라는 세트피스 득점 유럽 공동 1위였다 — **이번 경기를 맥피 부재와 연결한 분석은 0건**이므로 시즌 누적 추적 대상으로만 남긴다.\n\n[2026-09-21 D+2 재판정] **APPLIED** — 재판정 조건 ⑴(독립 2번째 소스)이 충족됐고 실측이 메커니즘을 확인했다. The Holy Trinity Show(dgEOoi6Pdrc, 2026-09-21)가 「a pretty simple straight set piece that just **cleared the head of Tyrone Mings** … that was the **first set piece goal we've conceded in the Premier League this season**」(밍스의 머리를 넘긴 아주 단순한 세트피스 … 이번 시즌 PL 첫 세트피스 실점이었다)로 독립 서술했다. ⭐ Opta가 구조를 확정한다: **97′28 반헤케 Goal quals = Head + BoxCentre + SetPiece + FirstTouch + BigChance**, 어시스트는 **로버트슨의 Cross + FreekickTaken + SetPiece**(코너가 아니라 **프리킥**이다 — D+0의 코너 정황 서술은 이 골에 해당하지 않는다). ⇒ 「세트피스 크로스가 박스 중앙 공중 경합을 이기고 헤더로 마무리됐다」까지 확정. ⛔ **잔여 한계를 남긴다**: 개인 마킹 배치(누가 누구를 놓쳤는가)는 여전히 우리 이벤트 데이터로 특정되지 않는다 — 「밍스의 머리를 넘었다」는 영상 서술 1소스다. **이 해상도까지만 APPLIED**이고 마킹 지시 축의 처방 변경 근거로는 쓰지 않는다. ⚠️ 별건 가설(인과 아님) 유지: 세트피스 코치 오스틴 맥피의 2026-07 첼시 이적."
     },
     {
      "axis": "instruction",
@@ -147,8 +295,8 @@
      "role_id": null,
      "team_code": "AVL",
      "value": "gk_as_eleventh_outfield",
-     "verdict": "HELD",
-     "verdict_note": "⛔ **재판정 조건**: 근거로 제시된 수치(론치 성공률 47% · 골킥 9회 · 패스 32회 정확도 72% 중 롱 15)가 **우리 실측에 없는 축**이다. 우리 값은 스즈키 패스 38회·성공 22(58%)로 **패스 총계부터 어긋난다**(제공사 차이 가능). ⇒ FotMob·SofaScore에서 GK 골킥 숏/롱 분해를 같은 스냅샷으로 받아 대조한 뒤 판정한다. 방향 자체는 obs#864(롱볼 26/27 증가)·claim #141(GK 롱킥 루트 득점 전환)과 정합해 기각 후보는 아니다."
+     "verdict": "REJECTED",
+     "verdict_note": "⛔ **재판정 조건**: 근거로 제시된 수치(론치 성공률 47% · 골킥 9회 · 패스 32회 정확도 72% 중 롱 15)가 **우리 실측에 없는 축**이다. 우리 값은 스즈키 패스 38회·성공 22(58%)로 **패스 총계부터 어긋난다**(제공사 차이 가능). ⇒ FotMob·SofaScore에서 GK 골킥 숏/롱 분해를 같은 스냅샷으로 받아 대조한 뒤 판정한다. 방향 자체는 obs#864(롱볼 26/27 증가)·claim #141(GK 롱킥 루트 득점 전환)과 정합해 기각 후보는 아니다.\n\n[2026-09-21 D+2 재판정] **REJECTED** — D+1이 건 조건(골킥 숏/롱 분해를 같은 스냅샷으로 대조)을 두 제공사로 집행했다. **Opta: 골킥 7회 · 롱 7 · 숏 0 · 성공 3(43%)**. 숏 골킥이 한 번도 없다 — 「11번째 필드 플레이어」의 핵심 행동이 0회다. 스즈키 패스 43 중 롱 27(성공 10·37%) · 숏 16(성공 16·100%)이나 그 숏은 **오픈플레이 자기 진영**이지 재시작이 아니다. SofaScore(pulled 2026-09-21): 패스 38 · 롱볼 26(정확 9·35%) · 자기진영 14/15 vs 상대진영 7/23. ⇒ 빌드업에서 GK는 참여자가 아니라 **발사대**다. claim #141(GK 롱킥 루트 → 67′ 득점, APPLIED)·obs#864와 같은 방향이므로 방향 자체를 뒤집는 기각이 아니라 **역할 명명의 기각**이다. ⭐ 근거 수치 자체도 무효: UTV의 「골킥 9 · 론치 성공률 47% · 패스 32 중 롱 15」는 Opta·SofaScore 어느 쪽으로도 재현되지 않는 반면 **두 제공사는 서로 수렴한다**(롱볼 27/26 · 37%/35%) — 제공사 차이가 아니라 출처 미상이다. obs#923. ⛔ 단 스위퍼·세컨볼 관여는 별개로 실재한다(KeeperSweeper 1/1 · BallRecovery 12 · 볼캐리 9회 52m) — 이 기각은 `gk_role_in_buildup` 축에 한정된다. obs#922."
     }
    ],
    "key_points": [
@@ -169,6 +317,43 @@
    "transcript_path": "reports/transcripts/BTW1C1UCPN0.en.md",
    "url": "https://www.youtube.com/watch?v=BTW1C1UCPN0",
    "video_id": "BTW1C1UCPN0"
+  },
+  {
+   "channel": "サカチャンネル",
+   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 221,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "gk_long_kick_route",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「実際今日の我々の2点目でもそれをやってくれた」(실제로 오늘 우리 두 번째 골에서도 그것을 해줬다) — 에메리",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "goal_kick_to_ten_flick_to_nine",
+     "verdict": "APPLIED",
+     "verdict_note": "⭐⭐ claim #141을 **Opta 이벤트로 확증**한다. 66′08 스즈키 Pass(qualifiers: **Longball + GoalKick**, x4.9) → 잭슨 BallTouch(x67.2) → 만잠비 Pass(**IntentionalGoalAssist + KeyPass**) → 잭슨 TakeOn 성공(반더벤 Challenge 실패) → 66′16 잭슨 Goal(Volley, BoxCentre). ⇒ 「골킥 → 9번 플릭 → 10번 → 9번 마무리」 경로가 이벤트 단위로 복원된다. 감독 본인이 이 연결을 진술했고(일본어 경유) 일본 매체 FOOTBALL ZONE이 같은 시퀀스를 독립 서술했다. ⭐ 이것은 스즈키의 골킥 7회가 전부 롱이었다는 실측(obs · claim #144)과 같은 그림이다 — GK는 빌드업 참여자가 아니라 **득점으로 전환되는 발사대**다."
+    }
+   ],
+   "key_points": [
+    "게임플랜 — 원문 「今回の狙いはカウンターで右サイドの満サ日(=マンザンビ)へボールを届けることだった。鈴木が何度かそこを狙って蹴ったけどタッチラインを割ってしまった。… でも3回目に満サ日へ通した時これを狙ってたのかって」(이번의 노림수는 역습에서 오른쪽의 만잠비에게 볼을 배달하는 것이었다. 스즈키가 몇 번 그곳을 노려 찼지만 터치라인을 넘겼다 … 하지만 세 번째로 만잠비에게 통했을 때 '이걸 노렸구나' 싶었다) · auto-caption(일본어). ⚠️ 인명이 「満サ日」로 오인식됐다",
+    "에메리 발언 — 원문 「ビルドアップではロングボールを選択することもできる。なぜなら彼には相手の背後へ非常に長いパスを通せる能力があるからだ。実際今日の我々の2点目でもそれをやってくれた」(빌드업에서 롱볼을 선택할 수도 있다. 그에게는 상대 배후로 아주 긴 패스를 넣을 능력이 있기 때문이다. 실제로 오늘 우리 두 번째 골에서도 그것을 해줬다) · 일본어 번역 경유",
+    "⭐ Opta가 이 발언을 확증한다: 66′08 스즈키 Pass(Longball+**GoalKick**) → 66′11 잭슨 BallTouch → 66′12 만잠비 Pass(IntentionalGoalAssist) → 66′14 잭슨 TakeOn(반더벤 제침) → 66′16 잭슨 Goal(Volley). 골킥이 실제로 득점으로 전환된 시퀀스다",
+    "⚠️ 이 영상의 다수 대목은 BBC·영어 매체의 일본어 번역이다 — 동일 텍스트의 번역 복제는 교차검증이 아니다(불변규칙 12)"
+   ],
+   "kind": "경기반응",
+   "lang": "ja",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "일본어 채널 サカチャンネル의 스즈키 지온 특집(09-20). 불변규칙 10의 성과로, 영어권에 없던 두 가지를 준다 — ⓐ 스즈키의 롱킥 타깃이 「역습 시 우측의 만잠비」라는 구체적 방향성 ⓑ 에메리가 스즈키의 롱패스 능력을 잭슨의 2번째 골과 직접 연결한 발언. 나머지 상당 부분은 BBC 등 영어 원문의 일본어 재번역이라 교차검증으로 세지 않는다(불변규칙 12).",
+   "team_code": "AVL",
+   "title": "【鈴木彩艶】「勝てたのはザイオンのおかげだ」トッテナム戦で躍動のザイオンに海外絶賛！【海外の反応】",
+   "transcript_path": "reports/transcripts/kV4Mha-L0aA.ja.md",
+   "url": "https://www.youtube.com/watch?v=kV4Mha-L0aA",
+   "video_id": "kV4Mha-L0aA"
   },
   {
    "channel": "1874 : The Aston Villa Channel",
@@ -329,7 +514,7 @@
      "team_code": "AVL",
      "value": "goal_kick_to_ten_flick_to_nine",
      "verdict": "APPLIED",
-     "verdict_note": "67′ 잭슨 골(xG 0.060)의 경로를 상대 감독이 직접 특정했다. 스즈키 패스 38회 중 성공 22(58%)·롱킥 비중이 이 루트의 실측 근거이고, 브뤼헤전에서 정식화한 「맨투맨 하이프레스 → 의도적 GK 백패스 → 스즈키 롱킥」의 3번째 표본이자 **첫 득점 전환**이다. 상대가 사전에 대비했는데도 성립했다는 점이 추가 정보다."
+     "verdict_note": "67′ 잭슨 골(xG 0.060)의 경로를 상대 감독이 직접 특정했다. 스즈키 패스 38회 중 성공 22(58%)·롱킥 비중이 이 루트의 실측 근거이고, 브뤼헤전에서 정식화한 「맨투맨 하이프레스 → 의도적 GK 백패스 → 스즈키 롱킥」의 3번째 표본이자 **첫 득점 전환**이다. 상대가 사전에 대비했는데도 성립했다는 점이 추가 정보다.\n\n[2026-09-21 D+2 확증] ⭐⭐ **Opta 이벤트로 경로 전체가 복원됐다.** 66′08 스즈키 Pass(qualifiers **Longball + GoalKick**, x4.9) → 66′11 잭슨 BallTouch(x67.2) → 66′12 만잠비 Pass(**IntentionalGoalAssist + KeyPass**) → 66′14 잭슨 TakeOn 성공(반더벤 Challenge 실패) → 66′16 잭슨 Goal(**Volley**, BoxCentre). ⇒ 「골킥 → 9번 플릭 → 10번 → 9번 마무리」가 이벤트 단위로 확정된다. ⭐ **감독 1차 진술이 붙었다**(일본어 경유): 「ビルドアップではロングボールを選択することもできる … 実際今日の我々の2点目でもそれをやってくれた」(빌드업에서 롱볼을 선택할 수도 있다 … 실제로 오늘 우리 두 번째 골에서도 그것을 해줬다). 일본 매체 FOOTBALL ZONE이 같은 시퀀스를 독립 서술했고, 데 제르비도 「we conceded one unacceptable goal from long goal kick」(롱 골킥에서 받아들일 수 없는 실점을 했다)으로 상대편에서 확인했다. ⭐ 이 확증은 claim #144(GK=11번째 필드플레이어) **기각과 모순되지 않는다** — 스즈키의 골킥 7회는 전부 롱이었고(숏 0회), 그 롱킥 중 1회가 득점으로 전환됐다. GK는 빌드업 **참여자**가 아니라 **발사대**이며 그 발사대가 생산적이었다는 뜻이다."
     },
     {
      "axis": "team_axis",
@@ -470,6 +655,56 @@
    "video_id": "B4sxBZjIfuI"
   },
   {
+   "channel": "Chris Cowlin: Spurs Chat Podcast & Tottenham News",
+   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 223,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "lead_management_after_three_nil",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「Villa had kind of switched off by then anyway. It wasn't us playing well that got us those goals」(그때쯤 빌라는 이미 스위치를 껐다. 우리가 잘해서 넣은 골이 아니다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "switch_off_concede_two",
+     "verdict": "HELD",
+     "verdict_note": "⛔ 「집중이 풀렸다」는 심리 귀속이라 이벤트로 직접 판정되지 않는다. 실측 정황은 양방향이다 — 지지: 86′·97′ 두 실점이 3-0 이후 11분 안에 나왔고 obs#865(87′~ 블록이 풀렸다)가 있다. 반대: 86′ 실점은 구조 붕괴가 아니라 **2차 처리 실패**로 이미 특정됐고(claim #142 APPLIED · Opta 시퀀스) 97′ 실점은 **세트피스**다 — 둘 다 「집중 이완」이 아니라 특정 국면의 실패다. ⇒ 대안 가설이 더 구체적이다. ⛔ 재판정 조건: 리드 3골 이후 구간의 PPDA·def_x를 별도 산출해 직전 구간 대비 유의하게 나빠지면 APPLIED, 아니면 REJECTED."
+    },
+    {
+     "axis": "team_axis",
+     "field": "build_up_style",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「this season Aston Villa are playing 86% more long balls than last season」(이번 시즌 빌라는 지난 시즌보다 롱볼을 86% 더 많이 찬다) — 데 제르비",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Counter",
+     "verdict": "APPLIED",
+     "verdict_note": "claim #140과 같은 주장이고 이 소스가 **auto-caption 의존을 해소하는 더 긴 맥락**을 준다(회견 전문 11분). ⚠️ 단 「86%」는 토트넘 내부 스카우팅 수치이고 **Opta 공표값이 아니다** — 「Opta에 따르면」은 허위 귀속이다(obs#875). ⚠️ 이 수치를 인용한 매체가 여럿이지만 **전부 같은 데 제르비 회견이 원천**이라 교차검증이 아니라 동일 원천의 중복이다(불변규칙 12). ⛔ 시즌 정본 team_tactic_setups(Short Passing)는 바꾸지 않는다."
+    }
+   ],
+   "key_points": [
+    "데 제르비 사전 스카우팅 — 원문 「we knew before the game because this season Aston Villa are playing 86% more long balls than last season and we spoke in many many meetings yesterday and two days ago」(경기 전에 알고 있었다 — 이번 시즌 빌라는 지난 시즌보다 롱볼을 86% 더 많이 찬다. 어제와 이틀 전 수많은 미팅에서 그 얘기를 했다) · auto-caption",
+    "원문 「we conceded one unacceptable goal from long goal kick uh with a long ball」(우리는 롱 골킥, 롱볼에서 받아들일 수 없는 실점을 했다) ⇒ Opta 확증: 잭슨의 67′ 골은 스즈키의 GoalKick+Longball이 기점이다",
+    "빌라 막판 2실점(스퍼스 시각) — 원문 「Villa had kind of switched off by then anyway. It wasn't us playing well that got us those goals … the scoreline flattered us massively」(그때쯤 빌라는 이미 스위치를 껐다. 우리가 잘해서 넣은 골이 아니다 … 스코어가 우리를 크게 미화했다)",
+    "빌라 평 — 원문 「managerial stability always trumps individual players … if you play with a defined system the players are components, they're cogs in a wheel」(감독의 안정성은 언제나 개별 선수보다 우위다 … 정의된 시스템으로 뛰면 선수는 부품, 톱니바퀴다)",
+    "팀 스탯 낭독: 점유 스퍼스 63.8% · xG 1.22-1.16 · 슈팅 20-15 · 박스 내 터치 31-18 · 코너 11-1"
+   ],
+   "kind": "상대팀",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "스퍼스 팬 팟캐스트 Chris Cowlin: Spurs Chat의 풀타임 리액션(09-19, 2시간 4분). 값의 대부분은 [37:01]~[48:00]에 통째로 들어 있는 데 제르비 경기 후 회견 전문이다 — D+1에 auto-caption 1소스로만 있던 「86% 롱볼」 발언의 더 긴 맥락을 준다. 패널은 빌라의 막판 2실점을 「빌라가 이미 스위치를 껐다」로 읽고 스코어가 스퍼스를 미화했다고 본다. 팀 스탯 낭독(점유 63.8%·코너 11-1·박스 내 터치 31-18)은 우리 실측과 합치한다.",
+   "team_code": "AVL",
+   "title": "SPURS CHAT PODCAST: Full-Time Thoughts: Tottenham 2-3 Aston Villa Instant Reaction & Match Analysis",
+   "transcript_path": "reports/transcripts/QkA0fScs5s8.en.md",
+   "url": "https://www.youtube.com/watch?v=QkA0fScs5s8",
+   "video_id": "QkA0fScs5s8"
+  },
+  {
    "channel": "Football Uncoded",
    "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
    "id": 214,
@@ -503,6 +738,42 @@
    "transcript_path": "reports/transcripts/iltNYp8lk6o.en.md",
    "url": "https://www.youtube.com/watch?v=iltNYp8lk6o",
    "video_id": "iltNYp8lk6o"
+  },
+  {
+   "channel": "MAH",
+   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 224,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "잭슨 골 — 원문 「Great hold up play, great touch, the second flick to take it past the defender is absolutely exquisite, and then he just hits it into the ground, far corner」(훌륭한 홀드업, 훌륭한 터치, 수비수를 벗겨내는 두 번째 플릭이 그야말로 절묘하다. 그리고 땅에 찍어 먼 쪽 구석으로 넣었다) · auto-caption. Opta 합치: 잭슨 TakeOn 성공(반더벤 Challenge 실패) → Goal(Volley)",
+    "막판 2실점 — 원문 「I think Villa at that point have switched off. They'd already been thinking about the three points in the next game」(그 시점에 빌라는 스위치를 껐다고 본다. 이미 승점 3과 다음 경기를 생각하고 있었다)",
+    "⚠️ 첼시 축 채널이라 빌라 전술 서술의 깊이는 얕다 — 잭슨 개인 장면 외에는 구현 재료로 쓰지 않는다"
+   ],
+   "kind": "상대팀",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "첼시 팬 채널 MAH의 스퍼스 위로 영상(09-19). 빌라 축 내용은 얇으나 잭슨의 67′ 골 장면을 스트라이커 플레이 관점에서 상세히 묘사한 대목이 쓸모 있다 — 홀드업 → 터치 → 수비수를 벗기는 두 번째 플릭 → 먼 쪽 구석 마무리. 빌라의 막판 2실점은 「3-0 이후 스위치를 껐다」로 읽어 스퍼스 팬 채널과 같은 진단을 낸다.",
+   "team_code": "AVL",
+   "title": "Spurs fans, join me... | Tottenham 2-3 Aston Villa",
+   "transcript_path": "reports/transcripts/U4OewDAQMCk.en.md",
+   "url": "https://www.youtube.com/watch?v=U4OewDAQMCk",
+   "video_id": "U4OewDAQMCk"
   },
   {
    "channel": "More Lyes",
@@ -564,8 +835,20 @@
      "role_id": null,
      "team_code": "AVL",
      "value": "pivot_drop_kamara",
-     "verdict": "HELD",
-     "verdict_note": "[2026-09-20 D+1 재판정] **REJECTED** — D+0가 건 조건(전반 카마라 보유 x vs CB 라인 x, Δ≤8이면 APPLIED)을 WhoScored matchId=1983589 재수집(period·minute 포함)으로 집행했다. 전반 카마라 41.3(n=37) vs CB 라인 30.2(n=50) → **Δ=11.1**로 임계 밖. 자기 진영(x<50)만 봐도 Δ=8.8. ⭐ 단 좌우로는 두 CB 사이(y 43.0 / 32.5·70.7)이고 전반 보유의 19%가 CB 라인 깊이 이하여서 **행동은 존재하나 상시 구조가 아니다** — 회견 원문의 「someday」와 정합적이다. obs#866. ⛔ 빌드업 축·슬롯 정본은 변경하지 않는다(단일 경기, 기각 방향). ‖ [2026-09-20 D+1 재-재판정] ⛔ **REJECTED를 철회하고 HELD로 되돌린다 — D+0이 건 임계 자체가 잘못 설계됐다.** 「전반 보유 전체의 평균 x 격차 ≤8」은 **국면 한정 행동을 평균으로 검정하는 오류**다. 빌드업 국면에서만 내려오는 선수는 전반 전체 평균으로는 절대 CB 라인에 닿지 않는다(희석). ⭐ 계기: Jacob Tanswell(The Athletic) 2026-09-20 정식 기사 본문이 이 행동을 **국면·시점 한정으로 명시**했다 — 원문 「A quarter of an hour into the match, **when Villa built from the back**, Manzambi dropped deep, occasionally alongside Joao Gomes, as **Boubacar Kamara moved into a back three**.」(경기 15분 무렵 **빌라가 후방 빌드업을 할 때** 만잠비가 깊게 내려왔고 때때로 주앙 고메스 옆에 섰으며, **카마라는 백3로 이동했다**.) — 1티어 기자 서면. 우리 실측도 같은 것을 보고 있었다: 전반 보유 37건 중 **7건(19%)이 CB 라인 깊이 이하**이고 그중 6건이 두 CB 사이였다(obs#866). ⇒ **새 재판정 조건**: 골킥·자기 진영 시작 시퀀스만 추려 **빌드업 국면 한정**으로 카마라 x와 CB 라인 x를 대조한다(평균 전체 비교 금지). 격차가 8 이하면 APPLIED. ⛔ 그 전까지 빌드업 축·슬롯 정본은 불변."
+     "verdict": "REJECTED",
+     "verdict_note": "[2026-09-20 D+1 재판정] **REJECTED** — D+0가 건 조건(전반 카마라 보유 x vs CB 라인 x, Δ≤8이면 APPLIED)을 WhoScored matchId=1983589 재수집(period·minute 포함)으로 집행했다. 전반 카마라 41.3(n=37) vs CB 라인 30.2(n=50) → **Δ=11.1**로 임계 밖. 자기 진영(x<50)만 봐도 Δ=8.8. ⭐ 단 좌우로는 두 CB 사이(y 43.0 / 32.5·70.7)이고 전반 보유의 19%가 CB 라인 깊이 이하여서 **행동은 존재하나 상시 구조가 아니다** — 회견 원문의 「someday」와 정합적이다. obs#866. ⛔ 빌드업 축·슬롯 정본은 변경하지 않는다(단일 경기, 기각 방향). ‖ [2026-09-20 D+1 재-재판정] ⛔ **REJECTED를 철회하고 HELD로 되돌린다 — D+0이 건 임계 자체가 잘못 설계됐다.** 「전반 보유 전체의 평균 x 격차 ≤8」은 **국면 한정 행동을 평균으로 검정하는 오류**다. 빌드업 국면에서만 내려오는 선수는 전반 전체 평균으로는 절대 CB 라인에 닿지 않는다(희석). ⭐ 계기: Jacob Tanswell(The Athletic) 2026-09-20 정식 기사 본문이 이 행동을 **국면·시점 한정으로 명시**했다 — 원문 「A quarter of an hour into the match, **when Villa built from the back**, Manzambi dropped deep, occasionally alongside Joao Gomes, as **Boubacar Kamara moved into a back three**.」(경기 15분 무렵 **빌라가 후방 빌드업을 할 때** 만잠비가 깊게 내려왔고 때때로 주앙 고메스 옆에 섰으며, **카마라는 백3로 이동했다**.) — 1티어 기자 서면. 우리 실측도 같은 것을 보고 있었다: 전반 보유 37건 중 **7건(19%)이 CB 라인 깊이 이하**이고 그중 6건이 두 CB 사이였다(obs#866). ⇒ **새 재판정 조건**: 골킥·자기 진영 시작 시퀀스만 추려 **빌드업 국면 한정**으로 카마라 x와 CB 라인 x를 대조한다(평균 전체 비교 금지). 격차가 8 이하면 APPLIED. ⛔ 그 전까지 빌드업 축·슬롯 정본은 불변.\n\n[2026-09-21 D+2 재판정] **REJECTED(확정)** — D+1이 건 「빌드업 국면 한정」 조건을 집행했다. WhoScored matchId=1983589를 pulled=2026-09-21 scope=full로 재수집(1,627건)해 골킥·자기 진영(x<40) 시작 시퀀스만 추려 대조했다(core.whoscored). 전반 빌드업(시퀀스 41·이벤트 145): 카마라 x=33.9(n=20) vs CB라인 23.3(n=35) → **Δ=10.6 > 8**. Tanswell 시점 한정(전반 10~30′): Δ=11.4. 골킥 시퀀스 한정: Δ=16.0. 전경기 빌드업: Δ=11.1. ⇒ 국면을 좁혀도 임계를 넘지 못한다 — D+1의 임계 재설계는 정당했으나 결론은 바뀌지 않았다. ⭐ **기각 범위 한정**: 시퀀스 단위로는 카마라·CB 동시 관여 13개 중 **4개(31%)가 Δ≤8**이고 전부 전반 1′·5′·14′·30′에 몰린다(36′ 이후 0개). Tanswell의 「경기 15분 무렵 … 때때로」라는 시점·빈도 서술은 참이고, **「백3」를 빌드업의 기본 형태로 읽는 것만 거짓**이다. ⛔ 부가 주장도 기각: 「만잠비가 깊게 내려와 고메스 옆에 섰다」 — 빌드업 국면 만잠비 x=51.0 vs 고메스 37.9로 **13 더 높고**, 전반 내내 올라갔다(0~15′ 54.0 → 15~30′ 58.7 → 30~53′ 63.0). 좌우도 y 43.6 vs 70.3으로 다른 레인이다. ⚠️ 한계: 온더볼 관여 깊이만 본다(터치 없는 위치 점유는 이벤트에 없다). 게임 설정은 바꾸지 않는다. obs#920."
+    },
+    {
+     "axis": "instruction",
+     "field": "pivot_drop_purpose",
+     "focus": null,
+     "player": null,
+     "quote": "질문 「second half you went into really a back five on the edge of your penalty area, McGinn went back and played really deep…」(후반에 사실상 페널티 박스 끝단에서 백5로 갔고 맥긴이 내려가 아주 깊게 뛰었다) / 에메리 「Yeah, **sometimes with back four is not enough to defend completely** … **the first half we use it more Kamara dropping, dropping, and someday is a five, center back being in the back four inside, and the second half we needed more with John McGinn.**」(그렇다. **때로는 백4로는 완전히 수비하기에 충분하지 않다** … **전반에는 카마라를 더 많이 내려, 내려 썼고, 어떤 때는 5가 된다 — 센터백이 백4 안쪽에 들어가는 식으로. 그리고 후반에는 존 맥긴으로 그걸 더 해줄 필요가 있었다.**)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "defensive_completion_not_buildup",
+     "verdict": "APPLIED",
+     "verdict_note": "⭐⭐ **축 정정의 근거다 — 감독 본인이 카마라의 하강을 「빌드업」이 아니라 「수비 완결성」 목적으로 규정한다.** 질문도 답도 **수비 국면**(백5·박스 끝단·맥긴 하강)에 관한 것이고, 에메리는 「백4로는 완전히 수비하기에 충분하지 않다」를 이유로 든다. ⇒ claim #139(`buildup_back_three_source`)가 **REJECTED된 이유가 여기서 설명된다 — 행동은 실재하나 축이 틀렸다.** 빌드업 국면 한정 실측이 Δ=10.6으로 임계를 넘지 못한 것은 이 행동이 빌드업 목적이 아니었기 때문으로 읽는 것이 정합적이다(obs#920). ⭐ 전·후반 분업도 실측과 합치한다: **전반=카마라 / 후반=맥긴**이라는 에메리의 구분이 맥긴 수비액션 x 전반 56.3 → 후반 32.1(−24.2)과 정확히 같은 방향이다. ⛔ **단 「카마라가 CB 라인 깊이까지 내려갔다」는 실측되지 않는다** — 전반 수비액션 x 카마라 38.6 vs CB라인 19.4(Δ 19.3, n=9). ⇒ APPLIED는 **「전반 하강의 목적이 수비이고 후반에 맥긴이 그 역할을 이어받았다」**까지이고, **깊이·형태(백3/백5)는 포함하지 않는다.** ⚠️ 한계: 우리 데이터는 온더볼·수비액션 지점만 담고 **터치 없는 위치 점유**는 담지 않는다 — 형태 주장은 트래킹 데이터 없이는 닫히지 않는다. ⛔ 시즌 정본 포메이션·슬롯은 바꾸지 않는다(단일 경기)."
     }
    ],
    "key_points": [
@@ -586,6 +869,44 @@
    "transcript_path": "reports/transcripts/k6dbBj7Tz7w.en.md",
    "url": "https://www.youtube.com/watch?v=k6dbBj7Tz7w",
    "video_id": "k6dbBj7Tz7w"
+  },
+  {
+   "channel": "The Claret & Blue Podcast (Birmingham Live)",
+   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 219,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "rb_rotation_criterion",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「he's better than Ezri Konsa. He's not going to be as good as Matty Cash, certainly in possession」(콘사보다는 낫다. 소유 국면에서는 캐시만큼은 안 될 것이다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "wanbissaka_defence_cash_possession",
+     "verdict": "APPLIED",
+     "verdict_note": "기용 사실이 이 서열을 집행했다 — 완비사카 선발(45분) → 캐시 HT 투입(45분). Townley는 빌라 전담 1티어이고 D+1에 확보한 그의 평점 기사와 같은 진단이다(obs#867·#872·#880). ⇒ FC 구현: 우측 풀백 슬롯은 **국면 의존 로테이션**이고, 완비사카는 수비 지시(Defend/Balanced)·캐시는 전진 지시(Support/Attack) 쪽 근거가 된다. ⛔ 단일 경기이므로 슬롯 정본은 바꾸지 않는다."
+    }
+   ],
+   "key_points": [
+    "완비사카 진단 — 원문 「Wan-Bissaka's on the ball, not great. It's clearly just a limitation of his game … he's better than Ezri Konsa. He's not going to be as good as Matty Cash, certainly in possession」(완비사카는 온더볼이 좋지 않다. 명백히 그의 게임의 한계다 … 콘사보다는 낫다. 소유 국면에서 캐시만큼은 안 될 것이다) · auto-caption",
+    "매치업 — 원문 「Savio caused him some problems, but that's to be expected」(사비뉴가 그를 애먹였다, 예상된 일이지만). 실측 합치: 사비뉴 전반 y=12.6(n=34)로 빌라 좌우 중 완비사카·루헤리 쪽에 집중",
+    "교체 사실 — 원문 「Cash came on at half time」(캐시가 하프타임에 들어왔다) 2회 명시",
+    "미드필드 — 원문 「very tenacious … not a nice midfield to play against」(매우 끈질기다 … 상대하기 싫은 미드필드)",
+    "만잠비 「70분 정도 뛰었고 잘했고 골도 넣었다」 — 교체 사유 언급 0"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "Birmingham Live(빌라 전담 John Townley)의 팟캐스트. 완비사카 하프타임 교체 사유를 「온더볼 한계 + 사비뉴 매치업 고전」으로 두 번 명시해 D+1에 열려 있던 논점을 닫는다. 우측 풀백 서열을 콘사 < 완비사카 < 캐시(소유 국면 기준)로 정리한 것이 FC 구현에 직접 쓰이는 대목이다. 카마라-고메스 조합은 「상대하기 싫은 미드필드」로 긍정 평가하고, 만잠비는 70분 남짓 출전에 호평하나 교체 사유는 언급하지 않는다.",
+   "team_code": "AVL",
+   "title": "John Townley's positive vibes after Villa's 3 points against Spurs",
+   "transcript_path": "reports/transcripts/-9ar6UOF958.en.md",
+   "url": "https://www.youtube.com/watch?v=-9ar6UOF958",
+   "video_id": "-9ar6UOF958"
   },
   {
    "channel": "The Football Connect",
@@ -657,6 +978,56 @@
    "transcript_path": "reports/transcripts/XRJgUjer1cc.en.md",
    "url": "https://www.youtube.com/watch?v=XRJgUjer1cc",
    "video_id": "XRJgUjer1cc"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 218,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "defensive_shape_second_half",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「dropping into that back five, dropping into that back six when we needed to」(필요할 때 백5로, 백6으로 내려앉았다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "back_five_to_back_six",
+     "verdict": "APPLIED",
+     "verdict_note": "실측이 지지한다 — 맥긴 수비액션 x 전반 56.3 → 후반 32.1, 우측 풀백 33.1(완비사카) → 17.2(캐시). 후반 점유 29% · def_x 30.6(26/27 최저). claim #138·#150과 같은 방향이고 상대팀 채널이 독립 서술했다. ⭐ 단 obs(D+2)에서 이 형태가 **토트넘의 하프타임 측면 전환에 대한 응답**임이 상대측 실측으로 밝혀졌다 — 기본 설계가 아니라 조건부 조정으로 한정한다. ⛔ 시즌 정본 포메이션·라인 축은 바꾸지 않는다."
+    },
+    {
+     "axis": "instruction",
+     "field": "deep_block_runner_tracking",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「McGinn again, he's got to start tracking these runners — they ran off him」(맥긴은 다시, 러너를 추적하기 시작해야 한다 — 그를 등지고 뛰어 들어갔다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "mcginn_fails_to_track_runners",
+     "verdict": "HELD",
+     "verdict_note": "⛔ 우리 이벤트 데이터는 **추적 실패**(상대 침투를 놓친 장면)를 담지 않는다 — 수비액션은 개입한 것만 기록되고 개입하지 못한 것은 결손으로 남는다. 정황: 맥긴은 후반 수비액션 8건으로 우측 최저 깊이(x 32.1)까지 내려갔으나 그 구간에 토트넘의 빌라 우측 침투가 39→84로 늘었다. ⛔ 재판정 조건: ⑴ 실점·빅찬스 시퀀스에서 맥긴이 마크를 놓친 장면이 독립 2소스로 특정되거나 ⑵ 같은 지적이 2경기째 누적되면 판정한다."
+    }
+   ],
+   "key_points": [
+    "후반 형태 — 원문 「what we saw in the second half was just dropping into that back five, dropping into that back six when we needed to」(후반에 우리가 본 것은 필요할 때 백5로, 백6으로 내려앉는 것이었다) · auto-caption",
+    "대가 — 원문 「McGinn again, he's got to start tracking these runners — they ran off him」(맥긴은 다시, 러너를 추적하기 시작해야 한다 — 그를 등지고 뛰어 들어갔다) · auto-caption",
+    "선제골 서술 「Kamara with an assist」(카마라의 어시스트)는 제공사 관행이다 — Opta는 맥긴의 패스를 IntentionalAssist로, 카마라의 접촉을 MissedShots로 기록한다(obs 참조)",
+    "평점: 완비사카 7(「still finding his feet」/아직 적응 중) · 캐시 5.5(「run ragged a bit」/마구 시달렸다)",
+    "팀 스탯 낭독: 점유 36% · 패스 331 · 슈팅 15 · 선방 5 · xG 1.16 · 박스 내 터치 18 · 공중볼 56%"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-19",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "UTV의 경기 직후 반응(09-19, `/streams` 탭에만 있어 D+0·D+1이 놓쳤던 편). 후반 형태를 「전형적인 에메리」로 규정하고 백5·백6까지 내려앉는 저블록을 긍정 평가하면서, 그 대가로 맥긴의 러너 추적 실패를 지적한다. 완비사카 7 / 캐시 5.5라는 평점이 D+1에 확보한 Townley의 「완비사카 온더볼 한계」 진단과 방향이 갈린다 — UTV는 완비사카를 더 높게 봤다. 팀 스탯 낭독(점유 36%·xG 1.16·박스 내 터치 18)은 우리 실측과 합치한다.",
+   "team_code": "AVL",
+   "title": "ASTON VILLA ARE BACK | TOTTENHAM HOTSPUR 2-3 ASTON VILLA",
+   "transcript_path": "reports/transcripts/-5lhUwdm9QU.en.md",
+   "url": "https://www.youtube.com/watch?v=-5lhUwdm9QU",
+   "video_id": "-5lhUwdm9QU"
   },
   {
    "channel": "1874 : The Aston Villa Channel",
@@ -8190,16 +8561,24 @@
    209
   ],
   "47": [
+   217,
+   220,
    200,
+   222,
    198,
    197,
+   221,
    199,
    202,
    194,
    201,
    196,
+   223,
+   224,
    195,
-   203
+   219,
+   203,
+   218
   ]
  }
 }
