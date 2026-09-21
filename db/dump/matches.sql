@@ -102,3 +102,5 @@ INSERT INTO matches VALUES(108,16950634,'LIV','2026-27','2026-09-15','Tottenham 
 INSERT INTO matches VALUES(109,16416335,'ATM','2026-27','2026-09-16','Osasuna','LaLiga','H','4-0',1,'Round 6',68.0);
 INSERT INTO matches VALUES(110,16363649,'CHE','2026-27','2026-09-18','Brentford','Premier League','A','0-3',1,'Round 5',59.0);
 INSERT INTO matches VALUES(111,16363870,'AVL','2026-27','2026-09-19','Tottenham Hotspur','Premier League','A','2-3',1,NULL,36.0);
+INSERT INTO matches VALUES(112,16416339,'ATM','2026-27','2026-09-20','Real Madrid','LaLiga','H','2-1',1,'Round 7',61.0);
+INSERT INTO matches VALUES(113,16363648,'LIV','2026-27','2026-09-20','AFC Bournemouth','Premier League','A','0-1',1,'Round 5',54.0);
