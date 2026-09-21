@@ -51,7 +51,9 @@
 - ⛔ **`git add -A` 금지** — 저장소에 `.claude/settings.json`(Figma PAT) 등 **커밋 금지 파일**이 있어
   푸시가 차단된다. 항상 **명시 스테이징**할 것:
   `git add reports/… data/avl_analysis.db data/dump/ fc26-heatmap.html`
-  ⚠️ 이 규칙은 핸드오프 스킬의 "wip 보존 시 `git add -A`" 절차보다 **우선**한다(비밀 유출 방지).
+  ✅ 2026-09-21: 핸드오프 스킬(`hadoff`)의 2·4단계가 `git add -A`를 지시하던 것을 **명시 스테이징으로 고쳤다** —
+  「우선한다」고 적어만 두고 스킬 본문을 안 고쳐서, 런북을 그대로 따르면 푸시가 막히는 상태였다.
+  ⭐ 함께 추가: **커밋 직전 `git diff --cached --stat`으로 내가 올린 것만 있는지 확인**한다(동시 세션이 인덱스를 오염시킨다 — docs/70).
 - DB 변경 후 순서: `python3 scripts/sync_transfer_ui.py` → `scripts/db_dump.sh` → 명시 스테이징 커밋.
   (프리뷰 미러 `cp`는 **sync가 자동으로 한다** — 손으로 하지 않는다.)
 - **sync 회귀 게이트**: DB 무변경 상태에서 sync를 두 번 돌려 `git diff fc26-heatmap.html`이 비어야 한다.
