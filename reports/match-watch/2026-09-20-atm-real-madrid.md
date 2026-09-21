@@ -166,3 +166,96 @@ PPDA 10.20은 고압박 구간이지만 **하프별로 완전히 갈린다**(1H 
 - **한계 ③**: 데이비드(hit_points 28)·바에나(56)는 그리드 신뢰도가 낮다. 45분+·hp15+ 기준은 통과하나
   fit 절대값(.446/.506)이 낮아 역할 판정 근거로 쓰지 않았다.
 - `match_reports` 상태: **complete**(§1~§9 + 선수 16행 + 경기 전용 프리셋 + 선발 11행).
+
+## D+2 추적 (2026-09-22)
+
+### 1. ⭐ 레알 마드리드 감독 회견 원문 — D+1 실패 사유 해소 확인, 그러나 실측 전술 내용은 0건
+- D+1은 「2025-09-27 더비(5-2)」자료 오염으로 확보 실패했다. 이번 회차는 **발행일을 본문에서 직접 확인**하고
+  as.com·infobae 원문을 열어 대조했다 — **오염 없음, 전부 2026-09-20 발행 확인**.
+- **무리뉴(Real Madrid) 경기 후 회견**(La Opinión 2026-09-20 · Infobae 2026-09-20 동일 회견 인용):
+  「Son dos tarjetas rojas claras. Con las dificultades que tuvimos nosotros once contra diez podemos
+  imaginar lo que hubieran sido 50 minutos de once de nosotros contra nueve de ellos」
+  (「명백한 레드카드가 두 장이다. 우리가 11 대 10으로도 그렇게 어려웠는데, 11 대 9였다면 50분이 어땠을지 상상할 수 있다.」)
+  「Y el pobre árbitro, sin experiencia ni dimensión para venir a un derbi」
+  (「그리고 그 불쌍한 심판은 더비에 나설 경험도 급도 없었다.」)
+  「Me tengo que limitar a abrazar a mis jugadores, que han dado todo y han hecho un primer tiempo de
+  gran clase y personalidad, trabajando para ganar en el segundo tiempo」
+  (「나는 그저 선수들을 안아줄 수밖에 없다. 그들은 모든 걸 쏟아부었고 전반에는 훌륭한 클래스와 개성을 보였으며,
+  후반에는 이기기 위해 싸웠다.」)
+  ⚠️ **전술 내용은 여전히 0건이다** — D+0/D+1 시메오네 회견과 마찬가지로 **심판 판정 논쟁이 회견 전체를 지배**했다.
+  「전반은 좋았다」는 자평 한 줄이 유일한 성과 언급이며, 포메이션·기용·전술 설계에 대한 언급은 없었다.
+- **검색어**: 스페인어 `"Mourinho" rueda de prensa derbi Atlético Real Madrid` · `site:as.com atletico real madrid derbi 2026 analisis`(구글) — 둘 다 유효.
+
+### 2. ⭐⭐ 시메오네 본인의 전술 자체 진단 — D+1의 「0건」이 이번 회차에 채워졌다
+무리뉴의 심판 비판에 대한 기자 질의응답 도중, 시메오네가 **경기 내용 자체를 짧게 평가**했다(D+0/D+1 회견은 심판 논쟁 응답뿐이었다):
+- 「El partido que vi fue un partido intenso que controlamos en todo momento contra un rival con
+  transiciones increíbles, con extraordinarios futbolistas」
+  (「내가 본 경기는, 놀라운 전환 능력과 뛰어난 선수들을 가진 상대를 맞아 시종일관 통제한 강도 높은 경기였다.」)
+- 「En el segundo tiempo solo sufrimos una única ocasión de peligro en un malentendido de Cuti y
+  Llorente. El partido lo controlamos desde el trabajo defensivo, ofensivo y grupal」
+  (「후반에는 쿠티와 요렌테 사이의 오해에서 나온 단 한 번의 위험한 장면만 내줬다. 수비·공격·조직 작업 전체에서
+  경기를 통제했다.」)
+- 「Defendimos muy bien, insisto, muy bien contra un equipo que tiene muy buenos jugadores」
+  (「매우 잘 수비했다 — 다시 말하지만, 정말 잘 — 아주 좋은 선수들을 가진 팀을 상대로.」)
+- 출처: TyC Sports 2026-09-20 19:16 CEST 「La tajante respuesta de Simeone a Mourinho tras el derbi:
+  "Te llames como te llames"」. 아르헨티나 매체(불변규칙 10 — 감독 모국어권).
+- ⚠️ **「쿠티-요렌테 오해」건은 신규 단서**다. §5 실측은 요렌테를 HT에 RB로 내린 구조 변경을 확정했지만,
+  후반에 정확히 그 자리에서 **소통 오류로 위험한 장면이 1회 나왔다는 서술**은 실측 이벤트 로그와 대조되지
+  않았다 — 다음 회차(D+3) 재검증 대상으로 남긴다. `observations` #936에 기록.
+- 이 발언은 **감독 자평이 실측(1H xG 0.18·유효슈팅 0)과 결이 다르다** — 시메오네는 「시종일관 통제」라고
+  했으나 실측은 「11대11 구간 창출력 부재」다. 통제(비창출 허용)와 창출(득점 기회 생산)을 분리해서 읽어야 한다 —
+  「통제」주장은 **비보유 시 실측(공중 열세 제외 태클·인터셉트·파울 패턴)과는 정합적**이지만, 다르게
+  **보유 시 실측(1H 유효슈팅 0)과는 부딪힌다.** 불변규칙 3(실측 우선)에 따라 「전반 창출력 부재」 판정은 유지한다.
+
+### 3. ⭐ 전술 블로그 — 스페인어 대체 매체 확보(TFA·Spielverlagerung 공백 메움)
+- **Mundiario**(스페인, 2026-09-20) 2편:
+  - 「La curiosa estrategia de Simeone que dejó sin respuesta al Real Madrid」 — **국면 의존적 유연성**
+    서술: 보유·비보유 상태에 따라 「다른 팀처럼 보인다」. 비보유 시 좁은 간격의 보호블록으로 중앙을 막고
+    레알을 측면으로 유도, 볼 탈취 즉시 줄리아노 시메오네가 「수비 지원 ↔ 배후 공격」 하이브리드로 전환해
+    **레알의 더 약한 측면을 반복 공략**(페널티 유발 장면 포함)했다고 서술.
+  - 「Las 10 claves de la derrota del Real Madrid en el derbi ante el Atlético」 — 레알 관점 10개 항목
+    (§5 참고). 핵심: 무리뉴의 고정된 4-2-3-1이 국면별 요구 변화에 덜 적응적이었다는 대조 서술.
+  - `observations` #937에 구조적 주장 기록(MEDIUM — 단일 매체, 우리 실측으로 독립 확인 미완).
+- **AS(스페인, Tangana FC 팟캐스트)** 2026-09-20 19:56 CEST — 레알 관점 헤드라인 인용:
+  「El centro del campo de este Madrid es el mismo que el del 5-2 del derbi del año pasado...es un
+  deja vú」(「이 마드리드의 중원은 작년 5-2 더비 때와 똑같다... 데자뷔다.」) — **레알 미드필드 구조가
+  1년 전 더비 참패와 동일하다는 주장**. ⚠️ 이 주장은 우리 DB가 다루지 않는 **레알 마드리드의 팀 축**이므로
+  ATM `manager_profiles`에는 반영하지 않는다(불변규칙 7) — 상대 관점 서사로만 리포트에 남긴다.
+- **검색어**: `Atlético Madrid Real Madrid derbi análisis táctico Marca AS Relevo estructura Simeone 4-4-2`(스페인어, 구글) ·
+  `site:marca.com atletico real madrid derbi 20 septiembre 2026 analisis tactico`(구글) → **Marca는 이 경기 전용
+  구조 분석 기사 0건**(검색 결과는 결과·요약 기사뿐, 전술 분석 없음) — 다음 회차에도 Marca는 낮은 우선순위로 둔다.
+
+### 4. 유튜브 전술 분석 영상 — 목록만 확보, 전사·직접 시청 미완
+- 스페인어 후보 6편 확인(제목·채널·게시일 URL만, 직접 시청·자막 확보는 **미수행**):
+  - 「Descubrí el gran problema del Real Madrid (es grave)」— Pedro el Ingeniero (`OKqnpw4YZyQ`)
+  - 「ATLÉTICO MADRID DOMÓ AL REAL MADRID EN EL DERBY. VINICIUS Y MBAPPÉ DESAPARECIDOS ¿QUE PASÓ?」— La Cobra (`ckLOOWC6t80`)
+  - 「EL MADRID ES UNA INFAMIA: Atlético 2-1 Real Madrid」— Iñaki Angulo TV (`09a0RHhf2hg`, 레알 관점·비판적)
+  - 「⚽ ATLÉTICO MADRID 2-1 REAL MADRID DERBI DESASTRE | TERTULIA con COTO MATAMOROS」— Defensa Central (`OpljifSJc_I`)
+  - 「CARRUSEL CANALLA」— Cadena SER (`VO1_wJHgbI0`, 라디오 분석)
+  - 「SIMEONE rueda de prensa completa」— LALIGA 공식 (`o_K-WGntCx4`, 회견 전체 영상 — §2 인용의 원본일 가능성)
+- ⚠️ **WebFetch가 YouTube 페이지 본문(설명·자막)을 추출하지 못했다** — 반환값이 페이지 푸터(약관·내비게이션)뿐이었다.
+  `index_transcripts.py`/`write_video_summary.py`를 돌릴 전사가 없어 **이번 회차도 영상 요약 0건**으로 남는다.
+  ⇒ **재발 이슈로 기록**: YouTube 전사 확보는 WebFetch가 아니라 자막 API/전용 도구가 필요하다 — 다음 회차 방법 개선 필요.
+- **검색어**: `análisis táctico Atlético Madrid Real Madrid derbi 20 septiembre 2026 vídeo YouTube`(스페인어, 구글).
+
+### 5. Olé·TyC(아르헨티나 관점) — 줄리아노 시메오네 서사 다수, 구조 분석은 위 §2·§3에 흡수
+- Olé 「Súper Giuliano Simeone: le hicieron el penal, dejó al Real Madrid con 10 y sumó asistencia」
+  (2026-09-20) — 결과·개인 서사 중심, 전술 구조 서술은 §3의 Mundiario와 중복되지 않는 새 내용 없음.
+- TyC 「La tajante respuesta de Simeone a Mourinho」는 §2에서 이미 인용.
+- **검색어**: `site:ole.com.ar OR site:tycsports.com giuliano simeone derbi real madrid`(구글).
+
+### 6. 미해결 질문 갱신
+1. 이강인 `RST` 슬롯 의심 — **이번 회차 자료로 해소되지 않음**. D+3로 이월.
+2. 카르도소 듀얼 0승 6패 — **이번 회차 자료로 해소되지 않음**(역할 서술과의 불일치 지속). D+3로 이월.
+3. 코케 선발 전환 논의 — 현지 매체 어디서도 **명시적 선발 기용 논쟁을 다루지 않았다**(0건). §3 Mundiario는
+   「Koke의 투입으로 2-0 이후 템포를 늦췄다」는 서술만 있고 선발 전환 주장은 없다.
+4. HT 구조 변경(푸빌→코케/요렌테 RB) 서술 — **§2에서 신규 단서 확보**: 시메오네 본인이 「쿠티-요렌테 오해로
+   후반 위험 장면 1회」를 언급했다. 실측 이벤트와의 대조는 D+3 과제로 남긴다.
+
+### 7. 다음 회차(D+3, 2026-09-23) 과제
+- 쿠티-요렌테 「오해」 장면을 `match_events`·`match_shots`와 대조해 몇 분에 어떤 상황이었는지 특정한다.
+- YouTube 전사 확보 재시도(다른 도구/방법) — 특히 「SIMEONE rueda de prensa completa」(`o_K-WGntCx4`, 공식 채널)로
+  §2 인용 원문을 검증한다.
+- 이강인 슬롯·카르도소 듀얼 재검증은 다음 ATM 경기(있다면) 실측과 함께 판단한다 — 이 경기 단독 후속 자료로는
+  결정 불가.
+
