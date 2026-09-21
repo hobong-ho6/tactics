@@ -33,6 +33,7 @@
 사용:
     .venv/bin/python scripts/collect_ggclub.py --print-snippet
     FUTGG_AUTH='…' .venv/bin/python scripts/collect_ggclub.py --apply-squad
+    .venv/bin/python scripts/collect_ggclub.py --auth-file /tmp/ggauth.json --apply-squad
 """
 import argparse
 import datetime as dt
@@ -131,15 +132,32 @@ def main():
     ap.add_argument("--apply-squad", action="store_true", help="fut_squad_slots도 갱신한다")
     ap.add_argument("--account-id", type=int, default=1)
     ap.add_argument("--print-snippet", action="store_true", help="토큰 추출 스니펫만 출력하고 끝낸다")
+    ap.add_argument("--auth-file", help="토큰 JSON이 든 파일(저장소 밖). 읽는 즉시 삭제한다.")
     a = ap.parse_args()
 
     if a.print_snippet:
         print(SNIPPET)
         return
 
+    # ⭐ 토큰 경로 2개(2026-09-21 확장, 사용자 지시 「그냥 네가 실행하도록 정정해」):
+    #    ⑴ `FUTGG_AUTH` 환경변수 — 사람이 쉘에서 직접 돌릴 때.
+    #    ⑵ `--auth-file` — **에이전트가 돌릴 때.** 토큰을 명령줄에 박으면 자격증명이 프로세스 목록·
+    #       쉘 히스토리에 남고, 그 행위 자체가 차단된다(2026-09-21 실측). 파일로 건네고 **읽는 즉시 지운다**.
+    #    ⛔ 어느 경로든 토큰을 저장소 안에 쓰지 않는다 — `--auth-file`은 /tmp 같은 저장소 밖만 받는다.
     raw = os.environ.get("FUTGG_AUTH")
+    if not raw and a.auth_file:
+        p = Path(a.auth_file).resolve()
+        if ROOT in p.parents:
+            sys.exit(f"⛔ 토큰 파일이 저장소 안이다({p}) — /tmp 등 저장소 밖에 두라")
+        raw = p.read_text(encoding="utf-8").strip()
+        try:
+            p.unlink()                      # 읽은 즉시 폐기 — 디스크에 남기지 않는다
+            print(f"토큰 파일 폐기: {p}")
+        except OSError as e:
+            print(f"⚠️ 토큰 파일 삭제 실패({e}) — 직접 지울 것: {p}")
     if not raw:
-        sys.exit("⛔ FUTGG_AUTH 환경변수가 없다 — `--print-snippet`으로 스니펫을 받아 탭에서 토큰을 꺼낼 것")
+        sys.exit("⛔ 토큰이 없다 — `FUTGG_AUTH` 환경변수나 `--auth-file`을 주라 "
+                 "(`--print-snippet`으로 스니펫을 받아 로그인된 탭에서 꺼낸다)")
     headers = json.loads(raw)
     headers.setdefault("Accept", "application/json")
     # ⚠️ 기본 urllib UA로는 403이다(Cloudflare) — 다른 수집기와 같은 UA를 쓴다(2026-09-21 실측).

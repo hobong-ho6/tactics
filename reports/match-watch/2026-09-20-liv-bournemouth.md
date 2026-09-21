@@ -184,3 +184,69 @@ PPDA 11.13도 그 원형보다 느슨하다. 그리고 **하프별로 뒤집힌�
 - **한계 ③**: 상대가 이라올라의 전 소속팀이라 **상호 정보 비대칭이 특수하다**(본인 발언으로 확인).
   일반 원정 표본으로 취급할 때 주의한다.
 - `match_reports` 상태: **complete**(§1~§9 + 선수 15행 + 경기 전용 프리셋 + 선발 11행).
+
+## D+2 추적 (2026-09-22)
+
+### ⭐⭐ 맥 알리스터 Δ0.005 tie-break — 해소(영상 대신 전술 매체 서술로)
+- 이 경기 전용 **Coaches' Voice 전술 분석**(`learning.coachesvoice.com/cv/bournemouth-liverpool-tactics-september-2026/`)을 확보했다.
+  맥 알리스터는 본머스 전방 2인의 **"cover shadow"**에 갇힌 채 **"on his back foot"**으로 볼을 받아
+  **"quickly progress possession forwards"**하는 **깊은 스크리닝 역할**로 경기 내내(throughout) 서술된다.
+  (「후방 두 선수의 그림자 마크에 갇힌 채 등진 상태로 볼을 받아 빠르게 전진시킨다」)
+  대비되는 소보슬라이는 **"stepped higher"**·2H **"rolled out from a central position to form a back three"**로
+  전진·가변 역할이었다(obs#918 좌측 레인 겹침과 별개로, 우측 소보슬라이 비대칭은 §5 처방과 정합).
+  ⇒ `dm_boxcrasher/Balanced`(박스 침투형)보다 **`dm_dlp/Roaming`(딥라잉 플레이메이커·볼 전진형)**에 부합.
+  obs#932(신규).
+  ⚠️ **소스 성격 고지**: 요청받은 「유튜브 영상」이 아니라 **전문 전술 매체의 경기 전용 서면 분석**이다.
+  docs/30 「영상·발언 tie-break 권한」을 준용하되, Δ0.005 자체가 EA 공개 노이즈 구간(≤0.05) 안이므로
+  `slot_canon_roles`·시즌 `prescriptions`는 변경하지 않는다 — **「실측 무결정 + 서사 tie-break: dm_dlp/Roaming 우세」**로만 기록한다.
+  이는 docs/70 issue #29(HANDOFF 「LIV 6번 축」, 흐라벤베르흐 dm_dlp/Roaming 확정)와 **같은 방향**이라 축 정합성도 확보된다.
+
+### 이라올라 회견 전문 — 부분 성공
+- D+1이 실패한 건 **서드파티 `liverpool.com`**(402/403)이었다. **공식 `liverpoolfc.com`**은 별도 도메인이고
+  WebFetch로 열람 가능했다(`liverpoolfc.com/news/andoni-iraola-press-conference-win-here-very-difficult-i-know-it-very-well`).
+  단 WebFetch는 소형 모델 요약을 거쳐 연속 Q&A 원문 전체가 아니라 **요약 인용**이다.
+- 확보 문장(3회 독립 검색에서 동일 재현): 「I was disappointed with the first 20, 25 minutes, I think we didn't
+  start the game with the intensity the game required.」
+  (「처음 20~25분이 불만스러웠다. 경기가 요구하는 강도로 시작하지 못했다고 생각한다.」)
+  ⇒ obs#917의 「국면 한정 주장」을 **구체 구간(20~25분)**으로 보강한다(obs#933). 0~20분 구간 지표 산출 전까지는
+  여전히 「충돌로 기록·기각하지 않음」 유지.
+  ⚠️ 검색엔진 요약 간 표현이 미세하게 흔들렸다(「I'm obviously happy」/「I'm always happy」 등 패러프레이즈 변형) —
+  **패러프레이즈 변형이 있는 문장은 인용에서 배제**하고, 3회 재현된 위 문장만 채택했다(불변규칙 11 관련 신중 처리).
+
+### 유튜브 전술 분석 — 신규 후보 1건, 여전히 전사 미수행
+- 신규 발견: **"We Need To Talk About What Iraola Is Building At Liverpool..."**(채널 Buvey/Lawrence Bury,
+  `youtube.com/watch?v=-ERvbUIX3CQ`, 게시 약 1일 전 추정 = 09-20/21). 제목상 이 경기 전용 전술 분석으로 보이나
+  **직접 시청·전사 미수행**(도구 한계 — 이 세션엔 YouTube 전사 도구가 없었다).
+- D+1 확보 후보 3건도 **여전히 URL만**: `Dbty9-CDmbQ`(사전 — 확인: Araujo 선발·발리 여부 프리뷰) ·
+  `BcaSff9xn9w`(사후 공식 프리뷰 확인 — This Is Anfield류 공식 프레스컨 클립으로 추정) · `JAK1M-_PTyw`.
+- ⛔ `index_transcripts.py`/`write_video_summary.py` **이번 회차도 미실행**(전사 원문 없음).
+
+### 전술 블로그 — 확보(경기 전용, D+1의 0건 갱신)
+- **Coaches' Voice**(`learning.coachesvoice.com`)가 이 경기 전용 전술 분석을 발행했다(위 맥 알리스터 tie-break 출처와 동일 기사).
+  TFA는 이번에도 **이라올라 부임 전(2025/26 시즌, Bournemouth 소속 시절) 프로필**만 검색돼 미채택 — 체제 혼입 경계(⛔ 규칙) 재확인.
+
+### 본머스 전담 매체·The Athletic — 미확보, 대체 인용으로 보강
+- Bournemouth Echo·Dorset Echo·The Athletic 리버풀 전담 원문은 이번에도 **미확보**(페이월/미색인 추정, 직접 접근 미시도 — 검색 결과에 URL 자체가 없었다).
+- 대신 **로제 회견 확장 인용**을 Vavel/Yahoo/liverpool.com에서 확보(2차 재인용, obs#935):
+  「I think in life you always get what you deserve... In one situation we didn't defend well enough.」
+  (「인생에서는 늘 받아 마땅한 걸 받는다고 생각한다... 한 장면을 제대로 수비하지 못했다.」)
+  「It's disappointing because, if you see the five games we have played, there was every opportunity to win,
+  but right now we have three points... It's the details, being sharper, being more clinical in both boxes.」
+  (「실망스럽다. 5경기를 보면 이길 기회가 매번 있었지만 지금 승점은 3점뿐이다... 디테일 문제이고, 양쪽 박스에서 더 날카롭고 더 확실해야 한다.」)
+
+### 다국어(불변규칙 10) — 바스크·스페인어 재확인, 이번에도 0건
+- 검색어(언어별): 바스크어 「Naiz.eus Iraola Bournemouth Liverpool irabazi」 · 스페인어 「Iraola Bournemouth vuelta
+  prensa rueda」·「Iraola Bournemouth pocas opciones Liverpool」. 전부 **영어권 매체의 스페인어 번역/재수집**(soccerway
+  스페인어판 등)이거나 09-15 이전 소집·이적 기사로 회귀 — **매치데이 전용 원문은 0건**(obs#934).
+- ⇒ 두 회차 연속(D+1·D+2) 0건이라 「바스크·스페인어 매치데이 밀도가 낮다」는 구조적 판단에 무게가 실리지만,
+  불변규칙 10-⑶ 경고(당일 0건이 반전된 전례 다수)에 따라 **종결로 표기하지 않는다** — D+3/다음 회차로 이월.
+
+### 미해결 질문 재검증 결과
+- ⭐ **맥 알리스터 tie-break**: 위에서 **dm_dlp/Roaming 우세**로 잠정 정리(slot_canon 변경 없음).
+- 바르콜라 좌측 고립·케르케즈 레인 중복: 이번 조사에서 **현지 서술 신규 확보 없음**(영어권 기사 재수집만) — obs#918 유지.
+- 감독 발언↔실측 충돌: 위 「이라올라 회견 전문」 절에서 **20~25분 한정 서술로 재확인** — 판정 유지(충돌 기록·기각하지 않음).
+- 57′ 선제골 시퀀스 영상 교차확인: **미수행**(전술 영상 전사 미확보로 영상 근거 추가 없음). shotmap 판정(obs#916) 유지.
+
+### D+2 데이터 반영
+- 신규 관측 **obs#932~935**(4건, verdict/reference 축). `player_matches`·`match_events` 등 실측 테이블 변경 없음(D+0에서 이미 전량 닫힘).
+- `match_reports` 상태: **complete 유지**(D+2로 추가 종결 사유 발생 없음 — 미결은 유튜브 전사·본머스 전담 매체뿐이며 재시도 가치는 낮게 판단).
