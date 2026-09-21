@@ -6,6 +6,7 @@
    ⭐ 배치는 fut.gg 슬롯 순서 규약을 따른다(f4231a: 0 GK · 1 RB · 2 CB · 3 CB · 4 LB · 5 CDM · 6 CDM ·
       7 RM · 8 LM · 9 CAM · 10 ST, **우→좌**). */
 import { PLAYSTYLES } from './playstyle-icons.js';
+import { repaintEvoCard } from './evocard.js?v=20260921a';
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
@@ -41,8 +42,18 @@ function card(p, role, posName, { bench = false } = {}) {
   if (!p) return `<div class="fc-card empty${bench ? ' bench' : ''}">
       <div class="fc-art ph">비어 있음</div><div class="fc-tag">${esc(posName ?? '')}</div></div>`;
   const evolved = p.card_ovr != null && p.current_ovr != null && p.card_ovr !== p.current_ovr;
+  /* ⭐ 진화 카드는 **아트에 인쇄된 OVR·스탯을 현재 값으로 다시 그린다**(2026-09-21 사용자 지시
+     「진화가 적용된 오버롤을 카드에 직접 보여줘」). 배지만으로는 작아서 읽히지 않았다.
+     ⚠️ getImageData를 쓰므로 `crossorigin`이 필요하고, 그리기는 이미지 로드 뒤라 `paintEvoCards()`가
+     나중에 캔버스로 바꿔 끼운다. 실패하면 원본 <img>가 그대로 남는다(빈 칸이 되지 않는다). */
+  /* ⚠️ 진화 카드는 loading="lazy"를 쓰지 않는다(2026-09-21 실측): 화면 밖 카드는 로드가 미뤄져
+     naturalWidth가 0이고, 그러면 다시 그리기가 영영 실행되지 않아 **인쇄된 옛 OVR이 그대로 남는다**.
+     진화 카드는 스쿼드에 몇 장뿐이라 즉시 로드해도 부담이 없다. */
   const art = p.card_image_url
-    ? `<img class="fc-art" src="${esc(p.card_image_url)}" alt="${esc(p.name)} 카드" loading="lazy">`
+    ? `<img class="fc-art" src="${esc(p.card_image_url)}" alt="${esc(p.name)} 카드"
+         ${evolved
+            ? `crossorigin="anonymous" data-evo-ovr="${p.current_ovr}" data-evo-six="${esc(JSON.stringify(parse(p.current_six) || {}))}"`
+            : 'loading="lazy"'}>`
     : `<div class="fc-art ph"><b>${p.current_ovr ?? ''}</b><span>${esc(p.name)}</span></div>`;
   const chem = p.chem_style_ea
     ? `<span class="fc-chem"><img src="assets/chemstyles/${p.chem_style_ea}.png" alt="케미 스타일" loading="lazy"></span>`
@@ -95,6 +106,28 @@ export function fcPitch(xi, bench, meta = {}) {
       <aside class="fc-side" id="fcside">${fcSideEmpty(meta, xi)}</aside>
     </div>
   </div>`;
+}
+
+/* 진화 카드 아트를 현재 값으로 다시 그린다. fcPitch/벤치를 렌더한 **뒤에** 부른다.
+   ⛔ 여기서 값을 만들지 않는다 — `data-evo-*`에 실어둔 원장 값을 그대로 그린다. */
+export function paintEvoCards(root = document) {
+  const SIXK = ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY'];
+  const GKK = ['DIV', 'HAN', 'KIC', 'REF', 'SPD', 'POS'];
+  root.querySelectorAll('img.fc-art[data-evo-ovr]').forEach(im => {
+    const go = () => {
+      const six = parse(im.getAttribute('data-evo-six')) || {};
+      const keys = six.DIV != null ? GKK : SIXK;
+      const cv = repaintEvoCard(im, {
+        ovr: Number(im.getAttribute('data-evo-ovr')),
+        six: keys.map(k => [k, six[k] ?? null]),
+      });
+      if (!cv) return;                       // 실패하면 원본을 그대로 둔다
+      cv.className = 'fc-art';
+      im.replaceWith(cv);
+    };
+    if (im.complete && im.naturalWidth) go();
+    else im.addEventListener('load', go, { once: true });
+  });
 }
 
 /* 가로 스크롤 영역을 마우스로 끌어서 민다(2026-09-20 사용자 지시 「교체영역 드래그로 스크롤」).
@@ -369,7 +402,7 @@ function recoBlock(p, reco, styles) {
     + '그 케미 스타일이 실제로 올려주는 양(속성 상한 99를 넘는 몫은 버린다)을 곱해 합한 값입니다. '
     + '높을수록 이 역할 수행에 보탬이 큽니다. 절대 단위가 아니라 스타일끼리 비교하는 용도입니다.';
   const head = `<thead><tr><th></th><th>스타일</th>
-    <th style="text-align:right"><span class="fc-help" title="${esc(SCORE_TIP)}">에메리 점수</span></th></tr></thead>`;
+    <th style="text-align:right"><span class="fc-help" tabindex="0" data-tip="${esc(SCORE_TIP)}">에메리 점수<i>?</i></span></th></tr></thead>`;
   const top = reco.ranked[0];
   const why = (top.top || []).map(x => `${x.a} +${x.gain}`).join(' · ');
   return `<h4>추천 케미스트리 <small class="dim">— 에메리 전술 기준</small></h4>
@@ -514,7 +547,17 @@ export const FC_DETAIL_CSS = `
 .fc-ps.plus{border-color:var(--ok)}
 .fc-ps.plus i{font-style:normal;font-weight:800;color:var(--ok);margin-left:1px}
 .fc-recotbl td{font-size:12px}
-.fc-help{border-bottom:1px dotted var(--dim);cursor:help}
+/* ⚠️ 네이티브 title 속성은 크롬에서 안 뜨다시피 한다(2026-09-21 사용자 지적) — 지연이 길고 hover 영역이 좁다.
+   CSS 툴팁으로 바꾸고 tabindex를 줘 키보드 포커스로도 열리게 한다.
+   ⛔ 이 블록은 템플릿 리터럴 안이다 — 주석에 백틱을 쓰면 리터럴이 거기서 끝나 파일이 깨진다(두 번 당했다). */
+.fc-help{position:relative;border-bottom:1px dotted var(--dim);cursor:help;outline:none}
+.fc-help i{font-style:normal;display:inline-block;margin-left:3px;width:13px;height:13px;line-height:13px;
+  text-align:center;border-radius:50%;background:var(--line);color:var(--txt);font-size:9.5px;vertical-align:1px}
+.fc-help::after{content:attr(data-tip);position:absolute;right:0;top:calc(100% + 6px);z-index:9;
+  width:250px;padding:8px 10px;border-radius:8px;background:#0b1220;border:1px solid var(--line);
+  color:var(--txt);font-size:11.5px;font-weight:400;line-height:1.5;text-align:left;white-space:normal;
+  box-shadow:0 6px 18px rgba(0,0,0,.55);opacity:0;visibility:hidden;transition:opacity .12s}
+.fc-help:hover::after,.fc-help:focus::after{opacity:1;visibility:visible}
 .fc-vote{display:flex;align-items:center;gap:6px;font-size:11.5px;margin:3px 0}
 .fc-vote span{flex:0 0 96px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .fc-vote i{flex:1;height:7px;border-radius:99px;background:var(--bg);overflow:hidden}
