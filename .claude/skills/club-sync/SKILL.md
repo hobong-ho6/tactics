@@ -36,8 +36,12 @@ description: 내 얼티밋 구단 동기화 — fut.gg GG Club에서 현재 스�
    ```
    .venv/bin/python scripts/collect_ggclub.py --print-snippet   # ① 토큰 추출 스니펫
    # ② 로그인된 GG Club 탭에서 스니펫 실행 → Authorization 헤더 JSON 한 줄
-   FUTGG_AUTH='<그 JSON>' .venv/bin/python scripts/collect_ggclub.py --apply-squad   # ③ 전량 + 스쿼드
+   #    ⚠️ 현재 경로와 **다른** /gg-club/my/… 링크를 눌러야 SPA 이동이 일어나 헤더가 잡힌다(같은 경로면 호출이 없다).
+   FUTGG_AUTH='<그 JSON>' .venv/bin/python scripts/collect_ggclub.py --apply-squad   # ③ 사람이 직접 돌릴 때
+   .venv/bin/python scripts/collect_ggclub.py --auth-file /tmp/ggauth.json --apply-squad   # ③' 에이전트가 돌릴 때
    ```
+   - ⭐ **에이전트는 `--auth-file`을 쓴다**(2026-09-21 신설): 토큰을 명령줄에 박으면 프로세스 목록·쉘 히스토리에 남고
+     **그 행위 자체가 정책으로 차단된다**(실측). 파일로 건네면 스크립트가 **읽는 즉시 삭제**하고, 저장소 안 경로는 거부한다.
    - ⚠️ `/api/gg-club/…`는 **Authorization 헤더 없으면 404**다(쿠키만으로는 안 된다). 토큰 수명은 **약 1시간**.
    - ⚠️ 기본 urllib UA로는 **403**(Cloudflare) — 스크립트가 `Mozilla/5.0`·Origin·Referer를 붙인다.
    - ⛔ 토큰은 **디스크에 쓰지 않는다**. 환경변수로 1회만 넘기고, 대화에 노출됐으면 사용자에게 알린다.
@@ -47,6 +51,18 @@ description: 내 얼티밋 구단 동기화 — fut.gg GG Club에서 현재 스�
 5. 페이지 순회·활성 스쿼드는 스크립트가 함께 처리한다(`?page=N` + `/api/gg-club/active-squad/`).
    `--apply-squad`면 `fut_squad_slots`까지 갱신한다(FIELD→XI · SUBSTITUTE→BENCH).
    슬롯 순서(f4231a): `0 GK · 1 RB · 2 CB · 3 CB · 4 LB · 5 CDM · 6 CDM · 7 RM · 8 LM · 9 CAM · 10 ST` (우→좌).
+
+## ⛔⛔ 싱크 전에 **fut.gg가 최신인지** 먼저 본다 (2026-09-21 실증)
+
+`fut_club_sync.py`는 `current_ovr`·`current_six`를 **무조건 덮는다**(충돌은 보고만 한다).
+⇒ **fut.gg가 우리 원장보다 낡았으면 싱크가 진화를 되돌린다.**
+
+- 실증(2026-09-21): 지모알로바 갈림길 1·2단계를 인게임에 적용하고 원장에 78로 기록한 직후 회차.
+  fut.gg는 **EA 싱크 전이라 73**이었고, dry-run의 유일한 변경이 **「갱신 1 = 78→73 되돌리기」**였다.
+- ⇒ **반드시 `--dry-run`을 먼저 돌리고 「⚠️ 원장 ↔ EA 불일치」 줄을 읽는다.**
+  불일치가 **우리가 방금 기록한 진화 때문이면 싱크를 적용하지 않는다** — 「Sync Club」으로 fut.gg를 최신화한 뒤 다시 수집한다.
+  ⭐ 진화를 여러 단계 밟을 계획이면 **마지막 단계까지 끝내고 한 번에** 싱크하는 편이 회차를 아낀다.
+- ⚠️ 반대 방향(fut.gg가 최신, 원장이 낡음)이면 덮는 게 맞다 — 그때는 「진화 완주 추정」 보고를 보고 `fut_club.py complete`로 닫는다.
 
 ## 3. 원장 반영
 
