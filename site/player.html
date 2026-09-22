@@ -81,7 +81,7 @@
 <div id="duty"></div></div>
 </section>
 <script type="module">
-import { mountHeader, loadTeam, loadGameStats, loadKernels, slotCandidates, sofifaLink, isGkSlot, gkPosCell } from './assets/data.js?v=20260918-evo';
+import { mountHeader, loadTeam, loadGameStats, loadKernels, slotCandidates, sofifaLink, isGkSlot, gkPosCell, setCurrentTeam } from './assets/data.js?v=20260918-evo';
 import { pizza, dumbbell, formRibbon } from './assets/playerviz.js?v=20260918';
 // 차트 폭 — 패널이 display:none인 채로 렌더되면 clientWidth가 0이라, 보이는 본문 폭에서 계산한다(패딩 20×2 + 패널 14×2)
 const vizW = (el, cap, pad = 0) => Math.min(cap, Math.max(320, (el?.clientWidth || (document.body.clientWidth - 68)) - pad));
@@ -263,6 +263,26 @@ fillWho();
     grp.value = g; fillWho(); who.value = String(i);
     return;
   }
+  /* ⛔⛔ **여기서 조용히 돌아가면 안 된다**(2026-09-22 사용자 지적 「마조 프로필을 열었는데 알리송이 열림」).
+     `groups`는 **지금 선택된 팀**의 스쿼드뿐이라, 다른 팀 선수를 딥링크로 열면 못 찾고
+     기본 선택(그 팀의 첫 선수)이 그대로 남는다 — **요청한 선수인 척 엉뚱한 선수가 열린다.**
+     실증: 리버풀이 선택된 상태에서 `?id=61`(마조·빌라)이 **알리송 베케르**를 열었다.
+     ⇒ ⑴ 그 선수가 있는 팀으로 **바꿔서 다시 연다** ⑵ 그래도 없으면 **없다고 말한다**.
+     ⚠️ 재시도 표시(`sw`)를 붙여 **무한 새로고침**을 막는다. */
+  const other = _TEAMS.find(t => (t.squad || []).some(q => q.player_id === want));
+  const sw = new URLSearchParams(location.search).get('sw');
+  if (other && !sw) {
+    setCurrentTeam(other.regime.team_code);
+    location.replace(`player.html?id=${want}&sw=1`);
+    return;
+  }
+  const nm = other && (other.squad.find(q => q.player_id === want)?.label);
+  const bar = document.getElementById('tabnote') || document.body;
+  const w = document.createElement('p');
+  w.style.cssText = 'color:var(--warn);font-size:12.5px;margin:8px 0';
+  w.innerHTML = `⚠️ <b>요청한 선수(id ${want}${nm ? ` · ${esc(nm)}` : ''})를 이 목록에서 찾지 못했다</b> —
+    아래는 <b>다른 선수</b>다. 영입 추적·이탈로 스쿼드에서 빠졌거나 팀 전환에 실패한 경우다.`;
+  document.querySelector('.menubar')?.before(w) ?? bar.prepend(w);
 })();
 /* 종합 평가 패널 — player_evaluations 산출물. 없으면 패널 자체를 숨긴다. */
 function renderEval(n, sel){

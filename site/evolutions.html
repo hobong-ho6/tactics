@@ -219,17 +219,33 @@ function sixText(before, after){
    ⚠️ `attrs`(기준) ↔ `current_attrs`(적용 후)로 넣으면 상세 스탯이 **진화 상승분을 초록으로** 표시한다.
    ⛔ ctx에 `log`·`catalog`를 넘기지 않는다 — 그건 **실제로 적용한 진화**를 검증하는 경로다.
       여기 값은 「적용하면 이렇게 된다」는 가정이라 그 검증에 걸면 거짓 경고가 난다. */
+/* ⭐⭐ 이 선수의 **지금 카드 실측**(보유분). 카탈로그 탭의 「진화 전」은 기준 카드가 맞지만,
+   선수별 패스의 「진화 전」은 **내가 지금 들고 있는 카드**여야 한다(2026-09-22 사용자 지시).
+   ⚠️ 영향받는 건 **이미 진화를 밟은 선수뿐**이다(2026-09-22 실측 4명: Alysson·마조·린델뢰프·루제리).
+      나머지는 기준 = 현재라 아무 차이가 없다. */
+const ownedCard = pid => (EVO.club?.players || []).find(c => {
+  const acc = accountObj(); return acc && c.account_id === acc.id && c.status === 'owned' && c.player_id === pid; });
 function evoResultCard(p, pid){
   const steps = p.path || []; const last = steps[steps.length - 1];
   if (!last || !last.attrs) return '';
   const cs = CARDS[String(pid)] || []; const base = cs.find(c => c.is_base) || cs[0] || {};
+  /* 비교 기준(= 화면의 「진화 전」)은 **보유 카드 실측**을 우선한다. 없으면 기준 카드로 물러선다. */
+  const own = ownedCard(pid);
+  const fromOwned = !!(own && own.current_attrs);
+  const beforeAttrs = fromOwned ? own.current_attrs : base.attrs;
+  const beforeOvr = fromOwned ? own.current_ovr : p.ovr_before;
+  const beforeSix = fromOwned ? own.current_six : p.six_before;
+  /* ⛔⛔ fut.gg는 경로를 **기준 카드에서** 계산한다. 이미 진화한 선수는 출발점이 달라
+     「적용 후」 숫자가 그대로 맞지 않는다 — 상한에 먼저 닿아 있을 수 있기 때문이다.
+     ⇒ 값을 내가 고쳐 쓰지 않고(추정이 된다) **그 사실을 화면에 밝힌다**(불변규칙 3). */
+  const drift = fromOwned && own.current_ovr !== p.ovr_before;
   const obj = {
     name: p.name_kr || base.name_kr || '', player_id: pid,
     card_image_url: last.card_image_url || base.card_image_url,
     positions: last.position || base.positions,
-    current_ovr: last.ovr, card_ovr: p.ovr_before,
-    current_six: JSON.stringify(last.six || {}), card_six: p.six_before,
-    current_attrs: JSON.stringify(last.attrs), attrs: base.attrs,
+    current_ovr: last.ovr, card_ovr: beforeOvr,
+    current_six: JSON.stringify(last.six || {}), card_six: beforeSix,
+    current_attrs: JSON.stringify(last.attrs), attrs: beforeAttrs,
     current_playstyles: (last.playstyles || []).join(', '),
     current_roles_plus: JSON.stringify(last.roles_plus || []),
     current_roles_plus_plus: JSON.stringify(last.roles_plus_plus || []),
@@ -238,7 +254,12 @@ function evoResultCard(p, pid){
     height_cm: base.height_cm, weight_kg: base.weight_kg,
   };
   return `<div class="evo-result"><div class="evo-result-h">적용 후 선수 프로필
-      <small class="dim">— 「지금 내 팀」 사이드패널과 같은 형식 · <b>초록</b>은 기준 카드 대비 진화 상승분</small></div>
+      <small class="dim">— 「지금 내 팀」 사이드패널과 같은 형식 · <b>초록</b>은 ${
+        fromOwned ? `<b>지금 내 카드(OVR ${beforeOvr})</b> 대비 상승분` : `기준 카드(OVR ${beforeOvr}) 대비 상승분`}</small></div>
+    ${drift ? `<p class="evo-drift">⚠️ 이 선수는 <b>이미 진화를 밟았다</b>(기준 카드 ${p.ovr_before} → 지금 ${own.current_ovr}).
+      위 「진화 전」은 <b>지금 내 카드 실측</b>이지만, <b>적용 후 숫자는 fut.gg가 기준 카드에서 계산한 값</b>이라
+      그대로 맞지 않을 수 있다 — 이미 상한에 닿은 속성은 더 오르지 않는다.
+      <b>실제 결과는 적용 후 EA 싱크로 확정</b>한다.</p>` : ''}
     ${cardDetail(obj, { role: p.pres ? { role_name: ROLE_KR[p.pres.role_id] || p.pres.role_id, focus: p.pres.focus } : null,
                         role_map: EVO.role_map, face_stats: EVO.face_stats })}</div>`;
 }
