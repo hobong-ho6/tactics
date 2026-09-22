@@ -458,3 +458,5 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .why-r b.ok-t{color:var(--ok)} .why-r b.bad-t{color:var(--warn)}
 .why-v{color:var(--ok);font-weight:600;margin-bottom:2px}
 .why-v b{color:var(--ok)}
+.steps-h{font-size:11px;font-weight:800;color:var(--dim);letter-spacing:.03em;margin:8px 0 3px}
+.steps-h small{font-weight:400;letter-spacing:0}
