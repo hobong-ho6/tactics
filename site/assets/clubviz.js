@@ -1170,10 +1170,15 @@ export function cardDetail(p, ctx = {}) {
         <div style="margin-top:8px">${prof}</div>
       </div>
     </div>
-    ${role ? `<h4>이 자리의 전술</h4><div class="plist"><button disabled>${esc(role.position_name)}</button>
+    ${/* ⚠️ `position_name`이 비면 **빈 버튼**이 남는다 — 값이 있을 때만 칸을 만든다(2026-09-22). */''}
+    ${role ? `<h4>이 자리의 전술</h4><div class="plist">${role.position_name ? `<button disabled>${esc(role.position_name)}</button>` : ''}
       <button disabled>역할 <b>${esc(role.role_name)}</b></button><button disabled>포커스 <b>${esc(role.focus)}</b></button></div>
       ${ctx.team ? `<div class="plist" style="margin-top:4px"><button disabled>빌드업 ${esc(ctx.team.build_up_style)}</button>
-      <button disabled>수비 ${esc(ctx.team.defensive_approach)}</button><button disabled>라인 ${ctx.team.line_height}</button></div>` : ''}` : ''}
+      <button disabled>수비 ${esc(ctx.team.defensive_approach)}</button><button disabled>라인 ${ctx.team.line_height}</button></div>` : ''}`
+      /* ⭐ 처방이 없으면 **조용히 빼지 않는다**(2026-09-22 사용자 질문 「이 영역이 있는 선수와 없는 선수의 차이가 뭐야?」).
+         빠진 이유가 화면에 없으면 「이 선수는 전술이 없다」로 오독된다 — 결손과 0은 다르다(obs#132). */
+      : (ctx.no_role_note ? `<h4>이 자리의 전술</h4><p class="dim" style="font-size:12px;margin:0">
+          ${esc(ctx.no_role_note)}</p>` : '')}
     <h4>상세 스탯</h4>${attrBlock(p, ctx)}
     ${traitRow(p, ctx.role_map)}
     <h4>현재 카드 스탯</h4>${sixRow(cur, base)}
