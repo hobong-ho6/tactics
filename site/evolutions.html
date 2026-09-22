@@ -110,7 +110,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260922u';
+import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260922v';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -210,6 +210,38 @@ function sixText(before, after){
     return y != null && x != null && y !== x
       ? `${k} ${x}→<b style="color:var(--ok)">${y}</b>` : `${k} ${y ?? x ?? '—'}`; }).join(' · ');
 }
+/* ⭐⭐ 경로 결과를 **「지금 내 팀」 사이드패널과 같은 모양**으로 펼친다
+   (2026-09-22 사용자 지시 「빈 여백이 많은데 … 선수 카드와 상세 스탯 등 선수 프로필을 …
+    지금 내 팀의 사이드패널과 동일한 정보를 동일한 형태로」).
+   ⛔ 새 렌더러를 만들지 않는다 — `cardDetail()`을 그대로 쓴다. 두 벌을 만들면 한쪽만 고쳐져 갈린다.
+   ⚠️ `path_json` 마지막 단계에 **29속성(attrs)·6대 스탯·PlayStyle·역할·카드아트**가 다 들어 있다.
+      프로필(키·몸무게·주발·스킬·약발·AcceleRATE)은 진화로 바뀌지 않으므로 **기준 카드**에서 가져온다.
+   ⚠️ `attrs`(기준) ↔ `current_attrs`(적용 후)로 넣으면 상세 스탯이 **진화 상승분을 초록으로** 표시한다.
+   ⛔ ctx에 `log`·`catalog`를 넘기지 않는다 — 그건 **실제로 적용한 진화**를 검증하는 경로다.
+      여기 값은 「적용하면 이렇게 된다」는 가정이라 그 검증에 걸면 거짓 경고가 난다. */
+function evoResultCard(p, pid){
+  const steps = p.path || []; const last = steps[steps.length - 1];
+  if (!last || !last.attrs) return '';
+  const cs = CARDS[String(pid)] || []; const base = cs.find(c => c.is_base) || cs[0] || {};
+  const obj = {
+    name: p.name_kr || base.name_kr || '', player_id: pid,
+    card_image_url: last.card_image_url || base.card_image_url,
+    positions: last.position || base.positions,
+    current_ovr: last.ovr, card_ovr: p.ovr_before,
+    current_six: JSON.stringify(last.six || {}), card_six: p.six_before,
+    current_attrs: JSON.stringify(last.attrs), attrs: base.attrs,
+    current_playstyles: (last.playstyles || []).join(', '),
+    current_roles_plus: JSON.stringify(last.roles_plus || []),
+    current_roles_plus_plus: JSON.stringify(last.roles_plus_plus || []),
+    skill_moves: base.skill_moves, weak_foot: base.weak_foot,
+    preferred_foot: base.preferred_foot, accelerate: base.accelerate,
+    height_cm: base.height_cm, weight_kg: base.weight_kg,
+  };
+  return `<div class="evo-result"><div class="evo-result-h">적용 후 선수 프로필
+      <small class="dim">— 「지금 내 팀」 사이드패널과 같은 형식 · <b>초록</b>은 기준 카드 대비 진화 상승분</small></div>
+    ${cardDetail(obj, { role: p.pres ? { role_name: ROLE_KR[p.pres.role_id] || p.pres.role_id, focus: p.pres.focus } : null,
+                        role_map: EVO.role_map, face_stats: EVO.face_stats })}</div>`;
+}
 function pathHTML(p, i, pid){
   const why = !p.pres ? '처방 없음 — 능력치만 본 순위' : p.tier === 2 ? '처방 역할 Role++ ✓' : p.tier === 1 ? '처방 역할 Role+' : '처방 역할과 무관';
   /* ⭐ 이 경로 안에 **이 선수가 이미 밟은 진화**가 있으면 그대로 알린다(2026-09-22 사용자 지시).
@@ -229,6 +261,7 @@ function pathHTML(p, i, pid){
     ${p.upgrades ? `<div class="dim" style="font-size:12px;margin-top:4px">${esc(Object.entries(J(p.upgrades, {})).map(([k, v]) => `${k} +${v}`).join(' · '))}</div>` : ''}
     <div class="dim" style="font-size:12px;margin-top:4px"><b>적용 후 6대 스탯</b> ${sixText(p.six_before, p.six_after)}</div>
     <div class="evo-dumb">${sixDumbbell(J(p.six_before, {}), J(p.six_after, {}), { W: 420, gk: /GK/.test(String(p.path && p.path[0] && p.path[0].position) || '') })}</div>
+    ${pid != null ? evoResultCard(p, pid) : ''}
     ${stepsHTML(p)}
     <div style="margin-top:4px">${String(p.evolution_urls || '').split('\n').filter(Boolean).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>`).join(' ')}</div>
   </details>`;
