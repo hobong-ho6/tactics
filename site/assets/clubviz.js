@@ -213,7 +213,8 @@ export function compareCards(a, b, ctx = {}) {
       ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="">` : ''}
       <b>${esc(c.name)}</b>
       <span class="dim">OVR ${c.current_ovr ?? '-'}${c.card_ovr !== c.current_ovr ? ` <em class="d-evo">진화 전 ${c.card_ovr}</em>` : ''}</span>
-      <span class="dim">${esc(c.positions || '')}</span></div>`;
+      <span class="dim">${esc(c.positions || '')}</span>
+      ${physLine(c) ? `<span class="dim">${physLine(c)}</span>` : ''}</div>`;
   const row = (k, va, vb, big) => {
     const d = (va ?? 0) - (vb ?? 0);
     return `<tr${big ? ' class="big"' : ''}><td class="cmp-a ${d > 0 ? 'win' : d < 0 ? 'lose' : ''}">${va ?? '—'}</td>
@@ -272,6 +273,15 @@ export function compareCards(a, b, ctx = {}) {
       <tr><td class="cmp-a">${esc(a.preferred_foot || '—')}</td><td class="cmp-k">주발</td><td class="cmp-b">${esc(b.preferred_foot || '—')}</td></tr>
       <tr><td class="cmp-a">${esc(a.accelerate || '—')}</td><td class="cmp-k">AcceleRATE</td><td class="cmp-b">${esc(b.accelerate || '—')}</td></tr>
     </tbody></table>
+
+    <h4>체격</h4>
+    <table class="tbl cmp-tbl"><tbody>
+      ${row('키(cm)', a.height_cm, b.height_cm)}
+      ${row('몸무게(kg)', a.weight_kg, b.weight_kg)}
+    </tbody></table>
+    <p class="dim" style="font-size:11px;margin:4px 0 0">⚠️ 키·몸무게는 <b>높다고 유리한 값이 아니다</b> —
+      경합·속도에서 반대로 작동할 수 있어 색(초록)은 「큰 쪽」을 표시할 뿐이다.
+      키는 AcceleRATE 판정에 관여한다(EA 1차).</p>
 
     <h4>상세 스탯 <small class="dim">29속성</small></h4>
     <table class="tbl cmp-tbl"><tbody>${attrRows}</tbody></table>
@@ -712,6 +722,25 @@ const ACCEL_TIP = '가속 곡선의 유형이다. Explosive는 초반 몇 걸음
   + '⚠️ 정확한 임계값은 EA 1차 자료에 없다(커뮤니티 해석, D등급). ⭐ FC27은 유형 간 차이를 줄이고 '
   + '가속·질주 속성 비중을 높였다(EA 1차, HIGH).';
 
+/* 체격 한 줄 — 키·몸무게는 카드 표(player_card_items)에 있다.
+   ⛔ 없으면 그 항목을 아예 빼고 쓴다 — 「—」를 나열하면 결손이 값처럼 보인다.
+   ⚠️ 나이는 생년에서 계산한다(EA는 카드에 나이를 따로 주지 않는다). */
+function physLine(p) {
+  const bits = [];
+  if (p.height_cm) bits.push(`${p.height_cm}cm`);
+  if (p.weight_kg) bits.push(`${p.weight_kg}kg`);
+  if (p.birthdate) {
+    const d = new Date(p.birthdate);
+    if (!isNaN(d)) {
+      const n = new Date(); let age = n.getFullYear() - d.getFullYear();
+      const m = n.getMonth() - d.getMonth();
+      if (m < 0 || (m === 0 && n.getDate() < d.getDate())) age--;
+      if (age > 0 && age < 60) bits.push(`${age}세`);
+    }
+  }
+  return bits.join(' · ');
+}
+
 const STARS = (n, max = 5) => n == null ? '—'
   : `<span class="fc-star">${'★'.repeat(n)}</span><span class="fc-star off">${'★'.repeat(Math.max(0, max - n))}</span>`;
 
@@ -800,7 +829,8 @@ export function cardDetail(p, ctx = {}) {
         <h3>${esc(p.name)}</h3>
         <div class="fc-dovr"><b>${p.current_ovr ?? '-'}</b><span>OVR</span>
           ${p.card_ovr !== p.current_ovr ? `<em class="up">진화 전 ${p.card_ovr}</em>` : ''}</div>
-        <div class="fc-dmeta">${esc(p.positions || '')} · ${esc(p.club || '')}<br>${esc(p.league || '')} · ${esc(p.nation || '')}</div>
+        <div class="fc-dmeta">${esc(p.positions || '')} · ${esc(p.club || '')}<br>${esc(p.league || '')} · ${esc(p.nation || '')}
+          ${physLine(p) ? `<br>${physLine(p)}` : ''}</div>
         <div class="fc-dsix">${SIX.map(k => `<span><i>${k}</i><b>${cur?.[k] ?? '—'}</b></span>`).join('')}</div>
         <div class="fc-dchips">
           ${p.chem_style_ea ? `<span class="chip">케미 ${p.chem_points ?? 0}/3</span>` : ''}
