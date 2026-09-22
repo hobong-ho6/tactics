@@ -42,7 +42,7 @@ import { decodeMap } from './assets/kernel.js?v=20260825-decodemap-null';
 import { drawPitch, drawComposite, drawChip } from './assets/pitch.js?v=20260825-decodemap-null';
 import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
 import { roleLabel, focusLabel, claimLabel, humanize, VERDICT_KR, AXIS_KR, mountRawToggle } from './assets/labels.js?v=20260918';
-import { renderMatchViz, playerRows } from './assets/matchviz.js?v=20260918b';
+import { renderMatchViz, playerRows } from './assets/matchviz.js?v=20260922a';
 import { prose } from './assets/prose.js';
 
 const { team, regime } = await mountHeader('match-report.html');
@@ -380,18 +380,29 @@ function render(r){
     <section><h3>게임 구현 함의</h3>${prose(r.game_implications)}</section>`;
   /* 출전 구간·평점 한 장 — 16명을 카드로만 두면 비교가 안 된다(카드는 상세, 이 그림은 조망) */
   const pv = document.getElementById('pviz');
-  pv.innerHTML = playerRows(r, regime?.team_kr || team, Math.min(Math.max(320, (pv.clientWidth || (document.body.clientWidth - 68)) - 26), 1100));
-  pv.querySelectorAll('.hit').forEach(g => g.addEventListener('click', () => {
-    const el = document.querySelector(`details.player-report[data-pid="${g.dataset.pid}"]`);
-    if (el){ el.open = true; el.scrollIntoView({ block: 'center' }); }
-  }));
+  /* ⛔⛔ **첫 렌더의 `clientWidth`를 믿지 말 것.** 레이아웃이 자리잡기 전에 읽으면 실제보다 훨씬 작게 나오고
+     (실측 2026-09-22: 컨테이너 1309px인데 559px로 읽혔다), CSS가 `width:100%`로 늘리면서
+     **viewBox가 2.3배로 확대**된다 — 행 높이를 아무리 줄여도 그림이 커 보이던 진짜 원인이었다
+     (사용자 지적 2회). ⇒ renderMatchViz와 같이 **ResizeObserver로 실폭에 맞춰 다시 그린다.** */
   let _ptip = pv.querySelector('.tip');
-  if (!_ptip){ _ptip = document.createElement('div'); _ptip.className = 'tip'; _ptip.hidden = true; pv.appendChild(_ptip); }
-  pv.querySelectorAll('.hit').forEach(g => {
-    g.addEventListener('pointerenter', () => { _ptip.textContent = g.dataset.tip; _ptip.hidden = false; });
-    g.addEventListener('pointermove', e => { _ptip.style.left = Math.min(e.clientX + 12, window.innerWidth - 320) + 'px'; _ptip.style.top = (e.clientY + 14) + 'px'; });
-    g.addEventListener('pointerleave', () => { _ptip.hidden = true; });
-  });
+  if (!_ptip){ _ptip = document.createElement('div'); _ptip.className = 'tip'; _ptip.hidden = true; }
+  const drawPv = () => {
+    const w = Math.min(Math.max(320, (pv.clientWidth || document.body.clientWidth) - 26), 1240);
+    pv.innerHTML = playerRows(r, regime?.team_kr || team, w);
+    pv.appendChild(_ptip);
+    pv.querySelectorAll('.hit').forEach(g => {
+      g.addEventListener('click', () => {
+        const el = document.querySelector(`details.player-report[data-pid="${g.dataset.pid}"]`);
+        if (el){ el.open = true; el.scrollIntoView({ block: 'center' }); }
+      });
+      g.addEventListener('pointerenter', () => { _ptip.textContent = g.dataset.tip; _ptip.hidden = false; });
+      g.addEventListener('pointermove', e => { _ptip.style.left = Math.min(e.clientX + 12, window.innerWidth - 320) + 'px'; _ptip.style.top = (e.clientY + 14) + 'px'; });
+      g.addEventListener('pointerleave', () => { _ptip.hidden = true; });
+    });
+  };
+  drawPv();
+  if (pv._ro) pv._ro.disconnect();
+  let _pt = null; pv._ro = new ResizeObserver(() => { clearTimeout(_pt); _pt = setTimeout(drawPv, 120); }); pv._ro.observe(pv);
   /* ⭐ 포지션군으로 나눠 보여준다(2026-09-22 사용자 지시 「수비수·미드필더·공격수 기준으로 구분」).
      ⚠️ 판정 순서가 중요하다 — `RCB`는 CB라 수비, `RDM`·`RM`은 미드필더, `RW`는 공격이다.
      CB/LB/RB/WB를 먼저 걸러야 RW가 RB 패턴에 잡히지 않는다. */
@@ -401,9 +412,19 @@ function render(r){
     if (/ST|CF|LW|RW/.test(P)) return 'FW';
     return 'MF'; };
   const GLABEL = { GK:'골키퍼', DF:'수비수', MF:'미드필더', FW:'공격수' };
+  /* ⭐ 자세한 한줄평 (2026-09-22 사용자 지시 「한줄평이 나온 건 매우 좋아, 좀더 자세한 한줄평이 추가되도 좋겠어」).
+     역할 한 줄(`tactical_role`)이 「무엇을 맡았나」라면, 이 줄은 「그래서 어땠나」다.
+     ⛔ **새로 쓰지 않는다** — `characteristics`(분석 판단)의 첫 문장을 그대로 가져온다.
+        접으면 안 보이던 판단을 펼치기 전에 한 줄로 보여주는 것이 전부다.
+     ⚠️ `characteristics`가 비면 `performance` 첫 문장으로 물러선다(둘 다 없으면 줄 자체를 안 만든다). */
+  const firstSentence = t => { const x = String(t ?? '').trim(); if (!x) return '';
+    const m = x.match(/^[\s\S]*?[.!?。]\s|^[^\n]*/); const one = (m ? m[0] : x).trim();
+    return one.length > 120 ? one.slice(0, 119) + '…' : one; };
+  const gist = p => firstSentence(p.characteristics) || firstSentence(p.performance);
   const pcard = p=>`<details class="player-report" data-pid="${p.player_id ?? ''}">
     <summary><span class="badge ${p.started?'hi':'mid'}">${p.started?'선발':'교체'}</span> <b>${esc(p.position)}</b> ${esc(p.label)} · ${annotate(esc(p.tactical_role))}
-      <span class="dim">${esc(p.minutes ?? '—')}분 / ${esc(p.rating ?? '—')}</span></summary>
+      <span class="dim">${esc(p.minutes ?? '—')}분 / ${esc(p.rating ?? '—')}</span>
+      ${gist(p) ? `<i class="gist">${esc(gist(p))}</i>` : ''}</summary>
     <div class="player-report-body">${phaseMaps(p)}<div>
       <div class="kv"><b>특성</b></div>${prose(p.characteristics)}
       <div class="kv"><b>경기 평가</b></div>${prose(p.performance)}

@@ -1264,6 +1264,12 @@ export const FC_DETAIL_CSS = `
 .cmp-vfit .cmp-k i{display:block;font-style:normal;font-size:9.5px;opacity:.7;font-weight:400}
 .cmp-vwhy{display:flex;flex-wrap:wrap;gap:5px}
 .cmp-vwhy .chip{font-size:11px}
+/* ⛔ 역할 이름은 **한 칩 안에서 줄바꿈되면 안 된다** — 「CM Deep-Lying Playmaker」가 두 줄로 쪼개져
+   앞줄이 다른 칩처럼 읽혔다(2026-09-22 사용자 지적). 칩 단위로만 줄을 바꾼다.
+   ⚠️ nowrap만 걸면 칩이 컨테이너를 삐져나가므로 **칩 묶음을 flex-wrap**으로 감싼다. */
+.cmp-two .chip{white-space:nowrap;display:inline-block}
+.cmp-two > div{display:flex;flex-wrap:wrap;gap:4px;align-content:flex-start}
+.cmp-two .cmp-lab{flex-basis:100%;margin-top:4px}
 .cmp-vwhy .wA{border-color:var(--viz-us);color:var(--viz-us)}
 .cmp-vwhy .wB{border-color:var(--viz-them);color:var(--viz-them)}
 .cmp-wtbl{width:100%;table-layout:fixed;margin-top:6px}
