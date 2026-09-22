@@ -159,6 +159,33 @@ def export_all(db_path=None, window="2026-summer"):
                                    total_upgrades_text, levels, allowed_prior_ids, number_of_players, is_expired, pulled
                             FROM fc_evolutions WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions)
                             ORDER BY is_expired, end_time, evo_id""")
+    # ⭐ PlayStyle **숫자 id → 이름** (2026-09-22) — 진화 분기(upgradeOptions)가 PS를 **id로만** 주기 때문에
+    #    이게 없으면 화면이 「옵션1: play_style 5」처럼 못 읽는 값을 띄운다.
+    #    ⛔ 표를 손으로 적지 않는다 — `player_evolutions`의 **id 배열 ↔ 이름 배열**을 교차시켜 역산한다
+    #       (262건 표본에서 29개 확정 · 런북에 적힌 알려진 값 6=Pinged Pass·19=First Touch 등과 일치).
+    ps_pairs = {}
+    for r in _rows(con, """SELECT playstyles_after, path_json FROM player_evolutions
+                            WHERE pulled=(SELECT MAX(pulled) FROM player_evolutions)
+                              AND playstyles_after IS NOT NULL"""):
+        try:
+            ids = json.loads(r["playstyles_after"] or "[]")
+            pj = json.loads(r["path_json"] or "[]")
+            names = (pj[-1].get("playstyles") if pj else None) or []
+        except Exception:
+            continue
+        if not ids or len(ids) != len(names):
+            continue
+        for i in ids:
+            c = ps_pairs.setdefault(i, {})
+            for nm in names:
+                c[nm] = c.get(nm, 0) + 1
+    ps_names = {}
+    for i, c in ps_pairs.items():
+        top = max(c.values())
+        best = [nm for nm, v in c.items() if v == top]
+        if len(best) == 1:          # 동률이면 확정하지 않는다(추측 금지)
+            ps_names[str(i)] = best[0]
+
     # 진화 해금 과제(migration 056) — 최신 pulled만. 화면이 진화 카드에 「그래서 뭘 하면 되나」를 띄운다.
     # ⚠️ 해금 문구는 **과제 이름**일 때도 그룹 이름일 때도 있어 양쪽을 다 내보낸다(매칭은 화면이 한다).
     obj_tasks = _rows(con, """SELECT group_slug, group_name, group_category, task_name, task_text,
@@ -234,7 +261,7 @@ def export_all(db_path=None, window="2026-summer"):
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
                           {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices,
                            "chem_styles": chem_styles, "squad": squad, "squad_slots": squad_slots,
-                           "obj_tasks": obj_tasks,
+                           "obj_tasks": obj_tasks, "ps_names": ps_names,
                            # fut.gg 케미 신호(migration 055) — 최신 pulled만. 배지는 등급이 아니라 AcceleRATE다.
                            "chem_signals": _rows(con, """SELECT ea_item_id, style_name, accelerate, vote_pct
                                                            FROM futgg_chem_signals

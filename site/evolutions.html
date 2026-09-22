@@ -110,7 +110,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, FC_CSS, cardDetail, FC_DETAIL_CSS, applyEvoLevel, faceOf as faceFromAttrs, PLAYSTYLES } from './assets/clubviz.js?v=20260922y';
+import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, FC_CSS, cardDetail, FC_DETAIL_CSS, applyEvoLevel, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR } from './assets/clubviz.js?v=20260922z';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -719,7 +719,12 @@ function renderCatalog(team = CAT_TEAM){
         ${c.unlock_text && !/Season Pass|^Unlocked by/i.test(c.unlock_text)
             ? `<span class="dim">${esc(c.unlock_text)}</span>` : ''}</div>
       ${unlockHow(c)}
-      <div>${J(c.requirements_text, []).map(r => `<span class="req">${esc(r.label)}: ${esc(r.value)}</span>`).join('')}</div>
+      ${/* ⭐ 요구조건은 「어떤 카드에 걸 수 있나」라서 **업그레이드보다 먼저 읽혀야** 한다
+             (2026-09-22 사용자 지적 「요구조건이 잘 드러나지 않는다 — 진화 수행할 대상」). */''}
+      ${J(c.requirements_text, []).length ? `<div class="reqbox"><b>걸 수 있는 카드 조건</b>
+        <div>${J(c.requirements_text, []).map(r => `<span class="req">${esc(reqKr(r.label))} <b>${esc(r.value)}</b></span>`).join('')}</div>
+        <small class="dim">이 조건을 <b>시작 시점에</b> 만족해야 한다 — OVR·PS를 먼저 올리면 조건에서 벗어나 영영 못 건다.</small></div>` : ''}
+      ${optionsHTML(c)}
       <div style="margin-top:6px;font-size:12px"><b>업그레이드</b> ${J(c.total_upgrades_text, []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ') || '<span class="dim">없음(도입용)</span>'}</div>
       <div style="margin-top:6px;font-size:12px"><b>${team === 'ALL' ? '우리 선수' : esc(idx.regimes.find(r => r.team_code === team)?.team_kr || team)} 적용 가능 ${apps.length}명</b> <small class="dim">(fut.gg 전체 ${c.number_of_players?.toLocaleString?.() ?? '—'}명)</small>
         <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}${a.owned ? ' · 보유' : ''}${a.score ? ` · 역할 가중 +${a.score}` : ''}">${a.owned ? '★ ' : ''}${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${a.score ? `<small class="up"> ⚖${a.score}</small>` : a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || '<span class="dim">없음' + (used?.exhausted ? '(소진)' : '') + '</span>'}</div></div>
@@ -751,6 +756,42 @@ function appliedPanel(pid){
           x.ovr_before != null && x.ovr_after != null && x.ovr_after !== x.ovr_before
             ? ` · OVR ${x.ovr_before}→<b class="up">${x.ovr_after}</b>` : ''} · ${esc(x.first)}${
           x.last && x.last !== x.first ? `~${esc(x.last)}` : ''}</small></div>`).join('')}</div>`;
+}
+const REQ_KR = { 'Overall':'OVR', 'Max PS':'PlayStyle 수', 'Max Pos.':'포지션 수', 'Position':'포지션',
+  'Excluded Position':'제외 포지션', 'Pace':'속도', 'Max Pace':'속도' };
+const reqKr = l => REQ_KR[l] || l;
+/* ⭐⭐ **분기(옵션) 진화를 펼친다** (2026-09-22 사용자 지시
+   「옵션이 있는 경우 진화 패스에 따른 옵션도 보여주고 그 중에서 제안이 어떤 거다라는 걸 보여줘」).
+   ⛔ 종전엔 `upgradeOptions`를 화면이 전혀 읽지 않아 **갈림길이 있다는 사실조차** 안 보였다.
+   ⚠️ 분기의 PlayStyle은 **숫자 id**로만 온다 — export가 역산한 `ps_names`로 이름을 붙인다.
+   ⭐ **우리 제안**은 그 진화의 최적 선수 경로(`path_choices`)가 고른 가지다 — 「이게 추천」을 표시한다. */
+const PS_NAME = EVO.ps_names || {};
+function upLabel(u){
+  const k = String(u.upgrade || '');
+  if (k === 'play_style') return `PlayStyle ${PS_NAME[String(u.value)] || `#${u.value}`}${u.maxValue ? ` (^${u.maxValue})` : ''}`;
+  if (k === 'overall') return `OVR +${u.value}${u.maxValue ? ` (^${u.maxValue})` : ''}`;
+  if (k === 'role_plus') return `Role+ #${u.value}`;
+  const kr = ATTR_KR[k.replace(/^attribute_/, '')];
+  return `${kr || k} +${u.value}${u.maxValue ? ` (^${u.maxValue})` : ''}`;
+}
+function optionsHTML(c){
+  const levels = J(c.levels, []) || [];
+  const branch = levels.map((lv, i) => ({ i: lv.idx ?? i + 1, opts: lv.upgradeOptions || [] }))
+    .filter(x => (x.opts || []).length > 1);
+  if (!branch.length) return '';
+  /* 이 진화의 최적 선수가 고른 가지 = 우리 제안. `path_choices`는 [[단계1 옵션, 단계2 옵션, …]] 꼴이다. */
+  let pick = null;
+  for (const rows of Object.values(RANKED)) for (const r of rows)
+    if ((r.ids || []).length === 1 && r.ids[0] === c.evo_id){ pick = (J(r.path_choices, []) || [])[0] || null; break; }
+  return `<div class="optbox"><b>갈림길 ${branch.length}단계 — 무엇을 고를지 정해야 한다</b>
+    ${branch.map(b => `<div class="optlv"><i>${b.i}단계</i>${b.opts.map((og, k) => {
+      const src = Array.isArray(og) ? og : (og.upgrades || []);
+      const mine = pick && Number(pick[b.i - 1]) === k + 1;
+      return `<span class="opt${mine ? ' pick' : ''}">${mine ? '★ ' : ''}${
+        src.map(upLabel).map(esc).join(' · ')}</span>`;
+    }).join('<em>또는</em>')}</div>`).join('')}
+    ${pick ? '<small class="dim">★ = 이 진화의 <b>최적 선수 경로</b>가 고른 가지(아래 「적용 가능」 1순위 기준)</small>'
+           : '<small class="dim">⚠️ 우리 경로 데이터에 이 진화의 선택 기록이 없어 <b>추천 가지를 표시하지 못한다</b>.</small>'}</div>`;
 }
 let PATH_TEAM = 'AVL';
 function renderPaths(team, focusPid){

@@ -91272,6 +91272,25 @@
    "y": 61
   },
   {
+   "avg_rating": null,
+   "fit_sim": null,
+   "focus": "Attack",
+   "game_version": "FC26",
+   "grid_club": null,
+   "kind": "projected",
+   "label": "마조",
+   "map25": null,
+   "player_id": 61,
+   "pos_label": "ST",
+   "rationale": "[2026-09-22 신설 · 사용자 지시 「마조 처방 채워줘」] ⛔ **measured 불가** — AVL 공식전 실측이 1경기뿐이라(2026-08-12 슈퍼컵 72분) `core.aggregate`가 집계를 거부한다(2경기 미만 → None). 리그1 2경기(2025-08-17·08-23)는 **이전 클럽 체제**라 AVL 처방 근거로 섞지 않는다(불변규칙 7).\n⚠️ **단일 경기 참고치**(처방 근거 아님 · 표본 n=1): ST 슬롯에서 `st_target/Attack` 0.7254 = `st_poacher/Attack` 0.7254로 **완전 동률**. 3위 `st_target/Balanced` 0.7119. ⇒ 커널로는 갈리지 않는다.\n⭐ **동률을 가른 것은 신체·스탯 프로파일이다**: 193cm · 86kg · AcceleRATE **Lengthy** · 힘 **91** · 점프 **83** · 민첩성 **54** · 공격 위치 선정 64. 포처는 박스 안 민첩·위치선정형인데 마조는 **정반대 프로파일**이고 타깃형(경합·기준점·등지기)에 전형적이다.\n⚠️ 슬롯 정본 `st_advanced/Versatile`(에메리 재현 · 왓킨스형 채널 이동)과는 **다른 역할**이다 — 마조는 교체 옵션이고 선발 슬롯 처방을 대체하지 않는다(starter=0).\n🔁 **재판정 조건**: AVL 공식전 **45분+·hit_points 15+ 3경기**에 도달하면 `measured`로 승격하고 이 행은 유지한다(추가만).",
+   "role_id": "st_target",
+   "sample_n": null,
+   "season": "2026-27",
+   "starter": 0,
+   "x": null,
+   "y": null
+  },
+  {
    "avg_rating": 7.16,
    "fit_sim": 0.786,
    "focus": "Roaming",

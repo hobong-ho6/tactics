@@ -823,7 +823,7 @@ function evolvedAttrs(p, ctx) {
 }
 
 /* EA 속성 키(영문 snake) → 우리 29속성 한글 키. 카탈로그 보상과 카드 속성을 잇는 유일한 다리다. */
-const ATTR_KR = {
+export const ATTR_KR = {   // ⭐ 화면들이 같은 표를 쓰도록 내보낸다(2026-09-22)
   acceleration:'가속', sprint_speed:'질주 속도', positioning:'공격 위치 선정', finishing:'결정력',
   shot_power:'슈팅력', long_shots:'중거리슛', volleys:'발리 슛', penalties:'페널티킥',
   vision:'시야', crossing:'크로스', fk_accuracy:'프리킥 정확도', short_passing:'짧은 패스',

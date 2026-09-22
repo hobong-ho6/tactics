@@ -419,3 +419,18 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .gain-role.pp{border-color:var(--ok);color:var(--ok)}
 .gain-why{margin-top:5px;font-size:11.5px;color:var(--dim);line-height:1.6}
 .gain-why b{color:var(--txt)}
+
+/* 진화 요구조건 — 「어떤 카드에 걸 수 있나」라 업그레이드보다 먼저 읽혀야 한다(2026-09-22) */
+.reqbox{border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:0 8px 8px 0;
+  padding:6px 10px;margin:6px 0;background:rgba(255,213,77,.04)}
+.reqbox>b{display:block;font-size:11px;color:var(--warn);letter-spacing:.03em;margin-bottom:4px}
+.reqbox>div{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:3px}
+.reqbox small{font-size:10.5px;line-height:1.5;display:block}
+/* 갈림길 옵션 — ★가 우리 제안 */
+.optbox{border:1px solid var(--line);border-radius:8px;padding:7px 10px;margin:6px 0;background:rgba(255,255,255,.02)}
+.optbox>b{display:block;font-size:11px;color:var(--acc);letter-spacing:.03em;margin-bottom:5px}
+.optlv{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin:3px 0}
+.optlv>i{font-style:normal;font-size:10px;color:var(--dim);font-weight:700;min-width:38px}
+.optlv>em{font-style:normal;font-size:10px;color:var(--dim);margin:0 2px}
+.opt{border:1px dashed var(--line);border-radius:6px;padding:2px 8px;font-size:11.5px;color:var(--dim)}
+.opt.pick{border-style:solid;border-color:var(--ok);color:var(--ok);font-weight:700;background:rgba(76,217,123,.08)}
