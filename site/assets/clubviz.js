@@ -245,33 +245,42 @@ function emeryVerdict(a, b, ctx) {
     return den ? Object.entries(w).reduce((t, [k, v]) => t + v * (at[k] ?? 0), 0) / den * 100 : 0; };
   /* ⭐ 그 역할의 **숙련(Role+/++)** 보유 여부 — 스탯과 다른 축이라 점수에 섞지 않고 따로 적는다.
      canon의 role_id(cam_playmaker)를 게임 표기(Playmaker)로 옮겨 role_map과 맞춘다. */
-  /* ⛔ `game_roles.name_en`이 **전부 비어 있다**(2026-09-22 실측 — 데이터 결손).
-     그래서 우리 role_id를 EA 표기로 옮길 다리가 없어 숙련이 늘 「없음」으로 보였다.
-     ⇒ ⑴ name_en이 채워지면 그것을 쓰고 ⑵ 없으면 role_id 접미로 유추하고
-        ⑶ 유추가 안 되는 것만 표로 덮는다. ⚠️ 셋 다 실패하면 **모른다고 표시**한다(조용히 「없음」으로 만들지 않는다). */
-  const ROLE_EN = { cb_bpd:'Ball-Playing Defender', fb_att_wb:'Attacking Wingback',
-    wm_widemid:'Wide Midfielder', st_advanced:'Advanced Forward', gk_goalkeeper:'Goalkeeper',
-    cb_defender:'Defender', cb_stopper:'Stopper', fb_fullback:'Fullback', fb_falseback:'Falseback',
-    dm_holding:'Holding', dm_dlp:'Deep-Lying Playmaker', cm_b2b:'Box-To-Box',
-    cam_playmaker:'Playmaker', cam_shadowstriker:'Shadow Striker', cam_halfwinger:'Half-Winger',
-    cam_classic10:'Classic 10', fb_wingback:'Wingback', wm_winger:'Winger',
-    wm_wideplaymaker:'Wide Playmaker', wm_insidefwd:'Inside Forward', w_winger:'Winger',
-    st_poacher:'Poacher', st_false9:'False 9', st_target:'Target Forward' };
-  const enName = rid => (ctx.roles || []).find(r => r.role_id === rid)?.name_en
-    || ROLE_EN[rid] || String(rid).split('_').slice(1).join(' ');
+  /* game_roles.name_en은 비어 있다(2026-09-22 실측). FC27 role_map 이름과
+     전 역할을 명시 매핑한다. 접미를 임의로 풀면 cm_dlp→"dlp"처럼 조용한 거짓 「숙련 없음」이 된다. */
+  const ROLE_EN = {
+    cam_classic10:'Classic 10', cam_halfwinger:'Half-Winger', cam_playmaker:'Playmaker', cam_shadow:'Shadow Striker',
+    cb_bpd:'Ball-Playing Defender', cb_defender:'Defender', cb_stopper:'Stopper', cb_wideback:'Wide Back',
+    cm_b2b:'Box-To-Box', cm_dlp:'Deep-Lying Playmaker', cm_halfwinger:'Half-Winger',
+    cm_holding:'Holding', cm_playmaker:'Playmaker',
+    dm_boxcrasher:'Box Crasher', dm_centrehalf:'Centre-Half', dm_dlp:'Deep-Lying Playmaker',
+    dm_holding:'Holding', dm_widehalf:'Wide Half',
+    fb_att_wb:'Attacking Wingback', fb_falseback:'Falseback', fb_fullback:'Fullback',
+    fb_inverted:'Inverted Wingback', fb_wingback:'Wingback',
+    gk_ballplaying:'Ball Playing Keeper', gk_goalkeeper:'Goalkeeper', gk_sweeper:'Sweeper Keeper',
+    st_advanced:'Advanced Forward', st_false9:'False 9', st_poacher:'Poacher', st_target:'Target Forward',
+    w_insidefwd:'Inside Forward', w_wideplm:'Wide Playmaker', w_winger:'Winger',
+    wm_insidefwd:'Inside Forward', wm_widemid:'Wide Midfielder', wm_wideplm:'Wide Playmaker', wm_winger:'Winger'
+  };
+  const enName = rid => (ctx.roles || []).find(r => r.role_id === rid)?.name_en || ROLE_EN[rid] || '';
+  const eaPos = pos => ({ LCB:'CB', RCB:'CB', CCB:'CB', LDM:'CDM', RDM:'CDM',
+    LCM:'CM', RCM:'CM', LAM:'CAM', RAM:'CAM' })[pos] || pos;
   const roleMastery = (c, pos, rid) => {
     const want = enName(rid).toLowerCase().replace(/[^a-z0-9]/g, '');
     if (!want) return '?';                      // 이름을 못 옮겼다 — 「없음」과 구분한다
+    let seen = false, unresolved = false;
     for (const kind of ['plusplus', 'plus']) {
       const ids = parse(kind === 'plus' ? c.current_roles_plus : c.current_roles_plus_plus);
       if (!Array.isArray(ids)) continue;
+      seen = true;
       const hit = ids.some(id => {
-        const r = (ctx.role_map || []).find(x => x.ea_id === id && x.kind === kind);
-        return r && r.position_name === pos && r.name.toLowerCase().replace(/[^a-z0-9]/g, '') === want;
+        const r = (ctx.role_map || []).find(x => x.game_version === 'FC27'
+          && Number(x.ea_id) === Number(id) && x.kind === kind);
+        if (!r) { unresolved = true; return false; }
+        return r.position_name === eaPos(pos) && r.name.toLowerCase().replace(/[^a-z0-9]/g, '') === want;
       });
       if (hit) return kind === 'plusplus' ? 'Role++' : 'Role+';
     }
-    return null;
+    return !seen || unresolved ? '?' : null;
   };
   const rows = cands.map(c => {
     const w = W[c.role_id] || {};
@@ -376,9 +385,11 @@ export function compareCards(a, b, ctx = {}) {
   /* 역할 숙련 — raw id를 role_map으로 풀고 포지션을 붙인다(상세 패널과 같은 규칙). */
   const roles = (c, kind) => {
     const arr = parse(kind === 'plus' ? c.current_roles_plus : c.current_roles_plus_plus);
-    if (!Array.isArray(arr) || !arr.length) return '<span class="dim">없음</span>';
+    if (!Array.isArray(arr)) return '<span class="dim">미수집</span>';
+    if (!arr.length) return '<span class="dim">없음</span>';
     return arr.map(id => {
-      const r = (ctx.role_map || []).find(x => x.ea_id === id && x.kind === kind);
+      const r = (ctx.role_map || []).find(x => x.game_version === 'FC27'
+        && Number(x.ea_id) === Number(id) && x.kind === kind);
       return `<span class="chip">${r ? esc(r.position_name + ' ' + r.name) : '#' + id}</span>`;
     }).join(' ');
   };

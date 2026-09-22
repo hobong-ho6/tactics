@@ -90,7 +90,7 @@ import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-sel
 import { prose } from './assets/prose.js';
 import { PLAYSTYLES } from './assets/playstyle-icons.js';
 import { repaintEvoCard } from './assets/evocard.js?v=20260921a';
-import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20260913-stat-tips';
+import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20260922-stat-tips';
 const { team, idx } = await mountHeader('player.html');
 const [td, GS, GS27, HIST, CARDS, EVO, K26] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history'), loadGameStats('cards'), loadGameStats('evolutions').catch(()=>({paths:{},role_map:[]})), loadKernels('FC26').catch(()=>({roles:[]}))]);
 /* 백분위·유사프로필 모집단 = 활성 regime 전체. ⛔ 팀 코드를 하드코딩하지 않는다 —

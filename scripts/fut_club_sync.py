@@ -79,12 +79,16 @@ def main():
             applied_styles.append((card.get("name_kr") or r["n"], style, r.get("cp")))
         cur = have.get(r["ea"])
         if not cur:
+            attrs_json = json.dumps(r["attrs"], ensure_ascii=False) if r.get("attrs") else None
+            rp_json = json.dumps(r["rp"]) if isinstance(r.get("rp"), list) else None
+            rpp_json = json.dumps(r["rpp"]) if isinstance(r.get("rpp"), list) else None
             con.execute("""INSERT INTO fut_club_players(account_id, player_id, ea_item_id, name, acquired, acquired_how,
-                             status, current_ovr, current_six, chem_style_ea, chem_points, gg_player_id, synced_at,
-                             notes, updated)
-                           VALUES(?,?,?,?,?,?,'owned',?,?,?,?,?,?,?,?)""",
+                             status, current_ovr, current_six, current_attrs, current_roles_plus,
+                             current_roles_plus_plus, chem_style_ea, chem_points, gg_player_id, synced_at, notes, updated)
+                           VALUES(?,?,?,?,?,?,'owned',?,?,?,?,?,?,?,?,?,?,?)""",
                         (acc["id"], card.get("player_id"), r["ea"], card.get("name_kr") or r["n"], r.get("added"),
-                         "GG Club 싱크", r["ovr"], six, r.get("cs"), r.get("cp"), r.get("gg"), a.pulled,
+                         "GG Club 싱크", r["ovr"], six, attrs_json, rp_json, rpp_json,
+                         r.get("cs"), r.get("cp"), r.get("gg"), a.pulled,
                          f"gg-club {r.get('gg')} · {r['ovr']} · 구매가 {r.get('paid')} ({a.pulled} 싱크)", TODAY))
             ins += 1
             continue
@@ -118,7 +122,8 @@ def main():
             changed = (cur["current_ovr"] != r["ovr"] or cur["current_six"] != six
                        or cur["chem_style_ea"] != r.get("cs") or cur["chem_points"] != r.get("cp")
                        or (r.get("attrs") and cur["current_attrs"] != json.dumps(r["attrs"], ensure_ascii=False))
-                       or (isinstance(r.get("rp"), list) and cur["current_roles_plus"] != json.dumps(r["rp"])))
+                       or (isinstance(r.get("rp"), list) and cur["current_roles_plus"] != json.dumps(r["rp"]))
+                       or (isinstance(r.get("rpp"), list) and cur["current_roles_plus_plus"] != json.dumps(r["rpp"])))
             # ⭐ 29속성(`attrs`)·AcceleRATE는 GG Club이 **EA 실측 그대로** 준다(2026-09-22) —
             #    받은 회차에만 덮고, 안 온 회차에는 기존 값을 지운다(COALESCE로 보존).
             attrs_json = json.dumps(r["attrs"], ensure_ascii=False) if r.get("attrs") else None
