@@ -91,6 +91,35 @@ def step_of(card, i, playstyle):
                 card_image_url=(IMG + card["cardImagePath"]) if card.get("cardImagePath") else None)
 
 
+# ⛔⛔ **코스메틱 전용 진화는 적재하지 않는다** (2026-09-22 사용자 지시
+#    「능력치나 플레이스타일 업그레이드 없이 카드 코스메틱만 바꾸는 진화는 제거하고 앞으로 등록하지 말아줘」).
+#    실측(Ones to Watch Retro 18·19·20): 기준 카드 ↔ 적용 후가 **OVR·6대 스탯·Role+·Role++·PlayStyle 전부 동일**하고
+#    바뀌는 것은 `rarity_id`(카드 겉모습)뿐이다.
+#    ⚠️ 이걸 판정할 때 `player_evolutions.roles_plus_after`를 **증가분으로 읽지 말 것** — 「적용 후 상태」라서
+#      원래 갖고 있던 Role+가 그대로 찍힌다. 2026-09-22에 그걸 이득으로 오독해 「코스메틱 아니다」로 잘못 보고했다.
+#      **반드시 기준 카드(`player_card_items`)와 before/after로 대조**한다.
+#    ⭐ 모르는 upgrade 키는 **실효로 간주**한다 — 놓쳐서 남기는 쪽이 잘못 지우는 쪽보다 안전하다.
+COSMETIC_UPGRADES = {"rarity_id"}
+
+
+def _upgrade_keys(e):
+    out = set()
+    for lv in (e.get("levels") or []):
+        for u in (lv.get("upgrades") or []):
+            out.add(u.get("upgrade"))
+        for og in (lv.get("upgradeOptions") or []):
+            src = og if isinstance(og, list) else (og.get("upgrades") or [])
+            for u in src:
+                out.add(u.get("upgrade"))
+    return {k for k in out if k}
+
+
+def is_cosmetic(e):
+    """겉모습만 바꾸는 진화인가 — 업그레이드 키가 하나 이상이고 전부 코스메틱일 때만 True."""
+    ks = _upgrade_keys(e)
+    return bool(ks) and ks <= COSMETIC_UPGRADES
+
+
 def catalog_row(e, gv, pulled):
     unlock = e.get("customUnlockable") or e.get("sbcName") or e.get("objectiveGroupName")
     return dict(
@@ -140,7 +169,7 @@ def main():
         print(f"{gv} 대상 {len(targets)}명 (base eaId 보유분)")
 
         ins = skip = 0
-        no_path, errs = [], []
+        no_path, errs, skipped_cosmetic = [], [], set()
         for t in targets:
             ea, kr, pid = t["base_ea_id"], t["name_kr"], t["player_id"]
             d = get(f"{API}/evolutions/v2/{gv[2:]}/paths/v2/{ea}/")
@@ -156,7 +185,14 @@ def main():
                 if not evos:
                     continue
                 for e in evos:
+                    if is_cosmetic(e):
+                        skipped_cosmetic.add(e.get("name") or str(e["id"]))
+                        continue
                     catalog.setdefault((gv, e["id"]), catalog_row(e, gv, a.pulled))
+                # ⛔ **경로 전체가 코스메틱이면 경로도 적재하지 않는다** — 안 그러면 카탈로그에선 빠졌는데
+                #    「선수별 진화 패스」에는 남아 화면이 둘로 갈린다(2026-09-22 실측 210행).
+                if all(is_cosmetic(e) for e in evos):
+                    continue
                 ids = [e.get("id") for e in evos]
                 key = ">".join(str(i) for i in ids)
                 chain = p.get("path") or []
@@ -207,6 +243,8 @@ def main():
         if not a.dry_run:
             con.commit()
         print(f"  적재 {ins}행 · 기존 {skip}행 · 경로 없음 {len(no_path)}명 · 조회 실패 {len(errs)}명")
+        if skipped_cosmetic:
+            print(f"  🎨 코스메틱 전용이라 제외 {len(skipped_cosmetic)}종: {', '.join(sorted(skipped_cosmetic))}")
         if no_path:
             print("  경로 없음:", ", ".join(no_path[:25]) + (" …" if len(no_path) > 25 else ""))
         if errs:

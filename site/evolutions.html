@@ -428,12 +428,26 @@ function teamBar(el, team, onPick){
   el.querySelectorAll('button').forEach(b => b.addEventListener('click', () => onPick(b.dataset.c)));
 }
 let CAT_TEAM = localStorage.getItem('evo_cat_team') || 'AVL';
+let SHOW_USED = false;   // 소진 진화는 기본으로 감춘다(위 renderCatalog 주석 참조)
 function renderCatalog(team = CAT_TEAM){
   CAT_TEAM = team; localStorage.setItem('evo_cat_team', team);
   teamBar(document.getElementById('catteam'), team, renderCatalog);
-  const cat = EVO.catalog || [];
-  const nUsed = Object.values(CONSUMED).filter(u => u.exhausted).length;
-  document.getElementById('catn').textContent = `— ${cat.filter(c => !c.is_expired).length}종 열림 · ${cat.filter(c => c.is_expired).length}종 만료` + (ACC ? ` · 계정 ${ACC} 기준 소진 ${nUsed}종` : '');
+  const cat0 = EVO.catalog || [];
+  /* ⛔⛔ **소진된 진화는 카탈로그에서 뺀다**(2026-09-22 사용자 지시 「소진된 건 삭제」).
+     종전에는 카드로 남겨 두고 「소진」 배지만 붙였는데, **다시 쓸 수 없는 것**이라 목록에 있을 이유가 없다.
+     ⚠️ 종전 내 설명이 틀렸다 — `pathOpen()`은 **선수별 경로·전술 구현 탭에서만** 소진을 걸렀고,
+        이 카탈로그 탭은 전량을 그대로 그리고 있었다(사용자 화면 확인).
+     ⛔ **DB 행은 지우지 않는다** — `fut_evolution_log.evo_id`가 참조한다(무슨 진화를 밟았는지의 유일한 기록).
+        숨기는 것은 화면뿐이다.
+     ⭐ 조용히 숨기지 않는다 — 머리글에 소진 종수를 적고, 버튼으로 다시 펼칠 수 있게 둔다
+        (안 보이는 것과 없는 것이 구분돼야 한다). */
+  const usedIds = new Set(Object.entries(CONSUMED).filter(([, u]) => u.exhausted).map(([k]) => +k));
+  const cat = SHOW_USED ? cat0 : cat0.filter(c => !usedIds.has(c.evo_id));
+  const nUsed = cat0.filter(c => usedIds.has(c.evo_id)).length;
+  document.getElementById('catn').innerHTML = `— ${cat.filter(c => !c.is_expired).length}종 열림 · ${cat.filter(c => c.is_expired).length}종 만료`
+    + (nUsed ? ` · <button class="act" id="usedtog" style="padding:1px 8px;font-size:11px">소진 ${nUsed}종 ${SHOW_USED ? '숨기기' : '보기'}</button>` : '');
+  const tog = document.getElementById('usedtog');
+  if (tog) tog.addEventListener('click', () => { SHOW_USED = !SHOW_USED; renderCatalog(CAT_TEAM); });
   const days = t => t ? Math.ceil((new Date(t) - Date.now()) / 864e5) : null;
   document.getElementById('cat').innerHTML = cat.map(c => {
     // 이 진화를 포함한 경로를 가진 우리 선수 — 첫 단계로 포함하면 바로 적용 가능, 아니면 N단계째
