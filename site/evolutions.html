@@ -110,7 +110,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260922p';
+import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260922r';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -277,19 +277,32 @@ function renderNow(){
   let cmp = [];
   const cmpCtx = () => ({ chem_styles: EVO.chem_styles, role_map: EVO.role_map,
     canon_roles: EVO.canon_roles, key_attrs: K26.role_key_attrs, role_kr: ROLE_KR,
-    roles: K26.roles, focus_rows: K26.focus });
+    roles: K26.roles, focus_rows: K26.focus, face_stats: EVO.face_stats });
   const byId = id => (EVO.club?.players || []).find(x => x.id === id);
   const renderCmp = () => {
     const picked = cmp.map(byId).filter(Boolean);
-    const chips = picked.map(x => `<span class="chip">${esc(x.name)}</span>`).join(' ');
-    side.innerHTML = `<div class="cmp-pick"><b>카드 비교</b>${chips}
+    side.innerHTML = `<div class="cmp-pick"><b>카드 비교</b>
         <button class="act" data-cmpclear>비우기</button></div>`
-      + (picked.length === 2 ? compareCards(picked[0], picked[1], cmpCtx())
-         : '<p class="dim">카드를 하나 더 담으면 비교가 열린다 — 상세에서 「비교에 담기」를 누른다.</p>');
+      /* ⛔ 두 장이 차면 비교표 머리가 **같은 정보를 더 크게** 보여준다 — 담긴 칸은 그때 숨긴다.
+         (담긴 칸의 역할은 「지금 뭐가 담겼나」이고, 두 장일 때는 비교표가 그 답이다.) */
+      + (picked.length === 2 ? compareCards(picked[0], picked[1], cmpCtx()) : cmpSlots(picked));
     side.querySelector('[data-cmpclear]').addEventListener('click', () => {
       cmp = []; document.querySelectorAll('#nowpitch .sel').forEach(x => x.classList.remove('sel'));
       side.innerHTML = fcSideEmpty(T, xiRows);
     });
+    /* 비교표 머리에도 같은 ×를 단다 — 한 장만 바꿔 끼울 때 「비우기 → 둘 다 다시 담기」를 안 하게. */
+    side.querySelectorAll('.cmp-card').forEach((el, i) => {
+      if (!picked[i]) return;
+      el.insertAdjacentHTML('beforeend',
+        `<button class="cmp-x" data-cmpdrop="${picked[i].id}" title="이 카드를 비교에서 뺀다">×</button>`);
+    });
+    /* 칸의 ×로 **한 장만** 뺀다 — 종전에는 「비우기」로 둘 다 버리거나 상세로 되돌아가는 수밖에 없었다. */
+    side.querySelectorAll('[data-cmpdrop]').forEach(b => b.addEventListener('click', () => {
+      cmp = cmp.filter(x => x !== Number(b.dataset.cmpdrop));
+      if (cmp.length) renderCmp();
+      else { document.querySelectorAll('#nowpitch .sel').forEach(x => x.classList.remove('sel'));
+             side.innerHTML = fcSideEmpty(T, xiRows); }
+    }));
   };
 
   const openDetail = (p, role, el, slotIdx) => {

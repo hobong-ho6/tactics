@@ -425,6 +425,24 @@ function emeryVerdict(a, b, ctx) {
       경기력·폼·상대는 담지 않는다.</p></div>`;
 }
 
+/* 비교 담기 칸 — **지금 무엇이 담겼는지**를 이름만으로 알기 어려웠다(2026-09-22 사용자 지시
+   「비교담기를 한 경우 지금 담겨져 있는 선수 정보를 확인할 수 있도록」).
+   ⇒ 카드 아트·OVR(진화 전 병기)·포지션·신체까지 담은 칸 2개를 항상 그린다 — 빈 칸도 자리를 잡아
+     「하나 더 담으면 열린다」가 문장이 아니라 **모양으로** 보이게. ⛔ 카드 아트는 인쇄값이라
+     진화 카드는 OVR이 다를 수 있다 — 그래서 아트 위가 아니라 **옆에 현재 OVR**을 적는다. */
+export function cmpSlots(picked) {
+  const slot = (c, i) => c ? `<div class="cmp-slot fill s${i}">
+      ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="">` : '<div class="cmp-slot-ph"></div>'}
+      <div class="cmp-slot-t"><b>${esc(c.name)}</b>
+        <span>OVR <b>${c.current_ovr ?? '-'}</b>${c.card_ovr != null && c.card_ovr !== c.current_ovr
+          ? ` <em class="d-evo">진화 전 ${c.card_ovr}</em>` : ''}</span>
+        <span class="dim">${esc(c.positions || '')}</span>
+        ${physLine(c) ? `<span class="dim">${physLine(c)}</span>` : ''}</div>
+      <button class="cmp-x" data-cmpdrop="${c.id}" title="이 카드를 비교에서 뺀다">×</button></div>`
+    : `<div class="cmp-slot empty"><span class="dim">비어 있음<i>카드를 눌러 「비교에 담기」</i></span></div>`;
+  return `<div class="cmp-slots">${slot(picked[0], 'A')}<span class="cmp-vs">vs</span>${slot(picked[1], 'B')}</div>`;
+}
+
 export function compareCards(a, b, ctx = {}) {
   if (!a || !b) return '';
   /* ⛔ 비교 기준은 **케미 제외 · 진화 반영**이다(2026-09-22 사용자 지시).
@@ -453,7 +471,15 @@ export function compareCards(a, b, ctx = {}) {
   const sixRows = SIX.filter(k => sixA[k] != null || sixB[k] != null)
     .map(k => row(k, sixA[k], sixB[k], true)).join('');
   const keys = Object.keys(A).filter(k => B[k] != null);
-  const attrRows = keys.map(k => row(k, A[k], B[k])).join('');
+  /* 위 6대 스탯 표와 **같은 기준**(fc_face_stats)으로 묶는다 — 어느 칸이 어느 face를 움직이는지
+     한눈에 잇기 위해서다. 그룹 머리에 그 face의 실제 값도 같이 걸어 둔다. */
+  const isGk = String(a.positions || '').includes('GK');
+  const attrRows = groupByFace(keys, ctx.face_stats, isGk).map(gp => {
+    const va = sixA[gp.abbr], vb = sixB[gp.abbr];
+    return `<tr class="cmp-grp"><td class="cmp-a">${va ?? ''}</td>
+        <td class="cmp-k">${esc(gp.abbr)}${SIX_KR[gp.abbr] ? ` <small>${SIX_KR[gp.abbr]}</small>` : ''}</td><td class="cmp-b">${vb ?? ''}</td></tr>`
+      + gp.keys.map(k => row(k, A[k], B[k])).join('');
+  }).join('');
   /* PlayStyle — 상세 패널과 같은 아이콘을 쓴다. 상대에게 없는 것만 초록으로 띄운다. */
   const psList = (c, other) => {
     const list = String(c.current_playstyles || '').split(',').map(x => x.trim()).filter(Boolean);
@@ -796,15 +822,24 @@ function attrBlock(p, ctx = {}) {
     const cp0 = p.chem_points ?? 0;
     const scale = cp0 >= 3 ? 1 : cp0 === 2 ? 2 / 3 : cp0 === 1 ? 1 / 3 : 0;
     const chemOf = k => Math.round((num(raw[k]) || 0) * scale);
-    const items0 = Object.entries(real).map(([k, v]) => {
+    const one = k => { const v = real[k];
       const evo = a0 && a0[k] != null ? v - a0[k] : 0;
       const ch = chemOf(k);
       const fin = Math.min(99, v + ch);
       return `<div class="fc-attr"><span>${esc(k)}</span><b>${fin}` +
         (evo ? ` <small class="d-evo" title="진화 상승분">${evo > 0 ? '+' : ''}${evo}</small>` : '') +
         (ch ? ` <small class="d-chem" title="케미 스타일 ${esc(st?.name || '')} (개인 케미 ${cp0}/3)">+${ch}</small>` : '') +
-        `</b></div>`;
-    }).join('');
+        `</b></div>`; };
+    /* 6대 스탯 카테고리로 묶는다 — 기준은 게임 구성식(`fc_face_stats`)이지 내 분류가 아니다.
+       ⚠️ 머리의 수는 **바로 아래 칸들로 다시 계산한 값**이다. `current_six`를 그대로 쓰면
+          케미가 빠진 카드값이라, 케미까지 얹은 아래 칸들과 어긋나 보인다(루제리 PAC 82 ↔ 가속·질주 88). */
+    const fin0 = {}; for (const k of Object.keys(real)) fin0[k] = Math.min(99, real[k] + chemOf(k));
+    const six0 = ctx.face_stats ? faceFrom(fin0, ctx.face_stats) : (parse(p.current_six) || {});
+    const items0 = groupByFace(Object.keys(real), ctx.face_stats, String(p.positions || '').includes('GK'))
+      .map(gp => `<div class="fc-agrp"><div class="fc-agrp-h">${esc(gp.abbr)}${
+          SIX_KR[gp.abbr] ? ` ${SIX_KR[gp.abbr]}` : ''}${
+          six0[gp.abbr] != null ? `<b>${six0[gp.abbr]}</b>` : ''}</div>
+        <div class="fc-attrs">${gp.keys.map(one).join('')}</div></div>`).join('');
     const chemNote = st && scale > 0
       ? ` · <span class="d-chem">주황</span>은 케미 스타일 <b>${esc(st.name)}</b>(개인 케미 ${cp0}/3) 적용분이라 <b>인게임 실전값</b>이다`
       : (p.chem_style_ea ? ' · ⚠️ 개인 케미 0이라 케미 부스트는 <b>적용되지 않는다</b>' : '');
@@ -821,7 +856,7 @@ function attrBlock(p, ctx = {}) {
           : `<span class="chip" style="border-color:var(--warn);color:var(--warn)">⚠️ 진화 기록 의심 — ${diff.length}개 어긋남(${esc(diff.slice(0, 4).join(', '))}${diff.length > 4 ? '…' : ''})</span>`;
     }
     return `<p class="dim" style="margin:0 0 6px;font-size:12px">EA 싱크 <b>실측</b>${stale && a0 ? ` · <span class="d-evo">초록</span>은 기준 카드(OVR ${p.card_ovr}) 대비 진화 상승분` : ''}${chemNote}. ${check}</p>
-      <div class="fc-attrs">${items0}</div>`;
+      ${items0}`;
   }
   /* 재구성 검증 — 복원한 속성으로 6대 스탯을 다시 계산해 EA 실측과 맞춰 본다. */
   let verdict = '';
@@ -833,10 +868,14 @@ function attrBlock(p, ctx = {}) {
       ? `<span class="chip ok">검증됨 — 재구성한 6대 스탯이 EA 실측과 6/6 일치</span>`
       : `<span class="chip" style="border-color:var(--warn);color:var(--warn)">⚠️ ${diff.length}개 불일치(${diff.map(k => `${k} 계산 ${calc[k]} ↔ 실측 ${cur[k]}`).join(' · ')})</span>`;
   }
-  const items = Object.entries(show).map(([k, v]) => {
-    const d = rec && a0[k] != null ? v - a0[k] : 0;
-    return `<div class="fc-attr"><span>${esc(k)}</span><b>${v}${d ? ` <small class="d-evo">${d > 0 ? '+' : ''}${d}</small>` : ''}</b></div>`;
-  }).join('');
+  const one2 = k => { const v = show[k], d = rec && a0[k] != null ? v - a0[k] : 0;
+    return `<div class="fc-attr"><span>${esc(k)}</span><b>${v}${d ? ` <small class="d-evo">${d > 0 ? '+' : ''}${d}</small>` : ''}</b></div>`; };
+  const six1 = ctx.face_stats ? faceFrom(show, ctx.face_stats) : (parse(p.current_six) || {});
+  const items = groupByFace(Object.keys(show), ctx.face_stats, String(p.positions || '').includes('GK'))
+    .map(gp => `<div class="fc-agrp"><div class="fc-agrp-h">${esc(gp.abbr)}${
+        SIX_KR[gp.abbr] ? ` ${SIX_KR[gp.abbr]}` : ''}${
+        six1[gp.abbr] != null ? `<b>${six1[gp.abbr]}</b>` : ''}</div>
+      <div class="fc-attrs">${gp.keys.map(one2).join('')}</div></div>`).join('');
   const head = !stale ? ''
     : rec && rec.applied.length
       ? `<p class="dim" style="margin:0 0 6px;font-size:12px">⭐ <b>진화 상승분을 반영한 추정치</b>다 —
@@ -845,7 +884,30 @@ function attrBlock(p, ctx = {}) {
           ${rec.skipped.length ? `<br>⛔ 반영하지 못한 단계: ${esc(rec.skipped.join(' · '))} — 그만큼 실제보다 낮게 나온다.` : ''}</p>`
       : `<p class="dim" style="margin:0 0 6px;font-size:12px">⚠️ 이 29속성은 <b>기준 카드(OVR ${p.card_ovr})</b>의 값이라
           <b>진화 상승분이 빠져 있다</b>(카탈로그에서 단계 보상을 찾지 못했다).</p>`;
-  return head + `<div class="fc-attrs">${items}</div>`;
+  return head + items;
+}
+
+/* 상세 스탯을 **6대 스탯 카테고리로 묶는다**(2026-09-22 사용자 지시 「상세 스탯도 카테고리가 있어서
+   구분할 수 있지 않아? 여기랑 같은 기준으로」 — 위 6대 스탯 표를 가리켰다).
+   ⭐ 기준을 새로 만들지 않는다 — **`fc_face_stats`가 곧 그 기준**이다. 게임이 PAC를 계산할 때 쓰는
+      구성식 그대로라, 여기서 묶은 카테고리와 위 표의 6대 스탯 값이 **같은 규칙**을 공유한다.
+   ⚠️ 어느 face에도 안 걸리는 속성이 있을 수 있다(구성식에 안 들어가는 속성) — 버리지 않고
+      「기타」로 모은다. 조용히 사라지면 29속성이 아니게 된다.
+   ⚠️ `is_gk` 행은 필드 선수와 어휘가 겹치므로(가속·질주 속도) **카드에 맞는 쪽만** 쓴다. */
+function groupByFace(keys, faceRows, isGk) {
+  const rows = (faceRows || []).filter(r => !!r.is_gk === !!isGk);
+  const order = [], of = {};
+  for (const r of rows) { if (!order.includes(r.abbr)) order.push(r.abbr); of[r.attr] ??= r.abbr; }
+  const g = new Map(order.map(k => [k, []]));
+  const rest = [];
+  for (const k of keys) { const f = of[k]; if (g.has(f)) g.get(f).push(k); else rest.push(k); }
+  /* ⚠️ 순서는 **카드에 찍힌 순서(SIX)**로 고정한다 — export가 abbr 알파벳순으로 주는 바람에
+     DEF가 맨 위로 올라와 위 6대 스탯 표와 줄이 어긋났다(2026-09-22 실측). */
+  const rank = k => { const i = SIX.indexOf(k); return i < 0 ? 99 : i; };
+  const out = order.filter(k => g.get(k).length).sort((x, y) => rank(x) - rank(y))
+    .map(k => ({ abbr: k, keys: g.get(k) }));
+  if (rest.length) out.push({ abbr: '기타', keys: rest });
+  return out.length ? out : [{ abbr: '', keys }];
 }
 
 /* 29속성 → 6대 스탯(fc_face_stats 가중). 게임 반올림과 같게 floor(x+0.501). */
@@ -1137,6 +1199,11 @@ export const FC_DETAIL_CSS = `
 .fc-chemhead{display:flex;gap:8px;align-items:center;margin-bottom:6px}
 .fc-chemhead img{width:26px;padding:4px;box-sizing:border-box;border-radius:50%;
   background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.5)}
+/* 상세 스탯 카테고리 — 머리에 그 face의 실제 값을 걸어 「이 칸들이 이 수를 만든다」가 보이게 한다. */
+.fc-agrp + .fc-agrp{margin-top:10px}
+.fc-agrp-h{display:flex;align-items:baseline;gap:6px;font-size:11px;font-weight:800;letter-spacing:.06em;
+  color:var(--acc);border-bottom:1px solid var(--line);padding-bottom:2px;margin-bottom:4px}
+.fc-agrp-h b{font-size:14px;color:var(--fg)}
 .fc-attrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:3px 14px}
 .fc-attr{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;border-bottom:1px dotted var(--line)}
 .fc-attr span{color:var(--dim)}
@@ -1149,6 +1216,7 @@ export const FC_DETAIL_CSS = `
 .fc-acc .tbl td,.fc-acc .tbl th{font-size:11.5px;padding:3px 6px}
 /* 카드 비교 */
 .cmp-head{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:10px;text-align:center}
+.cmp-card{position:relative}
 .cmp-card img{width:150px;display:block;margin:0 auto 6px}
 .cmp-card b{display:block;font-size:15px}
 .cmp-card span{display:block;font-size:11.5px}
@@ -1158,6 +1226,10 @@ export const FC_DETAIL_CSS = `
 .cmp-tbl{width:100%;table-layout:fixed}
 .cmp-tbl td{padding:4px 6px;font-size:13px}
 .cmp-tbl tr.big td{font-size:15px;font-weight:800}
+/* 상세 스탯 안의 카테고리 머리줄 — 값 칸에는 그 face의 실제 값이 들어가 위 6대 스탯 표와 이어진다. */
+.cmp-tbl tr.cmp-grp td{border-top:1px solid var(--line);padding-top:8px;
+  font-size:11px;font-weight:800;letter-spacing:.06em;color:var(--acc)}
+.cmp-tbl tr.cmp-grp td.cmp-a,.cmp-tbl tr.cmp-grp td.cmp-b{font-size:13px;color:var(--dim)}
 .cmp-k{text-align:center;color:var(--dim);font-size:11.5px;font-weight:400}
 .cmp-k i{display:block;font-style:normal;font-size:9.5px;opacity:.65}
 .cmp-a{text-align:right;font-weight:700} .cmp-b{text-align:left;font-weight:700}
@@ -1198,6 +1270,22 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .cmp-lab{font-size:10.5px;margin:2px 0 3px}
 .fc-ps.uniq{border-color:var(--ok)}
 .cmp-pick{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px}
+/* 담긴 카드 확인 칸 — 좌우 색은 비교표와 같은 규약(좌 주황 · 우 파랑)이라 어느 열이 누구인지 이어진다. */
+.cmp-slots{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:stretch;margin-bottom:10px}
+.cmp-slot{position:relative;display:flex;gap:8px;align-items:center;padding:7px 8px;
+  border:1px solid var(--line);border-radius:9px;min-height:64px}
+.cmp-slot.empty{justify-content:center;border-style:dashed;opacity:.65}
+.cmp-slot.empty i{display:block;font-style:normal;font-size:10px;opacity:.8;margin-top:2px}
+.cmp-slot img{width:44px;height:58px;object-fit:contain;flex:none}
+.cmp-slot-ph{width:44px;height:58px;flex:none;border-radius:5px;background:rgba(255,255,255,.06)}
+.cmp-slot-t{display:flex;flex-direction:column;gap:1px;font-size:11.5px;min-width:0}
+.cmp-slot-t b{font-size:13px}
+.cmp-slot.sA{border-color:var(--viz-us)} .cmp-slot.sA .cmp-slot-t>b{color:var(--viz-us)}
+.cmp-slot.sB{border-color:var(--viz-them)} .cmp-slot.sB .cmp-slot-t>b{color:var(--viz-them)}
+.cmp-vs{align-self:center;font-size:11px;color:var(--dim);font-weight:700}
+.cmp-x{position:absolute;top:2px;right:4px;background:none;border:0;color:var(--dim);
+  font-size:15px;line-height:1;cursor:pointer;padding:2px 4px}
+.cmp-x:hover{color:var(--viz-them)}
 /* 케미 부스트 실제 적용값 — 표에서 즉시 눈에 들어와야 한다. */
 .fc-boost{display:inline-block;min-width:34px;text-align:center;font-weight:800;font-size:12.5px;
   color:#062b12;background:var(--ok);border-radius:99px;padding:1px 8px}
