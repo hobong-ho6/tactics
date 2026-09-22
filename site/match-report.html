@@ -187,8 +187,21 @@ function ruleLine(s){
   const g=s.rule_suggest; if(!g&&!s.rule_note) return '';
   const sug=g?[g.build_up_style?`빌드업 ${g.build_up_style}`:null, g.defensive_approach?`수비 ${g.defensive_approach}`:null,
     g.line_lo!=null?`라인 ${g.line_lo}~${g.line_hi}`:null, g.long_pct!=null?`(롱볼 ${g.long_pct}%)`:null].filter(Boolean).join(' · '):'';
-  const note=s.rule_note||''; const cls=note.startsWith('DIVERGE')?'mid':note.startsWith('RULE')?'hi':'';
-  return `<p class="kv">실측 규칙 제안: <b>${esc(sug||'스탯 결손')}</b> ${note?`<span class="badge ${cls}">${esc(note.split(':')[0].split(' ')[0])}</span> <small class="dim">${esc(note)}</small>`:''}</p>`;
+  /* ⚠️ 라벨을 원문 코드(RULE/DIVERGE/NO-STATS) 그대로 쓰면 무슨 뜻인지 알 수 없고, 칩과 뒤 텍스트에
+     같은 값이 두 번 찍혔다(2026-09-22 사용자 지적 「RULE이라고 붙은 라벨은 뭐야?」).
+     ⇒ 읽는 말로 바꾸고, **사유가 있을 때만** 뒤에 붙인다. 원문 코드는 툴팁에 남긴다. */
+  const note=s.rule_note||'';
+  const k = note.startsWith('DIVERGE') ? {t:'규칙과 다름', c:'mid'}
+          : note.startsWith('NO-STATS') ? {t:'대조 불가', c:''}
+          : {t:'규칙과 일치', c:'hi'};
+  const detail = note.includes(':') ? note.split(':').slice(1).join(':').trim() : '';
+  const TIP = '기록한 프리셋을 core.team_settings 규칙(점유·패스·롱볼·PPDA로 팀 설정을 역산)과 대조한 결과다. '
+    + '일치하면 「규칙과 일치」, 판단이 규칙과 다르면 「규칙과 다름」+사유, 스탯이 없어 대조하지 못했으면 「대조 불가」. '
+    + '⛔ 정본은 우리가 기록한 값이고 규칙 제안은 병기다(게이트 G15가 사유 기재를 강제한다).';
+  return `<p class="kv"><span class="fc-help" tabindex="0" data-tip="${esc(TIP)}">실측 규칙 제안<i>?</i></span>:
+    <b>${esc(sug||'스탯 결손')}</b>
+    ${note?`<span class="badge ${k.c}" title="${esc(note)}">${k.t}</span>`:''}
+    ${detail?`<small class="dim">${esc(detail)}</small>`:''}</p>`;
 }
 function renderGamePreset(r){
   const s=r.game_setup, all=r.game_players??[];
@@ -235,11 +248,36 @@ function renderVideos(r){
     return;
   }
   const withSummary = rows.filter(v => v.summary).length;
-  document.getElementById('videos').innerHTML =
-    `<div class="kv" style="margin-bottom:8px"><b>${rows.length}편</b>
-       <small class="dim">— 요약 작성 ${withSummary} · 미작성 ${rows.length - withSummary}</small></div>`
-    + rows.map(v => `<article class="vidcard">
+  /* ⭐⭐ 감독 회견을 맨 위 별도 영역으로, 나머지는 **정보 등급** 순으로 배치한다
+     (2026-09-22 사용자 지시 「감독회견은 중요하니 상단에 별도 영역 · 유용한 정보는 등급을 매겨 높은 것을 위로」).
+     ⛔ 등급은 **원장 값으로만 계산한다** — 산문을 읽고 점수를 매기지 않는다:
+        A = 구현에 **반영된**(APPLIED) 주장이 있다 · B = 판정 대기(HELD/PENDING) 주장이 있다
+        C = 읽었고 **주장 없음**(axis='none') · D = 요약 미작성(전사만 있다)
+     ⚠️ 등급은 「이 영상이 우리 구현을 얼마나 움직였나」이지 영상의 품질 평가가 아니다. */
+  const gradeOf = v => {
+    if (!v.summary) return 'D';
+    const cs = v.impl_claims ?? [];
+    if (cs.some(c => c.verdict === 'APPLIED')) return 'A';
+    if (cs.some(c => c.verdict === 'HELD' || c.verdict === 'PENDING')) return 'B';
+    return 'C';
+  };
+  const GRADE_WHY = {
+    A: '구현에 반영된(APPLIED) 주장이 있다',
+    B: '판정 대기(HELD·PENDING) 주장이 있다',
+    C: '전사를 읽었고 구현에 닿는 주장이 없다',
+    D: '요약 미작성 — 전사만 확보',
+  };
+  const RANK = { A: 0, B: 1, C: 2, D: 3 };
+  const pressers = rows.filter(v => v.kind === '감독회견');
+  const others = rows.filter(v => v.kind !== '감독회견')
+    .map(v => ({ v, g: gradeOf(v) }))
+    .sort((a, b) => RANK[a.g] - RANK[b.g]
+      || (b.v.impl_claims ?? []).length - (a.v.impl_claims ?? []).length
+      || String(a.v.published ?? '').localeCompare(String(b.v.published ?? '')));
+
+  const card = (v, g) => `<article class="vidcard${g ? ' g' + g : ' presser'}">
       <header>
+        ${g ? `<span class="badge vgrade v${g}" title="${esc(GRADE_WHY[g])}">${g}</span>` : ''}
         <span class="badge ${VKIND[v.kind] ?? ''}">${esc(v.kind ?? '미분류')}</span>
         <b>${esc(v.channel)}</b>
         <span class="dim">${esc(v.published ?? '게시일 미기재')}${v.published_approx ? '경' : ''}</span>
@@ -252,7 +290,23 @@ function renderVideos(r){
         ${v.obs_points.map(o => `<div class="kv" style="margin-top:6px"><b>관측 기록 #${o.id}</b> <span class="dim">${esc(o.scope)}</span></div>${prose(o.claim)}`).join('')}</details>` : ''}
       ${claimsHtml(v)}
       ${!v.summary ? `<p class="dim" style="font-size:12px;margin:6px 0 0">⏰ 요약 미작성 — 전사는 확보돼 있다(<code>${esc(v.transcript_path)}</code>).</p>` : ''}
-    </article>`).join('');
+    </article>`;
+
+  document.getElementById('videos').innerHTML =
+    `<div class="kv" style="margin-bottom:8px"><b>${rows.length}편</b>
+       <small class="dim">— 요약 작성 ${withSummary} · 미작성 ${rows.length - withSummary}</small></div>`
+    + (pressers.length ? `<section class="vsec presserbox">
+        <h3>🗣️ 감독 회견 <small class="dim">${pressers.length}편 — 1차 발언이라 가장 세다</small></h3>
+        ${pressers.map(v => card(v, null)).join('')}</section>` : '')
+    + (others.length ? `<section class="vsec">
+        <h3>영상 분석 <small class="dim">${others.length}편 — 정보 등급順</small></h3>
+        <p class="dim" style="font-size:12px;margin:-2px 0 8px">
+          <b class="badge vgrade vA">A</b> 구현에 반영됨 ·
+          <b class="badge vgrade vB">B</b> 판정 대기 ·
+          <b class="badge vgrade vC">C</b> 주장 없음 ·
+          <b class="badge vgrade vD">D</b> 요약 미작성
+          — <b>우리 구현을 얼마나 움직였나</b>이지 영상 품질 평가가 아니다.</p>
+        ${others.map(x => card(x.v, x.g)).join('')}</section>` : '');
 }
 /* 구현 주장 — 「이 영상이 우리 구현의 무엇을 건드리는가」(docs/30 8단계 · migration 033).
    ⛔ 요약 산문에서 추출하지 않는다 — `video_impl_claims` 행을 그대로 그린다.

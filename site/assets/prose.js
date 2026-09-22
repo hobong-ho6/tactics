@@ -15,7 +15,13 @@ const sev = m => m.startsWith('⭐') ? 'hi' : m === '⛔' ? 'bad' : 'warn';
 /* 앞머리 등급 — adherence·overall·fit_* 가 'MEDIUM-HIGH — 서술' 꼴로 시작한다 */
 const GRADE = /^(HIGH|MEDIUM-HIGH|MEDIUM-LOW|MEDIUM|LOW|[SABCD][+-]?)\s*—\s*/;
 const TAG = /^\[([^\]]{1,70})\]\s*/;
-const ENUM = /[⑴⑵⑶⑷⑸⑹⑺⑻⑼⑽]/;
+/* 항목 마커 — 이 문자 앞에서 줄을 나눈다.
+   ⭐ 2026-09-22: **ⓐⓑⓒ·①②③을 추가**했다(사용자 지적 「ⓐ/ⓑ/ⓒ가 한 줄에 몰려 안 읽힌다」).
+   종전에는 ⑴⑵⑶만 나눠서, 같은 구실을 하는 원문자 목록이 통째로 한 문단에 붙어 나왔다.
+   ⛔ DB 산문은 고치지 않는다(불변규칙 2) — **읽는 쪽에서** 나눈다. */
+const ENUM_CHARS = '⑴⑵⑶⑷⑸⑹⑺⑻⑼⑽ⓐⓑⓒⓓⓔⓕⓖ①②③④⑤⑥⑦⑧⑨⑩';
+const ENUM = new RegExp('[' + ENUM_CHARS + ']');
+const ENUM_SPLIT = new RegExp('(?=[' + ENUM_CHARS + '])');
 
 /* 마커 앞에서 끊는다. 첫 조각은 마커가 없다(mark=''). ⭐⭐는 한 마커로 묶는다. */
 function split(text){
@@ -48,7 +54,7 @@ function body(raw){
   if (grade){ head += `<span class="badge pgrade">${grade[1]}</span>`; t = t.slice(grade[0].length); }
 
   if (!ENUM.test(t)) return head + bold(t);
-  const parts = t.split(/(?=[⑴⑵⑶⑷⑸⑹⑺⑻⑼⑽])/);
+  const parts = t.split(ENUM_SPLIT);
   // ⑴이 **강조** 안에 들어간 원문이 있다(예: '**⑴ 출처가 브레스트 시절 ⑵ 3티어**').
   // 거기서 끊으면 강조가 쪼개져 * 가 화면에 남는다 — 그런 블록은 줄만 안 나눈다.
   if (parts.some(p => (p.match(/\*\*/g) || []).length % 2)) return head + bold(t);
