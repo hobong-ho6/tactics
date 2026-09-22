@@ -93,14 +93,35 @@ def get(url, headers):
         raise
 
 
+# ⭐⭐ 29속성 — GG Club이 **EA 실측 그대로** 준다(2026-09-22 확인, 사용자 질문 「싱크로 상세 스탯까지 가져올 수 있지?」).
+#    종전에는 기준 카드 + 진화 보상으로 **재구성 추정**을 했는데, 그럴 필요가 없다.
+#    ⇒ 재구성은 이제 **검증용**으로만 남긴다(추정↔실측 대조 = 진화 기록 오류 탐지기).
+ATTRS = {
+    "attributeAcceleration": "가속", "attributeSprintSpeed": "질주 속도", "attributePositioning": "공격 위치 선정",
+    "attributeFinishing": "결정력", "attributeShotPower": "슈팅력", "attributeLongShots": "중거리슛",
+    "attributeVolleys": "발리 슛", "attributePenalties": "페널티킥", "attributeVision": "시야",
+    "attributeCrossing": "크로스", "attributeFreeKickAccuracy": "프리킥 정확도", "attributeShortPassing": "짧은 패스",
+    "attributeLongPassing": "긴 패스", "attributeCurve": "커브", "attributeAgility": "민첩성",
+    "attributeBalance": "균형 감각", "attributeReactions": "반응력", "attributeBallControl": "볼컨트롤",
+    "attributeDribbling": "드리블", "attributeComposure": "침착", "attributeInterceptions": "차단력",
+    "attributeHeadingAccuracy": "헤딩 정확도", "attributeDefensiveAwareness": "수비 위치 선정",
+    "attributeStandingTackle": "스탠딩 태클", "attributeSlidingTackle": "슬라이딩 태클",
+    "attributeJumping": "점프", "attributeStamina": "체력", "attributeStrength": "힘",
+    "attributeAggression": "공격성",
+}
+
+
 def rows_of(players):
     out = []
     for p in players:
         q = p.get("playerDef") or {}
         keys = SIX_GK if q.get("position") == 0 else SIX
         name = q.get("commonName") or f"{q.get('firstName') or ''} {q.get('lastName') or ''}".strip()
+        attrs = {kr: q[k] for k, kr in ATTRS.items() if q.get(k) is not None}
         out.append({"ea": q.get("eaId"), "n": name, "ovr": q.get("overall"),
                     "six": [q.get(k) for k in keys],
+                    "attrs": attrs or None,                       # ⛔ 없으면 None — 빈 dict를 「0」으로 굳히지 않는다
+                    "accel": q.get("accelerateType"),
                     "cs": p.get("chemistryStyle"), "cp": p.get("chemistryPoints"), "gg": p.get("id"),
                     "added": (p.get("addedToClubAt") or "")[:10] or None, "paid": p.get("purchasedFor")})
     out.sort(key=lambda r: r["ea"] or 0)

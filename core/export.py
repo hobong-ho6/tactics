@@ -165,6 +165,9 @@ def export_all(db_path=None, window="2026-summer"):
     club = _rows(con, """SELECT f.id, f.account_id, f.player_id, f.ea_item_id, f.name, f.acquired, f.acquired_how, f.status,
                                 f.current_ovr, f.current_six, f.current_playstyles, f.current_roles_plus,
                                 f.current_roles_plus_plus, f.evo_count, f.notes, f.updated,
+                                -- ⭐ 29속성 EA 실측(2026-09-22) — GG Club이 그대로 준다. 화면은 이것을 정본으로 쓰고
+                                --    기준 카드+진화 보상 재구성은 검증용으로만 쓴다.
+                                f.current_attrs,
                                 c.ovr AS card_ovr, c.positions, c.nation, c.league, c.club, c.is_icon, c.is_hero,
                                 c.chem_extra, c.card_image_url, c.attrs,
                                 -- 스킬무브·약발·주발(2026-09-21 사용자 요청) — 카드 표에만 있다.

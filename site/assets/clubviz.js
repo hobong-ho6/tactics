@@ -430,7 +430,11 @@ function evolvedAttrs(p, ctx) {
     for (const u of (lv.upgrades || [])) {
       const key = ATTR_KR[String(u.upgrade || '').replace(/^attribute_/, '')];
       if (!key || at[key] == null) continue;
-      at[key] = u.maxValue != null ? Math.min(at[key] + u.value, u.maxValue) : at[key] + u.value;
+      /* ⛔ 상한을 이미 넘은 속성은 **그대로 둔다** — `Math.min(현재+증가, 상한)`을 쓰면 값이 **깎인다**
+         (실증: 체력 82에 「+5(^76)」을 적용하면 76으로 내려갔다). 상한은 「여기까지만 올린다」는 뜻이다. */
+      const cap = u.maxValue;
+      at[key] = (cap != null && at[key] >= cap) ? at[key]
+              : (cap != null ? Math.min(at[key] + u.value, cap) : at[key] + u.value);
     }
     applied.push(`${l.evo_name} ${l.level}단계`);
   }
@@ -450,10 +454,50 @@ const ATTR_KR = {
 
 function attrBlock(p, ctx = {}) {
   const a0 = parse(p.attrs);
-  if (!a0) return '<p class="dim">상세 스탯 미수집(결손 — 0이 아니다).</p>';
+  /* ⭐⭐ 2026-09-22: GG Club이 **29속성을 EA 실측 그대로** 준다(사용자 질문에서 확인).
+     ⇒ 실측이 있으면 그것이 정본이고, 재구성은 **검증용**으로만 쓴다(추정↔실측 대조 = 진화 기록 오류 탐지기).
+     실측이 없을 때만(보호 중이거나 미수집) 재구성 추정을 보여주고 그 사실을 적는다. */
+  const real = parse(p.current_attrs);
+  if (!a0 && !real) return '<p class="dim">상세 스탯 미수집(결손 — 0이 아니다).</p>';
   const stale = p.card_ovr != null && p.current_ovr != null && p.card_ovr !== p.current_ovr;
-  const rec = stale ? evolvedAttrs(p, ctx) : null;
-  const show = rec ? rec.at : a0;
+  const rec = (stale && a0) ? evolvedAttrs(p, ctx) : null;
+  const show = real || (rec ? rec.at : a0);
+  if (real) {
+    /* ⭐ 케미스트리까지 얹어 **인게임에서 실제로 뛰는 값**을 보여준다(2026-09-22 사용자 지시).
+       EA가 주는 29속성은 **케미 미반영 카드값**이다 — 개인 케미로 감쇠한 부스트를 더해야 실전값이 된다.
+       ⇒ 오른 몫을 둘로 갈라 색으로 구분한다: 진화 = 초록 · 케미 = 주황. */
+    const st = (ctx.chem_styles || []).find(x => x.ea_id === p.chem_style_ea);
+    const raw = st ? (parse(st.boosts) || {}) : {};
+    const cp0 = p.chem_points ?? 0;
+    const scale = cp0 >= 3 ? 1 : cp0 === 2 ? 2 / 3 : cp0 === 1 ? 1 / 3 : 0;
+    const chemOf = k => Math.round((num(raw[k]) || 0) * scale);
+    const items0 = Object.entries(real).map(([k, v]) => {
+      const evo = a0 && a0[k] != null ? v - a0[k] : 0;
+      const ch = chemOf(k);
+      const fin = Math.min(99, v + ch);
+      return `<div class="fc-attr"><span>${esc(k)}</span><b>${fin}` +
+        (evo ? ` <small class="d-evo" title="진화 상승분">${evo > 0 ? '+' : ''}${evo}</small>` : '') +
+        (ch ? ` <small class="d-chem" title="케미 스타일 ${esc(st?.name || '')} (개인 케미 ${cp0}/3)">+${ch}</small>` : '') +
+        `</b></div>`;
+    }).join('');
+    const chemNote = st && scale > 0
+      ? ` · <span class="d-chem">주황</span>은 케미 스타일 <b>${esc(st.name)}</b>(개인 케미 ${cp0}/3) 적용분이라 <b>인게임 실전값</b>이다`
+      : (p.chem_style_ea ? ' · ⚠️ 개인 케미 0이라 케미 부스트는 <b>적용되지 않는다</b>' : '');
+    /* 재구성이 가능하면 실측과 맞춰 본다 — 어긋나면 **진화 단계 기록이 틀린 것**이다. */
+    let check = '';
+    if (rec) {
+      const diff = Object.keys(real).filter(k => rec.at[k] != null && rec.at[k] !== real[k]);
+      /* ⚠️ 분기(upgradeOptions)를 건너뛴 단계가 있으면 어긋나는 게 당연하다 — 「기록 의심」이 아니라
+         「대조 불가」다. 둘을 섞으면 멀쩡한 기록을 의심하게 된다. */
+      check = rec.skipped.length
+        ? `<span class="chip dim" title="${esc(rec.skipped.join(' · '))}">대조 불가 — 분기 선택이 기록돼 있지 않은 단계 ${rec.skipped.length}개</span>`
+        : diff.length === 0
+          ? '<span class="chip ok">진화 기록 검증됨 — 재구성과 실측이 전부 일치</span>'
+          : `<span class="chip" style="border-color:var(--warn);color:var(--warn)">⚠️ 진화 기록 의심 — ${diff.length}개 어긋남(${esc(diff.slice(0, 4).join(', '))}${diff.length > 4 ? '…' : ''})</span>`;
+    }
+    return `<p class="dim" style="margin:0 0 6px;font-size:12px">EA 싱크 <b>실측</b>${stale && a0 ? ` · <span class="d-evo">초록</span>은 기준 카드(OVR ${p.card_ovr}) 대비 진화 상승분` : ''}${chemNote}. ${check}</p>
+      <div class="fc-attrs">${items0}</div>`;
+  }
   /* 재구성 검증 — 복원한 속성으로 6대 스탯을 다시 계산해 EA 실측과 맞춰 본다. */
   let verdict = '';
   if (rec && ctx.face_stats) {
@@ -466,7 +510,7 @@ function attrBlock(p, ctx = {}) {
   }
   const items = Object.entries(show).map(([k, v]) => {
     const d = rec && a0[k] != null ? v - a0[k] : 0;
-    return `<div class="fc-attr"><span>${esc(k)}</span><b>${v}${d ? ` <small class="up">+${d}</small>` : ''}</b></div>`;
+    return `<div class="fc-attr"><span>${esc(k)}</span><b>${v}${d ? ` <small class="d-evo">${d > 0 ? '+' : ''}${d}</small>` : ''}</b></div>`;
   }).join('');
   const head = !stale ? ''
     : rec && rec.applied.length
@@ -568,8 +612,7 @@ function futggBlock(fg, nowName) {
     ${cur ? `<div class="fc-kv"><span>지금 스타일의 AcceleRATE</span><b>${esc(cur.accelerate || '—')}</b></div>` : ''}
     <div class="fc-kv"><span>스타일별 AcceleRATE</span><b style="font-weight:600">${esc(accelSummary || '—')}</b></div>
     ${changeHtml}
-    ${bars ? `<div class="fc-votehead">커뮤니티가 이 카드에 붙인 스타일 <small class="dim">— 투표 비율</small></div>
-             <div>${bars}</div>`
+    ${bars ? `<div>${bars}</div>`
            : '<p class="dim" style="font-size:11.5px;margin:6px 0 0">커뮤니티 투표 없음(결손 — 0표라는 뜻이지 비추천이 아니다).</p>'}
     <p class="dim" style="font-size:11.5px;margin:6px 0 0">⚠️ fut.gg 배지는 <b>등급이 아니라 그 스타일을 붙였을 때의 AcceleRATE</b>다(실측 확인).
       투표율은 <b>인기이지 정답이 아니다</b> — 위 역할 점수와 갈리면 역할 점수를 따른다.</p></div>`;
@@ -589,6 +632,38 @@ const ACCEL_TIP = '가속 곡선의 유형이다. Explosive는 초반 몇 걸음
 
 const STARS = (n, max = 5) => n == null ? '—'
   : `<span class="fc-star">${'★'.repeat(n)}</span><span class="fc-star off">${'★'.repeat(Math.max(0, max - n))}</span>`;
+
+/* AcceleRATE 구간 표 — 툴팁 한 줄로는 조건을 못 담는다(2026-09-22 사용자 요청).
+   ⛔⛔ **EA는 이 판정식을 공개한 적이 없다.** 아래 수치는 커뮤니티 데이터마이닝 해석이라
+        불변규칙 12의 **D등급**이다 — 화면에도 그렇게 적는다. 우리 처방 근거로 쓰지 않는다.
+   ⭐ 다만 **키가 관여한다**는 것은 EA 1차로 확인된다(FC27 노트의 여성 Lengthy 키 하한 172cm).
+   ⚠️ 몸무게가 들어간다는 근거는 찾지 못했다 — 표에 그렇게 적는다(결손이 아니라 「근거 없음」). */
+function accelTable(p) {
+  const at = parse(p.current_attrs) || parse(p.attrs) || {};
+  const ag = at['민첩성'], st = at['힘'], ac = at['가속'], h = p.height_cm;
+  const gap = (ag != null && st != null) ? ag - st : null;
+  const ROWS = [
+    ['Explosive',           '민첩−힘 ≥ 20',  '가속 ≥ 80', '≤ 175cm'],
+    ['Mostly Explosive',    '민첩−힘 ≥ 12',  '가속 ≥ 80', '≤ 182cm'],
+    ['Controlled Explosive','민첩−힘 ≥ 4',   '가속 ≥ 70', '≤ 182cm'],
+    ['Controlled',          '그 밖의 전부',   '—',        '—'],
+    ['Controlled Lengthy',  '힘−민첩 ≥ 4',   '힘 ≥ 65',   '≥ 174cm'],
+    ['Mostly Lengthy',      '힘−민첩 ≥ 12',  '힘 ≥ 75',   '≥ 174cm'],
+    ['Lengthy',             '힘−민첩 ≥ 20',  '힘 ≥ 80',   '≥ 174cm'],
+  ];
+  const cur = String(p.accelerate || '');
+  return `<details class="fc-acc"><summary>AcceleRATE 구간 표 — 무엇이 바뀌면 유형이 갈리나</summary>
+    <p class="dim" style="font-size:11.5px;margin:6px 0">이 카드: 민첩 <b>${ag ?? '—'}</b> · 힘 <b>${st ?? '—'}</b>
+      ${gap != null ? `(차 <b>${gap > 0 ? '+' : ''}${gap}</b>)` : ''} · 가속 <b>${ac ?? '—'}</b>${h ? ` · 키 <b>${h}cm</b>` : ''}</p>
+    <table class="tbl"><thead><tr><th>유형</th><th>민첩↔힘</th><th>속성</th><th>키</th></tr></thead><tbody>
+    ${ROWS.map(r => `<tr${cur && r[0] === cur ? ' style="background:rgba(94,232,138,.10)"' : ''}>
+      <td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}
+    </tbody></table>
+    <p class="dim" style="font-size:11.5px;margin:6px 0 0">⛔ 이 수치는 <b>커뮤니티 데이터마이닝 해석(D등급)</b>이다 —
+      EA는 판정식을 공개한 적이 없다. <b>키가 관여한다</b>는 것만 EA 1차로 확인된다(FC27 노트의 여성 Lengthy 키 하한 172cm).
+      ⚠️ <b>몸무게가 들어간다는 근거는 찾지 못했다.</b>
+      ⭐ 케미 스타일로 민첩·힘이 바뀌면 유형이 갈릴 수 있다 — 위 「fut.gg 신호」의 스타일별 AcceleRATE가 그 결과다.</p></details>`;
+}
 
 function traitRow(p, roleMap) {
   /* id 공간은 kind마다 갈린다(plus 1–49 · plusplus 101–149) — kind까지 맞춰 찾는다. */
@@ -623,6 +698,7 @@ function traitRow(p, roleMap) {
     <div class="fc-kv"><span>약발</span><b>${STARS(num(p.weak_foot))}</b></div>
     <div class="fc-kv"><span>주발</span><b>${esc(foot || '—')}</b></div>
     <div class="fc-kv"><span class="fc-help" tabindex="0" data-tip="${esc(ACCEL_TIP)}">AcceleRATE<i>?</i></span><b>${esc(p.accelerate || '—')}</b></div>
+    ${accelTable(p)}
     <div class="fc-kv"><span>Role++</span><b>${pp.length ? esc(pp.join(', ')) : '<span class="dim">없음</span>'}</b></div>
     <div class="fc-kv"><span>Role+</span><b>${pl.length ? esc(pl.join(', ')) : '<span class="dim">없음</span>'}</b></div>`;
 }
@@ -718,6 +794,13 @@ export const FC_DETAIL_CSS = `
 .fc-attrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:3px 14px}
 .fc-attr{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;border-bottom:1px dotted var(--line)}
 .fc-attr span{color:var(--dim)}
+/* 상승분 색 구분 — 진화(초록) ↔ 케미(주황). 값이 둘 다 있으면 나란히 붙는다. */
+.d-evo{color:var(--ok);font-weight:700}
+.d-chem{color:var(--acc);font-weight:700}
+.fc-acc{margin:6px 0 2px}
+.fc-acc > summary{cursor:pointer;font-size:12px;color:var(--acc)}
+.fc-acc .tbl{width:100%;table-layout:auto;margin-top:6px}
+.fc-acc .tbl td,.fc-acc .tbl th{font-size:11.5px;padding:3px 6px}
 /* 케미 부스트 실제 적용값 — 표에서 즉시 눈에 들어와야 한다. */
 .fc-boost{display:inline-block;min-width:34px;text-align:center;font-weight:800;font-size:12.5px;
   color:#062b12;background:var(--ok);border-radius:99px;padding:1px 8px}

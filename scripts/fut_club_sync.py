@@ -113,12 +113,18 @@ def main():
                              gg_player_id=?, synced_at=?, updated=? WHERE id=?""",
                         (r.get("cs"), r.get("cp"), r.get("gg"), a.pulled,
                          TODAY if changed else cur["updated"], cur["id"]))
+            # ⛔ 29속성·AcceleRATE도 스탯이라 보호 대상이다 — EA가 낡았으면 덮지 않는다.
         else:
             changed = (cur["current_ovr"] != r["ovr"] or cur["current_six"] != six
-                       or cur["chem_style_ea"] != r.get("cs") or cur["chem_points"] != r.get("cp"))
+                       or cur["chem_style_ea"] != r.get("cs") or cur["chem_points"] != r.get("cp")
+                       or (r.get("attrs") and cur["current_attrs"] != json.dumps(r["attrs"], ensure_ascii=False)))
+            # ⭐ 29속성(`attrs`)·AcceleRATE는 GG Club이 **EA 실측 그대로** 준다(2026-09-22) —
+            #    받은 회차에만 덮고, 안 온 회차에는 기존 값을 지운다(COALESCE로 보존).
+            attrs_json = json.dumps(r["attrs"], ensure_ascii=False) if r.get("attrs") else None
             con.execute("""UPDATE fut_club_players SET current_ovr=?, current_six=?, chem_style_ea=?, chem_points=?,
+                             current_attrs=COALESCE(?, current_attrs),
                              gg_player_id=?, synced_at=?, updated=? WHERE id=?""",
-                        (r["ovr"], six, r.get("cs"), r.get("cp"), r.get("gg"), a.pulled,
+                        (r["ovr"], six, r.get("cs"), r.get("cp"), attrs_json, r.get("gg"), a.pulled,
                          TODAY if changed else cur["updated"], cur["id"]))
         upd += changed
         same += (not changed)
