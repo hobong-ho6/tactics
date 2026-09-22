@@ -159,6 +159,13 @@ def export_all(db_path=None, window="2026-summer"):
                                    total_upgrades_text, levels, allowed_prior_ids, number_of_players, is_expired, pulled
                             FROM fc_evolutions WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions)
                             ORDER BY is_expired, end_time, evo_id""")
+    # 진화 해금 과제(migration 056) — 최신 pulled만. 화면이 진화 카드에 「그래서 뭘 하면 되나」를 띄운다.
+    # ⚠️ 해금 문구는 **과제 이름**일 때도 그룹 이름일 때도 있어 양쪽을 다 내보낸다(매칭은 화면이 한다).
+    obj_tasks = _rows(con, """SELECT group_slug, group_name, group_category, task_name, task_text,
+                                     task_text_kr, reward
+                              FROM fc_objective_tasks
+                             WHERE pulled=(SELECT MAX(pulled) FROM fc_objective_tasks)
+                             ORDER BY group_name, id""")
     accounts = _rows(con, "SELECT id, name, platform, game_version, notes, created FROM fut_accounts ORDER BY id")
     # 보유 선수 — 케미스트리 원료(국적·리그·클럽·포지션, migration 044)를 카드 표에서 붙여 함께 내보낸다.
     # 화면이 케미 XI를 계산하려면 이 4개가 있어야 한다. 조인은 아이템 id로만 한다(이름 조인 금지).
@@ -202,6 +209,7 @@ def export_all(db_path=None, window="2026-summer"):
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
                           {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices,
                            "chem_styles": chem_styles, "squad": squad, "squad_slots": squad_slots,
+                           "obj_tasks": obj_tasks,
                            # fut.gg 케미 신호(migration 055) — 최신 pulled만. 배지는 등급이 아니라 AcceleRATE다.
                            "chem_signals": _rows(con, """SELECT ea_item_id, style_name, accelerate, vote_pct
                                                            FROM futgg_chem_signals

@@ -375,3 +375,8 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 /* 시즌 성적도 같은 묶음 모양을 쓴다 — 시즌 열을 지우고 머리로 올렸다 */
 #season .seasongrp table{margin-top:2px}
 #season .seasongrp + .seasongrp{margin-top:14px}
+
+/* 진화 해금 조건 — 「이름만 적힌 해금 문구」 아래에 실제 조건을 붙인다(2026-09-22) */
+.unlockhow{border-left:2px solid var(--ok);padding:5px 9px;margin:4px 0 6px;font-size:12px;line-height:1.5;
+  background:rgba(76,217,123,.05);border-radius:0 6px 6px 0}
+.unlockhow>b{color:var(--ok);font-size:11px;margin-right:6px}

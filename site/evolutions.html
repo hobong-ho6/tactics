@@ -427,6 +427,31 @@ function teamBar(el, team, onPick){
   el.innerHTML = codes.map(c => `<button class="act ghost${c === team ? ' on' : ''}" data-c="${c}">${c === 'ALL' ? '전체' : esc(idx.regimes.find(r => r.team_code === c)?.team_kr || c)}</button>`).join('');
   el.querySelectorAll('button').forEach(b => b.addEventListener('click', () => onPick(b.dataset.c)));
 }
+/* ⭐ 「그래서 뭘 하면 되나」 (2026-09-22 사용자 질문 「이거 어떻게 얻는 거야?」에서).
+   `unlock_text`는 **이름만** 들고 있어 — 「Pep's Domination」이라고만 적혀 있으면 아무것도 알 수 없었다.
+   목표 과제(migration 056)를 맞춰 실제 조건을 카드에 같이 띄운다.
+   ⚠️ 해금 문구가 **과제 이름**일 때도 **그룹 이름**일 때도 있다
+      (Pinged Pass → 과제 · Believe → 그룹). 둘 다 맞추고, 그룹이면 **진화와 이름이 같은 과제**를
+      우선 고른다(Ted Lasso 그룹의 「Believe」 과제가 곧 Believe 진화의 해금 조건이다).
+   ⛔ 시즌패스 해금(「Unlocked by reaching level N …」)은 문구 자체가 이미 답이라 건드리지 않는다.
+   ⚠️ 원문과 한국어 번역을 함께 적는다(불변규칙 11). 번역이 없으면 원문만 적고 그 사실이 드러나게 둔다. */
+function unlockHow(c){
+  const u = (c.unlock_text || '').trim();
+  if (!u || /Season Pass/i.test(u)) return '';
+  const all = EVO.obj_tasks || [];
+  /* 후보 = 과제명이 맞거나 그룹명이 맞는 것. ⛔ 그룹 소개문(과제명 == 그룹명)은 제외한다. */
+  const cand = all.filter(x => (x.task_name === u || x.group_name === u) && x.task_name !== x.group_name);
+  /* 고르는 순서: ⑴ 진화와 이름이 같은 과제 ⑵ 보상이 Evo인 과제 ⑶ 해금 문구와 이름이 같은 과제 ⑷ 첫 번째.
+     ⑴이 먼저인 이유 — Ted Lasso 그룹의 「Believe」 과제가 곧 Believe 진화의 조건이다. */
+  const t = cand.find(x => x.task_name === c.name)
+         || cand.find(x => /evo/i.test(x.reward || ''))
+         || cand.find(x => x.task_name === u) || cand[0];
+  if (!t) return '';
+  return `<div class="unlockhow"><b>해금 조건</b>
+    ${t.task_name !== u ? `<span class="dim">${esc(t.group_name)} › ${esc(t.task_name)}</span>` : ''}
+    <div>「${esc(t.task_text)}」${t.task_text_kr ? ` <b>(${esc(t.task_text_kr)})</b>` : ''}</div>
+    ${t.reward ? `<span class="dim">이 과제 보상: ${esc(t.reward)}</span>` : ''}</div>`;
+}
 let CAT_TEAM = localStorage.getItem('evo_cat_team') || 'AVL';
 let SHOW_USED = false;   // 소진 진화는 기본으로 감춘다(위 renderCatalog 주석 참조)
 let SHOW_PREM = localStorage.getItem('evo_show_prem') === '1';   // 프리미엄 시즌패스 미구매가 기본
@@ -486,6 +511,7 @@ function renderCatalog(team = CAT_TEAM){
       <div class="kv" style="margin:6px 0;font-size:12px"><span>${esc(costText(c))}</span>
         ${dl != null ? `<span class="${dl <= 7 ? 'dn' : ''}">마감 ${esc(String(c.end_submission_time || c.end_time).slice(0, 10))} (${dl >= 0 ? `D-${dl}` : '지남'})</span>` : ''}
         ${c.unlock_text ? `<span class="dim">${esc(c.unlock_text)}</span>` : ''}</div>
+      ${unlockHow(c)}
       <div>${J(c.requirements_text, []).map(r => `<span class="req">${esc(r.label)}: ${esc(r.value)}</span>`).join('')}</div>
       <div style="margin-top:6px;font-size:12px"><b>업그레이드</b> ${J(c.total_upgrades_text, []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ') || '<span class="dim">없음(도입용)</span>'}</div>
       <div style="margin-top:6px;font-size:12px"><b>${team === 'ALL' ? '우리 선수' : esc(idx.regimes.find(r => r.team_code === team)?.team_kr || team)} 적용 가능 ${apps.length}명</b> <small class="dim">(fut.gg 전체 ${c.number_of_players?.toLocaleString?.() ?? '—'}명)</small>
