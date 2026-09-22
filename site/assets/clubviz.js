@@ -233,14 +233,32 @@ function emeryVerdict(a, b, ctx) {
   const B = parse(b.current_attrs) || parse(b.attrs) || {};
   const fit = (at, w) => { const den = Object.values(w).reduce((t, v) => t + v * 99, 0);
     return den ? Object.entries(w).reduce((t, [k, v]) => t + v * (at[k] ?? 0), 0) / den * 100 : 0; };
+  /* ⭐ 그 역할의 **숙련(Role+/++)** 보유 여부 — 스탯과 다른 축이라 점수에 섞지 않고 따로 적는다.
+     canon의 role_id(cam_playmaker)를 게임 표기(Playmaker)로 옮겨 role_map과 맞춘다. */
+  const enName = rid => (ctx.roles || []).find(r => r.role_id === rid)?.name_en || '';
+  const roleMastery = (c, pos, rid) => {
+    const want = enName(rid).toLowerCase();
+    if (!want) return null;
+    for (const kind of ['plusplus', 'plus']) {
+      const ids = parse(kind === 'plus' ? c.current_roles_plus : c.current_roles_plus_plus);
+      if (!Array.isArray(ids)) continue;
+      const hit = ids.some(id => {
+        const r = (ctx.role_map || []).find(x => x.ea_id === id && x.kind === kind);
+        return r && r.position_name === pos && r.name.toLowerCase() === want;
+      });
+      if (hit) return kind === 'plusplus' ? 'Role++' : 'Role+';
+    }
+    return null;
+  };
   const rows = cands.map(c => {
     const w = W[c.role_id] || {};
     const fa = fit(A, w), fb = fit(B, w), d = fa - fb;
+    const ma = roleMastery(a, c.pos, c.role_id), mb = roleMastery(b, c.pos, c.role_id);
     /* 근거 — 가중이 큰 속성부터 「누가 얼마나 앞서는가」를 본다. */
     const why = Object.entries(w).sort((x, y) => y[1] - x[1]).slice(0, 5)
       .map(([k, wt]) => ({ k, wt, va: A[k] ?? 0, vb: B[k] ?? 0, gap: (A[k] ?? 0) - (B[k] ?? 0) }))
       .filter(x => x.gap !== 0);
-    return { c, fa, fb, d, why };
+    return { c, fa, fb, d, why, ma, mb };
   }).sort((x, y) => Math.abs(y.d) - Math.abs(x.d));
   const body = rows.map(r => {
     const tie = Math.abs(r.d) < 1.0;
@@ -254,13 +272,22 @@ function emeryVerdict(a, b, ctx) {
         ${tie ? '<span class="chip dim">구분되지 않음</span>'
               : `<span class="cmp-d ${side} mid">${esc(winner)} 우위</span>`}</div>
       <div class="cmp-vfit"><span class="cmp-a">${r.fa.toFixed(1)}</span>
-        <span class="cmp-k">적합도</span><span class="cmp-b">${r.fb.toFixed(1)}</span></div>
-      ${top ? `<div class="cmp-vwhy">${top}</div>` : ''}</div>`;
+        <span class="cmp-k">적합도<i>스탯 기준</i></span><span class="cmp-b">${r.fb.toFixed(1)}</span></div>
+      ${top ? `<div class="cmp-vwhy">${top}</div>` : ''}
+      ${(r.ma || r.mb) ? `<div class="cmp-vfit" style="font-size:12px;margin-top:6px">
+        <span class="cmp-a">${r.ma ? `<span class="chip wA">${r.ma}</span>` : '<span class="dim">숙련 없음</span>'}</span>
+        <span class="cmp-k">역할 숙련<i>점수에 안 들어감</i></span>
+        <span class="cmp-b">${r.mb ? `<span class="chip wB">${r.mb}</span>` : '<span class="dim">숙련 없음</span>'}</span></div>` : ''}</div>`;
   }).join('');
   return `<h4>에메리 전술 기준 — 어느 쪽이 나은가</h4>
     <div class="cmp-verdict">${body}
-    <p class="dim" style="font-size:11px;margin:8px 0 0">적합도 = Σ(역할 핵심 속성 가중 × 값) ÷ 만점.
-      <b>정본 슬롯 역할</b>(에메리 재현)의 가중을 그대로 쓴다 — 여기서 새 기준을 만들지 않는다.
+    <p class="dim" style="font-size:11px;margin:8px 0 0">
+      <b>무엇이 들어가나</b> — 적합도는 <b>스탯이 전부</b>다: Σ(역할 핵심 속성 가중 × 속성값) ÷ 만점.
+      가중은 <b>정본 슬롯 역할</b>(에메리 재현)의 것을 그대로 쓴다 — 여기서 새 기준을 만들지 않는다.<br>
+      ⛔ <b>PlayStyle과 역할 숙련은 점수에 넣지 않았다.</b> 그 둘이 「몇 점어치인가」에 대한 근거가 없기 때문이다
+      (불변규칙 12) — 근거 없는 가중을 만들면 숫자가 판단을 가장한다. 대신 <b>숙련은 따로 적고</b>,
+      PlayStyle은 위 「PlayStyle」 절에서 직접 견주도록 뒀다. ⭐ FC27은 스페셜 카드에 Role++를 일괄로 줘서
+      숙련의 변별력이 예전만 못하다는 점도 감안할 것.<br>
       ⚠️ 차이가 <b>1.0 미만이면 구분하지 않는다</b>(그 정도는 노이즈다).
       ⛔ 케미는 빼고 <b>진화만 반영한</b> 카드 자체 값이며, <b>이 카드가 그 자리에 얼마나 맞나</b>일 뿐
       경기력·폼·상대는 담지 않는다.</p></div>`;
@@ -1016,6 +1043,7 @@ export const FC_DETAIL_CSS = `
 .cmp-vrow + .cmp-vrow{margin-top:10px;padding-top:10px;border-top:1px dotted var(--line)}
 .cmp-vhead{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px}
 .cmp-vfit{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:center;margin:5px 0 4px;font-size:17px;font-weight:800}
+.cmp-vfit .cmp-k i{display:block;font-style:normal;font-size:9.5px;opacity:.7;font-weight:400}
 .cmp-vwhy{display:flex;flex-wrap:wrap;gap:5px}
 .cmp-vwhy .chip{font-size:11px}
 .cmp-vwhy .wA{border-color:var(--viz-us);color:var(--viz-us)}
