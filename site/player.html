@@ -949,6 +949,7 @@ function render(){
           조용히 숨기면 「그 시즌 데이터가 없다」로 오독된다(결손과 접힘은 다르다).
        ⚠️ 시즌을 모르는 그리드(스쿼드 폴백 등)는 `미상`으로 따로 묶는다 — 아무 시즌에 욱여넣지 않는다. */
     const gEl = document.getElementById('grids');
+    const ssRows = pickRows(td.season_stats, sel);   // 시즌 토글이 히트맵·시즌성적 양쪽을 움직인다
     const drawGrids = () => {
     /* ⛔ `#grids`는 `.cardrow`(display:flex)다 — 시즌 묶음을 그대로 넣으면 **버튼·그룹이 flex 아이템이 되어
        세로로 쭉 늘어난다**(2026-09-22 사용자 지적 「버튼이 이상하다」). 시즌 레이아웃일 때만 블록으로 바꾼다. */
@@ -958,6 +959,10 @@ function render(){
       const bySeason = new Map();
       for (const p of cards){ const k = p.season ?? '미상';
         if (!bySeason.has(k)) bySeason.set(k, []); bySeason.get(k).push(p); }
+      /* ⭐ 시즌 목록은 **히트맵과 시즌 성적 양쪽**에서 모은다(2026-09-22 사용자 지시 「시즌 성적도 시즌별로
+         나누고 위 히트맵과 토글 연결」). 그리드에만 있는 시즌 목록으로 버튼을 만들면
+         **시즌 성적에만 있는 시즌이 영구히 숨는다** — 토글을 공유하는 순간 그게 곧 데이터 소실로 보인다. */
+      for (const r of ssRows){ const k = r.season ?? '미상'; if (!bySeason.has(k)) bySeason.set(k, []); }
       const seasons = [...bySeason.keys()].sort((a,b)=>
         a==='미상' ? 1 : b==='미상' ? -1 : String(b).localeCompare(String(a)));
       if (gEl._pid !== sel.pid){ gEl._pid = sel.pid; gEl._on = new Set([seasons[0]]); }
@@ -965,36 +970,55 @@ function render(){
       const label = s => s==='미상' ? '시즌 미상' : String(s).replace(/^20(\d\d)-(\d\d)$/, '$1/$2');
       gEl.innerHTML = `<div class="seasonbar">${seasons.map(s=>
           `<button class="seasontog${on.has(s)?' on':''}" data-season="${esc(s)}">${label(s)}
-             <i>${bySeason.get(s).length}장</i></button>`).join('')}
+             <i>${bySeason.get(s).length ? bySeason.get(s).length + '장' : '성적만'}</i></button>`).join('')}
           ${seasons.length>1?`<button class="seasontog all" data-season="*">전체</button>`:''}</div>`
         + seasons.filter(s=>on.has(s)).map(s=>
             `<div class="seasongrp"><div class="seasongrp-h">${label(s)}
                <small class="dim">${bySeason.get(s).length}장</small></div>
-             <div class="gridrow">${bySeason.get(s).map(gridCard).join('')}</div></div>`).join('')
+             <div class="gridrow">${bySeason.get(s).length
+                 ? bySeason.get(s).map(gridCard).join('')
+                 : '<span class="dim" style="font-size:12px">이 시즌은 히트맵이 없다(시즌 성적만 있다)</span>'}</div></div>`).join('')
         || '<p class="dim" style="font-size:12px">시즌 버튼을 눌러 히트맵을 펼친다.</p>';
       gEl.querySelectorAll('[data-season]').forEach(b=>b.addEventListener('click', ()=>{
         const s = b.dataset.season;
         if (s === '*'){ seasons.forEach(x=>on.add(x)); }
         else if (on.has(s)) on.delete(s); else on.add(s);
         drawGrids();
+        drawSeason();          // ⭐ 같은 토글이 아래 시즌 성적까지 움직인다
       }));
     }
     };
-    drawGrids();
     const st = td.player_stats.find(s=>s.label===key);
   document.getElementById('pstat').innerHTML = st ? [['경기',st.n],['분',st.minutes],['평점',st.avg_rating],['xG',st.xg_pg],['xA',st.xa_pg],['키패스',st.kp_pg],['듀얼승',st.dw_pg],['태클',st.tk_pg],['인터셉트',st.ic_pg]].map(([n,v])=>`${statTip(n)} <b>${v??'—'}</b>`).join(' · ') : '<span class="dim">경기 스탯 없음 (match-watch 수집 대기)</span>';
     // 시즌 성적 — 대회별 (Fotmob 선수 페이지 참고)
-    const ss=pickRows(td.season_stats, sel);
-    document.getElementById('season').innerHTML = ss.length
-      ? `<table><tr><th>시즌</th><th>대회</th>${
-          [['경기','실제로 뛴 경기 수(교체 출전 포함)'],['선발','경기 시작부터 뛴 횟수. 교체 출전은 빠진다'],
-           ['분','그 대회에서 뛴 총 시간(분)'],['골','직접 넣은 득점 수'],['어시','득점으로 바로 이어진 마지막 패스 수'],
-           ['평점','경기 수행 점수의 평균. 6.5=평범 · 7.0+=준수 · 7.5+=상위권']]
-          .map(([n,t])=>`<th><abbr class="gl" tabindex="0" data-tip="${esc(t)}" title="${esc(t)}">${n}</abbr></th>`).join('')}</tr>`
-        + ss.map(s=>`<tr><td>${s.season}</td><td>${s.competition}</td><td>${s.n}</td><td>${s.starts??'—'}</td>
-            <td>${s.minutes??'—'}</td><td>${s.goals??0}</td><td>${s.assists??0}</td><td><b>${s.avg_rating??'—'}</b></td></tr>`).join('')
-        + '</table>'
-      : '<span class="dim">시즌 성적 없음</span>';
+    /* ⭐ 시즌 성적도 **위 히트맵과 같은 토글**을 쓴다. 시즌 열을 지우고 묶음 머리로 올려
+       한 시즌 안에서 대회끼리만 비교되게 한다(종전엔 26-27과 25-26 행이 붙어 있어 섞여 읽혔다).
+       ⚠️ 토글 바가 없을 때(히트맵이 아예 없는 선수)는 **전부 보여준다** — 숨길 근거가 없다. */
+    const SS_TH = [['경기','실제로 뛴 경기 수(교체 출전 포함)'],['선발','경기 시작부터 뛴 횟수. 교체 출전은 빠진다'],
+      ['분','그 대회에서 뛴 총 시간(분)'],['골','직접 넣은 득점 수'],['어시','득점으로 바로 이어진 마지막 패스 수'],
+      ['평점','경기 수행 점수의 평균. 6.5=평범 · 7.0+=준수 · 7.5+=상위권']];
+    const drawSeason = () => {
+      const el2 = document.getElementById('season');
+      if (!ssRows.length){ el2.innerHTML = '<span class="dim">시즌 성적 없음</span>'; return; }
+      const on = gEl._on;
+      const use = on ? ssRows.filter(r => on.has(r.season ?? '미상')) : ssRows;
+      const ks = [...new Set(use.map(r => r.season ?? '미상'))].sort((a,b)=>
+        a==='미상' ? 1 : b==='미상' ? -1 : String(b).localeCompare(String(a)));
+      const lab = x => x==='미상' ? '시즌 미상' : String(x).replace(/^20(\d\d)-(\d\d)$/, '$1/$2');
+      el2.innerHTML = ks.map(k => {
+        const rows = use.filter(r => (r.season ?? '미상') === k);
+        return `<div class="seasongrp"><div class="seasongrp-h">${lab(k)}
+            <small class="dim">${rows.length}개 대회</small></div>
+          <table><tr><th>대회</th>${SS_TH.map(([n,t])=>
+              `<th><abbr class="gl" tabindex="0" data-tip="${esc(t)}" title="${esc(t)}">${n}</abbr></th>`).join('')}</tr>`
+          + rows.map(r=>`<tr><td>${esc(r.competition)}</td><td>${r.n}</td><td>${r.starts??'—'}</td>
+              <td>${r.minutes??'—'}</td><td>${r.goals??0}</td><td>${r.assists??0}</td>
+              <td><b>${r.avg_rating??'—'}</b></td></tr>`).join('')
+          + '</table></div>';
+      }).join('') || '<p class="dim" style="font-size:12px">위 시즌 버튼을 눌러 펼친다.</p>';
+    };
+    drawGrids();
+    drawSeason();
     if (!renderLeague(key, false, sel)) {
       const pool = posPool(st);
       document.getElementById('tabnote').textContent =
