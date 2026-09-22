@@ -429,6 +429,7 @@ function teamBar(el, team, onPick){
 }
 let CAT_TEAM = localStorage.getItem('evo_cat_team') || 'AVL';
 let SHOW_USED = false;   // 소진 진화는 기본으로 감춘다(위 renderCatalog 주석 참조)
+let SHOW_PREM = localStorage.getItem('evo_show_prem') === '1';   // 프리미엄 시즌패스 미구매가 기본
 function renderCatalog(team = CAT_TEAM){
   CAT_TEAM = team; localStorage.setItem('evo_cat_team', team);
   teamBar(document.getElementById('catteam'), team, renderCatalog);
@@ -442,12 +443,24 @@ function renderCatalog(team = CAT_TEAM){
      ⭐ 조용히 숨기지 않는다 — 머리글에 소진 종수를 적고, 버튼으로 다시 펼칠 수 있게 둔다
         (안 보이는 것과 없는 것이 구분돼야 한다). */
   const usedIds = new Set(Object.entries(CONSUMED).filter(([, u]) => u.exhausted).map(([k]) => +k));
-  const cat = SHOW_USED ? cat0 : cat0.filter(c => !usedIds.has(c.evo_id));
-  const nUsed = cat0.filter(c => usedIds.has(c.evo_id)).length;
+  /* ⭐ **프리미엄 시즌패스 진화 거르기** (2026-09-22 사용자 지시 「난 프리미엄을 구매하지 않았다」).
+     ⛔ 지우지 않고 **필터**로 둔다 — 나중에 구매하면 그대로 다시 보여야 하고, 「FC27에 이런 진화가 있다」는
+        사실 자체는 참이기 때문이다(소진 처리와 같은 원칙).
+     ⭐ 판정은 `unlock_text`로 한다 — 「Unlocked by reaching level N in the Premium Season Pass.」
+        이름의 `[SP+ N]` 표기는 보조 신호일 뿐이라 근거로 쓰지 않는다.
+     ⚠️ 설정은 localStorage에 남긴다 — 구매 여부는 회차마다 바뀌는 값이 아니라 **계정의 상태**다. */
+  const isPrem = c => /Premium Season Pass/i.test((c.unlock_text || '') + ' ' + (c.description || ''));
+  const cat = cat0.filter(c => (SHOW_USED || !usedIds.has(c.evo_id)) && (SHOW_PREM || !isPrem(c)));
+  const nUsed = cat0.filter(c => usedIds.has(c.evo_id) && (SHOW_PREM || !isPrem(c))).length;
+  const nPrem = cat0.filter(c => isPrem(c) && (SHOW_USED || !usedIds.has(c.evo_id))).length;
   document.getElementById('catn').innerHTML = `— ${cat.filter(c => !c.is_expired).length}종 열림 · ${cat.filter(c => c.is_expired).length}종 만료`
-    + (nUsed ? ` · <button class="act" id="usedtog" style="padding:1px 8px;font-size:11px">소진 ${nUsed}종 ${SHOW_USED ? '숨기기' : '보기'}</button>` : '');
+    + (nUsed ? ` · <button class="act" id="usedtog" style="padding:1px 8px;font-size:11px">소진 ${nUsed}종 ${SHOW_USED ? '숨기기' : '보기'}</button>` : '')
+    + (nPrem ? ` · <button class="act" id="premtog" style="padding:1px 8px;font-size:11px"${SHOW_PREM ? '' : ' title="프리미엄 시즌패스를 구매해야 열리는 진화다"'}>프리미엄 SP ${nPrem}종 ${SHOW_PREM ? '숨기기' : '보기'}</button>` : '');
   const tog = document.getElementById('usedtog');
   if (tog) tog.addEventListener('click', () => { SHOW_USED = !SHOW_USED; renderCatalog(CAT_TEAM); });
+  const ptog = document.getElementById('premtog');
+  if (ptog) ptog.addEventListener('click', () => {
+    SHOW_PREM = !SHOW_PREM; localStorage.setItem('evo_show_prem', SHOW_PREM ? '1' : '0'); renderCatalog(CAT_TEAM); });
   const days = t => t ? Math.ceil((new Date(t) - Date.now()) / 864e5) : null;
   document.getElementById('cat').innerHTML = cat.map(c => {
     // 이 진화를 포함한 경로를 가진 우리 선수 — 첫 단계로 포함하면 바로 적용 가능, 아니면 N단계째

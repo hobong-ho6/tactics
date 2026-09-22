@@ -11553,6 +11553,25 @@
     "roles_plus_plus_after": null,
     "six_after": "{\"PAC\":83,\"SHO\":62,\"PAS\":74,\"DRI\":75,\"DEF\":40,\"PHY\":62}",
     "six_before": null
+   },
+   {
+    "applied_at": "2026-09-22",
+    "attrs_delta": null,
+    "club_player_id": 145,
+    "completed_at": "2026-09-22",
+    "evo_id": 2491,
+    "evo_name": "Intro to Evolutions",
+    "id": 20,
+    "is_void": 0,
+    "level": 1,
+    "notes": "2026-09-22 사용자 보고 「본머스 선수에게 적용」. 기준 카드 OVR 73 → 현재 79로 6대 스탯이 전부 진화 상한과 일치해 확정(PAC 56→80 ^80 · DRI 70→79 ^80 · DEF 73→76 ^76). fut.gg는 경로를 주지 않아 스탯 대조로 판정(런북 §3-2 단계 판정 순서 ⑴⑵).",
+    "ovr_after": 79,
+    "ovr_before": 73,
+    "playstyles_after": null,
+    "roles_plus_after": null,
+    "roles_plus_plus_after": null,
+    "six_after": "{\"PAC\":80,\"SHO\":59,\"PAS\":75,\"DRI\":79,\"DEF\":76,\"PHY\":72}",
+    "six_before": "{\"PAC\":56,\"SHO\":59,\"PAS\":72,\"DRI\":70,\"DEF\":73,\"PHY\":68}"
    }
   ],
   "players": [
@@ -11652,9 +11671,9 @@
     "current_playstyles": null,
     "current_roles_plus": "[24, 5]",
     "current_roles_plus_plus": "[]",
-    "current_six": "{\"PAC\": 80, \"SHO\": 59, \"PAS\": 75, \"DRI\": 79, \"DEF\": 76, \"PHY\": 72}",
+    "current_six": "{\"PAC\":80,\"SHO\":59,\"PAS\":75,\"DRI\":79,\"DEF\":76,\"PHY\":72}",
     "ea_item_id": 190885,
-    "evo_count": 0,
+    "evo_count": 1,
     "height_cm": 180,
     "id": 145,
     "is_hero": 0,
