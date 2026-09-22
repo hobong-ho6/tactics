@@ -464,13 +464,24 @@ let APPLIED = appliedMap();
 /* 이 경로에 들어 있는 진화 중 **이 선수가 이미 밟은 것**들 */
 const appliedIn = (r, pid) => (r.ids || []).map(i => APPLIED[`${pid}:${i}`]).filter(Boolean);
 const pathOpen = (r, pid) => r.ids.every(i => !CONSUMED[i]?.exhausted || CONSUMED[i].by.some(b => b.pid === pid));
+/* ⭐ 프리미엄 시즌패스 판정은 **공용 층**에 둔다(2026-09-22 사용자 지적 「선수별 패스에 프리미엄 경로가 살아있다」).
+   ⛔ 종전엔 카탈로그 탭 안에만 있어서 **선수별 패스·전술 구현은 그대로 노출**됐다 —
+      살 수도 없는 진화를 경로로 추천하고 있었던 것이다.
+   ⇒ 여기서 한 번 정하고 `buildRanked()`가 걸러, **세 탭이 같은 기준**을 쓰게 한다.
+   ⚠️ 판정 근거는 `unlock_text`의 「Premium Season Pass」다(이름의 `[SP+ N]`은 보조 신호). */
+let SHOW_PREM = localStorage.getItem('evo_show_prem') === '1';   // 프리미엄 미구매가 기본
+const PREM_IDS = new Set((EVO.catalog || [])
+  .filter(c => /Premium Season Pass/i.test((c.unlock_text || '') + ' ' + (c.description || '')))
+  .map(c => c.evo_id));
+const pathPrem = r => (r.ids || []).some(i => PREM_IDS.has(i));
 let RANKED = {};
 function buildRanked(){
   const acc = accountObj();
   OWNED = new Set((EVO.club?.players || []).filter(p => acc && p.account_id === acc.id && p.status === 'owned').map(p => p.player_id));
   APPLIED = appliedMap();
   RANKED = {};
-  for (const [pid, rows] of Object.entries(EVO.paths || {})) RANKED[pid] = rank(+pid, rows).filter(r => pathOpen(r, +pid));
+  for (const [pid, rows] of Object.entries(EVO.paths || {}))
+    RANKED[pid] = rank(+pid, rows).filter(r => pathOpen(r, +pid) && (SHOW_PREM || !pathPrem(r)));
 }
 buildRanked();
 function teamBar(el, team, onPick){
@@ -518,7 +529,6 @@ function unlockHow(c){
 }
 let CAT_TEAM = localStorage.getItem('evo_cat_team') || 'AVL';
 let SHOW_USED = false;   // 소진 진화는 기본으로 감춘다(위 renderCatalog 주석 참조)
-let SHOW_PREM = localStorage.getItem('evo_show_prem') === '1';   // 프리미엄 시즌패스 미구매가 기본
 function renderCatalog(team = CAT_TEAM){
   CAT_TEAM = team; localStorage.setItem('evo_cat_team', team);
   teamBar(document.getElementById('catteam'), team, renderCatalog);
@@ -549,7 +559,8 @@ function renderCatalog(team = CAT_TEAM){
   if (tog) tog.addEventListener('click', () => { SHOW_USED = !SHOW_USED; renderCatalog(CAT_TEAM); });
   const ptog = document.getElementById('premtog');
   if (ptog) ptog.addEventListener('click', () => {
-    SHOW_PREM = !SHOW_PREM; localStorage.setItem('evo_show_prem', SHOW_PREM ? '1' : '0'); renderCatalog(CAT_TEAM); });
+    SHOW_PREM = !SHOW_PREM; localStorage.setItem('evo_show_prem', SHOW_PREM ? '1' : '0');
+    buildRanked(); renderCatalog(CAT_TEAM); renderPaths(PATH_TEAM); });   // 세 탭이 같이 움직인다
   const days = t => t ? Math.ceil((new Date(t) - Date.now()) / 864e5) : null;
   document.getElementById('cat').innerHTML = cat.map(c => {
     // 이 진화를 포함한 경로를 가진 우리 선수 — 첫 단계로 포함하면 바로 적용 가능, 아니면 N단계째
@@ -615,8 +626,26 @@ function appliedPanel(pid){
             ? ` · OVR ${x.ovr_before}→<b class="up">${x.ovr_after}</b>` : ''} · ${esc(x.first)}${
           x.last && x.last !== x.first ? `~${esc(x.last)}` : ''}</small></div>`).join('')}</div>`;
 }
+let PATH_TEAM = 'AVL';
 function renderPaths(team, focusPid){
+  PATH_TEAM = team = team || PATH_TEAM;
   teamBar(document.getElementById('teamsel'), team, renderPaths);
+  /* 프리미엄 경로 토글 — 카탈로그 탭과 **같은 상태**(SHOW_PREM)를 공유한다.
+     ⭐ 숨겨진 건수를 적는다 — 「경로가 없다」와 「걸러졌다」가 구분돼야 한다. */
+  const hidden = Object.entries(EVO.paths || {}).reduce((n, [pid, rows]) =>
+    n + rank(+pid, rows).filter(r => pathOpen(r, +pid) && pathPrem(r)).length, 0);
+  const bar = document.getElementById('teamsel');
+  if (hidden || SHOW_PREM){
+    const b = document.createElement('button');
+    b.className = 'act ghost' + (SHOW_PREM ? ' on' : '');
+    b.style.marginLeft = '10px'; b.style.fontSize = '11px';
+    b.innerHTML = `프리미엄 SP 경로 ${SHOW_PREM ? '숨기기' : `${hidden}건 보기`}`;
+    if (!SHOW_PREM) b.title = '프리미엄 시즌패스를 구매해야 열리는 진화가 낀 경로다';
+    b.addEventListener('click', () => {
+      SHOW_PREM = !SHOW_PREM; localStorage.setItem('evo_show_prem', SHOW_PREM ? '1' : '0');
+      buildRanked(); renderPaths(team); renderCatalog(CAT_TEAM); });
+    bar.appendChild(b);
+  }
   const pids = Object.keys(RANKED).map(Number).filter(p => team === 'ALL' || TEAM_OF[p] === team)
     .sort((a, b) => (RANKED[b][0]?.tier ?? 0) - (RANKED[a][0]?.tier ?? 0) || (RANKED[b][0]?.d ?? 0) - (RANKED[a][0]?.d ?? 0));
   document.getElementById('paths').innerHTML = pids.map(pid => {
