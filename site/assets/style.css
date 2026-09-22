@@ -380,3 +380,6 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .unlockhow{border-left:2px solid var(--ok);padding:5px 9px;margin:4px 0 6px;font-size:12px;line-height:1.5;
   background:rgba(76,217,123,.05);border-radius:0 6px 6px 0}
 .unlockhow>b{color:var(--ok);font-size:11px;margin-right:6px}
+/* 프리미엄 시즌패스 해금 — 구매가 전제라 색을 달리해 「레벨만 올리면 된다」로 오독되지 않게 한다 */
+.unlockhow.prem{border-left-color:var(--warn);background:rgba(255,213,77,.05)}
+.unlockhow.prem>b{color:var(--warn)}

@@ -437,7 +437,20 @@ function teamBar(el, team, onPick){
    ⚠️ 원문과 한국어 번역을 함께 적는다(불변규칙 11). 번역이 없으면 원문만 적고 그 사실이 드러나게 둔다. */
 function unlockHow(c){
   const u = (c.unlock_text || '').trim();
-  if (!u || /Season Pass/i.test(u)) return '';
+  if (!u) return '';
+  /* ⭐ 시즌패스 해금도 **해금 조건 블록에 넣는다**(2026-09-22 사용자 지적 「이 두 건도 시즌 레벨 올려야 받는 거잖아」).
+     ⛔ 종전에는 「문구 자체가 답이다」라며 건너뛰었는데, 그 결과 **영어 원문만 두 번 반복**되고
+        한국어 번역이 없었다(불변규칙 11 위반). 조건은 조건이므로 같은 자리에 같은 모양으로 적는다.
+     ⚠️ 프리미엄은 **구매해야 열린다** — 미구매 상태에서는 레벨을 올려도 안 열리니 그 사실을 함께 적는다. */
+  const sp = u.match(/reaching level (\d+) in the (Standard|Premium) Season Pass/i);
+  if (sp){
+    const [, lv, tier] = sp, prem = /premium/i.test(tier);
+    return `<div class="unlockhow${prem ? ' prem' : ''}"><b>해금 조건</b>
+      <div>「${esc(u)}」 <b>(${prem ? '프리미엄' : '스탠다드'} 시즌패스 <b>레벨 ${esc(lv)}</b> 달성)</b></div>
+      <span class="dim">${prem
+        ? '⚠️ 프리미엄 시즌패스를 <b>구매해야</b> 열린다 — 레벨만 올려서는 받을 수 없다.'
+        : '스탠다드 시즌패스는 구매 없이 레벨만 올리면 된다.'}</span></div>`;
+  }
   const all = EVO.obj_tasks || [];
   /* 후보 = 과제명이 맞거나 그룹명이 맞는 것. ⛔ 그룹 소개문(과제명 == 그룹명)은 제외한다. */
   const cand = all.filter(x => (x.task_name === u || x.group_name === u) && x.task_name !== x.group_name);
@@ -507,10 +520,16 @@ function renderCatalog(team = CAT_TEAM){
       ${best && !used?.exhausted ? `<div class="pcard tier${best.tier}" style="margin:6px 0;padding:6px 10px"><span class="badge hi">이 진화 최적 선수</span> <b>${esc(best.name)}</b>
         <small class="dim">${best.tier === 2 ? '처방 역할 Role++' : best.tier === 1 ? '처방 역할 Role+' : '처방 역할 무관(능력치만)'} · ${best.owned ? '내 구단 보유' : `미보유 · ${fmtPrice(best.price)}`} · ${best.k ? `${best.k + 1}단계째(선행 ${best.k})` : '즉시 적용'}${best.d ? ` · OVR +${best.d}` : ''}</small> ${best.rs ? scoreChip(best.rs) : ''}
         <div class="dim" style="font-size:11px;margin-top:3px"><b>적용 후</b> OVR ${best.path.ovr_before}→${best.path.ovr_after} · ${sixText(best.path.six_before, best.path.six_after)}</div></div>` : ''}
-      <div class="dim" style="font-size:12px">${esc(c.description || '')}</div>
+      ${/* ⛔ description이 해금 문구와 **같은 문장**인 진화가 있다(시즌패스 계열 전부).
+             아래 「해금 조건」 블록이 같은 걸 번역까지 달아 보여주므로 여기서는 지운다 —
+             종전엔 같은 영어 문장이 카드에 두 번 찍혔다(2026-09-22 사용자 지적). */
+        (c.description || '').trim() && (c.description || '').trim() !== (c.unlock_text || '').trim()
+          && !/^Unlocked by/i.test((c.description || '').trim())
+          ? `<div class="dim" style="font-size:12px">${esc(c.description)}</div>` : ''}
       <div class="kv" style="margin:6px 0;font-size:12px"><span>${esc(costText(c))}</span>
         ${dl != null ? `<span class="${dl <= 7 ? 'dn' : ''}">마감 ${esc(String(c.end_submission_time || c.end_time).slice(0, 10))} (${dl >= 0 ? `D-${dl}` : '지남'})</span>` : ''}
-        ${c.unlock_text ? `<span class="dim">${esc(c.unlock_text)}</span>` : ''}</div>
+        ${c.unlock_text && !/Season Pass|^Unlocked by/i.test(c.unlock_text)
+            ? `<span class="dim">${esc(c.unlock_text)}</span>` : ''}</div>
       ${unlockHow(c)}
       <div>${J(c.requirements_text, []).map(r => `<span class="req">${esc(r.label)}: ${esc(r.value)}</span>`).join('')}</div>
       <div style="margin-top:6px;font-size:12px"><b>업그레이드</b> ${J(c.total_upgrades_text, []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ') || '<span class="dim">없음(도입용)</span>'}</div>
