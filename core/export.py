@@ -471,6 +471,11 @@ def export_all(db_path=None, window="2026-summer"):
                    ts.corners_o, ts.duelpct_v, ts.fouls_v, ts.fouls_o,
                    ts.formation_v, ts.formation_o, ts.xg_source, ts.ppda_v, ts.ppda_o,
                    ts.def_x_v, ts.def_x_o,
+                   -- 수비·경합 프로필(2026-09-22 신설) — 40/40 경기에서 결손 0인데 화면이 쓰지 않고 있었다.
+                   ts.tackles_v, ts.tackles_o, ts.interceptions_v, ts.interceptions_o,
+                   ts.clearances_v, ts.clearances_o,
+                   ts.aerial_won_v, ts.aerial_att_v, ts.aerial_won_o, ts.aerial_att_o,
+                   ts.dribble_succ_v, ts.dribble_att_v, ts.dribble_succ_o, ts.dribble_att_o,
                    (SELECT MAX(pm.possession) FROM player_matches pm
                      WHERE pm.event_id=mr.event_id AND pm.team_code=mr.team_code) pm_possession
             FROM match_reports mr
@@ -486,6 +491,8 @@ def export_all(db_path=None, window="2026-summer"):
                        mpr.performance, mpr.game_implication, mpr.source, mpr.confidence,
                        pm.minutes, pm.rating, pm.started, pm.lineup_pos, pm.pos_class,
                        pm.avg_x, pm.avg_y, pm.hit_points, pm.map25, pm.xg, pm.xa,
+                       -- 국면 분리 그리드(docs/30) — 수집해 두고 화면에 한 번도 안 나왔다.
+                       pm.map25_poss, pm.map25_def, pm.phase_source,
                        pm.key_passes, pm.duels_won, pm.duels_lost, pm.tackles,
                        pm.interceptions, pm.goals, pm.assists, pm.touches,
                        pm.recoveries, pm.stats_json

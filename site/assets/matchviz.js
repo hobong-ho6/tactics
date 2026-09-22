@@ -59,7 +59,7 @@ export function timeline(r, team, W = 900){
 /* ── 2. 팀 대조 — 버터플라이. 한 행 = 한 지표, 가운데 라벨, 왼쪽 우리(주황) / 오른쪽 상대(파랑). 값은 막대 끝에 직접 라벨(행 수 ≤ 10). */
 export function butterfly(r, team, W = 560){
   const v = k => num(r[k]);
-  const rows = [
+  return bfly(r, team, W, '팀 대조', 'xG·슈팅의 어두운 안쪽 = 오픈플레이·유효슈팅', [
     { label:'점유율 %', a: v('possession'), b: v('possession') == null ? null : 100 - v('possession'), max: 100, d: 0 },
     { label:'xG', a: v('xg_v'), b: v('xg_o'), d: 2, seg: { a: v('xg_op_v'), b: v('xg_op_o'), name: '오픈플레이' } },
     { label:'슈팅', a: v('shots_v'), b: v('shots_o'), d: 0, seg: { a: v('sot_v'), b: v('sot_o'), name: '유효' } },
@@ -70,7 +70,28 @@ export function butterfly(r, team, W = 560){
     { label:'롱볼 성공/시도', a: v('long_acc_v'), b: v('long_acc_o'), d: 0, aTot: v('long_att_v'), bTot: v('long_att_o') },
     { label:'PPDA (낮을수록 강한 압박)', a: v('ppda_v'), b: v('ppda_o'), d: 2, invert: true },
     { label:'수비 액션 평균 위치', a: v('def_x_v'), b: v('def_x_o'), d: 1, max: 100 },
-  ].filter(x => x.a != null || x.b != null);
+  ]);
+}
+
+/* ── 2b. 수비·경합 프로필 (2026-09-22 신설) — 「어디서 공을 되찾았나 / 얼마나 밀렸나」.
+   PPDA·라인 높이만으로는 **압박 성공**과 **후퇴 방어**가 구분되지 않는다. 다섯 행이 그것을 가른다.
+   ⚠️⚠️ **점유 보정이 없다.** 클리어 37은 「수비를 잘했다」가 아니라 **점유 36%의 부산물**일 수 있고,
+        태클 수는 상대가 드리블을 얼마나 거는가(= 상대 스타일)의 함수다. 캡션에 그 사실을 박아 둔다.
+   ⭐ 팀 대조와 한 카드에 합치지 않는다 — 15행이 되면 460px 카드에서 막대가 뭉개진다. */
+export function duels(r, team, W = 560){
+  const v = k => num(r[k]);
+  return bfly(r, team, W, '수비 · 경합', '⚠️ 점유 보정 없음 — 점유가 낮으면 클리어·태클이 저절로 늘어난다', [
+    { label:'태클', a: v('tackles_v'), b: v('tackles_o'), d: 0 },
+    { label:'인터셉트', a: v('interceptions_v'), b: v('interceptions_o'), d: 0 },
+    { label:'클리어', a: v('clearances_v'), b: v('clearances_o'), d: 0 },
+    { label:'공중전 승/시도', a: v('aerial_won_v'), b: v('aerial_won_o'), d: 0, aTot: v('aerial_att_v'), bTot: v('aerial_att_o') },
+    { label:'드리블 성공/시도', a: v('dribble_succ_v'), b: v('dribble_succ_o'), d: 0, aTot: v('dribble_att_v'), bTot: v('dribble_att_o') },
+  ]);
+}
+
+/* 버터플라이 렌더러 — 팀 대조와 수비·경합이 공유한다(같은 모양이면 같은 코드로 그린다). */
+function bfly(r, team, W, title, note, rows0){
+  const rows = rows0.filter(x => x.a != null || x.b != null);
   if (!rows.length) return '';
   const rowH = 28, top = 22, H = top + rows.length * rowH + 8, C = W / 2, span = Math.max(90, C - 60 - 64), bar = 13;   // 가운데 라벨 폭 120 + 값 라벨 여백
   const svgRows = rows.map((x, i) => {
@@ -92,9 +113,148 @@ export function butterfly(r, team, W = 560){
         ${x.bTot != null ? seg('b', x.b, x.bTot, THEM) : ''}${x.seg?.b != null ? seg('b', x.seg.b, x.b, 'rgba(0,0,0,.35)') : ''}
         <text x="${C + 66 + Math.max(wb, 0) + 4}" y="${y + 12}" class="sm">${lb}</text></g></g>`;
   }).join('');
-  return `<div class="vz"><h4>팀 대조 <span class="dim">— 왼쪽 ${esc(team)} · 오른쪽 ${esc(r.opponent || '상대')}. xG·슈팅의 어두운 안쪽 = 오픈플레이·유효슈팅</span></h4>
-    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="팀 스탯 대조"><line x1="${C}" x2="${C}" y1="${top - 6}" y2="${H - 6}" stroke="${GRID}"/>${svgRows}</svg>
+  return `<div class="vz"><h4>${esc(title)} <span class="dim">— 왼쪽 ${esc(team)} · 오른쪽 ${esc(r.opponent || '상대')}. ${esc(note)}</span></h4>
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(title)}"><line x1="${C}" x2="${C}" y1="${top - 6}" y2="${H - 6}" stroke="${GRID}"/>${svgRows}</svg>
     <div class="lg"><span><i style="background:${US}"></i>${esc(team)}</span><span><i style="background:${THEM}"></i>${esc(r.opponent || '상대')}</span><span><i style="background:${US};opacity:.35"></i>시도(연한) / 성공(진한)</span></div></div>`;
+}
+
+/* ── 6. 결정력 — xG → xGOT → 실득점 (2026-09-22 신설).
+   「기회를 못 만든 경기」와 「마무리·선방에서 갈린 경기」를 가른다. 한 줄에 세 점을 놓아
+   만든 기회의 질(xG) → 골문에 도달한 시점의 질(xGOT) → 결과(득점)를 눈으로 잇는다.
+   ⛔⛔ **유효슛을 `outcome`으로 판정하지 말 것.** FotMob 행은 **블록슛까지 `save`로 접어** 둔다
+        (5경기 표본: save 62건 중 43건이 xgot=0). ⇒ **`xgot > 0`이 유효슛**이고, 7경기에서
+        그 개수가 `team_match_stats.sot`와 정확히 일치하는 것으로 검증했다.
+   ⚠️ `xgot = 0`은 결손이 아니라 **「유효슛이 아님」의 확정값**이다. 결손은 `null`(12경기 전량).
+   ⚠️ xGOT−xG는 **슈터의 마무리**지 우리 GK 성적이 아니다 — GK 축은 「상대 xGOT − 실점」으로 따로 적는다. */
+export function finishing(r, team, W = 560){
+  const S = (r.shots || []).filter(s => s.xgot != null);
+  if (!S.length) return `<div class="vz"><h4>결정력</h4><span class="dim" style="font-size:12px">xGOT 미수집 — 제공사가 슛별 xGOT를 주지 않은 회차다(결손이지 0이 아니다).</span></div>`;
+  const agg = side => { const on = S.filter(s => s.side === side && s.xgot > 0);
+    return { sot: on.length, xg: on.reduce((t, s) => t + (num(s.xg) || 0), 0),
+             xgot: on.reduce((t, s) => t + num(s.xgot), 0),
+             goals: S.filter(s => s.side === side && s.outcome === 'goal').length }; };
+  const A = agg('v'), B = agg('o');
+  const maxX = Math.max(A.xgot, B.xgot, A.xg, B.xg, 0.5) * 1.15;
+  const H = 330, L = 74, R = 58, T = 40, rowY = [T + 62, T + 176];   // 460px 카드를 채우는 비율
+  const x = v => L + (W - L - R) * (v / maxX);
+  const ticks = [0, maxX / 2, maxX].map(v =>
+    `<line x1="${x(v)}" x2="${x(v)}" y1="${T}" y2="${H - 46}" stroke="${GRID}"/><text x="${x(v)}" y="${H - 30}" text-anchor="middle" class="dim sm">${v.toFixed(1)}</text>`).join('');
+  const line = (d, y, col, name) => {
+    const gain = d.xgot - d.xg;
+    const tip = `${name} · 유효슛 ${d.sot} · xG ${fmt(d.xg, 2)} → xGOT ${fmt(d.xgot, 2)} (마무리 ${gain >= 0 ? '+' : ''}${fmt(gain, 2)}) → 득점 ${d.goals}`;
+    return `<g class="hit" data-tip="${esc(tip)}">
+      <text x="${L - 8}" y="${y + 4}" text-anchor="end" class="dim sm">${esc(name)}</text>
+      <line x1="${x(Math.min(d.xg, d.xgot))}" x2="${x(Math.max(d.xg, d.xgot))}" y1="${y}" y2="${y}" stroke="${col}" stroke-width="4" opacity=".5"/>
+      <circle cx="${x(d.xg)}" cy="${y}" r="8" fill="${SURF}" stroke="${col}" stroke-width="2"/>
+      <circle cx="${x(d.xgot)}" cy="${y}" r="8" fill="${col}"/>
+      <line x1="${x(d.goals)}" x2="${x(d.goals)}" y1="${y - 18}" y2="${y + 18}" stroke="var(--fg)" stroke-width="2"/>
+      <text x="${x(d.xg)}" y="${y - 16}" text-anchor="middle" class="sm">${fmt(d.xg, 2)}</text>
+      <text x="${x(d.xgot)}" y="${y + 25}" text-anchor="middle" class="sm"><tspan font-weight="700">${fmt(d.xgot, 2)}</tspan></text>
+      <text x="${W - R + 6}" y="${y + 4}" class="sm"><tspan font-weight="700">${d.goals}골</tspan></text></g>`;
+  };
+  const gain = A.xgot - A.xg, gk = B.xgot - B.goals;
+  return `<div class="vz"><h4>결정력 <span class="dim">— 빈 원 xG → 채운 원 xGOT → 세로선 실득점. 유효슛만(xGOT&gt;0)</span></h4>
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="결정력">${ticks}
+      ${line(A, rowY[0], US, team)}${line(B, rowY[1], THEM, r.opponent || '상대')}</svg>
+    <div class="lg"><span><b>${esc(team)} 마무리 ${gain >= 0 ? '+' : ''}${fmt(gain, 2)}</b> (xGOT−xG · 슈터 축)</span>
+      <span>GK 선방 기여 <b>${fmt(gk, 2)}</b> (상대 xGOT ${fmt(B.xgot, 2)} − 실점 ${B.goals} · <b>다른 지표다</b>)</span></div></div>`;
+}
+
+/* ── 7. 슛 상황 분해 (2026-09-22 신설) — 슛·xG가 오픈플레이·세트피스·역습·PK 중 어디서 나왔나.
+   「세트피스로 먹고사는가」를 경기 단위로 닫는다(에메리·시메오네 축의 핵심 질문).
+   ⚠️⚠️ **어휘가 정규화되어 있지 않다** — 한 컬럼에 제공사 두 계열이 섞여 16종이 관측된다
+        (`corner`/`FromCorner` · `regular`/`RegularPlay` · `fast-break`/`FastBreak` …).
+        ⇒ 소문자화 + 구분자 제거 후 매핑한다. `assisted`는 SofaScore의 **오픈플레이 어시스트 슛**이라
+        `regular`와 같은 칸이다(따로 세면 오픈플레이가 쪼개져 세트피스 비중이 부풀어 보인다).
+   ⚠️ 슛당 평균 xG는 n=1~3에서 무의미하다 — **총합만** 쓴다. */
+const SIT_KEY = s => { const k = String(s || '').toLowerCase().replace(/[-_ ]/g, '');
+  return /penalty/.test(k) ? 'pk' : /corner|setpiece|freekick|throwin/.test(k) ? 'set'
+       : /fastbreak|counter/.test(k) ? 'tr' : 'op'; };
+const SIT_NAME = { op:'오픈플레이', set:'세트피스', tr:'역습', pk:'페널티' };
+const SIT_ORDER = ['op', 'set', 'tr', 'pk'];
+export function shotSituations(r, team, W = 560){
+  const S = r.shots || []; if (!S.length) return '';
+  const hasXg = S.some(s => s.xg != null);
+  const side = sd => { const arr = S.filter(s => s.side === sd);
+    return { n: arr.length, parts: SIT_ORDER.map(k => { const g = arr.filter(s => SIT_KEY(s.situation) === k);
+      return { k, n: g.length, xg: g.reduce((t, s) => t + (num(s.xg) || 0), 0) }; }).filter(p => p.n) }; };
+  const A = side('v'), B = side('o');
+  if (!A.n && !B.n) return '';
+  const H = 330, L = 74, R = 24, T = 40, barH = 72, rowY = [T + 24, T + 164];   // 460px 카드를 채우는 비율
+  const span = W - L - R;
+  const COL = { op:.95, set:.62, tr:.38, pk:.2 };      // 같은 팀색의 밝기 단계 — 시리즈색은 팀이 정한다
+  const bar = (d, y, col, name) => {
+    if (!d.n) return `<text x="${L}" y="${y + 20}" class="dim sm">슛 없음</text>`;
+    let cx = L;
+    const segs = d.parts.map(p => { const w = span * (p.n / d.n); const x0 = cx; cx += w;
+      const tip = `${name} · ${SIT_NAME[p.k]} ${p.n}슛 (슛 ${Math.round(p.n / d.n * 100)}%)` + (hasXg ? ` · xG ${fmt(p.xg, 2)}` : '');
+      /* ⭐ 안쪽 진한 띠 = 그 칸의 **xG 몫**. 높이를 팀 총 xG 대비 비율로 잡으면
+         「폭(슛 비중) vs 높이(xG 비중)」가 바로 비교된다 — 띠가 폭보다 높으면 **기회의 질이 좋았던 칸**이다.
+         ⛔ 최댓값 기준으로 정규화하면 1등 칸이 늘 꽉 차 「100%」로 오독된다. */
+      const xgTot = d.parts.reduce((t, q) => t + q.xg, 0);
+      const xgH = hasXg && xgTot > 0 ? barH * (p.xg / xgTot) : 0;
+      return `<g class="hit" data-tip="${esc(tip)}">
+        <rect x="${x0}" y="${y}" width="${Math.max(0, w - 1.5)}" height="${barH}" rx="3" fill="${col}" opacity="${COL[p.k]}"/>
+        ${xgH ? `<rect x="${x0}" y="${y + barH - xgH}" width="${Math.max(0, w - 1.5)}" height="${xgH}" fill="rgba(0,0,0,.34)"/>` : ''}
+        ${w > 34 ? `<text x="${x0 + w / 2}" y="${y + barH / 2 + 4}" text-anchor="middle" class="sm">${p.n}</text>` : ''}</g>`; }).join('');
+    return `<text x="${L - 8}" y="${y + barH / 2 + 4}" text-anchor="end" class="dim sm">${esc(name)}</text>${segs}
+      <text x="${L}" y="${y - 5}" class="dim sm">${d.n}슛${hasXg ? ` · xG ${fmt(d.parts.reduce((t, p) => t + p.xg, 0), 2)}` : ''}</text>`;
+  };
+  const lg = SIT_ORDER.map(k => `<span><i style="background:${US};opacity:${COL[k]}"></i>${SIT_NAME[k]}</span>`).join('');
+  return `<div class="vz"><h4>슛이 나온 상황 <span class="dim">— 막대 길이 = 슛 비중${hasXg ? ' · 아래 어두운 띠 높이 = xG 비중 (띠가 폭보다 높으면 질 좋은 기회)' : ' · ⚠️ 이 회차는 슛별 xG 미제공'}</span></h4>
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="슛 상황 분해">
+      ${bar(A, rowY[0], US, team)}${bar(B, rowY[1], THEM, r.opponent || '상대')}</svg>
+    <div class="lg">${lg}</div></div>`;
+}
+
+/* ── 8. 스코어 국면별 xG 레이트 (2026-09-22 신설) — 「리드하면 내려앉는가」를 수치로.
+   타임라인이 국면 띠는 그리지만 **수치가 없어** 「내려앉았다」가 늘 인상 평가였다.
+   ⚠️⚠️ 국면이 짧으면 분당 값이 폭발한다 ⇒ **구간 분(n)을 항상 병기하고 15분 미만은 흐리게** 처리한다.
+   ⚠️ 리드 구간의 낮은 xG는 전술 선택일 수도, 상대가 몰아쳐 공을 못 잡은 결과일 수도 있다 — 점유와 함께 읽는다.
+   ⭐ 국면은 `player_matches.stats_json`의 phase_* 가 아니라 **`match_events`에서 다시 만든다**
+      (phase_*는 리포트 38~45에만 있고 최근 회차엔 없다 — events 쪽이 커버리지가 넓다). */
+export function scoreStateXg(r, team, W = 560){
+  const ev = (r.events || []).filter(e => /goal$/.test(e.kind) && e.score_v != null).sort((a, b) => a.minute - b.minute);
+  const shots = (r.shots || []).filter(s => s.xg != null);
+  if (!shots.length) return '';
+  const end = Math.max(90, ...(r.events || []).map(e => e.minute), ...shots.map(s => s.minute));
+  const segs = []; let sv = 0, so = 0, from = 0;
+  const st = () => sv > so ? 'lead' : sv < so ? 'trail' : 'level';
+  for (const e of ev){ segs.push({ s: st(), a: from, b: e.minute }); sv = e.score_v; so = e.score_o; from = e.minute; }
+  segs.push({ s: st(), a: from, b: end });
+  const B = { lead: { min: 0, v: 0, o: 0 }, level: { min: 0, v: 0, o: 0 }, trail: { min: 0, v: 0, o: 0 } };
+  for (const g of segs) B[g.s].min += Math.max(0, g.b - g.a);
+  for (const s of shots){ const g = segs.find(q => s.minute >= q.a && s.minute < q.b) || segs[segs.length - 1];
+    B[g.s][s.side] += num(s.xg); }
+  const keys = ['lead', 'level', 'trail'].filter(k => B[k].min > 0);
+  if (keys.length < 2) return '';        // 한 국면뿐이면 비교가 아니다
+  const NAME = { lead:'리드', level:'동점', trail:'열세' };
+  const rate = (k, sd) => B[k].min ? B[k][sd] / B[k].min * 10 : 0;     // 10분당 xG
+  const maxY = Math.max(0.1, ...keys.flatMap(k => [rate(k, 'v'), rate(k, 'o')])) * 1.2;
+  const H = 210, T = 26, base = H - 44, L = 40, R = 16;
+  const totalMin = keys.reduce((t, k) => t + B[k].min, 0);
+  let cx = L; const inner = W - L - R;
+  const groups = keys.map(k => {
+    const gw = inner * (B[k].min / totalMin), x0 = cx; cx += gw;
+    const thin = B[k].min < 15;
+    const bw = Math.min(26, Math.max(10, gw / 2 - 8));
+    const h = v => (base - T) * (v / maxY);
+    const one = (sd, col, off) => { const v = rate(k, sd), hh = h(v);
+      return `<g class="hit" data-tip="${esc(`${NAME[k]} 구간 ${B[k].min}분 · ${sd === 'v' ? team : (r.opponent || '상대')} xG ${fmt(B[k][sd], 2)} = 10분당 ${fmt(v, 2)}${thin ? ' ⚠️ 15분 미만 표본' : ''}`)}">
+        <rect x="${x0 + gw / 2 + off}" y="${base - hh}" width="${bw}" height="${Math.max(0, hh)}" rx="3" fill="${col}" fill-opacity="${thin ? .35 : 1}"/>
+        <text x="${x0 + gw / 2 + off + bw / 2}" y="${base - hh - 4}" text-anchor="middle" class="sm">${fmt(v, 2)}</text></g>`; };
+    return `<g>${one('v', US, -bw - 2)}${one('o', THEM, 2)}
+      <text x="${x0 + gw / 2}" y="${base + 15}" text-anchor="middle" class="dim sm">${NAME[k]}</text>
+      <text x="${x0 + gw / 2}" y="${base + 27}" text-anchor="middle" class="dim sm">${B[k].min}분${thin ? ' ⚠️' : ''}</text>
+      <line x1="${x0}" x2="${x0}" y1="${T}" y2="${base}" stroke="${GRID}"/></g>`;
+  }).join('');
+  return `<div class="vz"><h4>스코어 국면별 xG <span class="dim">— 막대 폭이 아니라 <b>높이</b>가 10분당 xG · 구간 폭 ∝ 그 국면 지속 분</span></h4>
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="스코어 국면별 xG">
+      <line x1="${L}" x2="${W - R}" y1="${base}" y2="${base}" stroke="var(--line)"/>
+      <text x="${L - 6}" y="${T + 8}" text-anchor="end" class="dim sm">${maxY.toFixed(1)}</text>
+      <text x="${L - 6}" y="${base + 3}" text-anchor="end" class="dim sm">0</text>${groups}</svg>
+    <div class="lg"><span><i style="background:${US}"></i>${esc(team)}</span><span><i style="background:${THEM}"></i>${esc(r.opponent || '상대')}</span>
+      <span>⚠️ 15분 미만 구간은 흐리게 — 분당 값이 튄다</span></div></div>`;
 }
 
 /* ── 3. 하프 비교 — 전·후반 xG(그룹 막대)와 점유(미터). 분리 표본이 없으면 그리지 않는다. */
@@ -227,13 +387,22 @@ export function playerRows(r, team, W = 900){
    ⭐ SVG는 컨테이너 픽셀 폭으로 그린다(viewBox 확대 금지 — 넓은 화면에서 글자·점이 비대해진다). 창 크기가 바뀌면 다시 그린다. */
 export function renderMatchViz(el, r, team){
   el.className = 'mviz';
-  el.innerHTML = '<div class="vz wide" data-k="t"></div><div class="vz" data-k="x"></div><div class="vz" data-k="s"></div><div class="vz" data-k="b"></div><div class="vz" data-k="h"></div><div class="tip" hidden></div>';
+  /* 순서 = 읽는 순서다: 흐름(타임라인) → 기회의 양(xG 레이스·슛 맵) → 기회의 질(결정력·상황) →
+     국면(스코어 국면·하프) → 팀 대조 → 수비·경합. ⛔ 원자료가 없는 카드는 draw()가 숨긴다. */
+  el.innerHTML = ['t|wide','x','s','f','q','c','h','b','d']
+    .map(k => `<div class="vz${k.includes('|wide') ? ' wide' : ''}" data-k="${k[0]}"></div>`).join('')
+    + '<div class="tip" hidden></div>';
   const tip = el.querySelector('.tip');
   const draw = () => {
     for (const box of el.querySelectorAll('.vz')){
       const w = Math.max(320, Math.floor(box.clientWidth - 26));      // 패널 패딩 12×2 + 테두리
       const k = box.dataset.k;
-      const html = k === 't' ? timeline(r, team, Math.min(w, 1240)) : k === 'x' ? xgRace(r, team, Math.min(w, 720)) : k === 's' ? shotMap(r, team, Math.min(w, 720)) : k === 'b' ? butterfly(r, team, Math.min(w, 720)) : halves(r, team, Math.min(w, 720));
+      const w2 = Math.min(w, 720);
+      const html = k === 't' ? timeline(r, team, Math.min(w, 1240))
+        : k === 'x' ? xgRace(r, team, w2) : k === 's' ? shotMap(r, team, w2)
+        : k === 'f' ? finishing(r, team, w2) : k === 'q' ? shotSituations(r, team, w2)
+        : k === 'c' ? scoreStateXg(r, team, w2) : k === 'h' ? halves(r, team, w2)
+        : k === 'b' ? butterfly(r, team, w2) : duels(r, team, w2);
       // 각 함수는 <div class="vz …">…</div> 래퍼를 돌려준다 → 안쪽만 옮긴다
       const tmp = document.createElement('div'); tmp.innerHTML = html;
       const inner = tmp.firstElementChild;

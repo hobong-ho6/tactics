@@ -157,6 +157,11 @@ details.match-players>summary,details.report-source>summary{color:var(--acc);cur
 .mini-map{display:grid;grid-template-columns:repeat(5,13px);grid-template-rows:repeat(5,13px);gap:2px;
   align-self:start;padding:4px;border-radius:6px;background:#0a1118}
 .mini-map i{display:block;border-radius:2px;background:rgba(255,138,61,calc(.08 + var(--heat) * .92))}
+/* 국면 분리 그리드 — 전체·보유·비점유 3장을 나란히. 좁으면 줄바꿈된다. */
+.phase-maps{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start}
+.phase-maps-h{font-size:10px;color:var(--dim);font-weight:700;margin-bottom:3px;letter-spacing:.04em}
+.phase-maps.thin{opacity:.4}
+.phase-maps-w{flex-basis:100%;font-size:10.5px;color:var(--warn)}
 .statline{display:flex;gap:6px;flex-wrap:wrap;margin:7px 0}
 .statline span{border:1px solid var(--line);border-radius:6px;padding:2px 6px;white-space:nowrap}
 .statline small{margin-right:2px}

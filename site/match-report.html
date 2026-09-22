@@ -127,6 +127,21 @@ function miniMap(map25){
     const v=c==='X'?10:Number(c)||0; return `<i style="--heat:${v/10}" title="${v}"></i>`;
   }).join('')}</div>`;
 }
+/* ⭐ 국면 분리 그리드 (2026-09-22 신설) — docs/30이 정해 둔 축인데 화면에 한 번도 나오지 않았다.
+   map25(터치 총합)는 **공수를 섞어** 놓아 「높이 섰다」와 「내려와 막았다」가 한 장에 뭉개진다.
+   ⇒ 보유·비점유를 따로 그려 그 둘을 가른다.
+   ⚠️ 원자료가 없는 경기가 많다(2026-09-08 이후 수집분만) — **없으면 없다고 쓴다**(0으로 만들지 않는다).
+   ⚠️ `hit_points < 15`면 그리드 자체가 무효다(docs/30 ③) — 흐리게 하고 배지를 단다.
+   ⛔ `phase_source`가 다른 경기끼리 비교하지 않는다(Opta 이벤트 재분류 실증). */
+function phaseMaps(p){
+  const thin = p.hit_points != null && p.hit_points < 15;
+  const g = [['전체', p.map25], ['보유', p.map25_poss], ['비점유', p.map25_def]]
+    .filter(([, m]) => m && m.length === 25);
+  if (g.length < 2) return miniMap(p.map25);          // 국면 원자료가 없으면 종전 한 장 그대로
+  return `<div class="phase-maps${thin ? ' thin' : ''}">${g.map(([t, m]) =>
+      `<div><div class="phase-maps-h">${t}</div>${miniMap(m)}</div>`).join('')}
+    ${thin ? `<div class="phase-maps-w">접점 ${p.hit_points ?? 0}포인트 — 판독 불가(15 미만)</div>` : ''}</div>`;
+}
 function teamStatRows(r){
   const rows = [
     ['포메이션',r.formation_v,r.formation_o],['점유율',r.possession != null ? `${r.possession}%` : null,
@@ -389,7 +404,7 @@ function render(r){
   const pcard = p=>`<details class="player-report" data-pid="${p.player_id ?? ''}">
     <summary><span class="badge ${p.started?'hi':'mid'}">${p.started?'선발':'교체'}</span> <b>${esc(p.position)}</b> ${esc(p.label)} · ${annotate(esc(p.tactical_role))}
       <span class="dim">${esc(p.minutes ?? '—')}분 / ${esc(p.rating ?? '—')}</span></summary>
-    <div class="player-report-body">${miniMap(p.map25)}<div>
+    <div class="player-report-body">${phaseMaps(p)}<div>
       <div class="kv"><b>특성</b></div>${prose(p.characteristics)}
       <div class="kv"><b>경기 평가</b></div>${prose(p.performance)}
       <div class="kv"><b>FC 구현</b></div>${prose(p.game_implication)}${statsTable(p)}
