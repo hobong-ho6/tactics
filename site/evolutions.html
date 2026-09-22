@@ -163,9 +163,21 @@ function roleScore(pres, upgradesJson){
   const w = pres && KEYW[pres.role_id]; const up = J(upgradesJson, {}) || {};
   if (!w) return { score: 0, top: [], known: false };
   const parts = Object.entries(up).filter(([a, d]) => w[a] && d).map(([a, d]) => ({ a, d, s: w[a] * d })).sort((x, y) => y.s - x.s);
-  return { score: parts.reduce((t, x) => t + x.s, 0), top: parts.slice(0, 3), known: true };
+  return { score: parts.reduce((t, x) => t + x.s, 0), top: parts.slice(0, 3), n: parts.length, known: true };
 }
-const scoreChip = r => r.known ? `<span class="chip"${r.score > 0 ? ' style="border-color:var(--ok);color:var(--ok)"' : ' dim'} title="${esc(r.top.map(x => `${x.a} +${x.d}×${x.s / x.d}`).join(' · '))}">역할 가중 ${r.score > 0 ? '+' : ''}${r.score}${r.top.length ? ` <small>(${esc(r.top.map(x => `${x.a} +${x.d}`).join(' · '))})</small>` : ''}</span>` : '';
+/* ⛔⛔ 괄호 안은 **가중을 곱한 뒤**로 적는다(2026-09-22 사용자 지적 「13은 스탯을 더한 값이 아니네?」).
+   종전엔 머리 숫자가 **가중합**인데 괄호는 **원 Δ**를 적어 눈으로 더하면 안 맞았다
+   (잭슨 Striker Glow Up: 머리 13 ↔ 괄호 6+2+3=11. 실제는 6×1 + 2×2 + 3×1 = 13).
+   ⇒ `+Δ×가중` 꼴로 보여 **읽는 사람이 직접 검산할 수 있게** 한다.
+   ⚠️ 기여 항목이 3개를 넘으면 나머지를 「+N개 더」로 밝힌다 — 안 적으면 상위 3개만으로는
+      여전히 합이 안 맞아 같은 의심을 부른다. */
+const scoreChip = (r) => { if (!r.known) return '';
+  const rest = (r.n ?? r.top.length) - r.top.length;
+  const body = r.top.map(x => `${x.a} +${x.d}×${x.s / x.d}`).join(' · ') + (rest > 0 ? ` +${rest}개 더` : '');
+  const tip = `역할 가중 점수 = Σ(그 역할의 핵심 속성 가중 × 속성 상승분).\n` +
+    r.top.map(x => `${x.a}: +${x.d} × 가중 ${x.s / x.d} = ${x.s}`).join('\n') +
+    (rest > 0 ? `\n(그 밖에 ${rest}개 항목)` : '') + `\n합계 ${r.score}`;
+  return `<span class="chip"${r.score > 0 ? ' style="border-color:var(--ok);color:var(--ok)"' : ' dim'} title="${esc(tip)}">역할 가중 ${r.score > 0 ? '+' : ''}${r.score}${r.top.length ? ` <small>(${esc(body)})</small>` : ''}</span>`; };
 const presLabel = pres => pres ? `${esc(ROLE_KR[pres.role_id] || pres.role_id)} <small class="dim">${esc(pres.pos_label ?? '')} ${esc(pres.focus ?? '')}</small>` : '<span class="dim">처방 없음</span>';
 
 /* 단계 카드 — step 0은 적용 전 기준 카드 */
