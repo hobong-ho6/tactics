@@ -436,6 +436,34 @@
    "allowed_prior_ids": "[]",
    "category": null,
    "coins_cost": 0,
+   "created_at": "2026-09-15T20:19:42.665247Z",
+   "description": "Welcome to Evolutions in FC 27! Upgrade a player of your choice and unlock their first attribute boost.",
+   "end_submission_time": "2027-09-30T00:00:00Z",
+   "end_time": "2027-09-30T00:00:00Z",
+   "evo_id": 2491,
+   "game_version": "FC27",
+   "is_expired": 0,
+   "is_gk": 0,
+   "is_reward": 0,
+   "is_timed": 0,
+   "levels": "[{\"idx\": 1, \"game\": \"27\", \"challenges\": [\"Play 3 matches in any mode using your active EVO player in game.\"], \"upgrades\": [{\"upgrade\": \"overall\", \"value\": 34, \"maxValue\": 79, \"guidAssetId\": null}, {\"upgrade\": \"attribute_sprint_speed\", \"value\": 40, \"maxValue\": 80, \"guidAssetId\": null}, {\"upgrade\": \"attribute_short_passing\", \"value\": 40, \"maxValue\": 76, \"guidAssetId\": null}, {\"upgrade\": \"attribute_balance\", \"value\": 40, \"maxValue\": 77, \"guidAssetId\": null}, {\"upgrade\": \"attribute_interceptions\", \"value\": 40, \"maxValue\": 76, \"guidAssetId\": null}, {\"upgrade\": \"attribute_sliding_tackle\", \"value\": 40, \"maxValue\": 75, \"guidAssetId\": null}], \"upgradeOptions\": [], \"totalUpgradesText\": [{\"label\": \"Overall\", \"value\": \"+34\", \"maxValue\": \"(^79)\"}, {\"label\": \"Sprint Speed\", \"value\": \"+40\", \"maxValue\": \"(^80)\"}, {\"label\": \"Short Passing\", \"value\": \"+40\", \"maxValue\": \"(^76)\"}, {\"label\": \"Balance\", \"value\": \"+40\", \"maxValue\": \"(^77)\"}, {\"label\": \"Interceptions\", \"value\": \"+40\", \"maxValue\": \"(^76)\"}, {\"label\": \"Sliding Tackle\", \"value\": \"+40\", \"maxValue\": \"(^75)\"}], \"timedCustom\": null, \"multiplier\": 3, \"hasUpgradeChoices\": false, \"readableTrainingTime\": \"3 seconds\", \"totalUpgrades\": [{\"upgrade\": \"overall\", \"value\": 34, \"maxValue\": 79, \"guidAssetId\": null}, {\"upgrade\": \"attribute_sprint_speed\", \"value\": 40, \"maxValue\": 80, \"guidAssetId\": null}, {\"upgrade\": \"attribute_short_passing\", \"value\": 40, \"maxValue\": 76, \"guidAssetId\": null}, {\"upgrade\": \"attribute_balance\", \"value\": 40, \"maxValue\": 77, \"guidAssetId\": null}, {\"upgrade\": \"attribute_interceptions\", \"value\": 40, \"maxValue\": 76, \"guidAssetId\": null}, {\"upgrade\": \"attribute_sliding_tackle\", \"value\": 40, \"maxValue\": 75, \"guidAssetId\": null}]}, {\"idx\": 2, \"game\": \"27\", \"challenges\": [\"Play 2 matches in any mode using your active EVO player in game.\"], \"upgrades\": [{\"upgrade\": \"play_style\", \"value\": 14, \"maxValue\": 3, \"guidAssetId\": null}, {\"upgrade\": \"attribute_vision\", \"value\": 40, \"maxValue\": 75, \"guidAssetId\": null}, {\"upgrade\": \"attribute_curve\", \"value\": 40, \"maxValue\": 80, \"guidAssetId\": null}, {\"upgrade\": \"attribute_ball_control\", \"value\": 40, \"maxValue\": 80, \"guidAssetId\": null}, {\"upgrade\": \"attribute_defensive_awareness\", \"value\": 40, \"maxValue\": 77, \"guidAssetId\": null}, {\"upgrade\": \"attribute_stamina\", \"value\": 40, \"maxValue\": 80, \"guidAssetId\": null}], \"upgradeOptions\": [], \"totalUpgradesText\": [{\"label\": \"PlayStyle\", \"value\": \"Slide Tackle\", \"maxValue\": \"(^3)\"}, {\"label\": \"Vision\", \"value\": \"+40\", \"maxValue\": \"(^75)\"}, {\"label\": \"Curve\", \"value\": \"+40\", \"maxValue\": \"(^80)\"}, {\"label\": \"Ball Control\", \"value\": \"+40\", \"maxValue\": \"(^80)\"}, {\"label\": \"Defensive Awareness\", \"value\": \"+40\", \"maxValue\": \"(^77)\"}, {\"label\": \"Stamina\", \"value\": \"+40\", \"maxValue\": \"(^80)\"}], \"timedCustom\": null, \"multiplier\": 2, \"hasUpgradeChoices\": false, \"readableTrainingTime\": \"2 seconds\", \"totalUpgrades\": [{\"upgrade\": \"play_style\", \"value\": 14, \"maxValue\": 3, \"guidAssetId\": null}, {\"upgrade\": \"attribute_vision\", \"value\": 40, \"maxValue\": 75, \"guidAssetId\": null}, {\"upgrade\": \"attribute_curve\", \"value\": 40, \"maxValue\": 80, \"guidAssetId\": null}, {\"upgrade\": \"attribute_ball_control\", \"value\": 40, \"maxValue\": 80, \"guidAssetId\": null}, {\"upgrade\": \"attribute_defensive_awareness\", \"value\": 40, \"maxValue\": 77, \"guidAssetId\": null}, {\"upgrade\": \"attribute_stamina\", \"value\": 40, \"maxValue\": 80, \"guidAssetId\": null}]}, {\"idx\": 3, \"game\": \"27\", \"challenges\": [\"Play 2 matches in any mode using your active EVO player in game.\"], \"upgrades\": [{\"upgrade\": \"attribute_acceleration\", \"value\": 40, \"maxValue\": 80, \"guidAssetId\": null}, {\"upgrade\": \"attribute_crossing\", \"value\": 40, \"maxValue\": 78, \"guidAssetId\": null}, {\"upgrade\": \"attribute_agility\", \"value\": 40, \"maxValue\": 78, \"guidAssetId\": null}, {\"upgrade\": \"attribute_dribbling\", \"value\": 40, \"maxValue\": 80, \"guidAssetId\": null}, {\"upgrade\": \"attribute_standing_tackle\", \"value\": 40, \"maxValue\": 78, \"guidAssetId\": null}, {\"upgrade\": \"role_plus\", \"value\": 5, \"maxValue\": null, \"guidAssetId\": null}], \"upgradeOptions\": [], \"totalUpgradesText\": [{\"label\": \"Role+\", \"value\": \"RB Wingback+\", \"maxValue\": null}, {\"label\": \"Acceleration\", \"value\": \"+40\", \"maxValue\": \"(^80)\"}, {\"label\": \"Crossing\", \"value\": \"+40\", \"maxValue\": \"(^78)\"}, {\"label\": \"Agility\", \"value\": \"+40\", \"maxValue\": \"(^78)\"}, {\"label\": \"Dribbling (attr.)\", \"value\": \"+40\", \"maxValue\": \"(^80)\"}, {\"label\": \"Standing Tackle\", \"value\": \"+40\", \"maxValue\": \"(^78)\"}], \"timedCustom\": null, \"multiplier\": 2, \"hasUpgradeChoices\": false, \"readableTrainingTime\": \"2 seconds\", \"totalUpgrades\": [{\"upgrade\": \"role_plus\", \"value\": 5, \"maxValue\": null, \"guidAssetId\": null}, {\"upgrade\": \"attribute_acceleration\", \"value\": 40, \"maxValue\": 80, \"guidAssetId\": null}, {\"upgrade\": \"attribute_crossing\", \"value\": 40, \"maxValue\": 78, \"guidAssetId\": null}, {\"upgrade\": \"attribute_agility\", \"value\": 40, \"maxValue\": 78, \"guidAssetId\": null}, {\"upgrade\": \"attribute_dribbling\", \"value\": 40, \"maxValue\": 80, \"guidAssetId\": null}, {\"upgrade\": \"attribute_standing_tackle\", \"value\": 40, \"maxValue\": 78, \"guidAssetId\": null}]}]",
+   "name": "Intro to Evolutions",
+   "number_of_players": 3819,
+   "points_cost": 0,
+   "pulled": "2026-09-22",
+   "repeatability": 1,
+   "requirements_text": "[{\"label\": \"Max Pos.\", \"value\": \"2\"}, {\"label\": \"Overall\", \"value\": \"Max. 75\"}, {\"label\": \"Position\", \"value\": \"RB\"}, {\"label\": \"Excluded Position\", \"value\": \"CB\"}, {\"label\": \"Max PS\", \"value\": \"7\"}, {\"label\": \"Pace\", \"value\": \"Max. 80\"}]",
+   "slug": "2491-intro-to-evolutions",
+   "token_cost": 0,
+   "total_upgrades_text": "[{\"label\": \"Role+\", \"value\": \"RB Wingback+\", \"maxValue\": null}, {\"label\": \"PlayStyle\", \"value\": \"Slide Tackle\", \"maxValue\": \"(^3)\"}, {\"label\": \"Overall\", \"value\": \"+34\", \"maxValue\": \"(^79)\"}, {\"label\": \"Sprint Speed\", \"value\": \"+40\", \"maxValue\": \"(^80)\"}, {\"label\": \"Short Passing\", \"value\": \"+40\", \"maxValue\": \"(^76)\"}, {\"label\": \"Balance\", \"value\": \"+40\", \"maxValue\": \"(^77)\"}, {\"label\": \"Interceptions\", \"value\": \"+40\", \"maxValue\": \"(^76)\"}, {\"label\": \"Sliding Tackle\", \"value\": \"+40\", \"maxValue\": \"(^75)\"}, {\"label\": \"Vision\", \"value\": \"+40\", \"maxValue\": \"(^75)\"}, {\"label\": \"Curve\", \"value\": \"+40\", \"maxValue\": \"(^80)\"}, {\"label\": \"Ball Control\", \"value\": \"+40\", \"maxValue\": \"(^80)\"}, {\"label\": \"Defensive Awareness\", \"value\": \"+40\", \"maxValue\": \"(^77)\"}, {\"label\": \"Stamina\", \"value\": \"+40\", \"maxValue\": \"(^80)\"}, {\"label\": \"Acceleration\", \"value\": \"+40\", \"maxValue\": \"(^80)\"}, {\"label\": \"Crossing\", \"value\": \"+40\", \"maxValue\": \"(^78)\"}, {\"label\": \"Agility\", \"value\": \"+40\", \"maxValue\": \"(^78)\"}, {\"label\": \"Dribbling (attr.)\", \"value\": \"+40\", \"maxValue\": \"(^80)\"}, {\"label\": \"Standing Tackle\", \"value\": \"+40\", \"maxValue\": \"(^78)\"}]",
+   "training_time": null,
+   "unlock_text": null,
+   "url": "https://www.fut.gg/evolutions/2491-intro-to-evolutions/"
+  },
+  {
+   "allowed_prior_ids": "[]",
+   "category": null,
+   "coins_cost": 0,
    "created_at": "2026-09-15T20:19:42.674877Z",
    "description": "Discover Repeatable Evolutions, allowing you to run multiple players through the same upgrade path!",
    "end_submission_time": "2027-09-30T00:00:00Z",
@@ -11643,7 +11671,7 @@
     "current_playstyles": null,
     "current_roles_plus": "[24, 5]",
     "current_roles_plus_plus": "[]",
-    "current_six": "{\"PAC\":80,\"SHO\":59,\"PAS\":75,\"DRI\":79,\"DEF\":76,\"PHY\":72}",
+    "current_six": "{\"PAC\": 80, \"SHO\": 59, \"PAS\": 75, \"DRI\": 79, \"DEF\": 76, \"PHY\": 72}",
     "ea_item_id": 190885,
     "evo_count": 1,
     "height_cm": 180,
@@ -12404,6 +12432,45 @@
     "updated": "2026-09-22",
     "weak_foot": 3,
     "weight_kg": 74
+   },
+   {
+    "accelerate": "Lengthy",
+    "account_id": 1,
+    "acquired": "2026-09-22",
+    "acquired_how": "GG Club 싱크",
+    "attrs": "{\"가속\": 73, \"질주 속도\": 74, \"공격 위치 선정\": 34, \"결정력\": 56, \"슈팅력\": 86, \"중거리슛\": 42, \"발리 슛\": 33, \"페널티킥\": 77, \"시야\": 74, \"크로스\": 59, \"프리킥 정확도\": 32, \"짧은 패스\": 84, \"긴 패스\": 82, \"커브\": 54, \"민첩성\": 66, \"균형 감각\": 64, \"반응력\": 82, \"볼컨트롤\": 75, \"드리블\": 70, \"침착\": 78, \"차단력\": 85, \"헤딩 정확도\": 84, \"수비 위치 선정\": 82, \"스탠딩 태클\": 81, \"슬라이딩 태클\": 79, \"점프\": 84, \"체력\": 74, \"힘\": 84, \"공격성\": 77}",
+    "birthdate": "1999-02-02",
+    "card_image_url": "https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/2027/futgg-player-item-card/27-247263.75e5ae42559eb7bce90142f2bc7a7856fc304c9029fe8759501dfd54d4cfafe5.webp",
+    "card_ovr": 82,
+    "chem_extra": "{\"club\": 0, \"league\": 0, \"nation\": 0}",
+    "chem_points": 0,
+    "chem_style_ea": 250,
+    "club": "Leverkusen",
+    "current_attrs": "{\"가속\": 73, \"질주 속도\": 74, \"공격 위치 선정\": 34, \"결정력\": 56, \"슈팅력\": 86, \"중거리슛\": 42, \"발리 슛\": 33, \"페널티킥\": 77, \"시야\": 74, \"크로스\": 59, \"짧은 패스\": 84, \"긴 패스\": 82, \"커브\": 54, \"민첩성\": 66, \"균형 감각\": 64, \"반응력\": 82, \"볼컨트롤\": 75, \"드리블\": 70, \"침착\": 78, \"차단력\": 85, \"헤딩 정확도\": 84, \"수비 위치 선정\": 82, \"스탠딩 태클\": 81, \"슬라이딩 태클\": 79, \"점프\": 84, \"체력\": 74, \"힘\": 84, \"공격성\": 77}",
+    "current_ovr": 82,
+    "current_playstyles": null,
+    "current_roles_plus": "[13]",
+    "current_roles_plus_plus": "[148]",
+    "current_six": "{\"PAC\": 74, \"SHO\": 58, \"PAS\": 73, \"DRI\": 72, \"DEF\": 82, \"PHY\": 80}",
+    "ea_item_id": 247263,
+    "evo_count": 0,
+    "height_cm": 192,
+    "id": 165,
+    "is_hero": 0,
+    "is_icon": 0,
+    "league": "Bundesliga",
+    "name": "Edmond Tapsoba",
+    "nation": "Burkina Faso",
+    "notes": "gg-club 2568732-945198042266 · 82 · 구매가 0 (2026-09-22 싱크)",
+    "player_id": null,
+    "positions": "CB",
+    "preferred_foot": "오른쪽",
+    "skill_moves": 2,
+    "status": "owned",
+    "synced_at": "2026-09-22",
+    "updated": "2026-09-22",
+    "weak_foot": 4,
+    "weight_kg": 84
    },
    {
     "accelerate": "Controlled",
@@ -17825,7 +17892,7 @@
    "reward": "Manager",
    "task_name": "Biscuits with the Boss",
    "task_text": "Build 20+ Chemistry in your squad.",
-   "task_text_kr": null
+   "task_text_kr": "스쿼드 케미스트리를 20 이상으로 맞춘다."
   },
   {
    "group_category": "milestones",
@@ -17834,7 +17901,7 @@
    "reward": "Award",
    "task_name": "Barbecue Sauce",
    "task_text": "Score 5 goals in any Football Ultimate Team game mode while having at least 1 player from any Premier League team and 1 player from any Women's Super League team in your starting 11.",
-   "task_text_kr": null
+   "task_text_kr": "선발 11명에 프리미어리그 소속 선수 1명과 여자 슈퍼리그(WSL) 소속 선수 1명을 포함한 채, 얼티밋 팀의 아무 게임 모드에서 5골을 넣는다."
   },
   {
    "group_category": "milestones",
@@ -17843,7 +17910,7 @@
    "reward": "Stadium Tifo",
    "task_name": "Be a Goldfish",
    "task_text": "Play 3 matches in any Football Ultimate Team game mode while having at least 2 players from USA in your starting 11.",
-   "task_text_kr": null
+   "task_text_kr": "선발 11명에 미국 국적 선수 2명을 포함한 채, 얼티밋 팀의 아무 게임 모드에서 3경기를 치른다."
   },
   {
    "group_category": "milestones",
@@ -17852,7 +17919,7 @@
    "reward": "Badge",
    "task_name": "Unselfish Play",
    "task_text": "Assist 4 goals in any Football Ultimate Team game mode.",
-   "task_text_kr": null
+   "task_text_kr": "얼티밋 팀의 아무 게임 모드에서 4골을 어시스트한다."
   },
   {
    "group_category": "milestones",
@@ -17861,7 +17928,7 @@
    "reward": "Award",
    "task_name": "Football is Life",
    "task_text": "Play 1 match in any Football Ultimate Team game mode.",
-   "task_text_kr": null
+   "task_text_kr": "얼티밋 팀의 아무 게임 모드에서 1경기를 치른다."
   },
   {
    "group_category": "foundations",
