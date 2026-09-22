@@ -467,3 +467,10 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .opt.weak{opacity:.5;text-decoration:line-through}
 .opt .dupmark{font-style:normal;font-size:10px;color:var(--warn);margin-left:4px;text-decoration:none;display:inline-block}
 .why-fg{color:var(--dim);font-size:10.5px;margin-top:2px}
+
+/* 「갈림길에서 고를 수 있는 것」 — 단계별 선택지를 얻는 것 블록 안에 함께 보여준다(2026-09-22) */
+.gain-opts{margin-top:6px;padding-top:6px;border-top:1px dotted var(--line)}
+.gain-opts>b{display:block;font-size:11px;color:var(--ok);letter-spacing:.03em;margin-bottom:4px}
+.gain-opt{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin:4px 0}
+.gain-opt>i{font-style:normal;font-size:10px;color:var(--dim);font-weight:700;min-width:46px}
+.gain-opt small{font-size:10.5px;line-height:1.5;margin-top:1px}
