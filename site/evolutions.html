@@ -305,9 +305,21 @@ function gainsHTML(p, own, pid){
     return (afterArr || []).map(Number).filter(i => !cur.has(i))
       .map(i => ROLEBYID[`${kind}:${i}`]).filter(Boolean);
   };
-  const gotRP = roleGain('plus', src.roles_plus, last.roles_plus || J(p.roles_plus_after, []));
-  const gotRPP = roleGain('plusplus', src.roles_plus_plus, last.roles_plus_plus || J(p.roles_plus_plus_after, []));
-  if (!gotPS.length && !gotRP.length && !gotRPP.length) return '';
+  /* ⛔⛔ **카탈로그가 역할을 주지 않는 진화면 Role+를 「얻는 것」에 넣지 않는다**
+     (2026-09-22 사용자 지적 「Role을 얻는 게 아닌데 Role+가 포함되어 있다」).
+     fut.gg의 `roles_plus_after`는 **결과 카드의 역할 숙련 전체**라, 진화 보상이 아니라
+     카드 등급·포지션에서 따라온 것까지 담긴다. 실증: Creative or Composed의 보상은 PlayStyle 2개뿐인데
+     비조 경로에 `GK Ball Playing Keeper`가 들어 있었다 — 그걸 「이 진화로 얻는다」로 적으면 거짓이다.
+     ⇒ **카탈로그 levels에 `role_plus`/`role_plus_plus` 업그레이드가 실제로 있을 때만** 표시한다. */
+  const grantsRole = (p.ids || []).some(id => (J(CATBYID[id]?.levels, []) || []).some(lv =>
+    [...(lv.upgrades || []), ...(lv.upgradeOptions || []).flatMap(og => Array.isArray(og) ? og : (og.upgrades || []))]
+      .some(u => /^role_plus/.test(String(u.upgrade || '')))));
+  const gotRP = grantsRole ? roleGain('plus', src.roles_plus, last.roles_plus || J(p.roles_plus_after, [])) : [];
+  const gotRPP = grantsRole ? roleGain('plusplus', src.roles_plus_plus, last.roles_plus_plus || J(p.roles_plus_plus_after, [])) : [];
+  /* ⭐ 갈림길에서 **고른 보상이 이미 있는 경우**도 말해 준다(2026-09-22 사용자 질문
+     「2단계까지 하면 퍼스트 터치까지 얻는 거 아니야?」 — 알리송은 First Touch를 이미 갖고 있었다). */
+  const dupPS = [...newPS].filter(x => curPS.has(x));
+  if (!gotPS.length && !gotRP.length && !gotRPP.length && !dupPS.length) return '';
   const psChip = nm => { const base = nm.replace(/\s*\+$/, ''), d = PLAYSTYLES[base];
     return `<span class="gain-ps" title="${esc(base)} — ${esc(d?.base || '')}">${
       d?.icon ? `<img src="${esc(d.icon)}" alt="" loading="lazy">` : ''}${esc(nm)}</span>`; };
@@ -315,6 +327,9 @@ function gainsHTML(p, own, pid){
     ${gotPS.length ? `<div class="gain-row"><i>PlayStyle</i>${gotPS.map(psChip).join('')}</div>` : ''}
     ${gotRPP.length ? `<div class="gain-row"><i>Role++</i>${gotRPP.map(r => `<span class="gain-role pp">${esc(r.position_name)} ${esc(r.name)}++</span>`).join('')}</div>` : ''}
     ${gotRP.length ? `<div class="gain-row"><i>Role+</i>${gotRP.map(r => `<span class="gain-role">${esc(r.position_name)} ${esc(r.name)}+</span>`).join('')}</div>` : ''}
+    ${dupPS.length ? `<div class="gain-row"><i>이미 보유</i>${dupPS.map(nm =>
+        `<span class="gain-dup" title="이 경로가 주는 보상이지만 ${esc(basis)}에 이미 있어 새로 늘지 않는다">${esc(nm)}</span>`).join('')}
+      <small class="dim" style="flex-basis:100%">— 이 경로의 보상이지만 <b>${esc(basis)}에 이미 있어</b> 새로 늘지 않는다. 다른 가지를 고르면 달라진다.</small></div>` : ''}
     ${gotPS.length ? `<div class="gain-why">${gotPS.map(nm => { const d = PLAYSTYLES[nm.replace(/\s*\+$/, '')];
         return d ? `<div><b>${esc(nm)}</b> — ${esc(d.base)}</div>` : ''; }).join('')}</div>` : ''}</div>`;
 }
@@ -860,6 +875,7 @@ function optionsHTML(c){
       : pick ? '<small class="dim">★ = 이 진화의 <b>최적 선수 경로</b>가 고른 가지(아래 「적용 가능」 1순위 기준)</small>'
              : '<small class="dim">⚠️ 우리 경로 데이터에 이 진화의 선택 기록이 없어 <b>추천 가지를 표시하지 못한다</b>.</small>'}</div>`;
 }
+let SHOW_UNOWNED = false;   // 선수별 패스는 **보유 카드만**이 기본(위 주석)
 let PATH_TEAM = 'AVL';
 function renderPaths(team, focusPid){
   PATH_TEAM = team = team || PATH_TEAM;
@@ -868,6 +884,9 @@ function renderPaths(team, focusPid){
      ⭐ 숨겨진 건수를 적는다 — 「경로가 없다」와 「걸러졌다」가 구분돼야 한다. */
   const hidden = Object.entries(EVO.paths || {}).reduce((n, [pid, rows]) =>
     n + rank(+pid, rows).filter(r => pathOpen(r, +pid) && pathPrem(r)).length, 0);
+  /* ⭐ **내 구단에 없는 선수**도 경로가 계산된다(사야 진화할 수 있는 후보) — 지우면 그 정보를 잃는다.
+     ⛔ 그런데 섞어 놓으면 「없는 선수가 왜 나와?」가 된다(2026-09-22 사용자 지적).
+     ⇒ **기본은 보유만** 보여주고, 미보유는 건수를 적은 버튼으로 펼친다. */
   const bar = document.getElementById('teamsel');
   if (hidden || SHOW_PREM){
     const b = document.createElement('button');
@@ -880,12 +899,27 @@ function renderPaths(team, focusPid){
       buildRanked(); renderPaths(team); renderCatalog(CAT_TEAM); });
     bar.appendChild(b);
   }
-  const pids = Object.keys(RANKED).map(Number).filter(p => team === 'ALL' || TEAM_OF[p] === team)
+
+  const all = Object.keys(RANKED).map(Number).filter(p => team === 'ALL' || TEAM_OF[p] === team);
+  const nOwned = all.filter(p => STATE[String(p)]).length, nNot = all.length - nOwned;
+  const pids = all.filter(p => SHOW_UNOWNED || STATE[String(p)])
     .sort((a, b) => (RANKED[b][0]?.tier ?? 0) - (RANKED[a][0]?.tier ?? 0) || (RANKED[b][0]?.d ?? 0) - (RANKED[a][0]?.d ?? 0));
+  /* ⚠️ 이 버튼은 `nNot` **선언 뒤에** 만들어야 한다 — 위쪽(프리미엄 토글 옆)에 두면
+     `Cannot access 'nNot' before initialization`으로 **렌더가 통째로 죽는다**(2026-09-22 실측). */
+  if (nNot){
+    const u = document.createElement('button');
+    u.className = 'act ghost' + (SHOW_UNOWNED ? ' on' : '');
+    u.style.marginLeft = '6px'; u.style.fontSize = '11px';
+    u.textContent = SHOW_UNOWNED ? '미보유 숨기기' : `미보유 ${nNot}명 보기`;
+    u.title = '내 구단에 카드가 없는 선수 — 사면 이 경로를 밟을 수 있다(전술 구현 탭의 구매 우선순위와 같은 축)';
+    u.addEventListener('click', () => { SHOW_UNOWNED = !SHOW_UNOWNED; renderPaths(team); });
+    bar.appendChild(u);
+  }
   document.getElementById('paths').innerHTML = pids.map(pid => {
     const rows = RANKED[pid]; if (!rows.length) return '';
     return `<div class="panel" id="pp${pid}" style="margin:8px 0;${pid === focusPid ? 'outline:2px solid var(--acc)' : ''}">
       <div class="kv"><b style="font-size:15px">${esc(NAME_OF[pid] || rows[0].name_kr)}</b> <span class="chip">${esc(TEAM_OF[pid] || '')}</span>
+        ${STATE[String(pid)] ? '' : '<span class="chip dim" title="내 구단에 이 선수 카드가 없다 — 사야 이 경로를 밟을 수 있다">미보유</span>'}
         <span>처방: ${presLabel(rows[0].pres)}</span> <small class="dim">경로 ${rows.length}건</small>
         <a href="player.html" style="font-size:12px">선수 화면 →</a></div>
       ${appliedPanel(+pid)}

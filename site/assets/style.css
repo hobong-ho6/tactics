@@ -438,3 +438,4 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .opt.took{border-style:solid;border-color:var(--acc);color:var(--acc);font-weight:700;background:rgba(255,138,61,.1)}
 .optlv-g + .optlv-g{margin-top:6px;padding-top:5px;border-top:1px dotted var(--line)}
 .optlv-g>b{display:block;font-size:11px;color:var(--dim);margin-bottom:3px}
+.gain-dup{border:1px dashed var(--dim);color:var(--dim);border-radius:99px;padding:2px 9px;font-size:11.5px}

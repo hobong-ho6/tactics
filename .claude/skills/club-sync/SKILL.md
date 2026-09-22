@@ -162,6 +162,37 @@ description: 내 얼티밋 구단 동기화 — fut.gg GG Club에서 현재 스�
        ⇒ 반드시 **기준 카드(`player_card_items`)와 before/after로 대조**한다.
      ⭐ 보고에 `🎨 코스메틱 전용이라 제외 N종`이 뜨면 그 목록을 종료 보고에 적는다.
    - ⚠️ 시간이 걸린다(전 카탈로그 × 우리 선수 경로 조회 = 2분+). 셸 타임아웃이면 백그라운드로 돌린다.
+   - ⛔⛔ **`--team`으로 4팀을 함께 돌린다** — 기본값은 **보유 카드 기준**이라 「우리 DB 선수인데 내가 안 가진 카드」의
+     경로가 통째로 빠진다. 선수별 진화 패스 탭이 그 구멍을 그대로 보여준다.
+   - ⭐ 보고의 **「경로 없음 N명」은 정상**일 수 있다(OVR이 높아 현행 진화 조건에 안 맞는 선수).
+     **「조회 실패 N명」이 구멍**이다 — 그 명단을 종료 보고에 적는다.
+
+## ⛔⛔ 신규 선수·신규 카드는 **링크 3곳**을 확인한다 (2026-09-22 실증)
+
+`players`에 선수를 올려도 **카드·경로 테이블의 `player_id`가 비어 있으면 화면에서 통째로 사라진다.**
+증상이 「데이터가 없다」가 아니라 **「그 선수가 메뉴에 아예 없다」**로 나타나 눈치채기 어렵다.
+
+🔴 실증(2026-09-22 지모알로바 — 한 사람이 **세 곳에서** 끊겨 있었다):
+- `player_card_items.player_id` NULL → 싱크가 보유 카드를 선수와 잇지 못함
+- `fut_club_players.player_id` NULL → `club.state`(현재 카드 상태 정본)에서 누락 → 진화 갈림길 판정 불가
+- `player_evolutions.player_id` NULL → **선수별 진화 패스 탭에 아예 안 나옴**(6건이 있는데도)
+
+⇒ **신규 선수를 올렸거나 신규 카드가 들어온 회차에는 이 쿼리를 돌린다**:
+```sql
+-- 우리 DB 선수와 이름이 맞는데 링크가 비어 있는 행(셋 다 0이어야 정상)
+SELECT 'card_items', COUNT(*) FROM player_card_items i JOIN players p
+  ON (p.name=i.name_kr OR p.name_kr=i.name_kr) WHERE i.player_id IS NULL
+UNION ALL SELECT 'club_players', COUNT(*) FROM fut_club_players c JOIN players p
+  ON (p.name=c.name OR p.name_kr=c.name) WHERE c.status='owned' AND c.player_id IS NULL
+UNION ALL SELECT 'evolutions', COUNT(*) FROM player_evolutions pe
+  JOIN player_card_items i ON i.ea_item_id=pe.base_ea_id
+  WHERE pe.player_id IS NULL AND i.player_id IS NOT NULL;
+```
+0이 아니면 `base_ea_id`/이름으로 이어 준다. ⚠️ **이름만으로 잇지 말 것** — 소속팀·국적·포지션 3요소를
+대조한다(docs/30 「선수 동일성 확인 규약」 · `Alysson` 빌라·RM ↔ `Alisson Becker` 리버풀·GK).
+⭐ **관리 4팀 밖 카드는 링크하지 않는다** — `player_id` NULL이 정상이다(케미 계산에만 쓴다).
+⭐ 검산: **활성 스쿼드 전원이 선수별 진화 패스 탭에 나오는가**(없으면 경로 미수집이거나 링크 끊김).
+
 6. ⭐⭐ **진화 해금 조건도 함께 받는다**(2026-09-22 사용자 지시 「진화 얻기 위한 조건들도 함께 수집」).
    ```
    .venv/bin/python scripts/collect_futgg_objectives.py
