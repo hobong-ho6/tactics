@@ -1005,3 +1005,14 @@ CREATE TABLE fc_playstyle_ids(
   source TEXT, confidence TEXT, pulled TEXT NOT NULL,
   PRIMARY KEY(game_version, ea_id)
 );
+CREATE TABLE fc_evolution_eligibility(
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  evo_id       INTEGER NOT NULL,
+  player_id    INTEGER NOT NULL REFERENCES players(id),
+  ea_item_id   INTEGER NOT NULL,     -- 적용 대상 카드 (base일 수도 특별 카드일 수도 있다)
+  is_base      INTEGER,              -- 그 카드가 기본 카드인가 — paths 축이 덮는지와 직결된다
+  pulled       TEXT NOT NULL,        -- 진화는 기간제다. 덮지 않고 날짜별로 쌓는다.
+  source       TEXT,
+  PRIMARY KEY (game_version, evo_id, ea_item_id, pulled)
+);
+CREATE INDEX ix_evo_elig_player ON fc_evolution_eligibility(player_id, pulled);

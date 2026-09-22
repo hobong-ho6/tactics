@@ -139,16 +139,20 @@ def export_all(db_path=None, window="2026-summer"):
     #    ⛔ 「최적」 순위를 여기서 굳히지 않는다 — 화면이 그 선수의 처방 역할과 대조해 만든다.
     #    Role+/++가 raw id라 `fc_role_familiarity_map`을 함께 내보낸다(FC27 커널은 아직 없다 — obs#629).
     evos = {}
-    for r in _rows(con, """SELECT game_version, player_id, base_ea_id, name_kr, path_key,
-                                  evolution_ids, evolution_names, evolution_urls, steps,
-                                  coins_cost, points_cost, training_time, is_expired,
-                                  ovr_before, ovr_after, upgrades, six_before, six_after,
-                                  playstyles_after, roles_plus_after, roles_plus_plus_after, pulled,
-                                  path_json, path_choices
-                           FROM player_evolutions
-                            WHERE player_id IS NOT NULL
-                              AND pulled=(SELECT MAX(pulled) FROM player_evolutions)
-                           ORDER BY player_id, (ovr_after - ovr_before) DESC, steps"""):
+    # ⚠️ `player_evolutions.name_kr`은 fut.gg 수집 당시 표기라 `players.name_kr`과 갈린다
+    #    (지모알로바가 `Jamaldeen Jimoh-Aloba`로 남아 있었다). 사람 이름의 정본은 `players`다.
+    for r in _rows(con, """SELECT e.game_version, e.player_id, e.base_ea_id,
+                                  COALESCE(p.name_kr, p.name, e.name_kr) name_kr, e.path_key,
+                                  e.evolution_ids, e.evolution_names, e.evolution_urls, e.steps,
+                                  e.coins_cost, e.points_cost, e.training_time, e.is_expired,
+                                  e.ovr_before, e.ovr_after, e.upgrades, e.six_before, e.six_after,
+                                  e.playstyles_after, e.roles_plus_after, e.roles_plus_plus_after, e.pulled,
+                                  e.path_json, e.path_choices
+                           FROM player_evolutions e
+                           LEFT JOIN players p ON p.id=e.player_id
+                            WHERE e.player_id IS NOT NULL
+                              AND e.pulled=(SELECT MAX(pulled) FROM player_evolutions)
+                           ORDER BY e.player_id, (e.ovr_after - e.ovr_before) DESC, e.steps"""):
         evos.setdefault(str(r.pop("player_id")), []).append(r)
     rolemap = _rows(con, """SELECT game_version, ea_id, kind, slug, name, position_name
                             FROM fc_role_familiarity_map ORDER BY game_version, kind, ea_id""")
@@ -159,6 +163,23 @@ def export_all(db_path=None, window="2026-summer"):
                                    total_upgrades_text, levels, allowed_prior_ids, number_of_players, is_expired, pulled
                             FROM fc_evolutions WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions)
                             ORDER BY is_expired, end_time, evo_id""")
+    # ⭐⭐ **적용 가능 선수**(migration 058) — 경로 축(`player_evolutions`)이 못 덮는 진화를 여는 축이다.
+    #    fut.gg `paths/v2`는 base 카드 기준 조합 경로만 줘서 ⑴ 특별 카드 전용 진화 ⑵ 단독 진화를 놓친다
+    #    (2026-09-22 실측 33쌍 · Relentless는 카탈로그에도 없어 손수집했다).
+    #    ⛔ 경로가 없다는 사실을 화면에서 숨기지 않는다 — `has_path`로 함께 내려보낸다(결손과 0은 다르다, obs#132).
+    elig_rows = _rows(con, """
+        SELECT e.evo_id, e.player_id, e.ea_item_id, e.is_base,
+               COALESCE(p.name_kr, p.name) name, e.pulled
+          FROM fc_evolution_eligibility e JOIN players p ON p.id=e.player_id
+         WHERE e.pulled=(SELECT MAX(pulled) FROM fc_evolution_eligibility)
+         ORDER BY e.evo_id, p.id""")
+    _covered = set()
+    for r in _rows(con, """SELECT player_id, evolution_ids FROM player_evolutions
+                            WHERE pulled=(SELECT MAX(pulled) FROM player_evolutions)"""):
+        for i in json.loads(r["evolution_ids"] or "[]"):
+            _covered.add((r["player_id"], i))
+    for r in elig_rows:
+        r["has_path"] = (r["player_id"], r["evo_id"]) in _covered
     # ⭐ PlayStyle **숫자 id → 이름** (2026-09-22) — 진화 분기(upgradeOptions)가 PS를 **id로만** 주기 때문에
     #    이게 없으면 화면이 「옵션1: play_style 5」처럼 못 읽는 값을 띄운다.
     #    ⛔ 표를 손으로 적지 않는다 — `player_evolutions`의 **id 배열 ↔ 이름 배열**을 교차시켜 역산한다
@@ -208,8 +229,14 @@ def export_all(db_path=None, window="2026-summer"):
     #    ⇒ **여기서 한 번 정하고 `club.state`로 내보낸다.** 화면은 고르지 말고 이걸 읽는다.
     #    규칙: EA 싱크 실측(`fut_club_players`)이 있으면 그것이 현재다. 없으면 기준 카드로 물러선다.
     #    `basis`에 어느 쪽인지 적어 화면이 「실측인가 기준값인가」를 숨기지 않게 한다.
+    #    ⭐ **표시 이름도 여기서 하나로 정한다**(2026-09-22 전수 조사). `fut_club_players.name`은
+    #       fut.gg 표기라 **영문·한글이 섞여 있고**(Suzuki·Jackson·Madjo…) 음차도 갈린다
+    #       (루제리 ↔ `players.name_kr` 마테오 루헤리). 같은 선수가 화면마다 다른 이름으로 보였다.
+    #    ⇒ 사람 이름의 정본은 `players.name_kr`이다(불변규칙 6의 조인 규칙과 같은 축). fut.gg 원표기는
+    #       `name_fut`로 함께 내보낸다 — 지우면 EA/fut.gg 화면과 대조할 때 근거를 잃는다.
     club_state = _rows(con, """
-        SELECT c.player_id, c.id club_player_id, c.name,
+        SELECT c.player_id, c.id club_player_id,
+               COALESCE(pl.name_kr, pl.name, c.name) name, c.name name_fut,
                c.current_ovr ovr, c.current_six six, c.current_attrs attrs,
                c.current_playstyles playstyles, c.current_roles_plus roles_plus,
                c.current_roles_plus_plus roles_plus_plus,
@@ -220,15 +247,26 @@ def export_all(db_path=None, window="2026-summer"):
                CASE WHEN c.current_attrs IS NOT NULL THEN 'ea-sync' ELSE 'base-card' END basis,
                (SELECT COUNT(*) FROM fut_evolution_log l
                  WHERE l.club_player_id=c.id AND l.is_void=0 AND COALESCE(l.level,1)=1) evo_runs,
+               -- ⭐ **화면의 「진화 N회」는 이것이다** — 「회 = 밟은 단계 수」가 사용자 결정이다
+               --    (2026-09-21, 4단계 완주 = 4회). `evo_runs`(적용 횟수)는 **소진 계산 전용**이라
+               --    단위가 다르다. 둘을 섞으면 같은 선수가 화면마다 다른 횟수로 보인다
+               --    (지모알로바 6 ↔ 2 · 루제리 3 ↔ 1). ⛔ `fut_club_players.evo_count`는 스크립트가
+               --    +1 하는 값이라 원장과 어긋날 수 있다 — 원장에서 직접 센 이 값을 쓴다.
+               (SELECT COUNT(*) FROM fut_evolution_log l
+                 WHERE l.club_player_id=c.id AND l.is_void=0) evo_levels,
                (SELECT GROUP_CONCAT(DISTINCT l.evo_name) FROM fut_evolution_log l
                  WHERE l.club_player_id=c.id AND l.is_void=0) evo_names
           FROM fut_club_players c
           LEFT JOIN player_card_items i ON i.ea_item_id=c.ea_item_id
+          LEFT JOIN players pl ON pl.id=c.player_id
          WHERE c.status='owned' AND c.player_id IS NOT NULL""")
     accounts = _rows(con, "SELECT id, name, platform, game_version, notes, created FROM fut_accounts ORDER BY id")
     # 보유 선수 — 케미스트리 원료(국적·리그·클럽·포지션, migration 044)를 카드 표에서 붙여 함께 내보낸다.
     # 화면이 케미 XI를 계산하려면 이 4개가 있어야 한다. 조인은 아이템 id로만 한다(이름 조인 금지).
-    club = _rows(con, """SELECT f.id, f.account_id, f.player_id, f.ea_item_id, f.name, f.acquired, f.acquired_how, f.status,
+    # ⭐ `name`은 `club.state`와 **같은 규칙**으로 정한다(위 주석) — 두 표가 갈리면 같은 화면 안에서도 이름이 섞인다.
+    club = _rows(con, """SELECT f.id, f.account_id, f.player_id, f.ea_item_id,
+                                COALESCE(pl.name_kr, pl.name, f.name) AS name, f.name AS name_fut,
+                                f.acquired, f.acquired_how, f.status,
                                 f.current_ovr, f.current_six, f.current_playstyles, f.current_roles_plus,
                                 f.current_roles_plus_plus, f.evo_count, f.notes, f.updated,
                                 -- ⭐ 29속성 EA 실측(2026-09-22) — GG Club이 그대로 준다. 화면은 이것을 정본으로 쓰고
@@ -242,6 +280,7 @@ def export_all(db_path=None, window="2026-summer"):
                                 f.chem_style_ea, f.chem_points, f.synced_at
                          FROM fut_club_players f
                          LEFT JOIN player_card_items c ON c.ea_item_id=f.ea_item_id AND c.game_version='FC27'
+                         LEFT JOIN players pl ON pl.id=f.player_id
                          ORDER BY f.account_id, f.status, f.name""")
     # ⭐ `is_void`(migration 053)를 함께 내보낸다 — 화면의 소진 계산이 **무효 행을 세면 안 된다**
     #   (마조 Striker Glow Up은 적용된 적이 없는데 소진으로 잠겨 있었다).
@@ -268,7 +307,7 @@ def export_all(db_path=None, window="2026-summer"):
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
                           {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices,
                            "chem_styles": chem_styles, "squad": squad, "squad_slots": squad_slots,
-                           "obj_tasks": obj_tasks, "ps_names": ps_names,
+                           "obj_tasks": obj_tasks, "ps_names": ps_names, "eligible": elig_rows,
                            # fut.gg 케미 신호(migration 055) — 최신 pulled만. 배지는 등급이 아니라 AcceleRATE다.
                            "chem_signals": _rows(con, """SELECT ea_item_id, style_name, accelerate, vote_pct
                                                            FROM futgg_chem_signals

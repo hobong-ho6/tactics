@@ -90,9 +90,13 @@ import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-sel
 import { prose } from './assets/prose.js';
 import { PLAYSTYLES } from './assets/playstyle-icons.js';
 import { repaintEvoCard } from './assets/evocard.js?v=20260921a';
+/* ⛔ 진화 경로의 소진·프리미엄 판정은 **진화 메뉴와 같은 모듈**을 쓴다(2026-09-22 전수 조사) */
+import { evoRules } from './assets/evorules.js?v=20260922c';
 import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20260922-stat-tips';
 const { team, idx } = await mountHeader('player.html');
 const [td, GS, GS27, HIST, CARDS, EVO, K26] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history'), loadGameStats('cards'), loadGameStats('evolutions').catch(()=>({paths:{},role_map:[]})), loadKernels('FC26').catch(()=>({roles:[]}))]);
+/* ⭐ 진화 규칙(소진·이미 적용·프리미엄)은 `assets/evorules.js` 정본을 쓴다 — 계정은 진화 메뉴와 같은 선택을 따른다. */
+const RULES = evoRules(EVO, localStorage.getItem('fut_account'));
 /* 백분위·유사프로필 모집단 = 활성 regime 전체. ⛔ 팀 코드를 하드코딩하지 않는다 —
    2026-08-20 ATM 편입 때 이 배열이 ['AVL','CHE','LIV']로 남아 ATM 선수가 모집단에서 통째로 빠졌다.
    index.json의 regimes가 SSOT이고 `end IS NULL`이 활성 조건이다(DB 뷰와 같은 규약). */
@@ -575,8 +579,14 @@ function renderCard(sel, g0, g26, g27, isGkRow){
      내 구단 원장(fut_club_players 현재 스탯 + fut_evolution_log)에서 만드는 **가상 카드** — 발매 아이템이 아니라 내 계정의 상태다.
      이미지는 fut.gg 경로의 결과 카드(path_json 해당 단계)에서, 없으면 원본 카드 이미지. 진화 1회 이상이면 기본 대표 카드가 된다. */
   let evoCard = null;
-  if (club && club.evo_count > 0){
-    const logs = (EVO.club?.log || []).filter(l => l.club_player_id === club.id)
+  /* ⭐⭐ **진화 횟수의 정본은 `club.state.evo_levels`**다(2026-09-22 전수 조사).
+     「회 = 밟은 단계 수」가 사용자 결정이고(2026-09-21, 4단계 완주 = 4회), export가 원장에서 한 번 센다.
+     ⛔ `fut_club_players.evo_count`(스크립트가 +1 하는 값)도 `evo_runs`(소진 계산용 적용 횟수)도 쓰지 않는다 —
+        단위가 갈리면 같은 선수가 화면마다 다른 횟수로 보인다(지모알로바 6 ↔ 2). */
+  const state = (EVO.club?.state || {})[String(sel.pid)] || null;
+  const evoLevels = state?.evo_levels ?? 0;
+  if (club && evoLevels > 0){
+    const logs = (EVO.club?.log || []).filter(l => l.club_player_id === club.id && !l.is_void)
       .sort((a, b) => String(a.applied_at).localeCompare(String(b.applied_at)) || a.id - b.id);
     const applied = logs.map(l => l.evo_id);
     const src = cards.find(c => c.item_id === ownedItem) || cards.find(c => c.is_base) || {};
@@ -591,7 +601,7 @@ function renderCard(sel, g0, g26, g27, isGkRow){
         img = path[applied.length]?.card_image_url || null; if (img) break;
       }
     }
-    evoCard = { item_id: `evo:${club.id}`, is_base: 0, rarity_name: `진화 ${club.evo_count}회`, evo: true,
+    evoCard = { item_id: `evo:${club.id}`, is_base: 0, rarity_name: `진화 ${evoLevels}단계`, evo: true,
       ovr: club.current_ovr, pac: v(0,'PAC'), sho: v(1,'SHO'), pas: v(2,'PAS'), dri: v(3,'DRI'), def: v(4,'DEF'), phy: v(5,'PHY'),
       best_pos: src.best_pos, positions: src.positions, playstyles: club.current_playstyles ?? src.playstyles,
       /* ⭐ 결과 카드 이미지가 없으면 **기본 아트 위에 우리 수치를 덮어 그린다**(2026-09-19 사용자 지시
@@ -601,7 +611,9 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       patch_art: !img && !!src.card_image_url,
       simple_base: false,
       name_art: sel.name,
-      released_at: logs.at(-1)?.applied_at, evo_names: logs.map(l => l.evo_name) };
+      /* ⚠️ 진화 이름은 **중복을 접는다** — 4단계짜리는 로그가 4행이라 그대로 쓰면
+         「반복 배급 → 반복 배급 → 반복 배급 → 반복 배급」이 된다(`club.state.evo_names`와 같은 규칙). */
+      released_at: logs.at(-1)?.applied_at, evo_names: [...new Set(logs.map(l => l.evo_name))] };
     cards = [evoCard, ...cards];
   }
   const rep = cards.find(c => String(c.item_id) === localStorage.getItem(repKey)) || evoCard || cards.find(c => c.item_id === ownedItem) || cards.find(c => c.is_base) || null;
@@ -782,12 +794,24 @@ function evoRoleKey(role_id){                   // 'w_wideplm' → 'wideplaymake
 function renderEvo(sel){
   const el = document.getElementById('gevo'); if (!el) return;
   const rows = (sel.pid != null && EVO.paths?.[String(sel.pid)]) || [];
+  /* ⭐⭐ **경로 축이 못 덮는 적용 가능 진화**(migration 058, 2026-09-22 사용자 지적
+     「구단 싱크로 누락됐던 진화 — 각 메뉴의 제안에 모두 반영」).
+     fut.gg `paths/v2`는 base 카드 기준 조합 경로만 줘서 특별 카드 전용·단독 진화를 통째로 빠뜨린다.
+     ⛔ 단계·비용·결과 카드를 지어내지 않는다 — 「걸 수 있다」는 사실만 적는다(결손과 0은 다르다). */
+  const eligRows = (EVO.eligible || []).filter(r => r.player_id === sel.pid && !r.has_path
+      && !RULES.consumed[r.evo_id]?.exhausted && !RULES.premIds.has(r.evo_id));
+  const CATN = {}; for (const c of (EVO.catalog || [])) CATN[c.evo_id] = c.name;
+  const eligHTML = eligRows.length ? `<div class="pcard" style="margin-bottom:8px;border-style:dashed">
+      <b>경로 없이 적용 가능한 진화</b> <small class="dim">${eligRows.length}건 — fut.gg가 이 조합의 경로(단계·비용·결과 카드)를
+      계산해 주지 않는다(특별 카드 전용이거나 단독으로만 적용되는 진화). 걸 수 있다는 사실만 확인됐다.</small>
+      <div style="margin-top:4px">${eligRows.map(r => `<span class="chip">${esc(CATN[r.evo_id] || r.evo_id)}${
+        r.is_base ? '' : ' <small class="dim">특별 카드</small>'}</span>`).join(' ')}</div></div>` : '';
   // 처방(가장 최신 시즌의 게임 처방)을 먼저 잡는다 — 이것이 순위의 기준이다.
   const pres = td.prescriptions.filter(p => p.player_id === sel.pid && p.role_id)
     .sort((a,b) => String(b.season||'').localeCompare(String(a.season||'')))[0];
   if (!rows.length){
-    el.innerHTML = `<span class="dim">진화 경로 없음 — fut.gg가 이 선수에게 여는 경로가 현재 0건이다(수집일 기준).
-      ⭐ 고평가 선수는 대부분 OVR 상한에 걸려 경로가 없다. ${pres ? '' : ''}</span>`;
+    el.innerHTML = eligHTML + `<span class="dim">진화 경로 없음 — fut.gg가 이 선수에게 여는 경로가 현재 0건이다(수집일 기준).
+      ⭐ 고평가 선수는 대부분 OVR 상한에 걸려 경로가 없다.</span>`;
     return;
   }
   const want = pres ? evoRoleKey(pres.role_id) : null;
@@ -811,7 +835,25 @@ function renderEvo(sel){
     return { ...r, pp, pl, tier, cost, rs, score: rs.score, d: (r.ovr_after ?? 0) - (r.ovr_before ?? 0) };
   }).filter(r => !r.is_expired)
     .sort((a,b) => b.tier - a.tier || b.score - a.score || b.d - a.d || a.cost - b.cost || a.steps - b.steps);
-  if (!scored.length){ el.innerHTML = '<span class="dim">유효 경로 없음 — 수집된 경로가 모두 만료됐다.</span>'; return; }
+  /* ⛔⛔ **진화·내 구단과 같은 규칙으로 거른다**(2026-09-22 전수 조사).
+     종전엔 `is_expired`만 봐서 ⑴ 이미 **소진된** 진화 ⑵ **프리미엄 시즌패스** 전용 진화를 낀 경로를
+     그대로 「최적 제안」으로 세웠다 — 진화 메뉴에서는 같은 경로가 사라져 있어 두 화면이 어긋났다(74건).
+     ⚠️ 거른 건수를 적는다 — 「경로가 없다」와 「걸러졌다」는 다르다(obs#132). */
+  const nAll = scored.length;
+  /* ⚠️ **이미 다 밟은 경로를 「최적 제안」으로 올리지 않는다** — 진화 메뉴는 같은 경로를 「✓ 이미 적용 완료」로
+     내려 두는데 여기만 추천하고 있었다(지모알로바 Repeat Delivery→Creative Crossroads). 같은 판정을 쓴다. */
+  const doneP = r => { const d = RULES.appliedIn(RULES.idsOf(r), sel.pid);
+    return d.length && d.length === RULES.idsOf(r).length && d.every(x => x.done); };
+  const openRows = scored.filter(r => RULES.open(RULES.idsOf(r), sel.pid) && !RULES.premium(RULES.idsOf(r)))
+    .sort((a, b) => (doneP(a) ? 1 : 0) - (doneP(b) ? 1 : 0));
+  const nHidden = nAll - openRows.length;
+  const hiddenNote = nHidden
+    ? `<div class="dim" style="font-size:12px;margin-bottom:6px">경로 ${nHidden}건은 제외했다 —
+        <b>이미 소진</b>됐거나 <b>프리미엄 시즌패스</b> 전용 진화가 끼어 있다(진화·내 구단과 같은 기준).</div>` : '';
+  if (!openRows.length){
+    el.innerHTML = eligHTML + `<span class="dim">밟을 수 있는 경로 없음 — 수집된 ${nAll}건이 모두 만료·소진됐거나 프리미엄 전용이다.</span>`;
+    return; }
+  scored.length = 0; scored.push(...openRows);
   const best = scored[0];
   const six = j => { try { return JSON.parse(j || '{}'); } catch(e){ return {}; } };
   const dSix = r => { const a = six(r.six_before), b = six(r.six_after);
@@ -822,8 +864,9 @@ function renderEvo(sel){
     r.training_time ? `훈련 ${Math.round(r.training_time / 3600)}시간` : null].filter(Boolean).join(' · ') || '무료';
   const roleChips = r => [...r.pp.map(x => [x, '++']), ...r.pl.map(x => [x, '+'])]
     .map(([x, k]) => `<span class="chip"${matches(x) ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}>${esc(x.position_name)} ${esc(x.name)} ${k}</span>`).join(' ');
-  const card = (r, i) => `<div class="pcard" style="margin-bottom:8px${i === 0 ? ';border-left:3px solid var(--ok)' : ''}">
-    <div class="kv">${i === 0 ? '<span class="badge hi">최적 제안</span>' : `<span class="badge">${i + 1}순위</span>`}
+  const card = (r, i) => `<div class="pcard" style="margin-bottom:8px${i === 0 && !doneP(r) ? ';border-left:3px solid var(--ok)' : ''}${doneP(r) ? ';opacity:.6' : ''}">
+    <div class="kv">${doneP(r) ? '<span class="chip" style="border-color:var(--ok);color:var(--ok)">✓ 이미 적용 완료</span>'
+      : i === 0 ? '<span class="badge hi">최적 제안</span>' : `<span class="badge">${i + 1}순위</span>`}
       <b>${esc(r.evolution_names)}</b>
       <span class="chip">${r.steps}단계</span>
       ${r.d ? `<span class="chip" style="border-color:var(--ok);color:var(--ok)">OVR ${r.ovr_before}→${r.ovr_after} (+${r.d})</span>`
@@ -842,7 +885,7 @@ function renderEvo(sel){
       : best.tier === 1
         ? `처방 <b>${esc(pres.pos_label ?? '')} ${esc(pres.role_id)}</b>가 결과 카드에서 <b>Role+</b>까지만 된다 — 쓸 수는 있으나 숙련 보너스는 없다.`
         : `⚠️ 어느 경로도 처방 <b>${esc(pres.pos_label ?? '')} ${esc(pres.role_id)}</b>를 Role+ 이상으로 만들지 못한다 — 아래는 <b>능력치 상승만</b> 보고 매긴 순위다. 처방을 바꿀 생각이 아니면 진화 우선순위가 낮다.`;
-  el.innerHTML = `<div style="font-size:13px;margin-bottom:8px">${why}</div>
+  el.innerHTML = `<div style="font-size:13px;margin-bottom:8px">${why}</div>${hiddenNote}${eligHTML}
     ${scored.map(card).join('')}
     <small class="dim">경로 ${scored.length}건 · 수집일 ${esc(best.pulled ?? '')} · ${esc(best.game_version ?? '')}</small>
     ${scored.every(r => !r.cost && !r.pp.length)

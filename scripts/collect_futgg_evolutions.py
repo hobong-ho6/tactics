@@ -313,6 +313,56 @@ def main():
             n += cur.rowcount
         con.commit()
         print(f"진화 카탈로그: 응답에서 {len(catalog)}종 발견 · 신규 {n}행 (fc_evolutions)")
+
+    # ── ⭐⭐ 적용 가능 선수 (migration 058, 2026-09-22) ─────────────────────────
+    # ⛔ **경로 축만으로는 진화가 닫히지 않는다.** `paths/v2`는 base 카드 기준 조합 경로만 주므로
+    #    ⑴ 특별 카드에만 열리는 진화(음바예 `paths/v2/50406097/` → 404)와
+    #    ⑵ paths 응답이 아예 만들지 않는 단독 진화(Relentless 2495)를 통째로 놓친다.
+    #    실측(2026-09-22): 이렇게 빠진 (선수, 진화) 쌍이 **33건**이었고, Relentless는 카탈로그에도 없어 손수집했다.
+    # ⇒ 진화별 「적용 가능 선수」 API를 직접 돌아 **우리 DB 선수만** 추려 사실로 남긴다.
+    #    경로(단계·비용·결과 카드)는 여기서 지어내지 않는다 — fut.gg가 주지 않는 사실이다.
+    for g in a.games:
+        gv = f"FC{g}"
+        ours = {r["ea_item_id"]: r for r in con.execute(
+            "SELECT c.ea_item_id, c.player_id, c.is_base FROM player_card_items c "
+            "WHERE c.game_version=? AND c.player_id IS NOT NULL", (gv,))}
+        evo_ids = [r[0] for r in con.execute(
+            "SELECT DISTINCT evo_id FROM fc_evolutions WHERE game_version=? AND is_expired=0 "
+            "AND pulled=(SELECT MAX(pulled) FROM fc_evolutions WHERE game_version=?)", (gv, gv))]
+        elig, seen_ids = [], 0
+        for eid in evo_ids:
+            page = 1
+            while page <= 8:                     # fut.gg는 30행/페이지 — 8페이지면 240명으로 충분하다
+                el = get(f"{API}/evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}"
+                         f"&hide_combinations=true&hide_reward_evolutions=false"
+                         f"&show_non_upgraded_players=false&page={page}")
+                rows = (el or {}).get("data") or []
+                if not rows:
+                    break
+                for it in rows:
+                    o = ours.get(it.get("eaId"))
+                    if o:
+                        elig.append((gv, eid, o["player_id"], it["eaId"], o["is_base"], a.pulled,
+                                     f"fut.gg {API}/evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}"))
+                if len(rows) < 30:
+                    break
+                page += 1
+            seen_ids += 1
+        if elig and not a.dry_run:
+            cur.executemany(
+                "INSERT INTO fc_evolution_eligibility(game_version,evo_id,player_id,ea_item_id,is_base,pulled,source) "
+                "VALUES(?,?,?,?,?,?,?) ON CONFLICT DO NOTHING", elig)
+            con.commit()
+        # 경로 축이 덮지 못한 쌍을 **건수로 보고한다** — 조용히 넘기면 같은 구멍이 다시 생긴다.
+        covered = set()
+        for pid, ids_json in con.execute(
+                "SELECT player_id, evolution_ids FROM player_evolutions WHERE game_version=? AND pulled=?", (gv, a.pulled)):
+            for i in json.loads(ids_json or "[]"):
+                covered.add((pid, i))
+        gap = {(p, e) for (_, e, p, *_rest) in elig} - covered
+        print(f"적용 가능 선수: 진화 {seen_ids}종 조회 · (선수,진화) {len(set((p, e) for (_, e, p, *_r) in elig))}쌍 "
+              f"· 그중 **경로 축이 못 덮은 {len(gap)}쌍**(특별 카드 전용·단독 진화)")
+
     print("\n다음: python3 scripts/gates.py && python3 scripts/export.py && scripts/db_dump.sh")
 
 
