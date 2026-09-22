@@ -245,6 +245,22 @@ const PS_ATTRS = {
   'Relentless': ['체력'], 'Acrobatic': ['민첩성'],
 };
 
+/* ⭐ FC27에서 **효과가 축소·제거된** PlayStyle — EA 1차(Gameplay Deep Dive) verbatim으로 확정된 것만.
+   정본은 `game_system_changes` #13·#22(등급 A)와 docs/22 §6이다. 여기 목록을 늘리려면 그쪽에 행이 먼저 있어야 한다.
+   ⚠️ 「없어졌다」가 아니라 「같은 슬롯값이 전년보다 싸졌다」는 뜻이라 tie-break에서 **반 표**로 센다. */
+const PS_FC27_CUT = {
+  'Rapid': '드리블 속도 보너스 축소 — EA 「가속 스탯이 더 중요해진다」',
+  'Quick Step': '가속 보너스 축소 — EA 「가속 스탯이 더 중요해진다」',
+  'Low Driven Shot': '슛 속도 부스트 제거(정확도만 잔존)',
+  'Pinged Pass': '수신자 트랩 오차 감소 효과 제거 — 패스 속도 효과만 남음',
+  'Tiki Taka': '애니 속도 보너스·수신자 트랩 오차 감소 제거',
+  'Jockey': '보유자 보너스↓(비보유자 기본 조키 가속↑)',
+};
+
+const TIE_TIP = '스탯 적합도 차이가 1.0 미만이라 스탯으로는 우열을 못 정한 자리다(그 정도는 EA 값의 노이즈 폭). '
+  + '이 구간에서는 아래 PlayStyle 표가 판정하는데, 그 표까지 같아서 남은 기준이 없다는 뜻이다. '
+  + '「둘이 비슷하다」가 아니라 「이 잣대로는 못 가른다」로 읽을 것 — 케미·폼·상대는 애초에 이 점수에 없다.';
+
 function emeryVerdict(a, b, ctx) {
   const canon = ctx.canon_roles || [], keyAttrs = ctx.key_attrs || [];
   if (!canon.length || !keyAttrs.length) return '';
@@ -314,20 +330,48 @@ function emeryVerdict(a, b, ctx) {
     const psHit = c2 => String(c2.current_playstyles || '').split(',').map(x => x.trim()).filter(Boolean)
       .map(nm => ({ nm: nm.replace(/\s*\+$/, ''), plus: /\+$/.test(nm) }))
       .filter(x => (PS_ATTRS[x.nm] || []).some(at => hot.has(at)))
-      .map(x => ({ ...x, hits: (PS_ATTRS[x.nm] || []).filter(at => hot.has(at)) }));
+      .map(x => ({ ...x, hits: (PS_ATTRS[x.nm] || []).filter(at => hot.has(at)),
+                   cut: PS_FC27_CUT[x.nm] || null }));
     const pha = psHit(a), phb = psHit(b);
+    /* PlayStyle 표 — **반 표/한 표만 세고 크기는 세지 않는다**(아래 PS_TIP 주석 참조). */
+    const votes = arr => arr.reduce((t, x) => t + (x.cut ? .5 : 1), 0);
+    /* ⚠️ PS+는 **표를 더하지 않는다** — FC27이 PS↔PS+ 격차를 좁혔다고 EA가 명시했다(「선수의 타고난
+       속성에 더 큰 비중이 실린다」). 칩에 +만 붙여 보여준다. */
+    const va = votes(pha), vb = votes(phb);
     /* ⭐ 근거는 **가중이 걸린 속성 전부**를 보여준다(2026-09-22 사용자 지적
        「캐시는 체력만 높은데 우위인 게 이상하다」) — 상위 3개만 띄우니 합이 왜 그렇게 나오는지
        설명되지 않았다. 각 항목의 **가중·값·기여 차이**를 모두 적어 합계가 눈으로 따라가지게 한다. */
     const why = Object.entries(w).sort((x, y) => y[1] - x[1])
       .map(([k, wt]) => { const va = A[k] ?? 0, vb = B[k] ?? 0;
         return { k, wt, va, vb, gap: va - vb, contrib: wt * (va - vb) }; });
-    return { c, fa, fb, d, why, ma, mb, pha, phb };
+    return { c, fa, fb, d, why, ma, mb, pha, phb, va, vb };
   }).sort((x, y) => Math.abs(y.d) - Math.abs(x.d));
+  /* 칩 하나 = 한 표. FC27에서 깎인 것은 **½** 표시를 달고 그 이유를 툴팁에 적는다. */
+  const psCell = (arr, cls, v) => arr.length
+    ? `${arr.map(x => `<span class="chip ${cls}${x.cut ? ' cut' : ''}" title="${esc(x.hits.join(' · '))}${
+         x.cut ? ` — FC27 ½표: ${esc(x.cut)}` : ''}">${esc(x.nm)}${x.plus ? '+' : ''}${x.cut ? ' ½' : ''}</span>`).join(' ')}
+       <b class="cmp-votes">${v % 1 ? v.toFixed(1) : v}표</b>`
+    : '<span class="dim">없음 <b class="cmp-votes">0표</b></span>';
   const body = rows.map(r => {
-    const tie = Math.abs(r.d) < 1.0;
-    const winner = r.d > 0 ? a.name : b.name;
-    const side = r.d > 0 ? 'dA' : 'dB';
+    /* ⭐⭐ 2층 판정 (2026-09-22 사용자 지시 「플레이스타일까지 고려해 누가 더 적합한지 기준을 세우자」).
+       ⑴ **스탯이 주(主)다** — Δ≥1.0이면 스탯이 결정하고 PlayStyle은 표시만 한다.
+       ⑵ Δ<1.0(실측 무결정)일 때만 **PlayStyle이 tie-break 권한**을 갖는다.
+       왜 이 모양인가:
+       · EA는 PlayStyle이 원 스탯과 어떻게 결합되는지(곱셈/임계/독립) **한 번도 명시한 적이 없다**
+         (리포트 §3.2 · 부재 증거 A). ⇒ 「PS = 적합도 몇 점」을 만들면 근거 없는 수가 판단을 가장한다(불변규칙 12).
+       · 반면 **순서 정보는 EA 1차로 있다**: FC27은 PS 보너스를 깎고 속성 비중을 올렸고(「Our goal … refine the
+         balance between PlayStyles and Attributes」 A), Intercept는 **PS 없는 고스탯 선수만 골라 상향**해
+         두 축이 같은 결과값에 합산됨을 드러냈다. ⇒ **같은 방향을 보지만, PS가 스탯 차이를 뒤집을 만큼은 아니다.**
+       · 「주 축이 못 가르는 구간에서만 보조 축이 판정한다」는 이 저장소의 기존 규약이다
+         (docs/30 7단계 — 커널 Δ≤.05에서 영상이 tie-break 권한을 갖는다). 같은 모양을 그대로 쓴다.
+       ⚠️ 반 표(FC27 축소분)는 **판단값**이다 — 어느 PS가 깎였는지는 A등급이지만 「그래서 반값」은 내 배분이다. */
+    const statTie = Math.abs(r.d) < 1.0;
+    const psGap = r.va - r.vb;
+    const byPs = statTie && Math.abs(psGap) >= 1;
+    const tie = statTie && !byPs;
+    const d2 = byPs ? psGap : r.d;
+    const winner = d2 > 0 ? a.name : b.name;
+    const side = d2 > 0 ? 'dA' : 'dB';
     const nA = r.why.filter(x => x.gap > 0).length, nB = r.why.filter(x => x.gap < 0).length;
     /* ⚠️ 비중 열을 오른쪽 끝에 두면 **오른쪽 선수의 값처럼 읽힌다**(2026-09-22 사용자 지적).
        비중은 어느 선수의 것도 아니라 **그 역할이 그 속성을 얼마나 보는가**이므로 가운데 속성명에 붙인다. */
@@ -344,8 +388,8 @@ function emeryVerdict(a, b, ctx) {
       <div class="cmp-vhead"><b>${esc(r.c.pos)}</b>
         <span class="dim">${esc(ctx.role_kr?.[r.c.role_id] || r.c.role_id)} / ${esc(r.c.focus)}</span>
         <span class="dim" style="flex-basis:100%;font-size:11px">${esc(roleDesc(r.c, ctx))}</span>
-        ${tie ? '<span class="chip dim">구분되지 않음</span>'
-              : `<span class="cmp-d ${side} mid">${esc(winner)} 우위</span>`}</div>
+        ${tie ? `<span class="chip dim fc-help" tabindex="0" data-tip="${esc(TIE_TIP)}">구분되지 않음<i>?</i></span>`
+              : `<span class="cmp-d ${side} mid">${esc(winner)} 우위<i>${byPs ? 'PlayStyle이 가름' : '스탯이 가름'}</i></span>`}</div>
       <div class="cmp-vfit"><span class="cmp-a">${r.fa.toFixed(1)}</span>
         <span class="cmp-k">적합도<i>스탯 기준</i></span><span class="cmp-b">${r.fb.toFixed(1)}</span></div>
       ${top ? `<div class="cmp-vwhy">${top}</div>` : ''}
@@ -356,21 +400,27 @@ function emeryVerdict(a, b, ctx) {
         <span class="cmp-b">${r.mb === '?' ? '<span class="dim">확인 불가</span>'
           : r.mb ? `<span class="chip wB">${r.mb}</span>` : '<span class="dim">숙련 없음</span>'}</span></div>
       <div class="cmp-vfit" style="font-size:12px;margin-top:6px;align-items:start">
-        <span class="cmp-a">${r.pha.length ? r.pha.map(x => `<span class="chip wA" title="${esc(x.hits.join(' · '))}">${esc(x.nm)}${x.plus ? '+' : ''}</span>`).join(' ') : '<span class="dim">없음</span>'}</span>
-        <span class="cmp-k">이 역할에 걸리는 PlayStyle<i>점수에 안 들어감</i></span>
-        <span class="cmp-b">${r.phb.length ? r.phb.map(x => `<span class="chip wB" title="${esc(x.hits.join(' · '))}">${esc(x.nm)}${x.plus ? '+' : ''}</span>`).join(' ') : '<span class="dim">없음</span>'}</span></div></div>`;
+        <span class="cmp-a">${psCell(r.pha, 'wA', r.va)}</span>
+        <span class="cmp-k">이 역할에 걸리는 PlayStyle<i>${statTie ? '이 자리는 여기서 갈린다' : '스탯이 이미 갈랐다 — 참고'}</i></span>
+        <span class="cmp-b">${psCell(r.phb, 'wB', r.vb)}</span></div></div>`;
   }).join('');
   return `<h4>에메리 전술 기준 — 어느 쪽이 나은가</h4>
     <div class="cmp-verdict">${body}
     <p class="dim" style="font-size:11px;margin:8px 0 0">
-      <b>무엇이 들어가나</b> — 적합도는 <b>스탯이 전부</b>다: Σ(역할 핵심 속성 가중 × 속성값) ÷ 만점.
-      가중은 <b>정본 슬롯 역할</b>(에메리 재현)의 것을 그대로 쓴다 — 여기서 새 기준을 만들지 않는다.<br>
-      ⛔ <b>PlayStyle과 역할 숙련은 점수에 넣지 않았다.</b> 그 둘이 「몇 점어치인가」에 대한 근거가 없기 때문이다
-      (불변규칙 12) — 근거 없는 가중을 만들면 숫자가 판단을 가장한다. 대신 <b>그 역할이 보는 속성(●● 이상)을
-      건드리는 PlayStyle만</b> 따로 추려 적었다(칩에 마우스를 올리면 어느 속성에 걸리는지 나온다).
-      ⚠️ 이 연결표는 <b>판단값</b>이다 — EA PlayStyle 정의를 우리 29속성 어휘로 옮긴 것이고 EA가 명시한 게 아니다. ⭐ FC27은 스페셜 카드에 Role++를 일괄로 줘서
-      숙련의 변별력이 예전만 못하다는 점도 감안할 것.<br>
-      ⚠️ 차이가 <b>1.0 미만이면 구분하지 않는다</b>(그 정도는 노이즈다).
+      <b>판단 기준 — 2층이다.</b><br>
+      <b>1층 스탯(주).</b> 적합도 = Σ(역할 핵심 속성 가중 × 속성값) ÷ 만점. 가중은 <b>정본 슬롯 역할</b>(에메리 재현)의
+      것을 그대로 쓴다 — 여기서 새 기준을 만들지 않는다. <b>차이가 1.0 이상이면 이 층이 결정한다.</b><br>
+      <b>2층 PlayStyle(동점 깨기).</b> 스탯 차이가 1.0 미만이면 노이즈라 우열을 못 정한다. 그때만
+      <b>그 역할이 보는 속성(●● 이상)을 건드리는 PlayStyle</b>을 세어 <b>표 차이가 1표 이상이면</b> 그쪽을 택한다.
+      FC27에서 EA가 효과를 깎은 것(래피드·퀵스텝·로드리븐·핑드패스·티키타카·자키)은 <b>½표</b>다.<br>
+      ⭐ <b>왜 PlayStyle을 점수에 직접 더하지 않나</b> — EA는 PlayStyle이 원 스탯과 어떻게 결합되는지
+      (곱셈·임계값·독립 판정) <b>한 번도 밝힌 적이 없다</b>. 대신 <b>순서</b>는 1차 자료로 확인된다: FC27은 PS 보너스를
+      깎고 속성 비중을 올렸고(「refine the balance between PlayStyles and Attributes」 — 「플레이스타일과 스탯 사이의
+      균형을 다듬는다」), 인터셉트는 <b>PS 없는 고스탯 선수만 골라 상향</b>해 두 축이 같은 결과에 합쳐짐을 드러냈다.
+      ⇒ <b>같은 방향을 보되 스탯 차이를 뒤집지는 못한다</b> — 그래서 동점 구간에만 권한을 준다
+      (커널 Δ≤.05에서 영상이 판정하는 기존 규약과 같은 모양).<br>
+      ⚠️ ½표 배분과 PlayStyle↔속성 연결표는 <b>판단값</b>이다(어느 PS가 깎였는지까지는 EA 1차). 칩에 마우스를 올리면 근거가 나온다.<br>
+      ⛔ <b>역할 숙련은 어느 층에도 넣지 않았다</b> — FC27이 스페셜 카드에 Role++를 일괄로 줘서 변별력이 없다.
       ⛔ 케미는 빼고 <b>진화만 반영한</b> 카드 자체 값이며, <b>이 카드가 그 자리에 얼마나 맞나</b>일 뿐
       경기력·폼·상대는 담지 않는다.</p></div>`;
 }
@@ -1119,6 +1169,11 @@ export const FC_DETAIL_CSS = `
 .cmp-d.dA{color:var(--viz-us);background:rgba(217,89,38,.16)}
 .cmp-d.dB{color:var(--viz-them);background:rgba(57,135,229,.16)}
 .cmp-d.mid{font-size:13.5px}
+/* 무엇이 갈랐는지(스탯/PlayStyle)를 배지 안에 한 줄로 붙인다 — 판정 근거가 라벨과 떨어지면 안 읽힌다. */
+.cmp-d i{display:block;font-style:normal;font-size:9px;font-weight:600;opacity:.8;line-height:1.3;margin-top:-1px}
+/* FC27에서 효과가 깎인 PlayStyle(½표) — 칩을 흐리게 해 한 표짜리와 눈으로 갈린다. */
+.cmp-vfit .chip.cut{opacity:.6;border-style:dashed}
+.cmp-votes{display:inline-block;margin-left:5px;font-size:11px;opacity:.75;vertical-align:1px}
 .cmp-d.big{font-size:15.5px;padding:1px 8px}
 .cmp-card.sA b{color:var(--viz-us)} .cmp-card.sB b{color:var(--viz-them)}
 /* 에메리 기준 판정 */

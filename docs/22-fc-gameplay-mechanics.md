@@ -200,6 +200,27 @@
 ⚠️ §3 카탈로그의 Pinged Pass·Tiki Taka·Low Driven 효과 문구는 **FC26 기준**이다 — FC27 플레이 시 위 표가 우선한다.
 ⛔ 역할·포커스 목록 변화는 미공개(docs/21 「사전 조사」).
 
+### 6.1 ⭐ 「누가 이 자리에 더 맞나」 — PlayStyle을 넣은 판정 규약 (2026-09-22 신설, 사용자 지시)
+
+카드 비교(`site/assets/clubviz.js` `emeryVerdict`)가 쓰는 기준이다. **2층이고, 층을 섞지 않는다.**
+
+| 층 | 무엇 | 언제 결정권을 갖나 |
+|---|---|---|
+| **1층 스탯**(주) | 적합도 = Σ(역할 핵심 속성 가중 × 속성값) ÷ 만점. 가중은 `slot_canon_roles`+`game_role_key_attrs` 정본 | **차이 ≥ 1.0**이면 여기서 끝. PlayStyle은 표시만 |
+| **2층 PlayStyle**(동점 깨기) | 그 역할이 **●● 이상** 보는 속성을 건드리는 PlayStyle의 **표 수**. FC27에서 EA가 깎은 것은 **½표** | 1층 차이 < 1.0일 때만. **표 차이 ≥ 1**이면 그쪽 |
+
+- ⛔ **PlayStyle을 점수에 직접 더하지 않는다.** EA는 PlayStyle이 원 스탯과 어떻게 결합되는지(곱셈·임계·독립)를
+  **한 번도 밝힌 적이 없다**(리포트 §3.2 · 부재 증거 A). 계수를 지어내면 근거 없는 수가 판단을 가장한다(불변규칙 12).
+- ⭐ **그런데 순서는 1차 자료로 있다.** FC27은 PS 보너스를 깎고 속성 비중을 올렸고(「refine the balance between
+  PlayStyles and Attributes」 = 「플레이스타일과 스탯 사이의 균형을 다듬는다」 · A), Intercept는 **PS 없는 고스탯 선수만
+  골라 상향**해 두 축이 같은 결과값에 합산됨을 드러냈다(A→추론). ⇒ **같은 방향을 보되 스탯 차이를 뒤집지는 못한다.**
+- ⭐ 이 모양은 새로 만든 게 아니라 **docs/30 7단계와 같은 규약**이다 — 커널 Δ≤.05(실측 무결정)에서 영상이 tie-break
+  권한을 갖는 것과 똑같이, 「주 축이 못 가르는 구간에서만 보조 축이 판정한다」.
+- **½표 대상 6종**(§6 표가 정본 · `game_system_changes` #13·#22): Rapid · Quick Step · Low Driven · Pinged Pass ·
+  Tiki Taka · Jockey. ⚠️ **½이라는 값 자체는 판단값**이다(무엇이 깎였는지까지가 A등급).
+- **PlayStyle+는 표를 더하지 않는다** — FC27이 PS↔PS+ 격차를 좁혔다고 EA가 명시했다(A).
+- ⛔ **역할 숙련은 어느 층에도 넣지 않는다** — FC27이 스페셜 카드에 Role++를 일괄 부여해 변별력이 없다(A).
+
 Sources(2026-09-02 조사): [FUT.GG PlayStyles](https://www.fut.gg/playstyles/) ·
 [FUTBIN Press Proven](https://www.futbin.com/26/playstyles/press-proven) ·
 [Operation Sports — All FC26 PlayStyles](https://www.operationsports.com/all-ea-fc-26-playstyles-explained/) ·
