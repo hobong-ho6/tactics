@@ -196,6 +196,59 @@ export function enableHelpTips() {
   document.addEventListener('focusout', () => { tip.hidden = true; });
 }
 
+
+/* ── 카드 비교 (2026-09-22 사용자 요청 「카드를 비교하는 기능도 추가」) ──────────────────
+   두 카드를 나란히 놓고 **인게임 실전값**으로 견준다(실측 29속성 + 케미 부스트).
+   ⛔ 여기서도 계산을 만들지 않는다 — 상세 패널과 **같은 규칙**으로 값을 뽑아 차이만 표시한다.
+   ⚠️ 한쪽에만 있는 속성(GK↔필드)은 비교하지 않는다. */
+function liveAttrs(p, styles) {
+  const base = parse(p.current_attrs) || parse(p.attrs) || {};
+  const st = (styles || []).find(x => x.ea_id === p.chem_style_ea);
+  const raw = st ? (parse(st.boosts) || {}) : {};
+  const cp0 = p.chem_points ?? 0;
+  const scale = cp0 >= 3 ? 1 : cp0 === 2 ? 2 / 3 : cp0 === 1 ? 1 / 3 : 0;
+  const out = {};
+  for (const [k, v] of Object.entries(base)) out[k] = Math.min(99, v + Math.round((num(raw[k]) || 0) * scale));
+  return out;
+}
+
+export function compareCards(a, b, ctx = {}) {
+  if (!a || !b) return '';
+  const A = liveAttrs(a, ctx.chem_styles), B = liveAttrs(b, ctx.chem_styles);
+  const sixA = parse(a.current_six) || {}, sixB = parse(b.current_six) || {};
+  const head = c => `<div class="cmp-card">
+      ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="">` : ''}
+      <b>${esc(c.name)}</b>
+      <span class="dim">OVR ${c.current_ovr ?? '-'} · ${esc((c.positions || '').split('/')[0] || '')}</span></div>`;
+  const bar = (k, va, vb) => {
+    const d = (va ?? 0) - (vb ?? 0);
+    return `<tr><td class="cmp-a ${d > 0 ? 'win' : d < 0 ? 'lose' : ''}">${va ?? '—'}</td>
+      <td class="cmp-k">${esc(k)}</td>
+      <td class="cmp-b ${d < 0 ? 'win' : d > 0 ? 'lose' : ''}">${vb ?? '—'}</td></tr>`;
+  };
+  const sixRows = SIX.filter(k => sixA[k] != null || sixB[k] != null)
+    .map(k => bar(k, sixA[k], sixB[k])).join('');
+  const keys = Object.keys(A).filter(k => B[k] != null);
+  const attrRows = keys.map(k => bar(k, A[k], B[k])).join('');
+  const psOf = c => String(c.current_playstyles || '').split(',').map(x => x.trim()).filter(Boolean);
+  const chip = (list, other) => list.length
+    ? list.map(x => `<span class="chip ${other.includes(x) ? 'dim' : 'ok'}">${esc(x.replace(/\s*\+$/, ''))}</span>`).join(' ')
+    : '<span class="dim">없음</span>';
+  const pa = psOf(a), pb = psOf(b);
+  const winA = keys.filter(k => A[k] > B[k]).length, winB = keys.filter(k => B[k] > A[k]).length;
+  return `<div class="fc-cmp">
+    <div class="cmp-head">${head(a)}<span class="cmp-vs">vs</span>${head(b)}</div>
+    <p class="dim" style="font-size:11.5px;margin:6px 0">29속성 기준 <b>${esc(a.name)} ${winA}개</b> ·
+      <b>${esc(b.name)} ${winB}개</b> 우위. 값은 <b>케미까지 반영한 인게임 실전값</b>이다
+      (개인 케미 ${a.chem_points ?? 0}/3 ↔ ${b.chem_points ?? 0}/3).</p>
+    <table class="tbl cmp-tbl"><tbody>${sixRows}</tbody></table>
+    <h4 style="margin:12px 0 6px">PlayStyle</h4>
+    <div class="cmp-ps"><div>${chip(pa, pb)}</div><div>${chip(pb, pa)}</div></div>
+    <details style="margin-top:10px"><summary class="dim" style="cursor:pointer;font-size:12px">29속성 전부 펼치기</summary>
+      <table class="tbl cmp-tbl" style="margin-top:6px"><tbody>${attrRows}</tbody></table></details>
+  </div>`;
+}
+
 /* 아무 카드도 고르지 않았을 때의 사이드 패널 — 빈 칸으로 두지 않고 **팀 설정 + 11칸 역할**을 보여준다.
    카드 pill에서 뺀 역할·포커스가 여기 온전히 들어간다(잘림 없이). */
 export function fcSideEmpty(meta = {}, xi = []) {
@@ -633,35 +686,36 @@ const ACCEL_TIP = '가속 곡선의 유형이다. Explosive는 초반 몇 걸음
 const STARS = (n, max = 5) => n == null ? '—'
   : `<span class="fc-star">${'★'.repeat(n)}</span><span class="fc-star off">${'★'.repeat(Math.max(0, max - n))}</span>`;
 
-/* AcceleRATE 구간 표 — 툴팁 한 줄로는 조건을 못 담는다(2026-09-22 사용자 요청).
-   ⛔⛔ **EA는 이 판정식을 공개한 적이 없다.** 아래 수치는 커뮤니티 데이터마이닝 해석이라
-        불변규칙 12의 **D등급**이다 — 화면에도 그렇게 적는다. 우리 처방 근거로 쓰지 않는다.
-   ⭐ 다만 **키가 관여한다**는 것은 EA 1차로 확인된다(FC27 노트의 여성 Lengthy 키 하한 172cm).
-   ⚠️ 몸무게가 들어간다는 근거는 찾지 못했다 — 표에 그렇게 적는다(결손이 아니라 「근거 없음」). */
+/* AcceleRATE 설명 — 유형·판정축·성능차를 한 곳에 모은다(2026-09-22 사용자 요청).
+   ⭐ EA 1차로 확인된 것은 둘뿐이다(game_system_changes, HIGH):
+      ⑴ FC27은 **3종으로 회귀**했고(Explosive/Controlled/Lengthy) **2차 속성은 힘(Strength)**이다.
+      ⑵ FC27은 **유형 간 차이를 일부러 줄이고** 가속·질주 속성 비중을 높였다(여성 Lengthy 키 하한 172cm).
+   ⛔ 구체 임계값과 구간별 속도 곡선은 **EA가 공개한 적이 없다** — 커뮤니티 해석(D등급)이고
+      우리 원장에도 **통제 실측(C등급)·데이터마이닝(B등급)이 0건**이다(리서치 §한계, 재조사 10월 중순).
+      ⇒ 처방 근거로 쓰지 않는다. */
 function accelTable(p) {
   const at = parse(p.current_attrs) || parse(p.attrs) || {};
-  const ag = at['민첩성'], st = at['힘'], ac = at['가속'], h = p.height_cm;
+  const ag = at['민첩성'], st = at['힘'], ac = at['가속'];
   const gap = (ag != null && st != null) ? ag - st : null;
   const ROWS = [
-    ['Explosive',           '민첩−힘 ≥ 20',  '가속 ≥ 80', '≤ 175cm'],
-    ['Mostly Explosive',    '민첩−힘 ≥ 12',  '가속 ≥ 80', '≤ 182cm'],
-    ['Controlled Explosive','민첩−힘 ≥ 4',   '가속 ≥ 70', '≤ 182cm'],
-    ['Controlled',          '그 밖의 전부',   '—',        '—'],
-    ['Controlled Lengthy',  '힘−민첩 ≥ 4',   '힘 ≥ 65',   '≥ 174cm'],
-    ['Mostly Lengthy',      '힘−민첩 ≥ 12',  '힘 ≥ 75',   '≥ 174cm'],
-    ['Lengthy',             '힘−민첩 ≥ 20',  '힘 ≥ 80',   '≥ 174cm'],
+    ['Explosive',  '민첩성 > 힘',  '초반 몇 걸음이 가장 빠르다. 최고속 유지는 약해 길게 달리면 따라잡힌다.'],
+    ['Controlled', '민첩성 ≈ 힘',  '출발과 최고속이 고르다. 어느 쪽에도 크게 유리하거나 불리하지 않다.'],
+    ['Lengthy',    '힘 > 민첩성',  '출발이 무겁지만 길게 달릴수록 빨라진다. 긴 공간 경합에 강하다.'],
   ];
   const cur = String(p.accelerate || '');
-  return `<details class="fc-acc"><summary>AcceleRATE 구간 표 — 무엇이 바뀌면 유형이 갈리나</summary>
+  return `<details class="fc-acc"><summary>AcceleRATE — 유형 차이와 판정 축</summary>
     <p class="dim" style="font-size:11.5px;margin:6px 0">이 카드: 민첩 <b>${ag ?? '—'}</b> · 힘 <b>${st ?? '—'}</b>
-      ${gap != null ? `(차 <b>${gap > 0 ? '+' : ''}${gap}</b>)` : ''} · 가속 <b>${ac ?? '—'}</b>${h ? ` · 키 <b>${h}cm</b>` : ''}</p>
-    <table class="tbl"><thead><tr><th>유형</th><th>민첩↔힘</th><th>속성</th><th>키</th></tr></thead><tbody>
+      ${gap != null ? `(민첩−힘 <b>${gap > 0 ? '+' : ''}${gap}</b>)` : ''} · 가속 <b>${ac ?? '—'}</b></p>
+    <table class="tbl"><thead><tr><th>유형</th><th>판정 축</th><th>달리기 특성</th></tr></thead><tbody>
     ${ROWS.map(r => `<tr${cur && r[0] === cur ? ' style="background:rgba(94,232,138,.10)"' : ''}>
-      <td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}
+      <td><b>${r[0]}</b></td><td>${r[1]}</td><td class="dim">${r[2]}</td></tr>`).join('')}
     </tbody></table>
-    <p class="dim" style="font-size:11.5px;margin:6px 0 0">⛔ 이 수치는 <b>커뮤니티 데이터마이닝 해석(D등급)</b>이다 —
-      EA는 판정식을 공개한 적이 없다. <b>키가 관여한다</b>는 것만 EA 1차로 확인된다(FC27 노트의 여성 Lengthy 키 하한 172cm).
-      ⚠️ <b>몸무게가 들어간다는 근거는 찾지 못했다.</b>
+    <p class="dim" style="font-size:11.5px;margin:7px 0 0">
+      ⭐ <b>EA 1차로 확인된 것</b>(HIGH): FC27은 <b>3종으로 회귀</b>했고 <b>2차 속성은 힘</b>이다 ·
+      FC27은 <b>유형 간 차이를 일부러 줄이고</b> 가속·질주 속성 비중을 높였다(키도 관여 — 여성 Lengthy 하한 172cm).<br>
+      ⛔ <b>구간별 속도 수치·정확한 임계값은 공개된 적이 없다.</b> 우리 원장에도 통제 실측·데이터마이닝이
+      <b>0건</b>이라(FC27 출시 전 리서치) 「몇 m에서 몇 초」류를 말할 근거가 없다 — <b>재조사 10월 중순</b>.
+      ⚠️ 몸무게가 판정에 들어간다는 근거는 찾지 못했다.<br>
       ⭐ 케미 스타일로 민첩·힘이 바뀌면 유형이 갈릴 수 있다 — 위 「fut.gg 신호」의 스타일별 AcceleRATE가 그 결과다.</p></details>`;
 }
 
@@ -801,6 +855,19 @@ export const FC_DETAIL_CSS = `
 .fc-acc > summary{cursor:pointer;font-size:12px;color:var(--acc)}
 .fc-acc .tbl{width:100%;table-layout:auto;margin-top:6px}
 .fc-acc .tbl td,.fc-acc .tbl th{font-size:11.5px;padding:3px 6px}
+/* 카드 비교 */
+.cmp-head{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;text-align:center}
+.cmp-card img{width:84px;display:block;margin:0 auto 4px}
+.cmp-card b{display:block;font-size:13px}
+.cmp-card span{display:block;font-size:11px}
+.cmp-vs{color:var(--dim);font-size:12px;font-weight:700}
+.cmp-tbl{width:100%;table-layout:fixed}
+.cmp-tbl td{padding:3px 6px;font-size:12.5px}
+.cmp-k{text-align:center;color:var(--dim);font-size:11.5px}
+.cmp-a{text-align:right;font-weight:700} .cmp-b{text-align:left;font-weight:700}
+.cmp-a.win,.cmp-b.win{color:var(--ok)} .cmp-a.lose,.cmp-b.lose{color:var(--dim)}
+.cmp-ps{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11.5px}
+.cmp-pick{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px}
 /* 케미 부스트 실제 적용값 — 표에서 즉시 눈에 들어와야 한다. */
 .fc-boost{display:inline-block;min-width:34px;text-align:center;font-weight:800;font-size:12.5px;
   color:#062b12;background:var(--ok);border-radius:99px;padding:1px 8px}

@@ -110,7 +110,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260922f';
+import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260922g';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -272,6 +272,24 @@ function renderNow(){
              autoFit: auto ? Math.round(auto.f) : null, ranked: ranked.slice(0, 3),
              futgg: { rows: fgRows }, bench: slotIdx == null };
   };
+  /* ⭐ 카드 비교(2026-09-22) — 상세에서 「비교에 담기」로 두 장을 고르면 나란히 견준다.
+     ⛔ 담는 것은 **카드 객체**가 아니라 id다 — 렌더가 다시 돌아도 살아남게. */
+  let cmp = [];
+  const cmpCtx = () => ({ chem_styles: EVO.chem_styles });
+  const byId = id => (EVO.club?.players || []).find(x => x.id === id);
+  const renderCmp = () => {
+    const picked = cmp.map(byId).filter(Boolean);
+    const chips = picked.map(x => `<span class="chip">${esc(x.name)}</span>`).join(' ');
+    side.innerHTML = `<div class="cmp-pick"><b>카드 비교</b>${chips}
+        <button class="act" data-cmpclear>비우기</button></div>`
+      + (picked.length === 2 ? compareCards(picked[0], picked[1], cmpCtx())
+         : '<p class="dim">카드를 하나 더 담으면 비교가 열린다 — 상세에서 「비교에 담기」를 누른다.</p>');
+    side.querySelector('[data-cmpclear]').addEventListener('click', () => {
+      cmp = []; document.querySelectorAll('#nowpitch .sel').forEach(x => x.classList.remove('sel'));
+      side.innerHTML = fcSideEmpty(T, xiRows);
+    });
+  };
+
   const openDetail = (p, role, el, slotIdx) => {
     if (!p) return;
     document.querySelectorAll('#nowpitch .sel').forEach(x => x.classList.remove('sel'));
@@ -279,10 +297,16 @@ function renderNow(){
     if (el?.classList.contains('fc-slot')) el.classList.add('sel');
     else el?.classList.add('sel');
     el?.querySelector?.('.fc-card')?.classList.add('sel');
-    side.innerHTML = '<div class="fc-back"><a class="act" href="#" data-back>← 팀 설정으로</a></div>'
+    side.innerHTML = `<div class="fc-back"><a class="act" href="#" data-back>← 팀 설정으로</a>
+        <button class="act" data-cmpadd style="margin-left:6px">${cmp.includes(p.id) ? '비교에서 빼기' : '비교에 담기'}</button></div>`
       + cardDetail(p, { role, team: T, log: (EVO.club || {}).log, chem_styles: EVO.chem_styles,
                         reco: recoFor(p, slotIdx), role_map: EVO.role_map,
                         catalog: EVO.catalog, face_stats: EVO.face_stats });
+    side.querySelector('[data-cmpadd]').addEventListener('click', () => {
+      if (cmp.includes(p.id)) cmp = cmp.filter(x => x !== p.id);
+      else { cmp = [...cmp, p.id].slice(-2); }      // 최근 두 장만 남긴다
+      if (cmp.length) renderCmp(); else side.innerHTML = fcSideEmpty(T, xiRows);
+    });
     side.querySelector('[data-back]').addEventListener('click', e => {
       e.preventDefault();
       document.querySelectorAll('#nowpitch .sel').forEach(x => x.classList.remove('sel'));
