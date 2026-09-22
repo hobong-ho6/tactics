@@ -339,3 +339,7 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .pgroup{margin-top:14px}
 .pgroup > h4{margin:0 0 6px;font-size:13px;color:var(--dim);font-weight:700}
 .pgroup .player-report-list{margin-top:0}
+
+/* 긴 산문의 문장 불릿(prose.js) — 한 줄이 길어 안 읽히던 전술 설명용 */
+.prose .pl{display:block;position:relative;padding-left:14px;margin:3px 0}
+.prose .pl::before{content:'·';position:absolute;left:3px;top:0;color:var(--acc);font-weight:800}

@@ -53,7 +53,18 @@ function body(raw){
   const grade = t.match(GRADE);
   if (grade){ head += `<span class="badge pgrade">${grade[1]}</span>`; t = t.slice(grade[0].length); }
 
-  if (!ENUM.test(t)) return head + bold(t);
+  /* ⭐ 원문자 목록이 없어도 **긴 산문은 문장 단위로 나눈다**(2026-09-22 사용자 지시
+     「한 줄이 너무 길다 — 불릿이나 줄바꿈으로」). 전술 설명이 대표적이다.
+     ⛔ `·`로 나누면 안 된다 — 「점유 36%·패스 331」처럼 **수치 나열**에 쓰인다.
+     ⛔ 마침표로 나눌 때 소수점(1.16)·약어가 걸리면 안 되므로 **한글 바로 뒤 마침표**만 경계로 본다.
+     ⚠️ 문장이 3개 이상일 때만 나눈다 — 짧은 문구까지 쪼개면 되레 산만하다. */
+  if (!ENUM.test(t)) {
+    const parts = t.split(/(?<=[가-힣])\.\s+/).map(x => x.trim()).filter(Boolean);
+    if (parts.length >= 3 && t.length > 160)
+      return head + parts.map(x =>
+        `<span class="pl">${bold(x.endsWith('.') ? x : x + '.')}</span>`).join('');
+    return head + bold(t);
+  }
   const parts = t.split(ENUM_SPLIT);
   // ⑴이 **강조** 안에 들어간 원문이 있다(예: '**⑴ 출처가 브레스트 시절 ⑵ 3티어**').
   // 거기서 끊으면 강조가 쪼개져 * 가 화면에 남는다 — 그런 블록은 줄만 안 나눈다.

@@ -191,7 +191,9 @@ export function playerRows(r, team, W = 900){
     const stop = outAt[k] ?? (p.started && p.minutes != null && p.minutes < end ? start + p.minutes : end);
     return { ...p, start: Math.max(0, start), stop: Math.min(end, Math.max(start, stop)) }; })
     .sort((a, b) => (b.started || 0) - (a.started || 0) || (b.rating ?? 0) - (a.rating ?? 0));
-  const L = 118, GAP = 26, T = 30, rowH = 22, H = T + rows.length * rowH + 14;
+  /* ⚠️ 행 높이 22px·라벨 118px이면 17명에서 표가 화면을 잡아먹는다(2026-09-22 사용자 지적).
+     행을 17px로 줄이고 라벨·여백도 함께 줄인다 — 막대는 그대로라 읽는 데 지장 없다. */
+  const L = 104, GAP = 20, T = 24, rowH = 17, H = T + rows.length * rowH + 10;
   const ganttW = Math.round((W - L - GAP) * 0.52), ratW = W - L - GAP - ganttW;
   const gx = m => L + ganttW * (m / end);
   const rx0 = L + ganttW + GAP, lo = 5.5, hi = 10;
@@ -201,17 +203,17 @@ export function playerRows(r, team, W = 900){
     `<line x1="${gx(t)}" x2="${gx(t)}" y1="${T - 8}" y2="${H - 8}" stroke="${GRID}"/><text x="${gx(t)}" y="${T - 12}" text-anchor="middle" font-size="10" fill="var(--dim)">${t}′</text>`).join('');
   const rticks = [6, 7, 8, 9].map(v =>
     `<line x1="${rx(v)}" x2="${rx(v)}" y1="${T - 8}" y2="${H - 8}" stroke="${GRID}"/><text x="${rx(v)}" y="${T - 12}" text-anchor="middle" font-size="10" fill="var(--dim)">${v}</text>`).join('');
-  const body = rows.map((p, i) => { const y = T + i * rowH + 13;
+  const body = rows.map((p, i) => { const y = T + i * rowH + 11;
     const tip = `${p.position ?? ''} ${p.label} · ${p.started ? '선발' : '교체'} · ${p.start}′~${p.stop}′(${p.minutes ?? '—'}분) · 평점 ${p.rating ?? '—'} · 접점 ${p.hit_points ?? '—'}`;
     return `<g class="hit" data-tip="${esc(tip)}" data-pid="${p.player_id ?? ''}" style="cursor:pointer">
-      <text x="${L - 8}" y="${y + 4}" text-anchor="end" font-size="11" fill="var(--txt)">${esc(p.label)}</text>
-      <text x="6" y="${y + 4}" font-size="9.5" fill="${p.started ? 'var(--acc)' : 'var(--dim)'}">${p.started ? '선발' : '교체'}</text>
-      <text x="36" y="${y + 4}" font-size="9.5" fill="var(--dim)">${esc(p.position ?? '')}</text>
-      <rect x="${gx(p.start)}" y="${y - 6}" width="${Math.max(2, gx(p.stop) - gx(p.start))}" height="12" rx="3" fill="${US}" fill-opacity="${p.started ? .8 : .45}"/>
-      <text x="${gx(p.stop) + 5}" y="${y + 4}" font-size="9.5" fill="var(--dim)">${p.minutes ?? '—'}′</text>
-      ${p.rating != null ? `<rect x="${rx0}" y="${y - 6}" width="${Math.max(2, rx(p.rating) - rx0)}" height="12" rx="3" fill="${col(p.rating)}" fill-opacity=".85"/>
-        <text x="${rx(p.rating) + 6}" y="${y + 4}" font-size="10.5" font-weight="700" fill="var(--txt)">${p.rating}</text>
-        <text x="${W - 6}" y="${y + 4}" text-anchor="end" font-size="9.5" fill="var(--dim)">접점 ${p.hit_points ?? '—'}</text>`
+      <text x="${L - 8}" y="${y + 3.5}" text-anchor="end" font-size="10" fill="var(--txt)">${esc(p.label)}</text>
+      <text x="4" y="${y + 3.5}" font-size="8.5" fill="${p.started ? 'var(--acc)' : 'var(--dim)'}">${p.started ? '선발' : '교체'}</text>
+      <text x="30" y="${y + 3.5}" font-size="8.5" fill="var(--dim)">${esc(p.position ?? '')}</text>
+      <rect x="${gx(p.start)}" y="${y - 5}" width="${Math.max(2, gx(p.stop) - gx(p.start))}" height="10" rx="3" fill="${US}" fill-opacity="${p.started ? .8 : .45}"/>
+      <text x="${gx(p.stop) + 4}" y="${y + 3.5}" font-size="8.5" fill="var(--dim)">${p.minutes ?? '—'}′</text>
+      ${p.rating != null ? `<rect x="${rx0}" y="${y - 5}" width="${Math.max(2, rx(p.rating) - rx0)}" height="10" rx="3" fill="${col(p.rating)}" fill-opacity=".85"/>
+        <text x="${rx(p.rating) + 5}" y="${y + 3.5}" font-size="9.5" font-weight="700" fill="var(--txt)">${p.rating}</text>
+        <text x="${W - 6}" y="${y + 3.5}" text-anchor="end" font-size="8.5" fill="var(--dim)">접점 ${p.hit_points ?? '—'}</text>`
         : `<text x="${rx0}" y="${y + 4}" font-size="10" fill="var(--dim)">평점 미수집</text>`}</g>`; }).join('');
   return `<div class="vz wide"><h4>선수별 출전 구간·평점 <span class="dim">— 왼쪽: 언제 뛰었나 · 오른쪽: 평점(6.5 평범 · 7.5 상위) · 이름을 누르면 아래 상세가 열린다</span></h4>
     <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="선수별 출전 구간과 평점">

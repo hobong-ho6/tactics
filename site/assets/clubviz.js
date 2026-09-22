@@ -191,7 +191,7 @@ export const FC_CSS = `
    가운데가 아니라 바깥에 생긴다. */
 /* ⭐ 2026-09-22: 전체적으로 좁게 쓰고 글씨가 작다는 지적 — 피치·사이드 모두 키웠다.
    사이드는 선수 프로필이 들어가는 칸이라 420 → **최대 560**까지 늘린다. */
-.fc-layout{display:grid;grid-template-columns:minmax(0,860px) minmax(400px,560px);
+.fc-layout{display:grid;grid-template-columns:minmax(0,820px) minmax(460px,660px);
   gap:24px;align-items:start;justify-content:center}
 .fc-main{min-width:0}
 /* ⭐ 크기 규칙(2026-09-20) — 이 세 줄이 「비율이 안 맞고 정보가 작다」의 실제 해법이다:
@@ -219,10 +219,10 @@ export const FC_CSS = `
       getBoundingClientRect가 그대로였다) — 슬롯이 이미 translate(-50%,50%)를 쓰는 배치 박스라
       거기에 scale을 곱해야 한다. 벤치는 슬롯이 없어 카드에 직접 준다.
    ⚠️ 커지면 이웃과 겹치므로 z-index를 올려 **선택한 쪽이 위로** 오게 한다. */
-.fc-slot.sel{z-index:5;transform:translate(-50%,50%) scale(1.14)}
+.fc-slot.sel{z-index:5;transform:translate(-50%,50%) scale(1.28)}
 .fc-card.sel .fc-artwrap{filter:drop-shadow(0 4px 10px rgba(0,0,0,.6))}
 .fc-card.sel .fc-tag{border-color:var(--ok);background:rgba(4,30,14,.92)}
-.fc-benchrow .fc-card.sel{transform:scale(1.1)}
+.fc-benchrow .fc-card.sel{transform:scale(1.18)}
 .fc-card.empty{opacity:.45;cursor:default}
 .fc-artwrap{position:relative;line-height:0}
 .fc-art{width:100%;display:block;filter:drop-shadow(0 3px 6px rgba(0,0,0,.55))}
@@ -521,10 +521,20 @@ export function cardDetail(p, ctx = {}) {
   return `<div class="fc-detail">
     <div class="fc-dhead">
       <img class="fc-dart" src="${esc(p.card_image_url || '')}" alt="">
-      <div>
-        <h3>${esc(p.name)} <small class="dim">OVR ${p.current_ovr ?? '-'}${p.card_ovr !== p.current_ovr ? ` <span class="up">(카드 인쇄 ${p.card_ovr})</span>` : ''}</small></h3>
-        <div class="dim" style="font-size:12px">${esc(p.positions || '')} · ${esc(p.club || '')} · ${esc(p.league || '')} · ${esc(p.nation || '')}</div>
-        <div style="margin-top:6px">${prof}</div>
+      <div class="fc-dinfo">
+        <h3>${esc(p.name)}</h3>
+        <div class="fc-dovr"><b>${p.current_ovr ?? '-'}</b><span>OVR</span>
+          ${p.card_ovr !== p.current_ovr ? `<em class="up">진화 전 ${p.card_ovr}</em>` : ''}</div>
+        <div class="fc-dmeta">${esc(p.positions || '')} · ${esc(p.club || '')}<br>${esc(p.league || '')} · ${esc(p.nation || '')}</div>
+        <div class="fc-dsix">${SIX.map(k => `<span><i>${k}</i><b>${cur?.[k] ?? '—'}</b></span>`).join('')}</div>
+        <div class="fc-dchips">
+          ${p.chem_style_ea ? `<span class="chip">케미 ${p.chem_points ?? 0}/3</span>` : ''}
+          <span class="chip">진화 ${(ctx.log || []).filter(l => l.club_player_id === p.id && !l.is_void).length}회</span>
+          ${num(p.skill_moves) ? `<span class="chip">스킬 ${num(p.skill_moves)}★</span>` : ''}
+          ${num(p.weak_foot) ? `<span class="chip">약발 ${num(p.weak_foot)}★</span>` : ''}
+          ${p.accelerate ? `<span class="chip dim">${esc(p.accelerate)}</span>` : ''}
+        </div>
+        <div style="margin-top:8px">${prof}</div>
       </div>
     </div>
     ${role ? `<h4>이 자리의 전술</h4><div class="plist"><button disabled>${esc(role.position_name)}</button>
@@ -575,8 +585,21 @@ export const FC_DETAIL_CSS = `
 .fc-vote i{flex:1;height:7px;border-radius:99px;background:var(--bg);overflow:hidden}
 .fc-vote i b{display:block;height:100%;background:var(--acc);border-radius:99px}
 .fc-vote em{flex:0 0 36px;text-align:right;font-style:normal;font-weight:700}
-.fc-dhead{display:flex;gap:12px;align-items:flex-start}
-.fc-dart{width:142px;flex:0 0 auto}
+/* 상세 헤더 — 카드 옆에 **한눈에 필요한 것**을 모은다(2026-09-22 사용자 지시 「재배치해서 더 잘 알 수 있게」):
+   이름 → 큰 OVR(진화 전 병기) → 포지션·소속 → 6대 스탯 → 요약 칩(케미·진화·스킬·약발·가속). */
+.fc-dhead{display:flex;gap:16px;align-items:flex-start}
+.fc-dinfo{min-width:0;flex:1}
+.fc-dovr{display:flex;align-items:baseline;gap:6px;margin:2px 0 6px}
+.fc-dovr b{font-size:34px;line-height:1;font-weight:800}
+.fc-dovr span{font-size:12px;color:var(--dim);letter-spacing:.5px}
+.fc-dovr em{font-style:normal;font-size:12px;font-weight:700;margin-left:4px}
+.fc-dmeta{font-size:12.5px;color:var(--dim);line-height:1.5}
+.fc-dsix{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin:10px 0 8px;text-align:center}
+.fc-dsix i{display:block;font-style:normal;font-size:10px;color:var(--dim);letter-spacing:.3px}
+.fc-dsix b{display:block;font-size:16px;font-weight:800;line-height:1.2}
+.fc-dchips{display:flex;flex-wrap:wrap;gap:5px}
+.fc-dchips .chip{font-size:11.5px}
+.fc-dart{width:196px;flex:0 0 auto}
 .fc-dhead h3{margin:0 0 4px;font-size:19px}
 .fc-chemhead{display:flex;gap:8px;align-items:center;margin-bottom:6px}
 .fc-chemhead img{width:26px;padding:4px;box-sizing:border-box;border-radius:50%;
