@@ -510,6 +510,22 @@ function gainsHTML(p, own, pid){
     ${gotPS.length ? `<div class="gain-why">${gotPS.map(nm => { const d = PLAYSTYLES[nm.replace(/\s*\+$/, '')];
         return d ? `<div><b>${esc(nm)}</b> — ${esc(d.base)}</div>` : ''; }).join('')}</div>` : ''}</div>`;
 }
+/* ⭐ 경로 하나의 **우리 계산 결과**를 한 번만 내고 재사용한다 — 같은 패널의 요약·프로필·단계표가
+   각자 계산하면 또 갈린다(오늘 세션의 반복 주제). 보유 카드가 없으면 null. */
+const _projCache = new Map();
+function projectFor(p, pid){
+  const key = `${pid}|${p.path_key || (p.ids || []).join('>')}`;
+  if (_projCache.has(key)) return _projCache.get(key);
+  const st = STATE[String(pid)]; const base = J(st?.attrs, null);
+  let out = null;
+  if (base){
+    const bs = evalBasis(pid, p.pres);
+    const isGk = /GK/.test(String((p.path || [])[0]?.position || st.positions || ''));
+    const r = projectPath(p, base, isGk, bs.pres, bs.have, bs.attrOf);
+    out = { ...r, beforeSix: faceFromAttrs(base, EVO.face_stats || [], isGk), st, isGk };
+  }
+  _projCache.set(key, out); return out;
+}
 function evoResultCard(p, pid){
   const steps = p.path || []; const last = steps[steps.length - 1];
   if (!last || !last.attrs) return '';
@@ -581,12 +597,31 @@ function pathHTML(p, i, pid){
   return `<details class="path pcard tier${p.tier}${allDone ? ' path-done' : ''}" style="margin:6px 0"${i === 0 && !allDone ? ' open' : ''}>
     <summary class="kv">${allDone ? '<span class="badge">완료</span>' : i === 0 ? '<span class="badge hi">최적 제안</span>' : `<span class="badge">${i + 1}순위</span>`}${badge}
       <b>${esc(p.evolution_names)}</b> <span class="chip">${p.steps}단계</span>
-      <span class="chip${p.d ? '' : ' dim'}"${p.d ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}>OVR ${p.ovr_before}→${p.ovr_after}${p.d ? ` (+${p.d})` : ''}</span>
+      <span class="chip${p.d ? '' : ' dim'}"${p.d ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}
+        title="OVR은 EA 산식이 비공개라 우리가 산출하지 못한다 — fut.gg가 기준 카드에서 계산한 값이다. 6대 스탯·29속성은 지금 내 카드에서 직접 계산한 값을 쓴다.">OVR ${p.ovr_before}→${p.ovr_after}${p.d ? ` (+${p.d})` : ''} <small class="dim">fut.gg</small></span>
       ${p.rs ? scoreChip(p.rs) : ''}
       <small class="dim">${esc(costText(p))} · ${why}</small></summary>
     ${p.upgrades ? `<div class="dim" style="font-size:12px;margin-top:4px">${esc(Object.entries(J(p.upgrades, {})).map(([k, v]) => `${k} +${v}`).join(' · '))}</div>` : ''}
-    <div class="dim" style="font-size:12px;margin-top:4px"><b>적용 후 6대 스탯</b> ${sixText(p.six_before, p.six_after)}</div>
-    <div class="evo-dumb">${sixDumbbell(J(p.six_before, {}), J(p.six_after, {}), { W: 420, gk: /GK/.test(String(p.path && p.path[0] && p.path[0].position) || '') })}</div>
+    ${(() => {
+      /* ⛔⛔ **한 패널 안에서 기준을 섞지 않는다**(2026-09-22 사용자 질문 「단계별 직접 계산을 웹에 보여주는 거냐,
+         아니면 최종 스탯에만이냐」에서 드러남). 종전엔 요약 줄·이 텍스트·덤벨이 **fut.gg(기준 카드)** 값이고
+         아래 프로필·단계 표만 **우리 계산(지금 카드)**이라, 같은 카드에 두 벌의 숫자가 있었다.
+         ⇒ 보유 카드가 있으면 **여기도 우리 계산**을 쓴다. 없으면 fut.gg를 쓰고 그렇게 적는다. */
+      const gk = /GK/.test(String(p.path && p.path[0] && p.path[0].position) || '');
+      const pr = pid != null ? projectFor(p, pid) : null;
+      /* ⚠️ `faceFromAttrs`는 객체를 돌려주고 `sixText`는 키 순서를 그대로 쓴다 —
+         정렬하지 않으면 **알파벳순(DEF·DRI·PAC…)**으로 나와 카드 표기와 어긋난다(2026-09-22 실측). */
+      const ord = o => { const ks = gk ? GK_KEYS : SIX_KEYS, out = {};
+        for (const k of ks) if (o && o[k] != null) out[k] = o[k];
+        for (const k of Object.keys(o || {})) if (out[k] == null) out[k] = o[k];
+        return out; };
+      const b = ord(pr ? pr.beforeSix : J(p.six_before, {}));
+      const a = ord(pr ? pr.six : J(p.six_after, {}));
+      return `<div class="dim" style="font-size:12px;margin-top:4px"><b>적용 후 6대 스탯</b>
+          <small>${pr ? '— <b>지금 내 카드</b>에서 직접 계산' : '— fut.gg가 기준 카드에서 계산'}</small>
+          ${sixText(JSON.stringify(b), JSON.stringify(a))}</div>
+        <div class="evo-dumb">${sixDumbbell(b, a, { W: 420, gk })}</div>`;
+    })()}
     ${pid != null ? evoResultCard(p, pid) : ''}
     ${stepsHTML(p, pid)}
     <div style="margin-top:4px">${String(p.evolution_urls || '').split('\n').filter(Boolean).map(u => `<a href="${esc(u)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>`).join(' ')}</div>
