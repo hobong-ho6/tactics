@@ -450,3 +450,11 @@ button.filt{display:inline-flex;align-items:center;gap:5px;background:none;borde
 button.filt>i{font-style:normal;font-size:12px;line-height:1}
 button.filt:hover{border-color:var(--acc);color:var(--txt)}
 button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,61,.1);font-weight:700}
+
+/* 갈림길 가지별 「왜 이쪽인가」 — ★(fut.gg 선택)와 구분되게 아래 줄로 뺀다(2026-09-22) */
+.whybox{margin:2px 0 6px 42px;font-size:11px;line-height:1.6}
+.why-r{color:var(--dim)}
+.why-r>i{font-style:normal;font-weight:800;color:var(--acc);margin-right:5px}
+.why-r b.ok-t{color:var(--ok)} .why-r b.bad-t{color:var(--warn)}
+.why-v{color:var(--ok);font-weight:600;margin-bottom:2px}
+.why-v b{color:var(--ok)}

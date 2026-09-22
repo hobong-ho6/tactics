@@ -230,7 +230,7 @@ function roleDesc(c, ctx) {
       바로 읽히는 사실이라 지어낼 여지가 적다.
    ⚠️ 그래도 이 연결표 자체는 **판단값(MEDIUM)**이다 — EA 정의 문구(fut.gg /api/fut/playstyles/)를
       우리 29속성 어휘로 옮긴 것이고, EA가 "이 PS는 이 속성을 쓴다"고 명시한 게 아니다. */
-const PS_ATTRS = {
+export const PS_ATTRS = {   // ⭐ 화면들이 같은 연결표를 쓰도록 내보낸다(2026-09-22)
   'Incisive Pass': ['짧은 패스', '긴 패스', '커브', '시야'],
   'Pinged Pass': ['긴 패스'], 'Whipped Pass': ['크로스'], 'Tiki Taka': ['짧은 패스'],
   'Long Ball Pass': ['긴 패스'], 'Trivela': ['커브'],
