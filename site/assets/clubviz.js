@@ -222,6 +222,29 @@ function roleDesc(c, ctx) {
   return top.length ? `핵심 속성: ${top.join(' · ')}` : '';
 }
 
+/* PlayStyle ↔ 속성 연결 (2026-09-22 사용자 제안 「포지션별로 패스가 중요하면 PlayStyle도 가중을」).
+   ⛔⛔ **점수에는 넣지 않는다.** PlayStyle이 「적합도 몇 점어치인가」는 EA도 커뮤니티도 답한 적이 없고,
+        내가 임의 계수를 만들면 근거 없는 가중이 숫자로 포장된다(불변규칙 12).
+   ⇒ 대신 **「그 역할이 보는 속성을 건드리는 PlayStyle인가」**만 표시한다. 그건 EA의 PlayStyle 정의에서
+      바로 읽히는 사실이라 지어낼 여지가 적다.
+   ⚠️ 그래도 이 연결표 자체는 **판단값(MEDIUM)**이다 — EA 정의 문구(fut.gg /api/fut/playstyles/)를
+      우리 29속성 어휘로 옮긴 것이고, EA가 "이 PS는 이 속성을 쓴다"고 명시한 게 아니다. */
+const PS_ATTRS = {
+  'Incisive Pass': ['짧은 패스', '긴 패스', '커브', '시야'],
+  'Pinged Pass': ['긴 패스'], 'Whipped Pass': ['크로스'], 'Tiki Taka': ['짧은 패스'],
+  'Long Ball Pass': ['긴 패스'], 'Trivela': ['커브'],
+  'First Touch': ['볼컨트롤'], 'Technical': ['드리블', '민첩성'], 'Trickster': ['드리블'],
+  'Flair': ['드리블'], 'Press Proven': ['힘'], 'Rapid': ['질주 속도', '가속'],
+  'Quick Step': ['가속'], 'Explosive Sprint': ['가속'],
+  'Finesse Shot': ['커브', '결정력'], 'Power Shot': ['슈팅력'], 'Low Driven Shot': ['슈팅력', '결정력'],
+  'Chip Shot': ['결정력'], 'Dead Ball': ['프리킥 정확도', '커브'], 'Power Header': ['헤딩 정확도'],
+  'Precision Header': ['헤딩 정확도'], 'Game Changer': ['결정력'], 'Aerial': ['헤딩 정확도', '점프'],
+  'Aerial Fortress': ['헤딩 정확도', '점프'], 'Bruiser': ['힘'], 'Enforcer': ['힘', '공격성'],
+  'Jockey': ['수비 위치 선정', '차단력'], 'Block': ['차단력'], 'Intercept': ['차단력'],
+  'Anticipate': ['수비 위치 선정', '스탠딩 태클'], 'Slide Tackle': ['슬라이딩 태클'],
+  'Relentless': ['체력'], 'Acrobatic': ['민첩성'],
+};
+
 function emeryVerdict(a, b, ctx) {
   const canon = ctx.canon_roles || [], keyAttrs = ctx.key_attrs || [];
   if (!canon.length || !keyAttrs.length) return '';
@@ -286,25 +309,33 @@ function emeryVerdict(a, b, ctx) {
     const w = W[c.role_id] || {};
     const fa = fit(A, w), fb = fit(B, w), d = fa - fb;
     const ma = roleMastery(a, c.pos, c.role_id), mb = roleMastery(b, c.pos, c.role_id);
+    /* 이 역할이 보는 속성을 건드리는 PlayStyle만 추린다(점수 아님 — 위 PS_ATTRS 주석 참조). */
+    const hot = new Set(Object.entries(w).filter(([, v]) => v >= 2).map(([k]) => k));
+    const psHit = c2 => String(c2.current_playstyles || '').split(',').map(x => x.trim()).filter(Boolean)
+      .map(nm => ({ nm: nm.replace(/\s*\+$/, ''), plus: /\+$/.test(nm) }))
+      .filter(x => (PS_ATTRS[x.nm] || []).some(at => hot.has(at)))
+      .map(x => ({ ...x, hits: (PS_ATTRS[x.nm] || []).filter(at => hot.has(at)) }));
+    const pha = psHit(a), phb = psHit(b);
     /* ⭐ 근거는 **가중이 걸린 속성 전부**를 보여준다(2026-09-22 사용자 지적
        「캐시는 체력만 높은데 우위인 게 이상하다」) — 상위 3개만 띄우니 합이 왜 그렇게 나오는지
        설명되지 않았다. 각 항목의 **가중·값·기여 차이**를 모두 적어 합계가 눈으로 따라가지게 한다. */
     const why = Object.entries(w).sort((x, y) => y[1] - x[1])
       .map(([k, wt]) => { const va = A[k] ?? 0, vb = B[k] ?? 0;
         return { k, wt, va, vb, gap: va - vb, contrib: wt * (va - vb) }; });
-    return { c, fa, fb, d, why, ma, mb };
+    return { c, fa, fb, d, why, ma, mb, pha, phb };
   }).sort((x, y) => Math.abs(y.d) - Math.abs(x.d));
   const body = rows.map(r => {
     const tie = Math.abs(r.d) < 1.0;
     const winner = r.d > 0 ? a.name : b.name;
     const side = r.d > 0 ? 'dA' : 'dB';
     const nA = r.why.filter(x => x.gap > 0).length, nB = r.why.filter(x => x.gap < 0).length;
+    /* ⚠️ 비중 열을 오른쪽 끝에 두면 **오른쪽 선수의 값처럼 읽힌다**(2026-09-22 사용자 지적).
+       비중은 어느 선수의 것도 아니라 **그 역할이 그 속성을 얼마나 보는가**이므로 가운데 속성명에 붙인다. */
     const top = `<table class="tbl cmp-wtbl"><thead><tr>
-        <th>${esc(a.name)}</th><th>이 역할이 보는 속성</th><th>비중</th><th>${esc(b.name)}</th></tr></thead><tbody>
+        <th>${esc(a.name)}</th><th>이 역할이 보는 속성 <small>(● = 역할 비중)</small></th><th>${esc(b.name)}</th></tr></thead><tbody>
       ${r.why.map(x => `<tr>
         <td class="cmp-a ${x.gap > 0 ? 'win' : x.gap < 0 ? 'lose' : ''}">${x.va}</td>
-        <td class="cmp-k">${esc(x.k)}</td>
-        <td class="cmp-w">${'●'.repeat(Math.round(x.wt))}</td>
+        <td class="cmp-k">${esc(x.k)} <i class="cmp-w">${'●'.repeat(Math.round(x.wt))}</i></td>
         <td class="cmp-b ${x.gap < 0 ? 'win' : x.gap > 0 ? 'lose' : ''}">${x.vb}</td></tr>`).join('')}
       </tbody></table>
       <p class="dim" style="font-size:11px;margin:4px 0 0">항목 우위 <b class="wA">${nA}</b> ↔ <b class="wB">${nB}</b> —
@@ -323,7 +354,11 @@ function emeryVerdict(a, b, ctx) {
           : r.ma ? `<span class="chip wA">${r.ma}</span>` : '<span class="dim">숙련 없음</span>'}</span>
         <span class="cmp-k">이 역할 숙련<i>점수에 안 들어감</i></span>
         <span class="cmp-b">${r.mb === '?' ? '<span class="dim">확인 불가</span>'
-          : r.mb ? `<span class="chip wB">${r.mb}</span>` : '<span class="dim">숙련 없음</span>'}</span></div></div>`;
+          : r.mb ? `<span class="chip wB">${r.mb}</span>` : '<span class="dim">숙련 없음</span>'}</span></div>
+      <div class="cmp-vfit" style="font-size:12px;margin-top:6px;align-items:start">
+        <span class="cmp-a">${r.pha.length ? r.pha.map(x => `<span class="chip wA" title="${esc(x.hits.join(' · '))}">${esc(x.nm)}${x.plus ? '+' : ''}</span>`).join(' ') : '<span class="dim">없음</span>'}</span>
+        <span class="cmp-k">이 역할에 걸리는 PlayStyle<i>점수에 안 들어감</i></span>
+        <span class="cmp-b">${r.phb.length ? r.phb.map(x => `<span class="chip wB" title="${esc(x.hits.join(' · '))}">${esc(x.nm)}${x.plus ? '+' : ''}</span>`).join(' ') : '<span class="dim">없음</span>'}</span></div></div>`;
   }).join('');
   return `<h4>에메리 전술 기준 — 어느 쪽이 나은가</h4>
     <div class="cmp-verdict">${body}
@@ -331,8 +366,9 @@ function emeryVerdict(a, b, ctx) {
       <b>무엇이 들어가나</b> — 적합도는 <b>스탯이 전부</b>다: Σ(역할 핵심 속성 가중 × 속성값) ÷ 만점.
       가중은 <b>정본 슬롯 역할</b>(에메리 재현)의 것을 그대로 쓴다 — 여기서 새 기준을 만들지 않는다.<br>
       ⛔ <b>PlayStyle과 역할 숙련은 점수에 넣지 않았다.</b> 그 둘이 「몇 점어치인가」에 대한 근거가 없기 때문이다
-      (불변규칙 12) — 근거 없는 가중을 만들면 숫자가 판단을 가장한다. 대신 <b>숙련은 따로 적고</b>,
-      PlayStyle은 위 「PlayStyle」 절에서 직접 견주도록 뒀다. ⭐ FC27은 스페셜 카드에 Role++를 일괄로 줘서
+      (불변규칙 12) — 근거 없는 가중을 만들면 숫자가 판단을 가장한다. 대신 <b>그 역할이 보는 속성(●● 이상)을
+      건드리는 PlayStyle만</b> 따로 추려 적었다(칩에 마우스를 올리면 어느 속성에 걸리는지 나온다).
+      ⚠️ 이 연결표는 <b>판단값</b>이다 — EA PlayStyle 정의를 우리 29속성 어휘로 옮긴 것이고 EA가 명시한 게 아니다. ⭐ FC27은 스페셜 카드에 Role++를 일괄로 줘서
       숙련의 변별력이 예전만 못하다는 점도 감안할 것.<br>
       ⚠️ 차이가 <b>1.0 미만이면 구분하지 않는다</b>(그 정도는 노이즈다).
       ⛔ 케미는 빼고 <b>진화만 반영한</b> 카드 자체 값이며, <b>이 카드가 그 자리에 얼마나 맞나</b>일 뿐
@@ -1099,8 +1135,8 @@ export const FC_DETAIL_CSS = `
 .cmp-wtbl{width:100%;table-layout:fixed;margin-top:6px}
 .cmp-wtbl th{font-size:10.5px;color:var(--dim);font-weight:600;padding:2px 4px}
 .cmp-wtbl td{padding:2px 4px;font-size:12px}
-.cmp-wtbl th:nth-child(3),.cmp-w{width:44px;text-align:center}
-.cmp-w{color:var(--acc);font-size:9px;letter-spacing:1px}
+.cmp-wtbl th:nth-child(2){width:auto}
+.cmp-w{color:var(--acc);font-size:9px;letter-spacing:1px;font-style:normal;margin-left:4px}
 b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .cmp-two{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
 .cmp-two .fc-pslist{gap:5px}
