@@ -166,6 +166,31 @@ def export_all(db_path=None, window="2026-summer"):
                               FROM fc_objective_tasks
                              WHERE pulled=(SELECT MAX(pulled) FROM fc_objective_tasks)
                              ORDER BY group_name, id""")
+    # ⭐⭐ **선수별 「지금 카드 상태」 정본** (2026-09-22 — 사용자 지적
+    #    「각 메뉴가 공통 DB를 보지 않고 개별적으로 업데이트되는가 — 동일한 상태를 갖도록 개선」).
+    #    ⛔ 종전에는 화면마다 「현재」를 **각자 골랐다** — 어디선 `player_card_items`(기준 카드),
+    #       어디선 `fut_club_players.current_*`(EA 실측), 어디선 fut.gg 경로의 `ovr_before`(기준 카드).
+    #       같은 선수가 메뉴마다 다른 OVR로 보였다(Alysson 70 ↔ 78).
+    #    ⇒ **여기서 한 번 정하고 `club.state`로 내보낸다.** 화면은 고르지 말고 이걸 읽는다.
+    #    규칙: EA 싱크 실측(`fut_club_players`)이 있으면 그것이 현재다. 없으면 기준 카드로 물러선다.
+    #    `basis`에 어느 쪽인지 적어 화면이 「실측인가 기준값인가」를 숨기지 않게 한다.
+    club_state = _rows(con, """
+        SELECT c.player_id, c.id club_player_id, c.name,
+               c.current_ovr ovr, c.current_six six, c.current_attrs attrs,
+               c.current_playstyles playstyles, c.current_roles_plus roles_plus,
+               c.current_roles_plus_plus roles_plus_plus,
+               c.chem_style_ea, c.chem_points,
+               i.ovr base_ovr, i.attrs base_attrs, i.ea_item_id base_ea_id,
+               i.skill_moves, i.weak_foot, i.preferred_foot, i.accelerate,
+               i.height_cm, i.weight_kg, i.positions, i.card_image_url,
+               CASE WHEN c.current_attrs IS NOT NULL THEN 'ea-sync' ELSE 'base-card' END basis,
+               (SELECT COUNT(*) FROM fut_evolution_log l
+                 WHERE l.club_player_id=c.id AND l.is_void=0 AND COALESCE(l.level,1)=1) evo_runs,
+               (SELECT GROUP_CONCAT(DISTINCT l.evo_name) FROM fut_evolution_log l
+                 WHERE l.club_player_id=c.id AND l.is_void=0) evo_names
+          FROM fut_club_players c
+          LEFT JOIN player_card_items i ON i.ea_item_id=c.ea_item_id
+         WHERE c.status='owned' AND c.player_id IS NOT NULL""")
     accounts = _rows(con, "SELECT id, name, platform, game_version, notes, created FROM fut_accounts ORDER BY id")
     # 보유 선수 — 케미스트리 원료(국적·리그·클럽·포지션, migration 044)를 카드 표에서 붙여 함께 내보낸다.
     # 화면이 케미 XI를 계산하려면 이 4개가 있어야 한다. 조인은 아이템 id로만 한다(이름 조인 금지).
@@ -222,7 +247,9 @@ def export_all(db_path=None, window="2026-summer"):
                                                      FROM fc_meta_snapshots WHERE category='chem_style'
                                                      AND pulled=(SELECT MAX(pulled) FROM fc_meta_snapshots WHERE category='chem_style')"""),
                            "tactics": tactics, "tactic_roles": tactic_roles,
-                           "club": {"accounts": accounts, "players": club, "log": log}}))
+                           "club": {"accounts": accounts, "players": club, "log": log,
+                                     # ⭐ 화면이 「현재」를 각자 고르지 않게 하는 정본(위 주석)
+                                     "state": {str(r["player_id"]): r for r in club_state}}}))
 
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──
     # ⭐ 세 층을 그대로 내보낸다: 메타(파싱) · obs_points(검증된 판정) · summary/key_points(사람 요약).

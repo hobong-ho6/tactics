@@ -773,6 +773,36 @@ function evoBlock(p, log) {
    ⛔ 추정을 실측처럼 보이게 하지 않는다 — 재구성한 6대 스탯이 **EA 실측(current_six)과 일치하는지
       대조**해서, 맞으면 「검증됨」, 어긋나면 그 사실을 적고 기준 카드 값을 함께 남긴다.
    ⛔ 사용자가 고른 분기(upgradeOptions)가 있는 단계는 **무엇을 골랐는지 데이터에 없다** — 건너뛰고 알린다. */
+/* ⭐⭐ **진화 상한 규칙 — 이 프로젝트에서 이 함수 하나만 안다**
+   (2026-09-22, 사용자 지적 「각 메뉴가 개별적으로 업데이트되는가 — 동일한 상태를 갖도록」).
+   같은 규칙을 화면마다 다시 짜면 **메뉴마다 다른 숫자**가 나온다. 적용 대상이 무엇이든 여기로 들어온다.
+   ⛔ 상한을 이미 넘은 속성은 **그대로 둔다** — `Math.min(현재+증가, 상한)`이면 값이 **깎인다**
+      (실증: 체력 82에 「+5(^76)」을 적용하면 76으로 내려갔다). 상한은 「여기까지만 올린다」는 뜻이다.
+   ⚠️ 분기(`upgradeOptions`)가 2개 이상인 단계는 **적용하지 않는다** — 무엇을 골랐는지 모르면 추정이 된다.
+      호출측이 `skipped`를 받아 화면에 밝힌다. */
+export function applyEvoLevel(at, lv) {
+  if ((lv.upgradeOptions || []).length > 1) return { ok: false, reason: '분기 선택 미기록' };
+  for (const u of (lv.upgrades || [])) {
+    const key = ATTR_KR[String(u.upgrade || '').replace(/^attribute_/, '')];
+    if (!key || at[key] == null) continue;
+    const cap = u.maxValue;
+    at[key] = (cap != null && at[key] >= cap) ? at[key]
+            : (cap != null ? Math.min(at[key] + u.value, cap) : at[key] + u.value);
+  }
+  return { ok: true };
+}
+/* 29속성 → 6대 스탯. 화면들이 각자 계산하지 않도록 내보낸다(구성식은 fc_face_stats가 정본). */
+export function faceOf(at, faceRows, isGk = false) {
+  const w = {};
+  for (const r of faceRows || []) if (!!r.is_gk === !!isGk) (w[r.abbr] ??= {})[r.attr] = r.weight;
+  const out = {};
+  for (const k of Object.keys(w)) {
+    const v = Object.entries(w[k]).reduce((t, [a, wt]) => t + wt * (at[a] ?? 0), 0);
+    out[k] = Math.min(99, Math.floor(v + 0.501));
+  }
+  return out;
+}
+
 function evolvedAttrs(p, ctx) {
   const base = parse(p.attrs);
   if (!base) return null;
@@ -784,16 +814,8 @@ function evolvedAttrs(p, ctx) {
   for (const l of log) {
     const lv = (parse(cat[l.evo_id]?.levels) || []).find(x => Number(x.idx) === Number(l.level));
     if (!lv) { skipped.push(`${l.evo_name} ${l.level}단계(카탈로그 없음)`); continue; }
-    if ((lv.upgradeOptions || []).length > 1) { skipped.push(`${l.evo_name} ${l.level}단계(분기 선택 미기록)`); continue; }
-    for (const u of (lv.upgrades || [])) {
-      const key = ATTR_KR[String(u.upgrade || '').replace(/^attribute_/, '')];
-      if (!key || at[key] == null) continue;
-      /* ⛔ 상한을 이미 넘은 속성은 **그대로 둔다** — `Math.min(현재+증가, 상한)`을 쓰면 값이 **깎인다**
-         (실증: 체력 82에 「+5(^76)」을 적용하면 76으로 내려갔다). 상한은 「여기까지만 올린다」는 뜻이다. */
-      const cap = u.maxValue;
-      at[key] = (cap != null && at[key] >= cap) ? at[key]
-              : (cap != null ? Math.min(at[key] + u.value, cap) : at[key] + u.value);
-    }
+    const r = applyEvoLevel(at, lv);          // ⭐ 상한 규칙은 applyEvoLevel 하나만 안다
+    if (!r.ok) { skipped.push(`${l.evo_name} ${l.level}단계(${r.reason})`); continue; }
     applied.push(`${l.evo_name} ${l.level}단계`);
   }
   return { at, base, applied, skipped };
