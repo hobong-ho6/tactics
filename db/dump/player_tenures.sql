@@ -1409,3 +1409,15 @@ INSERT INTO player_tenures VALUES(166,'2026-27',NULL,'Atlético Madrid (4경기,
 INSERT INTO player_tenures VALUES(167,'2026-27',NULL,'Atlético Madrid (4경기, 평점 6.90)','LWB',NULL,NULL);
 INSERT INTO player_tenures VALUES(174,'2026-27',NULL,'Atlético Madrid (2경기, 평점 6.52)','CB',NULL,NULL);
 INSERT INTO player_tenures VALUES(175,'2026-27',NULL,'Elche (2경기, 평점 6.83)','AM',NULL,NULL);
+INSERT INTO player_tenures VALUES(86,'2026-27',NULL,'Aston Villa (3경기, 평점 6.88)','RW',NULL,NULL);
+INSERT INTO player_tenures VALUES(96,'2026-27',NULL,'Chelsea (3경기)','CM',NULL,NULL);
+INSERT INTO player_tenures VALUES(184,'2026-27',NULL,'Atlético Madrileño (1경기)','CB',NULL,NULL);
+INSERT INTO player_tenures VALUES(55,'2026-27',NULL,'Aston Villa (3경기, 평점 7.06)','CM',NULL,NULL);
+INSERT INTO player_tenures VALUES(210,'2026-27',NULL,'Chelsea (1경기, 평점 6.80)','DM',NULL,NULL);
+INSERT INTO player_tenures VALUES(73,'2026-27',NULL,'Liverpool (1경기, 평점 7.58)','GK',NULL,NULL);
+INSERT INTO player_tenures VALUES(164,'2018',NULL,'Racing Club (6경기)','GK',NULL,NULL);
+INSERT INTO player_tenures VALUES(172,'2020-21',NULL,'River Plate (10경기)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(172,'2019-20',NULL,'River Plate (8경기, 평점 6.35)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(172,'2018-19',NULL,'River Plate (5경기, 평점 6.24)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(174,'2018',NULL,'Belgrano (1경기)','CB',NULL,NULL);
+INSERT INTO player_tenures VALUES(174,'2016',NULL,'Belgrano (2경기)','CB',NULL,NULL);

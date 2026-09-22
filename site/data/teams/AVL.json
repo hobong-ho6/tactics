@@ -11515,6 +11515,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Interceptions",
+    "metric_key": "interceptions",
+    "metric_kr": "인터셉트",
+    "per90": 0.2,
+    "percentile": 6,
+    "percentile_per90": 6,
+    "player_id": 7,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
     "metric": "Aerials won %",
     "metric_key": "aerials_won_percent",
     "metric_kr": "공중 경합 승률",
@@ -14434,6 +14447,71 @@
     "stat_value": "0"
    },
    {
+    "league": "Premier League",
+    "metric": "Aerials won %",
+    "metric_key": "aerials_won_percent",
+    "metric_kr": "공중 경합 승률",
+    "per90": 100.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "100.0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_key": "red_cards",
+    "metric_kr": "레드카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 100.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "100.0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_key": "yellow_cards",
+    "metric_kr": "옐로카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Pass accuracy",
+    "metric_key": "successful_passes_accuracy",
+    "metric_kr": "패스 정확도",
+    "per90": 92.72727272727273,
+    "percentile": 95,
+    "percentile_per90": 95,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "92.7"
+   },
+   {
     "league": "Serie A",
     "metric": "Clearances",
     "metric_key": "clearances",
@@ -14484,6 +14562,19 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "124"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG against while on pitch",
+    "metric_key": "expected_goals_against_while_on_pitch",
+    "metric_kr": "출전 중 피xG",
+    "per90": 1.6369645996431332,
+    "percentile": 88,
+    "percentile_per90": 48,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "2.06"
    },
    {
     "league": "Serie A",
@@ -14707,6 +14798,32 @@
     "stat_value": "2"
    },
    {
+    "league": "Premier League",
+    "metric": "Duels won %",
+    "metric_key": "duel_won_percent",
+    "metric_kr": "듀얼 승률",
+    "per90": 62.5,
+    "percentile": 77,
+    "percentile_per90": 77,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "62.5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Interceptions",
+    "metric_key": "interceptions",
+    "metric_kr": "인터셉트",
+    "per90": 4.778761061946903,
+    "percentile": 77,
+    "percentile_per90": 100,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "6"
+   },
+   {
     "league": "Serie A",
     "metric": "Assists",
     "metric_key": "assists",
@@ -14731,6 +14848,19 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "30.5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals conceded while on pitch",
+    "metric_key": "goals_conceded_while_on_pitch",
+    "metric_kr": "출전 중 실점",
+    "per90": 1.592920353982301,
+    "percentile": 75,
+    "percentile_per90": 45,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "2"
    },
    {
     "league": "Serie A",
@@ -14902,6 +15032,19 @@
     "stat_value": "1.84"
    },
    {
+    "league": "Premier League",
+    "metric": "Dribbled past",
+    "metric_key": "dribbled_past",
+    "metric_kr": "드리블 돌파 허용",
+    "per90": 0.7964601769911505,
+    "percentile": 68,
+    "percentile_per90": 48,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
     "league": "LaLiga",
     "metric": "Touches",
     "metric_key": "touches",
@@ -15004,6 +15147,19 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "0.55"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 50.0,
+    "percentile": 57,
+    "percentile_per90": 57,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "50.0"
    },
    {
     "league": "Serie A",
@@ -15149,6 +15305,32 @@
     "stat_value": "6"
    },
    {
+    "league": "Premier League",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "클리어런스",
+    "per90": 6.371681415929204,
+    "percentile": 43,
+    "percentile_per90": 100,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "8"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Recoveries",
+    "metric_key": "recoveries",
+    "metric_kr": "볼 리커버리",
+    "per90": 8.761061946902656,
+    "percentile": 41,
+    "percentile_per90": 96,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "11"
+   },
+   {
     "league": "Serie A",
     "metric": "xGOT",
     "metric_key": "expected_goals_on_target",
@@ -15240,6 +15422,19 @@
     "stat_value": "14"
    },
    {
+    "league": "Premier League",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 2.3893805309734515,
+    "percentile": 34,
+    "percentile_per90": 91,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "3"
+   },
+   {
     "league": "LaLiga",
     "metric": "Shots",
     "metric_key": "shots",
@@ -15318,6 +15513,71 @@
     "stat_value": "0.24"
    },
    {
+    "league": "Premier League",
+    "metric": "Defensive actions",
+    "metric_key": "defensive_actions",
+    "metric_kr": "수비 액션",
+    "per90": 12.743362831858407,
+    "percentile": 27,
+    "percentile_per90": 100,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "16"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dispossessed",
+    "metric_key": "dispossessed",
+    "metric_kr": "볼 탈취당함",
+    "per90": 1.592920353982301,
+    "percentile": 27,
+    "percentile_per90": 5,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블",
+    "per90": 0.7964601769911505,
+    "percentile": 25,
+    "percentile_per90": 68,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.02094690267622998,
+    "percentile": 25,
+    "percentile_per90": 39,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0.03"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.02094690267622998,
+    "percentile": 25,
+    "percentile_per90": 39,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0.03"
+   },
+   {
     "league": "LaLiga",
     "metric": "Fouls committed",
     "metric_key": "fouls",
@@ -15355,6 +15615,19 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "0.14"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Line-breaking passes",
+    "metric_key": "line_breaking_passes",
+    "metric_kr": "라인 브레이킹 패스",
+    "per90": 15.929203539823009,
+    "percentile": 23,
+    "percentile_per90": 93,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "20"
    },
    {
     "league": "Serie A",
@@ -15396,6 +15669,71 @@
     "stat_value": "24"
    },
    {
+    "league": "Premier League",
+    "metric": "Chances created",
+    "metric_key": "chances_created",
+    "metric_kr": "기회 창출",
+    "per90": 0.7964601769911505,
+    "percentile": 16,
+    "percentile_per90": 46,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Sprinting",
+    "metric_key": "physical_metrics_sprinting",
+    "metric_kr": "스프린트 거리",
+    "per90": 279.90373729604534,
+    "percentile": 16,
+    "percentile_per90": 48,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "351.4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Shots",
+    "metric_key": "shots",
+    "metric_kr": "슛",
+    "per90": 0.7964601769911505,
+    "percentile": 16,
+    "percentile_per90": 50,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Fouls won",
+    "metric_key": "fouls_won",
+    "metric_kr": "파울 획득",
+    "per90": 0.7964601769911505,
+    "percentile": 14,
+    "percentile_per90": 52,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Top Speed",
+    "metric_key": "physical_metrics_topspeed",
+    "metric_kr": "최고 속도",
+    "per90": 31.0,
+    "percentile": 13,
+    "percentile_per90": 13,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "31.0"
+   },
+   {
     "league": "LaLiga",
     "metric": "Dribbles success rate",
     "metric_key": "won_contest_subtitle",
@@ -15407,6 +15745,45 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "27.8"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Aerials won",
+    "metric_key": "aerials_won",
+    "metric_kr": "공중 경합 승",
+    "per90": 0.7964601769911505,
+    "percentile": 11,
+    "percentile_per90": 34,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Total Distance Covered",
+    "metric_key": "physical_metrics_distance_covered",
+    "metric_kr": "총 이동거리",
+    "per90": 11588.420907079646,
+    "percentile": 11,
+    "percentile_per90": 88,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "14549.9"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Accurate passes",
+    "metric_key": "successful_passes",
+    "metric_kr": "정확한 패스",
+    "per90": 40.61946902654867,
+    "percentile": 11,
+    "percentile_per90": 73,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "51"
    },
    {
     "league": "LaLiga",
@@ -15435,6 +15812,84 @@
     "stat_value": "2"
    },
    {
+    "league": "Premier League",
+    "metric": "Tackles",
+    "metric_key": "matchstats.headers.tackles",
+    "metric_kr": "태클",
+    "per90": 1.592920353982301,
+    "percentile": 9,
+    "percentile_per90": 43,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Number of Sprints",
+    "metric_key": "physical_metrics_number_of_sprints",
+    "metric_kr": "스프린트 횟수",
+    "per90": 11.946902654867257,
+    "percentile": 9,
+    "percentile_per90": 34,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "15"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Running",
+    "metric_key": "physical_metrics_running",
+    "metric_kr": "러닝 거리",
+    "per90": 2027.2487944206305,
+    "percentile": 9,
+    "percentile_per90": 39,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "2545.3"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Touches",
+    "metric_key": "touches",
+    "metric_kr": "터치",
+    "per90": 74.86725663716814,
+    "percentile": 9,
+    "percentile_per90": 75,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "94"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Duels won",
+    "metric_key": "duel_won",
+    "metric_kr": "듀얼 승",
+    "per90": 3.982300884955752,
+    "percentile": 7,
+    "percentile_per90": 38,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xA",
+    "metric_key": "expected_assists",
+    "metric_kr": "xA",
+    "per90": 0.010511195864033911,
+    "percentile": 4,
+    "percentile_per90": 2,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0.01"
+   },
+   {
     "league": "Serie A",
     "metric": "Goals",
     "metric_key": "goals",
@@ -15458,6 +15913,45 @@
     "player_id": 78,
     "pulled": "2026-08-11",
     "season": "2025/2026",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_key": "assists",
+    "metric_kr": "어시스트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Clean sheets",
+    "metric_key": "clean_sheet_team_title",
+    "metric_kr": "클린시트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_key": "goals",
+    "metric_kr": "골",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 78,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
     "stat_value": "0"
    }
   ],
@@ -15500,6 +15994,45 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "78"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dispossessed",
+    "metric_key": "dispossessed",
+    "metric_kr": "볼 탈취당함",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Red cards",
+    "metric_key": "red_cards",
+    "metric_kr": "레드카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Yellow cards",
+    "metric_key": "yellow_cards",
+    "metric_kr": "옐로카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0"
    },
    {
     "league": "Bundesliga",
@@ -15578,6 +16111,19 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "5.13"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG against while on pitch",
+    "metric_key": "expected_goals_against_while_on_pitch",
+    "metric_kr": "출전 중 피xG",
+    "per90": 1.4019999720833518,
+    "percentile": 92,
+    "percentile_per90": 53,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1.54"
    },
    {
     "league": "Bundesliga",
@@ -15697,6 +16243,19 @@
     "stat_value": "58.9"
    },
    {
+    "league": "Premier League",
+    "metric": "Goals conceded while on pitch",
+    "metric_key": "goals_conceded_while_on_pitch",
+    "metric_kr": "출전 중 실점",
+    "per90": 0.9090909090909092,
+    "percentile": 87,
+    "percentile_per90": 72,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Penalties awarded",
     "metric_key": "penalty_won_title",
@@ -15788,6 +16347,19 @@
     "stat_value": "7"
    },
    {
+    "league": "Premier League",
+    "metric": "Blocked scoring attempt",
+    "metric_key": "blocked_shots",
+    "metric_kr": "슛 블록",
+    "per90": 0.9090909090909092,
+    "percentile": 75,
+    "percentile_per90": 97,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Touches",
     "metric_key": "touches",
@@ -15840,6 +16412,32 @@
     "stat_value": "110"
    },
    {
+    "league": "Premier League",
+    "metric": "xGOT",
+    "metric_key": "expected_goals_on_target",
+    "metric_kr": "xGOT",
+    "per90": 0.8936363458633422,
+    "percentile": 71,
+    "percentile_per90": 96,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0.98"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Pass accuracy",
+    "metric_key": "successful_passes_accuracy",
+    "metric_kr": "패스 정확도",
+    "per90": 85.71428571428571,
+    "percentile": 71,
+    "percentile_per90": 71,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "85.7"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Aerials won %",
     "metric_key": "aerials_won_percent",
@@ -15890,6 +16488,32 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "9"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Assists",
+    "metric_key": "assists",
+    "metric_kr": "어시스트",
+    "per90": 0.9090909090909092,
+    "percentile": 67,
+    "percentile_per90": 100,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Duels won %",
+    "metric_key": "duel_won_percent",
+    "metric_kr": "듀얼 승률",
+    "per90": 50.0,
+    "percentile": 67,
+    "percentile_per90": 67,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "50.0"
    },
    {
     "league": "Bundesliga",
@@ -16009,6 +16633,19 @@
     "stat_value": "52.4"
    },
    {
+    "league": "Premier League",
+    "metric": "Goals",
+    "metric_key": "goals",
+    "metric_kr": "골",
+    "per90": 0.9090909090909092,
+    "percentile": 55,
+    "percentile_per90": 97,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Clean sheets",
     "metric_key": "clean_sheet_team_title",
@@ -16061,6 +16698,58 @@
     "stat_value": "9"
    },
    {
+    "league": "Premier League",
+    "metric": "Shots on target",
+    "metric_key": "ShotsOnTarget",
+    "metric_kr": "유효 슛",
+    "per90": 1.8181818181818183,
+    "percentile": 41,
+    "percentile_per90": 95,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Big chances created",
+    "metric_key": "big_chance_created_team_title",
+    "metric_kr": "빅찬스 창출",
+    "per90": 0.9090909090909092,
+    "percentile": 41,
+    "percentile_per90": 92,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.403272726319053,
+    "percentile": 41,
+    "percentile_per90": 84,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0.44"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.403272726319053,
+    "percentile": 41,
+    "percentile_per90": 87,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0.44"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Interceptions",
     "metric_key": "interceptions",
@@ -16072,6 +16761,19 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "4"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 50.0,
+    "percentile": 39,
+    "percentile_per90": 39,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "50.0"
    },
    {
     "league": "Bundesliga",
@@ -16204,6 +16906,19 @@
     "stat_value": "1.32"
    },
    {
+    "league": "Premier League",
+    "metric": "xA",
+    "metric_key": "expected_assists",
+    "metric_kr": "xA",
+    "per90": 0.21565673026171597,
+    "percentile": 28,
+    "percentile_per90": 74,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0.24"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Duels won",
     "metric_key": "duel_won",
@@ -16228,6 +16943,19 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "1.32"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Fouls won",
+    "metric_key": "fouls_won",
+    "metric_kr": "파울 획득",
+    "per90": 1.8181818181818183,
+    "percentile": 25,
+    "percentile_per90": 72,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "2"
    },
    {
     "league": "Bundesliga",
@@ -16256,6 +16984,19 @@
     "stat_value": "19"
    },
    {
+    "league": "Premier League",
+    "metric": "Possession won final 3rd",
+    "metric_key": "poss_won_att_3rd_team_title",
+    "metric_kr": "공격 3선 볼 획득",
+    "per90": 0.9090909090909092,
+    "percentile": 22,
+    "percentile_per90": 70,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Shots",
     "metric_key": "shots",
@@ -16267,6 +17008,32 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "11"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 0.9090909090909092,
+    "percentile": 21,
+    "percentile_per90": 59,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Shots",
+    "metric_key": "shots",
+    "metric_kr": "슛",
+    "per90": 3.6363636363636367,
+    "percentile": 21,
+    "percentile_per90": 92,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "4"
    },
    {
     "league": "Bundesliga",
@@ -16295,6 +17062,19 @@
     "stat_value": "2"
    },
    {
+    "league": "Premier League",
+    "metric": "Line-breaking passes",
+    "metric_key": "line_breaking_passes",
+    "metric_kr": "라인 브레이킹 패스",
+    "per90": 6.363636363636363,
+    "percentile": 20,
+    "percentile_per90": 59,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "7"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Accurate long balls",
     "metric_key": "long_balls_accurate",
@@ -16319,6 +17099,19 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "225"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "클리어런스",
+    "per90": 0.9090909090909092,
+    "percentile": 17,
+    "percentile_per90": 64,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "Bundesliga",
@@ -16347,6 +17140,19 @@
     "stat_value": "108"
    },
    {
+    "league": "Premier League",
+    "metric": "Chances created",
+    "metric_key": "chances_created",
+    "metric_kr": "기회 창출",
+    "per90": 1.8181818181818183,
+    "percentile": 16,
+    "percentile_per90": 59,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Recoveries",
     "metric_key": "recoveries",
@@ -16371,6 +17177,45 @@
     "pulled": "2026-08-21",
     "season": "2024/2025",
     "stat_value": "18"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Recoveries",
+    "metric_key": "recoveries",
+    "metric_kr": "볼 리커버리",
+    "per90": 4.545454545454545,
+    "percentile": 14,
+    "percentile_per90": 68,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Tackles",
+    "metric_key": "matchstats.headers.tackles",
+    "metric_kr": "태클",
+    "per90": 1.8181818181818183,
+    "percentile": 13,
+    "percentile_per90": 66,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbles success rate",
+    "metric_key": "won_contest_subtitle",
+    "metric_kr": "드리블 성공률",
+    "per90": 16.666666666666668,
+    "percentile": 13,
+    "percentile_per90": 13,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "16.7"
    },
    {
     "league": "Bundesliga",
@@ -16412,6 +17257,136 @@
     "stat_value": "33.3"
    },
    {
+    "league": "Premier League",
+    "metric": "Defensive actions",
+    "metric_key": "defensive_actions",
+    "metric_kr": "수비 액션",
+    "per90": 8.181818181818182,
+    "percentile": 11,
+    "percentile_per90": 79,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "9"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Number of Sprints",
+    "metric_key": "physical_metrics_number_of_sprints",
+    "metric_kr": "스프린트 횟수",
+    "per90": 13.636363636363637,
+    "percentile": 11,
+    "percentile_per90": 61,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "15"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Dribbles",
+    "metric_key": "dribbles_succeeded",
+    "metric_kr": "드리블",
+    "per90": 0.9090909090909092,
+    "percentile": 9,
+    "percentile_per90": 50,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Touches",
+    "metric_key": "touches",
+    "metric_kr": "터치",
+    "per90": 50.0,
+    "percentile": 8,
+    "percentile_per90": 46,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "55"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Touches in opposition box",
+    "metric_key": "touches_opp_box",
+    "metric_kr": "상대 박스 터치",
+    "per90": 4.545454545454545,
+    "percentile": 8,
+    "percentile_per90": 70,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Total Distance Covered",
+    "metric_key": "physical_metrics_distance_covered",
+    "metric_kr": "총 이동거리",
+    "per90": 11845.289417613636,
+    "percentile": 7,
+    "percentile_per90": 82,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "13029.8"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Sprinting",
+    "metric_key": "physical_metrics_sprinting",
+    "metric_kr": "스프린트 거리",
+    "per90": 170.4791814630682,
+    "percentile": 7,
+    "percentile_per90": 14,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "187.5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Accurate passes",
+    "metric_key": "successful_passes",
+    "metric_kr": "정확한 패스",
+    "per90": 21.81818181818182,
+    "percentile": 7,
+    "percentile_per90": 37,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "24"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Duels won",
+    "metric_key": "duel_won",
+    "metric_kr": "듀얼 승",
+    "per90": 4.545454545454545,
+    "percentile": 5,
+    "percentile_per90": 46,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Running",
+    "metric_key": "physical_metrics_running",
+    "metric_kr": "러닝 거리",
+    "per90": 2721.227472478693,
+    "percentile": 5,
+    "percentile_per90": 76,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "2993.4"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Dispossessed",
     "metric_key": "dispossessed",
@@ -16423,6 +17398,19 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "31"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Top Speed",
+    "metric_key": "physical_metrics_topspeed",
+    "metric_kr": "최고 속도",
+    "per90": 28.899999618530273,
+    "percentile": 1,
+    "percentile_per90": 1,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "28.9"
    },
    {
     "league": "Bundesliga",
@@ -16449,6 +17437,19 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Clean sheets",
+    "metric_key": "clean_sheet_team_title",
+    "metric_kr": "클린시트",
+    "per90": 0.0,
+    "percentile": 0,
+    "percentile_per90": 0,
+    "player_id": 55,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0"
    }
   ],
   "맥긴": [
@@ -20654,6 +21655,19 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "45"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Possession won final 3rd",
+    "metric_key": "poss_won_att_3rd_team_title",
+    "metric_kr": "공격 3선 볼 획득",
+    "per90": 0.28938906752411575,
+    "percentile": 39,
+    "percentile_per90": 52,
+    "player_id": 21,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "Premier League",
@@ -25046,6 +26060,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "xGOT",
+    "metric_key": "expected_goals_on_target",
+    "metric_kr": "xGOT",
+    "per90": 0.10323267466951125,
+    "percentile": 47,
+    "percentile_per90": 39,
+    "player_id": 14,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0.46"
+   },
+   {
+    "league": "Premier League",
     "metric": "Total Distance Covered",
     "metric_key": "physical_metrics_distance_covered",
     "metric_kr": "총 이동거리",
@@ -25082,6 +26109,19 @@
     "pulled": "2026-08-21",
     "season": "2025/2026",
     "stat_value": "1846.1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Shots on target",
+    "metric_key": "ShotsOnTarget",
+    "metric_kr": "유효 슛",
+    "per90": 0.44554455445544555,
+    "percentile": 41,
+    "percentile_per90": 33,
+    "player_id": 14,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "2"
    },
    {
     "league": "Premier League",
@@ -33826,6 +34866,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Blocked scoring attempt",
+    "metric_key": "blocked_shots",
+    "metric_kr": "슛 블록",
+    "per90": 0.5921052631578947,
+    "percentile": 38,
+    "percentile_per90": 64,
+    "player_id": 90,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
     "metric": "Long ball accuracy",
     "metric_key": "long_ball_succeeeded_accuracy",
     "metric_kr": "롱볼 정확도",
@@ -36980,6 +38033,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 100.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 76,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "100.0"
+   },
+   {
+    "league": "Premier League",
     "metric": "Aerials won %",
     "metric_key": "aerials_won_percent",
     "metric_kr": "공중 경합 승률",
@@ -37929,6 +38995,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 0.31141868512110726,
+    "percentile": 43,
+    "percentile_per90": 61,
+    "player_id": 76,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
     "metric": "Goals conceded while on pitch",
     "metric_key": "goals_conceded_while_on_pitch",
     "metric_kr": "출전 중 실점",
@@ -38084,6 +39163,19 @@
     "stat_value": "28.89"
    },
    {
+    "league": "Premier League",
+    "metric": "Shots on target",
+    "metric_key": "ShotsOnTarget",
+    "metric_kr": "유효 슛",
+    "per90": 0.6228373702422145,
+    "percentile": 32,
+    "percentile_per90": 43,
+    "player_id": 76,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
     "league": "Bundesliga",
     "metric": "Clearances",
     "metric_key": "clearances",
@@ -38160,6 +39252,19 @@
     "pulled": "2026-09-13",
     "season": "2026/2027",
     "stat_value": "5"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xGOT",
+    "metric_key": "expected_goals_on_target",
+    "metric_kr": "xGOT",
+    "per90": 0.09825259240853332,
+    "percentile": 29,
+    "percentile_per90": 32,
+    "player_id": 76,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0.32"
    },
    {
     "league": "Bundesliga",
@@ -38251,6 +39356,19 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "7"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Clearances",
+    "metric_key": "clearances",
+    "metric_kr": "클리어런스",
+    "per90": 0.31141868512110726,
+    "percentile": 11,
+    "percentile_per90": 18,
+    "player_id": 76,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "Premier League",
@@ -38461,6 +39579,19 @@
     "pulled": "2026-08-11",
     "season": "2025/2026",
     "stat_value": "0"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 100.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 56,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "100.0"
    },
    {
     "league": "Premier League",
@@ -39283,6 +40414,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Interceptions",
+    "metric_key": "interceptions",
+    "metric_kr": "인터셉트",
+    "per90": 2.076923076923077,
+    "percentile": 44,
+    "percentile_per90": 89,
+    "player_id": 56,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "3"
+   },
+   {
+    "league": "Premier League",
     "metric": "Aerials won",
     "metric_key": "aerials_won",
     "metric_kr": "공중 경합 승",
@@ -39465,6 +40609,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Blocked scoring attempt",
+    "metric_key": "blocked_shots",
+    "metric_kr": "슛 블록",
+    "per90": 0.6923076923076923,
+    "percentile": 27,
+    "percentile_per90": 81,
+    "player_id": 56,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
     "metric": "Fouls committed",
     "metric_key": "fouls",
     "metric_kr": "파울",
@@ -39540,6 +40697,19 @@
     "pulled": "2026-08-31",
     "season": "2026/2027",
     "stat_value": "7"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 1.3846153846153846,
+    "percentile": 15,
+    "percentile_per90": 39,
+    "player_id": 56,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "2"
    },
    {
     "league": "Premier League",
@@ -41928,6 +43098,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Big chances created",
+    "metric_key": "big_chance_created_team_title",
+    "metric_kr": "빅찬스 창출",
+    "per90": 0.20270270270270271,
+    "percentile": 71,
+    "percentile_per90": 73,
+    "player_id": 12,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
     "metric": "Dribbles",
     "metric_key": "dribbles_succeeded",
     "metric_kr": "드리블 성공",
@@ -42237,6 +43420,32 @@
     "pulled": "2026-09-13",
     "season": "2026/2027",
     "stat_value": "0.15"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG",
+    "metric_key": "expected_goals",
+    "metric_kr": "xG",
+    "per90": 0.024121622177394664,
+    "percentile": 53,
+    "percentile_per90": 39,
+    "player_id": 12,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0.12"
+   },
+   {
+    "league": "Premier League",
+    "metric": "xG excl. penalty",
+    "metric_key": "non_penalty_xg",
+    "metric_kr": "xG(PK 제외)",
+    "per90": 0.024121622177394664,
+    "percentile": 53,
+    "percentile_per90": 39,
+    "player_id": 12,
+    "pulled": "2026-09-22",
+    "season": "2026/2027",
+    "stat_value": "0.12"
    },
    {
     "league": "Premier League",
@@ -84371,12 +85580,12 @@
    "confidence": null,
    "detail": null,
    "kind": "contract_end",
-   "played_after": "2026-09-19",
-   "played_after_minutes": 45,
+   "played_after": null,
+   "played_after_minutes": null,
    "player_id": 2,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 729731, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 729731, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2029-06-30"
   },
   {
@@ -84387,9 +85596,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 4,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 792645, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 792645, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2028-06-30"
   },
   {
@@ -84400,9 +85609,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 6,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 966026, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 966026, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2030-06-30"
   },
   {
@@ -84410,12 +85619,12 @@
    "confidence": null,
    "detail": null,
    "kind": "contract_end",
-   "played_after": "2026-09-19",
-   "played_after_minutes": 90,
+   "played_after": null,
+   "played_after_minutes": null,
    "player_id": 7,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 258269, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 258269, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2027-06-30"
   },
   {
@@ -84426,9 +85635,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 8,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 1185748, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1185748, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2029-06-30"
   },
   {
@@ -84436,12 +85645,12 @@
    "confidence": null,
    "detail": null,
    "kind": "contract_end",
-   "played_after": "2026-09-19",
-   "played_after_minutes": 84,
+   "played_after": null,
+   "played_after_minutes": null,
    "player_id": 10,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 356406, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 356406, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2028-06-30"
   },
   {
@@ -84449,12 +85658,12 @@
    "confidence": null,
    "detail": null,
    "kind": "contract_end",
-   "played_after": "2026-09-16",
-   "played_after_minutes": 90,
+   "played_after": null,
+   "played_after_minutes": null,
    "player_id": 11,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 1190033, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1190033, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2028-06-30"
   },
   {
@@ -84462,12 +85671,12 @@
    "confidence": null,
    "detail": null,
    "kind": "contract_end",
-   "played_after": "2026-09-19",
-   "played_after_minutes": 84,
+   "played_after": null,
+   "played_after_minutes": null,
    "player_id": 12,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 816325, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 816325, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2030-06-30"
   },
   {
@@ -84475,12 +85684,12 @@
    "confidence": null,
    "detail": null,
    "kind": "contract_end",
-   "played_after": "2026-09-19",
-   "played_after_minutes": 90,
+   "played_after": null,
+   "played_after_minutes": null,
    "player_id": 14,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 610184, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 610184, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2027-06-30"
   },
   {
@@ -84488,12 +85697,12 @@
    "confidence": null,
    "detail": null,
    "kind": "contract_end",
-   "played_after": "2026-09-19",
-   "played_after_minutes": 90,
+   "played_after": null,
+   "played_after_minutes": null,
    "player_id": 17,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 419664, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 419664, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2027-06-30"
   },
   {
@@ -84501,12 +85710,12 @@
    "confidence": null,
    "detail": null,
    "kind": "contract_end",
-   "played_after": "2026-09-16",
-   "played_after_minutes": 45,
+   "played_after": null,
+   "played_after_minutes": null,
    "player_id": 19,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 195782, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 195782, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2027-06-30"
   },
   {
@@ -84514,12 +85723,12 @@
    "confidence": null,
    "detail": null,
    "kind": "contract_end",
-   "played_after": "2026-09-19",
-   "played_after_minutes": 15,
+   "played_after": null,
+   "played_after_minutes": null,
    "player_id": 21,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 215384, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 215384, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2027-06-30"
   },
   {
@@ -84540,12 +85749,12 @@
    "confidence": null,
    "detail": null,
    "kind": "contract_end",
-   "played_after": "2026-09-19",
-   "played_after_minutes": 90,
+   "played_after": null,
+   "played_after_minutes": null,
    "player_id": 56,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 1174672, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1174672, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2031-06-30"
   },
   {
@@ -84556,9 +85765,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 57,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 1714552, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1714552, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2029-06-30"
   },
   {
@@ -84569,9 +85778,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 58,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 1203665, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1203665, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2032-06-30"
   },
   {
@@ -84579,12 +85788,12 @@
    "confidence": null,
    "detail": null,
    "kind": "contract_end",
-   "played_after": "2026-09-16",
-   "played_after_minutes": 11,
+   "played_after": null,
+   "played_after_minutes": null,
    "player_id": 59,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2031-06-30"
   },
   {
@@ -84592,12 +85801,12 @@
    "confidence": null,
    "detail": null,
    "kind": "contract_end",
-   "played_after": "2026-09-19",
-   "played_after_minutes": 11,
+   "played_after": null,
+   "played_after_minutes": null,
    "player_id": 60,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 749661, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 749661, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2030-06-30"
   },
   {
@@ -84608,9 +85817,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 61,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "2032-06-30"
   },
   {
@@ -84679,30 +85888,30 @@
    "value": "Physical discomfort"
   },
   {
-   "as_of": "2026-09-19",
-   "confidence": "HIGH(결장 사실) / 복귀 시점은 예상치 — 구단 확정 발표 아님",
-   "detail": "햄스트링(포레스트전). 에메리 D-1 회견 원문 「won't feature again until after the extended international break」(확대 A매치 휴식기 이후까지 출전 불가) — obs#862의 「수 주」가 구체화됐다.",
+   "as_of": "2026-09-12",
+   "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+   "detail": "October 2026",
    "kind": "injury",
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 4,
-   "pulled": "2026-09-20",
-   "source": "reports/match-watch/2026-09-19-avl-tottenham.D1-findings.md(병렬 세션 인계 메모 — 흡수 후 삭제) · avfc.co.uk 에메리 회견 본문 · 에메리 D-1 회견 · Jacob Tanswell 2026-09-19",
-   "stale_days": 2,
-   "value": "out"
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 792645, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": "Hamstring injury"
   },
   {
-   "as_of": "2026-09-19",
-   "confidence": "HIGH(결장 사실) / 복귀 시점은 예상치 — 구단 확정 발표 아님",
-   "detail": "발목 인대 손상(골절 없음) 6~8주 — Tanswell 2026-09-13. D+1 신규 언급 0건으로 기존값 유지.",
+   "as_of": "2026-09-13",
+   "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+   "detail": "October 2026",
    "kind": "injury",
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 6,
-   "pulled": "2026-09-20",
-   "source": "reports/match-watch/2026-09-19-avl-tottenham.D1-findings.md(병렬 세션 인계 메모 — 흡수 후 삭제) · avfc.co.uk 에메리 회견 본문 · 에메리 D-1 회견 · Jacob Tanswell 2026-09-19",
-   "stale_days": 2,
-   "value": "out"
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 966026, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": "Ankle injury"
   },
   {
    "as_of": "2026-07-07",
@@ -84712,23 +85921,23 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 8,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 1185748, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1185748, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "Cruciate ligament injury"
   },
   {
-   "as_of": "2026-09-18",
-   "confidence": "MEDIUM — 감독 발언은 등, 현장 서술은 하지. 구단 공식 진단 0건",
-   "detail": "스퍼스전 결장 확정 · 기간 미제시. ⚠️ 하프타임 절뚝임 서술과 부위 충돌 미해소",
+   "as_of": "2026-09-16",
+   "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+   "detail": "Doubtful",
    "kind": "injury",
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 19,
-   "pulled": "2026-09-19",
-   "source": "avfc.co.uk 에메리 09-18 프리매치 회견 · Rotowire (D+3 수집)",
-   "stale_days": 3,
-   "value": "등 통증"
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 195782, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": "Back injury"
   },
   {
    "as_of": "2026-07-07",
@@ -84783,17 +85992,17 @@
    "value": "Knock"
   },
   {
-   "as_of": "2026-09-19",
-   "confidence": "HIGH(결장 사실) / 복귀 시점은 예상치",
-   "detail": "에메리 D-1 회견 원문 「expected to return to full training during the international break」(휴식기 중 정식 훈련 복귀 예상).",
+   "as_of": "2026-08-14",
+   "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+   "detail": "October 2026",
    "kind": "injury",
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 61,
-   "pulled": "2026-09-20",
-   "source": "reports/match-watch/2026-09-19-avl-tottenham.D1-findings.md(흡수 후 삭제) · 에메리 D-1 회견",
-   "stale_days": 2,
-   "value": "return_expected"
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": "Knock"
   },
   {
    "as_of": "2026-09-02",
@@ -84816,10 +86025,296 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 190,
-   "pulled": "2026-09-13",
-   "source": "fotmob.com/api/data (player 343748, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 9,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 343748, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
    "value": "Knee injury"
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 2,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 729731, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 7,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 258269, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 10,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 356406, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 11,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1190033, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 12,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 816325, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 14,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 610184, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 17,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 419664, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 21,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 215384, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 30,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1607333, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 55,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1520063, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 56,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1174672, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 57,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1714552, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 58,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1203665, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 59,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 60,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 749661, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 76,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1197347, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 78,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1051097, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 86,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1593857, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 90,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 760320, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 128,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1557236, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 132,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 1053679, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
+  },
+  {
+   "as_of": null,
+   "confidence": "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.",
+   "detail": null,
+   "kind": "injury_none",
+   "played_after": null,
+   "played_after_minutes": null,
+   "player_id": 178,
+   "pulled": "2026-09-22",
+   "source": "fotmob.com/api/data (player 966021, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+   "stale_days": 0,
+   "value": null
   },
   {
    "as_of": "2026-09-12",

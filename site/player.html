@@ -660,6 +660,11 @@ function renderStatus(sel){
   if (!rows.length){ el.innerHTML = ''; return; }
   const inj = rows.filter(r => r.kind === 'injury' || r.kind === 'suspension');
   const con = rows.find(r => r.kind === 'contract_end');
+  /* ⭐ 신선도는 **부상 점검 행**에서 읽는다(2026-09-22 — 사용자 「갱신 필요한 선수들을 갱신」에서 드러남).
+     종전에는 `contract_end`의 pulled을 썼는데, FotMob이 **`contractEnd` 필드를 엔드포인트에서 제거**해
+     그 행이 더는 새로 생기지 않는다 ⇒ 멀쩡한 선수가 **영구히 「갱신 필요」**로 보였다.
+     ⛔ 계약 만료 값은 **그 값이 수집된 날**을 따로 밝힌다 — 부상 점검일로 둔갑시키지 않는다. */
+  const chk = rows.find(r => r.kind === 'injury_none') || inj[0];
   const fresh = d => d == null ? '' : d <= 1 ? '오늘 수집' : d <= 7 ? `${d}일 전 수집` : `<b style="color:var(--warn)">${d}일 전 수집 — 갱신 필요</b>`;
   const ret = t => { if (!t) return '미제시'; return RET_KR[t] ? `${RET_KR[t]}` : esc(t); };
   let html = '';
@@ -686,10 +691,13 @@ function renderStatus(sel){
           ⚠️ 복귀 시점은 <b>소스 추정</b>이며 구단 공식 발표가 아니다. 게임 재현 시 이 선수는 해당 기간 <b>선발 후보에서 제외</b>하고, 대체 슬롯 후보를 처방 화면에서 확인한다.</p>
       </div>`;
     }).join('');
-  } else if (con){
+  } else if (chk || con){
+    const f = chk ?? con;
     html = `<div class="panel injcard ok"><div class="kv"><span class="badge">가용</span>
-      <b>부상 없음</b> <small class="dim">— ${esc(con.pulled ?? '')} 스냅샷 ${fresh(con.stale_days)}</small></div>
-      <div class="kv injgrid"><span><b>계약 만료</b>${esc(con.value ?? '미수집')}</span></div></div>`;
+      <b>부상 없음</b> <small class="dim">— ${esc(f.pulled ?? '')} 확인 ${fresh(f.stale_days)}</small></div>
+      ${con ? `<div class="kv injgrid"><span><b>계약 만료</b>${esc(con.value ?? '미수집')}
+        <small class="dim">(${esc(con.pulled)} 수집${chk && con.pulled !== chk.pulled
+          ? ' · FotMob이 이 필드를 더는 주지 않아 그대로 둔다' : ''})</small></span></div>` : ''}</div>`;
   }
   el.innerHTML = html;
 }
@@ -922,18 +930,54 @@ function render(){
       : `<span class="badge mid">${String(s).replace(/^20(\d\d)-(\d\d)$/, '$1/$2')}</span>`;
     const pres = td.prescriptions.filter(p=>p.label===key&&p.map25&&p.kind.startsWith('measured'))
       .slice().sort((a,b)=>String(b.season??'').localeCompare(String(a.season??'')));   // 최신 시즌 먼저
-    document.getElementById('grids').innerHTML = (pres.length?pres:CURRENT.filter(q=>q.player_id===sel.pid).map(q=>({kind:'measured(스쿼드)',map25:q.map25,sample_n:null,avg_rating:q.rating}))
+    const cards = (pres.length?pres:CURRENT.filter(q=>q.player_id===sel.pid).map(q=>({kind:'measured(스쿼드)',map25:q.map25,sample_n:null,avg_rating:q.rating}))
         // ⛔ 자리표시(25칸 전부 0)는 실측이 아니다 — core/encode.py는 최대값 0이면 None을 낸다. 히트맵으로 그리지 않는다.
-        .filter(q=>q.map25 && !/^0{25}$/.test(q.map25)))   // ⚠️ 스쿼드 그리드는 시즌을 단정하지 않는다(선수별 출처가 갈린다)
-      .map(p=>{
-        const kl = kindLabel(p.kind);
-        return `<div class="pcard">${seasonBadge(p.season)}
-          <abbr class="gl" tabindex="0" data-tip="${esc(kl.tip)}" title="${esc(kl.tip)}"><b>${esc(kl.title)}</b></abbr>
-          <small class="dim">${esc(p.pos_label ?? '')}</small><br>${miniGrid(p.map25)}<br>
-          <small class="dim">n=${p.sample_n??'—'} · 평점 ${p.avg_rating??'—'} · ${
-            gkPosCell(td, p.pos_label ?? sq0?.slot_type, sel.pid) ?? `sim ${p.fit_sim??'—'}`}</small><br>
-          <small class="dim" style="font-size:10px;opacity:.55">${esc(kl.raw)}</small></div>`;
-      }).join('') || '<span class="dim">실측 그리드 없음</span>';
+        .filter(q=>q.map25 && !/^0{25}$/.test(q.map25)));   // ⚠️ 스쿼드 그리드는 시즌을 단정하지 않는다(선수별 출처가 갈린다)
+    const gridCard = p => {
+      const kl = kindLabel(p.kind);
+      return `<div class="pcard">${seasonBadge(p.season)}
+        <abbr class="gl" tabindex="0" data-tip="${esc(kl.tip)}" title="${esc(kl.tip)}"><b>${esc(kl.title)}</b></abbr>
+        <small class="dim">${esc(p.pos_label ?? '')}</small><br>${miniGrid(p.map25)}<br>
+        <small class="dim">n=${p.sample_n??'—'} · 평점 ${p.avg_rating??'—'} · ${
+          gkPosCell(td, p.pos_label ?? sq0?.slot_type, sel.pid) ?? `sim ${p.fit_sim??'—'}`}</small><br>
+        <small class="dim" style="font-size:10px;opacity:.55">${esc(kl.raw)}</small></div>`;
+    };
+    /* ⭐⭐ 시즌별로 묶고 시즌 단위로 켜고 끈다 (2026-09-22 사용자 지시
+       「맥긴처럼 히트맵이 많은 선수들 — 시즌별로 구분짓고 on/off」).
+       맥긴은 12장이 한 줄로 쏟아져 **어느 시즌 것인지 배지를 하나씩 읽어야** 했다.
+       ⭐ 기본값은 **최신 시즌만 켜기**다. 다만 꺼진 시즌도 **버튼에 장수를 적어** 둔다 —
+          조용히 숨기면 「그 시즌 데이터가 없다」로 오독된다(결손과 접힘은 다르다).
+       ⚠️ 시즌을 모르는 그리드(스쿼드 폴백 등)는 `미상`으로 따로 묶는다 — 아무 시즌에 욱여넣지 않는다. */
+    const gEl = document.getElementById('grids');
+    const drawGrids = () => {
+    if (!cards.length) gEl.innerHTML = '<span class="dim">실측 그리드 없음</span>';
+    else {
+      const bySeason = new Map();
+      for (const p of cards){ const k = p.season ?? '미상';
+        if (!bySeason.has(k)) bySeason.set(k, []); bySeason.get(k).push(p); }
+      const seasons = [...bySeason.keys()].sort((a,b)=>
+        a==='미상' ? 1 : b==='미상' ? -1 : String(b).localeCompare(String(a)));
+      if (gEl._pid !== sel.pid){ gEl._pid = sel.pid; gEl._on = new Set([seasons[0]]); }
+      const on = gEl._on;
+      const label = s => s==='미상' ? '시즌 미상' : String(s).replace(/^20(\d\d)-(\d\d)$/, '$1/$2');
+      gEl.innerHTML = `<div class="seasonbar">${seasons.map(s=>
+          `<button class="seasontog${on.has(s)?' on':''}" data-season="${esc(s)}">${label(s)}
+             <i>${bySeason.get(s).length}장</i></button>`).join('')}
+          ${seasons.length>1?`<button class="seasontog all" data-season="*">전체</button>`:''}</div>`
+        + seasons.filter(s=>on.has(s)).map(s=>
+            `<div class="seasongrp"><div class="seasongrp-h">${label(s)}
+               <small class="dim">${bySeason.get(s).length}장</small></div>
+             <div class="gridrow">${bySeason.get(s).map(gridCard).join('')}</div></div>`).join('')
+        || '<p class="dim" style="font-size:12px">시즌 버튼을 눌러 히트맵을 펼친다.</p>';
+      gEl.querySelectorAll('[data-season]').forEach(b=>b.addEventListener('click', ()=>{
+        const s = b.dataset.season;
+        if (s === '*'){ seasons.forEach(x=>on.add(x)); }
+        else if (on.has(s)) on.delete(s); else on.add(s);
+        drawGrids();
+      }));
+    }
+    };
+    drawGrids();
     const st = td.player_stats.find(s=>s.label===key);
   document.getElementById('pstat').innerHTML = st ? [['경기',st.n],['분',st.minutes],['평점',st.avg_rating],['xG',st.xg_pg],['xA',st.xa_pg],['키패스',st.kp_pg],['듀얼승',st.dw_pg],['태클',st.tk_pg],['인터셉트',st.ic_pg]].map(([n,v])=>`${statTip(n)} <b>${v??'—'}</b>`).join(' · ') : '<span class="dim">경기 스탯 없음 (match-watch 수집 대기)</span>';
     // 시즌 성적 — 대회별 (Fotmob 선수 페이지 참고)

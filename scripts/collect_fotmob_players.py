@@ -425,6 +425,21 @@ def main():
             ins["market"] += cur.rowcount
 
         inj = r.get("injury")
+        # ⭐⭐ **「부상 없음」도 사실이라 행으로 남긴다**(2026-09-22 신설 · obs#132 「결손과 0은 다르다」).
+        #    종전에는 부상이 있을 때만 적재해서, 멀쩡한 선수는 `pulled`이 영원히 갱신되지 않았고
+        #    화면 배지가 **영구히 「갱신 필요」**로 남았다(잭슨 32일 전 — 2026-09-22 사용자 지적).
+        #    ⚠️ 더 근본 원인은 FotMob이 **`contractEnd`를 엔드포인트에서 제거**한 것이다 —
+        #      화면 신선도가 contract_end 행의 pulled을 보고 있었는데 그 행이 더는 새로 안 생긴다.
+        #      ⇒ 부상 점검 사실을 `injury_none`으로 남겨 **무엇을 언제 확인했는지**가 갱신되게 한다.
+        #    ⛔ 「부상 없음」과 「안 봤음」을 섞지 말 것 — 이 행이 있어야 둘이 갈린다.
+        if not inj:
+            cur.execute(
+                """INSERT INTO player_status(player_id,pulled,kind,value,detail,as_of,source,
+                   confidence) VALUES(?,?,'injury_none',NULL,NULL,NULL,?,?)
+                   ON CONFLICT(player_id,pulled,kind) DO NOTHING""",
+                (pid, pulled, src,
+                 "FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다."))
+            ins["status"] += cur.rowcount
         if inj:
             cur.execute(
                 """INSERT INTO player_status(player_id,pulled,kind,value,detail,as_of,source,

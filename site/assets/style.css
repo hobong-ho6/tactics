@@ -358,3 +358,16 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .helptip{position:fixed;z-index:9999;padding:9px 11px;border-radius:8px;background:#0b1220;
   border:1px solid var(--line);color:var(--txt);font-size:12px;line-height:1.6;
   box-shadow:0 8px 24px rgba(0,0,0,.6);pointer-events:none}
+
+/* 선수 히트맵 — 시즌별 묶음과 on/off (2026-09-22 사용자 지시) */
+.seasonbar{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
+.seasontog{background:none;border:1px solid var(--line);color:var(--dim);border-radius:99px;
+  padding:3px 11px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:baseline;gap:5px}
+.seasontog i{font-style:normal;font-size:10px;font-weight:400;opacity:.7}
+.seasontog:hover{border-color:var(--acc)}
+.seasontog.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,61,.12)}
+.seasontog.all{opacity:.75}
+.seasongrp + .seasongrp{margin-top:12px;padding-top:10px;border-top:1px dotted var(--line)}
+.seasongrp-h{font-size:11px;font-weight:800;letter-spacing:.05em;color:var(--acc);margin-bottom:5px}
+.seasongrp-h small{margin-left:5px;font-weight:400;letter-spacing:0}
+.gridrow{display:flex;flex-wrap:wrap;gap:8px}
