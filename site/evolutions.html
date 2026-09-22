@@ -112,7 +112,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, FC_CSS, cardDetail, FC_DETAIL_CSS, applyEvoLevel, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS } from './assets/clubviz.js?v=20260922aa';
+import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, FC_CSS, cardDetail, FC_DETAIL_CSS, applyEvoLevel, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT } from './assets/clubviz.js?v=20260922ab';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -197,25 +197,67 @@ const presLabel = pres => pres ? `${esc(ROLE_KR[pres.role_id] || pres.role_id)} 
         우리가 다시 계산할 수 없다. 즉 **fut.gg 기준으로만 알 수 있는 정보**다. */
 function stepsHTML(p, pid){
   const steps = p.path || [];
-  const own = pid != null ? STATE[String(pid)] : null;
-  const drift = own && own.ovr !== p.ovr_before;
-  return `<div class="steps-h">단계별 카드 <small class="dim">— <b>fut.gg가 기준 카드(OVR ${p.ovr_before})에서</b> 계산한 중간 상태다${
-      drift ? ` · ⚠️ 이 선수는 <b>지금 ${own.ovr}</b>이라 출발점이 다르다 — <b>지금 내 카드 기준은 아래 「적용 후 선수 프로필」</b>을 본다` : ''}</small></div>
+  /* ⛔ **1단계 경로에서는 그리지 않는다**(2026-09-22) — 고유하게 주는 것은 **단계 사이의 중간 상태**뿐인데
+     1단계면 「적용 전 ↔ 적용 후」가 전부라 아래 「적용 후 선수 프로필」과 완전히 겹친다.
+     실측: 전체 92경로 중 1단계가 72건(78%). */
+  if (steps.length <= 2) return '';
+  /* ⭐⭐ **출발점은 지금 내 카드이고, 단계별 변화도 직접 계산한다**(2026-09-22 사용자 지시).
+     ⛔ fut.gg 값은 **기준 카드에서** 계산돼 이미 진화한 선수에겐 어긋난다 — 쓰지 않는다.
+     ⛔ **OVR은 산출하지 않는다**(EA 산식 비공개) — 6대 스탯만 상한 규칙대로 올린다.
+     ⚠️ 갈림길은 **우리 추천 가지**를 적용한다(못 가르면 1번). 아래 갈림길 표와 같은 판단이다. */
+  const st = pid != null ? STATE[String(pid)] : null;
+  const bs = evalBasis(pid, p.pres);
+  const base = J(st?.attrs, null);
+  const isGk = /GK/.test(String((steps[0] || {}).position || st?.positions || ''));
+  if (!base) return fallbackSteps(p, pid);        // 보유 카드가 없으면 fut.gg 값으로 물러선다
+  const at = { ...base };
+  const rows = [{ label: '지금 내 카드', six: faceFromAttrs(at, EVO.face_stats || [], isGk), ovr: st.ovr, ps: [] }];
+  let n = 0;
+  for (const id of (p.ids || [])){
+    for (const lv of (J(CATBYID[id]?.levels, []) || [])){
+      const opts = lv.upgradeOptions || [];
+      let gained = [];
+      if (opts.length > 1){
+        const ev = evalLevel(opts, bs.pres, bs.have, bs.attrOf);
+        const k = ev.rec >= 0 ? ev.rec : 0;
+        const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
+        applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
+        gained = src.filter(u => u.upgrade === 'play_style').map(u => PS_NAME[String(u.value)]).filter(Boolean);
+      } else {
+        applyEvoLevel(at, lv);
+        gained = (lv.upgrades || []).filter(u => u.upgrade === 'play_style').map(u => PS_NAME[String(u.value)]).filter(Boolean);
+      }
+      n++;
+      rows.push({ label: `${n}단계 후`, six: faceFromAttrs(at, EVO.face_stats || [], isGk), ovr: null, ps: gained });
+    }
+  }
+  const KS = isGk ? GK_KEYS : SIX_KEYS;   // ⚠️ GK는 DIV/HAN/KIC/REF/SPD/POS다 — 필드 키를 쓰면 전부 빈칸이 된다
+  return `<div class="steps-h">단계별 변화 <small class="dim">— <b>지금 내 카드(OVR ${st.ovr})에서</b> 상한 규칙대로 직접 계산했다.
+      ⚠️ <b>OVR은 산출하지 않는다</b>(EA 산식 비공개) · 갈림길은 <b>아래 추천 가지</b>를 적용했다.</small></div>
+    <table class="tbl steptbl"><thead><tr><th></th>${KS.map(k => `<th>${k}</th>`).join('')}<th>얻는 PlayStyle</th></tr></thead><tbody>
+    ${rows.map((r, i) => { const prev = rows[i - 1];
+      return `<tr${i === 0 ? ' class="dim"' : ''}><td><b>${esc(r.label)}</b>${
+        r.ovr != null ? ` <small class="dim">OVR ${r.ovr}</small>` : ''}</td>
+        ${KS.map(k => { const v = r.six[k], d = prev ? v - prev.six[k] : 0;
+          return `<td>${v ?? '—'}${d ? `<small class="up"> +${d}</small>` : ''}</td>`; }).join('')}
+        <td>${r.ps.length ? r.ps.map(x => `<span class="chip" style="border-color:var(--ok);color:var(--ok)">${esc(x)}</span>`).join(' ') : '<span class="dim">—</span>'}</td></tr>`;
+    }).join('')}</tbody></table>`;
+}
+/* 보유 카드가 없을 때만 — fut.gg가 기준 카드에서 계산한 카드 스트립(출처를 밝힌다) */
+function fallbackSteps(p, pid){
+  const steps = p.path || [];
+  return `<div class="steps-h">단계별 카드 <small class="dim">— 이 선수는 <b>내 구단에 없어</b> 지금 카드가 없다.
+      <b>fut.gg가 기준 카드(OVR ${p.ovr_before})에서</b> 계산한 값이다.</small></div>
     <div class="steps">${steps.map((s, i) => {
-    const prev = steps[i - 1];
-    const six = Object.entries(s.six || {}).map(([k, v]) => {
-      const d = prev && prev.six ? v - prev.six[k] : 0;
-      return `<span>${k} <b>${v ?? '—'}</b>${d ? `<small class="${d > 0 ? 'up' : 'dn'}">${d > 0 ? '+' : ''}${d}</small>` : ''}</span>`;
-    }).join(' ');
-    const roles = [...(s.roles_plus_plus || []).map(i => [BYID[`plusplus:${i}`], '++']), ...(s.roles_plus || []).map(i => [BYID[`plus:${i}`], '+'])]
-      .filter(([r]) => r).map(([r, k]) => `<span class="req"${p.m && p.m(r) ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}>${esc(r.position_name)} ${esc(r.name)}${k}</span>`).join('');
-    return `<div class="step${i === steps.length - 1 && p.tier ? ' best' : ''}">
-      ${s.card_image_url ? `<img src="${esc(s.card_image_url)}" alt="" loading="lazy">` : ''}
-      <b>${i === 0 ? '적용 전' : `${i}단계 후`}</b> · OVR <b>${s.ovr ?? '—'}</b>${prev && s.ovr - prev.ovr ? ` <small class="up">+${s.ovr - prev.ovr}</small>` : ''}
-      <div style="margin:4px 0">${six}</div>
-      ${(s.playstyles || []).length ? `<div class="dim">PS ${(s.playstyles || []).map(esc).join(', ')}</div>` : ''}
-      <div style="margin-top:3px">${roles || '<small class="dim">역할 숙련 없음</small>'}</div></div>`;
-  }).join('')}</div>`;
+      const prev = steps[i - 1];
+      const six = Object.entries(s.six || {}).map(([k, v]) => {
+        const d = prev && prev.six ? v - prev.six[k] : 0;
+        return `<span>${k} <b>${v ?? '—'}</b>${d ? `<small class="${d > 0 ? 'up' : 'dn'}">${d > 0 ? '+' : ''}${d}</small>` : ''}</span>`;
+      }).join(' ');
+      return `<div class="pcard"><b>${i === 0 ? '적용 전' : `${i}단계 후`}</b> · OVR <b>${s.ovr ?? '—'}</b>
+        <div style="margin:4px 0">${six}</div>
+        ${(s.playstyles || []).length ? `<div class="dim">PS ${(s.playstyles || []).map(esc).join(', ')}</div>` : ''}</div>`;
+    }).join('')}</div>`;
 }
 const costText = r => [r.coins_cost ? `${Number(r.coins_cost).toLocaleString()} 코인` : null, r.points_cost ? `${r.points_cost} 포인트` : null,
   r.training_time ? `훈련 ${Math.round(r.training_time / 3600)}h` : null].filter(Boolean).join(' · ') || '무료';
@@ -252,7 +294,7 @@ const ownedCard = pid => STATE[String(pid)] || null;
    ⛔ 상한 규칙은 `applyEvoLevel`(clubviz) 하나만 안다 — 여기서 다시 짜지 않는다.
    ⚠️ 분기 단계가 끼면 **투영하지 않는다**(무엇을 고를지 모르면 추정이다) — `skipped`로 사유를 돌려준다. */
 const CATBYID = {}; for (const c of (EVO.catalog || [])) CATBYID[c.evo_id] = c;
-function projectPath(p, fromAttrs, isGk, pres, have){
+function projectPath(p, fromAttrs, isGk, pres, have, attrOf){
   const at = { ...fromAttrs }; const skipped = []; const chose = [];
   for (const id of (p.ids || [])){
     const levels = J(CATBYID[id]?.levels, []) || [];
@@ -264,7 +306,7 @@ function projectPath(p, fromAttrs, isGk, pres, have){
            「뭘 고르든 업그레이드 수치를 공개하니 직접 계산하면 되잖아」 — 맞다).
            종전엔 분기가 있으면 통째로 건너뛰어 「반영하지 못한 단계」로 밀어 놨다.
            ⇒ **우리 추천 가지**를 적용한다. 추천이 없으면(가르지 못함) **1번 가지**를 쓰고 그 사실을 적는다. */
-        const ev = evalLevel(opts, pres, have);
+        const ev = evalLevel(opts, pres, have, attrOf);
         const k = ev.rec >= 0 ? ev.rec : 0;
         const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
         applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
@@ -299,7 +341,8 @@ const ROLEBYID = {}; for (const r of (EVO.role_map || [])) ROLEBYID[`${r.kind}:$
 /* ⭐⭐⭐ **한 단계의 가지들을 평가한다 — 판단 정본**(docs/22 §6.2).
    ⚠️ **「이미 보유」는 처방과 무관하게 잴 수 있다**(2026-09-22 사용자 화면에서 드러남) —
       처방이 없다고 이 축까지 포기하면 **명백한 낭비를 못 걸러낸다**. 처방이 필요한 건 ⑵⑶뿐이다. */
-function evalLevel(opts, pres, have){
+function evalLevel(opts, pres, have, attrOf){
+  let recSoft = false;
   const whys = opts.map(og => branchWhy(Array.isArray(og) ? og : (og.upgrades || []), pres, have));
   const maxS = Math.max(...whys.map(w => w.score));
   const label = k => whys[k].ps.length ? whys[k].ps.join('·') : `${k + 1}번`;
@@ -317,22 +360,47 @@ function evalLevel(opts, pres, have){
   } else if (onN === 1){
     rec = whys.findIndex(w => w.onRole.length);
     reason = `이쪽만 <b>처방 역할이 보는 속성</b>에 걸린다 — ${esc(whys[rec].onRole.join('·'))}.`;
-  } else {
+  }
+  /* ⭐⭐ **여기까지 안 갈렸을 때 쓰는 추가 2축**(2026-09-22 사용자 지시 「이런 경우에 어떤 옵션이 좋은지 제안해줘」).
+     ⛔ 순서를 지킨다 — 위 3축(이미 보유·역할 가중·역할 적합)이 먼저다. 이건 **동점을 깨는 용도**다.
+     ⑷ **FC27에서 EA가 효과를 깎은 PlayStyle은 피한다** — `game_system_changes` #13(**A등급, EA 1차**).
+        같은 슬롯값이 전년보다 싸졌으므로, 한쪽만 깎였으면 **안 깎인 쪽**이 낫다.
+     ⑸ **그 PlayStyle을 실제로 자주 쓸 카드인가** — 걸리는 속성의 현재 값이 높은 쪽.
+        ⚠️ **판단값(MEDIUM)이다** — EA가 「속성이 높으면 PS를 더 쓴다」고 말한 적은 없다.
+        패스 60인 수비수에게 Incisive Pass가 덜 쓰인다는 상식 수준의 근거뿐이라 **등급을 밝혀 제시**한다. */
+  if (rec < 0){
+    const cutN = whys.map(w => w.ps.filter(n => PS_FC27_CUT[n]).length);
+    if (cutN.some(n => n > 0) && cutN.some(n => n === 0)){
+      rec = cutN.findIndex(n => n === 0);
+      const bad = whys.map((w, k) => cutN[k] ? w.ps.filter(n => PS_FC27_CUT[n]) : []).flat();
+      reason = `반대쪽 <b>${esc(bad.join('·'))}</b>은 <b>FC27에서 EA가 효과를 깎았다</b>` +
+        ` <small>(${esc(PS_FC27_CUT[bad[0]] || '')} · EA 1차)</small> — 같은 한 칸이면 안 깎인 쪽이 낫다.`;
+    } else if (attrOf){
+      const use = whys.map(w => w.ps.reduce((t, n) =>
+        t + (PS_ATTRS[n] || []).reduce((u, a) => u + (attrOf[a] ?? 0), 0) / Math.max(1, (PS_ATTRS[n] || []).length), 0));
+      const hi = use.indexOf(Math.max(...use));
+      if (use.filter(v => v === use[hi]).length === 1 && Math.max(...use) - Math.min(...use) >= 3){
+        rec = hi; recSoft = true;
+        reason = `이 카드가 <b>실제로 더 쓸 쪽</b>이다 — ${esc(whys[hi].ps.join('·'))}이 보는 속성 평균 <b>${Math.round(use[hi])}</b>` +
+          ` ↔ 반대쪽 ${Math.round(Math.min(...use))}. <small>⚠️ 판단값(MEDIUM) — EA가 밝힌 관계는 아니다.</small>`;
+      }
+    }
+  }
+  if (rec < 0)
     cantTell = `<b>어느 쪽이든 괜찮다</b> — ${dupN === whys.length ? '양쪽 다 이미 갖고 있다'
       : onN === whys.length ? '양쪽 다 이 역할이 보는 속성에 걸린다'
-      : maxS === 0 ? '양쪽 다 속성 보상이 없고 역할과도 무관하다' : '우리 기준으로 차이가 없다'}.`;
-  }
-  return { whys, rec, reason, cantTell, label };
+      : maxS === 0 ? '양쪽 다 속성 보상이 없고 역할과도 무관하다' : '우리 기준 5축 어디서도 차이가 없다'}.`;
+  return { whys, rec, reason, cantTell, label, recSoft };
 }
 /* 진화 하나의 **모든 갈림길 단계**를 평가해 돌려준다(없으면 빈 배열). */
-function evalBranches(evoId, pres, have){
+function evalBranches(evoId, pres, have, attrOf){
   const levels = J(CATBYID[evoId]?.levels, []) || [];
   return levels.map((lv, i) => ({ i: lv.idx ?? i + 1, opts: lv.upgradeOptions || [] }))
     .filter(x => x.opts.length > 1)
-    .map(b => ({ ...b, ...evalLevel(b.opts, pres, have) }));
+    .map(b => ({ ...b, ...evalLevel(b.opts, pres, have, attrOf) }));
 }
 function branchEval(opts, pres, have, opt = {}){
-  const { whys, rec, reason, cantTell, label } = evalLevel(opts, pres, have);
+  const { whys, rec, reason, cantTell, label, recSoft } = evalLevel(opts, pres, have, opt.attrOf);
   /* ⛔ 강조는 **⭐ 우리 추천 하나뿐**. 이미 밟은 진화의 ✅(기록)만 색을 달리해 함께 둔다. */
   const chips = opts.map((og, k) => {
     const src = Array.isArray(og) ? og : (og.upgrades || []);
@@ -342,7 +410,7 @@ function branchEval(opts, pres, have, opt = {}){
       src.map(upLabel).map(esc).join(' · ')}${whys[k].dup.length ? ' <em class="dupmark">이미 보유</em>' : ''}</span>`;
   }).join('<em>또는</em>');
   const body = rec >= 0
-    ? `<div class="why-v">⭐ <b>${esc(label(rec))}</b> 추천 — ${reason}</div>`
+    ? `<div class="why-v${recSoft ? ' soft' : ''}">${recSoft ? '☆' : '⭐'} <b>${esc(label(rec))}</b> ${recSoft ? '권함' : '추천'} — ${reason}</div>`
     : `<div class="why-r dim">${cantTell}</div>`;
   return `<div class="whybox"><div class="optrow">${chips}</div>${body}</div>`;
 }
@@ -352,7 +420,9 @@ function evalBasis(pid, pres){
   const bc = pid != null ? (CARDS[String(pid)] || []).find(x => x.is_base) : null;
   const have = new Set(String((st || bc || {}).playstyles || '')
     .split(',').map(x => x.trim().replace(/\+$/, '')).filter(Boolean));
-  return { pres: pres || null, have };
+  /* ⑸축(이 카드가 실제로 더 쓸 쪽)에 쓸 **지금 카드 29속성**. 보유가 없으면 기준 카드로 물러선다. */
+  const attrOf = J((st || bc || {}).attrs, null) || null;
+  return { pres: pres || null, have, attrOf };
 }
 function pathOptionsHTML(p, pid){
   const ids = p.ids || [], choices = J(p.path_choices, []) || [];
@@ -366,8 +436,7 @@ function pathOptionsHTML(p, pid){
     const bs = evalBasis(pid, p.pres);
     blocks.push(`<div class="optlv-g">${ids.length > 1 ? `<b>${esc(c.name)}</b>` : ''}
       ${br.map(b => `<div class="optlv"><i>${b.i}단계</i></div>
-        ${branchEval(b.opts, bs.pres, bs.have,
-          { pickIdx: mine && mine[b.i - 1] ? Number(mine[b.i - 1]) - 1 : null })}`).join('')}</div>`);
+        ${branchEval(b.opts, bs.pres, bs.have, { attrOf: bs.attrOf })}`).join('')}</div>`);
   });
   if (!blocks.length) return '';
   const any = choices.some(x => x && x.length);
@@ -422,18 +491,18 @@ function gainsHTML(p, own, pid){
          (2026-09-22 사용자 지적 「옵션이 있다면 얻을 수 있는 것들을 보여주는 게 옳고, 1·2단계 모두 제안해야」).
          ⛔ 종전엔 fut.gg가 고른 가지의 결과 하나만 보여줘서 **다른 가지의 보상이 화면에 아예 없었다**. */
       const bs1 = evalBasis(pid, p.pres);
-      const brs = (p.ids || []).flatMap(id => evalBranches(id, bs1.pres, bs1.have)
+      const brs = (p.ids || []).flatMap(id => evalBranches(id, bs1.pres, bs1.have, bs1.attrOf)
         .map(b => ({ ...b, evo: CATBYID[id]?.name || '' })));
       if (!brs.length) return '';
       return `<div class="gain-opts"><b>갈림길에서 고를 수 있는 것</b>
         ${brs.map(b => `<div class="gain-opt"><i>${(p.ids || []).length > 1 ? esc(b.evo) + ' ' : ''}${b.i}단계</i>
           ${b.opts.map((og, k) => { const src = Array.isArray(og) ? og : (og.upgrades || []);
             const w = b.whys[k], isRec = b.rec === k;
-            return `<span class="opt${isRec ? ' rec' : w.dup.length ? ' weak' : ''}">${isRec ? '⭐ ' : ''}${
+            return `<span class="opt${isRec ? (b.recSoft ? ' rec soft' : ' rec') : w.dup.length ? ' weak' : ''}">${isRec ? (b.recSoft ? '☆ ' : '⭐ ') : ''}${
               esc(w.ps.length ? w.ps.join('·') : src.map(upLabel).join(' · '))}${
               w.dup.length ? ' <em class="dupmark">이미 보유</em>' : ''}</span>`; }).join('<em>또는</em>')}
           <small class="dim" style="flex-basis:100%">${b.rec >= 0
-            ? `⭐ <b>${esc(b.label(b.rec))}</b> 추천 — ${b.reason}` : b.cantTell}</small></div>`).join('')}</div>`;
+            ? `${b.recSoft ? '☆' : '⭐'} <b>${esc(b.label(b.rec))}</b> ${b.recSoft ? '권함' : '추천'} — ${b.reason}` : b.cantTell}</small></div>`).join('')}</div>`;
     })()}
     ${dupPS.length ? `<div class="gain-row"><i>이미 보유</i>${dupPS.map(nm =>
         `<span class="gain-dup" title="이 경로가 주는 보상이지만 ${esc(basis)}에 이미 있어 새로 늘지 않는다">${esc(nm)}</span>`).join('')}
@@ -455,7 +524,7 @@ function evoResultCard(p, pid){
      fut.gg 경로는 기준 카드에서 계산돼 이미 진화한 선수에겐 맞지 않는다. */
   const isGk = /GK/.test(String(last.position || base.positions || ''));
   const bs0 = evalBasis(pid, p.pres);
-  const proj = fromOwned ? projectPath(p, J(beforeAttrs, {}) || {}, isGk, bs0.pres, bs0.have) : null;
+  const proj = fromOwned ? projectPath(p, J(beforeAttrs, {}) || {}, isGk, bs0.pres, bs0.have, bs0.attrOf) : null;
   const afterAttrs = proj ? JSON.stringify(proj.at) : JSON.stringify(last.attrs);
   const afterSix = proj ? JSON.stringify(proj.six) : JSON.stringify(last.six || {});
   /* ⛔⛔ fut.gg는 경로를 **기준 카드에서** 계산한다. 이미 진화한 선수는 출발점이 달라
@@ -1012,8 +1081,7 @@ function optionsHTML(c, best){
       b.opts.forEach((og, k) => { if (chosenBy(Array.isArray(og) ? og : (og.upgrades || []))) { takenIdx = k; anyMine = true; } });
       return `<div class="optlv"><i>${b.i}단계</i>${
         mineCur && takenIdx == null ? '<small class="dim">— 아직 안 밟았거나 기준 카드와 겹쳐 <b>판정할 수 없다</b></small>' : ''}</div>
-      ${branchEval(b.opts, bs.pres, bs.have,
-        { takenIdx, pickIdx: !mineCur && pick && pick[b.i - 1] ? Number(pick[b.i - 1]) - 1 : null })}`;
+      ${branchEval(b.opts, bs.pres, bs.have, { takenIdx, attrOf: bs.attrOf })}`;
     }).join('')}
     <small class="dim">⭐ = <b>우리 추천</b>(${esc(best?.name || '최적 선수')} 기준 · 기준은 docs/22 §6.2)${
       mineCur ? ` · ✅ = <b>${esc(mineName)}</b>가 <b>실제로 고른</b> 가지(기록)` : ''}</small></div>`;

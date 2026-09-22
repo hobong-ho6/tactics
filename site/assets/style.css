@@ -474,3 +474,15 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .gain-opt{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin:4px 0}
 .gain-opt>i{font-style:normal;font-size:10px;color:var(--dim);font-weight:700;min-width:46px}
 .gain-opt small{font-size:10.5px;line-height:1.5;margin-top:1px}
+
+/* ☆ = 판단값 기반 「권함」 — ⭐(근거 있는 추천)와 색을 달리해 등급이 눈에 보이게 한다(2026-09-22) */
+.opt.rec.soft{border-color:var(--warn);color:var(--warn);background:rgba(255,213,77,.1)}
+.why-v.soft{color:var(--warn)} .why-v.soft b{color:var(--warn)}
+
+/* 단계별 변화 표 — 카드 스트립을 대체(2026-09-22): 지금 내 카드에서 직접 계산한 6대 스탯 추이 */
+.steptbl{width:auto;min-width:min(100%,520px);margin:2px 0 8px;font-size:12px}
+.steptbl th{font-size:10.5px;text-align:center;padding:2px 8px}
+.steptbl td{padding:3px 8px;text-align:center}
+.steptbl td:first-child,.steptbl th:first-child{text-align:left;white-space:nowrap}
+.steptbl td:last-child{text-align:left}
+.steptbl tr.dim td{opacity:.65}

@@ -249,7 +249,7 @@ export const PS_ATTRS = {   // ⭐ 화면들이 같은 연결표를 쓰도록 �
 /* ⭐ FC27에서 **효과가 축소·제거된** PlayStyle — EA 1차(Gameplay Deep Dive) verbatim으로 확정된 것만.
    정본은 `game_system_changes` #13·#22(등급 A)와 docs/22 §6이다. 여기 목록을 늘리려면 그쪽에 행이 먼저 있어야 한다.
    ⚠️ 「없어졌다」가 아니라 「같은 슬롯값이 전년보다 싸졌다」는 뜻이라 tie-break에서 **반 표**로 센다. */
-const PS_FC27_CUT = {
+export const PS_FC27_CUT = {   // ⭐ 갈림길 판정에서도 쓴다(2026-09-22)
   'Rapid': '드리블 속도 보너스 축소 — EA 「가속 스탯이 더 중요해진다」',
   'Quick Step': '가속 보너스 축소 — EA 「가속 스탯이 더 중요해진다」',
   'Low Driven Shot': '슛 속도 부스트 제거(정확도만 잔존)',
