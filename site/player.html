@@ -950,6 +950,9 @@ function render(){
        ⚠️ 시즌을 모르는 그리드(스쿼드 폴백 등)는 `미상`으로 따로 묶는다 — 아무 시즌에 욱여넣지 않는다. */
     const gEl = document.getElementById('grids');
     const drawGrids = () => {
+    /* ⛔ `#grids`는 `.cardrow`(display:flex)다 — 시즌 묶음을 그대로 넣으면 **버튼·그룹이 flex 아이템이 되어
+       세로로 쭉 늘어난다**(2026-09-22 사용자 지적 「버튼이 이상하다」). 시즌 레이아웃일 때만 블록으로 바꾼다. */
+    gEl.classList.toggle('by-season', cards.length > 0);
     if (!cards.length) gEl.innerHTML = '<span class="dim">실측 그리드 없음</span>';
     else {
       const bySeason = new Map();

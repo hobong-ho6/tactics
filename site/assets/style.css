@@ -360,6 +360,7 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
   box-shadow:0 8px 24px rgba(0,0,0,.6);pointer-events:none}
 
 /* 선수 히트맵 — 시즌별 묶음과 on/off (2026-09-22 사용자 지시) */
+.cardrow.by-season{display:block}      /* ⛔ 이 한 줄이 없으면 버튼이 세로로 늘어난다(위 주석 참조) */
 .seasonbar{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}
 .seasontog{background:none;border:1px solid var(--line);color:var(--dim);border-radius:99px;
   padding:3px 11px;font-size:12px;font-weight:700;cursor:pointer;display:inline-flex;align-items:baseline;gap:5px}
