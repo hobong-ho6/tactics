@@ -210,10 +210,18 @@ function sixText(before, after){
     return y != null && x != null && y !== x
       ? `${k} ${x}→<b style="color:var(--ok)">${y}</b>` : `${k} ${y ?? x ?? '—'}`; }).join(' · ');
 }
-function pathHTML(p, i){
+function pathHTML(p, i, pid){
   const why = !p.pres ? '처방 없음 — 능력치만 본 순위' : p.tier === 2 ? '처방 역할 Role++ ✓' : p.tier === 1 ? '처방 역할 Role+' : '처방 역할과 무관';
-  return `<details class="path pcard tier${p.tier}" style="margin:6px 0"${i === 0 ? ' open' : ''}>
-    <summary class="kv">${i === 0 ? '<span class="badge hi">최적 제안</span>' : `<span class="badge">${i + 1}순위</span>`}
+  /* ⭐ 이 경로 안에 **이 선수가 이미 밟은 진화**가 있으면 그대로 알린다(2026-09-22 사용자 지시).
+     ⛔ 안 적으면 끝낸 진화가 「앞으로 할 수 있는 것」으로 똑같이 보인다. */
+  const done = pid != null ? appliedIn(p, pid) : [];
+  const allDone = done.length && done.length === (p.ids || []).length && done.every(x => x.done);
+  const badge = !done.length ? ''
+    : allDone ? '<span class="chip" style="border-color:var(--ok);color:var(--ok)">✓ 이미 적용 완료</span>'
+    : `<span class="chip" style="border-color:var(--warn);color:var(--warn)">진행 중 — ${
+        done.map(x => `${esc(x.name)} ${x.maxLevel}단계${x.done ? ' 완료' : ' 진행'}`).join(' · ')}</span>`;
+  return `<details class="path pcard tier${p.tier}${allDone ? ' path-done' : ''}" style="margin:6px 0"${i === 0 && !allDone ? ' open' : ''}>
+    <summary class="kv">${allDone ? '<span class="badge">완료</span>' : i === 0 ? '<span class="badge hi">최적 제안</span>' : `<span class="badge">${i + 1}순위</span>`}${badge}
       <b>${esc(p.evolution_names)}</b> <span class="chip">${p.steps}단계</span>
       <span class="chip${p.d ? '' : ' dim'}"${p.d ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}>OVR ${p.ovr_before}→${p.ovr_after}${p.d ? ` (+${p.d})` : ''}</span>
       ${p.rs ? scoreChip(p.rs) : ''}
@@ -425,11 +433,42 @@ function consumedMap(){
 }
 let CONSUMED = consumedMap();
 let OWNED = new Set();
+/* ⭐⭐ **선수별 「이미 적용한 진화」** (2026-09-22 사용자 지시
+   「선수별 진화 메뉴에서는 이미 적용된 진화까지 반영해서 개별 선수의 진화 패스를 관리」).
+   ⛔ 종전에는 `pathOpen()`이 「내가 쓴 진화는 나에게는 계속 열어 둔다」로만 동작해,
+      **이미 끝낸 진화가 「앞으로 할 수 있는 경로」로 똑같이 보였다.**
+   ⇒ `fut_evolution_log`를 선수(player_id) 단위로 묶어 ⑴ 무엇을 ⑵ 몇 단계까지 ⑶ 끝냈는지를 들고,
+      경로 카드가 그걸 반영해 「이미 적용함 / 남은 단계 N」을 표시한다.
+   ⚠️ 카드 행 id(`club_player_id`)와 선수 id(`player_id`)는 다르다 — 섞으면 엉뚱한 선수에 붙는다.
+   ⚠️ `is_void` 행은 「적용된 적 없음」이 실측으로 확인된 것이라 세지 않는다(소진 계산과 같은 규칙). */
+function appliedMap(){
+  const C = EVO.club || { players: [], log: [] }; const acc = accountObj(); if (!acc) return {};
+  const own = Object.fromEntries(C.players.filter(p => p.account_id === acc.id).map(p => [p.id, p]));
+  const m = {};
+  for (const l of C.log){
+    const p = own[l.club_player_id]; if (!p || l.is_void || p.player_id == null) continue;
+    const k = `${p.player_id}:${l.evo_id}`;
+    const e = (m[k] ??= { pid: p.player_id, evo_id: l.evo_id, name: l.evo_name, levels: [], done: false,
+                          ovr_before: null, ovr_after: null, first: null, last: null });
+    e.levels.push(l.level ?? 1);
+    if (l.completed_at) e.done = true;
+    if (e.ovr_before == null || (l.level ?? 1) === 1) e.ovr_before = l.ovr_before;
+    e.ovr_after = l.ovr_after ?? e.ovr_after;
+    e.first = e.first && e.first < l.applied_at ? e.first : l.applied_at;
+    e.last = e.last && e.last > (l.completed_at || l.applied_at) ? e.last : (l.completed_at || l.applied_at);
+  }
+  for (const k in m) m[k].maxLevel = Math.max(...m[k].levels);
+  return m;
+}
+let APPLIED = appliedMap();
+/* 이 경로에 들어 있는 진화 중 **이 선수가 이미 밟은 것**들 */
+const appliedIn = (r, pid) => (r.ids || []).map(i => APPLIED[`${pid}:${i}`]).filter(Boolean);
 const pathOpen = (r, pid) => r.ids.every(i => !CONSUMED[i]?.exhausted || CONSUMED[i].by.some(b => b.pid === pid));
 let RANKED = {};
 function buildRanked(){
   const acc = accountObj();
   OWNED = new Set((EVO.club?.players || []).filter(p => acc && p.account_id === acc.id && p.status === 'owned').map(p => p.player_id));
+  APPLIED = appliedMap();
   RANKED = {};
   for (const [pid, rows] of Object.entries(EVO.paths || {})) RANKED[pid] = rank(+pid, rows).filter(r => pathOpen(r, +pid));
 }
@@ -561,6 +600,21 @@ function renderCatalog(team = CAT_TEAM){
 }
 
 /* ── 선수별 패스 ── */
+/* 완주한 경로는 목록 **뒤로** 민다 — 「다음에 뭘 할까」가 위에 와야 한다. */
+const doneScore = (r, pid) => { const d = appliedIn(r, pid);
+  return d.length && d.length === (r.ids || []).length && d.every(x => x.done) ? 1 : 0; };
+/* 선수 머리의 「이미 적용한 진화」 — 무엇을 몇 단계까지 했는지, OVR이 얼마나 올랐는지. */
+function appliedPanel(pid){
+  const mine = Object.values(APPLIED).filter(x => x.pid === pid);
+  if (!mine.length) return '';
+  return `<div class="applied-box"><b>이미 적용한 진화</b> <small class="dim">${mine.length}건 — 이 선수의 경로는 여기서 이어진다</small>
+    ${mine.sort((a, b) => String(a.first).localeCompare(String(b.first))).map(x =>
+      `<div><span class="chip"${x.done ? ' style="border-color:var(--ok);color:var(--ok)"' : ' style="border-color:var(--warn);color:var(--warn)"'}>${x.done ? '완료' : '진행 중'}</span>
+        <b>${esc(x.name)}</b> <small class="dim">${x.maxLevel}단계까지${
+          x.ovr_before != null && x.ovr_after != null && x.ovr_after !== x.ovr_before
+            ? ` · OVR ${x.ovr_before}→<b class="up">${x.ovr_after}</b>` : ''} · ${esc(x.first)}${
+          x.last && x.last !== x.first ? `~${esc(x.last)}` : ''}</small></div>`).join('')}</div>`;
+}
 function renderPaths(team, focusPid){
   teamBar(document.getElementById('teamsel'), team, renderPaths);
   const pids = Object.keys(RANKED).map(Number).filter(p => team === 'ALL' || TEAM_OF[p] === team)
@@ -571,7 +625,9 @@ function renderPaths(team, focusPid){
       <div class="kv"><b style="font-size:15px">${esc(NAME_OF[pid] || rows[0].name_kr)}</b> <span class="chip">${esc(TEAM_OF[pid] || '')}</span>
         <span>처방: ${presLabel(rows[0].pres)}</span> <small class="dim">경로 ${rows.length}건</small>
         <a href="player.html" style="font-size:12px">선수 화면 →</a></div>
-      ${rows.map(pathHTML).join('')}</div>`;
+      ${appliedPanel(+pid)}
+      ${rows.slice().sort((a, b) => (doneScore(a, +pid) - doneScore(b, +pid)))
+            .map((r, i) => pathHTML(r, i, +pid)).join('')}</div>`;
   }).join('') || '<span class="dim">이 팀에 열린 진화 경로가 없다.</span>';
   evoTips(document.getElementById('paths'));
   if (focusPid) document.getElementById(`pp${focusPid}`)?.scrollIntoView({ block: 'start' });

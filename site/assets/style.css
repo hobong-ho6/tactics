@@ -383,3 +383,12 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 /* 프리미엄 시즌패스 해금 — 구매가 전제라 색을 달리해 「레벨만 올리면 된다」로 오독되지 않게 한다 */
 .unlockhow.prem{border-left-color:var(--warn);background:rgba(255,213,77,.05)}
 .unlockhow.prem>b{color:var(--warn)}
+
+/* 선수별 진화 패스 — 「이미 적용한 진화」 패널과 완료 경로 (2026-09-22) */
+.applied-box{border:1px solid var(--line);border-left:3px solid var(--ok);border-radius:0 8px 8px 0;
+  padding:7px 11px;margin:6px 0 10px;background:rgba(76,217,123,.04);font-size:12px;line-height:1.7}
+.applied-box>b{color:var(--ok);font-size:11.5px;letter-spacing:.03em}
+.applied-box .up{color:var(--ok)}
+/* 끝낸 경로는 흐리게 — 목록에 남기되 「앞으로 할 것」과 눈으로 갈린다(지우면 이력이 안 보인다) */
+.path-done{opacity:.55}
+.path-done:hover{opacity:1}
