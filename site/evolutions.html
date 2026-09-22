@@ -110,7 +110,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260922c';
+import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260922d';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -281,7 +281,8 @@ function renderNow(){
     el?.querySelector?.('.fc-card')?.classList.add('sel');
     side.innerHTML = '<div class="fc-back"><a class="act" href="#" data-back>← 팀 설정으로</a></div>'
       + cardDetail(p, { role, team: T, log: (EVO.club || {}).log, chem_styles: EVO.chem_styles,
-                        reco: recoFor(p, slotIdx), role_map: EVO.role_map });
+                        reco: recoFor(p, slotIdx), role_map: EVO.role_map,
+                        catalog: EVO.catalog, face_stats: EVO.face_stats });
     side.querySelector('[data-back]').addEventListener('click', e => {
       e.preventDefault();
       document.querySelectorAll('#nowpitch .sel').forEach(x => x.classList.remove('sel'));
@@ -298,6 +299,7 @@ function renderNow(){
   });
   enableDragScroll(document.querySelector('#nowpitch .fc-benchrow'));
   paintEvoCards(document.getElementById('nowpitch'));
+  enableHelpTips();
 
   const bench = (EVO.squad_slots || []).filter(s => s.grp === 'BENCH').sort((a,b)=>a.idx-b.idx);
   document.getElementById('nowxi').innerHTML = `<h3 style="margin:14px 0 6px">교체 명단 <small class="dim">${bench.length}명</small></h3>

@@ -155,3 +155,6 @@
   `re.search(r'export const FC_CSS = \`(.*?)\n\`;', s, re.S)` 의 그룹 안에 백틱이 있으면 깨진 것이다.
   ⭐ 증상이 「문법 오류」로 보이지 않는다 — **「클릭이 안 된다」·「카드가 안 그려진다」로 나타난다.**
   UI가 먹통이면 `read_console_messages`부터 본다.
+  🔴 **2026-09-22에 같은 실수를 두 번 더 했다(누적 4회).** 규칙을 알고도 주석을 쓰다 반사적으로 백틱을 넣는다.
+  ⇒ **사람 규칙으로는 못 막는다고 보고 검사를 만들었다: `python3 scripts/check_css_literals.py`.**
+  `site/assets/*.js`의 `export const *CSS` 블록에 백틱이 섞이면 exit 1. **CSS 블록을 고쳤으면 반드시 돌린다.**

@@ -163,6 +163,39 @@ export function enableDragScroll(el) {
   window.addEventListener('pointercancel', up);
 }
 
+
+/* 도움말 툴팁 — body에 띄운다. CSS ::after는 overflow:auto 컨테이너(사이드 패널)에서 잘린다.
+   ⭐ 위임 방식이라 나중에 그려지는 요소에도 자동으로 붙는다(한 번만 호출하면 된다). */
+export function enableHelpTips() {
+  if (window.__helpTipOn) return;
+  window.__helpTipOn = true;
+  const tip = document.createElement('div');
+  tip.className = 'helptip'; tip.hidden = true;
+  document.body.appendChild(tip);
+  const show = h => {
+    tip.textContent = h.getAttribute('data-tip') || '';
+    tip.hidden = false;
+    const r = h.getBoundingClientRect();
+    const w = Math.min(340, window.innerWidth - 24);
+    tip.style.width = w + 'px';
+    tip.style.left = Math.max(8, Math.min(r.left, window.innerWidth - w - 12)) + 'px';
+    const below = r.bottom + 8;
+    tip.style.top = (below + 160 > window.innerHeight ? Math.max(8, r.top - 8 - tip.offsetHeight) : below) + 'px';
+  };
+  document.addEventListener('pointerover', e => {
+    const h = e.target.closest && e.target.closest('.fc-help[data-tip]');
+    if (h) show(h);
+  });
+  document.addEventListener('pointerout', e => {
+    if (e.target.closest && e.target.closest('.fc-help')) tip.hidden = true;
+  });
+  document.addEventListener('focusin', e => {
+    const h = e.target.closest && e.target.closest('.fc-help[data-tip]');
+    if (h) show(h);
+  });
+  document.addEventListener('focusout', () => { tip.hidden = true; });
+}
+
 /* 아무 카드도 고르지 않았을 때의 사이드 패널 — 빈 칸으로 두지 않고 **팀 설정 + 11칸 역할**을 보여준다.
    카드 pill에서 뺀 역할·포커스가 여기 온전히 들어간다(잘림 없이). */
 export function fcSideEmpty(meta = {}, xi = []) {
@@ -376,14 +409,87 @@ function evoBlock(p, log) {
     }).join('')}</tbody></table>`;
 }
 
-function attrBlock(p) {
-  const a = parse(p.attrs);
-  if (!a) return '<p class="dim">상세 스탯 미수집(결손 — 0이 아니다).</p>';
+/* ⭐⭐ 진화 상승분을 **재구성**한다(2026-09-22 사용자 지시 「진화한 내역을 아니 진화 스탯을 알 수 있지 않아?」).
+   EA는 진화 후 개별 속성을 공개하지 않지만, 우리는 ⑴ 기준 카드 29속성 ⑵ 밟은 진화·단계 기록
+   ⑶ 카탈로그의 단계별 보상(속성·증가치·상한)을 갖고 있다 ⇒ 순서대로 캡을 씌워 더하면 복원된다.
+   ⛔ 추정을 실측처럼 보이게 하지 않는다 — 재구성한 6대 스탯이 **EA 실측(current_six)과 일치하는지
+      대조**해서, 맞으면 「검증됨」, 어긋나면 그 사실을 적고 기준 카드 값을 함께 남긴다.
+   ⛔ 사용자가 고른 분기(upgradeOptions)가 있는 단계는 **무엇을 골랐는지 데이터에 없다** — 건너뛰고 알린다. */
+function evolvedAttrs(p, ctx) {
+  const base = parse(p.attrs);
+  if (!base) return null;
+  const log = (ctx.log || []).filter(l => l.club_player_id === p.id && !l.is_void)
+    .sort((a, b) => (a.applied_at || '').localeCompare(b.applied_at || '') || a.id - b.id);
+  if (!log.length) return null;
+  const cat = {}; for (const c of (ctx.catalog || [])) cat[c.evo_id] = c;
+  const at = { ...base }; const applied = []; const skipped = [];
+  for (const l of log) {
+    const lv = (parse(cat[l.evo_id]?.levels) || []).find(x => Number(x.idx) === Number(l.level));
+    if (!lv) { skipped.push(`${l.evo_name} ${l.level}단계(카탈로그 없음)`); continue; }
+    if ((lv.upgradeOptions || []).length > 1) { skipped.push(`${l.evo_name} ${l.level}단계(분기 선택 미기록)`); continue; }
+    for (const u of (lv.upgrades || [])) {
+      const key = ATTR_KR[String(u.upgrade || '').replace(/^attribute_/, '')];
+      if (!key || at[key] == null) continue;
+      at[key] = u.maxValue != null ? Math.min(at[key] + u.value, u.maxValue) : at[key] + u.value;
+    }
+    applied.push(`${l.evo_name} ${l.level}단계`);
+  }
+  return { at, base, applied, skipped };
+}
+
+/* EA 속성 키(영문 snake) → 우리 29속성 한글 키. 카탈로그 보상과 카드 속성을 잇는 유일한 다리다. */
+const ATTR_KR = {
+  acceleration:'가속', sprint_speed:'질주 속도', positioning:'공격 위치 선정', finishing:'결정력',
+  shot_power:'슈팅력', long_shots:'중거리슛', volleys:'발리 슛', penalties:'페널티킥',
+  vision:'시야', crossing:'크로스', fk_accuracy:'프리킥 정확도', short_passing:'짧은 패스',
+  long_passing:'긴 패스', curve:'커브', agility:'민첩성', balance:'균형 감각', reactions:'반응력',
+  ball_control:'볼컨트롤', dribbling:'드리블', composure:'침착', interceptions:'차단력',
+  heading_accuracy:'헤딩 정확도', def_awareness:'수비 위치 선정', standing_tackle:'스탠딩 태클',
+  sliding_tackle:'슬라이딩 태클', jumping:'점프', stamina:'체력', strength:'힘', aggression:'공격성',
+};
+
+function attrBlock(p, ctx = {}) {
+  const a0 = parse(p.attrs);
+  if (!a0) return '<p class="dim">상세 스탯 미수집(결손 — 0이 아니다).</p>';
   const stale = p.card_ovr != null && p.current_ovr != null && p.card_ovr !== p.current_ovr;
-  const items = Object.entries(a).map(([k, v]) => `<div class="fc-attr"><span>${esc(k)}</span><b>${v}</b></div>`).join('');
-  return `${stale ? `<p class="dim" style="margin:0 0 6px">⚠️ 이 29속성은 <b>기준 카드(OVR ${p.card_ovr})</b>의 값이라
-      <b>진화 상승분이 빠져 있다</b> — 위 6대 스탯(현재 OVR ${p.current_ovr})과 어긋난다. EA는 진화 후 개별 속성을 공개하지 않는다.</p>` : ''}
-    <div class="fc-attrs">${items}</div>`;
+  const rec = stale ? evolvedAttrs(p, ctx) : null;
+  const show = rec ? rec.at : a0;
+  /* 재구성 검증 — 복원한 속성으로 6대 스탯을 다시 계산해 EA 실측과 맞춰 본다. */
+  let verdict = '';
+  if (rec && ctx.face_stats) {
+    const cur = parse(p.current_six) || {};
+    const calc = faceFrom(rec.at, ctx.face_stats);
+    const diff = SIX.filter(k => calc[k] != null && cur[k] != null && calc[k] !== cur[k]);
+    verdict = diff.length === 0
+      ? `<span class="chip ok">검증됨 — 재구성한 6대 스탯이 EA 실측과 6/6 일치</span>`
+      : `<span class="chip" style="border-color:var(--warn);color:var(--warn)">⚠️ ${diff.length}개 불일치(${diff.map(k => `${k} 계산 ${calc[k]} ↔ 실측 ${cur[k]}`).join(' · ')})</span>`;
+  }
+  const items = Object.entries(show).map(([k, v]) => {
+    const d = rec && a0[k] != null ? v - a0[k] : 0;
+    return `<div class="fc-attr"><span>${esc(k)}</span><b>${v}${d ? ` <small class="up">+${d}</small>` : ''}</b></div>`;
+  }).join('');
+  const head = !stale ? ''
+    : rec && rec.applied.length
+      ? `<p class="dim" style="margin:0 0 6px;font-size:12px">⭐ <b>진화 상승분을 반영한 추정치</b>다 —
+          기준 카드(OVR ${p.card_ovr}) 29속성에 <b>${esc(rec.applied.join(' · '))}</b>의 보상을 상한까지 얹어 복원했다.
+          <b class="up">+n</b>이 그 상승분이다. ${verdict}
+          ${rec.skipped.length ? `<br>⛔ 반영하지 못한 단계: ${esc(rec.skipped.join(' · '))} — 그만큼 실제보다 낮게 나온다.` : ''}</p>`
+      : `<p class="dim" style="margin:0 0 6px;font-size:12px">⚠️ 이 29속성은 <b>기준 카드(OVR ${p.card_ovr})</b>의 값이라
+          <b>진화 상승분이 빠져 있다</b>(카탈로그에서 단계 보상을 찾지 못했다).</p>`;
+  return head + `<div class="fc-attrs">${items}</div>`;
+}
+
+/* 29속성 → 6대 스탯(fc_face_stats 가중). 게임 반올림과 같게 floor(x+0.501). */
+function faceFrom(at, faceRows) {
+  const w = {};
+  for (const r of faceRows) if (!r.is_gk) (w[r.abbr] ??= {})[r.attr] = r.weight;
+  const out = {};
+  for (const k of SIX) {
+    if (!w[k]) continue;
+    const v = Object.entries(w[k]).reduce((t, [a, wt]) => t + wt * (at[a] ?? 0), 0);
+    out[k] = Math.min(99, Math.floor(v + 0.501));
+  }
+  return out;
 }
 
 /* 추천 케미 스타일 (2026-09-20 사용자 지시 「적용 케미에 추천 케미도 표시 — fut.gg 스코어와
@@ -462,7 +568,8 @@ function futggBlock(fg, nowName) {
     ${cur ? `<div class="fc-kv"><span>지금 스타일의 AcceleRATE</span><b>${esc(cur.accelerate || '—')}</b></div>` : ''}
     <div class="fc-kv"><span>스타일별 AcceleRATE</span><b style="font-weight:600">${esc(accelSummary || '—')}</b></div>
     ${changeHtml}
-    ${bars ? `<div style="margin-top:6px">${bars}</div>`
+    ${bars ? `<div class="fc-votehead">커뮤니티가 이 카드에 붙인 스타일 <small class="dim">— 투표 비율</small></div>
+             <div>${bars}</div>`
            : '<p class="dim" style="font-size:11.5px;margin:6px 0 0">커뮤니티 투표 없음(결손 — 0표라는 뜻이지 비추천이 아니다).</p>'}
     <p class="dim" style="font-size:11.5px;margin:6px 0 0">⚠️ fut.gg 배지는 <b>등급이 아니라 그 스타일을 붙였을 때의 AcceleRATE</b>다(실측 확인).
       투표율은 <b>인기이지 정답이 아니다</b> — 위 역할 점수와 갈리면 역할 점수를 따른다.</p></div>`;
@@ -471,8 +578,17 @@ function futggBlock(fg, nowName) {
 /* 스킬무브·약발·주발·AcceleRATE + Role+/++ (2026-09-21 사용자 지시 「스킬과 주발과 역할 정보를 추가해」).
    ⛔ Role+/++는 원장에 **raw ea_id**로 들어 있다(docs/21 ②) — `role_map`으로 이름을 붙이고,
       매핑에 없으면 지어내지 않고 id를 그대로 보여준다(결손을 감추지 않는다). */
+/* AcceleRATE 설명 — 값만 보여주면 뭘 뜻하는지 알 수 없다(2026-09-22 사용자 지시).
+   ⚠️ 판정식은 EA가 공개한 적이 없다(커뮤니티 데이터마이닝) — **등급을 명시**해 적는다(불변규칙 12). */
+const ACCEL_TIP = '가속 곡선의 유형이다. Explosive는 초반 몇 걸음이 빠르고 최고속 유지가 약하며, '
+  + 'Lengthy는 출발이 느린 대신 길게 달릴수록 빨라진다. Controlled는 그 중간이다. '
+  + '민첩성·밸런스가 힘보다 충분히 높고 가속이 일정 이상이면 Explosive, 반대로 힘이 크게 높으면 Lengthy, '
+  + '그 밖에는 Controlled가 된다 — 그래서 케미 스타일로 힘·민첩성이 바뀌면 유형이 갈리기도 한다. '
+  + '⚠️ 정확한 임계값은 EA 1차 자료에 없다(커뮤니티 해석, D등급). ⭐ FC27은 유형 간 차이를 줄이고 '
+  + '가속·질주 속성 비중을 높였다(EA 1차, HIGH).';
+
 const STARS = (n, max = 5) => n == null ? '—'
-  : '★'.repeat(n) + `<span class="dim">${'★'.repeat(Math.max(0, max - n))}</span>`;
+  : `<span class="fc-star">${'★'.repeat(n)}</span><span class="fc-star off">${'★'.repeat(Math.max(0, max - n))}</span>`;
 
 function traitRow(p, roleMap) {
   /* id 공간은 kind마다 갈린다(plus 1–49 · plusplus 101–149) — kind까지 맞춰 찾는다. */
@@ -506,7 +622,7 @@ function traitRow(p, roleMap) {
     <div class="fc-kv"><span>스킬무브</span><b>${STARS(num(p.skill_moves))}</b></div>
     <div class="fc-kv"><span>약발</span><b>${STARS(num(p.weak_foot))}</b></div>
     <div class="fc-kv"><span>주발</span><b>${esc(foot || '—')}</b></div>
-    <div class="fc-kv"><span>AcceleRATE</span><b>${esc(p.accelerate || '—')}</b></div>
+    <div class="fc-kv"><span class="fc-help" tabindex="0" data-tip="${esc(ACCEL_TIP)}">AcceleRATE<i>?</i></span><b>${esc(p.accelerate || '—')}</b></div>
     <div class="fc-kv"><span>Role++</span><b>${pp.length ? esc(pp.join(', ')) : '<span class="dim">없음</span>'}</b></div>
     <div class="fc-kv"><span>Role+</span><b>${pl.length ? esc(pl.join(', ')) : '<span class="dim">없음</span>'}</b></div>`;
 }
@@ -541,13 +657,14 @@ export function cardDetail(p, ctx = {}) {
       <button disabled>역할 <b>${esc(role.role_name)}</b></button><button disabled>포커스 <b>${esc(role.focus)}</b></button></div>
       ${ctx.team ? `<div class="plist" style="margin-top:4px"><button disabled>빌드업 ${esc(ctx.team.build_up_style)}</button>
       <button disabled>수비 ${esc(ctx.team.defensive_approach)}</button><button disabled>라인 ${ctx.team.line_height}</button></div>` : ''}` : ''}
+    <h4>상세 스탯</h4>${attrBlock(p, ctx)}
     ${traitRow(p, ctx.role_map)}
     <h4>현재 카드 스탯</h4>${sixRow(cur, base)}
     ${psBlock(p.current_playstyles)}
     <h4>진화 상태 ${evoCountLabel(p, ctx.log)}</h4>${evoBlock(p, ctx.log)}
     <h4>적용된 케미스트리</h4>${chemBlock(p, ctx.chem_styles)}
     ${recoBlock(p, ctx.reco, ctx.chem_styles)}
-    <h4>상세 스탯</h4>${attrBlock(p)}
+
   </div>`;
 }
 
@@ -569,17 +686,11 @@ export const FC_DETAIL_CSS = `
 .fc-ps.plus{border-color:var(--ok)}
 .fc-ps.plus i{font-style:normal;font-weight:800;color:var(--ok);margin-left:1px}
 .fc-recotbl td{font-size:12px}
-/* ⚠️ 네이티브 title 속성은 크롬에서 안 뜨다시피 한다(2026-09-21 사용자 지적) — 지연이 길고 hover 영역이 좁다.
-   CSS 툴팁으로 바꾸고 tabindex를 줘 키보드 포커스로도 열리게 한다.
-   ⛔ 이 블록은 템플릿 리터럴 안이다 — 주석에 백틱을 쓰면 리터럴이 거기서 끝나 파일이 깨진다(두 번 당했다). */
+/* ⛔ CSS ::after 툴팁은 **overflow:auto 안에서 잘린다** — 사이드 패널이 그래서 안 보였다
+   (2026-09-22 사용자 지적 「에메리 점수 툴팁이 여전히 안 나와」). body에 띄우는 JS 툴팁으로 바꿨다. */
 .fc-help{position:relative;border-bottom:1px dotted var(--dim);cursor:help;outline:none}
 .fc-help i{font-style:normal;display:inline-block;margin-left:3px;width:13px;height:13px;line-height:13px;
   text-align:center;border-radius:50%;background:var(--line);color:var(--txt);font-size:9.5px;vertical-align:1px}
-.fc-help::after{content:attr(data-tip);position:absolute;right:0;top:calc(100% + 6px);z-index:9;
-  width:250px;padding:8px 10px;border-radius:8px;background:#0b1220;border:1px solid var(--line);
-  color:var(--txt);font-size:11.5px;font-weight:400;line-height:1.5;text-align:left;white-space:normal;
-  box-shadow:0 6px 18px rgba(0,0,0,.55);opacity:0;visibility:hidden;transition:opacity .12s}
-.fc-help:hover::after,.fc-help:focus::after{opacity:1;visibility:visible}
 .fc-vote{display:flex;align-items:center;gap:6px;font-size:11.5px;margin:3px 0}
 .fc-vote span{flex:0 0 96px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .fc-vote i{flex:1;height:7px;border-radius:99px;background:var(--bg);overflow:hidden}
@@ -611,4 +722,7 @@ export const FC_DETAIL_CSS = `
 .fc-boost{display:inline-block;min-width:34px;text-align:center;font-weight:800;font-size:12.5px;
   color:#062b12;background:var(--ok);border-radius:99px;padding:1px 8px}
 .fc-boost.zero{color:var(--dim);background:transparent;border:1px solid var(--line);font-weight:600}
+.fc-star{color:#f5c542;letter-spacing:1px}
+.fc-star.off{color:rgba(255,255,255,.18)}
+.fc-votehead{font-size:11.5px;color:var(--dim);margin:8px 0 4px}
 `;
