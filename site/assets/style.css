@@ -439,3 +439,14 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .optlv-g + .optlv-g{margin-top:6px;padding-top:5px;border-top:1px dotted var(--line)}
 .optlv-g>b{display:block;font-size:11px;color:var(--dim);margin-bottom:3px}
 .gain-dup{border:1px dashed var(--dim);color:var(--dim);border-radius:99px;padding:2px 9px;font-size:11.5px}
+
+/* ⛔ 필터를 팀 스위처와 같은 줄·같은 모양으로 두면 「팀 하나 더」로 읽힌다(2026-09-22 사용자 지적).
+   줄을 나누고 라벨을 붙이며, 켜짐/꺼짐이 드러나는 체크 모양을 쓴다 — 팀 버튼(알약)과 형태부터 다르다. */
+.filterbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:0 0 10px;
+  padding:5px 9px;border:1px dashed var(--line);border-radius:8px;background:rgba(255,255,255,.02)}
+.filt-lab{font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--dim);margin-right:2px}
+button.filt{display:inline-flex;align-items:center;gap:5px;background:none;border:1px solid var(--line);
+  color:var(--dim);border-radius:6px;padding:3px 10px;font-size:11.5px;cursor:pointer}
+button.filt>i{font-style:normal;font-size:12px;line-height:1}
+button.filt:hover{border-color:var(--acc);color:var(--txt)}
+button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,61,.1);font-weight:700}

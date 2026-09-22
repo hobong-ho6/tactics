@@ -92,6 +92,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 
 <section data-tab="cat" style="display:none">
   <div class="panel"><h2>지금 열린 진화 <small class="dim" id="catn"></small></h2>
+    <div class="filterbar" id="catfilters" hidden></div>
     <div class="menubar" id="catteam"></div>
     <div id="catviz" class="mviz" style="grid-template-columns:1fr;margin:0 0 12px"></div>
     <div class="evo-grid" id="cat"></div>
@@ -104,6 +105,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <section data-tab="paths" style="display:none">
   <div class="panel"><h2>선수별 진화 패스 <small class="dim">— 팀별 · 처방 대조 순위</small></h2>
     <div class="menubar" id="teamsel"></div>
+    <div class="filterbar" id="pathfilters" hidden></div>
     <div id="paths"></div></div>
 </section>
 
@@ -730,9 +732,13 @@ function renderCatalog(team = CAT_TEAM){
   const cat = cat0.filter(c => (SHOW_USED || !usedIds.has(c.evo_id)) && (SHOW_PREM || !isPrem(c)));
   const nUsed = cat0.filter(c => usedIds.has(c.evo_id) && (SHOW_PREM || !isPrem(c))).length;
   const nPrem = cat0.filter(c => isPrem(c) && (SHOW_USED || !usedIds.has(c.evo_id))).length;
-  document.getElementById('catn').innerHTML = `— ${cat.filter(c => !c.is_expired).length}종 열림 · ${cat.filter(c => c.is_expired).length}종 만료`
-    + (nUsed ? ` · <button class="act" id="usedtog" style="padding:1px 8px;font-size:11px">소진 ${nUsed}종 ${SHOW_USED ? '숨기기' : '보기'}</button>` : '')
-    + (nPrem ? ` · <button class="act" id="premtog" style="padding:1px 8px;font-size:11px"${SHOW_PREM ? '' : ' title="프리미엄 시즌패스를 구매해야 열리는 진화다"'}>프리미엄 SP ${nPrem}종 ${SHOW_PREM ? '숨기기' : '보기'}</button>` : '');
+  document.getElementById('catn').innerHTML = `— ${cat.filter(c => !c.is_expired).length}종 열림 · ${cat.filter(c => c.is_expired).length}종 만료`;
+  /* 카탈로그 필터도 선수별 패스와 **같은 모양**으로 둔다 — 탭마다 다르면 그것대로 못 알아본다. */
+  const fb = document.getElementById('catfilters');
+  fb.innerHTML = ''; fb.hidden = !(nUsed || nPrem);
+  if (!fb.hidden) fb.innerHTML = '<span class="filt-lab">필터</span>'
+    + (nUsed ? `<button class="filt${SHOW_USED ? ' on' : ''}" id="usedtog"><i>${SHOW_USED ? '☑' : '☐'}</i>소진 진화${SHOW_USED ? '' : ` ${nUsed}종`}</button>` : '')
+    + (nPrem ? `<button class="filt${SHOW_PREM ? ' on' : ''}" id="premtog" title="프리미엄 시즌패스를 구매해야 열리는 진화다"><i>${SHOW_PREM ? '☑' : '☐'}</i>프리미엄 SP${SHOW_PREM ? '' : ` ${nPrem}종`}</button>` : '');
   const tog = document.getElementById('usedtog');
   if (tog) tog.addEventListener('click', () => { SHOW_USED = !SHOW_USED; renderCatalog(CAT_TEAM); });
   const ptog = document.getElementById('premtog');
@@ -887,18 +893,24 @@ function renderPaths(team, focusPid){
   /* ⭐ **내 구단에 없는 선수**도 경로가 계산된다(사야 진화할 수 있는 후보) — 지우면 그 정보를 잃는다.
      ⛔ 그런데 섞어 놓으면 「없는 선수가 왜 나와?」가 된다(2026-09-22 사용자 지적).
      ⇒ **기본은 보유만** 보여주고, 미보유는 건수를 적은 버튼으로 펼친다. */
-  const bar = document.getElementById('teamsel');
-  if (hidden || SHOW_PREM){
+  /* ⛔ 필터를 **팀 버튼과 같은 줄·같은 모양**으로 두면 「팀 하나 더」로 읽힌다(2026-09-22 사용자 지적).
+     ⇒ 줄을 나누고 「필터」 라벨을 붙이며, 켜짐/꺼짐이 드러나는 **다른 모양**(체크 표시)을 쓴다. */
+  const bar = document.getElementById('pathfilters');
+  bar.innerHTML = ''; bar.hidden = true;
+  const addFilter = (on, label, tip, onClick) => {
+    bar.hidden = false;
     const b = document.createElement('button');
-    b.className = 'act ghost' + (SHOW_PREM ? ' on' : '');
-    b.style.marginLeft = '10px'; b.style.fontSize = '11px';
-    b.innerHTML = `프리미엄 SP 경로 ${SHOW_PREM ? '숨기기' : `${hidden}건 보기`}`;
-    if (!SHOW_PREM) b.title = '프리미엄 시즌패스를 구매해야 열리는 진화가 낀 경로다';
-    b.addEventListener('click', () => {
-      SHOW_PREM = !SHOW_PREM; localStorage.setItem('evo_show_prem', SHOW_PREM ? '1' : '0');
-      buildRanked(); renderPaths(team); renderCatalog(CAT_TEAM); });
+    b.className = 'filt' + (on ? ' on' : '');
+    b.innerHTML = `<i>${on ? '☑' : '☐'}</i>${esc(label)}`;
+    if (tip) b.title = tip;
+    b.addEventListener('click', onClick);
     bar.appendChild(b);
-  }
+  };
+  if (hidden || SHOW_PREM)
+    addFilter(SHOW_PREM, `프리미엄 SP 경로${SHOW_PREM ? '' : ` ${hidden}건`}`,
+      '프리미엄 시즌패스를 구매해야 열리는 진화가 낀 경로다', () => {
+        SHOW_PREM = !SHOW_PREM; localStorage.setItem('evo_show_prem', SHOW_PREM ? '1' : '0');
+        buildRanked(); renderPaths(team); renderCatalog(CAT_TEAM); });
 
   const all = Object.keys(RANKED).map(Number).filter(p => team === 'ALL' || TEAM_OF[p] === team);
   const nOwned = all.filter(p => STATE[String(p)]).length, nNot = all.length - nOwned;
@@ -906,15 +918,11 @@ function renderPaths(team, focusPid){
     .sort((a, b) => (RANKED[b][0]?.tier ?? 0) - (RANKED[a][0]?.tier ?? 0) || (RANKED[b][0]?.d ?? 0) - (RANKED[a][0]?.d ?? 0));
   /* ⚠️ 이 버튼은 `nNot` **선언 뒤에** 만들어야 한다 — 위쪽(프리미엄 토글 옆)에 두면
      `Cannot access 'nNot' before initialization`으로 **렌더가 통째로 죽는다**(2026-09-22 실측). */
-  if (nNot){
-    const u = document.createElement('button');
-    u.className = 'act ghost' + (SHOW_UNOWNED ? ' on' : '');
-    u.style.marginLeft = '6px'; u.style.fontSize = '11px';
-    u.textContent = SHOW_UNOWNED ? '미보유 숨기기' : `미보유 ${nNot}명 보기`;
-    u.title = '내 구단에 카드가 없는 선수 — 사면 이 경로를 밟을 수 있다(전술 구현 탭의 구매 우선순위와 같은 축)';
-    u.addEventListener('click', () => { SHOW_UNOWNED = !SHOW_UNOWNED; renderPaths(team); });
-    bar.appendChild(u);
-  }
+  if (nNot)
+    addFilter(SHOW_UNOWNED, `미보유 선수${SHOW_UNOWNED ? '' : ` ${nNot}명`}`,
+      '내 구단에 카드가 없는 선수 — 사면 이 경로를 밟을 수 있다(전술 구현 탭의 구매 우선순위와 같은 축)',
+      () => { SHOW_UNOWNED = !SHOW_UNOWNED; renderPaths(team); });
+  if (!bar.hidden) bar.insertAdjacentHTML('afterbegin', '<span class="filt-lab">필터</span>');
   document.getElementById('paths').innerHTML = pids.map(pid => {
     const rows = RANKED[pid]; if (!rows.length) return '';
     return `<div class="panel" id="pp${pid}" style="margin:8px 0;${pid === focusPid ? 'outline:2px solid var(--acc)' : ''}">
