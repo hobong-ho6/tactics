@@ -460,3 +460,10 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .why-v b{color:var(--ok)}
 .steps-h{font-size:11px;font-weight:800;color:var(--dim);letter-spacing:.03em;margin:8px 0 3px}
 .steps-h small{font-weight:400;letter-spacing:0}
+
+/* 갈림길 — 강조는 ⭐(우리 추천) 하나뿐. fut.gg 선택은 각주 텍스트로만(2026-09-22 사용자 지적) */
+.optrow{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin:2px 0 4px}
+.opt.rec{border-style:solid;border-color:var(--ok);color:var(--ok);font-weight:700;background:rgba(76,217,123,.12)}
+.opt.weak{opacity:.5;text-decoration:line-through}
+.opt .dupmark{font-style:normal;font-size:10px;color:var(--warn);margin-left:4px;text-decoration:none;display:inline-block}
+.why-fg{color:var(--dim);font-size:10.5px;margin-top:2px}

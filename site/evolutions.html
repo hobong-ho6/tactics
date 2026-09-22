@@ -283,38 +283,56 @@ const ROLEBYID = {}; for (const r of (EVO.role_map || [])) ROLEBYID[`${r.kind}:$
      ⑶ **역할 적합** — 그 PlayStyle이 처방 역할이 ●● 이상 보는 속성에 걸리나(PS_ATTRS · 판단값).
    ⚠️ 셋 다 같으면 **가르지 않는다**. 억지로 고르면 근거 없는 수가 판단을 가장한다(불변규칙 12).
    ⚠️ 처방이 없으면 ⑵⑶을 잴 수 없다 — 그 사실을 돌려준다(조용히 비우지 않는다). */
-function branchEval(opts, pres, have){
+function branchEval(opts, pres, have, opt = {}){
   const whys = opts.map(og => branchWhy(Array.isArray(og) ? og : (og.upgrades || []), pres, have));
   const maxS = Math.max(...whys.map(w => w.score));
-  let verdict = '', why = '';
-  if (!pres){ why = '이 선수는 <b>처방이 없어</b> 역할 기준으로 가를 수 없다(능력치만 본다).'; }
+  const label = k => whys[k].ps.length ? whys[k].ps.join('·') : `[${k + 1}]`;
+  let rec = -1, reason = '', cantTell = '';
+  if (!pres){ cantTell = '이 선수는 <b>처방이 없어</b> 역할 기준으로 가를 수 없다(능력치만 본다).'; }
   else {
     const dupN = whys.filter(w => w.dup.length).length;
     const onN = whys.filter(w => w.onRole.length).length;
     if (dupN && dupN < whys.length){
-      const g = whys.findIndex(w => !w.dup.length);
-      verdict = `우리 기준 <b>[${g + 1}]</b> — 반대쪽은 <b>이미 가진 PlayStyle</b>이라 늘지 않는다.`;
+      rec = whys.findIndex(w => !w.dup.length);
+      const bad = whys.map((w, k) => w.dup.length ? label(k) : null).filter(Boolean);
+      reason = `반대쪽(<b>${esc(bad.join('·'))}</b>)은 <b>이미 갖고 있어</b> 눌러도 늘지 않는다.`;
     } else if (maxS > 0 && new Set(whys.map(w => w.score)).size > 1){
-      const g = whys.reduce((a, b, i) => (b.score > whys[a].score ? i : a), 0);
-      verdict = `우리 기준 <b>[${g + 1}]</b> — 처방 역할 가중이 <b>${whys[g].score}</b>으로 더 높다.`;
+      rec = whys.reduce((a, b, i) => (b.score > whys[a].score ? i : a), 0);
+      reason = `처방 역할 가중이 <b>${whys[rec].score}</b>으로 더 높다${
+        whys[rec].hit.length ? ` <small>(${esc(whys[rec].hit.join(' · '))})</small>` : ''}.`;
     } else if (onN === 1){
-      const g = whys.findIndex(w => w.onRole.length);
-      verdict = `우리 기준 <b>[${g + 1}]</b> — 이쪽 PlayStyle만 <b>이 역할이 보는 속성</b>에 걸린다.`;
+      rec = whys.findIndex(w => w.onRole.length);
+      reason = `이쪽만 <b>처방 역할이 보는 속성</b>에 걸린다 — ${esc(whys[rec].onRole.join('·'))}.`;
     } else {
-      why = `우리 기준(이미 보유·역할 가중·역할 적합)으로는 <b>가르지 못한다</b>${
-        dupN === whys.length ? ' — 양쪽 다 이미 가진 PlayStyle이다' :
-        maxS === 0 && !onN ? ' — 양쪽 다 속성 보상이 없고 역할과 무관하다' : ''}.`;
+      cantTell = `<b>어느 쪽이든 괜찮다</b> — ${
+        dupN === whys.length ? '양쪽 다 이미 갖고 있는 PlayStyle이다' :
+        onN === whys.length ? '양쪽 다 이 역할이 보는 속성에 걸린다' :
+        maxS === 0 ? '양쪽 다 속성 보상이 없고 역할과도 무관하다' : '우리 기준으로 차이가 없다'}.`;
     }
   }
-  const tags = whys.map((w, k) => {
-    const t = [];
-    if (w.dup.length) t.push(`<b class="bad-t">이미 보유</b> ${esc(w.dup.join('·'))} → 이득 0`);
-    if (maxS > 0) t.push(`역할 가중 <b>${w.score}</b>${w.hit.length ? ` <small>(${esc(w.hit.join(' · '))})</small>` : ''}`);
-    if (w.onRole.length) t.push(`<b class="ok-t">이 역할이 보는 속성</b>에 걸림 — ${esc(w.onRole.join('·'))}`);
-    return t.length ? `<div class="why-r"><i>[${k + 1}]</i>${t.join(' · ')}</div>` : '';
-  }).filter(Boolean);
-  return `<div class="whybox">${verdict ? `<div class="why-v">⭐ ${verdict}</div>` : ''}${tags.join('')}${
-    why ? `<div class="why-r dim">${why}</div>` : ''}</div>`;
+  /* ⛔⛔ **강조는 「우리 추천」 하나뿐이다**(2026-09-22 사용자 지적
+     「✅가 추천처럼 보이는데 이득 0인 걸 고르라는 거냐」).
+     종전엔 fut.gg 선택(✅)이 굵고 색까지 있어 **추천으로 읽혔고**, 정작 우리 추천은 아래 텍스트뿐이었다.
+     ⇒ ⭐(우리 추천)만 칠하고, fut.gg 선택은 **각주 한 줄**로 내린다.
+     ⚠️ 이미 밟은 진화(`taken`)는 **기록**이라 그때만 ✅를 칠한다 — 추천과 색을 달리한다. */
+  const chips = opts.map((og, k) => {
+    const src = Array.isArray(og) ? og : (og.upgrades || []);
+    const taken = opt.takenIdx === k, isRec = rec === k;
+    const cls = taken ? ' took' : isRec ? ' rec' : whys[k].dup.length ? ' weak' : '';
+    return `<span class="opt${cls}">${taken ? '✅ ' : isRec ? '⭐ ' : ''}${
+      src.map(upLabel).map(esc).join(' · ')}${whys[k].dup.length ? ' <em class="dupmark">이미 보유</em>' : ''}</span>`;
+  }).join('<em>또는</em>');
+  /* ⚠️ 추천이 없을 때(가르지 못함) 「우리 추천과 다르다」라고 쓰면 거짓이다 — 세 경우를 갈라 쓴다. */
+  const note = opt.pickIdx == null ? ''
+    : rec < 0
+      ? `<div class="why-fg">아래 「적용 후」 숫자는 fut.gg가 <b>${esc(label(opt.pickIdx))}</b>로 계산한 기준이다.</div>`
+    : opt.pickIdx === rec
+      ? `<div class="why-fg">아래 「적용 후」 숫자도 <b>같은 가지</b> 기준이다.</div>`
+      : `<div class="why-fg">⚠️ 아래 「적용 후」 숫자는 fut.gg가 <b>${esc(label(opt.pickIdx))}</b>로 계산한 것이라 <b>추천과 다르다</b> — 추천대로 고르면 결과가 달라진다.</div>`;
+  const body = rec >= 0
+    ? `<div class="why-v">⭐ <b>${esc(label(rec))}</b> 추천 — ${reason}</div>`
+    : `<div class="why-r dim">${cantTell}</div>`;
+  return `<div class="whybox">${chips ? `<div class="optrow">${chips}</div>` : ''}${body}${note}</div>`;
 }
 /* 어느 선수 기준으로 잴지 — 처방 + 지금 가진 PlayStyle(보유 카드 우선, 없으면 기준 카드) */
 function evalBasis(pid, pres){
@@ -335,19 +353,16 @@ function pathOptionsHTML(p, pid){
     const mine = choices[ei] || null;
     const bs = evalBasis(pid, p.pres);
     blocks.push(`<div class="optlv-g">${ids.length > 1 ? `<b>${esc(c.name)}</b>` : ''}
-      ${br.map(b => `<div class="optlv"><i>${b.i}단계</i>${b.opts.map((og, k) => {
-        const u = Array.isArray(og) ? og : (og.upgrades || []);
-        const took = mine && Number(mine[b.i - 1]) === k + 1;
-        return `<span class="opt${took ? ' took' : ''}">${took ? '✅ ' : ''}${u.map(upLabel).map(esc).join(' · ')}</span>`;
-      }).join('<em>또는</em>')}</div>
-      ${branchEval(b.opts, bs.pres, bs.have)}`).join('')}</div>`);
+      ${br.map(b => `<div class="optlv"><i>${b.i}단계</i></div>
+        ${branchEval(b.opts, bs.pres, bs.have,
+          { pickIdx: mine && mine[b.i - 1] ? Number(mine[b.i - 1]) - 1 : null })}`).join('')}</div>`);
   });
   if (!blocks.length) return '';
   const any = choices.some(x => x && x.length);
   return `<div class="optbox"><b>이 경로가 고르는 갈림길</b>${blocks.join('')}
     <small class="dim">${any
-      ? '✅ = <b>fut.gg가 계산해 둔 가지</b>다(우리 판단이 아니다). <b>⭐ 줄이 우리 기준</b>이고, 다른 가지를 고르면 위 「새로 얻는 것」도 바뀐다.'
-      : '⚠️ 이 경로의 선택 기록이 없어 <b>어느 가지인지 표시하지 못한다</b>.'}</small></div>`;
+      ? '⭐ = <b>우리 추천</b>(기준은 docs/22 §6.2). 다른 가지를 고르면 위 「새로 얻는 것」도 바뀐다.'
+      : '⭐ = <b>우리 추천</b>(기준은 docs/22 §6.2).'}</small></div>`;
 }
 function gainsHTML(p, own, pid){
   const last = (p.path || [])[(p.path || []).length - 1] || {};
@@ -958,20 +973,16 @@ function optionsHTML(c, best){
     ${branch.map(b => { let anyMine = false;
       /* ⭐ 카탈로그도 **같은 함수**로 잰다 — 기준은 한 곳만 안다(위 branchEval 주석). */
       const bs = evalBasis(best?.pid, best?.path?.pres);
-      const row = b.opts.map((og, k) => {
-        const src = Array.isArray(og) ? og : (og.upgrades || []);
-        const took = chosenBy(src); if (took) anyMine = true;
-        const rec = !mineCur && pick && Number(pick[b.i - 1]) === k + 1;
-        return `<span class="opt${took ? ' took' : rec ? ' pick' : ''}">${took ? '✅ ' : rec ? '★ ' : ''}${
-          src.map(upLabel).map(esc).join(' · ')}</span>`;
-      }).join('<em>또는</em>');
-      return `<div class="optlv"><i>${b.i}단계</i>${row}${
-        mineCur && !anyMine ? '<small class="dim" style="flex-basis:100%">— 이 단계는 아직 안 밟았거나 결과 PlayStyle이 기준 카드와 겹쳐 <b>판정할 수 없다</b></small>' : ''}</div>
-      ${branchEval(b.opts, bs.pres, bs.have)}`;
+      /* 이미 쓴 진화면 **내가 고른 가지**를 ✅로(기록) · 아니면 fut.gg 선택을 각주로만 */
+      let takenIdx = null;
+      b.opts.forEach((og, k) => { if (chosenBy(Array.isArray(og) ? og : (og.upgrades || []))) { takenIdx = k; anyMine = true; } });
+      return `<div class="optlv"><i>${b.i}단계</i>${
+        mineCur && takenIdx == null ? '<small class="dim">— 아직 안 밟았거나 기준 카드와 겹쳐 <b>판정할 수 없다</b></small>' : ''}</div>
+      ${branchEval(b.opts, bs.pres, bs.have,
+        { takenIdx, pickIdx: !mineCur && pick && pick[b.i - 1] ? Number(pick[b.i - 1]) - 1 : null })}`;
     }).join('')}
-    ${mineCur ? `<small class="dim">✅ = <b>${esc(mineName)}</b>가 실제로 고른 가지 — 지금 카드의 PlayStyle을 기준 카드와 대조해 판정했다(추천이 아니라 <b>기록</b>이다).</small>`
-      : pick ? `<small class="dim">★ = <b>fut.gg가 ${esc(best?.name || '최적 선수')}</b>(이 진화 최적 선수)에게 계산해 둔 가지다 — <b>우리 판단이 아니다</b>. 아래 <b>[1]·[2] 줄이 우리 기준</b>이고, 선수마다 달라진다.</small>`
-             : '<small class="dim">⚠️ 우리 경로 데이터에 이 진화의 선택 기록이 없어 <b>추천 가지를 표시하지 못한다</b>.</small>'}</div>`;
+    <small class="dim">⭐ = <b>우리 추천</b>(${esc(best?.name || '최적 선수')} 기준 · 기준은 docs/22 §6.2)${
+      mineCur ? ` · ✅ = <b>${esc(mineName)}</b>가 <b>실제로 고른</b> 가지(기록)` : ''}</small></div>`;
 }
 let SHOW_UNOWNED = false;   // 선수별 패스는 **보유 카드만**이 기본(위 주석)
 let PATH_TEAM = 'AVL';
