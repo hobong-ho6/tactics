@@ -434,3 +434,5 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .optlv>em{font-style:normal;font-size:10px;color:var(--dim);margin:0 2px}
 .opt{border:1px dashed var(--line);border-radius:6px;padding:2px 8px;font-size:11.5px;color:var(--dim)}
 .opt.pick{border-style:solid;border-color:var(--ok);color:var(--ok);font-weight:700;background:rgba(76,217,123,.08)}
+/* ✅ = 추천이 아니라 **실제로 고른 기록** — 색을 달리해 제안과 섞이지 않게 한다 */
+.opt.took{border-style:solid;border-color:var(--acc);color:var(--acc);font-weight:700;background:rgba(255,138,61,.1)}

@@ -770,7 +770,12 @@ function upLabel(u){
   const k = String(u.upgrade || '');
   if (k === 'play_style') return `PlayStyle ${PS_NAME[String(u.value)] || `#${u.value}`}${u.maxValue ? ` (^${u.maxValue})` : ''}`;
   if (k === 'overall') return `OVR +${u.value}${u.maxValue ? ` (^${u.maxValue})` : ''}`;
-  if (k === 'role_plus') return `Role+ #${u.value}`;
+  /* ⚠️ 역할도 **숫자 id**로만 온다 — role_map으로 풀지 않으면 「Role+ #34」처럼 못 읽는다(2026-09-22). */
+  if (k === 'role_plus' || k === 'role_plus_plus'){
+    const kind = k === 'role_plus' ? 'plus' : 'plusplus';
+    const r = ROLEBYID[`${kind}:${u.value}`];
+    return r ? `Role${kind === 'plus' ? '+' : '++'} ${r.position_name} ${r.name}` : `Role${kind === 'plus' ? '+' : '++'} #${u.value}`;
+  }
   const kr = ATTR_KR[k.replace(/^attribute_/, '')];
   return `${kr || k} +${u.value}${u.maxValue ? ` (^${u.maxValue})` : ''}`;
 }
@@ -783,15 +788,40 @@ function optionsHTML(c){
   let pick = null;
   for (const rows of Object.values(RANKED)) for (const r of rows)
     if ((r.ids || []).length === 1 && r.ids[0] === c.evo_id){ pick = (J(r.path_choices, []) || [])[0] || null; break; }
+  /* ⭐⭐ **이미 쓴 진화는 「추천」이 아니라 「내가 고른 것」을 보여준다**(2026-09-22).
+     소진된 진화는 경로가 RANKED에서 빠져 추천이 없다 — 그런데 **답은 이미 카드에 찍혀 있다.**
+     그 옵션의 PlayStyle이 **기준 카드에는 없고 지금 카드에는 있으면** 그 가지를 고른 것이다.
+     ⛔ 기준 카드와 대조하지 않으면 원래 갖고 있던 PS를 「골랐다」로 오판한다.
+     ⚠️ 아직 그 단계를 안 밟았으면 판정할 근거가 없다 — 그 사실을 적는다(빈칸으로 두지 않는다). */
+  const used = CONSUMED[c.evo_id];
+  let mineCur = null, mineBase = null, mineName = null;
+  if (used && used.by && used.by.length){
+    const pid = used.by[0].pid, st = STATE[String(pid)];
+    const bc = (CARDS[String(pid)] || []).find(x => x.is_base);
+    if (st){ mineName = used.by[0].name;
+      mineCur = new Set(String(st.playstyles || '').split(',').map(x => x.trim().replace(/\+$/, '')).filter(Boolean));
+      mineBase = new Set(String(bc?.playstyles || '').split(',').map(x => x.trim().replace(/\+$/, '')).filter(Boolean)); }
+  }
+  const chosenBy = src => {
+    if (!mineCur) return false;
+    const ps = src.filter(u => u.upgrade === 'play_style').map(u => PS_NAME[String(u.value)]).filter(Boolean);
+    return ps.length > 0 && ps.some(n => mineCur.has(n) && !mineBase.has(n));
+  };
   return `<div class="optbox"><b>갈림길 ${branch.length}단계 — 무엇을 고를지 정해야 한다</b>
-    ${branch.map(b => `<div class="optlv"><i>${b.i}단계</i>${b.opts.map((og, k) => {
-      const src = Array.isArray(og) ? og : (og.upgrades || []);
-      const mine = pick && Number(pick[b.i - 1]) === k + 1;
-      return `<span class="opt${mine ? ' pick' : ''}">${mine ? '★ ' : ''}${
-        src.map(upLabel).map(esc).join(' · ')}</span>`;
-    }).join('<em>또는</em>')}</div>`).join('')}
-    ${pick ? '<small class="dim">★ = 이 진화의 <b>최적 선수 경로</b>가 고른 가지(아래 「적용 가능」 1순위 기준)</small>'
-           : '<small class="dim">⚠️ 우리 경로 데이터에 이 진화의 선택 기록이 없어 <b>추천 가지를 표시하지 못한다</b>.</small>'}</div>`;
+    ${branch.map(b => { let anyMine = false;
+      const row = b.opts.map((og, k) => {
+        const src = Array.isArray(og) ? og : (og.upgrades || []);
+        const took = chosenBy(src); if (took) anyMine = true;
+        const rec = !mineCur && pick && Number(pick[b.i - 1]) === k + 1;
+        return `<span class="opt${took ? ' took' : rec ? ' pick' : ''}">${took ? '✅ ' : rec ? '★ ' : ''}${
+          src.map(upLabel).map(esc).join(' · ')}</span>`;
+      }).join('<em>또는</em>');
+      return `<div class="optlv"><i>${b.i}단계</i>${row}${
+        mineCur && !anyMine ? '<small class="dim" style="flex-basis:100%">— 이 단계는 아직 안 밟았거나 결과 PlayStyle이 기준 카드와 겹쳐 <b>판정할 수 없다</b></small>' : ''}</div>`;
+    }).join('')}
+    ${mineCur ? `<small class="dim">✅ = <b>${esc(mineName)}</b>가 실제로 고른 가지 — 지금 카드의 PlayStyle을 기준 카드와 대조해 판정했다(추천이 아니라 <b>기록</b>이다).</small>`
+      : pick ? '<small class="dim">★ = 이 진화의 <b>최적 선수 경로</b>가 고른 가지(아래 「적용 가능」 1순위 기준)</small>'
+             : '<small class="dim">⚠️ 우리 경로 데이터에 이 진화의 선택 기록이 없어 <b>추천 가지를 표시하지 못한다</b>.</small>'}</div>`;
 }
 let PATH_TEAM = 'AVL';
 function renderPaths(team, focusPid){
