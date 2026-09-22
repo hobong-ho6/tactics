@@ -110,7 +110,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260922g';
+import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260922h';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -275,7 +275,7 @@ function renderNow(){
   /* ⭐ 카드 비교(2026-09-22) — 상세에서 「비교에 담기」로 두 장을 고르면 나란히 견준다.
      ⛔ 담는 것은 **카드 객체**가 아니라 id다 — 렌더가 다시 돌아도 살아남게. */
   let cmp = [];
-  const cmpCtx = () => ({ chem_styles: EVO.chem_styles });
+  const cmpCtx = () => ({ chem_styles: EVO.chem_styles, role_map: EVO.role_map });
   const byId = id => (EVO.club?.players || []).find(x => x.id === id);
   const renderCmp = () => {
     const picked = cmp.map(byId).filter(Boolean);

@@ -201,51 +201,80 @@ export function enableHelpTips() {
    두 카드를 나란히 놓고 **인게임 실전값**으로 견준다(실측 29속성 + 케미 부스트).
    ⛔ 여기서도 계산을 만들지 않는다 — 상세 패널과 **같은 규칙**으로 값을 뽑아 차이만 표시한다.
    ⚠️ 한쪽에만 있는 속성(GK↔필드)은 비교하지 않는다. */
-function liveAttrs(p, styles) {
-  const base = parse(p.current_attrs) || parse(p.attrs) || {};
-  const st = (styles || []).find(x => x.ea_id === p.chem_style_ea);
-  const raw = st ? (parse(st.boosts) || {}) : {};
-  const cp0 = p.chem_points ?? 0;
-  const scale = cp0 >= 3 ? 1 : cp0 === 2 ? 2 / 3 : cp0 === 1 ? 1 / 3 : 0;
-  const out = {};
-  for (const [k, v] of Object.entries(base)) out[k] = Math.min(99, v + Math.round((num(raw[k]) || 0) * scale));
-  return out;
-}
-
 export function compareCards(a, b, ctx = {}) {
   if (!a || !b) return '';
-  const A = liveAttrs(a, ctx.chem_styles), B = liveAttrs(b, ctx.chem_styles);
+  /* ⛔ 비교 기준은 **케미 제외 · 진화 반영**이다(2026-09-22 사용자 지시).
+     `current_attrs`가 곧 그 값이다 — EA가 주는 카드 속성은 진화가 반영돼 있고 케미는 빠져 있다.
+     케미를 섞으면 「카드 자체의 우열」이 아니라 「지금 붙인 스타일까지 낀 값」이 돼 비교가 흐려진다. */
+  const A = parse(a.current_attrs) || parse(a.attrs) || {};
+  const B = parse(b.current_attrs) || parse(b.attrs) || {};
   const sixA = parse(a.current_six) || {}, sixB = parse(b.current_six) || {};
   const head = c => `<div class="cmp-card">
       ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="">` : ''}
       <b>${esc(c.name)}</b>
-      <span class="dim">OVR ${c.current_ovr ?? '-'} · ${esc((c.positions || '').split('/')[0] || '')}</span></div>`;
-  const bar = (k, va, vb) => {
+      <span class="dim">OVR ${c.current_ovr ?? '-'}${c.card_ovr !== c.current_ovr ? ` <em class="d-evo">진화 전 ${c.card_ovr}</em>` : ''}</span>
+      <span class="dim">${esc(c.positions || '')}</span></div>`;
+  const row = (k, va, vb, big) => {
     const d = (va ?? 0) - (vb ?? 0);
-    return `<tr><td class="cmp-a ${d > 0 ? 'win' : d < 0 ? 'lose' : ''}">${va ?? '—'}</td>
-      <td class="cmp-k">${esc(k)}</td>
+    return `<tr${big ? ' class="big"' : ''}><td class="cmp-a ${d > 0 ? 'win' : d < 0 ? 'lose' : ''}">${va ?? '—'}</td>
+      <td class="cmp-k">${esc(k)}${d ? `<i>${d > 0 ? '◀' : '▶'} ${Math.abs(d)}</i>` : ''}</td>
       <td class="cmp-b ${d < 0 ? 'win' : d > 0 ? 'lose' : ''}">${vb ?? '—'}</td></tr>`;
   };
   const sixRows = SIX.filter(k => sixA[k] != null || sixB[k] != null)
-    .map(k => bar(k, sixA[k], sixB[k])).join('');
+    .map(k => row(k, sixA[k], sixB[k], true)).join('');
   const keys = Object.keys(A).filter(k => B[k] != null);
-  const attrRows = keys.map(k => bar(k, A[k], B[k])).join('');
-  const psOf = c => String(c.current_playstyles || '').split(',').map(x => x.trim()).filter(Boolean);
-  const chip = (list, other) => list.length
-    ? list.map(x => `<span class="chip ${other.includes(x) ? 'dim' : 'ok'}">${esc(x.replace(/\s*\+$/, ''))}</span>`).join(' ')
-    : '<span class="dim">없음</span>';
-  const pa = psOf(a), pb = psOf(b);
+  const attrRows = keys.map(k => row(k, A[k], B[k])).join('');
+  /* PlayStyle — 상세 패널과 같은 아이콘을 쓴다. 상대에게 없는 것만 초록으로 띄운다. */
+  const psList = (c, other) => {
+    const list = String(c.current_playstyles || '').split(',').map(x => x.trim()).filter(Boolean);
+    if (!list.length) return '<span class="dim">없음</span>';
+    return list.map(nm => {
+      const plus = /\+$/.test(nm), base = nm.replace(/\s*\+$/, '');
+      const d = PLAYSTYLES[base];
+      const uniq = !other.includes(nm);
+      return `<span class="fc-ps${plus ? ' plus' : ''}${uniq ? ' uniq' : ''}" title="${esc(base)}">
+        ${d?.icon ? `<img src="${esc(d.icon)}" alt="" loading="lazy">` : ''}${esc(base)}${plus ? '<i>+</i>' : ''}</span>`;
+    }).join('');
+  };
+  const pa = String(a.current_playstyles || '').split(',').map(x => x.trim());
+  const pb = String(b.current_playstyles || '').split(',').map(x => x.trim());
+  /* 역할 숙련 — raw id를 role_map으로 풀고 포지션을 붙인다(상세 패널과 같은 규칙). */
+  const roles = (c, kind) => {
+    const arr = parse(kind === 'plus' ? c.current_roles_plus : c.current_roles_plus_plus);
+    if (!Array.isArray(arr) || !arr.length) return '<span class="dim">없음</span>';
+    return arr.map(id => {
+      const r = (ctx.role_map || []).find(x => x.ea_id === id && x.kind === kind);
+      return `<span class="chip">${r ? esc(r.position_name + ' ' + r.name) : '#' + id}</span>`;
+    }).join(' ');
+  };
   const winA = keys.filter(k => A[k] > B[k]).length, winB = keys.filter(k => B[k] > A[k]).length;
+  const star = (c, k, max) => num(c[k]) == null ? '—'
+    : `<span class="fc-star">${'★'.repeat(num(c[k]))}</span><span class="fc-star off">${'★'.repeat(Math.max(0, max - num(c[k])))}</span>`;
   return `<div class="fc-cmp">
     <div class="cmp-head">${head(a)}<span class="cmp-vs">vs</span>${head(b)}</div>
-    <p class="dim" style="font-size:11.5px;margin:6px 0">29속성 기준 <b>${esc(a.name)} ${winA}개</b> ·
-      <b>${esc(b.name)} ${winB}개</b> 우위. 값은 <b>케미까지 반영한 인게임 실전값</b>이다
-      (개인 케미 ${a.chem_points ?? 0}/3 ↔ ${b.chem_points ?? 0}/3).</p>
+    <p class="dim" style="font-size:11.5px;margin:8px 0">29속성 기준 <b>${esc(a.name)} ${winA}개</b> ·
+      <b>${esc(b.name)} ${winB}개</b> 우위. ⛔ <b>케미는 빼고 진화만 반영한</b> 카드 자체 값이다.</p>
     <table class="tbl cmp-tbl"><tbody>${sixRows}</tbody></table>
-    <h4 style="margin:12px 0 6px">PlayStyle</h4>
-    <div class="cmp-ps"><div>${chip(pa, pb)}</div><div>${chip(pb, pa)}</div></div>
-    <details style="margin-top:10px"><summary class="dim" style="cursor:pointer;font-size:12px">29속성 전부 펼치기</summary>
-      <table class="tbl cmp-tbl" style="margin-top:6px"><tbody>${attrRows}</tbody></table></details>
+
+    <h4>PlayStyle</h4>
+    <div class="cmp-two"><div class="fc-pslist">${psList(a, pb)}</div><div class="fc-pslist">${psList(b, pa)}</div></div>
+
+    <h4>역할 숙련</h4>
+    <div class="cmp-two">
+      <div><div class="dim cmp-lab">Role++</div>${roles(a, 'plusplus')}<div class="dim cmp-lab">Role+</div>${roles(a, 'plus')}</div>
+      <div><div class="dim cmp-lab">Role++</div>${roles(b, 'plusplus')}<div class="dim cmp-lab">Role+</div>${roles(b, 'plus')}</div>
+    </div>
+
+    <h4>스킬 · 주발 · 가속</h4>
+    <table class="tbl cmp-tbl"><tbody>
+      <tr><td class="cmp-a">${star(a, 'skill_moves', 5)}</td><td class="cmp-k">스킬무브</td><td class="cmp-b">${star(b, 'skill_moves', 5)}</td></tr>
+      <tr><td class="cmp-a">${star(a, 'weak_foot', 5)}</td><td class="cmp-k">약발</td><td class="cmp-b">${star(b, 'weak_foot', 5)}</td></tr>
+      <tr><td class="cmp-a">${esc(a.preferred_foot || '—')}</td><td class="cmp-k">주발</td><td class="cmp-b">${esc(b.preferred_foot || '—')}</td></tr>
+      <tr><td class="cmp-a">${esc(a.accelerate || '—')}</td><td class="cmp-k">AcceleRATE</td><td class="cmp-b">${esc(b.accelerate || '—')}</td></tr>
+    </tbody></table>
+
+    <h4>상세 스탯 <small class="dim">29속성</small></h4>
+    <table class="tbl cmp-tbl"><tbody>${attrRows}</tbody></table>
   </div>`;
 }
 
@@ -856,17 +885,24 @@ export const FC_DETAIL_CSS = `
 .fc-acc .tbl{width:100%;table-layout:auto;margin-top:6px}
 .fc-acc .tbl td,.fc-acc .tbl th{font-size:11.5px;padding:3px 6px}
 /* 카드 비교 */
-.cmp-head{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;text-align:center}
-.cmp-card img{width:84px;display:block;margin:0 auto 4px}
-.cmp-card b{display:block;font-size:13px}
-.cmp-card span{display:block;font-size:11px}
-.cmp-vs{color:var(--dim);font-size:12px;font-weight:700}
+.cmp-head{display:grid;grid-template-columns:1fr auto 1fr;align-items:end;gap:10px;text-align:center}
+.cmp-card img{width:150px;display:block;margin:0 auto 6px}
+.cmp-card b{display:block;font-size:15px}
+.cmp-card span{display:block;font-size:11.5px}
+.cmp-card em{font-style:normal;font-size:11px}
+.cmp-vs{color:var(--dim);font-size:13px;font-weight:700;padding-bottom:26px}
+.fc-cmp h4{margin:16px 0 7px;font-size:14px}
 .cmp-tbl{width:100%;table-layout:fixed}
-.cmp-tbl td{padding:3px 6px;font-size:12.5px}
-.cmp-k{text-align:center;color:var(--dim);font-size:11.5px}
+.cmp-tbl td{padding:4px 6px;font-size:13px}
+.cmp-tbl tr.big td{font-size:15px;font-weight:800}
+.cmp-k{text-align:center;color:var(--dim);font-size:11.5px;font-weight:400}
+.cmp-k i{display:block;font-style:normal;font-size:9.5px;opacity:.65}
 .cmp-a{text-align:right;font-weight:700} .cmp-b{text-align:left;font-weight:700}
-.cmp-a.win,.cmp-b.win{color:var(--ok)} .cmp-a.lose,.cmp-b.lose{color:var(--dim)}
-.cmp-ps{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:11.5px}
+.cmp-a.win,.cmp-b.win{color:var(--ok)} .cmp-a.lose,.cmp-b.lose{color:var(--dim);opacity:.7}
+.cmp-two{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
+.cmp-two .fc-pslist{gap:5px}
+.cmp-lab{font-size:10.5px;margin:2px 0 3px}
+.fc-ps.uniq{border-color:var(--ok)}
 .cmp-pick{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px}
 /* 케미 부스트 실제 적용값 — 표에서 즉시 눈에 들어와야 한다. */
 .fc-boost{display:inline-block;min-width:34px;text-align:center;font-weight:800;font-size:12.5px;
