@@ -436,3 +436,5 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .opt.pick{border-style:solid;border-color:var(--ok);color:var(--ok);font-weight:700;background:rgba(76,217,123,.08)}
 /* ✅ = 추천이 아니라 **실제로 고른 기록** — 색을 달리해 제안과 섞이지 않게 한다 */
 .opt.took{border-style:solid;border-color:var(--acc);color:var(--acc);font-weight:700;background:rgba(255,138,61,.1)}
+.optlv-g + .optlv-g{margin-top:6px;padding-top:5px;border-top:1px dotted var(--line)}
+.optlv-g>b{display:block;font-size:11px;color:var(--dim);margin-bottom:3px}

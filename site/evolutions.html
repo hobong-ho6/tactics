@@ -259,23 +259,59 @@ function projectPath(p, fromAttrs, isGk){
    ⇒ **지금 내 카드 ↔ 적용 후**를 직접 비교해 **새로 생기는 것만** 뽑아 앞에 세운다.
    ⚠️ 비교 기준은 `club.state`(정본)다 — 기준 카드와 비교하면 이미 가진 것도 「새로 얻는다」로 나온다. */
 const ROLEBYID = {}; for (const r of (EVO.role_map || [])) ROLEBYID[`${r.kind}:${r.ea_id}`] = r;
-function gainsHTML(p, own){
+/* ⭐⭐ **경로가 고른 갈림길**을 선수별 패스에도 보여준다(2026-09-22 사용자 지적
+   「이 진화를 수행했을 때 옵션을 여기서는 볼 수 없어 … 동일한 정보를 담은 메뉴는 같이 업데이트돼야 한다」).
+   ⛔ 종전엔 갈림길이 **카탈로그 탭에만** 있었다 — 정작 「이 선수는 뭘 고르게 되나」를 보는 자리에 없었다.
+   ⚠️ `path_choices`는 경로 안 **진화별로** [[단계1 옵션, …], …] 꼴이다 — 경로가 여러 진화를 엮으면 배열이 여러 개다. */
+function pathOptionsHTML(p){
+  const ids = p.ids || [], choices = J(p.path_choices, []) || [];
+  const blocks = [];
+  ids.forEach((id, ei) => {
+    const c = CATBYID[id]; if (!c) return;
+    const levels = J(c.levels, []) || [];
+    const br = levels.map((lv, i) => ({ i: lv.idx ?? i + 1, opts: lv.upgradeOptions || [] })).filter(x => x.opts.length > 1);
+    if (!br.length) return;
+    const mine = choices[ei] || null;
+    blocks.push(`<div class="optlv-g">${ids.length > 1 ? `<b>${esc(c.name)}</b>` : ''}
+      ${br.map(b => `<div class="optlv"><i>${b.i}단계</i>${b.opts.map((og, k) => {
+        const u = Array.isArray(og) ? og : (og.upgrades || []);
+        const took = mine && Number(mine[b.i - 1]) === k + 1;
+        return `<span class="opt${took ? ' took' : ''}">${took ? '✅ ' : ''}${u.map(upLabel).map(esc).join(' · ')}</span>`;
+      }).join('<em>또는</em>')}</div>`).join('')}</div>`);
+  });
+  if (!blocks.length) return '';
+  const any = choices.some(x => x && x.length);
+  return `<div class="optbox"><b>이 경로가 고르는 갈림길</b>${blocks.join('')}
+    <small class="dim">${any
+      ? '✅ = <b>이 경로가 고른 가지</b>다. 다른 가지를 고르면 결과가 달라지므로 위 「새로 얻는 것」도 바뀐다.'
+      : '⚠️ 이 경로의 선택 기록이 없어 <b>어느 가지인지 표시하지 못한다</b>.'}</small></div>`;
+}
+function gainsHTML(p, own, pid){
   const last = (p.path || [])[(p.path || []).length - 1] || {};
-  const norm = v => new Set((Array.isArray(v) ? v : String(v || '').split(',')).map(x => String(x).trim()).filter(Boolean));
-  const curPS = norm(own ? own.playstyles : ''), newPS = norm(last.playstyles || J(p.playstyles_after, []));
+  const norm = v => new Set((Array.isArray(v) ? v : String(v || '').split(',')).map(x => String(x).trim().replace(/\+$/, '')).filter(Boolean));
+  /* ⛔⛔ **비교 기준이 없으면 「전부 신규」가 된다**(2026-09-22 사용자 지적 「같은 진화인데 선수마다 다르다」).
+     비조는 **내 구단에 없는 선수**(실축 스쿼드만)라 `own`이 없었고, 그 결과 카드가 원래 갖고 있던
+     PlayStyle까지 「새로 얻는 것」으로 찍혔다 — 알리송은 1개, 비조는 3개+Role+로 갈려 보였다.
+     ⇒ 보유 카드가 없으면 **기준 카드**(player_card_items)와 비교한다. 기준도 없으면 비교를 포기하고 그렇게 적는다. */
+  const bc = pid != null ? (CARDS[String(pid)] || []).find(x => x.is_base) : null;
+  const src = own || bc;
+  const basis = own ? '지금 내 카드' : bc ? '기준 카드' : null;
+  if (!src) return `<div class="gains"><b>이 진화로 새로 얻는 것</b>
+    <div class="gain-why">⚠️ 비교할 카드가 없어 <b>무엇이 새로 생기는지 가릴 수 없다</b>(기준 카드 미수집).</div></div>`;
+  const curPS = norm(src.playstyles), newPS = norm(last.playstyles || J(p.playstyles_after, []));
   const gotPS = [...newPS].filter(x => !curPS.has(x));
   const roleGain = (kind, curJson, afterArr) => {
     const cur = new Set((J(curJson, []) || []).map(Number));
     return (afterArr || []).map(Number).filter(i => !cur.has(i))
       .map(i => ROLEBYID[`${kind}:${i}`]).filter(Boolean);
   };
-  const gotRP = roleGain('plus', own ? own.roles_plus : '[]', last.roles_plus || J(p.roles_plus_after, []));
-  const gotRPP = roleGain('plusplus', own ? own.roles_plus_plus : '[]', last.roles_plus_plus || J(p.roles_plus_plus_after, []));
+  const gotRP = roleGain('plus', src.roles_plus, last.roles_plus || J(p.roles_plus_after, []));
+  const gotRPP = roleGain('plusplus', src.roles_plus_plus, last.roles_plus_plus || J(p.roles_plus_plus_after, []));
   if (!gotPS.length && !gotRP.length && !gotRPP.length) return '';
   const psChip = nm => { const base = nm.replace(/\s*\+$/, ''), d = PLAYSTYLES[base];
     return `<span class="gain-ps" title="${esc(base)} — ${esc(d?.base || '')}">${
       d?.icon ? `<img src="${esc(d.icon)}" alt="" loading="lazy">` : ''}${esc(nm)}</span>`; };
-  return `<div class="gains"><b>이 진화로 새로 얻는 것</b>
+  return `<div class="gains"><b>이 진화로 새로 얻는 것</b> <small class="dim">— ${esc(basis)}와 비교</small>
     ${gotPS.length ? `<div class="gain-row"><i>PlayStyle</i>${gotPS.map(psChip).join('')}</div>` : ''}
     ${gotRPP.length ? `<div class="gain-row"><i>Role++</i>${gotRPP.map(r => `<span class="gain-role pp">${esc(r.position_name)} ${esc(r.name)}++</span>`).join('')}</div>` : ''}
     ${gotRP.length ? `<div class="gain-row"><i>Role+</i>${gotRP.map(r => `<span class="gain-role">${esc(r.position_name)} ${esc(r.name)}+</span>`).join('')}</div>` : ''}
@@ -327,7 +363,8 @@ function evoResultCard(p, pid){
       ⚠️ <b>OVR은 산출하지 않는다</b> — EA 산식이 비공개라 29속성에서 되돌릴 수 없다.
       카드의 <b>${beforeOvr}</b>은 <b>지금 값</b>이고, 적용 후 OVR은 <b>EA 싱크로 확정</b>한다.
       ${proj.skipped.length ? `<br>⛔ 반영하지 못한 단계: ${esc(proj.skipped.join(' · '))} — 그만큼 실제보다 낮게 나온다.` : ''}</p>` : ''}
-    ${gainsHTML(p, own)}
+    ${gainsHTML(p, own, pid)}
+    ${pathOptionsHTML(p)}
     ${/* ⚠️ `position_name`을 빼면 「이 자리의 전술」 앞에 **빈 동그라미 버튼**이 남는다(2026-09-22 사용자 지적). */''}
     ${cardDetail(obj, { role: p.pres ? { position_name: p.pres.pos_label || '', role_name: ROLE_KR[p.pres.role_id] || p.pres.role_id, focus: p.pres.focus } : null,
                         role_map: EVO.role_map, face_stats: EVO.face_stats,
