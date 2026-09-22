@@ -912,7 +912,11 @@ function renderPaths(team, focusPid){
         SHOW_PREM = !SHOW_PREM; localStorage.setItem('evo_show_prem', SHOW_PREM ? '1' : '0');
         buildRanked(); renderPaths(team); renderCatalog(CAT_TEAM); });
 
-  const all = Object.keys(RANKED).map(Number).filter(p => team === 'ALL' || TEAM_OF[p] === team);
+  /* ⛔ **그려지는 선수만 센다**(2026-09-22 사용자 지적 「미보유 1명뿐인데 필터엔 3명」).
+     `RANKED[pid]`는 소진·프리미엄 필터를 거친 뒤 **빈 배열일 수 있고**, 아래 렌더는 빈 것을 건너뛴다.
+     키 개수로 세면 화면에 안 나올 선수까지 세어 **버튼의 수와 실제가 어긋난다**. */
+  const all = Object.keys(RANKED).map(Number)
+    .filter(p => (team === 'ALL' || TEAM_OF[p] === team) && (RANKED[p] || []).length);
   const nOwned = all.filter(p => STATE[String(p)]).length, nNot = all.length - nOwned;
   const pids = all.filter(p => SHOW_UNOWNED || STATE[String(p)])
     .sort((a, b) => (RANKED[b][0]?.tier ?? 0) - (RANKED[a][0]?.tier ?? 0) || (RANKED[b][0]?.d ?? 0) - (RANKED[a][0]?.d ?? 0));
