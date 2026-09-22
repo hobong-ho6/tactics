@@ -242,6 +242,35 @@ def main():
                 skip += 1 - cur.rowcount
         if not a.dry_run:
             con.commit()
+        # ⭐ PlayStyle id→이름을 **누적 표에 덧칠**한다(migration 057) — 역산은 표본이 줄면 함께 줄기 때문이다.
+        cand = {}
+        for r in cur.execute("SELECT playstyles_after, path_json FROM player_evolutions WHERE playstyles_after IS NOT NULL").fetchall():
+            try:
+                ids = json.loads(r[0] or "[]")
+                pj = json.loads(r[1] or "[]")
+                names = (pj[-1].get("playstyles") if pj else None) or []
+            except Exception:
+                continue
+            if not ids or len(ids) != len(names):
+                continue
+            for i in ids:
+                c = cand.setdefault(i, {})
+                for nm in names:
+                    c[nm] = c.get(nm, 0) + 1
+        added = 0
+        for i, c in cand.items():
+            top = max(c.values())
+            best = [nm for nm, v in c.items() if v == top]
+            if len(best) != 1:
+                continue
+            added += cur.execute(
+                """INSERT INTO fc_playstyle_ids(game_version,ea_id,name,source,confidence,pulled)
+                   VALUES(?,?,?,?,?,?) ON CONFLICT(game_version,ea_id) DO NOTHING""",
+                (gv, i, best[0],
+                 "player_evolutions id↔이름 교차 역산 (collect_futgg_evolutions.py)",
+                 "HIGH — 동률이면 확정하지 않는다.", a.pulled)).rowcount
+        if added:
+            print(f"  🔤 PlayStyle 이름표 신규 {added}개(누적 표에 덧칠)")
         print(f"  적재 {ins}행 · 기존 {skip}행 · 경로 없음 {len(no_path)}명 · 조회 실패 {len(errs)}명")
         if skipped_cosmetic:
             print(f"  🎨 코스메틱 전용이라 제외 {len(skipped_cosmetic)}종: {', '.join(sorted(skipped_cosmetic))}")

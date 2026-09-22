@@ -998,3 +998,10 @@ CREATE TABLE fc_objective_tasks(
   UNIQUE(game_version, group_slug, task_name, pulled)
 );
 CREATE INDEX ix_obj_task_name ON fc_objective_tasks(task_name);
+CREATE TABLE fc_playstyle_ids(
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  ea_id INTEGER NOT NULL,
+  name TEXT NOT NULL,
+  source TEXT, confidence TEXT, pulled TEXT NOT NULL,
+  PRIMARY KEY(game_version, ea_id)
+);

@@ -185,6 +185,13 @@ def export_all(db_path=None, window="2026-summer"):
         best = [nm for nm, v in c.items() if v == top]
         if len(best) == 1:          # 동률이면 확정하지 않는다(추측 금지)
             ps_names[str(i)] = best[0]
+    # ⛔⛔ **역산은 표본이 줄면 함께 줄어든다** — 코스메틱 경로 210행을 지우자 29개 → 17개가 되어
+    #     화면에 「PlayStyle #8」이 떴다(2026-09-22 실증). ⇒ 누적 표(migration 057)를 **먼저 깔고**
+    #     이번 역산은 **새로 확정된 것만 덧칠**한다. 한번 확정된 이름은 다시 사라지지 않는다.
+    #     ⭐ 새로 확정된 id가 있으면 그 표에도 넣어 줘야 다음 회차가 이어받는다(collect_futgg_evolutions 몫).
+    table = {str(r["ea_id"]): r["name"] for r in _rows(con,
+        "SELECT ea_id, name FROM fc_playstyle_ids WHERE game_version='FC27'")}
+    ps_names = {**table, **ps_names}
 
     # 진화 해금 과제(migration 056) — 최신 pulled만. 화면이 진화 카드에 「그래서 뭘 하면 되나」를 띄운다.
     # ⚠️ 해금 문구는 **과제 이름**일 때도 그룹 이름일 때도 있어 양쪽을 다 내보낸다(매칭은 화면이 한다).
