@@ -110,7 +110,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, FC_CSS, cardDetail, FC_DETAIL_CSS, applyEvoLevel, faceOf as faceFromAttrs } from './assets/clubviz.js?v=20260922w';
+import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, FC_CSS, cardDetail, FC_DETAIL_CSS, applyEvoLevel, faceOf as faceFromAttrs, PLAYSTYLES } from './assets/clubviz.js?v=20260922x';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -246,6 +246,35 @@ function projectPath(p, fromAttrs, isGk){
   }
   return { at, six: faceFromAttrs(at, EVO.face_stats || [], isGk), skipped };
 }
+/* ⭐⭐ **이 진화로 무엇을 얻나** (2026-09-22 사용자 지적
+   「스탯 상승은 알겠는데 역할·플레이스타일을 얻는 경우엔 뭐가 업그레이드되는지 알기 어렵다」).
+   ⛔ 종전엔 업그레이드가 영문 한 줄로 뭉뚱그려져 PlayStyle·역할 획득이 스탯 사이에 묻혔다.
+   ⇒ **지금 내 카드 ↔ 적용 후**를 직접 비교해 **새로 생기는 것만** 뽑아 앞에 세운다.
+   ⚠️ 비교 기준은 `club.state`(정본)다 — 기준 카드와 비교하면 이미 가진 것도 「새로 얻는다」로 나온다. */
+const ROLEBYID = {}; for (const r of (EVO.role_map || [])) ROLEBYID[`${r.kind}:${r.ea_id}`] = r;
+function gainsHTML(p, own){
+  const last = (p.path || [])[(p.path || []).length - 1] || {};
+  const norm = v => new Set((Array.isArray(v) ? v : String(v || '').split(',')).map(x => String(x).trim()).filter(Boolean));
+  const curPS = norm(own ? own.playstyles : ''), newPS = norm(last.playstyles || J(p.playstyles_after, []));
+  const gotPS = [...newPS].filter(x => !curPS.has(x));
+  const roleGain = (kind, curJson, afterArr) => {
+    const cur = new Set((J(curJson, []) || []).map(Number));
+    return (afterArr || []).map(Number).filter(i => !cur.has(i))
+      .map(i => ROLEBYID[`${kind}:${i}`]).filter(Boolean);
+  };
+  const gotRP = roleGain('plus', own ? own.roles_plus : '[]', last.roles_plus || J(p.roles_plus_after, []));
+  const gotRPP = roleGain('plusplus', own ? own.roles_plus_plus : '[]', last.roles_plus_plus || J(p.roles_plus_plus_after, []));
+  if (!gotPS.length && !gotRP.length && !gotRPP.length) return '';
+  const psChip = nm => { const base = nm.replace(/\s*\+$/, ''), d = PLAYSTYLES[base];
+    return `<span class="gain-ps" title="${esc(base)} — ${esc(d?.base || '')}">${
+      d?.icon ? `<img src="${esc(d.icon)}" alt="" loading="lazy">` : ''}${esc(nm)}</span>`; };
+  return `<div class="gains"><b>이 진화로 새로 얻는 것</b>
+    ${gotPS.length ? `<div class="gain-row"><i>PlayStyle</i>${gotPS.map(psChip).join('')}</div>` : ''}
+    ${gotRPP.length ? `<div class="gain-row"><i>Role++</i>${gotRPP.map(r => `<span class="gain-role pp">${esc(r.position_name)} ${esc(r.name)}++</span>`).join('')}</div>` : ''}
+    ${gotRP.length ? `<div class="gain-row"><i>Role+</i>${gotRP.map(r => `<span class="gain-role">${esc(r.position_name)} ${esc(r.name)}+</span>`).join('')}</div>` : ''}
+    ${gotPS.length ? `<div class="gain-why">${gotPS.map(nm => { const d = PLAYSTYLES[nm.replace(/\s*\+$/, '')];
+        return d ? `<div><b>${esc(nm)}</b> — ${esc(d.base)}</div>` : ''; }).join('')}</div>` : ''}</div>`;
+}
 function evoResultCard(p, pid){
   const steps = p.path || []; const last = steps[steps.length - 1];
   if (!last || !last.attrs) return '';
@@ -291,8 +320,11 @@ function evoResultCard(p, pid){
       ⚠️ <b>OVR은 산출하지 않는다</b> — EA 산식이 비공개라 29속성에서 되돌릴 수 없다.
       카드의 <b>${beforeOvr}</b>은 <b>지금 값</b>이고, 적용 후 OVR은 <b>EA 싱크로 확정</b>한다.
       ${proj.skipped.length ? `<br>⛔ 반영하지 못한 단계: ${esc(proj.skipped.join(' · '))} — 그만큼 실제보다 낮게 나온다.` : ''}</p>` : ''}
+    ${gainsHTML(p, own)}
     ${cardDetail(obj, { role: p.pres ? { role_name: ROLE_KR[p.pres.role_id] || p.pres.role_id, focus: p.pres.focus } : null,
-                        role_map: EVO.role_map, face_stats: EVO.face_stats })}</div>`;
+                        role_map: EVO.role_map, face_stats: EVO.face_stats,
+                        /* ⚠️ 가상 카드라 로그로 셀 수 없다 — 현재 횟수 + 이 경로에서 **새로** 밟는 진화 수 */
+                        evo_runs: (own?.evo_runs ?? 0) + Math.max(0, (p.ids || []).length - (pid != null ? appliedIn(p, pid).length : 0)) })}</div>`;
 }
 function pathHTML(p, i, pid){
   const why = !p.pres ? '처방 없음 — 능력치만 본 순위' : p.tier === 2 ? '처방 역할 Role++ ✓' : p.tier === 1 ? '처방 역할 Role+' : '처방 역할과 무관';

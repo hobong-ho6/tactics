@@ -6,6 +6,7 @@
    ⭐ 배치는 fut.gg 슬롯 순서 규약을 따른다(f4231a: 0 GK · 1 RB · 2 CB · 3 CB · 4 LB · 5 CDM · 6 CDM ·
       7 RM · 8 LM · 9 CAM · 10 ST, **우→좌**). */
 import { PLAYSTYLES } from './playstyle-icons.js';
+export { PLAYSTYLES };   // 화면들이 같은 사전을 쓰도록 재수출(설명·아이콘 중복 방지)
 import { repaintEvoCard } from './evocard.js?v=20260921a';
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -1158,7 +1159,10 @@ export function cardDetail(p, ctx = {}) {
         <div class="fc-dsix">${SIX.map(k => `<span><i>${k}</i><b>${cur?.[k] ?? '—'}</b></span>`).join('')}</div>
         <div class="fc-dchips">
           ${p.chem_style_ea ? `<span class="chip">케미 ${p.chem_points ?? 0}/3</span>` : ''}
-          <span class="chip">진화 ${(ctx.log || []).filter(l => l.club_player_id === p.id && !l.is_void).length}회</span>
+          ${/* ⚠️ 호출측이 횟수를 알고 있으면 그걸 쓴다(2026-09-22 사용자 지적 「진화 0회는 잘못된 정보」).
+                 진화 경로 카드는 `p.id`(보유 행 id)가 없는 **가상 카드**라 로그로 셀 수 없었다. */''}
+          <span class="chip">진화 ${ctx.evo_runs != null ? ctx.evo_runs
+            : (ctx.log || []).filter(l => l.club_player_id === p.id && !l.is_void).length}회</span>
           ${num(p.skill_moves) ? `<span class="chip">스킬 ${num(p.skill_moves)}★</span>` : ''}
           ${num(p.weak_foot) ? `<span class="chip">약발 ${num(p.weak_foot)}★</span>` : ''}
           ${p.accelerate ? `<span class="chip dim">${esc(p.accelerate)}</span>` : ''}
