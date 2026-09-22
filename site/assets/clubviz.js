@@ -201,6 +201,71 @@ export function enableHelpTips() {
    두 카드를 나란히 놓고 **인게임 실전값**으로 견준다(실측 29속성 + 케미 부스트).
    ⛔ 여기서도 계산을 만들지 않는다 — 상세 패널과 **같은 규칙**으로 값을 뽑아 차이만 표시한다.
    ⚠️ 한쪽에만 있는 속성(GK↔필드)은 비교하지 않는다. */
+
+/* ── 에메리 기준 우열 판정 (2026-09-22 사용자 요청 「같은 포지션끼리면 누가 더 나은지 + 근거」) ──
+   ⛔ 새 기준을 발명하지 않는다 — **정본 슬롯 역할**(slot_canon_roles, 에메리 재현)의
+      핵심 속성 가중(game_role_key_attrs)으로 두 카드를 같은 자로 잰다.
+   ⚠️ 포지션이 겹치지 않으면 **판정하지 않는다** — 다른 자리의 선수를 한 잣대로 줄 세우면 틀린다.
+   ⚠️ 적합도 차가 작으면 **「구분되지 않는다」**고 말한다(프로젝트 규약: 노이즈를 확정으로 승격시키지 않는다).
+   ⛔ 케미는 빼고 **진화만 반영한 카드 자체 값**으로 잰다(비교 전체와 같은 기준). */
+const CANON_FOR = { GK:['GK'], CB:['RCB','LCB'], RB:['RB'], LB:['LB'], RWB:['RB'], LWB:['LB'],
+  CDM:['RDM','LDM'], CM:['RDM','LDM','CAM'], CAM:['CAM'], CF:['ST','CAM'],
+  RM:['RM'], LM:['LM'], RW:['RM'], LW:['LM'], ST:['ST'] };
+
+function emeryVerdict(a, b, ctx) {
+  const canon = ctx.canon_roles || [], keyAttrs = ctx.key_attrs || [];
+  if (!canon.length || !keyAttrs.length) return '';
+  const pa = String(a.positions || '').split('/').map(x => x.trim()).filter(Boolean);
+  const pb = String(b.positions || '').split('/').map(x => x.trim()).filter(Boolean);
+  const common = pa.filter(x => pb.includes(x));
+  if (!common.length) return `<div class="cmp-verdict none"><b>자리 비교 없음</b>
+    <span class="dim">— 두 카드가 함께 설 수 있는 포지션이 없다(${esc(pa.join('/'))} ↔ ${esc(pb.join('/'))}).
+    다른 자리의 선수를 한 잣대로 줄 세우면 틀린다.</span></div>`;
+  /* 공통 포지션 중 **정본 슬롯이 있는 것**만 쓴다. */
+  const cands = [];
+  for (const pos of common) for (const cp of (CANON_FOR[pos] || [pos])) {
+    const c = canon.find(x => x.pos === cp);
+    if (c && !cands.some(x => x.pos === c.pos)) cands.push({ ...c, from: pos });
+  }
+  if (!cands.length) return '';
+  const W = {}; for (const r of keyAttrs) (W[r.role_id] ??= {})[r.attr] = r.weight;
+  const A = parse(a.current_attrs) || parse(a.attrs) || {};
+  const B = parse(b.current_attrs) || parse(b.attrs) || {};
+  const fit = (at, w) => { const den = Object.values(w).reduce((t, v) => t + v * 99, 0);
+    return den ? Object.entries(w).reduce((t, [k, v]) => t + v * (at[k] ?? 0), 0) / den * 100 : 0; };
+  const rows = cands.map(c => {
+    const w = W[c.role_id] || {};
+    const fa = fit(A, w), fb = fit(B, w), d = fa - fb;
+    /* 근거 — 가중이 큰 속성부터 「누가 얼마나 앞서는가」를 본다. */
+    const why = Object.entries(w).sort((x, y) => y[1] - x[1]).slice(0, 5)
+      .map(([k, wt]) => ({ k, wt, va: A[k] ?? 0, vb: B[k] ?? 0, gap: (A[k] ?? 0) - (B[k] ?? 0) }))
+      .filter(x => x.gap !== 0);
+    return { c, fa, fb, d, why };
+  }).sort((x, y) => Math.abs(y.d) - Math.abs(x.d));
+  const body = rows.map(r => {
+    const tie = Math.abs(r.d) < 1.0;
+    const winner = r.d > 0 ? a.name : b.name;
+    const side = r.d > 0 ? 'dA' : 'dB';
+    const top = r.why.slice(0, 3).map(x =>
+      `<span class="chip ${x.gap > 0 ? 'wA' : 'wB'}">${esc(x.k)} ${x.va}↔${x.vb}</span>`).join(' ');
+    return `<div class="cmp-vrow">
+      <div class="cmp-vhead"><b>${esc(r.c.pos)}</b>
+        <span class="dim">${esc(ctx.role_kr?.[r.c.role_id] || r.c.role_id)} / ${esc(r.c.focus)}</span>
+        ${tie ? '<span class="chip dim">구분되지 않음</span>'
+              : `<span class="cmp-d ${side} mid">${esc(winner)} 우위</span>`}</div>
+      <div class="cmp-vfit"><span class="cmp-a">${r.fa.toFixed(1)}</span>
+        <span class="cmp-k">적합도</span><span class="cmp-b">${r.fb.toFixed(1)}</span></div>
+      ${top ? `<div class="cmp-vwhy">${top}</div>` : ''}</div>`;
+  }).join('');
+  return `<h4>에메리 전술 기준 — 어느 쪽이 나은가</h4>
+    <div class="cmp-verdict">${body}
+    <p class="dim" style="font-size:11px;margin:8px 0 0">적합도 = Σ(역할 핵심 속성 가중 × 값) ÷ 만점.
+      <b>정본 슬롯 역할</b>(에메리 재현)의 가중을 그대로 쓴다 — 여기서 새 기준을 만들지 않는다.
+      ⚠️ 차이가 <b>1.0 미만이면 구분하지 않는다</b>(그 정도는 노이즈다).
+      ⛔ 케미는 빼고 <b>진화만 반영한</b> 카드 자체 값이며, <b>이 카드가 그 자리에 얼마나 맞나</b>일 뿐
+      경기력·폼·상대는 담지 않는다.</p></div>`;
+}
+
 export function compareCards(a, b, ctx = {}) {
   if (!a || !b) return '';
   /* ⛔ 비교 기준은 **케미 제외 · 진화 반영**이다(2026-09-22 사용자 지시).
@@ -209,16 +274,21 @@ export function compareCards(a, b, ctx = {}) {
   const A = parse(a.current_attrs) || parse(a.attrs) || {};
   const B = parse(b.current_attrs) || parse(b.attrs) || {};
   const sixA = parse(a.current_six) || {}, sixB = parse(b.current_six) || {};
-  const head = c => `<div class="cmp-card">
+  const head = (c, side) => `<div class="cmp-card ${side}">
       ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="">` : ''}
       <b>${esc(c.name)}</b>
       <span class="dim">OVR ${c.current_ovr ?? '-'}${c.card_ovr !== c.current_ovr ? ` <em class="d-evo">진화 전 ${c.card_ovr}</em>` : ''}</span>
       <span class="dim">${esc(c.positions || '')}</span>
       ${physLine(c) ? `<span class="dim">${physLine(c)}</span>` : ''}</div>`;
+  /* ⭐ 차이를 **크고 색으로** 드러낸다(2026-09-22 사용자 지시).
+     좌우 색은 경기 분석과 같은 규약을 쓴다 — 왼쪽 --viz-us(주황) · 오른쪽 --viz-them(파랑).
+     차이가 클수록 배지를 키운다(5 이상 mid · 10 이상 big) — 눈으로 훑을 때 큰 격차가 먼저 걸린다. */
   const row = (k, va, vb, big) => {
-    const d = (va ?? 0) - (vb ?? 0);
+    if (va == null && vb == null) return '';
+    const d = (va ?? 0) - (vb ?? 0), mag = Math.abs(d);
+    const step = mag >= 10 ? ' big' : mag >= 5 ? ' mid' : '';
     return `<tr${big ? ' class="big"' : ''}><td class="cmp-a ${d > 0 ? 'win' : d < 0 ? 'lose' : ''}">${va ?? '—'}</td>
-      <td class="cmp-k">${esc(k)}${d ? `<i>${d > 0 ? '◀' : '▶'} ${Math.abs(d)}</i>` : ''}</td>
+      <td class="cmp-k">${esc(k)}${d ? `<b class="cmp-d ${d > 0 ? 'dA' : 'dB'}${step}">${d > 0 ? '◀' : '▶'}${mag}</b>` : ''}</td>
       <td class="cmp-b ${d < 0 ? 'win' : d > 0 ? 'lose' : ''}">${vb ?? '—'}</td></tr>`;
   };
   const sixRows = SIX.filter(k => sixA[k] != null || sixB[k] != null)
@@ -252,7 +322,7 @@ export function compareCards(a, b, ctx = {}) {
   const star = (c, k, max) => num(c[k]) == null ? '—'
     : `<span class="fc-star">${'★'.repeat(num(c[k]))}</span><span class="fc-star off">${'★'.repeat(Math.max(0, max - num(c[k])))}</span>`;
   return `<div class="fc-cmp">
-    <div class="cmp-head">${head(a)}<span class="cmp-vs">vs</span>${head(b)}</div>
+    <div class="cmp-head">${head(a, 'sA')}<span class="cmp-vs">vs</span>${head(b, 'sB')}</div>
     <p class="dim" style="font-size:11.5px;margin:8px 0">29속성 기준 <b>${esc(a.name)} ${winA}개</b> ·
       <b>${esc(b.name)} ${winB}개</b> 우위. ⛔ <b>케미는 빼고 진화만 반영한</b> 카드 자체 값이다.</p>
     <table class="tbl cmp-tbl"><tbody>${sixRows}</tbody></table>
@@ -282,6 +352,8 @@ export function compareCards(a, b, ctx = {}) {
     <p class="dim" style="font-size:11px;margin:4px 0 0">⚠️ 키·몸무게는 <b>높다고 유리한 값이 아니다</b> —
       경합·속도에서 반대로 작동할 수 있어 색(초록)은 「큰 쪽」을 표시할 뿐이다.
       키는 AcceleRATE 판정에 관여한다(EA 1차).</p>
+
+    ${emeryVerdict(a, b, ctx)}
 
     <h4>상세 스탯 <small class="dim">29속성</small></h4>
     <table class="tbl cmp-tbl"><tbody>${attrRows}</tbody></table>
@@ -928,7 +1000,26 @@ export const FC_DETAIL_CSS = `
 .cmp-k{text-align:center;color:var(--dim);font-size:11.5px;font-weight:400}
 .cmp-k i{display:block;font-style:normal;font-size:9.5px;opacity:.65}
 .cmp-a{text-align:right;font-weight:700} .cmp-b{text-align:left;font-weight:700}
-.cmp-a.win,.cmp-b.win{color:var(--ok)} .cmp-a.lose,.cmp-b.lose{color:var(--dim);opacity:.7}
+.cmp-a.win{color:var(--viz-us)} .cmp-b.win{color:var(--viz-them)}
+.cmp-a.lose,.cmp-b.lose{color:var(--dim);opacity:.65}
+/* 차이 배지 — 클수록 커진다. 색은 이긴 쪽을 가리킨다(좌 주황 · 우 파랑). */
+.cmp-d{display:inline-block;margin-left:6px;padding:0 6px;border-radius:99px;
+  font-size:12px;font-weight:800;line-height:1.6;vertical-align:1px}
+.cmp-d.dA{color:var(--viz-us);background:rgba(217,89,38,.16)}
+.cmp-d.dB{color:var(--viz-them);background:rgba(57,135,229,.16)}
+.cmp-d.mid{font-size:13.5px}
+.cmp-d.big{font-size:15.5px;padding:1px 8px}
+.cmp-card.sA b{color:var(--viz-us)} .cmp-card.sB b{color:var(--viz-them)}
+/* 에메리 기준 판정 */
+.cmp-verdict{border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:rgba(255,255,255,.02)}
+.cmp-verdict.none{font-size:12px}
+.cmp-vrow + .cmp-vrow{margin-top:10px;padding-top:10px;border-top:1px dotted var(--line)}
+.cmp-vhead{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px}
+.cmp-vfit{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:center;margin:5px 0 4px;font-size:17px;font-weight:800}
+.cmp-vwhy{display:flex;flex-wrap:wrap;gap:5px}
+.cmp-vwhy .chip{font-size:11px}
+.cmp-vwhy .wA{border-color:var(--viz-us);color:var(--viz-us)}
+.cmp-vwhy .wB{border-color:var(--viz-them);color:var(--viz-them)}
 .cmp-two{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
 .cmp-two .fc-pslist{gap:5px}
 .cmp-lab{font-size:10.5px;margin:2px 0 3px}
