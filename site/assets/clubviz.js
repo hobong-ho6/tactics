@@ -212,6 +212,16 @@ const CANON_FOR = { GK:['GK'], CB:['RCB','LCB'], RB:['RB'], LB:['LB'], RWB:['RB'
   CDM:['RDM','LDM'], CM:['RDM','LDM','CAM'], CAM:['CAM'], CF:['ST','CAM'],
   RM:['RM'], LM:['LM'], RW:['RM'], LW:['LM'], ST:['ST'] };
 
+/* 이 자리가 무엇을 요구하는가 — 역할 설명이 있으면 쓰고, 없으면 가중 상위 속성으로 대신 말한다.
+   ⛔ 설명을 지어내지 않는다 — 원장(game_role_focus.movement_kr)에 있으면 그것, 없으면 속성 나열이다. */
+function roleDesc(c, ctx) {
+  const f = (ctx.focus_rows || []).find(x => x.role_id === c.role_id && x.focus === c.focus);
+  if (f && f.movement_kr) return String(f.movement_kr).replace(/\*\*/g, '').slice(0, 110);
+  const w = {}; for (const r of (ctx.key_attrs || [])) if (r.role_id === c.role_id) w[r.attr] = r.weight;
+  const top = Object.entries(w).sort((x, y) => y[1] - x[1]).slice(0, 4).map(x => x[0]);
+  return top.length ? `핵심 속성: ${top.join(' · ')}` : '';
+}
+
 function emeryVerdict(a, b, ctx) {
   const canon = ctx.canon_roles || [], keyAttrs = ctx.key_attrs || [];
   if (!canon.length || !keyAttrs.length) return '';
@@ -235,16 +245,29 @@ function emeryVerdict(a, b, ctx) {
     return den ? Object.entries(w).reduce((t, [k, v]) => t + v * (at[k] ?? 0), 0) / den * 100 : 0; };
   /* ⭐ 그 역할의 **숙련(Role+/++)** 보유 여부 — 스탯과 다른 축이라 점수에 섞지 않고 따로 적는다.
      canon의 role_id(cam_playmaker)를 게임 표기(Playmaker)로 옮겨 role_map과 맞춘다. */
-  const enName = rid => (ctx.roles || []).find(r => r.role_id === rid)?.name_en || '';
+  /* ⛔ `game_roles.name_en`이 **전부 비어 있다**(2026-09-22 실측 — 데이터 결손).
+     그래서 우리 role_id를 EA 표기로 옮길 다리가 없어 숙련이 늘 「없음」으로 보였다.
+     ⇒ ⑴ name_en이 채워지면 그것을 쓰고 ⑵ 없으면 role_id 접미로 유추하고
+        ⑶ 유추가 안 되는 것만 표로 덮는다. ⚠️ 셋 다 실패하면 **모른다고 표시**한다(조용히 「없음」으로 만들지 않는다). */
+  const ROLE_EN = { cb_bpd:'Ball-Playing Defender', fb_att_wb:'Attacking Wingback',
+    wm_widemid:'Wide Midfielder', st_advanced:'Advanced Forward', gk_goalkeeper:'Goalkeeper',
+    cb_defender:'Defender', cb_stopper:'Stopper', fb_fullback:'Fullback', fb_falseback:'Falseback',
+    dm_holding:'Holding', dm_dlp:'Deep-Lying Playmaker', cm_b2b:'Box-To-Box',
+    cam_playmaker:'Playmaker', cam_shadowstriker:'Shadow Striker', cam_halfwinger:'Half-Winger',
+    cam_classic10:'Classic 10', fb_wingback:'Wingback', wm_winger:'Winger',
+    wm_wideplaymaker:'Wide Playmaker', wm_insidefwd:'Inside Forward', w_winger:'Winger',
+    st_poacher:'Poacher', st_false9:'False 9', st_target:'Target Forward' };
+  const enName = rid => (ctx.roles || []).find(r => r.role_id === rid)?.name_en
+    || ROLE_EN[rid] || String(rid).split('_').slice(1).join(' ');
   const roleMastery = (c, pos, rid) => {
-    const want = enName(rid).toLowerCase();
-    if (!want) return null;
+    const want = enName(rid).toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (!want) return '?';                      // 이름을 못 옮겼다 — 「없음」과 구분한다
     for (const kind of ['plusplus', 'plus']) {
       const ids = parse(kind === 'plus' ? c.current_roles_plus : c.current_roles_plus_plus);
       if (!Array.isArray(ids)) continue;
       const hit = ids.some(id => {
         const r = (ctx.role_map || []).find(x => x.ea_id === id && x.kind === kind);
-        return r && r.position_name === pos && r.name.toLowerCase() === want;
+        return r && r.position_name === pos && r.name.toLowerCase().replace(/[^a-z0-9]/g, '') === want;
       });
       if (hit) return kind === 'plusplus' ? 'Role++' : 'Role+';
     }
@@ -254,30 +277,44 @@ function emeryVerdict(a, b, ctx) {
     const w = W[c.role_id] || {};
     const fa = fit(A, w), fb = fit(B, w), d = fa - fb;
     const ma = roleMastery(a, c.pos, c.role_id), mb = roleMastery(b, c.pos, c.role_id);
-    /* 근거 — 가중이 큰 속성부터 「누가 얼마나 앞서는가」를 본다. */
-    const why = Object.entries(w).sort((x, y) => y[1] - x[1]).slice(0, 5)
-      .map(([k, wt]) => ({ k, wt, va: A[k] ?? 0, vb: B[k] ?? 0, gap: (A[k] ?? 0) - (B[k] ?? 0) }))
-      .filter(x => x.gap !== 0);
+    /* ⭐ 근거는 **가중이 걸린 속성 전부**를 보여준다(2026-09-22 사용자 지적
+       「캐시는 체력만 높은데 우위인 게 이상하다」) — 상위 3개만 띄우니 합이 왜 그렇게 나오는지
+       설명되지 않았다. 각 항목의 **가중·값·기여 차이**를 모두 적어 합계가 눈으로 따라가지게 한다. */
+    const why = Object.entries(w).sort((x, y) => y[1] - x[1])
+      .map(([k, wt]) => { const va = A[k] ?? 0, vb = B[k] ?? 0;
+        return { k, wt, va, vb, gap: va - vb, contrib: wt * (va - vb) }; });
     return { c, fa, fb, d, why, ma, mb };
   }).sort((x, y) => Math.abs(y.d) - Math.abs(x.d));
   const body = rows.map(r => {
     const tie = Math.abs(r.d) < 1.0;
     const winner = r.d > 0 ? a.name : b.name;
     const side = r.d > 0 ? 'dA' : 'dB';
-    const top = r.why.slice(0, 3).map(x =>
-      `<span class="chip ${x.gap > 0 ? 'wA' : 'wB'}">${esc(x.k)} ${x.va}↔${x.vb}</span>`).join(' ');
+    const nA = r.why.filter(x => x.gap > 0).length, nB = r.why.filter(x => x.gap < 0).length;
+    const top = `<table class="tbl cmp-wtbl"><thead><tr>
+        <th>${esc(a.name)}</th><th>이 역할이 보는 속성</th><th>비중</th><th>${esc(b.name)}</th></tr></thead><tbody>
+      ${r.why.map(x => `<tr>
+        <td class="cmp-a ${x.gap > 0 ? 'win' : x.gap < 0 ? 'lose' : ''}">${x.va}</td>
+        <td class="cmp-k">${esc(x.k)}</td>
+        <td class="cmp-w">${'●'.repeat(Math.round(x.wt))}</td>
+        <td class="cmp-b ${x.gap < 0 ? 'win' : x.gap > 0 ? 'lose' : ''}">${x.vb}</td></tr>`).join('')}
+      </tbody></table>
+      <p class="dim" style="font-size:11px;margin:4px 0 0">항목 우위 <b class="wA">${nA}</b> ↔ <b class="wB">${nB}</b> —
+        ⚠️ <b>항목 수가 아니라 비중(●)을 곱한 합</b>이 적합도다. 비중 큰 한 칸이 작은 여러 칸을 뒤집을 수 있다.</p>`;
     return `<div class="cmp-vrow">
       <div class="cmp-vhead"><b>${esc(r.c.pos)}</b>
         <span class="dim">${esc(ctx.role_kr?.[r.c.role_id] || r.c.role_id)} / ${esc(r.c.focus)}</span>
+        <span class="dim" style="flex-basis:100%;font-size:11px">${esc(roleDesc(r.c, ctx))}</span>
         ${tie ? '<span class="chip dim">구분되지 않음</span>'
               : `<span class="cmp-d ${side} mid">${esc(winner)} 우위</span>`}</div>
       <div class="cmp-vfit"><span class="cmp-a">${r.fa.toFixed(1)}</span>
         <span class="cmp-k">적합도<i>스탯 기준</i></span><span class="cmp-b">${r.fb.toFixed(1)}</span></div>
       ${top ? `<div class="cmp-vwhy">${top}</div>` : ''}
-      ${(r.ma || r.mb) ? `<div class="cmp-vfit" style="font-size:12px;margin-top:6px">
-        <span class="cmp-a">${r.ma ? `<span class="chip wA">${r.ma}</span>` : '<span class="dim">숙련 없음</span>'}</span>
-        <span class="cmp-k">역할 숙련<i>점수에 안 들어감</i></span>
-        <span class="cmp-b">${r.mb ? `<span class="chip wB">${r.mb}</span>` : '<span class="dim">숙련 없음</span>'}</span></div>` : ''}</div>`;
+      <div class="cmp-vfit" style="font-size:12px;margin-top:8px">
+        <span class="cmp-a">${r.ma === '?' ? '<span class="dim">확인 불가</span>'
+          : r.ma ? `<span class="chip wA">${r.ma}</span>` : '<span class="dim">숙련 없음</span>'}</span>
+        <span class="cmp-k">이 역할 숙련<i>점수에 안 들어감</i></span>
+        <span class="cmp-b">${r.mb === '?' ? '<span class="dim">확인 불가</span>'
+          : r.mb ? `<span class="chip wB">${r.mb}</span>` : '<span class="dim">숙련 없음</span>'}</span></div></div>`;
   }).join('');
   return `<h4>에메리 전술 기준 — 어느 쪽이 나은가</h4>
     <div class="cmp-verdict">${body}
@@ -1048,6 +1085,12 @@ export const FC_DETAIL_CSS = `
 .cmp-vwhy .chip{font-size:11px}
 .cmp-vwhy .wA{border-color:var(--viz-us);color:var(--viz-us)}
 .cmp-vwhy .wB{border-color:var(--viz-them);color:var(--viz-them)}
+.cmp-wtbl{width:100%;table-layout:fixed;margin-top:6px}
+.cmp-wtbl th{font-size:10.5px;color:var(--dim);font-weight:600;padding:2px 4px}
+.cmp-wtbl td{padding:2px 4px;font-size:12px}
+.cmp-wtbl th:nth-child(3),.cmp-w{width:44px;text-align:center}
+.cmp-w{color:var(--acc);font-size:9px;letter-spacing:1px}
+b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .cmp-two{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}
 .cmp-two .fc-pslist{gap:5px}
 .cmp-lab{font-size:10.5px;margin:2px 0 3px}

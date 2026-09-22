@@ -122,6 +122,9 @@ def rows_of(players):
                     "six": [q.get(k) for k in keys],
                     "attrs": attrs or None,                       # ⛔ 없으면 None — 빈 dict를 「0」으로 굳히지 않는다
                     "accel": q.get("accelerateType"),
+                    # ⭐ 역할 숙련도 GG Club이 준다(2026-09-22) — 원장의 `current_roles_*`가 낡아 있었다
+                    #    (캐시: EA는 [5,23]=RB Wingback·RM Winger인데 원장은 []였다).
+                    "rp": q.get("rolesPlus"), "rpp": q.get("rolesPlusPlus"),
                     "cs": p.get("chemistryStyle"), "cp": p.get("chemistryPoints"), "gg": p.get("id"),
                     "added": (p.get("addedToClubAt") or "")[:10] or None, "paid": p.get("purchasedFor")})
     out.sort(key=lambda r: r["ea"] or 0)

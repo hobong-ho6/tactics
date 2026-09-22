@@ -117,15 +117,20 @@ def main():
         else:
             changed = (cur["current_ovr"] != r["ovr"] or cur["current_six"] != six
                        or cur["chem_style_ea"] != r.get("cs") or cur["chem_points"] != r.get("cp")
-                       or (r.get("attrs") and cur["current_attrs"] != json.dumps(r["attrs"], ensure_ascii=False)))
+                       or (r.get("attrs") and cur["current_attrs"] != json.dumps(r["attrs"], ensure_ascii=False))
+                       or (isinstance(r.get("rp"), list) and cur["current_roles_plus"] != json.dumps(r["rp"])))
             # ⭐ 29속성(`attrs`)·AcceleRATE는 GG Club이 **EA 실측 그대로** 준다(2026-09-22) —
             #    받은 회차에만 덮고, 안 온 회차에는 기존 값을 지운다(COALESCE로 보존).
             attrs_json = json.dumps(r["attrs"], ensure_ascii=False) if r.get("attrs") else None
+            rp_json = json.dumps(r["rp"]) if isinstance(r.get("rp"), list) else None
+            rpp_json = json.dumps(r["rpp"]) if isinstance(r.get("rpp"), list) else None
             con.execute("""UPDATE fut_club_players SET current_ovr=?, current_six=?, chem_style_ea=?, chem_points=?,
                              current_attrs=COALESCE(?, current_attrs),
+                             current_roles_plus=COALESCE(?, current_roles_plus),
+                             current_roles_plus_plus=COALESCE(?, current_roles_plus_plus),
                              gg_player_id=?, synced_at=?, updated=? WHERE id=?""",
-                        (r["ovr"], six, r.get("cs"), r.get("cp"), attrs_json, r.get("gg"), a.pulled,
-                         TODAY if changed else cur["updated"], cur["id"]))
+                        (r["ovr"], six, r.get("cs"), r.get("cp"), attrs_json, rp_json, rpp_json,
+                         r.get("gg"), a.pulled, TODAY if changed else cur["updated"], cur["id"]))
         upd += changed
         same += (not changed)
 
