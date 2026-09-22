@@ -110,7 +110,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260921i';
+import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260922b';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -274,14 +274,17 @@ function renderNow(){
   };
   const openDetail = (p, role, el, slotIdx) => {
     if (!p) return;
-    document.querySelectorAll('#nowpitch .fc-card.sel').forEach(x => x.classList.remove('sel'));
-    (el?.querySelector('.fc-card') || el)?.classList.add('sel');
+    document.querySelectorAll('#nowpitch .sel').forEach(x => x.classList.remove('sel'));
+    /* ⛔ 선발은 **슬롯**에, 벤치는 카드에 건다 — 확대 transform이 슬롯에서만 먹는다(clubviz.js 주석). */
+    if (el?.classList.contains('fc-slot')) el.classList.add('sel');
+    else el?.classList.add('sel');
+    el?.querySelector?.('.fc-card')?.classList.add('sel');
     side.innerHTML = '<div class="fc-back"><a class="act" href="#" data-back>← 팀 설정으로</a></div>'
       + cardDetail(p, { role, team: T, log: (EVO.club || {}).log, chem_styles: EVO.chem_styles,
                         reco: recoFor(p, slotIdx), role_map: EVO.role_map });
     side.querySelector('[data-back]').addEventListener('click', e => {
       e.preventDefault();
-      document.querySelectorAll('#nowpitch .fc-card.sel').forEach(x => x.classList.remove('sel'));
+      document.querySelectorAll('#nowpitch .sel').forEach(x => x.classList.remove('sel'));
       side.innerHTML = fcSideEmpty(T, xiRows);
     });
     side.scrollTop = 0;

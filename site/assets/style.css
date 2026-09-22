@@ -331,7 +331,11 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
   box-shadow:0 6px 18px rgba(0,0,0,.55);opacity:0;visibility:hidden;transition:opacity .12s}
 .fc-help:hover::after,.fc-help:focus::after{opacity:1;visibility:visible}
 
-/* 선수 리포트 — 포지션군 묶음(2026-09-22) */
+/* 선수 리포트 — 포지션군 묶음(2026-09-22).
+   ⚠️ `#players`에 `.player-report-list`(2열 grid)가 걸려 있어서 **그룹 자체가 2열로 나란히** 섰고,
+   양쪽을 펼치면 서로 겹쳤다(사용자 지적). 그룹은 **가로 한 칸을 다 쓰고 세로로 쌓여야** 한다 —
+   2열은 그룹 **안쪽**의 선수 카드에만 건다. */
+#players{display:block}
 .pgroup{margin-top:14px}
 .pgroup > h4{margin:0 0 6px;font-size:13px;color:var(--dim);font-weight:700}
 .pgroup .player-report-list{margin-top:0}

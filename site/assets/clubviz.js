@@ -189,8 +189,10 @@ export const FC_CSS = `
    먹는데 .fc-main은 자기 최대 폭에서 멈추므로, 넓은 화면에서 **피치와 사이드 사이에 800px짜리 빈
    구멍**이 생겼다. 두 칼럼을 내용 폭 상한으로 묶고 justify-content로 가운데 모은다 — 남는 여백은
    가운데가 아니라 바깥에 생긴다. */
-.fc-layout{display:grid;grid-template-columns:minmax(0,760px) minmax(340px,420px);
-  gap:20px;align-items:start;justify-content:center}
+/* ⭐ 2026-09-22: 전체적으로 좁게 쓰고 글씨가 작다는 지적 — 피치·사이드 모두 키웠다.
+   사이드는 선수 프로필이 들어가는 칸이라 420 → **최대 560**까지 늘린다. */
+.fc-layout{display:grid;grid-template-columns:minmax(0,860px) minmax(400px,560px);
+  gap:24px;align-items:start;justify-content:center}
 .fc-main{min-width:0}
 /* ⭐ 크기 규칙(2026-09-20) — 이 세 줄이 「비율이 안 맞고 정보가 작다」의 실제 해법이다:
    ⑴ **높이를 뷰포트에 맞춘다**(width:100%가 아니라 height 기준) — 폭은 비율에서 파생되므로
@@ -201,7 +203,7 @@ export const FC_CSS = `
    ⚠️ --fccard를 키울 때는 SPOTS 주석의 겹침 부등식을 다시 검산한다.
    ⭐ overflow:visible — GK(y4)·ST(y97) 카드는 잔디 밖으로 조금 나간다. 잘라내면 카드가 반쪽이 되므로
       자르지 않고, 대신 위아래 margin으로 이웃 요소와의 자리를 비워둔다. */
-.fc-pitch{position:relative;aspect-ratio:85/100;height:min(820px,calc(100vh - 210px));
+.fc-pitch{position:relative;aspect-ratio:85/100;height:min(880px,calc(100vh - 190px));
   width:auto;max-width:100%;margin:28px auto 52px;--fccard:17.5%;border-radius:10px;
   background:repeating-linear-gradient(0deg,var(--fcg1) 0 7%,var(--fcg2) 7% 14%);
   border:1px solid var(--line);overflow:visible}
@@ -212,8 +214,15 @@ export const FC_CSS = `
 .fc-slot{position:absolute;width:var(--fccard);transform:translate(-50%,50%)}
 .fc-card{text-align:center;cursor:pointer;border-radius:8px;outline:none;transition:transform .12s}
 .fc-card:hover,.fc-card:focus-visible{transform:translateY(-3px)}
-.fc-card.sel .fc-artwrap{filter:drop-shadow(0 0 0 2px var(--ok))}
-.fc-card.sel .fc-tag{border-color:var(--ok)}
+/* ⭐ 선택 카드는 **키워서** 알린다(2026-09-22 사용자 지시) — 테두리만으로는 눈에 안 띄었다.
+   ⛔ 확대는 **슬롯**에 건다. .fc-card에 transform을 주면 먹지 않는다(실측: 인라인으로 줘도
+      getBoundingClientRect가 그대로였다) — 슬롯이 이미 translate(-50%,50%)를 쓰는 배치 박스라
+      거기에 scale을 곱해야 한다. 벤치는 슬롯이 없어 카드에 직접 준다.
+   ⚠️ 커지면 이웃과 겹치므로 z-index를 올려 **선택한 쪽이 위로** 오게 한다. */
+.fc-slot.sel{z-index:5;transform:translate(-50%,50%) scale(1.14)}
+.fc-card.sel .fc-artwrap{filter:drop-shadow(0 4px 10px rgba(0,0,0,.6))}
+.fc-card.sel .fc-tag{border-color:var(--ok);background:rgba(4,30,14,.92)}
+.fc-benchrow .fc-card.sel{transform:scale(1.1)}
 .fc-card.empty{opacity:.45;cursor:default}
 .fc-artwrap{position:relative;line-height:0}
 .fc-art{width:100%;display:block;filter:drop-shadow(0 3px 6px rgba(0,0,0,.55))}
@@ -258,13 +267,13 @@ export const FC_CSS = `
 .fc-note{font-size:11px;color:var(--dim);margin:10px 0 0}
 /* 사이드 패널 — 스크롤을 따라다니고, 길면 자기 안에서만 스크롤한다. */
 .fc-side{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;
-  background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px}
-.fc-kv{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:4px 0;border-bottom:1px dotted var(--line)}
+  background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px 18px;font-size:13.5px}
+.fc-kv{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:6px 0;border-bottom:1px dotted var(--line)}
 .fc-kv span{color:var(--dim)}
-.fc-roletbl td{font-size:11.5px;padding:3px 6px;vertical-align:top}
+.fc-roletbl td{font-size:12.5px;padding:5px 7px;vertical-align:top}
 /* 선택된 카드로 돌아가는 길 — 상세를 열면 사이드 맨 위에 「팀 설정으로」 버튼이 붙는다. */
 .fc-back{font-size:11.5px;margin-bottom:8px}
-@media (max-width:1060px){
+@media (max-width:1240px){
   .fc-layout{grid-template-columns:1fr}
   .fc-main{max-width:none}
   .fc-side{position:static;max-height:none}
@@ -537,11 +546,11 @@ export const FC_DETAIL_CSS = `
    (2026-09-20 사용자 지적 「케미스트리 색 변경 안 됨」의 실제 원인은 색이 아니라 **열 잘림**이었다).
    table-layout:fixed로 폭을 강제하고 숫자 열을 오른쪽에 고정한다. */
 .fc-detail .tbl{width:100%;table-layout:fixed}
-.fc-detail .tbl th,.fc-detail .tbl td{padding:3px 5px;font-size:12px;overflow:hidden;text-overflow:ellipsis}
+.fc-detail .tbl th,.fc-detail .tbl td{padding:5px 7px;font-size:13px;overflow:hidden;text-overflow:ellipsis}
 .fc-chemtbl th:nth-child(n+2),.fc-chemtbl td:nth-child(n+2){width:58px;text-align:right}
-.fc-detail h4{margin:14px 0 6px;font-size:13px}
+.fc-detail h4{margin:16px 0 7px;font-size:14.5px}
 .fc-pslist{display:flex;flex-wrap:wrap;gap:6px}
-.fc-ps{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;
+.fc-ps{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;
   background:var(--bg);border:1px solid var(--line);border-radius:99px;padding:3px 9px 3px 4px}
 /* ⚠️ img에 background와 filter를 **함께 주지 않는다**(2026-09-21): filter는 배경까지 적용돼
    흰 배경이 검은 원이 된다. fut.gg PlayStyle 아이콘은 원본이 이미 흰 배경 + 검은 그림이라
@@ -567,13 +576,13 @@ export const FC_DETAIL_CSS = `
 .fc-vote i b{display:block;height:100%;background:var(--acc);border-radius:99px}
 .fc-vote em{flex:0 0 36px;text-align:right;font-style:normal;font-weight:700}
 .fc-dhead{display:flex;gap:12px;align-items:flex-start}
-.fc-dart{width:96px;flex:0 0 auto}
-.fc-dhead h3{margin:0 0 2px;font-size:16px}
+.fc-dart{width:142px;flex:0 0 auto}
+.fc-dhead h3{margin:0 0 4px;font-size:19px}
 .fc-chemhead{display:flex;gap:8px;align-items:center;margin-bottom:6px}
 .fc-chemhead img{width:26px;padding:4px;box-sizing:border-box;border-radius:50%;
   background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.5)}
-.fc-attrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:2px 10px}
-.fc-attr{display:flex;justify-content:space-between;font-size:12px;padding:2px 0;border-bottom:1px dotted var(--line)}
+.fc-attrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:3px 14px}
+.fc-attr{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;border-bottom:1px dotted var(--line)}
 .fc-attr span{color:var(--dim)}
 /* 케미 부스트 실제 적용값 — 표에서 즉시 눈에 들어와야 한다. */
 .fc-boost{display:inline-block;min-width:34px;text-align:center;font-weight:800;font-size:12.5px;
