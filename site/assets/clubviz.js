@@ -230,8 +230,11 @@ export const FC_CSS = `
 .fc-chem img{width:74%;display:block;filter:brightness(0)}
 /* EVO 배지 — 카드 아래 pill 줄 안에 산다(위 card() 주석 참조). 떠 있지 않으므로 잘리지 않는다.
    ⚠️ 9.5px는 작아서 읽히지 않았다(2026-09-21) — 키우고 자간을 줘 숫자가 붙어 보이지 않게 한다. */
-.fc-evo{font-size:11px;font-weight:800;letter-spacing:.2px;background:var(--ok);color:#04220d;
-  border-radius:99px;padding:1px 6px;white-space:nowrap;line-height:1.45}
+/* ⚠️ 밝은 초록 배경 + 어두운 글자는 11px에서 뭉개져 읽히지 않았다(2026-09-22 사용자 지적, 두 번째).
+   카드 아래 pill 줄은 배경이 어두우므로 **어두운 pill + 밝은 초록 글자**가 대비가 가장 크다. */
+.fc-evo{font-size:11px;font-weight:800;letter-spacing:.3px;
+  background:rgba(3,18,9,.92);color:#5ee88a;border:1px solid rgba(94,232,138,.55);
+  border-radius:99px;padding:1px 7px;white-space:nowrap;line-height:1.45}
 .fc-evo.inline{display:inline-block}
 /* 포지션·역할 pill — 카드 바로 아래 한 줄(fut.gg와 같은 자리). */
 .fc-tag{display:inline-flex;gap:5px;align-items:center;justify-content:center;margin-top:-2px;

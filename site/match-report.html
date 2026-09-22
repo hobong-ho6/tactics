@@ -377,14 +377,41 @@ function render(r){
     g.addEventListener('pointermove', e => { _ptip.style.left = Math.min(e.clientX + 12, window.innerWidth - 320) + 'px'; _ptip.style.top = (e.clientY + 14) + 'px'; });
     g.addEventListener('pointerleave', () => { _ptip.hidden = true; });
   });
-  document.getElementById('players').innerHTML=r.players.slice().sort((a,b)=>(b.started||0)-(a.started||0)).map(p=>`<details class="player-report" data-pid="${p.player_id ?? ''}">
+  /* ⭐ 포지션군으로 나눠 보여준다(2026-09-22 사용자 지시 「수비수·미드필더·공격수 기준으로 구분」).
+     ⚠️ 판정 순서가 중요하다 — `RCB`는 CB라 수비, `RDM`·`RM`은 미드필더, `RW`는 공격이다.
+     CB/LB/RB/WB를 먼저 걸러야 RW가 RB 패턴에 잡히지 않는다. */
+  const POSG = pos => { const P = String(pos || '').toUpperCase();
+    if (/GK/.test(P)) return 'GK';
+    if (/CB|LB|RB|WB/.test(P)) return 'DF';
+    if (/ST|CF|LW|RW/.test(P)) return 'FW';
+    return 'MF'; };
+  const GLABEL = { GK:'골키퍼', DF:'수비수', MF:'미드필더', FW:'공격수' };
+  const pcard = p=>`<details class="player-report" data-pid="${p.player_id ?? ''}">
     <summary><span class="badge ${p.started?'hi':'mid'}">${p.started?'선발':'교체'}</span> <b>${esc(p.position)}</b> ${esc(p.label)} · ${annotate(esc(p.tactical_role))}
       <span class="dim">${esc(p.minutes ?? '—')}분 / ${esc(p.rating ?? '—')}</span></summary>
     <div class="player-report-body">${miniMap(p.map25)}<div>
       <div class="kv"><b>특성</b></div>${prose(p.characteristics)}
       <div class="kv"><b>경기 평가</b></div>${prose(p.performance)}
       <div class="kv"><b>FC 구현</b></div>${prose(p.game_implication)}${statsTable(p)}
-      <details class="refs"><summary>출처 · 신뢰도</summary>${prose(p.source)}${prose(p.confidence)}</details></div></div></details>`).join('');
+      <details class="refs"><summary>출처 · 신뢰도</summary>${prose(p.source)}${prose(p.confidence)}</details></div></div></details>`;
+  const sorted = r.players.slice().sort((a,b)=>(b.started||0)-(a.started||0));
+  document.getElementById('players').innerHTML = ['GK','DF','MF','FW'].map(g=>{
+    const rows = sorted.filter(p=>POSG(p.position)===g);
+    if (!rows.length) return '';
+    return `<section class="pgroup"><h4>${GLABEL[g]} <small class="dim">${rows.length}명</small></h4>
+      <div class="player-report-list">${rows.map(pcard).join('')}</div></section>`;
+  }).join('');
+  /* ⭐ 2열 그리드라 한쪽만 펼치면 짝이 빈 칸으로 남는다(2026-09-22 사용자 지시
+     「왼쪽이 펼쳐지면 오른쪽도」). 같은 행의 짝을 함께 여닫는다.
+     ⚠️ 짝을 바꿀 때 다시 toggle이 발생하므로 플래그로 재귀를 끊는다. */
+  document.querySelectorAll('#players .player-report-list').forEach(list=>{
+    const items=[...list.querySelectorAll(':scope > .player-report')];
+    items.forEach((d,i)=>d.addEventListener('toggle',()=>{
+      if (d.dataset.sync) return;
+      const mate = items[i % 2 === 0 ? i + 1 : i - 1];
+      if (mate && mate.open !== d.open){ mate.dataset.sync='1'; mate.open=d.open; delete mate.dataset.sync; }
+    }));
+  });
   document.getElementById('sourceMeta').innerHTML=`<div class="kv"><b>출처</b></div>${prose(r.source)}
     <div class="kv"><b>신뢰도</b></div>${prose(r.confidence)}
     <p class="kv"><b>원문 경로</b> <code>${esc(r.report_path)}</code></p>`;

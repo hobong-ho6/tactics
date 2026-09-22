@@ -67,33 +67,44 @@ export function repaintEvoCard(im, vals){
     if (ob[1] && vals.pos){ const col = inkColor(ox0, ox1, ob[1]); erase(ox0, ox1, ob[1]); cx.fillStyle = col;
                 draw(vals.pos, (ox0 + ox1) / 2, ob[1], 600, 1.2); }
     // ② 하단 6대 스탯 — **값 줄만** 바꾼다(이름·라벨은 원본 그대로 두어 배치가 같다)
-    const sx0 = Math.round(W * 0.06), sx1 = Math.round(W * 0.94);
+    /* ⚠️ 스캔 범위를 카드 끝까지(0.06~0.94) 잡으면 **금색 테두리·그림자가 잉크로 잡혀**
+       첫 그룹 중심이 왼쪽으로 끌려가고, 그 자리에 그린 값이 카드 밖으로 잘린다(2026-09-22 실측).
+       스탯 줄은 카드 안쪽에만 있으므로 양끝을 잘라낸다. */
+    const sx0 = Math.round(W * 0.15), sx1 = Math.round(W * 0.85);
     const sb = bandsIn(sx0, sx1, Math.round(H * 0.62), Math.round(H * 0.82));
     const labelB = sb.length >= 2 ? sb[sb.length - 2] : null, valB = sb.length >= 2 ? sb[sb.length - 1] : sb[0];
     if (valB){
-      // 라벨 줄에서 6칸의 x 중심을 읽어 값 위치를 정확히 맞춘다
-      let centers = [];
-      if (labelB){
+      /* ⭐⭐⭐ 중심은 **값 줄 자체**에서 읽는다(2026-09-22 전면 수정).
+         종전에는 라벨 줄(`PAC SHO …`)에서 x를 읽어 값을 그렸는데, 라벨은 6단어 18글자라
+         잉크 조각이 **19개**로 쪼개지고 그걸 6개로 줄이는 과정에서 엉뚱한 자리를 골라
+         **값이 통째로 밀려 그려졌다**(사용자 지적 「스탯이 밀려서 나온다」).
+         ⇒ 지울 대상인 **원본 값 줄의 숫자 6덩이 중심**을 그대로 쓰면 「지운 자리에 다시 쓴다」가 되어
+            어긋날 여지가 없다. 숫자는 2자리씩이라 덩이 구분도 라벨보다 훨씬 깨끗하다.
+         ⚠️ 그래도 조각이 6개를 넘을 수 있어(두 자리 숫자 사이 틈) **간격이 가장 큰 5곳에서만** 자른다. */
+      const groupCenters = (band) => {
         const colInk = [];
         for (let x = sx0; x < sx1; x++){
           let ink = 0, n = 0;
-          for (let y = labelB.a; y <= labelB.b; y++){ const c = at(x, y); if (c[3] < 40) continue; n++;
+          for (let y = band.a; y <= band.b; y++){ const c = at(x, y); if (c[3] < 40) continue; n++;
             const bgc = at(Math.max(sx0, x - 10), y); if (Math.abs(lum(c) - lum(bgc)) > 40) ink++; }
           colInk.push(n && ink / n > 0.25);
         }
-        let st = null;
-        colInk.forEach((v, i) => { if (v && st == null) st = i; else if (!v && st != null){
-          if (i - st > 2) centers.push(sx0 + (st + i) / 2); st = null; } });
-        /* 라벨 세 글자가 붙어 한 덩어리로 잡히거나 글자별로 쪼개지면 6칸이 안 나온다 —
-           7칸 이상이면 **가장 넓은 6개**를 고른다(2026-09-20 사용자 지적 「진화카드 스탯 간격」). */
-        if (centers.length > 6){
-          const gaps = centers.slice(1).map((c, i) => c - centers[i]);
-          while (centers.length > 6){
-            let k = 0; for (let i = 1; i < gaps.length; i++) if (gaps[i] < gaps[k]) k = i;
-            centers.splice(k + 1, 1); gaps.splice(k, 1);
-          }
+        let st = null; const runs = [];
+        colInk.forEach((v, i) => { if (v && st == null) st = i; else if (!v && st != null){ runs.push({ s: st, e: i }); st = null; } });
+        if (st != null) runs.push({ s: st, e: colInk.length });
+        if (runs.length < 6) return [];
+        const gaps = runs.slice(1).map((r, i) => ({ g: r.s - runs[i].e, i }));
+        const cuts = gaps.sort((a, b) => b.g - a.g).slice(0, 5).map(x => x.i).sort((a, b) => a - b);
+        const out = []; let from = 0;
+        for (const c of cuts.concat([runs.length - 1])){
+          const grp = runs.slice(from, c + 1);
+          out.push(sx0 + (grp[0].s + grp[grp.length - 1].e) / 2);
+          from = c + 1;
         }
-      }
+        return out;
+      };
+      let centers = groupCenters(valB);
+      if (centers.length !== 6 && labelB) centers = groupCenters(labelB);   // 값 줄이 비면 라벨로 물러선다
       /* 폴백 범위가 6~94%면 값이 라벨보다 바깥으로 퍼져 어긋난다 — 실제 스탯 줄은 그보다 좁다. */
       if (centers.length !== 6){ const a = Math.round(W * 0.11), b2 = Math.round(W * 0.89);
         const cw = (b2 - a) / 6; centers = [0,1,2,3,4,5].map(i => a + cw * (i + 0.5)); }
