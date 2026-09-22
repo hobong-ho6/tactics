@@ -110,7 +110,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260922r';
+import { fcPitch, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, FC_CSS, cardDetail, FC_DETAIL_CSS } from './assets/clubviz.js?v=20260922t';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -275,6 +275,23 @@ function renderNow(){
   /* ⭐ 카드 비교(2026-09-22) — 상세에서 「비교에 담기」로 두 장을 고르면 나란히 견준다.
      ⛔ 담는 것은 **카드 객체**가 아니라 id다 — 렌더가 다시 돌아도 살아남게. */
   let cmp = [];
+  /* ⭐⭐ 비교 모드 (2026-09-22 사용자 지시 「비우기 전까지 이 메뉴가 유지되며 다음 카드를 고르는 동선으로」).
+     한 장을 담는 순간 켜지고 **비우기(또는 마지막 한 장까지 빼기)** 전에는 꺼지지 않는다.
+     ⛔ 켜져 있는 동안 피치·교체 카드를 누르면 **상세가 아니라 비교 담기**가 된다 — 종전에는
+        다음 카드를 누르면 상세로 빠져나가 「담기」를 한 번 더 눌러야 했다(사용자 지적). */
+  let cmpMode = false;
+  const exitCmp = () => { cmpMode = false; cmp = [];
+    document.querySelectorAll('#nowpitch .sel, #nowpitch .picked').forEach(x => x.classList.remove('sel', 'picked'));
+    side.innerHTML = fcSideEmpty(T, xiRows); };
+  /* 담긴 카드를 피치에서도 표시한다 — 패널만 보고 「어느 카드를 담았더라」 하지 않게.
+     ⛔ `data-p`는 **player_id**이고 `cmp`는 **보유 카드 행 id**다(clubviz.js card()) — 그냥 비교하면
+        엉뚱한 카드에 ✓가 붙는다(2026-09-22 실측: 음바예·캐시를 담았는데 오나나에 붙었다). */
+  const markPicked = () => {
+    document.querySelectorAll('#nowpitch .sel, #nowpitch .picked').forEach(x => x.classList.remove('sel', 'picked'));
+    const pids = cmp.map(id => byId(id)?.player_id).filter(v => v != null).map(Number);
+    for (const el of document.querySelectorAll('#nowpitch .fc-card[data-p]'))
+      if (pids.includes(Number(el.dataset.p))){ el.classList.add('picked'); el.closest('.fc-slot')?.classList.add('picked'); }
+  };
   const cmpCtx = () => ({ chem_styles: EVO.chem_styles, role_map: EVO.role_map,
     canon_roles: EVO.canon_roles, key_attrs: K26.role_key_attrs, role_kr: ROLE_KR,
     roles: K26.roles, focus_rows: K26.focus, face_stats: EVO.face_stats });
@@ -282,14 +299,14 @@ function renderNow(){
   const renderCmp = () => {
     const picked = cmp.map(byId).filter(Boolean);
     side.innerHTML = `<div class="cmp-pick"><b>카드 비교</b>
+        <span class="cmp-mode">${picked.length < 2
+          ? '피치나 교체에서 <b>비교할 카드를 누르세요</b>'
+          : '카드를 더 누르면 <b>왼쪽 카드가 밀려납니다</b>'}</span>
         <button class="act" data-cmpclear>비우기</button></div>`
       /* ⛔ 두 장이 차면 비교표 머리가 **같은 정보를 더 크게** 보여준다 — 담긴 칸은 그때 숨긴다.
          (담긴 칸의 역할은 「지금 뭐가 담겼나」이고, 두 장일 때는 비교표가 그 답이다.) */
       + (picked.length === 2 ? compareCards(picked[0], picked[1], cmpCtx()) : cmpSlots(picked));
-    side.querySelector('[data-cmpclear]').addEventListener('click', () => {
-      cmp = []; document.querySelectorAll('#nowpitch .sel').forEach(x => x.classList.remove('sel'));
-      side.innerHTML = fcSideEmpty(T, xiRows);
-    });
+    side.querySelector('[data-cmpclear]').addEventListener('click', exitCmp);
     /* 비교표 머리에도 같은 ×를 단다 — 한 장만 바꿔 끼울 때 「비우기 → 둘 다 다시 담기」를 안 하게. */
     side.querySelectorAll('.cmp-card').forEach((el, i) => {
       if (!picked[i]) return;
@@ -299,10 +316,16 @@ function renderNow(){
     /* 칸의 ×로 **한 장만** 뺀다 — 종전에는 「비우기」로 둘 다 버리거나 상세로 되돌아가는 수밖에 없었다. */
     side.querySelectorAll('[data-cmpdrop]').forEach(b => b.addEventListener('click', () => {
       cmp = cmp.filter(x => x !== Number(b.dataset.cmpdrop));
-      if (cmp.length) renderCmp();
-      else { document.querySelectorAll('#nowpitch .sel').forEach(x => x.classList.remove('sel'));
-             side.innerHTML = fcSideEmpty(T, xiRows); }
+      if (cmp.length) renderCmp(); else exitCmp();
     }));
+    markPicked();
+    side.scrollTop = 0;
+  };
+  /* 비교 모드에서 카드를 눌렀을 때 — 담겨 있으면 빼고, 아니면 담는다(두 장이 차면 오래된 쪽이 밀린다). */
+  const cmpToggle = p => {
+    if (!p) return;
+    cmp = cmp.includes(p.id) ? cmp.filter(x => x !== p.id) : [...cmp, p.id].slice(-2);
+    if (cmp.length) renderCmp(); else exitCmp();
   };
 
   const openDetail = (p, role, el, slotIdx) => {
@@ -318,9 +341,8 @@ function renderNow(){
                         reco: recoFor(p, slotIdx), role_map: EVO.role_map,
                         catalog: EVO.catalog, face_stats: EVO.face_stats });
     side.querySelector('[data-cmpadd]').addEventListener('click', () => {
-      if (cmp.includes(p.id)) cmp = cmp.filter(x => x !== p.id);
-      else { cmp = [...cmp, p.id].slice(-2); }      // 최근 두 장만 남긴다
-      if (cmp.length) renderCmp(); else side.innerHTML = fcSideEmpty(T, xiRows);
+      cmpMode = true;                               // 여기서부터 카드 클릭 = 비교 담기
+      cmpToggle(p);
     });
     side.querySelector('[data-back]').addEventListener('click', e => {
       e.preventDefault();
@@ -331,10 +353,12 @@ function renderNow(){
     if (window.matchMedia('(max-width:1060px)').matches) side.scrollIntoView({ behavior:'smooth', block:'start' });
   };
   document.querySelectorAll('#nowpitch .fc-slot').forEach((el, i) => {
-    el.addEventListener('click', () => openDetail(xiRows[i]?.player, xiRows[i]?.role, el, i));
+    el.addEventListener('click', () => cmpMode ? cmpToggle(xiRows[i]?.player)
+      : openDetail(xiRows[i]?.player, xiRows[i]?.role, el, i));
   });
   document.querySelectorAll('#nowpitch .fc-benchrow .fc-card').forEach((el, i) => {
-    el.addEventListener('click', () => openDetail(benchRows[i]?.player, null, el, null));
+    el.addEventListener('click', () => cmpMode ? cmpToggle(benchRows[i]?.player)
+      : openDetail(benchRows[i]?.player, null, el, null));
   });
   enableDragScroll(document.querySelector('#nowpitch .fc-benchrow'));
   paintEvoCards(document.getElementById('nowpitch'));

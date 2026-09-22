@@ -607,6 +607,13 @@ export const FC_CSS = `
 .fc-card.sel .fc-artwrap{filter:drop-shadow(0 4px 10px rgba(0,0,0,.6))}
 .fc-card.sel .fc-tag{border-color:var(--ok);background:rgba(4,30,14,.92)}
 .fc-benchrow .fc-card.sel{transform:scale(1.18)}
+/* 비교에 담긴 카드 — 선택(.sel)과 **다른 표시**를 쓴다. 담기는 상태이지 초점이 아니라서
+   확대하면 피치가 흔들린다. 테두리 고리와 ✓만 붙인다. */
+.fc-card.picked .fc-artwrap{filter:drop-shadow(0 0 0 2px var(--viz-us)) drop-shadow(0 4px 10px rgba(0,0,0,.6))}
+.fc-card.picked::after{content:'✓';position:absolute;top:2px;left:2px;z-index:6;
+  width:16px;height:16px;line-height:16px;text-align:center;border-radius:50%;
+  background:var(--viz-us);color:#0b0f14;font-size:11px;font-weight:800}
+.fc-slot.picked{z-index:4}
 .fc-card.empty{opacity:.45;cursor:default}
 .fc-artwrap{position:relative;line-height:0}
 .fc-art{width:100%;display:block;filter:drop-shadow(0 3px 6px rgba(0,0,0,.55))}
@@ -1270,6 +1277,9 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .cmp-lab{font-size:10.5px;margin:2px 0 3px}
 .fc-ps.uniq{border-color:var(--ok)}
 .cmp-pick{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px}
+/* 비교 모드 안내 — 「지금 카드를 누르면 상세가 아니라 담기가 된다」를 그 자리에서 알린다. */
+.cmp-mode{font-size:11.5px;color:var(--dim);margin-left:2px}
+.cmp-mode b{color:var(--acc)}
 /* 담긴 카드 확인 칸 — 좌우 색은 비교표와 같은 규약(좌 주황 · 우 파랑)이라 어느 열이 누구인지 이어진다. */
 .cmp-slots{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:stretch;margin-bottom:10px}
 .cmp-slot{position:relative;display:flex;gap:8px;align-items:center;padding:7px 8px;
