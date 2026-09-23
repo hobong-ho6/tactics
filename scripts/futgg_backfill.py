@@ -152,8 +152,68 @@ def main(a):
         con.commit()
     print(f"   → 보충 {filled}장 · 404 {notfound}장\n")
 
+    # ── ①-b 상세 404인 base 카드 — **라이브 아이템을 추가로 적재**한다 ────────────
+    # ⛔ 「단종된 id」가 아니다(2026-09-24 실증): 라이브 아이템의 `basePlayerEaId`가 **우리 id 그대로**다.
+    #    fut.gg가 `item-definitions`로 서비스하는 것은 **로스터 갱신 후의 라이브 아이템**(50xxxxxxx)이고,
+    #    base player id는 그 아이템의 부모로만 남는다. 그래서 base id로 물으면 404다.
+    # ⇒ 옛 행을 **고치거나 지우지 않는다**(`player_evolutions.base_ea_id`가 참조한다 · 불변규칙 2).
+    #    라이브 아이템을 **새 행으로 추가**하고, 옛 행의 **NULL 칸만** 선수 사실(클럽·리그·신체)로 채운다.
+    # ⚠️ 포지션은 라이브 응답이 **숫자 id**(position: 25)라 우리 표가 없다 — **추측하지 않고**
+    #    같은 선수의 기존 행에서 그대로 가져온다.
+    if a.link_new:
+        print("■ base 카드가 404인 행 — 라이브 아이템 적재")
+        stale = [r for r in rows if detail(r["ea_item_id"]) is None]
+        added = 0
+        for r in stale:
+            last = (con.execute("SELECT name FROM players WHERE id=?", (r["player_id"],)).fetchone() or [""])[0].split()[-1]
+            d = get(f"{API}/players/v2/27/?name={urllib.parse.quote(last)}")
+            live = None
+            for c in (d or {}).get("data") or []:
+                o = detail(c.get("eaId"))
+                time.sleep(0.15)
+                if not o or o.get("basePlayerEaId") != r["ea_item_id"]:
+                    continue                      # ⭐ **부모 id 일치**가 가장 강한 동일성 근거다
+                live = (c.get("eaId"), o); break
+            if not live:
+                print(f"   ⛔ {r['kr']:<16} base={r['ea_item_id']} — basePlayerEaId가 맞는 라이브 아이템 없음")
+                continue
+            ea, o = live
+            at, _ = parse_attrs(o)
+            pstxt, _ = ps_text(con, o)
+            if not a.dry_run:
+                cur.execute("""INSERT INTO player_card_items(game_version, ea_item_id, base_ea_id, is_base, player_id,
+                                 name_kr, rarity_name, ovr, positions, best_pos, attrs, playstyles, club, league, nation,
+                                 height_cm, weight_kg, birthdate, skill_moves, weak_foot, accelerate,
+                                 card_image_url, simple_card_url, render_url, source, confidence, first_seen)
+                               VALUES(?,?,?,0,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                               ON CONFLICT(game_version, ea_item_id) DO NOTHING""",
+                            (GV, ea, r["ea_item_id"], r["player_id"], r["kr"], o.get("rarityName"), o.get("overall"),
+                             r["positions"], r["best_pos"],          # ⛔ 포지션은 숫자 id라 기존 행에서 가져온다
+                             json.dumps(at, ensure_ascii=False) if at else None, pstxt,
+                             (o.get("club") or {}).get("name"), (o.get("league") or {}).get("name"),
+                             (o.get("nation") or {}).get("name"), o.get("height"), o.get("weight"),
+                             o.get("dateOfBirth"), o.get("skillMoves"), o.get("weakFoot"), o.get("accelerateType"),
+                             o.get("cardImageUrl"), o.get("simpleCardImageUrl"), o.get("imageUrl"),
+                             f"fut.gg /player-item-definitions/27/{ea}/ ({a.pulled} futgg_backfill.py · basePlayerEaId={r['ea_item_id']} 일치)",
+                             "HIGH — 라이브 아이템. 동일성 근거는 **basePlayerEaId 일치**(이름 대조보다 강하다).",
+                             a.pulled))
+                # 옛 base 행의 **NULL 칸만** 선수 사실로 채운다(이적으로 클럽이 바뀌었을 수 있다).
+                sets, vals = [], []
+                for col, pick in SIMPLE.items():
+                    if r[col] is None and pick(o) is not None:
+                        sets.append(f"{col}=?"); vals.append(pick(o))
+                if sets:
+                    cur.execute(f"UPDATE player_card_items SET {','.join(sets)} WHERE id=?", (*vals, r["id"]))
+            added += 1
+            print(f"   ✅ {r['kr']:<16} base={r['ea_item_id']} → 라이브 ea={ea} OVR {o.get('overall')} "
+                  f"{(o.get('club') or {}).get('name')} / {(o.get('league') or {}).get('name')}")
+            time.sleep(0.2)
+        if not a.dry_run:
+            con.commit()
+        print(f"   → 라이브 아이템 {added}장 적재\n")
+
     # ── ② 카드가 아예 없는 선수 ────────────────────────────────────────
-    none = con.execute(f"""SELECT p.id, COALESCE(p.name_kr,p.name) kr, p.name en, p.nationality, p.primary_position pos
+    none = con.execute(f"""SELECT p.id, COALESCE(p.name_kr,p.name) kr, p.name en, p.nationality, p.primary_position pos, p.birth_year
                              FROM players p WHERE p.id IN ({q})
                               AND NOT EXISTS(SELECT 1 FROM player_card_items c
                                               WHERE c.player_id=p.id AND c.game_version=?)""", (*mine, GV)).fetchall()
@@ -175,6 +235,14 @@ def main(a):
                 continue
             if p["nationality"] and nat and norm(nat) != norm(p["nationality"]):
                 continue
+            # ⭐⭐ **출생년이 가장 센 변별자다**(2026-09-24 실증). 이름+국적만으로는 스페인 CB 후보가
+            #    5~7건씩 나와 사람이 골라야 했는데, 출생년을 넣자 **전부 한 건으로 좁혀지거나 0건**이 됐다
+            #    (살리나스 2007·니코 곤살레스 1998·가브리엘 제주스 1997은 확정, 아우안·도밍게스·모레노는
+            #     후보가 전부 10년 이상 차이 나 **fut.gg 미수록**임이 드러났다).
+            #    ⛔ 우리 `birth_year`가 있는데 fut.gg 생년이 다르면 **다른 사람**이다 — 이름이 같아도 버린다.
+            dob = (o.get("dateOfBirth") or "")[:4]
+            if p["birth_year"] and dob.isdigit() and int(dob) != p["birth_year"]:
+                continue
             ok.append((c.get("eaId"), o, nat))
             time.sleep(0.2)
         if not ok:
@@ -187,7 +255,7 @@ def main(a):
         else:
             ea, o, nat = ok[0]
             print(f"   ✅ {p['kr']:<16} ← ea={ea} OVR {o.get('overall')} {nat} "
-                  f"{(o.get('club') or {}).get('name')}" + ("" if a.link_new else "  (--link-new 로 적재)"))
+                  f"{(o.get('club') or {}).get('name')} · {o.get('dateOfBirth')}" + ("" if a.link_new else "  (--link-new 로 적재)"))
             if a.link_new and not a.dry_run:
                 at, _ = parse_attrs(o)
                 cur.execute("""INSERT INTO player_card_items(game_version, ea_item_id, base_ea_id, is_base, player_id,
@@ -206,7 +274,7 @@ def main(a):
                              o.get("dateOfBirth"), o.get("skillMoves"), o.get("weakFoot"), o.get("accelerateType"),
                              o.get("foot"), o.get("cardImageUrl"), o.get("simpleCardImageUrl"), o.get("imageUrl"),
                              f"fut.gg /player-item-definitions/27/{ea}/ ({a.pulled} futgg_backfill.py · 이름+국적 대조)",
-                             "HIGH — fut.gg 정의 원문. ⚠️ 동일성은 이름(성)+국적으로 확인했다(포지션 미대조).",
+                             "HIGH — fut.gg 정의 원문. 동일성 근거: 성 + 국적 + **출생년** 일치(우리 birth_year가 있을 때).",
                              a.pulled))
                 linked += 1
         time.sleep(0.25)
