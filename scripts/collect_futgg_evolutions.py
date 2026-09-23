@@ -120,6 +120,14 @@ def is_cosmetic(e):
     return bool(ks) and ks <= COSMETIC_UPGRADES
 
 
+CATALOG_COLS = [
+    "game_version", "evo_id", "name", "slug", "url", "description", "category", "unlock_text",
+    "coins_cost", "points_cost", "token_cost", "repeatability", "is_reward", "is_gk", "is_timed",
+    "training_time", "created_at", "end_time", "end_submission_time", "requirements_text",
+    "total_upgrades_text", "levels", "allowed_prior_ids", "number_of_players", "is_expired",
+    "source", "confidence", "pulled"]
+
+
 def catalog_row(e, gv, pulled):
     unlock = e.get("customUnlockable") or e.get("sbcName") or e.get("objectiveGroupName")
     return dict(
@@ -304,6 +312,29 @@ def main():
                         break
             print(f"카탈로그 보강: 목록 {len(ids)}종 · 우리 선수 응답 밖 {len(missing)}종 → "
                   f"{sum(1 for i in missing if (gv, i) in catalog)}종 확보")
+            # ⭐⭐ 단독·특별카드 전용 진화는 **어떤 API로도 객체를 못 받는다**(2026-09-23 실측: 2495·2501).
+            #    「적용 가능 선수」는 30명+ 응답하는데 그 선수들의 paths는 404거나, 200이어도 그 evo_id가 없다.
+            #    ⇒ 목록에는 살아 있는데 이번 회차에 못 받았다면 **직전 행을 이월**한다.
+            #    이월하지 않으면 export가 최신 pulled 스냅샷만 내보내므로 **화면에서 통째로 사라진다**
+            #    (2026-09-23에 실제로 Pinged Pass·Relentless가 사라졌다 — 둘 다 마감 아니었다).
+            # ⛔ 목록에서 빠진 종은 이월하지 않는다 — 그래야 마감 감지가 산다.
+            carried = []
+            for eid in [i for i in ids if (gv, i) not in catalog]:
+                prev = cur.execute(
+                    f"SELECT {','.join(CATALOG_COLS)} FROM fc_evolutions "
+                    "WHERE game_version=? AND evo_id=? ORDER BY pulled DESC LIMIT 1", (gv, eid)).fetchone()
+                if not prev:
+                    continue                       # 코스메틱 제외분 등 — 애초에 적재한 적 없는 종
+                row = dict(zip(CATALOG_COLS, prev))
+                row["pulled"] = a.pulled
+                row["source"] = (f"{row['source']} · {a.pulled} 이월 — fut.gg 목록에는 있으나 "
+                                 "paths·적용가능선수 API가 객체를 주지 않는 단독/특별카드 전용 진화")
+                row["confidence"] = (f"MEDIUM — 목록 생존만 {a.pulled}에 확인했다. 내용은 "
+                                     f"{prev['pulled']} 관측값 그대로이고 그 뒤 변경 여부는 확인할 수 없다.")
+                catalog[(gv, eid)] = row
+                carried.append(f"{eid} {row['name']}")
+            if carried:
+                print(f"  ↪️ 이월 {len(carried)}종(목록 생존 · API 미제공): {', '.join(carried)}")
     if catalog and not a.dry_run:
         n = 0
         for row in catalog.values():

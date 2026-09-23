@@ -113,3 +113,16 @@ INSERT INTO fc_evolution_eligibility VALUES('FC27',2490,85,253163,1,'2026-09-23'
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2490,90,229880,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2490');
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2490,32,259307,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2490');
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2490,209,264298,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2490');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2495,97,266032,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2495');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2495,66,278339,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2495');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2495,114,80376,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2495');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2495,86,50406097,0,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2495');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2495,32,259307,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2495');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2495,19,200110,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2495');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2495,6,248465,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2495');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2501,97,266032,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2501');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2501,66,278339,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2501');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2501,114,80376,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2501');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2501,86,50406097,0,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2501');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2501,32,259307,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2501');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2501,19,200110,1,'2026-09-23','fut.gg https://www.fut.gg/api/fut/evolutions/v2/27/v2/players/?evolutions_combinations=2501');
