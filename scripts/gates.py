@@ -1116,6 +1116,55 @@ def run(db_path=None, verbose=True):
     if not ok21:
         fails.append("G21")
 
+    # G22 — ⛔⛔ **화면 코드의 정적 검사.** 2026-09-23 신설(사용자 지시 「코드레벨이나 스크립트로
+    #   수행할 수 있는 것들은 전환해줘 — 더 이상 반복적인 실수가 일어나지 않고 토큰도 줄이도록」).
+    #   여기 모은 셋은 전부 **docs/70에 적어 뒀는데도 다시 터진** 것들이다. 주석·런북은 읽어야 지켜지고,
+    #   읽는 것은 사람(세션)이라 확률이 1이 아니다. ⇒ 읽지 않아도 막히게 한다.
+    g22 = []
+    site = root / "site"
+
+    # ⑴ 템플릿 리터럴 안 주석의 백틱 — 2026-09-21 두 번, 09-22 한 번. **세 번 재발.**
+    #    검사기(`check_css_literals.py`)는 진작 있었는데 **아무도 부르지 않아** 매번 손으로 돌렸다.
+    try:
+        sys.path.insert(0, str(root / "scripts"))
+        import check_css_literals as _ccl
+        bad_css = _ccl.scan() if hasattr(_ccl, "scan") else []
+    except Exception as e:                       # 검사기 자체가 깨졌으면 그것도 실패다
+        bad_css = [f"검사기 오류: {e}"]
+    if bad_css:
+        g22.append(f"CSS 리터럴 백틱 {len(bad_css)}건")
+
+    # ⑵ **공용 규칙을 화면이 다시 짜는 것.** 2026-09-22 실측: 진화 소진·프리미엄 판정이
+    #    `evolutions.html` 안의 지역 함수라 `player.html`이 그 규칙을 모른 채 **74건**을 추천했다.
+    #    ⇒ 규칙의 지문(fingerprint)이 정본 모듈 밖에서 나오면 실패. 규칙이 필요하면 모듈을 import한다.
+    RULE_FINGERPRINTS = {
+        "Premium Season Pass": "site/assets/evorules.js",   # 프리미엄 판정
+        "repeatabilityCount": "scripts/",                   # 반복 횟수 해석(수집기 전용)
+    }
+    for token, owner in RULE_FINGERPRINTS.items():
+        for f in sorted(site.glob("*.html")) + sorted((site / "assets").glob("*.js")):
+            rel = f.relative_to(root).as_posix()
+            if rel.startswith(owner) or owner.startswith(rel):
+                continue
+            if token in f.read_text():
+                g22.append(f"{rel}: 「{token}」 규칙을 {owner} 밖에서 다시 짠다")
+
+    # ⑶ `observations.id` 하드코딩 — 동시 세션과 충돌한다(docs/70). 쓰기 스크립트에서만 잡는다.
+    #    ⚠️ `test_*.py`는 **결함을 합성 주입해 게이트가 잡는지 보는** 스크립트다 — 고정 id가 목적이라 뺀다.
+    obs_hard = [f.relative_to(root).as_posix()
+                for f in sorted((root / "scripts").glob("*.py"))
+                if not f.name.startswith("test_")
+                and re.search(r"INSERT INTO observations[^;]*VALUES\s*\(\s*\d+", f.read_text(), re.I | re.S)]
+    if obs_hard:
+        g22.append(f"observations.id 하드코딩: {', '.join(obs_hard)}")
+
+    ok22 = not g22
+    if verbose:
+        print(f"G22 화면 코드 정적 검사: 위반 {len(g22)} "
+              + ("✅" if ok22 else "❌ " + " · ".join(g22[:3])))
+    if not ok22:
+        fails.append("G22")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")

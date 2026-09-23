@@ -9,7 +9,7 @@
 SofaScore(브라우저 오리진 수집) ─┐
 sofifa / EA 피치노트 ────────────┤→  db/tactics.db  →  scripts/export.py  →  site/data/*.json  →  site/*.html
 transfer-watch(스킬) ────────────┘        ↑                (게이트 통과 필수)
-                                   scripts/gates.py = 정본성 보증 (G1~G21)
+                                   scripts/gates.py = 정본성 보증 (G1~G22)
 ```
 
 ## 레이어 (db/migrations/001-schema.sql이 스키마 정본)
@@ -86,7 +86,9 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 |---|---|---|
 | 실측 수집 | `core.sofascore.js_collect()` → 브라우저 → `parse_collected()` | sofascore.com 오리진 필수 |
 | 익스포트 | `python3 scripts/export.py` | 게이트 통과 후 site/data 재생성 + 프리뷰 미러 |
-| 게이트 | `python3 scripts/gates.py` | **G1~G21** (+G8+) · G21=수집 회차 완결성(중단된 수집이 최신으로 굳는 것을 막는다) |
+| 게이트 | `python3 scripts/gates.py` | **G1~G22** (+G8+) · G21=수집 회차 완결성 · G22=화면 코드 정적 검사 |
+| **화면 회귀 검사** | `python3 scripts/check_pages.py` | 전 페이지 렌더·콘솔 오류·HTTP 4xx를 **한 번의 호출**로. 단일 페이지는 `check_pages.py evolutions.html --tab paths --grep …` ⛔ 임시 Playwright 스크립트를 다시 짜지 말 것 |
+| G21·G22 회귀 | `python3 scripts/test_g21_g22_regression.py` | 결함 3종 합성 주입 + 오탐 1종(소폭 감소) |
 | WhoScored 파생 | `core.whoscored.ppda/def_x/phase_cells` | PPDA·라인 프록시·국면 그리드 — 브라우저 JS 재구현 금지(불변규칙 4) |
 | 팀 설정 규칙 | `core.team_settings.suggest/compare` | 실측 → 빌드업·수비접근·라인 제안, G15가 편차 신고 강제 |
 | 인게임 캡처 | `python3 scripts/ingame_heatmap_to_grid.py IMG --attack right …` | 스크린샷 → map25 → 코사인(docs/50) |

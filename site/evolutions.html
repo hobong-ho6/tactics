@@ -937,10 +937,10 @@ function renderCatalog(team = CAT_TEAM){
   /* ⭐ **프리미엄 시즌패스 진화 거르기** (2026-09-22 사용자 지시 「난 프리미엄을 구매하지 않았다」).
      ⛔ 지우지 않고 **필터**로 둔다 — 나중에 구매하면 그대로 다시 보여야 하고, 「FC27에 이런 진화가 있다」는
         사실 자체는 참이기 때문이다(소진 처리와 같은 원칙).
-     ⭐ 판정은 `unlock_text`로 한다 — 「Unlocked by reaching level N in the Premium Season Pass.」
-        이름의 `[SP+ N]` 표기는 보조 신호일 뿐이라 근거로 쓰지 않는다.
+     ⛔⛔ **판정식을 여기서 다시 쓰지 않는다** — 정본은 `assets/evorules.js`의 `premIds`다(G22가 막는다).
+        종전엔 같은 정규식이 이 파일에도 있어, 한쪽만 고치면 탭마다 다른 결과가 나올 수 있었다.
      ⚠️ 설정은 localStorage에 남긴다 — 구매 여부는 회차마다 바뀌는 값이 아니라 **계정의 상태**다. */
-  const isPrem = c => /Premium Season Pass/i.test((c.unlock_text || '') + ' ' + (c.description || ''));
+  const isPrem = c => RULES.premIds.has(c.evo_id);
   const cat = cat0.filter(c => (SHOW_USED || !usedIds.has(c.evo_id)) && (SHOW_PREM || !isPrem(c)));
   const nUsed = cat0.filter(c => usedIds.has(c.evo_id) && (SHOW_PREM || !isPrem(c))).length;
   const nPrem = cat0.filter(c => isPrem(c) && (SHOW_USED || !usedIds.has(c.evo_id))).length;
