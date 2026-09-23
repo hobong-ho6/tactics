@@ -198,12 +198,16 @@ const presLabel = pres => pres ? `${esc(ROLE_KR[pres.role_id] || pres.role_id)} 
       ⇒ **무엇 기준인지 머리에 박아** 둘을 헷갈리지 않게 한다. 한쪽을 지우지 않는 이유:
         이 스트립만 **단계별 중간 상태**(1단계 후 · 2단계 후 …)를 보여주고, OVR은 EA 산식이 비공개라
         우리가 다시 계산할 수 없다. 즉 **fut.gg 기준으로만 알 수 있는 정보**다. */
-function stepsHTML(p, pid){
+function stepsHTML(p, pid, opts = {}){
   const steps = p.path || [];
   /* ⛔ **1단계 경로에서는 그리지 않는다**(2026-09-22) — 고유하게 주는 것은 **단계 사이의 중간 상태**뿐인데
      1단계면 「적용 전 ↔ 적용 후」가 전부라 아래 「적용 후 선수 프로필」과 완전히 겹친다.
-     실측: 전체 92경로 중 1단계가 72건(78%). */
-  if (steps.length <= 2) return '';
+     실측: 전체 92경로 중 1단계가 72건(78%).
+     ⭐ 2026-09-23: **경로가 없는 진화**(fut.gg가 path_json을 안 주는 것)는 예외다 —
+        그쪽은 이 표 말고 보여줄 게 없어서 1단계여도 그린다(`opts.always`). */
+  const nLv = (p.ids || []).reduce((n, id) => n + (J(CATBYID[id]?.levels, []) || []).length, 0);
+  if (!opts.always && steps.length <= 2) return '';
+  if (opts.always && !nLv) return '<small class="dim">이 진화의 단계 정보가 카탈로그에 없다 — 다시 수집해야 한다.</small>';
   /* ⭐⭐ **출발점은 지금 내 카드이고, 단계별 변화도 직접 계산한다**(2026-09-22 사용자 지시).
      ⛔ fut.gg 값은 **기준 카드에서** 계산돼 이미 진화한 선수에겐 어긋난다 — 쓰지 않는다.
      ⛔ **OVR은 산출하지 않는다**(EA 산식 비공개) — 6대 스탯만 상한 규칙대로 올린다.
@@ -977,7 +981,7 @@ function renderCatalog(team = CAT_TEAM){
     apps.sort((a, b) => b.tier - a.tier || (b.owned - a.owned) || a.k - b.k || b.score - a.score || b.d - a.d || (a.price ?? 9e9) - (b.price ?? 9e9));
     const best = apps[0];
     const dl = days(c.end_submission_time || c.end_time);
-    return `<div class="evo-card${c.is_expired || used?.exhausted ? ' expired' : ''}">
+    return `<div class="evo-card${c.is_expired || used?.exhausted ? ' expired' : ''}" id="ev${c.evo_id}">
       <h3>${esc(c.name)} ${c.repeatability > 1 ? `<span class="chip">반복 ${c.repeatability}회</span>` : '<span class="chip dim">1회성</span>'}${c.is_reward ? '<span class="chip">보상형</span>' : ''}${
         /* ⭐ 이월 행 표시(migration 059) — fut.gg 목록에는 있는데 API가 객체를 안 주는 진화다.
            이 회차엔 **목록 생존만** 확인했고 아래 내용은 과거 관측값이다. 실측과 같은 얼굴로 두지 않는다. */
@@ -1028,12 +1032,45 @@ const doneScore = (r, pid) => { const d = appliedIn(r, pid);
 const eligOpen = pid => (ELIG_BY_PID[pid] || [])
   .filter(r => !CONSUMED[r.evo_id]?.exhausted && (SHOW_PREM || !RULES.premIds.has(r.evo_id))
             && !hasOpenPath(pid, r.evo_id));
+/* ⭐⭐ **경로 없는 진화도 펼쳐서 결과를 보여준다**(2026-09-23 사용자 지적
+   「핑드패스나 Relentless 때문에 노출되는 거라면 해당 선수들이 열려야 하는데 안 열리는 게 문제」).
+   ⛔ 종전엔 칩만 나열해 **눌러도 아무것도 열리지 않는 막다른 길**이었다 — 「걸 수 있다」만 알려주고
+      무엇을 얻는지는 말하지 않았다.
+   ⇒ fut.gg 경로가 없어도 **카탈로그의 단계별 보상 + 내 지금 카드**만 있으면 우리가 계산할 수 있다
+      (경로 화면이 이미 그렇게 한다 — 같은 `projectPath`·`applyEvoLevel`을 쓴다). */
 function eligPanel(pid){
   const rs = eligOpen(pid); if (!rs.length) return '';
+  const pres = matcher(+pid).pres;
   return `<div class="applied-box" style="border-style:dashed"><b>경로 없이 적용 가능한 진화</b>
     <small class="dim">${rs.length}건 — ${esc(NOPATH_TIP)}</small>
-    <div class="plist" style="margin-top:4px">${rs.map(r => `<span class="req">${esc(CATBYID[r.evo_id]?.name || r.evo_id)}${
-      r.is_base ? '' : ' <small class="dim">특별 카드</small>'}</span>`).join('')}</div></div>`;
+    ${rs.map(r => {
+      const c = CATBYID[r.evo_id];
+      const pseudo = { ids: [r.evo_id], path: [], pres, evolution_names: c?.name || String(r.evo_id) };
+      const rs2 = roleScore(pres, JSON.stringify(upgradesOf(r.evo_id)));
+      return `<details class="path pcard tier0" style="margin:6px 0">
+        <summary class="kv"><b>${esc(c?.name || r.evo_id)}</b>
+          ${lockChip(r.evo_id)}${r.is_base ? '' : '<span class="chip dim" title="이 진화는 기본 카드가 아니라 내가 가진 특별 카드에 걸린다">특별 카드</span>'}
+          <span class="chip">${(J(c?.levels, []) || []).length}단계</span>
+          <small class="dim">${esc(costText(c || {}))}</small> ${scoreChip(rs2)}</summary>
+        <div style="padding:6px 2px">${stepsHTML(pseudo, +pid, { always: true })}
+          ${(J(c?.total_upgrades_text, []) || []).length ? `<div style="font-size:12px;margin-top:6px"><b>얻는 것</b> ${
+            (J(c.total_upgrades_text, []) || []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ')}</div>` : ''}
+          ${c?.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>` : ''}
+          <button class="act ghost" data-cat="${r.evo_id}" style="font-size:12px;margin-left:6px">카탈로그에서 보기</button>
+        </div></details>`;
+    }).join('')}</div>`;
+}
+/* 역할 가중 점수의 원료 — 경로가 없으면 `upgrades`도 없으니 카탈로그 단계 보상에서 합산한다. */
+function upgradesOf(eid){
+  const out = {};
+  for (const lv of (J(CATBYID[eid]?.levels, []) || [])){
+    const src = (lv.upgrades || []).concat(...(lv.upgradeOptions || []).map(o => Array.isArray(o) ? o : (o.upgrades || [])).slice(0, 1));
+    for (const u of src){
+      const k = ATTR_KR[String(u.upgrade || '').replace(/^attribute_/, '')]; if (!k) continue;
+      out[k] = (out[k] || 0) + (u.value || 0);
+    }
+  }
+  return out;
 }
 /* 선수 머리의 「이미 적용한 진화」 — 무엇을 몇 단계까지 했는지, OVR이 얼마나 올랐는지. */
 function appliedPanel(pid){
@@ -1220,6 +1257,15 @@ function renderPaths(team, focusPid){
     ${/* ⛔ 「없다」를 결손으로 읽히게 두지 않는다 — 사유와 건수를 적는다(obs#132). */''}
     <br>위 필터를 켜면 접힌 것을 볼 수 있다.${RULES.spLevel == null ? '' : ` 지금 시즌패스 레벨 <b>${RULES.spLevel}</b>.`}</div>`;
   evoTips(document.getElementById('paths'));
+  /* 「카탈로그에서 보기」 — 경로 없는 진화의 조건·마감·전체 적용 가능 선수는 카탈로그 카드에 있다.
+     ⛔ 같은 내용을 여기서 다시 그리지 않는다(두 벌이 되면 갈린다 · docs/70). */
+  document.getElementById('paths').querySelectorAll('button[data-cat]').forEach(b =>
+    b.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector('.menubar [data-tab="cat"]').click();
+      renderCatalog(team === 'ALL' ? CAT_TEAM : team);
+      document.getElementById(`ev${b.dataset.cat}`)?.scrollIntoView({ block: 'center' });
+    }));
   if (focusPid) document.getElementById(`pp${focusPid}`)?.scrollIntoView({ block: 'start' });
 }
 
