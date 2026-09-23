@@ -32,26 +32,14 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 DB = ROOT / "db" / "tactics.db"
 UA = {"User-Agent": "Mozilla/5.0"}
 API = "https://www.fut.gg/api/fut"
 
-# fut.gg 정의 필드 → 한글 라벨. `player_game_stats.attrs`·`player_card_items.attrs`와 **같은 키**를 쓴다.
-ATTR_KR = {
-    "attributeAcceleration": "가속", "attributeSprintSpeed": "질주 속도",
-    "attributePositioning": "공격 위치 선정", "attributeFinishing": "결정력", "attributeShotPower": "슈팅력",
-    "attributeLongShots": "중거리슛", "attributeVolleys": "발리 슛", "attributePenalties": "페널티킥",
-    "attributeVision": "시야", "attributeCrossing": "크로스", "attributeFkAccuracy": "프리킥 정확도",
-    "attributeShortPassing": "짧은 패스", "attributeLongPassing": "긴 패스", "attributeCurve": "커브",
-    "attributeAgility": "민첩성", "attributeBalance": "균형 감각", "attributeReactions": "반응력",
-    "attributeBallControl": "볼컨트롤", "attributeDribbling": "드리블", "attributeComposure": "침착",
-    "attributeInterceptions": "차단력", "attributeHeadingAccuracy": "헤딩 정확도",
-    "attributeDefensiveAwareness": "수비 위치 선정", "attributeStandingTackle": "스탠딩 태클",
-    "attributeSlidingTackle": "슬라이딩 태클", "attributeJumping": "점프", "attributeStamina": "체력",
-    "attributeStrength": "힘", "attributeAggression": "공격성",
-    "attributeGkDiving": "다이빙", "attributeGkHandling": "핸들링", "attributeGkKicking": "킥",
-    "attributeGkPositioning": "포지셔닝", "attributeGkReflexes": "반사신경",
-}
+# ⛔ 표는 `core/futgg_attrs.py`가 정본이다(2026-09-23에 네 벌을 하나로 합쳤다 —
+#    한 곳만 키가 틀려 「프리킥 정확도」가 100% 누락된 사고가 있었다).
+from core.futgg_attrs import ATTR_KR as ATTR_KR  # noqa: E402
 SIX = [("facePace", "PAC"), ("faceShooting", "SHO"), ("facePassing", "PAS"),
        ("faceDribbling", "DRI"), ("faceDefending", "DEF"), ("facePhysicality", "PHY")]
 SIX_GK = [("gkFaceDiving", "DIV"), ("gkFaceHandling", "HAN"), ("gkFaceKicking", "KIC"),

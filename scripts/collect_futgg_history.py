@@ -30,28 +30,16 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 DB = ROOT / "db" / "tactics.db"
 UA = {"User-Agent": "Mozilla/5.0"}
 API = "https://www.fut.gg/api/fut"
 
 RELEASED = {"25": "2024-09-27", "26": "2025-09-26", "27": "2026-09-25"}
 
-# fut.gg 정의 필드 → FC26/FC27 `attrs`의 한글 라벨(sofifa 라벨). 키를 맞춰야 버전 간 비교가 성립한다.
-ATTR_MAP = {
-    "attributeAcceleration": "가속", "attributeSprintSpeed": "질주 속도",
-    "attributePositioning": "공격 위치 선정", "attributeFinishing": "결정력", "attributeShotPower": "슈팅력",
-    "attributeLongShots": "중거리슛", "attributeVolleys": "발리 슛", "attributePenalties": "페널티킥",
-    "attributeVision": "시야", "attributeCrossing": "크로스", "attributeFkAccuracy": "프리킥 정확도",
-    "attributeShortPassing": "짧은 패스", "attributeLongPassing": "긴 패스", "attributeCurve": "커브",
-    "attributeAgility": "민첩성", "attributeBalance": "균형 감각", "attributeReactions": "반응력",
-    "attributeBallControl": "볼컨트롤", "attributeDribbling": "드리블", "attributeComposure": "침착",
-    "attributeInterceptions": "차단력", "attributeHeadingAccuracy": "헤딩 정확도",
-    "attributeDefensiveAwareness": "수비 위치 선정", "attributeStandingTackle": "스탠딩 태클",
-    "attributeSlidingTackle": "슬라이딩 태클", "attributeJumping": "점프", "attributeStamina": "체력",
-    "attributeStrength": "힘", "attributeAggression": "공격성",
-    "attributeGkDiving": "다이빙", "attributeGkHandling": "핸들링", "attributeGkKicking": "킥",
-    "attributeGkPositioning": "포지셔닝", "attributeGkReflexes": "반사신경",
-}
+# ⛔ 표는 `core/futgg_attrs.py`가 정본이다(2026-09-23에 네 벌을 하나로 합쳤다 —
+#    한 곳만 키가 틀려 「프리킥 정확도」가 100% 누락된 사고가 있었다).
+from core.futgg_attrs import ATTR_KR as ATTR_MAP  # noqa: E402
 GK_ATTRS = {"가속", "질주 속도", "반응력", "다이빙", "핸들링", "킥", "포지셔닝", "반사신경"}   # 기존 GK 행의 attrs 키 집합
 OUTFIELD_DROP = {"다이빙", "핸들링", "킥", "포지셔닝", "반사신경"}                            # 기존 필드 행은 GK 5속성 미포함
 # positionId → 표기. v2 목록에서 관측된 값(2026-09-12)으로 고정하고, 미지의 id는 그대로 문자열로 남긴다.

@@ -1161,6 +1161,19 @@ def run(db_path=None, verbose=True):
     if obs_hard:
         g22.append(f"observations.id 하드코딩: {', '.join(obs_hard)}")
 
+    # ⑷ **fut.gg 속성 이름표를 복제하지 않는다.** 2026-09-23 실증: 같은 표가 네 파일에 있었고
+    #    **한 곳만** `attributeFreeKickAccuracy`(오타 · 실제는 `attributeFkAccuracy`)라
+    #    GG Club 수집만 「프리킥 정확도」를 100% 흘렸다 → 6대 스탯 PAS가 89명 전원에서 2~4 낮았다.
+    #    ⇒ 정본은 `core/futgg_attrs.py` 하나다. 다른 파일에 표를 다시 적으면 여기서 막는다.
+    #    ⚠️ 검사기 자신은 제외한다 — 설명 문구에 필드명을 적어야 해서 스스로를 잡는다.
+    for f in sorted((root / "scripts").glob("*.py")):
+        if f.name == "gates.py":
+            continue
+        txt = f.read_text()
+        if "attributeAcceleration" in txt and "attributeSprintSpeed" in txt:
+            g22.append(f"{f.relative_to(root).as_posix()}: fut.gg 속성 표를 다시 적었다 "
+                       f"— core/futgg_attrs.py 를 import 할 것")
+
     ok22 = not g22
     if verbose:
         print(f"G22 화면 코드 정적 검사: 위반 {len(g22)} "

@@ -96,19 +96,13 @@ def get(url, headers):
 # ⭐⭐ 29속성 — GG Club이 **EA 실측 그대로** 준다(2026-09-22 확인, 사용자 질문 「싱크로 상세 스탯까지 가져올 수 있지?」).
 #    종전에는 기준 카드 + 진화 보상으로 **재구성 추정**을 했는데, 그럴 필요가 없다.
 #    ⇒ 재구성은 이제 **검증용**으로만 남긴다(추정↔실측 대조 = 진화 기록 오류 탐지기).
-ATTRS = {
-    "attributeAcceleration": "가속", "attributeSprintSpeed": "질주 속도", "attributePositioning": "공격 위치 선정",
-    "attributeFinishing": "결정력", "attributeShotPower": "슈팅력", "attributeLongShots": "중거리슛",
-    "attributeVolleys": "발리 슛", "attributePenalties": "페널티킥", "attributeVision": "시야",
-    "attributeCrossing": "크로스", "attributeFreeKickAccuracy": "프리킥 정확도", "attributeShortPassing": "짧은 패스",
-    "attributeLongPassing": "긴 패스", "attributeCurve": "커브", "attributeAgility": "민첩성",
-    "attributeBalance": "균형 감각", "attributeReactions": "반응력", "attributeBallControl": "볼컨트롤",
-    "attributeDribbling": "드리블", "attributeComposure": "침착", "attributeInterceptions": "차단력",
-    "attributeHeadingAccuracy": "헤딩 정확도", "attributeDefensiveAwareness": "수비 위치 선정",
-    "attributeStandingTackle": "스탠딩 태클", "attributeSlidingTackle": "슬라이딩 태클",
-    "attributeJumping": "점프", "attributeStamina": "체력", "attributeStrength": "힘",
-    "attributeAggression": "공격성",
-}
+# ⛔ 표를 여기 두지 않는다 — 정본은 `core/futgg_attrs.py`다(2026-09-23).
+#    종전엔 같은 표가 네 파일에 복제돼 있었고 **이 파일만** `attributeFreeKickAccuracy`(오타)를 찾아
+#    「프리킥 정확도」를 100% 흘렸다 → 6대 스탯 PAS가 보유 89명 전원에서 2~4 낮게 계산됐다.
+from core.futgg_attrs import parse_attrs        # noqa: E402  (ROOT를 sys.path에 넣은 뒤라 아래에 둔다)
+
+# 수집 중 발견한 결손 속성 — ⛔ 조용히 넘기지 않고 끝에 건수로 보고한다(obs#132).
+MISSING = {}
 
 
 def rows_of(players):
@@ -117,7 +111,10 @@ def rows_of(players):
         q = p.get("playerDef") or {}
         keys = SIX_GK if q.get("position") == 0 else SIX
         name = q.get("commonName") or f"{q.get('firstName') or ''} {q.get('lastName') or ''}".strip()
-        attrs = {kr: q[k] for k, kr in ATTRS.items() if q.get(k) is not None}
+        # ⚠️ GK는 필드 29속성을 다 갖지 않는다 — 기준을 나눠 대조한다.
+        attrs, missing = parse_attrs(q, want=set() if q.get("position") == 0 else None)
+        if missing:
+            MISSING[tuple(missing)] = MISSING.get(tuple(missing), 0) + 1
         out.append({"ea": q.get("eaId"), "n": name, "ovr": q.get("overall"),
                     "six": [q.get(k) for k in keys],
                     "attrs": attrs or None,                       # ⛔ 없으면 None — 빈 dict를 「0」으로 굳히지 않는다
@@ -210,6 +207,10 @@ def main():
     uniq = {r["gg"] for r in rows}
     Path(a.out).write_text(json.dumps(rows, ensure_ascii=False, indent=0), encoding="utf-8")
     print(f"수집 {len(rows)}명(고유 {len(uniq)}) · {page}페이지 · 스쿼드 슬롯 {len(squad)} → {a.out}")
+    # ⛔⛔ **결손을 조용히 넘기지 않는다**(2026-09-23 · obs#132). 2026-09-22까지 「프리킥 정확도」가
+    #    100% 빠지고 있었는데 아무도 몰랐고, 6대 스탯 PAS가 89명 전원에서 2~4 낮게 계산됐다.
+    for miss, n in sorted(MISSING.items(), key=lambda kv: -kv[1]):
+        print(f"⚠️ 속성 결손 {n}명 — {', '.join(miss)} (fut.gg 필드명이 바뀌었는지 확인할 것)")
     if len(uniq) != len(rows):
         print(f"⚠️ 중복 {len(rows) - len(uniq)}건 — 응답에 같은 카드가 두 번 들어왔다")
     if a.apply_squad and squad:
