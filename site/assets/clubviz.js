@@ -754,6 +754,26 @@ export const ATTR_KR = {   // ⭐ 화면들이 같은 표를 쓰도록 내보낸
   sliding_tackle:'슬라이딩 태클', jumping:'점프', stamina:'체력', strength:'힘', aggression:'공격성',
 };
 
+/* ⭐ 한글 라벨 → **fut.gg 표기**(2026-09-23 사용자 지시 「스탯 명칭은 fut.gg와 동일하게」).
+   ⛔ DB 키(한글)는 바꾸지 않는다 — `fc_face_stats.attr`·`player_*.attrs`의 **조인 키**라
+      바꾸면 900여 행과 구성식·역할 가중이 따라온다. ⇒ **화면에만 병기**한다.
+   ⚠️ fut.gg에는 한국어 로케일이 없다(영문만). 그래서 「차단력 ↔ Interceptions」처럼
+      우리 번역이 헷갈릴 때 **원문으로 확인**할 수 있게 하는 것이 이 표의 목적이다
+      (사용자 질문 「차단력은 인터셉트인가?」 — Interceptions가 맞고, PlayStyle Intercept와는 별개 축이다).
+   ⚠️ 표기는 fut.gg가 `totalUpgradesText`에 쓰는 **그 문자열 그대로**다(`Fk Accuracy` 대소문자 포함). */
+export const ATTR_EN = {
+  '가속':'Acceleration', '질주 속도':'Sprint Speed', '공격 위치 선정':'Positioning', '결정력':'Finishing',
+  '슈팅력':'Shot Power', '중거리슛':'Long Shots', '발리 슛':'Volleys', '페널티킥':'Penalties',
+  '시야':'Vision', '크로스':'Crossing', '프리킥 정확도':'Fk Accuracy', '짧은 패스':'Short Passing',
+  '긴 패스':'Long Passing', '커브':'Curve', '민첩성':'Agility', '균형 감각':'Balance', '반응력':'Reactions',
+  '볼컨트롤':'Ball Control', '드리블':'Dribbling', '침착':'Composure', '차단력':'Interceptions',
+  '헤딩 정확도':'Heading Accuracy', '수비 위치 선정':'Defensive Awareness', '스탠딩 태클':'Standing Tackle',
+  '슬라이딩 태클':'Sliding Tackle', '점프':'Jumping', '체력':'Stamina', '힘':'Strength', '공격성':'Aggression',
+  '다이빙':'GK Diving', '핸들링':'GK Handling', '킥':'GK Kicking', '포지셔닝':'GK Positioning', '반사신경':'GK Reflexes',
+};
+/* 속성 이름 한 칸 — 한글 아래에 fut.gg 원문을 작게 깐다. */
+export const attrName = k => `${esc(k)}${ATTR_EN[k] ? `<em class="fc-aen">${esc(ATTR_EN[k])}</em>` : ''}`;
+
 function attrBlock(p, ctx = {}) {
   const a0 = parse(p.attrs);
   /* ⭐⭐ 2026-09-22: GG Club이 **29속성을 EA 실측 그대로** 준다(사용자 질문에서 확인).
@@ -777,7 +797,7 @@ function attrBlock(p, ctx = {}) {
       const evo = a0 && a0[k] != null ? v - a0[k] : 0;
       const ch = chemOf(k);
       const fin = Math.min(99, v + ch);
-      return `<div class="fc-attr"><span>${esc(k)}</span><b>${fin}` +
+      return `<div class="fc-attr"><span>${attrName(k)}</span><b>${fin}` +
         (evo ? ` <small class="d-evo" title="진화 상승분">${evo > 0 ? '+' : ''}${evo}</small>` : '') +
         (ch ? ` <small class="d-chem" title="케미 스타일 ${esc(st?.name || '')} (개인 케미 ${cp0}/3)">+${ch}</small>` : '') +
         `</b></div>`; };
@@ -820,7 +840,7 @@ function attrBlock(p, ctx = {}) {
       : `<span class="chip" style="border-color:var(--warn);color:var(--warn)">⚠️ ${diff.length}개 불일치(${diff.map(k => `${k} 계산 ${calc[k]} ↔ 실측 ${cur[k]}`).join(' · ')})</span>`;
   }
   const one2 = k => { const v = show[k], d = rec && a0[k] != null ? v - a0[k] : 0;
-    return `<div class="fc-attr"><span>${esc(k)}</span><b>${v}${d ? ` <small class="d-evo">${d > 0 ? '+' : ''}${d}</small>` : ''}</b></div>`; };
+    return `<div class="fc-attr"><span>${attrName(k)}</span><b>${v}${d ? ` <small class="d-evo">${d > 0 ? '+' : ''}${d}</small>` : ''}</b></div>`; };
   const six1 = ctx.face_stats ? faceFrom(show, ctx.face_stats) : (parse(p.current_six) || {});
   const items = groupByFace(Object.keys(show), ctx.face_stats, String(p.positions || '').includes('GK'))
     .map(gp => `<div class="fc-agrp"><div class="fc-agrp-h">${esc(gp.abbr)}${

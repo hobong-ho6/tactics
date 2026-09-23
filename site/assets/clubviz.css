@@ -195,6 +195,9 @@
 .fc-attrs{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:3px 14px}
 .fc-attr{display:flex;justify-content:space-between;font-size:13px;padding:3px 0;border-bottom:1px dotted var(--line)}
 .fc-attr span{color:var(--dim)}
+/* fut.gg 원문 병기(2026-09-23) — 우리 한글 번역이 헷갈릴 때 원문으로 확인한다.
+   한 줄을 늘리지 않으려고 한글 **뒤에** 작게 붙인다. */
+.fc-attr .fc-aen{display:inline;font-style:normal;font-size:10.5px;opacity:.55;margin-left:5px;letter-spacing:.01em}
 /* 상승분 색 구분 — 진화(초록) ↔ 케미(주황). 값이 둘 다 있으면 나란히 붙는다. */
 .d-evo{color:var(--ok);font-weight:700}
 .d-chem{color:var(--acc);font-weight:700}
