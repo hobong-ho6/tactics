@@ -250,3 +250,120 @@ PPDA 11.13도 그 원형보다 느슨하다. 그리고 **하프별로 뒤집힌�
 ### D+2 데이터 반영
 - 신규 관측 **obs#932~935**(4건, verdict/reference 축). `player_matches`·`match_events` 등 실측 테이블 변경 없음(D+0에서 이미 전량 닫힘).
 - `match_reports` 상태: **complete 유지**(D+2로 추가 종결 사유 발생 없음 — 미결은 유튜브 전사·본머스 전담 매체뿐이며 재시도 가치는 낮게 판단).
+
+## D+3 추적 (2026-09-23)
+
+3일 추적의 마지막 회차다. **이번 회차의 실질 소득은 감독 회견 전문 확보**이고, 그 부산물로 D+2가
+「도구가 없다」고 적었던 유튜브 전사 축이 실제로는 열려 있었다는 것이 드러났다.
+
+### ⭐⭐ 맥 알리스터 Δ0.005 tie-break — 종결(처방 변경까지)
+- D+2는 Coaches' Voice로 **「dm_dlp/Roaming 우세」**까지만 적고 처방은 그대로 뒀다. D+3에 **독립 2번째 서사**를
+  확보해 docs/30 7단계 ⑵(Δ≤.05 구간은 전술 분석이 판정 → **처방 변경**)를 끝까지 적용했다.
+- 신규 근거: **World Football Index 2026-09-20, Louis Smith** — 「he is someone who can control the tempo of a match,
+  get on the ball in tight areas, and help Liverpool move the ball from midfield into attack」
+  (「경기 템포를 통제하고, 좁은 공간에서 볼을 잡고, 리버풀이 볼을 미드필드에서 공격으로 옮기도록 돕는 선수」)
+  · 「His work rate and pressing allow him to put opposition midfielders under pressure, while he is also good at
+  winning the ball back.」(「활동량과 압박으로 상대 미드필더를 압박하고, 볼을 되찾는 것도 잘한다.」)
+  ⛔ 체제 검증 통과 — 게시일 2026-09-20, 제목·본문 모두 **이라올라 체제 리버풀** 기준이다(본머스 시절 자료 아님).
+- 실측 **반박권 불행사**: xA 0.05 · 리커버리 7(팀 최다) · 듀얼 6/11 · tool_x 47.9 · 전진 44.9 —
+  박스 침투(boxcrasher)의 흔적이 없고 커버·전진형에 부합한다. 서사와 모순되지 않으므로 거부하지 않는다.
+- ⇒ **변경**: `match_player_prescriptions`(report 49 · player 50) `dm_boxcrasher/Balanced 0.698`
+  → **`dm_dlp/Roaming 0.693`**. obs#954.
+- ⛔ **적용 범위는 이 경기 처방뿐**이다 — 시즌 `prescriptions`·`slot_canon_roles`는 표본 1경기라 건드리지 않았다
+  (obs#778의 「2경기 마감 조건」 미충족). 방향은 docs/70 issue #29(LIV 6번 축)와 정합한다.
+- **재판정 조건**: 맥 알리스터가 같은 `pos_class`로 **2경기를 더 채운 뒤 재산출**했을 때
+  `dm_boxcrasher`가 **Δ>0.05**로 앞서면 뒤집는다.
+- ⚠️ 회견 전문 전체에 **맥 알리스터 언급 0건** — 감독 발언은 이 판정에 기여하지 않았다.
+
+### ⭐ 이라올라 회견 전문 — 확보(D+1·D+2 미결 종결)
+- 문제는 페이월이 아니라 **수집 경로**였다. 저장소의 `scripts/yt_transcript.py`로 **리버풀 공식 채널 회견 영상**을
+  전사했다 — 경기 후 `BcaSff9xn9w`(05:40) · 사전 `JAK1M-_PTyw`(10:30경). obs#951.
+- D+2가 기사 요약으로 채택한 문장이 **1차 원문에서 그대로 확인**됐다:
+  「I think I was disappointed with the first 20 25 minutes. I think we didn't start the game with the intensity
+  that the game requires.」(「처음 20~25분이 불만스러웠다. 경기가 요구하는 강도로 시작하지 못했다고 생각한다.」)
+  ⇒ obs#933을 MEDIUM(요약 경유) → **1차 원문**으로 승격. obs#917의 「국면 한정 주장이라 기각하지 않음」 판정은 유지된다.
+- ⭐ **전문에서만 나온 신규 2건**(기사 요약에는 없었다):
+  1. **이삭의 역할 정의** — 「the striker's job is like this, no? ... at the end he has to help us to to be closer to
+     the box to play in a position half to have meaningful possession and then if the team is playing there he will
+     receive the rewards」(「스트라이커의 일이 이런 것 아닌가. … 결국 그는 우리가 박스 가까이 가도록, 더 높은 위치에서
+     의미 있는 점유를 하도록 도와야 하고, 팀이 거기서 경기하면 득점이라는 보상을 받는다.」)
+     ⇒ 이 경기 `st_false9/**Build-Up**` 처방(Δ0.032 실측 무결정)의 **1위를 서사가 지지**한다. 값은 바꾸지 않았으므로
+     `video_impl_claims` verdict=**HELD**. obs#952.
+     ⚠️ auto-caption — 「in a position **half**」는 「**higher**」의 오인식으로 읽었고, **그 구절에 의존하지 않는 부분**
+     (「closer to the box」·「meaningful possession」)만 근거로 썼다.
+  2. **리드 이후 라인 하강에 붙은 감독 진술** — 「the more time especially the defenders now play together I think it
+     becomes now more solid as a unit the defensive line」(「특히 수비수들이 함께 뛴 시간이 쌓일수록 수비 라인이 유닛으로
+     더 단단해진다.」) / 「in moments now that you need to defend our side or they are putting you pressure I think we
+     are we are looking solid」(「이제 우리 진영을 지켜야 하거나 상대가 압박을 거는 국면에서 우리는 단단해 보인다.」)
+     ⇒ obs#915(「고압박」은 리드 이전 국면의 조건부 행동)에 **감독 1차 진술**이 붙었다. 하프별 PPDA 8.46→14.60 반전이
+     통제 상실이 아니라 **용인된 국면 행동**이라는 쪽이다. obs#953.
+     ⛔ 「평시 라인을 낮게 둔다」는 주장은 아니다 — `match_game_setups` **line_height 58은 유지**(verdict=HELD).
+     **재판정 조건**: 리드 전후를 분리한 PPDA가 **2경기 더** 같은 방향으로 반전되면 line_height를
+     국면 처방(리드 후 하강)으로 분리 기술한다.
+- 사전 회견(`JAK1M-_PTyw`)은 소보슬라이 득점의 「발리/하프발리」 명칭 논쟁·대표팀 소집·아라우호 평가·친정 복귀 소회뿐이고
+  **구현 주장 0건**이다 — `axis=none` 한 행으로 「주장 없음」을 「미작성」과 구분해 남겼다(docs/30 8단계).
+  키워드 검사(allister/midfield/pivot/six/szobo/graven/barcola/cross) 전량 0건.
+
+### 바스크·스페인어 최종 스윕 — 3회차 연속 0건, 구조적 사실로 종결
+- 이번 회차 검색어: 바스크어 「Naiz Berria Iraola Liverpool Bournemouth garaipena irabazi 2026」 ·
+  스페인어 「Iraola rueda de prensa Bournemouth Liverpool 20 septiembre 2026」 ·
+  「Relevo OR Marca OR "El Correo" Iraola Liverpool Bournemouth 0-1 análisis táctico」.
+- 반환물은 전부 ⑴ 영어권 매체(Sky·SI·ESPN·Yahoo·Opta Analyst) ⑵ 영어 기사의 스페인어 재수집(`es.soccerway`)
+  ⑶ 위키백과 ⑷ Coaches' Voice(영어)다. **바스크어·스페인어 1차 매치데이 기사 0건.**
+- ⚠️ **이번 회차에 실제로 걸린 함정**: 검색 엔진이 바스크어·스페인어로 *답변을 생성*한다. 그건 현지 원문이 아니라
+  **영어 소스의 번역**이다 — 불변규칙 12의 「동일 텍스트의 번역 복제는 교차검증이 아니다」가 그대로 적용된다.
+  그래서 그 답변 안의 바스크어 「이라올라의 말」은 **인용하지 않았다**(원문 출처가 없다).
+- ⇒ **판정(obs#955)**: 이라올라가 **리버풀 감독이 된 뒤** 그의 개별 경기는 스페인·바스크 매체의 정기 커버 대상이 아니다.
+  ⛔ 「이라올라 관련 스페인어 소스가 없다」로 일반화하지 않는다 — 이적·대표팀·감독론 축은 다르다(D+1 Naiz 09-15 정서 기사).
+  **재개 조건**: 리버풀이 스페인 팀과 만나는 경기(UCL·아틀레티코전 등)에서는 스페인어 축을 다시 1순위로 훑는다.
+
+### 유튜브 전술 분석 — 부분 성공 + D+2 오판 정정
+- ⚠️ **D+2 판정 정정**: D+2는 「이 세션엔 YouTube 전사 도구가 없었다」고 적었다. **오판이다** —
+  `scripts/yt_transcript.py`(yt-dlp 자동 자막)와 `scripts/yt_transcript_json3.py`(봇 차단 우회)가 이미 저장소에 있다.
+  (⛔ D+2 절은 수정하지 않는다 — 정정은 여기에 남긴다. obs#956.)
+- 실제 병목은 **레이트 리밋**이었다. 2편 성공 후 3편째부터 `HTTP Error 429: Too Many Requests`,
+  45초·180초 백오프 재시도 2회 모두 429.
+- **미수집 잔여 2편**(다음 회차 우선): **`-ERvbUIX3CQ`**(Buvey/Lawrence Bury, 「We Need To Talk About What Iraola Is
+  Building At Liverpool...」 — `yt-dlp --list-subs`로 **영어 자동 자막 존재를 확인**했다) · `Dbty9-CDmbQ`.
+- ⛔ 수집 경로 함정 2건 기록:
+  ⑴ 비디오 id가 `-`로 시작하면 `yt_transcript.py`의 `-o {video_id}`가 **yt-dlp 옵션으로 파싱**돼 실패한다.
+  ⑵ 전사 헤더 2번째 줄을 메모로만 쓰면 `index_transcripts.py`가 그것을 **채널명으로 파싱**해
+     `team_code`·`regime_id`·`kind`가 전부 NULL이 된다 — 큐레이션 형식
+     `> {채널} — {제목} ({게시일} 게시, {길이}, {메모})`로 적어야 한다(이번에 발생 → 헤더 교정 후 재색인으로 해소).
+
+### 3일 추적 종결 요약 — 닫은 것과 이월
+
+| 축 | 상태 | 근거 |
+|---|---|---|
+| 실측 전량(선수 15·팀·하프·이벤트·슛·그리드) | **종결**(D+0) | scope=full |
+| 이라올라 회견 전문 | **종결**(D+3) | 공식 채널 전사 1차 원문 obs#951 |
+| 맥 알리스터 Δ0.005 tie-break | **종결**(D+3) | 서사 2건 → `dm_dlp/Roaming` 처방 변경 obs#954 |
+| 이삭 Build-Up 포커스 | **서사 지지 확보**(D+3) | 감독 1차 진술 obs#952, HELD |
+| 57′ 선제골 시퀀스 | **종결**(D+0) | shotmap 실측 obs#916 |
+| 바스크·스페인어 축 | **종결**(D+3, 0건이 구조적 사실) | 3회차 누적 obs#955 |
+| 유튜브 전술 분석 2편 | **이월** | 429 레이트 리밋 obs#956 |
+| 바르콜라 좌측 고립·케르케즈 레인 중복 | **이월** | obs#918 유지 |
+| 크로스 1/13이 설계인가 결손인가 | **이월** | 미판정 |
+| 리드 후 PPDA 반전의 재현 | **이월** | obs#915 + 감독 진술 obs#953 |
+
+**이월분의 재판정 조건**(⛔ 조건 없는 유지는 방치다):
+- **바르콜라 좌측 고립 · 케르케즈 레인 중복** — 두 선수 **동시 선발 2경기**에서 팀 크로스 성공률 **15% 미만**이
+  반복되면 구조 결손으로 승격한다(obs#918의 조건 유지). 반대로 한 경기라도 케르케즈가 안쪽으로 접히고
+  바르콜라 `tool_x`가 10 이상 벌어지면 「이 경기 한정 배치 사고」로 닫는다.
+- **크로스 1/13(8%)이 설계인가 결손인가** — 단독 판별이 원리상 불가하다(실측에 의도 축이 없다).
+  마감 조건: ⑴ 이라올라 체제 **누적 5경기**의 크로스 시도/성공과 **박스 진입 경로 비중**을 함께 보고,
+  크로스 시도 자체가 낮으면 **설계**(크로스를 쓰지 않는 팀), 시도는 높은데 성공만 낮으면 **결손**으로 가른다.
+  ⑵ 또는 전술 분석·감독 발언이 크로스 축을 직접 언급하면 그것이 판정한다(docs/30 7단계 「국면별 설계」 축).
+- **리드 후 PPDA 반전의 재현** — **리드 전후를 분리한 PPDA**를 산출할 수 있게 된 뒤, **2경기 더** 같은 방향으로
+  반전되면 `line_height`를 국면 처방(리드 후 하강)으로 분리 기술한다. 1경기 더로는 올리지 않는다.
+- **0~20분 한정 지표**(obs#917 잔여) — 구간 PPDA·필드틸트를 산출할 수 있게 되면 이라올라의 「처음 20~25분」
+  진술을 그 구간 지표로 직접 검정한다. 그 전까지 「충돌로 기록하되 기각하지 않음」을 유지한다.
+- **유튜브 전술 분석 2편** — 레이트 리밋이 풀리는 **다음 정기 회차 첫 작업**으로 `-ERvbUIX3CQ`·`Dbty9-CDmbQ`를 받는다.
+
+### D+3 데이터 반영
+- 신규 전사 2편(`BcaSff9xn9w`·`JAK1M-_PTyw`) → `match_videos` 등재(report 49 귀속·`kind=감독회견`) +
+  요약·`key_points` 작성 + `video_impl_claims` **3행**(focus 1 · team_axis 1 · none 1).
+- 신규 관측 **obs#951~956**(6건).
+- `match_player_prescriptions`(report 49 · player 50) **1행 변경** — 역할·포커스·fit_sim·rationale·source·confidence.
+- 실측 테이블(`player_matches`·`match_events`·슛·그리드) **변경 없음**(D+0에서 전량 마감).
+- `match_reports` 상태: **complete 유지**. 3일 추적은 이 회차로 종료하고, 남은 4건은 정기 회차로 이월한다.
