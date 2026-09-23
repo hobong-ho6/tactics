@@ -711,7 +711,15 @@ export function faceOf(at, faceRows, isGk = false) {
   for (const r of faceRows || []) if (!!r.is_gk === !!isGk) (w[r.abbr] ??= {})[r.attr] = r.weight;
   const out = {};
   for (const k of Object.keys(w)) {
-    const v = Object.entries(w[k]).reduce((t, [a, wt]) => t + wt * (at[a] ?? 0), 0);
+    /* ⛔⛔ **결손 속성을 0으로 세지 않는다**(2026-09-23 실측 · obs#132).
+       GG Club의 current_attrs는 28속성만 주고 「프리킥 정확도」가 늘 빠진다. 0으로 세면
+       PAS가 2~4 낮게 나온다 — 조용히 틀린 값이라 화면에서는 알아챌 수 없었다(89명 전원).
+       ⇒ 정본 해법은 export가 기준 카드에서 메우는 것이고, 여기는 **그래도 남은 결손**의 안전망이다:
+         빠진 항목은 빼고 **남은 가중으로 정규화**한다. 근사지만 0보다 훨씬 가깝다. */
+    const parts = Object.entries(w[k]).filter(([a]) => at[a] != null);
+    const tot = parts.reduce((t, [, wt]) => t + wt, 0);
+    if (!tot) { out[k] = null; continue; }                 // 전부 결손이면 0이 아니라 「모름」이다
+    const v = parts.reduce((t, [a, wt]) => t + wt * at[a], 0) / tot;
     out[k] = Math.min(99, Math.floor(v + 0.501));
   }
   return out;

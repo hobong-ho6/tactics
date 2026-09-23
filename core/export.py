@@ -283,6 +283,21 @@ def export_all(db_path=None, window="2026-summer"):
          WHERE c.status='owned' AND c.player_id IS NOT NULL""")
     # ⭐ 해금 상태(migration 060) — **소진과 다른 축**이다. 시즌패스 레벨·프리미엄 구매 여부가 없으면
     #    `[SP 11]`·`[SP+ 14]` 진화를 「지금 걸 수 있다」로 잘못 보여준다(2026-09-23 실증).
+    # ⛔⛔ **결손 속성을 0으로 세지 않는다**(2026-09-23 실측 · obs#132 「결손과 0은 다르다」).
+    #    GG Club의 `current_attrs`는 **28속성**만 준다 — 「프리킥 정확도」가 **보유 99명 전원에서 빠진다.**
+    #    그런데 6대 스탯 구성식(`fc_face_stats`)은 PAS에서 그 속성을 0.05로 요구한다.
+    #    ⇒ 화면이 0으로 계산해 **PAS가 89명 전원 2~4 낮게** 나왔다(「적용 후 6대 스탯」도 같이 틀렸다).
+    #    ⇒ 기준 카드(`player_card_items.attrs`)에서 **빠진 속성만** 메운다. 6대 스탯 전항 일치율이
+    #      **0% → 91%**로 회복된다(남는 9%는 진화가 그 속성을 올린 카드·반올림 경계).
+    #    ⚠️ 덮어쓰지 않는다 — EA가 준 값이 있으면 그것이 이긴다. 메운 사실은 `attrs_filled`에 적는다.
+    for r in club_state:
+        cur = json.loads(r["attrs"] or "null") or None
+        base = json.loads(r["base_attrs"] or "null") or None
+        if cur and base:
+            miss = {k: v for k, v in base.items() if k not in cur}
+            if miss:
+                r["attrs"] = json.dumps({**miss, **cur}, ensure_ascii=False)
+                r["attrs_filled"] = sorted(miss)          # 어느 속성을 기준 카드에서 가져왔는지
     accounts = _rows(con, "SELECT id, name, platform, game_version, notes, created, "
                           "season_pass_level, has_premium_pass, unlocks_checked FROM fut_accounts ORDER BY id")
     # 목표형 해금(「Pep's Domination」 등)은 레벨로 계산되지 않는다 — 진화 단위 기록을 함께 내보낸다.
