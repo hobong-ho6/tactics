@@ -262,21 +262,17 @@ provenance가 산문에만 있으면 **여러 경기를 가로질러 집계할 �
   산문에는 **역할·판단**만 쓴다. 이 분리 덕에 T1이 자동화된다 — 종전엔 경기 하나만 늘어도 산문을 다시 써야 했다.
 - 화면은 `updated` 이후 치른 공식전 수를 세어 **「N경기 전 기준」 배지**를 띄운다(player.html). 주기가 무엇이든 읽는 쪽이 신선도를 즉시 안다.
 
-**T4 점검 쿼리**(갱신 대상 뽑기):
-```sql
-SELECT r.team_code, COALESCE(p.name_kr,p.name), pe.updated, pe.sample_n,
-       (SELECT COUNT(DISTINCT m.event_id) FROM player_matches m
-         WHERE m.player_id=p.id AND m.date > pe.updated AND m.minutes IS NOT NULL
-           AND m.competition NOT LIKE '%Friendly%') AS 경기후
-FROM squad_entries se JOIN regimes r ON r.id=se.regime_id AND r.end IS NULL
-JOIN players p ON p.id=se.player_id
-JOIN player_evaluations pe ON pe.player_id=p.id AND pe.regime_id=r.id
-GROUP BY r.team_code, p.id HAVING 경기후 >= 3 ORDER BY 경기후 DESC;
+**T4 점검**(갱신 대상 뽑기) — 2026-09-23 스크립트화:
+```bash
+python3 scripts/gaps.py eval
 ```
+⛔ 쿼리를 옮겨 적지 않는다. 조건이 하나만 빠져도 「갱신 대상 없음」이라는 **틀린 안심**을 준다.
 
 ## 5. 완료 절차 (매 실행)
-`python3 scripts/refresh_eval_samples.py --apply`(**T1 — 4-1절**) → **슬롯 정본·팀 설정·선발 처방을 바꿨으면** `python3 scripts/tactic_changes.py --reason "obs#… 사유"`(**G19가 막는다** — 리포트 「전술 갱신 히스토리」의 원천, 2026-09-18) → `python3 scripts/export.py` → `scripts/db_dump.sh` →
-`git add db/tactics.db db/dump/ site/data/ reports/match-watch/ && git commit -m "data(match-watch): <라운드 요약>" && git push`
+`python3 scripts/refresh_eval_samples.py --apply`(**T1 — 4-1절**) → **슬롯 정본·팀 설정·선발 처방을 바꿨으면** `python3 scripts/tactic_changes.py --reason "obs#… 사유"`(**G19가 막는다** — 리포트 「전술 갱신 히스토리」의 원천, 2026-09-18) → ```bash
+python3 scripts/ship.py -m "data(match-watch): <라운드 요약>" reports/match-watch/
+```
+(게이트 → export → dump → 명시 스테이징 → 커밋 → 푸시. 2026-09-23 스크립트화)
 ⭐ **`manager_profiles` 갱신 판정 필수**(2026-09-08 신설): 완료 리포트마다 영향받은 axis(formation·pressing·buildup·situational·
 rest_defense·set_pieces·role_demands·implementation)에 **덧붙임**(`content || '\n\n[날짜 …]'`, `updated` 갱신)하거나,
 갱신할 것이 없으면 종료 보고에 「profile 갱신 불필요 — 사유」를 적는다. 2026-09-08 점검에서 48행 전부 08-11~08-21 상태로

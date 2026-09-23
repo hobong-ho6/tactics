@@ -19,18 +19,10 @@ description: 한 선수의 모든 데이터 축을 빠짐없이 수집한다 —
 ## 1. 먼저 결손을 센다 (웹으로 나가기 전)
 
 ```bash
-sqlite3 db/tactics.db "SELECT id,name,name_kr,sofascore_id,fotmob_id,sofifa_id FROM players WHERE name LIKE '%<이름>%'"
+python3 scripts/gaps.py player <이름 또는 id>
 ```
-`player_id`를 확보한 뒤 아래를 돌려 **어느 축이 비었는지** 먼저 표로 만든다.
-
-```bash
-PID=<player_id>
-for t in player_game_stats player_matches fotmob_detail_stats fotmob_season_stats fotmob_traits \
-         player_duties player_tenures player_evaluations prescriptions squad_entries \
-         transfer_targets transfer_outgoing player_shot_profile fbref_percentiles match_player_reports; do
-  printf '%-28s %s\n' "$t" "$(sqlite3 db/tactics.db "SELECT COUNT(*) FROM $t WHERE player_id=$PID")"
-done
-```
+id 3종(sofascore·fotmob·sofifa) 보유 여부와 **17축 결손 표**를 함께 찍는다(2026-09-23 스크립트화 —
+종전엔 이 자리에 셸 for-루프가 박혀 있어 세션이 매번 옮겨 적었다).
 
 ⭐ **이 표가 이번 수집의 작업 목록이다.** 0인 축을 채우는 것이 과제다.
 
@@ -181,11 +173,8 @@ done
 - §1 결손 표의 0이 **채워졌거나, 사유가 적혔다.**
 - 새 사실은 `source`·`confidence`를 채워 기록했다. **결손은 NULL.**
 - 판정·충돌·정정은 `observations`에 남겼다.
-- `python3 scripts/gates.py` 통과 → `python3 scripts/export.py` → `scripts/db_dump.sh`
-- 명시 스테이징 커밋(⛔ `git add -A` 금지):
+- ```bash
+  python3 scripts/ship.py -m "data(<선수>): <수집 축 요약>" reports/
   ```
-  git add db/tactics.db db/dump/ site/data/ reports/
-  git commit -m "data(<선수>): <수집 축 요약>"
-  git push
-  ```
+  게이트 → export → dump → 명시 스테이징 → 커밋 → 푸시(⛔ `git add -A` 금지는 스크립트가 강제).
 - 종료 보고: **축별 수집/미수집 표** + 새 obs 번호 + 미수집 사유.

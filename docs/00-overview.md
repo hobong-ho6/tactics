@@ -87,6 +87,8 @@ philosophy · traits · role_demands · formation · situational (사용자 지�
 | 실측 수집 | `core.sofascore.js_collect()` → 브라우저 → `parse_collected()` | sofascore.com 오리진 필수 |
 | 익스포트 | `python3 scripts/export.py` | 게이트 통과 후 site/data 재생성 + 프리뷰 미러 |
 | 게이트 | `python3 scripts/gates.py` | **G1~G22** (+G8+) · G21=수집 회차 완결성 · G22=화면 코드 정적 검사 |
+| **고정 절차 한 줄** | `python3 scripts/ship.py -m "<메시지>" [경로…]` | 불변규칙 5 — 게이트→export→dump→**명시 스테이징**→커밋→푸시. ⛔ `git add -A` 금지·인덱스 오염 시 중단·커밋 금지 파일 차단 |
+| **결손 점검** | `python3 scripts/gaps.py {links\|squad\|eval\|player <이름>}` | 런북에 SQL 원문으로 박혀 있던 회차 확인 — 옮겨 적지 않는다 |
 | **화면 회귀 검사** | `python3 scripts/check_pages.py` | 전 페이지 렌더·콘솔 오류·HTTP 4xx를 **한 번의 호출**로. 단일 페이지는 `check_pages.py evolutions.html --tab paths --grep …` ⛔ 임시 Playwright 스크립트를 다시 짜지 말 것 |
 | G21·G22 회귀 | `python3 scripts/test_g21_g22_regression.py` | 결함 3종 합성 주입 + 오탐 1종(소폭 감소) |
 | WhoScored 파생 | `core.whoscored.ppda/def_x/phase_cells` | PPDA·라인 프록시·국면 그리드 — 브라우저 JS 재구현 금지(불변규칙 4) |

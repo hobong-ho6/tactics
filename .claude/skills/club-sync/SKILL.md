@@ -197,17 +197,15 @@ description: 내 얼티밋 구단 동기화 — fut.gg GG Club에서 현재 스�
 - `fut_club_players.player_id` NULL → `club.state`(현재 카드 상태 정본)에서 누락 → 진화 갈림길 판정 불가
 - `player_evolutions.player_id` NULL → **선수별 진화 패스 탭에 아예 안 나옴**(6건이 있는데도)
 
-⇒ **신규 선수를 올렸거나 신규 카드가 들어온 회차에는 이 쿼리를 돌린다**:
-```sql
--- 우리 DB 선수와 이름이 맞는데 링크가 비어 있는 행(셋 다 0이어야 정상)
-SELECT 'card_items', COUNT(*) FROM player_card_items i JOIN players p
-  ON (p.name=i.name_kr OR p.name_kr=i.name_kr) WHERE i.player_id IS NULL
-UNION ALL SELECT 'club_players', COUNT(*) FROM fut_club_players c JOIN players p
-  ON (p.name=c.name OR p.name_kr=c.name) WHERE c.status='owned' AND c.player_id IS NULL
-UNION ALL SELECT 'evolutions', COUNT(*) FROM player_evolutions pe
-  JOIN player_card_items i ON i.ea_item_id=pe.base_ea_id
-  WHERE pe.player_id IS NULL AND i.player_id IS NOT NULL;
+⇒ **매 회차 이 한 줄을 돌린다**(2026-09-23 스크립트화 — 쿼리를 옮겨 적지 않는다):
+```bash
+python3 scripts/gaps.py links     # 카드·보유·경로 세 곳의 링크 결손
+python3 scripts/gaps.py squad     # 활성 스쿼드가 두 수집 축의 **조회 범위**에 드는가
 ```
+⭐ `squad`는 「경로 0건」이 아니라 **「조회조차 안 되는가」**를 본다 — 경로 축은 FC27 **base 카드**가
+있는 선수만 부르고, 적용 가능 축은 **보유 카드 + players 링크**가 있어야 부른다. 둘 다 안 부르면
+그 선수는 진화 화면에서 통째로 사라진다. ⛔ 고OVR이라 해당 없는 것은 정상이라 `ℹ️`로 구분해 찍는다.
+
 0이 아니면 `base_ea_id`/이름으로 이어 준다. ⚠️ **이름만으로 잇지 말 것** — 소속팀·국적·포지션 3요소를
 대조한다(docs/30 「선수 동일성 확인 규약」 · `Alysson` 빌라·RM ↔ `Alisson Becker` 리버풀·GK).
 ⭐ **관리 4팀 밖 카드는 링크하지 않는다** — `player_id` NULL이 정상이다(케미 계산에만 쓴다).
@@ -230,9 +228,11 @@ UNION ALL SELECT 'evolutions', COUNT(*) FROM player_evolutions pe
 
 ## 4. 완료 절차
 
-`python3 scripts/gates.py` → `python3 scripts/export.py` → `scripts/db_dump.sh` →
-`git add db/tactics.db db/dump/ site/data/ && git commit -m "data(fut): GG Club 싱크 YYYY-MM-DD — 신규 N·갱신 M" && git push`
-⚠️ `git add -A` 금지 — 명시 스테이징만.
+```bash
+python3 scripts/ship.py -m "data(fut): GG Club 싱크 YYYY-MM-DD — 신규 N·갱신 M"
+```
+게이트 → export → dump → 명시 스테이징 → 커밋 → 푸시를 한 번에 한다(2026-09-23 스크립트화).
+⚠️ `git add -A` 금지는 스크립트가 강제한다 — 인덱스에 남의 변경이 있으면 **멈춘다**.
 
 ## 5. 종료 보고 (이 형식으로)
 

@@ -29,9 +29,11 @@
 3. **실측 > 서사.** 기사와 실측이 충돌하면 실측 채택, 충돌 사실을 `confidence`에 기록.
 4. **게이트 우선.** DB 쓰기 전 `python3 scripts/gates.py` 통과 필수 (export.py는 자동 강제).
    인코딩·집계·커널 로직은 `core/`만 쓴다 — 세션 내 재구현 금지.
-5. **DB 변경 후 고정 절차**: `python3 scripts/export.py`(site/data 재생성 + 프리뷰 미러)
-   → `scripts/db_dump.sh`(db/dump 재생성) → **.db + dump + site/data 함께 커밋**.
-   ⚠️ `git add -A` 금지 — 커밋 금지 파일이 있어 푸시가 차단된다. 명시 스테이징만.
+5. **DB 변경 후 고정 절차**: `python3 scripts/ship.py -m "<커밋 메시지>" [추가 경로…]` **한 줄**이다
+   (2026-09-23 스크립트화). 게이트 → export → dump → 명시 스테이징 → 커밋 → 푸시를 순서대로 하고,
+   ⑴ `git add -A`를 쓰지 않으며 ⑵ **남이 올려둔 인덱스가 있으면 멈춘다**(2026-09-21에 이걸 지나쳐
+   직전 커밋의 43줄이 지워졌다) ⑶ 커밋 금지 파일을 2중으로 막는다.
+   ⚠️ 손으로 할 때도 규칙은 같다 — `export.py` → `db_dump.sh` → **.db + dump + site/data 함께**, `git add -A` 금지.
 6. **조인 규칙**: 사람은 `player_id`, 팀은 `team_code`, 판단 테이블은 `regime_id`.
    라벨 문자열 조인 금지.
 7. **팀 축을 섞지 말 것.** 타 팀 실측을 근거로 쓸 때 `rationale`에 출처 팀·체제 명기.
