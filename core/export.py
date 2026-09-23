@@ -150,10 +150,26 @@ def export_all(db_path=None, window="2026-summer"):
                                   e.path_json, e.path_choices
                            FROM player_evolutions e
                            LEFT JOIN players p ON p.id=e.player_id
+                           JOIN (SELECT player_id, MAX(pulled) mp FROM player_evolutions
+                                  WHERE player_id IS NOT NULL GROUP BY player_id) m
+                             ON m.player_id=e.player_id AND m.mp=e.pulled
                             WHERE e.player_id IS NOT NULL
-                              AND e.pulled=(SELECT MAX(pulled) FROM player_evolutions)
                            ORDER BY e.player_id, (e.ovr_after - e.ovr_before) DESC, e.steps"""):
         evos.setdefault(str(r.pop("player_id")), []).append(r)
+    # ⛔⛔ **부분 수집이 온전한 직전 회차를 덮지 않게 한다** (2026-09-23 사용자 지적
+    #    「Midfield Glow Up은 보가르드가 할 수 있는데 적용 가능 0명이라고 나온다」).
+    #    ⑴ 무엇이 터졌나: 종전 조건은 `pulled = (SELECT MAX(pulled) …)` **전역 최신 하나**였다.
+    #       그날 수집이 ATM 11명에서 끊기자 **나머지 42명의 경로가 통째로 사라졌고**, 보가르드의
+    #       `Intro to Pathway → Midfield Glow Up`이 화면에서 없는 것이 됐다(fut.gg는 지금도 준다).
+    #    ⑵ ⇒ **선수별 최신 스냅샷**을 쓴다. 한 선수만 다시 받아도 다른 선수가 비지 않는다.
+    #       만료는 `is_expired`가, 소진은 내 구단 원장이 따로 잡으므로 이월이 위험하지 않다.
+    #    ⚠️ 다만 **이월분은 실측과 같은 얼굴로 두지 않는다**(카탈로그의 `carried_from`과 같은 규약) —
+    #       그 회차에 조회되지 않았다는 사실을 화면이 배지로 적는다.
+    _latest_pull = con.execute("SELECT MAX(pulled) FROM player_evolutions").fetchone()[0]
+    for rows in evos.values():
+        for r in rows:
+            if r["pulled"] != _latest_pull:
+                r["carried_from"] = r["pulled"]
     rolemap = _rows(con, """SELECT game_version, ea_id, kind, slug, name, position_name
                             FROM fc_role_familiarity_map ORDER BY game_version, kind, ea_id""")
     # 카탈로그(fc_evolutions, 최신 pulled) + 내 구단 원장(fut_*) — 진화 메뉴(evolutions.html)가 읽는다 (migration 036)
@@ -172,13 +188,18 @@ def export_all(db_path=None, window="2026-summer"):
         SELECT e.evo_id, e.player_id, e.ea_item_id, e.is_base,
                COALESCE(p.name_kr, p.name) name, e.pulled
           FROM fc_evolution_eligibility e JOIN players p ON p.id=e.player_id
-         WHERE e.pulled=(SELECT MAX(pulled) FROM fc_evolution_eligibility)
+          JOIN (SELECT evo_id, MAX(pulled) mp FROM fc_evolution_eligibility GROUP BY evo_id) m
+            ON m.evo_id=e.evo_id AND m.mp=e.pulled
          ORDER BY e.evo_id, p.id""")
+    # ⚠️ 여기도 **진화별 최신 회차**를 쓴다(위 경로 축과 같은 이유) — 부분 수집이 다른 진화의 목록을 비우면 안 된다.
+    #    ⛔ 단 회차가 **조회한 진화 안에서** 선수가 빠진 것은 사실이므로 그건 그대로 반영된다.
+    # ⛔ `has_path` 판정은 **위에서 실제로 내보낸 경로**와 같은 집합이어야 한다 —
+    #    여기만 전역 MAX(pulled)로 세면 경로가 있는 쌍이 「경로 미제공」으로 중복 표시된다.
     _covered = set()
-    for r in _rows(con, """SELECT player_id, evolution_ids FROM player_evolutions
-                            WHERE pulled=(SELECT MAX(pulled) FROM player_evolutions)"""):
-        for i in json.loads(r["evolution_ids"] or "[]"):
-            _covered.add((r["player_id"], i))
+    for pid, rows in evos.items():
+        for r in rows:
+            for i in json.loads(r["evolution_ids"] or "[]"):
+                _covered.add((int(pid), i))
     for r in elig_rows:
         r["has_path"] = (r["player_id"], r["evo_id"]) in _covered
     # ⭐ PlayStyle **숫자 id → 이름** (2026-09-22) — 진화 분기(upgradeOptions)가 PS를 **id로만** 주기 때문에
@@ -187,8 +208,7 @@ def export_all(db_path=None, window="2026-summer"):
     #       (262건 표본에서 29개 확정 · 런북에 적힌 알려진 값 6=Pinged Pass·19=First Touch 등과 일치).
     ps_pairs = {}
     for r in _rows(con, """SELECT playstyles_after, path_json FROM player_evolutions
-                            WHERE pulled=(SELECT MAX(pulled) FROM player_evolutions)
-                              AND playstyles_after IS NOT NULL"""):
+                            WHERE playstyles_after IS NOT NULL"""):
         try:
             ids = json.loads(r["playstyles_after"] or "[]")
             pj = json.loads(r["path_json"] or "[]")

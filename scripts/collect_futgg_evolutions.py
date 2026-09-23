@@ -27,6 +27,7 @@ import json
 import sqlite3
 import sys
 import time
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -158,6 +159,8 @@ def main():
     ap.add_argument("--pulled", default=dt.date.today().isoformat())
     ap.add_argument("--fill-catalog", action="store_true",
                     help="우리 선수가 하나도 해당되지 않는 진화도 카탈로그에 넣는다(목록 페이지 id → fut.gg 적용가능 선수 1명의 paths)")
+    ap.add_argument("--elig-all", action="store_true",
+                    help="적용 가능 선수를 **우리 DB FC27 카드 전체**로 확인한다(약 31분). 기본은 내 구단 보유 카드(약 4분).")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
@@ -348,40 +351,60 @@ def main():
         con.commit()
         print(f"진화 카탈로그: 응답에서 {len(catalog)}종 발견 · 신규 {n}행 (fc_evolutions)")
 
-    # ── ⭐⭐ 적용 가능 선수 (migration 058, 2026-09-22) ─────────────────────────
+    # ── ⭐⭐ 적용 가능 선수 (migration 058, 2026-09-22 · 2026-09-23 전면 교체) ─────────────
     # ⛔ **경로 축만으로는 진화가 닫히지 않는다.** `paths/v2`는 base 카드 기준 조합 경로만 주므로
     #    ⑴ 특별 카드에만 열리는 진화(음바예 `paths/v2/50406097/` → 404)와
     #    ⑵ paths 응답이 아예 만들지 않는 단독 진화(Relentless 2495)를 통째로 놓친다.
-    #    실측(2026-09-22): 이렇게 빠진 (선수, 진화) 쌍이 **33건**이었고, Relentless는 카탈로그에도 없어 손수집했다.
-    # ⇒ 진화별 「적용 가능 선수」 API를 직접 돌아 **우리 DB 선수만** 추려 사실로 남긴다.
-    #    경로(단계·비용·결과 카드)는 여기서 지어내지 않는다 — fut.gg가 주지 않는 사실이다.
+    #
+    # ⛔⛔ **종전 방식(목록 앞 8페이지 훑기)은 조용한 절단이었다 — 2026-09-23에 버렸다.**
+    #    진화 하나의 적용 가능 선수가 **3,600~42,000명**인데 240명만 보고 「우리 선수 0명」이라고
+    #    단정하고 있었다. 있는 것을 없다고 말하는 종류의 오류라 「수집 안 됨」보다 나쁘다.
+    # ⇒ **우리 쪽에서 묻는다**: `&name=<성>`으로 그 진화의 풀을 **직접 검색**해 우리 카드 id와 대조한다.
+    #    ⚠️ 판정은 **이름이 아니라 `eaId` 일치**로 한다 — 동명이인이 섞여 온다.
+    #
+    # ⚠️ **범위를 좁혀 둔다: 기본은 내 구단 보유 카드**(2026-09-23 실측 27명 × 16종 = 약 3.7분).
+    #    우리 DB의 FC27 카드 전체(224명)로 넓히면 **약 31분**이라 매 회차 돌리기엔 무겁다 —
+    #    필요하면 `--elig-all`. 미보유 선수는 base 카드라 **경로 축이 이미 덮는다.**
+    #    ⛔ 범위를 화면이 알 수 있게 `source`에 적는다 — 「확인 안 함」을 「해당 없음」으로 읽으면 안 된다.
     for g in a.games:
         gv = f"FC{g}"
-        ours = {r["ea_item_id"]: r for r in con.execute(
-            "SELECT c.ea_item_id, c.player_id, c.is_base FROM player_card_items c "
-            "WHERE c.game_version=? AND c.player_id IS NOT NULL", (gv,))}
+        if a.elig_all:
+            cards = list(con.execute(
+                "SELECT c.ea_item_id, c.player_id, c.is_base, COALESCE(p.name_kr, p.name) kr, p.name en "
+                "FROM player_card_items c JOIN players p ON p.id=c.player_id WHERE c.game_version=?", (gv,)))
+            scope = "우리 DB FC27 카드 전체"
+        else:
+            cards = list(con.execute(
+                "SELECT c.ea_item_id, c.player_id, c.is_base, COALESCE(p.name_kr, p.name) kr, p.name en "
+                "FROM fut_club_players f JOIN player_card_items c ON c.ea_item_id=f.ea_item_id "
+                "JOIN players p ON p.id=c.player_id "
+                "WHERE f.status='owned' AND c.game_version=? AND c.player_id IS NOT NULL", (gv,)))
+            scope = "내 구단 보유 카드"
+        by_ea = {r["ea_item_id"]: r for r in cards}
+        # 성(마지막 토큰)으로 묶어 요청을 아낀다 — 같은 성이면 한 번만 묻는다.
+        surnames = {}
+        for r in cards:
+            surnames.setdefault((r["en"] or r["kr"] or "").split()[-1], []).append(r)
         evo_ids = [r[0] for r in con.execute(
             "SELECT DISTINCT evo_id FROM fc_evolutions WHERE game_version=? AND is_expired=0 "
             "AND pulled=(SELECT MAX(pulled) FROM fc_evolutions WHERE game_version=?)", (gv, gv))]
-        elig, seen_ids = [], 0
+        elig, misses = [], 0
         for eid in evo_ids:
-            page = 1
-            while page <= 8:                     # fut.gg는 30행/페이지 — 8페이지면 240명으로 충분하다
+            for sur in surnames:
+                if not sur:
+                    continue
                 el = get(f"{API}/evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}"
                          f"&hide_combinations=true&hide_reward_evolutions=false"
-                         f"&show_non_upgraded_players=false&page={page}")
-                rows = (el or {}).get("data") or []
-                if not rows:
-                    break
-                for it in rows:
-                    o = ours.get(it.get("eaId"))
+                         f"&show_non_upgraded_players=false&name={urllib.parse.quote(sur)}")
+                if el is None:
+                    misses += 1
+                    continue
+                for it in (el.get("data") or []):
+                    o = by_ea.get(it.get("eaId"))
                     if o:
                         elig.append((gv, eid, o["player_id"], it["eaId"], o["is_base"], a.pulled,
-                                     f"fut.gg {API}/evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}"))
-                if len(rows) < 30:
-                    break
-                page += 1
-            seen_ids += 1
+                                     f"fut.gg /evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}&name={sur} "
+                                     f"({a.pulled} 수집 · 범위: {scope})"))
         if elig and not a.dry_run:
             cur.executemany(
                 "INSERT INTO fc_evolution_eligibility(game_version,evo_id,player_id,ea_item_id,is_base,pulled,source) "
@@ -393,9 +416,11 @@ def main():
                 "SELECT player_id, evolution_ids FROM player_evolutions WHERE game_version=? AND pulled=?", (gv, a.pulled)):
             for i in json.loads(ids_json or "[]"):
                 covered.add((pid, i))
-        gap = {(p, e) for (_, e, p, *_rest) in elig} - covered
-        print(f"적용 가능 선수: 진화 {seen_ids}종 조회 · (선수,진화) {len(set((p, e) for (_, e, p, *_r) in elig))}쌍 "
-              f"· 그중 **경로 축이 못 덮은 {len(gap)}쌍**(특별 카드 전용·단독 진화)")
+        pairs = {(p, e) for (_, e, p, *_r) in elig}
+        gap = pairs - covered
+        print(f"적용 가능 선수[{scope}]: 진화 {len(evo_ids)}종 × 성 {len(surnames)}개 조회 "
+              f"· (선수,진화) {len(pairs)}쌍 · 그중 **경로 축이 못 덮은 {len(gap)}쌍**(특별 카드 전용·단독 진화)"
+              + (f" · ⚠️ 조회 실패 {misses}건" if misses else ""))
 
     print("\n다음: python3 scripts/gates.py && python3 scripts/export.py && scripts/db_dump.sh")
 

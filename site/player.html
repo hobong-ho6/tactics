@@ -798,12 +798,19 @@ function renderEvo(sel){
      「구단 싱크로 누락됐던 진화 — 각 메뉴의 제안에 모두 반영」).
      fut.gg `paths/v2`는 base 카드 기준 조합 경로만 줘서 특별 카드 전용·단독 진화를 통째로 빠뜨린다.
      ⛔ 단계·비용·결과 카드를 지어내지 않는다 — 「걸 수 있다」는 사실만 적는다(결손과 0은 다르다). */
-  const eligRows = (EVO.eligible || []).filter(r => r.player_id === sel.pid && !r.has_path
+  /* ⛔ **「경로가 있다」가 아니라 「밟을 수 있는 경로가 있다」로 거른다**(2026-09-23 — 진화 메뉴와 같은 규칙).
+     export의 `has_path`는 경로 행의 존재만 본다. 소진은 계정 상태라 export가 모르므로,
+     경로가 소진으로 막혔지만 단독으로는 걸 수 있는 진화가 양쪽에서 다 빠졌다(보가르드 Midfield Glow Up). */
+  const openPathIds = new Set((rows || []).filter(r => !r.is_expired
+      && RULES.open(RULES.idsOf(r), sel.pid) && !RULES.premium(RULES.idsOf(r)))
+    .flatMap(r => RULES.idsOf(r)));
+  const eligRows = (EVO.eligible || []).filter(r => r.player_id === sel.pid && !openPathIds.has(r.evo_id)
       && !RULES.consumed[r.evo_id]?.exhausted && !RULES.premIds.has(r.evo_id));
   const CATN = {}; for (const c of (EVO.catalog || [])) CATN[c.evo_id] = c.name;
   const eligHTML = eligRows.length ? `<div class="pcard" style="margin-bottom:8px;border-style:dashed">
-      <b>경로 없이 적용 가능한 진화</b> <small class="dim">${eligRows.length}건 — fut.gg가 이 조합의 경로(단계·비용·결과 카드)를
-      계산해 주지 않는다(특별 카드 전용이거나 단독으로만 적용되는 진화). 걸 수 있다는 사실만 확인됐다.</small>
+      <b>경로 없이 적용 가능한 진화</b> <small class="dim">${eligRows.length}건 — 지금 밟을 수 있는 경로는 없지만 진화 자체는 걸 수 있다:
+      특별 카드 전용이거나, 단독으로만 적용되거나, 유일한 경로의 선행 진화가 <b>다른 선수에게 소진</b>된 경우다.
+      단계·비용·결과 카드는 fut.gg가 주지 않아 적지 않는다.</small>
       <div style="margin-top:4px">${eligRows.map(r => `<span class="chip">${esc(CATN[r.evo_id] || r.evo_id)}${
         r.is_base ? '' : ' <small class="dim">특별 카드</small>'}</span>`).join(' ')}</div></div>` : '';
   // 처방(가장 최신 시즌의 게임 처방)을 먼저 잡는다 — 이것이 순위의 기준이다.
