@@ -1,0 +1,11 @@
+-- 059 이월 표시 (2026-09-23 사용자 지시 「배지 달아줘」)
+--
+-- 왜 필요한가: `export.py`는 `fc_evolutions`의 **최신 pulled 스냅샷만** 내보낸다. 그래서 그 회차에
+--   객체를 못 받은 진화는 과거 행이 남아 있어도 화면에서 통째로 사라졌다
+--   (2026-09-23 실증: Pinged Pass 2501 · Relentless [SP 11] 2495 — 둘 다 마감이 아니었다).
+--   ⇒ collect_futgg_evolutions.py가 「fut.gg 목록에는 있는데 API가 객체를 안 주는」 종을 이월하게 고쳤다.
+--
+-- ⛔ 이월한 행은 **그 날짜의 실측이 아니다** — 목록 생존만 확인했을 뿐 내용은 과거 관측값이다.
+--    산문(source·confidence)에만 적으면 화면이 신선도를 구분할 수 없어 실측과 똑같이 보인다(불변규칙 3).
+--    ⇒ **언제 관측한 값인지를 컬럼으로 남긴다.** NULL = 그 회차에 직접 받은 값.
+ALTER TABLE fc_evolutions ADD COLUMN carried_from TEXT;

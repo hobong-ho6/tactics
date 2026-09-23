@@ -126,6 +126,8 @@ CATALOG_COLS = [
     "training_time", "created_at", "end_time", "end_submission_time", "requirements_text",
     "total_upgrades_text", "levels", "allowed_prior_ids", "number_of_players", "is_expired",
     "source", "confidence", "pulled"]
+# ⭐ 이월 행은 `carried_from`에 **언제 관측한 값인지**를 남긴다(migration 059) —
+#    산문에만 적으면 화면이 실측과 구분하지 못한다. NULL = 그 회차에 직접 받은 값.
 
 
 def catalog_row(e, gv, pulled):
@@ -321,16 +323,17 @@ def main():
             carried = []
             for eid in [i for i in ids if (gv, i) not in catalog]:
                 prev = cur.execute(
-                    f"SELECT {','.join(CATALOG_COLS)} FROM fc_evolutions "
+                    f"SELECT {','.join(CATALOG_COLS)},carried_from FROM fc_evolutions "
                     "WHERE game_version=? AND evo_id=? ORDER BY pulled DESC LIMIT 1", (gv, eid)).fetchone()
                 if not prev:
                     continue                       # 코스메틱 제외분 등 — 애초에 적재한 적 없는 종
                 row = dict(zip(CATALOG_COLS, prev))
                 row["pulled"] = a.pulled
+                row["carried_from"] = prev["carried_from"] or prev["pulled"]   # 최초 관측일을 물고 간다
                 row["source"] = (f"{row['source']} · {a.pulled} 이월 — fut.gg 목록에는 있으나 "
                                  "paths·적용가능선수 API가 객체를 주지 않는 단독/특별카드 전용 진화")
                 row["confidence"] = (f"MEDIUM — 목록 생존만 {a.pulled}에 확인했다. 내용은 "
-                                     f"{prev['pulled']} 관측값 그대로이고 그 뒤 변경 여부는 확인할 수 없다.")
+                                     f"{row['carried_from']} 관측값 그대로이고 그 뒤 변경 여부는 확인할 수 없다.")
                 catalog[(gv, eid)] = row
                 carried.append(f"{eid} {row['name']}")
             if carried:

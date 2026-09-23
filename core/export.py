@@ -160,7 +160,8 @@ def export_all(db_path=None, window="2026-summer"):
     catalog = _rows(con, """SELECT game_version, evo_id, name, slug, url, description, category, unlock_text,
                                    coins_cost, points_cost, token_cost, repeatability, is_reward, is_gk, is_timed,
                                    training_time, created_at, end_time, end_submission_time, requirements_text,
-                                   total_upgrades_text, levels, allowed_prior_ids, number_of_players, is_expired, pulled
+                                   total_upgrades_text, levels, allowed_prior_ids, number_of_players, is_expired, pulled,
+                                   carried_from
                             FROM fc_evolutions WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions)
                             ORDER BY is_expired, end_time, evo_id""")
     # ⭐⭐ **적용 가능 선수**(migration 058) — 경로 축(`player_evolutions`)이 못 덮는 진화를 여는 축이다.
