@@ -259,3 +259,145 @@ PPDA 10.20은 고압박 구간이지만 **하프별로 완전히 갈린다**(1H 
 - 이강인 슬롯·카르도소 듀얼 재검증은 다음 ATM 경기(있다면) 실측과 함께 판단한다 — 이 경기 단독 후속 자료로는
   결정 불가.
 
+
+## D+3 추적 (2026-09-23)
+
+> 3일 추적의 **마지막 회차**(match-watch SKILL.md §2-1a). 이번 회차의 성과는 대부분 **한 가지 방법 교정**에서 나왔다 —
+> D+2가 「확보 불가」로 닫았던 유튜브 전사를 저장소 스크립트로 받으니 **7편 전부 성공(실패 0)**이었고,
+> D+1~D+2가 2회 연속 실패했던 「감독의 전술 자체 진단」이 그 안에 있었다.
+
+### 1. 🔴 D+2의 「유튜브 전사 확보 불가」는 사실이 아니라 도구 선택 오류였다
+- D+2는 **WebFetch로 유튜브 페이지**를 긁어 푸터만 얻고 「자막 API/전용 도구가 필요하다」고 결론냈다.
+  그 전용 도구는 **이미 저장소에 있었다** — `scripts/yt_transcript.py`(docs/70-lessons 105행에 등재됨).
+- `python3 scripts/yt_transcript.py <id> es` 7회로 전부 확보. 게시일은 yt-dlp 메타로 **전부 20260920 검증**
+  (2025-09-27 더비 오염 없음 — obs#914의 함정을 이번에도 먼저 걸렀다).
+
+| 영상 | 채널 | 길이 | 큐 | 성격 |
+|---|---|---|---|---|
+| `o_K-WGntCx4` | Diario AS | 8분 | 214 | **시메오네 회견 전문** |
+| `DK2dlVF3dFo` | Diario AS | 54분 | 473 | **무리뉴+시메오네 회견 통합** |
+| `OKqnpw4YZyQ` | PEDRO EL INGENIERO | 16분 | 464 | **칠판 전술 분석** |
+| `ckLOOWC6t80` | LA COBRA Random | 26분 | 717 | 아르헨티나 관점 분석 |
+| `09a0RHhf2hg` | IÑAKI ANGULO TV | 70분 | 1870 | 레알 팬 관점 |
+| `OpljifSJc_I` | DefensaCentral | 60분 | 1571 | 레알 전문 좌담 |
+| `VO1_wJHgbI0` | Carrusel Deportivo (SER) | 117분 | 3203 | 라디오 좌담 |
+
+- `match_videos` 7행 `report_id=48` 귀속 · **요약·`key_points` 7편 + `video_impl_claims` 14행** 적재(주장 없는 3편도 `{"axis":"none"}` 1행).
+- `docs/70-lessons.md` 105행에 **재발 표시**를 덧붙였다(⛔ 기존 줄은 지우지 않았다). `observations` #949.
+
+### 2. ⭐⭐ 감독이 공격 표적을 말했다 — 「오른쪽이라는 걸 알고 있었다」
+D+0/D+1 회견 기사에는 없던 문장이 **회견 전사 원문에는 있었다**(기자가 「경기 얘기를 해달라」고 밀어붙인 뒤 구간):
+- 「buscando dónde le podíamos hacer daño, que sabíamos que era por la derecha y vino el penal y vino el gol」
+  (「어디서 상대에게 피해를 줄 수 있을지 찾았고, **그게 오른쪽이라는 걸 알고 있었다** — 그리고 페널티가 왔고 골이 왔다.」)
+- 실측과 정확히 맞는다: 이강인 tool_x **74.7** · 줄리아노 **82.9** · 요렌테 **77.6**의 우편중, PK 유발(줄리아노)과
+  2번째 골 어시스트(줄리아노) 모두 우측 기원. 좌측은 바에나가 안으로 좁혀(42.9) 그리말도 혼자 폭을 맡았다.
+- ⇒ **리포트 §4의 「전방이 우편중됐다」는 관찰이 「설계였다」로 승격된다.** `observations` #945.
+
+### 3. ✅ 「이강인 RST 슬롯 의심」(§7 재검증 ⑴) — 닫는다
+근거 **3중 수렴**:
+1. **감독 1차 발언** — 위 §2(우측이 표적).
+2. **전술 분석**(PEDRO EL INGENIERO) — 「Cucurella estaba rodeado de Marcos Llorente que caía a banda, de Marpubil,
+   de Kangli que también caía a banda desde la posición de delantero centro más Giuliano Simeone… hasta cuatro
+   jugadores por este sector del Atlético Madrid para un solo lateral」
+   (「쿠쿠레야는 측면으로 빠지는 요렌테, 푸빌, **최전방 위치에서 측면으로 빠지는 이강인**에 줄리아노까지…
+   이 구역에 아틀레티코 선수가 최대 4명, 상대는 풀백 한 명이었다.」)
+3. **실측** — tool_x 74.7(§5).
+- **판정**: 슬롯은 `RST`가 맞다. 측면으로 빠지는 것은 슬롯 오류가 아니라 **우측 과부하의 구성 요소**다.
+  ⇒ `slot_canon_roles`·`prescriptions` **변경 없음**(처방 자체는 Δ0.046 실측 무결정으로 유지).
+  재판정 조건: 퇴장 없는 라리가 2경기에서 tool_x>70이 반복되면 시즌 정본 처방의 `role_note`에 정식 등재한다.
+- 같은 분석은 **바에나가 안쪽에서 항상 비어 있던 선수**였다고 설명한다 — 「quien quedaba libre siempre por dentro
+  era Alex Baena y a veces Grimaldo que hacía justamente de falso lateral izquierdo」
+  (「안쪽에서 항상 비어 있던 건 알렉스 바에나, 때로는 **가짜 좌측 풀백** 역할을 하던 그리말도였다.」)
+  우측 과부하 ↔ 좌측 해방이 **하나의 메커니즘**이라는 서술로, 실측 바에나 tool_x 42.9와 정합한다.
+
+### 4. ✅ 「쿠티-요렌테 오해」 장면(D+2 과제) — 실측과 일대일로 특정됐다
+- 전사 원문: 「en el segundo tiempo, solo en el fallo ese entre el Cuti Marco que se chocan para Diamandés…
+  fue la única situación de peligro que atravesó el equipo más el gol」
+  (「후반에는 **쿠티와 마르코(요렌테)가 충돌해 디오망데에게 간 그 실수** 하나뿐이었다… 골 말고는 팀이 겪은
+  유일한 위험 장면이었다.」)
+- **실측 대조**: 후반 레알의 오픈플레이 슛은 **77′ 디오망데 1건**(xG 0.0706 · xGOT 0.0194 · 세이브)뿐이고,
+  나머지는 89′ 뤼디거 **세트피스** 골이다. 디오망데는 54′ 비니시우스 대신 투입돼 레알 좌측 = **ATM 우측**을 맡았고,
+  그 자리는 HT에 요렌테가 내려간 RB(2H ȳ 17.7)와 쿠티 로메로 RCB(ȳ 42.6)가 인접한 구역이다. **장면 특정 성립.**
+- ⚠️ 다만 「충돌」이라는 **원인**은 확인할 수 없다 — 우리 데이터에 터치·충돌 로그가 없다. `observations` #944.
+- ⇒ 부수 효과: 감독의 「후반을 통제했다」는 자평이 **후반에 한해서는 실측과 어긋나지 않는다**(오픈플레이 피격 1회).
+  D+2가 지적한 충돌은 **전반의 창출력**에 한정된다 — 이 구분은 D+2 절을 수정하지 않고 여기에 덧붙인다.
+
+### 5. ✅ 「코케 선발 논의」(§7 재검증 ⑶) — 근거 없음으로 닫는다
+두 갈래가 독립적으로 같은 결론에 도달했다.
+- **시메오네 본인**은 코케를 선발 논쟁이 아니라 **헌신의 예시**로 들었다:
+  「Lo vieron a Coke 30 y pico de años y no juega de titular el partido de su vida… entra en el segundo tiempo
+  y la rompe toda. Necesitamos de esos jugadores」
+  (「코케를 봐라, 서른 몇 살에 인생의 경기에 선발로 못 나서고… 후반에 들어와 다 부숴버린다. 우리는 그런 선수가 필요하다.」)
+- **전술 분석**은 선발 제외의 이유를 구조로 설명했다: 「Pedía situar a tres centrocampistas más guerreros, Johnny,
+  Marcos Llorente, Alex Baena… A Coke esto le cuesta un poquito más」
+  (「더 전사 같은 미드필더 3인 — 조니·요렌테·바에나 — 를 놓아야 했다… 코케는 그게 좀 더 힘들다.」)
+  후반은 반대로 좌우로 공을 돌릴 「지휘자」가 필요해 투입했다는 설명.
+- **판정**: 역할 분업이지 **서열 변화가 아니다**. 재판정 조건: 코케가 다음 라리가 2경기 중 1회라도 선발하면 정정.
+  `observations` #947.
+
+### 6. ⚠️ 새로 열린 항목 — 「백3로 시작했다」는 서술 (미판정)
+- PEDRO EL INGENIERO: 「optó por los tres centrales con Hanko, Cuti Romero y Mark Pubil, más dos carrileros…
+  Además lo hacía en un 532」(「한츠코·쿠티 로메로·**푸빌의 3센터백**에 두 윙백… 게다가 5-3-2로 했다」).
+  같은 분석은 **보유 시에는** 「Grimaldo y Mar Pubil actuaban como laterales, Couti Romero y Hanco como pareja
+  central」(「그리말도와 푸빌이 풀백처럼, 쿠티 로메로와 한츠코가 센터백 짝으로」)이라는 **국면 비대칭**을 붙인다.
+- LA COBRA Random도 독립적으로 「jugó Mar Pubil de centrales」(「푸빌이 센터백으로 뛰었다」)로 읽었다.
+- **실측 검증 시도 → 결정 불가**: 국면 그리드(`cells_def`)의 비보유 표본이 **푸빌 n=3**이다(ATM 점유 61%).
+  방향 단서는 오히려 백4 쪽이다 — 비보유 전진값(0=최후방·4=최전방)이 로메로 0.92·한츠코 0.69인데
+  **그리말도 1.89(n=9)·줄리아노 1.62(n=21)로 한 행 앞**이라 플랫 백5로 보기 어렵고, 푸빌 tool_x 83.7은
+  백3 RCB로는 지나치게 넓다.
+- ⚠️ 두 채널은 **같은 중계 화면을 본 해설**이라 완전한 독립 교차검증이 아니다(불변규칙 12 주의 지점).
+- **미판정으로 남긴다.** 재판정 조건: 다음 ATM 경기에서 우측 풀백의 비보유 셀 **n≥15**를 확보해 CB 라인과
+  같은 행에 서는지 본다. obs#821(백3 사용 자체는 확인됨)과 함께 읽을 것. `observations` #946.
+- ⛔ **리포트 §2의 「4-4-2」는 정정하지 않는다** — 실측이 그것을 반증하지 않았고, 보유 국면 서술로는 여전히 맞다.
+
+### 7. ⭐ 전반의 파울 19회를 「설계」로 읽는 서술 (Cadena SER)
+- 「había apostado a un fútbol… ciertamente más físico, metió, creo que fueron **10 faltas en la primera parte**
+  y empezaba a tomar el control」(「더 피지컬한 축구에 걸었고, **전반에 10개의 파울**을 범하며 통제를 쥐기 시작했다」)
+  — 실측 **1H 파울 10 대 3**과 숫자까지 일치한다.
+- 「la idea del Cholo Simeone, más que pendiente de Tchouaméni y Valverde, era de que jugasen banda Güler y Vinicius」
+  (「촐로의 아이디어는 추아메니·발베르데를 신경 쓰기보다 **귈러와 비니시우스를 측면에서 뛰게 만드는 것**이었다」)
+  — 실측 1H PPDA 12.46(중블록)·def_x 38.3(상대보다 낮음)과 방향이 맞는다.
+- ⇒ 리포트 §2는 파울을 「전반의 물러섬을 메운 흔적」으로 읽었는데, 여기에 **반대 방향의 해석**(물러섬의 결과가
+  아니라 설계)이 붙었다. **숫자는 두 해석 모두와 양립**하고 감독은 파울을 한 번도 언급하지 않았다 —
+  어느 쪽도 채택하지 않고 누적 판정 대상으로 둔다. 재판정 조건: 라리가 3경기 누적 1H 파울이 상대의 2배 이상으로
+  반복되면 `manager_profiles` defence 축에 「템포 차단 파울」을 정식 등재한다. `observations` #948.
+
+### 8. ✅ 레알(무리뉴) 회견 — 3회차 만에 **1차 영상 원문으로 종결**
+- D+1: 2025-09-27 더비(5-2) 자료 오염으로 실패 → D+2: 기사(La Opinión·Infobae) 경유 확보 →
+  **D+3: 회견 영상 전사(`DK2dlVF3dFo`, Diario AS)로 원문 대조 완료.** D+2가 옮긴 인용 3건이 모두 원문에 존재한다
+  (「Son dos tarjetas rojas claras」·「el pobre árbitro… sin experiencia ni dimensión para venir a un derbi」·
+  「me tengo que limitar a abrazar a mis jugadores」).
+- **전술 내용은 최종적으로 0건**이다. 회견 20분 중 자기 팀 언급은 두 줄뿐:
+  「me gustó mi equipo como equipo mismo en el primer tiempo」(「전반에는 내 팀이 팀으로서 마음에 들었다」) ·
+  「en segundo tiempo… muy difícil de tener balón, muy difícil de parar la posesión del balón de un equipo buen
+  equipo y con un jugador más」(「후반에는 공을 갖는 것도, 좋은 팀이고 한 명 더 많은 팀의 점유를 멈추는 것도 매우 어려웠다」).
+  후자는 실측 2H 점유 66%와 정합한다. 하위센 퇴장에 대해서는 「todavía no lo he visto」(「아직 보지 못했다」).
+- ⛔ 레알 팀 축 서술은 **불변규칙 7**에 따라 ATM `manager_profiles`에 반영하지 않는다.
+
+### 9. ⛔ 닫지 못한 것 — 카르도소 듀얼 0승 6패(§7 재검증 ⑵)
+- **3일간 0건.** 스페인어·아르헨티나 매체 어디서도 카르도소의 경합 문제를 다루지 않았다 —
+  LA COBRA Random이 「Cardoso creo que hizo un buen rendimiento」(「카르도소는 좋은 활약을 했다고 본다」)로
+  한 줄 언급했을 뿐이고, PEDRO EL INGENIERO는 오히려 그를 전반의 「전사형 3인」에 넣었다(회수 역할 평가).
+- 즉 **서사와 실측이 갈린다**: 현지 평가는 회수·복귀에 주목하고, 우리 실측은 경합 0/6을 본다.
+  같은 사람을 다른 축으로 본 것일 수 있다(듀얼 패배 ≠ 복귀 실패).
+- **다음 정기 회차로 이월.** 재판정 조건: 듀얼 승률 <30%가 2경기 반복되면 `cm_playmaker/Roaming` 처방을 재검토한다.
+  (1경기로는 바꾸지 않는다 — 리포트 §7의 「추가 관찰」 결론 유지.)
+
+### 10. 3일 추적 종결 요약
+| 항목 | 상태 | 근거 |
+|---|---|---|
+| 실측 전량(선수 16·팀·하프·이벤트 19·슛 26·국면 그리드) | ✅ D+0 종결 | SofaScore·FotMob·WhoScored |
+| 시메오네 전술 자체 진단 | ✅ **D+3 종결** | 회견 전사 원문(`o_K-WGntCx4`) |
+| 무리뉴 회견 | ✅ **D+3 종결**(전술 0건) | 회견 전사 원문(`DK2dlVF3dFo`) |
+| 이강인 RST 슬롯 의심 | ✅ **D+3 해소** — 우측 과부하 설계 | 감독+분석+실측 3중 수렴 |
+| 코케 선발 논의 | ✅ **D+3 종결** — 근거 없음 | 감독 발언 + 전술 분석 |
+| 쿠티-요렌테 「오해」 장면 | ✅ **D+3 특정** — 77′ 디오망데 | 전사 + `match_shots` |
+| 지연 게시 전술 분석 스윕 | ✅ **D+3 종결** — 7편 확보·요약·주장 14행 | `match_videos`·`video_impl_claims` |
+| 백3 vs 백4 시작 형태 | ⏭ **이월**(미판정) | 비보유 표본 n=3 — 재판정 조건 §6 |
+| 카르도소 듀얼 0/6 | ⏭ **이월**(서사 0건) | 재판정 조건 §9 |
+
+- `prescriptions`·`slot_canon_roles`·`team_tactic_setups`·`manager_profiles` **변경 없음**(3일 추적 전체를 통틀어).
+  이번 회차가 바꾼 것은 **해석의 지위**다 — 「관찰됐다」가 「설계였다」로 승격된 항목이 하나(우측 표적),
+  「의심」이 「해소」로 내려간 항목이 하나(이강인 슬롯)다.
+- 다음 ATM 경기에서 가져갈 관찰 목록: ⑴ 우측 3인 tool_x 합 ⑵ 우측 풀백 비보유 셀 n ⑶ 카르도소 듀얼 승률
+  ⑷ 코케 선발 여부 ⑸ 1H 파울 비율.

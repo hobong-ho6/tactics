@@ -2,7 +2,7 @@
  "all": [
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 217,
    "impl_claims": [
     {
@@ -49,22 +49,481 @@
     "진행자 인용 Opta 수치: 빌라 롱패스 약 15% vs 토트넘 5.9% · 파이널서드 패스 224-70. ⚠️ 방송 낭독분이라 1차 확인 불가 — 근거 등급 D(통설) 아닌 2차 인용으로 취급",
     "34분 전술 변경 관찰(좌측 풀백 보호를 고메스 쪽으로 이동)은 auto-caption 판독이 불완전해 인용하지 않는다"
    ],
-   "kind": "전술분석",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
-   "published": "2026-09-21",
+   "published": "2026-09-20",
    "published_approx": 0,
    "report_id": 47,
    "summary": "1874의 D+2(09-21) 「5 Things We Learned」. 이 경기를 ⓐ 의도된 롱볼 설계 ⓑ 만잠비의 PL 첫 선발 ⓒ 카마라-고메스 새 파트너십의 불편함 세 축으로 읽는다. 진행자가 Opta 수치를 인용해 빌라 롱패스 비율 약 15%(토트넘 5.9%)·패스 성공률 83.3%·파이널서드 총 패스 토트넘 224 대 빌라 70을 들고, 이것이 우연이 아니라 상대 풀백 배후 공간을 노린 설계라고 주장한다. 스즈키의 롱킥이 상대 풀백(그레이·로버트슨)을 뒤에 묶어두는 억제 효과를 냈다는 관찰이 이 채널 고유 기여다. 카마라 부진은 개인 문제가 아니라 「둘 다 볼을 지배하려 하지 않는」 새 조합 + 두 번째 ACL 복귀 맥락으로 설명한다.",
    "team_code": "AVL",
-   "title": "5 Things We Learned … Going Long & Manzambi Changes Everything",
+   "title": "5 Things We Learned From Villa’s WIN at Spurs | Going Long & Manzambi Changes Everything",
    "transcript_path": "reports/transcripts/D7zbh9-q8d8.en.md",
    "url": "https://www.youtube.com/watch?v=D7zbh9-q8d8",
    "video_id": "D7zbh9-q8d8"
   },
   {
-   "channel": "The Holy Trinity Show",
-   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "channel": "Aston Villa Football Club",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 200,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 선수 본인 경기 후 인터뷰(득점 장면 설명·적응 서사).",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⭐ 득점 장면 본인 설명이 우리 어시스트 기록(카마라)과 정합함을 확인했다. ⚠️ 72′ 교체·전반 치료 질문은 인터뷰에 0건. ※ axis=none 규약상 대상 칼럼은 비운다 — 만잠비 귀속 내용은 player_duties·observations로 옮겼다(G17)."
+    }
+   ],
+   "key_points": [
+    "득점 장면 본인 설명 — 원문 「I saw Boubacar he want to shoot and I have a good position and then I am alone. I just take the ball and I shoot」(부바카르가 슈팅하려는 걸 봤고 나는 좋은 위치에 있었다. 그리고 나는 혼자였다. 그냥 볼을 잡고 슈팅했다.) ⇒ 우리 실측의 어시스트 기록(카마라)과 정합한다.",
+    "원정 국면 인식 — 원문 「We know we play away and that's always difficult in the Premier League. And with defense, they can push」(우리는 원정임을 알고 있고 프리미어리그 원정은 항상 어렵다. 수비적으로 상대가 밀어붙일 수 있다.)",
+    "⚠️ 72′ 교체·전반 치료 언급 0건."
+   ],
+   "kind": null,
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "구단 공식 채널의 만잠비 경기 후 인터뷰. PL 첫 골 장면을 본인이 설명한다 — 카마라가 슈팅하려는 것을 보고 자신이 좋은 위치에 혼자 있어 볼을 잡고 슈팅했다는 것. 원정의 어려움과 「강하게 버티고 이기는 것」의 중요성을 말하고, 팀이 첫날부터 도와줬다는 적응 서사를 붙인다. ⚠️ **72′ 교체나 전반 치료에 대한 질문·답변은 인터뷰에 0건**이다 — 미결 ④를 닫아주지 못한다.",
+   "team_code": null,
+   "title": "\"We can go into the international break happy\" 😃 | Johan Manzambi on Spurs victory | POST MATCH",
+   "transcript_path": "reports/transcripts/yn-UvcWhAio.en.md",
+   "url": "https://www.youtube.com/watch?v=yn-UvcWhAio",
+   "video_id": "yn-UvcWhAio"
+  },
+  {
+   "channel": "Carrusel Deportivo",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 231,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "first_half_tempo_control",
+     "focus": null,
+     "player": null,
+     "quote": "「ciertamente más físico, metió, creo que fueron 10 faltas en la primera parte y empezaba a tomar el control」(「더 피지컬하게, 전반에 10개의 파울을 범하며 통제를 쥐기 시작했다」)",
+     "role_id": null,
+     "team_code": "ATM",
+     "value": "fouls_to_deny_opposition_transitions",
+     "verdict": "PENDING",
+     "verdict_note": "실측과 숫자까지 일치한다(1H 파울 10:3·경기 19:6). 다만 「의도된 전술」이라는 해석은 해설자 판단이고 감독 발언으로 뒷받침되지 않았다 — 시메오네는 파울을 언급하지 않았다. 재판정 조건: 라리가 3경기 누적 1H 파울이 상대의 2배 이상으로 반복되면 manager_profiles defence 축에 「템포 차단 파울」을 정식 등재한다."
+    },
+    {
+     "axis": "instruction",
+     "field": "opposition_winger_containment",
+     "focus": null,
+     "player": null,
+     "quote": "「la idea del Cholo Simeone, más que pendiente de Tchouaméni y Valverde, era de que jugasen banda Güler y Vinicius」(「촐로의 아이디어는 추아메니·발베르데를 신경 쓰기보다 귈러와 비니시우스를 측면에서 뛰게 만드는 것이었다」)",
+     "role_id": null,
+     "team_code": "ATM",
+     "value": "force_wide_not_press_pivot",
+     "verdict": "PENDING",
+     "verdict_note": "실측 PPDA 1H 12.46(중블록)·def_x 38.3(상대보다 낮음)과 방향이 맞는다 — 중앙을 막고 측면으로 밀었다는 서술. 단 상대 윙어의 터치 분포를 우리가 수집하지 않아 직접 확인은 불가. 재판정 조건: 상대 윙어 터치의 측면 비율을 수집하는 축을 docs/60 양식으로 사전등록한 뒤 판정한다."
+    }
+   ],
+   "key_points": [
+    "파울=템포 관리 서술: 「había apostado a un fútbol… ciertamente más físico, metió, creo que fueron 10 faltas en la primera parte y empezaba a tomar el control」(「더 피지컬한 축구에 걸었고, 전반에 10개의 파울을 범하며 통제를 쥐기 시작했다」) — 실측 1H 파울 10:3과 일치",
+    "중원 설계 주장: 「ese centro del campo merecía este dibujo… había que hacer ese partido porque en el medio el Madrid no te iba a pedir el balón」(「그 중원은 이 그림을 필요로 했다… 중앙에서 마드리드가 공을 달라고 하지 않을 것이므로 그런 경기를 해야 했다」)",
+    "상대 윙어 봉쇄 의도: 「la idea del Cholo Simeone, más que pendiente de Tchouaméni y Valverde, era de que jugasen banda Güler y Vinicius」(「촐로의 아이디어는 추아메니·발베르데를 신경 쓰기보다 귈러와 비니시우스를 측면에서 뛰게 만드는 것이었다」)",
+    "코케: 「Coke, que ha dado un recital nada más entrar」(「코케는 들어오자마자 리사이틀을 했다」) — 실측 45분 KP3·xA 0.23과 정합",
+    "나머지 분량은 심판·VAR 논쟁 — ATM 구조 서술로는 위 3건이 전부"
+   ],
+   "kind": null,
+   "lang": "es",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 48,
+   "summary": "Cadena SER 라디오 시사 프로그램(CARRUSEL CANALLA, 117분). 더비 당일 생방 좌담으로 판정 논쟁 비중이 크지만, ⭐ **전반의 파울이 전술이었다는 독립 서술**이 나온다 — 시메오네가 중원 구성을 이 경기에 맞춰 짰고(「ese centro del campo merecía este dibujo」) 전반 10개의 파울로 레알을 트랜지션 팀으로 만들지 못하게 막으면서 통제를 가져갔다는 해석이다. 우리 실측 1H 파울 10 대 3과 숫자까지 일치한다. 또 하나의 구조 주장: 시메오네의 의도는 추아메니·발베르데 축을 잡는 것이 아니라 **귈러와 비니시우스를 측면에서만 뛰게 만드는 것**이었다. 코케에 대해서는 「들어오자마자 리사이틀을 했다」는 평가가 반복된다.",
+   "team_code": null,
+   "title": "CARRUSEL CANALLA: EL ATLETI TRIUNFA CONTRA EL REAL MADRID EN UN POLÉMICO DERBI DE LIGA (20/09/26)",
+   "transcript_path": "reports/transcripts/VO1_wJHgbI0.es.md",
+   "url": "https://www.youtube.com/watch?v=VO1_wJHgbI0",
+   "video_id": "VO1_wJHgbI0"
+  },
+  {
+   "channel": "DefensaCentral | Real Madrid",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 230,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "ATM 구현 주장 0건 — 상대팀 관점 판정 논쟁 중심. 「미작성」이 아니라 「주장 없음」임을 남긴다."
+    }
+   ],
+   "key_points": [
+    "자기 팀 비판: 「hemos tenido una primera parte en la que el Madrid ha jugado 11 contra 11 y el Madrid no ha…」(「마드리드가 11대11로 뛴 전반이 있었고 마드리드는 아무것도 하지…」) — 실측 1H 레알 저창출과 방향 일치",
+    "쿠티 로메로·이강인 태클 판정 논쟁이 분량의 대부분",
+    "아틀레티코 구조(포메이션·압박·우측 과부하) 서술 0건",
+    "⛔ 레알 축 서술은 불변규칙 7에 따라 ATM manager_profiles에 반영하지 않는다"
+   ],
+   "kind": null,
+   "lang": "es",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 48,
+   "summary": "레알 마드리드 전문 채널의 좌담(DefensaCentral, 60분). 마찬가지로 판정 논쟁이 지배적이고, 아틀레티코의 구조에 대한 분석은 없다. 다만 「11대11 구간에도 마드리드가 아무것도 하지 못했다」는 자기 팀 비판이 반복돼 우리 실측(1H 레알 xG 0.16·유효슈팅 1)과 결과적으로 같은 방향을 가리킨다. ATM 축 구현 주장은 0건.",
+   "team_code": null,
+   "title": "⚽ ATLÉTICO MADRID 2-1 REAL MADRID 🔥 DERBI DESASTRE | TERTULIA con COTO MATAMOROS | DEFENSA CENTRAL",
+   "transcript_path": "reports/transcripts/OpljifSJc_I.es.md",
+   "url": "https://www.youtube.com/watch?v=OpljifSJc_I",
+   "video_id": "OpljifSJc_I"
+  },
+  {
+   "channel": "Diario AS",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 227,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "무리뉴 회견 구간에 ATM 구현 주장 0건(심판 논쟁이 회견 전체를 지배). 같은 영상 45:51~의 시메오네 구간 주장은 o_K-WGntCx4(동일 회견 단독 영상)에 기록했다 — 중복 적재하지 않는다."
+    }
+   ],
+   "key_points": [
+    "무리뉴 유일한 전술적 자인: 「en segundo tiempo… muy difícil de tener balón, muy difícil de parar la posesión del balón de un equipo buen equipo y con un jugador más」(「후반에는 공을 갖는 것도, 좋은 팀이고 한 명 더 많은 팀의 점유를 멈추는 것도 매우 어려웠다」) — 실측 2H 점유 66%와 정합",
+    "무리뉴 전반 자평: 「me gustó mi equipo como equipo mismo en el primer tiempo」(「전반에는 내 팀이 팀으로서 마음에 들었다」) — 실측 1H 레알 xG 0.16·슈팅 6과 상충하지 않음(둘 다 저창출)",
+    "D+2 인용 검증 완료: 「Son dos tarjetas rojas claras」·「el pobre árbitro… sin experiencia ni dimensión para venir a un derbi」·「me tengo que limitar a abrazar a mis jugadores」 3건 전부 영상 원문에 존재",
+    "하위센 퇴장 장면: 「todavía no lo he visto」(「아직 보지 못했다」)라고 답해 판정 자체에 대한 전술적 해석은 없음",
+    "⛔ 레알 팀 축 서술은 불변규칙 7에 따라 ATM manager_profiles에 반영하지 않는다"
+   ],
+   "kind": "감독회견",
+   "lang": "es",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 48,
+   "summary": "무리뉴·시메오네 더비 후 회견 통합 영상(Diario AS, 54분). 앞 20분이 무리뉴, 45:51부터가 시메오네(같은 회견의 원본 — 전술 인용은 o_K-WGntCx4 쪽에 정리했다). ⭐ 이 영상의 가치는 **D+1/D+2가 기사 경유로만 확보했던 무리뉴 회견을 1차 영상 원문으로 검증**했다는 데 있다 — D+2에 기사에서 옮긴 인용 3건이 모두 원문과 일치한다(문구 미세 차이만). 전술 내용은 여전히 사실상 0건이다: 회견 20분 중 심판 지명·VAR·과거 판정 사례가 전체를 지배하고, 자기 팀에 대한 언급은 「전반 내 팀이 마음에 들었다」와 「후반에는 공을 잡기도, 상대의 점유를 멈추기도 매우 어려웠다」 두 줄뿐이다. 포메이션·기용·구조 설명은 없다.",
+   "team_code": "ATM",
+   "title": "RUEDA de PRENSA de SIMEONE y MOURINHO tras el ATLÉTICO DE MADRID vs REAL MADRID",
+   "transcript_path": "reports/transcripts/DK2dlVF3dFo.es.md",
+   "url": "https://www.youtube.com/watch?v=DK2dlVF3dFo",
+   "video_id": "DK2dlVF3dFo"
+  },
+  {
+   "channel": "Diario AS",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 234,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "attack_target_side",
+     "focus": null,
+     "player": null,
+     "quote": "「buscando dónde le podíamos hacer daño, que sabíamos que era por la derecha」(「어디서 상대에게 피해를 줄 수 있을지 찾았고, 그게 오른쪽이라는 걸 알고 있었다」)",
+     "role_id": null,
+     "team_code": "ATM",
+     "value": "right_flank_by_design",
+     "verdict": "PENDING",
+     "verdict_note": "감독 1차 발언 + 실측 정합(이강인 tool_x 74.7·줄리아노 82.9·요렌테 77.6, PK·2골 모두 우측)이지만 단일 경기다. 재판정 조건: 퇴장 없는 라리가 2경기에서 우측 3인(이강인·줄리아노·우측 풀백) 평균 tool_x 합이 좌측 3인을 계속 상회하면 manager_profiles in_possession 축에 반영한다."
+    },
+    {
+     "axis": "instruction",
+     "field": "second_half_danger_conceded",
+     "focus": null,
+     "player": null,
+     "quote": "「en el segundo tiempo, solo en el fallo ese entre el Cuti Marco que se chocan para Diamandés… fue la única situación de peligro que atravesó el equipo más el gol」(「후반에는 쿠티와 마르코가 충돌해 디오망데에게 간 그 실수 하나뿐이었다… 골 말고는 팀이 겪은 유일한 위험 장면이었다」)",
+     "role_id": null,
+     "team_code": "ATM",
+     "value": "cuti_llorente_miscommunication_to_diomande",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 완료 — 후반 레알 오픈플레이 슛은 77′ 디오망데(xG 0.0706·xGOT 0.0194·세이브) 1건뿐이라 장면 특정은 성립한다. 다만 「쿠티-요렌테 충돌」이라는 원인은 좌표 이벤트로 확인 불가(터치·충돌 로그 없음) — 영상 확인이 필요해 PENDING."
+    },
+    {
+     "axis": "instruction",
+     "field": "koke_bench_rationale",
+     "focus": null,
+     "player": null,
+     "quote": "「Lo vieron a Coke 30 y pico de años y no juega de titular el partido de su vida… entra en el segundo tiempo y la rompe toda」(「코케를 봐라, 서른 몇 살에 인생의 경기에 선발로 못 나서고… 후반에 들어와 다 부숴버린다」)",
+     "role_id": null,
+     "team_code": "ATM",
+     "value": "impact_example_not_starting_shift",
+     "verdict": "PENDING",
+     "verdict_note": "리포트 §7 재검증 ⑶(코케 선발 논의)에 대한 1차 답 — 감독은 선발 전환을 시사하지 않았고 교체 임팩트를 팀 문화 사례로 썼다. 재판정 조건: 다음 라리가 2경기 중 1회라도 코케가 선발이면 이 판정을 정정한다."
+    }
+   ],
+   "key_points": [
+    "공격 표적 명시: 「sabíamos que era por la derecha」(「그게 오른쪽이라는 걸 알고 있었다」) — 우측 과부하가 설계였음을 감독 1차 발언으로 확인",
+    "후반 유일 위험 장면 특정: 「el fallo ese entre el Cuti Marco que se chocan para Diamandés… fue la única situación de peligro」(「쿠티와 마르코(요렌테)가 충돌한 그 실수가 디오망데에게 갔다… 그게 팀이 겪은 유일한 위험 장면이었다」) → 실측 77′ 디오망데 슛(xG 0.071)과 일치",
+    "11대11 자평: 「11 contra 11, el equipo controló el partido」(「11대11에서 팀이 경기를 통제했다」) — 실측 1H 유효슈팅 0·xG 0.18과는 '창출' 축에서 충돌(통제≠창출)",
+    "코케: 「30 y pico de años y no juega de titular… entra en el segundo tiempo y la rompe toda」(「서른 몇 살인데 선발로 못 뛰고… 후반에 들어와 다 부숴버린다」) — 선발 전환 논의가 아니라 헌신의 예시로 제시",
+    "조나단 데이비드 「tres partidos, tres goles」(「3경기 3골」) / 훌리안 알바레스 「le costó, lo vamos a recuperar」(「힘들어했다, 되찾아낼 것이다」) — 서열은 여전히 열려 있음"
+   ],
+   "kind": "감독회견",
+   "lang": "es",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 48,
+   "summary": "시메오네 더비 후 공식 회견 전문(Diario AS, 8분). 앞머리는 무리뉴의 심판 비판에 대한 응답(「존중의 선을 넘지 말아야 한다」)이지만, 기자가 「경기 얘기를 해달라」고 밀어붙인 뒤부터 D+0/D+1에 확보하지 못했던 전술 자체 진단이 나온다. ⭐ 핵심은 세 가지다. ⑴ 공격 표적을 「오른쪽」이라고 명시했다 — 「buscando dónde le podíamos hacer daño, que sabíamos que era por la derecha」(「어디서 상대에게 피해를 줄 수 있을지 찾았고, 그게 오른쪽이라는 걸 알고 있었다」). 이는 실측(이강인 tool_x 74.7·줄리아노 82.9·요렌테 77.6의 우편중, PK·2번째 골 모두 우측)과 정확히 일치한다. ⑵ 후반에 내준 유일한 위험 장면을 「쿠티와 마르코스가 충돌해 디오망데에게 간 실수」로 특정했다 — 실측 후반 레알 오픈플레이 슛은 77′ 디오망데(xG 0.071·세이브) 단 1건뿐이라 장면이 일대일로 특정된다. ⑶ 코케를 선발로 쓰지 않은 이유가 아니라 「선발이 아니어도 들어와 경기를 뒤집는 것」을 팀 문화의 예시로 들었다 — 선발 전환 시사는 없다.",
+   "team_code": "ATM",
+   "title": "SIMEONE rueda de prensa completa tras el ATLÉTICO DE MADRID 2 - REAL MADRID 1 | LALIGA",
+   "transcript_path": "reports/transcripts/o_K-WGntCx4.es.md",
+   "url": "https://www.youtube.com/watch?v=o_K-WGntCx4",
+   "video_id": "o_K-WGntCx4"
+  },
+  {
+   "channel": "Fußball Denker",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 211,
+   "impl_claims": [
+    {
+     "axis": "limit",
+     "field": "back_three_not_auto_stability",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「**Dreierkette bedeutet nicht automatisch defensive Sicherheit.**」(**백3가 자동으로 수비 안정을 뜻하지 않는다.**) · 「Die Dreierkette bekommt plötzlich **Probleme in Räumen, die eigentlich abgesichert sein sollten**」(백3가 **원래 보호돼야 할 공간에서** 문제를 겪는다.) — auto-caption, 🇩🇪",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": "space_behind_wingbacks",
+     "verdict": "HELD",
+     "verdict_note": "⛔ **재판정 조건**: 「보호돼야 할 공간」이 구체적으로 어디인지 영상이 좌표로 특정하지 않는다. ⇒ 우리 국면 그리드(이 경기 14명 신규 채움)로 **윙백 배후 구역의 상대 보유 셀 밀도**를 내고, 백4 경기와 대조되면 판정한다. ⭐ 현재 정황은 방향이 맞다: 첼시 def_x 41.0(높음)인데 3실점했고, 상대는 **역습 위협을 게임플랜으로 명시**했다(앤드루스 회견). ⚠️ 이 영상은 **시즌 3경기 아크**(7실점)를 다루므로 이 경기 단독 근거로 쓰면 과대 적용이다."
+    }
+   ],
+   "key_points": [
+    "⭐⭐ 원문 「**Dreierkette bedeutet nicht automatisch defensive Sicherheit.**」(**백3가 자동으로 수비 안정을 뜻하지 않는다.**) — auto-caption",
+    "⭐ 원문 「Die **Dreierkette bekommt plötzlich Probleme in Räumen, die eigentlich abgesichert sein sollten**.」(백3가 **원래 보호돼야 할 공간에서 갑자기 문제를 겪는다**.)",
+    "원문 「**Gegentore entstehen selten durch einen einzigen Fehler.**」(**실점은 단일 실수로 생기는 일이 드물다.**)",
+    "원문 「… **seit 19 Ligaspielen keine einzige weiße Weste**」(**19리그 경기째 클린시트가 한 번도 없다**) ⚠️ 무클린시트 수치가 소스마다 19·21·22로 갈린다 — **미확정**."
+   ],
+   "kind": null,
+   "lang": "de",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "🇩🇪 **독일어 전술 채널** — D+2 에이전트가 「독일어 축 0건·이월」로 닫았던 공백이 여기서 닫힌다. ⚠️ 포맷은 이 경기 단독이 아니라 **시즌 초반 3경기(7실점) 아크**이고 브렌트포드전을 그 안에서 다룬다 — 출처 성격을 그렇게 적어야 한다. ⭐ 핵심 논지는 **「백3가 자동으로 수비 안정을 뜻하지 않는다」**이고, 백3가 **원래 보호돼야 할 공간에서 문제를 겪는다**고 본다. 또 실점이 **단일 실수가 아니라 누적**에서 나온다고 규정한다 — 우리 obs#894(하프타임에 특정된 표적)와 층이 다르지만 방향은 같다.",
+   "team_code": null,
+   "title": "7 Gegentore: Alonso hat ein Taktik-Problem!",
+   "transcript_path": "reports/transcripts/XoqRKPT4D68.de.md",
+   "url": "https://www.youtube.com/watch?v=XoqRKPT4D68",
+   "video_id": "XoqRKPT4D68"
+  },
+  {
+   "channel": "IÑAKI ANGULO TV",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 225,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "ATM 구현 주장 0건 — 판정 논쟁·상대팀 개인 비판만. 「미작성」이 아니라 「주장 없음」임을 남긴다."
+    }
+   ],
+   "key_points": [
+    "논조: 판정 논쟁 중심 — 「Kangin en la imagen de parada… puede ser roja」(「이강인은 정지 화면에서 보면… 레드일 수 있다」)",
+    "아틀레티코 전술 구조 서술 0건 — 포메이션·압박·빌드업 언급 없음",
+    "레알 개인 비판(음바페·비니시우스) 중심, 팀 구조 진단은 없음",
+    "⛔ 레알 축 서술은 불변규칙 7에 따라 ATM manager_profiles에 반영하지 않는다"
+   ],
+   "kind": null,
+   "lang": "es",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 48,
+   "summary": "레알 마드리드 팬 관점 장시간 방송(IÑAKI ANGULO TV, 70분). 제목대로 레알에 대한 비판과 판정 논쟁이 내용의 거의 전부다 — 쿠티 로메로의 38′ 태클과 이강인의 44′ 발베르데 태클이 레드였어야 한다는 주장, 하위센 퇴장의 정당성 논쟁이 반복된다. 아틀레티코의 구조(포메이션·압박·빌드업)에 대한 서술은 없고, 음바페·비니시우스의 부진을 개인 책임으로 돌리는 논조다. ATM 축으로 가져올 구현 주장은 0건이며, 상대국(스페인) 관점 확보라는 불변규칙 10 요건 충족용으로만 남긴다.",
+   "team_code": null,
+   "title": "EL MADRID ES UNA INFAMIA: Atlético 2-1 Real Madrid | Mbappe y Vinicius dan pena y polémica fake",
+   "transcript_path": "reports/transcripts/09a0RHhf2hg.es.md",
+   "url": "https://www.youtube.com/watch?v=09a0RHhf2hg",
+   "video_id": "09a0RHhf2hg"
+  },
+  {
+   "channel": "LA COBRA Random",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 232,
+   "impl_claims": [
+    {
+     "axis": "team_axis",
+     "field": "formation",
+     "focus": null,
+     "player": null,
+     "quote": "「jugó Mar Pubil de centrales, Cuti Romero y Hanko… Simeone en medio de carrilero llegando de extremo」(「푸빌이 센터백으로, 쿠티 로메로와 한츠코… 시메오네는 윙어처럼 올라가는 윙백으로」)",
+     "role_id": null,
+     "team_code": "ATM",
+     "value": "백3(푸빌 센터백) — 독립 2차 소스",
+     "verdict": "PENDING",
+     "verdict_note": "OKqnpw4YZyQ와 독립적으로 같은 형태를 읽었다(채널·국가·관점 상이). ⚠️ 그러나 **동일 중계 화면을 본 두 해설이므로 완전한 독립 교차검증은 아니다**(불변규칙 12 주의 지점). 우리 실측(푸빌 tool_x 83.7 — 백3 RCB로는 지나치게 넓다)과는 여전히 어긋나며, 판정은 OKqnpw4YZyQ 항목과 동일한 재판정 조건에 묶는다."
+    }
+   ],
+   "key_points": [
+    "백3 독립 2차 소스: 「jugó Mar Pubil de centrales, Cuti Romero y Hanko… Grimaldo lateral izquierdo… Simeone de carrilero llegando de extremo」(「푸빌이 센터백으로, 쿠티 로메로와 한츠코… 그리말도 좌측 풀백… 시메오네는 윙어처럼 올라가는 윙백」)",
+    "줄리아노의 대인 임무: 「marcando junto con Mar Pubil a Vinicius」(「푸빌과 함께 비니시우스를 마크하면서」) — 우측 2인 수비 분담 서술, 실측 줄리아노 태클 4·듀얼 19회 시도와 정합",
+    "센터백 평가: 「Hanko y Cuti Romero metieron en su bolsillo… a Mbappé y a Vinicius」(「한츠코와 쿠티 로메로가 음바페와 비니시우스를 주머니에 넣었다」) — 실측 레알 오픈플레이 xG 0.17과 정합",
+    "카르도소 평가는 「buen rendimiento」(「좋은 활약」) 한 줄뿐 — 듀얼 0/6(리포트 §7 재검증 ⑵)에 대한 언급 0건",
+    "PK 장면 해석: 하위센이 공을 포기하고 팔을 잡았고 줄리아노가 「se deja caer」(「몸을 던졌다」) — 접촉은 인정, 과장도 인정"
+   ],
+   "kind": null,
+   "lang": "es",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 48,
+   "summary": "아르헨티나 관점 분석 채널(LA COBRA Random, 26분). 판정 논쟁(쿠티 로메로 38′·이강인 44′ 태클, 하위센 퇴장)을 먼저 정리한 뒤 개인 퍼포먼스 중심으로 경기를 읽는다. ⭐ 구조적으로 중요한 대목은 **선발 라인업을 「푸빌을 센터백으로 둔 3백」으로 읽었다**는 점이다 — PEDRO EL INGENIERO의 백3 주장과 **독립 2차 소스**가 된다. 그 밖에: 한츠코·쿠티 로메로 센터백 조합이 음바페·비니시우스를 「주머니에 넣었다」, 요렌테의 폴리발런시와 발베르데·추아메니 빌드업에 대한 압박, 줄리아노 시메오네가 PK 유발·어시스트로 경기의 figura였다는 평가. 실측과의 충돌은 없으나 서사 강도가 실측보다 앞선다(예: 「전반이 양쪽 다 팽팽했다」는 서술은 실측 1H ATM 유효슈팅 0과 결이 다르다).",
+   "team_code": null,
+   "title": "ATLÉTICO MADRID DOMÓ AL REAL MADRID EN EL DERBY. VINICIUS Y MBAPPÉ DESAPARECIDOS ¿QUE PASÓ? ANÁLISIS",
+   "transcript_path": "reports/transcripts/ckLOOWC6t80.es.md",
+   "url": "https://www.youtube.com/watch?v=ckLOOWC6t80",
+   "video_id": "ckLOOWC6t80"
+  },
+  {
+   "channel": "OhSoSpurs",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 222,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "away_vs_top_game_plan",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「Villa's perfect willingness to sit in, congest, and then play long over us」(빌라의, 내려앉아 밀집하고 우리 머리 위로 길게 넘기려는 완벽한 의지)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "defend_deep_then_transition",
+     "verdict": "APPLIED",
+     "verdict_note": "⭐ **상대 코치 시각의 독립 확인**이다(claim #137 보강). 우리 실측(def_x 30.6 · PPDA 13.24 · 후반 점유 29% · 롱볼 14.5%)과 상대 감독의 사전 스카우팅(claim #140)과 같은 방향이다. 제3자·적대적 소스가 같은 구조를 서술했다는 점이 추가 정보다. 시즌 정본은 바꾸지 않는다."
+    }
+   ],
+   "key_points": [
+    "빌라 게임플랜 — 원문 「Villa's perfect willingness to sit in, congest, and then play long over us. It — we just were unable to deal with it」(빌라의, 내려앉아 밀집하고 우리 머리 위로 길게 넘기려는 완벽한 의지. 우리는 그걸 전혀 다루지 못했다) · auto-caption",
+    "원문 「Villa did literally need to just spanner it long」(빌라는 말 그대로 그냥 길게 후려차기만 하면 됐다)",
+    "선제골 평 — 원문 「Aston Villa didn't create anything. It was a very hopeful, quick ball in behind」(빌라가 뭘 만들어낸 게 아니다. 아주 요행 같은, 빠른 배후 볼이었다) ⚠️ 상대 축 편향. Opta는 로버트슨의 Error(LeadingToGoal)를 기록해 「상대 실책 기점」 쪽을 지지한다"
+   ],
+   "kind": null,
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 47,
+   "summary": "스퍼스 축 채널 OhSoSpurs의 「Pro Coach Explains」(09-20). 상대 관점에서 빌라의 게임플랜을 「내려앉아 밀집하고 머리 위로 길게 넘기는 것」으로 요약하고, 스퍼스가 그것을 전혀 다루지 못했다고 인정한다. 빌라의 롱볼 전술이 상대 코치 시각에서도 설계로 읽혔다는 점이 값이고, 만잠비의 선제골은 「요행 같은 배후 볼」로 평가절하한다(상대 축 편향 감안).",
+   "team_code": null,
+   "title": "Did De Zerbi Make The Right Decisions? | Pro Coach Explains",
+   "transcript_path": "reports/transcripts/v6cVSXOaS8E.en.md",
+   "url": "https://www.youtube.com/watch?v=v6cVSXOaS8E",
+   "video_id": "v6cVSXOaS8E"
+  },
+  {
+   "channel": "PEDRO EL INGENIERO",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 229,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "right_side_overload",
+     "focus": null,
+     "player": null,
+     "quote": "「hasta cuatro jugadores por este sector del Atlético Madrid para un solo lateral」(「이 구역에 아틀레티코 선수가 최대 4명, 상대는 풀백 한 명」)",
+     "role_id": null,
+     "team_code": "ATM",
+     "value": "four_v_one_on_opposition_left_back",
+     "verdict": "PENDING",
+     "verdict_note": "감독 발언(우측 표적)과 같은 메커니즘을 선수 배치로 설명한 것 — 근거는 영상 화면이고 우리 좌표로는 「우편중」까지만 확인된다(동시성·수적 우위는 미검증). 재판정 조건: 패스 네트워크 또는 구간 좌표를 재수집해 우측 3~4인 동시 진입 빈도를 세면 확정 가능."
+    },
+    {
+     "axis": "instruction",
+     "field": "koke_bench_rationale",
+     "focus": null,
+     "player": null,
+     "quote": "「Pedía situar a tres centrocampistas más guerreros, Johnny, Marcos Llorente, Alex Baena… A Coke esto le cuesta un poquito más」(「더 전사 같은 미드필더 3인, 조니·요렌테·바에나를 놓아야 했다… 코케는 그게 좀 더 힘들다」)",
+     "role_id": null,
+     "team_code": "ATM",
+     "value": "first_half_needs_recovering_midfielders",
+     "verdict": "PENDING",
+     "verdict_note": "시메오네 본인 발언(교체 임팩트 예시)과 독립적으로 같은 결론(선발 전환 아님)에 도달했다 — 리포트 §7 ⑶은 이로써 「현 시점 선발 전환 근거 없음」으로 닫는다. 재판정 조건: 코케가 다음 2경기 중 선발하면 정정."
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "focus": "Attack",
+     "player": "이강인",
+     "quote": "「Kangli que también caía a banda desde la posición de delantero centro」(「이강인도 최전방 위치에서 측면으로 빠졌다」)",
+     "role_id": "st_false9",
+     "team_code": "ATM",
+     "value": null,
+     "verdict": "PENDING",
+     "verdict_note": "리포트 §7 재검증 ⑴(이강인 RST 슬롯 의심)에 대한 서사 측 답 — 슬롯은 명목상 투톱이 맞고 **측면으로 빠지는 것이 설계된 우측 과부하의 일부**라는 설명이다. 시메오네 본인 발언(「sabíamos que era por la derecha」)·실측 tool_x 74.7과 3중 수렴하지만 prescriptions는 이번에도 바꾸지 않는다(Δ0.046 실측 무결정). 재판정 조건: 다음 경기에서도 tool_x>70이면 슬롯 표기를 RST 유지 + role_note에 우측 과부하를 명기한다."
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "focus": "Support",
+     "player": "마르코스 요렌테",
+     "quote": "「Marcos Llorente volvió a ser ese lateral derecho. Cuando el Atlético no tenía el balón, Marcos Llorente se posicionaba como tercer central」(「요렌테가 다시 우측 풀백이 됐다. 공이 없을 때는 세 번째 센터백으로 섰다」)",
+     "role_id": "fb_wingback",
+     "team_code": "ATM",
+     "value": null,
+     "verdict": "PENDING",
+     "verdict_note": "실측 하프 분할(1H x̄ 56.4·ȳ 28.7 → 2H 44.1·17.7)과 방향 일치하지만, 이 경기 처방은 전반 RCM 표본이 섞여 단일 행으로 확정할 수 없다(리포트 §5 한계 ②). 재판정 조건: 요렌테가 90분 전부 우측 풀백으로 뛴 경기가 나오면 그때 fb_* 축으로 확정한다."
+    },
+    {
+     "axis": "team_axis",
+     "field": "formation",
+     "focus": null,
+     "player": null,
+     "quote": "「optó por los tres centrales con Hanko, Cuti Romero y Mark Pubil, más dos carrileros… Además lo hacía en un 532」 / 「Tanto Grimaldo y Mar Pubil justamente actuaban como laterales」(「3센터백에 두 윙백… 5-3-2로 했다」 / 「그리말도와 푸빌이 (보유 시) 풀백처럼 움직였다」)",
+     "role_id": null,
+     "team_code": "ATM",
+     "value": "5-3-2 (비보유) ↔ 4-4-2 (보유)",
+     "verdict": "PENDING",
+     "verdict_note": "우리 실측과 정면으로 판정할 수 없다 — 국면 그리드의 **비보유 표본이 푸빌 n=3**이라 백3 여부를 가릴 수 없다(ATM 점유 61%). 방향 단서는 엇갈린다: 비보유 전진값(0=최후방)이 CB 0.69~0.92인데 그리말도 1.89(n=9)·줄리아노 1.62(n=21)로 **한 행 앞**이라 플랫 백5보다 백4 미드블록에 가깝다. 재판정 조건: 다음 ATM 경기에서 우측 풀백의 비보유 셀 n≥15를 확보해 CB 라인과 같은 행에 서는지 본다."
+    }
+   ],
+   "key_points": [
+    "백3 주장: 「optó por los tres centrales con Hanko, Cuti Romero y Mark Pubil, más dos carrileros… Grimaldo y Giuliano Simeone. Además lo hacía en un 532」(「한츠코·쿠티 로메로·마르크 푸빌의 3센터백에 그리말도와 줄리아노 시메오네 두 윙백… 게다가 5-3-2로 했다」) — 우리 리포트의 「4-4-2 고정」과 충돌",
+    "국면 비대칭: 「Tanto Grimaldo y Mar Pubil justamente actuaban como laterales, Couti Romero y Hanco como pareja central」(「그리말도와 푸빌이 풀백처럼, 쿠티 로메로와 한츠코가 센터백 짝으로 움직였다」 — 보유 시) → 백3 주장과 백4 실측을 화해시키는 열쇠",
+    "우측 과부하: 「Cucurella estaba rodeado de Marcos Llorente que caía a banda, de Marpubil, de Kangli que también caía a banda desde la posición de delantero centro más Giuliano Simeone… hasta cuatro jugadores por este sector」(「쿠쿠레야는 측면으로 빠지는 요렌테, 푸빌, 최전방에서 측면으로 빠지는 이강인에 줄리아노까지… 이 구역에 최대 4명에게 둘러싸였다」) — ⭐ 이강인 RST 슬롯 의문에 대한 직접 설명",
+    "바에나 해방: 「quien quedaba libre siempre por dentro era Alex Baena y a veces Grimaldo que hacía justamente de falso lateral izquierdo」(「안쪽에서 항상 비어 있던 건 알렉스 바에나, 때로는 가짜 좌측 풀백 역할을 하던 그리말도였다」) — 실측 바에나 tool_x 42.9(좁게)와 정합",
+    "코케 선발 제외 이유: 「en la primera parte el partido pedía otra cosa. Pedía situar a tres centrocampistas más guerreros, Johnny, Marcos Llorente, Alex Baena… A Coke esto le cuesta un poquito más」(「전반의 경기는 다른 걸 요구했다. 더 전사 같은 미드필더 3인, 조니·요렌테·바에나를 놓아야 했다… 코케는 그게 좀 더 힘들다」)",
+    "후반 구조: 「Marcos Llorente volvió a ser ese lateral derecho. Cuando el Atlético no tenía el balón, Marcos Llorente se posicionaba como tercer central y Giuliano como carrilero derecho」(「요렌테가 다시 우측 풀백이 됐다. 공이 없을 때 요렌테는 세 번째 센터백으로, 줄리아노는 우측 윙백으로 섰다」) — 실측 요렌테 2H 전진 −12.3·우측 −11.0과 방향 일치",
+    "레알 저창출 원인(상대 축, 참고만): 고압박 비조직 + 윙어 복귀 강도 부족 + 라인 사이 수직 패스 부재"
+   ],
+   "kind": null,
+   "lang": "es",
+   "obs_points": [],
+   "published": "2026-09-20",
+   "published_approx": 0,
+   "report_id": 48,
+   "summary": "⭐ 이번 회차 최대 수확 — 스페인어 전술 분석 채널(PEDRO EL INGENIERO, 16분)의 칠판 분석. 패스 네트워크·xG 화면을 띄워 놓고 아틀레티코의 구조를 설명한다. 핵심 주장 3가지. ⑴ **시메오네가 백3로 시작했다**: 한츠코-쿠티 로메로-푸빌의 3센터백 + 그리말도·줄리아노 시메오네 윙백의 5-3-2이고, 공을 잡으면 푸빌·그리말도가 풀백처럼 올라가 백4가 된다는 **국면 비대칭** 서술. ⑵ **우측 4대1 과부하**: 요렌테·푸빌·이강인(최전방에서 측면으로 빠짐)·줄리아노 넷이 쿠쿠레야 한 명을 둘러쌌고, 비니시우스의 늦은 복귀가 이를 방치했다. 그 결과 **안쪽에서 항상 비어 있던 선수가 바에나**였고 그리말도는 「가짜 좌측 풀백」으로 들어왔다. ⑶ **코케 선발 제외의 전술적 이유**: 전반은 공을 잃었을 때 제때 내려올 수 있는 「전사형」 3인(카르도소·요렌테·바에나)이 필요했고, 코케는 그 일이 힘들다 — 후반은 반대로 좌우로 공을 돌릴 「오케스트라 지휘자」가 필요해 투입했다. 후반 구조도 명시한다: 비보유 시 요렌테가 세 번째 센터백, 줄리아노가 우측 윙백.",
+   "team_code": null,
+   "title": "Descubrí el gran problema del Real Madrid (es grave)",
+   "transcript_path": "reports/transcripts/OKqnpw4YZyQ.es.md",
+   "url": "https://www.youtube.com/watch?v=OKqnpw4YZyQ",
+   "video_id": "OKqnpw4YZyQ"
+  },
+  {
+   "channel": "The Holy Trinity Show | Aston Villa",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 220,
    "impl_claims": [
     {
@@ -99,131 +558,22 @@
     "선제골 의문 — 원문 「it seems like Kamara is actually looking off the ball」(카마라는 실제로 볼을 안 보고 있는 것처럼 보인다) ⇒ Opta가 해소: 카마라 이벤트는 Pass가 아니라 MissedShots(BoxCentre·RightFoot·MissLeft)다. 슛이었으므로 「볼을 안 봤다」는 의문 자체가 성립하지 않는다",
     "맥긴의 만잠비 평 — 원문 「Manzambi's first half was poor」(만잠비의 전반이 형편없었다)"
    ],
-   "kind": "전술분석",
+   "kind": null,
    "lang": "en",
    "obs_points": [],
-   "published": "2026-09-21",
+   "published": "2026-09-20",
    "published_approx": 0,
    "report_id": 47,
    "summary": "The Holy Trinity Show의 D+2(09-21) 리뷰. 이 회차의 고유 기여는 세 가지다 — ⓐ 맥긴이 경기 후 「감독은 하프타임에 최소 0-0을 기대했다」고 말했다는 전언(에메리 본인 진술과 3중 교차) ⓑ 90+8 실점이 이번 시즌 PL 첫 세트피스 실점이며 볼이 밍스의 머리를 넘어갔다는 서술 ⓒ 만잠비가 벤탄쿠르의 태클에 「정확히 같은 무릎」을 맞았다는 부위 특정. 선제골에 대해서는 「카마라가 볼을 안 보고 있는 것처럼 보인다」며 어시스트 의도에 의문을 제기하는데, Opta가 이 의문을 해소한다(카마라의 접촉은 패스가 아니라 빗나간 슛이다).",
-   "team_code": "AVL",
-   "title": "Tottenham Hotspur 2 Aston Villa 3 | English Premier League",
+   "team_code": null,
+   "title": "Tottenham Hotspur 2 Aston Villa 3 | English Premier League | The Holy Trinity Show",
    "transcript_path": "reports/transcripts/dgEOoi6Pdrc.en.md",
    "url": "https://www.youtube.com/watch?v=dgEOoi6Pdrc",
    "video_id": "dgEOoi6Pdrc"
   },
   {
-   "channel": "Aston Villa Football Club",
-   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
-   "id": 200,
-   "impl_claims": [
-    {
-     "axis": "none",
-     "field": null,
-     "focus": null,
-     "player": null,
-     "quote": "구현 축 주장 없음 — 선수 본인 경기 후 인터뷰(득점 장면 설명·적응 서사).",
-     "role_id": null,
-     "team_code": "AVL",
-     "value": null,
-     "verdict": "NA",
-     "verdict_note": "axis=none. ⭐ 득점 장면 본인 설명이 우리 어시스트 기록(카마라)과 정합함을 확인했다. ⚠️ 72′ 교체·전반 치료 질문은 인터뷰에 0건. ※ axis=none 규약상 대상 칼럼은 비운다 — 만잠비 귀속 내용은 player_duties·observations로 옮겼다(G17)."
-    }
-   ],
-   "key_points": [
-    "득점 장면 본인 설명 — 원문 「I saw Boubacar he want to shoot and I have a good position and then I am alone. I just take the ball and I shoot」(부바카르가 슈팅하려는 걸 봤고 나는 좋은 위치에 있었다. 그리고 나는 혼자였다. 그냥 볼을 잡고 슈팅했다.) ⇒ 우리 실측의 어시스트 기록(카마라)과 정합한다.",
-    "원정 국면 인식 — 원문 「We know we play away and that's always difficult in the Premier League. And with defense, they can push」(우리는 원정임을 알고 있고 프리미어리그 원정은 항상 어렵다. 수비적으로 상대가 밀어붙일 수 있다.)",
-    "⚠️ 72′ 교체·전반 치료 언급 0건."
-   ],
-   "kind": "경기반응",
-   "lang": "en",
-   "obs_points": [],
-   "published": "2026-09-20",
-   "published_approx": 0,
-   "report_id": 47,
-   "summary": "구단 공식 채널의 만잠비 경기 후 인터뷰. PL 첫 골 장면을 본인이 설명한다 — 카마라가 슈팅하려는 것을 보고 자신이 좋은 위치에 혼자 있어 볼을 잡고 슈팅했다는 것. 원정의 어려움과 「강하게 버티고 이기는 것」의 중요성을 말하고, 팀이 첫날부터 도와줬다는 적응 서사를 붙인다. ⚠️ **72′ 교체나 전반 치료에 대한 질문·답변은 인터뷰에 0건**이다 — 미결 ④를 닫아주지 못한다.",
-   "team_code": "AVL",
-   "title": "\"We can go into the international break happy\" | Johan Manzambi on Spurs victory | POST MATCH",
-   "transcript_path": "reports/transcripts/yn-UvcWhAio.en.md",
-   "url": "https://www.youtube.com/watch?v=yn-UvcWhAio",
-   "video_id": "yn-UvcWhAio"
-  },
-  {
-   "channel": "Fußball Denker",
-   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
-   "id": 211,
-   "impl_claims": [
-    {
-     "axis": "limit",
-     "field": "back_three_not_auto_stability",
-     "focus": null,
-     "player": null,
-     "quote": "원문 「**Dreierkette bedeutet nicht automatisch defensive Sicherheit.**」(**백3가 자동으로 수비 안정을 뜻하지 않는다.**) · 「Die Dreierkette bekommt plötzlich **Probleme in Räumen, die eigentlich abgesichert sein sollten**」(백3가 **원래 보호돼야 할 공간에서** 문제를 겪는다.) — auto-caption, 🇩🇪",
-     "role_id": null,
-     "team_code": "CHE",
-     "value": "space_behind_wingbacks",
-     "verdict": "HELD",
-     "verdict_note": "⛔ **재판정 조건**: 「보호돼야 할 공간」이 구체적으로 어디인지 영상이 좌표로 특정하지 않는다. ⇒ 우리 국면 그리드(이 경기 14명 신규 채움)로 **윙백 배후 구역의 상대 보유 셀 밀도**를 내고, 백4 경기와 대조되면 판정한다. ⭐ 현재 정황은 방향이 맞다: 첼시 def_x 41.0(높음)인데 3실점했고, 상대는 **역습 위협을 게임플랜으로 명시**했다(앤드루스 회견). ⚠️ 이 영상은 **시즌 3경기 아크**(7실점)를 다루므로 이 경기 단독 근거로 쓰면 과대 적용이다."
-    }
-   ],
-   "key_points": [
-    "⭐⭐ 원문 「**Dreierkette bedeutet nicht automatisch defensive Sicherheit.**」(**백3가 자동으로 수비 안정을 뜻하지 않는다.**) — auto-caption",
-    "⭐ 원문 「Die **Dreierkette bekommt plötzlich Probleme in Räumen, die eigentlich abgesichert sein sollten**.」(백3가 **원래 보호돼야 할 공간에서 갑자기 문제를 겪는다**.)",
-    "원문 「**Gegentore entstehen selten durch einen einzigen Fehler.**」(**실점은 단일 실수로 생기는 일이 드물다.**)",
-    "원문 「… **seit 19 Ligaspielen keine einzige weiße Weste**」(**19리그 경기째 클린시트가 한 번도 없다**) ⚠️ 무클린시트 수치가 소스마다 19·21·22로 갈린다 — **미확정**."
-   ],
-   "kind": "전술분석",
-   "lang": "de",
-   "obs_points": [],
-   "published": "2026-09-20",
-   "published_approx": 0,
-   "report_id": 46,
-   "summary": "🇩🇪 **독일어 전술 채널** — D+2 에이전트가 「독일어 축 0건·이월」로 닫았던 공백이 여기서 닫힌다. ⚠️ 포맷은 이 경기 단독이 아니라 **시즌 초반 3경기(7실점) 아크**이고 브렌트포드전을 그 안에서 다룬다 — 출처 성격을 그렇게 적어야 한다. ⭐ 핵심 논지는 **「백3가 자동으로 수비 안정을 뜻하지 않는다」**이고, 백3가 **원래 보호돼야 할 공간에서 문제를 겪는다**고 본다. 또 실점이 **단일 실수가 아니라 누적**에서 나온다고 규정한다 — 우리 obs#894(하프타임에 특정된 표적)와 층이 다르지만 방향은 같다.",
-   "team_code": "CHE",
-   "title": "7 Gegentore: Alonso hat ein Taktik-Problem!",
-   "transcript_path": "reports/transcripts/XoqRKPT4D68.de.md",
-   "url": "https://www.youtube.com/watch?v=XoqRKPT4D68",
-   "video_id": "XoqRKPT4D68"
-  },
-  {
-   "channel": "OhSoSpurs",
-   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
-   "id": 222,
-   "impl_claims": [
-    {
-     "axis": "instruction",
-     "field": "away_vs_top_game_plan",
-     "focus": null,
-     "player": null,
-     "quote": "원문 「Villa's perfect willingness to sit in, congest, and then play long over us」(빌라의, 내려앉아 밀집하고 우리 머리 위로 길게 넘기려는 완벽한 의지)",
-     "role_id": null,
-     "team_code": "AVL",
-     "value": "defend_deep_then_transition",
-     "verdict": "APPLIED",
-     "verdict_note": "⭐ **상대 코치 시각의 독립 확인**이다(claim #137 보강). 우리 실측(def_x 30.6 · PPDA 13.24 · 후반 점유 29% · 롱볼 14.5%)과 상대 감독의 사전 스카우팅(claim #140)과 같은 방향이다. 제3자·적대적 소스가 같은 구조를 서술했다는 점이 추가 정보다. 시즌 정본은 바꾸지 않는다."
-    }
-   ],
-   "key_points": [
-    "빌라 게임플랜 — 원문 「Villa's perfect willingness to sit in, congest, and then play long over us. It — we just were unable to deal with it」(빌라의, 내려앉아 밀집하고 우리 머리 위로 길게 넘기려는 완벽한 의지. 우리는 그걸 전혀 다루지 못했다) · auto-caption",
-    "원문 「Villa did literally need to just spanner it long」(빌라는 말 그대로 그냥 길게 후려차기만 하면 됐다)",
-    "선제골 평 — 원문 「Aston Villa didn't create anything. It was a very hopeful, quick ball in behind」(빌라가 뭘 만들어낸 게 아니다. 아주 요행 같은, 빠른 배후 볼이었다) ⚠️ 상대 축 편향. Opta는 로버트슨의 Error(LeadingToGoal)를 기록해 「상대 실책 기점」 쪽을 지지한다"
-   ],
-   "kind": "상대팀",
-   "lang": "en",
-   "obs_points": [],
-   "published": "2026-09-20",
-   "published_approx": 0,
-   "report_id": 47,
-   "summary": "스퍼스 축 채널 OhSoSpurs의 「Pro Coach Explains」(09-20). 상대 관점에서 빌라의 게임플랜을 「내려앉아 밀집하고 머리 위로 길게 넘기는 것」으로 요약하고, 스퍼스가 그것을 전혀 다루지 못했다고 인정한다. 빌라의 롱볼 전술이 상대 코치 시각에서도 설계로 읽혔다는 점이 값이고, 만잠비의 선제골은 「요행 같은 배후 볼」로 평가절하한다(상대 축 편향 감안).",
-   "team_code": "AVL",
-   "title": "Pro Coach Explains | Tottenham 2-3 Aston Villa",
-   "transcript_path": "reports/transcripts/v6cVSXOaS8E.en.md",
-   "url": "https://www.youtube.com/watch?v=v6cVSXOaS8E",
-   "video_id": "v6cVSXOaS8E"
-  },
-  {
    "channel": "The Villans",
-   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 198,
    "impl_claims": [
     {
@@ -244,7 +594,7 @@
     "⭐ 게임 플랜 규정 — 원문 「it's the classic Emery almost an away leg in Europe style — sit back, circle pressure and then pass through or top of them」(전형적인 에메리, 거의 유럽 원정 2차전 스타일이다 — 물러서서 압력을 둘러싸고 통과 패스나 넘기는 패스로 나간다.)",
     "⚠️ 한계 지적 — 원문 「My worry is that that defensive [setup] relies upon so much of one in the system and two in the players next to you」(걱정은 그 수비 방식이 첫째 시스템에, 둘째 옆 동료들에게 너무 많이 의존한다는 점이다.)"
    ],
-   "kind": "전술분석",
+   "kind": "선수스카우팅",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-20",
@@ -259,7 +609,7 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 197,
    "impl_claims": [
     {
@@ -305,7 +655,7 @@
     "⭐⭐ 86′ 실점 = 2차 클리어 2회 실패 — 원문 「We have one opportunity to deal with it here. Rejieri, clear it. We then have another opportunity here. Buendía, win the ball. Clear it. We don't.」(여기서 처리할 기회가 한 번 있었다. 루헤리, 걷어내라. 여기서 또 한 번 기회가 있었다. 부엔디아, 볼을 따내라. 걷어내라. 우리는 못 했다.) ※ Rejieri=Ruggeri 오인식",
     "⭐⭐ 90+8′ 세트피스 실점 3중 지적 — 원문 「blockers and grabbers that are grabbing our players that are stopping us when this ball goes to Van Heeka」(우리 선수를 붙잡아 판 헤케에게 볼이 갈 때 우리가 못 가게 막는 블로커·그래버) · 「three players for Villa here who are beyond Ming」(밍스보다 뒤에 있는 빌라 선수가 셋이다) ※ Van Heeka=van Hecke · Ming=Mings"
    ],
-   "kind": "전술분석",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-20",
@@ -313,14 +663,14 @@
    "report_id": 47,
    "summary": "UTV의 D+1 리뷰. 이번 회차에서 **후반 2실점을 화면 프레임 단위로 분해한 유일한 소스**이고, 스즈키를 「11번째 필드 플레이어」로 놓는 빌드업 해석을 제시한다. 86′ 갤러거 실점은 구조 붕괴가 아니라 **2차 클리어 연속 실패**(루헤리 → 부엔디아)로 지목했고, 이 서술은 Opta 이벤트 시퀀스와 **정확히 일치한다**(우리 검증). 90+8′ 판 헤케 세트피스 실점은 ⑴ 밍스가 볼 낙하지점 아래로 들어감 ⑵ 밍스보다 뒤에 빌라 선수 3명이 있었음 ⑶ 스퍼스의 블로킹·그래빙에 대응 없음의 3중 지적이다. 스즈키 수치는 우리 실측에 없는 축(론치 성공률·골킥 분해)을 담고 있어 교차검증 대상으로 남긴다.",
    "team_code": "AVL",
-   "title": "HOW ZION SUZUKI IS CHEAT CODE FOR ASTON VILLA",
+   "title": "HOW ZION SUZUKI IS CHEAT CODE FOR ASTON VILLA | 鈴木彩艶は、なぜアストン・ヴィラにとって「チート級」の存在なのか",
    "transcript_path": "reports/transcripts/BTW1C1UCPN0.en.md",
    "url": "https://www.youtube.com/watch?v=BTW1C1UCPN0",
    "video_id": "BTW1C1UCPN0"
   },
   {
    "channel": "サカチャンネル",
-   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 221,
    "impl_claims": [
     {
@@ -342,14 +692,14 @@
     "⭐ Opta가 이 발언을 확증한다: 66′08 스즈키 Pass(Longball+**GoalKick**) → 66′11 잭슨 BallTouch → 66′12 만잠비 Pass(IntentionalGoalAssist) → 66′14 잭슨 TakeOn(반더벤 제침) → 66′16 잭슨 Goal(Volley). 골킥이 실제로 득점으로 전환된 시퀀스다",
     "⚠️ 이 영상의 다수 대목은 BBC·영어 매체의 일본어 번역이다 — 동일 텍스트의 번역 복제는 교차검증이 아니다(불변규칙 12)"
    ],
-   "kind": "경기반응",
+   "kind": null,
    "lang": "ja",
    "obs_points": [],
    "published": "2026-09-20",
    "published_approx": 0,
    "report_id": 47,
    "summary": "일본어 채널 サカチャンネル의 스즈키 지온 특집(09-20). 불변규칙 10의 성과로, 영어권에 없던 두 가지를 준다 — ⓐ 스즈키의 롱킥 타깃이 「역습 시 우측의 만잠비」라는 구체적 방향성 ⓑ 에메리가 스즈키의 롱패스 능력을 잭슨의 2번째 골과 직접 연결한 발언. 나머지 상당 부분은 BBC 등 영어 원문의 일본어 재번역이라 교차검증으로 세지 않는다(불변규칙 12).",
-   "team_code": "AVL",
+   "team_code": null,
    "title": "【鈴木彩艶】「勝てたのはザイオンのおかげだ」トッテナム戦で躍動のザイオンに海外絶賛！【海外の反応】",
    "transcript_path": "reports/transcripts/kV4Mha-L0aA.ja.md",
    "url": "https://www.youtube.com/watch?v=kV4Mha-L0aA",
@@ -357,7 +707,7 @@
   },
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 199,
    "impl_claims": [
     {
@@ -428,7 +778,7 @@
   },
   {
    "channel": "Aston Villa Football Club",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 194,
    "impl_claims": [
     {
@@ -450,14 +800,14 @@
     "신입 통합 — 원문 「We must adapt the new players and we need to create and to build a structure feeling comfort, one getting confidence」(새 선수들을 적응시켜야 하고, 편안함을 느끼는 구조를 만들고 세워야 한다. 그러면서 자신감을 얻는 것이다). 선발 11명 중 6명이 여름 영입.",
     "실측 정합: def_x 30.6(26/27 최저) · PPDA 13.24 · 코너 1-11 허용 · 빌라 오픈플레이 xG 1.16이 전체 xG와 동일(세트피스 0.00) — 「수비·GK·코너·전환」 네 낱말이 그대로 수치로 나온다."
    ],
-   "kind": "감독회견",
+   "kind": null,
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-19",
    "published_approx": 0,
    "report_id": 47,
    "summary": "아스톤 빌라 구단 공식 채널의 에메리 경기 후 인터뷰(토트넘 원정 3-2 승). 에메리는 결과가 아니라 **사전에 세운 게임 플랜**을 먼저 말한다 — 원정에서 집단적으로 수비하고, 골키퍼가 구해주고, 코너를 막아내고, 전환을 잡았을 때 위협한다는 것. 0-0을 유지하는 것이 「성장 과정의 일부」였다고 표현해 저점유가 사고가 아니라 설계였음을 직접 밝힌다. 선발 11명 중 6명이 여름 영입이라는 질문에는 「편안함을 느끼는 구조를 만들고 세우면 자신감이 따라온다」고 답했다. 잭슨·만잠비·부엔디아 3인의 득점을 「환상적」이라 평했다.",
-   "team_code": "AVL",
+   "team_code": null,
    "title": "🗣️ \"We are DELIGHTED with how the players have responded\" | Unai Emery on Spurs victory | POST MATCH",
    "transcript_path": "reports/transcripts/Jp52xd-xLt8.en.md",
    "url": "https://www.youtube.com/watch?v=Jp52xd-xLt8",
@@ -465,7 +815,7 @@
   },
   {
    "channel": "Bains Analysis",
-   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 201,
    "impl_claims": [
     {
@@ -486,14 +836,14 @@
     "⭐ 루헤리 시간 분할 — 원문 「first 20 minutes he was up against Savinho who can cause a lot of full-backs problems, and Savinho had a better of it」(첫 20분은 많은 풀백을 괴롭히는 사비뉴를 상대했고 사비뉴가 우위였다) → 이후 개선.",
     "⭐ 스즈키 — 원문 「first 20, 25 minutes, Suzuki pulled out a couple of very, very good saves to keep Aston Villa in the game」(첫 20~25분 스즈키가 아주 좋은 세이브 몇 개로 빌라를 경기에 붙잡아뒀다.)"
    ],
-   "kind": "전술분석",
+   "kind": null,
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-19",
    "published_approx": 0,
    "report_id": 47,
    "summary": "Bains Analysis의 전술 리뷰. ⭐ 핵심 주장은 **「전반 20~25분 사이에 4-4-2 미드블록에서 5-3-2로 전환했다」**는 시점 서술인데, 이는 우리 실측(후반 전환)과 정면 충돌하며 **실측 재집계로 기각됐다**(맥긴 수비액션 전반 20′~HT x평균 58.4 vs 후반 32.1). 다만 「전반 20분간 사비뉴가 루헤리에게 우위였다」·「경기가 흐르면서 루헤리가 개선됐다」는 시간 분할 서술은 D+0의 루헤리 평가 충돌을 해소하는 데 기여한다.",
-   "team_code": "AVL",
+   "team_code": null,
    "title": "This New Aston Villa Are Going to Shock Everyone",
    "transcript_path": "reports/transcripts/noampLJzxn0.en.md",
    "url": "https://www.youtube.com/watch?v=noampLJzxn0",
@@ -501,7 +851,7 @@
   },
   {
    "channel": "BeanymanSports",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 196,
    "impl_claims": [
     {
@@ -543,85 +893,34 @@
    "published_approx": 0,
    "report_id": 47,
    "summary": "BeanymanSports가 담은 토트넘 데 제르비 감독의 경기 후 회견. ⭐ 이 전사의 핵심은 **상대 감독이 빌라의 롱볼 증가를 정량 수치로 사전 스카우팅했다고 자인한 대목**이다 — 「올 시즌 아스톤 빌라는 지난 시즌보다 롱볼을 86% 더 많이 하고 있어서 어제와 이틀 전 수많은 미팅에서 그 얘기를 했다」고 말한 뒤, 그럼에도 롱 골킥에서 실점한 것을 「용납할 수 없다」고 했다. 빌라에 대한 평가는 구조 분석이 아니라 효율로 수렴한다 — 「우리는 한 골 넣으려면 20번의 기회를 만들어야 하는데 저들은 너무 쉽게 넣었다」. 회견 전체에서 빌라의 블록·압박 구조를 전술적으로 서술한 대목은 없다.",
-   "team_code": "AVL",
+   "team_code": null,
    "title": "DE ZERBI: “I DIDN'T SPEAK WITH THE PLAYERS TODAY!” 😳 Tottenham 2-3 Aston Villa ⚽ Premier League",
    "transcript_path": "reports/transcripts/kJZ0G7WvLWY.en.md",
    "url": "https://www.youtube.com/watch?v=kJZ0G7WvLWY",
    "video_id": "kJZ0G7WvLWY"
   },
   {
-   "channel": "Blue Lions TV",
-   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Shabby/Jab Alonzo=Alonso · Mi/Maddy=Nicoll-Jazuli · Yanel=Janelt · Kevin Ch=Schade. 인물명은 이 경기 라인업 실측과 대조했다.",
-   "id": 207,
-   "impl_claims": [
-    {
-     "axis": "none",
-     "field": null,
-     "focus": null,
-     "player": null,
-     "quote": "구현 축 주장 없음 — 팬 채널 평가·구조 제안(4-3-3 전환 등)은 3티어 의견이라 주장으로 올리지 않는다.",
-     "role_id": null,
-     "team_code": "CHE",
-     "value": null,
-     "verdict": "NA",
-     "verdict_note": "axis=none. ⛔ 「파머를 내려라」·「4-3-3」 제안은 팬 의견이므로 구현 재료로 쓰지 않는다."
-    }
-   ],
-   "key_points": [
-    "헨더슨 2실점 관여 주장 — 원문 「**why are you attempting a driven pass like that through the entire Brentford block** … **getting dispossessed like that. He's then not able to win that tackle when the transition is going**」(**왜 브렌트포드 블록 전체를 관통하는 드리븐 패스를 시도하나** … **그렇게 볼을 빼앗기고, 전환이 진행될 때 그 태클도 이기지 못한다**.) — auto-caption · 3티어",
-    "구조 원인 — 원문 「you're letting **Enzo Fernandez go. Not getting in another midfield player** when he's going, **it's not ideal**」(**엔소를 보내면서 다른 미드필더를 안 데려온 건 이상적이지 않다**.)"
-   ],
-   "kind": "경기반응",
+   "channel": "Cash talk's Football",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 235,
+   "impl_claims": [],
+   "key_points": [],
+   "kind": null,
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-19",
    "published_approx": 0,
-   "report_id": 46,
-   "summary": "첼시 팬 채널(3티어)의 D+1 리액션. ⚠️ **2번째 실점에 헨더슨의 볼 소유 상실을 기점으로 지목**하는 서술이 있다 — 다른 소스 2건과 방향이 같아 기록해 둔다. 또 **엔소 페르난데스 이적 후 미드필더 미영입**을 피벗 결손의 구조적 원인으로 본다 — 헨더슨·바르코 피벗을 「선택」이 아니라 **잔여 자원**으로 재분류할지의 재료다. ⛔ 팬 의견이므로 구현 축 주장으로는 쓰지 않는다.",
-   "team_code": "CHE",
-   "title": "XABI ALONSO HAS A SERIOUS PROBLEM…",
-   "transcript_path": "reports/transcripts/o4uZGgoQS_o.en.md",
-   "url": "https://www.youtube.com/watch?v=o4uZGgoQS_o",
-   "video_id": "o4uZGgoQS_o"
-  },
-  {
-   "channel": "CHELSEA FAN TV",
-   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
-   "id": 215,
-   "impl_claims": [
-    {
-     "axis": "none",
-     "field": null,
-     "focus": null,
-     "player": null,
-     "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
-     "role_id": null,
-     "team_code": "CHE",
-     "value": null,
-     "verdict": "NA",
-     "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
-    }
-   ],
-   "key_points": [
-    "원문 「**substituting defenders? Surely you pick your defense and then you substitute people further up**」(**수비수를 교체한다고? 수비는 고르고 앞쪽 선수를 교체하는 게 당연하지 않나**) · 「**keep conceding goals**… I don't get it」(**계속 실점한다**… 이해가 안 된다.) — auto-caption",
-    "⇒ 검증 축: 71′ 전후 def_x·실점 타이밍 대조(2·3번째 골이 83′·90+4′)."
-   ],
-   "kind": "경기반응",
-   "lang": "en",
-   "obs_points": [],
-   "published": "2026-09-19",
-   "published_approx": 0,
-   "report_id": 46,
-   "summary": "⭐ **71′ 포파나 교체 축을 제목으로 내건 유일한 영상**(닐 바넷 — 첼시 구단 역사가/해설). 논지는 「수비를 고르고 **앞쪽 선수를 교체하는 게 상식인데 왜 수비수를 계속 빼느냐**」이고, 실점 누적과 연결한다. ⇒ D+2 에이전트가 올린 「71′ 포파나 교체가 수비 응집 저하의 변곡점」 주장과 **같은 축**이다. ⛔ 단 인과 주장이 아니라 의문 제기 수준이라 구현 주장으로는 올리지 않았다.",
-   "team_code": "CHE",
-   "title": "Why Does Alonso Keep Substituting Defenders? | Brentford 3-0 Chelsea | Fan Cam (Neil Barnett)",
-   "transcript_path": "reports/transcripts/5uhGujJcj7g.en.md",
-   "url": "https://www.youtube.com/watch?v=5uhGujJcj7g",
-   "video_id": "5uhGujJcj7g"
+   "report_id": null,
+   "summary": null,
+   "team_code": null,
+   "title": "SPURS SILENCED! 😱 Aston Villa STUN Tottenham 3-2 | Analysis",
+   "transcript_path": "reports/transcripts/ofp0s7RaNoc.en.md",
+   "url": "https://www.youtube.com/watch?v=ofp0s7RaNoc",
+   "video_id": "ofp0s7RaNoc"
   },
   {
    "channel": "ChelseaFootlab",
-   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 213,
    "impl_claims": [
     {
@@ -641,22 +940,22 @@
     "원문 「I had to take some time to **actually think about what just happened** … if I should just go by the **reactionary videos** everybody has been dropping, and I think I was a bit like that in the first video」(무슨 일이 있었는지 **실제로 생각할 시간이 필요했다** … 모두가 올린 **반응적 영상**대로만 간다면… 내 첫 영상도 좀 그랬다.) — auto-caption",
     "⭐ 방법론 시사: 같은 채널의 D+0 리액션과 D+1 재고를 **같은 티어로 다루면 안 된다**."
    ],
-   "kind": "전술분석",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-19",
    "published_approx": 0,
    "report_id": 46,
    "summary": "첼시 전용 분석 채널의 **재고(再考)판** — 본인이 같은 경기로 이미 리액션 영상을 냈고, 「반응적으로 말한 것」과 거리를 두고 다시 보겠다고 명시하며 시작한다. ⭐ 그 자체가 유용한 신호다: **D+0 리액션과 D+1 재고가 같은 채널에서 갈린다**. 백3(「three at the back」)를 다룬다. ⛔ 다만 우리 실측을 뒤집을 새 사실은 없어 구현 주장으로는 올리지 않았다.",
-   "team_code": "CHE",
-   "title": "Chelsea's 3-0 Defeat Explained: Where Xabi Alonso Got It Wrong",
+   "team_code": null,
+   "title": "Chelsea’s 3-0 Defeat Explained: Where Xabi Alonso Got It Wrong",
    "transcript_path": "reports/transcripts/B4sxBZjIfuI.en.md",
    "url": "https://www.youtube.com/watch?v=B4sxBZjIfuI",
    "video_id": "B4sxBZjIfuI"
   },
   {
    "channel": "Chris Cowlin: Spurs Chat Podcast & Tottenham News",
-   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 223,
    "impl_claims": [
     {
@@ -691,57 +990,22 @@
     "빌라 평 — 원문 「managerial stability always trumps individual players … if you play with a defined system the players are components, they're cogs in a wheel」(감독의 안정성은 언제나 개별 선수보다 우위다 … 정의된 시스템으로 뛰면 선수는 부품, 톱니바퀴다)",
     "팀 스탯 낭독: 점유 스퍼스 63.8% · xG 1.22-1.16 · 슈팅 20-15 · 박스 내 터치 31-18 · 코너 11-1"
    ],
-   "kind": "상대팀",
+   "kind": "감독회견",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-19",
    "published_approx": 0,
    "report_id": 47,
    "summary": "스퍼스 팬 팟캐스트 Chris Cowlin: Spurs Chat의 풀타임 리액션(09-19, 2시간 4분). 값의 대부분은 [37:01]~[48:00]에 통째로 들어 있는 데 제르비 경기 후 회견 전문이다 — D+1에 auto-caption 1소스로만 있던 「86% 롱볼」 발언의 더 긴 맥락을 준다. 패널은 빌라의 막판 2실점을 「빌라가 이미 스위치를 껐다」로 읽고 스코어가 스퍼스를 미화했다고 본다. 팀 스탯 낭독(점유 63.8%·코너 11-1·박스 내 터치 31-18)은 우리 실측과 합치한다.",
-   "team_code": "AVL",
+   "team_code": null,
    "title": "SPURS CHAT PODCAST: Full-Time Thoughts: Tottenham 2-3 Aston Villa Instant Reaction & Match Analysis",
    "transcript_path": "reports/transcripts/QkA0fScs5s8.en.md",
    "url": "https://www.youtube.com/watch?v=QkA0fScs5s8",
    "video_id": "QkA0fScs5s8"
   },
   {
-   "channel": "Football Uncoded",
-   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
-   "id": 214,
-   "impl_claims": [
-    {
-     "axis": "none",
-     "field": null,
-     "focus": null,
-     "player": null,
-     "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
-     "role_id": null,
-     "team_code": "CHE",
-     "value": null,
-     "verdict": "NA",
-     "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
-    }
-   ],
-   "key_points": [
-    "⭐ 프레이밍 — 원문 「Chelsea Football Club have lost **Enzo Fernández** and they have brought in **Andrey Santos**, and tonight against Brentford, Chelsea gave us our **first look at what this team is becoming without one of their most important midfielders**」(첼시는 **엔소 페르난데스**를 잃고 **안드레이 산투스**를 데려왔다. 오늘 브렌트포드전에서 **가장 중요한 미드필더 없이 이 팀이 어떻게 되어가는지 처음 보여줬다**.) — auto-caption",
-    "⚠️ **산투스 영입 주장은 우리 원장과 대조되지 않았다** — 검증 전 사실로 쓰지 말 것."
-   ],
-   "kind": "전술분석",
-   "lang": "en",
-   "obs_points": [],
-   "published": "2026-09-19",
-   "published_approx": 0,
-   "report_id": 46,
-   "summary": "⭐ 경기를 **엔소 페르난데스 이탈 후 첫 모습**으로 프레이밍한다. ⚠️ **중요한 사실 주장 1건**: 첼시가 대체로 **안드레이 산투스를 영입했다**고 말한다 — 이는 팬 채널(Blue Lions TV)의 「다른 미드필더를 안 데려왔다」와 **정면 충돌**하고, **우리 `squad_entries`에도 산투스가 없다**. ⇒ 스쿼드 축 검증 대상(obs 참조).",
-   "team_code": "CHE",
-   "title": "How Brentford Exposed Chelsea's Biggest Weakness | Brentford 3–0 Chelsea",
-   "transcript_path": "reports/transcripts/iltNYp8lk6o.en.md",
-   "url": "https://www.youtube.com/watch?v=iltNYp8lk6o",
-   "video_id": "iltNYp8lk6o"
-  },
-  {
    "channel": "MAH",
-   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 224,
    "impl_claims": [
     {
@@ -762,56 +1026,22 @@
     "막판 2실점 — 원문 「I think Villa at that point have switched off. They'd already been thinking about the three points in the next game」(그 시점에 빌라는 스위치를 껐다고 본다. 이미 승점 3과 다음 경기를 생각하고 있었다)",
     "⚠️ 첼시 축 채널이라 빌라 전술 서술의 깊이는 얕다 — 잭슨 개인 장면 외에는 구현 재료로 쓰지 않는다"
    ],
-   "kind": "상대팀",
+   "kind": null,
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-19",
    "published_approx": 0,
    "report_id": 47,
    "summary": "첼시 팬 채널 MAH의 스퍼스 위로 영상(09-19). 빌라 축 내용은 얇으나 잭슨의 67′ 골 장면을 스트라이커 플레이 관점에서 상세히 묘사한 대목이 쓸모 있다 — 홀드업 → 터치 → 수비수를 벗기는 두 번째 플릭 → 먼 쪽 구석 마무리. 빌라의 막판 2실점은 「3-0 이후 스위치를 껐다」로 읽어 스퍼스 팬 채널과 같은 진단을 낸다.",
-   "team_code": "AVL",
+   "team_code": null,
    "title": "Spurs fans, join me... | Tottenham 2-3 Aston Villa",
    "transcript_path": "reports/transcripts/U4OewDAQMCk.en.md",
    "url": "https://www.youtube.com/watch?v=U4OewDAQMCk",
    "video_id": "U4OewDAQMCk"
   },
   {
-   "channel": "More Lyes",
-   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Shabby/Jab Alonzo=Alonso · Mi/Maddy=Nicoll-Jazuli · Yanel=Janelt · Kevin Ch=Schade. 인물명은 이 경기 라인업 실측과 대조했다.",
-   "id": 208,
-   "impl_claims": [
-    {
-     "axis": "none",
-     "field": null,
-     "focus": null,
-     "player": null,
-     "quote": "구현 축 주장 없음 — 개인 슛 선택 비판(3티어).",
-     "role_id": null,
-     "team_code": "CHE",
-     "value": null,
-     "verdict": "NA",
-     "verdict_note": "axis=none."
-    }
-   ],
-   "key_points": [
-    "네투 — 원문 「every time he shoots is **a little bit of a lottery ticket**… forcing a shot when **his body is not ready or even positioned**」(그가 슛할 때마다 **약간 복권 같다**… **몸이 준비되지도, 자세가 잡히지도 않았을 때** 슛을 강행한다.) — auto-caption · 3티어"
-   ],
-   "kind": "경기반응",
-   "lang": "en",
-   "obs_points": [],
-   "published": "2026-09-19",
-   "published_approx": 0,
-   "report_id": 46,
-   "summary": "팬 리액션(3티어). 네투의 슛 선택을 구체적 행동으로 비판한 대목이 있어 남긴다 — 「몸이 준비되지 않은 상태의 강행 슛」. 구조 서술은 없다.",
-   "team_code": "CHE",
-   "title": "BRENTFORD JUST EMBARRASSED CHELSEA 3-0!",
-   "transcript_path": "reports/transcripts/oY0jz8-W_7Y.en.md",
-   "url": "https://www.youtube.com/watch?v=oY0jz8-W_7Y",
-   "video_id": "oY0jz8-W_7Y"
-  },
-  {
    "channel": "TNT Sports Football",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-09-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 195,
    "impl_claims": [
     {
@@ -857,22 +1087,38 @@
     "사전 설계 — 원문 「we knew before the match, we needed defense … the best match we played in the Premier League this year at the moment.」(경기 전부터 수비가 필요하다는 걸 알고 있었다 … 현재로선 올 시즌 프리미어리그 최고의 경기다.)",
     "실측 교차검증(WhoScored matchId 1983589): 맥긴 수비액션 평균 x가 전반 56.3 → 후반 32.1(Δ−24.2), y 32.8 → 18.2(우측 터치라인 쪽). 후반 57′·58′·77′에는 x 11.8~16.2에서 수비했다 — 백4 라인(캐시 17.4·린델뢰프 16.5·밍스 15.2·루헤리 21.4)과 같은 깊이다. 전반에는 그 대역 수비액션이 0건이었다."
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
-   "obs_points": [],
+   "obs_points": [
+    {
+     "claim": "에메리의 국면 변형에 **우측 편중 백5**가 있다 — 대칭 5-3-2가 아니라 한쪽 측면만 5로 만드는 형태다. 2026-09-19 토트넘 원정 후반에 맥긴이 우측 백라인 깊이까지 내려가 캐시와 우측 채널을 겹쳐 막았고, 같은 시간 좌측의 부엔디아는 오히려 12점 올라가 4를 유지했다.",
+     "id": 863,
+     "scope": "defence"
+    },
+    {
+     "claim": "상대 감독이 빌라의 롱볼 증가를 **정량 수치로 사전 스카우팅**했다고 자인했다 — 「올 시즌 아스톤 빌라는 지난 시즌보다 롱볼을 86% 더 많이 하고 있다」. 우리 buildup 축의 26/27 갱신(상대 의존 고다이렉트 확장)의 첫 외부 독립 확인이다.",
+     "id": 864,
+     "scope": "build_up"
+    },
+    {
+     "claim": "리드 후 실점 국면에서 **블록이 더 내려앉은 것이 아니라 풀렸다.** 2026-09-19 토트넘 원정에서 가장 깊었던 구간은 50~86′(def_x 26.1)이고, 교체 4장 이후 87′~ 구간은 34.6으로 올라간다. 두 실점은 그 올라간 구간에서 나왔다.",
+     "id": 865,
+     "scope": "defence"
+    }
+   ],
    "published": "2026-09-19",
    "published_approx": 0,
    "report_id": 47,
    "summary": "TNT Sports의 에메리 경기 후 인터뷰. ⭐ 이 전사의 핵심은 **후반 백5 전환을 감독 본인이 인정한 대목**이다. 진행자가 「후반에 페널티 박스 앞에서 사실상 백5로 갔고 맥긴이 아주 깊게 내려갔다」고 짚자 에메리는 「때로는 백4로 측면을 완전히 수비하기에 충분하지 않다」며, 전반에는 카마라를 내려 쓰고 후반에는 맥긴으로 그것을 했다고 답한다. 또한 「수비 쪽으로 희생할지 공격 쪽으로 희생할지는 경기마다 다르고 우리는 적응해야 한다」는 문장으로 상황 대응 원칙을 직접 언어화했다. 이 경기를 「올 시즌 프리미어리그에서 우리가 한 최고의 경기」로 평가했다.",
-   "team_code": "AVL",
+   "team_code": null,
    "title": "Unai Emery REACTS after Aston Villa end winless run with victory against Spurs",
    "transcript_path": "reports/transcripts/k6dbBj7Tz7w.en.md",
    "url": "https://www.youtube.com/watch?v=k6dbBj7Tz7w",
    "video_id": "k6dbBj7Tz7w"
   },
   {
-   "channel": "The Claret & Blue Podcast (Birmingham Live)",
-   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "channel": "The Claret & Blue Podcast",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 219,
    "impl_claims": [
     {
@@ -895,57 +1141,22 @@
     "미드필드 — 원문 「very tenacious … not a nice midfield to play against」(매우 끈질기다 … 상대하기 싫은 미드필드)",
     "만잠비 「70분 정도 뛰었고 잘했고 골도 넣었다」 — 교체 사유 언급 0"
    ],
-   "kind": "경기반응",
+   "kind": null,
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-19",
    "published_approx": 0,
    "report_id": 47,
    "summary": "Birmingham Live(빌라 전담 John Townley)의 팟캐스트. 완비사카 하프타임 교체 사유를 「온더볼 한계 + 사비뉴 매치업 고전」으로 두 번 명시해 D+1에 열려 있던 논점을 닫는다. 우측 풀백 서열을 콘사 < 완비사카 < 캐시(소유 국면 기준)로 정리한 것이 FC 구현에 직접 쓰이는 대목이다. 카마라-고메스 조합은 「상대하기 싫은 미드필드」로 긍정 평가하고, 만잠비는 70분 남짓 출전에 호평하나 교체 사유는 언급하지 않는다.",
-   "team_code": "AVL",
+   "team_code": null,
    "title": "John Townley's positive vibes after Villa's 3 points against Spurs",
    "transcript_path": "reports/transcripts/-9ar6UOF958.en.md",
    "url": "https://www.youtube.com/watch?v=-9ar6UOF958",
    "video_id": "-9ar6UOF958"
   },
   {
-   "channel": "The Football Connect",
-   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
-   "id": 216,
-   "impl_claims": [
-    {
-     "axis": "none",
-     "field": null,
-     "focus": null,
-     "player": null,
-     "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
-     "role_id": null,
-     "team_code": "CHE",
-     "value": null,
-     "verdict": "NA",
-     "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
-    }
-   ],
-   "key_points": [
-    "⚠️ 제목-내용 불일치 실증 — 원문 「You were **dismantled**. This was a dismantling and bottling job」(**해체당했다**. 해체이자 자멸이었다.) 수준의 서술이 본문 다수. — auto-caption",
-    "⇒ **다음 회차는 제목의 「tactical analysis」를 신뢰하지 말고 본문 밀도로 판정할 것.**"
-   ],
-   "kind": "경기반응",
-   "lang": "en",
-   "obs_points": [],
-   "published": "2026-09-19",
-   "published_approx": 0,
-   "report_id": 46,
-   "summary": "⚠️ **제목은 「Tactical Analysis」인데 내용은 리액션**이다. 서두 1분이 감탄사·「dismantling」 서술이고 구조 분석이 없다. ⇒ ⭐ **제목으로 티어를 매기면 안 된다는 실증** — kind를 「전술분석」이 아니라 **「경기반응」**으로 낮춰 등재했다. ⛔ 인용할 만한 구조 서술이 없어 구현 주장은 `axis:none`이다.",
-   "team_code": "CHE",
-   "title": "How Brentford Exposed Chelsea's Midfield Crisis! | Brentford 3-0 Chelsea Tactical Analysis",
-   "transcript_path": "reports/transcripts/FFl2vf7LpZs.en.md",
-   "url": "https://www.youtube.com/watch?v=FFl2vf7LpZs",
-   "video_id": "FFl2vf7LpZs"
-  },
-  {
    "channel": "The Tottenham Blueprint",
-   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Wendia=Buendía · Roger/Rejieri/Reguilon=Ruggeri · Van Heeka=van Hecke · Ming=Mings · Robinson=Robertson. 인물명은 이 경기 라인업 실측과 대조했다(docs/30 오인식 대조표).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 203,
    "impl_claims": [
     {
@@ -966,22 +1177,22 @@
     "⚠️ 선제골 경로 충돌 — 원문 「Robertson … made a decision which was the wrong one. Gave the ball straight to McGinn.」(로버트슨이 잘못된 판단을 했다. 볼을 맥긴에게 그대로 줬다.) ⇒ 우리 실측 어시스트는 카마라. 3티어 팬 회상이므로 실측 유지.",
     "⭐ 잭슨 매치업 — 원문 「today against Villa, I thought he [van Hecke] struggled on a lot of occasions especially the one that led up to the Jackson goal」(오늘 빌라전에서 판 헤케는 여러 차례 고전했다. 특히 잭슨 골로 이어진 장면에서.)"
    ],
-   "kind": "상대팀",
+   "kind": null,
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-19",
    "published_approx": 0,
    "report_id": 47,
    "summary": "⭐⭐ **상대팀(토트넘) 채널**. 포맷은 이 경기 전용 분석이 아니라 **인터내셔널 브레이크 시점의 시즌 선수 리뷰**이고(64줄 중 빌라 언급 5회), 그 안에 이 경기 후반을 다룬 구간이 있다. 그 구간이 **우리 §2 「후반 우측 편중 백5」를 상대팀 관찰자가 독립 확인**해 준다 — 「미드필드를 아주 깊이 내려 측면을 보호」했고 「맥긴도 우측으로 내려앉았다」는 서술에 **의도(측면 보호)**까지 붙어 있어, def_x 26.1이 강요가 아니라 지시였다는 쪽 근거를 강화한다. ⚠️ 같은 대목이 선제골 경로를 「로버트슨 → 맥긴 → 박스 패스」로 서술하는데 우리 실측 어시스트는 카마라다(충돌 기록).",
-   "team_code": "AVL",
-   "title": "We NEED MORE From These Players!!! | Tottenham 2-3 Aston Villa",
+   "team_code": null,
+   "title": "We NEED MORE From These Players!!! | Tottenham 2 - 3 Aston Villa",
    "transcript_path": "reports/transcripts/XRJgUjer1cc.en.md",
    "url": "https://www.youtube.com/watch?v=XRJgUjer1cc",
    "video_id": "XRJgUjer1cc"
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM — auto-caption 전사(오인식 가능, 불변규칙 11에 따라 인용은 원문+한국어 번역 병기). 인물명은 실측과 교차검증했다. · [요약 2026-09-21] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 218,
    "impl_claims": [
     {
@@ -1081,7 +1292,7 @@
   },
   {
    "channel": "BeanymanSports",
-   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Shabby/Jab Alonzo=Alonso · Mi/Maddy=Nicoll-Jazuli · Yanel=Janelt · Kevin Ch=Schade. 인물명은 이 경기 라인업 실측과 대조했다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 204,
    "impl_claims": [
     {
@@ -1123,14 +1334,84 @@
    "report_id": 46,
    "summary": "⭐⭐ **이번 회차 최대 수확** — 알론소 회견(00:04~02:38)과 **키스 앤드루스(브렌트포드) 전체 회견(03:34~10:16)**이 한 영상에 연속으로 들어 있다. 상대 감독이 **첼시의 셋업을 「지나치게 존중한 형태」로 규정하고 그 이유를 이고르 치아구 더블마크로 설명**한다 — 우리 백3 채택 사유의 외부 증언이다. ⚠️ 알론소 회견에서 **더블피벗(헨더슨·바르코) 구성 사유를 묻는 질문은 0건**이다 — 기자단은 「10대 3명 투입」만 물었다. 피벗 구성 사유는 본인 진술로 확보 불가.",
    "team_code": "CHE",
-   "title": "🔴 LIVE | Xabi Alonso and Keith Andrews | Brentford 3-0 Chelsea",
+   "title": "🔴 LIVE | Xabi Alonso and Keith Andrews | Brentford 3-0 Chelsea | Premier League",
    "transcript_path": "reports/transcripts/7J0YLBV25vc.en.md",
    "url": "https://www.youtube.com/watch?v=7J0YLBV25vc",
    "video_id": "7J0YLBV25vc"
   },
   {
+   "channel": "Blue Lions TV - A Chelsea Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 207,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 팬 채널 평가·구조 제안(4-3-3 전환 등)은 3티어 의견이라 주장으로 올리지 않는다.",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⛔ 「파머를 내려라」·「4-3-3」 제안은 팬 의견이므로 구현 재료로 쓰지 않는다."
+    }
+   ],
+   "key_points": [
+    "헨더슨 2실점 관여 주장 — 원문 「**why are you attempting a driven pass like that through the entire Brentford block** … **getting dispossessed like that. He's then not able to win that tackle when the transition is going**」(**왜 브렌트포드 블록 전체를 관통하는 드리븐 패스를 시도하나** … **그렇게 볼을 빼앗기고, 전환이 진행될 때 그 태클도 이기지 못한다**.) — auto-caption · 3티어",
+    "구조 원인 — 원문 「you're letting **Enzo Fernandez go. Not getting in another midfield player** when he's going, **it's not ideal**」(**엔소를 보내면서 다른 미드필더를 안 데려온 건 이상적이지 않다**.)"
+   ],
+   "kind": null,
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "첼시 팬 채널(3티어)의 D+1 리액션. ⚠️ **2번째 실점에 헨더슨의 볼 소유 상실을 기점으로 지목**하는 서술이 있다 — 다른 소스 2건과 방향이 같아 기록해 둔다. 또 **엔소 페르난데스 이적 후 미드필더 미영입**을 피벗 결손의 구조적 원인으로 본다 — 헨더슨·바르코 피벗을 「선택」이 아니라 **잔여 자원**으로 재분류할지의 재료다. ⛔ 팬 의견이므로 구현 축 주장으로는 쓰지 않는다.",
+   "team_code": "CHE",
+   "title": "XABI ALONSO HAS A SERIOUS PROBLEM… 👀 | Brentford 3-0 Chelsea || Brentford 3-0 Chelsea",
+   "transcript_path": "reports/transcripts/o4uZGgoQS_o.en.md",
+   "url": "https://www.youtube.com/watch?v=o4uZGgoQS_o",
+   "video_id": "o4uZGgoQS_o"
+  },
+  {
+   "channel": "CHELSEA FAN TV",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 215,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
+    }
+   ],
+   "key_points": [
+    "원문 「**substituting defenders? Surely you pick your defense and then you substitute people further up**」(**수비수를 교체한다고? 수비는 고르고 앞쪽 선수를 교체하는 게 당연하지 않나**) · 「**keep conceding goals**… I don't get it」(**계속 실점한다**… 이해가 안 된다.) — auto-caption",
+    "⇒ 검증 축: 71′ 전후 def_x·실점 타이밍 대조(2·3번째 골이 83′·90+4′)."
+   ],
+   "kind": null,
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "⭐ **71′ 포파나 교체 축을 제목으로 내건 유일한 영상**(닐 바넷 — 첼시 구단 역사가/해설). 논지는 「수비를 고르고 **앞쪽 선수를 교체하는 게 상식인데 왜 수비수를 계속 빼느냐**」이고, 실점 누적과 연결한다. ⇒ D+2 에이전트가 올린 「71′ 포파나 교체가 수비 응집 저하의 변곡점」 주장과 **같은 축**이다. ⛔ 단 인과 주장이 아니라 의문 제기 수준이라 구현 주장으로는 올리지 않았다.",
+   "team_code": "CHE",
+   "title": "Why Does Alonso Keep Substituting Defenders? | Brentford 3 - 0 Chelsea | Fan Cam (Neil Barnett)",
+   "transcript_path": "reports/transcripts/5uhGujJcj7g.en.md",
+   "url": "https://www.youtube.com/watch?v=5uhGujJcj7g",
+   "video_id": "5uhGujJcj7g"
+  },
+  {
    "channel": "Chelsea Football Club",
-   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Shabby/Jab Alonzo=Alonso · Mi/Maddy=Nicoll-Jazuli · Yanel=Janelt · Kevin Ch=Schade. 인물명은 이 경기 라인업 실측과 대조했다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 205,
    "impl_claims": [
     {
@@ -1151,7 +1432,7 @@
     "⭐⭐ 헨더슨 평가 — 원문 「**He has had a very good impact. I'm happy with his performance, the way he has taken responsibility, connect with the players, so it's probably the most positive thing about today**」(**매우 좋은 임팩트를 냈다. 경기력, 책임을 떠맡은 방식, 선수들과 연결된 방식에 만족한다. 아마 오늘의 가장 긍정적인 부분일 것이다**.) — auto-caption",
     "원문 「**no excuses.** You need to deal with injuries … **with this team we can do better**」(**변명 없다.** 부상은 감당해야 한다 … **이 팀으로도 더 잘할 수 있다**.)"
    ],
-   "kind": "감독회견",
+   "kind": null,
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-18",
@@ -1159,14 +1440,49 @@
    "report_id": 46,
    "summary": "구단 공식의 **기자회견과 별개인 단독 인터뷰**. ⭐ 여기에만 두 가지가 있다: ⑴ 알론소가 **첫 실점을 「우측 스로인–코너 연속 국면」으로 묶어 규정**한 것 ⑵ **헨더슨 데뷔에 대한 강한 긍정 평가**. ⭐⭐ 후자는 영국 매체 종합 평점 4/10과 **정면 충돌**한다. 또 부상 결장을 핑계로 쓰지 않겠다고 못박는다.",
    "team_code": "CHE",
-   "title": "ALONSO reacts post-Brentford",
+   "title": "ALONSO reacts post-Brentford | Brentford 3-0 Chelsea | Premier League 2026/27",
    "transcript_path": "reports/transcripts/sXId17-8tzk.en.md",
    "url": "https://www.youtube.com/watch?v=sXId17-8tzk",
    "video_id": "sXId17-8tzk"
   },
   {
+   "channel": "Football Uncoded",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 214,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
+    }
+   ],
+   "key_points": [
+    "⭐ 프레이밍 — 원문 「Chelsea Football Club have lost **Enzo Fernández** and they have brought in **Andrey Santos**, and tonight against Brentford, Chelsea gave us our **first look at what this team is becoming without one of their most important midfielders**」(첼시는 **엔소 페르난데스**를 잃고 **안드레이 산투스**를 데려왔다. 오늘 브렌트포드전에서 **가장 중요한 미드필더 없이 이 팀이 어떻게 되어가는지 처음 보여줬다**.) — auto-caption",
+    "⚠️ **산투스 영입 주장은 우리 원장과 대조되지 않았다** — 검증 전 사실로 쓰지 말 것."
+   ],
+   "kind": null,
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "⭐ 경기를 **엔소 페르난데스 이탈 후 첫 모습**으로 프레이밍한다. ⚠️ **중요한 사실 주장 1건**: 첼시가 대체로 **안드레이 산투스를 영입했다**고 말한다 — 이는 팬 채널(Blue Lions TV)의 「다른 미드필더를 안 데려왔다」와 **정면 충돌**하고, **우리 `squad_entries`에도 산투스가 없다**. ⇒ 스쿼드 축 검증 대상(obs 참조).",
+   "team_code": "CHE",
+   "title": "How Brentford Exposed Chelsea's Biggest Weakness  Brentford 3–0 Chelsea",
+   "transcript_path": "reports/transcripts/iltNYp8lk6o.en.md",
+   "url": "https://www.youtube.com/watch?v=iltNYp8lk6o",
+   "video_id": "iltNYp8lk6o"
+  },
+  {
    "channel": "MightyBluesNews",
-   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Shabby/Jab Alonzo=Alonso · Mi/Maddy=Nicoll-Jazuli · Yanel=Janelt · Kevin Ch=Schade. 인물명은 이 경기 라인업 실측과 대조했다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 206,
    "impl_claims": [
     {
@@ -1193,14 +1509,67 @@
    "report_id": 46,
    "summary": "10대 3명 투입 사유가 여기 있다. ⭐ 「보드에 보내는 메시지」라는 외부 해석과 달리 **본인 설명은 실무적**이다 — 중앙 머릿수 부족과 훈련 태도. 세트피스·멘털리티 관련 문답도 포함.",
    "team_code": "CHE",
-   "title": "Xabi Alonso on Chelsea mentality, set pieces and teenage subs",
+   "title": "Xabi Alonso on Chelsea mentality, set pieces and teenage subs | Brentford 3-0 Chelsea",
    "transcript_path": "reports/transcripts/5Vz7-8SLg5o.en.md",
    "url": "https://www.youtube.com/watch?v=5Vz7-8SLg5o",
    "video_id": "5Vz7-8SLg5o"
   },
   {
+   "channel": "More Lyes",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 208,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 개인 슛 선택 비판(3티어).",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none."
+    }
+   ],
+   "key_points": [
+    "네투 — 원문 「every time he shoots is **a little bit of a lottery ticket**… forcing a shot when **his body is not ready or even positioned**」(그가 슛할 때마다 **약간 복권 같다**… **몸이 준비되지도, 자세가 잡히지도 않았을 때** 슛을 강행한다.) — auto-caption · 3티어"
+   ],
+   "kind": null,
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "팬 리액션(3티어). 네투의 슛 선택을 구체적 행동으로 비판한 대목이 있어 남긴다 — 「몸이 준비되지 않은 상태의 강행 슛」. 구조 서술은 없다.",
+   "team_code": "CHE",
+   "title": "BRENTFORD JUST EMBARRASSED CHELSEA 3-0!",
+   "transcript_path": "reports/transcripts/oY0jz8-W_7Y.en.md",
+   "url": "https://www.youtube.com/watch?v=oY0jz8-W_7Y",
+   "video_id": "oY0jz8-W_7Y"
+  },
+  {
+   "channel": "OhSoSpurs",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 233,
+   "impl_claims": [],
+   "key_points": [],
+   "kind": null,
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": null,
+   "team_code": null,
+   "title": "The Data Says Spurs Beat Villa. Here's the Catch | The Analyst",
+   "transcript_path": "reports/transcripts/nUvtgLG_Chg.en.md",
+   "url": "https://www.youtube.com/watch?v=nUvtgLG_Chg",
+   "video_id": "nUvtgLG_Chg"
+  },
+  {
    "channel": "Ralf on VAR",
-   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 210,
    "impl_claims": [
     {
@@ -1221,7 +1590,7 @@
     "⭐ 조건부 긍정 — 원문 「it is a system that is good. **When your players understand it**… it's much more based on **defending in numbers and then attacking in numbers**」(좋은 시스템이다. **선수들이 이해할 때**… 훨씬 더 **숫자로 수비하고 숫자로 공격하는** 것에 기반한다.)",
     "⭐ 대안 — 원문 「I'm not saying right wing back, **right back position**」(우측 윙백이 아니라 **라이트백 포지션**이라고 말하는 것이다.) — 귀스토 지칭"
    ],
-   "kind": "전술분석",
+   "kind": null,
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-18",
@@ -1229,14 +1598,14 @@
    "report_id": 46,
    "summary": "⭐⭐ **우리 백3 판정 축을 정면으로 다루는 유일한 영상.** 논지는 「백3 시스템 자체가 나쁜 게 아니라 **선수들이 이해하기 전까지는 어렵다**」이고, 아모림의 맨유 실패를 같은 부류로 든다. 대안으로 **말로 귀스토를 윙백이 아니라 「라이트백」으로** 쓰는 백4를 제시한다. ⇒ obs#893(상대 감독은 백3를 「치아구 더블마크」로 설명)과 **다른 층의 설명**이다 — 상대는 *왜 골랐나*를, 이 영상은 *왜 안 되나*를 말한다.",
    "team_code": "CHE",
-   "title": "Brentford 3-0 Chelsea : A Back Four Would Have Changed Everything",
+   "title": "Brentford 3-0 Chelsea : A Back Four Would Have Changed Everything.",
    "transcript_path": "reports/transcripts/4iwS1CTVXr4.en.md",
    "url": "https://www.youtube.com/watch?v=4iwS1CTVXr4",
    "video_id": "4iwS1CTVXr4"
   },
   {
    "channel": "Sky Sports Premier League",
-   "confidence": "MEDIUM-HIGH(메타 — yt-dlp `upload_date` 직접 확인) / 본문은 **자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 212,
    "impl_claims": [
     {
@@ -1256,7 +1625,7 @@
     "⭐ 원문 「fragile and… once they've conceded that set piece, it's almost like you don't want it to be a mindset, but it's like, **\"Oh, here we go again\"**」(취약하다… 세트피스를 한 번 내주고 나면, 심리가 되지 않길 바라지만 **「또 시작이군」** 같은 상태가 된다.) — auto-caption",
     "원문 「**set pieces can win or lose football matches**」(세트피스가 경기를 이기게도 지게도 한다.) · 「defending better than anyone, **it's a collective**」(수비를 잘하는 건 **집단**의 일이다.)"
    ],
-   "kind": "경기반응",
+   "kind": "감독회견",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-18",
@@ -1264,10 +1633,45 @@
    "report_id": 46,
    "summary": "⭐ **펀딧 층(게리 카힐 — 전 첼시 CB · 제이미 레드냅)**. 티어가 팬 채널보다 높다. 핵심은 세트피스 실점이 **기술 문제가 아니라 반복에 따른 심리 상태**로 굳는다는 지적이고, 수비를 **집단(collective)** 문제로 본다. obs#894(표적 자인)와 결합하면 「표적이 됐고 → 반복됐고 → 심리가 됐다」의 3단으로 읽힌다.",
    "team_code": "CHE",
-   "title": "\"Chelsea are fragile\" | Gary Cahill & Jamie Redknapp react to Brentford 3-0 Chelsea",
+   "title": "Gary Cahill & Jamie Redknapp's honest reaction to Brentford 3-0 Chelsea",
    "transcript_path": "reports/transcripts/TXjdbiTmcz0.en.md",
    "url": "https://www.youtube.com/watch?v=TXjdbiTmcz0",
    "video_id": "TXjdbiTmcz0"
+  },
+  {
+   "channel": "The Football Connect",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 216,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
+     "role_id": null,
+     "team_code": "CHE",
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
+    }
+   ],
+   "key_points": [
+    "⚠️ 제목-내용 불일치 실증 — 원문 「You were **dismantled**. This was a dismantling and bottling job」(**해체당했다**. 해체이자 자멸이었다.) 수준의 서술이 본문 다수. — auto-caption",
+    "⇒ **다음 회차는 제목의 「tactical analysis」를 신뢰하지 말고 본문 밀도로 판정할 것.**"
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": 46,
+   "summary": "⚠️ **제목은 「Tactical Analysis」인데 내용은 리액션**이다. 서두 1분이 감탄사·「dismantling」 서술이고 구조 분석이 없다. ⇒ ⭐ **제목으로 티어를 매기면 안 된다는 실증** — kind를 「전술분석」이 아니라 **「경기반응」**으로 낮춰 등재했다. ⛔ 인용할 만한 구조 서술이 없어 구현 주장은 `axis:none`이다.",
+   "team_code": "CHE",
+   "title": "How Brentford Exposed Chelsea’s Midfield Crisis! | Brentford 3-0 Chelsea Tactical Analysis",
+   "transcript_path": "reports/transcripts/FFl2vf7LpZs.en.md",
+   "url": "https://www.youtube.com/watch?v=FFl2vf7LpZs",
+   "video_id": "FFl2vf7LpZs"
   },
   {
    "channel": "The Villans",
@@ -1341,6 +1745,25 @@
    "video_id": "fKDbTccRjGk"
   },
   {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 228,
+   "impl_claims": [],
+   "key_points": [],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-18",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": null,
+   "team_code": "AVL",
+   "title": "JOAO GOMES UPDATE | UNAI EMERY PRESS CONFERENCE REACTION | TOTTENHAM HOTSPUR v ASTON VILLA",
+   "transcript_path": "reports/transcripts/KCsvWv_eDeg.en.md",
+   "url": "https://www.youtube.com/watch?v=KCsvWv_eDeg",
+   "video_id": "KCsvWv_eDeg"
+  },
+  {
    "channel": "All Villa No Filler",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 186,
@@ -1404,7 +1827,7 @@
   },
   {
    "channel": "Chelsea Football Club",
-   "confidence": "MEDIUM-HIGH(메타) / 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다 — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 확인된 오인식: Shabby/Jab Alonzo=Alonso · Mi/Maddy=Nicoll-Jazuli · Yanel=Janelt · Kevin Ch=Schade. 인물명은 이 경기 라인업 실측과 대조했다.",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 209,
    "impl_claims": [
     {
@@ -1431,7 +1854,7 @@
    "report_id": 46,
    "summary": "⚠️ **경기 전(D-1) 회견이다** — 경기 후 진단으로 인용하면 안 된다. 라인업 사전 공개가 없어 피벗 구성 사유도 없다. 이 경기 회차의 **배경 자료**로만 등재한다.",
    "team_code": "CHE",
-   "title": "Alonso Press Conference | 17/09/26",
+   "title": "Alonso Press Conference | 17/09/26 | Brentford vs Chelsea | CFC 26/27",
    "transcript_path": "reports/transcripts/eYeU6iQyl7A.en.md",
    "url": "https://www.youtube.com/watch?v=eYeU6iQyl7A",
    "video_id": "eYeU6iQyl7A"
@@ -6872,6 +7295,25 @@
    "video_id": "ETMJDrEH2Pk"
   },
   {
+   "channel": "Aston Villa Football Club",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 226,
+   "impl_claims": [],
+   "key_points": [],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-05-03",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": null,
+   "team_code": null,
+   "title": "\"We tried to react\" | Unai Emery's post match reaction to Spurs loss 🗣️",
+   "transcript_path": "reports/transcripts/4J67XYRC8Uk.en.md",
+   "url": "https://www.youtube.com/watch?v=4J67XYRC8Uk",
+   "video_id": "4J67XYRC8Uk"
+  },
+  {
    "channel": "Brom Squad Gaming",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 86,
@@ -8547,24 +8989,24 @@
   ],
   "46": [
    211,
+   213,
+   204,
    207,
    215,
-   213,
-   214,
-   208,
-   216,
-   204,
    205,
+   214,
    206,
+   208,
    210,
    212,
+   216,
    209
   ],
   "47": [
    217,
-   220,
    200,
    222,
+   220,
    198,
    197,
    221,
@@ -8579,6 +9021,15 @@
    219,
    203,
    218
+  ],
+  "48": [
+   231,
+   230,
+   227,
+   234,
+   225,
+   232,
+   229
   ]
  }
 }
