@@ -589,7 +589,9 @@ export const FC_CSS = `
 /* 카드 그리드 — fcCardGrid(). 피치가 아니라 목록으로 세울 때 쓴다.
    ⚠️ 피치용 칼럼 폭(820+460)을 그대로 쓰면 좁은 화면에서 사이드가 밖으로 밀려 안 보인다 —
    그리드는 폭을 자유롭게 쓸 수 있으니 여기만 따로 잡고, 1100px 아래에서는 한 칼럼으로 접는다. */
-.fc-gridwrap .fc-layout{grid-template-columns:minmax(300px,1fr) minmax(360px,560px)}
+/* ⭐ 2026-09-23 사용자 지시 「선수 카드 영역을 줄이고 사이드패널을 넓혀 — 비율이 서로 반대가 되어야」.
+   카드는 상태 배지만 읽으면 되니 좁아도 되고, 정보는 전부 패널에 있다. 종전 840:560을 뒤집는다. */
+.fc-gridwrap .fc-layout{grid-template-columns:minmax(230px,560px) minmax(460px,1100px)}
 @media (max-width:1100px){.fc-gridwrap .fc-layout{grid-template-columns:1fr}
   .fc-gridwrap .fc-side{position:static;max-height:none}}
 .fc-grid{display:flex;flex-wrap:wrap;gap:10px}
