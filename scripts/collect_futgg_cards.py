@@ -179,6 +179,27 @@ def main():
             r["simple_card_url"] = m.get("simpleCardImageUrl")
             r["render_url"] = m.get("imageUrl")
 
+        # ⛔⛔ **목록 API가 일부 아이템을 빠뜨린다 — 상세 API로 보충한다**(2026-09-23 실증).
+        #    `/players/v2/{g}/?ea_ids=…`(대량 조회)가 응답을 안 주면 club·league·nation이 통째로 NULL이 되고,
+        #    화면에서는 그 선수가 **리그·팀 필터에서 사라진다**(보가르드가 빌라 필터에 안 나왔다).
+        #    ⚠️ fut.gg는 주고 있었다 — `/player-item-definitions/{g}/{ea}/`에는 멀쩡히 들어 있다.
+        #    ⇒ 빠진 것만 낱개로 다시 묻고, **보충 건수를 보고한다**(조용히 NULL로 두지 않는다 · obs#132).
+        need = [r for r in rows if r["game_version"] == gv and not r.get("club") and not r.get("league")]
+        filled = 0
+        for r in need:
+            d = get(f"{API}/player-item-definitions/{gv[2:]}/{r['ea_item_id']}/")
+            o = (d or {}).get("data") or d or {}
+            if not o:
+                continue
+            r["club"] = (o.get("club") or {}).get("name") or r.get("club")
+            r["nation"] = (o.get("nation") or {}).get("name") or r.get("nation")
+            r["league"] = (o.get("league") or {}).get("name") or r.get("league")
+            if r.get("club") or r.get("league"):
+                filled += 1
+        if need:
+            print(f"  ↪️ 목록 API 미응답 {len(need)}장 → 상세 API로 {filled}장 보충"
+                  + (f" · ⚠️ {len(need) - filled}장은 상세에도 없다" if filled < len(need) else ""))
+
     known = {x[0] for x in con.execute("SELECT ea_item_id FROM player_card_items WHERE game_version IN (%s)"
                                        % ",".join(f"'FC{g}'" for g in a.games))}
     fresh = [r for r in rows if r["ea_item_id"] not in known]

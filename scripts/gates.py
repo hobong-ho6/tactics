@@ -1181,6 +1181,44 @@ def run(db_path=None, verbose=True):
     if not ok22:
         fails.append("G22")
 
+    # G23 — ⛔⛔ **수집 결손이 늘어나면 막는다.** 2026-09-23 신설(사용자 지시 「또 같은 패턴이면
+    #   재발하지 않도록 수정해」). 하루에 **세 번** 같은 부류가 터졌다:
+    #     ⑴ 「프리킥 정확도」가 GG Club 수집에서 100% 빠졌다(필드명 오타) → PAS가 89명 전원 2~4 낮았다.
+    #     ⑵ 진화 경로가 부분 수집으로 42명 사라졌다(G21이 막게 됐다).
+    #     ⑶ 카드의 league·club이 40장 비어 보가르드가 **리그·팀 필터에서 사라졌다**(목록 API 미응답).
+    #   공통점: **소스는 주는데 우리가 흘렸고, 화면에는 「없음」으로 그럴듯하게 나타났다.**
+    #   ⇒ 필수 필드의 결손 **건수**를 매번 세고, **baseline보다 늘면 실패**한다.
+    #   ⚠️ 0을 요구하지 않는다 — 관리 4팀 밖 카드처럼 정당한 결손이 있다. 늘어나는 것만 잡는다.
+    #   ⚠️ baseline을 올릴 때는 **왜 늘었는지 사유를 여기 적는다** — 조용히 올리면 게이트가 무의미해진다.
+    G23_BASE = {                                   # (표, 필드): 허용 결손 수 (2026-09-23 실측 기준)
+        ("player_card_items", "league"): 11,       # 여성/하위리그 카드 일부 — 상세 API에도 없다
+        ("player_card_items", "club"): 4,
+        ("player_card_items", "nation"): 11,
+    }
+    g23 = []
+    for (tbl, col), base in G23_BASE.items():
+        try:
+            n = con.execute(f"SELECT COUNT(*) FROM {tbl} WHERE game_version='FC27' AND {col} IS NULL").fetchone()[0]
+        except sqlite3.OperationalError:
+            continue
+        if n > base:
+            g23.append(f"{tbl}.{col} {n} > 기준 {base}")
+    # 29속성 — GG Club이 한 필드라도 흘리면 6대 스탯이 조용히 틀어진다(⑴의 재발 감시).
+    try:
+        thin = con.execute("""SELECT COUNT(*) FROM fut_club_players
+                               WHERE status='owned' AND current_attrs IS NOT NULL
+                                 AND current_attrs NOT LIKE '%프리킥 정확도%'""").fetchone()[0]
+        if thin:
+            g23.append(f"fut_club_players.current_attrs 프리킥 결손 {thin}명 (fut.gg 필드명 확인)")
+    except sqlite3.OperationalError:
+        pass
+    ok23 = not g23
+    if verbose:
+        print(f"G23 수집 필드 결손: 기준 초과 {len(g23)} "
+              + ("✅" if ok23 else "❌ " + " · ".join(g23[:3]) + " → 수집기가 흘리는지 원본 응답을 직접 확인할 것"))
+    if not ok23:
+        fails.append("G23")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")
