@@ -1135,6 +1135,14 @@ function optionsHTML(c, best){
       mineCur ? ` · ✅ = <b>${esc(mineName)}</b>가 <b>실제로 고른</b> 가지(기록)` : ''}</small></div>`;
 }
 let SHOW_UNOWNED = false;   // 선수별 패스는 **보유 카드만**이 기본(위 주석)
+/* ⭐⭐ **더 할 게 없는 선수는 기본으로 접는다**(2026-09-23 사용자 지적
+   「이미 적용 완료했거나 더 이상 적용할 수 있는 진화가 없는 선수들도 나오고 있다」).
+   ⛔ 종전엔 `RANKED[p].length`만 봐서 **전부 「✓ 이미 적용 완료」인 선수**(완비사카)가 제안 목록에 섰다.
+   ⇒ 「지금 밟을 수 있는 것」이 하나도 없으면 접는다 — 다만 **건수를 적어** 토글로 펼 수 있게 둔다
+      (숨긴 것을 조용히 없애지 않는다 · docs/70 「N건 숨김 배지」). */
+let SHOW_DONE = localStorage.getItem('evo_show_done') === '1';
+/* 이 선수에게 **지금 할 수 있는 것**의 수 = 열린 경로 중 완주하지 않은 것 + 경로 없이 걸 수 있는 진화 */
+const actionable = pid => (RANKED[pid] || []).filter(r => !doneScore(r, +pid)).length + eligOpen(+pid).length;
 let PATH_TEAM = 'AVL';
 function renderPaths(team, focusPid){
   PATH_TEAM = team = team || PATH_TEAM;
@@ -1172,11 +1180,16 @@ function renderPaths(team, focusPid){
      종전엔 `RANKED[p].length`만 봐서 음바예·마첸처럼 특별 카드 전용 진화만 열린 선수가 목록에서 통째로 빠졌다. */
   const all = [...new Set([...Object.keys(RANKED).map(Number), ...Object.keys(ELIG_BY_PID).map(Number)])]
     .filter(p => (team === 'ALL' || TEAM_OF[p] === team) && ((RANKED[p] || []).length || eligOpen(p).length));
+  const nDone = all.filter(p => !actionable(p)).length;
   const nOwned = all.filter(p => STATE[String(p)]).length, nNot = all.length - nOwned;
-  const pids = all.filter(p => SHOW_UNOWNED || STATE[String(p)])
+  const pids = all.filter(p => (SHOW_UNOWNED || STATE[String(p)]) && (SHOW_DONE || actionable(p)))
     .sort((a, b) => (RANKED[b][0]?.tier ?? 0) - (RANKED[a][0]?.tier ?? 0) || (RANKED[b][0]?.d ?? 0) - (RANKED[a][0]?.d ?? 0));
   /* ⚠️ 이 버튼은 `nNot` **선언 뒤에** 만들어야 한다 — 위쪽(프리미엄 토글 옆)에 두면
      `Cannot access 'nNot' before initialization`으로 **렌더가 통째로 죽는다**(2026-09-22 실측). */
+  if (nDone)
+    addFilter(SHOW_DONE, `완료·더 할 것 없음${SHOW_DONE ? '' : ` ${nDone}명`}`,
+      '밟을 수 있는 진화가 하나도 남지 않은 선수 — 경로를 전부 완주했거나, 남은 경로가 소진·프리미엄으로 막혔다',
+      () => { SHOW_DONE = !SHOW_DONE; localStorage.setItem('evo_show_done', SHOW_DONE ? '1' : '0'); renderPaths(team); });
   if (nNot)
     addFilter(SHOW_UNOWNED, `미보유 선수${SHOW_UNOWNED ? '' : ` ${nNot}명`}`,
       '내 구단에 카드가 없는 선수 — 사면 이 경로를 밟을 수 있다(전술 구현 탭의 구매 우선순위와 같은 축)',

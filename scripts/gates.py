@@ -1084,6 +1084,38 @@ def run(db_path=None, verbose=True):
     if not ok20:
         fails.append("G20")
 
+    # G21 — ⛔⛔ **중단된 수집이 「최신 회차」로 굳지 않게 한다.** 2026-09-23 신설(사용자 지적
+    #   「Midfield Glow Up은 보가르드가 할 수 있는데 적용 가능 0명」 → 「이제 재발하지 않나?」).
+    #   무엇이 터졌나: 진화 경로 수집이 ATM 11명에서 끊겼는데 export가 그 회차를 최신으로 채택해
+    #   **나머지 42명의 경로가 0건**이 됐다. 화면엔 오류가 아니라 「경로 없음」이라는 그럴듯한 사실로 보인다.
+    #   ⇒ export 쿼리를 하나씩 고치는 것으로는 부족하다(같은 부류의 스냅샷 테이블이 여럿이다) —
+    #     **최신 회차가 직전 회차보다 크게 쪼그라들면 여기서 막는다.**
+    #   ⚠️ 정당하게 줄어드는 경우가 있다(진화 마감·카드 처분). 그래서 **절반 미만**일 때만 실패로 본다.
+    #   ⚠️ 회차가 1개뿐이면 비교 대상이 없다 — 통과시킨다(첫 수집을 막으면 안 된다).
+    G21_TABLES = ["player_evolutions", "fc_evolutions", "fc_evolution_eligibility",
+                  "futgg_chem_signals", "fc_objective_tasks", "player_card_prices"]
+    g21_bad = []
+    for t in G21_TABLES:
+        try:
+            hist = con.execute(f"SELECT pulled, COUNT(*) FROM {t} GROUP BY pulled "
+                               "ORDER BY pulled DESC LIMIT 2").fetchall()
+        except sqlite3.OperationalError:
+            continue                      # 아직 없는 표는 건너뛴다
+        if len(hist) < 2:
+            continue
+        (p_now, n_now), (p_prev, n_prev) = hist
+        if n_prev and n_now * 2 < n_prev:
+            g21_bad.append(f"{t} {p_prev}={n_prev} → {p_now}={n_now}")
+    ok21 = not g21_bad
+    if verbose:
+        detail = ("❌ " + " · ".join(g21_bad[:3])
+                  + " → 그 회차 수집이 중단됐을 수 있다. 다시 완주시키거나, "
+                    "정말 줄어든 것이면 사유를 적고 baseline에 넣을 것")
+        print(f"G21 수집 회차 완결성: 최신 회차가 직전의 절반 미만인 표 {len(g21_bad)} "
+              f"· (감시 {len(G21_TABLES)}표) {'✅' if ok21 else detail}")
+    if not ok21:
+        fails.append("G21")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")
