@@ -109,6 +109,23 @@ export function fcPitch(xi, bench, meta = {}) {
   </div>`;
 }
 
+/* ⭐⭐ **카드 그리드 + 사이드패널** (2026-09-23 사용자 지시
+   「선수별 진화 패스에서 리스트로 보여지는 건 선수 카드이고, 카드를 눌렀을 때 사이드 패널로
+    지금 보여지는 진화 관련 정보가 나오도록」).
+   ⛔ 카드 렌더러를 여기 다시 짜지 않는다 — `fcPitch`와 **같은 `card()`**를 쓴다.
+      두 벌이 되면 한쪽만 고쳐져 같은 카드가 탭마다 다르게 보인다(docs/70 「현재 상태」 사고).
+   ⚠️ 렌더 뒤 `paintEvoCards()`를 불러야 진화 카드의 인쇄값이 현재 값으로 바뀐다(fcPitch와 같다).
+   `rows`: [{ player, posName, badge, tone }] — badge는 카드 밑에 붙는 한 줄(상태 요약). */
+export function fcCardGrid(rows, { sideId = 'fcside', side = '' } = {}) {
+  const tiles = rows.map(r => `<div class="fc-gcell${r.tone ? ' t-' + r.tone : ''}" data-gp="${r.player?.player_id ?? ''}">
+      ${card(r.player, null, r.posName ?? (r.player?.positions?.split(',')[0] ?? ''), { bench: true })}
+      ${r.badge ? `<div class="fc-gbadge">${r.badge}</div>` : ''}</div>`).join('');
+  return `<div class="fc-wrap fc-gridwrap"><div class="fc-layout">
+      <div class="fc-main"><div class="fc-grid">${tiles}</div></div>
+      <aside class="fc-side" id="${sideId}">${side}</aside>
+    </div></div>`;
+}
+
 /* 진화 카드 아트를 현재 값으로 다시 그린다. fcPitch/벤치를 렌더한 **뒤에** 부른다.
    ⛔ 여기서 값을 만들지 않는다 — `data-evo-*`에 실어둔 원장 값을 그대로 그린다. */
 export function paintEvoCards(root = document) {
@@ -569,6 +586,20 @@ export function fcSideEmpty(meta = {}, xi = []) {
 }
 
 export const FC_CSS = `
+/* 카드 그리드 — fcCardGrid(). 피치가 아니라 목록으로 세울 때 쓴다.
+   ⚠️ 피치용 칼럼 폭(820+460)을 그대로 쓰면 좁은 화면에서 사이드가 밖으로 밀려 안 보인다 —
+   그리드는 폭을 자유롭게 쓸 수 있으니 여기만 따로 잡고, 1100px 아래에서는 한 칼럼으로 접는다. */
+.fc-gridwrap .fc-layout{grid-template-columns:minmax(300px,1fr) minmax(360px,560px)}
+@media (max-width:1100px){.fc-gridwrap .fc-layout{grid-template-columns:1fr}
+  .fc-gridwrap .fc-side{position:static;max-height:none}}
+.fc-grid{display:flex;flex-wrap:wrap;gap:10px}
+.fc-gcell{width:104px;cursor:pointer;position:relative;border-radius:8px;padding:3px;transition:background .12s}
+.fc-gcell:hover{background:rgba(255,255,255,.06)}
+.fc-gcell.sel{outline:2px solid var(--acc);background:rgba(255,255,255,.08)}
+.fc-gcell .fc-gbadge{font-size:10px;line-height:1.35;text-align:center;margin-top:2px;color:var(--dim)}
+.fc-gcell.t-go .fc-gbadge{color:var(--ok)}
+.fc-gcell.t-wait .fc-gbadge{color:var(--warn)}
+
 .fc-wrap{--fcg1:#0f3d24;--fcg2:#0a2e1b}
 /* ⚠️ 칼럼을 1fr로 두면 안 된다(2026-09-20 사용자 지적 「중간에 공백이 많다」): 1fr은 남는 폭을 전부
    먹는데 .fc-main은 자기 최대 폭에서 멈추므로, 넓은 화면에서 **피치와 사이드 사이에 800px짜리 빈
