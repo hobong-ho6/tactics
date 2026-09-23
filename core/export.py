@@ -281,7 +281,12 @@ def export_all(db_path=None, window="2026-summer"):
           LEFT JOIN player_card_items i ON i.ea_item_id=c.ea_item_id
           LEFT JOIN players pl ON pl.id=c.player_id
          WHERE c.status='owned' AND c.player_id IS NOT NULL""")
-    accounts = _rows(con, "SELECT id, name, platform, game_version, notes, created FROM fut_accounts ORDER BY id")
+    # ⭐ 해금 상태(migration 060) — **소진과 다른 축**이다. 시즌패스 레벨·프리미엄 구매 여부가 없으면
+    #    `[SP 11]`·`[SP+ 14]` 진화를 「지금 걸 수 있다」로 잘못 보여준다(2026-09-23 실증).
+    accounts = _rows(con, "SELECT id, name, platform, game_version, notes, created, "
+                          "season_pass_level, has_premium_pass, unlocks_checked FROM fut_accounts ORDER BY id")
+    # 목표형 해금(「Pep's Domination」 등)은 레벨로 계산되지 않는다 — 진화 단위 기록을 함께 내보낸다.
+    unlocks = _rows(con, "SELECT account_id, evo_id, unlocked, noted, note FROM fut_evolution_unlocks")
     # 보유 선수 — 케미스트리 원료(국적·리그·클럽·포지션, migration 044)를 카드 표에서 붙여 함께 내보낸다.
     # 화면이 케미 XI를 계산하려면 이 4개가 있어야 한다. 조인은 아이템 id로만 한다(이름 조인 금지).
     # ⭐ `name`은 `club.state`와 **같은 규칙**으로 정한다(위 주석) — 두 표가 갈리면 같은 화면 안에서도 이름이 섞인다.
@@ -343,7 +348,7 @@ def export_all(db_path=None, window="2026-summer"):
                            "tactics": tactics, "tactic_roles": tactic_roles,
                            "club": {"accounts": accounts, "players": club, "log": log,
                                      # ⭐ 화면이 「현재」를 각자 고르지 않게 하는 정본(위 주석)
-                                     "state": {str(r["player_id"]): r for r in club_state}}}))
+                                     "state": {str(r["player_id"]): r for r in club_state}, "unlocks": unlocks}}))
 
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──
     # ⭐ 세 층을 그대로 내보낸다: 메타(파싱) · obs_points(검증된 판정) · summary/key_points(사람 요약).

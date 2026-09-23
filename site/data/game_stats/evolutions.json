@@ -11259,10 +11259,13 @@
    {
     "created": "2026-09-18",
     "game_version": "FC27",
+    "has_premium_pass": 0,
     "id": 1,
     "name": "main",
-    "notes": "2026-09-19 fut.gg GG Club 조회: 활성 스쿼드 「Hobong」 4-2-3-1 · fut.gg 계산 케미 33/33 — 우리 케미 계산기 결과와 일치(검증). 보유 47명(09-18 싱크 상태) · 케미 스타일 전원 미적용(Basic 250 / GK Basic 273)",
-    "platform": "PS5"
+    "notes": "2026-09-19 fut.gg GG Club 조회: 활성 스쿼드 「Hobong」 4-2-3-1 · fut.gg 계산 케미 33/33 — 우리 케미 계산기 결과와 일치(검증). 보유 47명(09-18 싱크 상태) · 케미 스타일 전원 미적용(Basic 250 / GK Basic 273) [2026-09-23] 시즌패스: 사용자 확인 「7 미만」·프리미엄 미구매. ⚠️ season_pass_level=0은 정확한 값이 아니라 **보수적 하한**이다 — 현행 최저 레벨형 진화가 SP 7이라 판정 결과는 같고, 잘못 열리는 것보다 잘못 잠기는 쪽이 안전하다. 정확한 레벨을 알게 되면 갱신할 것.",
+    "platform": "PS5",
+    "season_pass_level": 0,
+    "unlocks_checked": "2026-09-23"
    }
   ],
   "log": [
@@ -16852,7 +16855,23 @@
     "weak_foot": 2,
     "weight_kg": 72
    }
-  }
+  },
+  "unlocks": [
+   {
+    "account_id": 1,
+    "evo_id": 2501,
+    "note": "목표 「Pep's Domination」 미완료 — 사용자 확인 2026-09-23",
+    "noted": "2026-09-23",
+    "unlocked": 0
+   },
+   {
+    "account_id": 1,
+    "evo_id": 2500,
+    "note": "목표 「Ted Lasso's Masterclass」 미완료 — 사용자 확인 2026-09-23",
+    "noted": "2026-09-23",
+    "unlocked": 0
+   }
+  ]
  },
  "eligible": [
   {

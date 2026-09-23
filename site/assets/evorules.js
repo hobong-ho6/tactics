@@ -47,13 +47,42 @@ export function evoRules(EVO, accName){
   for (const k in consumed) consumed[k].exhausted = consumed[k].count >= (repeat[k] ?? 1);
   for (const k in applied) applied[k].maxLevel = Math.max(...applied[k].levels);
 
-  /* 프리미엄 시즌패스 — 판정 근거는 `unlock_text`의 「Premium Season Pass」다(이름의 `[SP+ N]`은 보조 신호). */
-  const premIds = new Set((EVO?.catalog || [])
-    .filter(c => /Premium Season Pass/i.test((c.unlock_text || '') + ' ' + (c.description || '')))
-    .map(c => c.evo_id));
+  /* ⛔⛔ **해금은 소진과 다른 축이고, 잠금이 세 종류다**(2026-09-23 사용자 지적
+     「여전히 적용할 진화가 없는데 선수들이 노출되고 있음」).
+       ⑴ `… level N in the Premium Season Pass.` — 프리미엄 구매 + 레벨 N
+       ⑵ `… level N in the Standard Season Pass.` — 레벨 N (구매는 불필요)
+       ⑶ 「Ted Lasso's Masterclass」·「Pep's Domination」 같은 **목표 완료**
+     종전엔 ⑴만 걸러 ⑵⑶이 전 선수에게 「지금 걸 수 있는 진화」로 붙었다
+     (Relentless [SP 11] · Creative or Composed? [SP 27] · Pinged Pass가 AVL 전원에게).
+     ⚠️ 해금 여부는 **계정 상태**라 fut.gg가 주지 않는다 — `fut_accounts`·`fut_evolution_unlocks`(migration 060)가 정본.
+     ⚠️ 레벨을 모르면(NULL) **「모름」으로 둔다** — 「해금됨」으로도 「잠김」으로도 단정하지 않는다(obs#132). */
+  const spLevel = acc?.season_pass_level ?? null;
+  const hasPrem = acc?.has_premium_pass === 1;
+  const manual = {};
+  for (const u of (EVO?.club?.unlocks || [])) if (!acc || u.account_id === acc.id) manual[u.evo_id] = !!u.unlocked;
+  const lockInfo = {};
+  for (const c of (EVO?.catalog || [])){
+    const t = (c.unlock_text || '') + ' ' + (c.description || '');
+    const m = /reaching level\s+(\d+)\s+in the\s+(Premium|Standard)\s+Season Pass/i.exec(t);
+    let info = null;
+    if (m){
+      const need = +m[1], prem = /premium/i.test(m[2]);
+      if (prem && !hasPrem) info = { locked: true, why: `프리미엄 시즌패스 미구매 (레벨 ${need} 필요)`, kind: 'prem' };
+      else if (spLevel == null) info = { locked: true, unknown: true, why: `시즌패스 레벨 ${need} 필요 — 내 레벨을 모른다`, kind: 'sp' };
+      else if (spLevel < need) info = { locked: true, why: `시즌패스 레벨 ${need} 필요 (지금 ${spLevel})`, kind: 'sp' };
+    } else if (c.unlock_text && !/^Unlocked by/i.test(c.unlock_text)){
+      /* 목표형 — 이름만 있고 조건식이 없다. 기록이 없으면 「모름」이다. */
+      if (manual[c.evo_id] !== true)
+        info = { locked: true, unknown: manual[c.evo_id] === undefined,
+                 why: `목표 「${c.unlock_text}」 완료 필요`, kind: 'obj' };
+    }
+    if (manual[c.evo_id] === true) info = null;      // 사용자가 해금했다고 기록하면 그것이 이긴다
+    if (info) lockInfo[c.evo_id] = info;
+  }
+  const premIds = new Set(Object.keys(lockInfo).map(Number));   // 이름은 유지 — 호출부가 「잠긴 것」 집합으로 쓴다
 
   return {
-    acc, consumed, applied, premIds,
+    acc, consumed, applied, premIds, lockInfo, spLevel, hasPrem,
     /* 소진된 진화를 낀 경로는 **그 진화를 쓴 선수 본인 외** 모두에게서 닫힌다 */
     open: (ids, pid) => (ids || []).every(i => !consumed[i]?.exhausted || consumed[i].by.some(b => b.pid === pid)),
     premium: ids => (ids || []).some(i => premIds.has(i)),

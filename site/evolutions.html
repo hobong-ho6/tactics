@@ -828,7 +828,12 @@ let APPLIED = RULES.applied;
 /* 이 경로에 들어 있는 진화 중 **이 선수가 이미 밟은 것**들 */
 const appliedIn = (r, pid) => RULES.appliedIn(r.ids, pid);
 const pathOpen = (r, pid) => RULES.open(r.ids, pid);
-let SHOW_PREM = localStorage.getItem('evo_show_prem') === '1';   // 프리미엄 미구매가 기본
+/* ⭐ 「잠긴 진화」 토글 — 종전 이름은 SHOW_PREM(프리미엄 전용)이었으나 2026-09-23에
+   **잠금 3종 전체**(프리미엄·표준 시즌패스 레벨·목표 완료)로 넓혔다. 상태 키는 그대로 둔다. */
+let SHOW_PREM = localStorage.getItem('evo_show_prem') === '1';   // 잠긴 것은 숨기는 게 기본
+const LOCK_WHY = id => RULES.lockInfo[id]?.why || '';
+const lockChip = id => { const L = RULES.lockInfo[id]; return L
+  ? `<span class="chip" style="border-color:var(--warn);color:var(--warn)" title="${esc(L.why)}${L.unknown ? ' — 내 계정 상태를 모른다. 진화·내 구단 탭에서 시즌패스 레벨을 기록하면 정확해진다.' : ''}">🔒 ${L.unknown ? '해금 미확인' : '잠김'}</span>` : ''; };
 const pathPrem = r => RULES.premium(r.ids);
 
 /* ⭐⭐ **경로 축이 못 덮는 적용 가능 선수** (2026-09-22 사용자 지적
@@ -950,7 +955,7 @@ function renderCatalog(team = CAT_TEAM){
   fb.innerHTML = ''; fb.hidden = !(nUsed || nPrem);
   if (!fb.hidden) fb.innerHTML = '<span class="filt-lab">필터</span>'
     + (nUsed ? `<button class="filt${SHOW_USED ? ' on' : ''}" id="usedtog"><i>${SHOW_USED ? '☑' : '☐'}</i>소진 진화${SHOW_USED ? '' : ` ${nUsed}종`}</button>` : '')
-    + (nPrem ? `<button class="filt${SHOW_PREM ? ' on' : ''}" id="premtog" title="프리미엄 시즌패스를 구매해야 열리는 진화다"><i>${SHOW_PREM ? '☑' : '☐'}</i>프리미엄 SP${SHOW_PREM ? '' : ` ${nPrem}종`}</button>` : '');
+    + (nPrem ? `<button class="filt${SHOW_PREM ? ' on' : ''}" id="premtog" title="아직 해금하지 않은 진화 — 프리미엄 시즌패스 미구매 · 표준 시즌패스 레벨 미달 · 목표 미완료${RULES.spLevel == null ? '\n⚠️ 내 시즌패스 레벨이 기록돼 있지 않아 레벨형은 전부 「미확인」으로 잡힌다 — 내 구단 탭에서 기록할 것' : `\n지금 시즌패스 레벨 ${RULES.spLevel}`}"><i>${SHOW_PREM ? '☑' : '☐'}</i>해금 안 됨${SHOW_PREM ? '' : ` ${nPrem}종`}</button>` : '');
   const tog = document.getElementById('usedtog');
   if (tog) tog.addEventListener('click', () => { SHOW_USED = !SHOW_USED; renderCatalog(CAT_TEAM); });
   const ptog = document.getElementById('premtog');
@@ -977,7 +982,7 @@ function renderCatalog(team = CAT_TEAM){
         /* ⭐ 이월 행 표시(migration 059) — fut.gg 목록에는 있는데 API가 객체를 안 주는 진화다.
            이 회차엔 **목록 생존만** 확인했고 아래 내용은 과거 관측값이다. 실측과 같은 얼굴로 두지 않는다. */
         c.carried_from ? `<span class="chip dim" title="fut.gg 목록에는 있으나 paths·적용 가능 선수 API가 이 진화의 객체를 주지 않는다(단독·특별카드 전용). 이번 회차엔 목록에 살아 있다는 것만 확인했고, 아래 조건·업그레이드·마감은 ${esc(c.carried_from)} 관측값 그대로다.">${esc(c.carried_from)} 관측값</span>` : ''}
-        ${used ? `<span class="chip" style="border-color:var(--bad);color:var(--bad)">${used.exhausted ? '소진' : `사용 ${used.count}/${c.repeatability || 1}`} — ${used.by.map(b => `${esc(b.name)} ${esc(b.date)}`).join(', ')}</span>` : ''}</h3>
+        ${lockChip(c.evo_id)}${used ? `<span class="chip" style="border-color:var(--bad);color:var(--bad)">${used.exhausted ? '소진' : `사용 ${used.count}/${c.repeatability || 1}`} — ${used.by.map(b => `${esc(b.name)} ${esc(b.date)}`).join(', ')}</span>` : ''}</h3>
       ${best && !used?.exhausted ? `<div class="pcard tier${best.tier}" style="margin:6px 0;padding:6px 10px"><span class="badge hi">이 진화 최적 선수</span> <b>${esc(best.name)}</b>
         <small class="dim">${best.tier === 2 ? '처방 역할 Role++' : best.tier === 1 ? '처방 역할 Role+' : '처방 역할 무관(능력치만)'} · ${best.owned ? '내 구단 보유' : `미보유 · ${fmtPrice(best.price)}`} · ${best.k ? `${best.k + 1}단계째(선행 ${best.k})` : '즉시 적용'}${best.d ? ` · OVR +${best.d}` : ''}</small> ${best.rs ? scoreChip(best.rs) : ''}
         <div class="dim" style="font-size:11px;margin-top:3px"><b>적용 후</b> OVR ${best.path.ovr_before}→${best.path.ovr_after} · ${sixText(best.path.six_before, best.path.six_after)}</div></div>` : ''}
@@ -1168,8 +1173,9 @@ function renderPaths(team, focusPid){
     bar.appendChild(b);
   };
   if (hidden || SHOW_PREM)
-    addFilter(SHOW_PREM, `프리미엄 SP 경로${SHOW_PREM ? '' : ` ${hidden}건`}`,
-      '프리미엄 시즌패스를 구매해야 열리는 진화가 낀 경로다', () => {
+    addFilter(SHOW_PREM, `해금 안 된 진화${SHOW_PREM ? '' : ` ${hidden}건`}`,
+      '아직 해금하지 않은 진화가 낀 경로 — 프리미엄 미구매 · 표준 시즌패스 레벨 미달 · 목표 미완료'
+      + (RULES.spLevel == null ? '\n⚠️ 내 시즌패스 레벨이 기록돼 있지 않아 레벨형은 전부 「미확인」이다' : `\n지금 레벨 ${RULES.spLevel}`), () => {
         SHOW_PREM = !SHOW_PREM; localStorage.setItem('evo_show_prem', SHOW_PREM ? '1' : '0');
         buildRanked(); renderPaths(team); renderCatalog(CAT_TEAM); });
 
@@ -1207,7 +1213,12 @@ function renderPaths(team, focusPid){
       ${eligPanel(+pid)}
       ${rows.slice().sort((a, b) => (doneScore(a, +pid) - doneScore(b, +pid)))
             .map((r, i) => pathHTML(r, i, +pid)).join('')}</div>`;
-  }).join('') || '<span class="dim">이 팀에 열린 진화 경로가 없다.</span>';
+  }).join('') || `<div class="dim" style="font-size:13px">이 팀에 <b>지금 밟을 수 있는 진화가 없다</b> —
+    ${[hidden ? `<b>해금 안 됨 ${hidden}건</b>(프리미엄 미구매·시즌패스 레벨 미달·목표 미완료)` : '',
+       nDone ? `<b>완료·더 할 것 없음 ${nDone}명</b>` : '',
+       `<b>소진</b>된 진화가 낀 경로`].filter(Boolean).join(' · ')}.
+    ${/* ⛔ 「없다」를 결손으로 읽히게 두지 않는다 — 사유와 건수를 적는다(obs#132). */''}
+    <br>위 필터를 켜면 접힌 것을 볼 수 있다.${RULES.spLevel == null ? '' : ` 지금 시즌패스 레벨 <b>${RULES.spLevel}</b>.`}</div>`;
   evoTips(document.getElementById('paths'));
   if (focusPid) document.getElementById(`pp${focusPid}`)?.scrollIntoView({ block: 'start' });
 }

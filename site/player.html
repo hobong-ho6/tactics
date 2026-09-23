@@ -856,9 +856,9 @@ function renderEvo(sel){
   const nHidden = nAll - openRows.length;
   const hiddenNote = nHidden
     ? `<div class="dim" style="font-size:12px;margin-bottom:6px">경로 ${nHidden}건은 제외했다 —
-        <b>이미 소진</b>됐거나 <b>프리미엄 시즌패스</b> 전용 진화가 끼어 있다(진화·내 구단과 같은 기준).</div>` : '';
+        <b>이미 소진</b>됐거나 <b>아직 해금하지 않은</b> 진화가 끼어 있다 — 프리미엄 미구매 · 표준 시즌패스 레벨 미달 · 목표 미완료(진화·내 구단과 같은 기준).</div>` : '';
   if (!openRows.length){
-    el.innerHTML = eligHTML + `<span class="dim">밟을 수 있는 경로 없음 — 수집된 ${nAll}건이 모두 만료·소진됐거나 프리미엄 전용이다.</span>`;
+    el.innerHTML = eligHTML + `<span class="dim">밟을 수 있는 경로 없음 — 수집된 ${nAll}건이 모두 만료·소진됐거나 <b>아직 해금하지 않은</b> 진화를 낀다.</span>`;
     return; }
   scored.length = 0; scored.push(...openRows);
   const best = scored[0];

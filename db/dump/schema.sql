@@ -782,7 +782,7 @@ CREATE TABLE fut_accounts(
   game_version TEXT NOT NULL REFERENCES game_versions(code),
   notes TEXT,
   created TEXT NOT NULL
-);
+, season_pass_level INTEGER, has_premium_pass INTEGER, unlocks_checked TEXT);
 CREATE TABLE fut_club_players(
   id INTEGER PRIMARY KEY,
   account_id INTEGER NOT NULL REFERENCES fut_accounts(id),
@@ -1016,3 +1016,11 @@ CREATE TABLE fc_evolution_eligibility(
   PRIMARY KEY (game_version, evo_id, ea_item_id, pulled)
 );
 CREATE INDEX ix_evo_elig_player ON fc_evolution_eligibility(player_id, pulled);
+CREATE TABLE fut_evolution_unlocks(
+  account_id INTEGER NOT NULL REFERENCES fut_accounts(id),
+  evo_id     INTEGER NOT NULL,
+  unlocked   INTEGER NOT NULL DEFAULT 1,   -- 1=해금됨 0=명시적으로 아직 아님
+  noted      TEXT,                          -- 확인한 날
+  note       TEXT,
+  PRIMARY KEY (account_id, evo_id)
+);
