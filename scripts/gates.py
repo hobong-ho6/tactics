@@ -1092,8 +1092,11 @@ def run(db_path=None, verbose=True):
     #     **최신 회차가 직전 회차보다 크게 쪼그라들면 여기서 막는다.**
     #   ⚠️ 정당하게 줄어드는 경우가 있다(진화 마감·카드 처분). 그래서 **절반 미만**일 때만 실패로 본다.
     #   ⚠️ 회차가 1개뿐이면 비교 대상이 없다 — 통과시킨다(첫 수집을 막으면 안 된다).
+    #    ⚠️ `fut_tactic_roles`는 **사람이 RSC 페이지 본문을 읽어** 11칸을 적는다(club-sync §3-3) —
+    #       중간에 끊기면 슬롯이 조용히 빠진다. 다른 미감시 표들은 1~37행짜리 단발 수집이라 제외했다.
     G21_TABLES = ["player_evolutions", "fc_evolutions", "fc_evolution_eligibility",
-                  "futgg_chem_signals", "fc_objective_tasks", "player_card_prices"]
+                  "futgg_chem_signals", "fc_objective_tasks", "player_card_prices",
+                  "fut_tactic_roles"]
     g21_bad = []
     for t in G21_TABLES:
         try:

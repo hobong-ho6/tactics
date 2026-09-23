@@ -590,7 +590,10 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       .sort((a, b) => String(a.applied_at).localeCompare(String(b.applied_at)) || a.id - b.id);
     const applied = logs.map(l => l.evo_id);
     const src = cards.find(c => c.item_id === ownedItem) || cards.find(c => c.is_base) || {};
-    let six = {}; try { six = JSON.parse(club.current_six || '{}'); } catch(e){}
+    /* ⛔ 값은 **`club.state`가 정본**이다(불변규칙 13 ② 단일 정본 · docs/70 「현재 상태」 사고).
+       `club.players`는 여기서 **카드 행 id·아이템 id 조회용**으로만 쓴다 — 두 표에서 각자 값을 고르면
+       같은 선수가 화면마다 다른 숫자로 보인다(Alysson 70 ↔ 78이 그렇게 났다). */
+    let six = {}; try { six = JSON.parse(state?.six || club.current_six || '{}'); } catch(e){}
     const K = isGkRow ? ['DIV','HAN','KIC','REF','SPD','POS'] : ['PAC','SHO','PAS','DRI','DEF','PHY'];
     const v = (i, alt) => six[K[i]] ?? six[alt] ?? null;
     let img = null;
@@ -602,8 +605,8 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       }
     }
     evoCard = { item_id: `evo:${club.id}`, is_base: 0, rarity_name: `진화 ${evoLevels}단계`, evo: true,
-      ovr: club.current_ovr, pac: v(0,'PAC'), sho: v(1,'SHO'), pas: v(2,'PAS'), dri: v(3,'DRI'), def: v(4,'DEF'), phy: v(5,'PHY'),
-      best_pos: src.best_pos, positions: src.positions, playstyles: club.current_playstyles ?? src.playstyles,
+      ovr: state?.ovr ?? club.current_ovr, pac: v(0,'PAC'), sho: v(1,'SHO'), pas: v(2,'PAS'), dri: v(3,'DRI'), def: v(4,'DEF'), phy: v(5,'PHY'),
+      best_pos: src.best_pos, positions: src.positions, playstyles: state?.playstyles ?? club.current_playstyles ?? src.playstyles,
       /* ⭐ 결과 카드 이미지가 없으면 **기본 아트 위에 우리 수치를 덮어 그린다**(2026-09-19 사용자 지시
          「진화 카드가 없으면 … 카드의 스탯만 고쳐서 보여줘」). fut.gg 아트는 OVR·6대 스탯이 그림에 인쇄돼 있어
          그대로 두면 진화 전 값이 보인다 — 그 자리에 현재 값을 덮고, 덮었다는 사실을 캡션에 적는다. */
