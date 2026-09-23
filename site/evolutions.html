@@ -2,6 +2,7 @@
 <html lang="ko"><head><meta charset="utf-8"><title>진화·내 구단 — tactics v2</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/clubviz.css?v=20260923a">
 <style>
 .evo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
 .evo-card{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--panel)}
@@ -116,7 +117,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
 import { evoRules } from './assets/evorules.js?v=20260922c';
-import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, FC_CSS, cardDetail, FC_DETAIL_CSS, applyEvoLevel, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT } from './assets/clubviz.js?v=20260923a';
+import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT } from './assets/clubviz.js?v=20260923a';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -808,7 +809,7 @@ function xiAt(i){
   return s ? playerBySlot(s) : null;
 }
 
-(() => { const st=document.createElement('style'); st.textContent = FC_CSS + FC_DETAIL_CSS; document.head.appendChild(st); })();
+/* 카드·사이드패널 스타일은 `assets/clubviz.css`가 정본이다(2026-09-23에 JS 리터럴에서 뺐다 — 그 파일 머리 참조). */
 
 document.querySelectorAll('.menubar [data-tab]').forEach(b => b.addEventListener('click', () => {
   document.querySelectorAll('.menubar [data-tab]').forEach(x => x.classList.toggle('on', x === b));
