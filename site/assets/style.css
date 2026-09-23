@@ -397,10 +397,11 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .evo-result{margin-top:10px;border-top:1px dotted var(--line);padding-top:8px}
 .evo-result-h{font-size:11.5px;font-weight:800;color:var(--acc);letter-spacing:.03em;margin-bottom:6px}
 .evo-result-h small{font-weight:400;letter-spacing:0}
-@media(min-width:1100px){
-  .path>.evo-dumb{display:inline-block;vertical-align:top;width:46%}
-  .path>.evo-result{display:inline-block;vertical-align:top;width:52%;margin-left:2%;border-top:0;padding-top:0}
-}
+/* ⛔ 2026-09-23 사용자 지시 「최적 제안이 혼자 열을 차지하고 있으니 적용 후 선수 프로필 위에
+   위치시켜 너비를 더 넓게 사용」 — 종전엔 넓은 화면에서 덤벨 46% ↔ 프로필 52%로 **나란히** 뒀다.
+   그 결과 덤벨 쪽 열은 6줄짜리 차트 하나로 끝나 **아래가 통째로 비고**, 프로필은 절반 폭에 갇혀
+   29속성 표·PlayStyle·전술이 세로로 길게 늘어졌다.
+   ⇒ **세로로 쌓고 각자 전폭**을 쓴다. 두 블록 모두 가로로 넓을수록 읽기 쉬운 내용이다. */
 
 .evo-drift{border-left:2px solid var(--warn);background:rgba(255,213,77,.06);border-radius:0 6px 6px 0;
   padding:6px 9px;margin:0 0 8px;font-size:11.5px;line-height:1.55;color:var(--dim)}

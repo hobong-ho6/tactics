@@ -9,7 +9,8 @@
 .evo-card h3{margin:0 0 6px;font-size:15px}
 .req{display:inline-block;padding:1px 7px;border:1px solid var(--line);border-radius:6px;font-size:12px;margin:2px 2px 0 0}
 .steps{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-start;margin-top:8px}
-.evo-dumb{margin:8px 0 2px;max-width:440px}
+/* 세로 배치 규칙은 style.css가 정본이다(2026-09-23) — 같은 규칙을 두 곳에 두지 않는다. */
+.evo-dumb{margin:8px 0 2px;max-width:none}
 .evo-dumb svg{display:block;max-width:100%;height:auto}
 .step{border:1px solid var(--line);border-radius:8px;padding:8px;min-width:150px;font-size:12px;background:rgba(255,255,255,.02)}
 .step img{width:72px;display:block;margin-bottom:4px}
@@ -633,7 +634,7 @@ function pathHTML(p, i, pid){
       return `<div class="dim" style="font-size:12px;margin-top:4px"><b>적용 후 6대 스탯</b>
           <small>${pr ? '— <b>지금 내 카드</b>에서 직접 계산' : '— fut.gg가 기준 카드에서 계산'}</small>
           ${sixText(JSON.stringify(b), JSON.stringify(a))}</div>
-        <div class="evo-dumb">${sixDumbbell(b, a, { W: 420, gk })}</div>`;
+        <div class="evo-dumb">${sixDumbbell(b, a, { W: vizW(document.getElementById('pathside') || document.body, 900, 24), gk })}</div>`;
     })()}
     ${pid != null ? evoResultCard(p, pid) : ''}
     ${stepsHTML(p, pid)}

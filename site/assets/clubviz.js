@@ -595,10 +595,15 @@ export const FC_CSS = `
 @media (max-width:1100px){.fc-gridwrap .fc-layout{grid-template-columns:1fr}
   .fc-gridwrap .fc-side{position:static;max-height:none}}
 .fc-grid{display:flex;flex-wrap:wrap;gap:10px}
-.fc-gcell{width:104px;cursor:pointer;position:relative;border-radius:8px;padding:3px;transition:background .12s}
+/* 2026-09-23 사용자 지시 「카드 크기를 지금보다 더 크게」 — 104 → 150px.
+   주의: 카드 폭은 .fc-card 가 쥐고 있어 셀만 넓히면 카드는 그대로다. 셀 안에서 카드를 늘린다.
+   (이 블록 안 주석에는 백틱을 쓰지 않는다 — 리터럴이 거기서 끝난다. docs/70 · G22) */
+.fc-gcell{width:150px;cursor:pointer;position:relative;border-radius:8px;padding:3px;transition:background .12s}
+.fc-gcell .fc-card{width:100%}
+.fc-gcell .fc-card .fc-art img,.fc-gcell .fc-card .fc-art canvas{width:100%;height:auto}
 .fc-gcell:hover{background:rgba(255,255,255,.06)}
 .fc-gcell.sel{outline:2px solid var(--acc);background:rgba(255,255,255,.08)}
-.fc-gcell .fc-gbadge{font-size:10px;line-height:1.35;text-align:center;margin-top:2px;color:var(--dim)}
+.fc-gcell .fc-gbadge{font-size:11.5px;line-height:1.35;text-align:center;margin-top:2px;color:var(--dim)}
 .fc-gcell.t-go .fc-gbadge{color:var(--ok)}
 .fc-gcell.t-wait .fc-gbadge{color:var(--warn)}
 
