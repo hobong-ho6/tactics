@@ -79,13 +79,23 @@ export function evoRules(EVO, accName){
     if (manual[c.evo_id] === true) info = null;      // 사용자가 해금했다고 기록하면 그것이 이긴다
     if (info) lockInfo[c.evo_id] = info;
   }
-  const premIds = new Set(Object.keys(lockInfo).map(Number));   // 이름은 유지 — 호출부가 「잠긴 것」 집합으로 쓴다
+  /* ⭐ 2026-09-23 사용자 지적 「진화 카탈로그의 필터 중에 (프리미엄) 시즌패스 필터가 없어졌어」 —
+     잠금을 하나로 묶었더니 **프리미엄만 거르던 축**이 사라졌다. 둘은 성격이 다르다:
+       · **프리미엄** = 돈을 내야 열리는 **구매 결정**(안 사면 영영 안 열린다)
+       · **레벨·목표** = 플레이하면 열리는 **진행 상황**(시간이 지나면 열린다)
+     ⇒ 집합을 갈라 내보내고 화면이 **따로 토글**한다. `premIds`는 「잠긴 것 전부」라 호출부 호환용으로 남긴다. */
+  const premIds = new Set(Object.keys(lockInfo).map(Number));
+  const premOnlyIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.kind === 'prem').map(([k]) => +k));
+  const progressIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.kind !== 'prem').map(([k]) => +k));
 
   return {
-    acc, consumed, applied, premIds, lockInfo, spLevel, hasPrem,
+    acc, consumed, applied, premIds, premOnlyIds, progressIds, lockInfo, spLevel, hasPrem,
     /* 소진된 진화를 낀 경로는 **그 진화를 쓴 선수 본인 외** 모두에게서 닫힌다 */
     open: (ids, pid) => (ids || []).every(i => !consumed[i]?.exhausted || consumed[i].by.some(b => b.pid === pid)),
     premium: ids => (ids || []).some(i => premIds.has(i)),
+    /* 프리미엄 구매가 필요한 것 ↔ 플레이로 열리는 것 — 화면이 따로 거를 수 있게 나눠 준다. */
+    premOnly: ids => (ids || []).some(i => premOnlyIds.has(i)),
+    progressLocked: ids => (ids || []).some(i => progressIds.has(i)),
     /* 이 경로에 들어 있는 진화 중 이 선수가 이미 밟은 것 */
     appliedIn: (ids, pid) => (ids || []).map(i => applied[`${pid}:${i}`]).filter(Boolean),
     idsOf: row => J(row?.evolution_ids, []) || [],
