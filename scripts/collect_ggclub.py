@@ -154,10 +154,20 @@ def main():
     ap.add_argument("--account-id", type=int, default=1)
     ap.add_argument("--print-snippet", action="store_true", help="토큰 추출 스니펫만 출력하고 끝낸다")
     ap.add_argument("--auth-file", help="토큰 JSON이 든 파일(저장소 밖). 읽는 즉시 삭제한다.")
+    ap.add_argument("--raw-file", help="브라우저 안에서 받아 둔 원본 응답 {players,squad} JSON. 토큰 경로를 쓰지 않는다.")
     a = ap.parse_args()
 
     if a.print_snippet:
         print(SNIPPET)
+        return
+
+    # ⭐ 토큰 경로 ⑶ `--raw-file`(2026-09-24 신설) — ⑴⑵가 막혔을 때의 대안이다.
+    #    토큰을 페이지 밖(클립보드·환경변수·파일)으로 꺼내는 행위가 정책상 **자격증명 실체화**로 차단되면
+    #    브라우저 **안에서** API를 호출해 응답만 꺼내고, 여기서는 그 원본을 먹는다.
+    #    ⇒ 토큰은 페이지 스코프를 벗어나지 않고, 행 변환은 그대로 이 모듈(=단일 정본)이 한다.
+    if a.raw_file:
+        raw = json.loads(Path(a.raw_file).read_text(encoding="utf-8"))
+        write_out(rows_of(raw.get("players") or []), raw.get("squad") or [], a, pages="raw")
         return
 
     # ⭐ 토큰 경로 2개(2026-09-21 확장, 사용자 지시 「그냥 네가 실행하도록 정정해」):
@@ -203,10 +213,13 @@ def main():
     except Exception as e:
         print(f"⚠️ 활성 스쿼드 조회 실패({e}) — 선수 목록만 쓴다")
 
-    rows = rows_of(players)
+    write_out(rows_of(players), squad, a, pages=page)
+
+
+def write_out(rows, squad, a, pages):
     uniq = {r["gg"] for r in rows}
     Path(a.out).write_text(json.dumps(rows, ensure_ascii=False, indent=0), encoding="utf-8")
-    print(f"수집 {len(rows)}명(고유 {len(uniq)}) · {page}페이지 · 스쿼드 슬롯 {len(squad)} → {a.out}")
+    print(f"수집 {len(rows)}명(고유 {len(uniq)}) · {pages}페이지 · 스쿼드 슬롯 {len(squad)} → {a.out}")
     # ⛔⛔ **결손을 조용히 넘기지 않는다**(2026-09-23 · obs#132). 2026-09-22까지 「프리킥 정확도」가
     #    100% 빠지고 있었는데 아무도 몰랐고, 6대 스탯 PAS가 89명 전원에서 2~4 낮게 계산됐다.
     for miss, n in sorted(MISSING.items(), key=lambda kv: -kv[1]):
