@@ -103,13 +103,15 @@
    카드 아래 pill 줄은 배경이 어두우므로 **어두운 pill + 밝은 초록 글자**가 대비가 가장 크다. */
 .fc-evo{font-size:11px;font-weight:800;letter-spacing:.3px;
   background:rgba(3,18,9,.92);color:#5ee88a;border:1px solid rgba(94,232,138,.55);
-  border-radius:99px;padding:1px 7px;white-space:nowrap;line-height:1.45}
+  border-radius:99px;padding:1px 7px;white-space:nowrap;line-height:1.45;flex:0 0 auto}
 .fc-evo.inline{display:inline-block}
 /* 포지션·역할 pill — 카드 바로 아래 한 줄(fut.gg와 같은 자리). */
 .fc-tag{display:inline-flex;gap:5px;align-items:center;justify-content:center;margin-top:-2px;
   background:rgba(4,10,7,.82);border:1px solid var(--line);border-radius:99px;padding:2px 8px;
   font-size:10px;line-height:1.5;max-width:100%}
-.fc-tag b{font-weight:700}
+/* ⛔ 줄이 넘치면 **포지션 목록**이 잘려야 한다 — OVR 배지(74▸79)가 잘리면 뜻을 잃는다
+   (2026-09-24 실증: CDM/CM/RB 3포지션 카드에서 배지가 「74▸…」로 잘렸다). */
+.fc-tag b{font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .fc-tag span{color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fc-pips{display:inline-flex;gap:2px;flex:0 0 auto}
 .fc-pips i{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.22)}
