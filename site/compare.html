@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko"><head><meta charset="utf-8"><title>선수 비교 — tactics v2</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="assets/style.css"></head><body>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/clubviz.css?v=20260924b"></head><body>
 <div id="hdr"></div>
 <h1>선수 비교 <small class="dim">후보 풀 = 현재 잔류 스쿼드 실측 — 확정 이탈·이적 루머 제외, DB 이력은 보존</small></h1>
 <div class="panel">
@@ -10,12 +11,18 @@
     <button class="tab on" data-season="2025-26">25/26 정본 (전수)</button><button class="tab" data-season="2026-27">26/27 현재</button></span>
   <div id="seasonNote" class="dim" style="font-size:12px;margin-top:6px"></div>
 </div>
-<div class="panel"><h2 id="rankTitle"></h2><table id="rank"></table></div>
+<div class="panel" id="cmpPanel" hidden></div>
+<div class="panel"><h2 id="rankTitle"></h2>
+  <p class="dim" style="font-size:12px;margin:0 0 8px">⭐ <b>행을 누르면 비교에 담긴다</b>(둘까지) —
+    두 명이 차면 위에 <b>「이 자리가 어떻게 달라지나」</b> 패널이 열린다.</p>
+  <table id="rank"></table></div>
 <div class="cardrow" id="cards"></div>
 <script type="module">
 import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell } from './assets/data.js?v=20260924-ut-rename';
 import { Kernel } from './assets/kernel.js?v=20260825-decodemap-null';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
+import { compareReal } from './assets/realcompare.js?v=20260924d';
+const CARDS = await fetch('data/game_stats/cards.json', { cache: 'no-store' }).then(r => r.json()).catch(() => ({}));
 
 const { team } = await mountHeader('compare.html');
 const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loadGameStats('FC26')]);
@@ -78,6 +85,27 @@ const selEl = document.getElementById('slotSel');
 selEl.innerHTML = slots.map(s => `<option value="${s.pos}">${s.pos} (${s.slot_type}, x=${s.x})</option>`).join('');
 selEl.addEventListener('change', render);
 
+/* ⛔ 담긴 선수는 **슬롯이 바뀌어도 유지**한다 — 같은 선수를 다른 슬롯에서 견주는 게 이 화면의 쓸모다.
+   ⚠️ 다만 그 슬롯 후보 풀에 없으면 비교를 열지 않는다(적합 sim이 그 슬롯 기준이라야 뜻이 있다). */
+const PICK = [];
+function renderCompare(rows, slot){
+  const box = document.getElementById('cmpPanel');
+  const picked = PICK.map(pid => rows.find(r => r.player_id === pid)).filter(Boolean);
+  if (picked.length < 2){
+    box.hidden = !PICK.length;
+    if (PICK.length) box.innerHTML = `<p class="dim">비교에 <b>${PICK.length}명</b> 담김 —
+      ${picked.length < PICK.length ? '⚠️ 담긴 선수 중 일부가 이 슬롯 후보가 아니라 제외됐다. ' : ''}한 명 더 담으면 열린다.</p>`;
+    return;
+  }
+  box.hidden = false;
+  box.innerHTML = compareReal(picked[0], picked[1], {
+    td, cards: CARDS, miniGrid, slot, seasonKey: SEASON,
+    canon: (td.slot_canon || []).find(c => c.pos === slot.pos) || null,
+    profile: td.profile || [],
+    roleName: id => K.roleName[id] ?? id,
+  });
+}
+
 function render(){
   const slot = slots.find(s => s.pos === selEl.value) ?? slots[0];
   const gk = isGkSlot(slot.pos);
@@ -99,11 +127,23 @@ function render(){
     : `${slot.pos} 슬롯 적합 랭킹 [${seasonTag}] (커널 x=${slot.x} · ${slot.slot_type}군 ${rows.length}명)`;
   document.getElementById('rank').innerHTML =
     `<tr><th>#</th><th>선수</th><th>적합 역할/포커스</th><th>${gk ? '평균 위치' : 'sim'}</th><th>DB값</th><th>평점</th><th>근거</th></tr>` +
-    rows.map((r, i) => `<tr><td>${i+1}</td><td>${r.label} ${badge(r.lh)} ${sofifaLink(r.label, GS)}<br><small>${statLine(r.label, GS)}</small></td>
+    rows.map((r, i) => `<tr data-pid="${r.player_id}"><td>${i+1}</td><td>${r.label} ${badge(r.lh)} ${sofifaLink(r.label, GS)}<br><small>${statLine(r.label, GS)}</small></td>
       <td>${K.roleName[r.role] ?? r.role}/${r.focus}</td>
       <td>${gkPosCell(td, slot.pos, r.player_id) ?? `<b>${r.sim.toFixed(3)}</b>`}</td>
       <td class="dim">${gk ? '' : (r.dbFit != null ? r.dbFit.toFixed(3) : '—')}</td>
       <td>${r.rate ?? '—'}</td><td class="dim">${r.note ?? ''}</td></tr>`).join('');
+  /* ⭐ 비교 담기 — 얼티밋팀과 같은 동선(카드/행을 눌러 둘을 담으면 머리 대 머리가 열린다). */
+  document.querySelectorAll('#rank tr[data-pid]').forEach(tr => {
+    tr.classList.add('rc-pick');
+    tr.classList.toggle('on', PICK.includes(Number(tr.dataset.pid)));
+    tr.addEventListener('click', () => {
+      const pid = Number(tr.dataset.pid);
+      const i = PICK.indexOf(pid);
+      if (i >= 0) PICK.splice(i, 1); else { PICK.push(pid); if (PICK.length > 2) PICK.shift(); }
+      render();
+    });
+  });
+  renderCompare(rows, slot);
   /* ⛔ map25 원문 문자열은 화면에 찍지 않는다(2026-09-13 사용자 지시 — 읽을 필요 없는 내부 인코딩값).
      값 자체는 DB·export JSON에 그대로 있으니 필요하면 거기서 본다. */
   document.getElementById('cards').innerHTML = rows.slice(0, 4).map(r => `

@@ -295,3 +295,19 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .fc-star{color:#f5c542;letter-spacing:1px}
 .fc-star.off{color:rgba(255,255,255,.18)}
 .fc-votehead{font-size:11.5px;color:var(--dim);margin:8px 0 4px}
+
+/* ── 실측 선수 비교(realcompare.js) 전용 ─────────────────────────────────────
+   ⛔ `.cmp-*`는 얼티밋팀과 **공유**한다 — 두 비교 화면이 같은 시각 언어를 쓰기 위해서다.
+   아래 `.rc-*`만 실측 비교가 추가로 쓰는 것이다(백분위 막대·스파크라인·레이더·해석 목록). */
+.rc-bar{display:inline-flex;align-items:center;gap:6px;width:112px;max-width:100%;
+  height:14px;border:1px solid var(--line);border-radius:99px;position:relative;overflow:hidden;vertical-align:middle}
+.rc-bar i{position:absolute;left:0;top:0;bottom:0;border-radius:99px;opacity:.55}
+.rc-bar.a i{background:var(--viz-us)} .rc-bar.b i{background:var(--viz-them)}
+.rc-bar em{position:relative;font-style:normal;font-size:10.5px;font-weight:700;padding-left:6px}
+.rc-spark{width:108px;height:30px;vertical-align:middle}
+.rc-radar{display:block;margin:0 auto;max-width:320px;width:100%;height:auto}
+.rc-read{margin:6px 0 0;padding-left:0;list-style:none}
+.rc-read li{padding:8px 0;border-top:1px solid var(--line);line-height:1.6}
+.rc-read li:first-child{border-top:0}
+.rc-pick{cursor:pointer}
+.rc-pick.on{outline:2px solid var(--ok);outline-offset:-2px}
