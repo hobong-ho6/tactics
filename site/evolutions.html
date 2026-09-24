@@ -119,7 +119,7 @@ import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
 import { evoRules, logState, inProgress } from './assets/evorules.js?v=20260924a';
 import { cardCompare } from './assets/cardcompare.js?v=20260923a';
-import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT } from './assets/clubviz.js?v=20260924a';
+import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT } from './assets/clubviz.js?v=20260924b';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -728,6 +728,7 @@ function renderNow(){
         <button class="act" data-cmpadd style="margin-left:6px">${CMP.has(p.id) ? '비교에서 빼기' : '비교에 담기'}</button></div>`
       + cardDetail(p, { role, team: T, log: (EVO.club || {}).log, chem_styles: EVO.chem_styles,
                         reco: recoFor(p, slotIdx), role_map: EVO.role_map,
+                        stats: ((EVO.club || {}).stats || {})[p.id],
                         catalog: EVO.catalog, face_stats: EVO.face_stats });
     side.querySelector('[data-cmpadd]').addEventListener('click', () => {
       CMP.start(p);                                 // 여기서부터 카드 클릭 = 비교 담기
@@ -1862,6 +1863,7 @@ function renderClub(){
       /* ⚠️ `team`(인게임 팀 설정)은 「지금 내 팀」 탭의 지역 변수다 — 여기서는 없다.
          빼면 cardDetail이 그 칸을 알아서 생략한다(2026-09-23 실측: 넘기면 ReferenceError로 패널이 안 열린다). */
       + cardDetail(p, { log: C.log, chem_styles: EVO.chem_styles, role_map: EVO.role_map,
+                        stats: (C.stats || {})[p.id],
                         catalog: EVO.catalog, face_stats: EVO.face_stats })
       /* ⭐ 진화 기록 — club-sync가 못 가져오는 유일한 축이라 여기 남긴다(패널 머리 주석 참조). */
       + (p.status === 'owned' ? `<div class="fc-sidebox" style="margin-top:10px"><b>진화 적용 기록</b>

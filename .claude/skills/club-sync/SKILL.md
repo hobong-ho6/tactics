@@ -90,6 +90,21 @@ description: 내 얼티밋 구단 동기화 — fut.gg GG Club에서 현재 스�
    - ⛔ **로컬 HTTP 브리지(브라우저 → 127.0.0.1 POST)는 쓰지 말 것** — 2026-09-21에 만들어 봤으나
      브라우저 패널이 **https→http를 하드 차단**한다(`Access-Control-Allow-Private-Network`를 붙여도 `Failed to fetch`).
    - ⭐ 검증됨(2026-09-21): 스크립트 산출물이 손수집본과 **100/100 필드 불일치 0**.
+   - ⭐⭐ **싱크가 받는 축은 5개가 더 늘었다**(2026-09-24 · migration 061 · 사용자 지시 「1순위부터 5순위까지 전부 진행」).
+     GG Club은 카드 한 장에 `playerDef` **163필드 + 보유행 29필드**를 준다 — 우리는 13개만 쓰고 있었다.
+     ① **PlayStyle**(`playstyles`/`playstylesPlus`, 숫자 id → `fc_playstyle_ids`가 이름을 푼다)
+     ② **경기 기록**(출전·득점·도움·경고 + lifetime → `fut_club_player_stats` 회차 스냅샷)
+     ③ **자산**(거래불가·활성스쿼드·주장·등번호·소유자수 → `fut_club_players` 컬럼)
+     ④ **카드 프로필**(국적·리그·클럽·스킬무브·약발·주발·키·몸무게·생일·희귀도) ⑤ **링크**(`basePlayerEaId`·`url`)
+     ⭐ ④⑤는 `player_card_items`의 **빈 칸만** 채우고, 카드 행 자체가 없으면 **만든다**
+       (실측 2026-09-24: 보유 99장 중 2장이 카드 행이 없어 화면에서 통째로 안 보였다).
+     ⛔ ①은 **진화 보호 대상**이다 — EA가 원장보다 낮으면 PlayStyle도 덮지 않는다(스탯과 같은 취급).
+   - ⛔⛔ **싱크로 못 받는 것**(2026-09-24 실측 확인 — 기대하지 말 것):
+     **어떤 진화를 밟았는지**(`evolutionId`·`partialEvolutionId`·`numberOfEvolutions`가 진화 6명 포함 **전원 null**) ·
+     **AcceleRATE**(`accelerateType` 0/99) · **워크레이트** · **케미 추가치**(`extra*Chemistry` 0/99) ·
+     **인게임 전술** · **진화 카탈로그/경로/해금 과제** · **내가 안 가진 카드**.
+     ⚠️ `isInProgressEvolution`은 전원 False였는데 **진행 중인 카드가 없던 회차**라 양성 사례를 못 봤다 —
+        「쓸 수 없다」로 단정하지 말고 다음에 진행 중 카드가 생기면 확인할 것.
 5. 페이지 순회·활성 스쿼드는 스크립트가 함께 처리한다(`?page=N` + `/api/gg-club/active-squad/`).
    `--apply-squad`면 `fut_squad_slots`까지 갱신한다(FIELD→XI · SUBSTITUTE→BENCH).
    슬롯 순서(f4231a): `0 GK · 1 RB · 2 CB · 3 CB · 4 LB · 5 CDM · 6 CDM · 7 RM · 8 LM · 9 CAM · 10 ST` (우→좌).

@@ -115,15 +115,40 @@ def rows_of(players):
         attrs, missing = parse_attrs(q, want=set() if q.get("position") == 0 else None)
         if missing:
             MISSING[tuple(missing)] = MISSING.get(tuple(missing), 0) + 1
+        nm_of = lambda o: (o or {}).get("name")                    # noqa: E731  nation/league/club은 객체로 온다
         out.append({"ea": q.get("eaId"), "n": name, "ovr": q.get("overall"),
                     "six": [q.get(k) for k in keys],
                     "attrs": attrs or None,                       # ⛔ 없으면 None — 빈 dict를 「0」으로 굳히지 않는다
-                    "accel": q.get("accelerateType"),
+                    "accel": q.get("accelerateType"),             # ⚠️ 실측 0/99 — GG Club은 AcceleRATE를 안 준다(카드 수집기 몫)
                     # ⭐ 역할 숙련도 GG Club이 준다(2026-09-22) — 원장의 `current_roles_*`가 낡아 있었다
                     #    (캐시: EA는 [5,23]=RB Wingback·RM Winger인데 원장은 []였다).
                     "rp": q.get("rolesPlus"), "rpp": q.get("rolesPlusPlus"),
+                    # ⭐⭐ ① PlayStyle **EA 실측**(2026-09-24 신설 · migration 061 참조).
+                    #    ⛔ 종전엔 안 받아서 원장이 fut.gg 계산 카드(path_json)를 썼고, 보가르데·루제리에
+                    #       **없는 Inventive가 찍혔다.** 숫자 id로 오며 이름은 `fc_playstyle_ids`가 푼다.
+                    "ps": q.get("playstyles"), "psp": q.get("playstylesPlus"),
                     "cs": p.get("chemistryStyle"), "cp": p.get("chemistryPoints"), "gg": p.get("id"),
-                    "added": (p.get("addedToClubAt") or "")[:10] or None, "paid": p.get("purchasedFor")})
+                    "added": (p.get("addedToClubAt") or "")[:10] or None, "paid": p.get("purchasedFor"),
+                    # ③ 스쿼드·자산 축 — 보유행에서 온다(playerDef가 아니다).
+                    "unt": p.get("isUntradeable"), "act": p.get("isInActiveSquad"),
+                    "cap": p.get("isCaptain"), "kit": p.get("kitNumber"), "own": p.get("numberOfOwners"),
+                    # ② 경기 기록 — 누적값이라 회차 스냅샷으로 쌓는다.
+                    "st": {"gp": p.get("gamesPlayed"), "g": p.get("goals"), "a": p.get("assists"),
+                           "yc": p.get("yellowCards"), "rc": p.get("redCards"), "ga": p.get("ga"),
+                           "lgp": p.get("lifetimeGamesPlayed"), "lg": p.get("lifetimeGoals"),
+                           "la": p.get("lifetimeAssists"), "lyc": p.get("lifetimeYellowCards"),
+                           "lrc": p.get("lifetimeRedCards")},
+                    # ④⑤ 카드 프로필·링크 — `player_card_items`의 **빈 칸만** 채운다(카드 수집기 값을 덮지 않는다).
+                    # ⚠️ `six`는 GK면 gkFace* 다 — `player_card_items.pac..phy`는 GK도 **필드 표기**를 쓰므로
+                    #    카드 행을 새로 만들 때 그대로 넣으면 안 된다. 그 판정을 여기서 실어 보낸다.
+                    "card": {"gk": q.get("position") == 0,
+                             "base": q.get("basePlayerEaId"), "url": q.get("url"),
+                             "sm": q.get("skillMoves"), "wf": q.get("weakFoot"),
+                             "foot": {1: "오른쪽", 2: "왼쪽"}.get(q.get("foot")),
+                             "h": q.get("height"), "w": q.get("weight"), "dob": q.get("dateOfBirth"),
+                             "nat": nm_of(q.get("nation")), "lg": nm_of(q.get("league")),
+                             "club": nm_of(q.get("club")),
+                             "rar": nm_of(q.get("rarity")), "rar_ea": (q.get("rarity") or {}).get("eaId")}})
     out.sort(key=lambda r: r["ea"] or 0)
     return out
 

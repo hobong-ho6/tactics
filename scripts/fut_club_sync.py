@@ -67,9 +67,28 @@ def main():
                               WHERE COALESCE(is_void,0)=0""")}
     cards = {r["ea_item_id"]: dict(r) for r in
              con.execute("SELECT ea_item_id, player_id, name_kr, best_pos FROM player_card_items WHERE game_version='FC27'")}
+    # ⭐⭐ ① PlayStyle은 숫자 id로 온다 — 이름표 정본은 `fc_playstyle_ids`(scripts/collect_playstyle_ids.py).
+    #    ⛔ 이름을 여기서 짓지 않는다. 표에 없는 id는 **그대로 두지 않고 보고**한다(조용히 흘리면 못 본다).
+    ps_name = {r["ea_id"]: r["name"] for r in
+               con.execute("SELECT ea_id, name FROM fc_playstyle_ids WHERE game_version='FC27'")}
+    ps_unknown = set()
+
+    def ps_text(r):
+        """EA 실측 PlayStyle id 배열 → 원장 표기('Tiki Taka, Inventive+'). 안 왔으면 None(=덮지 않음)."""
+        if not isinstance(r.get("ps"), list) and not isinstance(r.get("psp"), list):
+            return None
+        out = []
+        for ids, suffix in ((r.get("ps") or [], ""), (r.get("psp") or [], "+")):
+            for i in ids:
+                if i in ps_name:
+                    out.append(ps_name[i] + suffix)
+                else:
+                    ps_unknown.add(i)
+        return ", ".join(out)
 
     ins = upd = same = 0
-    conflicts, applied_styles, done, protected = [], [], [], []
+    conflicts, applied_styles, done, protected, ps_fixed = [], [], [], [], []
+    stats_n = 0
     for r in rows:
         card = cards.get(r["ea"]) or {}
         gk = (card.get("best_pos") == "GK")
@@ -117,13 +136,19 @@ def main():
                              gg_player_id=?, synced_at=?, updated=? WHERE id=?""",
                         (r.get("cs"), r.get("cp"), r.get("gg"), a.pulled,
                          TODAY if changed else cur["updated"], cur["id"]))
-            # ⛔ 29속성·AcceleRATE도 스탯이라 보호 대상이다 — EA가 낡았으면 덮지 않는다.
+            # ⛔ 29속성·AcceleRATE·**PlayStyle**도 스탯이라 보호 대상이다 — EA가 낡았으면 덮지 않는다
+            #    (2026-09-24: PlayStyle을 받기 시작하면서 같은 규칙을 적용했다. 진화 보상 PlayStyle이
+            #     EA 싱크 전 fut.gg 값으로 되돌아가는 걸 막는다).
         else:
+            ps_new = ps_text(r)
+            if ps_new is not None and (cur["current_playstyles"] or "") != ps_new:
+                ps_fixed.append((cur["name"], cur["current_playstyles"], ps_new))
             changed = (cur["current_ovr"] != r["ovr"] or cur["current_six"] != six
                        or cur["chem_style_ea"] != r.get("cs") or cur["chem_points"] != r.get("cp")
                        or (r.get("attrs") and cur["current_attrs"] != json.dumps(r["attrs"], ensure_ascii=False))
                        or (isinstance(r.get("rp"), list) and cur["current_roles_plus"] != json.dumps(r["rp"]))
-                       or (isinstance(r.get("rpp"), list) and cur["current_roles_plus_plus"] != json.dumps(r["rpp"])))
+                       or (isinstance(r.get("rpp"), list) and cur["current_roles_plus_plus"] != json.dumps(r["rpp"]))
+                       or (ps_new is not None and (cur["current_playstyles"] or "") != ps_new))
             # ⭐ 29속성(`attrs`)·AcceleRATE는 GG Club이 **EA 실측 그대로** 준다(2026-09-22) —
             #    받은 회차에만 덮고, 안 온 회차에는 기존 값을 지운다(COALESCE로 보존).
             attrs_json = json.dumps(r["attrs"], ensure_ascii=False) if r.get("attrs") else None
@@ -133,11 +158,73 @@ def main():
                              current_attrs=COALESCE(?, current_attrs),
                              current_roles_plus=COALESCE(?, current_roles_plus),
                              current_roles_plus_plus=COALESCE(?, current_roles_plus_plus),
+                             current_playstyles=COALESCE(?, current_playstyles),
                              gg_player_id=?, synced_at=?, updated=? WHERE id=?""",
-                        (r["ovr"], six, r.get("cs"), r.get("cp"), attrs_json, rp_json, rpp_json,
+                        (r["ovr"], six, r.get("cs"), r.get("cp"), attrs_json, rp_json, rpp_json, ps_new,
                          r.get("gg"), a.pulled, TODAY if changed else cur["updated"], cur["id"]))
+        # ③ 스쿼드·자산 축 — 진화와 무관하고 EA가 정본이라 **보호 여부와 관계없이** 갱신한다(케미와 같은 취급).
+        b = lambda v: None if v is None else int(bool(v))       # noqa: E731
+        con.execute("""UPDATE fut_club_players SET is_untradeable=?, is_in_active_squad=?, is_captain=?,
+                         kit_number=?, number_of_owners=? WHERE id=?""",
+                    (b(r.get("unt")), b(r.get("act")), b(r.get("cap")), r.get("kit"), r.get("own"), cur["id"]))
+        # ② 경기 기록 — 누적값이라 **회차 스냅샷**으로 쌓는다(같은 날 재실행이면 덮어쓴다).
+        st = r.get("st") or {}
+        if any(v is not None for v in st.values()):
+            con.execute("""INSERT OR REPLACE INTO fut_club_player_stats(club_player_id, pulled,
+                             games_played, goals, assists, yellow_cards, red_cards, ga,
+                             lifetime_games_played, lifetime_goals, lifetime_assists,
+                             lifetime_yellow_cards, lifetime_red_cards, source, confidence)
+                           VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                        (cur["id"], a.pulled, st.get("gp"), st.get("g"), st.get("a"), st.get("yc"),
+                         st.get("rc"), st.get("ga"), st.get("lgp"), st.get("lg"), st.get("la"),
+                         st.get("lyc"), st.get("lrc"),
+                         f"GG Club API 보유행 (scripts/fut_club_sync.py, {a.pulled} 싱크)",
+                         "MEASURED — EA 실측. ⚠️ games_played는 현재 보유분 기준, lifetime_*은 카드 일생 누적이다."))
+            stats_n += 1
         upd += changed
         same += (not changed)
+
+    # ⭐⭐ ④⑤ 카드 프로필·링크 백필 (2026-09-24 신설 · migration 061 참조).
+    #    GG Club은 보유 카드의 **국적·리그·클럽·스킬무브·약발·주발·키·몸무게·생일·희귀도·base 링크**를
+    #    다 준다. 종전엔 `collect_futgg_cards.py`만 채워서, 새로 뽑은 카드는 그 수집기가 돌 때까지
+    #    화면에서 빈칸이었다(심하면 `player_card_items` 행 자체가 없어 **카드가 통째로 안 보였다** —
+    #    실측 2026-09-24: 보유 99장 중 2장이 그랬다).
+    #    ⛔ **빈 칸만 채운다.** 카드 수집기가 넣은 값을 덮지 않는다 — 그쪽이 카드 페이지 원문을 본다.
+    CARD_COLS = [("base_ea_id", "base"), ("futgg_url", "url"), ("skill_moves", "sm"), ("weak_foot", "wf"),
+                 ("preferred_foot", "foot"), ("height_cm", "h"), ("weight_kg", "w"), ("birthdate", "dob"),
+                 ("nation", "nat"), ("league", "lg"), ("club", "club"),
+                 ("rarity_name", "rar"), ("rarity_ea_id", "rar_ea")]
+    filled, made = 0, []
+    for r in rows:
+        c = r.get("card") or {}
+        if r["ea"] not in cards:
+            # 카드 행 자체가 없다 — 최소 정보로 만든다. ⛔ player_id는 잇지 않는다(관리 4팀 밖은 NULL이 정상).
+            con.execute("""INSERT INTO player_card_items(game_version, ea_item_id, base_ea_id, is_base, name_kr,
+                             ovr, pac, sho, pas, dri, def, phy, attrs, source, confidence, first_seen)
+                           VALUES('FC27',?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                        (r["ea"], c.get("base"), int(c.get("base") == r["ea"]), r["n"], r["ovr"],
+                         # ⛔ GK는 `six`가 gkFace*라 필드 표기 칸(pac..phy)에 넣지 않는다 — 카드 수집기가 채운다.
+                         *([None] * 6 if c.get("gk") else r["six"]),
+                         json.dumps(r["attrs"], ensure_ascii=False) if r.get("attrs") else None,
+                         f"GG Club 싱크 (scripts/fut_club_sync.py, {a.pulled}) — 카드 페이지 미수집",
+                         "MEASURED(EA 실측) — ⚠️ 카드 페이지 전용 필드(포지션·카드 이미지·AcceleRATE"
+                         + (" · GK 6대 표기" if c.get("gk") else "") + ")는 비어 있다. "
+                         "collect_futgg_cards.py가 돌면 채워진다.", a.pulled))
+            made.append(r["n"])
+            # ⛔ 여기서 빠져나가지 않는다 — 아래 백필이 **같은 규칙으로** 나머지 칸을 채운다.
+            #    (2026-09-24: 신설 경로만 따로 컬럼을 적었다가 `club`을 빠뜨려 G23이 걸렸다.)
+        sets, vals = [], []
+        for col, key in CARD_COLS:
+            if c.get(key) is not None:
+                sets.append(f"{col}=COALESCE({col}, ?)")       # ⛔ 빈 칸만 — 기존 값을 덮지 않는다
+                vals.append(c[key])
+        if sets:
+            cur_before = con.execute(f"SELECT {', '.join(col for col, _ in CARD_COLS)} "
+                                     "FROM player_card_items WHERE game_version='FC27' AND ea_item_id=?",
+                                     (r["ea"],)).fetchone()
+            con.execute(f"UPDATE player_card_items SET {', '.join(sets)} "
+                        "WHERE game_version='FC27' AND ea_item_id=?", (*vals, r["ea"]))
+            filled += sum(1 for v in cur_before if v is None)
 
     gone = [v["name"] for k, v in have.items() if v["status"] == "owned" and k not in {x["ea"] for x in rows}]
     if a.dry_run:
@@ -146,6 +233,14 @@ def main():
         con.commit()
 
     print(f"{'(dry-run) ' if a.dry_run else ''}싱크 {len(rows)}장 · 신규 {ins} · 갱신 {upd} · 변화 없음 {same}")
+    print(f"경기 기록 스냅샷 {stats_n}행 · 카드 빈칸 보충 {filled}칸" + (f" · 카드 행 신설 {len(made)}장 {made}" if made else ""))
+    if ps_fixed:
+        print("\n⭐ PlayStyle을 EA 실측으로 정정 — 종전 값은 fut.gg 계산 카드에서 온 것이라 틀릴 수 있었다:")
+        for n_, before, after in ps_fixed:
+            print(f"   {n_:<16} [{before or '—'}] → [{after or '—'}]")
+    if ps_unknown:
+        print(f"\n⚠️ 이름표에 없는 PlayStyle id {sorted(ps_unknown)} — "
+              "`.venv/bin/python scripts/collect_playstyle_ids.py`로 채울 것(그 전까지 원장에서 빠진다)")
     if applied_styles:
         print("\n적용된 케미 스타일:")
         for n, s, cp in applied_styles:

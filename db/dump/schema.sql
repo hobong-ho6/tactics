@@ -795,7 +795,7 @@ CREATE TABLE fut_club_players(
   current_playstyles TEXT, current_roles_plus TEXT, current_roles_plus_plus TEXT,
   evo_count INTEGER NOT NULL DEFAULT 0,       -- 적용한 진화 단계 수(로그와 일치해야 한다)
   notes TEXT,
-  updated TEXT NOT NULL, chem_style_ea INTEGER, chem_points INTEGER, gg_player_id TEXT, synced_at TEXT, current_attrs TEXT,
+  updated TEXT NOT NULL, chem_style_ea INTEGER, chem_points INTEGER, gg_player_id TEXT, synced_at TEXT, current_attrs TEXT, is_untradeable INTEGER, is_in_active_squad INTEGER, is_captain INTEGER, kit_number INTEGER, number_of_owners INTEGER,
   UNIQUE(account_id, ea_item_id)
 );
 CREATE TABLE fut_evolution_log(
@@ -1024,3 +1024,15 @@ CREATE TABLE fut_evolution_unlocks(
   note       TEXT,
   PRIMARY KEY (account_id, evo_id)
 );
+CREATE TABLE fut_club_player_stats(
+  club_player_id INTEGER NOT NULL REFERENCES fut_club_players(id),
+  pulled         TEXT NOT NULL,             -- 수집일 — 누적값이라 시점이 정본이다
+  games_played   INTEGER, goals INTEGER, assists INTEGER,
+  yellow_cards   INTEGER, red_cards INTEGER,
+  ga             REAL,                      -- fut.gg가 계산해 주는 경기당 공격포인트
+  lifetime_games_played INTEGER, lifetime_goals INTEGER, lifetime_assists INTEGER,
+  lifetime_yellow_cards INTEGER, lifetime_red_cards INTEGER,
+  source TEXT, confidence TEXT,
+  PRIMARY KEY(club_player_id, pulled)
+);
+CREATE INDEX ix_fut_club_player_stats_pulled ON fut_club_player_stats(pulled);

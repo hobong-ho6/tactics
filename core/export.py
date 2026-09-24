@@ -281,6 +281,16 @@ def export_all(db_path=None, window="2026-summer"):
           LEFT JOIN player_card_items i ON i.ea_item_id=c.ea_item_id
           LEFT JOIN players pl ON pl.id=c.player_id
          WHERE c.status='owned' AND c.player_id IS NOT NULL""")
+    # ⭐⭐ 경기 기록·자산 축(migration 061) — GG Club 보유행이 주는 **EA 실측**이다.
+    #    ⛔ 누적값이라 **최신 pulled만** 내보낸다(추이는 DB에 남는다 — 화면이 쌓인 걸 다 읽을 이유가 없다).
+    #    ⚠️ `games_played`는 현재 보유분 기준, `lifetime_*`은 카드 일생 누적이라 다를 수 있다.
+    club_stats = {str(r["club_player_id"]): r for r in _rows(con, """
+        SELECT s.club_player_id, s.games_played, s.goals, s.assists, s.yellow_cards, s.red_cards, s.ga,
+               s.lifetime_games_played, s.lifetime_goals, s.lifetime_assists, s.pulled,
+               c.is_untradeable, c.is_in_active_squad, c.is_captain, c.kit_number, c.number_of_owners
+          FROM fut_club_player_stats s JOIN fut_club_players c ON c.id=s.club_player_id
+         WHERE s.pulled=(SELECT MAX(pulled) FROM fut_club_player_stats)""")}
+
     # ⭐ 해금 상태(migration 060) — **소진과 다른 축**이다. 시즌패스 레벨·프리미엄 구매 여부가 없으면
     #    `[SP 11]`·`[SP+ 14]` 진화를 「지금 걸 수 있다」로 잘못 보여준다(2026-09-23 실증).
     # ⛔⛔ **결손 속성을 0으로 세지 않는다**(2026-09-23 실측 · obs#132 「결손과 0은 다르다」).
@@ -363,7 +373,8 @@ def export_all(db_path=None, window="2026-summer"):
                            "tactics": tactics, "tactic_roles": tactic_roles,
                            "club": {"accounts": accounts, "players": club, "log": log,
                                      # ⭐ 화면이 「현재」를 각자 고르지 않게 하는 정본(위 주석)
-                                     "state": {str(r["player_id"]): r for r in club_state}, "unlocks": unlocks}}))
+                                     "state": {str(r["player_id"]): r for r in club_state},
+                                     "stats": club_stats, "unlocks": unlocks}}))
 
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──
     # ⭐ 세 층을 그대로 내보낸다: 메타(파싱) · obs_points(검증된 판정) · summary/key_points(사람 요약).

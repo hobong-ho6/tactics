@@ -1083,6 +1083,28 @@ function traitRow(p, roleMap) {
     <div class="fc-kv"><span>Role+</span><b>${pl.length ? esc(pl.join(', ')) : '<span class="dim">없음</span>'}</b></div>`;
 }
 
+
+/* 보유 카드의 자산 상태·경기 기록 칩 — 정본은 `fut_club_player_stats` + `fut_club_players`(migration 061).
+   ⛔ 여기서 계산하지 않는다. EA가 준 값을 그대로 보인다. */
+function clubMeta(st) {
+  if (!st) return '';
+  const chips = [];
+  if (st.is_untradeable) chips.push('<span class="chip">거래 불가</span>');
+  if (st.is_captain) chips.push('<span class="chip">주장</span>');
+  if (st.kit_number != null) chips.push(`<span class="chip dim">등번호 ${st.kit_number}</span>`);
+  if (st.games_played != null) {
+    const ga = st.ga != null ? ` · 경기당 공포 ${Number(st.ga).toFixed(2)}` : '';
+    chips.push(`<span class="chip" title="내 구단에서 이 카드로 뛴 기록 — EA 실측 (${esc(st.pulled || '')} 싱크)">`
+      + `${st.games_played}경기 ${st.goals ?? 0}골 ${st.assists ?? 0}도움${ga}</span>`);
+    if (st.yellow_cards || st.red_cards)
+      chips.push(`<span class="chip dim">경고 ${st.yellow_cards ?? 0}${st.red_cards ? ` · 퇴장 ${st.red_cards}` : ''}</span>`);
+    if (st.lifetime_games_played != null && st.lifetime_games_played !== st.games_played)
+      chips.push(`<span class="chip dim" title="카드 일생 누적 — 이적시장을 거쳐 왔다는 뜻">`
+        + `일생 ${st.lifetime_games_played}경기 ${st.lifetime_goals ?? 0}골</span>`);
+  }
+  return chips.length ? `<div class="fc-dchips" style="margin-top:4px">${chips.join('')}</div>` : '';
+}
+
 export function cardDetail(p, ctx = {}) {
   if (!p) return '';
   const cur = parse(p.current_six), base = parse(p.card_six) || null;
@@ -1110,6 +1132,9 @@ export function cardDetail(p, ctx = {}) {
           ${num(p.weak_foot) ? `<span class="chip">약발 ${num(p.weak_foot)}★</span>` : ''}
           ${p.accelerate ? `<span class="chip dim">${esc(p.accelerate)}</span>` : ''}
         </div>
+        ${/* ⭐⭐ 자산·경기 기록 — GG Club 보유행의 **EA 실측**(migration 061).
+              ⛔ 값이 없으면 칸을 만들지 않는다 — 「0경기」와 「안 받았다」는 다르다(obs#132). */''}
+        ${clubMeta(ctx.stats)}
         <div style="margin-top:8px">${prof}</div>
       </div>
     </div>
