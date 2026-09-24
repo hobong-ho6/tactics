@@ -157,7 +157,7 @@ const dutyRank = d => DUTY_RANK[(String(d?.adherence || '').match(/HIGH|MEDIUM|M
       결론이 되는데 그걸 뒷받침할 근거가 없다(불변규칙 12).
    ⚠️ 묶음 구성(어느 지표가 어느 성향인가)은 **판단값**이다. 화면에 구성 지표를 다 적어 검증 가능하게 둔다. */
 const GROUPS = [
-  { key: '전진·창출', emery: 'buildup', tip: '하프스페이스 전진과 기회 창출 — 에메리의 포지셔널 전진이 기대는 축',
+  { key: '전진·창출', emery: 'buildup', tip: '하프스페이스 전진과 기회 창출 — 포지셔널 전진이 기대는 축',
     keys: ['chances_created', 'expected_assists', 'big_chance_created_team_title', 'line_breaking_passes',
            'crosses_succeeeded', 'touches_opp_box', 'assists'] },
   { key: '마무리', emery: 'role_demands', tip: '슛으로 끝내는 빈도와 질',
@@ -206,11 +206,15 @@ function radar(gs, a, b) {
    ⛔⛔ **「누가 낫다」를 만들지 않는다**(2026-09-24 사용자 지시 — 「내가 선수를 고르는 입장은 아니지만 …
    같은 위치에 기용되더라도 맡는 역할이 다를 수 있고 … 에메리의 전술과 선수를 더 잘 이해할 수 있는 메뉴」).
    ⇒ 이 블록이 답하는 질문은 **「이 선수를 쓰면 이 자리가 어떻게 달라지나」**다.
-   기준선은 **에메리 정본 슬롯 역할**(`slot_canon`)이고, 차이는 전부 실측 수치로 뒷받침한다.
+   기준선은 **그 팀 감독의 정본 슬롯 역할**(`slot_canon`)이고, 차이는 전부 실측 수치로 뒷받침한다.
+   ⛔ 감독 이름은 `ctx.manager`로 받는다 — 화면에 박아 두면 다른 팀에서 거짓말이 된다(불변규칙 7).
    ⚠️ 문장은 **해석**이다 — 어느 수치에서 나왔는지 같은 줄에 적는다. 수치 없는 단정은 쓰지 않는다. */
 const GAP = 15;                  // 성향 묶음이 「갈렸다」고 보는 백분위 차 (그 아래는 노이즈)
 function interpret(a, b, ctx) {
-  const { A, B, canon, slot } = ctx;
+  const { A, B, slot } = ctx;
+  /* ⛔⛔ **감독을 하드코딩하지 않는다**(2026-09-24 실측: 첼시 화면에 「에메리」가 찍혔다 — 첼시는 알론소다).
+     불변규칙 7(팀 축을 섞지 말 것)의 화면판이다. 이름은 그 팀의 regime에서 받는다. */
+  const MG = ctx.manager || '감독';
   const gs = GROUPS.map(g => ({ ...g, a: groupScore(A.pct, g), b: groupScore(B.pct, g) }));
   const both = gs.filter(g => g.a && g.b);
   const split = both.filter(g => Math.abs(g.a.v - g.b.v) >= GAP)
@@ -219,18 +223,32 @@ function interpret(a, b, ctx) {
   const side = (g) => (g.a.v > g.b.v ? a : b);
   const lines = [];
 
-  // ① 정본 역할 대비 — 이 화면에서 가장 중요한 해석이다.
+  // ① 기준 자리 — 슬롯군 비교면 **둘의 자리가 애초에 다를 수 있다**. 그게 첫 번째 해석이다.
   const roleTxt = c => `${ctx.roleName(c.role)}/${c.focus}`;
-  if (canon) {
-    const ca = a.role === canon.role_id && a.focus === canon.focus;
-    const cb = b.role === canon.role_id && b.focus === canon.focus;
-    const canonTxt = `${ctx.roleName(canon.role_id)}/${canon.focus}`;
+  const canonTxt = c => (c ? `${ctx.roleName(c.role_id)}/${c.focus}` : null);
+  const cA = ctx.canonA, cB = ctx.canonB, sA = ctx.slotA, sB = ctx.slotB;
+  if (ctx.groupMode && sA?.pos !== sB?.pos) {
+    lines.push({ tag: '기준 자리', axis: 'formation',
+      text: `같은 <b>${esc(ctx.groupLabel)}군</b>이지만 실측상 가장 잘 맞는 자리가 다르다 — `
+        + `<b>${esc(a.label)}</b>는 <b>${esc(sA.pos)}</b>, <b>${esc(b.label)}</b>는 <b>${esc(sB.pos)}</b>. `
+        + `${esc(MG)}의 이 묶음은 <b>좌우가 대칭이 아니라서</b> 자리마다 요구가 갈린다(${esc(sA.pos)} 정본 <b>${esc(canonTxt(cA) || '—')}</b> ↔ ${esc(sB.pos)} 정본 <b>${esc(canonTxt(cB) || '—')}</b>).`,
+      why: `커널 sim ${a.sim?.toFixed(3)}(x=${sA.x}) ↔ ${b.sim?.toFixed(3)}(x=${sB.x}) — 각자 묶음 안에서 가장 높은 자리` });
+  }
+  // ② 각자 자기 자리의 정본과 얼마나 맞나
+  const fits = (c, canon) => canon && c.role === canon.role_id && c.focus === canon.focus;
+  if (cA || cB) {
+    const fa = fits(a, cA), fb = fits(b, cB);
+    const same = cA && cB && cA.pos === cB.pos;
     lines.push({ tag: '정본 역할', axis: 'slot_canon',
-      text: ca === cb
-        ? (ca ? `둘 다 실측 적합이 정본 <b>${esc(canonTxt)}</b>과 같다 — 이 자리의 <b>임무는 바뀌지 않고</b>, 차이는 아래 성향에서만 난다.`
-              : `둘 다 실측 적합이 정본 <b>${esc(canonTxt)}</b>과 다르다(${esc(roleTxt(a))} · ${esc(roleTxt(b))}) — 누구를 넣어도 이 자리는 정본에서 벗어난다.`)
-        : `<b>${esc((ca ? a : b).label)}</b>는 정본 <b>${esc(canonTxt)}</b>과 같고, <b>${esc((ca ? b : a).label)}</b>는 <b>${esc(roleTxt(ca ? b : a))}</b>로 갈린다 — 후자를 쓰면 이 자리의 임무 자체가 바뀐다.`,
-      why: canon.rationale ? String(canon.rationale).slice(0, 220) : '' });
+      text: same
+        ? (fa === fb
+            ? (fa ? `둘 다 실측 적합이 정본 <b>${esc(canonTxt(cA))}</b>과 같다 — 이 자리의 <b>임무는 바뀌지 않고</b>, 차이는 아래 성향에서만 난다.`
+                  : `둘 다 실측 적합이 정본 <b>${esc(canonTxt(cA))}</b>과 다르다(${esc(roleTxt(a))} · ${esc(roleTxt(b))}) — 누구를 넣어도 이 자리는 정본에서 벗어난다.`)
+            : `<b>${esc((fa ? a : b).label)}</b>는 정본 <b>${esc(canonTxt(cA))}</b>과 같고, <b>${esc((fa ? b : a).label)}</b>는 <b>${esc(roleTxt(fa ? b : a))}</b>로 갈린다 — 후자를 쓰면 이 자리의 임무 자체가 바뀐다.`)
+        : `<b>${esc(a.label)}</b>(${esc(sA?.pos || '')}) 실측 <b>${esc(roleTxt(a))}</b> ↔ 정본 <b>${esc(canonTxt(cA) || '—')}</b>${fa ? ' <b>일치</b>' : ' <b>이탈</b>'} · `
+          + `<b>${esc(b.label)}</b>(${esc(sB?.pos || '')}) 실측 <b>${esc(roleTxt(b))}</b> ↔ 정본 <b>${esc(canonTxt(cB) || '—')}</b>${fb ? ' <b>일치</b>' : ' <b>이탈</b>'}`,
+      why: [cA?.rationale && `${sA.pos}: ${String(cA.rationale).slice(0, 150)}`,
+            !same && cB?.rationale && `${sB.pos}: ${String(cB.rationale).slice(0, 150)}`].filter(Boolean).join(' / ') });
   }
 
   // ② 평균 위치 — 「같은 자리인데 팀 모양이 달라지는」 가장 직접적인 증거.
@@ -269,25 +287,26 @@ function interpret(a, b, ctx) {
   const gb = (String(B.duty?.adherence || '').match(/HIGH|MEDIUM|MID|LOW/) || [])[0];
   if (ga && gb && ga !== gb)
     lines.push({ tag: '임무 수행', axis: 'role_demands',
-      text: `원장 판정이 <b>${esc(ga)} ↔ ${esc(gb)}</b>로 갈린다 — 에메리가 이 자리에 요구하는 임무를 두 선수가 <b>같은 정도로 수행하지 않았다</b>는 실측 기록이다.`,
+      text: `원장 판정이 <b>${esc(ga)} ↔ ${esc(gb)}</b>로 갈린다 — ${esc(MG)}가 이 자리에 요구하는 임무를 두 선수가 <b>같은 정도로 수행하지 않았다</b>는 실측 기록이다.`,
       why: '칩에 마우스를 올리면 판정 근거 전문이 나온다' });
 
   const axisNote = ax => {
     const p = (ctx.profile || []).find(r => r.axis === ax);
-    return p ? `<span class="chip dim" title="${esc(String(p.content).slice(0, 500))}">에메리 ${esc(ax)}<i>?</i></span>` : '';
+    return p ? `<span class="chip dim" title="${esc(String(p.content).slice(0, 500))}">${esc(MG)} ${esc(ax)}<i>?</i></span>` : '';
   };
   return `<h4>이 자리가 어떻게 달라지나 <small class="dim">— 우열이 아니라 <b>해석</b>이다</small></h4>
     <div class="cmp-verdict">
-      ${canon ? `<div class="cmp-vhead"><b>${esc(slot.pos)} 정본</b>
-        <span class="dim">${esc(ctx.roleName(canon.role_id))} / ${esc(canon.focus)}</span>
-        <span class="dim" style="flex-basis:100%;font-size:11px">에메리 재현의 기준선(slot_canon) — 두 선수는 여기서 각자 얼마나 벗어나는가</span></div>` : ''}
+      ${(cA || cB) ? `<div class="cmp-vhead">
+        ${cA ? `<b>${esc(sA?.pos || '')} 정본</b> <span class="dim">${esc(canonTxt(cA))}</span>` : ''}
+        ${cB && cB.pos !== cA?.pos ? `<b style="margin-left:10px">${esc(sB?.pos || '')} 정본</b> <span class="dim">${esc(canonTxt(cB))}</span>` : ''}
+        <span class="dim" style="flex-basis:100%;font-size:11px">${esc(MG)} 재현의 기준선(slot_canon) — 두 선수는 각자 자기 자리의 기준선에서 얼마나 벗어나는가</span></div>` : ''}
       <ul class="rc-read">${lines.map(l => `<li><span class="chip">${esc(l.tag)}</span> ${l.text}
         ${l.why ? `<br><small class="dim">${l.why}</small>` : ''} ${axisNote(l.axis)}</li>`).join('')}</ul>
       <p class="dim" style="font-size:11px;margin:8px 0 0">
         <b>이 블록은 「누가 낫다」를 말하지 않는다.</b> 같은 자리에 서도 두 선수가 맡는 임무·서는 높이·기대는 강점이 다르고,
         그 차이가 곧 <b>팀 전술의 차이</b>다. 그래서 답은 순위가 아니라 <b>「이 선수를 쓰면 이 자리가 이렇게 바뀐다」</b>이다.<br>
-        기준선은 <b>에메리 정본 슬롯 역할</b>(slot_canon)이고, 문장마다 <b>어느 실측에서 나왔는지</b>를 같은 줄에 적었다.
-        「에메리 ○○」 칩에 마우스를 올리면 그 전술 축의 원장 서술이 나온다.<br>
+        기준선은 <b>${esc(MG)} 정본 슬롯 역할</b>(slot_canon)이고, 문장마다 <b>어느 실측에서 나왔는지</b>를 같은 줄에 적었다.
+        「${esc(MG)} ○○」 칩에 마우스를 올리면 그 전술 축의 원장 서술이 나온다.<br>
         ⚠️ 성향 묶음(어느 지표가 어느 성향인가)은 <b>판단값</b>이다 — 구성 지표는 아래 표에 다 있으니 직접 검증할 수 있다.
         묶음 안에서는 <b>가중 없이 단순 평균</b>한다.<br>
         ⛔ 여기에 없는 것: 상대 팀·경기 맥락·부상·조합. 실측 표에 없는 축이다.</p>
@@ -369,8 +388,14 @@ export function compareReal(a, b, ctx) {
 
     ${interpret(a, b, C)}
 
-    <h4>${esc(ctx.slot.pos)} 슬롯 적합 <small class="dim">— 커널 x=${ctx.slot.x} · ${esc(ctx.slot.slot_type)}군</small></h4>
+    <h4>${ctx.groupMode ? `${esc(ctx.groupLabel)}군 적합` : `${esc(ctx.slot.pos)} 슬롯 적합`}
+      <small class="dim">${ctx.groupMode
+        ? '— 각자 <b>가장 잘 맞는 자리</b>의 커널 값이다(좌우 자리는 커널 x가 달라 sim이 갈린다)'
+        : `— 커널 x=${ctx.slot.x} · ${esc(ctx.slot.slot_type)}군`}</small></h4>
     <table class="tbl cmp-tbl"><tbody>
+      ${ctx.groupMode ? `<tr><td class="cmp-a"><b>${esc(ctx.slotA?.pos || '')}</b> <small class="dim">x=${ctx.slotA?.x}</small></td>
+        <td class="cmp-k">기준 자리<i>묶음 안 최적</i></td>
+        <td class="cmp-b"><b>${esc(ctx.slotB?.pos || '')}</b> <small class="dim">x=${ctx.slotB?.x}</small></td></tr>` : ''}
       ${row('적합 sim', a.sim, b.sim, { grp: true, fmt: v => (v == null ? '—' : v.toFixed(3)), dfmt: m => m.toFixed(3) })}
       <tr><td class="cmp-a">${esc(ctx.roleName(a.role))}/${esc(a.focus)}</td><td class="cmp-k">적합 역할·포커스</td>
           <td class="cmp-b">${esc(ctx.roleName(b.role))}/${esc(b.focus)}</td></tr>

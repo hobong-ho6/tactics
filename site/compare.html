@@ -7,6 +7,8 @@
 <h1>선수 비교 <small class="dim">후보 풀 = 현재 잔류 스쿼드 실측 — 확정 이탈·이적 루머 제외, DB 이력은 보존</small></h1>
 <div class="panel">
   <label class="kv">슬롯 <select id="slotSel"></select></label>
+  <span class="kv" style="margin-left:14px"><b>비교 범위</b>
+    <button class="tab on" data-mode="slot">이 슬롯만</button><button class="tab" data-mode="group">슬롯군(포지션 묶음)</button></span>
   <span class="kv" style="margin-left:14px"><b>기준 시즌</b>
     <button class="tab on" data-season="2025-26">25/26 정본 (전수)</button><button class="tab" data-season="2026-27">26/27 현재</button></span>
   <div id="seasonNote" class="dim" style="font-size:12px;margin-top:6px"></div>
@@ -21,10 +23,10 @@
 import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell } from './assets/data.js?v=20260924-ut-rename';
 import { Kernel } from './assets/kernel.js?v=20260825-decodemap-null';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
-import { compareReal } from './assets/realcompare.js?v=20260924d';
+import { compareReal } from './assets/realcompare.js?v=20260924g';
 const CARDS = await fetch('data/game_stats/cards.json', { cache: 'no-store' }).then(r => r.json()).catch(() => ({}));
 
-const { team } = await mountHeader('compare.html');
+const { team, regime } = await mountHeader('compare.html');
 const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loadGameStats('FC26')]);
 const K = new Kernel(kd);
 const slots = td.slots.filter(s => s.formation === td.slots[0]?.formation);
@@ -47,6 +49,19 @@ for (const p of td.prescriptions ?? []){
    ⇒ 랭킹에서 빼고 별도로 열거한다(2026-09-13, 사용자 지적 「히트맵 밑 숫자」 조사 중 발견). */
 const isPlaceholderGrid = m => !m || /^0{25}$/.test(m);
 
+/* ⭐⭐ 슬롯군 비교 (2026-09-24 사용자 지시 「슬롯이 포지션으로만 정의되어 있어서 알리송과 가르나초를
+   비교할 수 없어 … cdm / 와이드 미드필더 같은 식으로」).
+   ⛔ 새 분류를 만들지 않는다 — `slots.slot_type`이 이미 그 묶음이다(GK·CB·FB·DM/CM·WM·CAM·ST).
+      좌우가 갈린 자리(LM↔RM · LCB↔RCB · LDM↔RDM)를 한 풀로 합친다.
+   ⚠️ 묶음 안에서도 **정본 역할은 자리마다 다르다**(AVL LM=wm_widemid/Support ↔ RM=wm_winger/Attack).
+      ⇒ 커널 적합은 **그 선수가 가장 잘 맞는 자리**로 계산하고, 해석도 그 자리의 정본과 견준다. */
+let MODE = 'slot';
+document.querySelectorAll('button.tab[data-mode]').forEach(b => b.addEventListener('click', () => {
+  MODE = b.dataset.mode;
+  document.querySelectorAll('button.tab[data-mode]').forEach(x => x.classList.toggle('on', x === b));
+  render();
+}));
+
 let SEASON = '2025-26';
 document.querySelectorAll('button.tab[data-season]').forEach(b => b.addEventListener('click', () => {
   SEASON = b.dataset.season;
@@ -56,14 +71,20 @@ document.querySelectorAll('button.tab[data-season]').forEach(b => b.addEventList
 
 /* 현재 스쿼드만 비교한다. 이적 후보와 확정 이탈은 DB에 보존하되 여기서는 숨긴다. */
 function pool(slot){
-  const base = slotCandidates(td, slot.pos, { includeTransfers: false }).map(q => ({
+  /* 슬롯군이면 같은 `slot_type`의 자리를 전부 합친다 — 같은 선수는 한 번만(먼저 나온 행을 쓴다). */
+  const group = MODE === 'group' ? slots.filter(s => s.slot_type === slot.slot_type) : [slot];
+  const seen = new Set();
+  const base = group.flatMap(s => slotCandidates(td, s.pos, { includeTransfers: false }))
+    .filter(q => (seen.has(q.player_id) ? false : (seen.add(q.player_id), true)))
+    .map(q => ({
     player_id: q.player_id, label: q.label, map25: q.map25, lh: q.status,
     rate: q.rating, note: q.rate_note, dbFit: q.fit_sim, sourceKind: q.source_kind
   }));
+  const groupSlots = group;
   // 자리표시(전부 0) 그리드는 어느 시즌 축에서도 실측으로 세우지 않는다.
   const noGrid = base.filter(c => isPlaceholderGrid(c.map25)).map(c => c.label);
   const real = base.filter(c => !isPlaceholderGrid(c.map25));
-  if (SEASON === '2025-26') return { rows: real, missing: [], noGrid };
+  if (SEASON === '2025-26') return { rows: real, missing: [], noGrid, groupSlots };
   // 26/27 축 — 실측 그리드가 있는 선수만 랭킹에 세우고, 없는 선수는 따로 열거한다(조용한 폴백 금지).
   const rows = [], missing = [];
   for (const c of real){
@@ -72,7 +93,7 @@ function pool(slot){
                        note: `${g.pos_label ?? ''} ${g.sample_n ?? '—'}경기 (26/27 실측)`.trim() });
     else missing.push(c.label);
   }
-  return { rows, missing, noGrid };
+  return { rows, missing, noGrid, groupSlots };
 }
 /* squad_entries.lh='CONFIRMED'는 「이번 창에 확정 영입된 선수」라는 출처 표시다(docs/00 라벨 규약). 이적창이 닫힌 뒤(2026-09-01)에는
    전원 합류가 끝났으므로 「합류확정」이 아니라 「신규」로 읽는다 — 2026-09-09 사용자 지적(스쿼드 동결 후에도 합류확정 배지 잔존). */
@@ -98,10 +119,15 @@ function renderCompare(rows, slot){
     return;
   }
   box.hidden = false;
+  const canonOf = pos => (td.slot_canon || []).find(c => c.pos === pos) || null;
   box.innerHTML = compareReal(picked[0], picked[1], {
-    td, cards: CARDS, miniGrid, slot, seasonKey: SEASON,
-    canon: (td.slot_canon || []).find(c => c.pos === slot.pos) || null,
+    td, cards: CARDS, miniGrid, seasonKey: SEASON,
+    /* 슬롯군이면 두 선수의 **기준 자리가 서로 다를 수 있다** — 각자의 자리·정본을 따로 넘긴다. */
+    slot: picked[0].slot ?? slot, slotA: picked[0].slot ?? slot, slotB: picked[1].slot ?? slot,
+    groupMode: MODE === 'group', groupLabel: slot.slot_type,
+    canonA: canonOf((picked[0].slot ?? slot).pos), canonB: canonOf((picked[1].slot ?? slot).pos),
     profile: td.profile || [],
+    manager: regime?.manager_kr || regime?.manager || '감독',
     roleName: id => K.roleName[id] ?? id,
   });
 }
@@ -109,7 +135,7 @@ function renderCompare(rows, slot){
 function render(){
   const slot = slots.find(s => s.pos === selEl.value) ?? slots[0];
   const gk = isGkSlot(slot.pos);
-  const { rows: cands, missing, noGrid } = pool(slot);
+  const { rows: cands, missing, noGrid, groupSlots } = pool(slot);
   document.getElementById('seasonNote').innerHTML = SEASON === '2025-26'
     ? '기준: <b>25/26 전수 실측</b>(`squad_entries` 그리드) — 표본이 크고 체제가 한 시즌 통째라 <b>정본</b>이다. 26/27 체제 변화는 반영되지 않는다.'
     : `기준: <b>26/27 현재 실측</b>(\`prescriptions\` measured) — <b>⚠️ 표본 2~7경기로 얇다.</b> 시즌 정본이 아니라 <b>현재 경향</b>으로만 읽을 것.`
@@ -117,17 +143,27 @@ function render(){
   if (noGrid.length) document.getElementById('seasonNote').innerHTML +=
     `<br>⛔ <b>실측 그리드 자체가 없는 선수 ${noGrid.length}명</b>(자리표시 값이라 랭킹·히트맵에서 제외): ${noGrid.join(' · ')}`;
   const rows = cands.map(c => {
-    const bf = K.bestFit(c.map25, slot.x, slot.slot_type);   // 라이브 산출 — dbFit과 대조 가능
-    return { ...c, ...bf };
+    /* 슬롯군이면 묶음 안의 자리를 전부 재 보고 **가장 잘 맞는 자리**를 쓴다.
+       ⛔ 임의로 대표 자리를 정하지 않는다 — 좌우 자리는 커널 x가 달라 sim이 실제로 갈린다. */
+    let best = null;
+    for (const s of groupSlots){
+      const bf = K.bestFit(c.map25, s.x, s.slot_type);
+      if (!best || bf.sim > best.sim) best = { ...bf, slot: s };
+    }
+    return { ...c, ...best };
   // GK는 적합이 변별하지 못한다(obs#220) — 적합순 랭킹 자체가 성립하지 않으므로 평점순으로 세운다.
   }).sort((a, b) => gk ? (b.rate ?? 0) - (a.rate ?? 0) : b.sim - a.sim);
   const seasonTag = SEASON === '2025-26' ? '25/26 정본' : '26/27 현재';
+  const groupTag = MODE === 'group' ? ` · <b>${slot.slot_type}군</b> ${groupSlots.map(s => s.pos).join('·')} 합산` : '';
   document.getElementById('rankTitle').textContent = gk
     ? `${slot.pos} 슬롯 — 평점 랭킹 [${seasonTag}] (${rows.length}명 · GK는 커널 적합이 변별력을 갖지 못해 평균 위치로 대체)`
-    : `${slot.pos} 슬롯 적합 랭킹 [${seasonTag}] (커널 x=${slot.x} · ${slot.slot_type}군 ${rows.length}명)`;
+    : MODE === 'group'
+      ? `${slot.slot_type}군 적합 랭킹 [${seasonTag}] (${groupSlots.map(s => s.pos).join(' · ')} 합산 ${rows.length}명 — 각 선수의 「가장 잘 맞는 자리」 기준)`
+      : `${slot.pos} 슬롯 적합 랭킹 [${seasonTag}] (커널 x=${slot.x} · ${slot.slot_type}군 ${rows.length}명)`;
   document.getElementById('rank').innerHTML =
-    `<tr><th>#</th><th>선수</th><th>적합 역할/포커스</th><th>${gk ? '평균 위치' : 'sim'}</th><th>DB값</th><th>평점</th><th>근거</th></tr>` +
+    `<tr><th>#</th><th>선수</th>${MODE === 'group' ? '<th>자리</th>' : ''}<th>적합 역할/포커스</th><th>${gk ? '평균 위치' : 'sim'}</th><th>DB값</th><th>평점</th><th>근거</th></tr>` +
     rows.map((r, i) => `<tr data-pid="${r.player_id}"><td>${i+1}</td><td>${r.label} ${badge(r.lh)} ${sofifaLink(r.label, GS)}<br><small>${statLine(r.label, GS)}</small></td>
+      ${MODE === 'group' ? `<td><b>${r.slot?.pos ?? ''}</b></td>` : ''}
       <td>${K.roleName[r.role] ?? r.role}/${r.focus}</td>
       <td>${gkPosCell(td, slot.pos, r.player_id) ?? `<b>${r.sim.toFixed(3)}</b>`}</td>
       <td class="dim">${gk ? '' : (r.dbFit != null ? r.dbFit.toFixed(3) : '—')}</td>
