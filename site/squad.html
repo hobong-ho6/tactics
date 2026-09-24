@@ -13,7 +13,7 @@
 <div class="panel kv" style="font-size:12px"><b>기준</b>
   <span class="dim">적합·평점의 표본은 <b>25/26 전수 실측</b>이다(26/27 체제 변화 미반영 — 26/27 축은
   <a href="compare.html">선수 비교</a>의 「26/27 현재」 탭). 그리고 아래 「적합 역할」은
-  <b>선수의 실측 적합</b>이라 <a href="evolutions.html">진화·내 구단 → 전술 구현</a>의
+  <b>선수의 실측 적합</b>이라 <a href="evolutions.html">얼티밋팀 → 전술 구현</a>의
   <b>슬롯 정본 역할</b>과 다를 수 있다 — 두 화면은 다른 축을 본다.</span></div>
 <div class="panel"><h2>베스트 XI · 슬롯 깊이 <small class="dim">— 왼쪽: 슬롯별 1순위 배치(색 = 적합 강도) · 오른쪽: 후보 분포와 1~2순위 격차</small></h2>
   <div id="sviz" class="mviz"></div>
@@ -23,7 +23,7 @@
 <p class="dim">적합(sim)은 커널 라이브 산출값. DB 저장값과 어긋나면 익스포트가 낡은 것 —
 <span class="mono">python3 scripts/export.py</span>를 다시 돌릴 것.</p>
 <script type="module">
-import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell } from './assets/data.js?v=20260816-gk-avgpos';
+import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell } from './assets/data.js?v=20260924-ut-rename';
 import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
 import { Kernel } from './assets/kernel.js?v=20260825-decodemap-null';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';

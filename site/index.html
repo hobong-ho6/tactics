@@ -18,7 +18,7 @@
 <p class="dim">데이터 흐름: db/tactics.db → <span class="mono">scripts/export.py</span>(게이트 통과 필수)
 → site/data/*.json → 이 페이지들. 손편집 지점 없음.</p>
 <script type="module">
-import { mountHeader, loadTeam, slotCandidates } from './assets/data.js?v=20260813-slot-candidates';
+import { mountHeader, loadTeam, slotCandidates } from './assets/data.js?v=20260924-ut-rename';
 const { idx } = await mountHeader('index.html');
 const cards = await Promise.all(idx.regimes.map(async r => {
   const td = await loadTeam(r.team_code);

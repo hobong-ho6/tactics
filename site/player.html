@@ -82,7 +82,7 @@
 <div id="duty"></div></div>
 </section>
 <script type="module">
-import { mountHeader, loadTeam, loadGameStats, loadKernels, slotCandidates, sofifaLink, isGkSlot, gkPosCell, setCurrentTeam } from './assets/data.js?v=20260918-evo';
+import { mountHeader, loadTeam, loadGameStats, loadKernels, slotCandidates, sofifaLink, isGkSlot, gkPosCell, setCurrentTeam } from './assets/data.js?v=20260924-ut-rename';
 import { pizza, dumbbell, formRibbon } from './assets/playerviz.js?v=20260918';
 // 차트 폭 — 패널이 display:none인 채로 렌더되면 clientWidth가 0이라, 보이는 본문 폭에서 계산한다(패딩 20×2 + 패널 14×2)
 const vizW = (el, cap, pad = 0) => Math.min(cap, Math.max(320, (el?.clientWidth || (document.body.clientWidth - 68)) - pad));
@@ -846,7 +846,7 @@ function renderEvo(sel){
     return { ...r, pp, pl, tier, cost, rs, score: rs.score, d: (r.ovr_after ?? 0) - (r.ovr_before ?? 0) };
   }).filter(r => !r.is_expired)
     .sort((a,b) => b.tier - a.tier || b.score - a.score || b.d - a.d || a.cost - b.cost || a.steps - b.steps);
-  /* ⛔⛔ **진화·내 구단과 같은 규칙으로 거른다**(2026-09-22 전수 조사).
+  /* ⛔⛔ **얼티밋팀과 같은 규칙으로 거른다**(2026-09-22 전수 조사).
      종전엔 `is_expired`만 봐서 ⑴ 이미 **소진된** 진화 ⑵ **프리미엄 시즌패스** 전용 진화를 낀 경로를
      그대로 「최적 제안」으로 세웠다 — 진화 메뉴에서는 같은 경로가 사라져 있어 두 화면이 어긋났다(74건).
      ⚠️ 거른 건수를 적는다 — 「경로가 없다」와 「걸러졌다」는 다르다(obs#132). */
@@ -860,7 +860,7 @@ function renderEvo(sel){
   const nHidden = nAll - openRows.length;
   const hiddenNote = nHidden
     ? `<div class="dim" style="font-size:12px;margin-bottom:6px">경로 ${nHidden}건은 제외했다 —
-        <b>이미 소진</b>됐거나 <b>아직 해금하지 않은</b> 진화가 끼어 있다 — 프리미엄 미구매 · 표준 시즌패스 레벨 미달 · 목표 미완료(진화·내 구단과 같은 기준).</div>` : '';
+        <b>이미 소진</b>됐거나 <b>아직 해금하지 않은</b> 진화가 끼어 있다 — 프리미엄 미구매 · 표준 시즌패스 레벨 미달 · 목표 미완료(얼티밋팀과 같은 기준).</div>` : '';
   if (!openRows.length){
     el.innerHTML = eligHTML + `<span class="dim">밟을 수 있는 경로 없음 — 수집된 ${nAll}건이 모두 만료·소진됐거나 <b>아직 해금하지 않은</b> 진화를 낀다.</span>`;
     return; }
