@@ -15,6 +15,15 @@
 
 const J = (v, d) => { try { return JSON.parse(v ?? 'null') ?? d; } catch(e){ return d; } };
 
+/* ⭐⭐ 진화 로그 **한 행의 상태** 판정 정본 (2026-09-24 신설 — 사용자 지적 「마조 진화 완료했어 진화 진행중 아니야」).
+   ⛔⛔ 화면이 각자 `!l.completed_at`만 보면 **무효 행이 「진행 중」으로 뜬다.** 실제로 그랬다:
+   마조의 `Striker Glow Up [SP 7]`은 실측으로 「적용된 적 없음」이 확인돼 `is_void=1`인데
+   `completed_at`이 NULL이라 카드가 계속 「진화 진행 중」이었다.
+   ⭐ 같은 실수가 **두 번째**다 — 소진 계산에서 한 번(migration 053), 카드 뱃지에서 또 한 번.
+      ⇒ 「조심하자」 대신 판정을 여기 한 곳에 두고 화면은 부르기만 한다(CLAUDE.md 불변규칙 13 ②). */
+export const logState   = l => l.is_void ? 'void' : l.completed_at ? 'done' : 'progress';
+export const inProgress = l => logState(l) === 'progress';
+
 export function evoRules(EVO, accName){
   const C = EVO?.club || { accounts: [], players: [], log: [] };
   const acc = (C.accounts || []).find(a => a.name === accName) || (C.accounts || [])[0] || null;

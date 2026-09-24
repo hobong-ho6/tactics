@@ -117,9 +117,9 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260918-evo';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { evoRules } from './assets/evorules.js?v=20260922c';
+import { evoRules, logState, inProgress } from './assets/evorules.js?v=20260924a';
 import { cardCompare } from './assets/cardcompare.js?v=20260923a';
-import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT } from './assets/clubviz.js?v=20260923a';
+import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT } from './assets/clubviz.js?v=20260924a';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -1825,7 +1825,7 @@ function renderClub(){
   const box = document.getElementById('owned');
   const cells = shown.slice().sort((a, b) => (b.current_ovr ?? 0) - (a.current_ovr ?? 0)).map(p => {
     const nlv = logs.filter(l => l.club_player_id === p.id && !l.is_void).length;
-    const prog = logs.some(l => l.club_player_id === p.id && !l.completed_at);
+    const prog = logs.some(l => l.club_player_id === p.id && inProgress(l));
     return { player: p, posName: String(p.positions || '').split(',')[0] || '',
              tone: prog ? 'wait' : nlv ? 'go' : '',
              badge: `<b>${esc(p.name)}</b><br>${prog ? '진화 진행 중' : nlv ? `진화 ${nlv}단계` : esc(CL(p))}` };
@@ -1896,7 +1896,9 @@ function renderClub(){
 
   document.getElementById('log').innerHTML = logs.map(l => { const p = owned.find(x => x.id === l.club_player_id);
     return `<li><b>${esc(l.applied_at)}</b> ${esc(p?.name || '')} ← ${esc(l.evo_name)} <span class="chip">OVR ${l.ovr_before ?? '—'}→${l.ovr_after ?? '—'}</span>
-      ${l.completed_at ? `<span class="badge hi">완료 ${esc(l.completed_at)}</span>` : '<span class="badge mid">진행 중 — 완주 시 반영</span>'}
+      ${{ done: `<span class="badge hi">완료 ${esc(l.completed_at)}</span>`,
+          progress: '<span class="badge mid">진행 중 — 완주 시 반영</span>',
+          void: '<span class="badge">무효 — 적용된 적 없음(실측 확인)</span>' }[logState(l)]}
       ${l.playstyles_after ? `<small class="dim">PS ${esc(J(l.playstyles_after, []).join(', '))}</small>` : ''} ${l.notes ? `<small class="dim">— ${esc(l.notes)}</small>` : ''}</li>`; }).join('')
     || '<li class="dim">기록 없음</li>';
 }

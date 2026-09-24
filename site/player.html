@@ -92,7 +92,7 @@ import { prose } from './assets/prose.js';
 import { PLAYSTYLES } from './assets/playstyle-icons.js';
 import { repaintEvoCard } from './assets/evocard.js?v=20260921a';
 /* ⛔ 진화 경로의 소진·프리미엄 판정은 **진화 메뉴와 같은 모듈**을 쓴다(2026-09-22 전수 조사) */
-import { evoRules } from './assets/evorules.js?v=20260922c';
+import { evoRules } from './assets/evorules.js?v=20260924a';
 import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20260922-stat-tips';
 const { team, idx } = await mountHeader('player.html');
 const [td, GS, GS27, HIST, CARDS, EVO, K26] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history'), loadGameStats('cards'), loadGameStats('evolutions').catch(()=>({paths:{},role_map:[]})), loadKernels('FC26').catch(()=>({roles:[]}))]);

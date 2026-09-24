@@ -533,6 +533,8 @@ export function compareCards(a, b, ctx = {}) {
     <table class="tbl cmp-tbl"><tbody>${sixRows}</tbody></table>
 
     <h4>PlayStyle</h4>
+    <p class="dim" style="font-size:11.5px;margin:2px 0 8px">초록 = <b>상대에게 없는 것</b> · <b>+</b> = PlayStyle+.
+      ⛔ 차이 표시일 뿐 <b>가산점이 아니다</b> — PlayStyle을 세는 곳은 역할 비교의 「이 역할에 걸리는 PlayStyle」뿐이다.</p>
     <div class="cmp-two"><div class="fc-pslist">${psList(a, pb)}</div><div class="fc-pslist">${psList(b, pa)}</div></div>
 
     <h4>역할 숙련</h4>
