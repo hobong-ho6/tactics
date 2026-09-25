@@ -339,3 +339,4 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .sbc-head b{font-size:14px}
 .sbc-prog{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:5px}
 .sbc-desc{font-size:11.5px;margin:4px 0 2px}
+.sbc-card.done{opacity:.62}

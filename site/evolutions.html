@@ -2025,6 +2025,7 @@ const SBC_DONE = SBC.done || {};
    ⇒ 기록이 있으면 그 안에서만 배치하고, 없으면 「추정」이라고 못박는다. 아래 선택으로 기록·재계산한다. */
 const SBC_FORMS = (EVO.formations || []).map(f => f.name);
 let SBC_F = 'all';
+const SBC_OPEN = new Set();          // 완료분을 펼쳐 둔 세트
 function renderSbc(){
   /* ⛔ **원클릭 제출은 목록에서 뺀다**(2026-09-25 사용자 지시 「원클릭 제출 미션은 목록에서 제외시키자」).
      스쿼드를 짜는 챌린지가 아니라 「조건 맞는 카드를 골라 내는」 제출이라 이 화면이 답할 게 없다
@@ -2048,6 +2049,15 @@ function renderSbc(){
     .map(([k, t]) => `<button class="filt${SBC_F === k ? ' on' : ''}" data-f="${k}"><i>${SBC_F === k ? '☑' : '☐'}</i>${t}</button>`).join('');
   fb.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => { SBC_F = b.dataset.f; renderSbc(); }));
   /* 포메이션 선택 → `fut_club.py sbc_formation`이 기록하고 **그 자리에서 다시 푼다**(serve.py 쓰기 API). */
+  /* ⚠️ 카드는 이 함수 **끝**에서 innerHTML로 그려진다 — 여기서 바로 바인딩하면 아직 없는 노드다.
+     그래서 solve 버튼과 **같은 setTimeout 안**에 둔다(2026-09-25: 토글이 안 먹던 원인). */
+  setTimeout(() => {
+    document.querySelectorAll('[data-sbcopen]').forEach(b => b.addEventListener('click', () => {
+      const id = +b.dataset.sbcopen;
+      SBC_OPEN.has(id) ? SBC_OPEN.delete(id) : SBC_OPEN.add(id);
+      renderSbc();
+    }));
+  }, 0);
   setTimeout(() => document.querySelectorAll('[data-sbcsolve]').forEach(btn =>
     btn.addEventListener('click', async () => {
       const id = btn.dataset.sbcsolve;
@@ -2072,6 +2082,18 @@ function renderSbc(){
     const aw = (J(st.awards_text, []) || []).map(x => esc(x.name)).join(' · ');
     const dn = list.filter(c => SBC_DONE[String(c.challenge_ea_id)]).length;
     const okn = list.filter(c => c.verdict === 'ok' && !SBC_DONE[String(c.challenge_ea_id)]).length;
+    /* ⛔ **완료한 서브 미션은 접는다**(2026-09-25 사용자 지시 「서브 미션 중 완료된 건 숨기기 처리」).
+       할 일만 남아야 목록이 읽힌다. ⛔ 조용히 없애지 않는다 — 「완료 N/M」 배지가 그대로 세고,
+       「완료 N개 보기」 토글로 언제든 펼 수 있다. ⚠️ 「내가 완료」 필터를 고른 경우에는 감추지 않는다. */
+    const show = SBC_F === 'done' || SBC_OPEN.has(st.set_ea_id)
+      ? list : list.filter(c => !SBC_DONE[String(c.challenge_ea_id)]);
+    if (!show.length && SBC_F !== 'done' && dn === list.length && !SBC_OPEN.has(st.set_ea_id)) {
+      return `<div class="sbc-card done">
+        <div class="sbc-head"><b>${esc(st.name)}</b>
+          <span class="chip dim">${esc(st.category || '')}</span>
+          <span class="chip hi">🏁 전부 완료 ${dn}/${list.length}</span></div>
+        <button class="act ghost" data-sbcopen="${st.set_ea_id}" style="font-size:12px;margin-top:6px">완료 ${dn}개 보기</button></div>`;
+    }
     const d = days(st.end_time);
     return `<div class="sbc-card${/dn/.test(d) ? ' urgent' : ''}">
       <div class="sbc-head">
@@ -2084,7 +2106,9 @@ function renderSbc(){
         ${okn ? `<span class="chip">지금 가능 ${okn}</span>` : ''}
         ${aw ? `<small class="dim">보상 ${aw}</small>` : ''}</div>
       ${st.description ? `<div class="dim sbc-desc">${esc(st.description)}</div>` : ''}
-      ${list.map(c => {
+      ${dn && !SBC_OPEN.has(st.set_ea_id) && SBC_F !== 'done'
+        ? `<button class="act ghost" data-sbcopen="${st.set_ea_id}" style="font-size:11.5px;margin:4px 0">완료한 ${dn}개는 감춰 뒀다 — 보기</button>` : ''}
+      ${show.map(c => {
         const dn = SBC_DONE[String(c.challenge_ea_id)];
         const v = dn ? { k: '🏁 내가 완료', c: 'hi' } : VERDICT[c.verdict || 'unparsed'];
         const xi = J(c.squad_json, []) || [];
