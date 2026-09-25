@@ -377,5 +377,10 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 /* 자리 안 맞음 안내 — 「사야 하나?」에 답한다. 케미 조건이 없거나 이미 넘겼으면 `.ok`(살 필요 없음). */
 .sbc-mf{font-size:11.5px;margin-top:6px;border:1px dashed var(--bad);border-radius:8px;padding:6px 8px}
 .sbc-mf.ok{border-color:var(--line)}
-.sbc-mf ul{margin:4px 0 0;padding-left:18px}
-.sbc-mf li{padding:1px 0}
+.sbc-mf.fix{border-style:solid;border-color:var(--ok)}
+.sbc-mf ul.buylist{margin:5px 0 0;padding:0;list-style:none}
+.sbc-mf ul.buylist li{padding:4px 0 4px 26px;position:relative;border-top:1px solid var(--line);line-height:1.5}
+.sbc-mf ul.buylist li:first-child{border-top:0}
+.sbc-mf .bn{position:absolute;left:0;top:5px;width:18px;height:18px;line-height:18px;text-align:center;
+  border-radius:50%;background:var(--line);font-size:10px;font-weight:800}
+.sbc-mf .pos{color:var(--ok)}

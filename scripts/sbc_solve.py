@@ -325,6 +325,84 @@ def breakdown(xi, conds, chem=None):
     return out
 
 
+def buy_specs(xi, pl, conds, pool):
+    """⭐⭐ **무엇을 사면 제출 가능해지는가** — 칸별로 «포지션 + 클럽/리그/국적 + 등급»까지 찍는다
+       (2026-09-25 사용자 지시 「어느 국적, 또는 어느 리그, 어느 팀의 어떤 포지션을 사야 제출 가능한지를
+        알려줘야지」). 종전엔 「이 칸엔 CB가 설 수 있다」만 적어서 **사도 될지 알 수 없었다**.
+
+    어떻게: 칸마다 «가상의 카드»를 세워 보고 **남은 위반이 얼마나 줄어드는지**로 고른다.
+      · 후보 클럽·국적은 **지금 스쿼드에 이미 있는 값**만 쓴다 — 케미는 같은 값이 모여야 붙으므로
+        스쿼드에 없는 클럽을 사면 그 카드 케미는 대개 0이다(혼자짜리).
+      · 클럽을 고르면 리그는 따라온다(한 클럽은 한 리그다) — 그래서 (클럽, 리그) 쌍으로 다룬다.
+      · 한 칸을 정하면 반영하고 다음 칸을 고른다(탐욕) — 케미는 모일수록 붙으므로 순서가 붙는다.
+      · **자리 안 맞는 칸을 먼저** 본다(어차피 케미 0이라 바꿔도 잃을 게 없다). 그걸로 안 닫히면
+        자리 맞는 칸까지 후보로 넣는다 — 「Max. 클럽 종류 4」처럼 **멀쩡히 선 사람을 바꿔야** 풀리는
+        조건이 있기 때문이다.
+
+    ⛔⛔ **목표는 케미가 아니라 「남은 위반 전체」다**(2026-09-25 실측으로 정정).
+       처음엔 케미만 보고, 케미 외 조건이 하나라도 실패하면 후보를 통째로 기각했다. 그래서
+       **Madrid Dreams가 제안 0건**이 됐다 — 못 맞추고 있던 조건이 `Max. Clubs in Squad: 4`라
+       어떤 후보를 넣어도 그 실패가 남아 전부 탈락한 것이다. 「이미 깨져 있던 조건」과
+       「내가 깬 조건」을 구분하지 못한 게 원인이라, 지금은 **위반 크기의 증감**으로 본다.
+
+    ⚠️ OVR은 **바뀌는 사람의 OVR 근처**로 적는다 — 팀 레이팅 조건을 흔들지 않기 위해서다.
+    ⚠️ 등급 C(우리 계산)다. 시세는 모른다(fut.gg가 FC27 시세를 아직 주지 않는다) — **가격은 적지 않는다**.
+    ⛔ 지금 위반이 없으면 빈 목록을 돌려준다 — 살 필요가 없다."""
+    fit = [p for _n, _x, _y, p, ok, _w in pl if p and ok]
+    base_fail, base_cost = check(xi, conds)
+    if not base_cost:
+        return []
+    # 칸 정보: (칸이름, 설 수 있는 포지션, 지금 선 사람, 자리 맞나) — 자리 안 맞는 칸이 먼저다.
+    miss = sorted([(nm, want, p, ok) for nm, _x, _y, p, ok, want in pl if p], key=lambda t: t[3])
+    # 후보 축 — 스쿼드에 이미 있는 (클럽, 리그)·국적.
+    # ⛔⛔ 리그는 **스쿼드 본인의 값**에서 가져온다. 보유 풀 전체를 클럽 **이름**으로 뒤지면
+    #    남녀 동명 구단이 섞인다(2026-09-25 실측: Bayern München → 「Frauen-Bundesliga」,
+    #    Ajax → 「Nederland Vrouwen Liga」로 붙었다). 이름 조인 금지는 불변규칙 6과 같은 이유다.
+    lg_of = {p["club"]: p["league"] for p in xi if p["club"] and p["league"]}
+    clubs = sorted({p["club"] for p in xi if p["club"]}, key=lambda c: -sum(1 for p in xi if p["club"] == c))
+    nats = sorted({p["nation"] for p in xi if p["nation"]}, key=lambda c: -sum(1 for p in xi if p["nation"] == c))
+    qual = [t for (k, v), t in conds if k in ("qual_min", "qual_exact", "ovr_max", "ovr_min", "ovr_range", "league_is")]
+
+    # ⚠️ 케미 판정은 **배치 반영값**이어야 한다(포지션 무시 상한을 쓰면 화면과 말이 갈린다).
+    #    가상 카드는 그 칸에 서는 포지션으로 만들었으니 「자리 맞는 집합」에 그대로 더하면 된다.
+    def cost_of(squad, fitset):
+        c = gk_cost(squad)
+        for (kind, v), _t in conds:
+            c += max(0, v - chem_total(fitset)) if kind == "chem" else cost1(squad, kind, v)
+        return c
+
+    out, cur_xi, cur_fit = [], list(xi), list(fit)
+    cost = cost_of(cur_xi, cur_fit)
+    for nm, want, old, was_fit in miss:
+        if not cost:
+            break
+        best = None
+        for cb in clubs:
+            for na in nats:
+                synth = {"id": old["id"], "name": "(살 카드)", "club": cb, "league": lg_of.get(cb),
+                         "nation": na, "ovr": old["ovr"], "is_special": old["is_special"],
+                         "positions": "/".join(want), "best_pos": None}
+                nxi = [synth if p["id"] == old["id"] else p for p in cur_xi]
+                nfit = [p for p in cur_fit if p["id"] != old["id"]] + [synth]
+                c2 = cost_of(nxi, nfit)
+                if c2 >= cost:                       # ⛔ 줄지 않으면 제안이 아니다(같아도 안 산다)
+                    continue
+                if best is None or c2 < best[0]:
+                    best = (c2, cb, na, synth, nxi, nfit)
+        if not best:
+            continue
+        c2, cb, na, synth, cur_xi, cur_fit = best
+        out.append({"slot": nm, "pos": want, "club": cb, "league": lg_of.get(cb), "nation": na,
+                    "ovr": old["ovr"], "replaces": old["name"], "was_fit": bool(was_fit),
+                    "gain": cost - c2, "chem_after": chem_total(cur_fit),
+                    "left": c2, "quality": qual})
+        cost = c2
+    # ⭐ 다 사도 안 닫히면 그 사실을 마지막 줄에 남긴다 — 「사면 된다」로 읽히면 안 된다.
+    if out and cost:
+        out[-1]["still"] = [t for t in check(cur_xi, conds)[0]]
+    return out
+
+
 FORM_OF = {}          # challenge_ea_id → 기록된 포메이션. main()이 채운다
 CUR_FORM = [None]     # 지금 푸는 챌린지의 포메이션(없으면 None)
 
@@ -668,7 +746,8 @@ def main():
                  for nm, x, y, p, fit, want in pl if p]
         rows.append((a.game, r["challenge_ea_id"], today, aid, "ok",
                      json.dumps({"formation": form, "formation_known": bool(known), "partial": False,
-                                 "players": squad, "checks": breakdown(xi, _cd, ch)}, ensure_ascii=False),
+                                 "players": squad, "checks": breakdown(xi, _cd, ch),
+                                 "buy": buy_specs(xi, pl, _cd, pool)}, ensure_ascii=False),
                      team_rating([p["ovr"] for p in xi]), ch, len(cands), None, src, conf))
     # ⭐⭐ **못 풀어도 최선 스쿼드를 남긴다**(2026-09-25 사용자 지시 「못 풀더라도 현재 스쿼드 기준으로
     #    채울 수 있는 선수들을 채우고 / 만족한 조건과 불만족한 조건을 알려주고 / 어떤 조건을 사야 하는지」).
@@ -687,6 +766,7 @@ def main():
                              "players": [dict(slim(p), slot=nm, x=x, y=y, fit=fit, want=want)
                                          for nm, x, y, p, fit, want in pl if p],
                              "checks": breakdown(part, conds, ch),
+                             "buy": buy_specs(part, pl, conds, pool),
                              "hints": [{"text": t, "how": h} for t, h in
                                        group_hints({c["text"] for c in breakdown(part, conds, ch) if not c["ok"]},
                                                    conds)]}, ensure_ascii=False)
