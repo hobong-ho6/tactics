@@ -2231,6 +2231,23 @@ function renderSbc(){
       say(box, await api('sbc_formation', { challenge: +id, formation: sel.value, game: 'FC27' }));
       btn.disabled = false;
     })), 0);
+  /* ⭐ 제출 완료 처리 / 완료 취소 — 둘 다 같은 한 함수로 보낸다(migration 072). */
+  setTimeout(() => document.querySelectorAll('[data-sbcdone],[data-sbcundo]').forEach(b =>
+    b.addEventListener('click', async () => {
+      const undo = b.hasAttribute('data-sbcundo');
+      const id = +(undo ? b.dataset.sbcundo : b.dataset.sbcdone);
+      /* ⛔ 완료 취소는 **되돌릴 수 없는 사실 삭제**다 — `fut_sbc_log` 행이 사라진다.
+         그 기록은 EA·fut.gg가 주지 않아 사람이 적은 것이고, 손으로 적어 둔 옛 완료 건은
+         제출 카드 정보조차 없어 다시 만들 수 없다. ⇒ 한 번 묻는다(제출 처리는 되돌릴 수 있어 안 묻는다). */
+      if (undo && !confirm('완료 기록을 지웁니다.\n\n' +
+          '· EA·fut.gg가 주지 않는 축이라 사람이 적은 사실이고, 지우면 복구할 수 없습니다.\n' +
+          '· 이 기능으로 완료 처리한 건이면 카드도 보유로 되돌립니다.\n\n계속할까요?')) return;
+      const box = document.getElementById(`sbcs${id}`);
+      b.disabled = true;
+      if (box) box.innerHTML = `<span class="dim">${undo ? '되돌리고' : '기록하고'} 남은 SBC를 다시 푸는 중… (수십 초)</span>`;
+      say(box, await api('sbc_submit', { challenge: id, undo, game: 'FC27' }));
+      b.disabled = false;
+    })), 0);
   /* ⭐ 카드 ✕ = 이 챌린지에서 제외 후 재계산 · 칩 ↩︎ = 제외 해제 후 재계산(migration 071).
      ⛔ 둘 다 **같은 한 함수**로 보낸다 — 제외와 해제가 서로 다른 경로면 언젠가 갈린다. */
   setTimeout(() => document.querySelectorAll('[data-sbcex],[data-sbcun]').forEach(b =>
@@ -2300,6 +2317,20 @@ function renderSbc(){
               <ul style="margin:3px 0 0;padding-left:18px">${(J(c.requirements_text, []) || [])
                 .map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`}
             ${c.note ? `<div class="dim" style="font-size:12px;margin-top:5px">${esc(c.note)}</div>` : ''}
+            ${/* ⭐⭐ **제출 완료 처리**(2026-09-26 사용자 지시) — 누르면 ⑴ 완료로 기록하고
+                  ⑵ 그 11장을 `status='sbc'`로 내려 구단에서 덜어내고 ⑶ 남은 SBC를 다시 푼다.
+                  ⛔ 제출은 인게임에서 사용자가 한다 — 이건 **그 사실을 적는 것**이지 대신 내는 게 아니다.
+                  ⚠️ 기록되는 11장은 «우리가 제안한 스쿼드»다. 다른 조합으로 냈다면 되돌리면 된다. */
+              stg === 'done'
+                ? `<div class="sbc-sub done"><b>🏁 완료로 기록됨</b>
+                     ${dn.squad_note ? `<small class="dim">낸 카드: ${esc(dn.squad_note)}</small>` : ''}
+                     <button class="act ghost" data-sbcundo="${c.challenge_ea_id}">완료 취소</button>
+                     <span class="msg-slot" id="sbcs${c.challenge_ea_id}"></span></div>`
+                : stg === 'solved'
+                ? `<div class="sbc-sub"><b>인게임에서 이 스쿼드로 제출하셨나요?</b>
+                     <button class="act" data-sbcdone="${c.challenge_ea_id}">제출했다 — 완료 처리</button>
+                     <small class="dim">위 11장이 <b>구단에서 빠지고</b> 남은 SBC를 다시 푼다(되돌릴 수 있다).</small>
+                     <span class="msg-slot" id="sbcs${c.challenge_ea_id}"></span></div>` : ''}
             ${(() => {
               /* ⭐⭐ **피치 모양으로 그린다**(2026-09-25 사용자 지시 「리스트로만 있으니 어떤 포지션의 선수인지도 모르겠어」).
                  ⚠️ 자리가 안 맞는 선수는 붉게 표시한다 — 그 선수는 **케미가 0**이다.

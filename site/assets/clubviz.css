@@ -408,3 +408,9 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .altc{display:inline-block;margin:0 3px 2px 0;padding:1px 6px;border-radius:99px;
   border:1px solid var(--line);background:rgba(255,255,255,.04);white-space:nowrap}
 .altc i{font-style:normal;font-size:9.5px;color:var(--dim)}
+
+/* SBC 제출 완료 처리(migration 072) — 인게임 제출은 사용자가 하고, 여기선 그 사실만 적는다. */
+.sbc-sub{font-size:12px;margin-top:6px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;
+  border:1px dashed var(--ok);border-radius:8px;padding:6px 9px}
+.sbc-sub.done{border-style:solid;border-color:var(--line)}
+.sbc-sub small{flex-basis:100%}

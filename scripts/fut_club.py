@@ -208,6 +208,67 @@ def _resolve():
     print(r.stdout.strip()[-600:] if r.returncode == 0 else "⛔ 재계산 실패:\n" + (r.stdout + r.stderr)[-600:])
 
 
+def cmd_sbc_submit(con, a):
+    """⭐⭐ **SBC를 제출했다고 표시하고, 그 11장을 구단에서 덜어낸다**(2026-09-26 사용자 지시
+       「sbc를 제출해서 내가 완료처리할 수 있도록 하고, 완료처리되면 해당 스쿼드의 선수들은
+        스쿼드에서 없어진 걸로 처리 및 다른 sbc 해법 재계산하도록 수정」 · migration 072).
+
+    왜 필요한가: SBC 제출은 되돌릴 수 없고 카드가 구단에서 **영구 제거**되는데, EA도 fut.gg도
+      **어떤 카드를 냈는지 주지 않는다**. 그래서 다음 싱크 전까지 원장엔 「보유」로 남고
+      다음 챌린지 해법이 **이미 낸 카드를 또 쓴다**(2026-09-25에 실제로 그랬다).
+      ⇒ 제출 사실을 사람이 적는 순간 그 11장을 `status='sbc'`로 내려 **다음 계산에서 빠지게** 한다.
+
+    ⛔ 무엇을 냈는지는 **우리가 제안한 스쿼드**로 기록한다 — 다른 조합으로 내셨다면 그건 사실이 아니다.
+       그래서 `--undo`로 되돌릴 수 있게 두고, 기록에 그 한계를 적는다.
+    ⛔ 해법이 없거나(`verdict != ok`) 스쿼드가 낡아 이미 소모된 카드를 품고 있으면 **멈춘다** —
+       틀린 소모 기록은 다음 계산을 통째로 오염시킨다."""
+    ch = int(a.challenge)
+    row = con.execute("""SELECT c.name, c.set_ea_id, s.verdict, s.squad_json
+                           FROM fc_sbc_challenges c
+                           LEFT JOIN fc_sbc_solutions s ON s.challenge_ea_id=c.challenge_ea_id
+                                AND s.pulled=(SELECT MAX(pulled) FROM fc_sbc_solutions)
+                          WHERE c.challenge_ea_id=? ORDER BY c.pulled DESC LIMIT 1""", (ch,)).fetchone()
+    if not row:
+        raise SystemExit(f"⛔ 챌린지 {ch}를 모른다")
+
+    if getattr(a, "undo", False):
+        n = con.execute("UPDATE fut_club_players SET status='owned', sbc_challenge_ea_id=NULL, updated=? "
+                        "WHERE sbc_challenge_ea_id=? AND status='sbc'", (TODAY, ch)).rowcount
+        con.execute("DELETE FROM fut_sbc_log WHERE challenge_ea_id=? AND game_version=?", (ch, a.game))
+        con.commit()
+        print(f"↩️ {row['name']} 완료 취소 — 카드 {n}장을 보유로 되돌렸다. 다시 푸는 중…")
+        _resolve()
+        return
+
+    if row["verdict"] != "ok" or not row["squad_json"]:
+        raise SystemExit(f"⛔ {row['name']}: 저장된 해법이 없다(verdict={row['verdict']}) — "
+                         "먼저 풀어야 무엇을 냈는지 적을 수 있다.")
+    sq = json.loads(row["squad_json"])["players"]
+    ids = [p["id"] for p in sq]
+    bad = con.execute("SELECT name, status FROM fut_club_players WHERE id IN (%s) AND status<>'owned'"
+                      % ",".join("?" * len(ids)), ids).fetchall()
+    if bad:
+        raise SystemExit("⛔ 해법이 낡았다 — 이미 보유가 아닌 카드가 들어 있다: "
+                         + ", ".join(f"{b['name']}({b['status']})" for b in bad)
+                         + "\n   먼저 다시 풀 것(화면의 「이 포메이션으로 풀기」).")
+    note = " · ".join(f"{p['slot']} {p['name']}({p['ovr']})" for p in sq)
+    con.execute("""INSERT INTO fut_sbc_log(account_id, game_version, set_ea_id, challenge_ea_id,
+                     completed_at, squad_note, source, confidence, notes)
+                   VALUES((SELECT id FROM fut_accounts ORDER BY id LIMIT 1),?,?,?,?,?,?,?,?)
+                   ON CONFLICT(account_id, game_version, challenge_ea_id) DO UPDATE SET
+                     completed_at=excluded.completed_at, squad_note=excluded.squad_note""",
+                (a.game, row["set_ea_id"], ch, TODAY, note,
+                 f"사용자가 화면에서 완료 처리({TODAY}) — EA·fut.gg가 주지 않는 축이라 사람이 적는다",
+                 "MEASURED(사용자 행위). ⚠️ 제출 카드는 **우리가 제안한 11장**으로 적었다 — "
+                 "다른 조합으로 내셨다면 사실과 다르다(되돌리려면 완료 취소).",
+                 row["name"]))
+    n = con.execute("UPDATE fut_club_players SET status='sbc', sbc_challenge_ea_id=?, updated=? "
+                    "WHERE id IN (%s)" % ",".join("?" * len(ids)), [ch, TODAY] + ids).rowcount
+    con.commit()
+    print(f"🏁 {row['name']} 완료 처리 — 카드 {n}장을 구단에서 덜어냈다. 남은 SBC를 다시 푸는 중…")
+    _resolve()
+
+
 def cmd_sbc_exclude(con, a):
     """⭐ **이 챌린지에서 이 카드를 빼고 다시 푼다**(2026-09-25 사용자 지시 「선수를 스쿼드에서 제외하고
        재계산하는 기능을 넣어줘 — 제외한 선수는 해당 sbc에 포함 안 시키는 용이야」).
@@ -240,7 +301,8 @@ def run(con, cmd, **kw):
                     in_progress=False, evo=None, challenge=None, formation=None, club_player=None, undo=False)
     a = argparse.Namespace(**{**defaults, **kw})
     fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete,
-          "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude}[cmd]
+          "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude,
+          "sbc_submit": cmd_sbc_submit}[cmd]
     fn(con, a)
 
 
