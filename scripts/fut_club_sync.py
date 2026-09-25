@@ -23,6 +23,7 @@
 import argparse
 import datetime as dt
 import json
+import re
 import sqlite3
 import sys
 from pathlib import Path
@@ -42,6 +43,8 @@ def main():
     ap.add_argument("--account", required=True)
     ap.add_argument("--pulled", default=TODAY)
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--allow-stale", action="store_true",
+                    help="캡처가 마지막 싱크보다 낡아도 진행한다(⛔ 되돌리기가 일어난다 — 확신할 때만)")
     ap.add_argument("--force-overwrite", action="store_true",
                     help="진화 선수 보호를 해제하고 EA 값으로 전부 덮는다(진화 기록이 틀렸다고 확정했을 때만)")
     a = ap.parse_args()
@@ -52,6 +55,20 @@ def main():
     if not acc:
         raise SystemExit(f"⛔ 계정 '{a.account}' 없음")
     rows = json.load(open(a.path, encoding="utf-8"))
+    # ⛔⛔ **낡은 캡처로 싱크하면 원장이 되돌아간다**(2026-09-25 실사고).
+    #    그날 다른 세션이 09-25 캡처로 싱크를 마친 뒤, 내가 **09-24 캡처**를 다시 먹여서
+    #    ⑴ 처분된 11장이 보유로 되살아나고 ⑵ 지모알로바의 EA 실측 PlayStyle(Low Driven Shot)이 지워졌다.
+    #    진화 보호는 OVR이 안 떨어지면 안 걸리므로 이 사고를 못 막는다.
+    #    ⇒ **캡처 날짜가 마지막 싱크보다 이르면 멈춘다.** 날짜는 파일명(ggclub-YYYYMMDD.json)에서 읽고,
+    #      없으면 파일 수정시각으로 물러선다. ⛔ 「조심하자」로 두지 않는다(불변규칙 13 ③).
+    m = re.search(r"(\d{4})(\d{2})(\d{2})", Path(a.path).name)
+    cap_day = f"{m[1]}-{m[2]}-{m[3]}" if m else dt.date.fromtimestamp(
+        Path(a.path).stat().st_mtime).isoformat()
+    last = con.execute("SELECT MAX(synced_at) FROM fut_club_players WHERE account_id=?", (acc["id"],)).fetchone()[0]
+    if last and cap_day < last and not a.allow_stale:
+        raise SystemExit(f"⛔ 캡처가 낡았다 — 캡처 {cap_day} < 마지막 싱크 {last}.\n"
+                         f"   그대로 먹이면 그 사이의 갱신(처분·진화·PlayStyle)이 **되돌아간다**.\n"
+                         f"   새로 수집하거나, 되돌리기를 감수하고 --allow-stale 을 주라.")
     styles = {r["ea_id"]: r["name"] for r in con.execute("SELECT ea_id, name FROM fc_chemistry_styles WHERE ea_id IS NOT NULL")}
     have = {r["ea_item_id"]: dict(r) for r in
             con.execute("SELECT * FROM fut_club_players WHERE account_id=?", (acc["id"],))}
@@ -87,7 +104,7 @@ def main():
         return ", ".join(out)
 
     ins = upd = same = 0
-    conflicts, applied_styles, done, protected, ps_fixed = [], [], [], [], []
+    conflicts, applied_styles, done, protected, ps_fixed, restored = [], [], [], [], [], []
     stats_n = 0
     for r in rows:
         card = cards.get(r["ea"]) or {}
@@ -111,6 +128,15 @@ def main():
                          f"gg-club {r.get('gg')} · {r['ovr']} · 구매가 {r.get('paid')} ({a.pulled} 싱크)", TODAY))
             ins += 1
             continue
+        # ⭐⭐ **EA 목록에 있으면 「보유」다 — 처분 표시를 되돌린다**(2026-09-25 신설).
+        #    ⛔ 종전엔 status를 **한 방향으로만** 바꿨다: 「EA에 없으면 sold」는 있는데 그 반대가 없었다.
+        #       ⇒ 한 번 sold가 되면 카드가 다시 구단에 있어도 영영 보유로 안 돌아온다.
+        #       실측(2026-09-25): 캡처 99장 중 **11장이 sold로 박혀** SBC 판정 풀이 89장으로 줄어 있었다
+        #       (데 케텔라레·만치니·캄비아소 등). ⇒ 「내 보유로 달성 가능한가」가 과소 판정됐다.
+        #    ⭐ 어느 쪽이든 정본은 EA다 — 목록에 있으면 보유, 없으면 처분(아래 `gone`).
+        if cur["status"] != "owned":
+            con.execute("UPDATE fut_club_players SET status='owned', updated=? WHERE id=?", (TODAY, cur["id"]))
+            restored.append((cur["name"], cur["status"]))
         # ③ 어긋남 검출 — 원장이 기록한 현재 OVR과 EA 실제값이 다르면 보고한다(진화 기록 오류 신호)
         if cur["current_ovr"] is not None and cur["current_ovr"] != r["ovr"]:
             conflicts.append((cur["name"], cur["current_ovr"], r["ovr"], cur["evo_count"]))
@@ -235,6 +261,10 @@ def main():
 
     print(f"{'(dry-run) ' if a.dry_run else ''}싱크 {len(rows)}장 · 신규 {ins} · 갱신 {upd} · 변화 없음 {same}")
     print(f"경기 기록 스냅샷 {stats_n}행 · 카드 빈칸 보충 {filled}칸" + (f" · 카드 행 신설 {len(made)}장 {made}" if made else ""))
+    if restored:
+        print(f"\n⭐ 처분 표시를 되돌린 카드 {len(restored)}장 — EA 목록에 있으므로 보유다:")
+        for n_, st in restored:
+            print(f"   {n_:<22} {st} → owned")
     if ps_fixed:
         print("\n⭐ PlayStyle을 EA 실측으로 정정 — 종전 값은 fut.gg 계산 카드에서 온 것이라 틀릴 수 있었다:")
         for n_, before, after in ps_fixed:
