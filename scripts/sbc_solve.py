@@ -241,6 +241,25 @@ def check(xi, conds):
     return fail, cost
 
 
+def breakdown(xi, conds, chem=None):
+    """조건 **전부**를 충족/미충족으로 갈라 돌려준다(2026-09-25 사용자 지시
+       「만족한 조건과 불만족한 조건을 알려주고 어떤 조건을 사야 하는지 표시해줘」).
+
+    ⛔ `check()`는 **못 맞춘 것만** 준다 — 그러면 「어디까지는 됐나」를 화면이 말할 수 없다.
+    ⭐ `gap`은 `cost1`의 위반 크기 그대로다. 인원 축 조건에서는 그 값이 곧
+       **「몇 명을 더 사야 하는가」**라서 구매 표시의 근거가 된다(등급 C — 우리 계산).
+    ⚠️ 그룹 축(같은 클럽 Min 3 등)의 gap도 인원이지만 **아무 카드나로는 안 풀린다** —
+       그건 `group_hints()`가 문장으로 짚는다."""
+    out = [{"text": GK_RULE, "ok": not gk_cost(xi), "gap": gk_cost(xi), "kind": "gk"}]
+    for (kind, v), text in conds:
+        # ⛔⛔ 케미는 **배치 반영값으로 판정한다**(2026-09-25). 탐색용 `chem_total`은 포지션을 무시한
+        #    **상한**이라, 그대로 쓰면 머리말엔 「케미 7」이 찍히는데 체크리스트는 「✅ Min. 18」이 된다
+        #    (실측: Norway v Portugal). 화면 두 곳이 서로 다른 말을 하는 것 자체가 버그다.
+        c = max(0, v - chem) if (kind == "chem" and chem is not None) else cost1(xi, kind, v)
+        out.append({"text": text, "ok": not c, "gap": c, "kind": kind})
+    return out
+
+
 FORM_OF = {}          # challenge_ea_id → 기록된 포메이션. main()이 채운다
 CUR_FORM = [None]     # 지금 푸는 챌린지의 포메이션(없으면 None)
 
@@ -289,8 +308,11 @@ def solve(pool, conds, size, tries, rng):
                     return xi, cands, None
                 need = max(v for (k, v), _ in conds if k == "chem")
                 fail, cost = [f"배치 후 케미 {info[0]} < 필요 {need} ({info[1]} 기준)"], 1
+        # ⭐ **가장 가까운 해의 11명을 함께 들고 나간다**(2026-09-25 사용자 지시
+        #    「못 풀더라도 현재 스쿼드 기준으로 채울 수 있는 선수들을 채우고」).
+        #    종전엔 위반 목록만 남기고 그 11명을 버려서 「무엇까지는 됐나」를 볼 수 없었다.
         if best is None or cost < best[1]:
-            best = (fail, cost)
+            best = (fail, cost, list(xi))
     return None, cands, best
 
 
@@ -390,7 +412,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--game", default="FC27")
     ap.add_argument("--set", type=int, help="세트 ea_id 하나만")
-    ap.add_argument("--tries", type=int, default=400)
+    # ⛔⛔ **탐색 횟수는 한 곳에만 둔다**(2026-09-25). 종전엔 여기 400 · `fut_club.py`가 500이라
+    #    **부르는 경로에 따라 같은 챌린지가 「달성 가능」과 「못 찾음」으로 갈렸다**(실측: Norway v
+    #    Portugal이 400에선 못 찾고 500에선 풀렸다). 값을 옮겨 적지 말고 이 기본값을 쓴다.
+    ap.add_argument("--tries", type=int, default=1200)
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--save", action="store_true", help="판정 결과를 fc_sbc_solutions에 적는다(화면이 읽는다)")
     ap.add_argument("--include-squad", action="store_true",
@@ -458,21 +483,31 @@ def main():
     if done_ids:
         rows = [r for r in rows if r["challenge_ea_id"] not in done_ids]
         print(f"🏁 이미 완료한 {len(done_ids)}챌린지는 판정에서 제외 — 남은 {len(rows)}개를 푼다")
+    # ⭐ **챌린지별 제외**(migration 071 · 2026-09-25 사용자 지시 「선수를 스쿼드에서 제외하고 재계산」).
+    #    ⛔ 전역 제외(활성 스쿼드·보호 클럽)와 축이 다르다 — 「이번 건에는 안 쓴다」는 챌린지마다 다른 판단이다.
+    EXCL = {}
+    for cid, pid in con.execute(
+            "SELECT challenge_ea_id, club_player_id FROM fc_sbc_exclusions WHERE game_version=?", (a.game,)):
+        EXCL.setdefault(cid, set()).add(pid)
+    if EXCL:
+        print(f"🚫 챌린지별 제외 {sum(len(v) for v in EXCL.values())}건 / {len(EXCL)}챌린지")
     ok, no, undec, oneclick = [], [], [], []
     for r in rows:
         conds, bad = parse(json.loads(r["requirements_text"] or "[]"))
         if bad:
             undec.append((r, bad)); continue
+        ex = EXCL.get(r["challenge_ea_id"]) or set()
+        pool_c = [p for p in pool if p["id"] not in ex] if ex else pool
         CUR_FORM[0] = FORM_OF.get(r["challenge_ea_id"])
         size = next((v for (k, v), _ in conds if k == "size"), None)
         if size is None:
             # ⛔ 원클릭 챌린지는 **제출 인원을 fut.gg가 주지 않는다** — 11명으로 가정하면 거짓 보고가 된다.
             #    조건은 1인 필터뿐이므로 「몇 장이 조건을 통과하나」만 센다.
             if r["challenge_type"] == "ONE_CLICK_CHALLENGE":
-                oneclick.append((r, conds, [p for p in pool if per_player_ok(p, conds)]))
+                oneclick.append((r, conds, [p for p in pool_c if per_player_ok(p, conds)]))
                 continue
             size = 11
-        xi, cands, best = solve(pool, conds, size, a.tries, rng)
+        xi, cands, best = solve(pool_c, conds, size, a.tries, rng)
         (ok if xi else no).append((r, xi, size, cands, conds, best))
 
     def head(r):
@@ -516,8 +551,14 @@ def main():
             print(f"     └ ⛔ **불가 확정** — 1인 조건(등급·OVR)을 통과하는 카드가 {len(cands)}장뿐이다.")
         elif best:
             print(f"     └ ⚠️ **못 찾음**(불가 증명 아님) — 가장 가까운 해에서 남은 위반 {best[1]}:")
-            for t in best[0]:
-                print(f"         · {t}")
+        # ⭐ **충족/미충족을 둘 다 찍는다**(2026-09-25 사용자 지시) — 못 찾았다는 말만으론
+        #    「어디까지는 됐나」를 알 수 없다. 미충족에는 부족분(= 몇 명 더)을 붙인다.
+        part = best[2] if best else sorted(cands, key=lambda p: -p["ovr"])[:size]
+        if part:
+            pch = best_placement(part, FORM_OF.get(r["challenge_ea_id"]))[0]
+            for c in breakdown(part, conds, pch):
+                print(f"         {'✅' if c['ok'] else '⛔'} {c['text']}"
+                      + ("" if c["ok"] else f"  ← {c['gap']}만큼 모자라다"))
     for r, bad in undec:
         print(f"\n⚠️ {head(r)} — 못 읽은 조건 {len(bad)}개(판정 안 함): {' / '.join(bad)}")
 
@@ -561,13 +602,32 @@ def main():
         squad = [dict(slim(p), slot=nm, x=x, y=y, fit=fit)
                  for nm, x, y, p, fit in pl if p]
         rows.append((a.game, r["challenge_ea_id"], today, aid, "ok",
-                     json.dumps({"formation": form, "formation_known": bool(known),
-                                 "players": squad}, ensure_ascii=False),
+                     json.dumps({"formation": form, "formation_known": bool(known), "partial": False,
+                                 "players": squad, "checks": breakdown(xi, _cd, ch)}, ensure_ascii=False),
                      team_rating([p["ovr"] for p in xi]), ch, len(cands), None, src, conf))
+    # ⭐⭐ **못 풀어도 최선 스쿼드를 남긴다**(2026-09-25 사용자 지시 「못 풀더라도 현재 스쿼드 기준으로
+    #    채울 수 있는 선수들을 채우고 / 만족한 조건과 불만족한 조건을 알려주고 / 어떤 조건을 사야 하는지」).
+    #    ⛔ 이건 **제출 가능한 답이 아니다** — `partial=True`로 못박고 화면이 해법과 다르게 그린다.
     for r, _x, size, cands, conds, best in no:
         imp = len(cands) < size
+        # 부분 스쿼드: 탐색이 닿은 가장 가까운 11명. 인원 자체가 모자라면(impossible) 통과 카드 전부.
+        part = best[2] if best else sorted(cands, key=lambda p: -p["ovr"])[:size]
+        known = FORM_OF.get(r["challenge_ea_id"])
+        sj = None
+        if part:
+            prev, CUR_FORM[0] = CUR_FORM[0], None
+            ch, form, pl = best_placement(part, known)
+            CUR_FORM[0] = prev
+            sj = json.dumps({"formation": form, "formation_known": bool(known), "partial": True,
+                             "players": [dict(slim(p), slot=nm, x=x, y=y, fit=fit)
+                                         for nm, x, y, p, fit in pl if p],
+                             "checks": breakdown(part, conds, ch),
+                             "hints": [{"text": t, "how": h} for t, h in
+                                       group_hints({c["text"] for c in breakdown(part, conds, ch) if not c["ok"]},
+                                                   conds)]}, ensure_ascii=False)
         rows.append((a.game, r["challenge_ea_id"], today, aid, "impossible" if imp else "not_found",
-                     None, None, None, len(cands),
+                     sj, team_rating([p["ovr"] for p in part]) if part else None,
+                     ch if part else None, len(cands),
                      (f"1인 조건 통과 카드 {len(cands)}장 < 필요 {size}명" if imp
                       else "남은 위반: " + " / ".join(best[0]) if best else "해를 못 찾았다"), src, conf))
     for r, conds, cs in oneclick:

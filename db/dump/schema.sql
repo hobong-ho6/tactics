@@ -1103,3 +1103,11 @@ CREATE TABLE fc_formations(
   source TEXT, confidence TEXT, pulled TEXT NOT NULL,
   PRIMARY KEY(game_version, ea_id)
 );
+CREATE TABLE fc_sbc_exclusions(
+  game_version    TEXT NOT NULL REFERENCES game_versions(code),
+  challenge_ea_id INTEGER NOT NULL,
+  club_player_id  INTEGER NOT NULL REFERENCES fut_club_players(id),
+  reason          TEXT,
+  added           TEXT,
+  PRIMARY KEY(game_version, challenge_ea_id, club_player_id)
+);

@@ -339,6 +339,28 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 /* 포메이션 모양만 보는 중 — **선수를 그리지 않는다**(판정 안 거친 배치를 답처럼 보여주지 않기 위해). */
 .sbc-slot.empty .noart{border-style:dashed;opacity:.55;padding:14px 2px}
 
+/* 카드에서 빼기 ✕ — 카드 위 오른쪽. 제외는 **이 SBC 한정**이고 되돌릴 수 있다. */
+.sbc-slot{position:absolute}
+.sbc-x{position:absolute;top:14px;right:-4px;z-index:2;width:18px;height:18px;line-height:1;
+  border-radius:99px;border:1px solid var(--line);background:rgba(6,14,10,.9);color:var(--dim);
+  font-size:10px;cursor:pointer;padding:0;opacity:0;transition:opacity .12s}
+.sbc-slot:hover .sbc-x{opacity:1}
+.sbc-x:hover{color:var(--bad);border-color:var(--bad)}
+.sbc-ex{font-size:11.5px;margin-top:6px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
+.sbc-ex button.chip{cursor:pointer}
+
+/* 부분 스쿼드(제출 불가) — **해법과 한눈에 갈려야 한다**(2026-09-25). */
+.sbc-part{border-left:3px solid var(--bad);padding-left:8px}
+.sbc-part .sbc-pitch{opacity:.9}
+/* 조건 체크리스트 — 미충족을 위로 올리고 살 것을 그 자리에 붙인다. */
+.sbc-ck{font-size:12px;margin-top:6px}
+.sbc-ck ul{margin:3px 0 2px;padding-left:2px;list-style:none}
+.sbc-ck li{padding:2px 0;line-height:1.45}
+.sbc-ck .ck-y{color:var(--dim)}
+.sbc-ck .ck-n b{color:var(--bad)}
+.sbc-ck .buy{display:inline-block;margin:2px 0 3px 18px;font-size:11px;color:var(--acc);
+  background:rgba(255,255,255,.04);border:1px dashed var(--line);border-radius:6px;padding:1px 6px}
+
 /* SBC 세트 카드 — 목록을 훑을 수 있게(2026-09-25). 챌린지 상세는 그 안의 details가 접어 둔다. */
 /* ⛔ 종전 minmax(360px)는 넓은 화면에서 **4열**이 돼 카드가 좁았고, 그 안의 피치가 겹쳤다
    (2026-09-25 사용자 지적). 펼친 챌린지에 조건·피치·표가 들어가므로 **2~3열**이 상한이다. */

@@ -312,6 +312,13 @@ def export_all(db_path=None, window="2026-summer"):
     formations = _rows(con, """SELECT ea_id, name, slots FROM fc_formations
                                 WHERE game_version='FC27' ORDER BY name""")
 
+    # ⭐ 챌린지별 제외 카드(migration 071 · 사용자 판단 축) — 화면이 「뺀 사람」과 되돌리기를 그린다.
+    sbc_excl = {}
+    for r in _rows(con, """SELECT e.challenge_ea_id, e.club_player_id, e.reason, c.name, c.current_ovr ovr
+                             FROM fc_sbc_exclusions e JOIN fut_club_players c ON c.id=e.club_player_id
+                            WHERE e.game_version='FC27' ORDER BY c.name"""):
+        sbc_excl.setdefault(str(r["challenge_ea_id"]), []).append(r)
+
     # ⭐ 내가 완료한 SBC(migration 068) — ⛔ EA·fut.gg가 주지 않는 축이라 **사람이 적은 것**이다.
     sbc_done = {str(r["challenge_ea_id"]): r for r in _rows(con, """
         SELECT challenge_ea_id, completed_at, notes, squad_note FROM fut_sbc_log
@@ -414,7 +421,7 @@ def export_all(db_path=None, window="2026-summer"):
                                      # ⭐ 화면이 「현재」를 각자 고르지 않게 하는 정본(위 주석)
                                      "state": {str(r["player_id"]): r for r in club_state},
                                      "stats": club_stats, "unlocks": unlocks},
-                           "sbc": {"sets": sbc_sets, "challenges": sbc_ch, "done": sbc_done},
+                           "sbc": {"sets": sbc_sets, "challenges": sbc_ch, "done": sbc_done, "excluded": sbc_excl},
                            "formations": formations}))
 
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──

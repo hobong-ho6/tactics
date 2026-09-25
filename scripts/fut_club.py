@@ -194,19 +194,53 @@ def cmd_sbc_formation(con, a):
                  "MEASURED(사용자 확인) — EA·fut.gg가 이 값을 주지 않는다(migration 069 주석).", TODAY))
     con.commit()
     print(f"📐 {row['name']} 포메이션 {form} 기록 — 다시 푸는 중…")
-    r = subprocess.run([_sys.executable, str(ROOT / "scripts" / "sbc_solve.py"), "--save", "--tries", "500"],
+    _resolve()
+
+
+# ⛔⛔ **탐색 횟수를 여기 적지 않는다**(2026-09-25). 종전엔 `sbc_solve.py` 기본이 400인데 여기서 500을 줘서
+#    **부르는 경로에 따라 같은 챌린지가 「달성 가능」과 「못 찾음」으로 갈렸다**(Norway v Portugal 실측).
+#    ⇒ 값은 `sbc_solve.py`의 기본값 하나뿐이고 여기서는 그냥 부른다(불변규칙 13 ② 단일 정본).
+def _resolve():
+    import subprocess
+    import sys as _sys
+    r = subprocess.run([_sys.executable, str(ROOT / "scripts" / "sbc_solve.py"), "--save"],
                        capture_output=True, text=True, cwd=ROOT)
     print(r.stdout.strip()[-600:] if r.returncode == 0 else "⛔ 재계산 실패:\n" + (r.stdout + r.stderr)[-600:])
+
+
+def cmd_sbc_exclude(con, a):
+    """⭐ **이 챌린지에서 이 카드를 빼고 다시 푼다**(2026-09-25 사용자 지시 「선수를 스쿼드에서 제외하고
+       재계산하는 기능을 넣어줘 — 제외한 선수는 해당 sbc에 포함 안 시키는 용이야」).
+
+    ⛔ 제외는 **챌린지별**이다. 전역 제외(활성 스쿼드·아스톤 빌라)와 축이 다르다 —
+       「이 카드는 아껴 둔다」는 판단은 챌린지마다 달라진다.
+    ⛔ 카드를 지우거나 상태를 바꾸지 않는다 — 제외는 **판정 입력**일 뿐이다(불변규칙 2).
+    `--undo`면 제외를 푼다."""
+    ch, cid = int(a.challenge), int(a.club_player)
+    row = con.execute("SELECT name FROM fut_club_players WHERE id=?", (cid,)).fetchone()
+    if not row:
+        raise SystemExit(f"⛔ 보유 카드 {cid}를 모른다")
+    if getattr(a, "undo", False):
+        con.execute("DELETE FROM fc_sbc_exclusions WHERE game_version=? AND challenge_ea_id=? AND club_player_id=?",
+                    (a.game, ch, cid))
+        print(f"↩️ {row['name']} 제외 해제 — 다시 푸는 중…")
+    else:
+        con.execute("""INSERT INTO fc_sbc_exclusions(game_version, challenge_ea_id, club_player_id, reason, added)
+                       VALUES(?,?,?,?,?) ON CONFLICT DO NOTHING""",
+                    (a.game, ch, cid, a.notes or "사용자가 이 챌린지에서 뺌", TODAY))
+        print(f"🚫 {row['name']} 제외 — 다시 푸는 중…")
+    con.commit()
+    _resolve()
 
 
 def run(con, cmd, **kw):
     """serve.py 쓰기 API용 진입점 — CLI와 같은 함수를 같은 규약으로 실행한다(발명 금지·출처 기록 동일)."""
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
                     level=1, date=TODAY, completed=None, note=None, ovr_after=None, six_after=None, status=None, op="add",
-                    in_progress=False, evo=None, challenge=None, formation=None)
+                    in_progress=False, evo=None, challenge=None, formation=None, club_player=None, undo=False)
     a = argparse.Namespace(**{**defaults, **kw})
     fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete,
-          "sbc_formation": cmd_sbc_formation}[cmd]
+          "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude}[cmd]
     fn(con, a)
 
 

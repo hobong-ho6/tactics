@@ -2046,14 +2046,46 @@ const shapeHTML = slots => slots.map(s => `
    ⛔ 그 위에 우리가 값을 덧그리지 않는다 — 인쇄값과 어긋나면 어느 쪽이 맞는지 알 수 없어진다.
    ⇒ 우리가 더하는 건 **그 카드가 어느 칸에 서는가**(슬롯 라벨)와 자리 적합 여부뿐이다.
    ⚠️ 아트가 없는 카드는 텍스트로 물러선다(결손을 빈 칸으로 두지 않는다). */
-const pitchHTML = sq => sq.map(p => `
+/* ⭐ 카드마다 ✕ — **이 챌린지에서만** 뺀다(2026-09-25 사용자 지시 「선수를 스쿼드에서 제외하고
+   재계산하는 기능을 넣어줘 제외한 선수는 해당 sbc에 포함 안 시키는 용이야」 · migration 071).
+   ⛔ 카드를 팔거나 상태를 바꾸는 게 아니다 — 판정 입력일 뿐이라 언제든 되돌린다. */
+const pitchHTML = (sq, chId) => sq.map(p => `
   <div class="sbc-slot${p.fit === false ? ' off' : ''}" style="left:${p.x}%;bottom:${p.y}%"
        title="${esc(p.name)} ${p.ovr} · ${esc(p.club || '—')} · ${esc(p.league || '—')} · ${esc(p.nation || '—')}${
          p.fit === false ? ' · ⚠️ 자리가 맞지 않아 케미 0' : ''}">
     <i>${esc(p.slot || '')}</i>
     ${p.card ? `<img src="${esc(p.card)}" alt="${esc(p.name)}" loading="lazy">`
              : `<span class="noart"><b>${p.ovr}</b>${esc(p.name)}</span>`}
-    ${p.untradeable ? '<u>거래불가</u>' : ''}</div>`).join('');
+    ${p.untradeable ? '<u>거래불가</u>' : ''}
+    ${chId ? `<button class="sbc-x" data-sbcex="${chId}" data-cp="${p.id}"
+                title="이 SBC에서만 제외하고 다시 푼다(되돌릴 수 있다)">✕</button>` : ''}</div>`).join('');
+/* ⭐⭐ 조건 체크리스트 — **만족/불만족을 둘 다** 띄운다(2026-09-25 사용자 지시).
+   ⛔ 종전엔 「남은 위반」만 한 줄로 적어서 **어디까지는 됐는지**를 볼 수 없었다.
+   · `gap`은 솔버가 준 위반 크기다. 인원 축에서는 그게 곧 **몇 명을 더 사야 하는가**라 💰로 표시한다.
+   · 그룹 축(같은 클럽 Min 3 등)은 **아무 싼 카드나로 안 풀린다** — `hints`가 무엇을 사야 하는지 문장으로 짚는다.
+   ⚠️ 판정 근거는 우리 계산(등급 C)이고 조건 문장 자체는 fut.gg 원문(등급 A)이다. */
+const checksHTML = xi => {
+  const ck = xi.checks || [];
+  if (!ck.length) return '';
+  const no = ck.filter(c => !c.ok), yes = ck.filter(c => c.ok);
+  const hint = Object.fromEntries((xi.hints || []).map(h => [h.text, h.how]));
+  const row = c => `<li class="${c.ok ? 'ck-y' : 'ck-n'}">${c.ok ? '✅' : '⛔'} ${esc(c.text)}${
+    c.ok ? '' : `<b> ← ${c.gap}만큼 모자라다</b>${
+      hint[c.text] ? `<br><span class="buy">🎯 ${esc(hint[c.text])}</span>`
+                   : `<br><span class="buy">💰 이 조건을 맞출 카드 <b>${c.gap}장</b>을 더 사야 한다</span>`}`}</li>`;
+  return `<div class="sbc-ck"><b>조건</b> <small class="dim">— 문장은 fut.gg 원문 · 충족 판정은 우리 계산</small>
+    <ul>${no.map(row).join('')}${yes.map(row).join('')}</ul>
+    <small class="dim">충족 ${yes.length} · 미충족 ${no.length}</small></div>`;
+};
+/* 제외해 둔 카드 — **되돌릴 수 있게** 항상 보여 준다(감춰 두면 왜 빠졌는지 알 수 없다). */
+const SBC_EXCL = SBC.excluded || {};
+const exclHTML = id => {
+  const ex = SBC_EXCL[String(id)] || [];
+  if (!ex.length) return '';
+  return `<div class="sbc-ex">🚫 <b>이 SBC에서 뺀 카드 ${ex.length}명</b>
+    ${ex.map(x => `<button class="chip" data-sbcun="${id}" data-cp="${x.club_player_id}"
+        title="제외를 풀고 다시 푼다">${esc(x.name)} ${x.ovr || ''} ↩︎</button>`).join('')}</div>`;
+};
 let SBC_F = 'all';
 const SBC_OPEN = new Set();          // 완료분을 펼쳐 둔 세트
 function renderSbc(){
@@ -2091,7 +2123,7 @@ function renderSbc(){
       const slots = SBC_SLOTS[sel.value];
       if (!pit || !slots) return;
       const back = sel.value === sol.formation;      // 원래 해법의 포메이션으로 되돌린 경우
-      pit.innerHTML = back ? pitchHTML(sol.players || []) : shapeHTML(slots);
+      pit.innerHTML = back ? pitchHTML(sol.players || [], id) : shapeHTML(slots);
       for (const k of ['sbct', 'sbch']) document.getElementById(k + id)?.toggleAttribute('hidden', !back);
       const box = document.getElementById(`sbcm${id}`);
       if (box) box.innerHTML = back ? ''
@@ -2113,6 +2145,20 @@ function renderSbc(){
       box.innerHTML = '<span class="dim">기록하고 푸는 중… (탐색이라 수십 초 걸릴 수 있다)</span>';
       say(box, await api('sbc_formation', { challenge: +id, formation: sel.value, game: 'FC27' }));
       btn.disabled = false;
+    })), 0);
+  /* ⭐ 카드 ✕ = 이 챌린지에서 제외 후 재계산 · 칩 ↩︎ = 제외 해제 후 재계산(migration 071).
+     ⛔ 둘 다 **같은 한 함수**로 보낸다 — 제외와 해제가 서로 다른 경로면 언젠가 갈린다. */
+  setTimeout(() => document.querySelectorAll('[data-sbcex],[data-sbcun]').forEach(b =>
+    b.addEventListener('click', async e => {
+      e.preventDefault(); e.stopPropagation();
+      const undo = b.hasAttribute('data-sbcun');
+      const id = +(undo ? b.dataset.sbcun : b.dataset.sbcex);
+      const box = document.getElementById(`sbcm${id}`);
+      b.disabled = true;
+      if (box) box.innerHTML = `<span class="dim">${undo ? '제외를 풀고' : '빼고'} 다시 푸는 중… (수십 초)</span>`;
+      say(box, await api('sbc_exclude',
+        { challenge: id, club_player: +b.dataset.cp, undo, game: 'FC27' }));
+      b.disabled = false;
     })), 0);
   const keep = c => SBC_F === 'all' ? true
     : SBC_F === 'done' ? !!SBC_DONE[String(c.challenge_ea_id)]
@@ -2164,9 +2210,10 @@ function renderSbc(){
             ${dn ? `<span class="chip dim" title="${esc(dn.notes || '')}">${esc(dn.completed_at || '')} 완료 · 사용자 기록</span>` : ''}
             ${c.pool_size != null ? `<span class="chip dim" title="1인 조건(등급·OVR·리그)을 통과하는 내 보유 카드 수">통과 카드 ${c.pool_size}</span>` : ''}</summary>
           <div style="padding:6px 2px">
-            <div style="font-size:12px"><b>조건</b> <small class="dim">— fut.gg 원문</small>
+            ${/* 체크리스트가 있으면 원문 나열은 접는다 — 같은 문장을 두 번 읽게 하지 않는다. */
+              xi.checks?.length ? '' : `<div style="font-size:12px"><b>조건</b> <small class="dim">— fut.gg 원문</small>
               <ul style="margin:3px 0 0;padding-left:18px">${(J(c.requirements_text, []) || [])
-                .map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>
+                .map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>`}
             ${c.note ? `<div class="dim" style="font-size:12px;margin-top:5px">${esc(c.note)}</div>` : ''}
             ${(() => {
               /* ⭐⭐ **피치 모양으로 그린다**(2026-09-25 사용자 지시 「리스트로만 있으니 어떤 포지션의 선수인지도 모르겠어」).
@@ -2177,11 +2224,22 @@ function renderSbc(){
               const known = c.rec_formation || '';
               const form = xi.formation || known || SBC_FORMS[0] || '';
               const bad = sq.filter(p => p.fit === false).length;
-              return `<div style="font-size:12px;margin-top:6px">${sq.length
-                ? `<span id="sbch${c.challenge_ea_id}"><b>이 스쿼드로 된다</b>
-                     <small class="dim">— ${esc(form)} · 팀 레이팅 ${c.team_rating} · 케미 ${c.chem_total}${
+              /* ⭐⭐ **못 풀어도 최선 스쿼드를 보여 준다**(2026-09-25 사용자 지시 「못 풀더라도 현재 스쿼드 기준으로
+                 채울 수 있는 선수들을 채우고 / 만족한 조건과 불만족한 조건을 알려주고 / 어떤 조건을 사야 하는지」).
+                 ⛔ 그래도 **제출 가능한 답과 같아 보이면 안 된다**(바로 위 shapeHTML 주석과 같은 이유) —
+                    `partial`이면 머리말·테두리를 갈라 놓고 미충족 조건을 **스쿼드보다 먼저** 띄운다. */
+              const part = xi.partial === true;
+              return `<div style="font-size:12px;margin-top:6px"${part ? ' class="sbc-part"' : ''}>${sq.length
+                ? `<span id="sbch${c.challenge_ea_id}"><b class="${part ? 'dn' : ''}">${part
+                     ? '⚠️ 여기까지는 내 카드로 채운다 — <u>제출은 안 된다</u>'
+                     : '이 스쿼드로 된다'}</b>
+                     <small class="dim">— ${esc(form)} · ${sq.length}명 · 평균 OVR <b>${
+                       (sq.reduce((s, p) => s + (p.ovr || 0), 0) / sq.length).toFixed(1)}</b>
+                     · 팀 레이팅 <b>${c.team_rating}</b> <span title="EA 산식은 비공개다 — 커뮤니티식(등급 D)">ⓘ</span>
+                     · 케미 <b>${c.chem_total}</b>/33${
                        bad ? ` · <b class="dn">자리 안 맞음 ${bad}명(케미 0)</b>` : ''}</small></span>`
                 : `<b class="dim">이 포메이션으로는 내 보유 카드로 스쿼드가 안 나온다</b>`}
+                ${checksHTML(xi)}
                 ${/* ⛔ 고르자마자 풀지 않는다(2026-09-25 사용자 지시 「포메이션 선택 후 계산이나 풀기 버튼을
                       누르면 그때 찾도록」) — 29종을 훑다 실수로 바꿔도 바로 재계산이 도는 건 비싸고 놀랍다. */''}
                 <div class="kv" style="margin:4px 0 2px">📐 포메이션
@@ -2194,7 +2252,8 @@ function renderSbc(){
                     : '⚠️ <b>미기록 — 우리가 고른 추정</b>이다. 인게임 값을 골라 풀기를 누르면 그 배치로 다시 푼다.'}</small>
                   <span class="msg-slot" id="sbcm${c.challenge_ea_id}"></span></div>
                 <div class="sbc-pitch" id="sbcp${c.challenge_ea_id}">${
-                  sq.length ? pitchHTML(sq) : shapeHTML(SBC_SLOTS[form] || [])}</div>
+                  sq.length ? pitchHTML(sq, c.challenge_ea_id) : shapeHTML(SBC_SLOTS[form] || [])}</div>
+                ${exclHTML(c.challenge_ea_id)}
                 ${!sq.length ? '' : `<details style="margin-top:4px" id="sbct${c.challenge_ea_id}"><summary class="dim" style="cursor:pointer">표로 보기</summary>
                   <table class="tbl" style="margin-top:4px"><thead><tr><th>자리</th><th>OVR</th><th>선수</th><th>클럽</th><th>리그</th><th>국적</th></tr></thead><tbody>
                   ${sq.map(p => `<tr${p.fit === false ? ' style="opacity:.6"' : ''}><td><b>${esc(p.slot || '')}</b></td><td>${p.ovr}</td>
