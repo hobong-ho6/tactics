@@ -2240,6 +2240,28 @@ function renderSbc(){
       say(box, await api('sbc_formation', { challenge: +id, formation: sel.value, game: 'FC27' }));
       btn.disabled = false;
     })), 0);
+  /* ⛔⛔ **낡은 화면으로 쓰기를 보내지 않는다**(2026-09-26 사용자 지적 「나 이걸로 제출했는데 제출이 안됨」).
+     화면엔 「✅ 해법 완료」인데 서버는 `verdict=not_found`라고 답했다 — 그 사이 **다른 SBC 제출로
+     카드가 소모돼 판정이 뒤집혔는데** 페이지가 그걸 모르고 있었다(쓰기는 성공 시 새로고침하지만,
+     다른 경로·다른 세션에서 DB가 바뀌면 이 페이지는 알 도리가 없다).
+     ⇒ 보내기 **직전에** 산출물을 다시 읽어 대조하고, 달라졌으면 **보내지 않고 새로 불러온다**.
+     ⚠️ 「새로고침하고 쓰세요」라는 안내로 막지 않는다 — 읽는 사람이 있어야 작동한다(불변규칙 13 ①). */
+  const fresh = async (id, box) => {
+    try {
+      const d = await (await fetch(`data/game_stats/evolutions.json?${Date.now()}`)).json();
+      const now = (d.sbc?.challenges || []).find(x => x.challenge_ea_id === id);
+      const was = (SBC.challenges || []).find(x => x.challenge_ea_id === id);
+      const key = c => `${c?.verdict}|${c?.squad_json || ''}|${JSON.stringify((d.sbc?.done || {})[String(id)] || null)}`;
+      const wasKey = `${was?.verdict}|${was?.squad_json || ''}|${JSON.stringify(SBC_DONE[String(id)] || null)}`;
+      if (key(now) !== wasKey) {
+        box.innerHTML = '<div class="msg err">화면이 낡았다 — 그 사이 이 챌린지의 판정이 바뀌었다'
+          + '(다른 SBC를 제출해 카드가 빠졌거나 다시 풀었다). <b>보내지 않고 새로 불러온다.</b></div>';
+        setTimeout(() => location.reload(), 1600);
+        return false;
+      }
+    } catch (e) { /* 산출물을 못 읽으면 막지 않는다 — 정적 배포본에도 이 화면이 뜬다 */ }
+    return true;
+  };
   /* ⭐ 제출 완료 처리 / 완료 취소 — 둘 다 같은 한 함수로 보낸다(migration 072). */
   setTimeout(() => document.querySelectorAll('[data-sbcdone],[data-sbcundo]').forEach(b =>
     b.addEventListener('click', async () => {
@@ -2253,8 +2275,10 @@ function renderSbc(){
           '· 이 기능으로 완료 처리한 건이면 카드도 보유로 되돌립니다.\n\n계속할까요?')) return;
       const box = document.getElementById(`sbcs${id}`);
       b.disabled = true;
+      if (box && !await fresh(id, box)) { b.disabled = false; return; }
       if (box) box.innerHTML = `<span class="dim">${undo ? '되돌리고' : '기록하고'} 남은 SBC를 다시 푸는 중… (수십 초)</span>`;
-      say(box, await api('sbc_submit', { challenge: id, undo, game: 'FC27' }));
+      say(box, await api('sbc_submit', { challenge: id, undo, game: 'FC27',
+                                          cards: !b.hasAttribute('data-nocards') }));
       b.disabled = false;
     })), 0);
   /* ⭐ 카드 ✕ = 이 챌린지에서 제외 후 재계산 · 칩 ↩︎ = 제외 해제 후 재계산(migration 071).
@@ -2266,6 +2290,7 @@ function renderSbc(){
       const id = +(undo ? b.dataset.sbcun : b.dataset.sbcex);
       const box = document.getElementById(`sbcm${id}`);
       b.disabled = true;
+      if (box && !await fresh(id, box)) { b.disabled = false; return; }
       if (box) box.innerHTML = `<span class="dim">${undo ? '제외를 풀고' : '빼고'} 다시 푸는 중… (수십 초)</span>`;
       say(box, await api('sbc_exclude',
         { challenge: id, club_player: +b.dataset.cp, undo, game: 'FC27' }));
@@ -2338,7 +2363,11 @@ function renderSbc(){
                 : stg === 'solved'
                 ? `<div class="sbc-sub"><b>인게임에서 이 스쿼드로 제출하셨나요?</b>
                      <button class="act" data-sbcdone="${c.challenge_ea_id}">제출했다 — 완료 처리</button>
-                     <small class="dim">위 11장이 <b>구단에서 빠지고</b> 남은 SBC를 다시 푼다(되돌릴 수 있다).</small>
+                     <button class="act ghost" data-sbcdone="${c.challenge_ea_id}" data-nocards="1"
+                        title="우리 제안과 다른 11장으로 내셨을 때 — 완료 사실만 적고 구단은 건드리지 않는다">다른 조합으로 냈다</button>
+                     <small class="dim">위 11장이 <b>구단에서 빠지고</b> 남은 SBC를 다시 푼다(되돌릴 수 있다).
+                       <b>다른 조합</b>으로 내셨다면 오른쪽 버튼 — 낸 카드를 모르므로 <b>기록만</b> 하고
+                       소모는 다음 클럽 싱크가 잡는다.</small>
                      <span class="msg-slot" id="sbcs${c.challenge_ea_id}"></span></div>` : ''}
             ${(() => {
               /* ⭐⭐ **피치 모양으로 그린다**(2026-09-25 사용자 지시 「리스트로만 있으니 어떤 포지션의 선수인지도 모르겠어」).

@@ -240,9 +240,35 @@ def cmd_sbc_submit(con, a):
         _resolve()
         return
 
+    # ⭐ **다른 조합으로 냈다 — 기록만**(2026-09-26 실측으로 필요해졌다).
+    #    화면이 낡은 사이 인게임에서 다른 11장으로 제출하는 일이 실제로 있었다. 그때 우리는
+    #    **무엇을 냈는지 알 수 없다** ⇒ 완료 사실만 적고 **카드는 건드리지 않는다**(발명 금지·불변규칙 3).
+    #    소모된 카드는 다음 클럽 싱크가 「EA 목록에 없음」으로 잡아 준다.
+    if not getattr(a, "cards", True):
+        con.execute("""INSERT INTO fut_sbc_log(account_id, game_version, set_ea_id, challenge_ea_id,
+                         completed_at, squad_note, source, confidence, notes)
+                       VALUES((SELECT id FROM fut_accounts ORDER BY id LIMIT 1),?,?,?,?,NULL,?,?,?)
+                       ON CONFLICT(account_id, game_version, challenge_ea_id) DO UPDATE SET
+                         completed_at=excluded.completed_at""",
+                    (a.game, row["set_ea_id"], ch, TODAY,
+                     f"사용자가 화면에서 완료 처리({TODAY}) — 우리 제안과 **다른 조합**으로 제출",
+                     "MEASURED(사용자 행위). ⚠️ 제출 카드는 **모른다** — 우리 해법과 다른 조합이라 "
+                     "squad_note를 비운다. 소모된 카드는 다음 클럽 싱크가 잡는다.",
+                     row["name"]))
+        con.commit()
+        print(f"🏁 {row['name']} 완료 처리(기록만) — 낸 카드는 모르므로 구단은 건드리지 않았다. "
+              f"다음 클럽 싱크가 사라진 카드를 잡는다. 다시 푸는 중…")
+        _resolve()
+        return
+
     if row["verdict"] != "ok" or not row["squad_json"]:
-        raise SystemExit(f"⛔ {row['name']}: 저장된 해법이 없다(verdict={row['verdict']}) — "
-                         "먼저 풀어야 무엇을 냈는지 적을 수 있다.")
+        # ⚠️ 화면엔 「해법 완료」로 보이는데 여기 오는 일이 있다 — **그 사이 판정이 뒤집힌** 것이다
+        #    (다른 SBC를 제출해 카드가 빠지면 남은 챌린지가 못 풀리게 된다). 그 사실을 그대로 적는다.
+        raise SystemExit(
+            f"⛔ {row['name']}: 지금 저장된 해법이 없다(verdict={row['verdict']}).\n"
+            "   화면엔 해법이 보였다면 **그 사이 판정이 바뀐 것**이다 — 다른 SBC를 제출해 카드가 빠졌거나\n"
+            "   다시 풀렸다. 새로고침하면 지금 판정이 보인다.\n"
+            "   ⭐ 인게임에서 이미 내셨다면, 낸 카드를 알려 주시면 그대로 기록하겠다(해법과 달라도 된다).")
     sq = json.loads(row["squad_json"])["players"]
     ids = [p["id"] for p in sq]
     bad = con.execute("SELECT name, status FROM fut_club_players WHERE id IN (%s) AND status<>'owned'"
@@ -298,7 +324,7 @@ def run(con, cmd, **kw):
     """serve.py 쓰기 API용 진입점 — CLI와 같은 함수를 같은 규약으로 실행한다(발명 금지·출처 기록 동일)."""
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
                     level=1, date=TODAY, completed=None, note=None, ovr_after=None, six_after=None, status=None, op="add",
-                    in_progress=False, evo=None, challenge=None, formation=None, club_player=None, undo=False)
+                    in_progress=False, evo=None, challenge=None, formation=None, club_player=None, undo=False, cards=True)
     a = argparse.Namespace(**{**defaults, **kw})
     fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete,
           "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude,
