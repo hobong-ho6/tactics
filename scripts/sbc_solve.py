@@ -194,6 +194,63 @@ def solve(pool, conds, size, tries, rng):
     return None, cands, best
 
 
+# ── 구매 후보 (2026-09-25 사용자 지시 「구매해야 하는 포지션은 가격이 저렴한 선수로 제안」) ──
+#   ⛔ 시장 전체를 우리가 들고 있지 않다 — `player_card_prices`는 관리 4팀 카드뿐이다.
+#      ⇒ fut.gg 목록 API로 **그 챌린지 조건에 맞는 카드**를 받아 `currentDbPrice`로 싼 순으로 고른다.
+#   ⚠️ 가격은 fut.gg 집계 시세다(등급 MEDIUM) — 실제 이적시장 호가와 다를 수 있다.
+#   ⚠️ 시세 미형성(hasPrice=0)은 **0원이 아니라 모름**이다 — 제안에서 뺀다.
+FUTGG = "https://www.fut.gg/api/fut"
+UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)", "Accept": "application/json"}
+
+
+def _get(url):
+    import urllib.request
+    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
+        return json.load(r)
+
+
+def buy_candidates(conds, want, limit=6):
+    """조건을 만족하는 **싼 카드**를 fut.gg에서 찾는다. want = 몇 명이 필요한가."""
+    q = []
+    for (kind, v), _ in conds:
+        if kind == "ovr_max": q.append(f"overall__lte={v}")
+        elif kind == "ovr_min": q.append(f"overall__gte={v}")
+        elif kind == "ovr_range": q.append(f"overall__gte={v[0]}&overall__lte={v[1]}")
+        elif kind == "qual_exact" and v == 0: q.append("overall__lte=64")
+        elif kind == "qual_exact" and v == 1: q.append("overall__gte=65&overall__lte=74")
+        elif kind == "qual_min" and v == 2: q.append("overall__gte=75")
+    try:
+        d = _get(f"{FUTGG}/players/v2/27/?" + "&".join(q or ["overall__lte=64"]))
+    except Exception as e:
+        return [], f"시세 조회 실패({type(e).__name__})"
+    ids = [x["eaId"] for x in (d.get("data") or [])][:40]
+    if not ids:
+        return [], "조건에 맞는 카드를 못 찾았다"
+    try:
+        pr = _get(f"{FUTGG}/players/v2/27/?ea_ids=" + ",".join(map(str, ids)))
+    except Exception as e:
+        return [], f"시세 조회 실패({type(e).__name__})"
+    out, priced = [], 0
+    for x in (pr.get("data") or []):
+        has = bool(x.get("hasPrice"))
+        priced += has
+        out.append({"name": x.get("commonName") or x.get("lastName"), "ovr": x.get("overall"),
+                    "price": x.get("currentDbPrice") if has else None,
+                    "nation": (x.get("nation") or {}).get("name"),
+                    "league": (x.get("league") or {}).get("name"),
+                    "club": (x.get("club") or {}).get("name")})
+    # ⛔⛔ **FC27 시세가 아직 없다**(2026-09-25 실측: 조회한 카드 전부 hasPrice=false · 우리 `player_card_prices`
+    #    247행도 전량 has_price=0). 시세가 없으면 「싼 순」이 성립하지 않는다.
+    #    ⇒ 0원으로 세워 거짓 순위를 만들지 않고, **OVR 낮은 순**으로 물러서되 그 사실을 함께 돌려준다.
+    #      (필러 카드는 OVR이 낮을수록 싼 경향이라는 **판단값**이지 실측이 아니다 — 등급 D.)
+    if priced:
+        out.sort(key=lambda r: r["price"] if r["price"] is not None else 10 ** 9)
+        return out[:max(limit, want)], None
+    out.sort(key=lambda r: r["ovr"] or 99)
+    return out[:max(limit, want)], ("⚠️ fut.gg가 FC27 시세를 아직 주지 않는다(조회분 전부 hasPrice=false) — "
+                                    "가격순이 아니라 **OVR 낮은 순**이다(싼 경향이라는 판단값 · 등급 D)")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--game", default="FC27")
@@ -201,6 +258,9 @@ def main():
     ap.add_argument("--tries", type=int, default=400)
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--save", action="store_true", help="판정 결과를 fc_sbc_solutions에 적는다(화면이 읽는다)")
+    ap.add_argument("--include-squad", action="store_true",
+                    help="활성 스쿼드(선발+교체) 선수도 후보에 넣는다. 기본은 **제외**한다 — 쓰고 있는 카드다")
+    ap.add_argument("--buy", action="store_true", help="보유분으로 안 되는 챌린지에 **싼 구매 후보**를 붙인다(fut.gg 조회)")
     a = ap.parse_args()
     rng = random.Random(a.seed)
 
@@ -209,12 +269,20 @@ def main():
     pool = [dict(r) for r in con.execute("""
         SELECT c.id, COALESCE(i.name_kr, c.name) name, COALESCE(c.current_ovr, i.ovr) ovr,
                i.nation, i.league, i.club, i.positions, COALESCE(i.is_special,0) is_special,
-               c.is_untradeable
+               c.is_untradeable, c.ea_item_id
           FROM fut_club_players c LEFT JOIN player_card_items i
             ON i.ea_item_id=c.ea_item_id AND i.game_version=?
          WHERE c.status='owned' AND COALESCE(c.current_ovr, i.ovr) IS NOT NULL""", (a.game,))]
+    # ⭐⭐ **활성 스쿼드는 기본 제외**(2026-09-25 사용자 지시 「내 활성 스쿼드의 선수들은 SBC 구성할 때 제외」).
+    #    지금 쓰고 있는 11+12명을 SBC에 넣어 버리면 팀이 무너진다 — 넣고 싶으면 --include-squad.
+    squad_ids = {r[0] for r in con.execute(
+        "SELECT ea_item_id FROM fut_squad_slots WHERE ea_item_id IS NOT NULL")}
+    in_squad = [p for p in pool if p["ea_item_id"] in squad_ids]
+    if not a.include_squad:
+        pool = [p for p in pool if p["ea_item_id"] not in squad_ids]
+        print(f"⛔ 활성 스쿼드 {len(in_squad)}명 제외 — 남은 후보 {len(pool)}장 (넣으려면 --include-squad)")
     miss = [p["name"] for p in pool if not p["club"] or not p["league"] or not p["nation"]]
-    print(f"보유 카드 {len(pool)}장" + (f" · ⚠️ 클럽/리그/국적 결손 {len(miss)}장은 그룹 조건에서 빠진다: "
+    print(f"후보 카드 {len(pool)}장" + (f" · ⚠️ 클럽/리그/국적 결손 {len(miss)}장은 그룹 조건에서 빠진다: "
                                         f"{', '.join(miss[:5])}{' …' if len(miss) > 5 else ''}" if miss else ""))
 
     q = """SELECT s.name set_name, s.set_ea_id, s.category, s.end_time, s.is_repeatable,
@@ -261,6 +329,19 @@ def main():
         print(f"     └ 팀 레이팅 {team_rating([p['ovr'] for p in xi])} · 케미(참고) {chem_total(xi)}")
     for r, _x, size, cands, conds, best in no:
         print(f"\n❌ {head(r)}  [{size}명 필요 · 조건 통과 카드 {len(cands)}장]")
+        if a.buy:
+            need = max(0, size - len(cands))
+            cb, err = buy_candidates(conds, need or 3)
+            if err and not cb:
+                print(f"     └ 구매 후보: {err}")
+            elif cb:
+                if err:
+                    print(f"     └ {err}")
+                print(f"     └ 💰 구매 후보:")
+                for x in cb:
+                    pz = f"{x['price']:>8,}코인" if x['price'] is not None else "  시세없음"
+                    print(f"         {pz}  {x['ovr']:>3} {str(x['name'])[:20]:<20} "
+                          f"{str(x['league'] or '')[:20]:<20} {x['nation'] or ''}")
         if len(cands) < size:
             print(f"     └ ⛔ **불가 확정** — 1인 조건(등급·OVR)을 통과하는 카드가 {len(cands)}장뿐이다.")
         elif best:
