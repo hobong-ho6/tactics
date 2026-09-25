@@ -36,27 +36,21 @@ TIER = {"Bronze": 0, "Silver": 1, "Gold": 2}
 # FC27 케미 기준선 — ⛔ 화면(evolutions.html CHEM_TIERS)과 같은 값이다. 갈리면 둘 다 고친다.
 CHEM = {"club": [(7, 3), (4, 2), (2, 1)], "league": [(8, 3), (5, 2), (3, 1)],
         "nation": [(8, 3), (5, 2), (2, 1)]}
-# ⛔⛔ **SBC는 포메이션을 요구하지 않는다** — 그러나 케미는 **포지션이 맞아야** 붙으므로 배치가 필요하다.
-#    ⇒ 아래 포메이션들을 모두 시도해 **케미가 가장 높게 나오는 배치**를 쓴다. 어느 것을 썼는지는 화면에 적는다.
-#    ⚠️ 여기 좌표는 화면이 피치를 그릴 때 쓰는 값이다(가로 %, 세로 % — 아래가 우리 골대).
-FORMS = {
-    "4-2-3-1": [("GK",50,6),("LB",12,26),("LCB",36,22),("RCB",64,22),("RB",88,26),
-                ("LDM",36,44),("RDM",64,44),("LM",14,66),("CAM",50,64),("RM",86,66),("ST",50,86)],
-    "4-4-2":   [("GK",50,6),("LB",12,26),("LCB",36,22),("RCB",64,22),("RB",88,26),
-                ("LM",12,56),("LCM",38,52),("RCM",62,52),("RM",88,56),("LST",38,84),("RST",62,84)],
-    "4-3-3":   [("GK",50,6),("LB",12,26),("LCB",36,22),("RCB",64,22),("RB",88,26),
-                ("CDM",50,44),("LCM",30,58),("RCM",70,58),("LW",14,80),("ST",50,88),("RW",86,80)],
-    "3-5-2":   [("GK",50,6),("LCB",26,22),("CCB",50,20),("RCB",74,22),
-                ("LM",10,56),("LCM",34,50),("CDM",50,42),("RCM",66,50),("RM",90,56),("LST",38,84),("RST",62,84)],
-}
-# 슬롯 이름 → 그 자리에 설 수 있는 포지션(EA 표기). ⚠️ 좌우 구분은 카드 포지션에 없으므로 같은 계열로 본다.
-SLOT_POS = {"GK": {"GK"}, "LB": {"LB", "LWB"}, "RB": {"RB", "RWB"},
-            "LCB": {"CB"}, "RCB": {"CB"}, "CCB": {"CB"},
-            "LDM": {"CDM"}, "RDM": {"CDM"}, "CDM": {"CDM"},
-            "LCM": {"CM"}, "RCM": {"CM"},
-            "LM": {"LM", "LW"}, "RM": {"RM", "RW"}, "CAM": {"CAM"},
-            "LW": {"LW", "LM"}, "RW": {"RW", "RM"},
-            "ST": {"ST", "CF"}, "LST": {"ST", "CF"}, "RST": {"ST", "CF"}}
+# ⛔⛔ **포메이션은 DB가 정본이다**(migration 070 · fut.gg 번들에서 받은 FC27 29종).
+#    종전엔 4종을 여기 박아 썼다 — SBC는 챌린지마다 포메이션이 고정이라 목록이 모자라면 기록조차 못 한다.
+#    ⭐ 칸 자격은 `gen`(번들의 generalPositionSlots · 등급 A)으로 본다 — 그 칸에 설 수 있는 카드 포지션이다.
+FORMS = {}          # name → [{i,uniq,gen,label,x,y}] · main()이 DB에서 채운다
+GEN_POS = {0: "GK", 2: "RWB", 3: "RB", 5: "CB", 7: "LB", 8: "LWB", 10: "CDM", 12: "RM",
+           14: "CM", 16: "LM", 18: "CAM", 21: "CF", 23: "RW", 25: "ST", 27: "LW"}
+# 카드 포지션 → 그 칸에 설 수 있는가. ⚠️ 좌우 변형(LWB↔LB 등)은 EA가 같은 칸으로 취급한다(등급 D).
+NEAR = {"RWB": {"RWB", "RB"}, "LWB": {"LWB", "LB"}, "RB": {"RB", "RWB"}, "LB": {"LB", "LWB"},
+        "RW": {"RW", "RM"}, "LW": {"LW", "LM"}, "RM": {"RM", "RW"}, "LM": {"LM", "LW"},
+        "CF": {"CF", "ST"}, "ST": {"ST", "CF"}}
+
+
+def slot_accepts(gen_id):
+    base = GEN_POS.get(gen_id)
+    return NEAR.get(base, {base}) if base else set()
 
 
 def positions_of(p):
@@ -69,11 +63,10 @@ def place(xi, form):
     slots = FORMS[form]
     left = list(xi)
     out = [None] * len(slots)
-    # 갈 수 있는 자리가 적은 선수부터 배치한다(제약이 큰 쪽을 먼저 — 실패를 줄인다)
     order = sorted(range(len(slots)), key=lambda i: sum(
-        1 for p in left if positions_of(p) & SLOT_POS.get(slots[i][0], set())))
+        1 for p in left if positions_of(p) & slot_accepts(slots[i]["gen"])))
     for i in order:
-        want = SLOT_POS.get(slots[i][0], set())
+        want = slot_accepts(slots[i]["gen"])
         cand = [p for p in left if positions_of(p) & want]
         if cand:
             pick = max(cand, key=lambda p: p["ovr"] or 0)
@@ -81,9 +74,9 @@ def place(xi, form):
             left.remove(pick)
     for i in range(len(slots)):
         if out[i] is None and left:
-            out[i] = (left.pop(0), False)      # 자리 안 맞음 — 케미 0
-    return [(slots[i][0], slots[i][1], slots[i][2], out[i][0] if out[i] else None,
-             out[i][1] if out[i] else False) for i in range(len(slots))]
+            out[i] = (left.pop(0), False)
+    return [(slots[i]["label"], slots[i]["x"], slots[i]["y"],
+             out[i][0] if out[i] else None, out[i][1] if out[i] else False) for i in range(len(slots))]
 
 
 def best_placement(xi, form=None):
@@ -95,8 +88,10 @@ def best_placement(xi, form=None):
     if form and form in FORMS:
         pl = place(xi, form)
         return chem_total([p for _n, _x, _y, p, fit in pl if p and fit]), form, pl
+    # ⚠️ 추정일 때 29종을 다 돌면 탐색이 무거워진다 — **흔한 포메이션 6종**만 본다(어차피 추정이다).
+    GUESS = [f for f in ("4-2-3-1", "4-4-2", "4-3-3", "3-5-2", "4-1-4-1", "5-2-1-2") if f in FORMS] or list(FORMS)
     best = None
-    for f in FORMS:
+    for f in GUESS:
         pl = place(xi, f)
         ch = chem_total([p for _n, _x, _y, p, fit in pl if p and fit])
         if best is None or ch > best[0]:
@@ -448,6 +443,11 @@ def main():
 
     # ⭐ 이미 완료한 챌린지는 풀지 않는다(2026-09-25) — 스쿼드를 제안할 이유가 없고 탐색만 낭비다.
     #   ⛔ 「완료」는 EA·fut.gg가 주지 않는 축이라 `fut_sbc_log`(사용자 기록)가 유일한 출처다(migration 068).
+    FORMS.update({r[0]: json.loads(r[1]) for r in con.execute(
+        "SELECT name, slots FROM fc_formations WHERE game_version=?", (a.game,))})
+    if not FORMS:
+        raise SystemExit("⛔ 포메이션이 없다 — .venv/bin/python scripts/collect_futgg_formations.py 먼저 돌릴 것")
+    print(f"📐 포메이션 {len(FORMS)}종 적재")
     FORM_OF.update({r[0]: r[1] for r in con.execute(
         "SELECT challenge_ea_id, formation FROM fc_sbc_formations WHERE game_version=?", (a.game,))})
     if FORM_OF:

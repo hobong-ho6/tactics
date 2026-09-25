@@ -2023,7 +2023,7 @@ const SBC_DONE = SBC.done || {};
 /* ⛔⛔ **인게임 SBC는 챌린지마다 포메이션이 고정인데 EA·fut.gg가 그 값을 주지 않는다**(migration 069).
    종전엔 우리가 케미 최대 포메이션을 임의로 골라 보여줘서 **인게임 화면과 달랐다**(2026-09-25 사용자 지적).
    ⇒ 기록이 있으면 그 안에서만 배치하고, 없으면 「추정」이라고 못박는다. 아래 선택으로 기록·재계산한다. */
-const SBC_FORMS = ['4-2-3-1', '4-4-2', '4-3-3', '3-5-2'];
+const SBC_FORMS = (EVO.formations || []).map(f => f.name);
 let SBC_F = 'all';
 function renderSbc(){
   /* ⛔ **원클릭 제출은 목록에서 뺀다**(2026-09-25 사용자 지시 「원클릭 제출 미션은 목록에서 제외시키자」).
@@ -2048,12 +2048,15 @@ function renderSbc(){
     .map(([k, t]) => `<button class="filt${SBC_F === k ? ' on' : ''}" data-f="${k}"><i>${SBC_F === k ? '☑' : '☐'}</i>${t}</button>`).join('');
   fb.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => { SBC_F = b.dataset.f; renderSbc(); }));
   /* 포메이션 선택 → `fut_club.py sbc_formation`이 기록하고 **그 자리에서 다시 푼다**(serve.py 쓰기 API). */
-  setTimeout(() => document.querySelectorAll('[data-sbcform]').forEach(sel =>
-    sel.addEventListener('change', async () => {
-      const id = sel.dataset.sbcform;
+  setTimeout(() => document.querySelectorAll('[data-sbcsolve]').forEach(btn =>
+    btn.addEventListener('click', async () => {
+      const id = btn.dataset.sbcsolve;
+      const sel = document.querySelector(`[data-sbcform="${id}"]`);
       const box = document.getElementById(`sbcm${id}`);
-      box.innerHTML = '<span class="dim">기록하고 다시 푸는 중…</span>';
+      btn.disabled = true;
+      box.innerHTML = '<span class="dim">기록하고 푸는 중… (탐색이라 수십 초 걸릴 수 있다)</span>';
       say(box, await api('sbc_formation', { challenge: +id, formation: sel.value, game: 'FC27' }));
+      btn.disabled = false;
     })), 0);
   const keep = c => SBC_F === 'all' ? true
     : SBC_F === 'done' ? !!SBC_DONE[String(c.challenge_ea_id)]
@@ -2061,16 +2064,26 @@ function renderSbc(){
     : SBC_F === 'no' ? ['impossible', 'not_found'].includes(c.verdict) : c.verdict === SBC_F;
   const days = t => { if (!t) return ''; const d = Math.ceil((new Date(t) - Date.now()) / 86400000);
     return d < 0 ? '만료' : d <= 3 ? `<b class="dn">${d}일 남음</b>` : d > 3000 ? '상시' : `${d}일 남음`; };
-  document.getElementById('sbc').innerHTML = (SBC.sets || []).map(st => {
+  /* ⭐ 세트를 **카드**로 세운다(2026-09-25 사용자 지시 「SBC 목록은 카드 형태로 좀 더 잘 보이게」).
+     ⛔ 세트 안의 챌린지는 접힘을 유지한다 — 조건·스쿼드가 길어 펼쳐 두면 목록을 못 훑는다. */
+  document.getElementById('sbc').innerHTML = `<div class="sbc-grid">` + (SBC.sets || []).map(st => {
     const list = (byset[st.set_ea_id] || []).filter(keep);
     if (!list.length) return '';
     const aw = (J(st.awards_text, []) || []).map(x => esc(x.name)).join(' · ');
-    return `<div class="applied-box" style="margin:8px 0">
-      <b>${esc(st.name)}</b> <span class="chip dim">${esc(st.category || '')}</span>
-      ${st.is_repeatable ? '<span class="chip">반복</span>' : ''}
-      <span class="chip${/dn/.test(days(st.end_time)) ? '' : ' dim'}">${days(st.end_time)}</span>
-      ${aw ? `<small class="dim"> 보상 ${aw}</small>` : ''}
-      ${st.description ? `<div class="dim" style="font-size:12px;margin-top:2px">${esc(st.description)}</div>` : ''}
+    const dn = list.filter(c => SBC_DONE[String(c.challenge_ea_id)]).length;
+    const okn = list.filter(c => c.verdict === 'ok' && !SBC_DONE[String(c.challenge_ea_id)]).length;
+    const d = days(st.end_time);
+    return `<div class="sbc-card${/dn/.test(d) ? ' urgent' : ''}">
+      <div class="sbc-head">
+        <b>${esc(st.name)}</b>
+        <span class="chip dim">${esc(st.category || '')}</span>
+        ${st.is_repeatable ? '<span class="chip">반복</span>' : ''}
+        <span class="chip${/dn/.test(d) ? '' : ' dim'}">${d}</span></div>
+      <div class="sbc-prog">
+        <span class="chip hi">완료 ${dn}/${list.length}</span>
+        ${okn ? `<span class="chip">지금 가능 ${okn}</span>` : ''}
+        ${aw ? `<small class="dim">보상 ${aw}</small>` : ''}</div>
+      ${st.description ? `<div class="dim sbc-desc">${esc(st.description)}</div>` : ''}
       ${list.map(c => {
         const dn = SBC_DONE[String(c.challenge_ea_id)];
         const v = dn ? { k: '🏁 내가 완료', c: 'hi' } : VERDICT[c.verdict || 'unparsed'];
@@ -2097,13 +2110,16 @@ function renderSbc(){
               return `<div style="font-size:12px;margin-top:6px"><b>이 스쿼드로 된다</b>
                 <small class="dim">— ${esc(form)} · 팀 레이팅 ${c.team_rating} · 케미 ${c.chem_total}${
                   bad ? ` · <b class="dn">자리 안 맞음 ${bad}명(케미 0)</b>` : ''}</small>
+                ${/* ⛔ 고르자마자 풀지 않는다(2026-09-25 사용자 지시 「포메이션 선택 후 계산이나 풀기 버튼을
+                      누르면 그때 찾도록」) — 29종을 훑다 실수로 바꿔도 바로 재계산이 도는 건 비싸고 놀랍다. */''}
                 <div class="kv" style="margin:4px 0 2px">📐 포메이션
                   <select data-sbcform="${c.challenge_ea_id}">
-                    ${SBC_FORMS.map(f => `<option${f === form ? ' selected' : ''}>${f}</option>`).join('')}
+                    ${SBC_FORMS.map(f => `<option${f === form ? ' selected' : ''}>${esc(f)}</option>`).join('')}
                   </select>
+                  <button class="act" data-sbcsolve="${c.challenge_ea_id}">이 포메이션으로 풀기</button>
                   <small class="dim">${xi.formation_known
                     ? '인게임 기준으로 기록됨'
-                    : '⚠️ <b>미기록 — 우리가 고른 추정</b>이다. 인게임 값으로 바꾸면 그 배치로 다시 푼다.'}</small>
+                    : '⚠️ <b>미기록 — 우리가 고른 추정</b>이다. 인게임 값을 골라 풀기를 누르면 그 배치로 다시 푼다.'}</small>
                   <span class="msg-slot" id="sbcm${c.challenge_ea_id}"></span></div>
                 <div class="sbc-pitch">${sq.map(p => `
                   <div class="sbc-slot${p.fit === false ? ' off' : ''}" style="left:${p.x}%;bottom:${p.y}%"
@@ -2121,7 +2137,7 @@ function renderSbc(){
             ${c.solve_conf ? `<div class="dim" style="font-size:11px;margin-top:5px">${esc(c.solve_conf)}</div>` : ''}
           </div></details>`;
       }).join('')}</div>`;
-  }).join('') || '<span class="dim">이 필터에 해당하는 챌린지가 없다.</span>';
+  }).join('') + `</div>` || '<span class="dim">이 필터에 해당하는 챌린지가 없다.</span>';
 }
 
 renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc();

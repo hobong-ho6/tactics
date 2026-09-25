@@ -1095,3 +1095,11 @@ CREATE TABLE fc_sbc_formations(
   source TEXT, confidence TEXT, updated TEXT,
   PRIMARY KEY(game_version, challenge_ea_id)
 );
+CREATE TABLE fc_formations(
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  ea_id   INTEGER NOT NULL,
+  name    TEXT NOT NULL,
+  slots   TEXT NOT NULL,          -- JSON [{i, uniq, gen, label, x, y}] — x·y는 우리 피치 좌표(%)
+  source TEXT, confidence TEXT, pulled TEXT NOT NULL,
+  PRIMARY KEY(game_version, ea_id)
+);

@@ -330,3 +330,12 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .sbc-slot em{display:block;font-style:normal;font-size:9px;color:var(--dim);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sbc-slot u{display:block;text-decoration:none;font-size:8.5px;color:var(--dim)}
+
+/* SBC 세트 카드 — 목록을 훑을 수 있게(2026-09-25). 챌린지 상세는 그 안의 details가 접어 둔다. */
+.sbc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:10px;align-items:start}
+.sbc-card{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--panel)}
+.sbc-card.urgent{border-color:var(--bad)}
+.sbc-head{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.sbc-head b{font-size:14px}
+.sbc-prog{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:5px}
+.sbc-desc{font-size:11.5px;margin:4px 0 2px}
