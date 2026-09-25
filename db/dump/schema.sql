@@ -1125,3 +1125,10 @@ CREATE TABLE fc_sbc_fixed(
   source TEXT, confidence TEXT, updated TEXT,
   PRIMARY KEY(game_version, challenge_ea_id, slot)
 );
+CREATE TABLE fc_sbc_hidden(
+  game_version    TEXT NOT NULL REFERENCES game_versions(code),
+  challenge_ea_id INTEGER NOT NULL,
+  reason          TEXT,
+  source TEXT, added TEXT,
+  PRIMARY KEY(game_version, challenge_ea_id)
+);

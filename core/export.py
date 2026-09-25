@@ -297,8 +297,13 @@ def export_all(db_path=None, window="2026-summer"):
                                   -- ⭐ 인게임 포메이션 기록은 **해법과 별개 축**이다(2026-09-25).
                                   -- ⛔ 종전엔 squad_json 안에만 있어서 **해법을 못 찾으면 기록까지 화면에서
                                   --    사라졌다** — 그러면 그 챌린지의 포메이션을 고쳐 적을 방법이 없다.
-                                  f.formation rec_formation
+                                  f.formation rec_formation,
+                                  -- ⭐ 목록에서 감출 챌린지(migration 074 · 사용자 판단).
+                                  --    ⛔ 지우지 않는다 — 화면이 건수만 적고 접어 둔다.
+                                  h.reason hidden_reason
                              FROM fc_sbc_challenges c
+                             LEFT JOIN fc_sbc_hidden h ON h.challenge_ea_id=c.challenge_ea_id
+                                  AND h.game_version=c.game_version
                              LEFT JOIN fc_sbc_formations f ON f.challenge_ea_id=c.challenge_ea_id
                                   AND f.game_version=c.game_version
                              LEFT JOIN fc_sbc_solutions s ON s.challenge_ea_id=c.challenge_ea_id

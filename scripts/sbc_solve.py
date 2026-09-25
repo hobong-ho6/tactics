@@ -757,6 +757,12 @@ def main():
     if FIXED:
         print("📌 고정 카드 " + " · ".join(
             f"{c}#{f['slot']} {f['name']}({f['ovr']})" for c, fs in FIXED.items() for f in fs))
+    # ⭐ 감춘 챌린지는 풀지 않는다(migration 074) — 화면에 안 보이는 걸 계산할 이유가 없다.
+    hid = {r[0] for r in con.execute(
+        "SELECT challenge_ea_id FROM fc_sbc_hidden WHERE game_version=?", (a.game,))}
+    if hid:
+        rows = [r for r in rows if r["challenge_ea_id"] not in hid]
+        print(f"🙈 목록에서 감춘 {len(hid)}챌린지는 판정하지 않는다(사용자 판단 · migration 074)")
     done_ids = {r[0] for r in con.execute(
         "SELECT challenge_ea_id FROM fut_sbc_log WHERE game_version=?", (a.game,))}
     if done_ids:

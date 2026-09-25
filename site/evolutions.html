@@ -2189,7 +2189,10 @@ function renderSbc(){
      (fut.gg가 제출 인원조차 주지 않는다). ⛔ 조용히 없애지 않고 **건수는 머리에 적는다**. */
   const all = SBC.challenges || [];
   const oneclick = all.filter(c => c.verdict === 'oneclick');
-  const chs = all.filter(c => c.verdict !== 'oneclick');
+  /* ⭐ **감춘 챌린지**(migration 074 · 사용자 판단 「업그레이드는 선수만 채우면 되는 것들」).
+     ⛔ 원클릭과 같은 규약이다 — 조용히 없애지 않고 **건수는 머리에 적는다**. */
+  const hidden = all.filter(c => c.hidden_reason && c.verdict !== 'oneclick');
+  const chs = all.filter(c => c.verdict !== 'oneclick' && !c.hidden_reason);
   const byset = {}; for (const c of chs) (byset[c.set_ea_id] ??= []).push(c);
   // ⭐ 단계 집계도 `stageOf` 하나로 센다 — 배지와 숫자가 갈릴 여지를 두지 않는다.
   const cnt = chs.reduce((m, c) => (m[stageOf(c)] = (m[stageOf(c)] || 0) + 1, m), {});
@@ -2199,6 +2202,7 @@ function renderSbc(){
     `— ${live.length}세트 · ${chs.length}챌린지 · 🏁 완료 ${doneN} · ✅ 해법 ${cnt.solved || 0}`
     + ` · 🟡 준비 ${cnt.ready || 0} · 📐 포메이션 입력 필요 ${cnt.need_form || 0}`
     + (oneclick.length ? ` · 원클릭 제출 ${oneclick.length}건은 제외` : '')
+    + (hidden.length ? ` · 감춤 ${hidden.length}건(업그레이드류)은 제외` : '')
     + ` · 판정일 ${chs.find(c => c.solved_at)?.solved_at || '—'}`;
   const fb = document.getElementById('sbcfilters');
   fb.innerHTML = [['all', `전체 ${chs.length}`],
