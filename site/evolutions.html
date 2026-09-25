@@ -2022,18 +2022,24 @@ const VERDICT = {
 const SBC_DONE = SBC.done || {};
 let SBC_F = 'all';
 function renderSbc(){
-  const chs = SBC.challenges || [];
+  /* ⛔ **원클릭 제출은 목록에서 뺀다**(2026-09-25 사용자 지시 「원클릭 제출 미션은 목록에서 제외시키자」).
+     스쿼드를 짜는 챌린지가 아니라 「조건 맞는 카드를 골라 내는」 제출이라 이 화면이 답할 게 없다
+     (fut.gg가 제출 인원조차 주지 않는다). ⛔ 조용히 없애지 않고 **건수는 머리에 적는다**. */
+  const all = SBC.challenges || [];
+  const oneclick = all.filter(c => c.verdict === 'oneclick');
+  const chs = all.filter(c => c.verdict !== 'oneclick');
   const byset = {}; for (const c of chs) (byset[c.set_ea_id] ??= []).push(c);
   const doneN = chs.filter(c => SBC_DONE[String(c.challenge_ea_id)]).length;
   const cnt = chs.reduce((m, c) => (m[c.verdict || 'unparsed'] = (m[c.verdict || 'unparsed'] || 0) + 1, m), {});
   const live = (SBC.sets || []).filter(s => !s.is_expired);
   document.getElementById('sbcn').textContent =
     `— ${live.length}세트 · ${chs.length}챌린지 · 내가 완료 ${doneN} · 남은 것 중 달성 가능 ${
-      chs.filter(c => c.verdict === 'ok' && !SBC_DONE[String(c.challenge_ea_id)]).length} · 판정일 ${chs.find(c => c.solved_at)?.solved_at || '—'}`;
+      chs.filter(c => c.verdict === 'ok' && !SBC_DONE[String(c.challenge_ea_id)]).length}`
+    + (oneclick.length ? ` · 원클릭 제출 ${oneclick.length}건은 제외` : '')
+    + ` · 판정일 ${chs.find(c => c.solved_at)?.solved_at || '—'}`;
   const fb = document.getElementById('sbcfilters');
   fb.innerHTML = [['all', `전체 ${chs.length}`], ['done', `내가 완료 ${doneN}`], ['todo', `안 한 것 ${chs.length - doneN}`],
                   ['ok', `달성 가능 ${cnt.ok || 0}`],
-                  ['oneclick', `원클릭 ${cnt.oneclick || 0}`],
                   ['no', `불가·못 찾음 ${(cnt.impossible || 0) + (cnt.not_found || 0)}`]]
     .map(([k, t]) => `<button class="filt${SBC_F === k ? ' on' : ''}" data-f="${k}"><i>${SBC_F === k ? '☑' : '☐'}</i>${t}</button>`).join('');
   fb.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => { SBC_F = b.dataset.f; renderSbc(); }));
