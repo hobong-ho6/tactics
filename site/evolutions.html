@@ -2010,16 +2010,33 @@ function renderClub(){
         실측: 진화를 6명에게 실제로 했는데도 같은 응답의 `evolutions`는 **빈 배열**이었다. ⇒ EA 동기화가 아니다.
       ⇒ 완료 여부를 원장에 넣으려면 **우리가 기록**해야 한다(진화 로그와 같은 축). 지금은 넣지 않았다. */
 const SBC = EVO.sbc || { sets: [], challenges: [] };
-const VERDICT = {
-  /* ⛔⛔ **「보유분으로」가 빠지면 「영영 불가」로 읽힌다**(2026-09-25 실증 — 「3 Leagues & 2 Nations」를
-     내 보유분으로는 못 찾는다고 적었는데 사용자는 **시장에서 사서 완료**했다). SBC는 카드를 사서 채울 수 있다. */
-  ok:         { k: '✅ 지금 보유분으로 가능', c: 'hi' },
-  impossible: { k: '⛔ 보유분으론 불가', c: 'mid' },
-  not_found:  { k: '⚠️ 보유분에선 못 찾음', c: 'mid' },
-  oneclick:   { k: '↗ 원클릭 제출', c: '' },
-  unparsed:   { k: '❔ 판정 안 함', c: 'dim' },
-};
 const SBC_DONE = SBC.done || {};
+/* ⭐⭐ **진행 단계는 여기 한 곳에서만 정한다**(2026-09-25 사용자 지시 「sbc 상태를 더 세분화 하자 —
+   포메이션을 입력하면 준비완료 · 해법까지 찾으면 해법완료 · 등록만 되고 포메이션 입력 안 되면
+   포메이션 입력필요」). 배지·필터·세트 진행도가 **전부 이 함수를 부른다** — 규칙이 세 곳에 흩어지면
+   언젠가 갈린다(불변규칙 13 ② 단일 정본).
+
+   왜 포메이션이 단계의 첫 관문인가: 인게임 SBC는 챌린지마다 포메이션이 고정인데 EA·fut.gg가 그 값을
+   주지 않는다(migration 069). 미기록이면 우리가 **추정한 배치**로 푼 것이라 해법이 나와도 인게임과
+   다를 수 있다 — 그래서 「해법 완료」로 세지 않는다.
+
+   ⛔⛔ 「보유분으로」가 빠지면 「영영 불가」로 읽힌다(2026-09-25 실증 — 「3 Leagues & 2 Nations」를
+      못 찾는다고 적었는데 사용자는 **시장에서 사서 완료**했다). SBC는 카드를 사서 채울 수 있다. */
+const STAGE = {
+  done:      { k: '🏁 내가 완료',        c: 'hi'  },
+  solved:    { k: '✅ 해법 완료',        c: 'hi'  },
+  ready:     { k: '🟡 준비 완료',        c: 'mid' },
+  need_form: { k: '📐 포메이션 입력 필요', c: 'mid' },
+  unparsed:  { k: '❔ 판정 안 함',       c: 'dim' },
+};
+const stageOf = c =>
+  SBC_DONE[String(c.challenge_ea_id)] ? 'done'
+  : (c.verdict || 'unparsed') === 'unparsed' ? 'unparsed'
+  : !c.rec_formation ? 'need_form'          // 등록만 된 상태 — 인게임 포메이션을 아직 못 받았다
+  : c.verdict === 'ok' ? 'solved'
+  : 'ready';                                 // 포메이션은 받았고 해법만 남았다
+/* 「준비 완료」 안에서 왜 아직 해법이 없는지 — 배지를 늘리지 않고 한 줄로 덧붙인다. */
+const READY_WHY = { not_found: '보유분에선 못 찾음(사면 된다)', impossible: '보유분으론 불가(사야 한다)' };
 /* ⛔⛔ **인게임 SBC는 챌린지마다 포메이션이 고정인데 EA·fut.gg가 그 값을 주지 않는다**(migration 069).
    종전엔 우리가 케미 최대 포메이션을 임의로 골라 보여줘서 **인게임 화면과 달랐다**(2026-09-25 사용자 지적).
    ⇒ 기록이 있으면 그 안에서만 배치하고, 없으면 「추정」이라고 못박는다. 아래 선택으로 기록·재계산한다. */
@@ -2096,18 +2113,19 @@ function renderSbc(){
   const oneclick = all.filter(c => c.verdict === 'oneclick');
   const chs = all.filter(c => c.verdict !== 'oneclick');
   const byset = {}; for (const c of chs) (byset[c.set_ea_id] ??= []).push(c);
-  const doneN = chs.filter(c => SBC_DONE[String(c.challenge_ea_id)]).length;
-  const cnt = chs.reduce((m, c) => (m[c.verdict || 'unparsed'] = (m[c.verdict || 'unparsed'] || 0) + 1, m), {});
+  // ⭐ 단계 집계도 `stageOf` 하나로 센다 — 배지와 숫자가 갈릴 여지를 두지 않는다.
+  const cnt = chs.reduce((m, c) => (m[stageOf(c)] = (m[stageOf(c)] || 0) + 1, m), {});
+  const doneN = cnt.done || 0;
   const live = (SBC.sets || []).filter(s => !s.is_expired);
   document.getElementById('sbcn').textContent =
-    `— ${live.length}세트 · ${chs.length}챌린지 · 내가 완료 ${doneN} · 남은 것 중 달성 가능 ${
-      chs.filter(c => c.verdict === 'ok' && !SBC_DONE[String(c.challenge_ea_id)]).length}`
+    `— ${live.length}세트 · ${chs.length}챌린지 · 🏁 완료 ${doneN} · ✅ 해법 ${cnt.solved || 0}`
+    + ` · 🟡 준비 ${cnt.ready || 0} · 📐 포메이션 입력 필요 ${cnt.need_form || 0}`
     + (oneclick.length ? ` · 원클릭 제출 ${oneclick.length}건은 제외` : '')
     + ` · 판정일 ${chs.find(c => c.solved_at)?.solved_at || '—'}`;
   const fb = document.getElementById('sbcfilters');
-  fb.innerHTML = [['all', `전체 ${chs.length}`], ['done', `내가 완료 ${doneN}`], ['todo', `안 한 것 ${chs.length - doneN}`],
-                  ['ok', `달성 가능 ${cnt.ok || 0}`],
-                  ['no', `불가·못 찾음 ${(cnt.impossible || 0) + (cnt.not_found || 0)}`]]
+  fb.innerHTML = [['all', `전체 ${chs.length}`],
+                  ...['done', 'solved', 'ready', 'need_form', 'unparsed']
+                    .filter(k => cnt[k]).map(k => [k, `${STAGE[k].k} ${cnt[k]}`])]
     .map(([k, t]) => `<button class="filt${SBC_F === k ? ' on' : ''}" data-f="${k}"><i>${SBC_F === k ? '☑' : '☐'}</i>${t}</button>`).join('');
   fb.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => { SBC_F = b.dataset.f; renderSbc(); }));
   /* 포메이션 선택 → `fut_club.py sbc_formation`이 기록하고 **그 자리에서 다시 푼다**(serve.py 쓰기 API). */
@@ -2160,10 +2178,7 @@ function renderSbc(){
         { challenge: id, club_player: +b.dataset.cp, undo, game: 'FC27' }));
       b.disabled = false;
     })), 0);
-  const keep = c => SBC_F === 'all' ? true
-    : SBC_F === 'done' ? !!SBC_DONE[String(c.challenge_ea_id)]
-    : SBC_F === 'todo' ? !SBC_DONE[String(c.challenge_ea_id)]
-    : SBC_F === 'no' ? ['impossible', 'not_found'].includes(c.verdict) : c.verdict === SBC_F;
+  const keep = c => SBC_F === 'all' || stageOf(c) === SBC_F;
   const days = t => { if (!t) return ''; const d = Math.ceil((new Date(t) - Date.now()) / 86400000);
     return d < 0 ? '만료' : d <= 3 ? `<b class="dn">${d}일 남음</b>` : d > 3000 ? '상시' : `${d}일 남음`; };
   /* ⭐ 세트를 **카드**로 세운다(2026-09-25 사용자 지시 「SBC 목록은 카드 형태로 좀 더 잘 보이게」).
@@ -2172,8 +2187,9 @@ function renderSbc(){
     const list = (byset[st.set_ea_id] || []).filter(keep);
     if (!list.length) return '';
     const aw = (J(st.awards_text, []) || []).map(x => esc(x.name)).join(' · ');
-    const dn = list.filter(c => SBC_DONE[String(c.challenge_ea_id)]).length;
-    const okn = list.filter(c => c.verdict === 'ok' && !SBC_DONE[String(c.challenge_ea_id)]).length;
+    // ⭐ 세트 진행도도 `stageOf` 하나로 센다(배지와 같은 규칙).
+    const sc = list.reduce((m, c) => (m[stageOf(c)] = (m[stageOf(c)] || 0) + 1, m), {});
+    const dn = sc.done || 0;
     /* ⛔ **완료한 서브 미션은 접는다**(2026-09-25 사용자 지시 「서브 미션 중 완료된 건 숨기기 처리」).
        할 일만 남아야 목록이 읽힌다. ⛔ 조용히 없애지 않는다 — 「완료 N/M」 배지가 그대로 세고,
        「완료 N개 보기」 토글로 언제든 펼 수 있다. ⚠️ 「내가 완료」 필터를 고른 경우에는 감추지 않는다. */
@@ -2195,17 +2211,19 @@ function renderSbc(){
         <span class="chip${/dn/.test(d) ? '' : ' dim'}">${d}</span></div>
       <div class="sbc-prog">
         <span class="chip hi">완료 ${dn}/${list.length}</span>
-        ${okn ? `<span class="chip">지금 가능 ${okn}</span>` : ''}
+        ${['solved', 'ready', 'need_form'].filter(k => sc[k])
+          .map(k => `<span class="chip">${STAGE[k].k} ${sc[k]}</span>`).join('')}
         ${aw ? `<small class="dim">보상 ${aw}</small>` : ''}</div>
       ${st.description ? `<div class="dim sbc-desc">${esc(st.description)}</div>` : ''}
       ${dn && !SBC_OPEN.has(st.set_ea_id) && SBC_F !== 'done'
         ? `<button class="act ghost" data-sbcopen="${st.set_ea_id}" style="font-size:11.5px;margin:4px 0">완료한 ${dn}개는 감춰 뒀다 — 보기</button>` : ''}
       ${show.map(c => {
         const dn = SBC_DONE[String(c.challenge_ea_id)];
-        const v = dn ? { k: '🏁 내가 완료', c: 'hi' } : VERDICT[c.verdict || 'unparsed'];
+        const stg = stageOf(c), v = STAGE[stg];
         const xi = J(c.squad_json, []) || [];
         return `<details class="path pcard" style="margin:6px 0"${c.verdict === 'ok' ? '' : ''}>
           <summary class="kv"><span class="badge ${v.c}">${v.k}</span> <b>${esc(c.name)}</b>
+            ${stg === 'ready' && READY_WHY[c.verdict] ? `<small class="dim">${READY_WHY[c.verdict]}</small>` : ''}
             ${(J(c.awards_text, []) || []).length ? `<small class="dim">보상 ${(J(c.awards_text, []) || []).map(x => esc(x.name)).join(' · ')}</small>` : ''}
             ${dn ? `<span class="chip dim" title="${esc(dn.notes || '')}">${esc(dn.completed_at || '')} 완료 · 사용자 기록</span>` : ''}
             ${c.pool_size != null ? `<span class="chip dim" title="1인 조건(등급·OVR·리그)을 통과하는 내 보유 카드 수">통과 카드 ${c.pool_size}</span>` : ''}</summary>
