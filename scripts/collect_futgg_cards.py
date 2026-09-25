@@ -95,9 +95,17 @@ def main():
             targets.setdefault(r["base_ea_id"], (r["player_id"], r["kr"]))
         # 우리 카드 표에 없는 보유 선수는 **아이템 id를 base 후보로** 넣는다 — 대부분 base 카드다.
         # ⚠️ 특별 카드면 all-versions 응답의 basePlayerEaId가 달라 기존 mismatch 가드가 걸러낸다(적재하지 않고 보고).
+        #
+        # ⛔⛔ **「행이 없는 것」만 보면 안 된다 — 「행은 있는데 빈 것」이 더 많다**(2026-09-25 실측).
+        #    `fut_club_sync.py`가 싱크 때 **스텁 행**을 만든다(source에 「카드 페이지 미수집」).
+        #    그 행은 `base_ea_id`가 NULL이라 위 쿼리에도 안 걸리고, 행이 있으니 여기서도 빠졌다.
+        #    ⇒ 보유 132장 중 **44장이 포지션·클럽·리그·국적이 통째로 빈 채**로 남아 있었다.
+        #    결과: 그 카드는 **어느 칸에도 못 서고(무조건 자리 안 맞음) 케미 기여도 0**이라
+        #    SBC 판정이 조용히 나빠졌다 — 「데이터가 없다」가 아니라 「해가 없다」로 나타나 눈치채기 어렵다.
         for r in con.execute("""SELECT f.ea_item_id, f.name FROM fut_club_players f
+                                LEFT JOIN player_card_items i ON i.ea_item_id=f.ea_item_id
                                 WHERE f.status='owned' AND f.ea_item_id IS NOT NULL
-                                  AND f.ea_item_id NOT IN (SELECT ea_item_id FROM player_card_items)"""):
+                                  AND (i.ea_item_id IS NULL OR COALESCE(TRIM(i.positions),'')='')"""):
             targets.setdefault(r["ea_item_id"], (None, r["name"]))
     print(f"대상 {len(targets)}명 · 게임 {a.games}")
 
@@ -250,7 +258,15 @@ def main():
            "birthdate=COALESCE(excluded.birthdate, player_card_items.birthdate), "
            "is_real_face=COALESCE(excluded.is_real_face, player_card_items.is_real_face), "
            "simple_card_url=COALESCE(excluded.simple_card_url, player_card_items.simple_card_url), "
-           "render_url=COALESCE(excluded.render_url, player_card_items.render_url)"
+           "render_url=COALESCE(excluded.render_url, player_card_items.render_url), "
+           # ⛔⛔ **포지션이 여기 빠져 있었다**(2026-09-25). 싱크가 만든 스텁 행은 club·league·nation은
+           #    나중에 채워졌는데 positions만 계속 빈 채였다 — SET 목록에 없으니 영영 안 채워진다.
+           #    결과: 보유 132장 중 44장이 **어느 칸에도 못 서고**(자리 안 맞음 확정) SBC 판정이 나빠졌다.
+           #    ⚠️ `NULLIF(TRIM(...),'')`을 쓴다 — 빈 문자열은 NULL이 아니라 COALESCE가 그냥 통과시킨다
+           #    (migration 062에서 똑같이 당했다: 빈 라벨이 COALESCE를 통과해 화면에 빈 칸이 떴다).
+           "positions=COALESCE(NULLIF(TRIM(player_card_items.positions),''), excluded.positions), "
+           "best_pos=COALESCE(NULLIF(TRIM(player_card_items.best_pos),''), excluded.best_pos), "
+           "base_ea_id=COALESCE(player_card_items.base_ea_id, excluded.base_ea_id)"
            % (",".join("def" if c == "def_" else c for c in cols), ",".join(f":{c}" for c in cols)))
     before = con.execute("SELECT COUNT(*) FROM player_card_items").fetchone()[0]
     for r in rows:

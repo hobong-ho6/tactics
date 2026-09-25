@@ -99,6 +99,9 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
       ⛔ 그리고 <b>「못 찾음」은 「불가능」이 아니다</b> — 탐색이 최적을 보장하지 않는다.<br>
       ⚠️ <b>챌린지마다 따로 푼다</b> — 같은 선수가 여러 스쿼드에 중복해 나온다. 실제 제출하면 카드가
       <b>소모</b>되므로 연달아 하실 때는 순서에 따라 뒤쪽이 안 될 수 있다.<br>
+      ⚠️ <b>케미는 하한이다</b> — <b>감독 +1</b>(국적·리그가 같은 선발, 1인 1점)을 세지 않았다.
+      어느 감독을 쓸지는 사용자만 안다. 규칙 정본은 <b>게임 시스템 → 시스템 분석</b>(2026-09-25 SBC 조사
+      9행 · 케미 기준선·아이콘/히어로·감독·팀 레이팅·희귀도 축).<br>
       ⭐ <b>「내가 완료」는 사용자가 알려 준 기록</b>이다(`fut_sbc_log`) — EA도 fut.gg도 주지 않는 축이라
       진화 로그와 같이 사람이 적는다.</p>
     <div class="filterbar" id="sbcfilters"></div>
@@ -2085,14 +2088,22 @@ const checksHTML = xi => {
   const ck = xi.checks || [];
   if (!ck.length) return '';
   const no = ck.filter(c => !c.ok), yes = ck.filter(c => c.ok);
+  const chem = ck.find(c => c.kind === 'chem');
   const hint = Object.fromEntries((xi.hints || []).map(h => [h.text, h.how]));
   const row = c => `<li class="${c.ok ? 'ck-y' : 'ck-n'}">${c.ok ? '✅' : '⛔'} ${esc(c.text)}${
     c.ok ? '' : `<b> ← ${c.gap}만큼 모자라다</b>${
       hint[c.text] ? `<br><span class="buy">🎯 ${esc(hint[c.text])}</span>`
                    : `<br><span class="buy">💰 이 조건을 맞출 카드 <b>${c.gap}장</b>을 더 사야 한다</span>`}`}</li>`;
+  /* ⚠️ 케미 미충족일 때만 붙이는 단서 — 우리 케미는 **하한**이다(2026-09-25 조사).
+     감독은 국적·리그가 같은 선발에게 +1을 주고 SBC에도 적용되는데, 어느 감독을 쓸지 우리가 모른다.
+     ⇒ 「모자란다」가 인게임에서 메워질 수 있다는 걸 숨기지 않는다(근거: game_system_changes 등급 C). */
+  const mgr = chem && !chem.ok
+    ? `<small class="dim">⚠️ 우리 케미는 <b>하한</b>이다 — <b>감독 +1</b>(국적·리그가 같은 선발, 1인 1점)을
+         세지 않았다. 어느 감독을 쓸지 모르기 때문이다. 부족분이 ${chem.gap} 이하면
+         <b>인게임에선 감독만으로 메워질 수 있다</b>.</small>` : '';
   return `<div class="sbc-ck"><b>조건</b> <small class="dim">— 문장은 fut.gg 원문 · 충족 판정은 우리 계산</small>
     <ul>${no.map(row).join('')}${yes.map(row).join('')}</ul>
-    <small class="dim">충족 ${yes.length} · 미충족 ${no.length}</small></div>`;
+    <small class="dim">충족 ${yes.length} · 미충족 ${no.length}</small>${mgr}</div>`;
 };
 /* 제외해 둔 카드 — **되돌릴 수 있게** 항상 보여 준다(감춰 두면 왜 빠졌는지 알 수 없다). */
 const SBC_EXCL = SBC.excluded || {};
