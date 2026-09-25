@@ -705,21 +705,6 @@ CREATE TABLE fut_accounts(
   notes TEXT,
   created TEXT NOT NULL
 , season_pass_level INTEGER, has_premium_pass INTEGER, unlocks_checked TEXT);
-CREATE TABLE fut_club_players(
-  id INTEGER PRIMARY KEY,
-  account_id INTEGER NOT NULL REFERENCES fut_accounts(id),
-  player_id INTEGER REFERENCES players(id),   -- 우리 DB 선수면 연결(조인 규칙: player_id)
-  ea_item_id INTEGER,                         -- 보유 아이템(카드) id — player_card_items.ea_item_id
-  name TEXT NOT NULL,                         -- 표시용
-  acquired TEXT, acquired_how TEXT,           -- 입수일·경로(팩/이적시장/보상/SBC)
-  status TEXT NOT NULL DEFAULT 'owned' CHECK(status IN ('owned','sold','discarded')),
-  current_ovr INTEGER, current_six TEXT,      -- 마지막 기록 시점 상태(진화 적용 후 갱신)
-  current_playstyles TEXT, current_roles_plus TEXT, current_roles_plus_plus TEXT,
-  evo_count INTEGER NOT NULL DEFAULT 0,       -- 적용한 진화 단계 수(로그와 일치해야 한다)
-  notes TEXT,
-  updated TEXT NOT NULL, chem_style_ea INTEGER, chem_points INTEGER, gg_player_id TEXT, synced_at TEXT, current_attrs TEXT, is_untradeable INTEGER, is_in_active_squad INTEGER, is_captain INTEGER, kit_number INTEGER, number_of_owners INTEGER,
-  UNIQUE(account_id, ea_item_id)
-);
 CREATE TABLE fut_evolution_log(
   id INTEGER PRIMARY KEY,
   club_player_id INTEGER NOT NULL REFERENCES fut_club_players(id),
@@ -1110,4 +1095,22 @@ CREATE TABLE fc_sbc_exclusions(
   reason          TEXT,
   added           TEXT,
   PRIMARY KEY(game_version, challenge_ea_id, club_player_id)
+);
+CREATE TABLE IF NOT EXISTS "fut_club_players"(
+  id INTEGER PRIMARY KEY,
+  account_id INTEGER NOT NULL REFERENCES fut_accounts(id),
+  player_id INTEGER REFERENCES players(id),   -- 우리 DB 선수면 연결(조인 규칙: player_id)
+  ea_item_id INTEGER,                         -- 보유 아이템(카드) id — player_card_items.ea_item_id
+  name TEXT NOT NULL,                         -- 표시용
+  acquired TEXT, acquired_how TEXT,           -- 입수일·경로(팩/이적시장/보상/SBC)
+  -- ⭐ 'sbc' = SBC에 제출해 소모됨(2026-09-26, migration 072). 'sold'(판매)와 구분한다.
+  status TEXT NOT NULL DEFAULT 'owned' CHECK(status IN ('owned','sold','discarded','sbc')),
+  current_ovr INTEGER, current_six TEXT,      -- 마지막 기록 시점 상태(진화 적용 후 갱신)
+  current_playstyles TEXT, current_roles_plus TEXT, current_roles_plus_plus TEXT,
+  evo_count INTEGER NOT NULL DEFAULT 0,       -- 적용한 진화 단계 수(로그와 일치해야 한다)
+  notes TEXT,
+  updated TEXT NOT NULL, chem_style_ea INTEGER, chem_points INTEGER, gg_player_id TEXT, synced_at TEXT, current_attrs TEXT, is_untradeable INTEGER, is_in_active_squad INTEGER, is_captain INTEGER, kit_number INTEGER, number_of_owners INTEGER,
+  -- 어느 챌린지에 넣었나(status='sbc'일 때만). 되돌리기와 출처 추적용.
+  sbc_challenge_ea_id INTEGER,
+  UNIQUE(account_id, ea_item_id)
 );

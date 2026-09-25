@@ -42,3 +42,14 @@ INSERT INTO fut_tactic_roles VALUES(1,'2026-09-25T21:15',12,'RM',NULL,'Inside Fo
 INSERT INTO fut_tactic_roles VALUES(1,'2026-09-25T21:15',16,'LM',NULL,'Winger','Attack');
 INSERT INTO fut_tactic_roles VALUES(1,'2026-09-25T21:15',18,'CAM',NULL,'Playmaker','Roaming');
 INSERT INTO fut_tactic_roles VALUES(1,'2026-09-25T21:15',25,'ST',NULL,'Target Forward','Balanced');
+INSERT INTO fut_tactic_roles VALUES(1,'2026-09-26',0,'GK',NULL,'Ball Playing Keeper','Build-Up');
+INSERT INTO fut_tactic_roles VALUES(1,'2026-09-26',3,'RB',NULL,'Inverted Wingback','Build-Up');
+INSERT INTO fut_tactic_roles VALUES(1,'2026-09-26',4,'CB',NULL,'Ball-Playing Defender','Aggressive');
+INSERT INTO fut_tactic_roles VALUES(1,'2026-09-26',6,'CB',NULL,'Ball-Playing Defender','Build-Up');
+INSERT INTO fut_tactic_roles VALUES(1,'2026-09-26',7,'LB',NULL,'Attacking Wingback','Support');
+INSERT INTO fut_tactic_roles VALUES(1,'2026-09-26',9,'CDM',NULL,'Holding','Defend');
+INSERT INTO fut_tactic_roles VALUES(1,'2026-09-26',11,'CDM',NULL,'Deep-Lying Playmaker','Roaming');
+INSERT INTO fut_tactic_roles VALUES(1,'2026-09-26',12,'RM',NULL,'Inside Forward','Attack');
+INSERT INTO fut_tactic_roles VALUES(1,'2026-09-26',16,'LM',NULL,'Winger','Attack');
+INSERT INTO fut_tactic_roles VALUES(1,'2026-09-26',18,'CAM',NULL,'Playmaker','Roaming');
+INSERT INTO fut_tactic_roles VALUES(1,'2026-09-26',25,'ST',NULL,'Target Forward','Balanced');
