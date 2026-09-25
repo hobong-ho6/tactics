@@ -1031,10 +1031,34 @@ function eligPanel(pid){
       return `<details class="path pcard tier0" style="margin:6px 0">
         <summary class="kv"><b>${esc(c?.name || r.evo_id)}</b>
           ${lockChip(r.evo_id)}${r.is_base ? '' : '<span class="chip dim" title="이 진화는 기본 카드가 아니라 내가 가진 특별 카드에 걸린다">특별 카드</span>'}
-          <span class="chip">${(J(c?.levels, []) || []).length}단계</span>
+          ${/* ⚠️ 「N단계」는 **그 진화가 가진 단계 수**다 — 「이 선수는 N단계까지만 된다」로 읽힌다는
+                지적(2026-09-25 「잭슨은 1단계 밖에 못 하고 2단계는 못 하는 거야?」)을 받아 말을 바꿨다. */''}
+          <span class="chip" title="이 진화가 몇 단계짜리인가 — 걸면 이 단계를 전부 밟는다. 선수가 몇 단계까지 되는지가 아니다."
+            >${(J(c?.levels, []) || []).length}단계짜리</span>
           <small class="dim">${esc(costText(c || {}))}</small> ${scoreChip(rs2)}</summary>
         <div style="padding:6px 2px">${stepsHTML(pseudo, +pid, { always: true })}
-          ${(J(c?.total_upgrades_text, []) || []).length ? `<div style="font-size:12px;margin-top:6px"><b>얻는 것</b> ${
+          ${/* ⭐⭐ **상세 스탯 상승분**(2026-09-25 사용자 지시 「여기 적용 가능한 진화에서도
+                상세 스탯으로 업그레이드되는 스탯을 보여줘」). 경로 카드에는 있었는데 이 블록엔 없었다.
+             ⛔ 카탈로그 표기값(`total_upgrades_text`)을 그대로 쓰지 않는다 — **상한에 걸리면 실제로는 덜 오른다**
+                (런북: 표기 +7이 캡에 걸려 +0이 되는 일이 흔하다). `projectFor`가 이미 상한을 씌운
+                적용 후 속성을 갖고 있으므로 **지금 내 카드와 직접 비교**해 실제 상승분을 낸다. */''}
+          ${(() => {
+            const pr = pid != null ? projectFor(pseudo, +pid) : null;
+            const before = J(STATE[String(pid)]?.attrs, null);
+            if (!pr || !before) return '';
+            const up = Object.entries(pr.at)
+              .map(([k, v]) => [k, v - (before[k] ?? v)]).filter(([, d]) => d > 0)
+              .sort((a, b) => b[1] - a[1]);
+            const flat = (J(c?.total_upgrades_text, []) || [])
+              .filter(u => !/^(Overall|PlayStyle|Role\+)/i.test(u.label)).length;
+            if (!up.length) return `<div class="gain-why" style="font-size:12px;margin-top:6px">
+              ⛔ <b>이 카드에서는 속성이 하나도 오르지 않는다</b> — 보상 속성이 전부 <b>이미 상한</b>이다.</div>`;
+            return `<div style="font-size:12px;margin-top:6px"><b>상세 스탯 상승</b>
+              <small class="dim">— 지금 내 카드에 <b>상한 규칙</b>대로 얹은 <b>실제 상승분</b>이다(표기값 아님)</small>
+              <div style="margin-top:3px">${up.map(([k, d]) => `<span class="bc-up">${esc(k)} <b>+${d}</b></span>`).join('')}</div>
+              ${flat > up.length ? `<div class="dim" style="margin-top:3px">⚠️ 보상 속성 ${flat}개 중 <b>${flat - up.length}개는 이미 상한</b>이라 오르지 않는다.</div>` : ''}</div>`;
+          })()}
+          ${(J(c?.total_upgrades_text, []) || []).length ? `<div style="font-size:12px;margin-top:6px"><b>카탈로그 표기</b> ${
             (J(c.total_upgrades_text, []) || []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ')}</div>` : ''}
           ${c?.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>` : ''}
           <button class="act ghost" data-cat="${r.evo_id}" style="font-size:12px;margin-left:6px">카탈로그에서 보기</button>
