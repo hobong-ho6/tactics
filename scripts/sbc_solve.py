@@ -532,8 +532,11 @@ def main():
             "팀 레이팅 산식=D(EA 비공개·커뮤니티식) · 케미=화면과 같은 FC27 기준선. "
             "⛔ not_found는 불가 증명이 아니다 — 탐색이 최적을 보장하지 않는다.")
     rows = []
+    # ⭐ `pos`를 함께 싣는다 — 화면이 **포메이션을 바꿔 미리 그릴** 때 필요하다(2026-09-25 사용자 지시
+    #    「포메이션을 선택하면 포메이션이 변경돼야 정확히 고를 수 있어」). 없으면 재배치를 못 한다.
     slim = lambda p: {"id": p["id"], "name": p["name"], "ovr": p["ovr"], "club": p["club"],
-                      "league": p["league"], "nation": p["nation"], "untradeable": p["is_untradeable"]}
+                      "league": p["league"], "nation": p["nation"], "untradeable": p["is_untradeable"],
+                      "pos": sorted(positions_of(p))}
     for r, xi, size, cands, _cd, _b in ok:
         known = FORM_OF.get(r["challenge_ea_id"])
         ch, form, pl = best_placement(xi, known)
