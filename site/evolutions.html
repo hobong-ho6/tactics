@@ -93,9 +93,14 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
     <p class="dim" style="font-size:12px;margin:0 0 8px">
       조건·보상·마감은 <b>fut.gg 원문</b>이다(등급 A). 달성 판정은 <b>내 보유 카드</b>로 우리가 푼 것이고,
       카드 등급(Bronze/Silver/Gold)과 팀 레이팅 산식은 <b>등급 D</b>(EA가 공개한 적 없다).<br>
-      ⛔ <b>「못 찾음」은 「불가능」이 아니다</b> — 탐색이 최적을 보장하지 않는다. 1인 조건을 통과하는 카드가
-      인원보다 적을 때만 <b>불가 확정</b>으로 적는다.<br>
-      ⚠️ <b>내가 이미 완료했는지는 여기 없다</b> — EA는 SBC 완료 여부를 주지 않는다(아래 주석 참조).</p>
+      ⛔⛔ <b>판정은 「지금 내가 가진 카드만으로」다</b> — SBC는 <b>시장에서 사서</b> 채울 수 있으므로
+      「보유분으론 불가」가 <b>영영 못 한다는 뜻이 아니다</b>(실증: 「3 Leagues & 2 Nations」를 보유분으론
+      못 찾았는데 사용자가 카드를 사서 완료했다).<br>
+      ⛔ 그리고 <b>「못 찾음」은 「불가능」이 아니다</b> — 탐색이 최적을 보장하지 않는다.<br>
+      ⚠️ <b>챌린지마다 따로 푼다</b> — 같은 선수가 여러 스쿼드에 중복해 나온다. 실제 제출하면 카드가
+      <b>소모</b>되므로 연달아 하실 때는 순서에 따라 뒤쪽이 안 될 수 있다.<br>
+      ⭐ <b>「내가 완료」는 사용자가 알려 준 기록</b>이다(`fut_sbc_log`) — EA도 fut.gg도 주지 않는 축이라
+      진화 로그와 같이 사람이 적는다.</p>
     <div class="filterbar" id="sbcfilters"></div>
     <div id="sbc"></div></div>
 </section>
@@ -2006,27 +2011,36 @@ function renderClub(){
       ⇒ 완료 여부를 원장에 넣으려면 **우리가 기록**해야 한다(진화 로그와 같은 축). 지금은 넣지 않았다. */
 const SBC = EVO.sbc || { sets: [], challenges: [] };
 const VERDICT = {
-  ok:         { k: '✅ 달성 가능', c: 'hi' },
-  impossible: { k: '⛔ 불가 확정', c: 'mid' },
-  not_found:  { k: '⚠️ 못 찾음', c: 'mid' },
+  /* ⛔⛔ **「보유분으로」가 빠지면 「영영 불가」로 읽힌다**(2026-09-25 실증 — 「3 Leagues & 2 Nations」를
+     내 보유분으로는 못 찾는다고 적었는데 사용자는 **시장에서 사서 완료**했다). SBC는 카드를 사서 채울 수 있다. */
+  ok:         { k: '✅ 지금 보유분으로 가능', c: 'hi' },
+  impossible: { k: '⛔ 보유분으론 불가', c: 'mid' },
+  not_found:  { k: '⚠️ 보유분에선 못 찾음', c: 'mid' },
   oneclick:   { k: '↗ 원클릭 제출', c: '' },
   unparsed:   { k: '❔ 판정 안 함', c: 'dim' },
 };
+const SBC_DONE = SBC.done || {};
 let SBC_F = 'all';
 function renderSbc(){
   const chs = SBC.challenges || [];
   const byset = {}; for (const c of chs) (byset[c.set_ea_id] ??= []).push(c);
+  const doneN = chs.filter(c => SBC_DONE[String(c.challenge_ea_id)]).length;
   const cnt = chs.reduce((m, c) => (m[c.verdict || 'unparsed'] = (m[c.verdict || 'unparsed'] || 0) + 1, m), {});
   const live = (SBC.sets || []).filter(s => !s.is_expired);
   document.getElementById('sbcn').textContent =
-    `— ${live.length}세트 · ${chs.length}챌린지 · 달성 가능 ${cnt.ok || 0} · 판정일 ${chs.find(c => c.solved_at)?.solved_at || '—'}`;
+    `— ${live.length}세트 · ${chs.length}챌린지 · 내가 완료 ${doneN} · 남은 것 중 달성 가능 ${
+      chs.filter(c => c.verdict === 'ok' && !SBC_DONE[String(c.challenge_ea_id)]).length} · 판정일 ${chs.find(c => c.solved_at)?.solved_at || '—'}`;
   const fb = document.getElementById('sbcfilters');
-  fb.innerHTML = [['all', `전체 ${chs.length}`], ['ok', `달성 가능 ${cnt.ok || 0}`],
+  fb.innerHTML = [['all', `전체 ${chs.length}`], ['done', `내가 완료 ${doneN}`], ['todo', `안 한 것 ${chs.length - doneN}`],
+                  ['ok', `달성 가능 ${cnt.ok || 0}`],
                   ['oneclick', `원클릭 ${cnt.oneclick || 0}`],
                   ['no', `불가·못 찾음 ${(cnt.impossible || 0) + (cnt.not_found || 0)}`]]
     .map(([k, t]) => `<button class="filt${SBC_F === k ? ' on' : ''}" data-f="${k}"><i>${SBC_F === k ? '☑' : '☐'}</i>${t}</button>`).join('');
   fb.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => { SBC_F = b.dataset.f; renderSbc(); }));
-  const keep = c => SBC_F === 'all' || (SBC_F === 'no' ? ['impossible', 'not_found'].includes(c.verdict) : c.verdict === SBC_F);
+  const keep = c => SBC_F === 'all' ? true
+    : SBC_F === 'done' ? !!SBC_DONE[String(c.challenge_ea_id)]
+    : SBC_F === 'todo' ? !SBC_DONE[String(c.challenge_ea_id)]
+    : SBC_F === 'no' ? ['impossible', 'not_found'].includes(c.verdict) : c.verdict === SBC_F;
   const days = t => { if (!t) return ''; const d = Math.ceil((new Date(t) - Date.now()) / 86400000);
     return d < 0 ? '만료' : d <= 3 ? `<b class="dn">${d}일 남음</b>` : d > 3000 ? '상시' : `${d}일 남음`; };
   document.getElementById('sbc').innerHTML = (SBC.sets || []).map(st => {
@@ -2040,11 +2054,13 @@ function renderSbc(){
       ${aw ? `<small class="dim"> 보상 ${aw}</small>` : ''}
       ${st.description ? `<div class="dim" style="font-size:12px;margin-top:2px">${esc(st.description)}</div>` : ''}
       ${list.map(c => {
-        const v = VERDICT[c.verdict || 'unparsed'];
+        const dn = SBC_DONE[String(c.challenge_ea_id)];
+        const v = dn ? { k: '🏁 내가 완료', c: 'hi' } : VERDICT[c.verdict || 'unparsed'];
         const xi = J(c.squad_json, []) || [];
         return `<details class="path pcard" style="margin:6px 0"${c.verdict === 'ok' ? '' : ''}>
           <summary class="kv"><span class="badge ${v.c}">${v.k}</span> <b>${esc(c.name)}</b>
             ${(J(c.awards_text, []) || []).length ? `<small class="dim">보상 ${(J(c.awards_text, []) || []).map(x => esc(x.name)).join(' · ')}</small>` : ''}
+            ${dn ? `<span class="chip dim" title="${esc(dn.notes || '')}">${esc(dn.completed_at || '')} 완료 · 사용자 기록</span>` : ''}
             ${c.pool_size != null ? `<span class="chip dim" title="1인 조건(등급·OVR·리그)을 통과하는 내 보유 카드 수">통과 카드 ${c.pool_size}</span>` : ''}</summary>
           <div style="padding:6px 2px">
             <div style="font-size:12px"><b>조건</b> <small class="dim">— fut.gg 원문</small>

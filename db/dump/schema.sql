@@ -1077,3 +1077,14 @@ CREATE TABLE fc_sbc_solutions(
   source TEXT, confidence TEXT,
   PRIMARY KEY(game_version, challenge_ea_id, pulled)
 );
+CREATE TABLE fut_sbc_log(
+  id INTEGER PRIMARY KEY,
+  account_id      INTEGER NOT NULL REFERENCES fut_accounts(id),
+  game_version    TEXT NOT NULL REFERENCES game_versions(code),
+  set_ea_id       INTEGER NOT NULL,
+  challenge_ea_id INTEGER NOT NULL,
+  completed_at    TEXT,                 -- 사용자가 알려 준 완료일(모르면 보고받은 날)
+  squad_note      TEXT,                 -- 어떤 카드로 냈는지(알면) — 카드 소모 추적의 단서
+  source TEXT, confidence TEXT, notes TEXT,
+  UNIQUE(account_id, game_version, challenge_ea_id)
+);
