@@ -315,24 +315,30 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 /* ── SBC 스쿼드 피치(evolutions.html SBC 탭) ─────────────────────────────────
    ⛔ 얼티밋팀의 `.fc-pitch`는 **카드 아트**를 전제로 한다(보유 카드). SBC 제안은 아트가 없는
    슬림 데이터라 별도 레이아웃을 쓴다 — 이름·OVR·자리만 읽히면 되는 자리다. */
-.sbc-pitch{position:relative;width:100%;aspect-ratio:3/4;max-width:460px;margin:6px auto 0;
+/* ⚠️ 슬롯은 `translate(-50%,50%)`로 중심을 좌표에 맞춘다 — **padding이 있어야** 가장자리(GK y=6 · ST y=88)가
+   잘리지 않는다(절대배치는 padding box 기준이라 padding이 좌표 원점을 안쪽으로 민다). */
+.sbc-pitch{position:relative;width:100%;aspect-ratio:4/5;max-width:none;margin:6px auto 0;
+  padding:30px 10px;box-sizing:border-box;
   border:1px solid var(--line);border-radius:10px;
   background:linear-gradient(0deg,rgba(28,80,48,.30),rgba(10,26,16,.30));overflow:hidden}
 .sbc-pitch::before{content:'';position:absolute;left:8%;right:8%;top:49.5%;height:1px;background:rgba(255,255,255,.14)}
 .sbc-pitch::after{content:'';position:absolute;left:28%;right:28%;bottom:0;height:14%;
   border:1px solid rgba(255,255,255,.14);border-bottom:0}
-.sbc-slot{position:absolute;transform:translate(-50%,50%);width:86px;text-align:center;
+.sbc-slot{position:absolute;transform:translate(-50%,50%);width:76px;text-align:center;
   background:rgba(6,14,10,.82);border:1px solid var(--line);border-radius:8px;padding:3px 2px;line-height:1.25}
 .sbc-slot.off{border-color:var(--bad)}
 .sbc-slot i{display:block;font-style:normal;font-size:9.5px;color:var(--dim);letter-spacing:.4px}
 .sbc-slot b{font-size:13px}
-.sbc-slot span{display:block;font-size:10.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sbc-slot span{display:block;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sbc-slot em{display:block;font-style:normal;font-size:9px;color:var(--dim);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sbc-slot u{display:block;text-decoration:none;font-size:8.5px;color:var(--dim)}
 
 /* SBC 세트 카드 — 목록을 훑을 수 있게(2026-09-25). 챌린지 상세는 그 안의 details가 접어 둔다. */
-.sbc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:10px;align-items:start}
+/* ⛔ 종전 minmax(360px)는 넓은 화면에서 **4열**이 돼 카드가 좁았고, 그 안의 피치가 겹쳤다
+   (2026-09-25 사용자 지적). 펼친 챌린지에 조건·피치·표가 들어가므로 **2~3열**이 상한이다. */
+.sbc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(560px,1fr));gap:10px;align-items:start}
+@media (max-width:1180px){ .sbc-grid{grid-template-columns:1fr} }
 .sbc-card{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--panel)}
 .sbc-card.urgent{border-color:var(--bad)}
 .sbc-head{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
