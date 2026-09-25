@@ -36,7 +36,65 @@ TIER = {"Bronze": 0, "Silver": 1, "Gold": 2}
 # FC27 케미 기준선 — ⛔ 화면(evolutions.html CHEM_TIERS)과 같은 값이다. 갈리면 둘 다 고친다.
 CHEM = {"club": [(7, 3), (4, 2), (2, 1)], "league": [(8, 3), (5, 2), (3, 1)],
         "nation": [(8, 3), (5, 2), (2, 1)]}
-FORM = ["GK", "LB", "CB", "CB", "RB", "CDM", "CDM", "LM", "CAM", "RM", "ST"]   # 4-2-3-1
+# ⛔⛔ **SBC는 포메이션을 요구하지 않는다** — 그러나 케미는 **포지션이 맞아야** 붙으므로 배치가 필요하다.
+#    ⇒ 아래 포메이션들을 모두 시도해 **케미가 가장 높게 나오는 배치**를 쓴다. 어느 것을 썼는지는 화면에 적는다.
+#    ⚠️ 여기 좌표는 화면이 피치를 그릴 때 쓰는 값이다(가로 %, 세로 % — 아래가 우리 골대).
+FORMS = {
+    "4-2-3-1": [("GK",50,6),("LB",12,26),("LCB",36,22),("RCB",64,22),("RB",88,26),
+                ("LDM",36,44),("RDM",64,44),("LM",14,66),("CAM",50,64),("RM",86,66),("ST",50,86)],
+    "4-4-2":   [("GK",50,6),("LB",12,26),("LCB",36,22),("RCB",64,22),("RB",88,26),
+                ("LM",12,56),("LCM",38,52),("RCM",62,52),("RM",88,56),("LST",38,84),("RST",62,84)],
+    "4-3-3":   [("GK",50,6),("LB",12,26),("LCB",36,22),("RCB",64,22),("RB",88,26),
+                ("CDM",50,44),("LCM",30,58),("RCM",70,58),("LW",14,80),("ST",50,88),("RW",86,80)],
+    "3-5-2":   [("GK",50,6),("LCB",26,22),("CCB",50,20),("RCB",74,22),
+                ("LM",10,56),("LCM",34,50),("CDM",50,42),("RCM",66,50),("RM",90,56),("LST",38,84),("RST",62,84)],
+}
+# 슬롯 이름 → 그 자리에 설 수 있는 포지션(EA 표기). ⚠️ 좌우 구분은 카드 포지션에 없으므로 같은 계열로 본다.
+SLOT_POS = {"GK": {"GK"}, "LB": {"LB", "LWB"}, "RB": {"RB", "RWB"},
+            "LCB": {"CB"}, "RCB": {"CB"}, "CCB": {"CB"},
+            "LDM": {"CDM"}, "RDM": {"CDM"}, "CDM": {"CDM"},
+            "LCM": {"CM"}, "RCM": {"CM"},
+            "LM": {"LM", "LW"}, "RM": {"RM", "RW"}, "CAM": {"CAM"},
+            "LW": {"LW", "LM"}, "RW": {"RW", "RM"},
+            "ST": {"ST", "CF"}, "LST": {"ST", "CF"}, "RST": {"ST", "CF"}}
+
+
+def positions_of(p):
+    return {x.strip() for x in str(p.get("positions") or p.get("best_pos") or "").split("/") if x.strip()}
+
+
+def place(xi, form):
+    """11명을 포메이션 슬롯에 배치. **맞는 포지션 우선**, 남으면 아무 데나(케미 0으로 들어간다).
+       ⛔ 최적 배치를 보장하지 않는다 — 탐욕이다. 그래서 케미는 「이 배치에서」라는 하한이다."""
+    slots = FORMS[form]
+    left = list(xi)
+    out = [None] * len(slots)
+    # 갈 수 있는 자리가 적은 선수부터 배치한다(제약이 큰 쪽을 먼저 — 실패를 줄인다)
+    order = sorted(range(len(slots)), key=lambda i: sum(
+        1 for p in left if positions_of(p) & SLOT_POS.get(slots[i][0], set())))
+    for i in order:
+        want = SLOT_POS.get(slots[i][0], set())
+        cand = [p for p in left if positions_of(p) & want]
+        if cand:
+            pick = max(cand, key=lambda p: p["ovr"] or 0)
+            out[i] = (pick, True)
+            left.remove(pick)
+    for i in range(len(slots)):
+        if out[i] is None and left:
+            out[i] = (left.pop(0), False)      # 자리 안 맞음 — 케미 0
+    return [(slots[i][0], slots[i][1], slots[i][2], out[i][0] if out[i] else None,
+             out[i][1] if out[i] else False) for i in range(len(slots))]
+
+
+def best_placement(xi):
+    """포메이션을 다 시도해 **케미 최대**인 배치를 고른다."""
+    best = None
+    for f in FORMS:
+        pl = place(xi, f)
+        ch = chem_total([p for _n, _x, _y, p, fit in pl if p and fit])
+        if best is None or ch > best[0]:
+            best = (ch, f, pl)
+    return best
 
 
 def tier_of(p):
@@ -155,15 +213,41 @@ def cost1(xi, kind, v):
     return 0
 
 
+GK_RULE = "스쿼드에 골키퍼 정확히 1명(EA 규칙 · 조건 문장에 없지만 없으면 제출 자체가 안 된다)"
+
+
+def gk_cost(xi):
+    """⛔⛔ **EA는 GK 슬롯을 골키퍼로만 채울 수 있다.** 조건 문장에는 안 나오지만 없으면 제출이 불가하다.
+       (2026-09-25 실측: 배치를 붙이고 나서야 「Norway v Portugal」 해에 GK가 없다는 게 드러났다 —
+        그 전까지는 11명만 맞으면 된다고 보고 있었다.)"""
+    n = sum(1 for p in xi if "GK" in positions_of(p))
+    return abs(n - 1)
+
+
 def check(xi, conds):
     """못 맞춘 조건 문장 + 총 위반 크기."""
     fail, cost = [], 0
+    g = gk_cost(xi)
+    if g:
+        fail.append(GK_RULE)
+        cost += g
     for (kind, v), text in conds:
         c = cost1(xi, kind, v)
         cost += c
         if c:
             fail.append(text)
     return fail, cost
+
+
+def chem_ok(xi, conds):
+    """⛔⛔ 탐색용 `chem_total`은 **포지션을 무시**해서 실제보다 높게 나온다(상한).
+       ⇒ 해를 찾으면 **배치까지 해서** 케미 조건을 다시 본다. 통과해야 진짜 해다.
+       (2026-09-25: 종전엔 이 검증이 없어 「케미 26」 같은 값이 배치하면 안 나올 수 있었다.)"""
+    need = [v for (k, v), _ in conds if k == "chem"]
+    if not need:
+        return True, None
+    ch, form, pl = best_placement(xi)
+    return ch >= max(need), (ch, form, pl)
 
 
 def solve(pool, conds, size, tries, rng):
@@ -177,7 +261,13 @@ def solve(pool, conds, size, tries, rng):
         xi = rng.sample(cands, size)
         fail, cost = check(xi, conds)
         if not cost:
-            return xi, cands, None
+            ok_ch, info = chem_ok(xi, conds)
+            if ok_ch:
+                return xi, cands, None
+            # ⛔ 조건표는 통과했는데 **배치하면 케미가 모자란** 경우 — 그 사실을 보고에 남긴다
+            #    (2026-09-25: 안 남겨서 「남은 위반 0인데 실패」라는 읽을 수 없는 보고가 나왔다).
+            need = max(v for (k, v), _ in conds if k == "chem")
+            fail, cost = [f"배치 후 케미 {info[0]} < 필요 {need} ({info[1]} 기준 · 포지션이 맞아야 케미가 붙는다)"], 1
         for _ in range(400):
             i = rng.randrange(size)
             alt = rng.choice(cands)
@@ -188,7 +278,11 @@ def solve(pool, conds, size, tries, rng):
             if c2 <= cost:                       # 같아도 받는다 — 평지를 건너야 빠져나온다
                 xi, fail, cost = trial, f2, c2
             if not cost:
-                return xi, cands, None
+                ok_ch, info = chem_ok(xi, conds)
+                if ok_ch:
+                    return xi, cands, None
+                need = max(v for (k, v), _ in conds if k == "chem")
+                fail, cost = [f"배치 후 케미 {info[0]} < 필요 {need} ({info[1]} 기준)"], 1
         if best is None or cost < best[1]:
             best = (fail, cost)
     return None, cands, best
@@ -306,7 +400,7 @@ def main():
     con.row_factory = sqlite3.Row
     pool = [dict(r) for r in con.execute("""
         SELECT c.id, COALESCE(i.name_kr, c.name) name, COALESCE(c.current_ovr, i.ovr) ovr,
-               i.nation, i.league, i.club, i.positions, COALESCE(i.is_special,0) is_special,
+               i.nation, i.league, i.club, i.positions, i.best_pos, COALESCE(i.is_special,0) is_special,
                c.is_untradeable, c.ea_item_id
           FROM fut_club_players c LEFT JOIN player_card_items i
             ON i.ea_item_id=c.ea_item_id AND i.game_version=?
@@ -373,12 +467,15 @@ def main():
             print(f"  {'✅' if cs else '❌'} {head(r)} — 조건 통과 {len(cs)}장 · {' / '.join(t for _c, t in conds)}")
     for r, xi, size, _c, _cd, _b in ok:
         aw = ", ".join(x["name"] for x in json.loads(r["awards_text"] or "[]")) or "—"
-        print(f"\n✅ {head(r)}  [{size}명 · 보상 {aw} · 마감 {(r['end_time'] or '')[:10]}]")
-        for p in sorted(xi, key=lambda x: -x["ovr"]):
-            print(f"     {p['ovr']:>3} {p['name']:<22} {str(p['club'] or '—')[:18]:<18} "
-                  f"{str(p['league'] or '—')[:22]:<22} {p['nation'] or '—'}"
+        ch, form, pl = best_placement(xi)
+        print(f"\n✅ {head(r)}  [{size}명 · {form} · 보상 {aw} · 마감 {(r['end_time'] or '')[:10]}]")
+        for nm, _x, _y, p, fit in pl:
+            if not p:
+                continue
+            print(f"     {nm:<4} {p['ovr']:>3} {p['name']:<22} {str(p['club'] or '—')[:18]:<18} "
+                  f"{str(p['nation'] or '—')[:14]:<14}{'' if fit else '  ⚠️ 자리 안 맞음(케미 0)'}"
                   + ("  [거래불가]" if p["is_untradeable"] else ""))
-        print(f"     └ 팀 레이팅 {team_rating([p['ovr'] for p in xi])} · 케미(참고) {chem_total(xi)}")
+        print(f"     └ 팀 레이팅 {team_rating([p['ovr'] for p in xi])} · 케미 {ch} (배치 반영)")
     for r, _x, size, cands, conds, best in no:
         print(f"\n❌ {head(r)}  [{size}명 필요 · 조건 통과 카드 {len(cands)}장]")
         if a.buy:
@@ -421,9 +518,14 @@ def main():
     slim = lambda p: {"id": p["id"], "name": p["name"], "ovr": p["ovr"], "club": p["club"],
                       "league": p["league"], "nation": p["nation"], "untradeable": p["is_untradeable"]}
     for r, xi, size, cands, _cd, _b in ok:
+        ch, form, pl = best_placement(xi)
+        # ⭐ 슬롯·좌표를 함께 저장한다 — 화면이 **피치 모양**으로 그린다(2026-09-25 사용자 지시
+        #    「포메이션 모습으로 보여줘 · 어떤 포지션의 선수인지도 모르겠어」).
+        squad = [dict(slim(p), slot=nm, x=x, y=y, fit=fit)
+                 for nm, x, y, p, fit in pl if p]
         rows.append((a.game, r["challenge_ea_id"], today, aid, "ok",
-                     json.dumps([slim(p) for p in xi], ensure_ascii=False),
-                     team_rating([p["ovr"] for p in xi]), chem_total(xi), len(cands), None, src, conf))
+                     json.dumps({"formation": form, "players": squad}, ensure_ascii=False),
+                     team_rating([p["ovr"] for p in xi]), ch, len(cands), None, src, conf))
     for r, _x, size, cands, conds, best in no:
         imp = len(cands) < size
         rows.append((a.game, r["challenge_ea_id"], today, aid, "impossible" if imp else "not_found",

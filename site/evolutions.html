@@ -2,7 +2,7 @@
 <html lang="ko"><head><meta charset="utf-8"><title>얼티밋팀 — tactics v2</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="stylesheet" href="assets/clubviz.css?v=20260924a">
+<link rel="stylesheet" href="assets/clubviz.css?v=20260925a">
 <style>
 .evo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
 .evo-card{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--panel)}
@@ -2073,13 +2073,31 @@ function renderSbc(){
               <ul style="margin:3px 0 0;padding-left:18px">${(J(c.requirements_text, []) || [])
                 .map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>
             ${c.note ? `<div class="dim" style="font-size:12px;margin-top:5px">${esc(c.note)}</div>` : ''}
-            ${xi.length ? `<div style="font-size:12px;margin-top:6px"><b>이 스쿼드로 된다</b>
-              <small class="dim">— 팀 레이팅 ${c.team_rating} · 케미 ${c.chem_total}</small>
-              <table class="tbl" style="margin-top:4px"><thead><tr><th>OVR</th><th>선수</th><th>클럽</th><th>리그</th><th>국적</th></tr></thead><tbody>
-              ${xi.slice().sort((a, b) => b.ovr - a.ovr).map(p => `<tr><td><b>${p.ovr}</b></td>
-                <td>${esc(p.name)}${p.untradeable ? ' <span class="chip dim">거래불가</span>' : ''}</td>
-                <td class="dim">${esc(p.club || '—')}</td><td class="dim">${esc(p.league || '—')}</td>
-                <td class="dim">${esc(p.nation || '—')}</td></tr>`).join('')}</tbody></table></div>` : ''}
+            ${(() => {
+              /* ⭐⭐ **피치 모양으로 그린다**(2026-09-25 사용자 지시 「리스트로만 있으니 어떤 포지션의 선수인지도 모르겠어」).
+                 ⛔ SBC는 포메이션을 요구하지 않는다 — 솔버가 여러 포메이션을 시도해 **케미가 가장 높은 배치**를 고른 것이고,
+                    어느 것을 썼는지 함께 적는다. 좌표는 솔버가 넣어 준다.
+                 ⚠️ 자리가 안 맞는 선수는 붉게 표시한다 — 그 선수는 **케미가 0**이다. */
+              const sq = xi.players || (Array.isArray(xi) ? xi : []);
+              if (!sq.length) return '';
+              const form = xi.formation || '';
+              const bad = sq.filter(p => p.fit === false).length;
+              return `<div style="font-size:12px;margin-top:6px"><b>이 스쿼드로 된다</b>
+                <small class="dim">— ${esc(form)} · 팀 레이팅 ${c.team_rating} · 케미 ${c.chem_total}${
+                  bad ? ` · <b class="dn">자리 안 맞음 ${bad}명(케미 0)</b>` : ''}</small>
+                <div class="sbc-pitch">${sq.map(p => `
+                  <div class="sbc-slot${p.fit === false ? ' off' : ''}" style="left:${p.x}%;bottom:${p.y}%"
+                       title="${esc(p.club || '')} · ${esc(p.league || '')} · ${esc(p.nation || '')}">
+                    <i>${esc(p.slot || '')}</i><b>${p.ovr}</b>
+                    <span>${esc(p.name)}</span>
+                    <em>${esc(p.nation || '')}</em>${p.untradeable ? '<u>거래불가</u>' : ''}</div>`).join('')}</div>
+                <details style="margin-top:4px"><summary class="dim" style="cursor:pointer">표로 보기</summary>
+                  <table class="tbl" style="margin-top:4px"><thead><tr><th>자리</th><th>OVR</th><th>선수</th><th>클럽</th><th>리그</th><th>국적</th></tr></thead><tbody>
+                  ${sq.map(p => `<tr${p.fit === false ? ' style="opacity:.6"' : ''}><td><b>${esc(p.slot || '')}</b></td><td>${p.ovr}</td>
+                    <td>${esc(p.name)}${p.untradeable ? ' <span class="chip dim">거래불가</span>' : ''}</td>
+                    <td class="dim">${esc(p.club || '—')}</td><td class="dim">${esc(p.league || '—')}</td>
+                    <td class="dim">${esc(p.nation || '—')}</td></tr>`).join('')}</tbody></table></details></div>`;
+            })()}
             ${c.solve_conf ? `<div class="dim" style="font-size:11px;margin-top:5px">${esc(c.solve_conf)}</div>` : ''}
           </div></details>`;
       }).join('')}</div>`;
