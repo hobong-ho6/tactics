@@ -48,6 +48,10 @@ NEAR = {"RWB": {"RWB", "RB"}, "LWB": {"LWB", "LB"}, "RB": {"RB", "RWB"}, "LB": {
         "CF": {"CF", "ST"}, "ST": {"ST", "CF"}}
 
 
+# ⛔ 배치 국소탐색의 무작위 — **고정 시드**다. 같은 입력에 같은 배치가 나와야 판정이 재현된다.
+PLACE_RNG = random.Random(11)
+
+
 def slot_accepts(gen_id):
     base = GEN_POS.get(gen_id)
     return NEAR.get(base, {base}) if base else set()
@@ -58,25 +62,86 @@ def positions_of(p):
 
 
 def place(xi, form):
-    """11명을 포메이션 슬롯에 배치. **맞는 포지션 우선**, 남으면 아무 데나(케미 0으로 들어간다).
-       ⛔ 최적 배치를 보장하지 않는다 — 탐욕이다. 그래서 케미는 「이 배치에서」라는 하한이다."""
+    """11명을 포메이션 슬롯에 배치.
+
+    ⛔⛔ **종전엔 탐욕법이었다**(맞는 칸부터 채우고 남으면 아무 데나) — 2026-09-25 사용자 지시
+       「최적 배치로 고치자」에 따라 바꿨다. 탐욕은 먼저 집은 사람이 다른 칸의 유일한 후보를 뺏어
+       **자리 안 맞음이 실제보다 많이 나왔고**, 케미가 낮게 잡혀 챌린지가 「못 찾음」으로 떨어졌다.
+
+    지금 하는 것 — 두 단계:
+      ⑴ **최대 이분 매칭**(증가 경로)으로 «자리 맞는 사람 수»를 최대화한다. 여기는 최적이 보장된다.
+      ⑵ 그 인원을 유지하면서 **쌍 교환으로 케미를 올린다**.
+    ⚠️ ⑵가 필요한 이유: 케미는 «자리 맞는 사람들» 사이의 클럽·리그·국적 **개수**로 정해져서
+       매칭 하나가 정해도 조합에 따라 달라진다. 자리 맞는 인원이 같아도 누가 어디 서느냐로 갈린다.
+
+    ⛔⛔ **목적함수는 케미다 — 자리 맞는 인원이 아니다**(2026-09-25 실측으로 정정).
+       처음엔 «인원 우선, 케미는 동점 처리»로 짰다가 Silver Upgrade의 케미가 **9 → 2로 떨어졌다**.
+       「자리 맞는 사람을 늘리면 손해 볼 게 없다」고 본 게 틀렸다 — 최대 매칭끼리는 **포함 관계가 아니라서**
+       인원이 같거나 늘어도 **맞는 사람이 통째로 바뀐다**. 같은 클럽 4명이 맞던 자리가
+       제각각인 5명으로 갈리면 케미는 내려간다. ⇒ 케미를 먼저 보고 인원은 동점일 때만 본다.
+    ⚠️ 국소 탐색이라 전역 최적은 보장하지 않는다 — 그래서 **여러 출발점**에서 돌려 가장 좋은 것을 쓴다."""
     slots = FORMS[form]
-    left = list(xi)
-    out = [None] * len(slots)
-    order = sorted(range(len(slots)), key=lambda i: sum(
-        1 for p in left if positions_of(p) & slot_accepts(slots[i]["gen"])))
-    for i in order:
-        want = slot_accepts(slots[i]["gen"])
-        cand = [p for p in left if positions_of(p) & want]
-        if cand:
-            pick = max(cand, key=lambda p: p["ovr"] or 0)
-            out[i] = (pick, True)
-            left.remove(pick)
-    for i in range(len(slots)):
-        if out[i] is None and left:
-            out[i] = (left.pop(0), False)
+    n, m = len(slots), len(xi)
+    fitok = [[bool(positions_of(p) & slot_accepts(s["gen"])) for p in xi] for s in slots]
+
+    # ⑴ 최대 이분 매칭 — 칸 ← 선수. 쾨니그식 증가 경로(11×11이라 단순 구현으로 충분하다).
+    at = [-1] * n          # 칸 i에 선 선수 인덱스
+    def aug(i, seen):
+        for j in range(m):
+            if fitok[i][j] and j not in seen:
+                seen.add(j)
+                if all(at[k] != j for k in range(n)) or aug(next(k for k in range(n) if at[k] == j), seen):
+                    at[i] = j
+                    return True
+        return False
+    for i in range(n):
+        aug(i, set())
+
+    # 남은 칸은 남은 선수로 채운다(자리 안 맞음 = 케미 0).
+    used = {j for j in at if j >= 0}
+    rest = [j for j in range(m) if j not in used]
+    for i in range(n):
+        if at[i] < 0 and rest:
+            at[i] = rest.pop(0)
+
+
+    # ⑵ 쌍 교환으로 **케미**를 올린다(동점이면 자리 맞는 인원이 많은 쪽).
+    def score(assign):
+        f = [xi[assign[i]] for i in range(n) if assign[i] >= 0 and fitok[i][assign[i]]]
+        return (chem_total(f), len(f))
+
+    def climb(assign):
+        cur = score(assign)
+        improved = True
+        while improved:
+            improved = False
+            for i in range(n):
+                for k in range(i + 1, n):
+                    if assign[i] < 0 or assign[k] < 0:
+                        continue
+                    assign[i], assign[k] = assign[k], assign[i]
+                    s = score(assign)
+                    if s > cur:
+                        cur, improved = s, True
+                    else:
+                        assign[i], assign[k] = assign[k], assign[i]
+        return cur, assign
+
+    # ⚠️ 출발점을 여럿 둔다 — 최대 매칭 하나에서만 오르면 그 봉우리에 갇힌다(위 주석의 실측이 그 경우다).
+    #    ⛔ 무작위는 `PLACE_RNG` 고정 시드다 — 같은 입력에 같은 배치가 나와야 결과가 재현된다.
+    best = climb(list(at))
+    for _ in range(12):
+        cand = list(at)
+        PLACE_RNG.shuffle(cand)
+        s, aa = climb(cand)
+        if s > best[0]:
+            best = (s, aa)
+    at = best[1]
     return [(slots[i]["label"], slots[i]["x"], slots[i]["y"],
-             out[i][0] if out[i] else None, out[i][1] if out[i] else False) for i in range(len(slots))]
+             xi[at[i]] if at[i] >= 0 else None,
+             at[i] >= 0 and fitok[i][at[i]],
+             # ⭐ 이 칸에 설 수 있는 포지션 — 자리가 안 맞을 때 **무엇을 사야 하는지**의 답이다.
+             sorted(slot_accepts(slots[i]["gen"]))) for i in range(n)]
 
 
 def best_placement(xi, form=None):
@@ -87,13 +152,13 @@ def best_placement(xi, form=None):
        ⚠️ 기록이 없으면 후보를 다 시도하되, 돌려주는 포메이션은 **추정**이다(화면이 그렇게 적는다)."""
     if form and form in FORMS:
         pl = place(xi, form)
-        return chem_total([p for _n, _x, _y, p, fit in pl if p and fit]), form, pl
+        return chem_total([p for _n, _x, _y, p, fit, _w in pl if p and fit]), form, pl
     # ⚠️ 추정일 때 29종을 다 돌면 탐색이 무거워진다 — **흔한 포메이션 6종**만 본다(어차피 추정이다).
     GUESS = [f for f in ("4-2-3-1", "4-4-2", "4-3-3", "3-5-2", "4-1-4-1", "5-2-1-2") if f in FORMS] or list(FORMS)
     best = None
     for f in GUESS:
         pl = place(xi, f)
-        ch = chem_total([p for _n, _x, _y, p, fit in pl if p and fit])
+        ch = chem_total([p for _n, _x, _y, p, fit, _w in pl if p and fit])
         if best is None or ch > best[0]:
             best = (ch, f, pl)
     return best
@@ -522,7 +587,7 @@ def main():
         known = FORM_OF.get(r["challenge_ea_id"])
         ch, form, pl = best_placement(xi, known)
         print(f"\n✅ {head(r)}  [{size}명 · {form}{'' if known else '(추정 — 미기록)'} · 보상 {aw} · 마감 {(r['end_time'] or '')[:10]}]")
-        for nm, _x, _y, p, fit in pl:
+        for nm, _x, _y, p, fit, _w in pl:
             if not p:
                 continue
             print(f"     {nm:<4} {p['ovr']:>3} {p['name']:<22} {str(p['club'] or '—')[:18]:<18} "
@@ -599,8 +664,8 @@ def main():
             continue
         # ⭐ 슬롯·좌표를 함께 저장한다 — 화면이 **피치 모양**으로 그린다(2026-09-25 사용자 지시
         #    「포메이션 모습으로 보여줘 · 어떤 포지션의 선수인지도 모르겠어」).
-        squad = [dict(slim(p), slot=nm, x=x, y=y, fit=fit)
-                 for nm, x, y, p, fit in pl if p]
+        squad = [dict(slim(p), slot=nm, x=x, y=y, fit=fit, want=want)
+                 for nm, x, y, p, fit, want in pl if p]
         rows.append((a.game, r["challenge_ea_id"], today, aid, "ok",
                      json.dumps({"formation": form, "formation_known": bool(known), "partial": False,
                                  "players": squad, "checks": breakdown(xi, _cd, ch)}, ensure_ascii=False),
@@ -619,8 +684,8 @@ def main():
             ch, form, pl = best_placement(part, known)
             CUR_FORM[0] = prev
             sj = json.dumps({"formation": form, "formation_known": bool(known), "partial": True,
-                             "players": [dict(slim(p), slot=nm, x=x, y=y, fit=fit)
-                                         for nm, x, y, p, fit in pl if p],
+                             "players": [dict(slim(p), slot=nm, x=x, y=y, fit=fit, want=want)
+                                         for nm, x, y, p, fit, want in pl if p],
                              "checks": breakdown(part, conds, ch),
                              "hints": [{"text": t, "how": h} for t, h in
                                        group_hints({c["text"] for c in breakdown(part, conds, ch) if not c["ok"]},
