@@ -320,7 +320,17 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .sbc-pitch{position:relative;width:100%;aspect-ratio:3/4;max-width:none;margin:6px auto 0;
   padding:30px 10px;box-sizing:border-box;
   border:1px solid var(--line);border-radius:10px;
-  background:linear-gradient(0deg,rgba(28,80,48,.30),rgba(10,26,16,.30));overflow:hidden}
+  background:linear-gradient(0deg,rgba(28,80,48,.30),rgba(10,26,16,.30));
+  /* ⛔⛔ `overflow:hidden`이면 **GK 칸의 ✕가 잘려 눌리지 않는다**(2026-09-25 사용자 지적
+     「선수제거가 동작안함」 · elementFromPoint가 버튼 대신 `.sbc-pitch`를 돌려줬다).
+     슬롯이 `translate(-50%,50%)`라 y가 낮은 칸은 카드 절반이 잔디 밖으로 나가는데, padding만으로는
+     다 못 들인다. ⇒ **자르지 않는다** — 메인 스쿼드 피치(`.fc-pitch`)가 같은 이유로 이미
+     `overflow:visible`을 쓰고 아래 여백으로 이웃과의 자리를 비워 두는 선례가 있다. */
+  overflow:visible;margin-bottom:34px}
+/* ⛔ 장식선은 **클릭을 먹지 않는다**(2026-09-25) — `::after`(페널티 박스, bottom 0~14%)가
+   부모의 마지막 자식처럼 칠해져 **GK 칸의 ✕를 덮고 있었다**. 보이는 것과 눌리는 것이
+   갈리는 버그라 원인을 찾기 어렵다. 잔디 위 장식은 전부 pointer-events:none. */
+.sbc-pitch::before,.sbc-pitch::after{pointer-events:none}
 .sbc-pitch::before{content:'';position:absolute;left:8%;right:8%;top:49.5%;height:1px;background:rgba(255,255,255,.14)}
 .sbc-pitch::after{content:'';position:absolute;left:28%;right:28%;bottom:0;height:14%;
   border:1px solid rgba(255,255,255,.14);border-bottom:0}
@@ -339,13 +349,17 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 /* 포메이션 모양만 보는 중 — **선수를 그리지 않는다**(판정 안 거친 배치를 답처럼 보여주지 않기 위해). */
 .sbc-slot.empty .noart{border-style:dashed;opacity:.55;padding:14px 2px}
 
-/* 카드에서 빼기 ✕ — 카드 위 오른쪽. 제외는 **이 SBC 한정**이고 되돌릴 수 있다. */
-.sbc-slot{position:absolute}
-.sbc-x{position:absolute;top:14px;right:-4px;z-index:2;width:18px;height:18px;line-height:1;
-  border-radius:99px;border:1px solid var(--line);background:rgba(6,14,10,.9);color:var(--dim);
-  font-size:10px;cursor:pointer;padding:0;opacity:0;transition:opacity .12s}
+/* 카드에서 빼기 ✕ — 제외는 **이 SBC 한정**이고 되돌릴 수 있다.
+   ⛔⛔ **hover로 숨기지 않는다**(2026-09-25 사용자 지적 「선수제거가 동작안함」). 두 가지가 겹쳐 있었다:
+     ⑴ `opacity:0` + `.sbc-slot:hover` — 보이질 않으니 누를 수가 없다(터치 기기에선 아예 불가능).
+     ⑵ `right:-4px`로 칸 **밖에** 놓았는데 `.sbc-pitch{overflow:hidden}`이라
+        가장자리 칸(RB x=88% · LB x=12%)에서는 **잘려 나갔다**.
+   ⇒ 항상 보이게 두고 **칸 안쪽**에 놓는다 — 「잘 찾아 누르기」를 요구하는 구조 자체를 없앤다. */
+.sbc-x{position:absolute;top:15px;right:1px;z-index:3;width:19px;height:19px;line-height:17px;
+  border-radius:99px;border:1px solid var(--line);background:rgba(6,14,10,.92);color:var(--dim);
+  font-size:11px;cursor:pointer;padding:0;opacity:.75;transition:opacity .12s,color .12s}
 .sbc-slot:hover .sbc-x{opacity:1}
-.sbc-x:hover{color:var(--bad);border-color:var(--bad)}
+.sbc-x:hover{color:var(--bad);border-color:var(--bad);background:rgba(20,6,6,.95)}
 .sbc-ex{font-size:11.5px;margin-top:6px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
 .sbc-ex button.chip{cursor:pointer}
 

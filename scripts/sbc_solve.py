@@ -588,6 +588,8 @@ def main():
     #    Portugal이 400에선 못 찾고 500에선 풀렸다). 값을 옮겨 적지 말고 이 기본값을 쓴다.
     ap.add_argument("--tries", type=int, default=1200)
     ap.add_argument("--seed", type=int, default=7)
+    ap.add_argument("--include-evolved", action="store_true",
+                    help="진화 선수도 후보에 넣는다(기본은 제외 — 진화 카드는 팔지 않는다는 규칙)")
     ap.add_argument("--save", action="store_true", help="판정 결과를 fc_sbc_solutions에 적는다(화면이 읽는다)")
     ap.add_argument("--include-squad", action="store_true",
                     help="활성 스쿼드(선발+교체) 선수도 후보에 넣는다. 기본은 **제외**한다 — 쓰고 있는 카드다")
@@ -625,6 +627,18 @@ def main():
         prot = [p for p in pool if p["club"] in a.protect_club]
         pool = [p for p in pool if p["club"] not in a.protect_club]
         print(f"⛔ 보호 클럽 {'·'.join(a.protect_club)} {len(prot)}명 제외 — 남은 후보 {len(pool)}장")
+    # ⭐⭐ **진화 선수는 SBC에 내지 않는다**(2026-09-25 사용자 지시 「진화한 선수는 sbc 목록에서 제외해줘」).
+    #    ⛔ 새 규칙이 아니라 이미 있던 규칙을 판정에 반영하는 것이다 — 클럽 싱크 런북의
+    #       「**진화한 선수는 판매하지 않는다**」와 같은 축이고, 거기서도 EA 목록에서 사라진 진화 선수를
+    #       자동 처분하지 않는 근거로 쓰인다. 진화는 되돌릴 수 없고 그 카드에만 붙어 있어 제출하면 사라진다.
+    #    ⚠️ `is_void=1`(적용된 적 없음으로 확정된 로그)은 세지 않는다 — 실제로 진화하지 않은 카드다.
+    if not a.include_evolved:
+        evo = {r[0] for r in con.execute(
+            "SELECT DISTINCT club_player_id FROM fut_evolution_log WHERE COALESCE(is_void,0)=0")}
+        gone = [p for p in pool if p["id"] in evo]
+        pool = [p for p in pool if p["id"] not in evo]
+        if gone:
+            print(f"🧬 진화 선수 {len(gone)}명 제외({'·'.join(p['name'] for p in gone)}) — 남은 후보 {len(pool)}장")
     miss = [p["name"] for p in pool if not p["club"] or not p["league"] or not p["nation"]]
     print(f"후보 카드 {len(pool)}장" + (f" · ⚠️ 클럽/리그/국적 결손 {len(miss)}장은 그룹 조건에서 빠진다: "
                                         f"{', '.join(miss[:5])}{' …' if len(miss) > 5 else ''}" if miss else ""))
