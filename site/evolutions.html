@@ -618,7 +618,13 @@ function pathHTML(p, i, pid){
         title="OVR은 EA 산식이 비공개라 우리가 산출하지 못한다 — fut.gg가 기준 카드에서 계산한 값이다. 6대 스탯·29속성은 지금 내 카드에서 직접 계산한 값을 쓴다.">OVR ${p.ovr_before}→${p.ovr_after}${p.d ? ` (+${p.d})` : ''} <small class="dim">fut.gg</small></span>
       ${p.rs ? scoreChip(p.rs) : ''}
       <small class="dim">${esc(costText(p))} · ${why}</small></summary>
-    ${p.upgrades ? `<div class="dim" style="font-size:12px;margin-top:4px">${esc(Object.entries(J(p.upgrades, {})).map(([k, v]) => `${k} +${v}`).join(' · '))}</div>` : ''}
+    ${(() => {
+      /* ⭐ 경로 블록도 **같은 표**를 쓴다 — 여기가 상한이 실제로 무는 자리다(잭슨 × Striker Glow Up +181 손실).
+         ⚠️ 경로가 여러 진화를 엮으면 `cat`을 하나로 고를 수 없어 「속성 밖 보상」은 생략된다(표는 그대로 맞다). */
+      const t = gainTable(p, pid, (p.ids || []).length === 1 ? CATBYID[p.ids[0]] : null);
+      if (t) return t;
+      return p.upgrades ? `<div class="dim" style="font-size:12px;margin-top:4px">${esc(Object.entries(J(p.upgrades, {})).map(([k, v]) => `${k} +${v}`).join(' · '))} <b>(fut.gg 표기값 — 상한 미반영)</b></div>` : '';
+    })()}
     ${(() => {
       /* ⛔⛔ **한 패널 안에서 기준을 섞지 않는다**(2026-09-22 사용자 질문 「단계별 직접 계산을 웹에 보여주는 거냐,
          아니면 최종 스탯에만이냐」에서 드러남). 종전엔 요약 줄·이 텍스트·덤벨이 **fut.gg(기준 카드)** 값이고
@@ -1042,28 +1048,75 @@ function eligPanel(pid){
              ⛔ 카탈로그 표기값(`total_upgrades_text`)을 그대로 쓰지 않는다 — **상한에 걸리면 실제로는 덜 오른다**
                 (런북: 표기 +7이 캡에 걸려 +0이 되는 일이 흔하다). `projectFor`가 이미 상한을 씌운
                 적용 후 속성을 갖고 있으므로 **지금 내 카드와 직접 비교**해 실제 상승분을 낸다. */''}
-          ${(() => {
-            const pr = pid != null ? projectFor(pseudo, +pid) : null;
-            const before = J(STATE[String(pid)]?.attrs, null);
-            if (!pr || !before) return '';
-            const up = Object.entries(pr.at)
-              .map(([k, v]) => [k, v - (before[k] ?? v)]).filter(([, d]) => d > 0)
-              .sort((a, b) => b[1] - a[1]);
-            const flat = (J(c?.total_upgrades_text, []) || [])
-              .filter(u => !/^(Overall|PlayStyle|Role\+)/i.test(u.label)).length;
-            if (!up.length) return `<div class="gain-why" style="font-size:12px;margin-top:6px">
-              ⛔ <b>이 카드에서는 속성이 하나도 오르지 않는다</b> — 보상 속성이 전부 <b>이미 상한</b>이다.</div>`;
-            return `<div style="font-size:12px;margin-top:6px"><b>상세 스탯 상승</b>
-              <small class="dim">— 지금 내 카드에 <b>상한 규칙</b>대로 얹은 <b>실제 상승분</b>이다(표기값 아님)</small>
-              <div style="margin-top:3px">${up.map(([k, d]) => `<span class="bc-up">${esc(k)} <b>+${d}</b></span>`).join('')}</div>
-              ${flat > up.length ? `<div class="dim" style="margin-top:3px">⚠️ 보상 속성 ${flat}개 중 <b>${flat - up.length}개는 이미 상한</b>이라 오르지 않는다.</div>` : ''}</div>`;
-          })()}
-          ${(J(c?.total_upgrades_text, []) || []).length ? `<div style="font-size:12px;margin-top:6px"><b>카탈로그 표기</b> ${
-            (J(c.total_upgrades_text, []) || []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ')}</div>` : ''}
+          ${gainTable({ ids: [r.evo_id] }, pid, c)}
           ${c?.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>` : ''}
           <button class="act ghost" data-cat="${r.evo_id}" style="font-size:12px;margin-left:6px">카탈로그에서 보기</button>
         </div></details>`;
     }).join('')}</div>`;
+}
+/* ⭐ 보상 속성의 **표기 합 + 상한**을 카탈로그에서 뽑는다(2026-09-25).
+   ⛔ `upgradesOf`는 합만 주고 상한을 버려서 「왜 표기만큼 안 오르나」를 화면이 설명할 수 없었다.
+   ⚠️ 상한은 단계마다 다를 수 있다 — **마지막으로 그 속성을 건드린 단계의 상한**이 실효값이다. */
+function nominalOf(eid){
+  const out = {};
+  for (const lv of (J(CATBYID[eid]?.levels, []) || [])){
+    const src = (lv.upgrades || []).concat(...(lv.upgradeOptions || []).map(o => Array.isArray(o) ? o : (o.upgrades || [])).slice(0, 1));
+    for (const u of src){
+      const k = ATTR_KR[String(u.upgrade || '').replace(/^attribute_/, '')]; if (!k) continue;
+      out[k] = { sum: (out[k]?.sum || 0) + (u.value || 0), cap: u.maxValue ?? out[k]?.cap ?? null };
+    }
+  }
+  return out;
+}
+/* ⭐⭐⭐ **상한에 걸려 못 오르는 몫까지 보여주는 표** — 정본은 여기 하나다(2026-09-25 사용자 지시
+   「스탯 상한에 걸려서 못 올라가는 경우 실제 진화를 통해서 얻을 수 있는 스탯이 몇인지를 함께 표기」).
+   ⛔ 종전엔 두 블록이 **표기값만** 보여줬다 — 경로 블록은 fut.gg `upgrades`를 그대로 나열했고,
+      적용 가능 블록은 오르는 속성만 찍어서 **왜 표기와 다른지가 화면에 없었다**.
+      실측(2026-09-25): 잭슨 × Striker Glow Up은 표기 합 대비 **+181이 상한에 걸려 사라진다**
+      (공격 위치 선정 표기+15 → 실제 +0 · 지금 83인데 상한 82).
+   ⇒ 보상 속성을 **하나도 빼지 않고** `지금 → 표기 → 실제 → 적용 후 → 상한`으로 놓는다.
+   ⛔ 두 블록이 각자 그리지 않는다 — 한쪽만 고쳐져 갈리는 것이 이 저장소의 반복 사고다(불변규칙 13 ②). */
+function gainTable(p, pid, cat){
+  const pr = pid != null ? projectFor(p, +pid) : null;
+  const before = J(STATE[String(pid)]?.attrs, null);
+  if (!pr || !before) return '';
+  const nom = {};
+  for (const id of (p.ids || [])){
+    for (const [k, v] of Object.entries(nominalOf(id))){
+      nom[k] = { sum: (nom[k]?.sum || 0) + v.sum, cap: v.cap ?? nom[k]?.cap ?? null };
+    }
+  }
+  const keys = Object.keys(nom); if (!keys.length) return '';
+  const rows = keys.map(k => ({ k, cur: before[k], aft: pr.at[k], want: nom[k].sum, cap: nom[k].cap,
+      got: (pr.at[k] == null || before[k] == null) ? null : pr.at[k] - before[k] }))
+    .sort((a, b) => (b.got ?? -1) - (a.got ?? -1));
+  /* ⛔ `got`이 null(그 속성을 아예 안 가진 카드 — 예: GK에 필드 속성)이면 **손실로 세지 않는다**.
+     `?? 0`으로 두면 표기값 전체가 「상한에 날아갔다」로 잡혀 거짓 경고가 된다. */
+  const known = rows.filter(x => x.got != null);
+  const lost = known.reduce((t, x) => t + Math.max(0, (x.want || 0) - x.got), 0);
+  const wantSum = known.reduce((t, x) => t + (x.want || 0), 0);
+  const gotSum = known.reduce((t, x) => t + Math.max(0, x.got), 0);
+  const extra = (J(cat?.total_upgrades_text, []) || []).filter(u => /^(Overall|PlayStyle|Role)/i.test(u.label));
+  return `<div style="font-size:12px;margin-top:6px"><b>상세 스탯 상승</b>
+    <small class="dim">— 지금 내 카드에 <b>상한 규칙</b>대로 얹었다. <b>실제</b>가 이 카드가 정말 얻는 값이다.</small>
+    <table class="tbl" style="margin-top:4px"><thead><tr>
+      <th>속성</th><th>지금</th><th>표기</th><th>실제</th><th>적용 후</th><th>상한</th></tr></thead><tbody>
+    ${rows.map(x => { const capped = x.got != null && x.got < (x.want || 0);
+      return `<tr${x.got === 0 ? ' style="opacity:.55"' : ''}>
+        <td>${esc(x.k)}</td><td class="dim">${x.cur ?? '—'}</td><td class="dim">+${x.want}</td>
+        <td>${x.got == null ? '—' : x.got > 0 ? `<b class="up">+${x.got}</b>` : '<b class="dn">0</b>'}</td>
+        <td>${x.aft ?? '—'}</td>
+        <td class="dim">${x.cap != null ? `^${x.cap}${capped ? ' <span class="dn">상한</span>' : ''}` : '—'}</td></tr>`;
+    }).join('')}</tbody></table>
+    ${lost ? `<div class="dim" style="margin-top:3px">⛔ 표기 합 <b>+${wantSum}</b> 중
+      <b class="dn">+${lost}</b>이 <b>상한에 걸려 사라진다</b> — 이 카드가 실제로 얻는 건
+      <b class="up">+${gotSum}</b>다.</div>`
+      : `<div class="dim" style="margin-top:3px">✅ <b>상한에 걸리는 속성이 없다</b> — 표기(+${wantSum})대로 전부 오른다.</div>`}
+    ${rows.length > known.length ? `<div class="dim" style="margin-top:3px">⚠️ ${rows.length - known.length}개 속성은 이 카드에 값이 없어 계산에서 뺐다(결손 ≠ 0).</div>` : ''}
+    ${pr.chose.length ? `<div class="dim" style="margin-top:3px">⚠️ 갈림길이 있어 <b>${esc(pr.chose.map(c2 => `${c2.lv}단계 ${c2.pick}`).join(' · '))}</b> 기준으로 계산했다 — 다른 가지를 고르면 달라진다.</div>` : ''}
+    ${extra.length ? `<div style="margin-top:4px"><b>속성 밖 보상</b> ${extra.map(u =>
+      `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ')}
+      <small class="dim">— OVR은 EA 산식이 비공개라 산출하지 않는다</small></div>` : ''}</div>`;
 }
 /* 역할 가중 점수의 원료 — 경로가 없으면 `upgrades`도 없으니 카탈로그 단계 보상에서 합산한다. */
 function upgradesOf(eid){
