@@ -107,17 +107,26 @@ def main():
     src = f"fut.gg 목표 페이지 HTML ({a.pulled} 수집, collect_futgg_objectives.py)"
     conf = ("HIGH — fut.gg가 EA 목표를 그대로 노출한다. ⚠️ 기간제라 pulled 시점의 사실이다. "
             "⚠️ 조건 문장은 원문 그대로이고 한국어 번역은 사람이 채운다(task_text_kr).")
+    # ⭐ 원문이 같은 과제의 한국어 번역은 직전 회차에서 **이어받는다**(2026-09-25 신설).
+    #    회차마다 행이 새로 생기므로 이월하지 않으면 손으로 채운 번역이 매번 사라지고
+    #    화면(최신 pulled만 내보낸다)에서 번역이 통째로 빠진다 — 09-22·23·24 세 회차 모두 손으로 다시 채웠다.
+    #    ⚠️ 이어받는 기준은 **원문(task_text)이 글자까지 같을 때**뿐이다. 원문이 바뀌면 번역도 다시 해야 한다.
+    kr = {t: k for t, k in con.execute(
+        """SELECT task_text, task_text_kr FROM fc_objective_tasks
+           WHERE task_text_kr IS NOT NULL AND task_text_kr<>'' AND pulled<?
+           ORDER BY pulled""", (a.pulled,))}
     n = 0
     for gv, slug, gname, cat, name, desc, rew in rows:
         cur = con.execute(
             """INSERT INTO fc_objective_tasks(game_version,group_slug,group_name,group_category,
-               task_name,task_text,reward,source,confidence,pulled)
-               VALUES(?,?,?,?,?,?,?,?,?,?)
+               task_name,task_text,task_text_kr,reward,source,confidence,pulled)
+               VALUES(?,?,?,?,?,?,?,?,?,?,?)
                ON CONFLICT(game_version,group_slug,task_name,pulled) DO NOTHING""",
-            (gv, slug, gname, cat, name, desc, rew, src, conf, a.pulled))
+            (gv, slug, gname, cat, name, desc, kr.get(desc), rew, src, conf, a.pulled))
         n += cur.rowcount
     con.commit()
-    print(f"적재 {n}행 (기존 {len(rows)-n}행)")
+    carried = sum(1 for r in rows if kr.get(r[5]))
+    print(f"적재 {n}행 (기존 {len(rows)-n}행) · 번역 이월 {carried}행")
     print("\n다음: python3 scripts/gates.py && python3 scripts/export.py && scripts/db_dump.sh")
 
 
