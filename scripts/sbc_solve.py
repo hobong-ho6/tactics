@@ -406,7 +406,8 @@ def main():
     con.row_factory = sqlite3.Row
     pool = [dict(r) for r in con.execute("""
         SELECT c.id, COALESCE(i.name_kr, c.name) name, COALESCE(c.current_ovr, i.ovr) ovr,
-               i.nation, i.league, i.club, i.positions, i.best_pos, COALESCE(i.is_special,0) is_special,
+               i.nation, i.league, i.club, i.positions, i.best_pos, i.card_image_url,
+               COALESCE(i.is_special,0) is_special,
                c.is_untradeable, c.ea_item_id
           FROM fut_club_players c LEFT JOIN player_card_items i
             ON i.ea_item_id=c.ea_item_id AND i.game_version=?
@@ -536,10 +537,25 @@ def main():
     #    「포메이션을 선택하면 포메이션이 변경돼야 정확히 고를 수 있어」). 없으면 재배치를 못 한다.
     slim = lambda p: {"id": p["id"], "name": p["name"], "ovr": p["ovr"], "club": p["club"],
                       "league": p["league"], "nation": p["nation"], "untradeable": p["is_untradeable"],
-                      "pos": sorted(positions_of(p))}
+                      "pos": sorted(positions_of(p)), "card": p["card_image_url"]}
+    bad_save = []
     for r, xi, size, cands, _cd, _b in ok:
         known = FORM_OF.get(r["challenge_ea_id"])
         ch, form, pl = best_placement(xi, known)
+        # ⛔⛔ **저장 직전에 다시 검증한다 — 통과 못 하면 ok로 적지 않는다**(2026-09-25 사용자 지적
+        #    「노르웨이 대 포르투갈 해법이 문제의 조건을 만족하지 않고 있어」).
+        #    탐색이 고른 11명과 **실제로 저장되는 배치**는 다른 단계에서 만들어진다 —
+        #    그 사이에 어긋날 여지를 「조심하자」로 막지 않고 여기서 **막는다**(불변규칙 13 ③ 게이트).
+        #    ⚠️ 케미는 배치에 의존하므로 `form`을 세워 놓고 재계산한다.
+        prev, CUR_FORM[0] = CUR_FORM[0], form
+        fail, _c = check(xi, _cd)
+        okch, _i = chem_ok(xi, _cd)
+        CUR_FORM[0] = prev
+        if fail or not okch:
+            bad_save.append((r["name"], fail or ["케미 미달"]))
+            rows.append((a.game, r["challenge_ea_id"], today, aid, "not_found", None, None, None,
+                         len(cands), "저장 직전 재검증 실패: " + " / ".join(fail or ["케미 미달"]), src, conf))
+            continue
         # ⭐ 슬롯·좌표를 함께 저장한다 — 화면이 **피치 모양**으로 그린다(2026-09-25 사용자 지시
         #    「포메이션 모습으로 보여줘 · 어떤 포지션의 선수인지도 모르겠어」).
         squad = [dict(slim(p), slot=nm, x=x, y=y, fit=fit)
@@ -560,6 +576,10 @@ def main():
     for r, bad in undec:
         rows.append((a.game, r["challenge_ea_id"], today, aid, "unparsed", None, None, None, None,
                      "못 읽은 조건: " + " / ".join(bad), src, conf))
+    if bad_save:
+        print(f"\n⛔ 저장 직전 재검증에서 탈락 {len(bad_save)}건 — ok로 적지 않았다(not_found로 내린다):")
+        for nm, why in bad_save:
+            print(f"   · {nm} — {' / '.join(why)}")
     con.executemany("""INSERT INTO fc_sbc_solutions(game_version,challenge_ea_id,pulled,account_id,verdict,
                          squad_json,team_rating,chem_total,pool_size,note,source,confidence)
                        VALUES(?,?,?,?,?,?,?,?,?,?,?,?)

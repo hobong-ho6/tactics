@@ -293,8 +293,14 @@ def export_all(db_path=None, window="2026-summer"):
     sbc_ch = _rows(con, """SELECT c.set_ea_id, c.challenge_ea_id, c.name, c.description, c.challenge_type,
                                   c.requirements_text, c.awards_text, c.cheapest_price,
                                   s.verdict, s.squad_json, s.team_rating, s.chem_total, s.pool_size, s.note,
-                                  s.pulled solved_at, s.confidence solve_conf
+                                  s.pulled solved_at, s.confidence solve_conf,
+                                  -- ⭐ 인게임 포메이션 기록은 **해법과 별개 축**이다(2026-09-25).
+                                  -- ⛔ 종전엔 squad_json 안에만 있어서 **해법을 못 찾으면 기록까지 화면에서
+                                  --    사라졌다** — 그러면 그 챌린지의 포메이션을 고쳐 적을 방법이 없다.
+                                  f.formation rec_formation
                              FROM fc_sbc_challenges c
+                             LEFT JOIN fc_sbc_formations f ON f.challenge_ea_id=c.challenge_ea_id
+                                  AND f.game_version=c.game_version
                              LEFT JOIN fc_sbc_solutions s ON s.challenge_ea_id=c.challenge_ea_id
                                   AND s.game_version=c.game_version
                                   AND s.pulled=(SELECT MAX(pulled) FROM fc_sbc_solutions WHERE game_version='FC27')

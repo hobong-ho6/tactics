@@ -317,22 +317,27 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
    슬림 데이터라 별도 레이아웃을 쓴다 — 이름·OVR·자리만 읽히면 되는 자리다. */
 /* ⚠️ 슬롯은 `translate(-50%,50%)`로 중심을 좌표에 맞춘다 — **padding이 있어야** 가장자리(GK y=6 · ST y=88)가
    잘리지 않는다(절대배치는 padding box 기준이라 padding이 좌표 원점을 안쪽으로 민다). */
-.sbc-pitch{position:relative;width:100%;aspect-ratio:4/5;max-width:none;margin:6px auto 0;
+.sbc-pitch{position:relative;width:100%;aspect-ratio:3/4;max-width:none;margin:6px auto 0;
   padding:30px 10px;box-sizing:border-box;
   border:1px solid var(--line);border-radius:10px;
   background:linear-gradient(0deg,rgba(28,80,48,.30),rgba(10,26,16,.30));overflow:hidden}
 .sbc-pitch::before{content:'';position:absolute;left:8%;right:8%;top:49.5%;height:1px;background:rgba(255,255,255,.14)}
 .sbc-pitch::after{content:'';position:absolute;left:28%;right:28%;bottom:0;height:14%;
   border:1px solid rgba(255,255,255,.14);border-bottom:0}
-.sbc-slot{position:absolute;transform:translate(-50%,50%);width:76px;text-align:center;
-  background:rgba(6,14,10,.82);border:1px solid var(--line);border-radius:8px;padding:3px 2px;line-height:1.25}
-.sbc-slot.off{border-color:var(--bad)}
-.sbc-slot i{display:block;font-style:normal;font-size:9.5px;color:var(--dim);letter-spacing:.4px}
-.sbc-slot b{font-size:13px}
-.sbc-slot span{display:block;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sbc-slot em{display:block;font-style:normal;font-size:9px;color:var(--dim);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* 카드 아트를 그대로 놓는다 — OVR·이름·국기·클럽 배지가 아트에 인쇄돼 있다(evolutions.html pitchHTML 주석). */
+.sbc-slot{position:absolute;transform:translate(-50%,50%);width:86px;text-align:center}
+.sbc-slot img{display:block;width:100%;height:auto;border-radius:4px}
+.sbc-slot.off img{outline:2px solid var(--bad);outline-offset:1px;border-radius:4px}
+.sbc-slot i{display:block;font-style:normal;font-size:9.5px;color:var(--dim);letter-spacing:.4px;
+  background:rgba(6,14,10,.85);border:1px solid var(--line);border-radius:99px;padding:0 5px;
+  width:fit-content;margin:0 auto 2px}
+.sbc-slot.off i{border-color:var(--bad);color:var(--bad)}
+.sbc-slot .noart{display:block;background:rgba(6,14,10,.85);border:1px solid var(--line);
+  border-radius:6px;padding:4px 2px;font-size:10px;line-height:1.3}
+.sbc-slot .noart b{display:block;font-size:13px}
 .sbc-slot u{display:block;text-decoration:none;font-size:8.5px;color:var(--dim)}
+/* 포메이션 모양만 보는 중 — **선수를 그리지 않는다**(판정 안 거친 배치를 답처럼 보여주지 않기 위해). */
+.sbc-slot.empty .noart{border-style:dashed;opacity:.55;padding:14px 2px}
 
 /* SBC 세트 카드 — 목록을 훑을 수 있게(2026-09-25). 챌린지 상세는 그 안의 details가 접어 둔다. */
 /* ⛔ 종전 minmax(360px)는 넓은 화면에서 **4열**이 돼 카드가 좁았고, 그 안의 피치가 겹쳤다

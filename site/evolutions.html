@@ -2025,42 +2025,35 @@ const SBC_DONE = SBC.done || {};
    ⇒ 기록이 있으면 그 안에서만 배치하고, 없으면 「추정」이라고 못박는다. 아래 선택으로 기록·재계산한다. */
 const SBC_FORMS = (EVO.formations || []).map(f => f.name);
 const SBC_SLOTS = Object.fromEntries((EVO.formations || []).map(f => [f.name, J(f.slots, [])]));
-/* ⛔⛔ **미리보기 전용 배치**다 — 진짜 판정은 `sbc_solve.py`가 한다(케미 재검증·GK 규칙 포함).
-   여기서는 「이 포메이션이면 누가 어디 서나」만 즉시 보여 준다. 규칙은 솔버와 같게 맞춘다:
-   ⑴ 그 칸에 설 수 있는 포지션 우선 ⑵ 남으면 아무 데나(자리 안 맞음 = 케미 0).
-   ⚠️ 솔버는 조합 자체를 다시 고르지만 미리보기는 **선수 11명을 그대로 두고 자리만 바꾼다** —
-      그래서 「풀기」를 눌러야 그 포메이션에 맞는 **더 나은 조합**이 나올 수 있다. */
-const GEN_POS = { 0: 'GK', 2: 'RWB', 3: 'RB', 5: 'CB', 7: 'LB', 8: 'LWB', 10: 'CDM', 12: 'RM',
-                  14: 'CM', 16: 'LM', 18: 'CAM', 21: 'CF', 23: 'RW', 25: 'ST', 27: 'LW' };
-const NEAR = { RWB: ['RWB','RB'], LWB: ['LWB','LB'], RB: ['RB','RWB'], LB: ['LB','LWB'],
-               RW: ['RW','RM'], LW: ['LW','LM'], RM: ['RM','RW'], LM: ['LM','LW'],
-               CF: ['CF','ST'], ST: ['ST','CF'] };
-const slotAccepts = gen => { const b = GEN_POS[gen]; return new Set(b ? (NEAR[b] || [b]) : []); };
-function previewPlace(players, slots){
-  const left = players.slice(), out = new Array(slots.length).fill(null);
-  const order = slots.map((s, i) => i).sort((a, b) =>
-    left.filter(p => (p.pos || []).some(x => slotAccepts(slots[a].gen).has(x))).length -
-    left.filter(p => (p.pos || []).some(x => slotAccepts(slots[b].gen).has(x))).length);
-  for (const i of order){
-    const want = slotAccepts(slots[i].gen);
-    const cand = left.filter(p => (p.pos || []).some(x => want.has(x)));
-    if (cand.length){
-      const pick = cand.reduce((m, p) => (p.ovr > m.ovr ? p : m), cand[0]);
-      out[i] = { ...pick, slot: slots[i].label, x: slots[i].x, y: slots[i].y, fit: true };
-      left.splice(left.indexOf(pick), 1);
-    }
-  }
-  for (let i = 0; i < slots.length; i++)
-    if (!out[i] && left.length)
-      out[i] = { ...left.shift(), slot: slots[i].label, x: slots[i].x, y: slots[i].y, fit: false };
-  return out.filter(Boolean);
-}
+/* ⛔⛔⛔ **포메이션 미리보기는 선수를 그리지 않는다 — 빈 모양만 그린다**
+   (2026-09-25 사용자 지적 「노르웨이 대 포르투갈 해법이 문제의 조건을 만족하지 않고 있어」).
+
+   무슨 일이 있었나: 종전 미리보기(`previewPlace`)는 **해법의 11명을 그대로 두고 자리만 옮겨** 그렸다.
+   그런데 포메이션이 바뀌면 자리 적합이 바뀌고 **케미가 통째로 달라진다** — 즉 그 11명은 더 이상
+   그 포메이션의 답이 아니다. 실측: 44번(노르웨이 대 포르투갈)을 4-5-1로 바꾸자 진짜 판정은
+   `not_found`(Min. 3 Players from the same Club 미충족)였는데, 화면엔 **11명이 멀쩡히 서 있었다**.
+   판정을 안 거친 그림이 **검증된 해법과 똑같이 생긴 것**이 문제의 전부다.
+
+   ⇒ 「조심해서 읽자」로 막지 않는다(불변규칙 13 ① 구조 제거). 미리보기가 **선수를 가질 수 없게** 한다.
+     · 포메이션을 고르면 **빈 칸 라벨만** 그린다 — 모양을 보고 고르는 데는 이게 오히려 낫다.
+     · 선수가 선 피치는 **솔버가 검증해 저장한 해법일 때만** 나온다.
+   ⭐ 이로써 「화면의 스쿼드는 항상 조건을 만족한다」가 문법적으로 보장된다. */
+const shapeHTML = slots => slots.map(s => `
+  <div class="sbc-slot empty" style="left:${s.x}%;bottom:${s.y}%"><i>${esc(s.label)}</i>
+    <span class="noart dim">빈 칸</span></div>`).join('');
+/* ⭐ 카드 아트를 그대로 쓴다(2026-09-25 사용자 지시 「각 선수들을 카드 형태로 — 그래야 팀이나 리그 정보도 확인」).
+   FUT 카드 이미지에는 **OVR·포지션·이름·국기·클럽 배지·리그**가 이미 인쇄돼 있다.
+   ⛔ 그 위에 우리가 값을 덧그리지 않는다 — 인쇄값과 어긋나면 어느 쪽이 맞는지 알 수 없어진다.
+   ⇒ 우리가 더하는 건 **그 카드가 어느 칸에 서는가**(슬롯 라벨)와 자리 적합 여부뿐이다.
+   ⚠️ 아트가 없는 카드는 텍스트로 물러선다(결손을 빈 칸으로 두지 않는다). */
 const pitchHTML = sq => sq.map(p => `
   <div class="sbc-slot${p.fit === false ? ' off' : ''}" style="left:${p.x}%;bottom:${p.y}%"
-       title="${esc(p.club || '')} · ${esc(p.league || '')} · ${esc(p.nation || '')}">
-    <i>${esc(p.slot || '')}</i><b>${p.ovr}</b>
-    <span>${esc(p.name)}</span>
-    <em>${esc(p.nation || '')}</em>${p.untradeable ? '<u>거래불가</u>' : ''}</div>`).join('');
+       title="${esc(p.name)} ${p.ovr} · ${esc(p.club || '—')} · ${esc(p.league || '—')} · ${esc(p.nation || '—')}${
+         p.fit === false ? ' · ⚠️ 자리가 맞지 않아 케미 0' : ''}">
+    <i>${esc(p.slot || '')}</i>
+    ${p.card ? `<img src="${esc(p.card)}" alt="${esc(p.name)}" loading="lazy">`
+             : `<span class="noart"><b>${p.ovr}</b>${esc(p.name)}</span>`}
+    ${p.untradeable ? '<u>거래불가</u>' : ''}</div>`).join('');
 let SBC_F = 'all';
 const SBC_OPEN = new Set();          // 완료분을 펼쳐 둔 세트
 function renderSbc(){
@@ -2089,16 +2082,21 @@ function renderSbc(){
   /* ⚠️ 카드는 이 함수 **끝**에서 innerHTML로 그려진다 — 여기서 바로 바인딩하면 아직 없는 노드다.
      그래서 solve 버튼과 **같은 setTimeout 안**에 둔다(2026-09-25: 토글이 안 먹던 원인). */
   setTimeout(() => {
-    /* ⭐ 고르면 **즉시 피치를 다시 그린다**(기록·재계산은 「풀기」가 한다) — 모양을 봐야 고를 수 있다. */
+    /* ⭐ 고르면 **즉시 모양을 다시 그린다** — 모양을 봐야 고를 수 있다.
+       ⛔ 단 **빈 칸만** 그린다. 선수가 선 피치는 검증된 해법에만 허용한다(위 shapeHTML 주석). */
     document.querySelectorAll('[data-sbcform]').forEach(sel => sel.addEventListener('change', () => {
       const id = sel.dataset.sbcform, pit = document.getElementById(`sbcp${id}`);
       const ch = (SBC.challenges || []).find(x => String(x.challenge_ea_id) === id);
-      const sq = (J(ch?.squad_json, {}) || {}).players || [];
+      const sol = J(ch?.squad_json, {}) || {};
       const slots = SBC_SLOTS[sel.value];
-      if (!pit || !slots || !sq.length) return;
-      pit.innerHTML = pitchHTML(previewPlace(sq, slots));
+      if (!pit || !slots) return;
+      const back = sel.value === sol.formation;      // 원래 해법의 포메이션으로 되돌린 경우
+      pit.innerHTML = back ? pitchHTML(sol.players || []) : shapeHTML(slots);
+      for (const k of ['sbct', 'sbch']) document.getElementById(k + id)?.toggleAttribute('hidden', !back);
       const box = document.getElementById(`sbcm${id}`);
-      if (box) box.innerHTML = '<span class="dim">미리보기 — <b>「풀기」를 눌러야</b> 기록하고 이 포메이션에 맞는 조합을 다시 찾는다.</span>';
+      if (box) box.innerHTML = back ? ''
+        : `<span class="dim">📐 <b>${esc(sel.value)}</b> 모양만 보는 중 — 이 포메이션의 스쿼드는
+             <b>「풀기」</b>를 눌러야 나온다. <b>지금 선 사람은 없다</b>(판정을 안 거친 배치를 답처럼 보여주지 않는다).</span>`;
     }));
     document.querySelectorAll('[data-sbcopen]').forEach(b => b.addEventListener('click', () => {
       const id = +b.dataset.sbcopen;
@@ -2172,16 +2170,18 @@ function renderSbc(){
             ${c.note ? `<div class="dim" style="font-size:12px;margin-top:5px">${esc(c.note)}</div>` : ''}
             ${(() => {
               /* ⭐⭐ **피치 모양으로 그린다**(2026-09-25 사용자 지시 「리스트로만 있으니 어떤 포지션의 선수인지도 모르겠어」).
-                 ⛔ SBC는 포메이션을 요구하지 않는다 — 솔버가 여러 포메이션을 시도해 **케미가 가장 높은 배치**를 고른 것이고,
-                    어느 것을 썼는지 함께 적는다. 좌표는 솔버가 넣어 준다.
-                 ⚠️ 자리가 안 맞는 선수는 붉게 표시한다 — 그 선수는 **케미가 0**이다. */
+                 ⚠️ 자리가 안 맞는 선수는 붉게 표시한다 — 그 선수는 **케미가 0**이다.
+                 ⭐ 포메이션 선택은 **해법이 없어도 뜬다**(2026-09-25) — 종전엔 스쿼드가 없으면 블록째 사라져
+                    「못 찾음」인 챌린지의 인게임 포메이션을 **고쳐 적을 방법 자체가 없었다**(44번이 그랬다). */
               const sq = xi.players || (Array.isArray(xi) ? xi : []);
-              if (!sq.length) return '';
-              const form = xi.formation || '';
+              const known = c.rec_formation || '';
+              const form = xi.formation || known || SBC_FORMS[0] || '';
               const bad = sq.filter(p => p.fit === false).length;
-              return `<div style="font-size:12px;margin-top:6px"><b>이 스쿼드로 된다</b>
-                <small class="dim">— ${esc(form)} · 팀 레이팅 ${c.team_rating} · 케미 ${c.chem_total}${
-                  bad ? ` · <b class="dn">자리 안 맞음 ${bad}명(케미 0)</b>` : ''}</small>
+              return `<div style="font-size:12px;margin-top:6px">${sq.length
+                ? `<span id="sbch${c.challenge_ea_id}"><b>이 스쿼드로 된다</b>
+                     <small class="dim">— ${esc(form)} · 팀 레이팅 ${c.team_rating} · 케미 ${c.chem_total}${
+                       bad ? ` · <b class="dn">자리 안 맞음 ${bad}명(케미 0)</b>` : ''}</small></span>`
+                : `<b class="dim">이 포메이션으로는 내 보유 카드로 스쿼드가 안 나온다</b>`}
                 ${/* ⛔ 고르자마자 풀지 않는다(2026-09-25 사용자 지시 「포메이션 선택 후 계산이나 풀기 버튼을
                       누르면 그때 찾도록」) — 29종을 훑다 실수로 바꿔도 바로 재계산이 도는 건 비싸고 놀랍다. */''}
                 <div class="kv" style="margin:4px 0 2px">📐 포메이션
@@ -2189,17 +2189,18 @@ function renderSbc(){
                     ${SBC_FORMS.map(f => `<option${f === form ? ' selected' : ''}>${esc(f)}</option>`).join('')}
                   </select>
                   <button class="act" data-sbcsolve="${c.challenge_ea_id}">이 포메이션으로 풀기</button>
-                  <small class="dim">${xi.formation_known
+                  <small class="dim">${known
                     ? '인게임 기준으로 기록됨'
                     : '⚠️ <b>미기록 — 우리가 고른 추정</b>이다. 인게임 값을 골라 풀기를 누르면 그 배치로 다시 푼다.'}</small>
                   <span class="msg-slot" id="sbcm${c.challenge_ea_id}"></span></div>
-                <div class="sbc-pitch" id="sbcp${c.challenge_ea_id}">${pitchHTML(sq)}</div>
-                <details style="margin-top:4px"><summary class="dim" style="cursor:pointer">표로 보기</summary>
+                <div class="sbc-pitch" id="sbcp${c.challenge_ea_id}">${
+                  sq.length ? pitchHTML(sq) : shapeHTML(SBC_SLOTS[form] || [])}</div>
+                ${!sq.length ? '' : `<details style="margin-top:4px" id="sbct${c.challenge_ea_id}"><summary class="dim" style="cursor:pointer">표로 보기</summary>
                   <table class="tbl" style="margin-top:4px"><thead><tr><th>자리</th><th>OVR</th><th>선수</th><th>클럽</th><th>리그</th><th>국적</th></tr></thead><tbody>
                   ${sq.map(p => `<tr${p.fit === false ? ' style="opacity:.6"' : ''}><td><b>${esc(p.slot || '')}</b></td><td>${p.ovr}</td>
                     <td>${esc(p.name)}${p.untradeable ? ' <span class="chip dim">거래불가</span>' : ''}</td>
                     <td class="dim">${esc(p.club || '—')}</td><td class="dim">${esc(p.league || '—')}</td>
-                    <td class="dim">${esc(p.nation || '—')}</td></tr>`).join('')}</tbody></table></details></div>`;
+                    <td class="dim">${esc(p.nation || '—')}</td></tr>`).join('')}</tbody></table></details>`}</div>`;
             })()}
             ${c.solve_conf ? `<div class="dim" style="font-size:11px;margin-top:5px">${esc(c.solve_conf)}</div>` : ''}
           </div></details>`;
