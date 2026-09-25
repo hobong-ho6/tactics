@@ -296,6 +296,13 @@ def main():
         q += " AND s.set_ea_id=?"; args.append(a.set)
     rows = [dict(r) for r in con.execute(q + " ORDER BY s.category, s.name, ch.name", args)]
 
+    # ⭐ 이미 완료한 챌린지는 풀지 않는다(2026-09-25) — 스쿼드를 제안할 이유가 없고 탐색만 낭비다.
+    #   ⛔ 「완료」는 EA·fut.gg가 주지 않는 축이라 `fut_sbc_log`(사용자 기록)가 유일한 출처다(migration 068).
+    done_ids = {r[0] for r in con.execute(
+        "SELECT challenge_ea_id FROM fut_sbc_log WHERE game_version=?", (a.game,))}
+    if done_ids:
+        rows = [r for r in rows if r["challenge_ea_id"] not in done_ids]
+        print(f"🏁 이미 완료한 {len(done_ids)}챌린지는 판정에서 제외 — 남은 {len(rows)}개를 푼다")
     ok, no, undec, oneclick = [], [], [], []
     for r in rows:
         conds, bad = parse(json.loads(r["requirements_text"] or "[]"))
