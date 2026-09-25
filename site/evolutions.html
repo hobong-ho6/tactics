@@ -2020,6 +2020,10 @@ const VERDICT = {
   unparsed:   { k: '❔ 판정 안 함', c: 'dim' },
 };
 const SBC_DONE = SBC.done || {};
+/* ⛔⛔ **인게임 SBC는 챌린지마다 포메이션이 고정인데 EA·fut.gg가 그 값을 주지 않는다**(migration 069).
+   종전엔 우리가 케미 최대 포메이션을 임의로 골라 보여줘서 **인게임 화면과 달랐다**(2026-09-25 사용자 지적).
+   ⇒ 기록이 있으면 그 안에서만 배치하고, 없으면 「추정」이라고 못박는다. 아래 선택으로 기록·재계산한다. */
+const SBC_FORMS = ['4-2-3-1', '4-4-2', '4-3-3', '3-5-2'];
 let SBC_F = 'all';
 function renderSbc(){
   /* ⛔ **원클릭 제출은 목록에서 뺀다**(2026-09-25 사용자 지시 「원클릭 제출 미션은 목록에서 제외시키자」).
@@ -2043,6 +2047,14 @@ function renderSbc(){
                   ['no', `불가·못 찾음 ${(cnt.impossible || 0) + (cnt.not_found || 0)}`]]
     .map(([k, t]) => `<button class="filt${SBC_F === k ? ' on' : ''}" data-f="${k}"><i>${SBC_F === k ? '☑' : '☐'}</i>${t}</button>`).join('');
   fb.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => { SBC_F = b.dataset.f; renderSbc(); }));
+  /* 포메이션 선택 → `fut_club.py sbc_formation`이 기록하고 **그 자리에서 다시 푼다**(serve.py 쓰기 API). */
+  setTimeout(() => document.querySelectorAll('[data-sbcform]').forEach(sel =>
+    sel.addEventListener('change', async () => {
+      const id = sel.dataset.sbcform;
+      const box = document.getElementById(`sbcm${id}`);
+      box.innerHTML = '<span class="dim">기록하고 다시 푸는 중…</span>';
+      say(box, await api('sbc_formation', { challenge: +id, formation: sel.value, game: 'FC27' }));
+    })), 0);
   const keep = c => SBC_F === 'all' ? true
     : SBC_F === 'done' ? !!SBC_DONE[String(c.challenge_ea_id)]
     : SBC_F === 'todo' ? !SBC_DONE[String(c.challenge_ea_id)]
@@ -2085,6 +2097,14 @@ function renderSbc(){
               return `<div style="font-size:12px;margin-top:6px"><b>이 스쿼드로 된다</b>
                 <small class="dim">— ${esc(form)} · 팀 레이팅 ${c.team_rating} · 케미 ${c.chem_total}${
                   bad ? ` · <b class="dn">자리 안 맞음 ${bad}명(케미 0)</b>` : ''}</small>
+                <div class="kv" style="margin:4px 0 2px">📐 포메이션
+                  <select data-sbcform="${c.challenge_ea_id}">
+                    ${SBC_FORMS.map(f => `<option${f === form ? ' selected' : ''}>${f}</option>`).join('')}
+                  </select>
+                  <small class="dim">${xi.formation_known
+                    ? '인게임 기준으로 기록됨'
+                    : '⚠️ <b>미기록 — 우리가 고른 추정</b>이다. 인게임 값으로 바꾸면 그 배치로 다시 푼다.'}</small>
+                  <span class="msg-slot" id="sbcm${c.challenge_ea_id}"></span></div>
                 <div class="sbc-pitch">${sq.map(p => `
                   <div class="sbc-slot${p.fit === false ? ' off' : ''}" style="left:${p.x}%;bottom:${p.y}%"
                        title="${esc(p.club || '')} · ${esc(p.league || '')} · ${esc(p.nation || '')}">

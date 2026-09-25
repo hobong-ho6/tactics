@@ -23,7 +23,8 @@ import sqlite3
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
 from core import DB                                     # noqa: E402
 
 TODAY = dt.date.today().isoformat()
@@ -175,13 +176,37 @@ def cmd_import(con, a):
     print(f"임포트 {ins}명 · 기존 {skip}명 건너뜀 (출처: {a.source})")
 
 
+def cmd_sbc_formation(con, a):
+    """챌린지의 요구 포메이션을 기록하고 **그 챌린지만** 다시 푼다 (2026-09-25 신설 · migration 069).
+       ⛔ EA·fut.gg가 주지 않는 값이라 사용자 입력이 유일한 출처다 — 그래서 source에 그렇게 적는다."""
+    import subprocess
+    import sys as _sys
+    ch, form = int(a.challenge), str(a.formation).strip()
+    row = con.execute("SELECT name FROM fc_sbc_challenges WHERE challenge_ea_id=? ORDER BY pulled DESC LIMIT 1",
+                      (ch,)).fetchone()
+    if not row:
+        raise SystemExit(f"⛔ 챌린지 {ch}를 모른다 — 먼저 collect_futgg_sbc.py로 수집할 것")
+    con.execute("""INSERT INTO fc_sbc_formations(game_version, challenge_ea_id, formation, source, confidence, updated)
+                   VALUES(?,?,?,?,?,?)
+                   ON CONFLICT(game_version, challenge_ea_id) DO UPDATE SET
+                     formation=excluded.formation, source=excluded.source, updated=excluded.updated""",
+                (a.game, ch, form, f"사용자 입력({TODAY}) — 인게임 SBC 화면 표기",
+                 "MEASURED(사용자 확인) — EA·fut.gg가 이 값을 주지 않는다(migration 069 주석).", TODAY))
+    con.commit()
+    print(f"📐 {row['name']} 포메이션 {form} 기록 — 다시 푸는 중…")
+    r = subprocess.run([_sys.executable, str(ROOT / "scripts" / "sbc_solve.py"), "--save", "--tries", "500"],
+                       capture_output=True, text=True, cwd=ROOT)
+    print(r.stdout.strip()[-600:] if r.returncode == 0 else "⛔ 재계산 실패:\n" + (r.stdout + r.stderr)[-600:])
+
+
 def run(con, cmd, **kw):
     """serve.py 쓰기 API용 진입점 — CLI와 같은 함수를 같은 규약으로 실행한다(발명 금지·출처 기록 동일)."""
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
                     level=1, date=TODAY, completed=None, note=None, ovr_after=None, six_after=None, status=None, op="add",
-                    in_progress=False, evo=None)
+                    in_progress=False, evo=None, challenge=None, formation=None)
     a = argparse.Namespace(**{**defaults, **kw})
-    fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete}[cmd]
+    fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete,
+          "sbc_formation": cmd_sbc_formation}[cmd]
     fn(con, a)
 
 

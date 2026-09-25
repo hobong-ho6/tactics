@@ -86,8 +86,15 @@ def place(xi, form):
              out[i][1] if out[i] else False) for i in range(len(slots))]
 
 
-def best_placement(xi):
-    """포메이션을 다 시도해 **케미 최대**인 배치를 고른다."""
+def best_placement(xi, form=None):
+    """배치. ⛔⛔ **포메이션이 기록돼 있으면 그것만 쓴다**(2026-09-25).
+       인게임 SBC는 챌린지마다 포메이션이 고정인데 EA·fut.gg가 그 값을 주지 않는다
+       (`fc_sbc_formations` = 사용자 기록). 종전엔 **케미가 가장 높은 것을 임의로 골라** 보여줘서
+       인게임 화면과 달랐다 — 그게 이 함수가 인자를 받게 된 이유다.
+       ⚠️ 기록이 없으면 후보를 다 시도하되, 돌려주는 포메이션은 **추정**이다(화면이 그렇게 적는다)."""
+    if form and form in FORMS:
+        pl = place(xi, form)
+        return chem_total([p for _n, _x, _y, p, fit in pl if p and fit]), form, pl
     best = None
     for f in FORMS:
         pl = place(xi, f)
@@ -239,6 +246,10 @@ def check(xi, conds):
     return fail, cost
 
 
+FORM_OF = {}          # challenge_ea_id → 기록된 포메이션. main()이 채운다
+CUR_FORM = [None]     # 지금 푸는 챌린지의 포메이션(없으면 None)
+
+
 def chem_ok(xi, conds):
     """⛔⛔ 탐색용 `chem_total`은 **포지션을 무시**해서 실제보다 높게 나온다(상한).
        ⇒ 해를 찾으면 **배치까지 해서** 케미 조건을 다시 본다. 통과해야 진짜 해다.
@@ -246,7 +257,7 @@ def chem_ok(xi, conds):
     need = [v for (k, v), _ in conds if k == "chem"]
     if not need:
         return True, None
-    ch, form, pl = best_placement(xi)
+    ch, form, pl = best_placement(xi, CUR_FORM[0])
     return ch >= max(need), (ch, form, pl)
 
 
@@ -437,6 +448,10 @@ def main():
 
     # ⭐ 이미 완료한 챌린지는 풀지 않는다(2026-09-25) — 스쿼드를 제안할 이유가 없고 탐색만 낭비다.
     #   ⛔ 「완료」는 EA·fut.gg가 주지 않는 축이라 `fut_sbc_log`(사용자 기록)가 유일한 출처다(migration 068).
+    FORM_OF.update({r[0]: r[1] for r in con.execute(
+        "SELECT challenge_ea_id, formation FROM fc_sbc_formations WHERE game_version=?", (a.game,))})
+    if FORM_OF:
+        print(f"📐 포메이션 기록 {len(FORM_OF)}챌린지 — 그 안에서만 배치한다")
     done_ids = {r[0] for r in con.execute(
         "SELECT challenge_ea_id FROM fut_sbc_log WHERE game_version=?", (a.game,))}
     if done_ids:
@@ -447,6 +462,7 @@ def main():
         conds, bad = parse(json.loads(r["requirements_text"] or "[]"))
         if bad:
             undec.append((r, bad)); continue
+        CUR_FORM[0] = FORM_OF.get(r["challenge_ea_id"])
         size = next((v for (k, v), _ in conds if k == "size"), None)
         if size is None:
             # ⛔ 원클릭 챌린지는 **제출 인원을 fut.gg가 주지 않는다** — 11명으로 가정하면 거짓 보고가 된다.
@@ -467,8 +483,9 @@ def main():
             print(f"  {'✅' if cs else '❌'} {head(r)} — 조건 통과 {len(cs)}장 · {' / '.join(t for _c, t in conds)}")
     for r, xi, size, _c, _cd, _b in ok:
         aw = ", ".join(x["name"] for x in json.loads(r["awards_text"] or "[]")) or "—"
-        ch, form, pl = best_placement(xi)
-        print(f"\n✅ {head(r)}  [{size}명 · {form} · 보상 {aw} · 마감 {(r['end_time'] or '')[:10]}]")
+        known = FORM_OF.get(r["challenge_ea_id"])
+        ch, form, pl = best_placement(xi, known)
+        print(f"\n✅ {head(r)}  [{size}명 · {form}{'' if known else '(추정 — 미기록)'} · 보상 {aw} · 마감 {(r['end_time'] or '')[:10]}]")
         for nm, _x, _y, p, fit in pl:
             if not p:
                 continue
@@ -518,13 +535,15 @@ def main():
     slim = lambda p: {"id": p["id"], "name": p["name"], "ovr": p["ovr"], "club": p["club"],
                       "league": p["league"], "nation": p["nation"], "untradeable": p["is_untradeable"]}
     for r, xi, size, cands, _cd, _b in ok:
-        ch, form, pl = best_placement(xi)
+        known = FORM_OF.get(r["challenge_ea_id"])
+        ch, form, pl = best_placement(xi, known)
         # ⭐ 슬롯·좌표를 함께 저장한다 — 화면이 **피치 모양**으로 그린다(2026-09-25 사용자 지시
         #    「포메이션 모습으로 보여줘 · 어떤 포지션의 선수인지도 모르겠어」).
         squad = [dict(slim(p), slot=nm, x=x, y=y, fit=fit)
                  for nm, x, y, p, fit in pl if p]
         rows.append((a.game, r["challenge_ea_id"], today, aid, "ok",
-                     json.dumps({"formation": form, "players": squad}, ensure_ascii=False),
+                     json.dumps({"formation": form, "formation_known": bool(known),
+                                 "players": squad}, ensure_ascii=False),
                      team_rating([p["ovr"] for p in xi]), ch, len(cands), None, src, conf))
     for r, _x, size, cands, conds, best in no:
         imp = len(cands) < size
