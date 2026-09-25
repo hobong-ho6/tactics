@@ -398,3 +398,13 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .sbc-mf .bn{position:absolute;left:0;top:5px;width:18px;height:18px;line-height:18px;text-align:center;
   border-radius:50%;background:var(--line);font-size:10px;font-weight:800}
 .sbc-mf .pos{color:var(--ok)}
+
+/* 대체 가능 카드 — 칸별로 접어 둔다(2026-09-25). 기본은 접힘: 해법을 먼저 보고, 바꾸고 싶을 때 편다. */
+.sbc-alt{font-size:11.5px;margin-top:6px;border:1px solid var(--line);border-radius:8px;padding:5px 8px}
+.sbc-alt summary{cursor:pointer;list-style:none}
+.sbc-alt ul{margin:5px 0 0;padding-left:2px;list-style:none}
+.sbc-alt li{padding:3px 0;border-top:1px solid var(--line);line-height:1.8}
+.sbc-alt li:first-child{border-top:0}
+.altc{display:inline-block;margin:0 3px 2px 0;padding:1px 6px;border-radius:99px;
+  border:1px solid var(--line);background:rgba(255,255,255,.04);white-space:nowrap}
+.altc i{font-style:normal;font-size:9.5px;color:var(--dim)}

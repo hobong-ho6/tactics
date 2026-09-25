@@ -2153,6 +2153,23 @@ const misfitHTML = xi => {
     ${still ? `<div class="dn" style="font-size:11.5px">⛔ 그래도 남는 조건: ${still.map(esc).join(' / ')}
       <small class="dim">— 이건 카드 한 장으로 안 풀린다(스쿼드 구성 자체를 바꿔야 한다).</small></div>` : ''}</div>`;
 };
+/* ⭐ 칸마다 **바꿔 넣어도 되는 보유 카드**(2026-09-25 사용자 지시 「스쿼드 구성원 중에 대체선수가
+   가능한 경우는 sbc 해당 선수 포지션에 대체선수들도 목록을 보여줘」).
+   ⛔ 「포지션만 같은 카드」가 아니다 — 솔버가 **실제로 넣어 보고 조건·케미가 전부 통과한 것만** 준다.
+   ⚠️ OVR 낮은 순이다. 시세를 모르니(fut.gg가 FC27 가격을 주지 않는다) 「싼 순」이라고 적지 않는다. */
+const altHTML = xi => {
+  const alt = xi.alt || {}, keys = Object.keys(alt);
+  if (!keys.length) return '';
+  const total = keys.reduce((s, k) => s + alt[k].n, 0);
+  return `<details class="sbc-alt"><summary>🔁 <b>바꿔 넣을 수 있는 카드</b>
+      <small class="dim">— ${keys.length}칸 · 총 ${total}명. 넣어 봐서 <b>조건·케미가 그대로 통과</b>한 것만 적었다.</small></summary>
+    <ul>${keys.map(k => `<li><b>${esc(k)}</b> <span class="dim">지금 ${esc(alt[k].of)}</span> →
+      ${alt[k].list.map(a => `<span class="altc" title="${esc(a.club || '—')} · ${esc(a.league || '—')} · ${esc(a.nation || '—')}${
+        a.chem != null ? ` · 바꾸면 케미 ${a.chem}` : ''}">${esc(a.name)} <b>${a.ovr}</b>${
+        a.untradeable ? ' <i>거래불가</i>' : ''}</span>`).join('')}
+      ${alt[k].n > alt[k].list.length ? `<span class="dim">외 ${alt[k].n - alt[k].list.length}명</span>` : ''}</li>`).join('')}</ul>
+    </details>`;
+};
 let SBC_F = 'all';
 const SBC_OPEN = new Set();          // 완료분을 펼쳐 둔 세트
 function renderSbc(){
@@ -2321,6 +2338,7 @@ function renderSbc(){
                   <span class="msg-slot" id="sbcm${c.challenge_ea_id}"></span></div>
                 <div class="sbc-pitch" id="sbcp${c.challenge_ea_id}">${
                   sq.length ? pitchHTML(sq, c.challenge_ea_id) : shapeHTML(SBC_SLOTS[form] || [])}</div>
+                ${altHTML(xi)}
                 ${misfitHTML(xi)}
                 ${exclHTML(c.challenge_ea_id)}
                 ${!sq.length ? '' : `<details style="margin-top:4px" id="sbct${c.challenge_ea_id}"><summary class="dim" style="cursor:pointer">표로 보기</summary>

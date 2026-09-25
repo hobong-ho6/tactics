@@ -431,6 +431,47 @@ def buy_specs(xi, pl, conds, pool):
     return out
 
 
+def alternatives(xi, pl, conds, pool, limit=8):
+    """⭐ 칸마다 **바꿔 넣어도 여전히 되는 보유 카드**를 찾는다(2026-09-25 사용자 지시
+       「스쿼드 구성원 중에 대체선수가 가능한 경우는 sbc 해당 선수 포지션에 대체선수들도 목록을 보여줘」).
+
+    왜 필요한가: 해법이 한 벌만 나오면 **아끼고 싶은 카드가 거기 끼어 있을 때** 손댈 수가 없다.
+      제출하면 카드는 영구히 사라지므로 「이 자리는 저 카드로도 된다」가 실제 의사결정이다.
+
+    무엇을 「된다」로 보나 — **바꾼 뒤 스쿼드 전체가 그대로 통과**해야 한다:
+      ⑴ 그 칸에 설 수 있는 포지션일 것(아니면 케미 0이 되어 대개 케미 조건이 깨진다)
+      ⑵ 1인 조건(등급·OVR·리그) 통과
+      ⑶ `check()` 전항 통과 + **배치 반영 케미** 재검증
+    ⛔ 「포지션만 같으면 대체」로 적지 않는다 — 클럽·리그·국적이 달라 케미가 깨지는 경우가 흔하다.
+       실제로 넣어 보고 통과한 것만 목록에 넣는다(등급 C — 우리 계산).
+    ⭐ 정렬은 **OVR 낮은 순**이다. 같은 값이면 덜 아까운 카드를 내는 게 낫다(가치 축은 우리가 모른다 —
+       fut.gg가 FC27 시세를 주지 않는다. 그래서 「싼 순」이 아니라 「낮은 순」이라고 적는다)."""
+    out, in_squad = {}, {p["id"] for p in xi}
+    cands = [p for p in pool if p["id"] not in in_squad and per_player_ok(p, conds)]
+    for nm, _x, _y, old, _ok, want in pl:
+        if not old:
+            continue
+        wset = set(want)
+        alt = []
+        for c in cands:
+            if not (positions_of(c) & wset):
+                continue
+            trial = [c if p["id"] == old["id"] else p for p in xi]
+            fail, _cost = check(trial, conds)
+            if fail:
+                continue
+            okch, info = chem_ok(trial, conds)
+            if not okch:
+                continue
+            alt.append({"id": c["id"], "name": c["name"], "ovr": c["ovr"], "club": c["club"],
+                        "league": c["league"], "nation": c["nation"], "card": c["card_image_url"],
+                        "untradeable": c["is_untradeable"], "chem": info[0] if info else None})
+        if alt:
+            alt.sort(key=lambda r: (r["ovr"] or 0))
+            out[nm] = {"of": old["name"], "n": len(alt), "list": alt[:limit]}
+    return out
+
+
 FORM_OF = {}          # challenge_ea_id → 기록된 포메이션. main()이 채운다
 CUR_FORM = [None]     # 지금 푸는 챌린지의 포메이션(없으면 None)
 
@@ -791,7 +832,8 @@ def main():
         rows.append((a.game, r["challenge_ea_id"], today, aid, "ok",
                      json.dumps({"formation": form, "formation_known": bool(known), "partial": False,
                                  "players": squad, "checks": breakdown(xi, _cd, ch),
-                                 "buy": buy_specs(xi, pl, _cd, pool)}, ensure_ascii=False),
+                                 "buy": buy_specs(xi, pl, _cd, pool),
+                                 "alt": alternatives(xi, pl, _cd, pool)}, ensure_ascii=False),
                      team_rating([p["ovr"] for p in xi]), ch, len(cands), None, src, conf))
     # ⭐⭐ **못 풀어도 최선 스쿼드를 남긴다**(2026-09-25 사용자 지시 「못 풀더라도 현재 스쿼드 기준으로
     #    채울 수 있는 선수들을 채우고 / 만족한 조건과 불만족한 조건을 알려주고 / 어떤 조건을 사야 하는지」).
