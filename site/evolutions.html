@@ -43,6 +43,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
   <button class="act ghost" data-tab="chem">케미스트리</button>
   <button class="act ghost" data-tab="cat">진화 카탈로그</button>
   <button class="act ghost" data-tab="paths">선수별 진화 패스</button>
+  <button class="act ghost" data-tab="sbc">SBC</button>
   <button class="act ghost" data-tab="tactic">전술 구현 · 구매 우선순위</button>
 </div>
 
@@ -85,6 +86,18 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
     <div id="owned"></div></div>
   <div class="panel"><h2>진화 기록 <small class="dim">— fut_evolution_log (시간순) · club-sync가 못 가져오는 축</small></h2>
     <ul class="timeline" id="log"></ul></div>
+</section>
+
+<section data-tab="sbc" style="display:none">
+  <div class="panel"><h2>SBC <small class="dim" id="sbcn"></small></h2>
+    <p class="dim" style="font-size:12px;margin:0 0 8px">
+      조건·보상·마감은 <b>fut.gg 원문</b>이다(등급 A). 달성 판정은 <b>내 보유 카드</b>로 우리가 푼 것이고,
+      카드 등급(Bronze/Silver/Gold)과 팀 레이팅 산식은 <b>등급 D</b>(EA가 공개한 적 없다).<br>
+      ⛔ <b>「못 찾음」은 「불가능」이 아니다</b> — 탐색이 최적을 보장하지 않는다. 1인 조건을 통과하는 카드가
+      인원보다 적을 때만 <b>불가 확정</b>으로 적는다.<br>
+      ⚠️ <b>내가 이미 완료했는지는 여기 없다</b> — EA는 SBC 완료 여부를 주지 않는다(아래 주석 참조).</p>
+    <div class="filterbar" id="sbcfilters"></div>
+    <div id="sbc"></div></div>
 </section>
 
 <section data-tab="chem" style="display:none">
@@ -1982,6 +1995,75 @@ function renderClub(){
     || '<li class="dim">기록 없음</li>';
 }
 
-renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic();
+/* ── SBC (2026-09-25 신설, 사용자 지시 「sbc 메뉴를 만들고」) ─────────────────
+   ⛔ 여기서 풀지 않는다 — 판정은 `scripts/sbc_solve.py --save`가 하고 export가 실어 온다.
+      탐색이라 매번 풀면 느리고 **새로고침마다 답이 달라진다**.
+   ⚠️⚠️ **「내가 완료한 SBC」는 여기 없다**(2026-09-25 실측으로 확인):
+      · EA/GG Club 싱크는 SBC 완료 여부를 **주지 않는다**.
+      · fut.gg에 「Mark as Completed」 수동 표시가 있고 `/api/fut/gg-club/?game=27`의 `sbcs`·`sbcChallenges`로
+        읽을 수는 있다 — 그런데 그건 **사용자가 직접 누른 표시**이지 게임 데이터가 아니다.
+        실측: 진화를 6명에게 실제로 했는데도 같은 응답의 `evolutions`는 **빈 배열**이었다. ⇒ EA 동기화가 아니다.
+      ⇒ 완료 여부를 원장에 넣으려면 **우리가 기록**해야 한다(진화 로그와 같은 축). 지금은 넣지 않았다. */
+const SBC = EVO.sbc || { sets: [], challenges: [] };
+const VERDICT = {
+  ok:         { k: '✅ 달성 가능', c: 'hi' },
+  impossible: { k: '⛔ 불가 확정', c: 'mid' },
+  not_found:  { k: '⚠️ 못 찾음', c: 'mid' },
+  oneclick:   { k: '↗ 원클릭 제출', c: '' },
+  unparsed:   { k: '❔ 판정 안 함', c: 'dim' },
+};
+let SBC_F = 'all';
+function renderSbc(){
+  const chs = SBC.challenges || [];
+  const byset = {}; for (const c of chs) (byset[c.set_ea_id] ??= []).push(c);
+  const cnt = chs.reduce((m, c) => (m[c.verdict || 'unparsed'] = (m[c.verdict || 'unparsed'] || 0) + 1, m), {});
+  const live = (SBC.sets || []).filter(s => !s.is_expired);
+  document.getElementById('sbcn').textContent =
+    `— ${live.length}세트 · ${chs.length}챌린지 · 달성 가능 ${cnt.ok || 0} · 판정일 ${chs.find(c => c.solved_at)?.solved_at || '—'}`;
+  const fb = document.getElementById('sbcfilters');
+  fb.innerHTML = [['all', `전체 ${chs.length}`], ['ok', `달성 가능 ${cnt.ok || 0}`],
+                  ['oneclick', `원클릭 ${cnt.oneclick || 0}`],
+                  ['no', `불가·못 찾음 ${(cnt.impossible || 0) + (cnt.not_found || 0)}`]]
+    .map(([k, t]) => `<button class="filt${SBC_F === k ? ' on' : ''}" data-f="${k}"><i>${SBC_F === k ? '☑' : '☐'}</i>${t}</button>`).join('');
+  fb.querySelectorAll('[data-f]').forEach(b => b.addEventListener('click', () => { SBC_F = b.dataset.f; renderSbc(); }));
+  const keep = c => SBC_F === 'all' || (SBC_F === 'no' ? ['impossible', 'not_found'].includes(c.verdict) : c.verdict === SBC_F);
+  const days = t => { if (!t) return ''; const d = Math.ceil((new Date(t) - Date.now()) / 86400000);
+    return d < 0 ? '만료' : d <= 3 ? `<b class="dn">${d}일 남음</b>` : d > 3000 ? '상시' : `${d}일 남음`; };
+  document.getElementById('sbc').innerHTML = (SBC.sets || []).map(st => {
+    const list = (byset[st.set_ea_id] || []).filter(keep);
+    if (!list.length) return '';
+    const aw = (J(st.awards_text, []) || []).map(x => esc(x.name)).join(' · ');
+    return `<div class="applied-box" style="margin:8px 0">
+      <b>${esc(st.name)}</b> <span class="chip dim">${esc(st.category || '')}</span>
+      ${st.is_repeatable ? '<span class="chip">반복</span>' : ''}
+      <span class="chip${/dn/.test(days(st.end_time)) ? '' : ' dim'}">${days(st.end_time)}</span>
+      ${aw ? `<small class="dim"> 보상 ${aw}</small>` : ''}
+      ${st.description ? `<div class="dim" style="font-size:12px;margin-top:2px">${esc(st.description)}</div>` : ''}
+      ${list.map(c => {
+        const v = VERDICT[c.verdict || 'unparsed'];
+        const xi = J(c.squad_json, []) || [];
+        return `<details class="path pcard" style="margin:6px 0"${c.verdict === 'ok' ? '' : ''}>
+          <summary class="kv"><span class="badge ${v.c}">${v.k}</span> <b>${esc(c.name)}</b>
+            ${(J(c.awards_text, []) || []).length ? `<small class="dim">보상 ${(J(c.awards_text, []) || []).map(x => esc(x.name)).join(' · ')}</small>` : ''}
+            ${c.pool_size != null ? `<span class="chip dim" title="1인 조건(등급·OVR·리그)을 통과하는 내 보유 카드 수">통과 카드 ${c.pool_size}</span>` : ''}</summary>
+          <div style="padding:6px 2px">
+            <div style="font-size:12px"><b>조건</b> <small class="dim">— fut.gg 원문</small>
+              <ul style="margin:3px 0 0;padding-left:18px">${(J(c.requirements_text, []) || [])
+                .map(t => `<li>${esc(t)}</li>`).join('')}</ul></div>
+            ${c.note ? `<div class="dim" style="font-size:12px;margin-top:5px">${esc(c.note)}</div>` : ''}
+            ${xi.length ? `<div style="font-size:12px;margin-top:6px"><b>이 스쿼드로 된다</b>
+              <small class="dim">— 팀 레이팅 ${c.team_rating} · 케미 ${c.chem_total}</small>
+              <table class="tbl" style="margin-top:4px"><thead><tr><th>OVR</th><th>선수</th><th>클럽</th><th>리그</th><th>국적</th></tr></thead><tbody>
+              ${xi.slice().sort((a, b) => b.ovr - a.ovr).map(p => `<tr><td><b>${p.ovr}</b></td>
+                <td>${esc(p.name)}${p.untradeable ? ' <span class="chip dim">거래불가</span>' : ''}</td>
+                <td class="dim">${esc(p.club || '—')}</td><td class="dim">${esc(p.league || '—')}</td>
+                <td class="dim">${esc(p.nation || '—')}</td></tr>`).join('')}</tbody></table></div>` : ''}
+            ${c.solve_conf ? `<div class="dim" style="font-size:11px;margin-top:5px">${esc(c.solve_conf)}</div>` : ''}
+          </div></details>`;
+      }).join('')}</div>`;
+  }).join('') || '<span class="dim">이 필터에 해당하는 챌린지가 없다.</span>';
+}
+
+renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc();
 </script>
 </body></html>

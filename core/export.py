@@ -281,6 +281,27 @@ def export_all(db_path=None, window="2026-summer"):
           LEFT JOIN player_card_items i ON i.ea_item_id=c.ea_item_id
           LEFT JOIN players pl ON pl.id=c.player_id
          WHERE c.status='owned' AND c.player_id IS NOT NULL""")
+    # ⭐⭐ SBC(migration 066·067) — 세트/챌린지 원문 조건 + **보유 카드 기준 판정 결과**.
+    #    ⛔ 판정은 화면이 매번 풀지 않는다 — 탐색이라 느리고 새로고침마다 답이 바뀐다.
+    #       `sbc_solve.py --save`가 적어 둔 최신 판정을 그대로 내보낸다(verdict 다섯 값의 뜻은 migration 067).
+    #    ⚠️ 만료된 세트는 빼지 않는다 — 화면이 `is_expired`로 갈라 보여 준다.
+    sbc_sets = _rows(con, """SELECT set_ea_id, name, slug, description, category, end_time, is_expired,
+                                    is_repeatable, repeat_refresh_text, challenges_count, awards_text, url
+                               FROM fc_sbc_sets WHERE game_version='FC27'
+                                AND pulled=(SELECT MAX(pulled) FROM fc_sbc_sets WHERE game_version='FC27')
+                              ORDER BY is_expired, end_time""")
+    sbc_ch = _rows(con, """SELECT c.set_ea_id, c.challenge_ea_id, c.name, c.description, c.challenge_type,
+                                  c.requirements_text, c.awards_text, c.cheapest_price,
+                                  s.verdict, s.squad_json, s.team_rating, s.chem_total, s.pool_size, s.note,
+                                  s.pulled solved_at, s.confidence solve_conf
+                             FROM fc_sbc_challenges c
+                             LEFT JOIN fc_sbc_solutions s ON s.challenge_ea_id=c.challenge_ea_id
+                                  AND s.game_version=c.game_version
+                                  AND s.pulled=(SELECT MAX(pulled) FROM fc_sbc_solutions WHERE game_version='FC27')
+                            WHERE c.game_version='FC27'
+                              AND c.pulled=(SELECT MAX(pulled) FROM fc_sbc_challenges WHERE game_version='FC27')
+                            ORDER BY c.set_ea_id, c.challenge_ea_id""")
+
     # ⭐⭐ 경기 기록·자산 축(migration 061) — GG Club 보유행이 주는 **EA 실측**이다.
     #    ⛔ 누적값이라 **최신 pulled만** 내보낸다(추이는 DB에 남는다 — 화면이 쌓인 걸 다 읽을 이유가 없다).
     #    ⚠️ `games_played`는 현재 보유분 기준, `lifetime_*`은 카드 일생 누적이라 다를 수 있다.
@@ -377,7 +398,8 @@ def export_all(db_path=None, window="2026-summer"):
                            "club": {"accounts": accounts, "players": club, "log": log,
                                      # ⭐ 화면이 「현재」를 각자 고르지 않게 하는 정본(위 주석)
                                      "state": {str(r["player_id"]): r for r in club_state},
-                                     "stats": club_stats, "unlocks": unlocks}}))
+                                     "stats": club_stats, "unlocks": unlocks},
+                           "sbc": {"sets": sbc_sets, "challenges": sbc_ch}}))
 
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──
     # ⭐ 세 층을 그대로 내보낸다: 메타(파싱) · obs_points(검증된 판정) · summary/key_points(사람 요약).

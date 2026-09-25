@@ -1064,3 +1064,16 @@ CREATE TABLE fc_sbc_challenges(
   PRIMARY KEY(game_version, challenge_ea_id, pulled)
 );
 CREATE INDEX ix_sbc_ch_set ON fc_sbc_challenges(set_ea_id, pulled);
+CREATE TABLE fc_sbc_solutions(
+  game_version    TEXT NOT NULL REFERENCES game_versions(code),
+  challenge_ea_id INTEGER NOT NULL,
+  pulled          TEXT NOT NULL,          -- 판정일 = 그날의 보유 카드 기준이라는 뜻
+  account_id      INTEGER REFERENCES fut_accounts(id),
+  verdict         TEXT NOT NULL CHECK(verdict IN ('ok','impossible','not_found','oneclick','unparsed')),
+  squad_json      TEXT,                   -- 찾은 스쿼드(선수 id·이름·OVR·클럽·리그·국적)
+  team_rating     INTEGER, chem_total INTEGER,
+  pool_size       INTEGER,                -- 1인 조건을 통과한 보유 카드 수
+  note            TEXT,                   -- 못 맞춘 조건·못 읽은 문장 등
+  source TEXT, confidence TEXT,
+  PRIMARY KEY(game_version, challenge_ea_id, pulled)
+);

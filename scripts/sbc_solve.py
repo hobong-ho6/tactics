@@ -200,6 +200,7 @@ def main():
     ap.add_argument("--set", type=int, help="세트 ea_id 하나만")
     ap.add_argument("--tries", type=int, default=400)
     ap.add_argument("--seed", type=int, default=7)
+    ap.add_argument("--save", action="store_true", help="판정 결과를 fc_sbc_solutions에 적는다(화면이 읽는다)")
     a = ap.parse_args()
     rng = random.Random(a.seed)
 
@@ -268,6 +269,47 @@ def main():
                 print(f"         · {t}")
     for r, bad in undec:
         print(f"\n⚠️ {head(r)} — 못 읽은 조건 {len(bad)}개(판정 안 함): {' / '.join(bad)}")
+
+    if not a.save:
+        print("\n(--save 를 주면 화면이 읽도록 fc_sbc_solutions에 적는다)")
+        return
+    import datetime as _dt
+    today = _dt.date.today().isoformat()
+    acc = con.execute("SELECT id FROM fut_accounts ORDER BY id LIMIT 1").fetchone()
+    aid = acc["id"] if acc else None
+    src = f"scripts/sbc_solve.py (보유 {len(pool)}장 기준, {today} 판정 · seed {a.seed} · tries {a.tries})"
+    conf = ("판정 근거 등급: 조건·보상=A(fut.gg) · 카드 등급(Bronze/Silver/Gold)=D(OVR 구간 통설) · "
+            "팀 레이팅 산식=D(EA 비공개·커뮤니티식) · 케미=화면과 같은 FC27 기준선. "
+            "⛔ not_found는 불가 증명이 아니다 — 탐색이 최적을 보장하지 않는다.")
+    rows = []
+    slim = lambda p: {"id": p["id"], "name": p["name"], "ovr": p["ovr"], "club": p["club"],
+                      "league": p["league"], "nation": p["nation"], "untradeable": p["is_untradeable"]}
+    for r, xi, size, cands, _cd, _b in ok:
+        rows.append((a.game, r["challenge_ea_id"], today, aid, "ok",
+                     json.dumps([slim(p) for p in xi], ensure_ascii=False),
+                     team_rating([p["ovr"] for p in xi]), chem_total(xi), len(cands), None, src, conf))
+    for r, _x, size, cands, conds, best in no:
+        imp = len(cands) < size
+        rows.append((a.game, r["challenge_ea_id"], today, aid, "impossible" if imp else "not_found",
+                     None, None, None, len(cands),
+                     (f"1인 조건 통과 카드 {len(cands)}장 < 필요 {size}명" if imp
+                      else "남은 위반: " + " / ".join(best[0]) if best else "해를 못 찾았다"), src, conf))
+    for r, conds, cs in oneclick:
+        rows.append((a.game, r["challenge_ea_id"], today, aid, "oneclick", None, None, None, len(cs),
+                     "원클릭 제출 — fut.gg가 제출 인원을 주지 않아 인원 판정을 하지 않는다", src, conf))
+    for r, bad in undec:
+        rows.append((a.game, r["challenge_ea_id"], today, aid, "unparsed", None, None, None, None,
+                     "못 읽은 조건: " + " / ".join(bad), src, conf))
+    con.executemany("""INSERT INTO fc_sbc_solutions(game_version,challenge_ea_id,pulled,account_id,verdict,
+                         squad_json,team_rating,chem_total,pool_size,note,source,confidence)
+                       VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
+                       ON CONFLICT(game_version,challenge_ea_id,pulled) DO UPDATE SET
+                         verdict=excluded.verdict, squad_json=excluded.squad_json,
+                         team_rating=excluded.team_rating, chem_total=excluded.chem_total,
+                         pool_size=excluded.pool_size, note=excluded.note, source=excluded.source""", rows)
+    con.commit()
+    print(f"\n적재 {len(rows)}행 → fc_sbc_solutions ({today})")
+    print("다음: python3 scripts/export.py")
 
 
 if __name__ == "__main__":
