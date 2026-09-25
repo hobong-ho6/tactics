@@ -156,8 +156,18 @@ def rows_of(players):
     return out
 
 
+def slots_of(squad):
+    """/api/gg-club/active-squad/ 응답에서 슬롯 리스트만 꺼낸다.
+    ⭐ 봉투가 `{data:{data:{activeGroupPositions:[…]}}}`라 --raw-file로 원본을 그대로 먹이면
+       리스트가 아니라 dict가 들어온다(2026-09-25 실측). 벗기는 자리를 여기 하나로 둔다."""
+    while isinstance(squad, dict):
+        squad = squad.get("activeGroupPositions") or squad.get("data") or []
+    return squad
+
+
 def apply_squad(squad, account_id):
     """활성 스쿼드 슬롯 반영. FIELD→XI · SUBSTITUTE→BENCH (기존 표 어휘를 유지한다)."""
+    squad = slots_of(squad)
     grp_of = {"FIELD": "XI", "SUBSTITUTE": "BENCH"}
     con = sqlite3.connect(DB)
     con.execute("DELETE FROM fut_squad_slots WHERE account_id=?", (account_id,))
@@ -245,6 +255,7 @@ def main():
 
 
 def write_out(rows, squad, a, pages):
+    squad = slots_of(squad)
     uniq = {r["gg"] for r in rows}
     Path(a.out).write_text(json.dumps(rows, ensure_ascii=False, indent=0), encoding="utf-8")
     print(f"수집 {len(rows)}명(고유 {len(uniq)}) · {pages}페이지 · 스쿼드 슬롯 {len(squad)} → {a.out}")
