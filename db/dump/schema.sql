@@ -1036,3 +1036,31 @@ WHERE tt.map25 IS NOT NULL
       AND se2.slot_type=sl.slot_type
   )
 /* v_slot_candidates(regime_id,team_code,formation,pos,slot_type,player_id,label,name_en,name_kr,source_kind,status,map25,rating,rate_basis,rate_note,fit_role,fit_focus,fit_sim,source,confidence,sort_order,grid_club,grid_caveat) */;
+CREATE TABLE fc_sbc_sets(
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  set_ea_id    INTEGER NOT NULL,
+  pulled       TEXT NOT NULL,              -- 수집일 — SBC는 기간제라 시점이 정본이다
+  name TEXT NOT NULL, slug TEXT, description TEXT,
+  category TEXT,                           -- players / upgrades / challenges / foundations …
+  end_time TEXT, is_expired INTEGER NOT NULL DEFAULT 0,
+  is_repeatable INTEGER, repeatability_mode TEXT, number_of_repeats INTEGER,
+  repeat_refresh_text TEXT,
+  challenges_count INTEGER,
+  awards_text TEXT,                        -- 세트 보상 표기(JSON)
+  url TEXT, source TEXT, confidence TEXT,
+  PRIMARY KEY(game_version, set_ea_id, pulled)
+);
+CREATE TABLE fc_sbc_challenges(
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  set_ea_id       INTEGER NOT NULL,
+  challenge_ea_id INTEGER NOT NULL,
+  pulled TEXT NOT NULL,
+  name TEXT NOT NULL, description TEXT,
+  challenge_type TEXT, eligibility_op TEXT,   -- AND / OR — 조건을 어떻게 묶는지
+  requirements_text TEXT,                     -- ⭐ fut.gg 원문 배열(JSON) — 판정의 원료
+  awards_text TEXT,
+  cheapest_price INTEGER,                     -- fut.gg가 계산한 최저 해법 가격(참고용 · 우리 계산 아님)
+  source TEXT, confidence TEXT,
+  PRIMARY KEY(game_version, challenge_ea_id, pulled)
+);
+CREATE INDEX ix_sbc_ch_set ON fc_sbc_challenges(set_ea_id, pulled);
