@@ -35,7 +35,16 @@ class NoCacheHandler(SimpleHTTPRequestHandler):
             self.send_error(404); return
         cmd = self.path[len("/api/fut/"):].strip("/")
         body = json.loads(self.rfile.read(int(self.headers.get("Content-Length") or 0)) or b"{}")
+        # ⛔⛔ **매 요청마다 다시 읽는다**(2026-09-26). 파이썬은 모듈을 한 번만 import하므로,
+        #    서버가 뜬 뒤에 `fut_club.py`에 명령을 추가하면 **서버를 재시작할 때까지 없는 명령**이다.
+        #    증상이 고약하다 — 화면에 `KeyError`가 `'sbc_submit'` 한 줄로만 떠서 「기능이 안 된다」로 보인다.
+        #    2026-09-25 `sbc_exclude`, 2026-09-26 `sbc_submit` — **두 번 같은 일이 났다**.
+        #    ⇒ 「고치면 서버를 재시작하자」는 규율로 막지 않는다(불변규칙 13 ①). 로컬 프리뷰 전용이고
+        #      한 요청이 수십 초 걸리는 경로라, 리로드 비용은 사실상 0이다.
+        import importlib
+
         from scripts import fut_club
+        fut_club = importlib.reload(fut_club)
         from core import DB
         out = io.StringIO()
         try:
