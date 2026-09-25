@@ -209,6 +209,38 @@ def _get(url):
         return json.load(r)
 
 
+# ⛔ 그룹 조건(클럽·리그·국적 편중)은 **아무 싼 카드나 사서 풀리지 않는다** — 어느 축을 채워야 하는지가 답이다.
+#    카드 목록을 던지면 「이걸 사면 된다」로 오독되므로, 그런 조건은 **문장으로** 짚는다.
+GROUP_HINT = {
+    ("same", "Min"):  "같은 {f} 선수를 더 확보해야 한다 — 아무 싼 카드나로는 안 풀린다",
+    ("same", "Max"):  "한 {f}에 쏠린 인원을 줄여야 한다 — 다른 {f} 카드가 필요하다",
+    ("distinct", "Min"): "{f} 종류를 더 늘려야 한다",
+    ("distinct", "Max"): "{f} 종류를 줄여야 한다 — 이미 쓰는 {f}에서 더 사 모아야 한다",
+    ("distinct", "Exact"): "{f} 종류를 정확히 맞춰야 한다",
+}
+FIELD_KR = {"club": "클럽", "league": "리그", "nation": "국적",
+            "Clubs": "클럽", "Leagues": "리그", "Nationalities": "국적"}
+
+
+def group_hints(fails, conds):
+    """못 맞춘 조건 중 **그룹 축**을 골라 사람이 읽을 조언으로 바꾼다."""
+    out = []
+    for (kind, v), text in conds:
+        if text not in fails:
+            continue
+        if kind == "same":
+            mode, _k, f = v
+            out.append((text, GROUP_HINT[("same", mode)].format(f=FIELD_KR.get(f, f))))
+        elif kind == "distinct":
+            mode, fld, _k = v
+            out.append((text, GROUP_HINT[("distinct", mode)].format(f=FIELD_KR.get(fld, fld))))
+        elif kind == "chem":
+            out.append((text, "케미가 모자란다 — 같은 클럽·리그·국적을 묶어야 오른다"))
+        elif kind == "rating":
+            out.append((text, "팀 레이팅이 모자란다 — OVR 높은 카드가 필요하다"))
+    return out
+
+
 def buy_candidates(conds, want, limit=6):
     """조건을 만족하는 **싼 카드**를 fut.gg에서 찾는다. want = 몇 명이 필요한가."""
     q = []
@@ -219,6 +251,9 @@ def buy_candidates(conds, want, limit=6):
         elif kind == "qual_exact" and v == 0: q.append("overall__lte=64")
         elif kind == "qual_exact" and v == 1: q.append("overall__gte=65&overall__lte=74")
         elif kind == "qual_min" and v == 2: q.append("overall__gte=75")
+    # ⭐ `sorts=overall`이 **오름차순**이다(2026-09-25 실측: 75,75,75… / `-overall`이면 95,95,94…).
+    #    ⛔ 빼면 fut.gg 기본 정렬(인기순으로 보임)이 와서 88~90 아이콘이 「싼 후보」로 찍힌다.
+    q.append("sorts=overall")
     try:
         d = _get(f"{FUTGG}/players/v2/27/?" + "&".join(q or ["overall__lte=64"]))
     except Exception as e:
@@ -261,6 +296,9 @@ def main():
     ap.add_argument("--include-squad", action="store_true",
                     help="활성 스쿼드(선발+교체) 선수도 후보에 넣는다. 기본은 **제외**한다 — 쓰고 있는 카드다")
     ap.add_argument("--buy", action="store_true", help="보유분으로 안 되는 챌린지에 **싼 구매 후보**를 붙인다(fut.gg 조회)")
+    ap.add_argument("--protect-club", nargs="*", default=["Aston Villa"],
+                    help="SBC에 내지 않을 클럽(기본 아스톤 빌라 — 내 팀 축이라 소모하면 안 된다). "
+                         "--protect-club 만 쓰면 보호 없음")
     a = ap.parse_args()
     rng = random.Random(a.seed)
 
@@ -281,6 +319,13 @@ def main():
     if not a.include_squad:
         pool = [p for p in pool if p["ea_item_id"] not in squad_ids]
         print(f"⛔ 활성 스쿼드 {len(in_squad)}명 제외 — 남은 후보 {len(pool)}장 (넣으려면 --include-squad)")
+    # ⭐⭐ **보호 클럽**(2026-09-25 사용자 지시 「아스톤 빌라 선수는 제외하고 재구성」).
+    #    ⛔ 빌라는 이 저장소의 주 팀 축이다 — SBC에 내면 감독 재현·처방 대조에 쓰던 카드가 사라진다.
+    #       활성 스쿼드 밖이라도 빼는 이유가 그것이다(실측: 빌라 25장 중 활성 밖이 5장).
+    if a.protect_club:
+        prot = [p for p in pool if p["club"] in a.protect_club]
+        pool = [p for p in pool if p["club"] not in a.protect_club]
+        print(f"⛔ 보호 클럽 {'·'.join(a.protect_club)} {len(prot)}명 제외 — 남은 후보 {len(pool)}장")
     miss = [p["name"] for p in pool if not p["club"] or not p["league"] or not p["nation"]]
     print(f"후보 카드 {len(pool)}장" + (f" · ⚠️ 클럽/리그/국적 결손 {len(miss)}장은 그룹 조건에서 빠진다: "
                                         f"{', '.join(miss[:5])}{' …' if len(miss) > 5 else ''}" if miss else ""))
@@ -337,8 +382,11 @@ def main():
     for r, _x, size, cands, conds, best in no:
         print(f"\n❌ {head(r)}  [{size}명 필요 · 조건 통과 카드 {len(cands)}장]")
         if a.buy:
+            hints = group_hints(set(best[0]) if best else set(), conds)
+            for t, h in hints:
+                print(f"     └ 🎯 「{t}」 → {h}")
             need = max(0, size - len(cands))
-            cb, err = buy_candidates(conds, need or 3)
+            cb, err = ([], None) if hints else buy_candidates(conds, need or 3)
             if err and not cb:
                 print(f"     └ 구매 후보: {err}")
             elif cb:
