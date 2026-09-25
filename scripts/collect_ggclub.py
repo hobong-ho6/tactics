@@ -148,6 +148,9 @@ def rows_of(players):
                              "h": q.get("height"), "w": q.get("weight"), "dob": q.get("dateOfBirth"),
                              "nat": nm_of(q.get("nation")), "lg": nm_of(q.get("league")),
                              "club": nm_of(q.get("club")),
+                             # ⚠️ 겉모습 축이다(migration 066) — 성능 판단에 쓰지 않는다.
+                             #    `is` 대신 원값을 그대로 넘긴다: 없으면 NULL(미수집)로 남겨야 한다.
+                             "face": None if q.get("isRealFace") is None else int(q.get("isRealFace")),
                              "rar": nm_of(q.get("rarity")), "rar_ea": (q.get("rarity") or {}).get("eaId")}})
     out.sort(key=lambda r: r["ea"] or 0)
     return out

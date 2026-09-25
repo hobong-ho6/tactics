@@ -193,6 +193,7 @@ def main():
     CARD_COLS = [("base_ea_id", "base"), ("futgg_url", "url"), ("skill_moves", "sm"), ("weak_foot", "wf"),
                  ("preferred_foot", "foot"), ("height_cm", "h"), ("weight_kg", "w"), ("birthdate", "dob"),
                  ("nation", "nat"), ("league", "lg"), ("club", "club"),
+                 ("is_real_face", "face"),
                  ("rarity_name", "rar"), ("rarity_ea_id", "rar_ea")]
     filled, made = 0, []
     for r in rows:

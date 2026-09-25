@@ -328,6 +328,9 @@ def export_all(db_path=None, window="2026-summer"):
                                 -- 스킬무브·약발·주발(2026-09-21 사용자 요청) — 카드 표에만 있다.
                                 c.skill_moves, c.weak_foot, c.preferred_foot, c.accelerate,
                                 c.height_cm, c.weight_kg, c.birthdate,
+                                -- 리얼페이스 여부(migration 066) — ⚠️ 겉모습 축이라 성능 판단에 쓰지 않는다.
+                                --    NULL(미수집)과 0(제네릭 확인)을 화면에서도 구분해 쓴다.
+                                c.is_real_face,
                                 f.chem_style_ea, f.chem_points, f.synced_at
                          FROM fut_club_players f
                          LEFT JOIN player_card_items c ON c.ea_item_id=f.ea_item_id AND c.game_version='FC27'

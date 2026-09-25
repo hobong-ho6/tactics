@@ -135,6 +135,9 @@ def main():
                 roles_plus_plus=json.dumps(it.get("rolesPlusPlus") or []),
                 skill_moves=it.get("skillMoves"), weak_foot=it.get("weakFoot"),
                 height_cm=it.get("height"), weight_kg=it.get("weight"), birthdate=it.get("dateOfBirth"),
+                # ⚠️ 겉모습 축이다(migration 066) — 성능 판단에 쓰지 않는다.
+                #    False를 0으로 남기려면 원값의 None 여부를 먼저 본다(결손과 「제네릭 확인」은 다른 사실이다).
+                is_real_face=None if it.get("isRealFace") is None else int(it["isRealFace"]),
                 accelerate=accelerate_label(it.get("accelerateType")), preferred_foot=FOOT.get(it.get("foot")),
                 # 이미지: 목록 API cardImageUrl이 우선이고, 없으면 정의의 cardImagePath로 만든다(2026-09-17 — 20장이 NULL이었다)
                 card_image_url=("https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/" + it["cardImagePath"])
@@ -245,6 +248,7 @@ def main():
            "height_cm=COALESCE(excluded.height_cm, player_card_items.height_cm), "
            "weight_kg=COALESCE(excluded.weight_kg, player_card_items.weight_kg), "
            "birthdate=COALESCE(excluded.birthdate, player_card_items.birthdate), "
+           "is_real_face=COALESCE(excluded.is_real_face, player_card_items.is_real_face), "
            "simple_card_url=COALESCE(excluded.simple_card_url, player_card_items.simple_card_url), "
            "render_url=COALESCE(excluded.render_url, player_card_items.render_url)"
            % (",".join("def" if c == "def_" else c for c in cols), ",".join(f":{c}" for c in cols)))

@@ -1131,6 +1131,13 @@ export function cardDetail(p, ctx = {}) {
           ${num(p.skill_moves) ? `<span class="chip">스킬 ${num(p.skill_moves)}★</span>` : ''}
           ${num(p.weak_foot) ? `<span class="chip">약발 ${num(p.weak_foot)}★</span>` : ''}
           ${p.accelerate ? `<span class="chip dim">${esc(p.accelerate)}</span>` : ''}
+          ${/* 리얼페이스 — fut.gg `isRealFace` 실측(migration 066 · 2026-09-25 사용자 요청).
+                ⛔ **결손과 0을 구분한다**: 안 받은 카드는 칸을 아예 만들지 않고(obs#132 규약),
+                   0은 「제네릭 얼굴로 확인됐다」는 사실이라 그대로 적는다.
+                ⚠️ 겉모습 축이다 — 역할·진화·구매 순위 어디에도 쓰지 않는다. */''}
+          ${p.is_real_face == null ? ''
+            : `<span class="chip dim" title="fut.gg isRealFace 실측 — 겉모습 축이라 성능과 무관하다">${
+                 p.is_real_face ? '리얼페이스' : '제네릭 얼굴'}</span>`}
         </div>
         ${/* ⭐⭐ 자산·경기 기록 — GG Club 보유행의 **EA 실측**(migration 061).
               ⛔ 값이 없으면 칸을 만들지 않는다 — 「0경기」와 「안 받았다」는 다르다(obs#132). */''}
