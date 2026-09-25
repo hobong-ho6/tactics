@@ -20,7 +20,7 @@
   <table id="rank"></table></div>
 <div class="cardrow" id="cards"></div>
 <script type="module">
-import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell } from './assets/data.js?v=20260924-ut-rename';
+import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell, canonSlots} from './assets/data.js?v=20260925-canon';
 import { Kernel } from './assets/kernel.js?v=20260825-decodemap-null';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
 import { compareReal } from './assets/realcompare.js?v=20260925a';
@@ -29,7 +29,7 @@ const CARDS = await fetch('data/game_stats/cards.json', { cache: 'no-store' }).t
 const { team, regime } = await mountHeader('compare.html');
 const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loadGameStats('FC26')]);
 const K = new Kernel(kd);
-const slots = td.slots.filter(s => s.formation === td.slots[0]?.formation);
+const slots = canonSlots(td);
 
 /* ⭐ 기준 시즌 축 (2026-09-13 신설, 사용자 지적).
    ⛔ 종전엔 `squad_entries.map25` 하나만 썼는데 그 그리드는 사실상 **25/26 전수 실측**이다

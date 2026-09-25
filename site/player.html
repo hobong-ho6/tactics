@@ -82,7 +82,7 @@
 <div id="duty"></div></div>
 </section>
 <script type="module">
-import { mountHeader, loadTeam, loadGameStats, loadKernels, slotCandidates, sofifaLink, isGkSlot, gkPosCell, setCurrentTeam } from './assets/data.js?v=20260924-ut-rename';
+import { mountHeader, loadTeam, loadGameStats, loadKernels, slotCandidates, sofifaLink, isGkSlot, gkPosCell, setCurrentTeam, canonSlots} from './assets/data.js?v=20260925-canon';
 import { pizza, dumbbell, formRibbon } from './assets/playerviz.js?v=20260918';
 // 차트 폭 — 패널이 display:none인 채로 렌더되면 clientWidth가 0이라, 보이는 본문 폭에서 계산한다(패딩 20×2 + 패널 14×2)
 const vizW = (el, cap, pad = 0) => Math.min(cap, Math.max(320, (el?.clientWidth || (document.body.clientWidth - 68)) - pad));
@@ -127,7 +127,7 @@ const pctOf = (rows, k, v) => { const vals = rows.map(p => p[k]).filter(x => x !
 const currentCandidates = t => {
   const seen = new Set();
   // 복수 포메이션 대비 — 시즌 정본 포메이션만 순회한다.
-  const cs = t.slots.filter(s=>s.formation===t.slots[0]?.formation);
+  const cs = canonSlots(t);
   return cs.flatMap(s=>slotCandidates(t, s.pos, {includeTransfers:false})).filter(q=>{
     const key=`${q.player_id}:${q.slot_type}`;
     if(seen.has(key)) return false;

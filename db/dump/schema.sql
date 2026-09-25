@@ -206,7 +206,7 @@ CREATE TABLE slots(                 -- 오늘(v1) 만든 team_slots의 승계 �
   slot_type TEXT NOT NULL,          -- 커널 역할군 (game_roles.position_type과 매칭 — obs#141 필터)
   x INTEGER NOT NULL, y INTEGER NOT NULL,
   sort_order INTEGER NOT NULL,
-  source TEXT, confidence TEXT,
+  source TEXT, confidence TEXT, is_canon INTEGER NOT NULL DEFAULT 0,
   PRIMARY KEY(regime_id, formation, pos)
 );
 CREATE TABLE prescriptions(

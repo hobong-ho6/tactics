@@ -18,12 +18,12 @@
 <p class="dim">데이터 흐름: db/tactics.db → <span class="mono">scripts/export.py</span>(게이트 통과 필수)
 → site/data/*.json → 이 페이지들. 손편집 지점 없음.</p>
 <script type="module">
-import { mountHeader, loadTeam, slotCandidates } from './assets/data.js?v=20260924-ut-rename';
+import { mountHeader, loadTeam, slotCandidates, canonSlots} from './assets/data.js?v=20260925-canon';
 const { idx } = await mountHeader('index.html');
 const cards = await Promise.all(idx.regimes.map(async r => {
   const td = await loadTeam(r.team_code);
   // 복수 포메이션 대비 — 시즌 정본 포메이션만 순회한다.
-  const cs0 = td.slots.filter(s=>s.formation===td.slots[0]?.formation);
+  const cs0 = canonSlots(td);
   const current = new Set(cs0.flatMap(s=>slotCandidates(td,s.pos,{includeTransfers:false}))
     .map(q=>q.player_id ?? q.name_en));
   return `<div class="pcard"><b>${r.team_kr}</b> <small class="dim">${r.manager_kr ?? r.manager}</small><br>

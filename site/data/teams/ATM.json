@@ -52851,95 +52851,8 @@
  ],
  "slots": [
   {
-   "formation": "3-4-2-1",
-   "pos": "GK",
-   "slot_type": "GK",
-   "sort_order": 0,
-   "x": 53,
-   "y": 11
-  },
-  {
-   "formation": "3-4-2-1",
-   "pos": "LCB",
-   "slot_type": "CB",
-   "sort_order": 1,
-   "x": 21,
-   "y": 30
-  },
-  {
-   "formation": "3-4-2-1",
-   "pos": "CCB",
-   "slot_type": "CB",
-   "sort_order": 2,
-   "x": 51,
-   "y": 28
-  },
-  {
-   "formation": "3-4-2-1",
-   "pos": "RCB",
-   "slot_type": "CB",
-   "sort_order": 3,
-   "x": 84,
-   "y": 41
-  },
-  {
-   "formation": "3-4-2-1",
-   "pos": "LM",
-   "slot_type": "WM",
-   "sort_order": 4,
-   "x": 40,
-   "y": 53
-  },
-  {
-   "formation": "3-4-2-1",
-   "pos": "LCM",
-   "slot_type": "CM",
-   "sort_order": 5,
-   "x": 49,
-   "y": 42
-  },
-  {
-   "formation": "3-4-2-1",
-   "pos": "RCM",
-   "slot_type": "CM",
-   "sort_order": 6,
-   "x": 56,
-   "y": 37
-  },
-  {
-   "formation": "3-4-2-1",
-   "pos": "RM",
-   "slot_type": "WM",
-   "sort_order": 7,
-   "x": 77,
-   "y": 49
-  },
-  {
-   "formation": "3-4-2-1",
-   "pos": "LAM",
-   "slot_type": "CAM",
-   "sort_order": 8,
-   "x": 42,
-   "y": 49
-  },
-  {
-   "formation": "3-4-2-1",
-   "pos": "ST",
-   "slot_type": "ST",
-   "sort_order": 9,
-   "x": 37,
-   "y": 58
-  },
-  {
-   "formation": "3-4-2-1",
-   "pos": "RAM",
-   "slot_type": "CAM",
-   "sort_order": 10,
-   "x": 72,
-   "y": 48
-  },
-  {
    "formation": "4-1-4-1",
+   "is_canon": 1,
    "pos": "GK",
    "slot_type": "GK",
    "sort_order": 0,
@@ -52948,6 +52861,7 @@
   },
   {
    "formation": "4-1-4-1",
+   "is_canon": 1,
    "pos": "LB",
    "slot_type": "FB",
    "sort_order": 1,
@@ -52956,6 +52870,7 @@
   },
   {
    "formation": "4-1-4-1",
+   "is_canon": 1,
    "pos": "LCB",
    "slot_type": "CB",
    "sort_order": 2,
@@ -52964,6 +52879,7 @@
   },
   {
    "formation": "4-1-4-1",
+   "is_canon": 1,
    "pos": "RCB",
    "slot_type": "CB",
    "sort_order": 3,
@@ -52972,6 +52888,7 @@
   },
   {
    "formation": "4-1-4-1",
+   "is_canon": 1,
    "pos": "RB",
    "slot_type": "FB",
    "sort_order": 4,
@@ -52980,6 +52897,7 @@
   },
   {
    "formation": "4-1-4-1",
+   "is_canon": 1,
    "pos": "CDM",
    "slot_type": "DM",
    "sort_order": 5,
@@ -52988,6 +52906,7 @@
   },
   {
    "formation": "4-1-4-1",
+   "is_canon": 1,
    "pos": "LM",
    "slot_type": "WM",
    "sort_order": 6,
@@ -52996,6 +52915,7 @@
   },
   {
    "formation": "4-1-4-1",
+   "is_canon": 1,
    "pos": "LCM",
    "slot_type": "CM",
    "sort_order": 7,
@@ -53004,6 +52924,7 @@
   },
   {
    "formation": "4-1-4-1",
+   "is_canon": 1,
    "pos": "RCM",
    "slot_type": "CM",
    "sort_order": 8,
@@ -53012,6 +52933,7 @@
   },
   {
    "formation": "4-1-4-1",
+   "is_canon": 1,
    "pos": "RM",
    "slot_type": "WM",
    "sort_order": 9,
@@ -53020,6 +52942,7 @@
   },
   {
    "formation": "4-1-4-1",
+   "is_canon": 1,
    "pos": "ST",
    "slot_type": "ST",
    "sort_order": 10,
@@ -53027,7 +52950,107 @@
    "y": 86
   },
   {
+   "formation": "3-4-2-1",
+   "is_canon": 0,
+   "pos": "GK",
+   "slot_type": "GK",
+   "sort_order": 0,
+   "x": 53,
+   "y": 11
+  },
+  {
+   "formation": "3-4-2-1",
+   "is_canon": 0,
+   "pos": "LCB",
+   "slot_type": "CB",
+   "sort_order": 1,
+   "x": 21,
+   "y": 30
+  },
+  {
+   "formation": "3-4-2-1",
+   "is_canon": 0,
+   "pos": "CCB",
+   "slot_type": "CB",
+   "sort_order": 2,
+   "x": 51,
+   "y": 28
+  },
+  {
+   "formation": "3-4-2-1",
+   "is_canon": 0,
+   "pos": "RCB",
+   "slot_type": "CB",
+   "sort_order": 3,
+   "x": 84,
+   "y": 41
+  },
+  {
+   "formation": "3-4-2-1",
+   "is_canon": 0,
+   "pos": "LM",
+   "slot_type": "WM",
+   "sort_order": 4,
+   "x": 40,
+   "y": 53
+  },
+  {
+   "formation": "3-4-2-1",
+   "is_canon": 0,
+   "pos": "LCM",
+   "slot_type": "CM",
+   "sort_order": 5,
+   "x": 49,
+   "y": 42
+  },
+  {
+   "formation": "3-4-2-1",
+   "is_canon": 0,
+   "pos": "RCM",
+   "slot_type": "CM",
+   "sort_order": 6,
+   "x": 56,
+   "y": 37
+  },
+  {
+   "formation": "3-4-2-1",
+   "is_canon": 0,
+   "pos": "RM",
+   "slot_type": "WM",
+   "sort_order": 7,
+   "x": 77,
+   "y": 49
+  },
+  {
+   "formation": "3-4-2-1",
+   "is_canon": 0,
+   "pos": "LAM",
+   "slot_type": "CAM",
+   "sort_order": 8,
+   "x": 42,
+   "y": 49
+  },
+  {
+   "formation": "3-4-2-1",
+   "is_canon": 0,
+   "pos": "ST",
+   "slot_type": "ST",
+   "sort_order": 9,
+   "x": 37,
+   "y": 58
+  },
+  {
+   "formation": "3-4-2-1",
+   "is_canon": 0,
+   "pos": "RAM",
+   "slot_type": "CAM",
+   "sort_order": 10,
+   "x": 72,
+   "y": 48
+  },
+  {
    "formation": "4-4-2",
+   "is_canon": 0,
    "pos": "GK",
    "slot_type": "GK",
    "sort_order": 0,
@@ -53036,6 +53059,7 @@
   },
   {
    "formation": "4-4-2",
+   "is_canon": 0,
    "pos": "LB",
    "slot_type": "FB",
    "sort_order": 1,
@@ -53044,6 +53068,7 @@
   },
   {
    "formation": "4-4-2",
+   "is_canon": 0,
    "pos": "LCB",
    "slot_type": "CB",
    "sort_order": 2,
@@ -53052,6 +53077,7 @@
   },
   {
    "formation": "4-4-2",
+   "is_canon": 0,
    "pos": "RCB",
    "slot_type": "CB",
    "sort_order": 3,
@@ -53060,6 +53086,7 @@
   },
   {
    "formation": "4-4-2",
+   "is_canon": 0,
    "pos": "RB",
    "slot_type": "FB",
    "sort_order": 4,
@@ -53068,6 +53095,7 @@
   },
   {
    "formation": "4-4-2",
+   "is_canon": 0,
    "pos": "LDM",
    "slot_type": "DM",
    "sort_order": 5,
@@ -53076,6 +53104,7 @@
   },
   {
    "formation": "4-4-2",
+   "is_canon": 0,
    "pos": "RDM",
    "slot_type": "DM",
    "sort_order": 6,
@@ -53084,6 +53113,7 @@
   },
   {
    "formation": "4-4-2",
+   "is_canon": 0,
    "pos": "LM",
    "slot_type": "WM",
    "sort_order": 7,
@@ -53092,6 +53122,7 @@
   },
   {
    "formation": "4-4-2",
+   "is_canon": 0,
    "pos": "RM",
    "slot_type": "WM",
    "sort_order": 8,
@@ -53100,6 +53131,7 @@
   },
   {
    "formation": "4-4-2",
+   "is_canon": 0,
    "pos": "LST",
    "slot_type": "ST",
    "sort_order": 9,
@@ -53108,6 +53140,7 @@
   },
   {
    "formation": "4-4-2",
+   "is_canon": 0,
    "pos": "RST",
    "slot_type": "ST",
    "sort_order": 10,

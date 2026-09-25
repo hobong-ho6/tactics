@@ -27,7 +27,7 @@
 <p class="dim">서사·분석 전문은 docs/1x 감독 문서가 정본이다 — 이 페이지는 DB에 확정 기록된
 결론(프로필 축·세팅)만 보여준다.</p>
 <script type="module">
-import { mountHeader, loadTeam, slotCandidates } from './assets/data.js?v=20260813-slot-candidates';
+import { mountHeader, loadTeam, slotCandidates, canonSlots as canonSlotsOf} from './assets/data.js?v=20260925-canon';
 import { mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
 import { prose } from './assets/prose.js';
 import { roleLabel, focusLabel, humanize, mountRawToggle } from './assets/labels.js?v=20260918';
@@ -48,7 +48,7 @@ const limHtml = lim.length ? ` · <details style="display:inline-block"><summary
 document.getElementById('teamset').innerHTML = (su ? `<b>${su.formation??''}</b> · 빌드업 <b>${su.build_up_style??'—'}</b> · 수비 <b>${su.defensive_approach??'—'}</b> · 라인 <b>${su.line_height??'—'}</b> · 전술 코드 <b>${su.tactic_code||'미기입'}</b> · (${su.kind}, ${su.season})` : '팀 세팅 미기록') + limHtml;
 /* 한 regime에 복수 포메이션이 있을 수 있다(AVL 4-2-3-1 Wide + 4-4-2). 시즌 정본 화면은
    첫 포메이션만 쓴다 — 걸러내지 않으면 pos가 중복돼 좌표가 덮어써진다. */
-const canonSlots = td.slots.filter(s2=>s2.formation===td.slots[0]?.formation);
+const canonSlots = canonSlotsOf(td);
 const order = canonSlots.map(s2=>s2.pos);
 const geo = Object.fromEntries(canonSlots.map(s2=>[s2.pos,s2]));
 const rx = td.prescriptions.filter(p=>p.kind.startsWith('fc26:opt:'));

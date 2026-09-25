@@ -18,6 +18,21 @@ export const loadTeam    = code => j(`teams/${code}.json`);
 export const loadKernels = gv => j(`kernels/${gv}.json`);
 export const loadGameStats = gv => j(`game_stats/${gv}.json`).catch(() => ({}));
 
+/* ⭐⭐ 화면 공통 **정본 포메이션 슬롯** (2026-09-25 신설 · migration 063).
+   ⛔⛔ 종전엔 7개 화면이 각자 `slots.filter(s => s.formation === slots[0].formation)`을 썼다 —
+   즉 **어느 포메이션이 그려질지가 정렬 우연**이었다. 실측으로 터졌다: 아틀레티코는 slots에
+   3-4-2-1 / 4-1-4-1 / 4-4-2 셋이 등록돼 있는데 3-4-2-1이 먼저 잡혀, 실측 정본(4-1-4-1)이 아닌
+   포메이션이 그려졌고 **LAM·RAM 후보 0명 + FB 5명·DM 4명 실종**이 났다.
+   ⇒ 정본은 DB의 `is_canon`이고, 화면은 **이 함수만** 부른다(CLAUDE.md 불변규칙 13 ②).
+   ⚠️ 표시가 없는 옛 데이터에는 종전 규칙으로 물러선다 — 조용히 빈 화면이 되지 않게. */
+export function canonSlots(teamData){
+  const all = teamData?.slots || [];
+  const canon = all.filter(s => s.is_canon);
+  if (canon.length) return canon;
+  return all.filter(s => s.formation === all[0]?.formation);
+}
+export const canonFormation = teamData => canonSlots(teamData)[0]?.formation ?? null;
+
 /* 화면 공통 슬롯 후보 풀 — DB v_slot_candidates의 1:1 export.
    페이지가 squad + transfer를 각자 합치면 CONFIRMED 승격 중복이 재발하므로
    선수 목록을 만드는 모든 화면은 이 함수만 사용한다. */

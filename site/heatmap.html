@@ -24,7 +24,7 @@
 <b>A 패널의 이름 칩은 슬롯 좌표가 아니라 그 선수의 실제 평균 위치</b>(avg_positions, 45분+·히트포인트 15+ 표본 평균)이고,
 B 패널은 FC 슬롯 좌표다. 두 칩의 어긋남이 곧 "실측과 처방 자리의 거리"다.</p>
 <script type="module">
-import { mountHeader, loadTeam, loadKernels, slotCandidates } from './assets/data.js?v=20260924-ut-rename';
+import { mountHeader, loadTeam, loadKernels, slotCandidates, canonSlots} from './assets/data.js?v=20260925-canon';
 import { Kernel, decodeMap } from './assets/kernel.js?v=20260825-decodemap-null';
 import { drawPitch, drawComposite, drawChip } from './assets/pitch.js?v=20260825-decodemap-null';
 
@@ -35,8 +35,8 @@ const K = new Kernel(kd);
 const AVG = new Map((td.avg_positions ?? []).map(a => [a.player_id, a]));
 const toolPos = a => [100 - Number(a.avg_y), Number(a.avg_x)];   // docs/30 좌표 규약
 const slots = td.slots;   // 단일 포메이션 가정 (복수면 첫 formation)
-const formation = slots[0]?.formation;
-const useSlots = slots.filter(s => s.formation === formation);
+const useSlots = canonSlots(td);
+const formation = useSlots[0]?.formation;
 
 // 슬롯별 후보 = DB 공통 후보 풀의 보유/합류 선수. 이적 루머는 인선 화면에서 제외한다.
 const cands = pos => slotCandidates(td, pos, { includeTransfers: false });

@@ -1219,6 +1219,55 @@ def run(db_path=None, verbose=True):
     if not ok23:
         fails.append("G23")
 
+    # G24 — ⛔⛔ **정본 포메이션이 모호하거나, 그 포메이션에 빈 칸이 있으면 막는다.** 2026-09-25 신설
+    #   (사용자 지시 「정본 표시를 DB에 두고 통일」 · migration 063).
+    #   왜: 화면 7곳이 포메이션을 **배열 순서**로 골라서, ATM은 실측 정본(4-1-4-1)이 아닌 3-4-2-1이
+    #   그려졌고 **LAM·RAM 후보 0명 + FB 5명·DM 4명이 통째로 사라졌다**. 조용히 사라져 아무도 몰랐다.
+    #   ⇒ 세 가지를 막는다:
+    #     ⑴ regime당 정본 포메이션이 **정확히 1개**인가(0개면 화면이 옛 폴백으로 되돌아간다)
+    #     ⑵ 정본 슬롯 11칸에 **후보 0명인 칸**이 있는가(있으면 그 자리는 화면에서 비어 보인다)
+    #     ⑶ `squad_entries.slot_type`이 정본 포메이션의 어느 슬롯과도 안 맞아 **선수가 사라지는가**
+    #   ⚠️ CHE 7명(DM 조던 헨더슨 · FB 말로 귀스토·차바리아 · W 로저스·페드루 네투·콜 파머·에스테방)은
+    #      3-4-2-1에 그 slot_type이 없어 숨어 있다. 어느 자리로 볼지는 **사람 판단**이라 기준선으로 둔다.
+    G24_LOST_BASE = {"CHE": 7}          # 2026-09-25 실측 기준 — ⛔ 줄이는 건 좋지만 늘리면 막는다
+    g24, g24_note = [], []
+    try:
+        for rid, code in con.execute("SELECT id, team_code FROM regimes"):
+            n = con.execute("SELECT COUNT(DISTINCT formation) FROM slots WHERE regime_id=? AND is_canon=1",
+                            (rid,)).fetchone()[0]
+            if n != 1:
+                g24.append(f"{code} 정본 포메이션 {n}개(1이어야 한다)")
+                continue
+            empty = [r[0] for r in con.execute(
+                """SELECT sl.pos FROM slots sl WHERE sl.regime_id=? AND sl.is_canon=1
+                    AND NOT EXISTS (SELECT 1 FROM squad_entries se
+                                     WHERE se.regime_id=sl.regime_id AND se.slot_type=sl.slot_type
+                                       AND (se.pos_only IS NULL OR se.pos_only=sl.pos))""", (rid,))]
+            if empty:
+                g24.append(f"{code} 후보 0명 슬롯 {','.join(empty)}")
+            lost = con.execute(
+                """SELECT COUNT(DISTINCT se.player_id) FROM squad_entries se
+                    WHERE se.regime_id=? AND se.slot_type NOT IN
+                          (SELECT slot_type FROM slots WHERE regime_id=se.regime_id AND is_canon=1)""",
+                (rid,)).fetchone()[0]
+            # ⚠️ ⑶은 **기준선 초과만** 막는다(G23과 같은 방식). 지금 있는 것은 해소하려면
+            #    「이 선수가 이 포메이션의 어느 자리냐」를 정해야 하는데 그건 사람 판단이다.
+            #    ⇒ 값을 적어 두고 **늘어나는 것만** 막는다. 건수는 매 회차 눈에 띄게 찍는다.
+            base = G24_LOST_BASE.get(code, 0)
+            if lost > base:
+                g24.append(f"{code} 정본에 없는 slot_type이라 화면에서 사라지는 선수 {lost}명(기준 {base})")
+            elif lost:
+                g24_note.append(f"{code} {lost}명 숨김(기준선 내)")
+    except sqlite3.OperationalError as e:
+        g24.append(f"조회 실패({e}) — migration 063이 적용됐는지 확인")
+    ok24 = not g24
+    if verbose:
+        print(f"G24 정본 포메이션 정합: 문제 {len(g24)} "
+              + ("✅" if ok24 else "❌ " + " · ".join(g24[:4]))
+              + (f" · ⚠️ {' · '.join(g24_note)}" if g24_note else ""))
+    if not ok24:
+        fails.append("G24")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")

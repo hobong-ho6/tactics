@@ -411,8 +411,10 @@ def export_all(db_path=None, window="2026-summer"):
     # ── teams/{CODE}.json ────────────────────────────────────────────
     for rg in regimes:
         rid, code = rg["id"], rg["team_code"]
-        slots = _rows(con, """SELECT formation, pos, slot_type, x, y, sort_order
-                              FROM slots WHERE regime_id=? ORDER BY formation, sort_order""", (rid,))
+        # ⭐⭐ `is_canon`을 함께 싣는다(migration 063) — 화면이 포메이션을 **배열 순서로 고르던** 것을 끝낸다.
+        #    ⛔ 정렬로 정본을 흉내 내지 않는다. 표시가 정본이고, 화면은 `data.js`의 `canonSlots()`만 부른다.
+        slots = _rows(con, """SELECT formation, pos, slot_type, x, y, sort_order, is_canon
+                              FROM slots WHERE regime_id=? ORDER BY is_canon DESC, formation, sort_order""", (rid,))
         # 슬롯별 전술 정본(인선 무관) — migrations/008. 프리셋(fc26:opt:*)과 다르면 편차로 읽는다.
         canon = _rows(con, """SELECT c.formation, c.pos, c.game_version, c.role_id, c.focus,
                                      c.rationale, c.source, c.confidence, c.updated

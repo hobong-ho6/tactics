@@ -23,7 +23,7 @@
 <p class="dim">적합(sim)은 커널 라이브 산출값. DB 저장값과 어긋나면 익스포트가 낡은 것 —
 <span class="mono">python3 scripts/export.py</span>를 다시 돌릴 것.</p>
 <script type="module">
-import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell } from './assets/data.js?v=20260924-ut-rename';
+import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell, canonSlots} from './assets/data.js?v=20260925-canon';
 import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
 import { Kernel } from './assets/kernel.js?v=20260825-decodemap-null';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
@@ -32,7 +32,7 @@ import { pitchXI, depthStrip, mountTips } from './assets/squadviz.js?v=20260918'
 const { team } = await mountHeader('squad.html');
 const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loadGameStats('FC26')]);
 const K = new Kernel(kd);
-const slots = td.slots.filter(s => s.formation === td.slots[0]?.formation);
+const slots = canonSlots(td);
 
 /* 등번호 — player_shirt_numbers를 export가 slot_candidates에 실어 보낸다.
    ⚠️ NULL이면 표시하지 않는다(0으로 그리면 「0번」으로 오독된다). 갓 영입돼 FotMob 집계에
