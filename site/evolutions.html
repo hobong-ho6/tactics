@@ -2161,13 +2161,22 @@ const altHTML = xi => {
   const alt = xi.alt || {}, keys = Object.keys(alt);
   if (!keys.length) return '';
   const total = keys.reduce((s, k) => s + alt[k].n, 0);
+  /* ⭐ **카드 그림으로 그린다**(2026-09-26 사용자 지시 「바꿔넣을수 있는 카드도 카드로 표시해줘」) —
+     피치와 같은 이유다: OVR·포지션·이름·국기·클럽 배지·리그가 아트에 이미 인쇄돼 있어,
+     텍스트 칩보다 「어느 팀·리그 카드인가」를 훨씬 빨리 읽는다(⛔ 그 위에 값을 덧그리지 않는다).
+     ⚠️ 칸마다 20장까지 나올 수 있어 **가로 스크롤**로 둔다 — 세로로 쌓으면 해법이 안 보인다. */
   return `<details class="sbc-alt"><summary>🔁 <b>바꿔 넣을 수 있는 카드</b>
-      <small class="dim">— ${keys.length}칸 · 총 ${total}명. 넣어 봐서 <b>조건·케미가 그대로 통과</b>한 것만 적었다.</small></summary>
-    <ul>${keys.map(k => `<li><b>${esc(k)}</b> <span class="dim">지금 ${esc(alt[k].of)}</span> →
-      ${alt[k].list.map(a => `<span class="altc" title="${esc(a.club || '—')} · ${esc(a.league || '—')} · ${esc(a.nation || '—')}${
-        a.chem != null ? ` · 바꾸면 케미 ${a.chem}` : ''}">${esc(a.name)} <b>${a.ovr}</b>${
-        a.untradeable ? ' <i>거래불가</i>' : ''}</span>`).join('')}
-      ${alt[k].n > alt[k].list.length ? `<span class="dim">외 ${alt[k].n - alt[k].list.length}명</span>` : ''}</li>`).join('')}</ul>
+      <small class="dim">— ${keys.length}칸 · 총 ${total}명. 넣어 봐서 <b>조건·케미가 그대로 통과</b>한 것만 적었다.
+        OVR 낮은 순(제출하면 사라지니 덜 아까운 쪽 먼저).</small></summary>
+    ${keys.map(k => `<div class="altrow"><div class="altslot"><b>${esc(k)}</b>
+        <span class="dim">지금 ${esc(alt[k].of)}</span>
+        ${alt[k].n > alt[k].list.length ? `<span class="dim">· 외 ${alt[k].n - alt[k].list.length}명</span>` : ''}</div>
+      <div class="altcards">${alt[k].list.map(a => `
+        <div class="altcard" title="${esc(a.name)} ${a.ovr} · ${esc(a.club || '—')} · ${esc(a.league || '—')} · ${esc(a.nation || '—')}${
+          a.chem != null ? ` · 바꾸면 팀 케미 ${a.chem}` : ''}">
+          ${a.card ? `<img src="${esc(a.card)}" alt="${esc(a.name)}" loading="lazy">`
+                   : `<span class="noart"><b>${a.ovr}</b>${esc(a.name)}</span>`}
+          ${a.untradeable ? '<u>거래불가</u>' : ''}</div>`).join('')}</div></div>`).join('')}
     </details>`;
 };
 let SBC_F = 'all';

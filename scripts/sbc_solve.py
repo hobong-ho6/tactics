@@ -431,7 +431,7 @@ def buy_specs(xi, pl, conds, pool):
     return out
 
 
-def alternatives(xi, pl, conds, pool, limit=8):
+def alternatives(xi, pl, conds, pool, limit=20):
     """⭐ 칸마다 **바꿔 넣어도 여전히 되는 보유 카드**를 찾는다(2026-09-25 사용자 지시
        「스쿼드 구성원 중에 대체선수가 가능한 경우는 sbc 해당 선수 포지션에 대체선수들도 목록을 보여줘」).
 
@@ -445,7 +445,9 @@ def alternatives(xi, pl, conds, pool, limit=8):
     ⛔ 「포지션만 같으면 대체」로 적지 않는다 — 클럽·리그·국적이 달라 케미가 깨지는 경우가 흔하다.
        실제로 넣어 보고 통과한 것만 목록에 넣는다(등급 C — 우리 계산).
     ⭐ 정렬은 **OVR 낮은 순**이다. 같은 값이면 덜 아까운 카드를 내는 게 낫다(가치 축은 우리가 모른다 —
-       fut.gg가 FC27 시세를 주지 않는다. 그래서 「싼 순」이 아니라 「낮은 순」이라고 적는다)."""
+       fut.gg가 FC27 시세를 주지 않는다. 그래서 「싼 순」이 아니라 「낮은 순」이라고 적는다).
+    ⚠️ 한도를 8 → 20으로 올렸다(2026-09-26): OVR 낮은 순이라 **높은 카드가 잘려 나가** 「내 Kelly(86)는
+       왜 안 보이나」가 됐다. 화면이 카드 그림으로 가로 스크롤해 그리므로 20장도 읽을 수 있다."""
     out, in_squad = {}, {p["id"] for p in xi}
     cands = [p for p in pool if p["id"] not in in_squad and per_player_ok(p, conds)]
     for nm, _x, _y, old, _ok, want in pl:

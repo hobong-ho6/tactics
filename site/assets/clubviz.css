@@ -402,12 +402,17 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 /* 대체 가능 카드 — 칸별로 접어 둔다(2026-09-25). 기본은 접힘: 해법을 먼저 보고, 바꾸고 싶을 때 편다. */
 .sbc-alt{font-size:11.5px;margin-top:6px;border:1px solid var(--line);border-radius:8px;padding:5px 8px}
 .sbc-alt summary{cursor:pointer;list-style:none}
-.sbc-alt ul{margin:5px 0 0;padding-left:2px;list-style:none}
-.sbc-alt li{padding:3px 0;border-top:1px solid var(--line);line-height:1.8}
-.sbc-alt li:first-child{border-top:0}
-.altc{display:inline-block;margin:0 3px 2px 0;padding:1px 6px;border-radius:99px;
-  border:1px solid var(--line);background:rgba(255,255,255,.04);white-space:nowrap}
-.altc i{font-style:normal;font-size:9.5px;color:var(--dim)}
+/* 칸별 한 줄 — 카드는 가로로 눕히고 넘치면 스크롤한다(칸마다 20장까지 나온다). */
+.altrow{padding:5px 0;border-top:1px solid var(--line)}
+.altrow:first-of-type{border-top:0}
+.altslot{display:flex;gap:6px;align-items:baseline;flex-wrap:wrap;margin-bottom:3px}
+.altcards{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+.altcard{flex:0 0 auto;width:62px;text-align:center}
+.altcard img{display:block;width:100%;height:auto;border-radius:4px}
+.altcard .noart{display:block;background:rgba(6,14,10,.85);border:1px solid var(--line);
+  border-radius:6px;padding:6px 2px;font-size:9.5px;line-height:1.25}
+.altcard .noart b{display:block;font-size:13px}
+.altcard u{display:block;text-decoration:none;font-size:8.5px;color:var(--dim)}
 
 /* SBC 제출 완료 처리(migration 072) — 인게임 제출은 사용자가 하고, 여기선 그 사실만 적는다. */
 .sbc-sub{font-size:12px;margin-top:6px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;
