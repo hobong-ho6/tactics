@@ -61,7 +61,7 @@ def positions_of(p):
     return {x.strip() for x in str(p.get("positions") or p.get("best_pos") or "").split("/") if x.strip()}
 
 
-def place(xi, form):
+def place(xi, form, pin=None):
     """11명을 포메이션 슬롯에 배치.
 
     ⛔⛔ **종전엔 탐욕법이었다**(맞는 칸부터 채우고 남으면 아무 데나) — 2026-09-25 사용자 지시
@@ -84,18 +84,30 @@ def place(xi, form):
     n, m = len(slots), len(xi)
     fitok = [[bool(positions_of(p) & slot_accepts(s["gen"])) for p in xi] for s in slots]
 
-    # ⑴ 최대 이분 매칭 — 칸 ← 선수. 쾨니그식 증가 경로(11×11이라 단순 구현으로 충분하다).
+    # ⭐ **고정 칸**(migration 073) — SBC가 박아 둔 카드는 그 자리에서 움직일 수 없다.
+    #    먼저 자리에 앉히고, 매칭·교환에서 **통째로 뺀다**(건드리면 인게임과 다른 배치가 된다).
+    pin = pin or {}
+    lock_slot, lock_pl = set(), set()
     at = [-1] * n          # 칸 i에 선 선수 인덱스
+    for i, s in enumerate(slots):
+        j = pin.get(s["label"])
+        if j is not None and 0 <= j < m:
+            at[i] = j
+            lock_slot.add(i); lock_pl.add(j)
+
+    # ⑴ 최대 이분 매칭 — 칸 ← 선수. 쾨니그식 증가 경로(11×11이라 단순 구현으로 충분하다).
     def aug(i, seen):
         for j in range(m):
-            if fitok[i][j] and j not in seen:
-                seen.add(j)
-                if all(at[k] != j for k in range(n)) or aug(next(k for k in range(n) if at[k] == j), seen):
-                    at[i] = j
-                    return True
+            if j in lock_pl or not fitok[i][j] or j in seen:
+                continue
+            seen.add(j)
+            if all(at[k] != j for k in range(n)) or aug(next(k for k in range(n) if at[k] == j), seen):
+                at[i] = j
+                return True
         return False
     for i in range(n):
-        aug(i, set())
+        if i not in lock_slot:
+            aug(i, set())
 
     # 남은 칸은 남은 선수로 채운다(자리 안 맞음 = 케미 0).
     used = {j for j in at if j >= 0}
@@ -117,8 +129,8 @@ def place(xi, form):
             improved = False
             for i in range(n):
                 for k in range(i + 1, n):
-                    if assign[i] < 0 or assign[k] < 0:
-                        continue
+                    if assign[i] < 0 or assign[k] < 0 or i in lock_slot or k in lock_slot:
+                        continue          # ⛔ 고정 칸은 바꾸지 않는다
                     assign[i], assign[k] = assign[k], assign[i]
                     s = score(assign)
                     if s > cur:
@@ -132,7 +144,12 @@ def place(xi, form):
     best = climb(list(at))
     for _ in range(12):
         cand = list(at)
-        PLACE_RNG.shuffle(cand)
+        # ⛔ 섞을 때도 **고정 칸은 제자리**다 — 자유 칸끼리만 섞는다.
+        free_i = [i for i in range(n) if i not in lock_slot]
+        vals = [cand[i] for i in free_i]
+        PLACE_RNG.shuffle(vals)
+        for i, v in zip(free_i, vals):
+            cand[i] = v
         s, aa = climb(cand)
         if s > best[0]:
             best = (s, aa)
@@ -144,20 +161,30 @@ def place(xi, form):
              sorted(slot_accepts(slots[i]["gen"]))) for i in range(n)]
 
 
+def pin_of(xi):
+    """«칸 이름 → xi 인덱스» — SBC가 박아 둔 카드를 그 자리에 고정한다(migration 073).
+
+    ⭐ 고정 카드는 **11명 스쿼드의 일부로 그대로 흘려보낸다** — 그래야 조건 검사·케미·구매 제안·
+       대체 후보가 특별 취급 없이 동작한다. 여기서 보는 건 `fixed` 표시뿐이다.
+    ⛔ 고정 카드는 내 보유분이 아니다(SBC가 준다) — 풀에 없고, 팔 수도 바꿀 수도 없다."""
+    return {p["slot"]: i for i, p in enumerate(xi) if p.get("fixed") and p.get("slot")}
+
+
 def best_placement(xi, form=None):
     """배치. ⛔⛔ **포메이션이 기록돼 있으면 그것만 쓴다**(2026-09-25).
        인게임 SBC는 챌린지마다 포메이션이 고정인데 EA·fut.gg가 그 값을 주지 않는다
        (`fc_sbc_formations` = 사용자 기록). 종전엔 **케미가 가장 높은 것을 임의로 골라** 보여줘서
        인게임 화면과 달랐다 — 그게 이 함수가 인자를 받게 된 이유다.
        ⚠️ 기록이 없으면 후보를 다 시도하되, 돌려주는 포메이션은 **추정**이다(화면이 그렇게 적는다)."""
+    pin = pin_of(xi)
     if form and form in FORMS:
-        pl = place(xi, form)
+        pl = place(xi, form, pin)
         return chem_total([p for _n, _x, _y, p, fit, _w in pl if p and fit]), form, pl
     # ⚠️ 추정일 때 29종을 다 돌면 탐색이 무거워진다 — **흔한 포메이션 6종**만 본다(어차피 추정이다).
     GUESS = [f for f in ("4-2-3-1", "4-4-2", "4-3-3", "3-5-2", "4-1-4-1", "5-2-1-2") if f in FORMS] or list(FORMS)
     best = None
     for f in GUESS:
-        pl = place(xi, f)
+        pl = place(xi, f, pin)
         ch = chem_total([p for _n, _x, _y, p, fit, _w in pl if p and fit])
         if best is None or ch > best[0]:
             best = (ch, f, pl)
@@ -381,7 +408,9 @@ def buy_specs(xi, pl, conds, pool):
     if not base_cost:
         return []
     # 칸 정보: (칸이름, 설 수 있는 포지션, 지금 선 사람, 자리 맞나) — 자리 안 맞는 칸이 먼저다.
-    miss = sorted([(nm, want, p, ok) for nm, _x, _y, p, ok, want in pl if p], key=lambda t: t[3])
+    # ⛔ 고정 칸은 뺀다 — 그 자리는 살 수도 바꿀 수도 없다(migration 073).
+    miss = sorted([(nm, want, p, ok) for nm, _x, _y, p, ok, want in pl if p and not p.get("fixed")],
+                  key=lambda t: t[3])
     # 후보 축 — 스쿼드에 이미 있는 (클럽, 리그)·국적.
     # ⛔⛔ 리그는 **스쿼드 본인의 값**에서 가져온다. 보유 풀 전체를 클럽 **이름**으로 뒤지면
     #    남녀 동명 구단이 섞인다(2026-09-25 실측: Bayern München → 「Frauen-Bundesliga」,
@@ -451,8 +480,8 @@ def alternatives(xi, pl, conds, pool, limit=20):
     out, in_squad = {}, {p["id"] for p in xi}
     cands = [p for p in pool if p["id"] not in in_squad and per_player_ok(p, conds)]
     for nm, _x, _y, old, _ok, want in pl:
-        if not old:
-            continue
+        if not old or old.get("fixed"):
+            continue                     # ⛔ SBC가 박아 둔 카드는 바꿀 수 없다(migration 073)
         wset = set(want)
         alt = []
         for c in cands:
@@ -489,15 +518,19 @@ def chem_ok(xi, conds):
     return ch >= max(need), (ch, form, pl)
 
 
-def solve(pool, conds, size, tries, rng):
+def solve(pool, conds, size, tries, rng, fixed=()):
     """무작위 재시작 + **위반 크기를 줄이는** 국소 교체.
        ⛔ 못 찾았다고 「불가능」이 아니다 — 최적 보장이 없는 탐색이라 보고에 그렇게 적는다."""
+    # ⭐ SBC가 박아 둔 카드는 **내가 고르는 게 아니라 이미 스쿼드에 있다**(migration 073) —
+    #    인원에서 빼고 뽑되, 조건 검사·케미에는 항상 함께 넣는다.
+    fixed = list(fixed)
+    pick = size - len(fixed)
     cands = [p for p in pool if per_player_ok(p, conds)]
-    if len(cands) < size:
+    if pick <= 0 or len(cands) < pick:
         return None, cands, None
     best = None
     for t in range(tries):
-        xi = rng.sample(cands, size)
+        xi = fixed + rng.sample(cands, pick)
         fail, cost = check(xi, conds)
         if not cost:
             ok_ch, info = chem_ok(xi, conds)
@@ -508,7 +541,7 @@ def solve(pool, conds, size, tries, rng):
             need = max(v for (k, v), _ in conds if k == "chem")
             fail, cost = [f"배치 후 케미 {info[0]} < 필요 {need} ({info[1]} 기준 · 포지션이 맞아야 케미가 붙는다)"], 1
         for _ in range(400):
-            i = rng.randrange(size)
+            i = len(fixed) + rng.randrange(pick)      # ⛔ 고정 카드는 교체 대상이 아니다
             alt = rng.choice(cands)
             if any(alt["id"] == q["id"] for q in xi):
                 continue
@@ -708,6 +741,22 @@ def main():
         "SELECT challenge_ea_id, formation FROM fc_sbc_formations WHERE game_version=?", (a.game,))})
     if FORM_OF:
         print(f"📐 포메이션 기록 {len(FORM_OF)}챌린지 — 그 안에서만 배치한다")
+    # ⭐ SBC가 박아 두는 고정 카드(migration 073) — 내 보유분이 아니지만 **조건에 그대로 들어간다**.
+    FIXED = {}
+    for r in con.execute("""SELECT challenge_ea_id, slot, name, ovr, club, league, nation, positions,
+                                   is_special, ea_item_id FROM fc_sbc_fixed WHERE game_version=?""", (a.game,)):
+        FIXED.setdefault(r["challenge_ea_id"], []).append(
+            {"id": -(1000 + len(FIXED)), "name": r["name"], "ovr": r["ovr"], "club": r["club"],
+             "league": r["league"], "nation": r["nation"], "positions": r["positions"], "best_pos": None,
+             "is_special": r["is_special"], "is_untradeable": None,
+             # ⛔ 거래 가능 여부·카드 아트는 **모른다** — fut.gg에 같은 선수 카드가 둘이라
+             #    하나를 골라 그리면 화면이 거짓말을 한다. 텍스트로 물러선다(불변규칙 3).
+             "card_image_url": None,
+             "chem_extra": None, "is_icon": 0, "is_hero": 0, "ea_item_id": r["ea_item_id"],
+             "fixed": True, "slot": r["slot"]})
+    if FIXED:
+        print("📌 고정 카드 " + " · ".join(
+            f"{c}#{f['slot']} {f['name']}({f['ovr']})" for c, fs in FIXED.items() for f in fs))
     done_ids = {r[0] for r in con.execute(
         "SELECT challenge_ea_id FROM fut_sbc_log WHERE game_version=?", (a.game,))}
     if done_ids:
@@ -737,7 +786,8 @@ def main():
                 oneclick.append((r, conds, [p for p in pool_c if per_player_ok(p, conds)]))
                 continue
             size = 11
-        xi, cands, best = solve(pool_c, conds, size, a.tries, rng)
+        xi, cands, best = solve(pool_c, conds, size, a.tries, rng,
+                                fixed=FIXED.get(r['challenge_ea_id'], []))
         (ok if xi else no).append((r, xi, size, cands, conds, best))
 
     def head(r):
@@ -808,7 +858,9 @@ def main():
     #    「포메이션을 선택하면 포메이션이 변경돼야 정확히 고를 수 있어」). 없으면 재배치를 못 한다.
     slim = lambda p: {"id": p["id"], "name": p["name"], "ovr": p["ovr"], "club": p["club"],
                       "league": p["league"], "nation": p["nation"], "untradeable": p["is_untradeable"],
-                      "pos": sorted(positions_of(p)), "card": p["card_image_url"]}
+                      "pos": sorted(positions_of(p)), "card": p["card_image_url"],
+                      # ⭐ SBC가 박아 둔 카드 — 화면이 ✕를 감추고 「고정」으로 표시한다.
+                      **({"fixed": True} if p.get("fixed") else {})}
     bad_save = []
     for r, xi, size, cands, _cd, _b in ok:
         known = FORM_OF.get(r["challenge_ea_id"])

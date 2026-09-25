@@ -421,3 +421,8 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
   border:1px dashed var(--ok);border-radius:8px;padding:6px 9px}
 .sbc-sub.done{border-style:solid;border-color:var(--line)}
 .sbc-sub small{flex-basis:100%}
+
+/* SBC 고정 카드(migration 073) — 뺄 수 없으니 ✕ 자리에 📌를 둔다. */
+.sbc-pin{position:absolute;top:15px;right:1px;z-index:3;font-size:8.5px;font-weight:700;
+  background:rgba(6,14,10,.92);border:1px solid var(--ok);color:var(--ok);
+  border-radius:99px;padding:1px 5px;white-space:nowrap}

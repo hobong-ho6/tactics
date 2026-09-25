@@ -2080,7 +2080,9 @@ const pitchHTML = (sq, chId) => sq.map(p => `
     ${p.card ? `<img src="${esc(p.card)}" alt="${esc(p.name)}" loading="lazy">`
              : `<span class="noart"><b>${p.ovr}</b>${esc(p.name)}</span>`}
     ${p.untradeable ? '<u>거래불가</u>' : ''}
-    ${chId ? `<button class="sbc-x" data-sbcex="${chId}" data-cp="${p.id}"
+    ${/* ⛔ SBC가 박아 둔 고정 카드는 **뺄 수 없다** — ✕ 대신 📌로 표시한다(migration 073). */
+      p.fixed ? '<b class="sbc-pin" title="SBC가 이 칸에 박아 둔 카드다 — 바꿀 수 없고 내 구단 카드도 아니다">📌 고정</b>'
+      : chId ? `<button class="sbc-x" data-sbcex="${chId}" data-cp="${p.id}"
                 title="이 SBC에서만 제외하고 다시 푼다(되돌릴 수 있다)">✕</button>` : ''}</div>`).join('');
 /* ⭐⭐ 조건 체크리스트 — **만족/불만족을 둘 다** 띄운다(2026-09-25 사용자 지시).
    ⛔ 종전엔 「남은 위반」만 한 줄로 적어서 **어디까지는 됐는지**를 볼 수 없었다.

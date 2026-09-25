@@ -1114,3 +1114,14 @@ CREATE TABLE IF NOT EXISTS "fut_club_players"(
   sbc_challenge_ea_id INTEGER,
   UNIQUE(account_id, ea_item_id)
 );
+CREATE TABLE fc_sbc_fixed(
+  game_version    TEXT NOT NULL REFERENCES game_versions(code),
+  challenge_ea_id INTEGER NOT NULL,
+  slot            TEXT NOT NULL,          -- 그 칸의 표시 이름(RW·LCB…). fc_formations.slots[].label과 같은 표기
+  ea_item_id      INTEGER,                -- 확정되면 적는다. 모르면 NULL(아래 카드 사실로 판정한다)
+  name            TEXT NOT NULL,
+  ovr             INTEGER, club TEXT, league TEXT, nation TEXT, positions TEXT,
+  is_special      INTEGER NOT NULL DEFAULT 0,
+  source TEXT, confidence TEXT, updated TEXT,
+  PRIMARY KEY(game_version, challenge_ea_id, slot)
+);
