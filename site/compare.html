@@ -23,7 +23,7 @@
 import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell } from './assets/data.js?v=20260924-ut-rename';
 import { Kernel } from './assets/kernel.js?v=20260825-decodemap-null';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
-import { compareReal } from './assets/realcompare.js?v=20260924g';
+import { compareReal } from './assets/realcompare.js?v=20260925a';
 const CARDS = await fetch('data/game_stats/cards.json', { cache: 'no-store' }).then(r => r.json()).catch(() => ({}));
 
 const { team, regime } = await mountHeader('compare.html');

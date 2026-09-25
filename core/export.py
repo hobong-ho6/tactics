@@ -583,6 +583,18 @@ def export_all(db_path=None, window="2026-summer"):
                                      UNION SELECT player_id FROM prescriptions WHERE regime_id=?)
                                ORDER BY v.season DESC, v.n DESC""", (rid, rid)):
             season_stats.setdefault(r.pop("label"), []).append(r)
+        # ⭐⭐ 선수 특성(`fotmob_traits`) — **상세 백분위가 없을 때의 대체 축**(2026-09-24 신설).
+        #    ⛔ `fotmob_detail_stats`와 **모집단이 다르다**(이쪽은 「다른 미드필더와 비교」처럼 포지션군 전체).
+        #       같은 표·같은 레이더에 섞지 않는다 — 화면이 따로 그리고 모집단을 명시한다.
+        #    왜 필요한가: 출전이 얇은 선수는 FotMob이 **상세 백분위를 아예 만들지 않는다**
+        #       (실측 2026-09-24: 뇨니 PL 26/27 3경기 38분 → detail 0행). 그런데 traits는 6축이 있다.
+        #       ⇒ 그 선수가 낀 비교가 통째로 빈 화면이 되던 것을 막는다.
+        traits = {}
+        for r in _rows(con, """SELECT t.player_id, t.pos_group, t.metric, t.metric_kr, t.percentile, t.pulled
+                               FROM fotmob_traits t
+                              WHERE t.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
+                                    UNION SELECT player_id FROM prescriptions WHERE regime_id=?)""", (rid, rid)):
+            traits.setdefault(str(r.pop("player_id")), []).append(r)
         fbref = {}   # 리그 백분위 — Fotmob 상세 스탯(migrations/006). 지표별 동포지션 백분위.
         # ⭐ `player_id`를 함께 싣는다 — 딕셔너리 키는 players.name_kr이지만 화면의 영입 후보는
         # transfer_targets.name_kr을 쓰므로 라벨만으로는 조용히 어긋난다(토신 '아다라비오요' ↔ '토신 아다라비오요').
@@ -719,7 +731,7 @@ def export_all(db_path=None, window="2026-summer"):
             "duties": duties, "player_stats": pstats, "departed": departed, "form": form,
             "avg_positions": avg_positions,
             "match_reports": match_reports,
-            "evaluations": evals, "season_stats": season_stats, "fbref": fbref,
+            "evaluations": evals, "season_stats": season_stats, "fbref": fbref, "traits": traits,
             "fotmob_season": fm_season,
             "setups": setups, "limits": limits, "kernel_fidelity": fidelity, "profile": profile, "tactic_changes": tactic_changes,
             "player_status": status,

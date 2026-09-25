@@ -40,6 +40,10 @@ const byLabel = (map, label) => {
 const statsOf = (td, pid) => (td.player_stats || []).find(r => r.player_id === pid) || null;
 const avgPosOf = (td, pid) => (td.avg_positions || []).find(r => r.player_id === pid) || null;
 const dutyOf = (td, pid) => (td.duties || []).filter(r => r.player_id === pid).slice(-1)[0] || null;
+/* ⭐ 선수 특성(`fotmob_traits`) — **상세 백분위와 모집단이 다르다**(포지션군 전체 대비). 섞지 않고 따로 쓴다.
+   출전이 얇아 상세 백분위가 아예 없는 선수에게는 이게 유일한 비교 축이다
+   (실측 2026-09-24: 뇨니 PL 26/27 3경기 38분 → 상세 0행 · 특성 6축). */
+const traitsOf = (td, pid) => (td.traits || {})[String(pid)] || [];
 
 /* 최근 폼 — `form`은 [날짜, 평점, 대회] 배열이다(오름차순). 뒤에서 n경기. */
 const formOf = (td, label, n = 5) => {
@@ -330,7 +334,7 @@ export function compareReal(a, b, ctx) {
   const pack = c => ({
     card: cardOf(cards, c.player_id), stats: statsOf(td, c.player_id),
     form: formOf(td, c.label), season: seasonOf(td, c.label, ctx.seasonKey),
-    praw: pctRows(td, c.label, c.player_id), pos: avgPosOf(td, c.player_id), duty: dutyOf(td, c.player_id),
+    praw: pctRows(td, c.label, c.player_id), traits: traitsOf(td, c.player_id), pos: avgPosOf(td, c.player_id), duty: dutyOf(td, c.player_id),
   });
   const A = pack(a), B = pack(b);
   const season = commonSeason(A.praw, B.praw);
@@ -424,6 +428,25 @@ export function compareReal(a, b, ctx) {
       ${pctRest ? `<details style="margin-top:6px"><summary class="dim" style="font-size:12px;cursor:pointer">나머지 ${com.length - 12}개 지표 펼치기</summary>
         <table class="tbl cmp-tbl"><tbody>${pctRest}</tbody></table></details>` : ''}`
       : '<h4>리그 백분위</h4><p class="dim">두 선수의 공통 백분위 지표가 없다 — 수집 범위가 다르다.</p>'}
+
+    ${(() => {
+      /* 선수 특성 — 양쪽 다 있을 때만 그린다. ⛔ 위 「리그 백분위」와 **같은 표에 올리지 않는다**(모집단이 다르다). */
+      const ta = Object.fromEntries(A.traits.map(t => [t.metric, t]));
+      const tb = Object.fromEntries(B.traits.map(t => [t.metric, t]));
+      const keys = Object.keys(ta).filter(k => tb[k]);
+      if (!keys.length) return '';
+      const thin = !Object.keys(A.pct).length || !Object.keys(B.pct).length;
+      return `<h4>선수 특성 <small class="dim">— FotMob · ${esc(A.traits[0]?.pos_group || '')}</small></h4>
+        <p class="dim" style="font-size:11.5px;margin:2px 0 6px">
+          ${thin ? '⭐ <b>한쪽에 리그 백분위가 없어 이 축이 대신 선다.</b> 출전이 얇으면 FotMob이 상세 백분위를 만들지 않는다. ' : ''}
+          ⛔ 위 「리그 백분위」와 <b>모집단이 다르다</b>(이쪽은 포지션군 전체 대비) — <b>같은 표로 읽지 말 것</b>.
+          수집일 ${esc(A.traits[0]?.pulled || '')} ↔ ${esc(B.traits[0]?.pulled || '')}.</p>
+        <table class="tbl cmp-tbl"><tbody>${keys
+          .map(k => ({ k, kr: ta[k].metric_kr || k, d: Math.abs((ta[k].percentile ?? 0) - (tb[k].percentile ?? 0)) }))
+          .sort((x, y) => y.d - x.d)
+          .map(m => pctRow(m.kr, { percentile_per90: ta[m.k].percentile }, { percentile_per90: tb[m.k].percentile }))
+          .join('')}</tbody></table>`;
+    })()}
 
     <h4>임무 수행 <small class="dim">— duties(원장 판정 · 칩에 마우스를 올리면 근거)</small></h4>
     <div class="cmp-two"><div>${dutyChip(A.duty)}</div><div>${dutyChip(B.duty)}</div></div>
