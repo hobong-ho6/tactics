@@ -1539,13 +1539,38 @@ function cmpPanel(){
     .filter(k => cols.some(c => (c.run.after.at[k] ?? 0) !== (c.run.before.at[k] ?? 0)));
   const tot = cols.map(c => keys.reduce((t, k) => t + Math.max(0, (c.run.after.at[k] ?? 0) - (c.run.before.at[k] ?? 0)), 0));
   const d = (a, b) => a == null ? '—' : b === a ? `<span class="dim">${a}</span>` : `${a}<b class="${b > a ? 'up' : 'dn'}"> ▸${b}</b>`;
+  /* ⭐⭐ **누가 높고 얼마나 차이 나는가**(2026-09-26 사용자 지시 「두 스탯을 비교해서 누가 높은지
+     그 차가 얼만지도 보여줘」). 견주는 표에서 눈으로 빼기를 하게 두지 않는다.
+     ⚠️ 기준은 **적용 후 값**이다 — 「얼마나 올랐나」가 아니라 「끝나면 누가 더 센가」가 비교의 축이다.
+        (상승폭은 「실제 상승 합」 행이 따로 답한다.)
+     ⛔ 3벌 이상이면 **1위와 2위의 차**를 적는다 — 꼴찌와의 차를 적으면 「우위」가 부풀려진다. */
+  const short = c => String(c.label).split(':')[0].trim();
+  const cmpCell = vals => {
+    const ok = vals.map((v, i) => [v, i]).filter(([v]) => v != null);
+    if (ok.length < 2) return '<span class="dim">—</span>';
+    const sorted = ok.slice().sort((a, b) => b[0] - a[0]);
+    const gap = sorted[0][0] - sorted[1][0];
+    if (!gap) return '<span class="dim">같음</span>';
+    return `<b class="up">${esc(short(cols[sorted[0][1]]))}</b> <b>+${gap}</b>`;
+  };
+  const winIdx = vals => { const ok = vals.map((v, i) => [v, i]).filter(([v]) => v != null);
+    if (ok.length < 2) return -1;
+    const s2 = ok.slice().sort((a, b) => b[0] - a[0]);
+    return s2[0][0] === s2[1][0] ? -1 : s2[0][1]; };
+  const many = cols.length > 1;
+  const row = (label, vals, cells) => `<tr><td>${label}</td>${
+    cells.map((h, i) => `<td${many && winIdx(vals) === i ? ' class="cmpwin"' : ''}>${h}</td>`).join('')}${
+    many ? `<td>${cmpCell(vals)}</td>` : ''}</tr>`;
   return `<div class="cmpbox"><div class="kv"><b>⚖️ 담아 둔 비교 ${cols.length}벌</b>
       <small class="dim">선수를 바꿔도 남는다</small>
       <button class="act ghost" id="cmpclr">전부 비우기</button></div>
     <table class="tbl" style="margin-top:5px"><thead><tr><th>항목</th>${cols.map(c =>
-      `<th>${esc(c.label)} <button class="chip" data-cmprm="${c.i}">✕</button></th>`).join('')}</tr></thead><tbody>
-      <tr><td><b>OVR</b> <small class="dim">fut.gg</small></td>${cols.map(c => `<td>${d(c.run.before.ovr, c.run.after.ovr)}</td>`).join('')}</tr>
-      ${FACE.map(f => `<tr><td>${f}</td>${cols.map(c => `<td>${d(c.run.before.six?.[f], c.run.after.six?.[f])}</td>`).join('')}</tr>`).join('')}
+      `<th>${esc(c.label)} <button class="chip" data-cmprm="${c.i}">✕</button></th>`).join('')}${
+      many ? '<th>누가 높나 <small class="dim">적용 후 기준</small></th>' : ''}</tr></thead><tbody>
+      ${row('<b>OVR</b> <small class="dim">fut.gg</small>', cols.map(c => c.run.after.ovr),
+            cols.map(c => d(c.run.before.ovr, c.run.after.ovr)))}
+      ${FACE.map(f => row(f, cols.map(c => c.run.after.six?.[f]),
+            cols.map(c => d(c.run.before.six?.[f], c.run.after.six?.[f])))).join('')}
       ${/* ⭐ **상세 속성을 접지 않는다**(2026-09-26 사용자 지시 「비교할 때는 상세 스탯으로 비교」).
            6대 스탯은 가중 평균이라 **어디서 얼마를 얻는지**가 묻힌다 — 견주는 자리에서는 그게 본문이다.
            ⛔ 별도 표로 갈라 두지 않는다(머리글이 두 번 나오고 눈이 왔다 갔다 한다) — 한 표에 잇는다. */''}
@@ -1557,14 +1582,14 @@ function cmpPanel(){
       }).join('')}</tr>`).join('')}` : ''}
       ${/* ⭐ **PlayStyle·역할도 견준다**(2026-09-26 사용자 지시) — 스탯만으로는 진화의 값어치가 안 갈린다.
            ⚠️ 이미 가진 것은 「이미 보유」로 갈라 적는다(새로 얻는 게 아니다 — 한계효용 0). */''}
-      <tr class="cmpsep"><td colspan="${cols.length + 1}">이 진화로 얻는 것</td></tr>
+      <tr class="cmpsep"><td colspan="${cols.length + (many ? 2 : 1)}">이 진화로 얻는 것</td></tr>
       <tr><td>PlayStyle</td>${cols.map(c => `<td>${c.run.gain.ps.length
         ? c.run.gain.ps.map(x => `<b class="up">${esc(x)}</b>`).join('<br>') : '<span class="dim">—</span>'}${
         c.run.gain.psDup.length ? `<br><small class="dim">${c.run.gain.psDup.map(esc).join(' · ')} 이미 보유</small>` : ''}</td>`).join('')}</tr>
       <tr><td>역할 Role+/++</td>${cols.map(c => `<td>${c.run.gain.role.length
-        ? c.run.gain.role.map(x => `<b>${esc(x)}</b>`).join('<br>') : '<span class="dim">—</span>'}</td>`).join('')}</tr>
-      <tr style="border-top:2px solid var(--line)"><td><b>실제 상승 합</b> <small class="dim">상한 손실 제외</small></td>${
-        tot.map(t => `<td><b class="up">+${t}</b></td>`).join('')}</tr></tbody></table></div>`;
+        ? c.run.gain.role.map(x => `<b>${esc(x)}</b>`).join('<br>') : '<span class="dim">—</span>'}</td>`).join('')}${many ? '<td></td>' : ''}</tr>
+      <tr style="border-top:2px solid var(--line)">${row('<b>실제 상승 합</b> <small class="dim">상한 손실 제외</small>',
+        tot, tot.map(t => `<b class="up">+${t}</b>`)).replace(/^<tr>|<\/tr>$/g, '')}</tr></tbody></table></div>`;
 }
 function pathSide(pid){
   const rows = RANKED[pid] || [];

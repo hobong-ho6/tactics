@@ -519,3 +519,5 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 /* 고른 가지 = 초록(추천은 ⭐ 글자로만) — 2026-09-26 사용자 지시. */
 .opt.on{border-style:solid;border-color:var(--ok);color:var(--ok);font-weight:700;
   background:rgba(76,217,123,.14);outline:none}
+/* 그 행에서 가장 높은 칸 — 눈으로 빼기를 하지 않게 표시한다(2026-09-26). */
+.cmpbox td.cmpwin{background:rgba(76,217,123,.10);box-shadow:inset 2px 0 0 var(--ok)}
