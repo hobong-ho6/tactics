@@ -1300,12 +1300,22 @@ def run(db_path=None, verbose=True):
         # ⚠️ 이 파일의 커서는 row_factory가 없어 **튜플**을 준다 — dict로 바꿔 넘긴다.
         frows = [dict(abbr=a, attr=t, weight=w, is_gk=g)
                  for a, t, w, g in con.execute("SELECT abbr, attr, weight, is_gk FROM fc_face_stats")]
-        for cid, nm, attrs, six_s, pos in con.execute("""SELECT c.id, c.name, c.current_attrs, c.current_six, i.positions
+        # ⛔⛔ **GK 여부는 `current_six`의 키로 판정한다**(2026-09-27 정정).
+        #    종전엔 `player_card_items.positions`를 봤는데 **새로 들어온 카드는 그 표에 없어서**
+        #    GK를 필드로 계산했다(테어 슈테겐). 더 나쁜 건 그 반대 경우다 —
+        #    six가 GK 키인데 필드로 계산하면 **겹치는 칸이 0이라 게이트가 조용히 통과한다**(사각).
+        #    ⇒ 대조하는 값 자체(`current_six`)에서 판정하면 어느 쪽도 빠져나갈 수 없다.
+        _GK6 = {"DIV", "HAN", "KIC", "REF", "SPD", "POS"}
+        for cid, nm, attrs, six_s in con.execute("""SELECT c.id, c.name, c.current_attrs, c.current_six
                                   FROM fut_club_players c
-                                  LEFT JOIN player_card_items i ON i.ea_item_id=c.ea_item_id
                                  WHERE c.status='owned' AND c.current_attrs IS NOT NULL
                                    AND c.current_six IS NOT NULL"""):
-            six, calc = _json.loads(six_s), _face(_json.loads(attrs), frows, is_gk="GK" in (pos or ""))
+            six = _json.loads(six_s)
+            calc = _face(_json.loads(attrs), frows, is_gk=bool(set(six) & _GK6))
+            # ⛔ 겹치는 칸이 하나도 없으면 **통과가 아니라 결함**이다(키 체계가 어긋났다는 뜻).
+            if not (set(six) & set(calc)):
+                g25.append(f"{nm}(id {cid}) 6대 키가 계산과 겹치지 않는다: 원장 {sorted(six)} ↔ 계산 {sorted(calc)}")
+                continue
             off = {k: (six[k], calc[k]) for k in six
                    if calc.get(k) is not None and abs(six[k] - calc[k]) > G25_TOL
                    and (nm, k) not in G25_KNOWN}

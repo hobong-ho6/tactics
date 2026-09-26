@@ -108,7 +108,15 @@ def main():
     stats_n = 0
     for r in rows:
         card = cards.get(r["ea"]) or {}
-        gk = (card.get("best_pos") == "GK")
+        # ⛔⛔ **GK 판정의 정본은 캡처 파일이다**(2026-09-27 실측 사고).
+        #    종전엔 `player_card_items.best_pos`만 봤는데, **새로 들어온 카드는 아직 그 표에 없다**
+        #    (`collect_futgg_cards.py`는 이 단계 **뒤에** 돈다) ⇒ `card`가 빈 dict라 gk=False가 되고
+        #    **6대가 필드 키 이름으로 적힌다**(DIV 81을 PAC 81로). 실증: 테어 슈테겐 82 GK가 그렇게 들어왔다.
+        #    ⭐ `collect_ggclub.py`는 EA 응답의 `position == 0`으로 **이미 gk를 담아 준다**(`card.gk`) —
+        #      그걸 안 보고 DB를 보던 게 잘못이다. 캡처 우선, 없으면 DB로 물러선다.
+        #    ⚠️ G25가 이 사고를 잡았다(6대 ↔ 29속성 정합) — 게이트가 정상 동작한 사례다.
+        gkflag = (r.get("card") or {}).get("gk")
+        gk = bool(gkflag) if gkflag is not None else (card.get("best_pos") == "GK")
         six = json.dumps(dict(zip(GK_SIX_K if gk else SIX_K, r["six"])), ensure_ascii=False)
         style = styles.get(r.get("cs"))
         if style and style not in ("Basic", "GK Basic"):
