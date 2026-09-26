@@ -1348,8 +1348,56 @@ let SHOW_DONE = localStorage.getItem('evo_show_done') === '1';
 /* 이 선수에게 **지금 할 수 있는 것**의 수 = 열린 경로 중 완주하지 않은 것 + 경로 없이 걸 수 있는 진화 */
 const actionable = pid => (RANKED[pid] || []).filter(r => !doneScore(r, +pid)).length + eligOpen(+pid).length;
 /* 사이드패널 본문 — ⛔ 종전 패널과 **같은 내용**이다. 여기서 정보를 빼거나 더하지 않는다. */
+/* ⭐⭐ **다음에 걸 수 있는 진화를 개별 카드로 세운다**(2026-09-26 사용자 지시
+   「진화가 여전히 보기 어렵게 나오는데 개별 진화가 카드 형태로 나오는 게 좋겠어」 +
+    「진화를 적용하려면 뭘 눌러야 해」).
+   ⛔ 종전엔 **경로(A → B → C)**만 늘어놨다. 경로는 「어디로 가는가」는 말해 주지만
+      **「지금 당장 무엇을 누르면 되는가」**는 말해 주지 않는다 — 같은 진화가 여러 경로의 앞머리에
+      중복해 나오고, 이름이 길어 무엇을 고르는지도 읽기 어려웠다.
+   ⇒ 각 경로에서 **아직 안 밟은 첫 진화**만 뽑아 **중복 없이** 카드로 세운다. 그게 다음 한 수다.
+   ⭐ 적용 기록 버튼을 여기 둔다 — 종전엔 「내 구단」 탭 사이드패널에만 있어 찾기 어려웠다. */
+function nextEvoCards(pid){
+  const rows = (RANKED[pid] || []).filter(r => pathOpen(r, +pid));
+  const seen = new Map();
+  for (const r of rows){
+    const done = new Set(appliedIn(r, +pid).filter(x => x.done).map(x => x.evo_id));
+    const left = { };
+    for (const a of appliedIn(r, +pid)) if (a.done) left[a.evo_id] = a.runs || 1;
+    let nextId = null;
+    for (const id of (r.ids || [])){ if (left[id] > 0){ left[id]--; continue; } nextId = id; break; }
+    if (nextId == null) continue;                 // 이 경로는 다 밟았다
+    const cur = seen.get(nextId);
+    if (!cur || (r.rs ?? -1) > (cur.rs ?? -1)) seen.set(nextId, { id: nextId, rs: r.rs, tier: r.tier, via: r });
+  }
+  // 경로 없이 단독으로 걸 수 있는 진화도 같은 카드로 세운다(축이 다를 뿐 「다음 한 수」는 같다)
+  for (const e of eligOpen(+pid)) if (!seen.has(e.evo_id)) seen.set(e.evo_id, { id: e.evo_id, solo: true });
+  const list = [...seen.values()].sort((a, b) => (b.tier ?? -1) - (a.tier ?? -1) || (b.rs ?? -1) - (a.rs ?? -1));
+  if (!list.length) return '<div class="dim" style="font-size:12px;margin:6px 0">지금 걸 수 있는 진화가 없다.</div>';
+  const own = (EVO.club?.players || []).find(x => x.player_id === +pid && x.status === 'owned');
+  return `<div class="nextbox"><b>지금 걸 수 있는 진화 ${list.length}건</b>
+    <small class="dim">— 각 경로에서 <b>아직 안 밟은 첫 진화</b>만 중복 없이 세웠다. 이게 다음 한 수다.</small>
+    <div class="nextgrid">${list.map(x => { const c = CATBYID[x.id]; if (!c) return '';
+      const lock = RULES.lockInfo[x.id];
+      return `<div class="nextcard${lock ? ' locked' : ''}">
+        <div class="kv"><b>${esc(c.name)}</b>${lock ? `<span class="chip" style="border-color:var(--warn);color:var(--warn)" title="${esc(lock.why)}">🔒</span>` : ''}
+          ${x.solo ? '<span class="chip dim" title="경로가 없어 단독으로 건다">단독</span>' : ''}
+          ${x.tier === 2 ? '<span class="chip" style="border-color:var(--ok);color:var(--ok)">처방 Role++</span>'
+            : x.tier === 1 ? '<span class="chip">처방 Role+</span>' : ''}</div>
+        <small class="dim">${(J(c.levels, []) || []).length}단계 · ${esc(costText({ coins_cost: c.coins_cost, points_cost: c.points_cost }))}${
+          c.end_time ? ` · 마감 ${String(c.end_time).slice(0, 10)}` : ''}</small>
+        ${lock ? `<small style="color:var(--warn)">${esc(lock.why)}</small>` : ''}
+        <div class="kv" style="margin-top:5px">
+          ${own ? `<button class="act" data-evoapply="${pid}:${x.id}">✔ 적용 기록</button>` : '<span class="dim">미보유 — 사야 건다</span>'}
+          <button class="act ghost" data-cat="${x.id}">카탈로그</button></div>
+        <span class="msg-slot" id="em${pid}_${x.id}"></span></div>`; }).join('')}</div></div>`;
+}
 function pathSide(pid){
   const rows = RANKED[pid] || [];
+  /* ⭐ **완료한 경로는 이력 영역으로 내린다**(2026-09-26 사용자 지시 「이미 완료한 진화는 이력이니
+     별도 영역에 진화 이력을 쌓아서 보여주면 되고」) — 할 일 사이에 끼면 다음 한 수가 묻힌다. */
+  const sorted = rows.slice().sort((a, b) => (doneScore(a, +pid) - doneScore(b, +pid)));
+  const isDone = r => { const d = appliedIn(r, +pid); return d.length && d.length === (r.ids || []).length && d.every(x => x.done); };
+  const todo = sorted.filter(r => !isDone(r)), hist = sorted.filter(isDone);
   return `<div class="kv" style="margin-bottom:6px"><b style="font-size:15px">${
       esc(NAME_OF[pid] || rows[0]?.name_kr || eligOpen(pid)[0]?.name || '')}</b>
       <span class="chip">${esc(TEAM_OF[pid] || '')}</span>
@@ -1357,13 +1405,31 @@ function pathSide(pid){
       <span>처방: ${presLabel(rows[0]?.pres ?? matcher(+pid).pres)}</span>
       <small class="dim">경로 ${rows.length}건</small>
       <a href="player.html?id=${pid}" style="font-size:12px">선수 화면 →</a></div>
-    ${appliedPanel(+pid)}
+    ${nextEvoCards(+pid)}
     ${eligPanel(+pid)}
-    ${rows.slice().sort((a, b) => (doneScore(a, +pid) - doneScore(b, +pid)))
-          .map((r, i) => pathHTML(r, i, +pid)).join('')}`;
+    <details${todo.length ? '' : ' open'} style="margin-top:8px"><summary style="cursor:pointer;font-size:12.5px">
+      <b>경로로 보기</b> <small class="dim">— 이 진화가 어디로 이어지는지 · 상세 스탯·갈림길은 여기 있다 (${todo.length}건)</small></summary>
+      ${todo.map((r, i) => pathHTML(r, i, +pid)).join('')}</details>
+    ${hist.length || Object.values(APPLIED).some(x => x.pid === +pid) ? `
+    <details style="margin-top:8px"><summary style="cursor:pointer;font-size:12.5px">
+      <b>📜 진화 이력</b> <small class="dim">— 이미 끝낸 것 (완료 경로 ${hist.length}건)</small></summary>
+      ${appliedPanel(+pid)}${hist.map((r, i) => pathHTML(r, i, +pid)).join('')}</details>` : ''}`;
 }
 /* 「카탈로그에서 보기」 — 패널을 다시 그릴 때마다 걸어 준다(패널 안에만 있는 버튼이라). */
 function bindSide(root, team){
+  /* ⭐ 진화 적용 기록 — 「내 구단」 탭 사이드패널과 **같은 API**를 부른다(불변규칙 13 ② 단일 정본).
+     ⛔ 여기서 폼을 새로 만들지 않는다 — 날짜는 오늘, 메모는 없음으로 간다(둘 다 나중에 고칠 수 있다). */
+  root.querySelectorAll('button[data-evoapply]').forEach(b => b.addEventListener('click', async () => {
+    const [pid, evo] = b.dataset.evoapply.split(':');
+    const acc = accountObj(); if (!acc) return;
+    const box = document.getElementById(`em${pid}_${evo}`);
+    if (!confirm('이 진화를 적용했다고 기록합니다.\n\n· 인게임에서 실제로 적용한 뒤 누르세요.\n'
+      + '· 소진·다음 추천 계산이 이 기록을 씁니다.\n· 틀렸으면 「내 구단」 탭에서 고칠 수 있습니다.')) return;
+    b.disabled = true;
+    say(box, await api('evolve', { account: acc.name, player: +pid, evo: +evo,
+                                   date: new Date().toISOString().slice(0, 10) }));
+    b.disabled = false;
+  }));
   root.querySelectorAll('button[data-cat]').forEach(b => b.addEventListener('click', e => {
     e.preventDefault();
     document.querySelector('.menubar [data-tab="cat"]').click();

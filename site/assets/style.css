@@ -493,3 +493,12 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .opt[data-optpick]{cursor:pointer;user-select:none}
 .opt[data-optpick]:hover{border-color:var(--txt);color:var(--txt)}
 .opt.on{outline:2px solid var(--viz-us);outline-offset:1px}
+
+/* 「지금 걸 수 있는 진화」 — 개별 진화 카드(2026-09-26 사용자 지시). 경로가 아니라 **다음 한 수**를 세운다. */
+.nextbox{margin:6px 0 4px}
+.nextgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:7px;margin-top:6px}
+.nextcard{border:1px solid var(--line);border-left:3px solid var(--ok);border-radius:8px;padding:7px 9px;font-size:12px}
+.nextcard.locked{border-left-color:var(--warn);opacity:.85}
+.nextcard .kv{flex-wrap:wrap;gap:5px}
+.nextcard b{font-size:12.5px}
+.nextcard small{display:block;margin-top:2px}
