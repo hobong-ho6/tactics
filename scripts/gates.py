@@ -1410,6 +1410,35 @@ def run(db_path=None, verbose=True):
     if not ok27:
         fails.append("G27")
 
+    # G28 — ⛔ **화면이 인용하는 외국어 과제에 한국어 번역이 없으면 막는다.** 2026-09-26 신설
+    #   불변규칙 11(외국어 인용은 언제나 번역 병기)은 지금까지 **세션의 기억**에 걸려 있었다 —
+    #   런북이 「그 회차에 손으로 채운다」고 적어 뒀을 뿐이라, 읽지 않으면 그냥 안 채워진다(⑤문서 수준).
+    #   ⇒ ③게이트로 올린다. 진화 카드가 실제로 띄우는 과제만 본다.
+    #   ⭐ **모든 과제를 요구하지 않는다** — 인용하지 않는 문장까지 번역을 강제하면 오탐이 쌓여
+    #      게이트가 무시당한다(2026-09-26 확인: 최신 회차 166건 중 참조되는 것은 7건뿐이고 전부 번역돼 있다).
+    g28 = []
+    try:
+        for grp, task in con.execute("""
+                WITH cur AS (SELECT * FROM fc_objective_tasks
+                              WHERE pulled=(SELECT MAX(pulled) FROM fc_objective_tasks)),
+                     evo AS (SELECT DISTINCT unlock_text u FROM fc_evolutions
+                              WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions)
+                                AND unlock_text IS NOT NULL AND unlock_text<>''
+                                AND unlock_text NOT LIKE 'Unlocked by%')
+                SELECT c.group_name, c.task_name FROM evo e JOIN cur c
+                       ON (c.task_name=e.u OR c.group_name=e.u)
+                 WHERE c.task_text IS NOT NULL AND TRIM(c.task_text)<>''
+                   AND (c.task_text_kr IS NULL OR TRIM(c.task_text_kr)='')"""):
+            g28.append(f"{grp} / {task}")
+    except sqlite3.OperationalError as e:
+        g28.append(f"조회 실패({e}) — migration 059가 적용됐는지 확인")
+    ok28 = not g28
+    if verbose:
+        print(f"G28 인용 과제 한국어 병기: 번역 결손 {len(g28)} "
+              + ("✅" if ok28 else "❌ " + " · ".join(g28[:4])))
+    if not ok28:
+        fails.append("G28")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")

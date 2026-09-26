@@ -9,6 +9,7 @@
 
 사용:
     python3 scripts/gaps.py links                 # 카드·보유·경로의 player_id 링크 결손 (club-sync)
+    python3 scripts/gaps.py identity              # 이름이 겹치는 미연결 카드의 **3요소 대조** (docs/30)
     python3 scripts/gaps.py player 지모알로바      # 그 선수의 17축 결손 표 (player-collect §1)
     python3 scripts/gaps.py eval                  # 평가 신선도 — 갱신 대상 (match-watch T4)
     python3 scripts/gaps.py squad                 # 활성 스쿼드 전원이 진화 패스에 나오는가 (club-sync 검산)
@@ -46,6 +47,63 @@ def links(con):
         print(f"   {'⛔' if n else '✅'} {k:14} {n}")
     if bad:
         print("   ⚠️ 이름만으로 잇지 말 것 — 소속팀·국적·포지션 3요소를 대조한다(docs/30).")
+    return bool(bad)
+
+
+def identity(con):
+    """⛔⛔ **선수 동일성 3요소 대조** — 이름이 같다고 잇지 않는다(2026-09-26 코드화).
+
+    왜: `links`는 「이름이 맞는데 링크가 비었다」는 **건수만** 알려 주고, 정작 「이어도 되는가」는
+      런북이 세션에게 맡겨 뒀다(docs/30 「선수 동일성 확인 규약」). 그 대조를 매 회차 손으로 했다.
+      ⛔ 손으로 하면 틀린다 — 실증: `Alysson`(빌라·RM) ↔ `Alisson Becker`(리버풀·GK)는 이름이 겹친다.
+    ⇒ **소속팀·국적·포지션 3요소를 기계가 맞춰 보고**, 셋 다 맞을 때만 「이어도 된다」고 적는다.
+      하나라도 어긋나면 **후보에서 빼고 사유를 찍는다** — 조용히 넘기면 그게 사고다.
+    ⛔ 여기서 잇지 않는다(원장을 쓰지 않는다) — 사람이 보고 UPDATE 한다. 추측으로 채우지 않는 것이 규칙이다."""
+    def norm(v):
+        return (v or "").strip().lower()
+    rows = con.execute("""
+        SELECT i.id, i.name_kr nm, i.club, i.nation, i.positions, i.ea_item_id,
+               p.id pid, p.name pname, p.name_kr pkr
+          FROM player_card_items i JOIN players p
+            ON (p.name=i.name_kr OR p.name_kr=i.name_kr)
+         WHERE i.player_id IS NULL AND i.game_version='FC27'""").fetchall()
+    print("■ 선수 동일성 3요소 대조 (이름이 겹치는 미연결 카드)")
+    if not rows:
+        print("   ✅ 이름이 겹치면서 링크가 빈 카드 없음")
+        return False
+    okn = bad = 0
+    for r in rows:
+        cid, nm, club, nation, pos, ea, pid, pname, pkr = r
+        # 우리 DB 쪽 3요소 — 현역 소속은 squad_entries × regimes, 국적·포지션은 players
+        me = con.execute("""SELECT (SELECT t.name FROM squad_entries se JOIN regimes g ON g.id=se.regime_id
+                                     JOIN teams t ON t.code=g.team_code
+                                    WHERE se.player_id=? ORDER BY g.id DESC LIMIT 1) club,
+                                   (SELECT nationality FROM players WHERE id=?) nat,
+                                   (SELECT primary_position FROM players WHERE id=?) pos""",
+                         (pid, pid, pid)).fetchone()
+        mclub, mnat, mpos = me or (None, None, None)
+        checks = []
+        checks.append(("소속", club, mclub, norm(club) == norm(mclub) if club and mclub else None))
+        checks.append(("국적", nation, mnat, norm(nation) == norm(mnat) if nation and mnat else None))
+        # ⭐ 포지션은 **겹치기만 하면** 같은 사람으로 본다 — 카드는 다포지션이고 우리 DB는 주포지션 하나다.
+        #    ⛔ 겹침이 0이면 그것이 신호다(Alysson RM/RW ↔ Alisson GK).
+        pset = {x.strip().upper() for x in (pos or "").split("/") if x.strip()}
+        checks.append(("포지션", pos, mpos,
+                       (mpos.strip().upper() in pset) if (pset and mpos) else None))
+        agree = [c for c in checks if c[3] is True]
+        clash = [c for c in checks if c[3] is False]
+        unknown = [c for c in checks if c[3] is None]
+        if clash:
+            bad += 1
+            print(f"   ⛔ {nm} (카드 {ea}) ↔ players#{pid} {pkr or pname} — "
+                  + " · ".join(f"{k} 카드 {a!r} ≠ 우리 {b!r}" for k, a, b, _ in clash) + " ⇒ **다른 사람일 수 있다**")
+        elif agree and not unknown:
+            okn += 1
+            print(f"   ✅ {nm} (카드 {ea}) ↔ players#{pid} — {', '.join(c[0] for c in agree)} 일치 ⇒ 이어도 된다")
+        else:
+            print(f"   ⚪ {nm} (카드 {ea}) ↔ players#{pid} — 대조할 값이 없다"
+                  f"({', '.join(c[0] for c in unknown)}) ⇒ **사람이 확인**")
+    print(f"   요약: 연결 가능 {okn} · 충돌 {bad} · 미상 {len(rows)-okn-bad}")
     return bool(bad)
 
 
@@ -144,13 +202,15 @@ if __name__ == "__main__":
     bad = False
     if cmd in ("links", "all"):
         bad |= links(con)
+    if cmd in ("identity", "all"):
+        bad |= identity(con)
     if cmd in ("squad", "all"):
         bad |= squad(con)
     if cmd in ("eval", "evals", "all"):
         bad |= evals(con)
     if cmd == "player":
         bad |= player(con, sys.argv[2])
-    elif cmd not in ("links", "squad", "eval", "evals", "all"):
+    elif cmd not in ("links", "identity", "squad", "eval", "evals", "all"):
         sys.exit(__doc__)
     con.close()
     sys.exit(0)          # ⛔ 결손은 **보고 대상**이지 실패가 아니다 — 게이트가 아니다.
