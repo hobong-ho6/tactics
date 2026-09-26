@@ -150,8 +150,10 @@ const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON
 const vizW = (el, cap, pad = 26) => Math.min(cap, Math.max(320, (el?.clientWidth || (document.body.clientWidth - 68)) - pad));
 
 const { idx } = await mountHeader('evolutions.html');
-const [EVO, CARDS, K26, ...TEAMS] = await Promise.all([
+const [EVO, CARDS, K26, K27, ...TEAMS] = await Promise.all([
   loadGameStats('evolutions'), loadGameStats('cards'), loadKernels('FC26').catch(() => ({roles: []})),
+  /* ⭐ 역할 가중만 FC27판을 쓴다(migration 079) — 역할 이름·포커스는 FC26이 정본이라 그대로 둔다. */
+  loadKernels('FC27').catch(() => ({})),
   ...idx.regimes.map(r => loadTeam(r.team_code).then(t => [r.team_code, t]).catch(() => [r.team_code, null])),
 ]);
 const ROLE_KR = Object.fromEntries((K26.roles || []).map(r => [r.role_id, r.name]));
@@ -191,7 +193,12 @@ function rank(pid, rows){
 }
 /* 역할 가중 점수 (2026-09-18, 사용자 지시 「역할별 핵심 속성 가중 점수 넣어줘」) — Σ(가중 × 속성 Δ). 가중은 game_role_key_attrs(판단값·MEDIUM).
    tier(처방 역할 Role++/+) 다음 정렬 키다 — 「OVR +1」이 아니라 「처방 역할에 유효한 상승」으로 순위를 가른다. */
-const KEYW = {}; for (const r of K26.role_key_attrs || []) (KEYW[r.role_id] ??= {})[r.attr] = r.weight;
+/* ⭐⭐ **가중은 FC27판이 정본이다**(migration 079 · 2026-09-26 사용자 지시 「가중표를 FC27 조정을 반영해」).
+   EA 1차: 「greater emphasis on a player's Acceleration and Sprint Speed Attributes」 ⇒ 가속·질주 +1.
+   ⛔ FC26 행은 실축 재현 축이라 남겨 둔다 — 없을 때만 그쪽으로 물러선다. */
+const KEY_ROWS = (K27?.role_key_attrs?.length ? K27.role_key_attrs : K26.role_key_attrs) || [];
+const KEY_GV = K27?.role_key_attrs?.length ? 'FC27' : 'FC26';
+const KEYW = {}; for (const r of KEY_ROWS) (KEYW[r.role_id] ??= {})[r.attr] = r.weight;
 function roleScore(pres, upgradesJson){
   const w = pres && KEYW[pres.role_id]; const up = J(upgradesJson, {}) || {};
   if (!w) return { score: 0, top: [], known: false };
@@ -831,7 +838,7 @@ function renderNow(){
         같은 버튼이 탭마다 다르게 굴렀다(한쪽은 비교 모드, 다른 쪽은 단순 토글). */
   const byId = id => (EVO.club?.players || []).find(x => x.id === id);
   const cmpCtx = () => ({ chem_styles: EVO.chem_styles, role_map: EVO.role_map,
-    canon_roles: EVO.canon_roles, key_attrs: K26.role_key_attrs, role_kr: ROLE_KR,
+    canon_roles: EVO.canon_roles, key_attrs: KEY_ROWS, role_kr: ROLE_KR,
     roles: K26.roles, focus_rows: K26.focus, face_stats: EVO.face_stats });
   const CMP = cardCompare({
     side, root: document.getElementById('nowpitch'), byId, ctx: cmpCtx,
@@ -2426,7 +2433,7 @@ function renderClub(){
   /* ⭐ 비교 — **「지금 내 팀」과 같은 모듈**을 쓴다(2026-09-23 사용자 지시 「동작이 다르다 — 동일하게」).
      ⛔ 여기서 다시 짜지 않는다: 종전엔 이 탭만 단순 토글이라 다음 카드를 누르면 상세로 빠져나갔다. */
   const cmpCtx2 = () => ({ chem_styles: EVO.chem_styles, role_map: EVO.role_map, canon_roles: EVO.canon_roles,
-    key_attrs: K26.role_key_attrs, role_kr: ROLE_KR, roles: K26.roles, focus_rows: K26.focus, face_stats: EVO.face_stats });
+    key_attrs: KEY_ROWS, role_kr: ROLE_KR, roles: K26.roles, focus_rows: K26.focus, face_stats: EVO.face_stats });
   let lastOpened = null;
   const CMPC = cardCompare({
     side: cside, root: box, byId: id => owned.find(x => x.id === id), ctx: cmpCtx2,
