@@ -693,7 +693,7 @@ CREATE TABLE fc_evolutions(
   number_of_players INTEGER,            -- fut.gg 집계 적용 가능 선수 수(전체 DB 기준)
   is_expired INTEGER NOT NULL DEFAULT 0,
   source TEXT, confidence TEXT,
-  pulled TEXT NOT NULL, carried_from TEXT,                 -- 진화는 기간제 — 시점이 정본
+  pulled TEXT NOT NULL, carried_from TEXT, name_kr TEXT, description_kr TEXT, levels_kr TEXT,                 -- 진화는 기간제 — 시점이 정본
   UNIQUE(game_version, evo_id, pulled)
 );
 CREATE INDEX ix_fc_evolutions_gv ON fc_evolutions(game_version, is_expired, end_time);

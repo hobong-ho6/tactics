@@ -173,7 +173,8 @@ def export_all(db_path=None, window="2026-summer"):
     rolemap = _rows(con, """SELECT game_version, ea_id, kind, slug, name, position_name
                             FROM fc_role_familiarity_map ORDER BY game_version, kind, ea_id""")
     # 카탈로그(fc_evolutions, 최신 pulled) + 내 구단 원장(fut_*) — 진화 메뉴(evolutions.html)가 읽는다 (migration 036)
-    catalog = _rows(con, """SELECT game_version, evo_id, name, slug, url, description, category, unlock_text,
+    # ⭐ 한국어 이름·설명(migration 076 · futmind = EA 현지화 노출) — 없는 종은 NULL이다(해금형 9종).
+    catalog = _rows(con, """SELECT game_version, evo_id, name, name_kr, description_kr, levels_kr, slug, url, description, category, unlock_text,
                                    coins_cost, points_cost, token_cost, repeatability, is_reward, is_gk, is_timed,
                                    training_time, created_at, end_time, end_submission_time, requirements_text,
                                    total_upgrades_text, levels, allowed_prior_ids, number_of_players, is_expired, pulled,

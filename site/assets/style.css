@@ -521,3 +521,8 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
   background:rgba(76,217,123,.14);outline:none}
 /* 그 행에서 가장 높은 칸 — 눈으로 빼기를 하지 않게 표시한다(2026-09-26). */
 .cmpbox td.cmpwin{background:rgba(76,217,123,.10);box-shadow:inset 2px 0 0 var(--ok)}
+/* 진화 단계별 미션(2026-09-26) — 카드 안에서 접어 둔다. */
+.mission{margin-top:4px;font-size:11.5px}
+.mission summary{cursor:pointer;color:var(--dim)}
+.mission ol{margin:4px 0 0;padding-left:18px}
+.mission li{padding:1px 0;line-height:1.45}

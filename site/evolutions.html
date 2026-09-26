@@ -1452,7 +1452,7 @@ function tryPanel(pid){
       <button class="act" id="trysave">📌 비교에 담기</button>
       <button class="act ghost" id="tryclr">비우기</button></div>
     <div class="trysteps">${r.steps.map((x, i) => `<div class="trystep${x.fails.length ? ' bad' : ''}">
-      <div class="kv"><b>${i + 1}. ${esc(x.name)}</b><span class="chip">OVR ${x.ovr}</span>
+      <div class="kv"><b>${i + 1}. ${esc(x.name)}</b>${CATBYID[x.id]?.name_kr ? `<small class="dim">${esc(CATBYID[x.id].name_kr)}</small>` : ''}<span class="chip">OVR ${x.ovr}</span>
         <button class="chip" data-trydel="${i}" title="여기부터 뒤를 뺀다">✕</button></div>
       ${x.fails.length ? `<small class="dn">⛔ ${x.fails.map(esc).join(' · ')} — 얹지 않았다</small>` : ''}
       ${x.picks.map(pk => `<div class="kv" style="margin-top:3px"><small class="dim">🔀 ${pk.lv}단계</small>
@@ -1485,6 +1485,31 @@ function tryPanel(pid){
       중복해 나오고, 이름이 길어 무엇을 고르는지도 읽기 어려웠다.
    ⇒ 각 경로에서 **아직 안 밟은 첫 진화**만 뽑아 **중복 없이** 카드로 세운다. 그게 다음 한 수다.
    ⭐ 적용 기록 버튼을 여기 둔다 — 종전엔 「내 구단」 탭 사이드패널에만 있어 찾기 어려웠다. */
+/* ⭐ **단계별 미션**(2026-09-26 사용자 지시 「진화 수행을 위한 각 단계별 미션도 수집해서 보여줘」).
+   영문은 fut.gg `levels[].challenges`, 한국어는 futmind(EA 현지화 · migration 077).
+   ⛔ 번역만 적지 않는다 — 원문을 title에 남긴다(불변규칙 11: 원문 없이 번역만 적으면 검증 불가).
+   ⚠️ 한국어가 없는 진화(해금형 9종)는 영문 그대로 둔다 — 지어내지 않는다. */
+function missionHTML(cat){
+  const lv = J(cat?.levels, []) || [];
+  const kr = J(cat?.levels_kr, null) || {};
+  const rows = lv.map(L => {
+    const en = (L.challenges || []).filter(Boolean);
+    const ko = kr[String(L.idx)] || [];
+    if (!en.length && !ko.length) return '';
+    return `<li><b>${L.idx}단계</b> ${(ko.length ? ko : en).map((t, i) =>
+      `<span title="${esc(ko.length ? (en[i] || '') : '')}">${esc(t)}</span>`).join(' · ')}</li>`;
+  }).filter(Boolean);
+  /* ⛔ 「없다」를 결손으로 읽히게 두지 않는다(obs#132) — 2026-09-26 전수 대조로 **사유가 밝혀졌다**:
+     미션이 없는 21종은 **전부** 보상형(시즌패스 해금)이거나 코인 결제형(Roles++)이다.
+     경기를 뛰어 채우는 미션이 애초에 없고 **해금·결제 즉시 적용**되는 종류다. 그 사실을 적는다. */
+  if (!rows.length) return `<small class="dim">🎯 단계별 미션 <b>없음</b> — ${
+    (cat?.coins_cost || cat?.points_cost) ? '코인·포인트로 <b>즉시 적용</b>되는 진화다'
+    : cat?.is_reward ? '<b>보상형</b>(시즌패스 해금)이라 경기 미션이 없다'
+    : '카탈로그에 미션 정보가 없다'}.</small>`;
+  return `<details class="mission"><summary>🎯 단계별 미션 ${rows.length}개${
+    Object.keys(kr).length ? '' : ' <small class="dim">(영문 — 한국어 미수집)</small>'}</summary>
+    <ol>${rows.join('')}</ol></details>`;
+}
 function nextEvoCards(pid){
   const rows = (RANKED[pid] || []).filter(r => pathOpen(r, +pid));
   const seen = new Map();
@@ -1509,13 +1534,15 @@ function nextEvoCards(pid){
     <div class="nextgrid">${list.map(x => { const c = CATBYID[x.id]; if (!c) return '';
       const lock = RULES.lockInfo[x.id];
       return `<div class="nextcard${lock ? ' locked' : ''}">
-        <div class="kv"><b>${esc(c.name)}</b>${lock ? `<span class="chip" style="border-color:var(--warn);color:var(--warn)" title="${esc(lock.why)}">🔒</span>` : ''}
+        <div class="kv"><b>${esc(c.name)}</b>${c.name_kr ? `<small class="dim">${esc(c.name_kr)}</small>` : ''}${
+          lock ? `<span class="chip" style="border-color:var(--warn);color:var(--warn)" title="${esc(lock.why)}">🔒</span>` : ''}
           ${x.solo ? '<span class="chip dim" title="경로가 없어 단독으로 건다">단독</span>' : ''}
           ${x.tier === 2 ? '<span class="chip" style="border-color:var(--ok);color:var(--ok)">처방 Role++</span>'
             : x.tier === 1 ? '<span class="chip">처방 Role+</span>' : ''}</div>
         <small class="dim">${(J(c.levels, []) || []).length}단계 · ${esc(costText({ coins_cost: c.coins_cost, points_cost: c.points_cost }))}${
           c.end_time ? ` · 마감 ${String(c.end_time).slice(0, 10)}` : ''}</small>
         ${lock ? `<small style="color:var(--warn)">${esc(lock.why)}</small>` : ''}
+        ${missionHTML(c)}
         ${(() => { /* ⚠️ 미리보기를 쌓아 둔 상태에서는 **그 상태 기준으로** 걸 수 있는지 다시 본다 —
                         앞 진화가 OVR·PlayStyle을 올리면 뒤 진화가 잠긴다. 그게 순서를 보는 이유다. */
           const f = simCur ? tryReq(c, simCur) : [];
