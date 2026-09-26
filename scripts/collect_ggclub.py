@@ -93,8 +93,10 @@ SNIPPET = r"""
         const u = (typeof a[0] === 'string' ? a[0] : a[0].url) || '';
         if (u.includes('/api/gg-club/') && a[1] && a[1].headers) {
           const h = a[1].headers;
-          hdr = h instanceof Headers ? Object.fromEntries(h) : h;
-          res();
+          const o = h instanceof Headers ? Object.fromEntries(h) : h;
+          // ⛔ Authorization이 없는 호출도 /api/gg-club/ 로 난다(sync-status·state 등).
+          //    그걸 잡으면 전 페이지가 404라 「토큰 만료」로 오진한다(2026-09-27 실측).
+          if (Object.keys(o).some(k => k.toLowerCase() === 'authorization')) { hdr = o; res(); }
         }
       } catch (e) {}
       return r;
