@@ -1348,6 +1348,104 @@ let SHOW_DONE = localStorage.getItem('evo_show_done') === '1';
 /* 이 선수에게 **지금 할 수 있는 것**의 수 = 열린 경로 중 완주하지 않은 것 + 경로 없이 걸 수 있는 진화 */
 const actionable = pid => (RANKED[pid] || []).filter(r => !doneScore(r, +pid)).length + eligOpen(+pid).length;
 /* 사이드패널 본문 — ⛔ 종전 패널과 **같은 내용**이다. 여기서 정보를 빼거나 더하지 않는다. */
+
+/* ══ 진화 미리보기 (2026-09-26) ════════════════════════════════════════════
+   사용자 지시: 「해당 진화가 적용되었을 때 어떻게 스탯이 변화하는지 확인하기 위한 기능」.
+   ⛔ **기록과 다른 축이다** — 「진화 완료」는 인게임에서 실제로 끝낸 것을 원장에 적는 것이고,
+      여기는 **아무것도 적지 않고** 「걸면 이렇게 된다」만 계산한다.
+   ⭐ 쌓인다 — 하나 얹으면 그 상태 위에 다음 것을 또 얹어 순서가 결과를 바꾸는 축을 볼 수 있다. */
+const TRY = { pid: null, steps: [] };      // steps: [{id, picks:{단계:가지}}]
+/* 요구조건 판정 — 카탈로그 문구는 8종으로 닫혀 있다(2026-09-26 전수 확인).
+   ⛔ 못 읽은 문구는 **통과로 치지 않는다**(조용히 넘기면 거짓 보고가 된다). */
+const TREQ = {
+  'Overall': (v, s) => { let m = /Max\.\s*(\d+)/.exec(v); if (m) return s.ovr <= +m[1] || `OVR ${s.ovr} > 최대 ${m[1]}`;
+                         m = /Min\.\s*(\d+)/.exec(v); if (m) return s.ovr >= +m[1] || `OVR ${s.ovr} < 최소 ${m[1]}`; return true; },
+  'Pace': (v, s) => { const m = /Max\.\s*(\d+)/.exec(v); return !m || s.pac == null || s.pac <= +m[1] || `PAC ${s.pac} > 최대 ${m[1]}`; },
+  'Position': (v, s) => v.split(/,\s*/).some(x => s.pos.includes(x)) || `포지션 ${s.pos.join('/')} — ${v} 중 하나여야`,
+  'Excluded Position': (v, s) => !v.split(/,\s*/).some(x => s.pos.includes(x)) || `제외 포지션 보유(${v})`,
+  'Max PS': (v, s) => s.ps <= +v || `PlayStyle ${s.ps}개 > 최대 ${v}`,
+  'Max PS+': (v, s) => s.psp <= +v || `PlayStyle+ ${s.psp}개 > 최대 ${v}`,
+  'Max Pos.': (v, s) => s.pos.length <= +v || `포지션 ${s.pos.length}개 > 최대 ${v}`,
+  'Excluded Rarity': () => true,
+};
+function tryReq(cat, st){
+  const out = [];
+  for (const q of (J(cat?.requirements_text, []) || [])){
+    const fn = TREQ[q.label];
+    if (!fn){ out.push(`❔ 판정 불가: ${q.label}`); continue; }
+    const r = fn(String(q.value ?? ''), st); if (r !== true) out.push(r);
+  }
+  return out;
+}
+function tryRun(pid, steps){
+  const st = STATE[String(pid)]; if (!st) return null;
+  const at = J(st.attrs, null); if (!at) return null;
+  const isGk = /GK/.test(String(st.positions || ''));
+  const bs = evalBasis(+pid, PRES[pid] || null);
+  const six0 = faceFromAttrs(at, EVO.face_stats || [], isGk);
+  const cur = { ovr: st.ovr, pac: six0.PAC, pos: String(st.positions || '').split('/').filter(Boolean),
+                ps: String(st.playstyles || '').split(',').filter(x => x.trim() && !x.includes('+')).length,
+                psp: String(st.playstyles || '').split(',').filter(x => x.includes('+')).length };
+  const before = { at: { ...at }, six: six0, ovr: st.ovr };
+  const done = [];
+  for (const step of steps){
+    const cat = CATBYID[step.id];
+    const fails = cat ? tryReq(cat, cur) : ['카탈로그에 없다'];
+    const picks = [];
+    if (!fails.length && cat) for (const lv of (J(cat.levels, []) || [])){
+      const opts = lv.upgradeOptions || [];
+      if (opts.length > 1){
+        const ev = evalLevel(opts, bs.pres, bs.have, bs.attrOf);
+        const rec = ev.rec >= 0 ? ev.rec : 0;
+        const f = step.picks?.[lv.idx];
+        const k = (f != null && opts[f]) ? +f : rec;
+        const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
+        applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
+        picks.push({ lv: lv.idx, k, rec, opts });
+        for (const u of src) if (u.upgrade === 'play_style') cur.ps++;
+      } else {
+        applyEvoLevel(at, lv);
+        for (const u of (lv.upgrades || [])){
+          if (u.upgrade === 'overall') cur.ovr = u.maxValue != null ? Math.min(cur.ovr + u.value, u.maxValue) : cur.ovr + u.value;
+          if (u.upgrade === 'play_style') cur.ps++;
+        }
+      }
+    }
+    if (!fails.length) cur.pac = faceFromAttrs(at, EVO.face_stats || [], isGk).PAC;
+    done.push({ id: step.id, name: cat?.name || `#${step.id}`, fails, picks, ovr: cur.ovr });
+  }
+  return { st, cur, before, steps: done, after: { at, six: faceFromAttrs(at, EVO.face_stats || [], isGk), ovr: cur.ovr } };
+}
+/* 미리보기 패널 — 얹은 진화·갈림길·스탯 변화. ⛔ 「기록했다」로 읽히지 않게 말을 고른다. */
+function tryPanel(pid){
+  if (TRY.pid !== +pid || !TRY.steps.length) return '';
+  const r = tryRun(+pid, TRY.steps); if (!r) return '';
+  const FACE = ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY'];
+  const keys = Object.keys(r.before.at).filter(k => (r.after.at[k] ?? 0) !== (r.before.at[k] ?? 0));
+  const tot = keys.reduce((t, k) => t + Math.max(0, (r.after.at[k] ?? 0) - (r.before.at[k] ?? 0)), 0);
+  const d = (a, b) => a == null ? '—' : b === a ? `<span class="dim">${a}</span>` : `${a}<b class="${b > a ? 'up' : 'dn'}"> ▸${b}</b>`;
+  return `<div class="trybox"><div class="kv"><b>🔬 미리보기 — 걸면 이렇게 된다</b>
+      <small class="dim">아무것도 기록하지 않는다</small>
+      <button class="act ghost" id="tryclr">비우기</button></div>
+    <div class="trysteps">${r.steps.map((x, i) => `<div class="trystep${x.fails.length ? ' bad' : ''}">
+      <div class="kv"><b>${i + 1}. ${esc(x.name)}</b><span class="chip">OVR ${x.ovr}</span>
+        <button class="chip" data-trydel="${i}" title="여기부터 뒤를 뺀다">✕</button></div>
+      ${x.fails.length ? `<small class="dn">⛔ ${x.fails.map(esc).join(' · ')} — 얹지 않았다</small>` : ''}
+      ${x.picks.map(pk => `<div class="kv" style="margin-top:3px"><small class="dim">🔀 ${pk.lv}단계</small>
+        ${pk.opts.map((og, k) => { const src = Array.isArray(og) ? og : (og.upgrades || []);
+          return `<span class="opt${pk.rec === k ? ' rec' : ''}${pk.k === k ? ' on' : ''}" data-trypick="${i}:${pk.lv}" data-k="${k}"
+                   role="button" tabindex="0">${pk.rec === k ? '⭐ ' : ''}${esc(src.map(upLabel).join(' · '))}</span>`;
+        }).join('<em>또는</em>')}</div>`).join('')}</div>`).join('')}</div>
+    <div class="kv" style="margin-top:5px"><span class="chip">OVR ${d(r.before.ovr, r.after.ovr)} <small class="dim">fut.gg</small></span>
+      ${FACE.map(f => `<span class="chip">${f} ${d(r.before.six?.[f], r.after.six?.[f])}</span>`).join('')}
+      <span class="chip" style="border-color:var(--ok);color:var(--ok)">실제 상승 합 +${tot}</span></div>
+    ${keys.length ? `<details style="margin-top:4px"><summary class="dim" style="cursor:pointer;font-size:11.5px">상세 ${keys.length}속성</summary>
+      <table class="tbl" style="margin-top:4px"><tbody>${keys.map(k => {
+        const a = r.before.at[k], b = r.after.at[k];
+        return `<tr><td>${esc(k)}</td><td>${a} <b class="up">▸${b} (+${b - a})</b></td></tr>`; }).join('')}</tbody></table></details>` : ''}
+  </div>`;
+}
+
 /* ⭐⭐ **다음에 걸 수 있는 진화를 개별 카드로 세운다**(2026-09-26 사용자 지시
    「진화가 여전히 보기 어렵게 나오는데 개별 진화가 카드 형태로 나오는 게 좋겠어」 +
     「진화를 적용하려면 뭘 눌러야 해」).
@@ -1374,6 +1472,7 @@ function nextEvoCards(pid){
   const list = [...seen.values()].sort((a, b) => (b.tier ?? -1) - (a.tier ?? -1) || (b.rs ?? -1) - (a.rs ?? -1));
   if (!list.length) return '<div class="dim" style="font-size:12px;margin:6px 0">지금 걸 수 있는 진화가 없다.</div>';
   const own = (EVO.club?.players || []).find(x => x.player_id === +pid && x.status === 'owned');
+  const simCur = (TRY.pid === +pid && TRY.steps.length) ? tryRun(+pid, TRY.steps)?.cur : null;
   return `<div class="nextbox"><b>지금 걸 수 있는 진화 ${list.length}건</b>
     <small class="dim">— 각 경로에서 <b>아직 안 밟은 첫 진화</b>만 중복 없이 세웠다. 이게 다음 한 수다.</small>
     <div class="nextgrid">${list.map(x => { const c = CATBYID[x.id]; if (!c) return '';
@@ -1386,8 +1485,14 @@ function nextEvoCards(pid){
         <small class="dim">${(J(c.levels, []) || []).length}단계 · ${esc(costText({ coins_cost: c.coins_cost, points_cost: c.points_cost }))}${
           c.end_time ? ` · 마감 ${String(c.end_time).slice(0, 10)}` : ''}</small>
         ${lock ? `<small style="color:var(--warn)">${esc(lock.why)}</small>` : ''}
+        ${(() => { /* ⚠️ 미리보기를 쌓아 둔 상태에서는 **그 상태 기준으로** 걸 수 있는지 다시 본다 —
+                        앞 진화가 OVR·PlayStyle을 올리면 뒤 진화가 잠긴다. 그게 순서를 보는 이유다. */
+          const f = simCur ? tryReq(c, simCur) : [];
+          return f.length ? `<small class="dn">⛔ 미리보기 상태에선 못 건다 — ${f.map(esc).join(' · ')}</small>` : ''; })()}
         <div class="kv" style="margin-top:5px">
-          ${own ? `<button class="act" data-evoapply="${pid}:${x.id}">✔ 적용 기록</button>` : '<span class="dim">미보유 — 사야 건다</span>'}
+          <button class="act ghost" data-evotry="${pid}:${x.id}" title="원장에 적지 않고 스탯 변화만 계산한다">🔬 걸어 보기</button>
+          ${own ? `<button class="act" data-evodone="${pid}:${x.id}" title="인게임에서 이미 완료한 것을 원장에 적는다">✔ 진화 완료</button>`
+                : '<span class="dim">미보유 — 사야 건다</span>'}
           <button class="act ghost" data-cat="${x.id}">카탈로그</button></div>
         <span class="msg-slot" id="em${pid}_${x.id}"></span></div>`; }).join('')}</div></div>`;
 }
@@ -1405,6 +1510,7 @@ function pathSide(pid){
       <span>처방: ${presLabel(rows[0]?.pres ?? matcher(+pid).pres)}</span>
       <small class="dim">경로 ${rows.length}건</small>
       <a href="player.html?id=${pid}" style="font-size:12px">선수 화면 →</a></div>
+    ${tryPanel(+pid)}
     ${nextEvoCards(+pid)}
     ${eligPanel(+pid)}
     <details${todo.length ? '' : ' open'} style="margin-top:8px"><summary style="cursor:pointer;font-size:12.5px">
@@ -1419,11 +1525,32 @@ function pathSide(pid){
 function bindSide(root, team){
   /* ⭐ 진화 적용 기록 — 「내 구단」 탭 사이드패널과 **같은 API**를 부른다(불변규칙 13 ② 단일 정본).
      ⛔ 여기서 폼을 새로 만들지 않는다 — 날짜는 오늘, 메모는 없음으로 간다(둘 다 나중에 고칠 수 있다). */
-  root.querySelectorAll('button[data-evoapply]').forEach(b => b.addEventListener('click', async () => {
-    const [pid, evo] = b.dataset.evoapply.split(':');
+  /* 🔬 걸어 보기 — **아무것도 적지 않는다**. 쌓이고, ✕로 뺀다. */
+  root.querySelectorAll('button[data-evotry]').forEach(b => b.addEventListener('click', () => {
+    const [pid, evo] = b.dataset.evotry.split(':');
+    if (TRY.pid !== +pid){ TRY.pid = +pid; TRY.steps = []; }
+    TRY.steps.push({ id: +evo, picks: {} });
+    document.getElementById('pathside').innerHTML = pathSide(+pid); bindSide(document.getElementById('pathside'), PATH_TEAM);
+  }));
+  root.querySelectorAll('[data-trydel]').forEach(b => b.addEventListener('click', () => {
+    TRY.steps.length = +b.dataset.trydel;
+    document.getElementById('pathside').innerHTML = pathSide(TRY.pid); bindSide(document.getElementById('pathside'), PATH_TEAM);
+  }));
+  root.querySelectorAll('[data-trypick]').forEach(b => b.addEventListener('click', () => {
+    const [i, lv] = b.dataset.trypick.split(':');
+    (TRY.steps[+i].picks ??= {})[+lv] = +b.dataset.k;
+    document.getElementById('pathside').innerHTML = pathSide(TRY.pid); bindSide(document.getElementById('pathside'), PATH_TEAM);
+  }));
+  root.querySelector('#tryclr')?.addEventListener('click', () => {
+    const pid = TRY.pid; TRY.steps = [];
+    document.getElementById('pathside').innerHTML = pathSide(pid); bindSide(document.getElementById('pathside'), PATH_TEAM);
+  });
+  root.querySelectorAll('button[data-evodone]').forEach(b => b.addEventListener('click', async () => {
+    const [pid, evo] = b.dataset.evodone.split(':');
     const acc = accountObj(); if (!acc) return;
     const box = document.getElementById(`em${pid}_${evo}`);
-    if (!confirm('이 진화를 적용했다고 기록합니다.\n\n· 인게임에서 실제로 적용한 뒤 누르세요.\n'
+    if (!confirm('인게임에서 이미 완료한 진화를 원장에 적습니다.\n\n'
+      + '· 스탯이 어떻게 변하는지만 보려면 이 버튼이 아니라 「🔬 걸어 보기」입니다.\n'
       + '· 소진·다음 추천 계산이 이 기록을 씁니다.\n· 틀렸으면 「내 구단」 탭에서 고칠 수 있습니다.')) return;
     b.disabled = true;
     say(box, await api('evolve', { account: acc.name, player: +pid, evo: +evo,

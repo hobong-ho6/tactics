@@ -502,3 +502,10 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .nextcard .kv{flex-wrap:wrap;gap:5px}
 .nextcard b{font-size:12.5px}
 .nextcard small{display:block;margin-top:2px}
+
+/* 🔬 진화 미리보기 — **기록이 아니다**(2026-09-26). 원장에 적는 「진화 완료」와 색을 갈라 둔다. */
+.trybox{border:1px dashed var(--acc);border-radius:8px;padding:7px 9px;margin:6px 0;font-size:12px}
+.trysteps{display:flex;flex-direction:column;gap:4px;margin:5px 0}
+.trystep{border-left:2px solid var(--ok);padding-left:7px}
+.trystep.bad{border-left-color:var(--bad)}
+.trybox .kv{flex-wrap:wrap;gap:5px}
