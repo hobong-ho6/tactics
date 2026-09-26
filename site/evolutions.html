@@ -919,8 +919,12 @@ const NOPATH_TIP = '지금 밟을 수 있는 경로는 없지만 진화 자체�
   + '단계·비용·결과 카드는 fut.gg가 주지 않아 적지 않는다.';
 function noPathHTML(c, team){
   const rs = noPath(c, team); if (!rs.length) return '';
-  return `<div style="margin-top:4px"><small class="dim">경로 미제공 <span title="${esc(NOPATH_TIP)}" style="cursor:help">ⓘ</span></small>
-    <div class="plist">${rs.map(r => `<button class="t0" data-p="${r.player_id}" title="${esc(NOPATH_TIP)}" style="border-style:dashed">${
+  /* ⛔ 기본 `title=` 툴팁을 쓰지 않는다(2026-09-26 사용자 지적 「툴팁은 왜 안 나오는 거야?」).
+     이 저장소엔 body에 띄우는 전용 툴팁(`.fc-help[data-tip]` · enableHelpTips)이 이미 있는데
+     이 화면은 한 번도 안 쓰고 있었다 — 기본 툴팁은 앱 웹뷰에서 잘 안 뜨고, 네 문장짜리 설명을
+     담기에도 맞지 않는다(CSS ::after는 overflow 안에서 잘려 폐기된 전례가 있다 · clubviz.css 163행). */
+  return `<div style="margin-top:4px"><small class="dim"><span class="fc-help" tabindex="0" data-tip="${esc(NOPATH_TIP)}">경로 미제공<i>?</i></span></small>
+    <div class="plist">${rs.map(r => `<button class="t0 fc-help" data-p="${r.player_id}" data-tip="${esc(NOPATH_TIP)}" style="border-style:dashed">${
       STATE[String(r.player_id)] ? '★ ' : ''}${esc(r.name)}${r.is_base ? '' : '<small> ·특별카드</small>'}</button>`).join('')}</div></div>`;
 }
 let RANKED = {};
