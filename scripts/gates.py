@@ -1283,9 +1283,14 @@ def run(db_path=None, verbose=True):
     #   ⛔ **남은 차이는 기준을 늘려 덮지 않는다** — 아래 `G25_KNOWN`에 사유와 함께 이름을 적는다.
     #      값이 달라지면 게이트가 다시 운다(조용히 넘어가지 않는다).
     G25_TOL = 1
-    #   스즈키 GK SPD: 원장(EA) 58 ↔ 우리 계산 56. 가속 55·질주 58에 구성식 0.6/0.4를 쓰면 56.2다.
-    #   ⇒ **`fc_face_stats`의 GK SPD 가중이 EA와 다르다**는 뜻이다(두 구현이 갈린 게 아니다).
-    #      구성식 조사 전까지 이 한 칸만 열어 둔다. ⛔ 다른 칸으로 번지면 게이트가 잡는다.
+    #   스즈키 GK SPD: 원장(EA GG Club) 58 ↔ 우리 계산 56. **2026-09-26 조사로 사유가 밝혀졌다.**
+    #     ⑴ 구성식은 **옳다** — 보유 GK 20명 중 **19명이 정확히 일치**한다(0.6/0.4 · floor(v+0.501)).
+    #     ⑵ 케미 스타일도 아니다 — EA가 준 six는 **부스트가 안 들어간** 값이다
+    #        (Shield를 얹으면 KIC 76→82여야 하는데 EA도 76이다).
+    #     ⑶ **fut.gg 카드 정의는 56**이다(`player_card_items.def` = GK SPD). 즉 fut.gg ↔ GG Club API가
+    #        **이 카드 한 장에서만** 갈린다 — 우리 계산은 fut.gg와 일치한다.
+    #   ⇒ 구성식을 건드리지 않는다(19/20이 반증이다). 한 장짜리 출처 충돌로 기록하고 다음 싱크에 다시 본다.
+    #   ⛔ 다른 칸으로 번지면 게이트가 잡는다.
     G25_KNOWN = {("Suzuki", "SPD")}
     g25 = []
     try:
@@ -1339,6 +1344,71 @@ def run(db_path=None, verbose=True):
               + ("✅" if ok26 else "❌ " + " · ".join(g26[:4])))
     if not ok26:
         fails.append("G26")
+
+    # G27 — ⛔⛔ **케미 계산 두 벌을 같은 입력에 돌려 결과를 대조한다.** 2026-09-26 신설
+    #   언어가 달라 한 벌로 못 만든다(`core/chem.py` ↔ `site/assets/chem.js`).
+    #   ⛔ 그렇다고 주석으로 묶어 두면 ⑤문서 수준이라 또 갈린다 — 실제로 한 번 갈렸고
+    #      **화면에만 아이콘·히어로 규칙이 없어 같은 XI에 19점**이 달랐다(2026-09-26 실측).
+    #   ⇒ node로 JS 모듈을 **그대로 불러** 파이썬과 대조한다. 한쪽만 고치면 여기서 막힌다.
+    #   ⭐ 입력은 실제 보유 카드에서 뽑고, **아이콘·히어로·chem_extra를 일부러 주입**한다 —
+    #      지금 보유가 0명인 축이야말로 조용히 갈리는 자리다(그래서 처음에 못 잡았다).
+    g27 = []
+    try:
+        import json as _json
+        import random as _rnd
+        import subprocess as _sp
+        import tempfile as _tf
+        from core.chem import CHEM as _CHEM, chem_total as _pychem
+        _root = Path(__file__).resolve().parent.parent
+        _pl = [dict(club=c, league=lg, nation=na, chem_extra=ce, is_icon=0, is_hero=0)
+               for c, lg, na, ce in con.execute(
+                   """SELECT i.club, i.league, i.nation, i.chem_extra FROM fut_club_players p
+                        JOIN player_card_items i ON i.ea_item_id=p.ea_item_id
+                       WHERE p.status='owned'""")]
+        if len(_pl) < 11:
+            raise RuntimeError(f"보유 카드가 {len(_pl)}장이라 대조 표본을 못 만든다")
+        _r = _rnd.Random(27)
+        cases = []
+        for n_icon, n_hero in [(0, 0), (1, 0), (0, 2), (3, 0), (2, 2), (11, 0)]:
+            for _ in range(6):
+                xi = [dict(x) for x in _r.sample(_pl, 11)]
+                for k in range(n_icon):
+                    xi[k]["is_icon"] = 1
+                for k in range(n_icon, min(11, n_icon + n_hero)):
+                    xi[k]["is_hero"] = 1
+                cases.append(xi)
+        # ⚠️ node ESM은 절대 경로가 아니라 **file:// URL**을 요구한다.
+        _mod = _json.dumps((_root / "site" / "assets" / "chem.js").as_uri())
+        js = "\n".join([
+            "import { chemOf } from " + _mod + ";",
+            "const { cases, tiers } = JSON.parse(process.argv[2]);",
+            "console.log(JSON.stringify(cases.map(xi => chemOf(xi, tiers).total)));",
+        ])
+        with _tf.NamedTemporaryFile("w", suffix=".mjs", delete=False) as fh:
+            fh.write(js)
+            _path = fh.name
+        out = _sp.run(["node", _path, _json.dumps({"cases": cases, "tiers": _CHEM})],
+                      capture_output=True, text=True, cwd=_root)
+        Path(_path).unlink(missing_ok=True)
+        if out.returncode != 0:
+            raise RuntimeError(f"node 실행 실패: {(out.stderr or '')[-300:]}")
+        jsv = _json.loads(out.stdout)
+        pyv = [_pychem(xi) for xi in cases]
+        for k, (a_, b_) in enumerate(zip(pyv, jsv)):
+            if a_ != b_:
+                n_i = sum(1 for x in cases[k] if x["is_icon"])
+                n_h = sum(1 for x in cases[k] if x["is_hero"])
+                g27.append(f"case{k}(아이콘 {n_i}·히어로 {n_h}) py={a_} js={b_}")
+    except FileNotFoundError:
+        g27.append("node를 찾지 못했다 — 두 구현을 대조할 수 없다(설치하거나 사유를 적을 것)")
+    except Exception as e:                                   # noqa: BLE001
+        g27.append(f"대조 실패({e})")
+    ok27 = not g27
+    if verbose:
+        print(f"G27 케미 계산 파이썬↔JS 정합: 어긋남 {len(g27)} "
+              + ("✅" if ok27 else "❌ " + " · ".join(g27[:3])))
+    if not ok27:
+        fails.append("G27")
 
     con.close()
     if verbose:
