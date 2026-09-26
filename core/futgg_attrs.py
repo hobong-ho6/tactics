@@ -12,6 +12,8 @@
    여기를 바꾸면 버전 간 비교·6대 스탯 구성식(`fc_face_stats.attr`)이 통째로 어긋난다.
 """
 
+import math
+
 # 필드 30종(필드플레이어 29 + 체형 관련 없음) + GK 5종.
 ATTR_KR = {
     "attributeAcceleration": "가속", "attributeSprintSpeed": "질주 속도",
@@ -108,9 +110,18 @@ def apply_upgrades(attrs, upgrades):
 
 
 def face_of(attrs, face_rows, *, is_gk=False):
-    """29속성 → 6대 스탯. 구성식 정본은 `fc_face_stats`다(화면의 faceOf와 같은 축).
+    """29속성 → 6대 스탯. 구성식 정본은 `fc_face_stats`다.
 
     ⛔ 결손 속성을 0으로 세지 않는다(obs#132) — 가중을 남은 속성에 정규화한다.
+       전부 결손이면 0이 아니라 **None(모름)** 이다.
+
+    ⛔⛔ **끝맺음은 `site/assets/clubviz.js`의 `faceOf`와 한 글자도 다르면 안 된다**(2026-09-26 실측).
+       처음엔 여기만 파이썬 `round()`를 썼는데 그건 **은행가 반올림**(74.5 → 74)이라
+       JS의 `floor(v + 0.501)`(→ 75)과 갈린다. 보유 193명 중 **20명**이 1씩 달랐고,
+       대조해 보니 **JS 쪽이 EA 실측과 일치**했다 — 즉 틀린 건 이쪽이었다.
+       ⚠️ 그 20명을 처음엔 「EA와 우리 구성식의 반올림 차이」로 **잘못 진단**해 G25 허용 오차의
+          근거로 삼았다. 실제로는 **우리 두 구현이 갈린 것**이었다. 게이트가 자기 버그를 덮을 뻔했다.
+       ⇒ 99 상한·floor(v+0.501)·None까지 JS와 동일하게 맞춘다. 고칠 일이 생기면 **두 곳을 같이** 고친다.
     """
     w = {}
     for r in face_rows:
@@ -121,6 +132,7 @@ def face_of(attrs, face_rows, *, is_gk=False):
         have = {k: v for k, v in ws.items() if attrs.get(k) is not None}
         tot = sum(have.values())
         if not tot:
+            out[abbr] = None                     # 전부 결손이면 0이 아니라 「모름」이다
             continue
-        out[abbr] = round(sum(attrs[k] * v for k, v in have.items()) / tot)
+        out[abbr] = min(99, math.floor(sum(attrs[k] * v for k, v in have.items()) / tot + 0.501))
     return out

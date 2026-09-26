@@ -696,6 +696,18 @@ function evoBlock(p, log) {
       (실증: 체력 82에 「+5(^76)」을 적용하면 76으로 내려갔다). 상한은 「여기까지만 올린다」는 뜻이다.
    ⚠️ 분기(`upgradeOptions`)가 2개 이상인 단계는 **적용하지 않는다** — 무엇을 골랐는지 모르면 추정이 된다.
       호출측이 `skipped`를 받아 화면에 밝힌다. */
+/* ⭐ OVR 상한 규칙 — 속성과 **같은 규칙**인데 `applyEvoLevel`이 속성만 다뤄서
+   호출부가 각자 `Math.min(ovr + v, cap)`을 적고 있었다(2026-09-26 검수: evolutions.html에 3벌).
+   ⇒ 여기 하나만 둔다. 이미 상한 이상이면 **그대로 둔다** — 내리지 않는다. */
+export function evoOvr(ovr, upgrades) {
+  for (const u of (upgrades || [])) {
+    if (u.upgrade !== 'overall') continue;
+    const cap = u.maxValue;
+    if (cap != null && ovr >= cap) continue;
+    ovr = cap != null ? Math.min(ovr + u.value, cap) : ovr + u.value;
+  }
+  return ovr;
+}
 export function applyEvoLevel(at, lv) {
   if ((lv.upgradeOptions || []).length > 1) return { ok: false, reason: '분기 선택 미기록' };
   for (const u of (lv.upgrades || [])) {

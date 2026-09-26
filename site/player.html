@@ -95,7 +95,12 @@ import { repaintEvoCard } from './assets/evocard.js?v=20260921a';
 import { evoRules } from './assets/evorules.js?v=20260924a';
 import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20260922-stat-tips';
 const { team, idx } = await mountHeader('player.html');
-const [td, GS, GS27, HIST, CARDS, EVO, K26] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history'), loadGameStats('cards'), loadGameStats('evolutions').catch(()=>({paths:{},role_map:[]})), loadKernels('FC26').catch(()=>({roles:[]}))]);
+const [td, GS, GS27, HIST, CARDS, EVO, K26, K27] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history'), loadGameStats('cards'), loadGameStats('evolutions').catch(()=>({paths:{},role_map:[]})), loadKernels('FC26').catch(()=>({roles:[]})), loadKernels('FC27').catch(()=>({}))]);
+/* ⭐⭐ **역할 가중은 FC27판이 정본이다**(migration 079 · 2026-09-26 사용자 지시 「가중표를 FC27 조정을 반영해」).
+   ⛔ 종전엔 이 화면만 `K26.role_key_attrs`를 직접 읽어서, evolutions.html은 FC27 가중(가속·질주 +1)을
+      쓰는데 **여기만 FC26 가중을 썼다** — 같은 선수의 「역할 가중 점수」가 화면마다 달랐다(25칸 차이).
+   ⇒ 고르는 규칙을 **한 줄로 모으고** 아래는 이것만 쓴다. evolutions.html의 KEY_ROWS와 같은 규칙이다. */
+const KEY_ROWS = (K27?.role_key_attrs?.length ? K27.role_key_attrs : K26.role_key_attrs) || [];
 /* ⭐ 진화 규칙(소진·이미 적용·프리미엄)은 `assets/evorules.js` 정본을 쓴다 — 계정은 진화 메뉴와 같은 선택을 따른다. */
 const RULES = evoRules(EVO, localStorage.getItem('fut_account'));
 /* 백분위·유사프로필 모집단 = 활성 regime 전체. ⛔ 팀 코드를 하드코딩하지 않는다 —
@@ -833,7 +838,7 @@ function renderEvo(sel){
     return ids.map(i => byId[`${kind}:${i}`]).filter(Boolean); };
   const matches = r => want && (evoNorm(r.name) === want) && (!wantPos || wantPos.includes(r.position_name));
   // 역할 가중 점수 = Σ(game_role_key_attrs 가중 × 속성 Δ) — evolutions.html과 같은 규칙(2026-09-18)
-  const KW = {}; for (const k of K26.role_key_attrs || []) (KW[k.role_id] ??= {})[k.attr] = k.weight;
+  const KW = {}; for (const k of KEY_ROWS) (KW[k.role_id] ??= {})[k.attr] = k.weight;
   const w = pres && KW[pres.role_id];
   const rscore = r => { let up = {}; try { up = JSON.parse(r.upgrades || '{}'); } catch(e){}
     const parts = w ? Object.entries(up).filter(([a, d]) => w[a] && d).map(([a, d]) => ({ a, d, s: w[a] * d })).sort((x, y) => y.s - x.s) : [];
@@ -1251,7 +1256,7 @@ function render(){
          가중은 판단값(MEDIUM)이라 결론이 아니라 읽는 단서로 쓴다. */
       const pres27 = (td.prescriptions || []).filter(p => p.player_id === sel.pid && p.role_id)
         .sort((x, y) => String(y.season || '').localeCompare(String(x.season || '')))[0];
-      const KWa = {}; for (const k of K26.role_key_attrs || []) (KWa[k.role_id] ??= {})[k.attr] = k.weight;
+      const KWa = {}; for (const k of KEY_ROWS) (KWa[k.role_id] ??= {})[k.attr] = k.weight;
       const ROLE_KR27 = Object.fromEntries((K26.roles || []).map(r => [r.role_id, r.name]));
       const wA = pres27 ? KWa[pres27.role_id] : null;
       if (a27) {

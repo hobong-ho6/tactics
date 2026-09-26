@@ -1275,11 +1275,18 @@ def run(db_path=None, verbose=True):
     #      (PAC 75→70). 조용히 틀린 값이라 화면만 봐선 알 수 없었다.
     #   ⑵ `evolve`·`complete`는 고쳤지만(081·082) **다음에 쓰는 사람이 또 한 벌만 올릴 수 있다.**
     #      ⇒ 개별 명령이 아니라 **원장 상태 자체**를 본다. 누가 쓰든 갈리면 커밋이 막힌다.
-    #   ⚠️ 허용 오차 2 — EA가 주는 six와 우리 `fc_face_stats` 구성식 사이에 **반올림 차이**가 있다
-    #      (2026-09-26 실측: 보유 193명 중 21명이 ±1, 스즈키만 2). 0으로 잡으면 전부 오탐이다.
-    #      실제 사고는 5·6·10·16이었으므로 2로도 잡힌다. ⛔ 오차가 커지면 **기준을 늘리지 말고**
-    #      구성식(`fc_face_stats`)이 틀린 게 아닌지 본다.
-    G25_TOL = 2
+    #   ⚠️⚠️ **허용 오차를 처음엔 2로 뒀는데 그 근거가 틀렸다**(2026-09-26 당일 정정).
+    #      「EA와 우리 구성식의 반올림 차이」라고 적었지만, 실제로는 **우리 두 구현이 갈린 것**이었다 —
+    #      `core/futgg_attrs.face_of`만 파이썬 `round()`(은행가 반올림)를 써서 JS의 `floor(v+0.501)`과
+    #      1씩 어긋났고(20명), 대조해 보니 **JS 쪽이 EA와 일치**했다. 즉 게이트의 느슨한 기준이
+    #      **자기 버그를 덮고 있었다.** ⇒ 파이썬을 JS에 맞추고 기준을 1로 조인다.
+    #   ⛔ **남은 차이는 기준을 늘려 덮지 않는다** — 아래 `G25_KNOWN`에 사유와 함께 이름을 적는다.
+    #      값이 달라지면 게이트가 다시 운다(조용히 넘어가지 않는다).
+    G25_TOL = 1
+    #   스즈키 GK SPD: 원장(EA) 58 ↔ 우리 계산 56. 가속 55·질주 58에 구성식 0.6/0.4를 쓰면 56.2다.
+    #   ⇒ **`fc_face_stats`의 GK SPD 가중이 EA와 다르다**는 뜻이다(두 구현이 갈린 게 아니다).
+    #      구성식 조사 전까지 이 한 칸만 열어 둔다. ⛔ 다른 칸으로 번지면 게이트가 잡는다.
+    G25_KNOWN = {("Suzuki", "SPD")}
     g25 = []
     try:
         import json as _json
@@ -1294,7 +1301,9 @@ def run(db_path=None, verbose=True):
                                  WHERE c.status='owned' AND c.current_attrs IS NOT NULL
                                    AND c.current_six IS NOT NULL"""):
             six, calc = _json.loads(six_s), _face(_json.loads(attrs), frows, is_gk="GK" in (pos or ""))
-            off = {k: (six[k], calc[k]) for k in six if k in calc and abs(six[k] - calc[k]) > G25_TOL}
+            off = {k: (six[k], calc[k]) for k in six
+                   if calc.get(k) is not None and abs(six[k] - calc[k]) > G25_TOL
+                   and (nm, k) not in G25_KNOWN}
             if off:
                 g25.append(f"{nm}(id {cid}) {off}")
     except Exception as e:                                   # noqa: BLE001
@@ -1305,6 +1314,31 @@ def run(db_path=None, verbose=True):
               + ("✅" if ok25 else "❌ " + " · ".join(g25[:3])))
     if not ok25:
         fails.append("G25")
+
+    # G26 — ⛔ **같은 표가 파이썬·JS 두 벌로 있는 곳이 갈리면 막는다.** 2026-09-26 신설
+    #   진화 보상의 `attribute_*` → 한글 라벨 표는 `core/futgg_attrs.EVO_ATTR_KR`(서버 계산용)과
+    #   `site/assets/clubviz.js ATTR_KR`(화면용)에 **두 벌** 있다. 언어가 달라 import로 합칠 수 없다.
+    #   ⛔ 그러면 ③게이트다(불변규칙 13) — 한쪽만 고치는 순간 커밋이 막힌다.
+    #   ⚠️ 실증 자산: 같은 종류의 오타 하나(`attributeFreeKickAccuracy`)로 보유 89명의 PAS가 틀어진 적이 있다.
+    g26 = []
+    try:
+        import re as _re
+        from core.futgg_attrs import EVO_ATTR_KR as _PY
+        _js = (Path(__file__).resolve().parent.parent / "site" / "assets" / "clubviz.js").read_text()
+        _blk = _js[_js.index("export const ATTR_KR"):]
+        _blk = _blk[:_blk.index("};")]
+        _JS = dict(_re.findall(r"(\w+)\s*:\s*'([^']+)'", _blk))
+        for k in sorted(set(_PY) | set(_JS)):
+            if _PY.get(k) != _JS.get(k):
+                g26.append(f"{k}: py={_PY.get(k)!r} js={_JS.get(k)!r}")
+    except Exception as e:                                   # noqa: BLE001
+        g26.append(f"조회 실패({e})")
+    ok26 = not g26
+    if verbose:
+        print(f"G26 속성 라벨표 파이썬↔JS 정합: 어긋남 {len(g26)} "
+              + ("✅" if ok26 else "❌ " + " · ".join(g26[:4])))
+    if not ok26:
+        fails.append("G26")
 
     con.close()
     if verbose:

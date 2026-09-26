@@ -143,7 +143,7 @@ import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
 import { evoRules, logState, inProgress } from './assets/evorules.js?v=20260924a';
 import { cardCompare } from './assets/cardcompare.js?v=20260923a';
-import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT } from './assets/clubviz.js?v=20260924b';
+import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT } from './assets/clubviz.js?v=20260924b';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -331,6 +331,12 @@ function sixText(before, after){
    화면이 `player_card_items`/`fut_club_players`/fut.gg 경로 중 뭘 쓸지 고르지 않는다.
    그 고르기가 메뉴마다 달라 같은 선수가 다른 OVR로 보였다(Alysson 70 ↔ 78). */
 const STATE = EVO.club?.state || {};
+/* ⛔ 포지션 문자열은 **슬래시 구분**이다("LM/LB/CAM"). 2026-09-26 검수에서 두 곳이
+   `split(',')`를 쓰고 있었고, 그건 통째로 돌려주므로 카드에 「LM/LB/CAM」이 그대로 찍혔다.
+   ⇒ 쪼개는 규칙을 여기 하나만 둔다 — 새로 쓰는 자리는 이걸 부른다. */
+const posList = v => String(v || '').split('/').map(x => x.trim()).filter(Boolean);
+const posFirst = v => posList(v)[0] || '';
+
 const ownedCard = pid => STATE[String(pid)] || null;
 /* ⭐⭐ **규칙 기반 투영** (2026-09-22 사용자 승인 「해둬」).
    fut.gg 경로는 **기준 카드**에서 계산돼, 이미 진화한 선수에겐 맞지 않는다.
@@ -1484,11 +1490,12 @@ function tryRun(pid, steps){
         const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
         applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
         picks.push({ lv: lv.idx, k, rec, opts });
+        cur.ovr = evoOvr(cur.ovr, src);       /* 캡 규칙은 clubviz.js `evoOvr` 하나다 */
         for (const u of src){ if (u.upgrade === 'play_style') cur.ps++; addUp(u); }
       } else {
         applyEvoLevel(at, lv);
+        cur.ovr = evoOvr(cur.ovr, lv.upgrades || []);
         for (const u of (lv.upgrades || [])){
-          if (u.upgrade === 'overall') cur.ovr = u.maxValue != null ? Math.min(cur.ovr + u.value, u.maxValue) : cur.ovr + u.value;
           if (u.upgrade === 'play_style') cur.ps++;
           addUp(u);
         }
@@ -1833,11 +1840,11 @@ function bindSide(root, team){
         const k = picks[L.idx] ?? (ev.rec >= 0 ? ev.rec : 0); pick = k;
         const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
         applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
-        for (const u of src) if (u.upgrade === 'overall') ovr = u.maxValue != null ? Math.min(ovr + u.value, u.maxValue) : ovr + u.value;
+        ovr = evoOvr(ovr, src);
         label = src.map(upLabel).join(' · ');
       } else {
         applyEvoLevel(at, L);
-        for (const u of (L.upgrades || [])) if (u.upgrade === 'overall') ovr = u.maxValue != null ? Math.min(ovr + u.value, u.maxValue) : ovr + u.value;
+        ovr = evoOvr(ovr, L.upgrades || []);
       }
       /* ⭐ 여기 six/ovr은 **확인창에 보여 줄 미리보기**일 뿐이다 — 원장에 들어가는 값은 서버가 계산한다. */
       steps.push({ lv: L.idx, ovr, six: faceFromAttrs(at, EVO.face_stats || [], isGk), label, pick });
@@ -1950,7 +1957,7 @@ function renderPaths(team, focusPid){
     return {
       player: (EVO.club?.players || []).find(x => x.player_id === pid && x.status === 'owned')
               || { player_id: pid, name: NAME_OF[pid] || '', current_ovr: st?.ovr, positions: st?.positions },
-      posName: (st?.positions || '').split(',')[0] || '',
+      posName: posFirst(st?.positions),
       tone: prog ? 'wait' : n ? 'go' : '',
       badge: `<b>${esc(NAME_OF[pid] || '')}</b><br>${
         /* ⚠️ 「밟다」는 **경로**에 쓰는 말인데(경로를 밟는다) 이 수는 경로 + **경로 없는 단독 진화**를
@@ -2178,7 +2185,7 @@ function chemOf(xi){
 /* 탐욕 + 무작위 재시작. 최적해 보장은 없지만 47장 규모에서는 매번 같은 상한에 닿는다.
    점수는 **케미 우선, 동점이면 OVR 합** — 케미를 위해 약한 카드를 넣는 일을 막는다. */
 function chemBestXI(pool, slots){
-  const canPlay = (p, s) => String(p.positions || '').split('/').includes(s);
+  const canPlay = (p, s) => posList(p.positions).includes(s);
   let best = null;
   /* ⭐ 씨앗 시작 — 무작위 재시작만으로는 「한 클럽으로 XI를 채우는」 해를 못 찾는다(62장에서 실패).
      보유가 많은 클럽·리그를 먼저 채워 보고 시작하면 케미 최적해가 탐색 범위에 들어온다. */
@@ -2515,7 +2522,7 @@ function renderClub(){
   const cells = shown.slice().sort((a, b) => (b.current_ovr ?? 0) - (a.current_ovr ?? 0)).map(p => {
     const nlv = logs.filter(l => l.club_player_id === p.id && !l.is_void).length;
     const prog = logs.some(l => l.club_player_id === p.id && inProgress(l));
-    return { player: p, posName: String(p.positions || '').split(',')[0] || '',
+    return { player: p, posName: posFirst(p.positions),
              tone: prog ? 'wait' : nlv ? 'go' : '',
              badge: `<b>${esc(p.name)}</b><br>${prog ? '진화 진행 중' : nlv ? `진화 ${nlv}단계` : esc(CL(p))}` };
   });
