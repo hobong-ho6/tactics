@@ -1574,12 +1574,12 @@ function cmpPanel(){
       ${/* ⭐ **상세 속성을 접지 않는다**(2026-09-26 사용자 지시 「비교할 때는 상세 스탯으로 비교」).
            6대 스탯은 가중 평균이라 **어디서 얼마를 얻는지**가 묻힌다 — 견주는 자리에서는 그게 본문이다.
            ⛔ 별도 표로 갈라 두지 않는다(머리글이 두 번 나오고 눈이 왔다 갔다 한다) — 한 표에 잇는다. */''}
-      ${keys.length ? `<tr class="cmpsep"><td colspan="${cols.length + 1}">상세 속성 ${keys.length}개
+      ${keys.length ? `<tr class="cmpsep"><td colspan="${cols.length + (many ? 2 : 1)}">상세 속성 ${keys.length}개
         <small class="dim">— 안 오르는 속성은 뺐다</small></td></tr>
-      ${keys.map(k => `<tr><td>${esc(k)}</td>${cols.map(c => {
+      ${keys.map(k => row(esc(k), cols.map(c => c.run.after.at[k]), cols.map(c => {
         const a = c.run.before.at[k], b = c.run.after.at[k], v = (b ?? 0) - (a ?? 0);
-        return `<td>${a ?? '—'}${v > 0 ? ` <b class="up">▸${b} (+${v})</b>` : ' <span class="dim">—</span>'}</td>`;
-      }).join('')}</tr>`).join('')}` : ''}
+        return `${a ?? '—'}${v > 0 ? ` <b class="up">▸${b} (+${v})</b>` : ' <span class="dim">—</span>'}`;
+      }))).join('')}` : ''}
       ${/* ⭐ **PlayStyle·역할도 견준다**(2026-09-26 사용자 지시) — 스탯만으로는 진화의 값어치가 안 갈린다.
            ⚠️ 이미 가진 것은 「이미 보유」로 갈라 적는다(새로 얻는 게 아니다 — 한계효용 0). */''}
       <tr class="cmpsep"><td colspan="${cols.length + (many ? 2 : 1)}">이 진화로 얻는 것</td></tr>
