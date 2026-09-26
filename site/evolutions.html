@@ -1585,6 +1585,23 @@ function nextEvoCards(pid){
           c.end_time ? ` · 마감 ${String(c.end_time).slice(0, 10)}` : ''}</small>
         ${lock ? `<small style="color:var(--warn)">${esc(lock.why)}</small>` : ''}
         ${missionHTML(c)}
+        ${(() => {
+          /* ⭐⭐ **갈림길이 있으면 여기서 고른다**(2026-09-26 사용자 지적 「진화 완료하려는데 어떤
+             옵션인지를 선택 안 하는 것 같아」). 종전엔 묻지도 적지도 않아 **어느 가지를 밟았는지
+             원장에 남지 않았다** — 가지가 스탯·Role+·PlayStyle을 통째로 가르는데도.
+             ⛔ 기본값은 **우리 추천(⭐)**이지만 인게임에서 다른 걸 고르셨으면 여기서 바꿔야 맞다. */
+          const bs = evalBasis(+pid, PRES[pid] || null);
+          const rows = (J(c.levels, []) || []).filter(L => (L.upgradeOptions || []).length > 1);
+          if (!rows.length) return '';
+          return rows.map(L => { const ev = evalLevel(L.upgradeOptions, bs.pres, bs.have, bs.attrOf);
+            const rec = ev.rec >= 0 ? ev.rec : 0;
+            return `<div class="kv" style="margin-top:4px"><small class="dim">🔀 ${L.idx}단계 선택</small>
+              <select data-evobranch="${pid}:${c.evo_id}:${L.idx}">${L.upgradeOptions.map((o, k) => {
+                const src = Array.isArray(o) ? o : (o.upgrades || []);
+                return `<option value="${k}"${k === rec ? ' selected' : ''}>${k === rec ? '⭐ ' : ''}${
+                  esc(src.map(upLabel).join(' · ').slice(0, 70))}</option>`; }).join('')}</select></div>`;
+          }).join('');
+        })()}
         ${(() => { /* ⚠️ 미리보기를 쌓아 둔 상태에서는 **그 상태 기준으로** 걸 수 있는지 다시 본다 —
                         앞 진화가 OVR·PlayStyle을 올리면 뒤 진화가 잠긴다. 그게 순서를 보는 이유다. */
           const f = simCur ? tryReq(c, simCur) : [];
@@ -1761,16 +1778,68 @@ function bindSide(root, team){
     const pid = TRY.pid; TRY.steps = [];
     document.getElementById('pathside').innerHTML = pathSide(pid); bindSide(document.getElementById('pathside'), PATH_TEAM);
   });
+  /* ⭐⭐ **완료 기록은 「남은 단계 전부」를 적는다**(2026-09-26 사용자 지적).
+     ⛔ 종전엔 `level` 기본값 1로 **한 행만** 넣어서 ⑴ 3단계짜리가 1단계만 기록되고
+        ⑵ 갈림길을 고르지 않아 어느 가지를 밟았는지 남지 않았다.
+     ⇒ 카드의 갈림길 선택을 읽어 **단계별 누적 상태를 직접 계산**하고, 아직 안 적힌 단계마다 한 행씩 넣는다.
+     ⚠️ 계산의 출발점은 `STATE.attrs`(마지막 싱크의 29속성)다 — 진화는 그 뒤에 시작했으므로
+        **진화 전 스냅샷**이 맞다. ⛔ 값은 우리 계산(등급 B)이고 **다음 싱크의 EA 실측이 정본**이다. */
   root.querySelectorAll('button[data-evodone]').forEach(b => b.addEventListener('click', async () => {
     const [pid, evo] = b.dataset.evodone.split(':');
     const acc = accountObj(); if (!acc) return;
     const box = document.getElementById(`em${pid}_${evo}`);
-    if (!confirm('인게임에서 이미 완료한 진화를 원장에 적습니다.\n\n'
-      + '· 스탯이 어떻게 변하는지만 보려면 이 버튼이 아니라 「🔬 걸어 보기」입니다.\n'
-      + '· 소진·다음 추천 계산이 이 기록을 씁니다.\n· 틀렸으면 「내 구단」 탭에서 고칠 수 있습니다.')) return;
+    const cat = CATBYID[+evo]; const lv = J(cat?.levels, []) || [];
+    const st = STATE[String(pid)]; const base = J(st?.attrs, null);
+    const cpid = st?.club_player_id;
+    if (!cpid){ say(box, { ok: false, message: '이 선수의 보유 카드 id를 모른다 — 클럽 싱크 후 다시.' }); return; }
+    if (!base){ say(box, { ok: false, message: '이 선수의 29속성이 없어 단계별 값을 계산할 수 없다 — 클럽 싱크 후 다시.' }); return; }
+    // 이미 적힌 최고 단계 — 그 뒤부터 적는다
+    const already = (RULES.appliedIn([+evo], +pid) || [])[0];
+    const from = already ? (already.maxLevel || 0) : 0;
+    // 갈림길 선택 읽기(없으면 추천)
+    const picks = {};
+    root.querySelectorAll(`[data-evobranch^="${pid}:${evo}:"]`).forEach(sel => {
+      picks[+sel.dataset.evobranch.split(':')[2]] = +sel.value;
+    });
+    const bs = evalBasis(+pid, PRES[pid] || null);
+    const isGk = /GK/.test(String(st.positions || ''));
+    const at = { ...base }; let ovr = already?.ovr_before ?? st.ovr; const steps = [];
+    for (const L of lv){
+      const opts = L.upgradeOptions || []; let label = '';
+      if (opts.length > 1){
+        const ev = evalLevel(opts, bs.pres, bs.have, bs.attrOf);
+        const k = picks[L.idx] ?? (ev.rec >= 0 ? ev.rec : 0);
+        const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
+        applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
+        for (const u of src) if (u.upgrade === 'overall') ovr = u.maxValue != null ? Math.min(ovr + u.value, u.maxValue) : ovr + u.value;
+        label = src.map(upLabel).join(' · ');
+      } else {
+        applyEvoLevel(at, L);
+        for (const u of (L.upgrades || [])) if (u.upgrade === 'overall') ovr = u.maxValue != null ? Math.min(ovr + u.value, u.maxValue) : ovr + u.value;
+      }
+      steps.push({ lv: L.idx, ovr, six: faceFromAttrs(at, EVO.face_stats || [], isGk), label });
+    }
+    const todo = steps.filter(x => x.lv > from);
+    if (!todo.length){ say(box, { ok: false, message: '이미 전 단계가 기록돼 있다.' }); return; }
+    const brief = todo.map(x => `${x.lv}단계 → OVR ${x.ovr}${x.label ? ` (${x.label.slice(0, 40)}…)` : ''}`).join('\n  ');
+    if (!confirm(`인게임에서 완료한 진화를 원장에 적습니다.\n\n${evoName(+evo, { html: false })}\n  ${brief}\n\n`
+      + '· 갈림길을 다르게 고르셨으면 취소하고 카드의 🔀 선택을 먼저 바꾸세요.\n'
+      + '· 스탯만 보려면 이 버튼이 아니라 「🔬 걸어 보기」입니다.\n'
+      + '· 값은 우리 계산이고 다음 클럽 싱크의 EA 실측으로 확정됩니다.')) return;
     b.disabled = true;
-    say(box, await api('evolve', { account: acc.name, player: +pid, evo: +evo,
-                                   date: new Date().toISOString().slice(0, 10) }));
+    const today = new Date().toISOString().slice(0, 10);
+    let last = null;
+    for (const x of todo){
+      /* ⛔ `player`는 **fut_club_players.id**다 — players.id를 넘기면 다른 사람 카드에 적힌다(2026-09-26 사고).
+         서버도 `expect_player_id`로 교차 검증한다. 둘 다 있어야 조용히 어긋나지 않는다. */
+      last = await api('evolve', { account: acc.name, player: +cpid, expect_player_id: +pid,
+                                   evo: +evo, level: x.lv, date: today,
+        completed: today, ovr_after: x.ovr, six_after: JSON.stringify(x.six),
+        note: `${x.lv}단계 완료 — 화면에서 기록(${today}).${x.label ? ` 갈림길: ${x.label}` : ''} `
+            + '⚠️ OVR·6대는 카탈로그 보상을 상한 규칙대로 얹은 우리 계산(등급 B) — 다음 싱크의 EA 실측으로 확정.' });
+      if (!last.ok) break;
+    }
+    say(box, last);
     b.disabled = false;
   }));
   root.querySelectorAll('button[data-cat]').forEach(b => b.addEventListener('click', e => {

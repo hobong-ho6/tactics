@@ -37,12 +37,28 @@ def account(con, name):
     return r
 
 
-def club_player(con, acc_id, key):
+def club_player(con, acc_id, key, expect_player_id=None):
+    """보유 카드 한 장을 지목한다.
+
+    ⛔⛔ **`key`는 `fut_club_players.id`다 — `players.id`가 아니다**(2026-09-26 사고).
+       두 축의 id가 같은 번호 공간이라 **다른 사람의 카드에 조용히 기록된다**:
+       마조의 players.id 61을 넘겼더니 fut_club_players.id 61인 **Helinho에 진화가 적혔다**.
+       실측으로 이런 충돌이 **22쌍** 있다 — 우연이 아니라 구조적으로 터진다.
+    ⇒ 호출부는 `expect_player_id`(= players.id)를 함께 넘겨 **찾은 카드가 그 선수의 것인지 확인**시킨다.
+       어긋나면 멈춘다. ⛔ 「조심해서 넘기자」로 막지 않는다 — 읽는 사람이 있어야 작동한다(불변규칙 13)."""
     rows = con.execute("SELECT * FROM fut_club_players WHERE account_id=? AND (id=? OR name=?) AND status='owned'",
                        (acc_id, key if str(key).isdigit() else -1, key)).fetchall()
     if len(rows) != 1:
         sys.exit(f"⛔ 보유 선수 '{key}' 특정 실패({len(rows)}건) — id로 지정할 것")
-    return rows[0]
+    r = rows[0]
+    if expect_player_id is not None and (r["player_id"] is None or int(r["player_id"]) != int(expect_player_id)):
+        # ⛔⛔ `player_id IS NULL`도 **막는다**(2026-09-26 실측: 첫 판에 NULL을 통과시켜 가드가 무력했다).
+        #    호출부가 기대를 밝혔는데 찾은 카드가 **누구 것인지 모른다**면 그건 통과시킬 근거가 아니라 멈출 이유다.
+        sys.exit(f"⛔ 선수가 어긋난다 — 보유 카드 id {r['id']}는 '{r['name']}'"
+                 f"(player_id={r['player_id'] if r['player_id'] is not None else '없음(우리 DB 미연결)'})인데 "
+                 f"호출부는 player_id={expect_player_id}를 기대했다.\n"
+                 f"   `player`에 **fut_club_players.id**를 넘겼는지 확인할 것(players.id가 아니다).")
+    return r
 
 
 def cmd_account(con, a):
@@ -74,7 +90,7 @@ def cmd_player_add(con, a):
 
 def cmd_evolve(con, a):
     acc = account(con, a.account)
-    cp = club_player(con, acc["id"], a.player)
+    cp = club_player(con, acc["id"], a.player, getattr(a, "expect_player_id", None))
     # 적용 후 상태 — 그 선수의 진화 경로(path_json)에서 이 진화 id가 만드는 단계를 찾는다
     after, evo_name = None, None
     if cp["player_id"]:
@@ -324,7 +340,8 @@ def run(con, cmd, **kw):
     """serve.py 쓰기 API용 진입점 — CLI와 같은 함수를 같은 규약으로 실행한다(발명 금지·출처 기록 동일)."""
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
                     level=1, date=TODAY, completed=None, note=None, ovr_after=None, six_after=None, status=None, op="add",
-                    in_progress=False, evo=None, challenge=None, formation=None, club_player=None, undo=False, cards=True)
+                    in_progress=False, evo=None, challenge=None, formation=None, club_player=None, undo=False, cards=True,
+                    expect_player_id=None)
     a = argparse.Namespace(**{**defaults, **kw})
     fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete,
           "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude,
