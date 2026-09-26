@@ -58,37 +58,39 @@ description: 내 얼티밋 구단 동기화 — fut.gg GG Club에서 현재 스�
    ⛔ **브라우저 출력을 대화로 받아 파일에 옮겨 적지 말 것** — 100명 캡처가 컨텍스트를 두 번 통과해 회차당 약 **1만 토큰**이 샜다.
    스크립트가 API를 직접 부르면 보유가 몇 명이든 **컨텍스트 비용은 0**이고, 표준출력은 요약 몇 줄뿐이다.
    ```
-   .venv/bin/python scripts/collect_ggclub.py --print-snippet   # ① 토큰 추출 스니펫
-   # ② 로그인된 GG Club 탭에서 스니펫 실행 → Authorization 헤더 JSON 한 줄
-   #    ⚠️ 현재 경로와 **다른** /gg-club/my/… 링크를 눌러야 SPA 이동이 일어나 헤더가 잡힌다(같은 경로면 호출이 없다).
-   FUTGG_AUTH='<그 JSON>' .venv/bin/python scripts/collect_ggclub.py --apply-squad   # ③ 사람이 직접 돌릴 때
-   .venv/bin/python scripts/collect_ggclub.py --auth-file /tmp/ggauth.json --apply-squad   # ③' 에이전트가 돌릴 때
+   .venv/bin/python scripts/collect_ggclub.py --print-snippet
    ```
-   - ⭐ **에이전트는 `--auth-file`을 쓴다**(2026-09-21 신설): 토큰을 명령줄에 박으면 프로세스 목록·쉘 히스토리에 남고
-     **그 행위 자체가 정책으로 차단된다**(실측). 파일로 건네면 스크립트가 **읽는 즉시 삭제**하고, 저장소 안 경로는 거부한다.
-   - ⭐⭐⭐ **에이전트는 `--raw-file`을 쓴다**(2026-09-24 신설 · **토큰을 페이지 밖으로 꺼내지 않는다**).
-     ⛔ 종전 「클립보드로 토큰을 꺼내 `--auth-file`로 넘긴다」(2026-09-22) 경로는 **정책으로 차단된다** —
-     토큰을 클립보드·파일·환경변수로 내보내는 코드 자체가 `Credential Materialization`으로 거부된다(2026-09-24 실측).
-     ⇒ 토큰을 **꺼내지 말고**, 브라우저 **안에서** API를 호출해 **응답만** 꺼낸다:
-     ```
-     ⑴ 로그인된 GG Club 탭에서 --print-snippet 의 헤더 가로채기를 쓰되, 헤더를 return 하지 않는다.
-        같은 async 블록 안에서 그 헤더로 /api/gg-club/players/?page=N 전량 + /active-squad/ 를 부르고
-        window.__ggPayload = JSON.stringify({players, squad}) 에 담는다. 헤더 변수는 null 로 버린다.
-        ⚠️ SPA 이동은 **현재와 다른** /gg-club/my/… 링크를 눌러야 일어난다(같은 경로면 호출이 없다).
-     ⑵ 화면에 COPY 버튼을 만들고(textarea + document.execCommand('copy'))
-        computer{action:'left_click'} 로 **실제 클릭**한다 — 합성 이벤트·직접 호출은 false 를 뱉는다.
-        ⛔ 브라우저 패널이 화면에 **표시**돼 있어야 클릭이 된다. 안 보이면 사용자에게 열어 달라고 한다.
-        ⛔ Blob + a[download] 로 파일을 떨구는 우회는 **동작하지 않는다**(패널이 다운로드를 받지 않는다).
-     ⑶ 셸에서  LANG=en_US.UTF-8 pbpaste > /tmp/ggclub-raw-YYYYMMDD.json
-        ⚠️ LANG 없이 pbpaste 하면 한글이 깨져 UnicodeDecodeError 가 난다.
-     ⑷ .venv/bin/python scripts/collect_ggclub.py --raw-file /tmp/ggclub-raw-YYYYMMDD.json --apply-squad
-     ⑸ printf '' | pbcopy 로 클립보드를 비우고, 페이지의 COPY 버튼과 window.__ggPayload 를 지운다
-     ```
-     ⭐ 클립보드에 오르는 것은 **선수 데이터뿐이고 토큰이 아니다** — 「클립보드를 비우라」는 경고가 필요 없다(그래도 비운다).
-     ⭐ 행 변환(29속성 파싱·6대 스탯)은 그대로 `collect_ggclub.py`가 한다 — **재구현하지 않는다**.
-     ⚠️ `navigator.clipboard.writeText`는 브라우저 패널에서 **권한 정책으로 막힌다**(NotAllowedError) —
-     반드시 `execCommand('copy')` 폴백을 쓴다.
-   - ⚠️ `/api/gg-club/…`는 **Authorization 헤더 없으면 404**다(쿠키만으로는 안 된다). 토큰 수명은 **약 1시간**.
+   ⭐⭐⭐ **이 한 줄이 절차 전체를 찍어 준다**(2026-09-26 완성본화 — 사용자 지시 「스니펫을 완성본으로」).
+   스니펫 + 뒤따르는 셸 명령(`pbpaste` → `--raw-file` → 클립보드 비우기) + 페이지 정리 스니펫까지 같이 나온다.
+   ⛔ **스니펫을 손으로 고쳐 쓰지 말 것.** 종전엔 `--print-snippet`이 **헤더만** 돌려줘서 수집 코드를 세션마다
+   다시 썼고, 그때마다 같은 두 곳을 틀렸다(2026-09-26에 그 둘로 **4회**를 허비했다):
+   ⑴ 쿼리 `?game=…&sorts=-overall&page=…`를 빠뜨려 404 ⑵ 「끝 신호 404」를 토큰 만료로 오진.
+   ⇒ 이제 **URL도 404 판정도 `collect_ggclub.py` 안에 정본이 하나씩만** 있고 스니펫이 거기서 생성된다.
+
+   하는 일은 셋뿐이다:
+   - **① 스니펫을 로그인된 `/gg-club/…/players/` 탭에서 실행**한다. 요약 JSON(`{players, pages, end, retried, …}`)이
+     나오고 화면에 COPY 버튼이 뜬다. 선수 데이터는 **반환되지 않는다**(그게 이 경로의 존재 이유다).
+   - **② COPY 버튼을 `computer{action:'left_click'}`로 실제 클릭**한다 — 합성 이벤트·직접 호출은 `false`를 뱉는다.
+     ⛔ **브라우저 패널이 화면에 표시돼 있고 창이 맨 앞이어야** 클릭이 된다(가려져 있으면 페이지가 렌더링을
+     안 해 클릭이 거부된다). 안 되면 사용자에게 창을 앞으로 가져와 달라고 한다.
+   - **③ 찍힌 셸 명령 3줄을 그대로 실행**한다.
+
+   판정 읽는 법:
+   - `end: "404@N"` = **정상 종료**다(마지막 페이지 다음은 404다 — 179명이면 6페이지, 7페이지가 404).
+   - `retried: N` = 간헐 404를 재시도가 흡수한 횟수. **0이 아니어도 정상**이다(2026-09-26 실측 5회).
+     같은 URL·같은 헤더가 200과 404를 오간다 — 워밍업·`X-Session-Cache-Key`와 무관하게 재현됐다.
+   - `AUTH_404` = 1페이지가 4회 모두 404 → **토큰 만료·로그인 풀림**이다. 이때만 다시 꺼낸다(수명 약 1시간).
+   - ⭐ 클립보드에 오르는 것은 **선수 데이터뿐이고 토큰이 아니다**(토큰은 페이지 스코프를 벗어나지 않는다).
+   - ⛔ Blob + `a[download]` 우회는 동작하지 않는다(패널이 다운로드를 받지 않는다).
+     `navigator.clipboard.writeText`도 권한 정책으로 막힌다(NotAllowedError) — `execCommand('copy')`뿐이다.
+   - ⚠️ `LANG` 없이 `pbpaste` 하면 한글이 깨져 `UnicodeDecodeError`가 난다(찍히는 명령에 이미 들어 있다).
+   - ⭐ 행 변환(29속성 파싱·6대 스탯)은 `collect_ggclub.py`가 한다 — **재구현하지 않는다**.
+   - ⭐ 사람이 쉘에서 직접 돌릴 때는 토큰 경로(`FUTGG_AUTH` 환경변수 · `--auth-file`)가 그대로 남아 있다.
+     ⛔ **에이전트는 그 둘을 쓰지 않는다** — 토큰을 클립보드·파일·환경변수로 내보내는 코드 자체가
+     `Credential Materialization`으로 차단된다(2026-09-24 실측).
+   - ⚠️ `/api/gg-club/…`는 **Authorization 헤더 없으면 404**다(쿠키만으로는 안 된다).
+   - ⭐ 검증됨(2026-09-26): 스니펫 생성본으로 받은 원본이 같은 날 캡처와 **1,971,029바이트 동일**,
+     `--raw-file` 산출물도 **바이트 0 차이**.
    - ⚠️ 기본 urllib UA로는 **403**(Cloudflare) — 스크립트가 `Mozilla/5.0`·Origin·Referer를 붙인다.
    - ⛔ 토큰은 **디스크에 쓰지 않는다**. 환경변수로 1회만 넘기고, 대화에 노출됐으면 사용자에게 알린다.
    - ⛔ **로컬 HTTP 브리지(브라우저 → 127.0.0.1 POST)는 쓰지 말 것** — 2026-09-21에 만들어 봤으나

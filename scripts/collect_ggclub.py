@@ -14,15 +14,20 @@
 
 ── 인증 ──────────────────────────────────────────────────────────────────────
 ⚠️ `/api/gg-club/…`는 **Authorization 헤더가 없으면 404**다(2026-09-21 실측 — 쿠키만으로는 안 된다).
-토큰은 로그인된 fut.gg 탭에서 한 번 꺼내 **환경변수로** 넘긴다. 디스크에 쓰지 않는다.
-
-    # ① 로그인된 fut.gg GG Club 탭의 콘솔에서 (앱이 보내는 헤더를 가로챈다)
-    #    → 출력된 JSON 한 줄을 복사
-    #    스니펫은 `--print-snippet`으로 찍어 쓴다.
-    # ② 쉘에서
-    FUTGG_AUTH='<복사한 JSON>' .venv/bin/python scripts/collect_ggclub.py --apply-squad
-
 ⚠️ 토큰 수명은 약 1시간이다(JWT exp). 만료되면 404가 나므로 다시 꺼낸다.
+
+⭐⭐ **에이전트는 `--print-snippet` → `--raw-file` 경로를 쓴다**(2026-09-26 완성본화).
+   토큰을 클립보드·파일·환경변수로 꺼내는 코드는 정책상 「자격증명 실체화」로 차단된다(2026-09-24 실측).
+   ⇒ 토큰을 **꺼내지 말고** 브라우저 안에서 다 쓰고, **응답만** 꺼낸다.
+   ⛔ 종전엔 `--print-snippet`이 **헤더만** 돌려줬고 수집 코드는 세션마다 손으로 다시 썼다.
+      그때마다 쿼리 파라미터(`?game=…&sorts=…`)를 빠뜨리거나 「끝 신호 404」를 오류로 읽었다
+      (2026-09-26에 그 둘로 4회를 허비했다). ⇒ 이제 스니펫이 **수집·COPY 버튼까지 끝낸다.**
+
+    .venv/bin/python scripts/collect_ggclub.py --print-snippet   # 스니펫 + 뒷 절차가 같이 나온다
+
+사람이 쉘에서 직접 돌릴 때의 토큰 경로도 그대로 남아 있다:
+
+    FUTGG_AUTH='<헤더 JSON>' .venv/bin/python scripts/collect_ggclub.py --apply-squad
 
 ── 출력 ──────────────────────────────────────────────────────────────────────
 `fut_club_sync.py`가 먹는 형식으로 파일을 쓴다:
@@ -31,7 +36,8 @@
 표준출력은 **요약 몇 줄뿐** — 선수 데이터는 절대 찍지 않는다(그게 이 스크립트의 존재 이유다).
 
 사용:
-    .venv/bin/python scripts/collect_ggclub.py --print-snippet
+    .venv/bin/python scripts/collect_ggclub.py --print-snippet            # ⭐ 에이전트는 이것
+    .venv/bin/python scripts/collect_ggclub.py --raw-file /tmp/… --apply-squad
     FUTGG_AUTH='…' .venv/bin/python scripts/collect_ggclub.py --apply-squad
     .venv/bin/python scripts/collect_ggclub.py --auth-file /tmp/ggauth.json --apply-squad
 """
@@ -41,6 +47,7 @@ import json
 import os
 import sqlite3
 import sys
+import time
 import urllib.error
 import urllib.request
 from pathlib import Path
@@ -54,11 +61,31 @@ API = "https://www.fut.gg/api/gg-club"
 SIX = ["facePace", "faceShooting", "facePassing", "faceDribbling", "faceDefending", "facePhysicality"]
 SIX_GK = ["gkFaceDiving", "gkFaceHandling", "gkFaceKicking", "gkFaceReflexes", "gkFaceSpeed", "gkFacePositioning"]
 
-# 로그인된 GG Club 탭에서 실행 → Authorization 헤더를 한 번 가로채 JSON으로 찍는다.
+# ⭐⭐ 목록 URL은 **여기 하나뿐이다**(2026-09-26 · 단일 정본).
+#    ⛔ 쿼리를 빼면 404다 — `?game=…&sorts=-overall&page=…`가 전부 필수다.
+#       2026-09-26에 런북의 스니펫 예시가 `?page=N`만 적고 있어서 404를 「토큰 만료」로 오판해 4회를 허비했다.
+#    ⇒ 파이썬 경로와 브라우저 스니펫이 **같은 문자열에서 만들어진다** — 한쪽만 고쳐질 여지를 없앤다.
+PLAYERS_URL = "/players/?game={game}&sorts=-overall&page={page}"
+
+# ⭐⭐⭐ 404가 **세 가지**다(2026-09-26 실측). 구분하지 않으면 정상을 오류로, 오류를 정상으로 읽는다:
+#    ⑴ **마지막 페이지 다음** — 179명 = 6페이지고 7페이지가 404다. 즉 404는 「끝」 신호이기도 하다.
+#    ⑵ **간헐 404** — 같은 URL·같은 헤더가 200과 404를 오간다(워밍업·X-Session-Cache-Key와 무관하게
+#       재현됐다). 한 번 맞고 포기하면 **1페이지에서 죽어** 「토큰 만료」로 오진한다.
+#    ⑶ **진짜 인증 실패** — 토큰 수명 약 1시간.
+#    ⇒ 판정 규칙을 하나로 둔다: **페이지마다 RETRY회까지 재시도하고, 그래도 404면
+#      1페이지는 인증 실패 · 2페이지 이후는 끝.** 양쪽(파이썬·스니펫)에 같은 규칙을 심는다.
+RETRY = 4
+RETRY_MS = 800
+
+# 로그인된 GG Club 탭에서 실행 → ⑴ Authorization 헤더를 가로채고 ⑵ **그 자리에서 전량 수집**해
+# ⑶ `window.__ggPayload`에 담고 ⑷ COPY 버튼을 띄운다. 헤더는 페이지 밖으로 나가지 않는다.
+# ⛔ 손으로 조립할 자리를 남기지 않는다 — 종전엔 헤더만 돌려주고 수집 코드를 세션마다 다시 썼고,
+#    그때마다 쿼리 파라미터·404 판정을 틀렸다(2026-09-26).
 SNIPPET = r"""
 (async () => {
   const of_ = window.__ggOf || window.fetch; window.__ggOf = of_;
   let hdr = null;
+  // ① 헤더 가로채기 — SPA 이동이 일어나야 호출이 난다. **현재와 다른** /gg-club/ 경로여야 한다.
   await new Promise(res => {
     window.fetch = async (...a) => {
       const r = await of_(...a);
@@ -72,25 +99,94 @@ SNIPPET = r"""
       } catch (e) {}
       return r;
     };
-    const a = [...document.querySelectorAll('a')].find(x => (x.getAttribute('href') || '').startsWith('/gg-club/my/'));
+    const cur = location.pathname;
+    const a = [...document.querySelectorAll('a')].find(x => {
+      const h = x.getAttribute('href') || '';
+      return h.startsWith('/gg-club/') && h !== cur && !h.includes('?');
+    });
     if (a) a.click();
-    setTimeout(res, 6000);
+    setTimeout(res, 8000);
   });
   window.fetch = of_;
-  return hdr ? JSON.stringify(hdr) : 'NO_AUTH_HEADER — GG Club 페이지에서 실행했는지 확인';
+  if (!hdr) return 'NO_AUTH_HEADER — 로그인된 /gg-club/…/players/ 에서 실행했는지 확인';
+
+  // ② 같은 페이지 안에서 전량 수집. ⛔ 헤더는 여기서만 쓰고 밖으로 내보내지 않는다.
+  //    ⚠️ 404는 세 가지다 — 끝 · 간헐 · 인증 실패. __RETRY__회 재시도한 뒤에 판정한다.
+  const players = [];
+  let page = 1, end = null, retried = 0;
+  while (page <= 100) {
+    let arr = null, last = 0;
+    for (let t = 0; t < __RETRY__; t++) {
+      const r = await of_('/api/gg-club/players/?game=__GAME__&sorts=-overall&page=' + page, {headers: hdr});
+      last = r.status;
+      if (r.ok) { const j = await r.json(); arr = j.data || j.results || []; break; }
+      if (r.status !== 404) break;                            // 404 아닌 오류는 재시도하지 않는다
+      retried++;
+      await new Promise(x => setTimeout(x, __RETRY_MS__));
+    }
+    if (arr === null) {
+      if (last !== 404) { hdr = null; return 'API_' + last + '@page' + page; }
+      if (page === 1) { hdr = null; return 'AUTH_404 — 1페이지가 __RETRY__회 모두 404다. 토큰 만료·로그인 풀림'; }
+      end = '404@' + page; break;                             // ⭐ 마지막 페이지 다음 = 끝
+    }
+    if (!arr.length) { end = 'empty@' + page; break; }
+    players.push(...arr);
+    page++;
+  }
+  const sr = await of_('/api/gg-club/active-squad/', {headers: hdr});
+  const squad = sr.ok ? await sr.json() : null;
+  hdr = null;                                                 // ⛔ 토큰 폐기 — 반환값에 섞이지 않게
+
+  // ③ 페이로드 보관 + COPY 버튼. ⚠️ navigator.clipboard는 패널에서 막히므로 execCommand만 쓴다.
+  window.__ggPayload = JSON.stringify({players, squad});
+  document.getElementById('ggCopyBtn')?.remove();
+  const b = document.createElement('button');
+  b.id = 'ggCopyBtn';
+  b.textContent = 'COPY';
+  b.style.cssText = 'position:fixed;top:120px;left:20px;z-index:2147483647;width:220px;height:70px;'
+                  + 'font-size:28px;background:#e11;color:#fff;border:0;cursor:pointer';
+  b.onclick = () => {
+    const ta = document.createElement('textarea');
+    ta.value = window.__ggPayload || '';
+    ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand('copy');
+    ta.remove();
+    b.textContent = ok ? 'OK ' + (window.__ggPayload || '').length : 'FAIL';
+  };
+  document.body.appendChild(b);
+  // ⛔ 선수 데이터는 반환하지 않는다 — 요약만 낸다(그게 이 경로의 존재 이유다).
+  return JSON.stringify({players: players.length, pages: page - 1, end, retried,
+                         squad: !!squad, bytes: window.__ggPayload.length});
 })()
 """
 
+# 페이지를 치우는 스니펫 — 수집이 끝나면 버튼과 페이로드를 지운다(런북 §2-4 ⑸).
+CLEANUP_SNIPPET = r"""
+document.getElementById('ggCopyBtn')?.remove(); delete window.__ggPayload;
+JSON.stringify({btn: !!document.getElementById('ggCopyBtn'), payload: !!window.__ggPayload})
+"""
 
-def get(url, headers):
+
+def get(url, headers, end_on_404=False):
+    """⚠️ 404는 세 가지다(위 RETRY 주석) — 끝 · 간헐 · 인증 실패.
+    간헐 404는 여기서 재시도로 흡수하고, 남은 404의 해석만 호출부가 한다
+    (`end_on_404=True` = 목록 2페이지 이후 → 「끝」)."""
     req = urllib.request.Request(url, headers=headers)
-    try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            return json.load(r)
-    except urllib.error.HTTPError as e:
-        if e.code == 404:
-            sys.exit("⛔ 404 — 토큰이 만료됐거나 헤더가 빠졌다. 탭에서 다시 꺼낼 것(수명 약 1시간).")
-        raise
+    for t in range(RETRY):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            if e.code != 404:
+                raise
+            if t < RETRY - 1:
+                time.sleep(RETRY_MS / 1000)
+    if end_on_404:
+        return None                               # 끝 — 오류가 아니다
+    sys.exit(f"⛔ 404 — {RETRY}회 모두 404다. 토큰이 만료됐거나 헤더가 빠졌다(수명 약 1시간).\n"
+             "   (목록 2페이지 이후의 404라면 그건 「마지막 페이지 다음」이라 정상이다)")
 
 
 # ⭐⭐ 29속성 — GG Club이 **EA 실측 그대로** 준다(2026-09-22 확인, 사용자 질문 「싱크로 상세 스탯까지 가져올 수 있지?」).
@@ -190,13 +286,26 @@ def main():
     ap.add_argument("--game", default="27")
     ap.add_argument("--apply-squad", action="store_true", help="fut_squad_slots도 갱신한다")
     ap.add_argument("--account-id", type=int, default=1)
-    ap.add_argument("--print-snippet", action="store_true", help="토큰 추출 스니펫만 출력하고 끝낸다")
+    ap.add_argument("--print-snippet", action="store_true",
+                    help="브라우저 안에서 **전량 수집까지 끝내는** 스니펫을 출력하고 끝낸다(손조립 불필요)")
     ap.add_argument("--auth-file", help="토큰 JSON이 든 파일(저장소 밖). 읽는 즉시 삭제한다.")
     ap.add_argument("--raw-file", help="브라우저 안에서 받아 둔 원본 응답 {players,squad} JSON. 토큰 경로를 쓰지 않는다.")
     a = ap.parse_args()
 
     if a.print_snippet:
-        print(SNIPPET)
+        # ⭐ `--game`이 스니펫 안으로 그대로 흘러간다 — 두 곳에 같은 버전을 적을 자리를 없앤다.
+        raw_out = a.out.replace("ggclub-", "ggclub-raw-")
+        print(SNIPPET.replace("__GAME__", a.game)
+                     .replace("__RETRY_MS__", str(RETRY_MS))     # ⚠️ __RETRY__보다 먼저 — 접두가 겹친다
+                     .replace("__RETRY__", str(RETRY)))
+        print("── 이 뒤는 셸에서 ─────────────────────────────────────────────")
+        print("# ⑴ 위를 로그인된 /gg-club/…/players/ 탭에서 실행 → 요약 JSON이 나오고 COPY 버튼이 뜬다")
+        print("# ⑵ COPY 버튼을 **실제 마우스로** 클릭(합성 이벤트는 false를 뱉는다)")
+        print(f"LANG=en_US.UTF-8 pbpaste > {raw_out}")
+        print(f".venv/bin/python scripts/collect_ggclub.py --raw-file {raw_out} --apply-squad")
+        print("printf '' | pbcopy      # 클립보드 비우기")
+        print("# ⑶ 페이지 치우기 — 아래를 같은 탭에서 실행")
+        print(CLEANUP_SNIPPET.strip())
         return
 
     # ⭐ 토큰 경로 ⑶ `--raw-file`(2026-09-24 신설) — ⑴⑵가 막혔을 때의 대안이다.
@@ -235,14 +344,15 @@ def main():
     headers.setdefault("Referer", "https://www.fut.gg/gg-club/my/players/")
 
     players, page = [], 1
-    while True:
-        d = get(f"{API}/players/?game={a.game}&sorts=-overall&page={page}", headers)
+    while page <= 100:                                    # 폭주 방지
+        d = get(API + PLAYERS_URL.format(game=a.game, page=page), headers, end_on_404=page > 1)
+        if d is None:                                     # ⭐ 마지막 페이지 다음의 404 = 정상 종료
+            page -= 1
+            break
         players += d.get("data") or []
         if not d.get("next"):
             break
         page = d["next"]
-        if page > 100:                                    # 폭주 방지
-            break
 
     squad = []
     try:
