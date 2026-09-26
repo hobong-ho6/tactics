@@ -1588,6 +1588,37 @@ function cmpPanel(){
         c.run.gain.psDup.length ? `<br><small class="dim">${c.run.gain.psDup.map(esc).join(' · ')} 이미 보유</small>` : ''}</td>`).join('')}</tr>
       <tr><td>역할 Role+/++</td>${cols.map(c => `<td>${c.run.gain.role.length
         ? c.run.gain.role.map(x => `<b>${esc(x)}</b>`).join('<br>') : '<span class="dim">—</span>'}</td>`).join('')}${many ? '<td></td>' : ''}</tr>
+      ${/* ⭐⭐ **어느 쪽이 나은가는 역할 가중으로 가른다**(2026-09-26 사용자 지적 「어느 쪽이 더 나은지
+           제안 — 발리와 페널티킥은 중요 스탯이 아닌 것 같고 드리블·질주·공격 위치 선정·결정력을 비교해야」).
+           ⛔ 속성 총합으로 고르지 않는다 — 발리 슛 +16과 결정력 +15가 같은 무게일 리 없다.
+           ⇒ 이 저장소의 정본 가중(`game_role_key_attrs` 3/2/1)을 쓴다.
+           ⚠️ **두 축을 함께 잰다**: ⑴ 처방 역할(우리가 이 선수에게 시키려는 것)
+              ⑵ 진화가 주는 Role+(카드가 실제로 굳는 방향). 둘이 다르면 답도 갈릴 수 있다 —
+              그 사실을 감추지 않고 두 줄로 놓는다. 가중은 판단값(MEDIUM)이다. */''}
+      ${(() => {
+        const roles = new Map();
+        for (const c of cols){
+          const pr = PRES[c.pid]; if (pr?.role_id && KEYW[pr.role_id]) roles.set(pr.role_id, `처방 ${presLabel(pr)}`);
+          for (const rn of c.run.gain.role){
+            const m = /^(\S+)\s+(.+?)\+\+?$/.exec(rn); if (!m) continue;
+            /* ⚠️ 역할 id의 꼬리는 **줄임말**이다(`st_advanced` ↔ 「Advanced Forward」) —
+               완전 일치로 찾으면 못 찾는다(2026-09-26 실측: 이 줄 때문에 진화 역할 행이 통째로 빠졌다). */
+            const key = Object.keys(KEYW).find(k => k.startsWith(m[1].toLowerCase() + '_')
+              && norm(m[2]).startsWith(norm(k.split('_').slice(1).join('_'))));
+            if (key) roles.set(key, roles.has(key) ? `${roles.get(key)} = 진화가 주는 ${esc(rn)}`
+                                                    : `진화가 주는 ${esc(rn)}`);
+          }
+        }
+        if (!roles.size) return '';
+        return [...roles].map(([rid, lab]) => {
+          const w = KEYW[rid];
+          const sc = cols.map(c => Object.entries(w).reduce((t, [a, wt]) =>
+            t + wt * Math.max(0, (c.run.after.at[a] ?? 0) - (c.run.before.at[a] ?? 0)), 0));
+          const top = Object.entries(w).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([a, wt]) => `${a}×${wt}`).join(' · ');
+          return row(`<b>⚖ ${lab}</b> 가중 점수<br><small class="dim">${esc(top)} …</small>`, sc,
+                     sc.map(v => `<b class="up">${v}</b>`));
+        }).join('');
+      })()}
       <tr style="border-top:2px solid var(--line)">${row('<b>실제 상승 합</b> <small class="dim">상한 손실 제외</small>',
         tot, tot.map(t => `<b class="up">+${t}</b>`)).replace(/^<tr>|<\/tr>$/g, '')}</tr></tbody></table></div>`;
 }
