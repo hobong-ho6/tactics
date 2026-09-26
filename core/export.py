@@ -16,6 +16,7 @@ import sqlite3
 from pathlib import Path
 
 from . import DB, ROOT
+from .chem import CHEM
 
 SITE_DATA = ROOT / "site" / "data"
 
@@ -417,6 +418,8 @@ def export_all(db_path=None, window="2026-summer"):
                                                           WHERE pulled=(SELECT MAX(pulled) FROM futgg_chem_signals)"""),
                            "canon_roles": _rows(con, """SELECT pos, role_id, focus, game_version FROM slot_canon_roles
                                                        WHERE regime_id=1 AND formation='4-2-3-1 Wide'"""),
+                           # ⭐ 케미 기준선은 `core/chem.py`가 정본이다 — 화면이 같은 표를 다시 적지 않게 내보낸다.
+                           "chem_tiers": CHEM,
                            "face_stats": _rows(con, """SELECT abbr, is_gk, attr, weight FROM fc_face_stats
                                                       WHERE game_version='FC27' ORDER BY is_gk, abbr"""),
                            "chem_meta": _rows(con, """SELECT item, value, alternatives, rationale, source

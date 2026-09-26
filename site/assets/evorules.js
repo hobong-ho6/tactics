@@ -111,18 +111,27 @@ export function evoRules(EVO, accName){
        · **프리미엄** = 돈을 내야 열리는 **구매 결정**(안 사면 영영 안 열린다)
        · **레벨·목표** = 플레이하면 열리는 **진행 상황**(시간이 지나면 열린다)
      ⇒ 집합을 갈라 내보내고 화면이 **따로 토글**한다. `premIds`는 「잠긴 것 전부」라 호출부 호환용으로 남긴다. */
+  /* ⭐ **역할++ 진화 집합**(2026-09-26 사용자 지시 「진화 목록에서 역할++ 진화는 숨김처리해줘」).
+     포지션별 `ST Roles++`·`CB Roles++` 12종은 코인·포인트만 내면 즉시 적용되는 것이라 목록을
+     채우기만 하고 판단할 거리가 없다. ⛔ **행을 지우지 않는다** — 지우면 `fut_evolution_log.evo_id`가
+     가리킬 곳을 잃는다(런북의 같은 원칙). 화면이 거를 수 있게 **집합만** 내보낸다.
+     ⛔⛔ 판정식을 화면에 다시 쓰지 않는다 — 정본은 여기 한 곳이다(premIds와 같은 방침 · G22가 막는다). */
+  const rolesPPIds = new Set((EVO?.catalog || [])
+    .filter(c => /\bRoles\+\+/.test(String(c.name || '')) || /역할\+\+/.test(String(c.name_kr || '')))
+    .map(c => c.evo_id));
   const premIds = new Set(Object.keys(lockInfo).map(Number));
   const premOnlyIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.kind === 'prem').map(([k]) => +k));
   const progressIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.kind !== 'prem').map(([k]) => +k));
 
   return {
-    acc, consumed, applied, premIds, premOnlyIds, progressIds, lockInfo, spLevel, hasPrem,
+    acc, consumed, applied, premIds, premOnlyIds, progressIds, rolesPPIds, lockInfo, spLevel, hasPrem,
     /* 소진된 진화를 낀 경로는 **그 진화를 쓴 선수 본인 외** 모두에게서 닫힌다 */
     open: (ids, pid) => (ids || []).every(i => !consumed[i]?.exhausted || consumed[i].by.some(b => b.pid === pid)),
     premium: ids => (ids || []).some(i => premIds.has(i)),
     /* 프리미엄 구매가 필요한 것 ↔ 플레이로 열리는 것 — 화면이 따로 거를 수 있게 나눠 준다. */
     premOnly: ids => (ids || []).some(i => premOnlyIds.has(i)),
     progressLocked: ids => (ids || []).some(i => progressIds.has(i)),
+    rolesPP: ids => (ids || []).some(i => rolesPPIds.has(i)),
     /* 이 경로에 들어 있는 진화 중 이 선수가 이미 밟은 것 */
     appliedIn: (ids, pid) => (ids || []).map(i => applied[`${pid}:${i}`]).filter(Boolean),
     idsOf: row => J(row?.evolution_ids, []) || [],

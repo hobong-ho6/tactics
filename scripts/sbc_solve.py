@@ -33,9 +33,9 @@ sys.path.insert(0, str(ROOT))
 DB = ROOT / "db" / "tactics.db"
 
 TIER = {"Bronze": 0, "Silver": 1, "Gold": 2}
-# FC27 케미 기준선 — ⛔ 화면(evolutions.html CHEM_TIERS)과 같은 값이다. 갈리면 둘 다 고친다.
-CHEM = {"club": [(7, 3), (4, 2), (2, 1)], "league": [(8, 3), (5, 2), (3, 1)],
-        "nation": [(8, 3), (5, 2), (2, 1)]}
+# ⭐⭐ 케미 규칙은 `core/chem.py`가 정본이다(2026-09-26) — 여기서 다시 적지 않는다.
+#    종전엔 이 파일과 화면에 두 벌이 있었고 **아이콘·히어로 규칙이 화면에만 빠져** 있었다.
+from core.chem import CHEM, chem_total, extra as _extra   # noqa: E402,F401
 # ⛔⛔ **포메이션은 DB가 정본이다**(migration 070 · fut.gg 번들에서 받은 FC27 29종).
 #    종전엔 4종을 여기 박아 썼다 — SBC는 챌린지마다 포메이션이 고정이라 목록이 모자라면 기록조차 못 한다.
 #    ⭐ 칸 자격은 `gen`(번들의 generalPositionSlots · 등급 A)으로 본다 — 그 칸에 설 수 있는 카드 포지션이다.
@@ -205,48 +205,6 @@ def team_rating(ovrs):
     avg = sum(ovrs) / len(ovrs)
     return math.floor(avg + sum(max(0, o - avg) for o in ovrs) / len(ovrs))
 
-
-def _extra(p, k):
-    """아이콘·히어로의 **추가 링크 기여**. ⛔ 규칙을 우리가 쓰지 않고 fut.gg 값(`chem_extra`)을 쓴다
-       (migration 044와 같은 방침) — EA가 버전마다 바꾸기 때문이다.
-       ⚠️ 실제로 바뀌었다: FC27 2026-09-14 런치 업데이트로 **아이콘 국적 +2 → +1 · 히어로 리그 +2 → +1**.
-          값을 코드에 박았다면 그날 조용히 틀렸을 것이다(근거 등급 B — 커뮤니티 정리 + EA 패치노트 인용)."""
-    try:
-        return int((json.loads(p["chem_extra"]) or {}).get(k) or 0) if p.get("chem_extra") else 0
-    except Exception:
-        return 0
-
-
-def chem_total(xi):
-    """팀 케미 합.
-
-    ⛔ **포지션이 맞아야 카운트에 든다** — 자리 안 맞는 선수는 본인이 0일 뿐 아니라
-       **남의 링크에도 기여하지 않는다**(2026-09-25 조사로 재확인: 「Out of position, they sit at 0
-       and do not contribute links to teammates」). 그래서 이건 배치 문제다.
-    ⭐ 기준선은 클럽 2/4/7 · 리그 3/5/8 · 국적 2/5/8 — 2026-09-25 조사에서 FC27 값과 **일치 확인**.
-    ⭐ 아이콘·히어로: 자기 케미는 자리만 맞으면 **무조건 3**, 추가 링크 기여는 `chem_extra`가 정본.
-       아이콘은 그에 더해 **스쿼드의 모든 리그에 +1**을 준다(등급 B — FC27에서도 유지된 항목).
-
-    ⚠️⚠️ **이 값은 하한이다 — 감독 케미를 넣지 않았다.** 감독은 국적·리그가 같은 선발에게 **+1**을
-       주고(선수당 1점 상한) SBC 스쿼드에도 적용된다. 어느 감독을 쓸지는 우리가 모르므로 세지 않는다.
-       ⇒ 우리가 「케미 부족」이라 해도 **실제로는 감독으로 메워질 수 있다**(화면이 그렇게 적는다)."""
-    cnt = {k: {} for k in CHEM}
-    for p in xi:
-        for k in CHEM:
-            if p[k]:
-                cnt[k][p[k]] = cnt[k].get(p[k], 0) + 1 + _extra(p, k)
-    icons = sum(1 for p in xi if p.get("is_icon"))
-    if icons:                      # 아이콘은 **모든 리그**에 +1씩 얹는다
-        for lg in cnt["league"]:
-            cnt["league"][lg] += icons
-
-    def tier(n, tb):
-        for need, pt in tb:
-            if n >= need:
-                return pt
-        return 0
-    return sum(3 if (p.get("is_icon") or p.get("is_hero")) else
-               min(3, sum(tier(cnt[k][p[k]], CHEM[k]) if p[k] else 0 for k in CHEM)) for p in xi)
 
 
 # ── 조건 파싱 ────────────────────────────────────────────────────────────────
