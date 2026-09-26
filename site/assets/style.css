@@ -509,3 +509,8 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .trystep{border-left:2px solid var(--ok);padding-left:7px}
 .trystep.bad{border-left-color:var(--bad)}
 .trybox .kv{flex-wrap:wrap;gap:5px}
+
+/* ⚖️ 담아 둔 비교 — 선수를 바꿔도 남는다(2026-09-26). 미리보기(점선)와 달리 실선으로 둔다. */
+.cmpbox{border:1px solid var(--viz-us);border-radius:8px;padding:7px 9px;margin:6px 0;font-size:12px}
+.cmpbox .kv{flex-wrap:wrap;gap:5px}
+.cmpbox th{white-space:normal;min-width:120px}

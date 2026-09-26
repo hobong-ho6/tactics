@@ -1355,6 +1355,10 @@ const actionable = pid => (RANKED[pid] || []).filter(r => !doneScore(r, +pid)).l
       여기는 **아무것도 적지 않고** 「걸면 이렇게 된다」만 계산한다.
    ⭐ 쌓인다 — 하나 얹으면 그 상태 위에 다음 것을 또 얹어 순서가 결과를 바꾸는 축을 볼 수 있다. */
 const TRY = { pid: null, steps: [] };      // steps: [{id, picks:{단계:가지}}]
+/* ⭐ **담아 두고 견준다**(2026-09-26 사용자 지시 「이 상태와 다른 선수나 이 선수의 다른 진화를 적용 후
+   스탯을 비교하려고 해」). 선수를 바꿔도 남아 있어야 하므로 **전역**에 둔다 —
+   미리보기(TRY)는 선수를 바꾸면 사라지지만 여기 담은 것은 남는다. ⛔ 원장과 무관하다(계산 결과일 뿐). */
+const CMP = [];
 /* 요구조건 판정 — 카탈로그 문구는 8종으로 닫혀 있다(2026-09-26 전수 확인).
    ⛔ 못 읽은 문구는 **통과로 치지 않는다**(조용히 넘기면 거짓 보고가 된다). */
 const TREQ = {
@@ -1426,6 +1430,7 @@ function tryPanel(pid){
   const d = (a, b) => a == null ? '—' : b === a ? `<span class="dim">${a}</span>` : `${a}<b class="${b > a ? 'up' : 'dn'}"> ▸${b}</b>`;
   return `<div class="trybox"><div class="kv"><b>🔬 미리보기 — 걸면 이렇게 된다</b>
       <small class="dim">아무것도 기록하지 않는다</small>
+      <button class="act" id="trysave">📌 비교에 담기</button>
       <button class="act ghost" id="tryclr">비우기</button></div>
     <div class="trysteps">${r.steps.map((x, i) => `<div class="trystep${x.fails.length ? ' bad' : ''}">
       <div class="kv"><b>${i + 1}. ${esc(x.name)}</b><span class="chip">OVR ${x.ovr}</span>
@@ -1496,6 +1501,35 @@ function nextEvoCards(pid){
           <button class="act ghost" data-cat="${x.id}">카탈로그</button></div>
         <span class="msg-slot" id="em${pid}_${x.id}"></span></div>`; }).join('')}</div></div>`;
 }
+/* 담아 둔 것들을 나란히 — 「각 선수가 얻는 스탯의 총량을 정확히 비교」가 목적이다.
+   ⛔ 6대 스탯만으로는 총량을 못 잰다(가중 평균이라 상한 손실이 묻힌다) ⇒ **실제 상승 합**을 함께 놓는다.
+   ⚠️ 선수를 바꿔도 이 패널은 남는다 — 그래야 다른 선수와 견줄 수 있다. */
+function cmpPanel(){
+  if (!CMP.length) return '';
+  const cols = CMP.map((c, i) => ({ ...c, i, run: tryRun(c.pid, c.steps) })).filter(c => c.run);
+  if (!cols.length) return '';
+  const FACE = ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY'];
+  const keys = [...new Set(cols.flatMap(c => Object.keys(c.run.before.at)))]
+    .filter(k => cols.some(c => (c.run.after.at[k] ?? 0) !== (c.run.before.at[k] ?? 0)));
+  const tot = cols.map(c => keys.reduce((t, k) => t + Math.max(0, (c.run.after.at[k] ?? 0) - (c.run.before.at[k] ?? 0)), 0));
+  const d = (a, b) => a == null ? '—' : b === a ? `<span class="dim">${a}</span>` : `${a}<b class="${b > a ? 'up' : 'dn'}"> ▸${b}</b>`;
+  return `<div class="cmpbox"><div class="kv"><b>⚖️ 담아 둔 비교 ${cols.length}벌</b>
+      <small class="dim">선수를 바꿔도 남는다</small>
+      <button class="act ghost" id="cmpclr">전부 비우기</button></div>
+    <table class="tbl" style="margin-top:5px"><thead><tr><th>항목</th>${cols.map(c =>
+      `<th>${esc(c.label)} <button class="chip" data-cmprm="${c.i}">✕</button></th>`).join('')}</tr></thead><tbody>
+      <tr><td><b>OVR</b> <small class="dim">fut.gg</small></td>${cols.map(c => `<td>${d(c.run.before.ovr, c.run.after.ovr)}</td>`).join('')}</tr>
+      ${FACE.map(f => `<tr><td>${f}</td>${cols.map(c => `<td>${d(c.run.before.six?.[f], c.run.after.six?.[f])}</td>`).join('')}</tr>`).join('')}
+      <tr style="border-top:2px solid var(--line)"><td><b>실제 상승 합</b> <small class="dim">상한 손실 제외</small></td>${
+        tot.map(t => `<td><b class="up">+${t}</b></td>`).join('')}</tr></tbody></table>
+    ${keys.length ? `<details style="margin-top:5px"><summary class="dim" style="cursor:pointer;font-size:11.5px">상세 ${keys.length}속성</summary>
+      <table class="tbl" style="margin-top:4px"><thead><tr><th>속성</th>${cols.map(c =>
+        `<th>${esc(c.label.split(':')[0])}</th>`).join('')}</tr></thead><tbody>
+      ${keys.map(k => `<tr><td>${esc(k)}</td>${cols.map(c => {
+        const a = c.run.before.at[k], b = c.run.after.at[k], v = (b ?? 0) - (a ?? 0);
+        return `<td>${a ?? '—'}${v > 0 ? ` <b class="up">▸${b} (+${v})</b>` : ' <span class="dim">—</span>'}</td>`;
+      }).join('')}</tr>`).join('')}</tbody></table></details>` : ''}</div>`;
+}
 function pathSide(pid){
   const rows = RANKED[pid] || [];
   /* ⭐ **완료한 경로는 이력 영역으로 내린다**(2026-09-26 사용자 지시 「이미 완료한 진화는 이력이니
@@ -1510,6 +1544,7 @@ function pathSide(pid){
       <span>처방: ${presLabel(rows[0]?.pres ?? matcher(+pid).pres)}</span>
       <small class="dim">경로 ${rows.length}건</small>
       <a href="player.html?id=${pid}" style="font-size:12px">선수 화면 →</a></div>
+    ${cmpPanel()}
     ${tryPanel(+pid)}
     ${nextEvoCards(+pid)}
     ${eligPanel(+pid)}
@@ -1541,6 +1576,23 @@ function bindSide(root, team){
     (TRY.steps[+i].picks ??= {})[+lv] = +b.dataset.k;
     document.getElementById('pathside').innerHTML = pathSide(TRY.pid); bindSide(document.getElementById('pathside'), PATH_TEAM);
   }));
+  root.querySelector('#trysave')?.addEventListener('click', () => {
+    const r = tryRun(TRY.pid, TRY.steps); if (!r) return;
+    CMP.push({ pid: TRY.pid, name: r.st.name, steps: TRY.steps.map(x => ({ ...x, picks: { ...x.picks } })),
+               label: `${r.st.name}: ${r.steps.filter(x => !x.fails.length).map(x => x.name).join(' → ') || '진화 없음'}` });
+    const pid = TRY.pid;
+    document.getElementById('pathside').innerHTML = pathSide(pid); bindSide(document.getElementById('pathside'), PATH_TEAM);
+  });
+  root.querySelectorAll('[data-cmprm]').forEach(b => b.addEventListener('click', () => {
+    CMP.splice(+b.dataset.cmprm, 1);
+    const pid = TRY.pid ?? PATH_FOCUS;
+    document.getElementById('pathside').innerHTML = pathSide(pid); bindSide(document.getElementById('pathside'), PATH_TEAM);
+  }));
+  root.querySelector('#cmpclr')?.addEventListener('click', () => {
+    CMP.length = 0;
+    const pid = TRY.pid ?? PATH_FOCUS;
+    document.getElementById('pathside').innerHTML = pathSide(pid); bindSide(document.getElementById('pathside'), PATH_TEAM);
+  });
   root.querySelector('#tryclr')?.addEventListener('click', () => {
     const pid = TRY.pid; TRY.steps = [];
     document.getElementById('pathside').innerHTML = pathSide(pid); bindSide(document.getElementById('pathside'), PATH_TEAM);
