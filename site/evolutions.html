@@ -2203,6 +2203,11 @@ function renderSbc(){
     + ` · 🟡 준비 ${cnt.ready || 0} · 📐 포메이션 입력 필요 ${cnt.need_form || 0}`
     + (oneclick.length ? ` · 원클릭 제출 ${oneclick.length}건은 제외` : '')
     + (hidden.length ? ` · 감춤 ${hidden.length}건(업그레이드류)은 제외` : '')
+    + (() => {   // 전부 완료해 통째로 감춘 세트 — 조용히 없애지 않고 건수를 적는다
+        const byset = {}; for (const c of chs) (byset[c.set_ea_id] ??= []).push(c);
+        const n = Object.values(byset).filter(l => l.every(c => SBC_DONE[String(c.challenge_ea_id)])).length;
+        return n ? ` · 🏁 전부 완료한 ${n}세트는 감춤(「내가 완료」로 보기)` : '';
+      })()
     + ` · 판정일 ${chs.find(c => c.solved_at)?.solved_at || '—'}`;
   const fb = document.getElementById('sbcfilters');
   fb.innerHTML = [['all', `전체 ${chs.length}`],
@@ -2319,13 +2324,11 @@ function renderSbc(){
        「완료 N개 보기」 토글로 언제든 펼 수 있다. ⚠️ 「내가 완료」 필터를 고른 경우에는 감추지 않는다. */
     const show = SBC_F === 'done' || SBC_OPEN.has(st.set_ea_id)
       ? list : list.filter(c => !SBC_DONE[String(c.challenge_ea_id)]);
-    if (!show.length && SBC_F !== 'done' && dn === list.length && !SBC_OPEN.has(st.set_ea_id)) {
-      return `<div class="sbc-card done">
-        <div class="sbc-head"><b>${esc(st.name)}</b>
-          <span class="chip dim">${esc(st.category || '')}</span>
-          <span class="chip hi">🏁 전부 완료 ${dn}/${list.length}</span></div>
-        <button class="act ghost" data-sbcopen="${st.set_ea_id}" style="font-size:12px;margin-top:6px">완료 ${dn}개 보기</button></div>`;
-    }
+    /* ⭐⭐ **전부 완료한 세트는 통째로 감춘다**(2026-09-26 사용자 지시 「SBC 모두 완료한 것들은 숨김처리」).
+       종전엔 한 줄 카드로 남겨 뒀는데, 완료가 쌓이자 **할 일이 그 사이에 파묻혔다**.
+       ⛔ 조용히 없애지 않는다 — 머리에 세트 수를 적고, 「🏁 내가 완료」 필터로 언제든 다 볼 수 있다
+          (원클릭·감춤과 같은 규약). */
+    if (dn === list.length && SBC_F !== 'done' && !SBC_OPEN.has(st.set_ea_id)) return '';
     const d = days(st.end_time);
     return `<div class="sbc-card${/dn/.test(d) ? ' urgent' : ''}">
       <div class="sbc-head">
@@ -2426,7 +2429,12 @@ function renderSbc(){
             ${c.solve_conf ? `<div class="dim" style="font-size:11px;margin-top:5px">${esc(c.solve_conf)}</div>` : ''}
           </div></details>`;
       }).join('')}</div>`;
-  }).join('') + `</div>` || '<span class="dim">이 필터에 해당하는 챌린지가 없다.</span>';
+  }).join('').trim() + `</div>`;
+  if (!document.getElementById('sbc').querySelector('.sbc-card'))
+    document.getElementById('sbc').innerHTML = SBC_F === 'all'
+      ? '<div class="dim" style="font-size:12.5px;padding:10px 2px">🏁 <b>할 일이 없다</b> — 목록의 챌린지를 전부 완료했다.'
+        + '<br>완료한 것을 보려면 위 <b>「🏁 내가 완료」</b>를 누른다. 새 SBC는 <code>collect_futgg_sbc.py</code>로 받는다.</div>'
+      : '<span class="dim">이 필터에 해당하는 챌린지가 없다.</span>';
 }
 
 renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc();
