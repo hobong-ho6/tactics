@@ -55,6 +55,9 @@ export function evoRules(EVO, accName){
   }
   for (const k in consumed) consumed[k].exhausted = consumed[k].count >= (repeat[k] ?? 1);
   for (const k in applied) applied[k].maxLevel = Math.max(...applied[k].levels);
+  /* ⭐ **적용 횟수**는 로그 행 수가 아니라 «1단계 행 수»다 — 4단계짜리를 한 번 밟아도 행은 4개다
+     (클럽 싱크 런북의 소진 계산과 같은 규약). 경로 투영이 「이미 밟은 만큼 건너뛰기」에 쓴다. */
+  for (const k in applied) applied[k].runs = applied[k].levels.filter(v => (v ?? 1) === 1).length || 1;
 
   /* ⛔⛔ **해금은 소진과 다른 축이고, 잠금이 세 종류다**(2026-09-23 사용자 지적
      「여전히 적용할 진화가 없는데 선수들이 노출되고 있음」).
