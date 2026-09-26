@@ -502,6 +502,9 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .nextcard .kv{flex-wrap:wrap;gap:5px}
 .nextcard b{font-size:12.5px}
 .nextcard small{display:block;margin-top:2px}
+/* 🔀 갈림길 — select 옵션은 브라우저가 잘라 버리므로 고른 가지의 전체 내용을 아래 줄에 편다 */
+.nextcard select{max-width:100%;font-size:11.5px}
+.brdet{font-size:11px;line-height:1.5;white-space:normal;word-break:keep-all;padding-left:2px}
 
 /* 🔬 진화 미리보기 — **기록이 아니다**(2026-09-26). 원장에 적는 「진화 완료」와 색을 갈라 둔다. */
 .trybox{border:1px dashed var(--acc);border-radius:8px;padding:7px 9px;margin:6px 0;font-size:12px}

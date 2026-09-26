@@ -1312,6 +1312,25 @@ function upLabel(u){
   const kr = ATTR_KR[k.replace(/^attribute_/, '')];
   return `${kr || k} +${u.value}${u.maxValue ? ` (^${u.maxValue})` : ''}`;
 }
+/* ⭐⭐ **갈림길 옵션 한 줄 라벨**(2026-09-26 사용자 지적 「선택지에서 잘려서 나옴」).
+   네이티브 `<select>`의 드롭다운 폭은 우리가 못 정한다 — 긴 문자열은 브라우저가
+   「… PlaySty」처럼 **말 없이 잘라 버린다**. 그래서 옵션에는 캡·수치를 뺀 **항목 이름만**
+   넣고, 고른 가지의 **전체 내용은 select 아래 줄**(`.brdet`)에 접히지 않게 적는다.
+   ⛔ slice()로 자르지 않는다 — 자르면 무엇이 잘렸는지 화면에 남지 않는다. */
+function brLabel(src){
+  const at = [], etc = [];
+  for (const u of src){
+    const k = String(u.upgrade || '');
+    if (k.startsWith('attribute_')) at.push(ATTR_KR[k.slice(10)] || k.slice(10));
+    else if (k === 'play_style') etc.push(`PS ${PS_NAME[String(u.value)] || `#${u.value}`}`);
+    else if (k === 'overall') etc.push(`OVR +${u.value}`);
+    else if (k === 'role_plus') etc.push('Role+');
+    else if (k === 'role_plus_plus') etc.push('Role++');
+    else etc.push(upLabel(u));
+  }
+  const head = at.length > 3 ? `${at.slice(0, 3).join('·')} 외 ${at.length - 3}` : at.join('·');
+  return [head, ...etc].filter(Boolean).join(' · ') || '(없음)';
+}
 /* ⭐⭐ **가지별 「왜 이쪽인가」** (2026-09-22 사용자 지시 「제안한 이유도 같이 병기」).
    ⛔⛔ **★는 fut.gg가 고른 것이지 우리 판단이 아니다** — 이유를 붙이려면 **우리 기준으로 따로 재야** 한다.
       둘을 섞어 「★이니까 좋다」로 쓰면 남의 선택에 우리 근거를 덧씌우는 셈이다.
@@ -1595,11 +1614,13 @@ function nextEvoCards(pid){
           if (!rows.length) return '';
           return rows.map(L => { const ev = evalLevel(L.upgradeOptions, bs.pres, bs.have, bs.attrOf);
             const rec = ev.rec >= 0 ? ev.rec : 0;
-            return `<div class="kv" style="margin-top:4px"><small class="dim">🔀 ${L.idx}단계 선택</small>
-              <select data-evobranch="${pid}:${c.evo_id}:${L.idx}">${L.upgradeOptions.map((o, k) => {
-                const src = Array.isArray(o) ? o : (o.upgrades || []);
-                return `<option value="${k}"${k === rec ? ' selected' : ''}>${k === rec ? '⭐ ' : ''}${
-                  esc(src.map(upLabel).join(' · ').slice(0, 70))}</option>`; }).join('')}</select></div>`;
+            const key = `${pid}:${c.evo_id}:${L.idx}`;
+            const srcOf = o => Array.isArray(o) ? o : (o.upgrades || []);
+            return `<div style="margin-top:4px"><div class="kv"><small class="dim">🔀 ${L.idx}단계 선택</small>
+              <select data-evobranch="${key}">${L.upgradeOptions.map((o, k) =>
+                `<option value="${k}"${k === rec ? ' selected' : ''}>${k === rec ? '⭐ ' : ''}${
+                  esc(brLabel(srcOf(o)))}</option>`).join('')}</select></div>
+              <small class="dim brdet" data-evobrdet="${key}">${esc(srcOf(L.upgradeOptions[rec]).map(upLabel).join(' · '))}</small></div>`;
           }).join('');
         })()}
         ${(() => { /* ⚠️ 미리보기를 쌓아 둔 상태에서는 **그 상태 기준으로** 걸 수 있는지 다시 본다 —
@@ -3004,6 +3025,15 @@ document.addEventListener('click', e => {
   PICK[b.dataset.optpick] = +b.dataset.k;
   _projCache.clear();
   renderPaths(PATH_TEAM, PATH_FOCUS);
+});
+/* 🔀 갈림길 select — 고른 가지의 전체 내용을 아래 줄에 다시 적는다(옵션은 잘리므로). */
+document.addEventListener('change', e => {
+  const sel = e.target.closest?.('[data-evobranch]'); if (!sel) return;
+  const key = sel.dataset.evobranch, [, evo, idx] = key.split(':');
+  const lv = (J(CATBYID[+evo]?.levels, []) || []).find(L => L.idx === +idx);
+  const o = (lv?.upgradeOptions || [])[+sel.value];
+  const det = document.querySelector(`[data-evobrdet="${key}"]`);
+  if (det && o) det.textContent = (Array.isArray(o) ? o : (o.upgrades || [])).map(upLabel).join(' · ');
 });
 renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc();
 

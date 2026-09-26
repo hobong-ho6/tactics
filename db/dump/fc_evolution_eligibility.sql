@@ -452,3 +452,11 @@ INSERT INTO fc_evolution_eligibility VALUES('FC27',2514,58,268438,1,'2026-09-26'
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2514,10,210881,1,'2026-09-26','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2514&name=McGinn (2026-09-26 수집 · 범위: 내 구단 보유 카드)');
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2514,14,226162,1,'2026-09-26','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2514&name=Buendia (2026-09-26 수집 · 범위: 내 구단 보유 카드)');
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2488,175,50545213,0,'2026-09-26','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2488&name=Lemar (2026-09-26 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2512,162,243780,1,'2026-09-26','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2512&name=Lee (2026-09-26 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2516,23,50573500,0,'2026-09-26','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2516&name=Diaby (2026-09-26 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2511,162,243780,1,'2026-09-26','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2511&name=Lee (2026-09-26 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2510,162,243780,1,'2026-09-26','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2510&name=Lee (2026-09-26 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2510,23,50573500,0,'2026-09-26','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2510&name=Diaby (2026-09-26 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2517,162,243780,1,'2026-09-26','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2517&name=Lee (2026-09-26 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2517,23,50573500,0,'2026-09-26','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2517&name=Diaby (2026-09-26 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2514,23,50573500,0,'2026-09-26','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2514&name=Diaby (2026-09-26 수집 · 범위: 내 구단 보유 카드)');
