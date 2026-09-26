@@ -331,6 +331,35 @@ const ownedCard = pid => STATE[String(pid)] || null;
    ⛔ 상한 규칙은 `applyEvoLevel`(clubviz) 하나만 안다 — 여기서 다시 짜지 않는다.
    ⚠️ 분기 단계가 끼면 **투영하지 않는다**(무엇을 고를지 모르면 추정이다) — `skipped`로 사유를 돌려준다. */
 const CATBYID = {}; for (const c of (EVO.catalog || [])) CATBYID[c.evo_id] = c;
+/* ⭐⭐⭐ **진화 이름 표기는 여기 하나뿐이다**(2026-09-26 사용자 지적 「진화 관련해서 얻은 건
+   진화 카탈로그에도 같이 항상 적용해야지, 이러면 또 기능이 차이가 나잖아」).
+   ⛔ 종전엔 화면·블록마다 `esc(c.name)` / `evolution_names` / `l.evo_name`을 **각자 찍었다**(10곳 넘음).
+      그래서 한글명을 붙여도 붙인 자리에만 나오고 나머지는 영어로 남았다 — 이 저장소의 반복 사고다.
+   ⇒ 이름을 쓰는 모든 자리가 이 함수를 부른다. 새 표기(번역·약칭 등)는 **여기만** 고치면 전부 따라온다.
+   ⚠️ 한글명이 없는 진화(해금형 9종 — futmind 목록 미노출)는 **영문 그대로**다. 지어내지 않는다.
+   ⚠️ 원문을 잃지 않는다 — 한글로 바꿔 쓸 때 영문을 `title`에 남긴다(불변규칙 11). */
+const EVO_KR = {};                 // evo_id → 한글명 (CATBYID 이후 채운다)
+const evoKr = id => EVO_KR[id] || null;
+/* 이름 하나 — `html`이면 원문 title을 붙인 HTML, 아니면 평문. */
+function evoName(idOrCat, { html = true } = {}){
+  const c = (typeof idOrCat === 'object' && idOrCat) ? idOrCat : CATBYID[idOrCat];
+  const en = c?.name || String(idOrCat ?? '');
+  const kr = c?.name_kr || EVO_KR[c?.evo_id ?? idOrCat];
+  if (!kr) return html ? esc(en) : en;
+  return html ? `<span title="${esc(en)}">${esc(kr)}</span>` : kr;
+}
+/* 「A → B → C」 경로 이름 — 각 토막을 한글로 바꾼다. ids가 있으면 그걸로, 없으면 영문명으로 찾는다. */
+function pathName(p, { html = true } = {}){
+  const ids = p?.ids || [];
+  const parts = String(p?.evolution_names || '').split(' → ');
+  const out = parts.map((en, i) => {
+    const c = CATBYID[ids[i]] || Object.values(CATBYID).find(x => x.name === en);
+    return c ? evoName(c, { html }) : (html ? esc(en) : en);
+  });
+  return out.join(' → ');
+}
+for (const c of (EVO.catalog || [])) if (c.name_kr) EVO_KR[c.evo_id] = c.name_kr;
+
 function projectPath(p, fromAttrs, isGk, pres, have, attrOf, skipRuns, forced){
   /* ⛔⛔ **이미 밟은 진화는 다시 얹지 않는다**(2026-09-26 사용자 지적 「같은 Frontline Paradox인데
      잭슨과 마조의 표기 합이 다른 이유는?」에서 드러났다).
@@ -493,7 +522,7 @@ function pathOptionsHTML(p, pid){
     if (!br.length) return;
     const mine = choices[ei] || null;
     const bs = evalBasis(pid, p.pres);
-    blocks.push(`<div class="optlv-g">${ids.length > 1 ? `<b>${esc(c.name)}</b>` : ''}
+    blocks.push(`<div class="optlv-g">${ids.length > 1 ? `<b>${evoName(c)}</b>` : ''}
       ${br.map(b => `<div class="optlv"><i>${b.i}단계</i></div>
         ${branchEval(b.opts, bs.pres, bs.have, { attrOf: bs.attrOf })}`).join('')}</div>`);
   });
@@ -686,19 +715,19 @@ function pathHTML(p, i, pid){
   const left = [...new Set((p.ids || []).map((id, k) => doneIds.has(id) ? null : (names[k] || '')).filter(Boolean))];
   // ⚠️ 반복형은 경로 id에 여러 번 들어가 `done`에도 같은 항목이 중복된다 — evo_id로 묶는다.
   const fin = [...new Map(done.filter(x => x.done).map(x => [x.evo_id, x])).values()]
-    .map(x => `${esc(x.name)}${x.levels.length > 1 ? ` ×${x.levels.length}회` : ''}`);
+    .map(x => `${evoName(x.evo_id)}${x.levels.length > 1 ? ` ×${x.levels.length}회` : ''}`);
   const badge = !done.length ? ''
     : allDone ? '<span class="chip" style="border-color:var(--ok);color:var(--ok)">✓ 이미 적용 완료</span>'
     : runningNow.length
     ? `<span class="chip" style="border-color:var(--warn);color:var(--warn)"
          title="완주하지 않은 단계가 있다 — 완주해야 스탯이 반영된다">진화 진행 중 — ${
-        runningNow.map(x => `${esc(x.name)} ${x.maxLevel}단계`).join(' · ')}</span>`
+        runningNow.map(x => `${evoName(x.evo_id)} ${x.maxLevel}단계`).join(' · ')}</span>`
     : `<span class="chip" style="border-color:var(--ok);color:var(--ok)"
          title="이 경로의 앞부분을 이미 끝냈다. 진행 중인 진화가 있다는 뜻이 아니다.">경로 일부 완료 — ${
         fin.join(' · ')} 끝${left.length ? ` · 남은 것 ${esc(left.join(' → '))}` : ''}</span>`;
   return `<details class="path pcard tier${p.tier}${allDone ? ' path-done' : ''}" style="margin:6px 0"${i === 0 && !allDone ? ' open' : ''}>
     <summary class="kv">${allDone ? '<span class="badge">완료</span>' : i === 0 ? '<span class="badge hi">최적 제안</span>' : `<span class="badge">${i + 1}순위</span>`}${badge}
-      <b>${esc(p.evolution_names)}</b> <span class="chip">${p.steps}단계</span>${
+      <b>${pathName(p)}</b> <span class="chip">${p.steps}단계</span>${
       /* ⚠️ 이월분 — 그 회차에 이 선수를 **조회하지 않았다**. 실측과 같은 얼굴로 두지 않는다(2026-09-23). */
       p.carried_from ? `<span class="chip dim" title="이 회차의 진화 수집이 이 선수까지 닿지 않아 ${esc(p.carried_from)} 관측값을 그대로 쓴다. 그 뒤 fut.gg에서 바뀌었을 수 있다 — 다시 수집하면 갱신된다.">${esc(p.carried_from)} 관측값</span>` : ''}
       <span class="chip${p.d ? '' : ' dim'}"${p.d ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}
@@ -1059,7 +1088,7 @@ function renderCatalog(team = CAT_TEAM){
     const best = apps[0];
     const dl = days(c.end_submission_time || c.end_time);
     return `<div class="evo-card${c.is_expired || used?.exhausted ? ' expired' : ''}" id="ev${c.evo_id}">
-      <h3>${esc(c.name)}${c.name_kr ? ` <small class="dim" style="font-weight:400">${esc(c.name_kr)}</small>` : ''} ${c.repeatability > 1 ? `<span class="chip">반복 ${c.repeatability}회</span>` : '<span class="chip dim">1회성</span>'}${c.is_reward ? '<span class="chip">보상형</span>' : ''}${
+      <h3>${evoName(c)}${c.name_kr ? ` <small class="dim" style="font-weight:400">${esc(c.name)}</small>` : ''} ${c.repeatability > 1 ? `<span class="chip">반복 ${c.repeatability}회</span>` : '<span class="chip dim">1회성</span>'}${c.is_reward ? '<span class="chip">보상형</span>' : ''}${
         /* ⭐ 이월 행 표시(migration 059) — fut.gg 목록에는 있는데 API가 객체를 안 주는 진화다.
            이 회차엔 **목록 생존만** 확인했고 아래 내용은 과거 관측값이다. 실측과 같은 얼굴로 두지 않는다. */
         c.carried_from ? `<span class="chip dim" title="fut.gg 목록에는 있으나 paths·적용 가능 선수 API가 이 진화의 객체를 주지 않는다(단독·특별카드 전용). 이번 회차엔 목록에 살아 있다는 것만 확인했고, 아래 조건·업그레이드·마감은 ${esc(c.carried_from)} 관측값 그대로다.">${esc(c.carried_from)} 관측값</span>` : ''}
@@ -1247,7 +1276,7 @@ function appliedPanel(pid){
   return `<div class="applied-box"><b>이미 적용한 진화</b> <small class="dim">${mine.length}건 — 이 선수의 경로는 여기서 이어진다</small>
     ${mine.sort((a, b) => String(a.first).localeCompare(String(b.first))).map(x =>
       `<div><span class="chip"${x.done ? ' style="border-color:var(--ok);color:var(--ok)"' : ' style="border-color:var(--warn);color:var(--warn)"'}>${x.done ? '완료' : '진행 중'}</span>
-        <b>${esc(x.name)}</b> <small class="dim">${x.maxLevel}단계까지${
+        <b>${evoName(x.evo_id)}</b> <small class="dim">${x.maxLevel}단계까지${
           x.ovr_before != null && x.ovr_after != null && x.ovr_after !== x.ovr_before
             ? ` · OVR ${x.ovr_before}→<b class="up">${x.ovr_after}</b>` : ''} · ${esc(x.first)}${
           x.last && x.last !== x.first ? `~${esc(x.last)}` : ''}</small></div>`).join('')}</div>`;
@@ -1456,7 +1485,7 @@ function tryPanel(pid){
       <button class="act" id="trysave">📌 비교에 담기</button>
       <button class="act ghost" id="tryclr">비우기</button></div>
     <div class="trysteps">${r.steps.map((x, i) => `<div class="trystep${x.fails.length ? ' bad' : ''}">
-      <div class="kv"><b>${i + 1}. ${esc(x.name)}</b>${CATBYID[x.id]?.name_kr ? `<small class="dim">${esc(CATBYID[x.id].name_kr)}</small>` : ''}<span class="chip">OVR ${x.ovr}</span>
+      <div class="kv"><b>${i + 1}. ${evoName(x.id)}</b><span class="chip">OVR ${x.ovr}</span>
         <button class="chip" data-trydel="${i}" title="여기부터 뒤를 뺀다">✕</button></div>
       ${x.fails.length ? `<small class="dn">⛔ ${x.fails.map(esc).join(' · ')} — 얹지 않았다</small>` : ''}
       ${x.picks.map(pk => `<div class="kv" style="margin-top:3px"><small class="dim">🔀 ${pk.lv}단계</small>
@@ -1538,7 +1567,7 @@ function nextEvoCards(pid){
     <div class="nextgrid">${list.map(x => { const c = CATBYID[x.id]; if (!c) return '';
       const lock = RULES.lockInfo[x.id];
       return `<div class="nextcard${lock ? ' locked' : ''}">
-        <div class="kv"><b>${esc(c.name)}</b>${c.name_kr ? `<small class="dim">${esc(c.name_kr)}</small>` : ''}${
+        <div class="kv"><b>${evoName(c)}</b>${c.name_kr ? `<small class="dim">${esc(c.name)}</small>` : ''}${
           lock ? `<span class="chip" style="border-color:var(--warn);color:var(--warn)" title="${esc(lock.why)}">🔒</span>` : ''}
           ${x.solo ? '<span class="chip dim" title="경로가 없어 단독으로 건다">단독</span>' : ''}
           ${x.tier === 2 ? '<span class="chip" style="border-color:var(--ok);color:var(--ok)">처방 Role++</span>'
@@ -1915,7 +1944,7 @@ function renderTactic(team = TAC_TEAM){
     if (r.price != null){ total += r.price; priced++; }
     const c = r.bestCard?.c;
     const why = r.prio === 1 ? '기본 카드가 처방 역할 Role++ — 즉시 구매' : r.prio === 2
-      ? (r.bestCard?.tier === 1 ? '기본 카드 Role+' : '기본 카드 무관') + (r.path?.tier ? ` · 진화 「${esc(r.path.evolution_names)}」로 Role${r.path.tier === 2 ? '++' : '+'}` : '') : '처방 역할을 카드도 진화도 못 만든다 — 대안 검토';
+      ? (r.bestCard?.tier === 1 ? '기본 카드 Role+' : '기본 카드 무관') + (r.path?.tier ? ` · 진화 「${pathName(r.path)}」로 Role${r.path.tier === 2 ? '++' : '+'}` : '') : '처방 역할을 카드도 진화도 못 만든다 — 대안 검토';
     return `<div class="pcard tier${r.reach}" style="margin:6px 0">
       <div class="kv"><span class="badge${r.prio === 1 ? ' hi' : ''}">${i + 1}순위</span>
         <b style="font-size:15px">${esc(r.sl.pos)}</b> <span>${esc(ROLE_KR[r.sl.role_id] || r.sl.role_id)} <small class="dim">${esc(r.sl.focus)}</small></span>
@@ -1930,7 +1959,7 @@ function renderTactic(team = TAC_TEAM){
              ⛔ 순위에는 넣지 않는다: 결과 카드가 없어 Role++ 도달 여부를 알 수 없기 때문이다. */''}
       ${r.pid != null && eligOpen(r.pid).length ? `<div style="font-size:12px;margin-top:4px"><b>경로 미제공이지만 걸 수 있는 진화</b>
         <small class="dim" title="${esc(NOPATH_TIP)}">ⓘ 순위 계산에는 못 넣는다 — 결과 카드가 없어 Role++ 도달 여부를 알 수 없다.</small>
-        ${eligOpen(r.pid).map(x => `<span class="req" style="border-style:dashed">${esc(CATBYID[x.evo_id]?.name || x.evo_id)}</span>`).join(' ')}</div>` : ''}
+        ${eligOpen(r.pid).map(x => `<span class="req" style="border-style:dashed">${evoName(x.evo_id)}</span>`).join(' ')}</div>` : ''}
       ${r.alts.length ? `<div style="font-size:12px;margin-top:4px"><b>대안(우리 DB)</b> ${r.alts.map(a => `<span class="req${a.tier === 2 ? '' : ''}" style="${a.tier === 2 ? 'border-color:var(--ok)' : 'border-color:var(--warn)'}">${esc(NAME_OF[a.p])} ${a.ct ? `카드 Role${a.ct === 2 ? '++' : '+'}` : `진화→Role${a.bp.tier === 2 ? '++' : '+'}`} · ${fmtPrice(a.price)}</span>`).join(' ')}</div>` : ''}
     </div>`;
   }).join('') + `<div class="kv" style="margin-top:8px"><b>합계</b> ${priced ? `${total.toLocaleString()} 코인 (${priced}/${rows.length} 슬롯 시세 있음)` : '<span class="dim">시세 미형성 — 시장이 열리면 합계가 생긴다</span>'}</div>`;
@@ -2426,7 +2455,7 @@ function renderClub(){
             <div><label>이어 붙일 진화${applied.length ? ` <small>(${applied.length}단계 적용됨 · 경로 ${cont.length}건)</small>` : ''}</label>
               <select data-evo="${p.id}">${cont.map(r => ({ id: r.ids[applied.length], k: applied.length, r }))
                 .filter((x, i, arr) => arr.findIndex(y => y.id === x.id) === i)
-                .map(x => `<option value="${x.id}">${esc(x.r.evolution_names.split(' → ')[x.k])} <small>(→OVR ${x.r.path[x.k + 1]?.ovr ?? x.r.ovr_after})</small></option>`).join('')
+                .map(x => `<option value="${x.id}">${evoName(x.id, { html: false })} (→OVR ${x.r.path[x.k + 1]?.ovr ?? x.r.ovr_after})</option>`).join('')
                 || `<option value="">${applied.length ? '이어 붙일 경로 없음(소진·해금 반영)' : '이 선수에게 열린 진화 없음'}</option>`}</select></div>
             <button class="act" data-apply="${p.id}">기록</button>
             <div><label>적용일</label><input type="date" data-date="${p.id}" value="${new Date().toISOString().slice(0, 10)}"></div>
@@ -2451,7 +2480,7 @@ function renderClub(){
   openClub(cells[0].player.id);
 
   document.getElementById('log').innerHTML = logs.map(l => { const p = owned.find(x => x.id === l.club_player_id);
-    return `<li><b>${esc(l.applied_at)}</b> ${esc(p?.name || '')} ← ${esc(l.evo_name)} <span class="chip">OVR ${l.ovr_before ?? '—'}→${l.ovr_after ?? '—'}</span>
+    return `<li><b>${esc(l.applied_at)}</b> ${esc(p?.name || '')} ← ${evoName(l.evo_id) || esc(l.evo_name)} <span class="chip">OVR ${l.ovr_before ?? '—'}→${l.ovr_after ?? '—'}</span>
       ${{ done: `<span class="badge hi">완료 ${esc(l.completed_at)}</span>`,
           progress: '<span class="badge mid">진행 중 — 완주 시 반영</span>',
           void: '<span class="badge">무효 — 적용된 적 없음(실측 확인)</span>' }[logState(l)]}
