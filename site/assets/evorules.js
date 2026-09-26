@@ -29,6 +29,11 @@ export function evoRules(EVO, accName){
   const acc = (C.accounts || []).find(a => a.name === accName) || (C.accounts || [])[0] || null;
   const own = Object.fromEntries((C.players || []).filter(p => !acc || p.account_id === acc.id).map(p => [p.id, p]));
   const repeat = {}; for (const c of EVO?.catalog || []) repeat[c.evo_id] = c.repeatability || 1;
+  /* ⭐ 진화가 **몇 단계짜리인가** — 「완주」 판정에 쓴다(아래 `finished`). */
+  const nLev = {};
+  for (const c of EVO?.catalog || []) {
+    try { nLev[c.evo_id] = (JSON.parse(c.levels || '[]') || []).length; } catch { nLev[c.evo_id] = 0; }
+  }
 
   /* ⭐⭐ 세는 단위는 **적용 횟수(run)**이지 로그 행 수가 아니다(2026-09-20 정정).
      ⑴ 반복 배급은 4단계짜리라 한 번 적용해도 행이 4개 쌓인다 — 그대로 세면 1회가 4회가 된다. ⇒ **1단계 행만** 센다.
@@ -58,6 +63,16 @@ export function evoRules(EVO, accName){
   /* ⭐ **적용 횟수**는 로그 행 수가 아니라 «1단계 행 수»다 — 4단계짜리를 한 번 밟아도 행은 4개다
      (클럽 싱크 런북의 소진 계산과 같은 규약). 경로 투영이 「이미 밟은 만큼 건너뛰기」에 쓴다. */
   for (const k in applied) applied[k].runs = applied[k].levels.filter(v => (v ?? 1) === 1).length || 1;
+  /* ⛔⛔ **`done`은 「완주」가 아니다**(2026-09-26 실측으로 드러났다). `done`은 「기록된 단계 중
+     끝난 게 있다」는 뜻이라 **3단계짜리의 1단계만 끝내도 true**가 된다 — 그 상태로 「다음에 걸 수
+     있는 진화」에서 통째로 빠져 **진행 중인 진화가 화면에서 사라졌다**(마조 × 최전방의 역설).
+     ⇒ 완주는 **밟은 최고 단계가 카탈로그 단계 수에 닿았는가**로 가른다.
+     ⚠️ 카탈로그에 단계 정보가 없으면(이월·미수집) 판정할 수 없으므로 종전대로 `done`을 쓴다. */
+  for (const k in applied) {
+    const a = applied[k], n = nLev[a.evo_id] || 0;
+    a.finished = n ? (a.maxLevel >= n && a.done) : a.done;
+    a.partial = a.done && !a.finished;          // 단계는 끝냈지만 진화는 남았다
+  }
 
   /* ⛔⛔ **해금은 소진과 다른 축이고, 잠금이 세 종류다**(2026-09-23 사용자 지적
      「여전히 적용할 진화가 없는데 선수들이 노출되고 있음」).

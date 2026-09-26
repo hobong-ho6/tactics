@@ -629,7 +629,8 @@ function projectFor(p, pid){
     const bs = evalBasis(pid, p.pres);
     const isGk = /GK/.test(String((p.path || [])[0]?.position || st.positions || ''));
     const skipRuns = {};
-    for (const a of (RULES.appliedIn(p.ids, +pid) || [])) if (a.done) skipRuns[a.evo_id] = a.runs || 1;
+    // ⛔ **완주한 것만** 건너뛴다 — 1단계만 끝낸 진화를 빼면 남은 단계의 이득이 사라진다.
+    for (const a of (RULES.appliedIn(p.ids, +pid) || [])) if (a.finished) skipRuns[a.evo_id] = a.runs || 1;
     const r = projectPath(p, base, isGk, bs.pres, bs.have, bs.attrOf, skipRuns,
                           Object.fromEntries(mine.map(([k, v]) => [k.slice(pk.length + 1), v])));
     r.skipRuns = skipRuns;
@@ -702,19 +703,19 @@ function pathHTML(p, i, pid){
   /* ⭐ 이 경로 안에 **이 선수가 이미 밟은 진화**가 있으면 그대로 알린다(2026-09-22 사용자 지시).
      ⛔ 안 적으면 끝낸 진화가 「앞으로 할 수 있는 것」으로 똑같이 보인다. */
   const done = pid != null ? appliedIn(p, pid) : [];
-  const allDone = done.length && done.length === (p.ids || []).length && done.every(x => x.done);
+  const allDone = done.length && done.length === (p.ids || []).length && done.every(x => x.finished);
   /* ⛔⛔ **「진행 중」이라고 쓰지 않는다**(2026-09-26 사용자 지적 「마조에게 진행 중은 왜 붙어있는 거야?
      진행 중인 진화가 없는데?」). 이 배지가 말하려던 건 「진화가 진행 중」이 아니라
      **「이 경로의 앞부분을 이미 밟았다」**였다 — 마조는 로그 5건이 전부 완료(또는 무효)인데도
      경로에 안 밟은 진화가 남아 있어 노란 「진행 중」이 붙었다. 원장과 화면이 서로 다른 말을 한 것이다.
      ⇒ 뜻 그대로 적는다: **어디까지 끝났고 무엇이 남았는가**. 진짜 진행 중(완주 안 한 단계)은 따로 표시한다.
      ⚠️ 같은 진화를 두 번 돌리면(반복형) 경로 id에 두 번 들어가 **이름이 중복돼 찍혔다** — 묶어서 센다. */
-  const runningNow = done.filter(x => !x.done);        // 정말로 완주 안 한 진화
+  const runningNow = done.filter(x => !x.finished);    // 완주 안 한 진화(단계가 남았다)
   const doneIds = new Set(done.map(x => x.evo_id));
   const names = String(p.evolution_names || '').split(' → ');
   const left = [...new Set((p.ids || []).map((id, k) => doneIds.has(id) ? null : (names[k] || '')).filter(Boolean))];
   // ⚠️ 반복형은 경로 id에 여러 번 들어가 `done`에도 같은 항목이 중복된다 — evo_id로 묶는다.
-  const fin = [...new Map(done.filter(x => x.done).map(x => [x.evo_id, x])).values()]
+  const fin = [...new Map(done.filter(x => x.finished).map(x => [x.evo_id, x])).values()]
     .map(x => `${evoName(x.evo_id)}${x.levels.length > 1 ? ` ×${x.levels.length}회` : ''}`);
   const badge = !done.length ? ''
     : allDone ? '<span class="chip" style="border-color:var(--ok);color:var(--ok)">✓ 이미 적용 완료</span>'
@@ -1137,7 +1138,7 @@ function renderCatalog(team = CAT_TEAM){
 /* ── 선수별 패스 ── */
 /* 완주한 경로는 목록 **뒤로** 민다 — 「다음에 뭘 할까」가 위에 와야 한다. */
 const doneScore = (r, pid) => { const d = appliedIn(r, pid);
-  return d.length && d.length === (r.ids || []).length && d.every(x => x.done) ? 1 : 0; };
+  return d.length && d.length === (r.ids || []).length && d.every(x => x.finished) ? 1 : 0; };
 /* 그 선수에게 **열려 있지만 fut.gg가 경로를 안 주는** 진화 — 안 적으면 「없다」로 읽힌다(obs#132). */
 const eligOpen = pid => (ELIG_BY_PID[pid] || [])
   .filter(r => !CONSUMED[r.evo_id]?.exhausted && !hasOpenPath(pid, r.evo_id)
@@ -1275,7 +1276,8 @@ function appliedPanel(pid){
   if (!mine.length) return '';
   return `<div class="applied-box"><b>이미 적용한 진화</b> <small class="dim">${mine.length}건 — 이 선수의 경로는 여기서 이어진다</small>
     ${mine.sort((a, b) => String(a.first).localeCompare(String(b.first))).map(x =>
-      `<div><span class="chip"${x.done ? ' style="border-color:var(--ok);color:var(--ok)"' : ' style="border-color:var(--warn);color:var(--warn)"'}>${x.done ? '완료' : '진행 중'}</span>
+      `<div><span class="chip"${x.finished ? ' style="border-color:var(--ok);color:var(--ok)"' : ' style="border-color:var(--warn);color:var(--warn)"'}>${
+        x.finished ? '완주' : x.partial ? `진행 중 ${x.maxLevel}단계까지` : '진행 중'}</span>
         <b>${evoName(x.evo_id)}</b> <small class="dim">${x.maxLevel}단계까지${
           x.ovr_before != null && x.ovr_after != null && x.ovr_after !== x.ovr_before
             ? ` · OVR ${x.ovr_before}→<b class="up">${x.ovr_after}</b>` : ''} · ${esc(x.first)}${
@@ -1547,9 +1549,9 @@ function nextEvoCards(pid){
   const rows = (RANKED[pid] || []).filter(r => pathOpen(r, +pid));
   const seen = new Map();
   for (const r of rows){
-    const done = new Set(appliedIn(r, +pid).filter(x => x.done).map(x => x.evo_id));
+    const done = new Set(appliedIn(r, +pid).filter(x => x.finished).map(x => x.evo_id));
     const left = { };
-    for (const a of appliedIn(r, +pid)) if (a.done) left[a.evo_id] = a.runs || 1;
+    for (const a of appliedIn(r, +pid)) if (a.finished) left[a.evo_id] = a.runs || 1;
     let nextId = null;
     for (const id of (r.ids || [])){ if (left[id] > 0){ left[id]--; continue; } nextId = id; break; }
     if (nextId == null) continue;                 // 이 경로는 다 밟았다
@@ -1690,7 +1692,7 @@ function pathSide(pid){
   /* ⭐ **완료한 경로는 이력 영역으로 내린다**(2026-09-26 사용자 지시 「이미 완료한 진화는 이력이니
      별도 영역에 진화 이력을 쌓아서 보여주면 되고」) — 할 일 사이에 끼면 다음 한 수가 묻힌다. */
   const sorted = rows.slice().sort((a, b) => (doneScore(a, +pid) - doneScore(b, +pid)));
-  const isDone = r => { const d = appliedIn(r, +pid); return d.length && d.length === (r.ids || []).length && d.every(x => x.done); };
+  const isDone = r => { const d = appliedIn(r, +pid); return d.length && d.length === (r.ids || []).length && d.every(x => x.finished); };
   const todo = sorted.filter(r => !isDone(r)), hist = sorted.filter(isDone);
   return `<div class="kv" style="margin-bottom:6px"><b style="font-size:15px">${
       esc(NAME_OF[pid] || rows[0]?.name_kr || eligOpen(pid)[0]?.name || '')}</b>
@@ -1841,7 +1843,7 @@ function renderPaths(team, focusPid){
      ⛔ 패널 본문도 새로 짜지 않는다 — 종전 패널 내용(이미 적용·경로 없이 가능·경로 목록)을 그대로 옮겼다. */
   const cells = pids.map(pid => {
     const n = actionable(pid), st = STATE[String(pid)];
-    const prog = Object.values(APPLIED).some(x => x.pid === pid && !x.done);
+    const prog = Object.values(APPLIED).some(x => x.pid === pid && !x.finished);
     return {
       player: (EVO.club?.players || []).find(x => x.player_id === pid && x.status === 'owned')
               || { player_id: pid, name: NAME_OF[pid] || '', current_ovr: st?.ovr, positions: st?.positions },
