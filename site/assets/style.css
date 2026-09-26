@@ -487,3 +487,9 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .steptbl td:first-child,.steptbl th:first-child{text-align:left;white-space:nowrap}
 .steptbl td:last-child{text-align:left}
 .steptbl tr.dim td{opacity:.65}
+
+/* ⭐ 갈림길 가지를 눌러 고른다(2026-09-26) — 「고른 것」(.on)과 「우리 추천」(⭐ .rec)은 다른 축이라
+   표시를 갈라 둔다. 추천이 아닌 가지를 고르면 그 사실이 보여야 왜 숫자가 달라졌는지 알 수 있다. */
+.opt[data-optpick]{cursor:pointer;user-select:none}
+.opt[data-optpick]:hover{border-color:var(--txt);color:var(--txt)}
+.opt.on{outline:2px solid var(--viz-us);outline-offset:1px}
