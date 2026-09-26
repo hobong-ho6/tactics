@@ -347,7 +347,8 @@ function projectPath(p, fromAttrs, isGk, pres, have, attrOf){
         const k = ev.rec >= 0 ? ev.rec : 0;
         const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
         applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
-        chose.push({ evo: CATBYID[id]?.name || String(id), lv: lv.idx, pick: ev.label(k), auto: ev.rec < 0 });
+        chose.push({ evo: CATBYID[id]?.name || String(id), id, lv: lv.idx, k,
+                     pick: ev.label(k), auto: ev.rec < 0 });
         continue;
       }
       const r = applyEvoLevel(at, lv);
@@ -629,10 +630,28 @@ function pathHTML(p, i, pid){
      ⛔ 안 적으면 끝낸 진화가 「앞으로 할 수 있는 것」으로 똑같이 보인다. */
   const done = pid != null ? appliedIn(p, pid) : [];
   const allDone = done.length && done.length === (p.ids || []).length && done.every(x => x.done);
+  /* ⛔⛔ **「진행 중」이라고 쓰지 않는다**(2026-09-26 사용자 지적 「마조에게 진행 중은 왜 붙어있는 거야?
+     진행 중인 진화가 없는데?」). 이 배지가 말하려던 건 「진화가 진행 중」이 아니라
+     **「이 경로의 앞부분을 이미 밟았다」**였다 — 마조는 로그 5건이 전부 완료(또는 무효)인데도
+     경로에 안 밟은 진화가 남아 있어 노란 「진행 중」이 붙었다. 원장과 화면이 서로 다른 말을 한 것이다.
+     ⇒ 뜻 그대로 적는다: **어디까지 끝났고 무엇이 남았는가**. 진짜 진행 중(완주 안 한 단계)은 따로 표시한다.
+     ⚠️ 같은 진화를 두 번 돌리면(반복형) 경로 id에 두 번 들어가 **이름이 중복돼 찍혔다** — 묶어서 센다. */
+  const runningNow = done.filter(x => !x.done);        // 정말로 완주 안 한 진화
+  const doneIds = new Set(done.map(x => x.evo_id));
+  const names = String(p.evolution_names || '').split(' → ');
+  const left = [...new Set((p.ids || []).map((id, k) => doneIds.has(id) ? null : (names[k] || '')).filter(Boolean))];
+  // ⚠️ 반복형은 경로 id에 여러 번 들어가 `done`에도 같은 항목이 중복된다 — evo_id로 묶는다.
+  const fin = [...new Map(done.filter(x => x.done).map(x => [x.evo_id, x])).values()]
+    .map(x => `${esc(x.name)}${x.levels.length > 1 ? ` ×${x.levels.length}회` : ''}`);
   const badge = !done.length ? ''
     : allDone ? '<span class="chip" style="border-color:var(--ok);color:var(--ok)">✓ 이미 적용 완료</span>'
-    : `<span class="chip" style="border-color:var(--warn);color:var(--warn)">진행 중 — ${
-        done.map(x => `${esc(x.name)} ${x.maxLevel}단계${x.done ? ' 완료' : ' 진행'}`).join(' · ')}</span>`;
+    : runningNow.length
+    ? `<span class="chip" style="border-color:var(--warn);color:var(--warn)"
+         title="완주하지 않은 단계가 있다 — 완주해야 스탯이 반영된다">진화 진행 중 — ${
+        runningNow.map(x => `${esc(x.name)} ${x.maxLevel}단계`).join(' · ')}</span>`
+    : `<span class="chip" style="border-color:var(--ok);color:var(--ok)"
+         title="이 경로의 앞부분을 이미 끝냈다. 진행 중인 진화가 있다는 뜻이 아니다.">경로 일부 완료 — ${
+        fin.join(' · ')} 끝${left.length ? ` · 남은 것 ${esc(left.join(' → '))}` : ''}</span>`;
   return `<details class="path pcard tier${p.tier}${allDone ? ' path-done' : ''}" style="margin:6px 0"${i === 0 && !allDone ? ' open' : ''}>
     <summary class="kv">${allDone ? '<span class="badge">완료</span>' : i === 0 ? '<span class="badge hi">최적 제안</span>' : `<span class="badge">${i + 1}순위</span>`}${badge}
       <b>${esc(p.evolution_names)}</b> <span class="chip">${p.steps}단계</span>${
@@ -1081,10 +1100,20 @@ function eligPanel(pid){
 /* ⭐ 보상 속성의 **표기 합 + 상한**을 카탈로그에서 뽑는다(2026-09-25).
    ⛔ `upgradesOf`는 합만 주고 상한을 버려서 「왜 표기만큼 안 오르나」를 화면이 설명할 수 없었다.
    ⚠️ 상한은 단계마다 다를 수 있다 — **마지막으로 그 속성을 건드린 단계의 상한**이 실효값이다. */
-function nominalOf(eid){
+/* ⛔⛔ **갈림길이 있는 단계는 `lv.upgrades`를 더하지 않는다**(2026-09-26 사용자 지적
+     「드리블은 상한까지 올라갈 수 있는데 실제 값이 더 적은 이유는?」 · 「민첩·균형감각·볼컨트롤도 다 올라갈 수 있는 거 아니야?」).
+   fut.gg는 갈림길 단계의 **1번 가지를 `upgrades`에도 그대로 복사해** 둔다. 종전엔 둘을 **더해서**
+   표기가 두 배로 부풀었다 — 실측: 마조 × Frontline Paradox 드리블 표기 +18(실제로는 +13),
+   민첩·균형감각·볼컨트롤 표기 +10(실제 가지값은 +5). 그래서 「표기와 실제가 왜 이렇게 다르지」가 됐다.
+   ⇒ **투영(`projectPath`)이 고른 그 가지만** 쓴다 — 표기와 실제가 같은 가지를 봐야 차이가 «상한»으로만 남는다.
+   ⚠️ picks가 없으면(선수 미지정) 1번 가지로 물러선다 — 그때도 `upgrades`와 더하지 않는다. */
+function nominalOf(eid, picks){
   const out = {};
   for (const lv of (J(CATBYID[eid]?.levels, []) || [])){
-    const src = (lv.upgrades || []).concat(...(lv.upgradeOptions || []).map(o => Array.isArray(o) ? o : (o.upgrades || [])).slice(0, 1));
+    const opts = lv.upgradeOptions || [];
+    const src = opts.length > 1
+      ? (o => Array.isArray(o) ? o : (o.upgrades || []))(opts[picks?.[`${eid}:${lv.idx}`] ?? 0])
+      : (lv.upgrades || []);
     for (const u of src){
       const k = ATTR_KR[String(u.upgrade || '').replace(/^attribute_/, '')]; if (!k) continue;
       out[k] = { sum: (out[k]?.sum || 0) + (u.value || 0), cap: u.maxValue ?? out[k]?.cap ?? null };
@@ -1104,9 +1133,11 @@ function gainTable(p, pid, cat){
   const pr = pid != null ? projectFor(p, +pid) : null;
   const before = J(STATE[String(pid)]?.attrs, null);
   if (!pr || !before) return '';
+  // ⭐ 표기도 **투영이 고른 가지**로 계산한다 — 같은 가지를 봐야 「표기 vs 실제」 차이가 상한만 남는다.
+  const picks = {}; for (const c of (pr.chose || [])) picks[`${c.id}:${c.lv}`] = c.k;
   const nom = {};
   for (const id of (p.ids || [])){
-    for (const [k, v] of Object.entries(nominalOf(id))){
+    for (const [k, v] of Object.entries(nominalOf(id, picks))){
       nom[k] = { sum: (nom[k]?.sum || 0) + v.sum, cap: v.cap ?? nom[k]?.cap ?? null };
     }
   }
