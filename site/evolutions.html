@@ -1520,15 +1520,17 @@ function cmpPanel(){
       `<th>${esc(c.label)} <button class="chip" data-cmprm="${c.i}">✕</button></th>`).join('')}</tr></thead><tbody>
       <tr><td><b>OVR</b> <small class="dim">fut.gg</small></td>${cols.map(c => `<td>${d(c.run.before.ovr, c.run.after.ovr)}</td>`).join('')}</tr>
       ${FACE.map(f => `<tr><td>${f}</td>${cols.map(c => `<td>${d(c.run.before.six?.[f], c.run.after.six?.[f])}</td>`).join('')}</tr>`).join('')}
-      <tr style="border-top:2px solid var(--line)"><td><b>실제 상승 합</b> <small class="dim">상한 손실 제외</small></td>${
-        tot.map(t => `<td><b class="up">+${t}</b></td>`).join('')}</tr></tbody></table>
-    ${keys.length ? `<details style="margin-top:5px"><summary class="dim" style="cursor:pointer;font-size:11.5px">상세 ${keys.length}속성</summary>
-      <table class="tbl" style="margin-top:4px"><thead><tr><th>속성</th>${cols.map(c =>
-        `<th>${esc(c.label.split(':')[0])}</th>`).join('')}</tr></thead><tbody>
+      ${/* ⭐ **상세 속성을 접지 않는다**(2026-09-26 사용자 지시 「비교할 때는 상세 스탯으로 비교」).
+           6대 스탯은 가중 평균이라 **어디서 얼마를 얻는지**가 묻힌다 — 견주는 자리에서는 그게 본문이다.
+           ⛔ 별도 표로 갈라 두지 않는다(머리글이 두 번 나오고 눈이 왔다 갔다 한다) — 한 표에 잇는다. */''}
+      ${keys.length ? `<tr class="cmpsep"><td colspan="${cols.length + 1}">상세 속성 ${keys.length}개
+        <small class="dim">— 안 오르는 속성은 뺐다</small></td></tr>
       ${keys.map(k => `<tr><td>${esc(k)}</td>${cols.map(c => {
         const a = c.run.before.at[k], b = c.run.after.at[k], v = (b ?? 0) - (a ?? 0);
         return `<td>${a ?? '—'}${v > 0 ? ` <b class="up">▸${b} (+${v})</b>` : ' <span class="dim">—</span>'}</td>`;
-      }).join('')}</tr>`).join('')}</tbody></table></details>` : ''}</div>`;
+      }).join('')}</tr>`).join('')}` : ''}
+      <tr style="border-top:2px solid var(--line)"><td><b>실제 상승 합</b> <small class="dim">상한 손실 제외</small></td>${
+        tot.map(t => `<td><b class="up">+${t}</b></td>`).join('')}</tr></tbody></table></div>`;
 }
 function pathSide(pid){
   const rows = RANKED[pid] || [];

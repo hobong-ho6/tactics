@@ -514,3 +514,5 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .cmpbox{border:1px solid var(--viz-us);border-radius:8px;padding:7px 9px;margin:6px 0;font-size:12px}
 .cmpbox .kv{flex-wrap:wrap;gap:5px}
 .cmpbox th{white-space:normal;min-width:120px}
+.cmpbox tr.cmpsep td{background:rgba(255,255,255,.04);font-size:11px;color:var(--dim);
+  border-top:2px solid var(--line);padding-top:5px}
