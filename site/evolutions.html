@@ -2550,7 +2550,7 @@ renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(
       앞 진화가 OVR·PS를 올리면 뒤 진화가 영영 잠긴다. 우리가 임의로 정할 값이 아니다.
    ⚠️ OVR은 **카탈로그의 overall 보상**을 상한과 함께 누적한 값이다(fut.gg 기준 · 등급 B).
       ⛔ 29속성에서 역산하지 않는다 — EA 산식이 비공개다(이 저장소의 일관된 규약). */
-const PLAN = { pids: [], evos: [] };
+const PLAN = { pids: [], evos: [], picks: {} };   // picks: `진화id:단계` → 가지 번호(없으면 선수별 추천)
 /* 요구조건 판정 — 카탈로그 문구는 8종으로 닫혀 있다(2026-09-26 전수 확인).
    ⛔ 못 읽은 문구는 **통과로 치지 않고** 「판정 불가」로 남긴다(조용히 넘기면 거짓 보고가 된다). */
 const REQ = {
@@ -2603,10 +2603,15 @@ function planRun(pid){
         const opts = lv.upgradeOptions || [];
         if (opts.length > 1){
           const ev = evalLevel(opts, bs.pres, bs.have, bs.attrOf);
-          const k = ev.rec >= 0 ? ev.rec : 0;
+          const rec = ev.rec >= 0 ? ev.rec : 0;
+          /* ⭐ 계획기에서 고른 가지가 있으면 **모든 선수에게 같은 가지**를 적용한다
+             (2026-09-26 사용자 지시). 비교가 목적이라 가지가 선수마다 다르면 총량을 못 견준다 —
+             ⛔ 다만 기본값은 **선수별 추천**이다(추천이 왜 다른지도 정보다). */
+          const f = PLAN.picks[`${id}:${lv.idx}`];
+          const k = (f != null && opts[f]) ? +f : rec;
           const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
           applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
-          picks.push(`${lv.idx}단계 ${ev.label(k)}`);
+          picks.push(`${lv.idx}단계 ${ev.label(k)}${k !== rec ? '' : ' ⭐'}`);
           for (const u of src) if (u.upgrade === 'play_style') cur.ps++;
         } else {
           applyEvoLevel(at, lv);
@@ -2637,15 +2642,44 @@ function renderPlan(){
     .sort((a, b) => String(a.name).localeCompare(String(b.name)));
   pickBox.innerHTML = `
     <div class="kv" style="margin-bottom:6px">👤 <b>선수</b>
-      <select id="planp"><option value="">— 담을 선수 —</option>${owned.map(([pid, v]) =>
-        `<option value="${pid}">${esc(v.name)} ${v.ovr ?? ''} (${esc(String(v.positions || ''))})</option>`).join('')}</select>
+      ${/* ⭐ 포지션별로 묶는다(2026-09-26 사용자 지시 「선수를 담을 땐 포지션별로 분류」) —
+            보유가 30명 가까워 한 줄 목록에선 같은 자리 후보를 견주기 어렵다.
+            ⚠️ 기준은 **주 포지션**(카드 표기 첫 값)이다 — 부 포지션까지 세면 한 선수가 여러 군에 뜬다. */''}
+      <select id="planp"><option value="">— 담을 선수 —</option>${(() => {
+        const ORDER = ['GK', 'RB', 'LB', 'RWB', 'LWB', 'CB', 'CDM', 'CM', 'CAM', 'RM', 'LM', 'RW', 'LW', 'CF', 'ST'];
+        const g = {};
+        for (const [pid, v] of owned){
+          const pos = String(v.positions || '').split('/')[0] || '기타';
+          (g[pos] ??= []).push([pid, v]);
+        }
+        return Object.keys(g).sort((a, b) => (ORDER.indexOf(a) + 1 || 99) - (ORDER.indexOf(b) + 1 || 99))
+          .map(pos => `<optgroup label="${esc(pos)} (${g[pos].length}명)">${g[pos].map(([pid, v]) =>
+            `<option value="${pid}">${esc(v.name)} ${v.ovr ?? ''} · ${esc(String(v.positions || ''))}</option>`).join('')}</optgroup>`).join('');
+      })()}</select>
       ${PLAN.pids.map(pid => `<button class="chip" data-planrp="${pid}">${esc(STATE[String(pid)]?.name || pid)} ✕</button>`).join('') || '<span class="dim">아직 없다</span>'}</div>
     <div class="kv">🧬 <b>진화 순서</b>
       <select id="plane"><option value="">— 순서에 추가 —</option>${cat.map(c =>
         `<option value="${c.evo_id}">${esc(c.name)}</option>`).join('')}</select>
       ${PLAN.evos.map((id, i) => `<button class="chip" data-planre="${i}">${i + 1}. ${esc(CATBYID[id]?.name || id)} ✕</button>`).join('') || '<span class="dim">아직 없다</span>'}
       ${PLAN.evos.length > 1 ? '<button class="act ghost" id="planrev" title="순서를 뒤집어 어느 쪽이 이득인지 본다">↕ 순서 뒤집기</button>' : ''}
-      ${PLAN.pids.length || PLAN.evos.length ? '<button class="act ghost" id="planclr">비우기</button>' : ''}</div>`;
+      ${PLAN.pids.length || PLAN.evos.length ? '<button class="act ghost" id="planclr">비우기</button>' : ''}</div>
+    ${/* ⭐ 계획기에서도 갈림길을 고른다(2026-09-26 사용자 지시). 기본은 **선수별 추천**이고,
+          고르면 **모든 선수에게 같은 가지**가 적용돼 총량을 공정하게 견줄 수 있다. */''}
+    ${(() => {
+      const rows = [];
+      for (const id of PLAN.evos) for (const lv of (J(CATBYID[id]?.levels, []) || [])){
+        const opts = lv.upgradeOptions || []; if (opts.length < 2) continue;
+        const key = `${id}:${lv.idx}`, cur = PLAN.picks[key];
+        rows.push(`<div class="kv" style="margin-top:4px"><small class="dim">🔀 ${esc(CATBYID[id]?.name || id)} ${lv.idx}단계</small>
+          <span class="opt${cur == null ? ' on' : ''}" data-planpick="${key}" data-k="" role="button" tabindex="0"
+                title="선수마다 우리가 추천하는 가지를 쓴다">⭐ 선수별 추천</span>
+          ${opts.map((og, k) => { const src = Array.isArray(og) ? og : (og.upgrades || []);
+            return `<span class="opt${cur != null && +cur === k ? ' on' : ''}" data-planpick="${key}" data-k="${k}"
+                     role="button" tabindex="0" title="모든 선수에게 이 가지를 적용해 견준다">${
+              esc(src.map(upLabel).join(' · '))}</span>`; }).join('')}</div>`);
+      }
+      return rows.length ? rows.join('') + '<small class="dim">— 가지를 고르면 <b>담은 선수 전부</b>에게 같은 가지로 계산한다(공정 비교).</small>' : '';
+    })()}`;
   const on = (id, ev, fn) => document.getElementById(id)?.addEventListener(ev, fn);
   on('planp', 'change', e => { const v = +e.target.value; if (v && !PLAN.pids.includes(v)) PLAN.pids.push(v); renderPlan(); });
   on('plane', 'change', e => { const v = +e.target.value; if (v) PLAN.evos.push(v); renderPlan(); });
@@ -2655,6 +2689,11 @@ function renderPlan(){
     () => { PLAN.pids.splice(PLAN.pids.indexOf(+b.dataset.planrp), 1); renderPlan(); }));
   pickBox.querySelectorAll('[data-planre]').forEach(b => b.addEventListener('click',
     () => { PLAN.evos.splice(+b.dataset.planre, 1); renderPlan(); }));
+  pickBox.querySelectorAll('[data-planpick]').forEach(b => b.addEventListener('click', () => {
+    const k = b.dataset.k;
+    if (k === '') delete PLAN.picks[b.dataset.planpick]; else PLAN.picks[b.dataset.planpick] = +k;
+    renderPlan();
+  }));
 
   const out = document.getElementById('planout');
   document.getElementById('plann').textContent = PLAN.pids.length && PLAN.evos.length
