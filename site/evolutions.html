@@ -1059,7 +1059,7 @@ function renderCatalog(team = CAT_TEAM){
     const best = apps[0];
     const dl = days(c.end_submission_time || c.end_time);
     return `<div class="evo-card${c.is_expired || used?.exhausted ? ' expired' : ''}" id="ev${c.evo_id}">
-      <h3>${esc(c.name)} ${c.repeatability > 1 ? `<span class="chip">반복 ${c.repeatability}회</span>` : '<span class="chip dim">1회성</span>'}${c.is_reward ? '<span class="chip">보상형</span>' : ''}${
+      <h3>${esc(c.name)}${c.name_kr ? ` <small class="dim" style="font-weight:400">${esc(c.name_kr)}</small>` : ''} ${c.repeatability > 1 ? `<span class="chip">반복 ${c.repeatability}회</span>` : '<span class="chip dim">1회성</span>'}${c.is_reward ? '<span class="chip">보상형</span>' : ''}${
         /* ⭐ 이월 행 표시(migration 059) — fut.gg 목록에는 있는데 API가 객체를 안 주는 진화다.
            이 회차엔 **목록 생존만** 확인했고 아래 내용은 과거 관측값이다. 실측과 같은 얼굴로 두지 않는다. */
         c.carried_from ? `<span class="chip dim" title="fut.gg 목록에는 있으나 paths·적용 가능 선수 API가 이 진화의 객체를 주지 않는다(단독·특별카드 전용). 이번 회차엔 목록에 살아 있다는 것만 확인했고, 아래 조건·업그레이드·마감은 ${esc(c.carried_from)} 관측값 그대로다.">${esc(c.carried_from)} 관측값</span>` : ''}
@@ -1072,7 +1072,8 @@ function renderCatalog(team = CAT_TEAM){
              종전엔 같은 영어 문장이 카드에 두 번 찍혔다(2026-09-22 사용자 지적). */
         (c.description || '').trim() && (c.description || '').trim() !== (c.unlock_text || '').trim()
           && !/^Unlocked by/i.test((c.description || '').trim())
-          ? `<div class="dim" style="font-size:12px">${esc(c.description)}</div>` : ''}
+          ? `<div class="dim" style="font-size:12px"${c.description_kr ? ` title="${esc(c.description)}"` : ''}>${
+              esc(c.description_kr || c.description)}</div>` : ''}
       <div class="kv" style="margin:6px 0;font-size:12px"><span>${esc(costText(c))}</span>
         ${dl != null ? `<span class="${dl <= 7 ? 'dn' : ''}">마감 ${esc(String(c.end_submission_time || c.end_time).slice(0, 10))} (${dl >= 0 ? `D-${dl}` : '지남'})</span>` : ''}
         ${c.unlock_text && !/Season Pass|^Unlocked by/i.test(c.unlock_text)
@@ -1083,6 +1084,9 @@ function renderCatalog(team = CAT_TEAM){
       ${J(c.requirements_text, []).length ? `<div class="reqbox"><b>걸 수 있는 카드 조건</b>
         <div>${J(c.requirements_text, []).map(r => `<span class="req">${esc(reqKr(r.label))} <b>${esc(r.value)}</b></span>`).join('')}</div>
         <small class="dim">이 조건을 <b>시작 시점에</b> 만족해야 한다 — OVR·PS를 먼저 올리면 조건에서 벗어나 영영 못 건다.</small></div>` : ''}
+      ${/* ⭐ 단계별 미션(migration 077) — 「걸 수 있나」(요구조건) 다음은 「무엇을 해야 끝나나」다.
+             갈림길(optionsHTML)보다 앞에 둔다 — 갈림길은 마지막 단계의 선택이라 뒤가 맞다. */''}
+      ${missionHTML(c)}
       ${optionsHTML(c, best)}
       <div style="margin-top:6px;font-size:12px"><b>업그레이드</b> ${J(c.total_upgrades_text, []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ') || '<span class="dim">없음(도입용)</span>'}</div>
       <div style="margin-top:6px;font-size:12px"><b>${team === 'ALL' ? '우리 선수' : esc(idx.regimes.find(r => r.team_code === team)?.team_kr || team)} 적용 가능 ${apps.length + noPath(c, team).length}명</b> <small class="dim">(fut.gg 전체 ${c.number_of_players?.toLocaleString?.() ?? '—'}명)</small>
