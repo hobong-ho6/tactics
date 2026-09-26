@@ -493,9 +493,3 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .opt[data-optpick]{cursor:pointer;user-select:none}
 .opt[data-optpick]:hover{border-color:var(--txt);color:var(--txt)}
 .opt.on{outline:2px solid var(--viz-us);outline-offset:1px}
-
-/* 진화 시뮬레이터 — 한 걸음씩 쌓는 단계 카드(2026-09-26). */
-.simsteps{display:flex;flex-direction:column;gap:5px;margin:6px 0}
-.simstep{border:1px solid var(--line);border-left:3px solid var(--ok);border-radius:8px;padding:6px 9px}
-.simstep.bad{border-left-color:var(--bad)}
-.simstep .kv{flex-wrap:wrap}
