@@ -1268,6 +1268,44 @@ def run(db_path=None, verbose=True):
     if not ok24:
         fails.append("G24")
 
+    # G25 — ⛔⛔ **「현재 카드」 두 벌이 갈리면 막는다.** 2026-09-26 신설
+    #   `fut_club_players`에는 같은 사실이 두 벌 있다: `current_six`(6대)와 `current_attrs`(29속성).
+    #   ⑴ 실증(마조 빛나는 스트라이커): `evolve`가 six만 올리고 attrs를 안 올려서, 화면이
+    #      before를 six에서 after를 attrs에서 가져와 **진화 기록에 스탯이 내려가 있었다**
+    #      (PAC 75→70). 조용히 틀린 값이라 화면만 봐선 알 수 없었다.
+    #   ⑵ `evolve`·`complete`는 고쳤지만(081·082) **다음에 쓰는 사람이 또 한 벌만 올릴 수 있다.**
+    #      ⇒ 개별 명령이 아니라 **원장 상태 자체**를 본다. 누가 쓰든 갈리면 커밋이 막힌다.
+    #   ⚠️ 허용 오차 2 — EA가 주는 six와 우리 `fc_face_stats` 구성식 사이에 **반올림 차이**가 있다
+    #      (2026-09-26 실측: 보유 193명 중 21명이 ±1, 스즈키만 2). 0으로 잡으면 전부 오탐이다.
+    #      실제 사고는 5·6·10·16이었으므로 2로도 잡힌다. ⛔ 오차가 커지면 **기준을 늘리지 말고**
+    #      구성식(`fc_face_stats`)이 틀린 게 아닌지 본다.
+    G25_TOL = 2
+    g25 = []
+    try:
+        import json as _json
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+        from core.futgg_attrs import face_of as _face
+        # ⚠️ 이 파일의 커서는 row_factory가 없어 **튜플**을 준다 — dict로 바꿔 넘긴다.
+        frows = [dict(abbr=a, attr=t, weight=w, is_gk=g)
+                 for a, t, w, g in con.execute("SELECT abbr, attr, weight, is_gk FROM fc_face_stats")]
+        for cid, nm, attrs, six_s, pos in con.execute("""SELECT c.id, c.name, c.current_attrs, c.current_six, i.positions
+                                  FROM fut_club_players c
+                                  LEFT JOIN player_card_items i ON i.ea_item_id=c.ea_item_id
+                                 WHERE c.status='owned' AND c.current_attrs IS NOT NULL
+                                   AND c.current_six IS NOT NULL"""):
+            six, calc = _json.loads(six_s), _face(_json.loads(attrs), frows, is_gk="GK" in (pos or ""))
+            off = {k: (six[k], calc[k]) for k in six if k in calc and abs(six[k] - calc[k]) > G25_TOL}
+            if off:
+                g25.append(f"{nm}(id {cid}) {off}")
+    except Exception as e:                                   # noqa: BLE001
+        g25.append(f"조회 실패({e}) — migration 082·core/futgg_attrs.py가 있는지 확인")
+    ok25 = not g25
+    if verbose:
+        print(f"G25 현재 카드 6대↔29속성 정합: 어긋남 {len(g25)}명 "
+              + ("✅" if ok25 else "❌ " + " · ".join(g25[:3])))
+    if not ok25:
+        fails.append("G25")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")

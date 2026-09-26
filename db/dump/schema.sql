@@ -716,7 +716,7 @@ CREATE TABLE fut_evolution_log(
   attrs_delta TEXT,                           -- JSON {한글 라벨: +n}
   playstyles_after TEXT, roles_plus_after TEXT, roles_plus_plus_after TEXT,
   source TEXT, confidence TEXT, notes TEXT
-, is_void INTEGER NOT NULL DEFAULT 0);
+, is_void INTEGER NOT NULL DEFAULT 0, attrs_after TEXT);
 CREATE INDEX ix_fut_evolution_log_cp ON fut_evolution_log(club_player_id, applied_at);
 CREATE TABLE player_card_prices(
   id INTEGER PRIMARY KEY,
