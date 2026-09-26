@@ -1605,8 +1605,11 @@ function cmpPanel(){
                완전 일치로 찾으면 못 찾는다(2026-09-26 실측: 이 줄 때문에 진화 역할 행이 통째로 빠졌다). */
             const key = Object.keys(KEYW).find(k => k.startsWith(m[1].toLowerCase() + '_')
               && norm(m[2]).startsWith(norm(k.split('_').slice(1).join('_'))));
-            if (key) roles.set(key, roles.has(key) ? `${roles.get(key)} = 진화가 주는 ${esc(rn)}`
-                                                    : `진화가 주는 ${esc(rn)}`);
+            if (!key) continue;
+            const lab = `진화가 주는 ${esc(rn)}`;
+            const cur = roles.get(key);
+            // ⛔ 같은 라벨을 두 번 잇지 않는다(열이 여럿이면 같은 역할이 반복해 들어온다).
+            roles.set(key, !cur ? lab : cur.includes(lab) ? cur : `${cur} = ${lab}`);
           }
         }
         if (!roles.size) return '';
