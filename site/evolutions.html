@@ -136,6 +136,19 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
     <div class="menubar" id="teamsel"></div>
     <div class="filterbar" id="pathfilters" hidden></div>
     <div id="paths"></div></div>
+  <!-- ⭐⭐ 진화 계획기 (2026-09-26 사용자 지시 「잭슨하고 마조 중 누구에게 적용하는 게 좋을지 비교」 +
+       「Frontline Paradox 수행 후 Striker Glow Up 진화 시 스탯을 재계산」).
+       두 요구는 **같은 도구**다 — 선수 N명 × 진화 M개를 순서대로 놓고 누적 결과를 나란히 본다.
+       ⛔ 순서를 우리가 정하지 않는다(사용자가 고른다) — 어느 진화를 먼저 할지는 판단 사안이고,
+          요구조건(Max OVR·Max PS)이 **시작 시점**에 걸려 순서가 결과를 바꾼다. -->
+  <div class="panel"><h2>🧪 진화 계획기 <small class="dim" id="plann"></small></h2>
+    <p class="dim" style="font-size:12px;margin:0 0 8px">
+      선수를 여러 명 담고 진화를 <b>순서대로</b> 놓으면, 각 선수에게 그 순서로 적용했을 때를 계산해 나란히 놓는다.
+      스탯은 <b>지금 내 카드</b>에 상한 규칙대로 얹은 값이고, <b>OVR만 fut.gg 표기</b>다(EA 산식 비공개).<br>
+      ⚠️ 단계마다 <b>요구조건</b>을 다시 본다 — OVR·PlayStyle 수가 오르면 뒤 진화가 <b>잠길 수 있다</b>.
+      그게 순서를 고르는 이유다.</p>
+    <div id="planpick"></div>
+    <div id="planout"></div></div>
 </section>
 
 <script type="module">
@@ -2469,5 +2482,132 @@ function renderSbc(){
 }
 
 renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc();
+
+/* ══ 진화 계획기 (2026-09-26) ═══════════════════════════════════════════════
+   사용자 지시 두 가지가 하나의 도구로 닫힌다:
+     ⑴ 「잭슨하고 마조 중 누구에게 적용하는 게 좋을지 비교」 → 선수 N명 × 진화 1개
+     ⑵ 「Frontline Paradox 수행 후 Striker Glow Up 스탯 재계산」 → 선수 1명 × 진화 2개(순서)
+   ⛔ 순서는 **사용자가 고른다** — 요구조건(Max OVR·Max PS·Pace)은 진화 **시작 시점**에 검사되므로
+      앞 진화가 OVR·PS를 올리면 뒤 진화가 영영 잠긴다. 우리가 임의로 정할 값이 아니다.
+   ⚠️ OVR은 **카탈로그의 overall 보상**을 상한과 함께 누적한 값이다(fut.gg 기준 · 등급 B).
+      ⛔ 29속성에서 역산하지 않는다 — EA 산식이 비공개다(이 저장소의 일관된 규약). */
+const PLAN = { pids: [], evos: [] };
+/* 요구조건 판정 — 카탈로그 문구는 8종으로 닫혀 있다(2026-09-26 전수 확인).
+   ⛔ 못 읽은 문구는 **통과로 치지 않고** 「판정 불가」로 남긴다(조용히 넘기면 거짓 보고가 된다). */
+const REQ = {
+  'Overall': (v, s) => { let m = /Max\.\s*(\d+)/.exec(v); if (m) return s.ovr <= +m[1] || `OVR ${s.ovr} > 최대 ${m[1]}`;
+                         m = /Min\.\s*(\d+)/.exec(v); if (m) return s.ovr >= +m[1] || `OVR ${s.ovr} < 최소 ${m[1]}`; return true; },
+  'Pace': (v, s) => { const m = /Max\.\s*(\d+)/.exec(v); return !m || s.pac == null || s.pac <= +m[1] || `PAC ${s.pac} > 최대 ${m[1]}`; },
+  'Position': (v, s) => v.split(/,\s*/).some(x => s.pos.includes(x)) || `포지션 ${s.pos.join('/')} — ${v} 중 하나여야 한다`,
+  'Excluded Position': (v, s) => !v.split(/,\s*/).some(x => s.pos.includes(x)) || `제외 포지션을 갖고 있다(${v})`,
+  'Max PS': (v, s) => s.ps <= +v || `PlayStyle ${s.ps}개 > 최대 ${v}`,
+  'Max PS+': (v, s) => s.psp <= +v || `PlayStyle+ ${s.psp}개 > 최대 ${v}`,
+  'Max Pos.': (v, s) => s.pos.length <= +v || `포지션 ${s.pos.length}개 > 최대 ${v}`,
+  'Excluded Rarity': () => true,          // 아이콘·히어로 제외 — 우리 보유분엔 없다
+};
+function reqCheck(cat, s){
+  const out = [];
+  for (const q of (J(cat?.requirements_text, []) || [])){
+    const fn = REQ[q.label];
+    if (!fn) { out.push(`❔ 판정 불가: ${q.label} = ${q.value}`); continue; }
+    const r = fn(String(q.value ?? ''), s);
+    if (r !== true) out.push(r);
+  }
+  return out;
+}
+/* 한 선수에게 PLAN.evos를 **순서대로** 적용한다 — 단계마다 요구조건을 다시 본다. */
+function planRun(pid){
+  const st = STATE[String(pid)]; if (!st) return null;
+  const at = J(st.attrs, null); if (!at) return null;
+  const isGk = /GK/.test(String(st.positions || ''));
+  // ⛔ 처방을 넘겨야 갈림길 추천이 **경로 탭과 같은 답**을 낸다(2026-09-26: 안 넘겨서
+  //    같은 선수·같은 진화인데 탭마다 다른 가지를 골랐다 — 화면 두 곳이 갈리면 그게 버그다).
+  const bs = evalBasis(+pid, PRES[pid] || null);
+  const cur = { ovr: st.ovr, pos: String(st.positions || '').split('/').filter(Boolean),
+                ps: String(st.playstyles || '').split(',').filter(x => x.trim() && !x.includes('+')).length,
+                psp: String(st.playstyles || '').split(',').filter(x => x.includes('+')).length };
+  const before = { at: { ...at }, six: faceFromAttrs(at, EVO.face_stats || [], isGk), ovr: st.ovr };
+  const steps = [];
+  for (const id of PLAN.evos){
+    const cat = CATBYID[id];
+    cur.pac = faceFromAttrs(at, EVO.face_stats || [], isGk).PAC;
+    const fails = cat ? reqCheck(cat, cur) : ['카탈로그에 없다'];
+    const picks = [];
+    if (!fails.length){
+      for (const lv of (J(cat.levels, []) || [])){
+        const opts = lv.upgradeOptions || [];
+        if (opts.length > 1){
+          const ev = evalLevel(opts, bs.pres, bs.have, bs.attrOf);
+          const k = ev.rec >= 0 ? ev.rec : 0;
+          const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
+          applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
+          picks.push(`${lv.idx}단계 ${ev.label(k)}`);
+          for (const u of src) if (u.upgrade === 'play_style') cur.ps++;
+        } else {
+          applyEvoLevel(at, lv);
+          for (const u of (lv.upgrades || [])){
+            if (u.upgrade === 'overall') cur.ovr = u.maxValue != null ? Math.min(cur.ovr + u.value, u.maxValue) : cur.ovr + u.value;
+            if (u.upgrade === 'play_style') cur.ps++;
+          }
+        }
+      }
+      // 갈림길 단계의 overall은 기본 upgrades에 들어 있어 위에서 이미 반영된다(중복 방지 — 여기서 또 더하지 않는다)
+    }
+    steps.push({ id, name: cat?.name || `#${id}`, fails, picks,
+                 ovr: cur.ovr, six: faceFromAttrs(at, EVO.face_stats || [], isGk) });
+  }
+  return { st, before, after: { at, six: faceFromAttrs(at, EVO.face_stats || [], isGk), ovr: cur.ovr }, steps };
+}
+function renderPlan(){
+  const pickBox = document.getElementById('planpick'); if (!pickBox) return;
+  const owned = Object.entries(STATE).filter(([, v]) => v.club_player_id != null)
+    .sort((a, b) => (b[1].ovr || 0) - (a[1].ovr || 0));
+  const cat = (EVO.catalog || []).filter(c => !c.is_expired).sort((a, b) => String(a.name).localeCompare(String(b.name)));
+  pickBox.innerHTML = `
+    <div class="kv" style="margin-bottom:6px">👤 <b>선수</b>
+      <select id="planp"><option value="">— 담을 선수 —</option>${owned.map(([pid, v]) =>
+        `<option value="${pid}">${esc(v.name)} ${v.ovr ?? ''} (${esc(String(v.positions || ''))})</option>`).join('')}</select>
+      ${PLAN.pids.map(pid => `<button class="chip" data-planrp="${pid}">${esc(STATE[String(pid)]?.name || pid)} ✕</button>`).join('') || '<span class="dim">아직 없다</span>'}</div>
+    <div class="kv">🧬 <b>진화 순서</b>
+      <select id="plane"><option value="">— 순서에 추가 —</option>${cat.map(c =>
+        `<option value="${c.evo_id}">${esc(c.name)}</option>`).join('')}</select>
+      ${PLAN.evos.map((id, i) => `<button class="chip" data-planre="${i}">${i + 1}. ${esc(CATBYID[id]?.name || id)} ✕</button>`).join('') || '<span class="dim">아직 없다</span>'}
+      ${PLAN.evos.length > 1 ? '<button class="act ghost" id="planrev" title="순서를 뒤집어 어느 쪽이 이득인지 본다">↕ 순서 뒤집기</button>' : ''}
+      ${PLAN.pids.length || PLAN.evos.length ? '<button class="act ghost" id="planclr">비우기</button>' : ''}</div>`;
+  const on = (id, ev, fn) => document.getElementById(id)?.addEventListener(ev, fn);
+  on('planp', 'change', e => { const v = +e.target.value; if (v && !PLAN.pids.includes(v)) PLAN.pids.push(v); renderPlan(); });
+  on('plane', 'change', e => { const v = +e.target.value; if (v) PLAN.evos.push(v); renderPlan(); });
+  on('planrev', 'click', () => { PLAN.evos.reverse(); renderPlan(); });
+  on('planclr', 'click', () => { PLAN.pids.length = 0; PLAN.evos.length = 0; renderPlan(); });
+  pickBox.querySelectorAll('[data-planrp]').forEach(b => b.addEventListener('click',
+    () => { PLAN.pids.splice(PLAN.pids.indexOf(+b.dataset.planrp), 1); renderPlan(); }));
+  pickBox.querySelectorAll('[data-planre]').forEach(b => b.addEventListener('click',
+    () => { PLAN.evos.splice(+b.dataset.planre, 1); renderPlan(); }));
+
+  const out = document.getElementById('planout');
+  document.getElementById('plann').textContent = PLAN.pids.length && PLAN.evos.length
+    ? `— 선수 ${PLAN.pids.length}명 × 진화 ${PLAN.evos.length}개` : '';
+  if (!PLAN.pids.length || !PLAN.evos.length){
+    out.innerHTML = '<span class="dim" style="font-size:12px">선수와 진화를 담으면 여기서 계산한다.</span>'; return;
+  }
+  const runs = PLAN.pids.map(pid => [pid, planRun(pid)]).filter(([, r]) => r);
+  const FACE = ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY'];
+  out.innerHTML = `<table class="tbl" style="margin-top:6px"><thead><tr>
+      <th>선수</th><th>OVR</th>${FACE.map(f => `<th>${f}</th>`).join('')}<th>단계별 판정</th></tr></thead><tbody>
+    ${runs.map(([pid, r]) => {
+      const blocked = r.steps.filter(s => s.fails.length);
+      const d = (a, b) => b == null || a == null ? '—' : `${a}<b class="${b > a ? 'up' : b < a ? 'dn' : 'dim'}">${b > a ? ` ▸${b}` : b < a ? ` ▸${b}` : ''}</b>`;
+      return `<tr${blocked.length ? ' style="opacity:.6"' : ''}>
+        <td><b>${esc(r.st.name)}</b><br><small class="dim">${esc(String(r.st.positions || ''))}</small></td>
+        <td>${d(r.before.ovr, r.after.ovr)} <small class="dim">fut.gg</small></td>
+        ${FACE.map(f => `<td>${d(r.before.six?.[f], r.after.six?.[f])}</td>`).join('')}
+        <td style="font-size:11px">${r.steps.map((s, i) => s.fails.length
+          ? `<div class="dn">⛔ ${i + 1}. ${esc(s.name)} — ${s.fails.map(esc).join(' · ')}</div>`
+          : `<div class="dim">✅ ${i + 1}. ${esc(s.name)}${s.picks.length ? ` <small>(${s.picks.map(esc).join(' · ')})</small>` : ''} → OVR ${s.ovr}</div>`).join('')}</td></tr>`;
+    }).join('')}</tbody></table>
+    <small class="dim">⚠️ 한 단계라도 ⛔면 그 뒤 계산은 <b>그 진화를 건너뛴 값</b>이다 — 순서를 바꿔 보라(↕).</small>`;
+}
+renderPlan();
+
 </script>
 </body></html>
