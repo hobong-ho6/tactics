@@ -26,6 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                     # noqa: E402
+from core.futgg_attrs import apply_upgrades, face_of    # noqa: E402  ⭐ 진화 보상·6대 환산 정본
 
 TODAY = dt.date.today().isoformat()
 
@@ -113,11 +114,59 @@ def cmd_evolve(con, a):
             print(f"⚠️ 경로 기준 카드 OVR {base_ovr} ≠ 현재 {cp['current_ovr']} — 이미 진화를 밟은 카드다. "
                   f"경로 값을 버리고 --ovr-after/--six-after를 쓴다.")
             after = None
-    ovr_after = a.ovr_after or (after or {}).get("ovr")
-    six_after = a.six_after or (json.dumps(after["six"]) if after else None)
+    # ⭐⭐⭐ **적용 후 값은 서버가 `current_attrs`에서 계산한다**(2026-09-26 · 불변규칙 13 ①).
+    #    ⛔ 종전엔 화면이 계산해 `--ovr-after/--six-after`로 보내고 서버는 **받아 적기만** 했다.
+    #       그런데 원장에는 「현재 카드」가 **두 벌**(`current_six` · `current_attrs`) 있고 이 명령이
+    #       **앞의 것만 갱신**했다. 화면은 before를 `current_six`에서, after를 `current_attrs`에서
+    #       가져오므로 두 벌이 갈리는 순간 **after가 before보다 낮게** 적힌다.
+    #       실증(마조 빛나는 스트라이커 1단계): PAC 75→**70** · SHO 73→**69**. 진화는 스탯을 내리지 않는다.
+    #    ⇒ 이제 서버가 카탈로그 보상을 `current_attrs`에 얹어 **attrs·six·ovr 셋을 한꺼번에** 갱신한다.
+    #       두 벌이 갈릴 수 있는 구조 자체가 없어진다. 화면이 보낸 숫자는 **대조용으로만** 본다.
+    attrs_after = None
+    cur_attrs = json.loads(cp["current_attrs"]) if cp["current_attrs"] else None
+    lvrow = con.execute("SELECT levels FROM fc_evolutions WHERE evo_id=? ORDER BY pulled DESC",
+                        (a.evo,)).fetchone()
+    if cur_attrs and lvrow and lvrow["levels"]:
+        step = next((x for x in json.loads(lvrow["levels"]) if x.get("idx") == a.level), None)
+        if step is not None:
+            ups = list(step.get("upgrades") or [])
+            opts = step.get("upgradeOptions") or []
+            if len(opts) > 1:
+                pick = getattr(a, "pick", None)
+                if pick is None:
+                    sys.exit(f"⛔ {a.level}단계는 갈림길이다({len(opts)}갈래) — 어느 가지를 밟았는지 "
+                             "`--pick N`(0부터)으로 밝혀야 한다. 지어내지 않는다.")
+                o = opts[int(pick)]
+                ups = list(o if isinstance(o, list) else (o.get("upgrades") or []))
+            elif len(opts) == 1:
+                o = opts[0]
+                ups = list(o if isinstance(o, list) else (o.get("upgrades") or []))
+            attrs_after = dict(cur_attrs)
+            bump, unknown = apply_upgrades(attrs_after, ups)
+            if unknown:
+                sys.exit(f"⛔ 모르는 보상 항목 {unknown} — 지어내지 않는다. core/futgg_attrs.py의 표를 먼저 채울 것")
+            ovr_after = bump(cp["current_ovr"] or 0)
+            face_rows = con.execute("SELECT abbr, attr, weight, is_gk FROM fc_face_stats").fetchall()
+            six_after = json.dumps(face_of(attrs_after, face_rows), ensure_ascii=False)
+            src = "서버 계산 (current_attrs + fc_evolutions.levels · core/futgg_attrs.py)"
+    if attrs_after is None:
+        ovr_after = a.ovr_after or (after or {}).get("ovr")
+        six_after = a.six_after or (json.dumps(after["six"]) if after else None)
+        src = ("player_evolutions.path_json (fut.gg 계산 결과 카드)" if after else "사용자 입력값")
+        print("⚠️ 29속성이나 카탈로그 단계가 없어 서버가 계산하지 못했다 — 받은 값을 그대로 적는다"
+              f"(출처: {src}). 다음 클럽 싱크의 EA 실측으로 확정할 것.")
     if ovr_after is None:
         sys.exit("⛔ 적용 후 OVR을 알 수 없다 — 이 선수·진화의 path_json이 없으니 --ovr-after/--six-after를 직접 넘길 것")
-    src = ("player_evolutions.path_json (fut.gg 계산 결과 카드)" if after else "사용자 입력값")
+    # ⛔⛔ **게이트 — 진화는 스탯을 내리지 않는다.** 위 계산이 옳아도 데이터가 어긋나면 여기서 멈춘다.
+    #    「조심하자」로 막지 않는 이유: 조용히 틀린 값이라 화면만 봐선 알 수 없었다(실증 4행).
+    if cp["current_six"] and six_after:
+        b, f = json.loads(cp["current_six"]), json.loads(six_after)
+        down = {k: (b[k], f[k]) for k in b if k in f and f[k] < b[k]}
+        if down:
+            sys.exit(f"⛔ 적용 후 6대 스탯이 내려간다 — {down} (before→after). 진화는 스탯을 내리지 않으니 "
+                     "원장이 어긋난 것이다. `current_attrs`가 `current_six`보다 낡지 않았는지 먼저 볼 것.")
+    if (ovr_after or 0) < (cp["current_ovr"] or 0):
+        sys.exit(f"⛔ 적용 후 OVR이 내려간다 — {cp['current_ovr']} → {ovr_after}. 같은 사유다.")
     # ⭐ --in-progress: 「시작했다」는 사실만 남긴다(2026-09-19). 진화는 챌린지·훈련이 남으면 **스탯이 아직 안 올라간다** —
     #    완료 전에 current_* 를 올리면 화면이 없는 능력치를 보여준다. 소진·다음 추천 계산에는 포함된다(카드가 그 경로에 묶였으므로).
     #    완료되면 `complete` 서브커맨드로 그때 스탯을 반영한다.
@@ -135,6 +184,10 @@ def cmd_evolve(con, a):
         print(f"진화 시작 기록: {cp['name']} ← {evo_name} (lv{a.level}) · 완주 시 OVR {cp['current_ovr']} → {ovr_after} "
               f"· 스탯은 **완료 시** 반영(`complete` 커맨드) · 시작일 {a.date}")
         return
+    # ⭐ `current_attrs`를 **함께** 갱신한다 — 이것을 빼면 위 주석의 사고가 그대로 되돌아온다.
+    if attrs_after is not None:
+        con.execute("UPDATE fut_club_players SET current_attrs=? WHERE id=?",
+                    (json.dumps(attrs_after, ensure_ascii=False), cp["id"]))
     con.execute("""UPDATE fut_club_players SET current_ovr=?, current_six=?, current_playstyles=COALESCE(?, current_playstyles),
                      current_roles_plus=COALESCE(?, current_roles_plus), current_roles_plus_plus=COALESCE(?, current_roles_plus_plus),
                      evo_count=evo_count+1, updated=? WHERE id=?""",
@@ -368,7 +421,8 @@ def main():
     s = sub.add_parser("evolve"); s.add_argument("--account", required=True); s.add_argument("--player", required=True)
     s.add_argument("--evo", type=int, required=True); s.add_argument("--level", type=int, default=1)
     s.add_argument("--date", default=TODAY); s.add_argument("--completed"); s.add_argument("--note")
-    s.add_argument("--ovr-after", type=int); s.add_argument("--six-after", help='JSON {"PAC":..}')
+    s.add_argument("--ovr-after", type=int); s.add_argument("--six-after", help='JSON {"PAC":..} — ⚠️ 서버가 계산하지 못할 때만 쓰는 폴백')
+    s.add_argument("--pick", type=int, help="갈림길 단계에서 **몇 번째 가지**를 밟았는지(0부터). 갈림길이면 필수다")
     s.add_argument("--in-progress", action="store_true", help="시작만 기록(챌린지·훈련이 남아 스탯은 아직 안 올랐다)")
     s = sub.add_parser("complete"); s.add_argument("--account", required=True); s.add_argument("--player", required=True)
     s.add_argument("--evo", type=int); s.add_argument("--date", default=TODAY)

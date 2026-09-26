@@ -1825,11 +1825,12 @@ function bindSide(root, team){
     const bs = evalBasis(+pid, PRES[pid] || null);
     const isGk = /GK/.test(String(st.positions || ''));
     const at = { ...base }; let ovr = already?.ovr_before ?? st.ovr; const steps = [];
+    let pick = null;
     for (const L of lv){
-      const opts = L.upgradeOptions || []; let label = '';
+      const opts = L.upgradeOptions || []; let label = ''; pick = null;
       if (opts.length > 1){
         const ev = evalLevel(opts, bs.pres, bs.have, bs.attrOf);
-        const k = picks[L.idx] ?? (ev.rec >= 0 ? ev.rec : 0);
+        const k = picks[L.idx] ?? (ev.rec >= 0 ? ev.rec : 0); pick = k;
         const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
         applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
         for (const u of src) if (u.upgrade === 'overall') ovr = u.maxValue != null ? Math.min(ovr + u.value, u.maxValue) : ovr + u.value;
@@ -1838,7 +1839,8 @@ function bindSide(root, team){
         applyEvoLevel(at, L);
         for (const u of (L.upgrades || [])) if (u.upgrade === 'overall') ovr = u.maxValue != null ? Math.min(ovr + u.value, u.maxValue) : ovr + u.value;
       }
-      steps.push({ lv: L.idx, ovr, six: faceFromAttrs(at, EVO.face_stats || [], isGk), label });
+      /* ⭐ 여기 six/ovr은 **확인창에 보여 줄 미리보기**일 뿐이다 — 원장에 들어가는 값은 서버가 계산한다. */
+      steps.push({ lv: L.idx, ovr, six: faceFromAttrs(at, EVO.face_stats || [], isGk), label, pick });
     }
     const todo = steps.filter(x => x.lv > from);
     if (!todo.length){ say(box, { ok: false, message: '이미 전 단계가 기록돼 있다.' }); return; }
@@ -1853,9 +1855,13 @@ function bindSide(root, team){
     for (const x of todo){
       /* ⛔ `player`는 **fut_club_players.id**다 — players.id를 넘기면 다른 사람 카드에 적힌다(2026-09-26 사고).
          서버도 `expect_player_id`로 교차 검증한다. 둘 다 있어야 조용히 어긋나지 않는다. */
+      /* ⛔⛔ **스탯은 보내지 않는다**(2026-09-26). 종전엔 화면이 계산한 `ovr_after`/`six_after`를
+         서버가 받아 적었는데, 화면의 출발점(`STATE.attrs`)이 `current_six`보다 낡으면
+         **after가 before보다 낮게** 적혔다(마조 빛나는 스트라이커 1단계 PAC 75→70).
+         ⇒ 이제 서버가 `current_attrs`에서 직접 계산한다. 화면은 **어느 가지를 밟았는지**만 알려 준다. */
       last = await api('evolve', { account: acc.name, player: +cpid, expect_player_id: +pid,
-                                   evo: +evo, level: x.lv, date: today,
-        completed: today, ovr_after: x.ovr, six_after: JSON.stringify(x.six),
+                                   evo: +evo, level: x.lv, date: today, completed: today,
+        ...(x.pick == null ? {} : { pick: x.pick }),
         note: `${x.lv}단계 완료 — 화면에서 기록(${today}).${x.label ? ` 갈림길: ${x.label}` : ''} `
             + '⚠️ OVR·6대는 카탈로그 보상을 상한 규칙대로 얹은 우리 계산(등급 B) — 다음 싱크의 EA 실측으로 확정.' });
       if (!last.ok) break;
