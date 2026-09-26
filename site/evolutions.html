@@ -563,7 +563,9 @@ function gainsHTML(p, own, pid){
           return `<div class="gain-opt"><i>${(p.ids || []).length > 1 ? esc(b.evo) + ' ' : ''}${b.i}단계</i>
           ${b.opts.map((og, k) => { const src = Array.isArray(og) ? og : (og.upgrades || []);
             const w = b.whys[k], isRec = b.rec === k, isOn = at && cur === k;
-            return `<span class="opt${isRec ? (b.recSoft ? ' rec soft' : ' rec') : w.dup.length ? ' weak' : ''}${isOn ? ' on' : ''}"${
+            /* 같은 규약: 고른 것이 초록(.on), 추천은 ⭐ 글자. 누를 수 없는 곳에서만 .rec 색을 쓴다. */
+            return `<span class="opt${at ? (isOn ? ' on' : w.dup.length ? ' weak' : '')
+                                     : isRec ? (b.recSoft ? ' rec soft' : ' rec') : w.dup.length ? ' weak' : ''}"${
               at ? ` data-optpick="${esc(at)}" data-k="${k}" role="button" tabindex="0" title="눌러서 이 가지로 계산한다"` : ''}>${
               isRec ? (b.recSoft ? '☆ ' : '⭐ ') : ''}${
               esc(w.ps.length ? w.ps.join('·') : src.map(upLabel).join(' · '))}${
@@ -1391,6 +1393,21 @@ function tryRun(pid, steps){
                 ps: String(st.playstyles || '').split(',').filter(x => x.trim() && !x.includes('+')).length,
                 psp: String(st.playstyles || '').split(',').filter(x => x.includes('+')).length };
   const before = { at: { ...at }, six: six0, ovr: st.ovr };
+  /* ⭐ **얻는 PlayStyle·역할도 모은다**(2026-09-26 사용자 지시 「진화를 통해 얻는 플레이스타일이나
+     역할도 보여줘서 비교할 수 있도록」) — 스탯만으로는 진화의 값어치를 못 견준다.
+     ⚠️ 이미 갖고 있으면 **새로 얻는 게 아니다** — 기존 보유와 대조해 「이미 보유」로 갈라 적는다. */
+  const havePS = new Set(String(st.playstyles || '').split(',').map(x => x.trim().replace(/\+$/, '')).filter(Boolean));
+  const gain = { ps: [], psDup: [], role: [] };
+  const addUp = u => {
+    if (u.upgrade === 'play_style'){
+      const nm = PS_NAME[String(u.value)] || `#${u.value}`;
+      (havePS.has(nm) ? gain.psDup : gain.ps).push(nm);
+    } else if (u.upgrade === 'role_plus' || u.upgrade === 'role_plus_plus'){
+      const kind = u.upgrade === 'role_plus' ? 'plus' : 'plusplus';
+      const r = ROLEBYID[`${kind}:${u.value}`];
+      gain.role.push(r ? `${r.position_name} ${r.name}${kind === 'plus' ? '+' : '++'}` : `Role${kind === 'plus' ? '+' : '++'} #${u.value}`);
+    }
+  };
   const done = [];
   for (const step of steps){
     const cat = CATBYID[step.id];
@@ -1406,19 +1423,21 @@ function tryRun(pid, steps){
         const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
         applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
         picks.push({ lv: lv.idx, k, rec, opts });
-        for (const u of src) if (u.upgrade === 'play_style') cur.ps++;
+        for (const u of src){ if (u.upgrade === 'play_style') cur.ps++; addUp(u); }
       } else {
         applyEvoLevel(at, lv);
         for (const u of (lv.upgrades || [])){
           if (u.upgrade === 'overall') cur.ovr = u.maxValue != null ? Math.min(cur.ovr + u.value, u.maxValue) : cur.ovr + u.value;
           if (u.upgrade === 'play_style') cur.ps++;
+          addUp(u);
         }
       }
     }
     if (!fails.length) cur.pac = faceFromAttrs(at, EVO.face_stats || [], isGk).PAC;
     done.push({ id: step.id, name: cat?.name || `#${step.id}`, fails, picks, ovr: cur.ovr });
   }
-  return { st, cur, before, steps: done, after: { at, six: faceFromAttrs(at, EVO.face_stats || [], isGk), ovr: cur.ovr } };
+  return { st, cur, before, steps: done, gain,
+           after: { at, six: faceFromAttrs(at, EVO.face_stats || [], isGk), ovr: cur.ovr } };
 }
 /* 미리보기 패널 — 얹은 진화·갈림길·스탯 변화. ⛔ 「기록했다」로 읽히지 않게 말을 고른다. */
 function tryPanel(pid){
@@ -1438,12 +1457,19 @@ function tryPanel(pid){
       ${x.fails.length ? `<small class="dn">⛔ ${x.fails.map(esc).join(' · ')} — 얹지 않았다</small>` : ''}
       ${x.picks.map(pk => `<div class="kv" style="margin-top:3px"><small class="dim">🔀 ${pk.lv}단계</small>
         ${pk.opts.map((og, k) => { const src = Array.isArray(og) ? og : (og.upgrades || []);
-          return `<span class="opt${pk.rec === k ? ' rec' : ''}${pk.k === k ? ' on' : ''}" data-trypick="${i}:${pk.lv}" data-k="${k}"
+          /* ⛔ 추천은 **⭐ 글자만** — 색은 «지금 고른 것»에 쓴다(2026-09-26 사용자 지시
+             「제안은 별표로만 하고 선택된 게 초록색으로」). 종전엔 추천이 초록이라 다른 가지를 골라도
+             색이 안 움직여 **무엇이 적용 중인지 안 보였다**. */
+          return `<span class="opt${pk.k === k ? ' on' : ''}" data-trypick="${i}:${pk.lv}" data-k="${k}"
                    role="button" tabindex="0">${pk.rec === k ? '⭐ ' : ''}${esc(src.map(upLabel).join(' · '))}</span>`;
         }).join('<em>또는</em>')}</div>`).join('')}</div>`).join('')}</div>
     <div class="kv" style="margin-top:5px"><span class="chip">OVR ${d(r.before.ovr, r.after.ovr)} <small class="dim">fut.gg</small></span>
       ${FACE.map(f => `<span class="chip">${f} ${d(r.before.six?.[f], r.after.six?.[f])}</span>`).join('')}
       <span class="chip" style="border-color:var(--ok);color:var(--ok)">실제 상승 합 +${tot}</span></div>
+    ${(r.gain.ps.length || r.gain.role.length || r.gain.psDup.length) ? `<div class="kv" style="margin-top:4px">
+      ${r.gain.ps.map(x => `<span class="chip" style="border-color:var(--ok);color:var(--ok)">PS ${esc(x)}</span>`).join('')}
+      ${r.gain.role.map(x => `<span class="chip" style="border-color:var(--viz-us);color:var(--viz-us)">${esc(x)}</span>`).join('')}
+      ${r.gain.psDup.map(x => `<span class="chip dim" title="이미 갖고 있어 새로 늘지 않는다">PS ${esc(x)} 이미 보유</span>`).join('')}</div>` : ''}
     ${keys.length ? `<details style="margin-top:4px"><summary class="dim" style="cursor:pointer;font-size:11.5px">상세 ${keys.length}속성</summary>
       <table class="tbl" style="margin-top:4px"><tbody>${keys.map(k => {
         const a = r.before.at[k], b = r.after.at[k];
@@ -1529,6 +1555,14 @@ function cmpPanel(){
         const a = c.run.before.at[k], b = c.run.after.at[k], v = (b ?? 0) - (a ?? 0);
         return `<td>${a ?? '—'}${v > 0 ? ` <b class="up">▸${b} (+${v})</b>` : ' <span class="dim">—</span>'}</td>`;
       }).join('')}</tr>`).join('')}` : ''}
+      ${/* ⭐ **PlayStyle·역할도 견준다**(2026-09-26 사용자 지시) — 스탯만으로는 진화의 값어치가 안 갈린다.
+           ⚠️ 이미 가진 것은 「이미 보유」로 갈라 적는다(새로 얻는 게 아니다 — 한계효용 0). */''}
+      <tr class="cmpsep"><td colspan="${cols.length + 1}">이 진화로 얻는 것</td></tr>
+      <tr><td>PlayStyle</td>${cols.map(c => `<td>${c.run.gain.ps.length
+        ? c.run.gain.ps.map(x => `<b class="up">${esc(x)}</b>`).join('<br>') : '<span class="dim">—</span>'}${
+        c.run.gain.psDup.length ? `<br><small class="dim">${c.run.gain.psDup.map(esc).join(' · ')} 이미 보유</small>` : ''}</td>`).join('')}</tr>
+      <tr><td>역할 Role+/++</td>${cols.map(c => `<td>${c.run.gain.role.length
+        ? c.run.gain.role.map(x => `<b>${esc(x)}</b>`).join('<br>') : '<span class="dim">—</span>'}</td>`).join('')}</tr>
       <tr style="border-top:2px solid var(--line)"><td><b>실제 상승 합</b> <small class="dim">상한 손실 제외</small></td>${
         tot.map(t => `<td><b class="up">+${t}</b></td>`).join('')}</tr></tbody></table></div>`;
 }

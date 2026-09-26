@@ -516,3 +516,6 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .cmpbox th{white-space:normal;min-width:120px}
 .cmpbox tr.cmpsep td{background:rgba(255,255,255,.04);font-size:11px;color:var(--dim);
   border-top:2px solid var(--line);padding-top:5px}
+/* 고른 가지 = 초록(추천은 ⭐ 글자로만) — 2026-09-26 사용자 지시. */
+.opt.on{border-style:solid;border-color:var(--ok);color:var(--ok);font-weight:700;
+  background:rgba(76,217,123,.14);outline:none}
