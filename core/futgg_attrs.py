@@ -68,8 +68,24 @@ EVO_ATTR_KR = {
     "short_passing": "짧은 패스", "long_passing": "긴 패스", "curve": "커브", "agility": "민첩성",
     "balance": "균형 감각", "reactions": "반응력", "ball_control": "볼컨트롤", "dribbling": "드리블",
     "composure": "침착", "interceptions": "차단력", "heading_accuracy": "헤딩 정확도",
-    "def_awareness": "수비 위치 선정", "standing_tackle": "스탠딩 태클", "sliding_tackle": "슬라이딩 태클",
+    # ⛔⛔ **같은 속성을 EA가 두 이름으로 준다**(2026-09-26 실측). 카탈로그에는 `attribute_defensive_awareness`로
+    #    오는데 우리 표에는 `def_awareness`만 있었다 ⇒ **수비 위치 선정 상승이 통째로 무시**됐다
+    #    (진화 소개·풀백의 갈림길·미드필드 광채 3종). G26은 py↔js를 보는데 **양쪽이 똑같이 빠져** 못 잡았다.
+    #    ⇒ G29가 「카탈로그 키 ⊆ 우리 표」를 검사한다 — 새 키가 조용히 무시될 수 없게.
+    "def_awareness": "수비 위치 선정", "defensive_awareness": "수비 위치 선정",
+    "standing_tackle": "스탠딩 태클", "sliding_tackle": "슬라이딩 태클",
     "jumping": "점프", "stamina": "체력", "strength": "힘", "aggression": "공격성",
+}
+
+
+# ⭐ **29속성이 아닌 보상들** — 일부러 여기서 적용하지 않는다(각자 다른 컬럼이 정본이다).
+#    ⛔ 「모르는 키」와 구분해 둔다. 종전엔 `attribute_`로 시작하지 않으면 전부 조용히 넘겨서,
+#       EA가 새 종류를 추가해도 **아무 일도 일어나지 않았다**(face_passing·face_defending 실증).
+NON_ATTR_OK = {
+    "overall",        # apply_upgrades가 콜백으로 돌려준다
+    "play_style",     # fut_club_players.current_playstyles
+    "role_plus", "role_plus_plus",   # current_roles_plus(_plus)
+    "skill_moves", "weak_foot",      # player_card_items 쪽 축 — 29속성에 없다
 }
 
 
@@ -87,6 +103,9 @@ def apply_upgrades(attrs, upgrades):
             ovr_ups.append((u.get("value") or 0, u.get("maxValue")))
             continue
         if not key.startswith("attribute_"):
+            # ⛔ 모르는 종류는 **조용히 넘기지 않는다** — 호출부가 멈추거나 사용자에게 물어야 한다.
+            if key not in NON_ATTR_OK:
+                unknown.append(key)
             continue
         kr = EVO_ATTR_KR.get(key[len("attribute_"):])
         if kr is None:

@@ -764,7 +764,10 @@ export const ATTR_KR = {   // ⭐ 화면들이 같은 표를 쓰도록 내보낸
   vision:'시야', crossing:'크로스', fk_accuracy:'프리킥 정확도', short_passing:'짧은 패스',
   long_passing:'긴 패스', curve:'커브', agility:'민첩성', balance:'균형 감각', reactions:'반응력',
   ball_control:'볼컨트롤', dribbling:'드리블', composure:'침착', interceptions:'차단력',
-  heading_accuracy:'헤딩 정확도', def_awareness:'수비 위치 선정', standing_tackle:'스탠딩 태클',
+  /* ⛔⛔ EA가 같은 속성을 **두 이름**으로 준다 — 카탈로그는 `attribute_defensive_awareness`다.
+     둘 다 없으면 수비 위치 선정 상승이 통째로 무시된다(2026-09-26 실측 · 진화 3종). */
+  heading_accuracy:'헤딩 정확도', def_awareness:'수비 위치 선정', defensive_awareness:'수비 위치 선정',
+  standing_tackle:'스탠딩 태클',
   sliding_tackle:'슬라이딩 태클', jumping:'점프', stamina:'체력', strength:'힘', aggression:'공격성',
 };
 

@@ -1439,6 +1439,46 @@ def run(db_path=None, verbose=True):
     if not ok28:
         fails.append("G28")
 
+    # G29 — ⛔⛔ **진화 카탈로그의 보상 키가 우리 표에 다 있는가.** 2026-09-26 신설
+    #   G26은 파이썬↔JS를 대조하는데, **양쪽이 똑같이 빠지면 못 잡는다.** 실제로 그랬다:
+    #   EA가 같은 속성을 `attribute_defensive_awareness`로도 주는데 두 표에 `def_awareness`만 있어
+    #   **수비 위치 선정 상승이 통째로 무시**됐다(진화 소개·풀백의 갈림길·미드필드 광채 3종).
+    #   증상이 고약하다 — 계산이 **조용히 낮게** 나올 뿐 아무도 오류를 안 낸다.
+    #   ⇒ 기준을 우리 표끼리가 아니라 **EA 카탈로그**에 둔다. 새 종류가 생기면 여기서 막힌다.
+    #   ⚠️ `face_passing`/`face_defending`은 **6대 스탯을 직접 올리는 보상**이라 29속성 모델로
+    #      표현할 수 없다. 지금은 `Midfield Polish [SP+ 1]` 한 종만 쓰고 프리미엄 미구매라 영향이 없다.
+    #      ⛔ 덮지 않고 아래에 이름으로 적어 둔다 — 다른 진화로 번지면 이 목록을 갱신하며 다시 판단한다.
+    G29_KNOWN = {"face_passing", "face_defending"}
+    g29 = []
+    try:
+        import json as _json
+        from core.futgg_attrs import EVO_ATTR_KR as _K, NON_ATTR_OK as _OK
+        seen = set()
+        for (lv,) in con.execute("""SELECT levels FROM fc_evolutions
+                                     WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions)
+                                       AND levels IS NOT NULL"""):
+            for L in _json.loads(lv):
+                srcs = [L.get("upgrades") or []]
+                for o in (L.get("upgradeOptions") or []):
+                    srcs.append(o if isinstance(o, list) else (o.get("upgrades") or []))
+                for src in srcs:
+                    for u in src:
+                        seen.add(str(u.get("upgrade") or ""))
+        for k in sorted(seen):
+            if k in _OK or k in G29_KNOWN:
+                continue
+            if k.startswith("attribute_") and k[len("attribute_"):] in _K:
+                continue
+            g29.append(k)
+    except Exception as e:                                   # noqa: BLE001
+        g29.append(f"조회 실패({e})")
+    ok29 = not g29
+    if verbose:
+        print(f"G29 카탈로그 보상 키 ⊆ 우리 표: 모르는 키 {len(g29)} "
+              + ("✅" if ok29 else "❌ " + " · ".join(g29[:5])))
+    if not ok29:
+        fails.append("G29")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")
