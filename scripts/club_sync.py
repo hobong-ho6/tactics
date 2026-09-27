@@ -139,7 +139,14 @@ def staleness():
          ("SBC", "SELECT MAX(pulled) FROM fc_sbc_sets"),
          ("시세", "SELECT MAX(pulled) FROM player_card_prices"),
          ("전술", "SELECT MAX(pulled) FROM fut_tactics"),
-         ("스쿼드 메타", "SELECT MAX(synced_at) FROM fut_squads")]
+         ("스쿼드 메타", "SELECT MAX(synced_at) FROM fut_squads"),
+         # ⭐ 참조 표도 여기 올린다(2026-09-27). `collect_playstyle_ids.py`가 fut.gg 번들의 난독화
+         #    변수명에 앵커를 걸어 두 배포 연속 깨졌는데, 실패가 로그 한 줄이라 **두 회차 묻혔다**.
+         #    수집 실패는 「행이 없다」가 아니라 「행이 낡는다」로 나타나므로 날짜로만 보인다.
+         ("케미 스타일", "SELECT MAX(pulled) FROM fc_chemistry_styles"),
+         ("PlayStyle 이름", "SELECT MAX(pulled) FROM fc_playstyle_ids"),
+         ("포메이션", "SELECT MAX(pulled) FROM fc_formations"),
+         ("6대 스탯 구성식", "SELECT MAX(pulled) FROM fc_face_stats")]
     today = dt.date.today()
     print("\n■ 축별 신선도")
     for name, sql in q:

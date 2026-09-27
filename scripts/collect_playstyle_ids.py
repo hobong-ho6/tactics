@@ -41,8 +41,37 @@ def _get(url):
     return urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60).read().decode()
 
 
+def _objects_keyed_by_playstyle(js):
+    """`{[X.FINESSE_SHOT]:…}` 꼴 객체의 **본문**을 전부 돌려준다(여는 `{`부터 짝이 맞는 `}`까지).
+
+    ⛔ 난독화된 변수명을 앵커로 쓰지 않는다 — 배포마다 바뀐다(2026-09-24 `a_`/`Bme` → 09-27 `E_`/`Ome`).
+       같은 이유로 2회 깨졌다. 앵커는 **내용**(PlayStyle 키가 박힌 객체 리터럴)이어야 한다.
+    """
+    for m in re.finditer(r"\{\[[A-Za-z_$][\w$]*\.FINESSE_SHOT\]:", js):
+        depth, k = 0, m.start()
+        while k < len(js):
+            c = js[k]
+            if c == "`":                                  # 템플릿 문자열은 통째로 건너뛴다
+                k = js.find("`", k + 1)
+                if k < 0:
+                    break
+            elif c == "{":
+                depth += 1
+            elif c == "}":
+                depth -= 1
+                if depth == 0:
+                    yield js[m.start():k + 1]
+                    break
+            k += 1
+
+
 def fetch_labels():
-    """번들에서 {id: 라벨}을 뽑는다. enum(`e[e.NAME=ID]=\\`NAME\\``) × 라벨표(`[I.NAME]:\\`Label\\``)."""
+    """번들에서 {id: 라벨}을 뽑는다. enum(`e[e.NAME=ID]=\\`NAME\\``) × 라벨표(`[X.NAME]:\\`Label\\``).
+
+    ⭐ 라벨표를 **모양으로 고른다** — 같은 키로 만들어진 객체가 여럿이다(슬러그표 `finesse-shot`,
+       아이콘표 `[I.X]:H.X` 등). 값이 전부 백틱 문자열이고 **대문자로 시작하는**(Title Case) 것이
+       사람이 읽는 라벨표다. 후보가 여럿이면 가장 많이 담은 것을 쓴다.
+    """
     home = _get("https://www.fut.gg/")
     refs = re.findall(r'src="([^"]*index-[^"]*\.js)"', home)
     if not refs:
@@ -50,15 +79,21 @@ def fetch_labels():
     url = refs[0] if refs[0].startswith("http") else "https://www.fut.gg" + refs[0]
     js = _get(url)
     enum = {k: int(v) for k, v in re.findall(r"e\[e\.([A-Z_0-9]+)=(\d+)\]=`\1`", js)}
-    i = js.find("a_={[I.FINESSE_SHOT]:")          # PLAY_STYLE_LABELS 본체
-    end = js.find("},Bme=a_", i)
-    if i < 0 or end < 0:
-        raise SystemExit("⛔ PLAY_STYLE_LABELS를 찾지 못했다 — 번들 구조가 바뀌었다")
-    out = {}
-    for name, label in re.findall(r"\[I\.([A-Z_0-9]+)\]:`([^`]+)`", js[i:end]):
-        if name in enum:
-            out[enum[name]] = label
-    return out, url
+
+    best = {}
+    for body in _objects_keyed_by_playstyle(js):
+        pairs = re.findall(r"\[[A-Za-z_$][\w$]*\.([A-Z_0-9]+)\]:`([^`]*)`", body)
+        if not pairs or not all(v[:1].isupper() for _, v in pairs):
+            continue                                       # 슬러그표(`finesse-shot`)·식별자표는 거른다
+        cand = {enum[n]: v for n, v in pairs if n in enum}
+        if len(cand) > len(best):
+            best = cand
+    if not best:
+        raise SystemExit("⛔ PlayStyle 라벨표를 찾지 못했다 — 번들 구조가 바뀌었다\n"
+                         f"   번들: {url}\n"
+                         "   ⚠️ 변수명이 아니라 **모양**으로 찾는다 — `{[X.FINESSE_SHOT]:`Title Case`…}` 객체가\n"
+                         "      하나도 없다는 뜻이니 fut.gg가 라벨을 다른 형태로 옮겼는지 직접 볼 것.")
+    return best, url
 
 
 def main():
@@ -100,15 +135,23 @@ def main():
     missing = sorted(set(ours) - set(bundle))
     if missing:
         print(f"⚠️ 번들에 없는 원장 id {missing} — 구버전 잔재인지 확인할 것(지우지 않는다)")
-    if a.dry_run or not rows:
+    if a.dry_run:
         return
-    con.executemany("""INSERT INTO fc_playstyle_ids(game_version, ea_id, name, source, confidence, pulled)
-                       VALUES(?,?,?,?,?,?)
-                       ON CONFLICT(game_version, ea_id) DO UPDATE SET
-                         name=excluded.name, source=excluded.source,
-                         confidence=excluded.confidence, pulled=excluded.pulled""", rows)
+    if rows:
+        con.executemany("""INSERT INTO fc_playstyle_ids(game_version, ea_id, name, source, confidence, pulled)
+                           VALUES(?,?,?,?,?,?)
+                           ON CONFLICT(game_version, ea_id) DO UPDATE SET
+                             name=excluded.name, source=excluded.source,
+                             confidence=excluded.confidence, pulled=excluded.pulled""", rows)
+    # ⭐ 값이 그대로여도 `pulled`은 올린다 — 「확인한 날」이다(2026-09-27).
+    #    안 올리면 club_sync.py의 축별 신선도가 **수집이 성공한 회차에도 계속 경고**해
+    #    경고가 무뎌지고, 진짜 실패(번들 구조 변경)를 다시 묻어 버린다.
+    confirmed = [e for e in bundle if e in ours]
+    con.execute(f"UPDATE fc_playstyle_ids SET pulled=? WHERE game_version=? "
+                f"AND ea_id IN ({','.join('?' * len(confirmed))})",
+                [a.pulled, a.game, *confirmed])
     con.commit()
-    print(f"\n적재 {len(rows)}행 → fc_playstyle_ids")
+    print(f"\n적재 {len(rows)}행 · 값 그대로라 확인만 {len(confirmed) - len(rows)}행 → fc_playstyle_ids")
     print("다음: python3 scripts/export.py && scripts/db_dump.sh")
 
 
