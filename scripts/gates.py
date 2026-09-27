@@ -1164,6 +1164,42 @@ def run(db_path=None, verbose=True):
             if tok in txt:
                 g22.append(f"{f.relative_to(root).as_posix()}: 적재 전 어휘 {tok} — {why}")
 
+    # ⑵-3 **「현재 스탯」을 인쇄 카드에서 읽지 않는다.** 2026-09-27 실증(사용자 지적):
+    #    역할 적합·케미 스타일 추천이 **다섯 곳 모두** `p.attrs`(카드에 인쇄된 값)를 먹고 있었다.
+    #    마조는 진화로 80이 됐는데 **인쇄 65 스탯으로 추천**을 받았다.
+    #    ⇒ 고르는 규칙은 `nowAttrs()` 하나다(EA 실측 우선 · 없으면 인쇄값). 직접 전달을 막는다.
+    for f in sorted(site.glob("*.html")) + sorted((site / "assets").glob("*.js")):
+        for m in re.finditer(r"\b(styleRank|bestRoleFor|roleFit)\(\s*([A-Za-z_$][\w$]*)\.attrs\b", f.read_text()):
+            g22.append(f"{f.relative_to(root).as_posix()}: {m.group(1)}({m.group(2)}.attrs …) — 인쇄 카드 스탯이다. nowAttrs()를 쓸 것")
+
+    # ⑵-4 ⛔⛔ **화면 스크립트의 문법을 실제로 검사한다.** 2026-09-27 신설
+    #    백틱 사고는 docs/70의 대표 반복 사고인데 **오늘 또 났다** — 템플릿 리터럴을 닫는 백틱을
+    #    빠뜨려 `renderNow()`가 통째로 죽었고, `nowtac` 영역이 **빈 채로** 배포될 뻔했다.
+    #    ⛔ 증상이 고약하다 — export도 게이트도 통과하고 **화면 한 구역만 조용히 사라진다**.
+    #    ⇒ `node --check`로 **진짜 파서**에게 물어본다. 사람의 눈·주석으로 막지 않는다.
+    #    ⚠️ node가 없으면 **검사를 건너뛰되 그 사실을 남긴다**(조용히 통과시키지 않는다).
+    import shutil as _sh
+    import subprocess as _sp2
+    import tempfile as _tf2
+    if not _sh.which("node"):
+        g22.append("node가 없어 화면 스크립트 문법 검사를 못 했다 — 설치하거나 사유를 적을 것")
+    else:
+        targets = []
+        for f in sorted(site.glob("*.html")):
+            for m in re.findall(r'<script type="module">(.*?)</script>', f.read_text(), re.S):
+                targets.append((f, m))
+        for f in sorted((site / "assets").glob("*.js")):
+            targets.append((f, f.read_text()))
+        for f, code in targets:
+            with _tf2.NamedTemporaryFile("w", suffix=".mjs", delete=False) as fh:
+                fh.write(code); tmp = fh.name
+            r = _sp2.run(["node", "--check", tmp], capture_output=True, text=True)
+            Path(tmp).unlink(missing_ok=True)
+            if r.returncode != 0:
+                first = (r.stderr or "").strip().splitlines()
+                msg = next((x for x in first if "Error" in x), first[0] if first else "?")
+                g22.append(f"{f.relative_to(root).as_posix()}: 문법 오류 — {msg.strip()[:90]}")
+
     # ⑶ `observations.id` 하드코딩 — 동시 세션과 충돌한다(docs/70). 쓰기 스크립트에서만 잡는다.
     #    ⚠️ `test_*.py`는 **결함을 합성 주입해 게이트가 잡는지 보는** 스크립트다 — 고정 id가 목적이라 뺀다.
     obs_hard = [f.relative_to(root).as_posix()

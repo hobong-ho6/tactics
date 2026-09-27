@@ -159,6 +159,14 @@ const [EVO, CARDS, K26, K27, ...TEAMS] = await Promise.all([
   ...idx.regimes.map(r => loadTeam(r.team_code).then(t => [r.team_code, t]).catch(() => [r.team_code, null])),
 ]);
 const ROLE_KR = Object.fromEntries((K26.roles || []).map(r => [r.role_id, r.name]));
+/* ⭐ **EA 표기 역할명 → role_id** 역매핑(2026-09-27). 인게임 전술은 `Wide Playmaker`처럼
+   **EA 영문 표기**로만 읽히는데(서버 렌더라 숫자 id를 못 얻는다 — club-sync §3-3),
+   우리 정본은 `role_id`라 이걸로 이어야 세 축을 나란히 비교할 수 있다.
+   ⛔ 표를 손으로 적지 않는다 — 커널의 `focus.ea_role_name`이 정본이다.
+   ⚠️ 못 맞춘 이름은 **null**이다(추측하지 않는다) — 화면이 「대조 불가」로 둔다. */
+const ROLE_BY_EA = {};
+for (const f of (K26.focus || [])) if (f.ea_role_name) ROLE_BY_EA[f.ea_role_name.toLowerCase()] = f.role_id;
+const ROLE_KR_REV = nm => ROLE_BY_EA[String(nm || '').trim().toLowerCase()] ?? null;
 const TEAM_OF = {}, NAME_OF = {}, PRES = {};
 for (const [code, t] of TEAMS){
   if (!t) continue;
@@ -810,13 +818,32 @@ function renderNow(){
       <button disabled>라인 높이 <b>${T.line_height ?? '-'}</b>${T.is_custom_def ? ' <small>(커스텀)</small>' : ''}</button>
     </div>
     <h3 style="margin:10px 0 6px">11칸 역할 · 포커스</h3>
-    <table class="tbl"><thead><tr><th>자리</th><th>선수</th><th>역할</th><th>포커스</th></tr></thead><tbody>
+    <table class="tbl"><thead><tr><th>자리</th><th>선수</th><th>인게임(지금)</th><th>에메리 재현</th><th>선수 최적</th></tr></thead><tbody>
     ${R.map((r, i) => {
       const p = xiAt(i);
+      /* 세 축을 나란히 놓는다(2026-09-27 사용자 지시 「둘 다 나란히 보여줘」).
+         (1) 인게임 — 지금 실제로 걸어 둔 역할/포커스(fut_tactics · 등급 C 실측)
+         (2) 에메리 재현 — 실축 빌라를 게임으로 옮긴 정본(slot_canon_roles · 우리 판단)
+         (3) 선수 최적 — 그 자리 선수의 현재 29속성으로 역할 가중을 재서 고른 것(판단값)
+         셋은 묻는 질문이 다르다 — 합산하지 않고 갈리는 칸만 표시한다.
+         (2)와 (3)이 갈리면 그게 「실축 재현 ↔ 승률」 트레이드오프이고, 그 자체가 정보다.
+         (3)은 nowAttrs()(EA 실측)를 먹는다 — 인쇄 카드 값이 아니다.
+         ⛔ 이 주석에 백틱을 쓰지 않는다 — 여기는 템플릿 리터럴 안이라 문자열이 끊긴다(docs/70 반복 사고). */
+      const canon = CANON[CANON_BY_IDX[i]];
+      const best = p ? bestRoleFor(nowAttrs(p), FORM_SLOTS[i]) : null;
+      const kr = id => ROLE_KR[id] || id;
+      const eqCanon = canon && canon.role_id && ROLE_KR_REV(r.role_name) === canon.role_id;
+      const eqBest = best && ROLE_KR_REV(r.role_name) === best.r;
       return `<tr><td><b>${esc(r.position_name)}</b></td>
         <td>${p ? `${esc(p.name)} <small class="dim">${p.current_ovr ?? ''}</small>` : '<span class="dim">—</span>'}</td>
-        <td>${esc(r.role_name)}</td><td>${esc(r.focus)}</td></tr>`;
-    }).join('')}</tbody></table>`;
+        <td><b>${esc(r.role_name)}</b><br><small class="dim">${esc(r.focus)}</small></td>
+        <td class="${eqCanon ? 'dim' : ''}">${canon ? `${eqCanon ? '같음' : `<b>${esc(kr(canon.role_id))}</b>`}<br><small class="dim">${esc(canon.focus || '')}</small>` : '—'}</td>
+        <td class="${eqBest ? 'dim' : ''}">${best ? (eqBest ? '같음' : `<b>${esc(kr(best.r))}</b>`) : '—'}</td></tr>`;
+    }).join('')}</tbody></table>
+    <p class="dim" style="font-size:12px;margin:6px 0 0">
+      <b>인게임</b>은 실측(내가 걸어 둔 것) · <b>에메리 재현</b>은 실축을 옮긴 정본 · <b>선수 최적</b>은
+      그 자리 선수의 <b>현재 29속성</b>으로 역할 가중을 잰 판단값이다(⛔ EA 공식 아님).
+      갈리는 칸이 들여다볼 자리다 — 재현을 택할지 승률을 택할지는 사람이 고른다.</p>`;
 
   /* ⭐ FC 인게임 스쿼드 화면 재현 — 실측을 배치만 한다(계산 없음). */
   const xiRows = R.map((r, i) => ({ player: xiAt(i), role: r, posName: r.position_name }));
@@ -833,9 +860,9 @@ function renderNow(){
     const pos = slotIdx != null ? FORM_SLOTS[slotIdx]
       : (String(p.positions || '').split('/')[0] || '');
     const canon = slotIdx != null ? CANON[CANON_BY_IDX[slotIdx]] : null;
-    const auto = (!canon && !PRES[p.player_id]) ? bestRoleFor(p.attrs, pos) : null;
+    const auto = (!canon && !PRES[p.player_id]) ? bestRoleFor(nowAttrs(p), pos) : null;
     const roleId = canon?.role_id || PRES[p.player_id]?.role_id || auto?.r || POS_ROLE[pos];
-    const ranked = styleRank(p.attrs, roleId, pos === 'GK');
+    const ranked = styleRank(nowAttrs(p), roleId, pos === 'GK');
     /* fut.gg 신호(migration 055)는 **카드 단위**(ea_item_id)다 — 같은 선수라도 카드가 다르면 갈린다. */
     const fgRows = (EVO.chem_signals || []).filter(r => r.ea_item_id === p.ea_item_id);
     return { roleId, roleKr: ROLE_KR[roleId] || roleId, basis: canon ? 'slot' : PRES[p.player_id] ? 'pres' : auto ? 'auto' : 'pos',
@@ -2156,6 +2183,23 @@ function roleFit(at, roleId){
   if (!den) return 0;
   return Object.entries(w).reduce((t, [a, v]) => t + v * (at[a] ?? 0), 0) / den * 100;
 }
+/* ⭐⭐ **「지금 이 카드의 29속성」 단일 정본**(2026-09-27 사용자 지적
+   「진화한 현재 스탯 기준으로 적합한 케미스트리 추천하도록 업데이트」).
+   ⛔ 종전엔 역할 적합·케미 스타일 추천이 **다섯 곳 모두 `p.attrs`(인쇄 카드)** 를 먹었다.
+      마조는 인쇄 65 스탯으로 추천을 받고 있었다 — 진화로 80이 된 카드인데도.
+   ⇒ EA 실측(`current_attrs`)이 있으면 그것이 현재다. 없으면 인쇄값으로 물러선다.
+      `club.state`가 「현재 카드 상태」의 정본이라는 규칙(export 주석)과 같은 축이다.
+   ⛔ 고르는 규칙을 호출부에 다시 쓰지 않는다 — G22가 `.attrs` 직접 전달을 막는다. */
+function nowAttrs(p){
+  if (!p) return {};
+  const cur = J(p.current_attrs, null);
+  if (cur && Object.keys(cur).length) return cur;
+  const st = STATE[String(p.player_id)];
+  const s2 = st && J(st.attrs, null);
+  if (s2 && Object.keys(s2).length) return s2;
+  return J(p.attrs, {}) || {};
+}
+
 function bestRoleFor(attrsJson, pos){
   const at = J(attrsJson, {}) || {}, pre = POS_PREFIX[pos];
   if (!pre || !Object.keys(at).length) return null;
@@ -2400,9 +2444,9 @@ function renderChem(owned, all = owned){
        ⚠️ 교체는 투입 전까지 개인 케미가 0이라 부스터 효과도 0이다 — 그 사실을 표에 적는다. */
     const benchRows = benchSlots().map(s2 => byItem.get(s2.ea_item_id)).filter(Boolean).map(p => {
       const pos = String(p.positions || '').split('/')[0] || '';
-      const auto = PRES[p.player_id] ? null : bestRoleFor(p.attrs, pos);
+      const auto = PRES[p.player_id] ? null : bestRoleFor(nowAttrs(p), pos);
       const roleId = PRES[p.player_id]?.role_id || auto?.r || POS_ROLE[pos];
-      const st = styleRank(p.attrs, roleId, pos === 'GK');
+      const st = styleRank(nowAttrs(p), roleId, pos === 'GK');
       const now = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
       const same = now && st[0] && now === st[0].name;
       return `<tr><td class="dim">${esc(pos)}</td>
@@ -2425,7 +2469,7 @@ function renderChem(owned, all = owned){
         const now = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
         const canon = CANON[CANON_BY_IDX[i]];
         const roleId = canon?.role_id || PRES[p.player_id]?.role_id || POS_ROLE[FORM_SLOTS[i]];
-        const st = styleRank(p.attrs, roleId, FORM_SLOTS[i] === 'GK');
+        const st = styleRank(nowAttrs(p), roleId, FORM_SLOTS[i] === 'GK');
         const v = chemBy.get(p.id) ?? 0;
         const same = now && st[0] && now === st[0].name;
         return `<tr><td><b>${FORM_SLOTS[i] || i}</b><br><small class="dim">${esc(CANON_BY_IDX[i])}</small></td>
@@ -2459,7 +2503,7 @@ function renderChem(owned, all = owned){
     if (!p) return `<tr><td><b>${s}</b></td><td colspan="6" class="dim">이 포지션을 볼 수 있는 보유 카드가 없다 — 공백</td></tr>`;
     const v = chemPer.get(p.id);
     const pres = PRES[p.player_id], roleId = pres?.role_id || POS_ROLE[s];
-    const st = styleRank(p.attrs, roleId, s === 'GK');
+    const st = styleRank(nowAttrs(p), roleId, s === 'GK');
     const gains = st[0] ? st[0].top.map(x => `${x.a}+${x.gain}`).join(' · ') : '';
     /* 지금 붙어 있는 스타일 — GG Club 싱크가 준 EA 소모품 id(250 Basic·273 GK Basic = 미적용) */
     const nowStyle = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
