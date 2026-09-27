@@ -122,7 +122,8 @@ def export_all(db_path=None, window="2026-summer"):
     # ⭐ player_game_stats(능력치 정본)와 다른 축이다 — 같은 선수에게 시즌 중 계속 붙는 **아이템 목록**.
     #    OVR 내림차순으로 내보내 화면이 「가장 높은 카드」를 먼저 보여준다.
     cards = {}
-    for r in _rows(con, """SELECT player_id, game_version, ea_item_id, is_base, rarity_name, released_at,
+    # ⭐ `rarity_ea_id`는 판(카드 틀) 교체에 쓴다(2026-09-27) — 진화로 등급이 오르면 화면이 판을 갈아 끼운다.
+    for r in _rows(con, """SELECT player_id, game_version, ea_item_id, is_base, rarity_name, rarity_ea_id, released_at,
                                   ovr, pac, sho, pas, dri, def, phy, positions, best_pos, playstyles,
                                   skill_moves, weak_foot, accelerate, card_image_url, futgg_url,
                                   roles_plus, roles_plus_plus, ea_item_id AS item_id,
@@ -266,7 +267,7 @@ def export_all(db_path=None, window="2026-summer"):
                c.chem_style_ea, c.chem_points,
                i.ovr base_ovr, i.attrs base_attrs, i.ea_item_id base_ea_id,
                i.skill_moves, i.weak_foot, i.preferred_foot, i.accelerate,
-               i.height_cm, i.weight_kg, i.positions, i.card_image_url,
+               i.height_cm, i.weight_kg, i.positions, i.card_image_url, i.rarity_ea_id,
                CASE WHEN c.current_attrs IS NOT NULL THEN 'ea-sync' ELSE 'base-card' END basis,
                (SELECT COUNT(*) FROM fut_evolution_log l
                  WHERE l.club_player_id=c.id AND l.is_void=0 AND COALESCE(l.level,1)=1) evo_runs,
@@ -375,6 +376,9 @@ def export_all(db_path=None, window="2026-summer"):
                                 f.current_attrs,
                                 c.ovr AS card_ovr, c.positions, c.nation, c.league, c.club, c.is_icon, c.is_hero,
                                 c.chem_extra, c.card_image_url, c.attrs,
+                                -- ⭐ 판(레어도 틀) 교체용(2026-09-27) — 진화로 OVR이 오르면 화면이
+                                --    브론즈/실버/골드 판을 갈아 끼운다. `card_ovr`(인쇄)과 짝이다.
+                                c.rarity_ea_id,
                                 -- 스킬무브·약발·주발(2026-09-21 사용자 요청) — 카드 표에만 있다.
                                 c.skill_moves, c.weak_foot, c.preferred_foot, c.accelerate,
                                 c.height_cm, c.weight_kg, c.birthdate,
@@ -420,6 +424,13 @@ def export_all(db_path=None, window="2026-summer"):
                                                        WHERE regime_id=1 AND formation='4-2-3-1 Wide'"""),
                            # ⭐ 케미 기준선은 `core/chem.py`가 정본이다 — 화면이 같은 표를 다시 적지 않게 내보낸다.
                            "chem_tiers": CHEM,
+                           # ⭐⭐ 레어도 판 자산(migration 084) — 진화 카드의 완성 이미지는 어디에도 없어서
+                           #    화면이 **빈 판 + 원본 요소**로 합성한다. level 1 브론즈 · 2 실버 · 3 골드.
+                           "rarity_assets": _rows(con, """SELECT rarity_ea_id, rarity_name, level, image_url,
+                                                                 line_color, text_color, is_special
+                                                            FROM fc_rarity_assets
+                                                           WHERE game_version='FC27'
+                                                             AND pulled=(SELECT MAX(pulled) FROM fc_rarity_assets)"""),
                            "face_stats": _rows(con, """SELECT abbr, is_gk, attr, weight FROM fc_face_stats
                                                       WHERE game_version='FC27' ORDER BY is_gk, abbr"""),
                            "chem_meta": _rows(con, """SELECT item, value, alternatives, rationale, source

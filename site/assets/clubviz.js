@@ -7,7 +7,7 @@
       7 RM · 8 LM · 9 CAM · 10 ST, **우→좌**). */
 import { PLAYSTYLES } from './playstyle-icons.js';
 export { PLAYSTYLES };   // 화면들이 같은 사전을 쓰도록 재수출(설명·아이콘 중복 방지)
-import { repaintEvoCard } from './evocard.js?v=20260921a';
+import { repaintEvoCard, replateCard, rarityLevel } from './evocard.js?v=20260927a';
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
@@ -39,6 +39,20 @@ const chemPips = n => `<span class="fc-pips">${[0, 1, 2].map(i =>
 /* 카드 한 장 — 아트가 있으면 아트, 없으면 대체 타일.
    ⭐ 이름을 카드 밖에 다시 쓰지 않는다(2026-09-20). 아트에 이미 인쇄돼 있어 중복이고, 그 한 줄 때문에
       카드 높이가 늘어 슬롯이 겹쳤다. 아트가 없는 대체 타일에만 이름을 넣는다. */
+/* 레어도 판 자산 — 화면이 한 번 등록하면 카드 그리기가 쓴다(export의 `rarity_assets`).
+   ⛔ 여기서 URL을 만들지 않는다. 없으면 판 교체를 **안 한다**(원본이 그대로 남는다). */
+let PLATES = {};
+export function setRarityAssets(rows){
+  PLATES = {};
+  for (const r of rows || []) (PLATES[r.rarity_ea_id] ??= {})[r.level] = r.image_url;
+}
+function plateAttrs(p){
+  const from = rarityLevel(p.card_ovr), to = rarityLevel(p.current_ovr);
+  const m = PLATES[p.rarity_ea_id];
+  if (!m || from == null || to == null || from === to || !m[from] || !m[to]) return '';
+  return ` data-plate-from="${esc(m[from])}" data-plate-to="${esc(m[to])}"`;
+}
+
 function card(p, role, posName, { bench = false } = {}) {
   if (!p) return `<div class="fc-card empty${bench ? ' bench' : ''}">
       <div class="fc-art ph">비어 있음</div><div class="fc-tag">${esc(posName ?? '')}</div></div>`;
@@ -54,6 +68,10 @@ function card(p, role, posName, { bench = false } = {}) {
     ? `<img class="fc-art" src="${esc(p.card_image_url)}" alt="${esc(p.name)} 카드"
          ${evolved
             ? `crossorigin="anonymous" data-evo-ovr="${p.current_ovr}" data-evo-six="${esc(JSON.stringify(parse(p.current_six) || {}))}"`
+              /* ⭐ 등급이 바뀌었으면 **판(카드 틀)도 갈아 끼운다**(2026-09-27 사용자 지시
+                 「진화해서 금카가 된 건 금카로 카드 이미지도 바꿔줘」). 인쇄 OVR의 판 → 현재 OVR의 판.
+                 ⛔ 판 URL은 화면이 만들지 않는다 — export가 내보낸 `rarity_assets`에서 온다. */
+              + plateAttrs(p)
             : 'loading="lazy"'}>`
     : `<div class="fc-art ph"><b>${p.current_ovr ?? ''}</b><span>${esc(p.name)}</span></div>`;
   const chem = p.chem_style_ea
@@ -132,14 +150,22 @@ export function paintEvoCards(root = document) {
   const SIXK = ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY'];
   const GKK = ['DIV', 'HAN', 'KIC', 'REF', 'SPD', 'POS'];
   root.querySelectorAll('img.fc-art[data-evo-ovr]').forEach(im => {
-    const go = () => {
+    const go = async () => {
       const six = parse(im.getAttribute('data-evo-six')) || {};
       const keys = six.DIV != null ? GKK : SIXK;
-      const cv = repaintEvoCard(im, {
+      /* ⭐ **판을 먼저 갈아 끼우고** 그 위에 숫자를 다시 쓴다(2026-09-27) — 순서가 반대면
+         새 판이 방금 쓴 숫자를 덮는다. 판 교체가 실패하면 원본으로 숫자만 다시 쓴다. */
+      let src = im;
+      const pf = im.getAttribute('data-plate-from'), pt = im.getAttribute('data-plate-to');
+      if (pf && pt){
+        const re = await replateCard(im, pf, pt);
+        if (re){ src = re; }                 // 캔버스도 repaintEvoCard가 그대로 먹는다
+      }
+      const cv = repaintEvoCard(src, {
         ovr: Number(im.getAttribute('data-evo-ovr')),
         six: keys.map(k => [k, six[k] ?? null]),
       });
-      if (!cv) return;                       // 실패하면 원본을 그대로 둔다
+      if (!cv){ if (src !== im){ src.className = 'fc-art'; im.replaceWith(src); } return; }
       cv.className = 'fc-art';
       im.replaceWith(cv);
     };

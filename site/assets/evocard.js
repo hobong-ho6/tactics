@@ -7,9 +7,65 @@
    보간**해 지우고(카드 판이 그라데이션이라 단색으로 칠하면 네모가 남는다) ⑶ 원래 잉크색·크기로 다시 쓴다.
    ⚠️ `crossorigin="anonymous"`로 로드한 이미지여야 getImageData가 된다(아니면 캔버스가 오염돼 예외).
    ⚠️ 실패하면 null을 반환한다 — 호출측은 원본 <img>를 그대로 둔다(빈 칸을 만들지 않는다). */
+/* ⭐⭐ **레어도 판(카드 틀) 교체** — 진화로 등급이 오르면 판을 갈아 끼운다 (2026-09-27 신설,
+   사용자 지시 「진화해서 금카가 된 건 금카로 카드 이미지도 바꿔줘」).
+
+   ⛔⛔ **진화 카드의 완성 이미지는 어디에도 없다**(실측). fut.gg의 `paths/v2`가 주는 단계별 카드는
+      OVR 65와 75가 **같은 이미지 파일**을 가리키고, GG Club은 아이템 id를 **base 그대로** 준다.
+   ⭐ fut.gg 화면이 골드로 보이는 건 **클라이언트가 합성**하기 때문이다 —
+      빈 판(`rarities-level-{1,2,3}`) + 선수 렌더 + 텍스트·로고.
+   ⇒ 우리는 재료(선수 렌더·로고 URL)를 다 갖고 있지 않으므로 **차분으로 판만 바꾼다**:
+      ⑴ 원래 등급의 빈 판을 카드 크기로 그려 **기준판**을 만든다
+      ⑵ 원본 카드와 기준판이 **다른 픽셀 = 요소**(선수·이름·스탯·로고)다
+      ⑶ 목표 등급 판 위에 그 요소만 얹는다
+   ⭐ 실측(2026-09-27 마조 실버→골드): 요소로 잡힌 픽셀 22.8% · 얼굴·이름·로고·테두리 모두 보존됐다.
+   ⚠️ 임계값 60은 압축 노이즈를 넘기고 요소는 살리는 값이다 — 낮추면 판 무늬가 요소로 딸려온다.
+   ⚠️ 실패하면 **null**을 돌려준다. 호출측은 원본을 그대로 쓴다(빈 칸을 만들지 않는다). */
+export const RARITY_LEVEL_CUT = [64, 74];   // ≤64 브론즈(1) · 65~74 실버(2) · ≥75 골드(3)
+
+/* ⛔ 등급 판정의 **단일 정본**. 경계는 2026-09-27 실측으로 확정했다(등급 C) —
+   fut.gg 간이 카드 자산을 직접 열어 64 브론즈 · 65 실버 · 74 실버 · 75 골드를 확인했다.
+   ⛔ 이 숫자를 다른 곳에 다시 적지 않는다. */
+export function rarityLevel(ovr){
+  const v = Number(ovr);
+  if (!Number.isFinite(v)) return null;
+  return v <= RARITY_LEVEL_CUT[0] ? 1 : v <= RARITY_LEVEL_CUT[1] ? 2 : 3;
+}
+
+const loadImg = u => new Promise((res, rej) => {
+  const i = new Image(); i.crossOrigin = 'anonymous';
+  i.onload = () => res(i); i.onerror = () => rej(new Error('img'));
+  i.src = u;
+});
+
+export async function replateCard(im, fromUrl, toUrl){
+  try {
+    const W = im.naturalWidth, H = im.naturalHeight;
+    if (!W || !fromUrl || !toUrl || fromUrl === toUrl) return null;
+    const [a, b] = await Promise.all([loadImg(fromUrl), loadImg(toUrl)]);
+    const mk = (src) => { const c = document.createElement('canvas'); c.width = W; c.height = H;
+      const x = c.getContext('2d', { willReadFrequently: true }); x.drawImage(src, 0, 0, W, H);
+      return x.getImageData(0, 0, W, H); };
+    const C = mk(im).data, S = mk(a).data, G = mk(b);
+    let hit = 0;
+    for (let i = 0; i < C.length; i += 4){
+      const d = Math.abs(C[i] - S[i]) + Math.abs(C[i + 1] - S[i + 1]) + Math.abs(C[i + 2] - S[i + 2]);
+      if (d > 60){ G.data[i] = C[i]; G.data[i + 1] = C[i + 1]; G.data[i + 2] = C[i + 2]; G.data[i + 3] = C[i + 3]; hit++; }
+    }
+    /* ⛔ 요소가 너무 적거나(판이 안 맞음) 너무 많으면(기준판 불일치) **바꾸지 않는다** —
+       어설프게 바뀐 카드보다 원본이 낫다. 실측값 22.8%를 가운데 두고 넉넉히 잡았다. */
+    const ratio = hit / (W * H);
+    if (ratio < 0.08 || ratio > 0.55) return null;
+    const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+    cv.getContext('2d').putImageData(G, 0, 0);
+    return cv;
+  } catch (e) { return null; }
+}
+
 export function repaintEvoCard(im, vals){
   try {
-    const W = im.naturalWidth, H = im.naturalHeight; if (!W) return null;
+    // ⚠️ 판 교체를 거치면 `im`이 **캔버스**다 — 캔버스엔 naturalWidth가 없다(2026-09-27).
+    const W = im.naturalWidth || im.width, H = im.naturalHeight || im.height; if (!W) return null;
     const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
     const cx = cv.getContext('2d', { willReadFrequently: true }); cx.drawImage(im, 0, 0);
     const D = cx.getImageData(0, 0, W, H).data;

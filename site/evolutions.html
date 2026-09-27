@@ -144,7 +144,8 @@ import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './a
 import { evoRules, logState, inProgress } from './assets/evorules.js?v=20260924a';
 import { cardCompare } from './assets/cardcompare.js?v=20260923a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
-import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT } from './assets/clubviz.js?v=20260924b';
+import { setRarityAssets } from './assets/clubviz.js?v=20260927a';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
+import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT } from './assets/clubviz.js?v=20260927a';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -332,6 +333,8 @@ function sixText(before, after){
    화면이 `player_card_items`/`fut_club_players`/fut.gg 경로 중 뭘 쓸지 고르지 않는다.
    그 고르기가 메뉴마다 달라 같은 선수가 다른 OVR로 보였다(Alysson 70 ↔ 78). */
 const STATE = EVO.club?.state || {};
+/* ⭐ 레어도 판 자산을 카드 그리기에 등록한다(2026-09-27) — 없으면 판 교체를 안 한다. */
+setRarityAssets(EVO.rarity_assets || []);
 /* ⛔ 포지션 문자열은 **슬래시 구분**이다("LM/LB/CAM"). 2026-09-26 검수에서 두 곳이
    `split(',')`를 쓰고 있었고, 그건 통째로 돌려주므로 카드에 「LM/LB/CAM」이 그대로 찍혔다.
    ⇒ 쪼개는 규칙을 여기 하나만 둔다 — 새로 쓰는 자리는 이걸 부른다. */

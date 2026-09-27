@@ -90,7 +90,7 @@ import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
 import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
 import { prose } from './assets/prose.js';
 import { PLAYSTYLES } from './assets/playstyle-icons.js';
-import { repaintEvoCard } from './assets/evocard.js?v=20260921a';
+import { repaintEvoCard, replateCard, rarityLevel } from './assets/evocard.js?v=20260927a';
 /* ⛔ 진화 경로의 소진·프리미엄 판정은 **진화 메뉴와 같은 모듈**을 쓴다(2026-09-22 전수 조사) */
 import { evoRules } from './assets/evorules.js?v=20260924a';
 import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20260922-stat-tips';
@@ -619,6 +619,9 @@ function renderCard(sel, g0, g26, g27, isGkRow){
       card_image_url: img || src.card_image_url,          // ⭐ 원본 전체 카드를 쓴다 — 이름·라벨 배치를 그대로 살린다
       patch_art: !img && !!src.card_image_url,
       simple_base: false,
+      /* ⭐ 판(카드 틀) 교체용(2026-09-27) — **원본 아트에 인쇄된 등급**이 출발점이다.
+         ⛔ `ovr`(=현재 80)을 출발점으로 쓰면 from=to가 되어 교체가 통째로 안 걸린다(실측). */
+      base_ovr: src.ovr, rarity_ea_id: src.rarity_ea_id,
       name_art: sel.name,
       /* ⚠️ 진화 이름은 **중복을 접는다** — 4단계짜리는 로그가 4행이라 그대로 쓰면
          「반복 배급 → 반복 배급 → 반복 배급 → 반복 배급」이 된다(`club.state.evo_names`와 같은 규칙). */
@@ -672,9 +675,24 @@ function renderCard(sel, g0, g26, g27, isGkRow){
   el.querySelectorAll('button.cardpick').forEach(b => b.addEventListener('click', () => { localStorage.setItem(repKey, b.dataset.item); render(); }));
   if (rep?.patch_art){
     const box = el.querySelector('.futcard-patch'), im = box?.querySelector('img');
-    const go = () => { const cv = repaintEvoCard(im, { ovr: disp.ovr, pos: disp.best_pos, name: rep.name_art,
+    /* ⭐ 등급이 바뀌었으면 **판(카드 틀)도 갈아 끼운다**(2026-09-27) — evolutions.html과 같은 규칙이다.
+       ⛔ 판 URL은 여기서 만들지 않는다. `rarity_assets`에 없으면 교체하지 않는다(원본이 남는다). */
+    /* ⛔ 판 자산은 `cards.json`이 아니라 **`evolutions.json`(EVO)** 에 있다 —
+       cards.json은 `{player_id: [...]}` 구조라 최상위 키를 더하면 선수 id와 섞인다. */
+    const plateOf = (lv) => (EVO.rarity_assets || [])
+        .find(r => r.rarity_ea_id === rep.rarity_ea_id && r.level === lv)?.image_url;
+    const go = async () => {
+      let src = im;
+      const from = rarityLevel(rep.base_ovr ?? rep.ovr), to = rarityLevel(disp.ovr);
+      if (from && to && from !== to){
+        const re = await replateCard(im, plateOf(from), plateOf(to));
+        if (re) src = re;
+      }
+      const cv = repaintEvoCard(src, { ovr: disp.ovr, pos: disp.best_pos, name: rep.name_art,
         simple: !!rep.simple_base, six: SIX.map(([k, L]) => [L, disp[k]]) });
-      if (cv){ cv.className = 'futcard-canvas'; im.replaceWith(cv); } };
+      if (cv){ cv.className = 'futcard-canvas'; im.replaceWith(cv); }
+      else if (src !== im){ src.className = 'futcard-canvas'; im.replaceWith(src); }
+    };
     if (im) im.complete ? go() : im.addEventListener('load', go, { once: true });
   }
 }

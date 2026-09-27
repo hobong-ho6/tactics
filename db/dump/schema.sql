@@ -1132,3 +1132,20 @@ CREATE TABLE fc_sbc_hidden(
   source TEXT, added TEXT,
   PRIMARY KEY(game_version, challenge_ea_id)
 );
+CREATE TABLE fc_rarity_assets(
+  game_version  TEXT NOT NULL,
+  rarity_ea_id  INTEGER NOT NULL,
+  rarity_name   TEXT,
+  level         INTEGER NOT NULL,        -- 1 브론즈 · 2 실버 · 3 골드
+  image_url     TEXT,                    -- 빈 판(large)
+  compact_url   TEXT,
+  line_color    TEXT,                    -- 테두리/구분선 색 (#RRGGBB 없이 6자리)
+  text_color    TEXT,
+  dominant_color TEXT,
+  is_special    INTEGER DEFAULT 0,
+  pulled        TEXT NOT NULL,
+  source        TEXT,
+  confidence    TEXT,
+  PRIMARY KEY(game_version, rarity_ea_id, level, pulled)
+);
+CREATE INDEX ix_fc_rarity_assets_pulled ON fc_rarity_assets(pulled);
