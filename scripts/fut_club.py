@@ -142,6 +142,14 @@ def cmd_evolve(con, a):
                 o = opts[0]
                 ups = list(o if isinstance(o, list) else (o.get("upgrades") or []))
             attrs_after = dict(cur_attrs)
+            # ⭐⭐ **역할·PlayStyle 보상도 카탈로그에서 읽는다**(2026-09-27 실측 사고).
+            #    ⛔ 종전엔 `player_evolutions.path_json`이 있을 때만 역할을 갱신했다. 그런데
+            #       `GK Roles++`처럼 **역할만 주는 진화**는 경로 축이 안 덮어 path_json이 없고,
+            #       그러면 `current_roles_plus_plus`가 **영영 갱신되지 않는다**(스즈키 GK 역할++ 실측).
+            #    ⚠️ 기존 보유와 **합집합**으로 둔다 — 진화는 역할을 빼앗지 않는다.
+            gain_rpp = [u["value"] for u in ups if u.get("upgrade") == "role_plus_plus"]
+            gain_rp = [u["value"] for u in ups if u.get("upgrade") == "role_plus"]
+            gain_ps = [u["value"] for u in ups if u.get("upgrade") == "play_style"]
             bump, unknown = apply_upgrades(attrs_after, ups)
             if unknown:
                 sys.exit(f"⛔ 모르는 보상 항목 {unknown} — 지어내지 않는다. core/futgg_attrs.py의 표를 먼저 채울 것")
@@ -190,13 +198,27 @@ def cmd_evolve(con, a):
     if attrs_after is not None:
         con.execute("UPDATE fut_club_players SET current_attrs=? WHERE id=?",
                     (json.dumps(attrs_after, ensure_ascii=False), cp["id"]))
+    # ⭐ 역할은 **합집합**으로 병합한다(카탈로그 보상 우선 · 없으면 path_json).
+    def _merge(cur_json, gain):
+        try:
+            have = json.loads(cur_json) if cur_json else []
+        except Exception:                                    # noqa: BLE001
+            have = []
+        out = list(have)
+        for v in gain or []:
+            if v not in out:
+                out.append(v)
+        return json.dumps(out) if out != have else None
+    rp_new = _merge(cp["current_roles_plus"], gain_rp) if attrs_after is not None else (
+        json.dumps(after["roles_plus"]) if after else None)
+    rpp_new = _merge(cp["current_roles_plus_plus"], gain_rpp) if attrs_after is not None else (
+        json.dumps(after["roles_plus_plus"]) if after else None)
     con.execute("""UPDATE fut_club_players SET current_ovr=?, current_six=?, current_playstyles=COALESCE(?, current_playstyles),
                      current_roles_plus=COALESCE(?, current_roles_plus), current_roles_plus_plus=COALESCE(?, current_roles_plus_plus),
                      evo_count=evo_count+1, updated=? WHERE id=?""",
                 (ovr_after, six_after,
                  ", ".join(after["playstyles"]) if after and after.get("playstyles") else None,
-                 json.dumps(after["roles_plus"]) if after else None, json.dumps(after["roles_plus_plus"]) if after else None,
-                 TODAY, cp["id"]))
+                 rp_new, rpp_new, TODAY, cp["id"]))
     print(f"진화 기록: {cp['name']} ← {evo_name} (lv{a.level}) OVR {cp['current_ovr']} → {ovr_after} · 적용일 {a.date}")
 
 
@@ -438,6 +460,10 @@ def main():
     s.add_argument("--name", required=True); s.add_argument("--player-id", type=int); s.add_argument("--ea-item", type=int)
     s.add_argument("--acquired"); s.add_argument("--how"); s.add_argument("--notes")
     s = sub.add_parser("evolve"); s.add_argument("--account", required=True); s.add_argument("--player", required=True)
+    # ⛔⛔ CLI에도 교차검증을 연다 — `players.id`와 `fut_club_players.id`는 같은 번호 공간이고
+    #    실측으로 22쌍이 충돌한다(예: club 18=스즈키 ↔ players 18=게상). 화면만 막아선 부족하다.
+    s.add_argument("--expect-player-id", dest="expect_player_id", type=int,
+                   help="players.id — 찾은 카드가 그 선수의 것인지 교차검증한다(강력 권장)")
     s.add_argument("--evo", type=int, required=True); s.add_argument("--level", type=int, default=1)
     s.add_argument("--date", default=TODAY); s.add_argument("--completed"); s.add_argument("--note")
     s.add_argument("--ovr-after", type=int); s.add_argument("--six-after", help='JSON {"PAC":..} — ⚠️ 서버가 계산하지 못할 때만 쓰는 폴백')
