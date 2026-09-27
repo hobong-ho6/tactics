@@ -112,7 +112,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 </section>
 
 <section data-tab="chem" style="display:none">
-  <div class="panel"><h2>케미스트리 제안 <small class="dim">— 보유 카드로 짤 수 있는 최고 케미 11명 · 선수별 추천 스타일</small></h2>
+  <div class="panel"><h2>케미스트리 <small class="dim">— 활성 스쿼드(선발 11 + 교체·리저브 12) 기준 · 선수별 추천 스타일</small></h2>
     <div class="menubar" id="chemform"></div>
     <div id="chem"></div></div>
 </section>
@@ -820,8 +820,7 @@ function renderNow(){
 
   /* ⭐ FC 인게임 스쿼드 화면 재현 — 실측을 배치만 한다(계산 없음). */
   const xiRows = R.map((r, i) => ({ player: xiAt(i), role: r, posName: r.position_name }));
-  const benchRows = (EVO.squad_slots || []).filter(s => s.grp === 'BENCH').sort((a,b)=>a.idx-b.idx)
-      .map(s => ({ player: playerBySlot(s) }));
+  const benchRows = benchSlots().map(s => ({ player: playerBySlot(s) }));
   document.getElementById('nowpitch').innerHTML = fcPitch(xiRows, benchRows, T);
 
   /* 카드 클릭 → 상세를 **피치 옆 사이드 패널**에 연다(2026-09-20 UX 개편 — 종전에는 피치 아래라
@@ -893,19 +892,30 @@ function renderNow(){
   paintEvoCards(document.getElementById('nowpitch'));
   enableHelpTips();
 
-  const bench = (EVO.squad_slots || []).filter(s => s.grp === 'BENCH').sort((a,b)=>a.idx-b.idx);
+  const bench = benchSlots();
   document.getElementById('nowxi').innerHTML = `<h3 style="margin:14px 0 6px">교체 명단 <small class="dim">${bench.length}명</small></h3>
     <div class="plist">${bench.map(s => { const p = playerBySlot(s); return p
       ? `<button data-p="${p.player_id ?? ''}">${esc(p.name)} <small class="up">${p.current_ovr ?? ''}</small></button>` : ''; }).join('')}</div>`;
 }
 /* 선발 슬롯 i번째 ↔ 보유 카드 */
+/* ⛔⛔ **슬롯 그룹 이름을 화면에 흩뿌리지 않는다**(2026-09-27 사고).
+   `collect_ggclub.py`가 EA의 `FIELD`/`SUBSTITUTE`를 **`XI`/`BENCH`로 바꿔** 적재하는데
+   (기존 표 어휘에 맞추려고), 화면 네 곳 중 **케미스트리 탭만 옛 이름을 그대로** 쓰고 있었다.
+   ⇒ `slots11`이 **항상 빈 배열**이라 「지금 쓰는 스쿼드」 섹션이 통째로 죽었고, 그 자리에
+     「보유로 짤 수 있는 최적」 제안만 남아 **본머스 케파가 빌라 GK로** 보였다(사용자 지적).
+   ⛔ 「조심하자」로 막지 않는다 — 조회를 여기 한 곳에 두고 화면은 이 함수만 부른다(불변규칙 13 ②).
+      G22가 화면 코드에 옛 어휘가 다시 등장하면 커밋을 막는다. */
+const slotsOf = grp => (EVO.squad_slots || []).filter(x => x.grp === grp).sort((a, b) => a.idx - b.idx);
+const xiSlots = () => slotsOf('XI');
+const benchSlots = () => slotsOf('BENCH');
+
 function playerBySlot(s){
   const C = EVO.club || { players: [] };
   return C.players.find(p => p.gg_player_id === s.gg_player_id) ||
          C.players.find(p => p.ea_item_id === s.ea_item_id) || null;
 }
 function xiAt(i){
-  const s = (EVO.squad_slots || []).filter(x => x.grp === 'XI').sort((a,b)=>a.idx-b.idx)[i];
+  const s = xiSlots()[i];
   return s ? playerBySlot(s) : null;
 }
 
@@ -2371,7 +2381,7 @@ function renderChem(owned, all = owned){
   /* ⭐ 실제 스쿼드 먼저 (2026-09-19, 사용자 지적 「난 지금 스즈키 쓰는데 추천이 지금 구성과 다르다」).
      제안은 「보유로 짤 수 있는 최적」이라 실제 XI와 다를 수 있다 — 지금 쓰는 XI를 먼저 보여주고 그 아래에 제안을 둔다. */
   const SQ = (EVO.squad || [])[0];
-  const slots11 = (EVO.squad_slots || []).filter(x => x.grp === 'FIELD').sort((a, b) => a.idx - b.idx);
+  const slots11 = xiSlots();
   /* ⭐ 역할은 **그 자리가 요구하는 것**을 먼저 쓴다(2026-09-19, 음바예·맥긴 좌우 교체로 드러난 문제).
      선수의 시즌 처방을 쓰면 자리를 바꿔도 역할이 따라와서, 좌우를 맞바꾼 순간 추천이 뒤집히지 않는다.
      정본 슬롯(slot_canon_roles, 4-2-3-1 Wide)을 **fut.gg 슬롯 순서에 대응**시킨다(우→좌 순).
@@ -2388,8 +2398,7 @@ function renderChem(owned, all = owned){
     /* ⭐ 교체 명단도 같이 본다(2026-09-19 사용자 지시 「후보 선수들도 케미스트리 추천」).
        교체는 슬롯 역할이 없다 — **카드의 주 포지션**으로 기본 역할을 잡고, 처방이 있으면 그것을 쓴다.
        ⚠️ 교체는 투입 전까지 개인 케미가 0이라 부스터 효과도 0이다 — 그 사실을 표에 적는다. */
-    const benchSlots = (EVO.squad_slots || []).filter(x => x.grp === 'SUBSTITUTE').sort((a, b) => a.idx - b.idx);
-    const benchRows = benchSlots.map(s2 => byItem.get(s2.ea_item_id)).filter(Boolean).map(p => {
+    const benchRows = benchSlots().map(s2 => byItem.get(s2.ea_item_id)).filter(Boolean).map(p => {
       const pos = String(p.positions || '').split('/')[0] || '';
       const auto = PRES[p.player_id] ? null : bestRoleFor(p.attrs, pos);
       const roleId = PRES[p.player_id]?.role_id || auto?.r || POS_ROLE[pos];
@@ -2432,7 +2441,14 @@ function renderChem(owned, all = owned){
       「메타 관습」은 <b>커뮤니티 가이드 합의</b>다 — 둘 다 EA 공식이 아니며 갈릴 수 있다. 갈리는 칸이 들여다볼 자리다.<br>아래 「제안」은 <b>보유 카드로 짤 수 있는 최적</b>이라 지금 구성과 다를 수 있다 —
       바꿀 이유를 고를 때 쓰는 참고값이고, 이 표가 <b>실제 상태</b>다.</p></div>`;
   }
-  const pool = owned.filter(p => p.status === 'owned' && p.positions);
+  /* ⭐⭐ **제안 풀은 활성 스쿼드다**(2026-09-27 사용자 지시 「활성 스쿼드 기준으로 선발 후보
+     리저브 카드까지 포함해서」). ⛔ 종전엔 **보유 전체**(179장)에서 최적 XI를 찾아서,
+     다른 스쿼드(AFC 본머스) 카드인 **케파가 빌라 GK로** 제안됐다 — 사용자가 그걸 지적했다.
+     ⇒ XI 11 + 교체·리저브 12 = **23명**만 후보로 둔다. 그게 실제로 바꿔 넣을 수 있는 카드다.
+     ⚠️ 활성 스쿼드가 비면(싱크 전) 보유 전체로 물러선다 — 빈 화면을 만들지 않는다. */
+  const squadItems = new Set([...xiSlots(), ...benchSlots()].map(s => s.ea_item_id));
+  const inSquad = owned.filter(p => p.status === 'owned' && p.positions && squadItems.has(p.ea_item_id));
+  const pool = inSquad.length >= 11 ? inSquad : owned.filter(p => p.status === 'owned' && p.positions);
   if (!pool.length){ box.innerHTML = '<span class="dim">카드 정보가 붙은 보유 선수가 없다 — <code>collect_futgg_cards.py</code>를 먼저 돌린다.</span>'; return; }
   const slots = CHEM_FORMS[CHEM_F], { xi } = chemBestXI(pool, slots), filled = xi.filter(Boolean);
   const { per, cnt, total } = chemOf(filled);

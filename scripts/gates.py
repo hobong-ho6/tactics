@@ -1152,6 +1152,18 @@ def run(db_path=None, verbose=True):
             if token in f.read_text():
                 g22.append(f"{rel}: 「{token}」 규칙을 {owner} 밖에서 다시 짠다")
 
+    # ⑵-2 **적재 후 어휘를 화면이 그대로 쓰지 않는다.** 2026-09-27 실증:
+    #    `collect_ggclub.py`가 EA의 `FIELD`/`SUBSTITUTE`를 **`XI`/`BENCH`로 바꿔** 적재하는데
+    #    화면 네 곳 중 **케미스트리 탭만 옛 이름**을 써서 「지금 쓰는 스쿼드」가 **항상 빈 배열**이었다.
+    #    ⇒ 그 자리에 「보유 최적」 제안만 남아 **본머스 케파가 빌라 GK로** 보였다(사용자 지적).
+    #    ⛔ 증상이 고약하다 — 에러가 없고 **다른 그럴듯한 화면**이 나온다.
+    STALE_VOCAB = {"'FIELD'": "squad_slots.grp는 'XI'다", "'SUBSTITUTE'": "squad_slots.grp는 'BENCH'다"}
+    for f in sorted(site.glob("*.html")) + sorted((site / "assets").glob("*.js")):
+        txt = f.read_text()
+        for tok, why in STALE_VOCAB.items():
+            if tok in txt:
+                g22.append(f"{f.relative_to(root).as_posix()}: 적재 전 어휘 {tok} — {why}")
+
     # ⑶ `observations.id` 하드코딩 — 동시 세션과 충돌한다(docs/70). 쓰기 스크립트에서만 잡는다.
     #    ⚠️ `test_*.py`는 **결함을 합성 주입해 게이트가 잡는지 보는** 스크립트다 — 고정 id가 목적이라 뺀다.
     obs_hard = [f.relative_to(root).as_posix()
