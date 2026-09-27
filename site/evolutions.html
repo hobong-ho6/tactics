@@ -948,10 +948,33 @@ function xiAt(i){
 
 /* 카드·사이드패널 스타일은 `assets/clubviz.css`가 정본이다(2026-09-23에 JS 리터럴에서 뺐다 — 그 파일 머리 참조). */
 
-document.querySelectorAll('.menubar [data-tab]').forEach(b => b.addEventListener('click', () => {
+const showTab = key => {
+  const b = document.querySelector(`.menubar [data-tab="${key}"]`); if (!b) return;
   document.querySelectorAll('.menubar [data-tab]').forEach(x => x.classList.toggle('on', x === b));
   document.querySelectorAll('section[data-tab]').forEach(s => s.style.display = s.dataset.tab === b.dataset.tab ? '' : 'none');
+};
+document.querySelectorAll('.menubar [data-tab]').forEach(b => b.addEventListener('click', () => {
+  showTab(b.dataset.tab);
+  sessionStorage.setItem('evo_tab', b.dataset.tab);   // 새로고침 뒤 제자리로 돌아오게
 }));
+
+/* ⭐⭐ **원장에 쓴 뒤에는 화면 전체를 다시 읽는다**(2026-09-27 사용자 지시
+   「선수 진화가 완료되거나 하면 진화, 케미스트리, 전술은 모두 다시 갱신하도록 해야겠어」).
+   ⛔ 종전엔 기록 성공 메시지만 띄우고 끝이라, **그 탭 말고는 전부 옛 데이터**였다 —
+      케미 추천·전술 대조·적용 가능 목록이 진화 전 값으로 남았다.
+   ⚠️ 부분 갱신으로 안 한다: 진화 하나가 ⑴ 소진 ⑵ 순위 ⑶ 현재 스탯 ⑷ 케미 ⑸ 전술 최적 ⑹ 카드 등급을
+      한꺼번에 흔들고, 그 목록이 늘어나면 **또 한 곳을 빠뜨린다**(런북 「연관 메뉴를 한 번에 닫는다」의
+      일곱 항목이 그렇게 생겼다). 서버가 이미 export를 다시 돌렸으니 **통째로 다시 읽는 게 가장 싸고 확실하다**.
+   ⚠️ 보던 탭은 sessionStorage로 되돌린다 — 새로고침이 사용자를 다른 자리로 던지지 않게. */
+function reloadAfterWrite(msg){
+  const box = document.createElement('div');
+  box.textContent = `${msg || '기록했다'} — 화면을 다시 읽는다…`;
+  box.style.cssText = 'position:fixed;left:50%;top:14px;transform:translateX(-50%);z-index:99999;'
+    + 'background:var(--ok);color:#06210f;padding:6px 14px;border-radius:999px;font-size:13px;font-weight:600';
+  document.body.appendChild(box);
+  setTimeout(() => location.reload(), 500);
+}
+showTab(sessionStorage.getItem('evo_tab') || 'now');
 
 /* ── 카탈로그 ── */
 /* ── 소진 모델 (사용자 지시 2026-09-18 「특정 선수에게 진화를 적용하면 1회성 진화는 다른 선수에게 적용할 수 없다 —
@@ -1013,9 +1036,14 @@ for (const r of ELIG){
    ⇒ 화면이 `RANKED`(소진·프리미엄을 이미 거른 열린 경로)로 판정한다. 열린 경로가 있으면 위 목록이
       이미 보여주므로 중복되지 않고, 없으면 여기서 잡힌다. */
 const hasOpenPath = (pid, eid) => (RANKED[pid] || []).some(x => (x.ids || []).includes(eid));
+/* ⛔ **보유 선수는 지금 상태로 다시 거른다**(2026-09-27 사용자 지적).
+   `ELIG_BY_EVO`는 fut.gg가 준 **base 카드 기준** 목록이고 수집 시점에 고정된다 —
+   진화로 OVR·PS가 오른 카드를 걸러내지 못해 `OVR Max. 79` 진화에 **80이 된 마조가 남아 있었다**.
+   ⚠️ 미보유 선수는 현재 상태를 모르므로 base 기준 그대로 둔다(사서 걸 후보다). */
 const noPath = (c, team) => (ELIG_BY_EVO[c.evo_id] || [])
   .filter(r => (team === 'ALL' || TEAM_OF[r.player_id] === team)
-            && !CONSUMED[c.evo_id]?.exhausted && !hasOpenPath(r.player_id, c.evo_id));
+            && !CONSUMED[c.evo_id]?.exhausted && !hasOpenPath(r.player_id, c.evo_id)
+            && stillEligible(c, r.player_id));
 /* ⚠️ 이 문자열은 **title 속성에도** 들어간다 — 마크다운 별표(`**`)를 쓰면 속성에서도 본문에서도
    그대로 찍힌다(2026-09-23 실측). 강조가 필요하면 호출부가 HTML로 감싼다. */
 const NOPATH_TIP = '지금 밟을 수 있는 경로는 없지만 진화 자체는 걸 수 있다 — '
@@ -1146,6 +1174,9 @@ function renderCatalog(team = CAT_TEAM){
     for (const [pid, rows] of Object.entries(RANKED)) for (const r of rows){
       if (team !== 'ALL' && TEAM_OF[pid] !== team) break;
       const k = r.ids.indexOf(c.evo_id); if (k < 0) continue;
+      /* ⛔ 경로도 base 카드 기준이다 — **첫 단계로 바로 걸 수 있다고 적힌 경우**(k===0)만
+         지금 상태로 다시 본다. k>0이면 앞 단계를 밟은 뒤라 지금 값으로 판정할 수 없다. */
+      if (k === 0 && !stillEligible(c, +pid)) continue;
       const base = (CARDS[pid] || []).find(x => x.is_base);
       apps.push({ pid: +pid, tier: r.tier, k, d: r.d, score: r.score, rs: r.rs, name: r.name_kr, owned: OWNED.has(+pid), price: base ? priceOf(base.item_id) : null, path: r }); break;
     }
@@ -1503,15 +1534,33 @@ function tryReq(cat, st){
   }
   return out;
 }
+/* ⭐⭐ **「지금 이 카드」의 요구조건 판정용 상태** — 한 곳에서 만든다(2026-09-27).
+   ⛔ 종전엔 `tryRun` 안에만 있어서, **적용 가능 목록이 이걸 못 썼다**. 그 목록은 fut.gg가 준
+      **base 카드 기준**(마조는 인쇄 65)이라, 진화로 80이 된 뒤에도 `OVR Max. 79` 진화에 그대로 남았다
+      (사용자 지적 「이 진화 max 오버롤이 79인데 마조가 포함된 걸로 봐서는 계산이 갱신이 안 된 것 같아」). */
+function curStateOf(pid){
+  const st = STATE[String(pid)]; if (!st) return null;
+  const at = J(st.attrs, null); if (!at) return null;
+  const isGk = /GK/.test(String(st.positions || ''));
+  const six0 = faceFromAttrs(at, EVO.face_stats || [], isGk);
+  return { ovr: st.ovr, pac: six0.PAC, pos: String(st.positions || '').split('/').filter(Boolean),
+           ps: String(st.playstyles || '').split(',').filter(x => x.trim() && !x.includes('+')).length,
+           psp: String(st.playstyles || '').split(',').filter(x => x.includes('+')).length };
+}
+/* 보유 선수는 **지금 상태**로 요구조건을 다시 본다. 미보유는 base 기준 그대로 둔다(사서 걸 후보다). */
+function stillEligible(cat, pid){
+  const cur = curStateOf(pid);
+  if (!cur || !cat) return true;
+  return tryReq(cat, cur).length === 0;
+}
+
 function tryRun(pid, steps){
   const st = STATE[String(pid)]; if (!st) return null;
   const at = J(st.attrs, null); if (!at) return null;
   const isGk = /GK/.test(String(st.positions || ''));
   const bs = evalBasis(+pid, PRES[pid] || null);
   const six0 = faceFromAttrs(at, EVO.face_stats || [], isGk);
-  const cur = { ovr: st.ovr, pac: six0.PAC, pos: String(st.positions || '').split('/').filter(Boolean),
-                ps: String(st.playstyles || '').split(',').filter(x => x.trim() && !x.includes('+')).length,
-                psp: String(st.playstyles || '').split(',').filter(x => x.includes('+')).length };
+  const cur = curStateOf(pid);
   const before = { at: { ...at }, six: six0, ovr: st.ovr };
   /* ⭐ **얻는 PlayStyle·역할도 모은다**(2026-09-26 사용자 지시 「진화를 통해 얻는 플레이스타일이나
      역할도 보여줘서 비교할 수 있도록」) — 스탯만으로는 진화의 값어치를 못 견준다.
@@ -1930,6 +1979,8 @@ function bindSide(root, team){
     }
     say(box, last);
     b.disabled = false;
+    /* ⭐ 원장이 바뀌었으면 화면 전체를 다시 읽는다 — 진화 하나가 케미·전술·카드 등급까지 흔든다. */
+    if (last?.ok) reloadAfterWrite('진화를 원장에 적었다');
   }));
   root.querySelectorAll('button[data-cat]').forEach(b => b.addEventListener('click', e => {
     e.preventDefault();
@@ -2699,12 +2750,16 @@ function renderClub(){
     cside.querySelector('[data-cmpadd]')?.addEventListener('click', () => CMPC.start(p));
     cside.querySelector(`button[data-apply="${p.id}"]`)?.addEventListener('click', async () => {
       const evo = cside.querySelector(`select[data-evo="${p.id}"]`).value; if (!evo) return;
-      say(document.getElementById(`pm${p.id}`), await api('evolve', { account: acc.name, player: p.id, evo: +evo,
+      const r1 = await api('evolve', { account: acc.name, player: p.id, evo: +evo,
         date: cside.querySelector(`input[data-date="${p.id}"]`).value,
-        note: cside.querySelector(`input[data-note="${p.id}"]`).value || null })); });
+        note: cside.querySelector(`input[data-note="${p.id}"]`).value || null });
+      say(document.getElementById(`pm${p.id}`), r1);
+      if (r1?.ok) reloadAfterWrite('진화를 원장에 적었다'); });
     cside.querySelector(`button[data-sell="${p.id}"]`)?.addEventListener('click', async () => {
       const st = prompt('상태 (sold / discarded)', 'sold'); if (!st) return;
-      say(document.getElementById(`pm${p.id}`), await api('player_set', { account: acc.name, player: p.id, status: st })); });
+      const r2 = await api('player_set', { account: acc.name, player: p.id, status: st });
+      say(document.getElementById(`pm${p.id}`), r2);
+      if (r2?.ok) reloadAfterWrite('보유 상태를 바꿨다'); });
     cside.scrollTop = 0;
   };
   /* ⭐ 비교 모드면 **상세가 아니라 담기**가 된다 — 「지금 내 팀」과 같은 동선이다. */
@@ -2963,8 +3018,9 @@ function renderSbc(){
       const box = document.getElementById(`sbcm${id}`);
       btn.disabled = true;
       box.innerHTML = '<span class="dim">기록하고 푸는 중… (탐색이라 수십 초 걸릴 수 있다)</span>';
-      say(box, await api('sbc_formation', { challenge: +id, formation: sel.value, game: 'FC27' }));
-      btn.disabled = false;
+      const r = await api('sbc_formation', { challenge: +id, formation: sel.value, game: 'FC27' });
+      say(box, r); btn.disabled = false;
+      if (r?.ok) reloadAfterWrite('포메이션을 적고 다시 풀었다');
     })), 0);
   /* ⛔⛔ **낡은 화면으로 쓰기를 보내지 않는다**(2026-09-26 사용자 지적 「나 이걸로 제출했는데 제출이 안됨」).
      화면엔 「✅ 해법 완료」인데 서버는 `verdict=not_found`라고 답했다 — 그 사이 **다른 SBC 제출로
@@ -3003,9 +3059,11 @@ function renderSbc(){
       b.disabled = true;
       if (box && !await fresh(id, box)) { b.disabled = false; return; }
       if (box) box.innerHTML = `<span class="dim">${undo ? '되돌리고' : '기록하고'} 남은 SBC를 다시 푸는 중… (수십 초)</span>`;
-      say(box, await api('sbc_submit', { challenge: id, undo, game: 'FC27',
-                                          cards: !b.hasAttribute('data-nocards') }));
-      b.disabled = false;
+      const r = await api('sbc_submit', { challenge: id, undo, game: 'FC27',
+                                          cards: !b.hasAttribute('data-nocards') });
+      say(box, r); b.disabled = false;
+      /* ⭐ SBC 제출은 **카드를 스쿼드에서 빼므로** 케미·진화·전술이 전부 흔들린다. 통째로 다시 읽는다. */
+      if (r?.ok) reloadAfterWrite(undo ? '제출을 되돌렸다' : 'SBC 제출을 기록했다');
     })), 0);
   /* ⭐ 카드 ✕ = 이 챌린지에서 제외 후 재계산 · 칩 ↩︎ = 제외 해제 후 재계산(migration 071).
      ⛔ 둘 다 **같은 한 함수**로 보낸다 — 제외와 해제가 서로 다른 경로면 언젠가 갈린다. */
@@ -3018,9 +3076,10 @@ function renderSbc(){
       b.disabled = true;
       if (box && !await fresh(id, box)) { b.disabled = false; return; }
       if (box) box.innerHTML = `<span class="dim">${undo ? '제외를 풀고' : '빼고'} 다시 푸는 중… (수십 초)</span>`;
-      say(box, await api('sbc_exclude',
-        { challenge: id, club_player: +b.dataset.cp, undo, game: 'FC27' }));
-      b.disabled = false;
+      const r = await api('sbc_exclude',
+        { challenge: id, club_player: +b.dataset.cp, undo, game: 'FC27' });
+      say(box, r); b.disabled = false;
+      if (r?.ok) reloadAfterWrite(undo ? '제외를 풀었다' : '선수를 제외했다');
     })), 0);
   const keep = c => SBC_F === 'all' || stageOf(c) === SBC_F;
   const days = t => { if (!t) return ''; const d = Math.ceil((new Date(t) - Date.now()) / 86400000);
