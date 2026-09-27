@@ -284,12 +284,33 @@ def main():
         import re
         for g in a.games:
             gv = f"FC{g}"
-            try:
-                with urllib.request.urlopen(urllib.request.Request("https://www.fut.gg/evolutions/", headers=UA), timeout=30) as r:
-                    html = r.read().decode("utf-8", "ignore")
-            except Exception:
-                html = ""
+            # ⛔⛔ **여기서 실패를 `html=""`로 뭉개면 안 된다**(2026-09-27 정정 · 시세 버그와 같은 유형).
+            #    빈 문자열은 「목록이 비었다」는 **관측**이 되고, 그러면 아래 이월 루프가 `ids=[]`를 보고
+            #    **한 종도 이월하지 않는다** → export가 최신 pulled만 내보내므로 이번 회차에 못 받은
+            #    진화가 **화면에서 통째로 사라진다**. 로그엔 「목록 0종」이라 fut.gg가 비운 것처럼 보인다
+            #    (런북이 2026-09-23에 정확히 이 증상을 오판했다).
+            # ⇒ 세 번 다시 묻고, 그래도 안 되면 **멈춘다**(부분 상태로 커밋하지 않는다).
+            html = None
+            for i in range(3):
+                try:
+                    with urllib.request.urlopen(
+                            urllib.request.Request("https://www.fut.gg/evolutions/", headers=UA), timeout=30) as r:
+                        html = r.read().decode("utf-8", "ignore")
+                    break
+                except Exception as e:
+                    why = f"{type(e).__name__} {e}"
+                    time.sleep(1.5 * (i + 1))
+            if html is None:
+                raise SystemExit(
+                    f"⛔ 진화 목록 페이지를 못 받았다(3회 시도): {why}\n"
+                    "   ⚠️ 「목록 0종」으로 넘기지 않는다 — 그러면 이월이 안 돼 진화가 화면에서 사라진다.\n"
+                    "   ⇒ 이번 회차는 여기서 멈춘다. 네트워크를 확인하고 다시 돌릴 것.")
             ids = sorted({int(x) for x in re.findall(r"/evolutions/(\d+)-", html)})
+            if not ids:
+                raise SystemExit(
+                    "⛔ 목록 페이지는 받았는데 진화 id가 0개다 — 페이지 구조가 바뀌었을 수 있다.\n"
+                    "   ⚠️ 이월 판단의 입력이라 0개를 그대로 쓰면 진화가 화면에서 사라진다. 멈춘다.\n"
+                    "   ⇒ `/evolutions/` 서버 HTML에서 `/evolutions/<id>-` 패턴을 직접 확인할 것.")
             missing = [i for i in ids if (gv, i) not in catalog]
             for eid in missing:
                 el = get(f"{API}/evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}&hide_combinations=true"
