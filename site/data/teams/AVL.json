@@ -95526,6 +95526,18 @@
    "tactic_code": "8ZUKLGXm48ac"
   },
   {
+   "build_up_style": "Balanced",
+   "confidence": "HIGH(구성) — 11칸은 인게임 실측(ST 포커스는 사용자 보고로 정정). ⚠️ 적합 수치는 우리 역할 가중(MEDIUM · FC27판) · 포커스 판정과 빌드업 권고는 판단값이다.",
+   "defensive_approach": "Balanced",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "kind": "ingame:user-2026-09-27",
+   "line_height": 50,
+   "rationale": "2026-09-27 현재 스쿼드 기준 재확인(사용자 지시 「지금까지 이야기한 내용 토대로 … 전술 확인 및 구현」).\n11칸: GK 스즈키 볼 플레잉 키퍼/Build-Up · RB 캐시 윙백/Balanced · RCB 린델뢰프 볼 플레잉 센터백/Aggressive ·\nLCB 파우 토레스 볼 플레잉 센터백/Build-Up · LB 마첸 어태킹 윙백/Support · RDM 카마라 홀딩/Defend ·\nLDM 고레츠카 딥라잉 플레이메이커/Roaming · RM 맥긴 와이드 플레이메이커/Attack · LM 음바예 인사이드 포워드/Attack ·\nCAM 만잠비 플레이메이커/Roaming · ST 잭슨 어드밴스드 포워드/**Support**.\n평균 적합 79.7 (09-19 78.6 → +1.1 · 스쿼드 교체분).\n\n⭐ ST 포커스를 Versatile→Support로 정정했다(사용자 인게임 실측 · fut.gg 표기 오류).\n   잭슨 체력 76·공격성 72가 Support의 Stamina Usage/Pressure를 감당한다. ⛔ 마조가 서면 Versatile이다(체력 63).\n⭐ RM 맥긴 와이드 플레이메이커 유지가 옳다 — 실측 argmax .761(현커널). 「하프스페이스 도착」 관찰은\n   구커널 IF/Balanced .802에서 나왔고 커널 개정 후 .574로 하락했다(id135). 와이드 플레이메이커가\n   터치라인:하프스페이스를 50:50으로 담아 그 관찰을 이미 반영한다.\n⭐ LM 음바예 인사이드 포워드/Attack 유지 — 가속 92·질주 88이 「배후 침투」에 맞고 페널티(Defence Support)는\n   수비 위치 26이라 무해하다. ⛔ 부엔디아가 서면 Balanced다(질주 62·시야 83 → Pass Option).\n⭐ CAM 만잠비 Playmaker/Roaming은 **지금이 최적보다 0.8 높다** — 바꾸지 않는다.\n\n남은 괴리 2칸(Δ≥3.0):\n· GK 스즈키 볼 플레잉 키퍼 70.7 ↔ 골키퍼 75.8 (Δ5.1). 카드는 골키퍼를 가리킨다 —\n  볼 플레잉 키퍼 핵심에 짧은 패스(가중2)·침착(가중1)이 있는데 스즈키는 50·39다.\n  ⚠️ 사용자 관찰은 「롱볼 분배가 장점」이고 킥은 76이다 — **긴 패스 33과 갈린다**(킥=세기, 긴 패스=정확도).\n  ⭐ 2026-09-27 GK 역할++ 완료로 **친숙도 손실 없이 두 역할을 실험**할 수 있다. 체감으로 판정할 것.\n· RCB 린델뢰프 볼 플레잉 센터백 77.3 ↔ 스토퍼 80.4 (Δ3.1). PAC 60이라 높은 라인이 부담이나,\n  CB 둘 다 볼 플레잉인 현 구성에서 하나를 빼면 후방 전개 경로가 줄어든다.\n⚠️ 나머지 9칸은 Δ 0.0~0.6으로 **노이즈**다 — 1위·2위 역할 차이도 그 정도라 바꿀 근거가 없다.\n\n⚠️ 포커스 경고 1건: LCB 파우 토레스 Build-Up의 페널티가 `Out of Position`인데 **민첩 53**이다.\n   빌드업이 그를 위치에서 끌어내는데 복귀가 느리다. `Aggressive`/`Defend`면 그 페널티를 피한다(판단값).\n\n⛔⛔ **팀 설정: 빌드업이 정본과 갈린다** — docs/10 게임 적용 정책은 「빌드업 **Short Passing** /\n   수비 Balanced 미드블록 / 라인 ~52」인데 인게임은 **Balanced**다(09-19 기록의 경고가 그대로 남아 있다).\n   · 수비 접근 Balanced = 정본 일치 ✅   · 라인 50 ≈ 정본 ~52 ✅(에메리는 초하이라인이 아니다)\n   · 빌드업만 갈린다. ⚠️ Short Passing은 「come short instead of forward runs」(등급 A · FC25 원문)라\n     **음바예(가속 92)의 배후 침투를 깎는다**. 재현 축은 Short Passing, 스쿼드 축은 Balanced를 가리킨다 —\n     **사용자 판단 사안이라 바꾸지 않고 기록만 한다.**",
+   "season": "2026-27",
+   "tactic_code": "bXzdq$2TXb5b"
+  },
+  {
    "build_up_style": "Short Passing",
    "confidence": "PROJECTED — 이적 미확정 포함(가르나초 MEDIUM-HIGH·에스투피냔 HIGH, 나머지 CONFIRMED/보유). 26/27 실측 축적 후 measured/optimal로 대체 예정. 만잠비·고메스·에스투피냔·가르나초 처방은 타클럽/대표팀 실측 기반이라 빌라 컨텍스트 재검증 필요.",
    "defensive_approach": "Balanced",
@@ -98542,6 +98554,15 @@
   }
  ],
  "tactic_changes": [
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Balanced · 수비 Balanced · 라인 50",
+   "before": null,
+   "changed_at": "2026-09-27",
+   "key": "2026-27|ingame:user-2026-09-27",
+   "layer": "team_setup",
+   "reason": "2026-09-27 현재 스쿼드 기준 전술 재확인(사용자 지시) — ST 포커스 Versatile→Support 정정(인게임 실측 · fut.gg 표기 오류) · 스쿼드 교체분(LB 루제리→마첸 · RB 완비사카→캐시) 반영 · 평균 적합 78.6→79.7. 팀 설정 3종(빌드업 Balanced · 수비 Balanced · 라인 50)은 변경 없이 기록만 했다 — 빌드업이 정본 Short Passing과 갈리는 것은 사용자 판단 사안이다.",
+   "source": "tactic_changes.py 2026-09-27"
+  },
   {
    "after": "4-2-3-1 Wide · 빌드업 Balanced · 수비 Balanced · 라인 50",
    "before": null,
