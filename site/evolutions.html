@@ -65,7 +65,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
     </p>
     <div id="nowmeta"></div>
     <div id="nowpitch"></div>
-        <details style="margin-top:12px"><summary class="dim" style="cursor:pointer;font-size:12px">표로 보기 — 팀 설정 · 11칸 역할/포커스 · 교체 명단</summary>
+        <details open style="margin-top:12px"><summary class="dim" style="cursor:pointer;font-size:12px">표로 보기 — 팀 설정 · <b>11칸 역할 3축 비교</b>(인게임 ↔ 에메리 재현 ↔ 선수 최적) · 교체 명단</summary>
       <div id="nowtac"></div>
       <div id="nowxi"></div>
     </details>
@@ -2485,6 +2485,16 @@ function styleRefGrid(){
 /* ⭐ **AcceleRATE 전환 알림**(2026-09-27). 케미 스타일이 민첩·힘·가속을 바꾸면 유형이 뒤집힐 수 있다
    (docs/20 ⑤ · 등급 A). ⛔ 점수에 넣지 않는다 — FC27은 유형 간 차이를 일부러 줄였고
    「어느 유형이 더 좋다」는 근거가 없다. 바뀐다는 사실만 알리고 고르는 건 사람이다. */
+/* ⭐⭐ **부족분 보강 1위** — `styleRank`가 준 같은 목록을 **2차 키로 다시 정렬**한 1위다
+   (2026-09-27 사용자 지적 「케미 추천도 포지션별로 거의 같고 기존이랑 크게 달라진 게 없는 것 같은데」).
+   ⛔ 지적이 맞았다. `balance`를 **동점일 때만** 쓰게 해 뒀는데 점수는 대부분 다르므로 사실상 죽은 키였다 —
+      실측하니 선발 11칸 중 **6칸**에서 두 순위의 1위가 갈리는데 화면엔 점수 쪽만 떴다.
+   ⇒ 섞지 않고 **나란히 놓는다**(전술 3축과 같은 방침). 근거 등급이 다르기 때문이다:
+      · 점수 = 역할 가중표 × 실상승분 — **근거 있음**
+      · 부족분 = 「같은 +10이면 낮은 쪽이 값지다」 — **판단값(MEDIUM · 게임 근거 없음)**
+   갈리는 칸이 곧 「무엇을 믿을지」를 묻는 자리다. 고르는 건 사람이다. */
+const byBalance = st => (st || []).slice().sort((a, b) => b.balance - a.balance)[0] || null;
+
 function accelNote(st){
   const rows = (st || []).filter(x => x.accelFlip).slice(0, 4);
   if (!rows.length) return '';
@@ -2555,9 +2565,9 @@ function renderChem(owned, all = owned){
         <b>지금 쓰는 스쿼드</b> <span class="chip">${esc(SQ.title || '')}</span>
         <span class="chip" style="border-color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'}">케미 ${total}/33</span>
         <small class="dim">— fut.gg 싱크 ${esc(SQ.synced_at)} 기준</small></div>
-      <table><tr><th>슬롯</th><th>선수</th><th>이 자리 역할(에메리)</th><th>케미</th><th>붙인 스타일</th><th>추천 — 이 자리 기준</th><th>메타 관습</th></tr>
+      <table><tr><th>슬롯</th><th>선수</th><th>이 자리 역할(에메리)</th><th>케미</th><th>붙인 스타일</th><th>추천 ① 역할 가중</th><th>추천 ② 부족분 보강</th><th>메타 관습</th></tr>
       ${slots11.map((s, i) => { const p = byItem.get(s.ea_item_id);
-        if (!p) return `<tr><td><b>${FORM_SLOTS[i] || i}</b></td><td colspan="6" class="dim">원장에 없는 카드(싱크 필요)</td></tr>`;
+        if (!p) return `<tr><td><b>${FORM_SLOTS[i] || i}</b></td><td colspan="7" class="dim">원장에 없는 카드(싱크 필요)</td></tr>`;
         const now = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
         const canon = CANON[CANON_BY_IDX[i]];
         const roleId = canon?.role_id || PRES[p.player_id]?.role_id || POS_ROLE[FORM_SLOTS[i]];
@@ -2570,11 +2580,21 @@ function renderChem(owned, all = owned){
           <td style="color:${v === 3 ? 'var(--ok)' : v ? 'var(--warn)' : 'var(--bad)'}"><b>${v}</b>/3</td>
           <td>${now && !['Basic', 'GK Basic'].includes(now) ? `<b>${esc(now)}</b>` : '<span class="dim">미적용</span>'}</td>
           <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}${styleDetail(st)}</td>
+          ${(() => { const bb = byBalance(st);
+             if (!bb) return '<td class="dim">—</td>';
+             const eq = st[0] && bb.name === st[0].name;
+             return `<td class="${eq ? 'dim' : ''}" title="판단값 — 역할 핵심 속성 중 낮은 것을 메우는 정도">${
+               eq ? '같음' : `<b>${esc(bb.name)}</b>`}</td>`; })()}
           <td class="dim">${(m => m ? esc(m.value) : '—')(metaFor(FORM_SLOTS[i]))}</td></tr>`;
       }).join('')}</table>
       ${benchHtml}
-      <p class="dim" style="font-size:12px;margin:6px 0 0">「추천」은 <b>우리 역할 가중</b>(판단값)으로 계산한 것이고,
-      「메타 관습」은 <b>커뮤니티 가이드 합의</b>다 — 둘 다 EA 공식이 아니며 갈릴 수 있다. 갈리는 칸이 들여다볼 자리다.<br>아래 「제안」은 <b>보유 카드로 짤 수 있는 최적</b>이라 지금 구성과 다를 수 있다 —
+      <p class="dim" style="font-size:12px;margin:6px 0 0">
+      <b>추천 ①(역할 가중)</b> = Σ(역할 핵심 속성 가중 × 실제 상승분) — <b>근거 있는 축</b>이다(역할 가중표 + 99 상한).<br>
+      <b>추천 ②(부족분 보강)</b> = 같은 상승이라도 <b>지금 낮은 속성</b>을 메우는 쪽에 더 점수를 준다 —
+      ⚠️ <b>판단값</b>이다(게임 근거 없음). ①과 갈리는 칸이 「무엇을 믿을지」를 묻는 자리다.<br>
+      ⭐ 둘을 한 숫자로 섞지 않는다 — 근거 등급이 다르기 때문이다. 실측상 선발 11칸 중 <b>6칸</b>이 갈린다.<br>
+      「메타 관습」은 <b>커뮤니티 가이드 합의</b>다 — 셋 다 EA 공식이 아니다.
+      <br>아래 「제안」은 <b>보유 카드로 짤 수 있는 최적</b>이라 지금 구성과 다를 수 있다 —
       바꿀 이유를 고를 때 쓰는 참고값이고, 이 표가 <b>실제 상태</b>다.</p></div>`;
   }
   /* ⭐⭐ **제안 풀은 활성 스쿼드다**(2026-09-27 사용자 지시 「활성 스쿼드 기준으로 선발 후보
