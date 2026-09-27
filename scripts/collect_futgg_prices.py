@@ -79,7 +79,17 @@ BUDGET = Budget(90, 600)     # main()이 인자로 덮어쓴다
 
 
 def signed_price(game, ea):
-    """⑴ 서명 받고 ⑵ 서명된 경로를 GET 한다. 실패는 None(=조회 못 함)이고 **0원이 아니다**.
+    """⑴ 서명 받고 ⑵ 서명된 경로를 GET 한다. `(가격객체, 사유)`를 돌려준다.
+
+    ⛔⛔ 종전엔 어떤 실패든 `except Exception: return None`으로 뭉개고, 호출부가 그걸
+       **`platform="console"`인 NULL 행**으로 적었다 — 즉 **못 받은 것을 「관측」으로 기록**했다.
+       2026-09-27 실측 피해: 그렇게 만들어진 유령 행이 하루 369개였고, 그중 120장은 실제로는
+       가격이 있는데 화면에 「미형성」으로 떴다(재조회 표본 6장 중 5장이 200 OK + 정상 가격).
+    ⛔⛔ 더 나쁜 것: **서명 POST의 429도 그 자루에 들어갔다.** 429를 올려보내는 건 GET뿐이라
+       서명 단계에서 막히면 「조회 실패」로 둔갑했다 — 매 회차 「조회 실패 8장」의 정체가 이것이다
+       (속도를 죄자 같은 카드들이 전부 200으로 돌아왔다).
+    ⇒ 이제 **사유를 갈라 돌려주고, 못 받은 것은 아무 행도 쓰지 않는다**(호출부가 처리).
+       `missing`(404 = fut.gg에 그 카드가 없다 · 영구)과 `fail:*`(일시적 · 재시도 대상)을 구분한다.
 
     ⚠️ 서명 POST도 요청이다 — 둘 다 예산에서 뺀다(어느 쪽이 세어지는지 모르니 **많은 쪽**을 가정한다).
     """
@@ -91,23 +101,29 @@ def signed_price(game, ea):
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
             d = (json.load(r) or {}).get("data") or {}
-    except Exception:
-        return None
+    except urllib.error.HTTPError as e:
+        if e.code == 429:                       # ⛔ 서명 단계의 429도 429다 — 「조회 실패」로 묻지 않는다
+            raise RateLimited(f"sign ea {ea}") from None
+        return None, f"fail:sign HTTP {e.code}"
+    except Exception as e:
+        return None, f"fail:sign {type(e).__name__}"
     if d.get("challengeRequired"):
         raise Challenge(f"ea {ea}")
     if not d.get("url"):
-        return None
+        return None, "fail:sign 응답에 url 없음"
     BUDGET.take()
     try:
         with urllib.request.urlopen(
                 urllib.request.Request("https://www.fut.gg" + d["url"], headers=UA), timeout=30) as r:
-            return ((json.load(r) or {}).get("data") or {}).get("currentPrice")
+            return ((json.load(r) or {}).get("data") or {}).get("currentPrice"), "ok"
     except urllib.error.HTTPError as e:
         if e.code == 429:
             raise RateLimited(f"ea {ea}") from None
-        return None
-    except Exception:
-        return None
+        if e.code == 404:                       # ⭐ fut.gg에 그 카드가 없다 — 재시도해도 같다
+            return None, "missing"
+        return None, f"fail:get HTTP {e.code}"
+    except Exception as e:
+        return None, f"fail:get {type(e).__name__}"
 
 
 def main():
@@ -160,23 +176,31 @@ def main():
             print(f"   ⏱️ {len(ids)}장 = {need}요청 · 예산 {a.budget}/{a.window}초 → 약 {mins:.0f}분 예상"
                   f"{' — 백그라운드로 돌리는 편이 낫다' if mins > 5 else ''}")
         rows, priced, failed, limited = [], 0, 0, False
+        why = {}
         for n, ea in enumerate(ids, 1):
             try:
-                cur = signed_price(g, ea)           # Challenge는 잡지 않는다 — 위로 올려 멈춘다
+                cur, reason = signed_price(g, ea)   # Challenge는 잡지 않는다 — 위로 올려 멈춘다
+                if cur is None and reason.startswith("fail:"):
+                    # ⭐ 일시적 실패는 한 번 다시 묻는다 — 실측상 대부분 그 다음에 200이다.
+                    time.sleep(2)
+                    cur, reason = signed_price(g, ea)
             except RateLimited:
                 limited = True
                 print(f"   ⛔ 429 — {n-1}장에서 레이트 리밋. **여기서 멈춘다**(재시도로 뚫지 않는다).")
                 break
             if cur is None:
+                # ⛔⛔ **못 받았으면 아무 행도 쓰지 않는다.** 종전엔 여기서 platform을 `console`로
+                #    지어내 NULL 행을 남겼고, 그게 화면에 「미형성」으로 떴다(2026-09-27 · 유령 행 369개).
+                #    없는 값은 없는 대로 두고 다음 회차가 다시 받는다.
                 failed += 1
-                price, has, mom = None, 0, None
-            else:
-                price = cur.get("price")
-                # ⭐ `isExtinct`(멸종)는 **가격 없음과 다르다** — 값이 없지만 「시장에 없다」는 사실이다.
-                has = 1 if price else 0
-                priced += has
-                mom = cur.get("priceChangePercentage") or cur.get("momentumPercentage")
-            rows.append((gv, ea, pid.get(ea), price, has, mom, (cur or {}).get("platform") or "console",
+                why[reason] = why.get(reason, 0) + 1
+                continue
+            price = cur.get("price")
+            # ⭐ `isExtinct`(멸종)는 **가격 없음과 다르다** — 값이 없지만 「시장에 없다」는 사실이다.
+            has = 1 if price else 0
+            priced += has
+            mom = cur.get("priceChangePercentage") or cur.get("momentumPercentage")
+            rows.append((gv, ea, pid.get(ea), price, has, mom, cur.get("platform") or "ps5",
                          f"fut.gg {API}/player-prices/{g}/{ea}/ (서명 조회 · {a.pulled}, collect_futgg_prices.py)",
                          "MEDIUM — fut.gg 집계 시세. price 없음은 **미형성/멸종**이지 0원이 아니다.", a.pulled))
             # ⛔ 여기서 sleep 하지 않는다 — 속도는 `Budget`이 정본이다(두 곳에 두면 갈린다).
@@ -188,7 +212,11 @@ def main():
                              price=excluded.price, has_price=excluded.has_price, momentum=excluded.momentum""", rows)
         con.commit()
         print(f"{gv}: 카드 {len(ids)}장 조회 → {len(rows)}행 적재 · 시세 있음 {priced}장 · "
-              f"미형성/멸종 {len(rows) - priced - failed}장 · 조회 실패 {failed}장 (pulled {a.pulled})")
+              f"미형성/멸종 {len(rows) - priced}장 · 못 받음 {failed}장 (pulled {a.pulled})")
+        # ⭐ 사유를 찍는다 — 종전엔 전부 「조회 실패 N장」이라 **무엇이 막혔는지 알 수 없었다**.
+        for r, c in sorted(why.items(), key=lambda kv: -kv[1]):
+            tag = "ℹ️ fut.gg에 없는 카드(영구)" if r == "missing" else "⚠️"
+            print(f"   {tag} {r}: {c}장")
         if limited:
             con2 = con.execute("SELECT COUNT(*) FROM player_card_items WHERE game_version=?", (gv,)).fetchone()[0]
             print(f"   ⚠️ 레이트 리밋으로 이번 회차는 여기까지다 — **다음 회차가 오래된 순으로 이어 받는다.**"

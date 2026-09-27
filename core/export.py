@@ -397,9 +397,13 @@ def export_all(db_path=None, window="2026-summer"):
                                is_void, notes
                         FROM fut_evolution_log ORDER BY applied_at, id""")
     # 시세 — 최신 pulled만(ea_item_id 키). NULL은 「미형성」이며 화면이 그렇게 쓴다(migration 037)
+    # ⛔⛔ 한 카드에 **행이 여럿일 수 있다**(platform 별). 종전엔 dict 마지막 행이 이겨 순서가
+    #    결정하는 구조였고, 실제로 2026-09-27에 가격 있는 행이 NULL 행에 덮여 120장이 화면에
+    #    「미형성」으로 떴다. ⇒ **가격 있는 행을 먼저 고른다**(같은 조건이면 platform 순 — 결정적).
     prices = {str(r.pop("ea_item_id")): r for r in _rows(con, """SELECT ea_item_id, price, has_price, momentum, platform, pulled
                                                               FROM player_card_prices
-                                                              WHERE pulled=(SELECT MAX(pulled) FROM player_card_prices)""")}
+                                                              WHERE pulled=(SELECT MAX(pulled) FROM player_card_prices)
+                                                              ORDER BY ea_item_id, (price IS NOT NULL), platform""")}
     # 케미스트리 스타일 24종(migration 045) — 화면이 역할 가중과 곱해 추천 순위를 만든다.
     chem_styles = _rows(con, """SELECT style_id, ea_id, name, is_gk, boosts FROM fc_chemistry_styles
                                 WHERE game_version='FC27' ORDER BY is_gk, style_id""")
