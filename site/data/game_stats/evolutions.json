@@ -52320,17 +52320,17 @@
  "tactics": [
   {
    "account_id": 1,
-   "build_up_style": "Balanced",
+   "build_up_style": "Short Passing",
    "chemistry": 33,
-   "confidence": "MEASURED(사용자 인게임 확인) — ⛔⛔ **fut.gg 표기와 충돌한다**: fut.gg는 17분 전 싱크 기준으로도 ST를 `Versatile`로 보여 줬고 우리 회차 기록(09-26·09-27T08:07·T11:46)이 전부 그 값을 옮긴 것이다. 불변규칙 3대로 **인게임 실측을 채택**한다. ⚠️ 한 칸이 틀렸다면 **나머지 10칸도 의심 대상**이다 — 그 열 칸은 아직 인게임으로 확인하지 못했으므로 이월값이고, 다음 회차에 전수 확인해야 한다.",
+   "confidence": "MEASURED(사용자 인게임 변경 보고) — 11칸 역할/포커스·전술 코드는 직전 회차 이월값이다. ⚠️ 전술 코드는 설정이 바뀌면 함께 바뀔 것이므로 **다음 fut.gg 싱크에서 재판독**해야 한다 (코드가 빌드업·라인을 인코딩한다 — 09-26 실측에서 역할 두 칸 변경이 코드 두 글자로 나타났다). ⛔ 지금 코드를 그대로 이월한 것은 **아직 못 읽었기 때문**이지 안 바뀌었다는 뜻이 아니다.",
    "defensive_approach": "Balanced",
    "formation": "4-2-3-1 (2)",
    "formation_id": "4",
    "is_custom_def": 1,
    "last_updated_at": null,
-   "line_height": 50,
-   "pulled": "2026-09-27T14:20",
-   "source": "인게임 실측(사용자 보고 2026-09-27T14:20 「계속 지원이었는데」) — ST 포커스만 정정. 나머지 10칸은 직전 회차(fut.gg 본문) 값을 이월했다.",
+   "line_height": 52,
+   "pulled": "2026-09-27T15:10",
+   "source": "인게임 실측(사용자 보고 2026-09-27T15:10 「빌드업스타일 짧은 패스 수비라인 52로 변경」) — 빌드업 Balanced→Short Passing · 라인 50→52. 나머지 항목은 직전 회차 이월.",
    "squad_name": "AVL",
    "tactic_code": "bXzdq$2TXb5b",
    "title": "Default Tactic"

@@ -95539,6 +95539,18 @@
   },
   {
    "build_up_style": "Short Passing",
+   "confidence": "MEASURED(사용자 인게임 변경 보고) — 팀 설정 3종은 확정. ⚠️ 전술 코드는 아직 재판독하지 못해 NULL로 둔다(추측해 채우지 않는다).",
+   "defensive_approach": "Balanced",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "kind": "ingame:user-2026-09-27b",
+   "line_height": 52,
+   "rationale": "2026-09-27 팀 설정 변경(사용자 인게임 적용 「빌드업스타일 짧은 패스 수비라인 52로 변경」).\n⭐⭐ **정본과 정렬됐다** — docs/10 게임 적용 정책의 「빌드업 Short Passing / 수비 Balanced 미드블록 / 라인 ~52」\n   세 항목이 이제 전부 일치한다. 09-19 기록에 남아 있던 경고(「빌드업이 정본 Short Passing이 아니라 Balanced다」)가 닫혔다.\n\n판단 경위 — 사용자가 「밸런스가 구조를 유지하니 에메리에 더 맞지 않나」라고 물었고, EA 원문이 반대였다:\n  · Short Passing: 「come short to support the carrier instead of running forward; slow transition,\n    **keeps defensive shape longest**」 — 형태를 **가장 오래** 유지한다.\n  · Balanced: 「Mix of forward runs and coming short; steady transition **into the in-possession shape**」 — 전환한다.\n⇒ 「대형 유지」는 오히려 Short Passing 쪽 성질이다. 그리고 정본 근거는 더 직접적이다 —\n  docs/10 「마르티네스부터의 **숏 빌드업 고수**(강한 압박에도 유지, 탈출구는 왓킨스 롱볼)」.\n\n⚠️ 대가는 그대로다: Short Passing은 「instead of **running forward**」라 **음바예(가속 92·질주 88)의\n   배후 침투를 명시적으로 억제**한다. 두 가지를 다음에 볼 것:\n   ⑴ 음바예 역할을 인사이드 포워드(81.2) → **윙어(81.8)** 로 돌릴지 — 터치라인에서 속도를 쓰는 쪽.\n   ⑵ **롱볼 탈출구** — 정본이 「탈출구는 왓킨스 롱볼」인데 지금 ST는 잭슨/Support(내려와 연계)라\n      그 축이 없다. **마조(힘 91·키 193)** 가 서면 열린다.\n\n⛔ 11칸 역할·포커스는 이번에 바꾸지 않았다(직전 회차와 동일).\n⚠️ 전술 코드는 이월값이다 — 설정이 바뀌면 코드도 바뀌므로 **다음 fut.gg 싱크에서 재판독**해야 한다.",
+   "season": "2026-27",
+   "tactic_code": null
+  },
+  {
+   "build_up_style": "Short Passing",
    "confidence": "PROJECTED — 이적 미확정 포함(가르나초 MEDIUM-HIGH·에스투피냔 HIGH, 나머지 CONFIRMED/보유). 26/27 실측 축적 후 measured/optimal로 대체 예정. 만잠비·고메스·에스투피냔·가르나초 처방은 타클럽/대표팀 실측 기반이라 빌라 컨텍스트 재검증 필요.",
    "defensive_approach": "Balanced",
    "formation": "4-2-3-1 Wide",
@@ -98554,6 +98566,15 @@
   }
  ],
  "tactic_changes": [
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 52",
+   "before": null,
+   "changed_at": "2026-09-27",
+   "key": "2026-27|ingame:user-2026-09-27b",
+   "layer": "team_setup",
+   "reason": "2026-09-27 팀 설정 변경(사용자 인게임 적용) — 빌드업 Balanced→Short Passing · 라인 50→52. docs/10 정본(Short Passing / Balanced 미드블록 / 라인 ~52)과 세 항목 전부 정렬됐다. 09-19 기록의 경고가 닫혔다. ⚠️ 대가: Short Passing이 음바예의 배후 침투를 억제한다 — 역할 재검토와 롱볼 탈출구(마조)가 다음 과제.",
+   "source": "tactic_changes.py 2026-09-27"
+  },
   {
    "after": "4-2-3-1 Wide · 빌드업 Balanced · 수비 Balanced · 라인 50",
    "before": null,
