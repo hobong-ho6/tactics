@@ -30,6 +30,7 @@ python3 scripts/club_sync.py 진화          # 항목 하나
 python3 scripts/club_sync.py 선수 --capture /tmp/ggclub-YYYYMMDD.json
 python3 scripts/club_sync.py 전체 --capture /tmp/ggclub-YYYYMMDD.json
 python3 scripts/club_sync.py 진화 --dry-run   # 무엇을 돌릴지만 본다
+python3 scripts/club_sync.py                 # ⭐ 항목 목록만 본다(인자 없으면 돌지 않고 표만 찍는다)
 ```
 ⛔ 실행기는 **커밋하지 않는다**(메시지는 판단이 필요하다) — 끝에 `ship.py` 한 줄을 찍어 준다.
 ⛔ **브라우저·로그인 단계는 실행기가 하지 않는다**(로그인 대행 금지) — 무엇이 남았는지 찍는다.

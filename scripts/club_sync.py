@@ -85,6 +85,33 @@ AFTER = {
 ALIAS = {"all": "전체", "전체": "전체", "player": "선수", "선수": "선수", "evo": "진화", "진화": "진화",
          "sbc": "sbc", "SBC": "sbc", "price": "시세", "시세": "시세", "tactic": "전술", "전술": "전술"}
 
+# ⭐⭐ **무엇이 있는지 외우게 하지 않는다**(2026-09-27 사용자 지적 「내가 무슨 인자가 있는지 까먹을 수 있잖아」).
+#    ⛔ 종전엔 모르는 항목을 주면 `sorted(set(ALIAS))`를 그대로 뱉어 `['SBC','all','evo',…]`처럼
+#       읽기 어려웠고, 인자 없이 부르면 **묻지도 않고 전체로 갔다**.
+#    ⇒ 항목마다 한 줄 설명을 두고 ⑴ `--list` ⑵ 모르는 항목 ⑶ **인자 없음** 세 경우에 같은 표를 찍는다.
+#    ⚠️ 인자 없음에서 **돌리지 않고 멈추는** 것이 핵심이다 — 호출부(런북·예약)는 전부 인자를 명시하므로
+#       여기 걸릴 일이 없고, 걸린다면 그건 **사람이 셸에서 친 것**이라 고를 기회를 주는 게 맞다.
+ITEM_HELP = [
+    ("전체",  "all",    "아래 전부 + 참조 표 (가장 오래 걸린다)"),
+    ("선수",  "player", "보유 카드·활성 스쿼드·케미 스타일 · 새 카드 수집 · 링크/동일성 검산  [--capture 필요]"),
+    ("진화",  "evo",    "카탈로그·해금 조건·한국어 · 적용 가능 선수 · 원장 검산"),
+    ("sbc",   "sbc",    "SBC 세트/챌린지 수집 + 해법 재계산"),
+    ("시세",  "price",  "카드 시세 스냅샷 (한 회차 ~50장 · 429 걸리면 멈춘다)"),
+    ("전술",  "tactic", "⚠️ 손 작업 — 인게임 전술 + 감독/포메이션 확인 안내만 찍는다"),
+]
+
+
+def print_items(head):
+    print(head)
+    print(f"\n  {'항목':<8}{'별칭':<9}무엇을")
+    for ko, en, why in ITEM_HELP:
+        print(f"  {ko:<8}{en:<9}{why}")
+    after = " · ".join(f"{k}→{'·'.join(v)}" for k, v in AFTER.items())
+    print(f"\n  ⭐ 연쇄: {after}  (고른 항목이 흔드는 축은 자동으로 따라 돈다)")
+    print("  예:  python3 scripts/club_sync.py 진화")
+    print("       python3 scripts/club_sync.py 전체 --capture /tmp/ggclub-YYYYMMDD.json")
+    print("       python3 scripts/club_sync.py 진화 --dry-run")
+
 # 사람이 해야 하는 단계 — 스크립트가 대신하지 않고 **무엇이 남았는지 찍는다**.
 MANUAL = {
     "선수": ["브라우저로 GG Club 열고 `collect_ggclub.py --auth-file …`로 캡처를 만든다(로그인 대행 금지)"],
@@ -131,13 +158,20 @@ def staleness():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("item", nargs="?", default="전체")
+    ap.add_argument("item", nargs="?")   # ⛔ 기본값을 두지 않는다 — 없으면 목록을 보여주고 멈춘다
+    ap.add_argument("--list", action="store_true", help="항목 목록만 보여준다")
     ap.add_argument("--capture", help="collect_ggclub.py가 만든 /tmp/ggclub-YYYYMMDD.json")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
+    if a.list or not a.item:
+        print_items("■ 클럽 싱크 — 돌릴 항목을 고른다" if not a.item else "■ 클럽 싱크 항목")
+        if not a.item:
+            print("\n⛔ 항목을 지정하지 않았다 — 전체를 돌리려면 `전체`를 명시할 것(실수로 다 도는 것을 막는다).")
+        return
     item = ALIAS.get(a.item)
     if item is None:
-        sys.exit(f"⛔ 모르는 항목 '{a.item}' — {sorted(set(ALIAS))}")
+        print_items(f"⛔ 모르는 항목 '{a.item}'")
+        sys.exit(1)
 
     print(f"■ 클럽 싱크 — 항목 **{item}**" + (" (dry-run)" if a.dry_run else ""))
     if not run("게이트", [sys.executable, S("gates.py")], a.dry_run):
