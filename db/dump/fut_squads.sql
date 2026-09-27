@@ -1,1 +1,1 @@
-INSERT INTO fut_squads VALUES(1,'Hobong','4',45,13,5,6,60,'2026-09-19','fut.gg GG Club /api/gg-club/active-squad/ (브라우저 조회, 2026-09-19) · 2026-09-19 사용자 보고로 RM/LM 교체 반영(다음 싱크에서 재확인)');
+INSERT INTO fut_squads VALUES(1,'AVL','4',45,13,5,6,50,'2026-09-27','fut.gg GG Club /api/gg-club/active-squad/ (2026-09-27 club-sync §3-3 수동 확인) · formation 4 · 감독 국적 45 · 리그 13 · 빌드업 5 · 수비접근 6은 직전과 동일 · title Hobong→AVL · custom_def 60→50 정정');
