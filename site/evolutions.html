@@ -145,7 +145,7 @@ import { evoRules, logState, inProgress } from './assets/evorules.js?v=20260924a
 import { cardCompare } from './assets/cardcompare.js?v=20260923a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
 import { setRarityAssets } from './assets/clubviz.js?v=20260927a';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
-import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT } from './assets/clubviz.js?v=20260927a';
+import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate } from './assets/clubviz.js?v=20260927a';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -862,7 +862,7 @@ function renderNow(){
     const canon = slotIdx != null ? CANON[CANON_BY_IDX[slotIdx]] : null;
     const auto = (!canon && !PRES[p.player_id]) ? bestRoleFor(nowAttrs(p), pos) : null;
     const roleId = canon?.role_id || PRES[p.player_id]?.role_id || auto?.r || POS_ROLE[pos];
-    const ranked = styleRank(nowAttrs(p), roleId, pos === 'GK');
+    const ranked = styleRank(nowAttrs(p), roleId, pos === 'GK', p);
     /* fut.gg 신호(migration 055)는 **카드 단위**(ea_item_id)다 — 같은 선수라도 카드가 다르면 갈린다. */
     const fgRows = (EVO.chem_signals || []).filter(r => r.ea_item_id === p.ea_item_id);
     return { roleId, roleKr: ROLE_KR[roleId] || roleId, basis: canon ? 'slot' : PRES[p.player_id] ? 'pres' : auto ? 'auto' : 'pos',
@@ -2224,20 +2224,46 @@ function afterStyle(at, boosts){
   for (const [a, v] of Object.entries(boosts)) out[a] = Math.min(99, (out[a] ?? 0) + v);
   return out;
 }
-function styleRank(attrsJson, roleId, isGk){
+/* ⭐⭐ 케미 스타일 순위 — **세 층으로 갈라 놓는다**(2026-09-27 사용자 지적
+     「추천할 때 선수 스탯도 고려해줘 · 지금 보면 포지션별로 추천한 케미가 거의 똑같아」).
+
+   ⛔ 지적이 정확했다. 실측으로 원인을 찾았다: 상승분이 `min(부스트, 99−현재값)`인데
+      **99 상한이 사실상 안 걸려서**(최고 속성이 91 언저리) 점수가 `Σ(역할가중 × 부스트)`라는
+      **상수**가 됐다. ⇒ 같은 역할이면 **선수가 달라도 결과가 완전히 동일**했다
+      (린델뢰프 = 파우 토레스 = Powerhouse 93 / Catalyst 81 · 카마라 = 고레츠카 = Powerhouse 66).
+
+   ⇒ 층을 나눈다. 근거 등급이 다른 것을 한 숫자에 섞지 않는다(불변규칙 12):
+     ① `score`   — 역할 가중 × 실상승분. **근거 있는 1차 정렬**(역할 가중표 + 99 상한).
+     ② `balance` — 그 역할 핵심 속성 중 **낮은 것을 메울수록** 큰 값.
+        ⚠️ **판단값(MEDIUM)이다** — 「같은 +10이면 낮은 쪽이 더 값지다」는 가정에 게임 근거가 없다.
+        ⇒ **동점을 가르는 2차 키로만** 쓴다. 1차 점수를 흔들지 않는다.
+     ③ `accel`   — 이 스타일이 **AcceleRATE 유형을 바꾸는가**(docs/20 ⑤ · 등급 A).
+        ⛔ **점수에 넣지 않는다** — FC27은 유형 간 차이를 일부러 줄였고
+           「어느 유형이 더 좋다」는 근거가 없다. 바뀐다는 **사실만** 화면에 띄우고 고르는 건 사람이다.
+        ⭐ 실측(2026-09-27 선발 11명): 캐시는 4개 스타일이 Controlled→Lengthy로 바꾸고,
+           잭슨은 4개가 Lengthy→Controlled로 떨어진다. 선수마다 완전히 다르다. */
+function styleRank(attrsJson, roleId, isGk, player){
   const w = KEYW[roleId] || {}, at = J(attrsJson, {}) || {};
   if (!CHEM_STYLES.length || !Object.keys(at).length || !Object.keys(w).length) return [];
+  const h = player?.height_cm || null;
+  const base = h ? acceleRate(at, h) : { type: null, known: false };
   return CHEM_STYLES.filter(s => !!s.is_gk === !!isGk).map(s => {
-    const parts = Object.entries(J(s.boosts, {}) || {}).map(([a, v]) => {
+    const boosts = J(s.boosts, {}) || {};
+    const parts = Object.entries(boosts).map(([a, v]) => {
       const gain = Math.min(v, Math.max(0, 99 - (at[a] ?? 0)));
       return { a, gain, s: (w[a] || 0) * gain };
     }).filter(x => x.s > 0).sort((x, y) => y.s - x.s);
-    const at2 = afterStyle(at, J(s.boosts, {}) || {});
+    /* ② 부족분 가중 — 현재값이 낮을수록 크다. ⚠️ 판단값이라 2차 키로만 쓴다. */
+    const balance = parts.reduce((t, x) => t + x.s * (99 - (at[x.a] ?? 0)) / 99, 0);
+    const at2 = afterStyle(at, boosts);
     const before = faceOf(at, isGk), after = faceOf(at2, isGk);
-    return { name: s.name, score: parts.reduce((t, x) => t + x.s, 0), top: parts.slice(0, 3),
-             parts, boosts: J(s.boosts, {}) || {}, is_gk: s.is_gk, ea_id: s.ea_id, style_id: s.style_id,
+    const to = h ? acceleRate(at2, h) : { type: null, known: false };
+    return { name: s.name, score: parts.reduce((t, x) => t + x.s, 0), balance, top: parts.slice(0, 3),
+             parts, boosts, is_gk: s.is_gk, ea_id: s.ea_id, style_id: s.style_id,
+             accelFrom: base.type, accelTo: to.type,
+             accelFlip: !!(base.type && to.type && base.type !== to.type),
              six: before.map(([k, v], i) => [k, v, after[i][1]]) };
-  }).sort((a, b) => b.score - a.score);
+  }).sort((a, b) => b.score - a.score || b.balance - a.balance);
 }
 /* ── 케미스트리 제안 (2026-09-19, 사용자 지시 「적용할 케미스트리도 제안해줘」) ──
    FC27 기준선: 클럽 2/4/7명 · 리그 3/5/8명 · 국적 2/5/8명 → 각 1/2/3점, 선수 1명당 3점 상한, 팀 33점 만점.
@@ -2405,6 +2431,20 @@ function styleRefGrid(){
     return cards ? `<h4 style="margin:10px 0 4px;font-size:13px">${label}</h4><div class="bcards">${cards}</div>` : '';
   }).join('');
 }
+/* ⭐ **AcceleRATE 전환 알림**(2026-09-27). 케미 스타일이 민첩·힘·가속을 바꾸면 유형이 뒤집힐 수 있다
+   (docs/20 ⑤ · 등급 A). ⛔ 점수에 넣지 않는다 — FC27은 유형 간 차이를 일부러 줄였고
+   「어느 유형이 더 좋다」는 근거가 없다. 바뀐다는 사실만 알리고 고르는 건 사람이다. */
+function accelNote(st){
+  const rows = (st || []).filter(x => x.accelFlip).slice(0, 4);
+  if (!rows.length) return '';
+  const base = rows[0].accelFrom;
+  return `<div style="margin:4px 0;padding:4px 6px;border-left:2px solid var(--warn)">
+    <b>AcceleRATE ${esc(base)}</b> — 이 스타일들은 유형을 <b>바꾼다</b>:
+    ${rows.map(x => `${esc(x.name)}→<b>${esc(x.accelTo)}</b>`).join(' · ')}
+    <div class="dim">점수에 넣지 않았다 — 어느 유형이 유리한지는 근거가 없다(FC27은 차이를 줄였다). 직접 고른다.</div>
+  </div>`;
+}
+
 function styleDetail(st){
   if (!st || !st[0]) return '';
   const top = st[0];
@@ -2412,6 +2452,7 @@ function styleDetail(st){
   return `<details style="margin-top:2px"><summary class="dim" style="font-size:11px;cursor:pointer">부스터 카드·근거 보기</summary>
     <div style="font-size:11px;line-height:1.6;margin-top:4px">
       <div style="margin-bottom:4px"><b>점수 ${Math.round(top.score)}</b> = Σ(역할 가중 × 실제 상승분) — ${why || '해당 역할 핵심 속성에 걸리는 상승 없음'}</div>
+      ${accelNote(st)}
       <div class="bcards">${boosterCard(top, 0)}${st.slice(1, 3).map((x, i) => boosterCard(x, i + 1)).join('')}</div>
       <div class="dim" style="margin-top:4px">막대는 <b>적용 후 값</b>(99 기준) · 초록 화살표가 실제 상승분이다.
       개별 속성 상승은 **최대 케미(3점)** 기준이고, 2점이면 9→6·6→4·3→2, 1점이면 9→3·6→2·3→1로 줄어든다.</div>
@@ -2446,7 +2487,7 @@ function renderChem(owned, all = owned){
       const pos = String(p.positions || '').split('/')[0] || '';
       const auto = PRES[p.player_id] ? null : bestRoleFor(nowAttrs(p), pos);
       const roleId = PRES[p.player_id]?.role_id || auto?.r || POS_ROLE[pos];
-      const st = styleRank(nowAttrs(p), roleId, pos === 'GK');
+      const st = styleRank(nowAttrs(p), roleId, pos === 'GK', p);
       const now = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
       const same = now && st[0] && now === st[0].name;
       return `<tr><td class="dim">${esc(pos)}</td>
@@ -2469,7 +2510,7 @@ function renderChem(owned, all = owned){
         const now = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
         const canon = CANON[CANON_BY_IDX[i]];
         const roleId = canon?.role_id || PRES[p.player_id]?.role_id || POS_ROLE[FORM_SLOTS[i]];
-        const st = styleRank(nowAttrs(p), roleId, FORM_SLOTS[i] === 'GK');
+        const st = styleRank(nowAttrs(p), roleId, FORM_SLOTS[i] === 'GK', p);
         const v = chemBy.get(p.id) ?? 0;
         const same = now && st[0] && now === st[0].name;
         return `<tr><td><b>${FORM_SLOTS[i] || i}</b><br><small class="dim">${esc(CANON_BY_IDX[i])}</small></td>
@@ -2503,7 +2544,7 @@ function renderChem(owned, all = owned){
     if (!p) return `<tr><td><b>${s}</b></td><td colspan="6" class="dim">이 포지션을 볼 수 있는 보유 카드가 없다 — 공백</td></tr>`;
     const v = chemPer.get(p.id);
     const pres = PRES[p.player_id], roleId = pres?.role_id || POS_ROLE[s];
-    const st = styleRank(nowAttrs(p), roleId, s === 'GK');
+    const st = styleRank(nowAttrs(p), roleId, s === 'GK', p);
     const gains = st[0] ? st[0].top.map(x => `${x.a}+${x.gain}`).join(' · ') : '';
     /* 지금 붙어 있는 스타일 — GG Club 싱크가 준 EA 소모품 id(250 Basic·273 GK Basic = 미적용) */
     const nowStyle = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;

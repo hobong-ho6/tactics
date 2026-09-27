@@ -784,6 +784,20 @@ function evolvedAttrs(p, ctx) {
 }
 
 /* EA 속성 키(영문 snake) → 우리 29속성 한글 키. 카탈로그 보상과 카드 속성을 잇는 유일한 다리다. */
+/* ⭐⭐ **AcceleRATE 분류 — 단일 정본**(2026-09-27 신설). 공식은 docs/20 ⑤(등급 A · FC26 3종 회귀).
+   ⛔ 이 표를 화면마다 다시 적지 않는다 — 조건이 네 개라 옮겨 적다 틀리기 쉽고,
+      실제로 docs/20에는 2차 속성을 `체력`으로 잘못 적었다가 전수 대조로 `힘`으로 정정한 이력이 있다(obs#104).
+   ⚠️ 키 임계는 **성별로 다르다**(남 182/183 · 여 162/164). 성별을 모르면 남자 기준으로 본다 —
+      그 사실을 호출부가 알 수 있게 `known`을 함께 돌려준다. */
+export function acceleRate(at, heightCm, { female = false } = {}){
+  const ag = at?.['민첩성'], st = at?.['힘'], ac = at?.['가속'];
+  if (ag == null || st == null || ac == null || !heightCm) return { type: null, known: false };
+  const hiCut = female ? 162 : 182, loCut = female ? 164 : 183;
+  if (ag >= 65 && (ag - st) >= 10 && ac >= 80 && heightCm <= hiCut) return { type: 'Explosive', known: true };
+  if (st >= 65 && (st - ag) >= 4 && ac >= 40 && heightCm >= loCut) return { type: 'Lengthy', known: true };
+  return { type: 'Controlled', known: true };
+}
+
 export const ATTR_KR = {   // ⭐ 화면들이 같은 표를 쓰도록 내보낸다(2026-09-22)
   acceleration:'가속', sprint_speed:'질주 속도', positioning:'공격 위치 선정', finishing:'결정력',
   shot_power:'슈팅력', long_shots:'중거리슛', volleys:'발리 슛', penalties:'페널티킥',
