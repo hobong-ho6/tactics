@@ -1149,3 +1149,33 @@ CREATE TABLE fc_rarity_assets(
   PRIMARY KEY(game_version, rarity_ea_id, level, pulled)
 );
 CREATE INDEX ix_fc_rarity_assets_pulled ON fc_rarity_assets(pulled);
+CREATE TABLE fc_gallery_sets(
+  game_version  TEXT NOT NULL,
+  set_id        INTEGER NOT NULL,
+  category_id   INTEGER, category_name TEXT,
+  name          TEXT, slug TEXT, description TEXT,
+  required_cards INTEGER,          -- 예: 아스널 20장
+  total_tokens  INTEGER,           -- 그 세트가 줄 수 있는 토큰 총량
+  club_ea_id    INTEGER, league_ea_id INTEGER, rarity_ea_id INTEGER,
+  start_time    TEXT,
+  grades_json   TEXT,              -- [{name:'D',threshold:10}, …] — 등급 임계(점수)
+  pulled        TEXT NOT NULL,
+  source TEXT, confidence TEXT,
+  PRIMARY KEY(game_version, set_id, pulled)
+);
+CREATE TABLE fc_gallery_tiers(
+  game_version TEXT NOT NULL,
+  set_id       INTEGER NOT NULL,
+  grade        TEXT NOT NULL,      -- D·C·B·A·S
+  threshold    INTEGER,            -- 그 등급에 필요한 점수
+  tokens       INTEGER,            -- 그 등급에서 받는 토큰
+  cost         INTEGER,            -- 조합 총 코인 (⚠️ 시세라 회차마다 바뀐다)
+  peak_price   INTEGER,            -- 조합에서 가장 비싼 카드
+  total_score  INTEGER,
+  items_json   TEXT,               -- [{eaId, price}, …]
+  pulled       TEXT NOT NULL,
+  source TEXT, confidence TEXT,
+  PRIMARY KEY(game_version, set_id, grade, pulled)
+);
+CREATE INDEX ix_fc_gallery_sets_pulled ON fc_gallery_sets(pulled);
+CREATE INDEX ix_fc_gallery_tiers_pulled ON fc_gallery_tiers(pulled);
