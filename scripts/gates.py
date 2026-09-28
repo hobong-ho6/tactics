@@ -1537,6 +1537,33 @@ def run(db_path=None, verbose=True):
     if not ok29:
         fails.append("G29")
 
+    # G30 — ⛔⛔ **모르는 값을 조용한 기본값으로 적지 않았는가.** 2026-09-27 신설
+    #   2026-09-27 감사에서 같은 유형이 세 곳에서 나왔다: 시세가 실패를 `platform="console"`로,
+    #   진화 목록이 실패를 `html=""`로, 케미가 모르는 배지를 NULL로 적고 있었다.
+    #   ⚠️ 공통점은 **틀린 값이 아니라 「그럴듯한 값」**이라는 것이다 — 「미형성」·「목록 0종」·「결손」은
+    #      전부 정상으로 읽혀서 아무도 오류를 안 냈다. 보고만으로는 두 회차씩 묻혔다(실증).
+    #   ⇒ 수집기가 모르는 값을 만나면 `?<원문>`으로 남기기로 했고, **여기서 커밋을 막는다.**
+    #      ⛔ 이 게이트를 끄지 말고 어휘표를 갱신할 것(수집기의 ACCEL 등).
+    g30 = []
+    try:
+        for (v, n) in con.execute("""SELECT accelerate, COUNT(*) FROM futgg_chem_signals
+                                      WHERE accelerate LIKE '?%' GROUP BY accelerate"""):
+            g30.append(f"futgg_chem_signals.accelerate={v}({n}행)")
+        # 시세: 성공 응답의 platform은 항상 실제 값이다. `console`은 옛 버그가 지어내던 값이라
+        # 다시 나타나면 회귀다(2026-09-27에 유령 행 369개를 지웠다).
+        for (n,) in con.execute("""SELECT COUNT(*) FROM player_card_prices
+                                    WHERE platform='console' AND price IS NULL"""):
+            if n:
+                g30.append(f"player_card_prices.platform=console·price NULL({n}행 — 실패를 관측으로 적던 회귀)")
+    except Exception as e:                                   # noqa: BLE001
+        g30.append(f"조회 실패({e})")
+    ok30 = not g30
+    if verbose:
+        print(f"G30 모르는 값의 조용한 기본값: 위반 {len(g30)} "
+              + ("✅" if ok30 else "❌ " + " · ".join(g30[:4])))
+    if not ok30:
+        fails.append("G30")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")

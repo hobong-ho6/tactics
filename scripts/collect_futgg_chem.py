@@ -29,6 +29,23 @@ DB = ROOT / "db" / "tactics.db"
 
 ACCEL = {"C": "Controlled", "E": "Explosive", "L": "Lengthy"}
 
+
+def accel_of(badge, unknown):
+    """배지 → AcceleRATE. ⛔ **모르는 배지를 조용히 NULL로 떨구지 않는다**(2026-09-27 감사).
+
+    종전엔 `ACCEL.get(badge)` 하나라 ⑴ 배지가 없다 ⑵ 처음 보는 배지다 가 **둘 다 NULL**이었다.
+    EA가 가속 타입을 늘리면 그 사실이 「결손」으로 둔갑해 아무도 모르게 지나간다
+    (시세의 `platform or "console"`과 같은 유형 — 모르는 값을 기본값으로 지어내는 자리).
+    ⇒ 없으면 NULL, 아는 배지는 이름, **모르는 배지는 `?<원문>`으로 남긴다**(값을 잃지 않는다).
+       ⭐ `?`가 붙은 값은 G30이 커밋을 막는다 — 보고만으로는 묻힌다.
+    """
+    if not badge:
+        return None                       # 배지 없음 — 정상적인 결손이다
+    if badge in ACCEL:
+        return ACCEL[badge]
+    unknown[badge] = unknown.get(badge, 0) + 1
+    return f"?{badge}"
+
 # 페이지에서 격자와 투표 목록을 한 번에 뽑는다. 구조는 2026-09-21 실측(div.rounded 타일 + 투표 바).
 JS = """() => {
   const out = {tiles: [], votes: [], accel: null};
@@ -86,7 +103,7 @@ def main():
 
     from playwright.sync_api import sync_playwright
 
-    ins, skipped, novote = 0, [], 0
+    ins, skipped, novote, unknown = 0, [], 0, {}
     SRC = f"fut.gg 선수 페이지 케미 스타일 격자 직독 (Playwright, {a.pulled})"
     CONF = ("MEASURED(fut.gg 표기). ⚠️ 배지는 **등급이 아니라 그 스타일 적용 시 AcceleRATE**다 "
             "(2026-09-21 실측 확정: 카마라 전 스타일 C=Controlled · 음바페 대부분 E=Explosive). "
@@ -116,7 +133,7 @@ def main():
                     """INSERT OR REPLACE INTO futgg_chem_signals
                        (ea_item_id, pulled, style_name, accelerate, vote_pct, source, confidence)
                        VALUES (?,?,?,?,?,?,?)""",
-                    (r["ea_item_id"], a.pulled, style, ACCEL.get(badge), votes.get(style), SRC, CONF))
+                    (r["ea_item_id"], a.pulled, style, accel_of(badge, unknown), votes.get(style), SRC, CONF))
                 ins += 1
             print(f"  [{n}/{len(todo)}] {r['name']:<20} 스타일 {len(tiles)} · 투표 {len(votes)} · 현재 {data.get('accel')}")
             time.sleep(a.sleep)
@@ -125,6 +142,11 @@ def main():
     print(f"\n적재 {ins}행 · 투표 0건 카드 {novote}장 · 실패 {len(skipped)}장")
     for nm, why in skipped:
         print(f"  ⚠️ {nm}: {why}")
+    if unknown:
+        # ⛔ 모르는 배지는 **새 AcceleRATE 타입일 수 있다** — `?원문`으로 적었고 G30이 커밋을 막는다.
+        print("\n⛔ 처음 보는 가속 배지:", ", ".join(f"{k}({v}회)" for k, v in sorted(unknown.items())))
+        print("   ⇒ fut.gg 선수 페이지에서 뜻을 확인하고 collect_futgg_chem.py의 ACCEL에 추가할 것.")
+        print("   ⚠️ 그때까지 그 행들은 `?<원문>`으로 남는다(값을 잃지 않는다).")
 
 
 if __name__ == "__main__":

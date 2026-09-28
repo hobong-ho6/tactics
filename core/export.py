@@ -284,6 +284,29 @@ def export_all(db_path=None, window="2026-summer"):
           LEFT JOIN player_card_items i ON i.ea_item_id=c.ea_item_id
           LEFT JOIN players pl ON pl.id=c.player_id
          WHERE c.status='owned' AND c.player_id IS NOT NULL""")
+
+    # ⛔⛔ **한 선수의 카드를 둘 이상 보유할 수 있다**(베이스 + 특별 카드 — FUT에선 흔하다).
+    #    `state`는 player_id로 키를 잡으므로 그때 **마지막 행이 이기는** 구조였다. 순서 보장이 없어
+    #    회차마다 다른 카드가 「현재 카드」로 뽑힐 수 있었다 — 시세의 유령 행 사고와 같은 유형이다
+    #    (2026-09-27 감사에서 잠복으로 잡았다. 그 시점 중복은 0이었다).
+    # ⇒ 대표를 **명시적으로** 고른다. 순서는 ⑴ 활성 스쿼드 ⑵ 진화 이력 있음 ⑶ 높은 OVR
+    #    ⑷ 낮은 club_player_id(동률 tiebreak — 결정적이어야 한다).
+    #    근거: 활성 스쿼드 카드가 「지금 쓰는 카드」이고, 진화 이력이 걸린 카드는 사용자 규칙상
+    #    팔지 않는 카드다(런북 §3 예외). 둘 다 없으면 높은 OVR이 그 선수의 현재 상한이다.
+    # ⭐ 밀린 카드를 **숨기지 않는다** — `alt_club_player_ids`로 함께 내보내 화면이 짚을 수 있게 한다.
+    in_squad = {r[0] for r in con.execute(
+        "SELECT id FROM fut_club_players WHERE status='owned' AND is_in_active_squad=1")}
+    has_evo = {r[0] for r in con.execute(
+        "SELECT DISTINCT club_player_id FROM fut_evolution_log WHERE is_void=0")}
+    state = {}
+    for r in sorted(club_state, key=lambda r: (r["club_player_id"] not in in_squad,
+                                               r["club_player_id"] not in has_evo,
+                                               -(r["ovr"] or 0), r["club_player_id"])):
+        k = str(r["player_id"])
+        if k in state:                                  # 이미 대표가 정해졌다 — 밀린 카드는 기록만 한다
+            state[k].setdefault("alt_club_player_ids", []).append(r["club_player_id"])
+            continue
+        state[k] = r
     # ⭐⭐ SBC(migration 066·067) — 세트/챌린지 원문 조건 + **보유 카드 기준 판정 결과**.
     #    ⛔ 판정은 화면이 매번 풀지 않는다 — 탐색이라 느리고 새로고침마다 답이 바뀐다.
     #       `sbc_solve.py --save`가 적어 둔 최신 판정을 그대로 내보낸다(verdict 다섯 값의 뜻은 migration 067).
@@ -443,7 +466,7 @@ def export_all(db_path=None, window="2026-summer"):
                            "tactics": tactics, "tactic_roles": tactic_roles,
                            "club": {"accounts": accounts, "players": club, "log": log,
                                      # ⭐ 화면이 「현재」를 각자 고르지 않게 하는 정본(위 주석)
-                                     "state": {str(r["player_id"]): r for r in club_state},
+                                     "state": state,
                                      "stats": club_stats, "unlocks": unlocks},
                            "sbc": {"sets": sbc_sets, "challenges": sbc_ch, "done": sbc_done, "excluded": sbc_excl},
                            "formations": formations}))
