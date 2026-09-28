@@ -35,7 +35,7 @@ DB = ROOT / "db" / "tactics.db"
 TIER = {"Bronze": 0, "Silver": 1, "Gold": 2}
 # ⭐⭐ 케미 규칙은 `core/chem.py`가 정본이다(2026-09-26) — 여기서 다시 적지 않는다.
 #    종전엔 이 파일과 화면에 두 벌이 있었고 **아이콘·히어로 규칙이 화면에만 빠져** 있었다.
-from core.chem import CHEM, chem_total, extra as _extra   # noqa: E402,F401
+from core.chem import CHEM, chem_total, per_player, extra as _extra   # noqa: E402,F401
 # ⛔⛔ **포메이션은 DB가 정본이다**(migration 070 · fut.gg 번들에서 받은 FC27 29종).
 #    종전엔 4종을 여기 박아 썼다 — SBC는 챌린지마다 포메이션이 고정이라 목록이 모자라면 기록조차 못 한다.
 #    ⭐ 칸 자격은 `gen`(번들의 generalPositionSlots · 등급 A)으로 본다 — 그 칸에 설 수 있는 카드 포지션이다.
@@ -906,6 +906,13 @@ def main():
                       "pos": sorted(positions_of(p)), "card": p["card_image_url"],
                       # ⭐ SBC가 박아 둔 카드 — 화면이 ✕를 감추고 「고정」으로 표시한다.
                       **({"fixed": True} if p.get("fixed") else {})}
+    # ⭐ 선수별 케미를 함께 싣는다(2026-09-28 사용자 지시 「sbc 해법에 … 케미스트리 정보를 보여줘」).
+    #    자리가 맞는 선수만 링크에 들고(core/chem.per_player 규약), 안 맞으면 0이다.
+    def squad_of(pl):
+        fit_ps = [p for _n, _x, _y, p, fit, _w in pl if p and fit]
+        pc = {id(p): c for p, c in zip(fit_ps, per_player(fit_ps))}
+        return [dict(slim(p), slot=nm, x=x, y=y, fit=fit, want=want, chem=pc.get(id(p), 0))
+                for nm, x, y, p, fit, want in pl if p]
     bad_save = []
     for r, xi, size, cands, _cd, _b in ok:
         known = FORM_OF.get(r["challenge_ea_id"])
@@ -925,8 +932,7 @@ def main():
             continue
         # ⭐ 슬롯·좌표를 함께 저장한다 — 화면이 **피치 모양**으로 그린다(2026-09-25 사용자 지시
         #    「포메이션 모습으로 보여줘 · 어떤 포지션의 선수인지도 모르겠어」).
-        squad = [dict(slim(p), slot=nm, x=x, y=y, fit=fit, want=want)
-                 for nm, x, y, p, fit, want in pl if p]
+        squad = squad_of(pl)
         rows.append((a.game, r["challenge_ea_id"], today, aid, "ok",
                      json.dumps({"formation": form, "formation_known": bool(known), "partial": False,
                                  "players": squad, "checks": breakdown(xi, _cd, ch),
@@ -946,8 +952,7 @@ def main():
         if part:
             ch, form, pl = best_placement(part, known)
             sj = json.dumps({"formation": form, "formation_known": bool(known), "partial": True,
-                             "players": [dict(slim(p), slot=nm, x=x, y=y, fit=fit, want=want)
-                                         for nm, x, y, p, fit, want in pl if p],
+                             "players": squad_of(pl),
                              "checks": breakdown(part, conds, ch),
                              "buy": buy_specs(part, pl, conds, pool),
                              "hints": [{"text": t, "how": h} for t, h in

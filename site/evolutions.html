@@ -2971,6 +2971,24 @@ const altHTML = xi => {
           ${a.untradeable ? '<u>거래불가</u>' : ''}</div>`).join('')}</div></div>`).join('')}
     </details>`;
 };
+/* ⭐ 해법의 **구성 요약**(2026-09-28 사용자 지시 「sbc 해법에 선수들의 리그, 클럽, 국가, 평균 오버롤,
+   케미스트리 정보를 보여줘」). SBC 조건이 묻는 축이 바로 이것들이라 인원 수로 센다.
+   ⛔ 케미는 여기서 계산하지 않는다 — 솔버가 `core/chem.per_player`로 선수마다 저장한 값(`p.chem`)을 읽는다.
+      값이 없는 옛 해법(재계산 전)은 「—」로 둔다. 팀 합은 `chem_total`(감독 +1 미포함 하한). */
+const compHTML = (sq, c) => {
+  const tally = k => Object.entries(sq.reduce((m, p) => (m[p[k] || '—'] = (m[p[k] || '—'] || 0) + 1, m), {}))
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+  const chips = k => tally(k).map(([v, n]) => `<span class="chip">${esc(v)} <b>${n}</b></span>`).join(' ');
+  const avg = (sq.reduce((s, p) => s + (p.ovr || 0), 0) / sq.length).toFixed(1);
+  const has = sq.some(p => p.chem != null);
+  const dist = has ? [3, 2, 1, 0].map(v => `${v}점 ${sq.filter(p => p.chem === v).length}명`).join(' · ') : '';
+  return `<div class="kv" style="font-size:12px;margin:4px 0;line-height:1.9">
+    <div>📊 평균 OVR <b>${avg}</b> · 팀 레이팅 <b>${c.team_rating ?? '—'}</b>
+      · 케미 <b>${c.chem_total ?? '—'}</b>/33${has ? ` <small class="dim">(${dist})</small>` : ' <small class="dim">— 선수별 케미는 다음 재계산부터</small>'}</div>
+    <div>🏆 리그 ${tally('league').length}개 — ${chips('league')}</div>
+    <div>🛡️ 클럽 ${tally('club').length}개 — ${chips('club')}</div>
+    <div>🌍 국가 ${tally('nation').length}개 — ${chips('nation')}</div></div>`;
+};
 let SBC_F = 'all';
 const SBC_OPEN = new Set();          // 완료분을 펼쳐 둔 세트
 function renderSbc(){
@@ -3215,12 +3233,14 @@ function renderSbc(){
                 ${altHTML(xi)}
                 ${misfitHTML(xi)}
                 ${exclHTML(c.challenge_ea_id)}
-                ${!sq.length ? '' : `<details style="margin-top:4px" id="sbct${c.challenge_ea_id}"><summary class="dim" style="cursor:pointer">표로 보기</summary>
-                  <table class="tbl" style="margin-top:4px"><thead><tr><th>자리</th><th>OVR</th><th>선수</th><th>클럽</th><th>리그</th><th>국적</th></tr></thead><tbody>
+                ${!sq.length ? '' : `<details open style="margin-top:4px" id="sbct${c.challenge_ea_id}"><summary class="dim" style="cursor:pointer">선수 구성 — 리그 · 클럽 · 국가 · OVR · 케미</summary>
+                  ${compHTML(sq, c)}
+                  <table class="tbl" style="margin-top:4px"><thead><tr><th>자리</th><th>OVR</th><th>선수</th><th>클럽</th><th>리그</th><th>국적</th><th>케미</th></tr></thead><tbody>
                   ${sq.map(p => `<tr${p.fit === false ? ' style="opacity:.6"' : ''}><td><b>${esc(p.slot || '')}</b></td><td>${p.ovr}</td>
                     <td>${esc(p.name)}${p.untradeable ? ' <span class="chip dim">거래불가</span>' : ''}</td>
                     <td class="dim">${esc(p.club || '—')}</td><td class="dim">${esc(p.league || '—')}</td>
-                    <td class="dim">${esc(p.nation || '—')}</td></tr>`).join('')}</tbody></table></details>`}</div>`;
+                    <td class="dim">${esc(p.nation || '—')}</td>
+                    <td>${p.chem == null ? '<span class="dim">—</span>' : `<b>${p.chem}</b>/3${p.fit === false ? ' <small class="dn">자리</small>' : ''}`}</td></tr>`).join('')}</tbody></table></details>`}</div>`;
             })()}
             ${c.solve_conf ? `<div class="dim" style="font-size:11px;margin-top:5px">${esc(c.solve_conf)}</div>` : ''}
           </div></details>`;
