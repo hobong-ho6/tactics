@@ -123,6 +123,7 @@ def cmd_evolve(con, a):
     #    ⇒ 이제 서버가 카탈로그 보상을 `current_attrs`에 얹어 **attrs·six·ovr 셋을 한꺼번에** 갱신한다.
     #       두 벌이 갈릴 수 있는 구조 자체가 없어진다. 화면이 보낸 숫자는 **대조용으로만** 본다.
     attrs_after = None
+    ps_after = None                 # 카탈로그로 계산하면 채운다 — 없을 때만 path_json(완주 카드)으로 물러선다
     cur_attrs = json.loads(cp["current_attrs"]) if cp["current_attrs"] else None
     lvrow = con.execute("SELECT levels FROM fc_evolutions WHERE evo_id=? ORDER BY pulled DESC",
                         (a.evo,)).fetchone()
@@ -150,6 +151,16 @@ def cmd_evolve(con, a):
             gain_rpp = [u["value"] for u in ups if u.get("upgrade") == "role_plus_plus"]
             gain_rp = [u["value"] for u in ups if u.get("upgrade") == "role_plus"]
             gain_ps = [u["value"] for u in ups if u.get("upgrade") == "play_style"]
+            # ⛔⛔ PlayStyle도 **이 단계 보상만** 얹는다(2026-09-28 실측 사고 — 바르가스 반복 배급 1단계).
+            #    종전엔 `path_json`(fut.gg **완주** 카드)의 PlayStyle을 그대로 적어서, 1단계만 끝났는데
+            #    2·3단계 보상(핑드 패스·퍼스트 터치)이 현재 카드에 붙었다. 스탯은 이미 단계별 계산이었다.
+            ps_names = {r[0]: r[1] for r in con.execute(
+                "SELECT ea_id, name FROM fc_playstyle_ids WHERE game_version='FC27'")}
+            miss_ps = [v for v in gain_ps if v not in ps_names]
+            if miss_ps:
+                sys.exit(f"⛔ 모르는 PlayStyle id {miss_ps} — 지어내지 않는다. collect_playstyle_ids.py를 먼저 돌릴 것")
+            have_ps = [x.strip() for x in (cp["current_playstyles"] or "").split(",") if x.strip()]
+            ps_after = have_ps + [ps_names[v] for v in gain_ps if ps_names[v] not in have_ps]
             bump, unknown = apply_upgrades(attrs_after, ups)
             if unknown:
                 sys.exit(f"⛔ 모르는 보상 항목 {unknown} — 지어내지 않는다. core/futgg_attrs.py의 표를 먼저 채울 것")
@@ -184,7 +195,8 @@ def cmd_evolve(con, a):
                 (cp["id"], a.evo, evo_name, a.level, a.date, a.completed, cp["current_ovr"], ovr_after, cp["current_six"], six_after,
                  # ⭐ 29속성을 함께 남긴다(migration 082) — `complete`가 이걸 보고 current_attrs를 올린다.
                  json.dumps(attrs_after, ensure_ascii=False) if attrs_after is not None else None,
-                 json.dumps((after or {}).get("playstyles"), ensure_ascii=False) if after else None,
+                 json.dumps(ps_after, ensure_ascii=False) if ps_after is not None else
+                 (json.dumps((after or {}).get("playstyles"), ensure_ascii=False) if after else None),
                  json.dumps((after or {}).get("roles_plus")) if after else None,
                  json.dumps((after or {}).get("roles_plus_plus")) if after else None,
                  f"scripts/fut_club.py evolve ({TODAY} 기록) · 적용 후 값 출처: {src}",
@@ -217,7 +229,8 @@ def cmd_evolve(con, a):
                      current_roles_plus=COALESCE(?, current_roles_plus), current_roles_plus_plus=COALESCE(?, current_roles_plus_plus),
                      evo_count=evo_count+1, updated=? WHERE id=?""",
                 (ovr_after, six_after,
-                 ", ".join(after["playstyles"]) if after and after.get("playstyles") else None,
+                 ", ".join(ps_after) if ps_after is not None else
+                 (", ".join(after["playstyles"]) if after and after.get("playstyles") else None),
                  rp_new, rpp_new, TODAY, cp["id"]))
     print(f"진화 기록: {cp['name']} ← {evo_name} (lv{a.level}) OVR {cp['current_ovr']} → {ovr_after} · 적용일 {a.date}")
 

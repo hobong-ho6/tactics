@@ -106,6 +106,7 @@ def main():
     ins = upd = same = 0
     conflicts, applied_styles, done, protected, ps_fixed, restored = [], [], [], [], [], []
     stats_n = 0
+    b = lambda v: None if v is None else int(bool(v))       # noqa: E731
     for r in rows:
         card = cards.get(r["ea"]) or {}
         # ⛔⛔ **GK 판정의 정본은 캡처 파일이다**(2026-09-27 실측 사고).
@@ -135,6 +136,11 @@ def main():
                          r.get("cs"), r.get("cp"), r.get("gg"), a.pulled,
                          f"gg-club {r.get('gg')} · {r['ovr']} · 구매가 {r.get('paid')} ({a.pulled} 싱크)", TODAY))
             ins += 1
+            # ⚠️ 자산 축은 신규 행에도 넣는다 — 종전엔 기존 행만 갱신해서 새 카드의 거래불가·임대가 비어 있었다.
+            con.execute("""UPDATE fut_club_players SET is_untradeable=?, is_in_active_squad=?, is_captain=?,
+                             kit_number=?, number_of_owners=?, is_loan=?, loan_games=? WHERE id=last_insert_rowid()""",
+                        (b(r.get("unt")), b(r.get("act")), b(r.get("cap")), r.get("kit"), r.get("own"),
+                         b(r.get("loan")), r.get("loan_n")))
             continue
         # ⭐⭐ **EA 목록에 있으면 「보유」다 — 처분 표시를 되돌린다**(2026-09-25 신설).
         #    ⛔ 종전엔 status를 **한 방향으로만** 바꿨다: 「EA에 없으면 sold」는 있는데 그 반대가 없었다.
@@ -197,10 +203,10 @@ def main():
                         (r["ovr"], six, r.get("cs"), r.get("cp"), attrs_json, rp_json, rpp_json, ps_new,
                          r.get("gg"), a.pulled, TODAY if changed else cur["updated"], cur["id"]))
         # ③ 스쿼드·자산 축 — 진화와 무관하고 EA가 정본이라 **보호 여부와 관계없이** 갱신한다(케미와 같은 취급).
-        b = lambda v: None if v is None else int(bool(v))       # noqa: E731
         con.execute("""UPDATE fut_club_players SET is_untradeable=?, is_in_active_squad=?, is_captain=?,
-                         kit_number=?, number_of_owners=? WHERE id=?""",
-                    (b(r.get("unt")), b(r.get("act")), b(r.get("cap")), r.get("kit"), r.get("own"), cur["id"]))
+                         kit_number=?, number_of_owners=?, is_loan=?, loan_games=? WHERE id=?""",
+                    (b(r.get("unt")), b(r.get("act")), b(r.get("cap")), r.get("kit"), r.get("own"),
+                     b(r.get("loan")), r.get("loan_n"), cur["id"]))
         # ② 경기 기록 — 누적값이라 **회차 스냅샷**으로 쌓는다(같은 날 재실행이면 덮어쓴다).
         st = r.get("st") or {}
         if any(v is not None for v in st.values()):

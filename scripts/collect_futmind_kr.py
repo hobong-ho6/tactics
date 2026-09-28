@@ -66,12 +66,15 @@ def main():
     pulled = con.execute("SELECT MAX(pulled) FROM fc_evolutions").fetchone()[0]
     ours = con.execute("SELECT evo_id, name FROM fc_evolutions WHERE pulled=?", (pulled,)).fetchall()
 
-    upd, miss, tasks, lvkr = [], [], [], []
+    upd, miss, tasks, lvkr, rep = [], [], [], [], []
     for r in ours:
         o = by.get(strip(r["name"]))
         if not o:
             miss.append(r["name"])
             continue
+        # ⭐ 반복 횟수(migration 089) — EA `numberOfRepetitions` = 첫 적용 뒤 **추가** 반복. 총 횟수로 바꿔 적는다.
+        n_rep = o.get("numberOfRepetitions")
+        rep.append((1 if n_rep is None else 9999 if n_rep < 0 else n_rep + 1, r["evo_id"], pulled))
         L = o.get("locales") or {}
         nm = (L.get("names") or {}).get(a.lang)
         de = (L.get("descriptions") or {}).get(a.lang)
@@ -109,6 +112,13 @@ def main():
     con.executemany("UPDATE fc_evolutions SET name_kr=COALESCE(?, name_kr), description_kr=COALESCE(?, description_kr) "
                     "WHERE evo_id=? AND pulled=?", upd)
     con.executemany("UPDATE fc_evolutions SET levels_kr=? WHERE evo_id=? AND pulled=?", lvkr)
+    con.executemany("UPDATE fc_evolutions SET repeat_total_ea=? WHERE evo_id=? AND pulled=?", rep)
+    diff = con.execute("""SELECT name, repeatability, repeat_total_ea FROM fc_evolutions
+                          WHERE pulled=? AND repeat_total_ea IS NOT NULL AND repeat_total_ea != repeatability""",
+                       (pulled,)).fetchall()
+    print(f"반복 횟수(EA 기준) {len(rep)}종 · fut.gg와 갈림 {len(diff)}종 — 화면은 EA 값을 쓴다")
+    for d_ in diff:
+        print(f"   ⚠️ {d_['name']}: fut.gg {d_['repeatability']} ↔ EA {d_['repeat_total_ea']}")
     # ⭐ 과제 번역 — 영문이 같으면 같은 번역이다(EA 현지화가 문구 단위라). 빈 칸만 채운다.
     n = 0
     for en, ko in uniq.items():

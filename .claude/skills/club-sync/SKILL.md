@@ -371,6 +371,9 @@ python3 scripts/gaps.py squad     # 활성 스쿼드가 두 수집 축의 **조�
      (2026-09-26: 30종 중 9종 미매칭 · fut.gg 목록 화면이 해금형을 감추던 것과 같은 현상).
      보고의 미매칭 목록이 **해금형뿐**이면 넘어가고, 일반 진화가 섞여 있으면 그게 구멍이다.
    - ⚠️ 근거 등급 **B** — futmind가 EA 원본이라 밝힌 적은 없다(인게임 문구와의 일치는 미확인).
+   - ⭐ **반복 횟수도 여기서 EA 값으로 받는다**(2026-09-28 · migration 089). EA `numberOfRepetitions`는 **추가** 반복 수,
+     fut.gg `repeatabilityCount`는 **총** 횟수다(총 = EA + 1 · 무제한 -1 = 9999). 화면은 EA 값을 우선한다.
+     보고 줄 `fut.gg와 갈림 N종`을 읽는다 — 실증: RW Roles++가 fut.gg에서만 1회성으로 나왔다.
 
 ## 6. 【sbc】 SBC 수집 + 해법 재계산
 
@@ -382,6 +385,19 @@ python3 scripts/gaps.py squad     # 활성 스쿼드가 두 수집 축의 **조�
 .venv/bin/python scripts/sbc_solve.py              # 보유 카드 기준 해법 재계산(--save 포함)
 ```
 
+- ⭐⭐ **포메이션은 FUTBIN에서 받는다**(2026-09-28 사용자 지시 「클럽싱크 돌릴 때 sbc 포메이션은 풋빈에서
+  가져와서 … 해법을 바로 제공」). ⛔ **포메이션 없이 해법을 내지 않는다** — 기록이 없으면 `need_form`으로만 남는다(migration 087).
+  ```
+  python3 scripts/collect_futbin_sbc_formations.py --print-snippet   # ①시작 ②읽기 두 줄이 나온다
+  .venv/bin/python scripts/collect_futbin_sbc_formations.py --json-file /tmp/futbin-forms-YYYYMMDD.json   # 적재 + 해법 자동 재계산
+  ```
+  - ⛔ **Chrome(claude-in-chrome)에서 돌린다** — 스크립트 직접 호출은 Cloudflare **403**, in-app 브라우저 패널은
+    봇 검사를 **못 넘는다**(2026-09-28 실측 · 사용자가 체크해도 안 넘어갔다). ⛔ 봇 검사를 우회하지 않는다.
+    Chrome 탭에서 `www.futbin.com`을 한 번 열어 검사를 통과한 뒤, 그 탭에서 같은 출처 fetch로 받는다.
+  - ⚠️ ①을 한 번에 기다리면 Chrome 도구의 **45초 제한**에 걸린다 — 그래서 시작/읽기로 나눴다. `done:1`이 보이면 끝.
+  - ⭐ FUTBIN URL 번호 = `challenge_ea_id`. 원클릭은 404(포메이션 없음 · 정상).
+  - ⭐ 검증: 사용자 인게임 기록 5건과 **5/5 일치**. 사용자 기록과 갈리면 **덮지 않고 보고**한다.
+  - ⭐ 순서: `club_sync.py sbc`(수집 → 결손 집계 → 해법) → 결손이 있으면 스니펫 → `--json-file`.
 - ⭐ **보유가 바뀌면 해법이 바뀐다** — 그래서 `선수` 항목을 돌린 회차에는 **이것도 같이 돌린다**.
   (SBC 제출로 카드가 사라지거나, 새 카드가 들어오면 채울 수 있던 챌린지가 갈린다.)
 - ⚠️ 판정은 화면이 매번 풀지 않는다 — `sbc_solve.py`가 적어 둔 최신 판정을 `export.py`가 내보낸다.

@@ -230,6 +230,9 @@ def rows_of(players):
                     # ③ 스쿼드·자산 축 — 보유행에서 온다(playerDef가 아니다).
                     "unt": p.get("isUntradeable"), "act": p.get("isInActiveSquad"),
                     "cap": p.get("isCaptain"), "kit": p.get("kitNumber"), "own": p.get("numberOfOwners"),
+                    # ⭐ 임대 여부(migration 088) — 임대는 SBC에 못 낸다. 종전엔 버려서 해법에 임대 카드가 들어갔다.
+                    "loan": None if p.get("playerType") is None else p.get("playerType") == "loan",
+                    "loan_n": q.get("loanDuration"),
                     # ② 경기 기록 — 누적값이라 회차 스냅샷으로 쌓는다.
                     "st": {"gp": p.get("gamesPlayed"), "g": p.get("goals"), "a": p.get("assists"),
                            "yc": p.get("yellowCards"), "rc": p.get("redCards"), "ga": p.get("ga"),
@@ -245,7 +248,8 @@ def rows_of(players):
                              "foot": {1: "오른쪽", 2: "왼쪽"}.get(q.get("foot")),
                              "h": q.get("height"), "w": q.get("weight"), "dob": q.get("dateOfBirth"),
                              "nat": nm_of(q.get("nation")), "lg": nm_of(q.get("league")),
-                             "club": nm_of(q.get("club")),
+                             # ⚠️ 히어로·아이콘은 `club`이 null이고 `uniqueClub`(예: HERO 114605)에만 온다(2026-09-28 Hazard).
+                             "club": nm_of(q.get("club")) or nm_of(q.get("uniqueClub")),
                              # ⚠️ 겉모습 축이다(migration 066) — 성능 판단에 쓰지 않는다.
                              #    `is` 대신 원값을 그대로 넘긴다: 없으면 NULL(미수집)로 남겨야 한다.
                              "face": None if q.get("isRealFace") is None else int(q.get("isRealFace")),

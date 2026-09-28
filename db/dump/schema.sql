@@ -693,7 +693,7 @@ CREATE TABLE fc_evolutions(
   number_of_players INTEGER,            -- fut.gg 집계 적용 가능 선수 수(전체 DB 기준)
   is_expired INTEGER NOT NULL DEFAULT 0,
   source TEXT, confidence TEXT,
-  pulled TEXT NOT NULL, carried_from TEXT, name_kr TEXT, description_kr TEXT, levels_kr TEXT,                 -- 진화는 기간제 — 시점이 정본
+  pulled TEXT NOT NULL, carried_from TEXT, name_kr TEXT, description_kr TEXT, levels_kr TEXT, repeat_total_ea INTEGER,                 -- 진화는 기간제 — 시점이 정본
   UNIQUE(game_version, evo_id, pulled)
 );
 CREATE INDEX ix_fc_evolutions_gv ON fc_evolutions(game_version, is_expired, end_time);
@@ -1049,19 +1049,6 @@ CREATE TABLE fc_sbc_challenges(
   PRIMARY KEY(game_version, challenge_ea_id, pulled)
 );
 CREATE INDEX ix_sbc_ch_set ON fc_sbc_challenges(set_ea_id, pulled);
-CREATE TABLE fc_sbc_solutions(
-  game_version    TEXT NOT NULL REFERENCES game_versions(code),
-  challenge_ea_id INTEGER NOT NULL,
-  pulled          TEXT NOT NULL,          -- 판정일 = 그날의 보유 카드 기준이라는 뜻
-  account_id      INTEGER REFERENCES fut_accounts(id),
-  verdict         TEXT NOT NULL CHECK(verdict IN ('ok','impossible','not_found','oneclick','unparsed')),
-  squad_json      TEXT,                   -- 찾은 스쿼드(선수 id·이름·OVR·클럽·리그·국적)
-  team_rating     INTEGER, chem_total INTEGER,
-  pool_size       INTEGER,                -- 1인 조건을 통과한 보유 카드 수
-  note            TEXT,                   -- 못 맞춘 조건·못 읽은 문장 등
-  source TEXT, confidence TEXT,
-  PRIMARY KEY(game_version, challenge_ea_id, pulled)
-);
 CREATE TABLE fut_sbc_log(
   id INTEGER PRIMARY KEY,
   account_id      INTEGER NOT NULL REFERENCES fut_accounts(id),
@@ -1111,7 +1098,7 @@ CREATE TABLE IF NOT EXISTS "fut_club_players"(
   notes TEXT,
   updated TEXT NOT NULL, chem_style_ea INTEGER, chem_points INTEGER, gg_player_id TEXT, synced_at TEXT, current_attrs TEXT, is_untradeable INTEGER, is_in_active_squad INTEGER, is_captain INTEGER, kit_number INTEGER, number_of_owners INTEGER,
   -- 어느 챌린지에 넣었나(status='sbc'일 때만). 되돌리기와 출처 추적용.
-  sbc_challenge_ea_id INTEGER,
+  sbc_challenge_ea_id INTEGER, is_loan INTEGER, loan_games INTEGER,
   UNIQUE(account_id, ea_item_id)
 );
 CREATE TABLE fc_sbc_fixed(
@@ -1179,3 +1166,16 @@ CREATE TABLE fc_gallery_tiers(
 );
 CREATE INDEX ix_fc_gallery_sets_pulled ON fc_gallery_sets(pulled);
 CREATE INDEX ix_fc_gallery_tiers_pulled ON fc_gallery_tiers(pulled);
+CREATE TABLE IF NOT EXISTS "fc_sbc_solutions"(
+  game_version    TEXT NOT NULL REFERENCES game_versions(code),
+  challenge_ea_id INTEGER NOT NULL,
+  pulled          TEXT NOT NULL,          -- 판정일 = 그날의 보유 카드 기준이라는 뜻
+  account_id      INTEGER REFERENCES fut_accounts(id),
+  verdict         TEXT NOT NULL CHECK(verdict IN ('ok','impossible','not_found','oneclick','unparsed','need_form')),
+  squad_json      TEXT,                   -- 찾은 스쿼드(선수 id·이름·OVR·클럽·리그·국적)
+  team_rating     INTEGER, chem_total INTEGER,
+  pool_size       INTEGER,                -- 1인 조건을 통과한 보유 카드 수
+  note            TEXT,                   -- 못 맞춘 조건·못 읽은 문장 등
+  source TEXT, confidence TEXT,
+  PRIMARY KEY(game_version, challenge_ea_id, pulled)
+);

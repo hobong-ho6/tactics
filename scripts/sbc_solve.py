@@ -170,25 +170,16 @@ def pin_of(xi):
     return {p["slot"]: i for i, p in enumerate(xi) if p.get("fixed") and p.get("slot")}
 
 
-def best_placement(xi, form=None):
-    """배치. ⛔⛔ **포메이션이 기록돼 있으면 그것만 쓴다**(2026-09-25).
+def best_placement(xi, form):
+    """배치. ⛔⛔ **기록된 포메이션으로만 배치한다**(2026-09-25 · 2026-09-28 강화).
        인게임 SBC는 챌린지마다 포메이션이 고정인데 EA·fut.gg가 그 값을 주지 않는다
-       (`fc_sbc_formations` = 사용자 기록). 종전엔 **케미가 가장 높은 것을 임의로 골라** 보여줘서
-       인게임 화면과 달랐다 — 그게 이 함수가 인자를 받게 된 이유다.
-       ⚠️ 기록이 없으면 후보를 다 시도하되, 돌려주는 포메이션은 **추정**이다(화면이 그렇게 적는다)."""
+       (`fc_sbc_formations` = 사용자 기록). 종전엔 기록이 없으면 흔한 6종 중 케미 최대를 골라
+       **추정 해법**을 냈다 — 자리·케미가 인게임과 달라 쓸 수 없는 답이었다(사용자 지시
+       「포메이션 없이 계산하는 건 의미없어」). ⇒ 추정 경로를 없앴다. 기록이 없으면 main()이
+       탐색 전에 `need_form`으로 빼므로 여기까지 오지 않는다."""
     pin = pin_of(xi)
-    if form and form in FORMS:
-        pl = place(xi, form, pin)
-        return chem_total([p for _n, _x, _y, p, fit, _w in pl if p and fit]), form, pl
-    # ⚠️ 추정일 때 29종을 다 돌면 탐색이 무거워진다 — **흔한 포메이션 6종**만 본다(어차피 추정이다).
-    GUESS = [f for f in ("4-2-3-1", "4-4-2", "4-3-3", "3-5-2", "4-1-4-1", "5-2-1-2") if f in FORMS] or list(FORMS)
-    best = None
-    for f in GUESS:
-        pl = place(xi, f, pin)
-        ch = chem_total([p for _n, _x, _y, p, fit, _w in pl if p and fit])
-        if best is None or ch > best[0]:
-            best = (ch, f, pl)
-    return best
+    pl = place(xi, form, pin)
+    return chem_total([p for _n, _x, _y, p, fit, _w in pl if p and fit]), form, pl
 
 
 def tier_of(p):
@@ -476,6 +467,62 @@ def chem_ok(xi, conds):
     return ch >= max(need), (ch, form, pl)
 
 
+def spend_key(p):
+    """**아까운 정도**(2026-09-28 사용자 지시 「가급적이면 등급이나 오버롤이 낮은 카드를 먼저 사용」).
+       작을수록 먼저 낸다: 특수 카드 → 등급(브론즈<실버<골드) → OVR 순으로 비싸다고 본다.
+       ⚠️ 등급 구간은 통설(등급 D · tier_of 주석). 시세는 보지 않는다 — 보유 카드 시세는 대부분 비어 있다."""
+    return (int(bool(p["is_special"])), tier_of(p), p["ovr"] or 0)
+
+
+def cheapen(xi, cands, conds, n_fixed):
+    """찾은 해를 **덜 아까운 카드로 한 자리씩 바꿔** 내려간다 — 조건·배치 케미가 그대로 통과할 때만 받는다.
+       탐색(solve)은 「통과하는 첫 11명」을 돌려주므로 여기서 쓸데없이 높은 카드를 걷어낸다.
+       ⚠️ 한 자리씩 바꾸는 탐욕 하강이라 전역 최소는 아니다(두 장을 동시에 바꿔야 풀리는 경우는 못 본다)."""
+    ids = {q["id"] for q in xi}
+    order = sorted((c for c in cands), key=spend_key)
+    for _pass in range(3):
+        moved = False
+        # 가장 아까운 자리부터 본다
+        for i in sorted(range(n_fixed, len(xi)), key=lambda j: spend_key(xi[j]), reverse=True):
+            cur = spend_key(xi[i])
+            for alt in order:
+                if spend_key(alt) >= cur:
+                    break
+                if alt["id"] in ids:
+                    continue
+                trial = xi[:i] + [alt] + xi[i + 1:]
+                _f, c2 = check(trial, conds)
+                if c2 or not chem_ok(trial, conds)[0]:
+                    continue
+                ids.discard(xi[i]["id"]); ids.add(alt["id"])
+                xi, moved = trial, True
+                break
+        if not moved:
+            break
+    # ⭐ 두 장 동시 교체 — 케미로 묶인 두 자리를 **같은 클럽/리그/국적의 싼 두 장**으로 바꿔야 내려가는 경우가 있다.
+    #    무작위로 시도하되 받는 조건은 같다(조건·배치 케미 통과 + 합계가 줄 때만).
+    rng = random.Random(len(xi) * 7919 + sum(q["id"] for q in xi))
+    total = lambda x: tuple(map(sum, zip(*(spend_key(p) for p in x[n_fixed:]))))   # noqa: E731
+    cheap = order[:max(22, len(order) // 2)]
+    for _ in range(1500):
+        if len(xi) - n_fixed < 2:
+            break
+        i, j = rng.sample(range(n_fixed, len(xi)), 2)
+        a_, b_ = rng.sample(cheap, 2)
+        if a_["id"] in ids or b_["id"] in ids:
+            continue
+        trial = list(xi)
+        trial[i], trial[j] = a_, b_
+        if total(trial) >= total(xi):
+            continue
+        _f, c2 = check(trial, conds)
+        if c2 or not chem_ok(trial, conds)[0]:
+            continue
+        ids -= {xi[i]["id"], xi[j]["id"]}; ids |= {a_["id"], b_["id"]}
+        xi = trial
+    return xi
+
+
 def solve(pool, conds, size, tries, rng, fixed=()):
     """무작위 재시작 + **위반 크기를 줄이는** 국소 교체.
        ⛔ 못 찾았다고 「불가능」이 아니다 — 최적 보장이 없는 탐색이라 보고에 그렇게 적는다."""
@@ -486,21 +533,33 @@ def solve(pool, conds, size, tries, rng, fixed=()):
     cands = [p for p in pool if per_player_ok(p, conds)]
     if pick <= 0 or len(cands) < pick:
         return None, cands, None
-    best = None
+    best, found = None, []
+    KEEP = 30                       # 모을 해의 수 — 많을수록 덜 아까운 해를 찾지만 느려진다
+    # ⭐⭐ **싼 쪽부터 찾는다**(2026-09-28 사용자 지시 「등급이나 오버롤이 낮은 카드를 먼저 사용」).
+    #    재시작마다 후보를 덜 아까운 순으로 **좁은 창**에서 뽑고 점점 넓힌다(15% → 100%).
+    #    ⛔ 해를 찾고 나서 내리는 것(cheapen)만으로는 안 된다 — 비싼 카드끼리 케미로 묶인 해는
+    #       한 장씩 바꾸면 케미가 무너져 못 내려온다(실측: 48번에 89 Ewa Pajor가 남았다).
+    ranked = sorted(cands, key=spend_key)
     for t in range(tries):
-        xi = fixed + rng.sample(cands, pick)
+        # ⚠️ 앞 절반만 창을 넓히고 뒤 절반은 전체로 돈다 — 전부 좁게 돌면 어려운 챌린지를 놓친다(실측: 48번 못 찾음).
+        w = min(len(ranked), max(pick * 2, int(len(ranked) * min(1.0, 0.15 + 0.85 * t / max(1, tries // 2)))))
+        win = ranked[:w]
+        xi = fixed + rng.sample(win, pick)
         fail, cost = check(xi, conds)
         if not cost:
             ok_ch, info = chem_ok(xi, conds)
             if ok_ch:
-                return xi, cands, None
+                found.append(list(xi))
+                if len(found) >= KEEP:
+                    break
+                continue
             # ⛔ 조건표는 통과했는데 **배치하면 케미가 모자란** 경우 — 그 사실을 보고에 남긴다
             #    (2026-09-25: 안 남겨서 「남은 위반 0인데 실패」라는 읽을 수 없는 보고가 나왔다).
             need = max(v for (k, v), _ in conds if k == "chem")
             fail, cost = [f"배치 후 케미 {info[0]} < 필요 {need} ({info[1]} 기준 · 포지션이 맞아야 케미가 붙는다)"], 1
         for _ in range(400):
             i = len(fixed) + rng.randrange(pick)      # ⛔ 고정 카드는 교체 대상이 아니다
-            alt = rng.choice(cands)
+            alt = rng.choice(win)
             if any(alt["id"] == q["id"] for q in xi):
                 continue
             trial = xi[:i] + [alt] + xi[i + 1:]
@@ -510,14 +569,24 @@ def solve(pool, conds, size, tries, rng, fixed=()):
             if not cost:
                 ok_ch, info = chem_ok(xi, conds)
                 if ok_ch:
-                    return xi, cands, None
+                    break
                 need = max(v for (k, v), _ in conds if k == "chem")
                 fail, cost = [f"배치 후 케미 {info[0]} < 필요 {need} ({info[1]} 기준)"], 1
         # ⭐ **가장 가까운 해의 11명을 함께 들고 나간다**(2026-09-25 사용자 지시
         #    「못 풀더라도 현재 스쿼드 기준으로 채울 수 있는 선수들을 채우고」).
         #    종전엔 위반 목록만 남기고 그 11명을 버려서 「무엇까지는 됐나」를 볼 수 없었다.
+        if not cost and chem_ok(xi, conds)[0]:
+            found.append(list(xi))
+            if len(found) >= KEEP:
+                break
+            continue
         if best is None or cost < best[1]:
             best = (fail, cost, list(xi))
+    if found:
+        # ⭐ 해를 여러 개 모아 각각 내려 본 뒤 **가장 덜 아까운 것**을 고른다(2026-09-28).
+        #    첫 해 하나만 내리면 무작위 탐색이 처음 닿은 곳에 묶인다 — 실측: 48번이 OVR 합 851→900으로 **올랐다**.
+        outs = [cheapen(x, cands, conds, len(fixed)) for x in found]
+        return min(outs, key=lambda x: tuple(map(sum, zip(*(spend_key(p) for p in x[len(fixed):]))))), cands, None
     return None, cands, best
 
 
@@ -645,7 +714,13 @@ def main():
                c.is_untradeable, c.ea_item_id
           FROM fut_club_players c LEFT JOIN player_card_items i
             ON i.ea_item_id=c.ea_item_id AND i.game_version=?
-         WHERE c.status='owned' AND COALESCE(c.current_ovr, i.ovr) IS NOT NULL""", (a.game,))]
+         WHERE c.status='owned' AND COALESCE(c.current_ovr, i.ovr) IS NOT NULL
+           -- ⛔ 임대 카드는 SBC에 못 낸다(migration 088 · 2026-09-28 사용자 지적 「아자르는 임대카드」).
+           --    옵션으로 두지 않는다 — 넣으면 제출이 안 되는 해법이 나올 뿐이다.
+           AND COALESCE(c.is_loan, 0) = 0""", (a.game,))]
+    n_loan = con.execute("SELECT COUNT(*) FROM fut_club_players WHERE status='owned' AND is_loan=1").fetchone()[0]
+    if n_loan:
+        print(f"⛔ 임대 카드 {n_loan}장 제외 — SBC에 낼 수 없다")
     # ⭐⭐ **활성 스쿼드는 기본 제외**(2026-09-25 사용자 지시 「내 활성 스쿼드의 선수들은 SBC 구성할 때 제외」).
     #    지금 쓰고 있는 11+12명을 SBC에 넣어 버리면 팀이 무너진다 — 넣고 싶으면 --include-squad.
     squad_ids = {r[0] for r in con.execute(
@@ -734,7 +809,7 @@ def main():
         EXCL.setdefault(cid, set()).add(pid)
     if EXCL:
         print(f"🚫 챌린지별 제외 {sum(len(v) for v in EXCL.values())}건 / {len(EXCL)}챌린지")
-    ok, no, undec, oneclick = [], [], [], []
+    ok, no, undec, oneclick, noform = [], [], [], [], []
     for r in rows:
         conds, bad = parse(json.loads(r["requirements_text"] or "[]"))
         if bad:
@@ -750,13 +825,18 @@ def main():
                 oneclick.append((r, conds, [p for p in pool_c if per_player_ok(p, conds)]))
                 continue
             size = 11
+        # ⛔⛔ 포메이션을 모르면 풀지 않는다(2026-09-28 사용자 지시) — 추정 배치는 인게임에서 쓸 수 없다.
+        if CUR_FORM[0] not in FORMS:
+            noform.append((r, [p for p in pool_c if per_player_ok(p, conds)])); continue
         xi, cands, best = solve(pool_c, conds, size, a.tries, rng,
                                 fixed=FIXED.get(r['challenge_ea_id'], []))
         (ok if xi else no).append((r, xi, size, cands, conds, best))
 
     def head(r):
         return f"{r['set_name']} › {r['name']}"
-    print(f"\n{'='*70}\n■ 달성 가능 {len(ok)} · 불가/못 찾음 {len(no)} · 원클릭 {len(oneclick)} · 판정 불가 {len(undec)}\n{'='*70}")
+    print(f"\n{'='*70}\n■ 달성 가능 {len(ok)} · 불가/못 찾음 {len(no)} · 원클릭 {len(oneclick)} · 판정 불가 {len(undec)} · 포메이션 입력 필요 {len(noform)}\n{'='*70}")
+    for r, cs in noform:
+        print(f"  📐 {head(r)} — 포메이션 미기록이라 풀지 않았다(조건 통과 {len(cs)}장). 화면에서 포메이션을 입력하면 재계산된다")
     if oneclick:
         print("\n── 원클릭 제출(인원 수를 fut.gg가 주지 않는다 — 조건 통과 카드 수만 센다) ──")
         for r, conds, cs in oneclick:
@@ -765,7 +845,7 @@ def main():
         aw = ", ".join(x["name"] for x in json.loads(r["awards_text"] or "[]")) or "—"
         known = FORM_OF.get(r["challenge_ea_id"])
         ch, form, pl = best_placement(xi, known)
-        print(f"\n✅ {head(r)}  [{size}명 · {form}{'' if known else '(추정 — 미기록)'} · 보상 {aw} · 마감 {(r['end_time'] or '')[:10]}]")
+        print(f"\n✅ {head(r)}  [{size}명 · {form} · 보상 {aw} · 마감 {(r['end_time'] or '')[:10]}]")
         for nm, _x, _y, p, fit, _w in pl:
             if not p:
                 continue
@@ -774,6 +854,7 @@ def main():
                   + ("  [거래불가]" if p["is_untradeable"] else ""))
         print(f"     └ 팀 레이팅 {team_rating([p['ovr'] for p in xi])} · 케미 {ch} (배치 반영)")
     for r, _x, size, cands, conds, best in no:
+        CUR_FORM[0] = FORM_OF.get(r["challenge_ea_id"])
         print(f"\n❌ {head(r)}  [{size}명 필요 · 조건 통과 카드 {len(cands)}장]")
         if a.buy:
             hints = group_hints(set(best[0]) if best else set(), conds)
@@ -828,16 +909,15 @@ def main():
     bad_save = []
     for r, xi, size, cands, _cd, _b in ok:
         known = FORM_OF.get(r["challenge_ea_id"])
+        CUR_FORM[0] = known          # ⭐ 아래 check·alternatives가 이 챌린지의 포메이션으로 케미를 잰다
         ch, form, pl = best_placement(xi, known)
         # ⛔⛔ **저장 직전에 다시 검증한다 — 통과 못 하면 ok로 적지 않는다**(2026-09-25 사용자 지적
         #    「노르웨이 대 포르투갈 해법이 문제의 조건을 만족하지 않고 있어」).
         #    탐색이 고른 11명과 **실제로 저장되는 배치**는 다른 단계에서 만들어진다 —
         #    그 사이에 어긋날 여지를 「조심하자」로 막지 않고 여기서 **막는다**(불변규칙 13 ③ 게이트).
         #    ⚠️ 케미는 배치에 의존하므로 `form`을 세워 놓고 재계산한다.
-        prev, CUR_FORM[0] = CUR_FORM[0], form
         fail, _c = check(xi, _cd)
         okch, _i = chem_ok(xi, _cd)
-        CUR_FORM[0] = prev
         if fail or not okch:
             bad_save.append((r["name"], fail or ["케미 미달"]))
             rows.append((a.game, r["challenge_ea_id"], today, aid, "not_found", None, None, None,
@@ -861,11 +941,10 @@ def main():
         # 부분 스쿼드: 탐색이 닿은 가장 가까운 11명. 인원 자체가 모자라면(impossible) 통과 카드 전부.
         part = best[2] if best else sorted(cands, key=lambda p: -p["ovr"])[:size]
         known = FORM_OF.get(r["challenge_ea_id"])
+        CUR_FORM[0] = known
         sj = None
         if part:
-            prev, CUR_FORM[0] = CUR_FORM[0], None
             ch, form, pl = best_placement(part, known)
-            CUR_FORM[0] = prev
             sj = json.dumps({"formation": form, "formation_known": bool(known), "partial": True,
                              "players": [dict(slim(p), slot=nm, x=x, y=y, fit=fit, want=want)
                                          for nm, x, y, p, fit, want in pl if p],
@@ -882,6 +961,10 @@ def main():
     for r, conds, cs in oneclick:
         rows.append((a.game, r["challenge_ea_id"], today, aid, "oneclick", None, None, None, len(cs),
                      "원클릭 제출 — fut.gg가 제출 인원을 주지 않아 인원 판정을 하지 않는다", src, conf))
+    for r, cs in noform:
+        rows.append((a.game, r["challenge_ea_id"], today, aid, "need_form", None, None, None, len(cs),
+                     "포메이션 미기록 — 인게임 포메이션을 입력하기 전에는 풀지 않는다(추정 배치는 쓸 수 없다)",
+                     src, conf))
     for r, bad in undec:
         rows.append((a.game, r["challenge_ea_id"], today, aid, "unparsed", None, None, None, None,
                      "못 읽은 조건: " + " / ".join(bad), src, conf))

@@ -54,7 +54,10 @@ STEPS = {
     ],
     "sbc": [
         ("SBC 세트·챌린지 수집", [PY, S("collect_futgg_sbc.py")], False),
-        ("해법 재계산", [PY, S("sbc_solve.py")], False),
+        # ⭐ 포메이션은 FUTBIN에서 온다(2026-09-28) — 받는 건 Chrome 단계라 여기선 **결손만 센다**.
+        #    받아 넣으면(`--json-file`) 그 스크립트가 해법을 바로 다시 푼다. 없는 챌린지는 `need_form`으로 남는다.
+        ("SBC 포메이션 결손(FUTBIN)", [sys.executable, S("collect_futbin_sbc_formations.py"), "--missing"], False),
+        ("해법 재계산", [PY, S("sbc_solve.py"), "--save"], False),
     ],
     "시세": [
         ("카드 시세 스냅샷", [PY, S("collect_futgg_prices.py"), "--games", "27"], False),
@@ -115,6 +118,8 @@ def print_items(head):
 # 사람이 해야 하는 단계 — 스크립트가 대신하지 않고 **무엇이 남았는지 찍는다**.
 MANUAL = {
     "선수": ["브라우저로 GG Club 열고 `collect_ggclub.py --auth-file …`로 캡처를 만든다(로그인 대행 금지)"],
+    "sbc": ["포메이션 결손이 있으면 Chrome의 www.futbin.com 탭에서 "
+            "`collect_futbin_sbc_formations.py --print-snippet` ①시작 → ②읽기 → `--json-file`로 넣는다(해법은 자동 재계산)"],
     "전술": ["`https://www.fut.gg/gg-club/my/tactics/` 본문을 읽어 `fut_tactics`/`fut_tactic_roles`에 새 `pulled` 행 추가",
              "활성 스쿼드 응답의 formation/manager/buildUp을 보고 `fut_squads` 갱신(케미에 직접 들어간다)"],
 }
@@ -227,6 +232,10 @@ def main():
             if not run(f"[{b}] {label}", cmd, a.dry_run):
                 sys.exit(1)
 
+    if "sbc" in buckets:
+        print("\n⚠️ SBC 포메이션은 **Chrome 단계**가 남을 수 있다:")
+        for m in MANUAL["sbc"]:
+            print(f"   · {m}")
     if not a.dry_run:
         run("export", [sys.executable, S("export.py")], False)
     staleness()
