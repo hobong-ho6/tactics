@@ -1,1 +1,1 @@
-INSERT INTO fut_squads VALUES(1,'AVL','4',45,13,4,6,52,'2026-09-27','fut.gg GG Club /api/gg-club/active-squad/ (2026-09-27 club-sync §3-3 수동 확인) · formation 4 · 감독 국적 45 · 리그 13 · 수비접근 6 동일 · buildUpStyleId 5→4 · customDefensiveApproachValue 50→52');
+INSERT INTO fut_squads VALUES(1,'AVL','4',45,13,5,6,52,'2026-09-28','fut.gg GG Club /api/gg-club/active-squad/ (2026-09-28 club-sync §3-3 수동 확인) · activeFormationId 4 · 감독 국적 45 · 리그 13 · 수비접근 6 · 커스텀 52 동일 · buildUpStyleId 4→5 (⚠️ 전술 페이지는 Balanced 표기 — 충돌 미해소, fut_tactics 2026-09-28T16:35 confidence 참조)');
