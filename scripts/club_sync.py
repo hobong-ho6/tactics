@@ -50,6 +50,8 @@ STEPS = {
         ("진화 카탈로그·경로·적용가능", [PY, S("collect_futgg_evolutions.py"), "--games", "27", "--fill-catalog"], False),
         ("해금 조건(목표 과제)", [PY, S("collect_futgg_objectives.py")], False),
         ("한국어 이름·설명·미션", [PY, S("collect_futmind_kr.py")], False),
+        # ⭐ 1차 판정: EA가 준 진화 이력과 로그를 대조한다(migration 090). 스탯 역추정(--verify)은 보조다.
+        ("진화 이력 대조(EA 이력 ↔ 로그)", [sys.executable, S("evo_detect.py"), "--ea"], False),
         ("원장 검산(EA 실측 대조)", [sys.executable, S("evo_detect.py"), "--verify"], False),
     ],
     "sbc": [

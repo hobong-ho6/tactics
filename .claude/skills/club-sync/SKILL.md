@@ -182,7 +182,10 @@ python3 scripts/club_sync.py                 # ⭐ 항목 목록만 본다(인�
        (실측 2026-09-24: 보유 99장 중 2장이 카드 행이 없어 화면에서 통째로 안 보였다).
      ⛔ ①은 **진화 보호 대상**이다 — EA가 원장보다 낮으면 PlayStyle도 덮지 않는다(스탯과 같은 취급).
    - ⛔⛔ **싱크로 못 받는 것**(2026-09-24 실측 확인 — 기대하지 말 것):
-     **어떤 진화를 밟았는지**(`evolutionId`·`partialEvolutionId`·`numberOfEvolutions`가 진화 6명 포함 **전원 null**) ·
+     ~~어떤 진화를 밟았는지~~ ⭐ **2026-09-28 정정 — 받는다.** `playerDef`의 `evolutionId`류는 전원 null이지만
+     **보유행**의 `evolutions`(EA id·반복 회차·완료 단계·상태)와 `activeEvolution`(fut.gg id·진행 단계)이 온다.
+     EA id는 `fc_evolutions.ea_evo_id`(fut.gg 객체의 `eaId`)로 잇는다(migration 090).
+     ⇒ `python3 scripts/evo_detect.py --ea`가 EA 이력 ↔ 로그를 대조한다(첫 회차 9/10장 완전 일치) ·
      **AcceleRATE**(`accelerateType` 0/99) · **워크레이트** · **케미 추가치**(`extra*Chemistry` 0/99) ·
      **인게임 전술** · **진화 카탈로그/경로/해금 과제** · **내가 안 가진 카드**.
      ⚠️ `isInProgressEvolution`은 전원 False였는데 **진행 중인 카드가 없던 회차**라 양성 사례를 못 봤다 —
@@ -220,12 +223,16 @@ python3 scripts/club_sync.py                 # ⭐ 항목 목록만 본다(인�
      ⭐ 실증(2026-09-20): 맥긴이 EA 목록에서 빠졌는데 사용자가 「다시 스쿼드에 넣어둘 것」이라 해 보존했다 — 없다고 다 판 게 아니다.
    - ⭐ 「진화 완주로 보이는 선수」 보고가 뜨면 `fut_club.py complete`로 닫되, **어떤 진화였는지는 사용자에게 확인**한다
      (fut.gg는 경로를 주지 않는다 — 「GG Club tracks your players' final stats, but not the evolution path that created them.」).
-     ⭐⭐⭐ **판정은 손으로 하지 말고 `scripts/evo_detect.py`를 먼저 돌린다**(2026-09-26 신설).
+     ⭐⭐⭐⭐ **먼저 `evo_detect.py --ea`를 본다**(2026-09-28) — EA가 **어떤 진화를 몇 단계까지** 밟았는지 준다.
+        「로그가 없다」로 뜬 진화는 그 진화·단계로 `evolve`/`complete` 하면 된다(사용자에게 진화명을 묻지 않아도 된다).
+        ⚠️ 캡처 뒤에 인게임에서 단계를 더 밟았으면 한 회차 늦게 맞는다 — 그때는 사용자 보고가 우선이다.
+     ⭐⭐⭐ 이력이 없는 카드(구 캡처)만 **`scripts/evo_detect.py`로 역추정**한다(2026-09-26 신설).
         아래 ⑴⑵는 **판단이 아니라 알고리즘**인데 그동안 세션이 매 회차 손으로 풀었다 —
         갈림길 조합을 빠뜨리기 쉽고 회차마다 결론이 달라질 수 있다.
         ```bash
         python3 scripts/evo_detect.py            # 로그가 없는데 스탯이 변한 카드의 후보
         python3 scripts/evo_detect.py --verify   # **이미 적힌 로그**가 현재 스탯을 설명하는지 검산
+        python3 scripts/evo_detect.py --ea       # ⭐ EA 진화 이력 ↔ 로그 대조(1차 판정)
         ```
         ⛔ 스크립트는 원장에 쓰지 않는다 — 후보 제시일 뿐이고 기록은 `fut_club.py evolve`로 한다.
         ⚠️ 「스탯이 맞는다」는 충분조건이 아니다(다른 진화가 같은 결과를 낼 수 있다) — 후보가 여럿이면 ⑶으로 가른다.

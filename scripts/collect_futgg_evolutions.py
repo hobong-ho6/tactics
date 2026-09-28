@@ -114,7 +114,7 @@ CATALOG_COLS = [
     "coins_cost", "points_cost", "token_cost", "repeatability", "is_reward", "is_gk", "is_timed",
     "training_time", "created_at", "end_time", "end_submission_time", "requirements_text",
     "total_upgrades_text", "levels", "allowed_prior_ids", "number_of_players", "is_expired",
-    "source", "confidence", "pulled"]
+    "source", "confidence", "pulled", "ea_evo_id"]
 # ⭐ 이월 행은 `carried_from`에 **언제 관측한 값인지**를 남긴다(migration 059) —
 #    산문에만 적으면 화면이 실측과 구분하지 못한다. NULL = 그 회차에 직접 받은 값.
 
@@ -137,7 +137,9 @@ def catalog_row(e, gv, pulled):
         number_of_players=e.get("numberOfPlayers"), is_expired=1 if e.get("isExpired") else 0,
         source=f"fut.gg paths API 응답에 내장된 evolution 객체 ({pulled} 수집, collect_futgg_evolutions.py)",
         confidence="HIGH — fut.gg가 EA 정의를 그대로 노출한다. ⚠️ 기간제 — end_time 이후는 사실이 아니다.",
-        pulled=pulled)
+        pulled=pulled,
+        # ⭐ EA id(migration 090) — GG Club 보유행의 진화 이력은 이 체계로 온다. 이름 대조 없이 잇는 키다.
+        ea_evo_id=e.get("eaId"))
 
 
 def main():
@@ -355,7 +357,8 @@ def main():
         for row in catalog.values():
             cols = ",".join(row)
             cur.execute(f"INSERT INTO fc_evolutions({cols}) VALUES({','.join('?' * len(row))}) "
-                        "ON CONFLICT(game_version, evo_id, pulled) DO NOTHING", tuple(row.values()))
+                        "ON CONFLICT(game_version, evo_id, pulled) DO UPDATE SET "
+                        "ea_evo_id=COALESCE(fc_evolutions.ea_evo_id, excluded.ea_evo_id)", tuple(row.values()))
             n += cur.rowcount
         con.commit()
         print(f"진화 카탈로그: 응답에서 {len(catalog)}종 발견 · 신규 {n}행 (fc_evolutions)")

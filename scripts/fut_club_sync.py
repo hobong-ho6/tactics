@@ -72,6 +72,23 @@ def main():
     styles = {r["ea_id"]: r["name"] for r in con.execute("SELECT ea_id, name FROM fc_chemistry_styles WHERE ea_id IS NOT NULL")}
     have = {r["ea_item_id"]: dict(r) for r in
             con.execute("SELECT * FROM fut_club_players WHERE account_id=?", (acc["id"],))}
+    # ⛔⛔ **같은 카드를 여러 장 가진 경우 한 장만 원장에 남긴다**(2026-09-28 · 알리송 78 진화본 + 70 사본).
+    #    원장 키가 카드 id(ea_item_id)라 둘이 한 행에 번갈아 쓰였고, 뒤에 온 70 사본이 GG Club id·진화 이력을
+    #    덮었다(스탯은 진화 보호가 막았다). ⇒ 캡처 단계에서 **어느 사본이 원장 행인지** 정한다:
+    #    ① 원장이 이미 가리키던 사본 → ② EA 진화 이력이 있는 사본 → ③ OVR이 높은 사본.
+    #    나머지는 보고만 한다(SBC 재료 등 · 사용자 판단 2026-09-28 「알리송 70은 SBC용이라 그대로」).
+    groups = {}
+    for r in rows:
+        groups.setdefault(r["ea"], []).append(r)
+    dup_rep = []
+    for ea_, grp in groups.items():
+        if len(grp) < 2:
+            continue
+        gg_now = (have.get(ea_) or {}).get("gg_player_id")
+        grp.sort(key=lambda r: (r.get("gg") != gg_now, not r.get("evh"), -(r.get("ovr") or 0)))
+        dup_rep.append((grp[0]["n"], grp[0]["ovr"], [x["ovr"] for x in grp[1:]]))
+    keep = {id(g[0]) for g in groups.values()}
+    rows = [r for r in rows if id(r) in keep]
     # ⛔⛔ 진화 보호(2026-09-21 신설, 사용자 지시 「진화 선수들은 싱크 시 덮이지 않도록」).
     #    fut.gg는 EA 싱크를 눌러야 갱신되므로 **우리 원장보다 낡을 수 있다**. 그 상태로 덮으면
     #    방금 기록한 진화가 통째로 되돌아간다(실증: 지모알로바 78 → 73).
@@ -107,6 +124,9 @@ def main():
     conflicts, applied_styles, done, protected, ps_fixed, restored = [], [], [], [], [], []
     stats_n = 0
     b = lambda v: None if v is None else int(bool(v))       # noqa: E731
+    # ⭐ EA 진화 이력(migration 090) — 키가 없으면(구 캡처) NULL로 두어 「이력 없음」과 「미수집」을 가른다.
+    evo_json = lambda r: ((json.dumps(r["evh"]) if "evh" in r else None),               # noqa: E731
+                          (json.dumps(r["eva"]) if r.get("eva") else None))
     for r in rows:
         card = cards.get(r["ea"]) or {}
         # ⛔⛔ **GK 판정의 정본은 캡처 파일이다**(2026-09-27 실측 사고).
@@ -138,9 +158,10 @@ def main():
             ins += 1
             # ⚠️ 자산 축은 신규 행에도 넣는다 — 종전엔 기존 행만 갱신해서 새 카드의 거래불가·임대가 비어 있었다.
             con.execute("""UPDATE fut_club_players SET is_untradeable=?, is_in_active_squad=?, is_captain=?,
-                             kit_number=?, number_of_owners=?, is_loan=?, loan_games=? WHERE id=last_insert_rowid()""",
+                             kit_number=?, number_of_owners=?, is_loan=?, loan_games=?,
+                             ea_evo_history=?, ea_evo_active=? WHERE id=last_insert_rowid()""",
                         (b(r.get("unt")), b(r.get("act")), b(r.get("cap")), r.get("kit"), r.get("own"),
-                         b(r.get("loan")), r.get("loan_n")))
+                         b(r.get("loan")), r.get("loan_n"), *evo_json(r)))
             continue
         # ⭐⭐ **EA 목록에 있으면 「보유」다 — 처분 표시를 되돌린다**(2026-09-25 신설).
         #    ⛔ 종전엔 status를 **한 방향으로만** 바꿨다: 「EA에 없으면 sold」는 있는데 그 반대가 없었다.
@@ -204,9 +225,10 @@ def main():
                          r.get("gg"), a.pulled, TODAY if changed else cur["updated"], cur["id"]))
         # ③ 스쿼드·자산 축 — 진화와 무관하고 EA가 정본이라 **보호 여부와 관계없이** 갱신한다(케미와 같은 취급).
         con.execute("""UPDATE fut_club_players SET is_untradeable=?, is_in_active_squad=?, is_captain=?,
-                         kit_number=?, number_of_owners=?, is_loan=?, loan_games=? WHERE id=?""",
+                         kit_number=?, number_of_owners=?, is_loan=?, loan_games=?,
+                         ea_evo_history=?, ea_evo_active=? WHERE id=?""",
                     (b(r.get("unt")), b(r.get("act")), b(r.get("cap")), r.get("kit"), r.get("own"),
-                     b(r.get("loan")), r.get("loan_n"), cur["id"]))
+                     b(r.get("loan")), r.get("loan_n"), *evo_json(r), cur["id"]))
         # ② 경기 기록 — 누적값이라 **회차 스냅샷**으로 쌓는다(같은 날 재실행이면 덮어쓴다).
         st = r.get("st") or {}
         if any(v is not None for v in st.values()):
@@ -267,6 +289,8 @@ def main():
                         "WHERE game_version='FC27' AND ea_item_id=?", (*vals, r["ea"]))
             filled += sum(1 for v in cur_before if v is None)
 
+    for n_, o_, rest in dup_rep:
+        print(f"ℹ️ 같은 카드 여러 장: {n_} — 원장은 OVR {o_} 사본 · 나머지 {rest}는 원장에 없다(SBC 해법 후보에도 없다)")
     gone = [v["name"] for k, v in have.items() if v["status"] == "owned" and k not in {x["ea"] for x in rows}]
     if a.dry_run:
         con.rollback()

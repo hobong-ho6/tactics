@@ -74,7 +74,7 @@ def main():
             continue
         # ⭐ 반복 횟수(migration 089) — EA `numberOfRepetitions` = 첫 적용 뒤 **추가** 반복. 총 횟수로 바꿔 적는다.
         n_rep = o.get("numberOfRepetitions")
-        rep.append((1 if n_rep is None else 9999 if n_rep < 0 else n_rep + 1, r["evo_id"], pulled))
+        rep.append((1 if n_rep is None else 9999 if n_rep < 0 else n_rep + 1, o.get("id"), r["evo_id"], pulled))
         L = o.get("locales") or {}
         nm = (L.get("names") or {}).get(a.lang)
         de = (L.get("descriptions") or {}).get(a.lang)
@@ -112,7 +112,13 @@ def main():
     con.executemany("UPDATE fc_evolutions SET name_kr=COALESCE(?, name_kr), description_kr=COALESCE(?, description_kr) "
                     "WHERE evo_id=? AND pulled=?", upd)
     con.executemany("UPDATE fc_evolutions SET levels_kr=? WHERE evo_id=? AND pulled=?", lvkr)
-    con.executemany("UPDATE fc_evolutions SET repeat_total_ea=? WHERE evo_id=? AND pulled=?", rep)
+    # ⭐ futmind `id`는 EA id다(반복 배급 2707 = fut.gg eaId 2707 확인). fut.gg가 이월 행에 못 준 칸만 채운다(migration 090).
+    con.executemany("UPDATE fc_evolutions SET repeat_total_ea=?, ea_evo_id=COALESCE(ea_evo_id, ?) "
+                    "WHERE evo_id=? AND pulled=?", rep)
+    bad_ea = con.execute("""SELECT f.name, f.ea_evo_id FROM fc_evolutions f WHERE f.pulled=? AND f.ea_evo_id IS NOT NULL
+                            GROUP BY f.ea_evo_id HAVING COUNT(DISTINCT f.evo_id) > 1""", (pulled,)).fetchall()
+    if bad_ea:
+        print(f"⛔ EA id 하나에 진화 여럿: {[tuple(x) for x in bad_ea]} — 매핑을 믿지 말 것")
     diff = con.execute("""SELECT name, repeatability, repeat_total_ea FROM fc_evolutions
                           WHERE pulled=? AND repeat_total_ea IS NOT NULL AND repeat_total_ea != repeatability""",
                        (pulled,)).fetchall()

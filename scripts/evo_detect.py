@@ -20,6 +20,10 @@
     python3 scripts/evo_detect.py                 # 로그가 없는데 스탯이 변한 보유 카드 전부
     python3 scripts/evo_detect.py --player 30     # 한 장만
     python3 scripts/evo_detect.py --verify        # **이미 적힌 로그**가 현재 스탯을 설명하는지 검산
+    python3 scripts/evo_detect.py --ea            # ⭐ EA 진화 이력 ↔ 우리 로그 대조(2026-09-28 · migration 090)
+
+⭐⭐ 2026-09-28부터 「어떤 진화를 밟았나」는 **EA가 준다** — GG Club 보유행 `evolutions`.
+   위의 스탯 역추정은 이력이 없는 카드(구 캡처)의 보조 수단으로 남는다. `--ea`가 1차 판정이다.
 """
 import argparse
 import itertools
@@ -176,13 +180,79 @@ def report(con, cp, catalog, verify):
             print("      " + " · ".join(f"{k} 계산 {a} ↔ EA {b}" for k, (a, b) in list(ch[1].items())[:6]))
 
 
+def ea_check(con, only=None):
+    """EA 진화 이력(fut_club_players.ea_evo_history) ↔ fut_evolution_log 대조.
+       EA id는 fc_evolutions.ea_evo_id로 fut.gg id에 잇는다(이름 대조 없음).
+       ⛔ 원장에 쓰지 않는다 — 어긋남을 보고할 뿐이다(기록은 fut_club.py evolve/complete)."""
+    ea2 = {r[0]: (r[1], r[2]) for r in con.execute(
+        """SELECT ea_evo_id, evo_id, name FROM fc_evolutions WHERE ea_evo_id IS NOT NULL
+            GROUP BY ea_evo_id""")}
+    q = """SELECT id, name, ea_evo_history, ea_evo_active FROM fut_club_players
+            WHERE status='owned' AND ea_evo_history IS NOT NULL"""
+    rows = con.execute(q + (" AND id=?" if only else ""), (only,) if only else ()).fetchall()
+    print(f"EA 진화 이력 대조 — 이력 보유 {len(rows)}장 · EA id 매핑 {len(ea2)}종\n")
+    n_ok = n_bad = 0
+    for cp in rows:
+        hist = json.loads(cp["ea_evo_history"] or "[]")
+        logs = con.execute("""SELECT evo_id, evo_name, level, completed_at FROM fut_evolution_log
+                               WHERE club_player_id=? AND COALESCE(is_void,0)=0""", (cp["id"],)).fetchall()
+        if not hist and not logs:
+            continue
+        probs = []
+        ea_by = {}                                   # fut.gg id → (runs, 완료 단계 합, 진행 중 run 수)
+        for h in hist:
+            m = ea2.get(h["ea"])
+            if not m:
+                probs.append(f"EA id {h['ea']} 매핑 없음 — fc_evolutions.ea_evo_id를 채울 것(카탈로그 재수집)")
+                continue
+            r_, l_, a_ = ea_by.get(m[0], (0, 0, 0))
+            ea_by[m[0]] = (r_ + 1, l_ + (h["lv"] or 0), a_ + (h["st"] != "COMPLETE"))
+        ours = {}
+        for lg in logs:
+            r_, l_, nm = ours.get(lg["evo_id"], (0, 0, lg["evo_name"]))
+            ours[lg["evo_id"]] = (r_ + (lg["level"] == 1), l_ + (lg["completed_at"] is not None), nm)
+        names = {v[0]: v[1] for v in ea2.values()}
+        for eid in sorted(set(ea_by) | set(ours)):
+            er, el, ea_act = ea_by.get(eid, (0, 0, 0))
+            orr, ol, nm = ours.get(eid, (0, 0, names.get(eid, str(eid))))
+            nm = names.get(eid, nm)
+            if eid not in ea_by:
+                probs.append(f"{nm}: 우리 로그 {orr}회·완료 {ol}단계인데 **EA 이력에 없다** — 적용 안 된 기록이면 is_void")
+            elif eid not in ours:
+                probs.append(f"{nm}: EA {er}회·완료 {el}단계{' (진행 중)' if ea_act else ''}인데 **로그가 없다** — evolve로 기록")
+            elif (er, el) != (orr, ol):
+                probs.append(f"{nm}: EA {er}회·완료 {el}단계 ↔ 로그 {orr}회·완료 {ol}단계")
+        act = json.loads(cp["ea_evo_active"]) if cp["ea_evo_active"] else None
+        if act:
+            prog = con.execute("""SELECT COUNT(*) FROM fut_evolution_log WHERE club_player_id=? AND evo_id=?
+                                   AND completed_at IS NULL AND COALESCE(is_void,0)=0""",
+                               (cp["id"], act["evolutionId"])).fetchone()[0]
+            if not prog:
+                probs.append(f"진행 중 {names.get(act['evolutionId'], act['evolutionId'])} "
+                             f"{act.get('level')}/{act.get('maxLevel')} — 로그에 진행 중 행이 없다"
+                             "(EA 싱크 뒤 단계 완료면 정상일 수 있다)")
+        if probs:
+            n_bad += 1
+            print(f"  ⚠️ {cp['name']} (#{cp['id']})")
+            for p_ in probs:
+                print(f"       · {p_}")
+        else:
+            n_ok += 1
+            print(f"  ✅ {cp['name']} — {', '.join(f'{names.get(k, k)} {v[0]}회·{v[1]}단계' for k, v in ea_by.items())}")
+    print(f"\n요약: 일치 {n_ok}장 · 어긋남 {n_bad}장")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--player", type=int, help="fut_club_players.id 하나만")
     ap.add_argument("--verify", action="store_true", help="로그가 있는 카드도 포함해 **검산**한다")
+    ap.add_argument("--ea", action="store_true", help="EA 진화 이력 ↔ 로그 대조(1차 판정)")
     a = ap.parse_args()
     con = sqlite3.connect(DB)
     con.row_factory = sqlite3.Row
+    if a.ea:
+        ea_check(con, a.player)
+        return
     catalog = [(r["evo_id"], r["name_kr"] or r["name"]) for r in con.execute(
         """SELECT evo_id, name, name_kr FROM fc_evolutions
             WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions) ORDER BY evo_id""")]

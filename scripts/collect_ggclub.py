@@ -233,6 +233,12 @@ def rows_of(players):
                     # ⭐ 임대 여부(migration 088) — 임대는 SBC에 못 낸다. 종전엔 버려서 해법에 임대 카드가 들어갔다.
                     "loan": None if p.get("playerType") is None else p.get("playerType") == "loan",
                     "loan_n": q.get("loanDuration"),
+                    # ⭐⭐ 진화 이력(migration 090) — 보유행에 온다(playerDef가 아니다 · 2026-09-24 점검은 playerDef만 봤다).
+                    #    evolutions[].evolutionId = **EA id** · activeEvolution.evolutionId = **fut.gg id** — 체계가 다르다.
+                    "evh": [{"ea": e.get("evolutionId"), "rep": e.get("repetitionIndex"),
+                             "lv": len(e.get("completedLevels") or []), "st": e.get("status")}
+                            for e in (p.get("evolutions") or [])],
+                    "eva": p.get("activeEvolution"),
                     # ② 경기 기록 — 누적값이라 회차 스냅샷으로 쌓는다.
                     "st": {"gp": p.get("gamesPlayed"), "g": p.get("goals"), "a": p.get("assists"),
                            "yc": p.get("yellowCards"), "rc": p.get("redCards"), "ga": p.get("ga"),
