@@ -355,6 +355,9 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
      ⑵ `right:-4px`로 칸 **밖에** 놓았는데 `.sbc-pitch{overflow:hidden}`이라
         가장자리 칸(RB x=88% · LB x=12%)에서는 **잘려 나갔다**.
    ⇒ 항상 보이게 두고 **칸 안쪽**에 놓는다 — 「잘 찾아 누르기」를 요구하는 구조 자체를 없앤다. */
+.sbc-chem{position:absolute;top:15px;left:1px;z-index:3;font-size:9px;letter-spacing:-1px;line-height:1;
+  padding:2px 3px;border-radius:3px;background:rgba(6,14,10,.88);border:1px solid var(--line);color:var(--warn)}
+.sbc-chem.c3{color:var(--ok)} .sbc-chem.c0{color:var(--bad);border-color:var(--bad)}
 .sbc-x{position:absolute;top:15px;right:1px;z-index:3;width:19px;height:19px;line-height:17px;
   border-radius:99px;border:1px solid var(--line);background:rgba(6,14,10,.92);color:var(--dim);
   font-size:11px;cursor:pointer;padding:0;opacity:.75;transition:opacity .12s,color .12s}

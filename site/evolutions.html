@@ -2870,6 +2870,10 @@ const pitchHTML = (sq, chId) => sq.map(p => `
     ${p.card ? `<img src="${esc(p.card)}" alt="${esc(p.name)}" loading="lazy">`
              : `<span class="noart"><b>${p.ovr}</b>${esc(p.name)}</span>`}
     ${p.untradeable ? '<u>거래불가</u>' : ''}
+    ${/* ⭐ 선수별 케미(2026-09-28 사용자 지시 「피치 카드에도 선수별 케미 표시해줘」) — 솔버 저장값만 읽는다.
+         카드 아트에 인쇄되지 않는 값이라 덧그려도 인쇄값과 어긋날 일이 없다. */
+      p.chem == null ? '' : `<b class="sbc-chem c${p.chem}" title="이 선수 케미 ${p.chem}/3${
+        p.fit === false ? ' — 자리가 맞지 않아 0' : ''}">${'◆'.repeat(p.chem)}${'◇'.repeat(3 - p.chem)}</b>`}
     ${/* ⛔ SBC가 박아 둔 고정 카드는 **뺄 수 없다** — ✕ 대신 📌로 표시한다(migration 073). */
       p.fixed ? '<b class="sbc-pin" title="SBC가 이 칸에 박아 둔 카드다 — 바꿀 수 없고 내 구단 카드도 아니다">📌 고정</b>'
       : chId ? `<button class="sbc-x" data-sbcex="${chId}" data-cp="${p.id}"
