@@ -422,7 +422,8 @@ def alternatives(xi, pl, conds, pool, limit=20):
       ⑶ `check()` 전항 통과 + **배치 반영 케미** 재검증
     ⛔ 「포지션만 같으면 대체」로 적지 않는다 — 클럽·리그·국적이 달라 케미가 깨지는 경우가 흔하다.
        실제로 넣어 보고 통과한 것만 목록에 넣는다(등급 C — 우리 계산).
-    ⭐ 정렬은 **OVR 낮은 순**이다. 같은 값이면 덜 아까운 카드를 내는 게 낫다(가치 축은 우리가 모른다 —
+    ⭐ 정렬은 해법과 같은 `spend_key`(특수 → 등급 → **거래불가 먼저** → OVR 낮은 순)다(2026-09-28 사용자 지시
+       「대체 카드 목록도 거래불가 먼저 보이게 해줘」). 같은 값이면 덜 아까운 카드를 내는 게 낫다(가치 축은 우리가 모른다 —
        fut.gg가 FC27 시세를 주지 않는다. 그래서 「싼 순」이 아니라 「낮은 순」이라고 적는다).
     ⚠️ 한도를 8 → 20으로 올렸다(2026-09-26): OVR 낮은 순이라 **높은 카드가 잘려 나가** 「내 Kelly(86)는
        왜 안 보이나」가 됐다. 화면이 카드 그림으로 가로 스크롤해 그리므로 20장도 읽을 수 있다."""
@@ -443,11 +444,11 @@ def alternatives(xi, pl, conds, pool, limit=20):
             okch, info = chem_ok(trial, conds)
             if not okch:
                 continue
-            alt.append({"id": c["id"], "name": c["name"], "ovr": c["ovr"], "club": c["club"],
+            alt.append((spend_key(c), {"id": c["id"], "name": c["name"], "ovr": c["ovr"], "club": c["club"],
                         "league": c["league"], "nation": c["nation"], "card": c["card_image_url"],
-                        "untradeable": c["is_untradeable"], "chem": info[0] if info else None})
+                        "untradeable": c["is_untradeable"], "chem": info[0] if info else None}))
         if alt:
-            alt.sort(key=lambda r: (r["ovr"] or 0))
+            alt = [r for _k, r in sorted(alt, key=lambda t: t[0])]
             out[nm] = {"of": old["name"], "n": len(alt), "list": alt[:limit]}
     return out
 

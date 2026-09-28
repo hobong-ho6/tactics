@@ -2952,7 +2952,7 @@ const misfitHTML = xi => {
 /* ⭐ 칸마다 **바꿔 넣어도 되는 보유 카드**(2026-09-25 사용자 지시 「스쿼드 구성원 중에 대체선수가
    가능한 경우는 sbc 해당 선수 포지션에 대체선수들도 목록을 보여줘」).
    ⛔ 「포지션만 같은 카드」가 아니다 — 솔버가 **실제로 넣어 보고 조건·케미가 전부 통과한 것만** 준다.
-   ⚠️ OVR 낮은 순이다. 시세를 모르니(fut.gg가 FC27 가격을 주지 않는다) 「싼 순」이라고 적지 않는다. */
+   ⚠️ 해법과 같은 순서다(등급 → 거래불가 먼저 → OVR 낮은 순 · sbc_solve.py spend_key). 시세를 모르니(fut.gg가 FC27 가격을 주지 않는다) 「싼 순」이라고 적지 않는다. */
 const altHTML = xi => {
   const alt = xi.alt || {}, keys = Object.keys(alt);
   if (!keys.length) return '';
@@ -2963,7 +2963,7 @@ const altHTML = xi => {
      ⚠️ 칸마다 20장까지 나올 수 있어 **가로 스크롤**로 둔다 — 세로로 쌓으면 해법이 안 보인다. */
   return `<details class="sbc-alt"><summary>🔁 <b>바꿔 넣을 수 있는 카드</b>
       <small class="dim">— ${keys.length}칸 · 총 ${total}명. 넣어 봐서 <b>조건·케미가 그대로 통과</b>한 것만 적었다.
-        OVR 낮은 순(제출하면 사라지니 덜 아까운 쪽 먼저).</small></summary>
+        등급 낮은 순 · 같은 등급이면 <b>거래불가 먼저</b> · 그다음 OVR 낮은 순(제출하면 사라지니 덜 아까운 쪽 먼저).</small></summary>
     ${keys.map(k => `<div class="altrow"><div class="altslot"><b>${esc(k)}</b>
         <span class="dim">지금 ${esc(alt[k].of)}</span>
         ${alt[k].n > alt[k].list.length ? `<span class="dim">· 외 ${alt[k].n - alt[k].list.length}명</span>` : ''}</div>
