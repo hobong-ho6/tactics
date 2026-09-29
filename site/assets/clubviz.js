@@ -53,6 +53,20 @@ function plateAttrs(p){
   return ` data-plate-from="${esc(m[from])}" data-plate-to="${esc(m[to])}"`;
 }
 
+/* 진화 카드 아트를 다시 그리게 하는 속성 — `card()`와 카드 비교가 **같은 함수**를 쓴다
+   (2026-09-29 사용자 지시 「카드 비교할 때 진화 전 카드를 보여줄 필요 없이 현재 상태를 보여주도록」).
+   ⛔ 화면마다 따로 적으면 한쪽만 진화 전 아트로 남는다(그게 이번 사고다). 렌더 뒤 `paintEvoCards()`가 소비한다. */
+function evoArtAttrs(p) {
+  const evolved = p.card_ovr != null && p.current_ovr != null && p.card_ovr !== p.current_ovr;
+  return evolved
+    ? `crossorigin="anonymous" data-evo-ovr="${p.current_ovr}" data-evo-six="${esc(JSON.stringify(parse(p.current_six) || {}))}"`
+      /* ⭐ 등급이 바뀌었으면 **판(카드 틀)도 갈아 끼운다**(2026-09-27 사용자 지시
+         「진화해서 금카가 된 건 금카로 카드 이미지도 바꿔줘」). 인쇄 OVR의 판 → 현재 OVR의 판.
+         ⛔ 판 URL은 화면이 만들지 않는다 — export가 내보낸 `rarity_assets`에서 온다. */
+      + plateAttrs(p)
+    : 'loading="lazy"';
+}
+
 function card(p, role, posName, { bench = false } = {}) {
   if (!p) return `<div class="fc-card empty${bench ? ' bench' : ''}">
       <div class="fc-art ph">비어 있음</div><div class="fc-tag">${esc(posName ?? '')}</div></div>`;
@@ -65,14 +79,7 @@ function card(p, role, posName, { bench = false } = {}) {
      naturalWidth가 0이고, 그러면 다시 그리기가 영영 실행되지 않아 **인쇄된 옛 OVR이 그대로 남는다**.
      진화 카드는 스쿼드에 몇 장뿐이라 즉시 로드해도 부담이 없다. */
   const art = p.card_image_url
-    ? `<img class="fc-art" src="${esc(p.card_image_url)}" alt="${esc(p.name)} 카드"
-         ${evolved
-            ? `crossorigin="anonymous" data-evo-ovr="${p.current_ovr}" data-evo-six="${esc(JSON.stringify(parse(p.current_six) || {}))}"`
-              /* ⭐ 등급이 바뀌었으면 **판(카드 틀)도 갈아 끼운다**(2026-09-27 사용자 지시
-                 「진화해서 금카가 된 건 금카로 카드 이미지도 바꿔줘」). 인쇄 OVR의 판 → 현재 OVR의 판.
-                 ⛔ 판 URL은 화면이 만들지 않는다 — export가 내보낸 `rarity_assets`에서 온다. */
-              + plateAttrs(p)
-            : 'loading="lazy"'}>`
+    ? `<img class="fc-art" src="${esc(p.card_image_url)}" alt="${esc(p.name)} 카드" ${evoArtAttrs(p)}>`
     : `<div class="fc-art ph"><b>${p.current_ovr ?? ''}</b><span>${esc(p.name)}</span></div>`;
   const chem = p.chem_style_ea
     ? `<span class="fc-chem"><img src="assets/chemstyles/${p.chem_style_ea}.png" alt="케미 스타일" loading="lazy"></span>`
@@ -149,7 +156,8 @@ export function fcCardGrid(rows, { sideId = 'fcside', side = '' } = {}) {
 export function paintEvoCards(root = document) {
   const SIXK = ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY'];
   const GKK = ['DIV', 'HAN', 'KIC', 'REF', 'SPD', 'POS'];
-  root.querySelectorAll('img.fc-art[data-evo-ovr]').forEach(im => {
+  root.querySelectorAll('img[data-evo-ovr]').forEach(im => {
+    const cls = im.className;             // ⭐ 비교 카드도 같은 그리기를 쓴다 — 원래 클래스를 그대로 잇는다
     const go = async () => {
       const six = parse(im.getAttribute('data-evo-six')) || {};
       const keys = six.DIV != null ? GKK : SIXK;
@@ -165,8 +173,8 @@ export function paintEvoCards(root = document) {
         ovr: Number(im.getAttribute('data-evo-ovr')),
         six: keys.map(k => [k, six[k] ?? null]),
       });
-      if (!cv){ if (src !== im){ src.className = 'fc-art'; im.replaceWith(src); } return; }
-      cv.className = 'fc-art';
+      if (!cv){ if (src !== im){ src.className = cls; im.replaceWith(src); } return; }
+      cv.className = cls;
       im.replaceWith(cv);
     };
     if (im.complete && im.naturalWidth) go();
@@ -471,15 +479,14 @@ function emeryVerdict(a, b, ctx) {
 
 /* 비교 담기 칸 — **지금 무엇이 담겼는지**를 이름만으로 알기 어려웠다(2026-09-22 사용자 지시
    「비교담기를 한 경우 지금 담겨져 있는 선수 정보를 확인할 수 있도록」).
-   ⇒ 카드 아트·OVR(진화 전 병기)·포지션·신체까지 담은 칸 2개를 항상 그린다 — 빈 칸도 자리를 잡아
-     「하나 더 담으면 열린다」가 문장이 아니라 **모양으로** 보이게. ⛔ 카드 아트는 인쇄값이라
-     진화 카드는 OVR이 다를 수 있다 — 그래서 아트 위가 아니라 **옆에 현재 OVR**을 적는다. */
+   ⇒ 카드 아트·OVR·포지션·신체까지 담은 칸 2개를 항상 그린다 — 빈 칸도 자리를 잡아
+     「하나 더 담으면 열린다」가 문장이 아니라 **모양으로** 보이게.
+   ⭐ 진화 카드는 **아트도 현재 상태로 다시 그린다**(2026-09-29 사용자 지시) — 「진화 전 N」 병기는 뺐다. */
 export function cmpSlots(picked) {
   const slot = (c, i) => c ? `<div class="cmp-slot fill s${i}">
-      ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="">` : '<div class="cmp-slot-ph"></div>'}
+      ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="" ${evoArtAttrs(c)}>` : '<div class="cmp-slot-ph"></div>'}
       <div class="cmp-slot-t"><b>${esc(c.name)}</b>
-        <span>OVR <b>${c.current_ovr ?? '-'}</b>${c.card_ovr != null && c.card_ovr !== c.current_ovr
-          ? ` <em class="d-evo">진화 전 ${c.card_ovr}</em>` : ''}</span>
+        <span>OVR <b>${c.current_ovr ?? '-'}</b></span>
         <span class="dim">${esc(c.positions || '')}</span>
         ${physLine(c) ? `<span class="dim">${physLine(c)}</span>` : ''}</div>
       <button class="cmp-x" data-cmpdrop="${c.id}" title="이 카드를 비교에서 뺀다">×</button></div>`
@@ -496,9 +503,9 @@ export function compareCards(a, b, ctx = {}) {
   const B = parse(b.current_attrs) || parse(b.attrs) || {};
   const sixA = parse(a.current_six) || {}, sixB = parse(b.current_six) || {};
   const head = (c, side) => `<div class="cmp-card ${side}">
-      ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="">` : ''}
+      ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="" ${evoArtAttrs(c)}>` : ''}
       <b>${esc(c.name)}</b>
-      <span class="dim">OVR ${c.current_ovr ?? '-'}${c.card_ovr !== c.current_ovr ? ` <em class="d-evo">진화 전 ${c.card_ovr}</em>` : ''}</span>
+      <span class="dim">OVR ${c.current_ovr ?? '-'}</span>
       <span class="dim">${esc(c.positions || '')}</span>
       ${physLine(c) ? `<span class="dim">${physLine(c)}</span>` : ''}</div>`;
   /* ⭐ 차이를 **크고 색으로** 드러낸다(2026-09-22 사용자 지시).

@@ -2,7 +2,7 @@
 <html lang="ko"><head><meta charset="utf-8"><title>얼티밋팀 — tactics v2</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="stylesheet" href="assets/clubviz.css?v=20260925a">
+<link rel="stylesheet" href="assets/clubviz.css?v=20260929a">
 <style>
 .evo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
 .evo-card{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--panel)}
@@ -142,10 +142,10 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260925-canon';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
 import { evoRules, logState, inProgress } from './assets/evorules.js?v=20260924a';
-import { cardCompare } from './assets/cardcompare.js?v=20260923a';
+import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
-import { setRarityAssets } from './assets/clubviz.js?v=20260927a';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
-import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate } from './assets/clubviz.js?v=20260927a';
+import { setRarityAssets } from './assets/clubviz.js?v=20260929a';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
+import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate } from './assets/clubviz.js?v=20260929a';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -878,7 +878,7 @@ function renderNow(){
     roles: K26.roles, focus_rows: K26.focus, face_stats: EVO.face_stats });
   const CMP = cardCompare({
     side, root: document.getElementById('nowpitch'), byId, ctx: cmpCtx,
-    render: { compareCards, cmpSlots },
+    render: { compareCards, cmpSlots, paint: paintEvoCards },
     onExit: () => { side.innerHTML = fcSideEmpty(T, xiRows); },
   });
   const cmpToggle = p => CMP.toggle(p);
@@ -2732,7 +2732,7 @@ function renderClub(){
   let lastOpened = null;
   const CMPC = cardCompare({
     side: cside, root: box, byId: id => owned.find(x => x.id === id), ctx: cmpCtx2,
-    render: { compareCards, cmpSlots },
+    render: { compareCards, cmpSlots, paint: paintEvoCards },
     /* 비교를 끝내면 **고르고 있던 선수 상세로 되돌아간다** — 빈 패널로 떨어뜨리지 않는다. */
     onExit: () => { if (lastOpened != null) openClub(lastOpened); },
     pickedAttr: 'data-gp',

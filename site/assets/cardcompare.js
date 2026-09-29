@@ -20,7 +20,7 @@
        side, root,                       // 사이드패널 엘리먼트 · 카드가 놓인 컨테이너
        byId: id => …,                    // 보유 카드 행 id → 카드 객체
        ctx: () => ({ … }),               // compareCards에 넘길 컨텍스트
-       render: { compareCards, cmpSlots },
+       render: { compareCards, cmpSlots, paint: paintEvoCards },
        onExit: () => { … },              // 비교를 끝냈을 때 사이드패널을 무엇으로 되돌릴지
      });
      CMP.active()        // 비교 모드인가 — 카드 클릭 핸들러가 이걸 보고 분기한다
@@ -31,6 +31,8 @@
       그냥 비교하면 엉뚱한 카드에 ✓가 붙는다(2026-09-22 실측: 음바예·캐시를 담았는데 오나나에 붙었다). */
 
 export function cardCompare({ side, root, byId, ctx, render, onExit, pickedAttr = 'data-p' }) {
+  // ⛔ `paint`가 없으면 진화 카드가 **진화 전 아트**로 보인다 — 빠뜨린 호출측을 조용히 두지 않는다.
+  if (typeof render?.paint !== 'function') throw new Error('cardCompare: render.paint(paintEvoCards)가 필요하다');
   let cmp = [];
   let mode = false;
 
@@ -59,6 +61,7 @@ export function cardCompare({ side, root, byId, ctx, render, onExit, pickedAttr 
         <button class="act" data-cmpclear>비우기</button></div>`
       + (picked.length === 2 ? render.compareCards(picked[0], picked[1], ctx()) : render.cmpSlots(picked));
     side.querySelector('[data-cmpclear]').addEventListener('click', exit);
+    render.paint(side);          // ⭐ 진화 카드 아트를 현재 값으로 다시 그린다(2026-09-29)
     /* 비교표 머리에도 ×를 단다 — 한 장만 바꿔 끼울 때 「비우기 → 둘 다 다시 담기」를 안 하게. */
     side.querySelectorAll('.cmp-card').forEach((el, i) => {
       if (!picked[i]) return;
