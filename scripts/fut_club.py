@@ -189,6 +189,14 @@ def cmd_evolve(con, a):
                      "원장이 어긋난 것이다. `current_attrs`가 `current_six`보다 낡지 않았는지 먼저 볼 것.")
     if (ovr_after or 0) < (cp["current_ovr"] or 0):
         sys.exit(f"⛔ 적용 후 OVR이 내려간다 — {cp['current_ovr']} → {ovr_after}. 같은 사유다.")
+    # ⭐ 로그의 역할 칸도 **카탈로그 보상 ∪ 현재 보유**로 적는다(2026-09-29 만잠비 CAM Roles++ 실측 사고).
+    #    ⛔ 종전엔 path_json에서만 읽어, 경로 축이 안 덮는 역할 전용 진화는 로그 칸이 비었다.
+    def _union(cur_json, gain):
+        try:
+            have = json.loads(cur_json) if cur_json else []
+        except Exception:                                    # noqa: BLE001
+            have = []
+        return list(have) + [v for v in gain or [] if v not in have]
     # ⭐ --in-progress: 「시작했다」는 사실만 남긴다(2026-09-19). 진화는 챌린지·훈련이 남으면 **스탯이 아직 안 올라간다** —
     #    완료 전에 current_* 를 올리면 화면이 없는 능력치를 보여준다. 소진·다음 추천 계산에는 포함된다(카드가 그 경로에 묶였으므로).
     #    완료되면 `complete` 서브커맨드로 그때 스탯을 반영한다.
@@ -200,8 +208,10 @@ def cmd_evolve(con, a):
                  json.dumps(attrs_after, ensure_ascii=False) if attrs_after is not None else None,
                  json.dumps(ps_after, ensure_ascii=False) if ps_after is not None else
                  (json.dumps((after or {}).get("playstyles"), ensure_ascii=False) if after else None),
-                 json.dumps((after or {}).get("roles_plus")) if after else None,
-                 json.dumps((after or {}).get("roles_plus_plus")) if after else None,
+                 json.dumps(_union(cp["current_roles_plus"], gain_rp)) if attrs_after is not None else (
+                     json.dumps((after or {}).get("roles_plus")) if after else None),
+                 json.dumps(_union(cp["current_roles_plus_plus"], gain_rpp)) if attrs_after is not None else (
+                     json.dumps((after or {}).get("roles_plus_plus")) if after else None),
                  f"scripts/fut_club.py evolve ({TODAY} 기록) · 적용 후 값 출처: {src}",
                  "MEASURED(사용자 행위) — 적용 사실은 사용자 보고. 적용 후 스탯은 " + src + ".", a.note))
     if getattr(a, "in_progress", False):
@@ -215,15 +225,8 @@ def cmd_evolve(con, a):
                     (json.dumps(attrs_after, ensure_ascii=False), cp["id"]))
     # ⭐ 역할은 **합집합**으로 병합한다(카탈로그 보상 우선 · 없으면 path_json).
     def _merge(cur_json, gain):
-        try:
-            have = json.loads(cur_json) if cur_json else []
-        except Exception:                                    # noqa: BLE001
-            have = []
-        out = list(have)
-        for v in gain or []:
-            if v not in out:
-                out.append(v)
-        return json.dumps(out) if out != have else None
+        out = _union(cur_json, gain)
+        return json.dumps(out) if out != _union(cur_json, []) else None
     rp_new = _merge(cp["current_roles_plus"], gain_rp) if attrs_after is not None else (
         json.dumps(after["roles_plus"]) if after else None)
     rpp_new = _merge(cp["current_roles_plus_plus"], gain_rpp) if attrs_after is not None else (
