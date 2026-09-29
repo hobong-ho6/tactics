@@ -422,13 +422,17 @@ def export_all(db_path=None, window="2026-summer"):
                                six_before, six_after, attrs_delta, playstyles_after, roles_plus_after, roles_plus_plus_after,
                                is_void, notes
                         FROM fut_evolution_log ORDER BY applied_at, id""")
-    # 시세 — 최신 pulled만(ea_item_id 키). NULL은 「미형성」이며 화면이 그렇게 쓴다(migration 037)
+    # 시세 — **카드별** 최신 pulled(ea_item_id 키). NULL은 「미형성」이며 화면이 그렇게 쓴다(migration 037)
+    # ⭐⭐ 2026-09-29: 종전엔 **표 전체의** 최신 pulled만 읽어서, 한 회차가 45장에서 끊기면 나머지 카드 시세가
+    #    화면에서 통째로 사라졌다 — 그래서 시세 수집이 「전량을 한 번에」 끝내야만 했고 1시간씩 걸렸다.
+    #    이제 카드마다 가장 최근 관측을 쓰므로 회차를 나눠 받아도 된다(`pulled`가 행마다 따라간다).
     # ⛔⛔ 한 카드에 **행이 여럿일 수 있다**(platform 별). 종전엔 dict 마지막 행이 이겨 순서가
     #    결정하는 구조였고, 실제로 2026-09-27에 가격 있는 행이 NULL 행에 덮여 120장이 화면에
     #    「미형성」으로 떴다. ⇒ **가격 있는 행을 먼저 고른다**(같은 조건이면 platform 순 — 결정적).
     prices = {str(r.pop("ea_item_id")): r for r in _rows(con, """SELECT ea_item_id, price, has_price, momentum, platform, pulled
-                                                              FROM player_card_prices
-                                                              WHERE pulled=(SELECT MAX(pulled) FROM player_card_prices)
+                                                              FROM player_card_prices p
+                                                              WHERE pulled=(SELECT MAX(q.pulled) FROM player_card_prices q
+                                                                            WHERE q.ea_item_id=p.ea_item_id)
                                                               ORDER BY ea_item_id, (price IS NOT NULL), platform""")}
     # 케미스트리 스타일 24종(migration 045) — 화면이 역할 가중과 곱해 추천 순위를 만든다.
     chem_styles = _rows(con, """SELECT style_id, ea_id, name, is_gk, boosts FROM fc_chemistry_styles

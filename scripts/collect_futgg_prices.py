@@ -19,9 +19,20 @@
   ⚠️ 일괄 조회는 없다(`?ea_ids=`는 404) — 선수당 2요청이다. 그래서 기본 대상을
      **보유 카드 + 관리 4팀**으로 좁히고 `--all`로만 전체를 돈다.
 
+⭐⭐ 2026-09-29 동선 재설계(사용자 지시 「클럽 싱크에서 시세 받아오는게 오래걸리고 항상 막히는것 같은데」):
+  ⛔ 종전엔 대상 283장 = 566요청을 한 번에 끝내려고 **예산이 빌 때마다 10분씩 잤다**(약 1시간).
+     세션의 셸은 10분에 끊기므로 앞에서 부르면 **중간에 죽었고**, 끊긴 회차는 G21(최신 회차가 직전 절반 미만)에
+     걸려 **export·ship까지 막혔다** — 「오래 걸린다」와 「항상 막힌다」가 같은 구조에서 나왔다.
+  ⇒ ⑴ **보유 거래불가 카드는 대상에서 뺀다** — 팔 수 없고 어느 화면도 그 시세를 쓰지 않는다(283 → 약 100장).
+     ⑵ **기본은 예산 한 번만 쓰고 멈춘다**(약 45장 · 1분 안쪽 · 자지 않는다). 오래된 순 정렬이라 회차가 돌아가며 채운다.
+     ⑶ export는 **카드별 최신 시세**를 읽는다(core/export.py) — 부분 회차가 나머지 카드 시세를 지우지 않는다.
+     ⑷ 그래서 G21 감시 목록에서 이 표를 뺐다(부분 회차가 정상 동작이 됐다).
+  `--full`은 종전처럼 기다리며 끝까지 받는다(오래 걸린다 — 백그라운드로 돌릴 것).
+
 사용:
-    .venv/bin/python scripts/collect_futgg_prices.py --games 27
-    .venv/bin/python scripts/collect_futgg_prices.py --games 27 --all      # 카드 표 전체
+    .venv/bin/python scripts/collect_futgg_prices.py --games 27            # 예산 한 번(~45장) · 기다리지 않음
+    .venv/bin/python scripts/collect_futgg_prices.py --games 27 --full     # 대상 전량(기다린다 · 백그라운드)
+    .venv/bin/python scripts/collect_futgg_prices.py --games 27 --all      # 카드 표 전체(보유 거래불가 제외는 동일)
 """
 import argparse
 import datetime as dt
@@ -43,10 +54,25 @@ class Challenge(Exception):
     """⛔ fut.gg가 봇 검사를 요구했다 — **우회하지 않는다**. 호출부가 멈추고 사람에게 보고한다."""
 
 
+def _blocked(e):
+    """⛔ Cloudflare 봇 차단 페이지(403 「Attention Required」)인가 — 2026-09-29 실측.
+       서명은 200인데 GET이 전부 이 페이지로 막혔다. **우회하지 않는다** — Challenge로 올려 멈춘다."""
+    try:
+        body = e.read(4096).decode("utf-8", "ignore").lower()
+    except Exception:                                    # noqa: BLE001
+        return False
+    return "cloudflare" in body and ("attention required" in body or "cf-" in body)
+
+
 class RateLimited(Exception):
     """⛔⛔ 429 — **더 두드리지 않고 멈춘다**. 재시도로 뚫으려 하지 않는다.
        ⭐ 2026-09-27부터 아래 `Budget`이 **애초에 여기 닿지 않도록** 속도를 죈다 —
           이 예외가 뜨면 그건 「우리 추정 쿼터가 틀렸다」는 신호다(보고할 것)."""
+
+
+class Exhausted(Exception):
+    """⭐ 이번 회차 예산을 다 썼다 — **기다리지 않고 멈춘다**(기본 모드 · 2026-09-29).
+       실패가 아니다. 남은 카드는 오래된 순 정렬이라 다음 회차가 이어 받는다."""
 
 
 class Budget:
@@ -60,13 +86,15 @@ class Budget:
        429가 또 나면 그 사실이 곧 반증이니 `--budget`을 낮춰 잡는다.
     """
 
-    def __init__(self, budget, window):
-        self.budget, self.window, self.hits = budget, window, []
+    def __init__(self, budget, window, wait=True):
+        self.budget, self.window, self.hits, self.wait = budget, window, [], wait
 
     def take(self):
         now = time.monotonic()
         self.hits = [t for t in self.hits if now - t < self.window]
         if len(self.hits) >= self.budget:
+            if not self.wait:
+                raise Exhausted()
             wait = self.window - (now - self.hits[0]) + 0.5
             print(f"   ⏳ 예산 소진 — {wait:.0f}초 쉰다(창 {self.window}초에 {self.budget}요청)")
             time.sleep(wait)
@@ -104,6 +132,8 @@ def signed_price(game, ea):
     except urllib.error.HTTPError as e:
         if e.code == 429:                       # ⛔ 서명 단계의 429도 429다 — 「조회 실패」로 묻지 않는다
             raise RateLimited(f"sign ea {ea}") from None
+        if e.code == 403 and _blocked(e):
+            raise Challenge(f"sign ea {ea} — Cloudflare 차단 페이지") from None
         return None, f"fail:sign HTTP {e.code}"
     except Exception as e:
         return None, f"fail:sign {type(e).__name__}"
@@ -121,6 +151,10 @@ def signed_price(game, ea):
             raise RateLimited(f"ea {ea}") from None
         if e.code == 404:                       # ⭐ fut.gg에 그 카드가 없다 — 재시도해도 같다
             return None, "missing"
+        # ⛔⛔ 봇 차단은 카드 탓이 아니다 — 종전엔 「fail:get HTTP 403」으로 카드마다 재시도해
+        #    차단된 창구를 회차 내내 두드렸다(2026-09-29 실측: 45장 × 2회 전부 403). 첫 장에서 멈춘다.
+        if e.code == 403 and _blocked(e):
+            raise Challenge(f"ea {ea} — Cloudflare 차단 페이지") from None
         return None, f"fail:get HTTP {e.code}"
     except Exception as e:
         return None, f"fail:get {type(e).__name__}"
@@ -136,9 +170,11 @@ def main():
     ap.add_argument("--refresh", action="store_true",
                     help="오늘 이미 받은 카드도 다시 받는다(기본은 건너뛴다 — 예산을 아낀다)")
     ap.add_argument("--limit", type=int, help="앞에서 N장만(속도 조절 확인용)")
+    ap.add_argument("--full", action="store_true",
+                    help="예산이 비면 기다리며 대상 전량을 받는다(오래 걸린다 — 백그라운드로). 기본은 예산 한 번 쓰고 멈춘다")
     a = ap.parse_args()
     global BUDGET
-    BUDGET = Budget(a.budget, a.window)
+    BUDGET = Budget(a.budget, a.window, wait=a.full)
     con = sqlite3.connect(DB)
     for g in a.games:
         gv = f"FC{g}"
@@ -150,6 +186,12 @@ def main():
                  " AND (i.ea_item_id IN (SELECT ea_item_id FROM fut_club_players WHERE status='owned')"
                  "      OR i.player_id IN (SELECT se.player_id FROM squad_entries se"
                  "                           JOIN regimes g ON g.id=se.regime_id))")
+        # ⭐ 보유 **거래불가** 카드는 뺀다(2026-09-29) — 팔 수 없고, 화면은 미보유 카드 시세만 쓴다(구매 우선순위).
+        #    같은 아이템을 거래 가능으로도 들고 있으면 남긴다(그건 팔 수 있다).
+        scope += (" AND i.ea_item_id NOT IN (SELECT ea_item_id FROM fut_club_players"
+                  "                          WHERE status='owned' AND is_untradeable=1"
+                  "                            AND ea_item_id NOT IN (SELECT ea_item_id FROM fut_club_players"
+                  "                                                   WHERE status='owned' AND COALESCE(is_untradeable,0)=0))")
         items = con.execute(
             "SELECT i.ea_item_id, i.player_id FROM player_card_items i"
             " WHERE i.game_version=?" + scope +
@@ -172,10 +214,15 @@ def main():
             ids = ids[:a.limit]
         if ids:
             need = len(ids) * 2
-            mins = max(0, (need - a.budget)) / a.budget * (a.window / 60)
-            print(f"   ⏱️ {len(ids)}장 = {need}요청 · 예산 {a.budget}/{a.window}초 → 약 {mins:.0f}분 예상"
-                  f"{' — 백그라운드로 돌리는 편이 낫다' if mins > 5 else ''}")
-        rows, priced, failed, limited = [], 0, 0, False
+            if a.full:
+                mins = max(0, (need - a.budget)) / a.budget * (a.window / 60)
+                print(f"   ⏱️ {len(ids)}장 = {need}요청 · 예산 {a.budget}/{a.window}초 → 약 {mins:.0f}분 예상"
+                      f"{' — 백그라운드로 돌리는 편이 낫다' if mins > 5 else ''}")
+            else:
+                print(f"   ⏱️ 대상 {len(ids)}장 중 이번 회차는 예산 {a.budget}요청(약 {a.budget // 2}장)까지 — "
+                      "기다리지 않는다. 나머지는 다음 회차가 오래된 순으로 이어 받는다(--full이면 끝까지)")
+        rows, priced, failed, limited, spent, blocked = [], 0, 0, False, False, None
+        done_n = 0
         why = {}
         for n, ea in enumerate(ids, 1):
             try:
@@ -188,6 +235,14 @@ def main():
                 limited = True
                 print(f"   ⛔ 429 — {n-1}장에서 레이트 리밋. **여기서 멈춘다**(재시도로 뚫지 않는다).")
                 break
+            except Exhausted:
+                spent = True
+                break
+            except Challenge as e:
+                # ⛔ 우회하지 않는다. 받은 만큼은 적고(아래 INSERT) 멈춘 뒤 비정상 종료로 알린다.
+                blocked = str(e)
+                break
+            done_n = n
             if cur is None:
                 # ⛔⛔ **못 받았으면 아무 행도 쓰지 않는다.** 종전엔 여기서 platform을 `console`로
                 #    지어내 NULL 행을 남겼고, 그게 화면에 「미형성」으로 떴다(2026-09-27 · 유령 행 369개).
@@ -211,12 +266,21 @@ def main():
                            ON CONFLICT(game_version, ea_item_id, platform, pulled) DO UPDATE SET
                              price=excluded.price, has_price=excluded.has_price, momentum=excluded.momentum""", rows)
         con.commit()
-        print(f"{gv}: 카드 {len(ids)}장 조회 → {len(rows)}행 적재 · 시세 있음 {priced}장 · "
+        left = len(ids) - done_n
+        print(f"{gv}: 대상 {len(ids)}장 중 {done_n}장 조회 → {len(rows)}행 적재 · 시세 있음 {priced}장 · "
               f"미형성/멸종 {len(rows) - priced}장 · 못 받음 {failed}장 (pulled {a.pulled})")
         # ⭐ 사유를 찍는다 — 종전엔 전부 「조회 실패 N장」이라 **무엇이 막혔는지 알 수 없었다**.
         for r, c in sorted(why.items(), key=lambda kv: -kv[1]):
             tag = "ℹ️ fut.gg에 없는 카드(영구)" if r == "missing" else "⚠️"
             print(f"   {tag} {r}: {c}장")
+        if blocked:
+            print(f"   ⛔⛔ fut.gg가 봇 차단(Cloudflare)을 걸었다 — {blocked}. **여기서 멈췄다**(우회하지 않는다)."
+                  "\n      재시도·헤더 변경으로 뚫지 않는다. 시간을 두고 다음 회차에 다시 본다 — 화면은 카드별 최신 시세를 그대로 쓴다."
+                  "\n      종료 보고에 「시세 수집 차단(Cloudflare)」이라고 적는다.")
+            BLOCKED[0] = True
+        if spent and left:
+            print(f"   ↪️ 이번 회차 예산을 다 썼다 — 남은 {left}장은 **다음 회차**가 오래된 순으로 받는다."
+                  f"\n      종료 보고에 「시세 {done_n}/{len(ids)}장」이라고 적는다. 화면은 카드별 최신 시세를 쓴다.")
         if limited:
             con2 = con.execute("SELECT COUNT(*) FROM player_card_items WHERE game_version=?", (gv,)).fetchone()[0]
             print(f"   ⚠️ 레이트 리밋으로 이번 회차는 여기까지다 — **다음 회차가 오래된 순으로 이어 받는다.**"
@@ -227,7 +291,11 @@ def main():
             print("   ⛔ **시세가 한 장도 안 잡혔다** — 「시장 미형성」으로 넘기지 말 것. "
                   "서명 흐름이 또 막힌 것일 수 있다(2026-09-27에 같은 증상으로 3회차를 날렸다).")
     print("\n다음: python3 scripts/export.py && scripts/db_dump.sh")
+    if BLOCKED[0]:
+        sys.exit(2)          # ⭐ 실행기(club_sync.py)가 「실패 — 원인 보고」로 멈추게 한다
 
+
+BLOCKED = [False]
 
 if __name__ == "__main__":
     main()
