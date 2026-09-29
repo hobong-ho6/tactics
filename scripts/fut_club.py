@@ -170,6 +170,10 @@ def cmd_evolve(con, a):
             #    GK 여부는 현재 카드의 6대 모양(EA 실측)으로 가른다.
             is_gk = "DIV" in json.loads(cp["current_six"] or "{}")
             six_after = json.dumps(face_of(attrs_after, face_rows, is_gk=is_gk), ensure_ascii=False)
+            # ⭐ 속성이 하나도 안 바뀌는 진화(PlayStyle·역할 전용)는 6대를 다시 환산하지 않고 EA 실측을 잇는다
+            #    (2026-09-29 스즈키 실측: 구성식 SPD 56 ↔ EA 58 — 재환산하면 게이트가 「스탯 하락」으로 막았다).
+            if attrs_after == cur_attrs and cp["current_six"]:
+                six_after = cp["current_six"]
             src = "서버 계산 (current_attrs + fc_evolutions.levels · core/futgg_attrs.py)"
     if attrs_after is None:
         ovr_after = a.ovr_after or (after or {}).get("ovr")
