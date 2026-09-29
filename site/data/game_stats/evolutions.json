@@ -23162,13 +23162,13 @@
     "id": 42,
     "is_void": 0,
     "level": 1,
-    "notes": "GK 역할++ 완료 — 사용자 보고 2026-09-27 「이제 모든 역할이 ++야」. 보상은 role_plus_plus 3종(101 골키퍼·102 스위퍼 키퍼·145 볼 플레잉 키퍼) 뿐이고 속성 상승은 없다. 7,500코인·150포인트 즉시 적용.",
+    "notes": "GK 역할++ 완료 — 사용자 보고 2026-09-27 「이제 모든 역할이 ++야」. 보상은 role_plus_plus 3종(101 골키퍼·102 스위퍼 키퍼·145 볼 플레잉 키퍼) 뿐이고 속성 상승은 없다. 7,500코인·150포인트 즉시 적용. · ⭐ 2026-09-29 정정: six_after가 필드 구성식(PAC·SHO…)으로 잘못 계산돼 있었다(fut_club.py가 GK 구분 없이 환산 — 같은 날 코드 수정). 역할 전용 진화라 스탯 변화가 없으므로 EA 실측 GK 6대(=six_before)로 바로잡음. 참고: 기록 당시 attrs_after로 GK 구성식을 돌리면 SPD 56(EA 58) — attrs가 EA보다 낡았다",
     "ovr_after": 76,
     "ovr_before": 76,
     "playstyles_after": "[\"Deflector\", \"Cross Claimer\"]",
     "roles_plus_after": "[]",
     "roles_plus_plus_after": "[145, 101, 102]",
-    "six_after": "{\"PAC\": 57, \"SHO\": 17, \"PAS\": 35, \"DRI\": 23, \"DEF\": 12, \"PHY\": 54}",
+    "six_after": "{\"DIV\": 76, \"HAN\": 75, \"KIC\": 76, \"REF\": 76, \"SPD\": 58, \"POS\": 74}",
     "six_before": "{\"DIV\": 76, \"HAN\": 75, \"KIC\": 76, \"REF\": 76, \"SPD\": 58, \"POS\": 74}"
    },
    {

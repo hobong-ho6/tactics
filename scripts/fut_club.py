@@ -166,7 +166,10 @@ def cmd_evolve(con, a):
                 sys.exit(f"⛔ 모르는 보상 항목 {unknown} — 지어내지 않는다. core/futgg_attrs.py의 표를 먼저 채울 것")
             ovr_after = bump(cp["current_ovr"] or 0)
             face_rows = con.execute("SELECT abbr, attr, weight, is_gk FROM fc_face_stats").fetchall()
-            six_after = json.dumps(face_of(attrs_after, face_rows), ensure_ascii=False)
+            # ⛔ GK는 GK 구성식(DIV·HAN…)으로 환산한다 — 빼먹으면 필드 6대가 들어간다(2026-09-27 스즈키 실측 사고).
+            #    GK 여부는 현재 카드의 6대 모양(EA 실측)으로 가른다.
+            is_gk = "DIV" in json.loads(cp["current_six"] or "{}")
+            six_after = json.dumps(face_of(attrs_after, face_rows, is_gk=is_gk), ensure_ascii=False)
             src = "서버 계산 (current_attrs + fc_evolutions.levels · core/futgg_attrs.py)"
     if attrs_after is None:
         ovr_after = a.ovr_after or (after or {}).get("ovr")
