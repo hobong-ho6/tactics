@@ -1153,3 +1153,9 @@ INSERT INTO fc_evolution_eligibility VALUES('FC27',2488,117,235805,1,'2026-09-30
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2488,175,50545213,0,'2026-09-30','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2488&name=Lemar (2026-09-30 수집 · 범위: 내 구단 보유 카드)');
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2488,176,263701,1,'2026-09-30','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2488&name=Vargas (2026-09-30 수집 · 범위: 내 구단 보유 카드)');
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2490,11,264209,1,'2026-09-30','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2490&name=Bogarde (2026-09-30 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2510,86,50406097,0,'2026-09-30','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2510&name=Mbaye (2026-09-30 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2510,59,82968,1,'2026-09-30','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2510&name=Alysson (2026-09-30 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2510,10,210881,1,'2026-09-30','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2510&name=McGinn (2026-09-30 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2510,117,235805,1,'2026-09-30','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2510&name=Chiesa (2026-09-30 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2510,162,243780,1,'2026-09-30','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2510&name=Lee (2026-09-30 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2510,194,240690,1,'2026-09-30','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2510&name=González (2026-09-30 수집 · 범위: 내 구단 보유 카드)');
