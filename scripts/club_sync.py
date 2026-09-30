@@ -72,6 +72,13 @@ STEPS = {
         ("케미 신호", [PY, S("collect_futgg_chem.py")], False),
     ],
 }
+# ⭐ **실패해도 싱크를 멈추지 않는 축**(2026-09-30 사용자 지시 「시세 정보를 받아오는게 실패하는데 받아올 수 없다면
+#    시세 정보는 안 받게끔」). 시세는 **어느 축의 입력도 아니다**(구매 우선순위 화면만 읽는다) — 막혔다고
+#    뒤의 참조 수집·export까지 세우면 시세 하나 때문에 나머지가 전부 낡는다(2026-09-29 Cloudflare 403 실측).
+#    ⇒ 실패하면 **건너뛰고 이어 간다.** 화면은 카드별 최신 시세를 그대로 쓰고, 신선도 표·종료 보고에 남긴다.
+#    ⛔ 여기에 다른 축을 함부로 넣지 않는다 — 입력이 되는 축(선수·진화·sbc)이 조용히 건너뛰면 뒤 계산이 낡은 값 위에서 돈다.
+OPTIONAL = {"시세"}
+
 # ⭐ 순서가 곧 의존이다 — `선수`가 `진화`의 입력(대상 명단·현재 스탯)을 채운다(런북 「순서 의존」).
 ALL_ORDER = ["선수", "진화", "sbc", "시세", "참조"]
 
@@ -127,12 +134,15 @@ MANUAL = {
 }
 
 
-def run(label, cmd, dry):
+def run(label, cmd, dry, optional=False):
     print(f"\n▶ {label}\n   $ {' '.join(Path(c).name if c.startswith('/') else c for c in cmd)}")
     if dry:
         return True
     r = subprocess.run(cmd, cwd=ROOT)
     if r.returncode != 0:
+        if optional:
+            print(f"   ⏭️ 실패(exit {r.returncode}) — **이 축은 건너뛰고 이어 간다**(OPTIONAL). 기존 값을 그대로 쓴다.")
+            return False
         print(f"   ⛔ 실패(exit {r.returncode}) — 여기서 멈춘다. 원인을 보고할 것.")
         return False
     return True
@@ -220,6 +230,7 @@ def main():
                       "\n     새 카드는 대상 명단에서 빠지고, 요구조건(Max OVR·Pace·PS)은 낡은 스탯으로 판정된다."
                       "\n     ⇒ **종료 보고에 이 사실을 적는다.** 정확히 하려면 `선수`를 먼저 돌린다.")
 
+    skipped = []
     for b in buckets:
         if b == "선수" and not a.capture and not a.dry_run:
             print("\n⚠️ `선수`는 캡처 파일이 필요하다(`--capture`). 브라우저 단계는 사람이 한다:")
@@ -231,7 +242,10 @@ def main():
                 if not a.capture:
                     continue
                 cmd = [c.replace("{capture}", a.capture) for c in cmd]
-            if not run(f"[{b}] {label}", cmd, a.dry_run):
+            if not run(f"[{b}] {label}", cmd, a.dry_run, optional=b in OPTIONAL):
+                if b in OPTIONAL:
+                    skipped.append(b)
+                    break                        # 그 축의 남은 단계도 건너뛴다
                 sys.exit(1)
 
     if "sbc" in buckets:
@@ -241,8 +255,12 @@ def main():
     if not a.dry_run:
         run("export", [sys.executable, S("export.py")], False)
     staleness()
+    if skipped:
+        print(f"\n⏭️ 건너뛴 축: {' · '.join(skipped)} — 받아오지 못해 **기존 값을 그대로 둔다**."
+              "\n   종료 보고·커밋 메시지에 「시세 미갱신(사유)」을 적는다(신선도 표의 날짜가 근거다).")
     print("\n⛔ **커밋은 아직이다** — 무엇이 바뀌었는지 적어야 한다(불변규칙 5):")
-    print(f'   python3 scripts/ship.py -m "data(fut): 클럽 싱크 {dt.date.today()} [{item}] — …"')
+    note = f" · ⚠️ {'·'.join(skipped)} 미갱신" if skipped else ""
+    print(f'   python3 scripts/ship.py -m "data(fut): 클럽 싱크 {dt.date.today()} [{item}] — …{note}"')
 
 
 if __name__ == "__main__":
