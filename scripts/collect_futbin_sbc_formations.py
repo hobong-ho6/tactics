@@ -87,10 +87,18 @@ def apply(con, data):
     forms = {r[0] for r in con.execute("SELECT name FROM fc_formations WHERE game_version=?", (GAME,))}
     have = {r[0]: (r[1], r[2] or "") for r in con.execute(
         "SELECT challenge_ea_id, formation, source FROM fc_sbc_formations WHERE game_version=?", (GAME,))}
-    new, same, upd, conflict, unknown, bad = [], [], [], [], [], []
+    new, same, upd, conflict, unknown, bad, absent = [], [], [], [], [], [], []
     for k, v in data.items():
-        if k == "done" or v is None:
-            continue                                        # 404 = 포메이션 없는 챌린지
+        if k == "done":
+            continue
+        if v is None:
+            # ⛔⛔ 404를 「포메이션 없는 챌린지」로 조용히 넘기지 않는다(2026-09-30 사용자 지적
+            #    「Destined for Glory Challenge 2의 포메이션이 실제 sbc 포메이션이 아니야」).
+            #    대상(target_ids)은 이미 원클릭을 뺐으므로 404는 **FUTBIN이 아직 그 챌린지를 안 올렸다**는 뜻이다
+            #    (실측: 49번 — FUTBIN 활성 목록엔 Challenge 1만 있었다). ⇒ 인게임 입력이 필요하다고 보고한다.
+            if int(k) not in have:
+                absent.append(int(k))
+            continue
         cid = int(k)
         if v.startswith(("HTTP", "NOMATCH", "ERR")):
             bad.append((cid, v)); continue
@@ -110,7 +118,7 @@ def apply(con, data):
                        VALUES(?,?,?,?,?,?)""", (GAME, cid, f, SRC, CONF, TODAY))
         new.append((cid, f))
     con.commit()
-    print(f"FUTBIN 포메이션: 신규 {len(new)} · 일치 {len(same)} · 갱신 {len(upd)} · "
+    print(f"FUTBIN 포메이션: 신규 {len(new)} · 일치 {len(same)} · 갱신 {len(upd)} · FUTBIN에 없음 {len(absent)} · "
           f"⚠️ 사용자 기록과 충돌 {len(conflict)} · 모르는 표기 {len(unknown)} · 실패 {len(bad)}")
     for cid, f in new:
         print(f"   ➕ {cid}: {f}")
@@ -122,6 +130,9 @@ def apply(con, data):
         print(f"   ❔ {cid}: 「{v}」가 fc_formations에 없다 — collect_futgg_formations.py 확인")
     for cid, v in bad:
         print(f"   ⛔ {cid}: {v} — 봇 검사 만료면 Chrome에서 futbin 페이지를 한 번 열고 다시 돌린다")
+    for cid in absent:
+        print(f"   📐 {cid}: FUTBIN에 아직 없다(404) — **인게임 SBC 화면의 포메이션을 화면(SBC 탭)에서 골라 기록**한다."
+              " 기록 전에는 해법을 풀지 않는다(need_form)")
     return bool(new or upd)
 
 

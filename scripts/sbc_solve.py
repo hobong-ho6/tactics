@@ -220,6 +220,32 @@ PATS = [
     # ⭐ `League: X`는 **제출 카드 전원이 그 리그**라는 1인 조건이다(2026-09-25 확인 — fut.gg 설명
     #    「Submit Player Items from Premier League.」). 스쿼드 전체 조건이 아니다.
     (r"^League: (.+)$",                                       lambda m: ("league_is", m[1].strip())),
+    # ⭐⭐ **FC27 2026-09-30 표기**(fut.gg가 조건 문장을 통째로 바꿨다 — 그날 12개 챌린지가 전부 `unparsed`).
+    #    같은 챌린지의 09-29 ↔ 09-30 원문을 1:1로 맞춰 **기존 kind로 정규화**한다 — 판정 로직은 건드리지 않는다.
+    #    예) 48번 「Min. 2 Players from the same League」 → 「Same league: Min. 2 players」
+    #        「Min. Nationalities in Squad: 3」 → 「Nations: Min. 3」 · 「Exactly Gold Players」 → 「Quality: Gold only」
+    (r"^Players: (\d+)$",                                     lambda m: ("size", int(m[1]))),
+    (r"^Quality: Min\. (Bronze|Silver|Gold)$",                lambda m: ("qual_min", TIER[m[1]])),
+    (r"^Quality: (Bronze|Silver|Gold) only$",                 lambda m: ("qual_exact", TIER[m[1]])),
+    (r"^Quality: Min\. (\d+) (Bronze|Silver|Gold) players?$", lambda m: ("min_tier", (int(m[1]), TIER[m[2]]))),
+    # ⚠️⚠️ `Rating: Min. N`은 1인 OVR 조건인데 **방향이 모호하다**(2026-09-30 대조): 09-29 「Player OVR: Max.」였던
+    #    원클릭 4건(19·23·24·33)이 전부 「Rating: Min.」으로 바뀌었고, 「Min.」이었던 3건(47·55·56)은 그대로였다 —
+    #    fut.gg가 최대값도 「Min.」으로 찍는 것으로 보인다(등급 C). 지금은 **원클릭에만** 나와 풀지 않으므로 판정 영향이 없고,
+    #    원문 그대로 읽는다(지어내 뒤집지 않는다). ⛔ 스쿼드형 챌린지에 이 문장이 나오면 인게임 조건과 대조할 것.
+    (r"^Rating: Min\. (\d+)$",                                lambda m: ("ovr_min", int(m[1]))),
+    (r"^Rating: Max\. (\d+)$",                                lambda m: ("ovr_max", int(m[1]))),
+    (r"^Rating: (\d+) to (\d+)$",                             lambda m: ("ovr_range", (int(m[1]), int(m[2])))),
+    (r"^Rating: Min\. (\d+) players? rated (\d+)\+$",         lambda m: ("min_n_ovr_ge", (int(m[1]), int(m[2])))),
+    (r"^Rating: Min\. (\d+) players? rated (\d+) or lower$",  lambda m: ("min_n_ovr_le", (int(m[1]), int(m[2])))),
+    (r"^(?:Nation|League|Club): Min\. (\d+) players? from (.+)$",
+                                                              lambda m: ("min_from", (int(m[1]), [x.strip() for x in re.split(r" or | OR ", m[2])]))),
+    (r"^Same (club|league|nation): (Min|Max)\. (\d+) players?$",
+                                                              lambda m: ("same", (m[2], int(m[3]), m[1]))),
+    (r"^(Clubs|Leagues|Nations): (Min\.|Max\.|Exactly) (\d+)$",
+                                                              lambda m: ("distinct", ({"Min.": "Min", "Max.": "Max", "Exactly": "Exact"}[m[2]],
+                                                                                      {"Nations": "Nationalities"}.get(m[1], m[1]), int(m[3])))),
+    (r"^Team rating: (Min|Max)\. (\d+)$",                     lambda m: ("rating", (m[1], int(m[2])))),
+    (r"^Chemistry: Min\. (\d+)$",                             lambda m: ("chem", int(m[1]))),
 ]
 FIELD = {"Clubs": "club", "Leagues": "league", "Nationalities": "nation"}
 
