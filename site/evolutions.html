@@ -144,6 +144,7 @@ import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './a
 import { evoRules, logState, inProgress } from './assets/evorules.js?v=20260924a';
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
+import { posOvrRaw } from './assets/posovr.js?v=20261002';
 import { setRarityAssets } from './assets/clubviz.js?v=20260929a';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
 import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate } from './assets/clubviz.js?v=20260929a';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -1609,6 +1610,37 @@ function tryRun(pid, steps){
   return { st, cur, before, steps: done, gain,
            after: { at, six: faceFromAttrs(at, EVO.face_stats || [], isGk), ovr: cur.ovr } };
 }
+/* ⭐⭐ **진화 OVR ↔ 세부 스탯 기준 OVR**(2026-10-02 사용자 지시 「진화 걸어보기를 했을 때 오르는 스탯 총량과
+   그로 인해 실제 계산으로 추정한 오버롤을 보여주면 진화로 올려주는 오버롤과 비교」 · migration 091).
+   왜: `overall +N` 보상은 세부 스탯과 따로 OVR을 올린다 — 바르가스 반복 배급이 EA OVR +6인데 세부 스탯 기준 +1.3이었다.
+   ⭐ **차이(Δ)끼리 견준다** — 산정식 절대값은 ±1 오차가 있지만(국제 명성 등) 같은 카드의 전후 차이에서는 상쇄된다.
+   ⛔ 산정식은 FC27 비진화 카드로 적합한 값이다(등급 C · EA 비공개). 계산은 `posovr.js`(= core/position_ovr.py · G31). */
+const OVR_GAP_WARN = 3, OVR_GAP_SUSPECT = 2;     // 진화 OVR Δ − 계산 OVR Δ (판단값 — 시험셋 ±1 오차의 두세 배)
+function ovrCheckHTML(r){
+  if (!r.steps.some(x => !x.fails.length)) return '';   // 얹힌 진화가 없으면 견줄 것도 없다(「✅ 맞는다」로 읽히면 안 된다)
+  const M = EVO.ovr_model;
+  const pos = String(r.st.positions || '').split(/[\/,]/)[0].trim();
+  const c0 = posOvrRaw(r.before.at, pos, M), c1 = posOvrRaw(r.after.at, pos, M);
+  if (c0 == null || c1 == null) return `<div class="kv" style="margin-top:4px"><small class="dim">📐 ${esc(pos || '?')} 산정식이 없어
+    세부 스탯 기준 OVR을 계산하지 못했다.</small></div>`;
+  const evoD = (r.after.ovr ?? 0) - (r.before.ovr ?? 0), calcD = c1 - c0, gap = evoD - calcD;
+  const g = M.groups[pos], meta = (M.meta || []).find(x => x.pos_group === g);
+  const verdict = gap >= OVR_GAP_WARN
+      ? `<b class="dn">⚠️ OVR만 뻥튀기 — 진화 OVR +${evoD}인데 세부 스탯은 +${calcD.toFixed(1)}만큼만 오른다(차 +${gap.toFixed(1)})</b>`
+    : gap >= OVR_GAP_SUSPECT
+      ? `<b style="color:var(--warn)">🟡 진화 OVR이 세부 스탯보다 다소 높다(차 +${gap.toFixed(1)})</b>`
+      : `<b class="up">✅ 진화 OVR이 세부 스탯과 맞는다(차 ${gap >= 0 ? '+' : ''}${gap.toFixed(1)})</b>`;
+  return `<div class="trybox" style="margin-top:5px;padding:6px 8px">
+    <div class="kv"><b>📐 세부 스탯 기준 OVR</b> <small class="dim">${esc(pos)} 산정식(${esc(g)})${
+      (M.approx || []).includes(pos) ? ' · ⚠️ 근사 그룹' : ''}</small></div>
+    <div class="kv" style="margin-top:3px">
+      <span class="chip">진화 OVR ${r.before.ovr} ▸ <b>${r.after.ovr}</b> (+${evoD})</span>
+      <span class="chip">계산 OVR ${c0.toFixed(1)} ▸ <b>${c1.toFixed(1)}</b> (+${calcD.toFixed(1)})</span>
+      <span class="chip">세부 스탯 상승 합 +${Object.keys(r.before.at).reduce((t, k) => t + Math.max(0, (r.after.at[k] ?? 0) - (r.before.at[k] ?? 0)), 0)}</span></div>
+    <div style="margin-top:3px;font-size:12px">${verdict}</div>
+    <small class="dim">산정식은 EA 비공개라 FC27 비진화 카드${meta ? ` ${meta.sample_n}장` : ''}으로 추정했다(등급 C${
+      meta ? ` · 시험셋 정확 ${meta.test_exact}/${meta.test_n} · ±1 ${meta.test_within1}/${meta.test_n}` : ''}). 절대값보다 <b>전후 차이</b>를 본다.</small></div>`;
+}
 /* 미리보기 패널 — 얹은 진화·갈림길·스탯 변화. ⛔ 「기록했다」로 읽히지 않게 말을 고른다. */
 function tryPanel(pid){
   if (TRY.pid !== +pid || !TRY.steps.length) return '';
@@ -1636,6 +1668,7 @@ function tryPanel(pid){
     <div class="kv" style="margin-top:5px"><span class="chip">OVR ${d(r.before.ovr, r.after.ovr)} <small class="dim">fut.gg</small></span>
       ${FACE.map(f => `<span class="chip">${f} ${d(r.before.six?.[f], r.after.six?.[f])}</span>`).join('')}
       <span class="chip" style="border-color:var(--ok);color:var(--ok)">실제 상승 합 +${tot}</span></div>
+    ${ovrCheckHTML(r)}
     ${(r.gain.ps.length || r.gain.role.length || r.gain.psDup.length) ? `<div class="kv" style="margin-top:4px">
       ${r.gain.ps.map(x => `<span class="chip" style="border-color:var(--ok);color:var(--ok)">PS ${esc(x)}</span>`).join('')}
       ${r.gain.role.map(x => `<span class="chip" style="border-color:var(--viz-us);color:var(--viz-us)">${esc(x)}</span>`).join('')}

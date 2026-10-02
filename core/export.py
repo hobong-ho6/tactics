@@ -17,6 +17,7 @@ from pathlib import Path
 
 from . import DB, ROOT
 from .chem import CHEM
+from . import position_ovr as POVR
 
 SITE_DATA = ROOT / "site" / "data"
 
@@ -467,6 +468,17 @@ def export_all(db_path=None, window="2026-summer"):
                                                              AND pulled=(SELECT MAX(pulled) FROM fc_rarity_assets)"""),
                            "face_stats": _rows(con, """SELECT abbr, is_gk, attr, weight FROM fc_face_stats
                                                       WHERE game_version='FC27' ORDER BY is_gk, abbr"""),
+                           # ⭐ 포지션별 OVR 산정식(migration 091 · core/position_ovr.py 정본) — 「걸어 보기」가
+                           #    진화 OVR과 세부 스탯 기준 OVR을 견준다. ⛔ 화면이 그룹 표·가중치를 다시 적지 않게 통째로 내보낸다.
+                           "ovr_model": {"groups": POVR.GROUP, "approx": sorted(POVR.APPROX),
+                                         "weights": POVR.load(con, "FC27"),
+                                         "meta": _rows(con, """SELECT pos_group, MAX(fitted) fitted, MAX(sample_n) sample_n,
+                                                                      MAX(test_n) test_n, MAX(test_exact) test_exact,
+                                                                      MAX(test_within1) test_within1
+                                                                 FROM fc_position_ovr_weights
+                                                                WHERE game_version='FC27' AND fitted=(SELECT MAX(fitted)
+                                                                      FROM fc_position_ovr_weights WHERE game_version='FC27')
+                                                                GROUP BY pos_group""")},
                            "chem_meta": _rows(con, """SELECT item, value, alternatives, rationale, source
                                                      FROM fc_meta_snapshots WHERE category='chem_style'
                                                      AND pulled=(SELECT MAX(pulled) FROM fc_meta_snapshots WHERE category='chem_style')"""),

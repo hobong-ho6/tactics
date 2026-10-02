@@ -1567,6 +1567,56 @@ def run(db_path=None, verbose=True):
     if not ok30:
         fails.append("G30")
 
+    # G31 — ⛔⛔ **포지션 OVR 산정식 두 벌을 같은 입력에 돌려 대조한다.** 2026-10-02 신설(migration 091)
+    #   `core/position_ovr.py` ↔ `site/assets/posovr.js`. 언어가 달라 한 벌로 못 만든다 — G27(케미)과 같은 이유·같은 방식.
+    #   ⭐ 입력은 실제 보유 카드 29속성 × **모든 포지션**(근사 그룹 포함)이고, 속성 하나를 지운 결손 사례도 넣는다
+    #      (결손을 0으로 세면 한쪽만 숫자를 낸다 — 둘 다 None이어야 한다).
+    g31 = []
+    try:
+        import json as _json
+        import subprocess as _sp
+        import tempfile as _tf
+        from core import position_ovr as _po
+        _root = Path(__file__).resolve().parent.parent
+        _W = _po.load(con, "FC27")
+        if not _W:
+            raise RuntimeError("fc_position_ovr_weights가 비었다 — fit_position_ovr.py --save")
+        _att = [_json.loads(a) for (a,) in con.execute(
+            "SELECT current_attrs FROM fut_club_players WHERE status='owned' AND current_attrs IS NOT NULL LIMIT 40")]
+        cases = [(a, p) for a in _att for p in _po.GROUP]
+        if _att:
+            _miss = dict(_att[0])
+            _miss.pop("반응력", None)
+            cases += [(_miss, p) for p in _po.GROUP]
+        py = [_po.raw(a, p, _W) for a, p in cases]
+        _mod = _json.dumps((_root / "site" / "assets" / "posovr.js").as_uri())
+        js = "\n".join([
+            "import { posOvrRaw } from " + _mod + ";",
+            "const { cases, model } = JSON.parse(process.argv[2]);",
+            "console.log(JSON.stringify(cases.map(([a, p]) => posOvrRaw(a, p, model))));",
+        ])
+        with _tf.NamedTemporaryFile("w", suffix=".mjs", delete=False) as fh:
+            fh.write(js)
+            _path = fh.name
+        out = _sp.run(["node", _path, _json.dumps({"cases": cases, "model": {"groups": _po.GROUP, "weights": _W}},
+                                                  ensure_ascii=False)],
+                      capture_output=True, text=True, cwd=_root)
+        Path(_path).unlink(missing_ok=True)
+        if out.returncode != 0:
+            raise RuntimeError(out.stderr.strip()[:200])
+        jsv = _json.loads(out.stdout)
+        for (a, p), x, y in zip(cases, py, jsv):
+            if (x is None) != (y is None) or (x is not None and abs(x - y) > 1e-9):
+                g31.append(f"{p}: py {x} ↔ js {y}")
+    except Exception as e:                                   # noqa: BLE001
+        g31.append(f"대조 실패({e})")
+    ok31 = not g31
+    if verbose:
+        print(f"G31 포지션 OVR 산정식 파이썬↔JS 정합: 어긋남 {len(g31)} "
+              + ("✅" if ok31 else "❌ " + " · ".join(g31[:4])))
+    if not ok31:
+        fails.append("G31")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")
