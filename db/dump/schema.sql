@@ -1179,3 +1179,16 @@ CREATE TABLE IF NOT EXISTS "fc_sbc_solutions"(
   source TEXT, confidence TEXT,
   PRIMARY KEY(game_version, challenge_ea_id, pulled)
 );
+CREATE TABLE fc_position_ovr_weights(
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  pos_group    TEXT NOT NULL,          -- GK·CB·FB·CDM·CM·CAM·WM·WF·ST (포지션→그룹은 core/position_ovr.py)
+  attr         TEXT NOT NULL,          -- 29속성 한국어 키(core/futgg_attrs.ATTR_KR 값)
+  weight_pct   INTEGER NOT NULL,       -- 정수 %. 그룹 합 = 100
+  fitted       TEXT NOT NULL,          -- 적합 회차(날짜)
+  sample_n     INTEGER,                -- 그 그룹 표본 수
+  test_n       INTEGER,                -- 시험셋(적합에 안 쓴 30%) 수
+  test_exact   INTEGER,                -- 시험셋 정확 일치 수
+  test_within1 INTEGER,                -- 시험셋 ±1 이내 수
+  source TEXT, confidence TEXT,
+  PRIMARY KEY(game_version, pos_group, attr, fitted)
+);
