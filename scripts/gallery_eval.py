@@ -37,24 +37,26 @@ def fill_ids(con):
     need = [r[0] for r in con.execute(
         """SELECT DISTINCT i.ea_item_id FROM player_card_items i
              JOIN fut_club_players c ON c.ea_item_id=i.ea_item_id   -- ⭐ 지금 보유 + 예전에 가졌던 카드(판매·SBC) 전부
-            WHERE i.game_version=? AND i.club_ea_id IS NULL""", (GAME,))]
+            WHERE i.game_version=? AND (i.club_ea_id IS NULL OR i.grading_score IS NULL)""", (GAME,))]
     got = {}
     for k in range(0, len(need), 40):
         for x in (get(f"{API}/players/v2/27/?ea_ids=" + ",".join(map(str, need[k:k + 40]))) or {}).get("data", []):
             cl, lg = x.get("club") or {}, x.get("league") or {}
-            got[x["eaId"]] = (cl.get("eaId"), cl.get("siblingClubEaId"), lg.get("eaId"))
+            got[x["eaId"]] = (cl.get("eaId"), cl.get("siblingClubEaId"), lg.get("eaId"), x.get("gradingScore"))
     for ea in [e for e in need if e not in got]:                 # ⚠️ 목록 API가 일부를 빠뜨린다 — 상세로 보충
         d = get(f"{API}/player-item-definitions/27/{ea}/")
         d = (d or {}).get("data") or d or {}
         cl = d.get("club") or {}
-        got[ea] = (d.get("clubEaId") or cl.get("eaId"), cl.get("siblingClubEaId"), d.get("leagueEaId"))
+        got[ea] = (d.get("clubEaId") or cl.get("eaId"), cl.get("siblingClubEaId"), d.get("leagueEaId"), d.get("gradingScore"))
         time.sleep(0.3)
-    for ea, (c, s, l) in got.items():
+    for ea, (c, s, l, gs) in got.items():
+        # ⭐ gradingScore = fut.gg가 주는 카드별 갤러리 점수(migration 094 · 등급 B) — 채움 전용
         con.execute("""UPDATE player_card_items SET club_ea_id=COALESCE(club_ea_id,?),
-                         sibling_club_ea_id=COALESCE(sibling_club_ea_id,?), league_ea_id=COALESCE(league_ea_id,?)
-                       WHERE game_version=? AND ea_item_id=?""", (c, s, l, GAME, ea))
+                         sibling_club_ea_id=COALESCE(sibling_club_ea_id,?), league_ea_id=COALESCE(league_ea_id,?),
+                         grading_score=COALESCE(grading_score,?)
+                       WHERE game_version=? AND ea_item_id=?""", (c, s, l, gs, GAME, ea))
     con.commit()
-    print(f"카드 EA id 채움: 대상 {len(need)}장 · 받음 {len(got)}장")
+    print(f"카드 EA id·갤러리 점수 채움: 대상 {len(need)}장 · 받음 {len(got)}장")
 
 
 def main():
@@ -71,7 +73,7 @@ def main():
              AND pulled=(SELECT MAX(pulled) FROM fc_gallery_sets WHERE game_version=?)""", (GAME, GAME))]
     # ⭐ 진화 전 원래 카드로 센다(i.ovr = 아이템 정의) — 같은 아이템을 여러 장 갖고 있으면 각각 센다.
     cards = [dict(r) for r in con.execute(
-        """SELECT c.id, c.name, i.ovr, i.club_ea_id, i.sibling_club_ea_id, i.league_ea_id, i.rarity_ea_id,
+        """SELECT c.id, c.name, i.ovr, i.grading_score, i.club_ea_id, i.sibling_club_ea_id, i.league_ea_id, i.rarity_ea_id,
                   i.rarity_name, COALESCE(i.is_hero,0) is_hero, COALESCE(i.is_special,0) is_special
              FROM fut_club_players c JOIN player_card_items i ON i.ea_item_id=c.ea_item_id AND i.game_version=?
             WHERE c.status='owned' AND COALESCE(c.is_loan,0)=0
@@ -104,7 +106,7 @@ def main():
         print("\n(--dry-run: 적지 않았다)")
         return
     src = f"scripts/gallery_eval.py ({TODAY}) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py"
-    conf = ("등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · "
+    conf = ("카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · 태그 보너스 제외 하한 · "
             "진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄")
     con.execute("DELETE FROM fut_gallery_eval WHERE game_version=? AND pulled=?", (GAME, TODAY))
     con.executemany("""INSERT INTO fut_gallery_eval(game_version,set_id,pulled,eligible_n,required_n,base_score,grade,

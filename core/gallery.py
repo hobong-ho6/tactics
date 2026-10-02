@@ -4,7 +4,9 @@
   갤러리 세트 등급(D~S)은 세트에 넣은 카드의 **아이템 점수** 합으로 매겨진다.
   fut.gg는 세트 정의·등급 임계는 주지만 **내 진행도는 주지 않는다** ⇒ 보유 카드로 우리가 계산한다.
 
-⚠️ 아이템 점수표는 **커뮤니티 정리값**이다(EA 미공개 · 등급 D — 2026-09-26 기준 여러 가이드가 같은 표).
+⭐ 카드 점수는 **fut.gg `gradingScore`**를 쓴다(2026-10-02 · migration 094 · 등급 B — EA 데이터를 fut.gg가 전달).
+   아스톤 빌라 27장 대조에서 아래 커뮤니티 표와 27/27 일치했고, 표에 없는 카드(아이콘·특별·98)까지 값이 있다.
+   ⚠️ 아래 표(`item_score`)는 그 값이 **결손일 때만** 대신한다(커뮤니티 정리값 · 등급 D).
    브론즈 20 · 실버 35 · 골드 75=90 … 84=830 · 85=2,100 …. 스트림라인 SBC의 「Score 제출」과 같은 체계다.
 ⚠️ **태그 보너스는 넣지 않는다** — 규칙이 자료마다 갈리고(TOTW 4/6/12% ↔ 4/8/15%) fut.gg 조합 점수와 대조해도
    한 건도 정확히 맞지 않았다(0/64 · 차이는 늘 +10~38%로 태그 쪽). 보너스는 **더하기만** 하므로
@@ -46,6 +48,12 @@ RARITY_RULE = {
 }
 
 
+def card_score(c):
+    """카드 한 장의 갤러리 점수 — fut.gg gradingScore가 정본, 없으면 표."""
+    gs = c.get("grading_score")
+    return gs if gs is not None else item_score(c["ovr"])
+
+
 def eligible(card, s):
     """카드가 세트에 들어가는가. 판정 규칙이 없으면 None."""
     if s["club_ea_id"]:
@@ -74,11 +82,11 @@ def evaluate(sets, cards):
             out.append(dict(set_id=s["set_id"], supported=0, eligible_n=None, required_n=s["required_cards"],
                             base_score=None, grade=None, next_grade=None, next_gap=None, card_ids=[]))
             continue
-        el = [c for c, f in flags if f and item_score(c["ovr"]) is not None]
-        el.sort(key=lambda c: -item_score(c["ovr"]))
+        el = [c for c, f in flags if f and card_score(c) is not None]
+        el.sort(key=lambda c: -card_score(c))
         req = s["required_cards"] or 0
         pick = el[:req]
-        score = sum(item_score(c["ovr"]) for c in pick)
+        score = sum(card_score(c) for c in pick)
         # ⛔⛔ **필요 장수를 채워야 완성되고, 완성해야 등급을 받는다**(2026-10-02 사용자 지적 「등급은 세트를 완성했을 때만
         #    받을 수 있는 거 아니야?」 · EA 도움말 「You complete a Set by meeting its Player Item requirements. The Item Score …
         #    determines its grade.」). 종전엔 칸을 덜 채워도 점수만 넘으면 등급을 줬다 — Squad Foundations 2/4장에 C를 매겼다.
