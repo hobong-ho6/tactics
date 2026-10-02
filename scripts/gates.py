@@ -1347,7 +1347,8 @@ def run(db_path=None, verbose=True):
     #     ⚠️ 이 카드는 Trust the Keeper **진행 중**(1/2 · 1단계에 가속 +10)이다 — EA가 진행 중 카드의 face를
     #        늦게 갱신하는지는 미확인(근거 없음). 2단계 완주 뒤 싱크에서 다시 본다.
     #   ⚠️ GK SPD 출처 충돌이 **두 번째**다(불변규칙 13) — 구조 해법은 EA의 GK SPD 산정 규칙을 알아야 해서 보류.
-    G25_KNOWN = {("Suzuki", "SPD"), ("Emily Ramsey", "SPD")}
+    #   ⭐ 같은 날 완주(사용자 보고) → 현재 카드를 완주 계산값으로 닫아 예외에서 뺐다. 다음 EA 싱크가 39로 다시 주면 여기서 다시 운다.
+    G25_KNOWN = {("Suzuki", "SPD")}
     g25 = []
     try:
         import json as _json
