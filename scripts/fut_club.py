@@ -453,24 +453,41 @@ def cmd_sbc_exclude(con, a):
     _resolve()
 
 
-def cmd_gallery_grade(con, a):
-    """갤러리 세트의 **지금 내 등급**을 기록한다(2026-10-02 · migration 092).
-       ⛔ fut.gg가 내 진행도를 주지 않아 사람이 인게임 갤러리 화면을 보고 적는다 — 그게 정본이다.
-       grade가 비면 기록을 지운다(「아직 안 함」으로 되돌린다)."""
+def cmd_gallery_complete(con, a):
+    """갤러리 세트를 **완성했다**고 원장에 행을 추가한다(2026-10-02 · migration 093 — 「내가 완성한 갤러리 정보도 우리 디비에서 관리」).
+       · grade를 주지 않으면 **최신 평가 등급**으로 적는다. 인게임 등급이 다르면(태그 보너스 등) grade로 밝힌다.
+       · cards=True면 최신 평가가 고른 카드·점수를 함께 남긴다(우리 제안대로 넣었을 때). 다른 카드로 넣었으면 cards=False.
+       · undo=True면 그 세트의 **가장 최근 행 하나**를 지운다(잘못 누른 기록 되돌리기).
+       ⛔ fut.gg에는 쓰지 않는다 — 인게임 갤러리 화면이 정본이고 이 원장이 그 기록이다."""
     sid = int(a.set_id)
-    g = (a.grade or "").strip().upper() or None
-    if g is not None and g not in ("D", "C", "B", "A", "S"):
-        raise SystemExit(f"⛔ 등급은 D·C·B·A·S 중 하나다 — 받은 값 {a.grade!r}")
-    if not con.execute("SELECT 1 FROM fc_gallery_sets WHERE game_version=? AND set_id=?", (a.game, sid)).fetchone():
+    s = con.execute("""SELECT name FROM fc_gallery_sets WHERE game_version=? AND set_id=?
+                        ORDER BY pulled DESC LIMIT 1""", (a.game, sid)).fetchone()
+    if not s:
         raise SystemExit(f"⛔ 갤러리 세트 {sid}를 모른다")
-    if g is None:
-        con.execute("DELETE FROM fut_gallery_log WHERE game_version=? AND set_id=?", (a.game, sid))
-    else:
-        con.execute("""INSERT INTO fut_gallery_log(game_version,set_id,grade,recorded_at,source,notes) VALUES(?,?,?,?,?,?)
-                       ON CONFLICT(game_version,set_id) DO UPDATE SET grade=excluded.grade, recorded_at=excluded.recorded_at""",
-                    (a.game, sid, g, TODAY, "사용자 기록(인게임 갤러리 화면) — 화면 또는 fut_club.py", a.notes))
+    if getattr(a, "undo", False):
+        r = con.execute("""SELECT id, grade, completed_at FROM fut_gallery_completions WHERE game_version=? AND set_id=?
+                            ORDER BY id DESC LIMIT 1""", (a.game, sid)).fetchone()
+        if not r:
+            raise SystemExit(f"⛔ {s['name']}: 되돌릴 완성 기록이 없다")
+        con.execute("DELETE FROM fut_gallery_completions WHERE id=?", (r["id"],))
+        con.commit()
+        print(f"↩️ {s['name']} 완성 기록 {r['grade']}({r['completed_at']})을 지웠다")
+        return
+    ev = con.execute("""SELECT grade, base_score, card_ids FROM fut_gallery_eval WHERE game_version=? AND set_id=?
+                         ORDER BY pulled DESC LIMIT 1""", (a.game, sid)).fetchone()
+    g = (a.grade or "").strip().upper() or (ev["grade"] if ev else None)
+    if g not in ("D", "C", "B", "A", "S"):
+        raise SystemExit(f"⛔ {s['name']}: 등급을 정할 수 없다(받은 값 {a.grade!r} · 평가 등급 {ev['grade'] if ev else None}) — "
+                         "세트를 완성하지 못했으면 기록하지 않는다")
+    cards = getattr(a, "cards", True)
+    con.execute("""INSERT INTO fut_gallery_completions(game_version,set_id,grade,completed_at,score,card_ids,source,notes)
+                   VALUES(?,?,?,?,?,?,?,?)""",
+                (a.game, sid, g, a.date or TODAY, ev["base_score"] if (ev and cards) else None,
+                 ev["card_ids"] if (ev and cards) else None,
+                 "사용자 완성 처리(인게임 갤러리) — 화면 또는 fut_club.py gallery_complete"
+                 + ("" if cards else " · 넣은 카드는 우리 제안과 달라 남기지 않음"), a.notes))
     con.commit()
-    print(f"갤러리 {sid}: 내 등급 {g or '기록 없음'}")
+    print(f"🏁 {s['name']} 완성 — {g} ({a.date or TODAY})")
 
 
 def run(con, cmd, **kw):
@@ -482,7 +499,7 @@ def run(con, cmd, **kw):
     a = argparse.Namespace(**{**defaults, **kw})
     fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete,
           "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude,
-          "sbc_submit": cmd_sbc_submit, "gallery_grade": cmd_gallery_grade}[cmd]
+          "sbc_submit": cmd_sbc_submit, "gallery_complete": cmd_gallery_complete}[cmd]
     fn(con, a)
 
 

@@ -8,7 +8,7 @@
 순서:
   ⑴ 보유 카드의 클럽·자매 구단·리그 EA id가 비어 있으면 fut.gg에서 채운다(채움 전용 · 목록 API → 빠지면 상세 API).
   ⑵ 최신 세트 정의(`fc_gallery_sets`)로 평가 → 오늘 회차로 적는다(같은 날 다시 돌리면 그 회차를 갈아 쓴다).
-  ⑶ 직전 회차·사용자 기록(`fut_gallery_log`)과 견줘 **달성 가능 / 더 높일 수 있음 / NEW**를 찍는다.
+  ⑶ 직전 회차·내 완성 원장(`fut_gallery_completions` · core.gallery.mine)과 견줘 **달성 가능 / 더 높일 수 있음 / NEW**를 찍는다.
 ⚠️ 등급은 태그 보너스를 뺀 **하한**이다(core/gallery.py 주석). 「C 이상」만 목록에 올린다 — D는 카드 한 장이면 된다.
 
 사용:
@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                        # noqa: E402
-from core.gallery import MIN_LIST, classify, evaluate      # noqa: E402
+from core.gallery import MIN_LIST, classify, evaluate, mine as gal_mine  # noqa: E402
 
 GAME = "FC27"
 TODAY = dt.date.today().isoformat()
@@ -36,7 +36,7 @@ def fill_ids(con):
     from scripts.collect_futgg_history import API, get
     need = [r[0] for r in con.execute(
         """SELECT DISTINCT i.ea_item_id FROM player_card_items i
-             JOIN fut_club_players c ON c.ea_item_id=i.ea_item_id AND c.status='owned'
+             JOIN fut_club_players c ON c.ea_item_id=i.ea_item_id   -- ⭐ 지금 보유 + 예전에 가졌던 카드(판매·SBC) 전부
             WHERE i.game_version=? AND i.club_ea_id IS NULL""", (GAME,))]
     got = {}
     for k in range(0, len(need), 40):
@@ -84,8 +84,7 @@ def main():
         """SELECT set_id, grade FROM fut_gallery_eval WHERE game_version=?
              AND pulled=(SELECT MAX(pulled) FROM fut_gallery_eval WHERE game_version=? AND pulled<?)""",
         (GAME, GAME, TODAY))}
-    mine = {r["set_id"]: r["grade"] for r in con.execute(
-        "SELECT set_id, grade FROM fut_gallery_log WHERE game_version=? AND grade IS NOT NULL", (GAME,))}
+    mine = gal_mine(con, GAME)
     name = {s["set_id"]: s["name"] for s in sets}
     unsup = [name[r["set_id"]] for r in res if not r["supported"]]
     by = {r["set_id"]: r for r in res}

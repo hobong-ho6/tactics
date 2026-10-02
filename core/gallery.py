@@ -112,3 +112,11 @@ def classify(evals, prev, mine):
         if prev and rk(g) > rk(prev.get(sid)):
             new.append(sid)
     return reach, higher, new
+
+
+def mine(con, game="FC27"):
+    """세트별 **지금 내 등급** = 완성 원장(`fut_gallery_completions`)의 최신 행. ⛔ 정본은 이 함수 하나다(migration 093)."""
+    return {sid: g for sid, g in con.execute(
+        """SELECT set_id, grade FROM fut_gallery_completions c
+            WHERE game_version=? AND id=(SELECT MAX(id) FROM fut_gallery_completions
+                                          WHERE game_version=c.game_version AND set_id=c.set_id)""", (game,))}

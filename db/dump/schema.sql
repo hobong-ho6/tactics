@@ -1207,11 +1207,14 @@ CREATE TABLE fut_gallery_eval(
   source TEXT, confidence TEXT,
   PRIMARY KEY(game_version, set_id, pulled)
 );
-CREATE TABLE fut_gallery_log(
+CREATE TABLE fut_gallery_completions(
+  id           INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL,
   set_id       INTEGER NOT NULL,
-  grade        TEXT,             -- D~S · NULL이면 기록 취소
-  recorded_at  TEXT NOT NULL,
-  source TEXT, notes TEXT,
-  PRIMARY KEY(game_version, set_id)
+  grade        TEXT NOT NULL CHECK(grade IN ('D','C','B','A','S')),
+  completed_at TEXT NOT NULL,
+  score        INTEGER,          -- 기록 시점 우리 계산(태그 제외 하한) — 인게임 점수와 다를 수 있다
+  card_ids     TEXT,             -- 넣은 카드 fut_club_players.id JSON — 우리 제안대로 넣었을 때만(아니면 NULL)
+  source TEXT, notes TEXT
 );
+CREATE INDEX ix_gal_comp_set ON fut_gallery_completions(game_version, set_id, completed_at);

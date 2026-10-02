@@ -433,11 +433,13 @@ def export_all(db_path=None, window="2026-summer"):
                              AND pulled=(SELECT MAX(pulled) FROM fc_gallery_tiers WHERE game_version='FC27')""")
     gal_eval = _rows(con, """SELECT * FROM fut_gallery_eval WHERE game_version='FC27'
                               AND pulled=(SELECT MAX(pulled) FROM fut_gallery_eval WHERE game_version='FC27')""")
-    gal_mine = {r["set_id"]: r["grade"] for r in _rows(con, """SELECT set_id, grade FROM fut_gallery_log
-                                                              WHERE game_version='FC27' AND grade IS NOT NULL""")}
+    gal_mine = GAL.mine(con, "FC27")
+    # ⭐ 내 완성 원장 전체(이력) — 화면의 「🏁 내가 완성한 세트」가 쓴다(migration 093).
+    gal_done = _rows(con, """SELECT id, set_id, grade, completed_at, score, card_ids, notes FROM fut_gallery_completions
+                             WHERE game_version='FC27' ORDER BY set_id, id""")
     gal_prev = {r["set_id"]: r["prev_grade"] for r in gal_eval if r["prev_grade"]}
     _reach, _higher, _new = GAL.classify(gal_eval, gal_prev, gal_mine)
-    gallery = {"sets": gal_sets, "tokens": gal_tok, "eval": gal_eval, "mine": gal_mine,
+    gallery = {"sets": gal_sets, "tokens": gal_tok, "eval": gal_eval, "mine": gal_mine, "done": gal_done,
                "pulled": gal_eval[0]["pulled"] if gal_eval else None, "min_list": GAL.MIN_LIST,
                "reach": _reach, "higher": _higher, "new": _new}
     # 시세 — **카드별** 최신 pulled(ea_item_id 키). NULL은 「미형성」이며 화면이 그렇게 쓴다(migration 037)

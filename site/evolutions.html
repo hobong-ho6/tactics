@@ -95,7 +95,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
       내 보유 카드로 세트마다 <b>낼 수 있는 등급</b>을 계산했다 — <b>필요 장수를 다 채워 세트를 완성해야</b> 등급을 받는다(EA 도움말) — 클럽 싱크 <code>선수</code> 단계가 끝나면 다시 계산된다
       (<code>scripts/gallery_eval.py</code>). ⚠️ 점수는 <b>아이템 점수</b>(커뮤니티 정리표 · 등급 D) 합이고 <b>태그 보너스는 뺐다</b>
       — 보너스는 더하기만 하므로 여기 등급은 <b>적어도 이 등급</b>이다. 갤러리는 <b>진화 전 원래 카드</b>로 센다.
-      ⛔ fut.gg가 내 진행도를 주지 않아 <b>「내 등급」은 직접 기록</b>한다(인게임 갤러리 화면이 정본).</p>
+      ⛔ fut.gg가 내 진행도를 주지 않는다 — 인게임에서 완성하면 <b>「🏁 완성 처리」</b>로 <b>우리 DB 완성 원장</b>에 적는다(fut.gg에는 쓰지 않는다).</p>
     <div id="gallery"></div></div>
 </section>
 
@@ -3369,8 +3369,8 @@ function renderGallery(){
   document.getElementById('galn').textContent = GAL.pulled
     ? `— 평가 ${GAL.pulled} · 세트 ${(GAL.sets || []).length} · 달성 가능 ${(GAL.reach || []).length} · 더 높일 수 있음 ${(GAL.higher || []).length}`
     : '— 아직 평가 없음(클럽 싱크 선수 단계 또는 gallery_eval.py)';
-  const opts = id => ['', 'D', 'C', 'B', 'A', 'S'].map(g =>
-    `<option value="${g}"${(mine[id] || '') === g ? ' selected' : ''}>${g || '— 기록 없음'}</option>`).join('');
+  const opts = (id, def) => ['D', 'C', 'B', 'A', 'S'].map(g =>
+    `<option value="${g}"${def === g ? ' selected' : ''}>${g}</option>`).join('');
   const card = id => {
     const s = GSET[id], e = GEV[id]; if (!s || !e) return '';
     const tok = GTOK[id]?.[e.grade];
@@ -3385,8 +3385,11 @@ function renderGallery(){
         ${tok ? ` · 이 등급 토큰 <b>${tok}</b>` : ''}
         ${e.next_grade ? ` · 다음 <b>${e.next_grade}</b>까지 ${(e.next_gap || 0).toLocaleString()}점` : ' · 최고 등급'}
         ${mine[id] ? ` · <span class="dim">내 기록 ${esc(mine[id])}</span>` : ''}</div>
-      <div class="kv" style="margin-top:4px">내 등급 <select data-galgrade="${id}">${opts(id)}</select>
-        <small class="dim">인게임에서 등급을 받았으면 기록한다 — 그보다 높을 때만 목록에 남는다.</small>
+      <div class="kv" style="margin-top:4px">
+        <button class="act" data-galdone="${id}">🏁 완성 처리</button>
+        등급 <select data-galg="${id}">${opts(id, e.grade)}</select>
+        <label style="font-size:12px"><input type="checkbox" data-galcards="${id}" checked> 아래 카드로 넣었다</label>
+        <small class="dim">인게임에서 완성했으면 누른다 — 우리 DB(완성 원장)에만 적는다. 등급이 다르게 나왔으면(태그 보너스) 고쳐서 누른다.</small>
         <span class="msg-slot" id="galm${id}"></span></div>
       ${picks.length ? `<details style="margin-top:3px"><summary class="dim" style="cursor:pointer;font-size:11.5px">넣을 카드 ${picks.length}장</summary>
         <div style="font-size:12px">${picks.map(p => `${esc(p.name)} <span class="dim">${p.current_ovr ?? ''}</span>`).join(' · ')}</div>
@@ -3402,16 +3405,50 @@ function renderGallery(){
   const unsup = (GAL.eval || []).filter(e => !e.supported).map(e => GSET[e.set_id]?.name).filter(Boolean);
   el.innerHTML = sec('⭐ 달성 가능', GAL.reach || [], '지금 카드로 <b>완성</b>되는 세트가 없다(필요 장수를 다 채워야 등급을 받는다).')
     + sec('⬆️ 더 높일 수 있음', GAL.higher || [], '기록한 등급보다 높일 수 있는 세트가 없다(기록한 세트만 여기 나온다).')
+    + doneHTML()
     + `<details style="margin-top:10px"><summary><b>🧩 완성까지 가까운 세트</b> <small class="dim">상위 ${near.length} — 등급은 필요 장수를 다 채워야 받는다</small></summary>
         <table class="tbl" style="margin-top:4px"><thead><tr><th>세트</th><th>보유 / 필요</th><th>더 필요</th><th>지금까지 점수</th></tr></thead><tbody>
         ${near.map(({ e, need }) => `<tr><td>${esc(GSET[e.set_id]?.name || e.set_id)}</td><td>${e.eligible_n}/${e.required_n}</td>
           <td><b>${need}장</b></td><td>${(e.base_score || 0).toLocaleString()}</td></tr>`).join('')}</tbody></table></details>`
     + (unsup.length ? `<div class="dim" style="font-size:11.5px;margin-top:8px">❔ 대상 규칙을 몰라 판정하지 않은 세트: ${unsup.map(esc).join(' · ')}</div>` : '');
-  el.querySelectorAll('[data-galgrade]').forEach(sel => sel.addEventListener('change', async () => {
-    const id = +sel.dataset.galgrade, box = document.getElementById(`galm${id}`);
-    const r = await api('gallery_grade', { set_id: id, grade: sel.value, game: 'FC27' });
-    say(box, r); if (r?.ok) reloadAfterWrite('갤러리 등급을 기록했다');
+  el.querySelectorAll('[data-galdone]').forEach(btn => btn.addEventListener('click', async () => {
+    const id = +btn.dataset.galdone, box = document.getElementById(`galm${id}`);
+    const grade = el.querySelector(`[data-galg="${id}"]`)?.value;
+    const cards = !!el.querySelector(`[data-galcards="${id}"]`)?.checked;
+    btn.disabled = true;
+    const r = await api('gallery_complete', { set_id: id, grade, cards, game: 'FC27' });
+    say(box, r); btn.disabled = false; if (r?.ok) reloadAfterWrite(`${GSET[id]?.name} ${grade} 완성을 기록했다`);
   }));
+  el.querySelectorAll('[data-galundo]').forEach(btn => btn.addEventListener('click', async () => {
+    const id = +btn.dataset.galundo, box = document.getElementById(`galu${id}`);
+    if (!confirm(`${GSET[id]?.name}의 가장 최근 완성 기록을 지웁니다(이전 기록은 남습니다). 계속할까요?`)) return;
+    const r = await api('gallery_complete', { set_id: id, undo: true, game: 'FC27' });
+    say(box, r); if (r?.ok) reloadAfterWrite('완성 기록을 되돌렸다');
+  }));
+}
+/* ⭐ 「🏁 내가 완성한 세트」 — 완성 원장(migration 093) 전부. 세트별 최신 행이 「지금 내 등급」이고 앞 행은 이력이다.
+   넣은 카드는 기록 당시 id로 남는다 — 그 뒤 팔거나 SBC에 낸 카드도 이름으로 보이게 원장 전체(EVO.club.players)에서 찾는다. */
+function doneHTML(){
+  const rows = GAL.done || []; if (!rows.length) return `<h3 style="margin:10px 0 4px">🏁 내가 완성한 세트 <small class="dim">0</small></h3>
+    <div class="dim" style="font-size:12px">아직 기록이 없다 — 위 세트에서 인게임 완성 뒤 「🏁 완성 처리」를 누른다.</div>`;
+  const all = Object.fromEntries((EVO.club?.players || []).map(p => [p.id, p]));
+  const by = {}; for (const r of rows) (by[r.set_id] ??= []).push(r);
+  const items = Object.entries(by).map(([sid, hist]) => {
+    const last = hist[hist.length - 1], e = GEV[+sid];
+    const cards = J(last.card_ids, []).map(cid => all[cid]?.name || `#${cid}`);
+    const up = e?.grade && GRANK[e.grade] > GRANK[last.grade];
+    return `<div class="galcard"><div class="kv"><b>${esc(GSET[+sid]?.name || sid)}</b>
+        <span class="galgrade g${esc(last.grade)}">${esc(last.grade)}</span>
+        <small class="dim">완성 ${esc(last.completed_at)}${last.score != null ? ` · 기록 점수 ${last.score.toLocaleString()}` : ''}</small>
+        ${up ? `<span class="chip" style="border-color:var(--ok);color:var(--ok)">⬆️ 지금 카드로 ${esc(e.grade)} 가능</span>` : ''}
+        <button class="chip" data-galundo="${sid}" title="가장 최근 기록 하나를 지운다">↩︎ 되돌리기</button>
+        <span class="msg-slot" id="galu${sid}"></span></div>
+      ${hist.length > 1 ? `<div style="font-size:11.5px" class="dim">이력: ${hist.map(h => `${esc(h.grade)}(${esc(h.completed_at)})`).join(' → ')}</div>` : ''}
+      ${cards.length ? `<details><summary class="dim" style="cursor:pointer;font-size:11.5px">넣은 카드 ${cards.length}장</summary>
+        <div style="font-size:12px">${cards.map(esc).join(' · ')}</div></details>`
+        : '<small class="dim">넣은 카드 기록 없음(우리 제안과 다른 카드로 넣음)</small>'}</div>`;
+  });
+  return `<h3 style="margin:10px 0 4px">🏁 내가 완성한 세트 <small class="dim">${items.length}</small></h3>${items.join('')}`;
 }
 
 renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc(); renderGallery(); galPopup();
