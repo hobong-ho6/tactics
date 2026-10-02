@@ -141,7 +141,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20260925-canon';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { evoRules, logState, inProgress } from './assets/evorules.js?v=20260924a';
+import { evoRules, logState, inProgress } from './assets/evorules.js?v=20261002';
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
 import { posOvrRaw } from './assets/posovr.js?v=20261002';
@@ -1118,7 +1118,10 @@ let SHOW_USED = false;   // 소진 진화는 기본으로 감춘다(위 renderCa
 function renderCatalog(team = CAT_TEAM){
   CAT_TEAM = team; localStorage.setItem('evo_cat_team', team);
   teamBar(document.getElementById('catteam'), team, renderCatalog);
-  const cat0 = EVO.catalog || [];
+  /* ⛔ 꾸미기 진화는 **목록에서 뺀다**(필터가 아니다 — 능력치가 없어 다시 볼 이유가 없다 · 판정 정본은 evorules.js).
+     ⭐ 조용히 없애지 않고 머리글에 종수를 적는다. DB 행은 그대로다. */
+  const cat0 = (EVO.catalog || []).filter(c => !RULES.cosmeticIds.has(c.evo_id));
+  const nCos = (EVO.catalog || []).length - cat0.length;
   /* ⛔⛔ **소진된 진화는 카탈로그에서 뺀다**(2026-09-22 사용자 지시 「소진된 건 삭제」).
      종전에는 카드로 남겨 두고 「소진」 배지만 붙였는데, **다시 쓸 수 없는 것**이라 목록에 있을 이유가 없다.
      ⚠️ 종전 내 설명이 틀렸다 — `pathOpen()`은 **선수별 경로·전술 구현 탭에서만** 소진을 걸렀고,
@@ -1144,7 +1147,8 @@ function renderCatalog(team = CAT_TEAM){
   const nPrem = cat0.filter(c => isPrem(c) && (SHOW_USED || !usedIds.has(c.evo_id)) && (SHOW_LOCKED || !isProg(c))).length;
   const nProg = cat0.filter(c => isProg(c) && (SHOW_USED || !usedIds.has(c.evo_id)) && (SHOW_PREM || !isPrem(c)) && (SHOW_ROLEPP || !isRPP(c))).length;
   const nRPP = cat0.filter(c => isRPP(c) && (SHOW_USED || !usedIds.has(c.evo_id))).length;
-  document.getElementById('catn').innerHTML = `— ${cat.filter(c => !c.is_expired).length}종 열림 · ${cat.filter(c => c.is_expired).length}종 만료`;
+  document.getElementById('catn').innerHTML = `— ${cat.filter(c => !c.is_expired).length}종 열림 · ${cat.filter(c => c.is_expired).length}종 만료`
+    + (nCos ? ` · 꾸미기 진화 ${nCos}종 제외(능력치 없음)` : '');
   /* 카탈로그 필터도 선수별 패스와 **같은 모양**으로 둔다 — 탭마다 다르면 그것대로 못 알아본다. */
   const fb = document.getElementById('catfilters');
   fb.innerHTML = ''; fb.hidden = !(nUsed || nPrem || nProg || nRPP);

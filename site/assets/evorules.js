@@ -119,12 +119,19 @@ export function evoRules(EVO, accName){
   const rolesPPIds = new Set((EVO?.catalog || [])
     .filter(c => /\bRoles\+\+/.test(String(c.name || '')) || /역할\+\+/.test(String(c.name_kr || '')))
     .map(c => c.evo_id));
+  /* ⭐ **꾸미기 진화**(2026-10-02 사용자 지시 「꾸미기용 진화는 진화 목록에서 제거」) — 모든 단계의 보상이 비어 있다
+     (Cosmetic Badge 1·2 · Season 1 Badge — EA 설명 「Applies a cosmetic badge to any player.」). 능력치가 없어 고를 거리가 없다.
+     ⛔ 이름이 아니라 **보상이 비었는가**로 가른다 — 이름만 보면 다음 시즌 배지(이름이 다른)를 놓친다. */
+  const cosmeticIds = new Set((EVO?.catalog || []).filter(c => {
+    let lv = []; try { lv = JSON.parse(c.levels || '[]') || []; } catch (e) { return false; }
+    return lv.length > 0 && lv.every(L => !(L.upgrades || []).length && !(L.upgradeOptions || []).length);
+  }).map(c => c.evo_id));
   const premIds = new Set(Object.keys(lockInfo).map(Number));
   const premOnlyIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.kind === 'prem').map(([k]) => +k));
   const progressIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.kind !== 'prem').map(([k]) => +k));
 
   return {
-    acc, consumed, applied, premIds, premOnlyIds, progressIds, rolesPPIds, lockInfo, spLevel, hasPrem,
+    acc, consumed, applied, premIds, premOnlyIds, progressIds, rolesPPIds, cosmeticIds, lockInfo, spLevel, hasPrem,
     /* 소진된 진화를 낀 경로는 **그 진화를 쓴 선수 본인 외** 모두에게서 닫힌다 */
     open: (ids, pid) => (ids || []).every(i => !consumed[i]?.exhausted || consumed[i].by.some(b => b.pid === pid)),
     premium: ids => (ids || []).some(i => premIds.has(i)),
