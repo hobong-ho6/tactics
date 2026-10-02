@@ -46919,6 +46919,4918 @@
    "slots": "[{\"i\": 0, \"uniq\": 0, \"gen\": 0, \"label\": \"GK\", \"x\": 50, \"y\": 6}, {\"i\": 1, \"uniq\": 3, \"gen\": 3, \"label\": \"RB\", \"x\": 88, \"y\": 26}, {\"i\": 2, \"uniq\": 4, \"gen\": 5, \"label\": \"RCB\", \"x\": 66, \"y\": 22}, {\"i\": 3, \"uniq\": 5, \"gen\": 5, \"label\": \"CB\", \"x\": 50, \"y\": 20}, {\"i\": 4, \"uniq\": 6, \"gen\": 5, \"label\": \"LCB\", \"x\": 34, \"y\": 22}, {\"i\": 5, \"uniq\": 7, \"gen\": 7, \"label\": \"LB\", \"x\": 12, \"y\": 26}, {\"i\": 6, \"uniq\": 12, \"gen\": 12, \"label\": \"RM\", \"x\": 88, \"y\": 56}, {\"i\": 7, \"uniq\": 13, \"gen\": 14, \"label\": \"RCM\", \"x\": 64, \"y\": 52}, {\"i\": 8, \"uniq\": 15, \"gen\": 14, \"label\": \"LCM\", \"x\": 36, \"y\": 52}, {\"i\": 9, \"uniq\": 16, \"gen\": 16, \"label\": \"LM\", \"x\": 12, \"y\": 56}, {\"i\": 10, \"uniq\": 25, \"gen\": 25, \"label\": \"ST\", \"x\": 50, \"y\": 88}]"
   }
  ],
+ "gallery": {
+  "eval": [
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 1,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 2,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 140,
+    "card_ids": "[234]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 4860,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 3,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 990,
+    "card_ids": "[150, 303]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 12010,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 4,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 440,
+    "card_ids": "[241, 353]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1460,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 5,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 100,
+    "card_ids": "[184]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 500,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 6,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 7,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 160,
+    "card_ids": "[156]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 8840,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 8,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 35,
+    "card_ids": "[21]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1365,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 9,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 10,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 20,
+    "card_ids": "[225]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 380,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 11,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 12,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 13,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 14,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 15,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 140,
+    "card_ids": "[346]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 6860,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 16,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 17,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 160,
+    "card_ids": "[309]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 5840,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 18,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 19,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 20,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 21,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 305,
+    "card_ids": "[315, 270, 145]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 3,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1295,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 22,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 23,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 90,
+    "card_ids": "[305]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 410,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 24,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 340,
+    "card_ids": "[330]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 4660,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 25,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 1030,
+    "card_ids": "[282, 278, 327]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 3,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 2970,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 26,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 27,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 28,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 280,
+    "card_ids": "[334]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 9720,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 29,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 410,
+    "card_ids": "[365]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 109590,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 20,
+    "set_id": 30,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 180,
+    "card_ids": "[378]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 920,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 31,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 32,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 33,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 20,
+    "card_ids": "[224]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1980,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 34,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 35,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 200,
+    "card_ids": "[262, 374]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 57800,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 36,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 445,
+    "card_ids": "[380, 273]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1055,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 37,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 38,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 35,
+    "card_ids": "[300]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 665,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 39,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 40,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 41,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 42,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 43,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 280,
+    "card_ids": "[123]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 19720,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 20,
+    "set_id": 44,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 45,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 200,
+    "card_ids": "[179, 220]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 59800,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 20,
+    "set_id": 46,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 47,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 48,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 890,
+    "card_ids": "[345, 359, 297]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 3,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 59110,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 20,
+    "set_id": 49,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 50,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 160,
+    "card_ids": "[314]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1340,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 51,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 1520,
+    "card_ids": "[363, 149, 75]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 3,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 58480,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 20,
+    "set_id": 52,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 965,
+    "card_ids": "[271, 289, 249, 343]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 4,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 19035,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 20,
+    "set_id": 53,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 54,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 35,
+    "card_ids": "[218]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 265,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 55,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 280,
+    "card_ids": "[294]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 2720,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 56,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 175,
+    "card_ids": "[291, 186]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 225,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 57,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 58,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 59,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 60,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 3980,
+    "card_ids": "[1, 82, 4, 79, 8, 9, 84, 10, 132, 11, 12, 14, 48, 49, 50]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 27,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 5020,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 61,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 62,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 140,
+    "card_ids": "[240]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1860,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 63,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 64,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 750,
+    "card_ids": "[364, 165]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 8250,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 65,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 120,
+    "card_ids": "[290]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 880,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 66,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 160,
+    "card_ids": "[288]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 340,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 67,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 11140,
+    "card_ids": "[341, 319]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 158860,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 20,
+    "set_id": 68,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 35,
+    "card_ids": "[398]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1265,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 69,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 500,
+    "card_ids": "[115, 316]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1400,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 70,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 71,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 35,
+    "card_ids": "[251]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 465,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 72,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 73,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 690,
+    "card_ids": "[366, 379]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 69310,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 20,
+    "set_id": 74,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 75,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 76,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 120,
+    "card_ids": "[163]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1180,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 77,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 78,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 79,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 220,
+    "card_ids": "[318, 254]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 280,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 80,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 81,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 82,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 160,
+    "card_ids": "[172]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 2040,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 83,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 35,
+    "card_ids": "[147]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 265,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 84,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 280,
+    "card_ids": "[180]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 2720,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 85,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 86,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 87,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 88,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 250,
+    "card_ids": "[312, 159, 396]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 3,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 50,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 89,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 90,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 280,
+    "card_ids": "[360]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1120,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 91,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 20,
+    "card_ids": "[377]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 11480,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 92,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 100,
+    "card_ids": "[205]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1200,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 93,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 20,
+    "set_id": 94,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 340,
+    "card_ids": "[204, 317]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 79660,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 20,
+    "set_id": 95,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 280,
+    "card_ids": "[195]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1620,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 96,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 97,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 120,
+    "card_ids": "[299]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1580,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 98,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 640,
+    "card_ids": "[327, 324, 362]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 3,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 124360,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 20,
+    "set_id": 99,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 1100,
+    "card_ids": "[345, 330, 297, 335, 21, 390, 220]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 7,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 198900,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 30,
+    "set_id": 100,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 35,
+    "card_ids": "[261]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 465,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 101,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 5,
+    "set_id": 102,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 2785,
+    "card_ids": "[115, 237, 285, 329, 334, 248, 172, 316, 354, 194, 240, 205, 197, 261, 300]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 15,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 97215,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 30,
+    "set_id": 103,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 104,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 105,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 35,
+    "card_ids": "[197]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 465,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 106,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 680,
+    "card_ids": "[237, 285]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 40320,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 107,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 7540,
+    "card_ids": "[1, 82, 282, 365, 4, 79, 278, 359, 8, 9, 84, 123, 180, 294, 327, 10, 132, 179, 315, 11, 12, 156, 14, 48, 49, 50, 51, 16, 18, 184]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 40,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 392460,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 30,
+    "set_id": 108,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 2450,
+    "card_ids": "[271, 289, 195, 241, 360, 249, 353, 319, 318, 254, 305, 343, 398]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 13,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 272550,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 30,
+    "set_id": 109,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 480,
+    "card_ids": "[329, 194]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 1520,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 110,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 735,
+    "card_ids": "[314, 317, 234, 290, 299, 251]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 6,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 74265,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 30,
+    "set_id": 111,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 112,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": null,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": null,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": null,
+    "next_grade": null,
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 5,
+    "set_id": 113,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 0
+   },
+   {
+    "base_score": 680,
+    "card_ids": "[79, 278]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 2,
+    "game_version": "FC27",
+    "grade": "C",
+    "next_gap": 70,
+    "next_grade": "B",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 4,
+    "set_id": 114,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 695,
+    "card_ids": "[204, 262, 309, 163, 218, 374]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 6,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 74305,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 30,
+    "set_id": 115,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 13900,
+    "card_ids": "[341, 1, 150, 363, 82]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 206,
+    "game_version": "FC27",
+    "grade": "S",
+    "next_gap": null,
+    "next_grade": null,
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 5,
+    "set_id": 116,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 117,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 180,
+    "card_ids": "[248]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 420,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 118,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 160,
+    "card_ids": "[354]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 1,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 11840,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 119,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 1685,
+    "card_ids": "[363, 149, 364, 273]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 4,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 48315,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 30,
+    "set_id": 120,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 12135,
+    "card_ids": "[341, 366, 379, 312, 346, 147, 159, 396, 225]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 9,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 112865,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 30,
+    "set_id": 121,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 2555,
+    "card_ids": "[150, 380, 165, 75, 378, 288, 303, 291, 186, 224]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 10,
+    "game_version": "FC27",
+    "grade": "D",
+    "next_gap": 97445,
+    "next_grade": "C",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 30,
+    "set_id": 122,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 123,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 124,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 125,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": 0,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": 0,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": 10,
+    "next_grade": "D",
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 15,
+    "set_id": 126,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 1
+   },
+   {
+    "base_score": null,
+    "card_ids": "[]",
+    "confidence": "등급 D(아이템 점수표는 커뮤니티 정리값) · 태그 보너스 제외 하한 · 진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "eligible_n": null,
+    "game_version": "FC27",
+    "grade": null,
+    "next_gap": null,
+    "next_grade": null,
+    "prev_grade": null,
+    "pulled": "2026-10-02",
+    "required_n": 10,
+    "set_id": 127,
+    "source": "scripts/gallery_eval.py (2026-10-02) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
+    "supported": 0
+   }
+  ],
+  "higher": [],
+  "min_list": "C",
+  "mine": {},
+  "new": [],
+  "pulled": "2026-10-02",
+  "reach": [
+   114,
+   116
+  ],
+  "sets": [
+   {
+    "category_name": "Rarities",
+    "description": "Requires Ones to Watch, Destined for Glory or Future Stars Player Items to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 1000}, {\"name\": \"C\", \"threshold\": 25000}, {\"name\": \"B\", \"threshold\": 60000}, {\"name\": \"A\", \"threshold\": 100000}, {\"name\": \"S\", \"threshold\": 150000}]",
+    "name": "Season 1",
+    "required_cards": 10,
+    "set_id": 127,
+    "total_tokens": 85
+   },
+   {
+    "category_name": "Rarities",
+    "description": "Requires Team of the Week players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 125000}, {\"name\": \"B\", \"threshold\": 175000}, {\"name\": \"A\", \"threshold\": 300000}, {\"name\": \"S\", \"threshold\": 550000}]",
+    "name": "TOTW",
+    "required_cards": 20,
+    "set_id": 99,
+    "total_tokens": 175
+   },
+   {
+    "category_name": "Rarities",
+    "description": "Requires Heroes players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 50000}, {\"name\": \"B\", \"threshold\": 75000}, {\"name\": \"A\", \"threshold\": 100000}, {\"name\": \"S\", \"threshold\": 200000}]",
+    "name": "Heroes",
+    "required_cards": 5,
+    "set_id": 102,
+    "total_tokens": 175
+   },
+   {
+    "category_name": "Rarities",
+    "description": "Requires Holographic players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 75000}, {\"name\": \"B\", \"threshold\": 150000}, {\"name\": \"A\", \"threshold\": 200000}, {\"name\": \"S\", \"threshold\": 250000}]",
+    "name": "Holographics",
+    "required_cards": 5,
+    "set_id": 113,
+    "total_tokens": 175
+   },
+   {
+    "category_name": "Rarities",
+    "description": "Requires Squad Foundations players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 750}, {\"name\": \"A\", \"threshold\": 1000}, {\"name\": \"S\", \"threshold\": 1250}]",
+    "name": "Squad Foundations",
+    "required_cards": 4,
+    "set_id": 114,
+    "total_tokens": 10
+   },
+   {
+    "category_name": "Rarities",
+    "description": "Requires Bronze, Silver or Gold players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 250}, {\"name\": \"B\", \"threshold\": 500}, {\"name\": \"A\", \"threshold\": 1000}, {\"name\": \"S\", \"threshold\": 2000}]",
+    "name": "Starter Set",
+    "required_cards": 5,
+    "set_id": 116,
+    "total_tokens": 5
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 20 Arsenal Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 110000}, {\"name\": \"B\", \"threshold\": 700000}, {\"name\": \"A\", \"threshold\": 1300000}, {\"name\": \"S\", \"threshold\": 2500000}]",
+    "name": "Arsenal",
+    "required_cards": 20,
+    "set_id": 30,
+    "total_tokens": 220
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Aston Villa Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 9000}, {\"name\": \"B\", \"threshold\": 40000}, {\"name\": \"A\", \"threshold\": 80000}, {\"name\": \"S\", \"threshold\": 150000}]",
+    "name": "Aston Villa",
+    "required_cards": 15,
+    "set_id": 61,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Birmingham City Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 300}, {\"name\": \"B\", \"threshold\": 500}, {\"name\": \"A\", \"threshold\": 700}, {\"name\": \"S\", \"threshold\": 1000}]",
+    "name": "Birmingham City",
+    "required_cards": 15,
+    "set_id": 76,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Bournemouth Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1600}, {\"name\": \"B\", \"threshold\": 2800}, {\"name\": \"A\", \"threshold\": 4200}, {\"name\": \"S\", \"threshold\": 5900}]",
+    "name": "Bournemouth",
+    "required_cards": 15,
+    "set_id": 22,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Brentford Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1400}, {\"name\": \"B\", \"threshold\": 2700}, {\"name\": \"A\", \"threshold\": 4000}, {\"name\": \"S\", \"threshold\": 5700}]",
+    "name": "Brentford",
+    "required_cards": 15,
+    "set_id": 17,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Brighton & Hove Albion Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 4000}, {\"name\": \"B\", \"threshold\": 13000}, {\"name\": \"A\", \"threshold\": 23500}, {\"name\": \"S\", \"threshold\": 42500}]",
+    "name": "Brighton & Hove Albion",
+    "required_cards": 15,
+    "set_id": 26,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Charlton Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 300}, {\"name\": \"B\", \"threshold\": 500}, {\"name\": \"A\", \"threshold\": 700}, {\"name\": \"S\", \"threshold\": 1000}]",
+    "name": "Charlton",
+    "required_cards": 15,
+    "set_id": 14,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 20 Chelsea Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 50000}, {\"name\": \"B\", \"threshold\": 600000}, {\"name\": \"A\", \"threshold\": 900000}, {\"name\": \"S\", \"threshold\": 1500000}]",
+    "name": "Chelsea",
+    "required_cards": 20,
+    "set_id": 94,
+    "total_tokens": 220
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Coventry City Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 400}, {\"name\": \"B\", \"threshold\": 1100}, {\"name\": \"A\", \"threshold\": 1700}, {\"name\": \"S\", \"threshold\": 2400}]",
+    "name": "Coventry City",
+    "required_cards": 15,
+    "set_id": 71,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Crystal Palace Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 3000}, {\"name\": \"B\", \"threshold\": 27500}, {\"name\": \"A\", \"threshold\": 30000}, {\"name\": \"S\", \"threshold\": 35000}]",
+    "name": "Crystal Palace",
+    "required_cards": 15,
+    "set_id": 85,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Everton Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 3000}, {\"name\": \"B\", \"threshold\": 15000}, {\"name\": \"A\", \"threshold\": 22500}, {\"name\": \"S\", \"threshold\": 36000}]",
+    "name": "Everton",
+    "required_cards": 15,
+    "set_id": 56,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Fulham Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1500}, {\"name\": \"B\", \"threshold\": 2700}, {\"name\": \"A\", \"threshold\": 4000}, {\"name\": \"S\", \"threshold\": 5700}]",
+    "name": "Fulham",
+    "required_cards": 15,
+    "set_id": 54,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Hull City Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 400}, {\"name\": \"B\", \"threshold\": 700}, {\"name\": \"A\", \"threshold\": 1100}, {\"name\": \"S\", \"threshold\": 1500}]",
+    "name": "Hull City",
+    "required_cards": 15,
+    "set_id": 45,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Ipswich Town Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 600}, {\"name\": \"B\", \"threshold\": 1400}, {\"name\": \"A\", \"threshold\": 2100}, {\"name\": \"S\", \"threshold\": 3000}]",
+    "name": "Ipswich Town",
+    "required_cards": 15,
+    "set_id": 6,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Leeds United Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1100}, {\"name\": \"B\", \"threshold\": 2300}, {\"name\": \"A\", \"threshold\": 3400}, {\"name\": \"S\", \"threshold\": 4800}]",
+    "name": "Leeds United",
+    "required_cards": 15,
+    "set_id": 20,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 20 Liverpool Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 60000}, {\"name\": \"B\", \"threshold\": 600000}, {\"name\": \"A\", \"threshold\": 1100000}, {\"name\": \"S\", \"threshold\": 2000000}]",
+    "name": "Liverpool",
+    "required_cards": 20,
+    "set_id": 46,
+    "total_tokens": 220
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 London City Lionesses Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 5000}, {\"name\": \"B\", \"threshold\": 25000}, {\"name\": \"A\", \"threshold\": 31500}, {\"name\": \"S\", \"threshold\": 44000}]",
+    "name": "London City Lionesses",
+    "required_cards": 15,
+    "set_id": 25,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 20 Manchester City Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 60000}, {\"name\": \"B\", \"threshold\": 700000}, {\"name\": \"A\", \"threshold\": 1300000}, {\"name\": \"S\", \"threshold\": 2500000}]",
+    "name": "Manchester City",
+    "required_cards": 20,
+    "set_id": 49,
+    "total_tokens": 220
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 20 Manchester United Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 20000}, {\"name\": \"B\", \"threshold\": 300000}, {\"name\": \"A\", \"threshold\": 700000}, {\"name\": \"S\", \"threshold\": 1500000}]",
+    "name": "Manchester United",
+    "required_cards": 20,
+    "set_id": 44,
+    "total_tokens": 220
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Newcastle United Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 11500}, {\"name\": \"B\", \"threshold\": 154000}, {\"name\": \"A\", \"threshold\": 187500}, {\"name\": \"S\", \"threshold\": 250000}]",
+    "name": "Newcastle United",
+    "required_cards": 15,
+    "set_id": 92,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Nottingham Forest Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 2100}, {\"name\": \"B\", \"threshold\": 7200}, {\"name\": \"A\", \"threshold\": 10700}, {\"name\": \"S\", \"threshold\": 15200}]",
+    "name": "Nottingham Forest",
+    "required_cards": 15,
+    "set_id": 48,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Sunderland Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 2500}, {\"name\": \"B\", \"threshold\": 11000}, {\"name\": \"A\", \"threshold\": 15000}, {\"name\": \"S\", \"threshold\": 22500}]",
+    "name": "Sunderland",
+    "required_cards": 15,
+    "set_id": 86,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 Tottenham Hotspur Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 9000}, {\"name\": \"B\", \"threshold\": 40000}, {\"name\": \"A\", \"threshold\": 100000}, {\"name\": \"S\", \"threshold\": 200000}]",
+    "name": "Tottenham Hotspur",
+    "required_cards": 15,
+    "set_id": 8,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Premier League / Barclays WSL",
+    "description": "Requires 15 West Ham Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1400}, {\"name\": \"B\", \"threshold\": 2000}, {\"name\": \"A\", \"threshold\": 3200}, {\"name\": \"S\", \"threshold\": 4600}]",
+    "name": "West Ham",
+    "required_cards": 15,
+    "set_id": 9,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Athletic Club Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 7000}, {\"name\": \"B\", \"threshold\": 52500}, {\"name\": \"A\", \"threshold\": 79000}, {\"name\": \"S\", \"threshold\": 128000}]",
+    "name": "Athletic Club",
+    "required_cards": 15,
+    "set_id": 16,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 20 Atlético de Madrid Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 20000}, {\"name\": \"B\", \"threshold\": 400000}, {\"name\": \"A\", \"threshold\": 700000}, {\"name\": \"S\", \"threshold\": 1300000}]",
+    "name": "Atlético de Madrid",
+    "required_cards": 20,
+    "set_id": 53,
+    "total_tokens": 220
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 CA Osasuna Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1300}, {\"name\": \"B\", \"threshold\": 1800}, {\"name\": \"A\", \"threshold\": 2800}, {\"name\": \"S\", \"threshold\": 4100}]",
+    "name": "CA Osasuna",
+    "required_cards": 15,
+    "set_id": 12,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Celta de Vigo Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1300}, {\"name\": \"B\", \"threshold\": 4600}, {\"name\": \"A\", \"threshold\": 7000}, {\"name\": \"S\", \"threshold\": 9900}]",
+    "name": "Celta de Vigo",
+    "required_cards": 15,
+    "set_id": 81,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Costa Adeje Tenerife Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 300}, {\"name\": \"B\", \"threshold\": 500}, {\"name\": \"A\", \"threshold\": 700}, {\"name\": \"S\", \"threshold\": 1000}]",
+    "name": "Costa Adeje Tenerife",
+    "required_cards": 15,
+    "set_id": 89,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Deportivo Alavés Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 700}, {\"name\": \"A\", \"threshold\": 1100}, {\"name\": \"S\", \"threshold\": 1600}]",
+    "name": "Deportivo Alavés",
+    "required_cards": 15,
+    "set_id": 62,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Elche CF Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 1400}, {\"name\": \"A\", \"threshold\": 2000}, {\"name\": \"S\", \"threshold\": 2900}]",
+    "name": "Elche CF",
+    "required_cards": 15,
+    "set_id": 80,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 FC Badalona Women Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 600}, {\"name\": \"B\", \"threshold\": 800}, {\"name\": \"A\", \"threshold\": 1200}, {\"name\": \"S\", \"threshold\": 1800}]",
+    "name": "FC Badalona Women",
+    "required_cards": 15,
+    "set_id": 40,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 20 FC Barcelona Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 170000}, {\"name\": \"B\", \"threshold\": 1200000}, {\"name\": \"A\", \"threshold\": 1800000}, {\"name\": \"S\", \"threshold\": 2800000}]",
+    "name": "FC Barcelona",
+    "required_cards": 20,
+    "set_id": 68,
+    "total_tokens": 220
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Getafe CF Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 900}, {\"name\": \"B\", \"threshold\": 1300}, {\"name\": \"A\", \"threshold\": 2000}, {\"name\": \"S\", \"threshold\": 3000}]",
+    "name": "Getafe CF",
+    "required_cards": 15,
+    "set_id": 13,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Granada CF Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 400}, {\"name\": \"B\", \"threshold\": 600}, {\"name\": \"A\", \"threshold\": 1000}, {\"name\": \"S\", \"threshold\": 1400}]",
+    "name": "Granada CF",
+    "required_cards": 15,
+    "set_id": 11,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Levante UD Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 700}, {\"name\": \"A\", \"threshold\": 1200}, {\"name\": \"S\", \"threshold\": 1700}]",
+    "name": "Levante UD",
+    "required_cards": 15,
+    "set_id": 24,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Logroño United Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 300}, {\"name\": \"B\", \"threshold\": 500}, {\"name\": \"A\", \"threshold\": 700}, {\"name\": \"S\", \"threshold\": 1000}]",
+    "name": "Logroño United",
+    "required_cards": 15,
+    "set_id": 97,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Madrid CFF Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 600}, {\"name\": \"B\", \"threshold\": 2400}, {\"name\": \"A\", \"threshold\": 3600}, {\"name\": \"S\", \"threshold\": 5100}]",
+    "name": "Madrid CFF",
+    "required_cards": 15,
+    "set_id": 35,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Malaga CF Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 300}, {\"name\": \"B\", \"threshold\": 400}, {\"name\": \"A\", \"threshold\": 700}, {\"name\": \"S\", \"threshold\": 900}]",
+    "name": "Malaga CF",
+    "required_cards": 15,
+    "set_id": 90,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Real Racing Club Men's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 600}, {\"name\": \"A\", \"threshold\": 1000}, {\"name\": \"S\", \"threshold\": 1500}]",
+    "name": "Real Racing Club",
+    "required_cards": 15,
+    "set_id": 79,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Rayo Vallecano Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1400}, {\"name\": \"B\", \"threshold\": 2200}, {\"name\": \"A\", \"threshold\": 3300}, {\"name\": \"S\", \"threshold\": 4700}]",
+    "name": "Rayo Vallecano",
+    "required_cards": 15,
+    "set_id": 91,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 RC Deportivo Men's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 3700}, {\"name\": \"A\", \"threshold\": 5500}, {\"name\": \"S\", \"threshold\": 7800}]",
+    "name": "RC Deportivo",
+    "required_cards": 15,
+    "set_id": 41,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 RCD Espanyol Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 800}, {\"name\": \"B\", \"threshold\": 1500}, {\"name\": \"A\", \"threshold\": 2300}, {\"name\": \"S\", \"threshold\": 3200}]",
+    "name": "RCD Espanyol",
+    "required_cards": 15,
+    "set_id": 2,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Real Betis Balompié Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1900}, {\"name\": \"B\", \"threshold\": 7300}, {\"name\": \"A\", \"threshold\": 10900}, {\"name\": \"S\", \"threshold\": 15400}]",
+    "name": "Real Betis Balompié",
+    "required_cards": 15,
+    "set_id": 96,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 20 Real Madrid Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 70000}, {\"name\": \"B\", \"threshold\": 1000000}, {\"name\": \"A\", \"threshold\": 1400000}, {\"name\": \"S\", \"threshold\": 2100000}]",
+    "name": "Real Madrid",
+    "required_cards": 20,
+    "set_id": 74,
+    "total_tokens": 220
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Real Sociedad Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 3500}, {\"name\": \"B\", \"threshold\": 22000}, {\"name\": \"A\", \"threshold\": 37000}, {\"name\": \"S\", \"threshold\": 65000}]",
+    "name": "Real Sociedad",
+    "required_cards": 15,
+    "set_id": 42,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 SD Eibar Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 300}, {\"name\": \"B\", \"threshold\": 500}, {\"name\": \"A\", \"threshold\": 700}, {\"name\": \"S\", \"threshold\": 1000}]",
+    "name": "SD Eibar",
+    "required_cards": 15,
+    "set_id": 84,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Sevilla FC Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1500}, {\"name\": \"B\", \"threshold\": 4500}, {\"name\": \"A\", \"threshold\": 5500}, {\"name\": \"S\", \"threshold\": 7000}]",
+    "name": "Sevilla FC",
+    "required_cards": 15,
+    "set_id": 32,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Valencia CF Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1300}, {\"name\": \"B\", \"threshold\": 1800}, {\"name\": \"A\", \"threshold\": 2800}, {\"name\": \"S\", \"threshold\": 4100}]",
+    "name": "Valencia CF",
+    "required_cards": 15,
+    "set_id": 69,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "LALIGA EA SPORTS / Liga F Moeve",
+    "description": "Requires 15 Villarreal CF Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1900}, {\"name\": \"B\", \"threshold\": 3500}, {\"name\": \"A\", \"threshold\": 5300}, {\"name\": \"S\", \"threshold\": 7500}]",
+    "name": "Villarreal CF",
+    "required_cards": 15,
+    "set_id": 5,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 Bayer 04 Leverkusen Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 9000}, {\"name\": \"B\", \"threshold\": 70000}, {\"name\": \"A\", \"threshold\": 160000}, {\"name\": \"S\", \"threshold\": 325000}]",
+    "name": "Bayer 04 Leverkusen",
+    "required_cards": 15,
+    "set_id": 65,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 Borussia Dortmund Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 13000}, {\"name\": \"B\", \"threshold\": 150000}, {\"name\": \"A\", \"threshold\": 320000}, {\"name\": \"S\", \"threshold\": 625000}]",
+    "name": "Borussia Dortmund",
+    "required_cards": 15,
+    "set_id": 4,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 Borussia Mönchengladbach Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1100}, {\"name\": \"B\", \"threshold\": 2400}, {\"name\": \"A\", \"threshold\": 3500}, {\"name\": \"S\", \"threshold\": 5000}]",
+    "name": "Borussia Mönchengladbach",
+    "required_cards": 15,
+    "set_id": 31,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 Eintracht Frankfurt Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 9000}, {\"name\": \"B\", \"threshold\": 40000}, {\"name\": \"A\", \"threshold\": 80000}, {\"name\": \"S\", \"threshold\": 150000}]",
+    "name": "Eintracht Frankfurt",
+    "required_cards": 15,
+    "set_id": 59,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 FC Augsburg Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 800}, {\"name\": \"B\", \"threshold\": 1600}, {\"name\": \"A\", \"threshold\": 2400}, {\"name\": \"S\", \"threshold\": 3500}]",
+    "name": "FC Augsburg",
+    "required_cards": 15,
+    "set_id": 10,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 20 FC Bayern München Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 60000}, {\"name\": \"B\", \"threshold\": 700000}, {\"name\": \"A\", \"threshold\": 1400000}, {\"name\": \"S\", \"threshold\": 2800000}]",
+    "name": "FC Bayern München",
+    "required_cards": 20,
+    "set_id": 52,
+    "total_tokens": 220
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 FC Köln Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1000}, {\"name\": \"B\", \"threshold\": 1700}, {\"name\": \"A\", \"threshold\": 2500}, {\"name\": \"S\", \"threshold\": 3600}]",
+    "name": "FC Köln",
+    "required_cards": 15,
+    "set_id": 15,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 1. FC Nürnberg Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 400}, {\"name\": \"B\", \"threshold\": 600}, {\"name\": \"A\", \"threshold\": 1000}, {\"name\": \"S\", \"threshold\": 1400}]",
+    "name": "1. FC Nürnberg",
+    "required_cards": 15,
+    "set_id": 73,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 FC Union Berlin Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 900}, {\"name\": \"B\", \"threshold\": 1300}, {\"name\": \"A\", \"threshold\": 2000}, {\"name\": \"S\", \"threshold\": 3000}]",
+    "name": "FC Union Berlin",
+    "required_cards": 15,
+    "set_id": 64,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 FSV Mainz 05 Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1000}, {\"name\": \"B\", \"threshold\": 2200}, {\"name\": \"A\", \"threshold\": 3400}, {\"name\": \"S\", \"threshold\": 4800}]",
+    "name": "FSV Mainz 05",
+    "required_cards": 15,
+    "set_id": 33,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 Hamburger SV Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 1000}, {\"name\": \"A\", \"threshold\": 1400}, {\"name\": \"S\", \"threshold\": 2000}]",
+    "name": "Hamburger SV",
+    "required_cards": 15,
+    "set_id": 67,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 RB Leipzig Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 7000}, {\"name\": \"B\", \"threshold\": 40000}, {\"name\": \"A\", \"threshold\": 80000}, {\"name\": \"S\", \"threshold\": 175000}]",
+    "name": "RB Leipzig",
+    "required_cards": 15,
+    "set_id": 28,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 SC Freiburg Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 2000}, {\"name\": \"B\", \"threshold\": 11500}, {\"name\": \"A\", \"threshold\": 18000}, {\"name\": \"S\", \"threshold\": 30000}]",
+    "name": "SC Freiburg",
+    "required_cards": 15,
+    "set_id": 21,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 SC Paderborn 07 Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 400}, {\"name\": \"B\", \"threshold\": 600}, {\"name\": \"A\", \"threshold\": 1000}, {\"name\": \"S\", \"threshold\": 1400}]",
+    "name": "SC Paderborn 07",
+    "required_cards": 15,
+    "set_id": 47,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 Schalke 04 Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 400}, {\"name\": \"B\", \"threshold\": 600}, {\"name\": \"A\", \"threshold\": 1000}, {\"name\": \"S\", \"threshold\": 1400}]",
+    "name": "Schalke 04",
+    "required_cards": 15,
+    "set_id": 57,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 SV Elversberg Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 400}, {\"name\": \"B\", \"threshold\": 600}, {\"name\": \"A\", \"threshold\": 1000}, {\"name\": \"S\", \"threshold\": 1400}]",
+    "name": "SV Elversberg",
+    "required_cards": 15,
+    "set_id": 38,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 TSG Hoffenheim Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 3000}, {\"name\": \"B\", \"threshold\": 10000}, {\"name\": \"A\", \"threshold\": 100000}, {\"name\": \"S\", \"threshold\": 250000}]",
+    "name": "TSG Hoffenheim",
+    "required_cards": 15,
+    "set_id": 19,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 VfB Stuttgart Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1500}, {\"name\": \"B\", \"threshold\": 4700}, {\"name\": \"A\", \"threshold\": 7000}, {\"name\": \"S\", \"threshold\": 9900}]",
+    "name": "VfB Stuttgart",
+    "required_cards": 15,
+    "set_id": 37,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 VfL Wolfsburg Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 4000}, {\"name\": \"B\", \"threshold\": 30000}, {\"name\": \"A\", \"threshold\": 46000}, {\"name\": \"S\", \"threshold\": 75000}]",
+    "name": "VfL Wolfsburg",
+    "required_cards": 15,
+    "set_id": 88,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "Bundesliga / Frauen-Bundesliga",
+    "description": "Requires 15 Werder Bremen Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 2000}, {\"name\": \"B\", \"threshold\": 5500}, {\"name\": \"A\", \"threshold\": 7500}, {\"name\": \"S\", \"threshold\": 11000}]",
+    "name": "Werder Bremen",
+    "required_cards": 15,
+    "set_id": 34,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 AJ Auxerre Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 700}, {\"name\": \"A\", \"threshold\": 1000}, {\"name\": \"S\", \"threshold\": 1500}]",
+    "name": "AJ Auxerre",
+    "required_cards": 15,
+    "set_id": 75,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 Angers SCO Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 700}, {\"name\": \"A\", \"threshold\": 1000}, {\"name\": \"S\", \"threshold\": 1500}]",
+    "name": "Angers SCO",
+    "required_cards": 15,
+    "set_id": 87,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 AS Monaco Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1700}, {\"name\": \"B\", \"threshold\": 3100}, {\"name\": \"A\", \"threshold\": 4700}, {\"name\": \"S\", \"threshold\": 6600}]",
+    "name": "AS Monaco",
+    "required_cards": 15,
+    "set_id": 98,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 ESTAC Troyes Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 400}, {\"name\": \"B\", \"threshold\": 600}, {\"name\": \"A\", \"threshold\": 1000}, {\"name\": \"S\", \"threshold\": 1400}]",
+    "name": "ESTAC Troyes",
+    "required_cards": 15,
+    "set_id": 78,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 FC Fleury 91 Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1300}, {\"name\": \"B\", \"threshold\": 1900}, {\"name\": \"A\", \"threshold\": 3000}, {\"name\": \"S\", \"threshold\": 4300}]",
+    "name": "FC Fleury 91",
+    "required_cards": 15,
+    "set_id": 77,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 FC Lorient Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 700}, {\"name\": \"A\", \"threshold\": 1100}, {\"name\": \"S\", \"threshold\": 1600}]",
+    "name": "FC Lorient",
+    "required_cards": 15,
+    "set_id": 60,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 FC Nantes Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 700}, {\"name\": \"A\", \"threshold\": 1200}, {\"name\": \"S\", \"threshold\": 1700}]",
+    "name": "FC Nantes",
+    "required_cards": 15,
+    "set_id": 23,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 Le Havre AC Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 700}, {\"name\": \"A\", \"threshold\": 1100}, {\"name\": \"S\", \"threshold\": 1600}]",
+    "name": "Le Havre AC",
+    "required_cards": 15,
+    "set_id": 7,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 Le Mans FC Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 300}, {\"name\": \"B\", \"threshold\": 500}, {\"name\": \"A\", \"threshold\": 700}, {\"name\": \"S\", \"threshold\": 1000}]",
+    "name": "Le Mans FC",
+    "required_cards": 15,
+    "set_id": 82,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 LOSC Lille Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1300}, {\"name\": \"B\", \"threshold\": 2500}, {\"name\": \"A\", \"threshold\": 3700}, {\"name\": \"S\", \"threshold\": 5200}]",
+    "name": "LOSC Lille",
+    "required_cards": 15,
+    "set_id": 43,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 Montpellier Hérault SC Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 300}, {\"name\": \"B\", \"threshold\": 500}, {\"name\": \"A\", \"threshold\": 700}, {\"name\": \"S\", \"threshold\": 1000}]",
+    "name": "Montpellier Hérault SC",
+    "required_cards": 15,
+    "set_id": 55,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 OGC Nice Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1200}, {\"name\": \"B\", \"threshold\": 2000}, {\"name\": \"A\", \"threshold\": 3000}, {\"name\": \"S\", \"threshold\": 4200}]",
+    "name": "OGC Nice",
+    "required_cards": 15,
+    "set_id": 1,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 Olympique de Marseille Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 6000}, {\"name\": \"B\", \"threshold\": 50000}, {\"name\": \"A\", \"threshold\": 80000}, {\"name\": \"S\", \"threshold\": 150000}]",
+    "name": "Olympique de Marseille",
+    "required_cards": 15,
+    "set_id": 18,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 Olympique Lyonnais Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 58000}, {\"name\": \"B\", \"threshold\": 170000}, {\"name\": \"A\", \"threshold\": 400000}, {\"name\": \"S\", \"threshold\": 800000}]",
+    "name": "Olympique Lyonnais",
+    "required_cards": 15,
+    "set_id": 36,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 Paris FC Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 5000}, {\"name\": \"B\", \"threshold\": 20000}, {\"name\": \"A\", \"threshold\": 60000}, {\"name\": \"S\", \"threshold\": 125000}]",
+    "name": "Paris FC",
+    "required_cards": 15,
+    "set_id": 3,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 20 Paris Saint-Germain Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 80000}, {\"name\": \"B\", \"threshold\": 900000}, {\"name\": \"A\", \"threshold\": 1700000}, {\"name\": \"S\", \"threshold\": 3100000}]",
+    "name": "Paris Saint-Germain",
+    "required_cards": 20,
+    "set_id": 95,
+    "total_tokens": 220
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 RC Strasbourg Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1500}, {\"name\": \"B\", \"threshold\": 5000}, {\"name\": \"A\", \"threshold\": 6500}, {\"name\": \"S\", \"threshold\": 9500}]",
+    "name": "RC Strasbourg",
+    "required_cards": 15,
+    "set_id": 51,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 RC Lens Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1000}, {\"name\": \"B\", \"threshold\": 22500}, {\"name\": \"A\", \"threshold\": 38000}, {\"name\": \"S\", \"threshold\": 67000}]",
+    "name": "RC Lens",
+    "required_cards": 15,
+    "set_id": 66,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 Stade Brestois 29 Men's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 700}, {\"name\": \"B\", \"threshold\": 1000}, {\"name\": \"A\", \"threshold\": 1600}, {\"name\": \"S\", \"threshold\": 2300}]",
+    "name": "Stade Brestois 29",
+    "required_cards": 15,
+    "set_id": 58,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 Stade Rennais FC Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1100}, {\"name\": \"B\", \"threshold\": 4700}, {\"name\": \"A\", \"threshold\": 7000}, {\"name\": \"S\", \"threshold\": 9900}]",
+    "name": "Stade Rennais FC",
+    "required_cards": 15,
+    "set_id": 27,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 Toulouse FC Mens or Womens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 700}, {\"name\": \"A\", \"threshold\": 1100}, {\"name\": \"S\", \"threshold\": 1600}]",
+    "name": "Toulouse FC",
+    "required_cards": 15,
+    "set_id": 72,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Ligue 1 McDonald's / Arkema PL",
+    "description": "Requires 15 US Saint-Malo Women's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 300}, {\"name\": \"B\", \"threshold\": 500}, {\"name\": \"A\", \"threshold\": 700}, {\"name\": \"S\", \"threshold\": 1000}]",
+    "name": "US Saint-Malo",
+    "required_cards": 15,
+    "set_id": 50,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Bergamo Calcio players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 2200}, {\"name\": \"B\", \"threshold\": 3600}, {\"name\": \"A\", \"threshold\": 5400}, {\"name\": \"S\", \"threshold\": 7600}]",
+    "name": "Bergamo Calcio",
+    "required_cards": 15,
+    "set_id": 83,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Bologna Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1300}, {\"name\": \"B\", \"threshold\": 2800}, {\"name\": \"A\", \"threshold\": 4100}, {\"name\": \"S\", \"threshold\": 5900}]",
+    "name": "Bologna",
+    "required_cards": 15,
+    "set_id": 93,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Cagliari Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 700}, {\"name\": \"B\", \"threshold\": 1000}, {\"name\": \"A\", \"threshold\": 1500}, {\"name\": \"S\", \"threshold\": 2200}]",
+    "name": "Cagliari",
+    "required_cards": 15,
+    "set_id": 39,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Como Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 2000}, {\"name\": \"B\", \"threshold\": 13000}, {\"name\": \"A\", \"threshold\": 15500}, {\"name\": \"S\", \"threshold\": 19500}]",
+    "name": "Como",
+    "required_cards": 15,
+    "set_id": 63,
+    "total_tokens": 80
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Fiorentina Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1900}, {\"name\": \"B\", \"threshold\": 5600}, {\"name\": \"A\", \"threshold\": 8400}, {\"name\": \"S\", \"threshold\": 11800}]",
+    "name": "Fiorentina",
+    "required_cards": 15,
+    "set_id": 70,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Frosinone Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 200}, {\"name\": \"B\", \"threshold\": 320}, {\"name\": \"A\", \"threshold\": 480}, {\"name\": \"S\", \"threshold\": 720}]",
+    "name": "Frosinone",
+    "required_cards": 15,
+    "set_id": 123,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Genoa Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 600}, {\"name\": \"B\", \"threshold\": 900}, {\"name\": \"A\", \"threshold\": 1400}, {\"name\": \"S\", \"threshold\": 2000}]",
+    "name": "Genoa",
+    "required_cards": 15,
+    "set_id": 126,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Juventus Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 12000}, {\"name\": \"B\", \"threshold\": 60000}, {\"name\": \"A\", \"threshold\": 180000}, {\"name\": \"S\", \"threshold\": 375000}]",
+    "name": "Juventus",
+    "required_cards": 15,
+    "set_id": 119,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 SS Lazio Men's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 2000}, {\"name\": \"B\", \"threshold\": 3400}, {\"name\": \"A\", \"threshold\": 5100}, {\"name\": \"S\", \"threshold\": 7200}]",
+    "name": "SS Lazio",
+    "required_cards": 15,
+    "set_id": 110,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Lecce Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 800}, {\"name\": \"A\", \"threshold\": 1200}, {\"name\": \"S\", \"threshold\": 1700}]",
+    "name": "Lecce",
+    "required_cards": 15,
+    "set_id": 124,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Lombardia FC Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 41000}, {\"name\": \"B\", \"threshold\": 220000}, {\"name\": \"A\", \"threshold\": 440000}, {\"name\": \"S\", \"threshold\": 825000}]",
+    "name": "Lombardia FC",
+    "required_cards": 15,
+    "set_id": 107,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Milano FC Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 10000}, {\"name\": \"B\", \"threshold\": 180000}, {\"name\": \"A\", \"threshold\": 400000}, {\"name\": \"S\", \"threshold\": 825000}]",
+    "name": "Milano FC",
+    "required_cards": 15,
+    "set_id": 29,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Monza Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 700}, {\"name\": \"A\", \"threshold\": 1100}, {\"name\": \"S\", \"threshold\": 1700}]",
+    "name": "Monza",
+    "required_cards": 15,
+    "set_id": 105,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Napoli Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 13000}, {\"name\": \"B\", \"threshold\": 180000}, {\"name\": \"A\", \"threshold\": 280000}, {\"name\": \"S\", \"threshold\": 450000}]",
+    "name": "Napoli",
+    "required_cards": 15,
+    "set_id": 112,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Parma Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 700}, {\"name\": \"A\", \"threshold\": 1100}, {\"name\": \"S\", \"threshold\": 1600}]",
+    "name": "Parma",
+    "required_cards": 15,
+    "set_id": 125,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Roma Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 10000}, {\"name\": \"B\", \"threshold\": 80000}, {\"name\": \"A\", \"threshold\": 160000}, {\"name\": \"S\", \"threshold\": 300000}]",
+    "name": "Roma",
+    "required_cards": 15,
+    "set_id": 104,
+    "total_tokens": 155
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Sassuolo Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 600}, {\"name\": \"B\", \"threshold\": 5100}, {\"name\": \"A\", \"threshold\": 7300}, {\"name\": \"S\", \"threshold\": 9565}]",
+    "name": "Sassuolo",
+    "required_cards": 15,
+    "set_id": 118,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Torino Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 1100}, {\"name\": \"B\", \"threshold\": 1800}, {\"name\": \"A\", \"threshold\": 2700}, {\"name\": \"S\", \"threshold\": 3900}]",
+    "name": "Torino",
+    "required_cards": 15,
+    "set_id": 117,
+    "total_tokens": 38
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Udinese Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 700}, {\"name\": \"A\", \"threshold\": 1200}, {\"name\": \"S\", \"threshold\": 1700}]",
+    "name": "Udinese",
+    "required_cards": 15,
+    "set_id": 106,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Serie A Enilive",
+    "description": "Requires 15 Venezia Mens players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 500}, {\"name\": \"B\", \"threshold\": 600}, {\"name\": \"A\", \"threshold\": 1000}, {\"name\": \"S\", \"threshold\": 1500}]",
+    "name": "Venezia",
+    "required_cards": 15,
+    "set_id": 101,
+    "total_tokens": 28
+   },
+   {
+    "category_name": "Leagues",
+    "description": "Requires 30 Premier League players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 400000}, {\"name\": \"B\", \"threshold\": 800000}, {\"name\": \"A\", \"threshold\": 1900000}, {\"name\": \"S\", \"threshold\": 4000000}]",
+    "name": "Premier League",
+    "required_cards": 30,
+    "set_id": 108,
+    "total_tokens": 265
+   },
+   {
+    "category_name": "Leagues",
+    "description": "Requires 30 Barclays WSL players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 200000}, {\"name\": \"B\", \"threshold\": 725000}, {\"name\": \"A\", \"threshold\": 1900000}, {\"name\": \"S\", \"threshold\": 4000000}]",
+    "name": "Barclays WSL",
+    "required_cards": 30,
+    "set_id": 100,
+    "total_tokens": 265
+   },
+   {
+    "category_name": "Leagues",
+    "description": "Requires 30 Ligue 1 McDonald's players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 75000}, {\"name\": \"B\", \"threshold\": 275000}, {\"name\": \"A\", \"threshold\": 1600000}, {\"name\": \"S\", \"threshold\": 4000000}]",
+    "name": "Ligue 1 McDonald's",
+    "required_cards": 30,
+    "set_id": 111,
+    "total_tokens": 265
+   },
+   {
+    "category_name": "Leagues",
+    "description": "Requires 30 Arkema Première Ligue players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 75000}, {\"name\": \"B\", \"threshold\": 575000}, {\"name\": \"A\", \"threshold\": 1800000}, {\"name\": \"S\", \"threshold\": 4000000}]",
+    "name": "Arkema PL",
+    "required_cards": 30,
+    "set_id": 115,
+    "total_tokens": 265
+   },
+   {
+    "category_name": "Leagues",
+    "description": "Requires 30 LALIGA EA SPORTS players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 275000}, {\"name\": \"B\", \"threshold\": 725000}, {\"name\": \"A\", \"threshold\": 1900000}, {\"name\": \"S\", \"threshold\": 4000000}]",
+    "name": "LALIGA EA SPORTS",
+    "required_cards": 30,
+    "set_id": 109,
+    "total_tokens": 265
+   },
+   {
+    "category_name": "Leagues",
+    "description": "Requires 30 Liga F Moeve players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 125000}, {\"name\": \"B\", \"threshold\": 625000}, {\"name\": \"A\", \"threshold\": 1800000}, {\"name\": \"S\", \"threshold\": 4000000}]",
+    "name": "Liga F Moeve",
+    "required_cards": 30,
+    "set_id": 121,
+    "total_tokens": 265
+   },
+   {
+    "category_name": "Leagues",
+    "description": "Requires 30 Serie A Enilive players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 100000}, {\"name\": \"B\", \"threshold\": 425000}, {\"name\": \"A\", \"threshold\": 1500000}, {\"name\": \"S\", \"threshold\": 3500000}]",
+    "name": "Serie A Enilive",
+    "required_cards": 30,
+    "set_id": 103,
+    "total_tokens": 265
+   },
+   {
+    "category_name": "Leagues",
+    "description": "Requires 30 Bundesliga players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 100000}, {\"name\": \"B\", \"threshold\": 400000}, {\"name\": \"A\", \"threshold\": 1500000}, {\"name\": \"S\", \"threshold\": 3500000}]",
+    "name": "Bundesliga",
+    "required_cards": 30,
+    "set_id": 122,
+    "total_tokens": 265
+   },
+   {
+    "category_name": "Leagues",
+    "description": "Requires 30 Google Pixel Frauen-Bundesliga players to complete.",
+    "grades_json": "[{\"name\": \"D\", \"threshold\": 10}, {\"name\": \"C\", \"threshold\": 50000}, {\"name\": \"B\", \"threshold\": 200000}, {\"name\": \"A\", \"threshold\": 1400000}, {\"name\": \"S\", \"threshold\": 3500000}]",
+    "name": "Frauen-Bundesliga",
+    "required_cards": 30,
+    "set_id": 120,
+    "total_tokens": 265
+   }
+  ],
+  "tokens": [
+   {
+    "grade": "D",
+    "set_id": 1,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 1,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 2,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 2,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 2,
+    "tokens": 8
+   },
+   {
+    "grade": "D",
+    "set_id": 3,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 3,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 4,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 4,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 5,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 5,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 5,
+    "tokens": 8
+   },
+   {
+    "grade": "A",
+    "set_id": 5,
+    "tokens": 18
+   },
+   {
+    "grade": "S",
+    "set_id": 5,
+    "tokens": 38
+   },
+   {
+    "grade": "D",
+    "set_id": 6,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 6,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 6,
+    "tokens": 8
+   },
+   {
+    "grade": "D",
+    "set_id": 7,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 7,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 7,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 8,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 9,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 9,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 9,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 10,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 10,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 12,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 12,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 12,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 13,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 13,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 13,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 14,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 14,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 14,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 14,
+    "tokens": 13
+   },
+   {
+    "grade": "D",
+    "set_id": 15,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 15,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 16,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 16,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 17,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 17,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 17,
+    "tokens": 8
+   },
+   {
+    "grade": "A",
+    "set_id": 17,
+    "tokens": 18
+   },
+   {
+    "grade": "D",
+    "set_id": 18,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 19,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 19,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 20,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 20,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 20,
+    "tokens": 8
+   },
+   {
+    "grade": "D",
+    "set_id": 21,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 21,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 22,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 22,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 23,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 23,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 23,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 24,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 24,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 24,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 25,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 25,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 25,
+    "tokens": 15
+   },
+   {
+    "grade": "A",
+    "set_id": 25,
+    "tokens": 40
+   },
+   {
+    "grade": "S",
+    "set_id": 25,
+    "tokens": 80
+   },
+   {
+    "grade": "D",
+    "set_id": 26,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 26,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 27,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 27,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 28,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 28,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 29,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 29,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 30,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 30,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 31,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 31,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 32,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 32,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 33,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 33,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 33,
+    "tokens": 8
+   },
+   {
+    "grade": "D",
+    "set_id": 34,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 36,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 36,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 37,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 37,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 37,
+    "tokens": 8
+   },
+   {
+    "grade": "A",
+    "set_id": 37,
+    "tokens": 18
+   },
+   {
+    "grade": "S",
+    "set_id": 37,
+    "tokens": 38
+   },
+   {
+    "grade": "D",
+    "set_id": 38,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 38,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 38,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 39,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 39,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 39,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 40,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 40,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 40,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 40,
+    "tokens": 13
+   },
+   {
+    "grade": "D",
+    "set_id": 41,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 41,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 41,
+    "tokens": 8
+   },
+   {
+    "grade": "A",
+    "set_id": 41,
+    "tokens": 18
+   },
+   {
+    "grade": "S",
+    "set_id": 41,
+    "tokens": 38
+   },
+   {
+    "grade": "D",
+    "set_id": 42,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 42,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 43,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 43,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 43,
+    "tokens": 8
+   },
+   {
+    "grade": "D",
+    "set_id": 44,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 44,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 45,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 45,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 45,
+    "tokens": 8
+   },
+   {
+    "grade": "A",
+    "set_id": 45,
+    "tokens": 18
+   },
+   {
+    "grade": "S",
+    "set_id": 45,
+    "tokens": 38
+   },
+   {
+    "grade": "D",
+    "set_id": 46,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 46,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 47,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 47,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 47,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 48,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 48,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 49,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 49,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 51,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 51,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 52,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 52,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 53,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 53,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 54,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 54,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 54,
+    "tokens": 8
+   },
+   {
+    "grade": "D",
+    "set_id": 55,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 55,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 55,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 55,
+    "tokens": 13
+   },
+   {
+    "grade": "D",
+    "set_id": 56,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 56,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 57,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 57,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 57,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 58,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 58,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 58,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 59,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 60,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 60,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 60,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 61,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 62,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 62,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 62,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 62,
+    "tokens": 13
+   },
+   {
+    "grade": "D",
+    "set_id": 63,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 63,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 64,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 64,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 64,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 65,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 66,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 66,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 67,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 67,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 67,
+    "tokens": 8
+   },
+   {
+    "grade": "D",
+    "set_id": 68,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 68,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 69,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 69,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 69,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 70,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 70,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 71,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 71,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 71,
+    "tokens": 8
+   },
+   {
+    "grade": "D",
+    "set_id": 72,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 72,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 72,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 72,
+    "tokens": 13
+   },
+   {
+    "grade": "D",
+    "set_id": 73,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 73,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 73,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 74,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 74,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 75,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 75,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 75,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 75,
+    "tokens": 13
+   },
+   {
+    "grade": "S",
+    "set_id": 75,
+    "tokens": 28
+   },
+   {
+    "grade": "D",
+    "set_id": 76,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 76,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 76,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 76,
+    "tokens": 13
+   },
+   {
+    "grade": "S",
+    "set_id": 76,
+    "tokens": 28
+   },
+   {
+    "grade": "D",
+    "set_id": 77,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 77,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 78,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 78,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 78,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 79,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 79,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 79,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 79,
+    "tokens": 13
+   },
+   {
+    "grade": "D",
+    "set_id": 80,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 80,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 81,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 81,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 82,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 82,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 82,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 82,
+    "tokens": 13
+   },
+   {
+    "grade": "D",
+    "set_id": 83,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 83,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 83,
+    "tokens": 8
+   },
+   {
+    "grade": "A",
+    "set_id": 83,
+    "tokens": 18
+   },
+   {
+    "grade": "D",
+    "set_id": 85,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 85,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 86,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 86,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 87,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 87,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 87,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 88,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 88,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 89,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 89,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 89,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 89,
+    "tokens": 13
+   },
+   {
+    "grade": "S",
+    "set_id": 89,
+    "tokens": 28
+   },
+   {
+    "grade": "D",
+    "set_id": 90,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 90,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 90,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 90,
+    "tokens": 13
+   },
+   {
+    "grade": "S",
+    "set_id": 90,
+    "tokens": 28
+   },
+   {
+    "grade": "D",
+    "set_id": 91,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 91,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 91,
+    "tokens": 8
+   },
+   {
+    "grade": "A",
+    "set_id": 91,
+    "tokens": 18
+   },
+   {
+    "grade": "S",
+    "set_id": 91,
+    "tokens": 38
+   },
+   {
+    "grade": "D",
+    "set_id": 92,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 93,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 93,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 94,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 94,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 95,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 95,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 96,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 96,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 97,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 97,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 97,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 97,
+    "tokens": 13
+   },
+   {
+    "grade": "D",
+    "set_id": 98,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 98,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 99,
+    "tokens": 5
+   },
+   {
+    "grade": "C",
+    "set_id": 99,
+    "tokens": 20
+   },
+   {
+    "grade": "B",
+    "set_id": 99,
+    "tokens": 50
+   },
+   {
+    "grade": "A",
+    "set_id": 99,
+    "tokens": 100
+   },
+   {
+    "grade": "S",
+    "set_id": 99,
+    "tokens": 175
+   },
+   {
+    "grade": "D",
+    "set_id": 100,
+    "tokens": 10
+   },
+   {
+    "grade": "C",
+    "set_id": 100,
+    "tokens": 45
+   },
+   {
+    "grade": "D",
+    "set_id": 101,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 101,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 101,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 101,
+    "tokens": 13
+   },
+   {
+    "grade": "D",
+    "set_id": 102,
+    "tokens": 5
+   },
+   {
+    "grade": "C",
+    "set_id": 102,
+    "tokens": 20
+   },
+   {
+    "grade": "B",
+    "set_id": 102,
+    "tokens": 50
+   },
+   {
+    "grade": "A",
+    "set_id": 102,
+    "tokens": 100
+   },
+   {
+    "grade": "D",
+    "set_id": 103,
+    "tokens": 10
+   },
+   {
+    "grade": "C",
+    "set_id": 103,
+    "tokens": 45
+   },
+   {
+    "grade": "B",
+    "set_id": 103,
+    "tokens": 95
+   },
+   {
+    "grade": "D",
+    "set_id": 104,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 104,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 105,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 105,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 105,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 106,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 106,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 106,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 107,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 107,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 108,
+    "tokens": 10
+   },
+   {
+    "grade": "D",
+    "set_id": 109,
+    "tokens": 10
+   },
+   {
+    "grade": "C",
+    "set_id": 109,
+    "tokens": 45
+   },
+   {
+    "grade": "D",
+    "set_id": 110,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 110,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 110,
+    "tokens": 8
+   },
+   {
+    "grade": "D",
+    "set_id": 111,
+    "tokens": 10
+   },
+   {
+    "grade": "C",
+    "set_id": 111,
+    "tokens": 45
+   },
+   {
+    "grade": "B",
+    "set_id": 111,
+    "tokens": 95
+   },
+   {
+    "grade": "D",
+    "set_id": 112,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 113,
+    "tokens": 5
+   },
+   {
+    "grade": "C",
+    "set_id": 113,
+    "tokens": 20
+   },
+   {
+    "grade": "B",
+    "set_id": 113,
+    "tokens": 50
+   },
+   {
+    "grade": "A",
+    "set_id": 113,
+    "tokens": 100
+   },
+   {
+    "grade": "S",
+    "set_id": 113,
+    "tokens": 175
+   },
+   {
+    "grade": "D",
+    "set_id": 114,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 114,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 114,
+    "tokens": 0
+   },
+   {
+    "grade": "A",
+    "set_id": 114,
+    "tokens": 0
+   },
+   {
+    "grade": "S",
+    "set_id": 114,
+    "tokens": 10
+   },
+   {
+    "grade": "D",
+    "set_id": 115,
+    "tokens": 10
+   },
+   {
+    "grade": "C",
+    "set_id": 115,
+    "tokens": 45
+   },
+   {
+    "grade": "D",
+    "set_id": 116,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 116,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 116,
+    "tokens": 0
+   },
+   {
+    "grade": "A",
+    "set_id": 116,
+    "tokens": 0
+   },
+   {
+    "grade": "S",
+    "set_id": 116,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 117,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 117,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 118,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 118,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 119,
+    "tokens": 0
+   },
+   {
+    "grade": "D",
+    "set_id": 120,
+    "tokens": 10
+   },
+   {
+    "grade": "C",
+    "set_id": 120,
+    "tokens": 45
+   },
+   {
+    "grade": "B",
+    "set_id": 120,
+    "tokens": 95
+   },
+   {
+    "grade": "D",
+    "set_id": 121,
+    "tokens": 10
+   },
+   {
+    "grade": "C",
+    "set_id": 121,
+    "tokens": 45
+   },
+   {
+    "grade": "D",
+    "set_id": 122,
+    "tokens": 10
+   },
+   {
+    "grade": "C",
+    "set_id": 122,
+    "tokens": 45
+   },
+   {
+    "grade": "B",
+    "set_id": 122,
+    "tokens": 95
+   },
+   {
+    "grade": "D",
+    "set_id": 123,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 123,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 123,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 123,
+    "tokens": 13
+   },
+   {
+    "grade": "S",
+    "set_id": 123,
+    "tokens": 28
+   },
+   {
+    "grade": "D",
+    "set_id": 124,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 124,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 124,
+    "tokens": 5
+   },
+   {
+    "grade": "A",
+    "set_id": 124,
+    "tokens": 13
+   },
+   {
+    "grade": "D",
+    "set_id": 125,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 125,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 125,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 126,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 126,
+    "tokens": 0
+   },
+   {
+    "grade": "B",
+    "set_id": 126,
+    "tokens": 5
+   },
+   {
+    "grade": "D",
+    "set_id": 127,
+    "tokens": 0
+   },
+   {
+    "grade": "C",
+    "set_id": 127,
+    "tokens": 5
+   },
+   {
+    "grade": "B",
+    "set_id": 127,
+    "tokens": 15
+   },
+   {
+    "grade": "A",
+    "set_id": 127,
+    "tokens": 35
+   },
+   {
+    "grade": "S",
+    "set_id": 127,
+    "tokens": 85
+   }
+  ]
+ },
  "obj_tasks": [
   {
    "group_category": "mastery",

@@ -453,16 +453,36 @@ def cmd_sbc_exclude(con, a):
     _resolve()
 
 
+def cmd_gallery_grade(con, a):
+    """갤러리 세트의 **지금 내 등급**을 기록한다(2026-10-02 · migration 092).
+       ⛔ fut.gg가 내 진행도를 주지 않아 사람이 인게임 갤러리 화면을 보고 적는다 — 그게 정본이다.
+       grade가 비면 기록을 지운다(「아직 안 함」으로 되돌린다)."""
+    sid = int(a.set_id)
+    g = (a.grade or "").strip().upper() or None
+    if g is not None and g not in ("D", "C", "B", "A", "S"):
+        raise SystemExit(f"⛔ 등급은 D·C·B·A·S 중 하나다 — 받은 값 {a.grade!r}")
+    if not con.execute("SELECT 1 FROM fc_gallery_sets WHERE game_version=? AND set_id=?", (a.game, sid)).fetchone():
+        raise SystemExit(f"⛔ 갤러리 세트 {sid}를 모른다")
+    if g is None:
+        con.execute("DELETE FROM fut_gallery_log WHERE game_version=? AND set_id=?", (a.game, sid))
+    else:
+        con.execute("""INSERT INTO fut_gallery_log(game_version,set_id,grade,recorded_at,source,notes) VALUES(?,?,?,?,?,?)
+                       ON CONFLICT(game_version,set_id) DO UPDATE SET grade=excluded.grade, recorded_at=excluded.recorded_at""",
+                    (a.game, sid, g, TODAY, "사용자 기록(인게임 갤러리 화면) — 화면 또는 fut_club.py", a.notes))
+    con.commit()
+    print(f"갤러리 {sid}: 내 등급 {g or '기록 없음'}")
+
+
 def run(con, cmd, **kw):
     """serve.py 쓰기 API용 진입점 — CLI와 같은 함수를 같은 규약으로 실행한다(발명 금지·출처 기록 동일)."""
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
                     level=1, date=TODAY, completed=None, note=None, ovr_after=None, six_after=None, status=None, op="add",
                     in_progress=False, evo=None, challenge=None, formation=None, club_player=None, undo=False, cards=True,
-                    expect_player_id=None)
+                    expect_player_id=None, set_id=None, grade=None)
     a = argparse.Namespace(**{**defaults, **kw})
     fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete,
           "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude,
-          "sbc_submit": cmd_sbc_submit}[cmd]
+          "sbc_submit": cmd_sbc_submit, "gallery_grade": cmd_gallery_grade}[cmd]
     fn(con, a)
 
 

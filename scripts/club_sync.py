@@ -45,6 +45,10 @@ STEPS = {
         ("링크 결손", [sys.executable, S("gaps.py"), "links"], False),
         ("동일성 3요소", [sys.executable, S("gaps.py"), "identity"], False),
         ("스쿼드 조회 범위", [sys.executable, S("gaps.py"), "squad"], False),
+        # ⭐ 갤러리(2026-10-02 사용자 지시 「클럽 싱크 선수 수집이 끝나면 달성 가능한 갤러리 목록 · NEW 알림」).
+        #    보유가 바뀌면 낼 수 있는 등급이 바뀐다 ⇒ 선수 단계의 끝에서 세트 정의를 갱신하고 다시 평가한다.
+        ("갤러리 세트 정의", [PY, S("collect_futgg_gallery.py"), "--games", "27"], False),
+        ("갤러리 평가(달성 가능·NEW)", [PY, S("gallery_eval.py")], False),
     ],
     "진화": [
         ("진화 카탈로그·경로·적용가능", [PY, S("collect_futgg_evolutions.py"), "--games", "27", "--fill-catalog"], False),
@@ -105,7 +109,7 @@ ALIAS = {"all": "전체", "전체": "전체", "player": "선수", "선수": "선
 #       여기 걸릴 일이 없고, 걸린다면 그건 **사람이 셸에서 친 것**이라 고를 기회를 주는 게 맞다.
 ITEM_HELP = [
     ("전체",  "all",    "아래 전부 + 참조 표 (가장 오래 걸린다)"),
-    ("선수",  "player", "보유 카드·활성 스쿼드·케미 스타일 · 새 카드 수집 · 링크/동일성 검산  [--capture 필요]"),
+    ("선수",  "player", "보유 카드·활성 스쿼드·케미 스타일 · 새 카드 수집 · 링크/동일성 검산 · 갤러리 평가  [--capture 필요]"),
     ("진화",  "evo",    "카탈로그·해금 조건·한국어 · 적용 가능 선수 · 원장 검산"),
     ("sbc",   "sbc",    "SBC 세트/챌린지 수집 + 해법 재계산"),
     ("시세",  "price",  "카드 시세 스냅샷 (예산 한 번 ~45장 · 1분 안쪽 · 나머지는 다음 회차가 이어 받는다)"),
@@ -157,6 +161,7 @@ def staleness():
          ("시세", "SELECT MAX(pulled) FROM player_card_prices"),
          ("전술", "SELECT MAX(pulled) FROM fut_tactics"),
          ("스쿼드 메타", "SELECT MAX(synced_at) FROM fut_squads"),
+         ("갤러리 평가", "SELECT MAX(pulled) FROM fut_gallery_eval"),
          # ⭐ 참조 표도 여기 올린다(2026-09-27). `collect_playstyle_ids.py`가 fut.gg 번들의 난독화
          #    변수명에 앵커를 걸어 두 배포 연속 깨졌는데, 실패가 로그 한 줄이라 **두 회차 묻혔다**.
          #    수집 실패는 「행이 없다」가 아니라 「행이 낡는다」로 나타나므로 날짜로만 보인다.

@@ -429,3 +429,15 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .sbc-pin{position:absolute;top:15px;right:1px;z-index:3;font-size:8.5px;font-weight:700;
   background:rgba(6,14,10,.92);border:1px solid var(--ok);color:var(--ok);
   border-radius:99px;padding:1px 5px;white-space:nowrap}
+
+/* ── 갤러리 (2026-10-02 · evolutions.html 「갤러리」 탭) ── */
+.galnew{display:inline-block;margin-left:4px;padding:0 6px;border-radius:999px;background:var(--bad);color:#fff;
+  font-size:10.5px;font-weight:700;line-height:17px;vertical-align:middle}
+.galcard{border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin:6px 0;background:rgba(255,255,255,.02)}
+.galcard.fresh{border-color:var(--bad);box-shadow:0 0 0 1px rgba(255,107,107,.25) inset}
+.galgrade{display:inline-block;min-width:22px;text-align:center;border-radius:5px;font-weight:800;padding:0 6px;
+  border:1px solid var(--line)}
+.galgrade.gS{color:#ffd54d;border-color:#ffd54d}.galgrade.gA{color:var(--ok);border-color:var(--ok)}
+.galgrade.gB{color:#7fb6ff;border-color:#7fb6ff}.galgrade.gC{color:var(--txt)}.galgrade.gD{color:var(--dim)}
+.galpop{position:fixed;right:18px;bottom:18px;z-index:99998;max-width:340px;background:#141a24;border:1px solid var(--bad);
+  border-radius:10px;padding:10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.45);font-size:13px}

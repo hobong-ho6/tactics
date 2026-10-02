@@ -2,7 +2,7 @@
 <html lang="ko"><head><meta charset="utf-8"><title>얼티밋팀 — tactics v2</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="stylesheet" href="assets/clubviz.css?v=20260929a">
+<link rel="stylesheet" href="assets/clubviz.css?v=20261002">
 <style>
 .evo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
 .evo-card{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--panel)}
@@ -44,6 +44,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
   <button class="act ghost" data-tab="cat">진화 카탈로그</button>
   <button class="act ghost" data-tab="paths">선수별 진화 패스</button>
   <button class="act ghost" data-tab="sbc">SBC</button>
+  <button class="act ghost" data-tab="gallery">갤러리<b class="galnew" id="galnew" hidden></b></button>
   <button class="act ghost" data-tab="tactic">전술 구현 · 구매 우선순위</button>
 </div>
 
@@ -86,6 +87,16 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
     <div id="owned"></div></div>
   <div class="panel"><h2>진화 기록 <small class="dim">— fut_evolution_log (시간순) · club-sync가 못 가져오는 축</small></h2>
     <ul class="timeline" id="log"></ul></div>
+</section>
+
+<section data-tab="gallery" style="display:none">
+  <div class="panel"><h2>갤러리 <small class="dim" id="galn"></small></h2>
+    <p class="dim" style="font-size:12px;margin:0 0 8px">
+      내 보유 카드로 세트마다 <b>낼 수 있는 등급</b>을 계산했다 — 클럽 싱크 <code>선수</code> 단계가 끝나면 다시 계산된다
+      (<code>scripts/gallery_eval.py</code>). ⚠️ 점수는 <b>아이템 점수</b>(커뮤니티 정리표 · 등급 D) 합이고 <b>태그 보너스는 뺐다</b>
+      — 보너스는 더하기만 하므로 여기 등급은 <b>적어도 이 등급</b>이다. 갤러리는 <b>진화 전 원래 카드</b>로 센다.
+      ⛔ fut.gg가 내 진행도를 주지 않아 <b>「내 등급」은 직접 기록</b>한다(인게임 갤러리 화면이 정본).</p>
+    <div id="gallery"></div></div>
 </section>
 
 <section data-tab="sbc" style="display:none">
@@ -957,6 +968,7 @@ const showTab = key => {
 document.querySelectorAll('.menubar [data-tab]').forEach(b => b.addEventListener('click', () => {
   showTab(b.dataset.tab);
   sessionStorage.setItem('evo_tab', b.dataset.tab);   // 새로고침 뒤 제자리로 돌아오게
+  if (b.dataset.tab === 'gallery') galAck();
 }));
 
 /* ⭐⭐ **원장에 쓴 뒤에는 화면 전체를 다시 읽는다**(2026-09-27 사용자 지시
@@ -3316,7 +3328,92 @@ document.addEventListener('change', e => {
   const det = document.querySelector(`[data-evobrdet="${key}"]`);
   if (det && o) det.textContent = (Array.isArray(o) ? o : (o.upgrades || [])).map(upLabel).join(' · ');
 });
-renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc();
+/* ── 갤러리 (2026-10-02 사용자 지시 「얼티밋팀 하위에 갤러리 메뉴 · 달성 가능 / 더 높일 수 있음 목록 ·
+   달성 가능하면 NEW 뱃지나 팝업」 · migration 092) ─────────────────────────────────────────────
+   ⛔ 여기서 다시 계산하지 않는다 — 등급은 `gallery_eval.py`(core/gallery.py)가, 목록 분류는 export(core/gallery.classify)가 정한다.
+   ⭐ NEW = 목록(달성 가능·더 높일 수 있음)에 있는데 **아직 이 탭에서 본 적 없는** 「세트:등급」. 탭을 열면 본 것으로 친다.
+      직전 싱크보다 새로 오른 것(`new`)은 따로 🆕로 표시한다. */
+const GAL = EVO.gallery || { sets: [], eval: [], mine: {}, reach: [], higher: [], new: [], tokens: [] };
+const GSET = Object.fromEntries((GAL.sets || []).map(x => [x.set_id, x]));
+const GEV = Object.fromEntries((GAL.eval || []).map(x => [x.set_id, x]));
+const GTOK = {}; for (const t of (GAL.tokens || [])) (GTOK[t.set_id] ??= {})[t.grade] = t.tokens;
+const GRANK = { D: 0, C: 1, B: 2, A: 3, S: 4 };
+const galKey = id => `${id}:${GEV[id]?.grade}`;
+const galSeen = () => new Set(J(localStorage.getItem('gal_seen'), []) || []);
+const galUnseen = () => [...(GAL.reach || []), ...(GAL.higher || [])].filter(id => !galSeen().has(galKey(id)));
+function galAck(){
+  const s = galSeen(); for (const id of [...(GAL.reach || []), ...(GAL.higher || [])]) s.add(galKey(id));
+  localStorage.setItem('gal_seen', JSON.stringify([...s])); galBadge();
+}
+function galBadge(){
+  const n = galUnseen().length, el = document.getElementById('galnew');
+  if (el){ el.hidden = !n; el.textContent = n ? ` NEW ${n}` : ''; }
+  return n;
+}
+function galPopup(){
+  const n = galBadge(); if (!n) return;
+  const names = galUnseen().map(id => `${GSET[id]?.name} ${GEV[id]?.grade}`).join(' · ');
+  const box = document.createElement('div'); box.className = 'galpop';
+  box.innerHTML = `<b>🆕 달성 가능한 갤러리 ${n}개</b><div class="dim" style="font-size:12px;margin:3px 0 6px">${esc(names)}</div>
+    <button class="act" id="galgo">보러 가기</button> <button class="act ghost" id="galx">닫기</button>`;
+  document.body.appendChild(box);
+  box.querySelector('#galgo').addEventListener('click', () => { box.remove(); showTab('gallery'); sessionStorage.setItem('evo_tab', 'gallery'); galAck(); });
+  box.querySelector('#galx').addEventListener('click', () => box.remove());
+}
+function renderGallery(){
+  const el = document.getElementById('gallery'); if (!el) return;
+  const mine = GAL.mine || {}, NEW = new Set(GAL.new || []), seen = galSeen();
+  const owned = Object.fromEntries((EVO.club?.players || []).map(p => [p.id, p]));
+  document.getElementById('galn').textContent = GAL.pulled
+    ? `— 평가 ${GAL.pulled} · 세트 ${(GAL.sets || []).length} · 달성 가능 ${(GAL.reach || []).length} · 더 높일 수 있음 ${(GAL.higher || []).length}`
+    : '— 아직 평가 없음(클럽 싱크 선수 단계 또는 gallery_eval.py)';
+  const opts = id => ['', 'D', 'C', 'B', 'A', 'S'].map(g =>
+    `<option value="${g}"${(mine[id] || '') === g ? ' selected' : ''}>${g || '— 기록 없음'}</option>`).join('');
+  const card = id => {
+    const s = GSET[id], e = GEV[id]; if (!s || !e) return '';
+    const tok = GTOK[id]?.[e.grade];
+    const picks = J(e.card_ids, []).map(cid => owned[cid]).filter(Boolean);
+    const isNew = !seen.has(galKey(id));
+    return `<div class="galcard${isNew ? ' fresh' : ''}">
+      <div class="kv"><b>${esc(s.name)}</b> <span class="chip">${esc(s.category_name || '')}</span>
+        <span class="galgrade g${esc(e.grade)}">${esc(e.grade)}</span>
+        ${isNew ? '<b class="galnew">NEW</b>' : ''}${NEW.has(id) ? ' <span class="chip" title="직전 싱크보다 등급이 올랐다">🆕 지난 싱크 대비 상승</span>' : ''}</div>
+      <div class="kv" style="font-size:12px;margin-top:3px">점수 <b>${(e.base_score || 0).toLocaleString()}</b>
+        · 넣을 수 있는 카드 ${e.eligible_n}장 / 칸 ${e.required_n}
+        ${tok ? ` · 이 등급 토큰 <b>${tok}</b>` : ''}
+        ${e.next_grade ? ` · 다음 <b>${e.next_grade}</b>까지 ${(e.next_gap || 0).toLocaleString()}점` : ' · 최고 등급'}
+        ${mine[id] ? ` · <span class="dim">내 기록 ${esc(mine[id])}</span>` : ''}</div>
+      <div class="kv" style="margin-top:4px">내 등급 <select data-galgrade="${id}">${opts(id)}</select>
+        <small class="dim">인게임에서 등급을 받았으면 기록한다 — 그보다 높을 때만 목록에 남는다.</small>
+        <span class="msg-slot" id="galm${id}"></span></div>
+      ${picks.length ? `<details style="margin-top:3px"><summary class="dim" style="cursor:pointer;font-size:11.5px">넣을 카드 ${picks.length}장</summary>
+        <div style="font-size:12px">${picks.map(p => `${esc(p.name)} <span class="dim">${p.current_ovr ?? ''}</span>`).join(' · ')}</div>
+        <small class="dim">점수는 진화 전 원래 카드 기준이다(진화로 오른 OVR은 갤러리에서 안 센다).</small></details>` : ''}
+    </div>`;
+  };
+  const sec = (title, ids, empty) => `<h3 style="margin:10px 0 4px">${title} <small class="dim">${ids.length}</small></h3>${
+    ids.length ? ids.map(card).join('') : `<div class="dim" style="font-size:12px">${empty}</div>`}`;
+  /* 다음 등급까지 가까운 세트 — 아직 목록엔 없지만 몇 장만 더하면 닿는 것(진행률 순 · 상위 10). */
+  const listed = new Set([...(GAL.reach || []), ...(GAL.higher || [])]);
+  const near = (GAL.eval || []).filter(e => e.supported && e.eligible_n && e.next_grade && !listed.has(e.set_id))
+    .map(e => ({ e, pct: e.base_score / (e.base_score + e.next_gap) })).sort((a, b) => b.pct - a.pct).slice(0, 10);
+  const unsup = (GAL.eval || []).filter(e => !e.supported).map(e => GSET[e.set_id]?.name).filter(Boolean);
+  el.innerHTML = sec('⭐ 달성 가능', GAL.reach || [], `지금 카드로 <b>${esc(GAL.min_list || 'C')} 이상</b>이 나오는 세트가 없다.`)
+    + sec('⬆️ 더 높일 수 있음', GAL.higher || [], '기록한 등급보다 높일 수 있는 세트가 없다(기록한 세트만 여기 나온다).')
+    + `<details style="margin-top:10px"><summary><b>📈 다음 등급까지 가까운 세트</b> <small class="dim">상위 ${near.length}</small></summary>
+        <table class="tbl" style="margin-top:4px"><thead><tr><th>세트</th><th>지금</th><th>점수</th><th>카드</th><th>다음</th><th>남은 점수</th></tr></thead><tbody>
+        ${near.map(({ e }) => `<tr><td>${esc(GSET[e.set_id]?.name || e.set_id)}</td><td>${esc(e.grade || '—')}</td>
+          <td>${(e.base_score || 0).toLocaleString()}</td><td>${e.eligible_n}/${e.required_n}</td><td>${esc(e.next_grade)}</td>
+          <td>${(e.next_gap || 0).toLocaleString()}</td></tr>`).join('')}</tbody></table></details>`
+    + (unsup.length ? `<div class="dim" style="font-size:11.5px;margin-top:8px">❔ 대상 규칙을 몰라 판정하지 않은 세트: ${unsup.map(esc).join(' · ')}</div>` : '');
+  el.querySelectorAll('[data-galgrade]').forEach(sel => sel.addEventListener('change', async () => {
+    const id = +sel.dataset.galgrade, box = document.getElementById(`galm${id}`);
+    const r = await api('gallery_grade', { set_id: id, grade: sel.value, game: 'FC27' });
+    say(box, r); if (r?.ok) reloadAfterWrite('갤러리 등급을 기록했다');
+  }));
+}
+
+renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc(); renderGallery(); galPopup();
 
 
 

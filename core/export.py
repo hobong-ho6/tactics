@@ -18,6 +18,7 @@ from pathlib import Path
 from . import DB, ROOT
 from .chem import CHEM
 from . import position_ovr as POVR
+from . import gallery as GAL
 
 SITE_DATA = ROOT / "site" / "data"
 
@@ -423,6 +424,22 @@ def export_all(db_path=None, window="2026-summer"):
                                six_before, six_after, attrs_delta, playstyles_after, roles_plus_after, roles_plus_plus_after,
                                is_void, notes
                         FROM fut_evolution_log ORDER BY applied_at, id""")
+    # ⭐ 갤러리(migration 092) — 세트·등급별 토큰·최신 평가·내 기록, 그리고 **분류는 core/gallery.classify 하나로**
+    #   (스크립트 출력과 화면이 같은 목록을 보게 한다). 평가는 클럽 싱크 `선수` 끝의 gallery_eval.py가 쌓는다.
+    gal_sets = _rows(con, """SELECT set_id, category_name, name, description, required_cards, total_tokens, grades_json
+                             FROM fc_gallery_sets WHERE game_version='FC27'
+                              AND pulled=(SELECT MAX(pulled) FROM fc_gallery_sets WHERE game_version='FC27')""")
+    gal_tok = _rows(con, """SELECT set_id, grade, tokens FROM fc_gallery_tiers WHERE game_version='FC27'
+                             AND pulled=(SELECT MAX(pulled) FROM fc_gallery_tiers WHERE game_version='FC27')""")
+    gal_eval = _rows(con, """SELECT * FROM fut_gallery_eval WHERE game_version='FC27'
+                              AND pulled=(SELECT MAX(pulled) FROM fut_gallery_eval WHERE game_version='FC27')""")
+    gal_mine = {r["set_id"]: r["grade"] for r in _rows(con, """SELECT set_id, grade FROM fut_gallery_log
+                                                              WHERE game_version='FC27' AND grade IS NOT NULL""")}
+    gal_prev = {r["set_id"]: r["prev_grade"] for r in gal_eval if r["prev_grade"]}
+    _reach, _higher, _new = GAL.classify(gal_eval, gal_prev, gal_mine)
+    gallery = {"sets": gal_sets, "tokens": gal_tok, "eval": gal_eval, "mine": gal_mine,
+               "pulled": gal_eval[0]["pulled"] if gal_eval else None, "min_list": GAL.MIN_LIST,
+               "reach": _reach, "higher": _higher, "new": _new}
     # 시세 — **카드별** 최신 pulled(ea_item_id 키). NULL은 「미형성」이며 화면이 그렇게 쓴다(migration 037)
     # ⭐⭐ 2026-09-29: 종전엔 **표 전체의** 최신 pulled만 읽어서, 한 회차가 45장에서 끊기면 나머지 카드 시세가
     #    화면에서 통째로 사라졌다 — 그래서 시세 수집이 「전량을 한 번에」 끝내야만 했고 1시간씩 걸렸다.
@@ -488,6 +505,7 @@ def export_all(db_path=None, window="2026-summer"):
                                      "state": state,
                                      "stats": club_stats, "unlocks": unlocks},
                            "sbc": {"sets": sbc_sets, "challenges": sbc_ch, "done": sbc_done, "excluded": sbc_excl},
+                           "gallery": gallery,
                            "formations": formations}))
 
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──

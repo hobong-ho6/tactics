@@ -591,7 +591,7 @@ CREATE TABLE player_card_items(
   roles_plus TEXT, roles_plus_plus TEXT,      -- ⛔ FC27 역할 id는 카탈로그 미공개라 **raw id 목록**으로 둔다
   skill_moves INTEGER, weak_foot INTEGER, accelerate TEXT, preferred_foot TEXT,
   card_image_url TEXT, futgg_url TEXT,
-  source TEXT, confidence TEXT, acquisition TEXT, is_special INTEGER, first_seen TEXT, nation TEXT, league TEXT, chem_extra TEXT, is_icon INTEGER, is_hero INTEGER, height_cm INTEGER, weight_kg INTEGER, birthdate TEXT, simple_card_url TEXT, render_url TEXT, is_real_face INTEGER,
+  source TEXT, confidence TEXT, acquisition TEXT, is_special INTEGER, first_seen TEXT, nation TEXT, league TEXT, chem_extra TEXT, is_icon INTEGER, is_hero INTEGER, height_cm INTEGER, weight_kg INTEGER, birthdate TEXT, simple_card_url TEXT, render_url TEXT, is_real_face INTEGER, club_ea_id INTEGER, sibling_club_ea_id INTEGER, league_ea_id INTEGER,
   UNIQUE(game_version, ea_item_id)
 );
 CREATE INDEX ix_card_items_player ON player_card_items(player_id, game_version);
@@ -1191,4 +1191,27 @@ CREATE TABLE fc_position_ovr_weights(
   test_within1 INTEGER,                -- 시험셋 ±1 이내 수
   source TEXT, confidence TEXT,
   PRIMARY KEY(game_version, pos_group, attr, fitted)
+);
+CREATE TABLE fut_gallery_eval(
+  game_version TEXT NOT NULL,
+  set_id       INTEGER NOT NULL,
+  pulled       TEXT NOT NULL,
+  eligible_n   INTEGER,          -- 세트에 넣을 수 있는 보유 카드 수
+  required_n   INTEGER,          -- 세트 칸 수
+  base_score   INTEGER,          -- 상위 required_n장 아이템 점수 합(태그 보너스 제외 = 하한)
+  grade        TEXT,             -- 그 점수로 닿는 최고 등급(D~S) · 없으면 NULL
+  next_grade   TEXT, next_gap INTEGER,
+  prev_grade   TEXT,             -- 직전 회차의 grade
+  card_ids     TEXT,             -- 고른 카드 fut_club_players.id JSON
+  supported    INTEGER NOT NULL DEFAULT 1,   -- 0이면 대상 규칙 미상(판정하지 않음)
+  source TEXT, confidence TEXT,
+  PRIMARY KEY(game_version, set_id, pulled)
+);
+CREATE TABLE fut_gallery_log(
+  game_version TEXT NOT NULL,
+  set_id       INTEGER NOT NULL,
+  grade        TEXT,             -- D~S · NULL이면 기록 취소
+  recorded_at  TEXT NOT NULL,
+  source TEXT, notes TEXT,
+  PRIMARY KEY(game_version, set_id)
 );
