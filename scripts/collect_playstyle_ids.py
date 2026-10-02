@@ -83,8 +83,9 @@ def fetch_labels():
     best = {}
     for body in _objects_keyed_by_playstyle(js):
         pairs = re.findall(r"\[[A-Za-z_$][\w$]*\.([A-Z_0-9]+)\]:`([^`]*)`", body)
-        if not pairs or not all(v[:1].isupper() for _, v in pairs):
+        if not pairs or any(v[:1].islower() for _, v in pairs):
             continue                                       # 슬러그표(`finesse-shot`)·식별자표는 거른다
+            # ⚠️ 「대문자 시작」으로 고르면 안 된다 — 2026-10-02 RUSH_OUT 라벨이 `1v1 Close Down`(숫자 시작)이 돼 표 전체가 버려졌다
         cand = {enum[n]: v for n, v in pairs if n in enum}
         if len(cand) > len(best):
             best = cand
