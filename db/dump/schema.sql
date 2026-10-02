@@ -10,7 +10,7 @@ CREATE TABLE teams(
   sofascore_id INTEGER,             -- SofaScore 팀 id
   fotmob_id INTEGER,                -- Fotmob rumours teamIds (이적 감시용)
   note TEXT
-);
+, is_national INTEGER NOT NULL DEFAULT 0);
 CREATE TABLE regimes(
   id INTEGER PRIMARY KEY,
   team_code TEXT NOT NULL REFERENCES teams(code),

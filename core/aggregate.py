@@ -15,7 +15,7 @@ import sqlite3
 from . import DB
 from .encode import encode
 
-__all__ = ["aggregate_rows", "player_aggregate"]
+__all__ = ["aggregate_rows", "player_aggregate", "club_official_sql", "NON_OFFICIAL_COMP"]
 
 
 def aggregate_rows(rows):
@@ -55,3 +55,16 @@ def player_aggregate(player_id, where="", params=(), db_path=None, min_hp=15):
     rows = con.execute(q, (player_id, min_hp, *params)).fetchall()
     con.close()
     return aggregate_rows(rows)
+
+
+# ⭐⭐ **「클럽 공식전」의 단일 정의**(2026-10-02 · migration 096). `measured` 집계·G18·표본 감사가 전부 이걸 쓴다.
+#   ⛔ 종전엔 대회 이름 목록이 G18·audit_measured_samples.py에 두 벌 있었고, 대표팀은 'FIFA World Cup'만 빠져
+#      네이션스리그·AFCON 예선을 적재하자 대표팀 경기가 클럽 집계에 섞였다. 대표팀은 **팀 속성**(teams.is_national)으로 거른다.
+NON_OFFICIAL_COMP = ("Club Friendly", "Club Friendly Games", "FIFA World Cup", "UEFA Youth League", "EFL Trophy (U21)")
+
+
+def club_official_sql():
+    """player_matches WHERE 조각과 파라미터 — 친선·유스 대회와 **대표팀 경기**를 뺀다."""
+    return ("competition NOT IN (%s) AND team_code NOT IN (SELECT code FROM teams WHERE is_national=1)"
+            % ",".join("?" * len(NON_OFFICIAL_COMP)), NON_OFFICIAL_COMP)
+

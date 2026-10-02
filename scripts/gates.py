@@ -990,14 +990,16 @@ def run(db_path=None, verbose=True):
     #          ⇒ 사람이 판정을 끝낸 행은 rationale에 **`[표본판정`** 표식을 남기고, 게이트는 그것을 존중한다.
     #       ⛔⛔ **친선·대표팀을 제외한다** — `core.aggregate`는 대회를 거르지 않고 호출부가 걸어야 하는데,
     #          지금까지는 친선의 `pos_class`가 대부분 NULL이라 **우연히** 빠지고 있었다(obs#773).
-    G18_EX = ("Club Friendly", "Club Friendly Games", "FIFA World Cup", "UEFA Youth League")
+    #    ⛔⛔ 2026-10-02: 대회 이름 목록을 여기 두지 않는다 — 대표팀이 'FIFA World Cup'만 빠져 네이션스리그·AFCON 예선이
+    #       클럽 집계에 섞였다(완비사카 #493·루제리 #507). 정의는 core.aggregate.club_official_sql() 하나다(migration 096).
+    from core.aggregate import club_official_sql as _club_sql
+    comp_sql, G18_EX = _club_sql()
     G18_OK = {"GK": ("GK",), "LB": ("LB",), "RB": ("RB",), "LCB": ("LCB",), "RCB": ("RCB",),
               "CCB": ("CCB", "CB"), "LDM": ("LDM",), "RDM": ("RDM",), "CDM": ("CDM",),
               "LCM": ("LCM",), "RCM": ("RCM",), "CAM": ("CAM",),
               "LM": ("LM", "LAM"), "RM": ("RM", "RAM"), "ST": ("ST",), "LST": ("LST",),
               "RST": ("RST",), "LAM": ("LAM",), "RAM": ("RAM",), "LW": ("LW",), "RW": ("RW",),
               "CM": ("CM",)}
-    comp_sql = "competition NOT IN (%s)" % ",".join("?" * len(G18_EX))
     g18_bad, g18_thin, g18_done, g18_unk, g18_masked = [], [], 0, [], []
     # ⛔ `player_aggregate`는 모듈 최상단에서 이미 임포트돼 있다(G4가 쓴다) — 지역 임포트로 가리지 말 것.
     rows18 = [dict(zip(("id", "player_id", "pos_label", "map25", "rationale"), x)) for x in con.execute(

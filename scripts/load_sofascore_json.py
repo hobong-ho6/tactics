@@ -118,6 +118,14 @@ def main():
 
     missing_codes = {r["team_code"] for r in rows} - codes
     assert not missing_codes, f"teams에 없는 코드: {missing_codes} — 먼저 등재할 것"
+    # ⛔ 대표팀·클럽 표식이 어긋나면 적재하지 않는다(2026-10-02 · migration 096) — `measured` 집계는
+    #    teams.is_national로 대표팀 경기를 거른다. 표식이 틀리면 대표팀 경기가 클럽 집계에 조용히 섞인다.
+    if getattr(a, "nat", None):
+        assert con.execute("SELECT is_national FROM teams WHERE code=?", (a.nat,)).fetchone()[0] == 1, \
+            f"--nat {a.nat}는 teams.is_national=1이어야 한다 — 대표팀으로 등재할 것"
+    if getattr(a, "club", None):
+        assert con.execute("SELECT is_national FROM teams WHERE code=?", (a.club,)).fetchone()[0] == 0, \
+            f"--club {a.club}가 대표팀으로 표시돼 있다"
     ins = skip = 0
     for r in rows:
         if (r["player_id"], r["event_id"]) in have:

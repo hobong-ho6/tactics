@@ -46,8 +46,10 @@ ADJUDICATED = "[표본판정"
 #    2026-09-15 실증: `core.aggregate`는 대회를 거르지 않고 **호출부가 걸러야 하는데**,
 #    지금까지는 친선 경기의 `pos_class`가 대부분 NULL이라 **우연히** 빠지고 있었다.
 #    그 NULL을 백필하는 순간 친선이 집계에 들어온다 ⇒ **명시 필터가 필수다.**
-EXCLUDE_COMP = ("Club Friendly", "Club Friendly Games", "FIFA World Cup", "UEFA Youth League")
-COMP_SQL = "competition NOT IN (%s)" % ",".join("?" * len(EXCLUDE_COMP))
+# ⭐ 2026-10-02: 「클럽 공식전」 정의는 core.aggregate.club_official_sql() 하나다(대표팀은 teams.is_national · migration 096).
+#    ⛔ 여기서 대회 목록을 다시 적지 않는다 — 두 벌이던 목록에서 대표팀이 빠져 네이션스리그가 집계에 섞였다.
+from core.aggregate import club_official_sql  # noqa: E402
+COMP_SQL, EXCLUDE_COMP = club_official_sql()
 USED = "사용 경기"      # 재집계가 남기는 「사용 경기 N건(...): 날짜…」 목록의 표식
 DATE = re.compile(r"(20\d\d-\d\d-\d\d)\(")
 SEG = re.compile(r"\[20\d\d-\d\d-\d\d[^\]]*\]")

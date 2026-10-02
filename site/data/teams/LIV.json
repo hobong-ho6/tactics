@@ -35194,16 +35194,6 @@
   ],
   "음바예": [
    [
-    "2026-06-09",
-    6.5,
-    "International Friendly Games"
-   ],
-   [
-    "2026-06-16",
-    7.4,
-    "FIFA World Cup"
-   ],
-   [
     "2026-06-23",
     7.3,
     "FIFA World Cup"
@@ -35242,6 +35232,16 @@
     "2026-09-19",
     6.3,
     "Premier League"
+   ],
+   [
+    "2026-09-25",
+    6.3,
+    "Africa Cup of Nations Qual."
+   ],
+   [
+    "2026-09-29",
+    8.2,
+    "Africa Cup of Nations Qual."
    ]
   ],
   "응구모하": [
@@ -61039,13 +61039,13 @@
    "xg_pg": 0.133
   },
   {
-   "avg_rating": 6.89,
-   "dw_pg": 1.63,
+   "avg_rating": 6.91,
+   "dw_pg": 1.65,
    "ic_pg": 0.14,
-   "kp_pg": 0.54,
+   "kp_pg": 0.56,
    "label": "음바예",
-   "minutes": 1851,
-   "n": 70,
+   "minutes": 1967,
+   "n": 72,
    "player_id": 86,
    "pos_group": "WM",
    "tk_pg": 0.4,
@@ -64757,6 +64757,16 @@
    }
   ],
   "음바예": [
+   {
+    "assists": 0,
+    "avg_rating": 7.25,
+    "competition": "Africa Cup of Nations Qual.",
+    "goals": 1,
+    "minutes": 116,
+    "n": 2,
+    "season": "2026-27",
+    "starts": 1
+   },
    {
     "assists": 0,
     "avg_rating": 6.95,
