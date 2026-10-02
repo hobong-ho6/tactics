@@ -367,6 +367,9 @@ def cmd_sbc_submit(con, a):
     if getattr(a, "undo", False):
         n = con.execute("UPDATE fut_club_players SET status='owned', sbc_challenge_ea_id=NULL, updated=? "
                         "WHERE sbc_challenge_ea_id=? AND status='sbc'", (TODAY, ch)).rowcount
+        # ⭐ 스토리지 카드도 되돌린다(migration 095)
+        n += con.execute("UPDATE fut_sbc_storage SET status='stored', used_challenge_ea_id=NULL, used_at=NULL "
+                         "WHERE used_challenge_ea_id=? AND status='used'", (ch,)).rowcount
         con.execute("DELETE FROM fut_sbc_log WHERE challenge_ea_id=? AND game_version=?", (ch, a.game))
         con.commit()
         print(f"↩️ {row['name']} 완료 취소 — 카드 {n}장을 보유로 되돌렸다. 다시 푸는 중…")
@@ -403,9 +406,13 @@ def cmd_sbc_submit(con, a):
             "   다시 풀렸다. 새로고침하면 지금 판정이 보인다.\n"
             "   ⭐ 인게임에서 이미 내셨다면, 낸 카드를 알려 주시면 그대로 기록하겠다(해법과 달라도 된다).")
     sq = json.loads(row["squad_json"])["players"]
-    ids = [p["id"] for p in sq]
+    ids = [p["id"] for p in sq if p["id"] > 0]
+    sids = [-p["id"] for p in sq if p["id"] < 0]          # ⭐ 음수 id = SBC 스토리지 카드(migration 095)
     bad = con.execute("SELECT name, status FROM fut_club_players WHERE id IN (%s) AND status<>'owned'"
-                      % ",".join("?" * len(ids)), ids).fetchall()
+                      % ",".join("?" * len(ids)), ids).fetchall() if ids else []
+    if sids:
+        bad += con.execute("SELECT name, status FROM fut_sbc_storage WHERE id IN (%s) AND status<>'stored'"
+                           % ",".join("?" * len(sids)), sids).fetchall()
     if bad:
         raise SystemExit("⛔ 해법이 낡았다 — 이미 보유가 아닌 카드가 들어 있다: "
                          + ", ".join(f"{b['name']}({b['status']})" for b in bad)
@@ -422,7 +429,10 @@ def cmd_sbc_submit(con, a):
                  "다른 조합으로 내셨다면 사실과 다르다(되돌리려면 완료 취소).",
                  row["name"]))
     n = con.execute("UPDATE fut_club_players SET status='sbc', sbc_challenge_ea_id=?, updated=? "
-                    "WHERE id IN (%s)" % ",".join("?" * len(ids)), [ch, TODAY] + ids).rowcount
+                    "WHERE id IN (%s)" % ",".join("?" * len(ids)), [ch, TODAY] + ids).rowcount if ids else 0
+    if sids:
+        n += con.execute("UPDATE fut_sbc_storage SET status='used', used_challenge_ea_id=?, used_at=? "
+                         "WHERE id IN (%s)" % ",".join("?" * len(sids)), [ch, TODAY] + sids).rowcount
     con.commit()
     print(f"🏁 {row['name']} 완료 처리 — 카드 {n}장을 구단에서 덜어냈다. 남은 SBC를 다시 푸는 중…")
     _resolve()
@@ -450,6 +460,84 @@ def cmd_sbc_exclude(con, a):
                     (a.game, ch, cid, a.notes or "사용자가 이 챌린지에서 뺌", TODAY))
         print(f"🚫 {row['name']} 제외 — 다시 푸는 중…")
     con.commit()
+    _resolve()
+
+
+# ── SBC 스토리지 (2026-10-02 사용자 지시 「sbc 스토리지 선수도 조회」 → 「화면 등록으로」 · migration 095) ──
+#   ⛔ fut.gg가 스토리지를 주지 않아 사람이 등록한다. 해법(sbc_solve.py)이 이 카드를 **가장 먼저** 쓴다.
+READONLY = {"storage_search"}      # serve.py가 export를 건너뛰는 명령(아무것도 쓰지 않는다)
+
+
+def cmd_storage_search(con, a):
+    """fut.gg FC27 카드를 이름으로 찾는다 — 결과를 JSON 한 줄로 찍는다(화면이 읽는다)."""
+    from scripts.collect_futgg_history import API, get
+    import urllib.parse
+    q = (a.q or "").strip()
+    if len(q) < 2:
+        raise SystemExit("⛔ 두 글자 이상 넣는다")
+    out = []
+    for x in (get(f"{API}/players/v2/27/?name={urllib.parse.quote(q)}") or {}).get("data", [])[:24]:
+        cl, lg = x.get("club") or {}, x.get("league") or {}
+        out.append({"ea": x["eaId"], "name": x.get("commonName") or f"{x.get('firstName','')} {x.get('lastName','')}".strip(),
+                    "ovr": x.get("overall"), "pos": x.get("position"), "rarity": x.get("rarityName"),
+                    "club": cl.get("name"), "league": lg.get("name"), "card": x.get("cardImageUrl") or x.get("simpleCardImageUrl"),
+                    "special": bool(x.get("isSpecial"))})
+    print(json.dumps({"results": out}, ensure_ascii=False))
+
+
+def _ensure_card(con, ea, game):
+    """스토리지 카드의 정보 행이 없으면 fut.gg 정의로 만든다(채움 전용 — 있으면 건드리지 않는다)."""
+    if con.execute("SELECT 1 FROM player_card_items WHERE game_version=? AND ea_item_id=?", (game, ea)).fetchone():
+        return
+    from scripts.collect_futgg_history import API, ATTR_MAP, POS, get
+    d = get(f"{API}/player-item-definitions/27/{ea}/")
+    d = (d or {}).get("data") or d or {}
+    if not d.get("overall"):
+        raise SystemExit(f"⛔ fut.gg에 카드 {ea} 정의가 없다 — 지어내지 않는다")
+    x = ((get(f"{API}/players/v2/27/?ea_ids={ea}") or {}).get("data") or [{}])[0]
+    cl, lg, na = x.get("club") or d.get("club") or {}, x.get("league") or d.get("league") or {}, x.get("nation") or d.get("nation") or {}
+    name = d.get("commonName") or f"{d.get('firstName','')} {d.get('lastName','')}".strip()
+    pos = POS.get(d.get("position"))
+    alts = [POS.get(p) for p in (d.get("alternativePositionIds") or []) if POS.get(p)]
+    attrs = {ATTR_MAP[k]: d[k] for k in ATTR_MAP if d.get(k) is not None}
+    r = d.get("rarity") or {}
+    con.execute("""INSERT INTO player_card_items(game_version, ea_item_id, base_ea_id, is_base, name_kr, rarity_ea_id, rarity_name,
+                     club, positions, best_pos, ovr, attrs, card_image_url, futgg_url, source, confidence, is_special, first_seen,
+                     nation, league, is_icon, is_hero, club_ea_id, sibling_club_ea_id, league_ea_id, grading_score)
+                   VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                (game, ea, d.get("basePlayerEaId"), int(ea == d.get("basePlayerEaId")), name, d.get("rarityEaId"),
+                 r.get("name") if isinstance(r, dict) else x.get("rarityName"), cl.get("name"),
+                 "/".join([p for p in [pos] + alts if p]), pos, d.get("overall"), json.dumps(attrs, ensure_ascii=False),
+                 x.get("cardImageUrl"), f"https://www.fut.gg{x['url']}" if x.get("url") else None,
+                 f"fut.gg player-item-definitions/27/{ea} (SBC 스토리지 등록 {TODAY}, fut_club.py storage_add)",
+                 "HIGH — fut.gg 카드 정의", int(bool(d.get("isSpecial"))), TODAY,
+                 na.get("name"), lg.get("name"), int(bool(d.get("isIcon"))), int(bool(d.get("isHero"))),
+                 cl.get("eaId"), cl.get("siblingClubEaId"), lg.get("eaId"), d.get("gradingScore")))
+
+
+def cmd_storage_add(con, a):
+    """SBC 스토리지에 카드 한 장을 등록하고 해법을 다시 푼다."""
+    ea = int(a.ea_item)
+    _ensure_card(con, ea, a.game)
+    nm = con.execute("SELECT name_kr, ovr FROM player_card_items WHERE game_version=? AND ea_item_id=?", (a.game, ea)).fetchone()
+    con.execute("""INSERT INTO fut_sbc_storage(account_id, game_version, ea_item_id, name, added_at, source, notes)
+                   VALUES((SELECT id FROM fut_accounts ORDER BY id LIMIT 1),?,?,?,?,?,?)""",
+                (a.game, ea, nm["name_kr"], TODAY, "사용자 등록(화면 · fut.gg가 스토리지를 주지 않는다)", a.notes))
+    con.commit()
+    print(f"📦 {nm['name_kr']}({nm['ovr']}) 스토리지 등록 — SBC 해법을 다시 푸는 중…")
+    _resolve()
+
+
+def cmd_storage_remove(con, a):
+    """스토리지 카드를 뺀다(행은 남기고 removed로 — 불변규칙 2) · 해법을 다시 푼다."""
+    sid = int(a.storage_id)
+    r = con.execute("SELECT name, status FROM fut_sbc_storage WHERE id=?", (sid,)).fetchone()
+    if not r:
+        raise SystemExit(f"⛔ 스토리지 카드 {sid}를 모른다")
+    con.execute("UPDATE fut_sbc_storage SET status='removed', notes=COALESCE(notes||' · ','')||? WHERE id=?",
+                (f"{TODAY} 사용자가 뺌", sid))
+    con.commit()
+    print(f"🗑 {r['name']} 스토리지에서 뺐다 — SBC 해법을 다시 푸는 중…")
     _resolve()
 
 
@@ -495,11 +583,12 @@ def run(con, cmd, **kw):
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
                     level=1, date=TODAY, completed=None, note=None, ovr_after=None, six_after=None, status=None, op="add",
                     in_progress=False, evo=None, challenge=None, formation=None, club_player=None, undo=False, cards=True,
-                    expect_player_id=None, set_id=None, grade=None)
+                    expect_player_id=None, set_id=None, grade=None, q=None, storage_id=None)
     a = argparse.Namespace(**{**defaults, **kw})
     fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete,
           "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude,
-          "sbc_submit": cmd_sbc_submit, "gallery_complete": cmd_gallery_complete}[cmd]
+          "sbc_submit": cmd_sbc_submit, "gallery_complete": cmd_gallery_complete,
+          "storage_search": cmd_storage_search, "storage_add": cmd_storage_add, "storage_remove": cmd_storage_remove}[cmd]
     fn(con, a)
 
 

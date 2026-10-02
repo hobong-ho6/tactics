@@ -1218,3 +1218,15 @@ CREATE TABLE fut_gallery_completions(
   source TEXT, notes TEXT
 );
 CREATE INDEX ix_gal_comp_set ON fut_gallery_completions(game_version, set_id, completed_at);
+CREATE TABLE fut_sbc_storage(
+  id           INTEGER PRIMARY KEY,
+  account_id   INTEGER NOT NULL REFERENCES fut_accounts(id),
+  game_version TEXT NOT NULL,
+  ea_item_id   INTEGER NOT NULL,            -- player_card_items.ea_item_id (카드 정보는 거기서)
+  name         TEXT NOT NULL,
+  status       TEXT NOT NULL DEFAULT 'stored' CHECK(status IN ('stored','used','removed')),
+  added_at     TEXT NOT NULL,
+  used_challenge_ea_id INTEGER, used_at TEXT,
+  source TEXT, notes TEXT
+);
+CREATE INDEX ix_sbc_storage_status ON fut_sbc_storage(account_id, game_version, status);

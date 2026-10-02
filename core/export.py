@@ -506,7 +506,15 @@ def export_all(db_path=None, window="2026-summer"):
                                      # ⭐ 화면이 「현재」를 각자 고르지 않게 하는 정본(위 주석)
                                      "state": state,
                                      "stats": club_stats, "unlocks": unlocks},
-                           "sbc": {"sets": sbc_sets, "challenges": sbc_ch, "done": sbc_done, "excluded": sbc_excl},
+                           "sbc": {"sets": sbc_sets, "challenges": sbc_ch, "done": sbc_done, "excluded": sbc_excl,
+                                   # ⭐ SBC 스토리지(migration 095) — 보관 중·사용한 카드. 화면의 「📦 SBC 스토리지」가 쓴다.
+                                   "storage": _rows(con, """SELECT s.id, s.ea_item_id, s.name, s.status, s.added_at,
+                                                                  s.used_challenge_ea_id, s.used_at, i.ovr, i.best_pos,
+                                                                  i.rarity_name, i.club, i.card_image_url
+                                                             FROM fut_sbc_storage s LEFT JOIN player_card_items i
+                                                               ON i.ea_item_id=s.ea_item_id AND i.game_version=s.game_version
+                                                            WHERE s.game_version='FC27' AND s.status IN ('stored','used')
+                                                            ORDER BY s.status DESC, i.ovr DESC""")},
                            "gallery": gallery,
                            "formations": formations}))
 

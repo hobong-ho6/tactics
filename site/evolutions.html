@@ -118,6 +118,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
       챌린지별로 내가 뺀 카드(피치에서 ✕).<br>
       ⭐ <b>「내가 완료」는 사용자가 알려 준 기록</b>이다(`fut_sbc_log`) — EA도 fut.gg도 주지 않는 축이라
       진화 로그와 같이 사람이 적는다.</p>
+    <div id="sbcstore"></div>
     <div class="filterbar" id="sbcfilters"></div>
     <div id="sbc"></div></div>
 </section>
@@ -2918,14 +2919,14 @@ const pitchHTML = (sq, chId) => sq.map(p => `
     <i>${esc(p.slot || '')}</i>
     ${p.card ? `<img src="${esc(p.card)}" alt="${esc(p.name)}" loading="lazy">`
              : `<span class="noart"><b>${p.ovr}</b>${esc(p.name)}</span>`}
-    ${p.untradeable ? '<u>거래불가</u>' : ''}
+    ${p.storage ? '<u title="SBC 스토리지 카드 — SBC에만 쓸 수 있어 가장 먼저 쓴다">📦 스토리지</u>' : p.untradeable ? '<u>거래불가</u>' : ''}
     ${/* ⭐ 선수별 케미(2026-09-28 사용자 지시 「피치 카드에도 선수별 케미 표시해줘」) — 솔버 저장값만 읽는다.
          카드 아트에 인쇄되지 않는 값이라 덧그려도 인쇄값과 어긋날 일이 없다. */
       p.chem == null ? '' : `<b class="sbc-chem c${p.chem}" title="이 선수 케미 ${p.chem}/3${
         p.fit === false ? ' — 자리가 맞지 않아 0' : ''}">${'◆'.repeat(p.chem)}${'◇'.repeat(3 - p.chem)}</b>`}
     ${/* ⛔ SBC가 박아 둔 고정 카드는 **뺄 수 없다** — ✕ 대신 📌로 표시한다(migration 073). */
       p.fixed ? '<b class="sbc-pin" title="SBC가 이 칸에 박아 둔 카드다 — 바꿀 수 없고 내 구단 카드도 아니다">📌 고정</b>'
-      : chId ? `<button class="sbc-x" data-sbcex="${chId}" data-cp="${p.id}"
+      : (chId && !p.storage) ? `<button class="sbc-x" data-sbcex="${chId}" data-cp="${p.id}"
                 title="이 SBC에서만 제외하고 다시 푼다(되돌릴 수 있다)">✕</button>` : ''}</div>`).join('');
 /* ⭐⭐ 조건 체크리스트 — **만족/불만족을 둘 다** 띄운다(2026-09-25 사용자 지시).
    ⛔ 종전엔 「남은 위반」만 한 줄로 적어서 **어디까지는 됐는지**를 볼 수 없었다.
@@ -3042,6 +3043,51 @@ const compHTML = (sq, c) => {
     <div>🛡️ 클럽 ${tally('club').length}개 — ${chips('club')}</div>
     <div>🌍 국가 ${tally('nation').length}개 — ${chips('nation')}</div></div>`;
 };
+/* ⭐⭐ **SBC 스토리지 등록**(2026-10-02 사용자 지시 「sbc 해법 찾을 때 내 sbc 스토리지 선수도」 → 「화면 등록으로」 · migration 095).
+   ⛔ fut.gg가 스토리지를 주지 않는다(GG Club API에 경로 없음 · 2026-10-02 실측) — 여기서 사람이 등록한다.
+   ⭐ 등록한 카드는 해법이 **가장 먼저** 쓴다(SBC에만 쓸 수 있는 카드). 등록·삭제하면 서버가 해법을 다시 푼다. */
+function renderStorage(){
+  const box = document.getElementById('sbcstore'); if (!box) return;
+  const st = (SBC.storage || []), kept = st.filter(x => x.status === 'stored'), used = st.filter(x => x.status === 'used');
+  box.innerHTML = `<details class="sbc-store"${kept.length ? '' : ' open'}><summary><b>📦 SBC 스토리지</b>
+      <small class="dim">— 보관 ${kept.length}장${used.length ? ` · SBC에 쓴 ${used.length}장` : ''} · 해법이 가장 먼저 쓴다 ·
+        fut.gg가 주지 않아 여기서 등록한다</small></summary>
+    <div class="kv" style="margin:6px 0"><input id="stq" placeholder="선수 이름(영문) — 예: Saibari" style="min-width:220px">
+      <button class="act" id="stgo">카드 찾기</button><span class="msg-slot" id="stmsg"></span></div>
+    <div id="stres"></div>
+    <div class="altcards" style="flex-wrap:wrap">${kept.map(x => `<div class="altcard" title="${esc(x.name)} ${x.ovr ?? ''} · ${esc(x.club || '')} · ${esc(x.rarity_name || '')}">
+        ${x.card_image_url ? `<img src="${esc(x.card_image_url)}" alt="${esc(x.name)}" loading="lazy">` : `<span class="noart"><b>${x.ovr ?? ''}</b>${esc(x.name)}</span>`}
+        <button class="chip" data-stdel="${x.id}" title="스토리지에서 뺀다(기록은 남는다)">🗑</button></div>`).join('')
+      || '<span class="dim" style="font-size:12px">아직 등록한 카드가 없다.</span>'}</div>
+    ${used.length ? `<small class="dim">SBC에 쓴 카드: ${used.map(x => `${esc(x.name)}(${x.used_at || ''})`).join(' · ')}</small>` : ''}
+  </details>`;
+  const go = async () => {
+    const q = document.getElementById('stq').value.trim(), msg = document.getElementById('stmsg'), res = document.getElementById('stres');
+    if (q.length < 2){ msg.innerHTML = '<span class="dn">두 글자 이상</span>'; return; }
+    msg.innerHTML = '<span class="dim">찾는 중…</span>';
+    const r = await api('storage_search', { q });
+    if (!r?.ok){ say(msg, r); return; }
+    let hits = []; try { hits = JSON.parse(r.message).results || []; } catch (e) {}
+    msg.innerHTML = `<span class="dim">${hits.length}장</span>`;
+    res.innerHTML = `<div class="altcards" style="flex-wrap:wrap;margin:4px 0">${hits.map(h => `<div class="altcard" title="${esc(h.name)} ${h.ovr} ${esc(h.pos || '')} · ${esc(h.club || '')} · ${esc(h.rarity || '')}">
+        ${h.card ? `<img src="${esc(h.card)}" alt="${esc(h.name)}" loading="lazy">` : `<span class="noart"><b>${h.ovr}</b>${esc(h.name)}</span>`}
+        <button class="act" data-stadd="${h.ea}" style="font-size:11px;padding:2px 6px">📦 추가</button></div>`).join('')
+      || '<span class="dim">못 찾았다</span>'}</div>`;
+    res.querySelectorAll('[data-stadd]').forEach(b => b.addEventListener('click', async () => {
+      b.disabled = true; msg.innerHTML = '<span class="dim">등록하고 해법을 다시 푸는 중… (수십 초)</span>';
+      const r2 = await api('storage_add', { ea_item: +b.dataset.stadd, game: 'FC27' });
+      say(msg, r2); if (r2?.ok) reloadAfterWrite('스토리지에 등록했다');
+    }));
+  };
+  document.getElementById('stgo').addEventListener('click', go);
+  document.getElementById('stq').addEventListener('keydown', e => { if (e.key === 'Enter') go(); });
+  box.querySelectorAll('[data-stdel]').forEach(b => b.addEventListener('click', async () => {
+    if (!confirm('이 카드를 스토리지 목록에서 뺍니다(기록은 남습니다). 계속할까요?')) return;
+    const msg = document.getElementById('stmsg'); msg.innerHTML = '<span class="dim">빼고 해법을 다시 푸는 중…</span>';
+    const r = await api('storage_remove', { storage_id: +b.dataset.stdel, game: 'FC27' });
+    say(msg, r); if (r?.ok) reloadAfterWrite('스토리지에서 뺐다');
+  }));
+}
 let SBC_F = 'all';
 const SBC_OPEN = new Set();          // 완료분을 펼쳐 둔 세트
 function renderSbc(){
@@ -3451,7 +3497,7 @@ function doneHTML(){
   return `<h3 style="margin:10px 0 4px">🏁 내가 완성한 세트 <small class="dim">${items.length}</small></h3>${items.join('')}`;
 }
 
-renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc(); renderGallery(); galPopup();
+renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc(); renderStorage(); renderGallery(); galPopup();
 
 
 

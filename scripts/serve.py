@@ -53,9 +53,13 @@ class NoCacheHandler(SimpleHTTPRequestHandler):
             with redirect_stdout(out):
                 fut_club.run(con, cmd, **body)
             con.commit(); con.close()
-            exp = subprocess.run([sys.executable, str(ROOT / "scripts" / "export.py")], capture_output=True, text=True, cwd=ROOT)
-            ok = exp.returncode == 0
-            msg = out.getvalue().strip() + ("" if ok else "\n⛔ export 실패:\n" + exp.stdout[-800:] + exp.stderr[-800:])
+            # ⭐ 읽기 전용 명령(검색 등 · fut_club.READONLY)은 아무것도 쓰지 않으니 export를 건너뛴다(2026-10-02).
+            if cmd in getattr(fut_club, "READONLY", set()):
+                ok, msg = True, out.getvalue().strip()
+            else:
+                exp = subprocess.run([sys.executable, str(ROOT / "scripts" / "export.py")], capture_output=True, text=True, cwd=ROOT)
+                ok = exp.returncode == 0
+                msg = out.getvalue().strip() + ("" if ok else "\n⛔ export 실패:\n" + exp.stdout[-800:] + exp.stderr[-800:])
         except (SystemExit, Exception) as e:      # noqa: BLE001 — 사용자에게 사유를 그대로 보여준다
             ok, msg = False, out.getvalue().strip() + "\n" + str(e)
         data = json.dumps({"ok": ok, "message": msg}, ensure_ascii=False).encode("utf-8")

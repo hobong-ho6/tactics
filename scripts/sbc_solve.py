@@ -500,7 +500,8 @@ def spend_key(p):
        ⭐ 같은 등급 안에서는 **거래불가를 먼저** 낸다(2026-09-28 사용자 지시 「거래불가 카드 먼저 쓰게 넣어줘」) —
           팔 수 있는 카드는 코인으로 바꿀 수 있어 더 아깝다. ⚠️ 등급을 넘지는 않는다(거래불가 골드 < 거래 가능 브론즈로 두지 않는다).
        ⚠️ 등급 구간은 통설(등급 D · tier_of 주석). 시세는 보지 않는다 — 보유 카드 시세는 대부분 비어 있다."""
-    return (int(bool(p["is_special"])), tier_of(p), int(not p["is_untradeable"]), p["ovr"] or 0)
+    # ⭐ 스토리지 카드가 맨 앞이다(2026-10-02) — SBC 말고는 쓸 데가 없는 카드라 가장 덜 아깝다.
+    return (int(not p.get("storage")), int(bool(p["is_special"])), tier_of(p), int(not p["is_untradeable"]), p["ovr"] or 0)
 
 
 def cheapen(xi, cands, conds, n_fixed):
@@ -777,6 +778,19 @@ def main():
         pool = [p for p in pool if p["id"] not in evo]
         if gone:
             print(f"🧬 진화 선수 {len(gone)}명 제외({'·'.join(p['name'] for p in gone)}) — 남은 후보 {len(pool)}장")
+    # ⭐⭐ **SBC 스토리지 카드**(2026-10-02 사용자 지시 「sbc 해법 찾을 때 내 sbc 스토리지 선수도」 · migration 095).
+    #    ⛔ 위 제외(활성 스쿼드·보호 클럽·진화)는 **클럽 카드 기준**이다 — 스토리지에 같은 선수의 중복본이 있어도
+    #       그건 팀에서 쓰는 카드가 아니다 ⇒ 제외 단계가 끝난 뒤에 붙인다.
+    #    ⭐ id는 **음수**(−스토리지 id)다 — 클럽 원장 id와 섞이지 않게(제출·화면이 이 부호로 가른다).
+    stor = [dict(r) for r in con.execute("""
+        SELECT -s.id id, COALESCE(i.name_kr, s.name) name, i.ovr, i.nation, i.league, i.club, i.positions, i.best_pos,
+               i.card_image_url, i.chem_extra, COALESCE(i.is_icon,0) is_icon, COALESCE(i.is_hero,0) is_hero,
+               COALESCE(i.is_special,0) is_special, 1 is_untradeable, s.ea_item_id, 1 storage
+          FROM fut_sbc_storage s JOIN player_card_items i ON i.ea_item_id=s.ea_item_id AND i.game_version=s.game_version
+         WHERE s.status='stored' AND s.game_version=? AND i.ovr IS NOT NULL""", (a.game,))]
+    if stor:
+        pool += stor
+        print(f"📦 SBC 스토리지 {len(stor)}장 추가 — 가장 먼저 쓴다(SBC에만 쓸 수 있는 카드)")
     miss = [p["name"] for p in pool if not p["club"] or not p["league"] or not p["nation"]]
     print(f"후보 카드 {len(pool)}장" + (f" · ⚠️ 클럽/리그/국적 결손 {len(miss)}장은 그룹 조건에서 빠진다: "
                                         f"{', '.join(miss[:5])}{' …' if len(miss) > 5 else ''}" if miss else ""))
@@ -934,7 +948,8 @@ def main():
                       "league": p["league"], "nation": p["nation"], "untradeable": p["is_untradeable"],
                       "pos": sorted(positions_of(p)), "card": p["card_image_url"],
                       # ⭐ SBC가 박아 둔 카드 — 화면이 ✕를 감추고 「고정」으로 표시한다.
-                      **({"fixed": True} if p.get("fixed") else {})}
+                      **({"fixed": True} if p.get("fixed") else {}),
+                      **({"storage": True} if p.get("storage") else {})}
     # ⭐ 선수별 케미를 함께 싣는다(2026-09-28 사용자 지시 「sbc 해법에 … 케미스트리 정보를 보여줘」).
     #    자리가 맞는 선수만 링크에 들고(core/chem.per_player 규약), 안 맞으면 0이다.
     def squad_of(pl):
