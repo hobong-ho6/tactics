@@ -348,6 +348,19 @@ def main():
                                  "paths·적용가능선수 API가 객체를 주지 않는 단독/특별카드 전용 진화")
                 row["confidence"] = (f"MEDIUM — 목록 생존만 {a.pulled}에 확인했다. 내용은 "
                                      f"{row['carried_from']} 관측값 그대로이고 그 뒤 변경 여부는 확인할 수 없다.")
+                # ⭐ 이월은 직전 행을 복사하므로 **처음부터 비어 있던 EA id는 영영 빈 채로** 넘어간다
+                #    (2026-10-02 실측: 2495 Relentless — migration 090 이전 손수집 행이라 ea_evo_id NULL →
+                #     음바예의 EA 이력 2670을 못 이었다). 비어 있으면 상세 페이지(서버 HTML)에서 채운다.
+                #    ⛔ `id:<evo_id>` 바로 뒤의 eaId만 읽는다 — 페이지에 다른 진화의 eaId도 섞여 있다.
+                if row.get("ea_evo_id") is None and row.get("url"):
+                    try:
+                        with urllib.request.urlopen(urllib.request.Request(row["url"], headers=UA), timeout=30) as r:
+                            m = re.search(rf'\bid:{eid},game:"{g}",eaId:(\d+)', r.read().decode("utf-8", "ignore"))
+                        if m:
+                            row["ea_evo_id"] = int(m.group(1))
+                            print(f"  🔗 EA id 보충: {eid} {row['name']} → {row['ea_evo_id']}(상세 페이지)")
+                    except Exception as e:                       # noqa: BLE001
+                        print(f"  ⚠️ EA id 보충 실패 {eid}: {type(e).__name__} {e}")
                 catalog[(gv, eid)] = row
                 carried.append(f"{eid} {row['name']}")
             if carried:
