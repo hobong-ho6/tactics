@@ -1397,6 +1397,14 @@ def run(db_path=None, verbose=True):
         for k in sorted(set(_PY) | set(_JS)):
             if _PY.get(k) != _JS.get(k):
                 g26.append(f"{k}: py={_PY.get(k)!r} js={_JS.get(k)!r}")
+        # 6대 스탯 직접 보상 표도 두 벌이다(2026-10-02) — 같은 방식으로 대조한다.
+        from core.futgg_attrs import FACE_UPGRADE as _PYF
+        _fb = _js[_js.index("export const FACE_UPGRADE"):]
+        _fb = _fb[:_fb.index("};")]
+        _JSF = dict(_re.findall(r"(\w+)\s*:\s*'([^']+)'", _fb))
+        for k in sorted(set(_PYF) | set(_JSF)):
+            if _PYF.get(k) != _JSF.get(k):
+                g26.append(f"FACE {k}: py={_PYF.get(k)!r} js={_JSF.get(k)!r}")
     except Exception as e:                                   # noqa: BLE001
         g26.append(f"조회 실패({e})")
     ok26 = not g26
@@ -1506,14 +1514,16 @@ def run(db_path=None, verbose=True):
     #   **수비 위치 선정 상승이 통째로 무시**됐다(진화 소개·풀백의 갈림길·미드필드 광채 3종).
     #   증상이 고약하다 — 계산이 **조용히 낮게** 나올 뿐 아무도 오류를 안 낸다.
     #   ⇒ 기준을 우리 표끼리가 아니라 **EA 카탈로그**에 둔다. 새 종류가 생기면 여기서 막힌다.
-    #   ⚠️ `face_passing`/`face_defending`은 **6대 스탯을 직접 올리는 보상**이라 29속성 모델로
+    #   ⚠️ (2026-09-26 당시 · 아래 10-02로 대체) `face_passing`/`face_defending`은 **6대 스탯을 직접 올리는 보상**이라 29속성 모델로
     #      표현할 수 없다. 지금은 `Midfield Polish [SP+ 1]` 한 종만 쓰고 프리미엄 미구매라 영향이 없다.
     #      ⛔ 덮지 않고 아래에 이름으로 적어 둔다 — 다른 진화로 번지면 이 목록을 갱신하며 다시 판단한다.
-    G29_KNOWN = {"face_passing", "face_defending"}
+    #   ⭐ 2026-10-02: 6대 스탯 직접 보상이 세 진화로 번져(Midfield Polish·Trust the Keeper·Frontline Flair)
+    #      `core/futgg_attrs.FACE_UPGRADE`로 **계산에 넣었다** — 면제 목록은 비웠다. 새 face 키는 여기서 막힌다.
+    G29_KNOWN = set()
     g29 = []
     try:
         import json as _json
-        from core.futgg_attrs import EVO_ATTR_KR as _K, NON_ATTR_OK as _OK
+        from core.futgg_attrs import EVO_ATTR_KR as _K, NON_ATTR_OK as _OK, FACE_UPGRADE as _FU
         seen = set()
         for (lv,) in con.execute("""SELECT levels FROM fc_evolutions
                                      WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions)
@@ -1526,7 +1536,7 @@ def run(db_path=None, verbose=True):
                     for u in src:
                         seen.add(str(u.get("upgrade") or ""))
         for k in sorted(seen):
-            if k in _OK or k in G29_KNOWN:
+            if k in _OK or k in G29_KNOWN or k in _FU:
                 continue
             if k.startswith("attribute_") and k[len("attribute_"):] in _K:
                 continue

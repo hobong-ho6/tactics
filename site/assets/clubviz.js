@@ -741,9 +741,29 @@ export function evoOvr(ovr, upgrades) {
   }
   return ovr;
 }
-export function applyEvoLevel(at, lv) {
+/* ⭐⭐ 6대 스탯 직접 보상(2026-10-02) — 정본 규칙은 core/futgg_attrs.py `FACE_UPGRADE`·`apply_upgrades`.
+   그 스탯을 상한까지 d만큼 올리고 구성 속성 전부에 +d(fut.gg 경로 결과와 6대 105/106 일치 · 등급 B).
+   ⛔ 표는 파이썬과 한 글자도 다르면 안 된다(G26이 대조한다). faceRows가 없으면 적용하지 않는다. */
+export const FACE_UPGRADE = {
+  face_pace:'PAC', face_shooting:'SHO', face_passing:'PAS',
+  face_dribbling:'DRI', face_defending:'DEF',
+  gk_face_positioning:'POS',
+};
+export function applyEvoLevel(at, lv, faceRows = null, isGk = false) {
   if ((lv.upgradeOptions || []).length > 1) return { ok: false, reason: '분기 선택 미기록' };
   for (const u of (lv.upgrades || [])) {
+    const fk = FACE_UPGRADE[String(u.upgrade || '')];
+    if (fk) {
+      if (!faceRows || String(u.upgrade).startsWith('gk_') !== !!isGk) continue;
+      const cur = faceOf(at, faceRows, isGk)[fk];
+      if (cur == null) continue;
+      const cap = u.maxValue;
+      const d = (cap != null ? Math.min(cur + u.value, cap) : cur + u.value) - cur;
+      if (d <= 0) continue;
+      for (const r of faceRows)
+        if (r.abbr === fk && !!r.is_gk === !!isGk && at[r.attr] != null) at[r.attr] = Math.min(99, at[r.attr] + d);
+      continue;
+    }
     const key = ATTR_KR[String(u.upgrade || '').replace(/^attribute_/, '')];
     if (!key || at[key] == null) continue;
     const cap = u.maxValue;
@@ -816,6 +836,8 @@ export const ATTR_KR = {   // ⭐ 화면들이 같은 표를 쓰도록 내보낸
   heading_accuracy:'헤딩 정확도', def_awareness:'수비 위치 선정', defensive_awareness:'수비 위치 선정',
   standing_tackle:'스탠딩 태클',
   sliding_tackle:'슬라이딩 태클', jumping:'점프', stamina:'체력', strength:'힘', aggression:'공격성',
+  /* GK 4속성 — 2026-10-02 「Trust the Keeper」에서 처음 등장(G29) */
+  gk_diving:'다이빙', gk_handling:'핸들링', gk_kicking:'킥', gk_reflexes:'반사신경',
 };
 
 /* ⭐ 한글 라벨 → **fut.gg 표기**(2026-09-23 사용자 지시 「스탯 명칭은 fut.gg와 동일하게」).

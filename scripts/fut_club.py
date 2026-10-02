@@ -161,14 +161,14 @@ def cmd_evolve(con, a):
                 sys.exit(f"⛔ 모르는 PlayStyle id {miss_ps} — 지어내지 않는다. collect_playstyle_ids.py를 먼저 돌릴 것")
             have_ps = [x.strip() for x in (cp["current_playstyles"] or "").split(",") if x.strip()]
             ps_after = have_ps + [ps_names[v] for v in gain_ps if ps_names[v] not in have_ps]
-            bump, unknown = apply_upgrades(attrs_after, ups)
-            if unknown:
-                sys.exit(f"⛔ 모르는 보상 항목 {unknown} — 지어내지 않는다. core/futgg_attrs.py의 표를 먼저 채울 것")
-            ovr_after = bump(cp["current_ovr"] or 0)
             face_rows = con.execute("SELECT abbr, attr, weight, is_gk FROM fc_face_stats").fetchall()
             # ⛔ GK는 GK 구성식(DIV·HAN…)으로 환산한다 — 빼먹으면 필드 6대가 들어간다(2026-09-27 스즈키 실측 사고).
             #    GK 여부는 현재 카드의 6대 모양(EA 실측)으로 가른다.
             is_gk = "DIV" in json.loads(cp["current_six"] or "{}")
+            bump, unknown = apply_upgrades(attrs_after, ups, face_rows, is_gk=is_gk)
+            if unknown:
+                sys.exit(f"⛔ 모르는 보상 항목 {unknown} — 지어내지 않는다. core/futgg_attrs.py의 표를 먼저 채울 것")
+            ovr_after = bump(cp["current_ovr"] or 0)
             six_after = json.dumps(face_of(attrs_after, face_rows, is_gk=is_gk), ensure_ascii=False)
             # ⭐ 속성이 하나도 안 바뀌는 진화(PlayStyle·역할 전용)는 6대를 다시 환산하지 않고 EA 실측을 잇는다
             #    (2026-09-29 스즈키 실측: 구성식 SPD 56 ↔ EA 58 — 재환산하면 게이트가 「스탯 하락」으로 막았다).

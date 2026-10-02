@@ -75,6 +75,8 @@ EVO_ATTR_KR = {
     "def_awareness": "수비 위치 선정", "defensive_awareness": "수비 위치 선정",
     "standing_tackle": "스탠딩 태클", "sliding_tackle": "슬라이딩 태클",
     "jumping": "점프", "stamina": "체력", "strength": "힘", "aggression": "공격성",
+    # GK 4속성 — 2026-10-02 「Trust the Keeper」(2531)에서 처음 등장(G29). 라벨은 위 ATTR_KR GK와 같다.
+    "gk_diving": "다이빙", "gk_handling": "핸들링", "gk_kicking": "킥", "gk_reflexes": "반사신경",
 }
 
 
@@ -89,11 +91,27 @@ NON_ATTR_OK = {
 }
 
 
-def apply_upgrades(attrs, upgrades):
+# ⭐⭐ **6대 스탯을 직접 올리는 보상**(2026-10-02 사용자 지시 「(나)로 고쳐줘」).
+#    Midfield Polish(face_passing·face_defending) · Trust the Keeper(gk_face_positioning) ·
+#    Frontline Flair(face_pace·face_shooting·face_dribbling) — 세 진화로 번져 「등록만」으로 둘 수 없게 됐다.
+#    규칙: 그 스탯을 상한까지 `d = min(현재+value, maxValue) − 현재`만큼 올리고, **구성 속성 전부에 +d**.
+#    ⭐ 근거(등급 B): fut.gg 경로 계산 결과(`player_evolutions` 2026-10-02 · 2532·2493)와 **6대 스탯 105/106 일치**.
+#    ⚠️ 속성 단위로는 근사다 — fut.gg는 d를 속성마다 고르게 나누지 않는다(같은 표본에서 속성 단위 일치 61/110).
+#       6대 스탯이 맞는 것이 이 규칙의 보증 범위다. 표에 없는 face 키는 「모르는 키」로 남겨 G29가 막는다.
+FACE_UPGRADE = {
+    "face_pace": "PAC", "face_shooting": "SHO", "face_passing": "PAS",
+    "face_dribbling": "DRI", "face_defending": "DEF",
+    "gk_face_positioning": "POS",
+}
+
+
+def apply_upgrades(attrs, upgrades, face_rows=None, *, is_gk=False):
     """진화 보상 한 묶음을 29속성 dict에 **제자리 적용**하고 OVR 상승분을 돌려준다.
 
     ⭐ 상한(`maxValue`) 규칙: 이미 상한 이상이면 **그대로 둔다**. 내리지 않는다.
        (표기 +10이 캡에 걸려 실제 +0이 되는 일이 흔하다 — 런북 「추천할 때」 ②)
+    ⭐ 6대 스탯 직접 보상(FACE_UPGRADE)은 `face_rows`(fc_face_stats)가 있어야 적용한다 —
+       없으면 「모르는 키」로 돌려준다(조용히 넘기지 않는다).
     반환: (ovr_delta_fn, unknown) · ovr은 호출측이 현재 OVR을 알아야 캡을 적용할 수 있어 콜백으로 준다.
     """
     unknown, ovr_ups = [], []
@@ -101,6 +119,23 @@ def apply_upgrades(attrs, upgrades):
         key = str(u.get("upgrade") or "")
         if key == "overall":
             ovr_ups.append((u.get("value") or 0, u.get("maxValue")))
+            continue
+        if key in FACE_UPGRADE:
+            abbr = FACE_UPGRADE[key]
+            gk_face = key.startswith("gk_")
+            if face_rows is None or gk_face is not bool(is_gk):
+                unknown.append(key)
+                continue
+            cur = face_of(attrs, face_rows, is_gk=is_gk).get(abbr)
+            if cur is None:
+                continue
+            cap = u.get("maxValue")
+            d = (min(cur + (u.get("value") or 0), cap) if cap is not None else cur + (u.get("value") or 0)) - cur
+            if d <= 0:
+                continue
+            for r in face_rows:
+                if r["abbr"] == abbr and bool(r["is_gk"]) is bool(is_gk) and attrs.get(r["attr"]) is not None:
+                    attrs[r["attr"]] = min(99, attrs[r["attr"]] + d)
             continue
         if not key.startswith("attribute_"):
             # ⛔ 모르는 종류는 **조용히 넘기지 않는다** — 호출부가 멈추거나 사용자에게 물어야 한다.

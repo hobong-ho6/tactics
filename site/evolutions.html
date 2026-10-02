@@ -145,8 +145,8 @@ import { evoRules, logState, inProgress } from './assets/evorules.js?v=20260924a
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
 import { posOvrRaw } from './assets/posovr.js?v=20261002';
-import { setRarityAssets } from './assets/clubviz.js?v=20260929a';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
-import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate } from './assets/clubviz.js?v=20260929a';
+import { setRarityAssets } from './assets/clubviz.js?v=20261002f';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
+import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate } from './assets/clubviz.js?v=20261002f';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -274,10 +274,10 @@ function stepsHTML(p, pid, opts = {}){
         const ev = evalLevel(opts, bs.pres, bs.have, bs.attrOf);
         const k = ev.rec >= 0 ? ev.rec : 0;
         const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
-        applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
+        applyEvoLevel(at, { upgrades: src, upgradeOptions: [] }, EVO.face_stats, isGk);
         gained = src.filter(u => u.upgrade === 'play_style').map(u => PS_NAME[String(u.value)]).filter(Boolean);
       } else {
-        applyEvoLevel(at, lv);
+        applyEvoLevel(at, lv, EVO.face_stats, isGk);
         gained = (lv.upgrades || []).filter(u => u.upgrade === 'play_style').map(u => PS_NAME[String(u.value)]).filter(Boolean);
       }
       n++;
@@ -415,12 +415,12 @@ function projectPath(p, fromAttrs, isGk, pres, have, attrOf, skipRuns, forced){
         const f = forced?.[`${id}:${lv.idx}`];
         const k = (f != null && opts[f]) ? +f : rec;
         const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
-        applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
+        applyEvoLevel(at, { upgrades: src, upgradeOptions: [] }, EVO.face_stats, isGk);
         chose.push({ evo: CATBYID[id]?.name || String(id), id, lv: lv.idx, k, rec,
                      pick: ev.label(k), auto: ev.rec < 0, mine: k !== rec });
         continue;
       }
-      const r = applyEvoLevel(at, lv);
+      const r = applyEvoLevel(at, lv, EVO.face_stats, isGk);
       if (!r.ok) skipped.push(`${CATBYID[id]?.name || id} ${lv.idx}단계(${r.reason})`);
     }
   }
@@ -1591,12 +1591,12 @@ function tryRun(pid, steps){
         const f = step.picks?.[lv.idx];
         const k = (f != null && opts[f]) ? +f : rec;
         const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
-        applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
+        applyEvoLevel(at, { upgrades: src, upgradeOptions: [] }, EVO.face_stats, isGk);
         picks.push({ lv: lv.idx, k, rec, opts });
         cur.ovr = evoOvr(cur.ovr, src);       /* 캡 규칙은 clubviz.js `evoOvr` 하나다 */
         for (const u of src){ if (u.upgrade === 'play_style') cur.ps++; addUp(u); }
       } else {
-        applyEvoLevel(at, lv);
+        applyEvoLevel(at, lv, EVO.face_stats, isGk);
         cur.ovr = evoOvr(cur.ovr, lv.upgrades || []);
         for (const u of (lv.upgrades || [])){
           if (u.upgrade === 'play_style') cur.ps++;
@@ -1976,11 +1976,11 @@ function bindSide(root, team){
         const ev = evalLevel(opts, bs.pres, bs.have, bs.attrOf);
         const k = picks[L.idx] ?? (ev.rec >= 0 ? ev.rec : 0); pick = k;
         const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
-        applyEvoLevel(at, { upgrades: src, upgradeOptions: [] });
+        applyEvoLevel(at, { upgrades: src, upgradeOptions: [] }, EVO.face_stats, isGk);
         ovr = evoOvr(ovr, src);
         label = src.map(upLabel).join(' · ');
       } else {
-        applyEvoLevel(at, L);
+        applyEvoLevel(at, L, EVO.face_stats, isGk);
         ovr = evoOvr(ovr, L.upgrades || []);
       }
       /* ⭐ 여기 six/ovr은 **확인창에 보여 줄 미리보기**일 뿐이다 — 원장에 들어가는 값은 서버가 계산한다. */
