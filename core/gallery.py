@@ -76,17 +76,24 @@ def evaluate(sets, cards):
             continue
         el = [c for c, f in flags if f and item_score(c["ovr"]) is not None]
         el.sort(key=lambda c: -item_score(c["ovr"]))
-        pick = el[:s["required_cards"] or 0]
+        req = s["required_cards"] or 0
+        pick = el[:req]
         score = sum(item_score(c["ovr"]) for c in pick)
-        g = grade_of(score, grades) if pick else None
-        nxt = next((x for x in grades if score < x["threshold"]), None)
+        # ⛔⛔ **필요 장수를 채워야 완성되고, 완성해야 등급을 받는다**(2026-10-02 사용자 지적 「등급은 세트를 완성했을 때만
+        #    받을 수 있는 거 아니야?」 · EA 도움말 「You complete a Set by meeting its Player Item requirements. The Item Score …
+        #    determines its grade.」). 종전엔 칸을 덜 채워도 점수만 넘으면 등급을 줬다 — Squad Foundations 2/4장에 C를 매겼다.
+        #    ⇒ 모자라면 등급 없음(미완성). 점수는 넣을 수 있는 만큼의 합으로 남긴다(얼마나 왔나를 보이려고).
+        g = grade_of(score, grades) if pick and len(el) >= req else None
+        nxt = next((x for x in grades if score < x["threshold"]), None) if g else None
         out.append(dict(set_id=s["set_id"], supported=1, eligible_n=len(el), required_n=s["required_cards"],
                         base_score=score, grade=g, next_grade=nxt["name"] if nxt else None,
                         next_gap=(nxt["threshold"] - score) if nxt else None, card_ids=[c["id"] for c in pick]))
     return out
 
 
-MIN_LIST = "C"     # 목록에 올리는 최소 등급 — D는 카드 한 장이면 된다(임계 10점)
+# 목록에 올리는 최소 등급. ⭐ D부터 올린다(2026-10-02) — 등급은 **세트를 완성해야** 받으므로(필요 장수를 다 채워야)
+#   D도 「카드 한 장」이 아니라 15~30장을 채운 결과다. 종전 C 기준은 「칸을 덜 채워도 등급」이라는 틀린 가정 위에 있었다.
+MIN_LIST = "D"
 
 
 def classify(evals, prev, mine):

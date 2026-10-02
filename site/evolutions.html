@@ -92,7 +92,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <section data-tab="gallery" style="display:none">
   <div class="panel"><h2>갤러리 <small class="dim" id="galn"></small></h2>
     <p class="dim" style="font-size:12px;margin:0 0 8px">
-      내 보유 카드로 세트마다 <b>낼 수 있는 등급</b>을 계산했다 — 클럽 싱크 <code>선수</code> 단계가 끝나면 다시 계산된다
+      내 보유 카드로 세트마다 <b>낼 수 있는 등급</b>을 계산했다 — <b>필요 장수를 다 채워 세트를 완성해야</b> 등급을 받는다(EA 도움말) — 클럽 싱크 <code>선수</code> 단계가 끝나면 다시 계산된다
       (<code>scripts/gallery_eval.py</code>). ⚠️ 점수는 <b>아이템 점수</b>(커뮤니티 정리표 · 등급 D) 합이고 <b>태그 보너스는 뺐다</b>
       — 보너스는 더하기만 하므로 여기 등급은 <b>적어도 이 등급</b>이다. 갤러리는 <b>진화 전 원래 카드</b>로 센다.
       ⛔ fut.gg가 내 진행도를 주지 않아 <b>「내 등급」은 직접 기록</b>한다(인게임 갤러리 화면이 정본).</p>
@@ -3351,6 +3351,8 @@ function galBadge(){
   return n;
 }
 function galPopup(){
+  // 갤러리 탭에서 시작했으면 이미 보고 있는 것이다 — 팝업 대신 본 것으로 친다.
+  if (document.querySelector('.menubar [data-tab].on')?.dataset.tab === 'gallery'){ galAck(); return; }
   const n = galBadge(); if (!n) return;
   const names = galUnseen().map(id => `${GSET[id]?.name} ${GEV[id]?.grade}`).join(' · ');
   const box = document.createElement('div'); box.className = 'galpop';
@@ -3393,18 +3395,17 @@ function renderGallery(){
   };
   const sec = (title, ids, empty) => `<h3 style="margin:10px 0 4px">${title} <small class="dim">${ids.length}</small></h3>${
     ids.length ? ids.map(card).join('') : `<div class="dim" style="font-size:12px">${empty}</div>`}`;
-  /* 다음 등급까지 가까운 세트 — 아직 목록엔 없지만 몇 장만 더하면 닿는 것(진행률 순 · 상위 10). */
-  const listed = new Set([...(GAL.reach || []), ...(GAL.higher || [])]);
-  const near = (GAL.eval || []).filter(e => e.supported && e.eligible_n && e.next_grade && !listed.has(e.set_id))
-    .map(e => ({ e, pct: e.base_score / (e.base_score + e.next_gap) })).sort((a, b) => b.pct - a.pct).slice(0, 10);
+  /* ⭐ **완성까지 가까운 세트**(2026-10-02 사용자 지적 「등급은 세트를 완성했을 때만 받을 수 있다」) —
+     필요 장수를 못 채운 세트를 **모자란 장수가 적은 순**으로(상위 10). 완성 전에는 등급이 없다. */
+  const near = (GAL.eval || []).filter(e => e.supported && e.eligible_n && !e.grade)
+    .map(e => ({ e, need: e.required_n - e.eligible_n })).sort((a, b) => a.need - b.need).slice(0, 10);
   const unsup = (GAL.eval || []).filter(e => !e.supported).map(e => GSET[e.set_id]?.name).filter(Boolean);
-  el.innerHTML = sec('⭐ 달성 가능', GAL.reach || [], `지금 카드로 <b>${esc(GAL.min_list || 'C')} 이상</b>이 나오는 세트가 없다.`)
+  el.innerHTML = sec('⭐ 달성 가능', GAL.reach || [], '지금 카드로 <b>완성</b>되는 세트가 없다(필요 장수를 다 채워야 등급을 받는다).')
     + sec('⬆️ 더 높일 수 있음', GAL.higher || [], '기록한 등급보다 높일 수 있는 세트가 없다(기록한 세트만 여기 나온다).')
-    + `<details style="margin-top:10px"><summary><b>📈 다음 등급까지 가까운 세트</b> <small class="dim">상위 ${near.length}</small></summary>
-        <table class="tbl" style="margin-top:4px"><thead><tr><th>세트</th><th>지금</th><th>점수</th><th>카드</th><th>다음</th><th>남은 점수</th></tr></thead><tbody>
-        ${near.map(({ e }) => `<tr><td>${esc(GSET[e.set_id]?.name || e.set_id)}</td><td>${esc(e.grade || '—')}</td>
-          <td>${(e.base_score || 0).toLocaleString()}</td><td>${e.eligible_n}/${e.required_n}</td><td>${esc(e.next_grade)}</td>
-          <td>${(e.next_gap || 0).toLocaleString()}</td></tr>`).join('')}</tbody></table></details>`
+    + `<details style="margin-top:10px"><summary><b>🧩 완성까지 가까운 세트</b> <small class="dim">상위 ${near.length} — 등급은 필요 장수를 다 채워야 받는다</small></summary>
+        <table class="tbl" style="margin-top:4px"><thead><tr><th>세트</th><th>보유 / 필요</th><th>더 필요</th><th>지금까지 점수</th></tr></thead><tbody>
+        ${near.map(({ e, need }) => `<tr><td>${esc(GSET[e.set_id]?.name || e.set_id)}</td><td>${e.eligible_n}/${e.required_n}</td>
+          <td><b>${need}장</b></td><td>${(e.base_score || 0).toLocaleString()}</td></tr>`).join('')}</tbody></table></details>`
     + (unsup.length ? `<div class="dim" style="font-size:11.5px;margin-top:8px">❔ 대상 규칙을 몰라 판정하지 않은 세트: ${unsup.map(esc).join(' · ')}</div>` : '');
   el.querySelectorAll('[data-galgrade]').forEach(sel => sel.addEventListener('change', async () => {
     const id = +sel.dataset.galgrade, box = document.getElementById(`galm${id}`);
