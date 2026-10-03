@@ -105,7 +105,7 @@ TAG_INFO = {
     "def": ("Defensive Wall", "주 포지션 CB·LB·RB(LWB·RWB 포함)"), "mid": ("Midfield Control", "주 포지션 CDM·CM·CAM·LM·RM"),
     "att": ("All out Attack", "주 포지션 ST·RW·LW(CF 포함)"), "gk": ("Hands Only", "골키퍼"),
     "totw": ("TOTW", "Team of the Week 카드"), "hero": ("Heroic", "히어로 카드"), "icon": ("Iconic", "아이콘 카드"),
-    "skill": ("Skilled", "개인기 5성"), "wf": ("Ambidextrous", "약발 5성"), "multi": ("Multiples", "같은 선수의 카드 2장 이상"),
+    "skill": ("Skilled", "개인기 5성"), "wf": ("Ambidextrous", "약발 5성"), "multi": ("Multiples", "같은 선수의 **다른 버전** 카드 2장 이상(같은 카드 두 장은 한 장만 들어간다)"),
 }
 # 계산에 넣지 못한 태그 — 화면이 「미반영」으로 함께 보여 준다(조용히 빼지 않는다).
 TAG_UNUSED = [{"name": "Holographic", "kr": "홀로그램", "desc": "홀로그램 카드", "tiers": [[2, 8], [4, 12], [6, 20]],
@@ -209,6 +209,16 @@ def _best_pick(el, req):
 
 def evaluate(sets, cards):
     """세트마다 필요 장수로 등급을 매긴다. sets: fc_gallery_sets 행(dict) · cards: 보유 카드(dict)."""
+    # ⛔ **같은 카드(아이템)는 한 장만** 들어간다(2026-10-03 사용자 인게임 실측 「맥긴을 SBC 스토리지에 한 장 더 들고 있지만
+    #    실제 갤러리에는 두 장이 안 들어간다」 · 등급 C). 「같은 선수 중복(Multiples)」은 **다른 버전**의 같은 선수다
+    #    (예: 기본 카드 + 특수 카드 — base_ea_id가 같고 아이템이 다름). ⇒ 아이템당 한 장, 클럽 카드(양수 id)를 남긴다.
+    seen, uniq = set(), []
+    for c in sorted(cards, key=lambda c: c["id"] < 0):
+        k = c.get("ea_item_id") or ("id", c["id"])
+        if k not in seen:
+            seen.add(k)
+            uniq.append(c)
+    cards = uniq
     out = []
     for s in sets:
         grades = sorted(json.loads(s["grades_json"] or "[]"), key=lambda g: g["threshold"])
