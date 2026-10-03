@@ -1204,7 +1204,7 @@ CREATE TABLE fut_gallery_eval(
   prev_grade   TEXT,             -- 직전 회차의 grade
   card_ids     TEXT,             -- 고른 카드 fut_club_players.id JSON
   supported    INTEGER NOT NULL DEFAULT 1,   -- 0이면 대상 규칙 미상(판정하지 않음)
-  source TEXT, confidence TEXT,
+  source TEXT, confidence TEXT, est_score INTEGER, est_grade TEXT, tag_detail TEXT,
   PRIMARY KEY(game_version, set_id, pulled)
 );
 CREATE TABLE fut_gallery_completions(

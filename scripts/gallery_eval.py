@@ -73,7 +73,8 @@ def main():
              AND pulled=(SELECT MAX(pulled) FROM fc_gallery_sets WHERE game_version=?)""", (GAME, GAME))]
     # ⭐ 진화 전 원래 카드로 센다(i.ovr = 아이템 정의) — 같은 아이템을 여러 장 갖고 있으면 각각 센다.
     cards = [dict(r) for r in con.execute(
-        """SELECT c.id, c.name, i.ovr, i.grading_score, i.club_ea_id, i.sibling_club_ea_id, i.league_ea_id, i.rarity_ea_id,
+        """SELECT c.id, c.name, i.ovr, i.grading_score, i.club_ea_id, i.best_pos, i.nation, i.base_ea_id,
+                  i.skill_moves, i.weak_foot, COALESCE(i.is_icon,0) is_icon, i.sibling_club_ea_id, i.league_ea_id, i.rarity_ea_id,
                   i.rarity_name, COALESCE(i.is_hero,0) is_hero, COALESCE(i.is_special,0) is_special
              FROM fut_club_players c JOIN player_card_items i ON i.ea_item_id=c.ea_item_id AND i.game_version=?
             WHERE c.status='owned' AND COALESCE(c.is_loan,0)=0
@@ -82,8 +83,9 @@ def main():
     if miss:
         print(f"⚠️ 클럽 EA id가 없는 보유 카드 {miss}장 — 클럽·리그 세트에서 빠진다(--no-fill이면 채우지 않는다)")
     res = evaluate(sets, cards)
+    # ⭐ 직전 회차와는 **태그 포함 추정 등급**끼리 견준다(2026-10-03 · 없던 회차는 확정 하한으로)
     prev = {r["set_id"]: r["grade"] for r in con.execute(
-        """SELECT set_id, grade FROM fut_gallery_eval WHERE game_version=?
+        """SELECT set_id, COALESCE(est_grade, grade) grade FROM fut_gallery_eval WHERE game_version=?
              AND pulled=(SELECT MAX(pulled) FROM fut_gallery_eval WHERE game_version=? AND pulled<?)""",
         (GAME, GAME, TODAY))}
     mine = gal_mine(con, GAME)
@@ -92,9 +94,9 @@ def main():
     by = {r["set_id"]: r for r in res}
     ra, hi, nw = classify(res, prev, mine)
     reach, higher, new = [by[i] for i in ra], [by[i] for i in hi], [by[i] for i in nw]
-    line = lambda r: (f"   {name[r['set_id']]:<26} {r['grade']} (점수 {r['base_score']:,} · {r['eligible_n']}/{r['required_n']}장"  # noqa: E731
+    line = lambda r: (f"   {name[r['set_id']]:<26} {r['est_grade']}(추정 · 확정 하한 {r['grade']}) (추정 {r['est_score']:,} = 기본 {r['base_score']:,}+태그 · {r['eligible_n']}/{r['required_n']}장"  # noqa: E731
                       + (f" · 다음 {r['next_grade']}까지 {r['next_gap']:,})" if r["next_grade"] else ")"))
-    print(f"\n■ 갤러리 평가 {TODAY} — 세트 {len(sets)} · 보유 카드 {len(cards)}장 (등급은 태그 보너스 제외 하한)")
+    print(f"\n■ 갤러리 평가 {TODAY} — 세트 {len(sets)} · 보유 카드 {len(cards)}장 (태그 포함 추정 · 확정 하한 병기)")
     print(f"⭐ 달성 가능 {len(reach)}" + ("".join("\n" + line(r) for r in reach) if reach else ""))
     print(f"⬆️ 더 높일 수 있음 {len(higher)}" + ("".join(
         "\n" + line(r) + f"  ← 기록 {mine[r['set_id']]}" for r in higher) if higher else ""))
@@ -106,15 +108,16 @@ def main():
         print("\n(--dry-run: 적지 않았다)")
         return
     src = f"scripts/gallery_eval.py ({TODAY}) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py"
-    conf = ("카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · 태그 보너스 제외 하한 · "
+    conf = ("카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정"
+            "(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner·Holographic 미반영 · "
             "진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄")
     con.execute("DELETE FROM fut_gallery_eval WHERE game_version=? AND pulled=?", (GAME, TODAY))
     con.executemany("""INSERT INTO fut_gallery_eval(game_version,set_id,pulled,eligible_n,required_n,base_score,grade,
-                         next_grade,next_gap,prev_grade,card_ids,supported,source,confidence)
-                       VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                         next_grade,next_gap,prev_grade,card_ids,supported,source,confidence,est_score,est_grade,tag_detail)
+                       VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                     [(GAME, r["set_id"], TODAY, r["eligible_n"], r["required_n"], r["base_score"], r["grade"],
                       r["next_grade"], r["next_gap"], prev.get(r["set_id"]), json.dumps(r["card_ids"]),
-                      r["supported"], src, conf) for r in res])
+                      r["supported"], src, conf, r["est_score"], r["est_grade"], r["tag_detail"]) for r in res])
     con.commit()
     print(f"\n적재 {len(res)}행 → fut_gallery_eval ({TODAY})")
 

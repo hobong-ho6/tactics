@@ -8,13 +8,19 @@
    아스톤 빌라 27장 대조에서 아래 커뮤니티 표와 27/27 일치했고, 표에 없는 카드(아이콘·특별·98)까지 값이 있다.
    ⚠️ 아래 표(`item_score`)는 그 값이 **결손일 때만** 대신한다(커뮤니티 정리값 · 등급 D).
    브론즈 20 · 실버 35 · 골드 75=90 … 84=830 · 85=2,100 …. 스트림라인 SBC의 「Score 제출」과 같은 체계다.
-⚠️ **태그 보너스는 넣지 않는다** — 규칙이 자료마다 갈리고(TOTW 4/6/12% ↔ 4/8/15%) fut.gg 조합 점수와 대조해도
-   한 건도 정확히 맞지 않았다(0/64 · 차이는 늘 +10~38%로 태그 쪽). 보너스는 **더하기만** 하므로
-   여기 등급은 「**적어도 이 등급**」(하한)이다. ⛔ First Owner(+150~500%)는 원장에 이전 소유자 수가
-   전부 0으로 와서 가를 수 없다.
+⭐⭐ **태그 보너스를 추정한다**(2026-10-03 사용자 지시 「태그로 인해 점수를 더 얻는 부분을 분석하고 갤러리 시스템에 반영」).
+   분석: fut.gg가 세트마다 풀어 둔 최저가 조합 347개(카드 2,542장)의 총점을 재현하는 규칙을 찾았다.
+   ⑴ 태그 %는 **그 태그에 해당하는 카드의 점수에만** 붙는다(세트 전체가 아니다 — 전체 방식은 오차 중앙값 +8%로 기각).
+   ⑵ 같은 선수 두 장 이상은 「Multiples」 · 클럽 없는 카드(히어로)는 「Different Club」에서 각자 다른 값 · 「Same」은 최대 그룹.
+   ⑶ 표는 공개 21종(timesaver 정리 · 등급 D). 재현 정확도: 오차 중앙값 −1.3%(약간 낮게) · |오차| 90%가 4% 안 ·
+      정확 일치 26/347 — ⇒ **정확한 식이 아니라 추정**이다. 아스톤 빌라 실측 4,524 ↔ 추정 최적 4,413(−2.5%)로 같은 경향.
+   ⇒ 등급은 두 개를 둔다: `grade` = 기본 점수만(**확정 하한**) · `est_grade` = 태그 포함 **추정**.
+   ⛔ First Owner(+150~500%)·Holographic은 넣지 않는다 — 이전 소유자 수가 「본인 포함」인지 미확정이고
+      홀로그램 여부는 원장에 없다. 그래서 실제 점수는 추정보다 **더 높을 수** 있다.
 ⚠️ 갤러리는 **진화 전 원래 카드**로 점수를 매긴다(가이드 공통) ⇒ `player_card_items.ovr`(아이템 정의)를 쓴다.
 ⚠️ 한 카드를 여러 세트에 쓸 수 있다고 본다(세트에 넣어도 카드가 소모되지 않는다 — 가이드 공통 · 등급 D).
 """
+import collections
 import json
 
 GRADES = ["D", "C", "B", "A", "S"]
@@ -72,30 +78,117 @@ def grade_of(score, grades):
     return got
 
 
+# ── 태그 보너스(추정) ─────────────────────────────────────────────────────────────────────
+# (최소 개수, %) 구간표 — 공개 21종 중 원장으로 가를 수 있는 것만(First Owner·Holographic 제외 · 위 머리말).
+TAGS = {"bronze": [(5, 20), (10, 40), (20, 80)], "silver": [(5, 15), (10, 30), (20, 60)], "golden": [(5, 1), (10, 2), (20, 4)],
+        "club": [(5, 1), (10, 2), (20, 4)], "league": [(5, 1), (10, 2), (20, 8)], "nation": [(5, 1), (10, 2), (20, 4)],
+        "diffclub": [(5, 1), (10, 2), (20, 4)], "diffleague": [(5, 1), (10, 2), (20, 4)], "diffnation": [(5, 1), (10, 2), (20, 4)],
+        "def": [(5, 3), (10, 6), (15, 10)], "mid": [(5, 3), (10, 6), (15, 10)], "att": [(5, 3), (10, 6), (15, 10)],
+        "gk": [(3, 3), (6, 6), (10, 15)], "totw": [(3, 4), (6, 8), (10, 15)], "hero": [(2, 8), (4, 12), (6, 20)],
+        "icon": [(2, 10), (4, 15), (6, 25)], "skill": [(3, 3), (5, 6), (10, 12)], "wf": [(3, 3), (5, 6), (10, 12)],
+        "multi": [(2, 10), (3, 15), (4, 20)]}
+TAG_KR = {"bronze": "브론즈", "silver": "실버", "golden": "골드", "club": "같은 클럽", "league": "같은 리그", "nation": "같은 국적",
+          "diffclub": "다른 클럽", "diffleague": "다른 리그", "diffnation": "다른 국적", "def": "수비진", "mid": "중원",
+          "att": "공격진", "gk": "골키퍼", "totw": "TOTW", "hero": "히어로", "icon": "아이콘", "skill": "개인기 5성",
+          "wf": "약발 5성", "multi": "같은 선수 중복"}
+POS_GROUP = {"def": {"CB", "LB", "RB", "LWB", "RWB"}, "mid": {"CDM", "CM", "CAM", "LM", "RM"},
+             "att": {"ST", "RW", "LW", "CF"}, "gk": {"GK"}}
+
+
+def _pct(n, table):
+    p = 0
+    for m, pc in table:
+        if n >= m:
+            p = pc
+    return p
+
+
+def tag_bonus(cards):
+    """카드 묶음 → (기본 점수, 태그 보너스 추정, 내역 {태그: (개수, %, 보너스)})."""
+    sc = lambda L: sum(card_score(c) or 0 for c in L)                            # noqa: E731
+    out, bonus = {}, 0.0
+
+    def add(k, L, n=None):
+        nonlocal bonus
+        n = len(L) if n is None else n
+        p = _pct(n, TAGS[k])
+        if p:
+            v = sc(L) * p / 100
+            bonus += v
+            out[k] = (n, p, round(v, 1))
+    ovr = lambda c: c.get("ovr") or 0                                            # noqa: E731
+    add("bronze", [c for c in cards if ovr(c) <= 64])
+    add("silver", [c for c in cards if 65 <= ovr(c) <= 74])
+    add("golden", [c for c in cards if ovr(c) >= 75])
+    for k, col in (("club", "club_ea_id"), ("league", "league_ea_id"), ("nation", "nation")):
+        cnt = collections.Counter(c.get(col) for c in cards if c.get(col) is not None)
+        if cnt:
+            top = cnt.most_common(1)[0][0]
+            add(k, [c for c in cards if c.get(col) == top])
+        # 「Different」 — 값이 없는 카드(클럽 없는 히어로 등)는 각자 다른 값으로 센다(fut.gg 조합 재현에서 확인)
+        add("diff" + k, cards, len({c.get(col) if c.get(col) is not None else ("none", id(c)) for c in cards}))
+    for k, ps in POS_GROUP.items():
+        add(k, [c for c in cards if (c.get("best_pos") or "") in ps])
+    add("totw", [c for c in cards if "week" in (c.get("rarity_name") or "").lower()])
+    add("hero", [c for c in cards if c.get("is_hero")])
+    add("icon", [c for c in cards if c.get("is_icon")])
+    add("skill", [c for c in cards if (c.get("skill_moves") or 0) >= 5])
+    add("wf", [c for c in cards if (c.get("weak_foot") or 0) >= 5])
+    bc = collections.Counter(c.get("base_ea_id") for c in cards if c.get("base_ea_id"))
+    dup = [c for c in cards if c.get("base_ea_id") and bc[c["base_ea_id"]] >= 2]
+    if dup:
+        add("multi", dup, max(bc.values()))
+    return sc(cards), bonus, out
+
+
+def _best_pick(el, req):
+    """태그 포함 추정 총점이 가장 높은 req장. 점수 순 상위 + **포지션 구성별 상위**를 견준다
+       (태그가 포지션 구성에 붙어서 「점수 높은 순」이 최선이 아닐 수 있다)."""
+    el = sorted(el, key=lambda c: -(card_score(c) or 0))
+    cands = [el[:req]]
+    grp = {k: [c for c in el if (c.get("best_pos") or "") in ps] for k, ps in POS_GROUP.items()}
+    rest = [c for c in el if not any((c.get("best_pos") or "") in ps for ps in POS_GROUP.values())]
+    G = [grp["def"], grp["mid"], grp["att"], grp["gk"]]
+    for d in range(min(req, len(G[0])) + 1):
+        for m in range(min(req - d, len(G[1])) + 1):
+            for a in range(min(req - d - m, len(G[2])) + 1):
+                g = req - d - m - a
+                pick = G[0][:d] + G[1][:m] + G[2][:a] + G[3][:min(g, len(G[3]))]
+                if len(pick) < req:
+                    pick += rest[:req - len(pick)]
+                if len(pick) == req:
+                    cands.append(pick)
+    best = max(cands, key=lambda P: sum(tag_bonus(P)[:2]))
+    return best
+
+
 def evaluate(sets, cards):
-    """세트마다 상위 required장으로 등급을 매긴다. sets: fc_gallery_sets 행(dict) · cards: 보유 카드(dict)."""
+    """세트마다 필요 장수로 등급을 매긴다. sets: fc_gallery_sets 행(dict) · cards: 보유 카드(dict)."""
     out = []
     for s in sets:
         grades = sorted(json.loads(s["grades_json"] or "[]"), key=lambda g: g["threshold"])
         flags = [(c, eligible(c, s)) for c in cards]
         if any(f is None for _, f in flags):
             out.append(dict(set_id=s["set_id"], supported=0, eligible_n=None, required_n=s["required_cards"],
-                            base_score=None, grade=None, next_grade=None, next_gap=None, card_ids=[]))
+                            base_score=None, grade=None, next_grade=None, next_gap=None, card_ids=[],
+                            est_score=None, est_grade=None, tag_detail=None))
             continue
         el = [c for c, f in flags if f and card_score(c) is not None]
-        el.sort(key=lambda c: -card_score(c))
         req = s["required_cards"] or 0
-        pick = el[:req]
-        score = sum(card_score(c) for c in pick)
-        # ⛔⛔ **필요 장수를 채워야 완성되고, 완성해야 등급을 받는다**(2026-10-02 사용자 지적 「등급은 세트를 완성했을 때만
-        #    받을 수 있는 거 아니야?」 · EA 도움말 「You complete a Set by meeting its Player Item requirements. The Item Score …
-        #    determines its grade.」). 종전엔 칸을 덜 채워도 점수만 넘으면 등급을 줬다 — Squad Foundations 2/4장에 C를 매겼다.
-        #    ⇒ 모자라면 등급 없음(미완성). 점수는 넣을 수 있는 만큼의 합으로 남긴다(얼마나 왔나를 보이려고).
-        g = grade_of(score, grades) if pick and len(el) >= req else None
-        nxt = next((x for x in grades if score < x["threshold"]), None) if g else None
+        # ⛔⛔ **필요 장수를 채워야 완성되고, 완성해야 등급을 받는다**(2026-10-02 사용자 지적 · EA 도움말
+        #    「You complete a Set by meeting its Player Item requirements. The Item Score … determines its grade.」).
+        complete = bool(el) and len(el) >= req
+        pick = _best_pick(el, req) if complete else sorted(el, key=lambda c: -(card_score(c) or 0))[:req]
+        base, bonus, detail = tag_bonus(pick)
+        est = round(base + bonus)
+        g = grade_of(base, grades) if complete else None           # 확정 하한(기본 점수만)
+        eg = grade_of(est, grades) if complete else None           # 태그 포함 추정
+        nxt = next((x for x in grades if est < x["threshold"]), None) if complete else None
         out.append(dict(set_id=s["set_id"], supported=1, eligible_n=len(el), required_n=s["required_cards"],
-                        base_score=score, grade=g, next_grade=nxt["name"] if nxt else None,
-                        next_gap=(nxt["threshold"] - score) if nxt else None, card_ids=[c["id"] for c in pick]))
+                        base_score=base, grade=g, next_grade=nxt["name"] if nxt else None,
+                        next_gap=(nxt["threshold"] - est) if nxt else None, card_ids=[c["id"] for c in pick],
+                        est_score=est, est_grade=eg,
+                        tag_detail=json.dumps({TAG_KR[k]: v for k, v in detail.items()}, ensure_ascii=False)))
     return out
 
 
@@ -106,14 +199,15 @@ MIN_LIST = "D"
 
 def classify(evals, prev, mine):
     """평가 행 → (달성 가능, 더 높일 수 있음, NEW). ⛔ 스크립트와 export가 **이 함수 하나**를 쓴다.
-       · 달성 가능 = 기록이 없고 C 이상이 나온다 · 더 높일 수 있음 = 기록보다 높은 등급이 나온다
+       · 달성 가능 = 기록이 없고 (태그 포함 추정으로) MIN_LIST 이상이 나온다 · 더 높일 수 있음 = 기록보다 높은 등급이 나온다
        · NEW = 그중 **직전 회차보다** 등급이 오른 것(첫 회차는 비교 대상이 없어 비운다)."""
     rk = lambda g: RANK.get(g, -1)                                               # noqa: E731
     reach, higher, new = [], [], []
     for r in evals:
         if not r.get("supported", 1):
             continue
-        g, sid = r["grade"], r["set_id"]
+        # ⭐ 목록은 **태그 포함 추정 등급**으로 가른다(2026-10-03) — 확정 하한(grade)은 화면이 함께 보여 준다.
+        g, sid = (r.get("est_grade") or r["grade"]), r["set_id"]
         if rk(g) < RANK[MIN_LIST] or rk(g) <= rk(mine.get(sid)):
             continue
         (higher if sid in mine else reach).append(sid)
