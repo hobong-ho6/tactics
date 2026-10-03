@@ -523,9 +523,12 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .opt.on{border-style:solid;border-color:var(--ok);color:var(--ok);font-weight:700;
   background:rgba(76,217,123,.14);outline:none}
 /* 그 행에서 가장 높은 칸 — 눈으로 빼기를 하지 않게 표시한다(2026-09-26). */
-.cmpbox td.cmpwin{background:rgba(76,217,123,.10);box-shadow:inset 2px 0 0 var(--ok)}
+/* 2026-10-03: 이긴 칸의 색은 **그 열(선수)의 색**이다 — 열마다 --wc를 넘긴다(기본은 종전 초록). */
+.cmpbox td.cmpwin{--wc:var(--ok);background:color-mix(in srgb,var(--wc) 16%,transparent);box-shadow:inset 3px 0 0 var(--wc)}
 /* 진화 단계별 미션(2026-09-26) — 카드 안에서 접어 둔다. */
 .mission{margin-top:4px;font-size:11.5px}
 .mission summary{cursor:pointer;color:var(--dim)}
 .mission ol{margin:4px 0 0;padding-left:18px}
 .mission li{padding:1px 0;line-height:1.45}
+/* ⚖️ 보유 카드 고르기(2026-10-03) */
+.ownpick{max-width:240px;font-size:12px}
