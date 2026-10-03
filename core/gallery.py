@@ -100,12 +100,12 @@ TAG_INFO = {
     "bronze": ("Bronze", "OVR 64 이하"), "silver": ("Silver", "OVR 65~74"), "golden": ("Golden", "OVR 75 이상"),
     "club": ("Same Club", "가장 많은 같은 클럽 카드(여자팀은 다른 클럽)"), "league": ("Same League", "가장 많은 같은 리그 카드"),
     "nation": ("Same Nation", "가장 많은 같은 국적 카드"),
-    "diffclub": ("Different Club", "서로 다른 클럽 수(클럽 없는 카드는 각자 별개 · 여자팀은 다른 클럽)"),
-    "diffleague": ("Different League", "서로 다른 리그 수"), "diffnation": ("Different Nation", "서로 다른 국적 수"),
+    "diffclub": ("Different Club", "서로 다른 클럽 수 — 클럽마다 최고 점수 1장에만 가산(클럽 없는 카드는 각자 별개 · 여자팀은 다른 클럽)"),
+    "diffleague": ("Different League", "서로 다른 리그 수 — 리그마다 최고 점수 1장에만 가산"), "diffnation": ("Different Nation", "서로 다른 국적 수 — 국적마다 최고 점수 1장에만 가산"),
     "def": ("Defensive Wall", "CB·LB·RB — 보조 포지션 포함"), "mid": ("Midfield Control", "CDM·CM·CAM·LM·RM — 보조 포지션 포함"),
     "att": ("All out Attack", "ST·RW·LW — 보조 포지션 포함"), "gk": ("Hands Only", "골키퍼"),
     "totw": ("TOTW", "Team of the Week 카드"), "hero": ("Heroic", "히어로 카드"), "icon": ("Iconic", "아이콘 카드"),
-    "skill": ("Skilled", "개인기 5성"), "wf": ("Ambidextrous", "약발 5성"), "multi": ("Multiples", "같은 선수의 다른 버전 카드 2장 이상(같은 카드 두 장은 한 장만 들어간다)"),
+    "skill": ("Skilled", "개인기 5성"), "wf": ("Ambidextrous", "약발 5성"), "multi": ("Multiples", "같은 선수의 다른 버전 카드 — 가장 큰 묶음 하나에만 가산(같은 카드 두 장은 한 장만 들어간다)"),
 }
 # 계산에 넣지 못한 태그 — 화면이 「미반영」으로 함께 보여 준다(조용히 빼지 않는다).
 TAG_UNUSED = [{"name": "Holographic", "kr": "홀로그램", "desc": "홀로그램 카드", "tiers": [[2, 8], [4, 12], [6, 20]],
@@ -120,10 +120,11 @@ TAG_VERIFIED = {"att", "mid", "def", "gk", "multi", "first", "golden", "league",
 
 def tag_table():
     """화면용 태그 정리표 — [{key, name, kr, desc, tiers:[[개수, %]], applied, grade}]."""
+    # 나머지 8종은 fut.gg 페이지에 내장된 EA 형식 태그 정의(capturedAt 2026-09-27)와 일치 — 데이터마이닝 등급 B(2026-10-03 조사)
     rows = [{"key": k, "name": TAG_INFO[k][0], "kr": TAG_KR[k], "desc": TAG_INFO[k][1],
-             "tiers": [list(t) for t in TAGS[k]], "applied": True, "grade": "A" if k in TAG_VERIFIED else "D"}
+             "tiers": [list(t) for t in TAGS[k]], "applied": True, "grade": "A" if k in TAG_VERIFIED else "B"}
             for k in TAGS]
-    return rows + [dict(u, key=None, applied=False, grade="D") for u in TAG_UNUSED]
+    return rows + [dict(u, key=None, applied=False, grade="B") for u in TAG_UNUSED]
 
 
 # ⭐ 포지션 목록은 인게임 태그 용어집 문구 그대로다(2026-10-03 캡처 · 등급 A) — FC27 카드에 CF·LWB·RWB는 없다(545장 0).
@@ -178,23 +179,34 @@ def tag_bonus(cards):
     add("silver", [c for c in cards if 65 <= ovr(c) <= 74])
     add("golden", [c for c in cards if ovr(c) >= 75])
     for k, key in (("club", _club_key), ("league", lambda c: c.get("league_ea_id")), ("nation", lambda c: c.get("nation"))):
-        cnt = collections.Counter(key(c) for c in cards if key(c) is not None)
-        if cnt:
-            top = cnt.most_common(1)[0][0]
-            add(k, [c for c in cards if key(c) == top])
-        # 「Different」 — 값이 없는 카드(클럽 없는 히어로 등)는 각자 다른 값으로 센다(fut.gg 조합 재현에서 확인)
-        add("diff" + k, cards, len({key(c) if key(c) is not None else ("none", id(c)) for c in cards}))
+        grp = collections.defaultdict(list)
+        for c in cards:          # 값이 없는 카드(클럽 없는 히어로 등)는 각자 다른 값으로 센다(fut.gg 조합 재현에서 확인)
+            grp[key(c) if key(c) is not None else ("none", id(c))].append(c)
+        real = [g for v, g in grp.items() if not (isinstance(v, tuple) and v and v[0] == "none")]
+        if real:
+            # 「Same」 = 가장 큰 무리 하나(동률이면 점수 합이 큰 쪽)
+            add(k, max(real, key=lambda g: (len(g), sc(g))))
+        # ⭐ 「Different」 = 서로 다른 값의 **개수**로 단계를 정하고, 보너스는 **값마다 점수가 가장 높은 카드 1장씩**의 합에 붙는다
+        #    (fut.gg 갤러리 계산기 152건 전부 일치 · 등급 B — 2026-10-03 커뮤니티 조사). 종전엔 전체 카드에 붙여 과대 추정했다.
+        add("diff" + k, [max(g, key=lambda c: card_score(c) or 0) for g in grp.values()])
     for k, ps in POS_GROUP.items():
         add(k, [c for c in cards if _poss(c) & ps])
-    add("totw", [c for c in cards if "week" in (c.get("rarity_name") or "").lower()])
+    # TOTW = rarity 3(fut.gg에 내장된 EA 형식 태그 정의 `RARE 3` · 등급 B). 희귀도 id가 없으면 이름으로
+    add("totw", [c for c in cards if c.get("rarity_ea_id") == 3
+                 or (c.get("rarity_ea_id") is None and "week" in (c.get("rarity_name") or "").lower())])
     add("hero", [c for c in cards if c.get("is_hero")])
     add("icon", [c for c in cards if c.get("is_icon")])
     add("skill", [c for c in cards if (c.get("skill_moves") or 0) >= 5])
     add("wf", [c for c in cards if (c.get("weak_foot") or 0) >= 5])
-    bc = collections.Counter(c.get("base_ea_id") for c in cards if c.get("base_ea_id"))
-    dup = [c for c in cards if c.get("base_ea_id") and bc[c["base_ea_id"]] >= 2]
-    if dup:
-        add("multi", dup, max(bc.values()))
+    # ⭐ 「중복!」 = 같은 선수(BASE_DEF_ID) 중 **가장 큰 묶음 하나**(동률이면 점수 합이 큰 쪽)에만 붙는다
+    #    (fut.gg 내장 EA 형식 정의 + 계산기 16건 재현 · 등급 B — 2026-10-03). 종전엔 중복된 카드 전부에 붙였다.
+    bg = collections.defaultdict(list)
+    for c in cards:
+        if c.get("base_ea_id"):
+            bg[c["base_ea_id"]].append(c)
+    big = max(bg.values(), key=lambda g: (len(g), sc(g)), default=[])
+    if len(big) >= 2:
+        add("multi", big)
     # ⚠️ **가장 큰 태그 10개만** 반영한다(futgenie 「only the ten biggest tags count(가장 큰 태그 10개만 반영)」 · 단일 출처 D —
     #    인게임 프리미어 리그·라리가 화면의 태그 칩도 정확히 10개였다 2026-10-03). 11번째부터 버린다.
     if len(out) > 10:

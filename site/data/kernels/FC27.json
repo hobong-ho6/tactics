@@ -1698,6 +1698,15 @@
    "impact": "core/gallery.py tag_bonus 정본 반영(내림·보조 포지션·(클럽,리그) 키·아이템 중복 제거 · POS_GROUP에서 CF·LWB·RWB 제거) · TAG_VERIFIED 12종 등급 A. 미발견 9종(브론즈·실버·다른 리그·TOTW·히어로·아이콘·개인기·약발·홀로그램)은 공개 표(timesaver) 등급 D 유지. ⚠️ 갤러리 진행 상태(세트에 이미 넣은 아이템)는 fut.gg가 주지 않고, 예전에 가졌던 아이템이 대거 들어가 있어(레알 마드리드 16장 vs 우리 원장 8장) 보유 카드만으로는 인게임 점수를 재현할 수 없다.",
    "recorded": "2026-10-03",
    "source": "PS 리모트 캡처 36장 captures/gallery-2026-10-03 (사용자 · 2026-10-03)"
+  },
+  {
+   "area": "meta",
+   "change": "얼티밋팀 갤러리 태그 세부 규칙(커뮤니티 조사) — 「다른 ○○」는 값마다 최고 점수 1장에만 가산 · 「같은 ○○」는 가장 큰 무리(동률이면 점수 합 큰 쪽) · 「중복!」은 같은 선수 가장 큰 묶음 하나 · 가장 큰 태그 10개만 반영 · TOTW=rarity 3 · 미발견 9종 단계(브론즈 20/40/80 · 실버 15/30/60 · 다른 리그 1/2/4 · TOTW 3/6/10장 4/8/15 · 히어로 2/4/6장 8/12/20 · 아이콘 10/15/25 · 개인기·약발 3/5/10장 3/6/12 · 홀로그램 8/12/20)",
+   "confidence": "B — fut.gg 데이터마이닝 정의 + 계산기 재현(인게임 아님). top-10 규칙은 B−(fut.gg 구현 · 인게임 칩 10개 정황).",
+   "evidence": "fut.gg 세트 페이지 내장 EA 형식 태그 정의(capturedAt 2026-09-27 · 21종 rules·tiers — 인게임 확인 12종과 전부 일치) + fut.gg 계산기 최적 조합 16건(태그별 bonus=floor(pct×matchedScore) 전 건 일치 · top-10 컷 9건 1점 단위 일치 · 우리 tag_bonus로 15/16 재현, 불일치 1 = 히어로 세트 클럽 처리). 다른 매체(timesaver·Red Bull·Prima·futgenie 등)는 fut.gg 복제라 독립 출처 아님. 다국어 검색 현지 수치 0건.",
+   "impact": "core/gallery.py tag_bonus 반영 · 태그 정리표 미발견 9종 D→B. 인게임 스냅숏 재현: 아스톤 빌라·스쿼드 기초 0 · 스타터 +0.6% · 세리에 A −2.1% · 프리미어 리그 +4.0% · 라리가 +10.5%(원장 밖 카드 퍼스트 오너 가정). 미확인: Different League 5–9장 1%/2% · 히어로 클럽(114605) 「같은 클럽」 · 홀로그램(원장에 정보 없음).",
+   "recorded": "2026-10-03",
+   "source": "reports/research/2026-10-03-fc27-gallery-community.md (웹 조사 · fut.gg·EA 피치노트·timesaver·Red Bull·futgenie·neuralboost)"
   }
  ],
  "tactic_params": [],
