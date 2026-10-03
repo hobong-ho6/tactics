@@ -15,8 +15,10 @@
    ⑶ 표는 공개 21종(timesaver 정리 · 등급 D). 재현 정확도: 오차 중앙값 −1.3%(약간 낮게) · |오차| 90%가 4% 안 ·
       정확 일치 26/347 — ⇒ **정확한 식이 아니라 추정**이다. 아스톤 빌라 실측 4,524 ↔ 추정 최적 4,413(−2.5%)로 같은 경향.
    ⇒ 등급은 두 개를 둔다: `grade` = 기본 점수만(**확정 하한**) · `est_grade` = 태그 포함 **추정**.
-   ⛔ First Owner(+150~500%)·Holographic은 넣지 않는다 — 이전 소유자 수가 「본인 포함」인지 미확정이고
-      홀로그램 여부는 원장에 없다. 그래서 실제 점수는 추정보다 **더 높을 수** 있다.
+   ⭐ **First Owner**(+150/300/500%)는 「보유한 사람 수」(GG Club numberOfOwners)가 **0이나 1**인 카드로 본다
+      (2026-10-03 사용자 지적 「보유한 사용자 수가 0이나 1이면 되잖아」). 검증: 아스톤 빌라 First Owner 카드는 4장뿐이라
+      5장 문턱에 못 미쳐 보너스가 없다 — 실측 4,524가 +150% 없이 추정 4,413 근처였던 것과 맞는다.
+   ⛔ Holographic은 원장에 여부가 없어 넣지 않는다.
 ⚠️ 갤러리는 **진화 전 원래 카드**로 점수를 매긴다(가이드 공통) ⇒ `player_card_items.ovr`(아이템 정의)를 쓴다.
 ⚠️ 한 카드를 여러 세트에 쓸 수 있다고 본다(세트에 넣어도 카드가 소모되지 않는다 — 가이드 공통 · 등급 D).
 """
@@ -80,14 +82,14 @@ def grade_of(score, grades):
 
 # ── 태그 보너스(추정) ─────────────────────────────────────────────────────────────────────
 # (최소 개수, %) 구간표 — 공개 21종 중 원장으로 가를 수 있는 것만(First Owner·Holographic 제외 · 위 머리말).
-TAGS = {"bronze": [(5, 20), (10, 40), (20, 80)], "silver": [(5, 15), (10, 30), (20, 60)], "golden": [(5, 1), (10, 2), (20, 4)],
+TAGS = {"first": [(5, 150), (10, 300), (20, 500)], "bronze": [(5, 20), (10, 40), (20, 80)], "silver": [(5, 15), (10, 30), (20, 60)], "golden": [(5, 1), (10, 2), (20, 4)],
         "club": [(5, 1), (10, 2), (20, 4)], "league": [(5, 1), (10, 2), (20, 8)], "nation": [(5, 1), (10, 2), (20, 4)],
         "diffclub": [(5, 1), (10, 2), (20, 4)], "diffleague": [(5, 1), (10, 2), (20, 4)], "diffnation": [(5, 1), (10, 2), (20, 4)],
         "def": [(5, 3), (10, 6), (15, 10)], "mid": [(5, 3), (10, 6), (15, 10)], "att": [(5, 3), (10, 6), (15, 10)],
         "gk": [(3, 3), (6, 6), (10, 15)], "totw": [(3, 4), (6, 8), (10, 15)], "hero": [(2, 8), (4, 12), (6, 20)],
         "icon": [(2, 10), (4, 15), (6, 25)], "skill": [(3, 3), (5, 6), (10, 12)], "wf": [(3, 3), (5, 6), (10, 12)],
         "multi": [(2, 10), (3, 15), (4, 20)]}
-TAG_KR = {"bronze": "브론즈", "silver": "실버", "golden": "골드", "club": "같은 클럽", "league": "같은 리그", "nation": "같은 국적",
+TAG_KR = {"first": "퍼스트 오너", "bronze": "브론즈", "silver": "실버", "golden": "골드", "club": "같은 클럽", "league": "같은 리그", "nation": "같은 국적",
           "diffclub": "다른 클럽", "diffleague": "다른 리그", "diffnation": "다른 국적", "def": "수비진", "mid": "중원",
           "att": "공격진", "gk": "골키퍼", "totw": "TOTW", "hero": "히어로", "icon": "아이콘", "skill": "개인기 5성",
           "wf": "약발 5성", "multi": "같은 선수 중복"}
@@ -101,6 +103,12 @@ def _pct(n, table):
         if n >= m:
             p = pc
     return p
+
+
+def is_first_owner(c):
+    """보유한 사람 수 0·1 = 처음 가진 사람이 나(팩·보상). 값이 없으면 판정하지 않는다(⛔ 지어내지 않는다)."""
+    n = c.get("number_of_owners")
+    return n is not None and n <= 1
 
 
 def tag_bonus(cards):
@@ -117,6 +125,7 @@ def tag_bonus(cards):
             bonus += v
             out[k] = (n, p, round(v, 1))
     ovr = lambda c: c.get("ovr") or 0                                            # noqa: E731
+    add("first", [c for c in cards if is_first_owner(c)])
     add("bronze", [c for c in cards if ovr(c) <= 64])
     add("silver", [c for c in cards if 65 <= ovr(c) <= 74])
     add("golden", [c for c in cards if ovr(c) >= 75])
@@ -158,6 +167,16 @@ def _best_pick(el, req):
                     pick += rest[:req - len(pick)]
                 if len(pick) == req:
                     cands.append(pick)
+    # ⭐ First Owner 문턱(5·10·20장)을 채우는 조합도 후보로 넣는다 — +150% 이상이라 점수 순 선택을 뒤집을 수 있다.
+    fo = [c for c in el if is_first_owner(c)]
+    other = [c for c in el if not is_first_owner(c)]
+    for k in (5, 10, 20):
+        if len(fo) >= k and k <= req:
+            # 문턱 k장은 First Owner로 채우고, 남는 칸은 점수 순(First Owner 포함)으로
+            pick = fo[:k]
+            cands.append(pick + [c for c in el if c not in pick][:req - k])
+    if fo:
+        cands.append((fo + other)[:req])           # First Owner를 최대한 먼저
     best = max(cands, key=lambda P: sum(tag_bonus(P)[:2]))
     return best
 

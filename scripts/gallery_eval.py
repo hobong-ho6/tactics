@@ -73,7 +73,7 @@ def main():
              AND pulled=(SELECT MAX(pulled) FROM fc_gallery_sets WHERE game_version=?)""", (GAME, GAME))]
     # ⭐ 진화 전 원래 카드로 센다(i.ovr = 아이템 정의) — 같은 아이템을 여러 장 갖고 있으면 각각 센다.
     cards = [dict(r) for r in con.execute(
-        """SELECT c.id, c.name, i.ovr, i.grading_score, i.club_ea_id, i.best_pos, i.nation, i.base_ea_id,
+        """SELECT c.id, c.name, c.number_of_owners, i.ovr, i.grading_score, i.club_ea_id, i.best_pos, i.nation, i.base_ea_id,
                   i.skill_moves, i.weak_foot, COALESCE(i.is_icon,0) is_icon, i.sibling_club_ea_id, i.league_ea_id, i.rarity_ea_id,
                   i.rarity_name, COALESCE(i.is_hero,0) is_hero, COALESCE(i.is_special,0) is_special
              FROM fut_club_players c JOIN player_card_items i ON i.ea_item_id=c.ea_item_id AND i.game_version=?
@@ -109,7 +109,7 @@ def main():
         return
     src = f"scripts/gallery_eval.py ({TODAY}) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py"
     conf = ("카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정"
-            "(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner·Holographic 미반영 · "
+            "(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · "
             "진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄")
     con.execute("DELETE FROM fut_gallery_eval WHERE game_version=? AND pulled=?", (GAME, TODAY))
     con.executemany("""INSERT INTO fut_gallery_eval(game_version,set_id,pulled,eligible_n,required_n,base_score,grade,
