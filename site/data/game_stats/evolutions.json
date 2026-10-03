@@ -26670,6 +26670,25 @@
     "roles_plus_plus_after": "[]",
     "six_after": "{\"PAC\": 69, \"SHO\": 38, \"PAS\": 60, \"DRI\": 53, \"DEF\": 78, \"PHY\": 77}",
     "six_before": null
+   },
+   {
+    "applied_at": "2026-10-03",
+    "attrs_delta": null,
+    "club_player_id": 25,
+    "completed_at": null,
+    "evo_id": 2534,
+    "evo_name": "Wing Specialization",
+    "id": 63,
+    "is_void": 0,
+    "level": 1,
+    "notes": "윙 특화(Wing Specialization) 시작 — 사용자 보고 「알리송 2번으로 진화 시작했어」(2026-10-03). 3단계 갈림길은 ②(가속·질주+7 ^86 · 밸런스·볼컨트롤·드리블+5 · PlayStyle Rapid)로 확정 — 3단계 기록 시 --pick 1. 선택 근거: 세 후보(알리송·음바예·완비사카) 중 실제 OVR 상승(RM 산정식 +1.9)이 가장 크고 뻥튀기(+3.1)가 가장 작음 · 83이 되면 79 이하 진화가 막히지만 알리송은 이미 78이라 여유가 1뿐 · 배치는 RM 알리송·LM 맥긴(음바예 벤치)으로 활용(사용자 판단: 음바예는 특별 카드 가능성).",
+    "ovr_after": 83,
+    "ovr_before": 78,
+    "playstyles_after": "[\"First Touch\", \"Pinged Pass\"]",
+    "roles_plus_after": "[35, 23]",
+    "roles_plus_plus_after": "[]",
+    "six_after": "{\"PAC\": 81, \"SHO\": 65, \"PAS\": 76, \"DRI\": 76, \"DEF\": 34, \"PHY\": 64}",
+    "six_before": "{\"PAC\": 80, \"SHO\": 65, \"PAS\": 76, \"DRI\": 75, \"DEF\": 34, \"PHY\": 64}"
    }
   ],
   "players": [
@@ -26987,7 +27006,7 @@
     "current_roles_plus_plus": "[]",
     "current_six": "{\"PAC\": 80, \"SHO\": 65, \"PAS\": 76, \"DRI\": 75, \"DEF\": 34, \"PHY\": 64}",
     "ea_item_id": 82968,
-    "evo_count": 4,
+    "evo_count": 5,
     "height_cm": 184,
     "id": 25,
     "is_hero": 0,
@@ -44092,9 +44111,9 @@
     "chem_points": 0,
     "chem_style_ea": 250,
     "club_player_id": 25,
-    "evo_levels": 4,
-    "evo_names": "Repeat Delivery",
-    "evo_runs": 1,
+    "evo_levels": 5,
+    "evo_names": "Repeat Delivery,Wing Specialization",
+    "evo_runs": 2,
     "height_cm": 184,
     "name": "알리송",
     "name_fut": "Alysson",
@@ -50142,7 +50161,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50161,7 +50180,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50180,7 +50199,7 @@
    {
     "base_score": 140,
     "card_ids": "[234]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 140,
@@ -50199,7 +50218,7 @@
    {
     "base_score": 990,
     "card_ids": "[150, 303]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 2,
     "est_grade": null,
     "est_score": 990,
@@ -50218,7 +50237,7 @@
    {
     "base_score": 440,
     "card_ids": "[241, 353]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 2,
     "est_grade": null,
     "est_score": 440,
@@ -50237,7 +50256,7 @@
    {
     "base_score": 100,
     "card_ids": "[184]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 100,
@@ -50256,7 +50275,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50275,7 +50294,7 @@
    {
     "base_score": 410,
     "card_ids": "[120]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 410,
@@ -50294,7 +50313,7 @@
    {
     "base_score": 35,
     "card_ids": "[21]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 35,
@@ -50313,7 +50332,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50332,7 +50351,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50351,7 +50370,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50370,7 +50389,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50389,7 +50408,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50408,7 +50427,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50427,7 +50446,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50446,7 +50465,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50465,7 +50484,7 @@
    {
     "base_score": 160,
     "card_ids": "[309]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 160,
@@ -50484,7 +50503,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50503,7 +50522,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50522,7 +50541,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50541,7 +50560,7 @@
    {
     "base_score": 215,
     "card_ids": "[315, 145]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 2,
     "est_grade": null,
     "est_score": 215,
@@ -50560,7 +50579,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50579,7 +50598,7 @@
    {
     "base_score": 90,
     "card_ids": "[305]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 90,
@@ -50598,7 +50617,7 @@
    {
     "base_score": 680,
     "card_ids": "[330, 431]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 2,
     "est_grade": null,
     "est_score": 680,
@@ -50617,7 +50636,7 @@
    {
     "base_score": 1203,
     "card_ids": "[282, 327, 278]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 3,
     "est_grade": null,
     "est_score": 1203,
@@ -50636,7 +50655,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50655,7 +50674,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50674,7 +50693,7 @@
    {
     "base_score": 280,
     "card_ids": "[334]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 280,
@@ -50693,7 +50712,7 @@
    {
     "base_score": 513,
     "card_ids": "[365]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 513,
@@ -50712,7 +50731,7 @@
    {
     "base_score": 180,
     "card_ids": "[378]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 180,
@@ -50731,7 +50750,7 @@
    {
     "base_score": 35,
     "card_ids": "[405]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 35,
@@ -50750,7 +50769,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50769,7 +50788,7 @@
    {
     "base_score": 20,
     "card_ids": "[224]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 20,
@@ -50788,7 +50807,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50807,7 +50826,7 @@
    {
     "base_score": 290,
     "card_ids": "[262, 446, 374]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 3,
     "est_grade": null,
     "est_score": 290,
@@ -50826,7 +50845,7 @@
    {
     "base_score": 410,
     "card_ids": "[380]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 410,
@@ -50845,7 +50864,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50864,7 +50883,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50883,7 +50902,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50902,7 +50921,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50921,7 +50940,7 @@
    {
     "base_score": 280,
     "card_ids": "[242]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 280,
@@ -50940,7 +50959,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50959,7 +50978,7 @@
    {
     "base_score": 340,
     "card_ids": "[447]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 340,
@@ -50978,7 +50997,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -50997,7 +51016,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51016,7 +51035,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51035,7 +51054,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51054,7 +51073,7 @@
    {
     "base_score": 2990,
     "card_ids": "[445, 345, 359, 297]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 4,
     "est_grade": null,
     "est_score": 2990,
@@ -51073,7 +51092,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51092,7 +51111,7 @@
    {
     "base_score": 160,
     "card_ids": "[314]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 160,
@@ -51111,10 +51130,10 @@
    {
     "base_score": 1965,
     "card_ids": "[363, 149, 444, 75, 399]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 5,
     "est_grade": null,
-    "est_score": 4932,
+    "est_score": 4912,
     "game_version": "FC27",
     "grade": null,
     "next_gap": null,
@@ -51125,12 +51144,12 @@
     "set_id": 52,
     "source": "scripts/gallery_eval.py (2026-10-03) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
     "supported": 1,
-    "tag_detail": "{\"퍼스트 오너\": [5, 150, 2947.5], \"같은 클럽\": [5, 1, 19.6]}"
+    "tag_detail": "{\"퍼스트 오너\": [5, 150, 2947]}"
    },
    {
     "base_score": 965,
     "card_ids": "[271, 289, 249, 343]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 4,
     "est_grade": null,
     "est_score": 965,
@@ -51149,7 +51168,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51168,7 +51187,7 @@
    {
     "base_score": 35,
     "card_ids": "[218]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 35,
@@ -51187,7 +51206,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51206,7 +51225,7 @@
    {
     "base_score": 175,
     "card_ids": "[291, 186]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 2,
     "est_grade": null,
     "est_score": 175,
@@ -51225,7 +51244,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51244,7 +51263,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51263,7 +51282,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51281,14 +51300,14 @@
    },
    {
     "base_score": 3980,
-    "card_ids": "[1, 82, 4, 79, 8, 9, 84, 10, 132, 11, 12, 14, 48, 49, 50]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "card_ids": "[79, 8, 9, 12, 48, 49, 1, 82, 4, 84, 10, 132, 14, 51, 11]",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 27,
     "est_grade": "D",
-    "est_score": 4413,
+    "est_score": 4528,
     "game_version": "FC27",
     "grade": "D",
-    "next_gap": 4587,
+    "next_gap": 4472,
     "next_grade": "C",
     "prev_grade": "D",
     "pulled": "2026-10-03",
@@ -51296,12 +51315,12 @@
     "set_id": 61,
     "source": "scripts/gallery_eval.py (2026-10-03) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
     "supported": 1,
-    "tag_detail": "{\"골드\": [15, 2, 79.6], \"같은 클럽\": [15, 2, 79.6], \"같은 리그\": [15, 2, 79.6], \"다른 국적\": [15, 2, 79.6], \"수비진\": [7, 3, 43.8], \"중원\": [7, 3, 70.8]}"
+    "tag_detail": "{\"골드\": [15, 2, 79], \"같은 클럽\": [15, 2, 79], \"같은 리그\": [15, 2, 79], \"다른 국적\": [14, 2, 79], \"수비진\": [6, 3, 40], \"중원\": [12, 6, 192]}"
    },
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51320,7 +51339,7 @@
    {
     "base_score": 140,
     "card_ids": "[240]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 140,
@@ -51339,7 +51358,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51358,7 +51377,7 @@
    {
     "base_score": 750,
     "card_ids": "[364, 165]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 2,
     "est_grade": null,
     "est_score": 750,
@@ -51377,7 +51396,7 @@
    {
     "base_score": 120,
     "card_ids": "[290]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 120,
@@ -51396,7 +51415,7 @@
    {
     "base_score": 160,
     "card_ids": "[288]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 160,
@@ -51415,7 +51434,7 @@
    {
     "base_score": 11175,
     "card_ids": "[341, 319, 407]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 3,
     "est_grade": null,
     "est_score": 11175,
@@ -51434,7 +51453,7 @@
    {
     "base_score": 35,
     "card_ids": "[398]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 35,
@@ -51453,7 +51472,7 @@
    {
     "base_score": 500,
     "card_ids": "[115, 316]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 2,
     "est_grade": null,
     "est_score": 500,
@@ -51472,7 +51491,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51491,7 +51510,7 @@
    {
     "base_score": 35,
     "card_ids": "[251]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 35,
@@ -51510,7 +51529,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51529,7 +51548,7 @@
    {
     "base_score": 793,
     "card_ids": "[366, 379]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 2,
     "est_grade": null,
     "est_score": 793,
@@ -51548,7 +51567,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51567,7 +51586,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51586,7 +51605,7 @@
    {
     "base_score": 120,
     "card_ids": "[163]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 120,
@@ -51605,7 +51624,7 @@
    {
     "base_score": 35,
     "card_ids": "[411]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 35,
@@ -51624,7 +51643,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51643,7 +51662,7 @@
    {
     "base_score": 220,
     "card_ids": "[318, 254]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 2,
     "est_grade": null,
     "est_score": 220,
@@ -51662,7 +51681,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51681,7 +51700,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51700,7 +51719,7 @@
    {
     "base_score": 160,
     "card_ids": "[172]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 160,
@@ -51719,7 +51738,7 @@
    {
     "base_score": 35,
     "card_ids": "[147]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 35,
@@ -51738,7 +51757,7 @@
    {
     "base_score": 280,
     "card_ids": "[180]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 280,
@@ -51757,7 +51776,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51776,7 +51795,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51795,7 +51814,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51814,7 +51833,7 @@
    {
     "base_score": 180,
     "card_ids": "[312]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 180,
@@ -51833,7 +51852,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51852,7 +51871,7 @@
    {
     "base_score": 280,
     "card_ids": "[360]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 280,
@@ -51871,7 +51890,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51890,7 +51909,7 @@
    {
     "base_score": 100,
     "card_ids": "[205]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 100,
@@ -51909,7 +51928,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51928,7 +51947,7 @@
    {
     "base_score": 340,
     "card_ids": "[204, 317]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 2,
     "est_grade": null,
     "est_score": 340,
@@ -51947,7 +51966,7 @@
    {
     "base_score": 280,
     "card_ids": "[195]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 280,
@@ -51966,7 +51985,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -51985,7 +52004,7 @@
    {
     "base_score": 120,
     "card_ids": "[299]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 120,
@@ -52004,7 +52023,7 @@
    {
     "base_score": 800,
     "card_ids": "[327, 324, 362]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 3,
     "est_grade": null,
     "est_score": 832,
@@ -52018,15 +52037,15 @@
     "set_id": 99,
     "source": "scripts/gallery_eval.py (2026-10-03) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
     "supported": 1,
-    "tag_detail": "{\"TOTW\": [3, 4, 32.0]}"
+    "tag_detail": "{\"TOTW\": [3, 4, 32]}"
    },
    {
     "base_score": 3520,
     "card_ids": "[445, 345, 330, 431, 297, 335, 21, 390]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 8,
     "est_grade": null,
-    "est_score": 8852,
+    "est_score": 8935,
     "game_version": "FC27",
     "grade": null,
     "next_gap": null,
@@ -52037,12 +52056,12 @@
     "set_id": 100,
     "source": "scripts/gallery_eval.py (2026-10-03) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
     "supported": 1,
-    "tag_detail": "{\"퍼스트 오너\": [7, 150, 5227.5], \"골드\": [6, 1, 34.5], \"같은 리그\": [8, 1, 35.2], \"다른 국적\": [6, 1, 35.2]}"
+    "tag_detail": "{\"퍼스트 오너\": [7, 150, 5227], \"골드\": [6, 1, 34], \"같은 리그\": [8, 1, 35], \"다른 국적\": [6, 1, 35], \"중원\": [5, 3, 84]}"
    },
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -52061,7 +52080,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -52080,10 +52099,10 @@
    {
     "base_score": 2680,
     "card_ids": "[115, 237, 285, 329, 334, 248, 172, 316, 354, 194, 240, 205]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 12,
     "est_grade": null,
-    "est_score": 10918,
+    "est_score": 10968,
     "game_version": "FC27",
     "grade": null,
     "next_gap": null,
@@ -52094,12 +52113,12 @@
     "set_id": 103,
     "source": "scripts/gallery_eval.py (2026-10-03) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
     "supported": 1,
-    "tag_detail": "{\"퍼스트 오너\": [12, 300, 8040.0], \"골드\": [12, 2, 53.6], \"다른 클럽\": [9, 1, 26.8], \"같은 리그\": [12, 2, 53.6], \"다른 국적\": [8, 1, 26.8], \"중원\": [6, 3, 37.2]}"
+    "tag_detail": "{\"퍼스트 오너\": [12, 300, 8040], \"골드\": [12, 2, 53], \"다른 클럽\": [9, 1, 26], \"같은 리그\": [12, 2, 53], \"다른 국적\": [8, 1, 26], \"중원\": [9, 3, 57], \"공격진\": [5, 3, 33]}"
    },
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -52118,7 +52137,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -52137,7 +52156,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -52156,7 +52175,7 @@
    {
     "base_score": 680,
     "card_ids": "[237, 285]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 2,
     "est_grade": null,
     "est_score": 680,
@@ -52175,13 +52194,13 @@
    {
     "base_score": 7791,
     "card_ids": "[1, 282, 365, 82, 120, 327, 4, 79, 278, 359, 447, 8, 9, 84, 180, 10, 132, 315, 11, 12, 14, 48, 49, 50, 51, 16, 18, 184, 143, 25]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 36,
     "est_grade": "D",
-    "est_score": 22367,
+    "est_score": 22796,
     "game_version": "FC27",
     "grade": "D",
-    "next_gap": 377633,
+    "next_gap": 377204,
     "next_grade": "C",
     "prev_grade": "D",
     "pulled": "2026-10-03",
@@ -52189,15 +52208,15 @@
     "set_id": 108,
     "source": "scripts/gallery_eval.py (2026-10-03) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
     "supported": 1,
-    "tag_detail": "{\"퍼스트 오너\": [13, 300, 12828.0], \"골드\": [29, 4, 310.2], \"같은 클럽\": [20, 4, 177.0], \"다른 클럽\": [9, 1, 77.9], \"같은 리그\": [30, 8, 623.3], \"다른 국적\": [18, 2, 155.8], \"수비진\": [10, 6, 148.4], \"중원\": [11, 6, 192.3], \"공격진\": [6, 3, 47.2], \"골키퍼\": [3, 3, 16.2]}"
+    "tag_detail": "{\"퍼스트 오너\": [13, 300, 12828], \"골드\": [29, 4, 310], \"같은 클럽\": [20, 4, 177], \"다른 클럽\": [9, 1, 77], \"같은 리그\": [30, 8, 623], \"다른 국적\": [18, 2, 155], \"수비진\": [10, 6, 148], \"중원\": [19, 10, 512], \"공격진\": [11, 6, 159], \"골키퍼\": [3, 3, 16]}"
    },
    {
     "base_score": 2800,
     "card_ids": "[271, 289, 195, 241, 242, 360, 249, 353, 319, 318, 254, 305, 343, 398, 405, 407]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 16,
     "est_grade": null,
-    "est_score": 11053,
+    "est_score": 11149,
     "game_version": "FC27",
     "grade": null,
     "next_gap": null,
@@ -52208,12 +52227,12 @@
     "set_id": 109,
     "source": "scripts/gallery_eval.py (2026-10-03) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
     "supported": 1,
-    "tag_detail": "{\"퍼스트 오너\": [14, 300, 7935.0], \"골드\": [12, 2, 53.2], \"다른 클럽\": [10, 2, 56.0], \"같은 리그\": [16, 2, 56.0], \"같은 국적\": [7, 1, 13.6], \"다른 국적\": [10, 2, 56.0], \"중원\": [5, 3, 24.8], \"공격진\": [6, 3, 34.4], \"골키퍼\": [4, 3, 23.9]}"
+    "tag_detail": "{\"퍼스트 오너\": [14, 300, 7935], \"골드\": [12, 2, 53], \"다른 클럽\": [10, 2, 56], \"같은 리그\": [16, 2, 56], \"같은 국적\": [7, 1, 13], \"다른 국적\": [10, 2, 56], \"중원\": [11, 6, 118], \"공격진\": [9, 3, 39], \"골키퍼\": [4, 3, 23]}"
    },
    {
     "base_score": 480,
     "card_ids": "[329, 194]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 2,
     "est_grade": null,
     "est_score": 480,
@@ -52232,10 +52251,10 @@
    {
     "base_score": 860,
     "card_ids": "[314, 317, 234, 290, 299, 446, 251, 411]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 8,
     "est_grade": null,
-    "est_score": 2184,
+    "est_score": 2195,
     "game_version": "FC27",
     "grade": null,
     "next_gap": null,
@@ -52246,12 +52265,12 @@
     "set_id": 111,
     "source": "scripts/gallery_eval.py (2026-10-03) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
     "supported": 1,
-    "tag_detail": "{\"퍼스트 오너\": [8, 150, 1290.0], \"골드\": [6, 1, 7.9], \"다른 클럽\": [8, 1, 8.6], \"같은 리그\": [8, 1, 8.6], \"다른 국적\": [6, 1, 8.6]}"
+    "tag_detail": "{\"퍼스트 오너\": [8, 150, 1290], \"골드\": [6, 1, 7], \"다른 클럽\": [8, 1, 8], \"같은 리그\": [8, 1, 8], \"다른 국적\": [6, 1, 8], \"중원\": [5, 3, 14]}"
    },
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -52270,7 +52289,7 @@
    {
     "base_score": null,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": null,
     "est_grade": null,
     "est_score": null,
@@ -52289,7 +52308,7 @@
    {
     "base_score": 680,
     "card_ids": "[79, 278]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 2,
     "est_grade": null,
     "est_score": 680,
@@ -52308,10 +52327,10 @@
    {
     "base_score": 695,
     "card_ids": "[204, 262, 309, 163, 218, 374]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 6,
     "est_grade": null,
-    "est_score": 1751,
+    "est_score": 1749,
     "game_version": "FC27",
     "grade": null,
     "next_gap": null,
@@ -52322,15 +52341,15 @@
     "set_id": 115,
     "source": "scripts/gallery_eval.py (2026-10-03) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
     "supported": 1,
-    "tag_detail": "{\"퍼스트 오너\": [6, 150, 1042.5], \"다른 클럽\": [5, 1, 7.0], \"같은 리그\": [6, 1, 7.0]}"
+    "tag_detail": "{\"퍼스트 오너\": [6, 150, 1042], \"다른 클럽\": [5, 1, 6], \"같은 리그\": [6, 1, 6]}"
    },
    {
     "base_score": 15170,
     "card_ids": "[445, 150, 363, 120, 341]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 196,
     "est_grade": "S",
-    "est_score": 38532,
+    "est_score": 38529,
     "game_version": "FC27",
     "grade": "S",
     "next_gap": null,
@@ -52341,12 +52360,12 @@
     "set_id": 116,
     "source": "scripts/gallery_eval.py (2026-10-03) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
     "supported": 1,
-    "tag_detail": "{\"퍼스트 오너\": [5, 150, 22755.0], \"골드\": [5, 1, 151.7], \"다른 클럽\": [5, 1, 151.7], \"다른 리그\": [5, 1, 151.7], \"다른 국적\": [5, 1, 151.7]}"
+    "tag_detail": "{\"퍼스트 오너\": [5, 150, 22755], \"골드\": [5, 1, 151], \"다른 클럽\": [5, 1, 151], \"다른 리그\": [5, 1, 151], \"다른 국적\": [5, 1, 151]}"
    },
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -52365,7 +52384,7 @@
    {
     "base_score": 180,
     "card_ids": "[248]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 180,
@@ -52384,7 +52403,7 @@
    {
     "base_score": 160,
     "card_ids": "[354]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 1,
     "est_grade": null,
     "est_score": 160,
@@ -52403,7 +52422,7 @@
    {
     "base_score": 1685,
     "card_ids": "[363, 149, 364, 399]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 4,
     "est_grade": null,
     "est_score": 1685,
@@ -52422,7 +52441,7 @@
    {
     "base_score": 12008,
     "card_ids": "[341, 366, 379, 312, 147]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 5,
     "est_grade": null,
     "est_score": 30140,
@@ -52436,15 +52455,15 @@
     "set_id": 121,
     "source": "scripts/gallery_eval.py (2026-10-03) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
     "supported": 1,
-    "tag_detail": "{\"퍼스트 오너\": [5, 150, 18012.0], \"같은 리그\": [5, 1, 120.1]}"
+    "tag_detail": "{\"퍼스트 오너\": [5, 150, 18012], \"같은 리그\": [5, 1, 120]}"
    },
    {
     "base_score": 2965,
     "card_ids": "[150, 380, 444, 165, 75, 378, 288, 303, 291, 186, 224]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 11,
     "est_grade": null,
-    "est_score": 12083,
+    "est_score": 12080,
     "game_version": "FC27",
     "grade": null,
     "next_gap": null,
@@ -52455,12 +52474,12 @@
     "set_id": 122,
     "source": "scripts/gallery_eval.py (2026-10-03) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py",
     "supported": 1,
-    "tag_detail": "{\"퍼스트 오너\": [11, 300, 8895.0], \"골드\": [9, 1, 29.1], \"다른 클럽\": [8, 1, 29.6], \"같은 리그\": [11, 2, 59.3], \"같은 국적\": [7, 1, 22.7], \"다른 국적\": [5, 1, 29.6], \"수비진\": [5, 3, 52.6]}"
+    "tag_detail": "{\"퍼스트 오너\": [11, 300, 8895], \"골드\": [9, 1, 29], \"다른 클럽\": [8, 1, 29], \"같은 리그\": [11, 2, 59], \"같은 국적\": [7, 1, 22], \"다른 국적\": [5, 1, 29], \"수비진\": [5, 3, 52]}"
    },
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -52479,7 +52498,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -52498,7 +52517,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -52517,7 +52536,7 @@
    {
     "base_score": 0,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": 0,
     "est_grade": null,
     "est_score": 0,
@@ -52536,7 +52555,7 @@
    {
     "base_score": null,
     "card_ids": "[]",
-    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
+    "confidence": "카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · 진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄",
     "eligible_n": null,
     "est_grade": null,
     "est_score": null,
@@ -53713,6 +53732,7 @@
    {
     "applied": true,
     "desc": "보유한 사람 수 0·1(팩·보상으로 처음 받은 카드)",
+    "grade": "A",
     "key": "first",
     "kr": "퍼스트 오너",
     "name": "First Owner",
@@ -53734,6 +53754,7 @@
    {
     "applied": true,
     "desc": "OVR 64 이하",
+    "grade": "D",
     "key": "bronze",
     "kr": "브론즈",
     "name": "Bronze",
@@ -53755,6 +53776,7 @@
    {
     "applied": true,
     "desc": "OVR 65~74",
+    "grade": "D",
     "key": "silver",
     "kr": "실버",
     "name": "Silver",
@@ -53776,6 +53798,7 @@
    {
     "applied": true,
     "desc": "OVR 75 이상",
+    "grade": "A",
     "key": "golden",
     "kr": "골드",
     "name": "Golden",
@@ -53796,7 +53819,8 @@
    },
    {
     "applied": true,
-    "desc": "가장 많은 같은 클럽 카드",
+    "desc": "가장 많은 같은 클럽 카드(여자팀은 다른 클럽)",
+    "grade": "A",
     "key": "club",
     "kr": "같은 클럽",
     "name": "Same Club",
@@ -53818,6 +53842,7 @@
    {
     "applied": true,
     "desc": "가장 많은 같은 리그 카드",
+    "grade": "A",
     "key": "league",
     "kr": "같은 리그",
     "name": "Same League",
@@ -53839,6 +53864,7 @@
    {
     "applied": true,
     "desc": "가장 많은 같은 국적 카드",
+    "grade": "A",
     "key": "nation",
     "kr": "같은 국적",
     "name": "Same Nation",
@@ -53859,7 +53885,8 @@
    },
    {
     "applied": true,
-    "desc": "서로 다른 클럽 수(클럽 없는 카드는 각자 별개)",
+    "desc": "서로 다른 클럽 수(클럽 없는 카드는 각자 별개 · 여자팀은 다른 클럽)",
+    "grade": "A",
     "key": "diffclub",
     "kr": "다른 클럽",
     "name": "Different Club",
@@ -53881,6 +53908,7 @@
    {
     "applied": true,
     "desc": "서로 다른 리그 수",
+    "grade": "D",
     "key": "diffleague",
     "kr": "다른 리그",
     "name": "Different League",
@@ -53902,6 +53930,7 @@
    {
     "applied": true,
     "desc": "서로 다른 국적 수",
+    "grade": "A",
     "key": "diffnation",
     "kr": "다른 국적",
     "name": "Different Nation",
@@ -53922,7 +53951,8 @@
    },
    {
     "applied": true,
-    "desc": "주 포지션 CB·LB·RB(LWB·RWB 포함)",
+    "desc": "CB·LB·RB — 보조 포지션 포함",
+    "grade": "A",
     "key": "def",
     "kr": "수비진",
     "name": "Defensive Wall",
@@ -53943,7 +53973,8 @@
    },
    {
     "applied": true,
-    "desc": "주 포지션 CDM·CM·CAM·LM·RM",
+    "desc": "CDM·CM·CAM·LM·RM — 보조 포지션 포함",
+    "grade": "A",
     "key": "mid",
     "kr": "중원",
     "name": "Midfield Control",
@@ -53964,7 +53995,8 @@
    },
    {
     "applied": true,
-    "desc": "주 포지션 ST·RW·LW(CF 포함)",
+    "desc": "ST·RW·LW — 보조 포지션 포함",
+    "grade": "A",
     "key": "att",
     "kr": "공격진",
     "name": "All out Attack",
@@ -53986,6 +54018,7 @@
    {
     "applied": true,
     "desc": "골키퍼",
+    "grade": "A",
     "key": "gk",
     "kr": "골키퍼",
     "name": "Hands Only",
@@ -54007,6 +54040,7 @@
    {
     "applied": true,
     "desc": "Team of the Week 카드",
+    "grade": "D",
     "key": "totw",
     "kr": "TOTW",
     "name": "TOTW",
@@ -54028,6 +54062,7 @@
    {
     "applied": true,
     "desc": "히어로 카드",
+    "grade": "D",
     "key": "hero",
     "kr": "히어로",
     "name": "Heroic",
@@ -54049,6 +54084,7 @@
    {
     "applied": true,
     "desc": "아이콘 카드",
+    "grade": "D",
     "key": "icon",
     "kr": "아이콘",
     "name": "Iconic",
@@ -54070,6 +54106,7 @@
    {
     "applied": true,
     "desc": "개인기 5성",
+    "grade": "D",
     "key": "skill",
     "kr": "개인기 5성",
     "name": "Skilled",
@@ -54091,6 +54128,7 @@
    {
     "applied": true,
     "desc": "약발 5성",
+    "grade": "D",
     "key": "wf",
     "kr": "약발 5성",
     "name": "Ambidextrous",
@@ -54111,7 +54149,8 @@
    },
    {
     "applied": true,
-    "desc": "같은 선수의 **다른 버전** 카드 2장 이상(같은 카드 두 장은 한 장만 들어간다)",
+    "desc": "같은 선수의 다른 버전 카드 2장 이상(같은 카드 두 장은 한 장만 들어간다)",
+    "grade": "A",
     "key": "multi",
     "kr": "같은 선수 중복",
     "name": "Multiples",
@@ -54133,6 +54172,7 @@
    {
     "applied": false,
     "desc": "홀로그램 카드",
+    "grade": "D",
     "key": null,
     "kr": "홀로그램",
     "name": "Holographic",

@@ -98,29 +98,37 @@ TAG_KR = {"first": "퍼스트 오너", "bronze": "브론즈", "silver": "실버"
 TAG_INFO = {
     "first": ("First Owner", "보유한 사람 수 0·1(팩·보상으로 처음 받은 카드)"),
     "bronze": ("Bronze", "OVR 64 이하"), "silver": ("Silver", "OVR 65~74"), "golden": ("Golden", "OVR 75 이상"),
-    "club": ("Same Club", "가장 많은 같은 클럽 카드"), "league": ("Same League", "가장 많은 같은 리그 카드"),
+    "club": ("Same Club", "가장 많은 같은 클럽 카드(여자팀은 다른 클럽)"), "league": ("Same League", "가장 많은 같은 리그 카드"),
     "nation": ("Same Nation", "가장 많은 같은 국적 카드"),
-    "diffclub": ("Different Club", "서로 다른 클럽 수(클럽 없는 카드는 각자 별개)"),
+    "diffclub": ("Different Club", "서로 다른 클럽 수(클럽 없는 카드는 각자 별개 · 여자팀은 다른 클럽)"),
     "diffleague": ("Different League", "서로 다른 리그 수"), "diffnation": ("Different Nation", "서로 다른 국적 수"),
-    "def": ("Defensive Wall", "주 포지션 CB·LB·RB(LWB·RWB 포함)"), "mid": ("Midfield Control", "주 포지션 CDM·CM·CAM·LM·RM"),
-    "att": ("All out Attack", "주 포지션 ST·RW·LW(CF 포함)"), "gk": ("Hands Only", "골키퍼"),
+    "def": ("Defensive Wall", "CB·LB·RB — 보조 포지션 포함"), "mid": ("Midfield Control", "CDM·CM·CAM·LM·RM — 보조 포지션 포함"),
+    "att": ("All out Attack", "ST·RW·LW — 보조 포지션 포함"), "gk": ("Hands Only", "골키퍼"),
     "totw": ("TOTW", "Team of the Week 카드"), "hero": ("Heroic", "히어로 카드"), "icon": ("Iconic", "아이콘 카드"),
-    "skill": ("Skilled", "개인기 5성"), "wf": ("Ambidextrous", "약발 5성"), "multi": ("Multiples", "같은 선수의 **다른 버전** 카드 2장 이상(같은 카드 두 장은 한 장만 들어간다)"),
+    "skill": ("Skilled", "개인기 5성"), "wf": ("Ambidextrous", "약발 5성"), "multi": ("Multiples", "같은 선수의 다른 버전 카드 2장 이상(같은 카드 두 장은 한 장만 들어간다)"),
 }
 # 계산에 넣지 못한 태그 — 화면이 「미반영」으로 함께 보여 준다(조용히 빼지 않는다).
 TAG_UNUSED = [{"name": "Holographic", "kr": "홀로그램", "desc": "홀로그램 카드", "tiers": [[2, 8], [4, 12], [6, 20]],
                "why": "원장에 홀로그램 여부가 없다"}]
 
 
+# ⭐ 인게임 「태그 용어집」에서 단계까지 확인한 태그(2026-10-03 PS 리모트 캡처 · captures/gallery-2026-10-03 · 등급 A).
+#    용어집은 21칸이고 나머지 9칸은 「미발견」(해당 태그를 아직 받은 적 없음)이라 문구가 안 보인다 → 공개 표(등급 D).
+#    확인한 12종은 공개 표와 단계·%가 전부 같았다.
+TAG_VERIFIED = {"att", "mid", "def", "gk", "multi", "first", "golden", "league", "club", "diffclub", "diffnation", "nation"}
+
+
 def tag_table():
-    """화면용 태그 정리표 — [{key, name, kr, desc, tiers:[[개수, %]], applied}]."""
+    """화면용 태그 정리표 — [{key, name, kr, desc, tiers:[[개수, %]], applied, grade}]."""
     rows = [{"key": k, "name": TAG_INFO[k][0], "kr": TAG_KR[k], "desc": TAG_INFO[k][1],
-             "tiers": [list(t) for t in TAGS[k]], "applied": True} for k in TAGS]
-    return rows + [dict(u, key=None, applied=False) for u in TAG_UNUSED]
+             "tiers": [list(t) for t in TAGS[k]], "applied": True, "grade": "A" if k in TAG_VERIFIED else "D"}
+            for k in TAGS]
+    return rows + [dict(u, key=None, applied=False, grade="D") for u in TAG_UNUSED]
 
 
-POS_GROUP = {"def": {"CB", "LB", "RB", "LWB", "RWB"}, "mid": {"CDM", "CM", "CAM", "LM", "RM"},
-             "att": {"ST", "RW", "LW", "CF"}, "gk": {"GK"}}
+# ⭐ 포지션 목록은 인게임 태그 용어집 문구 그대로다(2026-10-03 캡처 · 등급 A) — FC27 카드에 CF·LWB·RWB는 없다(545장 0).
+POS_GROUP = {"def": {"CB", "LB", "RB"}, "mid": {"CDM", "CM", "CAM", "LM", "RM"},
+             "att": {"ST", "RW", "LW"}, "gk": {"GK"}}
 
 
 def _pct(n, table):
@@ -137,33 +145,47 @@ def is_first_owner(c):
     return n is not None and n <= 1
 
 
+def _poss(c):
+    """카드의 **모든** 포지션(주+보조). ⭐ 포지션 태그는 보조 포지션까지 센다(2026-10-03 인게임 실측 · 등급 C —
+       아스톤 빌라에서 Cash RB/RM·Maatsen LB/LM이 수비벽과 미드필드 컨트롤 양쪽에 하이라이트됐다)."""
+    return set((c.get("positions") or c.get("best_pos") or "").split("/")) - {""}
+
+
+def _club_key(c):
+    """같은/다른 클럽 판정 키 = (클럽, 리그). ⛔ fut.gg는 여자팀에 남자팀 클럽 id를 준다(빌라 여자팀도 2)
+       — 인게임은 여자팀을 **다른 클럽**으로 본다(Kielland가 같은 클럽 태그에서 빠짐 · 2026-10-03 실측 · 등급 C)."""
+    return None if c.get("club_ea_id") is None else (c["club_ea_id"], c.get("league_ea_id"))
+
+
 def tag_bonus(cards):
     """카드 묶음 → (기본 점수, 태그 보너스 추정, 내역 {태그: (개수, %, 보너스)})."""
     sc = lambda L: sum(card_score(c) or 0 for c in L)                            # noqa: E731
     out, bonus = {}, 0.0
 
+    # ⭐⭐ 태그마다 **해당 카드 점수 합 × % 를 내림**한다(2026-10-03 인게임 실측 · 등급 C —
+    #    아스톤 빌라 보너스 544 = 192+40+79+79+77+77, 스타터 세트 4,113 = 4,035+26×3 둘 다 1점 단위 일치).
     def add(k, L, n=None):
         nonlocal bonus
         n = len(L) if n is None else n
         p = _pct(n, TAGS[k])
         if p:
-            v = sc(L) * p / 100
+            v = sc(L) * p // 100
             bonus += v
-            out[k] = (n, p, round(v, 1))
+            out[k] = (n, p, v)
     ovr = lambda c: c.get("ovr") or 0                                            # noqa: E731
     add("first", [c for c in cards if is_first_owner(c)])
     add("bronze", [c for c in cards if ovr(c) <= 64])
     add("silver", [c for c in cards if 65 <= ovr(c) <= 74])
     add("golden", [c for c in cards if ovr(c) >= 75])
-    for k, col in (("club", "club_ea_id"), ("league", "league_ea_id"), ("nation", "nation")):
-        cnt = collections.Counter(c.get(col) for c in cards if c.get(col) is not None)
+    for k, key in (("club", _club_key), ("league", lambda c: c.get("league_ea_id")), ("nation", lambda c: c.get("nation"))):
+        cnt = collections.Counter(key(c) for c in cards if key(c) is not None)
         if cnt:
             top = cnt.most_common(1)[0][0]
-            add(k, [c for c in cards if c.get(col) == top])
+            add(k, [c for c in cards if key(c) == top])
         # 「Different」 — 값이 없는 카드(클럽 없는 히어로 등)는 각자 다른 값으로 센다(fut.gg 조합 재현에서 확인)
-        add("diff" + k, cards, len({c.get(col) if c.get(col) is not None else ("none", id(c)) for c in cards}))
+        add("diff" + k, cards, len({key(c) if key(c) is not None else ("none", id(c)) for c in cards}))
     for k, ps in POS_GROUP.items():
-        add(k, [c for c in cards if (c.get("best_pos") or "") in ps])
+        add(k, [c for c in cards if _poss(c) & ps])
     add("totw", [c for c in cards if "week" in (c.get("rarity_name") or "").lower()])
     add("hero", [c for c in cards if c.get("is_hero")])
     add("icon", [c for c in cards if c.get("is_icon")])

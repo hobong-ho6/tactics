@@ -94,7 +94,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
     <p class="dim" style="font-size:12px;margin:0 0 8px">
       내 보유 카드로 세트마다 <b>낼 수 있는 등급</b>을 계산했다 — <b>필요 장수를 다 채워 세트를 완성해야</b> 등급을 받는다(EA 도움말) — 클럽 싱크 <code>선수</code> 단계가 끝나면 다시 계산된다
       (<code>scripts/gallery_eval.py</code>). ⚠️ 점수 = 카드별 <b>갤러리 점수</b>(fut.gg <code>gradingScore</code> · 등급 B) 합 + <b>태그 보너스 추정</b>.
-      태그는 공개 21종 표(등급 D)를 <b>해당 카드 점수에만</b> 붙이는 방식이다 — fut.gg 조합 347개 재현 오차 중앙값 −1.3%(약간 낮게).
+      태그는 <b>해당 카드 점수 합 × %를 내림</b>해 붙인다 — 21종 중 12종은 인게임 태그 용어집으로 확인했고(A), 아스톤 빌라 보너스 544점을 1점 단위로 재현한다(아래 「🏷️ 태그별 가산점」).
       <b>확정</b>은 태그 없이 기본 점수만으로 나오는 등급이다. <b>퍼스트 오너</b>는 보유한 사람 수가 0·1인 카드로 본다(5장부터 +150%).
       ⛔ 홀로그램 태그는 원장에 정보가 없어 못 넣었다.
       카드는 태그까지 따져 <b>추정 총점이 가장 높은 조합</b>으로 고른다. 갤러리는 <b>진화 전 원래 카드</b>로 센다.
@@ -3492,14 +3492,16 @@ function galCards(){
    단계는 「n장 이상 → 해당 카드 점수의 +p%」이고 위 단계가 아래를 대체한다(누적 아님). */
 function tagTableHTML(){
   const rows = GAL.tag_table || []; if (!rows.length) return '';
-  return `<details style="margin-top:10px"><summary><b>🏷️ 태그별 가산점</b> <small class="dim">${rows.filter(r => r.applied).length}종 반영 · 공개 표(등급 D)</small></summary>
-    <table class="tbl" style="margin-top:4px"><thead><tr><th>태그</th><th>무엇을 세나</th><th>1단계</th><th>2단계</th><th>3단계</th></tr></thead><tbody>
+  return `<details style="margin-top:10px"><summary><b>🏷️ 태그별 가산점</b> <small class="dim">${rows.filter(r => r.applied).length}종 반영 · 인게임 용어집 확인 ${rows.filter(r => r.grade === 'A').length}종(A) · 나머지 공개 표(D)</small></summary>
+    <table class="tbl" style="margin-top:4px"><thead><tr><th>태그</th><th>무엇을 세나</th><th>1단계</th><th>2단계</th><th>3단계</th><th>근거</th></tr></thead><tbody>
     ${rows.map(r => `<tr${r.applied ? '' : ' class="dim"'}><td><b>${esc(r.kr)}</b> <small class="dim">${esc(r.name)}</small>${r.applied ? '' : ' <span class="chip" title="' + esc(r.why || '') + '">미반영</span>'}</td>
       <td style="font-size:12px">${esc(r.desc)}</td>
-      ${r.tiers.map(([n, p]) => `<td>${n}장+ <b>+${p}%</b></td>`).join('')}</tr>`).join('')}</tbody></table>
-    <small class="dim">⚠️ 가산은 <b>그 태그에 해당하는 카드들의 점수에만</b> 붙는다(세트 총점이 아니다) · 단계는 누적이 아니라 가장 높은 단계 하나 ·
-      「같은 ○○」는 가장 큰 무리 하나만 센다 · 「다른 ○○」는 서로 다른 값의 개수 · 포지션은 주 포지션 기준 ·
-      출처: 공개 21종 정리(등급 D) — fut.gg 조합 347개로 재현하면 오차 중앙값 −1.3% · 퍼스트 오너 기준(보유한 사람 수 0·1)은 사용자 기준이다.</small></details>`;
+      ${r.tiers.map(([n, p]) => `<td>${n}장+ <b>+${p}%</b></td>`).join('')}
+      <td><span class="chip" title="${r.grade === 'A' ? '인게임 태그 용어집에서 확인' : '공개 커뮤니티 표 — 인게임에서 아직 미발견'}">${r.grade === 'A' ? 'A 인게임' : 'D 공개 표'}</span></td></tr>`).join('')}</tbody></table>
+    <small class="dim">⚠️ 보너스 = 태그마다 <b>그 태그에 해당하는 카드 점수 합 × %를 내림</b>해 더한다(세트 총점에 곱하지 않는다) · 단계는 누적이 아니라 가장 높은 단계 하나 ·
+      「같은 ○○」는 가장 큰 무리 하나만 센다 · 「다른 ○○」는 서로 다른 값의 개수 · 포지션은 <b>보조 포지션까지</b> 센다 · 여자팀은 남자팀과 <b>다른 클럽</b>이다 ·
+      같은 카드(아이템)는 한 장만 들어간다 — 2026-10-03 인게임 캡처로 확인(아스톤 빌라 보너스 544점·스타터 세트 4,113점 1점 단위 재현) ·
+      퍼스트 오너 기준(보유한 사람 수 0·1)은 사용자 기준이다.</small></details>`;
 }
 /* ⭐ 「🏁 내가 완성한 세트」 — 완성 원장(migration 093) 전부. 세트별 최신 행이 「지금 내 등급」이고 앞 행은 이력이다.
    넣은 카드는 기록 당시 id로 남는다 — 그 뒤 팔거나 SBC에 낸 카드도 이름으로 보이게 원장 전체(EVO.club.players)에서 찾는다. */
