@@ -3414,7 +3414,7 @@ function galPopup(){
 function renderGallery(){
   const el = document.getElementById('gallery'); if (!el) return;
   const mine = GAL.mine || {}, NEW = new Set(GAL.new || []), seen = galSeen();
-  const owned = Object.fromEntries((EVO.club?.players || []).map(p => [p.id, p]));
+  const owned = galCards();
   document.getElementById('galn').textContent = GAL.pulled
     ? `— 평가 ${GAL.pulled} · 세트 ${(GAL.sets || []).length} · 달성 가능 ${(GAL.reach || []).length} · 더 높일 수 있음 ${(GAL.higher || []).length}`
     : '— 아직 평가 없음(클럽 싱크 선수 단계 또는 gallery_eval.py)';
@@ -3482,6 +3482,12 @@ function renderGallery(){
     say(box, r); if (r?.ok) reloadAfterWrite('완성 기록을 되돌렸다');
   }));
 }
+/* 갤러리 카드 id → 카드. 클럽 원장 + SBC 스토리지(음수 id = −스토리지 id · gallery_eval.py와 같은 부호 규약). */
+function galCards(){
+  const m = Object.fromEntries((EVO.club?.players || []).map(p => [p.id, p]));
+  (SBC.storage || []).forEach(x => { m[-x.id] = { ...x, name: `📦 ${x.name}`, current_ovr: x.ovr }; });
+  return m;
+}
 /* ⭐ 「🏷️ 태그별 가산점」(2026-10-03 사용자 지시) — 표는 core/gallery.tag_table() 정본을 export로 받는다(⛔ 여기서 다시 적지 않는다).
    단계는 「n장 이상 → 해당 카드 점수의 +p%」이고 위 단계가 아래를 대체한다(누적 아님). */
 function tagTableHTML(){
@@ -3500,7 +3506,7 @@ function tagTableHTML(){
 function doneHTML(){
   const rows = GAL.done || []; if (!rows.length) return `<h3 style="margin:10px 0 4px">🏁 내가 완성한 세트 <small class="dim">0</small></h3>
     <div class="dim" style="font-size:12px">아직 기록이 없다 — 위 세트에서 인게임 완성 뒤 「🏁 완성 처리」를 누른다.</div>`;
-  const all = Object.fromEntries((EVO.club?.players || []).map(p => [p.id, p]));
+  const all = galCards();
   const by = {}; for (const r of rows) (by[r.set_id] ??= []).push(r);
   const items = Object.entries(by).map(([sid, hist]) => {
     const last = hist[hist.length - 1], e = GEV[+sid];

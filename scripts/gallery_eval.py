@@ -36,8 +36,9 @@ def fill_ids(con):
     from scripts.collect_futgg_history import API, get
     need = [r[0] for r in con.execute(
         """SELECT DISTINCT i.ea_item_id FROM player_card_items i
-             JOIN fut_club_players c ON c.ea_item_id=i.ea_item_id   -- ⭐ 지금 보유 + 예전에 가졌던 카드(판매·SBC) 전부
-            WHERE i.game_version=? AND (i.club_ea_id IS NULL OR i.grading_score IS NULL)""", (GAME,))]
+            WHERE i.game_version=? AND (i.club_ea_id IS NULL OR i.grading_score IS NULL)
+              AND (i.ea_item_id IN (SELECT ea_item_id FROM fut_club_players)    -- ⭐ 지금 보유 + 예전에 가졌던 카드(판매·SBC) 전부
+                   OR i.ea_item_id IN (SELECT ea_item_id FROM fut_sbc_storage))  -- + SBC 스토리지""", (GAME,))]
     got = {}
     for k in range(0, len(need), 40):
         for x in (get(f"{API}/players/v2/27/?ea_ids=" + ",".join(map(str, need[k:k + 40]))) or {}).get("data", []):
@@ -79,6 +80,19 @@ def main():
              FROM fut_club_players c JOIN player_card_items i ON i.ea_item_id=c.ea_item_id AND i.game_version=?
             WHERE c.status='owned' AND COALESCE(c.is_loan,0)=0
             GROUP BY c.id""", (GAME,))]
+    # ⭐ **SBC 스토리지 카드**도 넣는다(2026-10-03 사용자 지시 — 화면에서 등록한 fut_sbc_storage · migration 095).
+    #    대개 클럽 카드의 중복본이라 「같은 선수 중복(Multiples)」 태그를 채운다. id는 sbc_solve와 같은 **음수**(−스토리지 id).
+    #    ⚠️ 스토리지 카드를 갤러리에 낼 수 있다는 것은 사용자 기준이다(EA 1차 근거 미확인 · 등급 D).
+    #    보유한 사람 수를 모르니 퍼스트 오너로 세지 않는다(core.gallery.is_first_owner — 값 없음 = 판정 안 함).
+    stor = [dict(r) for r in con.execute(
+        """SELECT -s.id id, s.name, NULL number_of_owners, i.ovr, i.grading_score, i.club_ea_id, i.best_pos, i.nation, i.base_ea_id,
+                  i.skill_moves, i.weak_foot, COALESCE(i.is_icon,0) is_icon, i.sibling_club_ea_id, i.league_ea_id, i.rarity_ea_id,
+                  i.rarity_name, COALESCE(i.is_hero,0) is_hero, COALESCE(i.is_special,0) is_special
+             FROM fut_sbc_storage s JOIN player_card_items i ON i.ea_item_id=s.ea_item_id AND i.game_version=s.game_version
+            WHERE s.status='stored' AND s.game_version=?""", (GAME,))]
+    if stor:
+        cards += stor
+        print(f"📦 SBC 스토리지 {len(stor)}장 포함: {', '.join(c['name'] for c in stor)}")
     miss = sum(1 for c in cards if c["club_ea_id"] is None)
     if miss:
         print(f"⚠️ 클럽 EA id가 없는 보유 카드 {miss}장 — 클럽·리그 세트에서 빠진다(--no-fill이면 채우지 않는다)")
@@ -110,7 +124,7 @@ def main():
     src = f"scripts/gallery_eval.py ({TODAY}) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py"
     conf = ("카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정"
             "(공개 21종 표 · 등급 D · fut.gg 조합 재현 오차 중앙값 −1.3%) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · "
-            "진화 전 원래 카드 OVR · 한 카드를 여러 세트에 쓸 수 있다고 봄")
+            "진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 한 카드를 여러 세트에 쓸 수 있다고 봄")
     con.execute("DELETE FROM fut_gallery_eval WHERE game_version=? AND pulled=?", (GAME, TODAY))
     con.executemany("""INSERT INTO fut_gallery_eval(game_version,set_id,pulled,eligible_n,required_n,base_score,grade,
                          next_grade,next_gap,prev_grade,card_ids,supported,source,confidence,est_score,est_grade,tag_detail)
