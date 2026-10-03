@@ -88805,8 +88805,8 @@
   },
   {
    "avg_rating": null,
-   "fit_sim": 0.899,
-   "focus": "Roaming",
+   "fit_sim": 0.7393,
+   "focus": "Defend",
    "game_version": "FC26",
    "grid_club": null,
    "kind": "fc26:opt:RDM",
@@ -88814,8 +88814,8 @@
    "map25": null,
    "player_id": 12,
    "pos_label": "RDM",
-   "rationale": "v1 SQUAD_SLOTS opt(게임 처방) 이관 2026-08-11 — 판단근거 원문은 archive/v1 주석 [선발 XI — obs#110 확정 인선, 2026-08-11 기록] ‖ [2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⚠️기존 사람 판단값은 dm_holding/Defend였고 커널 최적값 dm_dlp/Roaming으로 교체했다.",
-   "role_id": "dm_dlp",
+   "rationale": "v1 SQUAD_SLOTS opt(게임 처방) 이관 2026-08-11 — 판단근거 원문은 archive/v1 주석 [선발 XI — obs#110 확정 인선, 2026-08-11 기록] ‖ [2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⚠️기존 사람 판단값은 dm_holding/Defend였고 커널 최적값 dm_dlp/Roaming으로 교체했다.\n[2026-10-03 사용자 지시 「주앙 고메스 딥라잉 로밍, 카마라 홀딩 수비로 처방 업데이트」] dm_dlp/Roaming → **dm_holding/Defend**. 근거: 피벗 짝 판정 — LDM을 dm_dlp/Roaming으로 고정하면 RDM 파트너 10조합 중 카마라 적합이 가장 높은 수비형이 holding/Defend(26/27 RDM 순수 5경기 실측 0.7393, 25/26 .710)다. 커널 겹침 .361 · 두 피벗 합산 자기진영 59%(둘 다 dlp/Roaming이면 겹침 .824 · 36% · CB 앞줄 0% — 「자리 이탈」 2명). EA 정의 Defend = 「stays back」 강화 · Pass Option 중립. 움직임 단독 최적은 여전히 dm_dlp/Roaming(.836)이다 — 이 행은 짝 구조(잔류)를 우선한 판단이며 slot_canon RDM(dm_holding/Defend)과 일치한다. fit_sim = holding/Defend 실측 적합.",
+   "role_id": "dm_holding",
    "sample_n": null,
    "season": "2026-27",
    "starter": 1,
@@ -91028,7 +91028,7 @@
   },
   {
    "avg_rating": null,
-   "fit_sim": null,
+   "fit_sim": 0.7435,
    "focus": "Roaming",
    "game_version": "FC26",
    "grid_club": "Wolverhampton Wanderers",
@@ -91037,7 +91037,7 @@
    "map25": null,
    "player_id": 56,
    "pos_label": "LDM",
-   "rationale": "squad_entries 파생 후보 (2026-08-11 정합성 동기화 — 페이지 간 후보 풀 일치)",
+   "rationale": "squad_entries 파생 후보 (2026-08-11 정합성 동기화 — 페이지 간 후보 풀 일치)\n[2026-10-03 사용자 지시 — 카마라 RDM holding/Defend와 짝] LDM dm_dlp/Roaming 유지·확정. fit_sim 0.7435 = 26/27 LDM 실측(prescriptions #508, n=3·259분 ⚠️표본 적음)의 dlp/Roaming 적합. ⚠️ 이 실측의 단독 최적은 dm_holding/Roaming 0.777이다 — dlp/Roaming은 짝 구조(전진·배급 담당, 카마라 잔류)를 위한 사용자 판단. 선발(starter)은 바꾸지 않았다(LDM 선발=바클리).",
    "role_id": "dm_dlp",
    "sample_n": null,
    "season": "2026-27",
@@ -98734,6 +98734,15 @@
   }
  ],
  "tactic_changes": [
+  {
+   "after": "카마라: dm_holding/Defend",
+   "before": "카마라: dm_dlp/Roaming",
+   "changed_at": "2026-10-03",
+   "key": "RDM",
+   "layer": "starter",
+   "reason": "2026-10-03 사용자 지시 — AVL 피벗: 카마라 RDM dm_dlp/Roaming→dm_holding/Defend(짝 구조 잔류 우선 · 실측 적합 .739), 주앙 고메스 LDM dm_dlp/Roaming 확정",
+   "source": "tactic_changes.py 2026-10-03"
+  },
   {
    "after": "4-2-3-1 Wide · 빌드업 Short Passing · 수비 Balanced · 라인 52",
    "before": null,
