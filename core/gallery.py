@@ -93,6 +93,32 @@ TAG_KR = {"first": "퍼스트 오너", "bronze": "브론즈", "silver": "실버"
           "diffclub": "다른 클럽", "diffleague": "다른 리그", "diffnation": "다른 국적", "def": "수비진", "mid": "중원",
           "att": "공격진", "gk": "골키퍼", "totw": "TOTW", "hero": "히어로", "icon": "아이콘", "skill": "개인기 5성",
           "wf": "약발 5성", "multi": "같은 선수 중복"}
+# ⭐ 태그 설명·영문 이름(2026-10-03 사용자 지시 「태그별 가산점을 정리해서 갤러리 탭에 정보 넣어」).
+#   화면은 이 표와 TAGS를 export로 받아 그린다(⛔ 화면이 다시 적지 않는다). 영문 이름은 공개 21종 정리(timesaver)의 표기다.
+TAG_INFO = {
+    "first": ("First Owner", "보유한 사람 수 0·1(팩·보상으로 처음 받은 카드)"),
+    "bronze": ("Bronze", "OVR 64 이하"), "silver": ("Silver", "OVR 65~74"), "golden": ("Golden", "OVR 75 이상"),
+    "club": ("Same Club", "가장 많은 같은 클럽 카드"), "league": ("Same League", "가장 많은 같은 리그 카드"),
+    "nation": ("Same Nation", "가장 많은 같은 국적 카드"),
+    "diffclub": ("Different Club", "서로 다른 클럽 수(클럽 없는 카드는 각자 별개)"),
+    "diffleague": ("Different League", "서로 다른 리그 수"), "diffnation": ("Different Nation", "서로 다른 국적 수"),
+    "def": ("Defensive Wall", "주 포지션 CB·LB·RB(LWB·RWB 포함)"), "mid": ("Midfield Control", "주 포지션 CDM·CM·CAM·LM·RM"),
+    "att": ("All out Attack", "주 포지션 ST·RW·LW(CF 포함)"), "gk": ("Hands Only", "골키퍼"),
+    "totw": ("TOTW", "Team of the Week 카드"), "hero": ("Heroic", "히어로 카드"), "icon": ("Iconic", "아이콘 카드"),
+    "skill": ("Skilled", "개인기 5성"), "wf": ("Ambidextrous", "약발 5성"), "multi": ("Multiples", "같은 선수의 카드 2장 이상"),
+}
+# 계산에 넣지 못한 태그 — 화면이 「미반영」으로 함께 보여 준다(조용히 빼지 않는다).
+TAG_UNUSED = [{"name": "Holographic", "kr": "홀로그램", "desc": "홀로그램 카드", "tiers": [[2, 8], [4, 12], [6, 20]],
+               "why": "원장에 홀로그램 여부가 없다"}]
+
+
+def tag_table():
+    """화면용 태그 정리표 — [{key, name, kr, desc, tiers:[[개수, %]], applied}]."""
+    rows = [{"key": k, "name": TAG_INFO[k][0], "kr": TAG_KR[k], "desc": TAG_INFO[k][1],
+             "tiers": [list(t) for t in TAGS[k]], "applied": True} for k in TAGS]
+    return rows + [dict(u, key=None, applied=False) for u in TAG_UNUSED]
+
+
 POS_GROUP = {"def": {"CB", "LB", "RB", "LWB", "RWB"}, "mid": {"CDM", "CM", "CAM", "LM", "RM"},
              "att": {"ST", "RW", "LW", "CF"}, "gk": {"GK"}}
 

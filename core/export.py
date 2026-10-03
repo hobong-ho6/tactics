@@ -441,7 +441,9 @@ def export_all(db_path=None, window="2026-summer"):
     _reach, _higher, _new = GAL.classify(gal_eval, gal_prev, gal_mine)
     gallery = {"sets": gal_sets, "tokens": gal_tok, "eval": gal_eval, "mine": gal_mine, "done": gal_done,
                "pulled": gal_eval[0]["pulled"] if gal_eval else None, "min_list": GAL.MIN_LIST,
-               "reach": _reach, "higher": _higher, "new": _new}
+               "reach": _reach, "higher": _higher, "new": _new,
+               # ⭐ 태그별 가산점 정리표(core/gallery.tag_table 정본) — 화면의 「🏷️ 태그별 가산점」
+               "tag_table": GAL.tag_table()}
     # 시세 — **카드별** 최신 pulled(ea_item_id 키). NULL은 「미형성」이며 화면이 그렇게 쓴다(migration 037)
     # ⭐⭐ 2026-09-29: 종전엔 **표 전체의** 최신 pulled만 읽어서, 한 회차가 45장에서 끊기면 나머지 카드 시세가
     #    화면에서 통째로 사라졌다 — 그래서 시세 수집이 「전량을 한 번에」 끝내야만 했고 1시간씩 걸렸다.

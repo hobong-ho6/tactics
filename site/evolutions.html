@@ -3465,6 +3465,7 @@ function renderGallery(){
         <table class="tbl" style="margin-top:4px"><thead><tr><th>세트</th><th>보유 / 필요</th><th>더 필요</th><th>지금까지 점수</th></tr></thead><tbody>
         ${near.map(({ e, need }) => `<tr><td>${esc(GSET[e.set_id]?.name || e.set_id)}</td><td>${e.eligible_n}/${e.required_n}</td>
           <td><b>${need}장</b></td><td>${(e.base_score || 0).toLocaleString()}</td></tr>`).join('')}</tbody></table></details>`
+    + tagTableHTML()
     + (unsup.length ? `<div class="dim" style="font-size:11.5px;margin-top:8px">❔ 대상 규칙을 몰라 판정하지 않은 세트: ${unsup.map(esc).join(' · ')}</div>` : '');
   el.querySelectorAll('[data-galdone]').forEach(btn => btn.addEventListener('click', async () => {
     const id = +btn.dataset.galdone, box = document.getElementById(`galm${id}`);
@@ -3480,6 +3481,19 @@ function renderGallery(){
     const r = await api('gallery_complete', { set_id: id, undo: true, game: 'FC27' });
     say(box, r); if (r?.ok) reloadAfterWrite('완성 기록을 되돌렸다');
   }));
+}
+/* ⭐ 「🏷️ 태그별 가산점」(2026-10-03 사용자 지시) — 표는 core/gallery.tag_table() 정본을 export로 받는다(⛔ 여기서 다시 적지 않는다).
+   단계는 「n장 이상 → 해당 카드 점수의 +p%」이고 위 단계가 아래를 대체한다(누적 아님). */
+function tagTableHTML(){
+  const rows = GAL.tag_table || []; if (!rows.length) return '';
+  return `<details style="margin-top:10px"><summary><b>🏷️ 태그별 가산점</b> <small class="dim">${rows.filter(r => r.applied).length}종 반영 · 공개 표(등급 D)</small></summary>
+    <table class="tbl" style="margin-top:4px"><thead><tr><th>태그</th><th>무엇을 세나</th><th>1단계</th><th>2단계</th><th>3단계</th></tr></thead><tbody>
+    ${rows.map(r => `<tr${r.applied ? '' : ' class="dim"'}><td><b>${esc(r.kr)}</b> <small class="dim">${esc(r.name)}</small>${r.applied ? '' : ' <span class="chip" title="' + esc(r.why || '') + '">미반영</span>'}</td>
+      <td style="font-size:12px">${esc(r.desc)}</td>
+      ${r.tiers.map(([n, p]) => `<td>${n}장+ <b>+${p}%</b></td>`).join('')}</tr>`).join('')}</tbody></table>
+    <small class="dim">⚠️ 가산은 <b>그 태그에 해당하는 카드들의 점수에만</b> 붙는다(세트 총점이 아니다) · 단계는 누적이 아니라 가장 높은 단계 하나 ·
+      「같은 ○○」는 가장 큰 무리 하나만 센다 · 「다른 ○○」는 서로 다른 값의 개수 · 포지션은 주 포지션 기준 ·
+      출처: 공개 21종 정리(등급 D) — fut.gg 조합 347개로 재현하면 오차 중앙값 −1.3% · 퍼스트 오너 기준(보유한 사람 수 0·1)은 사용자 기준이다.</small></details>`;
 }
 /* ⭐ 「🏁 내가 완성한 세트」 — 완성 원장(migration 093) 전부. 세트별 최신 행이 「지금 내 등급」이고 앞 행은 이력이다.
    넣은 카드는 기록 당시 id로 남는다 — 그 뒤 팔거나 SBC에 낸 카드도 이름으로 보이게 원장 전체(EVO.club.players)에서 찾는다. */
