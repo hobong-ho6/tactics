@@ -17,3 +17,6 @@ logs/
 
 # db_diff.py --snapshot 산출물 — 파괴적 정리 전 대조용 임시 DB 사본이다(산출물 아님).
 db/.snapshots/
+
+# 인게임 캡처 원본(PS 리모트 스크린샷) — 전사해 DB·reports/ingame에 남기고 지운다(2026-10-03 사용자 지시). 용량이 커 커밋하지 않는다.
+captures/
