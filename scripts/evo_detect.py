@@ -37,6 +37,9 @@ sys.path.insert(0, str(ROOT))
 from core import DB                                        # noqa: E402
 from core.futgg_attrs import apply_upgrades                # noqa: E402
 
+# 코스메틱 전용 진화의 EA id — 카탈로그가 의도적으로 적재하지 않으므로(collect_futgg_evolutions.is_cosmetic)
+# 매핑이 영영 안 생긴다. 사용자가 확인한 것만 둔다(지어내지 않는다).
+COSMETIC_EA_IDS = {2734: "린델뢰프 · 사용자 확인 2026-10-03 「코스메틱 업데이트」"}
 MAX_COMBOS = 4096          # 갈림길 조합 상한 — 넘으면 그 진화는 「조합 과다」로 건너뛰고 **그 사실을 적는다**
 
 
@@ -202,6 +205,8 @@ def ea_check(con, only=None):
         ea_by = {}                                   # fut.gg id → (runs, 완료 단계 합, 진행 중 run 수)
         for h in hist:
             m = ea2.get(h["ea"])
+            if not m and h["ea"] in COSMETIC_EA_IDS:
+                continue                             # 스탯 변화 없음 — 대조할 것이 없다
             if not m:
                 probs.append(f"EA id {h['ea']} 매핑 없음 — fc_evolutions.ea_evo_id를 채울 것(카탈로그 재수집)")
                 continue
