@@ -3438,6 +3438,7 @@ function renderGallery(){
         ${tok ? ` · 이 등급 토큰 <b>${tok}</b>` : ''}
         ${e.next_grade ? ` · 다음 <b>${e.next_grade}</b>까지 ${(e.next_gap || 0).toLocaleString()}점` : ' · 최고 등급'}
         ${mine[id] ? ` · <span class="dim">내 기록 ${esc(mine[id])}</span>` : ''}</div>
+      ${galInGame(id)}
       ${tags.length ? `<div class="kv" style="font-size:11.5px;margin-top:3px">🏷️ ${tags.map(([k, v]) =>
         `<span class="chip" title="${v[0]}장 해당 → 그 카드 점수의 ${v[1]}%">${esc(k)} +${v[1]}% <b>${Math.round(v[2]).toLocaleString()}</b></span>`).join(' ')}</div>` : ''}
       <div class="kv" style="margin-top:4px">
@@ -3482,10 +3483,23 @@ function renderGallery(){
     say(box, r); if (r?.ok) reloadAfterWrite('완성 기록을 되돌렸다');
   }));
 }
+/* 🎮 인게임 세트 현황(migration 098 · 캡처 전사) — 이미 들어가 있는 장수·점수 합, 완성 세트면 화면 총점·등급 */
+function galInGame(id){
+  const P = (GAL.placed || []).filter(x => x.set_id === id), S = (GAL.snaps || []).find(x => x.set_id === id);
+  if (!P.length) return '';
+  const sum = P.reduce((a, x) => a + x.score, 0), out = P.filter(x => !x.club_player_id).length;
+  return `<div class="kv" style="font-size:11.5px;margin-top:3px">🎮 인게임 <span class="dim">(${esc(P[0].captured_at)} 캡처)</span>
+    ${P.length}장 들어가 있음 · 점수 합 ${sum.toLocaleString()}
+    ${S && S.total_score != null ? ` · 화면 총점 <b>${S.total_score.toLocaleString()}</b> ${esc(S.grade || '')}${S.pending ? ' <span class="dim">(변경 사항 확인 전)</span>' : ''}` : ''}
+    ${out ? ` · <span class="dim" title="클럽 싱크에 한 번도 잡히지 않은 카드 — 처음 가진 사람으로 본다">원장 밖 ${out}장</span>` : ''}</div>`;
+}
 /* 갤러리 카드 id → 카드. 클럽 원장 + SBC 스토리지(음수 id = −스토리지 id · gallery_eval.py와 같은 부호 규약). */
 function galCards(){
   const m = Object.fromEntries((EVO.club?.players || []).map(p => [p.id, p]));
   (SBC.storage || []).forEach(x => { m[-x.id] = { ...x, name: `📦 ${x.name}`, current_ovr: x.ovr }; });
+  /* 인게임 세트 전사 중 원장 밖 아이템(migration 098) — 이름을 몰라 「🎮 OVR 포지션 국적」으로 보인다 */
+  (GAL.placed || []).filter(x => !x.club_player_id).forEach(x => {
+    m[-((GAL.placed_id0 || 1e6) + x.id)] = { name: `🎮 ${x.pos} ${x.nation || ''}`.trim(), current_ovr: x.ovr }; });
   return m;
 }
 /* ⭐ 「🏷️ 태그별 가산점」(2026-10-03 사용자 지시) — 표는 core/gallery.tag_table() 정본을 export로 받는다(⛔ 여기서 다시 적지 않는다).

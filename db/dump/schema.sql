@@ -1230,3 +1230,28 @@ CREATE TABLE fut_sbc_storage(
   source TEXT, notes TEXT
 );
 CREATE INDEX ix_sbc_storage_status ON fut_sbc_storage(account_id, game_version, status);
+CREATE TABLE fut_gallery_placed(
+  id            INTEGER PRIMARY KEY,
+  game_version  TEXT NOT NULL,
+  set_id        INTEGER NOT NULL,
+  captured_at   TEXT NOT NULL,
+  slot          INTEGER NOT NULL,          -- 화면 순서(1부터)
+  score         INTEGER NOT NULL,          -- 화면의 아이템 점수
+  ovr           INTEGER, pos TEXT,         -- 카드 표기(주 포지션)
+  nation        TEXT,                      -- 국기 판독(틀릴 수 있다 — 매칭 보조)
+  ea_item_id    INTEGER,                   -- 식별되면(원장 또는 player_card_items에서 점수·OVR·포지션·국적이 하나로 맞을 때)
+  club_player_id INTEGER,                  -- 우리 원장(fut_club_players.id)과 맞으면
+  source TEXT, notes TEXT
+);
+CREATE INDEX ix_gal_placed_set ON fut_gallery_placed(game_version, set_id, captured_at);
+CREATE TABLE fut_gallery_snapshots(
+  id            INTEGER PRIMARY KEY,
+  game_version  TEXT NOT NULL,
+  set_id        INTEGER NOT NULL,
+  captured_at   TEXT NOT NULL,
+  placed_n      INTEGER NOT NULL,
+  base_score    INTEGER, bonus_score INTEGER, total_score INTEGER,
+  grade         TEXT CHECK(grade IN ('D','C','B','A','S')),
+  pending       INTEGER NOT NULL DEFAULT 0,  -- 1 = 화면 버튼이 「변경 사항 확인」(확정 전 구성)
+  source TEXT, notes TEXT
+);

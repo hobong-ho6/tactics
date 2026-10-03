@@ -443,7 +443,18 @@ def export_all(db_path=None, window="2026-summer"):
                "pulled": gal_eval[0]["pulled"] if gal_eval else None, "min_list": GAL.MIN_LIST,
                "reach": _reach, "higher": _higher, "new": _new,
                # ⭐ 태그별 가산점 정리표(core/gallery.tag_table 정본) — 화면의 「🏷️ 태그별 가산점」
-               "tag_table": GAL.tag_table()}
+               "tag_table": GAL.tag_table(),
+               # ⭐ 인게임 세트에 이미 들어가 있는 아이템(migration 098 · 세트별 최신 캡처 전사)과 화면 점수 스냅숏.
+               #   원장 밖 아이템의 화면 id = −(PLACED_ID0 + id) — 평가(card_ids)와 같은 부호 규약(core/gallery.placed_cards).
+               "placed": _rows(con, """SELECT id, set_id, captured_at, slot, score, ovr, pos, nation, club_player_id
+                                        FROM fut_gallery_placed p WHERE game_version='FC27'
+                                         AND captured_at=(SELECT MAX(captured_at) FROM fut_gallery_placed
+                                                           WHERE game_version=p.game_version AND set_id=p.set_id)
+                                       ORDER BY set_id, slot"""),
+               "placed_id0": GAL.PLACED_ID0,
+               "snaps": _rows(con, """SELECT set_id, captured_at, placed_n, base_score, bonus_score, total_score, grade, pending
+                                       FROM fut_gallery_snapshots s WHERE game_version='FC27'
+                                        AND id=(SELECT MAX(id) FROM fut_gallery_snapshots WHERE game_version=s.game_version AND set_id=s.set_id)""")}
     # 시세 — **카드별** 최신 pulled(ea_item_id 키). NULL은 「미형성」이며 화면이 그렇게 쓴다(migration 037)
     # ⭐⭐ 2026-09-29: 종전엔 **표 전체의** 최신 pulled만 읽어서, 한 회차가 45장에서 끊기면 나머지 카드 시세가
     #    화면에서 통째로 사라졌다 — 그래서 시세 수집이 「전량을 한 번에」 끝내야만 했고 1시간씩 걸렸다.

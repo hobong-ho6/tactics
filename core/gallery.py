@@ -195,6 +195,12 @@ def tag_bonus(cards):
     dup = [c for c in cards if c.get("base_ea_id") and bc[c["base_ea_id"]] >= 2]
     if dup:
         add("multi", dup, max(bc.values()))
+    # ⚠️ **가장 큰 태그 10개만** 반영한다(futgenie 「only the ten biggest tags count(가장 큰 태그 10개만 반영)」 · 단일 출처 D —
+    #    인게임 프리미어 리그·라리가 화면의 태그 칩도 정확히 10개였다 2026-10-03). 11번째부터 버린다.
+    if len(out) > 10:
+        keep = sorted(out, key=lambda k: -out[k][2])[:10]
+        out = {k: out[k] for k in keep}
+        bonus = sum(v[2] for v in out.values())
     return sc(cards), bonus, out
 
 
@@ -229,8 +235,43 @@ def _best_pick(el, req):
     return best
 
 
-def evaluate(sets, cards):
-    """세트마다 필요 장수로 등급을 매긴다. sets: fc_gallery_sets 행(dict) · cards: 보유 카드(dict)."""
+PLACED_ID0 = 1_000_000   # 인게임 전사 카드의 id = −(PLACED_ID0 + fut_gallery_placed.id) — 원장(양수)·스토리지(음수 작은 값)와 안 겹친다
+
+
+def placed_cards(con, game="FC27"):
+    """세트별 **인게임에 이미 들어가 있는** 아이템 중 우리 원장에 없는 것(migration 098 · 세트별 최신 캡처).
+       ⭐ 넣은 아이템은 팔아도 남는다(EA 딥다이브 A) ⇒ 그 세트 후보에 무조건 들어간다. ⛔ 정본은 이 함수 하나다.
+       원장과 맞은 행(club_player_id)은 원장 카드로 이미 후보라 뺀다. 아이템이 식별되면 그 아이템 정보를, 아니면 전사값만 쓴다
+       — 미식별 카드는 클럽·리그를 세트 기준으로만 안다(태그 추정이 약간 거칠다)."""
+    sets = {r[0]: (r[1], r[2]) for r in con.execute(
+        """SELECT set_id, club_ea_id, league_ea_id FROM fc_gallery_sets WHERE game_version=?
+             AND pulled=(SELECT MAX(pulled) FROM fc_gallery_sets WHERE game_version=?)""", (game, game))}
+    item = {r[0]: r for r in con.execute(
+        """SELECT ea_item_id, club_ea_id, league_ea_id, nation, positions, best_pos, base_ea_id, rarity_name,
+                  COALESCE(is_icon,0), COALESCE(is_hero,0), skill_moves, weak_foot FROM player_card_items WHERE game_version=?""", (game,))}
+    out = collections.defaultdict(list)
+    for pid, sid, slot, sc, ov, pos, nat, ea in con.execute(
+            """SELECT id, set_id, slot, score, ovr, pos, nation, ea_item_id FROM fut_gallery_placed p
+                WHERE game_version=? AND club_player_id IS NULL
+                  AND captured_at=(SELECT MAX(captured_at) FROM fut_gallery_placed WHERE game_version=p.game_version AND set_id=p.set_id)""",
+            (game,)):
+        club, league = sets.get(sid, (None, None))
+        league = league or LEAGUE_SET.get(sid)
+        # ⚠️ 원장 밖 아이템 = 싱크 사이에 들어왔다 바로 나간 카드(팩 → SBC·판매)라 **처음 가진 사람이 나**로 본다(퍼스트 오너).
+        #    근거: 인게임 스냅숏 보너스가 이 가정에서만 맞는다(프리미어 리그·라리가·세리에 A — gallery_placed_load 검증 표) · 등급 C.
+        c = dict(id=-(PLACED_ID0 + pid), name=f"인게임 #{slot}", placed=1, number_of_owners=1, grading_score=sc, ovr=ov,
+                 positions=pos, best_pos=pos, nation=nat, club_ea_id=club, league_ea_id=league, ea_item_id=ea)
+        if ea in item:
+            _, c["club_ea_id"], c["league_ea_id"], c["nation"], c["positions"], c["best_pos"], c["base_ea_id"], c["rarity_name"], \
+                c["is_icon"], c["is_hero"], c["skill_moves"], c["weak_foot"] = item[ea]
+        out[sid].append(c)
+    return dict(out)
+
+
+def evaluate(sets, cards, placed=None):
+    """세트마다 필요 장수로 등급을 매긴다. sets: fc_gallery_sets 행(dict) · cards: 클럽을 거친 카드(dict)
+       · placed: {set_id: [카드]} 인게임에 이미 들어가 있는 원장 밖 아이템(placed_cards) — 그 세트 후보에 더한다."""
+    placed = placed or {}
     # ⛔ **같은 카드(아이템)는 한 장만** 들어간다(2026-10-03 사용자 인게임 실측 「맥긴을 SBC 스토리지에 한 장 더 들고 있지만
     #    실제 갤러리에는 두 장이 안 들어간다」 · 등급 C). 「같은 선수 중복(Multiples)」은 **다른 버전**의 같은 선수다
     #    (예: 기본 카드 + 특수 카드 — base_ea_id가 같고 아이템이 다름). ⇒ 아이템당 한 장, 클럽 카드(양수 id)를 남긴다.
@@ -251,6 +292,8 @@ def evaluate(sets, cards):
                             est_score=None, est_grade=None, tag_detail=None))
             continue
         el = [c for c, f in flags if f and card_score(c) is not None]
+        have = {c.get("ea_item_id") for c in el if c.get("ea_item_id")}
+        el += [c for c in placed.get(s["set_id"], []) if not c.get("ea_item_id") or c["ea_item_id"] not in have]
         req = s["required_cards"] or 0
         # ⛔⛔ **필요 장수를 채워야 완성되고, 완성해야 등급을 받는다**(2026-10-02 사용자 지적 · EA 도움말
         #    「You complete a Set by meeting its Player Item requirements. The Item Score … determines its grade.」).

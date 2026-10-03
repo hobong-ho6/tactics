@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                        # noqa: E402
-from core.gallery import MIN_LIST, classify, evaluate, mine as gal_mine  # noqa: E402
+from core.gallery import MIN_LIST, classify, evaluate, mine as gal_mine, placed_cards  # noqa: E402
 
 GAME = "FC27"
 TODAY = dt.date.today().isoformat()
@@ -78,7 +78,10 @@ def main():
                   i.skill_moves, i.weak_foot, COALESCE(i.is_icon,0) is_icon, i.sibling_club_ea_id, i.league_ea_id, i.rarity_ea_id,
                   i.rarity_name, COALESCE(i.is_hero,0) is_hero, COALESCE(i.is_special,0) is_special
              FROM fut_club_players c JOIN player_card_items i ON i.ea_item_id=c.ea_item_id AND i.game_version=?
-            WHERE c.status='owned' AND COALESCE(c.is_loan,0)=0
+            -- ⭐⭐ **한 번이라도 클럽에 들어온 카드는 전부**(2026-10-03 사용자 지시 「클럽 싱크로 등록된 카드는 팔거나 SBC로
+            --    소모하더라도 갤러리에서 사용할 수 있도록」 · EA 피치노트 FUT 딥다이브 2026-08-02 「이적시장에 팔거나 SBC에 넣은
+            --    카드도 계속 기여」 등급 A). 임대 카드는 대상이 아니다(같은 출처).
+            WHERE COALESCE(c.is_loan,0)=0
             GROUP BY c.id""", (GAME,))]
     # ⭐ **SBC 스토리지 카드**도 넣는다(2026-10-03 사용자 지시 — 화면에서 등록한 fut_sbc_storage · migration 095).
     #    ⛔ 클럽 카드와 **같은 아이템**인 중복본은 갤러리에 한 장만 들어간다(사용자 실측 — core.gallery.evaluate가 줄인다).
@@ -97,7 +100,11 @@ def main():
     miss = sum(1 for c in cards if c["club_ea_id"] is None)
     if miss:
         print(f"⚠️ 클럽 EA id가 없는 보유 카드 {miss}장 — 클럽·리그 세트에서 빠진다(--no-fill이면 채우지 않는다)")
-    res = evaluate(sets, cards)
+    # ⭐ 인게임 세트에 이미 들어가 있는 원장 밖 아이템(migration 098 · 캡처 전사) — 팔아도 남으니 그 세트 후보다
+    placed = placed_cards(con, GAME)
+    if placed:
+        print(f"🎮 인게임 세트 전사에서 원장 밖 아이템 {sum(map(len, placed.values()))}장 · {len(placed)}세트 포함")
+    res = evaluate(sets, cards, placed)
     # ⭐ 직전 회차와는 **태그 포함 추정 등급**끼리 견준다(2026-10-03 · 없던 회차는 확정 하한으로)
     prev = {r["set_id"]: r["grade"] for r in con.execute(
         """SELECT set_id, COALESCE(est_grade, grade) grade FROM fut_gallery_eval WHERE game_version=?
@@ -111,7 +118,7 @@ def main():
     reach, higher, new = [by[i] for i in ra], [by[i] for i in hi], [by[i] for i in nw]
     line = lambda r: (f"   {name[r['set_id']]:<26} {r['est_grade']}(추정 · 확정 하한 {r['grade']}) (추정 {r['est_score']:,} = 기본 {r['base_score']:,}+태그 · {r['eligible_n']}/{r['required_n']}장"  # noqa: E731
                       + (f" · 다음 {r['next_grade']}까지 {r['next_gap']:,})" if r["next_grade"] else ")"))
-    print(f"\n■ 갤러리 평가 {TODAY} — 세트 {len(sets)} · 보유 카드 {len(cards)}장 (태그 포함 추정 · 확정 하한 병기)")
+    print(f"\n■ 갤러리 평가 {TODAY} — 세트 {len(sets)} · 클럽을 거친 카드 {len(cards)}장 (태그 포함 추정 · 확정 하한 병기)")
     print(f"⭐ 달성 가능 {len(reach)}" + ("".join("\n" + line(r) for r in reach) if reach else ""))
     print(f"⬆️ 더 높일 수 있음 {len(higher)}" + ("".join(
         "\n" + line(r) + f"  ← 기록 {mine[r['set_id']]}" for r in higher) if higher else ""))
@@ -125,7 +132,7 @@ def main():
     src = f"scripts/gallery_eval.py ({TODAY}) — 보유 카드 × fc_gallery_sets 최신 회차 · core/gallery.py"
     conf = ("카드 점수 = fut.gg gradingScore(등급 B · 없으면 커뮤니티 표 등급 D) · grade=기본 점수 확정 하한 · est_grade=태그 포함 추정"
             "(21종 중 12종 인게임 용어집 확인 A · 9종 공개 표 D · 태그별 내림 · 보조 포지션 포함 · 여자팀 별도 클럽 — 아스톤 빌라 544점 1점 단위 재현) · First Owner=보유한 사람 수 0·1(사용자 기준) · Holographic 미반영 · "
-            "진화 전 원래 카드 OVR · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄")
+            "진화 전 원래 카드 OVR · 판매·SBC로 나간 카드 포함(EA 딥다이브 A) · 인게임 세트 전사(원장 밖 아이템 · migration 098) 포함 · SBC 스토리지 카드 포함(음수 id · 사용자 기준) · 같은 아이템은 한 장(사용자 실측) · 한 카드를 여러 세트에 쓸 수 있다고 봄")
     con.execute("DELETE FROM fut_gallery_eval WHERE game_version=? AND pulled=?", (GAME, TODAY))
     con.executemany("""INSERT INTO fut_gallery_eval(game_version,set_id,pulled,eligible_n,required_n,base_score,grade,
                          next_grade,next_gap,prev_grade,card_ids,supported,source,confidence,est_score,est_grade,tag_detail)
