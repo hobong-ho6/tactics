@@ -27,7 +27,7 @@ import { mountHeader, loadTeam, loadKernels, loadGameStats, slotCandidates, sofi
 import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
 import { Kernel } from './assets/kernel.js?v=20260825-decodemap-null';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
-import { pitchXI, depthStrip, mountTips } from './assets/squadviz.js?v=20260918';
+import { pitchXI, depthStrip, mountTips } from './assets/squadviz.js?v=20261005c';
 
 const { team } = await mountHeader('squad.html');
 const [td, kd, GS] = await Promise.all([loadTeam(team), loadKernels('FC26'), loadGameStats('FC26')]);
@@ -98,15 +98,18 @@ function drawViz(){
   const lo = sims.length ? Math.max(0.3, Math.floor(Math.min(...sims) * 20) / 20) : 0.6;
   const hi = sims.length ? Math.min(1, Math.ceil(Math.max(...sims) * 20) / 20) : 1;
   const rates = gks.flatMap(r => r.cands.map(c => c.rating)).filter(v => v != null);
-  el.innerHTML = `<div class="vz"></div><div class="vz"></div>`;
+  /* ⚠️ `wide` — 경기 분석 차트의 고정 높이(.mviz .vz:not(.wide) 460px · svg flex)가 여기 걸리면
+     피치(세로로 긴 그림)가 높이 388px에 눌려 아주 작게 그려졌다(2026-10-05 사용자 지적 「포메이션과 지표가 너무 작아」).
+     free면 고정 높이를 풀어 svg가 폭 100% · 높이 auto로 커지고(wide와 달리 2열 배치는 유지), 피치만 폭 상한(.sv-pitch)을 둔다. */
+  el.innerHTML = `<div class="vz free"></div><div class="vz free"></div>`;
   const [left, right] = el.querySelectorAll('.vz');
   const w = b => Math.max(300, Math.floor(b.clientWidth - 26));
   left.innerHTML = `<h4>베스트 XI <span class="dim">— ${vrows.length}슬롯 · 색이 옅으면 그 자리 적합이 낮다</span></h4>`
-    + pitchXI(vrows, { W: Math.min(w(left), 520), lo, hi });
+    + pitchXI(vrows, { W: Math.min(w(left), 600), lo, hi });
   right.innerHTML = `<h4>슬롯 깊이·경쟁 <span class="dim">— 커널 적합 기준</span></h4>`
-    + depthStrip(field, { W: Math.min(w(right), 720), key: 'sim', lo, hi, label: '커널 적합' })
+    + depthStrip(field, { W: Math.min(w(right), 1000), key: 'sim', lo, hi, label: '커널 적합' })
     + (gks.length ? `<h4 style="margin-top:12px">골키퍼 <span class="dim">— GK는 커널 적합이 변별하지 못해(obs#220) 평점 축으로 따로 본다</span></h4>`
-        + depthStrip(gks, { W: Math.min(w(right), 720), key: 'rating', label: '평점',
+        + depthStrip(gks, { W: Math.min(w(right), 1000), key: 'rating', label: '평점',
             lo: rates.length ? Math.floor(Math.min(...rates) * 2) / 2 - 0.5 : 6, hi: rates.length ? Math.ceil(Math.max(...rates) * 2) / 2 + 0.5 : 8, tie: 0.2 }) : '');
   mountTips(el);
 }

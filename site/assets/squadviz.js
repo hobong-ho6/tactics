@@ -19,7 +19,7 @@ export function pitchXI(rows, { W = 560, lo = 0.6, hi = 1 } = {}){
     ${line(`M${X(21)},${Y(100)} V${Y(83)} H${X(79)} V${Y(100)}`)}${line(`M${X(37)},${Y(100)} V${Y(94)} H${X(63)} V${Y(100)}`)}`;
   const chips = rows.map(r => { const t = r.isGk ? null : (r.top?.sim == null ? null : (r.top.sim - lo) / (hi - lo));
     const col = t == null ? 'rgba(255,255,255,.18)' : rampOf(t);
-    const cw = Math.max(76, Math.min(104, (W - 40) / 5)), ch = 46;
+    const cw = Math.max(86, Math.min(124, (W - 40) / 4.6)), ch = 56;   // 2026-10-05 「너무 작다」 — 칩·글자 확대
     const cx = X(r.x) - cw / 2, cy = Y(r.y) - ch / 2;
     const name = r.top?.label ?? '공백';
     const sub = r.isGk ? (r.top?.rating != null ? `평점 ${r.top.rating}` : '적합 무변별')
@@ -30,12 +30,12 @@ export function pitchXI(rows, { W = 560, lo = 0.6, hi = 1 } = {}){
     return `<g class="hit" data-tip="${esc(tip)}">
       <rect x="${cx}" y="${cy}" width="${cw}" height="${ch}" rx="7" fill="${SURF}" stroke="${col}" stroke-width="2"/>
       <rect x="${cx}" y="${cy}" width="${cw}" height="4" rx="2" fill="${col}"/>
-      <text x="${cx + cw / 2}" y="${cy + 19}" text-anchor="middle" font-size="10" fill="var(--dim)">${esc(r.pos)}</text>
-      <text x="${cx + cw / 2}" y="${cy + 31}" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--txt)">${esc(name)}</text>
-      <text x="${cx + cw / 2}" y="${cy + 42}" text-anchor="middle" font-size="9.5" fill="var(--dim)">${esc(sub)}</text></g>`; }).join('');
+      <text x="${cx + cw / 2}" y="${cy + 21}" text-anchor="middle" style="font-size:11px" fill="var(--dim)">${esc(r.pos)}</text>
+      <text x="${cx + cw / 2}" y="${cy + 37}" text-anchor="middle" style="font-size:13.5px;font-weight:700" fill="var(--txt)">${esc(name)}</text>
+      <text x="${cx + cw / 2}" y="${cy + 50}" text-anchor="middle" style="font-size:10.5px" fill="var(--dim)">${esc(sub)}</text></g>`; }).join('');
   const mid = (lo + hi) / 2;
   const legend = RAMP.map((c, i) => `<span><i style="background:${c}"></i>${i === 0 ? `약 ${lo.toFixed(2)}` : i === 2 ? `중 ${mid.toFixed(2)}` : i === RAMP.length - 1 ? `강 ${hi.toFixed(2)}` : ''}</span>`).join('');
-  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="베스트 XI 피치">${pitch}${chips}</svg>
+  return `<svg class="sv-pitch" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="베스트 XI 피치">${pitch}${chips}</svg>
     <div class="lg">${legend}<span class="dim">색 = 슬롯 1순위의 커널 적합</span></div>`;
 }
 
@@ -44,7 +44,8 @@ export function pitchXI(rows, { W = 560, lo = 0.6, hi = 1 } = {}){
 export function depthStrip(rows, { W = 720, key = 'sim', lo = 0.6, hi = 1, label = '커널 적합', tie = 0.05 } = {}){
   if (!rows.length) return '';
   const rowH = 30, L = 74, R = 132, T = 26, H = T + rows.length * rowH + 10;   // R = 오른쪽 「N명 · Δ」 칸(이름과 겹치지 않게 고정)
-  const x = v => L + (W - L - R) * ((v - lo) / (hi - lo));
+  // ⚠️ 범위 밖 값은 가장자리에 붙인다 — 안 그러면 선이 차트 밖(옆 패널)까지 뻗었다(2026-10-05 ATM LM 0.3 미만 후보)
+  const x = v => L + (W - L - R) * Math.max(0, Math.min(1, (v - lo) / (hi - lo)));
   const ticks = []; const stepT = (hi - lo) > 1 ? 0.5 : 0.1;
   for (let v = lo; v <= hi + 1e-9; v += stepT) ticks.push(Math.round(v * 100) / 100);
   const grid = ticks.map(v => `<line x1="${x(v)}" x2="${x(v)}" y1="${T - 8}" y2="${H - 6}" stroke="${GRID}"/>
@@ -73,7 +74,7 @@ export function depthStrip(rows, { W = 720, key = 'sim', lo = 0.6, hi = 1, label
       <text x="${nameRight ? tx + 12 : tx - 12}" y="${y + 4}" text-anchor="${nameRight ? 'start' : 'end'}" font-size="11" fill="var(--txt)"
         style="paint-order:stroke;stroke:var(--panel);stroke-width:3px;stroke-linejoin:round">${esc(top.label)}</text>
       <text x="${W - 8}" y="${y + 4}" text-anchor="end" font-size="10" fill="${tight ? 'var(--warn)' : 'var(--dim)'}">${r.cands.length}명${gap != null ? ` · Δ${gap.toFixed(key === 'sim' ? 3 : 2)}${tight ? ' 경합' : ''}` : ''}</text></g>`; }).join('');
-  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="슬롯별 후보 ${label} 분포">
+  return `<svg class="sv-depth" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="슬롯별 후보 ${label} 분포">
       <text x="${L - 8}" y="${T - 12}" text-anchor="end" font-size="10" fill="var(--dim)">${esc(label)}</text>${grid}${body}</svg>
     <div class="lg"><span><i style="background:${US}"></i>슬롯 1순위</span><span><i style="background:rgba(255,255,255,.34)"></i>그 밖 후보</span>
       <span class="dim">◎ = 게임 처방 선발 · Δ = 1~2순위 격차(${tie} 이하면 경합)</span></div>`;

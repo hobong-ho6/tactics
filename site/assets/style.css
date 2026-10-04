@@ -345,6 +345,12 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .mviz .vz:not(.wide){height:460px}
 .mviz .vz:not(.wide) > svg{flex:1 1 0;min-height:0}
 .mviz .vz.wide > svg{flex:0 0 auto;height:auto}
+/* 고정 높이만 풀고 2열은 유지 — 스쿼드 베스트 XI·슬롯 깊이(2026-10-05) */
+.mviz .vz.free{height:auto}
+.mviz .vz.free > svg{flex:0 0 auto;height:auto}
+/* 스쿼드 베스트 XI 피치 — 세로로 긴 그림이라 폭을 다 쓰면 화면 밖으로 길어진다. 폭 상한만 둔다(2026-10-05). */
+.mviz .vz svg.sv-pitch{max-width:600px;margin:0 auto}
+.mviz .vz svg.sv-depth{max-width:1000px;margin:0}
 @media(min-width:1100px){.mviz{grid-auto-rows:minmax(0,1fr)}}
 
 /* 선수 리포트 — 포지션군 묶음(2026-09-22).
