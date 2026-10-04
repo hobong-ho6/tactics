@@ -18,6 +18,12 @@ a{color:var(--acc);text-decoration:none}
 #hdr .teams button.on{background:var(--acc);border-color:var(--acc);color:#14100b;font-weight:700}
 #hdr nav a{padding:6px 10px;border-radius:8px}
 #hdr nav a.on{background:var(--panel);outline:1px solid var(--line)}
+/* 2026-10-04 — 팀 메뉴 / 전체 메뉴 분리(data.js mountHeader) */
+#hdr .hrow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;width:100%}
+#hdr nav.global{border-left:1px solid var(--line);padding-left:10px}
+#hdr nav.global a{font-weight:600}
+#hdr .teams.off button{opacity:.6}
+#hdr nav.teamnav{width:100%}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0;
   overflow-wrap:anywhere}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}

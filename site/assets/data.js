@@ -82,25 +82,33 @@ export function setCurrentTeam(code){
   try { localStorage.setItem('tactics_team', code); } catch(e){}
 }
 
-/* 공용 헤더 — 팀 스위처 + 페이지 네비 */
+/* 공용 헤더 — 팀 스위처 + 페이지 네비.
+   ⭐ 2026-10-04 사용자 지적 「얼티밋팀은 팀에 종속된 게 아닌데 팀 메뉴 아래 있다」 — 메뉴를 둘로 나눈다:
+     · 팀 메뉴(TEAM_NAV): 고른 팀(regime)의 데이터를 보는 페이지 — 팀 버튼 아래 줄
+     · 전체 메뉴(GLOBAL_NAV): 팀과 무관한 페이지(내 얼티밋 계정 · 게임 시스템 · 매뉴얼) — 오른쪽 위에 따로
+   전체 메뉴를 보고 있을 때는 팀 버튼을 강조하지 않고, 팀을 누르면 그 팀 허브로 간다(팀 데이터를 보러 가는 동작이므로). */
+const TEAM_NAV = [
+  ['index.html', '허브'], ['heatmap.html', '히트맵 비교'], ['match-report.html', '경기 분석'], ['squad.html', '스쿼드'],
+  ['compare.html', '선수 비교'], ['transfer.html', '이적'], ['report.html', '리포트'], ['player.html', '선수'],
+];
+const GLOBAL_NAV = [['evolutions.html', '얼티밋팀'], ['game.html', '게임 시스템'], ['manual.html', '매뉴얼']];
 export async function mountHeader(active){
   const idx = await loadIndex();
   const team = currentTeam();
-  const nav = [
-    ['index.html', '허브'], ['heatmap.html', '히트맵 비교'], ['match-report.html', '경기 분석'], ['squad.html', '스쿼드'],
-    ['compare.html', '선수 비교'], ['transfer.html', '이적'], ['report.html', '리포트'],
-    ['player.html', '선수'], ['evolutions.html', '얼티밋팀'], ['game.html', '게임 시스템'], ['manual.html', '매뉴얼'],
-  ];
+  const isGlobal = GLOBAL_NAV.some(([h]) => h === active);
+  const link = ([href, label]) => `<a href="${href}" class="${href === active ? 'on' : ''}">${label}</a>`;
   const el = document.getElementById('hdr');
   el.innerHTML = `
-    <div class="teams">${idx.regimes.map(r =>
-      `<button data-t="${r.team_code}" class="${r.team_code === team ? 'on' : ''}">${r.team_kr}</button>`).join('')}
+    <div class="hrow">
+      <div class="teams${isGlobal ? ' off' : ''}">${idx.regimes.map(r =>
+        `<button data-t="${r.team_code}" class="${!isGlobal && r.team_code === team ? 'on' : ''}"${isGlobal ? ' title="팀 데이터 보기 — 그 팀 허브로 이동"' : ''}>${r.team_kr}</button>`).join('')}
+      </div>
+      <nav class="global" title="팀과 무관한 메뉴">${GLOBAL_NAV.map(link).join('')}</nav>
     </div>
-    <nav>${nav.map(([href, label]) =>
-      `<a href="${href}" class="${href === active ? 'on' : ''}">${label}</a>`).join('')}
-    </nav>`;
+    <nav class="teamnav">${TEAM_NAV.map(link).join('')}</nav>`;
   el.querySelectorAll('button[data-t]').forEach(b => b.addEventListener('click', () => {
-    setCurrentTeam(b.dataset.t); location.reload();
+    setCurrentTeam(b.dataset.t);
+    if (isGlobal) location.href = 'index.html'; else location.reload();
   }));
   return { idx, team, regime: idx.regimes.find(r => r.team_code === team) };
 }
