@@ -44,10 +44,15 @@ def g21_case(mutate, label, want_fail):
 
 print("G21 수집 회차 완결성")
 # ⑴ 2026-09-23 아침 실제 사고 재현: 경로 수집이 11명에서 끊겨 295 → 27이 됐다.
-g21_case(lambda c: c.execute(
-    "DELETE FROM player_evolutions WHERE pulled=(SELECT MAX(pulled) FROM player_evolutions) "
-    "AND rowid NOT IN (SELECT rowid FROM player_evolutions "
-    "                   WHERE pulled=(SELECT MAX(pulled) FROM player_evolutions) LIMIT 20)"),
+# ⚠️ migration 099 이후 표는 「바뀐 행만 저장」이다 — 끊긴 회차 = 최신 관측일에 **20행만** 관측된 상태로 재현한다
+#    (나머지 행의 last_seen을 직전 관측일로 되돌린다 · 최신 관측일에 새로 생긴 행은 지운다).
+g21_case(lambda c: c.executescript("""
+    CREATE TEMP TABLE d AS SELECT DISTINCT last_seen s FROM player_evolutions ORDER BY s DESC LIMIT 2;
+    CREATE TEMP TABLE keep AS SELECT id FROM player_evolutions
+        WHERE last_seen=(SELECT MAX(s) FROM d) LIMIT 20;
+    DELETE FROM player_evolutions WHERE pulled=(SELECT MAX(s) FROM d) AND id NOT IN (SELECT id FROM keep);
+    UPDATE player_evolutions SET last_seen=(SELECT MIN(s) FROM d)
+        WHERE last_seen=(SELECT MAX(s) FROM d) AND id NOT IN (SELECT id FROM keep);"""),
          "중단된 경로 수집(최신 회차가 직전의 절반 미만)", True)
 # ⑵ 오탐 검사 — 조금 줄어든 것(정상: 진화 마감·카드 처분)은 잡으면 안 된다.
 g21_case(lambda c: c.execute(

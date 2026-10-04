@@ -150,13 +150,16 @@ def export_all(db_path=None, window="2026-summer"):
                                   e.evolution_ids, e.evolution_names, e.evolution_urls, e.steps,
                                   e.coins_cost, e.points_cost, e.training_time, e.is_expired,
                                   e.ovr_before, e.ovr_after, e.upgrades, e.six_before, e.six_after,
-                                  e.playstyles_after, e.roles_plus_after, e.roles_plus_plus_after, e.pulled,
+                                  e.playstyles_after, e.roles_plus_after, e.roles_plus_plus_after,
+                                  e.last_seen pulled, e.pulled first_seen,
                                   e.path_json, e.path_choices
                            FROM player_evolutions e
                            LEFT JOIN players p ON p.id=e.player_id
-                           JOIN (SELECT player_id, MAX(pulled) mp FROM player_evolutions
+                           -- ⭐ 「바뀐 행만 저장」(migration 099): 행은 pulled~last_seen 동안 같은 내용으로 관측된 경로다.
+                           --    선수별 **마지막 관측일**에 살아 있던 행 = last_seen이 그 선수의 최대 last_seen인 행.
+                           JOIN (SELECT player_id, MAX(last_seen) mp FROM player_evolutions
                                   WHERE player_id IS NOT NULL GROUP BY player_id) m
-                             ON m.player_id=e.player_id AND m.mp=e.pulled
+                             ON m.player_id=e.player_id AND m.mp=e.last_seen
                             WHERE e.player_id IS NOT NULL
                            ORDER BY e.player_id, (e.ovr_after - e.ovr_before) DESC, e.steps"""):
         evos.setdefault(str(r.pop("player_id")), []).append(r)
@@ -169,7 +172,7 @@ def export_all(db_path=None, window="2026-summer"):
     #       만료는 `is_expired`가, 소진은 내 구단 원장이 따로 잡으므로 이월이 위험하지 않다.
     #    ⚠️ 다만 **이월분은 실측과 같은 얼굴로 두지 않는다**(카탈로그의 `carried_from`과 같은 규약) —
     #       그 회차에 조회되지 않았다는 사실을 화면이 배지로 적는다.
-    _latest_pull = con.execute("SELECT MAX(pulled) FROM player_evolutions").fetchone()[0]
+    _latest_pull = con.execute("SELECT MAX(last_seen) FROM player_evolutions").fetchone()[0]
     for rows in evos.values():
         for r in rows:
             if r["pulled"] != _latest_pull:

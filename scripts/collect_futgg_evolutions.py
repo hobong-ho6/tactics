@@ -40,6 +40,7 @@ API = "https://www.fut.gg/api/fut"
 # ⛔ 표는 `core/futgg_attrs.py`가 정본이다(2026-09-23에 네 벌을 하나로 합쳤다 —
 #    한 곳만 키가 틀려 「프리킥 정확도」가 100% 누락된 사고가 있었다).
 from core.futgg_attrs import ATTR_KR as ATTR_KR  # noqa: E402
+from core.evo_paths import content_key, seen_on  # noqa: E402
 SIX = [("facePace", "PAC"), ("faceShooting", "SHO"), ("facePassing", "PAS"),
        ("faceDribbling", "DRI"), ("faceDefending", "DEF"), ("facePhysicality", "PHY")]
 SIX_GK = [("gkFaceDiving", "DIV"), ("gkFaceHandling", "HAN"), ("gkFaceKicking", "KIC"),
@@ -171,7 +172,8 @@ def main():
         targets = cur.execute(q + " ORDER BY c.name_kr", params).fetchall()
         print(f"{gv} 대상 {len(targets)}명 (base eaId 보유분)")
 
-        ins = skip = 0
+        ins = skip = ext = 0
+        prev_obs = {}               # (gv, base) → 이번 회차 직전 관측일(migration 099)
         no_path, errs, skipped_cosmetic = [], [], set()
         for t in targets:
             ea, kr, pid = t["base_ea_id"], t["name_kr"], t["player_id"]
@@ -233,13 +235,35 @@ def main():
                     print(f"  {kr:14} {row['evolution_names'][:52]:52} OVR {row['ovr_before']}→{row['ovr_after']}")
                     ins += 1
                     continue
+                # ⭐⭐ **바뀐 행만 저장**(migration 099 · 2026-10-04 — DB 103.8MB로 GitHub 상한 초과).
+                #    같은 경로가 그 카드의 **바로 앞 관측**과 같은 내용이면 새 행을 만들지 않고 last_seen만 늘린다.
+                #    관측이 끊겼으면(앞 관측에 없던 경로) 새 행 — 부재도 사실이다. 비교 규칙 정본 = core/evo_paths.
+                pk = (gv, ea)
+                if pk not in prev_obs:
+                    prev_obs[pk] = cur.execute(
+                        "SELECT MAX(last_seen) FROM player_evolutions WHERE game_version=? AND base_ea_id=? AND last_seen<?",
+                        (gv, ea, a.pulled)).fetchone()[0]
+                cur.row_factory = sqlite3.Row
+                latest = cur.execute("""SELECT * FROM player_evolutions WHERE game_version=? AND base_ea_id=? AND path_key=?
+                                        ORDER BY last_seen DESC LIMIT 1""", (gv, ea, key)).fetchone()
+                cur.row_factory = None
+                if latest is not None and content_key({k: latest[k] for k in row}) == content_key(row):
+                    if latest["last_seen"] == a.pulled:
+                        skip += 1
+                        continue
+                    if latest["last_seen"] == prev_obs[pk]:
+                        cur.execute("UPDATE player_evolutions SET last_seen=? WHERE id=?", (a.pulled, latest["id"]))
+                        ext += 1
+                        continue
+                row["last_seen"] = a.pulled
                 cols = ",".join(row)
                 cur.execute(
                     f"INSERT INTO player_evolutions({cols}) VALUES({','.join('?' * len(row))}) "
                     "ON CONFLICT(game_version, base_ea_id, path_key, pulled) "
-                    "DO UPDATE SET path_json=excluded.path_json, path_choices=excluded.path_choices, "
+                    "DO UPDATE SET path_json=excluded.path_json, path_choices=excluded.path_choices, last_seen=excluded.last_seen, "
                     "upgrades=COALESCE(player_evolutions.upgrades, excluded.upgrades) "
-                    "WHERE player_evolutions.upgrades IS NULL OR player_evolutions.path_json NOT LIKE '%\"attrs\"%'",
+                    "WHERE player_evolutions.upgrades IS NULL OR player_evolutions.path_json NOT LIKE '%\"attrs\"%' "
+                    "OR player_evolutions.last_seen IS NOT excluded.last_seen",
                     tuple(row.values()))
                 ins += cur.rowcount
                 skip += 1 - cur.rowcount
@@ -274,7 +298,7 @@ def main():
                  "HIGH — 동률이면 확정하지 않는다.", a.pulled)).rowcount
         if added:
             print(f"  🔤 PlayStyle 이름표 신규 {added}개(누적 표에 덧칠)")
-        print(f"  적재 {ins}행 · 기존 {skip}행 · 경로 없음 {len(no_path)}명 · 조회 실패 {len(errs)}명")
+        print(f"  적재 {ins}행 · 변화 없음 연장 {ext}행 · 기존 {skip}행 · 경로 없음 {len(no_path)}명 · 조회 실패 {len(errs)}명")
         if skipped_cosmetic:
             print(f"  🎨 코스메틱 전용이라 제외 {len(skipped_cosmetic)}종: {', '.join(sorted(skipped_cosmetic))}")
         if no_path:
@@ -438,7 +462,7 @@ def main():
         # 경로 축이 덮지 못한 쌍을 **건수로 보고한다** — 조용히 넘기면 같은 구멍이 다시 생긴다.
         covered = set()
         for pid, ids_json in con.execute(
-                "SELECT player_id, evolution_ids FROM player_evolutions WHERE game_version=? AND pulled=?", (gv, a.pulled)):
+                f"SELECT player_id, evolution_ids FROM player_evolutions e WHERE game_version=? AND {seen_on('e')}", (gv, a.pulled)):
             for i in json.loads(ids_json or "[]"):
                 covered.add((pid, i))
         pairs = {(p, e) for (_, e, p, *_r) in elig}

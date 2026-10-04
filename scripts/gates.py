@@ -1105,8 +1105,16 @@ def run(db_path=None, verbose=True):
     g21_bad = []
     for t in G21_TABLES:
         try:
-            hist = con.execute(f"SELECT pulled, COUNT(*) FROM {t} GROUP BY pulled "
-                               "ORDER BY pulled DESC LIMIT 2").fetchall()
+            if t == "player_evolutions":
+                # ⭐ 「바뀐 행만 저장」(migration 099) — 회차별 행 수가 아니라 **그 회차에 관측된 행 수**로 센다
+                #    (pulled ≤ 회차 ≤ last_seen). 안 그러면 변화 없는 회차가 0행처럼 보여 매번 막힌다.
+                days = [d for (d,) in con.execute("SELECT DISTINCT last_seen FROM player_evolutions "
+                                                  "ORDER BY last_seen DESC LIMIT 2")]
+                hist = [(d, con.execute("SELECT COUNT(*) FROM player_evolutions WHERE ? BETWEEN pulled AND last_seen",
+                                        (d,)).fetchone()[0]) for d in days]
+            else:
+                hist = con.execute(f"SELECT pulled, COUNT(*) FROM {t} GROUP BY pulled "
+                                   "ORDER BY pulled DESC LIMIT 2").fetchall()
         except sqlite3.OperationalError:
             continue                      # 아직 없는 표는 건너뛴다
         if len(hist) < 2:

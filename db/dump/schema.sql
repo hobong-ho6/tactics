@@ -277,19 +277,6 @@ CREATE TABLE transfer_ledger(
   amount_m REAL NOT NULL, note TEXT, source TEXT, confidence TEXT, contract_years REAL,
   UNIQUE(team_code, window, kind, label)
 );
-CREATE VIEW v_player_profile AS
-SELECT player_id,
-       COUNT(*) AS n,
-       ROUND(AVG(rating),2) AS avg_rating,
-       SUM(minutes) AS minutes,
-       ROUND(AVG(xg),3) AS xg_pg, COUNT(xg) AS xg_n,
-       ROUND(AVG(xa),3) AS xa_pg, COUNT(xa) AS xa_n,
-       ROUND(AVG(key_passes),2) AS kp_pg, COUNT(key_passes) AS kp_n,
-       ROUND(AVG(duels_won),2) AS dw_pg, COUNT(duels_won) AS dw_n,
-       ROUND(AVG(tackles),2) AS tk_pg, COUNT(tackles) AS tk_n,
-       ROUND(AVG(interceptions),2) AS ic_pg, COUNT(interceptions) AS ic_n
-FROM player_matches GROUP BY player_id
-/* v_player_profile(player_id,n,avg_rating,minutes,xg_pg,xg_n,xa_pg,xa_n,kp_pg,kp_n,dw_pg,dw_n,tk_pg,tk_n,ic_pg,ic_n) */;
 CREATE TABLE _migration_log(
   run_at TEXT, v1_path TEXT, note TEXT
 );
@@ -306,34 +293,6 @@ CREATE TABLE fbref_percentiles(
   source TEXT,
   UNIQUE(player_id, metric, period)
 );
-CREATE VIEW v_player_season_stats AS
-SELECT player_id, season,
-       CASE competition
-         WHEN 'PL' THEN 'Premier League'
-         WHEN 'EL' THEN 'UEFA Europa League'
-         WHEN 'CL' THEN 'UEFA Champions League'
-         WHEN 'FIFA World Cup' THEN 'World Cup'
-         WHEN '' THEN '미분류'
-         ELSE COALESCE(competition, '미분류')
-       END AS competition,
-       COUNT(*)        AS n,
-       SUM(started)    AS starts,
-       SUM(minutes)    AS minutes,
-       SUM(goals)      AS goals,
-       SUM(assists)    AS assists,
-       ROUND(AVG(rating),2) AS avg_rating,
-       COUNT(rating)   AS rating_n
-FROM player_matches
-GROUP BY player_id, season,
-       CASE competition
-         WHEN 'PL' THEN 'Premier League'
-         WHEN 'EL' THEN 'UEFA Europa League'
-         WHEN 'CL' THEN 'UEFA Champions League'
-         WHEN 'FIFA World Cup' THEN 'World Cup'
-         WHEN '' THEN '미분류'
-         ELSE COALESCE(competition, '미분류')
-       END
-/* v_player_season_stats(player_id,season,competition,n,starts,minutes,goals,assists,avg_rating,rating_n) */;
 CREATE TABLE fotmob_traits(
   id INTEGER PRIMARY KEY,
   player_id INTEGER NOT NULL REFERENCES players(id),
@@ -381,8 +340,6 @@ CREATE TABLE slot_canon_roles(
   FOREIGN KEY(regime_id, formation, pos) REFERENCES slots(regime_id, formation, pos),
   FOREIGN KEY(game_version, role_id) REFERENCES game_roles(game_version, role_id)
 );
-CREATE UNIQUE INDEX uq_squad_entries_regime_player_type
-ON squad_entries(regime_id, player_id, slot_type);
 CREATE TABLE match_reports(
   id INTEGER PRIMARY KEY,
   event_id INTEGER NOT NULL,
@@ -543,38 +500,6 @@ CREATE TABLE ingame_captures(
   cosine REAL,
   note TEXT, source TEXT NOT NULL, confidence TEXT NOT NULL
 );
-CREATE VIEW v_ingame_capture_norm AS
-WITH c AS (
-  SELECT id, tactic_code, player_id, game_version, ref_kind, cosine, note, cells,
-         (note LIKE '%조작 오염%') AS controlled,
-         -- 자기진영 = 25칸 중 16~25번째(행3·행4) 가중치 합 / 전체
-         (SELECT SUM(CAST(value AS REAL)) FROM (
-            SELECT value, row_number() OVER () rn FROM json_each('[' || cells || ']')) WHERE rn > 15)
-         / (SELECT SUM(CAST(value AS REAL)) FROM json_each('[' || cells || ']')) * 100.0 AS own_pct
-  FROM ingame_captures),
-m AS (
-  SELECT tactic_code, AVG(own_pct) AS team_mean_own, COUNT(*) AS n_players
-  FROM c WHERE controlled = 0 AND ref_kind NOT LIKE 'kernel:gk_%' GROUP BY tactic_code)
-SELECT c.id, c.tactic_code, c.player_id, c.game_version, c.ref_kind, c.cosine, c.controlled,
-       ROUND(c.own_pct, 1) AS own_pct, ROUND(m.team_mean_own, 1) AS team_mean_own,
-       ROUND(c.own_pct - m.team_mean_own, 1) AS own_delta, m.n_players
-FROM c JOIN m ON m.tactic_code = c.tactic_code
-/* v_ingame_capture_norm(id,tactic_code,player_id,game_version,ref_kind,cosine,controlled,own_pct,team_mean_own,own_delta,n_players) */;
-CREATE VIEW v_kernel_fidelity AS
-SELECT game_version,
-       substr(ref_kind, 8, instr(ref_kind, '/') - 8)                          AS role_id,
-       substr(ref_kind, instr(ref_kind, '/') + 1,
-              instr(ref_kind, '@') - instr(ref_kind, '/') - 1)                AS focus,
-       COUNT(*) AS n, COUNT(DISTINCT tactic_code) AS n_matches, COUNT(DISTINCT player_id) AS n_players,
-       ROUND(AVG(cosine), 2) AS cos_avg, ROUND(MIN(cosine), 2) AS cos_min, ROUND(MAX(cosine), 2) AS cos_max,
-       CASE WHEN COUNT(*) >= 3 AND AVG(cosine) >= 0.6 THEN 'HIGH'
-            WHEN COUNT(*) >= 3 AND AVG(cosine) >= 0.45 THEN 'MID'
-            WHEN COUNT(*) >= 3 THEN 'LOW'
-            ELSE 'n<3' END AS fidelity
-FROM ingame_captures
-WHERE ref_kind LIKE 'kernel:%' AND note NOT LIKE '%조작 오염%'
-GROUP BY game_version, role_id, focus
-/* v_kernel_fidelity(game_version,role_id,focus,n,n_matches,n_players,cos_avg,cos_min,cos_max,fidelity) */;
 CREATE TABLE player_card_items(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL REFERENCES game_versions(code),
@@ -594,7 +519,6 @@ CREATE TABLE player_card_items(
   source TEXT, confidence TEXT, acquisition TEXT, is_special INTEGER, first_seen TEXT, nation TEXT, league TEXT, chem_extra TEXT, is_icon INTEGER, is_hero INTEGER, height_cm INTEGER, weight_kg INTEGER, birthdate TEXT, simple_card_url TEXT, render_url TEXT, is_real_face INTEGER, club_ea_id INTEGER, sibling_club_ea_id INTEGER, league_ea_id INTEGER, grading_score INTEGER,
   UNIQUE(game_version, ea_item_id)
 );
-CREATE INDEX ix_card_items_player ON player_card_items(player_id, game_version);
 CREATE TABLE match_videos(
   id INTEGER PRIMARY KEY,
   video_id TEXT NOT NULL,           -- 유튜브 id (전사 파일명의 앞부분)
@@ -615,8 +539,6 @@ CREATE TABLE match_videos(
   source TEXT, confidence TEXT,
   UNIQUE(video_id, lang)
 );
-CREATE INDEX ix_match_videos_report ON match_videos(report_id);
-CREATE INDEX ix_match_videos_team ON match_videos(team_code, published);
 CREATE TABLE video_impl_claims(
   id INTEGER PRIMARY KEY,
   video_id TEXT NOT NULL,           -- match_videos.video_id (lang은 묶지 않는다 — 주장은 언어와 무관)
@@ -633,9 +555,6 @@ CREATE TABLE video_impl_claims(
   source TEXT, confidence TEXT,
   added TEXT NOT NULL DEFAULT (date('now'))
 );
-CREATE INDEX ix_vic_video ON video_impl_claims(video_id);
-CREATE INDEX ix_vic_axis ON video_impl_claims(axis, verdict);
-CREATE INDEX ix_vic_player ON video_impl_claims(player_id);
 CREATE TABLE player_evolutions(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL REFERENCES game_versions(code),
@@ -657,10 +576,9 @@ CREATE TABLE player_evolutions(
   roles_plus_after TEXT,            -- ⭐ 결과 카드 Role+ raw id JSON (roles 카탈로그 plusEaId로 해석)
   roles_plus_plus_after TEXT,       -- ⭐ 결과 카드 Role++ raw id JSON (plusPlusEaId로 해석)
   source TEXT, confidence TEXT,
-  pulled TEXT NOT NULL, path_json TEXT, path_choices TEXT,             -- 수집일 — 진화는 기간제라 시점이 정본이다
+  pulled TEXT NOT NULL, path_json TEXT, path_choices TEXT, last_seen TEXT,             -- 수집일 — 진화는 기간제라 시점이 정본이다
   UNIQUE(game_version, base_ea_id, path_key, pulled)
 );
-CREATE INDEX ix_player_evolutions_player ON player_evolutions(player_id, game_version);
 CREATE TABLE fc_role_familiarity_map(
   game_version TEXT NOT NULL REFERENCES game_versions(code),
   ea_id INTEGER NOT NULL,           -- plusEaId 또는 plusPlusEaId
@@ -696,7 +614,6 @@ CREATE TABLE fc_evolutions(
   pulled TEXT NOT NULL, carried_from TEXT, name_kr TEXT, description_kr TEXT, levels_kr TEXT, repeat_total_ea INTEGER, ea_evo_id INTEGER,                 -- 진화는 기간제 — 시점이 정본
   UNIQUE(game_version, evo_id, pulled)
 );
-CREATE INDEX ix_fc_evolutions_gv ON fc_evolutions(game_version, is_expired, end_time);
 CREATE TABLE fut_accounts(
   id INTEGER PRIMARY KEY,
   name TEXT NOT NULL UNIQUE,            -- 표시명 (예: 'main-ps5')
@@ -717,7 +634,6 @@ CREATE TABLE fut_evolution_log(
   playstyles_after TEXT, roles_plus_after TEXT, roles_plus_plus_after TEXT,
   source TEXT, confidence TEXT, notes TEXT
 , is_void INTEGER NOT NULL DEFAULT 0, attrs_after TEXT);
-CREATE INDEX ix_fut_evolution_log_cp ON fut_evolution_log(club_player_id, applied_at);
 CREATE TABLE player_card_prices(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL REFERENCES game_versions(code),
@@ -731,7 +647,6 @@ CREATE TABLE player_card_prices(
   pulled TEXT NOT NULL,
   UNIQUE(game_version, ea_item_id, platform, pulled)
 );
-CREATE INDEX ix_player_card_prices_item ON player_card_prices(game_version, ea_item_id, pulled);
 CREATE TABLE game_role_key_attrs(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL REFERENCES game_versions(code),
@@ -753,7 +668,6 @@ CREATE TABLE tactic_change_log(
   reason TEXT NOT NULL,              -- 왜 바뀌었나 — obs# 참조 권장
   source TEXT NOT NULL               -- 'git:<hash>' (backfill) 또는 'tactic_changes.py <날짜>'
 );
-CREATE INDEX ix_tactic_change_log_r ON tactic_change_log(regime_id, changed_at);
 CREATE TABLE match_events(
   id INTEGER PRIMARY KEY,
   match_id INTEGER NOT NULL REFERENCES matches(id),
@@ -771,7 +685,6 @@ CREATE TABLE match_events(
   note TEXT,
   source TEXT NOT NULL, confidence TEXT
 );
-CREATE INDEX ix_match_events_m ON match_events(match_id, minute);
 CREATE TABLE match_period_stats(
   id INTEGER PRIMARY KEY,
   match_id INTEGER NOT NULL REFERENCES matches(id),
@@ -795,7 +708,6 @@ CREATE TABLE match_shots(
   provider TEXT NOT NULL,       -- 'SofaScore' | 'FotMob'
   source TEXT NOT NULL, confidence TEXT
 );
-CREATE INDEX ix_match_shots_m ON match_shots(match_id, minute);
 CREATE TABLE fc_meta_snapshots(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL REFERENCES game_versions(code),
@@ -811,7 +723,6 @@ CREATE TABLE fc_meta_snapshots(
   source TEXT NOT NULL, confidence TEXT NOT NULL,
   UNIQUE(game_version, pulled, kind, category, item)
 );
-CREATE INDEX ix_fc_meta_snapshots ON fc_meta_snapshots(game_version, pulled, kind);
 CREATE TABLE fc_chemistry_styles(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL REFERENCES game_versions(code),
@@ -889,7 +800,6 @@ CREATE TABLE futgg_chem_signals (
   confidence TEXT,
   UNIQUE(ea_item_id, pulled, style_name)
 );
-CREATE INDEX ix_futgg_chem_item ON futgg_chem_signals(ea_item_id, pulled);
 CREATE TABLE fc_objective_tasks(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL REFERENCES game_versions(code),
@@ -904,7 +814,6 @@ CREATE TABLE fc_objective_tasks(
   pulled TEXT NOT NULL,
   UNIQUE(game_version, group_slug, task_name, pulled)
 );
-CREATE INDEX ix_obj_task_name ON fc_objective_tasks(task_name);
 CREATE TABLE fc_playstyle_ids(
   game_version TEXT NOT NULL REFERENCES game_versions(code),
   ea_id INTEGER NOT NULL,
@@ -922,7 +831,6 @@ CREATE TABLE fc_evolution_eligibility(
   source       TEXT,
   PRIMARY KEY (game_version, evo_id, ea_item_id, pulled)
 );
-CREATE INDEX ix_evo_elig_player ON fc_evolution_eligibility(player_id, pulled);
 CREATE TABLE fut_evolution_unlocks(
   account_id INTEGER NOT NULL REFERENCES fut_accounts(id),
   evo_id     INTEGER NOT NULL,
@@ -942,85 +850,6 @@ CREATE TABLE fut_club_player_stats(
   source TEXT, confidence TEXT,
   PRIMARY KEY(club_player_id, pulled)
 );
-CREATE INDEX ix_fut_club_player_stats_pulled ON fut_club_player_stats(pulled);
-CREATE VIEW v_slot_candidates AS
-SELECT
-  r.id AS regime_id,
-  r.team_code,
-  sl.formation,
-  sl.pos,
-  sl.slot_type,
-  se.player_id,
-  COALESCE(NULLIF(TRIM(se.label), ''), p.name_kr, p.name) AS label,
-  p.name AS name_en,
-  COALESCE(p.name_kr, p.name) AS name_kr,
-  'squad' AS source_kind,
-  se.lh AS status,
-  se.map25,
-  se.rate_v AS rating,
-  se.rate_basis,
-  se.rate_note,
-  se.fit_role,
-  se.fit_focus,
-  se.fit_sim,
-  se.source,
-  se.confidence,
-  se.sort_order,
-  se.grid_club,
-  se.grid_caveat
-FROM squad_entries se
-JOIN regimes r ON r.id=se.regime_id
-JOIN players p ON p.id=se.player_id
-JOIN slots sl ON sl.regime_id=se.regime_id AND sl.slot_type=se.slot_type
--- pos_only: 좌우 쌍 슬롯(FB=LB/RB, CB=LCB/RCB, DM=LDM/RDM, WM=LM/RM)에서 한쪽만
--- 후보로 쓰고 싶을 때 그 pos를 적는다. NULL이면 종전대로 slot_type의 모든 pos에 노출된다.
-WHERE (se.pos_only IS NULL OR se.pos_only = sl.pos)
-
-UNION ALL
-
-SELECT
-  r.id AS regime_id,
-  r.team_code,
-  sl.formation,
-  sl.pos,
-  sl.slot_type,
-  COALESCE(tt.player_id, tp.id) AS player_id,
-  CASE WHEN tt.likelihood='CONFIRMED'
-       THEN COALESCE(tt.short_label, tt.name_kr, tt.name)
-       ELSE '영입·' || COALESCE(tt.short_label, tt.name_kr, tt.name) END AS label,
-  tt.name AS name_en,
-  COALESCE(tt.name_kr, tp.name_kr, tt.short_label, tt.name) AS name_kr,
-  'transfer' AS source_kind,
-  tt.likelihood AS status,
-  tt.map25,
-  tt.avg_rating AS rating,
-  'transfer' AS rate_basis,
-  '표본 ' || COALESCE(tt.sample_n, 0) || '경기 (' || COALESCE(tt.club, '') || ')' AS rate_note,
-  tt.fit_role,
-  tt.fit_focus,
-  tt.fit_sim,
-  tt.source,
-  tt.confidence,
-  10000 + tt.id AS sort_order,
-  tt.club AS grid_club,
-  CASE WHEN tt.map25 IS NOT NULL THEN '⚠️ 영입 전 현 소속팀 실측' END AS grid_caveat
-FROM transfer_targets tt
-JOIN regimes r ON r.team_code=tt.team_code AND r.end IS NULL
-JOIN slots sl ON sl.regime_id=r.id AND sl.pos=(
-  CASE tt.slot WHEN 'LW' THEN 'LM' WHEN 'RW' THEN 'RM' ELSE tt.slot END
-)
-LEFT JOIN players tp ON tp.id=tt.player_id OR (tt.player_id IS NULL AND tp.name=tt.name)
-WHERE tt.map25 IS NOT NULL
-  AND tt.likelihood!='OWNED'
-  AND tt.likelihood NOT LIKE 'DEAD%'
-  AND NOT EXISTS (
-    SELECT 1
-    FROM squad_entries se2
-    WHERE se2.regime_id=r.id
-      AND se2.player_id=COALESCE(tt.player_id, tp.id)
-      AND se2.slot_type=sl.slot_type
-  )
-/* v_slot_candidates(regime_id,team_code,formation,pos,slot_type,player_id,label,name_en,name_kr,source_kind,status,map25,rating,rate_basis,rate_note,fit_role,fit_focus,fit_sim,source,confidence,sort_order,grid_club,grid_caveat) */;
 CREATE TABLE fc_sbc_sets(
   game_version TEXT NOT NULL REFERENCES game_versions(code),
   set_ea_id    INTEGER NOT NULL,
@@ -1048,7 +877,6 @@ CREATE TABLE fc_sbc_challenges(
   source TEXT, confidence TEXT,
   PRIMARY KEY(game_version, challenge_ea_id, pulled)
 );
-CREATE INDEX ix_sbc_ch_set ON fc_sbc_challenges(set_ea_id, pulled);
 CREATE TABLE fut_sbc_log(
   id INTEGER PRIMARY KEY,
   account_id      INTEGER NOT NULL REFERENCES fut_accounts(id),
@@ -1135,7 +963,6 @@ CREATE TABLE fc_rarity_assets(
   confidence    TEXT,
   PRIMARY KEY(game_version, rarity_ea_id, level, pulled)
 );
-CREATE INDEX ix_fc_rarity_assets_pulled ON fc_rarity_assets(pulled);
 CREATE TABLE fc_gallery_sets(
   game_version  TEXT NOT NULL,
   set_id        INTEGER NOT NULL,
@@ -1164,8 +991,6 @@ CREATE TABLE fc_gallery_tiers(
   source TEXT, confidence TEXT,
   PRIMARY KEY(game_version, set_id, grade, pulled)
 );
-CREATE INDEX ix_fc_gallery_sets_pulled ON fc_gallery_sets(pulled);
-CREATE INDEX ix_fc_gallery_tiers_pulled ON fc_gallery_tiers(pulled);
 CREATE TABLE IF NOT EXISTS "fc_sbc_solutions"(
   game_version    TEXT NOT NULL REFERENCES game_versions(code),
   challenge_ea_id INTEGER NOT NULL,
@@ -1217,7 +1042,6 @@ CREATE TABLE fut_gallery_completions(
   card_ids     TEXT,             -- 넣은 카드 fut_club_players.id JSON — 우리 제안대로 넣었을 때만(아니면 NULL)
   source TEXT, notes TEXT
 );
-CREATE INDEX ix_gal_comp_set ON fut_gallery_completions(game_version, set_id, completed_at);
 CREATE TABLE fut_sbc_storage(
   id           INTEGER PRIMARY KEY,
   account_id   INTEGER NOT NULL REFERENCES fut_accounts(id),
@@ -1229,7 +1053,6 @@ CREATE TABLE fut_sbc_storage(
   used_challenge_ea_id INTEGER, used_at TEXT,
   source TEXT, notes TEXT
 );
-CREATE INDEX ix_sbc_storage_status ON fut_sbc_storage(account_id, game_version, status);
 CREATE TABLE fut_gallery_placed(
   id            INTEGER PRIMARY KEY,
   game_version  TEXT NOT NULL,
@@ -1243,7 +1066,6 @@ CREATE TABLE fut_gallery_placed(
   club_player_id INTEGER,                  -- 우리 원장(fut_club_players.id)과 맞으면
   source TEXT, notes TEXT
 );
-CREATE INDEX ix_gal_placed_set ON fut_gallery_placed(game_version, set_id, captured_at);
 CREATE TABLE fut_gallery_snapshots(
   id            INTEGER PRIMARY KEY,
   game_version  TEXT NOT NULL,
@@ -1255,3 +1077,182 @@ CREATE TABLE fut_gallery_snapshots(
   pending       INTEGER NOT NULL DEFAULT 0,  -- 1 = 화면 버튼이 「변경 사항 확인」(확정 전 구성)
   source TEXT, notes TEXT
 );
+CREATE UNIQUE INDEX uq_squad_entries_regime_player_type
+ON squad_entries(regime_id, player_id, slot_type);
+CREATE INDEX ix_card_items_player ON player_card_items(player_id, game_version);
+CREATE INDEX ix_match_videos_report ON match_videos(report_id);
+CREATE INDEX ix_match_videos_team ON match_videos(team_code, published);
+CREATE INDEX ix_vic_video ON video_impl_claims(video_id);
+CREATE INDEX ix_vic_axis ON video_impl_claims(axis, verdict);
+CREATE INDEX ix_vic_player ON video_impl_claims(player_id);
+CREATE INDEX ix_player_evolutions_player ON player_evolutions(player_id, game_version);
+CREATE INDEX ix_fc_evolutions_gv ON fc_evolutions(game_version, is_expired, end_time);
+CREATE INDEX ix_fut_evolution_log_cp ON fut_evolution_log(club_player_id, applied_at);
+CREATE INDEX ix_player_card_prices_item ON player_card_prices(game_version, ea_item_id, pulled);
+CREATE INDEX ix_tactic_change_log_r ON tactic_change_log(regime_id, changed_at);
+CREATE INDEX ix_match_events_m ON match_events(match_id, minute);
+CREATE INDEX ix_match_shots_m ON match_shots(match_id, minute);
+CREATE INDEX ix_fc_meta_snapshots ON fc_meta_snapshots(game_version, pulled, kind);
+CREATE INDEX ix_futgg_chem_item ON futgg_chem_signals(ea_item_id, pulled);
+CREATE INDEX ix_obj_task_name ON fc_objective_tasks(task_name);
+CREATE INDEX ix_evo_elig_player ON fc_evolution_eligibility(player_id, pulled);
+CREATE INDEX ix_fut_club_player_stats_pulled ON fut_club_player_stats(pulled);
+CREATE INDEX ix_sbc_ch_set ON fc_sbc_challenges(set_ea_id, pulled);
+CREATE INDEX ix_fc_rarity_assets_pulled ON fc_rarity_assets(pulled);
+CREATE INDEX ix_fc_gallery_sets_pulled ON fc_gallery_sets(pulled);
+CREATE INDEX ix_fc_gallery_tiers_pulled ON fc_gallery_tiers(pulled);
+CREATE INDEX ix_gal_comp_set ON fut_gallery_completions(game_version, set_id, completed_at);
+CREATE INDEX ix_sbc_storage_status ON fut_sbc_storage(account_id, game_version, status);
+CREATE INDEX ix_gal_placed_set ON fut_gallery_placed(game_version, set_id, captured_at);
+CREATE INDEX ix_player_evolutions_seen ON player_evolutions(game_version, base_ea_id, last_seen);
+CREATE VIEW v_player_profile AS
+SELECT player_id,
+       COUNT(*) AS n,
+       ROUND(AVG(rating),2) AS avg_rating,
+       SUM(minutes) AS minutes,
+       ROUND(AVG(xg),3) AS xg_pg, COUNT(xg) AS xg_n,
+       ROUND(AVG(xa),3) AS xa_pg, COUNT(xa) AS xa_n,
+       ROUND(AVG(key_passes),2) AS kp_pg, COUNT(key_passes) AS kp_n,
+       ROUND(AVG(duels_won),2) AS dw_pg, COUNT(duels_won) AS dw_n,
+       ROUND(AVG(tackles),2) AS tk_pg, COUNT(tackles) AS tk_n,
+       ROUND(AVG(interceptions),2) AS ic_pg, COUNT(interceptions) AS ic_n
+FROM player_matches GROUP BY player_id
+/* v_player_profile(player_id,n,avg_rating,minutes,xg_pg,xg_n,xa_pg,xa_n,kp_pg,kp_n,dw_pg,dw_n,tk_pg,tk_n,ic_pg,ic_n) */;
+CREATE VIEW v_player_season_stats AS
+SELECT player_id, season,
+       CASE competition
+         WHEN 'PL' THEN 'Premier League'
+         WHEN 'EL' THEN 'UEFA Europa League'
+         WHEN 'CL' THEN 'UEFA Champions League'
+         WHEN 'FIFA World Cup' THEN 'World Cup'
+         WHEN '' THEN '미분류'
+         ELSE COALESCE(competition, '미분류')
+       END AS competition,
+       COUNT(*)        AS n,
+       SUM(started)    AS starts,
+       SUM(minutes)    AS minutes,
+       SUM(goals)      AS goals,
+       SUM(assists)    AS assists,
+       ROUND(AVG(rating),2) AS avg_rating,
+       COUNT(rating)   AS rating_n
+FROM player_matches
+GROUP BY player_id, season,
+       CASE competition
+         WHEN 'PL' THEN 'Premier League'
+         WHEN 'EL' THEN 'UEFA Europa League'
+         WHEN 'CL' THEN 'UEFA Champions League'
+         WHEN 'FIFA World Cup' THEN 'World Cup'
+         WHEN '' THEN '미분류'
+         ELSE COALESCE(competition, '미분류')
+       END
+/* v_player_season_stats(player_id,season,competition,n,starts,minutes,goals,assists,avg_rating,rating_n) */;
+CREATE VIEW v_ingame_capture_norm AS
+WITH c AS (
+  SELECT id, tactic_code, player_id, game_version, ref_kind, cosine, note, cells,
+         (note LIKE '%조작 오염%') AS controlled,
+         -- 자기진영 = 25칸 중 16~25번째(행3·행4) 가중치 합 / 전체
+         (SELECT SUM(CAST(value AS REAL)) FROM (
+            SELECT value, row_number() OVER () rn FROM json_each('[' || cells || ']')) WHERE rn > 15)
+         / (SELECT SUM(CAST(value AS REAL)) FROM json_each('[' || cells || ']')) * 100.0 AS own_pct
+  FROM ingame_captures),
+m AS (
+  SELECT tactic_code, AVG(own_pct) AS team_mean_own, COUNT(*) AS n_players
+  FROM c WHERE controlled = 0 AND ref_kind NOT LIKE 'kernel:gk_%' GROUP BY tactic_code)
+SELECT c.id, c.tactic_code, c.player_id, c.game_version, c.ref_kind, c.cosine, c.controlled,
+       ROUND(c.own_pct, 1) AS own_pct, ROUND(m.team_mean_own, 1) AS team_mean_own,
+       ROUND(c.own_pct - m.team_mean_own, 1) AS own_delta, m.n_players
+FROM c JOIN m ON m.tactic_code = c.tactic_code
+/* v_ingame_capture_norm(id,tactic_code,player_id,game_version,ref_kind,cosine,controlled,own_pct,team_mean_own,own_delta,n_players) */;
+CREATE VIEW v_kernel_fidelity AS
+SELECT game_version,
+       substr(ref_kind, 8, instr(ref_kind, '/') - 8)                          AS role_id,
+       substr(ref_kind, instr(ref_kind, '/') + 1,
+              instr(ref_kind, '@') - instr(ref_kind, '/') - 1)                AS focus,
+       COUNT(*) AS n, COUNT(DISTINCT tactic_code) AS n_matches, COUNT(DISTINCT player_id) AS n_players,
+       ROUND(AVG(cosine), 2) AS cos_avg, ROUND(MIN(cosine), 2) AS cos_min, ROUND(MAX(cosine), 2) AS cos_max,
+       CASE WHEN COUNT(*) >= 3 AND AVG(cosine) >= 0.6 THEN 'HIGH'
+            WHEN COUNT(*) >= 3 AND AVG(cosine) >= 0.45 THEN 'MID'
+            WHEN COUNT(*) >= 3 THEN 'LOW'
+            ELSE 'n<3' END AS fidelity
+FROM ingame_captures
+WHERE ref_kind LIKE 'kernel:%' AND note NOT LIKE '%조작 오염%'
+GROUP BY game_version, role_id, focus
+/* v_kernel_fidelity(game_version,role_id,focus,n,n_matches,n_players,cos_avg,cos_min,cos_max,fidelity) */;
+CREATE VIEW v_slot_candidates AS
+SELECT
+  r.id AS regime_id,
+  r.team_code,
+  sl.formation,
+  sl.pos,
+  sl.slot_type,
+  se.player_id,
+  COALESCE(NULLIF(TRIM(se.label), ''), p.name_kr, p.name) AS label,
+  p.name AS name_en,
+  COALESCE(p.name_kr, p.name) AS name_kr,
+  'squad' AS source_kind,
+  se.lh AS status,
+  se.map25,
+  se.rate_v AS rating,
+  se.rate_basis,
+  se.rate_note,
+  se.fit_role,
+  se.fit_focus,
+  se.fit_sim,
+  se.source,
+  se.confidence,
+  se.sort_order,
+  se.grid_club,
+  se.grid_caveat
+FROM squad_entries se
+JOIN regimes r ON r.id=se.regime_id
+JOIN players p ON p.id=se.player_id
+JOIN slots sl ON sl.regime_id=se.regime_id AND sl.slot_type=se.slot_type
+-- pos_only: 좌우 쌍 슬롯(FB=LB/RB, CB=LCB/RCB, DM=LDM/RDM, WM=LM/RM)에서 한쪽만
+-- 후보로 쓰고 싶을 때 그 pos를 적는다. NULL이면 종전대로 slot_type의 모든 pos에 노출된다.
+WHERE (se.pos_only IS NULL OR se.pos_only = sl.pos)
+
+UNION ALL
+
+SELECT
+  r.id AS regime_id,
+  r.team_code,
+  sl.formation,
+  sl.pos,
+  sl.slot_type,
+  COALESCE(tt.player_id, tp.id) AS player_id,
+  CASE WHEN tt.likelihood='CONFIRMED'
+       THEN COALESCE(tt.short_label, tt.name_kr, tt.name)
+       ELSE '영입·' || COALESCE(tt.short_label, tt.name_kr, tt.name) END AS label,
+  tt.name AS name_en,
+  COALESCE(tt.name_kr, tp.name_kr, tt.short_label, tt.name) AS name_kr,
+  'transfer' AS source_kind,
+  tt.likelihood AS status,
+  tt.map25,
+  tt.avg_rating AS rating,
+  'transfer' AS rate_basis,
+  '표본 ' || COALESCE(tt.sample_n, 0) || '경기 (' || COALESCE(tt.club, '') || ')' AS rate_note,
+  tt.fit_role,
+  tt.fit_focus,
+  tt.fit_sim,
+  tt.source,
+  tt.confidence,
+  10000 + tt.id AS sort_order,
+  tt.club AS grid_club,
+  CASE WHEN tt.map25 IS NOT NULL THEN '⚠️ 영입 전 현 소속팀 실측' END AS grid_caveat
+FROM transfer_targets tt
+JOIN regimes r ON r.team_code=tt.team_code AND r.end IS NULL
+JOIN slots sl ON sl.regime_id=r.id AND sl.pos=(
+  CASE tt.slot WHEN 'LW' THEN 'LM' WHEN 'RW' THEN 'RM' ELSE tt.slot END
+)
+LEFT JOIN players tp ON tp.id=tt.player_id OR (tt.player_id IS NULL AND tp.name=tt.name)
+WHERE tt.map25 IS NOT NULL
+  AND tt.likelihood!='OWNED'
+  AND tt.likelihood NOT LIKE 'DEAD%'
+  AND NOT EXISTS (
+    SELECT 1
+    FROM squad_entries se2
+    WHERE se2.regime_id=r.id
+      AND se2.player_id=COALESCE(tt.player_id, tp.id)
+      AND se2.slot_type=sl.slot_type
+  )
+/* v_slot_candidates(regime_id,team_code,formation,pos,slot_type,player_id,label,name_en,name_kr,source_kind,status,map25,rating,rate_basis,rate_note,fit_role,fit_focus,fit_sim,source,confidence,sort_order,grid_club,grid_caveat) */;
