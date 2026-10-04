@@ -243,10 +243,8 @@ def main():
                     prev_obs[pk] = cur.execute(
                         "SELECT MAX(last_seen) FROM player_evolutions WHERE game_version=? AND base_ea_id=? AND last_seen<?",
                         (gv, ea, a.pulled)).fetchone()[0]
-                cur.row_factory = sqlite3.Row
                 latest = cur.execute("""SELECT * FROM player_evolutions WHERE game_version=? AND base_ea_id=? AND path_key=?
                                         ORDER BY last_seen DESC LIMIT 1""", (gv, ea, key)).fetchone()
-                cur.row_factory = None
                 if latest is not None and content_key({k: latest[k] for k in row}) == content_key(row):
                     if latest["last_seen"] == a.pulled:
                         skip += 1

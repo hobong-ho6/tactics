@@ -1314,6 +1314,14 @@ def run(db_path=None, verbose=True):
             # ⚠️ ⑶은 **기준선 초과만** 막는다(G23과 같은 방식). 지금 있는 것은 해소하려면
             #    「이 선수가 이 포메이션의 어느 자리냐」를 정해야 하는데 그건 사람 판단이다.
             #    ⇒ 값을 적어 두고 **늘어나는 것만** 막는다. 건수는 매 회차 눈에 띄게 찍는다.
+            # ⑷ ⛔ **정본 포메이션에 없는 자리로 묶인 행**(pos_only) — 후보에서 조용히 빠진다(2026-10-04 · 같은 날 두 번:
+            #    ATM 4-1-4-1→4-4-2 전환 뒤 ST 4명(pos_only=ST)·DM 4명(pos_only=CDM)이 LST·LDM 후보에서 사라졌다 · 불변규칙 13 ③).
+            orphan = [r[0] for r in con.execute(
+                """SELECT p.name FROM squad_entries se JOIN players p ON p.id=se.player_id
+                    WHERE se.regime_id=? AND se.pos_only IS NOT NULL
+                      AND se.pos_only NOT IN (SELECT pos FROM slots WHERE regime_id=se.regime_id AND is_canon=1)""", (rid,))]
+            if orphan:
+                g24.append(f"{code} 정본에 없는 자리(pos_only)에 묶여 후보에서 빠지는 행 {len(orphan)}: {', '.join(orphan[:5])}")
             base = G24_LOST_BASE.get(code, 0)
             if lost > base:
                 g24.append(f"{code} 정본에 없는 slot_type이라 화면에서 사라지는 선수 {lost}명(기준 {base})")

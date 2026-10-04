@@ -39,7 +39,9 @@ document.getElementById('title').textContent =
   `${regime.manager_kr ?? regime.manager} · ${regime.team_kr}`;
 
 // FC26 설정 시트 — 팀 세팅(setups 최신 projected/optimal) + 슬롯별 게임 처방(fc26:opt)
-const su = td.setups.filter(x=>!/deprecated|reference/.test(x.kind) && /projected|optimal/.test(x.kind)).slice(-1)[0] ?? td.setups.slice(-1)[0];
+/* ⚠️ 실측만 있는 팀(ATM)은 주 행 `measured`를 쓴다 — 「마지막 행」이면 대안 행(measured:3-4-2-1)이 잡혔다(2026-10-04). */
+const su = td.setups.filter(x=>!/deprecated|reference/.test(x.kind) && /projected|optimal/.test(x.kind)).slice(-1)[0]
+  ?? td.setups.find(x=>x.kind==='measured') ?? td.setups.slice(-1)[0];
 /* 재현 불가 항목(reproduction_limits, migration 027) — 설정값 옆에 개수를 붙이고 목록은 접는다.
    설정 시트를 읽는 사람이 「이 값이 담지 못하는 것」을 같은 화면에서 보게 하기 위해서다(2026-09-08 점검 7번). */
 const lim = td.limits ?? [];
