@@ -926,7 +926,7 @@ CREATE TABLE IF NOT EXISTS "fut_club_players"(
   notes TEXT,
   updated TEXT NOT NULL, chem_style_ea INTEGER, chem_points INTEGER, gg_player_id TEXT, synced_at TEXT, current_attrs TEXT, is_untradeable INTEGER, is_in_active_squad INTEGER, is_captain INTEGER, kit_number INTEGER, number_of_owners INTEGER,
   -- 어느 챌린지에 넣었나(status='sbc'일 때만). 되돌리기와 출처 추적용.
-  sbc_challenge_ea_id INTEGER, is_loan INTEGER, loan_games INTEGER, ea_evo_history TEXT, ea_evo_active TEXT,
+  sbc_challenge_ea_id INTEGER, is_loan INTEGER, loan_games INTEGER, ea_evo_history TEXT, ea_evo_active TEXT, is_on_transfer_list INTEGER, tl_state TEXT, tl_buy_now INTEGER, tl_expires TEXT, tl_last_seen TEXT,
   UNIQUE(account_id, ea_item_id)
 );
 CREATE TABLE fc_sbc_fixed(
