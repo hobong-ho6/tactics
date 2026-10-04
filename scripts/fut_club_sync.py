@@ -37,6 +37,20 @@ SIX_K = ["PAC", "SHO", "PAS", "DRI", "DEF", "PHY"]
 GK_SIX_K = ["DIV", "HAN", "KIC", "REF", "SPD", "POS"]
 
 
+def tl_update(con, r, row_id):
+    """이적 명단 상태(migration 100). ⭐ 명단에 있으면 tl_last_seen을 남긴다 — 팔려서 목록에서 사라진 뒤에도
+       「명단에 올렸던 카드」로 읽힌다(처분 판정 보조 · 갤러리는 처분 카드도 후보로 쓴다).
+       ⛔ 값이 안 온 회차(None)는 덮지 않는다(구 수집 파일 호환)."""
+    if "tl" not in r:
+        return
+    where = "id=last_insert_rowid()" if row_id == "last_insert_rowid()" else "id=?"
+    args = [None if r.get("tl") is None else int(bool(r["tl"])), r.get("tls"), r.get("tlb"), r.get("tle"),
+            TODAY if r.get("tl") else None]
+    con.execute(f"""UPDATE fut_club_players SET is_on_transfer_list=?, tl_state=?, tl_buy_now=?, tl_expires=?,
+                     tl_last_seen=COALESCE(?, tl_last_seen) WHERE {where}""",
+                args + ([] if row_id == "last_insert_rowid()" else [row_id]))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("path")
@@ -331,6 +345,11 @@ def main():
             print(f"   {n:<16} 원장 {mine} ↔ EA {ea} (원장 진화 {ec}회){tag}")
     if gone:
         print(f"\n원장에는 보유인데 EA 구단에 없음 {len(gone)}명 — **자동으로 처분 처리하지 않는다**: {', '.join(gone)}")
+        # ⭐ 이적 명단에 올려 뒀던 카드면 판매 가능성이 높다(migration 100) — 판단 보조로만 보인다
+        tl_gone = [v["name"] for k, v in have.items() if v["status"] == "owned" and k not in {x["ea"] for x in rows}
+                   and v.get("tl_last_seen")]
+        if tl_gone:
+            print(f"   └ 그중 이적 명단에 올렸던 카드 {len(tl_gone)}명(판매 가능성 높음): {', '.join(tl_gone)}")
     print("\n다음: python3 scripts/export.py && scripts/db_dump.sh")
 
 

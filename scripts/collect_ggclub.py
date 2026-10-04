@@ -233,6 +233,9 @@ def rows_of(players):
                     # ⭐ 임대 여부(migration 088) — 임대는 SBC에 못 낸다. 종전엔 버려서 해법에 임대 카드가 들어갔다.
                     "loan": None if p.get("playerType") is None else p.get("playerType") == "loan",
                     "loan_n": q.get("loanDuration"),
+                    # ⭐ 이적 명단(migration 100 · 2026-10-04) — 보유행에 온다. 명단 카드도 이 목록에 있다.
+                    "tl": p.get("isOnTransferList"), "tls": p.get("transferListState"),
+                    "tlb": p.get("transferListBuyNowPrice"), "tle": p.get("transferListExpiresAt"),
                     # ⭐⭐ 진화 이력(migration 090) — 보유행에 온다(playerDef가 아니다 · 2026-09-24 점검은 playerDef만 봤다).
                     #    evolutions[].evolutionId = **EA id** · activeEvolution.evolutionId = **fut.gg id** — 체계가 다르다.
                     "evh": [{"ea": e.get("evolutionId"), "rep": e.get("repetitionIndex"),
