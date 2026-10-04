@@ -18,7 +18,7 @@ python3 -m venv .venv
 ## 1. 세션 시작·종료
 
 CLAUDE.md와 동일하다 — 시작 시 `HANDOFF.md`를 먼저 읽고 한 줄 브리핑, 종료 시 갱신.
-절차는 [.claude/skills/hadoff/SKILL.md](.claude/skills/hadoff/SKILL.md)에 있고 **툴 중립이라 그대로 쓸 수 있다**.
+절차는 [.claude/skills/handoff/SKILL.md](.claude/skills/handoff/SKILL.md)에 있고 **툴 중립이라 그대로 쓸 수 있다**.
 
 ## 2. 브라우저가 필요한 작업 — 스크립트로 대체한다
 

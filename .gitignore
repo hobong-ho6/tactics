@@ -20,3 +20,12 @@ db/.snapshots/
 
 # 인게임 캡처 원본(PS 리모트 스크린샷) — 전사해 DB·reports/ingame에 남기고 지운다(2026-10-03 사용자 지시). 용량이 커 커밋하지 않는다.
 captures/
+
+# 2026-10-04 저장소 점검 — 추적되면 안 되는 것들
+*.db-journal
+*.db-wal
+*.db-shm
+**/.DS_Store
+*.mov
+*.mp4
+.claude/worktrees/
