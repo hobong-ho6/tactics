@@ -532,6 +532,15 @@ def export_all(db_path=None, window="2026-summer"):
                                                             WHERE s.game_version='FC27' AND s.status IN ('stored','used')
                                                             ORDER BY s.status DESC, i.ovr DESC""")},
                            "gallery": gallery,
+                           # ⭐ 내가 설계한 스쿼드(저장 처방 · migration 101) — 「지금 내 팀」의 스쿼드 전환 칩이 쓴다.
+                           #   EA 활성 스쿼드(squad_slots)와 다른 층이다. 팀 설정 3축은 setup_kind가 가리키는 행에서 붙인다.
+                           "planned": [dict(q, slots=_rows(con, """SELECT idx, pos, club_player_id, role_id, focus
+                                                                    FROM fut_planned_squad_slots WHERE squad_id=? ORDER BY idx""", (q["id"],)))
+                                       for q in _rows(con, """SELECT q.id, q.key, q.title, q.formation, q.setup_kind, q.created, q.notes,
+                                                                     t.build_up_style, t.defensive_approach, t.line_height
+                                                                FROM fut_planned_squads q LEFT JOIN team_tactic_setups t
+                                                                  ON t.regime_id=q.regime_id AND t.kind=q.setup_kind
+                                                               ORDER BY q.id""")],
                            "formations": formations}))
 
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──

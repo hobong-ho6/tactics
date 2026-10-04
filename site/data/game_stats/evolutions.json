@@ -52236,6 +52236,24 @@
     "notes": "완성일 미상 — 2026-10-03 캡처에서 등급·총점이 보여 완성으로 기록. score=인게임 화면 총점(우리 계산 아님).",
     "score": 6803,
     "set_id": 116
+   },
+   {
+    "card_ids": "[338, 150, 161, 367, 380, 444, 461, 473, -1000251, 165, 320, 464, -1000253, 75, 385, 416, 465, -1000256, 352, 378, 437, 288, 303, 480, -1000263, 183, 291, 477, -1000267, 235]",
+    "completed_at": "2026-10-04",
+    "grade": "D",
+    "id": 7,
+    "notes": null,
+    "score": 10350,
+    "set_id": 122
+   },
+   {
+    "card_ids": "[338, 150, 161, 367, 380, 444, 461, 473, -1000251, 165, 320, 464, -1000253, 75, 385, 416, 465, -1000256, 352, 378, 437, 288, 303, 480, -1000263, 183, 291, 477, -1000267, 235]",
+    "completed_at": "2026-10-04",
+    "grade": "D",
+    "id": 8,
+    "notes": null,
+    "score": 10350,
+    "set_id": 122
    }
   ],
   "eval": [
@@ -54661,11 +54679,10 @@
    "108": "D",
    "109": "D",
    "114": "A",
-   "116": "S"
+   "116": "S",
+   "122": "D"
   },
-  "new": [
-   122
-  ],
+  "new": [],
   "placed": [
    {
     "captured_at": "2026-10-03",
@@ -57662,9 +57679,7 @@
   ],
   "placed_id0": 1000000,
   "pulled": "2026-10-04",
-  "reach": [
-   122
-  ],
+  "reach": [],
   "sets": [
    {
     "category_name": "Rarities",
@@ -73048,6 +73063,99 @@
    }
   ]
  },
+ "planned": [
+  {
+   "build_up_style": "Short Passing",
+   "created": "2026-10-04",
+   "defensive_approach": "Balanced",
+   "formation": "4-4-2 (2)",
+   "id": 1,
+   "key": "atm-second-2026-10-04",
+   "line_height": 56,
+   "notes": "시메오네 4-4-2 정본을 보유 카드로 구현 · 케미 33/33(감독 케미 제외 하한) · 보유 ATM 4장 고정 · 빌라 활성 스쿼드 카드 제외",
+   "setup_kind": "fut:simeone-second-team-2026-10-04",
+   "slots": [
+    {
+     "club_player_id": 289,
+     "focus": "Defend",
+     "idx": 0,
+     "pos": "GK",
+     "role_id": "gk_goalkeeper"
+    },
+    {
+     "club_player_id": 120,
+     "focus": "Support",
+     "idx": 1,
+     "pos": "RB",
+     "role_id": "fb_att_wb"
+    },
+    {
+     "club_player_id": 334,
+     "focus": "Aggressive",
+     "idx": 2,
+     "pos": "RCB",
+     "role_id": "cb_bpd"
+    },
+    {
+     "club_player_id": 336,
+     "focus": "Aggressive",
+     "idx": 3,
+     "pos": "LCB",
+     "role_id": "cb_bpd"
+    },
+    {
+     "club_player_id": 254,
+     "focus": "Support",
+     "idx": 4,
+     "pos": "LB",
+     "role_id": "fb_att_wb"
+    },
+    {
+     "club_player_id": 271,
+     "focus": "Roaming",
+     "idx": 5,
+     "pos": "RDM",
+     "role_id": "dm_dlp"
+    },
+    {
+     "club_player_id": 343,
+     "focus": "Roaming",
+     "idx": 6,
+     "pos": "LDM",
+     "role_id": "dm_dlp"
+    },
+    {
+     "club_player_id": 249,
+     "focus": "Attack",
+     "idx": 7,
+     "pos": "RM",
+     "role_id": "wm_winger"
+    },
+    {
+     "club_player_id": 305,
+     "focus": "Attack",
+     "idx": 8,
+     "pos": "LM",
+     "role_id": "wm_insidefwd"
+    },
+    {
+     "club_player_id": 299,
+     "focus": "Build-Up",
+     "idx": 9,
+     "pos": "RS",
+     "role_id": "st_false9"
+    },
+    {
+     "club_player_id": 360,
+     "focus": "Support",
+     "idx": 10,
+     "pos": "LS",
+     "role_id": "st_advanced"
+    }
+   ],
+   "title": "ATM 세컨팀"
+  }
+ ],
  "prices": {
   "167495": {
    "has_price": 1,

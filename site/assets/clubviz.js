@@ -110,8 +110,11 @@ function card(p, role, posName, { bench = false } = {}) {
    늘어 한 화면에 카드 한 장만 들어왔다 — 폭을 제한하고 카드를 %로 키워 11명이 한 화면에 들어온다.
    rows = [{player, role, posName}] 11개(슬롯 순서). */
 export function fcPitch(xi, bench, meta = {}) {
+  /* ⭐ 좌표는 포메이션에서 받을 수 있다(meta.spots · 2026-10-04 — 저장 처방 스쿼드가 4-4-2 (2)라서).
+     없으면 종전 4-2-3-1 고정 좌표 — EA 활성 스쿼드 화면은 그대로다. */
+  const SP = meta.spots || SPOTS;
   const spots = xi.map((r, i) => {
-    const s = SPOTS[i] || { x: 50, y: 50 };
+    const s = SP[i] || { x: 50, y: 50 };
     return `<div class="fc-slot" style="left:${s.x}%;bottom:${s.y}%">${card(r.player, r.role, r.posName)}</div>`;
   }).join('');
   const benchCards = bench.map(r =>
@@ -608,7 +611,7 @@ export function fcSideEmpty(meta = {}, xi = []) {
       <td>${r.player ? esc(r.player.name) : '<span class="dim">—</span>'}</td>
       <td>${esc(r.role.role_name)}<br><small class="dim">${esc(r.role.focus)}</small></td></tr>`).join('');
   return `<div class="fc-sidebox">
-    <h4 style="margin:0 0 8px">팀 설정 <small class="dim">인게임 실측</small></h4>
+    <h4 style="margin:0 0 8px">팀 설정 <small class="dim">${esc(meta.side_label ?? '인게임 실측')}</small></h4>
     <div class="fc-kv"><span>포메이션</span><b>${esc(meta.formation ?? '-')}</b></div>
     <div class="fc-kv"><span>빌드업</span><b>${esc(meta.build_up_style ?? '-')}</b></div>
     <div class="fc-kv"><span>수비 접근</span><b>${esc(meta.defensive_approach ?? '-')}</b></div>

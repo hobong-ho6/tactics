@@ -1,0 +1,1 @@
+INSERT INTO fut_planned_squads VALUES(1,1,'atm-second-2026-10-04','ATM 세컨팀',4,'FC27','4-4-2 (2)','fut:simeone-second-team-2026-10-04','2026-10-04','team_tactic_setups fut:simeone-second-team-2026-10-04 rationale에서 이관(migration 101)','시메오네 4-4-2 정본을 보유 카드로 구현 · 케미 33/33(감독 케미 제외 하한) · 보유 ATM 4장 고정 · 빌라 활성 스쿼드 카드 제외');

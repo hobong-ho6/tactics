@@ -1256,3 +1256,23 @@ WHERE tt.map25 IS NOT NULL
       AND se2.slot_type=sl.slot_type
   )
 /* v_slot_candidates(regime_id,team_code,formation,pos,slot_type,player_id,label,name_en,name_kr,source_kind,status,map25,rating,rate_basis,rate_note,fit_role,fit_focus,fit_sim,source,confidence,sort_order,grid_club,grid_caveat) */;
+CREATE TABLE fut_planned_squads(
+  id           INTEGER PRIMARY KEY,
+  account_id   INTEGER NOT NULL REFERENCES fut_accounts(id),
+  key          TEXT NOT NULL UNIQUE,      -- 예: atm-second-2026-10-04
+  title        TEXT NOT NULL,             -- 화면 칩 이름
+  regime_id    INTEGER REFERENCES regimes(id),
+  game_version TEXT NOT NULL,
+  formation    TEXT NOT NULL,             -- fc_formations.name (예: '4-4-2 (2)')
+  setup_kind   TEXT,                      -- team_tactic_setups.kind (같은 regime·season)
+  created      TEXT NOT NULL,
+  source TEXT, notes TEXT
+);
+CREATE TABLE fut_planned_squad_slots(
+  squad_id       INTEGER NOT NULL REFERENCES fut_planned_squads(id),
+  idx            INTEGER NOT NULL,        -- fc_formations.slots 순서(0=GK)
+  pos            TEXT NOT NULL,           -- 그 슬롯 라벨(RS·LDM …)
+  club_player_id INTEGER NOT NULL REFERENCES fut_club_players(id),
+  role_id        TEXT, focus TEXT,        -- 감독 정본 역할(slot_canon_roles에서 옮긴 값)
+  PRIMARY KEY(squad_id, idx)
+);

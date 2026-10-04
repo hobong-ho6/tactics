@@ -64,6 +64,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
       ⛔ 이 영역은 <b>내 얼티밋 구단의 실제 상태</b>다 — 감독 재현(슬롯 정본·<code>team_tactic_setups</code>)과 <b>다른 층</b>이고 서로 덮지 않는다.
       수치는 전부 EA 싱크 실측이며 <b>추정·계산값이 아니다</b>.
     </p>
+    <div id="squadsw" class="plist" style="margin:0 0 8px"></div>
     <div id="nowmeta"></div>
     <div id="nowpitch"></div>
         <details open style="margin-top:12px"><summary class="dim" style="cursor:pointer;font-size:12px">표로 보기 — 팀 설정 · <b>11칸 역할 3축 비교</b>(인게임 ↔ 에메리 재현 ↔ 선수 최적) · 교체 명단</summary>
@@ -160,8 +161,8 @@ import { evoRules, logState, inProgress } from './assets/evorules.js?v=20261002'
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
 import { posOvrRaw } from './assets/posovr.js?v=20261002';
-import { setRarityAssets } from './assets/clubviz.js?v=20261002f';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
-import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate } from './assets/clubviz.js?v=20261002f';
+import { setRarityAssets } from './assets/clubviz.js?v=20261004sq';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
+import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate } from './assets/clubviz.js?v=20261004sq';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -939,6 +940,77 @@ function renderNow(){
   document.getElementById('nowxi').innerHTML = `<h3 style="margin:14px 0 6px">교체 명단 <small class="dim">${bench.length}명</small></h3>
     <div class="plist">${bench.map(s => { const p = playerBySlot(s); return p
       ? `<button data-p="${p.player_id ?? ''}">${esc(p.name)} <small class="up">${p.current_ovr ?? ''}</small></button>` : ''; }).join('')}</div>`;
+}
+/* ⭐⭐ 스쿼드 전환 — EA 활성 스쿼드 / 내가 설계한 스쿼드(저장 처방 · migration 101) (2026-10-04 사용자 지시).
+   ⛔ 저장 처방은 **보기 전용**이다(편집은 대화로 다시 계산해 DB에 쓴다). EA 실측 화면(renderNow)은 건드리지 않는다.
+   ⭐ 카드·피치는 같은 렌더러(fcPitch·cardDetail)를 쓰고, 좌표만 그 포메이션(fc_formations)에서 받는다.
+   ⭐ 케미는 저장값이 아니라 **지금 원장으로 다시 계산**한다(core/chem 정본의 화면 구현 chemOf) — 카드를 팔면 바로 드러난다. */
+let SQUAD_SEL = sessionStorage.getItem('squad_sel') || 'ea';
+function renderSquadSwitch(){
+  const P = EVO.planned || [];
+  const box = document.getElementById('squadsw');
+  if (!P.length){ box.innerHTML = ''; return; }
+  const T = (EVO.tactics || [])[0];
+  box.innerHTML = `<span class="dim" style="font-size:12px;align-self:center">스쿼드</span>
+    <button data-sq="ea" class="${SQUAD_SEL === 'ea' ? 'on' : ''}">${esc(T?.squad_name || '내 팀')} <small class="dim">EA 활성</small></button>
+    ${P.map(q => `<button data-sq="${esc(q.key)}" class="${SQUAD_SEL === q.key ? 'on' : ''}">${esc(q.title)} <small class="dim">저장 처방</small></button>`).join('')}`;
+  box.querySelectorAll('[data-sq]').forEach(b => b.addEventListener('click', () => {
+    SQUAD_SEL = b.dataset.sq; sessionStorage.setItem('squad_sel', SQUAD_SEL); renderSquad();
+  }));
+}
+function renderSquad(){
+  renderSquadSwitch();
+  const q = (EVO.planned || []).find(x => x.key === SQUAD_SEL);
+  if (!q){ SQUAD_SEL = 'ea'; renderSquadSwitch(); return renderNow(); }
+  renderPlanned(q);
+}
+function renderPlanned(q){
+  const byId = Object.fromEntries((EVO.club?.players || []).map(p => [p.id, p]));
+  const F = (EVO.formations || []).find(f => f.name === q.formation);
+  const fs = F ? (typeof F.slots === 'string' ? JSON.parse(F.slots) : F.slots) : [];
+  const spots = fs.map(s => ({ x: s.x, y: Math.min(97, Math.round(s.y * 1.08)) }));
+  const slots = [...q.slots].sort((a, b) => a.idx - b.idx);
+  const owned = p => p && p.status === 'owned';
+  const live = slots.map(s => owned(byId[s.club_player_id]) ? byId[s.club_player_id] : null);
+  const ch = chemOf(live.filter(Boolean));
+  let k = 0;
+  const chemBy = live.map(p => p ? ch.per[k++] : 0);
+  const eaIds = new Set(xiSlots().map(s => playerBySlot(s)?.id).filter(Boolean));
+  const overlap = slots.filter(s => eaIds.has(s.club_player_id)).length;
+  const gone = slots.filter((s, i) => !live[i]);
+  const xiRows = slots.map((s, i) => ({
+    player: live[i] ? { ...live[i], chem_points: chemBy[i] } : null,
+    role: { position_name: s.pos, role_name: ROLE_KR[s.role_id] || s.role_id || '-', focus: s.focus || '-' },
+    posName: s.pos }));
+  const meta = { formation: q.formation, build_up_style: q.build_up_style, defensive_approach: q.defensive_approach,
+                 line_height: q.line_height, chemistry: ch.total, spots, side_label: '저장 처방 · 시즌 실측 설정' };
+  document.getElementById('nowmeta').innerHTML = `<div class="pcard" style="padding:8px 12px;margin:0 0 10px">
+      <b style="font-size:15px">${esc(q.title)}</b> <span class="chip">${esc(q.formation)}</span>
+      <span class="chip" style="border-color:var(--ok);color:var(--ok)" title="감독 케미 제외 하한 — 지금 원장으로 다시 계산">케미 ${ch.total}/33</span>
+      <span class="chip" title="EA 활성 스쿼드가 아니라 우리가 계산해 저장한 구성">EA에는 아직 없음 · 저장 처방</span>
+      ${overlap ? `<span class="chip" title="EA 활성 스쿼드(선발)와 겹치는 카드">활성 스쿼드와 겹침 ${overlap}장</span>` : ''}
+      ${gone.length ? `<span class="chip" style="border-color:var(--bad,#e55);color:var(--bad,#e55)">보유 안 함 ${gone.length}칸</span>` : ''}
+      <div class="dim" style="font-size:12px;margin-top:4px">저장 ${esc(q.created)} · ${esc(q.notes || '')}</div></div>`;
+  document.getElementById('nowpitch').innerHTML = fcPitch(xiRows, [], meta);
+  const side = document.getElementById('fcside');
+  document.querySelectorAll('#nowpitch .fc-slot').forEach((el, i) => el.addEventListener('click', () => {
+    const p = xiRows[i]?.player; if (!p) return;
+    document.querySelectorAll('#nowpitch .sel').forEach(x => x.classList.remove('sel'));
+    el.classList.add('sel');
+    side.innerHTML = `<div class="fc-back"><a class="act" href="#" data-back>← 팀 설정으로</a></div>`
+      + cardDetail(p, { role: xiRows[i].role, team: meta, log: (EVO.club || {}).log, chem_styles: EVO.chem_styles,
+                        role_map: EVO.role_map, stats: ((EVO.club || {}).stats || {})[p.id],
+                        catalog: EVO.catalog, face_stats: EVO.face_stats });
+    side.querySelector('[data-back]').addEventListener('click', e => { e.preventDefault(); side.innerHTML = fcSideEmpty(meta, xiRows); });
+  }));
+  paintEvoCards(document.getElementById('nowpitch'));
+  document.getElementById('nowtac').innerHTML = `<h3 style="margin:10px 0 6px">11칸 · 감독 정본 역할 <small class="dim">(저장 처방)</small></h3>
+    <table class="tbl"><thead><tr><th>자리</th><th>카드</th><th>역할</th><th>포커스</th><th>케미</th></tr></thead><tbody>
+    ${slots.map((s, i) => `<tr><td><b>${esc(s.pos)}</b></td>
+      <td>${live[i] ? `${esc(live[i].name)} <small class="dim">${live[i].current_ovr ?? ''} · ${esc(live[i].club || '')}</small>` : '<span class="dim">보유 안 함</span>'}</td>
+      <td>${esc(ROLE_KR[s.role_id] || s.role_id || '-')}</td><td>${esc(s.focus || '-')}</td><td>${live[i] ? chemBy[i] : '—'}</td></tr>`).join('')}
+    </tbody></table>`;
+  document.getElementById('nowxi').innerHTML = '';
 }
 /* 선발 슬롯 i번째 ↔ 보유 카드 */
 /* ⛔⛔ **슬롯 그룹 이름을 화면에 흩뿌리지 않는다**(2026-09-27 사고).
@@ -3586,7 +3658,7 @@ function doneHTML(){
   return `<h3 style="margin:10px 0 4px">🏁 내가 완성한 세트 <small class="dim">${items.length}</small></h3>${items.join('')}`;
 }
 
-renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc(); renderStorage(); renderGallery(); galPopup();
+renderSquad(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc(); renderStorage(); renderGallery(); galPopup();
 
 
 
