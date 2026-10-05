@@ -321,6 +321,17 @@ def gk_cost(xi):
     return abs(n - 1)
 
 
+DUP_RULE = "같은 선수는 한 스쿼드에 한 장만(EA 규칙 · 보유 카드와 스토리지 사본이 겹치면 제출이 안 된다)"
+
+
+def dup_cost(xi):
+    """⛔ **같은 선수가 두 칸에 서면 제출이 안 된다**(2026-10-05 실측: Destined for Glory Challenge 3에
+       Naomie Feller가 보유 카드와 SBC 스토리지 사본으로 두 번 들어갔다 — id가 달라 `id` 중복 검사를 지나쳤다).
+       ⇒ 카드 id가 아니라 **선수(base_ea_id)**로 센다. 탐색·내리기·대체 후보가 전부 `check()`를 거치므로 여기 하나로 막힌다."""
+    who = [p.get("who") or p.get("ea_item_id") or ("id", p["id"]) for p in xi]
+    return len(who) - len(set(who))
+
+
 def check(xi, conds):
     """못 맞춘 조건 문장 + 총 위반 크기."""
     fail, cost = [], 0
@@ -328,6 +339,10 @@ def check(xi, conds):
     if g:
         fail.append(GK_RULE)
         cost += g
+    d = dup_cost(xi)
+    if d:
+        fail.append(DUP_RULE)
+        cost += d
     for (kind, v), text in conds:
         c = cost1(xi, kind, v)
         cost += c
@@ -741,7 +756,7 @@ def main():
                -- ⭐ 아이콘·히어로 케미(2026-09-25) — 규칙을 박지 않고 fut.gg 값을 그대로 쓴다.
                i.chem_extra, COALESCE(i.is_icon,0) is_icon, COALESCE(i.is_hero,0) is_hero,
                COALESCE(i.is_special,0) is_special,
-               c.is_untradeable, c.ea_item_id
+               c.is_untradeable, c.ea_item_id, i.base_ea_id who
           FROM fut_club_players c LEFT JOIN player_card_items i
             ON i.ea_item_id=c.ea_item_id AND i.game_version=?
          WHERE c.status='owned' AND COALESCE(c.current_ovr, i.ovr) IS NOT NULL
@@ -785,7 +800,7 @@ def main():
     stor = [dict(r) for r in con.execute("""
         SELECT -s.id id, COALESCE(i.name_kr, s.name) name, i.ovr, i.nation, i.league, i.club, i.positions, i.best_pos,
                i.card_image_url, i.chem_extra, COALESCE(i.is_icon,0) is_icon, COALESCE(i.is_hero,0) is_hero,
-               COALESCE(i.is_special,0) is_special, 1 is_untradeable, s.ea_item_id, 1 storage
+               COALESCE(i.is_special,0) is_special, 1 is_untradeable, s.ea_item_id, 1 storage, i.base_ea_id who
           FROM fut_sbc_storage s JOIN player_card_items i ON i.ea_item_id=s.ea_item_id AND i.game_version=s.game_version
          WHERE s.status='stored' AND s.game_version=? AND i.ovr IS NOT NULL""", (a.game,))]
     if stor:
@@ -819,8 +834,11 @@ def main():
         print(f"📐 포메이션 기록 {len(FORM_OF)}챌린지 — 그 안에서만 배치한다")
     # ⭐ SBC가 박아 두는 고정 카드(migration 073) — 내 보유분이 아니지만 **조건에 그대로 들어간다**.
     FIXED = {}
-    for r in con.execute("""SELECT challenge_ea_id, slot, name, ovr, club, league, nation, positions,
-                                   is_special, ea_item_id FROM fc_sbc_fixed WHERE game_version=?""", (a.game,)):
+    for r in con.execute("""SELECT f.challenge_ea_id, f.slot, f.name, f.ovr, f.club, f.league, f.nation, f.positions,
+                                   f.is_special, f.ea_item_id, i.base_ea_id who
+                              FROM fc_sbc_fixed f LEFT JOIN player_card_items i
+                                ON i.ea_item_id=f.ea_item_id AND i.game_version=f.game_version
+                             WHERE f.game_version=?""", (a.game,)):
         FIXED.setdefault(r["challenge_ea_id"], []).append(
             {"id": -(1000 + len(FIXED)), "name": r["name"], "ovr": r["ovr"], "club": r["club"],
              "league": r["league"], "nation": r["nation"], "positions": r["positions"], "best_pos": None,
@@ -828,7 +846,7 @@ def main():
              # ⛔ 거래 가능 여부·카드 아트는 **모른다** — fut.gg에 같은 선수 카드가 둘이라
              #    하나를 골라 그리면 화면이 거짓말을 한다. 텍스트로 물러선다(불변규칙 3).
              "card_image_url": None,
-             "chem_extra": None, "is_icon": 0, "is_hero": 0, "ea_item_id": r["ea_item_id"],
+             "chem_extra": None, "is_icon": 0, "is_hero": 0, "ea_item_id": r["ea_item_id"], "who": r["who"],
              "fixed": True, "slot": r["slot"]})
     if FIXED:
         print("📌 고정 카드 " + " · ".join(
