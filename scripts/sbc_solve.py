@@ -42,10 +42,11 @@ from core.chem import CHEM, chem_total, per_player, extra as _extra   # noqa: E4
 FORMS = {}          # name → [{i,uniq,gen,label,x,y}] · main()이 DB에서 채운다
 GEN_POS = {0: "GK", 2: "RWB", 3: "RB", 5: "CB", 7: "LB", 8: "LWB", 10: "CDM", 12: "RM",
            14: "CM", 16: "LM", 18: "CAM", 21: "CF", 23: "RW", 25: "ST", 27: "LW"}
-# 카드 포지션 → 그 칸에 설 수 있는가. ⚠️ 좌우 변형(LWB↔LB 등)은 EA가 같은 칸으로 취급한다(등급 D).
-NEAR = {"RWB": {"RWB", "RB"}, "LWB": {"LWB", "LB"}, "RB": {"RB", "RWB"}, "LB": {"LB", "LWB"},
-        "RW": {"RW", "RM"}, "LW": {"LW", "LM"}, "RM": {"RM", "RW"}, "LM": {"LM", "LW"},
-        "CF": {"CF", "ST"}, "ST": {"ST", "CF"}}
+# 카드 포지션 → 그 칸에 설 수 있는가. ⛔ **카드에 적힌 포지션만** 인정한다 — 근사 칸 없음.
+#    종전엔 「RW↔RM·LWB↔LB·CF↔ST는 EA가 같은 칸으로 취급한다」(등급 D 통설)는 표를 썼는데,
+#    2026-10-05 사용자 인게임 실측: Zalazar(CAM/CM/RW)를 RM에 넣은 해법이 「RM 포지션이 없다」로 틀렸다.
+#    같은 통설에서 나온 나머지 짝도 근거가 없어 함께 뺐다(실측 > 서사 · 불변규칙 3).
+NEAR = {}
 
 
 # ⛔ 배치 국소탐색의 무작위 — **고정 시드**다. 같은 입력에 같은 배치가 나와야 판정이 재현된다.

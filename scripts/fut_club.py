@@ -89,6 +89,31 @@ def cmd_player_add(con, a):
     print(f"보유 등록: {a.name} (player_id={a.player_id}, item={a.ea_item}, OVR {cur.get('current_ovr', '미상')})")
 
 
+def pre_step_state(con, cp, game):
+    """이 단계를 밟기 **직전** 카드 상태 — (attrs, ovr, six). 없으면 None.
+
+    ⛔⛔ `current_attrs`(EA 싱크값)를 출발점으로 쓰지 않는다(2026-10-05 Emily Ramsey 실측 사고).
+       클럽 싱크가 **이미 진화가 반영된 카드**를 받아 온 뒤에 기록하면 보상이 두 번 얹혀
+       상한값이 들어갔다(가속 46→50 · 반사신경 78→80). ovr_before·six_before도 같은 이유로
+       현재값이 들어가 「79→79」가 됐다(런북 연관표 #2 — 손으로 고치던 것).
+    ⇒ 출발점은 **원장 사슬**이다: 이 카드의 마지막 유효 로그(attrs_after)가 있으면 그것,
+       없으면 기준 카드(`player_card_items`). EA 실측과의 대조는 호출부가 한다."""
+    last = con.execute("""SELECT ovr_after, six_after, attrs_after FROM fut_evolution_log
+                           WHERE club_player_id=? AND COALESCE(is_void,0)=0 AND attrs_after IS NOT NULL
+                           ORDER BY applied_at DESC, id DESC LIMIT 1""", (cp["id"],)).fetchone()
+    if last:
+        return json.loads(last["attrs_after"]), last["ovr_after"], last["six_after"]
+    for sql, arg in (("SELECT attrs, ovr FROM player_card_items WHERE ea_item_id=? AND game_version=?", cp["ea_item_id"]),
+                     ("SELECT attrs, ovr FROM player_card_items WHERE player_id=? AND is_base=1 AND game_version=?",
+                      cp["player_id"])):
+        if arg is None:
+            continue
+        r = con.execute(sql, (arg, game)).fetchone()
+        if r and r["attrs"]:
+            return json.loads(r["attrs"]), r["ovr"], None
+    return None
+
+
 def cmd_evolve(con, a):
     acc = account(con, a.account)
     cp = club_player(con, acc["id"], a.player, getattr(a, "expect_player_id", None))
@@ -120,9 +145,10 @@ def cmd_evolve(con, a):
     #       **앞의 것만 갱신**했다. 화면은 before를 `current_six`에서, after를 `current_attrs`에서
     #       가져오므로 두 벌이 갈리는 순간 **after가 before보다 낮게** 적힌다.
     #       실증(마조 빛나는 스트라이커 1단계): PAC 75→**70** · SHO 73→**69**. 진화는 스탯을 내리지 않는다.
-    #    ⇒ 이제 서버가 카탈로그 보상을 `current_attrs`에 얹어 **attrs·six·ovr 셋을 한꺼번에** 갱신한다.
+    #    ⇒ 이제 서버가 카탈로그 보상을 **원장 사슬 상태**(pre_step_state)에 얹어 **attrs·six·ovr 셋을 한꺼번에** 갱신한다.
     #       두 벌이 갈릴 수 있는 구조 자체가 없어진다. 화면이 보낸 숫자는 **대조용으로만** 본다.
     attrs_after = None
+    ovr_before, six_before = cp["current_ovr"], cp["current_six"]   # 카탈로그로 계산하면 원장 사슬 값으로 바뀐다
     ps_after = None                 # 카탈로그로 계산하면 채운다 — 없을 때만 path_json(완주 카드)으로 물러선다
     cur_attrs = json.loads(cp["current_attrs"]) if cp["current_attrs"] else None
     lvrow = con.execute("SELECT levels FROM fc_evolutions WHERE evo_id=? ORDER BY pulled DESC",
@@ -142,7 +168,13 @@ def cmd_evolve(con, a):
             elif len(opts) == 1:
                 o = opts[0]
                 ups = list(o if isinstance(o, list) else (o.get("upgrades") or []))
-            attrs_after = dict(cur_attrs)
+            # ⭐ 출발점 = 원장 사슬(pre_step_state) — EA 싱크값이 아니다. GK 5속성 등 기준 카드에 없는 키는 현재값으로 메운다.
+            pre = pre_step_state(con, cp, acc["game_version"])
+            if pre is None:
+                sys.exit("⛔ 기준 카드(player_card_items)도 이전 로그도 없다 — 진화 직전 상태를 알 수 없다. "
+                         "collect_futgg_cards.py로 카드를 먼저 받을 것")
+            pre_attrs = {**cur_attrs, **pre[0]}
+            attrs_after = dict(pre_attrs)
             # ⭐⭐ **역할·PlayStyle 보상도 카탈로그에서 읽는다**(2026-09-27 실측 사고).
             #    ⛔ 종전엔 `player_evolutions.path_json`이 있을 때만 역할을 갱신했다. 그런데
             #       `GK Roles++`처럼 **역할만 주는 진화**는 경로 축이 안 덮어 path_json이 없고,
@@ -168,12 +200,23 @@ def cmd_evolve(con, a):
             bump, unknown = apply_upgrades(attrs_after, ups, face_rows, is_gk=is_gk)
             if unknown:
                 sys.exit(f"⛔ 모르는 보상 항목 {unknown} — 지어내지 않는다. core/futgg_attrs.py의 표를 먼저 채울 것")
-            ovr_after = bump(cp["current_ovr"] or 0)
+            ovr_before = pre[1] if pre[1] is not None else cp["current_ovr"]
+            six_before = pre[2] or json.dumps(face_of(pre_attrs, face_rows, is_gk=is_gk), ensure_ascii=False)
+            ovr_after = bump(ovr_before or 0)
             six_after = json.dumps(face_of(attrs_after, face_rows, is_gk=is_gk), ensure_ascii=False)
+            # ⚠️ EA 실측이 직전·적용 후 어느 쪽과도 다르면 **알리기만** 한다 — 멈추지 않는다.
+            #    정상인 경우가 둘 있다: EA가 뒷단계까지 앞서 있다(2단계까지 한 뒤 1단계부터 기록) ·
+            #    EA 싱크가 아직 낡았다. 기록 안 된 진화 여부는 클럽 싱크의 `evo_detect.py --verify`가 매 회차 본다.
+            common = [k for k in cur_attrs if k in pre[0]]
+            if not any(all(x[k] == cur_attrs[k] for k in common) for x in (pre_attrs, attrs_after)):
+                diff = {k: (pre_attrs[k], attrs_after[k], cur_attrs[k]) for k in common
+                        if cur_attrs[k] not in (pre_attrs[k], attrs_after[k])}
+                print(f"ℹ️ EA 실측이 이 단계 직전·적용 후와 다르다 (직전, 적용 후, EA) {dict(list(diff.items())[:6])} — "
+                      "뒷단계가 이미 반영됐거나 싱크가 낡은 것이면 정상. 기록 후 `python3 scripts/evo_detect.py --verify`로 검산할 것")
             # ⭐ 속성이 하나도 안 바뀌는 진화(PlayStyle·역할 전용)는 6대를 다시 환산하지 않고 EA 실측을 잇는다
             #    (2026-09-29 스즈키 실측: 구성식 SPD 56 ↔ EA 58 — 재환산하면 게이트가 「스탯 하락」으로 막았다).
-            if attrs_after == cur_attrs and cp["current_six"]:
-                six_after = cp["current_six"]
+            if attrs_after == pre_attrs and (pre[2] or cp["current_six"]):
+                six_after = pre[2] or cp["current_six"]
             src = "서버 계산 (current_attrs + fc_evolutions.levels · core/futgg_attrs.py)"
     if attrs_after is None:
         ovr_after = a.ovr_after or (after or {}).get("ovr")
@@ -185,14 +228,14 @@ def cmd_evolve(con, a):
         sys.exit("⛔ 적용 후 OVR을 알 수 없다 — 이 선수·진화의 path_json이 없으니 --ovr-after/--six-after를 직접 넘길 것")
     # ⛔⛔ **게이트 — 진화는 스탯을 내리지 않는다.** 위 계산이 옳아도 데이터가 어긋나면 여기서 멈춘다.
     #    「조심하자」로 막지 않는 이유: 조용히 틀린 값이라 화면만 봐선 알 수 없었다(실증 4행).
-    if cp["current_six"] and six_after:
-        b, f = json.loads(cp["current_six"]), json.loads(six_after)
+    if six_before and six_after:
+        b, f = json.loads(six_before), json.loads(six_after)
         down = {k: (b[k], f[k]) for k in b if k in f and f[k] < b[k]}
         if down:
             sys.exit(f"⛔ 적용 후 6대 스탯이 내려간다 — {down} (before→after). 진화는 스탯을 내리지 않으니 "
                      "원장이 어긋난 것이다. `current_attrs`가 `current_six`보다 낡지 않았는지 먼저 볼 것.")
-    if (ovr_after or 0) < (cp["current_ovr"] or 0):
-        sys.exit(f"⛔ 적용 후 OVR이 내려간다 — {cp['current_ovr']} → {ovr_after}. 같은 사유다.")
+    if (ovr_after or 0) < (ovr_before or 0):
+        sys.exit(f"⛔ 적용 후 OVR이 내려간다 — {ovr_before} → {ovr_after}. 같은 사유다.")
     # ⭐ 로그의 역할 칸도 **카탈로그 보상 ∪ 현재 보유**로 적는다(2026-09-29 만잠비 CAM Roles++ 실측 사고).
     #    ⛔ 종전엔 path_json에서만 읽어, 경로 축이 안 덮는 역할 전용 진화는 로그 칸이 비었다.
     def _union(cur_json, gain):
@@ -207,7 +250,7 @@ def cmd_evolve(con, a):
     con.execute("""INSERT INTO fut_evolution_log(club_player_id, evo_id, evo_name, level, applied_at, completed_at,
                      ovr_before, ovr_after, six_before, six_after, attrs_after, playstyles_after, roles_plus_after,
                      roles_plus_plus_after, source, confidence, notes) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
-                (cp["id"], a.evo, evo_name, a.level, a.date, a.completed, cp["current_ovr"], ovr_after, cp["current_six"], six_after,
+                (cp["id"], a.evo, evo_name, a.level, a.date, a.completed, ovr_before, ovr_after, six_before, six_after,
                  # ⭐ 29속성을 함께 남긴다(migration 082) — `complete`가 이걸 보고 current_attrs를 올린다.
                  json.dumps(attrs_after, ensure_ascii=False) if attrs_after is not None else None,
                  json.dumps(ps_after, ensure_ascii=False) if ps_after is not None else
@@ -242,7 +285,7 @@ def cmd_evolve(con, a):
                  ", ".join(ps_after) if ps_after is not None else
                  (", ".join(after["playstyles"]) if after and after.get("playstyles") else None),
                  rp_new, rpp_new, TODAY, cp["id"]))
-    print(f"진화 기록: {cp['name']} ← {evo_name} (lv{a.level}) OVR {cp['current_ovr']} → {ovr_after} · 적용일 {a.date}")
+    print(f"진화 기록: {cp['name']} ← {evo_name} (lv{a.level}) OVR {ovr_before} → {ovr_after} · 적용일 {a.date}")
 
 
 def cmd_complete(con, a):
