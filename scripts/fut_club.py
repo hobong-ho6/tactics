@@ -621,6 +621,22 @@ def cmd_gallery_complete(con, a):
     print(f"🏁 {s['name']} 완성 — {g} ({a.date or TODAY})")
 
 
+def cmd_sbc_resolve(con, a):
+    """SBC 해법 재계산 — 화면 버튼(2026-10-05 사용자 지시 「sbc 해법 다시 계산하는 버튼」).
+       ⛔ 계산을 여기 다시 짜지 않는다 — 클럽 싱크 「해법 재계산」 단계와 **같은 명령**(sbc_solve.py --save)을 그대로 부른다.
+       끝나면 serve.py가 export를 돌린다(읽기 전용 아님)."""
+    import subprocess
+    root = Path(__file__).resolve().parent.parent
+    py = root / ".venv" / "bin" / "python"
+    py = str(py) if py.exists() else sys.executable
+    r = subprocess.run([py, str(root / "scripts" / "sbc_solve.py"), "--save"], capture_output=True, text=True,
+                       cwd=root, timeout=900)
+    tail = "\n".join((r.stdout or "").strip().splitlines()[-8:])
+    if r.returncode != 0:
+        raise SystemExit(f"⛔ sbc_solve.py 실패(코드 {r.returncode})\n{tail}\n{(r.stderr or '')[-600:]}")
+    print(f"🔁 SBC 해법 재계산 완료\n{tail}")
+
+
 def run(con, cmd, **kw):
     """serve.py 쓰기 API용 진입점 — CLI와 같은 함수를 같은 규약으로 실행한다(발명 금지·출처 기록 동일)."""
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
@@ -630,7 +646,7 @@ def run(con, cmd, **kw):
     a = argparse.Namespace(**{**defaults, **kw})
     fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete,
           "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude,
-          "sbc_submit": cmd_sbc_submit, "gallery_complete": cmd_gallery_complete,
+          "sbc_submit": cmd_sbc_submit, "gallery_complete": cmd_gallery_complete, "sbc_resolve": cmd_sbc_resolve,
           "storage_search": cmd_storage_search, "storage_add": cmd_storage_add, "storage_remove": cmd_storage_remove}[cmd]
     fn(con, a)
 

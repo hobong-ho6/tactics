@@ -71,7 +71,20 @@ def main(a):
     for p in paths:
         if any(f in p for f in FORBIDDEN):
             sys.exit(f"⛔ 커밋 금지 파일이 경로에 들어 있다: {p}")
-    sh(["git", "add", "--"] + paths)
+    # ⛔⛔ git add의 실패를 확인한다(2026-10-05 · 같은 날 두 번 — 불변규칙 13).
+    #    다른 세션·앱의 git 조회가 .git/index.lock을 잠깐 잡으면 add가 통째로 실패하는데, 종전엔 반환값을 안 봐서
+    #    「변경 없음 — 커밋할 것이 없다」로 **조용히 거짓 보고**했다(바뀐 파일이 그대로 남아 있었다).
+    #    ⇒ 잠금이면 잠깐 기다려 다시 하고, 그래도 실패하면 오류를 그대로 보이고 멈춘다.
+    import time
+    for t in range(8):
+        r = sh(["git", "add", "--"] + paths)
+        if r.returncode == 0:
+            break
+        if "index.lock" not in (r.stderr or ""):
+            sys.exit(f"⛔ git add 실패:\n{r.stderr.strip()}")
+        time.sleep(1.5)
+    else:
+        sys.exit(f"⛔ git add 실패 — .git/index.lock이 계속 잡혀 있다(다른 git 작업 중):\n{r.stderr.strip()}")
 
     names = [l for l in sh("git diff --cached --name-only").stdout.split("\n") if l.strip()]
     if not names:

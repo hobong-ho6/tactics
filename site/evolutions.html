@@ -104,7 +104,9 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 </section>
 
 <section data-tab="sbc" style="display:none">
-  <div class="panel"><h2>SBC <small class="dim" id="sbcn"></small></h2>
+  <div class="panel"><h2>SBC <small class="dim" id="sbcn"></small>
+    <button class="act" id="sbcresolve" style="margin-left:8px;font-size:12px" title="보유 카드가 바뀌었을 때 — 클럽 싱크의 「해법 재계산」 단계와 같은 계산(sbc_solve.py --save)">🔁 해법 다시 계산</button>
+    <span class="msg-slot" id="sbcresolvemsg"></span></h2>
     <p class="dim" style="font-size:12px;margin:0 0 8px">
       조건·보상·마감은 <b>fut.gg 원문</b>이다(등급 A). 달성 판정은 <b>내 보유 카드</b>로 우리가 푼 것이고,
       카드 등급(Bronze/Silver/Gold)과 팀 레이팅 산식은 <b>등급 D</b>(EA가 공개한 적 없다).<br>
@@ -3660,6 +3662,13 @@ function doneHTML(){
   return `<h3 style="margin:10px 0 4px">🏁 내가 완성한 세트 <small class="dim">${items.length}</small></h3>${items.join('')}`;
 }
 
+/* 🔁 SBC 해법 다시 계산(2026-10-05) — 서버가 sbc_solve.py --save → export를 돌린 뒤 화면을 통째로 다시 읽는다. */
+document.getElementById('sbcresolve')?.addEventListener('click', async e => {
+  const btn = e.currentTarget, box = document.getElementById('sbcresolvemsg');
+  btn.disabled = true; box.textContent = '계산 중… (1~2분)';
+  const r = await api('sbc_resolve', {});
+  btn.disabled = false; say(box, r);      // say가 성공 시 화면을 다시 읽는다
+});
 renderSquad(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc(); renderStorage(); renderGallery(); galPopup();
 
 
