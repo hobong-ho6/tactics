@@ -56,7 +56,7 @@ def step_sources(lv):
     return [list(lv.get("upgrades") or [])]
 
 
-def try_evo(base, target, lv_rows):
+def try_evo(base, target, lv_rows, face_rows=None, is_gk=False):
     """`base`에 이 진화를 1..n단계까지 얹어 `target`과 **29속성 전부** 맞는 조합을 찾는다.
 
     ⭐ 부분 일치도 돌려준다 — 완전 일치가 없을 때 「몇 개나 맞았나」가 다음 단서다.
@@ -72,7 +72,7 @@ def try_evo(base, target, lv_rows):
         for picks in itertools.product(*picks_space):
             at = dict(base)
             for lv, k in zip(lv_rows[:n], picks):
-                apply_upgrades(at, step_sources(lv)[k])
+                apply_upgrades(at, step_sources(lv)[k], face_rows, is_gk=is_gk)
             # ⛔ **공통 키만 본다**(2026-09-26 실측). 기준 카드는 29속성인데 GG Club의
             #    `current_attrs`는 GK 5속성까지 34개라, 전부 대조하면 **언제나 불일치**가 나서
             #    정답을 아는 케이스(알리송 반복 배급 4단계)조차 「설명 안 됨」으로 나왔다.
@@ -94,7 +94,7 @@ def base_attrs(con, cp):
     return None
 
 
-def verify_chain(con, cp, cur, base):
+def verify_chain(con, cp, cur, base, face_rows=None, is_gk=False):
     """**원장에 적힌 진화를 적힌 순서대로** 이어 붙여 현재 스탯을 설명하는지 본다.
 
     ⭐ 단일 탐색과 목적이 다르다 — 저쪽은 「무슨 진화였나」를 찾고, 이쪽은 「적어 둔 게 맞나」를 검산한다.
@@ -119,7 +119,7 @@ def verify_chain(con, cp, cur, base):
     for picks in itertools.product(*[range(len(s)) for s in steps]):
         at = dict(base)
         for src, k in zip(steps, picks):
-            apply_upgrades(at, src[k])
+            apply_upgrades(at, src[k], face_rows, is_gk=is_gk)
         bad = {a: (at[a], cur[a]) for a in cur if a in at and at[a] != cur[a]}
         if best is None or len(bad) < len(best[1]):
             best = (list(picks), bad)
@@ -139,6 +139,11 @@ def report(con, cp, catalog, verify):
         print(f"  ⚪ {name}: 기준 카드와 **똑같다** — 진화 흔적 없음")
         return
     diff = {k: (base[k], cur[k]) for k in cur if k in base and base[k] != cur[k]}
+    # ⛔ 6대 스탯 직접 보상(gk_face_positioning 등)은 구성식·GK 여부가 있어야 적용된다 — 빼면 조용히 건너뛰어
+    #    정답 기록도 「안 맞는다」로 나온다(2026-10-05 Emily Ramsey 오경보 · 포지셔닝 67 ↔ 76).
+    #    GK 판정은 fut_club.py evolve와 같은 기준(현재 6대 모양 · EA 실측)이다.
+    face_rows = con.execute("SELECT abbr, attr, weight, is_gk FROM fc_face_stats").fetchall()
+    is_gk = "DIV" in json.loads(cp["current_six"] or "{}")
     print(f"\n■ {name} (보유 id {cp['id']}) — 기준 카드와 {len(diff)}개 속성이 다르다")
     logged = [r["evo_id"] for r in con.execute(
         "SELECT DISTINCT evo_id FROM fut_evolution_log WHERE club_player_id=? AND is_void=0", (cp["id"],))]
@@ -149,7 +154,7 @@ def report(con, cp, catalog, verify):
         lv_rows = levels_of(con, evo_id)
         if not lv_rows:
             continue
-        res = try_evo(base, cur, lv_rows)
+        res = try_evo(base, cur, lv_rows, face_rows, is_gk)
         if res is None:
             skipped.append(evo_name)
             continue
@@ -171,7 +176,7 @@ def report(con, cp, catalog, verify):
         print(f"   ⚠️ 조합이 {MAX_COMBOS}개를 넘어 건너뛴 진화: {', '.join(skipped[:5])}"
               + (f" 외 {len(skipped)-5}" if len(skipped) > 5 else ""))
     if verify and logged:
-        ch = verify_chain(con, cp, cur, base)
+        ch = verify_chain(con, cp, cur, base, face_rows, is_gk)
         if ch is None:
             pass
         elif ch[0] == "미상":
@@ -261,7 +266,7 @@ def main():
     catalog = [(r["evo_id"], r["name_kr"] or r["name"]) for r in con.execute(
         """SELECT evo_id, name, name_kr FROM fc_evolutions
             WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions) ORDER BY evo_id""")]
-    q = """SELECT id, name, player_id, ea_item_id, current_attrs FROM fut_club_players
+    q = """SELECT id, name, player_id, ea_item_id, current_attrs, current_six FROM fut_club_players
             WHERE status='owned' AND current_attrs IS NOT NULL"""
     args = ()
     if a.player:
