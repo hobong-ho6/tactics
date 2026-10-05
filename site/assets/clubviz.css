@@ -381,8 +381,12 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 /* SBC 세트 카드 — 목록을 훑을 수 있게(2026-09-25). 챌린지 상세는 그 안의 details가 접어 둔다. */
 /* ⛔ 종전 minmax(360px)는 넓은 화면에서 **4열**이 돼 카드가 좁았고, 그 안의 피치가 겹쳤다
    (2026-09-25 사용자 지적). 펼친 챌린지에 조건·피치·표가 들어가므로 **2~3열**이 상한이다. */
-.sbc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(560px,1fr));gap:10px;align-items:start}
-@media (max-width:1180px){ .sbc-grid{grid-template-columns:1fr} }
+/* 2026-10-05 사용자 지시 「한 번에 한 개의 팀이 전체 화면으로」 — 넓은 화면에서 2~3열로 쪼개지던 것을 1열로 고정 */
+.sbc-grid{display:grid;grid-template-columns:1fr;gap:12px;align-items:start}
+.sbc-split{display:grid;grid-template-columns:minmax(420px,620px) minmax(0,1fr);grid-template-areas:"l r1" "l r2";
+  column-gap:20px;align-items:start}
+.sbc-split>.sbc-l{grid-area:l} .sbc-split>.sbc-r1{grid-area:r1} .sbc-split>.sbc-r2{grid-area:r2}
+@media (max-width:1100px){ .sbc-split{grid-template-columns:1fr;grid-template-areas:"r1" "l" "r2"} }
 .sbc-card{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--panel)}
 .sbc-card.urgent{border-color:var(--bad)}
 .sbc-head{display:flex;align-items:center;gap:6px;flex-wrap:wrap}

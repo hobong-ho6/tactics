@@ -2,7 +2,7 @@
 <html lang="ko"><head><meta charset="utf-8"><title>얼티밋팀 — tactics v2</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="stylesheet" href="assets/clubviz.css?v=20261002">
+<link rel="stylesheet" href="assets/clubviz.css?v=20261005b">
 <style>
 .evo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
 .evo-card{border:1px solid var(--line);border-radius:10px;padding:12px 14px;background:var(--panel)}
@@ -3428,7 +3428,9 @@ function renderSbc(){
                  ⛔ 그래도 **제출 가능한 답과 같아 보이면 안 된다**(바로 위 shapeHTML 주석과 같은 이유) —
                     `partial`이면 머리말·테두리를 갈라 놓고 미충족 조건을 **스쿼드보다 먼저** 띄운다. */
               const part = xi.partial === true;
-              return `<div style="font-size:12px;margin-top:6px"${part ? ' class="sbc-part"' : ''}>${sq.length
+              /* ⭐ 2026-10-05 「한 팀이 전체 화면」 — 카드가 전체 폭이 되자 피치가 1913×2551px로 커졌다.
+                 ⇒ 피치(왼쪽 · 폭 상한)와 판정·조건·대체 카드(오른쪽)를 나란히 둔다. 좁은 화면에서는 1열. */
+              return `<div style="font-size:12px;margin-top:6px"${part ? ' class="sbc-part"' : ''}><div class="sbc-split"><div class="sbc-r1">${sq.length
                 ? `<span id="sbch${c.challenge_ea_id}"><b class="${part ? 'dn' : ''}">${part
                      ? '⚠️ 여기까지는 내 카드로 채운다 — <u>제출은 안 된다</u>'
                      : '이 스쿼드로 된다'}</b>
@@ -3443,7 +3445,7 @@ function renderSbc(){
                 ${checksHTML(xi)}
                 ${/* ⛔ 고르자마자 풀지 않는다(2026-09-25 사용자 지시 「포메이션 선택 후 계산이나 풀기 버튼을
                       누르면 그때 찾도록」) — 29종을 훑다 실수로 바꿔도 바로 재계산이 도는 건 비싸고 놀랍다. */''}
-                <div class="kv" style="margin:4px 0 2px">📐 포메이션
+                </div><div class="sbc-l"><div class="kv" style="margin:4px 0 2px">📐 포메이션
                   <select data-sbcform="${c.challenge_ea_id}">
                     ${form ? '' : '<option value="" selected disabled>— 미기록: 인게임 포메이션을 고른다 —</option>'}
                     ${SBC_FORMS.map(f => `<option${f === form ? ' selected' : ''}>${esc(f)}</option>`).join('')}
@@ -3455,7 +3457,7 @@ function renderSbc(){
                   <span class="msg-slot" id="sbcm${c.challenge_ea_id}"></span></div>
                 <div class="sbc-pitch" id="sbcp${c.challenge_ea_id}">${
                   sq.length ? pitchHTML(sq, c.challenge_ea_id) : shapeHTML(SBC_SLOTS[form] || [])}</div>
-                ${altHTML(xi)}
+                </div><div class="sbc-r2">${altHTML(xi)}
                 ${misfitHTML(xi)}
                 ${exclHTML(c.challenge_ea_id)}
                 ${!sq.length ? '' : `<details open style="margin-top:4px" id="sbct${c.challenge_ea_id}"><summary class="dim" style="cursor:pointer">선수 구성 — 리그 · 클럽 · 국가 · OVR · 케미</summary>
@@ -3465,7 +3467,7 @@ function renderSbc(){
                     <td>${esc(p.name)}${p.untradeable ? ' <span class="chip dim">거래불가</span>' : ''}</td>
                     <td class="dim">${esc(p.club || '—')}</td><td class="dim">${esc(p.league || '—')}</td>
                     <td class="dim">${esc(p.nation || '—')}</td>
-                    <td>${p.chem == null ? '<span class="dim">—</span>' : `<b>${p.chem}</b>/3${p.fit === false ? ' <small class="dn">자리</small>' : ''}`}</td></tr>`).join('')}</tbody></table></details>`}</div>`;
+                    <td>${p.chem == null ? '<span class="dim">—</span>' : `<b>${p.chem}</b>/3${p.fit === false ? ' <small class="dn">자리</small>' : ''}`}</td></tr>`).join('')}</tbody></table></details>`}</div></div></div>`;
             })()}
             ${c.solve_conf ? `<div class="dim" style="font-size:11px;margin-top:5px">${esc(c.solve_conf)}</div>` : ''}
           </div></details>`;
