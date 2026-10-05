@@ -1238,9 +1238,9 @@
    "overall": "B+ — Iraola 체제 공식전 3경기(2026-27 PL, 270분) 실측 확보: 뉴캐슬 원정 6.04, 크리스탈 팰리스전 6.1, 입스위치 홈 8.5 — 평균 6.88(v_player_season_stats). prescriptions 신규 행(measured, GK/gk_goalkeeper/Balanced, fit_sim 0.9764, n=3)이 프리시즌 추정치(0.976 Balanced, obs#580 계열)를 그대로 재확인한다 — 포커스가 Defend가 아닌 Balanced로 자리잡았다. 다만 표본 3경기 중 2경기(뉴캐슬·팰리스)는 평범~약점 노출, 1경기(입스위치)만 결정적 선방으로 고평점 — 변동성이 크다. FC27(2026-09-10) OVR87로 FC26(88) 대비 -1, 6대 스탯 중 DEF가 56→50으로 가장 크게 하락했다.",
    "player_id": 43,
    "sample_as_of": "2026-09-20",
-   "sample_avg_rating": 7.16,
-   "sample_minutes": 630,
-   "sample_n": 7,
+   "sample_avg_rating": 7.22,
+   "sample_minutes": 540,
+   "sample_n": 6,
    "sample_season": "2026-27",
    "source": "squad_entries(r3) · prescriptions#measured(GK, n=6) · v_player_profile(n=1, 8/9 모나코) · obs#120 · manager_profiles r1/r2/r3 | stat_eval 2026-08-11 갱신: fotmob_detail_stats(Premier League 2025/2026, 18지표) · v_player_profile n=1(8/9 모나코 친선) · prescriptions#measured(GK n=6, 6.80) | stat_eval/traits/strengths/fit_iraola 2026-09-11 갱신: player_game_stats(FC27, roster_date=2026-09-10, FC26 대비) · v_player_season_stats(2026-27 PL n=3, 270분, 평균6.88) · prescriptions(regime_id=3, kind=measured, GK/Balanced, fit_sim=0.9764, n=3, avg_rating=6.88, minutes=270) · match_player_reports(report_id 23·28·32 — 뉴캐슬/팰리스/입스위치 3경기)",
    "stat_eval": "Fotmob 25/26 PL 26.0경기(90분 환산, GK 18지표)가 기존 공백을 처음으로 메운다. 결과는 방어보다 배급 쪽이 좋다 — 패스 정확도 79.0%(95백분위)·롱볼 정확도 39.4%(85백분위)·실책→실점 0회(100백분위)·경고 1장. 반면 선방률 64.8%(31백분위)·선방 57회(49백분위)·선방으로 막은 실점 −2.70(23백분위)으로, 이 시즌만 놓고 보면 기대 대비 마이너스다(즉 xG 기준으로 막았어야 할 것보다 2.7골 더 허용). 클린시트 8회(69백분위)·실점 31(41백분위)은 리버풀 수비 덕이 큰 팀 종속 지표로 봐야 한다. 우리 자체 실측은 여전히 8/9 모나코 친선 1경기(45분, 평점 6.80)뿐이고 3팀 풀 백분위는 n=1이라 의미가 없다 — 리그 전체 GK 대비인 Fotmob 백분위가 유일한 실질 근거다. | 2026-09-11 갱신: 우리 자체 실측이 친선 1경기에서 Iraola 체제 공식전 3경기(PL, 270분)로 늘었다 — 뉴캐슬 원정 6.04, 크리스탈 팰리스전 6.1, 입스위치 홈 8.5, 평균 6.88(v_player_season_stats 2026-27 PL n=3). prescriptions 신규 행(measured, GK/gk_goalkeeper/Balanced, fit_sim=0.9764, n=3)이 커널 정합을 재확인. FC27(roster_date=2026-09-10)은 OVR87로 FC26(88) 대비 -1, PAC85(-1)·PAS82(-1)·DRI86(-1)·DEF50(-6)·PHY86(-2)로 전 스탯이 소폭~중폭 하락했고 SHO87만 유지 — 하락폭은 DEF에 집중된다. PlayStyles 신규 3종(Far Throw·Deflector·Rush Out+) 확인 — Rush Out+는 적극적 스위핑 개입을 시사하나 실측 커널은 여전히 sweeper 0.821 < gk_goalkeeper 0.979로 반대 방향이다(괴리, 근거 링크: fotmob_detail_stats 재수집 없음 — 09-10 pull은 없었고 08-11/08-21 pull이 마지막).",
@@ -1279,10 +1279,10 @@
    "name_en": "Ibrahima Konaté",
    "overall": "N/A(이적 확정) — 2026-06-18 레알 마드리드 자유이적 공식 완료(player_duties#45, 4년 계약)가 이제 서술이 아니라 확정 사실로 기재됐다. 26/27 리버풀 실측은 0행이며 player_matches에도 26-27시즌 클럽 경기 기록이 전혀 없다(World Cup 국가대표 1경기만 존재). 이 행은 '26/27 RCB 슬롯의 과거 실측 기준선'으로만 보존.",
    "player_id": 45,
-   "sample_as_of": "2026-07-18",
-   "sample_avg_rating": 5.5,
-   "sample_minutes": 45,
-   "sample_n": 1,
+   "sample_as_of": null,
+   "sample_avg_rating": null,
+   "sample_minutes": 0,
+   "sample_n": 0,
    "sample_season": "2026-27",
    "source": "squad_entries(r3, lh=OWNED — 불일치) · prescriptions#measured(RCB, n=6, 이탈 기재) · obs#69·#77·#120 · manager_profiles r2/r3 | stat_eval 2026-08-11 갱신: fotmob_detail_stats(Premier League 2025/2026, 42지표) · v_player_profile 0행 · prescriptions#measured(RCB n=6, 6.88) | 2026-09-11 갱신: player_matches(26/27 시즌 클럽 경기 0건, 월드컵 1건만 존재) · player_game_stats(FC27 roster_date 2026-09-10에 미등재 — FC26 07-23·FC27 08-22/08-31까지만 존재) · player_duties(player_id=45, 2026-06-18 레알 마드리드 이적 공식 완료 기재) · fotmob_detail_stats(08-21 pulled, 리버풀 시절 25/26 PL 데이터 그대로, 26/27 신규 표본 없음)",
    "stat_eval": "2026-09-11 갱신: v_player_matches 조회 결과 26/27 시즌 클럽(리버풀) 경기 0건 확인 — 2026-07-18 FIFA 월드컵 국가대표 1경기(45분, 평점 5.5)만 존재하고 그 이후 어떤 경기 기록도 없다. fotmob_detail_stats도 08-21 pulled 기준 여전히 '2025/2026 Premier League'(리버풀 시절) 데이터만 보유, 26/27 신규 클럽 표본 없음. player_game_stats FC27도 2026-09-10 LIV 로스터 갱신에서 이름이 빠짐. 세 축(player_matches·fotmob·player_game_stats) 모두 독립적으로 '리버풀 이탈'을 뒷받침한다.",
@@ -1385,9 +1385,9 @@
    "overall": "B — 갱신(2026-09-11): FC27 OVR 85→84(−1), PAC −5(최대 하락폭)로 스피드 저하가 게임 능치에 반영됐고 Power Shot·Pinged Pass·Block·Game Changer 4종 PlayStyles 신규. 26/27 PL 3경기 중 선발 2회로 흐라벤베르흐 대비 더블 피벗 경쟁 우위가 실측으로 확인됐으나, 포레스트전 duel 6승10패로 대인 수비 약점이 실점으로 직결되는 장면이 재현됐다 — 기존 '박스 진입·슈팅형, 대인 수비 최하위권' 판정이 시즌 초반 실전에서도 그대로 유지된다. 등급 B 유지.",
    "player_id": 50,
    "sample_as_of": "2026-09-20",
-   "sample_avg_rating": 7.04,
-   "sample_minutes": 1007,
-   "sample_n": 12,
+   "sample_avg_rating": 7.28,
+   "sample_minutes": 467,
+   "sample_n": 7,
    "sample_season": "2026-27",
    "source": "squad_entries(r3) · prescriptions#measured(LDM, n=5 — 표본 부족) · obs#66·#68·#120ⓑ · manager_profiles r1/r2/r3 | stat_eval 2026-08-11 갱신: fotmob_detail_stats(Premier League 2025/2026, 41지표) · v_player_profile 0행 · prescriptions#measured(LDM n=5, 6.64) | 2026-09-11 갱신: player_game_stats(FC27 roster_date 2026-09-10) · match_player_reports(뉴캐슬·포레스트·입스위치, 선발 2회 확인) · v_player_season_stats(2026-27 PL n=3 starts=2)",
    "stat_eval": "Fotmob 25/26 PL 29.6경기(90분 환산, 41지표)는 '슛으로 마감하는 미드필더' 쪽을 가리킨다 — 슛 52회(96백분위)·xG 3.89(95백분위)·유효슛 12회(89백분위)·상대 박스 터치 65회(98백분위)·헤더 슛 14회(98백분위)·크로스 정확도 45.0%(93백분위). 반면 몸싸움과 볼 간수가 뚜렷한 약점이다: 경합 승률 45.2%(11백분위)·제쳐당함 40회(6백분위)·볼 뺏김 29회(10백분위)·드리블 성공률 40.7%(28백분위). 수비 총량은 태클 53회(68백분위)·인터셉트 21회(56백분위)로 중위권이며 per90으로는 더 내려간다(28·21백분위). 우리 자체 실측은 8/9 모나코 친선 미출전으로 player_matches 0행이라 3팀 풀 백분위 산출 불가이고, 그리드 LDM 5경기 평균 6.64(표본 부족·전임 체제)가 유일한 자체 근거였다.\n\n2026-09-11 갱신: player_game_stats FC27(2026-09-10) vs FC26(2026-07-23) — OVR 85→84(−1)·PAC 66→61(−5)·PHY 76→74(−2), SHO 82→81(−1)·PAS 84→83(−1)·DEF 77 불변. 신규 PlayStyles 4종: Power Shot·Pinged Pass·Block·Game Changer — 슈팅·중거리 패스·수비 개입이 함께 능치화(팟몹 슈팅 96·크로스 정확도 93백분위와 정합, 반면 경합 승률 11백분위 약점은 그대로). 몸무게 72kg 신규 기재. PAC −5는 5개 항목 중 최대 하락폭 — 25/26 '반응이 느렸다'(duties#77) 서사와 함께 읽으면 EA도 스피드 저하를 반영한 것으로 보인다. match_player_reports 26/27 3경기: 뉴캐슬(27분 교체 CAM, 6.57) · 포레스트(77분 선발 RDM, 7.2 — 패스59/52·xA .39·듀얼 6승10패·태클3, fit dm_dlp/Roaming .816, 단 Igor Jesus에게 피지컬로 밀려 선제골 직접 원인) · 입스위치(84분 선발 LDM, 6.8, fit .7535). v_player_season_stats 2026-27 PL: n=3·starts=2(포레스트·입스위치 선발, 뉴캐슬 교체) — 흐라벤베르흐(선발 1회)보다 선발 빈도가 높아 **더블 피벗 경쟁에서 우위**를 점한 정황. 포레스트전 duldeul 6승10패(경합 승률 37.5%)는 기존 '경합 승률 45.2%(11백분위)가 최하위' 판정을 실전에서도 재확인 — Igor Jesus에게 밀린 장면이 docs/12 obs#69(맨마킹 체계 개인 듀얼 의존)가 역방향으로 처벌받은 사례로 기록됐다.",
@@ -1468,10 +1468,10 @@
    "name_en": "Mohamed Salah",
    "overall": "A(archival) — 이탈 기재(players.notes: 2026-07-01 FA로 리버풀 계약 조기 해지) 이후 공식 클럽 표본 갱신 없음. 26/27 시즌 player_matches는 이집트 대표팀 월드컵 2경기(7/3·7/7, 평균 7.05)뿐 — 클럽 복귀나 이라올라 체제 실측은 전무. FC27(fut.gg, 2026-08-22 1단계) OVR 91(FC26 89 대비 +2, PAC 89·SHO 88·DRI 90 상승)이지만, 09-10 EA 공식 확정판에는 살라 항목 자체가 없다 — LIV 다른 3명(51·52·53)은 모두 09-10 행이 있는데 살라만 결측이다. 이탈 서사와 정합할 개연성은 있으나 결측=이탈 확정은 아니다(데이터 공백일 뿐).",
    "player_id": 54,
-   "sample_as_of": "2026-07-07",
-   "sample_avg_rating": 7.05,
-   "sample_minutes": 210,
-   "sample_n": 2,
+   "sample_as_of": null,
+   "sample_avg_rating": null,
+   "sample_minutes": 0,
+   "sample_n": 0,
    "sample_season": "2026-27",
    "source": "squad_entries(r3, lh=OWNED — 불일치) · prescriptions#measured(RM, n=5, ⭐⭐, 이탈 기재) · obs#38·#66·#68·#100·#120 · manager_profiles r1/r3 | stat_eval 2026-08-11 갱신: fotmob_detail_stats(Premier League 2025/2026, 42지표) · v_player_profile 0행 · prescriptions#measured(RM n=5, 7.56) | 2026-09-11 갱신: player_matches(26/27 이집트 월드컵 2경기) · player_game_stats(FC27, 08-22판만 존재·09-10 결측 확인) · v_player_profile(누적 n=64) · players.notes(이탈 기재 재확인)",
    "stat_eval": "Fotmob 25/26 PL 23.9경기(90분 환산, 42지표)로 출전이 크게 줄었지만 최종 3분의 1 산출은 여전히 상위다 — 상대 박스 터치 187회(98백분위)·슛 68회(89백분위)·xG 8.16(90백분위)·xA 5.31(90백분위)·어시스트 7회(95백분위)·기회 창출 49회(89백분위)·상대 진영 볼 탈취 21회(89백분위). 반면 대인·볼 간수는 리그 윙어 중 최하위 구간으로 내려갔다: 경합 승률 29.9%(2백분위)·드리블 성공률 26.4%(7백분위)·볼 뺏김 50회(6백분위)·패스 정확도 76.9%(24백분위), 수비 복귀도 태클 17회(41백분위)·인터셉트 4회(32백분위)·걷어내기 7회(27백분위)로 낮다. 우리 자체 실측은 8/9 모나코 친선 미출전으로 player_matches 0행이라 3팀 풀 백분위 산출 불가이며, 그리드 RM 5경기 평균 7.56(표본 부족)이 전부였다. 이 42지표는 25/26 리버풀 소속 프리미어리그 기록이며 이후 트라브존스포르 이적이 기재돼 있어, 다음 시즌 모집단은 EPL이 아니게 된다.\n\n2026-09-11 갱신: fotmob_detail_stats 08-21 이후 갱신 없음(26/27 리그 백분위는 리버풀 소속이 아니므로 애초에 생성 대상이 아니다). player_matches 26/27 시즌은 이집트 월드컵 2경기(7/3 120분 7.3, 7/7 90분 6.8, 평균 7.05)뿐 — 클럽 경기 0행. v_player_profile 누적(전 대회) n=64 평균 7.07·xG 0.388/90(LIV 4명 중 최고)·xA 0.248/90 — 이 값 대부분은 이탈 이전 25/26 리버풀 기록이라 해석에 주의. FC27 08-22(fut.gg 1단계) OVR 91(PAC 89·SHO 88·PAS 86·DRI 90·DEF 45·PHY 76, FC26 대비 OVR+2). 09-10 정본 갱신이 결측(club='Liverpool'으로 조회해도 09-10 행 없음) — LIV 다른 3명과 달리 PlayStyles·키·몸무게 자료 자체가 없다.",
@@ -1595,9 +1595,9 @@
    "overall": "A- (PSG 25/26 실측 기준, 리버풀 실측 0) — PSG에서 29경기 21선발 1750분, 11골 1도움 평점 7.36으로 리그앙 상위 공격형 윙어의 실적을 냈다. FC27 OVR 85(가속92)에 프리시즌 없이 바로 CONFIRMED 이적(2026-08-31 공식 발표, 5년 계약 £106m 고정). 다만 이 평가는 전량 PSG(엔리케 체제) 자료이고 리버풀·이라올라 체제 실측은 아직 0건이다. ⭐[2026-09-12 갱신] A- 유지(단서 강화). 리버풀 첫 실측: 09-04 입스위치 26분 교체(LM, 평점 6.6, 터치 13, xA 0.07, hp 13 그리드 무효; report 32 프랑스 매체 「timides(수줍은) 데뷔」). FC27 OVR 85(2026-09-10 행부터 클럽 Liverpool 반영), 질주 95·가속 89. obs#343: 좌측 fit 0.751이 학포 0.773·무뇨스 0.771보다 낮아 영입은 fit으로 정당화되지 않음(fit=형태 일치도). 등급 근거는 여전히 PSG 25/26(Ligue 1 11골 평점 7.36)이라 A-는 타 팀 실측 등급.",
    "player_id": 81,
    "sample_as_of": "2026-09-20",
-   "sample_avg_rating": 6.68,
-   "sample_minutes": 424,
-   "sample_n": 9,
+   "sample_avg_rating": 6.56,
+   "sample_minutes": 248,
+   "sample_n": 5,
    "sample_season": "2026-27",
    "source": "player_game_stats FC27(2026-08-31); fotmob_season_stats(PSG 2025/26); fotmob_traits(AM/wingers 6지표); player_duties id=97(PSG 25/26 서사, ⚠️리버풀 자료 아님); squad_entries id=134(CONFIRMED, PSG 그리드 이식); player_status(계약 2028-06-30, transfer 2026-08-31) | 2026-09-12 갱신: player_game_stats FC25(2024-09-13)·FC26(2025-09-12 출시판, 2026-07-23 라이브)·FC27(2026-08-22/08-31/09-10); fotmob_detail_stats 2025/26 Ligue 1(2026-08-21); fotmob_traits; v_player_profile·v_player_season_stats(25/26·26/27); player_matches 4300; match_player_reports r32; match_reports 32; squad_entries 134; player_duties 97; player_market_values ~2026-08-01(€57.2M, PSG); obs#343·455",
    "stat_eval": "fotmob_season_stats(PSG 2025/26): 29경기 21선발 1750분, 11골 1도움, 평점 7.36, 경고 2. FotMob 공격형 미드필더/윙어군 대비 percentile: 득점89·기회창출85·슛시도82·터치59·공중볼49·수비적행동43 — 공격 생산성이 강점, 수비 기여는 평범. ⭐[2026-09-12] FotMob 2025/26 Ligue 1 상세(29경기 1750분): 골 11(백분위 94)·xG 10.83(96)·슛 3.45/90(96)·유효슛 31(98)·박스 터치 169(98)·빅찬스 창출 11(93)·드리블 성공 36(90)·최종3선 탈취 23(92)·태클 30(82); 어시스트 1(28)·크로스 성공률 20%(29)·듀얼 승률 42.6%(36). DB 실측 25/26 64경기 3557분 평점 7.06(Ligue 1 29경기 7.21·UCL 16경기 6.8·WC 4경기 7.4; 전 시즌 합산 69경기 7.03). 09-02 이후 리버풀: 09-04 입스위치 26분 평점 6.6·키패스 1·터치 13(player_matches 4300). 2026/27 FotMob 미수집.",
@@ -61190,7 +61190,7 @@
    "player_id": 43,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 319784, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2027-06-30"
   },
   {
@@ -61203,7 +61203,7 @@
    "player_id": 44,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 209405, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2027-06-30"
   },
   {
@@ -61216,7 +61216,7 @@
    "player_id": 47,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1195281, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -61229,7 +61229,7 @@
    "player_id": 48,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 966018, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -61242,7 +61242,7 @@
    "player_id": 49,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 956683, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2032-06-30"
   },
   {
@@ -61255,7 +61255,7 @@
    "player_id": 50,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 831489, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2028-06-30"
   },
   {
@@ -61268,7 +61268,7 @@
    "player_id": 51,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 846005, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -61281,7 +61281,7 @@
    "player_id": 52,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1152455, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -61294,7 +61294,7 @@
    "player_id": 53,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -61307,7 +61307,7 @@
    "player_id": 70,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 671529, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2027-06-30"
   },
   {
@@ -61320,7 +61320,7 @@
    "player_id": 72,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 690107, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -61333,7 +61333,7 @@
    "player_id": 73,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 948800, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -61346,7 +61346,7 @@
    "player_id": 81,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1297165, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -61359,7 +61359,7 @@
    "player_id": 85,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 921253, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -61372,7 +61372,7 @@
    "player_id": 89,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1473534, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -61385,7 +61385,7 @@
    "player_id": 114,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1597668, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2028-06-30"
   },
   {
@@ -61398,7 +61398,7 @@
    "player_id": 116,
    "pulled": "2026-09-25",
    "source": "fotmob.com/api/data (player 1436258, scripts/collect_fotmob_players.py, 2026-09-25 수집)",
-   "stale_days": 9,
+   "stale_days": 10,
    "value": "2030-06-30"
   },
   {
@@ -61411,7 +61411,7 @@
    "player_id": 207,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1197030, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -61424,7 +61424,7 @@
    "player_id": 208,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1609209, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -61437,7 +61437,7 @@
    "player_id": 209,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1113690, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2029-06-30"
   },
   {
@@ -61450,7 +61450,7 @@
    "player_id": 212,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1068920, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2028-06-30"
   },
   {
@@ -61463,7 +61463,7 @@
    "player_id": 53,
    "pulled": "2026-09-13",
    "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
-   "stale_days": 21,
+   "stale_days": 22,
    "value": "Groin injury"
   },
   {
@@ -61476,7 +61476,7 @@
    "player_id": 207,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1197030, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "Achilles tendon injury"
   },
   {
@@ -61489,7 +61489,7 @@
    "player_id": 208,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1609209, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "Cruciate ligament injury"
   },
   {
@@ -61502,7 +61502,7 @@
    "player_id": 209,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1113690, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "Knee injury"
   },
   {
@@ -61515,7 +61515,7 @@
    "player_id": 43,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 319784, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61528,7 +61528,7 @@
    "player_id": 44,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 209405, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61541,7 +61541,7 @@
    "player_id": 47,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1195281, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61554,7 +61554,7 @@
    "player_id": 48,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 966018, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61567,7 +61567,7 @@
    "player_id": 49,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 956683, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61580,7 +61580,7 @@
    "player_id": 50,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 831489, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61593,7 +61593,7 @@
    "player_id": 51,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 846005, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61606,7 +61606,7 @@
    "player_id": 52,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1152455, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61619,7 +61619,7 @@
    "player_id": 53,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61632,7 +61632,7 @@
    "player_id": 70,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 671529, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61645,7 +61645,7 @@
    "player_id": 72,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 690107, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61658,7 +61658,7 @@
    "player_id": 73,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 948800, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61671,7 +61671,7 @@
    "player_id": 81,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1297165, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61684,7 +61684,7 @@
    "player_id": 85,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 921253, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61697,7 +61697,7 @@
    "player_id": 88,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1553105, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61710,7 +61710,7 @@
    "player_id": 89,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1473534, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61723,7 +61723,7 @@
    "player_id": 114,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1597668, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -61736,7 +61736,7 @@
    "player_id": 116,
    "pulled": "2026-09-25",
    "source": "fotmob.com/api/data (player 1436258, scripts/collect_fotmob_players.py, 2026-09-25 수집)",
-   "stale_days": 9,
+   "stale_days": 10,
    "value": null
   },
   {
@@ -61749,7 +61749,7 @@
    "player_id": 212,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1068920, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   }
  ],

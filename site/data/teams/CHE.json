@@ -1176,9 +1176,9 @@
    "overall": "B — 첼시 GK 1선 즉시 교체(2026-08-30 £7.5m 영입, 발표 당일 브라이턴전 선발·산체스 제외)로 지위는 확정적이지만 알론소 체제 표본은 1경기(4-3 승, 3실점)뿐이라 첼시 축 등급은 잠정이다. AVL 25/26 시즌 실측(64경기, 평점 7.06, 선방률 70.9%·백분위 85)이 여전히 판단의 실질 근거다. ⭐[2026-09-12 갱신] B 유지(상향 대기). 첼시 실측이 1→2경기로 늘었고 둘 다 상위 평점이다 — 08-30 브라이턴 8.1(세이브 4), 09-06 아스날 8.4(세이브 8, 리포트 34 「실질 MOM」), 26/27 PL 2경기 평균 8.25(v_player_season_stats). 09-09 리즈(EFL컵)는 펜더스 출전으로 미출전. 아스날 동점골 책임은 소수(니어포스트 비판 3소스) 대 다수(세이브 산출 우호)로 정리됐고 1차 전술 분석은 피벗 보호 결손을 지목한다(obs#563) — GK 개인 등급을 내릴 근거 아님. 표본 2경기라 B 이상 확정은 보류.",
    "player_id": 1,
    "sample_as_of": "2026-09-18",
-   "sample_avg_rating": 7.44,
-   "sample_minutes": 900,
-   "sample_n": 9,
+   "sample_avg_rating": 7.7,
+   "sample_minutes": 360,
+   "sample_n": 4,
    "sample_season": "2026-27",
    "source": "player_duties id=193(regime_id=2) · squad_entries id=133(CHE, CONFIRMED, map25 AVL 이관) · transfer_targets(team_code=CHE, player_id=1, CONFIRMED) · player_matches id=4076(2026-08-30 브라이턴전) · fotmob_season_stats(AVL 2025/2026, 8행) · player_evaluations id 기존행(regime_id=1, AVL 원 평가) 대조 | 2026-09-12 갱신: player_game_stats FC25 2024-09-10(#736)·FC26 2025-09-09(#737)·FC26 2026-06-30(#1)·2026-07-23(#83)·FC27 2026-09-10(#593) / player_matches#4076·#4317 / match_player_reports 26·34 / player_duties#193(09-08·09-09 추가) / obs#563 / fotmob_detail_stats AVL 2025/2026 / player_market_values 2026-08-01 / player_status 2026-08-21 / v_player_season_stats 2026-27",
    "stat_eval": "AVL 25/26 Fotmob 20지표(2835분): 클린시트 7·실점 39·평점 7.07(팀 자체 산정). CHE 이적 후 표본은 2026-08-30 브라이턴전 1경기(SofaScore 평점 8.1, 90분, 선방 4, 클리어런스 1, 패스 38/성공률 저조 16, xA 0.014)뿐이라 첼시 리그 백분위는 아직 산출 불가. ⭐[2026-09-12] 26/27 첼시 FotMob 시즌·백분위 미수집(fotmob_detail_stats 최신 시즌은 AVL 25/26: 선방률 70.9% 백분위85·goals_prevented +3.52 백분위92·하이클레임 48 백분위95·성공패스 893 백분위92·실책→실점 3 백분위5). 09-02 이후 첼시 실측: 09-06 아스날 원정 90분 8.4·세이브 8·터치 49·리커버리 8·hp 58(player_matches#4317, 리포트 34). 26/27 PL 2경기 평균 8.25(180분, 무실점 0). 시장가치 2026-08-01 €16.76m(AVL 표기, 06-01 €20.69m에서 하락). 계약 2029-06-30(player_status 08-21).",
@@ -1197,9 +1197,9 @@
    "overall": "A — 알론소가 1티어 구단 공식 발언으로 직접 규정한 유일한 선수(obs#59), £117m 영국 기록 영입. 2026-09-11 갱신: 공식전 표본이 0경기(08-11 시점)에서 5경기로 늘었고 전부 고평점이다 — PL 3경기(전 선발, 259분) 평균 7.95(2골1도움: 풀럼 8.65·브라이턴 8.0·아스날 7.2), EFL컵 2경기 평균 6.75(어시스트3, 리즈전 후반 45분 3도움 관여). '지시 vs 실측' 충돌(빌라 실측은 좌측 인사이드가 CAM보다 높음)은 이제 알론소 체제 실측으로도 좌측 하프스페이스·좌윙 로테이션이 주 기용임이 확인돼 실측 방향과 알론소 지시가 수렴했다(obs#557·#559·#560).",
    "player_id": 13,
    "sample_as_of": "2026-09-18",
-   "sample_avg_rating": 7.16,
-   "sample_minutes": 776,
-   "sample_n": 11,
+   "sample_avg_rating": 7.45,
+   "sample_minutes": 552,
+   "sample_n": 7,
    "sample_season": "2026-27",
    "source": "squad_entries(r2)·prescriptions(measured/projected)·v_player_profile·player_duties(r1 3행)·player_game_stats(FC26 2026-06-30)·obs#59·#102·#109 | stat_eval 2026-08-11 갱신: fotmob_detail_stats(Premier League 2025/2026, 42지표) · v_player_profile n=56(빌라 소속) | 2026-09-11 갱신: player_game_stats FC27(roster_date 2026-09-10, OVR84·PAC76·SHO82·PAS82·DRI84·PlayStyle Relentless 신규) vs FC26(07-23) 비교; match_player_reports 5경기(풀럼·브라이턴·루턴·아스날·리즈); v_player_season_stats(2026-27 PL 3G·EFL컵2G); player_duties 2026-27 CAM/left pocket 항목(2026-09-08 D+2·2026-09-09 D+3 추가, obs#557·#559·#560)",
    "stat_eval": "2026-08-11 갱신: fotmob_detail_stats(PL 25/26, 42지표) · v_player_profile n=56(빌라 소속) — 슛·유효슛·박스터치 상위권, 볼 뺏김·경합 승률·패스 정확도 하위권('많이 관여하고 많이 잃는' 프로필). 2026-09-11 갱신: match_player_reports·v_player_season_stats로 첼시 공식전 실측 5경기 추가 — PL 3경기(259분) 평균7.95·2골1도움 (풀럼8.65·브라이턴8.0 xA1.01 어시스트1·아스날7.2 골1 xG.076), EFL컵 2경기(113분) 평균6.75·어시스트3(루턴6.3·리즈 후반45분7.2 3도움 관여). season 합계 2026-27 PL 3G 259분 2골1도움 평균7.95, EFL컵 2G 113분 평균6.75. 이 실측은 전부 알론소 체제 공식전이라 팀축 캐비앗이 처음 해소됐다.",
@@ -1239,9 +1239,9 @@
    "overall": "B — RB 실측(마레스카 체제) 6경기 평균 6.40, fb_att_wb/Support 0.862. 2026-09-11 갱신: 알론소 체제 공식전 6경기에서 RB(1)·RM(1)·RCM(2)·교체(2) 등 포지션이 크게 흔들렸다 — 특히 브라이턴전(RCM 90분)·아스날전(교체 RCM 30분)에서 중앙 미드필더로 기용돼 기존 '우측 풀백 전용' 평가와 배치되는 실측이 새로 생겼다(단, 라비아 결장 등 땜빵 성격이 강해 전술적 지지로 단정하기는 이르다). FC27(09-10)에서 SHO가 46→55(+9)로 스쿼드 내 최대 상승폭을 보였다.",
    "player_id": 32,
    "sample_as_of": "2026-09-12",
-   "sample_avg_rating": 6.54,
-   "sample_minutes": 485,
-   "sample_n": 8,
+   "sample_avg_rating": 6.67,
+   "sample_minutes": 386,
+   "sample_n": 6,
    "sample_season": "2026-27",
    "source": "squad_entries(r2)·prescriptions(measured/projected)·obs#46 | stat_eval 2026-08-11 갱신: fotmob_detail_stats(Premier League 2025/2026, 42지표) · v_player_profile 0행 · prescriptions#measured(RB n=6, 6.40) | 2026-09-11 갱신: player_game_stats FC27(roster_date 2026-09-10, OVR79·SHO55(+9)·DEF75(+2)·PAC82(-2)·PlayStyle Jockey·Slide Tackle 신규) vs FC26(07-23, OVR79·SHO46) 비교; match_player_reports 6경기(루턴 RB·풀럼 RM·브라이턴 RCM·아스날 RCM·리즈 RCM·소시에다드 교체); v_player_season_stats(2026-27 PL 3G·EFL컵2G)",
    "stat_eval": "player_matches 0행이던 공백을 Fotmob이 메운다 — 25/26 PL 25.2경기, 42지표(마레스카 체제): 배급(패스 성공 87백분위·정확도 82·롱볼 정확도 80)과 회수(볼 회수 82·상대 진영 볼 탈취 87)가 강점, 걷어내기·제쳐당함·공중 경합 승률은 하위. 2026-09-11 갱신: match_player_reports·v_player_season_stats로 알론소 체제 실측 6경기 추가 — 슬롯이 RB/RM/RCM으로 분산돼 단일 포지션 평균을 내기 어렵다(개별: 루턴 RB 7.6, 풀럼 RM 6.69, 브라이턴 RCM 6.4, 아스날 RCM 6.9, 리즈 RCM 6.3). 2026-27 시즌 누계 (v_player_season_stats): PL 3G 196분 평균6.66, EFL컵 2G 112분 평균6.95. player_game_stats FC27은 SHO+9·DEF+2로 상승, PAC-2·PHY-1로 하락 — 혼재된 방향이라 단일 결론을 내리기 어렵다.",
@@ -1280,10 +1280,10 @@
    "name_en": "Trevoh Chalobah",
    "overall": "B — CCB 슬롯 신설의 근거 인선(obs#102 ②: CCB 0.873 > RCB 0.744 > LCB 0.665, 중심 x 52.7로 정확히 중앙). 중앙 CB를 좌우로 흡수하면 −0.118 손실이라 백3 중앙 배치가 수치로 성립한다. 단 45분+ 표본 3경기로 표본 부족이고, 그리드는 RCB 표기 경기의 것을 CCB에 쓴 것(원 캐비앗). 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.\n\n[2026-09-11 갱신] 2026-08-09 코모(세리에A)로 완전이적 확정(€30m 고정+€6m 옵션, 5년 계약, 셀온 조항 포함 — Goal.com·ESPN·Chelsea FC 공식 3중 확인) — 26/27 첼시 스쿼드에서 이탈했다. FC27 로스터(2026-08-31)부터 club='Como'로 반영되고, 최신 2026-09-10 로스터엔 그의 행 자체가 없다(첼시 소속이 아니라 수집 대상에서 제외). 이 행이 정의한 CCB 슬롯 근거(cb_bpd/Aggressive 0.873)는 25/26 첼시 소속 표본에 묶인 이력값으로만 보존하고, 26/27 인선 판단(라크루아 등 후임)에는 쓰지 않는다(player_duties#61 확정).",
    "player_id": 34,
-   "sample_as_of": "2026-07-18",
+   "sample_as_of": null,
    "sample_avg_rating": null,
-   "sample_minutes": 1,
-   "sample_n": 1,
+   "sample_minutes": 0,
+   "sample_n": 0,
    "sample_season": "2026-27",
    "source": "squad_entries(r2)·prescriptions(measured/projected)·player_game_stats(FC26 2026-06-30)·obs#102 | stat_eval 2026-08-11 갱신: fotmob_detail_stats(Premier League 2025/2026, 41지표) · v_player_profile 0행 · prescriptions#measured(RCB n=3) | 2026-09-11 갱신: player_duties#61(2026-08-09 코모 이적 확정, Goal.com·ESPN·Chelsea FC 공식) · player_game_stats FC27(2026-08-31 roster, club=Como, OVR80) · v_player_season_stats(25/26 전 대회, 첼시 소속 마지막 시즌)",
    "stat_eval": "player_matches 0행이던 공백을 Fotmob 25/26 PL 30.9경기(90분 환산, 41지표)가 메운다. 빌드업 지표가 압도적으로 앞선다 — 패스 성공 2124회(96백분위)·정확도 93.0%(94백분위)·터치 2686회(92백분위)·볼 회수 119회(92백분위)로 리그 동포지션 상위 10% 안쪽. 수비 대인은 걷어내기 178회(77백분위)·인터셉트 35회(84백분위)는 좋지만 공중 경합 승률 55.6%(33백분위)·경합 승률 58.5%(43백분위)가 중하위라, 총량은 많고 성공률은 평범한 유형이다. 우리 실측은 그리드 3경기(표본 부족, 평균 6.47)뿐이고 3팀 풀 백분위는 산출 불가였다. 이 시즌 기록은 첼시 소속·마레스카 로즈니어 체제 것이며(참고: 이후 코모 이적 기재), 알론소 체제 스탯이 아니다. | 2026-09-11 갱신: player_duties id=61(2026-08-09 코모 완전이적 확정) · player_game_stats FC27(2026-08-31, club=Como, OVR80 변동 없음) · v_player_season_stats(25/26 전 대회 최종, 첼시 소속 마지막 시즌)",
@@ -1323,9 +1323,9 @@
    "overall": "A — 피벗의 실질 기둥. LDM dm_dlp/Roaming 0.941(6경기 평균 7.00, 신커널 불변), 신커널에서 RDM도 0.871로 급등해 양측 겸용이 가능해졌다(obs#102 ⑤ — 단 이동은 순 −0.028로 기각, 우발 대비로만 기록). 핵심 긴장: obs#116이 확정한 기능축 실측(듀얼승 4.6·인터셉트 1.25·볼회수 5.4 전부 피벗 3인 중 1위, 키패스 0.6 최하위)은 그가 명백한 볼위너임을 말하는데, 현 처방은 dm_dlp(창조형)를 유지한다 — 움직임 적합 +0.126을 사고 기능 정합을 포기한 트레이드(지불액 0.246~0.294, 사용자 판단 보류 사항). 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.\n\n[2026-09-11 갱신] 26/27 공식 출전이 극히 제한적이다 — 밀란(85분 8.2)·소시에다드(76분 7.3)·유벤투스(66분 7.5) 프리시즌 이후, 공식전은 브라이턴전 14분(6.6, 82분 재부상 교체로 시즌 첫 출전이 조기 종료)뿐이다. 아스날전(09-06)·루턴전·리즈전(EFL컵 09-09) 전부 결장했다. 알론소 본인이 「지난주 브라이턴전 투입이 너무 일렀다」고 인정했다(NBC Sports·Sky, 2026-09 D+3 확정 — ReadChelsea: 「브라이턴전 복귀했으나 곧 불편을 느껴 스스로 교체를 요청」). 그의 결장이 엔소 이적과 겹쳐 리스 제임스의 임시 피벗 기용을 낳은 이중 결손의 한 축이다.",
    "player_id": 36,
    "sample_as_of": "2026-08-30",
-   "sample_avg_rating": 6.95,
-   "sample_minutes": 104,
-   "sample_n": 2,
+   "sample_avg_rating": 6.6,
+   "sample_minutes": 14,
+   "sample_n": 1,
    "sample_season": "2026-27",
    "source": "squad_entries(r2)·prescriptions(measured/projected)·v_player_profile·obs#44·#102·#109·#116 | stat_eval 2026-08-11 갱신: fotmob_detail_stats(Premier League 2025/2026, 41지표) · v_player_profile n=9 · prescriptions#measured(LDM n=6, 7.00) | 2026-09-11 갱신: player_game_stats FC27(2026-09-10, OVR86·PlayStyle 5종 신규) · v_player_season_stats(26/27 PL 1경기 14분) · reports/match-watch/2026-08-30-che-brighton.md(부상 재발 기록) · reports/match-watch/2026-09-06-che-arsenal.md(too early 발언 확정, D+3)",
    "stat_eval": "Fotmob 25/26 PL 31.1경기(90분 환산, 41지표)에서 수비 볼륨이 리그 동포지션 최상단이다 — 인터셉트 59회(100백분위)·태클 87회(90백분위)·수비적 행동 366회(89백분위)·경합 승 172회(89백분위)·볼 회수 177회(86백분위). 배급도 패스 성공 1883회(98백분위)·정확도 91.7%(95백분위)·터치 2496회(95백분위)로 최상위. 약점은 명확히 두 개다: 공중 경합 승률 34.1%(6백분위)로 제공권이 리그 최하위 구간이고, 파울 54회(2백분위)·경고 11장(2백분위)으로 반칙 빈도가 극단적으로 높다. 우리 3팀 풀 실측(9경기 800분 평균 7.08 = 69백분위, 경합승 4.22 = 83백분위, 인터셉트 1.33 = 89백분위)과 방향은 일치하나 순위가 낮게 나오는데, 3팀 풀은 강팀만 모은 59행 모집단이라 리그 전체 동포지션 대비인 Fotmob 쪽이 더 넓다. 이 표본은 전부 25/26 마레스카·로즈니어 체제이며 알론소 체제 스탯이 아니다. | 2026-09-11 갱신: v_player_season_stats 26/27 — PL 1경기 14분(6.6, 82분 부상 교체), 클럽친선 3경기(76·151분 등) 평균 6.8~7.8. 공식전 표본이 14분뿐이라 시즌 실측 판단에는 미달 — 25/26 fotmob 41지표가 여전히 유일한 유의미 표본이다.",
@@ -1344,9 +1344,9 @@
    "overall": "A — 실측 6경기 평균 7.28로 첼시 필드 플레이어 최고. 실측 형태는 피벗 라벨보다 좌측 와이드 플레이메이커(LM wm_wideplm/Attack 0.750 > LDM 0.698 > CAM 0.631, 중심 35.3,57.0 좌측 편향). obs#116이 기능축을 확정: 키패스 2.6으로 카이세도의 4배 이상 — 피벗 2인의 기능 분화에서 명백한 창조 축이다. RDM은 0.535로 부적합('카이세도와 같은 쪽(좌측)을 원한다' 판정 유지, obs#116 ⑥). 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.\n\n[2026-09-11 갱신] 2026-09-01 맨체스터 시티로 완전이적 확정 — 이적료 £125m(이삭과 공동 영국 이적 기록 타이), 5년 계약(2031), mancity.com 공식 발표(23:30 UK). 26/27 첼시 스쿼드에서 이탈했다 — 이후 CHE 공식전 명단에 없다(09-06 아스날전부터 결원, transfer_outgoing id=25 CONFIRMED). 첼시 소속 마지막 출전은 2026-08-24 풀럼전(65분 투입 25분, 평점 6.41)으로, 카이세도 컨디션 문제 속 대체 출전이었다 — 「카이세도가 온전했다면 출전하지 않았을 수도 있다」는 서술과 투입 내내 이어진 풀럼 홈 관중의 야유가 복수 매체에 기록됐다(25분 표본+상대 관중 요인으로 수행 평가·이적 등급 판정에는 미채용, player_duties#64 캐비앗 유지).",
    "player_id": 37,
    "sample_as_of": "2026-08-24",
-   "sample_avg_rating": 6.87,
-   "sample_minutes": 508,
-   "sample_n": 6,
+   "sample_avg_rating": 6.41,
+   "sample_minutes": 25,
+   "sample_n": 1,
    "sample_season": "2026-27",
    "source": "squad_entries(r2)·prescriptions(measured)·v_player_profile·obs#58·#102·#116 | stat_eval 2026-08-11 갱신: fotmob_detail_stats(Premier League 2025/2026, 42지표) · v_player_profile n=8 · prescriptions#measured(LM n=6, 7.28) | 2026-09-11 갱신: transfer_outgoing id=25(CHE→Manchester City, CONFIRMED, 2026-09-01, mancity.com 공식·£125m·5년) · v_player_season_stats(25/26 최종·26/27 1경기) · reports/match-watch/2026-08-24-che-fulham.md(첼시 소속 마지막 출전)",
    "stat_eval": "Fotmob 25/26 PL 34.7경기(90분 환산, 42지표)에서 창출·득점 양쪽이 동시에 상위 2%다 — 기회 창출 68회(98백분위)·xA 7.25(98백분위)·xG 11.29(98백분위)·xGOT 12.40(98백분위)·득점 10골(93백분위)·유효슛 31회(95백분위). 배급도 패스 성공 1755회(98백분위)·정확한 롱볼 95회(97백분위)·터치 2608회(97백분위)로 최상위이며, 공중 경합 승률 50.0%(90백분위)·헤더 슛 9회(95백분위)로 미드필더치고 제공권까지 갖췄다. 반대로 1대1 캐리는 최하위다 — 드리블 성공률 27.1%(9백분위)·제쳐당함 36회(4백분위)·볼 뺏김 41회(11백분위), 경고 10장(0백분위). 우리 3팀 풀 실측(8경기 718분 평균 7.44 = 85백분위, 키패스 2.63 = 93백분위)과 Fotmob이 드물게 일치하는 사례지만, 두 표본 모두 25/26 마레스카·로즈니어 체제이고 알론소 체제 공식전은 0경기다. | 2026-09-11 갱신: v_player_season_stats 25/26 첼시 소속 전 대회 최종 — PL 36경기(3121분) 평균 7.15(8골 3도움)·UCL 10경기(748분) 평균 6.99(3골 2도움)·EFL컵 5경기·FA컵 4경기 등, 이적 전 마지막 풀시즌 기록. 26/27은 PL 1경기(25분 6.41, 풀럼)뿐이며 2026-09-01 이적 확정 이후 첼시 소속 기록은 없다.",
@@ -1365,9 +1365,9 @@
    "overall": "B — 실측 6경기 평균 6.63, RM wm_winger/Balanced 0.875, 전방 0.59/자기진영 0.20의 터치라인형 윙어. 문제는 선수가 아니라 구조: 알론소 3-4-2-1에는 윙어 슬롯이 아예 없고(obs#61 — 첼시의 구조적 모순은 윙어 과잉), 네투의 실측이 그 모순의 실측 근거로 지목돼 있다. LM 0.316으로 우측 전용. 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것.\n\n[2026-09-11 갱신] 공식전 실측이 우 윙백/우측 전방 기용을 확정했다 — squad_entries·prescriptions 재산출: RWB(3-4-2-1) 커널 fb_att_wb/Support 0.8144(45분+ 필터 통과 2경기, 평균 8.15, 127분, 2026-09-07 재집계)로 FB군이 WM(0.7154)·CM(0.5420)을 압도한다. 브라이턴전(68분 8.1, SofaScore 8.4 — 경기 최고, 골+xG.41+xA.33+키패스2)과 리즈전(EFL컵, 46분 투입 45분 7.7, 60분 결승골)으로 CHE 소속 6경기 중 최고 평점 2회를 기록했다. 다만 수비 부하가 큰 임무다 — 아스날전(D+2·D+3)에서는 무공 시 미드필드 라인까지 올라가 칼라피오리(인버티드 풀백)를 대인 추종하는 임무를 받았고, 이 전진이 아체암퐁을 사실상 단독 우측 풀백으로 고립시켜 팀을 4-4-2로 접히게 하는 연쇄의 시작점이었다(1차 소스 tacticalfootballanalysis·Coaches' Voice·Sky 캐러거, obs#562·#564). 매체 평가는 분열 — Evening Standard 7 대 football.london 5.",
    "player_id": 38,
    "sample_as_of": "2026-09-18",
-   "sample_avg_rating": 6.81,
-   "sample_minutes": 550,
-   "sample_n": 9,
+   "sample_avg_rating": 6.85,
+   "sample_minutes": 404,
+   "sample_n": 7,
    "sample_season": "2026-27",
    "source": "squad_entries(r2)·prescriptions(measured)·v_player_profile·obs#46·#61 | stat_eval 2026-08-11 갱신: fotmob_detail_stats(Premier League 2025/2026, 40지표) · v_player_profile n=1 · prescriptions#measured(RM n=6, 6.63) | 2026-09-11 갱신: prescriptions id=482(measured RWB, fit_sim .8144, 2026-09-07 재집계) · player_duties season=2026-27 id=65(D+2·D+3 아스날전 추적) · player_game_stats FC27(2026-09-10, OVR81, PlayStyle 3종 신규) · v_player_season_stats(26/27 PL 3경기 163분 1골)",
    "stat_eval": "Fotmob 25/26 PL 29.4경기(90분 환산, 40지표)는 전형적인 '공급형 윙어' 지문이다 — 성공한 크로스 38회(95백분위)·xA 6.83(96백분위)·어시스트 6회(92백분위)·빅찬스 창출 12회(91백분위)·기회 창출 53회(91백분위)·드리블 성공 47회(92백분위). 반면 마무리는 xG 4.61(73백분위)·xGOT 3.83(67백분위)·득점 5골(71백분위)로 한 단계 낮고, 몸싸움은 경합 승률 40.3%(29백분위)·공중 경합 승률 27.3%(30백분위)·제쳐당함 26회(9백분위)로 하위다. 우리 3팀 풀 실측은 player_matches 1경기(59분 평점 8.20 = 97백분위)라 사실상 노이즈이고, 그리드 6경기 평균 6.63이 유일한 실질 근거였다 — 두 백분위의 극단적 괴리는 n=1 탓이다. 이 Fotmob 수치도 25/26 마레스카·로즈니어 체제이며 알론소 체제 스탯이 아니다. | 2026-09-11 갱신: prescriptions id=482(measured RWB(3-4-2-1), fit_sim .8144, n=2, avg 8.15, 127분, 2026-09-07 재집계) · v_player_season_stats 26/27 누적(PL 3경기 163분 평균7.09 1골, EFL컵 2경기 68분 평균7.25 1골, 클럽친선 2경기 59·76분 평균 8.2/7.8)",
@@ -1428,9 +1428,9 @@
    "overall": "B+ — 처방 전체의 최약 칸이자 가장 흥미로운 하이브리드. RDM dm_dlp 처방(신커널에서 Roaming 0.772→0.579로 붕괴, Build-Up 0.656으로 포커스만 교체 — obs#102 ③)이나 45분+ 표본 3경기(표본 부족 — '이 처방의 가장 약한 칸' 명기). 실측 3경기 평균 7.33은 스쿼드 최고치지만 표본이 이를 뒷받침하지 못한다. 알론소가 트렌트에게 준 'inverted role' 지시(obs#57)의 첼시 대응 인원. 표본은 CHE 실측 표본은 25/26 마레스카·로즈니어 체제(알론소 체제 공식전 0경기, 첫 경기 8/24 풀럼)의 것. [2026-09-11 갱신] 08-24 풀럼전(알론소 첫 공식전) RCM 90분 전 경기 소화, 평점 7.01 — 풀럼 중원 우세 속에서도 중앙 연결 유지(player_duties). 프리시즌 실측(CM alonso2627, 소시에다드전 62분 평균 7.4, fit_sim cm_playmaker/Roaming .847)에 이어 공식전에서도 RCM 완주 — 종전 'RDM 하이브리드' 처방 대신 3-4-2-1 CM 라인으로 실측 포지션이 굳어지는 흐름.",
    "player_id": 41,
    "sample_as_of": "2026-09-12",
-   "sample_avg_rating": 6.82,
-   "sample_minutes": 551,
-   "sample_n": 9,
+   "sample_avg_rating": 6.85,
+   "sample_minutes": 404,
+   "sample_n": 6,
    "sample_season": "2026-27",
    "source": "squad_entries(r2)·prescriptions(measured/projected)·v_player_profile·obs#57·#102·#109·#116 | stat_eval 2026-08-11 갱신: fotmob_detail_stats(Premier League 2025/2026, 40지표) · v_player_profile n=7 · prescriptions#measured(RDM n=3) | 2026-09-11 갱신: player_game_stats FC27(roster_date 2026-09-10, OVR84 불변·PlayStyle 7종 추가 확인) vs FC26(07-23, OVR84) — 스탯 변화 없음; v_player_profile(n=70); v_player_season_stats(2026-27 PL/EFL Cup); prescriptions CM(alonso2627, 소시에다드전); player_duties(2026-08-24 풀럼전 RCM)",
    "stat_eval": "Fotmob 25/26 PL 21.8경기(90분 환산, 40지표) — 합계와 per90 백분위가 거의 붙어 있어(예: xA 3.19 = 89/90, 정확한 롱볼 57회 = 93/92, 패스 성공 1178회 = 93/94) 출전 시간이 짧은데도 밀도가 높다는 뜻이다. 강점은 전달과 대인 양쪽: 성공한 크로스 30회(92백분위)·빅찬스 창출 8회(95백분위)·롱볼 정확도 55.3%(88백분위)·공중 경합 승률 66.0%(87백분위)·경합 승률 59.3%(83백분위)·인터셉트 33회(86백분위). 약점은 위치 수비 총량으로, 걷어내기 41회(44백분위)·수비적 행동 128회(54백분위)·상대 박스 터치 16회(37백분위)에 그쳐 침투보다 후방 배급 쪽 무게가 확실하다. 우리 3팀 풀 실측(7경기 592분 평균 7.14 = 75백분위, xA 0.244 = 93백분위)과 방향이 일치하며, 45분+ 그리드는 3경기로 표본 부족이었다. 두 표본 모두 25/26 마레스카·로즈니어 체제로 알론소 체제 스탯이 아니다. | 2026-09-11 갱신: v_player_profile 표본이 n=7→n=70(3892분)로 확장 — avg_rating 7.08·xa_pg 0.108(창조 산출 유지)·tk_pg 1.17. v_player_season_stats 2026-27 PL 3경기 평균 6.77·EFL Cup 2경기 6.6. prescriptions CM(alonso2627, 소시에다드전 단일경기 62분 평균 7.4, fit_sim cm_playmaker/Roaming .847, 좌우 동률 .847=.847 — 주장 완장 착용 LCM 선발). player_duties 2026-08-24 풀럼전 RCM 90분 평점 7.01 — 프리시즌에 이어 공식전도 CM 라인 배치, RDM 하이브리드 서술에서 CM 정착으로 무게중심 이동.",
@@ -63307,7 +63307,7 @@
    "player_id": 1,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 268375, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2029-06-30"
   },
   {
@@ -63320,7 +63320,7 @@
    "player_id": 13,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 883080, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2033-06-30"
   },
   {
@@ -63333,7 +63333,7 @@
    "player_id": 32,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1197250, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -63346,7 +63346,7 @@
    "player_id": 33,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 917802, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2029-06-30"
   },
   {
@@ -63359,7 +63359,7 @@
    "player_id": 35,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1413846, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2032-06-30"
   },
   {
@@ -63372,7 +63372,7 @@
    "player_id": 36,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1137668, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2033-06-30"
   },
   {
@@ -63385,7 +63385,7 @@
    "player_id": 38,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 843040, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -63398,7 +63398,7 @@
    "player_id": 39,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1096353, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2033-06-30"
   },
   {
@@ -63411,7 +63411,7 @@
    "player_id": 40,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1021382, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2034-06-30"
   },
   {
@@ -63424,7 +63424,7 @@
    "player_id": 41,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 807729, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2032-06-30"
   },
   {
@@ -63437,7 +63437,7 @@
    "player_id": 42,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1580774, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2033-06-30"
   },
   {
@@ -63450,7 +63450,7 @@
    "player_id": 63,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1400216, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2029-06-30"
   },
   {
@@ -63463,7 +63463,7 @@
    "player_id": 65,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1190867, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -63476,7 +63476,7 @@
    "player_id": 66,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1473806, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2033-06-30"
   },
   {
@@ -63489,7 +63489,7 @@
    "player_id": 67,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 113836, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2028-06-30"
   },
   {
@@ -63502,7 +63502,7 @@
    "player_id": 80,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 988805, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -63515,7 +63515,7 @@
    "player_id": 95,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1530314, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2034-06-30"
   },
   {
@@ -63528,7 +63528,7 @@
    "player_id": 97,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1113692, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2032-06-30"
   },
   {
@@ -63541,7 +63541,7 @@
    "player_id": 130,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 950485, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2032-06-30"
   },
   {
@@ -63554,7 +63554,7 @@
    "player_id": 131,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1096400, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2029-06-30"
   },
   {
@@ -63567,7 +63567,7 @@
    "player_id": 210,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 156008, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2028-06-30"
   },
   {
@@ -63580,7 +63580,7 @@
    "player_id": 211,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1183148, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2033-06-30"
   },
   {
@@ -63593,7 +63593,7 @@
    "player_id": 36,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1137668, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "Calf injury"
   },
   {
@@ -63606,7 +63606,7 @@
    "player_id": 39,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1096353, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "Muscle injury"
   },
   {
@@ -63619,7 +63619,7 @@
    "player_id": 40,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1021382, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "Injured"
   },
   {
@@ -63632,7 +63632,7 @@
    "player_id": 41,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 807729, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "Knock"
   },
   {
@@ -63645,7 +63645,7 @@
    "player_id": 66,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1473806, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "Physical discomfort"
   },
   {
@@ -63658,7 +63658,7 @@
    "player_id": 210,
    "pulled": "2026-09-19",
    "source": "fotmob.com/api/data (player 156008, scripts/collect_fotmob_players.py, 2026-09-19 수집)",
-   "stale_days": 15,
+   "stale_days": 16,
    "value": "Wrist injury"
   },
   {
@@ -63671,7 +63671,7 @@
    "player_id": 211,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1183148, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "Hamstring injury"
   },
   {
@@ -63684,7 +63684,7 @@
    "player_id": 1,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 268375, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63697,7 +63697,7 @@
    "player_id": 13,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 883080, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63710,7 +63710,7 @@
    "player_id": 32,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1197250, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63723,7 +63723,7 @@
    "player_id": 33,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 917802, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63736,7 +63736,7 @@
    "player_id": 35,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1413846, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63749,7 +63749,7 @@
    "player_id": 38,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 843040, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63762,7 +63762,7 @@
    "player_id": 42,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1580774, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63775,7 +63775,7 @@
    "player_id": 63,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1400216, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63788,7 +63788,7 @@
    "player_id": 65,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1190867, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63801,7 +63801,7 @@
    "player_id": 67,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 113836, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63814,7 +63814,7 @@
    "player_id": 80,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 988805, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63827,7 +63827,7 @@
    "player_id": 95,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1530314, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63840,7 +63840,7 @@
    "player_id": 96,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1720243, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63853,7 +63853,7 @@
    "player_id": 97,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1113692, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63866,7 +63866,7 @@
    "player_id": 130,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 950485, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63879,7 +63879,7 @@
    "player_id": 131,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1096400, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -63892,7 +63892,7 @@
    "player_id": 210,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 156008, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   }
  ],

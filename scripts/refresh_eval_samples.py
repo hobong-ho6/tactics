@@ -27,8 +27,11 @@ ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "db" / "tactics.db"
 DEFAULT_SEASON = "2026-27"
 
-# 친선은 표본에서 제외한다 — 강도가 달라 공식전과 같은 척도로 못 읽는다(docs/30).
-FRIENDLY = "%Friendly%"
+# 「클럽 공식전」 정의는 core.aggregate.club_official_sql() 하나다 — 친선·유스 대회·대표팀 경기를 뺀다.
+# ⭐ 2026-10-05: 자체 `%Friendly%` 필터를 쓰던 탓에 10-02 적재한 대표팀 16경기가 클럽 표본에 섞일 뻔했다.
+sys.path.insert(0, str(ROOT))
+from core.aggregate import club_official_sql  # noqa: E402
+CLUB_SQL, CLUB_ARGS = club_official_sql()
 
 SQL = """
 SELECT pe.id, pe.player_id,
@@ -37,13 +40,12 @@ SELECT pe.id, pe.player_id,
        ROUND(AVG(m.rating), 2)                         AS avg_rating,
        MAX(m.date)                                     AS as_of
 FROM player_evaluations pe
-LEFT JOIN player_matches m
+LEFT JOIN (SELECT * FROM player_matches WHERE %s) m
        ON m.player_id = pe.player_id
       AND m.season    = ?
       AND m.minutes IS NOT NULL
-      AND m.competition NOT LIKE ?
 GROUP BY pe.id
-"""
+""" % CLUB_SQL
 
 
 def main() -> int:
@@ -53,7 +55,7 @@ def main() -> int:
     a = ap.parse_args()
 
     con = sqlite3.connect(DB)
-    rows = con.execute(SQL, (a.season, FRIENDLY)).fetchall()
+    rows = con.execute(SQL, (*CLUB_ARGS, a.season)).fetchall()
 
     changed, cleared = [], 0
     for eid, pid, n, minutes, avg, as_of in rows:

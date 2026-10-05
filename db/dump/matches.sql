@@ -104,3 +104,4 @@ INSERT INTO matches VALUES(110,16363649,'CHE','2026-27','2026-09-18','Brentford'
 INSERT INTO matches VALUES(111,16363870,'AVL','2026-27','2026-09-19','Tottenham Hotspur','Premier League','A','2-3',1,NULL,36.0);
 INSERT INTO matches VALUES(112,16416339,'ATM','2026-27','2026-09-20','Real Madrid','LaLiga','H','2-1',1,'Round 7',61.0);
 INSERT INTO matches VALUES(113,16363648,'LIV','2026-27','2026-09-20','AFC Bournemouth','Premier League','A','0-1',1,'Round 5',54.0);
+INSERT INTO matches VALUES(114,17213039,'AVL','2026-27','2026-10-02','Sevilla','Club Friendly Games','A','1-3',1,'A매치 휴식기 친선 — 에스타디오 라몬 산체스 피스후안, 에메리 친정 방문 (result는 홈-원정 순서: 세비야 1 · 빌라 3)',50.0);

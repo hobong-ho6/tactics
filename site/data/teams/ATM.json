@@ -1602,10 +1602,10 @@
    "name_en": "Miguel Llorente",
    "overall": "C — ST 63 ovr 유스(FC27 로스터 자체가 미수집 — FC26 07-23 행만 존재, 09-10 FC27 스냅샷에 이 선수 없음). 25/26 시즌 라리가 2경기 48분 1골(평점 6.88), 프리메라 페데라시온 5골로 유스 대회 득점력은 확인되나 1군 표본은 여전히 극히 얇다. 09-02 이후 신규 실측·서사·게임스탯 전무.",
    "player_id": 170,
-   "sample_as_of": "2026-09-09",
+   "sample_as_of": "2026-09-06",
    "sample_avg_rating": 6.9,
-   "sample_minutes": 137,
-   "sample_n": 3,
+   "sample_minutes": 47,
+   "sample_n": 2,
    "sample_season": "2026-27",
    "source": "player_duties(LM, 미출전 명시); fotmob_season_stats 25/26 라리가·프리메라 페데라시온 | 2026-09-11 갱신 확인: player_matches·fotmob_detail_stats·squad_entries(regime 4)·player_duties·player_game_stats(FC27) 전부 09-02 시점과 동일 — 신규 데이터 0건.",
    "stat_eval": "라리가 25/26: 2경기 48분 1골 평점 6.88(상세지표 없음). ⚠️ FC27 player_game_stats 행 자체가 없다(2026-08~09 로스터 3회 스냅샷 모두 미수록) — EA FC27에 이 선수가 반영되지 않았을 가능성.",
@@ -1644,10 +1644,10 @@
    "name_en": "Alexander Sørloth",
    "overall": "B+ — ST 83 ovr(FC27 09-10 기준, FC27 초반 82와 소폭 진동). 9월 근육부상으로 결장 지속(player_status 최신 확인 2026-09-02, 복귀시점 미확정 'September 2026' — 이후 신규 확인 없음). 26/27 ATM 실측 여전히 0경기. fotmob_detail_stats(25/26 비야레알, 41지표)로 처음 구체화된 지표: 공중경합 압도적(승률 58.4% percentile 97, 헤더슛 32회 94, 공중경합승 94회 93) — 전형적 타겟맨 프로필이 데이터로 확인됨.",
    "player_id": 173,
-   "sample_as_of": "2026-07-11",
-   "sample_avg_rating": 6.45,
-   "sample_minutes": 113,
-   "sample_n": 2,
+   "sample_as_of": null,
+   "sample_avg_rating": null,
+   "sample_minutes": 0,
+   "sample_n": 0,
    "sample_season": "2026-27",
    "source": "player_duties(ST, R1 명단 미포함 명시); fotmob_season_stats 25/26; player_status(injury, Muscle injury, 2026-09); squad_entries ST(fit_sim 0.701); player_market_values 26-09 16.3M€ | 2026-09-11 갱신: fotmob_detail_stats(2025/2026 LaLiga Villarreal 41지표); player_status(injury, 마지막 pulled 2026-09-02 — 그 이후 신규 확인 없음); player_game_stats FC27(2026-09-10, playstyles 4종)",
    "stat_eval": "25/26 비야레알 35경기 1981분 13골 평점 6.79 + fotmob_detail_stats 41지표(위). 26/27은 부상으로 실측 0 유지.",
@@ -1707,10 +1707,10 @@
    "name_en": "Obed Vargas",
    "overall": "C+ — DM 72 ovr(FC27 09-10, FC26과 OVR 동일). 26/27 ATM 소속 실측은 여전히 0건(R1 명단 미포함 유지) — 09-02 이후 신규 관측 없음. 25/26 세비야 시절 12경기 739분 평점 6.82만 보유.",
    "player_id": 176,
-   "sample_as_of": "2026-07-01",
-   "sample_avg_rating": 6.5,
-   "sample_minutes": 17,
-   "sample_n": 1,
+   "sample_as_of": null,
+   "sample_avg_rating": null,
+   "sample_minutes": 0,
+   "sample_n": 0,
    "sample_season": "2026-27",
    "source": "player_duties(CDM, R1 명단 미포함 명시); fotmob_season_stats 25/26; squad_entries DM(fit_sim 0.746); player_market_values 26-09 7.68M€ | 2026-09-11 확인: player_game_stats(FC27, 2026-09-10) OVR·PlayStyles 갱신 확인하되 변화 미미; fotmob_detail_stats 25/26 LaLiga(세비야, duels won% 97%ile 등) 신규 조회; 26/27 ATM 실측 0건 유지; player_duties·prescriptions(regime=4) 09-02 이후 갱신 없음",
    "stat_eval": "FC27(09-10): OVR72 유지, pac74→73·pas66→67 소폭 변동, playstyles 신규 공개(Technical) 1개뿐으로 여전히 얇다. 25/26: 12경기 739분 평점 6.82(어시스트 1, 상세지표는 세비야 소속 기준).",
@@ -1792,9 +1792,9 @@
    "overall": "B — ST. FC27(roster 2026-08-31) OVR80·PAC79·SHO79·PAS71·DRI79·DEF38·PHY73(높은 슈팅·페이스·드리블, 수비 기여도는 스쿼드 최하위권인 38로 EA도 non-pressing형 스트라이커로 평가) — FC26 스냅샷은 없음(ATM 합류가 이적 마감 시점이라 FC26 로스터에는 미등재). ATM 실측 0(이적 초기, 임대 합류)이나 유벤투스 25/26(35경기 1782분 6G4A, 평점 6.6~6.7) + 릴 시절 서사가 매우 두텁다. squad_entries rate_v 6.45(juve2526, 표본 6경기)·fit_sim 0.673(st_false9/Attack). L'Ultimo Uomo의 진단대로 '공간형·트랜지션형' 스트라이커가 세리에A의 밀집 수비에서 고전했고, ATM/시메오네 체제에서 재활 가능성이 서사상 제기된다(가설, 실측 아님).",
    "player_id": 198,
    "sample_as_of": "2026-09-20",
-   "sample_avg_rating": 7.13,
-   "sample_minutes": 324,
-   "sample_n": 6,
+   "sample_avg_rating": 7.26,
+   "sample_minutes": 234,
+   "sample_n": 5,
    "sample_season": "2026-27",
    "source": "player_duties(ST, 2건 — 체제 분리 서술: 유벤투스 25/26·릴 2020~25·ATM 26/27 가설); fotmob 유벤투스 25/26 세리에A 상세지표; squad_entries ST(rate_v 6.45, rate_basis=juve2526, 표본 6경기, fit_sim 0.673); 서사(이탈리아어 L'Ultimo Uomo, 프랑스어 L'Équipe/So Foot, 스페인어 Telemadrid/El Rincón Atlético 등 4개 언어권 — 불변규칙 10 준수, sample_note에 상세 기록) | 2026-09-11 갱신: player_game_stats(FC27 roster_date 2026-08-31, OVR80·6대스탯 확인 — FC26 스냅샷은 ATM 합류 전이라 존재하지 않음, height/weight 미기입) · player_duties/fotmob_detail_stats/squad_entries/player_market_values 재확인, 09-02 이후 신규 행 없음(변화 없음 확정)",
    "stat_eval": "유벤투스 25/26 세리에A 35경기(~16선발) 1782분 6G4A, 슛 41(유효 16, 39.0%)=2.07/90, 전대회 xG 8.19/npxG 7.40/xGOT 6.39로 대폭 언더퍼폼. 터치 667·상대 박스터치 105(15.7%)·키패스 1.66/경기·xA 0.22/90(상위 17%). 세리에A 공격수 대비 퍼센타일: 터치 76~79%·슈팅시도 20%·득점 47%·찬스창출 91~94%·공중듀얼 10~11%·수비액션 16~23%. UCL 6경기 253분 2골. 릴 24/25(타 체제) 리그1 32경기 16골5도움. 대표팀 캐나다 82경기 42골(역대 최다), WC2026 본선 3골. FC27(roster_date 2026-08-31, ATM 이적 직후 반영): OVR80·PAC79·SHO79·PAS71·DRI79·DEF38·PHY73 — 6대 스탯 중 DEF만 30%대로 극단적으로 낮아 유벤투스 실측(수비 액션 16~23%ile)과 방향이 일치한다.",
@@ -46401,7 +46401,7 @@
    "player_id": 148,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 177126, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2028-06-30"
   },
   {
@@ -46414,7 +46414,7 @@
    "player_id": 150,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 609516, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2029-06-30"
   },
   {
@@ -46427,7 +46427,7 @@
    "player_id": 151,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 727897, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -46440,7 +46440,7 @@
    "player_id": 154,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1419969, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -46453,7 +46453,7 @@
    "player_id": 155,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1338192, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -46466,7 +46466,7 @@
    "player_id": 156,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 184533, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2027-06-30"
   },
   {
@@ -46479,7 +46479,7 @@
    "player_id": 157,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1297989, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2028-06-30"
   },
   {
@@ -46492,7 +46492,7 @@
    "player_id": 158,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 690516, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -46505,7 +46505,7 @@
    "player_id": 159,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 602563, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2027-06-30"
   },
   {
@@ -46518,7 +46518,7 @@
    "player_id": 160,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 942372, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -46531,7 +46531,7 @@
    "player_id": 161,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1226147, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -46544,7 +46544,7 @@
    "player_id": 162,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 940976, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -46557,7 +46557,7 @@
    "player_id": 163,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 950199, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -46570,7 +46570,7 @@
    "player_id": 164,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 389050, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2028-06-30"
   },
   {
@@ -46583,7 +46583,7 @@
    "player_id": 166,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1323897, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -46596,7 +46596,7 @@
    "player_id": 167,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 288406, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -46609,7 +46609,7 @@
    "player_id": 168,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1173678, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -46622,7 +46622,7 @@
    "player_id": 172,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 974753, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -46635,7 +46635,7 @@
    "player_id": 173,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 440330, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2028-06-30"
   },
   {
@@ -46648,7 +46648,7 @@
    "player_id": 174,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 789066, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2031-06-30"
   },
   {
@@ -46661,7 +46661,7 @@
    "player_id": 176,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1254394, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "2030-06-30"
   },
   {
@@ -46674,7 +46674,7 @@
    "player_id": 155,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1338192, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "Muscle injury"
   },
   {
@@ -46687,7 +46687,7 @@
    "player_id": 172,
    "pulled": "2026-09-18",
    "source": "AS(Patricia Cazón 2026-09-18) 「una pequeña sobrecarga en el partido… ante el Liverpool」(「리버풀전에서 입은 경미한 근육 과부하」) / Marca(David G. Medina 2026-09-18) 「ya es uno más… salvo algún contratiempo de última hora」(「이미 한 명의 정상 전력… 막판 변수가 없는 한」). D+2 브라우저 직접 수집.",
-   "stale_days": 16,
+   "stale_days": 17,
    "value": "근육 과부하(sobrecarga) — 리버풀전 · 부위 미특정"
   },
   {
@@ -46700,7 +46700,7 @@
    "player_id": 173,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 440330, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": "Muscle injury"
   },
   {
@@ -46713,7 +46713,7 @@
    "player_id": 148,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 177126, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46726,7 +46726,7 @@
    "player_id": 149,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1842329, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46739,7 +46739,7 @@
    "player_id": 150,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 609516, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46752,7 +46752,7 @@
    "player_id": 151,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 727897, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46765,7 +46765,7 @@
    "player_id": 153,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1531100, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46778,7 +46778,7 @@
    "player_id": 154,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1419969, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46791,7 +46791,7 @@
    "player_id": 156,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 184533, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46804,7 +46804,7 @@
    "player_id": 157,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1297989, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46817,7 +46817,7 @@
    "player_id": 158,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 690516, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46830,7 +46830,7 @@
    "player_id": 159,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 602563, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46843,7 +46843,7 @@
    "player_id": 160,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 942372, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46856,7 +46856,7 @@
    "player_id": 161,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1226147, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46869,7 +46869,7 @@
    "player_id": 162,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 940976, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46882,7 +46882,7 @@
    "player_id": 163,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 950199, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46895,7 +46895,7 @@
    "player_id": 164,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 389050, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46908,7 +46908,7 @@
    "player_id": 166,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1323897, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46921,7 +46921,7 @@
    "player_id": 167,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 288406, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46934,7 +46934,7 @@
    "player_id": 168,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1173678, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46947,7 +46947,7 @@
    "player_id": 169,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1692877, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46960,7 +46960,7 @@
    "player_id": 170,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1842315, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46973,7 +46973,7 @@
    "player_id": 172,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 974753, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46986,7 +46986,7 @@
    "player_id": 174,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 789066, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -46999,7 +46999,7 @@
    "player_id": 176,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1254394, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -47012,7 +47012,7 @@
    "player_id": 183,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1842319, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -47025,7 +47025,7 @@
    "player_id": 185,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 1825670, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   },
   {
@@ -47038,7 +47038,7 @@
    "player_id": 198,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 939569, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 12,
+   "stale_days": 13,
    "value": null
   }
  ],
