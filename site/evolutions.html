@@ -2755,6 +2755,54 @@ function accelNote(st){
   </div>`;
 }
 
+/* ⭐ 스타일 비교(2026-10-06 사용자 지시 「다른 케미스트리를 적용해서 세부 스탯을 비교」).
+   한 선수에 스타일을 최대 3개 골라 **세부 속성 전부 + 6대 스탯**을 나란히 본다. 계산은 위의 afterStyle·faceOf
+   그대로다(99 상한 · 최대 케미 3점 기준). 역할 핵심 속성(가중 > 0)은 굵게 · 상한에 잘린 칸은 「상한」 표시. */
+const STYLE_CMP = [];
+function styleCompare(st, at, w, isGk, nowName){
+  if (!st || !st.length || !Object.keys(at || {}).length) return '';
+  const id = STYLE_CMP.push({ st, at, w: w || {}, isGk }) - 1;
+  const names = st.map(x => x.name);
+  const pick = [nowName && names.includes(nowName) ? nowName : null, ...names].filter(Boolean);
+  const def = [...new Set(pick)].slice(0, 3);
+  const sel = k => `<select data-cmp="${id}" data-k="${k}" style="font-size:11px">
+      <option value="">—</option>${names.map(n => `<option${n === def[k] ? ' selected' : ''}>${esc(n)}</option>`).join('')}</select>`;
+  return `<details style="margin-top:2px" data-cmpbox="${id}"><summary class="dim" style="font-size:11px;cursor:pointer">스타일 비교 — 세부 스탯</summary>
+    <div style="font-size:11px;margin:4px 0">${sel(0)} ${sel(1)} ${sel(2)}${nowName ? ` <small class="dim">지금 ${esc(nowName)}</small>` : ''}</div>
+    <div data-cmpout="${id}">${styleCompareTable(id, def)}</div></details>`;
+}
+function styleCompareTable(id, picks){
+  const { st, at, w, isGk } = STYLE_CMP[id];
+  const cols = picks.map(n => st.find(x => x.name === n)).filter(Boolean);
+  const attrs = Object.keys(at).filter(a => at[a] != null && (isGk ? true : !GK_ATTRS.has(a)));
+  const head = `<tr><th>속성</th><th>카드</th>${cols.map(c => `<th>${esc(c.name)}</th>`).join('')}</tr>`;
+  const sum = c => Object.entries(c.boosts || {}).reduce((t, [a, v]) => t + Math.min(v, Math.max(0, 99 - (at[a] ?? 0))), 0);
+  const cell = (a, c) => {
+    const v = (c.boosts || {})[a] || 0, base = at[a] ?? 0, got = Math.min(v, Math.max(0, 99 - base));
+    if (!v) return `<td class="dim">${base}</td>`;
+    return `<td><b style="color:var(--ok)">${base + got}</b> <small>+${got}${got < v ? ' <span style="color:var(--warn)">상한</span>' : ''}</small></td>`;
+  };
+  const rows = attrs.sort((a, b) => (w[b] || 0) - (w[a] || 0)).map(a => `<tr${w[a] ? '' : ' class="dim"'}>
+      <td>${w[a] ? `<b>${esc(a)}</b> <small>×${w[a]}</small>` : esc(a)}</td><td>${at[a]}</td>${cols.map(c => cell(a, c)).join('')}</tr>`).join('');
+  const six = faceOf(at, isGk);
+  const sixRow = six.map(([k, v], i) => `<tr><td><b>${k}</b></td><td>${v ?? '—'}</td>${cols.map(c => {
+      const nv = c.six?.[i]?.[2];
+      return `<td>${nv ?? '—'}${nv != null && v != null && nv !== v ? ` <small style="color:var(--ok)">+${nv - v}</small>` : ''}</td>`; }).join('')}</tr>`).join('');
+  return `<table style="font-size:11px;margin-top:2px">${head}
+    <tr><td colspan="${2 + cols.length}" class="dim">6대 스탯</td></tr>${sixRow}
+    <tr><td><b>역할 점수</b></td><td>—</td>${cols.map(c => `<td><b>${Math.round(c.score)}</b></td>`).join('')}</tr>
+    <tr><td>실제 상승 합</td><td>—</td>${cols.map(c => `<td>${sum(c)}</td>`).join('')}</tr>
+    <tr><td>AcceleRATE</td><td>${esc(cols[0]?.accelFrom || '—')}</td>${cols.map(c => `<td>${esc(c.accelTo || '—')}${c.accelFlip ? ' ⚠️' : ''}</td>`).join('')}</tr>
+    <tr><td colspan="${2 + cols.length}" class="dim">세부 속성 — 굵게 = 이 역할 핵심(×가중) · 위에서부터 가중 순</td></tr>${rows}</table>
+    <div class="dim" style="font-size:11px">최대 케미(3점) 기준 · 「카드」는 스타일 없는 값 · 2점이면 9→6·6→4·3→2, 1점이면 9→3·6→2·3→1.</div>`;
+}
+const GK_ATTRS = new Set(['다이빙', '핸들링', '킥', '포지셔닝', '반사신경']);
+document.addEventListener('change', e => {
+  const t = e.target.closest?.('select[data-cmp]'); if (!t) return;
+  const id = +t.dataset.cmp, box = document.querySelector(`[data-cmpbox="${id}"]`);
+  const picks = [...box.querySelectorAll('select[data-cmp]')].map(x => x.value).filter(Boolean);
+  box.querySelector(`[data-cmpout="${id}"]`).innerHTML = styleCompareTable(id, picks);
+});
 function styleDetail(st){
   if (!st || !st[0]) return '';
   const top = st[0];
@@ -2804,7 +2852,7 @@ function renderChem(owned, all = owned){
         <td>${esc(p.name)} <small class="dim">OVR ${chemOvr(p) || '—'}${p.club === 'Aston Villa' ? '' : ' · ' + esc(p.club || '?')}</small></td>
         <td class="dim">${esc(ROLE_KR[roleId] || roleId || '—')}${auto ? `<br><small>자동 선택 · 적합 ${auto.f.toFixed(0)}%</small>` : ''}</td>
         <td>${now && !['Basic', 'GK Basic'].includes(now) ? `<b>${esc(now)}</b>` : '<span class="dim">미적용</span>'}</td>
-        <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}${styleDetail(st)}</td></tr>`;
+        <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}${styleDetail(st)}${styleCompare(st, nowAttrs(p), KEYW[roleId], pos === 'GK', now)}</td></tr>`;
     }).join('');
     const benchHtml = benchRows ? `<details style="margin-top:10px"><summary class="dim" style="cursor:pointer">교체 명단 ${benchSlots.length}명 — 케미 스타일 추천</summary>
       <table style="margin-top:6px"><tr><th>주 포지션</th><th>선수</th><th>기준 역할</th><th>붙인 스타일</th><th>추천</th></tr>${benchRows}</table>
@@ -2828,7 +2876,7 @@ function renderChem(owned, all = owned){
           <td class="dim">${canon ? `${esc(ROLE_KR[canon.role_id] || canon.role_id)}<br><small>${esc(canon.focus)}</small>` : '—'}</td>
           <td style="color:${v === 3 ? 'var(--ok)' : v ? 'var(--warn)' : 'var(--bad)'}"><b>${v}</b>/3</td>
           <td>${now && !['Basic', 'GK Basic'].includes(now) ? `<b>${esc(now)}</b>` : '<span class="dim">미적용</span>'}</td>
-          <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}${styleDetail(st)}</td>
+          <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}${styleDetail(st)}${styleCompare(st, nowAttrs(p), KEYW[roleId], FORM_SLOTS[i] === 'GK', now)}</td>
           ${(() => { const bb = byBalance(st);
              if (!bb) return '<td class="dim">—</td>';
              const eq = st[0] && bb.name === st[0].name;
@@ -2876,7 +2924,7 @@ function renderChem(owned, all = owned){
       <td>${esc(p.name)} <small class="dim">OVR ${chemOvr(p) || '—'}</small></td>
       <td style="color:${color(v)}"><b>${v}</b>/3</td>
       <td>${nowTxt}${st[0] ? `<b>${esc(st[0].name)}</b><small class="dim"> ${esc(gains)}</small>
-             <br><small class="dim">기준 ${pres ? '처방' : '포지션 기본'} ${esc(ROLE_KR[roleId] || roleId || '—')}</small>${styleDetail(st)}`
+             <br><small class="dim">기준 ${pres ? '처방' : '포지션 기본'} ${esc(ROLE_KR[roleId] || roleId || '—')}</small>${styleDetail(st)}${styleCompare(st, nowAttrs(p), KEYW[roleId], s === 'GK', nowStyle)}`
            : '<span class="dim">속성 미수집 — 추천 불가</span>'}</td>
       <td class="dim">${(m => m ? `${esc(m.value)}<br><small>대안 ${esc(m.alternatives || '')}</small>` : '—')(metaFor(s))}</td>
       <td class="dim">${esc(p.nation || '?')} · ${esc(p.league || '?')} · ${esc(p.club || '?')}</td>
