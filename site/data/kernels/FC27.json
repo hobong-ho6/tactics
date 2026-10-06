@@ -1725,6 +1725,15 @@
    "impact": "core/gallery.py 홀로그램 태그는 계속 계산 제외 — 원장에 홀로 여부가 없다(fut.gg 아이템 hyper-cosmetic 값으로 채울 수 있음). 홀로 아이템 점수 배율(×1.5)은 커뮤니티 역산 D.",
    "recorded": "2026-10-06",
    "source": "https://timesaver.gg/blog/fc-27-holographic-items-explained-regular-pristine-how-to-get · https://primagames.com/gaming/how-to-get-holographic-autograph-cards-in-ea-fc-27-ultimate-team · https://www.dexerto.com/wikis/ea-fc-27/holographic-and-pristine-cards/ · https://games.gg/ea-sports-fc-27/guides/fc-27-how-to-get-holographic-cards/"
+  },
+  {
+   "area": "meta",
+   "change": "팀 평점 공식(#38) 인게임 대조 1건 일치 — 아스톤 빌라 활성 스쿼드(선발 11 + 교체 7, 2026-10-06 싱크) 계산값 81 = 인게임 81. 단순 평균(선발 80.4)으로는 80이라 「평균 초과분을 한 번 더 센다」는 보정이 있어야 맞는다.",
+   "confidence": "C — 통제 실측 1건(표본 작음 · 인원수 규칙 미판별)",
+   "evidence": "사용자 인게임 확인 「팀 평점은 게임내에서 81이야」(2026-10-06). 계산: site/evolutions.html squadRating — floor(round(합 + Σ평균 초과분) ÷ 18).",
+   "impact": "#38의 근거 D → 이 스쿼드 1건 C. ⚠️ 18명 vs 11명 구분은 이 건으로 갈리지 않았다(11명 기준도 81) — 교체 평점이 크게 다른 스쿼드에서 다시 대조할 것.",
+   "recorded": "2026-10-06",
+   "source": "사용자 인게임 확인(PS) · game_system_changes #38"
   }
  ],
  "tactic_params": [],
