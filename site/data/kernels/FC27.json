@@ -1734,6 +1734,15 @@
    "impact": "#38의 근거 D → 이 스쿼드 1건 C. ⚠️ 18명 vs 11명 구분은 이 건으로 갈리지 않았다(11명 기준도 81) — 교체 평점이 크게 다른 스쿼드에서 다시 대조할 것.",
    "recorded": "2026-10-06",
    "source": "사용자 인게임 확인(PS) · game_system_changes #38"
+  },
+  {
+   "area": "evolution",
+   "change": "진화 PlayStyle 보상의 「(^3)」 표기 = **보유 PlayStyle 개수 상한 3**. 이미 PlayStyle이 3개인 카드는 새 PlayStyle을 주는 가지를 받을 수 없다(갈림길에서 선택 불가). 이미 보유한 PlayStyle을 주는 가지는 고를 수 있다(PS 변화 없이 스탯만 오른다).",
+   "confidence": "C — 인게임 실측 1건(카드 1장 · 진화 1종)",
+   "evidence": "사용자 인게임 확인 2026-10-06 「이미 플레이스타일이 3개라 1 대1 클로즈다운 플레이스타일을 받을 수 없었어」 — 스즈키(PS Deflector·Cross Claimer·Pinged Pass) · Goal Guardian(2538) 2단계: 1번 가지 1v1 Close Down (^3) 선택 불가 → 2번 가지 Deflector (^3)(이미 보유) 선택. fut.gg 카탈로그 upgrades의 play_style maxValue=3이 이 상한이다(요구 조건 「Max PS 7」과는 별개 축).",
+   "impact": "진화 걸어보기·추천에서 PS 3개 보유 카드는 새 PS 가지를 「받을 수 없음」으로 처리해야 한다. 「PS 상한」은 진화마다 maxValue로 다를 수 있다 — 값은 카탈로그에서 읽는다.",
+   "recorded": "2026-10-06",
+   "source": "사용자 인게임 확인(PS) · fc_evolutions evo_id 2538 levels"
   }
  ],
  "tactic_params": [],

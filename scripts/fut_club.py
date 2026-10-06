@@ -213,10 +213,22 @@ def cmd_evolve(con, a):
                         if cur_attrs[k] not in (pre_attrs[k], attrs_after[k])}
                 print(f"ℹ️ EA 실측이 이 단계 직전·적용 후와 다르다 (직전, 적용 후, EA) {dict(list(diff.items())[:6])} — "
                       "뒷단계가 이미 반영됐거나 싱크가 낡은 것이면 정상. 기록 후 `python3 scripts/evo_detect.py --verify`로 검산할 것")
-            # ⭐ 속성이 하나도 안 바뀌는 진화(PlayStyle·역할 전용)는 6대를 다시 환산하지 않고 EA 실측을 잇는다
-            #    (2026-09-29 스즈키 실측: 구성식 SPD 56 ↔ EA 58 — 재환산하면 게이트가 「스탯 하락」으로 막았다).
-            if attrs_after == pre_attrs and (pre[2] or cp["current_six"]):
-                six_after = pre[2] or cp["current_six"]
+            # ⭐⭐ **이 단계에서 구성 속성이 안 바뀐 6대 스탯은 다시 환산하지 않고 직전 값(EA 실측 사슬)을 잇는다**
+            #    — 스탯 하나하나 단위로(2026-10-06 · 불변규칙 13 ① — 같은 사고 2회차).
+            #    1회차(2026-09-29 스즈키 GK 역할++): 구성식 SPD 56 ↔ EA 58 → 「속성이 하나도 안 바뀌는 진화」만 예외로 뺐다.
+            #    2회차(2026-10-06 스즈키 Goal Guardian): DIV·HAN이 올라 예외를 벗어나자 **안 바뀐 SPD**가 56으로 재환산돼 또 막혔다.
+            #    ⇒ 구성식과 EA 표시값의 반올림 차이가 「건드리지 않은 스탯」에 새어 들어올 구조를 없앤다.
+            prev_six = json.loads(pre[2] or cp["current_six"] or "{}")
+            if prev_six:
+                comp = {}
+                for r in face_rows:
+                    if bool(r["is_gk"]) == is_gk:
+                        comp.setdefault(r["abbr"], []).append(r["attr"])
+                new_six = json.loads(six_after)
+                for k, attrs_k in comp.items():
+                    if k in prev_six and all(pre_attrs.get(x) == attrs_after.get(x) for x in attrs_k):
+                        new_six[k] = prev_six[k]
+                six_after = json.dumps(new_six, ensure_ascii=False)
             src = "서버 계산 (current_attrs + fc_evolutions.levels · core/futgg_attrs.py)"
     if attrs_after is None:
         ovr_after = a.ovr_after or (after or {}).get("ovr")
