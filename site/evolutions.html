@@ -159,7 +159,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20261004-nav';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { evoRules, logState, inProgress } from './assets/evorules.js?v=20261002';
+import { evoRules, logState, inProgress } from './assets/evorules.js?v=20261006';
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
 import { posOvrRaw } from './assets/posovr.js?v=20261002';
@@ -1094,7 +1094,7 @@ let SHOW_PREM = localStorage.getItem('evo_show_prem') === '1';      // 프리미
 let SHOW_LOCKED = localStorage.getItem('evo_show_locked') === '1';  // 레벨·목표 미달도 숨기는 게 기본
 const LOCK_WHY = id => RULES.lockInfo[id]?.why || '';
 const lockChip = id => { const L = RULES.lockInfo[id]; return L
-  ? `<span class="chip" style="border-color:var(--warn);color:var(--warn)" title="${esc(L.why)}${L.unknown ? ' — 내 계정 상태를 모른다. 얼티밋팀 탭에서 시즌패스 레벨을 기록하면 정확해진다.' : ''}">🔒 ${L.unknown ? '해금 미확인' : '잠김'}</span>` : ''; };
+  ? `<span class="chip" style="border-color:var(--warn);color:var(--warn)" title="${esc(L.why)}${L.unknown ? (L.kind === 'token' ? ' — 샀는지 우리 기록에 없다. 샀다고 알려 주면 해금으로 기록한다.' : ' — 내 계정 상태를 모른다. 얼티밋팀 탭에서 시즌패스 레벨을 기록하면 정확해진다.') : ''}">🔒 ${L.unknown ? '해금 미확인' : '잠김'}</span>` : ''; };
 /* ⭐ 역할++ 숨김(2026-09-26 사용자 지시) — 12종이 목록을 채우기만 해서 기본으로 접는다.
    ⛔ 지우지 않고 **토글로 되살릴 수 있게** 둔다(소진·프리미엄 필터와 같은 모양). */
 let SHOW_ROLEPP = localStorage.getItem('evo_show_rolepp') === '1';
@@ -1189,6 +1189,12 @@ function unlockHow(c){
         ? '⚠️ 프리미엄 시즌패스를 <b>구매해야</b> 열린다 — 레벨만 올려서는 받을 수 없다.'
         : '스탠다드 시즌패스는 구매 없이 레벨만 올리면 된다.'}</span></div>`;
   }
+  /* ⭐ 토큰 스토어형(2026-10-06) — 영어 원문만 나오고 번역이 없었다(불변규칙 11). */
+  const tk = u.match(/Token Store for (\d+) tokens?/i);
+  if (tk) return `<div class="unlockhow"><b>해금 조건</b>
+      <div>「${esc(u)}」 <b>(챔피언스 토큰 스토어에서 토큰 ${esc(tk[1])}개로 구매)</b></div>
+      <span class="dim">챔피언스 토큰은 FUT Champions(주말 리그) 보상으로 받는다 — 갤러리 토큰 스토어와는 다른 상점이다.
+        산 뒤에는 미션 없이 바로 적용된다.</span></div>`;
   const all = EVO.obj_tasks || [];
   /* 후보 = 과제명이 맞거나 그룹명이 맞는 것. ⛔ 그룹 소개문(과제명 == 그룹명)은 제외한다. */
   const cand = all.filter(x => (x.task_name === u || x.group_name === u) && x.task_name !== x.group_name);
@@ -1842,6 +1848,7 @@ function missionHTML(cat){
      경기를 뛰어 채우는 미션이 애초에 없고 **해금·결제 즉시 적용**되는 종류다. 그 사실을 적는다. */
   if (!rows.length) return `<small class="dim">🎯 단계별 미션 <b>없음</b> — ${
     (cat?.coins_cost || cat?.points_cost) ? '코인·포인트로 <b>즉시 적용</b>되는 진화다'
+    : /Token Store/i.test(cat?.unlock_text || '') ? '<b>토큰 스토어 구매형</b>이라 경기 미션이 없다(사면 바로 적용)'
     : cat?.is_reward ? '<b>보상형</b>(시즌패스 해금)이라 경기 미션이 없다'
     : '카탈로그에 미션 정보가 없다'}.</small>`;
   return `<details class="mission"><summary>🎯 단계별 미션 ${rows.length}개${

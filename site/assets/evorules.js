@@ -97,6 +97,13 @@ export function evoRules(EVO, accName){
       if (prem && !hasPrem) info = { locked: true, why: `프리미엄 시즌패스 미구매 (레벨 ${need} 필요)`, kind: 'prem' };
       else if (spLevel == null) info = { locked: true, unknown: true, why: `시즌패스 레벨 ${need} 필요 — 내 레벨을 모른다`, kind: 'sp' };
       else if (spLevel < need) info = { locked: true, why: `시즌패스 레벨 ${need} 필요 (지금 ${spLevel})`, kind: 'sp' };
+    } else if (/Token Store/i.test(c.unlock_text || '')){
+      /* ⭐ 토큰 스토어형(2026-10-06 사용자 지적 — Frontline Flair가 「목표 완료」로 분류돼 있었다).
+         챔피언스 토큰 스토어에서 토큰으로 산다(fut.gg Token Store 페이지 · 2026-10-03 조사). 구매 여부는 계정 상태라 모른다. */
+      const n = (/(\d+)\s*tokens?/i.exec(c.unlock_text) || [])[1];
+      if (manual[c.evo_id] !== true)
+        info = { locked: true, unknown: manual[c.evo_id] === undefined,
+                 why: `챔피언스 토큰 스토어에서 토큰 ${n ?? '?'}개로 구매해야 열린다`, kind: 'token' };
     } else if (c.unlock_text && !/^Unlocked by/i.test(c.unlock_text)){
       /* 목표형 — 이름만 있고 조건식이 없다. 기록이 없으면 「모름」이다. */
       if (manual[c.evo_id] !== true)
