@@ -160,6 +160,8 @@ export function paintEvoCards(root = document) {
   const SIXK = ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY'];
   const GKK = ['DIV', 'HAN', 'KIC', 'REF', 'SPD', 'POS'];
   root.querySelectorAll('img[data-evo-ovr]').forEach(im => {
+    if (im.dataset.evoPaint) return;      // 이미 그리는 중(자동 감시와 수동 호출이 겹칠 때)
+    im.dataset.evoPaint = '1';
     const cls = im.className;             // ⭐ 비교 카드도 같은 그리기를 쓴다 — 원래 클래스를 그대로 잇는다
     const go = async () => {
       const six = parse(im.getAttribute('data-evo-six')) || {};
@@ -183,6 +185,21 @@ export function paintEvoCards(root = document) {
     if (im.complete && im.naturalWidth) go();
     else im.addEventListener('load', go, { once: true });
   });
+}
+
+/* ⭐⭐ **진화 카드는 화면에 들어오는 순간 자동으로 다시 그린다**(2026-10-06 사용자 지적 「카드가 업데이트 안 되고 예전 카드가 나온다」).
+   ⛔ 종전엔 화면마다 렌더 뒤에 paintEvoCards()를 **직접 불러야** 했고, 카드 상세(cardDetail)는 진화 속성 자체가 없었다
+      — 알리송(실버 70 → 83)이 상세 패널에서 인쇄된 옛 카드로 나왔다. 부르는 걸 잊는 구조를 없앤다(불변규칙 13 ①). */
+if (typeof document !== 'undefined' && typeof MutationObserver !== 'undefined' && !window.__evoCardObs){
+  window.__evoCardObs = new MutationObserver(ms => {
+    for (const m of ms) for (const n of m.addedNodes){
+      if (n.nodeType !== 1) continue;
+      if (n.matches?.('img[data-evo-ovr]')) paintEvoCards(n.parentNode || document);
+      else if (n.querySelector?.('img[data-evo-ovr]')) paintEvoCards(n);
+    }
+  });
+  const start = () => window.__evoCardObs.observe(document.body, { childList: true, subtree: true });
+  if (document.body) start(); else document.addEventListener('DOMContentLoaded', start, { once: true });
 }
 
 /* 가로 스크롤 영역을 마우스로 끌어서 민다(2026-09-20 사용자 지시 「교체영역 드래그로 스크롤」).
@@ -1201,7 +1218,7 @@ export function cardDetail(p, ctx = {}) {
     : `<span class="chip dim">⚠️ 우리 DB에 등재되지 않은 선수 — 프로필 없음</span>`;
   return `<div class="fc-detail">
     <div class="fc-dhead">
-      <img class="fc-dart" src="${esc(p.card_image_url || '')}" alt="">
+      <img class="fc-dart" src="${esc(p.card_image_url || '')}" alt="" ${evoArtAttrs(p)}>
       <div class="fc-dinfo">
         <h3>${esc(p.name)}</h3>
         <div class="fc-dovr"><b>${p.current_ovr ?? '-'}</b><span>OVR</span>
