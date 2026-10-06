@@ -162,6 +162,7 @@ import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './a
 import { evoRules, logState, inProgress } from './assets/evorules.js?v=20261006';
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
+import { statTip } from './assets/stat-tips.js?v=20261006';   // 속성 이름 툴팁(정본 표 하나 · 2026-10-06 GK 세부 속성 추가)
 import { posOvrRaw } from './assets/posovr.js?v=20261002';
 import { setRarityAssets } from './assets/clubviz.js?v=20261004sq';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
 import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate, FACE_UPGRADE } from './assets/clubviz.js?v=20261004sq';
@@ -1441,7 +1442,7 @@ function gainTable(p, pid, cat){
       <th>속성</th><th>지금</th><th>표기</th><th>실제</th><th>적용 후</th><th>상한</th></tr></thead><tbody>
     ${rows.map(x => { const capped = x.got != null && x.got < (x.want || 0);
       return `<tr${x.got === 0 ? ' style="opacity:.55"' : ''}>
-        <td>${esc(x.k)}</td><td class="dim">${x.cur ?? '—'}</td><td class="dim">+${x.want}</td>
+        <td>${statTip(x.k)}</td><td class="dim">${x.cur ?? '—'}</td><td class="dim">+${x.want}</td>
         <td>${x.got == null ? '—' : x.got > 0 ? `<b class="up">+${x.got}</b>` : '<b class="dn">0</b>'}</td>
         <td>${x.aft ?? '—'}</td>
         <td class="dim">${x.cap != null ? `^${x.cap}${capped ? ' <span class="dn">상한</span>' : ''}` : '—'}</td></tr>`;
@@ -1747,7 +1748,7 @@ function tryGainHTML(r){
     <details${lost ? ' open' : ''} style="margin-top:4px"><summary class="dim" style="cursor:pointer;font-size:11.5px">속성별 — 지금 · 표기 · 실제 · 적용 후 · 상한</summary>
     <table class="tbl" style="margin-top:4px"><thead><tr><th>속성</th><th>지금</th><th>표기</th><th>실제</th><th>적용 후</th><th>상한</th></tr></thead><tbody>
     ${rows.map(x => { const capped = x.got < x.want;
-      return `<tr${x.got <= 0 ? ' style="opacity:.55"' : ''}><td>${esc(x.k)}</td><td class="dim">${x.cur ?? '—'}</td>
+      return `<tr${x.got <= 0 ? ' style="opacity:.55"' : ''}><td>${statTip(x.k)}</td><td class="dim">${x.cur ?? '—'}</td>
         <td class="dim">+${x.want}</td><td>${x.got > 0 ? `<b class="up">+${x.got}</b>` : '<b class="dn">0</b>'}${capped ? ` <small class="dn">(−${x.want - x.got})</small>` : ''}</td>
         <td>${x.aft ?? '—'}</td><td class="dim">${x.cap ? esc(x.cap) : '—'}${capped ? ' <span class="dn">상한</span>' : ''}</td></tr>`; }).join('')}
     </tbody></table>
