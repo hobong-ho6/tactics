@@ -305,7 +305,41 @@ def main():
 
     for n_, o_, rest in dup_rep:
         print(f"ℹ️ 같은 카드 여러 장: {n_} — 원장은 OVR {o_} 사본 · 나머지 {rest}는 원장에 없다(SBC 해법 후보에도 없다)")
-    gone = [v["name"] for k, v in have.items() if v["status"] == "owned" and k not in {x["ea"] for x in rows}]
+    # ⭐⭐ **EA에 없는 보유 카드는 자동 처분한다 — SBC 제출 기록부터 본다**(2026-10-06 사용자 지시
+    #    「sbc 처리 결과 히스토리 확인 가능하면 거기 확인해서 먼저 처리하도록 변경 매번 내게 확인하지말고」).
+    #    GG Club은 SBC 이력을 주지 않으므로 기록은 우리 `fut_sbc_log`다.
+    #    ① 진화 로그가 걸린 카드 → 처분하지 않고 보고(「진화한 선수는 판매하지 않는다」)
+    #    ② 카드 id가 제출 SBC의 해법 스쿼드에 있다 → 'sbc' + 그 챌린지
+    #    ③ 그 밖: 거래불가 → 'sbc'(팔 수 없다) · 거래 가능 → 'sold' — 기간 내 SBC 기록은 notes에 후보로만 적는다
+    #    ⭐ 틀려도 되돌아온다 — 다음 싱크에 EA 목록에 다시 보이면 위 복원 로직이 'owned'로 돌린다.
+    seen = {x["ea"] for x in rows}
+    gone_rows = [v for k, v in have.items() if v["status"] == "owned" and k not in seen]
+    gone = [v["name"] for v in gone_rows]
+    kept_evo, disposed = [], []
+    for v in gone_rows:
+        if v["id"] in evolved:
+            kept_evo.append(v["name"])
+            continue
+        since = v["synced_at"] or "0000"
+        logs = con.execute("""SELECT l.challenge_ea_id, l.completed_at, l.notes FROM fut_sbc_log l
+                               WHERE l.completed_at >= ? ORDER BY l.completed_at""", (since,)).fetchall()
+        ch = None
+        for lg in logs:
+            sq = con.execute("""SELECT squad_json FROM fc_sbc_solutions WHERE challenge_ea_id=? AND pulled<=?
+                                  AND squad_json IS NOT NULL ORDER BY pulled DESC LIMIT 1""",
+                             (lg["challenge_ea_id"], lg["completed_at"])).fetchone()
+            if sq and v["id"] in {p["id"] for p in json.loads(sq["squad_json"])["players"]}:
+                ch = lg["challenge_ea_id"]
+                break
+        st = "sbc" if ch or v["is_untradeable"] else "sold"
+        cand = ", ".join("%s(%s)" % (lg["notes"] or lg["challenge_ea_id"], lg["completed_at"]) for lg in logs)
+        why = (f"SBC 기록 일치(챌린지 {ch})" if ch else
+               f"EA 목록에서 사라짐({'거래불가' if v['is_untradeable'] else '거래 가능'} → {st} 추정)"
+               + (f" · 기간 내 SBC 기록: {cand}" if cand else ""))
+        con.execute("UPDATE fut_club_players SET status=?, sbc_challenge_ea_id=?, updated=?, "
+                    "notes=COALESCE(notes||' · ','')||? WHERE id=?",
+                    (st, ch, TODAY, f"{a.pulled} 자동 처분: {why}", v["id"]))
+        disposed.append((v["name"], st, why))
     if a.dry_run:
         con.rollback()
     else:
@@ -344,10 +378,13 @@ def main():
             tag = "  🛡️보호됨" if any(x[0] == n for x in protected) else ""
             print(f"   {n:<16} 원장 {mine} ↔ EA {ea} (원장 진화 {ec}회){tag}")
     if gone:
-        print(f"\n원장에는 보유인데 EA 구단에 없음 {len(gone)}명 — **자동으로 처분 처리하지 않는다**: {', '.join(gone)}")
+        print(f"\n원장에는 보유인데 EA 구단에 없음 {len(gone)}명 — 자동 처분 {len(disposed)}명:")
+        for n_, st, why in disposed:
+            print(f"   {n_:<22} → {st:<4} {why}")
+        if kept_evo:
+            print(f"   ⛔ 진화 로그가 있어 **처분하지 않음** {len(kept_evo)}명(사용자 확인 필요): {', '.join(kept_evo)}")
         # ⭐ 이적 명단에 올려 뒀던 카드면 판매 가능성이 높다(migration 100) — 판단 보조로만 보인다
-        tl_gone = [v["name"] for k, v in have.items() if v["status"] == "owned" and k not in {x["ea"] for x in rows}
-                   and v.get("tl_last_seen")]
+        tl_gone = [v["name"] for v in gone_rows if v.get("tl_last_seen")]
         if tl_gone:
             print(f"   └ 그중 이적 명단에 올렸던 카드 {len(tl_gone)}명(판매 가능성 높음): {', '.join(tl_gone)}")
     print("\n다음: python3 scripts/export.py && scripts/db_dump.sh")
