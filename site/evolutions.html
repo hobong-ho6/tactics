@@ -816,6 +816,16 @@ function pathHTML(p, i, pid){
 /* ── 탭 ── */
 /* ── 「지금 내 팀」 — 인게임 실제 설정(migration 054) ──
    ⛔ 계산하지 않는다. EA 싱크에서 읽은 값을 **그대로** 보여주고 갱신일을 함께 띄운다. */
+/* 케미 — EA 싱크 값이 비는 날이 있어 **직접 계산**한다(규칙 공개 · assets/chem.js 정본). 감독 케미 제외 하한.
+   EA 값이 있고 다르면 둘 다 보인다. */
+function chemChip(T){
+  const xi = xiSlots().map(playerBySlot).filter(Boolean);
+  const c = xi.length ? chemOf(xi).total : null;
+  const ea = T.chemistry;
+  const v = c ?? ea ?? '-';
+  return `<span class="chip" style="border-color:var(--ok);color:var(--ok)" title="선발 ${xi.length}명으로 직접 계산(클럽·리그·국적 링크 · 감독 케미 제외 하한)${ea != null ? ` · EA 싱크 값 ${ea}` : ' · EA 싱크 값 없음'}">케미 ${v}/33</span>`
+    + (ea != null && c != null && ea !== c ? `<span class="chip dim">EA 표시 ${ea}</span>` : '');
+}
 function renderNow(){
   const T = (EVO.tactics || [])[0];
   const R = EVO.tactic_roles || [];
@@ -825,8 +835,8 @@ function renderNow(){
   meta.innerHTML = `<div class="pcard" style="padding:8px 12px;margin:0 0 10px">
       <b style="font-size:15px">${esc(T.squad_name || '-')}</b>
       <span class="chip">${esc(T.formation || '-')}</span>
-      <span class="chip" style="border-color:var(--ok);color:var(--ok)">케미 ${T.chemistry ?? '-'}/33</span>
-      ${teamOvr(xiSlots().map(playerBySlot))}
+      ${chemChip(T)}
+      ${teamOvr(xiSlots().map(playerBySlot), benchSlots().slice(0, 7).map(playerBySlot))}
       <span class="chip dim">코드 ${esc(T.tactic_code || '-')}</span>
       <div class="dim" style="font-size:12px;margin-top:4px">
         읽은 날 <b>${esc(T.pulled)}</b> · 내가 마지막으로 바꾼 시각 <b>${esc(iso || '미상')}</b>
@@ -1027,15 +1037,23 @@ function renderPlanned(q){
       G22가 화면 코드에 옛 어휘가 다시 등장하면 커밋을 막는다. */
 const slotsOf = grp => (EVO.squad_slots || []).filter(x => x.grp === grp).sort((a, b) => a.idx - b.idx);
 const xiSlots = () => slotsOf('XI');
-/* 팀 OVR — 선발 11명의 **지금(진화 반영) OVR**. 평균은 단순 평균이고, 「팀 평점」은 커뮤니티 SBC 계산기 공식이다
-   (합 + 평균 초과분의 합) ÷ 11, 내림 — EA 미공개, 근거 D(통설). EA 싱크에는 팀 평점 값이 없어 여기서 계산한다. */
-function teamOvr(ps){
-  const r = ps.filter(Boolean).map(p => p.current_ovr ?? p.card_ovr).filter(Number.isFinite);
-  if (!r.length) return '';
+/* 팀 OVR — 평균은 선발 11명 지금 OVR(진화 반영)의 단순 평균.
+   「팀 평점」은 커뮤니티 역산 공식(EA 미공개 · 근거 D): 평균을 넘는 선수는 넘는 만큼 한 번 더 센다 —
+   (합 + Σ평균 초과분)을 반올림해 인원수로 나누고 내림. 인원수는 **활성 스쿼드 18명(선발 11+교체 7) · SBC 11명**
+   (fifauteam FC27 가이드) — 싱크 BENCH 12장 중 교체는 idx 0–6, 나머지 5장은 리저브라 빠진다. EA 싱크에는 팀 평점 값이 없어 여기서 계산한다. */
+function squadRating(r){
   const sum = r.reduce((a, b) => a + b, 0), avg = sum / r.length;
-  const est = r.length === 11 ? Math.floor((sum + r.reduce((a, x) => a + Math.max(0, x - avg), 0)) / 11) : null;
-  return `<span class="chip" title="선발 ${r.length}명 지금 OVR(진화 반영) 단순 평균">평균 OVR ${avg.toFixed(1)}</span>`
-    + (est != null ? `<span class="chip dim" title="(합 + 평균 초과분 합) ÷ 11 내림 — 커뮤니티 SBC 계산기 공식, EA 미공개(근거 D)">팀 평점 ≈${est}</span>` : '');
+  return Math.floor(Math.round(sum + r.reduce((a, x) => a + Math.max(0, x - avg), 0)) / r.length);
+}
+function teamOvr(xi, bench = null){
+  const ovr = ps => ps.filter(Boolean).map(p => p.current_ovr ?? p.card_ovr).filter(Number.isFinite);
+  const r = ovr(xi);
+  if (!r.length) return '';
+  const all = bench ? r.concat(ovr(bench)) : r;
+  const n = bench ? 18 : 11;
+  const est = all.length === n ? squadRating(all) : null;
+  return `<span class="chip" title="선발 ${r.length}명 지금 OVR(진화 반영) 단순 평균">평균 OVR ${(r.reduce((a, b) => a + b, 0) / r.length).toFixed(1)}</span>`
+    + (est != null ? `<span class="chip dim" title="${n}명 기준 — (합 + 평균 초과분 합) 반올림 ÷ ${n} 내림 · 커뮤니티 역산 공식, EA 미공개(근거 D)">팀 평점 ≈${est}</span>` : '');
 }
 const benchSlots = () => slotsOf('BENCH');
 

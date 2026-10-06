@@ -1707,6 +1707,24 @@
    "impact": "core/gallery.py tag_bonus 반영 · 태그 정리표 미발견 9종 D→B. 인게임 스냅숏 재현: 아스톤 빌라·스쿼드 기초 0 · 스타터 +0.6% · 세리에 A −2.1% · 프리미어 리그 +4.0% · 라리가 +10.5%(원장 밖 카드 퍼스트 오너 가정). 미확인: Different League 5–9장 1%/2% · 히어로 클럽(114605) 「같은 클럽」 · 홀로그램(원장에 정보 없음).",
    "recorded": "2026-10-03",
    "source": "reports/research/2026-10-03-fc27-gallery-community.md (웹 조사 · fut.gg·EA 피치노트·timesaver·Red Bull·futgenie·neuralboost)"
+  },
+  {
+   "area": "meta",
+   "change": "얼티밋팀 팀 평점(스쿼드 레이팅) 계산식 — 평균을 넘는 선수는 넘는 만큼 한 번 더 센다: (합 + Σ평균 초과분)을 반올림 ÷ 인원수 → 내림. 인원수는 활성 스쿼드 18명(선발 11+교체 7, 리저브 제외) · SBC 11명. 다른 구현: 조정 평균을 소수 둘째 자리로 반올림 후 소수부 ≥0.96이면 +1, 버림",
+   "confidence": "D — EA 미공개 · 커뮤니티 역산. 인원수(18명)는 가이드 1곳, 0.96 반올림 규칙은 오픈소스 1곳이며 둘 다 인게임 대조 기록 없음.",
+   "evidence": "fifauteam FC27 Squad Rating Guide 「The exact calculation method is not publicly disclosed」(정확한 계산 방법은 공개되지 않았다) · 「SR = (SUM + CF) / 18」 · fut-squad-lab PR #59 「rating <= mean ? rating : 2 * rating - mean」(평균 이하면 그대로, 넘으면 2×평점−평균) · 같은 프로젝트도 「not confirmed it against EA's live UI」(EA 실제 화면과 대조하지 못했다)고 명시. 구 FIFA 19는 교체 초과분을 ½로 셌다는 기록이 있으나 FC27 확인 없음.",
+   "impact": "얼티밋팀 「지금 내 팀」 팀 평점 ≈ 표시(활성 스쿼드 18명 · 저장 처방은 11명). 인게임 값과 대조 필요 — 아스톤 빌라 활성 스쿼드 계산값 81(2026-10-06).",
+   "recorded": "2026-10-06",
+   "source": "https://fifauteam.com/fc-27-squad-rating-guide/ · https://github.com/benneknudsen/fut-squad-lab/pull/59 · https://github.com/benneknudsen/fut-squad-lab/issues/53"
+  },
+  {
+   "area": "meta",
+   "change": "홀로그래픽 아이템 — 특수 선수 아이템(TOTW 1부터)에만 있는 코스메틱 변형. 브론즈·실버·골드 기본 카드에는 없다. 특수 카드마다 홀로 버전이 별도 아이템으로 하나 있고 Regular 또는 Pristine(이름이 특수 서체) 중 하나다(둘 다는 아님). 능력치·PlayStyle 동일. 획득: ⑴ 팩 — 해당 특수 카드를 뽑을 때 확률로 홀로 버전이 나온다(확률 미공개 · 고정 목록 보장 팩·픽은 제외) ⑵ 이적시장(거래 가능 홀로) ⑶ 갤러리 레벨 보상(10 홀로 베이스 히어로 · 15 홀로 아이콘 · 20 88+ 홀로 히어로 · 25 92+ 홀로 아이콘 픽). 아이템 점수를 올리고 갤러리 「홀로그램」 태그(2–3장 8% · 4–5장 12%)를 연다.",
+   "confidence": "D — 커뮤니티 매체(EA 1차 원문 미확인). 갤러리 레벨 보상 단계는 인게임 갤러리 레벨 화면으로 확인 가능.",
+   "evidence": "timesaver 「Holographic versions apply to eligible special Player Items, not base Bronze, Silver and Gold items」(홀로 버전은 해당 특수 선수 아이템에 적용되며 브론즈·실버·골드 기본 아이템에는 없다) · 「Each eligible item is either Regular Holographic or Pristine Holographic — never both」(각 아이템은 일반 홀로 또는 프리스틴 홀로 중 하나이며 둘 다는 아니다) · Prima·Dexerto·TheGamer·Red Bull 동일 취지(서로 옮긴 글일 가능성 — 독립 교차검증 아님) · 갤러리 레벨 보상 단계는 games.gg·Prima 인용.",
+   "impact": "core/gallery.py 홀로그램 태그는 계속 계산 제외 — 원장에 홀로 여부가 없다(fut.gg 아이템 hyper-cosmetic 값으로 채울 수 있음). 홀로 아이템 점수 배율(×1.5)은 커뮤니티 역산 D.",
+   "recorded": "2026-10-06",
+   "source": "https://timesaver.gg/blog/fc-27-holographic-items-explained-regular-pristine-how-to-get · https://primagames.com/gaming/how-to-get-holographic-autograph-cards-in-ea-fc-27-ultimate-team · https://www.dexerto.com/wikis/ea-fc-27/holographic-and-pristine-cards/ · https://games.gg/ea-sports-fc-27/guides/fc-27-how-to-get-holographic-cards/"
   }
  ],
  "tactic_params": [],
