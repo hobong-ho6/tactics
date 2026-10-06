@@ -164,7 +164,7 @@ import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
 import { posOvrRaw } from './assets/posovr.js?v=20261002';
 import { setRarityAssets } from './assets/clubviz.js?v=20261004sq';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
-import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate } from './assets/clubviz.js?v=20261004sq';
+import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate, FACE_UPGRADE } from './assets/clubviz.js?v=20261004sq';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -1666,11 +1666,27 @@ function tryRun(pid, steps){
     if (u.upgrade === 'play_style'){
       const nm = PS_NAME[String(u.value)] || `#${u.value}`;
       (havePS.has(nm) ? gain.psDup : gain.ps).push(nm);
+      havePS.add(nm);                       // 같은 진화를 두 번 걸면 두 번째 PS는 「이미 보유」다(2026-10-06)
     } else if (u.upgrade === 'role_plus' || u.upgrade === 'role_plus_plus'){
       const kind = u.upgrade === 'role_plus' ? 'plus' : 'plusplus';
       const r = ROLEBYID[`${kind}:${u.value}`];
       gain.role.push(r ? `${r.position_name} ${r.name}${kind === 'plus' ? '+' : '++'}` : `Role${kind === 'plus' ? '+' : '++'} #${u.value}`);
     }
+  };
+  /* ⭐⭐ **표기(상한 없이 얹은 값)를 실제와 나란히 잰다**(2026-10-06 사용자 지적 「걸어보기에서 어디가 상한에 걸렸고
+     부여 스탯 중 실제 상승 합을 상세히 보여줬던 것 같은데 안 보인다」). 상한 표는 경로 블록(gainTable)에만 있었고,
+     거기 쓰는 nominalOf는 29속성만 세서 **6대 스탯 직접 보상(face_pace 등 · Frontline Flair)**을 통째로 놓쳤다.
+     ⇒ 같은 보상을 **상한을 뗀 사본**에 같은 함수(applyEvoLevel)로 얹는다 — 얹는 규칙이 두 벌이 되지 않는다. */
+  const nomAt = { ...at }, capOf = {};
+  const faceAttrs = fk => (EVO.face_stats || []).filter(r => r.abbr === fk && !!r.is_gk === !!isGk).map(r => r.attr);
+  const nominal = src => {
+    for (const u of src){
+      const fk = FACE_UPGRADE[String(u.upgrade || '')];
+      if (fk){ if (u.maxValue != null) for (const k of faceAttrs(fk)) capOf[k] = `${fk} ^${u.maxValue}`; continue; }
+      const k = ATTR_KR[String(u.upgrade || '').replace(/^attribute_/, '')];
+      if (k && u.maxValue != null) capOf[k] = `^${u.maxValue}`;
+    }
+    applyEvoLevel(nomAt, { upgrades: src.map(u => ({ ...u, maxValue: null })), upgradeOptions: [] }, EVO.face_stats, isGk);
   };
   const done = [];
   for (const step of steps){
@@ -1685,11 +1701,13 @@ function tryRun(pid, steps){
         const f = step.picks?.[lv.idx];
         const k = (f != null && opts[f]) ? +f : rec;
         const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
+        nominal(src);
         applyEvoLevel(at, { upgrades: src, upgradeOptions: [] }, EVO.face_stats, isGk);
         picks.push({ lv: lv.idx, k, rec, opts });
         cur.ovr = evoOvr(cur.ovr, src);       /* 캡 규칙은 clubviz.js `evoOvr` 하나다 */
         for (const u of src){ if (u.upgrade === 'play_style') cur.ps++; addUp(u); }
       } else {
+        nominal(lv.upgrades || []);
         applyEvoLevel(at, lv, EVO.face_stats, isGk);
         cur.ovr = evoOvr(cur.ovr, lv.upgrades || []);
         for (const u of (lv.upgrades || [])){
@@ -1701,8 +1719,33 @@ function tryRun(pid, steps){
     if (!fails.length) cur.pac = faceFromAttrs(at, EVO.face_stats || [], isGk).PAC;
     done.push({ id: step.id, name: cat?.name || `#${step.id}`, fails, picks, ovr: cur.ovr });
   }
-  return { st, cur, before, steps: done, gain,
+  return { st, cur, before, steps: done, gain, nominal: { at: nomAt, cap: capOf },
            after: { at, six: faceFromAttrs(at, EVO.face_stats || [], isGk), ovr: cur.ovr } };
+}
+/* ⭐ 걸어보기의 상세 속성 표 — 「지금 · 표기 · 실제 · 적용 후 · 상한」(gainTable과 같은 열 · 2026-10-06).
+   표기 = 상한 없이 얹었을 때(tryRun nominal) · 실제 = 상한 규칙대로 얹은 값. 차이는 상한에 걸려 사라진 몫이다. */
+function tryGainHTML(r){
+  const N = r.nominal || { at: {}, cap: {} };
+  const keys = Object.keys(N.at).filter(k => (N.at[k] ?? 0) !== (r.before.at[k] ?? 0));
+  if (!keys.length) return '';
+  const rows = keys.map(k => { const cur = r.before.at[k], want = N.at[k] - cur, got = (r.after.at[k] ?? cur) - cur;
+      return { k, cur, want, got, aft: r.after.at[k], cap: N.cap[k] }; })
+    .sort((a, b) => (b.want - b.got) - (a.want - a.got) || b.got - a.got);
+  const wantSum = rows.reduce((t, x) => t + x.want, 0), gotSum = rows.reduce((t, x) => t + Math.max(0, x.got), 0);
+  const lost = wantSum - gotSum, nCap = rows.filter(x => x.got < x.want).length;
+  return `<div style="font-size:12px;margin-top:6px">
+    <div class="kv"><b>상세 속성 ${rows.length}개</b>
+      <span class="chip">표기 합 +${wantSum}</span>
+      ${lost ? `<span class="chip" style="border-color:var(--bad,#e55);color:var(--bad,#e55)">상한 손실 −${lost} · ${nCap}개 속성</span>` : '<span class="chip dim">상한 손실 없음</span>'}
+      <span class="chip" style="border-color:var(--ok);color:var(--ok)">실제 +${gotSum}</span></div>
+    <details${lost ? ' open' : ''} style="margin-top:4px"><summary class="dim" style="cursor:pointer;font-size:11.5px">속성별 — 지금 · 표기 · 실제 · 적용 후 · 상한</summary>
+    <table class="tbl" style="margin-top:4px"><thead><tr><th>속성</th><th>지금</th><th>표기</th><th>실제</th><th>적용 후</th><th>상한</th></tr></thead><tbody>
+    ${rows.map(x => { const capped = x.got < x.want;
+      return `<tr${x.got <= 0 ? ' style="opacity:.55"' : ''}><td>${esc(x.k)}</td><td class="dim">${x.cur ?? '—'}</td>
+        <td class="dim">+${x.want}</td><td>${x.got > 0 ? `<b class="up">+${x.got}</b>` : '<b class="dn">0</b>'}${capped ? ` <small class="dn">(−${x.want - x.got})</small>` : ''}</td>
+        <td>${x.aft ?? '—'}</td><td class="dim">${x.cap ? esc(x.cap) : '—'}${capped ? ' <span class="dn">상한</span>' : ''}</td></tr>`; }).join('')}
+    </tbody></table>
+    <small class="dim">표기 = 상한 없이 얹었을 때 · 실제 = 상한 규칙대로 얹은 값. 6대 스탯 직접 보상(PAC·SHO·DRI 등)은 그 스탯을 이루는 속성 전부에 같은 값이 붙고, 상한은 <b>6대 스탯 값</b>에 걸린다(예: PAC ^84).</small></details></div>`;
 }
 /* ⭐⭐ **진화 OVR ↔ 세부 스탯 기준 OVR**(2026-10-02 사용자 지시 「진화 걸어보기를 했을 때 오르는 스탯 총량과
    그로 인해 실제 계산으로 추정한 오버롤을 보여주면 진화로 올려주는 오버롤과 비교」 · migration 091).
@@ -1768,10 +1811,7 @@ function tryPanel(pid){
       ${r.gain.ps.map(x => `<span class="chip" style="border-color:var(--ok);color:var(--ok)">PS ${esc(x)}</span>`).join('')}
       ${r.gain.role.map(x => `<span class="chip" style="border-color:var(--viz-us);color:var(--viz-us)">${esc(x)}</span>`).join('')}
       ${r.gain.psDup.map(x => `<span class="chip dim" title="이미 갖고 있어 새로 늘지 않는다">PS ${esc(x)} 이미 보유</span>`).join('')}</div>` : ''}
-    ${keys.length ? `<details style="margin-top:4px"><summary class="dim" style="cursor:pointer;font-size:11.5px">상세 ${keys.length}속성</summary>
-      <table class="tbl" style="margin-top:4px"><tbody>${keys.map(k => {
-        const a = r.before.at[k], b = r.after.at[k];
-        return `<tr><td>${esc(k)}</td><td>${a} <b class="up">▸${b} (+${b - a})</b></td></tr>`; }).join('')}</tbody></table></details>` : ''}
+    ${tryGainHTML(r)}
   </div>`;
 }
 
