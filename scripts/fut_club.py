@@ -74,18 +74,29 @@ def cmd_player_add(con, a):
     if a.ea_item:
         c = con.execute("SELECT * FROM player_card_items WHERE ea_item_id=? AND game_version=?", (a.ea_item, acc["game_version"])).fetchone()
         if c:
+            six = {"PAC": c["pac"], "SHO": c["sho"], "PAS": c["pas"], "DRI": c["dri"], "DEF": c["def"], "PHY": c["phy"]}
+            at = json.loads(c["attrs"]) if c["attrs"] else None
+            # ⭐ 6대 스탯이 빈 카드 행(옛 _ensure_card가 만든 것)은 29속성에서 환산한다 — null을 적지 않는다(2026-10-07).
+            if None in six.values():
+                if not at:
+                    raise SystemExit(f"⛔ 카드 {a.ea_item}에 6대 스탯도 29속성도 없다 — 지어내지 않는다")
+                is_gk = (c["best_pos"] or "") == "GK"
+                six = face_of(at, con.execute("SELECT abbr, attr, weight, is_gk FROM fc_face_stats").fetchall(), is_gk=is_gk)
             cur = dict(current_ovr=c["ovr"], current_playstyles=c["playstyles"],
                        current_roles_plus=c["roles_plus"], current_roles_plus_plus=c["roles_plus_plus"],
-                       current_six=json.dumps({"PAC": c["pac"], "SHO": c["sho"], "PAS": c["pas"],
-                                               "DRI": c["dri"], "DEF": c["def"], "PHY": c["phy"]}))
+                       current_six=json.dumps(six),
+                       # ⭐ 29속성도 함께 — `evolve`가 여기서 출발한다(없으면 진화 기록이 계산을 못 한다)
+                       current_attrs=json.dumps(at, ensure_ascii=False) if at else None)
             if not a.player_id:
                 a.player_id = c["player_id"]
     con.execute("""INSERT INTO fut_club_players(account_id, player_id, ea_item_id, name, acquired, acquired_how, status,
-                     current_ovr, current_six, current_playstyles, current_roles_plus, current_roles_plus_plus, notes, updated)
-                   VALUES(?,?,?,?,?,?,'owned',?,?,?,?,?,?,?)""",
+                     current_ovr, current_six, current_playstyles, current_roles_plus, current_roles_plus_plus, current_attrs,
+                     notes, updated)
+                   VALUES(?,?,?,?,?,?,'owned',?,?,?,?,?,?,?,?)""",
                 (acc["id"], a.player_id, a.ea_item, a.name, a.acquired, a.how,
                  cur.get("current_ovr"), cur.get("current_six"), cur.get("current_playstyles"),
-                 cur.get("current_roles_plus"), cur.get("current_roles_plus_plus"), a.notes, TODAY))
+                 cur.get("current_roles_plus"), cur.get("current_roles_plus_plus"), cur.get("current_attrs"),
+                 a.notes, TODAY))
     print(f"보유 등록: {a.name} (player_id={a.player_id}, item={a.ea_item}, OVR {cur.get('current_ovr', '미상')})")
 
 
@@ -187,7 +198,7 @@ def cmd_evolve(con, a):
             #    종전엔 `path_json`(fut.gg **완주** 카드)의 PlayStyle을 그대로 적어서, 1단계만 끝났는데
             #    2·3단계 보상(핑드 패스·퍼스트 터치)이 현재 카드에 붙었다. 스탯은 이미 단계별 계산이었다.
             ps_names = {r[0]: r[1] for r in con.execute(
-                "SELECT ea_id, name FROM fc_playstyle_ids WHERE game_version='FC27'")}
+                "SELECT ea_id, name FROM fc_playstyle_ids WHERE game_version=?", (game,))}
             miss_ps = [v for v in gain_ps if v not in ps_names]
             if miss_ps:
                 sys.exit(f"⛔ 모르는 PlayStyle id {miss_ps} — 지어내지 않는다. collect_playstyle_ids.py를 먼저 돌릴 것")
@@ -556,10 +567,17 @@ def _ensure_card(con, ea, game):
     alts = [POS.get(p) for p in (d.get("alternativePositionIds") or []) if POS.get(p)]
     attrs = {ATTR_MAP[k]: d[k] for k in ATTR_MAP if d.get(k) is not None}
     r = d.get("rarity") or {}
+    # ⭐ 6대 스탯·PlayStyle·역할·개인기/약발도 같은 정의에서 채운다(2026-10-07 사용자 지시 「고쳐줘」).
+    #    종전엔 빼먹어서 이 카드를 `player add`하면 current_six가 {"PAC": null, …}로 적혔다(알레망 실측).
+    ps_name = {r2[0]: r2[1] for r2 in con.execute("SELECT ea_id, name FROM fc_playstyle_ids WHERE game_version=?", (game,))}
+    ps = [ps_name.get(i) for i in d.get("playstyles") or []] + [f"{ps_name.get(i)}+" for i in d.get("playstylesPlus") or []]
+    if None in ps or "None+" in ps:
+        raise SystemExit(f"⛔ 모르는 PlayStyle id {d.get('playstyles')}/{d.get('playstylesPlus')} — collect_playstyle_ids.py를 먼저 돌릴 것")
     con.execute("""INSERT INTO player_card_items(game_version, ea_item_id, base_ea_id, is_base, name_kr, rarity_ea_id, rarity_name,
                      club, positions, best_pos, ovr, attrs, card_image_url, futgg_url, source, confidence, is_special, first_seen,
-                     nation, league, is_icon, is_hero, club_ea_id, sibling_club_ea_id, league_ea_id, grading_score)
-                   VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                     nation, league, is_icon, is_hero, club_ea_id, sibling_club_ea_id, league_ea_id, grading_score,
+                     pac, sho, pas, dri, def, phy, playstyles, roles_plus, roles_plus_plus, skill_moves, weak_foot)
+                   VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                 (game, ea, d.get("basePlayerEaId"), int(ea == d.get("basePlayerEaId")), name, d.get("rarityEaId"),
                  r.get("name") if isinstance(r, dict) else x.get("rarityName"), cl.get("name"),
                  "/".join([p for p in [pos] + alts if p]), pos, d.get("overall"), json.dumps(attrs, ensure_ascii=False),
@@ -567,7 +585,11 @@ def _ensure_card(con, ea, game):
                  f"fut.gg player-item-definitions/27/{ea} (SBC 스토리지 등록 {TODAY}, fut_club.py storage_add)",
                  "HIGH — fut.gg 카드 정의", int(bool(d.get("isSpecial"))), TODAY,
                  na.get("name"), lg.get("name"), int(bool(d.get("isIcon"))), int(bool(d.get("isHero"))),
-                 cl.get("eaId"), cl.get("siblingClubEaId"), lg.get("eaId"), d.get("gradingScore")))
+                 cl.get("eaId"), cl.get("siblingClubEaId"), lg.get("eaId"), d.get("gradingScore"),
+                 d.get("facePace"), d.get("faceShooting"), d.get("facePassing"), d.get("faceDribbling"),
+                 d.get("faceDefending"), d.get("facePhysicality"), ", ".join(ps),
+                 json.dumps(d.get("rolesPlus") or []), json.dumps(d.get("rolesPlusPlus") or []),
+                 d.get("skillMoves"), d.get("weakFoot")))
 
 
 def cmd_storage_add(con, a):
