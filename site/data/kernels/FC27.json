@@ -1752,6 +1752,15 @@
    "impact": "#38 근거 C 2건. ⚠️ 이번에도 11명·18명 기준이 둘 다 81이라 인원수 규칙은 여전히 미판별 — 교체 평점이 선발보다 크게 낮거나 높은 스쿼드에서 대조할 것.",
    "recorded": "2026-10-06",
    "source": "사용자 인게임 확인(PS) · game_system_changes #38 · #40"
+  },
+  {
+   "area": "attribute",
+   "change": "민첩성·균형·반응력·침착 커뮤니티 체감 재수집(출시 12일차 · docs/22 §2.1 「2~4주 후 재수집」 이행) — **새 1차(A)·데이터마이닝(B)·통제 실측(C) 0건**. 수집된 것은 통설(D)뿐: ⑴ Off-Balance Dribbling 발동 「민첩·균형·드리블 85 이상」(코인 판매 사이트 1곳 · 출시 전 2026-09-02 작성 · 단독) ⑵ 베타 체험 「문턱이 아니라 스탯이 높을수록 발동 확률이 오른다」(NealGuides) ⑶ 균형 「80 이상부터는 더 높아도 체감이 크지 않다」(FC26 디시 커서수비 글 · 버전 이월 주의) ⑷ 민첩 「방향 전환·조작이 가벼워진다」(다국어 공통 서술). 반응력·침착 서술은 전부 §2.1 기각 통설(압박 인지 거리 · 세컨볼 경합)의 복제였다.",
+   "confidence": "D — 커뮤니티 통설(통제 실측·데이터마이닝 0건). Off-Balance 입력 속성 자체만 A.",
+   "evidence": "Off-Balance 입력 3속성(Balance·Agility·Dribbling)은 EA 원문 재확인 「Driven by Balance, Agility and Dribbling Attributes, this allows certain players to continue dribbling even when they are knocked off balance.」(「균형·민첩·드리블 속성이 작동시키며, 균형을 잃은 상태에서도 특정 선수가 드리블을 이어가게 한다.」 / A, FC27). 수치 문턱은 EA 미공개. fcutcoins 「85 or higher in these three core stats: Agility, Balance, Dribbling」(「민첩·균형·드리블 세 핵심 스탯이 85 이상」 / D) — 같은 글이 「early hands-on gameplay and pre-beta impressions」(「초기 체험과 베타 전 인상」)이라 밝혀 통제 실측 아님. 독·스·일·한 매체는 FUTeam·EA 원문 번역 복제(독립 교차검증 아님). 일본어 검색은 체감 서술 0건. Reddit·futbin 접근 차단(우회 안 함).",
+   "impact": "얼티밋팀 처방: 드리블러 평가에서 민첩·균형은 Off-Balance 입력이라 근거 A로 쓸 수 있으나 「85 문턱」은 D — 문턱 판정에 쓰지 않고 「높을수록 유리」로만 쓴다. 반응력·침착은 여전히 §2.1 결론 유지(반응력 작용 1차 근거 없음 · 침착은 퍼스트 터치·PK 원 두 가지만).",
+   "recorded": "2026-10-07",
+   "source": "웹 조사 2026-10-07 — ea.com FC27 Gameplay Deep Dive · fcutcoins.com off-balance guide · nealguides.com · hiddenribbon.com · gall.dcinside.com fifaseries 65320(FC26) · note.com/new_gate_green · fifauteam.com fc-27-attributes · vandal.elespanol.com"
   }
  ],
  "tactic_params": [],
