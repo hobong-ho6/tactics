@@ -93,7 +93,7 @@ import { PLAYSTYLES } from './assets/playstyle-icons.js';
 import { repaintEvoCard, replateCard, rarityLevel } from './assets/evocard.js?v=20260927a';
 /* ⛔ 진화 경로의 소진·프리미엄 판정은 **진화 메뉴와 같은 모듈**을 쓴다(2026-09-22 전수 조사) */
 import { evoRules } from './assets/evorules.js?v=20261006';
-import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20261008b';
+import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20261009';
 const { team, idx } = await mountHeader('player.html');
 const [td, GS, GS27, HIST, CARDS, EVO, K26, K27] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history'), loadGameStats('cards'), loadGameStats('evolutions').catch(()=>({paths:{},role_map:[]})), loadKernels('FC26').catch(()=>({roles:[]})), loadKernels('FC27').catch(()=>({}))]);
 /* ⭐⭐ **역할 가중은 FC27판이 정본이다**(migration 079 · 2026-09-26 사용자 지시 「가중표를 FC27 조정을 반영해」).
