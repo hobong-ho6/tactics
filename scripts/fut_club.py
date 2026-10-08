@@ -198,7 +198,7 @@ def cmd_evolve(con, a):
             #    종전엔 `path_json`(fut.gg **완주** 카드)의 PlayStyle을 그대로 적어서, 1단계만 끝났는데
             #    2·3단계 보상(핑드 패스·퍼스트 터치)이 현재 카드에 붙었다. 스탯은 이미 단계별 계산이었다.
             ps_names = {r[0]: r[1] for r in con.execute(
-                "SELECT ea_id, name FROM fc_playstyle_ids WHERE game_version=?", (game,))}
+                "SELECT ea_id, name FROM fc_playstyle_ids WHERE game_version=?", (acc["game_version"],))}
             miss_ps = [v for v in gain_ps if v not in ps_names]
             if miss_ps:
                 sys.exit(f"⛔ 모르는 PlayStyle id {miss_ps} — 지어내지 않는다. collect_playstyle_ids.py를 먼저 돌릴 것")
