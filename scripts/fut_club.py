@@ -334,7 +334,8 @@ def cmd_complete(con, a):
     """진행 중이던 진화를 완료 처리 — 그때 비로소 current_* 를 로그의 after 값으로 올린다."""
     acc = account(con, a.account)
     cp = club_player(con, acc["id"], a.player)
-    log = con.execute("""SELECT * FROM fut_evolution_log WHERE club_player_id=? AND completed_at IS NULL
+    # ⛔ 무효(is_void) 행은 고르지 않는다(2026-10-09 마조 Batigol 실측 — 무효 처리한 잘못된 시작 행을 집어 게이트가 막았다)
+    log = con.execute("""SELECT * FROM fut_evolution_log WHERE club_player_id=? AND completed_at IS NULL AND COALESCE(is_void,0)=0
                          AND (?=0 OR evo_id=?) ORDER BY applied_at, id LIMIT 1""",
                       (cp["id"], 1 if a.evo else 0, a.evo or 0)).fetchone()
     if not log:
