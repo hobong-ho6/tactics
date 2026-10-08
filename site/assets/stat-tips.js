@@ -191,6 +191,15 @@ const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt
    ⚠️ fut.gg에는 한국어가 없다(영문만). 우리 번역이 헷갈릴 때 원문으로 확인하라고 붙이는 것이다
       (「차단력 ↔ Interceptions」 · PlayStyle `Intercept`와는 별개 축). */
 import { ATTR_EN } from './clubviz.js?v=20260923b';
+/* ⭐⭐ **툴팁 표시는 여기서 켠다**(2026-10-08 사용자 지적 「툴팁이 노출이 안됨」 — 얼티밋팀 진화 걸어보기 표).
+   statTip은 `abbr.gl`을 만들 뿐이고, 마우스를 올렸을 때 띄우는 건 glossary.js `mountGlossaryTips`다.
+   그런데 그걸 **페이지마다 따로 불러야** 해서 player.html만 불렀고 evolutions.html은 빠졌다.
+   ⇒ statTip을 쓰는 순간 표시도 따라오게 import 시점에 켠다(멱등 — 이미 켜져 있으면 아무 일도 안 한다). */
+import { mountGlossaryTips } from './glossary.js?v=20260913-selection-glossary';
+if (typeof document !== 'undefined'){
+  if (document.body) mountGlossaryTips();
+  else document.addEventListener('DOMContentLoaded', mountGlossaryTips, { once: true });
+}
 
 /** 지표 라벨을 툴팁으로 감싼다. 등록되지 않은 이름은 **원문 그대로** 돌려준다(은폐 금지). */
 export function statTip(name, innerHtml){

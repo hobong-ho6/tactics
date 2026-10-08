@@ -203,7 +203,17 @@ def cmd_evolve(con, a):
             if miss_ps:
                 sys.exit(f"⛔ 모르는 PlayStyle id {miss_ps} — 지어내지 않는다. collect_playstyle_ids.py를 먼저 돌릴 것")
             have_ps = [x.strip() for x in (cp["current_playstyles"] or "").split(",") if x.strip()]
-            ps_after = have_ps + [ps_names[v] for v in gain_ps if ps_names[v] not in have_ps]
+            # ⭐ 「(^N)」 = 보유 PlayStyle 개수 상한(game_system_changes #41 · 인게임 C). 이미 N개면 새 PS는 붙지 않는다
+            #    (2026-10-08 알레망 Nine Duty 실측 — PS 4개라 Game Changer (^3)가 EA 카드에 없는데 로그엔 붙었다).
+            ps_after = list(have_ps)
+            for u in ups:
+                if u.get("upgrade") != "play_style" or ps_names[u["value"]] in ps_after:
+                    continue
+                cap = u.get("maxValue")
+                if cap and len(ps_after) >= int(cap):
+                    print(f"ℹ️ PlayStyle {ps_names[u['value']]}는 받지 못한다 — 보유 {len(ps_after)}개 ≥ 상한 {cap}")
+                    continue
+                ps_after.append(ps_names[u["value"]])
             face_rows = con.execute("SELECT abbr, attr, weight, is_gk FROM fc_face_stats").fetchall()
             # ⛔ GK는 GK 구성식(DIV·HAN…)으로 환산한다 — 빼먹으면 필드 6대가 들어간다(2026-09-27 스즈키 실측 사고).
             #    GK 여부는 현재 카드의 6대 모양(EA 실측)으로 가른다.
