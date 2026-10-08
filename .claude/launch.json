@@ -16,7 +16,7 @@
     },
     {
       "name": "site-nocache",
-      "_note": "scripts/serve.py — HTML/JS까지 no-store를 보낸다. player.html·assets/*.js를 고칠 때는 inline 핸들러(heatmap)가 아니라 이것을 써야 한다(launch.json 상단 주석의 caveat).",
+      "_note": "scripts/serve.py — 시작할 때 site/를 미러로 복사한다(/tmp가 비워져도 404가 나지 않는다 · 2026-10-08). HTML/JS까지 no-store를 보낸다. player.html·assets/*.js를 고칠 때는 inline 핸들러(heatmap)가 아니라 이것을 써야 한다(launch.json 상단 주석의 caveat).",
       "runtimeExecutable": "python3",
       "runtimeArgs": [
         "scripts/serve.py",

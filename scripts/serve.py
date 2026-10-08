@@ -76,6 +76,19 @@ def main():
     parser.add_argument("--bind", default="127.0.0.1")
     args = parser.parse_args()
 
+    # ⭐ 미러를 띄울 때는 **시작할 때마다 site/를 복사해 둔다**(2026-10-08 사용자 지시 「자동으로 만들도록」).
+    #    프리뷰는 /private/tmp/tactics-preview/site 미러를 서빙하는데, /tmp는 재부팅 등으로 비워져
+    #    미러가 사라지면 모든 페이지가 404 「Error response」였다. 손으로 rsync하던 절차를 없앤다.
+    site = ROOT / "site"
+    target = Path(args.directory).resolve()
+    if target != site.resolve():
+        import shutil
+        try:
+            shutil.copytree(site, target, dirs_exist_ok=True)
+            print(f"미러 갱신: {site} → {target}", flush=True)
+        except OSError as e:          # 권한 등 — 서버는 그대로 띄우고 사유를 남긴다
+            print(f"⚠️ 미러 갱신 실패({e}) — python3 scripts/export.py로 다시 만들 것", flush=True)
+
     handler = partial(NoCacheHandler, directory=args.directory)
     server = ThreadingHTTPServer((args.bind, args.port), handler)
     print(
