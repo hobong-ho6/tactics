@@ -110,10 +110,19 @@ def pre_step_state(con, cp, game):
     ⇒ 출발점은 **원장 사슬**이다: 이 카드의 마지막 유효 로그(attrs_after)가 있으면 그것,
        없으면 기준 카드(`player_card_items`). EA 실측과의 대조는 호출부가 한다."""
     last = con.execute("""SELECT ovr_after, six_after, attrs_after FROM fut_evolution_log
-                           WHERE club_player_id=? AND COALESCE(is_void,0)=0 AND attrs_after IS NOT NULL
+                           WHERE club_player_id=? AND COALESCE(is_void,0)=0 AND completed_at IS NOT NULL
                            ORDER BY applied_at DESC, id DESC LIMIT 1""", (cp["id"],)).fetchone()
-    if last:
+    if last and last["attrs_after"]:
         return json.loads(last["attrs_after"]), last["ovr_after"], last["six_after"]
+    # ⛔⛔ **사슬이 끊긴 카드(옛 로그에 attrs_after 없음 · migration 082 이전)는 기준 카드로 물러서지 않는다**
+    #    (2026-10-08 마조 Batigol 실측 사고 — 진화 11회를 밟은 80 카드가 베이스 65에서 출발해 「80 → 73」으로 적혔다).
+    #    마지막 로그의 OVR과 EA 싱크 OVR이 같으면 EA 카드가 그 로그 직후 상태다 → 그것을 출발점으로 쓴다.
+    #    다르면(뒷단계가 이미 반영됐거나 싱크가 낡음) 판단할 수 없으니 멈춘다 — Emily Ramsey 이중 적용(위)을 막는 조건이다.
+    if last:
+        if cp["current_attrs"] and cp["current_ovr"] == last["ovr_after"]:
+            return json.loads(cp["current_attrs"]), cp["current_ovr"], cp["current_six"]
+        sys.exit(f"⛔ 옛 로그(29속성 없음)의 OVR {last['ovr_after']} ≠ EA 싱크 OVR {cp['current_ovr']} — 진화 직전 상태를 "
+                 "알 수 없다. 클럽 싱크 후 `python3 scripts/evo_detect.py --verify`로 맞춘 뒤 다시 기록할 것")
     for sql, arg in (("SELECT attrs, ovr FROM player_card_items WHERE ea_item_id=? AND game_version=?", cp["ea_item_id"]),
                      ("SELECT attrs, ovr FROM player_card_items WHERE player_id=? AND is_base=1 AND game_version=?",
                       cp["player_id"])):
