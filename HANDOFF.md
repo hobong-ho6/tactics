@@ -8,12 +8,11 @@
 
 ## 현재 상태
 
-> **2026-10-05 KST · 주간 경기 수집(스케줄 자동 실행) · PC `AD03230205ui-iMac.local` · `main`** · G1~G31 전항 통과.
-> **ⓐ A매치 휴식기(09-21~10-09)라 공식전 0경기.** 새 경기는 **AVL 친선 세비야 원정 1-3 승(10-02 · SofaScore 17213039 · FotMob 6369374)** 1건뿐.
-> 친선이라 선수 스탯·xG·슛맵이 전무하다(함정 ⑥) → `matches#114` · `player_matches` 18행(lineup-only) · `match_events` 23 · `match_reports#50` **draft**(경기 전용 프리셋 없음 — 08-15 글라트바흐 전례).
-> 아카데미 블룸필드(#213)·제너(#214) 신규, 포르테스 #137에 sofascore_id 보강. UTV 전사 1편 → 요약 + 구현 주장 3행(PENDING). obs#962 가르나초 **우측 출발** 신호(서사 3출처 vs FotMob positionId LM — 미확정, 10-10 브렌트포드전 좌표로 재판정).
-> **ⓑ 🔴 T1 버그 수정(구조)** — `refresh_eval_samples.py`가 자체 `%Friendly%` 필터를 써서 **월드컵·대표팀 경기가 클럽 평가 표본에 섞여 있었다**(마르티네스 9경기→실제 클럽 공식전 4경기 · 맥 알리스터 12→7 · 살라 2→0). `core.aggregate.club_official_sql()` import로 교체하고 23행 재계산.
-> **ⓒ 다음 공식전**: 10-10 AVL–브렌트포드 · CHE–본머스 · ATM 알라베스 원정 / 10-11 LIV–맨시티. claim #167 재판정 예약(`avl-kamara-gomes-cocheck-1010`)은 그대로 유효.
+> **2026-10-08 KST · 3팀 이적 감시 21시 회차 · PC `AL02359162.local` · `main` · 데이터 커밋 `ac8b38e`** · G1~G31 전항 통과.
+> **ⓐ FotMob 66개 리드**(AVL 9 · CHE 22 · LIV 35)를 발행일→원출처→티어 순으로 재검증. LIV 유출 3건을 STALE 전환: Rio Ngumoha·Wataru Endo(09-17 이후 21일) · Alexis Mac Allister(09-21 이후 17일). export→dump 완료, 리포트 `reports/transfer-watch/2026-10-08.md`.
+> **ⓑ Alex Scott(CHE) 신규 `MEDIUM-HIGH`** — Telegraph 10-04 + Romano의 선수 측 접촉. 최근 클럽 공식전 6경기 실측: CHE LCM `cm_playmaker/Roaming` · 적합 **.724** · 평균 평점 7.23. ⏰ Bournemouth가 1월 판매를 막아 `2027-winter` vs `2027-summer` 창이 갈리므로 비대화형 회차에서 DB 미등재.
+> **ⓒ 사용자 판단 대기**: Alex Scott 창 · N'Guessan의 공식 합의/2027-01 등록과 현재 스쿼드 승격 충돌 · transfer-watch 런북의 낡은 `2026-summer` 고정값 갱신.
+> **직전 경기 상태(10-05)**: A매치 휴식기 공식전 0, AVL–Sevilla 친선 `match_reports#50` draft · obs#962 가르나초 우측 출발 신호는 10-10 Brentford전 좌표로 재판정. `refresh_eval_samples.py`의 대표팀 혼입은 `club_official_sql()` 정본으로 구조 수정 완료. 다음 공식전 10-10 AVL/CHE/ATM · 10-11 LIV, claim #167 예약은 유효.
 >
 > **2026-09-23 KST · 세션 ㊱ 빌라-토트넘전 완전 종결 + 후속 재판정 예약 · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 `3d2d8e3`** · G1~G20 전항 통과.
 > ⚠️ **핸드오프 갱신 공백 발견·복원** — ㉟(`bd93921`) 이후 **14커밋**이 HANDOFF 미기록으로 쌓여 있었다(다른 세션이 코드만 계속 push). 이번에 일괄 복원한다.
