@@ -249,20 +249,10 @@ def export_all(db_path=None, window="2026-summer"):
     # 진화 해금 과제(migration 056) — 최신 pulled만. 화면이 진화 카드에 「그래서 뭘 하면 되나」를 띄운다.
     # ⚠️ 해금 문구는 **과제 이름**일 때도 그룹 이름일 때도 있어 양쪽을 다 내보낸다(매칭은 화면이 한다).
     obj_tasks = _rows(con, """SELECT group_slug, group_name, group_category, task_name, task_text,
-                                     task_text_kr, reward, reward_sp, modes
+                                     task_text_kr, reward
                               FROM fc_objective_tasks
                              WHERE pulled=(SELECT MAX(pulled) FROM fc_objective_tasks)
                              ORDER BY group_name, id""")
-    # ⭐ SP 목표(migration 102 · 2026-10-09 사용자 지시) — 최신 pulled의 그룹 중 **SP를 주는 것만**.
-    #    그룹 완료 SP(group_sp)와 과제별 SP를 함께 낸다. 기간 판정(진행 중·마감)은 화면이 현재 시각으로 한다.
-    sp_groups = _rows(con, """SELECT g.group_slug, g.group_name, g.group_category, g.description, g.start_time,
-                                     g.end_time, g.tasks_count, g.group_sp, g.group_rewards, g.pulled
-                                FROM fc_objective_groups g
-                               WHERE g.pulled=(SELECT MAX(pulled) FROM fc_objective_groups)
-                                 AND (g.group_sp IS NOT NULL OR EXISTS(
-                                      SELECT 1 FROM fc_objective_tasks t WHERE t.group_slug=g.group_slug
-                                         AND t.pulled=(SELECT MAX(pulled) FROM fc_objective_tasks) AND t.reward_sp IS NOT NULL))
-                               ORDER BY g.end_time IS NULL, g.end_time, g.group_name""")
     # ⭐⭐ **선수별 「지금 카드 상태」 정본** (2026-09-22 — 사용자 지적
     #    「각 메뉴가 공통 DB를 보지 않고 개별적으로 업데이트되는가 — 동일한 상태를 갖도록 개선」).
     #    ⛔ 종전에는 화면마다 「현재」를 **각자 골랐다** — 어디선 `player_card_items`(기준 카드),
@@ -495,7 +485,7 @@ def export_all(db_path=None, window="2026-summer"):
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
                           {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices,
                            "chem_styles": chem_styles, "squad": squad, "squad_slots": squad_slots,
-                           "obj_tasks": obj_tasks, "sp_groups": sp_groups, "ps_names": ps_names, "eligible": elig_rows,
+                           "obj_tasks": obj_tasks, "ps_names": ps_names, "eligible": elig_rows,
                            # fut.gg 케미 신호(migration 055) — 최신 pulled만. 배지는 등급이 아니라 AcceleRATE다.
                            "chem_signals": _rows(con, """SELECT ea_item_id, style_name, accelerate, vote_pct
                                                            FROM futgg_chem_signals
