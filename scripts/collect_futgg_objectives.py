@@ -10,8 +10,14 @@
    `|과제명|조건|보상|` 꼴로 깔끔하게 끊긴다. 그걸 읽는다.
 ⚠️ 목록 페이지 HTML에는 `<a href>`가 없지만 **RSC 페이로드에 경로 문자열이 남아 있어** 정규식으로 잡힌다.
 ⚠️ 기간제다 — 스냅샷으로 적재하고 지난 회차를 덮지 않는다(불변규칙 2).
+
+⭐ 2026-10-09 전환(migration 102 · 사용자 지시 「fut.gg SP 목표 수집해서 얼티밋팀 페이지에」):
+   태그를 지워 3칸씩 끊던 텍스트 파서를 버리고 **페이지에 박힌 구조화 상태**(TanStack Start SSR ·
+   seroval 직렬화 `$R[n]=…`)를 읽는다. 텍스트 파서는 SP 과제를 11개만 잡았고 그룹 기간·그룹 완료 보상을 못 읽었다.
+   ⛔ 페이지 스크립트를 **실행하지 않는다** — 값 리터럴만 파싱한다(아래 `_Tsr`).
+   목록 페이지 `allObjectives` = 그룹(기간·그룹 보상) · 그룹 페이지 `objective.objectives` = 과제(조건·보상·인정 모드).
 """
-import argparse, datetime as dt, html, re, sqlite3, sys, time, urllib.request
+import argparse, datetime as dt, json, re, sqlite3, sys, time, urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -30,29 +36,114 @@ def fetch(url, tries=3):
     return None
 
 
-def strip_tags(s):
-    return html.unescape(re.sub(r"\|+", "|", re.sub(r"<[^>]+>", "|", s)))
+class _Tsr:
+    """seroval 직렬화 JS 리터럴 파서 — `$R[n]=값` 정의와 `$R[n]` 참조, 객체·배열·문자열·숫자·!0/!1/null만 다룬다."""
+    NUM = re.compile(r"-?\d+(\.\d+)?(e[+-]?\d+)?")
+    KEY = re.compile(r"[A-Za-z_$][\w$]*")
+
+    def __init__(self, t, i):
+        self.t, self.i, self.refs = t, i, {}
+
+    def _ws(self):
+        while self.i < len(self.t) and self.t[self.i] in " \n\t\r":
+            self.i += 1
+
+    def val(self):
+        self._ws()
+        t, i = self.t, self.i
+        if t.startswith("$R[", i):
+            j = t.index("]", i)
+            n = int(t[i + 3:j])
+            self.i = j + 1
+            if t[self.i:self.i + 1] == "=":
+                self.i += 1
+                v = self.val()
+                self.refs[n] = v
+                return v
+            return self.refs.get(n)
+        c = t[i]
+        if c == "{":
+            return self._obj()
+        if c == "[":
+            return self._arr()
+        if c == '"':
+            return self._str()
+        for lit, v in (("!0", True), ("!1", False), ("null", None), ("void 0", None)):
+            if t.startswith(lit, i):
+                self.i += len(lit)
+                return v
+        m = self.NUM.match(t, i)
+        if m:
+            self.i = m.end()
+            x = m.group()
+            return float(x) if ("." in x or "e" in x) else int(x)
+        raise ValueError(f"모르는 토큰 @{i}: {t[i:i + 40]!r}")
+
+    def _str(self):
+        t, i, out = self.t, self.i + 1, []
+        while True:
+            c = t[i]
+            if c == "\\":
+                n = t[i + 1]
+                if n == "x":
+                    out.append(chr(int(t[i + 2:i + 4], 16))); i += 4; continue
+                if n == "u":
+                    out.append(chr(int(t[i + 2:i + 6], 16))); i += 6; continue
+                out.append({"n": "\n", "t": "\t", "r": "\r", "b": "\b", "f": "\f"}.get(n, n)); i += 2; continue
+            if c == '"':
+                self.i = i + 1
+                return "".join(out)
+            out.append(c); i += 1
+
+    def _key(self):
+        self._ws()
+        if self.t[self.i] == '"':
+            return self._str()
+        m = self.KEY.match(self.t, self.i)
+        self.i = m.end()
+        return m.group()
+
+    def _obj(self):
+        self.i += 1
+        o = {}
+        while True:
+            self._ws()
+            if self.t[self.i] == "}":
+                self.i += 1
+                return o
+            k = self._key(); self._ws()
+            self.i += 1                      # ':'
+            o[k] = self.val(); self._ws()
+            if self.t[self.i] == ",":
+                self.i += 1
+
+    def _arr(self):
+        self.i += 1
+        a = []
+        while True:
+            self._ws()
+            if self.t[self.i] == "]":
+                self.i += 1
+                return a
+            a.append(self.val()); self._ws()
+            if self.t[self.i] == ",":
+                self.i += 1
 
 
-def parse_group(page):
-    """그룹 페이지 → [(과제명, 조건, 보상)]. 조건 문장은 마침표로 끝나는 안내문만 취한다."""
-    txt = strip_tags(page)
-    parts = [p.strip() for p in txt.split("|")]
-    out, i = [], 0
-    while i + 2 < len(parts):
-        name, desc, rew = parts[i], parts[i + 1], parts[i + 2]
-        # 조건 문장은 「… in the …」처럼 문장으로 끝난다. 과제명은 짧고 마침표가 없다.
-        # ⛔ 페이지 제목(「… - EA SPORTS FC 27 Objectives」)과 푸터(「2026 | Stormstrike Inc. …」)가
-        #    같은 3칸 모양이라 과제로 잡힌다(2026-09-22 실측). 둘 다 이름으로 걸러낸다.
-        junk = ("EA SPORTS FC" in name or re.fullmatch(r"\d{4}", name) or rew in {"About"}
-                or "All rights reserved" in desc)
-        if (not junk and name and desc and 2 <= len(name) <= 60 and not name.endswith(".")
-                and desc.endswith(".") and 15 <= len(desc) <= 300 and rew and len(rew) <= 80):
-            out.append((name, desc, rew))
-            i += 3
-            continue
-        i += 1
-    return out
+def loader(page, key):
+    """페이지 상태에서 `key:$R[n]=…`(정의 지점)의 값을 읽는다. 없으면 None."""
+    m = re.search(r"[{,]" + re.escape(key) + r":(?=\$R\[\d+\]=)", page)
+    return _Tsr(page, m.end()).val() if m else None
+
+
+def sp_of(awards):
+    """보상 목록 → SP 합(없으면 None). fut.gg는 SP를 type='XP'로 준다."""
+    xs = [a.get("xp") or 0 for a in awards or [] if a.get("type") == "XP"]
+    return sum(xs) if xs else None
+
+
+def names_of(awards):
+    return [a.get("name") for a in awards or [] if a.get("name")]
 
 
 def main():
@@ -65,23 +156,40 @@ def main():
     idx = fetch(f"{BASE}/objectives/")
     if not idx:
         sys.exit("목록 페이지 조회 실패")
-    groups = sorted(set(re.findall(r"/objectives/([a-z-]+)/(\d+-[a-z0-9-]+)/", idx)))
-    print(f"목표 그룹 {len(groups)}개")
+    allg = loader(idx, "allObjectives")
+    if not allg:
+        sys.exit("목록 페이지에서 allObjectives를 읽지 못했다 — fut.gg 구조 변경 여부를 볼 것")
+    # 카테고리 slug는 목록 페이지 링크에서 잡는다(그룹 객체엔 categoryEaId만 있다)
+    cat_of = {slug: cat for cat, slug in set(re.findall(r"/objectives/([a-z-]+)/(\d+-[a-z0-9-]+)/", idx))}
+    # ⚠️ 시작 전 그룹(예: FC Pro 리더보드)은 목록에 링크가 없다 — 같은 categoryEaId를 가진 그룹의 slug로 메운다
+    cat_by_id = {int(i): sl for i, sl in re.findall(r'\{eaId:(\d+),slug:"([a-z-]+)",name:"[^"]*"\}', idx)}
+    cat_by_id.update({g.get("categoryEaId"): cat_of[g["slug"]] for g in allg if g["slug"] in cat_of})
+    for g in allg:
+        cat_of.setdefault(g["slug"], cat_by_id.get(g.get("categoryEaId")))
+    print(f"목표 그룹 {len(allg)}개")
 
-    rows = []
-    for cat, slug in groups:
-        page = fetch(f"{BASE}/objectives/{cat}/{slug}/")
-        if not page:
-            print(f"  ⚠️ 조회 실패 {cat}/{slug}")
+    rows, grows = [], []
+    for g in allg:
+        cat = cat_of.get(g["slug"])
+        if not cat:
+            print(f"  ⚠️ 카테고리 미상 — 건너뜀: {g['slug']}")
             continue
-        m = re.search(r"<title>([^<]+)</title>", page)
-        gname = html.unescape(m.group(1)).split(" - ")[0] if m else slug
-        for name, desc, rew in parse_group(page):
-            # ⛔ 그룹 이름과 같은 줄은 **그룹 소개문**이지 과제가 아니다 — 넣으면 해금 조건 조회가 그걸 집는다
-            #    (2026-09-22 실증: Believe 진화가 Ted Lasso 그룹 소개문을 조건으로 띄웠다).
-            if name.strip() == gname.strip():
-                continue
-            rows.append((a.game, f"{cat}/{slug}", gname, cat, name, desc, rew))
+        gslug = f"{cat}/{g['slug']}"
+        grows.append((a.game, g.get("eaId"), gslug, g.get("name"), cat, g.get("description"),
+                      g.get("startTime"), g.get("endTime"), g.get("tasksCount"),
+                      sp_of(g.get("awards")), json.dumps(names_of(g.get("awards")), ensure_ascii=False)))
+        if not g.get("tasksCount"):
+            continue
+        page = fetch(f"{BASE}/objectives/{gslug}/")
+        o = loader(page or "", "objective")
+        if not o:
+            print(f"  ⚠️ 조회·파싱 실패 {gslug}")
+            continue
+        for t in o.get("objectives") or []:
+            modes = ((t.get("squadRequirements") or {}).get("match") or {}).get("modes")
+            rows.append((a.game, gslug, g.get("name"), cat, t.get("name"), t.get("description"),
+                         ", ".join(names_of(t.get("awards"))), t.get("eaId"), sp_of(t.get("awards")),
+                         json.dumps(modes) if modes else None))
         time.sleep(0.3)
     print(f"과제 {len(rows)}개 수집")
 
@@ -104,7 +212,7 @@ def main():
     if a.dry_run:
         print("(dry-run) 적재 안 함")
         return
-    src = f"fut.gg 목표 페이지 HTML ({a.pulled} 수집, collect_futgg_objectives.py)"
+    src = f"fut.gg 목표 페이지 SSR 상태 ({a.pulled} 수집, collect_futgg_objectives.py)"
     conf = ("HIGH — fut.gg가 EA 목표를 그대로 노출한다. ⚠️ 기간제라 pulled 시점의 사실이다. "
             "⚠️ 조건 문장은 원문 그대로이고 한국어 번역은 사람이 채운다(task_text_kr).")
     # ⭐ 원문이 같은 과제의 한국어 번역은 직전 회차에서 **이어받는다**(2026-09-25 신설).
@@ -116,17 +224,26 @@ def main():
            WHERE task_text_kr IS NOT NULL AND task_text_kr<>'' AND pulled<?
            ORDER BY pulled""", (a.pulled,))}
     n = 0
-    for gv, slug, gname, cat, name, desc, rew in rows:
+    for gv, slug, gname, cat, name, desc, rew, ea, sp, modes in rows:
         cur = con.execute(
             """INSERT INTO fc_objective_tasks(game_version,group_slug,group_name,group_category,
-               task_name,task_text,task_text_kr,reward,source,confidence,pulled)
-               VALUES(?,?,?,?,?,?,?,?,?,?,?)
+               task_name,task_text,task_text_kr,reward,source,confidence,pulled,task_ea_id,reward_sp,modes)
+               VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                ON CONFLICT(game_version,group_slug,task_name,pulled) DO NOTHING""",
-            (gv, slug, gname, cat, name, desc, kr.get(desc), rew, src, conf, a.pulled))
+            (gv, slug, gname, cat, name, desc, kr.get(desc), rew, src, conf, a.pulled, ea, sp, modes))
         n += cur.rowcount
+    ng = 0
+    for r in grows:
+        cur = con.execute(
+            """INSERT INTO fc_objective_groups(game_version,group_ea_id,group_slug,group_name,group_category,description,
+               start_time,end_time,tasks_count,group_sp,group_rewards,source,confidence,pulled)
+               VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+               ON CONFLICT(game_version,group_slug,pulled) DO NOTHING""", (*r, src, conf, a.pulled))
+        ng += cur.rowcount
     con.commit()
     carried = sum(1 for r in rows if kr.get(r[5]))
-    print(f"적재 {n}행 (기존 {len(rows)-n}행) · 번역 이월 {carried}행")
+    print(f"적재 과제 {n}행 (기존 {len(rows)-n}행) · 그룹 {ng}행 · 번역 이월 {carried}행")
+    print(f"  SP 과제 {sum(1 for r in rows if r[8])}개 · SP 그룹 보상 {sum(1 for r in grows if r[9])}개")
     print("\n다음: python3 scripts/gates.py && python3 scripts/export.py && scripts/db_dump.sh")
 
 

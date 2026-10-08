@@ -811,7 +811,7 @@ CREATE TABLE fc_objective_tasks(
   task_text_kr TEXT,                 -- 한국어 번역(불변규칙 11)
   reward TEXT,                       -- 이 과제의 보상 표기(예: Evo Unlock)
   source TEXT, confidence TEXT,
-  pulled TEXT NOT NULL,
+  pulled TEXT NOT NULL, task_ea_id INTEGER, reward_sp INTEGER, modes TEXT,
   UNIQUE(game_version, group_slug, task_name, pulled)
 );
 CREATE TABLE fc_playstyle_ids(
@@ -1275,4 +1275,22 @@ CREATE TABLE fut_planned_squad_slots(
   club_player_id INTEGER NOT NULL REFERENCES fut_club_players(id),
   role_id        TEXT, focus TEXT,        -- 감독 정본 역할(slot_canon_roles에서 옮긴 값)
   PRIMARY KEY(squad_id, idx)
+);
+CREATE TABLE fc_objective_groups(
+  id             INTEGER PRIMARY KEY,
+  game_version   TEXT NOT NULL,
+  group_ea_id    INTEGER,
+  group_slug     TEXT NOT NULL,            -- '<category>/<eaId-slug>' — fc_objective_tasks.group_slug와 같은 키
+  group_name     TEXT,
+  group_category TEXT,                     -- seasonal · foundations · milestones · campaigns · live-events · mastery · fc-pro
+  description    TEXT,
+  start_time     TEXT,                     -- UTC ISO (fut.gg startTime)
+  end_time       TEXT,                     -- UTC ISO (fut.gg endTime) — NULL이면 상시
+  tasks_count    INTEGER,
+  group_sp       INTEGER,                  -- 그룹을 **전부** 끝냈을 때 받는 SP(과제별 SP와 별도)
+  group_rewards  TEXT,                     -- 그룹 보상 이름 목록(JSON) — 팩·선수·코인 등 SP 외 보상
+  source         TEXT,
+  confidence     TEXT,
+  pulled         TEXT NOT NULL,
+  UNIQUE(game_version, group_slug, pulled)
 );

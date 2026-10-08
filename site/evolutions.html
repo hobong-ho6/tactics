@@ -45,6 +45,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
   <button class="act ghost" data-tab="paths">선수별 진화 패스</button>
   <button class="act ghost" data-tab="sbc">SBC</button>
   <button class="act ghost" data-tab="gallery">갤러리<b class="galnew" id="galnew" hidden></b></button>
+  <button class="act ghost" data-tab="sp">SP 목표</button>
   <button class="act ghost" data-tab="tactic">전술 구현 · 구매 우선순위</button>
 </div>
 
@@ -101,6 +102,15 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
       카드는 태그까지 따져 <b>추정 총점이 가장 높은 조합</b>으로 고른다. 갤러리는 <b>진화 전 원래 카드</b>로 센다.
       ⛔ fut.gg가 내 진행도를 주지 않는다 — 인게임에서 완성하면 <b>「🏁 완성 처리」</b>로 <b>우리 DB 완성 원장</b>에 적는다(fut.gg에는 쓰지 않는다).</p>
     <div id="gallery"></div></div>
+</section>
+
+<section data-tab="sp" style="display:none">
+  <div class="panel"><h2>SP 목표 <small class="dim" id="spn"></small></h2>
+    <p class="dim" style="font-size:12px;margin:0 0 8px">
+      시즌 패스 포인트(SP)를 주는 <b>얼티밋팀 목표</b>만 모았다 — fut.gg 목표 페이지의 구조화 데이터(<code>collect_futgg_objectives.py</code> · 클럽 싱크 때 갱신).
+      ⚠️ <b>감독 라이브·경력 모드·더 그라운즈 목표는 fut.gg에 없다</b> — 게임 FC 허브에서 확인한다.
+      ⚠️ 내 진행도는 fut.gg가 주지 않는다. 시각은 한국 시간이다.</p>
+    <div id="spobj"></div></div>
 </section>
 
 <section data-tab="sbc" style="display:none">
@@ -3683,6 +3693,51 @@ function galPopup(){
   box.querySelector('#galgo').addEventListener('click', () => { box.remove(); showTab('gallery'); sessionStorage.setItem('evo_tab', 'gallery'); galAck(); });
   box.querySelector('#galx').addEventListener('click', () => box.remove());
 }
+/* ── SP 목표 (2026-10-09 사용자 지시 「fut.gg SP 목표 수집해서 얼티밋팀 페이지에」 · migration 102) ──
+   그룹마다 기간·그룹 완료 SP·과제별 SP를 보인다. 진행 중 → 시작 전 → 상시 → 마감(fut.gg 미갱신) 순.
+   ⭐ 조건 문장은 원문 + 한국어 번역 병기(불변규칙 11) — 번역이 없으면 원문만 두고 「번역 없음」을 표시한다. */
+const SP_MODE = { any: '모든 모드', squad_battles: '스쿼드 배틀', rivals: '라이벌', champions: '챔피언스',
+                  rush: '러시', live_event: '라이브 이벤트' };
+function renderSp(){
+  const box = document.getElementById('spobj'); if (!box) return;
+  const groups = EVO.sp_groups || [];
+  const tasks = (EVO.obj_tasks || []).filter(t => t.reward_sp != null);
+  const now = Date.now();
+  const kst = iso => iso ? new Date(iso).toLocaleString('ko-KR', { timeZone: 'Asia/Seoul', month: 'numeric', day: 'numeric',
+                                                                   hour: '2-digit', minute: '2-digit', hour12: false }) : null;
+  const left = iso => { const ms = new Date(iso) - now, h = Math.floor(ms / 3600000);
+                        return h >= 48 ? `${Math.floor(h / 24)}일 남음` : h >= 1 ? `${h}시간 남음` : `${Math.max(0, Math.floor(ms / 60000))}분 남음`; };
+  const stateOf = g => g.end_time && new Date(g.end_time) < now ? 'ended'
+                     : g.start_time && new Date(g.start_time) > now ? 'soon' : g.end_time ? 'live' : 'always';
+  const ORDER = { live: 0, soon: 1, always: 2, ended: 3 };
+  const LABEL = { live: '진행 중', soon: '시작 전', always: '상시', ended: '마감' };
+  const rows = groups.map(g => ({ g, st: stateOf(g), ts: tasks.filter(t => t.group_slug === g.group_slug) }))
+    .sort((a, b) => ORDER[a.st] - ORDER[b.st] || String(a.g.end_time).localeCompare(String(b.g.end_time)));
+  const sumOf = r => (r.g.group_sp || 0) + r.ts.reduce((t, x) => t + (x.reward_sp || 0), 0);
+  const open = rows.filter(r => r.st !== 'ended');
+  const pulled = groups[0]?.pulled;
+  document.getElementById('spn').textContent = `fut.gg ${pulled || '—'} 수집 · 받을 수 있는 SP ${open.reduce((t, r) => t + sumOf(r), 0).toLocaleString()}`;
+  const ended = rows.filter(r => r.st === 'ended').length;
+  box.innerHTML = (ended ? `<p style="font-size:12px;margin:0 0 8px;color:var(--warn)">⚠️ 마감된 그룹 ${ended}개가 아직 최신 수집본에 남아 있다 — fut.gg에 다음 회차(주간·일일)가 올라오지 않았거나 수집이 그 전이다. 클럽 싱크로 다시 받는다.</p>` : '')
+    + rows.map(r => {
+      const g = r.g, dim = r.st === 'ended';
+      const when = r.st === 'soon' ? `${kst(g.start_time)} 시작` : g.end_time ? `${kst(g.end_time)} 마감${r.st === 'live' ? ' · ' + left(g.end_time) : ''}` : '상시';
+      const extra = (() => { try { return JSON.parse(g.group_rewards || '[]').filter(n => !/ SP$/.test(n)); } catch (e) { return []; } })();
+      return `<div class="pcard" style="padding:8px 12px;margin:0 0 8px${dim ? ';opacity:.55' : ''}">
+        <div class="kv" style="gap:6px"><b>${esc(g.group_name)}</b>
+          <span class="chip"${r.st === 'live' ? ' style="border-color:var(--ok);color:var(--ok)"' : ''}>${LABEL[r.st]}</span>
+          <small class="dim">${esc(when)}</small>
+          <span class="chip" style="margin-left:auto"><b>${sumOf(r).toLocaleString()} SP</b></span></div>
+        <table style="font-size:12px;margin-top:4px">
+          ${r.ts.map(t => { let modes = []; try { modes = JSON.parse(t.modes || '[]'); } catch (e) {}
+            return `<tr><td style="white-space:nowrap"><b>${esc(t.task_name)}</b></td>
+              <td>${t.task_text_kr ? esc(t.task_text_kr) + `<br><small class="dim">${esc(t.task_text)}</small>` : esc(t.task_text) + ' <small class="dim">(번역 없음)</small>'}
+                ${modes.length && !modes.includes('any') ? `<br><small class="dim">인정 모드: ${modes.map(m => SP_MODE[m] || m).join(' · ')}</small>` : ''}</td>
+              <td style="white-space:nowrap;text-align:right"><b>${t.reward_sp} SP</b></td></tr>`; }).join('')}
+          ${g.group_sp ? `<tr><td colspan="2" class="dim">그룹 전부 완료 보너스${extra.length ? ' · ' + esc(extra.join(', ')) : ''}</td><td style="text-align:right"><b>${g.group_sp} SP</b></td></tr>` : ''}
+        </table></div>`;
+    }).join('') || '<p class="dim">SP 목표가 없다 — <code>python3 scripts/collect_futgg_objectives.py</code>로 받는다.</p>';
+}
 function renderGallery(){
   const el = document.getElementById('gallery'); if (!el) return;
   const mine = GAL.mine || {}, NEW = new Set(GAL.new || []), seen = galSeen();
@@ -3823,7 +3878,7 @@ document.getElementById('sbcresolve')?.addEventListener('click', async e => {
   const r = await api('sbc_resolve', {});
   btn.disabled = false; say(box, r);      // say가 성공 시 화면을 다시 읽는다
 });
-renderSquad(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc(); renderStorage(); renderGallery(); galPopup();
+renderSquad(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc(); renderStorage(); renderGallery(); renderSp(); galPopup();
 
 
 
