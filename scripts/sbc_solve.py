@@ -1055,6 +1055,18 @@ def main():
         return
     import datetime as _dt
     today = _dt.date.today().isoformat()
+    # ⛔⛔ **저장 직전에 풀이 그대로인지 다시 본다**(2026-10-09 실측 사고). 탐색은 수 분 걸린다 — 그 사이 화면에서
+    #    SBC를 제출하면 카드가 'sbc'로 빠지는데, 이 실행은 **제출 전에 읽은 풀**로 푼 해법을 제출 후에 덮어써서
+    #    이미 낸 카드가 남은 해법에 들어갔다(제출 화면이 돌린 재계산을 이 실행이 밀어냈다).
+    #    ⇒ 해법에 쓴 카드 중 하나라도 지금 'owned'가 아니면 **저장하지 않고 멈춘다**(조용히 덮지 않는다).
+    used = {p["id"] for r_ in ok for p in r_[1] if not p.get("storage") and isinstance(p.get("id"), int) and p["id"] > 0}
+    if used:
+        q = ",".join("?" * len(used))
+        gone = [r_[0] for r_ in con.execute(
+            f"SELECT name FROM fut_club_players WHERE id IN ({q}) AND status<>'owned'", tuple(used))]
+        if gone:
+            sys.exit(f"⛔ 실행 중에 보유 상태가 바뀌었다({len(gone)}장: {', '.join(gone[:6])}…) — 이 결과는 낡은 풀로 푼 것이라 "
+                     "저장하지 않는다. 다시 실행할 것(python3 scripts/sbc_solve.py --save)")
     acc = con.execute("SELECT id FROM fut_accounts ORDER BY id LIMIT 1").fetchone()
     aid = acc["id"] if acc else None
     src = f"scripts/sbc_solve.py (보유 {len(pool)}장 기준, {today} 판정 · seed {a.seed} · tries {a.tries})"
