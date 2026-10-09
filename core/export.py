@@ -75,8 +75,40 @@ def export_all(db_path=None, window="2026-summer"):
         # 역할 장면 해설의 군 공통 장면·비교(migration 103) — 해석층(D)이라 source·confidence를 같이 낸다.
         role_groups = _rows(con, """SELECT position_type, scene_attack_kr, scene_defend_kr, compare_kr, source, confidence
                                     FROM game_role_groups WHERE game_version=? ORDER BY position_type""", (gv,))
+        # 역할 근거 ② 우리 인게임 실측(ingame_captures · docs/50) — 조작 오염 행은 뺀다(v_kernel_fidelity와 같은 기준).
+        #   대조 기준은 그 캡처가 고른 **슬롯 변형 커널**(ref_map25)이다 — 카탈로그 기준 칸(kernel25)과 다를 수 있다.
+        from core.encode import mean_map25
+        ingame = []
+        for fr in _rows(con, "SELECT * FROM v_kernel_fidelity WHERE game_version=? ORDER BY role_id, focus", (gv,)):
+            caps = con.execute("""SELECT map25, ref_map25, note FROM ingame_captures
+                                  WHERE game_version=? AND ref_kind LIKE ? AND note NOT LIKE '%조작 오염%'""",
+                               (gv, f"kernel:{fr['role_id']}/{fr['focus']}@%")).fetchall()
+            refs = [c[1] for c in caps]
+            fr["measured_map25"] = mean_map25([c[0] for c in caps])
+            fr["ref_map25"] = max(set(refs), key=refs.count) if refs else None
+            fr["n_sim"] = sum("시뮬레이션" in (c[2] or "") for c in caps)
+            ingame.append(fr)
+        # 역할 근거 ③ 실축 예시 선수 — 실측 처방(kind measured*)에서 이 역할·포커스가 최적 적합으로 나온 선수, 적합도 순 3명.
+        #   ⚠️ 실축 히트맵은 터치 기반이고 게임은 위치 기반이다(docs/50) — 「이 움직임을 실제로 하는 선수」의 참고치다.
+        real = _rows(con, """SELECT role_id, focus, player, team_code, season, pos_label, fit_sim, sample_n, map25 FROM (
+                               SELECT p.role_id, p.focus, COALESCE(pl.name_kr, pl.name) player, r.team_code, p.season,
+                                      p.pos_label, ROUND(p.fit_sim, 2) fit_sim, p.sample_n, p.map25,
+                                      ROW_NUMBER() OVER (PARTITION BY p.role_id, p.focus, p.player_id ORDER BY p.fit_sim DESC) rn_p
+                               FROM prescriptions p JOIN players pl ON pl.id=p.player_id
+                               LEFT JOIN regimes r ON r.id=p.regime_id
+                               WHERE p.kind LIKE 'measured%' AND p.fit_sim IS NOT NULL AND p.map25 IS NOT NULL
+                                 AND p.role_id IN (SELECT role_id FROM game_role_focus WHERE game_version=?))
+                             WHERE rn_p=1 ORDER BY role_id, focus, fit_sim DESC""", (gv,))
+        real_top = []
+        for r in real:
+            if sum(1 for x in real_top if x["role_id"] == r["role_id"] and x["focus"] == r["focus"]) < 3:
+                real_top.append(r)
         written.append(_write(SITE_DATA / "kernels" / f"{gv}.json",
                               {"game_version": gv, "roles": roles, "focus": focus, "role_groups": role_groups,
+                               "role_ingame": ingame, "role_real_players": real_top,
+                               "role_evidence": _rows(con, """SELECT role_id, focus, claim_kr, quote_orig, quote_kr, lang,
+                                     source_name, source_url, observed_gv, observed_date, grade, snippet_only, contradicts_ea, notes
+                                     FROM game_role_evidence ORDER BY role_id, focus, grade, id""", ()),
                                "variants": variants, "tactic_params": params,
                                "system_changes": changes, "role_key_attrs": key_attrs}))
 

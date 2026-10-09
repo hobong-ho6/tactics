@@ -25,6 +25,13 @@
 .rs-k div{aspect-ratio:1;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:11px}
 .rs-k .d{outline:2px solid var(--acc);outline-offset:-2px}
 .rs-sc{font-size:12.5px;line-height:1.6;margin-top:4px}
+.rs-ev{margin-top:6px;font-size:12px;line-height:1.6}
+.rs-ev summary{cursor:pointer;color:var(--acc)}
+.rs-ev .h{font-weight:600;margin:8px 0 2px}
+.rs-ev .pair{display:flex;gap:10px;align-items:flex-start}
+.rs-ev .pair .rs-k{max-width:96px}
+.rs-ev .q{border-left:2px solid var(--line);padding-left:8px;margin:6px 0}
+.rs-gr{display:inline-block;font-size:10.5px;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-right:4px}
 </style></head><body>
 <div id="hdr"></div>
 <h1>FC 게임 시스템 분석 <small class="dim" id="gv"></small></h1>
@@ -166,6 +173,32 @@ grp.addEventListener('change',renderRoles);
 const SAME = {};
 for (const f of kd.focus) (SAME[f.kernel25] ??= []).push(f);
 const roleName = id => kd.roles.find(r=>r.role_id===id)?.name ?? id;
+/* 근거 3층(2026-10-10) — EA 원문만이 아니라 ② 우리 인게임 실측(C) ③ 실축 예시 선수 ④ 커뮤니티 체감(C·D)을 붙인다. */
+const INGAME = Object.fromEntries((kd.role_ingame??[]).map(r=>[r.role_id+'|'+r.focus, r]));
+const REAL = {}; for (const r of kd.role_real_players??[]) (REAL[r.role_id+'|'+r.focus] ??= []).push(r);
+const EVID = {}; for (const e of kd.role_evidence??[]) (EVID[e.role_id+'|'+(e.focus??'')] ??= []).push(e);
+const FID = {HIGH:'var(--ok)', MID:'var(--warn)', LOW:'var(--bad)'};
+function evItem(e){
+  return `<div class="q"><span class="rs-gr" title="${e.grade==='C'?'통제 실측':'일화·의견'}">${esc(e.grade)}</span>${e.contradicts_ea?'<span class="rs-gr" style="color:var(--warn)">EA 설명과 어긋남</span>':''}
+    ${esc(e.claim_kr)}${e.quote_orig?`<div class="dim">「${esc(e.quote_orig)}」 (${esc(e.quote_kr??'')})</div>`:''}
+    <div class="dim" style="font-size:11px"><a href="${esc(e.source_url)}" target="_blank" rel="noopener">${esc(e.source_name??'출처')}</a> · ${esc(e.lang??'')} · ${esc(e.observed_gv??'')}${e.observed_date?' · '+esc(e.observed_date):''}${e.snippet_only?' · 검색 요약만 확인':''}</div></div>`;
+}
+function evidence(f){
+  const k=f.role_id+'|'+f.focus, ig=INGAME[k], rp=REAL[k]??[], cm=EVID[k]??[];
+  const none=new Set();
+  const igH = ig ? `<div class="pair"><div><div class="dim">EA 그림(이 슬롯)</div>${kgrid(ig.ref_map25,none)}</div>
+      <div><div class="dim">우리 실측 평균</div>${kgrid(ig.measured_map25,none)}</div>
+      <div>닮음 <b style="color:${FID[ig.fidelity]??'var(--dim)'}">${ig.cos_avg}</b> <span class="dim">(${ig.cos_min}~${ig.cos_max})</span><br>
+      <span class="dim">${ig.n}장 · ${ig.n_matches}경기 · 시뮬 ${ig.n_sim}장 · ${ig.fidelity}</span></div></div>`
+    : '<div class="dim">아직 없음 — 이 조합으로 인게임 히트맵을 찍은 적이 없다.</div>';
+  const rpH = rp.length ? `<div class="pair">${kgrid(rp[0].map25,none)}<div>${rp.map(r=>`<b>${esc(r.player)}</b> <span class="dim">${esc(r.team_code??'')} ${esc(r.season??'')} ${esc(r.pos_label??'')} · 적합 ${r.fit_sim} · ${r.sample_n??'?'}경기</span>`).join('<br>')}
+      <div class="dim" style="font-size:11px">그림은 1위 선수의 실제 경기 히트맵 · 실축은 터치 기반이라 게임(위치 기반)과 원천이 다르다</div></div></div>`
+    : '<div class="dim">없음 — 관리 4팀 실측 중 이 조합이 최적으로 나온 선수가 없다.</div>';
+  return `<details class="rs-ev"><summary>근거 보기 · 인게임 실측 ${ig?ig.n:0} · 실축 예시 ${rp.length} · 커뮤니티 ${cm.length}</summary>
+    <div class="h">② 우리 인게임 실측 <span class="rs-gr">C</span></div>${igH}
+    <div class="h">③ 실축에서 이 움직임을 하는 선수</div>${rpH}
+    <div class="h">④ 커뮤니티 체감</div>${cm.length?cm.map(evItem).join(''):'<div class="dim">수집된 증언 없음</div>'}</details>`;
+}
 function kgrid(k, diff){
   return `<div class="rs-k">${[...k].map((ch,i)=>{const v=ch==='X'?1:(+ch)/10;
     return `<div class="${diff.has(i)?'d':''}" style="background:rgba(57,135,229,${(v===0?0.05:0.15+v*0.85).toFixed(2)});color:${v>0.5?'#fff':'var(--dim)'}">${v===0?'':ch}</div>`;}).join('')}</div>`;
@@ -190,7 +223,8 @@ function renderCards(){
             <div style="font-size:12px"><span style="color:var(--ok)">+ ${_j(f.plus)}</span><br><span style="color:var(--bad)">− ${_j(f.negative)}</span></div>
             ${twins.length?`<div style="font-size:11.5px;color:var(--warn);margin-top:2px">히트맵 같음: ${twins.map(o=>esc(roleName(o.role_id)+' '+o.focus)).join(' · ')}</div>`:''}
             <div class="rs-sc"><b>① 공격</b> ${bold(esc(f.scene_attack_kr??''))}</div>
-            <div class="rs-sc"><b>② 수비</b> ${bold(esc(f.scene_defend_kr??''))}</div></div>`;}).join('')}</div></div>`;
+            <div class="rs-sc"><b>② 수비</b> ${bold(esc(f.scene_defend_kr??''))}</div>${evidence(f)}</div>`;}).join('')}</div>
+        ${(EVID[r.role_id+'|']??[]).length?`<details class="rs-ev"><summary>역할 전체에 대한 커뮤니티 체감 ${EVID[r.role_id+'|'].length}건</summary>${EVID[r.role_id+'|'].map(evItem).join('')}</details>`:''}</div>`;
     }).join('');
 }
 function renderRoles(){

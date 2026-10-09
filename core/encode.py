@@ -12,7 +12,7 @@ map25 = 'X'(최댓값 셀) / round(v/max*10) half-up / **최대 아닌 셀은 9�
 """
 import math
 
-__all__ = ["encode", "cells_from_points", "regression_check"]
+__all__ = ["encode", "mean_map25", "cells_from_points", "regression_check"]
 
 
 def encode(cells):
@@ -22,6 +22,16 @@ def encode(cells):
         return None
     return "".join(
         "X" if v == m else str(min(9, math.floor(v / m * 10 + 0.5))) for v in cells)
+
+
+def mean_map25(codes):
+    """map25 여러 장 → 칸별 평균의 map25(같은 규약으로 다시 인코딩). 빈 목록이면 None.
+    각 장은 이미 최댓값=1.0으로 정규화돼 있으므로 「모양의 평균」이다(출전 시간 가중 아님)."""
+    codes = [c for c in codes if c and len(c) == 25]
+    if not codes:
+        return None
+    dec = [[1.0 if ch == "X" else int(ch) / 10 for ch in c] for c in codes]
+    return encode([sum(col) / len(dec) for col in zip(*dec)])
 
 
 def cells_from_points(points):

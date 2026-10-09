@@ -1303,3 +1303,23 @@ CREATE TABLE game_role_groups(
   source TEXT, confidence TEXT,
   PRIMARY KEY(game_version, position_type)
 );
+CREATE TABLE game_role_evidence(
+  id            INTEGER PRIMARY KEY,
+  role_id       TEXT NOT NULL,            -- game_roles.role_id (FC26 카탈로그)
+  focus         TEXT,                     -- NULL = 역할 전체에 대한 관찰
+  claim_kr      TEXT NOT NULL,            -- 무엇을 관찰했다는가(한국어 요약)
+  quote_orig    TEXT,                     -- 원문 인용(짧게 · 원어 그대로)
+  quote_kr      TEXT,                     -- 한국어 번역
+  lang          TEXT,                     -- en·ko·es·de·ja·it·fr·pt …
+  source_name   TEXT,                     -- 'Reddit r/EASportsFC' 등
+  source_url    TEXT NOT NULL,
+  observed_gv   TEXT,                     -- FC25·FC26·FC27·unknown
+  observed_date TEXT,
+  grade         TEXT NOT NULL CHECK(grade IN ('C','D')),  -- C 통제 실측 · D 일화·의견·가이드
+  snippet_only  INTEGER DEFAULT 0,        -- 1 = 검색 요약문만 봄(본문 미확인)
+  contradicts_ea INTEGER DEFAULT 0,       -- 1 = EA 설명과 어긋나는 관찰
+  notes         TEXT,
+  collected     TEXT NOT NULL,
+  source        TEXT,                     -- 수집 경로(조사 회차)
+  UNIQUE(role_id, focus, source_url, quote_orig)
+);
