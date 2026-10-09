@@ -3605,7 +3605,7 @@ function renderSbc(){
                     ${form ? '' : '<option value="" selected disabled>— 미기록: 인게임 포메이션을 고른다 —</option>'}
                     ${SBC_FORMS.map(f => `<option${f === form ? ' selected' : ''}>${esc(f)}</option>`).join('')}
                   </select>
-                  <button class="act" data-sbcsolve="${c.challenge_ea_id}">이 포메이션으로 풀기</button>
+                  <button class="act" data-sbcsolve="${c.challenge_ea_id}" title="지금 보유 카드로 이 SBC만 다시 푼다(고른 포메이션으로)">🔁 다시 풀기</button>
                   <small class="dim">${known
                     ? '인게임 기준으로 기록됨'
                     : '⚠️ <b>미기록</b> — FUTBIN에 아직 없거나 받지 않았다. 인게임 SBC 화면의 포메이션을 골라 풀기를 누르면 기록하고 푼다.'}</small>
