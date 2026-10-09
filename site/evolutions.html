@@ -3263,11 +3263,15 @@ const misfitHTML = xi => {
     · OVR <b>${b.ovr}</b> 안팎
     <br><small class="dim">${esc(b.replaces)} 대신 넣는다${b.was_fit ? ' <b class="dn">(지금 자리가 맞는 사람이다)</b>' : ''}
       — 남은 위반 ${b.gain} 줄어 <b>${b.left}</b> · 케미 <b>${b.chem_after}</b>${
-      b.quality?.length ? ` · 등급 조건 ${b.quality.map(esc).join(' · ')}` : ''}</small></li>`).join('');
+      b.quality?.length ? ` · 등급 조건 ${b.quality.map(esc).join(' · ')}` : ''}</small>${
+      /* ⭐ 실제 시장 카드 + 시세(2026-10-09 · sbc_solve market_for — fut.gg 서명 가격 API) — 해법 없는 챌린지에만 붙는다 */
+      Array.isArray(b.market) ? (b.market.length
+        ? `<br><small>💰 시장 후보: ${b.market.map(m => `<b>${esc(m.name)}</b> ${m.ovr} ${esc(m.pos || '')} · ${esc(m.club || '')}${m.club_ok === false ? ' <span class="dn">(클럽 다름 — 리그·국적 링크만)</span>' : ''} · <b>${m.price != null ? m.price.toLocaleString() + ' 코인' : '시세 없음'}</b>`).join(' / ')}</small>`
+        : '<br><small class="dim">💰 시장 후보: 조건(리그·국적·포지션·OVR)에 맞는 카드가 fut.gg 목록에 없다</small>') : ''}</li>`).join('');
   return `<div class="sbc-mf${still ? '' : ' fix'}">
     <b class="${still ? 'dn' : ''}">${still ? '⚠️ 사도 다 안 닫힌다' : `🛒 이 ${buy.length}장을 사면 제출 가능해진다`}</b>
     <small class="dim">— 클럽·국적은 <b>이미 스쿼드에 있는 값</b>이라야 케미가 붙는다(혼자짜리는 0).
-      OVR은 빼는 사람 근처로 잡아 팀 레이팅을 흔들지 않는다. ⚠️ 우리 계산(등급 C) · 시세는 모른다.</small>
+      OVR은 빼는 사람 근처로 잡아 팀 레이팅을 흔들지 않는다. ⚠️ 우리 계산(등급 C) · 시세는 fut.gg 집계(실제 호가와 다를 수 있다 · 해법 없는 챌린지만 조회).</small>
     <ul class="buylist">${rows}</ul>
     ${still ? `<div class="dn" style="font-size:11.5px">⛔ 그래도 남는 조건: ${still.map(esc).join(' / ')}
       <small class="dim">— 이건 카드 한 장으로 안 풀린다(스쿼드 구성 자체를 바꿔야 한다).</small></div>` : ''}</div>`;

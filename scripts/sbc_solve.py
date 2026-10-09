@@ -220,7 +220,10 @@ PATS = [
     (r"^Min\. Squad Total Chemistry Points: (\d+)$",          lambda m: ("chem", int(m[1]))),
     # ⭐ `League: X`는 **제출 카드 전원이 그 리그**라는 1인 조건이다(2026-09-25 확인 — fut.gg 설명
     #    「Submit Player Items from Premier League.」). 스쿼드 전체 조건이 아니다.
-    (r"^League: (.+)$",                                       lambda m: ("league_is", m[1].strip())),
+    # ⛔ 「League: Min. 3 players from …」(2026-09-30 표기 · 최소 N명)를 여기서 집으면 안 된다 — 순서상 이 줄이 먼저라
+    #    「리그 이름이 'Min. 3 players from Premier League'인 카드만」으로 읽혀 통과 카드 0장 → 거짓 불가가 났다
+    #    (2026-10-09 Marquee Matchups 68·69 실측). Min./Max.로 시작하는 문장은 아래 min_from 규칙이 읽는다.
+    (r"^League: (?!Min\.|Max\.)(.+)$",                       lambda m: ("league_is", m[1].strip())),
     # ⭐⭐ **FC27 2026-09-30 표기**(fut.gg가 조건 문장을 통째로 바꿨다 — 그날 12개 챌린지가 전부 `unparsed`).
     #    같은 챌린지의 09-29 ↔ 09-30 원문을 1:1로 맞춰 **기존 kind로 정규화**한다 — 판정 로직은 건드리지 않는다.
     #    예) 48번 「Min. 2 Players from the same League」 → 「Same league: Min. 2 players」
@@ -683,6 +686,89 @@ def group_hints(fails, conds):
     return out
 
 
+QUAL_FLOOR = {0: None, 1: 65, 2: 75}      # 등급 하한 → OVR 하한(통설 D — 브론즈 ≤64 · 실버 65–74 · 골드 75+)
+
+
+def _qual_tier(conds):
+    return max([v for (k, v), _ in conds if k == "qual_min"] or [0])
+
+
+_NATION_ID = {}
+
+
+def _nation_id(name, pool):
+    """국적 이름 → EA id. ⛔ 이름표가 DB에 없다 — 같은 국적의 **보유 카드 정의**(fut.gg)에서 읽어 캐시한다."""
+    if not name:
+        return None
+    if name not in _NATION_ID:
+        _NATION_ID[name] = None
+        for p in pool:
+            if p.get("nation") == name and p.get("ea_item_id"):
+                try:
+                    d = _get(f"{FUTGG}/player-item-definitions/27/{p['ea_item_id']}/")
+                    _NATION_ID[name] = ((d.get("data") or d).get("nationEaId"))
+                except Exception:
+                    pass
+                break
+    return _NATION_ID[name]
+
+
+def market_for(spec, pool, qual_floor=None, limit=2):
+    """⭐ 칸 처방(buy_specs의 한 줄 — 포지션·클럽/리그·국적·OVR)에 맞는 **실제 시장 카드와 시세**를 붙인다
+       (2026-10-09 사용자 지시 「해법 없는 SBC는 적절한 사야 하는 카드로 구성 · 시세도 수집」).
+       fut.gg 목록 API는 클럽 필터가 없다(clubs·club·clubIds 전부 무시 — 실측) ⇒ 리그·국적·포지션·OVR로 좁히고
+       **클럽은 응답에서 이름으로 거른다**(같은 리그 안이라 남녀 동명 구단 혼선이 없다).
+       시세는 서명 가격 API(`collect_futgg_prices.signed_price`)로 받고 `player_card_prices`에 적는다."""
+    from scripts.collect_futgg_prices import signed_price, Challenge, RateLimited
+    pos_id = {v: k for k, v in GEN_POS.items()}
+    q = ["sorts=overall"]
+    lg = next((p.get("league_ea_id") for p in pool if p.get("league") == spec.get("league") and p.get("league_ea_id")), None)
+    if lg:
+        q.append(f"leagues={lg}")
+    nid = _nation_id(spec.get("nation"), pool)
+    if nid:
+        q.append(f"nations={nid}")
+    pids = [pos_id[x] for x in (spec.get("pos") or []) if x in pos_id]
+    if pids:
+        q.append("positions=" + ",".join(map(str, pids)))
+    lo = max(qual_floor or 0, (spec.get("ovr") or 0) - 2)
+    q.append(f"overall__gte={lo}&overall__lte={(spec.get('ovr') or 99) + 3}")
+    try:
+        d = _get(f"{FUTGG}/players/v2/27/?" + "&".join(q))
+    except Exception:
+        return []
+    allx = d.get("data") or []
+    items = [x for x in allx if not spec.get("club") or ((x.get("club") or {}).get("name") == spec["club"])][:6]
+    club_ok = True
+    if not items and spec.get("club"):
+        # 같은 클럽 카드가 시장 목록에 없으면 **리그·국적만 맞는 카드**로 물러선다(클럽 링크는 잃고 리그·국적 링크는 남는다)
+        items, club_ok = allx[:6], False
+    out, rows = [], []
+    for x in items:
+        try:
+            cur, why = signed_price(27, x["eaId"])
+        except (Challenge, RateLimited):
+            break                               # 봇 검사·속도 제한은 우회하지 않는다 — 받은 데까지만
+        price = (cur or {}).get("price") if why == "ok" else None
+        if why == "ok":
+            rows.append(("FC27", x["eaId"], None, price, int(price is not None), None, (cur or {}).get("platform") or "ps5",
+                         "fut.gg 서명 가격 API (sbc_solve 시장 후보)", "MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)"))
+        out.append({"ea": x["eaId"], "name": x.get("commonName") or f"{x.get('firstName','')} {x.get('lastName','')}".strip(),
+                    "ovr": x.get("overall"), "pos": x.get("position"), "club": (x.get("club") or {}).get("name"),
+                    "price": price, "club_ok": club_ok})
+    if rows:
+        import datetime as _dt
+        c2 = sqlite3.connect(DB, timeout=120)
+        c2.executemany("""INSERT INTO player_card_prices(game_version, ea_item_id, player_id, price, has_price, momentum, platform,
+                            source, confidence, pulled) VALUES(?,?,?,?,?,?,?,?,?,?)
+                          ON CONFLICT(game_version, ea_item_id, platform, pulled) DO UPDATE SET
+                            price=excluded.price, has_price=excluded.has_price""",
+                       [r + (_dt.date.today().isoformat(),) for r in rows])
+        c2.commit(); c2.close()
+    out.sort(key=lambda r: r["price"] if r["price"] is not None else 10 ** 9)
+    return out[:limit]
+
+
 def buy_candidates(conds, want, limit=6):
     """조건을 만족하는 **싼 카드**를 fut.gg에서 찾는다. want = 몇 명이 필요한가."""
     q = []
@@ -703,30 +789,45 @@ def buy_candidates(conds, want, limit=6):
     ids = [x["eaId"] for x in (d.get("data") or [])][:40]
     if not ids:
         return [], "조건에 맞는 카드를 못 찾았다"
-    try:
-        pr = _get(f"{FUTGG}/players/v2/27/?ea_ids=" + ",".join(map(str, ids)))
-    except Exception as e:
-        return [], f"시세 조회 실패({type(e).__name__})"
-    out, priced = [], 0
-    for x in (pr.get("data") or []):
-        has = bool(x.get("hasPrice"))
-        priced += has
-        out.append({"name": x.get("commonName") or x.get("lastName"), "ovr": x.get("overall"),
-                    "price": x.get("currentDbPrice") if has else None,
-                    "nation": (x.get("nation") or {}).get("name"),
-                    "league": (x.get("league") or {}).get("name"),
-                    "club": (x.get("club") or {}).get("name")})
-    # ⛔⛔ **FC27 시세가 아직 없다**(2026-09-25 실측: 조회한 카드 전부 hasPrice=false · 우리 `player_card_prices`
-    #    247행도 전량 has_price=0). 시세가 없으면 「싼 순」이 성립하지 않는다.
-    #    ⇒ 0원으로 세워 거짓 순위를 만들지 않고, **OVR 낮은 순**으로 물러서되 그 사실을 함께 돌려준다.
-    #      (필러 카드는 OVR이 낮을수록 싼 경향이라는 **판단값**이지 실측이 아니다 — 등급 D.)
+    # ⭐⭐ 시세는 **서명 가격 API**로 받는다(2026-10-09 사용자 지시 「해법 없는 SBC는 사야 하는 카드로 · 시세도 수집」).
+    #    ⛔ 종전엔 목록 API의 `hasPrice`·`currentDbPrice`를 읽었는데 **그 두 필드는 항상 false/null이다**
+    #       (collect_futgg_prices.py 머리말 · 2026-10-09 재확인) — 「FC27 시세가 아직 없다」는 설명이 붙어
+    #       구매 후보가 늘 「시세없음 · OVR 낮은 순」으로 나갔다. 정본 조회는 `collect_futgg_prices.signed_price` 하나다.
+    #    ⚠️ 카드당 2요청 · 예산(90/10분)을 쓰므로 **OVR 낮은 순 상위 12장만** 값을 받는다.
+    #    ⭐ 받은 값은 `player_card_prices`에 적는다(같은 표·같은 키) — 다음 화면·회차가 재사용한다.
+    from scripts.collect_futgg_prices import signed_price, Challenge, RateLimited
+    meta = {x["eaId"]: x for x in (d.get("data") or [])}
+    out, rows, stop = [], [], None
+    for ea in ids[:12]:
+        x = meta[ea]
+        price = None
+        if not stop:
+            try:
+                cur, why = signed_price(27, ea)
+                price = (cur or {}).get("price") if why == "ok" else None
+                if why == "ok":
+                    rows.append(("FC27", ea, None, price, int(price is not None), None, (cur or {}).get("platform") or "ps5",
+                                 "fut.gg 서명 가격 API (sbc_solve --buy)", "MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)"))
+            except (Challenge, RateLimited) as e:
+                stop = f"시세 조회 중단({type(e).__name__}) — 봇 검사·속도 제한은 우회하지 않는다"
+        out.append({"name": x.get("commonName") or x.get("lastName"), "ovr": x.get("overall"), "ea": ea,
+                    "price": price, "nation": (x.get("nation") or {}).get("name"),
+                    "league": (x.get("league") or {}).get("name"), "club": (x.get("club") or {}).get("name")})
+    if rows:
+        import datetime as _dt
+        c2 = sqlite3.connect(DB, timeout=120)
+        c2.executemany("""INSERT INTO player_card_prices(game_version, ea_item_id, player_id, price, has_price, momentum, platform,
+                            source, confidence, pulled) VALUES(?,?,?,?,?,?,?,?,?,?)
+                          ON CONFLICT(game_version, ea_item_id, platform, pulled) DO UPDATE SET
+                            price=excluded.price, has_price=excluded.has_price""",
+                       [r + (_dt.date.today().isoformat(),) for r in rows])
+        c2.commit(); c2.close()
+    priced = [r for r in out if r["price"] is not None]
     if priced:
         out.sort(key=lambda r: r["price"] if r["price"] is not None else 10 ** 9)
-        return out[:max(limit, want)], None
+        return out[:max(limit, want)], stop
     out.sort(key=lambda r: r["ovr"] or 99)
-    return out[:max(limit, want)], ("⚠️ fut.gg가 FC27 시세를 아직 주지 않는다(조회분 전부 hasPrice=false) — "
-                                    "가격순이 아니라 **OVR 낮은 순**이다(싼 경향이라는 판단값 · 등급 D)")
-
+    return out[:max(limit, want)], (stop or "⚠️ 시세를 하나도 받지 못했다 — OVR 낮은 순으로 대신 보인다(판단값 D)")
 
 def main():
     ap = argparse.ArgumentParser()
@@ -757,7 +858,7 @@ def main():
                -- ⭐ 아이콘·히어로 케미(2026-09-25) — 규칙을 박지 않고 fut.gg 값을 그대로 쓴다.
                i.chem_extra, COALESCE(i.is_icon,0) is_icon, COALESCE(i.is_hero,0) is_hero,
                COALESCE(i.is_special,0) is_special,
-               c.is_untradeable, c.ea_item_id, i.base_ea_id who
+               c.is_untradeable, c.ea_item_id, i.base_ea_id who, i.league_ea_id
           FROM fut_club_players c LEFT JOIN player_card_items i
             ON i.ea_item_id=c.ea_item_id AND i.game_version=?
          WHERE c.status='owned' AND COALESCE(c.current_ovr, i.ovr) IS NOT NULL
@@ -1017,7 +1118,8 @@ def main():
             sj = json.dumps({"formation": form, "formation_known": bool(known), "partial": True,
                              "players": squad_of(pl),
                              "checks": breakdown(part, conds, ch),
-                             "buy": buy_specs(part, pl, conds, pool),
+                             "buy": [dict(b, market=market_for(b, pool, qual_floor=QUAL_FLOOR.get(_qual_tier(conds))))
+                                     for b in buy_specs(part, pl, conds, pool)],
                              "hints": [{"text": t, "how": h} for t, h in
                                        group_hints({c["text"] for c in breakdown(part, conds, ch) if not c["ok"]},
                                                    conds)]}, ensure_ascii=False)
