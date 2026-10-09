@@ -52,7 +52,7 @@ def export_all(db_path=None, window="2026-summer"):
 
     # ── kernels/{GV}.json ────────────────────────────────────────────
     for (gv,) in con.execute("SELECT code FROM game_versions"):
-        roles = _rows(con, """SELECT role_id, name, name_en, position_type, focuses
+        roles = _rows(con, """SELECT role_id, name, name_en, position_type, focuses, identity_kr, focus_axis_kr
                               FROM game_roles WHERE game_version=? ORDER BY role_id""", (gv,))
         changes = _rows(con, """SELECT area, change, evidence, impact, source, confidence, recorded
                                FROM game_system_changes WHERE game_version=? ORDER BY id""", (gv,))
@@ -61,7 +61,7 @@ def export_all(db_path=None, window="2026-summer"):
         # ⭐ 역할 커널이 없어도 system_changes가 있으면 파일을 쓴다(2026-09-21) — FC27은 역할 목록 확정 전이라
         #    커널이 비어 있는데, 그 때문에 FC27 시스템 사실 16건이 웹에서 통째로 안 보이고 있었다.
         focus = _rows(con, """SELECT role_id, focus, kernel25, plus, equal, negative,
-                                     ea_role_name, description, movement_kr
+                                     ea_role_name, description, movement_kr, scene_attack_kr, scene_defend_kr
                               FROM game_role_focus WHERE game_version=?
                               ORDER BY role_id, focus""", (gv,))
         variants = _rows(con, """SELECT role_id, focus, pitch_x, kernel25
@@ -72,8 +72,11 @@ def export_all(db_path=None, window="2026-summer"):
         # 역할별 핵심 속성 가중(migration 038) — 진화 순위의 「역할 가중 점수」 원료. 판단값(MEDIUM)이며 커널(kernel25)과 별개 층.
         key_attrs = _rows(con, """SELECT role_id, attr, weight FROM game_role_key_attrs
                                   WHERE game_version=? ORDER BY role_id, weight DESC, attr""", (gv,))
+        # 역할 장면 해설의 군 공통 장면·비교(migration 103) — 해석층(D)이라 source·confidence를 같이 낸다.
+        role_groups = _rows(con, """SELECT position_type, scene_attack_kr, scene_defend_kr, compare_kr, source, confidence
+                                    FROM game_role_groups WHERE game_version=? ORDER BY position_type""", (gv,))
         written.append(_write(SITE_DATA / "kernels" / f"{gv}.json",
-                              {"game_version": gv, "roles": roles, "focus": focus,
+                              {"game_version": gv, "roles": roles, "focus": focus, "role_groups": role_groups,
                                "variants": variants, "tactic_params": params,
                                "system_changes": changes, "role_key_attrs": key_attrs}))
 

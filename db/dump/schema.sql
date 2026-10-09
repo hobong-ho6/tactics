@@ -143,7 +143,7 @@ CREATE TABLE game_roles(
   role_id TEXT NOT NULL,            -- 'wm_insidefwd'
   name TEXT, name_en TEXT,
   position_type TEXT,               -- GK/CB/FB/DM/CM/CAM/WM/W/ST (슬롯 타입 필터의 정본 — obs#141)
-  focuses TEXT,                     -- JSON array
+  focuses TEXT, identity_kr TEXT, focus_axis_kr TEXT,                     -- JSON array
   PRIMARY KEY(game_version, role_id)
 );
 CREATE TABLE game_role_focus(       -- 커널 85개 — 모든 적합값의 뿌리 (obs#105). v1 전 컬럼 승계
@@ -155,7 +155,7 @@ CREATE TABLE game_role_focus(       -- 커널 85개 — 모든 적합값의 뿌�
   plus TEXT, equal TEXT, negative TEXT,   -- JSON array — 강화/중립/희생 특성
   side_conflict INTEGER DEFAULT 0,  -- 1 = fut.gg 좌/우 변형이 서로 다른 값
   note TEXT, source TEXT,
-  kernel25 TEXT, kernel_source TEXT, movement_kr TEXT,
+  kernel25 TEXT, kernel_source TEXT, movement_kr TEXT, scene_attack_kr TEXT, scene_defend_kr TEXT,
   PRIMARY KEY(game_version, role_id, focus)
 );
 CREATE TABLE game_role_variants(    -- 위치 변형 217개 — placedMap의 실질 본체 (obs#94·#107)
@@ -1293,4 +1293,13 @@ CREATE TABLE fc_objective_groups(
   confidence     TEXT,
   pulled         TEXT NOT NULL,
   UNIQUE(game_version, group_slug, pulled)
+);
+CREATE TABLE game_role_groups(
+  game_version  TEXT NOT NULL REFERENCES game_versions(code),
+  position_type TEXT NOT NULL,             -- game_roles.position_type
+  scene_attack_kr TEXT NOT NULL,           -- 이 군의 모든 역할에 같은 장면을 건다(비교 가능하게)
+  scene_defend_kr TEXT NOT NULL,
+  compare_kr    TEXT,                      -- 군 안 역할 비교 요약
+  source TEXT, confidence TEXT,
+  PRIMARY KEY(game_version, position_type)
 );

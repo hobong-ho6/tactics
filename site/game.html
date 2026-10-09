@@ -17,6 +17,14 @@
 .metatbl td:nth-child(1){width:22%} .metatbl td:nth-child(2){width:24%} .metatbl td:nth-child(3){width:54%}
 #metaTac{table-layout:fixed;width:100%}
 #metaTac td:nth-child(1),#metaTac th:nth-child(1){width:22%} #metaTac td:nth-child(2),#metaTac th:nth-child(2){width:26%}
+/* 역할 장면 카드(migration 103) — 숫자 히트맵 + 포커스끼리 갈리는 칸 테두리 */
+.rs-grp{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0;font-size:13px;line-height:1.7}
+.rs-role{border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin:10px 0}
+.rs-foci{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-top:8px}
+.rs-k{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;max-width:150px;margin:4px 0 6px}
+.rs-k div{aspect-ratio:1;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:11px}
+.rs-k .d{outline:2px solid var(--acc);outline-offset:-2px}
+.rs-sc{font-size:12.5px;line-height:1.6;margin-top:4px}
 </style></head><body>
 <div id="hdr"></div>
 <h1>FC 게임 시스템 분석 <small class="dim" id="gv"></small></h1>
@@ -45,7 +53,8 @@
 
 <div class="panel"><h2>역할 라이브러리 <small class="dim">역할 37 × 포커스 85 — EA 원문 정의·강화/희생 태그 (오프더볼 · 우리 커널이 대응하는 층)</small></h2>
   <label class="kv">포지션군 <select id="grp"></select></label>
-  <table id="roles"></table></div>
+  <div id="roleCards"></div>
+  <details class="cele-group"><summary>상세 표 — 커널 수치 요약 · EA 원문</summary><table id="roles"></table></details></div>
 
 <div class="panel"><h2>PlayStyles 카탈로그 <small class="dim">온더볼 — 커널과 별개 축, 6카테고리 35종</small></h2>
   <label class="kv">검색 <input id="psSearch" class="gm-search" type="text" placeholder="PlayStyle 이름 검색 — 예: 프레스 프루븐, tiki taka"></label>
@@ -152,7 +161,40 @@ const groups=[...new Set(kd.roles.map(r=>r.position_type))];
 const grp=document.getElementById('grp');
 grp.innerHTML=groups.map(g=>`<option>${g}</option>`).join('');
 grp.addEventListener('change',renderRoles);
+/* 역할 장면 카드 — 군 공통 장면 ①공격 ②수비에 모든 역할을 걸어 비교한다(game_role_groups · 해석층 D).
+   히트맵이 똑같은 조합은 군을 가리지 않고 짝을 찾아 표시한다 — 「같은 자리, 다른 행동」을 읽게. */
+const SAME = {};
+for (const f of kd.focus) (SAME[f.kernel25] ??= []).push(f);
+const roleName = id => kd.roles.find(r=>r.role_id===id)?.name ?? id;
+function kgrid(k, diff){
+  return `<div class="rs-k">${[...k].map((ch,i)=>{const v=ch==='X'?1:(+ch)/10;
+    return `<div class="${diff.has(i)?'d':''}" style="background:rgba(57,135,229,${(v===0?0.05:0.15+v*0.85).toFixed(2)});color:${v>0.5?'#fff':'var(--dim)'}">${v===0?'':ch}</div>`;}).join('')}</div>`;
+}
+function renderCards(){
+  const g=(kd.role_groups??[]).find(x=>x.position_type===grp.value);
+  const rs=kd.roles.filter(r=>r.position_type===grp.value);
+  document.getElementById('roleCards').innerHTML = (g ? `<div class="rs-grp">
+      <div><b>장면 ① 공격</b> — ${esc(g.scene_attack_kr)}</div><div><b>장면 ② 수비</b> — ${esc(g.scene_defend_kr)}</div>
+      <div style="margin-top:6px">${prose(g.compare_kr??'')}</div>
+      <p class="dim" style="font-size:11.5px;margin:6px 0 0">히트맵: 위 = 공격 방향(1줄 최전방 … 5줄 우리 골문 앞) · 왼쪽 = 1열 · X = 1.0 · 숫자는 칸 비중 ÷ 10 ·
+      주황 테두리 = 같은 역할 안에서 포커스끼리 값이 갈리는 칸 · ${esc(g.confidence??'')}</p></div>` : '') +
+    rs.map(r=>{
+      const fs=kd.focus.filter(f=>f.role_id===r.role_id);
+      const diff=new Set(); if(fs.length>1) for(let i=0;i<25;i++) if(new Set(fs.map(f=>f.kernel25[i])).size>1) diff.add(i);
+      return `<div class="rs-role"><b>${esc(r.name)}</b> <small class="dim">${esc(fs[0]?.ea_role_name??r.role_id)}</small>
+        <div style="font-size:13px;margin-top:2px">${prose(r.identity_kr??'')}</div>
+        <div class="dim" style="font-size:12.5px">${prose(r.focus_axis_kr??'')}</div>
+        <div class="rs-foci">${fs.map(f=>{
+          const twins=(SAME[f.kernel25]??[]).filter(o=>o!==f);
+          return `<div><b>${esc(f.focus)}</b>${kgrid(f.kernel25,diff)}
+            <div style="font-size:12px"><span style="color:var(--ok)">+ ${_j(f.plus)}</span><br><span style="color:var(--bad)">− ${_j(f.negative)}</span></div>
+            ${twins.length?`<div style="font-size:11.5px;color:var(--warn);margin-top:2px">히트맵 같음: ${twins.map(o=>esc(roleName(o.role_id)+' '+o.focus)).join(' · ')}</div>`:''}
+            <div class="rs-sc"><b>① 공격</b> ${bold(esc(f.scene_attack_kr??''))}</div>
+            <div class="rs-sc"><b>② 수비</b> ${bold(esc(f.scene_defend_kr??''))}</div></div>`;}).join('')}</div></div>`;
+    }).join('');
+}
 function renderRoles(){
+  renderCards();
   const rs=kd.roles.filter(r=>r.position_type===grp.value);
   document.getElementById('roles').innerHTML='<tr><th>역할</th><th>포커스</th><th>움직임 해설 <small class="dim">— EA 정의 요지 + 커널 위치 경향(자기진영·전방·터치라인 비율) + ⚠️오독</small></th><th>EA 원문</th><th>강화(+)</th><th>희생(−)</th></tr>'+
    rs.flatMap(r=>kd.focus.filter(f=>f.role_id===r.role_id).map(f=>

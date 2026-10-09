@@ -9,7 +9,9 @@
    "movement_kr": "전방 라인 바로 뒤 「포켓」에 고정돼 팀의 창조 중심으로 선다. 커널: 전방 2행 100%·중앙 3열 집중(col2 .45), 자기진영 0 — 수비 복귀를 기대하지 말 것(−기동력). 로저스형 10번의 기본형.",
    "negative": "[\"Lacks Mobility\"]",
    "plus": "[\"Supports Attacks\", \"Creative\"]",
-   "role_id": "cam_classic10"
+   "role_id": "cam_classic10",
+   "scene_attack_kr": "공격수 바로 뒤 포켓(2줄 .6·X·.6)에 머물며 받아서 결정적 패스를 넣는다(강화: 창조성).",
+   "scene_defend_kr": "기동성 부족이 대가 — 2줄 밖으로 거의 안 움직인다."
   },
   {
    "description": "When set to Versatile, the Classic 10 will use their best judgement when determining if they should stay central or use the pitch's width during attacks.",
@@ -20,7 +22,9 @@
    "movement_kr": "중앙에 머물지 폭을 쓸지 스스로 판단한다. 커널: 5열 전체에 분산(col0/col4 .18) — Attack보다 넓게 흐른다. 위치를 못 박지 않으므로 ⚠️ 「자리 이탈」이 비용.",
    "negative": "[\"Out of Position\"]",
    "plus": "[\"Dynamic Width\", \"Creative\"]",
-   "role_id": "cam_classic10"
+   "role_id": "cam_classic10",
+   "scene_attack_kr": "2줄 다섯 칸 전부(.6·.6·X·.6·.6)를 쓴다 — 중앙에 머물지 측면으로 갈지 스스로 판단한다.",
+   "scene_defend_kr": "자리 이탈이 대가."
   },
   {
    "description": "When set to Wide, the Classic 10 is able to drift out to the wing, and dictate attacks from anywhere across the width of the pitch.",
@@ -31,7 +35,9 @@
    "movement_kr": "윙까지 흘러나가 폭 전체에서 공격을 지휘한다. 커널: 중앙 .36에 양 바깥열 .11 — Versatile보다 더 넓다. 수비 지원은 희생(−).",
    "negative": "[\"Supports the Defence\"]",
    "plus": "[\"Supports Attacks\", \"Creative\"]",
-   "role_id": "cam_classic10"
+   "role_id": "cam_classic10",
+   "scene_attack_kr": "2줄 측면 끝(.3)까지 흘러가 어디서든 공격을 지휘한다(EA 원문 「dictate attacks from anywhere across the width」).",
+   "scene_defend_kr": "수비 지원이 희생된다."
   },
   {
    "description": "When set to Attack, the Half Winger can advance freely, sacrificing defensive responsibilities.",
@@ -42,7 +48,9 @@
    "movement_kr": "자유롭게 전진하되 수비 책임은 버린다. 커널이 특이하다 — **양 하프스페이스 M자**(col0/col4 .33, 중앙 .11), 깊이 .56으로 CAM 중 가장 높다. 만잠비 실측이 이 M자와 일치(obs#111).",
    "negative": "[\"Defence Support\"]",
    "plus": "[\"Wide Support\", \"Attacking\"]",
-   "role_id": "cam_halfwinger"
+   "role_id": "cam_halfwinger",
+   "scene_attack_kr": "2줄 전체(.3×5)에서 출발해 1줄 양 끝(.6)까지 자유롭게 전진한다.",
+   "scene_defend_kr": "수비 책임을 희생한다(EA 원문)."
   },
   {
    "description": "When Balanced, the Half Winger will alternate equally between attacking and defending in a measured way.",
@@ -53,7 +61,9 @@
    "movement_kr": "공격·수비를 절도 있게 번갈아 한다. 커널: M자 유지(col0/col4 .36) + 중원행 .18 — Attack보다 한 행 내려온다. 체력 소모(−). ⚠️ 자기진영은 여전히 0.",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Wide Support\", \"Versatile\"]",
-   "role_id": "cam_halfwinger"
+   "role_id": "cam_halfwinger",
+   "scene_attack_kr": "2줄 양 끝(.6)과 중앙(.3)을 오가며 공격과 수비를 고르게 나눈다(1~3줄 양 끝 .3·.6·.3).",
+   "scene_defend_kr": "3줄 양 끝(.3)까지 내려온다 — 대가는 체력."
   },
   {
    "description": "When set to Roaming, this attacking Half-Winger will freely alternate the side on which they attack, even during plays.",
@@ -64,7 +74,9 @@
    "movement_kr": "플레이 중에도 공격하는 사이드를 바꾼다. 커널: M자(col0/col4 .34)이고 깊이 .57 — Attack과 거의 같은 자리, 차이는 좌우 이동 자유. 「자리 이탈」이 비용.",
    "negative": "[\"Out of Position\"]",
    "plus": "[\"Dynamic Side\", \"Attacking\"]",
-   "role_id": "cam_halfwinger"
+   "role_id": "cam_halfwinger",
+   "scene_attack_kr": "1줄 양 끝이 X — 플레이 중에도 공격하는 사이드를 자유롭게 바꾼다(EA 원문 「freely alternate the side」).",
+   "scene_defend_kr": "자리 이탈이 대가다 — 수비 위치를 비우기 쉽다."
   },
   {
    "description": "When asked to be Balanced, the Playmaker will offer defensive support when needed, as well as orchestrating attacks.",
@@ -75,7 +87,9 @@
    "movement_kr": "공격을 지휘하되 필요하면 수비 지원. 커널: 중앙 .61 집중, 중원행 .19, 깊이 1.10 — classic10보다 반 행 아래. 체력 소모(−).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Creative\", \"Versatile\"]",
-   "role_id": "cam_playmaker"
+   "role_id": "cam_playmaker",
+   "scene_attack_kr": "2줄(.6·X·.6)에서 조율하고 1줄 중앙(.3)까지 올라간다.",
+   "scene_defend_kr": "필요할 때 3줄(.6)까지 내려와 수비를 돕는다 — 대가는 체력."
   },
   {
    "description": "With Build-Up, the Playmaker is asked to drop deeper to get the ball, and orchestrate an attack.",
@@ -86,7 +100,9 @@
    "movement_kr": "더 깊이 내려와 볼을 받아 공격을 조립한다. 커널: 전방 .52·중원 .39·**자기진영 .10**, 깊이 1.58 — CAM 조합 중 유일하게 자기진영 질량이 있다. 공격 지원은 희생(−).",
    "negative": "[\"Supports Attacks\"]",
    "plus": "[\"Creative\", \"Build-Up Support\"]",
-   "role_id": "cam_playmaker"
+   "role_id": "cam_playmaker",
+   "scene_attack_kr": "3·4줄까지 내려와(3줄 .3·.6·.3, 4줄 .3) 공을 받아 공격을 시작한다 — CAM 중 가장 깊다.",
+   "scene_defend_kr": "대가는 공격 지원(박스 근처 관여가 준다)."
   },
   {
    "description": "When set to Roaming, the Playmaker will have freedom to explore the pitch to find the best spaces to support attacks.",
@@ -97,7 +113,9 @@
    "movement_kr": "최적 공간을 찾아 피치를 자유롭게 탐색한다. 커널: 중앙 .40에 하프스페이스 .30씩 — 좌우로 퍼진다. 수비 지원(−).",
    "negative": "[\"Supports the Defence\"]",
    "plus": "[\"Creative\", \"Movement\"]",
-   "role_id": "cam_playmaker"
+   "role_id": "cam_playmaker",
+   "scene_attack_kr": "2줄(X)을 중심으로 1줄·3줄 세 칸씩(.3)까지 빈 곳을 찾아 사방으로 움직인다.",
+   "scene_defend_kr": "수비 지원이 희생된다."
   },
   {
    "description": "When set to Attack, the Shadow Striker will focus on making late runs into the box, filling the space behind the striker.",
@@ -108,7 +126,9 @@
    "movement_kr": "스트라이커 뒤 공간으로 늦게 침투해 박스에 들어간다. 커널: 깊이 .31 — **CAM 중 가장 높고 ST 바로 아래**, 중앙 .62. 사실상 두 번째 스트라이커. 수비 지원(−).",
    "negative": "[\"Defence Support\"]",
    "plus": "[\"Attacking Runs\", \"Support Centrally\"]",
-   "role_id": "cam_shadow"
+   "role_id": "cam_shadow",
+   "scene_attack_kr": "2줄 중앙(X)에서 출발해 스트라이커 뒤 공간으로 늦게 박스에 들어간다(1줄 .6·X·.6) — CAM 중 가장 높다. ST가 끌어낸 공간을 채운다.",
+   "scene_defend_kr": "수비 지원이 희생된다 — 3줄 이하 0."
   },
   {
    "description": "When asked to be Aggressive, the Ball-Playing Defender will focus on intercepting passes and closing down opponents.",
@@ -119,7 +139,9 @@
    "movement_kr": "패스 차단과 전진 압박에 집중한다. 커널: 자기진영 .78·중원 .22, 깊이 3.07 — CB 조합 중 가장 높이 선다. 뒤에 공간을 남긴다(−Leaves Gaps).",
    "negative": "[\"Leaves Gaps\"]",
    "plus": "[\"Pressure\", \"Aggressiveness\"]",
-   "role_id": "cb_bpd"
+   "role_id": "cb_bpd",
+   "scene_attack_kr": "4줄(.6·X·.6)이 기본 높이.",
+   "scene_defend_kr": "3줄(.3·.6·.3)까지 튀어나가 패스를 끊고 압박한다 — 대가는 뒤 공간 노출."
   },
   {
    "description": "The Build-Up focus moves the Ball-playing Defender into more of a holding defensive midfielder during possession.",
@@ -130,7 +152,9 @@
    "movement_kr": "보유 시 홀딩 DM 위치로 올라간다. 커널: 자기진영 .93, 깊이 3.39 — ⚠️ 이름은 Build-Up이지만 Aggressive보다 **낮게** 선다(전진은 볼 있을 때만). 자리 이탈(−).",
    "negative": "[\"Out of Position\"]",
    "plus": "[\"Build-Up Support\", \"Defence Support\"]",
-   "role_id": "cb_bpd"
+   "role_id": "cb_bpd",
+   "scene_attack_kr": "공을 가지면 4줄(.6·X·.6)로 올라가 **수비형 미드필더처럼** 선다(EA 원문) — 3줄 중앙 .3까지.",
+   "scene_defend_kr": "5줄(.6·X·.6)로 돌아온다 — 대가는 자리 이탈."
   },
   {
    "description": "When set to Defend, the Ball-playing Defender will step up a little to support teammates during possession.",
@@ -141,7 +165,9 @@
    "movement_kr": "보유 시 조금만 올라가 동료를 지원한다. 커널: 자기진영 1.00, 깊이 3.61. 뒤 공간(−). 콘사·파우 토레스 계열의 기본형.",
    "negative": "[\"Leave Gaps\"]",
    "plus": "[\"Defending\", \"Build-Up Support\"]",
-   "role_id": "cb_bpd"
+   "role_id": "cb_bpd",
+   "scene_attack_kr": "공을 가지면 4줄(.3·.6·.3)로 약간 올라가 동료를 돕는다.",
+   "scene_defend_kr": "5줄(.6·X·.6) 기본 — 대가는 공간 노출."
   },
   {
    "description": "With a Balanced focus, the Defender will step up to close down attackers when needed.",
@@ -152,7 +178,9 @@
    "movement_kr": "필요할 때만 올라가 상대를 막는다. 커널: 자기진영 1.00, 깊이 3.76 — bpd/Defend보다 더 깊다. 폭 제한(−).",
    "negative": "[\"Limited Width\"]",
    "plus": "[\"Defending\", \"Stays Back\"]",
-   "role_id": "cb_defender"
+   "role_id": "cb_defender",
+   "scene_attack_kr": "5줄(.6·X·.6)에서 빌드업을 시작한다.",
+   "scene_defend_kr": "필요할 때 4줄(.3·.3·.3)까지 나가 공격수를 막는다 — 대가는 폭 제한."
   },
   {
    "description": "When asked to Defend, the Defender will focus only on their defensive responsibilities.",
@@ -163,7 +191,9 @@
    "movement_kr": "수비 책임만 본다. 커널: 자기진영 1.00, **깊이 4.00 = 최후방 고정**. 패스 옵션이 되지 않는다(−).",
    "negative": "[\"Pass Option\"]",
    "plus": "[\"Stays Back\", \"Defending\"]",
-   "role_id": "cb_defender"
+   "role_id": "cb_defender",
+   "scene_attack_kr": "5줄(.6·X·.6)만 — 패스 옵션은 희생된다.",
+   "scene_defend_kr": "등진 공격수에게 튀어나가지 않고 라인을 지킨다."
   },
   {
    "description": "When asked to be Aggressive, the Stopper will push up into the base of midfield to intercept passes and close down attackers.",
@@ -174,7 +204,9 @@
    "movement_kr": "미드필드 밑까지 올라가 패스를 끊고 공격수를 압박한다. 커널: 자기진영 .81, **하프스페이스 col1 .72**(터치라인 0) — 안쪽으로 튀어나가는 형. 뒤 공간(−).",
    "negative": "[\"Leaves Gaps\"]",
    "plus": "[\"Pressure\", \"Aggressiveness\"]",
-   "role_id": "cb_stopper"
+   "role_id": "cb_stopper",
+   "scene_attack_kr": "5줄 중앙(X)에서 시작.",
+   "scene_defend_kr": "미드필드 아래(4줄 .6·X·.6, 3줄 .3)까지 올라가 끊는다 — 센터백 중 가장 멀리 나간다. 대가는 뒤 공간."
   },
   {
    "description": "With a Balanced focus, the Stopper will intercept passes and pressure attackers receiving the ball.",
@@ -185,7 +217,9 @@
    "movement_kr": "패스를 끊고 볼 받는 공격수를 압박한다. 커널: 자기진영 1.00, 깊이 3.57 — Aggressive보다 반 행 아래, 형태는 같다.",
    "negative": "[\"Leave Gaps\"]",
    "plus": "[\"Defending\", \"Pressure\"]",
-   "role_id": "cb_stopper"
+   "role_id": "cb_stopper",
+   "scene_attack_kr": "5줄(.3·X·.3)에서 시작.",
+   "scene_defend_kr": "공을 받는 공격수에게 4줄(.6·.6·.6)까지 나가 압박하고 패스를 끊는다 — 대가는 공간 노출."
   },
   {
    "description": "With an Aggressive focus, the Wide Back will also close down opponents and intercept passes during the defensive phase.",
@@ -196,7 +230,9 @@
    "movement_kr": "수비 국면에서도 상대를 압박·차단한다. 커널: 자기진영 1.00, **터치라인 col0 .39** — CB 중 가장 바깥에 선다(풀백 커버). 뒤 공간(−).",
    "negative": "[\"Leaves Gaps\"]",
    "plus": "[\"Cover Side\", \"Aggressiveness\"]",
-   "role_id": "cb_wideback"
+   "role_id": "cb_wideback",
+   "scene_attack_kr": "5줄(.6·.3·X·.3·.6) 기본.",
+   "scene_defend_kr": "4줄(.3·.3·0·.3·.3)까지 나가 측면 공격수를 막고 패스를 끊는다 — 대가는 공간 노출."
   },
   {
    "description": "With a Defend focus, the Wide Back will cover for the fullbacks in all phases but stay close to the defensive line.",
@@ -207,7 +243,9 @@
    "movement_kr": "모든 국면에서 풀백을 커버하되 수비 라인에 붙어 있다. 커널: 깊이 4.00 최후방, 양 바깥열 .21씩 대칭 — 어느 쪽 풀백이든 커버하는 형태. 다재다능 제한(−).",
    "negative": "[\"Limited Versatility\"]",
    "plus": "[\"Cover Side\", \"Stays Back\"]",
-   "role_id": "cb_wideback"
+   "role_id": "cb_wideback",
+   "scene_attack_kr": "5줄 다섯 칸(.6·.3·X·.3·.6)에 머문다.",
+   "scene_defend_kr": "모든 국면에서 풀백 뒤를 커버하되 라인 가까이 남는다(EA 원문) — 대가는 다재다능 제한."
   },
   {
    "description": "With a Support focus, the Wide Back will move up the side of the pitch to a pass option when their team needs to release pressure.",
@@ -218,7 +256,9 @@
    "movement_kr": "압박을 풀어야 할 때 측면으로 올라가 패스 옵션이 된다. 커널: 자기진영 .87·중원 .13, 양 바깥열 .33씩 — 백3의 바깥 CB가 윙백 밑으로 올라오는 그림. 자리 이탈(−).",
    "negative": "[\"Out of Position\"]",
    "plus": "[\"Cover Side\", \"Build-Up Support\"]",
-   "role_id": "cb_wideback"
+   "role_id": "cb_wideback",
+   "scene_attack_kr": "압박을 풀어야 할 때 측면을 타고 4줄 바깥(.6)·3줄 바깥(.3)까지 올라가 선택지가 된다(EA 원문).",
+   "scene_defend_kr": "5줄(.6·.3·X·.3·.6)로 돌아온다 — 대가는 자리 이탈."
   },
   {
    "description": "When asked to be Balanced, the Box-to-box Midfielder will cover the centre of the pitch in attack and defence.",
@@ -229,7 +269,9 @@
    "movement_kr": "공수 양면에서 중앙을 커버한다. 커널: 자기진영 .31·중원 .38·전방 .31 **균등 3분할**, 중앙열 .86 — 진짜 박스투박스. 체력 소모(−).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Attack Support\", \"Defence Support\"]",
-   "role_id": "cm_b2b"
+   "role_id": "cm_b2b",
+   "scene_attack_kr": "중앙 열 1~5줄 전부(.3·X·X·X·.3)를 오간다 — 공격 때 박스(1줄 .3)까지 올라간다.",
+   "scene_defend_kr": "자기 박스 앞(5줄 .3)까지 내려와 수비를 돕는다 — 대가는 체력."
   },
   {
    "description": "When asked to be Ball-Winning, the Box-to-Box Midfielder will focus on recovering the ball while providing central support in attack and defence.",
@@ -240,7 +282,9 @@
    "movement_kr": "볼 회수에 집중하면서 공수 중앙 지원. 커널: 3분할 .35/.30/.35, 하프스페이스로 .17씩 퍼진다 — Balanced보다 좌우로 넓게 사냥. 체력 소모(−).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Aggressiveness\", \"Supports Play\"]",
-   "role_id": "cm_b2b"
+   "role_id": "cm_b2b",
+   "scene_attack_kr": "Balanced와 같은 세로 범위.",
+   "scene_defend_kr": "2·4줄 양옆(.3)이 더 붙는다 — 공을 되찾는 데 집중해 적극적으로 달려든다(강화: 적극성). 대가는 체력."
   },
   {
    "description": "When set to Build-Up, the Deep-lying Playmaker will move forward and offer a passing option to support attacks.",
@@ -251,7 +295,9 @@
    "movement_kr": "앞으로 나와 패스 옵션을 준다. 커널: 중원 .71·전방 .10·자기진영 .19, 깊이 2.10. 수비 지원은 희생(−). ⚠️ DM 슬롯의 dm_dlp/Build-Up(자기진영 .45)보다 훨씬 높다 — 슬롯 타입이 다르면 같은 이름이라도 위치가 다르다.",
    "negative": "[\"Supports the Defence\"]",
    "plus": "[\"Creative\", \"Versatile\"]",
-   "role_id": "cm_dlp"
+   "role_id": "cm_dlp",
+   "scene_attack_kr": "3줄(.6·X·.6)에서 받아 뿌리고 2줄 중앙(.3)까지 올라가 패스 선택지가 된다.",
+   "scene_defend_kr": "수비 지원이 희생된다 — 4줄 .6까지는 내려온다."
   },
   {
    "description": "With a Defend focus, the Deep-lying Playmaker will focus on closing down passing lanes and staying back while their team attacks.",
@@ -262,7 +308,9 @@
    "movement_kr": "패스 길을 막고 팀 공격 시 뒤에 남는다. 커널: 중원 .84·전방 0, 깊이 2.16. 공격(−). CM 슬롯에서 「내려앉는」 조합.",
    "negative": "[\"Attacking\"]",
    "plus": "[\"Defending\", \"Creative\"]",
-   "role_id": "cm_dlp"
+   "role_id": "cm_dlp",
+   "scene_attack_kr": "3줄(.3·X·.3)에 머물며 팀이 공격할 때도 남는다(EA 원문 「staying back while their team attacks」).",
+   "scene_defend_kr": "패스 길을 막는 데 집중한다(4줄 .3) — 대가는 공격."
   },
   {
    "description": "When set to Attack, the Half Winger can advance freely, sacrificing defensive responsibilities.",
@@ -273,7 +321,9 @@
    "movement_kr": "자유 전진, 수비 책임 포기. 커널: **양 바깥열 .38씩 M자**, 전방 .46 — CM 슬롯인데 측면으로 벌어진다. CAM halfwinger보다 한 행 아래(깊이 1.38). 수비 지원(−).",
    "negative": "[\"Defence Support\"]",
    "plus": "[\"Wide Support\", \"Attacking\"]",
-   "role_id": "cm_halfwinger"
+   "role_id": "cm_halfwinger",
+   "scene_attack_kr": "2·3줄 양 끝(.6)과 1줄 양 끝(.3)까지 자유롭게 전진한다.",
+   "scene_defend_kr": "수비 책임을 희생한다 — 4줄 이하 0."
   },
   {
    "description": "When Balanced, the Half Winger will alternate equally between attacking and defending in a measured way.",
@@ -284,7 +334,9 @@
    "movement_kr": "공수 균형. 커널: M자 유지, 자기진영 .15·전방 .31 — Attack보다 두 행 폭으로 퍼진다. 체력 소모(−).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Wide Support\", \"Versatile\"]",
-   "role_id": "cm_halfwinger"
+   "role_id": "cm_halfwinger",
+   "scene_attack_kr": "2·3줄 양 끝(.6)을 오가며 공격과 수비를 고르게 나눈다.",
+   "scene_defend_kr": "4줄 양 끝(.3)까지 내려온다 — 대가는 체력."
   },
   {
    "description": "When set to Support, the Half-Winger will focus on supporting the play instead of simply attacking or defending.",
@@ -295,7 +347,9 @@
    "movement_kr": "공격·수비보다 「플레이 지원」에 집중. 커널: M자(col0/col4 .33) + 전방 .40 — 세 포커스 중 전방 비중이 Balanced보다 높다. 자리 이탈(−).",
    "negative": "[\"Out of Position\"]",
    "plus": "[\"Wide Support\", \"Supports Play\"]",
-   "role_id": "cm_halfwinger"
+   "role_id": "cm_halfwinger",
+   "scene_attack_kr": "2줄 다섯 칸(.6·.3·0·.3·.6)과 3줄 전체를 쓰며 공격·수비보다 **연결**에 집중한다.",
+   "scene_defend_kr": "4줄 양 끝(.3)까지 — 대가는 자리 이탈."
   },
   {
    "description": "The Ball-Winning focus tasks the Holding Midfielder with aggressively intercepting passing as part of their defensive focus.",
@@ -306,7 +360,9 @@
    "movement_kr": "공격적으로 패스를 차단한다. 커널: 중원 .79·자기진영 .21·전방 0, 하프스페이스 .21씩 — 중원 벨트 사냥꾼. 패스 옵션(−).",
    "negative": "[\"Pass Option\"]",
    "plus": "[\"Defending\", \"Aggressiveness\"]",
-   "role_id": "cm_holding"
+   "role_id": "cm_holding",
+   "scene_attack_kr": "3줄(.6·X·.6)에 머문다 — 패스 옵션은 희생된다.",
+   "scene_defend_kr": "패스를 적극적으로 끊으러 나간다(강화: 적극성)."
   },
   {
    "description": "When instructed to Defend, the Holding Midfielder will move slightly higher to offer a passing option, but will otherwise focus on defending.",
@@ -317,7 +373,9 @@
    "movement_kr": "약간 올라가 패스 옵션을 주되 수비 집중. 커널: 자기진영 .35·중원 .65 — ⚠️ Ball-Winning보다 **더 깊다**(자기진영 .35 vs .21). 기동력 부족(−).",
    "negative": "[\"Lacks Mobility\"]",
    "plus": "[\"Defending\", \"Stays Back\"]",
-   "role_id": "cm_holding"
+   "role_id": "cm_holding",
+   "scene_attack_kr": "조금 높게 서서 패스 선택지가 되지만(EA 원문) 기본은 3줄(.6·X·.6).",
+   "scene_defend_kr": "4줄 세 칸(.3·.6·.3)까지 넓게 내려와 수비한다 — 대가는 기동성."
   },
   {
    "description": "When set to Attack, the Playmaker will move forward to support attacks higher up on the field.",
@@ -328,7 +386,9 @@
    "movement_kr": "더 높이 올라가 공격을 지원한다. 커널: 중원 .57·전방 .43·자기진영 0, 중앙 .57 집중, 깊이 1.57. 수비 지원(−).",
    "negative": "[\"Defence Support\"]",
    "plus": "[\"Creative\", \"Attack Support\"]",
-   "role_id": "cm_playmaker"
+   "role_id": "cm_playmaker",
+   "scene_attack_kr": "2·3줄(.3·.6·.3 / .3·X·.3)로 올라가 높은 곳에서 공격을 돕는다.",
+   "scene_defend_kr": "수비 지원이 희생된다 — 4줄 이하 0."
   },
   {
    "description": "When set to Roaming, the Playmaker will have freedom to explore the pitch to find the best spaces to support attacks.",
@@ -339,7 +399,9 @@
    "movement_kr": "최적 공간을 찾아 자유 이동. 커널: 중앙 .31에 5열 전부 질량(바깥열 .12) — CM 중 가장 넓게 퍼진다. 수비 지원(−).",
    "negative": "[\"Defence Support\"]",
    "plus": "[\"Creative\", \"Movement\"]",
-   "role_id": "cm_playmaker"
+   "role_id": "cm_playmaker",
+   "scene_attack_kr": "2·3줄 다섯 칸 전부(.3~.6, 3줄 중앙 X)를 쓰며 빈 곳을 찾는다.",
+   "scene_defend_kr": "수비 지원이 희생된다."
   },
   {
    "description": "When asked to be Balanced, the Box Crasher will balance their responsibilities between defence and offence.",
@@ -350,7 +412,9 @@
    "movement_kr": "공수 책임을 절반씩. 커널: 자기진영 .41·중원 .31·전방 .28 — DM인데 전방 질량이 있다. **하프스페이스 col1 .91** — 자기 쪽 하프스페이스로 박스에 뛰어드는 러너. 체력 소모(−).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Attacking Runs\", \"Versatile\"]",
-   "role_id": "dm_boxcrasher"
+   "role_id": "dm_boxcrasher",
+   "scene_attack_kr": "3줄 중앙(X)에서 2줄(.6)·1줄(.3)까지 올라가 박스로 침투한다(강화: 공격 침투) — DM 중 가장 높다.",
+   "scene_defend_kr": "4줄(.3·X·.3)로 돌아와 수비한다 — 대가는 체력."
   },
   {
    "description": "When set to Defend, the Centre Half will focus on their defensive duties.",
@@ -361,7 +425,9 @@
    "movement_kr": "수비 임무만. 커널: 자기진영 1.00, 깊이 3.50 — DM 슬롯에서 **CB 라인까지 내려앉는다**(백3화). 폭 지원(−).",
    "negative": "[\"Wide Support\"]",
    "plus": "[\"Defending\", \"Support Centrally\"]",
-   "role_id": "dm_centrehalf"
+   "role_id": "dm_centrehalf",
+   "scene_attack_kr": "4·5줄(.3·X·.3 두 줄)까지 내려가 CB 사이·앞에서 받는다 — 사실상 세 번째 센터백.",
+   "scene_defend_kr": "수비에 집중한다(강화: 중앙 지원) — 대가는 측면 지원."
   },
   {
    "description": "When set to Build-Up, the Deep-lying Playmaker will move forward and offer a passing option to support attacks.",
@@ -372,7 +438,9 @@
    "movement_kr": "앞으로 나와 패스 옵션. 커널: 자기진영 .45·중원 .45·전방 .10, col1 .79 — 자기 쪽 하프스페이스 기준점. 수비 지원(−). 바클리·고메스의 기본 축.",
    "negative": "[\"Supports the Defence\"]",
    "plus": "[\"Creative\", \"Versatile\"]",
-   "role_id": "dm_dlp"
+   "role_id": "dm_dlp",
+   "scene_attack_kr": "3·4줄(.3·X·.3 두 줄)에서 받아 뿌리고 2줄 중앙(.3)까지 올라가 선택지가 된다.",
+   "scene_defend_kr": "수비 지원이 희생된다."
   },
   {
    "description": "With a Defend focus, the Deep-lying Playmaker will focus on closing down passing lanes and staying back while their team attacks.",
@@ -383,7 +451,9 @@
    "movement_kr": "패스 길 차단, 공격 시 잔류. 커널: 자기진영 .68·중원 .32·전방 0, 깊이 2.68. 공격(−).",
    "negative": "[\"Attacking\"]",
    "plus": "[\"Defending\", \"Creative\"]",
-   "role_id": "dm_dlp"
+   "role_id": "dm_dlp",
+   "scene_attack_kr": "4줄(.3·X·.3)에 머물며 3줄 세 칸(.3)까지만 나간다.",
+   "scene_defend_kr": "패스 길을 막고 남는다 — 대가는 공격."
   },
   {
    "description": "The Roaming focus allows the Deep-lying Playmaker to move across the width of the pitch to support attacks.",
@@ -394,7 +464,9 @@
    "movement_kr": "폭 전체를 가로질러 공격을 지원한다. 커널: col1 .45·col2 .36·col3 .18 — 반대 하프스페이스까지 넘어간다, 전방 .18. 자리 이탈(−). 카마라·바클리 처방.",
    "negative": "[\"Out of Position\"]",
    "plus": "[\"Creative\", \"Movement\"]",
-   "role_id": "dm_dlp"
+   "role_id": "dm_dlp",
+   "scene_attack_kr": "3줄 세 칸(.6·.6·.6)을 가로질러 공격을 돕는다(EA 원문 「move across the width」). 2줄 세 칸(.3)까지.",
+   "scene_defend_kr": "4줄(.3·.6·.3) — 대가는 자리 이탈."
   },
   {
    "description": "The Ball-Winning focus tasks the Holding Midfielder with aggressively intercepting passing as part of their defensive focus.",
@@ -405,7 +477,9 @@
    "movement_kr": "공격적 패스 차단. 커널: 자기진영 1.00, 깊이 3.14 — DM 중 가장 깊은 사냥. 패스 옵션(−).",
    "negative": "[\"Pass Option\"]",
    "plus": "[\"Defending\", \"Aggressiveness\"]",
-   "role_id": "dm_holding"
+   "role_id": "dm_holding",
+   "scene_attack_kr": "4줄(.6·X·.6)에 머문다 — 패스 옵션은 희생된다.",
+   "scene_defend_kr": "패스를 적극적으로 끊으러 나간다(강화: 적극성). 5줄 중앙(.3)까지."
   },
   {
    "description": "When instructed to Defend, the Holding Midfielder will move slightly higher to offer a passing option, but will otherwise focus on defending.",
@@ -416,7 +490,9 @@
    "movement_kr": "약간 올라가 패스 옵션, 나머지는 수비. 커널: 자기진영 .88·중원 .12, 깊이 3.00. 기동력 부족(−).",
    "negative": "[\"Lacks Mobility\"]",
    "plus": "[\"Defending\", \"Stays Back\"]",
-   "role_id": "dm_holding"
+   "role_id": "dm_holding",
+   "scene_attack_kr": "조금 높게(3줄 .3) 서서 패스 선택지가 되지만 기본은 4줄(.3·X·.3).",
+   "scene_defend_kr": "수비에 집중한다 — 대가는 기동성."
   },
   {
    "description": "When set to Roaming, the Holding Midfielder will move across the width of the pitch to close passing lanes, and step up to press attackers.",
@@ -427,7 +503,9 @@
    "movement_kr": "폭을 가로질러 패스 길을 막고 올라가 압박한다. 커널: 자기진영 .82, **5열 전부에 질량**(col0 .20 ~ col4 .12) — 홀딩 중 유일하게 좌우로 넓다. 체력 소모(−). 오나나 처방.",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Defending\", \"Movement\"]",
-   "role_id": "dm_holding"
+   "role_id": "dm_holding",
+   "scene_attack_kr": "3줄 세 칸(.3)까지 올라간다.",
+   "scene_defend_kr": "4줄을 가로로 다 쓴다(.6·X·X·X·.6) — 패스 길을 막고 공격수에게 튀어나가 압박한다(EA 원문). 대가는 체력."
   },
   {
    "description": "When set to Build-Up, the Wide Half can move into the Wingback position, and forward into Wide Midfielder territory, when their team is in possession.",
@@ -438,7 +516,9 @@
    "movement_kr": "보유 시 윙백 자리로, 더 나가면 와이드미드 영역까지 간다. 커널: 자기진영 .80, 양 바깥열 .30씩 — 백3 가변 시 측면으로 벌어지는 하프. 중앙 지원(−).",
    "negative": "[\"Supports Centrally\"]",
    "plus": "[\"Pass Option\", \"Wide Support\"]",
-   "role_id": "dm_widehalf"
+   "role_id": "dm_widehalf",
+   "scene_attack_kr": "공을 가지면 4줄 양 끝(.6)에서 3줄 양 끝(.3)까지 — 윙백·와이드 미드필더 자리로 나간다(EA 원문).",
+   "scene_defend_kr": "대가는 중앙 지원."
   },
   {
    "description": "When instructed to Defend, the Wide Half can drop into Fullback and Wingback positions while their team has the ball.",
@@ -449,7 +529,9 @@
    "movement_kr": "보유 시 풀백·윙백 자리로 내려간다. 커널: 자기진영 1.00, 양 바깥열 .30, 깊이 3.20 — Build-Up보다 한 행 아래. 중앙 지원(−).",
    "negative": "[\"Supports Centrally\"]",
    "plus": "[\"Defending\", \"Wide Support\"]",
-   "role_id": "dm_widehalf"
+   "role_id": "dm_widehalf",
+   "scene_attack_kr": "4줄 양 끝(.6)까지.",
+   "scene_defend_kr": "5줄 양 끝(.3)까지 내려가 풀백·윙백 자리를 메운다(EA 원문) — 대가는 중앙 지원."
   },
   {
    "description": "When asked to Attack, the Attacking Wingback will push even higher up the pitch, and perform fewer defensive duties.",
@@ -460,7 +542,9 @@
    "movement_kr": "「더 높이 올라가고 수비 임무를 덜 한다」. 커널: **전방 .64**·자기진영 .24, 터치라인 1.00, 깊이 1.32 — 풀백 조합 중 가장 높다. ⚠️ 앞 공간이 비어야 발동한다(EA 「open space in front」, docs/20 ⑨) — 같은 쪽에 터치라인형 와이드가 있으면 올라가지 못한다. 수비(−).",
    "negative": "[\"Defending\"]",
    "plus": "[\"Attacking\", \"Wide Support\"]",
-   "role_id": "fb_att_wb"
+   "role_id": "fb_att_wb",
+   "scene_attack_kr": "터치라인 최전방(1줄 X)까지 올라간다 — 앞의 윙어와 겹치지 않게 앞 선수가 안으로 들어가야 한다.",
+   "scene_defend_kr": "수비가 희생된다 — 2~5줄 .6·.3·.3·.3으로 적게 돌아온다."
   },
   {
    "description": "When asked to Support, the Attacking Wingback will rarely sprint back to defend, unless their team has been hit on the counter.",
@@ -471,7 +555,9 @@
    "movement_kr": "「역습 당할 때 빼고는 좀처럼 수비 복귀 스프린트를 하지 않는다」. 커널: 전방 .46·자기진영 .32, 깊이 1.86. ⚠️⚠️ **전진을 늘리는 포커스가 아니라 복귀를 줄이는 포커스다** — 「풀백을 더 올리려고」 Support를 주는 것은 정의상 빗나간다, 그건 Attack. 시즌 기본은 Support, 홈·지배 경기 변형에서 Attack(마첸 duties 운용). 수비(−).",
    "negative": "[\"Defending\"]",
    "plus": "[\"Wide Support\", \"Attacking\"]",
-   "role_id": "fb_att_wb"
+   "role_id": "fb_att_wb",
+   "scene_attack_kr": "2줄 터치라인(X)이 중심, 1줄 .3.",
+   "scene_defend_kr": "역습을 당했을 때만 전력으로 돌아온다(EA 원문 「rarely sprint back to defend, unless their team has been hit on the counter」)."
   },
   {
    "description": "When set to Balanced, the Falseback positions themselves as a Central Midfielder when their team is in possession.",
@@ -482,7 +568,9 @@
    "movement_kr": "보유 시 중앙 미드필더 자리로 들어온다. 커널: 자기진영 .53·중원 .47, **하프스페이스 col1 .47**(터치라인 .35) — 폴스백은 안쪽으로 접힌다. 자리 이탈(−).",
    "negative": "[\"Out of Position\"]",
    "plus": "[\"Build-Up Support\", \"Defence Support\"]",
-   "role_id": "fb_falseback"
+   "role_id": "fb_falseback",
+   "scene_attack_kr": "공을 가지면 3줄 안쪽(.3·X·.3)으로 들어가 **중앙 미드필더**처럼 선다.",
+   "scene_defend_kr": "4줄(.3·.6·.3)·5줄 바깥(.6)으로 돌아온다 — 대가는 자리 이탈(측면이 빈다)."
   },
   {
    "description": "When set to Defend, the Falseback operates as a Defensive Midfielder when the team has the ball.",
@@ -493,7 +581,9 @@
    "movement_kr": "보유 시 수비형 미드필더로 움직인다. 커널: 자기진영 .84·중원 .16, col1 .42 — Balanced보다 한 행 아래에서 안쪽으로. 자리 이탈(−).",
    "negative": "[\"Out of Position\"]",
    "plus": "[\"Defending\", \"Build-Up Support\"]",
-   "role_id": "fb_falseback"
+   "role_id": "fb_falseback",
+   "scene_attack_kr": "공을 가지면 4줄 안쪽(X·.6)으로 들어가 **수비형 미드필더**처럼 선다.",
+   "scene_defend_kr": "5줄(X·.3)로 돌아온다 — 대가는 자리 이탈."
   },
   {
    "description": "When set to Balanced, the Fullback is granted more freedom to push slightly forward and wider in support of attacks.",
@@ -504,7 +594,9 @@
    "movement_kr": "「약간 앞·바깥으로 나가 공격 지원」. 커널: 자기진영 .91, 터치라인 .72·col1 .28, 깊이 3.41. 공격 지원(−). ⚠️ 이름이 Balanced지만 자기진영 .91 — 사실상 수비형.",
    "negative": "[\"Attack Support\"]",
    "plus": "[\"Defending\", \"Stays Back\"]",
-   "role_id": "fb_fullback"
+   "role_id": "fb_fullback",
+   "scene_attack_kr": "4줄 터치라인(X)에서 3줄(.3)까지 약간 앞·바깥으로 나가 공격을 돕는다.",
+   "scene_defend_kr": "5줄(X·.6)로 돌아와 자리를 지킨다(강화: 후방 잔류)."
   },
   {
    "description": "When set to Defend, the Fullback will move inside to form a back three when their team is in possession.",
@@ -515,7 +607,9 @@
    "movement_kr": "보유 시 **안으로 들어와 백3를 만든다**. 커널: 자기진영 1.00, col0 .45·col1 .45 — 절반이 하프스페이스로. 폭 지원(−). 에메리가 원한다는 「하이브리드 백3 좌측 수비수」(마첸 duties#6)가 이 조합에 가장 가깝다.",
    "negative": "[\"Wide Support\"]",
    "plus": "[\"Stays Back\", \"Defending\"]",
-   "role_id": "fb_fullback"
+   "role_id": "fb_fullback",
+   "scene_attack_kr": "공을 가지면 5줄 안쪽(1·2열 X·X, 3열 .3)으로 좁혀 **백3**를 만든다 — 측면 지원은 희생된다.",
+   "scene_defend_kr": "5줄(X·X)에 머문다."
   },
   {
    "description": "When set to Versatile, the Fullback can move inside to form a back three or push slightly forward and wider to support build-up.",
@@ -526,7 +620,9 @@
    "movement_kr": "백3로 접히거나 약간 앞·바깥으로 나가는 것을 스스로 고른다. 커널: 자기진영 .92, col0 .59·col1 .33 — Balanced와 Defend의 중간. 공격 지원(−).",
    "negative": "[\"Supports Attack\"]",
    "plus": "[\"Versatile\", \"Defending\"]",
-   "role_id": "fb_fullback"
+   "role_id": "fb_fullback",
+   "scene_attack_kr": "4줄 바깥(X·.3)으로 나갈지, 5줄 안쪽(X·X·.3)으로 백3를 만들지 스스로 고른다.",
+   "scene_defend_kr": "자리를 지킨다 — 대가는 공격 지원."
   },
   {
    "description": "When asked to Attack, the Inverted Wingback will act as a central Shadow Striker, helping in the final third.",
@@ -537,7 +633,9 @@
    "movement_kr": "보유 시 중앙 섀도 스트라이커처럼 파이널서드에 관여. 커널: **전방 .68**, col1 .51, **10번 포켓 .68** — 풀백이 CAM 자리로 들어간다. 수비(−). ⚠️ 포켓에서 CAM·인사이드포워드와 충돌 여지(obs#444).",
    "negative": "[\"Defending\"]",
    "plus": "[\"Attacking Runs\", \"Versatile\"]",
-   "role_id": "fb_inverted"
+   "role_id": "fb_inverted",
+   "scene_attack_kr": "2줄 하프스페이스(X·.6)를 거쳐 1줄(.6·.3)까지 — **섀도 스트라이커**처럼 박스 근처로 들어간다(EA 원문).",
+   "scene_defend_kr": "수비가 희생된다 — 3~5줄은 .3뿐."
   },
   {
    "description": "When asked to Build-Up, the Inverted Wingback will act as a central Playmaker, helping dictate the play.",
@@ -548,7 +646,9 @@
    "movement_kr": "보유 시 중앙 플레이메이커로 경기를 조율. 커널: 전방 .52·중원 .29·자기진영 .19, col1 .52 — Attack보다 반 행 아래, 하프스페이스 중심. 공격 지원(−). ⚠️ 마첸 적합 .46~.54로 파레토 지배(obs#128) — 겹침을 줄이려면 인버티드가 아니라 wingback.",
    "negative": "[\"Attack Support\"]",
    "plus": "[\"Defending\", \"Stays Back\"]",
-   "role_id": "fb_inverted"
+   "role_id": "fb_inverted",
+   "scene_attack_kr": "2줄 하프스페이스(X·.6)·3줄(.3·.6)에서 **플레이메이커**처럼 방향을 정한다(EA 원문). 1줄에는 안 간다.",
+   "scene_defend_kr": "4·5줄 터치라인(.3)으로 돌아온다 — 대가는 공격 지원."
   },
   {
    "description": "With Balanced, the Wingback is given license to stay forward even when the team is out of possession, or drop back into defence when needed.",
@@ -559,7 +659,9 @@
    "movement_kr": "「비보유 시에도 앞에 남을 자격, 필요하면 수비 복귀」. 커널: 자기진영 .55·중원 .34·전방 .10, **터치라인 1.00이지만 row0(최전방)은 비어 있다** — 이 기하 덕에 높이 선 윙어와 수직 분리된다(겹침 .553, obs#128). 윙어 뒤 풀백의 기본형. 체력 소모(−).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Wide Support\", \"Movement\"]",
-   "role_id": "fb_wingback"
+   "role_id": "fb_wingback",
+   "scene_attack_kr": "3·4줄 터치라인(X·X)이 중심이고 2줄(.3)까지 올라간다.",
+   "scene_defend_kr": "수비 때도 높이 남아 있을 수 있다(EA 원문 「stay forward even when the team is out of possession」) — 5줄은 .6. 대가는 체력."
   },
   {
    "description": "When asked to Support, the Wingback can only attack when their team has controlled possession, and only defend when the team doesn't have the ball.",
@@ -570,7 +672,9 @@
    "movement_kr": "「팀이 점유를 통제할 때만 공격, 비보유 시만 수비」. 커널: 자기진영 .39·중원 .52, col0 .81·col1 .19 — Balanced보다 중원에 머물고 약간 안쪽. 수비 옵션(+). 체력 소모(−).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Wide Support\", \"Defence Option\"]",
-   "role_id": "fb_wingback"
+   "role_id": "fb_wingback",
+   "scene_attack_kr": "점유가 확보됐을 때만 올라간다(EA 원문) — 3줄 X·.6, 2줄 .3.",
+   "scene_defend_kr": "공이 없으면 곧바로 수비한다(4·5줄 .6) — 대가는 체력."
   },
   {
    "description": "A Build-Up focus encourages the Ball-Playing Keeper to push higher up the pitch to support play.",
@@ -581,7 +685,9 @@
    "movement_kr": "더 높이 올라가 플레이를 지원한다. 커널: 깊이 3.50 — GK 조합 중 sweeper와 함께 가장 높다. 러시(−). 마르티네스·스즈키 처방(숙련 「볼플레잉 키퍼+」). ⚠️ 커널은 위치만 본다 — 배급 유형(롱/숏)은 PlayStyle 층.",
    "negative": "[\"Rush\"]",
    "plus": "[\"Pass Option\", \"Defending\"]",
-   "role_id": "gk_ballplaying"
+   "role_id": "gk_ballplaying",
+   "scene_attack_kr": "4줄(.3·X·.3)까지 올라가 패스 선택지가 된다(강화: 패스 옵션).",
+   "scene_defend_kr": "수비는 하되 뛰쳐나오는 것은 희생한다(희생: 전진 러시) — 스위퍼 키퍼와 반대다."
   },
   {
    "description": "With a Balanced focus, the Goalkeeper will occasionally leave their area to collect long or loose balls.",
@@ -592,7 +698,9 @@
    "movement_kr": "가끔 박스를 떠나 롱볼·루즈볼을 잡는다. 커널: 깊이 3.84, 중앙 .68. 러시(−).",
    "negative": "[\"Rush\"]",
    "plus": "[\"Stay in Position\", \"Defending\"]",
-   "role_id": "gk_goalkeeper"
+   "role_id": "gk_goalkeeper",
+   "scene_attack_kr": "CB의 백패스를 받는 선택지가 된다(5줄 .3·X·.3).",
+   "scene_defend_kr": "길거나 흐른 공을 가끔 박스 밖(4줄 .3)까지 나와 처리한다(EA 원문)."
   },
   {
    "description": "With a Defend focus, the Goalkeeper won't rush out to collect long or loose balls.",
@@ -603,7 +711,9 @@
    "movement_kr": "롱볼·루즈볼에 뛰어나오지 않는다. 커널: **깊이 4.00 = 골라인 고정**. ⚠️ GK 조합은 커널이 전부 .96~.98대로 수렴해 적합값으로 우열을 가릴 수 없다(obs#220) — 평균 위치·duties로 판정.",
    "negative": "[\"Rush\"]",
    "plus": "[\"Stay in Position\", \"Defending\"]",
-   "role_id": "gk_goalkeeper"
+   "role_id": "gk_goalkeeper",
+   "scene_attack_kr": "5줄(.3·X·.3)에 머문다.",
+   "scene_defend_kr": "롱볼에 나오지 않는다(EA 원문 「won't rush out」) — 뒷공간은 수비수가 처리해야 한다."
   },
   {
    "description": "A Balanced focus allows the Sweeper Keeper to leave their area to collect balls close to their box.",
@@ -614,7 +724,9 @@
    "movement_kr": "박스 근처의 볼을 잡으러 박스를 떠난다. 커널: 깊이 3.65, 하프스페이스 .26씩 — Balanced 골키퍼보다 넓고 높다. 자리 고수(−).",
    "negative": "[\"Stay in Position\"]",
    "plus": "[\"Rush\", \"Defending\"]",
-   "role_id": "gk_sweeper"
+   "role_id": "gk_sweeper",
+   "scene_attack_kr": "CB 옆까지 나와 받는다(4줄 .3·.6·.3).",
+   "scene_defend_kr": "박스 근처의 공을 박스 밖까지 나와 처리한다(EA 원문) — 대가는 자리 고수."
   },
   {
    "description": "A Build-Up focus encourages the Sweeper Keeper to push even higher up the pitch to collect the ball and support play.",
@@ -625,7 +737,9 @@
    "movement_kr": "「더욱 높이」 올라가 볼을 잡고 플레이를 지원. 커널: 깊이 3.65(sweeper/Balanced와 동일), col1/col3 .28. ⚠️ 스즈키 실측은 골라인 고정형이라 이 계열이 기각됐다(duties#121).",
    "negative": "[\"Stay in Position\"]",
    "plus": "[\"Rush\", \"Pass Option\"]",
-   "role_id": "gk_sweeper"
+   "role_id": "gk_sweeper",
+   "scene_attack_kr": "4줄(.3·X·.3)까지 올라가 빌드업에 가담한다 — 5줄 2~4열이 전부 X로 좌우로도 가장 넓다.",
+   "scene_defend_kr": "높이 서 있다가 뒷공간 롱볼을 먼저 걷어 낸다(EA 원문 「push even higher up the pitch to collect the ball」)."
   },
   {
    "description": "With an Attack focus, the Advanced Forward will concentrate on goal-scoring opportunities, usually positioning themselves high and central on the pitch.",
@@ -636,7 +750,9 @@
    "movement_kr": "득점 기회에 집중, 높고 중앙에. 커널: **깊이 .12**, 중앙 .52 — 최전방 라인. 폭 제한(−).",
    "negative": "[\"Limited Width\"]",
    "plus": "[\"Attacking\", \"Pass Option\"]",
-   "role_id": "st_advanced"
+   "role_id": "st_advanced",
+   "scene_attack_kr": "최전방 중앙(1줄 X)에서 뒷공간을 노린다. 막혀 있으면 한 줄 내려와(2줄 .3) 발밑으로 받고 내준 뒤 다시 들어간다(강화: 패스 옵션).",
+   "scene_defend_kr": "압박은 강화 특성이 아니다 — 앞에서 자리를 지킨다."
   },
   {
    "description": "When set to Support, the Advanced Forward will look to make runs from deeper or wider positions, and press the defenders.",
@@ -647,7 +763,9 @@
    "movement_kr": "더 깊거나 넓은 곳에서 침투하고 수비수를 압박한다. 커널: **하프스페이스 col1/col3 .30씩·중앙 .20** — 중앙이 비는 채널 러너 형태. 왓킨스 처방. 체력 소모(−).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Attacking\", \"Pressure\"]",
-   "role_id": "st_advanced"
+   "role_id": "st_advanced",
+   "scene_attack_kr": "중앙(1줄 .3)에 서 있지 않는다. 하프스페이스(1줄 .6)나 한 줄 아래(2줄 .3 세 칸)에서 출발해 CB와 풀백 사이 채널로 대각선 침투한다.",
+   "scene_defend_kr": "상대 CB에게 적극 압박한다(강화: 압박). 대가로 체력 소모가 크다."
   },
   {
    "description": "When set to Versatile, the Advanced Forward has the freedom to move wide when necessary to receive a pass or create space with a run.",
@@ -658,7 +776,9 @@
    "movement_kr": "필요하면 넓게 나가 패스를 받거나 공간을 만든다. 커널: 중앙 .42에 바깥열 .10씩, 깊이 .10. 빌드업 지원(−).",
    "negative": "[\"Build-Up Support\"]",
    "plus": "[\"Attacking\", \"Versatile\"]",
-   "role_id": "st_advanced"
+   "role_id": "st_advanced",
+   "scene_attack_kr": "Attack과 같지만 중앙이 막히면 측면 끝(1줄 바깥 .3)까지 빠져 받거나, 빠지는 움직임으로 CB를 끌어낸다. 대가로 빌드업 관여가 약해진다.",
+   "scene_defend_kr": "Attack과 비슷하다 — 별도 압박 특성이 없다."
   },
   {
    "description": "When set to Attack, the False 9 will drop back from the opposition's defence, and make trailing runs into the box from deep.",
@@ -669,7 +789,9 @@
    "movement_kr": "수비 라인에서 내려온 뒤 깊은 곳에서 박스로 늦게 들어간다. 커널: 깊이 .69 — ST 중 두 번째로 낮다, 중앙 .62. 수비 지원(−).",
    "negative": "[\"Supports the Defence\"]",
    "plus": "[\"Creative\", \"Attacking Runs\"]",
-   "role_id": "st_false9"
+   "role_id": "st_false9",
+   "scene_attack_kr": "CDM 쪽으로 내려와(2줄 .6·X·.6) 받아 연결한 뒤 늦게 박스로 침투한다(1줄 X). 수비 라인 사이를 오간다.",
+   "scene_defend_kr": "수비 가담이 희생된다."
   },
   {
    "description": "With Build-Up, the False 9 will drop back from the opposition's defence, and operate as a playmaker, leading attacks.",
@@ -680,7 +802,9 @@
    "movement_kr": "내려와서 플레이메이커처럼 공격을 이끈다. 커널: **깊이 .88 = ST 조합 중 가장 낮다**, 하프스페이스 .24씩. 공격(−). 잭슨 아스날전 실측 argmax(.723) — 단 그 하강은 39% 점유 국면 함수였다(obs#444).",
    "negative": "[\"Attacking\"]",
    "plus": "[\"Creative\", \"Build-Up Support\"]",
-   "role_id": "st_false9"
+   "role_id": "st_false9",
+   "scene_attack_kr": "내려와서(2줄 .6·X·.6) 플레이메이커처럼 방향을 정한다. 1줄이 .3으로 빠져 박스에는 거의 안 들어간다 — ST 11개 중 가장 깊다. 득점은 윙어·2선 몫이다.",
+   "scene_defend_kr": "별도 수비 특성이 없다 — 대신 공격(득점 관여)을 희생한다."
   },
   {
    "description": "With an Attack focus, the Poacher will lurk just off the defensive line, ready to capitalise on any defensive gaps or errors.",
@@ -691,7 +815,9 @@
    "movement_kr": "수비 라인 바로 앞에 숨어 실수를 노린다. 커널: **깊이 0.00 = 최전방 행에 전부**, 중앙 .62. 수비 지원(−).",
    "negative": "[\"Supports the Defence\"]",
    "plus": "[\"Attacking Runs\", \"Support Centrally\"]",
-   "role_id": "st_poacher"
+   "role_id": "st_poacher",
+   "scene_attack_kr": "마지막 수비수 어깨에 붙어 있다가(1줄 X, 양옆 .3) 스루패스 각이 나면 뒤로 뛴다. 내려오지 않는다(2줄 0) — ST 11개 중 가장 앞·가장 좁다.",
+   "scene_defend_kr": "수비에 가담하지 않는다(희생: 수비 지원)."
   },
   {
    "description": "When set to Support, the Poacher will stay close to the opposition defence, aggressively pressing them when in possession, in the hope of triggering a mistake.",
@@ -702,7 +828,9 @@
    "movement_kr": "상대 수비에 붙어 보유 시 공격적으로 압박. 커널: 깊이 .12, 하프스페이스 .24씩. 체력 소모(−).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Attacking Runs\", \"Pressure\"]",
-   "role_id": "st_poacher"
+   "role_id": "st_poacher",
+   "scene_attack_kr": "Attack처럼 라인 침투가 기본이다(1줄 X, 양옆 .6, 2줄 .3).",
+   "scene_defend_kr": "상대 CB가 공을 잡으면 바로 달려들어 실수를 유도한다(강화: 압박) — 대가는 체력. ⭐ 어드밴스드 포워드 Attack과 히트맵이 같고 이 압박이 차이다."
   },
   {
    "description": "With a Versatile focus, the Poacher will use their judgement to determine if they should come back to support their team or apply pressure.",
@@ -713,7 +841,9 @@
    "movement_kr": "내려와 돕느냐 압박하느냐를 스스로 판단. 커널: 깊이 .21, 중앙 .57. 자리 이탈(−).",
    "negative": "[\"Out of Position\"]",
    "plus": "[\"Attacking Runs\", \"Versatile\"]",
-   "role_id": "st_poacher"
+   "role_id": "st_poacher",
+   "scene_attack_kr": "라인 침투가 기본이지만 팀이 밀리면 스스로 판단해 내려와 돕는다(2줄 .6).",
+   "scene_defend_kr": "압박할지 내려올지 스스로 고른다 — 그래서 「자리 이탈」이 대가로 붙는다."
   },
   {
    "description": "With an Attack focus, the Target Forward is free to focus on going forward, without any defensive instructions.",
@@ -724,7 +854,9 @@
    "movement_kr": "수비 지시 없이 전진에만 집중. 커널: 깊이 0.00 최전방, 중앙 .62 — 위치만 보면 poacher/Attack과 동일하다(차이는 피지컬 태그·온볼 홀드업). 기동력 부족(−).",
    "negative": "[\"Lacks Mobility\"]",
    "plus": "[\"Physical\", \"Attacking\"]",
-   "role_id": "st_target"
+   "role_id": "st_target",
+   "scene_attack_kr": "포처 Attack과 같은 자리(1줄 X, 양옆 .3)에서, 뒤로 뛰는 대신 수비수를 등지고 롱볼·직선 패스를 받아 몸싸움으로 지킨다(강화: 피지컬). 대가로 기동성이 부족하다.",
+   "scene_defend_kr": "수비 지시가 없다."
   },
   {
    "description": "When Balanced, the Target Forward will drop off from the defensive line, hold up play, and lay the ball off to teammates. They will have minor defensive duties.",
@@ -735,7 +867,9 @@
    "movement_kr": "라인에서 내려와 홀드업 후 레이오프, 약간의 수비 임무. 커널: **중앙열 1.00**(다른 열 0), 깊이 .37 — ST 중 가장 순수한 중앙 기준점. ⚠️ 홀드업 능력 자체는 PlayStyle(Press Proven·Enforcer)·스탯 층이다 — 아브라함에게 「키 크니까 타깃맨」은 오류(duties#161).",
    "negative": "[\"Lacks Mobility\"]",
    "plus": "[\"Physical\", \"Build-Up Support\"]",
-   "role_id": "st_target"
+   "role_id": "st_target",
+   "scene_attack_kr": "한 줄 내려와(2줄 .6) 공을 지키고(홀드업) 올라오는 2선에게 내준다(레이오프). 중앙 열 말고는 전부 0 — ST 중 가장 순수한 중앙 기준점.",
+   "scene_defend_kr": "약간의 수비 임무가 있다(EA 원문 「minor defensive duties」)."
   },
   {
    "description": "When set to Wide, the Target Forward will drift to the edges of the box in a search for space to make an impact.",
@@ -746,7 +880,9 @@
    "movement_kr": "박스 가장자리로 흘러 공간을 찾는다. 커널: **양 바깥열 .22씩·중앙 .11**, 깊이 0.00 — 최전방인데 좌우로 벌어진다. 중앙 지원(−).",
    "negative": "[\"Support Centrally\"]",
    "plus": "[\"Physical\", \"Wide Support\"]",
-   "role_id": "st_target"
+   "role_id": "st_target",
+   "scene_attack_kr": "박스 가장자리(1줄 바깥 .6·하프스페이스 .6, 중앙 .3)로 흘러가 풀백과 몸싸움하며 공간을 찾는다.",
+   "scene_defend_kr": "중앙 지원이 희생된다 — 비는 중앙은 2선이 침투해 메워야 한다."
   },
   {
    "description": "When given an Attack focus, the Inside Forward will focus on cutting inside and making attacking runs.",
@@ -757,7 +893,9 @@
    "movement_kr": "안으로 파고들어 공격 침투. 커널: **하프스페이스 col1 .57·중앙 .32, 터치라인 .11** — 측면을 비우고 안으로. 수비 지원(−). 같은 쪽 풀백이 올라갈 공간을 만드는 조합(docs/20 ⑨).",
    "negative": "[\"Defence Support\"]",
    "plus": "[\"Attacking\", \"Support Centrally\"]",
-   "role_id": "w_insidefwd"
+   "role_id": "w_insidefwd",
+   "scene_attack_kr": "하프스페이스 최전방(1줄 2열 X)에서 안으로 파고들어 침투한다. 터치라인은 2줄 .3뿐 — 폭은 뒤 풀백 몫이다.",
+   "scene_defend_kr": "수비 지원이 희생된다 — 3줄 이하 0."
   },
   {
    "description": "When Balanced, the Inside Forward will offer minimal defensive support, and sometimes hold off making runs in behind to instead offer passing options.",
@@ -768,7 +906,9 @@
    "movement_kr": "최소 수비 지원, 때로 침투 대신 패스 옵션. 커널: col1 .56, 터치라인 .26, 깊이 .91 — Attack보다 반 행 아래·약간 바깥. 체력 소모(−).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Attack Support\", \"Pass Option\"]",
-   "role_id": "w_insidefwd"
+   "role_id": "w_insidefwd",
+   "scene_attack_kr": "한 줄 아래 하프스페이스(2줄 2열 X)에서 발밑으로 받는다 — EA 원문 「hold off making runs in behind to instead offer passing options」(배후 침투를 미루고 패스 옵션이 된다).",
+   "scene_defend_kr": "최소한의 수비 지원(3줄 .3·.3) — 대가는 체력."
   },
   {
    "description": "When set to Roaming, the inside Forward is allowed to freely explore and exploit any defensive gaps they can find.",
@@ -779,7 +919,9 @@
    "movement_kr": "수비 틈을 자유롭게 탐색. 커널: col1 .47·col2 .26, 깊이 .74. 자리 이탈(−).",
    "negative": "[\"Out of Position\"]",
    "plus": "[\"Movement\", \"Attack Support\"]",
-   "role_id": "w_insidefwd"
+   "role_id": "w_insidefwd",
+   "scene_attack_kr": "하프스페이스(2줄 X) 중심으로 1줄 세 칸(.3·.6·.3)·중앙(2줄 .6)까지 빈 곳을 찾아 자유롭게 움직인다.",
+   "scene_defend_kr": "자리 이탈이 대가다 — 3줄은 터치라인 .3뿐."
   },
   {
    "description": "With an Attack focus, the wide Playmaker will move forward, and receive passes out wide.",
@@ -790,7 +932,9 @@
    "movement_kr": "앞으로 나가 **바깥에서** 패스를 받는다. 커널: 터치라인 .68·col1 .32, 깊이 .54. ⚠️ 「플레이메이커」지만 폭을 점유한다 — 같은 쪽 풀백 앞을 비우지 않는다. 수비 지원(−).",
    "negative": "[\"Defence Support\"]",
    "plus": "[\"Creative\", \"Attack Support\"]",
-   "role_id": "w_wideplm"
+   "role_id": "w_wideplm",
+   "scene_attack_kr": "터치라인 최전방(1줄 X·.6)으로 올라가 넓게 받는다. 받은 뒤 하프스페이스(2줄 .6·.3)로 들어오며 만든다(강화: 창조성).",
+   "scene_defend_kr": "수비 지원이 희생된다 — 3줄 .3까지만."
   },
   {
    "description": "When set to Build-Up, the Wide Playmaker will come short to offer a passing option, while balancing their approach to support the defence if needed.",
@@ -801,7 +945,9 @@
    "movement_kr": "짧게 내려와 패스 옵션, 필요시 수비 지원. 커널: 터치라인 .68, 깊이 1.00 — Attack보다 반 행 아래. 중앙 지원(−).",
    "negative": "[\"Support Centrally\"]",
    "plus": "[\"Creative\", \"Build-Up Support\"]",
-   "role_id": "w_wideplm"
+   "role_id": "w_wideplm",
+   "scene_attack_kr": "한 줄 내려와(2줄 X·.6) 짧게 받아 주는 선택지가 된다(EA 원문 「come short to offer a passing option」).",
+   "scene_defend_kr": "필요하면 수비도 돕는다(3줄 .6) — 대가는 중앙 지원."
   },
   {
    "description": "When set to Attack, the Winger will focus on getting forward, and prefers to make runs behind the defence instead of receiving the ball to feet.",
@@ -812,7 +958,9 @@
    "movement_kr": "전진에 집중, 발밑보다 **배후 침투**를 선호. 커널: 터치라인 .88, 깊이 .62, 자기진영 0. 수비(−). ⚠️ 뒤 풀백은 wingback/Balanced(docs/20 ⑨).",
    "negative": "[\"Defending\"]",
    "plus": "[\"Wide Support\", \"Supports Attacks\"]",
-   "role_id": "w_winger"
+   "role_id": "w_winger",
+   "scene_attack_kr": "터치라인(1·2줄 1열 X)에 붙어 있다가 풀백 뒤로 뛴다 — EA 원문 「prefers to make runs behind the defence instead of receiving the ball to feet」(발밑보다 배후 침투를 선호).",
+   "scene_defend_kr": "수비가 희생된다 — 3줄 .3까지만 내려온다."
   },
   {
    "description": "When Balanced, the Winger will offer both defensive and attacking support. They mix making runs behind and offering themselves as a passing option.",
@@ -823,7 +971,9 @@
    "movement_kr": "공수 지원을 섞고, 침투와 패스 옵션을 번갈아. 커널: **터치라인 1.00**, 자기진영 .12, 깊이 1.24. 체력 소모(−). ⚠️ 자기진영 .12는 두 줄 4 뱅크를 만들지 못한다(obs#125).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Wide Support\", \"Pass Option\"]",
-   "role_id": "w_winger"
+   "role_id": "w_winger",
+   "scene_attack_kr": "터치라인(2줄 X)에서 뒤로 뛰기와 발밑으로 받기를 섞는다(강화: 패스 옵션). 1줄은 .6으로 Attack보다 덜 올라간다.",
+   "scene_defend_kr": "3줄 .6·4줄 .3까지 내려와 풀백을 돕는다 — 대가는 체력."
   },
   {
    "description": "The Versatile Winger decides when it's the right opportunity to attack or defend, and they can swap sides with another Versatile Winger between phases of play.",
@@ -834,7 +984,9 @@
    "movement_kr": "공격·수비 시점을 스스로 고르고, 다른 Versatile 윙어와 **사이드를 바꿀 수 있다**. 커널: 터치라인 .83, 깊이 .89. 체력 소모(−). W 슬롯 전용(WM에는 없음).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Supports Play\", \"Wide Support\"]",
-   "role_id": "w_winger"
+   "role_id": "w_winger",
+   "scene_attack_kr": "Balanced와 같은 모양에 1줄이 X로 더 올라간다(1줄 X·.6). 다른 Versatile 윙어와 **사이드를 바꿀 수 있다**(EA 원문).",
+   "scene_defend_kr": "공격·수비 시점을 스스로 고른다(3줄 .6·4줄 .3) — 대가는 체력. W 슬롯 전용(WM에는 없음)."
   },
   {
    "description": "When given an Attack focus, the Inside Forward will focus on cutting inside and making attacking runs.",
@@ -845,7 +997,9 @@
    "movement_kr": "안으로 파고들어 침투. 커널: col1 .52·중앙 .29·**터치라인 .19**, 전방 .90, **10번 포켓 .81**(obs#444 계산) — 측면을 비우는 대신 CAM 칸을 다툰다. 수비 지원(−).",
    "negative": "[\"Defence Support\"]",
    "plus": "[\"Attacking\", \"Support Centrally\"]",
-   "role_id": "wm_insidefwd"
+   "role_id": "wm_insidefwd",
+   "scene_attack_kr": "하프스페이스 최전방(1줄 2열 X)으로 파고들어 침투한다 — W 버전과 같은 모양.",
+   "scene_defend_kr": "수비 지원은 희생되지만 3줄 터치라인 .3까지는 내려온다(W 버전은 0)."
   },
   {
    "description": "When Balanced, the Inside Forward will offer minimal defensive support, and sometimes hold off making runs in behind to instead offer passing options.",
@@ -856,7 +1010,9 @@
    "movement_kr": "최소 수비 지원, 때로 패스 옵션. 커널: col1 .47, 터치라인 .26, 포켓 .74, 깊이 .91. 체력 소모(−).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Attack Support\", \"Pass Option\"]",
-   "role_id": "wm_insidefwd"
+   "role_id": "wm_insidefwd",
+   "scene_attack_kr": "하프스페이스 2줄(X)에서 패스 옵션이 된다. 중앙(2줄 .6)까지 들어온다.",
+   "scene_defend_kr": "3줄 터치라인 .6까지 내려온다 — 대가는 체력."
   },
   {
    "description": "When in Build-Up, the Wide Midfielder will position themselves a little higher up the pitch to support plays, while providing defensive support if needed.",
@@ -867,7 +1023,9 @@
    "movement_kr": "조금 높이 서서 플레이 지원, 필요시 수비 지원. 커널: 중원 .50·전방 .50, 터치라인 .77, **자기진영 0**. 자리 이탈(−). 음바예 RM 처방(.878).",
    "negative": "[\"Out of Position\"]",
    "plus": "[\"Build-Up Support\", \"Wide Support\"]",
-   "role_id": "wm_widemid"
+   "role_id": "wm_widemid",
+   "scene_attack_kr": "조금 높게(2·3줄 터치라인 X·하프스페이스 .3) 서서 공격을 돕는다.",
+   "scene_defend_kr": "필요하면 수비 지원 — 대가는 자리 이탈."
   },
   {
    "description": "When asked to Defend, the Wide Midfielder will drop into the defensive midfield line and protect the defence.",
@@ -878,7 +1036,9 @@
    "movement_kr": "수비형 미드필더 라인으로 내려와 수비를 보호(「윙백처럼 복귀」). 커널: **자기진영 .50**·중원 .50·전방 0, 터치라인 .77 — 두 줄 4 뱅크를 만드는 조합(obs#39 사다리 최상). 공격 지원(−).",
    "negative": "[\"Supports Attacks\"]",
    "plus": "[\"Wide Support\", \"Stays Back\"]",
-   "role_id": "wm_widemid"
+   "role_id": "wm_widemid",
+   "scene_attack_kr": "3·4줄(X·X)에 머문다 — 공격에는 거의 안 올라간다(희생: 공격 지원).",
+   "scene_defend_kr": "수비형 미드필드 라인까지 내려와(EA 원문 「drop into the defensive midfield line」) 수비를 보호한다."
   },
   {
    "description": "When in Support focus, the Wide Midfielder will stay wide to support possession and provide defensive support when needed.",
@@ -889,7 +1049,9 @@
    "movement_kr": "「넓게 서서」 점유 지원, 필요시 수비 지원. 커널: 자기진영 .24·중원 .52·전방 .24, 터치라인 .88 — 에메리 뱅크 칸(RM) 기본형. 기동력 부족(−). ⚠️ 폭을 점유하므로 같은 쪽 풀백 전진 공간은 좁다(docs/20 ⑨).",
    "negative": "[\"Lacks Mobility\"]",
    "plus": "[\"Wide Support\", \"Supports Play\"]",
-   "role_id": "wm_widemid"
+   "role_id": "wm_widemid",
+   "scene_attack_kr": "터치라인 3줄(X)에 넓게 서서 점유를 돕는다(2줄 .6).",
+   "scene_defend_kr": "4줄 .6까지 내려와 수비를 돕는다 — 대가는 기동성 부족."
   },
   {
    "description": "With an Attack focus, the Wide Playmaker will move forward, and receive passes out wide.",
@@ -900,7 +1062,9 @@
    "movement_kr": "앞으로 나가 바깥에서 패스를 받는다. 커널: **터치라인 .50·하프스페이스 .50**, 전방 .67, 자기진영 0, 포켓 .33 — WM 조합 중 유일하게 반은 안쪽. 수비 지원(−). 맥긴 실측 argmax(.761)이나 뱅크 0.00.",
    "negative": "[\"Defence Support\"]",
    "plus": "[\"Creative\", \"Attack Support\"]",
-   "role_id": "wm_wideplm"
+   "role_id": "wm_wideplm",
+   "scene_attack_kr": "2줄 터치라인·하프스페이스(.6·.6)로 올라가 넓게 받는다. 1줄에는 가지 않는다(0) — W 버전보다 한 줄 낮다.",
+   "scene_defend_kr": "수비 지원이 희생된다 — 3줄 .3·.3까지."
   },
   {
    "description": "When set to Build-Up, the Wide Playmaker will come short to offer a passing option, while balancing their approach to support the defence if needed.",
@@ -911,7 +1075,9 @@
    "movement_kr": "짧게 내려와 패스 옵션. 커널: 터치라인/하프스페이스 .50/.50, 중원 .67·전방 .33, 자기진영 0. 중앙 지원(−). 정본 LM 후보(부엔디아).",
    "negative": "[\"Support Centrally\"]",
    "plus": "[\"Creative\", \"Build-Up Support\"]",
-   "role_id": "wm_wideplm"
+   "role_id": "wm_wideplm",
+   "scene_attack_kr": "3줄(.6·.6)로 내려와 짧게 받아 주는 선택지가 된다.",
+   "scene_defend_kr": "필요하면 수비도 돕는다 — 대가는 중앙 지원."
   },
   {
    "description": "When set to Attack, the Winger will focus on getting forward, and prefers to make runs behind the defence instead of receiving the ball to feet.",
@@ -922,7 +1088,9 @@
    "movement_kr": "전진 집중, 배후 침투 선호. 커널: **터치라인 1.00**, 전방 .77, 자기진영 0, 깊이 .85. 수비(−). 가르나초 처방(.771). ⚠️ 뒤 풀백은 wingback/Balanced, 전진 풀백은 반대 사이드(C6·docs/20 ⑨).",
    "negative": "[\"Defending\"]",
    "plus": "[\"Wide Support\", \"Supports Attacks\"]",
-   "role_id": "wm_winger"
+   "role_id": "wm_winger",
+   "scene_attack_kr": "터치라인(1·2줄 X)으로 올라가 풀백 뒤로 뛴다 — W 윙어 Attack과 거의 같은 높이.",
+   "scene_defend_kr": "수비가 희생된다 — 3줄 .6까지는 내려온다(W 윙어 Attack보다 한 칸 진함)."
   },
   {
    "description": "When Balanced, the Winger will offer both defensive and attacking support. They mix making runs in behind and offering themselves as a passing option.",
@@ -933,10 +1101,86 @@
    "movement_kr": "공수 지원 혼합, 침투와 패스 옵션 교대. 커널: 터치라인 1.00, 자기진영 .12·중원 .38·전방 .50. 체력 소모(−). ⚠️ 자기진영 .12로는 뱅크(0.60)를 못 만든다 — 「Balanced면 복귀한다」는 오독(obs#125).",
    "negative": "[\"Stamina Usage\"]",
    "plus": "[\"Wide Support\", \"Pass Option\"]",
-   "role_id": "wm_winger"
+   "role_id": "wm_winger",
+   "scene_attack_kr": "터치라인 2줄(X)에서 침투와 패스 옵션을 섞는다. 1줄은 .3.",
+   "scene_defend_kr": "3줄 X·4줄 .3까지 내려와 4-4 두 줄을 만든다 — 대가는 체력."
   }
  ],
  "game_version": "FC26",
+ "role_groups": [
+  {
+   "compare_kr": "네 역할 모두 **2줄(공격수 바로 뒤)**이 중심이다. 갈리는 것은 ⑴ **좌우 폭** — 클래식 10번 Attack(2~4열)·섀도 스트라이커(중앙) 좁음 ↔ 하프 윙어(1~5열 전부) 넓음 ⑵ **위아래** — 섀도 스트라이커는 1줄까지 올라가고(.6·X·.6), 플레이메이커 Build-Up은 3·4줄까지 내려온다. 하프 윙어 Attack·Roaming은 1줄 양 끝(.6·X)까지 나가 사실상 측면 공격수다.",
+   "confidence": "해석(D) — EA 원문은 A(FC26 카탈로그 · FC27 동일 여부 미확정), 커널은 fut.gg 활동 지도를 5×5·0.1 단위로 옮긴 값. 장면은 둘을 읽은 해석이며 인게임 통제 실측 없음.",
+   "position_type": "CAM",
+   "scene_attack_kr": "우리 CM이 하프라인에서 앞을 보고 공을 잡았다.",
+   "scene_defend_kr": "상대 CB가 자기 진영에서 공을 잡았다.",
+   "source": "해석: EA 역할 원문(game_role_focus.description · fut.gg /api/fut/roles/ 경유) + 강화/희생 태그 + 우리 5×5 커널(kernel25) — 2026-10-09 사용자 지시 「각 역할을 숫자 히트맵·장면 예시로 다시 설명해 게임 시스템에 추가」"
+  },
+  {
+   "compare_kr": "**라인에서 얼마나 튀어나가나**가 핵심이다. 센터백 Defend(5줄만) < 센터백 Balanced·볼 플레잉 Defend(4줄 .3~.6) < 스토퍼 Balanced(4줄 .6·.6·.6) < 볼 플레잉 Aggressive·스토퍼 Aggressive(3줄까지). 볼 플레잉 Build-Up은 공을 가지면 4줄로 올라가 **수비형 미드필더처럼** 선다. 와이드 백만 **가로**로 넓다(5줄 .6·.3·X·.3·.6 — 풀백 뒤를 커버).",
+   "confidence": "해석(D) — EA 원문은 A(FC26 카탈로그 · FC27 동일 여부 미확정), 커널은 fut.gg 활동 지도를 5×5·0.1 단위로 옮긴 값. 장면은 둘을 읽은 해석이며 인게임 통제 실측 없음.",
+   "position_type": "CB",
+   "scene_attack_kr": "우리 GK가 골킥을 짧게 시작한다(빌드업 시작).",
+   "scene_defend_kr": "상대 공격수가 우리 수비 라인 바로 앞에서 등지고 공을 받는다.",
+   "source": "해석: EA 역할 원문(game_role_focus.description · fut.gg /api/fut/roles/ 경유) + 강화/희생 태그 + 우리 5×5 커널(kernel25) — 2026-10-09 사용자 지시 「각 역할을 숫자 히트맵·장면 예시로 다시 설명해 게임 시스템에 추가」"
+  },
+  {
+   "compare_kr": "**세로로 얼마나 넓게 뛰나**가 핵심이다. 박스 투 박스 = 1~5줄 전부(중앙 열) · 플레이메이커 = 2·3줄 · 딥라잉 = 3·4줄 · 홀딩 = 3·4줄에서 앞으로 안 나감. 하프 윙어만 **가로**로 넓다(2·3줄 1~5열). Ball-Winning 포커스는 모양을 크게 바꾸지 않고 **압박·차단 행동**을 더한다(박스 투 박스 Ball-Winning은 Balanced보다 2·4줄 양옆 .3이 더 붙는 정도).",
+   "confidence": "해석(D) — EA 원문은 A(FC26 카탈로그 · FC27 동일 여부 미확정), 커널은 fut.gg 활동 지도를 5×5·0.1 단위로 옮긴 값. 장면은 둘을 읽은 해석이며 인게임 통제 실측 없음.",
+   "position_type": "CM",
+   "scene_attack_kr": "우리 DM이 자기 진영에서 앞을 보고 공을 잡았다.",
+   "scene_defend_kr": "상대 CM이 중앙에서 앞을 보고 공을 잡았다.",
+   "source": "해석: EA 역할 원문(game_role_focus.description · fut.gg /api/fut/roles/ 경유) + 강화/희생 태그 + 우리 5×5 커널(kernel25) — 2026-10-09 사용자 지시 「각 역할을 숫자 히트맵·장면 예시로 다시 설명해 게임 시스템에 추가」"
+  },
+  {
+   "compare_kr": "**얼마나 올라가나**로 줄 세우면: 박스 크래셔(1줄 .3까지) > 딥라잉 Build-Up·Roaming(2줄) > 딥라잉 Defend·홀딩 Defend(3줄 .3) > 홀딩 Ball-Winning(4줄 중심) > 센터 하프(4·5줄 — 수비 라인 안으로). **가로**로 넓은 것은 홀딩 Roaming(4줄 .6·X·X·X·.6)과 와이드 하프(4줄 양 끝 .6). ⚠️ 센터 하프 Defend는 볼 플레잉 키퍼 Build-Up과 히트맵이 같다 — 5×5 해상도의 한계다(실제로 같은 자리라는 뜻이 아니다).",
+   "confidence": "해석(D) — EA 원문은 A(FC26 카탈로그 · FC27 동일 여부 미확정), 커널은 fut.gg 활동 지도를 5×5·0.1 단위로 옮긴 값. 장면은 둘을 읽은 해석이며 인게임 통제 실측 없음.",
+   "position_type": "DM",
+   "scene_attack_kr": "우리 CB가 자기 진영에서 공을 잡고 빌드업을 시작한다.",
+   "scene_defend_kr": "상대 10번이 우리 미드필드와 수비 라인 사이에서 공을 받는다.",
+   "source": "해석: EA 역할 원문(game_role_focus.description · fut.gg /api/fut/roles/ 경유) + 강화/희생 태그 + 우리 5×5 커널(kernel25) — 2026-10-09 사용자 지시 「각 역할을 숫자 히트맵·장면 예시로 다시 설명해 게임 시스템에 추가」"
+  },
+  {
+   "compare_kr": "두 갈래다. **바깥으로 올라가는 쪽**: 공격형 윙백(1줄 X까지) > 윙백(3·4줄 X) > 풀백 Balanced(4줄 X) · **안으로 들어가는 쪽**: 폴스백(3·4줄 2~3열 — 미드필더 자리) · 인버티드 윙백(2줄 2열 X — 중앙 공격 자리). 풀백 Defend는 공을 가지면 5줄에서 안쪽(1·2열 X·X)으로 좁혀 **백3**를 만든다. ⚠️ 히트맵은 **왼쪽 측면 기준**이다.",
+   "confidence": "해석(D) — EA 원문은 A(FC26 카탈로그 · FC27 동일 여부 미확정), 커널은 fut.gg 활동 지도를 5×5·0.1 단위로 옮긴 값. 장면은 둘을 읽은 해석이며 인게임 통제 실측 없음.",
+   "position_type": "FB",
+   "scene_attack_kr": "우리 CM이 중앙에서 공을 잡고 전진한다(이 선수 쪽 측면이 비어 있다).",
+   "scene_defend_kr": "상대가 우리 쪽 측면으로 역습한다.",
+   "source": "해석: EA 역할 원문(game_role_focus.description · fut.gg /api/fut/roles/ 경유) + 강화/희생 태그 + 우리 5×5 커널(kernel25) — 2026-10-09 사용자 지시 「각 역할을 숫자 히트맵·장면 예시로 다시 설명해 게임 시스템에 추가」"
+  },
+  {
+   "compare_kr": "**박스를 얼마나 벗어나나**: 골키퍼 Defend(5줄만) < 골키퍼 Balanced(4줄 .3) < 스위퍼 Balanced(4줄 .3·.6·.3) < 볼 플레잉 Build-Up·스위퍼 Build-Up(4줄 X). 스위퍼 키퍼 Build-Up은 5줄 2~4열이 전부 X로 **좌우로도** 가장 넓다. ⚠️ 5×5 칸 하나가 넓어 GK 움직임은 거칠게만 보인다.",
+   "confidence": "해석(D) — EA 원문은 A(FC26 카탈로그 · FC27 동일 여부 미확정), 커널은 fut.gg 활동 지도를 5×5·0.1 단위로 옮긴 값. 장면은 둘을 읽은 해석이며 인게임 통제 실측 없음.",
+   "position_type": "GK",
+   "scene_attack_kr": "우리 CB가 압박을 받으며 뒤로 돌릴 곳을 찾는다.",
+   "scene_defend_kr": "상대가 우리 수비 뒷공간으로 롱볼을 찼다.",
+   "source": "해석: EA 역할 원문(game_role_focus.description · fut.gg /api/fut/roles/ 경유) + 강화/희생 태그 + 우리 5×5 커널(kernel25) — 2026-10-09 사용자 지시 「각 역할을 숫자 히트맵·장면 예시로 다시 설명해 게임 시스템에 추가」"
+  },
+  {
+   "compare_kr": "**위치(히트맵)**: 최전방 고정은 포처 Attack·타깃 Attack, 측면 이탈은 어드밴스드 Versatile·타깃 Wide, 깊은 출발은 어드밴스드 Support, 하강은 폴스 나인·타깃 Balanced. **행동(히트맵 밖)**: 침투는 포처·폴스 나인 Attack, 압박은 어드밴스드 Support·포처 Support, 홀드업은 타깃 Balanced, 연결·창조는 폴스 나인. ⭐ 포처는 포커스를 바꿔도 위치가 최전방 그대로이고 **수비 행동**만 바뀐다 — 어드밴스드 포워드는 포커스가 **출발 위치**를 바꾼다.",
+   "confidence": "해석(D) — EA 원문은 A(FC26 카탈로그 · FC27 동일 여부 미확정), 커널은 fut.gg 활동 지도를 5×5·0.1 단위로 옮긴 값. 장면은 둘을 읽은 해석이며 인게임 통제 실측 없음.",
+   "position_type": "ST",
+   "scene_attack_kr": "우리 CDM이 하프라인에서 앞을 보고 공을 잡았다.",
+   "scene_defend_kr": "상대 CB가 자기 진영에서 공을 잡았다.",
+   "source": "해석: EA 역할 원문(game_role_focus.description · fut.gg /api/fut/roles/ 경유) + 강화/희생 태그 + 우리 5×5 커널(kernel25) — 2026-10-09 사용자 지시 「각 역할을 숫자 히트맵·장면 예시로 다시 설명해 게임 시스템에 추가」"
+  },
+  {
+   "compare_kr": "**어디서 공을 받나**가 세 역할을 가른다. 윙어 = 터치라인(1열)에서 뒤로 뛴다 · 인사이드 포워드 = 하프스페이스(2열)에서 안으로 파고든다 · 와이드 플레이메이커 = 터치라인에서 발밑으로 받아 만든다. 윙어는 1열(터치라인)에 X가 몰려 있고, 인사이드 포워드 Attack은 1열이 2줄 .3뿐이다. ⚠️ 히트맵은 **왼쪽 측면 기준**이다 — 오른쪽 W는 좌우를 뒤집어 읽는다.",
+   "confidence": "해석(D) — EA 원문은 A(FC26 카탈로그 · FC27 동일 여부 미확정), 커널은 fut.gg 활동 지도를 5×5·0.1 단위로 옮긴 값. 장면은 둘을 읽은 해석이며 인게임 통제 실측 없음.",
+   "position_type": "W",
+   "scene_attack_kr": "우리 CM이 중앙에서 앞을 보고 공을 잡았다(이 선수 쪽 측면에는 상대 풀백이 서 있다).",
+   "scene_defend_kr": "상대 풀백이 우리 쪽 측면에서 공을 잡았다.",
+   "source": "해석: EA 역할 원문(game_role_focus.description · fut.gg /api/fut/roles/ 경유) + 강화/희생 태그 + 우리 5×5 커널(kernel25) — 2026-10-09 사용자 지시 「각 역할을 숫자 히트맵·장면 예시로 다시 설명해 게임 시스템에 추가」"
+  },
+  {
+   "compare_kr": "W 슬롯과 같은 이름의 역할이 있지만 **한 줄 아래에서 출발**한다(미드필드 라인). 차이를 가르는 것은 **수비 때 몇 줄까지 내려오나**다 — 와이드 미드필더 Defend는 3·4줄(수비형 미드 라인)까지, 윙어 Attack은 3줄까지(.6), 인사이드 포워드 Attack은 1~3줄. 와이드 미드필더만 공격 포커스가 없다(Build-Up·Support·Defend). ⚠️ 히트맵은 **왼쪽 측면 기준**이다.",
+   "confidence": "해석(D) — EA 원문은 A(FC26 카탈로그 · FC27 동일 여부 미확정), 커널은 fut.gg 활동 지도를 5×5·0.1 단위로 옮긴 값. 장면은 둘을 읽은 해석이며 인게임 통제 실측 없음.",
+   "position_type": "WM",
+   "scene_attack_kr": "우리 CM이 중앙에서 앞을 보고 공을 잡았다(이 선수 쪽 측면에는 상대 풀백이 서 있다).",
+   "scene_defend_kr": "상대 풀백이 우리 쪽 측면에서 공을 잡았다.",
+   "source": "해석: EA 역할 원문(game_role_focus.description · fut.gg /api/fut/roles/ 경유) + 강화/희생 태그 + 우리 5×5 커널(kernel25) — 2026-10-09 사용자 지시 「각 역할을 숫자 히트맵·장면 예시로 다시 설명해 게임 시스템에 추가」"
+  }
+ ],
  "role_key_attrs": [
   {
    "attr": "시야",
@@ -2401,259 +2645,333 @@
  ],
  "roles": [
   {
+   "focus_axis_kr": "포커스가 **좌우 폭**을 바꾼다 — Attack 중앙 고정 · Wide 측면까지 · Versatile 스스로 판단.",
    "focuses": "[\"Versatile\", \"Wide\", \"Attack\"]",
+   "identity_kr": "공격수 뒤 포켓에서 경기를 만드는 10번.",
    "name": "클래식 10번",
    "name_en": null,
    "position_type": "CAM",
    "role_id": "cam_classic10"
   },
   {
+   "focus_axis_kr": "포커스가 **얼마나 측면으로 나가나**를 바꾼다 — Roaming 양 끝 1줄 X · Attack 1줄 .6 · Balanced 2·3줄.",
    "focuses": "[\"Roaming\", \"Attack\", \"Balanced\"]",
+   "identity_kr": "CAM 자리에서 측면까지 쓰는 하이브리드.",
    "name": "하프 윙어",
    "name_en": null,
    "position_type": "CAM",
    "role_id": "cam_halfwinger"
   },
   {
+   "focus_axis_kr": "포커스가 **내려오는 깊이**를 바꾼다 — Balanced 2·3줄 · Build-Up 2~4줄 · Roaming 2줄 중심 사방.",
    "focuses": "[\"Balanced\", \"Build-Up\", \"Roaming\"]",
+   "identity_kr": "공을 받으러 다니며 공격을 조율하는 10번.",
    "name": "플레이메이커",
    "name_en": null,
    "position_type": "CAM",
    "role_id": "cam_playmaker"
   },
   {
+   "focus_axis_kr": "포커스가 Attack 하나뿐이다.",
    "focuses": "[\"Attack\"]",
+   "identity_kr": "스트라이커 뒤 공간으로 늦게 뛰어드는 두 번째 공격수.",
    "name": "섀도 스트라이커",
    "name_en": null,
    "position_type": "CAM",
    "role_id": "cam_shadow"
   },
   {
+   "focus_axis_kr": "포커스가 **올라가는 이유**를 바꾼다 — Defend 지원 · Aggressive 차단 · Build-Up 공을 가질 때 미드필더로.",
    "focuses": "[\"Aggressive\", \"Build-Up\", \"Defend\"]",
+   "identity_kr": "공을 몰고 나가 빌드업을 여는 센터백.",
    "name": "볼 플레잉 센터백",
    "name_en": null,
    "position_type": "CB",
    "role_id": "cb_bpd"
   },
   {
+   "focus_axis_kr": "포커스가 **튀어나가나**를 바꾼다 — Defend 안 나감 · Balanced 필요할 때.",
    "focuses": "[\"Balanced\", \"Defend\"]",
+   "identity_kr": "라인을 지키는 전통적 센터백.",
    "name": "센터백",
    "name_en": null,
    "position_type": "CB",
    "role_id": "cb_defender"
   },
   {
+   "focus_axis_kr": "포커스가 **얼마나 멀리 튀어나가나**를 바꾼다 — Balanced 4줄 · Aggressive 3줄까지.",
    "focuses": "[\"Aggressive\", \"Balanced\"]",
+   "identity_kr": "공격수에게 튀어나가 끊는 센터백.",
    "name": "스토퍼",
    "name_en": null,
    "position_type": "CB",
    "role_id": "cb_stopper"
   },
   {
+   "focus_axis_kr": "포커스가 **측면으로 얼마나 나가나**를 바꾼다 — Defend 라인 · Aggressive 4줄 · Support 3줄까지.",
    "focuses": "[\"Support\", \"Aggressive\", \"Defend\"]",
+   "identity_kr": "풀백 뒤를 커버하며 측면까지 넓게 막는 센터백(백3의 바깥).",
    "name": "와이드 백",
    "name_en": null,
    "position_type": "CB",
    "role_id": "cb_wideback"
   },
   {
+   "focus_axis_kr": "포커스가 **볼 탈취를 더하나**를 바꾼다 — 모양은 거의 같다.",
    "focuses": "[\"Ball-Winning\", \"Balanced\"]",
+   "identity_kr": "박스에서 박스까지 세로로 다 뛰는 미드필더.",
    "name": "박스 투 박스",
    "name_en": null,
    "position_type": "CM",
    "role_id": "cm_b2b"
   },
   {
+   "focus_axis_kr": "포커스가 **올라가나**를 바꾼다 — Build-Up 2줄까지 · Defend 3·4줄에 머묾.",
    "focuses": "[\"Build-Up\", \"Defend\"]",
+   "identity_kr": "깊은 곳에서 공을 뿌리는 중앙 미드필더.",
    "name": "딥라잉 플레이메이커",
    "name_en": null,
    "position_type": "CM",
    "role_id": "cm_dlp"
   },
   {
+   "focus_axis_kr": "포커스가 **공격·수비 비중**을 바꾼다 — Attack 1줄까지 · Balanced 4줄까지 · Support 2~3줄 중심.",
    "focuses": "[\"Support\", \"Balanced\", \"Attack\"]",
+   "identity_kr": "중앙 미드필더 자리에서 측면까지 넓게 쓰는 하이브리드.",
    "name": "하프 윙어",
    "name_en": null,
    "position_type": "CM",
    "role_id": "cm_halfwinger"
   },
   {
+   "focus_axis_kr": "포커스가 **차단하러 나가나, 자리를 지키나**를 바꾼다.",
    "focuses": "[\"Ball-Winning\", \"Defend\"]",
+   "identity_kr": "앞으로 나가지 않고 수비 라인 앞을 지키는 미드필더.",
    "name": "홀딩",
    "name_en": null,
    "position_type": "CM",
    "role_id": "cm_holding"
   },
   {
+   "focus_axis_kr": "포커스가 **폭**을 바꾼다 — Attack 중앙 · Roaming 2·3줄 다섯 칸.",
    "focuses": "[\"Roaming\", \"Attack\"]",
+   "identity_kr": "앞쪽에서 공격을 조율하는 중앙 미드필더.",
    "name": "플레이메이커",
    "name_en": null,
    "position_type": "CM",
    "role_id": "cm_playmaker"
   },
   {
+   "focus_axis_kr": "포커스가 Balanced 하나뿐이다.",
    "focuses": "[\"Balanced\"]",
+   "identity_kr": "수비형 미드필더 자리에서 박스까지 침투하는 미드필더.",
    "name": "박스 크래셔",
    "name_en": null,
    "position_type": "DM",
    "role_id": "dm_boxcrasher"
   },
   {
+   "focus_axis_kr": "포커스가 Defend 하나뿐이다.",
    "focuses": "[\"Defend\"]",
+   "identity_kr": "공을 가지면 수비 라인 안으로 내려가는 수비형 미드필더.",
    "name": "센터 하프",
    "name_en": null,
    "position_type": "DM",
    "role_id": "dm_centrehalf"
   },
   {
+   "focus_axis_kr": "포커스가 **올라가나, 넓게 가나**를 바꾼다 — Build-Up 위로 · Roaming 옆으로 · Defend 머묾.",
    "focuses": "[\"Build-Up\", \"Roaming\", \"Defend\"]",
+   "identity_kr": "수비형 미드필더 자리에서 공을 뿌리는 플레이메이커.",
    "name": "딥라잉 플레이메이커",
    "name_en": null,
    "position_type": "DM",
    "role_id": "dm_dlp"
   },
   {
+   "focus_axis_kr": "포커스가 **가로로 얼마나 넓게 막나**를 바꾼다 — Ball-Winning 중앙 · Roaming 4줄 다섯 칸.",
    "focuses": "[\"Ball-Winning\", \"Roaming\", \"Defend\"]",
+   "identity_kr": "수비 라인 바로 앞을 지키는 수비형 미드필더.",
    "name": "홀딩",
    "name_en": null,
    "position_type": "DM",
    "role_id": "dm_holding"
   },
   {
+   "focus_axis_kr": "포커스가 **측면에서 얼마나 높이 서나**를 바꾼다 — Build-Up 3·4줄 · Defend 4·5줄.",
    "focuses": "[\"Build-Up\", \"Defend\"]",
+   "identity_kr": "수비형 미드필더 자리에서 측면을 오가는 하이브리드.",
    "name": "와이드 하프",
    "name_en": null,
    "position_type": "DM",
    "role_id": "dm_widehalf"
   },
   {
+   "focus_axis_kr": "포커스가 **얼마나 높이 서나**를 바꾼다 — Attack 1줄 · Support 2줄.",
    "focuses": "[\"Attack\", \"Support\"]",
+   "identity_kr": "측면 공격수처럼 올라가는 윙백.",
    "name": "공격형 윙백",
    "name_en": null,
    "position_type": "FB",
    "role_id": "fb_att_wb"
   },
   {
+   "focus_axis_kr": "포커스가 **들어가는 높이**를 바꾼다 — Balanced 중앙 미드필더 · Defend 수비형 미드필더.",
    "focuses": "[\"Balanced\", \"Defend\"]",
+   "identity_kr": "공을 가지면 미드필더 자리로 들어가는 풀백.",
    "name": "폴스백",
    "name_en": null,
    "position_type": "FB",
    "role_id": "fb_falseback"
   },
   {
+   "focus_axis_kr": "포커스가 **공을 가졌을 때 어디로 가나**를 바꾼다 — Balanced 바깥 앞 · Defend 안쪽(백3) · Versatile 스스로.",
    "focuses": "[\"Versatile\", \"Balanced\", \"Defend\"]",
+   "identity_kr": "자리를 지키는 전통적 풀백.",
    "name": "풀백",
    "name_en": null,
    "position_type": "FB",
    "role_id": "fb_fullback"
   },
   {
+   "focus_axis_kr": "포커스가 **안에서 무엇이 되나**를 바꾼다 — Attack 섀도 스트라이커 · Build-Up 플레이메이커.",
    "focuses": "[\"Attack\", \"Build-Up\"]",
+   "identity_kr": "공을 가지면 중앙 공격 자리로 들어가는 풀백.",
    "name": "인버티드 윙백",
    "name_en": null,
    "position_type": "FB",
    "role_id": "fb_inverted"
   },
   {
+   "focus_axis_kr": "포커스가 **공격 시점의 조건**을 바꾼다 — Balanced 수비 때도 높이 남음 · Support 점유가 확보될 때만 올라감.",
    "focuses": "[\"Support\", \"Balanced\"]",
+   "identity_kr": "측면 전체를 오르내리는 윙백.",
    "name": "윙백",
    "name_en": null,
    "position_type": "FB",
    "role_id": "fb_wingback"
   },
   {
+   "focus_axis_kr": "포커스가 Build-Up 하나뿐이다.",
    "focuses": "[\"Build-Up\"]",
+   "identity_kr": "빌드업의 한 축이 되는 골키퍼.",
    "name": "볼 플레잉 키퍼",
    "name_en": null,
    "position_type": "GK",
    "role_id": "gk_ballplaying"
   },
   {
+   "focus_axis_kr": "포커스가 **박스를 나오나**를 바꾼다 — Defend 안 나옴 · Balanced 가끔.",
    "focuses": "[\"Balanced\", \"Defend\"]",
+   "identity_kr": "골문을 지키는 전통적 골키퍼.",
    "name": "골키퍼",
    "name_en": null,
    "position_type": "GK",
    "role_id": "gk_goalkeeper"
   },
   {
+   "focus_axis_kr": "포커스가 **얼마나 높이 서나**를 바꾼다 — Balanced 박스 근처 · Build-Up 더 높이.",
    "focuses": "[\"Build-Up\", \"Balanced\"]",
+   "identity_kr": "수비 뒷공간을 쓸어 담는 골키퍼.",
    "name": "스위퍼 키퍼",
    "name_en": null,
    "position_type": "GK",
    "role_id": "gk_sweeper"
   },
   {
+   "focus_axis_kr": "포커스가 **출발 위치**를 바꾼다 — Attack 중앙 · Versatile 측면 이탈 · Support 깊은 곳·하프스페이스.",
    "focuses": "[\"Support\", \"Attack\", \"Versatile\"]",
+   "identity_kr": "득점하면서 공도 받아 주는 공격수.",
    "name": "어드밴스드 포워드",
    "name_en": null,
    "position_type": "ST",
    "role_id": "st_advanced"
   },
   {
+   "focus_axis_kr": "포커스가 **내려온 뒤 다시 들어가나**를 바꾼다 — Attack 다시 침투 · Build-Up 내려온 채 조립.",
    "focuses": "[\"Attack\", \"Build-Up\"]",
+   "identity_kr": "내려와서 연결하는 공격수.",
    "name": "폴스 나인",
    "name_en": null,
    "position_type": "ST",
    "role_id": "st_false9"
   },
   {
+   "focus_axis_kr": "포커스를 바꿔도 위치는 최전방 그대로 — **수비 행동**만 바뀐다(Attack 압박 없음 · Support 압박 · Versatile 스스로 판단).",
    "focuses": "[\"Support\", \"Versatile\", \"Attack\"]",
+   "identity_kr": "최전방 라인을 떠나지 않는 공격수.",
    "name": "포처",
    "name_en": null,
    "position_type": "ST",
    "role_id": "st_poacher"
   },
   {
+   "focus_axis_kr": "포커스가 **기준점의 위치**를 바꾼다 — Attack 최전방 · Balanced 한 줄 아래 중앙 · Wide 박스 가장자리.",
    "focuses": "[\"Attack\", \"Balanced\", \"Wide\"]",
+   "identity_kr": "등지고 버티는 기준점.",
    "name": "타깃 포워드",
    "name_en": null,
    "position_type": "ST",
    "role_id": "st_target"
   },
   {
+   "focus_axis_kr": "포커스가 **뒤로 뛰나, 발밑으로 받나**를 바꾼다 — Attack 침투 · Balanced 패스 옵션 · Roaming 자유.",
    "focuses": "[\"Attack\", \"Balanced\", \"Roaming\"]",
+   "identity_kr": "하프스페이스에서 안으로 파고드는 측면 공격수.",
    "name": "인사이드 포워드",
    "name_en": null,
    "position_type": "W",
    "role_id": "w_insidefwd"
   },
   {
+   "focus_axis_kr": "포커스가 **받는 높이**를 바꾼다 — Attack 1줄 · Build-Up 2줄로 내려와서.",
    "focuses": "[\"Attack\", \"Build-Up\"]",
+   "identity_kr": "측면에서 발밑으로 받아 만드는 플레이메이커.",
    "name": "와이드 플레이메이커",
    "name_en": null,
    "position_type": "W",
    "role_id": "w_wideplm"
   },
   {
+   "focus_axis_kr": "포커스가 **얼마나 내려오나**를 바꾼다 — Attack 거의 안 내려옴 · Balanced·Versatile 3·4줄까지.",
    "focuses": "[\"Versatile\", \"Attack\", \"Balanced\"]",
+   "identity_kr": "터치라인을 타고 뒤로 뛰는 측면 공격수.",
    "name": "윙어",
    "name_en": null,
    "position_type": "W",
    "role_id": "w_winger"
   },
   {
+   "focus_axis_kr": "포커스가 **뒤로 뛰나, 발밑으로 받나**를 바꾼다(W 인사이드 포워드와 같은 축).",
    "focuses": "[\"Balanced\", \"Attack\"]",
+   "identity_kr": "미드필드 라인에서 출발해 하프스페이스로 파고드는 측면 공격수.",
    "name": "인사이드 포워드",
    "name_en": null,
    "position_type": "WM",
    "role_id": "wm_insidefwd"
   },
   {
+   "focus_axis_kr": "포커스가 **서는 높이**를 바꾼다 — Build-Up 2·3줄 · Support 2~4줄 · Defend 3·4줄.",
    "focuses": "[\"Defend\", \"Build-Up\", \"Support\"]",
+   "identity_kr": "측면을 지키며 공을 돌려 주는 미드필더 — 유일하게 공격 포커스가 없다.",
    "name": "와이드 미드필더",
    "name_en": null,
    "position_type": "WM",
    "role_id": "wm_widemid"
   },
   {
+   "focus_axis_kr": "포커스가 **받는 높이**를 바꾼다 — Attack 2줄 · Build-Up 3줄.",
    "focuses": "[\"Attack\", \"Build-Up\"]",
+   "identity_kr": "측면에서 발밑으로 받아 만드는 플레이메이커(미드필드 라인 출발).",
    "name": "와이드 플레이메이커",
    "name_en": null,
    "position_type": "WM",
    "role_id": "wm_wideplm"
   },
   {
+   "focus_axis_kr": "포커스가 **얼마나 내려오나**를 바꾼다 — Attack 3줄 .6까지 · Balanced 3줄 X·4줄 .3까지.",
    "focuses": "[\"Balanced\", \"Attack\"]",
+   "identity_kr": "미드필드 라인에서 출발해 터치라인을 타는 측면 공격수.",
    "name": "윙어",
    "name_en": null,
    "position_type": "WM",
