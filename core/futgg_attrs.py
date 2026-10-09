@@ -88,6 +88,7 @@ NON_ATTR_OK = {
     "play_style",     # fut_club_players.current_playstyles
     "role_plus", "role_plus_plus",   # current_roles_plus(_plus)
     "skill_moves", "weak_foot",      # player_card_items 쪽 축 — 29속성에 없다
+    "rarity_id",      # 카드 겉모습(희귀도) 변경 — 스탯 효과 없음(2026-10-10 Future Stars Academy I 4단계에서 처음 등장)
 }
 
 
