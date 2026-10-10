@@ -194,8 +194,9 @@ def main():
         #      ⑴ 아이템 id에 `-N` 반복 접미 ⑵ isInProgressEvolution 플래그 ⑶ **OVR·스탯 상승**
         #    ⛔ 자동으로 완료 처리하지 않는다 — 어떤 진화였는지는 데이터에 없으므로 사람이 확정한다.
         # ⛔ REJECTED(무효로 판정된) 기록은 「진행 중」이 아니다 — 완주 후보에서 뺀다(2026-09-19 오탐 수정)
+        # ⛔ 무효(is_void) 행도 뺀다(2026-10-10 마조 Batigol 오탐 — fut_club.py complete와 같은 결함 2회차)
         pend = con.execute("""SELECT evo_name, ovr_after FROM fut_evolution_log
-                              WHERE club_player_id=? AND completed_at IS NULL
+                              WHERE club_player_id=? AND completed_at IS NULL AND COALESCE(is_void,0)=0
                                 AND COALESCE(confidence,'') NOT LIKE 'REJECTED%' ORDER BY applied_at LIMIT 1""",
                            (cur["id"],)).fetchone()
         if pend and (r["ovr"] > (cur["current_ovr"] or 0) or "-" in str(r.get("gg") or "").rsplit("-", 1)[-1][:1]
