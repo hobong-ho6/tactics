@@ -3566,6 +3566,15 @@
    "impact": "#43의 「85 문턱은 D — 문턱 판정에 쓰지 않는다」를 **강화**한다: D끼리도 숫자가 상충하므로(각각 85 / 합산 85 / 평균 75) 어느 값도 진화·영입의 컷으로 쓰지 않는다. 드리블러 평가는 「민첩·균형·드리블이 높을수록 유리」(A의 입력 속성)까지만 쓴다. 과녁 5는 **통제 실측 외에 닫을 길이 없다** — 실측 프로토콜 후보(2026-10-08 설계서 「다루지 않는 것」 표).",
    "recorded": "2026-10-08",
    "source": "https://www.gamereactor.es/ea-sports-fc-27-avance-que-cambios-podemos-esperar-en-el-modo-carrera-y-en-la-gameplay-1757693/ · https://x.com/FutPoliceLeaks/status/2093251532766548129 (402 차단 · 스니펫) · https://www.fcutcoins.com/blog/fc-27-off-balance-dribbling-guide-how-to-use-best-players"
+  },
+  {
+   "area": "attributes",
+   "change": "⭐ 로우 드리븐 슛의 **슛 속도 보너스가 제거**됐고, 슛 속도는 이제 **핵심 슈팅 속성과 입력 파워만으로** 정해진다. Low Driven PlayStyle(+)은 정확도 보너스만 남는다. 같은 패치에서 Finesse Shot도 회전·애니메이션 속도·각도 효과가 선수 속성에 따라 정해지도록 바뀌었다(#13과 같은 축).",
+   "confidence": "A — EA 1차(피치노트 게임플레이 딥다이브) 원문 직접 확인 2026-10-10",
+   "evidence": "EA 원문: 「Removed the shot speed boost previously applied to low-driven shots」(로우 드리븐 슛에 적용되던 슛 속도 보너스를 제거했다) · 「Shot velocity now scales purely based on core shooting Attributes and input power, for more consistent and attribute-driven results」(이제 슛 속도는 핵심 슈팅 속성과 입력 파워만으로 정해져, 더 일관되고 속성에 따른 결과가 나온다) · 「The Playstyle and PlayStyle+ still add an accuracy boost」(PlayStyle과 PlayStyle+는 여전히 정확도 보너스를 준다).",
+   "impact": "진화·카드 비교에서 **슈팅 속성(특히 슈팅력) 상승이 로우 드리븐 마무리의 슛 속도로 바로 이어진다**고 읽을 수 있다(A). ⚠️ 「core shooting Attributes」가 어느 속성인지(결정력·슈팅력·중거리 중 무엇이 얼마나)는 EA가 밝히지 않았다 — 속성별 비중은 미확인. 결정력=박스 안 발슛 정확도(docs/22 표)는 1차 근거가 없는 통설(D)이다. 2026-10-10 만잠비 Future Stars Academy I 갈래 비교에서 확인.",
+   "recorded": "2026-10-10",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive"
   }
  ],
  "tactic_params": [],
