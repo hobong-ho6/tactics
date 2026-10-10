@@ -98826,14 +98826,14 @@
  "slot_canon": [
   {
    "confidence": "HIGH",
-   "focus": "Defend",
+   "focus": "Build-Up",
    "formation": "4-2-3-1 Wide",
    "game_version": "FC26",
    "pos": "GK",
-   "rationale": "5-2 빌드업 참여는 후방 패스 옵션이지 전진 스위핑이 아니다(obs#154 — 스위퍼 아님, 실측 .961). buildup·implementation ⑴.",
-   "role_id": "gk_goalkeeper",
-   "source": "manager_profiles(1) implementation·buildup + obs#154",
-   "updated": "2026-08-12"
+   "rationale": "5-2 빌드업 참여는 후방 패스 옵션이지 전진 스위핑이 아니다(obs#154 — 스위퍼 아님, 실측 .961). buildup·implementation ⑴. [2026-10-11 교정: gk_goalkeeper/Defend → **gk_ballplaying/Build-Up** · 사용자 결정] 2026-10-10 브렌트포드전 사용자 관찰(obs#966): 스즈키가 매우 높은 위치까지 나와 빌드업에서 공을 받아 줌. 볼 플레잉 키퍼 Build-Up = EA 「push higher up the pitch to support play」(더 높이 올라가 플레이를 지원) + 희생 「전진 러시」 — 종전 근거 「후방 패스 옵션이지 전진 스위핑이 아니다(스위퍼 아님)」와 모순되지 않는 쪽을 골랐다. 스위퍼 키퍼는 뒷공간 러시가 강화 특성이라 제외.",
+   "role_id": "gk_ballplaying",
+   "source": "manager_profiles(1) implementation·buildup + obs#154 · obs#966",
+   "updated": "2026-10-11"
   },
   {
    "confidence": "HIGH",
@@ -98885,10 +98885,10 @@
    "formation": "4-2-3-1 Wide",
    "game_version": "FC26",
    "pos": "LDM",
-   "rationale": "더블 피벗은 자리 유지가 1차 임무(그 대가로 풀백 전진이 성립 — rest_defense). implementation ⑵의 \"dm_holding(Roaming/Defend 분담)\" 중 제한적 전진측. ⚠️ 좌/우 어느 쪽이 Roaming인지는 인선층 판단이다(카마라 서사 \"기회 나면 길게 전진\"은 우측 열중심 62.3과 긴장) — 현 XI 배치(오나나 LDM Roaming)를 따랐다.",
-   "role_id": "dm_holding",
-   "source": "manager_profiles(1) implementation ⑵·rest_defense·role_demands ⑶",
-   "updated": "2026-08-12"
+   "rationale": "더블 피벗은 자리 유지가 1차 임무(그 대가로 풀백 전진이 성립 — rest_defense). implementation ⑵의 \"dm_holding(Roaming/Defend 분담)\" 중 제한적 전진측. ⚠️ 좌/우 어느 쪽이 Roaming인지는 인선층 판단이다(카마라 서사 \"기회 나면 길게 전진\"은 우측 열중심 62.3과 긴장) — 현 XI 배치(오나나 LDM Roaming)를 따랐다. [2026-10-11 교정: dm_holding/Roaming → **dm_dlp/Roaming** · 사용자 결정] 근거 4축이 한 방향이다 — ⑴ 경기 처방 LDM 8건 중 6건이 dm_dlp/Roaming(고메스·바클리) ⑵ 고메스 26/27 실측 적합 1위 dm_dlp/Roaming .836(5경기) ⑶ 2026-10-10 브렌트포드전 사용자 관찰(obs#965): 고메스가 2선 높이까지 올라오고 카마라가 아래에 남는 비대칭 피벗 ⑷ 인게임 실측 dm_dlp/Roaming 커널 충실도 .80(HIGH). ⚠️ 잔류 구조는 RDM 앵커(dm_holding/Defend)가 지킨다 — 두 피벗이 동시에 전진형이 되지 않게 RDM은 유지.",
+   "role_id": "dm_dlp",
+   "source": "manager_profiles(1) implementation ⑵·rest_defense·role_demands ⑶ · obs#965 · match_player_prescriptions(LDM 6/8)",
+   "updated": "2026-10-11"
   },
   {
    "confidence": "HIGH",
@@ -99829,6 +99829,24 @@
   }
  ],
  "tactic_changes": [
+  {
+   "after": "dm_dlp/Roaming",
+   "before": "dm_holding/Roaming",
+   "changed_at": "2026-10-11",
+   "key": "4-2-3-1 Wide|LDM",
+   "layer": "slot_canon",
+   "reason": "사용자 결정 2026-10-11 — LDM dm_holding/Roaming→dm_dlp/Roaming(경기 처방 6/8·고메스 실측 .836·obs#965) · GK gk_goalkeeper/Defend→gk_ballplaying/Build-Up(obs#966 스즈키 높은 위치 빌드업)",
+   "source": "tactic_changes.py 2026-10-11"
+  },
+  {
+   "after": "gk_ballplaying/Build-Up",
+   "before": "gk_goalkeeper/Defend",
+   "changed_at": "2026-10-11",
+   "key": "4-2-3-1 Wide|GK",
+   "layer": "slot_canon",
+   "reason": "사용자 결정 2026-10-11 — LDM dm_holding/Roaming→dm_dlp/Roaming(경기 처방 6/8·고메스 실측 .836·obs#965) · GK gk_goalkeeper/Defend→gk_ballplaying/Build-Up(obs#966 스즈키 높은 위치 빌드업)",
+   "source": "tactic_changes.py 2026-10-11"
+  },
   {
    "after": "카마라: dm_holding/Defend",
    "before": "카마라: dm_dlp/Roaming",
