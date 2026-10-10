@@ -101,8 +101,8 @@ def verify_chain(con, cp, cur, base, face_rows=None, is_gk=False):
        보유 카드 대부분은 진화를 **여러 개 쌓았기** 때문에 단일 탐색은 당연히 실패한다(2026-09-26 실측 6장 중 5장).
     ⚠️ 갈림길을 고른 기록이 없던 옛 행이 있어, 가지는 **전수로 맞춰 본다**(조합이 상한을 넘으면 그 사실을 적는다).
     """
-    rows = con.execute("""SELECT evo_id, level FROM fut_evolution_log
-                           WHERE club_player_id=? AND is_void=0 ORDER BY applied_at, id""", (cp["id"],)).fetchall()
+    rows = con.execute("""SELECT evo_id, level FROM v_evo_log
+                           WHERE club_player_id=? ORDER BY applied_at, id""", (cp["id"],)).fetchall()
     if not rows:
         return None
     steps, combos = [], 1
@@ -146,7 +146,7 @@ def report(con, cp, catalog, verify):
     is_gk = "DIV" in json.loads(cp["current_six"] or "{}")
     print(f"\n■ {name} (보유 id {cp['id']}) — 기준 카드와 {len(diff)}개 속성이 다르다")
     logged = [r["evo_id"] for r in con.execute(
-        "SELECT DISTINCT evo_id FROM fut_evolution_log WHERE club_player_id=? AND is_void=0", (cp["id"],))]
+        "SELECT DISTINCT evo_id FROM v_evo_log WHERE club_player_id=?", (cp["id"],))]
     if logged:
         print(f"   원장에 적힌 진화: {logged}")
     hits, skipped = [], []
@@ -202,8 +202,8 @@ def ea_check(con, only=None):
     n_ok = n_bad = 0
     for cp in rows:
         hist = json.loads(cp["ea_evo_history"] or "[]")
-        logs = con.execute("""SELECT evo_id, evo_name, level, completed_at FROM fut_evolution_log
-                               WHERE club_player_id=? AND COALESCE(is_void,0)=0""", (cp["id"],)).fetchall()
+        logs = con.execute("""SELECT evo_id, evo_name, level, completed_at FROM v_evo_log
+                               WHERE club_player_id=?""", (cp["id"],)).fetchall()
         if not hist and not logs:
             continue
         probs = []
@@ -234,8 +234,7 @@ def ea_check(con, only=None):
                 probs.append(f"{nm}: EA {er}회·완료 {el}단계 ↔ 로그 {orr}회·완료 {ol}단계")
         act = json.loads(cp["ea_evo_active"]) if cp["ea_evo_active"] else None
         if act:
-            prog = con.execute("""SELECT COUNT(*) FROM fut_evolution_log WHERE club_player_id=? AND evo_id=?
-                                   AND completed_at IS NULL AND COALESCE(is_void,0)=0""",
+            prog = con.execute("""SELECT COUNT(*) FROM v_evo_log_open WHERE club_player_id=? AND evo_id=?""",
                                (cp["id"], act["evolutionId"])).fetchone()[0]
             if not prog:
                 probs.append(f"진행 중 {names.get(act['evolutionId'], act['evolutionId'])} "
@@ -277,7 +276,7 @@ def main():
     print("⛔ 여기서 원장에 쓰지 않는다 — 후보 제시일 뿐이다. 기록은 `fut_club.py evolve`로 한다.\n")
     n_hit = 0
     for cp in rows:
-        has_log = con.execute("SELECT 1 FROM fut_evolution_log WHERE club_player_id=? AND is_void=0 LIMIT 1",
+        has_log = con.execute("SELECT 1 FROM v_evo_log WHERE club_player_id=? LIMIT 1",
                               (cp["id"],)).fetchone()
         if has_log and not a.verify and not a.player:
             continue                                        # 이미 적힌 것은 --verify에서만 본다

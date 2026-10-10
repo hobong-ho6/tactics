@@ -890,7 +890,7 @@ def main():
     #    ⚠️ `is_void=1`(적용된 적 없음으로 확정된 로그)은 세지 않는다 — 실제로 진화하지 않은 카드다.
     if not a.include_evolved:
         evo = {r[0] for r in con.execute(
-            "SELECT DISTINCT club_player_id FROM fut_evolution_log WHERE COALESCE(is_void,0)=0")}
+            "SELECT DISTINCT club_player_id FROM v_evo_log")}
         gone = [p for p in pool if p["id"] in evo]
         pool = [p for p in pool if p["id"] not in evo]
         if gone:

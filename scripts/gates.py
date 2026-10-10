@@ -1651,6 +1651,24 @@ def run(db_path=None, verbose=True):
     if not ok31:
         fails.append("G31")
 
+    # G32 — ⛔⛔ **진화 로그는 뷰(v_evo_log · v_evo_log_open)로만 읽는다.** 2026-10-10 신설(migration 105)
+    #   무효(is_void) 행을 「진행 중」으로 집는 사고가 두 번 났다(fut_club.py complete · fut_club_sync.py 완주 추정).
+    #   읽는 곳마다 `is_void` 조건을 적던 구조라 빠뜨리면 터졌다 ⇒ 원본 표를 SELECT하는 코드를 막는다.
+    #   ⭐ 쓰기(INSERT·UPDATE·DELETE)는 원본 표에 그대로 한다. 무효 행까지 꼭 읽어야 하면 그 줄에 「G32 허용」과 사유를 적는다.
+    g32 = []
+    _root32 = Path(__file__).resolve().parent.parent
+    for _f in sorted([*(_root32 / "scripts").glob("*.py"), *(_root32 / "core").glob("*.py")]):
+        for _i, _ln in enumerate(_f.read_text(encoding="utf-8").splitlines(), 1):
+            if (re.search(r"\bFROM\s+fut_evolution_log\b", _ln) and "G32 허용" not in _ln
+                    and not re.search(r"\bDELETE\s+FROM\s+fut_evolution_log\b", _ln)):
+                g32.append(f"{_f.relative_to(_root32)}:{_i}")
+    ok32 = not g32
+    if verbose:
+        print(f"G32 진화 로그 원본 표 직접 읽기: {len(g32)} "
+              + ("✅" if ok32 else "❌ v_evo_log/v_evo_log_open을 쓸 것 — " + " · ".join(g32[:4])))
+    if not ok32:
+        fails.append("G32")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")

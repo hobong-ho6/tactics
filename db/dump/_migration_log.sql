@@ -29,3 +29,4 @@ INSERT INTO _migration_log VALUES('2026-10-04','099-player-evolutions-last-seen'
 INSERT INTO _migration_log VALUES('2026-10-08','102-objective-groups-sp','fc_objective_groups 신설 + fc_objective_tasks에 task_ea_id·reward_sp·modes — fut.gg SSR 구조화 상태로 SP 목표 수집(사용자 지시 2026-10-09)');
 INSERT INTO _migration_log VALUES('2026-10-09','103-role-scenes','game_roles.identity_kr·focus_axis_kr + game_role_focus.scene_attack_kr·scene_defend_kr + game_role_groups 신설 — 역할 장면 해설(해석층 D) · 시드 db/seeds/role-scenes-FC26.json · 사용자 지시 2026-10-09');
 INSERT INTO _migration_log VALUES('2026-10-09','104-role-evidence','game_role_evidence 신설 — 역할별 커뮤니티 체감·실사용 증언(원문+번역·등급) · 사용자 지시 2026-10-10');
+INSERT INTO _migration_log VALUES('2026-10-10','105-evo-log-views','v_evo_log·v_evo_log_open 신설 — 진화 로그 무효/진행 중 판정 정본(파이썬 측) · G32가 원본 표 직접 읽기를 막는다 · 사용자 지시 2026-10-10');

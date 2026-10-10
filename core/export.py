@@ -312,17 +312,17 @@ def export_all(db_path=None, window="2026-summer"):
                i.skill_moves, i.weak_foot, i.preferred_foot, i.accelerate,
                i.height_cm, i.weight_kg, i.positions, i.card_image_url, i.rarity_ea_id,
                CASE WHEN c.current_attrs IS NOT NULL THEN 'ea-sync' ELSE 'base-card' END basis,
-               (SELECT COUNT(*) FROM fut_evolution_log l
-                 WHERE l.club_player_id=c.id AND l.is_void=0 AND COALESCE(l.level,1)=1) evo_runs,
+               (SELECT COUNT(*) FROM v_evo_log l
+                 WHERE l.club_player_id=c.id AND COALESCE(l.level,1)=1) evo_runs,
                -- ⭐ **화면의 「진화 N회」는 이것이다** — 「회 = 밟은 단계 수」가 사용자 결정이다
                --    (2026-09-21, 4단계 완주 = 4회). `evo_runs`(적용 횟수)는 **소진 계산 전용**이라
                --    단위가 다르다. 둘을 섞으면 같은 선수가 화면마다 다른 횟수로 보인다
                --    (지모알로바 6 ↔ 2 · 루제리 3 ↔ 1). ⛔ `fut_club_players.evo_count`는 스크립트가
                --    +1 하는 값이라 원장과 어긋날 수 있다 — 원장에서 직접 센 이 값을 쓴다.
-               (SELECT COUNT(*) FROM fut_evolution_log l
-                 WHERE l.club_player_id=c.id AND l.is_void=0) evo_levels,
-               (SELECT GROUP_CONCAT(DISTINCT l.evo_name) FROM fut_evolution_log l
-                 WHERE l.club_player_id=c.id AND l.is_void=0) evo_names
+               (SELECT COUNT(*) FROM v_evo_log l
+                 WHERE l.club_player_id=c.id) evo_levels,
+               (SELECT GROUP_CONCAT(DISTINCT l.evo_name) FROM v_evo_log l
+                 WHERE l.club_player_id=c.id) evo_names
           FROM fut_club_players c
           LEFT JOIN player_card_items i ON i.ea_item_id=c.ea_item_id
           LEFT JOIN players pl ON pl.id=c.player_id
@@ -340,7 +340,7 @@ def export_all(db_path=None, window="2026-summer"):
     in_squad = {r[0] for r in con.execute(
         "SELECT id FROM fut_club_players WHERE status='owned' AND is_in_active_squad=1")}
     has_evo = {r[0] for r in con.execute(
-        "SELECT DISTINCT club_player_id FROM fut_evolution_log WHERE is_void=0")}
+        "SELECT DISTINCT club_player_id FROM v_evo_log")}
     state = {}
     for r in sorted(club_state, key=lambda r: (r["club_player_id"] not in in_squad,
                                                r["club_player_id"] not in has_evo,
@@ -461,7 +461,7 @@ def export_all(db_path=None, window="2026-summer"):
     log = _rows(con, """SELECT id, club_player_id, evo_id, evo_name, level, applied_at, completed_at, ovr_before, ovr_after,
                                six_before, six_after, attrs_delta, playstyles_after, roles_plus_after, roles_plus_plus_after,
                                is_void, notes
-                        FROM fut_evolution_log ORDER BY applied_at, id""")
+                        FROM fut_evolution_log ORDER BY applied_at, id""")   # G32 허용: 화면이 무효 행도 표시한다(logState가 판정)
     # ⭐ 갤러리(migration 092) — 세트·등급별 토큰·최신 평가·내 기록, 그리고 **분류는 core/gallery.classify 하나로**
     #   (스크립트 출력과 화면이 같은 목록을 보게 한다). 평가는 클럽 싱크 `선수` 끝의 gallery_eval.py가 쌓는다.
     gal_sets = _rows(con, """SELECT set_id, category_name, name, description, required_cards, total_tokens, grades_json

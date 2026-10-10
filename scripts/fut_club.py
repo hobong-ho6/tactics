@@ -109,8 +109,8 @@ def pre_step_state(con, cp, game):
        현재값이 들어가 「79→79」가 됐다(런북 연관표 #2 — 손으로 고치던 것).
     ⇒ 출발점은 **원장 사슬**이다: 이 카드의 마지막 유효 로그(attrs_after)가 있으면 그것,
        없으면 기준 카드(`player_card_items`). EA 실측과의 대조는 호출부가 한다."""
-    last = con.execute("""SELECT ovr_after, six_after, attrs_after FROM fut_evolution_log
-                           WHERE club_player_id=? AND COALESCE(is_void,0)=0 AND completed_at IS NOT NULL
+    last = con.execute("""SELECT ovr_after, six_after, attrs_after FROM v_evo_log
+                           WHERE club_player_id=? AND completed_at IS NOT NULL
                            ORDER BY applied_at DESC, id DESC LIMIT 1""", (cp["id"],)).fetchone()
     if last and last["attrs_after"]:
         return json.loads(last["attrs_after"]), last["ovr_after"], last["six_after"]
@@ -334,8 +334,8 @@ def cmd_complete(con, a):
     """진행 중이던 진화를 완료 처리 — 그때 비로소 current_* 를 로그의 after 값으로 올린다."""
     acc = account(con, a.account)
     cp = club_player(con, acc["id"], a.player)
-    # ⛔ 무효(is_void) 행은 고르지 않는다(2026-10-09 마조 Batigol 실측 — 무효 처리한 잘못된 시작 행을 집어 게이트가 막았다)
-    log = con.execute("""SELECT * FROM fut_evolution_log WHERE club_player_id=? AND completed_at IS NULL AND COALESCE(is_void,0)=0
+    # ⭐ 「진행 중」 판정은 뷰 v_evo_log_open이 정본이다(migration 105 — 2026-10-09 마조 Batigol 무효 행 사고 이후 구조화)
+    log = con.execute("""SELECT * FROM v_evo_log_open WHERE club_player_id=?
                          AND (?=0 OR evo_id=?) ORDER BY applied_at, id LIMIT 1""",
                       (cp["id"], 1 if a.evo else 0, a.evo or 0)).fetchone()
     if not log:
@@ -708,7 +708,7 @@ def run(con, cmd, **kw):
 def cmd_list(con, a):
     acc = account(con, a.account)
     for cp in con.execute("SELECT * FROM fut_club_players WHERE account_id=? ORDER BY status, name", (acc["id"],)):
-        logs = con.execute("SELECT evo_name, ovr_before, ovr_after, applied_at FROM fut_evolution_log WHERE club_player_id=? ORDER BY applied_at", (cp["id"],)).fetchall()
+        logs = con.execute("SELECT evo_name, ovr_before, ovr_after, applied_at FROM v_evo_log WHERE club_player_id=? ORDER BY applied_at", (cp["id"],)).fetchall()
         print(f"[{cp['id']}] {cp['name']:<14} {cp['status']:<9} OVR {cp['current_ovr'] or '-'}  진화 {cp['evo_count']}회"
               + "".join(f"\n      {l['applied_at']} {l['evo_name']} {l['ovr_before']}→{l['ovr_after']}" for l in logs))
 

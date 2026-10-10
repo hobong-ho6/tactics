@@ -38,6 +38,9 @@ def main():
                 '{"PAC": 80, "SHO": 70, "PAS": 70, "DRI": 70, "DEF": 70, "PHY": 70}',
                 '[5]', '[]', '2026-09-01', 0);
         """)
+        # 진화 로그 뷰는 정본 migration 105에서 그대로 가져온다(정의를 두 벌 두지 않는다)
+        mig = (Path(__file__).resolve().parent.parent / "db" / "migrations" / "105-evo-log-views.sql").read_text()
+        con.executescript("".join(s + ";" for s in mig.split(";") if "CREATE VIEW" in s))
         con.commit()
         con.close()
         six = [80, 70, 70, 70, 70, 70]

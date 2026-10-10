@@ -111,8 +111,7 @@ def main():
     #    ⚠️ 보호는 `current_ovr`·`current_six`에만 건다. 케미 스타일·개인 케미는 진화와 무관하고
     #       EA가 정본이라 항상 갱신한다.
     evolved = {r["club_player_id"] for r in
-               con.execute("""SELECT DISTINCT club_player_id FROM fut_evolution_log
-                              WHERE COALESCE(is_void,0)=0""")}
+               con.execute("""SELECT DISTINCT club_player_id FROM v_evo_log""")}
     cards = {r["ea_item_id"]: dict(r) for r in
              con.execute("SELECT ea_item_id, player_id, name_kr, best_pos FROM player_card_items WHERE game_version='FC27'")}
     # ⭐⭐ ① PlayStyle은 숫자 id로 온다 — 이름표 정본은 `fc_playstyle_ids`(scripts/collect_playstyle_ids.py).
@@ -194,10 +193,9 @@ def main():
         #      ⑴ 아이템 id에 `-N` 반복 접미 ⑵ isInProgressEvolution 플래그 ⑶ **OVR·스탯 상승**
         #    ⛔ 자동으로 완료 처리하지 않는다 — 어떤 진화였는지는 데이터에 없으므로 사람이 확정한다.
         # ⛔ REJECTED(무효로 판정된) 기록은 「진행 중」이 아니다 — 완주 후보에서 뺀다(2026-09-19 오탐 수정)
-        # ⛔ 무효(is_void) 행도 뺀다(2026-10-10 마조 Batigol 오탐 — fut_club.py complete와 같은 결함 2회차)
-        pend = con.execute("""SELECT evo_name, ovr_after FROM fut_evolution_log
-                              WHERE club_player_id=? AND completed_at IS NULL AND COALESCE(is_void,0)=0
-                                AND COALESCE(confidence,'') NOT LIKE 'REJECTED%' ORDER BY applied_at LIMIT 1""",
+        # ⭐ 「진행 중」 판정은 뷰 v_evo_log_open이 정본이다(migration 105 — 무효 행 오탐 2회차로 구조화)
+        pend = con.execute("""SELECT evo_name, ovr_after FROM v_evo_log_open
+                              WHERE club_player_id=? ORDER BY applied_at LIMIT 1""",
                            (cur["id"],)).fetchone()
         if pend and (r["ovr"] > (cur["current_ovr"] or 0) or "-" in str(r.get("gg") or "").rsplit("-", 1)[-1][:1]
                      or str(r.get("gg") or "").count("-") > 1):

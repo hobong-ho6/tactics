@@ -1323,3 +1323,9 @@ CREATE TABLE game_role_evidence(
   source        TEXT,                     -- 수집 경로(조사 회차)
   UNIQUE(role_id, focus, source_url, quote_orig)
 );
+CREATE VIEW v_evo_log AS                       -- 유효 행(무효 제외) = logState ≠ 'void'
+  SELECT * FROM fut_evolution_log WHERE COALESCE(is_void, 0) = 0
+/* v_evo_log(id,club_player_id,evo_id,evo_name,level,applied_at,completed_at,ovr_before,ovr_after,six_before,six_after,attrs_delta,playstyles_after,roles_plus_after,roles_plus_plus_after,source,confidence,notes,is_void,attrs_after) */;
+CREATE VIEW v_evo_log_open AS                  -- 진행 중 = logState = 'progress'
+  SELECT * FROM v_evo_log WHERE completed_at IS NULL
+/* v_evo_log_open(id,club_player_id,evo_id,evo_name,level,applied_at,completed_at,ovr_before,ovr_after,six_before,six_after,attrs_delta,playstyles_after,roles_plus_after,roles_plus_plus_after,source,confidence,notes,is_void,attrs_after) */;
