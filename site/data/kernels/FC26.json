@@ -2999,7 +2999,7 @@
    "n_matches": 3,
    "n_players": 3,
    "n_sim": 0,
-   "ref_map25": "30000X0000600006000030000",
+   "ref_map25": "000030000X000060000600003",
    "role_id": "fb_att_wb"
   },
   {
@@ -3014,7 +3014,7 @@
    "n_matches": 3,
    "n_players": 2,
    "n_sim": 2,
-   "ref_map25": "0000030000X0000X000060000",
+   "ref_map25": "00000000030000X0000X00006",
    "role_id": "fb_wingback"
   },
   {
@@ -4673,12 +4673,12 @@
   {
    "fit_sim": 0.94,
    "focus": "Aggressive",
-   "map25": "0010023100383012X50035410",
+   "map25": "0010012000252102X31027510",
    "player": "밍스",
    "pos_label": "LCB",
    "role_id": "cb_bpd",
-   "sample_n": 4,
-   "season": "2026-27",
+   "sample_n": 17,
+   "season": "2025-26",
    "team_code": "AVL"
   },
   {
@@ -4781,17 +4781,6 @@
    "team_code": "ATM"
   },
   {
-   "fit_sim": 0.78,
-   "focus": "Roaming",
-   "map25": "0131144531544426X76214311",
-   "player": "주앙 고메스",
-   "pos_label": "LDM",
-   "role_id": "dm_holding",
-   "sample_n": 3,
-   "season": "2026-27",
-   "team_code": "AVL"
-  },
-  {
    "fit_sim": 0.97,
    "focus": "Support",
    "map25": "30000X0000720004100021000",
@@ -4825,13 +4814,13 @@
    "team_code": "LIV"
   },
   {
-   "fit_sim": 0.86,
+   "fit_sim": 0.9,
    "focus": "Balanced",
-   "map25": "210005100041000X100043100",
+   "map25": "100005000051000X210053100",
    "player": "마테오 루헤리",
    "pos_label": "LB",
    "role_id": "fb_wingback",
-   "sample_n": 2,
+   "sample_n": 3,
    "season": "2026-27",
    "team_code": "AVL"
   },

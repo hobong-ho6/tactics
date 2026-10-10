@@ -35194,11 +35194,6 @@
   ],
   "음바예": [
    [
-    "2026-06-23",
-    7.3,
-    "FIFA World Cup"
-   ],
-   [
     "2026-06-26",
     6.6,
     "FIFA World Cup"
@@ -35242,6 +35237,11 @@
     "2026-09-29",
     8.2,
     "Africa Cup of Nations Qual."
+   ],
+   [
+    "2026-10-10",
+    6.9,
+    "Premier League"
    ]
   ],
   "응구모하": [
@@ -61040,17 +61040,17 @@
   },
   {
    "avg_rating": 6.91,
-   "dw_pg": 1.65,
+   "dw_pg": 1.67,
    "ic_pg": 0.14,
    "kp_pg": 0.56,
    "label": "음바예",
-   "minutes": 1967,
-   "n": 72,
+   "minutes": 1993,
+   "n": 73,
    "player_id": 86,
    "pos_group": "WM",
-   "tk_pg": 0.4,
-   "xa_pg": 0.08,
-   "xg_pg": 0.196
+   "tk_pg": 0.41,
+   "xa_pg": 0.079,
+   "xg_pg": 0.188
   },
   {
    "avg_rating": 6.91,
@@ -64759,6 +64759,16 @@
   "음바예": [
    {
     "assists": 0,
+    "avg_rating": 6.63,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 68,
+    "n": 3,
+    "season": "2026-27",
+    "starts": 0
+   },
+   {
+    "assists": 0,
     "avg_rating": 7.25,
     "competition": "Africa Cup of Nations Qual.",
     "goals": 1,
@@ -64776,16 +64786,6 @@
     "n": 2,
     "season": "2026-27",
     "starts": null
-   },
-   {
-    "assists": 0,
-    "avg_rating": 6.5,
-    "competition": "Premier League",
-    "goals": 0,
-    "minutes": 42,
-    "n": 2,
-    "season": "2026-27",
-    "starts": 0
    },
    {
     "assists": 1,
