@@ -287,6 +287,7 @@
 | `observations.id` 하드코딩 금지를 문서로만 | **G22 ⑶** 정적 검사(`test_*.py`는 제외) |
 | 중단된 수집이 최신으로 굳는 것 | **G21** — 스냅샷 6표, 최신 회차가 직전의 절반 미만이면 실패 |
 | 화면 확인할 때마다 **임시 Playwright 스크립트를 새로 작성**(한 세션에 4번) | `python3 scripts/check_pages.py` 한 줄 |
+| 진화 로그를 읽는 파이썬 9곳이 저마다 `is_void` 조건을 적음 → 빠뜨린 곳에서 무효 행이 「진행 중」으로 2회 오탐(2026-10-09 · 10-10 마조 Batigol) | 뷰 `v_evo_log`·`v_evo_log_open`(migration 105) + **G32** 원본 표 직접 SELECT 금지 |
 
 ⭐ **G21·G22는 회귀 시험이 있다**: `python3 scripts/test_g21_g22_regression.py`
   (결함 3종 합성 주입 + 오탐 1종). **게이트는 통과할 때 아무 말도 안 하므로 조용히 고장 난다** —
