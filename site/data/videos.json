@@ -1,8 +1,221 @@
 {
  "all": [
   {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-11] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 252,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "goal_kick_buildup_target",
+     "focus": null,
+     "player": "주앙 고메스",
+     "quote": "원문 「Brenford really pressed him when we were trying to build up from the back from goal kicks」(골킥 빌드업 때 브렌트퍼드가 그를 강하게 압박했다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "gomes_receives_under_targeted_press",
+     "verdict": "HELD",
+     "verdict_note": "claim #167(배급 비지배)과 같은 방향의 정황 — 이 경기 패스 1·2위는 CB(밍스47·린델뢰프46). 재판정 조건: 골킥 재개 첫 패스 수신자 실측(WhoScored 이벤트 체인) 2경기"
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "focus": null,
+     "player": "주앙 고메스",
+     "quote": "원문 「Everything you would want from a number six. I thought he used the ball well. I thought he got around the pitch well」(6번에게 바라는 모든 것. 볼을 잘 썼고 경기장을 넓게 누볐다)",
+     "role_id": "dm_dlp",
+     "team_code": null,
+     "value": null,
+     "verdict": "APPLIED",
+     "verdict_note": "LDM 정본 dm_dlp/Roaming(2026-10-11 사용자 결정)과 일치 · 이 경기 단일 적합 .875 Δ.154 · 「got around the pitch」는 Roaming 방향이나 인용이 포커스를 직접 말하지는 않는다"
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "focus": null,
+     "player": "음바예",
+     "quote": "원문 「really dangerous, whether it be from the right or from the left … always making runs」(오른쪽이든 왼쪽이든 위협적, 늘 침투했다)",
+     "role_id": "wm_insidefwd",
+     "team_code": null,
+     "value": null,
+     "verdict": "PENDING",
+     "verdict_note": "이 경기 단일 적합 wm_insidefwd/Attack .444(26′ · hp21) — 교체 표본이라 판정 보류. 좌우 교대는 obs#968 순환과 일치"
+    }
+   ],
+   "key_points": [
+    "원문 「Xiao Gomez I thought he was absolutely exceptional today. Everything you would want from a number six」(고메스는 오늘 정말 뛰어났다. 6번에게 바라는 모든 것) — 'Xiao'는 João 오인식, auto-caption",
+    "원문 「Brenford really pressed him when we were trying to build up from the back from goal kicks」(골킥에서 빌드업할 때 브렌트퍼드가 고메스를 강하게 압박했다) · 「saw him having a word with Mings … about how he was getting the ball … from goal kicks」(고메스가 골킥에서 공을 받는 방식을 두고 밍스와 얘기하는 걸 봤다)",
+    "원문 「We had the disruption at halftime of Roger … having to go off and you're playing a right back at left back」(HT에 루제리가 나가야 했고 오른쪽 풀백을 왼쪽에 세웠다) — 'Roger'는 Ruggeri 오인식. 사유(부상)는 언급 없음",
+    "원문 「Embay … really dangerous, whether it be from the right or from the left … always making runs」(음바예는 오른쪽이든 왼쪽이든 위협적이고 늘 침투했다) — 2선 순환 정황",
+    "원문 「Manzambi was brilliant in the first half … I think he ran out of steam a little bit in the second half」(만잠비는 전반 탁월했고 후반엔 힘이 좀 떨어졌다)",
+    "Monday에 「five things」 후속 쇼 예고 → D+2·D+3 회차 대상"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-11",
+   "published_approx": 0,
+   "report_id": 51,
+   "summary": "1874 Dan Bardell 경기 반응 라이브(경기장 귀가 직후, 재시청 없이 기억 기반). 긍정 다수: 경기 내용은 좋았고 결과는 공정. 고메스를 사실상 MOTM으로 지목(6번으로 필요한 모든 것). 브렌트퍼드가 골킥 빌드업 때 고메스를 집중 압박했고 고메스가 밍스와 골킥 패턴에 대해 말을 주고받았다. 루제리 HT 교체로 오른발 풀백이 왼쪽을 맡아 왼쪽 자연 폭이 사라졌다. 음바예는 좌우 어디서든 위협적, 만잠비는 전반 탁월·후반 체력 저하. 걱정은 수비(CB 파트너십).",
+   "team_code": "AVL",
+   "title": "Aston Villa 2 -2 Brentford: Plenty Of Positives To Take From That",
+   "transcript_path": "reports/transcripts/aEKmZ70siXA.en.md",
+   "url": "https://www.youtube.com/watch?v=aEKmZ70siXA",
+   "video_id": "aEKmZ70siXA"
+  },
+  {
+   "channel": "AVFC 공식",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-11] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 250,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "cb_buildup_from_goal_kick",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「this is unai system supports and wants them to try and play through」(에메리 시스템은 뒤에서 풀어 나오길 원한다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "play_through_by_design",
+     "verdict": "NA",
+     "verdict_note": "FC26 팀 설정에 골킥 재개 빌드업 별도 축이 없다 — 팀 build_up_style 정본 Counter(APPLIED)와 별개 국면. GK 정본 gk_sweeper/Build-Up(f0c29e0)이 GK 관여 쪽을 이미 반영"
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "focus": null,
+     "player": "만잠비",
+     "quote": "원문 「he's playing in that 10 position up there with Nicholas Jackson really most of the time」(대부분 잭슨과 함께 위쪽 10번 자리에서 뛴다)",
+     "role_id": "cam_playmaker",
+     "team_code": null,
+     "value": null,
+     "verdict": "APPLIED",
+     "verdict_note": "정본 CAM cam_playmaker/Roaming과 일치 · 이 경기 단일 적합 .751 Δ.106 · 포커스(Roaming)는 이 인용이 말하지 않는다"
+    }
+   ],
+   "key_points": [
+    "원문 「this is unai system supports and wants them to try and play through, but there is sometimes it just isn't on」(에메리 시스템은 뒤에서부터 풀어 나오길 원하지만 때로는 그게 안 되는 상황이 있다) — auto-caption",
+    "원문 「he's playing in that 10 position up there with Nicholas Jackson really most of the time」(만잠비는 대부분 잭슨과 함께 위쪽 10번 자리에서 뛴다) — auto-caption",
+    "원문 「as his confidence grows … we'll see him running with the ball a bit more」(자신감이 붙으면 공을 몰고 가는 장면이 더 늘 것) — auto-caption",
+    "원문 「I don't think we ever had a grip on the game totally」(경기를 완전히 장악한 적은 없었다고 본다) — Tanswell 「not really controlling games」와 같은 방향",
+    "음바예·알리송 투입 후 「plenty of switching around … who's on the right, who's on the left」(좌우 위치가 계속 바뀌었다) — 2선 순환(obs#968) 정황"
+   ],
+   "kind": "감독회견",
+   "lang": "en-orig",
+   "obs_points": [],
+   "published": "2026-10-10",
+   "published_approx": 0,
+   "report_id": 51,
+   "summary": "구단 공식 경기 후 라이브(해설진 Alan McInally·Andy Townsend 추정, 진행 Kate Tracy). 감독 회견은 포함되지 않았다. 9′ 실점은 밍스가 안쪽으로 돌아서다 내준 「preventable」(막을 수 있던) 실수로, 에메리 시스템이 후방 빌드업을 요구한다는 맥락에서 논의. 만잠비는 「주로 잭슨 바로 뒤 10번」으로 뛰었고 볼 운반이 늘 여지가 있다고 평가. 결과는 공정, 통제는 못 했다는 데 해설진 동의.",
+   "team_code": "AVL",
+   "title": "VILLA 2-2 BRENTFORD || POST-MATCH LIVE || PRESENTED BY VISIT RWANDA",
+   "transcript_path": "reports/transcripts/0G-3rgIq77o.en-orig.md",
+   "url": "https://www.youtube.com/watch?v=0G-3rgIq77o",
+   "video_id": "0G-3rgIq77o"
+  },
+  {
+   "channel": "AVFC 공식",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-11] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 253,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "원문 「more or less I think the result is fair in 90 minutes … But we conceded more than I expected」(대체로 90분 결과는 공정하다고 본다 … 하지만 기대보다 많이 실점했다) — auto-caption",
+    "원문 「Nicolas Jackson is performing well … understanding everything tactically and everything with his power in our structure better」(잭슨은 잘하고 있다 … 전술적으로, 그리고 자기 힘을 우리 구조 안에서 더 잘 이해하고 있다) — auto-caption",
+    "원문 「like Mansour is the second match playing the starting 11」(만잠비처럼 선발 두 번째 경기인 선수도 있다) — 'Mansour'는 Manzambi 오인식 추정(auto-caption)",
+    "루제리 HT 교체·부엔디아→음바예·알리송/바클리 투입 사유: 이 영상에 없음"
+   ],
+   "kind": "감독회견",
+   "lang": "en-orig",
+   "obs_points": [],
+   "published": "2026-10-10",
+   "published_approx": 0,
+   "report_id": 51,
+   "summary": "에메리 경기 후 플래시 인터뷰(2분 33초, 구단 공식). 결과는 「fair」(공정)하다고 보면서도 실점이 기대보다 많았다고 진단. 신입·부상 복귀 선수들의 전술 이해 과정을 강조하고 잭슨의 구조 내 이해도 향상을 칭찬. 루제리 교체 사유·교체 의도·2선 순환 언급은 없다(정식 기자회견 아님).",
+   "team_code": "AVL",
+   "title": "\"This is the way how we can improve\" | Unai Emery post match reaction",
+   "transcript_path": "reports/transcripts/gxU0HMfb3Nk.en-orig.md",
+   "url": "https://www.youtube.com/watch?v=gxU0HMfb3Nk",
+   "video_id": "gxU0HMfb3Nk"
+  },
+  {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-05] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-11] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 251,
+   "impl_claims": [
+    {
+     "axis": "limit",
+     "field": "width_in_possession",
+     "focus": null,
+     "player": null,
+     "quote": "원문 「we're still so narrow, you know, we're so narrow, we're so easy to be jumped on」(여전히 너무 좁아서 압박당하기 쉽다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "narrow_no_wingers_invites_press",
+     "verdict": "HELD",
+     "verdict_note": "실측과 부분 충돌: 오른쪽 맥긴 터치라인(5열) .52·wm_winger/Attack .772로 오른쪽 폭은 있었다. 좁음은 왼쪽(부엔디아 IF .625) 쪽. Tanswell 21′은 와이드의 안쪽 이동을 「상대 풀백이 불편해한다」고 긍정. 재판정 조건: 상대 풀백 전진 패스·빌라 측면 폭 실측(WhoScored 위치 이벤트) 2경기"
+    },
+    {
+     "axis": "limit",
+     "field": "cb_buildup_weak_link",
+     "focus": null,
+     "player": "밍스",
+     "quote": "원문 「Opposition teams will try and press him and then they adjust their team so they box him in」(상대는 밍스를 압박하도록 팀을 조정해 가둔다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "mings_targeted_by_designed_press",
+     "verdict": "PENDING",
+     "verdict_note": "Tanswell 14′(브렌트퍼드가 첫 골킥부터 밍스에게 공을 내주도록 유도) + 이 영상 — 독립 2소스 일치. 밍스 선발 시 처방(cb_bpd/Aggressive 유지 vs 덜 관여하는 역할) 변경은 사용자 판단"
+    },
+    {
+     "axis": "limit",
+     "field": "dm_isolation",
+     "focus": null,
+     "player": "카마라",
+     "quote": "원문 「I don't think that midfield's been protected enough with what's around it. I feel like it's quite isolated at times」(미드필드가 주변으로부터 충분히 보호받지 못하고 때때로 고립된다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "kamara_isolated_by_narrow_shape",
+     "verdict": "HELD",
+     "verdict_note": "이 경기 카마라 평점 7.3·경합 9-4 우위로 실측상 손해 미확인. 재판정 조건: 카마라 구역 상대 통과 패스 수(WhoScored) 2경기 이상"
+    }
+   ],
+   "key_points": [
+    "원문 「we're still so narrow … we're so easy to be jumped on」(우리는 여전히 너무 좁다 … 압박당하기 너무 쉽다) — auto-caption",
+    "원문 「Tyrone Mings drift in field … He should just stay on the outside and play it down the line」(밍스가 안쪽으로 흘러 들어간다 … 바깥에 머물며 라인 따라 차야 했다) — 9′ 실점 장면, auto-caption",
+    "원문 「Opposition teams will try and press him and then they adjust their team so they box him in」(상대는 밍스를 압박하도록 팀을 조정해 그를 가둔다) — Tanswell 14′ 「showing the ball to Mings」와 독립 일치",
+    "원문 「I don't think that midfield's been protected enough … it's quite isolated at times」(카마라 주변 미드필드가 충분히 보호받지 못해 고립된다) — auto-caption",
+    "복스팝: 「Gomez had a good game again. He was solid」(고메스는 또 좋은 경기, 견실했다) · 두 번째 실점 「Cash … saying to Allison … go out to get them, then he had to cover」(캐시가 알리송에게 나가라 했고 자신이 커버해야 했다)",
+    "⚠️ 전사에 26/27 스쿼드에 없는 이름(Partey·El Ghazi·Maguire·Digne 등)이 섞여 나온다 — 자동 자막 오인식 또는 복스팝 팬 착오. 인물명은 실측으로만 확정"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-10",
+   "published_approx": 0,
+   "report_id": 51,
+   "summary": "UTV 경기 반응(진행자 독백 7분 + 팬 복스팝). 빌라가 「너무 좁다」(윙어 부재)는 진단 — 상대가 앞에서 압박하고 풀백으로 쉽게 통과했다. 밍스는 빌드업 능력이 부족해 상대가 그를 표적으로 압박을 설계한다(경기 전 전술 분석에서 예고했다고 주장). 카마라는 주변 보호가 부족해 고립. 잭슨·만잠비 긍정, 맥긴 「dogged」(끈질긴). 복스팝: 에메리의 통제 철학인데 통제가 없었다 · 두 번째 실점은 아예르 한 명이 그대로 통과 · 고메스 견실.",
+   "team_code": "AVL",
+   "title": "SOME OF THIS DOESN'T MAKE SENSE! | ASTON VILLA 2-2 BRENTFORD",
+   "transcript_path": "reports/transcripts/HKPnsNlcdEQ.en.md",
+   "url": "https://www.youtube.com/watch?v=HKPnsNlcdEQ",
+   "video_id": "HKPnsNlcdEQ"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 249,
    "impl_claims": [
     {
@@ -401,7 +614,7 @@
      "team_code": "AVL",
      "value": "kamara_gomes_neither_dominant",
      "verdict": "PENDING",
-     "verdict_note": "이 경기 실측: 카마라 패스 42(성공 35)·터치 48 · 주앙 고메스 패스·터치는 비슷한 대역이고 어느 쪽도 팀 배급을 독점하지 않는다. 다만 「지배하려 하지 않는다」는 성향 주장이라 단일 경기로 판정하지 않는다. ⛔ 재판정 조건: 두 선수 동시 선발 3경기에서 팀 패스 점유율 상위 1·2위를 CB가 차지하는 패턴이 반복되면 APPLIED.\n[D+3 2026-09-21 — 조건 미충족, PENDING 유지] 카마라·고메스 동시 선발 공식전은 이번 경기까지 4경기(08-12 슈퍼컵·08-23 PL·09-08 UCL·09-19 PL)이지만 08-23은 stats_json 결손으로 패스 집계 불가. 패스량 랭킹: 08-12 슈퍼컵(부엔디아1·캐시2·린델뢰프3, 카마라8·고메스9 — CB 상위 아님) / 09-08 UCL(파우 토레스1·린델뢰프2 — **CB 듀오가 상위 1·2위**, 카마라3·고메스5) / 09-19 이 경기(밍스1·카마라2 — CB 1명만 상위, 고메스는 순위 밖). ⇒ 「CB가 1·2위」 패턴은 3경기 중 1경기(09-08)에서만 나타나 **반복 조건 미충족**. PENDING 유지.\n[2026-10-11 스케줄 재확인(avl-kamara-gomes-cocheck-1010) — PENDING 유지 · 사람 판단 요청] 09-19 이후 AVL 공식전은 10-10 PL 브렌트퍼드전(match_id=115) 1경기(10-02 세비야전은 친선 — 제외). 카마라·고메스 둘 다 선발. SofaScore pass_total 랭킹: 밍스(LCB) 47 1위 · 린델뢰프(RCB) 46 2위 · 카마라 44 3위 · 스즈키 42 · 고메스·캐시 40 공동 5위 ⇒ **CB 듀오 1·2위 ✓**. 누적(패스 집계 가능한 동시 선발 공식전, 08-23 결손 제외): 08-12 ✗ / 09-08 ✓ / 09-19 ✗ / 10-10 ✓ = **2/4**. ⚠️ 판정 보류 사유: 원 조건 「3경기에서 반복」이 '2회 이상 출현(=반복)'인지 '3경기 중 다수/최근 3경기 기준(09-08~10-10 = 2/3)'인지 불명확하고, 전체 표본으론 50%다. 리포트 #51(reports/match-watch/2026-10-10-avl-brentford.md §7-1)은 「다음 동시 선발에서 한 번 더 나오면 APPLIED」로 적었다 — 기준 확정은 사용자 판단에 맡긴다. 참고: WhoScored 이벤트 집계로는 캐시 51·밍스 47·스즈키 46·린델뢰프 46으로 순위가 달라진다(정의 차이 — 판정은 SofaScore 기준 유지). 이월: 다음 카마라·고메스 동시 선발 공식전에서 재확인."
+     "verdict_note": "이 경기 실측: 카마라 패스 42(성공 35)·터치 48 · 주앙 고메스 패스·터치는 비슷한 대역이고 어느 쪽도 팀 배급을 독점하지 않는다. 다만 「지배하려 하지 않는다」는 성향 주장이라 단일 경기로 판정하지 않는다. ⛔ 재판정 조건: 두 선수 동시 선발 3경기에서 팀 패스 점유율 상위 1·2위를 CB가 차지하는 패턴이 반복되면 APPLIED.\n[D+3 2026-09-21 — 조건 미충족, PENDING 유지] 카마라·고메스 동시 선발 공식전은 이번 경기까지 4경기(08-12 슈퍼컵·08-23 PL·09-08 UCL·09-19 PL)이지만 08-23은 stats_json 결손으로 패스 집계 불가. 패스량 랭킹: 08-12 슈퍼컵(부엔디아1·캐시2·린델뢰프3, 카마라8·고메스9 — CB 상위 아님) / 09-08 UCL(파우 토레스1·린델뢰프2 — **CB 듀오가 상위 1·2위**, 카마라3·고메스5) / 09-19 이 경기(밍스1·카마라2 — CB 1명만 상위, 고메스는 순위 밖). ⇒ 「CB가 1·2위」 패턴은 3경기 중 1경기(09-08)에서만 나타나 **반복 조건 미충족**. PENDING 유지.\n[2026-10-11 스케줄 재확인(avl-kamara-gomes-cocheck-1010) — PENDING 유지 · 사람 판단 요청] 09-19 이후 AVL 공식전은 10-10 PL 브렌트퍼드전(match_id=115) 1경기(10-02 세비야전은 친선 — 제외). 카마라·고메스 둘 다 선발. SofaScore pass_total 랭킹: 밍스(LCB) 47 1위 · 린델뢰프(RCB) 46 2위 · 카마라 44 3위 · 스즈키 42 · 고메스·캐시 40 공동 5위 ⇒ **CB 듀오 1·2위 ✓**. 누적(패스 집계 가능한 동시 선발 공식전, 08-23 결손 제외): 08-12 ✗ / 09-08 ✓ / 09-19 ✗ / 10-10 ✓ = **2/4**. ⚠️ 판정 보류 사유: 원 조건 「3경기에서 반복」이 '2회 이상 출현(=반복)'인지 '3경기 중 다수/최근 3경기 기준(09-08~10-10 = 2/3)'인지 불명확하고, 전체 표본으론 50%다. 리포트 #51(reports/match-watch/2026-10-10-avl-brentford.md §7-1)은 「다음 동시 선발에서 한 번 더 나오면 APPLIED」로 적었다 — 기준 확정은 사용자 판단에 맡긴다. 참고: WhoScored 이벤트 집계로는 캐시 51·밍스 47·스즈키 46·린델뢰프 46으로 순위가 달라진다(정의 차이 — 판정은 SofaScore 기준 유지). 이월: 다음 카마라·고메스 동시 선발 공식전에서 재확인.\n[2026-10-11 사용자 결정] 2/4(최근 3경기 2/3)로는 APPLIED하지 않고 **다음 카마라·고메스 동시 선발 공식전 1경기를 더 본 뒤 판정**한다. 그 경기에서 CB 듀오가 패스량(SofaScore pass_total) 1·2위면 3회째 출현 → APPLIED 후보로 사람 판단에 올린다.\n[D+1 2026-10-11 브렌트퍼드전 추적] 새 패스 증거 없음(사용자 결정대로 다음 동시 선발 경기 대기). 정황만 추가: 1874 「Brenford really pressed him [Gomes] … from goal kicks」(골킥 빌드업 때 고메스를 집중 압박) — 고메스가 배급 축이 되지 못한 원인 후보(상대 표적 압박). Tanswell HT 「not sure if he can do that with Gomes & Kamara, who love duels」. PENDING 유지."
     }
    ],
    "key_points": [
@@ -1665,7 +1878,7 @@
      "team_code": "AVL",
      "value": "mcginn_fails_to_track_runners",
      "verdict": "HELD",
-     "verdict_note": "⛔ 우리 이벤트 데이터는 **추적 실패**(상대 침투를 놓친 장면)를 담지 않는다 — 수비액션은 개입한 것만 기록되고 개입하지 못한 것은 결손으로 남는다. 정황: 맥긴은 후반 수비액션 8건으로 우측 최저 깊이(x 32.1)까지 내려갔으나 그 구간에 토트넘의 빌라 우측 침투가 39→84로 늘었다. ⛔ 재판정 조건: ⑴ 실점·빅찬스 시퀀스에서 맥긴이 마크를 놓친 장면이 독립 2소스로 특정되거나 ⑵ 같은 지적이 2경기째 누적되면 판정한다.\n[D+3 2026-09-21 — 조건 미충족, HELD 유지] 독립 2소스 검색 재시도(영어 「McGinn tracking runners Tottenham Aston Villa deep block」) — 신규 0건, 기존 하이라이트·리포트 재인용뿐. 같은 지적의 2경기째 누적도 없다(video_impl_claims에 field='deep_block_runner_tracking' 행이 이 1건뿐). 조건 그대로 유지."
+     "verdict_note": "⛔ 우리 이벤트 데이터는 **추적 실패**(상대 침투를 놓친 장면)를 담지 않는다 — 수비액션은 개입한 것만 기록되고 개입하지 못한 것은 결손으로 남는다. 정황: 맥긴은 후반 수비액션 8건으로 우측 최저 깊이(x 32.1)까지 내려갔으나 그 구간에 토트넘의 빌라 우측 침투가 39→84로 늘었다. ⛔ 재판정 조건: ⑴ 실점·빅찬스 시퀀스에서 맥긴이 마크를 놓친 장면이 독립 2소스로 특정되거나 ⑵ 같은 지적이 2경기째 누적되면 판정한다.\n[D+3 2026-09-21 — 조건 미충족, HELD 유지] 독립 2소스 검색 재시도(영어 「McGinn tracking runners Tottenham Aston Villa deep block」) — 신규 0건, 기존 하이라이트·리포트 재인용뿐. 같은 지적의 2경기째 누적도 없다(video_impl_claims에 field='deep_block_runner_tracking' 행이 이 1건뿐). 조건 그대로 유지.\n[D+1 2026-10-11 브렌트퍼드전 추적 — HELD 유지] 79′ 아예르 득점 장면 지적은 팀 단위(Tanswell 「#AVFC switch off and don't track Ajer」 · 1874 「Christopher should not be running through」 · UTV 복스팝 「Cash … saying to Allison … go out」 · AV Review는 고메스 개입 실패 지목) — **맥긴 특정 지적 0건**. 조건 불변."
     }
    ],
    "key_points": [
@@ -9528,6 +9741,12 @@
   ],
   "50": [
    249
+  ],
+  "51": [
+   252,
+   250,
+   253,
+   251
   ]
  }
 }

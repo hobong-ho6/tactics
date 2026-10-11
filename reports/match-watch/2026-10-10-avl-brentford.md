@@ -183,3 +183,54 @@
 - 추가: `matches` 1행(id 115) · `player_matches` 15행(국면 그리드 15행 포함) · `team_match_stats` 1행(xG 4종 FotMob 동일 스냅샷 · PPDA·def_x) · `match_events` 21행 · `match_shots` 34행 · `match_period_stats` 2행.
 - 갱신: `prescriptions` measured 4행 재집계(G18).
 - 한계: 터치 기반 히트맵 · 교체 4명 짧은 표본 · 2선 순환은 평균 위치가 지운다(영상 필요).
+
+## D+1 추적 (2026-10-11)
+
+> 수집 시각 2026-10-11 KST · 회차: 스케줄 `mw-avl-brentford-d1` · 당일 절(§1~9)은 수정하지 않았다.
+
+### D1-1. 에메리 경기 후 발언 — ✅ 확보(정식 회견 전문은 미확보 · 매체 발췌 + 구단 플래시 인터뷰)
+- **루제리 HT 교체 = 햄스트링 부상 확정**: 원문 「Ruggeri is hamstring」(루제리는 햄스트링이다 — Hayters TV, 10-10 19:44, 1차 확인) · 「It's his hamstring. We will check tomorrow.」(햄스트링이다. 내일 검사한다 — RotoWire). PA(Express & Star 등 · **원문 403, 검색 스니펫만**): 일요일 스캔 · 「I will try to keep our structure without our two left-footed full-backs in Maatsen and Ruggeri」(왼발 풀백 마트선·루제리 없이도 구조를 바꾸지 않고 유지하겠다) · 완비사카가 왼쪽 풀백을 이어 맡을 전망. ⇒ §4-1 obs#967 「부상」 판정 **확증**(obs#983).
+- **자기 진단 = 통제 부족**(BBC MOTD 발췌, Yahoo 재게재): 「We must try to control the match and structure better with possession and positioning」(점유와 포지셔닝으로 경기와 구조를 더 잘 통제해야 한다) · 「We were sometimes in a hurry and losing the ball」(때때로 서두르다 공을 잃었다) · ESPN/PA: 「We were expecting to try and dominate the ball more than we did」(실제보다 공을 더 지배하길 기대했다) → obs#986. ⚠️ 팀 빌드업 정본 Counter를 바꿀 근거는 아니다(감독 목표 ≠ 이 경기 실측 스타일) — 추가 관찰.
+- 구단 플래시 인터뷰(gxU0HMfb3Nk · auto-caption · VAVEL 정리본과 문구 일치): 「more or less I think the result is fair in 90 minutes … we conceded more than I expected」(대체로 결과는 공정, 하지만 기대보다 많이 실점) · 「Nicolas Jackson … understanding everything tactically and everything with his power in our structure better」(잭슨은 자기 힘을 우리 구조 안에서 점점 더 잘 이해하고 있다) · 「like Johan Manzambi – it's his second match playing in the starting 11」(만잠비처럼 선발 두 번째 경기인 선수도 있다).
+- ❌ **미확보**: 부엔디아→음바예·알리송·바클리 교체 의도, 2선 순환, 만잠비 「play free」 후속, 스즈키 빌드업, 고메스·카마라 언급 — 확인한 어느 매체 발췌에도 없다. 구단 「POST-MATCH LIVE」(0G-3rgIq77o)는 **해설진 토크만 있고 회견은 들어 있지 않다**(전사로 확인).
+- 🇪🇸 스페인어: EFE 「2-2. El Aston Villa de Emery, estancado」(에메리의 빌라, 정체) — **인용 없음**. AS·Marca·Mundo Deportivo·El Correo·Noticias de Gipuzkoa 0건(검색어: 「Unai Emery Brentford empate declaraciones Aston Villa」 · 「Emery Brentford rueda de prensa Villa Park Ruggeri」).
+
+### D1-2. 키스 앤드루스(브렌트퍼드) — ✅ 확보 · 빌라 구조 언급 0
+- Sky 회견: 「We could've won it, could've lost it」(이길 수도, 질 수도 있었다) · beIN/MOTD: 「Torn to be honest … we're also up against a team who I thought were just starting to click before the international break」(솔직히 복잡하다 … 대표팀 휴식기 직전 막 맞아 들어가던 팀을 상대했다).
+- ⚠️ **밍스·골킥 압박 계획 언급 없음.** 브렌트퍼드 구단 리포트는 장면만 서술: 「Tyrone Mings was put under pressure by two Bees players」(밍스가 브렌트퍼드 선수 2명에게 압박받았다). ⇒ 「설계된 압박 함정」(Tanswell 14′)은 기자·팬·구단 리포트 판단이고 **상대 감독 확인은 없다**(obs#984).
+
+### D1-3. 팬 채널·구단 영상 — 전사 4편 · 요약 + 구현 주장 9행(G17)
+| 영상 | 게시 | 종류 | 핵심 | impl_claims |
+|---|---|---|---|---|
+| AVFC 「Unai Emery post match reaction」 gxU0HMfb3Nk | 10-10 | 플래시 인터뷰 | 위 D1-1 | none 1 |
+| AVFC 「POST-MATCH LIVE」 0G-3rgIq77o | 10-10 | 해설진 토크 | 만잠비 「10 position … with Jackson most of the time」(대부분 잭슨 바로 뒤 10번) · 「unai system … wants them to try and play through」(에메리 시스템은 뒤에서 풀어 나오길 원한다) · 음바예·알리송 투입 후 「who's on the right, who's on the left」(누가 오른쪽이고 왼쪽인지 계속 바뀌었다) | 만잠비 cam_playmaker APPLIED · 골킥 빌드업 NA |
+| UTV 「SOME OF THIS DOESN'T MAKE SENSE!」 HKPnsNlcdEQ | 10-10 | 경기 반응+복스팝 | 「we're still so narrow … so easy to be jumped on」(여전히 너무 좁아 압박당하기 쉽다) · 밍스 표적 압박 · 카마라 고립 · 고메스 견실 | 폭 limit HELD · 밍스 limit PENDING · 카마라 limit HELD |
+| 1874 「Plenty Of Positives」 aEKmZ70siXA | 10-11 | 경기 반응 라이브 | 고메스 사실상 MOTM · 골킥 때 고메스 집중 압박 · 루제리 HT 이탈로 왼쪽 자연 폭 상실 · 음바예 좌우 위협 · 만잠비 후반 체력 저하 | 고메스 dm_dlp APPLIED · 골킥 수신 HELD · 음바예 IF PENDING |
+
+- The Villans: 경기 후 영상 **미게시**(최신은 10-08 프리뷰 「Dismantling Keith Andrews…」) → D+2 재확인.
+- 1874: 월요일(10-12) 「five things」 후속 쇼 예고 → D+2·D+3 대상.
+- ⚠️ UTV 복스팝 전사에 26/27 스쿼드에 없는 이름(Partey·El Ghazi·Maguire·Digne 등)이 섞여 있다 — 자동 자막 오인식 또는 팬 착오. 인물명은 실측으로만 확정했다.
+- ⚠️ UTV의 「너무 좁다」는 **실측과 일부 충돌**: 오른쪽은 맥긴 터치라인 .52·wm_winger/Attack로 폭이 있었다. 좁았던 쪽은 왼쪽(부엔디아 IF .625) — HELD.
+
+### D1-4. Tanswell · 다국어 추가분
+- **Bluesky**: D+0 수집(26건) 이후 신규 **0건**(마지막 16:48Z — 앤드루스의 3면 경기장 발언 관련). 종료 직후분은 D+0 §8-2에 이미 반영. 추가 확인한 문장: 「Lack of control means defence is exposed more, broken upon more & feel slightly more fragile」(통제가 없으니 수비가 더 노출되고 더 자주 뚫리며 조금 더 취약해 보인다). X는 접근 불가. The Athletic 기사 0건.
+- 🇯🇵 스즈키: Football Zone·Goal JP·도쿄스포츠·닛칸·Soccer King·풋볼채널 — 첫 실점 「ほとんど不可能だった」(거의 불가능했다 · Birmingham Live 재인용) · 「ビルドアップにも何度も関わった」(빌드업에도 여러 번 관여했다 · Soccer King) · 「ハーフウェーライン手前まで飛び出してクリア」(하프라인 바로 앞까지 나와 걷어냈다 · 닛칸) — **GK 정본 gk_sweeper/Build-Up(f0c29e0)과 같은 방향**. 실점 실수는 전부 밍스 「つなぎのミス」(연결 실수)로 서술 · 스즈키 빌드업 비판 0.
+- 🇨🇭/🇫🇷 만잠비: Bluewin(Keystone-SDA, 영문판만 확보) 「Manzambi provided the final pass for the second goal」(두 번째 골의 마지막 패스) · 24heures 스니펫 — 전술 서술 0. Blick·RTS·Le Matin·L'Équipe 0건.
+- 🇮🇹 루제리: **0건**(「Ruggeri infortunio Aston Villa Brentford」 · 「bicipite femorale」 · 「problema muscolare … esami」). 터키어 매체(페네르바체전 프레임)만 다룸 — 미열람.
+- 🇧🇷 고메스·알리송: ge.globo·UOL·Lance **0건**(「João Gomes Aston Villa Brentford empate」 · 「Alysson Aston Villa Brentford ge.globo」 · 「Aston Villa empata com Brentford João Gomes Alysson」).
+- 전술 블로그: Aston Villa Review(서브스택) 평점 — 「Aston Villa don't always have the answer to being systematically interrupted」(빌라는 체계적으로 끊기는 경기에 늘 답을 갖고 있진 않다 · 브렌트퍼드 파울 24) · 완비사카 「Every weakness he has in possession was amplified on his left foot」(소유 시 약점이 왼발에서 증폭됐다 — §4 완비사카 왼쪽 수행의 비용) · 음바예 「Came in on the right, with McGinn moving more central」. 「match conclusions」 본편은 유료·10-11 게시 예정 → D+2. 7500 to Holte·Coaches' Voice·TFA 0건.
+
+### D1-5. 중점 검증 판정
+| 항목 | D+0 | D+1 판정 |
+|---|---|---|
+| 루제리 부상(obs#967) | SofaScore 부상 교체 + Tanswell 테이핑 | ✅ **확정** — 감독 「hamstring」(obs#983) |
+| 2선 순환(obs#968·971·974) | 평균 위치가 순환을 지움 | ✅ 64′ 배치 독립 2소스 확인 · 이후 좌우 교대는 1874·구단 해설 정황(obs#985). 장면 빈도는 영상 미확인 |
+| 알리송 국면별 움직임(obs#980) | 표본 무효 | 신규 근거 0 — UTV 복스팝(두 번째 실점 때 캐시가 알리송에게 나가라 지시) 1건뿐, 판정 불가 유지 |
+| claim #167 | 2/4(최근 3경기 2/3) · 사용자 결정: 다음 동시 선발 대기 | **PENDING 유지** — 새 패스 증거 없음. 정황: 1874 「골킥 때 고메스 집중 압박」 |
+| claim #169 | HELD | **HELD 유지** — 79′ 지적은 전부 팀 단위, 맥긴 특정 0건 |
+| 밍스 표적 압박 | Tanswell 1소스 | 독립 3소스 일치 · 상대 감독 확인 없음(obs#984) · 처방 변경은 사용자 판단 |
+
+### D1-6. 상태
+- `match_reports` #51은 **draft 유지**: 감독 발언은 확보했지만 **정식 회견 전문이 없고**(매체 발췌만) D+2·D+3 추적이 남았다. G12 데이터 조건 자체는 D+0에서 충족.
+- 반영: `observations` #983~986 · `player_duties` 4행에 덧붙임(고메스 #22 · 음바예 #245 · 밍스 #160 · 루제리 #223) · `match_videos` 4행(요약·key_points) · `video_impl_claims` 9행 · claim #167·#169 verdict_note 덧붙임.
+- 다음 회차(D+2) 우선: 1874 「five things」 · The Villans 경기 후 영상 · Aston Villa Review 「match conclusions」 · 루제리 스캔 결과 · 에메리 페네르바체전 사전 회견(10-14 예상, 루제리·완비사카 왼쪽 언급 가능).
