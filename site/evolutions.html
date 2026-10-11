@@ -1181,6 +1181,13 @@ function noPathHTML(c, team){
     <div class="plist">${rs.map(r => `<button class="t0 fc-help" data-p="${r.player_id}" data-tip="${esc(NOPATH_TIP)}" style="border-style:dashed">${
       STATE[String(r.player_id)] ? '★ ' : ''}${esc(r.name)}${r.is_base ? '' : '<small> ·특별카드</small>'}</button>`).join('')}</div></div>`;
 }
+/* ⛔ 필드 전용 진화를 GK에게 권하지 않는다(2026-10-11 사용자 지적 — Technical(PlayStyle) 「최적 선수」가 GK 비조였다).
+   GK가 받는 게 하나라도 있으면(GK 속성 · OVR · GK PlayStyle 28~33 · GK 역할 1·2·45·101·102·145) 그대로 둔다. */
+const GK_PS = new Set([28, 29, 30, 31, 32, 33]), GK_ROLE = new Set([1, 2, 45, 101, 102, 145]);
+const gkUseful = c => (J(c.levels, []) || []).some(lv =>
+  [...(lv.upgrades || []), ...(lv.upgradeOptions || []).flatMap(o => Array.isArray(o) ? o : (o.upgrades || []))].some(u =>
+    /^(attribute_gk_|gk_face_)/.test(u.upgrade) || u.upgrade === 'overall'
+    || (u.upgrade === 'play_style' && GK_PS.has(+u.value)) || (/^role_plus/.test(u.upgrade) && GK_ROLE.has(+u.value))));
 let RANKED = {};
 function buildRanked(){
   const acc = accountObj();
@@ -1302,9 +1309,11 @@ function renderCatalog(team = CAT_TEAM){
     // 이 진화를 포함한 경로를 가진 우리 선수 — 첫 단계로 포함하면 바로 적용 가능, 아니면 N단계째
     const used = CONSUMED[c.evo_id];
     const apps = [];
+    const gkOk = gkUseful(c);
     for (const [pid, rows] of Object.entries(RANKED)) for (const r of rows){
       if (team !== 'ALL' && TEAM_OF[pid] !== team) break;
       const k = r.ids.indexOf(c.evo_id); if (k < 0) continue;
+      if (!gkOk && 'DIV' in (J(r.six_before, {}) || {})) break;   // GK 카드는 앞면이 DIV/HAN/…다
       /* ⛔ 경로도 base 카드 기준이다 — **첫 단계로 바로 걸 수 있다고 적힌 경우**(k===0)만
          지금 상태로 다시 본다. k>0이면 앞 단계를 밟은 뒤라 지금 값으로 판정할 수 없다. */
       if (k === 0 && !stillEligible(c, +pid)) continue;
@@ -1313,7 +1322,9 @@ function renderCatalog(team = CAT_TEAM){
     }
     // 진화별 최적 선수: 처방 역할 적중 → 내 구단 보유(사서 쓸 필요 없음) → 즉시 적용(첫 단계) → 역할 가중 점수 → OVR 상승 → 시세 낮은 순
     apps.sort((a, b) => b.tier - a.tier || (b.owned - a.owned) || a.k - b.k || b.score - a.score || b.d - a.d || (a.price ?? 9e9) - (b.price ?? 9e9));
-    const best = apps[0];
+    /* ⛔ 보유 선수가 걸 수 있는데(아래 「경로 미제공」 ★) 미보유 선수를 「최적」으로 올리지 않는다(2026-10-11 사용자 지적
+       「난 비조 카드도 없는데」). 보유 후보는 fut.gg가 경로를 안 줘서 apps에 못 들어올 뿐이다 — 정렬의 「보유 우선」이 닿지 않는다. */
+    const best = apps[0] && (apps[0].owned || !noPath(c, team).some(r => STATE[String(r.player_id)])) ? apps[0] : null;
     const dl = days(c.end_submission_time || c.end_time);
     return `<div class="evo-card${c.is_expired || used?.exhausted ? ' expired' : ''}" id="ev${c.evo_id}">
       <h3>${evoName(c)}${c.name_kr ? ` <small class="dim" style="font-weight:400">${esc(c.name)}</small>` : ''} ${c.repeatability > 1 ? `<span class="chip">반복 ${c.repeatability}회</span>` : '<span class="chip dim">1회성</span>'}${c.is_reward ? '<span class="chip">보상형</span>' : ''}${
