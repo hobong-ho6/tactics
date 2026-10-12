@@ -8,13 +8,21 @@
 
 ## 현재 상태
 
+> **2026-10-12 KST 23시 · 계정 전환 후 예약 복원 + 만잠비 아카데미 II · PC `AD03230205ui-iMac` · `main` · 데이터 커밋 `31a86ec`** · G1~G34 통과(ship.py).
+> **ⓐ 🔴 계정이 바뀌며 예약 레지스트리가 통째로 비었다**(`list_scheduled_tasks` 0건). `~/.claude/scheduled-tasks/*/SKILL.md` 프롬프트 파일은 남아 있었고,
+> 옛 계정의 레지스트리 파일(`~/Library/Application Support/Claude/claude-code-sessions/<옛 계정>/…/scheduled-tasks.json`, 10-12 21:11 스냅샷)에서
+> **enabled였던 9건만** 같은 cron·fireAt으로 재등록한 뒤 SKILL.md 원문을 바이트 단위로 되돌렸다(백업 `~/.claude/scheduled-tasks-backup-20261012/`). 목록은 아래 「자동화」.
+> ⇒ 직전 회차의 「D+N 후속 예약 4건 미등록」은 **이번에 해소**(5건 등록 — LIV D+2 포함).
+> ⛔ **도구 승인은 옮겨 오지 않았다** — 브라우저를 쓰는 `club-sync-daily`·`match-watch-weekly`는 「Run now」로 선승인해야 자동 회차가 권한 창에서 안 멈춘다(사용자 할 일).
+> **ⓑ 만잠비 퓨처 스타 아카데미 II 완료**(사용자 보고) — 3단계 갈래 ② 피지컬(파워하우스, `--pick 1`) · OVR 81→**82** · DEF 71→72 · PHY 74→**78** ·
+> `evo_detect.py --verify` 29속성 일치 · 원장 #97~99. 다음은 **III(10-13 공개)·IV(10-16)** 재비교(memory `manzambi-future-stars-academy`).
+
 > **2026-10-12 KST 20시 · 주간 경기 수집(스케줄 `match-watch-weekly`) · PC `AD03230205ui-iMac` · `main` · 데이터 커밋 `3918bfe`** · G1~G33 전항 통과.
 > **ⓐ 신규 3경기 적재** — CHE 5-1 본머스(10-10 · `report#52`) · LIV 0-3 맨시티(10-11 · `#53`) · ATM 2-1 알라베스(10-10 원정 · `#54`), 전부 **draft**. AVL 브렌트포드는 기존 적재(D+3 예약 10-13 19:00 유효).
 > player_matches 48(국면 그리드 48) · team_match_stats 3(xG FotMob 동일 스냅샷) · events/shots/period(하프 PPDA 포함) · 경기 프리셋 3(LIV는 퇴장 오염 DIVERGE) · 처방 48 · 전사 11편+요약+claims 12.
 > **ⓑ 판정** — CHE PL 4경기 연속 xG 열세(5-1은 마무리 과잉, obs#991) · LIV 11대11 PPDA 5.97→퇴장 후 23.4(obs#994) · ATM 「요렌테 3번째 CB」 서사 **실측 기각**(obs#996)·줄리아노 하강 5백 실측 일치(#997).
 > measured 재집계 6 · **신규 #516 헨더슨 LCM**(n=2 · Δ.021 무결정) → **duty #246 REJECTED**(dlp 가설 Δ.124). manager_profiles 6축 덧붙임.
-> 🔴 **D+N 후속 예약 4건 미등록** — 비대화형 회차라 `create_scheduled_task`가 사람 승인 필요로 거부됐다. 프롬프트 원문은
-> `reports/match-watch/followups/2026-10-12-pending-schedules.md`(CHE·ATM D+3 10-13 · LIV D+2 10-13 · LIV D+3 10-14). **다음 대화형 세션에서 등록하거나 수동 실행.**
+> ✅ ~~D+N 후속 예약 4건 미등록~~ — 같은 날 23시 대화형 세션이 등록 완료(위 블록 ⓐ). 프롬프트 원문 `reports/match-watch/followups/2026-10-12-pending-schedules.md`.
 > ⚠️ 기타: ATM regime 4 슬롯표에 CAM 없음(바리오스·이강인을 RAM으로 귀속 — 4-2-3-1 2경기 더 나오면 슬롯 세트 추가 검토) · duty #246 억제 토큰 「조건 미충족」이 구 노트에 남아 refresh 출력의 억제 목록에 계속 보인다(상태는 REJECTED).
 > SofaScore는 커스텀 UA를 주면 403 — **기본 UA headless**로 열어야 통과(collect_event.py와 같음).
 
@@ -79,26 +87,30 @@
 ## 자동화
 
 - ⚠️ **스케줄 정본은 `mcp__scheduled-tasks__list_scheduled_tasks`다** — `CronList`는 다른 시스템이라 0건으로 보인다(09-03 오판 확정).
-- 🔴🔴 **스케줄 목록이 두 번째로 유실됐다(09-20 확인).** 09-17에 통째로 비었던 것을 재생성했는데, **09-17~09-18에 만든 4건이 또 사라졌다** —
-  `henderson-che-debut-recollect`(역할은 09-19 세션이 수동으로 완수) · `transfer-watch-daily` · `futgg-prices-daily` · 스퍼스/코번트리/오사수나 D+2 일회성 3건.
-  대신 09-14 이전 목록(`weekly-unifi-now-sync` 포함)이 되살아났다 — **저장소가 옛 스냅샷으로 롤백된 모양새**다. 원인 미확인.
-  ⇒ ⭐ **정기 수집은 스케줄을 신뢰하지 말고 회차마다 `list_scheduled_tasks`로 실재를 확인한다.** 재생성 여부는 사용자 판단(할 일 0-6).
-- ⭐⭐ **`club-sync-daily` 신설(09-22, 매일 10:00·21:00)** — `/club-sync` 런북을 그대로 돈다.
-  프롬프트에 **사전 승인 2건**을 박았다: 「Sync Club」 클릭은 승인됨 / 무변화면 조용히 종료.
-  ⛔ **처분 후보·진화 완주 추정·원장↔EA 불일치·정본과 갈리는 인게임 역할** 넷은 목록만 남기고 손대지 않는다.
-  ⛔ **첫 회차는 「Run now」로 직접 돌려 브라우저 권한을 선승인**해야 한다 — 안 하면 예약 회차가 권한 프롬프트에서 멈춘다.
-- 🔴 **예약 등록은 저장소 밖(`~/.claude/scheduled-tasks/`)이라 다른 PC에서 돌지 않는다**(09-22 확인).
-  런북(`.claude/skills/`)은 깃에 있어 따라오지만 **등록 자체는 이 PC 전용**이다. 다른 PC에서 쓰려면 재등록해야 한다.
-- **현재 살아 있는 정기 3건**: `match-watch-weekly`(월 10:06+지터) · `auto-react-observe-daily`(매일 21:08, 저장소 밖) · `weekly-unifi-now-sync`(월 10:03, **이 저장소 밖 타 프로젝트** — 09-17엔 「복원 않음」 결정이었으나 되살아나 있다).
-  ⛔ **스케줄 태스크는 자기 자신을 삭제할 수 없다** — 비활성화만 되고 삭제는 일반 세션에서 `mcp__scheduled-tasks__delete_scheduled_task`로 한다.
-- ⭐ **`fc27-patch-watch` 신설(09-21, 매일 10:07)** — EA FC27 피치노트·타이틀 업데이트를 확인해 **새 변경점만** `game_system_changes`에 적재하고 `reports/patch-watch/YYYY-MM-DD.md`를 발행한다(변경 없어도 발행).
-  프롬프트 정본은 `~/.claude/scheduled-tasks/fc27-patch-watch/SKILL.md`(자기완결형). ⛔ **1회차 미완료 — 권한 프롬프트 대기 중**(아래 WIP).
-- ✅ **일회성 4건 완료·자동비활성**: `mw-d2/d3-avl-tottenham-0919`(09-21·22) · `avl-tottenham-final-sweep-0922`(09-22 21:00 —
-  신규 1건: 스즈키 소속팀 옆구리 부상·대표팀 별도 메뉴, 이 경기 귀속 불가로 판정 무변경) · 스퍼스전 수집 **완전 종결**(위 ㊱ⓐ).
-  ⭐ 프롬프트를 **자기완결형**으로 썼다(경기 식별값·matchId·리포트 경로·미결 목록·접근 경로·배제 소스 포함) — **유실되어도 수동으로 그대로 돌릴 수 있다.** 2회 유실 이력에 대한 대비책이다.
-- ⏰ **`avl-kamara-gomes-cocheck-1010`(2026-10-12 12:00)** — claim #167(카마라·고메스 배급) 재판정. 브렌트포드전(10-10)
-  이후 정기 `match-watch-weekly`가 이미 수집했다는 전제로 조건만 확인(수집 자체는 안 함 — 미수집이면 판정 없이 보고만).
-- 재생성이 필요하면 원 사양: `transfer-watch-daily`(매일 09:05·21:05, 사용자 승인 09-17) · `futgg-prices-daily`(매일 09:15+지터, FC27 시세 스냅샷 → export·dump·커밋 — 출시 09-25 전이면 NULL을 그대로 쌓고 「미형성」 보고).
+- 🔴🔴🔴 **예약 유실 3회차(10-12 · 계정 전환)** — 1·2회차(09-17·09-20)는 원인 미확인 롤백, 3회차는 **계정이 바뀌어 레지스트리가 새 계정 쪽으로 비었다.**
+  ⭐ **복원 경로(실증 10-12)**: 프롬프트는 `~/.claude/scheduled-tasks/<id>/SKILL.md`에 남는다. 레지스트리(cron·fireAt·enabled)는
+  `~/Library/Application Support/Claude/claude-code-sessions/<계정>/<org>/scheduled-tasks.json`에 계정별로 있다 — 옛 파일에서 enabled만 골라
+  `create_scheduled_task`로 재등록(⛔ create는 SKILL.md를 덮어쓴다 → **먼저 백업, 등록 뒤 원문 복사**).
+  ⇒ 정기 수집은 여전히 **회차마다 `list_scheduled_tasks`로 실재를 확인한다.** 도구 승인은 태스크별 저장이라 재등록하면 **다시 「Run now」 선승인**이 필요하다.
+- 🔴 **예약 등록은 저장소 밖이라 다른 PC(`AL02359162`)에서 돌지 않는다**(09-22 확인) — 런북은 깃으로 따라오지만 등록은 이 PC 전용.
+- **현재 등록(10-12 23시 복원 · 9건)**:
+
+  | 종류 | id | 일정(KST) | 비고 |
+  |---|---|---|---|
+  | 정기 | `match-watch-weekly` | 월 10:00(+지터) | ⛔ Run now 선승인 필요 |
+  | 정기 | `club-sync-daily` | 매일 10:00·21:00 | 프롬프트에 「Sync Club」 클릭·무변화 조용히 종료 사전 승인. 처분 후보·진화 완주 추정·원장↔EA 불일치·정본과 갈리는 인게임 역할은 목록만 · ⛔ Run now 선승인 필요 |
+  | 정기 | `auto-react-observe-daily` | 평일 10:00·16:00 | 저장소 밖(Auto-react) |
+  | 정기 | `weekly-unifi-now-sync` | 월 10:00 | 저장소 밖(Unifi career) |
+  | 일회 | `mw-liv-mancity-d2` | 10-13 14:00 | |
+  | 일회 | `mw-avl-brentford-d3` | 10-13 19:00 | |
+  | 일회 | `mw-che-bournemouth-d3` | 10-13 20:00 | |
+  | 일회 | `mw-atm-alaves-d3` | 10-13 22:00 | |
+  | 일회 | `mw-liv-mancity-d3` | 10-14 20:00 | |
+
+- **옛 레지스트리에도 꺼져 있어 복원하지 않은 것**: `fc27-patch-watch`(09-21 신설, 매일 10:07 · 프롬프트 파일도 없음) · `transfer-watch-daily`(매일 09:05·21:05) ·
+  `futgg-prices-daily`(매일 09:15). 다시 쓸지는 사용자 판단(할 일 0-6).
+- ⛔ **스케줄 태스크는 자기 자신을 삭제할 수 없다** — 비활성화만 되고 삭제는 일반 세션에서 `delete_scheduled_task`로 한다.
+- ⭐ 일회성 프롬프트는 **자기완결형**(경기 식별값·matchId·리포트 경로·미결 목록·접근 경로·배제 소스)으로 쓴다 — 유실돼도 수동으로 그대로 돌릴 수 있다.
 - Codex heartbeat **id=3 「프리미어리그 3팀 경기 수집」**, 매일 08:00 KST (저장소 밖 · 별도 관리).
 - ⭐ AVL 영상 회차는 **필수 채널 3곳**(UTV · The Villans · 1874, docs/30 표) + **Jacob Tanswell**(The Athletic, X `@J_Tanswell`)을 항상 조회한다.
 
