@@ -8,6 +8,20 @@
 
 ## 현재 상태
 
+> **2026-10-12 KST · 패치 감시 + 클럽 싱크 + ⭐DB 저장 구조 전환 · PC `AL02359162.local` · `main` · 데이터 커밋 `aba9dad`** · G1~G33 전항 통과.
+> **ⓐ ⭐⭐ `.db`는 이제 git에 없다**(`aba9dad` · 사용자 결정 「①+② 둘 다」). DB 101.2MB로 GitHub 100MB 상한에 **두 번째** 막혀(1차 10-04 103.8MB)
+> ① 케미 신호를 「바뀐 행만 저장」(migration 106 · `core/chem_signals.py` · 59,962→9,619행 · 16회차 스냅샷 전후 동일) ② `db/tactics.db`를 .gitignore로 —
+> git은 `db/dump/`만 나르고 **각 PC는 `scripts/db_restore.sh`로 DB를 만든다**(97표 데이터·스키마 전부 원본과 일치 검증).
+> ⛔ **다른 PC(`AD03230205ui-iMac`)는 pull하면 `db/tactics.db`가 지워진다 — 정상이다. 곧바로 `scripts/db_restore.sh`.**
+> pull로 들어온 dump를 옛 DB로 덮으면 남의 데이터가 사라지므로 **G33·`db_dump.sh`가 스탬프(`db/dump/_stamp.txt` ↔ 로컬 `db/.dump_stamp`)로 막는다.**
+> **ⓑ 클럽 싱크**(`dd811b4`) — Sync Club 실클릭(쿨다운이 **30분**으로 나왔다 · 런북은 15분) · 보유 256 · 신규 8 · 처분 복원 2(코나테·자이발트) ·
+> 마테우스 마네 Playmaker Reborn lv1~2 로그(EA 이력 · 29속성 일치 · 3단계 진행 중). ⚠️ `fut_club.py evolve`는 **`--completed` 없이 넣으면 다음 단계가
+> 기준 카드에서 다시 출발해 current_ovr을 되돌린다**(이번에 74로 내려갔다가 바로잡음). FUTBIN 포메이션 +1(Chrome 경로 정상).
+> **ⓒ 패치 감시**(`51261ae`) — v1.0.5 없음 · 신규 적재 0. ⏰ **10-17 PlayStyle+ Lab 시작**(작동 규칙 나오면 적재) · **10-22 시즌 2**(다음 패치 유력 · 추정).
+> **ⓓ 만잠비 퓨처 스타 아카데미 II 시작(사용자 보고)** — 3단계 갈림길(플레이메이커/피지컬/올라운더) 비교를 대화로 제공. 선택·완료 후 `evolve --pick N --completed`.
+> 🔴 **열린 것**: 링크 결손 사람 확인 3건(코나테·더글라스 루이스 카드 소속 미상 · 엘리엇 카드 포지션 충돌) · `ref_map25` 동률 비결정 버그(별도 작업 칩) ·
+> 시세·인게임 전술은 이번 회차 미실행.
+>
 > **2026-10-08 KST · 3팀 이적 감시 21시 회차 · PC `AL02359162.local` · `main` · 데이터 커밋 `ac8b38e`** · G1~G31 전항 통과.
 > **ⓐ FotMob 66개 리드**(AVL 9 · CHE 22 · LIV 35)를 발행일→원출처→티어 순으로 재검증. LIV 유출 3건을 STALE 전환: Rio Ngumoha·Wataru Endo(09-17 이후 21일) · Alexis Mac Allister(09-21 이후 17일). export→dump 완료, 리포트 `reports/transfer-watch/2026-10-08.md`.
 > **ⓑ Alex Scott(CHE) 신규 `MEDIUM-HIGH`** — Telegraph 10-04 + Romano의 선수 측 접촉. 최근 클럽 공식전 6경기 실측: CHE LCM `cm_playmaker/Roaming` · 적합 **.724** · 평균 평점 7.23. ⏰ Bournemouth가 1월 판매를 막아 `2027-winter` vs `2027-summer` 창이 갈리므로 비대화형 회차에서 DB 미등재.
@@ -42,55 +56,8 @@
 > **ⓔ 그 밖** — AVL 전수 조사로 진화 33쌍 복구(`a42ab99`) · 목록엔 있는데 API가 안 주는 진화가 화면에서 사라지던 것을
 > 직전 행 이월로 수정(`91be008`) · club-sync 런북 §3-5에 「안 잡힘 ≠ 마감, 목록은 서버 HTML로 읽는다」 추가(`3d2d8e3`).
 >
-> **2026-09-22 KST · 세션 ㉟ 진화 축 정합화 + 경기 지표 5종 + club-sync 루틴화 · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 `bd93921`** · G1~G20 전항 통과 · 전량 푸시.
->
-> **ⓐ ⭐⭐ 「현재 상태」 정본 신설 — 메뉴마다 다른 숫자가 나오던 근본 원인**(`f30d494`)
-> 사용자 지적 「각 메뉴가 공통 DB를 보지 않고 개별적으로 업데이트되는가」. **맞았다.** DB는 하나인데
-> **「무엇이 현재인가」의 판단이 흩어져** 있었다 — 어디선 `player_card_items`(기준 카드), 어디선
-> `fut_club_players.current_*`(EA 실측), 어디선 fut.gg 경로의 `ovr_before`(기준 카드).
-> Alysson이 한 화면에서 **70 ↔ 78**로 동시에 보였다.
-> ⇒ `core/export.py`가 **`club.state`**(선수별 현재 카드 상태 · `basis`에 ea-sync/base-card 기록)를 계산해 내보내고,
-> 화면은 고르지 않고 그걸 읽는다. 규칙 함수(`applyEvoLevel` 상한 · `faceOf` 구성식 · `ATTR_KR` · `PLAYSTYLES`)는
-> **clubviz가 하나씩만** 갖고 다른 파일은 어댑터만 둔다. **원칙: 값은 DB에서, 판단은 한 곳에서**(docs/70 등재).
->
-> **ⓑ 진화 카탈로그 정리 — 18종 → 4종**(`11a00d5`·`0337891`·`227759c`·`7889c3f`·`37faaa5`)
-> · **코스메틱 3종 제거·수집 차단**(OTW Retro 18/19/20 = `rarity_id`만 · before/after 전부 동일). 경로 210행도 삭제.
->   ⚠️⚠️ **`roles_plus_after`를 「이득」으로 읽지 말 것** — 「적용 후 상태」라 원래 갖고 있던 Role+가 그대로 찍힌다.
->   이걸 오독해 「코스메틱 아니다」로 **한 번 잘못 보고했다**. 반드시 **기준 카드와 before/after 대조**.
-> · **소진 7종·프리미엄 4종은 필터로 감춘다**(⛔ DB 행은 안 지운다 — `fut_evolution_log.evo_id`가 참조).
-> · **해금 조건 수집 신설**(migration 056 `fc_objective_tasks` · `collect_futgg_objectives.py` · 과제 173개).
->   ⛔ 목표 API 없음(전부 404) — 서버 렌더 HTML 본문을 읽는다. 해금 문구가 **과제명일 때도 그룹명일 때도** 있다.
-> · **갈림길(6종) 표시** — 미사용은 ★ 추천, **소진은 ✅ 「내가 고른 가지」**(카드 PS ↔ 기준 카드 대조로 역산).
->   ⚠️ PS·역할이 **숫자 id로만** 와서 export가 `ps_names`를 262건 표본에서 역산(29개 확정).
->
-> **ⓒ 🔴 링크 끊김 — 한 선수가 세 곳에서**(`7889c3f`·`c667dcb`)
-> 지모알로바가 `player_card_items`·`fut_club_players`·`player_evolutions` **셋 다 `player_id` NULL**이라
-> `club.state`·갈림길 판정·**선수별 진화 패스에서 통째로 사라져** 있었다(경로 6건이 있는데도).
-> ⇒ 셋 다 복구 + **런북 §3-5에 점검 쿼리 상설화**. 증상이 「데이터 없음」이 아니라 **「메뉴에 아예 없음」**이라 눈치채기 어렵다.
->
-> **ⓓ 경기 분석 지표 5종**(`de0f88d`·`49a1854`) — 수비·경합 / 결정력(xG→xGOT→득점) / 슛 상황 분해 / 스코어 국면별 xG / 국면 분리 그리드.
-> export에 12컬럼 추가(`tackles`·`interceptions`·`clearances`·`aerial`·`dribble`·`map25_poss/def`).
-> ⛔⛔ **유효슛을 `outcome`으로 판정하지 말 것** — FotMob이 **블록슛까지 `save`로 접는다**. **`xgot > 0`이 정답**
-> (7경기에서 `team_match_stats.sot`와 정확히 일치 검증). 차트 9개에 지표 툴팁·축 설명·「읽는 법」도 넣었다.
-> ⛔ 선수 출전표가 **`clientWidth`를 첫 렌더에 읽어 viewBox가 2.3배 확대**되고 있었다(656→335px) — ResizeObserver로 교정.
->
-> **ⓔ 선수 스냅샷이 영구히 「갱신 필요」로 남던 버그 2개**(`5fa148a`)
-> ㉠ 「부상 없음」을 행으로 안 남겨 멀쩡한 선수는 `pulled`이 영영 갱신되지 않았다 → `kind='injury_none'` 적재.
-> ㉡ **FotMob이 `contractEnd`를 엔드포인트에서 제거**했는데 화면 신선도가 그 행을 보고 있었다 → 부상 점검 행 기준으로 변경.
-> 4팀 104명 재점검(status +167행) → 갱신 필요 **0명**.
->
-> **ⓕ PlayStyle을 넣은 적합 판정 2층**(`5906cd4` · docs/22 §6.1) — 1층 스탯(Δ≥1.0이면 결정) / 2층 PlayStyle(동점일 때만 tie-break).
-> FC27에서 EA가 깎은 6종은 **½표**. ⛔ PS를 점수에 직접 더하지 않는다(EA가 결합 방식을 한 번도 밝힌 적 없다 · 부재 증거 A).
-> ⭐ 「주 축이 못 가르는 구간에서만 보조 축이 판정한다」는 docs/30 7단계와 **같은 규약**을 재사용한 것이다.
->
-> **ⓖ GG Club 싱크**(`d59c829`·`c793706`) — 신규 5(라움 83·사라 80·카푸토 77·닐덴 68·은쿠바 67) · 처분 7(승인) · 팀 케미 33/33.
-> 선발 XI 변화: **LB 루제리→마첸 · LM 부엔디아→맥긴**. ⭐ **인게임 전술도 바뀌어 있었다** —
-> 코드 `zYLBiF%rvzRT` · **LB Wingback/Balanced → Attacking Wingback/Support** · RM 포커스 Balanced→**Attack**.
-> ⛔ `fut_tactics`는 **어떤 스크립트도 갱신하지 않는다** — 런북 §3-3에 손 확인 단계를 넣었다.
->
-> **ⓗ 그 밖** — 마조 처방 `projected`(ST/st_target/Attack · 실측 1경기라 core가 집계 거부 · 동률을 신체 프로파일이 갈랐다) ·
-> `player.html?id=` 딥링크가 **다른 팀 선수면 엉뚱한 선수를 열던 것** 수정(LIV 상태에서 마조 → 알리송 베케르) ·
-> 히트맵/시즌 성적 시즌별 묶음+공유 토글 · 카드 비교 담기 모드화 · AcceleRATE 결손 3장 보충.
+> **2026-09-22 ㉟ 아카이브** — `club.state` 현재 카드 정본 신설(「값은 DB에서, 판단은 한 곳에서」 · docs/70) · 진화 카탈로그 정리(코스메틱 차단 · ⚠️ `roles_plus_after`는 이득이 아니라 적용 후 상태) ·
+> 링크 끊김 3곳 → `gaps.py links` 상설화 · 경기 지표 5종(⛔ 유효슛은 `outcome`이 아니라 `xgot > 0`) · PlayStyle 적합 2층(docs/22 §6.1) · `fut_tactics`는 손 확인(런북 §3-3).
 
 > **2026-09-21~22 ㉝·㉞ 아카이브** — 「지금 내 팀」 UI 재설계(진화 카드 `loading="lazy"` 금지 · img background+filter 혼용 금지) · Codex 팔로업(stat-tips 4항목 A등급 정정 · GG Club Role+/++ 회귀 수정). 상세는 `git log`.
 > **2026-09-21 ㉜ 주간 경기 수집(ATM 더비·LIV 본머스)**(`20bde5b`…) · **㉛ FC27 시스템 리서치 + 진화 판단 + 구단 싱크**(`AL02359162`).
@@ -139,7 +106,7 @@
 
 ## 진행 중 작업 (WIP)
 
-**코드 WIP 없음.** 09-23 회차(`3d2d8e3`)까지 푸시 완료.
+**코드 WIP 없음.** 2026-10-12(`aba9dad`)까지 푸시 완료. ⭐ 새 PC·pull 직후엔 `scripts/db_restore.sh`(현재 상태 ⓐ).
 🔴 **09-22 신규 미결 3건**
 ⑴ ⏰ **지모알로바 Creative Crossroads — 1·2단계는 이미 적용됨**(옵션2, OVR 73→78, `6cdfa58`·`902a151` 09-21 —
   ㉟이 「미적용」으로 잘못 이월했던 것을 이번에 정정). **3단계만 남았다. 마감 09-30 17:00 UTC.**
