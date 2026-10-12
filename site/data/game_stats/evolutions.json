@@ -63113,6 +63113,15 @@
     "set_id": 74
    },
    {
+    "card_ids": "[556, 340, 504, 554, 558, -1000052, -1000054, 366, 422, 549, -1000057, -1000058, 368, -1000059, 379, -1000062, 434, -1000063, 141, -1000066]",
+    "completed_at": "2026-10-12",
+    "grade": "D",
+    "id": 15,
+    "notes": null,
+    "score": 13113,
+    "set_id": 74
+   },
+   {
     "card_ids": null,
     "completed_at": "2026-10-05",
     "grade": "D",
@@ -63128,6 +63137,15 @@
     "id": 6,
     "notes": "완성일 미상 — 2026-10-03 캡처에서 등급·총점이 보여 완성으로 기록. score=인게임 화면 총점(우리 계산 아님).",
     "score": 67387,
+    "set_id": 103
+   },
+   {
+    "card_ids": "[331, 636, 151, 632, -1000216, 115, 237, 285, 329, 602, 5, 119, 181, 334, 559, -1000223, 155, 248, 308, 513, 576, -1000227, -1000228, 172, 316, 354, 457, 460, 541, 592]",
+    "completed_at": "2026-10-12",
+    "grade": "C",
+    "id": 16,
+    "notes": null,
+    "score": 16030,
     "set_id": 103
    },
    {
@@ -63209,6 +63227,15 @@
     "id": 12,
     "notes": null,
     "score": null,
+    "set_id": 122
+   },
+   {
+    "card_ids": "[631, 338, 150, 161, 367, 380, 444, 461, 473, 496, -1000251, 165, 320, 464, -1000253, 75, 385, 416, 465, -1000256, 352, 378, 437, 499, 288, 303, 480, 494, 551, -1000263]",
+    "completed_at": "2026-10-12",
+    "grade": "C",
+    "id": 17,
+    "notes": null,
+    "score": 18950,
     "set_id": 122
    }
   ],
@@ -65647,28 +65674,23 @@
    }
   ],
   "higher": [
-   74,
-   103,
-   122
+   74
   ],
   "min_list": "D",
   "mine": {
    "61": "D",
    "74": "D",
    "100": "D",
-   "103": "D",
+   "103": "C",
    "108": "D",
    "109": "D",
    "111": "D",
    "114": "S",
    "116": "S",
    "121": "D",
-   "122": "D"
+   "122": "C"
   },
-  "new": [
-   103,
-   122
-  ],
+  "new": [],
   "placed": [
    {
     "captured_at": "2026-10-03",
@@ -69852,34 +69874,84 @@
     "total_score": 6803
    },
    {
-    "base_score": 28426,
-    "bonus_score": 136031,
-    "captured_at": "2026-10-03",
+    "base_score": 12303,
+    "bonus_score": 36027,
+    "captured_at": "2026-10-12",
     "grade": "D",
-    "pending": 1,
-    "placed_n": 30,
-    "set_id": 108,
-    "total_score": 164457
+    "pending": 0,
+    "placed_n": 20,
+    "set_id": 74,
+    "total_score": 48330
    },
    {
-    "base_score": 11610,
-    "bonus_score": 55202,
-    "captured_at": "2026-10-03",
-    "grade": "D",
-    "pending": 1,
-    "placed_n": 30,
-    "set_id": 109,
-    "total_score": 66812
-   },
-   {
-    "base_score": 10790,
-    "bonus_score": 56597,
-    "captured_at": "2026-10-03",
-    "grade": "D",
+    "base_score": 16150,
+    "bonus_score": 84681,
+    "captured_at": "2026-10-12",
+    "grade": "C",
     "pending": 0,
     "placed_n": 30,
     "set_id": 103,
-    "total_score": 67387
+    "total_score": 100831
+   },
+   {
+    "base_score": 19000,
+    "bonus_score": 100490,
+    "captured_at": "2026-10-12",
+    "grade": "C",
+    "pending": 0,
+    "placed_n": 30,
+    "set_id": 122,
+    "total_score": 119490
+   },
+   {
+    "base_score": 43247,
+    "bonus_score": 222569,
+    "captured_at": "2026-10-12",
+    "grade": "D",
+    "pending": 0,
+    "placed_n": 30,
+    "set_id": 108,
+    "total_score": 265816
+   },
+   {
+    "base_score": 20300,
+    "bonus_score": 106817,
+    "captured_at": "2026-10-12",
+    "grade": "D",
+    "pending": 0,
+    "placed_n": 30,
+    "set_id": 100,
+    "total_score": 127117
+   },
+   {
+    "base_score": 8935,
+    "bonus_score": 44850,
+    "captured_at": "2026-10-12",
+    "grade": "D",
+    "pending": 0,
+    "placed_n": 30,
+    "set_id": 111,
+    "total_score": 53785
+   },
+   {
+    "base_score": 19141,
+    "bonus_score": 96538,
+    "captured_at": "2026-10-12",
+    "grade": "D",
+    "pending": 0,
+    "placed_n": 30,
+    "set_id": 109,
+    "total_score": 115679
+   },
+   {
+    "base_score": 17778,
+    "bonus_score": 87049,
+    "captured_at": "2026-10-12",
+    "grade": "D",
+    "pending": 0,
+    "placed_n": 30,
+    "set_id": 121,
+    "total_score": 104827
    }
   ],
   "tag_table": [
