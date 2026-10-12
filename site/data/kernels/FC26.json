@@ -4627,13 +4627,13 @@
    "team_code": "AVL"
   },
   {
-   "fit_sim": 0.84,
+   "fit_sim": 0.8,
    "focus": "Roaming",
-   "map25": "125511279X106541122400000",
+   "map25": "025421279X217551124500000",
    "player": "콜 파머",
    "pos_label": "RAM",
    "role_id": "cam_playmaker",
-   "sample_n": 5,
+   "sample_n": 6,
    "season": "2026-27",
    "team_code": "CHE"
   },
@@ -4735,6 +4735,17 @@
    "sample_n": 1,
    "season": "2026-27",
    "team_code": "ATM"
+  },
+  {
+   "fit_sim": 0.74,
+   "focus": "Roaming",
+   "map25": "51111363676X6733574502440",
+   "player": "조던 헨더슨",
+   "pos_label": "LCM",
+   "role_id": "cm_playmaker",
+   "sample_n": 2,
+   "season": "2026-27",
+   "team_code": "CHE"
   },
   {
    "fit_sim": 0.77,
@@ -4849,7 +4860,7 @@
   {
    "fit_sim": 0.97,
    "focus": "Balanced",
-   "map25": "0000000000000000021001X20",
+   "map25": "0000000000000000121001X20",
    "player": "알리송 베케르",
    "pos_label": "GK",
    "role_id": "gk_goalkeeper",
@@ -5100,17 +5111,6 @@
    "team_code": "LIV"
   },
   {
-   "fit_sim": 0.88,
-   "focus": "Balanced",
-   "map25": "002350013X000270013200001",
-   "player": "무뇨스",
-   "pos_label": "RM",
-   "role_id": "wm_winger",
-   "sample_n": 2,
-   "season": "2026-27",
-   "team_code": "LIV"
-  },
-  {
    "fit_sim": 0.85,
    "focus": "Balanced",
    "map25": "004430001X000060000000011",
@@ -5122,13 +5122,24 @@
    "team_code": "ATM"
   },
   {
-   "fit_sim": 0.81,
+   "fit_sim": 0.8,
    "focus": "Balanced",
-   "map25": "001351025X001270013600034",
+   "map25": "011460014X001250012200022",
+   "player": "무뇨스",
+   "pos_label": "RM",
+   "role_id": "wm_winger",
+   "sample_n": 3,
+   "season": "2026-27",
+   "team_code": "LIV"
+  },
+  {
+   "fit_sim": 0.8,
+   "focus": "Balanced",
+   "map25": "001341025X001270013600025",
    "player": "줄리아노 시메오네",
    "pos_label": "RM",
    "role_id": "wm_winger",
-   "sample_n": 5,
+   "sample_n": 6,
    "season": "2026-27",
    "team_code": "ATM"
   }

@@ -1845,10 +1845,10 @@
    "name_en": "Emiliano Martínez",
    "overall": "A — 상위 4경기 평균 7.95(rate_v, 풀 내 평점 백분위 91)로 GK 슬롯 확정 주전(obs#110 XI, prescriptions fc26:opt:GK starter). 실측 히트맵은 순수 골라인형(GK 커널 코사인 .96 vs 스위퍼 .63)이고 스위핑은 상황부라는 duties 판정과 일치. 최종 처방은 gk_ballplaying/Build-Up(2026-07-05 숙련도 타이브레이크 확정). ⭐[2026-09-11 FC27 갱신] OVR 85 유지(FC26 동일), DEF만 56→50(−6) 하락. PlayStyles Long Ball Pass·Rush Out·Far Reach+(roster 2026-09-10) — 배급·박스 밖 커버 실측 프로필과 방향 일치. ⚠️ 2026-08-30 첼시 이적 이후이므로 이 AVL(regime 1) 행은 이력 보존용이다.",
    "player_id": 1,
-   "sample_as_of": "2026-09-18",
-   "sample_avg_rating": 7.7,
-   "sample_minutes": 360,
-   "sample_n": 4,
+   "sample_as_of": "2026-10-10",
+   "sample_avg_rating": 7.66,
+   "sample_minutes": 450,
+   "sample_n": 5,
    "sample_season": "2026-27",
    "source": "squad_entries GK(rate_v 7.95); prescriptions kind=optimal·role·measured:season(GK); player_duties GK; v_player_profile n=4; player_game_stats FC26(OVR85, 긴패스·돌진 블로킹); obs#14 | stat_eval 2026-08-11 갱신: fotmob_detail_stats(Premier League 2025/2026, 20지표) · v_player_profile n=64(5506분) · v_player_season_stats · prescriptions measured:season:full2526 n=52 rt=6.97 | stat_eval 2026-09-11 갱신: player_game_stats FC27(roster_date 2026-09-10, OVR85·DEF50·PlayStyles Long Ball Pass/Rush Out/Far Reach+) vs FC26(roster_date 2026-07-23, OVR85·DEF56)",
    "stat_eval": "Fotmob 프리미어리그 25/26 20지표(2835분)에서 선방률 70.9%(리그 GK 상위 15%)·선방으로 막은 실점 +3.52(상위 8%)·하이볼 처리 48회(상위 5%)로 지역 장악과 선방 효율이 모두 리그 상위다. 발로는 성공한 패스 893회(상위 8%)·패스 정확도 73.7%(상위 21%)·롱볼 정확도 36.0%(상위 23%)에 어시스트 1개(상위 0%, 즉 리그 GK 최상위)까지 있어 빌드업 관여가 실제로 확인된다. 반면 실점 39(백분위 26)와 실책이 실점으로 이어진 3회(하위 5%)는 명확한 마이너스 — 막는 능력은 상위, 사고 빈도는 하위라는 양면이 한 시즌에 공존한다. 표본이 4경기에서 64경기(5506분)로 늘자 평균 평점이 7.95에서 7.06으로 내려앉았고 우리 3팀 풀 백분위도 91에서 66으로 이동했다 — 옛 평가의 '최상위권' 서술은 상위 4경기만 본 선별 표본 효과였다. xG·태클 0은 결측이 아니라 GK로서 실제 0이다. ⭐[2026-09-11] FC27(2026-09-10) OVR85·DEF50·PlayStyles 3종 갱신 — 선방률 70.9%·성공한 패스 893회 실측 결론과 방향이 같다.",
@@ -55474,11 +55474,6 @@
   ],
   "로저스": [
    [
-    "2026-07-15",
-    7.1,
-    "FIFA World Cup"
-   ],
-   [
     "2026-07-18",
     6.5,
     "FIFA World Cup"
@@ -55521,6 +55516,11 @@
    [
     "2026-09-18",
     6.9,
+    "Premier League"
+   ],
+   [
+    "2026-10-10",
+    8.3,
     "Premier League"
    ]
   ],
@@ -55578,11 +55578,6 @@
   ],
   "마르티네스": [
    [
-    "2026-06-28",
-    6.6,
-    "FIFA World Cup"
-   ],
-   [
     "2026-07-03",
     6.7,
     "FIFA World Cup"
@@ -55624,6 +55619,11 @@
    ],
    [
     "2026-09-18",
+    7.5,
+    "Premier League"
+   ],
+   [
+    "2026-10-10",
     7.5,
     "Premier League"
    ]
@@ -87853,8 +87853,8 @@
    "ic_pg": 0.0,
    "kp_pg": 0.09,
    "label": "마르티네스",
-   "minutes": 5866,
-   "n": 68,
+   "minutes": 5956,
+   "n": 69,
    "player_id": 1,
    "pos_group": "GK",
    "tk_pg": 0.01,
@@ -88016,18 +88016,18 @@
    "xg_pg": 0.087
   },
   {
-   "avg_rating": 6.94,
-   "dw_pg": 3.4,
-   "ic_pg": 0.28,
-   "kp_pg": 1.63,
+   "avg_rating": 6.96,
+   "dw_pg": 3.52,
+   "ic_pg": 0.27,
+   "kp_pg": 1.59,
    "label": "로저스",
-   "minutes": 6148,
-   "n": 83,
+   "minutes": 6232,
+   "n": 84,
    "player_id": 13,
    "pos_group": "WM",
-   "tk_pg": 0.79,
-   "xa_pg": 0.198,
-   "xg_pg": 0.254
+   "tk_pg": 0.84,
+   "xa_pg": 0.193,
+   "xg_pg": 0.25
   },
   {
    "avg_rating": 6.92,
@@ -95163,13 +95163,13 @@
   "로저스": [
    {
     "assists": 1,
-    "avg_rating": 7.73,
+    "avg_rating": 7.83,
     "competition": "Premier League",
-    "goals": 3,
-    "minutes": 439,
-    "n": 5,
+    "goals": 4,
+    "minutes": 523,
+    "n": 6,
     "season": "2026-27",
-    "starts": 5
+    "starts": 6
    },
    {
     "assists": 1,
@@ -95427,6 +95427,16 @@
   "마르티네스": [
    {
     "assists": 0,
+    "avg_rating": 7.66,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 450,
+    "n": 5,
+    "season": "2026-27",
+    "starts": 5
+   },
+   {
+    "assists": 0,
     "avg_rating": 7.24,
     "competition": "World Cup",
     "goals": 0,
@@ -95434,16 +95444,6 @@
     "n": 5,
     "season": "2026-27",
     "starts": null
-   },
-   {
-    "assists": 0,
-    "avg_rating": 7.7,
-    "competition": "Premier League",
-    "goals": 0,
-    "minutes": 360,
-    "n": 4,
-    "season": "2026-27",
-    "starts": 4
    },
    {
     "assists": 1,

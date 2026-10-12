@@ -106,3 +106,6 @@ INSERT INTO matches VALUES(112,16416339,'ATM','2026-27','2026-09-20','Real Madri
 INSERT INTO matches VALUES(113,16363648,'LIV','2026-27','2026-09-20','AFC Bournemouth','Premier League','A','0-1',1,'Round 5',54.0);
 INSERT INTO matches VALUES(114,17213039,'AVL','2026-27','2026-10-02','Sevilla','Club Friendly Games','A','1-3',1,'A매치 휴식기 친선 — 에스타디오 라몬 산체스 피스후안, 에메리 친정 방문 (result는 홈-원정 순서: 세비야 1 · 빌라 3)',50.0);
 INSERT INTO matches VALUES(115,16363872,'AVL','2026-27','2026-10-10','Brentford','Premier League','H','2-2',1,NULL,52.0);
+INSERT INTO matches VALUES(116,16363873,'CHE','2026-27','2026-10-10','AFC Bournemouth','Premier League','H','5-1',1,'Round 6',50.0);
+INSERT INTO matches VALUES(117,16363878,'LIV','2026-27','2026-10-11','Manchester City','Premier League','H','0-3',1,'Round 6',35.0);
+INSERT INTO matches VALUES(118,16421056,'ATM','2026-27','2026-10-10','Deportivo Alavés','LaLiga','A','1-2',1,'Round 8',68.0);
