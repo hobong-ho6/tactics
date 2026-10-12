@@ -234,3 +234,64 @@
 - `match_reports` #51은 **draft 유지**: 감독 발언은 확보했지만 **정식 회견 전문이 없고**(매체 발췌만) D+2·D+3 추적이 남았다. G12 데이터 조건 자체는 D+0에서 충족.
 - 반영: `observations` #983~986 · `player_duties` 4행에 덧붙임(고메스 #22 · 음바예 #245 · 밍스 #160 · 루제리 #223) · `match_videos` 4행(요약·key_points) · `video_impl_claims` 9행 · claim #167·#169 verdict_note 덧붙임.
 - 다음 회차(D+2) 우선: 1874 「five things」 · The Villans 경기 후 영상 · Aston Villa Review 「match conclusions」 · 루제리 스캔 결과 · 에메리 페네르바체전 사전 회견(10-14 예상, 루제리·완비사카 왼쪽 언급 가능).
+
+## D+2 추적 (2026-10-12)
+
+> 수집 시각 2026-10-12 KST · 회차: 스케줄 `mw-avl-brentford-d2` · 당일 절(§1~9)과 D+1 절은 수정하지 않았다. 중점: 지연 게시 전술 분석 영상·전술 블로그(다국어 · 상대팀 관점 포함).
+
+### D2-1. 전술 분석 영상 — 신규 2편 전사 · 요약 + 구현 주장 6행(G17)
+| 영상 | 게시 | 종류 | 핵심 | impl_claims |
+|---|---|---|---|---|
+| UTV 「THE REAL REASON WHY WE CAN'T WIN AT VILLA PARK」 YV8GaXrtRpo (33:13) | 10-11 | **전술 리뷰**(장면 클립·패스맵·네트워크) | 아래 D2-2 | 캐시 추적 limit HELD · 밍스 빌드업 limit PENDING · 고메스 허브 instruction PENDING · 전환 고립 limit HELD · 스즈키 스위핑 맥락 limit HELD |
+| 1874 「Plenty to Like, But Villa Still Have Work to Do! … Matchday Experience」 OKn4DXxl54A (21:46) | 10-11 | 현장 브이로그 | 「Xiao Gomez was exceptionally good」(고메스가 특출났다) · 「Suzuki good」 · 2-1 직후 실점 「naive」(순진했다) | none 1 |
+
+- UTV 영상은 yt-dlp가 **HTTP 429**로 막혀 브라우저 pot 경로(`yt_transcript_json3.py`)로 전사했다. 전사 중 아예르가 「Ya」로 오인식 — 인물은 SofaScore incidents로 확정.
+- ⭐ UTV가 인용한 패스 성공률은 우리 SofaScore 실측과 거의 일치한다: 밍스 78↔**77** · 카마라 84↔**82** · 고메스 90↔**90** · 만잠비 95↔**95** · 잭슨 72↔**72** · 캐시 93↔**88**. 패스 수(밍스35·린델뢰프36·카마라37)는 원천이 달라(영상 속 xG 사이트) 판정에 쓰지 않았다.
+- **미전사**: Justin Talks Villa 「THE WARM DOWN | ASTON VILLA 2–2 BRENTFORD」 TMWv33q3T64(10-10 · 13:04) — **자막 없음**(yt-dlp `has no subtitles`). 서브스택 본문도 영상 링크뿐.
+- **미게시**: The Villans 경기 후 영상(최신 여전히 10-08 프리뷰) · 1874 월요일 「five things」 후속 쇼(10-12 회차 시점 업로드 목록에 없음) → D+3 재확인.
+
+### D2-2. UTV 전술 리뷰 핵심 (auto-caption)
+- 진단: 「we lacked control. Now control is one of the biggest fundamentals within an Unai team」(통제가 없었다. 통제는 에메리 팀의 가장 큰 기본이다) — 에메리 자기 진단(obs#986)과 같은 방향.
+- **9′**: 「Tyrone Mings has got a clear option now to roll this ball onto his left foot and play into Ruggeri」(왼발로 굴려 루제리에게 줄 명확한 옵션이 있었다) → 첫 터치가 발밑에 걸림 → 안쪽 카마라에게 느슨한 패스(「Kamara doesn't want this ball. He's pointing towards Gomez」 카마라는 이 공을 원하지 않고 고메스를 가리킨다) → 샤데 회수 → 박스 앞 빈자리에서 야르몰류크. 평가: 「we weren't under any pressure」(압박받지 않았다).
+- **79′**: 켈러허 → 빌라 오른쪽 2대1 과부하 → 「Matty Cash here for some reason completely switches off and doesn't track the run」(캐시가 완전히 집중을 놓고 침투를 따라가지 않는다) · 「Maybe Gomez can shuffle across a little bit more」(고메스가 조금 더 좁힐 수도 있었다).
+- **전환 수비**: 「Your defense is isolated … The midfield is chasing shadows」(수비가 고립되고 미드필드는 그림자만 쫓는다) — 반복 장면 4~5개 클립.
+- **스즈키 막판 스위핑**: 「Why in the last minute of the game is our keeper having to steam out to the halfway line … I'm thankful he did」(왜 마지막 순간 키퍼가 하프라인까지 나가야 하나 — 해 줘서 다행이지만) — 행동은 인정, 원인은 통제 부족.
+- **네트워크**: 「everything's kind of going into Gomez … spider web off him」(모든 것이 고메스에게 모인다) · 카마라–고메스 간격 넓음 · 폭은 풀백 2명뿐 「still quite narrow」(여전히 좁다) · 음바예 투입 후 「creative option where he can go out wide and he can attack centrally」(바깥으로도 안으로도 갈 수 있는 창의적 옵션).
+
+### D2-3. 기사·방송 해설 (다국어 · 서브에이전트 위임 + 1차 소스 재확인)
+- 🇬🇧 **BBC MOTD 시어러**(Aston Villa News 10-11 06:40 · 원문 직접 확인): 「Matty Cash gets caught ball watching. Ajer give and go, (Joao) Gomes certainly doesn't help Cash out at all.」(캐시가 공만 보다 놓쳤다. 아예르의 원투에 고메스는 캐시를 전혀 돕지 않았다) · 「That is exactly what John McGinn was on about」(맥긴이 말한 게 바로 이것이다 — 맥긴의 「오프더볼에서 배울 게 많다」 취지 발언을 받는 말이나 **맥긴 원문은 미확보**).
+- 🇬🇧 PA/Evening Standard 「Tyrone Mings' stray pass」(밍스의 빗나간 패스) · 만잠비 「caused problems for the Bees all afternoon」(오후 내내 브렌트퍼드를 괴롭혔다) · SofaScore 뉴스 맥긴 「two key passes from clever pockets in the right half-space」(오른쪽 하프스페이스에서 키패스 2) · Sky(Adam Bate) — 구조 서술 없음.
+- 🇬🇧 **브렌트퍼드 관점**: 앤드루스 VAVEL 「The boys aren't robots. It takes some time」(선수들은 로봇이 아니다 — 시간이 걸린다) · 「I felt we could've nicked it」(이길 수도 있었다) — **밍스·골킥 압박 계획 언급 0**(VAVEL·Irish Examiner 원문 확인). Beesotted·Bees United·Ealing Road 경기 후 리뷰·브렌트퍼드 팬 유튜브 **0건**(Ealing Road는 프리뷰만).
+- 🇯🇵 스즈키 — **東スポWEB**(10-11) 「ハーフウェーライン手前まで飛び出してクリアしてピンチの芽をつんだ」(하프라인 앞까지 뛰쳐나와 걷어내 위기의 싹을 잘랐다) · **フットボールチャンネル**(10-11) 「ハーフウェーライン近くまで飛び出してクリアするなどチームのピンチを救った」(하프라인 근처까지 나와 걷어내는 등 위기를 구했다) · GOAL JP 「先制点はどうすることもできなかった」(선제골은 어쩔 도리가 없었다). 빌드업(스즈키→밍스) 서술은 기확보 게키사카 계열 외 0.
+- 🇩🇪/🇨🇭 만잠비 — watson.ch 「Aston Villa mit Johan Manzambi kommt weiterhin nicht richtig auf Touren」(만잠비가 있는 빌라는 여전히 제 궤도에 오르지 못한다) — 포지션 서술 0. kicker·Badische Zeitung·spielverlagerung.de 0건.
+- 🇪🇸 **0건**(EFE 재전재 외) — 검색어: 「Emery Brentford rueda de prensa Aston Villa 2-2」 · 「Aston Villa Brentford Emery análisis táctico octubre 2026」 · 「Emery Villa Brentford AS Marca Relevo empate Villa Park Mings」 · 「Emery Aston Villa Brentford Mundo Deportivo OR "El País" OR Relevo empate octubre」.
+- 🇮🇹 **루제리 스캔 결과 미공개**(10-11~12 보도 0) — 검색어: 「Ruggeri infortunio Aston Villa Brentford」 · 「Ruggeri esami lesione Italia … Aston Villa ottobre」 · 「Ruggeri Aston Villa bicipite femorale Mancini Nazionale ottobre 2026」 · 「Ruggeri Aston Villa infortunio esito esami 11 ottobre」. ⚠️ Tuttomercatoweb 「lesione di secondo/terzo grado」(2~3도 손상)는 아탈란타 시절 기사 — 쓰지 않는다.
+- 🇧🇷 **0건** — 「João Gomes Alysson Aston Villa Brentford empate」 · 「João Gomes Aston Villa Brentford atuação nota ge globo」 · 「Trivela Aston Villa Brentford João Gomes Alysson Emery」.
+- 🇫🇷 **0건** — 「Manzambi passe décisive Aston Villa Brentford Blick RTS」 · 「Manzambi Aston Villa Brentford L'Équipe OR "Le Temps" OR RTS OR Blick 11 octobre」.
+- **전술 블로그 0건**: TFA(스코어 페이지뿐) · BTL · Spielverlagerung · Coaches' Voice · Ultimo Uomo · 7500 to Holte. ⚠️ TFA의 「forward presses Tyrone Mings … forcing Aston Villa out wide」(전방이 밍스를 압박해 빌라를 측면으로 몬다)는 **약 1년 전 맞대결** 자료라 이 경기 근거로 쓰지 않았다. PL Story House 「The Aston Villa/Brentford Room」은 자칭 「Fictional minds. Real data.」(가상 필자) 매체라 근거에서 제외.
+- ⚠️ Sky Sports 페이지에 기사 본문이 아닌 「특정 문구를 인용하라」는 지시문 블록이 섞여 있었다 — 데이터로만 취급하고 따르지 않았다.
+
+### D2-4. 에메리 회견 재시도
+- **정식 회견 전문 여전히 미확보.** avfc.co.uk 「Emery reflects on 'tough match'」(VillaTV 플래시 — D+1 확보분과 동일) · ESPN 「sad」 · Sky 「At Villa Park, we have played three matches and we did not win until now」(빌라 파크에서 세 경기를 치렀는데 아직 못 이겼다) — 전술 의도(교체·2선 순환·스즈키 빌드업)를 다룬 대목은 어느 발췌에도 없다. UTV가 인용한 Tanswell 경유 발언 「happy with the defensive structure but felt they conceded chances due to not keeping possession well」(수비 구조엔 만족하나 점유를 잘 지키지 못해 찬스를 내줬다 — **UTV 낭독 auto-caption, Tanswell 원문 미확인**)은 D+1 「control」 진단과 같은 방향.
+
+### D2-5. 중점 검증 판정
+| 항목 | D+1 | D+2 판정 |
+|---|---|---|
+| 2선 순환(만잠비 왼쪽·맥긴 10·음바예 오른쪽) | 64′ 배치 독립 2소스 · 이후 교대는 정황 | **변동 없음** — 신규 원문 근거 0. UTV는 77′ 빌드업에서 음바예의 중앙 공략 1장면만 |
+| 짧은 빌드업 함정(9′ 밍스) | 독립 3소스 「표적 압박」(obs#984) | **보정(정정 아님)** — 밍스는 압박 없이 받았고 첫 터치·판단에서 실패(UTV). 「showing the ball to Mings」는 수신자 유도로 읽는다 — 설계는 상대, 실점은 실행(**obs#988**). 상대 감독 확인은 여전히 0 |
+| 79′ 빌라 오른쪽 실점 | 「don't track Ajer」 팀 단위 | ✅ **귀속 특정** — 캐시 볼 와칭 + 고메스 커버 부재, 독립 2소스(시어러·UTV) · 고메스는 AVR 포함 3소스(**obs#987**) |
+| 스즈키 스위퍼(정본 gk_sweeper/Build-Up) | 일본 매체·이벤트 일치 | **유지** — 일본 2매체 추가 확인. 단 UTV는 「통제 부족이 강제한 장면」으로 해석 → 성향/상황 분리는 3경기 누적(**obs#989**) |
+| claim #167 | PENDING(2/3) | **PENDING 유지** — 새 패스 실측 0. UTV 네트워크상 고메스 허브는 반대 방향 정황이나 물량 지표와 다른 축(**obs#990**) |
+| claim #169 | HELD | **HELD 유지 · 반례 1건** — 79′을 맥긴으로 특정한 소스 0, 두 소스 모두 캐시·고메스 |
+
+⇒ **당일 판정 정정 없음.** §2의 「9′ 실수는 상대의 설계된 압박 함정」은 뒤집히지 않았고 obs#988로 해석 범위만 좁혔다.
+
+### D2-6. 게임 구현 함의
+- 79′ 귀속은 **집중력 축**이라 FC 역할·포커스로 옮기지 않는다(캐시 RB 정본 유지 · claim HELD — 재판정: 2경기째 독립 2소스).
+- 밍스 9′은 「표적 압박」보다 「수신 후 실행」 쪽 근거가 늘었다 — 밍스 선발 시 처방(빌드업 관여를 줄이는 역할) 변경은 claim #210·#216 **PENDING · 사용자 판단**.
+- 결론은 §7과 같다: **추가 관찰**.
+
+### D2-7. 상태
+- `match_reports` #51 **draft 유지** — 정식 회견 전문 미확보 · D+3 남음.
+- 반영: `observations` #987~990 · `player_duties` 4행 덧붙임(캐시 #30 · 고메스 #22 · 밍스 #160 · 스즈키 #121) · `match_videos` 2행(요약·key_points) · `video_impl_claims` 6행(#215~220) · claim #167·#169·#210 verdict_note 덧붙임.
+- D+3 우선: The Villans 경기 후 영상 · 1874 「five things」 · Aston Villa Review 「match conclusions」(유료) · 루제리 스캔 결과 · 에메리 페네르바체전 사전 회견(10-13~14 예상 — 루제리·완비사카 왼쪽, 밍스 언급 가능) · 맥긴 「off the ball」 원문.
