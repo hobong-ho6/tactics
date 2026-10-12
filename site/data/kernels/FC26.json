@@ -5558,6 +5558,24 @@
    "impact": "⑴ 「퍼스트 터치 = 볼컨트롤」 통념은 EA 1차 서술과 다르다 — 인터셉트·침착도 같은 식의 항이다. ⑵ 「압박 하 수신」은 별도 계수가 아니라 **같은 판정식의 한 항**이다. ⑶ 낮은 볼컨트롤의 트랩 열세는 **조작(L2/LT)으로 일부 메울 수 있다** — 스탯만으로 체감을 귀속하면 안 되고, 통제 실측을 설계할 때 이 입력을 고정하지 않으면 결과가 무효다.",
    "recorded": "2026-09-21",
    "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)"
+  },
+  {
+   "area": "attributes",
+   "change": "⭐ 힘·공격성의 확인된 작용 = **볼 지키기(쉴딩)·몸싸움**. ⑴ 힘·공격성이 높을수록 쉴딩이 낫다 ⑵ 힘 차이가 큰 어깨싸움에서 힘이 낮은 쪽이 더 자주 비틀거린다 ⑶ 공중볼 박스아웃 효과는 두 선수의 힘 차이로 정해진다 ⑷ 쉴드 트래핑에서 힘에 따른 차이를 키웠다.",
+   "confidence": "A — EA 1차 원문 직접 확인(2026-10-12). 다국어 통설(영·독·서·일)은 fifauteam 문구의 번역·재서술이라 교차검증으로 세지 않았다.",
+   "evidence": "EA 원문: 「players with higher Strength and Aggression Attributes can generally be better at shielding the ball」(힘·공격성 능력치가 높은 선수는 대체로 공을 더 잘 지킨다) · 「Shoulder challenges between players with a large Strength Attribute difference will more often result in the player with the lower Strength Attribute stumbling」(힘 차이가 큰 선수 간 어깨싸움은 힘이 낮은 쪽이 더 자주 비틀거리는 결과가 된다) — TU 1.4.0. 「The effectiveness of the Box Out is based on the Strength difference between the two players」(박스아웃 효과는 두 선수의 힘 차이로 정해진다) · 「Increased Strength-based differentiation when Shield trapping」(쉴드 트래핑 시 힘에 따른 차이를 키웠다) — Gameplay Deep Dive.",
+   "impact": "공격성이 EA 1차로 작용이 서술된 **유일한** 문장이 쉴딩이다 — 「공격성 = 태클·파울 빈도·압박 강도」는 1차 근거가 없는 통설(D)이다. 진화·카드 비교에서 힘·공격성 상승은 **등지고 받기·볼 보호·어깨싸움** 축으로 읽는다. ⚠️ FC26 사실이다 — FC27에서 EA가 다시 확인한 것은 「힘은 계속 중요」(#56)까지이고 공격성·쉴딩 문장은 재확인되지 않았다. 2026-10-12 만잠비 Future Stars Academy II 갈래 비교에서 확인(사용자 질문 「공격성과 힘이 어떻게 동작하는지」).",
+   "recorded": "2026-10-12",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-title-update-1-4-0 · https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-gameplay-deep-dive"
+  },
+  {
+   "area": "attributes",
+   "change": "⭐ 짧은 패스·긴 패스·커브가 높으면 Incisive Pass 없이도 **상황에 따라 스루패스에 커브가 들어간다**(TU 1.5.0). 같은 패치에서 땅볼 패스 정확도·속도를 개선했고 효과는 패스 능력치가 높을수록 크다.",
+   "confidence": "A — EA 1차 원문 직접 확인(2026-10-12).",
+   "evidence": "EA 원문: 「Added the ability for players without the Incisive Pass PlayStyle but with high attributes in Short Pass, Long Pass, and Curve to contextually curve through balls」(Incisive Pass PlayStyle이 없어도 짧은 패스·긴 패스·커브 능력치가 높은 선수는 상황에 따라 스루패스에 커브를 넣을 수 있게 했다) · 「Improved accuracy and speed of ground passing, with impact being most noticeable on players with higher passing attributes」(땅볼 패스의 정확도와 속도를 개선했고, 패스 능력치가 높은 선수에게서 효과가 가장 두드러진다).",
+   "impact": "긴 패스는 「롱볼 전용」이 아니라 **스루패스 커브 조건의 한 축**이다(짧은 패스·커브와 묶임). ⚠️ 「high」의 문턱은 비공개 · 시야(Vision)는 이 조건에 없다. 스루패스 정확도 전반을 어느 능력치가 정하는지는 FC 계열 1차 근거가 없다(FIFA 21의 「짧은/긴 패스+시야+침착」은 구버전 — FC27 행 참조). ⚠️ FC26 사실을 FC27에 전용하는 것은 추정이다. 2026-10-12 만잠비 FSA II 갈래 비교에서 확인.",
+   "recorded": "2026-10-12",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-title-update-1-5-0"
   }
  ],
  "tactic_params": [

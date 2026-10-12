@@ -3575,6 +3575,24 @@
    "impact": "진화·카드 비교에서 **슈팅 속성(특히 슈팅력) 상승이 로우 드리븐 마무리의 슛 속도로 바로 이어진다**고 읽을 수 있다(A). ⚠️ 「core shooting Attributes」가 어느 속성인지(결정력·슈팅력·중거리 중 무엇이 얼마나)는 EA가 밝히지 않았다 — 속성별 비중은 미확인. 결정력=박스 안 발슛 정확도(docs/22 표)는 1차 근거가 없는 통설(D)이다. 2026-10-10 만잠비 Future Stars Academy I 갈래 비교에서 확인.",
    "recorded": "2026-10-10",
    "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive"
+  },
+  {
+   "area": "attributes",
+   "change": "⛔ 시야(Vision)는 FC25~FC27 EA 1차 자료에 **작용 서술이 없다**(부재 증거) — FC27 Gameplay Deep Dive·Ratings Deep Dive·Closed Beta Feedback·FC26 Gameplay Deep Dive 어디에도 능력치로서 등장하지 않는다. 스루패스 품질 요소라는 1차 근거는 **FIFA 21뿐**이다.",
+   "confidence": "A(부재) — FC26·FC27 원문 직접 대조(2026-10-12). FIFA 21 문장은 전재본 경유라 원문 링크 사멸.",
+   "evidence": "FIFA 21 Gameplay Deep Dive(ea.com 원문은 리다이렉트 · 전재본 확인): 「in FIFA 21, a through pass is a mix of Short/Long Passing, Vision and Composure attributes」(FIFA 21에서 스루패스는 짧은/긴 패스·시야·침착 능력치의 혼합이다). FC27은 오히려 조작 보조를 줄였다: 「ground and lobbed through passes no longer heavily assist you by steering toward open lanes away from your aim」(땅볼·로브 스루패스는 더 이상 조준을 벗어나 빈 레인 쪽으로 크게 보정해 주지 않는다) — 이는 조작 보조 설명이지 능력치 정의가 아니다.",
+   "impact": "역할 가중표(game_role_key_attrs)가 cam_playmaker·cm_playmaker·dm_dlp 등에 시야 ●●●를 준 것은 **판단값(MEDIUM)**이고 FC 계열 1차 근거가 없다 — 진화·카드 비교에서 시야 상승을 「스루패스가 좋아진다」로 단정하지 않는다(쓰려면 FIFA 21 근거·구버전임을 밝힌다). 반응력(#25)과 같은 부재 증거 축. 2026-10-12 만잠비 FSA II 갈래 비교에서 확인.",
+   "recorded": "2026-10-12",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive · https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-gameplay-deep-dive · https://www.fifaultimateteam.it/en/fifa-21-gameplay-official-details-pitch-notes/ (FIFA 21 원문 전재)"
+  },
+  {
+   "area": "engine",
+   "change": "어깨싸움(Shoulder Challenge) 개편 — **나란히 붙었을 때 가장 효과적**이고, 쫓아가며 연타하면 팔을 내밀며 **속도를 잃는다**. 힘은 계속 중요한 역할을 하고 Bruiser가 추가 이점을 준다(Bruiser+ 추가분은 소폭 축소 — #13).",
+   "confidence": "A — EA 1차 원문 직접 확인(2026-10-12).",
+   "evidence": "EA 원문: 「Shoulder Challenges should be most effective when the defender gets side-by-side with the ball carrier」(어깨싸움은 수비수가 볼 소유자와 나란히 섰을 때 가장 효과적이어야 한다) · 「repeatedly pressing Shoulder Challenge in quick succession will cause the defender to stick out an arm and lose speed」(어깨싸움을 빠르게 연타하면 수비수가 팔을 내밀고 속도를 잃는다) · 「Strength continues to play an important role, with the Bruiser PlayStyle providing an additional benefit」(힘은 계속 중요한 역할을 하며 Bruiser PlayStyle이 추가 이점을 준다).",
+   "impact": "힘 상승의 가치는 FC27에서도 유지된다(A) — FC26 #53(쉴딩·박스아웃·어깨싸움 힘 차이)의 FC27 측 재확인은 **「힘은 계속 중요」 한 문장까지**다. 수비 쪽 연타 압박은 약해졌으므로 볼 소유자(공격형 미드)의 힘은 「나란히 붙는 정상 타이밍의 어깨싸움」에서 의미가 있다. 2026-10-12 만잠비 FSA II 갈래 비교 중 원문 대조에서 확인(기존 적재 누락분).",
+   "recorded": "2026-10-12",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
   }
  ],
  "tactic_params": [],
