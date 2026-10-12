@@ -158,7 +158,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20261004-nav';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { evoRules, logState, inProgress } from './assets/evorules.js?v=20261006';
+import { evoRules, logState, inProgress, unlockCond, unlockCondKr } from './assets/evorules.js?v=20261013';
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
 import { statTip } from './assets/stat-tips.js?v=20261009';   // 속성 이름 툴팁(정본 표 하나 · 2026-10-06 GK 세부 속성 추가)
@@ -1211,7 +1211,7 @@ function teamBar(el, team, onPick){
    ⛔ 시즌패스 해금(「Unlocked by reaching level N …」)은 문구 자체가 이미 답이라 건드리지 않는다.
    ⚠️ 원문과 한국어 번역을 함께 적는다(불변규칙 11). 번역이 없으면 원문만 적고 그 사실이 드러나게 둔다. */
 function unlockHow(c){
-  const u = (c.unlock_text || '').trim();
+  const u = unlockCond(c);     // ⭐ 정본은 evorules.js — unlock_text가 비면 description의 「Unlocked by …」(2026-10-13)
   if (!u) return '';
   /* ⭐ 시즌패스 해금도 **해금 조건 블록에 넣는다**(2026-09-22 사용자 지적 「이 두 건도 시즌 레벨 올려야 받는 거잖아」).
      ⛔ 종전에는 「문구 자체가 답이다」라며 건너뛰었는데, 그 결과 **영어 원문만 두 번 반복**되고
@@ -1232,6 +1232,13 @@ function unlockHow(c){
       <div>「${esc(u)}」 <b>(챔피언스 토큰 스토어에서 토큰 ${esc(tk[1])}개로 구매)</b></div>
       <span class="dim">챔피언스 토큰은 FUT Champions(주말 리그) 보상으로 받는다 — 갤러리 토큰 스토어와는 다른 상점이다.
         산 뒤에는 미션 없이 바로 적용된다.</span></div>`;
+  /* ⭐ 그 밖의 「Unlocked by …」(예: 전작 FC26 시즌 패스 완주 이월 보상 · 2026-10-13) — 과제 표에 없으니 문구를 그대로 조건으로 적는다. */
+  if (/^Unlocked by/i.test(u)){
+    const kr = unlockCondKr(u);
+    return `<div class="unlockhow"><b>해금 조건</b>
+      <div>「${esc(u)}」 ${kr ? `<b>(${esc(kr)})</b>` : '<span class="dim">(번역 없음)</span>'}</div>
+      ${RULES.lockInfo[c.evo_id]?.unknown ? '<span class="dim">달성했는지는 계정 상태라 fut.gg가 주지 않는다 — 했다/안 했다를 알려 주면 해금 기록으로 남긴다.</span>' : ''}</div>`;
+  }
   const all = EVO.obj_tasks || [];
   /* 후보 = 과제명이 맞거나 그룹명이 맞는 것. ⛔ 그룹 소개문(과제명 == 그룹명)은 제외한다. */
   const cand = all.filter(x => (x.task_name === u || x.group_name === u) && x.task_name !== x.group_name);

@@ -24,6 +24,26 @@ const J = (v, d) => { try { return JSON.parse(v ?? 'null') ?? d; } catch(e){ ret
 export const logState   = l => l.is_void ? 'void' : l.completed_at ? 'done' : 'progress';
 export const inProgress = l => logState(l) === 'progress';
 
+/* ⭐⭐ 진화의 **해금 조건 문구** 정본 (2026-10-13 사용자 지적 — Quick Step [FC 26 Obj]가 「즉시 적용」으로 떴다).
+   fut.gg는 해금 문구를 `unlock_text`(customUnlockable·sbcName·objectiveGroupName)에 주지만,
+   어떤 진화는 그 칸이 비고 **`description`에만** 「Unlocked by completing the FC 26 Season 9 Pass」처럼 적는다.
+   ⛔ 잠김 판정·해금 조건 블록이 각자 `unlock_text`만 보면 이 부류가 **잠김 없이 「즉시 적용」**으로 나온다.
+   ⇒ 문구는 여기서만 고르고 화면은 부르기만 한다(불변규칙 13 ②). */
+export function unlockCond(c){
+  const u = (c?.unlock_text || '').trim();
+  if (u) return u;
+  const d = (c?.description || '').trim();
+  return /^Unlocked by/i.test(d) ? d : '';
+}
+/* 해금 문구의 한국어 번역(불변규칙 11). 아는 문형만 옮기고, 모르면 null — 지어내지 않는다. */
+export function unlockCondKr(t){
+  let m = /^Unlocked by completing the FC ?(\d+) Season (\d+) Pass\.?$/i.exec(t || '');
+  if (m) return `FC${m[1]} 시즌 ${m[2]} 패스 완주 시 해금 — 전작 계정 이월 보상`;
+  m = /reaching level (\d+) in the (Standard|Premium) Season Pass/i.exec(t || '');
+  if (m) return `${/premium/i.test(m[2]) ? '프리미엄' : '스탠다드'} 시즌패스 레벨 ${m[1]} 달성 시 해금`;
+  return null;
+}
+
 export function evoRules(EVO, accName){
   const C = EVO?.club || { accounts: [], players: [], log: [] };
   const acc = (C.accounts || []).find(a => a.name === accName) || (C.accounts || [])[0] || null;
@@ -89,7 +109,8 @@ export function evoRules(EVO, accName){
   for (const u of (EVO?.club?.unlocks || [])) if (!acc || u.account_id === acc.id) manual[u.evo_id] = !!u.unlocked;
   const lockInfo = {};
   for (const c of (EVO?.catalog || [])){
-    const t = (c.unlock_text || '') + ' ' + (c.description || '');
+    const cond = unlockCond(c);
+    const t = cond + ' ' + (c.description || '');
     const m = /reaching level\s+(\d+)\s+in the\s+(Premium|Standard)\s+Season Pass/i.exec(t);
     let info = null;
     if (m){
@@ -97,18 +118,24 @@ export function evoRules(EVO, accName){
       if (prem && !hasPrem) info = { locked: true, why: `프리미엄 시즌패스 미구매 (레벨 ${need} 필요)`, kind: 'prem' };
       else if (spLevel == null) info = { locked: true, unknown: true, why: `시즌패스 레벨 ${need} 필요 — 내 레벨을 모른다`, kind: 'sp' };
       else if (spLevel < need) info = { locked: true, why: `시즌패스 레벨 ${need} 필요 (지금 ${spLevel})`, kind: 'sp' };
-    } else if (/Token Store/i.test(c.unlock_text || '')){
+    } else if (/Token Store/i.test(cond)){
       /* ⭐ 토큰 스토어형(2026-10-06 사용자 지적 — Frontline Flair가 「목표 완료」로 분류돼 있었다).
          챔피언스 토큰 스토어에서 토큰으로 산다(fut.gg Token Store 페이지 · 2026-10-03 조사). 구매 여부는 계정 상태라 모른다. */
-      const n = (/(\d+)\s*tokens?/i.exec(c.unlock_text) || [])[1];
+      const n = (/(\d+)\s*tokens?/i.exec(cond) || [])[1];
       if (manual[c.evo_id] !== true)
         info = { locked: true, unknown: manual[c.evo_id] === undefined,
                  why: `챔피언스 토큰 스토어에서 토큰 ${n ?? '?'}개로 구매해야 열린다`, kind: 'token' };
-    } else if (c.unlock_text && !/^Unlocked by/i.test(c.unlock_text)){
+    } else if (cond && !/^Unlocked by/i.test(cond)){
       /* 목표형 — 이름만 있고 조건식이 없다. 기록이 없으면 「모름」이다. */
       if (manual[c.evo_id] !== true)
         info = { locked: true, unknown: manual[c.evo_id] === undefined,
-                 why: `목표 「${c.unlock_text}」 완료 필요`, kind: 'obj' };
+                 why: `목표 「${cond}」 완료 필요`, kind: 'obj' };
+    } else if (cond){
+      /* 「Unlocked by …」인데 시즌패스 레벨 문형이 아닌 것(예: 전작 FC26 시즌 패스 완주 이월 보상).
+         달성 여부는 계정 상태라 기록이 없으면 「모름」이다. */
+      if (manual[c.evo_id] !== true)
+        info = { locked: true, unknown: manual[c.evo_id] === undefined,
+                 why: unlockCondKr(cond) || `「${cond}」 필요`, kind: 'obj' };
     }
     if (manual[c.evo_id] === true) info = null;      // 사용자가 해금했다고 기록하면 그것이 이긴다
     if (info) lockInfo[c.evo_id] = info;
