@@ -8,6 +8,16 @@
 
 ## 현재 상태
 
+> **2026-10-12 KST 20시 · 주간 경기 수집(스케줄 `match-watch-weekly`) · PC `AD03230205ui-iMac` · `main` · 데이터 커밋 `3918bfe`** · G1~G33 전항 통과.
+> **ⓐ 신규 3경기 적재** — CHE 5-1 본머스(10-10 · `report#52`) · LIV 0-3 맨시티(10-11 · `#53`) · ATM 2-1 알라베스(10-10 원정 · `#54`), 전부 **draft**. AVL 브렌트포드는 기존 적재(D+3 예약 10-13 19:00 유효).
+> player_matches 48(국면 그리드 48) · team_match_stats 3(xG FotMob 동일 스냅샷) · events/shots/period(하프 PPDA 포함) · 경기 프리셋 3(LIV는 퇴장 오염 DIVERGE) · 처방 48 · 전사 11편+요약+claims 12.
+> **ⓑ 판정** — CHE PL 4경기 연속 xG 열세(5-1은 마무리 과잉, obs#991) · LIV 11대11 PPDA 5.97→퇴장 후 23.4(obs#994) · ATM 「요렌테 3번째 CB」 서사 **실측 기각**(obs#996)·줄리아노 하강 5백 실측 일치(#997).
+> measured 재집계 6 · **신규 #516 헨더슨 LCM**(n=2 · Δ.021 무결정) → **duty #246 REJECTED**(dlp 가설 Δ.124). manager_profiles 6축 덧붙임.
+> 🔴 **D+N 후속 예약 4건 미등록** — 비대화형 회차라 `create_scheduled_task`가 사람 승인 필요로 거부됐다. 프롬프트 원문은
+> `reports/match-watch/followups/2026-10-12-pending-schedules.md`(CHE·ATM D+3 10-13 · LIV D+2 10-13 · LIV D+3 10-14). **다음 대화형 세션에서 등록하거나 수동 실행.**
+> ⚠️ 기타: ATM regime 4 슬롯표에 CAM 없음(바리오스·이강인을 RAM으로 귀속 — 4-2-3-1 2경기 더 나오면 슬롯 세트 추가 검토) · duty #246 억제 토큰 「조건 미충족」이 구 노트에 남아 refresh 출력의 억제 목록에 계속 보인다(상태는 REJECTED).
+> SofaScore는 커스텀 UA를 주면 403 — **기본 UA headless**로 열어야 통과(collect_event.py와 같음).
+
 > **2026-10-12 KST · 패치 감시 + 클럽 싱크 + ⭐DB 저장 구조 전환 · PC `AL02359162.local` · `main` · 데이터 커밋 `aba9dad`** · G1~G33 전항 통과.
 > **ⓐ ⭐⭐ `.db`는 이제 git에 없다**(`aba9dad` · 사용자 결정 「①+② 둘 다」). DB 101.2MB로 GitHub 100MB 상한에 **두 번째** 막혀(1차 10-04 103.8MB)
 > ① 케미 신호를 「바뀐 행만 저장」(migration 106 · `core/chem_signals.py` · 59,962→9,619행 · 16회차 스냅샷 전후 동일) ② `db/tactics.db`를 .gitignore로 —
