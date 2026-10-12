@@ -378,7 +378,7 @@ DB 갱신과 별도로, **그날 수집한 기사·업데이트를 모은 리포
   `git add -A`는 쓰지 않는다 — 저장소에 `.claude/settings.json`(Figma PAT 등) 등 커밋 금지
   파일이 있어 푸시가 차단된다:
   ```
-  git add reports/transfer-watch/ db/tactics.db db/dump/ site/data/
+  git add reports/transfer-watch/ db/dump/ site/data/   # ⛔ db/tactics.db는 싣지 않는다(2026-10-12 · .gitignore)
   git commit -m "data(transfer-watch): <요약> (<YYYY-MM-DD>)"
   git push
   ```

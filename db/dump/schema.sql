@@ -797,7 +797,7 @@ CREATE TABLE futgg_chem_signals (
   accelerate TEXT,                   -- 그 스타일 적용 시 AcceleRATE: Controlled/Explosive/Lengthy
   vote_pct REAL,                     -- 커뮤니티 투표 비율(%) · 투표 없으면 NULL
   source TEXT,
-  confidence TEXT,
+  confidence TEXT, last_seen TEXT,
   UNIQUE(ea_item_id, pulled, style_name)
 );
 CREATE TABLE fc_objective_tasks(
@@ -1077,6 +1077,73 @@ CREATE TABLE fut_gallery_snapshots(
   pending       INTEGER NOT NULL DEFAULT 0,  -- 1 = 화면 버튼이 「변경 사항 확인」(확정 전 구성)
   source TEXT, notes TEXT
 );
+CREATE TABLE fut_planned_squads(
+  id           INTEGER PRIMARY KEY,
+  account_id   INTEGER NOT NULL REFERENCES fut_accounts(id),
+  key          TEXT NOT NULL UNIQUE,      -- 예: atm-second-2026-10-04
+  title        TEXT NOT NULL,             -- 화면 칩 이름
+  regime_id    INTEGER REFERENCES regimes(id),
+  game_version TEXT NOT NULL,
+  formation    TEXT NOT NULL,             -- fc_formations.name (예: '4-4-2 (2)')
+  setup_kind   TEXT,                      -- team_tactic_setups.kind (같은 regime·season)
+  created      TEXT NOT NULL,
+  source TEXT, notes TEXT
+);
+CREATE TABLE fut_planned_squad_slots(
+  squad_id       INTEGER NOT NULL REFERENCES fut_planned_squads(id),
+  idx            INTEGER NOT NULL,        -- fc_formations.slots 순서(0=GK)
+  pos            TEXT NOT NULL,           -- 그 슬롯 라벨(RS·LDM …)
+  club_player_id INTEGER NOT NULL REFERENCES fut_club_players(id),
+  role_id        TEXT, focus TEXT,        -- 감독 정본 역할(slot_canon_roles에서 옮긴 값)
+  PRIMARY KEY(squad_id, idx)
+);
+CREATE TABLE fc_objective_groups(
+  id             INTEGER PRIMARY KEY,
+  game_version   TEXT NOT NULL,
+  group_ea_id    INTEGER,
+  group_slug     TEXT NOT NULL,            -- '<category>/<eaId-slug>' — fc_objective_tasks.group_slug와 같은 키
+  group_name     TEXT,
+  group_category TEXT,                     -- seasonal · foundations · milestones · campaigns · live-events · mastery · fc-pro
+  description    TEXT,
+  start_time     TEXT,                     -- UTC ISO (fut.gg startTime)
+  end_time       TEXT,                     -- UTC ISO (fut.gg endTime) — NULL이면 상시
+  tasks_count    INTEGER,
+  group_sp       INTEGER,                  -- 그룹을 **전부** 끝냈을 때 받는 SP(과제별 SP와 별도)
+  group_rewards  TEXT,                     -- 그룹 보상 이름 목록(JSON) — 팩·선수·코인 등 SP 외 보상
+  source         TEXT,
+  confidence     TEXT,
+  pulled         TEXT NOT NULL,
+  UNIQUE(game_version, group_slug, pulled)
+);
+CREATE TABLE game_role_groups(
+  game_version  TEXT NOT NULL REFERENCES game_versions(code),
+  position_type TEXT NOT NULL,             -- game_roles.position_type
+  scene_attack_kr TEXT NOT NULL,           -- 이 군의 모든 역할에 같은 장면을 건다(비교 가능하게)
+  scene_defend_kr TEXT NOT NULL,
+  compare_kr    TEXT,                      -- 군 안 역할 비교 요약
+  source TEXT, confidence TEXT,
+  PRIMARY KEY(game_version, position_type)
+);
+CREATE TABLE game_role_evidence(
+  id            INTEGER PRIMARY KEY,
+  role_id       TEXT NOT NULL,            -- game_roles.role_id (FC26 카탈로그)
+  focus         TEXT,                     -- NULL = 역할 전체에 대한 관찰
+  claim_kr      TEXT NOT NULL,            -- 무엇을 관찰했다는가(한국어 요약)
+  quote_orig    TEXT,                     -- 원문 인용(짧게 · 원어 그대로)
+  quote_kr      TEXT,                     -- 한국어 번역
+  lang          TEXT,                     -- en·ko·es·de·ja·it·fr·pt …
+  source_name   TEXT,                     -- 'Reddit r/EASportsFC' 등
+  source_url    TEXT NOT NULL,
+  observed_gv   TEXT,                     -- FC25·FC26·FC27·unknown
+  observed_date TEXT,
+  grade         TEXT NOT NULL CHECK(grade IN ('C','D')),  -- C 통제 실측 · D 일화·의견·가이드
+  snippet_only  INTEGER DEFAULT 0,        -- 1 = 검색 요약문만 봄(본문 미확인)
+  contradicts_ea INTEGER DEFAULT 0,       -- 1 = EA 설명과 어긋나는 관찰
+  notes         TEXT,
+  collected     TEXT NOT NULL,
+  source        TEXT,                     -- 수집 경로(조사 회차)
+  UNIQUE(role_id, focus, source_url, quote_orig)
+);
 CREATE UNIQUE INDEX uq_squad_entries_regime_player_type
 ON squad_entries(regime_id, player_id, slot_type);
 CREATE INDEX ix_card_items_player ON player_card_items(player_id, game_version);
@@ -1105,6 +1172,7 @@ CREATE INDEX ix_gal_comp_set ON fut_gallery_completions(game_version, set_id, co
 CREATE INDEX ix_sbc_storage_status ON fut_sbc_storage(account_id, game_version, status);
 CREATE INDEX ix_gal_placed_set ON fut_gallery_placed(game_version, set_id, captured_at);
 CREATE INDEX ix_player_evolutions_seen ON player_evolutions(game_version, base_ea_id, last_seen);
+CREATE INDEX ix_futgg_chem_seen ON futgg_chem_signals(ea_item_id, style_name, last_seen);
 CREATE VIEW v_player_profile AS
 SELECT player_id,
        COUNT(*) AS n,
@@ -1256,73 +1324,6 @@ WHERE tt.map25 IS NOT NULL
       AND se2.slot_type=sl.slot_type
   )
 /* v_slot_candidates(regime_id,team_code,formation,pos,slot_type,player_id,label,name_en,name_kr,source_kind,status,map25,rating,rate_basis,rate_note,fit_role,fit_focus,fit_sim,source,confidence,sort_order,grid_club,grid_caveat) */;
-CREATE TABLE fut_planned_squads(
-  id           INTEGER PRIMARY KEY,
-  account_id   INTEGER NOT NULL REFERENCES fut_accounts(id),
-  key          TEXT NOT NULL UNIQUE,      -- 예: atm-second-2026-10-04
-  title        TEXT NOT NULL,             -- 화면 칩 이름
-  regime_id    INTEGER REFERENCES regimes(id),
-  game_version TEXT NOT NULL,
-  formation    TEXT NOT NULL,             -- fc_formations.name (예: '4-4-2 (2)')
-  setup_kind   TEXT,                      -- team_tactic_setups.kind (같은 regime·season)
-  created      TEXT NOT NULL,
-  source TEXT, notes TEXT
-);
-CREATE TABLE fut_planned_squad_slots(
-  squad_id       INTEGER NOT NULL REFERENCES fut_planned_squads(id),
-  idx            INTEGER NOT NULL,        -- fc_formations.slots 순서(0=GK)
-  pos            TEXT NOT NULL,           -- 그 슬롯 라벨(RS·LDM …)
-  club_player_id INTEGER NOT NULL REFERENCES fut_club_players(id),
-  role_id        TEXT, focus TEXT,        -- 감독 정본 역할(slot_canon_roles에서 옮긴 값)
-  PRIMARY KEY(squad_id, idx)
-);
-CREATE TABLE fc_objective_groups(
-  id             INTEGER PRIMARY KEY,
-  game_version   TEXT NOT NULL,
-  group_ea_id    INTEGER,
-  group_slug     TEXT NOT NULL,            -- '<category>/<eaId-slug>' — fc_objective_tasks.group_slug와 같은 키
-  group_name     TEXT,
-  group_category TEXT,                     -- seasonal · foundations · milestones · campaigns · live-events · mastery · fc-pro
-  description    TEXT,
-  start_time     TEXT,                     -- UTC ISO (fut.gg startTime)
-  end_time       TEXT,                     -- UTC ISO (fut.gg endTime) — NULL이면 상시
-  tasks_count    INTEGER,
-  group_sp       INTEGER,                  -- 그룹을 **전부** 끝냈을 때 받는 SP(과제별 SP와 별도)
-  group_rewards  TEXT,                     -- 그룹 보상 이름 목록(JSON) — 팩·선수·코인 등 SP 외 보상
-  source         TEXT,
-  confidence     TEXT,
-  pulled         TEXT NOT NULL,
-  UNIQUE(game_version, group_slug, pulled)
-);
-CREATE TABLE game_role_groups(
-  game_version  TEXT NOT NULL REFERENCES game_versions(code),
-  position_type TEXT NOT NULL,             -- game_roles.position_type
-  scene_attack_kr TEXT NOT NULL,           -- 이 군의 모든 역할에 같은 장면을 건다(비교 가능하게)
-  scene_defend_kr TEXT NOT NULL,
-  compare_kr    TEXT,                      -- 군 안 역할 비교 요약
-  source TEXT, confidence TEXT,
-  PRIMARY KEY(game_version, position_type)
-);
-CREATE TABLE game_role_evidence(
-  id            INTEGER PRIMARY KEY,
-  role_id       TEXT NOT NULL,            -- game_roles.role_id (FC26 카탈로그)
-  focus         TEXT,                     -- NULL = 역할 전체에 대한 관찰
-  claim_kr      TEXT NOT NULL,            -- 무엇을 관찰했다는가(한국어 요약)
-  quote_orig    TEXT,                     -- 원문 인용(짧게 · 원어 그대로)
-  quote_kr      TEXT,                     -- 한국어 번역
-  lang          TEXT,                     -- en·ko·es·de·ja·it·fr·pt …
-  source_name   TEXT,                     -- 'Reddit r/EASportsFC' 등
-  source_url    TEXT NOT NULL,
-  observed_gv   TEXT,                     -- FC25·FC26·FC27·unknown
-  observed_date TEXT,
-  grade         TEXT NOT NULL CHECK(grade IN ('C','D')),  -- C 통제 실측 · D 일화·의견·가이드
-  snippet_only  INTEGER DEFAULT 0,        -- 1 = 검색 요약문만 봄(본문 미확인)
-  contradicts_ea INTEGER DEFAULT 0,       -- 1 = EA 설명과 어긋나는 관찰
-  notes         TEXT,
-  collected     TEXT NOT NULL,
-  source        TEXT,                     -- 수집 경로(조사 회차)
-  UNIQUE(role_id, focus, source_url, quote_orig)
-);
 CREATE VIEW v_evo_log AS                       -- 유효 행(무효 제외) = logState ≠ 'void'
   SELECT * FROM fut_evolution_log WHERE COALESCE(is_void, 0) = 0
 /* v_evo_log(id,club_player_id,evo_id,evo_name,level,applied_at,completed_at,ovr_before,ovr_after,six_before,six_after,attrs_delta,playstyles_after,roles_plus_after,roles_plus_plus_after,source,confidence,notes,is_void,attrs_after) */;

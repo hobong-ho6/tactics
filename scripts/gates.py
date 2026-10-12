@@ -56,7 +56,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from core import DB
+from core import DB, ROOT
 from core.aggregate import player_aggregate
 from core.encode import regression_check
 from core.kernel import Kernel
@@ -460,6 +460,17 @@ def g15_checks(con):
 
 def run(db_path=None, verbose=True):
     db_path = db_path or DB
+    # G33 — ⛔ DB가 git의 dump보다 낡았는가(2026-10-12 · .db 추적 중단과 함께 신설).
+    #   git은 dump만 나른다 — pull로 남의 dump가 들어왔는데 DB가 옛것이면, 그 위에 쓰고 dump하는 순간
+    #   남의 데이터를 지운다. ⚠️ 없는 DB에 connect하면 빈 DB가 생기므로 **연결 전에** 본다.
+    if db_path == DB:
+        import subprocess as _sp      # ⚠️ run() 안에 지역 import subprocess가 있어 전역 이름을 쓸 수 없다
+        r = _sp.run([str(ROOT / "scripts" / "db_stamp.sh"), "check"], capture_output=True, text=True)
+        if r.returncode:
+            print(r.stdout.strip())
+            sys.exit("G33 DB ↔ dump 회차 불일치 ⛔")
+        if verbose:
+            print("G33 DB ↔ dump 회차 일치 ✅")
     con = sqlite3.connect(db_path)
     fails = []
 
@@ -1105,12 +1116,12 @@ def run(db_path=None, verbose=True):
     g21_bad = []
     for t in G21_TABLES:
         try:
-            if t == "player_evolutions":
-                # ⭐ 「바뀐 행만 저장」(migration 099) — 회차별 행 수가 아니라 **그 회차에 관측된 행 수**로 센다
+            if t in ("player_evolutions", "futgg_chem_signals"):
+                # ⭐ 「바뀐 행만 저장」(migration 099 · 106) — 회차별 행 수가 아니라 **그 회차에 관측된 행 수**로 센다
                 #    (pulled ≤ 회차 ≤ last_seen). 안 그러면 변화 없는 회차가 0행처럼 보여 매번 막힌다.
-                days = [d for (d,) in con.execute("SELECT DISTINCT last_seen FROM player_evolutions "
+                days = [d for (d,) in con.execute(f"SELECT DISTINCT last_seen FROM {t} "
                                                   "ORDER BY last_seen DESC LIMIT 2")]
-                hist = [(d, con.execute("SELECT COUNT(*) FROM player_evolutions WHERE ? BETWEEN pulled AND last_seen",
+                hist = [(d, con.execute(f"SELECT COUNT(*) FROM {t} WHERE ? BETWEEN pulled AND last_seen",
                                         (d,)).fetchone()[0]) for d in days]
             else:
                 hist = con.execute(f"SELECT pulled, COUNT(*) FROM {t} GROUP BY pulled "

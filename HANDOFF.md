@@ -254,14 +254,15 @@
 - ⭐ **FUT 원장(`fut_*`)은 EA 싱크가 정본**이다 — 카탈로그 표기값·추정으로 채우지 않고, EA에 없는 보유 행은 **사용자 확인 없이 지우지 않는다**(`/club-sync`).
 
 1. 시작 시 `git status --short`. 로컬 변경이 있으면 fetch/pull하지 말고 내용부터 확인한다. 깨끗할 때만 `git fetch && git pull --rebase origin main`.
-2. 다른 PC/세션 변경을 버리거나 덮지 않는다. 특히 `db/tactics.db`는 충돌 시 기계 병합 금지.
-3. DB 변경 뒤 반드시: `scripts/export.py` → `scripts/db_dump.sh` → `scripts/gates.py`. **`git add -A` 금지** — `db/tactics.db`,
-   관련 `db/dump/`, `site/data/`, `reports/`, 문서를 명시 스테이징한다. push 전 `origin/main` 이동 여부를 다시 확인한다.
+   ⭐ **pull 뒤 `scripts/db_restore.sh`** — 2026-10-12부터 git에는 `.db`가 없고 dump만 있다(100MB 상한 2회 초과). DB가 dump보다 낡으면 G33·`db_dump.sh`가 멈춘다.
+2. 다른 PC/세션 변경을 버리거나 덮지 않는다. 특히 `db/dump/`는 충돌 시 기계 병합 금지.
+3. DB 변경 뒤 반드시: `scripts/export.py` → `scripts/db_dump.sh` → `scripts/gates.py`. **`git add -A` 금지** —
+   관련 `db/dump/`(`.db`는 싣지 않는다), `site/data/`, `reports/`, 문서를 명시 스테이징한다. push 전 `origin/main` 이동 여부를 다시 확인한다.
 4. ⛔ **원장 행을 `UPDATE`로 고치지 않는다 — 정정은 새 obs 행으로 한다**(G14가 막는다).
 5. 시즌 집계는 45분+·hit_points 15+만 쓰되, 경기 리포트는 짧은 교체 포함 **출전자 전원**을 기록한다.
    match 전용 fit/전술은 시즌 `prescriptions`/`team_tactic_setups`에 **자동 병합하지 않는다**.
 6. ⚠️ **스케줄 세션이 돈 뒤에는 `git log`와 `git status`를 함께 본다**(커밋만 하고 푸시 안 한 사례, obs#382). 또 **다른 세션의 미커밋 DB
-   변경이 보이면 `db/tactics.db`를 내 커밋에서 빼라** — 그쪽이 export·dump를 안 돌렸다면 dump·site/data가 어긋난다.
+   변경이 보이면 그 dump를 내 커밋에서 빼라** — 그쪽이 export를 안 돌렸다면 dump·site/data가 어긋난다.
 7. **파괴적 정리 전에는 `python3 scripts/db_diff.py --snapshot`** — 「새로 NULL 된 행 0」을 증명하는 유일한 수단이다(09-01 실증).
 8. HANDOFF는 300줄 이하로 유지한다. 완료된 항목·해소된 미해결은 **지운다**(기록은 커밋과 obs에 남는다).
 

@@ -29,3 +29,10 @@ captures/
 *.mov
 *.mp4
 .claude/worktrees/
+
+# 2026-10-12 — DB 바이너리는 싣지 않는다. GitHub 100MB 상한을 두 번 넘었다(10-04 103.8MB · 10-12 101.2MB).
+# git은 db/dump/(텍스트)만 나르고, 각 PC는 scripts/db_restore.sh로 DB를 만든다. 정본은 여전히 로컬 DB다(불변규칙 1).
+db/tactics.db
+db/tactics.db.restore-tmp
+# 이 PC의 DB가 마지막으로 dump와 맞춰진 회차 지문(scripts/db_stamp.sh) — PC마다 다르다.
+db/.dump_stamp

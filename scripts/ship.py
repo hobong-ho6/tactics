@@ -12,7 +12,7 @@
      다른 파일만 add하고 커밋해 **직전 커밋의 규칙 43줄이 함께 지워졌다.** `git add <경로>`는 남의 것을 빼주지 않는다.
      ⇒ 시작할 때 인덱스가 비어 있지 않으면 **중단한다**(`--force-index`로만 강행).
   ⑶ **게이트를 건너뛴 export** — `scripts/export.py`가 자체 강제하지만, 실패 원인을 먼저 보여주고 멈춘다.
-  ⑷ **dump 누락** — `.db`만 커밋하면 리뷰 불가능한 바이너리 변경만 남는다.
+  ⑷ **dump 누락** — 2026-10-12부터 git에 실리는 DB는 dump뿐이다. dump를 빼면 DB 변경이 통째로 사라진다.
 
 사용:
     python3 scripts/ship.py -m "data(fut): GG Club 싱크 2026-09-23 — 신규 1·갱신 1"
@@ -27,8 +27,10 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-# DB를 건드렸든 아니든 **늘 함께 가는 3종**(불변규칙 5). 변경이 없으면 git이 알아서 무시한다.
-ALWAYS = ["db/tactics.db", "db/dump/", "site/data/"]
+# DB를 건드렸든 아니든 **늘 함께 가는 2종**(불변규칙 5). 변경이 없으면 git이 알아서 무시한다.
+# ⛔ db/tactics.db는 2026-10-12부터 싣지 않는다 — GitHub 100MB 상한을 두 번 넘었다(10-04 · 10-12).
+#    git은 dump만 나르고, 다른 PC는 scripts/db_restore.sh로 DB를 만든다(.gitignore에 있어 add하면 실패한다).
+ALWAYS = ["db/dump/", "site/data/"]
 # ⛔ 이름만 스쳐도 담지 않는다 — .gitignore가 있어도 사람이 -f로 넣는 사고를 막는 2중 방어다.
 FORBIDDEN = (".claude/settings.json", ".claude/settings.local.json", ".env")
 

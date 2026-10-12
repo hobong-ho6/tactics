@@ -26,6 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 DB = ROOT / "db" / "tactics.db"
+from core.chem_signals import prev_round, upsert   # noqa: E402 — 「바뀐 행만 저장」 정본(migration 106)
 
 ACCEL = {"C": "Controlled", "E": "Explosive", "L": "Lengthy"}
 
@@ -109,6 +110,9 @@ def main():
             "(2026-09-21 실측 확정: 카마라 전 스타일 C=Controlled · 음바페 대부분 E=Explosive). "
             "⚠️ vote_pct는 **커뮤니티 투표 비율**이고 fut.gg 편집부 추천이 아니다 — 인기이지 정답이 아니다.")
 
+    # ⭐ 직전 회차는 오늘 행을 쓰기 **전에** 정한다 — 쓰는 도중엔 오늘이 섞인다.
+    prev = prev_round(con, a.pulled)
+    stat = {"extend": 0, "insert": 0, "same-day": 0}
     with sync_playwright() as p:
         br = p.chromium.launch()
         pg = br.new_page()
@@ -129,17 +133,15 @@ def main():
             if not votes:
                 novote += 1
             for style, badge in tiles:
-                con.execute(
-                    """INSERT OR REPLACE INTO futgg_chem_signals
-                       (ea_item_id, pulled, style_name, accelerate, vote_pct, source, confidence)
-                       VALUES (?,?,?,?,?,?,?)""",
-                    (r["ea_item_id"], a.pulled, style, accel_of(badge, unknown), votes.get(style), SRC, CONF))
+                stat[upsert(con, r["ea_item_id"], a.pulled, style, accel_of(badge, unknown),
+                            votes.get(style), SRC, CONF, prev)] += 1
                 ins += 1
             print(f"  [{n}/{len(todo)}] {r['name']:<20} 스타일 {len(tiles)} · 투표 {len(votes)} · 현재 {data.get('accel')}")
             time.sleep(a.sleep)
         br.close()
     con.commit()
-    print(f"\n적재 {ins}행 · 투표 0건 카드 {novote}장 · 실패 {len(skipped)}장")
+    print(f"\n관측 {ins}행(새 행 {stat['insert']} · 변화 없음 연장 {stat['extend']} · 같은 날 재관측 {stat['same-day']}) "
+          f"· 투표 0건 카드 {novote}장 · 실패 {len(skipped)}장")
     for nm, why in skipped:
         print(f"  ⚠️ {nm}: {why}")
     if unknown:
