@@ -1680,6 +1680,40 @@ def run(db_path=None, verbose=True):
     if not ok32:
         fails.append("G32")
 
+    # G34 — ⛔ **경기 후 3일 추적(D+1~D+3) 예약이 빠진 경기를 막는다.** 2026-10-12 신설
+    #   주간 match-watch(10-12)가 CHE·LIV·ATM 3경기를 적재하고 런북 §2-1a 「D+N 예약」을 건너뛰었다 —
+    #   D+1·D+2가 조용히 사라졌다(사용자 지시 「지금 게이트로 구조 고쳐줘」).
+    #   ⇒ 초안 리포트마다 **오늘 이후 남은 D+N**은 ⑴ 리포트에 「## D+N 추적」 절이 이미 있거나
+    #      ⑵ 예약 작업(SKILL.md)이 리포트 파일명과 「D+N」을 함께 담고 있어야 한다.
+    #   ⚠️ 예약 폴더는 이 PC에만 있다 — 폴더가 없으면(다른 PC) 경고만 하고 건너뛴다.
+    import datetime as _dt34
+    _tasks34 = Path.home() / ".claude" / "scheduled-tasks"
+    g34 = []
+    if _tasks34.is_dir():
+        _skills34 = [p.read_text(encoding="utf-8", errors="ignore") for p in _tasks34.glob("*/SKILL.md")]
+        _today34 = _dt34.date.today()
+        _root34 = Path(__file__).resolve().parent.parent
+        for _rid, _path, _date in con.execute(
+                "SELECT r.id, r.report_path, m.date FROM match_reports r JOIN matches m ON m.id = r.match_id "
+                "WHERE r.status = 'draft' AND m.date >= ?", ((_today34 - _dt34.timedelta(days=3)).isoformat(),)):
+            _md = (_root34 / _path).read_text(encoding="utf-8") if (_root34 / _path).exists() else ""
+            _name = Path(_path).name
+            for _n in (1, 2, 3):
+                if _dt34.date.fromisoformat(_date) + _dt34.timedelta(days=_n) < _today34:
+                    continue                                   # 지난 날은 되돌릴 수 없다 — 남은 날만 본다
+                if f"## D+{_n} 추적" in _md:
+                    continue
+                if not any(_name in s and f"D+{_n}" in s for s in _skills34):
+                    g34.append(f"#{_rid} {_name} D+{_n}")
+        ok34 = not g34
+        if verbose:
+            print(f"G34 경기 후 추적 예약 누락: {len(g34)} "
+                  + ("✅" if ok34 else "❌ mcp__scheduled-tasks로 예약할 것(런북 §2-1a) — " + " · ".join(g34[:6])))
+        if not ok34:
+            fails.append("G34")
+    elif verbose:
+        print("G34 경기 후 추적 예약: ⚠️ 예약 폴더 없음(다른 PC) — 건너뜀")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")
