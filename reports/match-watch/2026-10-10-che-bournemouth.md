@@ -146,3 +146,112 @@
 - 신규 measured 후보(만들지 않음 — 다음 회차 판단): 라크루아 CCB n=5 · 차바리아 LM n=2
 - 한계: 단일 경기 · 상대 수준·스코어 효과(이른 2-0) · 서사 영상은 전부 auto-caption.
 - G12: draft — 선수 행·원문 경로·경기 프리셋 존재. D+3 추적 뒤 complete 판단.
+
+## D+3 추적 (2026-10-13) — 3일 추적 마지막 회차
+
+> 수집 시각 2026-10-13 KST · 회차: 스케줄 `mw-che-bournemouth-d3` · §1~9는 수정하지 않았다.
+> ⚠️ **D+1·D+2 회차는 예약 누락으로 실행되지 않았다**(계정 전환으로 예약 레지스트리가 비었던 사고 — HANDOFF 10-12 23시). 이 회차가 **D+1~D+3 창(10-11~10-13) 전체**를 한 번에 훑었다.
+> ⚠️ 예약 프롬프트의 「FotMob 5795472 · WhoScored 1983603」은 **LIV 맨시티전 ID**(obs#994)다 — 이 경기의 정본은 머리말의 FotMob `5795467` · WhoScored `1983593`이고, 두 값으로 재수신해 홈·원정 팀이 맞는 것을 확인했다.
+
+### D3-1. 감독 회견 (양 팀)
+- **회견 전문**: football.london 「Every word Xabi Alonso said」(Bobby Vincent 10-10, AOL 재게시 — https://www.aol.co.uk/articles/every-word-xabi-alonso-said-164211000.html)에 **질문 9개 전문**이 있다(답변은 도구 한계로 부분 열람). chelseafc.com은 로그인 리다이렉트, 스페인어 회견 영상 9Ha1TPloj4I는 제목만 확인됐다.
+- **「we were not in control」 맥락** — 헨더슨 영입 질문에 대한 첫 답변이다. SB Nation 전사 기준: 「We were in control for most of the parts of the game, so I'm happy with that… after conceding the 3-1 for eight minutes to the 4-1, we were not in control, but overall happy with the game」(경기 대부분은 통제했고 만족한다… 3-1 실점 뒤 4-1까지 8분간 통제하지 못했지만 전체적으로 만족한다).
+  - BBC 인터뷰에서는 「there were 10 minutes where the game could finish in a more close way, but the fourth goal was really important」(접전으로 끝날 수도 있던 10분이 있었고 4번째 골이 정말 중요했다)라고 했다.
+  - ⚠️ 실제 51′→67′는 **16분**이다. 감독은 구간을 짧게 잡았고 원인(구조·선수)은 진단하지 않았다.
+- **4-4-2 변형(아체암퐁 RB화) 의도**: **알론소 1차 발언 0건.** 회견 질문 목록에 형태 질문이 없다. 가장 가까운 발언은 둘이다.
+  - 중원: 「help each other well… they give stability… defensively they give good balance」(서로 잘 돕고 안정감과 수비 균형을 준다).
+  - BBC: 「Normally when you have a balance and a strong midfield the team is in better shape」(균형 잡힌 강한 중원이면 팀 형태가 좋아진다).
+  - ⇒ obs#1008.
+- **알론소, 그 밖의 발언**
+  - 헨더슨: 「Taking away the goals, it was a very midfielder performance… always giving solutions to the team-mates」(골을 빼도 아주 미드필더다운 경기였고 동료에게 늘 해법을 줬다, Sky).
+  - 헨더슨의 FK: 「Austin said he could score」(세트피스 코치 오스틴이 넣을 수 있다고 했다, beIN).
+  - 카이세도: 「It was important for Moi to play 65 minutes… we could adjust his load」(65분 뛰게 하는 게 중요했다 — 부하를 조절할 수 있었다, Sky). 실측은 72′ 교체다.
+  - 클린시트: 「It will come. Today we were close」(올 것이다, 오늘 가까웠다, BBC).
+- **로제(본머스)**
+  - Sky: 「We knew Chelsea is a team that starts well and score many goals at beginnings of games… It is our responsibility we didn't react the right way on this information」(첼시가 초반에 잘하고 많이 넣는 팀이란 걸 알았다 — 이 정보에 제대로 대응하지 못한 건 우리 책임이다).
+  - Sky: 「Even our pressing was not Bournemouth-like in many situations」(많은 상황에서 압박조차 본머스답지 않았다).
+  - 라얀 9번: 「We were thinking about how to get physicality close to the goal… This approach was not the problem today. The problem was our attitude」(골문 가까이에 피지컬을 두는 방법을 고민했다… 오늘 문제는 이 접근이 아니라 태도였다, Fantasy Football Scout 10-12).
+  - ⇒ D+0 §8의 「라얀 9번 기용 진술 ↔ 라인업 2선 표기 충돌」은 **의도된 9번 기용**으로 정리된다. LiveScore의 「부상 탓」 요약과는 충돌하며, 1차 발언을 채택했다.
+  - 첼시 구조에 대한 언급은 **0건**이다.
+- 🇩🇪 로제 독일어 회견·인용: Sky Sport DE 2건뿐이고, 둘 다 결과만 전했다.
+  - 0건 검색어: 「Marco Rose Chelsea 1:5 Bournemouth」 · 「Rose Bournemouth Chelsea Pressekonferenz kicker 1:5」 · 「Marco Rose Haltung OR Einstellung Rayan Neuner」.
+- 🇪🇸 알론소 스페인어 독자 인용: **0건**. Goal España는 football.london 번역 복제다.
+  - 0건 검색어: 「Xabi Alonso Chelsea Bournemouth rueda de prensa 5-1」 · 「"Xabi Alonso" Bournemouth "tiros libres" Henderson」.
+
+### D3-2. 지연 게시 전술 분석 (영상·블로그 · 다국어)
+- **유튜브 전술 분석: 창 안 0편.**
+  - 창 안 게시 2편은 경기 귀속이 아니다: Match Day Moments -yL8Cp_gl6Q(10-11, 시즌 6경기 개관) · George Benson 쇼츠 1Ne848YevbY(10-12, 66초).
+  - 당일(10-10) 게시분: Kavkas View uWeA4CFBPGk · Blue Lions TV fpe9eW2UkI8 · Sky Chelsea Live _te15gEjuZ8. 반응 영상이고 D+0 창에 속해 이번에 전사하지 않았다.
+  - ⇒ **신규 전사·`match_videos`·impl_claims 0건.** write_video_summary.py는 쓸 입력이 없어 실행하지 않았다. 기존 3편(#256·#261·#265)의 요약·claims는 D+0에 작성돼 있다.
+- 🇬🇧 **football.london(Jake Stokes, 10-12) 「Xabi Alonso solves major Chelsea problem with clever tweak」** — 이번 창의 유일한 실질 전술 글이다.
+  - 형태: 「often fell into a 4-4-2 shape」(자주 4-4-2로 내려앉았다).
+  - 아체암퐁: 「essentially playing right-back」(사실상 라이트백).
+  - 네투: 「a little further forward」(조금 더 앞으로).
+  - 차바리아: 「more defensive responsibility」(수비 책임이 더 컸다).
+  - Opta 평균 위치: 「essentially averaged a 4-2-4」(사실상 4-2-4).
+  - 동기: 휴식기 전 미드필드–수비 간격이 「too great a few too many times」(너무 자주 지나치게 벌어졌다).
+  - ⚠️ chelsea.news·LiveScore(Fiona Castellano)는 **이 글의 복제**라 독립 소스가 아니다.
+- 🇬🇧 **Chelsea's Voice(Substack, 10-12 · 유료 구간 일부만)**
+  - 「A 3-2-5 on the ball but differently, a 4-4-2 off it」(보유 시 3-2-5, 비보유 시 4-4-2).
+  - 압박 짝: 주앙 페드루·팔머 → 상대 CB, 로저스·네투 → 풀백, 카이세도·헨더슨 → 애덤스·크리스티(대인).
+  - 「force Bmth to go through the wings」(본머스를 측면으로 몰았다).
+  - ⇒ 네투 「높게」를 고정 위치가 아니라 **압박 배정**으로 서술한다.
+- 🇬🇧 그 밖의 매체
+  - VAVEL(10-11): 아체암퐁 라인 브레이킹 패스 15.
+  - Chelsea FC Online: 66′까지 본머스가 2H의 37%를 첼시 수비 구역에서 보냈다 · 「Palmer's clever dummy」(팔머의 영리한 페이크 — FK 디코이).
+  - Opta Analyst(10-10): 「actually won the expected goals (xG) battle 1.46 to 1.08」(사실 xG 싸움은 1.46 대 1.08로 본머스가 이겼다).
+  - Squawka: 헨더슨 FK xG 0.01(우리 SofaScore 0.07 — 제공사 차) · SofaScore 기사: 페트로비치 goals prevented −2.85.
+- 🍒 **본머스 관점**
+  - 팬 평가(Yahoo): 「We couldn't keep possession, couldn't string three passes together and had no outlets」(점유를 못 지키고 세 번 이어 패스도 못 했고 출구가 없었다).
+  - Roundtable Sports 애덤스 3/10: 「overrun in that midfield area」(그 중원에서 압도당했다).
+  - Bournemouth Echo 원문은 fetch 실패로 미열람이다. 첼시 약점을 서술한 본머스 측 자료는 **0건**이다.
+- **전술 블로그 0건**: TFA · Between the Lines · Coaches' Voice · Spielverlagerung · WAGNH · The Athletic(색인 없음).
+  - 🇪🇸 「análisis táctico Chelsea Bournemouth Xabi Alonso」 · 「doble pivote」 → 0건.
+  - 🇩🇪 「Xabi Alonso Chelsea Taktik Bournemouth」 · 「Marco Rose Bournemouth Pressing Analyse」 → 0건(kicker·11Freunde·Spox).
+
+### D3-3. 45분+ 출전 선수 서사 (다국어) → `player_duties` 덧붙임
+| 선수 | 핵심(원문+번역) | 언어 | duty |
+|---|---|---|---|
+| 헨더슨 | FK는 **그 장면 양보**: 「Morgs wasn't too happy but then said 'go on then'」(로저스는 썩 내키지 않았지만 『그럼 차라』고 했다) · 「I'm thankful to Cole and Morgs for letting me take it」(차게 해준 콜·모그스에게 고맙다) · 휴식기 1~2주 FK 연습 | 영 | #246 덧붙임 |
+| 카이세도 | 「Xabi Alonso lo ubicó en el centro del campo junto a Jordan Henderson」(알론소는 그를 헨더슨과 함께 중원에 세웠다, Expreso) · 시어러 「it starts with Caicedo winning the ball and playing it forward」(카이세도가 공을 따내 앞으로 보내는 데서 시작한다 — 검색 요약) · 「Me siento muy bien, estoy muy feliz de volver」(아주 좋다, 돌아와서 정말 기쁘다, El Universo) | 영·서(EC) | **신규 #248**(26/27 행 없었음) |
+| 아체암퐁 | 「essentially playing right-back」(사실상 라이트백) · 라인 브레이킹 패스 15(VAVEL) · 에반일송 골 수비 문제 지적(SI, 요약) | 영 | #178 |
+| 라크루아 | 「A dominant physical presence… won the majority of his duels」(지배적 피지컬, 듀얼 대부분 승리, Goal) · 「stepping cleanly into midfield」(중원으로 깔끔하게 올라섰다, SofaScore) | 영·**프 0건** | #122 |
+| 콜윌 | 패스 69/73 · 주장 · 「aggressive front-foot defending」(공격적 전진 수비, Goal) | 영 | #123 |
+| 차바리아 | 「puso un centro raso al área…」(낮은 크로스를 박스로 넣었다, UnionRayo) · 네투보다 큰 수비 책임(football.london) | 서·영 | #187 |
+| 팔머 | 「The creative fulcrum」(창조의 축, Goal) · FK 디코이 · 압박 1선 | 영 | #183 |
+| 로저스 | 「relentless pressing」(끈질긴 압박, SofaScore) · 상대 풀백 압박 담당 · 득점 경위는 매체마다 갈림(미채택) | 영 | #184 |
+| 네투 | 「teve tempo e espaço para entrar na área」(박스로 들어갈 시간과 공간이 있었다, Maisfutebol) · 「a player reborn in his new position」(새 위치에서 다시 태어났다, Football Insider) + 구간 분할 실측 | 포·영 | #188 |
+| 주앙 페드루 | 「two goals on two shots, timing his runs」(슈팅 2개 2골, 침투 타이밍, SofaScore) · 🇧🇷 본인 발언 0건 | 영·포(BR) | #185 |
+| 마르티네스 | 「una espectacular doble salvada…」(기립박수를 받은 연속 선방, Reconquista) · 하이볼 6 | 서(AR)·영 | #193 |
+
+- 0건(언어별): 🇫🇷 「Lacroix Chelsea Bournemouth 5-1」 · 🇪🇸 AS·Marca 차바리아 · 🇵🇹 Record·A Bola·O Jogo 네투 · 🇧🇷 ge.globo·UOL·Lance 주앙 페드루 인터뷰 · 🇦🇷 Olé·TyC·Infobae·La Nación 마르티네스.
+- ⚠️ 매체 오기 두 건은 채택하지 않았다: Reconquista 「네투 득점」 · Goal EN 「네투 67′ 도움」.
+
+### D3-4. 당일 판정 검증
+| 항목 | D+0 | D+3 판정 |
+|---|---|---|
+| obs#991 xG 열세 4경기·마무리 과잉 | 1.10–1.38 · 골 xG 합 0.76 · GK −2.70 | **유지**. ⑴ FotMob 재수신 결과 xG 1.10–1.38·오픈 1.01–0.37로 **불변**이다(Opta 사후 개정 없음). ⑵ Opta Analyst 1.08–1.46 · Squawka 1.07–1.43도 같은 방향이다. ⑶ 「4경기 연속」은 우리 실측이며 매체 확인은 0건이다. |
+| obs#992 네투 위치 충돌 | 「네투 높게」와 충돌 | ⚠️ **당일 판정 정정(부분)**. ⑴ WhoScored 이벤트를 재수신해 분 단위로 갈랐다. 전체 map25_def는 DB 값과 일치했다(같은 스냅샷). ⑵ 네투 수비액션 13건 중 **9건이 39~67′**였다. 0~38′은 **2건**(x 56·38)이고, 같은 구간 아체암퐁은 10건(y 7~12)이었다. ⑶ ⇒ 「충돌」은 3-1 전후 구간이 90분 그리드를 지배한 **시간대 혼재**다. 안정 구간에서는 서사와 모순되지 않지만 n=2라 지지라고 보기도 어렵다(**obs#1006**). |
+| 비보유 4-4-2 의도 | 서사 1매체 | 관찰 서사는 football.london+Chelsea's Voice로 늘었다. **감독 의도 진술은 0건**이다(obs#1008). |
+| 헨더슨 FK 키커 전환 | 「키커 팔머→헨더슨」 | ⚠️ **범위 보정** — 지정 키커 전환이 아니라 **1회 양보**다(obs#1007). |
+| 알론소 「not in control」 | 2H 수치와 일치 | 유지. 다만 감독은 8~10분이라 했고 실제 구간은 16분이다(obs#1009). |
+| 로제 라얀 9번 vs 라인업 2선 | 충돌 | **의도된 9번 기용**으로 해소(1차 발언). |
+
+⇒ **당일 판정 정정 1건(부분 · obs#992→#1006) · 범위 보정 1건(obs#1007).** §1~9는 고치지 않았다.
+
+### D3-5. 게임 구현 함의
+- 결론은 §7과 같은 **추가 관찰**이다. 경기 프리셋과 시즌 정본은 바꾸지 않는다.
+- 아체암퐁 RCB `cb_wideback`은 「비보유 RB화」와 방향이 같다. 4백 전환 프리셋은 반복 관찰 조건이 그대로다(1경기).
+- 네투 RM `wm_winger/Attack` 정본: 이 경기 단일 적합(wm_widemid/Support Δ.024 무결정)과 구간 분할(n=2)로는 바꿀 근거가 없다.
+- ⭐ 등급(불변규칙 12): 이 절도 역할·포커스의 **게임 내 작용**을 근거로 쓰지 않았다.
+
+### D3-6. 상태
+- `match_reports` #52 **draft → complete**.
+  - G12 조건: 필수 섹션 §1~9 · `match_player_reports` 16행 · 경기 프리셋 · 선발 11 처방 — 전부 D+0에 충족돼 있었고 G12가 통과했다.
+  - draft 사유였던 D+3 추적이 이 회차로 종결됐다.
+  - 끝내 미확보: 회견 답변 원문 전체 · Bournemouth Echo 원문.
+- 반영:
+  - `observations` #1006~1009.
+  - `player_duties` 덧붙임 10행(#246·#178·#122·#123·#187·#183·#184·#188·#185·#193) + 카이세도 RCM 신규 #248.
+  - `manager_profiles` formation·set_pieces 덧붙임.
+- **manager_profiles 갱신 판정**: formation(obs#1006 구간 보정·압박 짝)과 set_pieces(FK 1회성)만 덧붙였다. pressing·rest_defense는 덧붙이지 않았다. 새 근거가 단일 경기 블로그 1편(압박 짝)과 감독 진술(통제 상실 8분)뿐이라, obs#991·#1009로 충분하다.
