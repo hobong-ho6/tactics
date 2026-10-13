@@ -476,7 +476,11 @@ def export_all(db_path=None, window="2026-summer"):
     gal_done = _rows(con, """SELECT id, set_id, grade, completed_at, score, card_ids, notes FROM fut_gallery_completions
                              WHERE game_version='FC27' ORDER BY set_id, id""")
     gal_prev = {r["set_id"]: r["prev_grade"] for r in gal_eval if r["prev_grade"]}
-    _reach, _higher, _new = GAL.classify(gal_eval, gal_prev, gal_mine)
+    gal_snaps = _rows(con, """SELECT set_id, captured_at, placed_n, base_score, bonus_score, total_score, grade, pending
+                               FROM fut_gallery_snapshots s WHERE game_version='FC27'
+                                AND id=(SELECT MAX(id) FROM fut_gallery_snapshots WHERE game_version=s.game_version AND set_id=s.set_id)""")
+    gal_cal = GAL.calibrate(gal_eval, gal_snaps, gal_sets)        # ⭐ 인게임 실측 보정(2026-10-13)
+    _reach, _higher, _new = GAL.classify(gal_eval, gal_prev, gal_mine, gal_cal)
     gallery = {"sets": gal_sets, "tokens": gal_tok, "eval": gal_eval, "mine": gal_mine, "done": gal_done,
                "pulled": gal_eval[0]["pulled"] if gal_eval else None, "min_list": GAL.MIN_LIST,
                "reach": _reach, "higher": _higher, "new": _new,
@@ -490,9 +494,8 @@ def export_all(db_path=None, window="2026-summer"):
                                                            WHERE game_version=p.game_version AND set_id=p.set_id)
                                        ORDER BY set_id, slot"""),
                "placed_id0": GAL.PLACED_ID0,
-               "snaps": _rows(con, """SELECT set_id, captured_at, placed_n, base_score, bonus_score, total_score, grade, pending
-                                       FROM fut_gallery_snapshots s WHERE game_version='FC27'
-                                        AND id=(SELECT MAX(id) FROM fut_gallery_snapshots WHERE game_version=s.game_version AND set_id=s.set_id)""")}
+               "snaps": gal_snaps,
+               "cal": {str(k): {"score": v[0], "grade": v[1]} for k, v in gal_cal.items()}}
     # 시세 — **카드별** 최신 pulled(ea_item_id 키). NULL은 「미형성」이며 화면이 그렇게 쓴다(migration 037)
     # ⭐⭐ 2026-09-29: 종전엔 **표 전체의** 최신 pulled만 읽어서, 한 회차가 45장에서 끊기면 나머지 카드 시세가
     #    화면에서 통째로 사라졌다 — 그래서 시세 수집이 「전량을 한 번에」 끝내야만 했고 1시간씩 걸렸다.

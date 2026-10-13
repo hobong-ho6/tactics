@@ -329,7 +329,28 @@ def evaluate(sets, cards, placed=None):
 MIN_LIST = "D"
 
 
-def classify(evals, prev, mine):
+def calibrate(evals, snaps, sets):
+    """⭐⭐ 인게임 실측 보정(2026-10-13 사용자 지적 「레알 마드리드는 C 등급이 안 된다고 이야기했잖아」).
+       우리 추정(기본 + 태그 모형)이 인게임 화면과 어긋난 세트가 있다 — 레알 마드리드 10-12 캡처: 화면 총점 48,330(D)인데
+       모형은 같은 세트를 80,493으로 봤다(퍼스트 오너 +500% 가정이 깨짐 · b69a26d). 모형을 믿고 「C 가능」을 띄우면 틀린 약속이다.
+       ⇒ 그 세트의 **최신 인게임 스냅숏**(fut_gallery_snapshots)이 있으면 화면 총점을 기본 점수 비율로 옮겨 보정한다:
+          보정 = 화면 총점 × (지금 기본 점수 ÷ 캡처 당시 기본 점수). 태그 보너스가 기본 점수에 비례한다는 **가정**이다(판단값).
+       ⛔ 모형 추정이 보정보다 낮으면 모형을 쓴다(실측보다 높이 부르지 않기 위한 장치이지 올리는 장치가 아니다).
+       반환: {set_id: (보정 점수, 보정 등급)} — 실측이 없는 세트는 없다."""
+    sg = {x["set_id"]: sorted(json.loads(x["grades_json"] or "[]"), key=lambda g: g["threshold"]) for x in (sets or [])}
+    snap = {x["set_id"]: x for x in (snaps or []) if x.get("total_score") and x.get("base_score")}
+    out = {}
+    for r in evals:
+        sid, sn = r["set_id"], snap.get(r["set_id"])
+        if not sn or not r.get("base_score") or r.get("est_score") is None or sid not in sg:
+            continue
+        cal = round(sn["total_score"] * r["base_score"] / sn["base_score"])
+        if cal < r["est_score"]:
+            out[sid] = (cal, grade_of(cal, sg[sid]) if r.get("eligible_n", 0) >= r.get("required_n", 1) else None)
+    return out
+
+
+def classify(evals, prev, mine, cal=None):
     """평가 행 → (달성 가능, 더 높일 수 있음, NEW). ⛔ 스크립트와 export가 **이 함수 하나**를 쓴다.
        · 달성 가능 = 기록이 없고 (태그 포함 추정으로) MIN_LIST 이상이 나온다 · 더 높일 수 있음 = 기록보다 높은 등급이 나온다
        · NEW = 그중 **직전 회차보다** 등급이 오른 것(첫 회차는 비교 대상이 없어 비운다)."""
@@ -340,6 +361,8 @@ def classify(evals, prev, mine):
             continue
         # ⭐ 목록은 **태그 포함 추정 등급**으로 가른다(2026-10-03) — 확정 하한(grade)은 화면이 함께 보여 준다.
         g, sid = (r.get("est_grade") or r["grade"]), r["set_id"]
+        if cal and sid in cal:              # ⭐ 인게임 실측 보정이 있으면 그것으로 가른다(calibrate)
+            g = cal[sid][1]
         if rk(g) < RANK[MIN_LIST] or rk(g) <= rk(mine.get(sid)):
             continue
         (higher if sid in mine else reach).append(sid)

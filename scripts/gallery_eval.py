@@ -26,7 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                        # noqa: E402
-from core.gallery import MIN_LIST, classify, evaluate, mine as gal_mine, placed_cards  # noqa: E402
+from core.gallery import MIN_LIST, calibrate, classify, evaluate, mine as gal_mine, placed_cards  # noqa: E402
 
 GAME = "FC27"
 TODAY = dt.date.today().isoformat()
@@ -114,7 +114,11 @@ def main():
     name = {s["set_id"]: s["name"] for s in sets}
     unsup = [name[r["set_id"]] for r in res if not r["supported"]]
     by = {r["set_id"]: r for r in res}
-    ra, hi, nw = classify(res, prev, mine)
+    snaps = [dict(r) for r in con.execute(
+        """SELECT set_id, base_score, total_score FROM fut_gallery_snapshots s WHERE game_version=?
+             AND id=(SELECT MAX(id) FROM fut_gallery_snapshots WHERE game_version=s.game_version AND set_id=s.set_id)""", (GAME,))]
+    cal = calibrate(res, snaps, sets)                     # ⭐ 인게임 실측 보정(core/gallery.calibrate · 2026-10-13)
+    ra, hi, nw = classify(res, prev, mine, cal)
     reach, higher, new = [by[i] for i in ra], [by[i] for i in hi], [by[i] for i in nw]
     line = lambda r: (f"   {name[r['set_id']]:<26} {r['est_grade']}(추정 · 확정 하한 {r['grade']}) (추정 {r['est_score']:,} = 기본 {r['base_score']:,}+태그 · {r['eligible_n']}/{r['required_n']}장"  # noqa: E731
                       + (f" · 다음 {r['next_grade']}까지 {r['next_gap']:,})" if r["next_grade"] else ")"))

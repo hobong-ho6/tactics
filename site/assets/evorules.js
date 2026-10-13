@@ -182,7 +182,10 @@ export function evoRules(EVO, accName){
          달성 여부는 계정 상태라 기록이 없으면 「모름」이다. */
       if (manual[c.evo_id] !== true)
         info = { locked: true, unknown: manual[c.evo_id] === undefined,
-                 why: unlockCondKr(cond) || `「${cond}」 필요`, kind: 'obj' };
+                 why: unlockCondKr(cond) || `「${cond}」 필요`, kind: 'obj',
+                 /* ⭐ **영영 못 받는 것**(2026-10-13 사용자 「이건 내가 못 받았으니 제거」) — 전작(FC26) 시즌 패스 완주 이월 보상인데
+                    「안 했다」로 기록됐으면 지금 게임에서 다시 할 방법이 없다. 목표·토큰처럼 나중에 열릴 수 있는 잠김과 다르다 ⇒ 화면에서 뺀다. */
+                 never: manual[c.evo_id] === false && /FC ?\d+ Season \d+ Pass/i.test(cond) };
     }
     if (manual[c.evo_id] === true) info = null;      // 사용자가 해금했다고 기록하면 그것이 이긴다
     if (info) lockInfo[c.evo_id] = info;
@@ -208,13 +211,14 @@ export function evoRules(EVO, accName){
     return lv.length > 0 && lv.every(L => !(L.upgrades || []).length && !(L.upgradeOptions || []).length);
   }).map(c => c.evo_id));
   const premIds = new Set(Object.keys(lockInfo).map(Number));
+  const neverIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.never).map(([k]) => +k));   // 영영 못 받는 진화 — 화면이 목록에서 뺀다
   const premOnlyIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.kind === 'prem').map(([k]) => +k));
   const progressIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.kind !== 'prem').map(([k]) => +k));
 
   return {
-    acc, consumed, applied, premIds, premOnlyIds, progressIds, rolesPPIds, cosmeticIds, lockInfo, spLevel, hasPrem,
+    acc, consumed, applied, premIds, neverIds, premOnlyIds, progressIds, rolesPPIds, cosmeticIds, lockInfo, spLevel, hasPrem,
     /* 소진된 진화를 낀 경로는 **그 진화를 쓴 선수 본인 외** 모두에게서 닫힌다 */
-    open: (ids, pid) => (ids || []).every(i => !consumed[i]?.exhausted || consumed[i].by.some(b => b.pid === pid)),
+    open: (ids, pid) => (ids || []).every(i => !neverIds.has(i) && (!consumed[i]?.exhausted || consumed[i].by.some(b => b.pid === pid))),   // 영영 못 받는 진화가 낀 경로는 닫힌다
     premium: ids => (ids || []).some(i => premIds.has(i)),
     /* 프리미엄 구매가 필요한 것 ↔ 플레이로 열리는 것 — 화면이 따로 거를 수 있게 나눠 준다. */
     premOnly: ids => (ids || []).some(i => premOnlyIds.has(i)),
