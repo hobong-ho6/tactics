@@ -289,6 +289,7 @@
 | 화면 확인할 때마다 **임시 Playwright 스크립트를 새로 작성**(한 세션에 4번) | `python3 scripts/check_pages.py` 한 줄 |
 | 진화 로그를 읽는 파이썬 9곳이 저마다 `is_void` 조건을 적음 → 빠뜨린 곳에서 무효 행이 「진행 중」으로 2회 오탐(2026-10-09 · 10-10 마조 Batigol) | 뷰 `v_evo_log`·`v_evo_log_open`(migration 105) + **G32** 원본 표 직접 SELECT 금지 |
 | `.db` 바이너리가 GitHub 100MB 상한을 **두 번** 넘어 푸시 거부(2026-10-04 103.8MB · 10-12 101.2MB) — 1차엔 한 표만 「바뀐 행만 저장」으로 고쳤고 다른 스냅샷 표가 같은 길로 다시 채웠다 | **`.db`를 git에서 뺐다**(.gitignore · dump만 커밋 · `db_restore.sh`) + 케미 신호도 「바뀐 행만 저장」(migration 106 · `core/chem_signals.py`) + **G33**·`db_dump.sh`가 pull로 들어온 dump를 옛 DB로 덮는 것을 막는다 |
+| PlayStyle 보상 「(^N)」(보유 PS가 N개 미만일 때만 지급)을 **화면마다 따로** 셌다 — 「걸어보기」만 세고 카탈로그 카드·단계별 표·갈림길 추천은 안 셌다. **3회 재발**: 10-06 스즈키 Goal Guardian(가지 선택 불가) · 10-08 알레망 Nine Duty(로그에 안 받은 PS 기록) · **10-13 잭슨 Creative or Composed?**(Max PS 2로 시작 → 1단계 Tiki Taka로 3개 → 2단계 First Touch 증발 · 추천한 세션이 PS 수를 단계별로 따라가지 않았다 · obs#999·#1000) | 판정 정본 `site/assets/evorules.js` **`psGrant`·`psCapSim`·`psCapNote`** — 카탈로그 카드에 「Max PS 끝값으로 시작하면 몇 개 증발 · 전부 받으려면 시작 PS ≤ n」 경고 블록, 최적 선수·적용 가능 칩에 선수별 증발 표시, 단계별 표에 「못 받음」, 소진 진화 갈림길에 「지급되지 않았다」. ⭐ **PS 보상 진화를 추천할 때는 화면의 경고 블록을 그대로 인용한다** — 머릿속 계산 금지 |
 
 ⭐ **G21·G22는 회귀 시험이 있다**: `python3 scripts/test_g21_g22_regression.py`
   (결함 3종 합성 주입 + 오탐 1종). **게이트는 통과할 때 아무 말도 안 하므로 조용히 고장 난다** —

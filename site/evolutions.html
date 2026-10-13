@@ -158,7 +158,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20261004-nav';
 import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
-import { evoRules, logState, inProgress, unlockCond, unlockCondKr } from './assets/evorules.js?v=20261013';
+import { evoRules, logState, inProgress, unlockCond, unlockCondKr, psGrant, psCapSim, psCapNote } from './assets/evorules.js?v=20261013b';
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
 import { statTip } from './assets/stat-tips.js?v=20261009';   // 속성 이름 툴팁(정본 표 하나 · 2026-10-06 GK 세부 속성 추가)
@@ -282,6 +282,11 @@ function stepsHTML(p, pid, opts = {}){
   const isGk = /GK/.test(String((steps[0] || {}).position || st?.positions || ''));
   if (!base) return fallbackSteps(p, pid);        // 보유 카드가 없으면 fut.gg 값으로 물러선다
   const at = { ...base };
+  const haveP = new Set(havePSOf(pid));     // ⭐ PS 개수 상한 반영(2026-10-13) — 종전엔 상한을 무시하고 「얻는 PlayStyle」에 적었다
+  const grant = src => src.filter(u => u.upgrade === 'play_style').map(u => {
+    const nm = PS_NAME[String(u.value)]; if (!nm) return null;
+    const g = psGrant(haveP, nm, u.maxValue ?? null);
+    return g === 'gain' ? nm : g === 'cap' ? `✕${nm}` : null; }).filter(Boolean);
   const rows = [{ label: '지금 내 카드', six: faceFromAttrs(at, EVO.face_stats || [], isGk), ovr: st.ovr, ps: [] }];
   let n = 0;
   for (const id of (p.ids || [])){
@@ -293,10 +298,10 @@ function stepsHTML(p, pid, opts = {}){
         const k = ev.rec >= 0 ? ev.rec : 0;
         const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
         applyEvoLevel(at, { upgrades: src, upgradeOptions: [] }, EVO.face_stats, isGk);
-        gained = src.filter(u => u.upgrade === 'play_style').map(u => PS_NAME[String(u.value)]).filter(Boolean);
+        gained = grant(src);
       } else {
         applyEvoLevel(at, lv, EVO.face_stats, isGk);
-        gained = (lv.upgrades || []).filter(u => u.upgrade === 'play_style').map(u => PS_NAME[String(u.value)]).filter(Boolean);
+        gained = grant(lv.upgrades || []);
       }
       n++;
       rows.push({ label: `${n}단계 후`, six: faceFromAttrs(at, EVO.face_stats || [], isGk), ovr: null, ps: gained });
@@ -311,7 +316,9 @@ function stepsHTML(p, pid, opts = {}){
         r.ovr != null ? ` <small class="dim">OVR ${r.ovr}</small>` : ''}</td>
         ${KS.map(k => { const v = r.six[k], d = prev ? v - prev.six[k] : 0;
           return `<td>${v ?? '—'}${d ? `<small class="up"> +${d}</small>` : ''}</td>`; }).join('')}
-        <td>${r.ps.length ? r.ps.map(x => `<span class="chip" style="border-color:var(--ok);color:var(--ok)">${esc(x)}</span>`).join(' ') : '<span class="dim">—</span>'}</td></tr>`;
+        <td>${r.ps.length ? r.ps.map(x => x.startsWith('✕')
+            ? `<span class="chip" style="border-color:var(--bad,#e55);color:var(--bad,#e55)" title="보유 PS 개수 상한(^N)에 걸려 지급되지 않는다">${esc(x.slice(1))} 못 받음 — PS 상한</span>`
+            : `<span class="chip" style="border-color:var(--ok);color:var(--ok)">${esc(x)}</span>`).join(' ') : '<span class="dim">—</span>'}</td></tr>`;
     }).join('')}</tbody></table>`;
 }
 /* 보유 카드가 없을 때만 — fut.gg가 기준 카드에서 계산한 카드 스트립(출처를 밝힌다) */
@@ -1341,7 +1348,8 @@ function renderCatalog(team = CAT_TEAM){
         ${lockChip(c.evo_id)}${used ? `<span class="chip" style="border-color:var(--bad);color:var(--bad)">${used.exhausted ? '소진' : `사용 ${used.count}/${c.repeatability || 1}`} — ${used.by.map(b => `${esc(b.name)} ${esc(b.date)}`).join(', ')}</span>` : ''}</h3>
       ${best && !used?.exhausted ? `<div class="pcard tier${best.tier}" style="margin:6px 0;padding:6px 10px"><span class="badge hi">이 진화 최적 선수</span> <b>${esc(best.name)}</b>
         <small class="dim">${best.tier === 2 ? '처방 역할 Role++' : best.tier === 1 ? '처방 역할 Role+' : '처방 역할 무관(능력치만)'} · ${best.owned ? '내 구단 보유' : `미보유 · ${fmtPrice(best.price)}`} · ${best.k ? `${best.k + 1}단계째(선행 ${best.k})` : '즉시 적용'}${best.d ? ` · OVR +${best.d}` : ''}</small> ${best.rs ? scoreChip(best.rs) : ''}
-        <div class="dim" style="font-size:11px;margin-top:3px"><b>적용 후</b> OVR ${best.path.ovr_before}→${best.path.ovr_after} · ${sixText(best.path.six_before, best.path.six_after)}</div></div>` : ''}
+        <div class="dim" style="font-size:11px;margin-top:3px"><b>적용 후</b> OVR ${best.path.ovr_before}→${best.path.ovr_after} · ${sixText(best.path.six_before, best.path.six_after)}</div>${
+          (t => t ? `<div style="font-size:12px;margin-top:3px;color:var(--bad,#e55)"><b>⚠️ ${esc(best.name)}은(는) 받지 못하는 보상</b> — ${esc(t)} (지금 PS ${havePSOf(best.pid).length}개 · 개수 상한)</div>` : '')(psLostText(c, best.pid))}</div>` : ''}
       ${/* ⛔ description이 해금 문구와 **같은 문장**인 진화가 있다(시즌패스 계열 전부).
              아래 「해금 조건」 블록이 같은 걸 번역까지 달아 보여주므로 여기서는 지운다 —
              종전엔 같은 영어 문장이 카드에 두 번 찍혔다(2026-09-22 사용자 지적). */
@@ -1361,11 +1369,12 @@ function renderCatalog(team = CAT_TEAM){
         <small class="dim">이 조건을 <b>시작 시점에</b> 만족해야 한다 — OVR·PS를 먼저 올리면 조건에서 벗어나 영영 못 건다.</small></div>` : ''}
       ${/* ⭐ 단계별 미션(migration 077) — 「걸 수 있나」(요구조건) 다음은 「무엇을 해야 끝나나」다.
              갈림길(optionsHTML)보다 앞에 둔다 — 갈림길은 마지막 단계의 선택이라 뒤가 맞다. */''}
+      ${psCapNoteHTML(c)}
       ${missionHTML(c)}
       ${optionsHTML(c, best)}
       <div style="margin-top:6px;font-size:12px"><b>업그레이드</b> ${J(c.total_upgrades_text, []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ') || '<span class="dim">없음(도입용)</span>'}</div>
       <div style="margin-top:6px;font-size:12px"><b>${team === 'ALL' ? '우리 선수' : esc(idx.regimes.find(r => r.team_code === team)?.team_kr || team)} 적용 가능 ${apps.length + noPath(c, team).length}명</b> <small class="dim">(fut.gg 전체 ${c.number_of_players?.toLocaleString?.() ?? '—'}명)</small>
-        <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}${a.owned ? ' · 보유' : ''}${a.score ? ` · 역할 가중 +${a.score}` : ''}">${a.owned ? '★ ' : ''}${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${a.score ? `<small class="up"> ⚖${a.score}</small>` : a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || (noPath(c, team).length ? '' : '<span class="dim">없음' + (used?.exhausted ? '(소진)' : '') + '</span>')}</div>
+        <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}${a.owned ? ' · 보유' : ''}${a.score ? ` · 역할 가중 +${a.score}` : ''}${(t => t ? ` · ⚠️ PS 개수 상한으로 못 받음: ${esc(t)}` : '')(a.k ? '' : psLostText(c, a.pid))}">${a.owned ? '★ ' : ''}${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${!a.k && psLostText(c, a.pid) ? '<small style="color:var(--bad,#e55)"> ⚠PS상한</small>' : ''}${a.score ? `<small class="up"> ⚖${a.score}</small>` : a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || (noPath(c, team).length ? '' : '<span class="dim">없음' + (used?.exhausted ? '(소진)' : '') + '</span>')}</div>
         ${noPathHTML(c, team)}</div>
       ${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>` : ''}
     </div>`;
@@ -1538,6 +1547,26 @@ const reqKr = l => REQ_KR[l] || l;
    ⚠️ 분기의 PlayStyle은 **숫자 id**로만 온다 — export가 역산한 `ps_names`로 이름을 붙인다.
    ⭐ **우리 제안**은 그 진화의 최적 선수 경로(`path_choices`)가 고른 가지다 — 「이게 추천」을 표시한다. */
 const PS_NAME = EVO.ps_names || {};
+/* ⭐⭐ PS 개수 상한으로 **증발하는 보상**을 사람이 읽는 문장으로(판정 정본은 evorules.js psCapSim · 2026-10-13 잭슨 사고). */
+const havePSOf = pid => String(STATE[String(pid)]?.playstyles || '').split(',').map(x => x.trim().replace(/\+$/, '')).filter(Boolean);
+function psLostText(c, pid){
+  if (!STATE[String(pid)]) return '';
+  const sim = psCapSim(c, havePSOf(pid), PS_NAME);
+  return sim.filter(e => e.options[e.taken].status.includes('cap')).map(e => {
+    const allCap = e.options.every(o => o.status.every(x => x !== 'gain'));
+    return e.branch && allCap ? `${e.level}단계 PS(${e.options.map(o => o.ps.join('+')).join(' / ')} — 어느 가지든)`
+                              : `${e.level}단계 ${e.options[e.taken].ps.filter((_, j) => e.options[e.taken].status[j] === 'cap').join('·')}`;
+  }).join(' · ');
+}
+function psCapNoteHTML(c){
+  const n = psCapNote(c, PS_NAME); if (!n) return '';
+  return `<div class="pscap" style="margin:6px 0;padding:6px 10px;border-left:3px solid var(--bad,#e55);background:rgba(229,85,85,.08);font-size:12px">
+    <b style="color:var(--bad,#e55)">⚠️ PlayStyle 개수 상한 — 보상이 증발할 수 있다</b><br>
+    보상 PlayStyle의 「(^N)」은 <b>보유 PS가 N개 미만일 때만</b> 들어온다는 뜻이다. 조건은 PS <b>${n.R}개</b>까지 허용하지만,
+    ${n.R}개로 시작하면 PS 보상 ${n.total}개 중 <b>${n.lostR}개를 못 받는다</b>.
+    ${n.safe >= 0 ? `전부 받으려면 <b>시작 시 PS ${n.safe}개 이하</b>인 카드에 건다.` : '어떤 카드로 시작해도 전부 받을 수는 없다.'}
+    <span class="dim">(인게임 확인 C · game_system_changes #41 · 2026-10-13 잭슨 실증)</span></div>`;
+}
 function upLabel(u){
   const k = String(u.upgrade || '');
   if (k === 'play_style') return `PlayStyle ${PS_NAME[String(u.value)] || `#${u.value}`}${u.maxValue ? ` (^${u.maxValue})` : ''}`;
@@ -1632,9 +1661,16 @@ function optionsHTML(c, best){
       const bs = evalBasis(best?.pid, best?.path?.pres);
       /* 이미 쓴 진화면 **내가 고른 가지**를 ✅로(기록) · 아니면 fut.gg 선택을 각주로만 */
       let takenIdx = null;
+      /* ⭐ PS 상한 미지급(2026-10-13 잭슨) — 모든 가지의 PS가 지금 카드에 없고, 지금 PS 수가 상한 이상이면 「안 밟음」이 아니라 「증발」이다. */
+      const capHit = opts => { let cap = null;
+        for (const og of opts) for (const u of (Array.isArray(og) ? og : (og.upgrades || [])))
+          if (u.upgrade === 'play_style'){ if (mineCur.has(PS_NAME[String(u.value)])) return null; if (u.maxValue != null) cap = +u.maxValue; }
+        return cap != null && mineCur.size >= cap ? cap : null; };
       b.opts.forEach((og, k) => { if (chosenBy(Array.isArray(og) ? og : (og.upgrades || []))) { takenIdx = k; anyMine = true; } });
       return `<div class="optlv"><i>${b.i}단계</i>${
-        mineCur && takenIdx == null ? '<small class="dim">— 아직 안 밟았거나 기준 카드와 겹쳐 <b>판정할 수 없다</b></small>' : ''}</div>
+        mineCur && takenIdx == null ? (capHit(b.opts)
+          ? `<small style="color:var(--bad,#e55)">— ⛔ <b>지급되지 않았다</b> — ${esc(mineName)}의 PS가 이미 ${mineCur.size}개라 보상 상한(^${capHit(b.opts)})에 걸렸다</small>`
+          : '<small class="dim">— 아직 안 밟았거나 기준 카드와 겹쳐 <b>판정할 수 없다</b></small>') : ''}</div>
       ${branchEval(b.opts, bs.pres, bs.have, { takenIdx, attrOf: bs.attrOf })}`;
     }).join('')}
     <small class="dim">⭐ = <b>우리 추천</b>(${esc(best?.name || '최적 선수')} 기준 · 기준은 docs/22 §6.2)${
@@ -1721,10 +1757,10 @@ function tryRun(pid, steps){
       const nm = PS_NAME[String(u.value)] || `#${u.value}`;
       /* ⭐ 「(^N)」 = 보유 PlayStyle 개수 상한(2026-10-06 인게임 C · game_system_changes #41).
          이미 N개면 새 PS 가지는 **고를 수 없다** — 스즈키 PS 3개 · Goal Guardian 1v1 Close Down (^3) 선택 불가. */
-      if (havePS.has(nm)) gain.psDup.push(nm);
-      else if (u.maxValue && havePS.size >= +u.maxValue){ gain.psCap.push(`${nm} (^${u.maxValue})`); return; }
-      else gain.ps.push(nm);
-      havePS.add(nm);                       // 같은 진화를 두 번 걸면 두 번째 PS는 「이미 보유」다(2026-10-06)
+      const g = psGrant(havePS, nm, u.maxValue ?? null);   // ⭐ 판정 정본은 evorules.js(2026-10-13)
+      if (g === 'dup') gain.psDup.push(nm);
+      else if (g === 'cap') gain.psCap.push(`${nm} (^${u.maxValue})`);
+      else gain.ps.push(nm);                // 같은 진화를 두 번 걸면 두 번째 PS는 「이미 보유」다(2026-10-06)
     } else if (u.upgrade === 'role_plus' || u.upgrade === 'role_plus_plus'){
       const kind = u.upgrade === 'role_plus' ? 'plus' : 'plusplus';
       const r = ROLEBYID[`${kind}:${u.value}`];

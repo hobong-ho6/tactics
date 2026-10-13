@@ -35,6 +35,53 @@ export function unlockCond(c){
   const d = (c?.description || '').trim();
   return /^Unlocked by/i.test(d) ? d : '';
 }
+/* ⭐⭐⭐ PlayStyle 보상의 **「(^N)」 = 보유 PS 개수 상한** 정본 (2026-10-13 · game_system_changes #41).
+   보상 PS는 **보유 PS가 N개 미만일 때만** 들어온다. 진화 요구조건 「Max PS」와 상한이 어긋나면 조건은 통과해도
+   보상이 증발한다 — 실증: 잭슨 PS 2개로 Creative or Composed? [SP 27](Max PS 2 · 보상 PS 2개 모두 ^3)을 걸어
+   1단계 Tiki Taka로 3개가 되자 2단계 First Touch가 **지급되지 않았다**(사용자 「아까운 진화 날렸네」).
+   ⛔ 화면마다 따로 세면 어느 화면엔 경고가 뜨고 어느 화면엔 안 뜬다 — 실제로 「걸어보기」만 세고
+      카탈로그 카드·단계별 표는 안 셌다. ⇒ 판정은 여기 한 곳(불변규칙 13 ②). */
+export function psGrant(have, name, cap){
+  if (have.has(name)) return 'dup';
+  if (cap != null && have.size >= +cap) return 'cap';
+  have.add(name); return 'gain';
+}
+const srcOf = o => Array.isArray(o) ? o : (o?.upgrades || []);
+/* 진화 c를 PS 집합 havePS에서 시작해 단계별로 밟는다. 갈림길은 **새로 받을 수 있는 가지**를 가정한다(없으면 첫 가지).
+   반환: [{ level, branch, options:[{ ps:[이름], status:['gain'|'dup'|'cap'] }], taken }] — 'cap'이 곧 증발한 보상이다. */
+export function psCapSim(c, havePS, PS_NAME){
+  const have = new Set(havePS || []); const out = [];
+  for (const lv of (J(c?.levels, []) || [])){
+    const opts = lv.upgradeOptions || [];
+    const srcs = opts.length ? opts.map(srcOf) : [lv.upgrades || []];
+    const res = srcs.map(src => src.filter(u => u.upgrade === 'play_style')
+      .map(u => ({ name: PS_NAME?.[String(u.value)] || `#${u.value}`, cap: u.maxValue ?? null })));
+    if (!res.some(r => r.length)) continue;
+    const st = res.map(r => { const h = new Set(have); return r.map(x => psGrant(h, x.name, x.cap)); });
+    let k = st.findIndex(x => x.includes('gain')); if (k < 0) k = 0;
+    for (const x of res[k]) psGrant(have, x.name, x.cap);
+    out.push({ level: lv.idx, branch: srcs.length > 1, taken: k,
+               options: res.map((r, i) => ({ ps: r.map(x => x.name), status: st[i] })) });
+  }
+  return out;
+}
+/* 받는 단계에서 증발하는 보상 목록(가정한 가지 기준). */
+export const psLost = sim => sim.flatMap(e => e.options[e.taken].ps.filter((_, j) => e.options[e.taken].status[j] === 'cap')
+                                              .map(n => ({ level: e.level, name: n })));
+/* 진화 자체의 함정 — 「Max PS」 조건 끝값으로 시작하면 몇 개가 증발하나 · 전부 받으려면 시작 PS를 몇 개 이하로. */
+export function psCapNote(c, PS_NAME){
+  const req = (J(c?.requirements_text, []) || []).find(r => /max\s*ps/i.test(r.label || ''));
+  const sim0 = psCapSim(c, [], PS_NAME);
+  const nLv = sim0.filter(e => e.options.some(o => o.ps.length)).length;
+  if (!nLv || !sim0.some(e => e.options.some(o => o.ps.length))) return null;
+  const R = req ? +String(req.value).replace(/\D/g, '') : 7;
+  const dummy = n => Array.from({ length: n }, (_, i) => `__have${i}`);
+  const lostAt = n => psLost(psCapSim(c, dummy(n), PS_NAME)).length;
+  let safe = -1; for (let n = 0; n <= R; n++) if (lostAt(n) === 0) safe = n;
+  const lostR = lostAt(R);
+  return lostR ? { R, total: nLv, lostR, safe } : null;
+}
+
 /* 해금 문구의 한국어 번역(불변규칙 11). 아는 문형만 옮기고, 모르면 null — 지어내지 않는다. */
 export function unlockCondKr(t){
   let m = /^Unlocked by completing the FC ?(\d+) Season (\d+) Pass\.?$/i.exec(t || '');
