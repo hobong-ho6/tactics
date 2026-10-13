@@ -295,3 +295,70 @@
 - `match_reports` #51 **draft 유지** — 정식 회견 전문 미확보 · D+3 남음.
 - 반영: `observations` #987~990 · `player_duties` 4행 덧붙임(캐시 #30 · 고메스 #22 · 밍스 #160 · 스즈키 #121) · `match_videos` 2행(요약·key_points) · `video_impl_claims` 6행(#215~220) · claim #167·#169·#210 verdict_note 덧붙임.
 - D+3 우선: The Villans 경기 후 영상 · 1874 「five things」 · Aston Villa Review 「match conclusions」(유료) · 루제리 스캔 결과 · 에메리 페네르바체전 사전 회견(10-13~14 예상 — 루제리·완비사카 왼쪽, 밍스 언급 가능) · 맥긴 「off the ball」 원문.
+
+## D+3 추적 (2026-10-13) — 3일 추적 마지막 회차
+
+> 수집 시각 2026-10-13 KST · 회차: 스케줄 `mw-avl-brentford-d3` · 당일 절(§1~9)과 D+1·D+2 절은 수정하지 않았다. 중점: 마지막 지연 게시분(팬 채널 2차 영상·전술 블로그·상대팀 관점), 남은 PENDING/HELD 판정 닫기.
+
+### D3-1. 영상 — 신규 2편 전사 · 1편 부분 확인 · 요약 + 구현 주장 5행(G17)
+| 영상 | 게시 | 종류 | 핵심 | impl_claims |
+|---|---|---|---|---|
+| The Villans 「Brentford Positive + Negatives, Pecking Order Confirmed & Where's Harwood-Bellis?」 m4g5Raq218w (22:26) | 10-12 | 팬 토크 리뷰 | 9′을 **지원 간격**으로도 귀속(아래 D3-3) · 밍스 「so casual」(너무 안일했다)·라인 지휘 부재 · 브렌트퍼드 1~2터치 연계가 풀백을 반복 노출 | 지원 간격 limit HELD(#233) · 밍스 limit PENDING(#234) |
+| 1874 「5 Things We Learned From Aston Villa v Brentford」 4GBP2O02vTI (46:20) | 10-12 | 팬 토크 리뷰(D+1에서 예고된 「five things」) | 1실점 때 **피벗 둘 다 CB 라인으로 하강·박스 앞 10~12야드 공백** · 카마라·고메스 「둘 다 오른쪽」 주장 · 카마라 백3 하강 빌드업 **제안** · 만잠비가 로저스의 「운반·중앙 돌파·운반 시 힘」을 대체 | 박스 앞 limit HELD(#235) · 백3 빌드업 team_axis **REJECTED**(#236) · 만잠비 cam_playmaker/Roaming APPLIED(#237) |
+| UTV 「WILL VILLA PARK BE A PROBLEM THIS SEASON?」 uBTzKtvvcII (≈37분) | 10-12 | 시즌 분위기 토크 | 경기 특정 대목만 확인: [18:05] 「Kamar was pushing up a little bit more I noticed against Brenford」(브렌트퍼드전에서 카마라가 조금 더 올라가는 걸 봤다) · [12:24] 「Matty Cash was absolutely blowing in that second half」(캐시가 후반에 완전히 지쳐 있었다) | 경기 귀속이 약해 **전사 미저장·claims 미작성**(시즌 축) — obs#1003에 인용만 |
+
+- 3편 모두 yt-dlp **HTTP 429** → 브라우저에서 플레이어 자막 응답(timedtext json3)을 가로채 전사했다. 전부 **auto-caption**(「Reier」=루제리 · 「Yamlook」=야르몰류크 · 「Kamar」=카마라 오인식 — 인물은 SofaScore incidents로 확정). 1874 전사의 스폰서 낭독 구간(24:31~27:34)은 생략했다.
+- 미전사: Justin Talks Villa 「THE WARM DOWN」 TMWv33q3T64 — D+2와 같이 자막 없음(재시도 안 함).
+
+### D3-2. 기사·블로그 (다국어 · 서브에이전트 위임 + 원문 직접 열람분만 채택)
+- 🇬🇧 **Aston Villa Review 「The Holy Trinity」**(Chris Nee, 10-11): 결론 3개가 **전부 유료 구간** — 무료 부분은 「a respectable enough Premier League performance」(그런대로 괜찮은 경기력) 한 줄뿐. 미확보로 닫는다.
+- 🇬🇧 **Claret Villans(LiveScore) 「stock up, stock down」**: 밍스 「He was trapped by the press and either did not see, or was not comfortable playing a right-footed pass to break through」(압박에 갇혀 압박을 뚫는 오른발 패스를 보지 못했거나 편하게 차지 못했다) · 「Villa's persistence with attempting to play through the press rather than bypassing it with longer balls was confusing」(롱볼로 우회하지 않고 끝까지 압박을 통과하려 한 고집은 이해하기 어려웠다) · 린델뢰프 「extremely active in defending Villa's penalty area」(박스 수비에서 매우 활발) · 캐시 「held up very well against Schade」(샤데를 상대로 잘 버텼다).
+- 🇬🇧 **Sonny Kelland(서브스택, 10-12)**: 완비사카 「attempted to cut in every single time he went forward」(전진할 때마다 안으로 꺾으려 했다) · 맥긴 도움 장면 「had smartly pulled away from the collection of defenders」(수비수 무리에서 영리하게 빠져나갔다) · 2실점째 「a flick off of Victor Lindelof」(린델뢰프에 맞고 굴절).
+- 🇬🇧 The False 9(10-11): 2실점째 「Joao Gomes failing to track the run」(고메스가 침투를 따라가지 못했다) — obs#987과 같은 방향 · 「Boubacar Kamara limping off late」(카마라가 막판 절뚝였다) — **1소스·후속 보도 0**, 기록만.
+- 🇬🇧 myoldmansaid: 「Unai Emery went with Tyrone Mings over Pau Torres to deal with Brentford's set pieces」(브렌트퍼드 세트피스 대응으로 토레스 대신 밍스) — 선발 사유 **추정**(감독 발언 근거 없음), 채택하지 않음.
+- 🐝 **브렌트퍼드 관점**: 구단 공식 분석(Playmaker Stats, 10-12) — 디우프 첫 PL 선발 LB 터치 64·태클 4 · HT 슈스터 아웃·히키 CB 이동 패스 96% · **빌라 구조 서술 0**. The Brentford Way(10-11) 아예르 「cantered through the Villa defence」(빌라 수비를 성큼성큼 뚫었다) — 구조 서술 0. Beesotted·Bees United·Ealing Road·Jay Harris **0건**(검색어: 「Beesotted Aston Villa 2-2 review Ajer Yarmoliuk」 · 「Brentford Villa Ealing Road OR "Bees United" OR "Jay Harris" Villa Park Ajer Diouf review」).
+- 🇺🇦 야르몰류크(상대): ukrfootball.ua(10-10 · 회차 창 밖이지만 유일한 행동 서술) 「опинившись на м'ячі перед штрафним майданчиком суперника в результаті підбирання」(세컨드볼을 주워 상대 박스 앞에서 공을 잡았다) — 1874의 「박스 앞 공백」과 일치.
+- 🇹🇷 Fotomaç(10-13): 「Wan-Bissaka'nın yerine Ruggeri'nin forma giyeceğini vurguladı」(완비사카 대신 루제리가 뛸 것이라 강조했다) — 영국 언론 전언이고 결장 보도와 충돌 → **채택 안 함**.
+- 🇮🇹 루제리 **이탈리아어 2026-10 보도 0건**(검색어: 「Ruggeri infortunio Aston Villa」 · 「Ruggeri esami flessore Aston Villa tempi di recupero」). 🇪🇸 에메리 신규 0(「Emery Ruggeri isquiotibial Aston Villa Brentford」 · 「Emery rueda de prensa Fenerbahçe Aston Villa Champions」). 🇧🇷 고메스·알리송 0(「João Gomes Aston Villa empate Brentford」 · 「Alysson Aston Villa Brentford estreia OR entrou」). 🇨🇭/🇫🇷 만잠비 0(「Manzambi Blick Aston Villa Brentford Nati」 · 「Manzambi passe décisive McGinn Aston Villa Brentford」). 🇸🇪 린델뢰프 0(「Lindelöf Villa Brentford oavgjort Aftonbladet OR Expressen OR Fotbollskanalen」). 🇫🇷 카마라 0(「Boubacar Kamara Aston Villa Brentford blessure octobre 2026」). 🇳🇴 아예르(상대) 0(「Ajer scoring mot Aston Villa Brentford uavgjort」).
+- **전술 블로그 0건**(3일 누적): TFA · BTL · Coaches' Voice · spielverlagerung · 7500 to Holte · Ultimo Uomo(최신 2026-05).
+- **맥긴 「off the ball」 원문 0건** — Aston Villa News의 기자 의역뿐이고 발언 매체도 불명(검색어: 「McGinn "off the ball" Brentford」 · 「"McGinn" Villa Brentford "a lot to learn" OR "learn off the ball"」 · 「John McGinn Scotland squad interview October 2026 Villa」). 미확보로 닫는다.
+- ⚠️ 선제골 과정(탈취자 샤데/티아고 · 크로서 티아고/디우프)은 매체마다 엇갈린다(전부 스니펫) — 판정에 쓰지 않았다.
+
+### D3-3. 루제리 · 에메리 회견
+- **루제리**: 첫 스캔으로 정도 미확정 · Tanswell 「several weeks」(수 주 결장 예상 — RotoWire 10-12·Sportsview 10-13 경유, X 원문은 미열람) · 부상 직전 「pulled up … after dribbling past an opponent」(상대를 드리블로 제친 뒤 멈춰 섰다 — Claret Villans). ⇒ 완비사카 왼쪽 지속이 기본 시나리오(**obs#1004**). 1874의 「2~4주」는 진행자 추정이라 쓰지 않는다.
+- **에메리 페네르바체전(10-14 UCL) 사전 회견**: 이 회차 시점 **미공개**(avfc.co.uk 검색은 티켓 기사만). 정식 경기 후 회견 전문도 3일간 끝내 미확보 — 플래시·매체 발췌(D+1)가 최종 근거다. 다음 경기 match-watch가 회견에서 루제리·완비사카·밍스 언급을 이어받는다.
+
+### D3-4. 중점 검증 판정
+| 항목 | D+2 | D+3 판정 |
+|---|---|---|
+| 9′ 실점 귀속 | 표적 압박(obs#984) + 무압박 수신 후 실행(obs#988) | **층 추가(정정 아님)** — The Villans 「Kamar was too far away … Gomez was nowhere … Buendia … in the wrong position」(카마라는 멀었고 고메스는 없었고 부엔디아는 엉뚱한 위치) = **지원 간격**. 설계(상대)·실행(밍스)·지원 거리(피벗·LM) 세 층으로 정리(**obs#1001**) |
+| 1실점 박스 앞 공백 | 미기록 | 신규 — 1874 「두 피벗이 CB와 같은 줄」 + 우크라이나 매체 「세컨드볼을 주워 박스 앞」 일치. 단일 장면 → HELD(**obs#1002** · claim #235) |
+| 피벗 높이 서열(§2·§5 「고메스 약간 높음」) | — | ⚠️ **범위 보정** — 0~64′ 터치 평균에만 참. 90분 평균 위치 카마라 46.5 > 고메스 44.6 · 점유 그리드 상단 2행 카마라 .41 vs 고메스 .24. UTV 「카마라가 더 올라갔다」와 일치, 1874 「둘 다 오른쪽」은 고메스 부분 불일치(**obs#1003**) |
+| 79′ 귀속 | 캐시+고메스 독립 2소스(obs#987) | **유지** — The False 9 「Joao Gomes failing to track the run」 추가(고메스 4소스) |
+| claim #167(CB 1·2위) | PENDING(2/3) | **PENDING 유지 · 이 경기 추적에서 이관** — 3일간 새 패스 실측 0. ⛔ 재판정 조건 불변: **다음 카마라·고메스 동시 선발 공식전**(예상 10-14 UCL 페네르바체전)에서 SofaScore `pass_total` 1·2위가 CB 듀오면 3회째 → APPLIED 후보로 사람 판단. 1874의 「카마라 백3 하강」은 제안일 뿐 관찰되지 않았다(점유 최하단 행 .07 → claim #236 REJECTED) |
+| claim #169(맥긴 러너 추적) | HELD · 반례 1 | **HELD 유지 · 이 경기 종결** — 3일간 맥긴 특정 0건. 1874는 1실점 때 맥긴을 「holding his position on that right side」(오른쪽 자리를 지키며 복귀)로 서술. ⛔ 재판정 조건 불변(독립 2소스 특정 또는 2경기 누적) — 이 경기는 반례 1건 |
+| 밍스 빌드업(claim #210·#216·#234) | PENDING · 사용자 판단 | **PENDING · 사용자 판단** — 독립 소스 4곳(Tanswell·UTV·The Villans·Claret Villans)+1874 「발밑 경기력」. 처방 변경 여부는 사람 결정 |
+| 루제리 부상 | 스캔 결과 미공개 | **수 주 결장 예상**(기자 1인 경유) — 공식 발표 대기(obs#1004) |
+
+⇒ **당일 판정 정정 0건.** 범위 보정 2건(obs#988 · obs#1003) — §1~9는 고치지 않았다.
+
+### D3-5. 3일 추적 종결 요약
+| 회차 | 신규 자료 | 핵심 산출 | obs | claims |
+|---|---|---|---|---|
+| D+1 (10-11) | 에메리 플래시·매체 발췌 · 앤드루스 회견 · 영상 4편 전사 · 일본/스위스 매체 | 루제리 햄스트링 **확정** · 에메리 「통제 부족」 자기 진단 · 64′ 2선 재배치 독립 2소스 · 밍스 표적 압박 3소스 | #983~986 | 9행 |
+| D+2 (10-12) | UTV 전술 리뷰(33분) · 1874 브이로그 · BBC MOTD 시어러 · 일본 2매체 | 79′ 귀속 **캐시+고메스**(독립 2소스) · 9′ 「무압박 수신 후 실행 실패」 보정 · 스즈키 스위퍼 유지 · 고메스 연결 허브 | #987~990 | 6행(#215~220) |
+| D+3 (10-13) | The Villans · 1874 「5 Things」 · UTV(부분) · 팬 블로그 4곳 · 브렌트퍼드 구단 분석 · 루제리 결장 전망 | 9′ **지원 간격 층** · 1실점 박스 앞 공백 · 피벗 높이 **범위 보정** · 루제리 수 주 결장 예상 · 판정 닫기 | #1001~1005 | 5행(#233~237) |
+| **합계** | 영상 전사 8편(+자막 없음 1·부분 1) · 언어 11개 시도(영·스·일·독/스위스·이·포·프·스웨덴·노르웨이·우크라이나·터키) | 당일 판정 **뒤집힘 0** · 보정 2 | 13건 | 20행 |
+
+- **끝내 미확보**: 에메리 정식 경기 후 회견 전문 · 교체 의도(부엔디아→음바예·알리송·바클리) 감독 발언 · 맥긴 「off the ball」 원문 · Aston Villa Review 결론(유료) · 상대 감독의 밍스 압박 계획 확인 · 전술 블로그(6개 매체 0).
+- **열린 채 이관**: claim #167(다음 동시 선발 경기) · #169(조건 불변) · #210/#216/#234 밍스(사용자 판단) · GK 성향/상황 분리(obs#989 — 3경기 누적) · 맥긴 터치라인 비중(obs#973 — 만잠비 동반 표본 누적).
+
+### D3-6. 게임 구현 함의
+- 결론은 §7과 같다: **추가 관찰**. 이 회차 새 근거는 전부 단일 장면·팬 소스라 역할·포커스 정본을 바꾸지 않는다.
+- 피벗 높이 보정(obs#1003)은 **역할 근거를 바꾸지 않는다** — LDM dm_dlp/Roaming은 「높이」가 아니라 왼쪽 연결(.875 · Δ.154)이 근거였다. 경기 프리셋 `match_player_prescriptions`는 그대로 둔다.
+- 1874의 백3 빌드업(카마라 하강)은 관찰 사실이 없어 프리셋에 반영하지 않는다(claim #236 REJECTED — 관찰이 생기면 새 행).
+
+### D3-7. 상태
+- `match_reports` #51 **draft → complete**. G12 조건 확인: 필수 섹션 §1~9 · 출전 15명 `match_player_reports` 15행 · 경기 프리셋 `match_game_setups` 1행 · 선발 11 `match_player_prescriptions`(15행 중 starter 11) — 전부 D+0에서 충족돼 있었고, D+1·D+2에서 draft로 묶어둔 사유(정식 회견 전문 · 남은 추적 회차)는 3일 추적 종결로 해소됐다. 회견 전문은 끝내 공개 경로가 없어 「미확보」로 닫는다.
+- 반영: `observations` #1001~1005 · `match_videos` 2행(#267 1874 · #268 The Villans — 요약·key_points) · `video_impl_claims` 5행(#233~237) · claim #167·#169 verdict_note 덧붙임 · `player_duties` 5행 덧붙임(고메스 #22 · 카마라 #29 · 밍스 #160 · 루제리 #223 · 완비사카 #96) · `manager_profiles` buildup 축에 범위 보정 덧붙임.
+- **manager_profiles 갱신 판정**: buildup 축만 덧붙였다(2026-10-10 문단의 「고메스 좌측 약간 높게」가 실측 범위를 넘어선 서술이었다). 나머지 축(pressing·rest_defense·implementation 등)은 이 회차 근거가 단일 장면·팬 소스뿐이라 **추가하지 않는다** — 박스 앞 공백(obs#1002)은 2경기째 누적 시 rest_defense 축 후보.
