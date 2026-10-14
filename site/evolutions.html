@@ -1381,6 +1381,8 @@ function renderCatalog(team = CAT_TEAM){
   catRoot.querySelectorAll('select[data-catstart]').forEach(sel => sel.addEventListener('change', () => {
     const btn = catRoot.querySelector(`button[data-catstartbtn="${sel.dataset.catstart}"]`), o = sel.selectedOptions[0];
     btn.dataset.evostart = `${sel.value}:${sel.dataset.catstart}`; btn.disabled = !!o.dataset.why; btn.title = o.dataset.why || '';
+    const w = catRoot.querySelector(`[data-catwhy="${sel.dataset.catstart}"]`);   // ⭐ 못 거는 이유를 바로 보인다(2026-10-15 「이건 왜 못 건다로 나와?」)
+    if (w){ w.hidden = !o.dataset.why; w.textContent = o.dataset.why ? '⛔ ' + o.dataset.why.replace(/^시작할 수 없다 — /, '') : ''; }
     catRoot.querySelector(`[data-catmsg="${sel.dataset.catstart}"]`).id = `em${sel.value}_${sel.dataset.catstart}`; }));
   catRoot.querySelectorAll('button[data-evostart]').forEach(b => b.addEventListener('click', () => evoStart(b, catRoot)));
   catRoot.querySelectorAll('button[data-evostep]').forEach(b => b.addEventListener('click', () => evoStep(b, catRoot)));
@@ -2133,7 +2135,8 @@ function catStartHTML(c, apps, team){
     <select data-catstart="${c.evo_id}">${opts.map(o => `<option value="${o.pid}"${o === first ? ' selected' : ''}${o.why ? ` data-why="${esc('시작할 수 없다 — ' + o.why)}"` : ''}>${
       esc(NAME_OF[o.pid] || STATE[o.pid]?.name || o.pid)}${o.why ? ' — 못 건다' : ''}</option>`).join('')}</select>
     <button class="act" data-catstartbtn="${c.evo_id}" data-evostart="${first.pid}:${c.evo_id}"${first.why ? ` disabled title="${esc('시작할 수 없다 — ' + first.why)}"` : ''}>▶ 진화 시작</button>
-    <span class="msg-slot" data-catmsg="${c.evo_id}" id="em${first.pid}_${c.evo_id}"></span></div>`;
+    <span class="msg-slot" data-catmsg="${c.evo_id}" id="em${first.pid}_${c.evo_id}"></span></div>
+    <small class="dn" data-catwhy="${c.evo_id}"${first.why ? '' : ' hidden'}>⛔ ${esc(first.why)}</small>`;
 }
 /* 이 보유 카드에서 **진행 중**인 그 진화의 로그 행(완료 안 됨 · 무효 아님) — 판정은 evorules.js inProgress 정본. */
 const openEvoLog = (cpid, evo) => (EVO.club?.log || []).find(l => l.club_player_id === cpid && l.evo_id === +evo && inProgress(l)) || null;
