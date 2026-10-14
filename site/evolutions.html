@@ -1690,7 +1690,10 @@ let SHOW_UNOWNED = false;   // 선수별 패스는 **보유 카드만**이 기�
       (숨긴 것을 조용히 없애지 않는다 · docs/70 「N건 숨김 배지」). */
 let SHOW_DONE = localStorage.getItem('evo_show_done') === '1';
 /* 이 선수에게 **지금 할 수 있는 것**의 수 = 열린 경로 중 완주하지 않은 것 + 경로 없이 걸 수 있는 진화 */
-const actionable = pid => (RANKED[pid] || []).filter(r => !doneScore(r, +pid)).length + eligOpen(+pid).length;
+/* ⭐ 진행 중인 진화도 「할 것」이다(2026-10-15) — 빠뜨리면 1회성 진화를 시작한 선수(루헤리 Side Step)가 목록에서 접혀 사라진다. */
+const openCountOf = pid => { const own = (EVO.club?.players || []).find(x => x.player_id === +pid && x.status === 'owned');
+  return own ? (EVO.club?.log || []).filter(l => l.club_player_id === own.id && inProgress(l)).length : 0; };
+const actionable = pid => (RANKED[pid] || []).filter(r => !doneScore(r, +pid)).length + eligOpen(+pid).length + openCountOf(pid);
 /* 사이드패널 본문 — ⛔ 종전 패널과 **같은 내용**이다. 여기서 정보를 빼거나 더하지 않는다. */
 
 /* ══ 진화 미리보기 (2026-09-26) ════════════════════════════════════════════
@@ -2163,7 +2166,12 @@ function nextEvoCards(pid){
   for (const l of (EVO.club?.log || [])) if (own0 && l.club_player_id === own0.id && inProgress(l))
     seen.set(l.evo_id, { ...(seen.get(l.evo_id) || { id: l.evo_id, solo: true }), open: true, tier: 99 });
   /* ⭐ 역할++는 기본으로 접는다 — 경로를 통해 들어온 것도 같은 기준으로 거른다(토글은 한 벌이다). */
-  const list = [...seen.values()].filter(x => SHOW_ROLEPP || !RULES.rolesPPIds.has(x.id))
+  /* ⭐ **지금 카드로 조건이 안 맞는 진화는 뺀다**(2026-10-15 사용자 지시 「못 거는 진화는 아예 안 나오지?」).
+     ⛔ 종전엔 「시작 막힘」 버튼을 단 채 남아 있었다(마조·만잠비에게 OVR 최대 80인 Technical). 진행 중인 것은 남긴다.
+     ⚠️ 「❔ 판정 불가」(레어도 등 우리가 모르는 조건)는 빼지 않는다 — 빼면 걸 수 있는 진화가 사라진다. */
+  const reqOk = id => { const c = CATBYID[id], cs = curStateOf(+pid);
+    return !c || !cs || !tryReq(c, cs).some(t => !String(t).startsWith('❔')); };
+  const list = [...seen.values()].filter(x => x.open || reqOk(x.id)).filter(x => SHOW_ROLEPP || !RULES.rolesPPIds.has(x.id))
     .sort((a, b) => (b.tier ?? -1) - (a.tier ?? -1) || (b.rs ?? -1) - (a.rs ?? -1));
   if (!list.length) return '<div class="dim" style="font-size:12px;margin:6px 0">지금 걸 수 있는 진화가 없다.</div>';
   const own = (EVO.club?.players || []).find(x => x.player_id === +pid && x.status === 'owned');
@@ -2506,12 +2514,14 @@ function renderPaths(team, focusPid){
      키 개수로 세면 화면에 안 나올 선수까지 세어 **버튼의 수와 실제가 어긋난다**. */
   /* ⭐ 경로가 0건이어도 **적용 가능한 진화가 있으면** 선수를 세운다(2026-09-22) —
      종전엔 `RANKED[p].length`만 봐서 음바예·마첸처럼 특별 카드 전용 진화만 열린 선수가 목록에서 통째로 빠졌다. */
-  const all = [...new Set([...Object.keys(RANKED).map(Number), ...Object.keys(ELIG_BY_PID).map(Number)])]
-    .filter(p => (team === 'ALL' || TEAM_OF[p] === team) && ((RANKED[p] || []).length || eligOpen(p).length));
+  /* ⭐ 진행 중인 진화가 있는 선수도 세운다(2026-10-15 · 루헤리 Side Step) — 1회성은 시작 즉시 소진이라 위 두 목록에서 다 빠진다. */
+  const all = [...new Set([...Object.keys(RANKED).map(Number), ...Object.keys(ELIG_BY_PID).map(Number),
+                           ...(EVO.club?.players || []).filter(x => x.player_id != null && openCountOf(x.player_id)).map(x => x.player_id)])]
+    .filter(p => (team === 'ALL' || TEAM_OF[p] === team) && ((RANKED[p] || []).length || eligOpen(p).length || openCountOf(p)));
   const nDone = all.filter(p => !actionable(p)).length;
   const nOwned = all.filter(p => STATE[String(p)]).length, nNot = all.length - nOwned;
   const pids = all.filter(p => (SHOW_UNOWNED || STATE[String(p)]) && (SHOW_DONE || actionable(p)))
-    .sort((a, b) => (RANKED[b][0]?.tier ?? 0) - (RANKED[a][0]?.tier ?? 0) || (RANKED[b][0]?.d ?? 0) - (RANKED[a][0]?.d ?? 0));
+    .sort((a, b) => openCountOf(b) - openCountOf(a) || ((RANKED[b] || [])[0]?.tier ?? 0) - ((RANKED[a] || [])[0]?.tier ?? 0) || ((RANKED[b] || [])[0]?.d ?? 0) - ((RANKED[a] || [])[0]?.d ?? 0));
   /* ⚠️ 이 버튼은 `nNot` **선언 뒤에** 만들어야 한다 — 위쪽(프리미엄 토글 옆)에 두면
      `Cannot access 'nNot' before initialization`으로 **렌더가 통째로 죽는다**(2026-09-22 실측). */
   if (nDone)
