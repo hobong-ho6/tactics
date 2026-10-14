@@ -96,7 +96,7 @@ async def main(a):
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("page", nargs="?", help="site/ 아래 파일명. 생략하면 전 페이지 렌더 검사")
-    ap.add_argument("--tab", help='탭 전환: [data-tab="<값>"] 을 누른다 (evolutions.html: now/club/chem/cat/paths/tactic)')
+    ap.add_argument("--tab", help='탭 전환: [data-tab="<값>"] 을 누른다 (evolutions.html: now/club/chem/cat/paths/sbc/gallery)')
     ap.add_argument("--click", help="정확히 일치하는 텍스트를 눌러 탭/토글을 연다 (player.html: 「게임 스탯」 등)")
     ap.add_argument("--q", help="쿼리스트링 id= 값 (player.html 선수 id)")
     ap.add_argument("--grep", help="본문에서 이 정규식에 걸리는 줄만 출력")

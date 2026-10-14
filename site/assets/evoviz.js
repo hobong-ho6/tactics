@@ -58,27 +58,6 @@ export function sixDumbbell(before, after, { W = 420, gk = false } = {}){
   return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="6스탯 적용 전후">${body}</svg>`;
 }
 
-/* ── 3. 슬롯 준비도 — 전술 구현 탭 요약. 슬롯마다 한 칸: 카드가 이미 처방 역할 Role++ / 진화로 도달 / 불가. */
-export function readiness(rows, { W = 720 } = {}){
-  if (!rows.length) return '';
-  const STATE = [
-    { k: 2, label: '카드가 이미 처방 역할', col: QUAL[4] },
-    { k: 1, label: '진화로 도달 가능', col: QUAL[2] },
-    { k: 0, label: '도달 못 함 — 대안 검토', col: QUAL[0] },
-  ];
-  const cell = 26, gap = 4, perRow = Math.max(6, Math.floor((W - 8) / (cell + gap)));
-  const H = Math.ceil(rows.length / perRow) * (cell + gap) + 26;
-  const cells = rows.map((r, i) => { const cx = (i % perRow) * (cell + gap), cy = Math.floor(i / perRow) * (cell + gap) + 16;
-    const st = STATE.find(s => s.k === r.reach) ?? STATE[2];
-    const tip = `${r.pos} · ${r.name ?? '처방 없음'} — ${st.label}${r.price != null ? ` · 시세 ${Number(r.price).toLocaleString()} 코인` : ' · 시세 미형성'}`;
-    return `<g class="hit" data-tip="${esc(tip)}"><rect x="${cx}" y="${cy}" width="${cell}" height="${cell}" rx="5" fill="${st.col}" fill-opacity=".85"/>
-      <text x="${cx + cell / 2}" y="${cy + cell / 2 + 3.5}" text-anchor="middle" font-size="9.5" font-weight="700" fill="#14100b">${esc(r.pos)}</text></g>`; }).join('');
-  const n = k => rows.filter(r => r.reach === k).length;
-  return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="슬롯 준비도">
-      <text x="0" y="10" font-size="10.5" fill="var(--dim)">슬롯 ${rows.length}칸 — 색이 곧 상태다(칸 안은 슬롯 이름)</text>${cells}</svg>
-    <div class="lg">${STATE.map(s => `<span><i style="background:${s.col}"></i>${s.label} ${n(s.k)}</span>`).join('')}</div>`;
-}
-
 export function mountTips(el){
   let tip = el.querySelector('.tip');
   if (!tip){ tip = document.createElement('div'); tip.className = 'tip'; tip.hidden = true; el.appendChild(tip); }

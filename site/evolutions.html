@@ -45,17 +45,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
   <button class="act ghost" data-tab="paths">선수별 진화 패스</button>
   <button class="act ghost" data-tab="sbc">SBC</button>
   <button class="act ghost" data-tab="gallery">갤러리<b class="galnew" id="galnew" hidden></b></button>
-  <button class="act ghost" data-tab="tactic">전술 구현 · 구매 우선순위</button>
 </div>
-
-<section data-tab="tactic" style="display:none">
-  <div class="panel"><h2>전술 구현 — 처방 XI를 얼티밋에서 만드는 순서 <small class="dim" id="tacn"></small></h2>
-    <div class="menubar" id="tacteam"></div>
-    <div id="tac"></div>
-    <p class="dim" style="font-size:12px;margin-top:8px"><b>우선순위 규칙(화면이 계산):</b> ① 기본 카드가 슬롯 처방 역할을 <b>Role++</b>로 이미 가진 선수 → 즉시 구매 ·
-    ② Role+ 또는 진화로 Role+/++ 도달 가능 → 구매 후 진화 · ③ 둘 다 아님 → 후순위(대안 검토). 같은 급이면 <b>시세 낮은 쪽</b>이 먼저다.
-    ⚠️ 시세는 fut.gg 콘솔 기본값의 최신 스냅샷이고 <b>시장 미형성이면 「미형성」</b>으로 쓴다(0이 아니다) — 시장이 열리면 <code>scripts/collect_futgg_prices.py</code>가 채우고 순위가 다시 매겨진다.</p></div>
-</section>
 
 <section data-tab="now">
   <div class="panel">
@@ -157,7 +147,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20261004-nav';
-import { deadlineChart, sixDumbbell, readiness, mountTips as evoTips } from './assets/evoviz.js?v=20260918';
+import { deadlineChart, sixDumbbell, mountTips as evoTips } from './assets/evoviz.js?v=20261014';
 import { evoRules, logState, inProgress, unlockCond, unlockCondKr, psGrant, psCapSim, psCapNote } from './assets/evorules.js?v=20261013b';
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
@@ -1076,7 +1066,8 @@ function xiAt(i){
 /* 카드·사이드패널 스타일은 `assets/clubviz.css`가 정본이다(2026-09-23에 JS 리터럴에서 뺐다 — 그 파일 머리 참조). */
 
 const showTab = key => {
-  const b = document.querySelector(`.menubar [data-tab="${key}"]`); if (!b) return;
+  const b = document.querySelector(`.menubar [data-tab="${key}"]`);
+  if (!b){ if (key !== 'now') showTab('now'); return; }   // 없어진 탭(2026-10-14 「전술 구현」 제거)을 기억하던 세션은 첫 탭으로
   document.querySelectorAll('.menubar [data-tab]').forEach(x => x.classList.toggle('on', x === b));
   document.querySelectorAll('section[data-tab]').forEach(s => s.style.display = s.dataset.tab === b.dataset.tab ? '' : 'none');
 };
@@ -2366,7 +2357,7 @@ function renderPaths(team, focusPid){
       () => { SHOW_DONE = !SHOW_DONE; localStorage.setItem('evo_show_done', SHOW_DONE ? '1' : '0'); renderPaths(team); });
   if (nNot)
     addFilter(SHOW_UNOWNED, `미보유 선수${SHOW_UNOWNED ? '' : ` ${nNot}명`}`,
-      '내 구단에 카드가 없는 선수 — 사면 이 경로를 밟을 수 있다(전술 구현 탭의 구매 우선순위와 같은 축)',
+      '내 구단에 카드가 없는 선수 — 사면 이 경로를 밟을 수 있다',
       () => { SHOW_UNOWNED = !SHOW_UNOWNED; renderPaths(team); });
   if (!bar.hidden) bar.insertAdjacentHTML('afterbegin', '<span class="filt-lab">필터</span>');
   /* ⭐⭐ **리스트를 선수 카드로, 상세는 사이드패널로**(2026-09-23 사용자 지시
@@ -2419,87 +2410,10 @@ function renderPaths(team, focusPid){
      여기서 한 번만 걸면 두 번째 선수부터 「카탈로그에서 보기」가 죽는다. */
 }
 
-/* ── 전술 구현 · 구매 우선순위 (사용자 지시 2026-09-18 「에메리 전술 구현을 위한 추천 진화패스 · 제한된 자원에서 누구를 먼저 사야 하는지 · 가격」) ──
-   슬롯 정본 slot_canon(역할·포커스) × starter 처방(선수) × 기본 카드 Role+/++ × 진화 경로 × 시세. 순위는 여기서만 계산한다. */
+/* ── 시세 표시 — 카탈로그·경로가 쓴다(구 「전술 구현 · 구매 우선순위」 탭은 2026-10-14 사용자 지시로 제거). */
 const PRICES = EVO.prices || {};
 const priceOf = item => { const p = PRICES[String(item)]; return p && p.has_price ? p.price : null; };
 const fmtPrice = v => v == null ? '<span class="dim">미형성</span>' : `<b>${Number(v).toLocaleString()}</b> 코인`;
-function roleMatcher(role_id){
-  const want = roleKey(role_id), pos = EVO_POS[String(role_id).split('_')[0]];
-  return r => norm(r.name) === want && (!pos || pos.includes(r.position_name));
-}
-function cardTier(card, m){
-  if (!card) return 0;
-  return decode(card.roles_plus_plus, 'plusplus').some(m) ? 2 : decode(card.roles_plus, 'plus').some(m) ? 1 : 0;
-}
-function bestPathFor(pid, m, roleIdOfM){
-  const rows = (EVO.paths || {})[String(pid)] || [];
-  return rows.filter(r => !r.is_expired).map(r => {
-    const pp = decode(r.roles_plus_plus_after, 'plusplus'), pl = decode(r.roles_plus_after, 'plus');
-    const rs = roleScore({ role_id: roleIdOfM }, r.upgrades);
-    return { ...r, m, rs, score: rs.score, tier: pp.some(m) ? 2 : pl.some(m) ? 1 : 0, d: (r.ovr_after ?? 0) - (r.ovr_before ?? 0), ids: J(r.evolution_ids, []), path: J(r.path_json, []), pp, pl,
-             cost: (r.coins_cost || 0) + (r.points_cost || 0) * 1000 };
-  }).filter(r => pathOpen(r, pid)).sort((a, b) => b.tier - a.tier || b.score - a.score || b.d - a.d || a.cost - b.cost)[0] || null;
-}
-let TAC_TEAM = localStorage.getItem('evo_tac_team') || 'AVL';
-function renderTactic(team = TAC_TEAM){
-  TAC_TEAM = team; localStorage.setItem('evo_tac_team', team);
-  const bar = document.getElementById('tacteam');
-  const codes = idx.regimes.map(r => r.team_code);
-  bar.innerHTML = codes.map(c => `<button class="act ghost${c === team ? ' on' : ''}" data-c="${c}">${esc(idx.regimes.find(r => r.team_code === c)?.team_kr || c)}</button>`).join('');
-  bar.querySelectorAll('button').forEach(b => b.addEventListener('click', () => renderTactic(b.dataset.c)));
-  const t = TEAMS.find(([c]) => c === team)?.[1];
-  const canon = (t?.slot_canon || []);
-  const starters = (t?.prescriptions || []).filter(p => p.starter && String(p.kind).startsWith('fc26:opt'));
-  document.getElementById('tacn').textContent = `— ${esc(t?.regime?.manager_kr || '')} · ${canon[0]?.formation || ''} · 슬롯 ${canon.length}`;
-  const rows = canon.map(sl => {
-    const pres = starters.find(p => p.pos_label === sl.pos) || starters.find(p => p.kind === `fc26:opt:${sl.pos}`);
-    const pid = pres?.player_id; const m = roleMatcher(sl.role_id);
-    const cards = pid != null ? (CARDS[String(pid)] || []) : [];
-    const base = cards.find(c => c.is_base) || cards[0];
-    // 그 선수 카드들 중 슬롯 역할에 가장 맞는 카드(특별 카드가 Role++를 새로 줄 수 있다)
-    const bestCard = cards.map(c => ({ c, tier: cardTier(c, m), price: priceOf(c.item_id) })).sort((a, b) => b.tier - a.tier || (a.price ?? 9e9) - (b.price ?? 9e9))[0] || null;
-    const path = pid != null ? bestPathFor(pid, m, sl.role_id) : null;
-    const reach = Math.max(bestCard?.tier ?? 0, path?.tier ?? 0);
-    // 대안: 우리 DB 다른 선수 중 이 슬롯 역할을 기본 카드로 Role++/+ 갖거나 진화로 만드는 선수(시세 낮은 순)
-    const alts = Object.keys(NAME_OF).map(Number).filter(p => p !== pid && TEAM_OF[p] === team).map(p => {
-      const cs = CARDS[String(p)] || []; const b = cs.find(c => c.is_base) || cs[0];
-      const ct = cardTier(b, m), bp = bestPathFor(p, m, sl.role_id);
-      return { p, tier: Math.max(ct, bp?.tier ?? 0), ct, bp, price: b ? priceOf(b.item_id) : null };
-    }).filter(a => a.tier > 0).sort((a, b) => b.tier - a.tier || (a.price ?? 9e9) - (b.price ?? 9e9)).slice(0, 4);
-    const prio = (bestCard?.tier === 2) ? 1 : reach > 0 ? 2 : 3;
-    return { sl, pres, pid, base, bestCard, path, reach, alts, prio, price: bestCard?.price ?? null };
-  }).sort((a, b) => a.prio - b.prio || (a.price ?? 9e9) - (b.price ?? 9e9) || a.sl.pos.localeCompare(b.sl.pos));
-  let total = 0, priced = 0;
-  // 슬롯 준비도 한 줄 요약 — 11칸이 곧 상태다(아래 목록은 상세·근거)
-  const rd = readiness(rows.map(r => ({ pos: r.sl.pos, name: r.pres?.label ?? (r.pid != null ? NAME_OF[r.pid] : null), reach: r.reach, price: r.price })),
-                       { W: vizW(document.getElementById('tac'), 900, 8) });
-  document.getElementById('tac').innerHTML = `<div class="vzcard" style="display:block;margin:0 0 12px">${rd}</div>` + rows.map((r, i) => {
-    if (r.price != null){ total += r.price; priced++; }
-    const c = r.bestCard?.c;
-    const why = r.prio === 1 ? '기본 카드가 처방 역할 Role++ — 즉시 구매' : r.prio === 2
-      ? (r.bestCard?.tier === 1 ? '기본 카드 Role+' : '기본 카드 무관') + (r.path?.tier ? ` · 진화 「${pathName(r.path)}」로 Role${r.path.tier === 2 ? '++' : '+'}` : '') : '처방 역할을 카드도 진화도 못 만든다 — 대안 검토';
-    return `<div class="pcard tier${r.reach}" style="margin:6px 0">
-      <div class="kv"><span class="badge${r.prio === 1 ? ' hi' : ''}">${i + 1}순위</span>
-        <b style="font-size:15px">${esc(r.sl.pos)}</b> <span>${esc(ROLE_KR[r.sl.role_id] || r.sl.role_id)} <small class="dim">${esc(r.sl.focus)}</small></span>
-        ${c?.card_image_url ? `<img class="futcard-img" src="${esc(c.card_image_url)}" alt="" style="width:48px">` : ''}
-        <b>${esc(r.pres?.label || (r.pid != null ? NAME_OF[r.pid] : '처방 없음'))}</b>
-        ${c ? `<span class="chip">${c.is_base ? '기본' : esc(c.rarity_name || '특별')} OVR ${c.ovr}</span>` : '<span class="chip dim">FC27 카드 없음</span>'}
-        <span class="chip">시세 ${fmtPrice(r.price)}</span>
-        ${r.pres?.fit_sim != null ? `<small class="dim">실측 fit ${r.pres.fit_sim}</small>` : ''}</div>
-      <div style="font-size:12px;margin-top:4px">${why}</div>
-      ${r.path && (r.path.tier || r.path.d) ? `<details class="path" style="margin-top:4px"><summary style="font-size:12px;color:var(--acc)">▸ 추천 진화 패스 보기 — OVR ${r.path.ovr_before}→${r.path.ovr_after}${r.path.d ? ` (+${r.path.d})` : ''} · ${esc(costText(r.path))}</summary>${stepsHTML(r.path)}</details>` : ''}
-      ${/* ⭐ 경로 축이 못 덮는 진화도 여기서 알려 준다(2026-09-22) — 「경로가 없다」와 「걸 수 없다」는 다르다.
-             ⛔ 순위에는 넣지 않는다: 결과 카드가 없어 Role++ 도달 여부를 알 수 없기 때문이다. */''}
-      ${r.pid != null && eligOpen(r.pid).length ? `<div style="font-size:12px;margin-top:4px"><b>경로 미제공이지만 걸 수 있는 진화</b>
-        <small class="dim" title="${esc(NOPATH_TIP)}">ⓘ 순위 계산에는 못 넣는다 — 결과 카드가 없어 Role++ 도달 여부를 알 수 없다.</small>
-        ${eligOpen(r.pid).map(x => `<span class="req" style="border-style:dashed">${evoName(x.evo_id)}</span>`).join(' ')}</div>` : ''}
-      ${r.alts.length ? `<div style="font-size:12px;margin-top:4px"><b>대안(우리 DB)</b> ${r.alts.map(a => `<span class="req${a.tier === 2 ? '' : ''}" style="${a.tier === 2 ? 'border-color:var(--ok)' : 'border-color:var(--warn)'}">${esc(NAME_OF[a.p])} ${a.ct ? `카드 Role${a.ct === 2 ? '++' : '+'}` : `진화→Role${a.bp.tier === 2 ? '++' : '+'}`} · ${fmtPrice(a.price)}</span>`).join(' ')}</div>` : ''}
-    </div>`;
-  }).join('') + `<div class="kv" style="margin-top:8px"><b>합계</b> ${priced ? `${total.toLocaleString()} 코인 (${priced}/${rows.length} 슬롯 시세 있음)` : '<span class="dim">시세 미형성 — 시장이 열리면 합계가 생긴다</span>'}</div>`;
-  evoTips(document.getElementById('tac'));
-}
-
 /* ── 내 구단 ── */
 const api = async (cmd, body) => {
   const cli = `python3 scripts/fut_club.py ${cmd === 'player_set' ? 'player-set' : cmd}${cmd === 'account' ? ` add ${body.name}` : cmd === 'player' ? ' add' : ''} ` +
@@ -3046,7 +2960,7 @@ function renderClub(){
     <form class="form" id="accf"><div><label>계정 표시명</label><input name="name" required placeholder="main"></div>
       <div><label>플랫폼</label><select name="platform"><option>PS5</option><option>Xbox</option><option>PC</option></select></div>
       <div><label>게임</label><input name="game" value="FC27"></div><button>계정 추가</button></form><div id="accm"></div>`;
-  document.querySelectorAll('#acc button[data-a]').forEach(b => b.addEventListener('click', () => { localStorage.setItem('fut_account', b.dataset.a); ACC = b.dataset.a; rebuildRules(); buildRanked(); renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); }));
+  document.querySelectorAll('#acc button[data-a]').forEach(b => b.addEventListener('click', () => { localStorage.setItem('fut_account', b.dataset.a); ACC = b.dataset.a; rebuildRules(); buildRanked(); renderNow(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); }));
   document.getElementById('accf').addEventListener('submit', async e => { e.preventDefault(); const f = new FormData(e.target);
     say(document.getElementById('accm'), await api('account', { name: f.get('name'), platform: f.get('platform'), game: f.get('game') })); });
   if (!acc){ document.getElementById('owned').innerHTML = '<span class="dim">계정을 먼저 만든다.</span>';
@@ -3885,7 +3799,7 @@ document.getElementById('sbcresolve')?.addEventListener('click', async e => {
   const r = await api('sbc_resolve', {});
   btn.disabled = false; say(box, r);      // say가 성공 시 화면을 다시 읽는다
 });
-renderSquad(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderTactic(); renderSbc(); renderStorage(); renderGallery(); galPopup();
+renderSquad(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderSbc(); renderStorage(); renderGallery(); galPopup();
 
 
 
