@@ -176,6 +176,10 @@ def main():
         prev_obs = {}               # (gv, base) → 이번 회차 직전 관측일(migration 099)
         no_path, errs, skipped_cosmetic = [], [], set()
         for t in targets:
+            # ⭐ 대상 하나마다 커밋한다(2026-10-15) — 종전엔 네트워크 반복 전체가 쓰기 트랜잭션 하나라 DB 잠금을 몇 분씩 쥐었고,
+            #    클럽 싱크의 병렬 구간에서 다른 줄이 「database is locked」로 넘어졌다. 재실행은 upsert라 결과가 같다.
+            if not a.dry_run:
+                con.commit()
             ea, kr, pid = t["base_ea_id"], t["name_kr"], t["player_id"]
             d = get(f"{API}/evolutions/v2/{gv[2:]}/paths/v2/{ea}/")
             if d is None or "data" not in d:

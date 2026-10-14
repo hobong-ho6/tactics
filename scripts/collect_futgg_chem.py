@@ -137,6 +137,7 @@ def main():
                             votes.get(style), SRC, CONF, prev)] += 1
                 ins += 1
             print(f"  [{n}/{len(todo)}] {r['name']:<20} 스타일 {len(tiles)} · 투표 {len(votes)} · 현재 {data.get('accel')}")
+            con.commit()        # ⭐ 카드마다 커밋(2026-10-15) — 쉬는 동안 잠금을 쥐지 않게(클럽 싱크 병렬 구간)
             time.sleep(a.sleep)
         br.close()
     con.commit()

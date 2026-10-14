@@ -18,12 +18,16 @@
     python3 scripts/club_sync.py 전체 --capture /tmp/ggclub-20260927.json
     python3 scripts/club_sync.py sbc | 시세 | 전술
     python3 scripts/club_sync.py 진화 --dry-run      # 무엇을 돌릴지만 찍는다
+    python3 scripts/club_sync.py 진화 sbc            # 항목 여러 개 — 한 번에 부르면 병렬 묶음이 같이 돈다
+    python3 scripts/club_sync.py 전체 --serial ...   # 예전처럼 한 줄로(문제 추적용)
 """
 import argparse
 import datetime as dt
 import sqlite3
 import subprocess
 import sys
+import time
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -98,6 +102,23 @@ AFTER = {
     # 진화가 바뀌면 소진·경로가 바뀌고, 그 카드로 푸는 SBC 해법도 바뀐다.
     "진화": ["sbc"],
 }
+# ⭐⭐ **병렬 묶음**(2026-10-15 사용자 지시 「클럽 싱크가 오래 걸리니 진화나 sbc 수집 등을 나눠서 병렬로」).
+#    실측(10-14 오전 회차): 스크립트만 약 50분 — 단계 19개를 **한 줄로** 돌렸다. 그런데 진화·SBC 수집·갤러리·참조 표는
+#    서로의 입력이 아니다(모두 【선수】가 채운 보유·카드만 먹는다). ⇒ 세 구간으로 나눈다:
+#      ① 앞(순서대로)  : 게이트 → 【선수】 보유 반영·카드 수집·링크 검산 — 뒤 전부의 입력이다
+#      ② 가운데(동시에) : LANE 이름이 같은 단계끼리 한 줄, 서로 다른 줄은 동시에
+#      ③ 뒤(순서대로)  : POST — SBC 해법(수집 + 진화 결과를 먹는다) → 시세(fut.gg 요청 예산을 혼자 쓰게 맨 끝) → export
+#    ⚠️ 동시에 같은 DB에 쓴다 — 수집기들은 대상 하나마다 짧게 쓰고 커밋해서 잠금이 짧다. 그래도 「database is locked」로
+#       실패한 단계는 합류 뒤 **혼자 한 번 더** 돌린다(run_lanes). ⛔ 새 수집 단계를 만들면 여기 줄 이름도 정한다 —
+#       안 정하면 ① 앞 구간(순서대로)으로 들어가 안전하지만 느리다.
+LANE = {
+    ("선수", "갤러리 세트 정의"): "갤러리", ("선수", "갤러리 평가(달성 가능·NEW)"): "갤러리",
+    **{("진화", lb): "진화" for lb, _, _ in STEPS["진화"]},
+    ("sbc", "SBC 세트·챌린지 수집"): "sbc 수집", ("sbc", "SBC 포메이션 결손(FUTBIN)"): "sbc 수집",
+    **{("참조", lb): "참조" for lb, _, _ in STEPS["참조"]},
+}
+POST = {("sbc", "해법 재계산"), *(("시세", lb) for lb, _, _ in STEPS["시세"])}
+
 ALIAS = {"all": "전체", "전체": "전체", "player": "선수", "선수": "선수", "evo": "진화", "진화": "진화",
          "sbc": "sbc", "SBC": "sbc", "price": "시세", "시세": "시세", "tactic": "전술", "전술": "전술"}
 
@@ -139,10 +160,12 @@ MANUAL = {
 
 
 def run(label, cmd, dry, optional=False):
-    print(f"\n▶ {label}\n   $ {' '.join(Path(c).name if c.startswith('/') else c for c in cmd)}")
+    print(f"\n▶ {label}\n   $ {' '.join(Path(c).name if c.startswith('/') else c for c in cmd)}", flush=True)
     if dry:
         return True
+    t = time.time()
     r = subprocess.run(cmd, cwd=ROOT)
+    print(f"   ⏱️ {fmt_sec(time.time() - t)}", flush=True)
     if r.returncode != 0:
         if optional:
             print(f"   ⏭️ 실패(exit {r.returncode}) — **이 축은 건너뛰고 이어 간다**(OPTIONAL). 기존 값을 그대로 쓴다.")
@@ -150,6 +173,55 @@ def run(label, cmd, dry, optional=False):
         print(f"   ⛔ 실패(exit {r.returncode}) — 여기서 멈춘다. 원인을 보고할 것.")
         return False
     return True
+
+
+def fmt_sec(s):
+    return f"{int(s // 60)}분 {int(s % 60)}초" if s >= 60 else f"{s:.0f}초"
+
+
+def run_lanes(lanes, dry):
+    """② 가운데 구간 — 줄마다 스레드 하나, 줄 안은 순서대로. 출력은 줄별 로그 파일로 받아 **끝나고 줄 순서대로** 다시 찍는다
+       (섞여 찍히면 무엇이 무엇의 출력인지 못 읽는다). 반환: (실패한 줄 [(줄, 단계)], 잠금 때문에 다시 돌릴 단계)."""
+    if not lanes:
+        return [], []
+    print(f"\n■ 병렬 구간 — {len(lanes)}줄 동시 실행: " + " · ".join(f"{k}({len(v)})" for k, v in lanes.items()), flush=True)
+    if dry:
+        for k, v in lanes.items():
+            for b, label, cmd in v:
+                print(f"   ∥ [{k}] {label}   $ {' '.join(Path(c).name if c.startswith('/') else c for c in cmd)}")
+        return [], []
+    stamp = dt.datetime.now().strftime("%Y%m%d-%H%M")
+
+    def one(name, steps):
+        log = Path(f"/tmp/club-sync-{stamp}-{name.replace(' ', '_')}.log")
+        res = []
+        with open(log, "w") as f:
+            for b, label, cmd in steps:
+                t = time.time()
+                f.write(f"\n▶ [{b}] {label}\n"); f.flush()
+                r = subprocess.run(cmd, cwd=ROOT, stdout=f, stderr=subprocess.STDOUT)
+                res.append((b, label, cmd, r.returncode, time.time() - t))
+                print(f"   ∥ [{name}] {label} — {'완료' if r.returncode == 0 else f'실패 exit {r.returncode}'} · {fmt_sec(time.time() - t)}", flush=True)
+                if r.returncode != 0 and b not in OPTIONAL:
+                    break                      # 줄 안의 뒷단계는 앞 단계 결과를 먹는다 — 멈춘다
+        return name, log, res
+
+    t0 = time.time()
+    with ThreadPoolExecutor(max_workers=len(lanes)) as ex:
+        done = list(ex.map(lambda kv: one(*kv), lanes.items()))
+    print(f"■ 병렬 구간 끝 — {fmt_sec(time.time() - t0)} (한 줄로 돌렸으면 합계 {fmt_sec(sum(x[4] for _, _, r in done for x in r))})", flush=True)
+    failed, retry = [], []
+    for name, log, res in done:
+        text = log.read_text(errors="replace")
+        print(f"\n━━━━ [{name}] 출력 ({log}) ━━━━\n{text.rstrip()}")
+        for b, label, cmd, rc, _ in res:
+            if rc == 0:
+                continue
+            if "database is locked" in text:
+                retry.append((b, label, cmd))
+            elif b not in OPTIONAL:
+                failed.append((name, label))
+    return failed, retry
 
 
 def staleness():
@@ -187,20 +259,25 @@ def staleness():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("item", nargs="?")   # ⛔ 기본값을 두지 않는다 — 없으면 목록을 보여주고 멈춘다
+    ap.add_argument("item", nargs="*")   # ⛔ 기본값을 두지 않는다 — 없으면 목록을 보여주고 멈춘다 · 여러 개 가능
     ap.add_argument("--list", action="store_true", help="항목 목록만 보여준다")
     ap.add_argument("--capture", help="collect_ggclub.py가 만든 /tmp/ggclub-YYYYMMDD.json")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--serial", action="store_true", help="병렬 구간 없이 예전처럼 한 줄로 돈다(문제 추적용)")
     a = ap.parse_args()
     if a.list or not a.item:
         print_items("■ 클럽 싱크 — 돌릴 항목을 고른다" if not a.item else "■ 클럽 싱크 항목")
         if not a.item:
             print("\n⛔ 항목을 지정하지 않았다 — 전체를 돌리려면 `전체`를 명시할 것(실수로 다 도는 것을 막는다).")
         return
-    item = ALIAS.get(a.item)
-    if item is None:
-        print_items(f"⛔ 모르는 항목 '{a.item}'")
+    items = [ALIAS.get(x) for x in a.item]
+    if None in items:
+        print_items(f"⛔ 모르는 항목 '{a.item[items.index(None)]}'")
         sys.exit(1)
+    items = list(dict.fromkeys(items))
+    manual_tactic = "전술" in items and len(items) > 1          # 다른 항목과 같이 부르면 안내만 끝에 찍는다
+    items = [x for x in items if not (manual_tactic and x == "전술")]
+    item = "전체" if "전체" in items else items[0] if len(items) == 1 else "+".join(items)
 
     print(f"■ 클럽 싱크 — 항목 **{item}**" + (" (dry-run)" if a.dry_run else ""))
     if not run("게이트", [sys.executable, S("gates.py")], a.dry_run):
@@ -217,13 +294,13 @@ def main():
     if item == "전체":
         buckets = ALL_ORDER
     else:
-        need = {item, *AFTER.get(item, [])}
+        need = {x for i in items for x in (i, *AFTER.get(i, []))}
         buckets = [b for b in ALL_ORDER if b in need]
-        extra = [b for b in buckets if b != item]
+        extra = [b for b in buckets if b not in items]
         if extra:
             print(f"\n⭐ `{item}`이 바꾼 값에 기대는 축도 같이 돈다: {' · '.join(extra)}"
                   "\n   (의존은 club_sync.py의 AFTER 표가 정본이다 — 새 축을 만들면 거기 올린다)")
-    if item != "전체" and item != "선수":
+    if item != "전체" and "선수" not in items:
         # ⚠️ 단독 실행은 **낡은 입력 위에서 돌 수 있다**(런북 「순서 의존」).
         con = sqlite3.connect(DB)
         v = con.execute("SELECT MAX(synced_at) FROM fut_club_players").fetchone()[0]
@@ -236,6 +313,8 @@ def main():
                       "\n     ⇒ **종료 보고에 이 사실을 적는다.** 정확히 하려면 `선수`를 먼저 돌린다.")
 
     skipped = []
+    # ⭐ 단계 목록을 세 구간으로 가른다(LANE·POST 표). --serial이면 전부 ① 앞 구간처럼 한 줄로.
+    pre, lanes, post = [], {}, []
     for b in buckets:
         if b == "선수" and not a.capture and not a.dry_run:
             print("\n⚠️ `선수`는 캡처 파일이 필요하다(`--capture`). 브라우저 단계는 사람이 한다:")
@@ -247,11 +326,37 @@ def main():
                 if not a.capture:
                     continue
                 cmd = [c.replace("{capture}", a.capture) for c in cmd]
+            if a.serial:
+                pre.append((b, label, cmd))
+            elif (b, label) in POST:
+                post.append((b, label, cmd))
+            elif (b, label) in LANE:
+                lanes.setdefault(LANE[(b, label)], []).append((b, label, cmd))
+            else:
+                pre.append((b, label, cmd))
+    t_all = time.time()
+
+    def seq(steps):
+        for b, label, cmd in steps:
+            if b in skipped:
+                continue
             if not run(f"[{b}] {label}", cmd, a.dry_run, optional=b in OPTIONAL):
                 if b in OPTIONAL:
                     skipped.append(b)
-                    break                        # 그 축의 남은 단계도 건너뛴다
+                    continue                     # 그 축의 남은 단계도 건너뛴다(위 if)
                 sys.exit(1)
+
+    seq(pre)
+    failed, retry = run_lanes(lanes, a.dry_run)
+    for b, label, cmd in retry:                  # 잠금으로 넘어진 단계 — 혼자 한 번 더
+        print(f"\n🔁 「database is locked」로 실패 — 혼자 다시 돈다: [{b}] {label}")
+        if not run(f"[{b}] {label} (재시도)", cmd, a.dry_run, optional=b in OPTIONAL) and b not in OPTIONAL:
+            failed.append((b, label))
+    if failed:
+        print("\n⛔ 병렬 구간에서 실패한 단계: " + " · ".join(f"[{n}] {l}" for n, l in failed)
+              + "\n   ⇒ 뒤 구간(SBC 해법·시세·export)을 돌리지 않고 멈춘다. 위 줄별 출력에서 원인을 보고할 것.")
+        sys.exit(1)
+    seq(post)
 
     if "sbc" in buckets:
         print("\n⚠️ SBC 포메이션은 **Chrome 단계**가 남을 수 있다:")
@@ -259,6 +364,11 @@ def main():
             print(f"   · {m}")
     if not a.dry_run:
         run("export", [sys.executable, S("export.py")], False)
+        print(f"\n⏱️ 클럽 싱크 전체 소요 {fmt_sec(time.time() - t_all)}")
+    if manual_tactic:
+        print("\n⚠️ 전술은 **손 작업**이다 — 스크립트가 대신하지 않는다.")
+        for m in MANUAL["전술"]:
+            print(f"   · {m}")
     staleness()
     if skipped:
         print(f"\n⏭️ 건너뛴 축: {' · '.join(skipped)} — 받아오지 못해 **기존 값을 그대로 둔다**."
