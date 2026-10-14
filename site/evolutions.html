@@ -2003,13 +2003,25 @@ function nextEvoCards(pid){
           return f.length ? `<small class="dn">⛔ 미리보기 상태에선 못 건다 — ${f.map(esc).join(' · ')}</small>` : ''; })()}
         ${(() => { /* ⭐ 진행 중이면 그 사실부터(2026-10-15 「진화 시작」 기능) — 시작 행은 완주 전까지 이 카드에 남는다. */
           const open = own && openEvoLog(own.id, x.id);
-          return open ? `<div class="kv" style="margin-top:4px"><span class="chip" style="border-color:var(--warn);color:var(--warn)">▶ 진행 중 — ${
-            open.level}단계 시작 ${esc(open.applied_at)}</span><small class="dim">미션을 마쳤으면 「✔ 진화 완료」</small></div>` : ''; })()}
+          if (!open) return '';
+          const lvs = J(c.levels, []) || [], n = lvs.length, k = open.level ?? 1;
+          const mis = (lvs.find(L => (L.idx ?? 1) === k)?.challenges || []).join(' / ');
+          return `<div style="margin-top:4px"><div class="kv"><span class="chip" style="border-color:var(--warn);color:var(--warn)">▶ 진행 중 — ${k}/${n}단계 · ${esc(open.applied_at)} 시작</span>${
+            Array.from({ length: n }, (_, i) => `<span title="${i + 1}단계" style="display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:2px;background:${
+              i + 1 < k ? 'var(--ok)' : i + 1 === k ? 'var(--warn)' : 'var(--line, #555)'}"></span>`).join('')}</div>${
+            mis ? `<small class="dim">🎯 ${k}단계 미션: ${esc(mis)}</small>` : ''}</div>`; })()}
         <div class="kv" style="margin-top:5px">
           <button class="act ghost" data-evotry="${pid}:${x.id}" title="원장에 적지 않고 스탯 변화만 계산한다">🔬 걸어 보기</button>
           ${own ? (() => {
             const open = openEvoLog(own.id, x.id);
-            if (open) return `<button class="act" data-evodone="${pid}:${x.id}" title="진행 중인 진화를 완료로 바꾸고 남은 단계를 적는다">✔ 진화 완료</button>`;
+            if (open){
+              /* ⭐⭐ **단계별 기록**(2026-10-15 사용자 지시 「시작 - 각 단계 완료 - 종료가 되도록」).
+                 지금 단계를 완료하면 다음 단계를 「진행 중」으로 바로 연다 — 마지막 단계면 그게 종료다. */
+              const n = (J(c.levels, []) || []).length, k = open.level ?? 1;
+              return `<button class="act" data-evostep="${pid}:${x.id}" title="${k}단계 미션을 마쳤다 — ${k}단계를 완료로 적고${
+                k < n ? ` ${k + 1}단계를 진행 중으로 연다` : ' 진화를 끝낸다'}">${k < n ? `✔ ${k}단계 완료 → ${k + 1}단계 시작` : `🏁 ${k}단계 완료 · 종료`}</button>${
+                k < n ? `<button class="act ghost" data-evodone="${pid}:${x.id}" title="남은 단계를 인게임에서 이미 다 끝냈을 때 — 지금 단계부터 끝까지 한 번에 완료로 적는다">⏩ 남은 단계 한 번에 완료</button>` : ''}`;
+            }
             /* 시작을 막는 것 — 확실한 잠김 · 지금 카드로 조건 미달. 「모름」인 잠김은 막지 않고 확인창에서 묻는다. */
             /* ⚠️ 「❔ 판정 불가」(우리가 모르는 조건 — Rarity 등)는 막지 않는다 — 막으면 걸 수 있는 진화를 못 건다. */
             const cs = curStateOf(+pid);
@@ -2267,6 +2279,37 @@ function bindSide(root, team){
       note: `진화 시작 — 화면에서 기록(${today}).${brTxt ? ` 갈림길: ${brTxt}` : ''}` });
     say(box, r); b.disabled = false;
     if (r?.ok) reloadAfterWrite('진화 시작을 원장에 적었다');
+  }));
+  /* ⭐⭐ 단계 완료 → 다음 단계 시작(마지막이면 종료). `complete`(진행 중 행을 완료 · 스탯 반영) → `evolve --in-progress`(다음 단계). */
+  root.querySelectorAll('button[data-evostep]').forEach(b => b.addEventListener('click', async () => {
+    const [pid, evo] = b.dataset.evostep.split(':');
+    const acc = accountObj(); if (!acc) return;
+    const box = document.getElementById(`em${pid}_${evo}`);
+    const cat = CATBYID[+evo]; const lv = J(cat?.levels, []) || [];
+    const cpid = STATE[String(pid)]?.club_player_id;
+    const open = cpid && openEvoLog(cpid, evo);
+    if (!open){ say(box, { ok: false, message: '진행 중인 단계가 없다 — 새로고침 후 다시.' }); return; }
+    const k = open.level ?? 1, n = lv.length;
+    const Ln = lv.find(L => (L.idx ?? 0) === k + 1);
+    const sel = root.querySelector(`[data-evobranch="${pid}:${evo}:${k + 1}"]`);
+    const pick = Ln && (Ln.upgradeOptions || []).length > 1 ? +(sel?.value ?? 0) : null;
+    const srcOf = o => Array.isArray(o) ? o : (o?.upgrades || []);
+    const brTxt = pick != null ? srcOf(Ln.upgradeOptions[pick]).map(upLabel).join(' · ') : '';
+    const mis = (Ln?.challenges || []).join(' / ');
+    if (!confirm(`${evoName(+evo, { html: false })}\n\n✔ ${k}단계 완료로 적습니다(스탯 반영).`
+      + (Ln ? `\n▶ 이어서 ${k + 1}/${n}단계를 진행 중으로 엽니다.${brTxt ? `\n   갈림길: ${brTxt}` : ''}${mis ? `\n   미션: ${mis}` : ''}`
+            : '\n🏁 마지막 단계라 이 진화를 종료합니다.')
+      + '\n\n· 값은 우리 계산이고 다음 클럽 싱크의 EA 실측으로 확정됩니다.')) return;
+    b.disabled = true;
+    const today = new Date().toISOString().slice(0, 10);
+    const rc = await api('complete', { account: acc.name, player: +cpid, evo: +evo, date: today });
+    if (!rc.ok || !Ln){ say(box, rc); b.disabled = false; if (rc.ok) reloadAfterWrite(Ln ? '' : '진화를 끝냈다'); return; }
+    const rs = await api('evolve', { account: acc.name, player: +cpid, expect_player_id: +pid, evo: +evo, level: k + 1,
+      in_progress: true, date: today, ...(pick == null ? {} : { pick }),
+      note: `${k + 1}단계 시작 — 화면에서 기록(${today}).${brTxt ? ` 갈림길: ${brTxt}` : ''}` });
+    say(box, rs.ok ? rs : { ...rs, message: `${k}단계 완료는 적었지만 ${k + 1}단계 시작을 못 적었다 — ${rs.message}` });
+    b.disabled = false;
+    reloadAfterWrite(rs.ok ? `${k}단계 완료 · ${k + 1}단계 시작을 적었다` : `${k}단계 완료를 적었다`);
   }));
   root.querySelectorAll('button[data-evodone]').forEach(b => b.addEventListener('click', async () => {
     const [pid, evo] = b.dataset.evodone.split(':');
