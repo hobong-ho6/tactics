@@ -1379,10 +1379,8 @@ function renderCatalog(team = CAT_TEAM){
   /* ⭐ 진화 기록 버튼 — 선수별 진화 패스와 **같은 함수**(evoStart·evoStep·evoDone). */
   const catRoot = document.getElementById('cat');
   catRoot.querySelectorAll('select[data-catstart]').forEach(sel => sel.addEventListener('change', () => {
-    const btn = catRoot.querySelector(`button[data-catstartbtn="${sel.dataset.catstart}"]`), o = sel.selectedOptions[0];
-    btn.dataset.evostart = `${sel.value}:${sel.dataset.catstart}`; btn.disabled = !!o.dataset.why; btn.title = o.dataset.why || '';
-    const w = catRoot.querySelector(`[data-catwhy="${sel.dataset.catstart}"]`);   // ⭐ 못 거는 이유를 바로 보인다(2026-10-15 「이건 왜 못 건다로 나와?」)
-    if (w){ w.hidden = !o.dataset.why; w.textContent = o.dataset.why ? '⛔ ' + o.dataset.why.replace(/^시작할 수 없다 — /, '') : ''; }
+    const btn = catRoot.querySelector(`button[data-catstartbtn="${sel.dataset.catstart}"]`);
+    btn.dataset.evostart = `${sel.value}:${sel.dataset.catstart}`;   // 잠김(진화 단위)은 그대로 — 조건 미달 선수는 애초에 목록에 없다
     catRoot.querySelector(`[data-catmsg="${sel.dataset.catstart}"]`).id = `em${sel.value}_${sel.dataset.catstart}`; }));
   catRoot.querySelectorAll('button[data-evostart]').forEach(b => b.addEventListener('click', () => evoStart(b, catRoot)));
   catRoot.querySelectorAll('button[data-evostep]').forEach(b => b.addEventListener('click', () => evoStep(b, catRoot)));
@@ -2126,17 +2124,21 @@ function catOpenHTML(c){
 /* 카탈로그 카드 — **보유 선수를 골라 시작**. 후보 = 적용 가능 칩 중 보유 + 경로 미제공이지만 걸 수 있는 보유 선수. 못 거는 선수는 사유를 달고 고를 수 없게. */
 function catStartHTML(c, apps, team){
   if (CONSUMED[c.evo_id]?.exhausted) return '';
-  const pids = [...new Set([...apps.filter(a => a.owned && !a.k).map(a => String(a.pid)),
+  /* ⭐ **카드 조건이 안 맞는 선수는 목록에 넣지 않는다**(2026-10-15 사용자 지시 「못 건다가 아니라 안 보여주고 걸 수 있는 선수만」).
+     ⚠️ 잠김(토큰 미구매·SP 레벨 등)은 **진화 단위**라 선수와 무관하다 — 선수마다 달지 않고 버튼 옆에 한 번만 이유를 적는다. */
+  const cand = [...new Set([...apps.filter(a => a.owned && !a.k).map(a => String(a.pid)),
                             ...noPath(c, team).map(r => String(r.player_id)).filter(pid => STATE[pid])])];
+  const pids = cand.filter(pid => { const cs = curStateOf(+pid);
+    return !cs || !tryReq(c, cs).some(t => !String(t).startsWith('❔')); });
   if (!pids.length) return '';
-  const opts = pids.map(pid => ({ pid, why: evoStartBlock(pid, c).join(' · ') }));
-  const first = opts.find(o => !o.why) || opts[0];
+  const lock = RULES.lockInfo[c.evo_id], lockWhy = lock && !lock.unknown ? lock.why : '';
+  const hid = cand.length - pids.length;
   return `<div class="kv" style="margin-top:6px"><small class="dim">인게임에서 걸었으면</small>
-    <select data-catstart="${c.evo_id}">${opts.map(o => `<option value="${o.pid}"${o === first ? ' selected' : ''}${o.why ? ` data-why="${esc('시작할 수 없다 — ' + o.why)}"` : ''}>${
-      esc(NAME_OF[o.pid] || STATE[o.pid]?.name || o.pid)}${o.why ? ' — 못 건다' : ''}</option>`).join('')}</select>
-    <button class="act" data-catstartbtn="${c.evo_id}" data-evostart="${first.pid}:${c.evo_id}"${first.why ? ` disabled title="${esc('시작할 수 없다 — ' + first.why)}"` : ''}>▶ 진화 시작</button>
-    <span class="msg-slot" data-catmsg="${c.evo_id}" id="em${first.pid}_${c.evo_id}"></span></div>
-    <small class="dn" data-catwhy="${c.evo_id}"${first.why ? '' : ' hidden'}>⛔ ${esc(first.why)}</small>`;
+    <select data-catstart="${c.evo_id}">${pids.map(pid => `<option value="${pid}">${esc(NAME_OF[pid] || STATE[pid]?.name || pid)}</option>`).join('')}</select>
+    <button class="act" data-catstartbtn="${c.evo_id}" data-evostart="${pids[0]}:${c.evo_id}"${lockWhy ? ` disabled title="${esc('시작할 수 없다 — ' + lockWhy)}"` : ''}>▶ 진화 시작</button>
+    <span class="msg-slot" data-catmsg="${c.evo_id}" id="em${pids[0]}_${c.evo_id}"></span>${
+    hid ? `<small class="dim" title="지금 카드로 OVR·포지션·속도·PlayStyle 수 같은 조건이 안 맞는다">· 조건 미달 ${hid}명 제외</small>` : ''}</div>
+    ${lockWhy ? `<small class="dn">⛔ ${esc(lockWhy)}</small>` : ''}`;
 }
 /* 이 보유 카드에서 **진행 중**인 그 진화의 로그 행(완료 안 됨 · 무효 아님) — 판정은 evorules.js inProgress 정본. */
 const openEvoLog = (cpid, evo) => (EVO.club?.log || []).find(l => l.club_player_id === cpid && l.evo_id === +evo && inProgress(l)) || null;
