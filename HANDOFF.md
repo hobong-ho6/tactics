@@ -1,286 +1,90 @@
-# HANDOFF
+# HANDOFF — tactics
 
-## 프로젝트
+<!-- 구조 규칙(2026-10-14 v2): 헤더 15줄 안에 착수 조건 · 현재 상태 표 10행 이내 · 다음 할 일은 열린 항목만(항목당 2줄) · 세션 기록 최대 5개 · 목표 10~15KB · 상한 20KB(`wc -c`). 넘치면 지우지 말고 docs/handoff-context.md · docs/decisions.md로 포인터 압축. 절차 정본: .claude/skills/handoff/SKILL.md -->
 
-- 실제 감독 전술을 실측으로 분해해 FC26 전술로 재현한다. 대상: **AVL/에메리(주) · CHE/알론소 · LIV/이라올라 · ATM/시메오네**.
-- 저장소 `~/Documents/tactics`(⚠️ PC마다 홈 경로가 다르다 — `AD03230205ui-iMac`은 `/Users/ad03230205/…`, `AL02359162`는 `/Users/user/…`) · `main` · DB 정본 `db/tactics.db`(`db/dump/`·`site/data/`는 파생물).
-- 규약 정본: `CLAUDE.md`, `docs/00-overview.md`. 런북: `.claude/skills/{transfer-watch,match-watch,player-collect}/SKILL.md`.
+- **담당자** 김호근 · **갱신** 2026-10-14 23시 · **세션** HANDOFF v2 압축(데이터 세션 아님) · **작업 PC** `AD03230205ui-iMac.local` · **브랜치** main · **WIP** 없음
+- **마지막 커밋** = `git log -1`(이 문서를 갱신한 커밋) · 직전 데이터 커밋 `9dd8025`(10-14 클럽 싱크 2회차) · **문서 버전** v2 · **분량** 10.4KB(목표 10~15 · 상한 20)
+- 실축 감독 전술(**AVL/에메리(주) · CHE/알론소 · LIV/이라올라 · ATM/시메오네**)을 실측으로 분해해 FC26·FC27 전술로 재현. 규약 정본 `CLAUDE.md` · `docs/00-overview.md`.
+
+> ⛔ **먼저 알 것**
+> 1. **명시 스테이징만** — `.claude/settings.json`(Figma PAT 등) 커밋 금지 파일이 있어 `git add -A`·`.`이면 푸시가 막힌다 · 커밋 직전 `git diff --cached --stat` · DB 변경은 `python3 scripts/ship.py -m "…"` 한 줄(CLAUDE.md 불변규칙 5)
+> 2. git엔 `.db`가 없다 — pull 뒤 **`scripts/db_restore.sh`**(낡으면 G33·`db_dump.sh`가 멈춘다) · **반복 사고 규칙 정본은 [docs/70-lessons.md](docs/70-lessons.md)** — 세션 시작 시 함께 읽고, 새 사고는 HANDOFF가 아니라 거기에
+> 3. 예약 정본은 `list_scheduled_tasks`(CronList 아님) · **이 iMac 전용 · 3회 유실** → 회차마다 실재 확인 · 스케줄 세션이 같은 작업 트리·인덱스를 쓴다 → 그 세션이 끝날 때까지 커밋 보류 · `~/Documents` 경로는 PC마다 다르다(`AL02359162`는 `/Users/user/…`)
+
+---
 
 ## 현재 상태
 
-> **2026-10-12 KST 23시 · 계정 전환 후 예약 복원 + 만잠비 아카데미 II · PC `AD03230205ui-iMac` · `main` · 데이터 커밋 `31a86ec`** · G1~G34 통과(ship.py).
-> **ⓐ 🔴 계정이 바뀌며 예약 레지스트리가 통째로 비었다**(`list_scheduled_tasks` 0건). `~/.claude/scheduled-tasks/*/SKILL.md` 프롬프트 파일은 남아 있었고,
-> 옛 계정의 레지스트리 파일(`~/Library/Application Support/Claude/claude-code-sessions/<옛 계정>/…/scheduled-tasks.json`, 10-12 21:11 스냅샷)에서
-> **enabled였던 9건만** 같은 cron·fireAt으로 재등록한 뒤 SKILL.md 원문을 바이트 단위로 되돌렸다(백업 `~/.claude/scheduled-tasks-backup-20261012/`). 목록은 아래 「자동화」.
-> ⇒ 직전 회차의 「D+N 후속 예약 4건 미등록」은 **이번에 해소**(5건 등록 — LIV D+2 포함).
-> ⛔ **도구 승인은 옮겨 오지 않았다** — 브라우저를 쓰는 `club-sync-daily`·`match-watch-weekly`는 「Run now」로 선승인해야 자동 회차가 권한 창에서 안 멈춘다(사용자 할 일).
-> **ⓑ 만잠비 퓨처 스타 아카데미 II 완료**(사용자 보고) — 3단계 갈래 ② 피지컬(파워하우스, `--pick 1`) · OVR 81→**82** · DEF 71→72 · PHY 74→**78** ·
-> `evo_detect.py --verify` 29속성 일치 · 원장 #97~99. 다음은 **III(10-13 공개)·IV(10-16)** 재비교(memory `manzambi-future-stars-academy`).
-
-> **2026-10-12 KST 20시 · 주간 경기 수집(스케줄 `match-watch-weekly`) · PC `AD03230205ui-iMac` · `main` · 데이터 커밋 `3918bfe`** · G1~G33 전항 통과.
-> **ⓐ 신규 3경기 적재** — CHE 5-1 본머스(10-10 · `report#52`) · LIV 0-3 맨시티(10-11 · `#53`) · ATM 2-1 알라베스(10-10 원정 · `#54`), 전부 **draft**. AVL 브렌트포드는 기존 적재(D+3 예약 10-13 19:00 유효).
-> player_matches 48(국면 그리드 48) · team_match_stats 3(xG FotMob 동일 스냅샷) · events/shots/period(하프 PPDA 포함) · 경기 프리셋 3(LIV는 퇴장 오염 DIVERGE) · 처방 48 · 전사 11편+요약+claims 12.
-> **ⓑ 판정** — CHE PL 4경기 연속 xG 열세(5-1은 마무리 과잉, obs#991) · LIV 11대11 PPDA 5.97→퇴장 후 23.4(obs#994) · ATM 「요렌테 3번째 CB」 서사 **실측 기각**(obs#996)·줄리아노 하강 5백 실측 일치(#997).
-> measured 재집계 6 · **신규 #516 헨더슨 LCM**(n=2 · Δ.021 무결정) → **duty #246 REJECTED**(dlp 가설 Δ.124). manager_profiles 6축 덧붙임.
-> ✅ ~~D+N 후속 예약 4건 미등록~~ — 같은 날 23시 대화형 세션이 등록 완료(위 블록 ⓐ). 프롬프트 원문 `reports/match-watch/followups/2026-10-12-pending-schedules.md`.
-> ⚠️ 기타: ATM regime 4 슬롯표에 CAM 없음(바리오스·이강인을 RAM으로 귀속 — 4-2-3-1 2경기 더 나오면 슬롯 세트 추가 검토) · duty #246 억제 토큰 「조건 미충족」이 구 노트에 남아 refresh 출력의 억제 목록에 계속 보인다(상태는 REJECTED).
-> SofaScore는 커스텀 UA를 주면 403 — **기본 UA headless**로 열어야 통과(collect_event.py와 같음).
-
-> **2026-10-12 KST · 패치 감시 + 클럽 싱크 + ⭐DB 저장 구조 전환 · PC `AL02359162.local` · `main` · 데이터 커밋 `aba9dad`** · G1~G33 전항 통과.
-> **ⓐ ⭐⭐ `.db`는 이제 git에 없다**(`aba9dad` · 사용자 결정 「①+② 둘 다」). DB 101.2MB로 GitHub 100MB 상한에 **두 번째** 막혀(1차 10-04 103.8MB)
-> ① 케미 신호를 「바뀐 행만 저장」(migration 106 · `core/chem_signals.py` · 59,962→9,619행 · 16회차 스냅샷 전후 동일) ② `db/tactics.db`를 .gitignore로 —
-> git은 `db/dump/`만 나르고 **각 PC는 `scripts/db_restore.sh`로 DB를 만든다**(97표 데이터·스키마 전부 원본과 일치 검증).
-> ⛔ **다른 PC(`AD03230205ui-iMac`)는 pull하면 `db/tactics.db`가 지워진다 — 정상이다. 곧바로 `scripts/db_restore.sh`.**
-> pull로 들어온 dump를 옛 DB로 덮으면 남의 데이터가 사라지므로 **G33·`db_dump.sh`가 스탬프(`db/dump/_stamp.txt` ↔ 로컬 `db/.dump_stamp`)로 막는다.**
-> **ⓑ 클럽 싱크**(`dd811b4`) — Sync Club 실클릭(쿨다운이 **30분**으로 나왔다 · 런북은 15분) · 보유 256 · 신규 8 · 처분 복원 2(코나테·자이발트) ·
-> 마테우스 마네 Playmaker Reborn lv1~2 로그(EA 이력 · 29속성 일치 · 3단계 진행 중). ⚠️ `fut_club.py evolve`는 **`--completed` 없이 넣으면 다음 단계가
-> 기준 카드에서 다시 출발해 current_ovr을 되돌린다**(이번에 74로 내려갔다가 바로잡음). FUTBIN 포메이션 +1(Chrome 경로 정상).
-> **ⓒ 패치 감시**(`51261ae`) — v1.0.5 없음 · 신규 적재 0. ⏰ **10-17 PlayStyle+ Lab 시작**(작동 규칙 나오면 적재) · **10-22 시즌 2**(다음 패치 유력 · 추정).
-> **ⓓ 만잠비 퓨처 스타 아카데미 II 시작(사용자 보고)** — 3단계 갈림길(플레이메이커/피지컬/올라운더) 비교를 대화로 제공. 선택·완료 후 `evolve --pick N --completed`.
-> 🔴 **열린 것**: 링크 결손 사람 확인 3건(코나테·더글라스 루이스 카드 소속 미상 · 엘리엇 카드 포지션 충돌) · `ref_map25` 동률 비결정 버그(별도 작업 칩) ·
-> 시세·인게임 전술은 이번 회차 미실행.
->
-> **2026-10-08 KST · 3팀 이적 감시 21시 회차 · PC `AL02359162.local` · `main` · 데이터 커밋 `ac8b38e`** · G1~G31 전항 통과.
-> **ⓐ FotMob 66개 리드**(AVL 9 · CHE 22 · LIV 35)를 발행일→원출처→티어 순으로 재검증. LIV 유출 3건을 STALE 전환: Rio Ngumoha·Wataru Endo(09-17 이후 21일) · Alexis Mac Allister(09-21 이후 17일). export→dump 완료, 리포트 `reports/transfer-watch/2026-10-08.md`.
-> **ⓑ Alex Scott(CHE) 신규 `MEDIUM-HIGH`** — Telegraph 10-04 + Romano의 선수 측 접촉. 최근 클럽 공식전 6경기 실측: CHE LCM `cm_playmaker/Roaming` · 적합 **.724** · 평균 평점 7.23. ⏰ Bournemouth가 1월 판매를 막아 `2027-winter` vs `2027-summer` 창이 갈리므로 비대화형 회차에서 DB 미등재.
-> **ⓒ 사용자 판단 대기**: Alex Scott 창 · N'Guessan의 공식 합의/2027-01 등록과 현재 스쿼드 승격 충돌 · transfer-watch 런북의 낡은 `2026-summer` 고정값 갱신.
-> **직전 경기 상태(10-05)**: A매치 휴식기 공식전 0, AVL–Sevilla 친선 `match_reports#50` draft · obs#962 가르나초 우측 출발 신호는 10-10 Brentford전 좌표로 재판정. `refresh_eval_samples.py`의 대표팀 혼입은 `club_official_sql()` 정본으로 구조 수정 완료. 다음 공식전 10-10 AVL/CHE/ATM · 10-11 LIV, claim #167 예약은 유효.
->
-> **2026-09-23 KST · 세션 ㊱ 빌라-토트넘전 완전 종결 + 후속 재판정 예약 · PC `AD03230205ui-iMac.local` · `main` · 마지막 커밋 `3d2d8e3`** · G1~G20 전항 통과.
-> ⚠️ **핸드오프 갱신 공백 발견·복원** — ㉟(`bd93921`) 이후 **14커밋**이 HANDOFF 미기록으로 쌓여 있었다(다른 세션이 코드만 계속 push). 이번에 일괄 복원한다.
->
-> **ⓐ 빌라-토트넘전(report 47) 완전 종결 — 총 6회차** (`a23ac8d`·`74cb727`·`44b08e3`, ㉟ 이전인데 그때 미기록)
-> D+3까지 닫혔던 report 47을 이후 두 회차 더 훑었다: claim #166(롱볼 풀백 억제) 60초 창 실측으로 **APPLIED** ·
-> claim #176(3-0 이후 이완) 79′ 분기 PPDA/def_x가 가설과 **정반대 방향**이라 **REJECTED 확정** · 스즈키 본인의 이 경기
-> 1차 발언은 **6회차 연속 검색 0건**으로 구조적 부재 최종 종결. `match_reports#47` → `complete`.
-> ⛔⛔ 리포트에 **「이 경기는 재점검하지 않는다」를 명시**했다 — PENDING 잔여 2건(#167 카마라·고메스 배급 ·
-> #169 맥긴 러너 추적)은 **다른 경기의 누적 표본**이 조건이라 이 경기 안에서는 영원히 안 닫힌다.
-> ⭐ **claim #167 재판정을 위한 일회성 예약 완료**: `avl-kamara-gomes-cocheck-1010`(2026-10-12 12:00,
-> 브렌트포드전 이후 정기 회차 뒤). 지금까지 3경기 중 1경기(09-08 UCL)만 「CB 듀오 패스 1·2위」 패턴 재현.
->
-> **ⓑ ATM 더비(report 48) D+3 종결**(`93850d4`) — D+1~D+2가 2연속 실패했던 시메오네 전술 자체 진단을
-> **`scripts/yt_transcript.py`로 유튜브 전사 7편 전량 성공**시켜 확보(WebFetch로 유튜브를 긁던 게 실패 원인이었다 —
-> docs/70 105행 재발 표시). 우측 표적 지시·이강인 RST 슬롯 의심 해소(우측 과부하 설계)·「쿠티-요렌테 오해」 장면 특정.
-> 이월: 백3 vs 백4 시작 형태 · 카르도소 듀얼 0/6(서사 0건).
->
-> **ⓒ 진화 갈림길 계산 통합**(`44d9d54`…`6839a4f`, 6커밋) — 갈림길 판단을 **공통 기준 하나**로 리팩터하고
-> (docs/22 §6.2 정본화) 단계별 변화·추가 2축을 현재 카드에서 직접 계산하도록 바꿨다. ★ 추천 기준을 최적 선수로,
-> 6대 스탯·덤벨 표시를 **패널 간 기준 혼입** 없이 통일. **지모알로바 갈림길 1·2단계(옵션2) 이미 적용됨**(OVR 73→78,
-> `6cdfa58`·`902a151`, 09-21 밤 — **㉟이 이걸 「미적용」으로 잘못 이월했다**). **3단계만 남았다**(마감 09-30 17:00 UTC 그대로).
->
-> **ⓓ GG Club 싱크·진화 카탈로그 보강**(`6244efb`·`674f073`·`10a3ddf`) — 09-22 신규 1·갱신 1, 09-23 보유 변화 없음
-> (해금 과제·카탈로그만 갱신). 진화 2495 Relentless[SP 11]는 API 미제공이라 손수집으로 카탈로그 구멍을 메웠다.
->
-> **ⓔ 그 밖** — AVL 전수 조사로 진화 33쌍 복구(`a42ab99`) · 목록엔 있는데 API가 안 주는 진화가 화면에서 사라지던 것을
-> 직전 행 이월로 수정(`91be008`) · club-sync 런북 §3-5에 「안 잡힘 ≠ 마감, 목록은 서버 HTML로 읽는다」 추가(`3d2d8e3`).
->
-> **2026-09-22 ㉟ 아카이브** — `club.state` 현재 카드 정본 신설(「값은 DB에서, 판단은 한 곳에서」 · docs/70) · 진화 카탈로그 정리(코스메틱 차단 · ⚠️ `roles_plus_after`는 이득이 아니라 적용 후 상태) ·
-> 링크 끊김 3곳 → `gaps.py links` 상설화 · 경기 지표 5종(⛔ 유효슛은 `outcome`이 아니라 `xgot > 0`) · PlayStyle 적합 2층(docs/22 §6.1) · `fut_tactics`는 손 확인(런북 §3-3).
-
-> **2026-09-21~22 ㉝·㉞ 아카이브** — 「지금 내 팀」 UI 재설계(진화 카드 `loading="lazy"` 금지 · img background+filter 혼용 금지) · Codex 팔로업(stat-tips 4항목 A등급 정정 · GG Club Role+/++ 회귀 수정). 상세는 `git log`.
-> **2026-09-21 ㉜ 주간 경기 수집(ATM 더비·LIV 본머스)**(`20bde5b`…) · **㉛ FC27 시스템 리서치 + 진화 판단 + 구단 싱크**(`AL02359162`).
-> ⭐ 리서치 정본은 `reports/research/2026-09-21-fc27-system-stats.md`와 `game_system_changes` — **C·B등급 0건**(출시 전)이라 10월 중순 재조사 필요(할 일 000-⑹).
-> ⛔ **기각된 통설을 근거로 쓰지 않는다**(반응력=세컨볼 등). 등급 없는 단정 금지 = 불변규칙 12.
-> **2026-09-18~20 ㉕~㉚ 아카이브** — FUT 구단·케미·메타(migration 042~052) · 스퍼스전/코번트리 종결 · 「주간 경기 수집」 3회차. 상세는 `git log`·`observations`.
-> ⭐ 케미 스타일 아이콘은 **FUTWIZ CDN이 EA 소모품 id 그대로**(250 Basic…273 GK Basic) — FUTBIN은 Cloudflare 캡차. 케미 XI는 **클럽·리그 씨앗 + 슬롯 개선 패스**로 33/33.
-
-## 자동화
-
-- ⚠️ **스케줄 정본은 `mcp__scheduled-tasks__list_scheduled_tasks`다** — `CronList`는 다른 시스템이라 0건으로 보인다(09-03 오판 확정).
-- 🔴🔴🔴 **예약 유실 3회차(10-12 · 계정 전환)** — 1·2회차(09-17·09-20)는 원인 미확인 롤백, 3회차는 **계정이 바뀌어 레지스트리가 새 계정 쪽으로 비었다.**
-  ⭐ **복원 경로(실증 10-12)**: 프롬프트는 `~/.claude/scheduled-tasks/<id>/SKILL.md`에 남는다. 레지스트리(cron·fireAt·enabled)는
-  `~/Library/Application Support/Claude/claude-code-sessions/<계정>/<org>/scheduled-tasks.json`에 계정별로 있다 — 옛 파일에서 enabled만 골라
-  `create_scheduled_task`로 재등록(⛔ create는 SKILL.md를 덮어쓴다 → **먼저 백업, 등록 뒤 원문 복사**).
-  ⇒ 정기 수집은 여전히 **회차마다 `list_scheduled_tasks`로 실재를 확인한다.** 도구 승인은 태스크별 저장이라 재등록하면 **다시 「Run now」 선승인**이 필요하다.
-- 🔴 **예약 등록은 저장소 밖이라 다른 PC(`AL02359162`)에서 돌지 않는다**(09-22 확인) — 런북은 깃으로 따라오지만 등록은 이 PC 전용.
-- **현재 등록(10-12 23시 복원 · 9건)**:
-
-  | 종류 | id | 일정(KST) | 비고 |
-  |---|---|---|---|
-  | 정기 | `match-watch-weekly` | 월 10:00(+지터) | ⛔ Run now 선승인 필요 |
-  | 정기 | `club-sync-daily` | 매일 10:00·21:00 | 프롬프트에 「Sync Club」 클릭·무변화 조용히 종료 사전 승인. 처분 후보·진화 완주 추정·원장↔EA 불일치·정본과 갈리는 인게임 역할은 목록만 · ⛔ Run now 선승인 필요 |
-  | 정기 | `auto-react-observe-daily` | 평일 10:00·16:00 | 저장소 밖(Auto-react) |
-  | 정기 | `weekly-unifi-now-sync` | 월 10:00 | 저장소 밖(Unifi career) |
-  | 일회 | `mw-liv-mancity-d2` | 10-13 14:00 | |
-  | 일회 | `mw-avl-brentford-d3` | 10-13 19:00 | |
-  | 일회 | `mw-che-bournemouth-d3` | 10-13 20:00 | |
-  | 일회 | `mw-atm-alaves-d3` | 10-13 22:00 | |
-  | 일회 | `mw-liv-mancity-d3` | 10-14 20:00 | |
-
-- **옛 레지스트리에도 꺼져 있어 복원하지 않은 것**: `fc27-patch-watch`(09-21 신설, 매일 10:07 · 프롬프트 파일도 없음) · `transfer-watch-daily`(매일 09:05·21:05) ·
-  `futgg-prices-daily`(매일 09:15). 다시 쓸지는 사용자 판단(할 일 0-6).
-- ⛔ **스케줄 태스크는 자기 자신을 삭제할 수 없다** — 비활성화만 되고 삭제는 일반 세션에서 `delete_scheduled_task`로 한다.
-- ⭐ 일회성 프롬프트는 **자기완결형**(경기 식별값·matchId·리포트 경로·미결 목록·접근 경로·배제 소스)으로 쓴다 — 유실돼도 수동으로 그대로 돌릴 수 있다.
-- Codex heartbeat **id=3 「프리미어리그 3팀 경기 수집」**, 매일 08:00 KST (저장소 밖 · 별도 관리).
-- ⭐ AVL 영상 회차는 **필수 채널 3곳**(UTV · The Villans · 1874, docs/30 표) + **Jacob Tanswell**(The Athletic, X `@J_Tanswell`)을 항상 조회한다.
-
-## 최근 작업
-
-⭐ 규칙 8에 따라 압축한다(전문은 커밋·obs) — 여기엔 **나중에 다시 물을 만한 것만** 남긴다.
-
-- **09-18~20 ㉕~㉙**(`d51b950`…`c33915e`, migration 042~052) — FUT 구단·케미·메타 + 스퍼스전·코번트리 종결(상세는 현재 상태). ⭐ 케미 스타일 아이콘은 **FUTWIZ CDN이 EA 소모품 id 그대로**(250 Basic…273 GK Basic) 준다 — FUTBIN은 Cloudflare 캡차라 쓰지 않는다.
-  ⭐ 케미 XI 탐색은 보유가 60장을 넘자 탐욕+무작위가 29/33에 주저앉았다 → **보유 많은 클럽·리그 씨앗 + 슬롯 단위 개선 패스**로 33/33·평균 OVR 81.
-- **09-17~18 ⑲~㉒**(`36ea37e`…`23c4429`, migration 034~039) — 진화·내 구단·시세·라벨·전술 히스토리(상세는 현재 상태). ⭐ fut.gg 진화 API는 `paths/v2/{baseEaId}`(특별 카드 id 404 · 카탈로그 API 없음 — 응답 내장 객체 사용) ·
-  가격 API 403 · GG Club = EA 승인 파트너 경로. ⛔ 서브에이전트 전사 헤더 순서(「제목 - 채널」)가 인덱서를 속였다 — 규약은 「채널 — 제목 (게시일, 길이, 메모)」.
-- **09-08~12 ⑹~⑾**(`1aeefa2`…`4108bba`, obs#531~616) — 인게임 캡처 1차·A/B 3~5·시뮬 1 · `core/team_settings.py`→**G15** · `cells_poss/def`·`def_x` · FC27 4팀 전량 + FC25/26 **출시판 시계열**(fut.gg `?club_id=N`·`/all-versions/{eaId}`).
-  ⭐ **obs#702** 시뮬은 프레스티지가 가른다(승점으로 전술 비교 금지) · ⛔ 동일성 사고: 리스 제임스↔로렌 제임스 — **EA id·gender로 특정** · ⛔ 새 발견을 쓰기 전 `git log -- <파일>`로 기존 반영 확인(결번 #614).
-- ⏰ 그 이전 이력은 `git log`와 `observations`에서 조회한다.
+| 영역 | 상태 | 정본 |
+|---|---|---|
+| 최근 실행 | 10-14 10시 3팀 이적 감시 — cron FotMob 파일 `logs/fotmob-20261012-2100.txt` **0바이트**라 DB 선조회+공개 웹으로 대체 · 신규/갱신/STALE 0 · DB 무변동 · ⚠️ 리포트 `reports/transfer-watch/2026-10-14.md`는 **미커밋(그 실행 소유)** | [원문 블록](docs/handoff-context.md#현재-상태) |
+| 이적 | Endrick `MEDIUM` · Alex Scott `MEDIUM-HIGH`(창 판단 대기) · Gilberto Mora `MEDIUM` · 미결 이적 4건(에메날로·르마르·바르가스·응게상) | `reports/transfer-watch/` · `transfers` |
+| DB·git | `.db` git 제외(`aba9dad`) · `db/dump/`만 · 스탬프 G33 · 게이트 G1~G34 | [decisions](docs/decisions.md) · docs/40 |
+| 경기 수집 | 10-10~11 3경기 적재(#52 CHE · #53 LIV · #54 ATM) · **#51 AVL·#52 CHE D+3 complete**(10-13) · ⚠️ LIV D+2·D+3 · ATM D+3 종결 커밋은 git log에 없다(미확인) | `match_reports` · `reports/match-watch/` |
+| FUT 구단 | 10-14 2회차 보유 253 · 만잠비 아카데미 III 완료(드리블 · OVR 83) · 잭슨 갈림길 재결정 Tiki Taka + First Touch(`f44eaf4`) · ⚠️ 시세 미갱신(fut.gg Cloudflare 차단) | `fut_*` · `.claude/skills/club-sync/` |
+| 자동화 | 10-12 복원 9건(정기 4 · 일회 5 — 일회는 10-13~14 시한 경과) · 브라우저 쓰는 `club-sync-daily`·`match-watch-weekly`는 「Run now」 선승인 필요 | [자동화 원문](docs/handoff-context.md#자동화) |
+| 게임 시스템 | 패치 v1.0.5 없음(10-12) · ⏰ 10-17 PlayStyle+ Lab · 10-22 시즌 2(추정) · FC27 리서치는 C·B등급 0건 → 10월 중순 재조사 | `game_system_changes` · docs/22 |
+| 열린 결손 | 링크 결손 3건(코나테·더글라스 루이스 소속 미상 · 엘리엇 포지션 충돌) · `ref_map25` 동률 비결정 버그 · ATM regime 4 CAM 슬롯 없음 · duty #246 억제 토큰 노트 잔존 | `gaps.py links` |
+| 핸드오프 공백 | 10-12 23시(`0aad64e`) 이후 **22커밋**이 HANDOFF 블록 없이 쌓였다 — 위 표의 10-13~14 사실은 git log 기준 | `git log 0aad64e..` |
 
 ## 진행 중 작업 (WIP)
 
-**코드 WIP 없음.** 2026-10-12(`aba9dad`)까지 푸시 완료. ⭐ 새 PC·pull 직후엔 `scripts/db_restore.sh`(현재 상태 ⓐ).
-🔴 **09-22 신규 미결 3건**
-⑴ ⏰ **지모알로바 Creative Crossroads — 1·2단계는 이미 적용됨**(옵션2, OVR 73→78, `6cdfa58`·`902a151` 09-21 —
-  ㉟이 「미적용」으로 잘못 이월했던 것을 이번에 정정). **3단계만 남았다. 마감 09-30 17:00 UTC.**
-  적용 후 `fut_club.py evolve`로 기록하고 **런북 §「연관 메뉴 7개」**를 한 회차에 닫는다.
-  ⚠️ 그 전까지 갈림길 3단계는 화면에서 「아직 안 밟았다 — 판정 불가」로 나온다(정상).
-⑵ ⛔ **`club-sync-daily` 첫 회차 「Run now」 선승인 필요**(위 자동화 §).
-⑶ ⏰ **예약 3건을 HANDOFF에 사양으로 남길지 사용자 판단** — 저장소 밖이라 다른 PC에서 전부 없다.
-🔴 **09-21 신규 미결 4건 — 다음 세션이 먼저 볼 것**
-⑴ ⛔ **`fc27-patch-watch` 1회차가 승인 대기로 멈춰 있다**(세션 `local_d2f37c2f`, 08:21:34Z 이후 무진행). 그 세션 창에서 승인해야 이어지고, **승인해 둬야 이후 자동 회차가 같은 지점에서 안 멈춘다.**
-  ⭐ 멈추기 전에 **FC27 Launch Update(09-14)에서 미적재 3건을 찾아냈다** — ICON 국적 기여 +2→+1 · Hero 리그 기여 +2→+1 · Hall of FUT 신설 · 진화 요건 구체화.
-  적재 스크립트를 유실 방지로 `reports/patch-watch/wip/2026-09-21-launch-update-insert.py`에 보존했고 회차 리포트는 `reports/patch-watch/2026-09-21.md`다. ⛔ **적재 0건 · 원문 미검증** — 쓰기 전 EA 원문 직접 대조 필수.
-  ⚠️ 케미 개편은 **우리 FUT 스쿼드 설계에 직접 걸린다**(ICON 국적 허브·Hero 리그 허브 구성이 약해진다) — 다음 `/club-sync`에서 케미 재검산할 것.
-⑵ ✅ **`stat-tips.js` 4항목·docs/22 구서술 정정 완료**(세션 ㉞) — 기각 통설 재유통 차단.
-✅ **진화 배정 중 잭슨 몫 완료** — Creative or Composed?는 아직 미적용이나 갈림길·해금 조건이 화면에 다 나온다(세션 ㉟ ⓑ).
-⑶ ⚠️ **`autonomyIQ`는 v1 아카이브 전용·현행 미구현**임을 docs/20·22에 표시 완료. DB `game_system_changes` #25 impact의 현행 기능처럼 읽히는 문구는 **별도 DB 작업으로 이월**.
-⑷ ✅ **Adam Smith 해결(09-22)** — 6대 스탯이 전부 진화 상한과 일치해 **Intro to Evolutions**로 확정, 로그 적재(73→79).
-✅ 패서→리시버 논리를 근거로 쓴 `prescriptions`는 **0건** — FC27 변경으로 무효가 되는 기존 처방은 없다(앞으로만 지키면 된다).
-⏰ **열려 있는 건 2개**: ⑴ **기존 정기 2건(`transfer-watch-daily`·`futgg-prices-daily`) 재생성 판단**(자동화 § · 할 일 0-6).
-⑵ **전사 3편 `match_videos` 미등재** — `U4OewDAQMCk`(MAH) · `QkA0fScs5s8`(Spurs Chat) · `ofp0s7RaNoc`(Cash talk's).
-  ⛔ G17상 **`impl_claims` 1행 필수**(주장 없으면 `{"axis":"none"}`). ⚠️ `ofp0s7RaNoc`는 **PL 전 경기 모음 포맷**이라 이 경기 비중이 서두 ~2분뿐이다 —
-  **제외가 낫고**, 제외하면 사유를 소스 커버리지에 남겨 다음 회차가 재후보로 올리지 않게 한다.
-  ✅ `FP7obsFLxRQ` 채널명 결손은 **채움 완료**(Alice - ECILA Football). ⚠️ 이 전사는 **루헤리를 「Reguilon」으로 오인식**한다.
-📌 **미추적 잔여 — 09-21에 전사 3편만 커밋했다**(로컬 전용이면 PC 이동 시 사라지므로).
-✅ **`reports/ingame/` 4폴더(712MB) 사용자 승인으로 폐기 완료**(09-23, `AD03230205ui-iMac.local`) — `test3`(475M)·`test4`(65M)·`sim1`(74M)·`test5`(98M).
-  결론은 이미 `observations`(#536~538·#569·#588)에 흡수돼 있어 원본 삭제로 분석 손실 없음(§핵심 방법론 참고).
-  ⚠️ 이 4폴더는 이 PC에도 미추적으로 있었다 — 직전 기록의 「`AL02359162.local`에만 있다」는 부정확했다(그 PC의 사본 존재 여부는 미확인).
-📌 **삭제 후보**: `reports/match-watch/2026-09-19-avl-tottenham.D1-findings.md` — 병렬 세션 인계 메모. `02fd522`에서 리포트 D+1 절·obs로 **전량 흡수됨**.
-✅ **`pulled`·`scope` 규약 docs/30 반영 완료**(09-20 사용자 지시, obs#883) — 마이그레이션 없이 기존 free-text 필드(`phase_source` · `team_match_stats.source`)에 토큰으로 적고, match-watch §3에 실행 단계를 넣었다.
-⭐ **가능하면 `scope=full`로 받는다**(16종 화이트리스트면 카드·교체·세이브가 없어 「카드가 없다」류를 판정할 수 없다). ⏰ **전용 컬럼 + G12 확장은 사전등록 후보**(현재는 문자열 규약이라 기계 강제 없음).
-✅ **재판정 후보 3건 처리 완료**(09-20, obs#888) — 셋 다 **조건 미충족**이라 **HELD 유지 + 조건 정밀화**로 닫았다(유효표본 45분+·hp15+ 기준 전부 1경기).
-⛔ 원인 3개가 특정됐다: ㉠ 이 부류에 **억제 경로가 아예 없어** 09-17에 오탐 판정한 #31이 그대로 다시 떴다 ㉡ 검사 heuristic(**역할이 처방에 있나**)과 실제 조건(**표본 N경기**)이 다른 것을 본다 ㉢ ⭐⭐ **층 혼입** — #31은 `wm_insidefwd`가 **경기 전용 프리셋에만** 있어서 떴다(고정 작업 규칙 5 위반).
-✅ 조치: 사유에 **「조건 미충족」**이 있으면 억제 + 보고에 **근거 출처 표기**(시즌처방/경기전용/fit_role) + **억제분을 따로 보고**(「0건」과 「억제 3건」은 다른 상태다).
-⏰ 외부 입력 대기: FC27 출시 **09-25**(진화·시세 재수집) · 인게임 A/B(T6·C2/C6) · 맥 알리스터 공식전 2경기 · 다음 GG Club 싱크(`/club-sync`).
-⚠️ **공유 DB에 동시 세션이 붙는다**(09-18에 실제로 시각화 세션 ↔ match-watch 세션이 겹쳤다) — 커밋 전 `git status`로 **내 것만 명시 스테이징**할 것.
+코드 WIP 없음. 미추적 `reports/transfer-watch/2026-10-14.md`는 10-14 10시 이적 감시 실행 소유 — 그 실행(또는 사용자)이 커밋한다.
 
 ## 다음 할 일
 
-000. ⭐⭐ **P1 · 09-21 리서치 후속** (상세는 WIP ⑴~⑷)
-    ⑴ **패치 감시 1회차 완주**(승인) → Launch Update 3건 원문 대조 후 적재 → 케미 재검산.
-    ⑵ **`stat-tips.js` 4항목 수정 + docs/20 `autonomyIQ` v1 유물 표기** — 오늘 세운 불변규칙 12를 **우리 자신에게 먼저 적용**하는 일이라 우선순위가 높다.
-    ⑶ ⭐ **진화 배정 — 지모알로바만 남았다**(obs#940에 근거 전문). ⛔ 적용 후 `fut_evolution_log` 기록 + **연관 메뉴 7개**(런북)를 한 회차에 닫는다.
-      · **지모알로바 = Creative Crossroads 3단계 「옵션 2」**(Shadow Striker+ · Low Driven Shot) ⏰ **마감 09-30 17:00 UTC** · 15,000코인+150P · 단계별 「Squad Battles 세미프로 1경기」.
-      · **잭슨 = Creative or Composed? [SP 27]** — ⛔ **Press Proven은 압박 PS가 아니다**(EA 정의: 근접 컨트롤+**쉴딩**) ⇒ 힘 77 잭슨 ≫ 48 음바예. 스즈키는 `is_gk=0`이라 불가.
-      · ⭐⭐ **갈림길 옵션은 기준에 따라 뒤집힌다** — 속성 실이득 **옵션1=옵션2=+28**(OVR+5는 1단계 고정) · 역할 가중은 **42:28로 옵션1** · **체감·효율은 옵션2**(SHO 60→67 · 옵션1의 반응력은 근거 0 · 볼컨은 off-balance 입력에서 배제). 사용자가 **체감 기준** 채택.
-      · ⚠️ Winger Glow Up [SP+ 26](무료·OVR+10)은 **`Max Pos. 3`** 에 걸려 불가(포지션 6개) · 갈림길 후 PS 3개 ⇒ Tactical Ascent [SP+ 14] 영구 불가(포기 가치 낮음) · ⛔ **`attrs_delta`가 전 행 비어 있어** 위 계산은 **기준 카드 기반 하한**이다.
-    ⑷ **FC27 고압박 프리셋 재검증** — Team Press가 **자기 수비 3분의 1에서 무효**이고 AI 수비 리치가 축소(Competitive 한정)됐다. FC26 `optimal:vs-weak`(High/67)류를 FC27로 옮길 때 전제가 달라졌다. 라인 높이 실측과 묶어서.
-    ⑸ ⛔ **`core/team_settings.py` 라인 높이 구간이 EA 표기 구간을 벗어난다**(Deep 0~45 · Balanced 상한 62 ↔ EA 1–30/31–60). `match_game_setups`의 Deep 4행(35~40)이 전량 구간 밖.
-      ⚠️ **그 구간값 자체가 FC25 캐리오버**라 **FC27 게임 내 슬라이더 실측이 선행**돼야 한다. 기존 행은 덮지 말고 정정 행 추가(불변규칙 2).
-    ⑹ ⏰ **10월 중순 리서치 재조사** — 출시 2~4주 후면 C등급(통제 실측)·B등급(데이터마이닝)이 나온다. 미해결: First Touch↔볼컨 한계효용 · 역할/포커스 실제 이동량 · 스탯 효과의 선형/계단 여부 · 반응력 실체.
-00. ⭐⭐ **P1 · 진화·내 구단 축 후속** (완료분은 「현재 상태 ㉟」 참조)
-    ⑴ **FC27 출시(09-25) 후 재수집** — ✅ **이제 `club-sync`가 매 회차 자동으로 돈다**(§3-5·3-6: 카탈로그 + 해금 조건).
-      ⏰ 출시 직후엔 **유료·다단계·Role++ 진화가 새로 열리므로** 카탈로그 종수·갈림길이 크게 늘 것이다 — 첫 회차 보고를 볼 것.
-      ⚠️ 시세(`futgg-prices-daily`)는 **아직 미재생성**(할 일 0-6).
-    ⑵ ✅ GG Club 임포터 완료(`/club-sync`) · ⑶ 진화 카탈로그 2495(숨김) 확보 · FC27 `game_roles` 커널(obs#629) 확보 후 `fc_role_familiarity_map` 대조 · 카드 없는 4명 미수록 확정 여부.
-    ⑸ ✅ 시각화 1차 완료(㉔). 후속 후보(P3): **모멘텀 곡선**(원료 선행) · 경기 **평균 위치 맵** · 이적 화면 시각화 · **모바일 폭 점검**(현재 1440 기준만).
-0. ⭐⭐ **P1 · 다음 인게임 A/B(T6) = 「캐시 falseback」 단일 변수**(2026-09-13 사용자 결정. ⛔ 2변수 동시 변경 계획은 폐기 — 귀속 불가, obs#702).
-   26/27 공식전 실측은 캐시 RB = `fb_att_wb/Support` .8919이고 **`fb_falseback`은 상위 5위 밖**(obs#773 — wingback으로 보였던 건 **바이에른 친선 혼입** 탓). 반대편 근거 「tucks inside to form a temporary back three」(obs#774)는 **25/26 체제 자료**다.
-   ⇒ **실측↔영상이 갈리는 지점을 T6가 판정한다.** 1차 판별 = **캐시 그리드가 안쪽(열1~2)으로 가는가.** 폴더 `reports/ingame/2026-09-1x-avl-test6/`(⚠️ 썸네일 이름 대조).
-   ⛔ 캡처 단독 처방 변경 금지(docs/50) · ⛔⛔ **시뮬 승점으로 전술 비교 금지**(프레스티지를 측정하게 된다, obs#702) — 팀 설정 2축도 **직접 플레이 A/B**로만.
+번호는 v1 체계 그대로(근거·경위 원문은 [handoff-context 「다음 할 일」](docs/handoff-context.md#다음-할-일)).
 
-0-5. ⭐ **P1 · 빌드업 축 괴리 — 정본 Short Passing ↔ 인게임 Balanced**(09-19 사용자 판독 `8ZUKLGXm48ac`). 둘 중 무엇이 에메리 재현인지 미판정이다.
-   함께 열린 건 **GK 역할 Δ13.9**(볼 플레잉 키퍼 61.9 vs 최적 골키퍼 75.8) — 스즈키 카드 능력치가 배급형 GK 가중을 못 받는다. ⛔ 시즌 정본(`slot_canon_roles`) 변경 전에 인게임 A/B 필요.
-0-6. **P2 · 스케줄 유실 재생성 판단**(자동화 § 참조) — `transfer-watch-daily`·`futgg-prices-daily`를 다시 만들지, 아니면 수동 회차로 둘지. **두 번 유실됐으므로 재생성해도 회차마다 실재 확인은 계속한다.**
-0-2. **P2 · FC27 4팀 역할·숙련도(Role+/++) 수집** — PlayStyles·바이오·카드이미지는 09-11~12 완료. 남은 건 fut.gg `/api/fut/roles/` FC27 응답(docs/20 ② 타이브레이커의 전제) — **출시 09-25 전까지 확정 불가**.
-0-3b. **P1 · 부상 축 후속** — ⑴ 마첸(발목, 「maybe it is a long time」)·파우 토레스(햄스트링) **구단 공식 발표 재확인**(현재 등급 B, 감독 발언 인용) ⑵ premierinjuries·physioroom·transfermarkt 미조회 ⑶ 바리오스 부상 2소스 충돌(FotMob 09-12 Muscle ↔ 스페인 매체 교차확인 실패) ⑷ 스쿼드 밖 판정(발로건·민테·커티스 존스·조 고메스·키에사) 확인 필요.
-0-3c. **P2 · 재검증 이월 5건**(obs#792). ⑴ 질문 교체(obs#714): 「잭슨이 내려오는가」 → **「9번의 배후 침투가 빌드업의 폭을 만드는가」** ⑵ 승격(obs#725): 「표본 수집」 → **「이탈 조건 규명」**(글라스너가 경기 전 빌라를 「compact 4-4-2 block」으로 스카우팅 = 알려진 형태의 이탈)
-   ⑶ **후반 낙차 재발 여부** — UTV 「45~60분 붕괴 = 에메리 체제 고질」은 3티어 단일이나 **스퍼스전 후반 편중 백5·87′ 블록 풀림(obs#863·865)으로 표본이 늘었다** ⑷ 바클리 선제골 성격 미확정(obs#789) ⑸ 파우 토레스·마첸 복귀(→ 0-3b).
-0-3d. **P3 · AVL 소스 2건 판단** — **Aston Villa Review**(Chris Nee, 2티어, 유료벽) 등재 여부 · **Read Aston Villa `HTTP 403` 4패스 연속** 브라우저 경로 재시도 여부는 사용자 판단.
-0-4. **P2 · 선수 축 신규 517행 후처리** — formation·possession NULL · pos_class 좌표 폴백 · 카스티요·미겔 요렌테(아틀레티코 B) 행의 B팀 코드 분리 여부 · 무소·쇠를로트·르마르·바르가스 `squad_entries` 재산출.
-4. **P1 · obs#449 ⓐ/ⓑ 판별 — 양 풀백 att_wb 집계 역전이 체제 변화인가 국면 혼입인가.** 필요 조건: 점유 국면별(@dom/@tight) 분리 집계가 **버킷당 2경기**(74% 표본은 헐전 1경기뿐 → 다음 우세 경기 후 판정). 그때까지 **obs#443 짝짓기 규칙·정본(좌 전진·우 절제) 유지**. 사용자 인게임 A/B 체감(윙어 쪽 wingback/B · 반대쪽 att_wb/**Attack**)은 여전히 미수집.
-5. **P1 · 미결 이적 4건 개별 처리**(에메날로·르마르·바르가스·응게상) — 실효 시한 도래분부터. 절차는 「현재 상태」 마지막 문단.
-6. **P2 · 아틀레틱 5-4-1 전환 시각 미확정** — 2소스 모두 분(分) 미명시로 obs#498·#507이 구간 분할에 못 쓰인다. ⭐ 남은 방법: WhoScored 이벤트 타임라인으로 **평균 위치 변화 시점 역산**.
-6-1. **P2 · G13 확장 후보 2건 사전등록** — ⑴ `team_code IS NULL` 0건 불변식(09-12 정리로 0 달성, obs#618 규약 「NULL은 미배정」) ⑵ 「선수×시즌 클럽↔클럽 혼입」(중간 이적 예외 설계 필요). ✅ 재산출 확인(obs#619): team_code 배정은 `v_player_profile`(팀 필터 없음)·`rate_v`·`prescriptions`에 무영향. ⏰ **별건**: `measured:season*` 처방 56건 중 **48건 sample_n이 현재 표본과 불일치**(8~9월 스냅샷 — 엔소 15→56·소보슬라이 18→66·비르츠 24→64). 재산출은 새 행으로, fit_sim Δ>0.05만 인선 재검토 — 사용자 판단 대기. · 팔레스트라·켄다·기튼스 **공식전 미출전 사유** 미수집.
-8. **P2 · obs#353 후속** — 학포 RM 배치로 「검증된 LM이 학포뿐」 리스크 재판정(무뇨스 LIV RM 선발 지정으로 전제가 바뀌었다 — 불변규칙 7 캐비앗 유지). / 9. **P2 · 경기 전용 처방 재판정을 match-watch 표준 파이프라인에 넣을지 확정**.
-11. **P3** · 병렬 중복 실행 가드 미수립(obs#354) · 겨울창(2027-01) transfer-watch 재개는 사용자 판단 · 그리말도(ATM) 실측 채워지면 슬롯 기하·fit 재검증.
-15. **P2 · claims 미작성 98편 · PENDING 23건**(G17 보고값, 09-20) — 회차마다 새 요약과 함께 채운다. ⭐ 코번트리전 7건은 **같은 경기 국면 그리드로 닫았다**(09-19) — 같은 방식을 백로그에 적용.
-   ⏰ 남은 마감 조건 예: ATM 국면별 9번 교대 = 2소스 교차검증 · trampa pentagonal = reproduction_limits pressing 4번째 행 · CHE Counter = 저점유 2경기째.
+**P1**
+- [ ] **이적 사용자 판단 3건** — Scott 창(`2027-winter` vs `2027-summer`) · N'Guessan 상태/승격 시점 · transfer-watch 런북의 낡은 `2026-summer` 고정값
+- [ ] **cron FotMob 0바이트 원인** — `logs/fotmob-20261012-2100.txt` · 다음 이적 감시 전에 전수 스캔 경로 복구(미확인)
+- [ ] **경기 D+N 미종결 확인** — LIV 맨시티(#53) D+2·D+3 · ATM 알라베스(#54) D+3 커밋 없음 → `list_task_runs`로 실행 여부부터
+- [ ] **000⑴ 패치 감시 후속** — FC27 Launch Update 미적재 3건(ICON 국적 +2→+1 · Hero 리그 +2→+1 · Hall of FUT) EA 원문 대조 후 적재 → 케미 재검산 · 스크립트 `reports/patch-watch/wip/2026-09-21-launch-update-insert.py`
+- [ ] **000⑶ 지모알로바 Creative Crossroads 3단계** — 마감 09-30 17:00 UTC 경과 · 적용 여부 미확인 → `fut_evolution_log` 대조 · 적용됐으면 연관 메뉴(런북 표) 한 회차에 닫기
+- [ ] **000⑷⑸ FC27 고압박·라인 높이** — Team Press 자기 수비 3분의 1 무효 · `core/team_settings.py` 구간이 EA 1–30/31–60 밖 → FC27 슬라이더 실측 선행 · 정정은 새 행
+- [ ] **000⑹ 10월 중순 리서치 재조사** — C·B등급 수집(First Touch↔볼컨 · 역할/포커스 이동량 · 스탯 선형/계단 · 반응력 실체)
+- [ ] **0 인게임 A/B T6 = 캐시 falseback 단일 변수** — 1차 판별 「캐시 그리드가 안쪽(열1~2)으로 가는가」 · ⛔ 시뮬 승점 비교 금지(obs#702)
+- [ ] **0-5 빌드업 축 괴리** Short Passing ↔ Balanced(`8ZUKLGXm48ac`) · GK 역할 Δ13.9 — `slot_canon_roles` 변경 전 A/B
+- [ ] **0-3b 부상 축** — 마첸·파우 토레스 구단 공식 발표 · premierinjuries 등 미조회 · 바리오스 2소스 충돌 · 스쿼드 밖 5명
+- [ ] **4 obs#449 ⓐ/ⓑ** 양 풀백 att_wb 역전 — 점유 국면 버킷당 2경기 후 판정 · 그때까지 obs#443 정본 유지
+- [ ] **5 미결 이적 4건 개별 처리** — 실효 시한 도래분부터
+- [ ] **20 C2/C6 풀백 비대칭 재판정**(obs#768) — obs#443 vs obs#95가 처음 갈림 · 인게임 A/B(T7 후보) 없이는 못 닫음
+- [ ] **29 LIV 6번 축**(obs#778) — 맥 알리스터 같은 `pos_class` 2경기 채우면 재산출 · 그 전엔 어느 쪽도 처방 금지
 
-20. ⭐⭐ **P1 · C2/C6(풀백 비대칭) 재판정**(obs#768) — 구성이 **우측 해방(맥긴 winger/Attack) + 좌측 뱅크(헤밍스 widemid/Support)**로 바뀌었다. 현행 slot_canon은 LB 전진(`fb_att_wb/Support`)·RB 절제(`fb_wingback/Balanced`).
-   ⑴ obs#443(윙어 쪽 풀백 = wingback/Balanced) ⇒ **변경 불필요** ⑵ obs#95(해방 사이드 풀백이 올라간다) ⇒ **RB 전진·LB 절제로 뒤집어야** 한다.
-   ⛔ 두 규칙이 이 구성에서 처음으로 갈린다 — 인게임 A/B(T7 후보 2순위) 없이는 못 닫는다.
-29. ⭐⭐ **P1 · LIV 6번(홀딩) 축 확정**(obs#778) — 서사와 실측이 **정반대**다. 서사 2소스는 **맥 알리스터**를 지목하는데(「흐라벤베르흐는 천성적 6번이 아니다」), 맥 알리스터 `#491`은 **role·fit 전부 NULL**(유효표본 부족, obs#770)이고
-   흐라벤베르흐 `#368`은 LDM 순수 2경기에서 `dm_dlp/Roaming` .7633 · Δ.1148 단독 확정이다. ⚠️ 영상이 말하는 건 위치 적합이 아니라 **「수비 인지」** — docs/22 층이라 **층이 다르다.**
-   ⏰ 마감 조건: 맥 알리스터가 PL·UCL에서 **같은 `pos_class` 2경기**를 채우면 재산출해 같은 슬롯에서 비교. ⛔ 그때까지 어느 쪽도 처방으로 굳히지 않는다.
-30. **P2 · ATM 백3/백4 프리셋 병기 판단**(obs#775) — 표기 충돌의 원인은 **푸빌의 좌우 ±17 이동**이다. 제안: `team_tactic_setups`에 두 프리셋을 병기하고 푸빌 좌우값으로 구분.
-   ⚠️ 선행 조건 ⑴ 표본 5경기(백3는 2)로 얇다 ⑵ 08-29 요렌테 x=33.4 국면 혼입 확인 ⑶ ATM 3-4-2-1 슬롯 체계가 LOW-MEDIUM 잠정이라 슬롯 x 확정이 먼저.
-   ⭐ 「요렌테를 전진시켜라」는 재평가 대상 — 그는 이미 x≈49이고, 더 올리려면 **푸빌이 그 자리를 받아야** 한다.
-33. **P3 · LIV 슬롯에 LAM/RAM 신설 여부**(obs#784) — 비르츠 LAM·소보슬라이 RAM 각 2경기가 **슬롯이 없어 축을 못 만든다**(LIV는 4-2-3-1 Wide라 LM/RM만). 기하 확정이 필요해 2경기로는 얇다 — 표본 증가 후 판단.
-## 미해결 — 판단이 필요한 것
+**P2**
+- [ ] **0-6 예약 미복원 3건 재생성 판단** — `transfer-watch-daily`·`futgg-prices-daily`·`fc27-patch-watch`(사용자) · 재생성해도 회차마다 실재 확인
+- [ ] **00⑴ 시세 수집 복구** — fut.gg Cloudflare 차단(10-13~14 클럽 싱크 전 회차 미갱신)
+- [ ] **0-2 FC27 Role+/++ 수집** — fut.gg `/api/fut/roles/` FC27 → `migrate_fc27.py --roles --check`(미해결 2 · 출시 후라 이제 가능)
+- [ ] **0-3c 재검증 이월 5건**(obs#792) · **0-4 선수 축 517행 후처리** · **6 아틀레틱 5-4-1 전환 시각**(WhoScored 타임라인)
+- [ ] **6-1 G13 확장 2건 사전등록** · `measured:season*` 처방 48건 sample_n 불일치 재산출(사용자 판단 대기)
+- [ ] **8 obs#353 학포 RM** · **9 경기 전용 처방 재판정 파이프라인 편입** · **30 ATM 백3/백4 프리셋 병기**(obs#775)
+- [ ] **15 claims 미작성 98편 · PENDING 23건**(09-20) — 회차마다 같은 경기 국면 그리드로 닫기
+- [ ] **전사 3편 `match_videos` 미등재** — `U4OewDAQMCk` · `QkA0fScs5s8` · `ofp0s7RaNoc`(제외 권장 · 사유 기록) · G17 `impl_claims` 1행 필수
+- [ ] **000⑵ 잔여** — DB `game_system_changes` #25 `autonomyIQ` impact 문구(별도 DB 작업)
 
-1. ⏰ **ATM 포메이션 표기 충돌 — 4-4-2 쪽으로 기울었으나 미해소.** 우리·El Desmarque·COPE는 4-4-2, **Infobae는 4-3-3**(obs#333 전제와 직결). 09-08 진전으로 obs#454는 강화 방향이나 **감독 발언은 3일 창 내내 0건**이라 확정 근거가 없다.
-   ⭐ 실측 기하가 4-1-4-1에 더 가까워 처방 미이관 판단은 여전히 정합적. ⚠️ 별건: 「**salidas de tres**+라인 간 3명」은 **보유 국면 별도 축**.
-2. ⏰ **FC27 커널 대기** — 사전 조사는 09-04 완료(obs#445). **PlayStyles·6대스탯·키·몸무게 EA 확정 트리거는 09-11에 완료**(4팀 전량 수집).
-   잔여 트리거: **09-18** fut.gg `/api/fut/roles/` FC27 → `migrate_fc27.py --roles --check` → `EXPECTED["FC27"]`·gates 앵커 **새 행** → `--apply`(승인).
-   ⛔ 역할 목록 변화는 **미공개** — 확정 전 커널 행 금지. ⚠️ **고레츠카 FC27 게임스탯 0행은 확정 결손이다**(09-11 재확인 — 이적 전 자유계약 공백기라
-   fut.gg 전 버전에도 카드가 없음, all-versions API로 직접 대조 완료) ·
-   **35속성은 완비사카·음바예 2명**(obs#364).
-## 데이터 수집 상태와 결손
+**P3 · 판단 대기**
+- [ ] 0-3d AVL 소스 2건(Aston Villa Review · Read Aston Villa 403) · 00⑶⑸ 역할 숙련도 대조·시각화 후속 · 11 병렬 중복 실행 가드 · 33 LIV LAM/RAM 슬롯
+- [ ] 미해결 1 **ATM 포메이션 표기 충돌**(4-4-2 기울음 · 감독 발언 0건) · 삭제 후보 `reports/match-watch/2026-09-19-avl-tottenham.D1-findings.md`(전량 흡수됨)
 
-- 스크립트 층: **대량 수집** `collect_fotmob_players.py`·`collect_understat_shots.py`·`collect_event.py`·fut.gg 계열(`collect_futgg_{history,cards,evolutions,prices}.py`) ·
-  **읽기 전용 진단**(판단은 사람) `check_fit_drift.py`·`check_side_bimodality.py`·`check_height_bimodality.py`·`audit_measured_samples.py`(`[표본판정]` 존중)·`db_diff.py`(NOT NULL→NULL 전이) · 회귀 `test_g13/g14/g8x_g15_regression.py` ·
-  **채움 전용**(사람 손을 덮지 않음) `backfill_pos_class.py`·`index_transcripts.py`·`refresh_duty_applied.py`·`write_video_summary.py` · **원장 쓰기** `fut_club.py`·`tactic_changes.py`.
-- ⛔⛔ **검색엔진 연도 혼입 주의** — 같은 상대·같은 달의 전년도 경기는 발행일을 반드시 확인한다. ⭐ **엔진 요약 자체가 오염되는 유형**도 있어(과거 사건을 현재 사실로 제시) 요약은 근거로 채택하지 않고, verbatim 인용은 원문 확보 전까지 쓰지 않는다.
-- Understat은 빅5(+RFPL)만(챔피언십·에레디비시·리가2 없음). Sofifa 35속성/playstyles·FBref 12축은 403 결손.
-- ⏰ **AVL LM/RM 슬롯 x 재검토는 표본 부족으로 보류**(obs#349). 재시도 조건: 정상 경기 누적 + 해당 경기 `cells` 수집.
-- ⭐ **1차 소스 메모**: `laliga.com/clubs/{club}/transfers`는 유효하나 날짜가 **행정 등록일**이라 구단 발표일과 다를 수 있다(`atleticodemadrid.com`은 403). 결손과 0을 구분한다(`docs/30`).
+## 주요 결정 (전문 [docs/decisions.md](docs/decisions.md))
 
-## 고정 작업 규칙
+- 10-14 HANDOFF 구조 규칙 v2 — 지우지 않고 포인터 압축(종전 「300줄 · 완료 항목 지운다」 대체)
+- 10-12 `.db` git 제외 · dump + `db_restore.sh`(`aba9dad`) · 예약은 enabled 9건만 복원
+- 09-23 같은 문제 2번째면 구조 제거(불변규칙 13) · report 47 재점검 안 함
+- 09-2x 진화 갈림길은 체감 기준 · 09-21 명시 스테이징 · 근거 등급 A~D(불변규칙 12)
+- 09-20 반복 사고 규칙 docs/70 분리 · `pulled`/`scope` 토큰 규약 · 「조건 미충족」 억제 · 09-13 T6 단일 변수
 
-- ⭐ **설정 층(슬롯 정본·팀 설정·선발 처방)을 바꾸면 같은 회차에 `python3 scripts/tactic_changes.py --reason "obs#… 사유"`** — G19가 막는다(2026-09-18). 서사 층(manager_profiles)은 `[YYYY-MM-DD 경기] …` 덧붙임이 곧 히스토리다.
-- ⭐ 화면 문구는 **읽는 사람 기준**이다 — 역할 코드·컬럼명·obs#를 그대로 쓰지 말고 `labels.js`(roleLabel·claimLabel·humanize)를 통과시킨다. 새 슬러그는 사전에 등재.
-- ⭐ **FUT 원장(`fut_*`)은 EA 싱크가 정본**이다 — 카탈로그 표기값·추정으로 채우지 않고, EA에 없는 보유 행은 **사용자 확인 없이 지우지 않는다**(`/club-sync`).
+## 최근 세션 기록
 
-1. 시작 시 `git status --short`. 로컬 변경이 있으면 fetch/pull하지 말고 내용부터 확인한다. 깨끗할 때만 `git fetch && git pull --rebase origin main`.
-   ⭐ **pull 뒤 `scripts/db_restore.sh`** — 2026-10-12부터 git에는 `.db`가 없고 dump만 있다(100MB 상한 2회 초과). DB가 dump보다 낡으면 G33·`db_dump.sh`가 멈춘다.
-2. 다른 PC/세션 변경을 버리거나 덮지 않는다. 특히 `db/dump/`는 충돌 시 기계 병합 금지.
-3. DB 변경 뒤 반드시: `scripts/export.py` → `scripts/db_dump.sh` → `scripts/gates.py`. **`git add -A` 금지** —
-   관련 `db/dump/`(`.db`는 싣지 않는다), `site/data/`, `reports/`, 문서를 명시 스테이징한다. push 전 `origin/main` 이동 여부를 다시 확인한다.
-4. ⛔ **원장 행을 `UPDATE`로 고치지 않는다 — 정정은 새 obs 행으로 한다**(G14가 막는다).
-5. 시즌 집계는 45분+·hit_points 15+만 쓰되, 경기 리포트는 짧은 교체 포함 **출전자 전원**을 기록한다.
-   match 전용 fit/전술은 시즌 `prescriptions`/`team_tactic_setups`에 **자동 병합하지 않는다**.
-6. ⚠️ **스케줄 세션이 돈 뒤에는 `git log`와 `git status`를 함께 본다**(커밋만 하고 푸시 안 한 사례, obs#382). 또 **다른 세션의 미커밋 DB
-   변경이 보이면 그 dump를 내 커밋에서 빼라** — 그쪽이 export를 안 돌렸다면 dump·site/data가 어긋난다.
-7. **파괴적 정리 전에는 `python3 scripts/db_diff.py --snapshot`** — 「새로 NULL 된 행 0」을 증명하는 유일한 수단이다(09-01 실증).
-8. HANDOFF는 300줄 이하로 유지한다. 완료된 항목·해소된 미해결은 **지운다**(기록은 커밋과 obs에 남는다).
+- **10-14 10시 · 3팀 이적 감시**(블록 표기 PC `AL02359162.local`) — FotMob 0바이트 · 신규 0 · 리포트 미커밋 → [원문](docs/handoff-context.md#현재-상태)
+- **10-12 23시 · 계정 전환 후 예약 복원 + 만잠비 아카데미 II**(`31a86ec`) — 레지스트리 0건 → 옛 계정 파일에서 9건 재등록 · 만잠비 OVR 82
+- **10-12 20시 · 주간 경기 수집**(`3918bfe`) — 3경기 draft 적재 · CHE xG 4연속 열세(obs#991) · ATM 「요렌테 3번째 CB」 기각(obs#996) · duty #246 REJECTED
+- **10-12 · 패치 감시 + 클럽 싱크 + DB 저장 구조 전환**(`aba9dad`·`dd811b4`·`51261ae`) — `.db` git 제외 · `fut_club.py evolve`는 `--completed` 필수
+- **10-08 21시 · 3팀 이적 감시**(`ac8b38e`) — LIV 유출 3건 STALE · Alex Scott 신규 `MEDIUM-HIGH`
+- 아카이브: 09-23 ㊱(토트넘전 6회차 종결 · 진화 갈림길 통합) 및 09-18~22 ㉕~㉟ → [handoff-context 「현재 상태」·「최근 작업」](docs/handoff-context.md#최근-작업) · 그 이전은 `git log`·`observations`
 
-## 핵심 방법론
+## 문서 맵
 
-- 그리드 인코딩·집계·커널은 `core/`만 쓴다(재구현 금지). 좌표: x는 공격 방향, y가 낮을수록 오른쪽 —
-  `cells_from_points` → `encode` → `Kernel.best_fit_slot`. **역할군 argmax 전에 슬롯 유형 필터 필수.**
-  적합값 Δ 0.02~0.05는 EA 공개 노이즈 구간이라 그 차이만으로 인선을 바꾸지 않는다.
-- 히트맵은 요구 역할의 일부만 설명한다. duties·1차 발언·전술 영상이 명확하면 낮은 fit보다 우선할 수 있다. ⭐ 단 **경기 프리셋의 역할 코드는
-  그 경기의 위치 실측을 따른다**(09-03 잭슨) — 서사가 뒤집은 것이 **온볼 기능**이면 PlayStyle 층(docs/22)이고, 커널 Δ가 노이즈(≤0.05) 밖이면
-  서사로 역할을 덮지 않는다.
-  ⭐ **풀백 전진은 같은 쪽 와이드 역할이 결정한다**(docs/20 ⑨) — 윙어 뒤 풀백은 wingback/B, 전진은 C6 해방 사이드에서만.
-  ⭐ **10번 포켓 충돌은 CAM 유형의 함수**(obs#464) — halfwinger 옆엔 insidefwd가 보완(.329), playmaker/classic10 옆엔 wideplm/widemid.
-  사이드 스위칭 포커스는 `cam_halfwinger`/Roaming 하나. **와이드는 10번 유형을 먼저 정한 뒤 고른다.**
-- 단일 경기·퇴장·저점유 같은 교란은 confidence와 보고서에 함께 쓴다.
-- ⭐ **불변규칙 7(팀 축 혼선)은 세 번 터졌다** — 런북 슬롯 x 표 · 음바예 regime_id 오배치(obs#355) · **`team_code` 739행**(obs#372·373).
-  **타 팀 실측은 출처 팀·체제를 반드시 명기.**
-- ⭐ **불변규칙 10 최고 실증**(09-01): 아하노르 거래 구조는 **이탈리아어에만**, 무드리크 매수옵션은 **우크라이나어에만**, 응게상 선행조건은
-  **프랑스어에만** 있었다 — 영어권만 봤으면 **거래 형태를 오독**했을 건이다.
-- ⭐⭐ **불변규칙 10의 운영 형식**(obs#441·442) — 「다국어를 했다」는 자평은 믿지 않는다.
-  ⑴ **선발 11명의 국적·경유 리그를 체크리스트로** 만들어 언어축을 강제한다(화제성만 따라가면 감독 모국어와 최대 화제 선수 축만 훑는다).
-  ⑵ **언어축별로 기대 산출물이 다르다** — 감독 모국어·화제 선수 축은 「경기 분석」, 나머지 국적 축은 **「이적 서사·배경」**이 수확이다.
-  ⑶ **「0건」은 구조적 사실일 수 있다** — ⛔ **그러나 당일 「0건」은 네 번 반전됐다**(D+1 유튜브 · D+2·D+3 전술 유튜브 · 헐전 Coaches' Voice).
-  ⇒ **경로·검색어를 바꾼 재확인 전에는 종결로 적지 않는다.** ⭐ 유튜브는 **사이트 내부 검색**으로 확인한다(obs#516).
-  ⑷ ⭐ **언어권이 저밀도라는 것도 결과다** ⇒ 다음 라운드에서 **우선순위를 내리고 사유를 남긴다**.
-  ⛔ **단 「결장자 축」은 내리지 않는다** — 고레츠카는 D+2 당일 결장 확정 발표가 나왔다(09-08 실증).
-
-## 참고 문서
-
-- `docs/20`: 슬롯 x·역할·포커스·게임 구현 규칙(**⑧ movement_kr · ⑨ 윙 혼잡 · 팀 설정 매핑 규칙**) · `docs/30`: 수집·좌표·표본·결손(**⑧ xG 제공사 · 국면 그리드**) ·
-  `docs/40`: DB/export/dump/git · `docs/50`: 인게임 경량 검증(캡처·전술 코드) · `docs/60`: 새 축 검증·통계 기준 · `docs/22`: PlayStyles·스탯(온더볼) ·
-  `docs/21`: FC27 온보딩·트리거 · **`docs/70`: 반복해서 사고를 냈던 규칙**(⭐ 세션 시작 시 HANDOFF와 함께 읽는다).
+- 고정 작업 규칙 · 핵심 방법론 · 데이터 수집 결손 · 참고 문서 원문 → [docs/handoff-context.md](docs/handoff-context.md)(목차)
+- 런북 `.claude/skills/{transfer-watch,match-watch,player-collect,club-sync}/SKILL.md` · DB/export/git docs/40 · 수집 docs/30 · 메커니즘 docs/22 · 인게임 docs/50
+- 기록 공백 주의: 다른 세션이 코드만 push하고 HANDOFF를 안 고친 전례가 두 번(09-23 14커밋 · 10-14 22커밋) — 착수 시 `git log`를 정본으로
