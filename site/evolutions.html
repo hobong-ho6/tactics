@@ -1280,7 +1280,11 @@ function renderCatalog(team = CAT_TEAM){
   const isRPP = c => RULES.rolesPPIds.has(c.evo_id);            // 역할++ (코인·포인트 즉시 적용)
   const shown = c => (SHOW_PREM || !isPrem(c)) && (SHOW_LOCKED || !isProg(c)) && (SHOW_ROLEPP || !isRPP(c));
   /* ⛔ 건수는 **그려지는 쪽과 같은 기준**으로 센다 — 필터가 여러 개면 서로의 결과에도 걸린다(docs/70). */
-  const cat = cat0.filter(c => (SHOW_USED || !usedIds.has(c.evo_id)) && shown(c));
+  /* ⭐ **진행 중인 진화는 「소진」 필터와 상관없이 보인다**(2026-10-15 사용자 지적 「루제리 진화는 선수별 진화패스에서만 보이네」) —
+     1회성은 시작하는 순간 소진이라 숨겨졌고, 그러면 카탈로그에서 단계 완료를 누를 곳이 없었다. */
+  const openIds = new Set((EVO.club?.log || []).filter(l => inProgress(l)).map(l => l.evo_id));
+  const cat = cat0.filter(c => (SHOW_USED || !usedIds.has(c.evo_id) || openIds.has(c.evo_id)) && shown(c))
+    .sort((a, b) => (openIds.has(b.evo_id) ? 1 : 0) - (openIds.has(a.evo_id) ? 1 : 0));   // 진행 중을 맨 위로
   const nUsed = cat0.filter(c => usedIds.has(c.evo_id) && shown(c)).length;
   const nPrem = cat0.filter(c => isPrem(c) && (SHOW_USED || !usedIds.has(c.evo_id)) && (SHOW_LOCKED || !isProg(c))).length;
   const nProg = cat0.filter(c => isProg(c) && (SHOW_USED || !usedIds.has(c.evo_id)) && (SHOW_PREM || !isPrem(c)) && (SHOW_ROLEPP || !isRPP(c))).length;
@@ -1338,6 +1342,7 @@ function renderCatalog(team = CAT_TEAM){
            이 회차엔 **목록 생존만** 확인했고 아래 내용은 과거 관측값이다. 실측과 같은 얼굴로 두지 않는다. */
         c.carried_from ? `<span class="chip dim" title="fut.gg 목록에는 있으나 paths·적용 가능 선수 API가 이 진화의 객체를 주지 않는다(단독·특별카드 전용). 이번 회차엔 목록에 살아 있다는 것만 확인했고, 아래 조건·업그레이드·마감은 ${esc(c.carried_from)} 관측값 그대로다.">${esc(c.carried_from)} 관측값</span>` : ''}
         ${lockChip(c.evo_id)}${used ? `<span class="chip" style="border-color:var(--bad);color:var(--bad)">${used.exhausted ? '소진' : `사용 ${used.count}/${c.repeatability || 1}`} — ${used.by.map(b => `${esc(b.name)} ${esc(b.date)}`).join(', ')}</span>` : ''}</h3>
+      ${catOpenHTML(c)}
       ${best && !used?.exhausted ? `<div class="pcard tier${best.tier}" style="margin:6px 0;padding:6px 10px"><span class="badge hi">이 진화 최적 선수</span> <b>${esc(best.name)}</b>
         <small class="dim">${best.tier === 2 ? '처방 역할 Role++' : best.tier === 1 ? '처방 역할 Role+' : '처방 역할 무관(능력치만)'} · ${best.owned ? '내 구단 보유' : `미보유 · ${fmtPrice(best.price)}`} · ${best.k ? `${best.k + 1}단계째(선행 ${best.k})` : '즉시 적용'}${best.d ? ` · OVR +${best.d}` : ''}</small> ${best.rs ? scoreChip(best.rs) : ''}
         <div class="dim" style="font-size:11px;margin-top:3px"><b>적용 후</b> OVR ${best.path.ovr_before}→${best.path.ovr_after} · ${sixText(best.path.six_before, best.path.six_after)}</div>${
@@ -1367,10 +1372,19 @@ function renderCatalog(team = CAT_TEAM){
       <div style="margin-top:6px;font-size:12px"><b>업그레이드</b> ${J(c.total_upgrades_text, []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ') || '<span class="dim">없음(도입용)</span>'}</div>
       <div style="margin-top:6px;font-size:12px"><b>${team === 'ALL' ? '우리 선수' : esc(idx.regimes.find(r => r.team_code === team)?.team_kr || team)} 적용 가능 ${apps.length + noPath(c, team).length}명</b> <small class="dim">(fut.gg 전체 ${c.number_of_players?.toLocaleString?.() ?? '—'}명)</small>
         <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}${a.owned ? ' · 보유' : ''}${a.score ? ` · 역할 가중 +${a.score}` : ''}${(t => t ? ` · ⚠️ PS 개수 상한으로 못 받음: ${esc(t)}` : '')(a.k ? '' : psLostText(c, a.pid))}">${a.owned ? '★ ' : ''}${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${!a.k && psLostText(c, a.pid) ? '<small style="color:var(--bad,#e55)"> ⚠PS상한</small>' : ''}${a.score ? `<small class="up"> ⚖${a.score}</small>` : a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || (noPath(c, team).length ? '' : '<span class="dim">없음' + (used?.exhausted ? '(소진)' : '') + '</span>')}</div>
-        ${noPathHTML(c, team)}</div>
+        ${noPathHTML(c, team)}${catStartHTML(c, apps, team)}</div>
       ${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener" style="font-size:12px">fut.gg ↗</a>` : ''}
     </div>`;
   }).join('');
+  /* ⭐ 진화 기록 버튼 — 선수별 진화 패스와 **같은 함수**(evoStart·evoStep·evoDone). */
+  const catRoot = document.getElementById('cat');
+  catRoot.querySelectorAll('select[data-catstart]').forEach(sel => sel.addEventListener('change', () => {
+    const btn = catRoot.querySelector(`button[data-catstartbtn="${sel.dataset.catstart}"]`), o = sel.selectedOptions[0];
+    btn.dataset.evostart = `${sel.value}:${sel.dataset.catstart}`; btn.disabled = !!o.dataset.why; btn.title = o.dataset.why || '';
+    catRoot.querySelector(`[data-catmsg="${sel.dataset.catstart}"]`).id = `em${sel.value}_${sel.dataset.catstart}`; }));
+  catRoot.querySelectorAll('button[data-evostart]').forEach(b => b.addEventListener('click', () => evoStart(b, catRoot)));
+  catRoot.querySelectorAll('button[data-evostep]').forEach(b => b.addEventListener('click', () => evoStep(b, catRoot)));
+  catRoot.querySelectorAll('button[data-evodone]').forEach(b => b.addEventListener('click', () => evoDone(b, catRoot)));
   // 마감 타임라인 — 진화는 기간제라 「언제까지」가 1차 정보다(카드 그리드는 상세, 이 그림은 전체 조망)
   const cv = document.getElementById('catviz');
   cv.innerHTML = `<div class="vz"><h4>마감 타임라인 <span class="dim">— 막대 = 남은 기간 · 회색 = 이 계정에서 소진</span></h4>${
@@ -1936,6 +1950,191 @@ function missionHTML(cat){
     Object.keys(kr).length ? '' : ' <small class="dim">(영문 — 한국어 미수집)</small>'}</summary>
     <ol>${rows.join('')}</ol></details>`;
 }
+/* ⭐⭐ 진화 기록 버튼 동작 — **선수별 진화 패스와 진화 카탈로그가 같은 함수를 쓴다**(2026-10-15 사용자 지시 「진화 카탈로그에도 동일하게」).
+   ⛔ 탭마다 따로 짜지 않는다 — 갈리면 같은 진화가 탭마다 다르게 기록된다. `root`는 갈림길 선택(🔀)을 찾을 범위다. */
+async function evoStart(b, root){
+    const [pid, evo] = b.dataset.evostart.split(':');
+    const acc = accountObj(); if (!acc) return;
+    const box = document.getElementById(`em${pid}_${evo}`);
+    const cat = CATBYID[+evo]; const lv = J(cat?.levels, []) || [];
+    const cpid = STATE[String(pid)]?.club_player_id;
+    if (!cpid){ say(box, { ok: false, message: '이 선수의 보유 카드 id를 모른다 — 클럽 싱크 후 다시.' }); return; }
+    const L1 = lv.find(L => (L.idx ?? 1) === 1) || lv[0];
+    const sel = root.querySelector(`[data-evobranch="${pid}:${evo}:${L1?.idx ?? 1}"]`);
+    const pick = (L1?.upgradeOptions || []).length > 1 ? (sel ? +sel.value : recPick(pid, L1)) : null;
+    const byRec = pick != null && !sel;
+    const srcOf = o => Array.isArray(o) ? o : (o?.upgrades || []);
+    const brTxt = pick != null ? srcOf(L1.upgradeOptions[pick]).map(upLabel).join(' · ') : '';
+    const lock = RULES.lockInfo[+evo];
+    const lost = psLostText(cat, pid);
+    const mis = (L1?.challenges || []).join(' / ');
+    if (!confirm(`인게임에서 이 진화를 시작했다고 원장에 적습니다(스탯은 완료 때 반영).\n\n${evoName(+evo, { html: false })} — 1단계 시작 · 전체 ${lv.length}단계`
+      + (brTxt ? `\n갈림길: ${brTxt}${byRec ? ' (우리 추천 — 다른 가지면 취소하고 「선수별 진화 패스」에서 🔀로 고른다)' : ''}` : '') + (mis ? `\n1단계 미션: ${mis}` : '')
+      + (lock?.unknown ? `\n\n⚠️ 해금 여부를 모른다 — ${lock.why}` : '')
+      + (lost ? `\n\n⚠️ PlayStyle 개수 상한으로 못 받는 보상: ${lost}` : '')
+      + '\n\n· 1회성 진화면 이 순간부터 다른 선수에게는 「소진」으로 보입니다.')) return;
+    b.disabled = true;
+    const today = new Date().toISOString().slice(0, 10);
+    const r = await api('evolve', { account: acc.name, player: +cpid, expect_player_id: +pid, evo: +evo, level: L1?.idx ?? 1,
+      in_progress: true, date: today, ...(pick == null ? {} : { pick }),
+      note: `진화 시작 — 화면에서 기록(${today}).${brTxt ? ` 갈림길: ${brTxt}` : ''}` });
+    say(box, r); b.disabled = false;
+    if (r?.ok) reloadAfterWrite('진화 시작을 원장에 적었다');
+}
+async function evoStep(b, root){
+    const [pid, evo] = b.dataset.evostep.split(':');
+    const acc = accountObj(); if (!acc) return;
+    const box = document.getElementById(`em${pid}_${evo}`);
+    const cat = CATBYID[+evo]; const lv = J(cat?.levels, []) || [];
+    const cpid = STATE[String(pid)]?.club_player_id;
+    const open = cpid && openEvoLog(cpid, evo);
+    if (!open){ say(box, { ok: false, message: '진행 중인 단계가 없다 — 새로고침 후 다시.' }); return; }
+    const k = open.level ?? 1, n = lv.length;
+    const Ln = lv.find(L => (L.idx ?? 0) === k + 1);
+    const sel = root.querySelector(`[data-evobranch="${pid}:${evo}:${k + 1}"]`);
+    const pick = Ln && (Ln.upgradeOptions || []).length > 1 ? (sel ? +sel.value : recPick(pid, Ln)) : null;
+    const byRec = pick != null && !sel;
+    const srcOf = o => Array.isArray(o) ? o : (o?.upgrades || []);
+    const brTxt = pick != null ? srcOf(Ln.upgradeOptions[pick]).map(upLabel).join(' · ') : '';
+    const mis = (Ln?.challenges || []).join(' / ');
+    if (!confirm(`${evoName(+evo, { html: false })}\n\n✔ ${k}단계 완료로 적습니다(스탯 반영).`
+      + (Ln ? `\n▶ 이어서 ${k + 1}/${n}단계를 진행 중으로 엽니다.${brTxt ? `\n   갈림길: ${brTxt}${byRec ? ' (우리 추천 — 다른 가지면 취소하고 「선수별 진화 패스」에서 🔀로 고른다)' : ''}` : ''}${mis ? `\n   미션: ${mis}` : ''}`
+            : '\n🏁 마지막 단계라 이 진화를 종료합니다.')
+      + '\n\n· 값은 우리 계산이고 다음 클럽 싱크의 EA 실측으로 확정됩니다.')) return;
+    b.disabled = true;
+    const today = new Date().toISOString().slice(0, 10);
+    const rc = await api('complete', { account: acc.name, player: +cpid, evo: +evo, date: today });
+    if (!rc.ok || !Ln){ say(box, rc); b.disabled = false; if (rc.ok) reloadAfterWrite(Ln ? '' : '진화를 끝냈다'); return; }
+    const rs = await api('evolve', { account: acc.name, player: +cpid, expect_player_id: +pid, evo: +evo, level: k + 1,
+      in_progress: true, date: today, ...(pick == null ? {} : { pick }),
+      note: `${k + 1}단계 시작 — 화면에서 기록(${today}).${brTxt ? ` 갈림길: ${brTxt}` : ''}` });
+    say(box, rs.ok ? rs : { ...rs, message: `${k}단계 완료는 적었지만 ${k + 1}단계 시작을 못 적었다 — ${rs.message}` });
+    b.disabled = false;
+    reloadAfterWrite(rs.ok ? `${k}단계 완료 · ${k + 1}단계 시작을 적었다` : `${k}단계 완료를 적었다`);
+}
+async function evoDone(b, root){
+    const [pid, evo] = b.dataset.evodone.split(':');
+    const acc = accountObj(); if (!acc) return;
+    const box = document.getElementById(`em${pid}_${evo}`);
+    const cat = CATBYID[+evo]; const lv = J(cat?.levels, []) || [];
+    const st = STATE[String(pid)]; const base = J(st?.attrs, null);
+    const cpid = st?.club_player_id;
+    if (!cpid){ say(box, { ok: false, message: '이 선수의 보유 카드 id를 모른다 — 클럽 싱크 후 다시.' }); return; }
+    if (!base){ say(box, { ok: false, message: '이 선수의 29속성이 없어 단계별 값을 계산할 수 없다 — 클럽 싱크 후 다시.' }); return; }
+    // 이미 적힌 최고 단계 — 그 뒤부터 적는다
+    const already = (RULES.appliedIn([+evo], +pid) || [])[0];
+    const from = already ? (already.maxLevel || 0) : 0;
+    /* ⭐ 「▶ 진화 시작」으로 적어 둔 진행 중 행이 있으면 **먼저 완료로 바꾼다**(2026-10-15) — 그래야 스탯이 반영되고
+       남은 단계가 그 위에서 계산된다. ⛔ 종전엔 단계가 하나뿐인 진화(아카데미 III 등)가 「이미 전 단계가 기록돼 있다」로
+       끝나 진행 중 행이 영영 닫히지 않았다. */
+    const open = openEvoLog(cpid, evo);
+    // 갈림길 선택 읽기(없으면 추천)
+    const picks = {};
+    root.querySelectorAll(`[data-evobranch^="${pid}:${evo}:"]`).forEach(sel => {
+      picks[+sel.dataset.evobranch.split(':')[2]] = +sel.value;
+    });
+    const bs = evalBasis(+pid, PRES[pid] || null);
+    const isGk = /GK/.test(String(st.positions || ''));
+    const at = { ...base }; let ovr = already?.ovr_before ?? st.ovr; const steps = [];
+    let pick = null;
+    for (const L of lv){
+      const opts = L.upgradeOptions || []; let label = ''; pick = null;
+      if (opts.length > 1){
+        const ev = evalLevel(opts, bs.pres, bs.have, bs.attrOf);
+        const k = picks[L.idx] ?? (ev.rec >= 0 ? ev.rec : 0); pick = k;
+        const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
+        applyEvoLevel(at, { upgrades: src, upgradeOptions: [] }, EVO.face_stats, isGk);
+        ovr = evoOvr(ovr, src);
+        label = src.map(upLabel).join(' · ');
+      } else {
+        applyEvoLevel(at, L, EVO.face_stats, isGk);
+        ovr = evoOvr(ovr, L.upgrades || []);
+      }
+      /* ⭐ 여기 six/ovr은 **확인창에 보여 줄 미리보기**일 뿐이다 — 원장에 들어가는 값은 서버가 계산한다. */
+      steps.push({ lv: L.idx, ovr, six: faceFromAttrs(at, EVO.face_stats || [], isGk), label, pick });
+    }
+    const todo = steps.filter(x => x.lv > from);
+    if (open){
+      if (!confirm(`진행 중인 진화를 완료로 기록합니다.\n\n${evoName(+evo, { html: false })} — ${open.level}단계(${open.applied_at} 시작)${
+        todo.length ? `\n이어서 남은 ${todo.length}단계도 완료로 적습니다.` : ''}\n\n· 값은 우리 계산이고 다음 클럽 싱크의 EA 실측으로 확정됩니다.`)) return;
+      b.disabled = true;
+      const today0 = new Date().toISOString().slice(0, 10);
+      const rc = await api('complete', { account: acc.name, player: +cpid, evo: +evo, date: today0 });
+      if (!rc.ok || !todo.length){ say(box, rc); b.disabled = false; if (rc.ok) reloadAfterWrite('진화 완료를 원장에 적었다'); return; }
+    } else if (!todo.length){ say(box, { ok: false, message: '이미 전 단계가 기록돼 있다.' }); return; }
+    const brief = todo.map(x => `${x.lv}단계 → OVR ${x.ovr}${x.label ? ` (${x.label.slice(0, 40)}…)` : ''}`).join('\n  ');
+    if (!open && !confirm(`인게임에서 완료한 진화를 원장에 적습니다.\n\n${evoName(+evo, { html: false })}\n  ${brief}\n\n`
+      + '· 갈림길을 다르게 고르셨으면 취소하고 카드의 🔀 선택을 먼저 바꾸세요.\n'
+      + '· 스탯만 보려면 이 버튼이 아니라 「🔬 걸어 보기」입니다.\n'
+      + '· 값은 우리 계산이고 다음 클럽 싱크의 EA 실측으로 확정됩니다.')) return;
+    b.disabled = true;
+    const today = new Date().toISOString().slice(0, 10);
+    let last = null;
+    for (const x of todo){
+      /* ⛔ `player`는 **fut_club_players.id**다 — players.id를 넘기면 다른 사람 카드에 적힌다(2026-09-26 사고).
+         서버도 `expect_player_id`로 교차 검증한다. 둘 다 있어야 조용히 어긋나지 않는다. */
+      /* ⛔⛔ **스탯은 보내지 않는다**(2026-09-26). 종전엔 화면이 계산한 `ovr_after`/`six_after`를
+         서버가 받아 적었는데, 화면의 출발점(`STATE.attrs`)이 `current_six`보다 낡으면
+         **after가 before보다 낮게** 적혔다(마조 빛나는 스트라이커 1단계 PAC 75→70).
+         ⇒ 이제 서버가 `current_attrs`에서 직접 계산한다. 화면은 **어느 가지를 밟았는지**만 알려 준다. */
+      last = await api('evolve', { account: acc.name, player: +cpid, expect_player_id: +pid,
+                                   evo: +evo, level: x.lv, date: today, completed: today,
+        ...(x.pick == null ? {} : { pick: x.pick }),
+        note: `${x.lv}단계 완료 — 화면에서 기록(${today}).${x.label ? ` 갈림길: ${x.label}` : ''} `
+            + '⚠️ OVR·6대는 카탈로그 보상을 상한 규칙대로 얹은 우리 계산(등급 B) — 다음 싱크의 EA 실측으로 확정.' });
+      if (!last.ok) break;
+    }
+    say(box, last);
+    b.disabled = false;
+    /* ⭐ 원장이 바뀌었으면 화면 전체를 다시 읽는다 — 진화 하나가 케미·전술·카드 등급까지 흔든다. */
+    if (last?.ok) reloadAfterWrite('진화를 원장에 적었다');
+}
+/* 갈림길 선택 칸(🔀)이 없는 화면(카탈로그)에서는 **우리 추천 가지**를 쓴다 — 확인창에 그렇게 밝힌다. */
+const recPick = (pid, L) => { const bs = evalBasis(+pid, PRES[pid] || null); const ev = evalLevel(L.upgradeOptions, bs.pres, bs.have, bs.attrOf); return ev.rec >= 0 ? ev.rec : 0; };
+/* 진행 중 표시 — k/N단계 · 단계 점 · 지금 단계 미션. 두 탭이 같이 쓴다. */
+function evoProgressHTML(c, open){
+  const lvs = J(c.levels, []) || [], n = lvs.length, k = open.level ?? 1;
+  const mis = (lvs.find(L => (L.idx ?? 1) === k)?.challenges || []).join(' / ');
+  return `<div style="margin-top:4px"><div class="kv"><span class="chip" style="border-color:var(--warn);color:var(--warn)">▶ 진행 중 — ${k}/${n}단계 · ${esc(open.applied_at)} 시작</span>${
+    Array.from({ length: n }, (_, i) => `<span title="${i + 1}단계" style="display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:2px;background:${
+      i + 1 < k ? 'var(--ok)' : i + 1 === k ? 'var(--warn)' : 'var(--line, #555)'}"></span>`).join('')}</div>${
+    mis ? `<small class="dim">🎯 ${k}단계 미션: ${esc(mis)}</small>` : ''}</div>`;
+}
+/* 진행 중일 때의 버튼 — 「k단계 완료 → 다음 단계 시작」(마지막이면 「완료 · 종료」) + 보조 「남은 단계 한 번에 완료」. */
+function evoStepButtonsHTML(pid, c, open){
+  const n = (J(c.levels, []) || []).length, k = open.level ?? 1, id = c.evo_id;
+  return `<button class="act" data-evostep="${pid}:${id}" title="${k}단계 미션을 마쳤다 — ${k}단계를 완료로 적고${
+    k < n ? ` ${k + 1}단계를 진행 중으로 연다` : ' 진화를 끝낸다'}">${k < n ? `✔ ${k}단계 완료 → ${k + 1}단계 시작` : `🏁 ${k}단계 완료 · 종료`}</button>${
+    k < n ? `<button class="act ghost" data-evodone="${pid}:${id}" title="남은 단계를 인게임에서 이미 다 끝냈을 때 — 지금 단계부터 끝까지 한 번에 완료로 적는다">⏩ 남은 단계 한 번에 완료</button>` : ''}`;
+}
+/* 이 선수가 지금 이 진화를 **시작할 수 없는 이유**(확실한 잠김 · 지금 카드 조건 미달). 「❔ 판정 불가」는 막지 않는다. */
+function evoStartBlock(pid, c){
+  const lock = RULES.lockInfo[c.evo_id], cs = curStateOf(+pid);
+  return [lock && !lock.unknown ? lock.why : null, ...(cs ? tryReq(c, cs) : []).filter(t => !String(t).startsWith('❔'))].filter(Boolean);
+}
+/* 카탈로그 카드 — 이 진화를 **진행 중인 보유 선수**마다 진행 표시 + 단계 버튼. */
+function catOpenHTML(c){
+  const P = Object.fromEntries((EVO.club?.players || []).map(p => [p.id, p]));
+  const rows = (EVO.club?.log || []).filter(l => l.evo_id === c.evo_id && inProgress(l) && P[l.club_player_id]?.player_id != null);
+  if (!rows.length) return '';
+  return rows.map(l => { const p = P[l.club_player_id], pid = p.player_id;
+    return `<div class="pcard" style="margin:6px 0;padding:6px 10px;border-color:var(--warn)"><b>${esc(NAME_OF[pid] || p.name)}</b>${evoProgressHTML(c, l)}
+      <div class="kv" style="margin-top:4px">${evoStepButtonsHTML(pid, c, l)}</div><span class="msg-slot" id="em${pid}_${c.evo_id}"></span></div>`; }).join('');
+}
+/* 카탈로그 카드 — **보유 선수를 골라 시작**. 후보 = 적용 가능 칩 중 보유 + 경로 미제공이지만 걸 수 있는 보유 선수. 못 거는 선수는 사유를 달고 고를 수 없게. */
+function catStartHTML(c, apps, team){
+  if (CONSUMED[c.evo_id]?.exhausted) return '';
+  const pids = [...new Set([...apps.filter(a => a.owned && !a.k).map(a => String(a.pid)),
+                            ...noPath(c, team).map(r => String(r.player_id)).filter(pid => STATE[pid])])];
+  if (!pids.length) return '';
+  const opts = pids.map(pid => ({ pid, why: evoStartBlock(pid, c).join(' · ') }));
+  const first = opts.find(o => !o.why) || opts[0];
+  return `<div class="kv" style="margin-top:6px"><small class="dim">인게임에서 걸었으면</small>
+    <select data-catstart="${c.evo_id}">${opts.map(o => `<option value="${o.pid}"${o === first ? ' selected' : ''}${o.why ? ` data-why="${esc('시작할 수 없다 — ' + o.why)}"` : ''}>${
+      esc(NAME_OF[o.pid] || STATE[o.pid]?.name || o.pid)}${o.why ? ' — 못 건다' : ''}</option>`).join('')}</select>
+    <button class="act" data-catstartbtn="${c.evo_id}" data-evostart="${first.pid}:${c.evo_id}"${first.why ? ` disabled title="${esc('시작할 수 없다 — ' + first.why)}"` : ''}>▶ 진화 시작</button>
+    <span class="msg-slot" data-catmsg="${c.evo_id}" id="em${first.pid}_${c.evo_id}"></span></div>`;
+}
 /* 이 보유 카드에서 **진행 중**인 그 진화의 로그 행(완료 안 됨 · 무효 아님) — 판정은 evorules.js inProgress 정본. */
 const openEvoLog = (cpid, evo) => (EVO.club?.log || []).find(l => l.club_player_id === cpid && l.evo_id === +evo && inProgress(l)) || null;
 function nextEvoCards(pid){
@@ -2001,31 +2200,16 @@ function nextEvoCards(pid){
                         앞 진화가 OVR·PlayStyle을 올리면 뒤 진화가 잠긴다. 그게 순서를 보는 이유다. */
           const f = simCur ? tryReq(c, simCur) : [];
           return f.length ? `<small class="dn">⛔ 미리보기 상태에선 못 건다 — ${f.map(esc).join(' · ')}</small>` : ''; })()}
-        ${(() => { /* ⭐ 진행 중이면 그 사실부터(2026-10-15 「진화 시작」 기능) — 시작 행은 완주 전까지 이 카드에 남는다. */
+        ${(() => { /* ⭐ 진행 중이면 그 사실부터(2026-10-15) — 표시는 evoProgressHTML 한 벌(카탈로그와 공유). */
           const open = own && openEvoLog(own.id, x.id);
-          if (!open) return '';
-          const lvs = J(c.levels, []) || [], n = lvs.length, k = open.level ?? 1;
-          const mis = (lvs.find(L => (L.idx ?? 1) === k)?.challenges || []).join(' / ');
-          return `<div style="margin-top:4px"><div class="kv"><span class="chip" style="border-color:var(--warn);color:var(--warn)">▶ 진행 중 — ${k}/${n}단계 · ${esc(open.applied_at)} 시작</span>${
-            Array.from({ length: n }, (_, i) => `<span title="${i + 1}단계" style="display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:2px;background:${
-              i + 1 < k ? 'var(--ok)' : i + 1 === k ? 'var(--warn)' : 'var(--line, #555)'}"></span>`).join('')}</div>${
-            mis ? `<small class="dim">🎯 ${k}단계 미션: ${esc(mis)}</small>` : ''}</div>`; })()}
+          return open ? evoProgressHTML(c, open) : ''; })()}
         <div class="kv" style="margin-top:5px">
           <button class="act ghost" data-evotry="${pid}:${x.id}" title="원장에 적지 않고 스탯 변화만 계산한다">🔬 걸어 보기</button>
           ${own ? (() => {
             const open = openEvoLog(own.id, x.id);
-            if (open){
-              /* ⭐⭐ **단계별 기록**(2026-10-15 사용자 지시 「시작 - 각 단계 완료 - 종료가 되도록」).
-                 지금 단계를 완료하면 다음 단계를 「진행 중」으로 바로 연다 — 마지막 단계면 그게 종료다. */
-              const n = (J(c.levels, []) || []).length, k = open.level ?? 1;
-              return `<button class="act" data-evostep="${pid}:${x.id}" title="${k}단계 미션을 마쳤다 — ${k}단계를 완료로 적고${
-                k < n ? ` ${k + 1}단계를 진행 중으로 연다` : ' 진화를 끝낸다'}">${k < n ? `✔ ${k}단계 완료 → ${k + 1}단계 시작` : `🏁 ${k}단계 완료 · 종료`}</button>${
-                k < n ? `<button class="act ghost" data-evodone="${pid}:${x.id}" title="남은 단계를 인게임에서 이미 다 끝냈을 때 — 지금 단계부터 끝까지 한 번에 완료로 적는다">⏩ 남은 단계 한 번에 완료</button>` : ''}`;
-            }
+            if (open) return evoStepButtonsHTML(pid, c, open);   // ⭐ 단계별 기록(시작 → 각 단계 완료 → 종료) — 카탈로그와 같은 버튼
             /* 시작을 막는 것 — 확실한 잠김 · 지금 카드로 조건 미달. 「모름」인 잠김은 막지 않고 확인창에서 묻는다. */
-            /* ⚠️ 「❔ 판정 불가」(우리가 모르는 조건 — Rarity 등)는 막지 않는다 — 막으면 걸 수 있는 진화를 못 건다. */
-            const cs = curStateOf(+pid);
-            const why = [lock && !lock.unknown ? lock.why : null, ...(cs ? tryReq(c, cs) : []).filter(t => !String(t).startsWith('❔'))].filter(Boolean);
+            const why = evoStartBlock(pid, c);
             return `<button class="act" data-evostart="${pid}:${x.id}"${why.length ? ` disabled title="${esc('시작할 수 없다 — ' + why.join(' · '))}"` : ' title="인게임에서 이 진화를 시작했다 — 1단계 시작을 원장에 「진행 중」으로 적는다(스탯은 완료 때 반영)"'}>▶ 진화 시작</button>
               <button class="act ghost" data-evodone="${pid}:${x.id}" title="인게임에서 이미 끝까지 완료한 것을 한 번에 원장에 적는다">✔ 진화 완료</button>`; })()
                 : '<span class="dim">미보유 — 사야 건다</span>'}
@@ -2252,142 +2436,10 @@ function bindSide(root, team){
      ⭐ 시작을 적어 두면 ⑴ 1회성 진화가 그 자리에서 **소진**으로 잡혀 다른 선수 추천에서 빠지고 ⑵ 카드에 「진행 중」이 떠
         미션을 마친 뒤 「✔ 진화 완료」 한 번으로 닫힌다. ⛔ 스탯은 **완료 때** 반영된다(진행 중엔 인게임 카드도 그대로다).
      ⚠️ 1단계에 갈림길이 있으면 카드의 🔀 선택을 그대로 쓴다 — 인게임에서 다른 가지를 골랐으면 먼저 바꾼다. */
-  root.querySelectorAll('button[data-evostart]').forEach(b => b.addEventListener('click', async () => {
-    const [pid, evo] = b.dataset.evostart.split(':');
-    const acc = accountObj(); if (!acc) return;
-    const box = document.getElementById(`em${pid}_${evo}`);
-    const cat = CATBYID[+evo]; const lv = J(cat?.levels, []) || [];
-    const cpid = STATE[String(pid)]?.club_player_id;
-    if (!cpid){ say(box, { ok: false, message: '이 선수의 보유 카드 id를 모른다 — 클럽 싱크 후 다시.' }); return; }
-    const L1 = lv.find(L => (L.idx ?? 1) === 1) || lv[0];
-    const sel = root.querySelector(`[data-evobranch="${pid}:${evo}:${L1?.idx ?? 1}"]`);
-    const pick = (L1?.upgradeOptions || []).length > 1 ? +(sel?.value ?? 0) : null;
-    const srcOf = o => Array.isArray(o) ? o : (o?.upgrades || []);
-    const brTxt = pick != null ? srcOf(L1.upgradeOptions[pick]).map(upLabel).join(' · ') : '';
-    const lock = RULES.lockInfo[+evo];
-    const lost = psLostText(cat, pid);
-    const mis = (L1?.challenges || []).join(' / ');
-    if (!confirm(`인게임에서 이 진화를 시작했다고 원장에 적습니다(스탯은 완료 때 반영).\n\n${evoName(+evo, { html: false })} — 1단계 시작 · 전체 ${lv.length}단계`
-      + (brTxt ? `\n갈림길: ${brTxt}` : '') + (mis ? `\n1단계 미션: ${mis}` : '')
-      + (lock?.unknown ? `\n\n⚠️ 해금 여부를 모른다 — ${lock.why}` : '')
-      + (lost ? `\n\n⚠️ PlayStyle 개수 상한으로 못 받는 보상: ${lost}` : '')
-      + '\n\n· 1회성 진화면 이 순간부터 다른 선수에게는 「소진」으로 보입니다.')) return;
-    b.disabled = true;
-    const today = new Date().toISOString().slice(0, 10);
-    const r = await api('evolve', { account: acc.name, player: +cpid, expect_player_id: +pid, evo: +evo, level: L1?.idx ?? 1,
-      in_progress: true, date: today, ...(pick == null ? {} : { pick }),
-      note: `진화 시작 — 화면에서 기록(${today}).${brTxt ? ` 갈림길: ${brTxt}` : ''}` });
-    say(box, r); b.disabled = false;
-    if (r?.ok) reloadAfterWrite('진화 시작을 원장에 적었다');
-  }));
+  root.querySelectorAll('button[data-evostart]').forEach(b => b.addEventListener('click', () => evoStart(b, root)));
   /* ⭐⭐ 단계 완료 → 다음 단계 시작(마지막이면 종료). `complete`(진행 중 행을 완료 · 스탯 반영) → `evolve --in-progress`(다음 단계). */
-  root.querySelectorAll('button[data-evostep]').forEach(b => b.addEventListener('click', async () => {
-    const [pid, evo] = b.dataset.evostep.split(':');
-    const acc = accountObj(); if (!acc) return;
-    const box = document.getElementById(`em${pid}_${evo}`);
-    const cat = CATBYID[+evo]; const lv = J(cat?.levels, []) || [];
-    const cpid = STATE[String(pid)]?.club_player_id;
-    const open = cpid && openEvoLog(cpid, evo);
-    if (!open){ say(box, { ok: false, message: '진행 중인 단계가 없다 — 새로고침 후 다시.' }); return; }
-    const k = open.level ?? 1, n = lv.length;
-    const Ln = lv.find(L => (L.idx ?? 0) === k + 1);
-    const sel = root.querySelector(`[data-evobranch="${pid}:${evo}:${k + 1}"]`);
-    const pick = Ln && (Ln.upgradeOptions || []).length > 1 ? +(sel?.value ?? 0) : null;
-    const srcOf = o => Array.isArray(o) ? o : (o?.upgrades || []);
-    const brTxt = pick != null ? srcOf(Ln.upgradeOptions[pick]).map(upLabel).join(' · ') : '';
-    const mis = (Ln?.challenges || []).join(' / ');
-    if (!confirm(`${evoName(+evo, { html: false })}\n\n✔ ${k}단계 완료로 적습니다(스탯 반영).`
-      + (Ln ? `\n▶ 이어서 ${k + 1}/${n}단계를 진행 중으로 엽니다.${brTxt ? `\n   갈림길: ${brTxt}` : ''}${mis ? `\n   미션: ${mis}` : ''}`
-            : '\n🏁 마지막 단계라 이 진화를 종료합니다.')
-      + '\n\n· 값은 우리 계산이고 다음 클럽 싱크의 EA 실측으로 확정됩니다.')) return;
-    b.disabled = true;
-    const today = new Date().toISOString().slice(0, 10);
-    const rc = await api('complete', { account: acc.name, player: +cpid, evo: +evo, date: today });
-    if (!rc.ok || !Ln){ say(box, rc); b.disabled = false; if (rc.ok) reloadAfterWrite(Ln ? '' : '진화를 끝냈다'); return; }
-    const rs = await api('evolve', { account: acc.name, player: +cpid, expect_player_id: +pid, evo: +evo, level: k + 1,
-      in_progress: true, date: today, ...(pick == null ? {} : { pick }),
-      note: `${k + 1}단계 시작 — 화면에서 기록(${today}).${brTxt ? ` 갈림길: ${brTxt}` : ''}` });
-    say(box, rs.ok ? rs : { ...rs, message: `${k}단계 완료는 적었지만 ${k + 1}단계 시작을 못 적었다 — ${rs.message}` });
-    b.disabled = false;
-    reloadAfterWrite(rs.ok ? `${k}단계 완료 · ${k + 1}단계 시작을 적었다` : `${k}단계 완료를 적었다`);
-  }));
-  root.querySelectorAll('button[data-evodone]').forEach(b => b.addEventListener('click', async () => {
-    const [pid, evo] = b.dataset.evodone.split(':');
-    const acc = accountObj(); if (!acc) return;
-    const box = document.getElementById(`em${pid}_${evo}`);
-    const cat = CATBYID[+evo]; const lv = J(cat?.levels, []) || [];
-    const st = STATE[String(pid)]; const base = J(st?.attrs, null);
-    const cpid = st?.club_player_id;
-    if (!cpid){ say(box, { ok: false, message: '이 선수의 보유 카드 id를 모른다 — 클럽 싱크 후 다시.' }); return; }
-    if (!base){ say(box, { ok: false, message: '이 선수의 29속성이 없어 단계별 값을 계산할 수 없다 — 클럽 싱크 후 다시.' }); return; }
-    // 이미 적힌 최고 단계 — 그 뒤부터 적는다
-    const already = (RULES.appliedIn([+evo], +pid) || [])[0];
-    const from = already ? (already.maxLevel || 0) : 0;
-    /* ⭐ 「▶ 진화 시작」으로 적어 둔 진행 중 행이 있으면 **먼저 완료로 바꾼다**(2026-10-15) — 그래야 스탯이 반영되고
-       남은 단계가 그 위에서 계산된다. ⛔ 종전엔 단계가 하나뿐인 진화(아카데미 III 등)가 「이미 전 단계가 기록돼 있다」로
-       끝나 진행 중 행이 영영 닫히지 않았다. */
-    const open = openEvoLog(cpid, evo);
-    // 갈림길 선택 읽기(없으면 추천)
-    const picks = {};
-    root.querySelectorAll(`[data-evobranch^="${pid}:${evo}:"]`).forEach(sel => {
-      picks[+sel.dataset.evobranch.split(':')[2]] = +sel.value;
-    });
-    const bs = evalBasis(+pid, PRES[pid] || null);
-    const isGk = /GK/.test(String(st.positions || ''));
-    const at = { ...base }; let ovr = already?.ovr_before ?? st.ovr; const steps = [];
-    let pick = null;
-    for (const L of lv){
-      const opts = L.upgradeOptions || []; let label = ''; pick = null;
-      if (opts.length > 1){
-        const ev = evalLevel(opts, bs.pres, bs.have, bs.attrOf);
-        const k = picks[L.idx] ?? (ev.rec >= 0 ? ev.rec : 0); pick = k;
-        const src = Array.isArray(opts[k]) ? opts[k] : (opts[k].upgrades || []);
-        applyEvoLevel(at, { upgrades: src, upgradeOptions: [] }, EVO.face_stats, isGk);
-        ovr = evoOvr(ovr, src);
-        label = src.map(upLabel).join(' · ');
-      } else {
-        applyEvoLevel(at, L, EVO.face_stats, isGk);
-        ovr = evoOvr(ovr, L.upgrades || []);
-      }
-      /* ⭐ 여기 six/ovr은 **확인창에 보여 줄 미리보기**일 뿐이다 — 원장에 들어가는 값은 서버가 계산한다. */
-      steps.push({ lv: L.idx, ovr, six: faceFromAttrs(at, EVO.face_stats || [], isGk), label, pick });
-    }
-    const todo = steps.filter(x => x.lv > from);
-    if (open){
-      if (!confirm(`진행 중인 진화를 완료로 기록합니다.\n\n${evoName(+evo, { html: false })} — ${open.level}단계(${open.applied_at} 시작)${
-        todo.length ? `\n이어서 남은 ${todo.length}단계도 완료로 적습니다.` : ''}\n\n· 값은 우리 계산이고 다음 클럽 싱크의 EA 실측으로 확정됩니다.`)) return;
-      b.disabled = true;
-      const today0 = new Date().toISOString().slice(0, 10);
-      const rc = await api('complete', { account: acc.name, player: +cpid, evo: +evo, date: today0 });
-      if (!rc.ok || !todo.length){ say(box, rc); b.disabled = false; if (rc.ok) reloadAfterWrite('진화 완료를 원장에 적었다'); return; }
-    } else if (!todo.length){ say(box, { ok: false, message: '이미 전 단계가 기록돼 있다.' }); return; }
-    const brief = todo.map(x => `${x.lv}단계 → OVR ${x.ovr}${x.label ? ` (${x.label.slice(0, 40)}…)` : ''}`).join('\n  ');
-    if (!open && !confirm(`인게임에서 완료한 진화를 원장에 적습니다.\n\n${evoName(+evo, { html: false })}\n  ${brief}\n\n`
-      + '· 갈림길을 다르게 고르셨으면 취소하고 카드의 🔀 선택을 먼저 바꾸세요.\n'
-      + '· 스탯만 보려면 이 버튼이 아니라 「🔬 걸어 보기」입니다.\n'
-      + '· 값은 우리 계산이고 다음 클럽 싱크의 EA 실측으로 확정됩니다.')) return;
-    b.disabled = true;
-    const today = new Date().toISOString().slice(0, 10);
-    let last = null;
-    for (const x of todo){
-      /* ⛔ `player`는 **fut_club_players.id**다 — players.id를 넘기면 다른 사람 카드에 적힌다(2026-09-26 사고).
-         서버도 `expect_player_id`로 교차 검증한다. 둘 다 있어야 조용히 어긋나지 않는다. */
-      /* ⛔⛔ **스탯은 보내지 않는다**(2026-09-26). 종전엔 화면이 계산한 `ovr_after`/`six_after`를
-         서버가 받아 적었는데, 화면의 출발점(`STATE.attrs`)이 `current_six`보다 낡으면
-         **after가 before보다 낮게** 적혔다(마조 빛나는 스트라이커 1단계 PAC 75→70).
-         ⇒ 이제 서버가 `current_attrs`에서 직접 계산한다. 화면은 **어느 가지를 밟았는지**만 알려 준다. */
-      last = await api('evolve', { account: acc.name, player: +cpid, expect_player_id: +pid,
-                                   evo: +evo, level: x.lv, date: today, completed: today,
-        ...(x.pick == null ? {} : { pick: x.pick }),
-        note: `${x.lv}단계 완료 — 화면에서 기록(${today}).${x.label ? ` 갈림길: ${x.label}` : ''} `
-            + '⚠️ OVR·6대는 카탈로그 보상을 상한 규칙대로 얹은 우리 계산(등급 B) — 다음 싱크의 EA 실측으로 확정.' });
-      if (!last.ok) break;
-    }
-    say(box, last);
-    b.disabled = false;
-    /* ⭐ 원장이 바뀌었으면 화면 전체를 다시 읽는다 — 진화 하나가 케미·전술·카드 등급까지 흔든다. */
-    if (last?.ok) reloadAfterWrite('진화를 원장에 적었다');
-  }));
+  root.querySelectorAll('button[data-evostep]').forEach(b => b.addEventListener('click', () => evoStep(b, root)));
+  root.querySelectorAll('button[data-evodone]').forEach(b => b.addEventListener('click', () => evoDone(b, root)));
   root.querySelectorAll('button[data-cat]').forEach(b => b.addEventListener('click', e => {
     e.preventDefault();
     document.querySelector('.menubar [data-tab="cat"]').click();
