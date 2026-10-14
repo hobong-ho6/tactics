@@ -148,7 +148,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20261004-nav';
 import { deadlineChart, sixDumbbell, mountTips as evoTips } from './assets/evoviz.js?v=20261014';
-import { evoRules, logState, inProgress, unlockCond, unlockCondKr, psGrant, psCapSim, psCapNote } from './assets/evorules.js?v=20261013b';
+import { evoRules, logState, inProgress, unlockCond, unlockCondKr, psGrant, psCapSim, psCapNote } from './assets/evorules.js?v=20261015';
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
 import { statTip } from './assets/stat-tips.js?v=20261009';   // 속성 이름 툴팁(정본 표 하나 · 2026-10-06 GK 세부 속성 추가)
@@ -1401,7 +1401,7 @@ const doneScore = (r, pid) => { const d = appliedIn(r, pid);
   return d.length && d.length === (r.ids || []).length && d.every(x => x.finished) ? 1 : 0; };
 /* 그 선수에게 **열려 있지만 fut.gg가 경로를 안 주는** 진화 — 안 적으면 「없다」로 읽힌다(obs#132). */
 const eligOpen = pid => (ELIG_BY_PID[pid] || [])
-  .filter(r => !RULES.neverIds.has(r.evo_id) && !CONSUMED[r.evo_id]?.exhausted && !hasOpenPath(pid, r.evo_id)
+  .filter(r => !RULES.neverIds.has(r.evo_id) && !RULES.cosmeticIds.has(r.evo_id) && !CONSUMED[r.evo_id]?.exhausted && !hasOpenPath(pid, r.evo_id)
             && (SHOW_PREM || !RULES.premOnlyIds.has(r.evo_id))
             && (SHOW_LOCKED || !RULES.progressIds.has(r.evo_id))
             && (SHOW_ROLEPP || !RULES.rolesPPIds.has(r.evo_id)));
@@ -2166,12 +2166,9 @@ function nextEvoCards(pid){
   for (const l of (EVO.club?.log || [])) if (own0 && l.club_player_id === own0.id && inProgress(l))
     seen.set(l.evo_id, { ...(seen.get(l.evo_id) || { id: l.evo_id, solo: true }), open: true, tier: 99 });
   /* ⭐ 역할++는 기본으로 접는다 — 경로를 통해 들어온 것도 같은 기준으로 거른다(토글은 한 벌이다). */
-  /* ⭐ **지금 카드로 조건이 안 맞는 진화는 뺀다**(2026-10-15 사용자 지시 「못 거는 진화는 아예 안 나오지?」).
-     ⛔ 종전엔 「시작 막힘」 버튼을 단 채 남아 있었다(마조·만잠비에게 OVR 최대 80인 Technical). 진행 중인 것은 남긴다.
-     ⚠️ 「❔ 판정 불가」(레어도 등 우리가 모르는 조건)는 빼지 않는다 — 빼면 걸 수 있는 진화가 사라진다. */
-  const reqOk = id => { const c = CATBYID[id], cs = curStateOf(+pid);
-    return !c || !cs || !tryReq(c, cs).some(t => !String(t).startsWith('❔')); };
-  const list = [...seen.values()].filter(x => x.open || reqOk(x.id)).filter(x => SHOW_ROLEPP || !RULES.rolesPPIds.has(x.id))
+  /* ⚠️ 지금 카드로 조건이 안 맞는 진화도 **보여 준다** — 시작 버튼을 막고 이유를 카드에 적는다(2026-10-15 사용자 지시
+     「스탯 조건 미달은 시작 막힘 버튼을 단 채 보여주고 왜 못 하는지 이유를 보여줘」 · 같은 날 잠깐 숨겼다가 되돌림). */
+  const list = [...seen.values()].filter(x => SHOW_ROLEPP || !RULES.rolesPPIds.has(x.id))
     .sort((a, b) => (b.tier ?? -1) - (a.tier ?? -1) || (b.rs ?? -1) - (a.rs ?? -1));
   if (!list.length) return '<div class="dim" style="font-size:12px;margin:6px 0">지금 걸 수 있는 진화가 없다.</div>';
   const own = (EVO.club?.players || []).find(x => x.player_id === +pid && x.status === 'owned');
@@ -2223,7 +2220,8 @@ function nextEvoCards(pid){
             if (open) return evoStepButtonsHTML(pid, c, open);   // ⭐ 단계별 기록(시작 → 각 단계 완료 → 종료) — 카탈로그와 같은 버튼
             /* 시작을 막는 것 — 확실한 잠김 · 지금 카드로 조건 미달. 「모름」인 잠김은 막지 않고 확인창에서 묻는다. */
             const why = evoStartBlock(pid, c);
-            return `<button class="act" data-evostart="${pid}:${x.id}"${why.length ? ` disabled title="${esc('시작할 수 없다 — ' + why.join(' · '))}"` : ' title="인게임에서 이 진화를 시작했다 — 1단계 시작을 원장에 「진행 중」으로 적는다(스탯은 완료 때 반영)"'}>▶ 진화 시작</button>
+            return `<button class="act" data-evostart="${pid}:${x.id}"${why.length ? ` disabled title="${esc('시작할 수 없다 — ' + why.join(' · '))}"` : ' title="인게임에서 이 진화를 시작했다 — 1단계 시작을 원장에 「진행 중」으로 적는다(스탯은 완료 때 반영)"'}>▶ 진화 시작</button>${
+              why.length ? `<div style="flex-basis:100%"><small class="dn">⛔ 시작할 수 없다 — ${esc(why.join(' · '))}</small></div>` : ''}
               <button class="act ghost" data-evodone="${pid}:${x.id}" title="인게임에서 이미 끝까지 완료한 것을 한 번에 원장에 적는다">✔ 진화 완료</button>`; })()
                 : '<span class="dim">미보유 — 사야 건다</span>'}
           <button class="act ghost" data-cat="${x.id}">카탈로그</button></div>

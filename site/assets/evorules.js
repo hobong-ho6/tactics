@@ -218,7 +218,9 @@ export function evoRules(EVO, accName){
   return {
     acc, consumed, applied, premIds, neverIds, premOnlyIds, progressIds, rolesPPIds, cosmeticIds, lockInfo, spLevel, hasPrem,
     /* 소진된 진화를 낀 경로는 **그 진화를 쓴 선수 본인 외** 모두에게서 닫힌다 */
-    open: (ids, pid) => (ids || []).every(i => !neverIds.has(i) && (!consumed[i]?.exhausted || consumed[i].by.some(b => b.pid === pid))),   // 영영 못 받는 진화가 낀 경로는 닫힌다
+    /* 닫히는 경로: 영영 못 받는 진화 · **코스메틱 진화**(2026-10-15 사용자 지시 「선수별 진화패스에 코스메틱 진화는 안 나오게」 —
+       카탈로그만 거르고 경로는 안 걸러서 화살표 스핀·프리즘 라이트가 「지금 걸 수 있는 진화」에 떴다) · 남이 소진한 진화 */
+    open: (ids, pid) => (ids || []).every(i => !neverIds.has(i) && !cosmeticIds.has(i) && (!consumed[i]?.exhausted || consumed[i].by.some(b => b.pid === pid))),
     premium: ids => (ids || []).some(i => premIds.has(i)),
     /* 프리미엄 구매가 필요한 것 ↔ 플레이로 열리는 것 — 화면이 따로 거를 수 있게 나눠 준다. */
     premOnly: ids => (ids || []).some(i => premOnlyIds.has(i)),
