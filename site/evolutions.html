@@ -2438,12 +2438,7 @@ const FORM_SLOTS = ['GK', 'RB', 'CB', 'CB', 'LB', 'CDM', 'CDM', 'RM', 'LM', 'CAM
    ⚠️ 부스트는 **개인 케미 3점**일 때 값이다(1~2점이면 줄어든다) — 위 케미 XI에서 3점인 선수에게 붙일 것.
    처방 역할이 없는 선수(우리 DB 밖)는 포지션 기본 역할로 계산하고 화면에 그렇게 적는다. */
 const CHEM_STYLES = EVO.chem_styles || [];
-/* 메타 관습 대조층(2026-09-19, 사용자 요청) — 우리 가중 계산과 **다른 기준**을 나란히 둔다.
-   커뮤니티 가이드 합의이지 EA 권장이 아니다. 갈리면 그 선수만 들여다보면 된다. */
-const CHEM_META = EVO.chem_meta || [];
-const META_KEY = { GK: 'GK', CB: 'CB', LB: 'FB', RB: 'FB', CDM: 'CDM', CM: 'CDM', CAM: 'CDM',
-                   LM: '윙어', RM: '윙어', LW: '윙어', RW: '윙어', ST: 'ST' };
-const metaFor = slot => CHEM_META.find(m => m.item.startsWith(META_KEY[slot] || '')) || null;
+/* 메타 관습 대조층(2026-09-19)은 2026-10-14 사용자 지시로 걷어냈다 — 커뮤니티 메타는 고르는 데도, 표에도 쓰지 않는다(fc_meta_snapshots 행은 기록으로 남는다). */
 const POS_ROLE = { GK: 'gk_goalkeeper', CB: 'cb_defender', LB: 'fb_fullback', RB: 'fb_fullback',
                    CDM: 'dm_holding', CM: 'cm_b2b', CAM: 'cam_playmaker', LM: 'wm_widemid', RM: 'wm_widemid',
                    LW: 'w_winger', RW: 'w_winger', ST: 'st_advanced' };
@@ -2718,6 +2713,56 @@ function styleRefGrid(){
    갈리는 칸이 곧 「무엇을 믿을지」를 묻는 자리다. 고르는 건 사람이다. */
 const byBalance = st => (st || []).slice().sort((a, b) => b.balance - a.balance)[0] || null;
 
+/* ⭐⭐⭐ **최종 추천 — 한 칸으로 정한다**(2026-10-14 사용자 지시).
+   1차 지시 「메타·게임 패치를 고려해서」 → 2차 지시 「커뮤니티 메타가 천편일률적이면 빼고 **포지션별 필요 요구와 EA 패치 내용만**
+   고려하자, 대신 커뮤니티의 **세부 스탯 체감**은 참고」. ⇒ 커뮤니티 메타·카드 투표는 고르는 데 쓰지 않는다.
+     ⑴ **포지션 요구** = ① 역할 가중(지금 카드 29속성 × 이 자리 역할 가중 × 99 상한 실상승분) 1위.
+     ⑵ 1위의 FINAL_BAND(95%) 이상이 둘 이상이면(사실상 동점) **EA 패치로 비중이 오른 속성**(ATTR_EA.up)의 상승이 큰 쪽.
+        ⚠️ 95%는 **판단값**이다 — 「역할 가중으로 못 가르는 구간」의 문턱.
+   ⛔ 체감(D)은 표시만 한다(세부 속성 표 툴팁) · 근거 없는 속성(시야·반응력)은 점수를 깎지 않고 **경고로 드러낸다**. */
+const FINAL_BAND = 0.95;
+/* 속성별 EA 사실(게임 시스템 정본 game_system_changes의 FC27 행 요약 · 등급은 행 그대로) — 화면 해설과 동점 판정이 쓴다. */
+const ATTR_EA = {
+  '가속': { up: 1, ea: 'FC27 AcceleRATE 유형 영향↓ → 가속·질주 속성 비중↑ (A · gsc #12)' },
+  '질주 속도': { up: 1, ea: 'FC27 AcceleRATE 유형 영향↓ → 가속·질주 속성 비중↑ (A · gsc #12)' },
+  '드리블': { up: 1, ea: 'FC27 Off-Balance Dribbling 입력 속성 (A · gsc #24)', feel: '「민첩·균형·드리블 85↑면 발동」 통설 — 숫자 버전이 셋으로 상충(D · gsc #43·#51)' },
+  '민첩성': { up: 1, ea: 'FC27 Off-Balance Dribbling 입력 속성 (A · gsc #24)', feel: '방향 전환·조작이 가벼워진다(D · 다국어 공통 서술 · gsc #43)' },
+  '균형 감각': { up: 1, ea: 'FC27 Off-Balance Dribbling 입력 속성 (A · gsc #24)', feel: '80 이상부터는 더 높아도 체감이 크지 않다(D · FC26 이월 · gsc #43)' },
+  '슈팅력': { up: 1, ea: '슛 속도 = 핵심 슈팅 속성 + 입력 파워 — Low Driven 속도 보너스 제거 (A · gsc #52)' },
+  '볼컨트롤': { ea: '퍼스트 터치 입력(볼컨트롤·차단·침착 복합 · FC26 A · gsc #23) · Off-Balance 입력에선 배제(A · #24)' },
+  '침착': { ea: 'EA가 밝힌 기능은 퍼스트 터치 입력·PK 2가지뿐 (A · gsc #26) · 「압박 인지 반경」은 기각된 통설' },
+  '시야': { none: 1, ea: '⚠️ FC25~27 EA 1차 자료에 작용 서술 없음(부재 · gsc #55)' },
+  '반응력': { none: 1, ea: '⚠️ EA 1차 정의 없음(부재 · gsc #25) · 「AI 전용」 통설·반론 모두 기각' },
+};
+function finalStyle(st, slot, p){
+  if (!st || !st.length) return null;
+  const top = st[0].score || 0;
+  const band = top > 0 ? st.filter(x => x.score >= top * FINAL_BAND) : [st[0]];
+  /* EA 상향 속성 상승은 **역할 가중과 무관하게** 실제 상승분으로 센다(그 속성이 역할 핵심이 아니어도 FC27에서 체감이 커진 축) */
+  const eaUp = x => Object.entries(x.boosts || {}).reduce((t, [a, v]) => t + (ATTR_EA[a]?.up ? Math.min(v, Math.max(0, 99 - ((x._at || {})[a] ?? 0))) : 0), 0);
+  const at = p ? nowAttrs(p) : {};
+  band.forEach(x => { x._at = at; x.eaUp = eaUp(x); });
+  const pick = band.length > 1 ? band.slice().sort((a, b) => b.eaUp - a.eaUp || b.score - a.score)[0] : st[0];
+  const why = band.length < 2 ? '포지션 요구(역할 가중) 1위'
+    : band.every(x => x.eaUp === pick.eaUp) ? `역할 가중 동률권 ${band.length}개 — EA 상향 속성 차이 없음 · 역할 가중 1위`
+    : pick === st[0] && band.every(x => x === pick || x.eaUp <= pick.eaUp)
+      ? `역할 가중 동률권 ${band.length}개 중 1위 · EA 상향 속성도 가장 많이 올린다(+${pick.eaUp})`
+      : `역할 가중 동률권 ${band.length}개(1위의 95% 이상) — EA 패치로 비중이 오른 속성 상승이 가장 큰 쪽(+${pick.eaUp})`;
+  const noBasis = (pick.parts || []).filter(q => ATTR_EA[q.a]?.none).reduce((t, q) => t + q.s, 0);
+  return { pick, why, band, top: st[0], noBasis };
+}
+/* 최종 추천 칸 HTML — 지금 붙인 것과 같으면 「유지」. 근거는 작은 글씨로. */
+function finalCell(st, slot, p, nowName){
+  const f = finalStyle(st, slot, p); if (!f) return '<span class="dim">속성 미수집 — 추천 불가</span>';
+  const same = nowName && nowName === f.pick.name;
+  const alt = f.band.filter(x => x !== f.pick).map(x => x.name);
+  return `<b style="color:${same ? 'var(--ok)' : 'var(--acc)'}">${same ? '✓ 유지 ' : ''}${esc(f.pick.name)}</b>
+    <small class="dim"> ${esc(f.pick.top.map(x => `${x.a}+${x.gain}`).join(' · '))}</small>
+    <br><small class="dim">${esc(f.why)}${alt.length ? ` · 동률권 ${esc(alt.join('/'))}` : ''}</small>${
+      f.noBasis ? `<br><small style="color:var(--warn)" title="${esc(ATTR_EA['시야'].ea + ' / ' + ATTR_EA['반응력'].ea)}">⚠️ 역할 점수 ${Math.round(f.pick.score)} 중 ${Math.round(f.noBasis)}점이 EA 작용 근거가 없는 속성(시야·반응력)</small>` : ''}${
+      f.pick.accelFlip ? `<br><small class="dim">⚡ AcceleRATE ${esc(f.pick.accelFrom)}→${esc(f.pick.accelTo)} (FC27은 유형 영향이 줄었다 · A)</small>` : ''}</small>`;
+}
+
 function accelNote(st){
   const rows = (st || []).filter(x => x.accelFlip).slice(0, 4);
   if (!rows.length) return '';
@@ -2757,7 +2802,8 @@ function styleCompareTable(id, picks){
     return `<td><b style="color:var(--ok)">${base + got}</b> <small>+${got}${got < v ? ' <span style="color:var(--warn)">상한</span>' : ''}</small></td>`;
   };
   const rows = attrs.sort((a, b) => (w[b] || 0) - (w[a] || 0)).map(a => `<tr${w[a] ? '' : ' class="dim"'}>
-      <td>${w[a] ? `<b>${esc(a)}</b> <small>×${w[a]}</small>` : esc(a)}</td><td>${at[a]}</td>${cols.map(c => cell(a, c)).join('')}</tr>`).join('');
+      <td${ATTR_EA[a] ? ` title="${esc([ATTR_EA[a].ea, ATTR_EA[a].feel && '커뮤니티 체감 ' + ATTR_EA[a].feel].filter(Boolean).join(' / '))}"` : ''}>${w[a] ? `<b>${esc(a)}</b> <small>×${w[a]}</small>` : esc(a)}${
+        ATTR_EA[a]?.up ? ' <small style="color:var(--ok)">EA↑</small>' : ATTR_EA[a]?.none ? ' <small style="color:var(--warn)">근거 없음</small>' : ATTR_EA[a] ? ' <small class="dim">ⓘ</small>' : ''}</td><td>${at[a]}</td>${cols.map(c => cell(a, c)).join('')}</tr>`).join('');
   const six = faceOf(at, isGk);
   const sixRow = six.map(([k, v], i) => `<tr><td><b>${k}</b></td><td>${v ?? '—'}</td>${cols.map(c => {
       const nv = c.six?.[i]?.[2];
@@ -2842,11 +2888,11 @@ function renderChem(owned, all = owned){
         <td>${swTxt}</td>
         <td class="dim">${esc(ROLE_KR[roleId] || roleId || '—')}${auto ? `<br><small>자동 선택 · 적합 ${auto.f.toFixed(0)}%</small>` : ''}</td>
         <td>${now && !['Basic', 'GK Basic'].includes(now) ? `<b>${esc(now)}</b>` : '<span class="dim">미적용</span>'}</td>
-        <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}${styleDetail(st)}${styleCompare(st, nowAttrs(p), KEYW[roleId], pos === 'GK', now)}</td></tr>`;
+        <td>${finalCell(st, pos, p, now)}${styleDetail(st)}${styleCompare(st, nowAttrs(p), KEYW[roleId], pos === 'GK', now)}</td></tr>`;
     };
     const bAll = benchSlots().map(s2 => byItem.get(s2.ea_item_id));
     const benchTable = (label, ps) => ps.filter(Boolean).length ? `<h4 style="margin:12px 0 4px">${label} ${ps.filter(Boolean).length}명</h4>
-      <table><tr><th>포지션</th><th>선수</th><th>투입 시 케미 <small class="dim">(맞바꿀 선발 · 팀 케미)</small></th><th>기준 역할</th><th>붙인 스타일</th><th>추천</th></tr>
+      <table><tr><th>포지션</th><th>선수</th><th>투입 시 케미 <small class="dim">(맞바꿀 선발 · 팀 케미)</small></th><th>기준 역할</th><th>붙인 스타일</th><th>최종 추천 <small class="dim">(근거)</small></th></tr>
       ${ps.filter(Boolean).map(benchRow).join('')}</table>` : '';
     const benchHtml = benchTable('교체', bAll.slice(0, 7)) + benchTable('리저브', bAll.slice(7))
       + (bAll.length ? `<p class="dim" style="font-size:12px;margin:6px 0 0">⚠️ 벤치·리저브는 <b>투입 전까지 개인 케미가 0</b>이라 스타일 효과도 0이다 —
@@ -2856,9 +2902,9 @@ function renderChem(owned, all = owned){
         <b>지금 쓰는 스쿼드</b> <span class="chip">${esc(SQ.title || '')}</span>
         <span class="chip" style="border-color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'}">케미 ${total}/33</span>
         <small class="dim">— fut.gg 싱크 ${esc(SQ.synced_at)} 기준</small></div>
-      <table><tr><th>슬롯</th><th>선수</th><th>이 자리 역할(에메리)</th><th>케미</th><th>붙인 스타일</th><th>추천 ① 역할 가중</th><th>추천 ② 부족분 보강</th><th>메타 관습</th></tr>
+      <table><tr><th>슬롯</th><th>선수</th><th>이 자리 역할(에메리)</th><th>케미</th><th>붙인 스타일</th><th>최종 추천 <small class="dim">(근거)</small></th></tr>
       ${slots11.map((s, i) => { const p = byItem.get(s.ea_item_id);
-        if (!p) return `<tr><td><b>${FORM_SLOTS[i] || i}</b></td><td colspan="7" class="dim">원장에 없는 카드(싱크 필요)</td></tr>`;
+        if (!p) return `<tr><td><b>${FORM_SLOTS[i] || i}</b></td><td colspan="5" class="dim">원장에 없는 카드(싱크 필요)</td></tr>`;
         const now = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
         const canon = CANON[CANON_BY_IDX[i]];
         const roleId = canon?.role_id || PRES[p.player_id]?.role_id || POS_ROLE[FORM_SLOTS[i]];
@@ -2870,21 +2916,14 @@ function renderChem(owned, all = owned){
           <td class="dim">${canon ? `${esc(ROLE_KR[canon.role_id] || canon.role_id)}<br><small>${esc(canon.focus)}</small>` : '—'}</td>
           <td style="color:${v === 3 ? 'var(--ok)' : v ? 'var(--warn)' : 'var(--bad)'}"><b>${v}</b>/3</td>
           <td>${now && !['Basic', 'GK Basic'].includes(now) ? `<b>${esc(now)}</b>` : '<span class="dim">미적용</span>'}</td>
-          <td class="${same ? 'dim' : ''}">${st[0] ? (same ? '같음' : `<b>${esc(st[0].name)}</b>`) : '—'}${styleDetail(st)}${styleCompare(st, nowAttrs(p), KEYW[roleId], FORM_SLOTS[i] === 'GK', now)}</td>
-          ${(() => { const bb = byBalance(st);
-             if (!bb) return '<td class="dim">—</td>';
-             const eq = st[0] && bb.name === st[0].name;
-             return `<td class="${eq ? 'dim' : ''}" title="판단값 — 역할 핵심 속성 중 낮은 것을 메우는 정도">${
-               eq ? '같음' : `<b>${esc(bb.name)}</b>`}</td>`; })()}
-          <td class="dim">${(m => m ? esc(m.value) : '—')(metaFor(FORM_SLOTS[i]))}</td></tr>`;
+          <td>${finalCell(st, FORM_SLOTS[i], p, now)}${styleDetail(st)}${styleCompare(st, nowAttrs(p), KEYW[roleId], FORM_SLOTS[i] === 'GK', now)}</td></tr>`;
       }).join('')}</table>
       ${benchHtml}
       <p class="dim" style="font-size:12px;margin:6px 0 0">
-      <b>추천 ①(역할 가중)</b> = Σ(역할 핵심 속성 가중 × 실제 상승분) — <b>근거 있는 축</b>이다(역할 가중표 + 99 상한).<br>
-      <b>추천 ②(부족분 보강)</b> = 같은 상승이라도 <b>지금 낮은 속성</b>을 메우는 쪽에 더 점수를 준다 —
-      ⚠️ <b>판단값</b>이다(게임 근거 없음). ①과 갈리는 칸이 「무엇을 믿을지」를 묻는 자리다.<br>
-      ⭐ 둘을 한 숫자로 섞지 않는다 — 근거 등급이 다르기 때문이다. 실측상 선발 11칸 중 <b>6칸</b>이 갈린다.<br>
-      「메타 관습」은 <b>커뮤니티 가이드 합의</b>다 — 셋 다 EA 공식이 아니다.
+      <b>최종 추천</b>은 <b>포지션 요구와 EA 패치</b>로만 정한다 — ⑴ 이 자리 역할 가중(<b>지금 카드</b> 29속성 × 역할 핵심 속성 가중 × 99 상한 실상승분 · 진화를 마치면 바뀐 스탯으로 다시 잰다) 1위
+      ⑵ 1위의 <b>95% 이상</b>이 여럿이면 <b>FC27 패치로 비중이 오른 속성</b>(가속·질주 #12 · 드리블·민첩·균형 #24 · 슈팅력 #52 — 전부 EA 1차 A)을 더 올리는 쪽.<br>
+      ⚠️ 95% 문턱은 <b>판단값</b>이다. 커뮤니티 메타·카드 투표는 고르는 데 쓰지 않는다(사용자 지시 2026-10-14). <b>세부 스탯 체감</b>(커뮤니티 D)은 「스타일 비교 — 세부 스탯」 표의 속성 이름에 마우스를 올리면 참고로 보인다.<br>
+      시야·반응력은 EA 1차 자료에 작용 설명이 없다 — 점수를 깎지는 않고, 추천 점수가 거기에 기대면 ⚠️로 드러낸다.
       <br>아래 「제안」은 <b>보유 카드로 짤 수 있는 최적</b>이라 지금 구성과 다를 수 있다 —
       바꿀 이유를 고를 때 쓰는 참고값이고, 이 표가 <b>실제 상태</b>다.</p></div>`;
   }
@@ -2893,9 +2932,14 @@ function renderChem(owned, all = owned){
      다른 스쿼드(AFC 본머스) 카드인 **케파가 빌라 GK로** 제안됐다 — 사용자가 그걸 지적했다.
      ⇒ XI 11 + 교체·리저브 12 = **23명**만 후보로 둔다. 그게 실제로 바꿔 넣을 수 있는 카드다.
      ⚠️ 활성 스쿼드가 비면(싱크 전) 보유 전체로 물러선다 — 빈 화면을 만들지 않는다. */
+  /* ⭐⭐ **제안 풀은 보유 중인 아스톤 빌라 카드다**(2026-10-14 사용자 지시 「현재 내 아스톤 빌라 선수들 기준으로」).
+     ⛔ 종전(09-27)엔 활성 스쿼드 23장이라 리저브의 브라이턴·울브스 카드(부슈코비치·그로스)가 제안 XI에 섞였다.
+     ⚠️ 빌라 카드로 11자리를 못 채우면 활성 스쿼드로 물러선다 — 빈 화면을 만들지 않는다. */
   const squadItems = new Set([...xiSlots(), ...benchSlots()].map(s => s.ea_item_id));
+  const villa = owned.filter(p => p.status === 'owned' && p.positions && p.club === 'Aston Villa');
   const inSquad = owned.filter(p => p.status === 'owned' && p.positions && squadItems.has(p.ea_item_id));
-  const pool = inSquad.length >= 11 ? inSquad : owned.filter(p => p.status === 'owned' && p.positions);
+  const pool = villa.length >= 11 ? villa : inSquad.length >= 11 ? inSquad : owned.filter(p => p.status === 'owned' && p.positions);
+  const poolLabel = pool === villa ? '보유 아스톤 빌라' : pool === inSquad ? '활성 스쿼드' : '보유 전체';
   if (!pool.length){ box.innerHTML = '<span class="dim">카드 정보가 붙은 보유 선수가 없다 — <code>collect_futgg_cards.py</code>를 먼저 돌린다.</span>'; return; }
   const slots = CHEM_FORMS[CHEM_F], { xi } = chemBestXI(pool, slots), filled = xi.filter(Boolean);
   const { per, cnt, total } = chemOf(filled);
@@ -2903,11 +2947,10 @@ function renderChem(owned, all = owned){
   const color = v => v === 3 ? 'var(--ok)' : v === 2 ? 'var(--warn)' : v ? 'var(--warn)' : 'var(--bad)';
   const rows = slots.map((s, i) => {
     const p = xi[i];
-    if (!p) return `<tr><td><b>${s}</b></td><td colspan="6" class="dim">이 포지션을 볼 수 있는 보유 카드가 없다 — 공백</td></tr>`;
+    if (!p) return `<tr><td><b>${s}</b></td><td colspan="5" class="dim">이 포지션을 볼 수 있는 보유 카드가 없다 — 공백</td></tr>`;
     const v = chemPer.get(p.id);
     const pres = PRES[p.player_id], roleId = pres?.role_id || POS_ROLE[s];
     const st = styleRank(nowAttrs(p), roleId, s === 'GK', p);
-    const gains = st[0] ? st[0].top.map(x => `${x.a}+${x.gain}`).join(' · ') : '';
     /* 지금 붙어 있는 스타일 — GG Club 싱크가 준 EA 소모품 id(250 Basic·273 GK Basic = 미적용) */
     const nowStyle = (CHEM_STYLES.find(x => x.ea_id === p.chem_style_ea) || {}).name;
     const nowTxt = p.chem_style_ea == null ? ''
@@ -2917,10 +2960,9 @@ function renderChem(owned, all = owned){
     return `<tr><td><b>${s}</b></td>
       <td>${esc(p.name)} <small class="dim">OVR ${chemOvr(p) || '—'}</small></td>
       <td style="color:${color(v)}"><b>${v}</b>/3</td>
-      <td>${nowTxt}${st[0] ? `<b>${esc(st[0].name)}</b><small class="dim"> ${esc(gains)}</small>
+      <td>${nowTxt}${st[0] ? `${finalCell(st, s, p, nowStyle)}
              <br><small class="dim">기준 ${pres ? '처방' : '포지션 기본'} ${esc(ROLE_KR[roleId] || roleId || '—')}</small>${styleDetail(st)}${styleCompare(st, nowAttrs(p), KEYW[roleId], s === 'GK', nowStyle)}`
            : '<span class="dim">속성 미수집 — 추천 불가</span>'}</td>
-      <td class="dim">${(m => m ? `${esc(m.value)}<br><small>대안 ${esc(m.alternatives || '')}</small>` : '—')(metaFor(s))}</td>
       <td class="dim">${esc(p.nation || '?')} · ${esc(p.league || '?')} · ${esc(p.club || '?')}</td>
       <td class="dim">${esc(p.positions || '')}</td></tr>`;
   }).join('');
@@ -2936,8 +2978,8 @@ function renderChem(owned, all = owned){
   box.innerHTML = curHtml + `<div class="kv" style="margin-bottom:6px"><b>제안</b>
       <span class="chip" style="border-color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};color:${total >= 33 ? 'var(--ok)' : 'var(--warn)'};font-size:15px"><b>팀 케미 ${total}</b>/33</span>
       <span class="chip">평균 OVR ${filled.length ? Math.round(filled.reduce((s, p) => s + chemOvr(p), 0) / filled.length) : '—'}</span>
-      <small class="dim">보유 ${pool.length}장 중 ${CHEM_F} 기준</small></div>
-    <table>${`<tr><th>슬롯</th><th>선수</th><th>케미</th><th>추천 스타일 — 처방 역할 기준</th><th>메타 관습</th><th>국적 · 리그 · 클럽</th><th>가능 포지션</th></tr>`}${rows}</table>
+      <small class="dim">${poolLabel} ${pool.length}장 중 ${CHEM_F} 기준</small></div>
+    <table>${`<tr><th>슬롯</th><th>선수</th><th>케미</th><th>최종 추천 <small class="dim">(근거)</small></th><th>국적 · 리그 · 클럽</th><th>가능 포지션</th></tr>`}${rows}</table>
     <p class="dim" style="font-size:12px;margin:8px 0 0">구성: ${comp}</p>
     ${total < 33 && gaps.length ? `<p style="font-size:13px;margin:6px 0 0">다음 문턱: ${gaps.slice(0, 4).join(' · ')}</p>` : ''}
     ${total >= 33 ? `<p style="font-size:13px;margin:6px 0 0">만점이다 — 이 조합에서는 <b>케미가 아니라 카드 품질·역할 적합</b>이 다음 제약이다.</p>` : ''}
