@@ -35199,11 +35199,6 @@
   ],
   "음바예": [
    [
-    "2026-06-26",
-    6.6,
-    "FIFA World Cup"
-   ],
-   [
     "2026-07-01",
     6.5,
     "FIFA World Cup"
@@ -35247,6 +35242,11 @@
     "2026-10-10",
     6.9,
     "Premier League"
+   ],
+   [
+    "2026-10-14",
+    7.6,
+    "UEFA Champions League"
    ]
   ],
   "응구모하": [
@@ -62759,18 +62759,18 @@
    "xg_pg": 0.133
   },
   {
-   "avg_rating": 6.91,
-   "dw_pg": 1.67,
-   "ic_pg": 0.14,
-   "kp_pg": 0.56,
+   "avg_rating": 6.92,
+   "dw_pg": 1.69,
+   "ic_pg": 0.15,
+   "kp_pg": 0.61,
    "label": "음바예",
-   "minutes": 1993,
-   "n": 73,
+   "minutes": 2072,
+   "n": 74,
    "player_id": 86,
    "pos_group": "WM",
-   "tk_pg": 0.41,
-   "xa_pg": 0.079,
-   "xg_pg": 0.188
+   "tk_pg": 0.43,
+   "xa_pg": 0.083,
+   "xg_pg": 0.203
   },
   {
    "avg_rating": 6.9,
@@ -66513,6 +66513,16 @@
     "competition": "EFL Cup",
     "goals": 0,
     "minutes": 64,
+    "n": 1,
+    "season": "2026-27",
+    "starts": 1
+   },
+   {
+    "assists": 1,
+    "avg_rating": 7.6,
+    "competition": "UEFA Champions League",
+    "goals": 0,
+    "minutes": 79,
     "n": 1,
     "season": "2026-27",
     "starts": 1
