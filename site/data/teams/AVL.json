@@ -100459,6 +100459,18 @@
    "tactic_code": null
   },
   {
+   "build_up_style": "Balanced",
+   "confidence": "MEDIUM — 11경기 경기별 커널 1위 패턴(점유 경계 45~52%) · 사용자 결정. 단일 경기 그리드 기반이라 경기당 노이즈 있음",
+   "defensive_approach": "Balanced",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "kind": "optimal:low-possession-2026-10-15",
+   "line_height": 52,
+   "rationale": "2026-10-15 사용자 결정 — **저점유(점유 45% 이하 예상) 경기용 보조 프리셋**. 시즌 정본(team_tactic_setups #32 · slot_canon_roles)은 그대로이고, 이 행은 LB 1칸만 다르다.\nLB: 공격형 윙백 Support(정본) → **윙백 Balanced**.\n근거(26/27 공식전 LB 출전 11경기 · 경기별 단일 그리드 1위): 점유 ≤45% 7경기에서 공격형 윙백 1위 0회(윙백 Balanced 5 · 풀백 Balanced 2 — 08-12 PSG·08-23 브라이턴·08-31 아스널·09-08 브뤼헤·09-19 토트넘·10-14 페네르), 점유 ≥52% 4경기에서 공격형 윙백 Support 3회 1위(09-05 헐 74% .903 · 09-12 포레스트 54% .912 · 09-16 코번트리 57% .926). 같은 선수(마첸)도 점유에 따라 갈려 선수 축이 아니라 경기 상태 축이다.\n정본 LB 공격형 윙백 유지 사유: LM을 인사이드 포워드 Balanced로 바꾼 뒤 obs#443 사이드 짝짓기 규칙(와이드가 안쪽인 쪽 풀백 = 공격형 윙백, 윙어 터치라인 쪽 풀백 = 윙백 Balanced)과 정본 짝(LB 공격형 윙백 · RB 윙백 Balanced)이 일치한다.\n⚠️ 이 프리셋은 양 풀백이 모두 윙백 Balanced라 obs#110 C2 비대칭(한 번에 한 명만 전진)을 의도적으로 내려놓는다 — 저점유 경기에서는 실측이 그렇게 뛰었다(사용자 H11 · 지공 2-4-4 양 풀백 같은 높이).\n⚠️ 팀 빌드업은 정본 Balanced 그대로 두었다. core.team_settings 규칙은 점유 ≤40%면 Counter를 제안한다 — 강팀 원정에서 Counter 전환 여부는 별도 판단(미결정).",
+   "season": "2026-27",
+   "tactic_code": null
+  },
+  {
    "build_up_style": "Short Passing",
    "confidence": "PROJECTED — 이적 미확정 포함(가르나초 MEDIUM-HIGH·에스투피냔 HIGH, 나머지 CONFIRMED/보유). 26/27 실측 축적 후 measured/optimal로 대체 예정. 만잠비·고메스·에스투피냔·가르나초 처방은 타클럽/대표팀 실측 기반이라 빌라 컨텍스트 재검증 필요.",
    "defensive_approach": "Balanced",
@@ -102487,10 +102499,10 @@
    "formation": "4-2-3-1 Wide",
    "game_version": "FC26",
    "pos": "LB",
-   "rationale": "C2 풀백 비대칭의 전진측 — 풀백은 한 번에 한 명만 전진(rest_defense). 같은 역할을 양쪽에 주면 C2 붕괴(obs#110, Δ.0101 지불 근거). 좌측 폭은 이 칸이 댄다(와이드는 안쪽 이동).",
+   "rationale": "C2 풀백 비대칭의 전진측 — 풀백은 한 번에 한 명만 전진(rest_defense). 같은 역할을 양쪽에 주면 C2 붕괴(obs#110, Δ.0101 지불 근거). 좌측 폭은 이 칸이 댄다(와이드는 안쪽 이동). [2026-10-15 재확인 · 사용자 결정 「유지」] LM 인사이드 포워드 Balanced 교정 후 obs#443 짝 규칙과 정합. 단 점유 ≤45% 경기 7/7에서 공격형 윙백이 1위가 아니었다 → 저점유 보조 프리셋(team_tactic_setups optimal:low-possession-2026-10-15)에 윙백 Balanced. 재검토 조건: 점유 ≥52% 경기에서 공격형 윙백 1위 비율이 절반 미만으로 떨어질 때.",
    "role_id": "fb_att_wb",
    "source": "manager_profiles(1) implementation ⑷·rest_defense + obs#110",
-   "updated": "2026-08-12"
+   "updated": "2026-10-15"
   },
   {
    "confidence": "HIGH",
@@ -103475,6 +103487,15 @@
   }
  ],
  "tactic_changes": [
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Balanced · 수비 Balanced · 라인 52",
+   "before": null,
+   "changed_at": "2026-10-15",
+   "key": "2026-27|optimal:low-possession-2026-10-15",
+   "layer": "team_setup",
+   "reason": "obs#1042 LB 정본 공격형 윙백 Support 유지(사용자 결정) + 저점유 보조 프리셋 LB 윙백 Balanced",
+   "source": "tactic_changes.py 2026-10-15"
+  },
   {
    "after": "4-2-3-1 Wide · 빌드업 Balanced · 수비 Balanced · 라인 52",
    "before": null,
