@@ -1,6 +1,530 @@
 {
  "all": [
   {
+   "channel": "CNN TÜRK",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 275,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "[03:03] 빌라의 노력·지배는 대단하지 않았다 — 상대 실수 쪽 해석",
+    "[06:37] 반복된 개인 실수 = 1·2구역 빌드업 설계 결함"
+   ],
+   "kind": "감독회견",
+   "lang": "tr",
+   "obs_points": [],
+   "published": "2026-10-15",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "CNN TÜRK 6-0 분석(Semih Sezer · 터키어 · 자막 기준). 빌라는 엄청난 노력이나 지배를 하지 않았고 페네르에서 출구를 찾았을 뿐이라고 보면서, 반복된 개인 실수는 1·2구역 빌드업 설계의 결함이라고 지적한다.",
+   "team_code": "AVL",
+   "title": "6-0'ın Analizi! Fenerbahçe'yi Aston Villa Karşısında Ne Durdurdu? (2026-10-15 게시, 9:40, 경기 후 방송 인터뷰(Semih Sezer) · 상대 관점)",
+   "transcript_path": "reports/transcripts/eCCc1Zzqwg8.tr.md",
+   "url": "https://www.youtube.com/watch?v=eCCc1Zzqwg8",
+   "video_id": "eCCc1Zzqwg8"
+  },
+  {
+   "channel": "Serbest Sekiz",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 274,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "press_trigger",
+     "focus": null,
+     "player": null,
+     "quote": "「birinci kademin ikinci kademe geçtiği anda top yani savunmadan orta sahaya geçtiği anda anlık baskılarını başlatıyor」(1선에서 2선으로, 즉 수비에서 중원으로 공이 넘어가는 순간 즉시 압박을 시작한다) [09:45] auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "opponent_line1_to_line2_transfer",
+     "verdict": "PENDING",
+     "verdict_note": "UTV wnCdb0G15_I [17:31] 「trigger points」와 독립 교차(D등급 2출처). 실측 31′·39′ 득점이 중원 탈취 직후 — FC 압박 트리거 설정 실측 후 반영"
+    }
+   ],
+   "key_points": [
+    "[04:03] 빌라는 홈에서 점유를 강요받으면 고전하는데 페네르가 반대로 빌라가 반길 형식을 택했다",
+    "[09:45] 「birinci kademin ikinci kademe geçtiği anda … anlık baskılarını başlatıyor」(1선에서 2선으로 넘어가는 순간 즉시 압박을 시작한다)",
+    "[17:22] 넓은 공간에서 슈크리니아르 측면 대응력 저하"
+   ],
+   "kind": "감독회견",
+   "lang": "tr",
+   "obs_points": [],
+   "published": "2026-10-15",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "Serbest Sekiz 전술 분석(터키어 · 자막 기준). 페네르가 4-2-3-1로 쪼개진 채 중앙 빌드업을 고집해 라인 간격이 벌어졌고, 그 결과 만잠비·잭슨·음바예가 마음대로 드리블·슈팅했다고 진단한다. 빌라는 볼이 1선에서 2선으로 넘어가는 순간 즉시 압박을 시작해 위크섹에게 협공을 걸었다고 설명하며, 「불운」이 아니라 빌라가 반길 경기 방식을 페네르가 깔아 줬다고 결론낸다.",
+   "team_code": "AVL",
+   "title": "ASTON VILLA'NIN 6 GOLÜ BİLE BİLE LADES | FENERBAHÇE'DE NELER EKSİKTİ?",
+   "transcript_path": "reports/transcripts/ZhJYKO9YQY4.tr.md",
+   "url": "https://www.youtube.com/watch?v=ZhJYKO9YQY4",
+   "video_id": "ZhJYKO9YQY4"
+  },
+  {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 272,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "[05:42] 「Wasaka is the perfect kind of foil for coming into that back three and allowing Cash to bomb on」(완비사카가 백 3로 들어가 캐시를 전진시키는 짝) — 실측과 충돌",
+    "[09:14] 잭슨 박스 앞 · 만잠비 볼 키핑 · 음바예 측면 속도 · 맥긴 버팀목",
+    "[14:26] 바클리: 「He did an interview after the game … and he said he's fine」(경기 후 인터뷰에서 괜찮다고 했다)",
+    "[24:50] 음바예 쥐(cramp) 언급"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-15",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "The Villans 패널 토크(자막 기준). 음바예·알리송 투입이 「구조화·방법론적」이었고 고레츠카를 서서히 투입했다고 본다. 완비사카가 후방에 들어가 캐시를 올려 보내는 짝이라는 해석, 앞선 4명의 역할 분담(잭슨 박스 앞·만잠비 볼 키핑·음바예 측면 속도·맥긴 버팀목)을 말한다. 바클리는 경기 후 인터뷰에서 「괜찮다」고 했고 음바예는 쥐가 났다는 대화가 나온다.",
+   "team_code": "AVL",
+   "title": "Villa Demolish Fenerbahçe, Sleeping on Nicolas Jackson & Manzambi Coming For Newcastle United",
+   "transcript_path": "reports/transcripts/KwUfYF0H-IU.en.md",
+   "url": "https://www.youtube.com/watch?v=KwUfYF0H-IU",
+   "video_id": "KwUfYF0H-IU"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 279,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "back_line_in_possession",
+     "focus": null,
+     "player": null,
+     "quote": "「it was the Wasaka Power Lindelof setup at the back」(완비사카–파우–린델뢰프 후방 구성이었다) [02:35] auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "wan_bissaka_holds_back_three",
+     "verdict": "REJECTED",
+     "verdict_note": "위치 주장은 실측 우선: WS 이벤트상 완비사카는 빌드업 체인 터치라인 95%·평균 52.2m, 볼이 상대 3분의 1일 때 67.6m(캐시 72.4m) — 후방 3인 잔류 기하가 없다. 트래킹 프레임(공 없는 위치) 공개되면 재검토 · obs 기록"
+    },
+    {
+     "axis": "instruction",
+     "field": "rcb_in_possession",
+     "focus": null,
+     "player": "린델뢰프",
+     "quote": "「he's a little bit more advanced than POW … play a little bit as a CDM in that area」(파우보다 약간 높고 그 구역에서 CDM처럼 뛴다) [04:41] auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "lindelof_steps_into_cdm_zone",
+     "verdict": "PENDING",
+     "verdict_note": "실측 일치(패스 출발 40.5m vs 토레스 34.0m · 상대 3분의 1 국면 53.8m vs 46.6m) — 정본 RCB bpd Aggressive는 기하 1위라 유지, Build-Up 성향 혼재는 다경기 누적 후 판정"
+    },
+    {
+     "axis": "instruction",
+     "field": "pivot_press_license",
+     "focus": null,
+     "player": "카마라",
+     "quote": "「This season, I think he's got more license to engage further forward, win the ball back … not just be that protector」(이번 시즌 더 앞에서 끊을 권한이 커졌다, 단순 보호자가 아니다) [09:18] auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "kamara_jump_forward",
+     "verdict": "PENDING",
+     "verdict_note": "Tanswell 19:36Z 「license for Barkley (sometimes Kamara…) to jump and press」와 같은 방향. 실측: 카마라 상대 3분의 1 국면 66.7m · 정본 RDM 홀딩 Defend(.508)와 괴리 — 사용자 판단 대상"
+    },
+    {
+     "axis": "instruction",
+     "field": "press_mode",
+     "focus": null,
+     "player": null,
+     "quote": "「Emry doesn't press, but what he does is he has his trigger points and when we are about to engage, we commit to engage」(에메리는 상시 압박하지 않지만 트리거 포인트가 있고, 붙을 땐 확실히 붙는다) [17:31] auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "trigger_based_not_constant",
+     "verdict": "PENDING",
+     "verdict_note": "Serbest Sekiz(ZhJYKO9YQY4 [09:45]) 독립 서술과 교차. 실측 PPDA 12.14·def_x 36.5 중블록과 정합 — 팀 설정 수비 접근 Balanced 유지, 압박 트리거 슬라이더(FC27) 실측 후 반영"
+    }
+   ],
+   "key_points": [
+    "[02:35] 「the Wasaka Power Lindelof setup at the back」(완비사카–파우–린델뢰프 후방 구성) — 실측과 충돌(완비사카는 빌드업 터치라인 95%·상대 3분의 1 국면 67.6m)",
+    "[04:41] 린델뢰프 「a little bit more advanced than POW … play a little bit as a CDM」(파우보다 약간 높이, CDM처럼) — 실측 패스 출발 40.5m vs 34.0m와 일치",
+    "[05:42] 「natural width comes from your wing back in Matty Cash. So Mcin is able to just be more central」(폭은 윙백 캐시가, 맥긴은 더 중앙에) · 카마라·바클리 「more on the same line」(같은 선상)",
+    "[09:18] 카마라 「more license to engage further forward … not just be that protector」(더 앞에서 끊을 권한, 단순 보호자가 아니다)",
+    "[17:31] 「Emry doesn't press, but … he has his trigger points」(에메리는 상시 압박이 아니라 트리거 포인트가 있다)"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-15",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "UTV 전술 리뷰(경기 후 · 자막 기준). 진행자는 빌라가 평소 구조를 「뒤집어」 완비사카가 파우·린델뢰프와 후방에 남고 캐시가 오른쪽 윙백 폭을, 음바예가 왼쪽 폭을 맡았으며 맥긴은 중앙으로 좁혔다고 해석한다. 린델뢰프는 파우보다 약간 높이 서서 「CDM처럼」 오른쪽으로 전개했고, 카마라·바클리는 같은 선상에서 더 높이 서 압박에 가담했다고 본다. 에메리 팀은 상시 압박이 아니라 트리거 압박이라는 설명과 함께, 음바예의 미끼 드리블·전반 판단 미스를 짚는다. ⚠️ 「완비사카 후방 잔류」는 WhoScored 이벤트 실측(볼이 상대 3분의 1일 때 완비사카 평균 67.6m·y84, 캐시 72.4m)과 충돌한다.",
+   "team_code": "AVL",
+   "title": "HOW ASTON VILLA TORE FENERBAHÇE APART AT VILLA PARK",
+   "transcript_path": "reports/transcripts/wnCdb0G15_I.en.md",
+   "url": "https://www.youtube.com/watch?v=wnCdb0G15_I",
+   "video_id": "wnCdb0G15_I"
+  },
+  {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 281,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "[20:53] 「there was a period in the first half where Manzambi decided to go out to the left and then [Mbaye] was kind of playing off Jackson … as a support striker」(전반 한동안 만잠비가 왼쪽으로 빠지고 음바예가 잭슨 뒤 지원 공격수처럼) — 실측 교대 2체인과 일치",
+    "[06:06] 음바예 「worked his socks off. No wonder he was cramping at the end」(열심히 뛰어 막판에 쥐)",
+    "[21:54] 「Barkley went off injured … you presume he was more cramped than anything」(바클리 부상 교체, 쥐로 추정)",
+    "[14:13] 카마라 시즌 최고 수준 · 카마라·바클리 중원 장악"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-14",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "1874 직관 후 MATCH REACTION 라이브(자막 기준). 시작 배치를 음바예 왼쪽·맥긴 오른쪽·만잠비 잭슨 뒤로 설명하고, 전반 한동안 만잠비가 왼쪽으로 빠지고 음바예가 잭슨 뒤 지원 공격수처럼 움직였다고 말한다(사용자 H1과 같은 관찰). 잭슨을 MOTM으로, 카마라·바클리의 중원 장악을 칭찬하며, 음바예는 수비 가담으로 막판 쥐, 바클리는 「쥐 정도로 추정」한다.",
+   "team_code": "AVL",
+   "title": "FENER-BATTERED- Aston Villa Run Riot In The Champions League!",
+   "transcript_path": "reports/transcripts/xvVFQUxGpLY.en.md",
+   "url": "https://www.youtube.com/watch?v=xvVFQUxGpLY",
+   "video_id": "xvVFQUxGpLY"
+  },
+  {
+   "channel": "Aston Villa Football Club",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 277,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "defensive_shape_second_half",
+     "focus": null,
+     "player": null,
+     "quote": "「In the second half, we we correct defensively a little bit more compact」(후반에 수비를 조금 더 콤팩트하게 수정했다) [01:00] auto-caption(gemini variant)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "more_compact_when_leading",
+     "verdict": "PENDING",
+     "verdict_note": "감독 1차 발언 · 실측 2H 평균 높이 하강과 정합. 경기 프리셋은 단일 설정이라 국면 전환(리드 시 라인 하향) 지시로만 기록 — FC 게임플랜 2안 구성 시 반영 후보"
+    }
+   ],
+   "key_points": [
+    "[01:00] 「The result is so much for them because I think they didn't deserve this result」(결과는 그들에게 과하다, 그럴 만한 결과가 아니었다)",
+    "[01:00] 「In the second half, we we correct defensively a little bit more compact」(후반에 수비를 조금 더 콤팩트하게 수정했다) — 실측 2H 블록 하강(잭슨 63.9m·카마라 47.3m)과 일치",
+    "[02:00] 새 선수들이 구조에 적응 중 · 음바예 언급(질문자 인명 대목은 인용 금지)"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-14",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "에메리 구단 인터뷰(VillaTV · 자막 기준 · ⚠️ gemini variant 자막 · 질문자 인명 환각 있음). 에메리는 「멋진 밤」이지만 결과는 상대에게 과하다고 말하고, 전반 상대가 기회를 만들었고 GK가 구했다고 한다. 후반에는 수비를 더 콤팩트하게 수정했다고 밝힌다.",
+   "team_code": "AVL",
+   "title": "\"FANTASTIC NIGHT!\" | Unai Emery on 6-0 win against Fenerbahçe",
+   "transcript_path": "reports/transcripts/tquE7w0cXLQ.en.md",
+   "url": "https://www.youtube.com/watch?v=tquE7w0cXLQ",
+   "video_id": "tquE7w0cXLQ"
+  },
+  {
+   "channel": "Aston Villa Football Club",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 280,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "[01:40] 빠른 프리킥·스로인 재개와 강도로 상대를 흔들었다",
+    "[10:18] 77′ 쥐 — 자막은 'Buendía'지만 실측 명단상 음바예(부엔디아 미출전)",
+    "[19:24] 바클리: 감독이 경기 전에 PK 키커를 자신으로 정했다",
+    "[22:26] 「the good news is he's okay. Just a bit of ice」(바클리는 괜찮다, 얼음찜질 정도)"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-14",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "구단 공식 POST-MATCH LIVE(McInally·Taylor·바클리 출연, 자막 기준 · ⚠️ gemini variant 자막으로 인명 환각 있음). 해설자들은 초반 강도·빠른 리스타트·중원 지배로 6-0이 부풀린 점수가 아니라고 본다. 바클리는 PK 키커가 경기 전 지정돼 있었다고 밝히고, 진행자는 그가 「괜찮다, 얼음찜질 정도」라고 전한다. 「Buendía 77′ 쥐」 대목은 출전하지 않은 부엔디아로 오인식된 것이며 실측상 음바예다.",
+   "team_code": "AVL",
+   "title": "POST-MATCH LIVE | With Alan McInally, Ian Taylor and Ross Barkley | Vs Fenerbahçe",
+   "transcript_path": "reports/transcripts/x69XueNTOV8.en.md",
+   "url": "https://www.youtube.com/watch?v=x69XueNTOV8",
+   "video_id": "x69XueNTOV8"
+  },
+  {
+   "channel": "BeanymanSports",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 276,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "goal_routes",
+     "focus": null,
+     "player": null,
+     "quote": "「Sometime we can score through transition in high press. Sometime we could score as well in transition but with a med or low block」(하이프레스 전환으로도, 미드·로블록 전환으로도 득점할 수 있다) [03:40] auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "set_piece+high_press_transition+mid_low_block_transition",
+     "verdict": "PENDING",
+     "verdict_note": "실측 득점 경로(31′·39′ 중원 탈취 전환 · 12′ 코너 · PK) 정합 — 팀 설정 축 값이 아니라 게임플랜 서술로만 보관"
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "focus": "Support",
+     "player": "잭슨",
+     "quote": "「sometime attacking more in the center or more left side or more right side today more right side」(때로 중앙, 때로 왼쪽·오른쪽 — 오늘은 오른쪽 위주) [02:08] auto-caption",
+     "role_id": "st_advanced",
+     "team_code": null,
+     "value": null,
+     "verdict": "PENDING",
+     "verdict_note": "감독 1차 발언이 좌우 이동을 확인 — 실측 단일 경기 st_advanced/Support .749(Δ.228)·브렌트포드전 Δ.146과 같은 방향. 정본 포커스 Versatile → Support 변경은 사용자 확인 대상"
+    }
+   ],
+   "key_points": [
+    "[00:34] 「the first half even winning 3-0 I was not so so happy because we were conceding … they didn't score because [Zion] he played fantastic」(3-0이어도 전반은 만족 못 했다, 스즈키가 환상적이었다)",
+    "[02:08] 잭슨 「sometime attacking more in the center or more left side or more right side today more right side」(중앙·좌·우를 오가며 오늘은 오른쪽 위주)",
+    "[02:38] 「how Aaron is adapting in the left side as a fullback playing in our structure」(완비사카가 왼쪽 풀백으로 구조에 적응 중)",
+    "[03:40] 「Sometime we can score through transition in high press. Sometime … in transition but with a med or low block」(하이프레스 전환, 미드·로블록 전환으로도 득점)",
+    "[11:02] 「we will check tomorrow. I think is not so much」(내일 확인, 심하지 않은 것 같다) — 질문 대상이 자막에서 잘려 바클리/음바예 중 누구인지 불명"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-14",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "에메리 UEFA 경기 후 기자회견 전체(BeanymanSports 업로드 · 자막 기준). 3-0 전반에도 기회를 허용해 만족하지 못했고 후반에 통제를 바로잡으려 했다고 말한다. 잭슨은 중앙·좌·우를 오가며 「오늘은 오른쪽 위주」였고, 음바예는 선발로 공격적 기여를 했으며, 완비사카는 왼쪽 풀백으로 구조에 적응 중이라고 한다. 득점 경로로 세트피스·하이프레스 전환·미드/로블록 전환·점유 공격을 꼽고, PK 키커는 사전 분석으로 바클리였다고 밝힌다. 마지막 질문(대상 불명확)에 「내일 확인, 심하지 않은 것 같다」고 답한다.",
+   "team_code": "AVL",
+   "title": "EMERY: \"THEY DIDN'T DESERVE TO LOSE 6-0!\" Aston Villa 6-0 Fenerbahçe",
+   "transcript_path": "reports/transcripts/jgZGB13_Qa0.en.md",
+   "url": "https://www.youtube.com/watch?v=jgZGB13_Qa0",
+   "video_id": "jgZGB13_Qa0"
+  },
+  {
+   "channel": "Dr. Hikmet Taflan",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 269,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "[04:40] 빌라 공격 시 5명 전방 전환(2-4-4 계열 서술과 같은 방향 · 낮은 신뢰)",
+    "[08:52] 5-0 만잠비→음바예→바클리"
+   ],
+   "kind": "감독회견",
+   "lang": "tr",
+   "obs_points": [],
+   "published": "2026-10-14",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "Dr. Hikmet Taflan 득점 낭독형 해설(터키어 · 자막 기준 · 자동 생성 원고 의심으로 신뢰도 낮음). 두 팀을 4-2-3-1로 소개하고 빌라가 공격 시 5명으로 전환했다고 한 줄 언급한 뒤 득점 경위를 차례로 읽는다.",
+   "team_code": "AVL",
+   "title": "FENERBAHÇE 0 – 6 ASTON VILLA | MAÇ ANLATIMI VE TAKTİK ANALİZ",
+   "transcript_path": "reports/transcripts/-Zx9aMqrSYM.tr.md",
+   "url": "https://www.youtube.com/watch?v=-Zx9aMqrSYM",
+   "video_id": "-Zx9aMqrSYM"
+  },
+  {
+   "channel": "Erdal Vahid",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 270,
+   "impl_claims": [
+    {
+     "axis": "limit",
+     "field": "right_side_space_when_mcginn_inverts",
+     "focus": null,
+     "player": null,
+     "quote": "「Mekin orta sahalaşıyor işte bek yüksek çıkıyor. Orayı o bölgeyi işaretlemiştim ben.」(맥긴이 중앙 미드필더처럼 들어가면 풀백이 높이 올라간다. 내가 그 구역을 표시해 뒀다) [08:12] auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "exploited_by_opponent_left_winger",
+     "verdict": "PENDING",
+     "verdict_note": "상대 해설(D등급) · Tanswell 19:28Z 「funnelling the majority of their attacks down #AVFC's right side」와 같은 방향. 캐시↔맥긴 교대(H2)의 rest-defense 비용 — 다경기 누적 후 판정"
+    }
+   ],
+   "key_points": [
+    "[01:28] 실점 셋은 모두 페네르 실수라는 인식",
+    "[08:12] 「Mekin orta sahalaşıyor işte bek yüksek çıkıyor」(맥긴이 중앙 미드필더처럼 들어가면 풀백이 높이 올라간다) — Mekin=McGinn 오인식 · 사용자 H2 장면 A를 상대가 확인",
+    "[04:33] 「topu kaptırdığın an zınk diye çıkıyorlar」(공을 빼앗기는 순간 튀어 나간다)",
+    "[11:16] 측면에서 오는 선수를 상대한 슈크리니아르가 느렸다(실명 매칭은 추정)"
+   ],
+   "kind": null,
+   "lang": "tr",
+   "obs_points": [],
+   "published": "2026-10-14",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "Erdal Vahid 하프타임 방송(터키어 · 자막 기준). 진행자는 실점이 모두 자기 팀 실수(볼 손실·코너 수비)라고 보면서도, 경기 전 맥긴이 안으로 들어가면 풀백이 높이 올라오는 빌라 오른쪽 구역을 공략 지점으로 찍었고 실제로 오우즈 쪽에서 그 공간을 썼다고 말한다. 빌라가 볼 탈취 직후 튀어나가는 운동능력 우위도 짚는다.",
+   "team_code": "AVL",
+   "title": "SOYUNMA ODASI | Aston Villa - Fenerbahçe",
+   "transcript_path": "reports/transcripts/0gVa5S7jvvE.tr.md",
+   "url": "https://www.youtube.com/watch?v=0gVa5S7jvvE",
+   "video_id": "0gVa5S7jvvE"
+  },
+  {
+   "channel": "Erdal Vahid",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 278,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "[20:44] 6골 대부분은 페네르 실수라는 인식",
+    "[43:35~45:40] 카르탈 회견 생중계 — 캉테 100% 아님·62′ 이후 붕괴",
+    "[48:14] 채팅 인용 xG 3.07 vs 1.9 — 아침 스냅샷과 일치(이후 Opta 개정 3.11/1.73)"
+   ],
+   "kind": "감독회견",
+   "lang": "tr",
+   "obs_points": [],
+   "published": "2026-10-14",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "Erdal Vahid 경기 후 라이브(터키어 · 자막 기준). 제목과 달리 진행자는 「오늘은 전술을 다루지 않겠다」며 페네르 감독·이사회·위크섹 비판 방송으로 진행한다. 6골 대부분이 자기 팀 실수라는 인식, 0-0 때 무리키·오우즈의 결정적 기회 2개를 반복하고 카르탈 회견을 생중계한다.",
+   "team_code": "AVL",
+   "title": "İNGİLTERE'DE REZALET! ASTON VILLA - FENERBAHÇE | MAÇ SONU TAKTİK ANALİZ VE YORUMLAR",
+   "transcript_path": "reports/transcripts/uxFxJ4CkKKc.tr.md",
+   "url": "https://www.youtube.com/watch?v=uxFxJ4CkKKc",
+   "video_id": "uxFxJ4CkKKc"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 273,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "[00:41] 「we'd probably go into that little bit more of a back three more with Wasaka holding」(완비사카가 남는 백 3 성향) — 실측과 충돌(완비사카 상대 3분의 1 국면 67.6m)",
+    "[02:45] 만잠비 어깨 페인트 후 안으로 꺾어 PK 획득",
+    "[03:15] 음바예 1대1에서 동료를 찾아야 한다는 요구 · 후반 맥긴 연결",
+    "[05:51] 「[Mbaye] had cramp at the end of the game」(음바예가 경기 막판 쥐) — 이름은 auto-caption 'Abby Bay' 오인식",
+    "[13:02] 알리송 아브라함 골 도움 · 바이라인 수비 태클"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-14",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "UTV 경기 후 리액션(자막 기준). 진행자는 경기 전 예상대로 완비사카가 남는 「백 3」 성향이 나왔고 캐시와 정통 윙어 음바예가 살아났다고 본다. 잭슨을 MOTM으로, 만잠비의 어깨 페인트→컷인 PK 획득을 짚고, 음바예는 1대1에서 동료를 찾는 판단이 필요하다고 평가한다. 음바예는 경기 막판 쥐(cramp)가 났다고 말한다.",
+   "team_code": "AVL",
+   "title": "UNAI EMERY 2.0 JUST BATTERED FENERBAHCE 6-0 | NICOLAS JACKSON IS UNBELIEVABLE",
+   "transcript_path": "reports/transcripts/QvSAp_5vzGc.en.md",
+   "url": "https://www.youtube.com/watch?v=QvSAp_5vzGc",
+   "video_id": "QvSAp_5vzGc"
+  },
+  {
+   "channel": "ÇUBUKLU ANALİZ",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-15] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 271,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "focus": null,
+     "player": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "[11:13] 스즈키 약점: 공을 완전히 잡지 못하고 튕겨낸다(D등급 · 실측 근거 없음)",
+    "[08:34] 경기 전 빌라 맥락 PL 16위·전환율 8%",
+    "[19:28] 위크섹 평점 3.4~3.9"
+   ],
+   "kind": "감독회견",
+   "lang": "tr",
+   "obs_points": [],
+   "published": "2026-10-14",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "ÇUBUKLU ANALİZ 경기 후 라이브(터키어 · 자막 기준). 대부분 페네르 이사회·감독·스쿼드 비판이다. 빌라 관련으로는 스즈키가 공을 튕겨낸다는 약점을 사전에 짚었는데 슈팅으로 공략하지 않았다는 지적, 경기 전 빌라가 PL 16위·전환율 8%였다는 맥락이 있다.",
+   "team_code": "AVL",
+   "title": "Aston Villa - Fenerbahçe UEFA CL Maç Sonu Özel",
+   "transcript_path": "reports/transcripts/1f5xSVFj_VU.tr.md",
+   "url": "https://www.youtube.com/watch?v=1f5xSVFj_VU",
+   "video_id": "1f5xSVFj_VU"
+  },
+  {
    "channel": "1874 : The Aston Villa Channel",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 267,
@@ -10475,6 +10999,21 @@
    264,
    259,
    266
+  ],
+  "55": [
+   275,
+   274,
+   272,
+   279,
+   281,
+   277,
+   280,
+   276,
+   269,
+   270,
+   278,
+   273,
+   271
   ]
  }
 }

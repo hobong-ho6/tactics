@@ -420,6 +420,91 @@
 - **기사**: Sky·GMS·101GG·Virgilio·Hürriyet·Sporx·Fanatik·게키사카·풋볼채널·20 Minuten.
 - **본인 발언**: 0건(회견 미색인) → D+2.
 
+## D+1 추적 2회차 (2026-10-15 22시 · 사용자 요청 재수집)
+
+> 같은 날 저녁 데이터·영상·회견을 다시 모았다. 아침 절은 고치지 않고, 바뀐 것과 새로 나온 것만 여기에 적는다(런북 §2-1a).
+> 사용자 의견 대조 결과를 주제별로 정리한 비교 리포트: [2026-10-14-avl-fenerbahce-user-review.md](2026-10-14-avl-fenerbahce-user-review.md)
+
+### 수치 정정 — Opta 사후 개정 (obs#1037)
+
+| 항목 | 06시 스냅샷(DB·본문 인용값) | 22시 재수신 |
+|---|---|---|
+| xG (FotMob = SofaScore) | 3.07 / 1.90 | **3.11 / 1.73** |
+| xG 오픈플레이 | 1.93 / 1.61 | 1.99 / 1.43 |
+| xGOT | 3.81 / 0.87 | **4.49 / 1.06** |
+| WhoScored 이벤트 | 1,439 | 1,447(변경 372 · 신규 9 · 삭제 1) |
+
+- `team_match_stats`와 본문 인용값은 덮지 않았다. xG 4종이 같은 스냅샷이어야 한다는 규약을 지키기 위해서다.
+- 같은 분석 로직을 새 이벤트로 다시 돌린 결과:
+  - **철회**: 「3-2일 때 CB 간격이 더 벌어진다(31.0 vs 25.3m)」 → 27.4 vs 28.8m로 차이가 없다.
+  - **약화되었지만 유지**:
+    - 음바예 전환 국면 인사이드 포워드·Balanced .882 → **.787**(1위는 유지 · 전환 8터치).
+    - 빌드업 분류 3-2 6 → 5 · 미분류 7 → 8.
+    - 린델뢰프 전반 수비 성공 높이 40.8m → 38.9m.
+  - 그 밖의 판정(2-4-4 · 스즈키 · 카마라/바클리 · 캐시 등)은 수치가 소수점 단위로만 움직였다.
+
+### 영상 — 경기 후 13편 전사·요약·구현 주장 적재
+
+- `match_videos` report #55, 요약 13편, `video_impl_claims` 17행. 모두 auto-caption이다.
+- ⚠️ 구단 공식 2편은 gemini variant 자막이라 인명 환각이 있다. 「Buendía」「Tielemans」 등 대목은 인용하지 않는다.
+
+| 영상 | 핵심 |
+|---|---|
+| UTV 전술 리뷰 `wnCdb0G15_I` | 「the Wasaka Power Lindelof setup at the back」(완비사카–파우–린델뢰프 후방 구성) · 린델뢰프 「play a little bit as a CDM」(CDM처럼) · 카마라 「more license to engage further forward」(더 앞에서 끊을 권한) · 「Emry doesn't press, but … he has his trigger points」(상시 압박이 아니라 트리거) |
+| UTV 리액션 `QvSAp_5vzGc` | 완비사카 잔류 「back three」 · 음바예 막판 쥐 |
+| The Villans `KwUfYF0H-IU` | 완비사카 백 3 + 캐시 전진 · 바클리 「he said he's fine」(괜찮다고 했다) |
+| 1874 `xvVFQUxGpLY` | 「a period in the first half where Manzambi decided to go out to the left and then [Mbaye] was … playing off Jackson」(전반 한동안 만잠비가 왼쪽으로, 음바예가 잭슨 뒤 지원 공격수처럼) — **사용자 H1과 같은 관찰** · 바클리 「more cramped than anything」(쥐로 추정) |
+| 구단 POST-MATCH LIVE `x69XueNTOV8` | 바클리 「he's okay. Just a bit of ice」(괜찮다, 얼음찜질 정도) · PK 키커 사전 지정 |
+| 에메리 구단 인터뷰 `tquE7w0cXLQ` | 「In the second half, we correct defensively a little bit more compact」(후반에 수비를 더 콤팩트하게 수정) |
+| 에메리 UEFA 회견 `jgZGB13_Qa0` | 전반 불만 · 잭슨 「today more right side」(오늘은 오른쪽 위주) · 「how Aaron is adapting in the left side as a fullback」(완비사카 왼쪽 풀백 적응) · 득점 경로 다변화 · 마지막 질문 「we will check tomorrow. I think is not so much」(내일 확인, 심하지 않은 것 같다 — 대상 불명) |
+| 터키 6편(Erdal Vahid ×2 · ÇUBUKLU · Serbest Sekiz · CNN TÜRK · Taflan) | 하프타임 「Mekin orta sahalaşıyor işte bek yüksek çıkıyor」(맥긴이 안으로 들어가면 풀백이 높이 올라간다 — H2 장면 A) · Serbest Sekiz 「birinci kademin ikinci kademe geçtiği anda … anlık baskılarını başlatıyor」(1선에서 2선으로 넘어가는 순간 즉시 압박 — UTV 「트리거」와 독립 교차) · 나머지는 페네르 내부 비판 |
+
+**⭐ 서사 vs 실측 충돌 (obs#1038)**
+- 빌라 쪽 팬 채널 3곳이 모두 「완비사카 후방 3인 잔류 + 캐시 윙백」으로 묘사했다. 2-4-4라는 표현은 없다.
+- 이벤트 실측은 이와 다르다.
+  - 완비사카는 빌드업 체인에서 터치라인 95% · 평균 52.2m였다.
+  - 볼이 상대 3분의 1에 있을 때 완비사카는 67.6m · y 84, 캐시는 72.4m였다.
+  - UEFA 트래킹 평균도 완비사카 40.6m ≈ 캐시 41.5m로 비대칭이 없다.
+- ⇒ 위치 주장은 실측이 이긴다. 해당 구현 주장은 `REJECTED`로 두고, 트래킹 프레임이 공개되면 재검토한다.
+- 사용자의 H11(2-4-4 · 양 풀백 터치라인)이 실측 쪽이다.
+
+### 회견·기사 (직접 읽음)
+
+**에메리** — TNT(BBC 「What Emery said」) · 회견(GOAL 2026-10-15 · MOMS) · VAVEL
+- 「Then how we played in the first half I was not so happy」(전반 경기 내용은 만족스럽지 않았다)
+- 「Sometimes we needed the first medium and low block, but we could have a very good transition as well」(때로는 미드·로블록이 필요했지만 아주 좋은 전환도 할 수 있었다)
+- 「We did some changes to get other players confidence and minutes」(다른 선수들에게 자신감과 출전 시간을 주려고 교체했다)
+- 잭슨에 대해 「We need him always to be in the box when we're attacking」(공격할 때는 늘 박스 안에 있어야 한다)
+- ⇒ **H4 의도(우측 빌드업)와 만잠비·음바예·맥긴 배치 의도에 대한 언급은 0건**이다. H4 「의도」는 판정 불가로 유지한다.
+
+**카르탈** — Fotomaç 2026-10-15 00:34
+- 「Bu kadar yüksek seviyede bu kadar basit pas hataları yapmamak gerekiyor. Yapınca çok çabuk cezalandırıyorlar.」(이 수준에서 이렇게 단순한 패스 실수를 하면 안 된다. 하면 아주 빨리 응징당한다)
+- 「maçın hakkı bu değil」(이게 경기의 정당한 결과는 아니다)
+
+**터키 칼럼** — Fotomaç 「Spor yazarları」 2026-10-15
+- Emre Bol: 「Kaptırdığı 3 top Fenerbahçe kalesinde gol oldu」(위크섹이 빼앗긴 공 셋이 실점이 됐다)
+- Mustafa Çulcu: 에데르송 「sanki kabul günündeydi」(다과회에 온 것 같았다)
+- 슈크리니아르 대 음바예 구도를 다룬 칼럼은 0건이다.
+
+**UEFA 공식 POTM**: **만잠비**(match.uefa.com `playerOfTheMatch`).
+
+### 부상 갱신 (obs#1039)
+
+| 선수 | 부위·성격 | 근거 | 사용자 의견 대비 |
+|---|---|---|---|
+| 음바예 | **쥐(cramp)** 쪽 서술 4곳(UTV·The Villans·1874·구단 라이브) · Flashscore 「Injury 15.10.2026 – ?」 신규 · Dsports.sn 「s'est arrêté net, touché physiquement」(그 자리에 멈췄다, 몸에 이상) | 팬·매체 서술(D) + 집계 사이트(B) · 구단·감독 발표 0 | 「햄스트링」은 **미확인** — 쥐 쪽 서술이 우세(D등급) |
+| 바클리 | 허벅지 위 → **고관절**(호들 TNT 「something around his hip area」 · GiveMeSport) · 경련 가능성 · 구단 라이브 「he's okay. Just a bit of ice」(괜찮다, 얼음찜질 정도) | 중계 관찰 + 여러 매체 + 본인 경유(C) | 「햄스트링 또는 골반」 중 **골반(고관절) 쪽과 정합** · 경미 신호 |
+
+- 장기 결장 신호는 없다 → T3 미개시.
+- 10-16(금) 뉴캐슬 사전 회견에서 확정한다(D+2 예약 회차).
+
+### 남은 것 → D+2
+- Erdal Vahid 후속편 `FpyrIVKt-MI`(수집 시 라이브 중)
+- HaytersTV 회견 `ddM3LcDNQx8` 대조
+- 1874 직관 영상
+- The Athletic Tanswell 「new front three」 본문(유료)
+- 10-16 에메리 사전 회견(부상)
+
 ## 9. 데이터 반영과 한계
 
 - **DB 추가**
