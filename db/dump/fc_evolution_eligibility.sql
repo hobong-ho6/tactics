@@ -4074,3 +4074,5 @@ INSERT INTO fc_evolution_eligibility VALUES('FC27',2488,176,263701,1,'2026-10-15
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2492,76,50590845,0,'2026-10-15','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2492&name=Jackson (2026-10-15 수집 · 범위: 내 구단 보유 카드)');
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2492,61,80652,1,'2026-10-15','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2492&name=Madjo (2026-10-15 수집 · 범위: 내 구단 보유 카드)');
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2490,11,264209,1,'2026-10-15','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2490&name=Bogarde (2026-10-15 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2512,8,257057,1,'2026-10-15','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2512&name=Onana (2026-10-15 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2515,8,257057,1,'2026-10-15','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2515&name=Onana (2026-10-15 수집 · 범위: 내 구단 보유 카드)');
