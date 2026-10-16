@@ -10,6 +10,15 @@ description: 시즌 중 정기 경기 수집 — 3팀(AVL·CHE·LIV)의 선수 �
 ## 0. 선행 게이트
 `python3 scripts/gates.py` 통과 확인. 실패 시 수집 중단하고 원인부터.
 
+## 0-1. ⭐⭐ 선수 상태 갱신 — 매 주간 회차 (2026-10-16 사용자 지적 「선수 메뉴에 부상이나 정보들이 다 옛날거야」)
+`player_status`(부상·출전 정지·계약 만료)와 FotMob 시즌 지표·시장가는 **이 단계 말고는 갱신하는 곳이 없다** —
+수집기는 있었지만 어느 루틴에도 걸려 있지 않아 09-22 이후 3주간 멈춰 있었다(선수 화면이 옛 부상을 그대로 보였다).
+```
+for t in AVL CHE LIV ATM; do .venv/bin/python scripts/collect_fotmob_players.py --team $t; done
+```
+- 경기 수집(§2)보다 **먼저** 돈다 — 부상·출전 정지가 그 주 결장 사유(§2-1 가용성)의 입력이다.
+- ⚠️ 집계 사이트는 해소된 부상을 늦게 내린다 — 화면이 「기록 모순」(부상 기록 이후 출전)을 따로 띄운다. 덮지 않는다.
+
 ## 1. 라운드 확인 (팀 루프: AVL → CHE → LIV)
 - `SELECT code, sofascore_id FROM teams` (AVL 40 · CHE 38 · LIV 44).
 - 브라우저를 sofascore.com/robots.txt 오리진에 띄우고 `/api/v1/team/<id>/events/last/0`으로
