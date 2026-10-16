@@ -524,6 +524,7 @@ def export_all(db_path=None, window="2026-summer"):
                           {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices,
                            "chem_styles": chem_styles, "squad": squad, "squad_slots": squad_slots,
                            "obj_tasks": obj_tasks, "ps_names": ps_names, "eligible": elig_rows,
+                           "cosmetic_keys": sorted(__import__("core.futgg_attrs", fromlist=["x"]).COSMETIC_UPGRADES),   # ⭐ 코스메틱 판정 정본(core/futgg_attrs)
                            # fut.gg 케미 신호(migration 055) — 최신 회차만. 배지는 등급이 아니라 AcceleRATE다.
                            #   ⭐ 「바뀐 행만 저장」(migration 106) — 최신 회차에 관측된 행 = last_seen이 최신인 행.
                            "chem_signals": _rows(con, """SELECT ea_item_id, style_name, accelerate, vote_pct

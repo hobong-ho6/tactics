@@ -93,6 +93,14 @@ NON_ATTR_OK = {
 }
 
 
+# ⭐⭐ **코스메틱(꾸미기) 보상 키 — 정본**(2026-10-16 사용자 지적 「이거 다 코스메틱 진화 같은데?」).
+#    ⛔ 종전엔 수집기(`collect_futgg_evolutions.py`)가 {"rarity_id"}만, 화면(`evorules.js`)은 「보상 없음」만 코스메틱으로 봐서
+#       10-16에 처음 나온 `cosmetic` 키(Arrow Spin·Prism Lights·배지 등)를 **양쪽 다 놓쳤다** — 같은 판정이 두 벌이었다.
+#    ⇒ 여기 한 곳에 두고 수집기는 import, 화면은 export(`cosmetic_keys`)로 받는다(불변규칙 13 ②).
+#    진화의 **모든 보상 키가 이 집합 안**이면 코스메틱 진화다(스탯·PlayStyle·역할 효과 0).
+COSMETIC_UPGRADES = frozenset({"rarity_id", "cosmetic"})
+
+
 # ⭐⭐ **6대 스탯을 직접 올리는 보상**(2026-10-02 사용자 지시 「(나)로 고쳐줘」).
 #    Midfield Polish(face_passing·face_defending) · Trust the Keeper(gk_face_positioning) ·
 #    Frontline Flair(face_pace·face_shooting·face_dribbling) — 세 진화로 번져 「등록만」으로 둘 수 없게 됐다.

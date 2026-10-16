@@ -39,7 +39,7 @@ API = "https://www.fut.gg/api/fut"
 
 # ⛔ 표는 `core/futgg_attrs.py`가 정본이다(2026-09-23에 네 벌을 하나로 합쳤다 —
 #    한 곳만 키가 틀려 「프리킥 정확도」가 100% 누락된 사고가 있었다).
-from core.futgg_attrs import ATTR_KR as ATTR_KR  # noqa: E402
+from core.futgg_attrs import ATTR_KR as ATTR_KR, COSMETIC_UPGRADES  # noqa: E402  ⭐ 코스메틱 키 정본
 from core.evo_paths import content_key, seen_on  # noqa: E402
 SIX = [("facePace", "PAC"), ("faceShooting", "SHO"), ("facePassing", "PAS"),
        ("faceDribbling", "DRI"), ("faceDefending", "DEF"), ("facePhysicality", "PHY")]
@@ -89,7 +89,6 @@ def step_of(card, i, playstyle):
 #      원래 갖고 있던 Role+가 그대로 찍힌다. 2026-09-22에 그걸 이득으로 오독해 「코스메틱 아니다」로 잘못 보고했다.
 #      **반드시 기준 카드(`player_card_items`)와 before/after로 대조**한다.
 #    ⭐ 모르는 upgrade 키는 **실효로 간주**한다 — 놓쳐서 남기는 쪽이 잘못 지우는 쪽보다 안전하다.
-COSMETIC_UPGRADES = {"rarity_id"}
 
 
 def _upgrade_keys(e):

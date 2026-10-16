@@ -206,9 +206,13 @@ export function evoRules(EVO, accName){
   /* ⭐ **꾸미기 진화**(2026-10-02 사용자 지시 「꾸미기용 진화는 진화 목록에서 제거」) — 모든 단계의 보상이 비어 있다
      (Cosmetic Badge 1·2 · Season 1 Badge — EA 설명 「Applies a cosmetic badge to any player.」). 능력치가 없어 고를 거리가 없다.
      ⛔ 이름이 아니라 **보상이 비었는가**로 가른다 — 이름만 보면 다음 시즌 배지(이름이 다른)를 놓친다. */
+  /* ⭐⭐ 코스메틱 진화 = 모든 보상 키가 코스메틱 키 안(보상이 아예 없어도 코스메틱). 키 목록 정본은 core/futgg_attrs.COSMETIC_UPGRADES
+     (export `cosmetic_keys`) — 2026-10-16 새 키 `cosmetic`을 이 판정이 놓쳐 Arrow Spin·배지류가 카탈로그·추천에 떴다. */
+  const COS = new Set(EVO?.cosmetic_keys || ['rarity_id', 'cosmetic']);
+  const keysOf = L => [...(L.upgrades || []), ...(L.upgradeOptions || []).flatMap(o => Array.isArray(o) ? o : (o?.upgrades || []))].map(u => u.upgrade);
   const cosmeticIds = new Set((EVO?.catalog || []).filter(c => {
     let lv = []; try { lv = JSON.parse(c.levels || '[]') || []; } catch (e) { return false; }
-    return lv.length > 0 && lv.every(L => !(L.upgrades || []).length && !(L.upgradeOptions || []).length);
+    return lv.length > 0 && lv.every(L => keysOf(L).every(k => COS.has(k)));
   }).map(c => c.evo_id));
   const premIds = new Set(Object.keys(lockInfo).map(Number));
   const neverIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.never).map(([k]) => +k));   // 영영 못 받는 진화 — 화면이 목록에서 뺀다
