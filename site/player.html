@@ -342,7 +342,7 @@ function renderEval(n, sel){
      ⇒ 선두의 등급 토큰(S/A/B/C/D/F[+-])만 떼고 구분자는 —·-·→·: 중 무엇이든 허용한다.
      등급으로 시작하지 않으면 배지 없이 전문을 본문으로 낸다. */
   const ov = e.overall||'';
-  const mOv = ov.match(/^\s*([SABCDF][+\-]?)\s*(?:—|→|-|:)?\s*([\s\S]*)$/);
+  const mOv = ov.match(/^\s*([SABCDF][+\-−]?)\s*(?:—|→|-|:)?\s*([\s\S]*)$/);
   const grade = mOv ? mOv[1] : '';
   const ovBody = mOv ? mOv[2].trim() : ov.trim();
   /* ⭐ 신선도 배지 (2026-09-13 신설, 사용자 논의 「평가는 어떤 주기로 갱신하나」).
