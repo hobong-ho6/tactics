@@ -973,11 +973,23 @@ def main():
     if EXCL:
         print(f"🚫 챌린지별 제외 {sum(len(v) for v in EXCL.values())}건 / {len(EXCL)}챌린지")
     ok, no, undec, oneclick, noform = [], [], [], [], []
+    # ⭐⭐ **해법끼리 카드를 겹치지 않게 나눠 준다**(2026-10-16 사용자 지적 「sbc 해법 4개에 겹치는 카드가 있어? 하나 제출하면 다시 계산해야 하잖아」).
+    #    ⛔ 종전엔 챌린지마다 **같은 풀 전체**로 따로 풀어서 Marquee Matchups 4건 해법 31장 중 10장이 둘 이상에 들어갔다
+    #       (Abdelkarim은 4건 전부) — 하나를 내면 나머지 해법이 깨졌다.
+    #    ⇒ 앞에서 쓴 카드는 뒤 챌린지 풀에서 뺀다(`taken`). 순서: ⑴ 마감이 빠른 세트부터(곧 사라지는 SBC가 먼저 가져간다)
+    #       ⑵ 같은 마감 안에선 1인 조건 통과 카드가 적은 챌린지부터(선택지가 좁은 쪽이 먼저 골라야 전체가 풀릴 확률이 높다 · 판단값).
+    #    ⚠️ SBC 고정 카드(FIXED)는 내 카드가 아니라 빼지 않는다. 원클릭은 인원을 몰라 배정하지 않고 통과 수만 센다.
+    def _order(r):
+        conds0, bad0 = parse(json.loads(r["requirements_text"] or "[]"))
+        n = len([p for p in pool if per_player_ok(p, conds0)]) if not bad0 else 10**6
+        return (r["end_time"] or "9999", n)
+    rows = sorted(rows, key=_order)
+    taken = set()
     for r in rows:
         conds, bad = parse(json.loads(r["requirements_text"] or "[]"))
         if bad:
             undec.append((r, bad)); continue
-        ex = EXCL.get(r["challenge_ea_id"]) or set()
+        ex = (EXCL.get(r["challenge_ea_id"]) or set()) | taken
         pool_c = [p for p in pool if p["id"] not in ex] if ex else pool
         CUR_FORM[0] = FORM_OF.get(r["challenge_ea_id"])
         size = next((v for (k, v), _ in conds if k == "size"), None)
@@ -993,10 +1005,13 @@ def main():
             noform.append((r, [p for p in pool_c if per_player_ok(p, conds)])); continue
         xi, cands, best = solve(pool_c, conds, size, a.tries, rng,
                                 fixed=FIXED.get(r['challenge_ea_id'], []))
+        if xi:
+            taken |= {p["id"] for p in xi if not p.get("fixed")}     # 이 해법이 쓴 내 카드 — 뒤 챌린지는 못 쓴다
         (ok if xi else no).append((r, xi, size, cands, conds, best))
 
     def head(r):
         return f"{r['set_name']} › {r['name']}"
+    print(f"\n🧩 해법끼리 카드 겹침 없음 — 배정한 카드 {len(taken)}장(마감 빠른 세트 → 선택지 좁은 챌린지 순)")
     print(f"\n{'='*70}\n■ 달성 가능 {len(ok)} · 불가/못 찾음 {len(no)} · 원클릭 {len(oneclick)} · 판정 불가 {len(undec)} · 포메이션 입력 필요 {len(noform)}\n{'='*70}")
     for r, cs in noform:
         print(f"  📐 {head(r)} — 포메이션 미기록이라 풀지 않았다(조건 통과 {len(cs)}장). 화면에서 포메이션을 입력하면 재계산된다")
