@@ -3654,7 +3654,7 @@ function renderSbc(){
       const box = document.getElementById(`sbcs${id}`);
       b.disabled = true;
       if (box && !await fresh(id, box)) { b.disabled = false; return; }
-      if (box) box.innerHTML = `<span class="dim">${undo ? '되돌리고' : '기록하고'} 남은 SBC를 다시 푸는 중… (수십 초)</span>`;
+      if (box) box.innerHTML = `<span class="dim">${undo ? '되돌리고 남은 SBC를 다시 푸는 중… (수십 초)' : '기록하는 중… (남은 해법과 겹치는 카드가 있을 때만 다시 푼다)'}</span>`;
       const r = await api('sbc_submit', { challenge: id, undo, game: 'FC27',
                                           cards: !b.hasAttribute('data-nocards') });
       say(box, r); b.disabled = false;

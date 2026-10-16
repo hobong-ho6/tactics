@@ -427,6 +427,30 @@ def _resolve():
     print(r.stdout.strip()[-600:] if r.returncode == 0 else "⛔ 재계산 실패:\n" + (r.stdout + r.stderr)[-600:])
 
 
+def _resolve_if_overlap(con, ch, ids, sids):
+    """⭐⭐ **제출한 카드가 남은 다른 해법에 들어 있을 때만 재계산**(2026-10-16 사용자 제안 「카드가 안 겹치면 제출해도
+       재계산 안 해도 되지 않아? 겹칠 때만 재계산」). `sbc_solve.py`가 해법끼리 카드를 겹치지 않게 나눠 주므로(taken)
+       우리 해법대로 냈다면 남은 해법은 그대로 유효하다 — 몇 분짜리 탐색을 매번 돌릴 이유가 없다.
+       ⚠️ 해법이 그 규칙 이전에 저장됐거나 손으로 다시 푼 챌린지가 섞여 있으면 겹칠 수 있다 → 그때만 다시 푼다."""
+    used = set(ids) | {-x for x in sids}
+    hit = {}
+    for cid, sj in con.execute("""SELECT challenge_ea_id, squad_json FROM fc_sbc_solutions
+                                   WHERE pulled=(SELECT MAX(pulled) FROM fc_sbc_solutions)
+                                     AND verdict='ok' AND challenge_ea_id<>?""", (ch,)):
+        try:
+            pl = json.loads(sj or "{}").get("players") or []
+        except (ValueError, AttributeError):
+            continue
+        n = sum(1 for p in pl if p.get("id") in used)
+        if n:
+            hit[cid] = n
+    if hit:
+        print(f"🔁 낸 카드가 남은 해법 {len(hit)}건에 들어 있다(카드 {sum(hit.values())}장) — 다시 푸는 중…")
+        _resolve()
+    else:
+        print("⏭️ 재계산 건너뜀 — 낸 카드가 남은 해법 어디에도 없다(해법끼리 카드가 겹치지 않게 나눠 둔 상태). 남은 해법은 그대로 낼 수 있다.")
+
+
 def cmd_sbc_submit(con, a):
     """⭐⭐ **SBC를 제출했다고 표시하고, 그 11장을 구단에서 덜어낸다**(2026-09-26 사용자 지시
        「sbc를 제출해서 내가 완료처리할 수 있도록 하고, 완료처리되면 해당 스쿼드의 선수들은
@@ -478,9 +502,10 @@ def cmd_sbc_submit(con, a):
                      "squad_note를 비운다. 소모된 카드는 다음 클럽 싱크가 잡는다.",
                      row["name"]))
         con.commit()
+        # ⭐ 재계산하지 않는다(2026-10-16) — 낸 카드를 모르니 다시 풀어도 같은 풀이라 같은 답이다(카드가 아직 「보유」다).
         print(f"🏁 {row['name']} 완료 처리(기록만) — 낸 카드는 모르므로 구단은 건드리지 않았다. "
-              f"다음 클럽 싱크가 사라진 카드를 잡는다. 다시 푸는 중…")
-        _resolve()
+              f"⏭️ 재계산도 건너뛴다(낸 카드를 몰라 다시 풀어도 같은 결과) — 다음 클럽 싱크가 사라진 카드를 잡은 뒤 다시 풀린다. "
+              f"⚠️ 그 사이 남은 해법에 이번에 낸 카드가 들어 있을 수 있다.")
         return
 
     if row["verdict"] != "ok" or not row["squad_json"]:
@@ -520,8 +545,8 @@ def cmd_sbc_submit(con, a):
         n += con.execute("UPDATE fut_sbc_storage SET status='used', used_challenge_ea_id=?, used_at=? "
                          "WHERE id IN (%s)" % ",".join("?" * len(sids)), [ch, TODAY] + sids).rowcount
     con.commit()
-    print(f"🏁 {row['name']} 완료 처리 — 카드 {n}장을 구단에서 덜어냈다. 남은 SBC를 다시 푸는 중…")
-    _resolve()
+    print(f"🏁 {row['name']} 완료 처리 — 카드 {n}장을 구단에서 덜어냈다.")
+    _resolve_if_overlap(con, ch, ids, sids)
 
 
 def cmd_sbc_exclude(con, a):
