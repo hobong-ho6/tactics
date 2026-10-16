@@ -505,6 +505,111 @@
 - The Athletic Tanswell 「new front three」 본문(유료)
 - 10-16 에메리 사전 회견(부상)
 
+## D+2 추적 (2026-10-16)
+
+> 예약 회차 `mw-avl-fenerbahce-d2`(10-16 20시 KST). 앞 절은 고치지 않고 새로 나온 것·바뀐 판정만 적는다(런북 §2-1a). obs#1043~#1045.
+> ⚠️ **유튜브 자막이 IP 단위로 막혔다**(yt-dlp `HTTP 429` · 브라우저 플레이어의 timedtext 요청도 Google 「Sorry」 페이지 · `get_transcript`도 400). 그래서 이번 회차에는 **새 영상 전사가 0편**이다. 목록·메타(제목·게시일·설명)는 받았고, 미전사 목록은 아래에 있다 → D+3에서 다시 시도한다.
+
+### 영상 스윕 — 검색 필터 「이번 주 업로드」 · 10개 검색어(영·터키어)
+
+**새로 찾은 경기 후 영상** (D+1 13편 외 · 모두 미전사)
+
+| 영상 | 채널 · 게시 · 길이 | 관점 | 상태 |
+|---|---|---|---|
+| `ep7Z6uO14Qw` 「Fenerbahçe 6-0'ı Nasıl Yaşadı? \| Aston Villa Maçının Taktik Analizi」(페네르바흐체는 6-0을 어떻게 겪었나 — 빌라전 전술 분석) | Maç Krokisi · 10-15 · 8:55 | 상대 · **전술 분석** | ⛔ **자막 자체가 없다**(자동 자막 미생성). 설명란 목차: 「Unai Emery'nin Fenerbahçe karşısındaki oyun planı」(페네르바흐체 상대 에메리의 경기 계획) · 31′·39′ 볼 손실 · 위크섹 실수. H4에 가장 직접적인 영상인데 텍스트화 경로가 없다 |
+| `FpyrIVKt-MI` 「YANLIŞ KURGU OYUNCU YER!」(잘못된 설계는 선수를 잡아먹는다) | Erdal Vahid · 10-15 · 1:06:53 · 라이브 다시보기 | 상대 · 전술+구단 운영 | 429(D+1이 넘긴 후속편) |
+| `AsRYfLpTxE4` 「Türk Futbolunun İflası」(터키 축구의 파산) | Hastalık Bu Futbol · 10-15 · 24:54 | 상대 · 「피지컬·습관」 진단 | 429 |
+| `_obbp4s39VM` 분석 데스크(아센시오·루카쿠·캉테 · 위크섹) | Sports Digitale · 10-16 · 27:52 | 상대 · 구단 내부 | 429 · 경기 전술 비중 낮음(설명란) |
+| `4d4Ge5WVpO0` 「Aston Villa SMASH Fenerbahce 6-0」 | The Claret & Blue Podcast · 10-14 · 45:09 | AVL 팬 | 429 |
+| `C5Q00mjTo9A` 「Villa must harness Champions League momentum against Newcastle」 | The Claret & Blue Podcast · 10-15 · 38:20 | AVL 팬 · 다음 경기 | 429 |
+| `mm4k08Zodeg` 「Watching Aston Villa score SIX GOALS」 | 1874 · 10-15 · 21:33 | AVL 직관 영상(D+1이 넘긴 것) | 429 |
+| `QCcIEinMSy0` 「Villa RUN RIOT In The CHAMPIONS LEAGUE」 | Villa On Tour · 10-15 · 18:09 | AVL 직관 | 429 |
+| `ddM3LcDNQx8` 「Jackson's NOT ON PENALTIES \| Unai Emery」 | HaytersTV · 10-14 · 11:09 | 에메리 UEFA 회견 | 429. D+1에 전사한 `jgZGB13_Qa0`(11:53, 같은 회견 전체)과 같은 회견으로 보인다 → 대조는 D+3 |
+
+- **필수 3채널(UTV · The Villans · 1874)의 새 경기 분석은 0편**이다. UTV는 전술 리뷰(`wnCdb0G15_I`) 뒤로 뉴캐슬 워치얼롱 예고(`ZgK_KsV2gTs`)만 올렸다. The Villans는 `KwUfYF0H-IU` 이후 새 영상이 없다. 1874는 직관 영상 `mm4k08Zodeg` 하나만 새로 나왔다.
+- 시도한 검색어: 「aston villa fenerbahce」 · 「utv aston villa」 · 「the villans aston villa」 · 「1874 aston villa」 · 「emery press conference newcastle」 · 「aston villa newcastle preview」 · 「fenerbahçe aston villa analiz」 · 「fenerbahçe aston villa taktik」 · 「mbaye injury」 · 「barkley injury villa」
+
+### 전술 블로그·기사 (직접 읽음)
+
+- **Claret Villans** · Mark Oldacres (LiveScore 재게재)
+  - 「Villa's left side was the big ticket item on Wednesday night」(수요일 밤의 핵심은 빌라 왼쪽이었다)
+  - 「with Manzambi usually the conductor feeding passes through to Mbaye or Jackson」(대개 만잠비가 지휘자로 음바예나 잭슨에게 스루패스를 넣었다)
+- **GOAL 평점** · Yosua Arya (10-15): 에메리 9/10
+  - 「By inviting Fenerbahce to press and then exploiting the resulting spaces with direct passing」(페네르바흐체의 압박을 유인한 뒤 생긴 공간을 직선 패스로 공략했다)
+  - 맥긴: 「Deployed as a right winger, McGinn frequently dropped into midfield」(오른쪽 윙어로 배치됐지만 자주 중원으로 내려왔다) — H2 「맥긴 안쪽 · 캐시 바깥」 장면과 같은 방향
+- **Roundtable** · Dan Bardell (10-15 · 1874 진행자 본인)
+  - 「there was a period in the first half where Manzambi moved towards the left before coming closer to Jackson」(전반 한동안 만잠비가 왼쪽으로 갔다가 잭슨 가까이 붙었다)
+  - 「almost operating as a second striker in a way that reminded me of how Moussa Diaby was sometimes used at Villa」(디아비가 빌라에서 가끔 쓰이던 방식처럼 거의 세컨드 스트라이커로 뛰었다)
+  - 음바예: 「It was hardly surprising to see him struggling with cramp towards the end given how much running he had done.」(그만큼 뛰었으니 막판에 쥐로 고생한 건 놀랍지 않았다)
+- **구단 공식** 「Six talking points」(10-15): 음바예 「surging runs and trickery」(치고 나가는 돌파와 기술) · 부상 언급 0
+- **The Athletic** Tanswell 「three new, compelling attackers」(10-15 · Bluesky로 링크 확인) — `nytimes.com`이 WebFetch·브라우저 모두에서 차단돼 본문 0. Bluesky 게시물에 인용된 바클리 발언만 확인했다: 「Only 18, but so much ability.」(음바예 — 겨우 18살인데 재능이 대단하다)
+- **Tanswell Bluesky**: D+1 이후 게시물은 위 1건뿐이다(10-15 06:42Z).
+
+### 감독 회견
+
+**에메리**
+- 경기 후 회견은 D+1에 다 읽었다(새 원문 없음).
+- **뉴캐슬전 사전 회견(10-16 금)은 이 회차 시점에 아직 열리지 않았다.** avfc.co.uk 뉴스 목록 최신 항목이 「NEWCASTLE FPL PREVIEW」(3시간 전)이고 prematch 회견 기사는 없다. 킥오프는 10-17(토) 17:30 BST(= 10-18 01:30 KST)다.
+- ⇒ H4 「의도」와 부상 1차 발표 모두 **D+3(10-17 20시)**이 읽는다.
+
+**카르탈** (haberler.com 10-15 01:03 · 회견 발췌, 직접 읽음 · D+1의 Fotomaç 인용을 보강)
+- 「Çok fazla değerlendirecek bir durum yok.」(평가할 것이 별로 없다)
+- 「Bu kabul edilebilir bir durum değil.」(받아들일 수 없는 일이다) — 뒤이어 팬들에게 사과
+- 「Kante ile konuştuk, iyi olmadığını söyledi.」(캉테와 얘기했는데 몸이 좋지 않다고 했다) — 예정했던 교체를 캉테 대신 바르투으로 바꿨다
+- 「Ama 62'nci dakikaya kadar takım iyi reaksiyon verdi.」(그래도 62분까지는 팀이 잘 반응했다) — 붕괴 시점을 PK 실점으로 본다
+- ⇒ **빌라 전술(측면·압박 유인)에 대한 언급은 0**이다. 상대 감독도 원인을 자기 팀 패스 실수로 돌린다.
+
+### 터키어 칼럼 (상대 관점 · 10-15 게재분 추가)
+
+- Hürriyet · Güntekin Onay: 「Dün de sadece 3'üncü bölgede hızlı hareket ederek, hatalardan faydalanarak 6 gol buldular.」(어제도 마지막 3분의 1에서만 빠르게 움직이고 실수를 이용해 6골을 넣었다)
+- Milliyet · Halil Özer: 「Hızlı ve çabuk adamlarla karşı karşıya kaldı.」(빠르고 민첩한 선수들을 상대해야 했다)
+- Milliyet 제목 「Maçın tek sorumlusu İsmail Kartal'dır」(이 경기의 유일한 책임자는 이스마일 카르탈이다) · Mynet 「İki İsmail'e yazar」(두 이스마일 탓 — 카르탈·위크섹)
+- ⇒ D+1과 같다. 실점 귀속은 위크섹의 볼 손실이고, 빌라 구조를 해부한 칼럼은 0이다.
+
+### 부상 추적 — D+2 (obs#1043)
+
+| 선수 | D+2 새 근거 | 판정 |
+|---|---|---|
+| 음바예 | **FPL 공식 status `a`**(출전 가능 · news 공란 · 10-16 20시 조회) · APS 「Mbaye est toutefois sortie sur blessure à la 79e mn.」(음바예는 다만 79분에 부상으로 나갔다 — 부위 없음) · Bardell 「cramp」(1874와 같은 사람) | **쥐 쪽 유지**. 「햄스트링」은 미확인이다 — 같은 FPL 응답에서 햄스트링은 **루제리**(「Hamstring injury - Unknown return date」)다 |
+| 바클리 | **FPL status `a`** · GiveMeSport 「could just as easily have been a muscular issue」(근육 문제였을 수도 있다) · 예상 라인업 기사 2곳은 바클리를 빼고 고메스/부엔디아를 넣었다(출처 없는 추정) | 경미 신호 유지 · 출전 여부는 금요일 회견에서 나온다 |
+
+- 장기 결장 신호가 없어 **T3는 열지 않는다.**
+- 프랑스어·세네갈 매체(APS · allAfrica · Wiwsport · Foot Mercato)에서 부위를 적은 곳은 0이다.
+
+### 가설·판정 재판정
+
+| 항목 | D+1까지 | D+2 | 근거 |
+|---|---|---|---|
+| **H4** 우측 빌드업 → 좌측 뒷공간 | 측면은 불일치 · 의도는 판정 불가 | **둘로 나눈다** (obs#1044) — H4a 「좌측(음바예 배후)이 주 공격 채널」은 **서사 지지**(D · 독립 3). H4b 「**우측** 빌드업으로 유인」은 **실측 불일치 유지**. 「의도」는 **판정 불가 유지** → D+3 | Claret Villans · GOAL · Milliyet. 4개 언어 어느 서사도 「우측에서 시작」을 말하지 않는다. 유인의 정체는 측면이 아니라 **압박 유인 + 직선 전진**(GOAL)이다 |
+| **H1** 만잠비↔음바예 | 부분 일치(1874 보강) | **부분 일치 유지 — 보강 근거 정정** (obs#1045) | 아래 「D+1 판정 정정」 |
+| H2 캐시↔맥긴 | — | 방향 보강(D) | GOAL 「McGinn frequently dropped into midfield」(맥긴이 자주 중원으로 내려왔다) |
+| 그 밖의 H3·H5~H15 | — | 새 자료 없음 | — |
+
+**⭐ D+1 판정 정정 (obs#1045)**
+- D+1 2회차는 1874 라이브(`xvVFQUxGpLY` [20:53]) 「…and then B was kind of playing off Jackson」을 **「음바예가 잭슨 뒤 지원 공격수처럼」**으로 읽었다(`[Mbaye]`를 보충). 그리고 사용자 H1과 같은 관찰로 적었다(D+1 영상 표 · user-review H1 행 · `match_videos` 요약).
+- 그런데 같은 진행자가 다음 날 쓴 글은 **세컨드 스트라이커가 만잠비**라고 적는다(위 Roundtable 인용). 자동 자막 「B」보다 본인이 쓴 문장을 채택한다.
+- ⇒ ⑴ 「음바예 안쪽」을 받치는 독립 서사는 0이 된다. 실측 교대 2체인은 그대로다.
+  ⑵ 만잠비가 「왼쪽으로 갔다가 다시 중앙」으로 오는 순서는 사용자 H1 문장 「만잠비가 왼쪽 측면에서 볼을 받아 중앙으로 들어오면」과 같다.
+  ⑶ 1874와 Roundtable은 같은 사람이라 교차검증으로 세지 않는다.
+- 앞 절과 `match_videos` 요약은 고치지 않는다(불변규칙 2). 정정은 이 절과 obs#1045에만 있다.
+
+### 다국어 점검 (불변규칙 10)
+
+| 언어 | 대상 | 결과 |
+|---|---|---|
+| 영어 | 필수 3채널 · 블로그 · 구단 · Tanswell | 위 표 |
+| 터키어 | 영상 4편 · 칼럼 · 카르탈 회견 | 영상은 미전사(429·자막 없음). 칼럼·회견은 읽었다 |
+| 스페인어(에메리) | 「Emery rueda de prensa Newcastle Aston Villa lesión Barkley Mbaye」 · 「análisis táctico Aston Villa Fenerbahçe Emery 6-0 Mbaye banda izquierda」 | 0건 — GOAL 스페인어판은 D+1과 같은 경기 후 발언이다 |
+| 프랑스어·세네갈(음바예) | 「Ibrahim Mbaye blessure Aston Villa ischio crampe」 · 「Ibrahim Mbaye forfait Newcastle」 · 「Mbaye Aston Villa crampes sortie Fenerbahçe Sénégal」 | APS 1건(부위 없음) · Foot Mercato(부상 언급 없음) |
+| 독일어·스위스(만잠비) | 「Manzambi Aston Villa Fenerbahce Blick … Rolle links」 | Blick 1건(생일 데뷔골 · 역할 서술 없음) |
+| 일본어(스즈키) | — | 새로 찾지 않았다. D+0 게키사카·풋볼채널 이후 H5 판정에 걸린 쟁점이 없다 |
+
+### 남은 것 → D+3 (10-17 20시)
+- **에메리 뉴캐슬전 사전 회견(10-16 금)** — 부상 1차 발표 · H4 의도 질문 여부 · 음바예 선발 언급
+- 유튜브 미전사 9편 다시 시도(위 표). Maç Krokisi는 자막이 없으니 제외한다
+- HaytersTV `ddM3LcDNQx8` ↔ `jgZGB13_Qa0` 같은 회견인지 대조
+- 위 결과에 따라 `match_reports` #55 complete 판정
+
 ## 9. 데이터 반영과 한계
 
 - **DB 추가**
