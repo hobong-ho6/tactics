@@ -610,6 +610,121 @@
 - HaytersTV `ddM3LcDNQx8` ↔ `jgZGB13_Qa0` 같은 회견인지 대조
 - 위 결과에 따라 `match_reports` #55 complete 판정
 
+## D+3 추적 (2026-10-17) — 3일 추적 마지막 회차
+
+> 예약 회차 `mw-avl-fenerbahce-d3`(10-17 20시 KST · 뉴캐슬 원정 킥오프 10-18 01:30 KST 전). 앞 절은 고치지 않고 새로 나온 것·바뀐 판정만 적는다(런북 §2-1a). obs#1046~#1047.
+> ⚠️ 예약 프롬프트는 이번에도 「원정」이라고 적었다. 머리 주석대로 실측은 **빌라 파크 홈**이다(불변규칙 3).
+
+### 영상 — 미전사분 재시도 (yt-dlp · 자막 en/tr)
+
+| 영상 | 채널 · 게시 · 길이 | 결과 |
+|---|---|---|
+| `1f5xSVFj_VU` 「Aston Villa - Fenerbahçe UEFA CL Maç Sonu Özel」(경기 후 특집) | ÇUBUKLU ANALİZ · 10-14 · 57:23 · 라이브 다시보기 | ✅ **전사**(터키어 auto-caption · D+0이 「라이브 중」으로 넘긴 것) |
+| `4d4Ge5WVpO0` 「Aston Villa SMASH Fenerbahce 6-0」 | The Claret & Blue Podcast · 10-14 · 45:09 | ✅ **전사**(영어 auto-caption) |
+| `C5Q00mjTo9A` 「Villa must harness Champions League momentum against Newcastle」 | The Claret & Blue Podcast · 10-15 · 38:20 | ✅ **전사**(영어 auto-caption) |
+| `ddM3LcDNQx8` HaytersTV 회견 · `FpyrIVKt-MI` Erdal Vahid · `uxFxJ4CkKKc` MAÇ SONU TAKTİK ANALİZ · `mm4k08Zodeg` 1874 직관 · `QCcIEinMSy0` Villa On Tour · `_obbp4s39VM` Sports Digitale | — | ⛔ 다시 **HTTP 429**(3일째) |
+| `AsRYfLpTxE4` Hastalık Bu Futbol | — | 자막 트랙 없음 |
+| `ep7Z6uO14Qw` Maç Krokisi | — | 자동 자막 미생성(D+2 확인) → 재시도 안 함 |
+
+⇒ **HaytersTV `ddM3LcDNQx8` ↔ `jgZGB13_Qa0` 대조는 끝내 못 했다.** 길이(11:09 vs 11:53)·제목·게시일로 보아 같은 UEFA 회견의 편집본으로 추정하고, 새 발언이 있을 가능성은 낮다고 보고 닫는다.
+
+**전사분에서 나온 것** (전부 auto-caption — 오인식 가능)
+
+- **Claret & Blue Podcast `4d4Ge5WVpO0`**
+  - [7:07] 「Manzambi knew that he could just knock that ball to either Jackson or [Mbaye] … It's just a foot race」(만잠비는 잭슨이나 음바예에게 공을 차 주기만 하면 된다는 걸 알았다 … 그냥 달리기 경주다). 자막의 「Emery and Buendía」는 문맥상 음바예의 오인식이다. → H4a(좌측 직선 전진) 방향
+  - [20:09] 「Barkley goes and scores two goals and that left hand side is pretty good」(바클리가 두 골을 넣었고 왼쪽이 꽤 좋았다) — 경기 전에는 「left side worries me」(왼쪽이 걱정된다)였다고 함께 말한다
+  - [22:59] 카마라: 「played that little bit higher up the pitch … between him and Barkley they were sort of interchanging」(조금 더 높게 섰고 … 바클리와 자리를 바꿨다) → **사용자 H4 높이 묘사와 같은 인상**(아래 판정)
+  - [10:05] 부상: 「Mbaye's cramp」(음바예는 쥐 — 진행자 2명) · [10:55] 「I thought it was a hamstring when he pulled up」(멈춰 설 때 햄스트링인 줄 알았다 — 1명) · 바클리 [10:10] 「pointing and scratching at his upper thigh like the front of his quad」(허벅지 위쪽, 대퇴사두 앞을 가리키며 긁었다)
+  - [20:23] 스즈키: 「One amazing one-on-one save … made me think ooh Martinez」(1대1 선방 하나는 마르티네스를 떠올리게 했다) — D+0 17′ 돌진 선방과 같은 장면
+- **Claret & Blue Podcast `C5Q00mjTo9A`** (다음 경기 프리뷰)
+  - [17:38] 「Villa don't dominate teams without the ball. We're not a counterattacking team.」(빌라는 공 없이 상대를 지배하는 팀이 아니다. 역습 팀이 아니다) — 6-0은 예외적 전환 경기라는 시각. 점유 45% 실측과 같은 방향
+  - 바클리 믹스존 발언은 Birmingham Live 전재라고만 말한다 → 아래 기사 절
+- **ÇUBUKLU ANALİZ `1f5xSVFj_VU`** (상대 관점 · 터키어)
+  - 대부분 구단 운영·위크섹 비판이다. 빌라 구조 해부는 0이다(D+1·D+2 터키 칼럼과 같다)
+  - [11:31] 「Suzuki top sektiriyor … Suzuki'nin üzerine şut hiçbir şekilde çekmedik」(스즈키는 공을 튕겨낸다 … 그런데 우리는 스즈키에게 슛을 전혀 때리지 않았다) — 상대 분석가가 본 **스즈키의 캐칭 약점**이다. H5(볼 플레잉 vs 스위퍼)와는 다른 축이라 판정에 쓰지 않고 기록만 한다
+  - [9:08] 「Kante'nin ve Asensio'nun kadroda olmaması bizim takım oyunumuzu bozdu」(캉테와 아센시오가 명단에 없어서 우리 팀 경기가 무너졌다) — 상대 결장 요인. D+2 카르탈 「캉테 몸이 안 좋았다」와 같은 방향
+
+### 감독 회견 — 에메리 뉴캐슬전 사전 회견(10-16 금)
+
+avfc.co.uk 원문 두 건(「Team news for Magpies meeting」 · 「Emery speaks ahead of Newcastle」)은 WebFetch에서 본문이 잘려 못 읽었다. 같은 회견을 옮긴 Hayters(Eddie Lyons) · ESPN · VAVEL(Emmanuel Adeyemi-Abere) 세 곳에서 인용했다.
+
+- **바클리**: 「Ross, we'll see this afternoon how he's coming along after the match on Wednesday. He played 85 minutes and was with some pain. We'll check him this afternoon.」(로스는 수요일 경기 뒤 어떤지 오늘 오후에 보겠다. 85분을 뛰었고 통증이 있었다. 오늘 오후 점검한다)
+- **전체**: 「Some players may be tired, some can feel some pain, not injuries but maybe pain.」(피곤한 선수도, 통증을 느끼는 선수도 있을 것이다. 부상이 아니라 통증일 수 있다 — ESPN)
+- **음바예**: 언급 0
+- **만잠비** (VAVEL 10-16)
+  - 「He's a versatile player, he can drive, he can get into the box, he's doing assists, scoring goals.」(다재다능한 선수다. 운반도, 박스 침투도 하고 도움도 골도 기록한다)
+  - 「We want to achieve with him something like the last years gave us with Morgan Rogers.」(지난 몇 년 로저스가 준 것 같은 걸 그와 이루고 싶다)
+  - 「He is defensively giving us the compactness we need, but not completely.」(수비에서 필요한 콤팩트함을 주지만 완전하지는 않다)
+- **H4 「의도」(우측 빌드업 → 좌측 뒷공간)**: 경기 후 회견(D+1)과 사전 회견 모두 **측면 설계 언급 0**이다. 질문도 나오지 않았다.
+
+**바클리 믹스존**(Express & Star · BirminghamWorld · 10-16): Alysson · Mbaye · Manzambi · Jackson · Garnacho를 직선형 선수로 꼽고 「in the final third, do your magic」(마지막 3분의 1에서 마법을 부려라)라고 했다. 전술 설계 서술은 없다.
+
+### 부상 추적 — D+3 종결 (obs#1046)
+
+| 선수 | D+3 새 근거 | 최종 판정 |
+|---|---|---|
+| 음바예 | **FPL status `a` 유지**(news 공란 · 10-17 20시 KST 조회) · 사전 회견 언급 0 · 예상 라인업 기사는 벤치로 예상한다(Villa News · Football Faithful — 부상이 아니라 휴식 사유) · 팟캐스트 진행자 2명이 「쥐」 | **쥐(경미) 종결** · 사용자 관전 「햄스트링」은 미확인으로 닫는다(같은 인상을 받은 팬 1명 · D) |
+| 바클리 | **FPL status `a`→`d` 75%** 「Unspecified injury」(10-16 17:30Z 등록) · 에메리 「with some pain」(통증이 있었다) · 경기 당일 점검 · 팬 육안 「허벅지 앞(대퇴사두)」(auto-caption) · 「hip」(고관절)은 RotoWire 재인용 1건뿐(원문 미확인) | **경미 · 뉴캐슬전 출전 미정**. 부위는 「허벅지 앞 또는 고관절」(D)이고 사용자 관전 「햄스트링 또는 골반」 중 **골반 쪽에 가깝다** |
+
+- **T3는 열지 않고 닫는다.** 재개 조건: 뉴캐슬전 이후 **2주 이상 결장** 보도나 구단 부상 발표가 나오면 T3로 처리하고, 좌측 공격 로테이션(H1·H10 대체자)과 LDM 처방을 다시 본다.
+- 프랑스어·세네갈(「Ibrahim Mbaye Aston Villa Newcastle blessure titulaire」): 부상 보도 0. Flashscore 이력은 「10-15~10-16」 짧은 항목으로 닫혔다(성격 미기재).
+
+### 가설·판정 — 3일 추적 종결 (obs#1047)
+
+**종결 요약 표**
+
+| 가설 | D+0 | D+1~D+2 | **D+3 최종** | 남은 조건(재개) |
+|---|---|---|---|---|
+| **H1** 만잠비↔음바예 스위칭 | 부분 일치(교대 2체인 · 기본은 음바예 바깥) | 부분 일치 · 1874 보강 근거 주어 정정(obs#1045) | **부분 일치 — 종결.** 에메리 「versatile … can drive, can get into the box」 · 로저스 비유는 만잠비의 넓은 이동을 **감독이 의도한 역할**로 확인한다 | 다음 경기에서 둘이 함께 좌측에 선발하면 교대 체인 수 누적(2경기 합 ≥5면 「일치」로 올린다) |
+| **H2** 캐시↔맥긴 스위칭 · 「맥긴 안쪽」이 더 잦다 | 부분 일치(A1 < B2 · 표본 3) | 방향 보강(GOAL · D) | **부분 일치 — 종결** | 다시즌 판정은 obs#1010 축에서 누적 |
+| **H3** 잭슨 = 어드밴스드 포워드 · 넓고 깊게 | 일치(AF·Support .749 · Δ.228) | — | **일치 — 종결** | — |
+| **H4** 카마라가 바클리보다 높다 | 불일치(1H 55.0 vs 55.3 · UEFA 48.7 vs 48.5) | — | **실측 불일치 유지 — 종결.** 팬 팟캐스트 「Kamara … a little bit higher … interchanging」(D · auto-caption)은 사용자와 같은 인상이지만, 이벤트 평균 x·트래킹 평균 두 실측을 넘지 못한다. 「자리를 바꿨다」는 H7(바클리 자유 · 좌측 전개 때 카마라 59.2m)과 정합한다 | — |
+| H4a 좌측(음바예 배후)이 주 공격 채널 | — | 서사 지지(D · 독립 3) | **서사 지지 — 종결**(D · 독립 4: + Claret & Blue 「left hand side is pretty good」 · 「foot race」) | — |
+| H4b **우측** 빌드업으로 유인 | 불일치(좌 5·중 4·우 6 · GK 첫 패스 좌 7) | 실측 불일치 | **실측 불일치 — 종결** | — |
+| H4 「의도」 | 판정 불가 | 판정 불가 | **판정 불가로 닫는다** — 회견 2회 모두 언급 0 | 에메리가 이후 회견에서 이 경기 측면·빌드업 설계를 직접 말하거나, 다음 2경기 빌드업 체인 **우측 시작 ≥60%**가 실측되면 재개 |
+| 부상 #40 음바예 | 일치(부상 교체) · 부위 보류 | 쥐 쪽 | **쥐(경미) — 종결** · T3 없음 | 위 재개 조건 |
+| 부상 #41 바클리 | 일치(부상 교체) · 부위 보류 | 경미 신호 | **경미(FPL d 75%) — 종결** · T3 없음 | 위 재개 조건 |
+| #43 회견(의도·부상·평가) | D+2 재판정 | 경기 후 회견 반영(obs#1040) | **종결** — 사전 회견까지 읽음 | — |
+
+**판정 불가로 남기는 대조표 행** (표본 부족 · 이 경기로는 닫지 못한다)
+
+- #6 캐시 하프스페이스 슛 → 시즌 축 obs#1010
+- #24 음바예 스프린트 위치 → UEFA 미공개
+- #31 맥긴 CAM(표본 2) · #32 고레츠카 LDM(9) · #33 가르나초(4) · #38 맥긴↔알리송(1) → 해당 선수 교체·선발 구간이 **20이벤트 이상** 쌓이면 다시 본다
+- 이 행들은 3일 추적의 미결이 아니라 **표본 한계**다. 그래서 complete 판정을 막지 않는다.
+
+**당일 판정 정정**: 없음. D+3 자료는 D+0~D+2 판정을 뒤집지 않았다.
+
+### 다국어 점검 (불변규칙 10)
+
+| 언어 | 대상 | 결과 |
+|---|---|---|
+| 영어 | 팬 팟캐스트 2편 전사 · Hayters · ESPN · VAVEL · Express & Star · BirminghamWorld · FPL | 위 절 |
+| 터키어 | ÇUBUKLU ANALİZ 전사 · 「Fenerbahçe Aston Villa taktik analiz video Emery sol kanat」 | 빌라 구조 해부 0(스즈키 캐칭 언급 1) |
+| 스페인어(에메리) | 「Unai Emery rueda de prensa Newcastle Barkley molestias octubre 2026」 | 스페인어 원문 0 — 결과는 모두 영어 회견의 재인용이다 |
+| 프랑스어·세네갈(음바예) | 「Ibrahim Mbaye Aston Villa Newcastle blessure titulaire」 | 부상 보도 0 · 선발/벤치 예상 기사만 있다 |
+| 독일어(만잠비) · 일본어(스즈키) | — | 새로 찾지 않았다. 만잠비 역할은 에메리 1차 발언(영어)이 더 강한 근거이고, H5에 걸린 쟁점은 D+2로 닫혔다 |
+
+### G12 · complete 판정
+
+- 필수 섹션 1~8: 있다(본문 §1~§9)
+- 출전 선수 `match_player_reports`: **16/16**(`player_matches` minutes>0 16명 전원)
+- 경기 프리셋 `match_game_setups`: 1행 · `match_only=1`
+- 선발 처방 `match_player_prescriptions`: starter 11 (+교체 5 = 16)
+- `gates.py`: G12 「불완전 0 · 선수누락 0 · 경기프리셋누락 0 · 선수처방누락 0」 → **전항 통과**
+- ⇒ **`match_reports` #55 `draft` → `complete`**(2026-10-17). §9의 「draft — D+3 종결 회차에 complete 판정」은 이 절로 닫힌다.
+
+### manager_profiles 판정
+
+- **role_demands에 덧붙였다**(obs#1047): 만잠비 = 로저스 후계 임무(운반·박스 침투 · 에메리 1차 발언). 수비 콤팩트 「완전하지 않다」는 감독 자기진단으로만 기록했다. 10번 수비 전진 처방을 바꿀 근거는 아니다.
+- **buildup에는 덧붙이지 않았다** — H4 「우측 빌드업 유인」은 실측 불일치이고 의도 1차 근거가 0이다. D+0에 덧붙인 2-4-4·3-2 문단(obs#1014·#1015·#1017)이 그대로 유효하다.
+- `player_duties`는 바꾸지 않았다. 새 서사가 임무 수준이 아니라 감독의 역할 비유다(만잠비 행은 처방 축이 정한다).
+
+### 3일 추적 종결
+
+- 소스 4종 결과: 경기 후 영상 전사 D+1 2회차 13편 + D+3 3편(D+0분 별도) · 끝내 미전사 7편(429 6 · 자막 없음 1) + Maç Krokisi(자막 미생성) · 전술 글은 D+2 절(Claret Villans · GOAL · Roundtable) · 양 팀 감독 회견(에메리 경기 후·사전 · 카르탈)
+- 남은 외부 요인: 유튜브 IP 429가 3일째다. 다음 경기(뉴캐슬전) 회차도 자막 경로가 막히면 같은 결손이 반복된다. 다음 회차는 브라우저 플레이어나 다른 망에서 시도해야 한다.
+
 ## 9. 데이터 반영과 한계
 
 - **DB 추가**
