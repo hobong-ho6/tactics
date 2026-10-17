@@ -357,6 +357,17 @@ def cmd_complete(con, a):
         b, f = json.loads(cp["current_six"]), json.loads(six_new)
         down = {k: (b[k], f[k]) for k in b if k in f and f[k] < b[k]}
         if down:
+            # ⭐⭐ **EA 싱크가 이미 앞서 있으면 완료 날짜만 적는다**(2026-10-17 · 같은 사고 2회차 → 불변규칙 13 ①).
+            #    1회차 고메스 Centre Stage · 2회차 루헤리 Side Step: 「진화 시작」을 적어 둔 뒤 클럽 싱크가 **진화가 끝난 카드**를
+            #    EA에서 받아 current_*를 올렸다. 그 상태에서 complete를 부르면 1단계 after(더 낮은 값)로 내려 적으려다 게이트에 막혔다.
+            #    ⇒ 싱크가 이 진화 시작 **이후**에 돌았고 OVR도 after 이상이면 「스탯은 이미 EA 실측이 반영」으로 보고
+            #       current_*는 건드리지 않고 완료 날짜만 남긴다. ⛔ 싱크가 시작 전이거나 OVR이 낮으면 지금처럼 멈춘다(진짜 기록 오류).
+            synced = str(cp["synced_at"] or "")[:10]
+            if synced and synced >= str(log["applied_at"])[:10] and (cp["current_ovr"] or 0) >= (ovr_new or 0):
+                print(f"진화 완료: {cp['name']} ← {log['evo_name']} {log['level']}단계 · 완료일 {a.date} — "
+                      f"⏭️ 카드 스탯은 이미 EA 싱크({synced})가 진화 후 값으로 올려 두었다 → current_*는 그대로 둔다 "
+                      f"(기록 after {six_new} < EA {cp['current_six']}). 남은 단계를 이어서 기록하면 된다.")
+                return
             sys.exit(f"⛔ 완료 처리하면 6대 스탯이 내려간다 — {down} (before→after). 로그의 after 값이 어긋난 것이다.")
     con.execute("""UPDATE fut_club_players SET current_ovr=?, current_six=COALESCE(?, current_six),
                      current_playstyles=COALESCE(?, current_playstyles), current_roles_plus=COALESCE(?, current_roles_plus),
