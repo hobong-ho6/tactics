@@ -1330,3 +1330,14 @@ CREATE VIEW v_evo_log AS                       -- 유효 행(무효 제외) = lo
 CREATE VIEW v_evo_log_open AS                  -- 진행 중 = logState = 'progress'
   SELECT * FROM v_evo_log WHERE completed_at IS NULL
 /* v_evo_log_open(id,club_player_id,evo_id,evo_name,level,applied_at,completed_at,ovr_before,ovr_after,six_before,six_after,attrs_delta,playstyles_after,roles_plus_after,roles_plus_plus_after,source,confidence,notes,is_void,attrs_after) */;
+CREATE TABLE fut_evo_ea_ack (
+  id INTEGER PRIMARY KEY,
+  club_player_id INTEGER NOT NULL REFERENCES fut_club_players(id),
+  evo_id INTEGER,
+  ea_evo_id INTEGER,
+  reason TEXT NOT NULL,
+  acked_at TEXT NOT NULL,
+  source TEXT NOT NULL,
+  CHECK ((evo_id IS NULL) <> (ea_evo_id IS NULL)),
+  UNIQUE (club_player_id, evo_id, ea_evo_id)
+);

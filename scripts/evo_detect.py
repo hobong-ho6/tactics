@@ -198,7 +198,10 @@ def ea_check(con, only=None):
     q = """SELECT id, name, ea_evo_history, ea_evo_active FROM fut_club_players
             WHERE status='owned' AND ea_evo_history IS NOT NULL"""
     rows = con.execute(q + (" AND id=?" if only else ""), (only,) if only else ()).fetchall()
-    print(f"EA 진화 이력 대조 — 이력 보유 {len(rows)}장 · EA id 매핑 {len(ea2)}종\n")
+    # ⭐ 사용자가 「우리 기록이 맞다」고 확인한 (카드, 진화) 쌍은 경고에서 뺀다(migration 107 · 2026-10-18)
+    ack = {(r[0], r[1], r[2]) for r in con.execute(
+        "SELECT club_player_id, evo_id, ea_evo_id FROM fut_evo_ea_ack")}
+    print(f"EA 진화 이력 대조 — 이력 보유 {len(rows)}장 · EA id 매핑 {len(ea2)}종 · 사용자 확인으로 끈 쌍 {len(ack)}\n")
     n_ok = n_bad = 0
     for cp in rows:
         hist = json.loads(cp["ea_evo_history"] or "[]")
@@ -212,6 +215,8 @@ def ea_check(con, only=None):
             m = ea2.get(h["ea"])
             if not m and h["ea"] in COSMETIC_EA_IDS:
                 continue                             # 스탯 변화 없음 — 대조할 것이 없다
+            if not m and (cp["id"], None, h["ea"]) in ack:
+                continue
             if not m:
                 probs.append(f"EA id {h['ea']} 매핑 없음 — fc_evolutions.ea_evo_id를 채울 것(카탈로그 재수집)")
                 continue
@@ -226,6 +231,8 @@ def ea_check(con, only=None):
             er, el, ea_act = ea_by.get(eid, (0, 0, 0))
             orr, ol, nm = ours.get(eid, (0, 0, names.get(eid, str(eid))))
             nm = names.get(eid, nm)
+            if (cp["id"], eid, None) in ack:
+                continue
             if eid not in ea_by:
                 probs.append(f"{nm}: 우리 로그 {orr}회·완료 {ol}단계인데 **EA 이력에 없다** — 적용 안 된 기록이면 is_void")
             elif eid not in ours:
