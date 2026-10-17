@@ -1560,9 +1560,14 @@ def run(db_path=None, verbose=True):
         import json as _json
         from core.futgg_attrs import EVO_ATTR_KR as _K, NON_ATTR_OK as _OK, FACE_UPGRADE as _FU
         seen = set()
-        for (lv,) in con.execute("""SELECT levels FROM fc_evolutions
+        # ⭐ 2026-10-18: 스타 퍼포머 전용(요구조건 Rarity=Star Performer)은 화면이 통째로 뺀다(evorules.js starOnlyIds) —
+        #    보상을 계산할 일이 없으니 대상에서 뺀다. 그들의 `play_style_plus`가 다른 진화에 번지면 여기서 다시 막힌다.
+        for (lv, rq) in con.execute("""SELECT levels, requirements_text FROM fc_evolutions
                                      WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions)
                                        AND levels IS NOT NULL"""):
+            if any(q.get("label") == "Rarity" and str(q.get("value") or "").strip().lower() == "star performer"
+                   for q in (_json.loads(rq or "[]") or [])):
+                continue
             for L in _json.loads(lv):
                 srcs = [L.get("upgrades") or []]
                 for o in (L.get("upgradeOptions") or []):

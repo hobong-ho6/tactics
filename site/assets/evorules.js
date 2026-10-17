@@ -214,17 +214,23 @@ export function evoRules(EVO, accName){
     let lv = []; try { lv = JSON.parse(c.levels || '[]') || []; } catch (e) { return false; }
     return lv.length > 0 && lv.every(L => keysOf(L).every(k => COS.has(k)));
   }).map(c => c.evo_id));
+  /* ⭐ **스타 퍼포머 전용 진화**(2026-10-18 사용자 지시 「플레이스타일+ 랩은 스타 선수에게만 적용 가능하니 진화 목록에서 제거」) —
+     요구조건 `Rarity = Star Performer`. 이름이 아니라 **요구조건**으로 가른다(다음 회차의 같은 부류도 잡히게). 화면에서만 뺀다 — DB 행은 그대로. */
+  const starOnlyIds = new Set((EVO?.catalog || []).filter(c => {
+    let rq = []; try { rq = JSON.parse(c.requirements_text || '[]') || []; } catch (e) { return false; }
+    return rq.some(q => q.label === 'Rarity' && /^Star Performer$/i.test(String(q.value || '').trim()));
+  }).map(c => c.evo_id));
   const premIds = new Set(Object.keys(lockInfo).map(Number));
   const neverIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.never).map(([k]) => +k));   // 영영 못 받는 진화 — 화면이 목록에서 뺀다
   const premOnlyIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.kind === 'prem').map(([k]) => +k));
   const progressIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.kind !== 'prem').map(([k]) => +k));
 
   return {
-    acc, consumed, applied, premIds, neverIds, premOnlyIds, progressIds, rolesPPIds, cosmeticIds, lockInfo, spLevel, hasPrem,
+    acc, consumed, applied, premIds, neverIds, premOnlyIds, progressIds, rolesPPIds, cosmeticIds, starOnlyIds, lockInfo, spLevel, hasPrem,
     /* 소진된 진화를 낀 경로는 **그 진화를 쓴 선수 본인 외** 모두에게서 닫힌다 */
     /* 닫히는 경로: 영영 못 받는 진화 · **코스메틱 진화**(2026-10-15 사용자 지시 「선수별 진화패스에 코스메틱 진화는 안 나오게」 —
        카탈로그만 거르고 경로는 안 걸러서 화살표 스핀·프리즘 라이트가 「지금 걸 수 있는 진화」에 떴다) · 남이 소진한 진화 */
-    open: (ids, pid) => (ids || []).every(i => !neverIds.has(i) && !cosmeticIds.has(i) && (!consumed[i]?.exhausted || consumed[i].by.some(b => b.pid === pid))),
+    open: (ids, pid) => (ids || []).every(i => !neverIds.has(i) && !cosmeticIds.has(i) && !starOnlyIds.has(i) && (!consumed[i]?.exhausted || consumed[i].by.some(b => b.pid === pid))),
     premium: ids => (ids || []).some(i => premIds.has(i)),
     /* 프리미엄 구매가 필요한 것 ↔ 플레이로 열리는 것 — 화면이 따로 거를 수 있게 나눠 준다. */
     premOnly: ids => (ids || []).some(i => premOnlyIds.has(i)),
