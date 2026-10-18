@@ -278,6 +278,23 @@ def cmd_evolve(con, a):
                      "원장이 어긋난 것이다. `current_attrs`가 `current_six`보다 낡지 않았는지 먼저 볼 것.")
     if (ovr_after or 0) < (ovr_before or 0):
         sys.exit(f"⛔ 적용 후 OVR이 내려간다 — {ovr_before} → {ovr_after}. 같은 사유다.")
+    # ⛔⛔ **게이트 — 기록이 EA 실측 현재 카드를 끌어내리면 멈춘다**(2026-10-18 주앙 고메스 실측 사고 · 사용자 승인).
+    #    출발점(원장 사슬)이 낡으면 계산은 「오르는」 것처럼 보여도 결과가 EA 카드보다 낮다 — CDM Roles++ 기록에
+    #    current_ovr 85→81 · 질주 67→60 · 헤딩 78→68 · 점프 85→69로 덮였다(사슬 #117~119가 틀려 있었다).
+    #    위 게이트는 before↔after만 봐서 못 잡았다. ⇒ 적용 후 값과 **EA 실측**(current_*)을 직접 비교한다.
+    #    정상인 경우(EA가 뒷단계까지 앞서 있다)는 `--keep-current`로 로그만 남기고 현재 카드는 그대로 둔다.
+    lower = {}
+    if attrs_after is not None and cur_attrs:
+        lower = {k: (cur_attrs[k], attrs_after[k]) for k in cur_attrs
+                 if k in attrs_after and cur_attrs[k] is not None and attrs_after[k] is not None
+                 and attrs_after[k] < cur_attrs[k]}
+    if cp["current_ovr"] is not None and (ovr_after or 0) < cp["current_ovr"]:
+        lower["OVR"] = (cp["current_ovr"], ovr_after)
+    keep_current = bool(lower) and getattr(a, "keep_current", False)
+    if lower and not keep_current and not getattr(a, "in_progress", False):
+        sys.exit(f"⛔ 이 기록을 적용하면 EA 실측 현재 카드가 내려간다 — (EA, 기록 후) {dict(list(lower.items())[:8])}. "
+                 "원장 사슬(마지막 로그 attrs_after)이 낡았을 가능성이 크다 — `python3 scripts/evo_detect.py --verify`로 사슬을 먼저 볼 것. "
+                 "EA가 이미 뒷단계까지 반영한 정상 경우면 `--keep-current`로 로그만 남긴다(현재 카드는 덮지 않는다).")
     # ⭐ 로그의 역할 칸도 **카탈로그 보상 ∪ 현재 보유**로 적는다(2026-09-29 만잠비 CAM Roles++ 실측 사고).
     #    ⛔ 종전엔 path_json에서만 읽어, 경로 축이 안 덮는 역할 전용 진화는 로그 칸이 비었다.
     def _union(cur_json, gain):
@@ -307,6 +324,11 @@ def cmd_evolve(con, a):
         con.execute("UPDATE fut_club_players SET evo_count=evo_count+1, updated=? WHERE id=?", (TODAY, cp["id"]))
         print(f"진화 시작 기록: {cp['name']} ← {evo_name} (lv{a.level}) · 완주 시 OVR {cp['current_ovr']} → {ovr_after} "
               f"· 스탯은 **완료 시** 반영(`complete` 커맨드) · 시작일 {a.date}")
+        return
+    if keep_current:
+        con.execute("UPDATE fut_club_players SET evo_count=evo_count+1, updated=? WHERE id=?", (TODAY, cp["id"]))
+        print(f"진화 기록(로그만): {cp['name']} ← {evo_name} (lv{a.level}) · EA 실측이 앞서 있어 현재 카드는 그대로 둔다 "
+              f"(EA OVR {cp['current_ovr']})")
         return
     # ⭐ `current_attrs`를 **함께** 갱신한다 — 이것을 빼면 위 주석의 사고가 그대로 되돌아온다.
     if attrs_after is not None:
@@ -767,6 +789,8 @@ def main():
     s.add_argument("--ovr-after", type=int); s.add_argument("--six-after", help='JSON {"PAC":..} — ⚠️ 서버가 계산하지 못할 때만 쓰는 폴백')
     s.add_argument("--pick", type=int, help="갈림길 단계에서 **몇 번째 가지**를 밟았는지(0부터). 갈림길이면 필수다")
     s.add_argument("--in-progress", action="store_true", help="시작만 기록(챌린지·훈련이 남아 스탯은 아직 안 올랐다)")
+    s.add_argument("--keep-current", action="store_true",
+                   help="EA 실측이 이미 뒷단계까지 앞서 있을 때 — 로그만 남기고 현재 카드(current_*)는 덮지 않는다")
     s = sub.add_parser("complete"); s.add_argument("--account", required=True); s.add_argument("--player", required=True)
     s.add_argument("--evo", type=int); s.add_argument("--date", default=TODAY)
     s.add_argument("--ovr-after", type=int); s.add_argument("--six-after")
