@@ -4743,3 +4743,5 @@ INSERT INTO fc_evolution_eligibility VALUES('FC27',2547,11,264209,1,'2026-10-18'
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2547,164,214979,1,'2026-10-18','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2547&name=Musso (2026-10-18 수집 · 범위: 내 구단 보유 카드)');
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2547,175,50545213,0,'2026-10-18','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2547&name=Lemar (2026-10-18 수집 · 범위: 내 구단 보유 카드)');
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2547,176,263701,1,'2026-10-18','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2547&name=Vargas (2026-10-18 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2515,163,244669,1,'2026-10-18','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2515&name=Hjulmand (2026-10-18 수집 · 범위: 내 구단 보유 카드)');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2512,163,244669,1,'2026-10-18','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2512&name=Hjulmand (2026-10-18 수집 · 범위: 내 구단 보유 카드)');
