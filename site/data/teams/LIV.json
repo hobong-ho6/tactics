@@ -3886,6 +3886,32 @@
    },
    {
     "league": "Premier League",
+    "metric": "Successful crosses",
+    "metric_key": "crosses_succeeeded",
+    "metric_kr": "성공한 크로스",
+    "per90": 0.18442622950819673,
+    "percentile": 49,
+    "percentile_per90": 51,
+    "player_id": 50,
+    "pulled": "2026-10-18",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Cross accuracy",
+    "metric_key": "crosses_succeeeded_accuracy",
+    "metric_kr": "크로스 정확도",
+    "per90": 11.11111111111111,
+    "percentile": 49,
+    "percentile_per90": 49,
+    "player_id": 50,
+    "pulled": "2026-10-18",
+    "season": "2026/2027",
+    "stat_value": "11.1"
+   },
+   {
+    "league": "Premier League",
     "metric": "Touches",
     "metric_key": "touches",
     "metric_kr": "터치",
@@ -7492,6 +7518,19 @@
     "stat_value": "50.0"
    },
    {
+    "league": "Premier League",
+    "metric": "Fouls committed",
+    "metric_key": "fouls",
+    "metric_kr": "파울",
+    "per90": 0.5172413793103449,
+    "percentile": 69,
+    "percentile_per90": 76,
+    "player_id": 81,
+    "pulled": "2026-10-18",
+    "season": "2026/2027",
+    "stat_value": "2"
+   },
+   {
     "league": "Ligue 1",
     "metric": "Pass accuracy",
     "metric_key": "successful_passes_accuracy",
@@ -7917,6 +7956,19 @@
     "percentile_per90": 55,
     "player_id": 81,
     "pulled": "2026-09-13",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Interceptions",
+    "metric_key": "interceptions",
+    "metric_kr": "인터셉트",
+    "per90": 0.25862068965517243,
+    "percentile": 24,
+    "percentile_per90": 39,
+    "player_id": 81,
+    "pulled": "2026-10-18",
     "season": "2026/2027",
     "stat_value": "1"
    },
@@ -18859,6 +18911,19 @@
     "pulled": "2026-09-12",
     "season": "2026/2027",
     "stat_value": "2"
+   },
+   {
+    "league": "Premier League",
+    "metric": "Chances created",
+    "metric_key": "chances_created",
+    "metric_kr": "기회 창출",
+    "per90": 0.5882352941176471,
+    "percentile": 6,
+    "percentile_per90": 16,
+    "player_id": 114,
+    "pulled": "2026-10-18",
+    "season": "2026/2027",
+    "stat_value": "1"
    },
    {
     "league": "Premier League",
@@ -31219,6 +31284,19 @@
    },
    {
     "league": "Premier League",
+    "metric": "Possession won final 3rd",
+    "metric_key": "poss_won_att_3rd_team_title",
+    "metric_kr": "공격 3선 볼 획득",
+    "per90": 0.44776119402985076,
+    "percentile": 39,
+    "percentile_per90": 76,
+    "player_id": 48,
+    "pulled": "2026-10-18",
+    "season": "2026/2027",
+    "stat_value": "1"
+   },
+   {
+    "league": "Premier League",
     "metric": "Assists",
     "metric_key": "assists",
     "metric_kr": "어시스트",
@@ -35942,11 +36020,6 @@
   ],
   "음바예": [
    [
-    "2026-07-01",
-    6.5,
-    "FIFA World Cup"
-   ],
-   [
     "2026-08-05",
     6.4,
     "Club Friendly Games"
@@ -35990,6 +36063,11 @@
     "2026-10-14",
     7.6,
     "UEFA Champions League"
+   ],
+   [
+    "2026-10-17",
+    7.4,
+    "Premier League"
    ]
   ],
   "응구모하": [
@@ -63502,18 +63580,18 @@
    "xg_pg": 0.133
   },
   {
-   "avg_rating": 6.92,
-   "dw_pg": 1.69,
-   "ic_pg": 0.15,
+   "avg_rating": 6.93,
+   "dw_pg": 1.73,
+   "ic_pg": 0.17,
    "kp_pg": 0.61,
    "label": "음바예",
-   "minutes": 2072,
-   "n": 74,
+   "minutes": 2090,
+   "n": 75,
    "player_id": 86,
    "pos_group": "WM",
    "tk_pg": 0.43,
-   "xa_pg": 0.083,
-   "xg_pg": 0.203
+   "xa_pg": 0.082,
+   "xg_pg": 0.207
   },
   {
    "avg_rating": 6.9,
@@ -63651,9 +63729,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 43,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 319784, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 319784, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2027-06-30"
   },
   {
@@ -63664,9 +63742,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 44,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 209405, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 209405, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2027-06-30"
   },
   {
@@ -63677,9 +63755,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 47,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1195281, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1195281, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2030-06-30"
   },
   {
@@ -63690,9 +63768,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 48,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 966018, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 966018, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2030-06-30"
   },
   {
@@ -63703,9 +63781,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 49,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 956683, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 956683, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2032-06-30"
   },
   {
@@ -63716,9 +63794,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 50,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 831489, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 831489, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2028-06-30"
   },
   {
@@ -63729,9 +63807,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 51,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 846005, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 846005, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2031-06-30"
   },
   {
@@ -63742,9 +63820,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 52,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1152455, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1152455, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2030-06-30"
   },
   {
@@ -63755,9 +63833,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 53,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2030-06-30"
   },
   {
@@ -63768,9 +63846,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 70,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 671529, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 671529, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2027-06-30"
   },
   {
@@ -63781,9 +63859,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 72,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 690107, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 690107, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2031-06-30"
   },
   {
@@ -63794,9 +63872,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 73,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 948800, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 948800, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2031-06-30"
   },
   {
@@ -63807,9 +63885,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 81,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1297165, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1297165, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2031-06-30"
   },
   {
@@ -63820,9 +63898,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 85,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 921253, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 921253, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2031-06-30"
   },
   {
@@ -63833,9 +63911,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 89,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1473534, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1473534, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2031-06-30"
   },
   {
@@ -63846,9 +63924,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 114,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1597668, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1597668, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2028-06-30"
   },
   {
@@ -63859,9 +63937,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 116,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1436258, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1436258, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2030-06-30"
   },
   {
@@ -63872,9 +63950,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 207,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1197030, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1197030, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2031-06-30"
   },
   {
@@ -63885,9 +63963,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 208,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1609209, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1609209, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2031-06-30"
   },
   {
@@ -63898,9 +63976,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 209,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1113690, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1113690, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2029-06-30"
   },
   {
@@ -63911,48 +63989,48 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 212,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1068920, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1068920, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "2028-06-30"
   },
   {
    "as_of": "2026-10-11",
    "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
-   "detail": "A few days",
+   "detail": "Doubtful",
    "kind": "injury",
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 51,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 846005, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 846005, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "Hamstring injury"
   },
   {
    "as_of": "2026-09-27",
    "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
-   "detail": "A few days",
+   "detail": "Doubtful",
    "kind": "injury",
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 53,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "Ankle injury"
   },
   {
    "as_of": "2026-09-27",
    "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
-   "detail": "A few days",
+   "detail": "Doubtful",
    "kind": "injury",
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 72,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 690107, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 690107, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "Thigh injury"
   },
   {
@@ -63963,9 +64041,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 207,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1197030, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1197030, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "Achilles tendon injury"
   },
   {
@@ -63976,9 +64054,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 208,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1609209, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1609209, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "Cruciate ligament injury"
   },
   {
@@ -63989,9 +64067,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 209,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1113690, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1113690, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": "Knee injury"
   },
   {
@@ -64002,9 +64080,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 43,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 319784, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 319784, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64015,9 +64093,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 44,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 209405, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 209405, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64028,9 +64106,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 47,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1195281, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1195281, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64041,9 +64119,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 48,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 966018, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 966018, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64054,9 +64132,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 49,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 956683, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 956683, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64067,9 +64145,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 50,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 831489, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 831489, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64082,7 +64160,7 @@
    "player_id": 51,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 846005, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 25,
+   "stale_days": 26,
    "value": null
   },
   {
@@ -64093,9 +64171,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 52,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1152455, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1152455, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64108,7 +64186,7 @@
    "player_id": 53,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 25,
+   "stale_days": 26,
    "value": null
   },
   {
@@ -64119,9 +64197,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 70,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 671529, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 671529, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64134,7 +64212,7 @@
    "player_id": 72,
    "pulled": "2026-09-22",
    "source": "fotmob.com/api/data (player 690107, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-   "stale_days": 25,
+   "stale_days": 26,
    "value": null
   },
   {
@@ -64145,9 +64223,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 73,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 948800, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 948800, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64158,9 +64236,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 81,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1297165, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1297165, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64171,9 +64249,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 85,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 921253, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 921253, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64184,9 +64262,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 88,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1553105, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1553105, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64197,9 +64275,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 89,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1473534, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1473534, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64210,9 +64288,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 114,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1597668, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1597668, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64223,9 +64301,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 116,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1436258, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1436258, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   },
   {
@@ -64236,9 +64314,9 @@
    "played_after": null,
    "played_after_minutes": null,
    "player_id": 212,
-   "pulled": "2026-10-16",
-   "source": "fotmob.com/api/data (player 1068920, scripts/collect_fotmob_players.py, 2026-10-16 수집)",
-   "stale_days": 1,
+   "pulled": "2026-10-18",
+   "source": "fotmob.com/api/data (player 1068920, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+   "stale_days": 0,
    "value": null
   }
  ],
@@ -67248,11 +67326,11 @@
   "음바예": [
    {
     "assists": 0,
-    "avg_rating": 6.63,
+    "avg_rating": 6.83,
     "competition": "Premier League",
     "goals": 0,
-    "minutes": 68,
-    "n": 3,
+    "minutes": 86,
+    "n": 4,
     "season": "2026-27",
     "starts": 0
    },
