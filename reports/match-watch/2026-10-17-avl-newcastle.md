@@ -349,3 +349,74 @@
   - 패스 수신자는 「다음 같은 팀 이벤트의 선수」로 근사했다.
   - 기사 인용 다수는 WebFetch 요약·검색 스니펫 경유다(본문 403 매체는 confidence를 한 단계 낮췄다).
 - **상태**: `draft` — 회견 전문·영상 적재·Q1·Q2가 D+2·D+3 대기다. 경기 전용 프리셋과 선수 처방은 채웠다.
+
+## D+1 보강 (2026-10-18 13:00)
+
+> 13:00 예약 보강 회차(`mw-avl-newcastle-collect`). 09:00 회차가 전체 수집을 마쳤으므로 실측 수집(§2·§3)은 반복하지 않았다. 이 절은 **09:22 이후 새로 확보한 자료만** 덧붙인다(위 본문·대조표는 고치지 않음). 앞 회차에서 403·차단이던 매체 일부를 앱 내장 브라우저로 열었다(구단 공식·Squawka·E&S/Shropshire Star·Marca·Lance!·ge.globo).
+
+### 새로 확보한 1차·준1차 자료
+
+- **구단 공식 경기 리포트**(avfc.co.uk 10-17): 「Emery introduced captain John McGinn in place of Alysson at the break as he hoped his experience could guide the Villans to another three points.」(에메리는 맥긴의 경험이 빌라를 또 한 번의 승점 3으로 이끌길 바라며 하프타임에 알리송 대신 주장 맥긴을 투입했다.)
+  - 구단 글은 알리송의 **경고 자체를 언급하지 않는다.** 구단 편집부의 서술일 뿐 에메리 발언이 아니다 → 교체 사유 판정에 쓰지 않고 정황으로만 둔다.
+  - 같은 리포트: 「Pau Torres in place of the injured Aaron Wan-Bissaka, meaning Tyrone Mings was forced to complete the match at left-back」(부상당한 완비사카 대신 토레스, 그래서 밍스가 LB로 경기를 마쳤다) — 대조표 26행과 일치.
+- **구단 공식 에메리 인터뷰**(VillaTV 「Victory is fantastic」): 알리송·맥긴·가르나초 언급은 **0건**이다. 교체 관련은 「with the players (bringing) impact as well, they did fantastic」(투입된 선수들도 영향을 줬고, 환상적이었다)뿐이다. 경기 운영은 「More or less, we needed it, and we planned it.」(대략 필요했던 것이고, 계획한 것이었다)라고 했다(스즈키·세트피스 수비 문맥).
+  - ⇒ 대조표 33행(N3 「의도」)에 **약한 정황**으로 쓸 수 있다. 다만 지시 대상이 수비·세트피스라 빌드업 구조 의도로 읽지는 않는다(판정 유지).
+- **밍스 구단 인터뷰**: 「I even rolled back the years to 2015/16 and played left-back for 10-15 minutes!」(2015/16 시절로 돌아가 10~15분 LB를 뛰었다!) — 밍스 LB 이동 확정(26행 일치). 실제 시간은 77′~90+6′, 약 19분이다.
+- **Express & Star 평점 원문**(Matt Maher · Shropshire Star 동일 기사 · 10-17 21:00 BST). 앞 회차에서는 스니펫이었다.
+  - 알리송 **5** 「Booked」: 「Created a big chance for Jackson with his pace. But also picked up a daft booking for a dive and was subbed at the break.」(속도로 잭슨에게 빅찬스를 만들었다. 하지만 어이없는 다이빙 경고를 받았고 하프타임에 교체됐다.) — 앞 회차의 평점 5를 원문으로 확정. ⚠️ 검색 요약 하나가 「Alysson 7」이라고 했는데, 원문을 보니 맥긴 7과 혼동한 것이었다.
+  - 린델뢰프 **8** 「Dominant」: 「It is difficult to recall a cross from the left wing which didn't end up on his boot or head. An imperious performance.」(왼쪽에서 온 크로스 중 그의 발이나 머리에 걸리지 않은 것을 떠올리기 어렵다. 압도적인 경기.) — 대조표 16행 「일치」를 보강한다.
+  - 밍스 7 「Played well at centre-back and then as an emergency left-back」(CB로 잘했고 이후 비상 LB) · 완비사카 7 「Was enjoying a decent game before being forced off with injury」(부상으로 나가기 전까지 괜찮은 경기였다) · 캐시 7 「got forward at will … great discipline and grit to frustrate Barnes」(마음대로 전진했고 … 규율과 근성으로 반스를 묶었다) · 카마라 7 「His best performance of the season」(시즌 최고 경기) · 만잠비 7 「Faded in the second」(후반엔 존재감이 줄었다) · 부엔디아 6 · 잭슨 7 · 스즈키 7 · 고메스 7 · 맥긴 7 · 바클리 7 · 고레츠카 6 · 음바예 6.
+  - ⚠️ E&S의 교체 짝은 「Barkley (for Gomes) · Goretzka (for Buendia) · Mbaye (for Manzambi)」로 SS 카드와 같다. Opta 슬롯 짝과는 다르다. 포지션 짝은 대조표 18행대로 Opta를 정본으로 한다. 72′에 3명이 동시에 바뀐 교체라, 기자·데이터사마다 1:1 짝을 임의로 적은 것이다.
+- **The 4th Official 평점**(Yardbarker 신디케이트 · Abhinab Ghosh): 알리송 6.5는 앞 회차 기록과 같은 기사다. 새 코멘트는 두 개다.
+  - 완비사카 7: 「offered very little inside the Newcastle half」(뉴캐슬 진영에서 보여준 게 거의 없다).
+  - 캐시 7.5: 「struggled to influence the game going forward」(공격에서 영향력을 주지 못했다).
+  - ⇒ 완비사카 「상대 진영 기여 적음」은 아래 Squawka와 같은 방향이다. 위치 실측(상대 진영 62%)과는 **다른 축**(관여량)이라 충돌이 아니다.
+
+### Squawka 본문 확보 — 「How Villans manipulated Magpies en route to away win」
+
+앞 회차는 검색 발췌만 썼다(본문 403). 이번에 본문 전체를 확인했고, 실측(WS 1983613 matchCentreData — 같은 원천을 다시 열람해 계산만 함)과 대조했다.
+
+| Squawka 주장 | 실측 대조(WS · 0–36′ 빌라) | 판정 |
+|---|---|---|
+| 선제골 전 공격 분포 「46% on the right flank, 36% in the central corridor and 18% down the left」(우측 46% · 중앙 36% · 좌측 18%) | 상대 진영(x≥50)에 도착한 성공 패스의 레인: **우 22(50%) · 중앙 12(27%) · 좌 10(23%)**. 파이널 서드(x≥66.7) 도착: 우 10 · 중앙 3 · 좌 7 | **일치(방향)** — 정의가 달라 수치는 다르지만 우측 편중은 같다 |
+| 「Aaron Wan-Bissaka provided the width, but often uninvolved in attacking sequences in the first 35 minutes」(완비사카가 폭을 맡았지만 첫 35분엔 공격 시퀀스에 자주 빠져 있었다) | 0–36′ 터치: 완비사카 **9**(잭슨과 함께 팀 최저) · 캐시 30 · 알리송 20. 완비사카가 관여한 패스 연결은 8쌍뿐(부엔디아↔완비사카 3) | **일치** — H1(대조표 4·5행)은 **위치**로는 일치 그대로다. 다만 「높고 넓게 섰다」가 「많이 관여했다」는 뜻은 아니었다(0–36′) |
+| 「always looking for Manzambi connecting with Alysson. The duo showed great chemistry」(늘 만잠비–알리송 연결을 찾았다, 둘의 호흡이 좋았다) | 0–36′ 알리송↔만잠비 **직접 패스 연결 0회**(수신자 근사). 우측 연결 상위는 카마라→캐시 7 · 캐시→알리송 4 | **부분 일치** — 우측 편중은 맞다. 「둘의 직접 연계」는 이벤트로 확인되지 않는다(수신자 근사 한계 · 오프더볼 연계는 이벤트에 안 남는다) |
+| 「Buendia was a 'false left-midfielder' who operated centrally」(부엔디아는 중앙에서 뛴 「가짜 LM」) · 골 장면에서 박스로 쇄도해 보트만을 끌어냄 | 골 빌드업 34:48–34:49 밍스→**부엔디아 (56.5, 67.5)** → 백패스(45.3, 65.5) — 좌 하프스페이스에서 받고 넘김 | **일치** — 대조표 10행 「부엔디아는 10번보다 좌 하프스페이스 + 내려와 받기」를 지지한다 |
+| 골 빌드업 「Alysson then carried the ball forward and left it to Joao Gomes」(알리송이 공을 몰고 가 고메스에게 넘겼다) | 34:54 고메스→알리송 (70.4, 3.9) → 35:00 알리송 (79.7, 13.3)에서 고메스에게 (72.7, 26.7) → 35:04 고메스 크로스 (77.8, 22.2) → 35:06 만잠비 골 (94.3, 54.6) | **일치** — 알리송은 **골의 직전 패스(세컨드 어시스트)** 를 했다. 아래 알리송 보강 참고 |
+| 「Tyrone Mings constantly pushing up the field and not being back when Newcastle eventually counter attacked」(밍스가 계속 올라가 있다가 뉴캐슬 역습 때 돌아오지 못했다) | 패스 출발 평균 x: 밍스 34.1 · 린델뢰프 27.4(대조표 15행). 밍스가 더 높은 CB였다 | **일치(위치)** — 역습 노출 장면 수는 세지 않았다 |
+| 뉴캐슬 PPDA 「7.9」 · 스즈키 롱패스 「24 … 20 from the 43rd minute onwards … eight in the first and 16 in the second」(24개 중 20개가 43′ 이후, 전반 8 · 후반 16) | 우리 PPDA 7.46(core.whoscored 정의) · 스즈키 롱 25(≥32m 정의) | **일치(정의 차이 범위)** |
+
+### 알리송 보강 (사용자 중점)
+
+- **골 기여 추가**: 36′ 골 빌드업에서 알리송이 우측 (70, 4)에서 받아 (80, 13)까지 전진한 뒤 고메스에게 내줬다 → 고메스 크로스 → 만잠비 헤더. 공식 기록상 어시스트는 아니지만 **세컨드 어시스트**다(WS 이벤트 · Squawka 서술 일치). 앞 회차 「확정」 목록(우측 넓게 · 시뮬레이션 경고 · 46′ 교체 · 9′ 빅찬스)에 **「골 직전 패스」** 를 더한다.
+- **매체 평점 보강**: E&S **5**(원문 확정 「daft booking for a dive」(어이없는 다이빙 경고)) · The 4th Official 6.5(변동 없음).
+- **에메리 발언**: 구단 공식 인터뷰(VillaTV)에도 알리송 언급 **0건**이다. 스페인어 쪽: Marca 기사는 EFE 단신(에메리 인용 없음)이고, Goal 스페인어판은 영어 회견의 **번역 복제**다(「Tiene habilidad e inteligencia…」(기술과 지능이 있고…) = 「Skills and intelligence」). 교차검증으로 세지 않는다(불변규칙 12 주의). Mundo Deportivo 「Emery se acoge a Manzambi」(에메리, 만잠비에게 기대다)는 브라우저 안전 제한으로 열지 못했다.
+- **브라질 매체**: ge.globo 사이트 검색(최신순)을 직접 해봤지만, 알리송의 뉴캐슬전 기사는 **0건**이다(앞 회차 「0건」을 직접 조회로 확정). Lance! 경기 기사는 AI 작성에 사람이 교정한 것으로 경고만 기재했고 평가는 없다.
+- **교체 사유**: 새로 나온 것은 구단 편집부의 「experience」(경험) 프레이밍과 E&S 「daft booking … subbed at the break」(어이없는 경고 … 하프타임 교체)뿐이다. 둘 다 에메리 1차 발언이 아니다 → **D+2에서 재판정 유지**(10-20 바이킹전 사전 회견이 다음 기회).
+
+### Q1 · Q2 재조회 결과 — 판정 유지
+
+- **Q1 가르나초**: 10-18 하루 이내 영어·스페인어·프랑스어 검색에서 이 경기 제외 사유를 담은 1차 근거는 0건이다.
+  - RotoWire 10-17: 「has played only 11 minutes since the international break … left out of the squad entirely」(A매치 휴식기 이후 11분만 뛰었고 … 명단에서 아예 빠졌다). 휴식기 친선전(사우샘프턴·세비야) 득점 뒤였다는 맥락이다.
+  - footiledefrance 10-18 「Il doit continuer à travailler dur pour avoir sa chance」(기회를 얻으려면 계속 열심히 해야 한다)는 9월 코번트리전 문맥을 **재게시**한 것이라 쓰지 않는다.
+  - Olé·TyC는 직접 조회에서도 결과가 없다. → **D+2에서 재판정 유지**(바이킹전 사전 회견 10-20).
+- **Q2 격노 대상**: 새 근거 0건이다. 구단 리포트·Independent·Marca·Lance! 모두 해당 장면을 서술하지 않는다. → **D+2에서 재판정 유지**. 후보 4개(16′ 코너 판정 · 캐시 · 알리송 수비 임무 · 34′ 벤치 언쟁)는 그대로다.
+
+### 대조표 영향 요약
+
+| 행 | 이전 판정 | 보강 후 | 비고 |
+|---|---|---|---|
+| 1 Q1 | D+2에서 재판정 | **유지** | 1차 근거 0 |
+| 2 Q2 | D+2에서 재판정 | **유지** | 새 근거 0 |
+| 3 교체 사유 | 부분 일치 | **유지** | 구단 「experience」 프레이밍 = 편집 서술 |
+| 4·5 H1 | 일치 | **유지 + 단서** | 위치는 일치. 0–36′ 관여는 적었다(터치 9 · Squawka · 4th Official) |
+| 10 H3 | 부분 일치 | **유지(보강)** | Squawka 「false left-midfielder」 · 골 장면 미끼 |
+| 16 린델뢰프 | 일치 | **유지(보강)** | E&S 8 「imperious」 |
+| 33 N3 의도 | 부분 일치 | **유지** | 에메리 「we planned it」은 수비·세트피스 문맥 |
+| 34 알리송 | D+2에서 재판정 | **유지 + 실측 추가** | 골 세컨드 어시스트 · E&S 5 원문 · ge.globo 0 확정 |
+
+⇒ 이번 보강으로 판정이 **닫힌 행은 없다.** 남은 일은 위 「D+2·D+3 추적 예정」 목록과 같다. 7번(Squawka 본문 직접 확인)은 이 회차에서 끝냈다.
+
+### 데이터 반영 (보강 회차)
+- `observations` **#1063~1065** 추가(행 추가만): #1063 0–36′ 우측 편중 · 완비사카 관여 적음 / #1064 알리송 세컨드 어시스트 · 교체 사유 D+2 / #1065 Q1·Q2 재조회 0건 · 교체 짝 출처 차이.
+- `player_matches`·`team_match_stats`·`match_reports`·처방은 바꾸지 않았다(실측 반복 금지 · 판정 변동 없음).
