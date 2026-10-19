@@ -20,6 +20,9 @@
     .venv/bin/python scripts/collect_futgg_evolutions.py --dry-run
     .venv/bin/python scripts/collect_futgg_evolutions.py --games 27
     .venv/bin/python scripts/collect_futgg_evolutions.py --games 27 --team AVL
+    .venv/bin/python scripts/collect_futgg_evolutions.py --games 27 --club-ea    # 클럽 한정 해제(전체 · 느리다)
+
+⭐ 기본은 **진화 조건을 통과한 빌라 카드만**(2026-10-19 · `--club-ea 2`) — club_eligible() 주석.
 """
 import argparse
 import datetime as dt
@@ -59,6 +62,53 @@ def get(url, tries=3):
         except Exception:
             time.sleep(1.5 * (i + 1))
     return None
+
+
+def evo_list_ids(g):
+    """진화 목록 페이지(서버 HTML)의 evo id 전체. ⛔ 실패를 빈 목록으로 뭉개지 않고 멈춘다(아래 --fill-catalog 주석)."""
+    import re
+    html = why = None
+    for i in range(3):
+        try:
+            with urllib.request.urlopen(
+                    urllib.request.Request("https://www.fut.gg/evolutions/", headers=UA), timeout=30) as r:
+                html = r.read().decode("utf-8", "ignore")
+            break
+        except Exception as e:
+            why = f"{type(e).__name__} {e}"
+            time.sleep(1.5 * (i + 1))
+    if html is None:
+        raise SystemExit(
+            f"⛔ 진화 목록 페이지를 못 받았다(3회 시도): {why}\n"
+            "   ⚠️ 「목록 0종」으로 넘기지 않는다 — 그러면 이월이 안 돼 진화가 화면에서 사라진다.\n"
+            "   ⇒ 이번 회차는 여기서 멈춘다. 네트워크를 확인하고 다시 돌릴 것.")
+    ids = sorted({int(x) for x in re.findall(r"/evolutions/(\d+)-", html)})
+    if not ids:
+        raise SystemExit(
+            "⛔ 목록 페이지는 받았는데 진화 id가 0개다 — 페이지 구조가 바뀌었을 수 있다.\n"
+            "   ⚠️ 이월 판단의 입력이라 0개를 그대로 쓰면 진화가 화면에서 사라진다. 멈춘다.\n"
+            "   ⇒ `/evolutions/` 서버 HTML에서 `/evolutions/<id>-` 패턴을 직접 확인할 것.")
+    return ids
+
+
+def club_eligible(g, eids, clubs):
+    """⭐ 진화 조건을 **먼저** 본다(2026-10-19 사용자 지시 「빌라 소속으로 제한하고 진화 조건을 먼저 확인한 후
+    진화 가능한 선수들만」). fut.gg 적용 가능 선수 API에 `club_id`(클럽 EA id)를 걸면 그 진화의 요구조건을
+    통과한 그 클럽 카드만 온다(실측: Gamechanger × 빌라 = 39장 · 30장/페이지).
+    ⇒ [(evo_id, 카드 eaId, basePlayerEaId)] · 실패한 (evo_id, club) 목록."""
+    out, fails = [], []
+    for eid in eids:
+        for club in clubs:
+            page = 1
+            while page:
+                d = get(f"{API}/evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}&hide_combinations=true"
+                        f"&hide_reward_evolutions=false&show_non_upgraded_players=false&club_id={club}&page={page}")
+                if d is None:
+                    fails.append((eid, club))
+                    break
+                out += [(eid, it.get("eaId"), it.get("basePlayerEaId")) for it in d.get("data") or []]
+                page = d.get("next")
+    return out, fails
 
 
 def six_of(card):
@@ -151,6 +201,8 @@ def main():
                     help="우리 선수가 하나도 해당되지 않는 진화도 카탈로그에 넣는다(목록 페이지 id → fut.gg 적용가능 선수 1명의 paths)")
     ap.add_argument("--elig-all", action="store_true",
                     help="적용 가능 선수를 **우리 DB FC27 카드 전체**로 확인한다(약 31분). 기본은 내 구단 보유 카드(약 4분).")
+    ap.add_argument("--club-ea", nargs="*", type=int, default=[2],
+                    help="카드 클럽 EA id로 대상 한정 — 진화 조건 통과 카드만 경로를 조회한다(기본 2=아스톤 빌라 · 값 없이 주면 전체)")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
@@ -159,10 +211,22 @@ def main():
     cur = con.cursor()
     playstyle = {x["eaId"]: x["name"] for x in (get(f"{API}/playstyles/") or {}).get("data", [])}
     catalog = {}                                   # (gv, evo_id) → 행 — 여러 선수 응답에 같은 진화가 반복된다
+    club_elig = {}                                 # gv → [(evo_id, 카드 eaId, basePlayerEaId)] — --club-ea일 때만
     for gv in [f"FC{g}" for g in a.games]:
         q = ("SELECT DISTINCT c.player_id, c.name_kr, c.base_ea_id FROM player_card_items c "
              "WHERE c.game_version=? AND c.base_ea_id IS NOT NULL")
         params = [gv]
+        if a.club_ea:
+            eids = evo_list_ids(gv[2:])
+            club_elig[gv], fails = club_eligible(gv[2:], eids, a.club_ea)
+            bases = sorted({b for _e, _i, b in club_elig[gv] if b})
+            print(f"{gv} 진화 조건 선확인: 목록 {len(eids)}종 × 클럽 {a.club_ea} → 조건 통과 카드 {len(club_elig[gv])}쌍 · "
+                  f"base {len(bases)}명" + (f" · ⚠️ 조회 실패 {len(fails)}건 {fails[:6]}" if fails else ""))
+            if fails:
+                # ⛔ 조회 실패를 「조건 미통과」로 읽으면 그 선수 경로가 조용히 빠진다 — 멈춘다.
+                raise SystemExit("⛔ 적용 가능 선수 조회 실패가 있어 대상을 확정할 수 없다 — 다시 돌릴 것.")
+            q += " AND c.base_ea_id IN (%s)" % ",".join("?" * len(bases)) if bases else " AND 0"
+            params += bases
         if a.team:
             q += (" AND c.player_id IN (SELECT se.player_id FROM squad_entries se "
                   "JOIN regimes r ON r.id=se.regime_id WHERE r.team_code IN (%s))"
@@ -316,28 +380,8 @@ def main():
             #    **한 종도 이월하지 않는다** → export가 최신 pulled만 내보내므로 이번 회차에 못 받은
             #    진화가 **화면에서 통째로 사라진다**. 로그엔 「목록 0종」이라 fut.gg가 비운 것처럼 보인다
             #    (런북이 2026-09-23에 정확히 이 증상을 오판했다).
-            # ⇒ 세 번 다시 묻고, 그래도 안 되면 **멈춘다**(부분 상태로 커밋하지 않는다).
-            html = None
-            for i in range(3):
-                try:
-                    with urllib.request.urlopen(
-                            urllib.request.Request("https://www.fut.gg/evolutions/", headers=UA), timeout=30) as r:
-                        html = r.read().decode("utf-8", "ignore")
-                    break
-                except Exception as e:
-                    why = f"{type(e).__name__} {e}"
-                    time.sleep(1.5 * (i + 1))
-            if html is None:
-                raise SystemExit(
-                    f"⛔ 진화 목록 페이지를 못 받았다(3회 시도): {why}\n"
-                    "   ⚠️ 「목록 0종」으로 넘기지 않는다 — 그러면 이월이 안 돼 진화가 화면에서 사라진다.\n"
-                    "   ⇒ 이번 회차는 여기서 멈춘다. 네트워크를 확인하고 다시 돌릴 것.")
-            ids = sorted({int(x) for x in re.findall(r"/evolutions/(\d+)-", html)})
-            if not ids:
-                raise SystemExit(
-                    "⛔ 목록 페이지는 받았는데 진화 id가 0개다 — 페이지 구조가 바뀌었을 수 있다.\n"
-                    "   ⚠️ 이월 판단의 입력이라 0개를 그대로 쓰면 진화가 화면에서 사라진다. 멈춘다.\n"
-                    "   ⇒ `/evolutions/` 서버 HTML에서 `/evolutions/<id>-` 패턴을 직접 확인할 것.")
+            # ⇒ 세 번 다시 묻고, 그래도 안 되면 **멈춘다**(부분 상태로 커밋하지 않는다) — evo_list_ids().
+            ids = evo_list_ids(g)
             missing = [i for i in ids if (gv, i) not in catalog]
             for eid in missing:
                 el = get(f"{API}/evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}&hide_combinations=true"
@@ -418,7 +462,19 @@ def main():
     #    ⛔ 범위를 화면이 알 수 있게 `source`에 적는다 — 「확인 안 함」을 「해당 없음」으로 읽으면 안 된다.
     for g in a.games:
         gv = f"FC{g}"
-        if a.elig_all:
+        if gv in club_elig:
+            # ⭐ 조건 선확인 응답을 그대로 쓴다 — 성 검색을 다시 돌지 않는다. 범위 = 그 클럽 카드 중 우리 DB에 있는 것.
+            scope = f"클럽 EA id {a.club_ea} 카드(조건 선확인)"
+            known = {r["ea_item_id"]: r for r in con.execute(
+                "SELECT ea_item_id, player_id, is_base FROM player_card_items "
+                "WHERE game_version=? AND player_id IS NOT NULL", (gv,))}
+            elig = [(gv, eid, known[ea]["player_id"], ea, known[ea]["is_base"], a.pulled,
+                     f"fut.gg /evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}&club_id={a.club_ea} "
+                     f"({a.pulled} 수집 · 범위: {scope})")
+                    for eid, ea, _b in club_elig[gv] if ea in known]
+            evo_ids = sorted({e for e, *_ in club_elig[gv]})
+            surnames, misses = {}, 0
+        elif a.elig_all:
             cards = list(con.execute(
                 "SELECT c.ea_item_id, c.player_id, c.is_base, COALESCE(p.name_kr, p.name) kr, p.name en "
                 "FROM player_card_items c JOIN players p ON p.id=c.player_id WHERE c.game_version=?", (gv,)))
@@ -430,31 +486,32 @@ def main():
                 "JOIN players p ON p.id=c.player_id "
                 "WHERE f.status='owned' AND c.game_version=? AND c.player_id IS NOT NULL", (gv,)))
             scope = "내 구단 보유 카드"
-        by_ea = {r["ea_item_id"]: r for r in cards}
-        # 성(마지막 토큰)으로 묶어 요청을 아낀다 — 같은 성이면 한 번만 묻는다.
-        surnames = {}
-        for r in cards:
-            surnames.setdefault((r["en"] or r["kr"] or "").split()[-1], []).append(r)
-        evo_ids = [r[0] for r in con.execute(
-            "SELECT DISTINCT evo_id FROM fc_evolutions WHERE game_version=? AND is_expired=0 "
-            "AND pulled=(SELECT MAX(pulled) FROM fc_evolutions WHERE game_version=?)", (gv, gv))]
-        elig, misses = [], 0
-        for eid in evo_ids:
-            for sur in surnames:
-                if not sur:
-                    continue
-                el = get(f"{API}/evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}"
-                         f"&hide_combinations=true&hide_reward_evolutions=false"
-                         f"&show_non_upgraded_players=false&name={urllib.parse.quote(sur)}")
-                if el is None:
-                    misses += 1
-                    continue
-                for it in (el.get("data") or []):
-                    o = by_ea.get(it.get("eaId"))
-                    if o:
-                        elig.append((gv, eid, o["player_id"], it["eaId"], o["is_base"], a.pulled,
-                                     f"fut.gg /evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}&name={sur} "
-                                     f"({a.pulled} 수집 · 범위: {scope})"))
+        if gv not in club_elig:
+            by_ea = {r["ea_item_id"]: r for r in cards}
+            # 성(마지막 토큰)으로 묶어 요청을 아낀다 — 같은 성이면 한 번만 묻는다.
+            surnames = {}
+            for r in cards:
+                surnames.setdefault((r["en"] or r["kr"] or "").split()[-1], []).append(r)
+            evo_ids = [r[0] for r in con.execute(
+                "SELECT DISTINCT evo_id FROM fc_evolutions WHERE game_version=? AND is_expired=0 "
+                "AND pulled=(SELECT MAX(pulled) FROM fc_evolutions WHERE game_version=?)", (gv, gv))]
+            elig, misses = [], 0
+            for eid in evo_ids:
+                for sur in surnames:
+                    if not sur:
+                        continue
+                    el = get(f"{API}/evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}"
+                             f"&hide_combinations=true&hide_reward_evolutions=false"
+                             f"&show_non_upgraded_players=false&name={urllib.parse.quote(sur)}")
+                    if el is None:
+                        misses += 1
+                        continue
+                    for it in (el.get("data") or []):
+                        o = by_ea.get(it.get("eaId"))
+                        if o:
+                            elig.append((gv, eid, o["player_id"], it["eaId"], o["is_base"], a.pulled,
+                                         f"fut.gg /evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}&name={sur} "
+                                         f"({a.pulled} 수집 · 범위: {scope})"))
         if elig and not a.dry_run:
             cur.executemany(
                 "INSERT INTO fc_evolution_eligibility(game_version,evo_id,player_id,ea_item_id,is_base,pulled,source) "
