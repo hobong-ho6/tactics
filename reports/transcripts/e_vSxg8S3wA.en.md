@@ -1,0 +1,52 @@
+# 전사(자동 생성 자막) — e_vSxg8S3wA (en)
+
+> ⚠️ 수집 메모: Justin Talks Villa warm down (auto-caption · 뉴캐슬전 2026-10-17 D+2 스윕 2026-10-19 · 채널·제목·게시일은 _meta_backfill.json)
+
+> 원본: https://www.youtube.com/watch?v=e_vSxg8S3wA · 수집: scripts/yt_transcript_json3.py(브라우저 pot 경로)
+> ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.
+
+**[00:00]** Hello. Welcome back to Justin Talks Villa for this the warm down. Newcastle United nil, Aston Villa one. Fabulous, fabulous away victory for Aston Villa. It wasn't pretty. It was attrition. We had to battle for our lives, but we came away from St. James' Park with a brilliant Premier League 1-0 away win. Away wins in the
+
+**[00:30]** Premier League aren't easy to come by and they will be over the moon with that win. Absolutely over the moon. Unai will be pleased. He won't be pleased with aspects of that win because he'll be wanting better quality in the final third. We gave the ball away quite a lot today, but it doesn't matter today because we are building towards something and today all that mattered when you play like that is to get the win over the line and that's what we did. So, you
+
+**[01:00]** can't fault it, can you? I think that's five without a loss now. Really good goal from Sanson. Good ball in, good header. Just overall really, really good, solid, old school Premier League win away from home. If you're new, subscribe to the channel, get involved in the comments section and drop the video a like. It does help massively. Right. Let's have a quick look at some of the statistics from the game today. Momentum bar. I do
+
+**[01:30]** like to look at the momentum bar. I think it does really show the title of the type in the game and I think that's a pretty fair reflection of the game. Very much backwards and forwards for the whole game. Newcastle had spells when they looked half decent. Their biggest problem is they've got nothing up front, have they? I think they had one shot on target the whole game. We scored then then we had a lot of chances to get maybe a second just before half time. They came out and have a bit of a go in the second half. We then wrestled back
+
+**[02:00]** control for periods of the second half. And then right at the end it was literally just basketball, wasn't it? It's just end to end stuff. Um, first half very much um I don't know how to say that. Strange first half. Strange first half, but couldn't quite grasp the control of the game in the middle of the park. Um I thought um Jackson was really good, but Buendía, Manzambi, and um
+
+**[02:33]** Allison they didn't quite have that cutting edge that we wanted. That that bit of calm composure on the ball. I think that's what I'm trying to say. Um, when we did break, when we did create one or two openings, we didn't quite have that finesse to to really capitalize on chances and um breaks on them. Um, I thought Allison was decent enough. Um, I'm not going to overly talk about the ref. I thought he was woeful. Excuse me.
+
+**[03:04]** He was woeful today. Jared Gillett, terrible terrible performance from him today. How on earth, not just him, VAR can look at that that tackle in the first half and not send Botman off blows my mind. It is late, it is aggressive, and it is dangerous. I don't know what the threshold is these days for red cards, but that for me was well past the threshold for a red card in the game.
+
+**[03:34]** That's enough about the referee. Doesn't deserve to be spoken about. Um, so yeah, really strange first half, but you know, we did have a quite a lot of possession, but we didn't probably do enough with it. Um, overall, I mean, how many shots on target did they have? Um Turtles um Now, here we go. One on target for Newcastle. It's It's they are in a
+
+**[04:04]** woeful bit of form, aren't they? Um and I do fear for them. I think they're in bit of trouble this season unless one or two of their big signings can start coming to the party. I think they could be in a bit of bit of bother. I don't think they'll go down, but when you look at the likes of Ipswich Hull um that have come up and and have hit the ground running, then you know, we could see a season for the first time in a very long time where three established Premier League clubs could be dragged into a big battle to stay up this season.
+
+**[04:34]** Even Coventry are looking okay. Um We had three shots on target. Uh 15 efforts, 16 for them. 1.50 expected goals. Looking at the um team What did they How did they rate the team today? Um Harvey Barnes constant threat, but he always is against us, isn't he? Um Wissa I I think that this is the problem for them, isn't it? Wissa and Weimann
+
+**[05:04]** here. That front four is just It's not good enough. But we're not talking about them. Suzuki really good in goal, made one absolutely wonderful save in the first half. Full stretch, palm out, strong hand, put it round the post. Brilliant. For me, man of the match today by a country mile, Victor Lindelof. Contract extension triggered, I believe, and he is a and has been a brilliant brilliant signing. Value for
+
+**[05:34]** free transfer, brilliant. Honestly I did an episode yesterday, if you haven't seen it, about would you swap any players from the players that left in the summer for the players that have come in this summer and the only player out of the eight that I are paired up with their like-for-like replacements, I said I would have back was Konsa over Hause. Bailey's not not to degrade Hause. Bailey's we just haven't seen enough of him. And the reason we haven't seen enough of Hause Bailey's is Victor
+
+**[06:04]** Lindelof. He's been brilliant and he continues to be brilliant and he has that right side center back um position locked off. He's the number one choice there and he been great. Matty Cash, I've said it a few times recently, he's back. The last couple of games he's been back to more or less where he was um last season, which was a brilliant season for Matty Cash. I think somebody said on my live stream that um as his hair is growing back, he's getting better and better. So, maybe that's what it is, mate. Um Kamara and Gomez back in the double
+
+**[06:36]** pivot, fantastic. I think they're both did pretty, pretty well at at one point in the first half I thought Gomez was going to lose his uh lose his head. But he didn't, he managed to rein it in. Um Manzambi got the goal and did well, but again, you know, there's lots of room for improvement and when you think he scored um today and there's you can still say there's room for improvement, I think that's fair. I think there was moments when he just relinquished control of the ball too much. Buendía did okay.
+
+**[07:06]** Wasn't really a threat today um and Alisson again did okay. Um I think that's probably a little bit unfair on Alisson, 6.6 I think he and Wan-Bissaka should and Mings probably should have all been sneaking into that seven at least um and then Nicolas Jackson missed Did he miss chances? Created a couple of chances for himself and in the form he's in I probably would have expected him to take at least one of them, but you know, we'll let him off. He's had a really good start to his time at Villa. So, all in all, really good performance,
+
+**[07:37]** really, really good performance. I don't like looking at the league tables until 10 games, but I'm going to I am going to simply because I think it's at the moment it's a nice thing to look at. Um, because we had that bit of a ropey start again. So, we have pushed ourselves now up to 12th. We're going to be looking up, not down. So, let's cut out the bottom teams for this exercise.
+
+**[08:07]** Let's see what what we can get here. Right. Um, Man City, the cheaters are on top, but we don't care about them. Chelsea, the cheaters are in fourth. And then we've got Arsenal, Brighton, um, Liverpool, Brentford, Everton, Leeds, Hull, Ipswich, and then Newcastle and Villa both on eight points. Um, fixture-wise coming up, we've got Um, obviously Viking on Wednesday
+
+**[08:38]** evening at Villa Park. So, that'll be a really interesting game. Hopefully we can make it three wins from three. And then we've got Manchester City, Bournemouth in the League Cup, then Fulham, and then Barcelona. A really intriguing set of fixtures to come in the next few weeks. So, that's it from me. I'm not going to keep you long tonight. I just wanted to jump on and wax lyrical about a fantastic 1-0 away win for Aston Villa at Newcastle today. Really really
+
+**[09:11]** impressive different kind of performance tonight. It wasn't an impressive attacking outlet that we saw in the week, but it's as important to be a team that can grind a 1-0 win away from home as it is to be able to destroy a team 6-0 like we did on Wednesday night in the Champions League. I don't think we can complain too much about where we find ourselves at the moment. It was always going to be a period of um change at the start of this season and I
+
+**[09:41]** think we've navigated it pretty well so far. Lots of things to be excited about. The bench today was was the standout for me. I thought that um we have now got this depth of squad where we can afford now to leave players out of the bench as well. Uh I think I said it in the in the live stream that it's not going to be too long before the most difficult decision for Unai Emery won't be what 11 players, it'll be who do you leave out the squad? And we're already seeing that now. And then when
+
+**[10:11]** you've got the likes of the quality of Barkley and Goretzka and Ndiaye coming off the bench, then you can't be doing too bad, can you? Shame for Wan-Bissaka to get that injury. Hopefully it's not too bad. It did look like a hamstring, so that looks like it could be a few weeks out. But I believe that potentially Ian Maatsen might be okay for Wednesday. I think Unai Emery alluded to that in the pre-match press conference. So, I think that's something to look out for next week. We don't want to rush him back, but we do need to get that natural
+
+**[10:41]** left-sided central left-sided defender back at left back. Okay? That's it from me. I will speak to you all again very, very soon. Thank you for watching. It's been um another good afternoon's work for Aston Villa Football Club. And if you haven't already, don't forget to subscribe to the channel, get involved in the comment section, and drop a video like. It does help massively. Up the Villa.
+
+**[11:13]** >> [music] [music] [music] >> Hey, hey, hey. >> [music]

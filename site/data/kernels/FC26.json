@@ -4627,13 +4627,13 @@
    "team_code": "AVL"
   },
   {
-   "fit_sim": 0.8,
+   "fit_sim": 0.82,
    "focus": "Roaming",
-   "map25": "025421279X217551124500000",
+   "map25": "12443138X9227761124500000",
    "player": "콜 파머",
    "pos_label": "RAM",
    "role_id": "cam_playmaker",
-   "sample_n": 6,
+   "sample_n": 7,
    "season": "2026-27",
    "team_code": "CHE"
   },
@@ -4860,11 +4860,11 @@
   {
    "fit_sim": 0.97,
    "focus": "Balanced",
-   "map25": "0000000000000000121001X20",
+   "map25": "0000000000000000021001X20",
    "player": "알리송 베케르",
    "pos_label": "GK",
    "role_id": "gk_goalkeeper",
-   "sample_n": 7,
+   "sample_n": 9,
    "season": "2026-27",
    "team_code": "LIV"
   },
@@ -5078,17 +5078,6 @@
    "team_code": "ATM"
   },
   {
-   "fit_sim": 0.91,
-   "focus": "Attack",
-   "map25": "0002X01159101040000100001",
-   "player": "응구모하",
-   "pos_label": "RM",
-   "role_id": "wm_winger",
-   "sample_n": 2,
-   "season": "2026-27",
-   "team_code": "LIV"
-  },
-  {
    "fit_sim": 0.89,
    "focus": "Attack",
    "map25": "111372113X100150001300001",
@@ -5098,6 +5087,17 @@
    "sample_n": 30,
    "season": "2025-26",
    "team_code": "CHE"
+  },
+  {
+   "fit_sim": 0.89,
+   "focus": "Attack",
+   "map25": "000380115X000030000100000",
+   "player": "응구모하",
+   "pos_label": "RM",
+   "role_id": "wm_winger",
+   "sample_n": 3,
+   "season": "2026-27",
+   "team_code": "LIV"
   },
   {
    "fit_sim": 0.85,
@@ -5122,24 +5122,24 @@
    "team_code": "ATM"
   },
   {
-   "fit_sim": 0.8,
+   "fit_sim": 0.83,
    "focus": "Balanced",
-   "map25": "011460014X001250012200022",
+   "map25": "001450014X001260002300032",
    "player": "무뇨스",
    "pos_label": "RM",
    "role_id": "wm_winger",
-   "sample_n": 3,
+   "sample_n": 4,
    "season": "2026-27",
    "team_code": "LIV"
   },
   {
    "fit_sim": 0.8,
    "focus": "Balanced",
-   "map25": "001341025X001270013600025",
+   "map25": "001341015X001260003600024",
    "player": "줄리아노 시메오네",
    "pos_label": "RM",
    "role_id": "wm_winger",
-   "sample_n": 6,
+   "sample_n": 8,
    "season": "2026-27",
    "team_code": "ATM"
   }

@@ -1,0 +1,16 @@
+# 전사(자동 생성 자막) — 6w_gn0ncSA4 (en)
+
+> ⚠️ 수집 메모: NBC 2 Robbies Manzambi (auto-caption · 뉴캐슬전 2026-10-17 D+2 스윕 2026-10-19 · 채널·제목·게시일은 _meta_backfill.json)
+
+> 원본: https://www.youtube.com/watch?v=6w_gn0ncSA4 · 수집: scripts/yt_transcript_json3.py(브라우저 pot 경로)
+> ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.
+
+**[00:00]** I think we are going to go for our underappreciated performer which is Joan Manzambi. The $18 million signing he scores his goal 20 just turned 21 years of age and and I I said on the show Rob he looks like a player that is built for the Premier League and what it requires in terms of physicality, hunger, confidence, physical attributes. He's a young. He's looks I mean he just looks like and and we're in danger of need that he looks like a player that could be such a effective
+
+**[00:30]** >> Yeah. >> impressive, productive player for many many seasons. >> One of one of the strengths that I saw about him, Rob, that that he pops up in very different >> awkward spots for defenders, but in all those spots when he gets the ball, he looks comfortable. He's never like, you know, a little bit off balance or he's stuck wide. He he's got a real good understanding football IQ of of where to be. >> He can dribble, Rob. He can dribble. He can play one twos. He can get in the box and scores his head out. >> He can bounce off off defenders. He's big and strong. I thought there's a real connection between him and Jackson.
+
+**[01:00]** Looks like they like playing with each other. The you know the there's a partnership growing. I'm try I'm trying to think Rob who who's who's he like who in the past have we would we have said and he's not Dia Robert because he was was >> It's funny you say that. Top end of the pitch. He's not striker. He's a Yeah, different is that sort of he has got that sort of mobility and that power and that impressive physical nature when he he moves around the field he's sort of like you see him coming he looks impressive doesn't he >> absolutely >> but as a as a midfield player also Iraham Embay that came on Rob he's 18
+
+**[01:30]** >> and he looks dynamite I mean he was so quick comes inside almost got a shot away when he came inside didn't he so you know this goes back to what we always say about recruitment and looks like Aston Villa have done nice work >> I just say as well quickly on I think it was his hundth Premier League win as a manager you know, he's up there with with some of the very best. But the thing I took away from um his press conference, less so on the pitch because on the touch line, he looked a little bit unhappy at times. It sounded to me, Rob, that he's excited about this new
+
+**[02:00]** project. He's excited about this new group of players that he's he's got, you know, a new turnover. He's lost the Tielemans. He's lost the Rogers. But, you know, this is a Rogers replacement for half the money. $80 million. You get nearly$160 for for Rogers. and he looks like he's enjoying the challenge. >> He really does. A brilliant win for Aston Villa. That sets them on the way, I think. Now, Rob, >> hi there. I'm Rebecca Lo, studio host of the Premier League on USA Sports, NBC, and Peacock. Don't forget to hit subscribe to watch more videos all season

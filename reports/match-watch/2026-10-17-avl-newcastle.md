@@ -420,3 +420,168 @@
 ### 데이터 반영 (보강 회차)
 - `observations` **#1063~1065** 추가(행 추가만): #1063 0–36′ 우측 편중 · 완비사카 관여 적음 / #1064 알리송 세컨드 어시스트 · 교체 사유 D+2 / #1065 Q1·Q2 재조회 0건 · 교체 짝 출처 차이.
 - `player_matches`·`team_match_stats`·`match_reports`·처방은 바꾸지 않았다(실측 반복 금지 · 판정 변동 없음).
+
+## D+2 추적 (2026-10-19)
+
+> 20:00 예약 회차(`mw-avl-newcastle-d2`). 위 본문·대조표·D+1 보강은 고치지 않았다. 판정이 바뀐 행은 아래 「당일 판정 정정」에 적고 obs를 새로 만들었다(불변규칙 2·3).
+> 수집 범위는 10-17~10-19 게시 유튜브 전사 **51편**(스윕 50 + D+1 워치얼롱 재전사 1) · 미전사 2편, 지연 게시 기사·블로그, 양 팀 감독 발언이다. 유튜브 전사는 **전부 auto-caption**이라 인용 confidence를 한 단계 낮췄다.
+
+### ⭐ Q2 해소 — 에메리 전반 격노: 대상은 알리송(주)·캐시, 장면은 16′ 코너 판정 직후 전환
+
+- **Jacob Tanswell**(The Athletic 빌라 담당 · 기자석 목격 · 1874 디브리프 `xOd6Tq8ag6E` [09:00] · auto-caption):
+  - 「Cash thought he had earned a corner … ref pointed to a goal kick and instead of running back cash just started to moan and Emry was screaming and get back」(캐시는 코너킥이라 여겼고 … 주심은 골킥을 줬다. 캐시는 뛰어 돌아가지 않고 항의했고 에메리는 「돌아가」라고 소리쳤다)
+  - 「most of his eye was directed towards Allison because he wanted Allison to recognize Cash was out of position and he needed to fill in right back and he didn't and Newcastle then play quickly and attacked and Emir was fuming」(그런데 에메리의 시선은 주로 알리송을 향했다. 캐시가 자리를 비웠으니 RB를 메워야 한다는 걸 알아채길 바랐는데 그러지 않았고, 뉴캐슬이 빠르게 공격했고 에메리는 격분했다)
+- **Opta 이벤트 대조**(WS 1983613 재열람 · 계산만 함):
+
+  | 시각 | 이벤트 |
+  |---|---|
+  | 15:40 | 캐시 슈팅 빗나감 (x **93.4**, y 32.3 — 박스 안 · RB가 최전방에 있었다) |
+  | 15:58 | 뉴캐슬 GK 호르니체크 골킥 **빠른 재개** |
+  | 16:00 | 윌록 → 반스, 빌라 **우측 배후**(캐시 자리) 침투 → 오프사이드(린델뢰프 유도) |
+
+  ⇒ Tanswell 서술의 순서(코너 항의 → 캐시 미복귀 → 뉴캐슬 빠른 공격)와 **분 단위로 일치**한다. Telegraph 16′ 「convinced they should of had a corner」(코너였다고 확신) · UTV 워치얼롱 [46:41] 「Was it Allison?」(알리송인가?)와도 시점이 같다.
+- 보조(독립 아님): Terrace View `sodX4WjOelU` [25:33] 「Got an absolute rifle from Emry」(에메리에게 제대로 혼났다)는 Tanswell의 X 글 전언이다. Holy Trinity `eVpj2D_npDk` [05:39] 「Allison's defensive effort in trying to help Mattie Cash double on Harvey Barnes」(반스를 캐시와 협력 수비하는 알리송의 수비 노력)는 해설자 추정이다. UTV 워치얼롱 후반 [35:21] 「was there a point in that first half when he was fuming with him … I don't know whether how true that was」(전반에 그에게 격분한 순간이 있었다던데 … 사실인지는 모르겠다)는 소문 수준이다.
+- ⚠️ 오인 주의: Craig Hope `Z2A9FW19Wdk` [03:36] 「Matty Cash is absolutely furious, comes to the edge of his technical area」는 문맥(테크니컬 에어리어·윌록 항의)상 **자이슬레**(「Matthias」 오인식)다. 에메리 장면으로 쓰지 않는다.
+- 에메리 본인 발언: 이 장면 언급 **0건**(PA·ESPN·Hayters·MOMS 발언 모음·VillaTV·E&S 10-19).
+
+### ⭐ Q1 가르나초 — 서열 판단 쪽 강화, 1차 근거는 여전히 0
+
+- Tanswell(1874 `xOd6Tq8ag6E` [28:32]~[30:36] · auto-caption):
+  - 「He's still behind in the pecking order … I don't think anyone should be surprised he wasn't in the squad cuz … fourth, fifth choice wide option, you're struggling to get on the bench」(여전히 서열에서 밀려 있다 … 명단 제외는 놀랄 일이 아니다 … 4~5순위 윙어면 벤치도 어렵다)
+  - 「he's behind … Hemmings, Allison, McInn, Brenda」(헤밍스·알리송·맥긴·부엔디아보다 뒤다 — 오인식 보정)
+  - 「He needs to improve in other areas as well … show Emmery that he really deserves and is trusted to play」(다른 부분도 나아져야 하고 … 에메리에게 신뢰를 보여줘야 한다)
+- 부상·징계 보도는 **0건**이다(영어·스페인어·포르투갈어). 에메리 회견에서 문답이 오간 흔적도 없다. Olé·TyC·Clarín은 이번에도 도메인 차단이다. 바이킹전 사전 회견은 아직 열리지 않았다(10-20).
+
+### ⭐ 알리송 절 보강 (사용자 중점)
+
+- **에메리 1차 발언 — 처음 확보**(Express & Star · Matt Maher · 2026-10-19 12:05 BST · 내장 브라우저로 직접 열람 · https://www.expressandstar.com/sport/unai-emery-staying-patient-as-he-tries-to-unlock-aston-villa-mans-power-9295937):
+  - 「Every minute he is playing, practising, he is fantastic. We can see his power. We can see that if he can get consistency, a lot of things he is doing: 'Wow!'」(뛰고 훈련하는 매 순간 훌륭하다. 그의 힘이 보인다. 꾸준함만 생기면 그가 하는 많은 것들이 「와!」 소리가 나온다)
+  - 「So, patience, consistency and every day being careful with him.」(그러니 인내, 꾸준함, 그리고 매일 그를 조심스럽게 다루는 것)
+  - 「being ready to play 10 minutes, 20 minutes, 30 minutes or even in the starting XI for the next matches」(다음 경기들에서 10분·20분·30분, 혹은 선발로도 뛸 준비를 하며)
+  - 「He was injured more than he was available to train and play … This season he has had some pain and we must try to be careful」(훈련·출전 가능했던 때보다 다쳐 있던 때가 더 많았다 … 이번 시즌에도 통증이 좀 있어 조심해야 한다)
+  - 「so he can get our demands, playing tactically, individually with his skills and collectively with the clear task we have in the team」(전술적으로, 개인 기술로, 팀이 준 분명한 과제로 우리 요구를 익힐 수 있게)
+  - ⇒ 어조는 **보호·신뢰**다. 경고·교체·질책 언급은 없다. 기사가 이 발언이 어느 문답에서 나왔는지는 밝히지 않는다.
+- **에메리 VillaTV**(`MaT2Js9_pGE` [01:03] · auto-caption): 「today Allison, how he played the first 45 minutes after a long time as well not in the starting 11」(오늘 알리송은 오랫동안 선발이 아니다가 첫 45분을 뛰었다). 교체 사유는 말하지 않았다.
+  - ⚠️ 「첫 선발」(Tanswell · 구단 프리매치 「full debut」 · E&S 「first start since £10million move from Gremio」) ↔ 에메리 「after a long time」은 충돌이 아니다. 빌라 첫 선발이고, 에메리 말은 그레미우 시절 이후 오랜만이라는 뜻으로 읽힌다.
+- **교체 사유 정리**: 경고 누적 관리가 주된 사유이고, 부상 이력에 따른 부하 관리가 배경이다. 질책성이라는 근거는 없다.
+  - 경고 관리: Tanswell 「I thought Allison might end up getting a red card」(퇴장까지 갈 수 있다고 봤다) · UTV `aHxS8pXa4BM` [06:14] 「he was on a yellow, so he got took off at half time」(경고가 있어 하프타임에 교체) · Villa Park Podcast `qxG5g496wzo` [07:54] 「Allison would have stayed on had he not got booked」(경고가 없었으면 계속 뛰었을 것)
+  - 부하 관리: Tanswell [09:30] 「They've protected him … not always training all the time … because of the injuries」(부상 때문에 훈련을 늘 시키지는 않으며 보호해 왔다) — 위 에메리 「some pain … careful」과 같은 방향이다
+  - 다른 해석: 1874 라이브 `slVJEMjOltY` [18:21] — 맥긴을 쉬게 하려다 45분을 주는 게 맞다고 판단했다(계획 교체설)
+  - ⇒ 에메리 본인의 사유 발언은 여전히 0이다(confidence MEDIUM).
+- **수비 역할**: Bains `hvqu5D6wa68` [01:01] 「he was very, very happy for Buendía and Alisson in the first half to actually drop into the back line, help Aston Villa almost become a back five, back six」(전반 부엔디아·알리송이 수비 라인까지 내려와 백5·백6을 만드는 걸 에메리가 반겼다). 알리송 수비 액션 x 10~42(위 실측)와 일치한다. Tanswell은 「defensively as well Allison's quite diligent」(수비도 꽤 성실하다)라고 했다. ⇒ 「수비 임무 소홀」은 **16′ 전환 한 장면**에 한정된다(아래 정정 ②).
+- **9′ 장면 평가**: Chris Sutton(Sky 중계 · Aston Villa News 10-18 Dan Lewis 경유): 「It's tremendous from Alysson. The balance, the drive and then the pass. Newcastle were exposed from their own corner.」(알리송 대단하다. 균형, 돌파, 그리고 패스. 뉴캐슬은 자기 코너킥 뒤 역습에 노출됐다.) UTV 분석 `9Dsd8S2bJqo` [09:47] 「Just look at Allison's running power, how we're able to transition」(알리송의 주력을 보라, 그래서 전환이 된다).
+- **경고 판정 의견**: Rogers Reports `UwaZw9lALHw` [05:36] 「Alisson was a dive, can't really argue with it」(다이빙이 맞다, 반박할 수 없다) ↔ The Villans `p3jXoW7lVGk` [21:54] 「The game is booking him」(과한 경고). ⚠️ FotMob 이벤트 목록 일부 표기(「Dissent」)는 SS `Simulation`과 다르다(검색 요약 경유 · 미검증). 정본은 SS로 유지한다.
+- **추가 평점**: LiveScore/Claret Villans(Mark Oldacres) **6** 「created a great chance for Nicolas Jackson」(잭슨에게 결정적 찬스를 만들었다) · Aston Villa News(Jacob Raw) 6 · Dave.sport 6/6.5(AI 초안).
+- **브라질 매체(포르투갈어)**: 이번 회차도 **0건**이다. Lance! 문자중계는 「27' Cartão amarelo Alysson」(27분 알리송 경고)·「45' Substituição」(45분 교체)만 적었다.
+  - 검색어: 「Alysson Aston Villa Newcastle」, 「Alysson ex-Grêmio titular Aston Villa Newcastle cartão amarelo substituído」, 「Alysson simulação」, 「Alysson Aston Villa Newcastle Emery GZH Grêmio」
+  - 결과: ge.globo·Trivela·ESPN Brasil·Terra는 예전 기사뿐이다. UOL·Correio do Povo는 차단됐다. GZH는 검색 결과 0건이다.
+  - 유튜브 포르투갈어 업로드(이번 주)도 0건이다.
+
+### 감독 회견 (양 팀)
+
+- **에메리**: Q&A 형식 전문은 **없다**(avfc.co.uk는 「key lines」 요약만 · Birmingham Live·Villa News 전사본 미검출). 기존에 없던 대목은 다음과 같다.
+  - MOMS 발언 모음(10-18): 「I believe that when we need Harwood-Bellis, he will play in the same way. Why? Because he has the qualities like Lindelöf」(하우드-벨리스가 필요할 때 같은 방식으로 뛸 거라 믿는다. 왜냐면 린델뢰프 같은 자질이 있기 때문이다) — D+1에서 「미확인」으로 둔 Tanswell 스니펫 발언의 **취지를 확인**했다. 원문 표현은 다르다.
+  - MOMS: 「We must accept the sacrifice of being without the North Stand: it is like when we have an injured important player」(노스 스탠드 없이 지내는 희생을 받아들여야 한다. 중요한 선수가 다친 것과 같다)
+  - ESPN: 「He decided to join us in summer because he understood here he can progress」(여기서 성장할 수 있다고 이해해서 여름에 합류했다 — 만잠비)
+  - 스페인어 독립 발언은 **0건**이다. GOAL es-mx는 영어판과 기사 ID가 같고 「Traducido por」(번역) 표기가 있어 **번역 복제**다. 교차검증으로 세지 않는다(불변규칙 12 주의). Blick(독일어)의 로저스 비교 인용 「Wir wollen mit ihm etwas Ähnliches erreichen wie in den letzten Jahren mit Morgan Rogers」(지난 몇 년 모건 로저스와 그랬듯 그와도 비슷한 것을 이루고 싶다)는 영어 원문을 찾지 못했다(번역 추정 · 미확인).
+- **자이슬레**(The Mag 10-19 · HaytersTV `YAp3AOYcUhY`):
+  - 「We were shaky until half-time」(하프타임까지 흔들렸다)
+  - 「Defensive-wise; I think the structure and discipline was good but not all the time」(수비는 구조와 규율이 좋았지만 항상은 아니었다)
+  - 「We dominated the game, we controlled it without being like constantly in the opposition box」(우리가 경기를 지배하고 통제했다, 상대 박스에 계속 있지는 못했지만)
+  - 댄 번 전방 배치는 「a tactical approach for the additional time」(추가시간용 전술 선택)이라고 했다.
+  - ⇒ **압박 구조 변경(43′)·맨마킹에 대한 발언은 0건**이다.
+
+### 상대(뉴캐슬) 관점
+
+- **A Game Of Two Halves**(`URIee_wYulg` · 10-18 · 뉴캐슬 전술 채널):
+  - 「under Eddie Howe … man-to-man press. But Yaser doesn't really do that … the best way to describe it is a zonal high press … They don't simply man-mark one player」(하우 시절엔 맨투맨이었지만 자이슬레는 그렇게 하지 않는다 … 존 하이 프레스다 … 한 명만 맨마크하지 않는다) → 아래 정정 ③
+  - 빌라 대응 [11:48]: 「They split the center backs wider … Kamara moved out of that space, and Gomez actually moved a little bit towards the ball … impossible for us to cover all the options」(CB를 넓게 벌리고 … 카마라는 그 공간을 비우고 고메스는 공 쪽으로 다가왔다 … 모든 옵션을 막을 수 없었다)
+  - 후반 [14:19]: 「it's McGinn moving off that right wing and finding that little pocket of space」(맥긴이 우측에서 빠져 포켓 공간을 찾았다) — 대조표 9행(H2b 맥긴 안팎 둘 다)과 같은 방향이다.
+- **LiveScore/Newcastle Toons**(Matty Connelly): 「Villa using Suzuki as an extra man to completely nullify any attempts at winning the ball back high」(빌라가 스즈키를 추가 인원으로 써서 높은 탈취 시도를 무력화했다) — 대조표 33행(N3 수적 우위)을 상대 쪽에서 지지한다.
+- **일본 TOTAL FOOTBALL**(`zmxirB08veo` · 일본어 · auto-caption · 스즈키 해설): 「相手の2トップが結構前から来るっていうの分かってるんで、その2トップからうまく遠ざかれるような場所に移動して…ロングボール蹴れる位置」(상대 투톱이 앞에서 온다는 걸 알기에 투톱에서 멀어지는 자리로 옮겨 롱볼을 찰 수 있는 위치를 잡았다). 상대 2톱을 전제하므로 Squawka의 4-1-3-2 서술과 맞는다.
+- **Blackandwhitebanter**(`woiHwZQzXjQ`): 「A Tyrone Mings does not want pressure on him every time」(밍스는 매번 압박받는 걸 싫어한다) — 압박 타깃 지목 · 「in that second half, I felt like Aston Villa did tire」(후반엔 빌라가 지쳤다) — 대조표 29행(67′부터 하강)과 같은 방향이다.
+- **The Mag 평점**(Jankowski): 조엘린통 「not having a third midfielder to cover him when he goes hunting leaves us exposed」(그가 사냥하러 나갈 때 메워줄 세 번째 미드필더가 없어 노출된다) — 빌라가 고메스를 자유롭게 만든 장면(AGOTH)과 같은 구조적 약점이다.
+
+### 선수 평가 (지연 게시분 · 기존 판정 보강)
+
+- **린델뢰프**: Tanswell [15:08] 「He's often and mostly the lowest in terms of distance … because he sees the game very well. He very rarely sprints」(뛴 거리가 가장 짧은 편인데 경기를 잘 읽기 때문이다. 스프린트가 거의 없다) · [16:09] 「maybe Villa's first choice center back」(이제 빌라 1순위 CB일 수도) · Bains [04:01] 「one of the only players … that first 20, even 30 minutes, that showed composure on the ball」(초반 20~30분 공을 침착하게 다룬 거의 유일한 선수) — 대조표 15~17행을 **유지·보강**한다. 평균 x 24.8(낮음)은 「읽고 막는다」 서술과 맞는다.
+- **완비사카**: Tanswell [10:01] 「quite a clunky left side really trying to build out from the back」(후방 빌드업에서 꽤 투박한 왼쪽) — D+1 단서(0–36′ 관여 적음)와 같은 방향이다. 부상 경위 Claret & Blue `trUqd0DRdN8` [26:57] 「he got injured in covering a lot of ground to get back defensively」(복귀 수비로 먼 거리를 커버하다 다쳤다).
+- **캐시**: UTV 분석 [31:38] 「Cash had 10 defensive contributions」(수비 기여 10회) · 뉴캐슬 GallowgateShots `XIm60PSPbuM` [18:18] 「Harvey Barnes was getting absolutely nothing out of Matty Cash」(반스가 캐시에게서 아무것도 얻어내지 못했다).
+- **카마라**: The Villans [12:14] 「him and Gomez look more together … you both got to defend, you've both got to get forward」(고메스와 더 한 몸처럼 — 둘 다 수비하고 둘 다 전진해야 한다) — 「새 카마라 역할」 주장 · 실측 대조 전(PENDING).
+- **만잠비**: Tanswell [05:55] 「he's perfect just to basically put glue into Emry's starting 11」(에메리 선발을 묶어주는 접착제) · UTV 분석: 부엔디아→만잠비 패스 8 · 고메스→만잠비 6.
+- **음바예**: Tanswell [24:58] 「every time he got the ball he was just wanting to take Lewis Miley on」(공만 잡으면 마일리를 제치려 했다) — 대조표 20·22행 유지.
+- **스즈키 수치 충돌**: UTV 분석 [34:43]~[35:15] 「48 passes, 90% … 14 long, 71%」(패스 48·롱 14·성공 71%) ↔ 우리 WS 롱(≥32m) 25. 정의 차이(영상 속 툴 미상)다. **WS를 유지**하고 영상 수치는 채택하지 않는다.
+
+### 부상 추적 갱신 (§4-1 T3)
+
+| 선수 | D+2 정보 | 근거 | confidence |
+|---|---|---|---|
+| 완비사카 | 공식 스캔·기간 발표 **0** · Sports Mole 「at least a month」(최소 한 달 · 출처 미기재 추정) · 채널 추정 「weeks」~「2 months」 | Sports Mole 10-19 00:59 · Holy Trinity · All Villa No Filler | 기간 LOW |
+| 만잠비 | Sports Mole 「Major doubt」(바이킹전) · 부위 보도가 갈린다 — 종아리(The False 9 · Le Matin) / 무릎 타박(Blick 「einen Schlag auf das Knie」(무릎에 타격)) / 본인 「a kick」 | Sports Mole · The False 9 · Blick · Terrace View 「kicked all over the park」 | 부위 LOW · 경미 쪽 MEDIUM |
+| 마트센 | Sports Mole 10-24 복귀 가능 | Sports Mole | MEDIUM |
+| 루제리 | Sports Mole 12-02 복귀 예상 | Sports Mole | LOW-MEDIUM |
+
+- 잭슨 「nearly broke my leg」(다리가 부러질 뻔했다 — 보트만 태클 · GiveMeSport 재인용 · Show de Bola `xnZzgHC_Chs`) — 부상 보도는 없다.
+
+### ⚠️ 당일 판정 정정 (§2-1a — 위 본문은 수정하지 않음)
+
+| # | 대상 | 이전 판정 | D+2 판정 | 근거 | obs |
+|---|---|---|---|---|---|
+| ① | 대조표 2행 **Q2 격노** | 판정 불가 → D+2에서 재판정 | **부분 일치(대상 일치 · 시점 불일치)** — 대상은 **알리송(주)·캐시**, 장면은 **15′40″~16′00″** 코너 판정 항의 후 전환 수비 공백(RB 메우기 실패)이다. 사용자 가설 「28′ 시뮬레이션 경고 직후 질책」은 시점이 맞지 않는다(격노는 경고 12분 전). D+1 후보 ⑴코너 판정·⑵캐시·⑶알리송 수비 임무는 **한 장면**이었고, ⑷34′ 벤치 언쟁은 별개다 | Tanswell 목격(auto-caption) + Opta 시퀀스 + Telegraph 16′ + UTV 시점 | #1076 |
+| ② | 알리송 절 「수비 임무 소홀(MOMS) 불채택」 | 실측과 충돌 → 불채택 | **한정 채택** — 전반 전체가 아니라 16′ **전환 한 장면**의 커버 실패다. 전반 수비 위치·액션(x 10~42 · 백5~6 하강 · Bains)은 실측대로 성실하다 | Tanswell · Bains · WS | #1076 |
+| ③ | 대조표 31행 N1 사유 「실점 후 바뀐 것은 구조(맨마킹)」 | 부분 일치(구조 = 맨마킹) | **부분 일치 유지 · 사유 정정** — 「43′ 4-4-2 전원 1대1」은 Squawka 단일 서술이고 AGOTH 「zonal high press … don't simply man-mark」(존 하이 프레스 … 맨마크만 하지 않는다)와 충돌한다. 자이슬레 발언도 0건이다. 실측으로 남는 것은 강도·높이 변화(def_x 55.3 → 41.1 · PPDA 56–77′ 4.89)뿐이고 **구조 성격은 미확정**이다 | AGOTH · Squawka · The Mag | #1079 |
+| ④ | 대조표 3행 알리송 교체 사유 | 부분 일치(경고 관리 우세) | **유지 + 배경 추가** — 경고 관리(주) + 부상 이력 부하 관리(배경 · 에메리 「some pain … careful」)이고 질책성 근거는 0이다. 에메리 직접 사유는 여전히 없다 | E&S 10-19 · Tanswell · UTV · VillaTV | #1077 |
+| ⑤ | 대조표 1행 Q1 가르나초 | 판정 불가 → D+2 | **판정 불가 유지(서열 판단 쪽 LOW → LOW-MEDIUM)** — 담당 기자 「4~5순위 윙어」 해석이 생겼지만 1차 발언은 0이다 | Tanswell | #1078 |
+| ⑥ | 대조표 34행 알리송 중점 | D+2에서 재판정 | **에메리 1차 발언 확보**(보호·신뢰 어조) · 브라질 매체 0 확정(2회차) · 남은 것은 바이킹전 기용 | E&S 10-19 | #1077 |
+
+### 영상 적재 (D+1에서 넘긴 일 — 이번 회차에 닫음)
+
+- 전사 **51편**을 `reports/transcripts/`에 만들었다(서브에이전트 50 + 워치얼롱 `ZgK_KsV2gTs` 1). `yt_transcript.py`로 9편을 받은 뒤 429가 이어졌고, 나머지 42편은 `yt_transcript_json3.py`로 받았다. D+1의 UTV 2편(`ZgK_KsV2gTs` · `aHxS8pXa4BM`)과 1874 1편(`slVJEMjOltY`)도 저장소 전사로 옮겼다.
+  - 미전사 2편은 자막 트랙이 0개다: The Mag `uUIbIJU4uHM` · 90s Mags `ys15C0kaJGQ`(라이브).
+- 채널·제목·게시일은 YouTube oEmbed와 watch 페이지 `uploadDate`에서 받아 `_meta_backfill.json`에 넣었다. 전사 머리의 수집 메모는 `> ⚠️` 줄로 남겼다(내용으로 채널을 추측하지 않음).
+  - `oxQKwDYgsu4`(ECILA)는 oEmbed 조회에 실패해 보강하지 않았다.
+- `index_transcripts.py`로 `match_videos`를 갱신했다. 이 경기(report #56)에 귀속된 영상은 **40편**이다.
+- `write_video_summary.py`로 핵심 7편의 요약과 `video_impl_claims` 7행을 적재했다(none 3 · instruction 4).
+  - 7편: Tanswell `xOd6Tq8ag6E` · UTV 분석 `9Dsd8S2bJqo` · Bains `hvqu5D6wa68` · AGOTH `URIee_wYulg` · VillaTV `MaT2Js9_pGE` · The Villans `p3jXoW7lVGk` · TOTAL FOOTBALL `zmxirB08veo`
+  - 나머지 33편은 요약 백로그다(G17은 건수만 보고한다).
+
+| 채널(진영) | 제목(축약) | 게시일 | ID | 방식 |
+|---|---|---|---|---|
+| 1874 (AVL · Tanswell 출연) | Jacob Tanswell's Newcastle Debrief | 10-19 | xOd6Tq8ag6E | 자막 전사 auto-caption |
+| UTV (AVL) | HOW DOES UNAI EMERY KEEP DOING THIS? | 10-18 | 9Dsd8S2bJqo | auto-caption |
+| The Villans (AVL) | Beating Newcastle United Again, The New Kamara Role | 10-18 | p3jXoW7lVGk | auto-caption |
+| Aston Villa FC (공식) | 「The victory is really very fantastic」 | 10-17 | MaT2Js9_pGE | auto-caption |
+| Bains Analysis | How Unai Emery OUTSMARTED Newcastle | 10-17 | hvqu5D6wa68 | auto-caption |
+| A Game Of Two Halves (NEW) | Why Jaissle Is Getting Newcastle's Tactics WRONG | 10-18 | URIee_wYulg | auto-caption |
+| HaytersTV (NEW) | 자이슬레 회견 | 10-17 | YAp3AOYcUhY | auto-caption |
+| TOTAL FOOTBALL (일본어) | 【鈴木彩艶】配置と判断 徹底解説(스즈키 자이온 — 배치와 판단 철저 해설) | 10-18 | zmxirB08veo | auto-caption ja |
+| Aston Villa Colombia (스페인어) | OPINIÓN EN CALIENTE(뜨거운 소감) | 10-17 | -Qe-fuqrVXU | auto-caption es |
+| 그 밖 42편(AVL 팬 채널 · 뉴캐슬 팬·매체 · 중립 방송) | (목록: `match_videos` report_id=56 · 귀속 실패분은 채널·제목으로 검색) | 10-17~19 | — | auto-caption |
+
+### 다국어 점검 (불변규칙 10) · 0건 기록
+
+- **영어**: 회견·기사·평점·블로그·유튜브 — 수행했다.
+- **스페인어**(에메리·가르나초):
+  - 검색어: 「Emery Newcastle rueda de prensa Manzambi」, 「declaraciones tras el partido Manzambi muscular」, 「Emery 100 victorias」, 「Movistar/DAZN Emery」, 「Garnacho convocatoria afuera」, 「no convocado motivo octubre」, 「fuera de la lista Olé TyC」, 유튜브 「Newcastle Aston Villa análisis/resumen Emery」
+  - 결과: 독립 발언 0 · GOAL es-mx 번역 복제 1 · Aston Villa Colombia 영상 1(팬 소감). AS·Marca·MD·Relevo·El País·SER·EFE·Olé·TyC·Clarín은 도구 차단이다.
+- **포르투갈어**(알리송): 위 알리송 절 검색어 — 기사 0 · 영상 0이다.
+- **독일어**(자이슬레): 「Jaissle Newcastle Aston Villa Pressekonferenz Niederlage」, 「Pfiffe」로 검색했다. kicker·Sport1·Spox 0건, bild.de 차단, Blick(스위스 · 만잠비 축) 2건 확보.
+- **일본어**(스즈키): TOTAL FOOTBALL 1편을 확보했다.
+- **프랑스어**(만잠비): Le Matin 스니펫(종아리)만 있다. 프랑스어 2분 클립 `99Cnu9jjQeo`(위사가 완비사카를 위로하는 장면)는 내용상 쓸모가 없어 전사하지 않았다.
+- 채널 핸들 404(공식 핸들이 아님): @UTVillaTV · @TheVillans · @JacobTanswell · @LeazesTerrace · @TotalNewcastle · @WorFlags · @TrueFaithNUFC · @TheMagNUFC · @TifoFootball_
+  - 이번 경기 새 영상이 0편인 채널: @NUFC360 · @TheAthleticFC · @HITCSevens · Tifo
+  - Spielverlagerung · Coaches' Voice · TFA(스코어 페이지만) · 스페인어 전술 블로그: 0건
+
+### D+3에 남기는 것
+
+1. 10-20 바이킹전 사전 회견에서 Q1 가르나초, 알리송 기용, 완비사카·만잠비 상태를 확인한다.
+2. AGOTH 「카마라 이탈·고메스 접근」과 The Villans 「카마라–고메스 대칭 분담」을 실측과 대조한다. WS에서 두 선수의 수신 위치와 국면 그리드를 분리해 계산한다(claims PENDING 2건).
+3. 영상 요약 백로그 33편 중 뉴캐슬 관점 채널(True Faith · Toon Review · Two For Joy)을 우선 처리한다.
+4. The Athletic 전술 글(nytimes.com 도구 차단)과 Birmingham Live 평점은 내장 브라우저로 재시도한다.
+
+### 데이터 반영 (D+2 회차)
+- `observations` **#1076~1079** 추가(행 추가만): #1076 Q2 해소·MOMS 한정 채택 / #1077 알리송 교체 사유·에메리 1차 발언 / #1078 Q1 서열 판단 강화 / #1079 N1 맨마킹 서술 출처 충돌 정정.
+- `match_videos` 갱신(인덱서 · report #56 귀속 40편) · 요약 7편 · `video_impl_claims` 7행.
+- `reports/transcripts/` 전사 51편 + `_meta_backfill.json` 50항목(ECILA 1편 조회 실패)을 추가했다.
+- `player_matches`·`team_match_stats`·`match_reports`(status `draft` 유지)·처방은 바꾸지 않았다. 실측 수집을 반복하지 않았고, 정정은 판정 층에만 해당한다.
+- **커밋 보류 → 해소(2026-10-19 23시대)**: 처음 `ship.py`를 돌렸을 때 G34가 이 경기(#56) 밖의 CHE #57·ATM #59·LIV #61 D+3 예약 누락으로 멈췄다. 비대화형 주간 회차에서 예약 생성이 거부됐던 것이다(`followups/2026-10-19-pending-schedules.md`). 사용자 지시로 같은 세션에서 그 문서에 적힌 그대로 `mw-che-everton-d3`(10-20 20:40) · `mw-atm-espanyol-d3`(22:00) · `mw-liv-brentford-d3`(22:50)를 예약해 G34를 풀고 커밋했다. 게이트는 우회하지 않았다.

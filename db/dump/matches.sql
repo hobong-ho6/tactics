@@ -111,3 +111,8 @@ INSERT INTO matches VALUES(117,16363878,'LIV','2026-27','2026-10-11','Manchester
 INSERT INTO matches VALUES(118,16421056,'ATM','2026-27','2026-10-10','Deportivo Alavés','LaLiga','A','1-2',1,'Round 8',68.0);
 INSERT INTO matches VALUES(119,16938852,'AVL','2026-27','2026-10-14','Fenerbahçe','UEFA Champions League','H','6-0',1,'League Phase MD2',45.0);
 INSERT INTO matches VALUES(120,16363888,'AVL','2026-27','2026-10-17','Newcastle United','Premier League','A','0-1',1,'Matchweek 7 — 세인트 제임스 파크 (result는 홈-원정 순서: 뉴캐슬 0 · 빌라 1)',50.0);
+INSERT INTO matches VALUES(121,16363884,'CHE','2026-27','2026-10-17','Everton','Premier League','A','0-2',1,'Matchweek 7 — 힐 디킨슨 스타디움 (result는 홈-원정 순서: 에버턴 0 · 첼시 2)',53.0);
+INSERT INTO matches VALUES(122,16939043,'LIV','2026-27','2026-10-14','LASK','UEFA Champions League','A','3-6',1,'League Phase MD2 — 린츠 (result는 홈-원정 순서: LASK 3 · 리버풀 6)',64.0);
+INSERT INTO matches VALUES(123,16363882,'LIV','2026-27','2026-10-17','Brentford','Premier League','A','1-2',1,'Matchweek 7 — 지테크 커뮤니티 스타디움 (result는 홈-원정 순서: 브렌트퍼드 1 · 리버풀 2)',60.0);
+INSERT INTO matches VALUES(124,16938789,'ATM','2026-27','2026-10-13','Manchester United','UEFA Champions League','H','2-0',1,'League Phase MD2 — 메트로폴리타노',58.0);
+INSERT INTO matches VALUES(125,16421071,'ATM','2026-27','2026-10-17','Espanyol','LaLiga','A','0-1',1,'Jornada 9 — RCDE 스타디움 (result는 홈-원정 순서: 에스파뇰 0 · 아틀레티코 1)',70.0);
