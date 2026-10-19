@@ -60,6 +60,7 @@ from core import DB, ROOT
 from core.aggregate import player_aggregate
 from core.encode import regression_check
 from core.kernel import Kernel
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 HADJ_MOUSSA = "312691114X000140002400001"   # docs/20 게이트 표의 사본 (DB에 원본 없음)
 
@@ -471,7 +472,7 @@ def run(db_path=None, verbose=True):
             sys.exit("G33 DB ↔ dump 회차 불일치 ⛔")
         if verbose:
             print("G33 DB ↔ dump 회차 일치 ✅")
-    con = sqlite3.connect(db_path)
+    con = connect_db(db_path)
     fails = []
 
     # G1 — Kernel 로드가 정합 assert를 겸한다
@@ -527,7 +528,7 @@ def run(db_path=None, verbose=True):
     if kern_json.exists():
         cases = []   # (map25, x, slot_type, 기대 sim)
         for label, sql, params, x, st, wr, wf, ws in ANCHORS:
-            con2 = sqlite3.connect(db_path)
+            con2 = connect_db(db_path)
             m25 = params if sql is None else (con2.execute(sql, params).fetchone() or [None])[0]
             con2.close()
             if m25:
@@ -1718,6 +1719,48 @@ def run(db_path=None, verbose=True):
             fails.append("G34")
     elif verbose:
         print("G34 경기 후 추적 예약: ⚠️ 예약 폴더 없음(다른 PC) — 건너뜀")
+
+    # G35 — ⛔ **진화 요구조건 문구가 화면 판정표(TREQ)에 다 있는가.** 2026-10-19 신설
+    #   TREQ는 「8종으로 닫혀 있다」(09-26 전수 확인)였는데 Zoomaestro(2602)가 `Defending`·`Skill Moves`를 들고 왔다.
+    #   모르는 문구는 「❔ 판정 불가」가 되고 그건 진화 시작을 막지 않는다 — DEF 77 보가르드가 「DEF Max. 74」 진화에
+    #   「걸 수 있음」으로 떴다(조용히 틀린 값). ⇒ 카탈로그 문구 ⊆ TREQ 키 ∪ 판정 불가로 **명시한** 문구.
+    #   판정 불가 목록은 화면 상태에 값이 없는 것만: Born After(생일 미수출) · Rarity(EA 희귀도 이름 매핑 결손 · Star Performer 전용은 starOnlyIds가 숨김).
+    import re as _re35, json as _json35
+    G35_UNJUDGED = {"Born After", "Rarity"}
+    _html35 = (Path(__file__).resolve().parent.parent / "site" / "evolutions.html").read_text(encoding="utf-8")
+    _m35 = _re35.search(r"const TREQ = \{(.*?)\n\};", _html35, _re35.S)
+    _treq35 = set(_re35.findall(r"^\s*'([^']+)'\s*:", _m35.group(1), _re35.M)) if _m35 else set()
+    _labels35 = set()
+    for (_rq,) in con.execute("SELECT requirements_text FROM fc_evolutions "
+                              "WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions)"):
+        _labels35 |= {q.get("label") for q in (_json35.loads(_rq or "[]") or [])}
+    g35 = sorted(l for l in _labels35 if l and l not in _treq35 and l not in G35_UNJUDGED)
+    if not _treq35:
+        g35 = ["TREQ 블록을 evolutions.html에서 못 찾음"]
+    if verbose:
+        print(f"G35 진화 요구조건 문구 ⊆ 화면 판정표: 모르는 문구 {len(g35)} "
+              + ("✅" if not g35 else "❌ site/evolutions.html TREQ에 판정을 추가할 것 — " + " · ".join(g35)))
+    if g35:
+        fails.append("G35")
+
+    # G36 — ⛔ **메인 DB에 `sqlite3.connect`를 직접 쓰지 않는다.** 2026-10-19 신설(사용자 「대기·순번제」)
+    #   직접 열면 ⑴ 기본 5초 만에 「database is locked」로 넘어지고 ⑵ 「작성 중」 표시가 안 남아 ship.py가
+    #   그 세션을 기다리지 못한다(반쯤 쓴 상태로 게이트·커밋). 정본은 core/db.connect 하나다.
+    #   예외: core/db.py 자신 · `:memory:` · v1 동결 아카이브(migrate_v1.py · avl_analysis.db).
+    _root36 = Path(__file__).resolve().parent.parent
+    g36 = []
+    for _f in sorted(list((_root36 / "scripts").glob("*.py")) + list((_root36 / "core").glob("*.py"))):
+        if (_f.parent.name, _f.name) in (("core", "db.py"), ("scripts", "migrate_v1.py")):
+            continue
+        for _n, _l in enumerate(_f.read_text(encoding="utf-8", errors="ignore").split("\n"), 1):
+            if "sqlite3.connect(" in _l and ":memory:" not in _l and "avl_analysis.db" not in _l \
+                    and not _l.lstrip().startswith("#"):
+                g36.append(f"{_f.relative_to(_root36)}:{_n}")
+    if verbose:
+        print(f"G36 DB 직접 연결(sqlite3.connect) 금지: {len(g36)} "
+              + ("✅" if not g36 else "❌ core.db.connect로 바꿀 것 — " + " · ".join(g36[:6])))
+    if g36:
+        fails.append("G36")
 
     con.close()
     if verbose:

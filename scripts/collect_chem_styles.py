@@ -30,6 +30,7 @@ sys.path.insert(0, str(ROOT))
 DB = ROOT / "db" / "tactics.db"
 
 from scripts.collect_futgg_history import ATTR_MAP  # noqa: E402  같은 한글 속성 라벨을 쓴다
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"}
 
@@ -69,7 +70,7 @@ def main():
     a = ap.parse_args()
 
     styles, bundle = fetch_styles()
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     rows = []
     for s in styles:
         boosts, unknown = {}, []

@@ -31,6 +31,7 @@ DEFAULT_SEASON = "2026-27"
 # ⭐ 2026-10-05: 자체 `%Friendly%` 필터를 쓰던 탓에 10-02 적재한 대표팀 16경기가 클럽 표본에 섞일 뻔했다.
 sys.path.insert(0, str(ROOT))
 from core.aggregate import club_official_sql  # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 CLUB_SQL, CLUB_ARGS = club_official_sql()
 
 SQL = """
@@ -54,7 +55,7 @@ def main() -> int:
     ap.add_argument("--apply", action="store_true", help="실제 반영(기본은 드라이런)")
     a = ap.parse_args()
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     rows = con.execute(SQL, (*CLUB_ARGS, a.season)).fetchall()
 
     changed, cleared = [], 0

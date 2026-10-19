@@ -19,6 +19,8 @@
 """
 import argparse, datetime as dt, json, re, sqlite3, sys, time, urllib.request
 from pathlib import Path
+import sys as _sys_db, pathlib as _pl_db; _sys_db.path.insert(0, str(_pl_db.Path(__file__).resolve().parent.parent))  # noqa: E401,E702
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 ROOT = Path(__file__).resolve().parents[1]
 DB = ROOT / "db" / "tactics.db"
@@ -193,7 +195,7 @@ def main():
         time.sleep(0.3)
     print(f"과제 {len(rows)}개 수집")
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     # 진화가 실제로 참조하는 과제만 보고한다 — 나머지는 조용히 적재한다(나중에 새 진화가 걸릴 수 있다).
     want = {r[0] for r in con.execute(
         "SELECT unlock_text FROM fc_evolutions WHERE unlock_text IS NOT NULL AND unlock_text<>''")}

@@ -10,6 +10,7 @@ import csv, sqlite3, sys
 
 sys.path.insert(0, '.')
 from core.classify import pos_class as core_pos_class
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 DB = 'data/avl_analysis.db'
 SS = {833956: 2, 827679: 3, 96538: 5, 976263: 6, 923973: 8, 331737: 9, 250223: 10,
@@ -43,7 +44,7 @@ def pos_class_band(ax, ay, mins, lineup_pos=None, lateral=None):
     return core_pos_class(ax, ay, lineup_pos, lateral, minutes=mins)
 
 def main():
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     cur = con.cursor()
 
     # ── 이벤트 메타는 같은 경기의 기존 행에서 가져온다 (재수집 불필요)

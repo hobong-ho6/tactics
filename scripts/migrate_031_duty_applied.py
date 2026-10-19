@@ -24,8 +24,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import DB                                     # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
-con = sqlite3.connect(DB)
+con = connect_db(DB)
 con.row_factory = sqlite3.Row
 cols = {c[1] for c in con.execute("PRAGMA table_info(player_duties)")}
 if "applied_status" not in cols:

@@ -14,10 +14,11 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                          # noqa: E402
 from core.evo_paths import content_key       # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 
 def main():
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     cols = [r[1] for r in con.execute("PRAGMA table_info(player_evolutions)")]
     assert "last_seen" in cols, "migration 099 SQL을 먼저 적용할 것"

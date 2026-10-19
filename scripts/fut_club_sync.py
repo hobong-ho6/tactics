@@ -31,6 +31,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                     # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 TODAY = dt.date.today().isoformat()
 SIX_K = ["PAC", "SHO", "PAS", "DRI", "DEF", "PHY"]
@@ -63,7 +64,7 @@ def main():
                     help="진화 선수 보호를 해제하고 EA 값으로 전부 덮는다(진화 기록이 틀렸다고 확정했을 때만)")
     a = ap.parse_args()
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     acc = con.execute("SELECT * FROM fut_accounts WHERE name=?", (a.account,)).fetchone()
     if not acc:

@@ -35,6 +35,8 @@ import argparse
 import sqlite3
 import sys
 from pathlib import Path
+import sys as _sys_db, pathlib as _pl_db; _sys_db.path.insert(0, str(_pl_db.Path(__file__).resolve().parent.parent))  # noqa: E401,E702
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "db" / "tactics.db"
@@ -284,7 +286,7 @@ def main():
         import datetime
         pulled = datetime.date.today().isoformat()
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     if a.adopt_fotmob_position and not a.dry_run:
         if "positions_alt" not in {r[1] for r in con.execute("PRAGMA table_info(players)")}:
             con.execute("ALTER TABLE players ADD COLUMN positions_alt TEXT")

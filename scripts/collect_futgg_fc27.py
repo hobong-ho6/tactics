@@ -27,6 +27,8 @@ import sqlite3
 import sys
 import unicodedata
 from pathlib import Path
+import sys as _sys_db, pathlib as _pl_db; _sys_db.path.insert(0, str(_pl_db.Path(__file__).resolve().parent.parent))  # noqa: E401,E702
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "db" / "tactics.db"
@@ -158,7 +160,7 @@ def main():
         import datetime
         roster = datetime.date.today().isoformat()
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     # 이름 매칭 사전: players 전체 + squad_entries 라벨
     by_name = {}
     for pid, name, kr in con.execute("SELECT id, name, name_kr FROM players"):

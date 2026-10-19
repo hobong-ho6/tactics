@@ -36,6 +36,7 @@ TIER = {"Bronze": 0, "Silver": 1, "Gold": 2}
 # ⭐⭐ 케미 규칙은 `core/chem.py`가 정본이다(2026-09-26) — 여기서 다시 적지 않는다.
 #    종전엔 이 파일과 화면에 두 벌이 있었고 **아이콘·히어로 규칙이 화면에만 빠져** 있었다.
 from core.chem import CHEM, chem_total, per_player, extra as _extra   # noqa: E402,F401
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 # ⛔⛔ **포메이션은 DB가 정본이다**(migration 070 · fut.gg 번들에서 받은 FC27 29종).
 #    종전엔 4종을 여기 박아 썼다 — SBC는 챌린지마다 포메이션이 고정이라 목록이 모자라면 기록조차 못 한다.
 #    ⭐ 칸 자격은 `gen`(번들의 generalPositionSlots · 등급 A)으로 본다 — 그 칸에 설 수 있는 카드 포지션이다.
@@ -758,7 +759,7 @@ def market_for(spec, pool, qual_floor=None, limit=2):
                     "price": price, "club_ok": club_ok})
     if rows:
         import datetime as _dt
-        c2 = sqlite3.connect(DB, timeout=120)
+        c2 = connect_db(DB, timeout=120)
         c2.executemany("""INSERT INTO player_card_prices(game_version, ea_item_id, player_id, price, has_price, momentum, platform,
                             source, confidence, pulled) VALUES(?,?,?,?,?,?,?,?,?,?)
                           ON CONFLICT(game_version, ea_item_id, platform, pulled) DO UPDATE SET
@@ -815,7 +816,7 @@ def buy_candidates(conds, want, limit=6):
                     "league": (x.get("league") or {}).get("name"), "club": (x.get("club") or {}).get("name")})
     if rows:
         import datetime as _dt
-        c2 = sqlite3.connect(DB, timeout=120)
+        c2 = connect_db(DB, timeout=120)
         c2.executemany("""INSERT INTO player_card_prices(game_version, ea_item_id, player_id, price, has_price, momentum, platform,
                             source, confidence, pulled) VALUES(?,?,?,?,?,?,?,?,?,?)
                           ON CONFLICT(game_version, ea_item_id, platform, pulled) DO UPDATE SET
@@ -850,7 +851,7 @@ def main():
     a = ap.parse_args()
     rng = random.Random(a.seed)
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     pool = [dict(r) for r in con.execute("""
         SELECT c.id, COALESCE(i.name_kr, c.name) name, COALESCE(c.current_ovr, i.ovr) ovr,

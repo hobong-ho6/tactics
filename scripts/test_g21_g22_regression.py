@@ -18,6 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 import gates  # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 fails = []
 
@@ -34,7 +35,7 @@ def g21_case(mutate, label, want_fail):
     with tempfile.TemporaryDirectory() as td:
         db = Path(td) / "t.db"
         shutil.copy(ROOT / "db" / "tactics.db", db)
-        con = sqlite3.connect(db)
+        con = connect_db(db)
         mutate(con)
         con.commit()
         con.close()

@@ -43,6 +43,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import DB                                     # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 TAIL = ("[요약 {d}] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). "
         "⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). "
@@ -110,7 +111,7 @@ def main():
     a = ap.parse_args()
 
     data = json.loads(Path(a.json_path).read_text(encoding="utf-8"))
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     cur.execute("BEGIN IMMEDIATE")

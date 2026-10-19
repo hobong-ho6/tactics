@@ -198,6 +198,7 @@ def get(url, headers, end_on_404=False):
 #    종전엔 같은 표가 네 파일에 복제돼 있었고 **이 파일만** `attributeFreeKickAccuracy`(오타)를 찾아
 #    「프리킥 정확도」를 100% 흘렸다 → 6대 스탯 PAS가 보유 89명 전원에서 2~4 낮게 계산됐다.
 from core.futgg_attrs import parse_attrs        # noqa: E402  (ROOT를 sys.path에 넣은 뒤라 아래에 둔다)
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 # 수집 중 발견한 결손 속성 — ⛔ 조용히 넘기지 않고 끝에 건수로 보고한다(obs#132).
 MISSING = {}
@@ -280,7 +281,7 @@ def apply_squad(squad, account_id):
     """활성 스쿼드 슬롯 반영. FIELD→XI · SUBSTITUTE→BENCH (기존 표 어휘를 유지한다)."""
     squad = slots_of(squad)
     grp_of = {"FIELD": "XI", "SUBSTITUTE": "BENCH"}
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.execute("DELETE FROM fut_squad_slots WHERE account_id=?", (account_id,))
     n = 0
     for s in squad:

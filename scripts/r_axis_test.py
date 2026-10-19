@@ -8,6 +8,8 @@ import math
 import sqlite3
 import sys
 from itertools import combinations
+import sys as _sys_db, pathlib as _pl_db; _sys_db.path.insert(0, str(_pl_db.Path(__file__).resolve().parent.parent))  # noqa: E401,E702
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 DB = "data/avl_analysis.db"
 SEASON = "2025-26"
@@ -202,7 +204,7 @@ def pair_series(res, a, b):
 # ---------- 실행 ----------
 
 def main():
-    conn = sqlite3.connect(DB)
+    conn = connect_db(DB)
 
     # ── 회귀 게이트: obs#95의 7명으로 한정해 5쌍 재현
     print("=" * 78)

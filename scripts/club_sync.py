@@ -33,6 +33,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                        # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 PY = str(ROOT / ".venv" / "bin" / "python")
 if not Path(PY).exists():
@@ -226,7 +227,7 @@ def run_lanes(lanes, dry):
 
 def staleness():
     """⚠️ 「업데이트했다」가 낡은 입력 위에서 돌았다는 사실을 덮지 않게 — 축별 최신 수집일을 찍는다."""
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     q = [("보유 카드", "SELECT MAX(synced_at) FROM fut_club_players"),
          ("진화 카탈로그", "SELECT MAX(pulled) FROM fc_evolutions"),
          ("SBC", "SELECT MAX(pulled) FROM fc_sbc_sets"),
@@ -302,7 +303,7 @@ def main():
                   "\n   (의존은 club_sync.py의 AFTER 표가 정본이다 — 새 축을 만들면 거기 올린다)")
     if item != "전체" and "선수" not in items:
         # ⚠️ 단독 실행은 **낡은 입력 위에서 돌 수 있다**(런북 「순서 의존」).
-        con = sqlite3.connect(DB)
+        con = connect_db(DB)
         v = con.execute("SELECT MAX(synced_at) FROM fut_club_players").fetchone()[0]
         con.close()
         if v:

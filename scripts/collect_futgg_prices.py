@@ -48,6 +48,7 @@ import json                                          # noqa: E402
 import time                                          # noqa: E402
 import urllib.error                                  # noqa: E402
 import urllib.request                                # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 
 class Challenge(Exception):
@@ -175,7 +176,7 @@ def main():
     a = ap.parse_args()
     global BUDGET
     BUDGET = Budget(a.budget, a.window, wait=a.full)
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     for g in a.games:
         gv = f"FC{g}"
         # ⭐ 선수당 2요청이고 **한 회차 약 50장이 한도**다(429). 그래서:

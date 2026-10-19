@@ -37,6 +37,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import DB                                     # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 DDL = """
 CREATE TABLE IF NOT EXISTS video_impl_claims(
@@ -60,7 +61,7 @@ CREATE INDEX IF NOT EXISTS ix_vic_axis ON video_impl_claims(axis, verdict);
 CREATE INDEX IF NOT EXISTS ix_vic_player ON video_impl_claims(player_id);
 """
 
-con = sqlite3.connect(DB)
+con = connect_db(DB)
 existed = con.execute(
     "SELECT 1 FROM sqlite_master WHERE type='table' AND name='video_impl_claims'").fetchone()
 con.executescript(DDL)

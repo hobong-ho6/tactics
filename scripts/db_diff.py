@@ -32,6 +32,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB   # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 SNAP_DIR = ROOT / "db" / ".snapshots"
 
@@ -110,7 +111,7 @@ def main():
 
     if a.snapshot:
         SNAP_DIR.mkdir(parents=True, exist_ok=True)
-        con = sqlite3.connect(a.db)
+        con = connect_db(a.db)
         # ⚠️ 파일명에 시각을 쓰지 않는다 — 세션마다 시계가 다르고 비교가 어렵다.
         #    대신 「가장 최근 관측 id」로 이름을 붙여 어느 시점인지 DB 스스로 말하게 한다.
         try:
@@ -136,7 +137,7 @@ def main():
         if not p.exists():
             sys.exit(f"⛔ DB 없음: {p}")
 
-    before, after = sqlite3.connect(bp), sqlite3.connect(dp)
+    before, after = connect_db(bp), connect_db(dp)
     tb, ta = set(tables(before)), set(tables(after))
     print(f"기준 {bp.name}  →  현재 {dp.name}")
     for t in sorted(ta - tb):

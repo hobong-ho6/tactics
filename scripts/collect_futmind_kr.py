@@ -31,6 +31,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 DB = ROOT / "db" / "tactics.db"
 SRC = "https://futmind.com/api/evolutions"
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)", "Accept": "application/json"}
@@ -61,7 +62,7 @@ def main():
         raise SystemExit(f"⛔ 영문명이 중복이다 {dup} — 이름 조인이 성립하지 않는다. 멈춘다.")
     print(f"futmind {len(rows)}종 · 영문명 중복 0")
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     pulled = con.execute("SELECT MAX(pulled) FROM fc_evolutions").fetchone()[0]
     ours = con.execute("SELECT evo_id, name FROM fc_evolutions WHERE pulled=?", (pulled,)).fetchall()

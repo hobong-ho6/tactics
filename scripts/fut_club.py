@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                     # noqa: E402
 from core.futgg_attrs import apply_upgrades, face_of    # noqa: E402  ⭐ 진화 보상·6대 환산 정본
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 TODAY = dt.date.today().isoformat()
 
@@ -800,7 +801,7 @@ def main():
     s.add_argument("--source", default="manual", help="목록 출처 표기(예: gg-club 2026-09-26 · webapp-club-page)"); s.add_argument("--how")
     s = sub.add_parser("list"); s.add_argument("--account", required=True)
     a = ap.parse_args()
-    con = sqlite3.connect(DB); con.row_factory = sqlite3.Row
+    con = connect_db(DB); con.row_factory = sqlite3.Row
     con.execute("PRAGMA foreign_keys=ON")
     {"account": cmd_account, "player": cmd_player_add, "player-set": cmd_player_set, "evolve": cmd_evolve,
      "complete": cmd_complete, "import": cmd_import, "list": cmd_list}[a.cmd](con, a)

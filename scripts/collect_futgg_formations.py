@@ -26,6 +26,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 DB = ROOT / "db" / "tactics.db"
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"}
 
@@ -84,7 +85,7 @@ def main():
     if a.dry_run:
         print("\n--dry-run — DB에 쓰지 않았다.")
         return
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.executemany("""INSERT INTO fc_formations(game_version, ea_id, name, slots, source, confidence, pulled)
                        VALUES(?,?,?,?,?,?,?)
                        ON CONFLICT(game_version, ea_id) DO UPDATE SET

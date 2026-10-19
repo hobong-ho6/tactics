@@ -35,6 +35,7 @@ API = "https://www.fut.gg/api/fut"
 GV = "FC27"
 
 from core.futgg_attrs import parse_attrs  # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 # ⚠️ 상세 API의 `playstyles`는 **숫자 id**다(이름이 아니다) — 이름표는 `fc_playstyle_ids`(migration 057)가 정본.
 #    ⛔ 여기서 표를 손으로 적지 않는다. id를 못 읽으면 그 사실을 남긴다(「PlayStyle #8」로 찍히는 것보다 낫다).
@@ -100,7 +101,7 @@ def detail(ea):
 
 
 def main(a):
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     mine = [r[0] for r in con.execute("""

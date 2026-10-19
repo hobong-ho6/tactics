@@ -9,13 +9,15 @@ import tempfile
 from pathlib import Path
 
 import fut_club_sync as sync
+import sys as _sys_db, pathlib as _pl_db; _sys_db.path.insert(0, str(_pl_db.Path(__file__).resolve().parent.parent))  # noqa: E401,E702
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 
 def main():
     with tempfile.TemporaryDirectory() as tmp:
         db = Path(tmp) / "club.db"
         payload = Path(tmp) / "ggclub.json"
-        con = sqlite3.connect(db)
+        con = connect_db(db)
         con.executescript("""
             CREATE TABLE fut_accounts(id INTEGER PRIMARY KEY, name TEXT);
             CREATE TABLE fc_chemistry_styles(ea_id INTEGER, name TEXT);
@@ -60,7 +62,7 @@ def main():
         finally:
             sync.DB, sys.argv = old_db, old_argv
         assert "신규 1 · 갱신 1" in out.getvalue(), out.getvalue()
-        con = sqlite3.connect(db)
+        con = connect_db(db)
         rows = con.execute("""SELECT ea_item_id, current_attrs, current_roles_plus,
                                     current_roles_plus_plus, updated
                              FROM fut_club_players ORDER BY ea_item_id""").fetchall()

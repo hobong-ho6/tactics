@@ -37,6 +37,7 @@ sys.path.insert(0, str(ROOT))
 from core import DB                                        # noqa: E402
 from core.futgg_attrs import ATTR_KR                       # noqa: E402
 from core.position_ovr import APPROX, GROUP                # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 GKA = ["다이빙", "핸들링", "킥", "포지셔닝", "반사신경"]
 TODAY = dt.date.today().isoformat()
@@ -137,7 +138,7 @@ def fit(cache, save):
                          f"등급 C(우리 적합 · EA 비공개). 시험셋 정확 {ex}/{len(te)}·±1 {w1}/{len(te)}. "
                          "⚠️ 절대값보다 진화 전후 차이로 쓸 것 — 국제 명성 등 선수별 오차가 차이에서 상쇄된다."))
     if save:
-        con = sqlite3.connect(DB)
+        con = connect_db(DB)
         con.executemany("""INSERT OR REPLACE INTO fc_position_ovr_weights(game_version,pos_group,attr,weight_pct,fitted,
                              sample_n,test_n,test_exact,test_within1,source,confidence) VALUES(?,?,?,?,?,?,?,?,?,?,?)""", rows)
         con.commit()

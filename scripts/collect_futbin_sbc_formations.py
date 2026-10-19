@@ -35,6 +35,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                        # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 GAME = "FC27"
 TODAY = dt.date.today().isoformat()
@@ -143,7 +144,7 @@ def main():
     ap.add_argument("--missing", action="store_true")
     ap.add_argument("--no-solve", action="store_true", help="적재 뒤 해법 재계산을 건너뛴다")
     a = ap.parse_args()
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     if a.print_snippet:
         ids = target_ids(con)
         print("// ① 시작\n" + SNIPPET.replace("__IDS__", json.dumps(ids)))

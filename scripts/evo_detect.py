@@ -36,6 +36,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                        # noqa: E402
 from core.futgg_attrs import apply_upgrades                # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 # 코스메틱 전용 진화의 EA id — 카탈로그가 의도적으로 적재하지 않으므로(collect_futgg_evolutions.is_cosmetic)
 # 매핑이 영영 안 생긴다. 사용자가 확인한 것만 둔다(지어내지 않는다).
@@ -264,7 +265,7 @@ def main():
     ap.add_argument("--verify", action="store_true", help="로그가 있는 카드도 포함해 **검산**한다")
     ap.add_argument("--ea", action="store_true", help="EA 진화 이력 ↔ 로그 대조(1차 판정)")
     a = ap.parse_args()
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     if a.ea:
         ea_check(con, a.player)

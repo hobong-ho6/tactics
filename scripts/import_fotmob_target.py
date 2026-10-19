@@ -12,6 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import ROOT
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 
 SEASON_LABELS = {
@@ -53,7 +54,7 @@ def main():
         f"{a.season} {a.league}, {a.pulled} 수집)"
     )
 
-    con = sqlite3.connect(ROOT / "db/tactics.db")
+    con = connect_db(ROOT / "db/tactics.db")
     con.row_factory = sqlite3.Row
     try:
         target = con.execute(

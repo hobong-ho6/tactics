@@ -27,6 +27,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import DB                          # noqa: E402
 from core.encode import encode               # noqa: E402
 from core.kernel import Kernel, cos, decode  # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 PH0, PW0, GK_OFF0, ACC0 = 1013, 759, 48, 653   # 기준 창 크기(Remote Play 720p 창)에서의 피치 외곽·GK 점 오프셋·선수표 강조선 높이
 PH, PW, GK_OFF = PH0, PW0, GK_OFF0                # scale_from_accent()가 창 크기에 맞춰 갱신한다
@@ -201,7 +202,7 @@ def main():
     for r in range(5):
         print("  " + " ".join(f"{cells[r*5+c]:8.1f}" for c in range(5)))
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     k = Kernel(a.game_version)
     ref_kind = ref_map = sim = None
     extra = []

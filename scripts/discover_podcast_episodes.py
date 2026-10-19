@@ -39,6 +39,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                     # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 UA = {"User-Agent": "Mozilla/5.0"}
 QUEUE = ROOT / "reports" / "transcripts" / "_todo_from_podcast.json"
@@ -127,7 +128,7 @@ def main():
                     help="⭐ 보유분의 `published`가 NULL·근사치면 RSS의 정확한 날짜로 채운다(채움 전용)")
     a = ap.parse_args()
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     todo, stats = [], {}
     meta_fixed = 0

@@ -40,6 +40,7 @@ RELEASED = {"25": "2024-09-27", "26": "2025-09-26", "27": "2026-09-25"}
 # ⛔ 표는 `core/futgg_attrs.py`가 정본이다(2026-09-23에 네 벌을 하나로 합쳤다 —
 #    한 곳만 키가 틀려 「프리킥 정확도」가 100% 누락된 사고가 있었다).
 from core.futgg_attrs import ATTR_KR as ATTR_MAP  # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 GK_ATTRS = {"가속", "질주 속도", "반응력", "다이빙", "핸들링", "킥", "포지셔닝", "반사신경"}   # 기존 GK 행의 attrs 키 집합
 OUTFIELD_DROP = {"다이빙", "핸들링", "킥", "포지셔닝", "반사신경"}                            # 기존 필드 행은 GK 5속성 미포함
 # positionId → 표기. v2 목록에서 관측된 값(2026-09-12)으로 고정하고, 미지의 id는 그대로 문자열로 남긴다.
@@ -85,7 +86,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     playstyle = {x["eaId"]: x["name"] for x in get(f"{API}/playstyles/")["data"]}
     verified_legacy = {24}

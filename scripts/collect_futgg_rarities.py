@@ -28,6 +28,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 DB = ROOT / "db" / "tactics.db"
 from scripts.collect_futgg_history import API, get   # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 
 def rows_from(rar, gv, pulled, src):
@@ -55,7 +56,7 @@ def main():
     ap.add_argument("--games", nargs="*", default=["27"])
     ap.add_argument("--pulled", default=dt.date.today().isoformat())
     a = ap.parse_args()
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     for g in a.games:
         gv = f"FC{g}"
         # ⭐ 레어도는 몇 종 안 되므로 **레어도별로 한 장만** 조회하면 된다.

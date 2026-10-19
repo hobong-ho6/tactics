@@ -14,6 +14,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import DB
 from core.encode import encode
 from core.sofascore import FLOATS, STAT_FIELDS
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 SRC = "SofaScore API (2026-08-11 전수 수집 — heatmap+statistics+average-positions)"
 
@@ -24,7 +25,7 @@ def season_of(date):
 
 
 def main(path):
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     have = {(r[0], r[1]) for r in con.execute(
         "SELECT player_id, event_id FROM player_matches WHERE event_id IS NOT NULL")}
     ins = skip = 0

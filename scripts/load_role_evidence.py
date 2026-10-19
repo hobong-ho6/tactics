@@ -13,6 +13,8 @@ import datetime as dt
 import json
 import sqlite3
 from pathlib import Path
+import sys as _sys_db, pathlib as _pl_db; _sys_db.path.insert(0, str(_pl_db.Path(__file__).resolve().parent.parent))  # noqa: E401,E702
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "db" / "tactics.db"
@@ -62,7 +64,7 @@ def main():
     ap.add_argument("--source", default="역할 커뮤니티 조사 2026-10-10 (다국어 웹 검색 · 서브에이전트 4갈래)")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     foci = {}
     for rid, f in con.execute("SELECT role_id, focus FROM game_role_focus WHERE game_version='FC26'"):
         foci.setdefault(rid, set()).add(f)

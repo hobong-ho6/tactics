@@ -29,6 +29,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                     # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 TX = ROOT / "reports" / "transcripts"
 # ⭐ 헤더에 채널이 없는 전사의 **보강 메타**(scripts/backfill_transcript_meta.py가 유튜브 원천에서 받아 쌓는다).
@@ -156,7 +157,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     cur = con.cursor()
 

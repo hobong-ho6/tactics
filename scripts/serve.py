@@ -14,6 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 
 class NoCacheHandler(SimpleHTTPRequestHandler):
@@ -48,7 +49,7 @@ class NoCacheHandler(SimpleHTTPRequestHandler):
         from core import DB
         out = io.StringIO()
         try:
-            con = sqlite3.connect(DB); con.row_factory = sqlite3.Row
+            con = connect_db(DB); con.row_factory = sqlite3.Row
             con.execute("PRAGMA foreign_keys=ON")
             with redirect_stdout(out):
                 fut_club.run(con, cmd, **body)

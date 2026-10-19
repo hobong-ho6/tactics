@@ -10,6 +10,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import DB                                                           # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 from scripts.gates import g8_prescription_checks, g12_role_group_orphans, g15_checks  # noqa: E402
 
 FAIL = []
@@ -22,7 +23,7 @@ def check(name, cond, detail=""):
 
 
 def fresh():
-    src = sqlite3.connect(DB)
+    src = connect_db(DB)
     mem = sqlite3.connect(":memory:")
     src.backup(mem)
     src.close()

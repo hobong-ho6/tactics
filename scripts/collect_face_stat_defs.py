@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 DB = ROOT / "db" / "tactics.db"
 from scripts.collect_futgg_history import ATTR_MAP  # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 UA = {"User-Agent": "Mozilla/5.0"}
 
@@ -43,7 +44,7 @@ def main():
     ap.add_argument("--pulled", default=dt.date.today().isoformat())
     a = ap.parse_args()
     rows, ref = parse()
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     n, skip = 0, []
     for key, abbr, is_gk, attr_en, w in rows:
         kr = ATTR_MAP.get(attr_en)

@@ -24,6 +24,7 @@ from core import DB                                   # noqa: E402
 from core.classify import lateral_for_formation, normalize_formation, pos_class  # noqa: E402
 from core.encode import encode                        # noqa: E402
 from core.sofascore import FLOATS, STAT_FIELDS        # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 NT_RE = re.compile(r"World Cup Qual|FIFA World Cup|Africa Cup|Nations League|International Friendly|Euro.*Qual|"
                    r"Copa America|Championship Qual|Asian Cup|Gold Cup|^EURO$|U-?2[01]|U-?1[6789]|European Championship",
@@ -57,7 +58,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     have = {(r[0], r[1]) for r in con.execute("SELECT player_id, event_id FROM player_matches WHERE event_id IS NOT NULL")}
     codes = {r[0] for r in con.execute("SELECT code FROM teams")}
     data = json.load(open(a.path, encoding="utf-8"))

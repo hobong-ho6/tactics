@@ -32,6 +32,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 DB = ROOT / "db" / "tactics.db"
 
 UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"}
@@ -105,7 +106,7 @@ def main():
     a = ap.parse_args()
 
     bundle, url = fetch_labels()
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     ours = dict(con.execute("SELECT ea_id, name FROM fc_playstyle_ids WHERE game_version=?", (a.game,)))
     # 카드 페이지에 실제로 쓰인 이름(정본) — `+` 접미는 PlayStyle+ 표기라 떼고 센다.
     used = set()

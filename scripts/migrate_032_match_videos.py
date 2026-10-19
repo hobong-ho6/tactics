@@ -24,6 +24,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import DB                                     # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 DDL = """
 CREATE TABLE IF NOT EXISTS match_videos(
@@ -50,7 +51,7 @@ CREATE INDEX IF NOT EXISTS ix_match_videos_report ON match_videos(report_id);
 CREATE INDEX IF NOT EXISTS ix_match_videos_team ON match_videos(team_code, published);
 """
 
-con = sqlite3.connect(DB)
+con = connect_db(DB)
 existed = con.execute(
     "SELECT 1 FROM sqlite_master WHERE type='table' AND name='match_videos'").fetchone()
 con.executescript(DDL)

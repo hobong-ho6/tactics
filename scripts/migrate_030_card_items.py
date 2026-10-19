@@ -19,6 +19,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import DB                                     # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 DDL = """
 CREATE TABLE IF NOT EXISTS player_card_items(
@@ -43,7 +44,7 @@ CREATE TABLE IF NOT EXISTS player_card_items(
 CREATE INDEX IF NOT EXISTS ix_card_items_player ON player_card_items(player_id, game_version);
 """
 
-con = sqlite3.connect(DB)
+con = connect_db(DB)
 existed = con.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='player_card_items'").fetchone()
 con.executescript(DDL)
 con.execute("INSERT OR IGNORE INTO _migration_log(run_at, v1_path, note) VALUES(?,?,?)",

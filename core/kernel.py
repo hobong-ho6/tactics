@@ -16,6 +16,7 @@ import math
 import sqlite3
 
 from . import DB
+from core.db import connect as connect_db
 
 __all__ = ["Kernel"]
 
@@ -39,7 +40,7 @@ class Kernel:
 
     def __init__(self, game_version="FC26", db_path=None):
         self.gv = game_version
-        con = sqlite3.connect(db_path or DB)
+        con = connect_db(db_path or DB)
         self.role_group = dict(con.execute(
             "SELECT role_id, position_type FROM game_roles WHERE game_version=?", (self.gv,)))
         self.variants = {}          # (role_id, focus) -> [(pitch_x, decoded25), …]
@@ -88,7 +89,7 @@ class Kernel:
 
     def best_fit_slot(self, map25, regime_id, pos, db_path=None):
         """slots 테이블의 regime 기하로 best_fit. (팀 고유 x — 빌라 x 재사용 금지)"""
-        con = sqlite3.connect(db_path or DB)
+        con = connect_db(db_path or DB)
         row = con.execute(
             "SELECT x, slot_type FROM slots WHERE regime_id=? AND pos=?",
             (regime_id, pos)).fetchone()

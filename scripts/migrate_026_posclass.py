@@ -26,6 +26,7 @@ from collections import Counter
 
 sys.path.insert(0, '.')
 from core.classify import pos_class, lateral_for_formation, normalize_formation  # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 DB = 'db/tactics.db'
 MIG = '026-posclass-formation-aware'
@@ -66,7 +67,7 @@ def main():
     if not (a.apply or a.dry_run):
         ap.error('--dry-run 또는 --apply 중 하나를 주세요')
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     rows, plan, moves = recompute(con)
     to_null = sum(1 for new, _ in plan if new is None)
 

@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                        # noqa: E402
 from core.gallery import MIN_LIST, calibrate, classify, evaluate, mine as gal_mine, placed_cards  # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 GAME = "FC27"
 TODAY = dt.date.today().isoformat()
@@ -65,7 +66,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--no-fill", action="store_true", help="fut.gg 조회 없이 평가만")
     a = ap.parse_args()
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     if not a.no_fill and not a.dry_run:
         fill_ids(con)

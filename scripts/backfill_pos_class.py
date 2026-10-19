@@ -35,6 +35,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import DB                                                        # noqa: E402
 from core.classify import (FORM, lateral_for_formation, normalize_formation,  # noqa: E402
                            pos_class)
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 REGIME_BY_TEAM = {'AVL': 1, 'CHE': 2, 'LIV': 3, 'ATM': 4}
 
@@ -48,7 +49,7 @@ def main():
     if not (a.apply or a.dry_run):
         ap.error('--dry-run 또는 --apply 중 하나를 주세요')
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     q = ("SELECT id, player_id, season, team_code, formation, lineup_pos, avg_x, avg_y, "
          "       minutes, hit_points "

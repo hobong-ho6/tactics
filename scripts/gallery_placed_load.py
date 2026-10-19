@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                     # noqa: E402
 from core.gallery import eligible       # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 GAME = "FC27"
 
@@ -39,7 +40,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
     d = json.loads(Path(a.json).read_text())
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     sets = {r["name"]: dict(r) for r in con.execute(
         """SELECT * FROM fc_gallery_sets WHERE game_version=?

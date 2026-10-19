@@ -19,6 +19,7 @@ from . import DB, ROOT
 from .chem import CHEM
 from . import position_ovr as POVR
 from . import gallery as GAL
+from core.db import connect as connect_db
 
 SITE_DATA = ROOT / "site" / "data"
 
@@ -38,7 +39,7 @@ def _write(path, obj):
 
 
 def export_all(db_path=None, window="2026-summer"):
-    con = sqlite3.connect(db_path or DB)
+    con = connect_db(db_path or DB)
     written = []
 
     # ── index.json ───────────────────────────────────────────────────

@@ -44,6 +44,7 @@ API = "https://www.fut.gg/api/fut"
 #    한 곳만 키가 틀려 「프리킥 정확도」가 100% 누락된 사고가 있었다).
 from core.futgg_attrs import ATTR_KR as ATTR_KR, COSMETIC_UPGRADES  # noqa: E402  ⭐ 코스메틱 키 정본
 from core.evo_paths import content_key, seen_on  # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 SIX = [("facePace", "PAC"), ("faceShooting", "SHO"), ("facePassing", "PAS"),
        ("faceDribbling", "DRI"), ("faceDefending", "DEF"), ("facePhysicality", "PHY")]
 SIX_GK = [("gkFaceDiving", "DIV"), ("gkFaceHandling", "HAN"), ("gkFaceKicking", "KIC"),
@@ -206,7 +207,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     playstyle = {x["eaId"]: x["name"] for x in (get(f"{API}/playstyles/") or {}).get("data", [])}

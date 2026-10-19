@@ -36,6 +36,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import DB                                     # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 AUTO = ("MATCH", "CONFLICT", "NO_RX", "PROSE")
 
@@ -66,7 +67,7 @@ def main():
                     help="⛔ 자동 상태의 기존 사유까지 템플릿으로 덮어쓴다 — 사람이 쓴 교정이 날아간다(2026-09-15 사고)")
     a = ap.parse_args()
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     roles = {r[0] for r in con.execute("SELECT DISTINCT role_id FROM game_role_focus")}
     have = defaultdict(set)

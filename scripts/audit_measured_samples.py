@@ -49,6 +49,7 @@ ADJUDICATED = "[표본판정"
 # ⭐ 2026-10-02: 「클럽 공식전」 정의는 core.aggregate.club_official_sql() 하나다(대표팀은 teams.is_national · migration 096).
 #    ⛔ 여기서 대회 목록을 다시 적지 않는다 — 두 벌이던 목록에서 대표팀이 빠져 네이션스리그가 집계에 섞였다.
 from core.aggregate import club_official_sql  # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 COMP_SQL, EXCLUDE_COMP = club_official_sql()
 USED = "사용 경기"      # 재집계가 남기는 「사용 경기 N건(...): 날짜…」 목록의 표식
 DATE = re.compile(r"(20\d\d-\d\d-\d\d)\(")
@@ -128,7 +129,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--season", default="2026-27")
     a = ap.parse_args()
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
 
     bad, done1 = audit_dates(con)

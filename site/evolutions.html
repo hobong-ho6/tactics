@@ -1720,6 +1720,10 @@ const TREQ = {
   'Max PS+': (v, s) => s.psp <= +v || `PlayStyle+ ${s.psp}개 > 최대 ${v}`,
   'Max Pos.': (v, s) => s.pos.length <= +v || `포지션 ${s.pos.length}개 > 최대 ${v}`,
   'Excluded Rarity': () => true,
+  /* ⭐ 2026-10-19 Zoomaestro(2602)에서 새로 나온 문구 — 없으면 「❔ 판정 불가」라 막지 않아 DEF 77 보가르드가 「걸 수 있음」으로 떴다.
+     목록 정본은 G35(카탈로그 문구 ⊆ 이 표 ∪ 판정 불가로 둔 문구)가 지킨다. */
+  'Defending': (v, s) => { const m = /Max\.\s*(\d+)/.exec(v); return !m || s.def == null || s.def <= +m[1] || `DEF ${s.def} > 최대 ${m[1]}`; },
+  'Skill Moves': (v, s) => { const m = /Max\.\s*(\d+)/.exec(v); return !m || s.sm == null || s.sm <= +m[1] || `개인기 ${s.sm}★ > 최대 ${m[1]}★`; },
 };
 function tryReq(cat, st){
   const out = [];
@@ -1739,7 +1743,7 @@ function curStateOf(pid){
   const at = J(st.attrs, null); if (!at) return null;
   const isGk = /GK/.test(String(st.positions || ''));
   const six0 = faceFromAttrs(at, EVO.face_stats || [], isGk);
-  return { ovr: st.ovr, pac: six0.PAC, pos: String(st.positions || '').split('/').filter(Boolean),
+  return { ovr: st.ovr, pac: six0.PAC, def: six0.DEF, sm: st.skill_moves ?? null, pos: String(st.positions || '').split('/').filter(Boolean),
            ps: String(st.playstyles || '').split(',').filter(x => x.trim() && !x.includes('+')).length,
            psp: String(st.playstyles || '').split(',').filter(x => x.includes('+')).length };
 }
@@ -1793,6 +1797,8 @@ function tryRun(pid, steps){
     }
     applyEvoLevel(nomAt, { upgrades: src.map(u => ({ ...u, maxValue: null })), upgradeOptions: [] }, EVO.face_stats, isGk);
   };
+  /* 개인기 보상(skill_moves +N ^캡)도 다음 진화의 「Skill Moves Max.」 판정에 이어지게 한다(2026-10-19). 캡 이상이면 내리지 않는다. */
+  const smUp = u => { if (u.upgrade === 'skill_moves' && cur.sm != null){ const cap = u.maxValue ?? 5; if (cur.sm < cap) cur.sm = Math.min(cur.sm + (u.value || 0), cap); } };
   const done = [];
   for (const step of steps){
     const cat = CATBYID[step.id];
@@ -1810,18 +1816,19 @@ function tryRun(pid, steps){
         applyEvoLevel(at, { upgrades: src, upgradeOptions: [] }, EVO.face_stats, isGk);
         picks.push({ lv: lv.idx, k, rec, opts });
         cur.ovr = evoOvr(cur.ovr, src);       /* 캡 규칙은 clubviz.js `evoOvr` 하나다 */
-        for (const u of src){ if (u.upgrade === 'play_style') cur.ps++; addUp(u); }
+        for (const u of src){ if (u.upgrade === 'play_style') cur.ps++; smUp(u); addUp(u); }
       } else {
         nominal(lv.upgrades || []);
         applyEvoLevel(at, lv, EVO.face_stats, isGk);
         cur.ovr = evoOvr(cur.ovr, lv.upgrades || []);
         for (const u of (lv.upgrades || [])){
           if (u.upgrade === 'play_style') cur.ps++;
+          smUp(u);
           addUp(u);
         }
       }
     }
-    if (!fails.length) cur.pac = faceFromAttrs(at, EVO.face_stats || [], isGk).PAC;
+    if (!fails.length){ const f6 = faceFromAttrs(at, EVO.face_stats || [], isGk); cur.pac = f6.PAC; cur.def = f6.DEF; }
     done.push({ id: step.id, name: cat?.name || `#${step.id}`, fails, picks, ovr: cur.ovr });
   }
   return { st, cur, before, steps: done, gain, nominal: { at: nomAt, cap: capOf },

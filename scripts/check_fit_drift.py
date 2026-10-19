@@ -26,6 +26,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core.kernel import Kernel  # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 DB = ROOT / "db" / "tactics.db"
 
@@ -37,7 +38,7 @@ def main():
                     help="이 이상 벌어진 행만 출력 (기본 0.001)")
     a = ap.parse_args()
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     k = Kernel()
     slots = {}
     for rid, pos, x, st, fm in con.execute(

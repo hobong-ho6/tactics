@@ -13,8 +13,9 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import DB                                     # noqa: E402
 from core.team_settings import suggest, compare         # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
-con = sqlite3.connect(DB)
+con = connect_db(DB)
 rows = con.execute("""
     SELECT mgs.report_id, mgs.build_up_style, mgs.defensive_approach, mgs.line_height,
            (SELECT MAX(possession) FROM player_matches pm

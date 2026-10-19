@@ -9,6 +9,8 @@ import argparse
 import json
 import sqlite3
 from pathlib import Path
+import sys as _sys_db, pathlib as _pl_db; _sys_db.path.insert(0, str(_pl_db.Path(__file__).resolve().parent.parent))  # noqa: E401,E702
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 ROOT = Path(__file__).resolve().parent.parent
 DB = ROOT / "db" / "tactics.db"
@@ -35,7 +37,7 @@ def main():
     a = ap.parse_args()
     seed = json.loads((ROOT / "db" / "seeds" / f"role-scenes-{a.gv}.json").read_text())
     gv = seed["game_version"]
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     stats = {"filled": 0, "conflict": [], "missing": [], "groups": 0}
 
     # 시드가 DB 역할·포커스를 빠짐없이 덮는가(양방향)

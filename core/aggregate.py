@@ -14,6 +14,7 @@ import sqlite3
 
 from . import DB
 from .encode import encode
+from core.db import connect as connect_db
 
 __all__ = ["aggregate_rows", "player_aggregate", "club_official_sql", "NON_OFFICIAL_COMP"]
 
@@ -47,7 +48,7 @@ def aggregate_rows(rows):
 def player_aggregate(player_id, where="", params=(), db_path=None, min_hp=15):
     """player_matches에서 조건에 맞는 경기를 골라 집계.
     where 예: "competition='Bundesliga'" / "lineup_pos='M'" """
-    con = sqlite3.connect(db_path or DB)
+    con = connect_db(db_path or DB)
     q = (f"SELECT cells, rating, minutes, avg_x, avg_y FROM player_matches "
          f"WHERE player_id=? AND cells IS NOT NULL AND hit_points>=? ")
     if where:

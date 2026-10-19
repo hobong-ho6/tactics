@@ -13,6 +13,11 @@
      ⇒ 시작할 때 인덱스가 비어 있지 않으면 **중단한다**(`--force-index`로만 강행).
   ⑶ **게이트를 건너뛴 export** — `scripts/export.py`가 자체 강제하지만, 실패 원인을 먼저 보여주고 멈춘다.
   ⑷ **dump 누락** — 2026-10-12부터 git에 실리는 DB는 dump뿐이다. dump를 빼면 DB 변경이 통째로 사라진다.
+  ⑸ **남이 수집하는 도중의 DB로 게이트·커밋** — 2026-10-19 뉴캐슬전 D+2·주간 매치워치가 쓰는 도중이라 G18이 걸려
+     다른 세션이 아무것도 커밋하지 못했다(사용자 「서로 DB를 점유해서 다른 작업을 못 한다」 · 방식 「대기·순번제」).
+     ⇒ 다른 세션의 「작성 중」 표시(core/db.py lease)가 사라질 때까지 **기다렸다가** 게이트를 돈다(`--wait`초 · 기본 540).
+     ⇒ ship 중에는 `db/.leases/ship.json`을 걸어 **다른 세션의 새 연결이 끝날 때까지 기다리게** 한다(core/db.connect).
+     ⇒ 커밋을 마치면 자기 lease를 지운다 — 다음 세션이 곧장 진행한다.
 
 사용:
     python3 scripts/ship.py -m "data(fut): GG Club 싱크 2026-09-23 — 신규 1·갱신 1"
@@ -24,9 +29,12 @@
 import argparse
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from core import db as coredb  # noqa: E402  ⭐ 작성 중 표시(lease)·ship 표시 정본
 # DB를 건드렸든 아니든 **늘 함께 가는 2종**(불변규칙 5). 변경이 없으면 git이 알아서 무시한다.
 # ⛔ db/tactics.db는 2026-10-12부터 싣지 않는다 — GitHub 100MB 상한을 두 번 넘었다(10-04 · 10-12).
 #    git은 dump만 나르고, 다른 PC는 scripts/db_restore.sh로 DB를 만든다(.gitignore에 있어 add하면 실패한다).
@@ -62,6 +70,41 @@ def main(a):
         sys.exit("   내가 올린 것이 맞으면 --force-index, 아니면 `git restore --staged <파일>`로 빼고 다시 실행할 것.\n"
                  "   ⚠️ 2026-09-21에 이걸 지나쳐 직전 커밋의 43줄이 지워졌다(docs/70).")
 
+    # ⑸ 남의 작성이 끝날 때까지 기다린다 — 끝나면 ship 표시를 걸어 새 연결을 멈춰 세운다.
+    coredb.mark_waiting()                     # 나는 이제 안 쓴다 — 서로 기다리는 교착을 막는다
+    try:
+        wait_for_writers(a.wait)
+        coredb.hold_ship()                    # 한 세션만 잡는다(원자적) — 남이 잡고 있으면 기다린다
+        try:
+            return _ship(a)
+        finally:
+            coredb.release_ship()
+    finally:
+        coredb.clear_waiting()
+
+
+def wait_for_writers(max_wait):
+    t0, last = time.time(), None
+    while True:
+        ws = coredb.active_writers()
+        if not ws:
+            if last:
+                print(f"▶ 다른 세션 작성 끝 — {int(time.time() - t0)}초 기다렸다")
+            return
+        now = sorted((w.get("session") or str(w.get("pid")), w.get("script")) for w in ws)
+        if now != last:
+            print("⏳ 다른 세션이 DB에 쓰는 중이라 기다린다(게이트가 반쯤 쓴 상태에 걸리지 않게):")
+            for w in ws:
+                print(f"    · {w.get('session') or 'pid ' + str(w.get('pid'))} — 마지막 쓰기 {w['idle_sec']}초 전 ({w.get('script')})")
+            last = now
+        if time.time() - t0 > max_wait:
+            sys.exit(f"⛔ {max_wait}초를 기다려도 끝나지 않았다 — 이번엔 커밋하지 않는다(작업 트리는 그대로).\n"
+                     "   더 기다리려면 백그라운드로 `--wait 3600`을 주고 다시 실행할 것. "
+                     f"조용해진 지 {coredb.QUIET_SEC // 60}분이 지난 표시는 자동으로 무시된다.")
+        time.sleep(20)
+
+
+def _ship(a):
     step("게이트", "python3 scripts/gates.py")
     step("export", "python3 scripts/export.py")
     step("db dump", "scripts/db_dump.sh")
@@ -109,6 +152,7 @@ def main(a):
     if r.returncode:
         sys.exit("⛔ 커밋 실패:\n" + (r.stdout + r.stderr))
     print("▶ 커밋", sh("git log --oneline -1").stdout.strip())
+    coredb.release()                 # 내 작성은 커밋에 담겼다 — 기다리던 다른 세션이 곧장 진행한다
     if a.push:
         r = sh("git push -q")
         if r.returncode:
@@ -126,6 +170,8 @@ if __name__ == "__main__":
     ap.add_argument("--no-push", dest="push", action="store_false", help="커밋만 하고 푸시하지 않는다")
     ap.add_argument("--force-index", action="store_true", help="이미 스테이징된 파일이 있어도 진행(내가 올린 게 확실할 때만)")
     ap.add_argument("--check", action="store_true", help="게이트·export·dump만 돌리고 끝낸다")
+    ap.add_argument("--wait", type=int, default=540,
+                    help="다른 세션의 DB 작성이 끝나길 기다리는 최대 초(기본 540 · 셸 10분 제한 안쪽). 길게는 백그라운드로")
     a = ap.parse_args()
     if not a.check and not (a.message or a.file):
         ap.error("-m 또는 -F 가 필요하다 (--check 는 예외)")

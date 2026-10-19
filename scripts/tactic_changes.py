@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                     # noqa: E402
 from core.tactic_state import state                     # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 DUMPS = ["db/dump/schema.sql", "db/dump/slot_canon_roles.sql", "db/dump/team_tactic_setups.sql", "db/dump/prescriptions.sql", "db/dump/players.sql"]
 
@@ -80,7 +81,7 @@ def main():
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--date", default=dt.date.today().isoformat())
     a = ap.parse_args()
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
 
     if a.backfill:
         assert con.execute("SELECT COUNT(*) FROM tactic_change_log").fetchone()[0] == 0, "로그가 비어 있을 때만 backfill"

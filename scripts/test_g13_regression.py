@@ -25,6 +25,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                    # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 from scripts.gates import g13_checks, G13_LABELS       # noqa: E402
 
 
@@ -91,7 +92,7 @@ FALSE_POSITIVE_CASES = [
 
 
 def counts(db_path):
-    con = sqlite3.connect(db_path)
+    con = connect_db(db_path)
     try:
         return {k: len(v) for k, v in g13_checks(con).items()}
     finally:
@@ -102,7 +103,7 @@ def with_injection(src, sqls, tmpdir, tag):
     """원본 사본에 SQL을 주입한 임시 DB 경로를 만든다."""
     dst = Path(tmpdir) / f"inject-{tag}.db"
     shutil.copy(src, dst)
-    con = sqlite3.connect(dst)
+    con = connect_db(dst)
     try:
         con.execute("PRAGMA foreign_keys=ON")
         for s in sqls:

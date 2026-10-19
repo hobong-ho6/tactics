@@ -32,6 +32,7 @@ DB = ROOT / "db" / "tactics.db"
 from scripts.collect_futgg_history import (  # noqa: E402  같은 소스·같은 매핑을 재사용한다
     API, ATTR_MAP, FOOT, GK_ATTRS, OUTFIELD_DROP, POS, accelerate_label, get, norm,
 )
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 
 def main():
@@ -41,7 +42,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     playstyle = {x["eaId"]: x["name"] for x in get(f"{API}/playstyles/")["data"]}
 

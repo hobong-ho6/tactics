@@ -27,6 +27,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 DB = ROOT / "db" / "tactics.db"
 
 API = "https://www.fut.gg/api/fut"
@@ -116,7 +117,7 @@ def main():
         print("\n--dry-run — DB에 쓰지 않았다.")
         return
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.executemany("""INSERT INTO fc_sbc_sets(game_version,set_ea_id,pulled,name,slug,description,category,
                          end_time,is_expired,is_repeatable,repeatability_mode,number_of_repeats,
                          repeat_refresh_text,challenges_count,awards_text,url,source,confidence)

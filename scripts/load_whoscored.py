@@ -23,6 +23,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core.whoscored import DEF_X_METHOD, PPDA_METHOD, def_x, phase_cells, ppda  # noqa: E402
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 DB = ROOT / "db" / "tactics.db"
 
@@ -85,7 +86,7 @@ def main():
     print(f"PPDA  {a.team} {pv} ({nv}/{dv})  상대 {po} ({no}/{do})")
     print(f"def_x {a.team} {xv} (n={sv})  상대 {xo} (n={so})")
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     # 우리 팀 선수만 매칭 대상이다 — 상대 이름이 섞이면 토큰 충돌이 늘어난다.
     our_ids = {e["playerId"] for e in events
                if e.get("teamId") == us["teamId"] and e.get("playerId") is not None}

@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 DB = ROOT / "db" / "tactics.db"
 from core.chem_signals import prev_round, upsert   # noqa: E402 — 「바뀐 행만 저장」 정본(migration 106)
+from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 ACCEL = {"C": "Controlled", "E": "Explosive", "L": "Lengthy"}
 
@@ -87,7 +88,7 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
-    con = sqlite3.connect(DB)
+    con = connect_db(DB)
     con.row_factory = sqlite3.Row
     q = """SELECT c.ea_item_id, c.name, i.futgg_url
              FROM fut_club_players c
