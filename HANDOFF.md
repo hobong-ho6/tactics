@@ -2,8 +2,8 @@
 
 <!-- 구조 규칙(2026-10-14 v2): 헤더 15줄 안에 착수 조건 · 현재 상태 표 10행 이내 · 다음 할 일은 열린 항목만(항목당 2줄) · 세션 기록 최대 5개 · 목표 10~15KB · 상한 20KB(`wc -c`). 넘치면 지우지 말고 docs/handoff-context.md · docs/decisions.md로 포인터 압축. 절차 정본: .claude/skills/handoff/SKILL.md -->
 
-- **담당자** 김호근 · **갱신** 2026-10-14 23시 · **세션** HANDOFF v2 압축(데이터 세션 아님) · **작업 PC** `AD03230205ui-iMac.local` · **브랜치** main · **WIP** 없음
-- **마지막 커밋** = `git log -1`(이 문서를 갱신한 커밋) · 직전 데이터 커밋 `9dd8025`(10-14 클럽 싱크 2회차) · **문서 버전** v2 · **분량** 10.4KB(목표 10~15 · 상한 20)
+- **담당자** 김호근 · **갱신** 2026-10-19 · **세션** 클럽 싱크 + 진화 수집 빌라 한정 + Zoomaestro 추천 · **작업 PC** `AL02359162.local` · **브랜치** main · **WIP** 없음(이적 감시 임시 클론 미푸시 1건)
+- **마지막 커밋** = `git log -1`(이 문서를 갱신한 커밋) · 직전 데이터 커밋 `58cca1b`(10-19 클럽 싱크) · **문서 버전** v2 · **분량** 12KB(목표 10~15 · 상한 20)
 - 실축 감독 전술(**AVL/에메리(주) · CHE/알론소 · LIV/이라올라 · ATM/시메오네**)을 실측으로 분해해 FC26·FC27 전술로 재현. 규약 정본 `CLAUDE.md` · `docs/00-overview.md`.
 
 > ⛔ **먼저 알 것**
@@ -17,27 +17,29 @@
 
 | 영역 | 상태 | 정본 |
 |---|---|---|
-| 최근 실행 | 10-14 10시 3팀 이적 감시 — cron FotMob 파일 `logs/fotmob-20261012-2100.txt` **0바이트**라 DB 선조회+공개 웹으로 대체 · 신규/갱신/STALE 0 · DB 무변동 · ⚠️ 리포트 `reports/transfer-watch/2026-10-14.md`는 **미커밋(그 실행 소유)** | [원문 블록](docs/handoff-context.md#현재-상태) |
-| 이적 | Endrick `MEDIUM` · Alex Scott `MEDIUM-HIGH`(창 판단 대기) · Gilberto Mora `MEDIUM` · 미결 이적 4건(에메날로·르마르·바르가스·응게상) | `reports/transfer-watch/` · `transfers` |
-| DB·git | `.db` git 제외(`aba9dad`) · `db/dump/`만 · 스탬프 G33 · 게이트 G1~G34 | [decisions](docs/decisions.md) · docs/40 |
-| 경기 수집 | 10-10~11 3경기 적재(#52 CHE · #53 LIV · #54 ATM) · **#51 AVL·#52 CHE D+3 complete**(10-13) · ⚠️ LIV D+2·D+3 · ATM D+3 종결 커밋은 git log에 없다(미확인) | `match_reports` · `reports/match-watch/` |
-| FUT 구단 | 10-14 2회차 보유 253 · 만잠비 아카데미 III 완료(드리블 · OVR 83) · 잭슨 갈림길 재결정 Tiki Taka + First Touch(`f44eaf4`) · ⚠️ 시세 미갱신(fut.gg Cloudflare 차단) | `fut_*` · `.claude/skills/club-sync/` |
+| ⛔ 게이트 | **G34 실패 중** — 10-17 AVL 뉴캐슬(#56) D+2·D+3 예약 없음 → `ship.py`·`export.py`·`club_sync.py`가 전부 멈춘다. 10-19는 사용자 지시로 G34만 우회해 수동 export·커밋 | `gates.py` · `58cca1b` |
+| 이적 감시 | 10-17 21시 회차(미푸시 `3e2790b`) — FotMob 0바이트(그날 2회) · Endrick `DEAD` · Scott CHE/LIV `MEDIUM-HIGH`(창 판단 대기) · Viveros·Nusa·Mora `MEDIUM` · N'Guessan 판단 대기 · 미결 이적 4건 · DB 무변동 | `reports/transfer-watch/` · `transfers` |
+| DB·git | `.db` git 제외(`aba9dad`) · dump만 · 10-19 대화 세션은 원 작업트리에서 커밋·푸시 정상 · 10-17 이적 감시(예약 세션)만 iCloud `dataless`·인증 부재로 임시 클론 커밋에 멈춤 | [decisions](docs/decisions.md) · docs/40 |
+| 경기 수집 | 10-17 AVL 뉴캐슬 원정(0-1 승 · #56) 수집 + D+1 보강(`64788a7`) · Q1 가르나초·Q2 격노·교체 사유는 D+2로 이월 · **D+2·D+3 예약 없음(G34)** · 사용자 관전 메모 `c11aa04` · 페네르바흐체 #55 complete | `reports/match-watch/2026-10-17-avl-newcastle.md` |
+| FUT 구단 | 10-19 싱크 보유 216장 · 활성 23슬롯 · 카탈로그 56종(이월 20) · SBC 해법 23챌린지(포메이션 결손 1: #101) · 시세 미실행 · **진화 수집은 이제 「조건 통과 빌라 카드」만**(`--club-ea 2` 기본 · 739→28명 · 2분 21초) | `fut_*` · `58cca1b` · club-sync 런북 |
 | 자동화 | 10-12 복원 9건(정기 4 · 일회 5 — 일회는 10-13~14 시한 경과) · 브라우저 쓰는 `club-sync-daily`·`match-watch-weekly`는 「Run now」 선승인 필요 | [자동화 원문](docs/handoff-context.md#자동화) |
 | 게임 시스템 | 패치 v1.0.5 없음(10-12) · ⏰ 10-17 PlayStyle+ Lab · 10-22 시즌 2(추정) · FC27 리서치는 C·B등급 0건 → 10월 중순 재조사 | `game_system_changes` · docs/22 |
 | 열린 결손 | 링크 결손 3건(코나테·더글라스 루이스 소속 미상 · 엘리엇 포지션 충돌) · `ref_map25` 동률 비결정 버그 · ATM regime 4 CAM 슬롯 없음 · duty #246 억제 토큰 노트 잔존 | `gaps.py links` |
-| 핸드오프 공백 | 10-12 23시(`0aad64e`) 이후 **22커밋**이 HANDOFF 블록 없이 쌓였다 — 위 표의 10-13~14 사실은 git log 기준 | `git log 0aad64e..` |
+| 핸드오프 공백 | 10-17 21시 HANDOFF는 미커밋 상태였다(이번에 흡수) · 10-18 커밋 15개(클럽 싱크 4회 · 뉴캐슬전 수집+D+1 · 고메스 진화 정정 · 하우드-벨리스 Speed Bump)는 HANDOFF 블록 없이 git log에만 | `git log 28da5f6..` |
 
 ## 진행 중 작업 (WIP)
 
-코드 WIP 없음. 미추적 `reports/transfer-watch/2026-10-14.md`는 10-14 10시 이적 감시 실행 소유 — 그 실행(또는 사용자)이 커밋한다.
+코드 WIP 없음. ⚠️ 이적 감시 10-17 21시 회차 커밋 `3e2790b`는 임시 클론 `/tmp/tactics-transfer-watch-20261017-b2jcuc`에만 있고 **미푸시**(그 회차 인증 부재 · /tmp라 재부팅 시 소실) · 원 작업트리의 미추적 `reports/transfer-watch/2026-10-14~17.md` 4건도 그 실행 소유라 손대지 않았다 — 사용자가 푸시/커밋 판단.
 
 ## 다음 할 일
 
 번호는 v1 체계 그대로(근거·경위 원문은 [handoff-context 「다음 할 일」](docs/handoff-context.md#다음-할-일)).
 
 **P1**
+- [ ] **G34 해소** — 뉴캐슬전(#56) D+2(10-19)·D+3(10-20) 예약 생성 또는 리포트에 「## D+N 추적」 절 작성 · 안 하면 모든 커밋이 계속 막힌다(10-19 사용자는 예약 안 만들기로 결정)
+- [ ] **Zoomaestro(2602) → 부엔디아 적용 대기** — 마감 10-28 · 무료 1회 · 적용 후 `fut_club.py evolve` 기록 + 다음 싱크 EA 실측 대조(표기 83) · 헤밍스는 FSA I 소진(만잠비)으로 72가 끝 · 바클리 구매 비추천
 - [ ] **이적 사용자 판단 3건** — Scott 창(`2027-winter` vs `2027-summer`) · N'Guessan 상태/승격 시점 · transfer-watch 런북의 낡은 `2026-summer` 고정값
-- [ ] **cron FotMob 0바이트 원인** — `logs/fotmob-20261012-2100.txt` · 다음 이적 감시 전에 전수 스캔 경로 복구(미확인)
+- [ ] **cron FotMob 부분/0바이트 원인** — 10-12·10-17 09/21시 0바이트, 10-16 21시는 AVL 8건 뒤 종료·예외 미기록. 팀별 종료코드/예외 기록과 실패 팀 재시도 구조 필요
 - [ ] **경기 D+N 미종결 확인** — LIV 맨시티(#53) D+2·D+3 · ATM 알라베스(#54) D+3 커밋 없음 → `list_task_runs`로 실행 여부부터
 - [ ] **000⑴ 패치 감시 후속** — FC27 Launch Update 미적재 3건(ICON 국적 +2→+1 · Hero 리그 +2→+1 · Hall of FUT) EA 원문 대조 후 적재 → 케미 재검산 · 스크립트 `reports/patch-watch/wip/2026-09-21-launch-update-insert.py`
 - [ ] **000⑶ 지모알로바 Creative Crossroads 3단계** — 마감 09-30 17:00 UTC 경과 · 적용 여부 미확인 → `fut_evolution_log` 대조 · 적용됐으면 연관 메뉴(런북 표) 한 회차에 닫기
@@ -52,6 +54,7 @@
 - [ ] **29 LIV 6번 축**(obs#778) — 맥 알리스터 같은 `pos_class` 2경기 채우면 재산출 · 그 전엔 어느 쪽도 처방 금지
 
 **P2**
+- [ ] **SBC 포메이션 결손 #101** — Chrome FUTBIN 스니펫(club-sync 런북 §6) · **빌라 밖 보유 카드(예: 알리 아메드)는 진화 경로 갱신이 멈춤** — 필요하면 `--club-ea`(값 없이)
 - [ ] **0-6 예약 미복원 3건 재생성 판단** — `transfer-watch-daily`·`futgg-prices-daily`·`fc27-patch-watch`(사용자) · 재생성해도 회차마다 실재 확인
 - [ ] **00⑴ 시세 수집 복구** — fut.gg Cloudflare 차단(10-13~14 클럽 싱크 전 회차 미갱신)
 - [ ] **0-2 FC27 Role+/++ 수집** — fut.gg `/api/fut/roles/` FC27 → `migrate_fc27.py --roles --check`(미해결 2 · 출시 후라 이제 가능)
@@ -68,6 +71,7 @@
 
 ## 주요 결정 (전문 [docs/decisions.md](docs/decisions.md))
 
+- 10-19 진화 수집 대상 = 진화 조건 통과 빌라 카드(fut.gg 적용가능 API `club_id=2` 선확인 → 그 base만 경로) · 조회 실패 시 멈춤(`58cca1b`)
 - 10-14 HANDOFF 구조 규칙 v2 — 지우지 않고 포인터 압축(종전 「300줄 · 완료 항목 지운다」 대체)
 - 10-12 `.db` git 제외 · dump + `db_restore.sh`(`aba9dad`) · 예약은 enabled 9건만 복원
 - 09-23 같은 문제 2번째면 구조 제거(불변규칙 13) · report 47 재점검 안 함
@@ -76,12 +80,12 @@
 
 ## 최근 세션 기록
 
-- **10-14 10시 · 3팀 이적 감시**(블록 표기 PC `AL02359162.local`) — FotMob 0바이트 · 신규 0 · 리포트 미커밋 → [원문](docs/handoff-context.md#현재-상태)
-- **10-12 23시 · 계정 전환 후 예약 복원 + 만잠비 아카데미 II**(`31a86ec`) — 레지스트리 0건 → 옛 계정 파일에서 9건 재등록 · 만잠비 OVR 82
-- **10-12 20시 · 주간 경기 수집**(`3918bfe`) — 3경기 draft 적재 · CHE xG 4연속 열세(obs#991) · ATM 「요렌테 3번째 CB」 기각(obs#996) · duty #246 REJECTED
-- **10-12 · 패치 감시 + 클럽 싱크 + DB 저장 구조 전환**(`aba9dad`·`dd811b4`·`51261ae`) — `.db` git 제외 · `fut_club.py evolve`는 `--completed` 필수
-- **10-08 21시 · 3팀 이적 감시**(`ac8b38e`) — LIV 유출 3건 STALE · Alex Scott 신규 `MEDIUM-HIGH`
-- 아카이브: 09-23 ㊱(토트넘전 6회차 종결 · 진화 갈림길 통합) 및 09-18~22 ㉕~㉟ → [handoff-context 「현재 상태」·「최근 작업」](docs/handoff-context.md#최근-작업) · 그 이전은 `git log`·`observations`
+- **10-19 · 클럽 싱크 [선수+진화+sbc] + 진화 수집 빌라 한정**(`58cca1b`) — 보유 216 · Zoomaestro(CAM, 10-28) 비교: 부엔디아 추천(80→83 · PAC 65→75) · 만잠비 후반 교체안 A/B/C(가르나초 LM+로저스 CAM 최고점) · G34 우회 커밋
+- **10-17 21시 · 3팀 이적 감시**(임시 클론 로컬 커밋 · 미푸시) — FotMob 0바이트(오늘 2회) · 다국어 웹 보완 · Endrick 1월 `DEAD` · Scott 양 팀 `MEDIUM-HIGH` · DB 무변동 · 오전 원문+21시 절 발행 · GitHub 인증 부재
+- **10-17 21시대 · 클럽 싱크**(`b56a224`) — 보유 199(고유 198) · 자동처분 22 · 전술 6YSEJEVk26o6 · 카탈로그 59 · 시세 45/67
+- **10-17 · AVL 페네르바흐체 D+3 종결**(`28da5f6`) — match_reports #55 complete · 부상 T3 미개시 · H1/H2 부분 일치·H3 일치·H4 일부 불일치 · obs#1046~1047
+- **10-17 오전 · 클럽 싱크 2회차**(`7c128e8`) — 보유 224 · 전술 코드 변경(5YRDADUj15n5) · 카탈로그 59 · 시세 45/106
+- 아카이브: 10-17 09시 이적 감시(21시 리포트에 합본) · 10-14 이적 감시 및 10-12 이전 → [handoff-context 「현재 상태」·「최근 작업」](docs/handoff-context.md#최근-작업) · 그 이전은 `git log`·`observations`
 
 ## 문서 맵
 
