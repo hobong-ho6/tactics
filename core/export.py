@@ -851,7 +851,10 @@ def export_all(db_path=None, window="2026-summer"):
         match_reports = _rows(con, """
             SELECT mr.id, mr.event_id, mr.match_id, mr.season, mr.report_date, mr.title,
                    mr.status, mr.tactical_description, mr.tactical_features,
-                   mr.tactical_changes, mr.game_implications, mr.overall_assessment, mr.key_points, mr.report_path,
+                   mr.tactical_changes, mr.game_implications, mr.overall_assessment, mr.key_points,
+                   mr.tac_possession, mr.tac_defense, mr.tac_transition, mr.strengths, mr.weaknesses,
+                   mr.opp_disruption, mr.impl_verdict, mr.recheck_items,   -- 전술 분석 4칸 정형(migration 111)
+                   mr.report_path,
                    mr.source, mr.confidence, mr.created_at, mr.updated_at,
                    m.date, m.opponent, m.competition, m.venue, m.result, m.stage,
                    m.possession, ts.xg_v, ts.xg_o, ts.xg_op_v, ts.xg_op_o,
@@ -912,7 +915,7 @@ def export_all(db_path=None, window="2026-summer"):
                 SELECT mpp.player_id,COALESCE(p.name_kr,p.name) label,p.name name_en,
                        mpp.game_version,mpp.pos_label,mpp.role_id,gr.name role_name,
                        mpp.focus,mpp.fit_sim,mpp.starter,mpp.sort_order,mpp.rationale,
-                       mpp.replaced_player_id,mpp.minute_on,
+                       mpp.replaced_player_id,mpp.minute_on,mpp.fit_delta,mpp.alt_role,
                        mpp.source,mpp.confidence,
                        COALESCE(s.x,f.x) x, COALESCE(s.y,f.y) y
                 FROM match_player_prescriptions mpp
@@ -946,6 +949,8 @@ def export_all(db_path=None, window="2026-summer"):
             for h in hyp:
                 by_seq.setdefault(h["seq"], []).append(h)
             report["hypotheses"] = [dict(rows[-1], history=rows[:-1]) for _s, rows in sorted(by_seq.items())]
+            report["changes"] = _rows(con, """SELECT seq, minute, minute_to, title, detail FROM match_tactical_changes
+                                              WHERE report_id=? ORDER BY seq""", (report["id"],))
             report["phase_metrics"] = _rows(con, """SELECT side, metric, seg_from, seg_to, value, n, note
                                                     FROM match_phase_metrics WHERE report_id=?
                                                     ORDER BY metric, side, seg_from""", (report["id"],))

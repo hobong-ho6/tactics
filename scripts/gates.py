@@ -982,16 +982,32 @@ def run(db_path=None, verbose=True):
                                 AND NOT EXISTS(SELECT 1 FROM video_impl_claims c
                                                WHERE c.video_id=v.video_id)""").fetchone()[0]
     g17_pending = con.execute("SELECT COUNT(*) FROM video_impl_claims WHERE verdict='PENDING'").fetchone()[0]
+    # ⛔⛔ **전사를 받았으면 같은 회차에 요약까지**(2026-10-20 사용자 지시 「전사 수집 완료되면 바로 요약 생성하도록 바꿔」).
+    #    런북(SKILL.md 「전사를 확보했으면 그 회차에 요약까지 쓴다」)으로는 지켜지지 않았다 — 뉴캐슬전(#56) 40편 중 5편만
+    #    요약됐다. 두 번째 확인이라 문서가 아니라 게이트로 막는다(불변규칙 13).
+    #    범위: id > G17_SUMMARY_FROM(2026-10-20 시점 최댓값)인 **새 행**만 — 그 전 백로그는 건수만 보여준다.
+    #    게시일·파일 시각으로 자르지 않는다(게시일은 비고, 파일 시각은 클론마다 바뀐다). 경기 귀속 + 전사가 있는 행만 본다.
+    G17_SUMMARY_FROM = 342
+    g17_nosum_new = [r[0] for r in con.execute(
+        """SELECT video_id FROM match_videos WHERE id > ? AND report_id IS NOT NULL
+             AND transcript_path IS NOT NULL AND (summary IS NULL OR trim(summary)='')""",
+        (G17_SUMMARY_FROM,))]
+    g17_backlog = con.execute(
+        """SELECT COUNT(*) FROM match_videos WHERE id <= ? AND report_id IS NOT NULL
+             AND transcript_path IS NOT NULL AND summary IS NULL""", (G17_SUMMARY_FROM,)).fetchone()[0]
     ok17 = not (g17_axis or g17_verdict or g17_nonote or g17_none_bad
-                or g17_empty or g17_role_vocab or g17_orphan)
+                or g17_empty or g17_role_vocab or g17_orphan or g17_nosum_new)
     if verbose:
         detail = (f"❌ axis이탈 {len(g17_axis)} · verdict이탈 {len(g17_verdict)} · 사유결손 {len(g17_nonote)} · "
                   f"none모순 {len(g17_none_bad)} · 빈주장 {len(g17_empty)} · 역할어휘 {len(g17_role_vocab)} · "
-                  f"고아 {len(g17_orphan)}")
+                  f"고아 {len(g17_orphan)} · 전사 후 요약 누락 {len(g17_nosum_new)}"
+                  + (f" ({', '.join(g17_nosum_new[:8])}{' …' if len(g17_nosum_new) > 8 else ''})"
+                     " → write_video_summary.py로 요약+impl_claims를 넣을 것" if g17_nosum_new else ""))
         print(f"G17 영상 구현 주장: axis이탈 {len(g17_axis)} · verdict이탈 {len(g17_verdict)} · "
               f"사유결손 {len(g17_nonote)} · none모순 {len(g17_none_bad)} · 빈주장 {len(g17_empty)} · "
-              f"역할어휘 {len(g17_role_vocab)} · 고아 {len(g17_orphan)} · "
-              f"(claims 미작성 {g17_todo}편 · PENDING {g17_pending}건) {'✅' if ok17 else detail}")
+              f"역할어휘 {len(g17_role_vocab)} · 고아 {len(g17_orphan)} · 새 전사 요약 누락 {len(g17_nosum_new)} · "
+              f"(claims 미작성 {g17_todo}편 · PENDING {g17_pending}건 · 10-20 이전 요약 백로그 {g17_backlog}편) "
+              f"{'✅' if ok17 else detail}")
     if not ok17:
         fails.append("G17")
 
@@ -1769,6 +1785,66 @@ def run(db_path=None, verbose=True):
               + ("✅" if not g36 else "❌ core.db.connect로 바꿀 것 — " + " · ".join(g36[:6])))
     if g36:
         fails.append("G36")
+
+    # G37 — ⛔ **경기 분석 화면의 가설 판정·구간 흐름·요약이 비지 않게.** 2026-10-20 신설(migration 109 ·
+    #   사용자 지시 「경기 흐름·선수 포인트·관전 메모 가설 판정·부상을 경기 분석에서 항상 제공」).
+    #   런북에 「적재하자」고 적는 것만으로는 세션이 안 읽으면 빈다(불변규칙 13) — 커밋을 막는다.
+    #   ⑴ reports/match-watch/notes/에 메모가 있는 경기 → match_hypotheses ≥1 (메모 stem이 리포트 stem으로 시작)
+    #   ⑵ report_date ≥ G37_FROM인 **G37_TEAMS** 리포트 → key_points 비어 있지 않음 + match_phase_metrics ≥1
+    #      (2026-10-20 사용자 결정 「10-14부터 · 아스톤 빌라 기준으로만 우선 · CHE·ATM·LIV는 백필하지 않고 수집 잠정 보류」)
+    #   ⑶ match_phase_metrics.metric ⊆ core.whoscored.PHASE_METRICS(화면 라벨 정본)
+    #   ⑷ 같은 대상 리포트 → tac_possession·impl_verdict + match_tactical_changes ≥1 + 선발(GK 제외) fit_delta 전원(migration 111)
+    from core.whoscored import PHASE_METRICS as _PM37
+    G37_FROM, G37_TEAMS = "2026-10-14", ("AVL",)
+    _root37 = Path(__file__).resolve().parent.parent
+    _rep37 = con.execute("SELECT id, report_path, report_date, key_points, team_code, tac_possession, impl_verdict FROM match_reports").fetchall()
+    _chg37 = {r for (r,) in con.execute("SELECT DISTINCT report_id FROM match_tactical_changes")}
+    _nodelta37 = {r for (r,) in con.execute("""SELECT DISTINCT report_id FROM match_player_prescriptions
+                                               WHERE starter=1 AND fit_delta IS NULL AND pos_label!='GK'""")}
+    _hyp37 = {r for (r,) in con.execute("SELECT DISTINCT report_id FROM match_hypotheses")}
+    _pm37 = {r for (r,) in con.execute("SELECT DISTINCT report_id FROM match_phase_metrics")}
+    g37 = []
+    for _note in sorted((_root37 / "reports" / "match-watch" / "notes").glob("*.md")):
+        _hit = [r for r in _rep37 if r[1] and _note.stem.startswith(Path(r[1]).stem)]
+        if _hit and not any(r[0] in _hyp37 for r in _hit):
+            g37.append(f"#{_hit[0][0]} 관전 메모({_note.name}) 판정 0행")
+    for _id, _p, _d, _kp, _tc, _tp, _iv in _rep37:
+        if (_d or "") >= G37_FROM and _tc in G37_TEAMS:
+            if not (_kp or "").strip():
+                g37.append(f"#{_id} key_points 비어 있음")
+            if _id not in _pm37:
+                g37.append(f"#{_id} 구간 지표 0행")
+            # ⑷ 전술 분석 4칸 정형(migration 111 · 사용자 지시 「전술 분석도 시각화해서 잘 보이게」)
+            if not (_tp or "").strip() or not _iv:
+                g37.append(f"#{_id} 전술 3단·구현 결론 미작성")
+            if _id not in _chg37:
+                g37.append(f"#{_id} 경기 중 변화 단계 0행")
+            if _id in _nodelta37:
+                g37.append(f"#{_id} 선발 처방 fit_delta 결손")
+    g37 += [f"모르는 구간 지표 {m}" for (m,) in con.execute("SELECT DISTINCT metric FROM match_phase_metrics")
+            if m not in _PM37]
+    if verbose:
+        print(f"G37 경기 분석 가설·흐름·요약: 결손 {len(g37)} "
+              + ("✅" if not g37 else "❌ scripts/load_match_extras.py · match_phase_metrics.py로 채울 것 — " + " · ".join(g37[:6])))
+    if g37:
+        fails.append("G37")
+
+    # G38 — ⛔ **점선 밑줄 + 툴팁은 glossary.js glTip() 하나에서만.** 2026-10-20 신설(사용자 지적
+    #   「툴팁이 있는 것처럼 나오는데 툴팁 안 나옴」 — labels.js `span.hz`가 title만 달아 사파리 계열에서 안 떴다).
+    #   site/ 안에서 `class="hz"` 또는 glossary.js 밖의 `<abbr`을 만들면 실패한다(불변규칙 13 ① 구조 제거).
+    _root38 = Path(__file__).resolve().parent.parent / "site"
+    g38 = []
+    for _f in sorted(list(_root38.glob("*.html")) + list((_root38 / "assets").glob("*.js"))):
+        if _f.name == "glossary.js":
+            continue
+        for _n, _l in enumerate(_f.read_text(encoding="utf-8", errors="ignore").split("\n"), 1):
+            if 'class="hz"' in _l or "<abbr" in _l:
+                g38.append(f"{_f.relative_to(_root38.parent)}:{_n}")
+    if verbose:
+        print(f"G38 밑줄 툴팁 단일 경로(glTip): 위반 {len(g38)} "
+              + ("✅" if not g38 else "❌ glossary.js glTip()으로 바꿀 것 — " + " · ".join(g38[:6])))
+    if g38:
+        fails.append("G38")
 
     con.close()
     if verbose:

@@ -570,3 +570,34 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .mission li{padding:1px 0;line-height:1.45}
 /* ⚖️ 보유 카드 고르기(2026-10-03) */
 .ownpick{max-width:240px;font-size:12px}
+/* 2026-10-20 — 경기 분석 영상 패널 정리(요약 작성/미작성 집계 · 핵심 한 줄 카드 · 미작성 한 줄 목록) */
+.vidhead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin:0 0 10px;font-size:12.5px}
+.vidbar{display:flex;flex:0 1 180px;min-width:120px;height:8px;border-radius:4px;overflow:hidden;gap:2px}
+.vidbar i{display:block;background:var(--ok)} .vidbar i.todo{background:var(--dim);opacity:.45}
+.vidkinds{display:flex;flex-wrap:wrap;gap:4px}
+.vidone{font-size:12.5px;margin:4px 0 2px;line-height:1.55}
+.vidmore summary{cursor:pointer;font-size:11.5px;color:var(--dim);margin-top:4px}
+.vidlist{list-style:none;margin:4px 0 0;padding:0;font-size:12px}
+.vidlist li{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px;padding:4px 0;border-top:1px solid var(--line)}
+.vidlist li a{color:var(--txt)} .vidtodo>summary{cursor:pointer;margin:6px 0}
+/* 2026-10-20 — 경기 분석 「전술 분석」 4칸(migration 110) */
+.nchip{font-weight:700;color:var(--txt);background:rgba(255,138,61,.12);border-radius:4px;padding:0 3px;font-variant-numeric:tabular-nums}
+.tac3,.tacraw{grid-column:1/-1}
+.tac3grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.tcard{border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:12.5px} .tcard h4{margin:0 0 4px;font-size:13px;color:var(--acc)}
+.swgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px} .swgrid h4{margin:0 0 6px;font-size:12.5px} .swgrid h4.ok{color:var(--ok)} .swgrid h4.bad{color:var(--bad)}
+.swchip{display:block;font-size:12.5px;border-left:3px solid var(--line);padding:4px 8px;margin:0 0 5px;background:rgba(255,255,255,.025);border-radius:0}
+.swchip.ok{border-left-color:var(--ok)} .swchip.bad{border-left-color:var(--bad)}
+.tacnote{font-size:12.5px;margin:8px 0 0}
+.tline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.tline li{position:relative;display:grid;grid-template-columns:70px 1fr;gap:8px;padding:6px 0 8px 12px;font-size:12.5px}
+.tline li::before{content:"";position:absolute;left:-6px;top:10px;width:10px;height:10px;border-radius:50%;background:var(--viz-us)}
+.tmin{font-variant-numeric:tabular-nums;color:var(--acc);font-weight:700}
+.tspan{display:block;position:relative;height:4px;margin-top:5px;background:var(--viz-grid);border-radius:2px}
+.tspan::after{content:"";position:absolute;left:var(--a);width:calc(var(--b) - var(--a));top:0;bottom:0;background:var(--viz-us);border-radius:2px}
+.pchip{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:6px;padding:1px 7px;margin-left:4px}
+.dbars{display:grid;gap:4px;margin-top:4px}
+.dbar{display:grid;grid-template-columns:150px 1fr 56px;gap:8px;align-items:center;font-size:12px}
+.dbar i{display:block;height:6px;width:var(--w);background:var(--viz-them);border-radius:3px} .dbar.und i{background:var(--warn)}
+.dbar em{font-style:normal;font-variant-numeric:tabular-nums} .dbar small{grid-column:1/-1;margin:-2px 0 2px}
+.checks{margin:4px 0 0;padding-left:18px;font-size:12.5px} .checks li::marker{content:"☐ "}

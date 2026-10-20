@@ -2,7 +2,7 @@
  "all": [
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-19] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 339,
    "impl_claims": [
     {
@@ -28,7 +28,23 @@
    ],
    "kind": "경기반응",
    "lang": "en",
-   "obs_points": [],
+   "obs_points": [
+    {
+     "claim": "**당일 판정 정정 — 뉴캐슬전 Q2 에메리 전반 격노: 대상=알리송(주)·캐시, 장면=15′40″~16′00″ 코너 판정 항의 후 전환 수비 공백.** Tanswell(The Athletic · 기자석 목격) 「most of his eye was directed towards Allison because he wanted Allison to recognize Cash was out of position and he needed to fill in right back and he didn't … Emir was fuming」(시선은 주로 알리송 — 캐시가 자리를 비웠으니 RB를 메워야 했는데 안 했고 … 격분했다). Opta 시퀀스가 일치한다: 15:40 캐시 박스 안 슈팅(x93) 빗나감 → 15:58 호르니체크 골킥 빠른 재개 → 16:00 윌록→반스 빌라 우측 배후(오프사이드 · 린델뢰프 유도). Telegraph 16′ 코너 항의·UTV 워치얼롱 「Was it Allison?」 시점과 같다. ⇒ 사용자 가설 「28′ 시뮬레이션 경고 직후 질책」은 **시점 불일치**(격노는 경고 12분 전) · 대상 알리송은 **일치**. D+1 후보 4개 중 ⑴코너 판정 ⑵캐시 ⑶알리송 수비 임무가 **한 장면**으로 합쳐졌다. MOMS 「not doing his defensive duties」는 전반 일반이 아니라 이 전환 1장면으로 한정해 채택(D+1 「불채택」 정정).",
+     "id": 1076,
+     "scope": "reference"
+    },
+    {
+     "claim": "**뉴캐슬전 알리송 하프타임 교체 사유 — 경고 관리(주) + 부상 이력 부하 관리(배경), 질책성 근거 없음.** 에메리 10-19 E&S(Maher): 「This season he has had some pain and we must try to be careful」(이번 시즌 통증이 있어 조심해야 한다) · 「patience, consistency and every day being careful with him」(인내, 꾸준함, 매일 조심스럽게) · 「being ready to play 10 minutes, 20 minutes, 30 minutes or even in the starting XI」(10·20·30분 또는 선발로도 뛸 준비). Tanswell 「They've protected him … not always training … because of the injuries」(부상 때문에 훈련 부하를 관리해 왔다) · 「I thought Allison might end up getting a red card」(퇴장 위험). 에메리 VillaTV 「played the first 45 minutes after a long time … not in the starting 11」(오랜만에 선발 45분). 에메리가 교체 사유를 직접 말한 대목은 여전히 0 — 「경고 관리」는 기자·채널 해석(Guardian·Tanswell·UTV·Villa Park Podcast 공통). 에메리 어조는 보호·신뢰.",
+     "id": 1077,
+     "scope": "reference"
+    },
+    {
+     "claim": "**뉴캐슬전 Q1 가르나초 명단 제외 — 서열(전술 판단) 쪽으로 강화, 1차 발언은 여전히 0.** Tanswell(1874 · 10-19): 「still behind in the pecking order … fourth, fifth choice wide option, you're struggling to get on the bench」(서열에서 밀려 4~5순위 윙어라 벤치도 어렵다) · 헤밍스·알리송·맥긴·부엔디아보다 뒤 · 「he needs to show Emmery that he really deserves and is trusted to play」(에메리에게 신뢰를 보여줘야 한다). 부상·징계 보도 0(EN·ES·PT). 아르헨티나 매체(Olé·TyC·Clarín) 도메인 차단 지속. 에메리 회견 문답 흔적 0. 10-20 바이킹전 사전 회견이 다음 1차 근거 기회.",
+     "id": 1078,
+     "scope": "reference"
+    }
+   ],
    "published": "2026-10-19",
    "published_approx": 0,
    "report_id": 56,
@@ -79,7 +95,7 @@
   },
   {
    "channel": "A Game Of Two Halves",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-19] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 303,
    "impl_claims": [
     {
@@ -103,7 +119,13 @@
    ],
    "kind": null,
    "lang": "en",
-   "obs_points": [],
+   "obs_points": [
+    {
+     "claim": "**당일 판정 정정(N1 근거) — 뉴캐슬 「43′ 4-4-2 전원 1대1(맨마킹) 전환」은 출처 충돌로 미확정으로 낮춘다.** D+1은 Squawka 단일 서술로 「실점 후 바뀐 것은 구조(맨마킹)」라 적었다. 뉴캐슬 관점 전술 채널 A Game Of Two Halves(10-18)는 「Yaser doesn't really do that … a zonal high press … They don't simply man-mark one player」(자이슬레는 맨투맨을 하지 않는다 — 존 하이 프레스)라 반박하고, 자이슬레 회견(The Mag·HaytersTV)도 구조 변경을 말하지 않는다. 실측으로 남는 것은 강도 변화뿐이다(def_x 0–36′ 55.3 → 43–56′ 41.1 · PPDA 56–77′ 4.89). ⇒ N1 판정 「부분 일치」는 유지하되 사유의 「구조(맨마킹)」를 「강도·높이 변화(구조 성격 미확정)」로 바꾼다. 빌라 대응은 AGOTH 「They split the center backs wider … Kamara moved out … Gomez moved towards the ball」(CB 벌리기·카마라 이탈·고메스 접근) — 실측 대조 미실행(PENDING).",
+     "id": 1079,
+     "scope": "reference"
+    }
+   ],
    "published": "2026-10-18",
    "published_approx": 0,
    "report_id": 56,
@@ -214,7 +236,7 @@
    "id": 308,
    "impl_claims": [],
    "key_points": [],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-18",
@@ -307,7 +329,7 @@
    "id": 292,
    "impl_claims": [],
    "key_points": [],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-18",
@@ -341,7 +363,7 @@
   },
   {
    "channel": "TOTAL FOOTBALL",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-19] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 341,
    "impl_claims": [
     {
@@ -418,7 +440,7 @@
    "id": 335,
    "impl_claims": [],
    "key_points": [],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-18",
@@ -471,7 +493,7 @@
   },
   {
    "channel": "The Villans",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-19] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 330,
    "impl_claims": [
     {
@@ -526,7 +548,7 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-19] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 290,
    "impl_claims": [
     {
@@ -677,7 +699,7 @@
   },
   {
    "channel": "Aston Villa Football Club",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-19] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 297,
    "impl_claims": [
     {
@@ -697,9 +719,15 @@
     "[01:03] 「today Allison, how he played the first 45 minutes after a long time as well not in the starting 11」(오늘 알리송은 오랫동안 선발이 아니다가 첫 45분을 뛰었다) — 교체 사유 언급 없음",
     "「More or less, we needed it, and we planned it.」(대략 필요했던 것이고 계획했던 것) — 수비·세트피스 문맥(D+1 기록)"
    ],
-   "kind": null,
+   "kind": "감독회견",
    "lang": "en",
-   "obs_points": [],
+   "obs_points": [
+    {
+     "claim": "**뉴캐슬전 알리송 하프타임 교체 사유 — 경고 관리(주) + 부상 이력 부하 관리(배경), 질책성 근거 없음.** 에메리 10-19 E&S(Maher): 「This season he has had some pain and we must try to be careful」(이번 시즌 통증이 있어 조심해야 한다) · 「patience, consistency and every day being careful with him」(인내, 꾸준함, 매일 조심스럽게) · 「being ready to play 10 minutes, 20 minutes, 30 minutes or even in the starting XI」(10·20·30분 또는 선발로도 뛸 준비). Tanswell 「They've protected him … not always training … because of the injuries」(부상 때문에 훈련 부하를 관리해 왔다) · 「I thought Allison might end up getting a red card」(퇴장 위험). 에메리 VillaTV 「played the first 45 minutes after a long time … not in the starting 11」(오랜만에 선발 45분). 에메리가 교체 사유를 직접 말한 대목은 여전히 0 — 「경고 관리」는 기자·채널 해석(Guardian·Tanswell·UTV·Villa Park Podcast 공통). 에메리 어조는 보호·신뢰.",
+     "id": 1077,
+     "scope": "reference"
+    }
+   ],
    "published": "2026-10-17",
    "published_approx": 0,
    "report_id": 56,
@@ -712,7 +740,7 @@
   },
   {
    "channel": "Bains Analysis",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-19] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 326,
    "impl_claims": [
     {
@@ -864,7 +892,7 @@
    "id": 285,
    "impl_claims": [],
    "key_points": [],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-17",
@@ -883,7 +911,7 @@
    "id": 327,
    "impl_claims": [],
    "key_points": [],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-17",
@@ -1172,7 +1200,7 @@
    "id": 323,
    "impl_claims": [],
    "key_points": [],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-17",
@@ -1248,7 +1276,13 @@
    "key_points": [],
    "kind": "경기반응",
    "lang": "en",
-   "obs_points": [],
+   "obs_points": [
+    {
+     "claim": "**당일 판정 정정 — 뉴캐슬전 Q2 에메리 전반 격노: 대상=알리송(주)·캐시, 장면=15′40″~16′00″ 코너 판정 항의 후 전환 수비 공백.** Tanswell(The Athletic · 기자석 목격) 「most of his eye was directed towards Allison because he wanted Allison to recognize Cash was out of position and he needed to fill in right back and he didn't … Emir was fuming」(시선은 주로 알리송 — 캐시가 자리를 비웠으니 RB를 메워야 했는데 안 했고 … 격분했다). Opta 시퀀스가 일치한다: 15:40 캐시 박스 안 슈팅(x93) 빗나감 → 15:58 호르니체크 골킥 빠른 재개 → 16:00 윌록→반스 빌라 우측 배후(오프사이드 · 린델뢰프 유도). Telegraph 16′ 코너 항의·UTV 워치얼롱 「Was it Allison?」 시점과 같다. ⇒ 사용자 가설 「28′ 시뮬레이션 경고 직후 질책」은 **시점 불일치**(격노는 경고 12분 전) · 대상 알리송은 **일치**. D+1 후보 4개 중 ⑴코너 판정 ⑵캐시 ⑶알리송 수비 임무가 **한 장면**으로 합쳐졌다. MOMS 「not doing his defensive duties」는 전반 일반이 아니라 이 전환 1장면으로 한정해 채택(D+1 「불채택」 정정).",
+     "id": 1076,
+     "scope": "reference"
+    }
+   ],
    "published": "2026-10-17",
    "published_approx": 0,
    "report_id": 56,
@@ -1265,7 +1299,7 @@
    "id": 316,
    "impl_claims": [],
    "key_points": [],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-17",
@@ -1284,7 +1318,7 @@
    "id": 289,
    "impl_claims": [],
    "key_points": [],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-17",
@@ -1303,7 +1337,7 @@
    "id": 342,
    "impl_claims": [],
    "key_points": [],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-17",
@@ -1394,7 +1428,7 @@
     "[03:03] 빌라의 노력·지배는 대단하지 않았다 — 상대 실수 쪽 해석",
     "[06:37] 반복된 개인 실수 = 1·2구역 빌드업 설계 결함"
    ],
-   "kind": "감독회견",
+   "kind": null,
    "lang": "tr",
    "obs_points": [],
    "published": "2026-10-15",
@@ -1430,7 +1464,7 @@
     "[09:45] 「birinci kademin ikinci kademe geçtiği anda … anlık baskılarını başlatıyor」(1선에서 2선으로 넘어가는 순간 즉시 압박을 시작한다)",
     "[17:22] 넓은 공간에서 슈크리니아르 측면 대응력 저하"
    ],
-   "kind": "감독회견",
+   "kind": "전술분석",
    "lang": "tr",
    "obs_points": [],
    "published": "2026-10-15",
@@ -1467,7 +1501,7 @@
     "[14:26] 바클리: 「He did an interview after the game … and he said he's fine」(경기 후 인터뷰에서 괜찮다고 했다)",
     "[24:50] 음바예 쥐(cramp) 언급"
    ],
-   "kind": "감독회견",
+   "kind": "선수스카우팅",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-15",
@@ -1541,7 +1575,7 @@
     "[09:18] 카마라 「more license to engage further forward … not just be that protector」(더 앞에서 끊을 권한, 단순 보호자가 아니다)",
     "[17:31] 「Emry doesn't press, but … he has his trigger points」(에메리는 상시 압박이 아니라 트리거 포인트가 있다)"
    ],
-   "kind": "감독회견",
+   "kind": "전술분석",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-15",
@@ -1578,7 +1612,7 @@
     "[21:54] 「Barkley went off injured … you presume he was more cramped than anything」(바클리 부상 교체, 쥐로 추정)",
     "[14:13] 카마라 시즌 최고 수준 · 카마라·바클리 중원 장악"
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-14",
@@ -1651,7 +1685,7 @@
     "[19:24] 바클리: 감독이 경기 전에 PK 키커를 자신으로 정했다",
     "[22:26] 「the good news is he's okay. Just a bit of ice」(바클리는 괜찮다, 얼음찜질 정도)"
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-14",
@@ -1736,7 +1770,7 @@
     "[04:40] 빌라 공격 시 5명 전방 전환(2-4-4 계열 서술과 같은 방향 · 낮은 신뢰)",
     "[08:52] 5-0 만잠비→음바예→바클리"
    ],
-   "kind": "감독회견",
+   "kind": "전술분석",
    "lang": "tr",
    "obs_points": [],
    "published": "2026-10-14",
@@ -1809,7 +1843,7 @@
     "[43:35~45:40] 카르탈 회견 생중계 — 캉테 100% 아님·62′ 이후 붕괴",
     "[48:14] 채팅 인용 xG 3.07 vs 1.9 — 아침 스냅샷과 일치(이후 Opta 개정 3.11/1.73)"
    ],
-   "kind": "감독회견",
+   "kind": "전술분석",
    "lang": "tr",
    "obs_points": [],
    "published": "2026-10-14",
@@ -1926,7 +1960,7 @@
     "[05:51] 「[Mbaye] had cramp at the end of the game」(음바예가 경기 막판 쥐) — 이름은 auto-caption 'Abby Bay' 오인식",
     "[13:02] 알리송 아브라함 골 도움 · 바이라인 수비 태클"
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-14",
@@ -1962,7 +1996,7 @@
     "[08:34] 경기 전 빌라 맥락 PL 16위·전환율 8%",
     "[19:28] 위크섹 평점 3.4~3.9"
    ],
-   "kind": "감독회견",
+   "kind": null,
    "lang": "tr",
    "obs_points": [],
    "published": "2026-10-14",
@@ -2503,7 +2537,7 @@
     "원문 「I don't think we ever had a grip on the game totally」(경기를 완전히 장악한 적은 없었다고 본다) — Tanswell 「not really controlling games」와 같은 방향",
     "음바예·알리송 투입 후 「plenty of switching around … who's on the right, who's on the left」(좌우 위치가 계속 바뀌었다) — 2선 순환(obs#968) 정황"
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en-orig",
    "obs_points": [
     {
@@ -3342,7 +3376,7 @@
     "원정 국면 인식 — 원문 「We know we play away and that's always difficult in the Premier League. And with defense, they can push」(우리는 원정임을 알고 있고 프리미어리그 원정은 항상 어렵다. 수비적으로 상대가 밀어붙일 수 있다.)",
     "⚠️ 72′ 교체·전반 치료 언급 0건."
    ],
-   "kind": null,
+   "kind": "감독회견",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-20",
@@ -4143,7 +4177,7 @@
     "신입 통합 — 원문 「We must adapt the new players and we need to create and to build a structure feeling comfort, one getting confidence」(새 선수들을 적응시켜야 하고, 편안함을 느끼는 구조를 만들고 세워야 한다. 그러면서 자신감을 얻는 것이다). 선발 11명 중 6명이 여름 영입.",
     "실측 정합: def_x 30.6(26/27 최저) · PPDA 13.24 · 코너 1-11 허용 · 빌라 오픈플레이 xG 1.16이 전체 xG와 동일(세트피스 0.00) — 「수비·GK·코너·전환」 네 낱말이 그대로 수치로 나온다."
    ],
-   "kind": null,
+   "kind": "감독회견",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-19",
@@ -4333,7 +4367,7 @@
     "빌라 평 — 원문 「managerial stability always trumps individual players … if you play with a defined system the players are components, they're cogs in a wheel」(감독의 안정성은 언제나 개별 선수보다 우위다 … 정의된 시스템으로 뛰면 선수는 부품, 톱니바퀴다)",
     "팀 스탯 낭독: 점유 스퍼스 63.8% · xG 1.22-1.16 · 슈팅 20-15 · 박스 내 터치 31-18 · 코너 11-1"
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-19",
@@ -5009,7 +5043,7 @@
     "⭐ 원문 「fragile and… once they've conceded that set piece, it's almost like you don't want it to be a mindset, but it's like, **\"Oh, here we go again\"**」(취약하다… 세트피스를 한 번 내주고 나면, 심리가 되지 않길 바라지만 **「또 시작이군」** 같은 상태가 된다.) — auto-caption",
     "원문 「**set pieces can win or lose football matches**」(세트피스가 경기를 이기게도 지게도 한다.) · 「defending better than anyone, **it's a collective**」(수비를 잘하는 건 **집단**의 일이다.)"
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-18",
@@ -5134,7 +5168,7 @@
    "id": 228,
    "impl_claims": [],
    "key_points": [],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-18",
@@ -5196,7 +5230,7 @@
     "「my only concern with Embay [that] Unai might have is… is he defensively going to do the job for us yet… do I maybe go with Allison on the right who will do the defensive duties」(에메리의 유일한 우려는 원정에서 그가 아직 수비 임무를 해낼 수 있는가 — 수비 임무를 해줄 알리송을 오른쪽에 쓸 수도) — ⭐ 음바예 선발 게이트 = 원정 수비 부담",
     "「he might have the best distribution of a goalkeeper I can think of at the moment」(현재 떠올릴 수 있는 GK 중 배급 최고일지도) — 스즈키 · 음바예 PSG 시절은 왼쪽(쿤데 상대)이었는데 이날은 오른쪽 배치"
    ],
-   "kind": "전술분석",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-17",
@@ -5298,7 +5332,7 @@
    "key_points": [
     "「he just wants the ball. Seems like he always wants the ball. Quick feet」(그는 그냥 볼을 원한다 — 늘 볼을 원하는 것처럼 보인다, 발이 빠르다) — 음바예"
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-17",
@@ -5530,7 +5564,7 @@
     "「he gave the keeper the eyes if he was going to put it in to the keeper's far post and he tried to hit it near post like he did in the Forest game… but he's just put it past the post」(파포스트로 넣을 듯 시선을 주고 니어포스트로 때렸다 — 포레스트전처럼 — 포스트를 빗나갔다) — 33′ 맥긴 빅찬스 미스",
     "공통 판정 3개: 아브라함 신뢰 회복 · 음바예 최대 수확 · 보가르드-바클리 더블 피벗 = 유일한 약점"
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-17",
@@ -5564,7 +5598,7 @@
    "key_points": [
     "「he was willing to force the game. He was pushing the line. He was making runs in behind」(경기를 밀어붙이려 했다, 라인을 밀어올렸다, 배후로 침투했다) — 음바예, 실측 팀 최전방(avg_x 69.05)과 정합"
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-17",
@@ -5614,7 +5648,7 @@
     "토르프 FK 「a phenomenal free kick… I don't think you can do anything about that」(엄청난 프리킥 — 할 수 있는 게 없다) — 비조 면책(UTV 5점과 대립)",
     "「Barkley is very very useful from set pieces. That's the third goal off the top of my head」(바클리는 세트피스에서 매우 유용하다 — 기억으로 세 번째 골) · 가르나초 「to not get on tonight is pretty bizarre」(오늘 출전조차 못 한 건 꽤 기괴하다)"
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-16",
@@ -5784,7 +5818,7 @@
     "「As soon as I saw the wall go back as far as it did, I [knew] he could score here」(벽이 그만큼 물러나는 걸 본 순간 넣겠다 싶었다) — 토르프 FK 실점의 제3설: 빌라 벽 세팅 · 「I'm convinced he scores nine out of 10 of them」(10번 중 9번 넣는다)",
     "「apart from that, they haven't really tested us」(그 외에는 우리를 시험하지 않았다) — 빅찬스 4:0·xG 2.69와 상충(자국 편향 보정 대상) · 자기 진영 패스 성공 90%"
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-16",
@@ -6397,7 +6431,7 @@
     "⚠️ **수치 교차검증 필요** — 슛 14-10 · xG 1.13/0.71 · 이삭 91분 0.31은 **제공사가 명시되지 않았다**. docs/30 ⑧에 따라 `xg_source`를 확인하지 않으면 우리 실측과 직접 비교할 수 없다.",
     "⛔ **auto-caption 오인식** — 이라올라가 「Andonia Areola」, 「nil nil」(정상). 인물명 오인식은 적다."
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-12",
@@ -6940,7 +6974,7 @@
     "⭐ **방법론 — 팬 반응 채널이 원 전사의 결손을 메웠다** — 가르나초 답변은 **회견 원문 전사 2종 모두에 없었다**(질문만 있고 답변 구간이 누락). 반응 채널이 **요약으로 전달한 덕에 확보**됐다. ⇒ ⭐⭐ **「원문이 최선이지만 반응 채널이 결손을 메울 수 있다」**는 부류 — 단 **재진술이라 verbatim 인용으로 쓰면 안 된다**(불변규칙 11의 「요약 경유 시 열화」).",
     "⛔ **auto-caption** — 영어이고 인물명 오인식은 적다(가르나초·바클리·밍스·맥긴 정상). 다만 팬 채널 구어라 문장 경계가 흐리고, **가르나초 답변은 진행자의 재진술**이지 감독의 직접 발화가 아니다."
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-11",
@@ -7957,7 +7991,7 @@
     "주앙 고메스 재평가 — 「좁은 공간에서 브라질 선수다운 기술로 빠져나와 전진 패스를 낸다」, PSG전·이번 경기 모두 좋았고 「중원 리더십 역할」의 긍정 신호. 징계 마지막 경기라 주말엔 다시 결장.",
     "맥긴 = 빌라 유럽대항전 통산 최다 득점자(12골) 달성 — 지난 시즌 볼로냐전 결승골처럼 「큰 경기용 주장」 서사. 캐시(근피로로 미출장) 공백에 데뷔한 완비사카는 「1대1에 자신 있는 선수로 알려졌는데 오늘은 이례적으로 물러섰다」며, **에메리의 엄격한 시스템에 새 선수가 적응하는 동안 주춤하는 패턴**일 수 있다고 해석(보가르드는 시스템을 알아 더 편해 보였다는 대조)."
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-08",
@@ -8062,7 +8096,7 @@
     "⚠️ 완비사카 **5점** — 실점 장면에서 「크로스 차단 실패·발 위치가 전부 틀렸다」. 「브뤼헤가 측면에서 훌륭했고 팀이 크로스를 못 막았다」는 팀 차원 지적과 함께. PK는 「유럽 기준으로는 PK」라며 본인 책임은 크지 않다고 봤다.",
     "기타 평점 — 스즈키 8(**롱킥 궤적이 수비 머리에서 튀어나가 다시 상대를 가둔다**는 관찰) · 주앙 고메스 8(「물고 들어가는 기질·좁은 공간 질·전진 캐리」, 결장 공백을 실감) · 헤밍스 **8.5로 「빌라 유니폼 최고 경기」**(초반 2회 결정적 기회는 놓쳤지만 전진 캐리와 **경기 막판 전술 파울의 성숙함**을 근거로) · 맥긴 7(골은 훌륭, 후반 한때 흐름을 잃음) · 바클리 **4**(박스 앞 볼 로스트를 「범죄적」이라 평)."
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-08",
@@ -8196,7 +8230,7 @@
     "⚠️ **클립 기반 분석이라 전사만으로는 위치를 재구성할 수 없다** — 「esta acción」·「aquí」·「este hombre」 같은 지시어가 화면을 가리킨다. **영상 미시청 원칙(docs/30)** 아래에서는 **구조 서술만** 취할 수 있다.",
     "⛔ **auto-caption 오인식** — 테르지치가 「Terzit/Terzic/Terzich」 혼용, 루크만이 「Lukman」, 이강인이 「Kangin Lee」, 「Athletic de Interstames」(Athletic de Bilbao/San Mamés 깨짐), 「Balaíos」(Balaídos — 셀타 홈구장), 「tres goles a cer」(cero)."
    ],
-   "kind": null,
+   "kind": "전술분석",
    "lang": "es",
    "obs_points": [
     {
@@ -8319,7 +8353,7 @@
     "채팅 인용 — 「Slow and steady wins the race. Must be Unai's mantra」 = 「느리고 꾸준한 게 이긴다. 에메리의 좌우명인가 보다」. 팬 정서를 「빌라 팬이라면 누구나 느꼈을 가장 답답한 경기」로 요약.",
     "⚠️ 이 영상은 **판정이 아니라 정서·시점 주장**이 중심이다 — 전술 수치는 거의 없다. 우리 축에서는 **「45~60분 붕괴/체념」 반복 가설**(UTV 주장, HANDOFF 0-3c)의 또 다른 채널 증언으로 다룬다."
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [
     {
@@ -8365,7 +8399,7 @@
     "⭐ 경기 판정 — 「헐은 **콤팩트하고 허물기 어려웠다** · 우리는 득점해야 했다 — **보여줄 만한 기회가 충분히 있었다** · 헐도 크로스바를 때려 가장 가까웠다 · 「too safe」라는 지적은 타당」. **유효슛 하나에 환호하는 자신을 발견했다**는 시청자 코멘트를 그대로 옮겼다.",
     "⭐ 감독 옹호 논리 — 「지난 시즌을 인용하려면 **우리는 4위로 마치고 트로피를 들었다** — 그런 전술이 우리에게 통했다 · 그는 실수도 하겠지만 **대체로 신뢰해야 한다**」."
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-05",
@@ -8599,7 +8633,7 @@
     "심리 관찰 — **「맥긴과 부엔디아가 등에 20kg을 지고 뛰는 것처럼 보인다 · 빌라의 무게를 어깨에 지고 있다」** — 신입 통합의 어려움을 그들이 체감하고 있기 때문이라는 해석(The Villans의 같은 표현과 독립 일치).",
     "평점 — 스즈키 8(핸들링 강했고 흘린 게 적었다 · 킥 또 훌륭) · **캐시 5**(「폭을 더 쓸 수 있었다 · 전반엔 맥긴과 터치라인에서 로테이션해 크로스를 올렸는데 후반엔 그게 줄었다 · 지금 볼 품질이 부족하다」). 감독 옹호 논리는 「muscle memory」 — 「지난 시즌 선덜랜드·에버턴 원정과 거의 같은 경기였고 그때도 결국 풀렸다」."
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [
     {
@@ -9066,7 +9100,7 @@
     "⭐ 실점 진단 — 「**피할 수 있었던 골** · 우리가 **공간 포켓을 잡는 데서 잠깐 집중을 놓쳤고** 크로스가 들어왔다」. 후반 판정 불만도 제기(단 「대부분 파울은 아니었다고 본다」고 균형).",
     "⭐ 아브라함 관련 — 「본인은 **남아서 자리를 다투고 싶어 하는 것으로 들린다** · **에메리가 그걸 크게 반기는지는 확신이 없다**」(에메리 회견 뒤 소감)."
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [],
    "published": "2026-08-31",
@@ -9091,7 +9125,7 @@
     "⭐ 지속 가능성 논쟁 — 「**지난 시즌 그 경기를 20번 봤다**(= 1-0 승리 패턴) · 누군가는 지속 가능하다고 할 것 · 지난 시즌 1-0 승리가 14번이었다」 ⇒ 아스날의 **1-0 승리 반복 패턴**에 대한 팬 내부 인식.",
     "⚠️ 프리시즌 언급 — 「우리도 프리시즌을 많이 못 했다」며 초반 부진을 상호 맥락화. ⛔ auto-caption이 루이스-스켈리를 「Caliori·Califuri」로 적었다."
    ],
-   "kind": "감독회견",
+   "kind": "상대팀",
    "lang": "en",
    "obs_points": [],
    "published": "2026-08-31",
@@ -11618,7 +11652,7 @@
     "⚠️ **전사 밀도 주의** — 발췌 구간의 큰 부분이 **경품(티켓·유니폼) 홍보**다. ⇒ 이 행에서 취할 것은 **상대 팬의 서사 프레임**이고, 전술 근거는 글라스너 회견·UTV 디브리프 쪽을 쓴다.",
     "⛔ **auto-caption 오인식** — 글라스너가 「Glasnner·Glazner」, 선수 이름들이 「Meenovic·Jaier Kuna·Hudson Adoi」 등으로 붕괴됐다."
    ],
-   "kind": "감독회견",
+   "kind": "경기반응",
    "lang": "en",
    "obs_points": [
     {

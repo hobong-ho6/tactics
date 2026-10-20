@@ -90,6 +90,11 @@ for t in AVL CHE LIV ATM; do .venv/bin/python scripts/collect_fotmob_players.py 
   그 경기 영상은 **`summary`(3~5문장)와 `key_points`(줄바꿈 구분)를 직접 작성**한다 — 경기 화면 「이 경기 영상 분석」 패널이 그걸 읽는다.
   ⛔ **인용은 원문 「…」 + 한국어 번역 병기**(불변규칙 11)이고, 전사 기반이므로 confidence에 **auto-caption**을 명기한다.
   ⚠️ 인물명은 실측과 교차검증한다(docs/30 오인식 대조표 — 「Matty Cash ↔ Maatsen」이 실제로 재발했다).
+  ⛔⛔ **「핵심 몇 편만」 요약하고 나머지를 백로그로 넘기지 않는다**(2026-10-20 사용자 지시 「전사 수집 완료되면 바로 요약 생성하도록」 —
+  뉴캐슬전 40편 중 5편만 요약돼 화면이 「미작성」으로 덮였다). 순서: 전사 → `index_transcripts.py` → **새로 귀속된 전 편**
+  요약(10편 안팎 묶음으로 서브에이전트에 나눠 JSON 작성 → 메인이 검수) → `write_video_summary.py` → ship.
+  **G17이 막는다** — `match_videos.id > 342`(2026-10-20 이후 색인분) 중 경기 귀속 + 전사 있음 + 요약 없음이 1편이라도 있으면 실패.
+  내용이 없는 영상(하이라이트·잡담)도 「핵심 없음」 한 줄 요약 + `{"axis":"none"}`으로 닫는다 — 비워 두지 않는다.
 - ⭐⭐ **회차 마무리에 반영 판정을 닫는다**(2026-09-14 신설, **G16이 막는다**):
   실측·처방 갱신이 끝나면 `python3 scripts/refresh_duty_applied.py`를 돌리고,
   남은 `CONFLICT`를 **그 회차에 판정한다**(`APPLIED`/`HELD`/`REJECTED` + 사유).
@@ -178,6 +183,24 @@ for t in AVL CHE LIV ATM; do .venv/bin/python scripts/collect_fotmob_players.py 
 **경기 전용 프리셋이 없는** 경기"라는 뜻이고, 화면이 그 사유를 함께 안내한다.
 ⚠️ 자료가 얕다고 `complete`로 올리지 말 것 — 단일 경기 fit 없이 역할을 채우면 과대 표시가 된다.
 G12가 누락·원문 경로·UI 연결을 검사한다(초안도 선수 행이 0이면 실패).
+
+### 2-2a. ⭐ 경기 분석 화면용 정형 축 — 요약·구간 흐름·가설 판정 (2026-10-20 · migration 109 · G37)
+
+사용자 지시 「경기 흐름·선수 포인트·관전 메모 가설 판정·부상을 경기 분석에서 **항상** 제공」. 리포트 원문에만 두면
+화면에 안 나온다 — 같은 회차에 DB 행으로 올린다(부상은 `collect_fotmob_players.py`의 `player_status`를 export가 붙이므로 따로 할 일 없음).
+1. **구간 지표**: WhoScored matchCentreData를 JSON으로 받아 두고
+   `.venv/bin/python scripts/match_phase_metrics.py --report N --events <json> --team-id <우리> --opp-id <상대> --cuts <득점·교체 분>`.
+   계산은 `core.whoscored.segment_metrics`(def_x·PPDA·자기 진영 패스 성공률, 양 팀)만 쓴다. GK 롱패스 비중처럼
+   경기마다 대상이 다른 지표는 아래 JSON의 `phase_metrics`로 넣는다(지표 목록 정본 `core.whoscored.PHASE_METRICS`).
+2. **요약·가설 판정**: 리포트 「요약」 불릿과 「사용자 의견 대조표」를 JSON 한 장으로 만들어
+   `.venv/bin/python scripts/load_match_extras.py --json <file> --dry-run` → 실제 적재. 형식은 스크립트 머리 주석.
+   판정 값: match(일치) · partial(부분 일치) · mismatch(불일치) · undecided(판정 불가) · pending(D+N 대기).
+2b. **전술 분석 4칸**(migration 111): 같은 JSON에 `"tactics"`(tac_possession·tac_defense·tac_transition 불릿 · strengths·weaknesses 배열 ·
+   opp_disruption · impl_verdict = 유지|추가 관찰|시험 프리셋|정본 변경 · recheck_items 배열) · `"changes"`(경기 중 변화 단계 seq·minute·minute_to·title·detail) ·
+   `"prescriptions"`(선발 pos_label별 fit_delta·alt_role = 커널 1·2위 격차와 2위 후보)를 넣는다. ⛔ 리포트 산문을 화면이 자르지 않는다 — 처음부터 나눠 적는다.
+3. **D+N 재판정은 새 행이다** — 「당일 판정 정정」을 적을 때 같은 JSON의 `corrections`에 `{"seq", "round": "D2", …}`로 넣으면
+   스크립트가 원래 행을 `supersedes_id`로 잇는다(원래 행은 고치지 않는다 · 불변규칙 2). 요약(`key_points`)은 현재 판정 기준으로 갱신한다.
+- **게이트 G37**: 관전 메모가 있는 경기는 판정 ≥1행, report_date ≥ 2026-10-14인 **아스톤 빌라** 리포트는 요약 + 구간 지표 ≥1행 + 전술 4칸(3단·결론·변화 단계·선발 fit_delta)이 없으면 커밋이 막힌다(2026-10-20 사용자 결정 — CHE·ATM·LIV는 수집 잠정 보류).
 
 ## 3. 팀 스탯
 `/api/v1/event/<eid>/statistics` → `team_match_stats` + `matches` 행 추가.

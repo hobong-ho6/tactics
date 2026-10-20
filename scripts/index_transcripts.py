@@ -99,10 +99,21 @@ OPPONENT_HINTS = {
     # 약어(리포트 제목에서 쓰는 3글자 코드)
     " ars": "Arsenal", " nffc": "Nottingham", " avl": None, " che": "Chelsea", " liv": "Liverpool",
 }
+# ⭐⭐ 「감독회견」은 **명시어 또는 감독이 화자인 제목**일 때만(2026-10-20 사용자 지적 — 뉴캐슬전 「감독 회견 7편」이 전부 팬 반응 영상).
+#    ⛔ 종전엔 이 패턴에 `reaction`·`경기 후`·`post-match`가 있어 「Match Reaction」이 아래 경기반응보다 먼저 잡혔다.
+#    「Press Conference Reaction」(팬이 회견에 반응)은 회견이 아니다.
+PRESSER = r"press ?conference|presser|rueda de prensa|conferencia de prensa|pressekonferenz|persconferentie|basın toplantısı|coletiva|記者会見|회견"
+PRESSER_NOT = r"(press ?conference|presser)\s*reaction|reacting to|reacts? to"
+MANAGER_SPEAKS = (r"(\b(unai emery|emery|xabi alonso|alonso|andoni iraola|iraola|simeone|jaissle|moyes|glasner|arteta|slot|maresca|howe|postecoglou|mourinho|frank)\b"
+                  r"|에메리|알론소|이라올라|시메오네|아르테타)['’]?s?\s*"
+                  r"(:|\bon\b|reaction|post[- ]?match|interview|speaks|경기 후|인터뷰|반응)")
+# 구단 공식 채널의 「Reaction」·인터뷰는 감독·선수 1차 발언이다(팬 채널의 Match Reaction과 다르다)
+OFFICIAL_CH = r"공식|football club|official|^liverpool fc$|^chelsea fc$"
+OFFICIAL_SPEAKS = r"reaction|interview|\bon\b|🗣"
 KIND_HINTS = [
-    (r"회견|press ?conference|persconferentie|reaction|경기 후|post-?match", "감독회견"),
+    (r"post[- ]?match live|match ?reaction|instant reaction|full[- ]time thoughts", "경기반응"),
     (r"scouting|스카우팅|why .* is (perfect|underrated)|fits into", "선수스카우팅"),
-    (r"tactical analysis|전술 ?분석|build-?up|analysis:", "전술분석"),
+    (r"tactical analysis|전술 ?분석|build-?up|analysis:|taktik analiz|análisis táctico", "전술분석"),
     (r"things we learned|reaction|review|fall to|defeat|draw at|win", "경기반응"),
     (r"preseason|프리시즌|pre-?season", "프리시즌"),
     (r"EA FC ?2\d|career mode|recreated in|tactics recreated", "게임재현"),
@@ -144,7 +155,15 @@ def parse_header(path: Path):
     return out
 
 
-def guess_kind(text):
+def guess_kind(text, presser=True, channel=None):
+    """presser=False면 회견 판정을 건너뛴다 — 우리 전사 머리 메모(note)는 「회견 언급」 같은 말을 담아 오분류를 부른다."""
+    if presser and re.search(PRESSER, text, re.I) and not re.search(PRESSER_NOT, text, re.I):
+        return "감독회견"
+    if presser and re.search(MANAGER_SPEAKS, text, re.I):
+        return "감독회견"
+    if presser and channel and re.search(OFFICIAL_CH, channel, re.I) and re.search(OFFICIAL_SPEAKS, text, re.I) \
+            and not re.search(r"post[- ]?match live", text, re.I):
+        return "감독회견"
     for pat, kind in KIND_HINTS:
         if re.search(pat, text, re.I):
             return kind
@@ -188,7 +207,7 @@ def main():
                 no_meta.append(path.name)
                 continue
         team, kind = CHANNEL_TEAM.get(h["channel"], (None, None))
-        kind = guess_kind(f"{h['title'] or ''} {h['note']}") or kind
+        kind = guess_kind(h['title'] or '', channel=h['channel']) or guess_kind(h['note'] or '', presser=False) or kind   # 회견 판정은 제목만
         blob = f"{h['title'] or ''} {h['note']}".lower()
 
         # 경기 귀속 — 상대팀 표기로 후보를 좁히고 **하나로 특정될 때만** 붙인다.

@@ -9,7 +9,12 @@ JSON 형식:
   {"report_id": 56, "key_points": "<markdown 불릿>", "source": "...", "confidence": "...",
    "hypotheses":  [{"seq", "tag", "round": "D0", "claim", "measured", "evidence", "verdict", "verdict_note", "obs_id"}],
    "corrections": [{"seq", "round": "D1|D2|D3", "measured", "evidence", "verdict", "verdict_note", "obs_id"}],
-   "phase_metrics": [{"side": "v|o", "metric", "seg_from", "seg_to", "value", "n", "note"}]}
+   "phase_metrics": [{"side": "v|o", "metric", "seg_from", "seg_to", "value", "n", "note"}],
+   ⭐ migration 111(전술 분석 4칸 · 2026-10-20):
+   "tactics": {"tac_possession", "tac_defense", "tac_transition" (markdown 불릿), "strengths": [..], "weaknesses": [..],
+               "opp_disruption", "impl_verdict": "유지|추가 관찰|시험 프리셋|정본 변경", "recheck_items": [..]},
+   "changes": [{"seq", "minute", "minute_to", "title", "detail"}],          # 경기 중 변화 단계(분 축)
+   "prescriptions": [{"pos_label", "fit_delta", "alt_role"}]}                # 선발 처방의 1·2위 격차(무결정 Δ 막대)
   verdict ∈ match · partial · mismatch · undecided · pending.  metric ⊆ core.whoscored.PHASE_METRICS.
 
 ⛔ 추가만(불변규칙 2): 정정은 원래 행을 고치지 않는다 — 같은 seq의 **최신 행**을 supersedes_id로 가리키는
@@ -54,7 +59,7 @@ def main():
     con = connect_db(DB)
     if not con.execute("SELECT 1 FROM match_reports WHERE id=?", (rid,)).fetchone():
         raise SystemExit(f"⛔ match_reports #{rid} 없음")
-    n_h = n_c = n_p = 0
+    n_h = n_c = n_p = n_t = 0
     try:
         for h in d.get("hypotheses", []):
             con.execute("""INSERT INTO match_hypotheses(report_id,seq,tag,round,claim,measured,evidence,verdict,
@@ -83,15 +88,38 @@ def main():
             n_p += 1
         if d.get("key_points"):
             con.execute("UPDATE match_reports SET key_points=? WHERE id=?", (d["key_points"], rid))
+        t = d.get("tactics") or {}
+        TCOLS = ["tac_possession", "tac_defense", "tac_transition", "strengths", "weaknesses",
+                 "opp_disruption", "impl_verdict", "recheck_items"]
+        if set(t) - set(TCOLS):
+            raise ValueError(f"모르는 tactics 키 {sorted(set(t) - set(TCOLS))}")
+        for k in TCOLS:                     # 「현재 판단」 칸이라 갱신한다(key_points와 같은 규약)
+            if k in t:
+                v = t[k]
+                con.execute(f"UPDATE match_reports SET {k}=? WHERE id=?",
+                            (json.dumps(v, ensure_ascii=False) if isinstance(v, list) else v, rid))
+        n_t = sum(1 for k in TCOLS if k in t)
+        for c in d.get("changes", []):
+            con.execute("""INSERT INTO match_tactical_changes(report_id,seq,minute,minute_to,title,detail,source,confidence)
+                           VALUES(?,?,?,?,?,?,?,?)""",
+                        (rid, c["seq"], c["minute"], c.get("minute_to"), c["title"], c.get("detail"), src, conf))
+        for x in d.get("prescriptions", []):
+            n = con.execute("""UPDATE match_player_prescriptions SET fit_delta=?, alt_role=?
+                               WHERE report_id=? AND pos_label=? AND starter=1""",
+                            (x["fit_delta"], x.get("alt_role"), rid, x["pos_label"])).rowcount
+            if n != 1:
+                raise ValueError(f"선발 처방 {x['pos_label']} {n}행 — 정확히 1행이어야 한다")
     except Exception as e:                                 # noqa: BLE001 — UNIQUE 충돌 포함 전부 되돌린다
         con.rollback()
         raise SystemExit(f"⛔ 적재 중단(전부 되돌림): {e}")
     if a.dry_run:
         con.rollback()
-        print(f"[dry-run] #{rid}: 판정 {n_h} · 정정 {n_c} · 구간 지표 {n_p} · 요약 {'있음' if d.get('key_points') else '없음'} — 쓰지 않았다")
+        print(f"[dry-run] #{rid}: 판정 {n_h} · 정정 {n_c} · 구간 지표 {n_p} · 요약 {'있음' if d.get('key_points') else '없음'}"
+              f" · 전술 칸 {n_t} · 변화 단계 {len(d.get('changes', []))} · 처방 Δ {len(d.get('prescriptions', []))} — 쓰지 않았다")
         return
     con.commit()
-    print(f"✅ #{rid}: 판정 {n_h} · 정정 {n_c} · 구간 지표 {n_p} · 요약 {'갱신' if d.get('key_points') else '없음'}")
+    print(f"✅ #{rid}: 판정 {n_h} · 정정 {n_c} · 구간 지표 {n_p} · 요약 {'갱신' if d.get('key_points') else '없음'}"
+          f" · 전술 칸 {n_t} · 변화 단계 {len(d.get('changes', []))} · 처방 Δ {len(d.get('prescriptions', []))}")
     print("다음: python3 scripts/gates.py && python3 scripts/export.py")
 
 

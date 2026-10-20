@@ -358,7 +358,7 @@ CREATE TABLE match_reports(
   source TEXT NOT NULL,
   confidence TEXT NOT NULL,
   created_at TEXT NOT NULL,
-  updated_at TEXT NOT NULL, overall_assessment TEXT, key_points TEXT,
+  updated_at TEXT NOT NULL, overall_assessment TEXT, key_points TEXT, tac_possession TEXT, tac_defense TEXT, tac_transition TEXT, strengths TEXT, weaknesses TEXT, opp_disruption TEXT, impl_verdict TEXT CHECK (impl_verdict IS NULL OR impl_verdict IN ('유지','추가 관찰','시험 프리셋','정본 변경')), recheck_items TEXT,
   UNIQUE(team_code,event_id)
 );
 CREATE TABLE match_player_reports(
@@ -398,7 +398,7 @@ CREATE TABLE match_player_prescriptions(
   sort_order INTEGER,
   rationale TEXT NOT NULL,
   source TEXT NOT NULL,
-  confidence TEXT NOT NULL, replaced_player_id INTEGER REFERENCES players(id), minute_on INTEGER,
+  confidence TEXT NOT NULL, replaced_player_id INTEGER REFERENCES players(id), minute_on INTEGER, fit_delta REAL, alt_role TEXT,
   PRIMARY KEY(report_id,player_id),
   FOREIGN KEY(game_version,role_id,focus)
     REFERENCES game_role_focus(game_version,role_id,focus)
@@ -1382,4 +1382,26 @@ CREATE TABLE match_phase_metrics (
   source TEXT NOT NULL,
   confidence TEXT NOT NULL,
   UNIQUE (report_id, side, metric, seg_from)
+);
+CREATE TABLE card_position_changes (
+  id INTEGER PRIMARY KEY,
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  ea_item_id INTEGER NOT NULL,
+  positions_before TEXT,
+  positions_after TEXT NOT NULL,
+  observed TEXT NOT NULL,
+  source TEXT NOT NULL,
+  UNIQUE (game_version, ea_item_id, observed)
+);
+CREATE TABLE match_tactical_changes (
+  id INTEGER PRIMARY KEY,
+  report_id INTEGER NOT NULL REFERENCES match_reports(id),
+  seq INTEGER NOT NULL,
+  minute INTEGER NOT NULL,          -- 단계 시작 분
+  minute_to INTEGER,                -- 끝 분(NULL = 다음 단계까지/종료)
+  title TEXT NOT NULL,              -- 짧은 제목(「43′ 뉴캐슬 압박 전환」)
+  detail TEXT,                      -- 한두 문장
+  source TEXT NOT NULL,
+  confidence TEXT NOT NULL,
+  UNIQUE (report_id, seq)
 );

@@ -294,38 +294,48 @@ function renderVideos(r){
       || (b.v.impl_claims ?? []).length - (a.v.impl_claims ?? []).length
       || String(a.v.published ?? '').localeCompare(String(b.v.published ?? '')));
 
-  const card = (v, g) => `<article class="vidcard${g ? ' g' + g : ' presser'}">
-      <header>
-        ${g ? `<span class="badge vgrade v${g}" title="${esc(GRADE_WHY[g])}">${g}</span>` : ''}
+  /* ⭐⭐ 2026-10-20 사용자 지시 「영상 분석 영역도 글이 너무 많아서 좀 더 잘 보이게」 — 40편이 큰 카드로 줄줄이 나왔다.
+     ⇒ ⑴ 머리에 요약 작성/미작성·종류별 칩 집계 ⑵ 요약 있는 영상만 카드(핵심 한 줄 + 구현 주장 배지 · 전문은 펼치기)
+        ⑶ 요약 미작성은 채널·제목·날짜 한 줄 목록으로 접는다(「요약 미작성」 문장을 카드마다 반복하지 않는다).
+     ⛔ 숨기지 않는다 — 미작성도 건수와 목록이 그대로 있다. */
+  const oneLine = v => { const k = (v.key_points || [])[0]; if (k) return k;
+    const t = String(v.summary || '').replace(/\s+/g, ' ').trim(); const m = t.match(/^.*?[.!?。](\s|$)/); return (m ? m[0] : t).slice(0, 160); };
+  const claimBadges = v => { const cs = v.impl_claims ?? []; if (!cs.length) return '';
+    const c = cs.reduce((m, x) => (m[x.verdict] = (m[x.verdict] || 0) + 1, m), {});
+    return Object.entries(c).map(([k, n]) => `<span class="badge ${VERDICT_CLS[k] ?? ''}" title="구현 주장 ${esc(VERDICT_KR[k] ?? k)}">${esc(VERDICT_KR[k] ?? k)} ${n}</span>`).join(' '); };
+  const head = (v, g) => `${g ? `<span class="badge vgrade v${g}" title="${esc(GRADE_WHY[g])}">${g}</span>` : ''}
         <span class="badge ${VKIND[v.kind] ?? ''}">${esc(v.kind ?? '미분류')}</span>
-        <b>${esc(v.channel)}</b>
-        <span class="dim">${esc(v.published ?? '게시일 미기재')}${v.published_approx ? '경' : ''}</span>
-        <a href="${esc(v.url)}" target="_blank" rel="noopener">유튜브 ↗</a>
-      </header>
+        <b>${esc(v.channel)}</b> <span class="dim">${esc(v.published ?? '게시일 미기재')}${v.published_approx ? '경' : ''}</span>
+        <a href="${esc(v.url)}" target="_blank" rel="noopener">유튜브 ↗</a>`;
+  const card = (v, g) => `<article class="vidcard${g ? ' g' + g : ' presser'}">
+      <header>${head(v, g)} ${claimBadges(v)}</header>
       <div class="vidtitle">${esc(v.title ?? '(제목 미기재)')}</div>
-      ${v.summary ? `<div class="vidsum">${prose(v.summary)}</div>` : ''}
-      ${v.key_points.length ? `<ul class="vidpoints">${v.key_points.map(x => `<li>${annotate(bold(esc(x)))}</li>`).join('')}</ul>` : ''}
-      ${v.obs_points.length ? `<details class="refs"><summary>관찰 기록 ${v.obs_points.length}건 — 이 영상이 근거로 인용된 원장</summary>
-        ${v.obs_points.map(o => `<div class="kv" style="margin-top:6px"><b>관측 기록 #${o.id}</b> <span class="dim">${esc(o.scope)}</span></div>${prose(o.claim)}`).join('')}</details>` : ''}
-      ${claimsHtml(v)}
-      ${!v.summary ? `<p class="dim" style="font-size:12px;margin:6px 0 0">⏰ 요약 미작성 — 전사는 확보돼 있다(<code>${esc(v.transcript_path)}</code>).</p>` : ''}
+      <div class="vidone">${annotate(bold(esc(oneLine(v))))}</div>
+      <details class="vidmore"><summary>요약 전문${v.key_points.length ? ` · 핵심 ${v.key_points.length}` : ''}${v.obs_points.length ? ` · 관찰 기록 ${v.obs_points.length}` : ''}${(v.impl_claims ?? []).length ? ` · 구현 주장 ${(v.impl_claims ?? []).length}` : ''}</summary>
+        ${v.summary ? `<div class="vidsum">${prose(v.summary)}</div>` : ''}
+        ${v.key_points.length ? `<ul class="vidpoints">${v.key_points.map(x => `<li>${annotate(bold(esc(x)))}</li>`).join('')}</ul>` : ''}
+        ${v.obs_points.length ? v.obs_points.map(o => `<div class="kv" style="margin-top:6px"><b>관측 기록 #${o.id}</b> <span class="dim">${esc(o.scope)}</span></div>${prose(o.claim)}`).join('') : ''}
+        ${claimsHtml(v)}</details>
     </article>`;
-
+  const row = v => `<li><span class="badge ${VKIND[v.kind] ?? ''}">${esc(v.kind ?? '미분류')}</span>
+      <b>${esc(v.channel)}</b> <a href="${esc(v.url)}" target="_blank" rel="noopener">${esc(v.title ?? '(제목 미기재)')}</a>
+      <span class="dim">${esc(v.published ?? '')}</span></li>`;
+  const kinds = rows.reduce((m, v) => (m[v.kind || '미분류'] = (m[v.kind || '미분류'] || 0) + 1, m), {});
+  const done = rows.filter(v => v.summary), todo = rows.filter(v => !v.summary);
+  const sec = (title, note, list) => list.length ? `<section class="vsec"><h3>${title} <small class="dim">${note}</small></h3>${list}</section>` : '';
+  const pDone = pressers.filter(v => v.summary), oDone = others.filter(x => x.v.summary);
   document.getElementById('videos').innerHTML =
-    `<div class="kv" style="margin-bottom:8px"><b>${rows.length}편</b>
-       <small class="dim">— 요약 작성 ${withSummary} · 미작성 ${rows.length - withSummary}</small></div>`
-    + (pressers.length ? `<section class="vsec presserbox">
-        <h3>🗣️ 감독 회견 <small class="dim">${pressers.length}편 — 1차 발언이라 가장 세다</small></h3>
-        ${pressers.map(v => card(v, null)).join('')}</section>` : '')
-    + (others.length ? `<section class="vsec">
-        <h3>영상 분석 <small class="dim">${others.length}편 — 정보 등급順</small></h3>
-        <p class="dim" style="font-size:12px;margin:-2px 0 8px">
-          <b class="badge vgrade vA">A</b> 구현에 반영됨 ·
-          <b class="badge vgrade vB">B</b> 판정 대기 ·
-          <b class="badge vgrade vC">C</b> 주장 없음 ·
-          <b class="badge vgrade vD">D</b> 요약 미작성
-          — <b>우리 구현을 얼마나 움직였나</b>이지 영상 품질 평가가 아니다.</p>
-        ${others.map(x => card(x.v, x.g)).join('')}</section>` : '');
+    `<div class="vidhead"><b>${rows.length}편</b>
+       <span class="vidbar" title="요약 작성 ${withSummary} · 미작성 ${rows.length - withSummary}"><i style="flex:${withSummary}"></i><i class="todo" style="flex:${rows.length - withSummary}"></i></span>
+       <small>요약 작성 <b>${withSummary}</b> · 미작성 <b>${rows.length - withSummary}</b></small>
+       <span class="vidkinds">${Object.entries(kinds).sort((a, b) => b[1] - a[1]).map(([k, n]) => `<span class="badge ${VKIND[k] ?? ''}">${esc(k)} ${n}</span>`).join(' ')}</span></div>`
+    + (pressers.length ? `<section class="vsec presserbox"><h3>🗣️ 감독 회견 <small class="dim">${pressers.length}편 — 1차 발언이라 가장 세다</small></h3>
+        ${pDone.map(v => card(v, null)).join('')}
+        ${pressers.length > pDone.length ? `<ul class="vidlist">${pressers.filter(v => !v.summary).map(row).join('')}</ul>` : ''}</section>` : '')
+    + sec('영상 분석', `요약 있는 ${oDone.length}편 — 정보 등급順 · <b class="badge vgrade vA">A</b> 구현 반영 <b class="badge vgrade vB">B</b> 판정 대기 <b class="badge vgrade vC">C</b> 주장 없음`,
+          oDone.map(x => card(x.v, x.g)).join(''))
+    + (todo.filter(v => v.kind !== '감독회견').length ? `<details class="vsec vidtodo"><summary><b>요약 미작성 ${todo.filter(v => v.kind !== '감독회견').length}편</b> <small class="dim">— 전사는 확보돼 있다 · 채널·제목·날짜만</small></summary>
+        <ul class="vidlist">${todo.filter(v => v.kind !== '감독회견').map(row).join('')}</ul></details>` : '');
 }
 /* 구현 주장 — 「이 영상이 우리 구현의 무엇을 건드리는가」(docs/30 8단계 · migration 033).
    ⛔ 요약 산문에서 추출하지 않는다 — `video_impl_claims` 행을 그대로 그린다.
@@ -431,6 +441,52 @@ function groupCompare(rows, g, all){
     rows.map(p => { const m = svals(p); return `<tr><td><b>${esc(p.label)}</b> <small class="dim">${esc(p.position)}</small></td><td class="dim">${esc(p.minutes ?? '—')}</td>${
       keys.map(k => { const v = sval(k, m, mx); return v ? `<td><span>${esc(v.txt)}${v.sub ? ` <small class="dim">${esc(v.sub)}</small>` : ''}</span><i class="${SDEF[k].r ? 'rt' : ''}" style="--w:${v.w}%"></i></td>` : '<td class="dim">—</td>'; }).join('')}</tr>`; }).join('')}</tbody></table></div>`;
 }
+
+/* ── 전술 분석 4칸 (migration 111 · 2026-10-20 사용자 지시 「여기도 좀 더 시각화해서 잘 보이게」) ──
+   ⭐ 정형 칼럼이 있으면 ⑴ 점유/비점유/전환 3단 카드 ⑵ 강점·취약 칩 2칼럼 ⑶ 경기 중 변화 세로 타임라인(분 축)
+      ⑷ 구현 결론 배지 + 경기 프리셋 칩 + 무결정 Δ 막대 + 재검증 체크리스트. 수치는 문장 속 강조 칩으로 띄운다.
+   ⛔ 산문을 잘라 만들지 않는다 — 칼럼이 없는 경기는 종전 산문 그대로 보여주고 「정형 미작성」이라고 쓴다.
+   원래 산문(tactical_*)은 언제나 「원문 서술」 펼치기에 남는다. */
+const numChips = html => String(html ?? '').split(/(<[^>]*>)/).map(t => t.startsWith('<') ? t
+  : t.replace(/(?<![\w.#\-–−])(\d+(?:[-–]\d+){1,3}′?|[−-]?\d+(?:\.\d+)?(?:%|′|m|km\/h)?)(?![\w\-–])/g, '<b class="nchip">$1</b>')).join('');   // 포메이션·구간(4-2-3-1 · 0–15′)은 한 덩어리
+const JL = v => { try { return Array.isArray(v) ? v : JSON.parse(v || '[]') || []; } catch (_) { return []; } };
+function renderTactical(r){
+  const el = document.getElementById('tactical');
+  const raw = `<details class="report-source tacraw"><summary>원문 서술 펼치기</summary>
+    <section><h3>전술 설명</h3>${prose(r.tactical_description)}</section><section><h3>전술적 특성</h3>${prose(r.tactical_features)}</section>
+    <section><h3>경기 중 변화</h3>${prose(r.tactical_changes)}</section><section><h3>게임 구현 함의</h3>${prose(r.game_implications)}</section></details>`;
+  if (!r.tac_possession && !r.impl_verdict && !(r.changes || []).length){
+    el.innerHTML = `<p class="dim" style="font-size:12px;grid-column:1/-1">정형 전술 분석 미작성 — 원문 서술을 그대로 보여준다(수집 회차가 load_match_extras.py의 "tactics"·"changes"로 채운다).</p>
+      <section><h3>전술 설명</h3>${prose(r.tactical_description)}</section><section><h3>전술적 특성</h3>${prose(r.tactical_features)}</section>
+      <section><h3>경기 중 변화</h3>${prose(r.tactical_changes)}</section><section><h3>게임 구현 함의</h3>${prose(r.game_implications)}</section>`;
+    return;
+  }
+  const three = [['점유·빌드업', r.tac_possession], ['비점유·압박', r.tac_defense], ['전환·세트피스', r.tac_transition]];
+  const end = Math.max(95, ...(r.changes || []).map(c => c.minute_to ?? 0));
+  const changes = (r.changes || []).map(c => `<li><span class="tmin">${esc(c.minute)}′${c.minute_to != null ? `–${esc(c.minute_to)}′` : '~'}</span>
+      <div><b>${annotate(esc(c.title))}</b>${c.detail ? `<div class="dim">${numChips(annotate(esc(c.detail)))}</div>` : ''}
+      <i class="tspan" style="--a:${100 * c.minute / end}%;--b:${100 * (c.minute_to ?? end) / end}%"></i></div></li>`).join('');
+  const s = r.game_setup, starters = (r.game_players || []).filter(p => p.starter && p.fit_delta != null && !isGkSlot(p.pos_label))
+    .sort((a, b) => a.fit_delta - b.fit_delta);
+  const altL = alt => { const [ro, fo] = String(alt || '').split('/'); return ro ? roleLabel(ro, fo) : '—'; };
+  const VC = { '유지':'hi', '추가 관찰':'mid', '시험 프리셋':'mid', '정본 변경':'dead' };
+  el.innerHTML = `
+    <section class="tac3"><h3>전술 설명</h3><div class="tac3grid">${three.map(([t, v]) => `<div class="tcard"><h4>${t}</h4>${v ? numChips(prose(v)) : '<p class="dim">미작성</p>'}</div>`).join('')}</div></section>
+    <section><h3>전술적 특성</h3><div class="swgrid">
+      <div><h4 class="ok">강점</h4>${JL(r.strengths).map(x => `<span class="swchip ok">${numChips(annotate(esc(x)))}</span>`).join('') || '<span class="dim">미작성</span>'}</div>
+      <div><h4 class="bad">취약</h4>${JL(r.weaknesses).map(x => `<span class="swchip bad">${numChips(annotate(esc(x)))}</span>`).join('') || '<span class="dim">미작성</span>'}</div></div>
+      ${r.opp_disruption ? `<p class="tacnote"><b>상대가 만든 교란</b> ${numChips(annotate(esc(r.opp_disruption)))}</p>` : ''}</section>
+    <section><h3>경기 중 변화 <small class="dim">— 막대 = 경기 0′~${end}′ 중 그 단계</small></h3>${changes ? `<ol class="tline">${changes}</ol>` : '<p class="dim">미작성</p>'}</section>
+    <section><h3>게임 구현 함의</h3>
+      <div class="kv">${r.impl_verdict ? `<span class="badge ${VC[r.impl_verdict] ?? ''}" style="font-size:13px">${esc(r.impl_verdict)}</span>` : '<span class="dim">결론 미작성</span>'}
+        ${s ? `<span class="pchip">${esc(s.formation)}</span><span class="pchip">빌드업 ${esc(s.build_up_style)}</span><span class="pchip">수비 ${esc(s.defensive_approach)}</span><span class="pchip">라인 ${esc(s.line_height)}</span>` : ''}</div>
+      ${starters.length ? `<div class="kv" style="margin-top:8px"><b>포지션별 1·2위 격차</b> <small class="dim">— Δ ≤ .05면 실측 무결정(단일 경기로 정본을 바꾸지 않는 이유)</small></div>
+        <div class="dbars">${starters.map(p => `<div class="dbar${p.fit_delta <= .05 ? ' und' : ''}"><span><b>${esc(p.pos_label)}</b> ${esc(p.label)}</span>
+          <i style="--w:${Math.min(100, 100 * p.fit_delta / .25)}%"></i><em>Δ${Number(p.fit_delta).toFixed(3)}</em>
+          <small class="dim">1위 ${roleLabel(p.role_id, p.focus)} · 2위 ${altL(p.alt_role)}</small></div>`).join('')}</div>` : ''}
+      ${JL(r.recheck_items).length ? `<div class="kv" style="margin-top:8px"><b>다음 경기 재검증</b></div><ul class="checks">${JL(r.recheck_items).map(x => `<li>${numChips(annotate(esc(x)))}</li>`).join('')}</ul>` : ''}
+    </section>${raw}`;
+}
 function render(r){
   document.getElementById('summary').innerHTML=`<div class="match-report-head"><div><h2>${esc(r.title)}</h2>
     <p class="kv">${esc(r.date||r.report_date)} · ${esc(r.competition)} · ${esc(r.stage||'')} · ${esc(r.venue)} ·
@@ -458,11 +514,7 @@ function render(r){
   if (r.overall_assessment) oa.innerHTML=`<h2>경기 총평·매체 평가 <small class="dim">전술·선수 분석과 별개의 전반적 평가</small></h2>${prose(r.overall_assessment)}`;
   renderGamePreset(r);
   renderVideos(r);
-  document.getElementById('tactical').innerHTML=`
-    <section><h3>전술 설명</h3>${prose(r.tactical_description)}</section>
-    <section><h3>전술적 특성</h3>${prose(r.tactical_features)}</section>
-    <section><h3>경기 중 변화</h3>${prose(r.tactical_changes)}</section>
-    <section><h3>게임 구현 함의</h3>${prose(r.game_implications)}</section>`;
+  renderTactical(r);
   /* 출전 구간·평점 한 장 — 16명을 카드로만 두면 비교가 안 된다(카드는 상세, 이 그림은 조망) */
   const pv = document.getElementById('pviz');
   /* ⛔⛔ **첫 렌더의 `clientWidth`를 믿지 말 것.** 레이아웃이 자리잡기 전에 읽으면 실제보다 훨씬 작게 나오고
