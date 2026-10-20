@@ -100,6 +100,7 @@ export async function mountHeader(active){
   const el = document.getElementById('hdr');
   el.innerHTML = `
     <div class="hrow">
+      <a class="brand" href="index.html" title="허브로"><img src="assets/logo.svg" alt="">택틱스 랩</a>
       <div class="teams${isGlobal ? ' off' : ''}">${idx.regimes.map(r =>
         `<button data-t="${r.team_code}" class="${!isGlobal && r.team_code === team ? 'on' : ''}"${isGlobal ? ' title="팀 데이터 보기 — 그 팀 허브로 이동"' : ''}>${r.team_kr}</button>`).join('')}
       </div>

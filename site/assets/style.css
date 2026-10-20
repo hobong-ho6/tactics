@@ -23,6 +23,10 @@ a{color:var(--acc);text-decoration:none}
 #hdr nav.global{border-left:1px solid var(--line);padding-left:10px}
 #hdr nav.global a{font-weight:600}
 #hdr .teams.off button{opacity:.6}
+/* 2026-10-20 — 사이트 이름·로고(assets/logo.svg · 탭 파비콘과 같은 파일). 팀 버튼은 그 옆에 붙이고 전체 메뉴만 오른쪽으로 */
+#hdr .brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px;color:var(--txt);text-decoration:none;white-space:nowrap}
+#hdr .brand img{width:26px;height:26px}
+#hdr .teams{margin-right:auto}
 #hdr nav.teamnav{width:100%}
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0;
   overflow-wrap:anywhere}
@@ -191,6 +195,28 @@ details.match-players>summary,details.report-source>summary{color:var(--acc);cur
 .player-stats-table th:not(.stat-group){font-size:11px;background:rgba(255,255,255,.025)}
 .player-stats-table td{min-width:58px;text-align:right}
 .player-stats-table .stat-group{color:var(--acc);font-weight:700;vertical-align:middle;background:rgba(255,138,61,.06)}
+/* 2026-10-20 — 경기 분석: 포지션별 스탯 타일 · 포지션군 비교표 · 가설 판정 · 요약 포인트(match-report.html) */
+.stiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:6px;margin:6px 0 8px}
+.st{position:relative;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:8px;padding:6px 9px 9px;overflow:hidden}
+.st span{display:block;font-size:11px;color:var(--dim)} .st b{font-size:16px;font-variant-numeric:tabular-nums} .st small{margin-left:5px;font-size:12px;color:var(--dim)}
+.st i,.gcmp td i{position:absolute;left:0;bottom:0;height:3px;width:var(--w);background:var(--viz-us);opacity:.75}
+.st i.rt,.gcmp td i.rt{background:var(--ok)}
+.gcmp{margin:4px 0 12px;font-size:12px;border-collapse:separate;border-spacing:0}
+.gcmp th{font-size:11px;color:var(--dim);font-weight:400;padding:4px 8px;text-align:right;white-space:nowrap} .gcmp th:first-child{text-align:left}
+.gcmp td{position:relative;padding:5px 8px 7px;text-align:right;white-space:nowrap;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
+.gcmp td:first-child{text-align:left}
+.keypts{margin:10px 0 2px} .keypts h3{font-size:14px;margin:0 0 4px}
+.hypsum{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:4px 0 10px;font-size:12.5px}
+.hypbar{display:flex;flex:1 1 220px;height:8px;border-radius:4px;overflow:hidden;gap:2px;min-width:160px}
+.hypbar i{display:block} .hypbar .v-match{background:var(--ok)} .hypbar .v-partial{background:var(--warn)}
+.hypbar .v-mismatch{background:var(--bad)} .hypbar .v-undecided,.hypbar .v-pending{background:var(--dim);opacity:.5}
+.hyptable{width:100%;font-size:12.5px;border-collapse:collapse}
+.hyptable th{font-size:11px;color:var(--dim);font-weight:400;text-align:left;padding:4px 8px}
+.hyptable td{vertical-align:top;padding:7px 8px;border-top:1px solid var(--line);line-height:1.5}
+.hyptable td:first-child{white-space:nowrap} .hyptable td:nth-child(2){white-space:nowrap}
+.hypnote{margin:4px 0 2px;color:var(--txt);font-size:12px;border-left:2px solid var(--line);padding-left:7px}
+.hyphist summary{cursor:pointer;font-size:11.5px;color:var(--dim)} .hyphist div{font-size:11.5px;margin:3px 0}
+.pf svg{display:block;max-width:100%}
 .match-tacpitch{height:520px;max-width:480px}
 .match-preset-table{min-width:560px}
 
@@ -258,7 +284,7 @@ details.match-players>summary,details.report-source>summary{color:var(--acc);cur
 .cardpick.on{border-color:var(--acc);color:var(--acc)}
 
 /* 읽기용 라벨(labels.js) — 원문 코드는 hover */
-.hz{border-bottom:1px dotted rgba(255,255,255,.28);cursor:help}
+/* .hz(title만 쓰는 점선)는 2026-10-20에 없앴다 — 밑줄+툴팁은 glossary.js glTip() 하나(G38) */
 .refs-inline{display:block;margin-top:3px;color:var(--dim);font-size:11px;opacity:.8}
 .rawtoggle{font-size:11px;padding:2px 8px;margin-left:auto;background:none;border:1px solid var(--line);color:var(--dim);border-radius:8px;cursor:pointer}
 details.claimnote summary{list-style:none} details.claimnote summary::-webkit-details-marker{display:none}

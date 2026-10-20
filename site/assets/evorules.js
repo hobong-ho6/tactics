@@ -224,9 +224,12 @@ export function evoRules(EVO, accName){
   const neverIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.never).map(([k]) => +k));   // 영영 못 받는 진화 — 화면이 목록에서 뺀다
   const premOnlyIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.kind === 'prem').map(([k]) => +k));
   const progressIds = new Set(Object.entries(lockInfo).filter(([, v]) => v.kind !== 'prem').map(([k]) => +k));
+  /* ⭐ **사용자가 숨긴 진화**(2026-10-20 사용자 지시 「수행 안 할 진화는 숨기고 싶어」 · migration 108 `fut_hidden_items`).
+     프리미엄·역할++와 같은 **토글형 필터**다 — 화면이 「숨긴 진화」로 다시 펼 수 있다. 판정 집합은 여기 한 곳이다. */
+  const hiddenIds = new Set((EVO?.hidden?.evo || []).map(Number));
 
   return {
-    acc, consumed, applied, premIds, neverIds, premOnlyIds, progressIds, rolesPPIds, cosmeticIds, starOnlyIds, lockInfo, spLevel, hasPrem,
+    acc, consumed, applied, premIds, neverIds, premOnlyIds, progressIds, rolesPPIds, cosmeticIds, starOnlyIds, hiddenIds, lockInfo, spLevel, hasPrem,
     /* 소진된 진화를 낀 경로는 **그 진화를 쓴 선수 본인 외** 모두에게서 닫힌다 */
     /* 닫히는 경로: 영영 못 받는 진화 · **코스메틱 진화**(2026-10-15 사용자 지시 「선수별 진화패스에 코스메틱 진화는 안 나오게」 —
        카탈로그만 거르고 경로는 안 걸러서 화살표 스핀·프리즘 라이트가 「지금 걸 수 있는 진화」에 떴다) · 남이 소진한 진화 */
@@ -236,6 +239,7 @@ export function evoRules(EVO, accName){
     premOnly: ids => (ids || []).some(i => premOnlyIds.has(i)),
     progressLocked: ids => (ids || []).some(i => progressIds.has(i)),
     rolesPP: ids => (ids || []).some(i => rolesPPIds.has(i)),
+    userHidden: ids => (ids || []).some(i => hiddenIds.has(i)),
     /* 이 경로에 들어 있는 진화 중 이 선수가 이미 밟은 것 */
     appliedIn: (ids, pid) => (ids || []).map(i => applied[`${pid}:${i}`]).filter(Boolean),
     idsOf: row => J(row?.evolution_ids, []) || [],

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- 택틱스 랩 로고(2026-10-20) — 전술판: 하프라인·센터서클 + O(우리)·X(상대) + 전진 화살표.
+       16px 탭에서도 읽히도록 선은 굵게, 요소는 최소로 둔다. -->
+  <rect width="64" height="64" rx="14" fill="#1f7a4d"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#fff" stroke-opacity=".55" stroke-width="3">
+      <line x1="32" y1="6" x2="32" y2="58"/>
+      <circle cx="32" cy="32" r="9"/>
+    </g>
+    <g stroke="#fff" stroke-width="4.5">
+      <circle cx="15" cy="18" r="5"/>
+      <circle cx="15" cy="46" r="5"/>
+    </g>
+    <path d="M44 13l8 8M52 13l-8 8M44 43l8 8M52 43l-8 8" stroke="#ffd166" stroke-width="4.5"/>
+    <path d="M14 32h30M37 25l7 7-7 7" stroke="#ffd166" stroke-width="5"/>
+  </g>
+</svg>

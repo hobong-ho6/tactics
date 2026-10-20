@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="utf-8"><title>경기 분석 — tactics v2</title>
+<html lang="ko"><head><meta charset="utf-8"><title>경기 분석 — 택틱스 랩</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css"></head><body>
 <div id="hdr"></div>
@@ -22,6 +23,9 @@
   </div>
   <div class="panel" id="summary"></div>
   <div id="viz"></div>
+  <!-- ⭐ 2026-10-20 사용자 지시 「관전 메모 가설 판정·부상 … 경기 분석에서 항상 제공」(migration 109) -->
+  <div class="panel" id="hypPanel"></div>
+  <div class="panel" id="injPanel"></div>
   <div class="panel" id="overall" hidden></div>
   <div class="panel" id="gamePreset"></div>
   <div class="panel"><h2>선수별 히트맵·역할·전체 스탯</h2>
@@ -40,9 +44,9 @@
 import { mountHeader, loadTeam, isGkSlot } from './assets/data.js?v=20261004-nav';
 import { decodeMap } from './assets/kernel.js?v=20260825-decodemap-null';
 import { drawPitch, drawComposite, drawChip } from './assets/pitch.js?v=20260825-decodemap-null';
-import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
+import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20261020-anchor';
 import { roleLabel, focusLabel, claimLabel, humanize, VERDICT_KR, AXIS_KR, mountRawToggle } from './assets/labels.js?v=20260918';
-import { renderMatchViz, playerRows } from './assets/matchviz.js?v=20260922a';
+import { renderMatchViz, playerRows } from './assets/matchviz.js?v=20261020-phase';
 import { prose } from './assets/prose.js';
 
 const { team, regime } = await mountHeader('match-report.html');
@@ -98,7 +102,7 @@ function statsTable(p){
     ['수비·경합',['duels_won','duels_lost','tackles','interceptions','recoveries','clearances','saves']],
     ['위치·국면',['lineup_pos','pos_class','avg_x','avg_y','hit_points','phase_lead','phase_level','phase_trail']]
   ];
-  const renderValue=(k,v)=>esc(k==='started'?(v?'선발':'교체'):v);
+  const renderValue=(k,v)=>esc(k==='started'?(v?'선발':'교체'):(typeof v==='number'&&!Number.isInteger(v)?+v.toFixed(2):v));
   const rows=[];
   for (const [title,keys] of groups){
     const items=keys.filter(k=>values.has(k)).map(k=>{const v=values.get(k);values.delete(k);return [k,v]});
@@ -351,6 +355,82 @@ function claimsHtml(v){
         ${c.verdict_note ? `<details class="claimnote"><summary style="cursor:pointer;font-size:12px;color:var(--dim)">판정 메모 — 왜 이 판정인가</summary>${annotate(humanize(bold(esc(c.verdict_note))))}</details>` : ''}
       </div>`).join('') + '</div>';
 }
+
+/* ── 관전 메모 가설 판정 (migration 109 · 2026-10-20) ─────────────────────────────
+   ⭐ 정정은 새 행이다 — export가 같은 행 번호의 **최신 판정**을 주고 앞 판정을 history로 붙인다.
+   ⛔ 메모가 없는 경기는 숨기지 않고 「관전 메모 없음」이라고 쓴다. */
+const VERD = { match:['일치','hi'], partial:['부분 일치','mid'], mismatch:['불일치','dead'], undecided:['판정 불가','own'], pending:['대기','own'] };
+const vbadge = v => `<span class="badge ${VERD[v]?.[1] ?? ''}">${esc(VERD[v]?.[0] ?? v)}</span>`;
+function renderHypotheses(r){
+  const el = document.getElementById('hypPanel'), hs = r.hypotheses || [];
+  if (!hs.length){ el.innerHTML = `<h2>관전 메모 가설 판정</h2><p class="dim" style="font-size:12px">이 경기에는 판정할 관전 메모가 없다(reports/match-watch/notes/에 메모가 없거나 아직 적재 전).</p>`; return; }
+  const cnt = hs.reduce((m, h) => (m[h.verdict] = (m[h.verdict] || 0) + 1, m), {});
+  const nFix = hs.filter(h => h.history?.length).length;
+  el.innerHTML = `<h2>관전 메모 가설 판정 <small class="dim">— ${hs.length}건 · 최신 회차 기준${nFix ? ` · 정정 ${nFix}건` : ''}</small></h2>
+    <div class="hypsum">${Object.keys(VERD).filter(k => cnt[k]).map(k => `<span>${vbadge(k)} <b>${cnt[k]}</b></span>`).join('')}
+      <span class="hypbar">${Object.keys(VERD).filter(k => cnt[k]).map(k => `<i class="v-${k}" style="flex:${cnt[k]}" title="${VERD[k][0]} ${cnt[k]}"></i>`).join('')}</span></div>
+    <div class="scrollx"><table class="hyptable"><thead><tr><th>#</th><th>판정</th><th>사용자 의견</th><th>실측·근거</th></tr></thead><tbody>${hs.map(h => `<tr>
+      <td class="dim">${esc(h.seq)}${h.tag ? `<br><b>${esc(h.tag)}</b>` : ''}</td>
+      <td>${vbadge(h.verdict)}${h.round !== 'D0' ? ` <span class="badge own" title="${esc(h.round)} 회차에 다시 판정했다">${esc(h.round.replace('D', 'D+'))} ${h.history?.length ? '정정' : ''}</span>` : ''}</td>
+      <td>${annotate(esc(h.claim))}</td>
+      <td>${annotate(esc(h.measured))}${h.verdict_note ? `<div class="hypnote">${annotate(esc(h.verdict_note))}</div>` : ''}
+        <small class="dim">${esc(h.evidence || '')}${h.obs_id ? ` · obs#${esc(h.obs_id)}` : ''}</small>
+        ${h.history?.length ? `<details class="hyphist"><summary>이전 판정 ${h.history.length}건</summary>${h.history.map(x => `<div>${esc(x.round.replace('D', 'D+'))} ${vbadge(x.verdict)} ${esc(x.verdict_note || '')}</div>`).join('')}</details>` : ''}</td></tr>`).join('')}</tbody></table></div>`;
+}
+/* ── 부상 추적 — player_status(FotMob 스냅샷)를 경기일 기준으로 자른 것(export). 리포트 본문의 T3 서술은 원문에 있다. */
+function renderInjuries(r){
+  const el = document.getElementById('injPanel'), xs = r.injuries || [];
+  el.innerHTML = `<h2>부상 추적 <small class="dim">— 경기일 −14일 ~ +7일에 시작한 부상 · FotMob 스냅샷</small></h2>` + (!xs.length
+    ? '<p class="dim" style="font-size:12px">이 기간에 기록된 부상이 없다.</p>'
+    : `<div class="scrollx"><table class="hyptable"><thead><tr><th>선수</th><th>부상</th><th>복귀 예상</th><th>시작</th><th>이 경기</th><th>지금</th></tr></thead><tbody>${xs.map(i => `<tr>
+        <td><b>${esc(i.label)}</b></td><td>${esc(i.value)}</td><td>${esc(i.detail || '—')}</td><td class="dim">${esc(i.as_of)}</td>
+        <td>${i.minutes ? `${esc(i.minutes)}분 출전` : '<span class="dim">결장</span>'}</td>
+        <td>${i.now_kind === 'injury' ? '<span class="badge inj">부상 중</span>' : '<span class="badge hi">복귀</span>'} <small class="dim">${esc(i.now_pulled || '')}</small></td></tr>`).join('')}</tbody></table></div>
+      <p class="dim" style="font-size:11.5px;margin:6px 0 0">⚠️ 복귀 예상은 소스 추정이다. 감독 발언·부위 판정 등 서술 근거는 아래 「전체 분석 원문」의 부상 추적 절에 있다.</p>`);
+}
+/* ── 선수 스탯 — 포지션군별 지표 (2026-10-20 사용자 지시 「포지션별로 맞춰서 · 30/49(61%) · 시각화」) ──
+   ⭐ 비율은 「성공/시도 · %」 + 비율 막대, 개수·xG/xA는 **이 경기 우리 팀 최댓값** 대비 막대.
+   ⛔ 위치·국면 원천값(lineup_pos·hit_points·phase_*)은 카드에서 뺐다 — 「원천값 전체」 펼치기에 그대로 있다. */
+const SDEF = {
+  pass:{ l:'패스', r:['pass_acc','pass_total'] }, duel:{ l:'경합', r:['duels_won','duels_all'] }, shot:{ l:'유효슈팅', r:['shots_on','shots_total'] },
+  goals:{ l:'골' }, assists:{ l:'도움' }, saves:{ l:'선방' }, clearances:{ l:'클리어' }, tackles:{ l:'태클' }, interceptions:{ l:'인터셉트' },
+  recoveries:{ l:'회수' }, key_passes:{ l:'키패스' }, touches:{ l:'터치' }, xg:{ l:'xG', d:2 }, xa:{ l:'xA', d:2 },
+};
+const SSET = {
+  GK:['saves','pass','clearances','recoveries','duel','touches'],
+  DF:['pass','clearances','tackles','interceptions','recoveries','duel','key_passes','xa','touches'],
+  MF:['pass','key_passes','xa','tackles','interceptions','recoveries','duel','shot','xg','touches'],
+  FW:['goals','assists','shot','xg','xa','key_passes','duel','pass','touches'],
+};
+function svals(p){
+  const m = new Map(playerStats(p));
+  if (m.has('duels_won') || m.has('duels_lost')) m.set('duels_all', (+m.get('duels_won') || 0) + (+m.get('duels_lost') || 0));
+  return m;
+}
+function sval(k, m, maxOf){
+  const d = SDEF[k];
+  if (d.r){ const a = m.get(d.r[0]), b = m.get(d.r[1]); if (!present(b)) return null;
+    const pct = +b ? Math.round(100 * a / b) : null;
+    return { txt: `${a ?? 0}/${b}`, sub: pct == null ? '' : `${pct}%`, w: pct ?? 0, n: +b }; }
+  const v = m.get(k); if (!present(v)) return null;
+  const mx = maxOf(k);
+  return { txt: d.d ? Number(v).toFixed(d.d) : String(v), sub: '', w: mx ? Math.round(100 * v / mx) : 0 };
+}
+const teamMax = all => { const c = {}; return k => c[k] ??= Math.max(0, ...all.map(p => +svals(p).get(k) || 0)); };
+function statTiles(p, g, all){
+  const m = svals(p), mx = teamMax(all), per90 = p.minutes ? 90 / p.minutes : null;
+  return `<div class="stiles">${(SSET[g] || SSET.MF).map(k => { const v = sval(k, m, mx); if (!v) return '';
+    const tip = SDEF[k].r ? `${SDEF[k].l} 성공/시도 — 막대 = 성공률` : `${SDEF[k].l} — 막대 = 이 경기 팀 최댓값 대비${per90 && !SDEF[k].d && p.minutes < 80 ? ` · 90분 환산 ${(+m.get(k) * per90).toFixed(1)}` : ''}`;
+    return `<div class="st" title="${esc(tip)}"><span>${annotate(esc(SDEF[k].l))}</span><b>${esc(v.txt)}</b>${v.sub ? `<small>${esc(v.sub)}</small>` : ''}
+      <i class="${SDEF[k].r ? 'rt' : ''}" style="--w:${v.w}%"></i></div>`; }).join('')}</div>`;
+}
+function groupCompare(rows, g, all){
+  const keys = SSET[g] || SSET.MF, mx = teamMax(all);
+  if (rows.length < 2) return '';
+  return `<div class="scrollx"><table class="gcmp"><thead><tr><th>선수</th><th>분</th>${keys.map(k => `<th>${esc(SDEF[k].l)}</th>`).join('')}</tr></thead><tbody>${
+    rows.map(p => { const m = svals(p); return `<tr><td><b>${esc(p.label)}</b> <small class="dim">${esc(p.position)}</small></td><td class="dim">${esc(p.minutes ?? '—')}</td>${
+      keys.map(k => { const v = sval(k, m, mx); return v ? `<td><span>${esc(v.txt)}${v.sub ? ` <small class="dim">${esc(v.sub)}</small>` : ''}</span><i class="${SDEF[k].r ? 'rt' : ''}" style="--w:${v.w}%"></i></td>` : '<td class="dim">—</td>'; }).join('')}</tr>`; }).join('')}</tbody></table></div>`;
+}
 function render(r){
   document.getElementById('summary').innerHTML=`<div class="match-report-head"><div><h2>${esc(r.title)}</h2>
     <p class="kv">${esc(r.date||r.report_date)} · ${esc(r.competition)} · ${esc(r.stage||'')} · ${esc(r.venue)} ·
@@ -363,8 +443,13 @@ function render(r){
     <div class="report-metrics"><span>${annotate('점유율')} <b>${esc(r.possession ?? '미수집')}%</b></span>
     <span>슈팅 <b>${esc(r.shots_v ?? '—')}–${esc(r.shots_o ?? '—')}</b></span>
     <span>${annotate('유효슈팅')} <b>${esc(r.sot_v ?? '—')}–${esc(r.sot_o ?? '—')}</b></span>
-    <span>${annotate('빅찬스')} <b>${esc(r.bigch_v ?? '—')}–${esc(r.bigch_o ?? '—')}</b></span></div>`;
-  renderMatchViz(document.getElementById('viz'), r, regime?.team_kr || team);   // 타임라인·팀 대조·하프 비교(matchviz.js)
+    <span>${annotate('빅찬스')} <b>${esc(r.bigch_v ?? '—')}–${esc(r.bigch_o ?? '—')}</b></span></div>
+    ${r.key_points ? `<div class="keypts"><h3>요약 포인트</h3>${prose(r.key_points)}</div>`
+      : '<p class="dim" style="font-size:12px">요약 포인트 미작성 — 수집 회차가 scripts/load_match_extras.py로 채운다.</p>'}`;
+  r.phase_defs = td.phase_metric_defs || {};   // 「경기 흐름」 라벨 정본(core.whoscored.PHASE_METRICS)
+  renderMatchViz(document.getElementById('viz'), r, regime?.team_kr || team);   // 타임라인·흐름·팀 대조·하프 비교(matchviz.js)
+  renderHypotheses(r);
+  renderInjuries(r);
   document.getElementById('teamStats').innerHTML=teamStatRows(r);
   /* 총평 — 전술·선수 분석이 아닌 매체 평가·감독 회견의 비전술 대목·여론·시즌 맥락.
      아직 수집하지 않은 경기가 있어 값이 없으면 패널 자체를 숨긴다. */
@@ -428,13 +513,16 @@ function render(r){
     <div class="player-report-body">${phaseMaps(p)}<div>
       <div class="kv"><b>특성</b></div>${prose(p.characteristics)}
       <div class="kv"><b>경기 평가</b></div>${prose(p.performance)}
-      <div class="kv"><b>FC 구현</b></div>${prose(p.game_implication)}${statsTable(p)}
+      <div class="kv"><b>FC 구현</b></div>${prose(p.game_implication)}
+      <div class="kv"><b>경기 스탯</b> <small class="dim">— ${GLABEL[POSG(p.position)]} 기준 지표</small></div>${statTiles(p, POSG(p.position), r.players)}
+      <details class="refs"><summary>원천값 전체</summary>${statsTable(p)}</details>
       <details class="refs"><summary>출처 · 신뢰도</summary>${prose(p.source)}${prose(p.confidence)}</details></div></div></details>`;
   const sorted = r.players.slice().sort((a,b)=>(b.started||0)-(a.started||0));
   document.getElementById('players').innerHTML = ['GK','DF','MF','FW'].map(g=>{
     const rows = sorted.filter(p=>POSG(p.position)===g);
     if (!rows.length) return '';
     return `<section class="pgroup"><h4>${GLABEL[g]} <small class="dim">${rows.length}명</small></h4>
+      ${groupCompare(rows, g, r.players)}
       <div class="player-report-list">${rows.map(pcard).join('')}</div></section>`;
   }).join('');
   /* ⭐ 2열 그리드라 한쪽만 펼치면 짝이 빈 칸으로 남는다(2026-09-22 사용자 지시

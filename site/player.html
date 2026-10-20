@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="utf-8"><title>선수 분석 — tactics v2</title>
+<html lang="ko"><head><meta charset="utf-8"><title>선수 분석 — 택틱스 랩</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/clubviz.css?v=20260925a"></head><body>
@@ -87,7 +88,7 @@ import { pizza, dumbbell, formRibbon } from './assets/playerviz.js?v=20260918';
 // 차트 폭 — 패널이 display:none인 채로 렌더되면 clientWidth가 0이라, 보이는 본문 폭에서 계산한다(패딩 20×2 + 패널 14×2)
 const vizW = (el, cap, pad = 0) => Math.min(cap, Math.max(320, (el?.clientWidth || (document.body.clientWidth - 68)) - pad));
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
-import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
+import { annotate, mountGlossaryTips, glTip } from './assets/glossary.js?v=20260913-selection-glossary';
 import { prose } from './assets/prose.js';
 import { PLAYSTYLES } from './assets/playstyle-icons.js';
 import { repaintEvoCard, replateCard, rarityLevel } from './assets/evocard.js?v=20260927a';
@@ -458,8 +459,7 @@ function seasonSummary(fms){
         const name = s.metric_kr || s.metric;
         const tip = METRIC_TIP[name];
         return `<div class="pcard" style="min-width:96px;text-align:center"><b style="font-size:16px">${esc(String(s.value))}</b><br>
-          ${tip ? `<abbr class="gl" tabindex="0" data-tip="${esc(tip)}" title="${esc(tip)}"><small class="dim">${esc(name)}</small></abbr>`
-                : `<small class="dim">${esc(name)}</small>`}</div>`;
+          ${glTip(`<small class="dim">${esc(name)}</small>`, tip)}</div>`;
       }).join('')}</div>`).join('')
     + `<p class="dim" style="font-size:12px;margin:8px 0 0">⚠️ 묶음마다 <b>리그·시즌·소속팀이 다르다</b> — 가로로 이어 읽지 말고
        <b>한 묶음씩</b> 보라. 지표 이름에 마우스를 올리면 뜻이 나온다.</p>`;
@@ -1033,7 +1033,7 @@ function render(){
     const gridCard = p => {
       const kl = kindLabel(p.kind);
       return `<div class="pcard">${seasonBadge(p.season)}
-        <abbr class="gl" tabindex="0" data-tip="${esc(kl.tip)}" title="${esc(kl.tip)}"><b>${esc(kl.title)}</b></abbr>
+        ${glTip(`<b>${esc(kl.title)}</b>`, kl.tip)}
         <small class="dim">${esc(p.pos_label ?? '')}</small><br>${miniGrid(p.map25)}<br>
         <small class="dim">n=${p.sample_n??'—'} · 평점 ${p.avg_rating??'—'} · ${
           gkPosCell(td, p.pos_label ?? sq0?.slot_type, sel.pid) ?? `sim ${p.fit_sim??'—'}`}</small><br>
@@ -1107,7 +1107,7 @@ function render(){
         return `<div class="seasongrp"><div class="seasongrp-h">${lab(k)}
             <small class="dim">${rows.length}개 대회</small></div>
           <table><tr><th>대회</th>${SS_TH.map(([n,t])=>
-              `<th><abbr class="gl" tabindex="0" data-tip="${esc(t)}" title="${esc(t)}">${n}</abbr></th>`).join('')}</tr>`
+              `<th>${glTip(n, t)}</th>`).join('')}</tr>`
           + rows.map(r=>`<tr><td>${esc(r.competition)}</td><td>${r.n}</td><td>${r.starts??'—'}</td>
               <td>${r.minutes??'—'}</td><td>${r.goals??0}</td><td>${r.assists??0}</td>
               <td><b>${r.avg_rating??'—'}</b></td></tr>`).join('')

@@ -32,12 +32,15 @@ import sys
 import time
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 DB = ROOT / "db" / "tactics.db"
 UA = {"User-Agent": "Mozilla/5.0"}
+# ⭐ fut.gg 조회 동시 개수(2026-10-20) — 직렬이면 조건 판정만 66초였다. 판정은 fut.gg 그대로라 결과는 같다.
+WORKERS = 6
 API = "https://www.fut.gg/api/fut"
 
 # ⛔ 표는 `core/futgg_attrs.py`가 정본이다(2026-09-23에 네 벌을 하나로 합쳤다 —
@@ -97,18 +100,24 @@ def club_eligible(g, eids, clubs):
     진화 가능한 선수들만」). fut.gg 적용 가능 선수 API에 `club_id`(클럽 EA id)를 걸면 그 진화의 요구조건을
     통과한 그 클럽 카드만 온다(실측: Gamechanger × 빌라 = 39장 · 30장/페이지).
     ⇒ [(evo_id, 카드 eaId, basePlayerEaId)] · 실패한 (evo_id, club) 목록."""
+    def one(eid, club):                    # (진화, 클럽) 하나의 전 페이지 — 페이지끼리는 next를 따라 직렬
+        rows, page = [], 1
+        while page:
+            d = get(f"{API}/evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}&hide_combinations=true"
+                    f"&hide_reward_evolutions=false&show_non_upgraded_players=false&club_id={club}&page={page}")
+            if d is None:
+                return None
+            rows += [(eid, it.get("eaId"), it.get("basePlayerEaId")) for it in d.get("data") or []]
+            page = d.get("next")
+        return rows
+    jobs = [(eid, club) for eid in eids for club in clubs]
     out, fails = [], []
-    for eid in eids:
-        for club in clubs:
-            page = 1
-            while page:
-                d = get(f"{API}/evolutions/v2/{g}/v2/players/?evolutions_combinations={eid}&hide_combinations=true"
-                        f"&hide_reward_evolutions=false&show_non_upgraded_players=false&club_id={club}&page={page}")
-                if d is None:
-                    fails.append((eid, club))
-                    break
-                out += [(eid, it.get("eaId"), it.get("basePlayerEaId")) for it in d.get("data") or []]
-                page = d.get("next")
+    with ThreadPoolExecutor(WORKERS) as ex:
+        for job, rows in zip(jobs, ex.map(lambda j: one(*j), jobs)):
+            if rows is None:
+                fails.append(job)
+            else:
+                out += rows
     return out, fails
 
 
@@ -239,13 +248,17 @@ def main():
         ins = skip = ext = 0
         prev_obs = {}               # (gv, base) → 이번 회차 직전 관측일(migration 099)
         no_path, errs, skipped_cosmetic = [], [], set()
+        # ⭐ 경로 응답은 먼저 병렬로 받아 두고(네트워크) 적재는 아래에서 직렬로 한다(DB) — 잠금 보유 시간은 종전과 같다.
+        with ThreadPoolExecutor(WORKERS) as ex:
+            fetched = dict(zip([t["base_ea_id"] for t in targets],
+                               ex.map(lambda t: get(f"{API}/evolutions/v2/{gv[2:]}/paths/v2/{t['base_ea_id']}/"), targets)))
         for t in targets:
             # ⭐ 대상 하나마다 커밋한다(2026-10-15) — 종전엔 네트워크 반복 전체가 쓰기 트랜잭션 하나라 DB 잠금을 몇 분씩 쥐었고,
             #    클럽 싱크의 병렬 구간에서 다른 줄이 「database is locked」로 넘어졌다. 재실행은 upsert라 결과가 같다.
             if not a.dry_run:
                 con.commit()
             ea, kr, pid = t["base_ea_id"], t["name_kr"], t["player_id"]
-            d = get(f"{API}/evolutions/v2/{gv[2:]}/paths/v2/{ea}/")
+            d = fetched[ea]
             if d is None or "data" not in d:
                 errs.append(kr)
                 continue

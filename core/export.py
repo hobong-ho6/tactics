@@ -19,6 +19,7 @@ from . import DB, ROOT
 from .chem import CHEM
 from . import position_ovr as POVR
 from . import gallery as GAL
+from .whoscored import PHASE_METRICS
 from core.db import connect as connect_db
 
 SITE_DATA = ROOT / "site" / "data"
@@ -312,6 +313,7 @@ def export_all(db_path=None, window="2026-summer"):
                i.ovr base_ovr, i.attrs base_attrs, i.ea_item_id base_ea_id,
                i.skill_moves, i.weak_foot, i.preferred_foot, i.accelerate,
                i.height_cm, i.weight_kg, i.positions, i.card_image_url, i.rarity_ea_id,
+               i.is_icon, i.is_hero, i.is_base,   -- 진화 요구조건 「Excluded Rarity: Base Icon, Base Hero」 판정용(2026-10-20)
                CASE WHEN c.current_attrs IS NOT NULL THEN 'ea-sync' ELSE 'base-card' END basis,
                (SELECT COUNT(*) FROM v_evo_log l
                  WHERE l.club_player_id=c.id AND COALESCE(l.level,1)=1) evo_runs,
@@ -562,6 +564,10 @@ def export_all(db_path=None, window="2026-summer"):
                                                      FROM fc_meta_snapshots WHERE category='chem_style'
                                                      AND pulled=(SELECT MAX(pulled) FROM fc_meta_snapshots WHERE category='chem_style')"""),
                            "tactics": tactics, "tactic_roles": tactic_roles,
+                           # ⭐ 사용자가 숨긴 진화·SBC 세트(migration 108) — 판정 집합은 evorules.js·renderSbc가 만든다.
+                           "hidden": {k: [r["item_id"] for r in con.execute(
+                                          "SELECT item_id FROM fut_hidden_items WHERE game_version='FC27' AND kind=? ORDER BY item_id", (k,))]
+                                      for k in ("evo", "sbc_set")},
                            "club": {"accounts": accounts, "players": club, "log": log,
                                      # ⭐ 화면이 「현재」를 각자 고르지 않게 하는 정본(위 주석)
                                      "state": state,
@@ -845,7 +851,7 @@ def export_all(db_path=None, window="2026-summer"):
         match_reports = _rows(con, """
             SELECT mr.id, mr.event_id, mr.match_id, mr.season, mr.report_date, mr.title,
                    mr.status, mr.tactical_description, mr.tactical_features,
-                   mr.tactical_changes, mr.game_implications, mr.overall_assessment, mr.report_path,
+                   mr.tactical_changes, mr.game_implications, mr.overall_assessment, mr.key_points, mr.report_path,
                    mr.source, mr.confidence, mr.created_at, mr.updated_at,
                    m.date, m.opponent, m.competition, m.venue, m.result, m.stage,
                    m.possession, ts.xg_v, ts.xg_o, ts.xg_op_v, ts.xg_op_o,
@@ -931,6 +937,36 @@ def export_all(db_path=None, window="2026-summer"):
                                               FROM match_period_stats WHERE match_id=? ORDER BY period""", (report["match_id"],)) if report.get("match_id") else []
             report["shots"] = _rows(con, """SELECT minute, added, side, player_id, player_name, xg, xgot, outcome, situation, body_part, x, y, provider
                                             FROM match_shots WHERE match_id=? ORDER BY minute, id""", (report["match_id"],)) if report.get("match_id") else []
+            # ⭐ 가설 판정·구간 흐름·부상(migration 109 · 2026-10-20 사용자 지시 「경기 분석에서 항상 제공」).
+            #    판정은 정정(supersedes_id)을 따라 **같은 seq의 최신 행**이 현재 판정이고, 앞 행들은 history로 붙인다.
+            hyp = _rows(con, """SELECT id, seq, tag, round, claim, measured, evidence, verdict, verdict_note,
+                                       supersedes_id, obs_id
+                                FROM match_hypotheses WHERE report_id=? ORDER BY seq, round, id""", (report["id"],))
+            by_seq = {}
+            for h in hyp:
+                by_seq.setdefault(h["seq"], []).append(h)
+            report["hypotheses"] = [dict(rows[-1], history=rows[:-1]) for _s, rows in sorted(by_seq.items())]
+            report["phase_metrics"] = _rows(con, """SELECT side, metric, seg_from, seg_to, value, n, note
+                                                    FROM match_phase_metrics WHERE report_id=?
+                                                    ORDER BY metric, side, seg_from""", (report["id"],))
+            # 부상 — 새 표가 아니라 player_status(FotMob 스냅샷)를 그 경기 기준으로 자른다:
+            #   그 팀 스쿼드 · 경기일 −14일 ~ +7일에 시작한 부상 · 같은 부상의 **가장 최근 관측** + 지금 상태.
+            #   ⚠️ FotMob 반영이 하루 늦는 경우가 있다(완비사카 10-17 부상이 10-18 스냅샷엔 injury_none) — MIN이 아니라 MAX다.
+            d0 = report.get("date") or report.get("report_date")
+            report["injuries"] = _rows(con, """
+                SELECT ps.player_id, COALESCE(p.name_kr,p.name) label, ps.value, ps.detail, ps.as_of, ps.pulled,
+                       ps.source, ps.confidence,
+                       (SELECT pm.minutes FROM player_matches pm WHERE pm.event_id=? AND pm.player_id=ps.player_id) minutes,
+                       (SELECT y.kind FROM player_status y WHERE y.player_id=ps.player_id
+                          AND y.kind IN ('injury','injury_none') ORDER BY y.pulled DESC LIMIT 1) now_kind,
+                       (SELECT MAX(y.pulled) FROM player_status y WHERE y.player_id=ps.player_id
+                          AND y.kind IN ('injury','injury_none')) now_pulled
+                FROM player_status ps JOIN players p ON p.id=ps.player_id
+                WHERE ps.kind='injury' AND ps.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?)
+                  AND ps.as_of BETWEEN date(?,'-14 day') AND date(?,'+7 day')
+                  AND ps.pulled=(SELECT MAX(x.pulled) FROM player_status x WHERE x.player_id=ps.player_id
+                                   AND x.kind='injury' AND x.as_of BETWEEN date(?,'-14 day') AND date(?,'+7 day'))
+                ORDER BY ps.as_of DESC, label""", (report["event_id"], rid, d0, d0, d0, d0)) if d0 else []
             report_file = ROOT / report["report_path"]
             report["report_markdown"] = (
                 report_file.read_text(encoding="utf-8") if report_file.is_file() else None)
@@ -944,6 +980,7 @@ def export_all(db_path=None, window="2026-summer"):
             "duties": duties, "player_stats": pstats, "departed": departed, "form": form,
             "avg_positions": avg_positions,
             "match_reports": match_reports,
+            "phase_metric_defs": PHASE_METRICS,   # 「경기 흐름」 지표 라벨·단위 정본(core.whoscored)
             "evaluations": evals, "season_stats": season_stats, "fbref": fbref, "traits": traits,
             "fotmob_season": fm_season,
             "setups": setups, "limits": limits, "kernel_fidelity": fidelity, "profile": profile, "tactic_changes": tactic_changes,

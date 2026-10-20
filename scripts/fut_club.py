@@ -608,6 +608,31 @@ def cmd_sbc_exclude(con, a):
     _resolve()
 
 
+def cmd_hide(con, a):
+    """⭐ **안 할 진화·SBC 세트를 화면에서 숨긴다**(2026-10-20 사용자 지시 「수행 안 할 진화나 sbc는 숨기고 싶어」 · migration 108).
+
+    ⛔ 수집 행(fc_evolutions·fc_sbc_sets)을 지우거나 고치지 않는다 — 숨김은 **사용자 판단**이라 별도 표에 적는다(불변규칙 2).
+    `kind`: 'evo'(진화 — 카탈로그·선수별 패스·「지금 걸 수 있는 진화」에서 함께 빠진다) | 'sbc_set'(SBC 세트).
+    `--undo`면 숨김을 푼다."""
+    kind, item = a.kind, int(a.item)
+    q = {"evo": ("SELECT name FROM fc_evolutions WHERE game_version=? AND evo_id=? ORDER BY pulled DESC LIMIT 1"),
+         "sbc_set": ("SELECT name FROM fc_sbc_sets WHERE game_version=? AND set_ea_id=? ORDER BY pulled DESC LIMIT 1")}
+    if kind not in q:
+        raise SystemExit(f"⛔ 모르는 숨김 종류 {kind!r} — evo | sbc_set")
+    row = con.execute(q[kind], (a.game, item)).fetchone()
+    if not row:
+        raise SystemExit(f"⛔ {kind} {item}을(를) 수집 표에서 찾지 못했다")
+    if getattr(a, "undo", False):
+        con.execute("DELETE FROM fut_hidden_items WHERE game_version=? AND kind=? AND item_id=?", (a.game, kind, item))
+        print(f"👁️ {row['name']} 숨김 해제")
+    else:
+        con.execute("""INSERT INTO fut_hidden_items(game_version, kind, item_id, reason, hidden_at, source)
+                       VALUES(?,?,?,?,?,?) ON CONFLICT(game_version, kind, item_id) DO NOTHING""",
+                    (a.game, kind, item, a.notes or "사용자가 수행하지 않기로 함", TODAY, "사용자가 화면에서 숨김"))
+        print(f"🙈 {row['name']} 숨김")
+    con.commit()
+
+
 # ── SBC 스토리지 (2026-10-02 사용자 지시 「sbc 스토리지 선수도 조회」 → 「화면 등록으로」 · migration 095) ──
 #   ⛔ fut.gg가 스토리지를 주지 않아 사람이 등록한다. 해법(sbc_solve.py)이 이 카드를 **가장 먼저** 쓴다.
 READONLY = {"storage_search"}      # serve.py가 export를 건너뛰는 명령(아무것도 쓰지 않는다)
@@ -755,12 +780,13 @@ def run(con, cmd, **kw):
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
                     level=1, date=TODAY, completed=None, note=None, ovr_after=None, six_after=None, status=None, op="add",
                     in_progress=False, evo=None, challenge=None, formation=None, club_player=None, undo=False, cards=True,
-                    expect_player_id=None, set_id=None, grade=None, q=None, storage_id=None)
+                    expect_player_id=None, set_id=None, grade=None, q=None, storage_id=None, kind=None, item=None)
     a = argparse.Namespace(**{**defaults, **kw})
     fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete,
           "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude,
           "sbc_submit": cmd_sbc_submit, "gallery_complete": cmd_gallery_complete, "sbc_resolve": cmd_sbc_resolve,
-          "storage_search": cmd_storage_search, "storage_add": cmd_storage_add, "storage_remove": cmd_storage_remove}[cmd]
+          "storage_search": cmd_storage_search, "storage_add": cmd_storage_add, "storage_remove": cmd_storage_remove,
+          "hide": cmd_hide}[cmd]
     fn(con, a)
 
 
