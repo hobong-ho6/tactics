@@ -14,7 +14,7 @@ WhoScored 원본: **x = 그 팀의 공격 방향 0~100, y 낮음 = 오른쪽**(S
 """
 from .encode import cells_from_points, encode
 
-__all__ = ["ppda", "def_x", "phase_cells", "PPDA_METHOD", "DEF_X_METHOD"]
+__all__ = ["ppda", "def_x", "phase_cells", "segment_metrics", "PHASE_METRICS", "PPDA_METHOD", "DEF_X_METHOD"]
 
 PPDA_DEN = {"Tackle", "Interception", "Challenge", "Foul"}
 DEF_TYPES = PPDA_DEN | {"Clearance", "BlockedPass", "Aerial", "BallRecovery"}
@@ -58,3 +58,60 @@ def phase_cells(events, player_id):
     cp, cd = cells_from_points(poss), cells_from_points(dfn)
     return dict(cells_poss=",".join(map(str, cp)), cells_def=",".join(map(str, cd)),
                 map25_poss=encode(cp), map25_def=encode(cd), n_poss=len(poss), n_def=len(dfn))
+
+
+# ── 구간별 지표 (2026-10-20 · migration 109 match_phase_metrics) ─────────────────────────────
+# ⭐ 경기 분석 화면 「경기 흐름」의 지표 목록·라벨·단위 **정본**이다(사용자 지시 「경기 흐름 … 항상 제공」).
+#    export가 이 표를 그대로 내보내고, G37이 match_phase_metrics.metric ⊆ 이 키를 지킨다 — 화면에 다시 적지 않는다.
+#    segment_metrics()가 계산하는 것은 앞 셋(def_x·ppda·own_half_pass_pct)뿐이다. 나머지는 수집 회차가
+#    리포트에서 근거를 들고 넣는 지표(GK 롱패스 비중 등 — 경기마다 대상 선수가 다르다).
+PHASE_METRICS = {
+    "def_x":             dict(label="수비 액션 높이", unit="", lo_good=False,
+                              help="팀 수비 액션 8종의 평균 x(자기 공격 방향 0~100) — 높을수록 앞에서 막는다. " + DEF_X_METHOD),
+    "ppda":              dict(label="PPDA", unit="", lo_good=True,
+                              help="상대 패스 수 ÷ 우리 수비 액션 — 낮을수록 강하게 압박한다. " + PPDA_METHOD),
+    "own_half_pass_pct": dict(label="자기 진영 패스 성공률", unit="%", lo_good=False,
+                              help="자기 진영(x<50)에서 시도한 패스의 성공 비율 — 상대 압박에 빌드업이 버티는가."),
+    "possession":        dict(label="점유", unit="%", lo_good=False, help="구간 점유율."),
+    "gk_long_share":     dict(label="GK 롱패스 비중", unit="%", lo_good=False,
+                              help="골키퍼 패스 중 롱패스(≥32m) 비율 — 짧은 빌드업에서 직접 배급으로 넘어갔는가."),
+    "own_third_losses":  dict(label="자기 1/3 볼 손실", unit="회", lo_good=True, help="자기 진영 1/3에서 공을 잃은 횟수."),
+    "box_touches_p10":   dict(label="상대 박스 터치 /10분", unit="", lo_good=False, help="상대 페널티 박스 안 터치 수(10분당)."),
+    "shots_p10":         dict(label="슈팅 /10분", unit="", lo_good=False, help="슈팅 수(10분당)."),
+    "xg":                dict(label="구간 xG", unit="", lo_good=False, help="그 구간에 쌓인 기대득점."),
+}
+
+
+def _clock(e):
+    """경기 시계 분 — 전반 추가시간은 전반 마지막 구간에, 후반은 45분부터(WS minute는 후반에 45로 다시 시작한다)."""
+    m = e.get("minute") or 0
+    per = e.get("period")
+    per = per.get("value") if isinstance(per, dict) else per
+    return min(m, 44.99) if per == 1 else max(m, 45)
+
+
+def _successful(e):
+    o = e.get("outcomeType")
+    return (o.get("displayName") if isinstance(o, dict) else o) == "Successful"
+
+
+def segment_metrics(events, team_id, opp_id, cuts=(15, 30, 45, 60, 75)):
+    """구간 [a, b)마다 def_x(양 팀)·ppda(양 팀)·own_half_pass_pct(양 팀) 행 목록.
+    반환 dict(side 'v'|'o', metric, seg_from, seg_to(None=종료), value, n) — match_phase_metrics 열과 같다.
+    표본 0인 칸은 행을 만들지 않는다(0으로 지어내지 않는다)."""
+    edges = [0, *sorted(set(int(c) for c in cuts if 0 < int(c) < 130)), None]
+    out = []
+    for a, b in zip(edges, edges[1:]):
+        seg = [e for e in events if _clock(e) >= a and (b is None or _clock(e) < b)]
+        for side, me, them in (("v", team_id, opp_id), ("o", opp_id, team_id)):
+            dx, n = def_x(seg, me)
+            if dx is not None:
+                out.append(dict(side=side, metric="def_x", seg_from=a, seg_to=b, value=dx, n=n))
+            pp, _num, den = ppda(seg, me, them)
+            if pp is not None:
+                out.append(dict(side=side, metric="ppda", seg_from=a, seg_to=b, value=pp, n=den))
+            ps = [e for e in seg if e.get("teamId") == me and _type(e) == "Pass" and e.get("x", 100) < 50]
+            if ps:
+                out.append(dict(side=side, metric="own_half_pass_pct", seg_from=a, seg_to=b,
+                                value=round(100 * sum(map(_successful, ps)) / len(ps), 1), n=len(ps)))
+    return out

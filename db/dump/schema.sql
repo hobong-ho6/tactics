@@ -358,7 +358,7 @@ CREATE TABLE match_reports(
   source TEXT NOT NULL,
   confidence TEXT NOT NULL,
   created_at TEXT NOT NULL,
-  updated_at TEXT NOT NULL, overall_assessment TEXT,
+  updated_at TEXT NOT NULL, overall_assessment TEXT, key_points TEXT,
   UNIQUE(team_code,event_id)
 );
 CREATE TABLE match_player_reports(
@@ -1340,4 +1340,46 @@ CREATE TABLE fut_evo_ea_ack (
   source TEXT NOT NULL,
   CHECK ((evo_id IS NULL) <> (ea_evo_id IS NULL)),
   UNIQUE (club_player_id, evo_id, ea_evo_id)
+);
+CREATE TABLE fut_hidden_items (
+  id INTEGER PRIMARY KEY,
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  kind TEXT NOT NULL CHECK (kind IN ('evo', 'sbc_set')),
+  item_id INTEGER NOT NULL,
+  reason TEXT,
+  hidden_at TEXT NOT NULL,
+  source TEXT NOT NULL,
+  UNIQUE (game_version, kind, item_id)
+);
+CREATE TABLE match_hypotheses (
+  id INTEGER PRIMARY KEY,
+  report_id INTEGER NOT NULL REFERENCES match_reports(id),
+  seq INTEGER NOT NULL,                 -- 리포트 대조표의 행 번호
+  tag TEXT,                             -- Q1·H1·N1 등 관전 메모의 표지(없으면 NULL)
+  round TEXT NOT NULL CHECK (round IN ('D0','D1','D2','D3')),   -- 판정한 회차(D0 = 경기 당일·첫 수집)
+  claim TEXT NOT NULL,                  -- 사용자 의견(원문 요약)
+  measured TEXT NOT NULL,               -- 실측 결과
+  evidence TEXT,                        -- 근거 원천(WS·SS·FM·K·기사 …)
+  verdict TEXT NOT NULL CHECK (verdict IN ('match','partial','mismatch','undecided','pending')),
+  verdict_note TEXT,                    -- 판정 칸의 단서(「위치는 일치 · 관여는 적음」 등)
+  supersedes_id INTEGER REFERENCES match_hypotheses(id),
+  obs_id INTEGER,
+  source TEXT NOT NULL,
+  confidence TEXT NOT NULL,
+  created_at TEXT NOT NULL,
+  UNIQUE (report_id, seq, round)
+);
+CREATE TABLE match_phase_metrics (
+  id INTEGER PRIMARY KEY,
+  report_id INTEGER NOT NULL REFERENCES match_reports(id),
+  side TEXT NOT NULL CHECK (side IN ('v','o')),
+  metric TEXT NOT NULL,
+  seg_from INTEGER NOT NULL,
+  seg_to INTEGER,
+  value REAL NOT NULL,
+  n INTEGER,                            -- 표본(이벤트 수 등) — 작으면 화면이 흐리게 그린다
+  note TEXT,
+  source TEXT NOT NULL,
+  confidence TEXT NOT NULL,
+  UNIQUE (report_id, side, metric, seg_from)
 );

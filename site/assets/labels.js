@@ -57,17 +57,17 @@ export function roleLabel(role_id, focus, { pos = false } = {}){
   if (!role_id) return '';
   const kr = ROLE_KR[role_id];
   const code = role_id + (focus ? '/' + focus : '');
-  if (isRaw() || !kr) return `<span class="hz" title="${esc(code)}">${esc(code)}</span>`;
+  if (isRaw() || !kr) return `<span title="${esc(code)}">${esc(code)}</span>`;
   const head = pos ? `${POS_OF[role_id.split('_')[0]] ?? ''} ` : '';
-  return `<span class="hz" title="${esc(code)}">${head}${kr}${focus ? ` <small class="dim">· ${FOCUS_KR[focus] ?? focus}</small>` : ''}</span>`;
+  return `<span title="${esc(code)}">${head}${kr}${focus ? ` <small class="dim">· ${FOCUS_KR[focus] ?? focus}</small>` : ''}</span>`;
 }
-export const focusLabel = f => f ? (isRaw() ? f : `<span class="hz" title="${esc(f)}">${FOCUS_KR[f] ?? f}</span>`) : '';
+export const focusLabel = f => f ? (isRaw() ? f : `<span title="${esc(f)}">${FOCUS_KR[f] ?? f}</span>`) : '';
 const slug = s => String(s ?? '').replace(/_/g, ' ');
 export function claimLabel(field, value){
   if (isRaw()) return `<code>${esc(field ?? '')}</code>${value ? ' = ' + esc(value) : ''}`;
   const f = FIELD_KR[field] ?? slug(field);
   const v = value == null ? '' : (VALUE_KR[value] ?? (/^[a-z0-9_ -]+$/i.test(value) ? slug(value) : value));
-  return `<span class="hz" title="${esc(field ?? '')}${value ? ' = ' + esc(value) : ''}"><b>${esc(f)}</b>${v ? `: ${esc(v)}` : ''}</span>`;
+  return `<span title="${esc(field ?? '')}${value ? ' = ' + esc(value) : ''}"><b>${esc(f)}</b>${v ? `: ${esc(v)}` : ''}</span>`;
 }
 
 /* ── 산문 변환 ──
@@ -100,8 +100,8 @@ export function humanizeText(text){
          .replace(/\(\s*\)/g, '').replace(/ {2,}/g, ' ').replace(/ ([,.)])/g, '$1');
   }
   t = t.replace(ROLE_RE, (m, _p, focus) => { const rid = m.split('/')[0]; const kr = ROLE_KR[rid];
-    return kr ? `<span class="hz" title="${esc(m)}">${kr}${focus ? '(' + (FOCUS_KR[focus] ?? focus) + ')' : ''}</span>` : m; });
-  t = t.replace(METRIC_RE, m => `<span class="hz" title="${esc(m)}">${METRIC_KR[m]}</span>`);
+    return kr ? `<span title="${esc(m)}">${kr}${focus ? '(' + (FOCUS_KR[focus] ?? focus) + ')' : ''}</span>` : m; });
+  t = t.replace(METRIC_RE, m => `<span title="${esc(m)}">${METRIC_KR[m]}</span>`);
   return { html: t, refs: [...new Set(refs)] };
 }
 /* HTML 조각에 적용 — 태그는 건너뛰고 텍스트만. 참조는 끝에 한 줄로 모은다. */

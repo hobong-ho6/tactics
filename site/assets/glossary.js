@@ -162,6 +162,13 @@ export const GLOSSARY = {
   '윙백': '측면을 위아래로 전부 담당하는 풀백. 공수 균형형.',
   '딥라잉 플레이메이커': '수비 라인 바로 앞에서 공을 받아 배급하는 미드필더(DLP).',
   '홀딩': '수비 라인 앞 자리를 떠나지 않고 지키는 미드필더.',
+  /* 2026-10-20 경기 분석 화면 요청(「앵커도 툴팁」) — 경기 리포트 역할 한 줄에 자주 나오는 말 */
+  '앵커': '수비 라인 바로 앞에 닻처럼 자리를 지키는 수비형 미드필더. 앞으로 잘 나가지 않고 센터백 앞 공간을 막으며, 공을 받으면 짧게 배급해 빌드업의 기준점이 된다.',
+  '프리롤': '정해진 자리 없이 상대가 약한 곳을 찾아 좌·중·우를 자유롭게 오가는 역할. 수비 부담이 줄어드는 대신 동료가 그 빈자리를 메운다.',
+  '저블록': '수비 대형 전체를 자기 박스 앞까지 내려 공간을 지우는 수비. 리드를 지킬 때 쓰며, 공은 상대에게 내준다.',
+  '맨마킹': '공간이 아니라 정해진 상대 선수를 따라다니며 막는 수비 방식. 상대 빌드업 숫자를 1대1로 맞춰 짧은 패스를 끊는다.',
+  '세컨드 어시스트': '도움(마지막 패스) 바로 앞의 패스. 공식 기록에는 남지 않지만 골 장면을 만든 직전 연결이다.',
+  '잔류형': '공격 때도 높이 올라가지 않고 뒤에 남는 풀백. 사실상 후방 3인을 만들어 역습을 대비한다.',
   '어드밴스드 포워드': '최전방에 머물며 마무리에 집중하는 스트라이커.',
   '폴스 나인': '최전방 번호를 달고도 중원으로 내려와 받는 스트라이커. 수비수를 끌어내 공간을 만든다.',
   '스위퍼 키퍼': '박스를 벗어나 뒷공간까지 처리하는 골키퍼.',
@@ -174,6 +181,15 @@ const KEYS = Object.keys(GLOSSARY).sort((a, b) => b.length - a.length);
 const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const RE = new RegExp(KEYS.map(k => k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');
 
+/* ⭐⭐ **점선 밑줄 + 툴팁은 이 함수 하나에서만 만든다**(2026-10-20 사용자 지적 「툴팁이 있는 것처럼 나오는데 안 나옴」).
+   ⛔ 종전엔 labels.js가 `span.hz`(title만 · 내용은 원문 코드)로 같은 점선을 그렸다 — 사파리 계열은 title 툴팁을
+      띄우지 않아 「밑줄은 있는데 아무것도 안 뜨는」 라벨이 됐다. 위임 툴팁(data-tip + mountGlossaryTips)만 쓴다.
+   ⛔ 설명(tip)이 없으면 밑줄을 달지 않는다 — body만 돌려준다. G38이 다른 곳에서 abbr.gl·span.hz를 짜는 것을 막는다.
+   body는 이미 이스케이프된 HTML이다. */
+export function glTip(body, tip){
+  return tip ? `<abbr class="gl" tabindex="0" data-tip="${esc(String(tip))}" title="${esc(String(tip))}">${body}</abbr>` : body;
+}
+
 export function annotate(html){
   if (!html) return html;
   return html.split(/(<[^>]*>)/).map(part => {
@@ -183,7 +199,7 @@ export function annotate(html){
       if (seen.has(m)) return m;
       seen.add(m);
       // data-tip = 직접 그리는 툴팁의 원문. title은 접근성·복사용 보조.
-      return `<abbr class="gl" tabindex="0" data-tip="${esc(GLOSSARY[m])}" title="${esc(GLOSSARY[m])}">${m}</abbr>`;
+      return glTip(m, GLOSSARY[m]);
     });
   }).join('');
 }

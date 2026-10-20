@@ -41081,9 +41081,39 @@
     "source": "SofaScore /event/16363882 lineups·heatmap·average-positions·incidents (2026-10-19 · statistics/shotmap은 403) / FotMob /api/data/matchDetails?matchId=5795476 — 팀 스탯·xG 4종 동시 스냅샷·하프별·슛맵·라인업 positionId·결장 / WhoScored matchCentreData matchId=1983607(Opta · scope=full) — PPDA·def_x·국면 그리드 / 서사 서브에이전트(이라올라·앤드루스 활자 인용 ESPN·VAVEL·NBC·Sky·LFC·Nemzeti Sport — §8) / 원문 리포트 reports/match-watch/2026-10-17-liv-brentford.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 61,
+   "injuries": [
+    {
+     "as_of": "2026-10-18",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "November 2026",
+     "label": "소보슬라이",
+     "minutes": 32,
+     "now_kind": "injury",
+     "now_pulled": "2026-10-19",
+     "player_id": 51,
+     "pulled": "2026-10-19",
+     "source": "fotmob.com/api/data (player 846005, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
+     "value": "Hamstring injury"
+    },
+    {
+     "as_of": "2026-10-18",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "November 2026",
+     "label": "프림퐁",
+     "minutes": 7,
+     "now_kind": "injury",
+     "now_pulled": "2026-10-19",
+     "player_id": 48,
+     "pulled": "2026-10-19",
+     "source": "fotmob.com/api/data (player 966018, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
+     "value": "Hamstring injury"
+    }
+   ],
    "interceptions_o": 15,
    "interceptions_v": 9,
+   "key_points": null,
    "long_acc_o": 29,
    "long_acc_v": 14,
    "long_att_o": 60,
@@ -41119,6 +41149,7 @@
      "xg_v": 0.92
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -42871,9 +42902,39 @@
     "source": "SofaScore /event/16939043 lineups·heatmap·average-positions·incidents (2026-10-19 · statistics/shotmap은 403) / FotMob /api/data/matchDetails?matchId=6106405 — 팀 스탯·xG 4종 동시 스냅샷·하프별·슛맵·라인업 positionId / WhoScored matchCentreData matchId=2029230(Opta · scope=full) — PPDA·def_x·국면 그리드 / 서사 서브에이전트(이라올라·퀴바우어 회견 전사·BBC·LFC·VAVEL·오스트리아·그리스 매체 — §8) / 원문 리포트 reports/match-watch/2026-10-14-liv-lask.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 60,
+   "injuries": [
+    {
+     "as_of": "2026-10-18",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "November 2026",
+     "label": "소보슬라이",
+     "minutes": null,
+     "now_kind": "injury",
+     "now_pulled": "2026-10-19",
+     "player_id": 51,
+     "pulled": "2026-10-19",
+     "source": "fotmob.com/api/data (player 846005, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
+     "value": "Hamstring injury"
+    },
+    {
+     "as_of": "2026-10-18",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "November 2026",
+     "label": "프림퐁",
+     "minutes": 90,
+     "now_kind": "injury",
+     "now_pulled": "2026-10-19",
+     "player_id": 48,
+     "pulled": "2026-10-19",
+     "source": "fotmob.com/api/data (player 966018, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
+     "value": "Hamstring injury"
+    }
+   ],
    "interceptions_o": 6,
    "interceptions_v": 12,
+   "key_points": null,
    "long_acc_o": 10,
    "long_acc_v": 26,
    "long_att_o": 37,
@@ -42909,6 +42970,7 @@
      "xg_v": 1.64
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -44736,9 +44798,65 @@
     "source": "SofaScore /event/16363878 lineups·average-positions·incidents·statistics·shotmap (2026-10-12) / FotMob /api/data/matchDetails?matchId=5795472 — 팀 스탯·xG 4종 동시 스냅샷 / WhoScored matchCentreData matchId=1983603(Opta · scope=full) — PPDA·def_x·국면 그리드 / 서사 서브에이전트 3종(회견·영상 전사·기사 — §8) / 원문 리포트 reports/match-watch/2026-10-11-liv-mancity.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 53,
+   "injuries": [
+    {
+     "as_of": "2026-10-18",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "November 2026",
+     "label": "소보슬라이",
+     "minutes": null,
+     "now_kind": "injury",
+     "now_pulled": "2026-10-19",
+     "player_id": 51,
+     "pulled": "2026-10-19",
+     "source": "fotmob.com/api/data (player 846005, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
+     "value": "Hamstring injury"
+    },
+    {
+     "as_of": "2026-10-18",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "November 2026",
+     "label": "프림퐁",
+     "minutes": 15,
+     "now_kind": "injury",
+     "now_pulled": "2026-10-19",
+     "player_id": 48,
+     "pulled": "2026-10-19",
+     "source": "fotmob.com/api/data (player 966018, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
+     "value": "Hamstring injury"
+    },
+    {
+     "as_of": "2026-09-27",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "Doubtful",
+     "label": "이삭",
+     "minutes": null,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 72,
+     "pulled": "2026-10-18",
+     "source": "fotmob.com/api/data (player 690107, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+     "value": "Thigh injury"
+    },
+    {
+     "as_of": "2026-09-27",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "Doubtful",
+     "label": "학포",
+     "minutes": null,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 53,
+     "pulled": "2026-10-18",
+     "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+     "value": "Ankle injury"
+    }
+   ],
    "interceptions_o": 4,
    "interceptions_v": 15,
+   "key_points": null,
    "long_acc_o": 29,
    "long_acc_v": 16,
    "long_att_o": 53,
@@ -44774,6 +44892,7 @@
      "xg_v": 0.47
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -46356,9 +46475,39 @@
     "source": "커널 적합 core.kernel.Kernel('FC26').best_fit + 이 경기 map25 (2026-09-21) · 팀 설정은 core.team_settings.suggest/compare",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 49,
+   "injuries": [
+    {
+     "as_of": "2026-09-27",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "Doubtful",
+     "label": "이삭",
+     "minutes": 81,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 72,
+     "pulled": "2026-10-18",
+     "source": "fotmob.com/api/data (player 690107, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+     "value": "Thigh injury"
+    },
+    {
+     "as_of": "2026-09-27",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "Doubtful",
+     "label": "학포",
+     "minutes": 90,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 53,
+     "pulled": "2026-10-18",
+     "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-10-18 수집)",
+     "value": "Ankle injury"
+    }
+   ],
    "interceptions_o": 6,
    "interceptions_v": 8,
+   "key_points": null,
    "long_acc_o": 26,
    "long_acc_v": 32,
    "long_att_o": 55,
@@ -46394,6 +46543,7 @@
      "xg_v": 1.16
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -47960,9 +48110,26 @@
     "source": "SofaScore /event/16950634 lineups·heatmap·average-positions(collect_event.py, 2026-09-17) / FotMob /api/data/matchDetails?matchId=6099335 — 팀 스탯·xG 4종 동시 스냅샷·하프별·라인업 포지션 / WhoScored matchCentreData matchId=2027825(Opta) — PPDA·def_x·국면 그리드 / 원문 리포트 reports/match-watch/2026-09-15-liv-tottenham.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 44,
+   "injuries": [
+    {
+     "as_of": "2026-09-11",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "Doubtful",
+     "label": "학포",
+     "minutes": 90,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 53,
+     "pulled": "2026-09-13",
+     "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+     "value": "Groin injury"
+    }
+   ],
    "interceptions_o": 7,
    "interceptions_v": 13,
+   "key_points": null,
    "long_acc_o": 16,
    "long_acc_v": 24,
    "long_att_o": 36,
@@ -47998,6 +48165,7 @@
      "xg_v": null
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -49585,9 +49753,26 @@
     "source": "SofaScore /event/16363264 lineups·heatmap·average-positions(collect_event.py, 2026-09-13) / FotMob /api/data/matchDetails?matchId=5795451 — 팀 스탯·xG 4종 동시 스냅샷·하프별 / WhoScored matchCentreData matchId=1983602(Opta) — PPDA·def_x·국면 그리드 / 원문 리포트 reports/match-watch/2026-09-12-liv-fulham.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 41,
+   "injuries": [
+    {
+     "as_of": "2026-09-11",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "Doubtful",
+     "label": "학포",
+     "minutes": 30,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 53,
+     "pulled": "2026-09-13",
+     "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+     "value": "Groin injury"
+    }
+   ],
    "interceptions_o": 11,
    "interceptions_v": 11,
+   "key_points": null,
    "long_acc_o": 14,
    "long_acc_v": 30,
    "long_att_o": 61,
@@ -49623,6 +49808,7 @@
      "xg_v": 0.76
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -51195,9 +51381,26 @@
     "source": "SofaScore /event/16938798 lineups·heatmap·average-positions(collect_event.py, 2026-09-12) / FotMob /api/data/matchDetails?matchId=6106246 — 팀 스탯·xG 4종 동시 스냅샷·하프별 분할·평점 / WhoScored matchCentreData matchId=2029127(Opta) — PPDA·def_x·국면 그리드 / 원문 리포트 reports/match-watch/2026-09-09-liv-atm-anfield.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 37,
+   "injuries": [
+    {
+     "as_of": "2026-09-11",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "Doubtful",
+     "label": "학포",
+     "minutes": null,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 53,
+     "pulled": "2026-09-13",
+     "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+     "value": "Groin injury"
+    }
+   ],
    "interceptions_o": 8,
    "interceptions_v": 9,
+   "key_points": null,
    "long_acc_o": 26,
    "long_acc_v": 28,
    "long_att_o": 54,
@@ -51233,6 +51436,7 @@
      "xg_v": 0.85
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -52770,9 +52974,26 @@
     "source": "SofaScore /event/16363261 (lineups·average-positions·heatmap, 2026-09-06) / FotMob matchDetails — 팀 스탯·xG 4종 동시 스냅샷·하프별 분할 / WhoScored matchCentreData(Opta) — PPDA 구간 분할·좌표 검증 / 원문 리포트 reports/match-watch/2026-09-04-liv-ipswich.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 32,
+   "injuries": [
+    {
+     "as_of": "2026-09-11",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "Doubtful",
+     "label": "학포",
+     "minutes": 90,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 53,
+     "pulled": "2026-09-13",
+     "source": "fotmob.com/api/data (player 806552, scripts/collect_fotmob_players.py, 2026-09-13 수집)",
+     "value": "Groin injury"
+    }
+   ],
    "interceptions_o": 9,
    "interceptions_v": 5,
+   "key_points": null,
    "long_acc_o": 18,
    "long_acc_v": 25,
    "long_att_o": 41,
@@ -52808,6 +53029,7 @@
      "xg_v": 0.26
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -54419,9 +54641,12 @@
     "source": "SofaScore event 16363254 + FotMob matchDetails 5795431(xG 4종 동일 스냅샷) + 이라올라/글라스너 기자회견 1차(liverpoolfc.com 전문·Sky) + premierleague.com Alex Keble(2026-06-04) + transferhub 패스 네트워크(2026-08-30) + Eurosport.de/kicker(비르츠 역할 정본) + 헝가리어 nb1.hu·feol.hu(쇼보슬러이 RB 전환)",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 28,
+   "injuries": [],
    "interceptions_o": 6,
    "interceptions_v": 11,
+   "key_points": null,
    "long_acc_o": 30,
    "long_acc_v": 34,
    "long_att_o": 75,
@@ -54457,6 +54682,7 @@
      "xg_v": 1.39
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -56114,9 +56340,12 @@
     "source": "FotMob matchDetails matchId=5795371 (curl, 2026-08-24 수집) — 팀·선수 스탯·평점·분·xG·물리량 / WhoScored matchCentreData(Opta) matchId=1983547 이벤트 1412건 (인앱 브라우저) — 좌표·평균위치·5x5 그리드·PPDA / Liverpool FC 공식 리포트·Sky Sports·Guardian·AS·Cadena SER·El País (2026-08-23~24).",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 23,
+   "injuries": [],
    "interceptions_o": 4,
    "interceptions_v": 8,
+   "key_points": null,
    "long_acc_o": 15,
    "long_acc_v": 22,
    "long_att_o": 54,
@@ -56152,6 +56381,7 @@
      "xg_v": 2.45
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": null,
@@ -57943,9 +58173,12 @@
     "source": "SofaScore event 16846122 (lineups·statistics·incidents·average-positions·player heatmap, 수집 2026-08-17 · scripts/collect_sofascore.py) + 다국어 서사 수집 8개 언어권(2026-08-17). 원문 reports/match-watch/2026-08-16-liv-como-2nd-leg.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 20,
+   "injuries": [],
    "interceptions_o": 10,
    "interceptions_v": 4,
+   "key_points": null,
    "long_acc_o": 25,
    "long_acc_v": 17,
    "long_att_o": 38,
@@ -57981,6 +58214,7 @@
      "xg_v": null
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -59197,9 +59431,12 @@
    "game_implications": "- 결론: **유지**\n- **유지.** 비공개 리저브 경기이고 원천 수치가 없다. 재검증: **2차전(안필드, 08-16 17:00 UTC)** 의 존스·각포 출전 여부 — 다음 회차 1순위 관측 항목이다.\n- **이 경기 전용 팀 설정**: ⛔ **만들지 않았다.**\n- **이 경기 선발 11명 역할·포커스**: ⛔ **만들지 않았다** — 단일 경기 fit을 산출할 히트맵이 없다.\n- `prescriptions`·`slot_canon_roles`·`team_tactic_setups` 변경: **없음.**",
    "game_players": [],
    "game_setup": null,
+   "hypotheses": [],
    "id": 19,
+   "injuries": [],
    "interceptions_o": null,
    "interceptions_v": null,
+   "key_points": null,
    "long_acc_o": null,
    "long_acc_v": null,
    "long_att_o": null,
@@ -59235,6 +59472,7 @@
      "xg_v": null
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": null,
@@ -60993,9 +61231,12 @@
     "source": "FotMob matchDetails 5765326 + SofaScore event 16284988; match_reports.id=3; liverpoolfc.com 이라올라 경기 후 전문 2026-08-09",
     "tactic_code": ""
    },
+   "hypotheses": [],
    "id": 3,
+   "injuries": [],
    "interceptions_o": 17,
    "interceptions_v": 10,
+   "key_points": null,
    "long_acc_o": 21,
    "long_acc_v": 23,
    "long_att_o": null,
@@ -61031,6 +61272,7 @@
      "xg_v": null
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -62688,9 +62930,12 @@
    "game_implications": "추가 관찰. 시즌 정본 무변경. ⛔ map25 0으로 경기 전용 프리셋 미작성 → draft.",
    "game_players": [],
    "game_setup": null,
+   "hypotheses": [],
    "id": 10,
+   "injuries": [],
    "interceptions_o": 10,
    "interceptions_v": 5,
+   "key_points": null,
    "long_acc_o": 23,
    "long_acc_v": 13,
    "long_att_o": null,
@@ -62726,6 +62971,7 @@
      "xg_v": null
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": null,
@@ -64206,9 +64452,12 @@
    "game_implications": "추가 관찰. 시즌 정본 무변경. ⛔ map25 0으로 경기 전용 프리셋 미작성 → draft.",
    "game_players": [],
    "game_setup": null,
+   "hypotheses": [],
    "id": 9,
+   "injuries": [],
    "interceptions_o": 6,
    "interceptions_v": 7,
+   "key_points": null,
    "long_acc_o": 17,
    "long_acc_v": 28,
    "long_att_o": null,
@@ -64244,6 +64493,7 @@
      "xg_v": null
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": null,
@@ -65805,9 +66055,12 @@
    "game_implications": "추가 관찰. 시즌 정본 무변경. ⛔ map25 0으로 경기 전용 프리셋 미작성 → draft.",
    "game_players": [],
    "game_setup": null,
+   "hypotheses": [],
    "id": 8,
+   "injuries": [],
    "interceptions_o": 6,
    "interceptions_v": 5,
+   "key_points": null,
    "long_acc_o": 13,
    "long_acc_v": 41,
    "long_att_o": null,
@@ -65843,6 +66096,7 @@
      "xg_v": null
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": null,
@@ -67045,6 +67299,62 @@
    "xg_v": null
   }
  ],
+ "phase_metric_defs": {
+  "box_touches_p10": {
+   "help": "상대 페널티 박스 안 터치 수(10분당).",
+   "label": "상대 박스 터치 /10분",
+   "lo_good": false,
+   "unit": ""
+  },
+  "def_x": {
+   "help": "팀 수비 액션 8종의 평균 x(자기 공격 방향 0~100) — 높을수록 앞에서 막는다. 팀 수비액션 8종(Tackle·Interception·Challenge·Foul·Clearance·BlockedPass·Aerial·BallRecovery)의 x 평균(자기 공격 방향 0~100). 라인 높이 프록시 — core.whoscored.def_x",
+   "label": "수비 액션 높이",
+   "lo_good": false,
+   "unit": ""
+  },
+  "gk_long_share": {
+   "help": "골키퍼 패스 중 롱패스(≥32m) 비율 — 짧은 빌드업에서 직접 배급으로 넘어갔는가.",
+   "label": "GK 롱패스 비중",
+   "lo_good": false,
+   "unit": "%"
+  },
+  "own_half_pass_pct": {
+   "help": "자기 진영(x<50)에서 시도한 패스의 성공 비율 — 상대 압박에 빌드업이 버티는가.",
+   "label": "자기 진영 패스 성공률",
+   "lo_good": false,
+   "unit": "%"
+  },
+  "own_third_losses": {
+   "help": "자기 진영 1/3에서 공을 잃은 횟수.",
+   "label": "자기 1/3 볼 손실",
+   "lo_good": true,
+   "unit": "회"
+  },
+  "possession": {
+   "help": "구간 점유율.",
+   "label": "점유",
+   "lo_good": false,
+   "unit": "%"
+  },
+  "ppda": {
+   "help": "상대 패스 수 ÷ 우리 수비 액션 — 낮을수록 강하게 압박한다. 분자=상대가 자기 진영 3/5(x<60)에서 시도한 패스 · 분모=해당 팀 수비액션(Tackle·Interception·Challenge·Foul) 상대 진영 2/5(x>40). 원천=WhoScored matchCentreData(Opta) — core.whoscored.ppda",
+   "label": "PPDA",
+   "lo_good": true,
+   "unit": ""
+  },
+  "shots_p10": {
+   "help": "슈팅 수(10분당).",
+   "label": "슈팅 /10분",
+   "lo_good": false,
+   "unit": ""
+  },
+  "xg": {
+   "help": "그 구간에 쌓인 기대득점.",
+   "label": "구간 xG",
+   "lo_good": false,
+   "unit": ""
+  }
+ },
  "player_stats": [
   {
    "avg_rating": 6.99,

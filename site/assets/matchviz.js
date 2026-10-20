@@ -93,6 +93,41 @@ export function timeline(r, team, W = 900){
     <div class="lg"><span><i style="background:${US}"></i>리드 구간</span><span><i style="background:${THEM}"></i>열세 구간</span><span>● 득점(도움)</span><span>▲ 교체 <span style="color:var(--warn)">▲</span> GK 교체</span><span><span style="color:var(--warn)">▮</span> 경고</span>${readLine('timeline')}</div></div>`;
 }
 
+/* ── 1b. 경기 흐름 — 구간 지표(migration 109 · 2026-10-20 사용자 지시 「경기 흐름 … 항상 제공」).
+   한 지표 = 한 그림(이중축 금지). 구간마다 가로 막대(계단) — 우리 실선 · 상대 점선. 표본(n) < 10이면 흐리게.
+   ⛔ 지표 이름·단위·설명을 여기 적지 않는다 — export `phase_metric_defs`(core.whoscored.PHASE_METRICS)가 정본이다.
+   ⛔ 지표가 없으면 숨기지 않고 「미수집」이라고 쓴다. */
+export function phaseFlow(r, team, W = 900){
+  const rows = r.phase_metrics || [], defs = r.phase_defs || {};
+  if (!rows.length) return `<div class="vz wide"><h4>경기 흐름 — 구간 지표</h4><span class="dim" style="font-size:12px">구간 지표 미수집 — 수집 회차가 scripts/match_phase_metrics.py(WhoScored 이벤트) 또는 load_match_extras.py로 채운다.</span></div>`;
+  const end = Math.max(95, ...rows.map(x => x.seg_to ?? 0));
+  const metrics = [...new Set(rows.map(x => x.metric))].sort((a, b) => Object.keys(defs).indexOf(a) - Object.keys(defs).indexOf(b));
+  const cw = metrics.length > 1 ? Math.max(300, Math.floor((W - 16) / 2)) : W;
+  const one = m => {
+    const d = defs[m] || { label: m, unit: '' }, rs = rows.filter(x => x.metric === m);
+    const H = 132, L = 30, R = 10, T = 18, B = 22;
+    const max = Math.max(...rs.map(x => x.value)) * 1.18 || 1;
+    const x = v => L + (cw - L - R) * (v / end), y = v => T + (H - T - B) * (1 - v / max);
+    const ticks = [0, 15, 30, 45, 60, 75, 90].map(t => `<line x1="${x(t)}" x2="${x(t)}" y1="${T}" y2="${H - B}" stroke="${GRID}"/><text x="${x(t)}" y="${H - 6}" text-anchor="middle" class="dim sm">${t}′</text>`).join('');
+    const base = `<line x1="${x(0)}" x2="${x(end)}" y1="${y(0)}" y2="${y(0)}" stroke="var(--line)"/>`;
+    const seg = s => {
+      const a = x(s.seg_from), b = x(s.seg_to ?? end), yy = y(s.value), col = s.side === 'v' ? US : THEM, thin = s.n != null && s.n < 10;
+      const who = s.side === 'v' ? team : (r.opponent || '상대');
+      const tip = `${who} · ${d.label} ${s.seg_from}′–${s.seg_to != null ? s.seg_to + '′' : '종료'}: ${s.value}${d.unit || ''}` + (s.n != null ? ` (표본 ${s.n})` : '') + (s.note ? ` — ${s.note}` : '');
+      return `<g class="hit" data-tip="${esc(tip)}" opacity="${thin ? .45 : 1}"><rect x="${a}" y="${T}" width="${Math.max(2, b - a)}" height="${H - T - B}" fill="transparent"/>
+        <line x1="${a + 1}" x2="${b - 1}" y1="${yy}" y2="${yy}" stroke="${col}" stroke-width="3" stroke-linecap="round"${s.side === 'o' ? ' stroke-dasharray="6 4"' : ''}/>
+        <text x="${(a + b) / 2}" y="${yy - 5}" text-anchor="middle" class="sm">${s.value}${d.unit === '%' ? '%' : ''}</text></g>`;
+    };
+    const sides = [...new Set(rs.map(s => s.side))].sort((a, b) => (a === 'v' ? -1 : 1) - (b === 'v' ? -1 : 1));   // 우리 먼저
+    return `<div class="pf"><div class="kv" style="font-size:12.5px"><b>${esc(d.label)}</b> ${d.help ? q(d.help) : ''}
+        <small class="dim">${sides.map(sd => sd === 'v' ? `<span style="color:var(--txt)">━ ${esc(team)}</span>` : `<span>┅ ${esc(r.opponent || '상대')}</span>`).join(' · ')}${d.lo_good ? ' · 낮을수록 강함' : ''}</small></div>
+      <svg width="${cw}" height="${H}" viewBox="0 0 ${cw} ${H}" role="img" aria-label="${esc(d.label)} 구간별">${ticks}${base}${rs.map(seg).join('')}</svg></div>`;
+  };
+  return `<div class="vz wide"><h4>경기 흐름 — 구간 지표 ${q('경기를 구간으로 잘라 압박 높이·강도·빌드업이 언제 바뀌었는지 본다. 가로 막대 하나가 한 구간의 값이다(실선 = 우리, 점선 = 상대). 흐린 막대는 표본이 10 미만이다.')}
+    <span class="dim">— ${metrics.length}개 지표 · 출처는 각 막대 툴팁</span></h4>
+    <div class="pfgrid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(${Math.min(cw, 300)}px,1fr));gap:10px 16px">${metrics.map(one).join('')}</div></div>`;
+}
+
 /* ── 2. 팀 대조 — 버터플라이. 한 행 = 한 지표, 가운데 라벨, 왼쪽 우리(주황) / 오른쪽 상대(파랑). 값은 막대 끝에 직접 라벨(행 수 ≤ 10). */
 export function butterfly(r, team, W = 560){
   const v = k => num(r[k]);
@@ -446,7 +481,7 @@ export function renderMatchViz(el, r, team){
   el.className = 'mviz';
   /* 순서 = 읽는 순서다: 흐름(타임라인) → 기회의 양(xG 레이스·슛 맵) → 기회의 질(결정력·상황) →
      국면(스코어 국면·하프) → 팀 대조 → 수비·경합. ⛔ 원자료가 없는 카드는 draw()가 숨긴다. */
-  el.innerHTML = ['t|wide','x','s','f','q','c','h','b','d']
+  el.innerHTML = ['t|wide','p|wide','x','s','f','q','c','h','b','d']
     .map(k => `<div class="vz${k.includes('|wide') ? ' wide' : ''}" data-k="${k[0]}"></div>`).join('')
     + '<div class="tip" hidden></div>';
   const tip = el.querySelector('.tip');
@@ -456,6 +491,7 @@ export function renderMatchViz(el, r, team){
       const k = box.dataset.k;
       const w2 = Math.min(w, 720);
       const html = k === 't' ? timeline(r, team, Math.min(w, 1240))
+        : k === 'p' ? phaseFlow(r, team, Math.min(w, 1240))
         : k === 'x' ? xgRace(r, team, w2) : k === 's' ? shotMap(r, team, w2)
         : k === 'f' ? finishing(r, team, w2) : k === 'q' ? shotSituations(r, team, w2)
         : k === 'c' ? scoreStateXg(r, team, w2) : k === 'h' ? halves(r, team, w2)

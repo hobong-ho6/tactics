@@ -195,7 +195,7 @@ import { ATTR_EN } from './clubviz.js?v=20260923b';
    statTip은 `abbr.gl`을 만들 뿐이고, 마우스를 올렸을 때 띄우는 건 glossary.js `mountGlossaryTips`다.
    그런데 그걸 **페이지마다 따로 불러야** 해서 player.html만 불렀고 evolutions.html은 빠졌다.
    ⇒ statTip을 쓰는 순간 표시도 따라오게 import 시점에 켠다(멱등 — 이미 켜져 있으면 아무 일도 안 한다). */
-import { mountGlossaryTips } from './glossary.js?v=20260913-selection-glossary';
+import { mountGlossaryTips, glTip } from './glossary.js?v=20260913-selection-glossary';
 if (typeof document !== 'undefined'){
   if (document.body) mountGlossaryTips();
   else document.addEventListener('DOMContentLoaded', mountGlossaryTips, { once: true });
@@ -207,5 +207,5 @@ export function statTip(name, innerHtml){
   const en = ATTR_EN[key];
   const body = innerHtml ?? (esc(name) + (en ? `<em class="fc-aen">${esc(en)}</em>` : ''));
   const tip = T[key];
-  return tip ? `<abbr class="gl" tabindex="0" data-tip="${esc(tip)}" title="${esc(tip)}">${body}</abbr>` : body;
+  return glTip(body, tip);   // 밑줄·툴팁 정본(glossary.js)
 }

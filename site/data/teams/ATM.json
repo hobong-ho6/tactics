@@ -34268,9 +34268,39 @@
     "source": "SofaScore /event/16421071 lineups·heatmap·average-positions·incidents (2026-10-19 · statistics/shotmap은 403) / FotMob /api/data/matchDetails?matchId=5868094 — 팀 스탯·xG 4종 동시 스냅샷·하프별·슛맵·라인업 positionId·결장 / WhoScored matchCentreData matchId=1994184(Opta · scope=full) — PPDA·def_x·국면 그리드 / 서사 서브에이전트(시메오네·마놀로 곤살레스 회견 활자·VAVEL·TheFalse9·ElDesmarque — §8) / 원문 리포트 reports/match-watch/2026-10-17-atm-espanyol.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 59,
+   "injuries": [
+    {
+     "as_of": "2026-10-18",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "About 1-2 weeks",
+     "label": "쿠티 로메로",
+     "minutes": 67,
+     "now_kind": "injury",
+     "now_pulled": "2026-10-19",
+     "player_id": 174,
+     "pulled": "2026-10-19",
+     "source": "fotmob.com/api/data (player 789066, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
+     "value": "Muscle injury"
+    },
+    {
+     "as_of": "2026-10-16",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "A few days",
+     "label": "카르도소",
+     "minutes": null,
+     "now_kind": "injury",
+     "now_pulled": "2026-10-19",
+     "player_id": 168,
+     "pulled": "2026-10-19",
+     "source": "fotmob.com/api/data (player 1173678, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
+     "value": "Illness"
+    }
+   ],
    "interceptions_o": 11,
    "interceptions_v": 10,
+   "key_points": null,
    "long_acc_o": 21,
    "long_acc_v": 22,
    "long_att_o": 57,
@@ -34306,6 +34336,7 @@
      "xg_v": 0.69
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -35968,9 +35999,39 @@
     "source": "SofaScore /event/16938789 lineups·heatmap·average-positions·incidents (2026-10-19 · statistics/shotmap은 403) / FotMob /api/data/matchDetails?matchId=6106267 — 팀 스탯·xG 4종 동시 스냅샷·하프별·슛맵·라인업 positionId / WhoScored matchCentreData matchId=2029139(Opta · scope=full) — PPDA·def_x·국면 그리드 / 서사 서브에이전트(시메오네·캐릭 회견 활자 인용·평점·전술 기사 — §8) / 원문 리포트 reports/match-watch/2026-10-13-atm-manutd.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 58,
+   "injuries": [
+    {
+     "as_of": "2026-10-18",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "About 1-2 weeks",
+     "label": "쿠티 로메로",
+     "minutes": 90,
+     "now_kind": "injury",
+     "now_pulled": "2026-10-19",
+     "player_id": 174,
+     "pulled": "2026-10-19",
+     "source": "fotmob.com/api/data (player 789066, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
+     "value": "Muscle injury"
+    },
+    {
+     "as_of": "2026-10-16",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "A few days",
+     "label": "카르도소",
+     "minutes": 90,
+     "now_kind": "injury",
+     "now_pulled": "2026-10-19",
+     "player_id": 168,
+     "pulled": "2026-10-19",
+     "source": "fotmob.com/api/data (player 1173678, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
+     "value": "Illness"
+    }
+   ],
    "interceptions_o": 6,
    "interceptions_v": 10,
+   "key_points": null,
    "long_acc_o": 11,
    "long_acc_v": 32,
    "long_att_o": 31,
@@ -36006,6 +36067,7 @@
      "xg_v": 1.12
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -37563,9 +37625,26 @@
     "source": "SofaScore /event/16421056 lineups·average-positions·incidents·statistics·shotmap (2026-10-12) / FotMob /api/data/matchDetails?matchId=5868081 — 팀 스탯·xG 4종 동시 스냅샷 / WhoScored matchCentreData matchId=1994159(Opta · scope=full) — PPDA·def_x·국면 그리드 / 서사 서브에이전트 3종(회견·영상 전사·기사 — §8) / 원문 리포트 reports/match-watch/2026-10-10-atm-alaves.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 54,
+   "injuries": [
+    {
+     "as_of": "2026-10-16",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "A few days",
+     "label": "카르도소",
+     "minutes": 90,
+     "now_kind": "injury",
+     "now_pulled": "2026-10-19",
+     "player_id": 168,
+     "pulled": "2026-10-19",
+     "source": "fotmob.com/api/data (player 1173678, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
+     "value": "Illness"
+    }
+   ],
    "interceptions_o": 15,
    "interceptions_v": 11,
+   "key_points": null,
    "long_acc_o": 23,
    "long_acc_v": 21,
    "long_att_o": 49,
@@ -37601,6 +37680,7 @@
      "xg_v": 1.4
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -39323,9 +39403,52 @@
     "source": "커널 적합 core.kernel.Kernel('FC26').best_fit + 이 경기 map25 (2026-09-21) · 팀 설정은 core.team_settings.suggest/compare",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 48,
+   "injuries": [
+    {
+     "as_of": "2026-09-18",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점 상태다. 등급 B(전국지 2매체, 구단 공식 발표 아님). obs#824의 「부위·근육 여부 미특정」을 **유형까지만** 해소한다(부위는 여전히 미특정). ⛔ 기존 행 245는 그대로 둔다.",
+     "detail": "09-18 훈련 정상 소화, 더비(09-20) 출전 가능. ⚠️ Marca 「uno más」(정상 전력) ↔ AS 「vuelta parcial」·「no a lo mejor como titular」(선발은 아닐 수 있음)로 매체 온도차. 결장 2경기(레알 소시에다드·오사수나)",
+     "label": "J. 알바레스",
+     "minutes": 28,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 172,
+     "pulled": "2026-09-18",
+     "source": "AS(Patricia Cazón 2026-09-18) 「una pequeña sobrecarga en el partido… ante el Liverpool」(「리버풀전에서 입은 경미한 근육 과부하」) / Marca(David G. Medina 2026-09-18) 「ya es uno más… salvo algún contratiempo de última hora」(「이미 한 명의 정상 전력… 막판 변수가 없는 한」). D+2 브라우저 직접 수집.",
+     "value": "근육 과부하(sobrecarga) — 리버풀전 · 부위 미특정"
+    },
+    {
+     "as_of": "2026-09-18",
+     "confidence": "⚠️ 스냅샷이다. 등급 B(매체 단독 진단 정정 보도 — 구단 공식과 불일치를 명시). ⛔ 기존 행 235는 그대로 둔다.",
+     "detail": "1개월 이상 결장, 더비 불가. 09-18 훈련 불참. ⭐ 구단 발표(근육 뭉침)와 실제 진단(소실근 부상)이 다르다는 보도 — 09-13 FotMob 스냅샷의 「Muscle injury / September 2026」보다 길다",
+     "label": "쇠를로트",
+     "minutes": null,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 173,
+     "pulled": "2026-09-18",
+     "source": "AS(Patricia Cazón 2026-09-18) 「siga faltando Sorloth, **más de un mes de baja** aunque con buena evolución de esa **contractura que dijo el club y que en realidad era una lesión en el sóleo**」(「쇠를로트는 계속 빠진다 — **한 달 이상 결장**이고, 구단이 말한 **근육 뭉침, 실제로는 소실근 부상**은 경과가 좋긴 하다」) / Marca(2026-09-18) 바리오스·쇠를로트 훈련 불참·근육 부상 기재. D+2 브라우저 직접 수집.",
+     "value": "소실근(sóleo) 부상 — 구단은 「contractura」로 발표"
+    },
+    {
+     "as_of": "2026-09-12",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "October 2026",
+     "label": "바리오스",
+     "minutes": null,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 155,
+     "pulled": "2026-09-22",
+     "source": "fotmob.com/api/data (player 1338192, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+     "value": "Muscle injury"
+    }
+   ],
    "interceptions_o": 6,
    "interceptions_v": 9,
+   "key_points": null,
    "long_acc_o": 27,
    "long_acc_v": 30,
    "long_att_o": 43,
@@ -39361,6 +39484,7 @@
      "xg_v": 2.17
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -40993,9 +41117,52 @@
     "source": "SofaScore /event/16416335 lineups·heatmap·average-positions(collect_event.py, 2026-09-17) / FotMob /api/data/matchDetails?matchId=5868062 — 팀 스탯·xG 4종 동시 스냅샷·하프별·라인업 포지션 / WhoScored matchCentreData matchId=1994173(Opta) — PPDA·def_x·국면 그리드 / 원문 리포트 reports/match-watch/2026-09-16-atm-osasuna.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 45,
+   "injuries": [
+    {
+     "as_of": "2026-09-18",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점 상태다. 등급 B(전국지 2매체, 구단 공식 발표 아님). obs#824의 「부위·근육 여부 미특정」을 **유형까지만** 해소한다(부위는 여전히 미특정). ⛔ 기존 행 245는 그대로 둔다.",
+     "detail": "09-18 훈련 정상 소화, 더비(09-20) 출전 가능. ⚠️ Marca 「uno más」(정상 전력) ↔ AS 「vuelta parcial」·「no a lo mejor como titular」(선발은 아닐 수 있음)로 매체 온도차. 결장 2경기(레알 소시에다드·오사수나)",
+     "label": "J. 알바레스",
+     "minutes": null,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 172,
+     "pulled": "2026-09-18",
+     "source": "AS(Patricia Cazón 2026-09-18) 「una pequeña sobrecarga en el partido… ante el Liverpool」(「리버풀전에서 입은 경미한 근육 과부하」) / Marca(David G. Medina 2026-09-18) 「ya es uno más… salvo algún contratiempo de última hora」(「이미 한 명의 정상 전력… 막판 변수가 없는 한」). D+2 브라우저 직접 수집.",
+     "value": "근육 과부하(sobrecarga) — 리버풀전 · 부위 미특정"
+    },
+    {
+     "as_of": "2026-09-18",
+     "confidence": "⚠️ 스냅샷이다. 등급 B(매체 단독 진단 정정 보도 — 구단 공식과 불일치를 명시). ⛔ 기존 행 235는 그대로 둔다.",
+     "detail": "1개월 이상 결장, 더비 불가. 09-18 훈련 불참. ⭐ 구단 발표(근육 뭉침)와 실제 진단(소실근 부상)이 다르다는 보도 — 09-13 FotMob 스냅샷의 「Muscle injury / September 2026」보다 길다",
+     "label": "쇠를로트",
+     "minutes": null,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 173,
+     "pulled": "2026-09-18",
+     "source": "AS(Patricia Cazón 2026-09-18) 「siga faltando Sorloth, **más de un mes de baja** aunque con buena evolución de esa **contractura que dijo el club y que en realidad era una lesión en el sóleo**」(「쇠를로트는 계속 빠진다 — **한 달 이상 결장**이고, 구단이 말한 **근육 뭉침, 실제로는 소실근 부상**은 경과가 좋긴 하다」) / Marca(2026-09-18) 바리오스·쇠를로트 훈련 불참·근육 부상 기재. D+2 브라우저 직접 수집.",
+     "value": "소실근(sóleo) 부상 — 구단은 「contractura」로 발표"
+    },
+    {
+     "as_of": "2026-09-12",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "October 2026",
+     "label": "바리오스",
+     "minutes": null,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 155,
+     "pulled": "2026-09-22",
+     "source": "fotmob.com/api/data (player 1338192, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+     "value": "Muscle injury"
+    }
+   ],
    "interceptions_o": 7,
    "interceptions_v": 7,
+   "key_points": null,
    "long_acc_o": 20,
    "long_acc_v": 21,
    "long_att_o": 59,
@@ -41031,6 +41198,7 @@
      "xg_v": 0.89
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -42673,9 +42841,52 @@
     "source": "SofaScore event 16416332(lineups·average-positions·heatmap·incidents) + FotMob matchDetails 5868058(xG 4종 동일 스냅샷) + WhoScored matchCentreData 1994164(이벤트 1,612건 → core.whoscored PPDA·def_x·국면 그리드) + 서사: Noticias de Gipuzkoa 전술분석(2026-09-14) · Into the Calderón 회견/평점(2026-09-14) · El Desmarque 1대1(2026-09-13) · Infobae(EFE) 시메오네·마타라초 회견(2026-09-13) · VAVEL · Futeros · 머니투데이(KO) · フットボールチャンネル(JA). 원문 reports/match-watch/2026-09-13-atm-real-sociedad.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 42,
+   "injuries": [
+    {
+     "as_of": "2026-09-18",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점 상태다. 등급 B(전국지 2매체, 구단 공식 발표 아님). obs#824의 「부위·근육 여부 미특정」을 **유형까지만** 해소한다(부위는 여전히 미특정). ⛔ 기존 행 245는 그대로 둔다.",
+     "detail": "09-18 훈련 정상 소화, 더비(09-20) 출전 가능. ⚠️ Marca 「uno más」(정상 전력) ↔ AS 「vuelta parcial」·「no a lo mejor como titular」(선발은 아닐 수 있음)로 매체 온도차. 결장 2경기(레알 소시에다드·오사수나)",
+     "label": "J. 알바레스",
+     "minutes": null,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 172,
+     "pulled": "2026-09-18",
+     "source": "AS(Patricia Cazón 2026-09-18) 「una pequeña sobrecarga en el partido… ante el Liverpool」(「리버풀전에서 입은 경미한 근육 과부하」) / Marca(David G. Medina 2026-09-18) 「ya es uno más… salvo algún contratiempo de última hora」(「이미 한 명의 정상 전력… 막판 변수가 없는 한」). D+2 브라우저 직접 수집.",
+     "value": "근육 과부하(sobrecarga) — 리버풀전 · 부위 미특정"
+    },
+    {
+     "as_of": "2026-09-18",
+     "confidence": "⚠️ 스냅샷이다. 등급 B(매체 단독 진단 정정 보도 — 구단 공식과 불일치를 명시). ⛔ 기존 행 235는 그대로 둔다.",
+     "detail": "1개월 이상 결장, 더비 불가. 09-18 훈련 불참. ⭐ 구단 발표(근육 뭉침)와 실제 진단(소실근 부상)이 다르다는 보도 — 09-13 FotMob 스냅샷의 「Muscle injury / September 2026」보다 길다",
+     "label": "쇠를로트",
+     "minutes": null,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 173,
+     "pulled": "2026-09-18",
+     "source": "AS(Patricia Cazón 2026-09-18) 「siga faltando Sorloth, **más de un mes de baja** aunque con buena evolución de esa **contractura que dijo el club y que en realidad era una lesión en el sóleo**」(「쇠를로트는 계속 빠진다 — **한 달 이상 결장**이고, 구단이 말한 **근육 뭉침, 실제로는 소실근 부상**은 경과가 좋긴 하다」) / Marca(2026-09-18) 바리오스·쇠를로트 훈련 불참·근육 부상 기재. D+2 브라우저 직접 수집.",
+     "value": "소실근(sóleo) 부상 — 구단은 「contractura」로 발표"
+    },
+    {
+     "as_of": "2026-09-12",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "October 2026",
+     "label": "바리오스",
+     "minutes": null,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 155,
+     "pulled": "2026-09-22",
+     "source": "fotmob.com/api/data (player 1338192, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+     "value": "Muscle injury"
+    }
+   ],
    "interceptions_o": 7,
    "interceptions_v": 8,
+   "key_points": null,
    "long_acc_o": 23,
    "long_acc_v": 32,
    "long_att_o": 39,
@@ -42711,6 +42922,7 @@
      "xg_v": 1.91
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -44202,9 +44414,39 @@
     "source": "SofaScore /event/16938798 lineups·heatmap·average-positions(collect_event.py, 2026-09-12) / FotMob /api/data/matchDetails?matchId=6106246 — 팀 스탯·xG 4종 동시 스냅샷·하프별 분할·평점 / WhoScored matchCentreData matchId=2029127(Opta) — PPDA·def_x·국면 그리드 / 원문 리포트 reports/match-watch/2026-09-09-liv-atm-anfield.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 38,
+   "injuries": [
+    {
+     "as_of": "2026-09-15",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점 상태이고 복귀 예상은 소스 추정이다. 등급 B(감독 발언·통신사 인용). 구단 공식 발표는 아직 없다.",
+     "detail": "시메오네 D-1 회견에서 결장 확정(회복 과정 중). EFE가 「lesionados」로 독립 기재. ⚠️ 부위·「근육」 여부는 어떤 소스도 특정하지 않았다",
+     "label": "J. 알바레스",
+     "minutes": 90,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 172,
+     "pulled": "2026-09-17",
+     "source": "웹 수집 2026-09-17 match-watch 회차 — 에메리 경기 후 1차 발언(PA·VAVEL·Sky) / 시메오네 D-1 회견 + EFE 「Sin Julián Álvarez ni Alexander Sørloth, lesionados」(「훌리안 알바레스도 알렉산더 쇠를로트도 없이 — 부상」)",
+     "value": "Injury (부위 미특정)"
+    },
+    {
+     "as_of": "2026-09-12",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "October 2026",
+     "label": "바리오스",
+     "minutes": 77,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 155,
+     "pulled": "2026-09-22",
+     "source": "fotmob.com/api/data (player 1338192, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+     "value": "Muscle injury"
+    }
+   ],
    "interceptions_o": 9,
    "interceptions_v": 8,
+   "key_points": null,
    "long_acc_o": 28,
    "long_acc_v": 26,
    "long_att_o": 51,
@@ -44240,6 +44482,7 @@
      "xg_v": 0.29
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -45782,9 +46025,26 @@
     "source": "SofaScore /event/16416317 (lineups·average-positions·heatmap, 2026-09-06) / FotMob matchDetails — 팀 스탯·xG 4종 동시 스냅샷·하프별 분할 / WhoScored matchCentreData(Opta) — PPDA 구간 분할·좌표 검증 / 원문 리포트 reports/match-watch/2026-09-05-atm-athletic.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 33,
+   "injuries": [
+    {
+     "as_of": "2026-09-12",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "October 2026",
+     "label": "바리오스",
+     "minutes": 90,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 155,
+     "pulled": "2026-09-22",
+     "source": "fotmob.com/api/data (player 1338192, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+     "value": "Muscle injury"
+    }
+   ],
    "interceptions_o": 14,
    "interceptions_v": 13,
+   "key_points": null,
    "long_acc_o": 22,
    "long_acc_v": 30,
    "long_att_o": 46,
@@ -45820,6 +46080,7 @@
      "xg_v": 0.7
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -47452,9 +47713,12 @@
     "source": "SofaScore event 16416316 + FotMob matchDetails 5868040(xG 4종 동일 스냅샷) + 시메오네/루이스 가르시아 플라사 기자회견 1차 + 바에나 본인 발언 + El Desmarque·VAVEL·Into the Calderón 우노포르우노 3건 + 101TV(세비야 지역, 상대 관점) + 덴마크어(율만-바리오스 역할 분담 인과) + 슬로바키아어(4-4-2 명시)",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 29,
+   "injuries": [],
    "interceptions_o": 3,
    "interceptions_v": 12,
+   "key_points": null,
    "long_acc_o": 26,
    "long_acc_v": 32,
    "long_att_o": 48,
@@ -47490,6 +47754,7 @@
      "xg_v": 0.46
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -49287,9 +49552,26 @@
     "source": "SofaScore API event 16416302 (2026-08-23 라리가 R2) · 원문 reports/match-watch/2026-08-23-atm-villarreal.md · docs/13-simeone-tactics.md · 적합은 core.kernel.Kernel('FC26').best_fit_slot(regime 4)",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 24,
+   "injuries": [
+    {
+     "as_of": "2026-08-12",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "Back in training",
+     "label": "쇠를로트",
+     "minutes": null,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 173,
+     "pulled": "2026-09-22",
+     "source": "fotmob.com/api/data (player 440330, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+     "value": "Muscle injury"
+    }
+   ],
    "interceptions_o": 13,
    "interceptions_v": 10,
+   "key_points": null,
    "long_acc_o": 16,
    "long_acc_v": 21,
    "long_att_o": 33,
@@ -49325,6 +49607,7 @@
      "xg_v": 0.46
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -51047,9 +51330,26 @@
     "source": "FotMob matchDetails+heatmap matchId=5868012 (26/27 라리가 R1) · 원문 reports/match-watch/2026-08-19-atm-malaga.md · docs/13-simeone-tactics.md",
     "tactic_code": null
    },
+   "hypotheses": [],
    "id": 21,
+   "injuries": [
+    {
+     "as_of": "2026-08-12",
+     "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
+     "detail": "Back in training",
+     "label": "쇠를로트",
+     "minutes": null,
+     "now_kind": "injury_none",
+     "now_pulled": "2026-10-19",
+     "player_id": 173,
+     "pulled": "2026-09-22",
+     "source": "fotmob.com/api/data (player 440330, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
+     "value": "Muscle injury"
+    }
+   ],
    "interceptions_o": 13,
    "interceptions_v": 9,
+   "key_points": null,
    "long_acc_o": 23,
    "long_acc_v": 28,
    "long_att_o": 59,
@@ -51085,6 +51385,7 @@
      "xg_v": 0.83
     }
    ],
+   "phase_metrics": [],
    "players": [
     {
      "assists": 0,
@@ -51996,6 +52297,62 @@
    "xg_v": 0.92
   }
  ],
+ "phase_metric_defs": {
+  "box_touches_p10": {
+   "help": "상대 페널티 박스 안 터치 수(10분당).",
+   "label": "상대 박스 터치 /10분",
+   "lo_good": false,
+   "unit": ""
+  },
+  "def_x": {
+   "help": "팀 수비 액션 8종의 평균 x(자기 공격 방향 0~100) — 높을수록 앞에서 막는다. 팀 수비액션 8종(Tackle·Interception·Challenge·Foul·Clearance·BlockedPass·Aerial·BallRecovery)의 x 평균(자기 공격 방향 0~100). 라인 높이 프록시 — core.whoscored.def_x",
+   "label": "수비 액션 높이",
+   "lo_good": false,
+   "unit": ""
+  },
+  "gk_long_share": {
+   "help": "골키퍼 패스 중 롱패스(≥32m) 비율 — 짧은 빌드업에서 직접 배급으로 넘어갔는가.",
+   "label": "GK 롱패스 비중",
+   "lo_good": false,
+   "unit": "%"
+  },
+  "own_half_pass_pct": {
+   "help": "자기 진영(x<50)에서 시도한 패스의 성공 비율 — 상대 압박에 빌드업이 버티는가.",
+   "label": "자기 진영 패스 성공률",
+   "lo_good": false,
+   "unit": "%"
+  },
+  "own_third_losses": {
+   "help": "자기 진영 1/3에서 공을 잃은 횟수.",
+   "label": "자기 1/3 볼 손실",
+   "lo_good": true,
+   "unit": "회"
+  },
+  "possession": {
+   "help": "구간 점유율.",
+   "label": "점유",
+   "lo_good": false,
+   "unit": "%"
+  },
+  "ppda": {
+   "help": "상대 패스 수 ÷ 우리 수비 액션 — 낮을수록 강하게 압박한다. 분자=상대가 자기 진영 3/5(x<60)에서 시도한 패스 · 분모=해당 팀 수비액션(Tackle·Interception·Challenge·Foul) 상대 진영 2/5(x>40). 원천=WhoScored matchCentreData(Opta) — core.whoscored.ppda",
+   "label": "PPDA",
+   "lo_good": true,
+   "unit": ""
+  },
+  "shots_p10": {
+   "help": "슈팅 수(10분당).",
+   "label": "슈팅 /10분",
+   "lo_good": false,
+   "unit": ""
+  },
+  "xg": {
+   "help": "그 구간에 쌓인 기대득점.",
+   "label": "구간 xG",
+   "lo_good": false,
+   "unit": ""
+  }
+ },
  "player_stats": [
   {
    "avg_rating": 7.05,
