@@ -601,3 +601,21 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .dbar i{display:block;height:6px;width:var(--w);background:var(--viz-them);border-radius:3px} .dbar.und i{background:var(--warn)}
 .dbar em{font-style:normal;font-variant-numeric:tabular-nums} .dbar small{grid-column:1/-1;margin:-2px 0 2px}
 .checks{margin:4px 0 0;padding-left:18px;font-size:12.5px} .checks li::marker{content:"☐ "}
+/* 2026-10-20 — 경기 흐름 묶음 그리드(matchviz phaseFlow) */
+.pfgroup{margin:6px 0 12px} .pfgt{font-size:12.5px;font-weight:700;color:var(--acc);margin:0 0 4px;border-bottom:1px solid var(--line);padding-bottom:3px}
+.pfgrid{display:grid;gap:8px 16px;justify-content:start} .pfh{font-size:12.5px;margin:0 0 2px}
+.pflg{margin:2px 0 8px}
+.pflg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--dim);margin:2px 0 8px}
+.pflg span{display:inline-flex;align-items:center;gap:6px} .pflg .sw{display:inline-block;width:22px;height:0} .pflg .sw.v{width:0;height:12px}
+/* 2026-10-20 — 선수 카드 재배치: [히트맵 가로 + 스탯 타일] | [산문] · 맨 아래 원천값 · 카드 폭 640px 미만이면 한 줄로 쌓는다 */
+.player-report{container-type:inline-size}
+.player-report-body.pr2{display:grid;grid-template-columns:1fr;gap:10px 16px}
+.pr2 .prf{grid-column:1/-1}
+@container (min-width:640px){ .player-report-body.pr2{grid-template-columns:minmax(300px,340px) 1fr} }
+.pr2 .phase-maps{flex-wrap:nowrap;gap:8px}
+.pr2 .stiles{grid-template-columns:repeat(3,minmax(96px,1fr));gap:5px}
+.pr2 .st{padding:5px 8px 8px} .pr2 .st b{font-size:15px}
+.pr2 .st.key{background:rgba(255,138,61,.07);border-color:rgba(255,138,61,.35)} .pr2 .st.key b{font-size:19px}
+.pr2 .st:not(.key) span{font-size:10.5px}
+.gcmp td:first-child,.gcmp th:first-child{position:sticky;left:0;background:var(--panel);z-index:1}
+.gcmp thead th{border-bottom:1px solid var(--line)}

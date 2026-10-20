@@ -36,3 +36,4 @@ INSERT INTO _migration_log VALUES('2026-10-20','108-user-hidden','fut_hidden_ite
 INSERT INTO _migration_log VALUES('2026-10-20','109-match-hypotheses-phases','match_hypotheses·match_phase_metrics 신설 + match_reports.key_points — 경기 분석 화면에 가설 판정·구간 흐름·요약을 항상 제공(사용자 지시 2026-10-20) · 부상은 player_status 재사용');
 INSERT INTO _migration_log VALUES('2026-10-20','110-card-position-changes','card_position_changes 신설 — collect_futgg_cards.py가 포지션 변경(주 포지션·집합)을 이력 한 줄 + 현재값 갱신으로 반영 · 사용자 지시 2026-10-20 「최신값으로 갱신 + 이력 기록」(맥긴 RM/LM/CAM/RW → RM/CM/LM/CAM/RW/LW)');
 INSERT INTO _migration_log VALUES('2026-10-20','111-match-tactical-structured','match_reports 전술 3단·강점/취약/교란·구현 결론·재검증 + match_tactical_changes + match_player_prescriptions.fit_delta/alt_role — 전술 분석 4칸 시각화(사용자 지시 2026-10-20) · 기존 산문은 원문 유지');
+INSERT INTO _migration_log VALUES('2026-10-20','112-claims-korean','video_impl_claims.field_kr·value_kr — 지시·운용/재현 한계/팀 설정 축 한국어 표기(사용자 지적 2026-10-20) · 144행 백필');

@@ -21,7 +21,10 @@
           "quote": "원문 「…」(한국어 번역)", "verdict": "PENDING",
           "verdict_note": "실측 무결정 Δ0.004 — docs/30 7단계 ⑵ tie-break 대상"},
          {"axis": "team_axis", "team_code": "CHE", "field": "build_up_style", "value": "Counter",
+          "field_kr": "빌드업 스타일", "value_kr": "역습",
           "verdict": "HELD", "verdict_note": "…재판정 조건…"},
+         {"axis": "instruction", "team_code": "AVL", "field": "defensive_shape_first_half", "value": "wide mids drop back six",
+          "field_kr": "전반 수비 형태", "value_kr": "측면 미드필더가 내려와 백6", "verdict": "PENDING"},
          {"axis": "none"}
        ]}}
 
@@ -50,6 +53,8 @@ TAIL = ("[요약 {d}] summary/key_points는 **전사 원문을 읽고 쓴 것**�
         "인용은 원문+한국어 번역 병기(불변규칙 11).")
 
 AXES = ("role", "focus", "team_axis", "instruction", "limit", "none")
+# ⛔ 자유 문구 축은 한국어 칸 필수(2026-10-20 · migration 112 · 불변규칙 11) — 영어 field·value가 화면에 그대로 찍혔다.
+KR_AXES = ("team_axis", "instruction", "limit")
 VERDICTS = ("APPLIED", "HELD", "REJECTED", "PENDING", "NA")
 
 
@@ -85,15 +90,18 @@ def insert_claims(con, vid, claims, pulled, force=False):
             raise SystemExit(f"⛔ {vid}: verdict 어휘 이탈 「{verdict}」 — 허용 {VERDICTS}")
         if verdict in ("HELD", "REJECTED") and not (c.get("verdict_note") or "").strip():
             raise SystemExit(f"⛔ {vid}: {verdict}는 사유·재판정 조건이 필수다(docs/30 8단계)")
+        if axis in KR_AXES and (not (c.get("field_kr") or "").strip()
+                                or (c.get("value") not in (None, "") and not (c.get("value_kr") or "").strip())):
+            raise SystemExit(f"⛔ {vid}: {axis} 주장은 field_kr·value_kr(한국어)가 필수다 — 「{c.get('field')} = {c.get('value')}」")
         pid = c.get("player_id")
         if pid is None and c.get("player"):
             pid = resolve_player(con, c["player"])
         con.execute("""INSERT INTO video_impl_claims
-                       (video_id, axis, player_id, team_code, role_id, focus, field, value,
+                       (video_id, axis, player_id, team_code, role_id, focus, field, value, field_kr, value_kr,
                         quote, verdict, verdict_note, source, confidence)
-                       VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                       VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                     (vid, axis, pid, c.get("team_code"), c.get("role_id"), c.get("focus"),
-                     c.get("field"), c.get("value"), c.get("quote"), verdict, c.get("verdict_note"),
+                     c.get("field"), c.get("value"), c.get("field_kr"), c.get("value_kr"), c.get("quote"), verdict, c.get("verdict_note"),
                      c.get("source") or f"전사 원문 읽기 · scripts/write_video_summary.py, {pulled}",
                      c.get("confidence") or "auto-caption 전사 기반 — 인물명·수치는 실측 교차검증 필요"))
     return len(claims)

@@ -585,3 +585,8 @@
 - `reports/transcripts/` 전사 51편 + `_meta_backfill.json` 50항목(ECILA 1편 조회 실패)을 추가했다.
 - `player_matches`·`team_match_stats`·`match_reports`(status `draft` 유지)·처방은 바꾸지 않았다. 실측 수집을 반복하지 않았고, 정정은 판정 층에만 해당한다.
 - **커밋 보류 → 해소(2026-10-19 23시대)**: 처음 `ship.py`를 돌렸을 때 G34가 이 경기(#56) 밖의 CHE #57·ATM #59·LIV #61 D+3 예약 누락으로 멈췄다. 비대화형 주간 회차에서 예약 생성이 거부됐던 것이다(`followups/2026-10-19-pending-schedules.md`). 사용자 지시로 같은 세션에서 그 문서에 적힌 그대로 `mw-che-everton-d3`(10-20 20:40) · `mw-atm-espanyol-d3`(22:00) · `mw-liv-brentford-d3`(22:50)를 예약해 G34를 풀고 커밋했다. 게이트는 우회하지 않았다.
+
+## D+3 — 실시하지 않음 (2026-10-20 사용자 결정)
+
+- 예약 `mw-avl-newcastle-d3`(10-20 20:00)는 이 기기 스케줄러에 **등록돼 있지 않았다**(D+2 절 「예약이 있음을 확인」은 다른 PC 기준이었거나 오기). 사용자에게 확인한 결과 「하지 않음」 — D+2까지로 추적을 닫는다.
+- ⇒ `match_reports` #56은 **draft 유지**. 「D+3에 남기는 것」 4항목(가르나초·바이킹전 회견 · 카마라–고메스 분담 실측 대조 · 영상 요약 백로그 · The Athletic/Birmingham Live 재시도)은 미처리로 남는다. 카마라 역할은 별도 분석으로 obs#1080(RDM 딥라잉·Build-Up 후보 · 인게임 테스트)에 기록했다.

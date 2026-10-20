@@ -554,7 +554,7 @@ CREATE TABLE video_impl_claims(
   verdict_note TEXT,                -- ⛔ HELD·REJECTED는 사유·재판정 조건 필수(G17)
   source TEXT, confidence TEXT,
   added TEXT NOT NULL DEFAULT (date('now'))
-);
+, field_kr TEXT, value_kr TEXT);
 CREATE TABLE player_evolutions(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL REFERENCES game_versions(code),

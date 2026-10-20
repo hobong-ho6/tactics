@@ -269,6 +269,26 @@ def main():
            "best_pos=COALESCE(NULLIF(TRIM(player_card_items.best_pos),''), excluded.best_pos), "
            "base_ea_id=COALESCE(player_card_items.base_ea_id, excluded.base_ea_id)"
            % (",".join("def" if c == "def_" else c for c in cols), ",".join(f":{c}" for c in cols)))
+    # ⭐ **포지션은 현재값으로 갱신하고 바뀐 사실은 이력에 남긴다**(2026-10-20 · migration 110).
+    #    위 upsert는 포지션을 「비었을 때만 채움」이라 출시일 값이 굳었다 — EA가 대체 포지션을 늘린 맥긴(+CM·LW)이
+    #    DB에서 RM/LM/CAM/RW로 남아 진화 요구조건 판정이 틀렸다. ⛔ 순서만 다른 것은 같은 사실이라 건드리지 않는다.
+    changed = []
+    for r in rows:
+        old = con.execute("SELECT positions FROM player_card_items WHERE game_version=? AND ea_item_id=?",
+                          (r["game_version"], r["ea_item_id"])).fetchone()
+        o, n = ((old[0] or "").strip() if old else ""), (r["positions"] or "")
+        if not o or not n:
+            continue                                   # 신규·빈 칸은 위 upsert가 채운다
+        if o.split("/")[0] == n.split("/")[0] and set(o.split("/")) == set(n.split("/")):
+            continue
+        cur.execute("""INSERT INTO card_position_changes(game_version, ea_item_id, positions_before, positions_after, observed, source)
+                       VALUES(?,?,?,?,?,?) ON CONFLICT(game_version, ea_item_id, observed) DO NOTHING""",
+                    (r["game_version"], r["ea_item_id"], o, n, a.pulled, r["source"]))
+        cur.execute("UPDATE player_card_items SET positions=?, best_pos=? WHERE game_version=? AND ea_item_id=?",
+                    (n, n.split("/")[0], r["game_version"], r["ea_item_id"]))
+        changed.append(f"{r['name_kr']} {o} → {n}")
+    if changed:
+        print(f"🔀 포지션 변경 {len(changed)}장(이력 card_position_changes): " + " · ".join(changed))
     before = con.execute("SELECT COUNT(*) FROM player_card_items").fetchone()[0]
     for r in rows:
         cur.execute(sql, r)

@@ -8,12 +8,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -101,12 +103,14 @@
     {
      "axis": "instruction",
      "field": "buildup_pivot_movement",
+     "field_kr": "빌드업 피벗 움직임",
      "focus": null,
      "player": null,
      "quote": "「Kamara moved out of that space, and Gomez actually moved a little bit towards the ball」(카마라는 빠지고 고메스는 공 쪽으로)",
      "role_id": null,
      "team_code": null,
      "value": "kamara_vacates_gomes_shows_cb_split",
+     "value_kr": "카마라가 비우고 주앙 고메스가 다가오며 센터백 벌림",
      "verdict": "PENDING",
      "verdict_note": "상대 채널 서술 · WS로 카마라·고메스 수신 위치 분리 계산 미실행 — D+3 또는 다음 회차에서 실측 대조"
     }
@@ -163,12 +167,14 @@
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Build-Up",
      "player": "주앙 페드루",
      "quote": "「third number ten」(세 번째 10번)",
      "role_id": "st_false9",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "APPLIED",
      "verdict_note": "실측 무결정 Δ.023(1위 st_false9/Attack .616) — docs/30 7단계 tie-break로 경기 프리셋 #57에만 적용. 시즌 정본 미변경."
     }
@@ -276,12 +282,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -369,12 +377,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -499,12 +509,14 @@
     {
      "axis": "instruction",
      "field": "double_pivot_duty_split",
+     "field_kr": "더블 피벗 임무 분담",
      "focus": null,
      "player": null,
      "quote": "「you both got to defend, you've both got to get forward」(둘 다 수비하고 둘 다 전진해야 한다)",
      "role_id": null,
      "team_code": null,
      "value": "kamara_gomes_shared_both_ways",
+     "value_kr": "카마라·주앙 고메스 공수 분담 공유",
      "verdict": "PENDING",
      "verdict_note": "팬 채널 서술 · 카마라 시즌 DM 역할과 대조 필요 — 카마라·고메스 국면 그리드 2경기 비교 후 판정"
     }
@@ -554,12 +566,14 @@
     {
      "axis": "instruction",
      "field": "gk_goal_kick_short_share",
+     "field_kr": "GK 골킥 짧게 비율",
      "focus": null,
      "player": null,
      "quote": "「goal kick percentage played short, Villa 64%」(골킥 짧게 64%)",
      "role_id": null,
      "team_code": null,
      "value": "short_64pct_then_long_after_43",
+     "value_kr": "짧게 64%, 43분 이후 롱킥 전환",
      "verdict": "HELD",
      "verdict_note": "경기 전용(match_game_setups) 서술과 일치하나 영상 툴 수치라 정의 미상 · WS 실측(스즈키 롱 0–43′ 4 → 43′+ 21)이 정본 · 재판정 조건: 고압박 원정 2경기 추가 시 시즌 GK 배급 축 재검토"
     }
@@ -705,12 +719,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -746,12 +762,14 @@
     {
      "axis": "instruction",
      "field": "defensive_shape_first_half",
+     "field_kr": "전반 수비 형태",
      "focus": null,
      "player": null,
      "quote": "「drop into the back line, help Aston Villa almost become a back five, back six」(수비 라인까지 내려와 백5·백6)",
      "role_id": null,
      "team_code": null,
      "value": "wide_mids_drop_back_six",
+     "value_kr": "측면 미드 하강으로 백6",
      "verdict": "HELD",
      "verdict_note": "알리송 수비 액션 x10~42(WS) · 1′·3′ 블록·23′ 태클과 일치 — 경기 전용 처방에만 해당 · 시즌 RM/LM 역할 변경 근거 아님(단일 경기) · 재판정 조건: 상대가 최종 라인 5명을 세우는 경기 2회"
     }
@@ -782,12 +800,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -857,12 +877,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -1008,12 +1030,14 @@
     {
      "axis": "team_axis",
      "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
      "focus": null,
      "player": null,
      "quote": "「we need to use that power to be able to play some more direct sometimes」(그 힘을 써서 때로는 더 직접적으로 해야 한다)",
      "role_id": null,
      "team_code": "CHE",
      "value": "Counter",
+     "value_kr": "역습",
      "verdict": "HELD",
      "verdict_note": "단일 경기 상대 맞춤(감독 본인 「adapting to the context today」) — 경기 프리셋 #57은 롱볼 12.5%로 Balanced(규칙 일치). 재판정 조건: 대인 압박 상대 3경기에서 롱볼 비중 ≥13%가 재현되면 상대별 프리셋(Counter)로 검토."
     }
@@ -1109,12 +1133,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -1221,12 +1247,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -1377,12 +1405,14 @@
     {
      "axis": "team_axis",
      "field": "defensive_approach",
+     "field_kr": "수비 접근",
      "focus": null,
      "player": null,
      "quote": "「whenever we are pressing high a little bit lower… we chose that way against the Bournemouth」(높게든 조금 낮게든 압박할 때 — 본머스전엔 그 방식을 골랐다)",
      "role_id": null,
      "team_code": "CHE",
      "value": "Balanced",
+     "value_kr": "균형",
      "verdict": "APPLIED",
      "verdict_note": "경기 프리셋 #57 Balanced(PPDA 12.65 · 규칙 일치) — 시즌 정본 변경 아님."
     }
@@ -1414,12 +1444,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -1449,12 +1481,14 @@
     {
      "axis": "instruction",
      "field": "press_trigger",
+     "field_kr": "압박 트리거",
      "focus": null,
      "player": null,
      "quote": "「birinci kademin ikinci kademe geçtiği anda top yani savunmadan orta sahaya geçtiği anda anlık baskılarını başlatıyor」(1선에서 2선으로, 즉 수비에서 중원으로 공이 넘어가는 순간 즉시 압박을 시작한다) [09:45] auto-caption",
      "role_id": null,
      "team_code": "AVL",
      "value": "opponent_line1_to_line2_transfer",
+     "value_kr": "상대 1선에서 2선으로 공이 넘어가는 순간",
      "verdict": "PENDING",
      "verdict_note": "UTV wnCdb0G15_I [17:31] 「trigger points」와 독립 교차(D등급 2출처). 실측 31′·39′ 득점이 중원 탈취 직후 — FC 압박 트리거 설정 실측 후 반영"
     }
@@ -1485,12 +1519,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -1522,48 +1558,56 @@
     {
      "axis": "instruction",
      "field": "back_line_in_possession",
+     "field_kr": "점유 시 후방 구성",
      "focus": null,
      "player": null,
      "quote": "「it was the Wasaka Power Lindelof setup at the back」(완비사카–파우–린델뢰프 후방 구성이었다) [02:35] auto-caption",
      "role_id": null,
      "team_code": "AVL",
      "value": "wan_bissaka_holds_back_three",
+     "value_kr": "완비사카가 남아 후방 3인 구성",
      "verdict": "REJECTED",
      "verdict_note": "위치 주장은 실측 우선: WS 이벤트상 완비사카는 빌드업 체인 터치라인 95%·평균 52.2m, 볼이 상대 3분의 1일 때 67.6m(캐시 72.4m) — 후방 3인 잔류 기하가 없다. 트래킹 프레임(공 없는 위치) 공개되면 재검토 · obs 기록"
     },
     {
      "axis": "instruction",
      "field": "rcb_in_possession",
+     "field_kr": "점유 시 우측 센터백",
      "focus": null,
      "player": "린델뢰프",
      "quote": "「he's a little bit more advanced than POW … play a little bit as a CDM in that area」(파우보다 약간 높고 그 구역에서 CDM처럼 뛴다) [04:41] auto-caption",
      "role_id": null,
      "team_code": "AVL",
      "value": "lindelof_steps_into_cdm_zone",
+     "value_kr": "린델뢰프가 수비형 미드 구역으로 전진",
      "verdict": "PENDING",
      "verdict_note": "실측 일치(패스 출발 40.5m vs 토레스 34.0m · 상대 3분의 1 국면 53.8m vs 46.6m) — 정본 RCB bpd Aggressive는 기하 1위라 유지, Build-Up 성향 혼재는 다경기 누적 후 판정"
     },
     {
      "axis": "instruction",
      "field": "pivot_press_license",
+     "field_kr": "피벗 압박 권한",
      "focus": null,
      "player": "카마라",
      "quote": "「This season, I think he's got more license to engage further forward, win the ball back … not just be that protector」(이번 시즌 더 앞에서 끊을 권한이 커졌다, 단순 보호자가 아니다) [09:18] auto-caption",
      "role_id": null,
      "team_code": "AVL",
      "value": "kamara_jump_forward",
+     "value_kr": "카마라의 전진 압박",
      "verdict": "PENDING",
      "verdict_note": "Tanswell 19:36Z 「license for Barkley (sometimes Kamara…) to jump and press」와 같은 방향. 실측: 카마라 상대 3분의 1 국면 66.7m · 정본 RDM 홀딩 Defend(.508)와 괴리 — 사용자 판단 대상"
     },
     {
      "axis": "instruction",
      "field": "press_mode",
+     "field_kr": "압박 방식",
      "focus": null,
      "player": null,
      "quote": "「Emry doesn't press, but what he does is he has his trigger points and when we are about to engage, we commit to engage」(에메리는 상시 압박하지 않지만 트리거 포인트가 있고, 붙을 땐 확실히 붙는다) [17:31] auto-caption",
      "role_id": null,
      "team_code": "AVL",
      "value": "trigger_based_not_constant",
+     "value_kr": "상시가 아닌 트리거 기반",
      "verdict": "PENDING",
      "verdict_note": "Serbest Sekiz(ZhJYKO9YQY4 [09:45]) 독립 서술과 교차. 실측 PPDA 12.14·def_x 36.5 중블록과 정합 — 팀 설정 수비 접근 Balanced 유지, 압박 트리거 슬라이더(FC27) 실측 후 반영"
     }
@@ -1596,12 +1640,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -1633,12 +1679,14 @@
     {
      "axis": "instruction",
      "field": "defensive_shape_second_half",
+     "field_kr": "후반 수비 형태",
      "focus": null,
      "player": null,
      "quote": "「In the second half, we we correct defensively a little bit more compact」(후반에 수비를 조금 더 콤팩트하게 수정했다) [01:00] auto-caption(gemini variant)",
      "role_id": null,
      "team_code": "AVL",
      "value": "more_compact_when_leading",
+     "value_kr": "리드 시 더 촘촘하게",
      "verdict": "PENDING",
      "verdict_note": "감독 1차 발언 · 실측 2H 평균 높이 하강과 정합. 경기 프리셋은 단일 설정이라 국면 전환(리드 시 라인 하향) 지시로만 기록 — FC 게임플랜 2안 구성 시 반영 후보"
     }
@@ -1669,12 +1717,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -1706,24 +1756,28 @@
     {
      "axis": "instruction",
      "field": "goal_routes",
+     "field_kr": "득점 경로",
      "focus": null,
      "player": null,
      "quote": "「Sometime we can score through transition in high press. Sometime we could score as well in transition but with a med or low block」(하이프레스 전환으로도, 미드·로블록 전환으로도 득점할 수 있다) [03:40] auto-caption",
      "role_id": null,
      "team_code": "AVL",
      "value": "set_piece+high_press_transition+mid_low_block_transition",
+     "value_kr": "세트피스·하이프레스 전환·중저블록 전환",
      "verdict": "PENDING",
      "verdict_note": "실측 득점 경로(31′·39′ 중원 탈취 전환 · 12′ 코너 · PK) 정합 — 팀 설정 축 값이 아니라 게임플랜 서술로만 보관"
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Support",
      "player": "잭슨",
      "quote": "「sometime attacking more in the center or more left side or more right side today more right side」(때로 중앙, 때로 왼쪽·오른쪽 — 오늘은 오른쪽 위주) [02:08] auto-caption",
      "role_id": "st_advanced",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "PENDING",
      "verdict_note": "감독 1차 발언이 좌우 이동을 확인 — 실측 단일 경기 st_advanced/Support .749(Δ.228)·브렌트포드전 Δ.146과 같은 방향. 정본 포커스 Versatile → Support 변경은 사용자 확인 대상"
     }
@@ -1756,12 +1810,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -1791,12 +1847,14 @@
     {
      "axis": "limit",
      "field": "right_side_space_when_mcginn_inverts",
+     "field_kr": "맥긴 안쪽 이동 시 우측 공간",
      "focus": null,
      "player": null,
      "quote": "「Mekin orta sahalaşıyor işte bek yüksek çıkıyor. Orayı o bölgeyi işaretlemiştim ben.」(맥긴이 중앙 미드필더처럼 들어가면 풀백이 높이 올라간다. 내가 그 구역을 표시해 뒀다) [08:12] auto-caption",
      "role_id": null,
      "team_code": "AVL",
      "value": "exploited_by_opponent_left_winger",
+     "value_kr": "상대 좌측 윙어가 공략",
      "verdict": "PENDING",
      "verdict_note": "상대 해설(D등급) · Tanswell 19:28Z 「funnelling the majority of their attacks down #AVFC's right side」와 같은 방향. 캐시↔맥긴 교대(H2)의 rest-defense 비용 — 다경기 누적 후 판정"
     }
@@ -1828,12 +1886,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -1864,12 +1924,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -1900,12 +1962,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -1943,12 +2007,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -1981,12 +2047,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -2017,36 +2085,42 @@
     {
      "axis": "limit",
      "field": "edge_of_box_protection",
+     "field_kr": "박스 앞 보호",
      "focus": null,
      "player": null,
      "quote": "원문 「the two defensive midfielders were back in line with the two center halves」(두 수비형 미드필더가 두 센터백과 같은 줄에 있었다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "double_pivot_both_drop_into_back_line",
+     "value_kr": "더블 피벗 둘 다 백라인으로 내려앉음",
      "verdict": "HELD",
      "verdict_note": "단일 장면(9′) 1소스 · auto-caption. 정본 피벗 dm_dlp/Roaming(LDM)+dm_holding/Defend(RDM)은 「하나는 남는다」 구조인데 이 장면은 둘 다 내려갔다 — 역할 설정 문제가 아니라 장면 실행으로 본다. ⛔ 재판정 조건: 박스 앞 세컨드볼 실점이 2경기째 독립 2소스로 특정되면 RDM 수비 지시(박스 앞 잔류) 검토."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Roaming",
      "player": "만잠비",
      "quote": "원문 「the ability to carry the ball the ability to run through the middle … the strength when you're carrying the ball」(운반 능력, 중앙을 뚫는 능력, 운반 시 힘)",
      "role_id": "cam_playmaker",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "APPLIED",
      "verdict_note": "이 경기 단일 fit cam_playmaker/Roaming .751(Δ.106)·정본 CAM과 같은 방향. 새 처방 변경 없음."
     },
     {
      "axis": "team_axis",
      "field": "build_up_shape",
+     "field_kr": "빌드업 형태",
      "focus": null,
      "player": null,
      "quote": "원문 「could we be better off building up in that back three and letting Kamar drop in to make that right center back in possession」(카마라가 오른쪽 CB로 내려가 후방 3인으로 빌드업하는 게 낫지 않을까)",
      "role_id": null,
      "team_code": "AVL",
      "value": "kamara_drops_right_cb_back_three_in_possession",
+     "value_kr": "점유 시 카마라가 우측 센터백으로 내려 백3",
      "verdict": "REJECTED",
      "verdict_note": "제안이지 관찰이 아니다 — 이 경기 카마라 점유 국면 자기 진영 최하단 행 비중 .07(map25_poss)로 백3 하강은 실측되지 않았다. 감독 발언 근거 0. 프리셋 반영 대상 아님(관찰 사실이 생기면 새 행으로)."
     }
@@ -2090,12 +2164,14 @@
     {
      "axis": "instruction",
      "field": "left_pivot_cover",
+     "field_kr": "좌측 피벗 커버",
      "focus": null,
      "player": null,
      "quote": "「Cuando Grimaldo se puede soltar con libertad… Johnny está muy atento a cubrir esta zona」(그리말도가 자유롭게 나갈 때 조니가 그 구역을 커버한다)",
      "role_id": null,
      "team_code": "ATM",
      "value": "ldm_covers_lb_advance",
+     "value_kr": "좌측 수비형 미드가 좌측 풀백 전진 커버",
      "verdict": "PENDING",
      "verdict_note": "단일 영상(ITC 칼럼이 같은 축). 재판정 조건: 카르도소 map25_def 좌측 열 비중을 2경기 누적으로 확인"
     }
@@ -2126,24 +2202,28 @@
     {
      "axis": "limit",
      "field": "buildup_support_spacing",
+     "field_kr": "빌드업 지원 간격",
      "focus": null,
      "player": null,
      "quote": "원문 「it's also the structure because Kamar was too far away … Gomez was nowhere. Have a look where Buendia was」(구조 문제이기도 하다 — 카마라는 너무 멀었고 고메스는 없었고 부엔디아는 엉뚱한 위치였다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "pivot_and_lm_too_far_from_lcb_on_short_goal_kick",
+     "value_kr": "짧은 골킥 때 피벗·좌측 미드가 좌측 센터백과 멂",
      "verdict": "HELD",
      "verdict_note": "9′ 귀속의 세 번째 해석(Tanswell 표적 압박 obs#984 · UTV 첫 터치 obs#988 · 이 영상 지원 간격 obs#1001). 셋은 서로 배타적이지 않다. 단일 장면이고 우리 이벤트로 수신 순간 지원 거리를 재지 않았다. ⛔ 재판정 조건: 짧은 골킥 재개에서 CB 수신 시 피벗 지원 부재로 인한 턴오버가 2경기째 독립 2소스로 특정되면 팀 빌드업 프리셋(짧은 골킥 시 피벗 하강 지시) 검토."
     },
     {
      "axis": "limit",
      "field": "cb_buildup_weak_link",
+     "field_kr": "센터백 빌드업 약한 고리",
      "focus": null,
      "player": "밍스",
      "quote": "원문 「man that was so casual … from somebody that's super experienced」(경험 많은 선수가 너무 안일했다) · 「how vocal he is … I did not see that on Saturday」(늘 말하던 라인 지휘가 토요일엔 안 보였다)",
      "role_id": null,
      "team_code": null,
      "value": "mings_casual_on_ball_and_no_line_organisation",
+     "value_kr": "밍스의 안이한 볼 처리와 라인 조율 부재",
      "verdict": "PENDING",
      "verdict_note": "claim #210·#216과 같은 축 — 밍스 선발 시 처방 변경은 사용자 판단 대기. 이 영상은 독립 4번째 소스."
     }
@@ -2182,36 +2262,42 @@
     {
      "axis": "instruction",
      "field": "goal_kick_buildup_target",
+     "field_kr": "골킥 빌드업 수신자",
      "focus": null,
      "player": "주앙 고메스",
      "quote": "원문 「Brenford really pressed him when we were trying to build up from the back from goal kicks」(골킥 빌드업 때 브렌트퍼드가 그를 강하게 압박했다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "gomes_receives_under_targeted_press",
+     "value_kr": "표적 압박 속에 주앙 고메스가 받음",
      "verdict": "HELD",
      "verdict_note": "claim #167(배급 비지배)과 같은 방향의 정황 — 이 경기 패스 1·2위는 CB(밍스47·린델뢰프46). 재판정 조건: 골킥 재개 첫 패스 수신자 실측(WhoScored 이벤트 체인) 2경기"
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "주앙 고메스",
      "quote": "원문 「Everything you would want from a number six. I thought he used the ball well. I thought he got around the pitch well」(6번에게 바라는 모든 것. 볼을 잘 썼고 경기장을 넓게 누볐다)",
      "role_id": "dm_dlp",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "APPLIED",
      "verdict_note": "LDM 정본 dm_dlp/Roaming(2026-10-11 사용자 결정)과 일치 · 이 경기 단일 적합 .875 Δ.154 · 「got around the pitch」는 Roaming 방향이나 인용이 포커스를 직접 말하지는 않는다"
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "음바예",
      "quote": "원문 「really dangerous, whether it be from the right or from the left … always making runs」(오른쪽이든 왼쪽이든 위협적, 늘 침투했다)",
      "role_id": "wm_insidefwd",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "PENDING",
      "verdict_note": "이 경기 단일 적합 wm_insidefwd/Attack .444(26′ · hp21) — 교체 표본이라 판정 보류. 좌우 교대는 obs#968 순환과 일치"
     }
@@ -2251,12 +2337,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "현장 브이로그 — 역할·포커스·팀 설정 주장 없음(고메스 호평은 D+1 claim #212 dm_dlp APPLIED와 같은 채널 반복이라 별도 행을 만들지 않는다)."
     }
@@ -2288,12 +2376,14 @@
     {
      "axis": "team_axis",
      "field": "defensive_approach",
+     "field_kr": "수비 접근",
      "focus": null,
      "player": null,
      "quote": "「I think we were the better team until the red card, in the first 62 minutes」(퇴장 전 62분은 우리가 더 나은 팀이었다)",
      "role_id": null,
      "team_code": "LIV",
      "value": "Balanced",
+     "value_kr": "균형",
      "verdict": "HELD",
      "verdict_note": "11대11 PPDA 5.97~7.78은 FC 수비접근 상향(Press After Possession Loss 계열) 후보이나 1경기·대상 시티. 재판정 조건: 11대11 90분 경기 2개에서 PPDA≤8 반복 시 defensive_approach 재검토(obs#994)"
     }
@@ -2325,12 +2415,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -2361,12 +2453,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -2397,60 +2491,70 @@
     {
      "axis": "instruction",
      "field": "pivot_partnership_ball_dominance",
+     "field_kr": "피벗 짝의 볼 주도권",
      "focus": null,
      "player": null,
      "quote": "원문 「everything's kind of going into Gomez. Gomez has got that sort of little spider web off him」(모든 것이 고메스에게 모이고 거미줄이 뻗는다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "gomes_network_hub",
+     "value_kr": "주앙 고메스가 패스 네트워크 허브",
      "verdict": "PENDING",
      "verdict_note": "claim #167(카마라·고메스 누구도 배급을 지배하지 않는다)의 반대 방향 정황. 단 패스량 실측은 CB 1·2위(밍스47·린델뢰프46, SofaScore) · 고메스 40(공동 5위) — 「연결 중심」과 「배급 물량」은 다른 축이다. FotMob 경유 고메스 라인 브레이킹 패스 12(Aston Villa News). 재판정 조건은 #167과 같다(다음 동시 선발 경기)."
     },
     {
      "axis": "limit",
      "field": "defensive_runner_tracking",
+     "field_kr": "침투자 수비 추적",
      "focus": null,
      "player": "캐시",
      "quote": "원문 「Matty Cash here for some reason completely switches off and doesn't track the run」(캐시가 완전히 집중을 놓고 침투를 따라가지 않는다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "cash_ball_watching_on_far_side_runner",
+     "value_kr": "캐시가 볼만 보다 먼 쪽 침투자를 놓침",
      "verdict": "HELD",
      "verdict_note": "79′ 실점 귀속이 독립 2소스로 일치(이 영상 + BBC MOTD 시어러 「Matty Cash gets caught ball watching」). 단 우리 이벤트 데이터는 추적 실패를 담지 않고 단일 장면이다 — 집중력 결함은 FC 역할·포커스로 옮길 수 있는 축이 아니다(fb_fullback 정본 유지). ⛔ 재판정 조건: 캐시 마크 실점·빅찬스가 2경기째 독립 2소스로 특정되면 RB 수비 지시(측면 추적 강화) 프리셋 검토."
     },
     {
      "axis": "limit",
      "field": "cb_buildup_weak_link",
+     "field_kr": "센터백 빌드업 약한 고리",
      "focus": null,
      "player": "밍스",
      "quote": "원문 「he's not comfortable playing out from the back … if you're not comfortable, play to your strengths」(뒤에서 풀어 나오는 데 편하지 않다 — 편하지 않으면 강점대로 하라)",
      "role_id": null,
      "team_code": "AVL",
      "value": "mings_unpressured_first_touch_error",
+     "value_kr": "압박 없는 상황의 밍스 첫 터치 실수",
      "verdict": "PENDING",
      "verdict_note": "claim #210(밍스 표적 압박)과 같은 축. 이 영상은 9′을 「압박이 아니라 첫 터치·판단」으로 귀속 — Tanswell 「showing the ball to Mings」(밍스가 받게 내준다)와 모순되지 않는다(수신은 자유, 실행에서 실패). 이 경기 패스 성공률 77%(SofaScore 36/47 · CB 중 최저). 밍스 선발 시 처방 변경은 사용자 판단."
     },
     {
      "axis": "limit",
      "field": "rest_defence_isolation",
+     "field_kr": "rest-defense 고립",
      "focus": null,
      "player": null,
      "quote": "원문 「Your defense is isolated. There's not really much protection … The midfield is chasing shadows」(수비가 고립되고 보호가 없다 — 미드필드는 그림자만 쫓는다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "backline_isolated_in_transition",
+     "value_kr": "전환 시 백라인 고립",
      "verdict": "HELD",
      "verdict_note": "D+1 UTV(HKPnsNlcdEQ) 카마라 고립(claim #211)과 같은 축의 반복 지적. 실측: 카마라–고메스 평균 위치 간격은 영상 그래픽 기준(원천 미상) — 우리 map25로 미검증. ⛔ 재판정 조건: 카마라 구역 상대 통과 패스(WhoScored) 2경기 이상 또는 실점 시퀀스 2경기째 같은 장면."
     },
     {
      "axis": "limit",
      "field": "gk_sweeping_context",
+     "field_kr": "GK 스위핑 맥락",
      "focus": null,
      "player": "스즈키 지온",
      "quote": "원문 「Why in the last minute of the game is our keeper having to steam out to the halfway line to challenge for that? I'm thankful he did」(왜 키퍼가 하프라인까지 나가야 하나 — 해 줘서 다행이지만)",
      "role_id": null,
      "team_code": "AVL",
      "value": "late_sweep_symptom_of_lost_control",
+     "value_kr": "막판 스위핑은 통제 상실의 증상",
      "verdict": "HELD",
      "verdict_note": "스위핑 행동 자체는 확인(WhoScored 96′ KeeperSweeper x47 · 東スポ·フットボールチャンネル·닛칸). 이 영상은 원인을 팀 통제 부족으로 돌린다 — GK 정본 gk_sweeper/Build-Up(2026-10-11 결정)을 뒤집는 주장은 아니다. ⛔ 재판정 조건: 점유 우위·리드 관리 경기에서도 KeeperSweeper가 나오는지 3경기 누적(상황 강제형인지 성향형인지 분리)."
     }
@@ -2508,24 +2612,28 @@
     {
      "axis": "instruction",
      "field": "cb_buildup_from_goal_kick",
+     "field_kr": "골킥 센터백 빌드업",
      "focus": null,
      "player": null,
      "quote": "원문 「this is unai system supports and wants them to try and play through」(에메리 시스템은 뒤에서 풀어 나오길 원한다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "play_through_by_design",
+     "value_kr": "설계상 뒤에서 풀어 나옴",
      "verdict": "NA",
      "verdict_note": "FC26 팀 설정에 골킥 재개 빌드업 별도 축이 없다 — 팀 build_up_style 정본 Counter(APPLIED)와 별개 국면. GK 정본 gk_sweeper/Build-Up(f0c29e0)이 GK 관여 쪽을 이미 반영"
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "만잠비",
      "quote": "원문 「he's playing in that 10 position up there with Nicholas Jackson really most of the time」(대부분 잭슨과 함께 위쪽 10번 자리에서 뛴다)",
      "role_id": "cam_playmaker",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "APPLIED",
      "verdict_note": "정본 CAM cam_playmaker/Roaming과 일치 · 이 경기 단일 적합 .751 Δ.106 · 포커스(Roaming)는 이 인용이 말하지 않는다"
     }
@@ -2564,12 +2672,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -2601,12 +2711,14 @@
     {
      "axis": "instruction",
      "field": "attack_target_side",
+     "field_kr": "공격 표적 측면",
      "focus": null,
      "player": null,
      "quote": "「estructurado… para encontrar en la izquierda… con varios cambios de orientación」(왼쪽에서 찾도록 구조화했고 여러 차례 방향 전환 패스를 보냈다)",
      "role_id": null,
      "team_code": "ATM",
      "value": "left_flank_switches_to_lookman",
+     "value_kr": "방향 전환으로 좌측 루크만 공략",
      "verdict": "PENDING",
      "verdict_note": "더비(09-20)는 우측 표적 설계였다 — 경기별 표적이 상대에 따라 바뀌는지 2경기 더 확인"
     }
@@ -2637,12 +2749,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -2673,12 +2787,14 @@
     {
      "axis": "instruction",
      "field": "back_line_start_shape",
+     "field_kr": "후방 시작 형태",
      "focus": null,
      "player": null,
      "quote": "「este 541 o 523… por momentos Llorente era el lateral derecho」(이 5-4-1 또는 5-2-3… 때때로 요렌테가 RB였다)",
      "role_id": null,
      "team_code": "ATM",
      "value": "llorente_third_cb_hybrid",
+     "value_kr": "요렌테의 세 번째 센터백 하이브리드",
      "verdict": "REJECTED",
      "verdict_note": "실측 우선: 요렌테 평균 (x51.4,y16.5)·map25_poss 우측 열 = 높은 RB(obs#996)"
     }
@@ -2709,12 +2825,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -2746,12 +2864,14 @@
     {
      "axis": "instruction",
      "field": "midfield_pivot_pair",
+     "field_kr": "중원 피벗 짝",
      "focus": null,
      "player": null,
      "quote": "「For me, it's fundamental that we get that area strong」(나에게는 그 구역을 강하게 만드는 것이 근본이다)",
      "role_id": null,
      "team_code": "CHE",
      "value": "henderson_caicedo_balance",
+     "value_kr": "조던 헨더슨·카이세도 균형",
      "verdict": "PENDING",
      "verdict_note": "1경기 — 2H 상대 xG 1.03으로 결과 미증명. 재판정 조건: 두 선수 동시 선발 3경기 누적 시 상대 오픈플레이 xG 비교(obs#993)"
     }
@@ -2783,24 +2903,28 @@
     {
      "axis": "instruction",
      "field": "back_line_in_possession",
+     "field_kr": "점유 시 후방 구성",
      "focus": null,
      "player": null,
      "quote": "「Marcos Llorente prácticamente es un tercer central. Esto en salida de balón lo hemos visto muy claramente」(요렌테가 사실상 3번째 센터백이다. 빌드업에서 아주 분명했다)",
      "role_id": null,
      "team_code": "ATM",
      "value": "llorente_third_cb",
+     "value_kr": "요렌테가 세 번째 센터백",
      "verdict": "REJECTED",
      "verdict_note": "실측 우선 — map25_poss 우측 열 행1~3(obs#996)"
     },
     {
      "axis": "instruction",
      "field": "defensive_shape_out_of_possession",
+     "field_kr": "비점유 수비 형태",
      "focus": null,
      "player": null,
      "quote": "「baja mucho a ayudar… prácticamente siempre vemos una línea de cinco」(많이 내려와 도와 거의 항상 5백 라인이 보인다)",
      "role_id": null,
      "team_code": "ATM",
      "value": "back_five_right_winger_drop",
+     "value_kr": "우측 윙어 하강으로 백5",
      "verdict": "APPLIED",
      "verdict_note": "실측 일치 — 줄리아노 map25_def 최대 셀 우측 최후방(obs#997). 경기 프리셋 서술에만 반영, 시즌 정본 변경 없음"
     }
@@ -2832,12 +2956,14 @@
     {
      "axis": "instruction",
      "field": "left_flank_rotation",
+     "field_kr": "좌측면 교대",
      "focus": null,
      "player": null,
      "quote": "auto-caption(es 더빙) — 차바리아가 바깥으로 오버래핑해 수비 2명을 끌어내면 로저스에게 중앙 접근이 열린다(요약)",
      "role_id": null,
      "team_code": "CHE",
      "value": "lwb_overlap_lam_inside",
+     "value_kr": "좌측 윙백 오버랩, 좌측 공격형 미드 안쪽",
      "verdict": "PENDING",
      "verdict_note": "단일 영상·더빙 전사. 재판정 조건: 차바리아–로저스 동시 선발 2경기에서 로저스 map25_poss 하프스페이스 비중 확인"
     }
@@ -2868,36 +2994,42 @@
     {
      "axis": "limit",
      "field": "width_in_possession",
+     "field_kr": "점유 시 폭",
      "focus": null,
      "player": null,
      "quote": "원문 「we're still so narrow, you know, we're so narrow, we're so easy to be jumped on」(여전히 너무 좁아서 압박당하기 쉽다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "narrow_no_wingers_invites_press",
+     "value_kr": "윙어 없이 좁아 압박을 부름",
      "verdict": "HELD",
      "verdict_note": "실측과 부분 충돌: 오른쪽 맥긴 터치라인(5열) .52·wm_winger/Attack .772로 오른쪽 폭은 있었다. 좁음은 왼쪽(부엔디아 IF .625) 쪽. Tanswell 21′은 와이드의 안쪽 이동을 「상대 풀백이 불편해한다」고 긍정. 재판정 조건: 상대 풀백 전진 패스·빌라 측면 폭 실측(WhoScored 위치 이벤트) 2경기"
     },
     {
      "axis": "limit",
      "field": "cb_buildup_weak_link",
+     "field_kr": "센터백 빌드업 약한 고리",
      "focus": null,
      "player": "밍스",
      "quote": "원문 「Opposition teams will try and press him and then they adjust their team so they box him in」(상대는 밍스를 압박하도록 팀을 조정해 가둔다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "mings_targeted_by_designed_press",
+     "value_kr": "상대 설계 압박의 표적이 된 밍스",
      "verdict": "PENDING",
      "verdict_note": "Tanswell 14′(브렌트퍼드가 첫 골킥부터 밍스에게 공을 내주도록 유도) + 이 영상 — 독립 2소스 일치. 밍스 선발 시 처방(cb_bpd/Aggressive 유지 vs 덜 관여하는 역할) 변경은 사용자 판단\n[D+2 2026-10-12] UTV 전술 리뷰가 9′을 「압박 없이 받은 뒤 첫 터치·판단 실수」로 귀속 — 설계(수신자 유도)는 상대, 실점은 실행(obs#988). PENDING 유지, 처방 변경은 사용자 판단."
     },
     {
      "axis": "limit",
      "field": "dm_isolation",
+     "field_kr": "수비형 미드 고립",
      "focus": null,
      "player": "카마라",
      "quote": "원문 「I don't think that midfield's been protected enough with what's around it. I feel like it's quite isolated at times」(미드필드가 주변으로부터 충분히 보호받지 못하고 때때로 고립된다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "kamara_isolated_by_narrow_shape",
+     "value_kr": "좁은 대형 탓에 카마라 고립",
      "verdict": "HELD",
      "verdict_note": "이 경기 카마라 평점 7.3·경합 9-4 우위로 실측상 손해 미확인. 재판정 조건: 카마라 구역 상대 통과 패스 수(WhoScored) 2경기 이상"
     }
@@ -2937,36 +3069,42 @@
     {
      "axis": "instruction",
      "field": "winger_width",
+     "field_kr": "윙어의 폭",
      "focus": null,
      "player": "가르나초",
      "quote": "「He's telling Garnacho to get back wide to hug that touch line」(가르나초에게 다시 넓게 벌려 터치라인을 붙으라고 지시했다; auto-caption, 진행자의 손짓 해석)",
      "role_id": null,
      "team_code": "AVL",
      "value": "hold_touchline_when_ball_far_side",
+     "value_kr": "볼이 반대편일 때 터치라인 유지",
      "verdict": "PENDING",
      "verdict_note": "친선 1경기·좌표 없음. 공식전(10-10 브렌트포드전~) avg_y·히트맵 폭으로 검증한다."
     },
     {
      "axis": "instruction",
      "field": "cam_wide_rotation",
+     "field_kr": "공격형 미드 측면 교대",
      "focus": null,
      "player": "부엔디아",
      "quote": "「Garnacho starts to invert. Buendía takes that run to the outside. It frees up that space」(가르나초가 안으로 들어가기 시작하고 부엔디아가 바깥으로 달린다. 그게 공간을 연다; auto-caption)",
      "role_id": null,
      "team_code": "AVL",
      "value": "outside_run_when_winger_inverts",
+     "value_kr": "윙어가 안으로 들어오면 바깥 침투",
      "verdict": "PENDING",
      "verdict_note": "친선 1경기. 공식전 CAM 히트맵 우측 편중 여부로 검증한다."
     },
     {
      "axis": "limit",
      "field": "near_post_runs",
+     "field_kr": "니어포스트 침투",
      "focus": null,
      "player": "타미 아브라함",
      "quote": "「Why is he not running across the defenders? Why is he holding that position at the back post?」(왜 수비 앞을 가로질러 뛰지 않나? 왜 파포스트에 머물러 있나?; auto-caption)",
      "role_id": null,
      "team_code": null,
      "value": "absent_holds_back_post",
+     "value_kr": "니어 침투 없이 파포스트에 머묾",
      "verdict": "PENDING",
      "verdict_note": "09-12 포레스트전 Tanswell 「비침투」 서술과 같은 방향 — 누적 2건. 공식전 박스 안 터치 분포로 검증한다."
     }
@@ -3063,24 +3201,28 @@
     {
      "axis": "instruction",
      "field": "goretzka_deployment",
+     "field_kr": "고레츠카 기용 위치",
      "focus": null,
      "player": "고레츠카",
      "quote": "원문 「he can play six, eight, and 10 … I suspect he'll probably be in the double pivot. Um, and at times maybe we'll see him in the 10」(6·8·10번이 다 되지만 아마 더블 피벗일 것이고, 때로는 10번일 수도 있다)",
      "role_id": null,
      "team_code": null,
      "value": "double_pivot_primary_occasional_10",
+     "value_kr": "주로 더블 피벗, 때때로 10번",
      "verdict": "PENDING",
      "verdict_note": "출전 0분 시점의 팬 예상이라 판정할 재료가 없다. 재판정 조건: 고레츠카 첫 2경기 선발의 pos_label·평균 좌표가 나오면 현 처방(cam_playmaker/Build-Up)과 대조한다. ⚠️ auto-caption(「Geretska」로 오인식)."
     },
     {
      "axis": "team_axis",
      "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
      "focus": null,
      "player": null,
      "quote": "원문 「we've gone a bit more direct this season … we're just not quite as on the floor as we have been in more recent years」(이번 시즌 조금 더 직선적으로 바뀌었다 … 최근 몇 년만큼 바닥으로 풀지 않는다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "Counter",
+     "value_kr": "역습",
      "verdict": "PENDING",
      "verdict_note": "팬 관찰(근거 등급 D) — 방향은 토트넘전 롱볼 비중 14.5%(26/27 최고, D7zbh9-q8d8 claim)와 맞지만, 그 경기는 상대 맞춤 설계였다는 것이 기존 판정이다. 재판정 조건: 시즌 리그 경기의 롱패스 비율·GK 롱킥 비중이 25/26 대비 일관되게 높으면(3경기 이상) 시즌 정본으로 올린다. 1경기 맞춤 설계와 시즌 기본값을 구분할 것. ⚠️ auto-caption."
     }
@@ -3210,60 +3352,70 @@
     {
      "axis": "instruction",
      "field": "release_speed",
+     "field_kr": "볼 처리 속도",
      "focus": null,
      "player": "스즈키 지온",
      "quote": "원문 「キャッチしたらさっさと投げればいいんすけど、投げないんすよね。あそこ多分あえてなんじゃなかろうかなと」(잡으면 빨리 던지면 되는데 던지지 않는다. 아마 일부러인 것 같다)",
      "role_id": null,
      "team_code": null,
      "value": "catch_then_hold_until_shape_set_then_long_ball",
+     "value_kr": "잡은 뒤 대형이 갖춰질 때까지 쥐고 롱볼",
      "verdict": "PENDING",
      "verdict_note": "해설자 본인이 추측이라고 밝혔다(「予想でしかない」/예상일 뿐). 재판정 조건: Opta 이벤트에서 스즈키 Claim/KeeperPickup → 다음 스즈키 Pass까지의 초 단위 간격과 그 패스의 Longball 비율을 2경기 이상 집계해, 빠른 스로 대신 지연 후 롱볼이 다수면 확정한다. ⚠️ auto-caption."
     },
     {
      "axis": "instruction",
      "field": "long_ball_target_zone",
+     "field_kr": "롱볼 목표 구역",
      "focus": null,
      "player": null,
      "quote": "원문 「相手のサイドバック2人ですね、グレイとロバートソンがかなり上がっていきやすくって、その裏スペースを狙うっていうことやっていて」(상대 풀백 두 명, 그레이와 로버트슨이 꽤 올라가기 쉬워서 그 배후 공간을 노리는 걸 하고 있었다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "behind_advanced_fullbacks",
+     "value_kr": "전진한 상대 풀백 뒤",
      "verdict": "PENDING",
      "verdict_note": "같은 경기에 대한 D7zbh9-q8d8 claim(behind_advanced_fullbacks)이 이미 Opta 실측으로 APPLIED다 — 이 영상은 다른 언어권·다른 채널의 독립 수렴이지만 같은 중계 화면을 본 해설이라 완전한 독립 교차검증은 아니다(불변규칙 12 주의). 값 변경 없음. ⚠️ auto-caption."
     },
     {
      "axis": "instruction",
      "field": "defensive_shape_second_half",
+     "field_kr": "후반 수비 형태",
      "focus": null,
      "player": null,
      "quote": "원문 「ビラがちょっとローブロック式始めましたね。エメリーお得意の442のローブロック守備やり始めて」(빌라가 로우블록을 깔기 시작했다. 에메리 특유의 4-4-2 로우블록 수비를 시작해서)",
      "role_id": null,
      "team_code": "AVL",
      "value": "442_low_block_left_side_fixed",
+     "value_kr": "4-4-2 낮은 블록, 좌측 고정",
      "verdict": "PENDING",
      "verdict_note": "같은 후반을 UTV(-5lhUwdm9QU)는 백5·백6 하강으로 읽어 APPLIED돼 있다 — 「저블록」은 일치하나 형태 단위가 갈린다. 재판정 조건: 후반 수비 국면 평균 좌표에서 윙어(부엔디아·맥긴)가 수비 라인 높이까지 내려앉았는지(백5/6) 미드 라인에 남았는지(4-4-2)를 하프 분할로 확인한다. ⚠️ auto-caption."
     },
     {
      "axis": "instruction",
      "field": "halftime_left_side_cover",
+     "field_kr": "하프타임 좌측 커버",
      "focus": null,
      "player": null,
      "quote": "원문 「ゴメスとブエリア。ここの2人がね、かなり対策取ってくれてて、グレイが上がっていったとしても、そこしっかりついていくし」(고메스와 부엔디아, 이 두 명이 꽤 대책을 세워서 그레이가 올라가도 확실히 따라붙었다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "gomes_buendia_track_gray_savinho",
+     "value_kr": "주앙 고메스·부엔디아가 그레이·사비뉴 추적",
      "verdict": "PENDING",
      "verdict_note": "재판정 조건: 토트넘 우측(사비뉴·그레이)의 전·후반 이벤트 수·박스 진입을 하프 분할로 비교해 후반 감소가 확인되면 APPLIED. 해설은 대가로 빌라 우측(캐시·맥긴)이 흔들렸다고 지적하므로 반대편 증가도 함께 본다. ⚠️ auto-caption(「ブエリア」는 부엔디아 오인식)."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Attack",
      "player": "만잠비",
      "quote": "원문 「状況によってはサイド突破、状況によっては裏抜けっていうので2個役割があるんですけど、それ1番できるのが多分(萬ザン)ビだからっていうのでトップ下になっている」(상황에 따라 측면 돌파, 상황에 따라 배후 침투라는 두 역할이 있는데 그걸 가장 잘하는 게 아마 만잠비라서 톱 하에 서 있다)",
      "role_id": "cam_halfwinger",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "PENDING",
      "verdict_note": "역할(cam_halfwinger)은 현 처방(CAM cam_halfwinger/Balanced .861)과 같고, 영상은 배후 침투 비중을 근거로 Attack 쪽을 시사한다. 재판정 조건: 만잠비 CAM 선발 표본이 3경기 이상 쌓인 뒤 Attack이 Balanced를 fit Δ>0.05로 앞서면 focus를 바꾼다. ⚠️ auto-caption(이름이 「萬山日」「萬ザ日」 등으로 오인식)."
     }
@@ -3299,36 +3451,42 @@
     {
      "axis": "instruction",
      "field": "long_ball_target_zone",
+     "field_kr": "롱볼 목표 구역",
      "focus": null,
      "player": null,
      "quote": "원문 「if their fullbacks come forward, there's space behind their fullbacks … a lot of that was by design」(그들의 풀백이 전진하면 그 뒤에 공간이 생긴다 … 상당 부분이 설계된 것이었다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "behind_advanced_fullbacks",
+     "value_kr": "전진한 상대 풀백 뒤",
      "verdict": "APPLIED",
      "verdict_note": "실측이 지지한다. Opta(pulled 2026-09-21 scope=full): 스즈키 롱볼 27회(성공 10) · 골킥 7회 전부 롱 · 이 경기 롱볼 비중 14.5%는 26/27 최고(obs#864). 에메리 본인이 「롱볼은 설계」를 1차 진술했고(obs#882) 상대 감독이 경기 전 정량 스카우팅으로 독립 확인했다(claim #140). ⛔ 시즌 정본 team_tactic_setups(Short Passing)는 바꾸지 않는다 — 에메리의 빌드업은 상대 의존이고 헐전 롱볼 5.6%가 같은 시즌에 있다."
     },
     {
      "axis": "instruction",
      "field": "long_ball_pin_effect",
+     "field_kr": "롱볼의 고정 효과",
      "focus": null,
      "player": null,
      "quote": "원문 「it made sure that Archie Gray had to stay back. It made sure that Andy Robertson had to stay back」(아치 그레이가 뒤에 남아야 했고 앤디 로버트슨도 뒤에 남아야 했다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "pins_opposition_fullbacks",
+     "value_kr": "상대 풀백을 뒤에 묶어 둠",
      "verdict": "APPLIED",
      "verdict_note": "⛔ 실측이 부분적으로만 지지한다. 토트넘 풀백의 전진 빈도를 보유 이벤트로 대리 측정하면 로버트슨(LB)은 전반 n=29 → 후반 n=51로 **오히려 76% 늘었고** y도 75.1→80.8로 더 벌어졌다 — 후반에는 억제되지 않았다. 그레이는 전반 n=20 → 후반 n=21로 불변. ⇒ 「묶어뒀다」는 전반 한정 서술일 수 있으나 채널은 구간을 특정하지 않았다. ⛔ 재판정 조건: 전반/후반을 나눈 상대 풀백 전진 지표(터치 x 평균·파이널서드 진입 수)를 롱볼 시도 직후 60초 창으로 좁혀 산출한다. 그 창에서 풀백 x가 유의하게 낮으면 APPLIED.\n[D+3 2026-09-21 재계산 — APPLIED] WhoScored matchId 1983589 재수집(1627건) 후 조건대로 '롱볼 시도 직후 60초 창' vs '창 밖'으로 토트넘 풀백(포로/그레이 RB · 로버트슨 LB) x 위치를 분리했다. AVL 롱볼 54회. 창밖 x̄=60.2(n=82) → 창안 x̄=49.7(n=92), Δ10.5, Welch t=2.98(양쪽 합산). 개별로도 로버트슨 창밖 65.1→창안 52.3(Δ12.7, t=3.11)로 유의, 포로/그레이는 55.6→45.0(Δ10.6, t=1.80·경계선). ⇒ 조건 충족(유의하게 낮음) — 이전 D+2의 반박(로버트슨 전반/후반 이벤트 수 29→51 증가)은 '전진 빈도'를 재는 잘못된 지표였다 — 이벤트 수가 늘어도 그 순간의 위치가 눌려있으면 억제는 유지된다. obs#938."
     },
     {
      "axis": "instruction",
      "field": "pivot_partnership_ball_dominance",
+     "field_kr": "피벗 짝의 볼 주도권",
      "focus": null,
      "player": null,
      "quote": "원문 「Neither of them want to be massively ball dominant」(둘 다 볼을 크게 지배하려 하지 않는다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "kamara_gomes_neither_dominant",
+     "value_kr": "카마라·주앙 고메스 누구도 주도 못 함",
      "verdict": "PENDING",
      "verdict_note": "이 경기 실측: 카마라 패스 42(성공 35)·터치 48 · 주앙 고메스 패스·터치는 비슷한 대역이고 어느 쪽도 팀 배급을 독점하지 않는다. 다만 「지배하려 하지 않는다」는 성향 주장이라 단일 경기로 판정하지 않는다. ⛔ 재판정 조건: 두 선수 동시 선발 3경기에서 팀 패스 점유율 상위 1·2위를 CB가 차지하는 패턴이 반복되면 APPLIED.\n[D+3 2026-09-21 — 조건 미충족, PENDING 유지] 카마라·고메스 동시 선발 공식전은 이번 경기까지 4경기(08-12 슈퍼컵·08-23 PL·09-08 UCL·09-19 PL)이지만 08-23은 stats_json 결손으로 패스 집계 불가. 패스량 랭킹: 08-12 슈퍼컵(부엔디아1·캐시2·린델뢰프3, 카마라8·고메스9 — CB 상위 아님) / 09-08 UCL(파우 토레스1·린델뢰프2 — **CB 듀오가 상위 1·2위**, 카마라3·고메스5) / 09-19 이 경기(밍스1·카마라2 — CB 1명만 상위, 고메스는 순위 밖). ⇒ 「CB가 1·2위」 패턴은 3경기 중 1경기(09-08)에서만 나타나 **반복 조건 미충족**. PENDING 유지.\n[2026-10-11 스케줄 재확인(avl-kamara-gomes-cocheck-1010) — PENDING 유지 · 사람 판단 요청] 09-19 이후 AVL 공식전은 10-10 PL 브렌트퍼드전(match_id=115) 1경기(10-02 세비야전은 친선 — 제외). 카마라·고메스 둘 다 선발. SofaScore pass_total 랭킹: 밍스(LCB) 47 1위 · 린델뢰프(RCB) 46 2위 · 카마라 44 3위 · 스즈키 42 · 고메스·캐시 40 공동 5위 ⇒ **CB 듀오 1·2위 ✓**. 누적(패스 집계 가능한 동시 선발 공식전, 08-23 결손 제외): 08-12 ✗ / 09-08 ✓ / 09-19 ✗ / 10-10 ✓ = **2/4**. ⚠️ 판정 보류 사유: 원 조건 「3경기에서 반복」이 '2회 이상 출현(=반복)'인지 '3경기 중 다수/최근 3경기 기준(09-08~10-10 = 2/3)'인지 불명확하고, 전체 표본으론 50%다. 리포트 #51(reports/match-watch/2026-10-10-avl-brentford.md §7-1)은 「다음 동시 선발에서 한 번 더 나오면 APPLIED」로 적었다 — 기준 확정은 사용자 판단에 맡긴다. 참고: WhoScored 이벤트 집계로는 캐시 51·밍스 47·스즈키 46·린델뢰프 46으로 순위가 달라진다(정의 차이 — 판정은 SofaScore 기준 유지). 이월: 다음 카마라·고메스 동시 선발 공식전에서 재확인.\n[2026-10-11 사용자 결정] 2/4(최근 3경기 2/3)로는 APPLIED하지 않고 **다음 카마라·고메스 동시 선발 공식전 1경기를 더 본 뒤 판정**한다. 그 경기에서 CB 듀오가 패스량(SofaScore pass_total) 1·2위면 3회째 출현 → APPLIED 후보로 사람 판단에 올린다.\n[D+1 2026-10-11 브렌트퍼드전 추적] 새 패스 증거 없음(사용자 결정대로 다음 동시 선발 경기 대기). 정황만 추가: 1874 「Brenford really pressed him [Gomes] … from goal kicks」(골킥 빌드업 때 고메스를 집중 압박) — 고메스가 배급 축이 되지 못한 원인 후보(상대 표적 압박). Tanswell HT 「not sure if he can do that with Gomes & Kamara, who love duels」. PENDING 유지.\n[D+2 2026-10-12 — PENDING 유지] 새 패스 실측 없음. UTV 전술 리뷰(YV8GaXrtRpo)는 고메스를 네트워크 허브로 그린다 — #167의 반대 방향 정황이나 물량 지표(CB 1·2위)와 다른 축(obs#990). 재판정 조건 불변: 다음 동시 선발 경기에서 CB 1·2위가 한 번 더 나오면 APPLIED.\n[D+3 2026-10-13 — PENDING 유지 · 3일 추적 종결 후 이관] 새 패스 실측 0. 1874(4GBP2O02vTI)는 카마라 백3 하강 빌드업을 「제안」했으나 이 경기에서 관찰되지 않았다(카마라 점유 국면 자기 진영 최하단 행 .07 — claim REJECTED). ⛔ 재판정 조건 불변: 다음 카마라·고메스 동시 선발 공식전(예상 10-14 UCL 페네르바체전)에서 SofaScore pass_total 1·2위가 CB 듀오면 3회째 → APPLIED 후보로 사람 판단. 그 경기 match-watch 회차가 이 행을 이어받는다(obs#1005)."
     }
@@ -3361,12 +3519,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": "구현 축 주장 없음 — 선수 본인 경기 후 인터뷰(득점 장면 설명·적응 서사).",
      "role_id": null,
      "team_code": "AVL",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "axis=none. ⭐ 득점 장면 본인 설명이 우리 어시스트 기록(카마라)과 정합함을 확인했다. ⚠️ 72′ 교체·전반 치료 질문은 인터뷰에 0건. ※ axis=none 규약상 대상 칼럼은 비운다 — 만잠비 귀속 내용은 player_duties·observations로 옮겼다(G17)."
     }
@@ -3397,24 +3557,28 @@
     {
      "axis": "instruction",
      "field": "first_half_tempo_control",
+     "field_kr": "전반 템포 통제",
      "focus": null,
      "player": null,
      "quote": "「ciertamente más físico, metió, creo que fueron 10 faltas en la primera parte y empezaba a tomar el control」(「더 피지컬하게, 전반에 10개의 파울을 범하며 통제를 쥐기 시작했다」)",
      "role_id": null,
      "team_code": "ATM",
      "value": "fouls_to_deny_opposition_transitions",
+     "value_kr": "파울로 상대 전환 차단",
      "verdict": "PENDING",
      "verdict_note": "실측과 숫자까지 일치한다(1H 파울 10:3·경기 19:6). 다만 「의도된 전술」이라는 해석은 해설자 판단이고 감독 발언으로 뒷받침되지 않았다 — 시메오네는 파울을 언급하지 않았다. 재판정 조건: 라리가 3경기 누적 1H 파울이 상대의 2배 이상으로 반복되면 manager_profiles defence 축에 「템포 차단 파울」을 정식 등재한다."
     },
     {
      "axis": "instruction",
      "field": "opposition_winger_containment",
+     "field_kr": "상대 윙어 봉쇄",
      "focus": null,
      "player": null,
      "quote": "「la idea del Cholo Simeone, más que pendiente de Tchouaméni y Valverde, era de que jugasen banda Güler y Vinicius」(「촐로의 아이디어는 추아메니·발베르데를 신경 쓰기보다 귈러와 비니시우스를 측면에서 뛰게 만드는 것이었다」)",
      "role_id": null,
      "team_code": "ATM",
      "value": "force_wide_not_press_pivot",
+     "value_kr": "피벗 압박보다 측면으로 몰기",
      "verdict": "PENDING",
      "verdict_note": "실측 PPDA 1H 12.46(중블록)·def_x 38.3(상대보다 낮음)과 방향이 맞는다 — 중앙을 막고 측면으로 밀었다는 서술. 단 상대 윙어의 터치 분포를 우리가 수집하지 않아 직접 확인은 불가. 재판정 조건: 상대 윙어 터치의 측면 비율을 수집하는 축을 docs/60 양식으로 사전등록한 뒤 판정한다."
     }
@@ -3447,12 +3611,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "ATM 구현 주장 0건 — 상대팀 관점 판정 논쟁 중심. 「미작성」이 아니라 「주장 없음」임을 남긴다."
     }
@@ -3484,12 +3650,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "무리뉴 회견 구간에 ATM 구현 주장 0건(심판 논쟁이 회견 전체를 지배). 같은 영상 45:51~의 시메오네 구간 주장은 o_K-WGntCx4(동일 회견 단독 영상)에 기록했다 — 중복 적재하지 않는다."
     }
@@ -3522,36 +3690,42 @@
     {
      "axis": "instruction",
      "field": "attack_target_side",
+     "field_kr": "공격 표적 측면",
      "focus": null,
      "player": null,
      "quote": "「buscando dónde le podíamos hacer daño, que sabíamos que era por la derecha」(「어디서 상대에게 피해를 줄 수 있을지 찾았고, 그게 오른쪽이라는 걸 알고 있었다」)",
      "role_id": null,
      "team_code": "ATM",
      "value": "right_flank_by_design",
+     "value_kr": "설계된 우측 표적",
      "verdict": "PENDING",
      "verdict_note": "감독 1차 발언 + 실측 정합(이강인 tool_x 74.7·줄리아노 82.9·요렌테 77.6, PK·2골 모두 우측)이지만 단일 경기다. 재판정 조건: 퇴장 없는 라리가 2경기에서 우측 3인(이강인·줄리아노·우측 풀백) 평균 tool_x 합이 좌측 3인을 계속 상회하면 manager_profiles in_possession 축에 반영한다."
     },
     {
      "axis": "instruction",
      "field": "second_half_danger_conceded",
+     "field_kr": "후반 허용 위기 장면",
      "focus": null,
      "player": null,
      "quote": "「en el segundo tiempo, solo en el fallo ese entre el Cuti Marco que se chocan para Diamandés… fue la única situación de peligro que atravesó el equipo más el gol」(「후반에는 쿠티와 마르코가 충돌해 디오망데에게 간 그 실수 하나뿐이었다… 골 말고는 팀이 겪은 유일한 위험 장면이었다」)",
      "role_id": null,
      "team_code": "ATM",
      "value": "cuti_llorente_miscommunication_to_diomande",
+     "value_kr": "쿠티·요렌테 충돌로 디오망데에게 기회",
      "verdict": "PENDING",
      "verdict_note": "실측 대조 완료 — 후반 레알 오픈플레이 슛은 77′ 디오망데(xG 0.0706·xGOT 0.0194·세이브) 1건뿐이라 장면 특정은 성립한다. 다만 「쿠티-요렌테 충돌」이라는 원인은 좌표 이벤트로 확인 불가(터치·충돌 로그 없음) — 영상 확인이 필요해 PENDING."
     },
     {
      "axis": "instruction",
      "field": "koke_bench_rationale",
+     "field_kr": "코케 벤치 사유",
      "focus": null,
      "player": null,
      "quote": "「Lo vieron a Coke 30 y pico de años y no juega de titular el partido de su vida… entra en el segundo tiempo y la rompe toda」(「코케를 봐라, 서른 몇 살에 인생의 경기에 선발로 못 나서고… 후반에 들어와 다 부숴버린다」)",
      "role_id": null,
      "team_code": "ATM",
      "value": "impact_example_not_starting_shift",
+     "value_kr": "선발 전환 아닌 교체 임팩트 사례",
      "verdict": "PENDING",
      "verdict_note": "리포트 §7 재검증 ⑶(코케 선발 논의)에 대한 1차 답 — 감독은 선발 전환을 시사하지 않았고 교체 임팩트를 팀 문화 사례로 썼다. 재판정 조건: 다음 라리가 2경기 중 1회라도 코케가 선발이면 이 판정을 정정한다."
     }
@@ -3584,12 +3758,14 @@
     {
      "axis": "limit",
      "field": "back_three_not_auto_stability",
+     "field_kr": "백3의 안정성 한계",
      "focus": null,
      "player": null,
      "quote": "원문 「**Dreierkette bedeutet nicht automatisch defensive Sicherheit.**」(**백3가 자동으로 수비 안정을 뜻하지 않는다.**) · 「Die Dreierkette bekommt plötzlich **Probleme in Räumen, die eigentlich abgesichert sein sollten**」(백3가 **원래 보호돼야 할 공간에서** 문제를 겪는다.) — auto-caption, 🇩🇪",
      "role_id": null,
      "team_code": "CHE",
      "value": "space_behind_wingbacks",
+     "value_kr": "윙백 뒤 공간 노출",
      "verdict": "HELD",
      "verdict_note": "⛔ **재판정 조건**: 「보호돼야 할 공간」이 구체적으로 어디인지 영상이 좌표로 특정하지 않는다. ⇒ 우리 국면 그리드(이 경기 14명 신규 채움)로 **윙백 배후 구역의 상대 보유 셀 밀도**를 내고, 백4 경기와 대조되면 판정한다. ⭐ 현재 정황은 방향이 맞다: 첼시 def_x 41.0(높음)인데 3실점했고, 상대는 **역습 위협을 게임플랜으로 명시**했다(앤드루스 회견). ⚠️ 이 영상은 **시즌 3경기 아크**(7실점)를 다루므로 이 경기 단독 근거로 쓰면 과대 적용이다."
     }
@@ -3621,12 +3797,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "ATM 구현 주장 0건 — 판정 논쟁·상대팀 개인 비판만. 「미작성」이 아니라 「주장 없음」임을 남긴다."
     }
@@ -3658,12 +3836,14 @@
     {
      "axis": "team_axis",
      "field": "formation",
+     "field_kr": "포메이션",
      "focus": null,
      "player": null,
      "quote": "「jugó Mar Pubil de centrales, Cuti Romero y Hanko… Simeone en medio de carrilero llegando de extremo」(「푸빌이 센터백으로, 쿠티 로메로와 한츠코… 시메오네는 윙어처럼 올라가는 윙백으로」)",
      "role_id": null,
      "team_code": "ATM",
      "value": "백3(푸빌 센터백) — 독립 2차 소스",
+     "value_kr": "백3(푸빌 센터백) — 독립 2차 소스",
      "verdict": "PENDING",
      "verdict_note": "OKqnpw4YZyQ와 독립적으로 같은 형태를 읽었다(채널·국가·관점 상이). ⚠️ 그러나 **동일 중계 화면을 본 두 해설이므로 완전한 독립 교차검증은 아니다**(불변규칙 12 주의 지점). 우리 실측(푸빌 tool_x 83.7 — 백3 RCB로는 지나치게 넓다)과는 여전히 어긋나며, 판정은 OKqnpw4YZyQ 항목과 동일한 재판정 조건에 묶는다."
     }
@@ -3696,24 +3876,28 @@
     {
      "axis": "focus",
      "field": null,
+     "field_kr": null,
      "focus": "Build-Up",
      "player": "이삭",
      "quote": "「at the end he has to help us to to be closer to the box to play in a position half to have meaningful possession」(「결국 그는 우리가 박스 가까이 가도록, 더 높은 위치에서 의미 있는 점유를 하도록 도와야 한다.」)",
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "이 경기 처방(st_false9/Build-Up, fit 0.695, Δ0.032 실측 무결정)의 1위를 감독 진술이 지지한다 — 값을 바꾸지 않았으므로 APPLIED가 아니라 HELD다. 재판정 조건: 이삭이 같은 pos_class로 2경기를 더 채운 뒤 재산출했을 때 Attack이 Build-Up을 Δ>0.05로 앞서면 뒤집는다. ⚠️ auto-caption — 「in a position half」는 「in a position higher」의 오인식으로 읽었고, 그 해석에 의존하지 않는 부분(「closer to the box」·「meaningful possession」)만 근거로 썼다."
     },
     {
      "axis": "team_axis",
      "field": "line_height",
+     "field_kr": "라인 높이",
      "focus": null,
      "player": null,
      "quote": "「in moments now that you need to defend our side or they are putting you pressure I think we are we are looking solid」(「이제 우리 진영을 지켜야 하거나 상대가 압박을 거는 국면에서 우리는 단단해 보인다.」)",
      "role_id": null,
      "team_code": "LIV",
      "value": "리드·피압박 국면에서 내려서는 것을 감독이 용인한다(단일 낮은 값 아님)",
+     "value_kr": "리드·피압박 국면에서 내려서는 것을 감독이 용인한다(단일 낮은 값 아님)",
      "verdict": "HELD",
      "verdict_note": "match_game_setups(report 49) line_height 58을 바꾸지 않는다. 이 진술은 하프별 PPDA 반전(8.46→14.60)이 사고가 아님을 지지하지만 「평시 라인을 낮게 설정한다」는 주장은 아니다 — 게임 설정은 국면 전환을 담지 못한다(docs/30 「평균 위치는 국면을 평균해 지운다」와 같은 한계). 재판정 조건: 리드 전후를 분리한 PPDA가 2경기 더 같은 방향으로 반전되면 line_height를 국면 처방(리드 후 하강)으로 분리 기술한다. ⚠️ auto-caption."
     }
@@ -3763,12 +3947,14 @@
     {
      "axis": "instruction",
      "field": "away_vs_top_game_plan",
+     "field_kr": "강팀 원정 게임플랜",
      "focus": null,
      "player": null,
      "quote": "원문 「Villa's perfect willingness to sit in, congest, and then play long over us」(빌라의, 내려앉아 밀집하고 우리 머리 위로 길게 넘기려는 완벽한 의지)",
      "role_id": null,
      "team_code": "AVL",
      "value": "defend_deep_then_transition",
+     "value_kr": "깊게 수비한 뒤 전환",
      "verdict": "APPLIED",
      "verdict_note": "⭐ **상대 코치 시각의 독립 확인**이다(claim #137 보강). 우리 실측(def_x 30.6 · PPDA 13.24 · 후반 점유 29% · 롱볼 14.5%)과 상대 감독의 사전 스카우팅(claim #140)과 같은 방향이다. 제3자·적대적 소스가 같은 구조를 서술했다는 점이 추가 정보다. 시즌 정본은 바꾸지 않는다."
     }
@@ -3799,60 +3985,70 @@
     {
      "axis": "instruction",
      "field": "right_side_overload",
+     "field_kr": "우측 과부하",
      "focus": null,
      "player": null,
      "quote": "「hasta cuatro jugadores por este sector del Atlético Madrid para un solo lateral」(「이 구역에 아틀레티코 선수가 최대 4명, 상대는 풀백 한 명」)",
      "role_id": null,
      "team_code": "ATM",
      "value": "four_v_one_on_opposition_left_back",
+     "value_kr": "상대 좌측 풀백에 4대1",
      "verdict": "PENDING",
      "verdict_note": "감독 발언(우측 표적)과 같은 메커니즘을 선수 배치로 설명한 것 — 근거는 영상 화면이고 우리 좌표로는 「우편중」까지만 확인된다(동시성·수적 우위는 미검증). 재판정 조건: 패스 네트워크 또는 구간 좌표를 재수집해 우측 3~4인 동시 진입 빈도를 세면 확정 가능."
     },
     {
      "axis": "instruction",
      "field": "koke_bench_rationale",
+     "field_kr": "코케 벤치 사유",
      "focus": null,
      "player": null,
      "quote": "「Pedía situar a tres centrocampistas más guerreros, Johnny, Marcos Llorente, Alex Baena… A Coke esto le cuesta un poquito más」(「더 전사 같은 미드필더 3인, 조니·요렌테·바에나를 놓아야 했다… 코케는 그게 좀 더 힘들다」)",
      "role_id": null,
      "team_code": "ATM",
      "value": "first_half_needs_recovering_midfielders",
+     "value_kr": "전반엔 볼 회복형 미드필더가 필요",
      "verdict": "PENDING",
      "verdict_note": "시메오네 본인 발언(교체 임팩트 예시)과 독립적으로 같은 결론(선발 전환 아님)에 도달했다 — 리포트 §7 ⑶은 이로써 「현 시점 선발 전환 근거 없음」으로 닫는다. 재판정 조건: 코케가 다음 2경기 중 선발하면 정정."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Attack",
      "player": "이강인",
      "quote": "「Kangli que también caía a banda desde la posición de delantero centro」(「이강인도 최전방 위치에서 측면으로 빠졌다」)",
      "role_id": "st_false9",
      "team_code": "ATM",
      "value": null,
+     "value_kr": null,
      "verdict": "PENDING",
      "verdict_note": "리포트 §7 재검증 ⑴(이강인 RST 슬롯 의심)에 대한 서사 측 답 — 슬롯은 명목상 투톱이 맞고 **측면으로 빠지는 것이 설계된 우측 과부하의 일부**라는 설명이다. 시메오네 본인 발언(「sabíamos que era por la derecha」)·실측 tool_x 74.7과 3중 수렴하지만 prescriptions는 이번에도 바꾸지 않는다(Δ0.046 실측 무결정). 재판정 조건: 다음 경기에서도 tool_x>70이면 슬롯 표기를 RST 유지 + role_note에 우측 과부하를 명기한다."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Support",
      "player": "마르코스 요렌테",
      "quote": "「Marcos Llorente volvió a ser ese lateral derecho. Cuando el Atlético no tenía el balón, Marcos Llorente se posicionaba como tercer central」(「요렌테가 다시 우측 풀백이 됐다. 공이 없을 때는 세 번째 센터백으로 섰다」)",
      "role_id": "fb_wingback",
      "team_code": "ATM",
      "value": null,
+     "value_kr": null,
      "verdict": "PENDING",
      "verdict_note": "실측 하프 분할(1H x̄ 56.4·ȳ 28.7 → 2H 44.1·17.7)과 방향 일치하지만, 이 경기 처방은 전반 RCM 표본이 섞여 단일 행으로 확정할 수 없다(리포트 §5 한계 ②). 재판정 조건: 요렌테가 90분 전부 우측 풀백으로 뛴 경기가 나오면 그때 fb_* 축으로 확정한다."
     },
     {
      "axis": "team_axis",
      "field": "formation",
+     "field_kr": "포메이션",
      "focus": null,
      "player": null,
      "quote": "「optó por los tres centrales con Hanko, Cuti Romero y Mark Pubil, más dos carrileros… Además lo hacía en un 532」 / 「Tanto Grimaldo y Mar Pubil justamente actuaban como laterales」(「3센터백에 두 윙백… 5-3-2로 했다」 / 「그리말도와 푸빌이 (보유 시) 풀백처럼 움직였다」)",
      "role_id": null,
      "team_code": "ATM",
      "value": "5-3-2 (비보유) ↔ 4-4-2 (보유)",
+     "value_kr": "5-3-2 (비보유) ↔ 4-4-2 (보유)",
      "verdict": "PENDING",
      "verdict_note": "우리 실측과 정면으로 판정할 수 없다 — 국면 그리드의 **비보유 표본이 푸빌 n=3**이라 백3 여부를 가릴 수 없다(ATM 점유 61%). 방향 단서는 엇갈린다: 비보유 전진값(0=최후방)이 CB 0.69~0.92인데 그리말도 1.89(n=9)·줄리아노 1.62(n=21)로 **한 행 앞**이라 플랫 백5보다 백4 미드블록에 가깝다. 재판정 조건: 다음 ATM 경기에서 우측 풀백의 비보유 셀 n≥15를 확보해 CB 라인과 같은 행에 서는지 본다."
     }
@@ -3887,24 +4083,28 @@
     {
      "axis": "instruction",
      "field": "away_vs_top_game_plan",
+     "field_kr": "강팀 원정 게임플랜",
      "focus": null,
      "player": null,
      "quote": "원문 「the manager was expecting at minimum nil-nil at halftime」(감독은 하프타임에 최소한 0-0을 기대하고 있었다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "defend_deep_then_transition",
+     "value_kr": "깊게 수비한 뒤 전환",
      "verdict": "APPLIED",
      "verdict_note": "claim #137의 **3번째 독립 확인**이다 — 에메리 본인(「keeping the result with nil nil was our process to try to grow up during the match」/0-0으로 결과를 유지하는 것이 경기 중 성장하려는 우리의 프로세스였다) · 맥긴(이 전언) · 실측(def_x 30.6 · PPDA 13.24 · 전반 점유 43%). 시즌 정본은 바꾸지 않는다(단일 경기)."
     },
     {
      "axis": "instruction",
      "field": "set_piece_defending_marking",
+     "field_kr": "세트피스 수비 마킹",
      "focus": null,
      "player": null,
      "quote": "원문 「a pretty simple straight set piece that just cleared the head of Tyrone Mings」(밍스의 머리를 넘긴 아주 단순한 세트피스)",
      "role_id": null,
      "team_code": "AVL",
      "value": "mark_drop_under_flight_fail",
+     "value_kr": "볼이 날아오는 동안 마크를 놓침",
      "verdict": "APPLIED",
      "verdict_note": "⭐ claim #143이 건 재판정 조건(**독립 2번째 소스**)이 충족됐고 실측이 메커니즘을 확인한다. Opta 97′28 반헤케 골 quals = **Head + BoxCentre + SetPiece + FirstTouch**, 어시스트는 로버트슨의 **Cross + FreekickTaken**(프리킥이지 코너가 아니다). ⇒ 「세트피스 크로스가 박스 중앙에서 공중 경합을 이기고 헤더로 마무리됐다」까지 확정된다. ⛔ 잔여 한계: **개인 마킹 배치**(누가 누구를 놓쳤는가)는 우리 이벤트 데이터로 여전히 특정되지 않는다 — 「밍스의 머리를 넘었다」는 영상 서술 1소스에 의존한다. 이 해상도까지만 APPLIED로 닫는다."
     }
@@ -3937,12 +4137,14 @@
     {
      "axis": "instruction",
      "field": "halftime_left_side_cover",
+     "field_kr": "하프타임 좌측 커버",
      "focus": null,
      "player": null,
      "quote": "원문 「tactical tweak at halftime that Emry got going on that left side with Wendia helping out a lot more and I think it allowed Roger to be more free」(에메리가 하프타임에 좌측에서 부엔디아가 훨씬 더 많이 커버하도록 전술을 손봤고, 그것이 루헤리를 더 자유롭게 만들었다고 본다.) — auto-caption, Wendia=Buendía · Roger=Ruggeri",
      "role_id": null,
      "team_code": "AVL",
      "value": "winger_tucks_to_support_lb",
+     "value_kr": "윙어가 좁혀 좌측 풀백 지원",
      "verdict": "APPLIED",
      "verdict_note": "⭐ 실측이 방향을 지지한다. 부엔디아 수비액션: **전반 9건 → 후반 16건**으로 늘었고, 깊이는 전반 20′~HT **x평균 54.1 → 후반 42.7**로 내려왔다. 전반 0~20′ 구간만 24.1로 낮은데 이는 **사비뉴 상대 좌측 과부하**(Bains·Tanswell 서술)와 정합한다 — 즉 전반 초반 강요된 하강 → 20′ 이후 반등 → HT 조정으로 안정적 커버. ⇒ 게임 구현 함의: 좌측 와이드의 Support 성향(수비 가담) 유지 근거. ⛔ 단일 경기이므로 슬롯 정본은 변경하지 않는다."
     }
@@ -3973,36 +4175,42 @@
     {
      "axis": "instruction",
      "field": "concession_second_ball_clear",
+     "field_kr": "실점 장면 세컨드볼 처리",
      "focus": null,
      "player": null,
      "quote": "원문 「We have one opportunity to deal with it here. Rejieri, clear it. We then have another opportunity here. Buendía, win the ball. Clear it. We don't.」(여기서 처리할 기회가 한 번 있었다. 루헤리, 걷어내라. 여기서 또 한 번 기회가 있었다. 부엔디아, 볼을 따내라. 걷어내라. 우리는 못 했다.) — auto-caption, Rejieri=Ruggeri",
      "role_id": null,
      "team_code": "AVL",
      "value": "second_clear_fail_ruggeri_buendia",
+     "value_kr": "루헤리·부엔디아의 두 차례 걷어내기 실패",
      "verdict": "APPLIED",
      "verdict_note": "⭐ **Opta 이벤트 시퀀스가 이 서술을 그대로 확인한다.** 86′(Opta 85′) 장면: 루헤리 Aerial → 루헤리 Interception ×2 → 밍스 Clearance(x 13.8) → **루헤리 BallRecovery(x 21.7) → 루헤리 Dispossessed(쿠두스 Tackle)** → 루헤리 BlockedPass → **부엔디아 TakeOn 실패**(그레이 Tackle) → 쿠두스 BallRecovery → 쿠두스 → 마르무시 → 쿠두스 어시스트 → 갤러거 Goal. 즉 실점 원인은 블록 구조 붕괴가 아니라 **자기 진영 2차 볼 처리 2회 연속 실패**다. ⇒ 게임 구현 함의는 라인/수비접근 축이 아니라 **세컨볼 대응**이며, 이번 회차에 팀 설정은 바꾸지 않는다.\n\n[2026-09-21 D+2 재검증] **APPLIED 유지 — 새 스냅샷에서 시퀀스가 소수점까지 재현된다.** pulled=2026-09-21 scope=full로 다시 받아 84′00~85′46 전 구간을 펼쳤고 D+1이 적은 고리가 그대로 나온다: 85′21 루헤리 Aerial → Interception ×2(85′21·85′31) → 85′35 **밍스 Clearance(Head, x13.8)** → 85′37 **루헤리 BallRecovery(x21.7)** → 85′38 **루헤리 Dispossessed(쿠두스 Tackle)** → 85′39 루헤리 BlockedPass → 85′40 **부엔디아 TakeOn 실패(그레이 Tackle)** → 쿠두스 BallRecovery → 쿠두스 → 마르무시 → 쿠두스(IntentionalAssist·BigChanceCreated) → 85′46 갤러거 Goal. ⭐ **D+2 스윕의 반대 해석을 기각한다**: 라이브블로그 4종이 86′ 실점 경위에 루헤리를 지목하지 않았다는 이유로 「Townley 단독 주장 · 교차검증 실패」로 낮추자는 판단이 있었으나, **Opta가 루헤리의 Dispossessed를 직접 기록**하고 있다. ⇒ 라이브블로그의 침묵은 반대 증거가 아니다(실시간 기록은 실점 경위를 선수 단위로 적지 않는다). ⛔ 단 **최종 상실은 부엔디아의 TakeOn 실패**이고 루헤리의 Dispossessed는 그 앞 고리다 — value가 두 이름을 모두 담고 있는 것이 정확하다. ⚠️ 사족 정정: TNT의 「매티 캐시의 굴절」은 이 스냅샷에도 없다(obs#871 유지). 다만 NBC 라이브가 같은 굴절을 적었다 — 굴절은 Opta 이벤트로 남지 않는 종류라 **미검증으로 유지**하고 DB에 반영하지 않는다."
     },
     {
      "axis": "instruction",
      "field": "set_piece_defending_marking",
+     "field_kr": "세트피스 수비 마킹",
      "focus": null,
      "player": null,
      "quote": "원문 「blockers and grabbers that are grabbing our players that are stopping us when this ball goes to Van Heeka」(우리 선수를 붙잡아 판 헤케에게 볼이 갈 때 우리가 못 가게 막는 블로커·그래버) · 「three players for Villa here who are beyond Ming」(밍스보다 뒤에 있는 빌라 선수가 셋이다) — auto-caption, Van Heeka=van Hecke · Ming=Mings",
      "role_id": null,
      "team_code": "AVL",
      "value": "mark_drop_under_flight_fail",
+     "value_kr": "볼이 날아오는 동안 마크를 놓침",
      "verdict": "APPLIED",
      "verdict_note": "⛔ **재판정 조건**: 세트피스의 개인 마킹 배치는 우리 이벤트 데이터로 특정되지 않는다(리포트 「레퍼런스·한계」에 이미 명시). 현재 근거는 **영상 프레임 1소스**뿐이다. ⇒ 다음 회차에 ⑴ 독립 2번째 프레임 소스(다른 채널·기사) ⑵ 또는 세트피스 실점 2경기째 누적 중 하나가 생기면 재판정한다. 정황 지지: 코너 1-11 · 상대 세트피스 xG 0.57 vs 우리 0.00 · 1874의 「세트피스 양방향 비대칭」 서술. ⚠️ 별건 가설(인과 아님): 세트피스 코치 오스틴 맥피가 2026-07 첼시로 이적했고 25/26 빌라는 세트피스 득점 유럽 공동 1위였다 — **이번 경기를 맥피 부재와 연결한 분석은 0건**이므로 시즌 누적 추적 대상으로만 남긴다.\n\n[2026-09-21 D+2 재판정] **APPLIED** — 재판정 조건 ⑴(독립 2번째 소스)이 충족됐고 실측이 메커니즘을 확인했다. The Holy Trinity Show(dgEOoi6Pdrc, 2026-09-21)가 「a pretty simple straight set piece that just **cleared the head of Tyrone Mings** … that was the **first set piece goal we've conceded in the Premier League this season**」(밍스의 머리를 넘긴 아주 단순한 세트피스 … 이번 시즌 PL 첫 세트피스 실점이었다)로 독립 서술했다. ⭐ Opta가 구조를 확정한다: **97′28 반헤케 Goal quals = Head + BoxCentre + SetPiece + FirstTouch + BigChance**, 어시스트는 **로버트슨의 Cross + FreekickTaken + SetPiece**(코너가 아니라 **프리킥**이다 — D+0의 코너 정황 서술은 이 골에 해당하지 않는다). ⇒ 「세트피스 크로스가 박스 중앙 공중 경합을 이기고 헤더로 마무리됐다」까지 확정. ⛔ **잔여 한계를 남긴다**: 개인 마킹 배치(누가 누구를 놓쳤는가)는 여전히 우리 이벤트 데이터로 특정되지 않는다 — 「밍스의 머리를 넘었다」는 영상 서술 1소스다. **이 해상도까지만 APPLIED**이고 마킹 지시 축의 처방 변경 근거로는 쓰지 않는다. ⚠️ 별건 가설(인과 아님) 유지: 세트피스 코치 오스틴 맥피의 2026-07 첼시 이적."
     },
     {
      "axis": "instruction",
      "field": "gk_role_in_buildup",
+     "field_kr": "빌드업 속 GK 역할",
      "focus": null,
      "player": null,
      "quote": "원문 「Most teams go 'we've got 10 outfield players and a goalkeeper.' Aston Villa have got 11 outfield players.」(대부분의 팀은 「필드 플레이어 10명과 골키퍼 1명이 있다」고 한다. 아스톤 빌라는 필드 플레이어가 11명이다.) — auto-caption",
      "role_id": null,
      "team_code": "AVL",
      "value": "gk_as_eleventh_outfield",
+     "value_kr": "GK를 11번째 필드 플레이어로",
      "verdict": "REJECTED",
      "verdict_note": "⛔ **재판정 조건**: 근거로 제시된 수치(론치 성공률 47% · 골킥 9회 · 패스 32회 정확도 72% 중 롱 15)가 **우리 실측에 없는 축**이다. 우리 값은 스즈키 패스 38회·성공 22(58%)로 **패스 총계부터 어긋난다**(제공사 차이 가능). ⇒ FotMob·SofaScore에서 GK 골킥 숏/롱 분해를 같은 스냅샷으로 받아 대조한 뒤 판정한다. 방향 자체는 obs#864(롱볼 26/27 증가)·claim #141(GK 롱킥 루트 득점 전환)과 정합해 기각 후보는 아니다.\n\n[2026-09-21 D+2 재판정] **REJECTED** — D+1이 건 조건(골킥 숏/롱 분해를 같은 스냅샷으로 대조)을 두 제공사로 집행했다. **Opta: 골킥 7회 · 롱 7 · 숏 0 · 성공 3(43%)**. 숏 골킥이 한 번도 없다 — 「11번째 필드 플레이어」의 핵심 행동이 0회다. 스즈키 패스 43 중 롱 27(성공 10·37%) · 숏 16(성공 16·100%)이나 그 숏은 **오픈플레이 자기 진영**이지 재시작이 아니다. SofaScore(pulled 2026-09-21): 패스 38 · 롱볼 26(정확 9·35%) · 자기진영 14/15 vs 상대진영 7/23. ⇒ 빌드업에서 GK는 참여자가 아니라 **발사대**다. claim #141(GK 롱킥 루트 → 67′ 득점, APPLIED)·obs#864와 같은 방향이므로 방향 자체를 뒤집는 기각이 아니라 **역할 명명의 기각**이다. ⭐ 근거 수치 자체도 무효: UTV의 「골킥 9 · 론치 성공률 47% · 패스 32 중 롱 15」는 Opta·SofaScore 어느 쪽으로도 재현되지 않는 반면 **두 제공사는 서로 수렴한다**(롱볼 27/26 · 37%/35%) — 제공사 차이가 아니라 출처 미상이다. obs#923. ⛔ 단 스위퍼·세컨볼 관여는 별개로 실재한다(KeeperSweeper 1/1 · BallRecovery 12 · 볼캐리 9회 52m) — 이 기각은 `gk_role_in_buildup` 축에 한정된다. obs#922."
     }
@@ -4034,12 +4242,14 @@
     {
      "axis": "instruction",
      "field": "gk_long_kick_route",
+     "field_kr": "GK 롱킥 경로",
      "focus": null,
      "player": null,
      "quote": "원문 「実際今日の我々の2点目でもそれをやってくれた」(실제로 오늘 우리 두 번째 골에서도 그것을 해줬다) — 에메리",
      "role_id": null,
      "team_code": "AVL",
      "value": "goal_kick_to_ten_flick_to_nine",
+     "value_kr": "골킥을 10번에게, 9번에게 연결",
      "verdict": "APPLIED",
      "verdict_note": "⭐⭐ claim #141을 **Opta 이벤트로 확증**한다. 66′08 스즈키 Pass(qualifiers: **Longball + GoalKick**, x4.9) → 잭슨 BallTouch(x67.2) → 만잠비 Pass(**IntentionalGoalAssist + KeyPass**) → 잭슨 TakeOn 성공(반더벤 Challenge 실패) → 66′16 잭슨 Goal(Volley, BoxCentre). ⇒ 「골킥 → 9번 플릭 → 10번 → 9번 마무리」 경로가 이벤트 단위로 복원된다. 감독 본인이 이 연결을 진술했고(일본어 경유) 일본 매체 FOOTBALL ZONE이 같은 시퀀스를 독립 서술했다. ⭐ 이것은 스즈키의 골킥 7회가 전부 롱이었다는 실측(obs · claim #144)과 같은 그림이다 — GK는 빌드업 참여자가 아니라 **득점으로 전환되는 발사대**다."
     }
@@ -4071,12 +4281,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": "구현 축 주장 없음 — 선수 평가·주심 판정·세트피스 체감 서사 중심이다.",
      "role_id": null,
      "team_code": "AVL",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "axis=none. 완비사카 HT 교체 관련 평가와 세트피스 양방향 비대칭 관찰은 observations로 옮겼다(구현 축 주장이 아니라 관찰·평가이므로)."
     }
@@ -4107,12 +4319,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": "구현 축 주장 없음 — 「빌라가 더 나은 GK와 더 나은 9번을 가졌다」는 선수 질 비교 논지.",
      "role_id": null,
      "team_code": "AVL",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "axis=none. 채널 미상(oEmbed Unauthorized). 구조·국면 서술이 없어 구현 재료로 쓰지 않는다."
     }
@@ -4161,12 +4375,14 @@
     {
      "axis": "instruction",
      "field": "away_vs_top_game_plan",
+     "field_kr": "강팀 원정 게임플랜",
      "focus": null,
      "player": null,
      "quote": "원문 「we knew before the match, we needed defense and we needed to be so so resilient defensively. We needed the keeper saving us.」(경기 전부터 우리는 알고 있었다 — 수비가 필요하고 수비적으로 대단히 견뎌야 한다는 것을. 골키퍼가 우리를 구해줘야 했다.) — auto-caption",
      "role_id": null,
      "team_code": "AVL",
      "value": "defend_deep_then_transition",
+     "value_kr": "깊게 수비한 뒤 전환",
      "verdict": "APPLIED",
      "verdict_note": "실측이 전면 지지한다: def_x 30.6(26/27 최저, optimal:vs-strong 라인 43보다 낮다) · PPDA 13.24 · 상대 진영 패스 102회 · 3골 전부 오픈플레이(세트피스 xG 0.00) · fast-break 슈팅 3회. match_game_setups(report 47)에 Counter/Balanced/라인 48로 이미 기록했다. 시즌 정본은 바꾸지 않는다(단일 경기)."
     }
@@ -4198,12 +4414,14 @@
     {
      "axis": "instruction",
      "field": "defensive_shape_first_half",
+     "field_kr": "전반 수비 형태",
      "focus": null,
      "player": null,
      "quote": "원문 「it almost seemed like Aston Villa at times were defending in a 5-3-2」(빌라가 때때로 5-3-2로 수비하는 것처럼 보였다) · 「first 20, 25 minutes where Tottenham were the better side」(토트넘이 더 나았던 첫 20~25분) — auto-caption, 전환 시점을 **전반**에 둔다",
      "role_id": null,
      "team_code": "AVL",
      "value": "mid_block_to_532_at_20min",
+     "value_kr": "20분께 중블록에서 5-3-2로",
      "verdict": "REJECTED",
      "verdict_note": "⛔ **실측 기각.** 맥긴 수비액션 x: 전반 0~20′ **55.7**(n=1) · 전반 20′~HT **58.4**(n=2, 41.9·74.9) · 후반 **32.1**(n=8, 최저 11.8·14.1·16.2). 전반에는 백라인 깊이(x<20) 수비액션이 **0건**이고 20′ 이후에도 하강 신호가 없다 — 오히려 평균이 올라간다. 반면 상대팀 채널 The Tottenham Blueprint는 같은 현상을 **명시적으로 「in the second half」**라 했고 우리 실측과 일치한다. ⇒ Bains의 시점 서술은 기각하고 **후반 전환(§2·claim #138) 정본을 유지**한다. ⭐ 단 Bains가 관찰한 「전반 좌측 고전」 자체는 실측과 맞는다(부엔디아 전반 0~20′ 수비액션 x 24.1) — **틀린 것은 시점과 형태 귀속이지 관찰이 아니다.**"
     }
@@ -4234,24 +4452,28 @@
     {
      "axis": "instruction",
      "field": "gk_long_kick_route",
+     "field_kr": "GK 롱킥 경로",
      "focus": null,
      "player": null,
      "quote": "원문 「we conceded one unacceptable goal from long goal kick with a long ball」(우리는 롱 골킥에서 롱볼로 용납할 수 없는 골을 하나 내줬다.) — auto-caption",
      "role_id": null,
      "team_code": "AVL",
      "value": "goal_kick_to_ten_flick_to_nine",
+     "value_kr": "골킥 → 10번 → 9번 떨궈주기",
      "verdict": "APPLIED",
      "verdict_note": "67′ 잭슨 골(xG 0.060)의 경로를 상대 감독이 직접 특정했다. 스즈키 패스 38회 중 성공 22(58%)·롱킥 비중이 이 루트의 실측 근거이고, 브뤼헤전에서 정식화한 「맨투맨 하이프레스 → 의도적 GK 백패스 → 스즈키 롱킥」의 3번째 표본이자 **첫 득점 전환**이다. 상대가 사전에 대비했는데도 성립했다는 점이 추가 정보다.\n\n[2026-09-21 D+2 확증] ⭐⭐ **Opta 이벤트로 경로 전체가 복원됐다.** 66′08 스즈키 Pass(qualifiers **Longball + GoalKick**, x4.9) → 66′11 잭슨 BallTouch(x67.2) → 66′12 만잠비 Pass(**IntentionalGoalAssist + KeyPass**) → 66′14 잭슨 TakeOn 성공(반더벤 Challenge 실패) → 66′16 잭슨 Goal(**Volley**, BoxCentre). ⇒ 「골킥 → 9번 플릭 → 10번 → 9번 마무리」가 이벤트 단위로 확정된다. ⭐ **감독 1차 진술이 붙었다**(일본어 경유): 「ビルドアップではロングボールを選択することもできる … 実際今日の我々の2点目でもそれをやってくれた」(빌드업에서 롱볼을 선택할 수도 있다 … 실제로 오늘 우리 두 번째 골에서도 그것을 해줬다). 일본 매체 FOOTBALL ZONE이 같은 시퀀스를 독립 서술했고, 데 제르비도 「we conceded one unacceptable goal from long goal kick」(롱 골킥에서 받아들일 수 없는 실점을 했다)으로 상대편에서 확인했다. ⭐ 이 확증은 claim #144(GK=11번째 필드플레이어) **기각과 모순되지 않는다** — 스즈키의 골킥 7회는 전부 롱이었고(숏 0회), 그 롱킥 중 1회가 득점으로 전환됐다. GK는 빌드업 **참여자**가 아니라 **발사대**이며 그 발사대가 생산적이었다는 뜻이다."
     },
     {
      "axis": "team_axis",
      "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
      "focus": null,
      "player": null,
      "quote": "원문 「this season Aston Villa are playing 86% more long balls than last season, and we spoke in many many meetings yesterday and two days ago」(올 시즌 아스톤 빌라는 지난 시즌보다 롱볼을 86% 더 많이 하고 있어서, 어제와 이틀 전 수많은 미팅에서 그 얘기를 했다.) — auto-caption",
      "role_id": null,
      "team_code": "AVL",
      "value": "Counter",
+     "value_kr": "역습",
      "verdict": "APPLIED",
      "verdict_note": "상대 감독의 **정량 사전 스카우팅**이 우리 buildup 축 갱신(25/26 Short Passing → 26/27 상대 의존 고다이렉트)을 독립 확인했다. 이 경기 실측 롱볼 14.5%는 26/27 최고이고 core.team_settings.suggest도 Counter를 제안해 match_game_setups(report 47)에 Counter로 기록했다. ⛔ 시즌 정본 team_tactic_setups(Short Passing)는 바꾸지 않는다 — 에메리의 빌드업은 상대 의존이고 헐전 롱볼 5.6%가 같은 시즌에 있다."
     }
@@ -4303,12 +4525,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
      "role_id": null,
      "team_code": "CHE",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
     }
@@ -4338,24 +4562,28 @@
     {
      "axis": "instruction",
      "field": "lead_management_after_three_nil",
+     "field_kr": "3-0 이후 리드 관리",
      "focus": null,
      "player": null,
      "quote": "원문 「Villa had kind of switched off by then anyway. It wasn't us playing well that got us those goals」(그때쯤 빌라는 이미 스위치를 껐다. 우리가 잘해서 넣은 골이 아니다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "switch_off_concede_two",
+     "value_kr": "집중이 풀려 두 골 실점",
      "verdict": "REJECTED",
      "verdict_note": "⛔ 「집중이 풀렸다」는 심리 귀속이라 이벤트로 직접 판정되지 않는다. 실측 정황은 양방향이다 — 지지: 86′·97′ 두 실점이 3-0 이후 11분 안에 나왔고 obs#865(87′~ 블록이 풀렸다)가 있다. 반대: 86′ 실점은 구조 붕괴가 아니라 **2차 처리 실패**로 이미 특정됐고(claim #142 APPLIED · Opta 시퀀스) 97′ 실점은 **세트피스**다 — 둘 다 「집중 이완」이 아니라 특정 국면의 실패다. ⇒ 대안 가설이 더 구체적이다. ⛔ 재판정 조건: 리드 3골 이후 구간의 PPDA·def_x를 별도 산출해 직전 구간 대비 유의하게 나빠지면 APPLIED, 아니면 REJECTED.\n[D+3 2026-09-21 재계산 — REJECTED(확정)] WhoScored matchId 1983589 이벤트를 79'(3-0 부엔디아골) 기준 분할. AVL PPDA 1H+2H초반(0-79') 16.29(277/17) → 3-0 이후(79-98') **6.40**(64/10) — 더 낮다(더 압박적). def_x 29.3(n=131) → **36.3**(n=35) — 더 높다(라인이 더 전진). 방향이 '이완' 가설과 **정반대**다. ⇒ REJECTED 확정. 대안 가설(claim #142 2차 처리 실패·#143 세트피스, 둘 다 APPLIED)이 여전히 더 구체적이다. obs#939."
     },
     {
      "axis": "team_axis",
      "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
      "focus": null,
      "player": null,
      "quote": "원문 「this season Aston Villa are playing 86% more long balls than last season」(이번 시즌 빌라는 지난 시즌보다 롱볼을 86% 더 많이 찬다) — 데 제르비",
      "role_id": null,
      "team_code": "AVL",
      "value": "Counter",
+     "value_kr": "역습",
      "verdict": "APPLIED",
      "verdict_note": "claim #140과 같은 주장이고 이 소스가 **auto-caption 의존을 해소하는 더 긴 맥락**을 준다(회견 전문 11분). ⚠️ 단 「86%」는 토트넘 내부 스카우팅 수치이고 **Opta 공표값이 아니다** — 「Opta에 따르면」은 허위 귀속이다(obs#875). ⚠️ 이 수치를 인용한 매체가 여럿이지만 **전부 같은 데 제르비 회견이 원천**이라 교차검증이 아니라 동일 원천의 중복이다(불변규칙 12). ⛔ 시즌 정본 team_tactic_setups(Short Passing)는 바꾸지 않는다."
     }
@@ -4388,12 +4616,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -4424,36 +4654,42 @@
     {
      "axis": "instruction",
      "field": "defensive_shape_second_half",
+     "field_kr": "후반 수비 형태",
      "focus": null,
      "player": null,
      "quote": "원문 「sometimes with back four is not enough to defend completely the … side of the field … the second half we needed more with John McGinn」(때로는 백4로는 측면을 완전히 수비하기에 충분하지 않다 … 후반에는 존 맥긴으로 더 필요했다.) — auto-caption",
      "role_id": null,
      "team_code": "AVL",
      "value": "back_five_right_side_shift",
+     "value_kr": "백5로 우측 이동",
      "verdict": "APPLIED",
      "verdict_note": "실측이 독립 확인한다 — 맥긴 수비액션 x 전반 56.3 → 후반 32.1, y 32.8 → 18.2. 후반 57′·58′·77′ 수비액션이 x 11.8~16.2로 백4 라인 깊이이고 전반에는 그 대역이 0건이다. 단 좌측은 부엔디아가 반대로 35.6 → 47.6으로 올라가 대칭 5-3-2가 아니라 **우측 편중 백5**다. 리포트 §2·§6에 이 형태로 기록하고 manager_profiles.formation의 「5-3-2 전환 미관측」 서술을 정정 대상으로 올린다."
     },
     {
      "axis": "instruction",
      "field": "buildup_back_three_source",
+     "field_kr": "빌드업 백3 구성",
      "focus": null,
      "player": null,
      "quote": "원문 「someday we are the first half we use it more [Kamara] dropping dropping」(어떤 날은 전반처럼 카마라를 더 내려서 쓴다.) — auto-caption, Kamara가 「camera」로 오인식",
      "role_id": null,
      "team_code": "AVL",
      "value": "pivot_drop_kamara",
+     "value_kr": "카마라의 피벗 하강",
      "verdict": "REJECTED",
      "verdict_note": "[2026-09-20 D+1 재판정] **REJECTED** — D+0가 건 조건(전반 카마라 보유 x vs CB 라인 x, Δ≤8이면 APPLIED)을 WhoScored matchId=1983589 재수집(period·minute 포함)으로 집행했다. 전반 카마라 41.3(n=37) vs CB 라인 30.2(n=50) → **Δ=11.1**로 임계 밖. 자기 진영(x<50)만 봐도 Δ=8.8. ⭐ 단 좌우로는 두 CB 사이(y 43.0 / 32.5·70.7)이고 전반 보유의 19%가 CB 라인 깊이 이하여서 **행동은 존재하나 상시 구조가 아니다** — 회견 원문의 「someday」와 정합적이다. obs#866. ⛔ 빌드업 축·슬롯 정본은 변경하지 않는다(단일 경기, 기각 방향). ‖ [2026-09-20 D+1 재-재판정] ⛔ **REJECTED를 철회하고 HELD로 되돌린다 — D+0이 건 임계 자체가 잘못 설계됐다.** 「전반 보유 전체의 평균 x 격차 ≤8」은 **국면 한정 행동을 평균으로 검정하는 오류**다. 빌드업 국면에서만 내려오는 선수는 전반 전체 평균으로는 절대 CB 라인에 닿지 않는다(희석). ⭐ 계기: Jacob Tanswell(The Athletic) 2026-09-20 정식 기사 본문이 이 행동을 **국면·시점 한정으로 명시**했다 — 원문 「A quarter of an hour into the match, **when Villa built from the back**, Manzambi dropped deep, occasionally alongside Joao Gomes, as **Boubacar Kamara moved into a back three**.」(경기 15분 무렵 **빌라가 후방 빌드업을 할 때** 만잠비가 깊게 내려왔고 때때로 주앙 고메스 옆에 섰으며, **카마라는 백3로 이동했다**.) — 1티어 기자 서면. 우리 실측도 같은 것을 보고 있었다: 전반 보유 37건 중 **7건(19%)이 CB 라인 깊이 이하**이고 그중 6건이 두 CB 사이였다(obs#866). ⇒ **새 재판정 조건**: 골킥·자기 진영 시작 시퀀스만 추려 **빌드업 국면 한정**으로 카마라 x와 CB 라인 x를 대조한다(평균 전체 비교 금지). 격차가 8 이하면 APPLIED. ⛔ 그 전까지 빌드업 축·슬롯 정본은 불변.\n\n[2026-09-21 D+2 재판정] **REJECTED(확정)** — D+1이 건 「빌드업 국면 한정」 조건을 집행했다. WhoScored matchId=1983589를 pulled=2026-09-21 scope=full로 재수집(1,627건)해 골킥·자기 진영(x<40) 시작 시퀀스만 추려 대조했다(core.whoscored). 전반 빌드업(시퀀스 41·이벤트 145): 카마라 x=33.9(n=20) vs CB라인 23.3(n=35) → **Δ=10.6 > 8**. Tanswell 시점 한정(전반 10~30′): Δ=11.4. 골킥 시퀀스 한정: Δ=16.0. 전경기 빌드업: Δ=11.1. ⇒ 국면을 좁혀도 임계를 넘지 못한다 — D+1의 임계 재설계는 정당했으나 결론은 바뀌지 않았다. ⭐ **기각 범위 한정**: 시퀀스 단위로는 카마라·CB 동시 관여 13개 중 **4개(31%)가 Δ≤8**이고 전부 전반 1′·5′·14′·30′에 몰린다(36′ 이후 0개). Tanswell의 「경기 15분 무렵 … 때때로」라는 시점·빈도 서술은 참이고, **「백3」를 빌드업의 기본 형태로 읽는 것만 거짓**이다. ⛔ 부가 주장도 기각: 「만잠비가 깊게 내려와 고메스 옆에 섰다」 — 빌드업 국면 만잠비 x=51.0 vs 고메스 37.9로 **13 더 높고**, 전반 내내 올라갔다(0~15′ 54.0 → 15~30′ 58.7 → 30~53′ 63.0). 좌우도 y 43.6 vs 70.3으로 다른 레인이다. ⚠️ 한계: 온더볼 관여 깊이만 본다(터치 없는 위치 점유는 이벤트에 없다). 게임 설정은 바꾸지 않는다. obs#920."
     },
     {
      "axis": "instruction",
      "field": "pivot_drop_purpose",
+     "field_kr": "피벗 하강 목적",
      "focus": null,
      "player": null,
      "quote": "질문 「second half you went into really a back five on the edge of your penalty area, McGinn went back and played really deep…」(후반에 사실상 페널티 박스 끝단에서 백5로 갔고 맥긴이 내려가 아주 깊게 뛰었다) / 에메리 「Yeah, **sometimes with back four is not enough to defend completely** … **the first half we use it more Kamara dropping, dropping, and someday is a five, center back being in the back four inside, and the second half we needed more with John McGinn.**」(그렇다. **때로는 백4로는 완전히 수비하기에 충분하지 않다** … **전반에는 카마라를 더 많이 내려, 내려 썼고, 어떤 때는 5가 된다 — 센터백이 백4 안쪽에 들어가는 식으로. 그리고 후반에는 존 맥긴으로 그걸 더 해줄 필요가 있었다.**)",
      "role_id": null,
      "team_code": "AVL",
      "value": "defensive_completion_not_buildup",
+     "value_kr": "빌드업이 아닌 수비 완결성",
      "verdict": "APPLIED",
      "verdict_note": "⭐⭐ **축 정정의 근거다 — 감독 본인이 카마라의 하강을 「빌드업」이 아니라 「수비 완결성」 목적으로 규정한다.** 질문도 답도 **수비 국면**(백5·박스 끝단·맥긴 하강)에 관한 것이고, 에메리는 「백4로는 완전히 수비하기에 충분하지 않다」를 이유로 든다. ⇒ claim #139(`buildup_back_three_source`)가 **REJECTED된 이유가 여기서 설명된다 — 행동은 실재하나 축이 틀렸다.** 빌드업 국면 한정 실측이 Δ=10.6으로 임계를 넘지 못한 것은 이 행동이 빌드업 목적이 아니었기 때문으로 읽는 것이 정합적이다(obs#920). ⭐ 전·후반 분업도 실측과 합치한다: **전반=카마라 / 후반=맥긴**이라는 에메리의 구분이 맥긴 수비액션 x 전반 56.3 → 후반 32.1(−24.2)과 정확히 같은 방향이다. ⛔ **단 「카마라가 CB 라인 깊이까지 내려갔다」는 실측되지 않는다** — 전반 수비액션 x 카마라 38.6 vs CB라인 19.4(Δ 19.3, n=9). ⇒ APPLIED는 **「전반 하강의 목적이 수비이고 후반에 맥긴이 그 역할을 이어받았다」**까지이고, **깊이·형태(백3/백5)는 포함하지 않는다.** ⚠️ 한계: 우리 데이터는 온더볼·수비액션 지점만 담고 **터치 없는 위치 점유**는 담지 않는다 — 형태 주장은 트래킹 데이터 없이는 닫히지 않는다. ⛔ 시즌 정본 포메이션·슬롯은 바꾸지 않는다(단일 경기)."
     }
@@ -4501,12 +4737,14 @@
     {
      "axis": "instruction",
      "field": "rb_rotation_criterion",
+     "field_kr": "우측 풀백 기용 기준",
      "focus": null,
      "player": null,
      "quote": "원문 「he's better than Ezri Konsa. He's not going to be as good as Matty Cash, certainly in possession」(콘사보다는 낫다. 소유 국면에서는 캐시만큼은 안 될 것이다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "wanbissaka_defence_cash_possession",
+     "value_kr": "수비는 완비사카, 점유는 캐시",
      "verdict": "APPLIED",
      "verdict_note": "기용 사실이 이 서열을 집행했다 — 완비사카 선발(45분) → 캐시 HT 투입(45분). Townley는 빌라 전담 1티어이고 D+1에 확보한 그의 평점 기사와 같은 진단이다(obs#867·#872·#880). ⇒ FC 구현: 우측 풀백 슬롯은 **국면 의존 로테이션**이고, 완비사카는 수비 지시(Defend/Balanced)·캐시는 전진 지시(Support/Attack) 쪽 근거가 된다. ⛔ 단일 경기이므로 슬롯 정본은 바꾸지 않는다."
     }
@@ -4539,12 +4777,14 @@
     {
      "axis": "instruction",
      "field": "defensive_shape_second_half",
+     "field_kr": "후반 수비 형태",
      "focus": null,
      "player": null,
      "quote": "원문 「in the second half … They started bringing their midfield very deep to protect the sides … McGinn was dropping in on the right as well to protect us against Marmoush.」(후반에 … 측면을 보호하려고 미드필드를 아주 깊이 내리기 시작했다 … 맥긴도 우측으로 내려앉아 마르무시에 대비했다.) — auto-caption, **상대팀 채널**",
      "role_id": null,
      "team_code": "AVL",
      "value": "back_five_right_side_shift",
+     "value_kr": "백5로 우측 이동",
      "verdict": "APPLIED",
      "verdict_note": "⭐⭐ **상대팀 관찰자의 독립 확인**이다(claim #138은 감독 자인 + 우리 실측이었고, 여기에 제3자 축이 붙었다). 추가 실측 보강 1건: **우측 풀백의 깊이가 교체로 더 내려갔다** — 완비사카 전반 수비액션 x평균 **33.1**(n=6) → 캐시 후반 **17.2**(n=7, 5.6·8.1·8.5·9.2·16.0). 즉 후반 우측은 맥긴 하강(56.3→32.1)과 풀백 하강(33.1→17.2)이 겹친 **이중 하강**이다. ⚠️ 출처 성격: 이 영상은 이 경기 전용 분석이 아니라 시즌 리뷰 포맷이며 해당 구간만 이 경기를 다룬다. 3티어 팬 채널·auto-caption."
     }
@@ -4575,24 +4815,28 @@
     {
      "axis": "instruction",
      "field": "defensive_shape_second_half",
+     "field_kr": "후반 수비 형태",
      "focus": null,
      "player": null,
      "quote": "원문 「dropping into that back five, dropping into that back six when we needed to」(필요할 때 백5로, 백6으로 내려앉았다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "back_five_to_back_six",
+     "value_kr": "백5에서 백6으로 하강",
      "verdict": "APPLIED",
      "verdict_note": "실측이 지지한다 — 맥긴 수비액션 x 전반 56.3 → 후반 32.1, 우측 풀백 33.1(완비사카) → 17.2(캐시). 후반 점유 29% · def_x 30.6(26/27 최저). claim #138·#150과 같은 방향이고 상대팀 채널이 독립 서술했다. ⭐ 단 obs(D+2)에서 이 형태가 **토트넘의 하프타임 측면 전환에 대한 응답**임이 상대측 실측으로 밝혀졌다 — 기본 설계가 아니라 조건부 조정으로 한정한다. ⛔ 시즌 정본 포메이션·라인 축은 바꾸지 않는다."
     },
     {
      "axis": "instruction",
      "field": "deep_block_runner_tracking",
+     "field_kr": "낮은 블록의 침투 추적",
      "focus": null,
      "player": null,
      "quote": "원문 「McGinn again, he's got to start tracking these runners — they ran off him」(맥긴은 다시, 러너를 추적하기 시작해야 한다 — 그를 등지고 뛰어 들어갔다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "mcginn_fails_to_track_runners",
+     "value_kr": "맥긴이 침투자를 놓침",
      "verdict": "HELD",
      "verdict_note": "⛔ 우리 이벤트 데이터는 **추적 실패**(상대 침투를 놓친 장면)를 담지 않는다 — 수비액션은 개입한 것만 기록되고 개입하지 못한 것은 결손으로 남는다. 정황: 맥긴은 후반 수비액션 8건으로 우측 최저 깊이(x 32.1)까지 내려갔으나 그 구간에 토트넘의 빌라 우측 침투가 39→84로 늘었다. ⛔ 재판정 조건: ⑴ 실점·빅찬스 시퀀스에서 맥긴이 마크를 놓친 장면이 독립 2소스로 특정되거나 ⑵ 같은 지적이 2경기째 누적되면 판정한다.\n[D+3 2026-09-21 — 조건 미충족, HELD 유지] 독립 2소스 검색 재시도(영어 「McGinn tracking runners Tottenham Aston Villa deep block」) — 신규 0건, 기존 하이라이트·리포트 재인용뿐. 같은 지적의 2경기째 누적도 없다(video_impl_claims에 field='deep_block_runner_tracking' 행이 이 1건뿐). 조건 그대로 유지.\n[D+1 2026-10-11 브렌트퍼드전 추적 — HELD 유지] 79′ 아예르 득점 장면 지적은 팀 단위(Tanswell 「#AVFC switch off and don't track Ajer」 · 1874 「Christopher should not be running through」 · UTV 복스팝 「Cash … saying to Allison … go out」 · AV Review는 고메스 개입 실패 지목) — **맥긴 특정 지적 0건**. 조건 불변.\n[D+2 2026-10-12 — HELD 유지 · 반례 1건] 79′ 실점은 독립 2소스(BBC MOTD 시어러 · UTV YV8GaXrtRpo)가 **캐시 볼 와칭 + 고메스 커버 부재**로 귀속했고 맥긴을 특정한 소스는 0건(obs#987). 재판정 조건 불변(독립 2소스 특정 또는 2경기 누적) — 이 경기는 반대 방향 1건으로 센다.\n[D+3 2026-10-13 — HELD 유지 · 3일 추적 종결] 맥긴 추적 실패를 특정한 소스 3일간 0건. 1874는 1실점 장면에서 맥긴을 「coming back from that right winger position … holding his position on that right side」(오른쪽 윙어 자리에서 복귀하며 자리를 지켰다)로 서술 — 실패가 아니다. 79′은 캐시·고메스(obs#987). 이 경기는 반례 1건으로 집계. ⛔ 재판정 조건 불변(독립 2소스 특정 또는 2경기 누적)(obs#1005)."
     }
@@ -4625,24 +4869,28 @@
     {
      "axis": "limit",
      "field": "progression",
+     "field_kr": "전진 플레이",
      "focus": null,
      "player": "보가르드",
      "quote": "「I watched it back again today and… he's even worse again on the second viewing… He was incredibly passive」(오늘 다시 돌려봤는데 두 번째 시청에서 더 나빴다… 극도로 수동적이었다)",
      "role_id": null,
      "team_code": null,
      "value": "피벗 진취성 결여(수동성)",
+     "value_kr": "피벗 진취성 결여(수동성)",
      "verdict": "HELD",
      "verdict_note": "D+1 미해결 충돌 1번을 닫지는 않되 **성격을 특정**한다 — 실측은 duels_won 11·tackles 3·패스 47/51(92%)로 **행동량**이 높고, 서사가 때리는 것은 **전진·주도**의 부재다(avg_x 40.1로 피벗 최전방 바클리 49.77보다 −9.7, 진영 최후방 피벗). 두 층이 서로 다른 것을 재고 있으므로 SofaScore 7.4와 서사 평점 4~5는 모순이 아니다. 재판정 조건: 고메스 복귀 후 같은 슬롯의 전진패스·프로그레시브 캐리 대조."
     },
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -4675,24 +4923,28 @@
     {
      "axis": "instruction",
      "field": "back_three_reason",
+     "field_kr": "백3 채택 이유",
      "focus": null,
      "player": null,
      "quote": "원문 「The way Chelsea set up was **very very respectful of us**… they **double marked him practically for large parts of the game**」(첼시의 셋업은 우리를 매우 존중하는 것이었다… 경기의 상당 부분 **사실상 더블 마크**를 붙였다.) — auto-caption, **상대 감독**",
      "role_id": null,
      "team_code": "CHE",
      "value": "double_mark_opposing_nine",
+     "value_kr": "상대 9번 이중 마크",
      "verdict": "HELD",
      "verdict_note": "⛔ **재판정 조건**: 상대 감독의 귀속이지 알론소 본인 진술이 아니다(피벗·백3 구성 질문은 회견에서 0건). ⇒ ⑴ 알론소가 백3 채택 사유를 진술하거나 ⑵ **상대 9번 유형이 다른 경기에서 백3/백4가 갈리는 2번째 표본**이 생기면 판정한다. 현재 실측 정황: 이 경기 첼시 PPDA **8.38**·def_x **41.0**으로 **높은 라인·강한 압박**이었다 — 「물러서서 존중」과는 다른 그림이라 앤드루스의 「respectful」은 **라인 높이가 아니라 대인 배치(더블마크)**를 가리키는 것으로 읽어야 한다. ⚠️ 두 축을 섞지 말 것."
     },
     {
      "axis": "limit",
      "field": "set_piece_target_switch",
+     "field_kr": "세트피스 표적 전환",
      "focus": null,
      "player": null,
      "quote": "야넬트(브렌트포드) 원문 「**We did target [the back post] at half-time. There was a big gap**」(**우리는 하프타임에 뒤포스트를 노렸다. 큰 공간이 있었다**.) — Sky Sports 2026-09-19 서면",
      "role_id": null,
      "team_code": "CHE",
      "value": "back_post_after_half_time",
+     "value_kr": "하프타임 뒤 파포스트로 전환",
      "verdict": "APPLIED",
      "verdict_note": "⭐⭐ **상대 선수가 첫 실점을 「하프타임에 특정한 표적」으로 자인했다** — 전반 앞포스트 2회 → 후반 뒤포스트 전환. 즉 실점은 우연이 아니라 **같은 루틴의 포스트 전환에 대응하지 못한 결손**이다. 알론소 본인도 같은 국면을 「우측 스로인–코너 연속」으로 묶어 규정했다. 정황 지지: 콜윌 자인(세트피스 5실점) · Opta 세트피스 누적 23실점(리그 공동 최악). ⇒ 게임 구현 함의는 **세트피스 수비 지시 축**이고, AVL 스퍼스전 claim #143(세트피스 마킹, HELD)과 **같은 부류**다 — 두 팀에서 같은 축이 동시에 열렸다. ⛔ 단일 경기라 팀 설정·슬롯 정본은 변경하지 않는다."
     }
@@ -4724,12 +4976,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": "구현 축 주장 없음 — 팬 채널 평가·구조 제안(4-3-3 전환 등)은 3티어 의견이라 주장으로 올리지 않는다.",
      "role_id": null,
      "team_code": "CHE",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "axis=none. ⛔ 「파머를 내려라」·「4-3-3」 제안은 팬 의견이므로 구현 재료로 쓰지 않는다."
     }
@@ -4759,12 +5013,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
      "role_id": null,
      "team_code": "CHE",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
     }
@@ -4794,12 +5050,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": "구현 축 주장 없음 — 감독의 실점 국면 규정·선수 평가·태도 진술이다. 내용은 observations로 옮겼다.",
      "role_id": null,
      "team_code": "CHE",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "axis=none. ⭐ 헨더슨 평가(감독 긍정 ↔ 매체 4/10)와 실점 국면 규정은 obs로 기록했다."
     }
@@ -4830,12 +5088,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
      "role_id": null,
      "team_code": "CHE",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
     }
@@ -4865,12 +5125,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -4906,12 +5168,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": "구현 축 주장 없음 — 교체 사유(머릿수·훈련 태도) 진술.",
      "role_id": null,
      "team_code": "CHE",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "axis=none."
     }
@@ -4940,12 +5204,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": "구현 축 주장 없음 — 개인 슛 선택 비판(3티어).",
      "role_id": null,
      "team_code": "CHE",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "axis=none."
     }
@@ -4993,12 +5259,14 @@
     {
      "axis": "instruction",
      "field": "back_three_viability",
+     "field_kr": "백3 실효성",
      "focus": null,
      "player": null,
      "quote": "원문 「**The back three system is very difficult. A lot of coaches have tried the system and they have failed.**… it is a system that is good **when your players understand it**」(**백3 시스템은 매우 어렵다. 많은 감독이 시도했고 실패했다.**… **선수들이 이해할 때** 좋은 시스템이다.) — auto-caption · 3티어",
      "role_id": null,
      "team_code": "CHE",
      "value": "needs_time_to_gel_else_back_four",
+     "value_kr": "숙성 시간 필요, 아니면 백4",
      "verdict": "HELD",
      "verdict_note": "⛔ **재판정 조건**: 이 주장은 **시스템 적합성에 대한 일반론**이고 이 경기 실측으로 판정되지 않는다. 우리 실측이 말할 수 있는 것은 **이 경기 백3가 PPDA 8.38·def_x 41.0의 높은 압박과 함께 쓰였고 3실점했다**는 사실뿐이다(obs#892). ⇒ 판정하려면 **백3 ↔ 백4 경기 간 대조**가 필요하다: 알론소 체제에서 **백4로 선 경기 2경기 이상**이 쌓이면 def_x·PPDA·실점 패턴을 같은 축에서 비교한다. ⚠️ 층 구분: obs#893(상대 감독의 「치아구 더블마크」)은 **왜 골랐나**, 이 주장은 **왜 안 되나**다 — 둘은 경쟁 가설이 아니라 다른 질문이다. ⛔ 3티어 유튜버의 일반론이므로 단독으로 시즌 정본을 움직이지 않는다."
     }
@@ -5029,12 +5297,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
      "role_id": null,
      "team_code": "CHE",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
     }
@@ -5064,12 +5334,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": "구현 축 주장 없음 — 펀딧 평·재고 리뷰·프레이밍·의문 제기·리액션이다. 내용은 summary/key_points와 observations에 남겼다.",
      "role_id": null,
      "team_code": "CHE",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "axis=none. ⛔ 「산투스 영입」(iltNYp8lk6o)은 **사실 주장**이라 검증 전 구현 재료로 쓰지 않는다."
     }
@@ -5099,12 +5371,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -5134,12 +5408,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -5189,36 +5465,42 @@
     {
      "axis": "limit",
      "field": "selection_gate",
+     "field_kr": "선발 조건",
      "focus": null,
      "player": "음바예",
      "quote": "「is he defensively going to do the job for us yet… do I maybe go with Allison on the right who will do the defensive duties」(아직 수비 임무를 해낼 수 있는가… 수비 임무를 해줄 알리송을 오른쪽에)",
      "role_id": null,
      "team_code": null,
      "value": "away_defensive_workload",
+     "value_kr": "원정 수비 임무 수행 여부",
      "verdict": "APPLIED",
      "verdict_note": "실측 지지 — 음바예 64분에 태클 0·인터셉트 0, 비점유 국면 전진도 63.3으로 **수비 라인으로 내려오지 않았다**. 「아직 수비 임무를 못 맡긴다」는 한계 주장이 국면 그리드로 확인된다. ⇒ 게임 구현: 우측을 해방형으로 쓰면 그 뒤를 풀백(완비사카 비점유 28.8)이 혼자 감당한다."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Attack",
      "player": "바클리",
      "quote": "「push forward a bit or go in the 10 role… quickly recycle it, pick out a good pass and hit one from distance」(조금 전진하거나 10번 롤로… 빠른 재순환·좋은 패스·중거리)",
      "role_id": "cm_playmaker",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "실측 LDM avg_x 49.77 = 피벗 중 최전방(보가르드 40.1)·평점 7.8 — 이미 전진형으로 뛰었다. 현 경기 처방은 LDM 축이라 CM 어휘 대조는 measured 재산출(피벗 표본 2경기) 후. 재판정 조건: 바클리 LDM 공식전 2경기째 pos_class 집계 → 커널 1·2위 Δ 확인."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Build-Up",
      "player": "하우드-벨리스",
      "quote": "「Harwood-Bellis is putting it [into the same area] but tends to lift it a bit more」(하우드-벨리스도 같은 지역에 넣는데 조금 더 띄운다)",
      "role_id": "cb_bpd",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "APPLIED",
      "verdict_note": "실측 지지 — 하우드-벨리스 패스 71회·정확도 65%로 시도량은 많고 정확도는 낮다(띄우는 배급의 흔적). 점유 국면 위치 전진 32.2·좌우 61.2로 좌측 하프스페이스에서 전개했다. 슬롯 정본(LCB cb_bpd/Build-Up)과 정합 — 파우 토레스 결장 구간의 대체안 근거로도 쓴다."
     }
@@ -5251,12 +5533,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": "구현 축 주장 없음 — **경기 전 회견**이라 이 경기 진단이 아니다.",
      "role_id": null,
      "team_code": "CHE",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "axis=none. ⚠️ 경기 전(D-1) 회견 — 경기 후 진단으로 인용 금지."
     }
@@ -5285,12 +5569,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -5319,12 +5605,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -5353,12 +5641,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -5387,12 +5677,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "상대 관점 서술이며 리버풀 측 FC 역할·포커스·팀 설정에 대한 명시 주장이 없다. 압박 인원 6명 서술은 obs#818 재확인이지 새 설정값 주장이 아니다."
     }
@@ -5424,36 +5716,42 @@
     {
      "axis": "instruction",
      "field": "width",
+     "field_kr": "폭",
      "focus": null,
      "player": "음바예",
      "quote": "「he stretches the opposition defense immediately just with his starting point as he forces the fullback to break away from a narrow defensive shape」(시작 위치만으로 상대 수비를 즉시 벌리고, 풀백이 좁은 수비 형태에서 떨어져 나오게 만든다)",
      "role_id": null,
      "team_code": null,
      "value": "우측 터치라인 폭 유지(기본 위치)",
+     "value_kr": "우측 터치라인 폭 유지(기본 위치)",
      "verdict": "APPLIED",
      "verdict_note": "D+1 PENDING(1874 단독)에서 승격 — 독립 4소스(1874·Talk Villa·Tanswell 현장·프랑스어 매체)가 「우측 폭」으로 일치하고, 실측 툴x 72.4(맥긴 67.8보다 바깥, 터치라인 85는 아님)는 Tanswell이 관찰한 맥긴·완비사카와의 설계된 자리바꿈으로 설명된다 — 즉 기본은 폭, 평균이 안쪽인 것은 로테이션의 결과다."
     },
     {
      "axis": "instruction",
      "field": "in_behind_runs",
+     "field_kr": "배후 침투",
      "focus": null,
      "player": "음바예",
      "quote": "「There's the space. That's where it's going to open up. I want you to attack it and make those runs in behind to give us a threat down the right channel」(저기가 공간이다. 저기가 열릴 곳이다. 저길 공략해 배후로 뛰어서 우측 채널에 위협을 만들어라)",
      "role_id": null,
      "team_code": null,
      "value": "우측 채널 배후 침투(지시)",
+     "value_kr": "우측 채널 배후 침투(지시)",
      "verdict": "HELD",
      "verdict_note": "화자가 에메리의 말을 재구성한 것이지 전사된 지시가 아니다(정지화면 해설). 방향은 Tanswell의 「배후를 상시 위협하는 우측 윙어가 이번 여름 최우선 과제였다」와 정합. 재판정 조건: 스퍼스 원정 이후 음바예의 배후 스루패스 수신 이벤트."
     },
     {
      "axis": "limit",
      "field": "defensive_work",
+     "field_kr": "수비 가담",
      "focus": null,
      "player": "음바예",
      "quote": "「I thought he put in some seriously hard yards to track his man and do the defensive part of his work as well… is that part of the process of he's new here, he wants to impress」(자기 매치업을 따라가며 상당히 힘든 거리를 뛰었고 수비 몫도 해냈다 — 다만 새로 왔고 인상을 남기려는 과정의 일부인가)",
      "role_id": null,
      "team_code": null,
      "value": "원정 수비 임무 수행 — 첫 긍정 관찰",
+     "value_kr": "원정 수비 임무 수행 — 첫 긍정 관찰",
      "verdict": "HELD",
      "verdict_note": "⚠️ 반쪽만 맞다 — 「수비 몫도 해냈다」는 카운팅 스탯(태클 0·인터셉트 0)과 비점유 높이 63.3이 반대 방향이다. 다만 **대인 추적 주행**은 우리 데이터에 없다(이벤트 기반이라 오프더볼 거리를 못 센다). 재판정 조건: 다음 우측 배치 경기에서 비점유 전진도가 55 이하로 내려오거나 태클·인터셉트가 발생하면 APPLIED로 올린다."
     }
@@ -5487,36 +5785,42 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "맥긴",
      "quote": "「he has the freedom to go out onto that right side from the central areas and Mbaye particularly has that intelligence to cut inside and dovetail with him」(중앙에서 우측으로 나갈 자유가 있고, 음바예는 안쪽으로 접어 그와 맞물린다)",
      "role_id": "cam_halfwinger",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "APPLIED",
      "verdict_note": "커널이 cam_halfwinger/Roaming .502를 내면서 Δ0.012 무결정이었던 구간 중 **역할 축**을 서사가 닫는다 — 「중앙 배치 + 우측으로 드리프트」는 halfwinger의 정의 그대로이고, Tanswell 현장 관찰(「McGinn drifting over to the inside channel and overloading the right side with Mbaye, sometimes swapping positions」 맥긴이 안쪽 채널로 흘러 음바예와 우측을 과부하시켰고 때로 자리를 맞바꿨다)이 독립 2소스를 만든다. ⚠️ **포커스 축(Roaming↔Attack)은 여전히 무결정**으로 남긴다."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "하우드-벨리스",
      "quote": "「he's from that old school of centre halves… but what he's also got is that ability to put his foot on the ball and pass into midfield」(구식 센터백 계보이지만, 발로 잡고 미드필드로 찔러주는 능력까지 있다)",
      "role_id": "cb_bpd",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "슬롯 정본 cb_bpd/Build-Up과 방향 정합이고 D+1의 「파우 토레스와 같은 지역, 조금 더 띄운다」와도 겹친다. 그러나 **빌라 공식전 1경기·하부 리그 상대**라 승격하지 않는다. 재판정 조건: 스퍼스 원정 이후 프리미어리그 2경기 표본."
     }
@@ -5550,12 +5854,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -5585,12 +5891,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -5619,24 +5927,28 @@
     {
      "axis": "instruction",
      "field": "winger_width",
+     "field_kr": "윙어의 폭",
      "focus": null,
      "player": "음바예",
      "quote": "「he obviously wanted Embay to hold that width on the right hand side」(그에게 우측 폭을 유지시키려 한 게 명확히 보였다)",
      "role_id": null,
      "team_code": null,
      "value": "hold_touchline_right",
+     "value_kr": "우측 터치라인 폭 유지",
      "verdict": "HELD",
      "verdict_note": "⚠️ 부분 성립 — 음바예 점유 좌우 73.1은 **半-와이드**다. 같은 경기 완비사카가 84.7로 더 바깥이었고 음바예 전진도는 68.7로 높다. 「폭 유지」 지시가 있었다 해도 그 결과는 터치라인 고정이 아니라 안쪽 침투를 겸한 형태다. 재판정 조건: 우측 배치 경기에서 점유 좌우값 80 이상이면 APPLIED."
     },
     {
      "axis": "instruction",
      "field": "rb_build_up_shape",
+     "field_kr": "우측 풀백의 빌드업 형태",
      "focus": null,
      "player": "완비사카",
      "quote": "「Aaron Wasaka kind of tucked in and made a back three alongside Mings and Harwood Bellis」(완비사카가 안으로 접혀 백3를 만들었다)",
      "role_id": null,
      "team_code": null,
      "value": "tuck_in_hybrid_back3",
+     "value_kr": "안으로 좁혀 하이브리드 백3",
      "verdict": "REJECTED",
      "verdict_note": "UTV(Lr4ktnv-FeE)와 같은 주장 · 같은 사유로 기각 — 실측 툴x 85.3(터치라인). 2소스 일치가 실측을 이기지 않는다(불변규칙 3)."
     }
@@ -5669,24 +5981,28 @@
     {
      "axis": "instruction",
      "field": "cup_competition_stance",
+     "field_kr": "컵대회 접근",
      "focus": null,
      "player": null,
      "quote": "「This is a way for a trophy. This is a way as well for Europe」(트로피로 가는 길이자 유럽으로 가는 길)",
      "role_id": null,
      "team_code": "AVL",
      "value": "europe_route_not_rotation_filler",
+     "value_kr": "로테이션용이 아닌 유럽행 경로",
      "verdict": "NA",
      "verdict_note": "게임 설정 축이 아니다 — 컵 선발을 「로테이션 소화」로 읽지 말라는 해석 근거(manager_profiles rotation 축). 1차 자료·auto-caption."
     },
     {
      "axis": "instruction",
      "field": "added_asset",
+     "field_kr": "새로 더해진 자산",
      "focus": null,
      "player": "음바예",
      "quote": "「adding individual skills like today and [Mbaye] his speed」(오늘처럼 개인 기량을 더하는 것 — 그의 스피드)",
      "role_id": null,
      "team_code": null,
      "value": "speed_direct_running",
+     "value_kr": "속도와 직선 돌파",
      "verdict": "NA",
      "verdict_note": "게임 구현 축이 아니다 — 「오늘처럼 개인 기량과 스피드를 더한다」는 선수 평가·기대 표현이지 역할·포커스·팀 설정 어느 것도 지정하지 않는다."
     }
@@ -5719,12 +6035,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -5753,12 +6071,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -5788,24 +6108,28 @@
     {
      "axis": "limit",
      "field": "set_piece_defence",
+     "field_kr": "세트피스 수비",
      "focus": null,
      "player": null,
      "quote": "「As soon as I saw the wall go back as far as it did, I [knew] he could score here」(벽이 그만큼 물러나는 걸 본 순간 여기서 넣겠다 싶었다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "free_kick_wall_too_deep",
+     "value_kr": "프리킥 수비벽이 너무 물러남",
      "verdict": "HELD",
      "verdict_note": "⚠️ 단일 소스(상대 팬 채널) — 27′ 실점의 「벽이 물러났다」 주장은 D+3까지도 2차 소스가 붙지 않았다. 반대로 GK 도달 실패는 **두 소스**가 일치한다(Tanswell 「제자리에 굳어 있었다」 · Aston Villa Review 「프리킥에 가까이 가지도 못했다」). 재판정 조건: 하이라이트 프레임에서 킥 시점 벽 위치를 확인하면 닫는다. 그 전까지 세트피스 수비 처방을 이 주장으로 바꾸지 않는다."
     },
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -5839,24 +6163,28 @@
     {
      "axis": "instruction",
      "field": "gk_long_distribution_target",
+     "field_kr": "GK 롱 배급 타깃",
      "focus": null,
      "player": "스즈키 지온",
      "quote": "「I like the idea of him pinging it to [Mbaye]… with him running in behind」(스즈키가 음바예에게 꽂아주고 그가 배후로 침투하는 그림)",
      "role_id": null,
      "team_code": null,
      "value": "mbaye_run_in_behind",
+     "value_kr": "음바예의 배후 침투",
      "verdict": "HELD",
      "verdict_note": "검증 불가 — 「GK가 음바예에게 꽂고 배후 침투」는 **패스 방향·길이 데이터**가 있어야 판정된다. 우리는 스즈키의 패스맵을 갖고 있지 않다(SofaScore 요약 스탯만). 재판정 조건: WhoScored 이벤트에서 GK 롱패스 수신자와 음바예 오프사이드 라인 침투를 집계하면 닫는다."
     },
     {
      "axis": "limit",
      "field": "double_pivot",
+     "field_kr": "더블 피벗",
      "focus": null,
      "player": null,
      "quote": "「when Barkley and Bogard were on the ball, my gut was going 'no, what are they going to do? Something bad's going to happen'」(바클리와 보가르드가 볼을 잡으면 직감적으로 나쁜 일이 생기겠다 싶었다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "barkley_bogarde_pairing_unstable_on_ball",
+     "value_kr": "바클리·보가르드 짝은 볼 소유 시 불안",
      "verdict": "HELD",
      "verdict_note": "실측 평점 바클리 7.8·보가르드 7.4(SofaScore) ↔ 서사 5점 — 충돌(D+1 미해결 목록과 같은 건). 재판정 조건: 고메스 복귀 후 「고메스-보가르드」 vs 「바클리-보가르드」 피벗 짝 표본 각 2경기의 자기진영 상실 비교."
     }
@@ -5889,12 +6217,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -5926,24 +6256,28 @@
     {
      "axis": "instruction",
      "field": "rb_build_up_shape",
+     "field_kr": "우측 풀백의 빌드업 형태",
      "focus": null,
      "player": "완비사카",
      "quote": "「Wasaka more staying at home in a hybrid back three」(완비사카는 하이브리드 백3에서 집을 지켰다)",
      "role_id": null,
      "team_code": null,
      "value": "tuck_in_hybrid_back3",
+     "value_kr": "안으로 좁혀 하이브리드 백3",
      "verdict": "REJECTED",
      "verdict_note": "실측 불일치: 완비사카 avg_y 14.69 → 툴x 85.3(터치라인). 백3로 접혔다면 툴x가 CB 대역(58~70)으로 들어와야 한다. 전진 억제(avg_x 41 < LB 47)는 정합하므로 「억제형 풀백(fb_wingback/Balanced)」 처방은 그대로. 1874(EmS_1gJ6g9c)도 같은 주장 — 2소스지만 둘 다 평균위치 그래픽의 y축 해석 오류로 판단."
     },
     {
      "axis": "limit",
      "field": "set_pieces",
+     "field_kr": "세트피스",
      "focus": null,
      "player": null,
      "quote": "「Them set pieces are starting to look good at the near post… We've done him twice」(세트피스가 니어포스트에서 좋아지고 있다… 두 번 해냈다)",
      "role_id": null,
      "team_code": "AVL",
      "value": "near_post_target_repeated",
+     "value_kr": "니어포스트 타깃 반복",
      "verdict": "HELD",
      "verdict_note": "D+1 판별 (b)는 「설계 루틴 아님 — 배급 품질+상대 마킹 실패」였다. 니어포스트 반복(2골 모두)은 새 관측. 재판정 조건: §7 재검증 ⑷ — 다음 경기 코너 니어포스트 타깃 3번째 표본이면 「루틴」으로 승격."
     }
@@ -6000,12 +6334,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "이 영상의 전술 주장은 (ㄱ) 다음 경기 예상 라인업이거나 (ㄴ) 요렌테 중원 선발 확인이다. 전자는 D+3 회차 범위 밖(예상은 근거 불가), 후자는 obs#803이 AS 1차 + WhoScored 포진 좌표로 이미 확정했다. 역할·포커스 수준의 새 구현 주장 없음."
     }
@@ -6038,24 +6374,28 @@
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Attack",
      "player": "그리말도",
      "quote": "「a Grimaldo todo el carril no le puedes dar, le tienes que poner a alguien fijando la amplitud por izquierda… Grimaldo ayer crece cuando Arnau Ortiz abre bien la banda, ya se puede meter por dentro」(그리말도에게 카릴레로 전체를 줄 수는 없다. 좌측에서 폭을 고정해 주는 누군가를 붙여야 한다… 어제 아르나우가 측면을 잘 열어 주자 그리말도가 성장했고, 이제 안쪽으로 들어갈 수 있다) — auto-caption",
      "role_id": "fb_att_wb",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "⛔ 이 회차에 처방을 바꾸지 않는다. 주장은 「전진 자체」가 아니라 「전진의 조건(같은 쪽 폭 제공자)」이라 단일 역할 코드로 환원되지 않고, 좌측 와이드 슬롯의 역할(폭 제공형 winger)과 한 쌍으로만 성립한다. 재판정 조건: ⑴ 아르나우(또는 다른 폭 제공형 와이드) 선발 + 그리말도 좌측 카릴레로 조합이 공식전 2경기 확보 ⑵ 그 표본에서 그리말도 그리드가 안쪽(열 이동)으로 실제 이동하는가. 근거 무효화 조건: 폭 제공자 없이도 그리말도 전진이 재현되면 이 주장은 무효다."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Attack",
      "player": "루크만",
      "quote": "「si me llega el balón aquí a la banda izquierda, voy a hacer mi recorte hacia dentro, mi amaguito y gol」(볼이 좌측에 오면 안쪽으로 커트해 들어가 페인트하고 골) / ⛔ 반대편: 「en ese 433 por la izquierda a Lukman no le veo… no está funcionando」(그 4-3-3에서 좌측의 루크먼은 안 보인다… 작동하지 않는다) — auto-caption",
      "role_id": "w_insidefwd",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "같은 영상이 유형(안쪽 커터 = insidefwd 계열)과 가동 여부(좌측에서도 작동하지 않는다)를 동시에 말해 역할 축과 폼 축이 분리되지 않는다(obs#807). 실측은 이 경기 ST 배치의 st_advanced/Support .603뿐이고 좌측 슬롯 표본이 없다. 재판정 조건: 루크먼이 좌측 슬롯(LM/LW)에서 공식전 45분+ 2경기를 채우면 커널 재산출 후 판정. 그때까지 시즌 정본 미변경."
     }
@@ -6089,12 +6429,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "전술 구조 설명은 풍부하나 FC 역할·포커스·팀 설정 어휘로 옮길 수 있는 명시 주장이 없다. 쿠마스 평가는 obs#819의 기존 판정을 재확인할 뿐 새 값 주장이 아니다."
     }
@@ -6258,12 +6600,14 @@
     {
      "axis": "team_axis",
      "field": "rest_defense_left",
+     "field_kr": "좌측 rest-defense",
      "focus": null,
      "player": null,
      "quote": "「특히 아틀레티코의 좌측 그림말도가 공격적으로 올라간 뒤의 공간을 계속 노렸습니다… 한츠코가 그 뒤를 계속 커버해야 했습니다」 (원 한국어 — 번역 불요) / 대조 1차: AS 「En Anoeta, el sistema de tres centrales… protegió a Grimaldo en ese carril izquierdo」(아노에타에서 백3 체계가… 좌측 카릴레로에서 그리말도를 보호했다) — auto-caption",
      "role_id": null,
      "team_code": "ATM",
      "value": "LCB covers LWB back",
+     "value_kr": "좌측 센터백이 좌측 윙백 뒤를 커버",
      "verdict": "APPLIED",
      "verdict_note": "obs#808로 채택. 백3의 기능을 「양쪽 카릴레로 등 뒤 보증」으로 규정하는 근거이며, 상대 매체·스페인 전국지·한국어 채널 3진영이 좌우 양쪽에서 같은 구조를 서술한다. ⛔ 팀 설정 필드(빌드업·수비접근·라인) 변경은 아니다 — 구조 해석의 채택이고 match_game_setups는 그대로다."
     }
@@ -6372,12 +6716,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -6413,12 +6759,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -6452,24 +6800,28 @@
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Roaming",
      "player": "맥 알리스터",
      "quote": "「**Gravenberch is not my number six… So going forward, Alexis Mac Allister is my number six**」(**흐라벤베르흐가 내 6번이 아니다… 앞으로 맥 알리스터가 내 6번이다**) · 「Every time Mac Allister played, **we looked like a team that could move the ball forward when we need to and then defend when we needed to**」(그가 뛸 때마다 **필요할 때 전진시키고 필요할 때 수비하는 팀으로 보였다**)",
      "role_id": "dm_dlp",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "PENDING",
      "verdict_note": "⚠️⚠️ **우리 `#491` 맥 알리스터는 role·focus·fit이 전부 NULL이다** — obs#770에서 **클럽 공식전에 2경기 이상 가진 `pos_class`가 하나도 없어**(RDM 1·LDM 1·CAM 1) 집계를 무효화했다. 그런데 **이 영상과 `BG7OGbbKmY0`(「그가 돌아가자 팀이 돌아갔다」, 48터치)가 그를 딥라잉 6번으로 지목**한다 ⇒ **서사 2소스가 실측 공백을 가리키고 있다.** ⛔ 값을 발명하지 않는다 — 처방 없음 유지. **마감 조건: PL·UCL에서 같은 `pos_class` 2경기**가 쌓이면 즉시 재산출하고 이 서사와 argmax를 대조한다(7월 대표팀 5경기는 `FIFA World Cup`이라 공식전 집계에서 제외됨, obs#773)."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "흐라벤베르흐",
      "quote": "「**he's not naturally a six**… **He doesn't have the awareness to play as a six**… we looked a lot more exposed」(**그는 천성적 6번이 아니다**… **6번으로 뛸 인지 능력이 없다**… 우리는 훨씬 더 노출됐다)",
      "role_id": "dm_dlp",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "REJECTED",
      "verdict_note": "⛔ **실측이 반대 방향이다**(docs/30 7단계 ⑷ 반박권 행사) — 우리 `#368` 흐라벤베르흐는 **LDM 순수 2경기(119분)** 재집계에서 `dm_dlp/Roaming` **.7633**(2위 `dm_dlp/Build-Up` .6485, **Δ.1148 > .05 단독 확정**)이다. 즉 **커널은 그를 그 자리에 잘 맞는다고 본다.** ⚠️ 다만 두 가지 유보: ⑴ **표본이 2경기로 규약 하한**이다(obs#772에서 「얇은 표본 3건」으로 표시) ⑵ **영상의 주장은 「적합」이 아니라 「수비 인지」**라 층이 다르다 — 커널은 **위치 분포**를 보고 영상은 **판단 능력**을 본다(docs/22 PlayStyle·능력치 층). ⇒ 역할 변경 없음. **재판정 조건: LDM 순수 표본이 4경기 이상으로 늘었을 때 재산출** + 실점 국면의 6번 공간 노출을 실측으로 확인."
     }
@@ -6505,12 +6857,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -6545,24 +6899,28 @@
     {
      "axis": "instruction",
      "field": "left_cover",
+     "field_kr": "좌측 커버",
      "focus": null,
      "player": null,
      "quote": "「**he was so isolated on that one side**… It was **him one v one. Where was McGinn?** Where's the player **doubling up and helping out** Maatsen」(**그 사이드에서 너무 고립됐다**… **1대1이었다. 맥긴은 어디 있었나?** **더블링해 돕던** 선수는 어디 있었나)",
      "role_id": null,
      "team_code": "AVL",
      "value": "우측 해방(맥긴 winger) 구성에서 좌측 풀백이 1대1로 고립된다 — 좌측 더블링 부재가 후반 붕괴 경로",
+     "value_kr": "우측 해방(맥긴 윙어) 구성에서 좌측 풀백이 1대1로 고립 — 좌측 더블링 부재가 후반 붕괴 경로",
      "verdict": "PENDING",
      "verdict_note": "⭐⭐ **obs#768의 직접 후속이다** — 맥긴 RM을 `wm_winger/Attack`(뱅크 **0.00**)으로 교정하고 헤밍스 LM을 `wm_widemid/Support`(뱅크 0.60)로 둔 구성에서 **좌측 커버 공백은 구조적 귀결**이다. 이 영상이 그 귀결을 **실전에서 관측**했다(같은 경기 report 39). ⇒ **C2/C6 재판정(할 일 20)의 실전 증거로 편입.** 마감 조건: 할 일 20 판정 시 이 관찰을 obs#443(윙어 쪽 풀백 절제) ↔ obs#95(해방 사이드 풀백 전진) 중 어느 쪽을 지지하는지 판정 — 현재로선 **「윙어 쪽이 아니라 반대쪽이 비었다」**이므로 단순 대입이 안 된다."
     },
     {
      "axis": "team_axis",
      "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
      "focus": null,
      "player": null,
      "quote": "「We get to the **final third and none of them take risk**… **We're so safe** — but **we are so risky on the edge of our own box**」(**파이널 서드에선 아무도 리스크를 안 진다**… **너무 안전하다** — 그런데 **자기 박스 앞에서는 너무 위험하다**)",
      "role_id": null,
      "team_code": "AVL",
      "value": "Balanced",
+     "value_kr": "균형",
      "verdict": "PENDING",
      "verdict_note": "⭐ 팀 설정 3축은 실측이 값을 갖지 않아 전술 분석이 1차 소스다(docs/30 7단계). 현행 AVL regime 1은 **Short Passing**(20/22행이 이 값)인데, 「후방에서 위험한 잔기술 + 전방에서 안전한 패스」는 **짧은 패스 지향의 부작용**을 서술한 것으로 읽힌다. ⛔ 단 이 영상은 **경기 직후 감정 반응 1건**이라 단독 근거로 부족하다. 마감 조건: 같은 지적이 2소스 이상(§11-3의 「폭 미활용·안전함」 축과 함께) 반복되고, 실측(파이널 서드 패스 방향·박스 진입 수)으로 교차 확인될 것."
     }
@@ -6597,12 +6955,14 @@
     {
      "axis": "instruction",
      "field": "vs_back3",
+     "field_kr": "상대 백3 대응",
      "focus": null,
      "player": null,
      "quote": "「**three at the back always felt like Villa's kryptonite, and especially when Glasner plays it**」(**백3는 늘 빌라의 크립토나이트로 느껴졌고, 특히 글라스너가 쓸 때 그렇다**)",
      "role_id": null,
      "team_code": "AVL",
      "value": "상대 백3(특히 글라스너의 백3)에 대한 대응이 구조적 약점 — 「늘 빌라의 크립토나이트」",
+     "value_kr": "상대 백3(특히 글라스너의 백3) 대응이 구조적 약점 — 늘 빌라의 크립토나이트",
      "verdict": "PENDING",
      "verdict_note": "⭐⭐ `pO6Pxey6GY0`이 **「감독 매치업」**(에메리 vs 글라스너 무승)으로 본 것을 이 자료가 **「포메이션 매치업」**으로 좁혔다 — 2소스가 같은 현상을 다른 층위로 설명한다. ⛔ 우리 `team_tactic_setups`에는 **상대 유형별 프리셋이 `vs-strong`/`vs-weak`/`lead` 3종뿐**이고 **상대 포메이션 축이 없다**. ⇒ 마감 조건: ⓐ 백3 상대 경기의 실측(AVL의 파이널 서드 진입·측면 대 중앙 비율)을 2경기 이상 모아 패턴이 실재하는지 확인 ⓑ 실재하면 `optimal:vs-back3` 프리셋 신설 판단. ⚠️ 표본 주의 — 「늘」이라는 표현은 팬 인상이므로 **실제 상대 포메이션별 전적으로 검증**해야 한다."
     }
@@ -6637,24 +6997,28 @@
     {
      "axis": "focus",
      "field": null,
+     "field_kr": null,
      "focus": "Attack",
      "player": "루크만",
      "quote": "「**necesitamos a un Lookman activo, un Lookman ofensivo, un Lookman con colmillo — no un Lookman de pases al pie, un Lookman predecible**」(**활동적·공격적이며 송곳니를 가진 루크만이 필요하다 — 발밑 패스만 하는 예측 가능한 루크만이 아니라**)",
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "⚠️ **처방과 실제가 갈린다는 지적이지 처방이 틀렸다는 지적이 아니다** — 우리 `#475`는 이미 루크만 LM `wm_insidefwd/**Attack**` .6925(obs#770 순수 2경기 재집계)로 **공격 포커스**를 주고 있다. 영상은 **그 포커스가 실현되지 않는다**고 말한다 ⇒ 처방 변경 없음(재현 목표에서는 우리가 원하는 역할을 넣는 것이 맞다). ⚠️ 재판정 조건: 루크만 순수 표본이 **n=2(124분)로 얇다** — 표본이 쌓였을 때 실측 argmax가 `insidefwd/Balanced`(현 2위 .6433) 쪽으로 굳으면 포커스 재검토."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "마르코스 요렌테",
      "quote": "「**ese 3-4-2-1 con Llorente como carrilero diestro, que es donde posiblemente lo vamos a ver cada vez más**」(**요렌테를 우측 카릴레로로 둔 3-4-2-1**이고 **앞으로 점점 더 그렇게 보게 될 것**이다)",
      "role_id": "fb_att_wb",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "PENDING",
      "verdict_note": "⭐⭐ **`i_nG7i-vavk`(「요렌테를 전진시켜라」)와 수렴하는 2번째 소스**이고, 이쪽은 **형태까지 특정**한다 — 3-4-2-1의 **우측 카릴레로(윙백)**. 우리 어휘로는 `fb_att_wb` 또는 백3 와이드(`wm_*`)다. ⛔ 현재 `#476` 요렌테는 **RB n=3(201분)**이고 백3 카릴레로 표본이 없다. 또한 NPJTYeyCCuY(Pedro El Ingeniero)는 그를 **「lateral más cortito」(더 짧은 측면)**로 봐 **절제형에 가깝게** 서술했다 ⇒ **3소스가 갈린다**. 마감 조건: ATM이 3-4-2-1로 서는 경기에서 요렌테 포지션-순수 2경기 확보 후 재산출. ⚠️ ATM 3-4-2-1 슬롯 체계가 **LOW-MEDIUM 잠정**이라 그것도 선행 조건이다."
     }
@@ -6690,12 +7054,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -6730,24 +7096,28 @@
     {
      "axis": "instruction",
      "field": "second_half_change",
+     "field_kr": "후반 변화",
      "focus": null,
      "player": null,
      "quote": "「**Rogers, Palmer, Reece James completely changed the face of Chelsea**」(**로저스·파머·리스 제임스가 첼시의 얼굴을 완전히 바꿨다**) · 「He brought in **sharpness, directiveness that was completely missing**」(**완전히 없던 날카로움과 직선성**을 투입했다)",
      "role_id": null,
      "team_code": "CHE",
      "value": "전반 정적 → 후반 교체 3인(로저스·파머·리스 제임스) + 형태 변경으로 날카로움·직선성 투입",
+     "value_kr": "전반 정적 → 후반 교체 3인(로저스·파머·리스 제임스) + 형태 변경으로 날카로움·직선성 투입",
      "verdict": "HELD",
      "verdict_note": "⭐ **상대편 증언이라 신뢰도가 높다**(자기 팀을 미화할 동기가 없다). `vePNdukB1DA`가 「교체 + 그 이상」이라 한 것을 **교체 3인 + 형태 변경** 두 층으로 특정했다. ⛔ 그러나 `reproduction_limits`의 `situational` 축이 「**하프타임·경기 중 포메이션 전환 — 단일 정적 프리셋은 전·후반 차이를 담지 못한다**」로 이미 막아 둔 영역이다 — FC26에 옮길 설정이 없다 ⇒ 변경 없음. ⭐ 재판정 조건: 우리가 **경기 전용 프리셋을 전·후반으로 분리**할지 판단(현재 `match_game_setups`는 경기당 1행). 이 경기는 **전·후반이 다른 팀이었다는 증언이 2소스**라 분리 설계의 첫 시험대가 될 수 있다."
     },
     {
      "axis": "limit",
      "field": "in_possession",
+     "field_kr": "점유 국면",
      "focus": null,
      "player": null,
      "quote": "「**as soon as we lost it, literally they made one pass and they were on our back line**… **a pattern I've seen three or four times when we've lost the ball high up**」(**볼을 잃자마자 패스 한 번에 우리 백라인에 닿았다**… **높은 곳에서 볼을 잃었을 때 서너 번 본 패턴**)",
      "role_id": null,
      "team_code": null,
      "value": "rest-defense(점유 중 볼 뒤 형태) 결손이 하이프레스 팀의 공통 취약점 — 볼 상실 후 패스 한 번에 백라인 도달",
+     "value_kr": "rest-defense(점유 중 볼 뒤 형태) 결손이 하이프레스 팀의 공통 취약점 — 볼 상실 후 패스 한 번에 백라인 도달",
      "verdict": "PENDING",
      "verdict_note": "⭐⭐ **같은 진단이 세 팀에서 나왔다** — 리버풀(`67TNBKbdUDw` 「rest defense isn't fixed」, obs#621~627 계열에서도 2회 지목), 리즈(이 영상), 그리고 AVL의 「파이널 서드 판단 부재」(`yMmxDTdffv4`)가 같은 언어를 쓴다. ⛔ FC26에 **rest-defense 설정 축이 없다** — 역할 조합(피벗 포커스·풀백 전진도)으로만 간접 조절된다. ⇒ 마감 조건: `reproduction_limits`에 **「rest-defense = 점유 중 볼 뒤 형태는 설정 축이 아니라 역할 조합의 창발 속성」**을 `in_possession` 축 신규 행으로 등록할지 판단. 3소스가 모였으므로 등록 근거는 충분하다."
     }
@@ -6783,12 +7153,14 @@
     {
      "axis": "instruction",
      "field": "link_pair",
+     "field_kr": "연계 짝",
      "focus": null,
      "player": null,
      "quote": "「**we have a good partnership there**… **It's a strength that we have**」(**거기 좋은 파트너십이 있다**… **우리가 가진 강점이다**) · 「even **before playing together, they were so connected**」(**함께 뛰기 전부터 둘은 매우 연결돼 있었다**)",
      "role_id": null,
      "team_code": "CHE",
      "value": "콜 파머–모건 로저스 연결을 감독이 「우리가 가진 강점」으로 명시 — 좌(로저스)·우(파머) 연결축",
+     "value_kr": "콜 파머–모건 로저스 연결을 감독이 우리가 가진 강점으로 명시 — 좌(로저스)·우(파머) 연결축",
      "verdict": "HELD",
      "verdict_note": "⭐ 1차 발언으로 **좌·우 연결축을 감독이 인정**했다. 우리 측 현황과 정합한다 — 로저스 `#421` LM `wm_wideplm/Attack`(좌) · 파머 `#484` RAM `cam_playmaker/Roaming`(우, obs#770에서 ST→RAM 재선언). 둘 다 안쪽 지향 창조형이라 **연결이 성립하는 조합**이다 ⇒ 처방 변경 없음. ⚠️ 재판정 조건: MdhMmXmVdUc(Brom Squad)가 지적한 **「두 10번을 같은 유형으로 두면 안 된다」**(obs#464 CAM 유형 함수)와 충돌하는지 — 로저스가 CAM 슬롯으로 올라오면 파머와 유형이 겹칠 수 있다. CHE 슬롯 확정 시 재검토."
     }
@@ -6823,24 +7195,28 @@
     {
      "axis": "limit",
      "field": "pressing",
+     "field_kr": "압박",
      "focus": null,
      "player": null,
      "quote": "「**Liverpool's pressing structure is built around recognizing where the opposition wants to build from**. You have your **triggers**, your **pressing lanes**, your **assignments**, and suddenly Atletico give you a different structure」(**리버풀 압박 구조는 상대가 어디서 빌드업하려는지 인식하는 데 기반한다** — **트리거·압박 레인·배정**이 있는데 갑자기 다른 구조를 받는다)",
      "role_id": null,
      "team_code": null,
      "value": "압박 트리거·레인·배정이 상대 빌드업 형태에 종속된다 — 상대가 예상 밖 구조(백5)를 쓰면 압박 전체가 어긋난다",
+     "value_kr": "압박 트리거·레인·배정이 상대 빌드업 형태에 종속된다 — 상대가 예상 밖 구조(백5)를 쓰면 압박 전체가 어긋난다",
      "verdict": "HELD",
      "verdict_note": "✅ `reproduction_limits`에 「압박 트리거·카운터프레스 강도 슬라이더가 없다」로 이미 등록된 한계다 — 새 행 추가 없음. ⭐ 다만 **「상대 형태 종속성」은 기존 서술에 없던 층**이다: FC26의 수비 접근 4종은 **상대 포메이션에 반응하지 않는다**. 재판정 조건: FC27이 상대별 압박 설정을 주면 재검토(09-18)."
     },
     {
      "axis": "team_axis",
      "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
      "focus": null,
      "player": null,
      "quote": "「**Liverpool didn't dominate the football, they dominated the dangerous moments**」(리버풀은 볼을 지배한 게 아니라 **위험한 순간을 지배했다**) · 「점유 45% ↔ xG 1.68 대 0.81 · 슛 14 대 9 · 박스 터치 31 대 18」",
      "role_id": null,
      "team_code": "LIV",
      "value": "Counter",
+     "value_kr": "역습",
      "verdict": "PENDING",
      "verdict_note": "⭐ ETMJDrEH2Pk(Brom Squad Gaming)도 이라올라 빌드업을 **Counter**로 지목했고, 이 영상은 **실측 수치로 같은 방향을 지지**한다(점유 45%인데 침투 지표는 압도). 현행 regime 3 `projected`는 **Balanced**다. ⇒ 두 소스가 수렴하므로 마감에 가까워졌다. 마감 조건: PL 공식전 표본 1건 더(점유·xG·박스 터치) 확인 후 `team_tactic_setups` 갱신."
     }
@@ -6875,12 +7251,14 @@
     {
      "axis": "team_axis",
      "field": "formation",
+     "field_kr": "포메이션",
      "focus": null,
      "player": null,
      "quote": "「**lining up in a 4-4-2, but in the first 15 minutes they confused us**… it was like **a three at the back — very much a hybrid format, like five at the back sometimes, four at the back sometimes — but it was all around Llorente's position**」(**4-4-2로 선다고 봤는데 첫 15분에 혼란스러웠다**… **백3 같았다 — 때로는 백5, 때로는 백4인 하이브리드 — 그런데 전부 요렌테의 위치를 중심으로 돌았다**)",
      "role_id": null,
      "team_code": "ATM",
      "value": "명목 4-4-2 ↔ 실질 하이브리드(백5/백4 전환), 축은 요렌테의 위치",
+     "value_kr": "명목 4-4-2 ↔ 실질 하이브리드(백5/백4 전환), 축은 요렌테의 위치",
      "verdict": "PENDING",
      "verdict_note": "⚠️⚠️ **HANDOFF 미해결 1(ATM 포메이션 표기 충돌)의 세 번째 표기다** — 우리·El Desmarque·COPE는 4-4-2, Infobae는 4-3-3, `Y5xXltqB6uo`는 3-4-2-1↔백5, 이 자료는 **「명목 4-4-2 ↔ 실질 하이브리드」**. ⭐⭐ **그런데 이 자료가 충돌을 해소할 열쇠를 준다**: 표기가 갈리는 이유가 **요렌테 한 칸의 높이**이고, 그가 어디 있느냐에 따라 백3/백4/백5로 **보이는** 것이다. ⇒ 마감 조건: 요렌테의 경기별 `avg_x`·`pos_class`를 시계열로 뽑아 **그 한 칸의 이동으로 표기 충돌이 설명되는지** 검증. 설명되면 미해결 1을 「표기 문제가 아니라 유동 구조」로 닫을 수 있다. ⭐ 이것이 `i_nG7i-vavk`·`Vcps1dALdnE`의 「요렌테를 전진시켜라」 제안과도 같은 축이다."
     }
@@ -6914,12 +7292,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -6954,12 +7334,14 @@
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Attack",
      "player": "가르나초",
      "quote": "「**attitude is good. It's positive, his attitude**… **training's fine, but the matches — we need to lock in a little bit more**」(**태도가 좋다. 그의 태도는 긍정적이다**… **훈련은 괜찮은데 경기에서는 조금 더 집중해야 한다**)",
      "role_id": "wm_winger",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "⭐ 감독이 **훈련↔경기 격차**를 지목했다 — 즉 **아직 주전이 아닌 이유를 감독이 설명**한 것이다. 우리는 obs#768에서 **LM 주전을 헤밍스로 확정**했고(`wm_widemid/Support`, C1 뱅크 0.60), 가르나초는 `squad_entries` WM `wm_winger/Attack` .771로 **대안 후보**로만 보유 중이다 ⇒ 처방 변경 없음. ⚠️ **재판정 조건**: ⓐ 가르나초가 LM 선발로 포지션-순수 2경기 이상 뛰면 재산출 ⓑ 할 일 20(C2/C6 재판정)에서 **좌측 뱅크 부담이 다른 칸으로 옮겨지면** 그의 `winger/Attack`(뱅크 0.00)이 다시 후보가 된다. ⛔ 이 인용은 **진행자의 재진술**이라 verbatim 근거로는 약하다 — 원 회견 전사 확보 시 교체."
     }
@@ -6995,24 +7377,28 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     },
     {
      "axis": "team_axis",
      "field": "formation",
+     "field_kr": "포메이션",
      "focus": null,
      "player": null,
      "quote": "「Atletico started with **three centre-backs, Marcos Llorente and Giuliano Simeone providing the width, Koke and Pablo Barrios inside. Then Lee Kang-in and Álex Baena moving around Julián Álvarez**… **it could look like a 3-4-2-1 or collapse into the familiar Atlético back five**」(**센터백 3명, 요렌테와 줄리아노가 폭, 코케와 바리오스가 안쪽, 이강인과 바에나가 알바레스 주위**… **3-4-2-1로 보이거나 익숙한 백5로 접혔다**)",
      "role_id": null,
      "team_code": "ATM",
      "value": "3-4-2-1 (국면에 따라 백5로 접힘) · 요렌테·줄리아노가 폭, 코케·바리오스 안쪽, 이강인·바에나가 알바레스 주위",
+     "value_kr": "3-4-2-1 (국면에 따라 백5로 접힘) · 요렌테·줄리아노가 폭, 코케·바리오스 안쪽, 이강인·바에나가 알바레스 주위",
      "verdict": "HELD",
      "verdict_note": "✅ **우리 obs#621~627(안필드 실측, ATM 시즌 첫 백3 3-4-2-1)과 일치**하고 **슬롯 단위로 더 정밀하다**. ⇒ 새 주장이 아니라 **독립 확인**이라 변경 없음. ⭐⭐ 다만 값이 크다: `Vcps1dALdnE`가 「요렌테 우측 카릴레로 3-4-2-1을 앞으로 더 보게 될 것」이라 했는데 **이 배치가 이미 안필드에서 나왔음을 확인**한다. ⏰ 재판정 조건: ATM 3-4-2-1 슬롯 체계가 **LOW-MEDIUM 잠정**이므로(HANDOFF), 이 배치로 2경기 이상 서면 슬롯 x·y를 실측으로 확정하고 신뢰도를 올린다. ⚠️ 이강인이 **RST 아닌 「알바레스 주위를 도는 2선」**으로 서술된 점은 obs#770의 RST→RM 재선언과 방향이 맞는다."
     }
@@ -7047,24 +7433,28 @@
     {
      "axis": "instruction",
      "field": "release_speed",
+     "field_kr": "볼 처리 속도",
      "focus": null,
      "player": null,
      "quote": "「**Ross Barkley falls victim of that. He doesn't get rid of the ball quick enough when he brings it into a cluttered area**… **Buendía falls victim of that**… **Hemmings needs to learn that over time**」(**바클리가 그 함정에 빠진다 — 혼잡한 지역에서 충분히 빨리 처리하지 못한다**… **부엔디아도**… **헤밍스는 배워야 한다**)",
      "role_id": null,
      "team_code": "AVL",
      "value": "혼잡 지역에서의 볼 처리 속도가 구조적 약점 — 바클리·부엔디아·헤밍스가 같은 함정에 빠진다",
+     "value_kr": "혼잡 지역에서의 볼 처리 속도가 구조적 약점 — 바클리·부엔디아·헤밍스가 같은 함정에 빠진다",
      "verdict": "PENDING",
      "verdict_note": "⭐⭐ **세 소스가 같은 결손을 서로 다른 층위에서 지목했다**: ⑴ `yMmxDTdffv4` 「중앙 좁은 공간에서 위험한 잔기술」(위치) ⑵ `tq5_q0cl5hM` 「점유에 목적이 없다」(의도) ⑶ 이 영상 「혼잡 지역 처리 속도」(개인 기능, 3명 지목). ⛔ 그런데 **FC26에 「볼 처리 속도」 설정 축이 없다** — 이건 능력치·PlayStyle 층(docs/22)이지 역할 층이 아니다. ⇒ 마감 조건: ⓐ docs/22 PlayStyle 축(예: Press Proven·Technical)에서 대응물을 찾을지 판단 ⓑ 아니면 `reproduction_limits`에 「개인 볼 처리 속도는 전술 설정 축이 아니다」로 등록. **⚠️ 팀 설정 3축(build_up_style) 주장으로 잘못 편입하지 말 것** — 층이 다르다."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "만잠비",
      "quote": "「this guy is like **almost a stereotypical definition of one of those mezzalas**… **an attacking-minded** [central midfielder]」(이 선수는 **메잘라의 거의 전형적 정의**에 가깝다… **공격 지향의** 중앙 미드필더)",
      "role_id": "cam_halfwinger",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "✅ **독립 수렴이다** — 우리 어휘에 `mezzala`는 없지만 가장 가까운 것이 `cm_halfwinger`/`cam_halfwinger`(하프스페이스 침투형)이고, `#254`·`squad_entries`가 이미 **CAM `cam_halfwinger/Balanced` .861**로 잡고 있다. 영상과 커널이 따로 같은 자리에 도달했다 ⇒ 변경 없음. ⚠️ **재판정 조건: 26/27 AVL 공식전 표본 확보**. 현재 만잠비 실측은 전부 25/26(프라이부르크·스위스 대표팀)이고 `#254`의 .861도 그 그리드 기반이다 — 복귀 후 포지션-순수 2경기 이상 쌓이면 재산출 1순위."
     }
@@ -7100,12 +7490,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -7139,12 +7531,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -7177,12 +7571,14 @@
     {
      "axis": "limit",
      "field": "pressing",
+     "field_kr": "압박",
      "focus": null,
      "player": null,
      "quote": "「**Isak probably not quite getting there quickly enough**… **Szoboszlai and Mac Allister were trying to latch on, pressing with the front six**, but **it was very disjointed, quite easy to play around**」(**이삭이 충분히 빨리 닿지 못했고**… **소보슬라이와 맥 알리스터가 전방 6인과 함께 압박하려 달라붙었지만 매우 단절돼 돌아가기 쉬웠다**)",
      "role_id": null,
      "team_code": null,
      "value": "전방 6인 압박이 단절돼 돌아가기 쉬웠다 — 스트라이커가 닿는 속도와 중앙 미드 2인의 합류가 어긋난다",
+     "value_kr": "전방 6인 압박이 단절돼 돌아가기 쉬웠다 — 스트라이커가 닿는 속도와 중앙 미드 2인의 합류가 어긋난다",
      "verdict": "HELD",
      "verdict_note": "✅ `reproduction_limits`에 「압박 강도·트리거 슬라이더가 없다」로 이미 등록된 한계다 — 새 행 추가 없음. ⭐⭐ **다만 이 자료는 「누가 어긋나는가」를 특정한 세 번째 소스**다: `67TNBKbdUDw`(트리거가 상대 형태에 종속) · `Y5xXltqB6uo`(압박 기준점이 깨끗하지 않음) · 이 영상(스트라이커 도달 속도 ↔ 중앙 미드 합류의 불일치). ⇒ 재판정 조건: FC26에서 이 불일치를 **역할 조합으로 간접 조절**할 수 있는지 — ST 포커스(Attack↔Support)와 DM/CM 포커스(Ball-Winning↔Defend)의 조합이 압박 합류 타이밍에 영향을 주는지 인게임 A/B 후보."
     }
@@ -7217,12 +7613,14 @@
     {
      "axis": "team_axis",
      "field": "line_height",
+     "field_kr": "라인 높이",
      "focus": null,
      "player": null,
      "quote": "「**el equipo se pone por delante y, en lugar de intentar mantener aquello que estaba funcionando, empieza a retrasar las líneas, a conceder metros y a intentar proteger el resultado**」(**팀이 앞서 나가자 잘 되던 것을 유지하기보다 라인을 내리고 미터를 내주고 결과를 지키려 한다**) · 「en Anfield… **encerrarte y pensar que vas a defender una ventaja durante todo el partido es asumir muchísimo riesgo**」(안필드에서… **틀어박혀 리드를 지킬 수 있다고 생각하는 것은 엄청난 리스크**다)",
      "role_id": null,
      "team_code": "ATM",
      "value": "리드를 잡으면 라인을 내리고 결과를 지키려 한다 — 강팀 원정에서는 그 선택이 역효과",
+     "value_kr": "리드를 잡으면 라인을 내리고 결과를 지키려 한다 — 강팀 원정에서는 그 선택이 역효과",
      "verdict": "PENDING",
      "verdict_note": "⭐⭐ **우리 obs#514(「리드 뒤 후퇴가 실패점」)와 독립 일치**하는 외부 진술이고, AVL의 `optimal:lead` 프리셋(da=Deep · line=45)이 재현하려는 행동과 **같은 형태**다. ⛔ 그런데 ATM `team_tactic_setups`는 `measured` 행뿐이라 **line_height가 NULL**이다 — 채울 근거를 모으는 중. ⭐⭐ **중요한 단서: 이 자료는 그 행동의 「조건부 실패」를 지적한다** — 강팀 원정(안필드)에서는 역효과라는 것. ⇒ 마감 조건: ATM 리드 국면 실측(리드 전후 평균 라인·PPDA)을 2경기 이상 확보하고, **상대 강도별로 분리**해 `lead` 프리셋에 조건을 붙일지 판단. ⚠️ AVL의 `optimal:lead`에도 상대 강도 조건이 없어 **같은 점검이 필요**하다."
     }
@@ -7257,24 +7655,28 @@
     {
      "axis": "instruction",
      "field": "second_half_change",
+     "field_kr": "후반 변화",
      "focus": null,
      "player": null,
      "quote": "「Chelsea made **four changes: Reece James on for Reggie Watson, Pedro Neto on for Gusto, Palmer on for Estêvão, and Morgan Rogers on for Gittens**. And **very quickly you could see that Palmer and Rogers had been told to stay narrow and overload the midfield**」(첼시가 **4교체를 했다 — 리스 제임스↔레지 왓슨, 페드루 네투↔귀스토, 파머↔에스테방, 모건 로저스↔기텐스**. 그리고 **파머와 로저스가 좁게 서서 중원을 과부하시키라는 지시를 받았음이 아주 빠르게 보였다**)",
      "role_id": null,
      "team_code": "CHE",
      "value": "하프타임 4교체 + 「좁게 서서 중원 과부하」 지시 — 리스 제임스↔왓슨, 네투↔귀스토, 파머↔에스테방, 로저스↔기텐스",
+     "value_kr": "하프타임 4교체 + 좁게 서서 중원 과부하 지시 — 리스 제임스↔왓슨, 네투↔귀스토, 파머↔에스테방, 로저스↔기텐스",
      "verdict": "HELD",
      "verdict_note": "⭐⭐ **할 일 28 ⓒ 해소** — 후반 변경의 정체가 확정됐다: **4교체 + 「좁게 서서 중원 과부하」 지시**다. `K6PKQW16wv0`(리즈 관점)이 「로저스·파머·리스 제임스가 첼시의 얼굴을 완전히 바꿨다」고 한 것의 **첼시 쪽 세부**이고, 교체 명단이 **두 소스에서 일치**한다. ⭐ 추가 지시도 특정됐다 — 네투·차바리아는 「**상대 공격이 올 때는 수비하고 공간이 생기면 공격하라**」, **리스 제임스와 바르코는 백라인에 내려가고 다른 한 명이 올라간다**(로테이션). ⛔ 그러나 `reproduction_limits` `situational` 축이 「단일 정적 프리셋은 전·후반 차이를 담지 못한다」로 이미 막아 둔 영역이라 **FC26에 옮길 설정이 없다** ⇒ 변경 없음. ⭐ **재판정 조건: `match_game_setups`를 전·후반으로 분리할지** — 이 경기는 전·후반이 다른 팀이었다는 증언이 **2소스**이고 교체·지시까지 특정됐으므로 **분리 설계의 첫 시험대**로 쓸 수 있다."
     },
     {
      "axis": "team_axis",
      "field": "formation",
+     "field_kr": "포메이션",
      "focus": null,
      "player": null,
      "quote": "「**three at the back in build-up** — Lacroix in the centre, Colwill, Acheampong」(**빌드업에서 백3** — 중앙 라크루아·콜윌·아체암퐁) / 「out of possession, **it shifted more to a 4-4-2**」(무공 시 **4-4-2로 이동**)",
      "role_id": null,
      "team_code": "CHE",
      "value": "4-3-3 (SofaScore 정본) · 영상의 「빌드업 백3 ↔ 무공 4-4-2」는 국면 서술",
+     "value_kr": "4-3-3 (SofaScore 정본) · 영상의 빌드업 백3 ↔ 무공 4-4-2는 국면 서술",
      "verdict": "REJECTED",
      "verdict_note": "⛔ **명목 포메이션 주장으로는 기각한다** — obs#777에서 SofaScore 원천(`event/16950621/lineups`)을 브라우저 경로로 조회한 결과 **첼시는 `4-3-3`**이었다(리즈가 3-4-2-1). ⭐ **모순은 아니다**: 영상은 **국면별 형태**(빌드업 백3 / 무공 4-4-2)를 서술했고 SofaScore는 **명목 포진**을 기록한다 — **층이 다르다.** ⇒ ⭐⭐ **부류로 기록**: 「팬 채널의 포메이션 서술은 국면 서술일 수 있다」. 우리가 영상 값을 직접 채우지 않고 **수집 후 대조용으로만 쓴 판단이 옳았다**(3티어 소스 보류 원칙). ⭐ 국면 형태 자체는 `reproduction_limits` `formation` 축(「FC26은 국면별 포메이션을 갖지 않는다」)에 이미 등록된 한계에 해당한다."
     }
@@ -7309,24 +7711,28 @@
     {
      "axis": "limit",
      "field": "formation",
+     "field_kr": "포메이션",
      "focus": null,
      "player": null,
      "quote": "「Out of possession they are **dropping into a 5-4-1**… the other option… **5-3-2 which keeps Gibbs-White central off the striker**」(무공 시 **5-4-1**로 내려앉거나, 다른 옵션으로 **5-3-2로 깁스-화이트를 스트라이커 아래 중앙에** 둔다)",
      "role_id": null,
      "team_code": null,
      "value": "상대(포레스트)가 무공 시 5-4-1 ↔ 5-3-2를 상황에 따라 오간다 — 국면별 포메이션 전환",
+     "value_kr": "상대(포레스트)가 무공 시 5-4-1 ↔ 5-3-2를 상황에 따라 오간다 — 국면별 포메이션 전환",
      "verdict": "HELD",
      "verdict_note": "✅ `reproduction_limits`에 「FC26은 국면별 포메이션을 갖지 않는다 — 빌드업 스타일·수비접근이 국면을 대신한다」로 이미 등록된 한계다. 상대팀 사례라 우리 처방 대상도 아니다 ⇒ 변경 없음. ⭐ 재판정 조건: 상대팀 프리셋을 별도로 만들 축을 열지 여부(현재 우리는 상대팀 전술을 DB에 담지 않는다)."
     },
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -7362,12 +7768,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -7403,12 +7811,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -7443,12 +7853,14 @@
     {
      "axis": "limit",
      "field": "in_possession",
+     "field_kr": "점유 국면",
      "focus": null,
      "player": null,
      "quote": "「**Liverpool were really, really open, particularly in the middle of the park and down both flanks — particularly the right flank**」(**리버풀이 정말 열려 있었다 — 특히 중원과 양 측면, 그중에서도 우측**)",
      "role_id": null,
      "team_code": null,
      "value": "리버풀이 중원과 양 측면(특히 우측)에서 열려 있었다 — rest-defense 결손의 세 번째 독립 관측",
+     "value_kr": "리버풀이 중원과 양 측면(특히 우측)에서 열려 있었다 — rest-defense 결손의 세 번째 독립 관측",
      "verdict": "PENDING",
      "verdict_note": "⭐⭐ **같은 경기에서 rest-defense 결손을 지목한 세 번째 소스**다: `67TNBKbdUDw`(「rest defense isn't fixed」) · `kURILCR5GQA`(「미드필드를 지나면 큰 열린 공간」) · 이 영상(「중원과 우측이 열려 있었다」). 여기에 `K6PKQW16wv0`(리즈)의 같은 진단까지 더하면 **4소스**다. ⇒ **`reproduction_limits`에 「rest-defense = 점유 중 볼 뒤 형태는 설정 축이 아니라 역할 조합의 창발 속성」을 `in_possession` 신규 행으로 등록할 근거가 충분해졌다**(K6PKQW16wv0의 같은 주장과 통합 처리). ⏰ 마감 조건: 등록 여부 사용자 판단 — 등록하면 「우리가 재현할 수 없는 것」 목록이 하나 늘고, 대신 **역할 조합(피벗 포커스·풀백 전진도)으로 간접 조절**한다는 지침이 붙는다."
     }
@@ -7483,12 +7895,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -7523,12 +7937,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -7563,24 +7979,28 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     },
     {
      "axis": "team_axis",
      "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
      "focus": null,
      "player": null,
      "quote": "「si vienes a **jugar en largo** y vienes a **encerrarte** y vienes a **no proponer**, pues claro, **no tienes esas pérdidas. Pero a mí dame ese riesgo si vas a intentar jugar la pelota**」(**롱볼로** 하고 **틀어박히고 제안하지 않으면** 당연히 **그런 상실은 없다. 하지만 볼을 플레이하려 한다면 그 리스크를 달라**)",
      "role_id": null,
      "team_code": "ATM",
      "value": "Short Passing",
+     "value_kr": "짧은 패스",
      "verdict": "PENDING",
      "verdict_note": "⚠️⚠️ **11kt8KYhtvw(Brom Squad Gaming, 25/26)는 ATM 빌드업을 `Counter`로 지목했는데 이 자료는 「빌드업을 시도하다 잃는다」는 반대 방향**이다 — **체제 변화(25/26 직선 → 26/27 빌드업 시도)를 반영한 차이**로 보인다. ATM `team_tactic_setups`는 `measured` 행만 있고 bu·da·line이 전부 NULL이라 **채울 근거를 모으는 중**이다. ⇒ 마감 조건: 26/27 라리가 실측(시퀀스당 패스·롱볼 비율·자기 진영 턴오버)을 2경기 이상 확보해 `Counter` ↔ `Short Passing` 중 판정. **이 영상과 11kt8KYhtvw를 같은 시즌으로 섞지 말 것**(불변규칙 7)."
     }
@@ -7616,12 +8036,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -7657,12 +8079,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -7697,12 +8121,14 @@
     {
      "axis": "team_axis",
      "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
      "focus": null,
      "player": null,
      "quote": "「**They don't have to dominate possession, but when they get possession, they've got a purpose with it**. And **they were missing that a little bit this season**」(**점유를 지배할 필요는 없지만 점유하면 목적이 있다**. 그런데 **이번 시즌엔 그게 조금 없었다**)",
      "role_id": null,
      "team_code": "AVL",
      "value": "Balanced",
+     "value_kr": "균형",
      "verdict": "PENDING",
      "verdict_note": "⭐ `yMmxDTdffv4`(UTV, 「파이널 서드에서 리스크를 안 진다」)와 **같은 결손을 다른 방향에서 진술**한 2번째 소스다. 현행 AVL regime 1은 `Short Passing` 20/22행. ⇒ 마감 조건에 한 걸음 다가섰다(2소스 확보). ⏰ 남은 조건: **실측 교차검증** — 파이널 서드 패스 방향·박스 진입 수·시퀀스당 패스를 브뤼헤전(승)과 포레스트전(패)으로 나눠 대조. 승패로 갈리면 「목적성」은 결과 서술이지 설정 축이 아닐 수 있다."
     }
@@ -7738,12 +8164,14 @@
     {
      "axis": "limit",
      "field": "rotation",
+     "field_kr": "로테이션",
      "focus": null,
      "player": null,
      "quote": "「**siempre es normal que cuando parecería que en el segundo tiempo no hace lo mismo que en el primero, aparece que no están bien físicamente**… **jugaste bien, el segundo tiempo jugaste mal**」(**후반에 전반과 같지 않아 보이면 늘 체력 얘기가 나온다**… **잘 뛰었다가 후반엔 못 뛴 것**이다)",
      "role_id": null,
      "team_code": null,
      "value": "ATM 후반 부진의 원인은 체력 저하가 아니다 — 감독이 명시적으로 부인하고 「못 뛴 것」으로 귀속",
+     "value_kr": "아틀레티코 후반 부진은 체력 저하가 아니다 — 감독이 명시적으로 부인하고 못 뛴 탓으로 돌림",
      "verdict": "HELD",
      "verdict_note": "⭐ `reproduction_limits`의 `rotation` 축(「주행 부하·일정 밀도에 따른 강도 조절 — 시즌 누적 피로는 게임에 있으나 전술 설정 축이 아니다」)에 **반대 방향 근거**를 더한다: 감독 1차 발언이 **체력 가설을 기각**했으므로 ATM 후반 붕괴를 피로 축으로 모델링하면 안 된다. 기존 한계 행을 바꾸지 않고 해석만 고정한다 ⇒ 변경 없음. 재판정 조건: 후반 실점 시계열이 실측으로 쌓이면 국면(리드 관리) 축으로 재검토(obs#514 계열)."
     }
@@ -7778,12 +8206,14 @@
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Ball-Winning",
      "player": "라비아",
      "quote": "「he's in a pivot with Reggie Watson, **it's not exactly easy for him to play his game**. **Imagine a Caicedo, a Lavia, a James next to him** who's a bit more of a **physical profile**」(레지 왓슨과 피벗이라 **자기 경기를 하기 쉽지 않다**. **카이세도·라비아·리스 제임스처럼 더 피지컬한 프로필**이 옆에 있다면)",
      "role_id": "cm_b2b",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "✅ **정합한다** — obs#770에서 라비아를 LCM `cm_b2b/**Ball-Winning**` .8599(Δ.0709 단독 확정)로 재선언했고, 이 영상은 그를 **바르코(메트로놈형)의 피지컬 보완재**로 지목한다. 볼 위닝형이 딥라잉 플레이메이커 옆에 서는 것은 우리 C3(피벗 분화)와 같은 원리다 ⇒ 변경 없음. ⭐ 재판정 조건: 바르코 축이 우리 DB에 아직 없다 — **바르코 실측이 생기면 피벗 짝(바르코 dlp ↔ 라비아 b2b/Ball-Winning) 정합성을 재산출**한다."
     }
@@ -7818,12 +8248,14 @@
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "맥 알리스터",
      "quote": "「**Mac Allister was really instrumental getting on the ball, dictating the play. He's that real passer in the middle. Once he started to make things tick, Liverpool started to tick as a team**」(**볼을 잡고 경기를 지휘하는 데 결정적이었다. 중앙의 진짜 패서다. 그가 돌아가기 시작하자 팀도 돌아가기 시작했다**)",
      "role_id": "cm_dlp",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "PENDING",
      "verdict_note": "⚠️ **우리 `#491`은 현재 role·focus·fit이 전부 NULL이다** — obs#770에서 **클럽 공식전에 2경기 이상 가진 pos_class가 하나도 없어**(RDM 1·LDM 1·CAM 1) 집계를 무효화했다. 이 자료는 그를 **딥라잉 플레이메이커 계열**로 보는 서사 근거를 주지만 **실측이 없어 처방을 만들 수 없다**(값을 발명하지 않는다). ⇒ 마감 조건: ⓐ `pos_class` 백필 후에도 그는 7월 대표팀 5경기가 **FIFA World Cup**이라 공식전 집계에 못 들어간다(obs#773) ⓑ **PL·UCL에서 같은 pos_class 2경기**가 쌓이면 즉시 재산출. 그때 이 서사와 실측 argmax를 대조한다."
     }
@@ -7857,12 +8289,14 @@
     {
      "axis": "focus",
      "field": null,
+     "field_kr": null,
      "focus": "Balanced",
      "player": "헤밍스",
      "quote": "「**Hemmings could have put us a few more up**… **he's building into it as well**」(**헤밍스가 몇 골 더 넣을 수도 있었다**… 그도 **점점 자리를 잡아가는 중**이다)",
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "⭐ obs#768에서 헤밍스 LM을 **`wm_widemid/Support`(뱅크 0.60)** 로 처방했는데, 이는 **실측 argmax `wm_winger/Balanced` .6759(1위)를 Δ.0137 무결정 구간에서 구조(C1 두 줄 4)로 tie-break한 결과**다. 이 영상은 그의 **공격 기여**를 관측하므로 argmax 쪽(winger/Balanced) 근거가 된다. ⛔ 그러나 팬 관점 1건이고 **C1 뱅크는 여전히 좌측이 대야 한다**(맥긴 RM winger/Attack = 0.00) ⇒ 처방 변경 없음. **재판정 조건: 할 일 20(C2/C6 재판정)에서 뱅크 부담을 다른 칸으로 옮길 수 있게 되면 즉시 `winger/Balanced`로 복귀 검토.**"
     }
@@ -7898,24 +8332,28 @@
     {
      "axis": "focus",
      "field": null,
+     "field_kr": null,
      "focus": "Attack",
      "player": "소보슬라이",
      "quote": "「**we have midfielders that naturally they are going to arrive to the box**… it's good that we can **benefit offensively from those situations**」(**자연스럽게 박스에 도착하는 미드필더들이 있다**… 그 상황에서 **공격적 이득을 보는 것이 좋다**)",
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "PENDING",
      "verdict_note": "⭐ 감독 1차 발언으로 **중앙 미드의 박스 도착을 구조적으로 허용**한다고 명시했다(흐라벤베르흐·소보슬라이·맥 알리스터 3명 지목). 포커스 층 주장이라 역할은 건드리지 않는다. ⛔ 소보슬라이는 표본 감사에서 **RDM 순수 2경기 166분**으로 얇고(obs#772), CAM 3경기 270분이 더 크다 ⇒ **슬롯 확정이 선행 조건**이다(할 일 24). 마감 조건: 소보슬라이 축 정리 후 포커스 재산출."
     },
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -8211,12 +8649,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -8420,24 +8860,28 @@
     {
      "axis": "limit",
      "field": "situational",
+     "field_kr": "상황별 취약 구간",
      "focus": null,
      "player": null,
      "quote": "「**los 15 primeros minutos de cada tiempo no puede pasar absolutamente nada**」(**각 하프의 첫 15분에는 절대 아무 일도 일어나면 안 된다**) · 「**entre gol y gol de tiempo efectivo del balón en juego ha habido 14 segundos**」(**골과 골 사이 볼 인플레이 실효 시간이 14초**였다)",
      "role_id": null,
      "team_code": null,
      "value": "각 하프 첫 15분이 구조적 취약 구간 — ATM은 2경기 연속 후반 시작 직후 붕괴(산 마메스는 골 간격 실효 14초)",
+     "value_kr": "각 하프 첫 15분이 구조적 취약 구간 — 아틀레티코는 2경기 연속 후반 시작 직후 붕괴(산 마메스는 골 간격 실효 14초)",
      "verdict": "HELD",
      "verdict_note": "✅ `reproduction_limits`의 `situational` 축(「하프타임·경기 중 포메이션 전환 — 단일 정적 프리셋은 전·후반 차이를 담지 못한다」)에 **수치 근거를 더한다** — 새 행 추가 없음. ⭐⭐ **같은 시간대 축이 두 팀에서 나왔다**: ATM(이 영상, 2경기 연속) · AVL(HANDOFF의 「UTV 주장 — 45~60분 붕괴가 에메리 체제 반복 고질」). ⇒ 재판정 조건: **경기 전용 프리셋을 전·후반으로 분리**할지 판단(K6PKQW16wv0의 CHE 전·후반 분리 제안과 같은 결론으로 수렴 중 — 3소스)."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "마르코스 요렌테",
      "quote": "「me está pidiendo ya **adelantar a Llorente y sacar al Cuti Romero detrás**」(이미 **요렌테를 전진시키고 쿠티 로메로를 뒤에 빼는 것**을 요구하게 된다)",
      "role_id": "wm_winger",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "PENDING",
      "verdict_note": "⭐ **우리 축에 직접 옮길 수 있는 인선·슬롯 주장이다** — 현재 요렌테는 `#476` **RB** n=3(201분), 쿠티 로메로는 `#500` **CCB** n=2다. 제안은 **요렌테 RB→전진(RM/RAM), 쿠티를 그 뒤(RB/RCB)**로 놓는 구조다. ⛔ 아직 반영하지 않았다 — ⑴ 팬 채널 제안 1건이고 ⑵ 요렌테의 **RM 포지션-순수 표본이 없다**(RB만 있다) ⑶ NPJTYeyCCuY(Pedro El Ingeniero)는 요렌테를 **「조금 더 짧은 측면(lateral más cortito)」**으로 봤는데 이는 오히려 **절제형 RB**에 가까워 **두 소스가 갈린다**. ⇒ 마감 조건: 요렌테가 실제로 전진 배치되는 경기가 나오면 포지션-순수 집계로 재산출. 그 전까지는 `#476` RB 유지."
     }
@@ -8523,12 +8967,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -8815,12 +9261,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -8934,12 +9382,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -9283,12 +9733,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -9403,12 +9855,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -9551,12 +10005,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -9794,24 +10250,28 @@
     {
      "axis": "limit",
      "field": "pressing",
+     "field_kr": "압박",
      "focus": null,
      "player": null,
      "quote": "「la trampa pentagonal, el sistema defensivo que hizo que marcase el primer gol en solamente 30 segundos… Lavia y Rhys James serían la base en el pentágono… por izquierda Rogers, por derecha Palmer y arriba João Pedro」(오각형 함정, 30초 만에 선제골을 만든 수비 시스템 — 라비아와 리스 제임스가 오각형의 밑변, 좌측 로저스, 우측 파머, 꼭대기 주앙 페드루)",
      "role_id": null,
      "team_code": null,
      "value": "trampa pentagonal(오각형 함정) — 라비아·리스 제임스가 밑변, 좌 로저스·우 파머, 꼭대기 주앙 페드루",
+     "value_kr": "오각형 함정 — 라비아·리스 제임스가 밑변, 좌 로저스·우 파머, 꼭대기 주앙 페드루",
      "verdict": "PENDING",
      "verdict_note": "압박 「형태」에 기하를 부여한 유일한 자료. FC26 팀 설정에 압박 트리거·형태 축이 없어(reproduction_limits pressing 3행) 설정값으로 옮길 수 없다 — reproduction_limits에 「압박 형태(오각 함정)」를 4번째 pressing 행으로 추가할지 판단 필요."
     },
     {
      "axis": "team_axis",
      "field": "formation",
+     "field_kr": "포메이션",
      "focus": null,
      "player": null,
      "quote": "「vuelve a ese sistema 3-4-2-1 que tantos éxitos le dio en el Leverkusen」(레버쿠젠에서 큰 성공을 준 3-4-2-1로 돌아간다)",
      "role_id": null,
      "team_code": "CHE",
      "value": "3-4-2-1",
+     "value_kr": "3-4-2-1",
      "verdict": "HELD",
      "verdict_note": "이미 일치 — team_tactic_setups regime 2 projected = 3-4-2-1. 영상은 그 계보(레버쿠젠 → 첼시)를 확인한 것이라 설정 변경 없음. 재판정 조건: 인게임 포메이션은 슬롯 제약으로 5-4-1을 채택 중이므로(reference 행) FC27에서 3-4-2-1 와이드가 FB 슬롯을 받으면 재매핑."
     }
@@ -10203,48 +10663,56 @@
     {
      "axis": "limit",
      "field": "pressing",
+     "field_kr": "압박",
      "focus": null,
      "player": null,
      "quote": "「**Immediate counter-pressing after losing possession will be a key principle**」(**볼을 잃은 즉시 카운터프레스가 핵심 원칙**이다)",
      "role_id": null,
      "team_code": null,
      "value": "즉시 카운터프레스를 핵심 원칙으로 요구하나 FC26은 Aggressive에 오프사이드 트랩이 묶여 있어 분리 조절 불가",
+     "value_kr": "즉시 카운터프레스가 핵심 원칙이나 FC26은 공격적 설정에 오프사이드 트랩이 묶여 분리 조절 불가",
      "verdict": "HELD",
      "verdict_note": "✅ `reproduction_limits`에 이미 등록된 한계다 — 「압박 강도·트리거 슬라이더가 없다. Aggressive는 「즉시 카운터프레스+오프사이드 트랩」 묶음이라 분리 조절 불가」. 새 한계가 아니므로 행 추가 없음. 재판정 조건: FC27이 압박 트리거 축을 분리하면 재검토(09-18 얼리액세스 후)."
     },
     {
      "axis": "team_axis",
      "field": "defensive_approach",
+     "field_kr": "수비 접근",
      "focus": null,
      "player": null,
      "quote": "「the team's approach is **set to high**, with the manager demanding an aggressive press」(팀 접근은 **하이**로 설정되고 감독은 적극적 압박을 요구한다)",
      "role_id": null,
      "team_code": "CHE",
      "value": "High",
+     "value_kr": "높음",
      "verdict": "HELD",
      "verdict_note": "✅ 이미 일치 — `team_tactic_setups` regime 2 `reference`(알론소 블루프린트) = da=High · line=64. ⚠️ 단 같은 regime의 `projected` 행은 da=Balanced로 갈려 있고, gVmb3JTFcKU(Tactical Analysis)는 **시즌 개막 후 압박이 콤팩트해졌다**고 관측했다. ⇒ 재판정 조건: 공식전 3경기 이상 쌓이면 High ↔ Balanced 중 어느 쪽이 정본인지 확정."
     },
     {
      "axis": "team_axis",
      "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
      "focus": null,
      "player": null,
      "quote": "「The **build-up style is set to balanced**, allowing the team to adapt their approach depending on the opposition's press」(**빌드업 스타일은 밸런스드**로 설정해 상대 압박에 따라 조절한다)",
      "role_id": null,
      "team_code": "CHE",
      "value": "Balanced",
+     "value_kr": "균형",
      "verdict": "PENDING",
      "verdict_note": "⭐ 팀 설정 3축은 실측이 값을 갖지 않는 축이라 전술 분석이 1차 소스다(docs/30 7단계). 현행 regime 2는 `Short Passing`(projected·reference 둘 다)인데 이 자료는 **Balanced**, gVmb3JTFcKU는 실측 근거로 **Counter**(146패스·점유 25.6%)를 지지한다 ⇒ **세 값이 갈린다.** 마감 조건: 공식전 표본으로 점유·패스량을 2경기 이상 확인해 Counter/Balanced/Short Passing 중 결정."
     },
     {
      "axis": "team_axis",
      "field": "formation",
+     "field_kr": "포메이션",
      "focus": null,
      "player": null,
      "quote": "「deploy Chelsea in his preferred **3-4-2-1** formation」(선호하는 **3-4-2-1**로 배치한다)",
      "role_id": null,
      "team_code": "CHE",
      "value": "3-4-2-1",
+     "value_kr": "3-4-2-1",
      "verdict": "HELD",
      "verdict_note": "✅ 이미 일치 — regime 2 `projected` = 3-4-2-1. 재판정 조건: 인게임 포메이션은 슬롯 제약으로 5-4-1을 채택 중이므로(reference 행), FC27에서 3-4-2-1 와이드가 FB 슬롯을 받으면 재매핑."
     }
@@ -10643,48 +11111,56 @@
     {
      "axis": "limit",
      "field": "pressing",
+     "field_kr": "압박",
      "focus": null,
      "player": null,
      "quote": "「Common triggers would include **backwards passes, poor first touches, passes into [isolated] wide areas, or moments when the opponent receives a pass facing their own goal**」(흔한 트리거는 **백패스, 나쁜 첫 터치, 고립된 측면으로의 패스, 상대가 자기 골대를 보고 패스를 받는 순간**이다)",
      "role_id": null,
      "team_code": null,
      "value": "압박 트리거 4종 특정 — 백패스 · 나쁜 첫 터치 · 고립된 측면으로의 패스 · 상대가 자기 골대를 보고 받는 순간",
+     "value_kr": "압박 트리거 4종 특정 — 백패스 · 나쁜 첫 터치 · 고립된 측면으로의 패스 · 상대가 자기 골대를 보고 받는 순간",
      "verdict": "HELD",
      "verdict_note": "✅ `reproduction_limits`에 「압박 트리거·카운터프레스 강도 슬라이더가 없다」로 이미 등록된 한계다 — 새 행 추가 없음. ⭐ 다만 **트리거를 4종으로 나열한 유일한 자료**라 실축 판정(왜 그 순간 압박이 터졌나)의 대조표로는 값이 있다. 재판정 조건: FC27이 압박 트리거 축을 분리하면 재검토(09-18 얼리액세스)."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Attack",
      "player": "케르케즈",
      "quote": "「The full-backs being Kerkez and Frimpong would operate as **attacking wing-backs with an attack focus**」(케르케즈와 프림퐁은 **어택 포커스의 공격 윙백**으로 뛴다)",
      "role_id": "fb_att_wb",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "REJECTED",
      "verdict_note": "⛔ **양쪽 풀백 동시 Attack은 실측과 어긋난다.** 26/27 공식전 실측(obs#773 재집계)은 케르케즈 `fb_att_wb/**Support**` .9489 · 프림퐁 `fb_att_wb/**Support**` .9387로 **둘 다 Support**다 — 포커스 층에서 갈린다. 또한 **부임 전 추측판**이라 실측을 덮을 근거가 못 된다(docs/30 7단계 ⑷ 반박권 행사). ⭐ 다만 「양쪽 동시 전진」 주장 자체는 에메리 축의 C2/C6(풀백 한 명씩 전진)을 이라올라 축에 옮기면 안 된다는 점을 상기시킨다."
     },
     {
      "axis": "team_axis",
      "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
      "focus": null,
      "player": null,
      "quote": "「The **build-up style would be set to counter**, but that does not mean abandoning possession」(**빌드업 스타일은 카운터로 설정**되지만 점유 포기를 뜻하진 않는다)",
      "role_id": null,
      "team_code": "LIV",
      "value": "Counter",
+     "value_kr": "역습",
      "verdict": "PENDING",
      "verdict_note": "⭐ 팀 설정 3축은 실측이 값을 갖지 않아 전술 분석이 1차 소스다(docs/30 7단계). 현행 regime 3 `projected`는 **Balanced**이고 이 자료는 **Counter**다 ⇒ 갈린다. ⛔ 단 **부임 전 추측판**이라 단독 근거로 부족하다. 마감 조건: 이라올라 체제 공식전 실측(점유율·패스량·시퀀스당 패스)을 2경기 이상 확보해 판정. LIV는 이미 UCL MD1(ATM전) 실측이 있으므로 PL 표본만 더 쌓이면 된다."
     },
     {
      "axis": "team_axis",
      "field": "defensive_approach",
+     "field_kr": "수비 접근",
      "focus": null,
      "player": null,
      "quote": "「the approach would be **set to high**, with Iraola demanding aggressive pressing」(접근은 **하이**로 설정되고 이라올라는 적극적 압박을 요구한다)",
      "role_id": null,
      "team_code": "LIV",
      "value": "High",
+     "value_kr": "높음",
      "verdict": "HELD",
      "verdict_note": "✅ 이미 일치 — regime 3 `projected` da=High · line=64. 재판정 조건: 안필드 ATM전 실측 PPDA 16.44(백3 매치업 실패)가 반복되면 High 유지가 맞는지 재검토."
     }
@@ -10739,48 +11215,56 @@
     {
      "axis": "instruction",
      "field": "wide_asymmetry",
+     "field_kr": "측면 비대칭",
      "focus": null,
      "player": null,
      "quote": "「**One often tucks inside to operate almost as an additional midfielder**... while **the other stays wide to stretch the pitch**」(**하나는 자주 안으로 접혀 사실상 추가 미드필더로** 뛰고… **다른 하나는 넓게 머물러 피치를 늘린다**)",
      "role_id": null,
      "team_code": "ATM",
      "value": "양 윙어 비대칭 — 한쪽은 안으로 접혀 추가 미드필더, 다른 쪽은 폭 유지",
+     "value_kr": "양 윙어 비대칭 — 한쪽은 안으로 접혀 추가 미드필더, 다른 쪽은 폭 유지",
      "verdict": "HELD",
      "verdict_note": "✅ 우리 **C6(해방 사이드 비대칭)·docs/20 ⑨(윙 혼잡 회피 — 같은 쪽 와이드가 터치라인을 점유하면 풀백은 전진하지 않는다)**가 이미 정본화한 구조다. ATM 축에서 독립 서술된 것이라 **규칙의 외부 확인**이지 새 주장이 아니다 ⇒ 변경 없음. ⭐ 재판정 조건: obs#768로 AVL의 해방 사이드가 좌→우로 뒤집혀 **C2/C6 재판정이 대기 중**이다(할 일 20) — 그 판정에 이 서술을 대조군으로 쓴다."
     },
     {
      "axis": "limit",
      "field": "pressing",
+     "field_kr": "압박",
      "focus": null,
      "player": null,
      "quote": "「Rather than pressing constantly, they use **sporadic well-timed pressure to set traps, inviting opponents into central areas, and collapsing on them with numbers**」(상시 압박 대신 **간헐적이고 타이밍 좋은 압박으로 함정을 놓아 상대를 중앙으로 초대한 뒤 수적으로 덮친다**)",
      "role_id": null,
      "team_code": null,
      "value": "상시 압박이 아니라 간헐적·타이밍 기반 함정 — 상대를 중앙으로 유도한 뒤 수적으로 덮친다",
+     "value_kr": "상시 압박이 아니라 간헐적·타이밍 기반 함정 — 상대를 중앙으로 유도한 뒤 수적으로 덮친다",
      "verdict": "PENDING",
      "verdict_note": "⭐⭐ **HANDOFF 미해결 1의 「저블록 서사 ↔ 압박 상수(PPDA 8.26) 불일치」를 설명할 후보다** — 상시 압박이 아니라 간헐적 함정이면 PPDA가 중간값으로 나온다. ⛔ FC26에는 압박 트리거 축이 없어 설정으로 못 옮긴다(`reproduction_limits` pressing 3행). ⇒ **실축 해석 근거**로는 채택 후보, **구현 주장으로는 한계 축**. 마감 조건: 알론소 「trampa pentagonal」(qkcMoU2khyk)과 함께 「압박 형태」를 reproduction_limits 4번째 pressing 행으로 묶어 등록할지 판단."
     },
     {
      "axis": "team_axis",
      "field": "formation",
+     "field_kr": "포메이션",
      "focus": null,
      "player": null,
      "quote": "「Atletico Madrid **primarily line up in a 4-4-2 shape** under Diego Simeone」(시메오네 아래 ATM은 **주로 4-4-2로 선다**)",
      "role_id": null,
      "team_code": "ATM",
      "value": "4-4-2",
+     "value_kr": "4-4-2",
      "verdict": "HELD",
      "verdict_note": "⭐ **HANDOFF 미해결 1(ATM 포메이션 표기 충돌)의 4-4-2 축을 강화**한다 — 우리·El Desmarque·COPE가 4-4-2, Infobae가 4-3-3으로 갈렸고 obs#454·#508이 4-4-2 방향이었다. ⛔ 그러나 **25/26 자료**이고, 26/27에는 3-4-2-1(UCL MD1 안필드)·3-5-2(리버풀전 실측) 기록이 있어 **시즌이 다르다** ⇒ 처방 변경 없음. 재판정 조건: 26/27 라리가 표본에서 포메이션 상수를 재산출(현재 ATM 실측 4-1-4-1 기하가 더 가까워 처방 미이관 상태)."
     },
     {
      "axis": "team_axis",
      "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
      "focus": null,
      "player": null,
      "quote": "「The build-up approach... is **set to counter**, encouraging constant forward runs and quick vertical progression」(빌드업 접근은 **카운터로 설정**돼 지속적 전진 런과 빠른 수직 전진을 장려한다)",
      "role_id": null,
      "team_code": "ATM",
      "value": "Counter",
+     "value_kr": "역습",
      "verdict": "PENDING",
      "verdict_note": "⭐ 팀 설정 3축은 실측이 값을 갖지 않아 전술 분석이 1차 소스다(docs/30 7단계). ATM은 `team_tactic_setups`에 `measured` 행만 있고 **bu·da·line이 전부 NULL**이다 ⇒ 채울 근거가 필요한 상태. ⛔ 단 25/26 자료라 26/27에 그대로 옮길 수 없다. 마감 조건: 26/27 라리가 실측(점유율·시퀀스당 패스·롱볼 비율)으로 교차검증 후 등록."
     }
@@ -10816,12 +11300,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -10855,12 +11341,14 @@
     {
      "axis": "team_axis",
      "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
      "focus": null,
      "player": null,
      "quote": "「백4가 깊게 서고 중앙 미드 2명이 그 앞으로 내려와 패스 옵션을 준다 · 파우 토레스를 통해 짧은 그라운드 패스로 전진」",
      "role_id": null,
      "team_code": "AVL",
      "value": "Short Passing",
+     "value_kr": "짧은 패스",
      "verdict": "REJECTED",
      "verdict_note": "⛔ 불변규칙 7 — 2025-12-15 게시·15경기 시점의 **25/26 자료**다(GK 마르티네스, 빌드업 하강 자원 로저스, 추가 옵션 오나나 — 셋 다 26/27 체제에 없다). 26/27 팀 설정 근거로 쓰지 않는다. 취한 것은 「윙어가 접히고 풀백이 폭을 담당」 구조 문법의 외부 확인뿐이고, 그건 docs/20 ⑨로 이미 정본화되어 있어 새 주장이 아니다."
     }
@@ -10901,60 +11389,70 @@
     {
      "axis": "limit",
      "field": "set_pieces",
+     "field_kr": "세트피스",
      "focus": null,
      "player": null,
      "quote": "「Amadu Onana is the primary aerial target with Watkins making the aggressive near post run」(오나나가 주 공중 타깃이고 왓킨스가 적극적인 니어포스트 러시를 한다)",
      "role_id": null,
      "team_code": null,
      "value": "세트피스 배치까지 지정한 외부 자료 — 공격 코너(오나나 타깃·왓킨스 니어런·토레스/콘사 백포스트)와 수비 코너(토레스 맨마킹·오나나 포스트 와처) 및 캐시 롱스로",
+     "value_kr": "세트피스 배치까지 지정한 외부 자료 — 공격 코너(오나나 타깃·왓킨스 니어런·토레스/콘사 백포스트)와 수비 코너(토레스 맨마킹·오나나 포스트 와처) 및 캐시 롱스로",
      "verdict": "REJECTED",
      "verdict_note": "⛔ `reproduction_limits`에 **`set_pieces` = 「세트피스 설계 축이 없다 — 키커·타깃 지정 수준」**으로 이미 등록돼 있다. FC26에 옮길 축이 없으므로 구현 주장으로 채택하지 않는다. ⭐ 다만 **실축 기록으로는 가치가 있다** — 세트피스 역할 배치를 명시한 유일한 자료다."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "캐시",
      "quote": "「he frequently **tucks inside to form a temporary back three**」(그는 자주 **안으로 접혀 임시 백3를 만든다**)",
      "role_id": "fb_falseback",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "⭐ T6 A/B의 원 가설이다(obs#700). ⛔ 그러나 26/27 **공식전** 실측은 `fb_att_wb/Support` .8919이고 `fb_falseback`은 상위 5위 밖이다(obs#773 — 종전에 wingback/Balanced로 보였던 것은 바이에른 친선 혼입 탓이었고 교정됐다). 또한 이 영상은 **25/26 체제**(마르티네스·오나나·로저스·틸레만스 XI)라 불변규칙 7로 26/27 처방 근거가 못 된다. ⇒ 처방 변경 없음. **재판정 조건: T6 A/B 실행** — 캐시 본인 그리드가 안쪽(열1~2)으로 이동하는지가 1차 판정이다."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Support",
      "player": "마첸",
      "quote": "「Maatsen on the left operates as a **support attacking wing back**」(좌측 마첸은 **서포트형 공격 윙백**으로 뛴다)",
      "role_id": "fb_att_wb",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "✅ 이미 일치 — `slot_canon_roles`(AVL 4-2-3-1 Wide LB) = `fb_att_wb/Support`. 영상이 독립 확인한 것이라 변경 없음. ⚠️ 재판정 조건: obs#768로 **해방 사이드가 좌→우로 뒤집혔다**(맥긴 RM winger·헤밍스 LM widemid) ⇒ C2/C6 재판정 시 LB 전진/절제가 함께 바뀔 수 있다(할 일 20)."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Versatile",
      "player": "왓킨스",
      "quote": "「set up as an **advanced forward with a flexible focus**」(**유동 포커스의 어드밴스드 포워드**로 세팅)",
      "role_id": "st_advanced",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "✅ 이미 일치 — `prescriptions#11` = `st_advanced/Versatile`(obs#12가 07-08의 Support 변경을 되돌린 값). 영상이 독립 수렴했다. 재판정 조건: 26/27 왓킨스 표본이 쌓여 기능 프로파일(xg/xa)이 바뀌면 재산출."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "맥긴",
      "quote": "「McGinn prefers to **link play with the fullback**... operating **between the half spaces and wide areas**」(맥긴은 **풀백과의 연결 플레이를 선호**하며 **하프스페이스와 측면 사이**에서 움직인다)",
      "role_id": "wm_wideplm",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "REJECTED",
      "verdict_note": "⛔ **불변규칙 7 — 25/26 체제 자료다**(2025-12-08 게시, 마르티네스·오나나·로저스·틸레만스가 XI). 26/27 처방 근거로 쓰지 않는다. ⭐ 다만 **당시 우리 `role:season`도 `wm_wideplm/Attack` .761이었다**는 점에서 25/26 축에서는 정합했다 — obs#766의 26/27 교정(`wm_winger/Attack` .8119, Δ.0618 단독 확정)을 반증하지 않는다."
     }
@@ -11014,12 +11512,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": null
     }
@@ -11054,12 +11554,14 @@
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Attack",
      "player": "맥긴",
      "quote": "「he was playing the game quite high and wide as well... like a traditional winger」(그는 경기를 꽤 높고 넓게, 전통적인 윙어처럼 했다)",
      "role_id": "wm_winger",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "APPLIED",
      "verdict_note": "✅ **APPLIED 2026-09-15** — prescriptions#249(fc26:opt:RM) · slot_canon_roles(AVL 4-2-3-1 Wide RM)를 `wm_widemid/Support` → **`wm_winger/Attack`**으로 교정했다. 판정 경로는 docs/30 7단계 **⑴(Δ>.05 실측 단독 확정)**이다 — 26/27 포지션-순수 RM 6경기·515분(45분+·hp15+ 6/6) → .8119, 2위 .7501, **Δ.0618**. ⛔ 중간에 REJECTED로 적었던 판정(obs#765)은 **시즌을 섞어 본 오류**였다 — 근거로 쓴 시즌그리드가 `season=2025-26`이었고 C1 설계가 전제한 「RM 캐시 .835」는 **캐시 RM 통산 0경기**로 실체가 없었다(사용자 지적). obs#766이 정정. ⚠️ 잔여 대가: 뱅크 0.60 → 0.00 ⇒ **LM 주전 확정(가르나초 0.00 vs 헤밍스 0.30)이 C1 재성립의 선행 조건**."
     }
@@ -11167,36 +11669,42 @@
     {
      "axis": "instruction",
      "field": "fullback_inside_release",
+     "field_kr": "풀백 안쪽 해방",
      "focus": null,
      "player": "그리말도",
      "quote": "Grimaldo haz lo que te dé la gana (「그리말도는 하고 싶은 대로 하라」)",
      "role_id": null,
      "team_code": "ATM",
      "value": "enabled_by_wide_anchor",
+     "value_kr": "같은 쪽 와이드가 폭을 고정해야 가능",
      "verdict": "APPLIED",
      "verdict_note": "obs#806의 조건(같은 쪽에 폭을 고정하는 와이드가 있어야 안쪽으로 들어간다)을 충족한 첫 사례 — obs#823. 루크만 툴x 20.0 고정과 카르도소의 좌측 풀백 대체가 실측으로 맞물린다."
     },
     {
      "axis": "instruction",
      "field": "advance_depth",
+     "field_kr": "전진 깊이",
      "focus": null,
      "player": "이강인",
      "quote": "es invertir las posiciones (「위치를 뒤집는 것이다」)",
      "role_id": null,
      "team_code": "ATM",
      "value": "raised_by_carrier_swap",
+     "value_kr": "운반 담당 교대로 전진 깊이 상승",
      "verdict": "APPLIED",
      "verdict_note": "이강인 9.0은 포지션 변경이 아니라 전진 깊이(pos_class=RM 5경기 불변, avg_x 48.0→64.77) — obs#822. 코케가 운반을 대신해 하강 필요가 제거됐다."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": "Attack",
      "player": "조나단 데이비드",
      "quote": "el nueve quiera ser nueve (「9번이 9번이기를 원하는 것」)",
      "role_id": "st_advanced",
      "team_code": "ATM",
      "value": null,
+     "value_kr": null,
      "verdict": "APPLIED",
      "verdict_note": "실측이 지지한다 — 데이비드 avg_x 73.19 고정에 팀 박스터치 49, 안필드 알바레스 하강형의 18과 같은 축의 양 끝(obs#820). 단일 경기 fit st_advanced/Attack .792와도 정합."
     }
@@ -11229,12 +11737,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": "ATM",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "아틀레티코 자체의 역할·포커스·팀 설정 주장은 없다. 상대 포메이션 판정(5-4-1 수렴)은 우리 팀 축 주장이 아니라 상대 구조 서술이다."
     }
@@ -11311,24 +11821,28 @@
     {
      "axis": "instruction",
      "field": "striker_first_duty",
+     "field_kr": "스트라이커 1순위 임무",
      "focus": null,
      "player": "쿠마스",
      "quote": "The energy he shows is contagious for the rest (「그가 보여주는 에너지는 나머지에게 전염된다」)",
      "role_id": null,
      "team_code": "LIV",
      "value": "pressing_intensity",
+     "value_kr": "압박 강도",
      "verdict": "APPLIED",
      "verdict_note": "9번 채점 1순위가 압박 강도라는 기존 role_demands와 정면 일치 — obs#819. 같은 선수가 마무리 축에서는 5점을 받아 축에 따라 평가가 갈린다."
     },
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": "LIV",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "팀 설정 3축(빌드업·수비접근·라인)에 대한 직접 주장은 없다 — 점유·구조 언급 자체가 0건이다."
     }
@@ -11559,24 +12073,28 @@
     {
      "axis": "instruction",
      "field": "striker_depth",
+     "field_kr": "스트라이커 위치 깊이",
      "focus": null,
      "player": "타미 아브라함",
      "quote": "the furthest forward on average was actually Mbaye, not Abraham (「평균적으로 가장 앞에 있었던 건 사실 음바예였지 아브라함이 아니었다」)",
      "role_id": null,
      "team_code": "AVL",
      "value": "stays_as_box_reference",
+     "value_kr": "박스 안 기준점으로 머문다",
      "verdict": "APPLIED",
      "verdict_note": "실측 좌표(아브라함 툴y 58.86 < 음바예 69.05 < 맥긴 61.88)와 정확히 일치 — obs#815로 등재하고 duty에 반영했다. 커널 st_false9/Attack .677을 「하강 연계형」으로 읽지 않는 근거."
     },
     {
      "axis": "limit",
      "field": "set_pieces",
+     "field_kr": "세트피스",
      "focus": null,
      "player": null,
      "quote": "it was more about the delivery and them not picking up runners (「루틴보다는 배급과 상대가 러너를 잡지 못한 것 쪽이다」)",
      "role_id": null,
      "team_code": "AVL",
      "value": "routine",
+     "value_kr": "루틴보다 배급·상대의 러너 놓침",
      "verdict": "APPLIED",
      "verdict_note": "상대 감독 램파드의 「너무 단순했다, 우리 책임」과 양 진영 독립 합의 — obs#814. FC 팀 세트피스 속성 상향 근거로 쓰지 않는다."
     }
@@ -11609,12 +12127,14 @@
     {
      "axis": "none",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": null,
      "quote": null,
      "role_id": null,
      "team_code": "AVL",
      "value": null,
+     "value_kr": null,
      "verdict": "NA",
      "verdict_note": "역할·포커스·팀 설정에 대한 구체 주장 없음 — 선수 평가와 경기 총평 중심의 리액션 회차다."
     }
@@ -11679,12 +12199,14 @@
     {
      "axis": "limit",
      "field": "set_pieces",
+     "field_kr": "세트피스",
      "focus": null,
      "player": null,
      "quote": "it was too simple, that's on us (「너무 단순했다, 그건 우리 책임이다」)",
      "role_id": null,
      "team_code": "AVL",
      "value": "opponent_marking",
+     "value_kr": "상대 마킹 실패로 귀속",
      "verdict": "APPLIED",
      "verdict_note": "상대 감독 1차 발언으로 빌라 세트피스 xG 1.44의 귀속을 「설계」가 아니라 「상대 마킹 실패」로 확정 — obs#814의 양 진영 독립 합의 축."
     }
@@ -11836,36 +12358,42 @@
     {
      "axis": "limit",
      "field": "in_possession",
+     "field_kr": "점유 국면",
      "focus": null,
      "player": null,
      "quote": "「por qué Álex Baena ahora es el delantero centro cuando el Atlético no tiene el balón. Pero además… por qué se convierte el mismo delantero centro Giuliano Simeone cuando este sí recupera el balón」(공이 없을 때는 바에나가 9번인데, 공을 회복하면 줄리아노 시메오네가 그 9번이 되는 이유)",
      "role_id": null,
      "team_code": null,
      "value": "국면별 9번 교대 — 무공 국면에서는 바에나가 9번, 볼 회복 시 줄리아노 시메오네가 9번이 된다",
+     "value_kr": "국면별 9번 교대 — 무공 국면에서는 바에나가 9번, 볼 회복 시 줄리아노 시메오네가 9번이 된다",
      "verdict": "PENDING",
      "verdict_note": "⭐ HANDOFF 미해결 1(ATM 포메이션 표기 충돌)에 직접 대응하는 외부 단서. FC26은 국면별 포지션 교대를 갖지 않으므로 reproduction_limits 후보(기존 formation 축 「국면별 포메이션 전환」과 같은 부류, 단 이건 선수 단위 교대다). 등록 전 2소스 교차검증 필요 — 현재 단일 소스."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "푸빌",
      "quote": "「Marc Pubill como líbero」(마르크 푸빌이 리베로로)",
      "role_id": "fb_falseback",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "이미 일치 — squad_entries 푸빌 = fb_falseback/Defend fit .811. 영상이 독립 수렴한 것이라 처방 변경 없음. 재판정 조건: ATM 백3(3-4-2-1) 슬롯 체계가 잠정(LOW-MEDIUM)에서 확정되면 fb_falseback이 백3 리베로 기하와 맞는지 재산출."
     },
     {
      "axis": "role",
      "field": null,
+     "field_kr": null,
      "focus": null,
      "player": "바에나",
      "quote": "「Álex Baena es el teórico delantero centro, pero su posición media no es la de delantero, sino que es la de centrocampista, media punta」(바에나는 이론상 9번인데 평균 위치는 9번이 아니라 미드필더·메디아푼타다)",
      "role_id": "wm_wideplm",
      "team_code": null,
      "value": null,
+     "value_kr": null,
      "verdict": "HELD",
      "verdict_note": "명목 ST ↔ 실측 불일치를 영상이 같은 방향으로 확인했다 — 우리 squad_entries는 이미 slot_type=WM, wm_wideplm/Attack fit .825로 ST가 아니다. 처방 변경 없음. 재판정 조건: ATM 3-4-2-1 슬롯 확정 후 CAM/WM 중 어느 슬롯 기하에 앉는지 재산출."
     }
@@ -11899,12 +12427,14 @@
     {
      "axis": "team_axis",
      "field": "defensive_approach",
+     "field_kr": "수비 접근",
      "focus": null,
      "player": null,
      "quote": "clear situation man-to-man (「명백한 맨투맨 상황이었다」)",
      "role_id": null,
      "team_code": "LIV",
      "value": "man-to-man",
+     "value_kr": "대인 마킹",
      "verdict": "APPLIED",
      "verdict_note": "manager_profiles.pressing의 「존 시작 → 트리거 시 전면 맨투맨」 중 맨투맨 국면의 26/27 첫 외부 확인 — obs#818. 압박은 실측이 값을 갖지 않는 축이라 영상·회견이 1차 소스다."
     }
@@ -11993,24 +12523,28 @@
     {
      "axis": "team_axis",
      "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
      "focus": null,
      "player": null,
      "quote": "「What Chelsea are actually doing is inviting the pass wide, then springing the trap… Win it back deep and hit the space they've left behind」(첼시가 실제로 하는 것은 측면으로 패스를 유도한 뒤 함정을 작동시키는 것 — 깊은 곳에서 되찾아 상대가 비운 배후 공간을 친다) / 「Chelsea completed just 146 passes all match, their lowest in a Premier League game since 2003-04, and had only 25.6% of the ball, the lowest share on record」(첼시는 경기 내내 146회 패스로 2003-04 이후 프리미어리그 최저, 점유율 25.6%로 기록상 최저였다)",
      "role_id": null,
      "team_code": "CHE",
      "value": "Counter",
+     "value_kr": "역습",
      "verdict": "PENDING",
      "verdict_note": "⭐⭐ 팀 설정 3축의 실측 침묵 구간(docs/30 7단계 — 전술 분석 1차 소스). 현행 regime 2 projected = Short Passing인데 146패스·점유 25.6%·「유도 후 역습」 구조는 Counter를 지지한다. ⛔ 단 이건 브라이턴전 1경기 표본이고 match_game_setups에 이미 경기 전용으로 반영된 값이므로, 시즌 정본 변경은 2경기 이상 반복 확인 후. 반박권 확인 완료: 실측 점유·패스량이 Counter와 모순되지 않는다."
     },
     {
      "axis": "team_axis",
      "field": "defensive_approach",
+     "field_kr": "수비 접근",
      "focus": null,
      "player": null,
      "quote": "「In preseason, we saw an aggressive front-foot Chelsea press going after the opposition's back line… Since the season started, that press has looked completely different」(프리시즌엔 상대 백라인을 쫓는 적극적 전방 압박이었는데, 시즌이 시작되자 완전히 달라 보인다) / 「Rogers와 주앙 페드루는 중앙에 콤팩트하게 머물며 중앙을 막고 나가지 않는다」",
      "role_id": null,
      "team_code": "CHE",
      "value": "Balanced",
+     "value_kr": "균형",
      "verdict": "HELD",
      "verdict_note": "이미 일치 — regime 2 projected = Balanced(전방 압박 아님). 영상의 「프리시즌 High → 시즌 중 콤팩트」 관측이 우리 Balanced 값을 지지한다. 재판정 조건: reference 행(알론소 블루프린트)은 da=High/line=64를 갖고 있어 두 행이 갈린다 — 공식전 3경기 이상 쌓이면 어느 쪽이 정본인지 확정."
     }

@@ -995,17 +995,23 @@ def run(db_path=None, verbose=True):
     g17_backlog = con.execute(
         """SELECT COUNT(*) FROM match_videos WHERE id <= ? AND report_id IS NOT NULL
              AND transcript_path IS NOT NULL AND summary IS NULL""", (G17_SUMMARY_FROM,)).fetchone()[0]
+    # ⑤ 자유 문구 축(team_axis·instruction·limit)은 한국어 칸 필수(2026-10-20 · migration 112 · 불변규칙 11) —
+    #   영어 field·value(defensive_shape_first_half …)가 화면에 그대로 찍혔다. write_video_summary.py가 적재도 거부한다.
+    g17_nokr = [r[0] for r in con.execute(
+        """SELECT id FROM video_impl_claims WHERE axis IN ('team_axis','instruction','limit')
+             AND (field_kr IS NULL OR trim(field_kr)='' OR
+                  (value IS NOT NULL AND trim(value)!='' AND (value_kr IS NULL OR trim(value_kr)='')))""")]
     ok17 = not (g17_axis or g17_verdict or g17_nonote or g17_none_bad
-                or g17_empty or g17_role_vocab or g17_orphan or g17_nosum_new)
+                or g17_empty or g17_role_vocab or g17_orphan or g17_nosum_new or g17_nokr)
     if verbose:
         detail = (f"❌ axis이탈 {len(g17_axis)} · verdict이탈 {len(g17_verdict)} · 사유결손 {len(g17_nonote)} · "
                   f"none모순 {len(g17_none_bad)} · 빈주장 {len(g17_empty)} · 역할어휘 {len(g17_role_vocab)} · "
-                  f"고아 {len(g17_orphan)} · 전사 후 요약 누락 {len(g17_nosum_new)}"
+                  f"고아 {len(g17_orphan)} · 한국어 결손 {len(g17_nokr)} · 전사 후 요약 누락 {len(g17_nosum_new)}"
                   + (f" ({', '.join(g17_nosum_new[:8])}{' …' if len(g17_nosum_new) > 8 else ''})"
                      " → write_video_summary.py로 요약+impl_claims를 넣을 것" if g17_nosum_new else ""))
         print(f"G17 영상 구현 주장: axis이탈 {len(g17_axis)} · verdict이탈 {len(g17_verdict)} · "
               f"사유결손 {len(g17_nonote)} · none모순 {len(g17_none_bad)} · 빈주장 {len(g17_empty)} · "
-              f"역할어휘 {len(g17_role_vocab)} · 고아 {len(g17_orphan)} · 새 전사 요약 누락 {len(g17_nosum_new)} · "
+              f"역할어휘 {len(g17_role_vocab)} · 고아 {len(g17_orphan)} · 한국어 결손 {len(g17_nokr)} · 새 전사 요약 누락 {len(g17_nosum_new)} · "
               f"(claims 미작성 {g17_todo}편 · PENDING {g17_pending}건 · 10-20 이전 요약 백로그 {g17_backlog}편) "
               f"{'✅' if ok17 else detail}")
     if not ok17:

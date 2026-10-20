@@ -109,6 +109,9 @@ for t in AVL CHE LIV ATM; do .venv/bin/python scripts/collect_fotmob_players.py 
   대상(`player`/`team_code` + `role_id`·`focus`·`field`·`value`) · `quote`(원문+번역) ·
   `verdict`(APPLIED/HELD/REJECTED/PENDING/NA) · `verdict_note`.
   ⛔ **주장이 없는 영상도 `{"axis":"none"}` 한 행을 넣는다** — 안 넣으면 「주장 없음」과 「미작성」이 구분되지 않는다.
+  ⛔⛔ **team_axis·instruction·limit 주장은 `field_kr`·`value_kr`(한국어) 필수**(2026-10-20 · migration 112 · 불변규칙 11 —
+  영어 자유 문구 `defensive_shape_first_half: wide mids drop back six`가 화면에 그대로 찍혔다). 없으면 `write_video_summary.py`가
+  적재를 거부하고 G17이 「한국어 결손」으로 막는다. 선수 이름은 `players.name_kr`. 영어 `field`·`value`는 원문으로 그대로 둔다(화면 툴팁).
   ⛔ `role_id`·`focus`는 **우리 어휘만**(G17이 `game_roles`·`game_role_focus`와 대조한다).
   ⭐ **주장을 넣기 전에 docs/30 7단계 「축별 결정권 표」를 먼저 본다** — Δ>.05 구간의 역할 주장은
   넣자마자 `REJECTED`가 되고(실측 우선 구간), **Δ≤.05 구간에서는 영상이 tie-break 권한을 갖는다**.

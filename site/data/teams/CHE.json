@@ -43874,16 +43874,20 @@
    "injuries": [
     {
      "as_of": "2026-10-18",
+     "as_of_kr": "2026년 10월 18일(일)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "December 2026",
+     "detail_kr": "2026년 12월",
      "label": "마르티네스",
      "minutes": 75,
      "now_kind": "injury",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 1,
      "pulled": "2026-10-19",
      "source": "fotmob.com/api/data (player 268375, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
-     "value": "Broken jaw"
+     "value": "Broken jaw",
+     "value_kr": "턱 골절"
     }
    ],
    "interceptions_o": 7,
@@ -47161,68 +47165,88 @@
    "injuries": [
     {
      "as_of": "2026-09-25",
+     "as_of_kr": "2026년 9월 25일(금)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "October 2026",
+     "detail_kr": "2026년 10월",
      "label": "기텐스",
      "minutes": null,
      "now_kind": "injury",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 97,
      "pulled": "2026-10-19",
      "source": "fotmob.com/api/data (player 1113692, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
-     "value": "Ankle injury"
+     "value": "Ankle injury",
+     "value_kr": "발목 부상"
     },
     {
      "as_of": "2026-09-21",
+     "as_of_kr": "2026년 9월 21일(월)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "October 2026",
+     "detail_kr": "2026년 10월",
      "label": "콜 파머",
      "minutes": 90,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 39,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1096353, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Muscle injury"
+     "value": "Muscle injury",
+     "value_kr": "근육 부상"
     },
     {
      "as_of": "2026-09-18",
+     "as_of_kr": "2026년 9월 18일(금)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "January 2027",
+     "detail_kr": "2027년 1월",
      "label": "리스 제임스",
      "minutes": null,
      "now_kind": "injury",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 41,
      "pulled": "2026-10-19",
      "source": "fotmob.com/api/data (player 807729, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
-     "value": "Knee injury"
+     "value": "Knee injury",
+     "value_kr": "무릎 부상"
     },
     {
      "as_of": "2026-09-13",
+     "as_of_kr": "2026년 9월 13일(일)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "October 2026",
+     "detail_kr": "2026년 10월",
      "label": "주앙 페드루",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 40,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1021382, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Injured"
+     "value": "Injured",
+     "value_kr": "부상"
     },
     {
      "as_of": "2026-09-11",
+     "as_of_kr": "2026년 9월 11일(금)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "October 2026",
+     "detail_kr": "2026년 10월",
      "label": "에마누엘 에메하",
      "minutes": null,
      "now_kind": "injury",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 211,
      "pulled": "2026-10-19",
      "source": "fotmob.com/api/data (player 1183148, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
-     "value": "Hamstring injury"
+     "value": "Hamstring injury",
+     "value_kr": "햄스트링 부상"
     }
    ],
    "interceptions_o": 7,
@@ -48951,55 +48975,71 @@
    "injuries": [
     {
      "as_of": "2026-09-18",
+     "as_of_kr": "2026년 9월 18일(금)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "January 2027",
+     "detail_kr": "2027년 1월",
      "label": "리스 제임스",
      "minutes": 90,
      "now_kind": "injury",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 41,
      "pulled": "2026-10-19",
      "source": "fotmob.com/api/data (player 807729, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
-     "value": "Knee injury"
+     "value": "Knee injury",
+     "value_kr": "무릎 부상"
     },
     {
      "as_of": "2026-09-13",
+     "as_of_kr": "2026년 9월 13일(일)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "October 2026",
+     "detail_kr": "2026년 10월",
      "label": "주앙 페드루",
      "minutes": 90,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 40,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1021382, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Injured"
+     "value": "Injured",
+     "value_kr": "부상"
     },
     {
      "as_of": "2026-09-11",
+     "as_of_kr": "2026년 9월 11일(금)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "October 2026",
+     "detail_kr": "2026년 10월",
      "label": "에마누엘 에메하",
      "minutes": null,
      "now_kind": "injury",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 211,
      "pulled": "2026-10-19",
      "source": "fotmob.com/api/data (player 1183148, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
-     "value": "Hamstring injury"
+     "value": "Hamstring injury",
+     "value_kr": "햄스트링 부상"
     },
     {
      "as_of": "2026-08-30",
+     "as_of_kr": "2026년 8월 30일(일)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "모이세스 카이세도",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 36,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1137668, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Calf injury"
+     "value": "Calf injury",
+     "value_kr": "종아리 부상"
     }
    ],
    "interceptions_o": 8,
@@ -50779,55 +50819,71 @@
    "injuries": [
     {
      "as_of": "2026-09-13",
+     "as_of_kr": "2026년 9월 13일(일)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "October 2026",
+     "detail_kr": "2026년 10월",
      "label": "주앙 페드루",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 40,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1021382, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Injured"
+     "value": "Injured",
+     "value_kr": "부상"
     },
     {
      "as_of": "2026-09-11",
+     "as_of_kr": "2026년 9월 11일(금)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "October 2026",
+     "detail_kr": "2026년 10월",
      "label": "에마누엘 에메하",
      "minutes": null,
      "now_kind": "injury",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 211,
      "pulled": "2026-10-19",
      "source": "fotmob.com/api/data (player 1183148, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
-     "value": "Hamstring injury"
+     "value": "Hamstring injury",
+     "value_kr": "햄스트링 부상"
     },
     {
      "as_of": "2026-08-30",
+     "as_of_kr": "2026년 8월 30일(일)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "모이세스 카이세도",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 36,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1137668, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Calf injury"
+     "value": "Calf injury",
+     "value_kr": "종아리 부상"
     },
     {
      "as_of": "2026-08-27",
+     "as_of_kr": "2026년 8월 27일(목)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "팔레스트라",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 66,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1473806, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Physical discomfort"
+     "value": "Physical discomfort",
+     "value_kr": "몸 상태 이상(경미)"
     }
    ],
    "interceptions_o": 10,
@@ -52675,55 +52731,71 @@
    "injuries": [
     {
      "as_of": "2026-09-13",
+     "as_of_kr": "2026년 9월 13일(일)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "October 2026",
+     "detail_kr": "2026년 10월",
      "label": "주앙 페드루",
      "minutes": 90,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 40,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1021382, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Injured"
+     "value": "Injured",
+     "value_kr": "부상"
     },
     {
      "as_of": "2026-09-11",
+     "as_of_kr": "2026년 9월 11일(금)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "October 2026",
+     "detail_kr": "2026년 10월",
      "label": "에마누엘 에메하",
      "minutes": null,
      "now_kind": "injury",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 211,
      "pulled": "2026-10-19",
      "source": "fotmob.com/api/data (player 1183148, scripts/collect_fotmob_players.py, 2026-10-19 수집)",
-     "value": "Hamstring injury"
+     "value": "Hamstring injury",
+     "value_kr": "햄스트링 부상"
     },
     {
      "as_of": "2026-08-30",
+     "as_of_kr": "2026년 8월 30일(일)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "모이세스 카이세도",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 36,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1137668, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Calf injury"
+     "value": "Calf injury",
+     "value_kr": "종아리 부상"
     },
     {
      "as_of": "2026-08-27",
+     "as_of_kr": "2026년 8월 27일(목)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "팔레스트라",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 66,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1473806, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Physical discomfort"
+     "value": "Physical discomfort",
+     "value_kr": "몸 상태 이상(경미)"
     }
    ],
    "interceptions_o": 9,
@@ -54482,29 +54554,37 @@
    "injuries": [
     {
      "as_of": "2026-08-30",
+     "as_of_kr": "2026년 8월 30일(일)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "모이세스 카이세도",
      "minutes": 14,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 36,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1137668, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Calf injury"
+     "value": "Calf injury",
+     "value_kr": "종아리 부상"
     },
     {
      "as_of": "2026-08-27",
+     "as_of_kr": "2026년 8월 27일(목)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "팔레스트라",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 66,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1473806, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Physical discomfort"
+     "value": "Physical discomfort",
+     "value_kr": "몸 상태 이상(경미)"
     }
    ],
    "interceptions_o": 5,
@@ -56269,29 +56349,37 @@
    "injuries": [
     {
      "as_of": "2026-08-30",
+     "as_of_kr": "2026년 8월 30일(일)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "모이세스 카이세도",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 36,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1137668, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Calf injury"
+     "value": "Calf injury",
+     "value_kr": "종아리 부상"
     },
     {
      "as_of": "2026-08-27",
+     "as_of_kr": "2026년 8월 27일(목)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "팔레스트라",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 66,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1473806, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Physical discomfort"
+     "value": "Physical discomfort",
+     "value_kr": "몸 상태 이상(경미)"
     }
    ],
    "interceptions_o": 11,
@@ -58161,29 +58249,37 @@
    "injuries": [
     {
      "as_of": "2026-08-30",
+     "as_of_kr": "2026년 8월 30일(일)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "모이세스 카이세도",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 36,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1137668, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Calf injury"
+     "value": "Calf injury",
+     "value_kr": "종아리 부상"
     },
     {
      "as_of": "2026-08-27",
+     "as_of_kr": "2026년 8월 27일(목)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "팔레스트라",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 66,
      "pulled": "2026-09-22",
      "source": "fotmob.com/api/data (player 1473806, scripts/collect_fotmob_players.py, 2026-09-22 수집)",
-     "value": "Physical discomfort"
+     "value": "Physical discomfort",
+     "value_kr": "몸 상태 이상(경미)"
     }
    ],
    "interceptions_o": 9,
@@ -59665,16 +59761,20 @@
    "injuries": [
     {
      "as_of": "2026-08-04",
+     "as_of_kr": "2026년 8월 4일(화)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "조던 헨더슨",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 210,
      "pulled": "2026-09-19",
      "source": "fotmob.com/api/data (player 156008, scripts/collect_fotmob_players.py, 2026-09-19 수집)",
-     "value": "Wrist injury"
+     "value": "Wrist injury",
+     "value_kr": "손목 부상"
     }
    ],
    "interceptions_o": 5,
@@ -61345,16 +61445,20 @@
    "injuries": [
     {
      "as_of": "2026-08-04",
+     "as_of_kr": "2026년 8월 4일(화)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "조던 헨더슨",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 210,
      "pulled": "2026-09-19",
      "source": "fotmob.com/api/data (player 156008, scripts/collect_fotmob_players.py, 2026-09-19 수집)",
-     "value": "Wrist injury"
+     "value": "Wrist injury",
+     "value_kr": "손목 부상"
     }
    ],
    "interceptions_o": 11,
@@ -63064,16 +63168,20 @@
    "injuries": [
     {
      "as_of": "2026-08-04",
+     "as_of_kr": "2026년 8월 4일(화)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "조던 헨더슨",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 210,
      "pulled": "2026-09-19",
      "source": "fotmob.com/api/data (player 156008, scripts/collect_fotmob_players.py, 2026-09-19 수집)",
-     "value": "Wrist injury"
+     "value": "Wrist injury",
+     "value_kr": "손목 부상"
     }
    ],
    "interceptions_o": 2,
@@ -64519,16 +64627,20 @@
    "injuries": [
     {
      "as_of": "2026-08-04",
+     "as_of_kr": "2026년 8월 4일(화)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "조던 헨더슨",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 210,
      "pulled": "2026-09-19",
      "source": "fotmob.com/api/data (player 156008, scripts/collect_fotmob_players.py, 2026-09-19 수집)",
-     "value": "Wrist injury"
+     "value": "Wrist injury",
+     "value_kr": "손목 부상"
     }
    ],
    "interceptions_o": 10,
@@ -66019,16 +66131,20 @@
    "injuries": [
     {
      "as_of": "2026-08-04",
+     "as_of_kr": "2026년 8월 4일(화)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "조던 헨더슨",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 210,
      "pulled": "2026-09-19",
      "source": "fotmob.com/api/data (player 156008, scripts/collect_fotmob_players.py, 2026-09-19 수집)",
-     "value": "Wrist injury"
+     "value": "Wrist injury",
+     "value_kr": "손목 부상"
     }
    ],
    "interceptions_o": null,
@@ -67424,16 +67540,20 @@
    "injuries": [
     {
      "as_of": "2026-08-04",
+     "as_of_kr": "2026년 8월 4일(화)",
      "confidence": "⚠️ 스냅샷이다 — pulled 시점의 상태이고 복귀 예상은 소스 추정이다. 부상은 이적 등급을 바꾸지 않는다(obs#272) — 성사 확률·구조 비용 축이다.",
      "detail": "Doubtful",
+     "detail_kr": "출전 불투명",
      "label": "조던 헨더슨",
      "minutes": null,
      "now_kind": "injury_none",
      "now_pulled": "2026-10-19",
+     "now_pulled_kr": "2026년 10월 19일(월)",
      "player_id": 210,
      "pulled": "2026-09-19",
      "source": "fotmob.com/api/data (player 156008, scripts/collect_fotmob_players.py, 2026-09-19 수집)",
-     "value": "Wrist injury"
+     "value": "Wrist injury",
+     "value_kr": "손목 부상"
     }
    ],
    "interceptions_o": null,
@@ -68285,60 +68405,87 @@
  ],
  "phase_metric_defs": {
   "box_touches_p10": {
+   "group": "threat",
    "help": "상대 페널티 박스 안 터치 수(10분당).",
    "label": "상대 박스 터치 /10분",
    "lo_good": false,
    "unit": ""
   },
   "def_x": {
+   "group": "press",
    "help": "팀 수비 액션 8종의 평균 x(자기 공격 방향 0~100) — 높을수록 앞에서 막는다. 팀 수비액션 8종(Tackle·Interception·Challenge·Foul·Clearance·BlockedPass·Aerial·BallRecovery)의 x 평균(자기 공격 방향 0~100). 라인 높이 프록시 — core.whoscored.def_x",
    "label": "수비 액션 높이",
    "lo_good": false,
    "unit": ""
   },
   "gk_long_share": {
+   "group": "build",
    "help": "골키퍼 패스 중 롱패스(≥32m) 비율 — 짧은 빌드업에서 직접 배급으로 넘어갔는가.",
    "label": "GK 롱패스 비중",
    "lo_good": false,
    "unit": "%"
   },
   "own_half_pass_pct": {
+   "group": "build",
    "help": "자기 진영(x<50)에서 시도한 패스의 성공 비율 — 상대 압박에 빌드업이 버티는가.",
    "label": "자기 진영 패스 성공률",
    "lo_good": false,
    "unit": "%"
   },
   "own_third_losses": {
+   "group": "build",
    "help": "자기 진영 1/3에서 공을 잃은 횟수.",
    "label": "자기 1/3 볼 손실",
    "lo_good": true,
    "unit": "회"
   },
   "possession": {
+   "group": "flow",
    "help": "구간 점유율.",
    "label": "점유",
    "lo_good": false,
    "unit": "%"
   },
   "ppda": {
+   "group": "press",
    "help": "상대 패스 수 ÷ 우리 수비 액션 — 낮을수록 강하게 압박한다. 분자=상대가 자기 진영 3/5(x<60)에서 시도한 패스 · 분모=해당 팀 수비액션(Tackle·Interception·Challenge·Foul) 상대 진영 2/5(x>40). 원천=WhoScored matchCentreData(Opta) — core.whoscored.ppda",
    "label": "PPDA",
    "lo_good": true,
    "unit": ""
   },
   "shots_p10": {
+   "group": "threat",
    "help": "슈팅 수(10분당).",
    "label": "슈팅 /10분",
    "lo_good": false,
    "unit": ""
   },
   "xg": {
+   "group": "threat",
    "help": "그 구간에 쌓인 기대득점.",
    "label": "구간 xG",
    "lo_good": false,
    "unit": ""
   }
  },
+ "phase_metric_groups": [
+  [
+   "press",
+   "압박 — 높이·강도"
+  ],
+  [
+   "build",
+   "우리 빌드업"
+  ],
+  [
+   "threat",
+   "위협 — 박스·슈팅"
+  ],
+  [
+   "flow",
+   "점유"
+  ]
+ ],
  "player_stats": [
   {
    "avg_rating": 7.11,

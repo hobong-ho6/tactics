@@ -19,7 +19,7 @@ from . import DB, ROOT
 from .chem import CHEM
 from . import position_ovr as POVR
 from . import gallery as GAL
-from .whoscored import PHASE_METRICS
+from .whoscored import PHASE_METRICS, PHASE_GROUPS
 from core.db import connect as connect_db
 
 SITE_DATA = ROOT / "site" / "data"
@@ -600,7 +600,7 @@ def export_all(db_path=None, window="2026-summer"):
     # ⭐ 네 번째 층 — 구현 주장(migration 033, docs/30 8단계). 요약이 「구현의 무엇을 건드리는가」를
     #    정형 행으로 갖는다. 화면은 이걸로 배지를 그린다(자유 서술에서 추출하지 않는다).
     claims_by_vid = {}
-    for c in _rows(con, """SELECT c.video_id, c.axis, c.role_id, c.focus, c.field, c.value,
+    for c in _rows(con, """SELECT c.video_id, c.axis, c.role_id, c.focus, c.field, c.value, c.field_kr, c.value_kr,
                                   c.verdict, c.verdict_note, c.quote, c.team_code,
                                   COALESCE(p.name_kr, p.name) AS player
                            FROM video_impl_claims c
@@ -972,6 +972,11 @@ def export_all(db_path=None, window="2026-summer"):
                   AND ps.pulled=(SELECT MAX(x.pulled) FROM player_status x WHERE x.player_id=ps.player_id
                                    AND x.kind='injury' AND x.as_of BETWEEN date(?,'-14 day') AND date(?,'+7 day'))
                 ORDER BY ps.as_of DESC, label""", (report["event_id"], rid, d0, d0, d0, d0)) if d0 else []
+            # 한국어 표기(core.injury_kr 정본) — 원문 value·detail·as_of는 그대로 두고 *_kr를 곁들인다(화면 툴팁이 원문)
+            from .injury_kr import injury_kr, return_kr, date_kr
+            for i in report["injuries"]:
+                i.update(value_kr=injury_kr(i["value"]), detail_kr=return_kr(i["detail"]),
+                         as_of_kr=date_kr(i["as_of"]), now_pulled_kr=date_kr(i["now_pulled"]))
             report_file = ROOT / report["report_path"]
             report["report_markdown"] = (
                 report_file.read_text(encoding="utf-8") if report_file.is_file() else None)
@@ -986,6 +991,7 @@ def export_all(db_path=None, window="2026-summer"):
             "avg_positions": avg_positions,
             "match_reports": match_reports,
             "phase_metric_defs": PHASE_METRICS,   # 「경기 흐름」 지표 라벨·단위 정본(core.whoscored)
+            "phase_metric_groups": PHASE_GROUPS,
             "evaluations": evals, "season_stats": season_stats, "fbref": fbref, "traits": traits,
             "fotmob_season": fm_season,
             "setups": setups, "limits": limits, "kernel_fidelity": fidelity, "profile": profile, "tactic_changes": tactic_changes,

@@ -14,7 +14,7 @@ WhoScored 원본: **x = 그 팀의 공격 방향 0~100, y 낮음 = 오른쪽**(S
 """
 from .encode import cells_from_points, encode
 
-__all__ = ["ppda", "def_x", "phase_cells", "segment_metrics", "PHASE_METRICS", "PPDA_METHOD", "DEF_X_METHOD"]
+__all__ = ["ppda", "def_x", "phase_cells", "segment_metrics", "PHASE_METRICS", "PHASE_GROUPS", "PPDA_METHOD", "DEF_X_METHOD"]
 
 PPDA_DEN = {"Tackle", "Interception", "Challenge", "Foul"}
 DEF_TYPES = PPDA_DEN | {"Clearance", "BlockedPass", "Aerial", "BallRecovery"}
@@ -66,20 +66,24 @@ def phase_cells(events, player_id):
 #    segment_metrics()가 계산하는 것은 앞 셋(def_x·ppda·own_half_pass_pct)뿐이다. 나머지는 수집 회차가
 #    리포트에서 근거를 들고 넣는 지표(GK 롱패스 비중 등 — 경기마다 대상 선수가 다르다).
 PHASE_METRICS = {
-    "def_x":             dict(label="수비 액션 높이", unit="", lo_good=False,
+    "def_x":             dict(label="수비 액션 높이", unit="", lo_good=False, group="press",
                               help="팀 수비 액션 8종의 평균 x(자기 공격 방향 0~100) — 높을수록 앞에서 막는다. " + DEF_X_METHOD),
-    "ppda":              dict(label="PPDA", unit="", lo_good=True,
+    "ppda":              dict(label="PPDA", unit="", lo_good=True, group="press",
                               help="상대 패스 수 ÷ 우리 수비 액션 — 낮을수록 강하게 압박한다. " + PPDA_METHOD),
-    "own_half_pass_pct": dict(label="자기 진영 패스 성공률", unit="%", lo_good=False,
+    "own_half_pass_pct": dict(label="자기 진영 패스 성공률", unit="%", lo_good=False, group="build",
                               help="자기 진영(x<50)에서 시도한 패스의 성공 비율 — 상대 압박에 빌드업이 버티는가."),
-    "possession":        dict(label="점유", unit="%", lo_good=False, help="구간 점유율."),
-    "gk_long_share":     dict(label="GK 롱패스 비중", unit="%", lo_good=False,
+    "possession":        dict(label="점유", unit="%", lo_good=False, group="flow", help="구간 점유율."),
+    "gk_long_share":     dict(label="GK 롱패스 비중", unit="%", lo_good=False, group="build",
                               help="골키퍼 패스 중 롱패스(≥32m) 비율 — 짧은 빌드업에서 직접 배급으로 넘어갔는가."),
-    "own_third_losses":  dict(label="자기 1/3 볼 손실", unit="회", lo_good=True, help="자기 진영 1/3에서 공을 잃은 횟수."),
-    "box_touches_p10":   dict(label="상대 박스 터치 /10분", unit="", lo_good=False, help="상대 페널티 박스 안 터치 수(10분당)."),
-    "shots_p10":         dict(label="슈팅 /10분", unit="", lo_good=False, help="슈팅 수(10분당)."),
-    "xg":                dict(label="구간 xG", unit="", lo_good=False, help="그 구간에 쌓인 기대득점."),
+    "own_third_losses":  dict(label="자기 1/3 볼 손실", unit="회", lo_good=True, group="build", help="자기 진영 1/3에서 공을 잃은 횟수."),
+    "box_touches_p10":   dict(label="상대 박스 터치 /10분", unit="", lo_good=False, group="threat", help="상대 페널티 박스 안 터치 수(10분당)."),
+    "shots_p10":         dict(label="슈팅 /10분", unit="", lo_good=False, group="threat", help="슈팅 수(10분당)."),
+    "xg":                dict(label="구간 xG", unit="", lo_good=False, group="threat", help="그 구간에 쌓인 기대득점."),
 }
+
+
+# 「경기 흐름」 묶음 — 화면이 이 순서·제목으로 칸을 묶는다(2026-10-20 사용자 지적 「그래프가 나열돼 잘 안 보임」).
+PHASE_GROUPS = [["press", "압박 — 높이·강도"], ["build", "우리 빌드업"], ["threat", "위협 — 박스·슈팅"], ["flow", "점유"]]   # 배열 = 순서 보존(export JSON은 키를 정렬한다)
 
 
 def _clock(e):

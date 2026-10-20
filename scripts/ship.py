@@ -19,6 +19,12 @@
      ⇒ ship 중에는 `db/.leases/ship.json`을 걸어 **다른 세션의 새 연결이 끝날 때까지 기다리게** 한다(core/db.connect).
      ⇒ 커밋을 마치면 자기 lease를 지운다 — 다음 세션이 곧장 진행한다.
 
+  ⑹ **하위 세션이 각자 커밋** — 2026-10-20 하위 세션 4개가 DB 순번을 기다리며 서로의 변경을 남의 커밋에 실었다
+     (클럽 싱크 데이터가 평가 커밋 60b540a에 · 경기 분석 일부가 숨김 커밋 33357be에). 사용자 지시 「모든 하위 세션의 작업이
+     완료되면 이 부모 세션에서 모두 모아서 커밋 및 푸시」 ⇒ 부모가 `--collect <하위 세션 id…>`로 등록하면 그 세션들의 ship은
+     **거부된다**(--check는 허용). 하위 세션은 「바꾼 파일·DB 변경·커밋 메시지 초안」을 부모에게 보고하고 끝낸다.
+     부모는 하위가 모두 끝나면 한 번에 ship하고 `--collect-end`로 표시를 지운다. 등록되지 않은 세션(예약 회차 등)은 영향 없다.
+
 사용:
     python3 scripts/ship.py -m "data(fut): GG Club 싱크 2026-09-23 — 신규 1·갱신 1"
     python3 scripts/ship.py -F /tmp/msg.txt reports/match-watch/ docs/70-lessons.md
@@ -27,6 +33,8 @@
 ⚠️ 코드만 고쳤고 DB를 안 건드렸어도 그대로 쓰면 된다 — export는 멱등이라 diff가 0이면 담기지 않는다.
 """
 import argparse
+import json
+import os
 import subprocess
 import sys
 import time
@@ -60,7 +68,31 @@ def step(label, cmd):
     return out
 
 
+COLLECT = coredb.LEASE_DIR / "collector.json"   # 부모 세션의 「모아서 커밋」 표시(git 밖 · db/.leases/)
+
+
+def _me():
+    return os.environ.get("CLAUDE_CODE_HOST_SESSION_ID") or ""
+
+
+def collector():
+    """살아 있는 부모 표시 — {owner, owner_pid, children:[…]} · 부모 프로세스가 죽었으면 None(표시도 지운다)."""
+    try:
+        info = json.loads(COLLECT.read_text())
+    except (OSError, ValueError):
+        return None
+    if not coredb._alive(int(info.get("owner_pid") or 0)):
+        COLLECT.unlink(missing_ok=True)
+        return None
+    return info
+
+
 def main(a):
+    # ⑹ 부모가 모아서 커밋하는 중이면 하위 세션은 ship하지 않는다(--check는 커밋하지 않으니 허용)
+    col = collector()
+    if col and _me() in col.get("children", []) and not a.check:
+        sys.exit(f"⛔ 부모 세션({col.get('owner')})이 하위 세션 변경을 모아서 커밋한다 — 여기서는 커밋하지 않는다.\n"
+                 "   부모에게 보고할 것: ⑴ 바꾼 파일 경로 ⑵ DB 변경(표·행·migration 번호) ⑶ 커밋 메시지 초안 ⑷ 게이트 결과(--check).")
     # ⑵ 인덱스 오염 검사 — **가장 먼저** 한다. 이걸 놓치면 남의 변경을 내 커밋에 싣는다.
     staged = [l for l in sh("git diff --cached --name-only").stdout.split("\n") if l.strip()]
     if staged and not a.force_index:
@@ -172,7 +204,21 @@ if __name__ == "__main__":
     ap.add_argument("--check", action="store_true", help="게이트·export·dump만 돌리고 끝낸다")
     ap.add_argument("--wait", type=int, default=540,
                     help="다른 세션의 DB 작성이 끝나길 기다리는 최대 초(기본 540 · 셸 10분 제한 안쪽). 길게는 백그라운드로")
+    ap.add_argument("--collect", nargs="+", metavar="SESSION_ID",
+                    help="(부모 세션) 이 하위 세션들의 ship을 막고 내가 모아서 커밋한다 — 여러 번 부르면 누적")
+    ap.add_argument("--collect-end", action="store_true", help="(부모 세션) 모아서 커밋을 끝내고 표시를 지운다")
     a = ap.parse_args()
+    if a.collect or a.collect_end:
+        cur = collector() or {}
+        if a.collect_end:
+            COLLECT.unlink(missing_ok=True)
+            sys.exit(print("▶ 모아서 커밋 표시를 지웠다 — 하위 세션도 다시 직접 ship할 수 있다") or 0)
+        COLLECT.parent.mkdir(parents=True, exist_ok=True)
+        info = {"owner": _me(), "owner_pid": int(coredb.session_key()),
+                "children": sorted(set(cur.get("children", [])) | set(a.collect))}
+        COLLECT.write_text(json.dumps(info, ensure_ascii=False))
+        sys.exit(print(f"▶ 하위 세션 {len(info['children'])}개의 ship을 막았다(부모 {info['owner']}): "
+                       + ", ".join(info["children"])) or 0)
     if not a.check and not (a.message or a.file):
         ap.error("-m 또는 -F 가 필요하다 (--check 는 예외)")
     sys.exit(main(a))
