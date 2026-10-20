@@ -347,7 +347,14 @@ function claimTarget(c){
   if (c.axis === 'focus') return `${esc(c.player ?? '?')} → 포커스 ${focusLabel(c.focus)}`;
   if (c.axis === 'none')  return '<span class="dim">전사를 읽었고 구현에 닿는 주장이 없다</span>';
   /* ⭐ 한국어 칸 우선(migration 112) — 원문 field·value는 툴팁. 없으면 종전 claimLabel(정형 코드 표). */
-  const body = c.field_kr ? glTip(`<b>${esc(c.field_kr)}</b>${c.value_kr ? `: ${esc(c.value_kr)}` : ''}`, `원문: ${c.field ?? ''}${c.value ? ' = ' + c.value : ''}`)
+  /* ⭐ 긴 주장은 「헤드라인 + 요점」으로 읽힌다(migration 113 · 규칙 정본 core/claims.py · NN/g 결론 먼저·덩어리·점진 공개).
+     한국어 전문(value_kr)과 영문 원문은 툴팁으로 — 지우지 않는다. */
+  const pts = (() => { try { return c.points_kr ? JSON.parse(c.points_kr) : null; } catch (e) { return null; } })();
+  const tip = `${c.value_kr ? '전문: ' + c.value_kr + '\n' : ''}원문: ${c.field ?? ''}${c.value ? ' = ' + c.value : ''}`;
+  const body = c.field_kr && c.headline_kr
+    ? glTip(`<b>${esc(c.field_kr)} · ${esc(c.headline_kr)}</b>`, tip)
+      + (pts?.length ? `<ul class="claimpts">${pts.map(p => `<li>${esc(p)}</li>`).join('')}</ul>` : '')
+    : c.field_kr ? glTip(`<b>${esc(c.field_kr)}</b>${c.value_kr ? `: ${esc(c.value_kr)}` : ''}`, tip)
     : claimLabel(c.field, c.value);
   return `${c.team_code ? esc(c.team_code) + ' ' : ''}${c.player ? esc(c.player) + ' ' : ''}${body}`;
 }
@@ -488,7 +495,9 @@ function renderTactical(r){
     <section><h3>게임 구현 함의</h3>
       <div class="kv">${r.impl_verdict ? `<span class="badge ${VC[r.impl_verdict] ?? ''}" style="font-size:13px">${esc(r.impl_verdict)}</span>` : '<span class="dim">결론 미작성</span>'}
         ${s ? `<span class="pchip">${esc(s.formation)}</span><span class="pchip">빌드업 ${esc(s.build_up_style)}</span><span class="pchip">수비 ${esc(s.defensive_approach)}</span><span class="pchip">라인 ${esc(s.line_height)}</span>` : ''}</div>
-      ${starters.length ? `<div class="kv" style="margin-top:8px"><b>포지션별 1·2위 격차</b> <small class="dim">— Δ ≤ .05면 실측 무결정(단일 경기로 정본을 바꾸지 않는 이유)</small></div>
+      ${starters.length ? `<div class="kv" style="margin-top:8px"><b>포지션별 1·2위 격차</b> <small class="dim">— 그 경기 히트맵에 가장 잘 맞는 역할(1위)과 다음(2위)의 적합도 차이</small></div>
+        <div class="dlegend"><span><i class="und"></i>Δ ≤ .05 · 실측 무결정 — 1·2위가 거의 같아 단일 경기로 정본을 바꾸지 않는다</span>
+          <span><i></i>Δ > .05 · 1위가 뚜렷하다</span><span class="dim">막대 길이 = Δ (오른쪽 끝 .25)</span></div>
         <div class="dbars">${starters.map(p => `<div class="dbar${p.fit_delta <= .05 ? ' und' : ''}"><span><b>${esc(p.pos_label)}</b> ${esc(p.label)}</span>
           <i style="--w:${Math.min(100, 100 * p.fit_delta / .25)}%"></i><em>Δ${Number(p.fit_delta).toFixed(3)}</em>
           <small class="dim">1위 ${roleLabel(p.role_id, p.focus)} · 2위 ${altL(p.alt_role)}</small></div>`).join('')}</div>` : ''}

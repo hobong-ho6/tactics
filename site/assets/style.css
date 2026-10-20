@@ -599,6 +599,12 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .dbars{display:grid;gap:4px;margin-top:4px}
 .dbar{display:grid;grid-template-columns:150px 1fr 56px;gap:8px;align-items:center;font-size:12px}
 .dbar i{display:block;height:6px;width:var(--w);background:var(--viz-them);border-radius:3px} .dbar.und i{background:var(--warn)}
+/* 2026-10-20 범례(사용자 「그래프 색이 뭔지 모르겠어」) — 막대와 같은 색 칩 */
+.dlegend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;margin:4px 0 6px;color:var(--txt)}
+.dlegend span{display:flex;align-items:center;gap:6px}
+.dlegend i{display:inline-block;width:18px;height:6px;border-radius:3px;background:var(--viz-them)} .dlegend i.und{background:var(--warn)}
+/* 긴 구현 주장의 요점(migration 113) — 헤드라인 아래 짧은 목록 */
+.claimpts{margin:3px 0 2px 18px;padding:0;font-size:12.5px;color:var(--txt)} .claimpts li{margin:1px 0}
 .dbar em{font-style:normal;font-variant-numeric:tabular-nums} .dbar small{grid-column:1/-1;margin:-2px 0 2px}
 .checks{margin:4px 0 0;padding-left:18px;font-size:12.5px} .checks li::marker{content:"☐ "}
 /* 2026-10-20 — 경기 흐름 묶음 그리드(matchviz phaseFlow) */

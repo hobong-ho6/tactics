@@ -1001,12 +1001,17 @@ def run(db_path=None, verbose=True):
         """SELECT id FROM video_impl_claims WHERE axis IN ('team_axis','instruction','limit')
              AND (field_kr IS NULL OR trim(field_kr)='' OR
                   (value IS NOT NULL AND trim(value)!='' AND (value_kr IS NULL OR trim(value_kr)='')))""")]
+    # ⑥ 40자를 넘는 한국어 전문은 헤드라인(≤40)+요점(1~5) 필수(2026-10-20 · migration 113 · 기준 정본 core/claims.py)
+    from core.claims import problems as _claim_problems
+    g17_nohead = [r[0] for r in con.execute(
+        "SELECT id, axis, value_kr, headline_kr, points_kr FROM video_impl_claims")
+        if _claim_problems(r[1], r[2], r[3], r[4])]
     ok17 = not (g17_axis or g17_verdict or g17_nonote or g17_none_bad
-                or g17_empty or g17_role_vocab or g17_orphan or g17_nosum_new or g17_nokr)
+                or g17_empty or g17_role_vocab or g17_orphan or g17_nosum_new or g17_nokr or g17_nohead)
     if verbose:
         detail = (f"❌ axis이탈 {len(g17_axis)} · verdict이탈 {len(g17_verdict)} · 사유결손 {len(g17_nonote)} · "
                   f"none모순 {len(g17_none_bad)} · 빈주장 {len(g17_empty)} · 역할어휘 {len(g17_role_vocab)} · "
-                  f"고아 {len(g17_orphan)} · 한국어 결손 {len(g17_nokr)} · 전사 후 요약 누락 {len(g17_nosum_new)}"
+                  f"고아 {len(g17_orphan)} · 한국어 결손 {len(g17_nokr)} · 헤드라인 결손 {len(g17_nohead)} · 전사 후 요약 누락 {len(g17_nosum_new)}"
                   + (f" ({', '.join(g17_nosum_new[:8])}{' …' if len(g17_nosum_new) > 8 else ''})"
                      " → write_video_summary.py로 요약+impl_claims를 넣을 것" if g17_nosum_new else ""))
         print(f"G17 영상 구현 주장: axis이탈 {len(g17_axis)} · verdict이탈 {len(g17_verdict)} · "

@@ -600,7 +600,7 @@ def export_all(db_path=None, window="2026-summer"):
     # ⭐ 네 번째 층 — 구현 주장(migration 033, docs/30 8단계). 요약이 「구현의 무엇을 건드리는가」를
     #    정형 행으로 갖는다. 화면은 이걸로 배지를 그린다(자유 서술에서 추출하지 않는다).
     claims_by_vid = {}
-    for c in _rows(con, """SELECT c.video_id, c.axis, c.role_id, c.focus, c.field, c.value, c.field_kr, c.value_kr,
+    for c in _rows(con, """SELECT c.video_id, c.axis, c.role_id, c.focus, c.field, c.value, c.field_kr, c.value_kr, c.headline_kr, c.points_kr,
                                   c.verdict, c.verdict_note, c.quote, c.team_code,
                                   COALESCE(p.name_kr, p.name) AS player
                            FROM video_impl_claims c

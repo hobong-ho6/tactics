@@ -25,6 +25,10 @@
           "verdict": "HELD", "verdict_note": "…재판정 조건…"},
          {"axis": "instruction", "team_code": "AVL", "field": "defensive_shape_first_half", "value": "wide mids drop back six",
           "field_kr": "전반 수비 형태", "value_kr": "측면 미드필더가 내려와 백6", "verdict": "PENDING"},
+         {"axis": "limit", "field": "pressing triggers", "value": "...",
+          "field_kr": "압박", "value_kr": "압박 트리거 4종 특정 — 백패스 · 나쁜 첫 터치 · 고립된 측면으로의 패스 · 상대가 자기 골대를 보고 받는 순간",
+          "headline_kr": "압박 트리거 4종", "points_kr": ["백패스", "나쁜 첫 터치", "고립된 측면으로의 패스", "자기 골대를 보고 받는 순간"],
+          "verdict": "PENDING"},   # ⭐ value_kr가 40자를 넘으면 headline_kr(≤40·결론 먼저)+points_kr(1~5) 필수 — core/claims.py
          {"axis": "none"}
        ]}}
 
@@ -47,6 +51,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import DB                                     # noqa: E402
 from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
+from core.claims import problems as claim_problems  # noqa: E402  ⭐ 헤드라인·요점 규칙 정본(migration 113)
 
 TAIL = ("[요약 {d}] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). "
         "⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). "
@@ -93,15 +98,20 @@ def insert_claims(con, vid, claims, pulled, force=False):
         if axis in KR_AXES and (not (c.get("field_kr") or "").strip()
                                 or (c.get("value") not in (None, "") and not (c.get("value_kr") or "").strip())):
             raise SystemExit(f"⛔ {vid}: {axis} 주장은 field_kr·value_kr(한국어)가 필수다 — 「{c.get('field')} = {c.get('value')}」")
+        # ⭐ 40자를 넘는 한국어 전문은 헤드라인+요점 필수(migration 113 · 기준 정본 core/claims.py)
+        bad = claim_problems(axis, c.get("value_kr"), c.get("headline_kr"), c.get("points_kr"))
+        if bad:
+            raise SystemExit(f"⛔ {vid}: 「{c.get('field_kr')}: {c.get('value_kr')}」 — " + " · ".join(bad))
         pid = c.get("player_id")
         if pid is None and c.get("player"):
             pid = resolve_player(con, c["player"])
         con.execute("""INSERT INTO video_impl_claims
-                       (video_id, axis, player_id, team_code, role_id, focus, field, value, field_kr, value_kr,
+                       (video_id, axis, player_id, team_code, role_id, focus, field, value, field_kr, value_kr, headline_kr, points_kr,
                         quote, verdict, verdict_note, source, confidence)
-                       VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                       VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                     (vid, axis, pid, c.get("team_code"), c.get("role_id"), c.get("focus"),
-                     c.get("field"), c.get("value"), c.get("field_kr"), c.get("value_kr"), c.get("quote"), verdict, c.get("verdict_note"),
+                     c.get("field"), c.get("value"), c.get("field_kr"), c.get("value_kr"), c.get("headline_kr"),
+                     json.dumps(c["points_kr"], ensure_ascii=False) if c.get("points_kr") else None, c.get("quote"), verdict, c.get("verdict_note"),
                      c.get("source") or f"전사 원문 읽기 · scripts/write_video_summary.py, {pulled}",
                      c.get("confidence") or "auto-caption 전사 기반 — 인물명·수치는 실측 교차검증 필요"))
     return len(claims)
