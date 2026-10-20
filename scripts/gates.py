@@ -1114,6 +1114,10 @@ def run(db_path=None, verbose=True):
     G21_TABLES = ["player_evolutions", "fc_evolutions", "fc_evolution_eligibility",
                   "futgg_chem_signals", "fc_objective_tasks",
                   "fut_tactic_roles"]
+    # ⛔ 1회성 예외 — 정당한 감소만, 사유와 함께. 새 줄을 늘리기 전에 수집이 끊긴 게 아닌지 먼저 본다.
+    #   player_evolutions 10-19=2302(724 base) → 10-20=97(27 base): 10-19 사용자 지시로 진화 수집을
+    #   「조건 통과 빌라 카드」로 좁힌 뒤 첫 전체 회차(대상 28명 · 조회 실패 0). 10-21부터는 10-20과 비교된다.
+    G21_EXEMPT = {("player_evolutions", "2026-10-19", "2026-10-20")}
     g21_bad = []
     for t in G21_TABLES:
         try:
@@ -1132,6 +1136,8 @@ def run(db_path=None, verbose=True):
         if len(hist) < 2:
             continue
         (p_now, n_now), (p_prev, n_prev) = hist
+        if (t, p_prev, p_now) in G21_EXEMPT:
+            continue
         if n_prev and n_now * 2 < n_prev:
             g21_bad.append(f"{t} {p_prev}={n_prev} → {p_now}={n_now}")
     ok21 = not g21_bad
