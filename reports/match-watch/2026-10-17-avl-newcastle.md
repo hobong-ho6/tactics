@@ -590,3 +590,49 @@
 
 - 예약 `mw-avl-newcastle-d3`(10-20 20:00)는 이 기기 스케줄러에 **등록돼 있지 않았다**(D+2 절 「예약이 있음을 확인」은 다른 PC 기준이었거나 오기). 사용자에게 확인한 결과 「하지 않음」 — D+2까지로 추적을 닫는다.
 - ⇒ `match_reports` #56은 **draft 유지**. 「D+3에 남기는 것」 4항목(가르나초·바이킹전 회견 · 카마라–고메스 분담 실측 대조 · 영상 요약 백로그 · The Athletic/Birmingham Live 재시도)은 미처리로 남는다. 카마라 역할은 별도 분석으로 obs#1080(RDM 딥라잉·Build-Up 후보 · 인게임 테스트)에 기록했다.
+
+## D+3 추적 (2026-10-20) — 3일 추적 마지막 회차
+
+> 바로 위 「D+3 — 실시하지 않음」은 같은 날 오후 결정이었고, **22시대 사용자 재결정(「이 세션에서 진행」)으로 실시했다** — 위 절은 고치지 않는다.
+> 서사 원문·URL·시각 전체는 [2026-10-17-avl-newcastle-d3-sources.md](2026-10-17-avl-newcastle-d3-sources.md)(서브에이전트 수집 · 직접 열람/검색 요약 구분 표기). 조회 10-20 21:20~22:52 KST.
+> ⚠️ 전제 정정: 다음 경기 바이킹전(10-21 UCL)은 **원정이 아니라 빌라 파크 홈**이다(구단 공식 · The False 9).
+
+### ⭐ 바이킹전 사전 회견 (10-20 · 동석 카마라)
+- **부상**(구단 공식 「Team news for Viking visit」 · 직접 열람):
+  - 만잠비 — 「Manzambi has a small injury, he's not available for tomorrow.」(만잠비는 작은 부상이 있어 내일은 뛸 수 없다) · Tanswell Bluesky: 「not serious but impact injury requires rest」(심각하지 않지만 충격성 부상이라 휴식이 필요하다) ⇒ **종아리 타박**(본인 「a kick」 · Townley 「pointing to his calf」(종아리를 가리킴))으로 정리 · 「근육」 가설 약화
+  - 완비사카 — 「Aaron has an injury as well, more or less we expect three or four weeks.」(에런도 부상이다. 대략 3~4주로 본다)
+  - 루헤리 — 「like Matteo for more or less two months」(마테오는 대략 두 달) · 마트센 — 「he's joined us and is training with us this week」(이번 주 함께 훈련하고 있다)
+- **가르나초·알리송·로테이션 문답 0건**(13:52 UTC 기준 · 회견 전문 미게시라 「질문이 없었다」로 확정하지 않음).
+- **에메리 → 카마라**: 「I am expecting again the best Bouba, with his qualities, maturity and his intelligence.」(다시 최고의 부바를 기대한다. 자질·성숙함·지능으로)
+- **카마라 본인**: 「With Youri and Joao, it is really the same.」(틸레만스와 하든 고메스와 하든 정말 똑같다)
+
+### ⭐ 알리송 · Q2 보강
+- 경기 후 에메리 발언 **새로 확보**(Birmingham Live 10-19): 「Alysson is an example, today he did very good work.」(알리송이 본보기다. 오늘 아주 잘했다) ⇒ D+1 「경기 후 알리송 언급 0건」 **정정**.
+- D+2의 E&S 「Wow」 인용은 **10-16 사전 회견** 답변이었다(경기 후 평가가 아니라 선발 예고 맥락).
+- Q2 격노: Tanswell 실시간(≈17′) 「Emery extremely angry with Matty Cash … Alysson also screamed at after not filing in for Cash.」(에메리가 캐시에게 극도로 화났다 … 알리송도 캐시 자리를 메우지 않아 고함을 들었다) · Townley 「Emery was furious with Alysson … before calling him over at the next stoppage」(에메리가 알리송에게 격분해 … 다음 중단 때 불러 설명을 요구했다) ⇒ **대상 = 캐시·알리송 둘 다, 주·부 미확정**(D+2 「알리송 주」를 낮춘다 · 장면·시점은 일치 유지).
+- Birmingham Live 평점(Townley): 선발 대부분 8 · **알리송 6** 「infuriated Emery when he didn't race back to cover Cash」(캐시를 메우러 뛰어 돌아가지 않아 에메리를 격분시켰다).
+
+### ⭐ 카마라–고메스 분담 — 실측 대조 (WS 국면 분리 그리드 · core.whoscored · 이 경기)
+| 국면 | 카마라 행 비중(공격→자기) | 고메스 행 비중 | 열 비중(좌→우) |
+|---|---|---|---|
+| 보유 | 0 · 29 · 31 · 35 · 6 | 0 · 30 · 34 · 32 · 4 | 카마라 우측 중앙 43% · 고메스 좌측 중앙 41% · 정중앙 둘 다 18% |
+| 비점유 | 0 · 15 · 19 · 35 · 31 | 7 · 7 · 14 · 48 · 24 | (이벤트 수 적음 — 판정 약함) |
+- ⇒ **보유 국면 높이는 대칭**(둘이 같은 높이 분포) · **좌우는 거울 분담**(각자 하프스페이스 · 정중앙 레인은 둘 다 비움).
+- AGOTH 「Kamara moved out of that space」(카마라가 그 공간을 비웠다) → **부분 일치** — 중앙을 비운 건 맞지만 카마라만이 아니라 **둘 다**. 「Gomez moved towards the ball」(고메스가 공 쪽으로 왔다)는 시간 순서 주장이라 그리드로 **판정 불가**.
+- The Villans 「you both got to defend, you've both got to get forward」(둘 다 수비하고 둘 다 전진해야 한다) → **실측 일치(이 경기 보유 높이)**.
+- ⚠️ 1차 발언과 충돌: 에메리 10-16 「now he's always playing as a number eight」(고메스는 지금 늘 8번으로 뛴다) · 카마라 「it is really the same」 — 역할 서술은 비대칭(고메스 8번)인데 **이 경기 실측 높이는 대칭**. 불변규칙 3에 따라 이 경기 판정은 실측 채택, 「8번 역할」은 시즌 축 가설로 둔다(다음 2경기 국면 그리드로 재판정 · obs#1083).
+
+### ⚠️ 당일 판정 정정 (D+3)
+| # | 대상 | 이전 | D+3 | 근거 |
+|---|---|---|---|---|
+| ① | 대조표 2 Q2 격노 | 부분 일치 — 대상 알리송(주)·캐시 | **부분 일치 — 대상 캐시·알리송(주·부 미확정)** | Tanswell 실시간 · Townley |
+| ② | 대조표 1 Q1 가르나초 | 판정 불가(서열 판단 LOW-MEDIUM) | **판정 불가로 종결** — 사전 회견 문답 0 | 구단·Birmingham Live·기자 SNS |
+| ③ | 대조표 24 만잠비 쥐 | 불일치(타박) | **불일치 유지 · 확정** — MRI 「impact injury」 · 바이킹전 결장 | 구단 공식 · Tanswell |
+| ④ | 대조표 25 완비사카 햄스트링 | 일치(기간 미정) | **일치 · 3~4주** | 에메리 사전 회견 |
+| ⑤ | 대조표 34 알리송 중점 | 대기 | **부분 일치로 종결** — 경기 후 칭찬 확보(「an example」) + 16′ 커버 실패 질책 · 교체 사유 직접 발언은 끝내 0 | Birmingham Live |
+| ⑥ | 교체 짝(대조표 18) | Opta 슬롯 짝 정본 | **유지** — Birmingham Live·Townley 실시간은 「교체 보드」 짝(만잠비→고레츠카 · 고메스→바클리)을 적었다 · 포지션 짝과 기준이 다르다 | 원문 대조 |
+
+### 종결
+- **The Athletic 전술 글**(「How Aston Villa create momentum through manipulation」 10-19 등)은 도구 차단으로 **본문 0건**(제목·시각만).
+- 다국어: 스페인어(「Emery rueda de prensa Viking」·「Emery Garnacho Viking」)·노르웨이어(「Emery pressekonferanse Viking Aston Villa」) **0건** — 검색어 전체는 sources 파일.
+- **match_reports #56 → complete**(G12·G37 조건 충족: 필수 섹션 · 출전 16/16 · 경기 프리셋 · 선발 11 · 구간 지표 29 · 판정 · 전술 4칸) · obs#1082~1083 · manager_profiles AVL role_demands 덧붙임(고메스 「8번」 1차 발언 vs 이 경기 대칭 실측).
