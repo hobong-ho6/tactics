@@ -136,6 +136,10 @@ OFFICIAL_CH = r"공식|football club|official|^liverpool fc$|^chelsea fc$"
 OFFICIAL_SPEAKS = r"reaction|interview|\bon\b|🗣"
 KIND_HINTS = [
     (r"post[- ]?match live|match ?reaction|instant reaction|full[- ]time thoughts", "경기반응"),
+    # ⭐ 2026-10-20 UTV 분석 영상이 「경기반응」으로 묻히던 것(사용자 「UTV에 전술분석 영상이 많이 나오던데」) —
+    #    선수 한 명을 다루는 「HOW <이름> IS/SCARES/IMPRESSED…」·영입 평가는 선수스카우팅, 감독·팀 운영은 전술분석
+    (r"must sign|rating .*signings|^how [a-z]+ [a-z]+ (is |impressed|scares|transforms)|cheat code|why unai emery loves", "선수스카우팅"),
+    (r"\btactical\b|best .*\bxi\b|how does (unai )?emery|tore .* apart|what we need to see from", "전술분석"),
     (r"scouting|스카우팅|why .* is (perfect|underrated)|fits into", "선수스카우팅"),
     (r"tactical analysis|전술 ?분석|build-?up|analysis:|taktik analiz|análisis táctico", "전술분석"),
     (r"outsmarted|tactics? (are |is )?wrong|tactical breakdown|tactics explained", "전술분석"),

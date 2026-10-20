@@ -38,6 +38,15 @@ CASES_R = [
     ("Takeaways from Aston Villa's victory over Newcastle | Premier League", "NBC Sports", "경기반응"),
     ("🚨 \"HE NEARLY BROKE MY LEG!\" Nicolas Jackson SLAMS Botman Tackle! | Newcastle 0-1", "Show de Bola", "경기반응"),
     ("Toothless Performance | Newcastle United 0-1 Aston Villa | Match Reaction", "GallowgateShots - NUFC", "상대팀"),
+    # UTV 분석 영상(2026-10-20 채널 스윕)
+    ("UNAI EMERY FACES TACTICAL CONUNDRUM AGAINST BRENTFORD", "UTV | Aston Villa Fan Channel", "전술분석"),
+    ("THE BEST ASTON VILLA XI WE HAVEN'T SEEN YET", "UTV | Aston Villa Fan Channel", "전술분석"),
+    ("HOW DOES UNAI EMERY KEEP DOING THIS?", "UTV | Aston Villa Fan Channel", "전술분석"),
+    ("HOW ZION SUZUKI IS TRANSFORMING ASTON VILLA", "UTV | Aston Villa Fan Channel", "선수스카우팅"),
+    ("HOW ZION SUZUKI IS CHEAT CODE FOR ASTON VILLA", "UTV | Aston Villa Fan Channel", "선수스카우팅"),
+    ("THE DATA SAYS ASTON VILLA MUST SIGN?", "UTV | Aston Villa Fan Channel", "선수스카우팅"),
+    ("RATING ASTON VILLA'S NEW SIGNINGS ON PERFORMANCE", "UTV | Aston Villa Fan Channel", "선수스카우팅"),
+    ("SOME OF THIS DOESN'T MAKE SENSE! | ASTON VILLA 2-2 BRENTFORD", "UTV | Aston Villa Fan Channel", "경기반응"),
 ]
 bad = [(t, c, e, guess_kind(t, channel=c)) for t, c, e in CASES if guess_kind(t, channel=c) != e]
 bad += [(t, c, e, resolve_kind(t, None, c)) for t, c, e in CASES_R if resolve_kind(t, None, c) != e]

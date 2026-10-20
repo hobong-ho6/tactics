@@ -598,7 +598,7 @@
     "[09:47] 「Just look at Allison's running power, how we're able to transition」(알리송의 주력 — 전환이 그래서 된다)",
     "[35:15] 「the six at the back, the five at the back, the box midfield with the narrow two」(후방 6·5, 좁은 투톱과 박스 미드필드)"
    ],
-   "kind": "경기반응",
+   "kind": "전술분석",
    "lang": "en",
    "obs_points": [],
    "published": "2026-10-18",
@@ -2335,6 +2335,66 @@
    "video_id": "m4g5Raq218w"
   },
   {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 348,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "midfield_duty_split",
+     "field_kr": "중원 분업",
+     "focus": null,
+     "headline_kr": null,
+     "player": null,
+     "points_kr": null,
+     "quote": "「Gomez being a little bit more doing some of the dirtier work ... a bit more of a shield for the defense and Kamar was pushing up a little bit more」(고메스가 궂은일을 더 하고 수비 앞 방패가 되며, 카마라는 조금 더 올라갔다) — Gomez=주앙 고메스·Kamar=카마라, 오인식 추정(auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Gomes mops up and shields defence, Kamara pushes up more",
+     "value_kr": "주앙 고메스가 궂은일·수비 보호, 카마라는 조금 더 전진",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 브렌트퍼드전 카마라·주앙 고메스 평균 위치·히트맵과 태클·가로채기 분담"
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Ball-Winning",
+     "headline_kr": null,
+     "player": "주앙 고메스",
+     "points_kr": null,
+     "quote": "「he's going to slide in for the challenges. He's going to mop up」(그는 태클로 뛰어들고 뒷정리를 할 것이다)",
+     "role_id": "cm_holding",
+     "team_code": "AVL",
+     "value": null,
+     "value_kr": null,
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 주앙 고메스 수비 행동 지표·평균 위치로 cm_holding Ball-Winning vs dm 계열 판정"
+    }
+   ],
+   "key_points": [
+    "[01:35] 브렌트퍼드전 무승부 — 결정적 기회를 놓쳤고 이번 시즌은 리빌드라는 진단",
+    "[12:24] 수비 불안 — 「Ming who ... isn't very good on the ball and doesn't kind of suit the Emmery style」(밍스는 볼 처리가 좋지 않고 에메리 스타일에 잘 맞지 않는다), 하우드-벨리스의 명단 제외에 의문",
+    "[15:30] 중원 장악 부재 — 「a massive attribute of the best Emmery teams is we've absolutely bossed the midfield」(최고의 에메리 팀의 큰 특징은 중원을 완전히 지배했다는 것)",
+    "[17:35] 카마라 역할 조정론 — 「maybe we've just got to rein him in a touch」(카마라를 조금 자제시켜야 할지도), 시즌 최다 리그 26경기 수준",
+    "[18:37] 분업 — 주앙 고메스가 궂은일·태클·수비 보호, 카마라는 브렌트퍼드전에서 더 전진",
+    "[21:11] 빌라 파크 홈 무승 — 세 면 관중석보다 토요일 오후 3시 경기 분위기가 문제라는 의견",
+    "[29:27] 잭슨(첫 터치·결정력)과 만잠비 연계 기대, 음바예(Embi — 오인식 추정(auto-caption))의 속도도 언급"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-12",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "UTV 진행자 루크와 게스트 해나가 브렌트퍼드전 무승부 직후 빌라의 현 상태를 이야기하는 토크 영상이다. 해나는 이번 시즌을 리빌드로 보고 순위보다 수비 실수와 중원 장악력 부족을 걱정하며, 밍스는 수비는 좋지만 에메리 스타일에 맞는 볼 처리가 부족하다고 평가한다. 두 사람은 카마라가 모든 일을 떠맡기보다 주앙 고메스가 궂은일을 맡고 카마라가 조금 더 전진하는 분업을 바람직하게 본다. 홈 무승은 세 면 관중석보다 토요일 오후 3시 경기의 분위기 문제라는 의견이 오가고, 잭슨·만잠비의 연계에는 큰 기대를 건다.",
+   "team_code": "AVL",
+   "title": "WILL VILLA PARK BE A PROBLEM THIS SEASON?",
+   "transcript_path": "reports/transcripts/uBTzKtvvcII.en.md",
+   "url": "https://www.youtube.com/watch?v=uBTzKtvvcII",
+   "video_id": "uBTzKtvvcII"
+  },
+  {
    "channel": "1874 : The Aston Villa Channel",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 252,
@@ -3195,6 +3255,98 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 344,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "right_wing_profile_vs_brentford",
+     "field_kr": "오른쪽 윙 인선(브렌트퍼드전)",
+     "focus": null,
+     "headline_kr": "속도형 윙어로 상대 풀백 묶기",
+     "player": null,
+     "points_kr": "[\"가르나초·음바예·알리송 중 1명 선발\", \"상대 풀백 전진을 억제\", \"맥긴 측면 배치는 비추천(앞에서만 순환)\"]",
+     "quote": "「I think a Garnacho and Ambai and Allison, one of those for me has really got to to play this game」(가르나초·음바예·알리송 중 한 명은 꼭 이 경기에 나와야 한다고 본다) — Ambai=음바예·Allison=알리송, 오인식 추정(auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "pace winger (Garnacho / Mbaye / Alysson) to pin opposition full-back",
+     "value_kr": "속도형 윙어로 상대 풀백을 뒤로 묶는다 — 가르나초·음바예·알리송 중 1명 선발, 맥긴 측면 배치는 브렌트퍼드 앞에서만 공을 돌리게 된다",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 10-10 브렌트퍼드전 실제 오른쪽 윙 선발·상대 풀백(전진 히트맵) 대조"
+    },
+    {
+     "axis": "instruction",
+     "field": "set_piece_prevention",
+     "field_kr": "세트피스 원천 차단",
+     "focus": null,
+     "headline_kr": "세트피스는 허용 자체를 줄인다",
+     "player": null,
+     "points_kr": "[\"박스 근처 파울 금지(고메스·캐시)\", \"걷어내기는 멀리\", \"먼 포스트·두 번째 동작 대비\"]",
+     "quote": "「Prevent corners and free kicks. Be aware of clearances and aim further up the pitch away from goal」(코너킥·프리킥을 막아라. 걷어낼 때는 골문에서 먼 위쪽으로 보내라)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "avoid fouls near own box, clear further up the pitch, mark back post",
+     "value_kr": "박스 근처 파울·코너 허용을 줄이고 걷어내기는 멀리, 먼 포스트와 두 번째 동작 대비",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 브렌트퍼드전 허용 코너·박스 근처 프리킥 수와 세트피스 실점 여부"
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Build-Up",
+     "headline_kr": null,
+     "player": "파우 토레스",
+     "points_kr": null,
+     "quote": "「We want to be progressive. So that needs power. That needs PO comfortable on the ball」(우리는 전진하고 싶다. 그러려면 공을 편하게 다루는 파우가 필요하다) — POW/PO=파우, 오인식 추정(auto-caption)",
+     "role_id": "cb_bpd",
+     "team_code": "AVL",
+     "value": null,
+     "value_kr": null,
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 파우 토레스 전진 패스·압박 하 패스 성공률로 cb_bpd Build-Up 적합도 확인"
+    },
+    {
+     "axis": "team_axis",
+     "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
+     "focus": null,
+     "headline_kr": null,
+     "player": null,
+     "points_kr": null,
+     "quote": "「going long is going to be very important to Aston Villa」(롱볼이 아스톤 빌라에게 매우 중요할 것이다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Long Ball (mixed)",
+     "value_kr": "롱볼 병행(압박 회피용 채널·맥긴 타깃)",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 브렌트퍼드전 롱패스 비율·골킥 길이를 시즌 평균과 비교"
+    }
+   ],
+   "key_points": [
+    "[00:03] 전술 딜레마 제기 — 「Tyro Ming is the best place defender to defend against the Brenford set pieces」(세트피스 수비는 밍스가 최적) vs 강한 압박을 풀 볼 다루는 센터백 필요(Tyro Ming=밍스, 오인식 추정(auto-caption))",
+    "[01:35] 브렌트퍼드 4-2-3-1 — 왼쪽 풀백 전진·오른쪽 선수 안쪽 이동으로 앞선 4명, 미드필더 1명 가세 시 5명. 가로채기 51(리그 3위)·리커버리 244(4위)",
+    "[06:13] 최대 위협은 세트피스 — 코너가 먼 포스트로 가고 두 번째·세 번째 동작에서 득점. 「static defending isn't really the best scenario」(서서 하는 수비는 최선이 아니다)",
+    "[12:19] xG Stat 스타일 분류 — 직선적·스크래피한 점유, 하이프레스·카운터프레스, 점유율 45%(16위)",
+    "[18:30] 대응 1: 속도 있는 오른쪽 윙어로 상대 풀백을 묶는다 — 「I want a right winger out there with pace that is going to push this player back」(상대 선수를 뒤로 밀어낼 속도 있는 오른쪽 윙어가 필요하다)",
+    "[23:08] 체크리스트 — 세트피스 원천 차단(박스 앞 파울 금지, 고메스·캐시 규율), 브렌트퍼드 위로 넘기기, 샤르다(Sharda — 오인식 추정(auto-caption))를 수비에 묶기, 풀백 뒷공간 공략",
+    "[28:15] 센터백 결론 — 「that needs PO comfortable on the ball」(그건 공을 편하게 다루는 파우가 필요하다), 하우드-벨리스를 세트피스 대응용 대안으로 거론"
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-07",
+   "published_approx": 0,
+   "report_id": 51,
+   "summary": "UTV 진행자가 10-10 브렌트퍼드전을 앞두고 키스 앤드루스의 브렌트퍼드(4-2-3-1)를 전술판·경기 장면·xG Stat 수치로 분석한 프리뷰다. 브렌트퍼드는 양 풀백이 높이 올라가 앞선 4~5명을 만들고, 상대 박스 근처에서 공을 빼앗아 곧바로 역습하며, 코너킥은 먼 포스트로 보내 두 번째 동작에서 득점한다고 짚는다. 대응책으로 속도 있는 윙어로 상대 풀백을 뒤로 묶고, 롱볼과 풀백 뒷공간 공략을 섞으며, 박스 앞 파울을 줄여 세트피스를 원천 차단하라고 제안한다. 센터백은 세트피스에 강한 밍스와 빌드업에 능한 파우 토레스 사이의 딜레마로 정리하고, 진행자는 하우드-벨리스 기용도 대안으로 든다.",
+   "team_code": "AVL",
+   "title": "UNAI EMERY FACES TACTICAL CONUNDRUM AGAINST BRENTFORD",
+   "transcript_path": "reports/transcripts/5TO5K7tocKE.en.md",
+   "url": "https://www.youtube.com/watch?v=5TO5K7tocKE",
+   "video_id": "5TO5K7tocKE"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 249,
    "impl_claims": [
@@ -3255,7 +3407,7 @@
     "에이브러햄 비판 — 「Why is he holding that position at the back post?」(왜 파포스트에 머물러 있나?; auto-caption) · 니어포스트 침투 부재",
     "66′ 이후 — 「he's on the left hand side now. Allison has come on on the right」(이제 그는 왼쪽에 있고, 알리송이 오른쪽에 들어왔다; auto-caption) → 79′ 알리송 횡패스 득점"
    ],
-   "kind": "경기반응",
+   "kind": "선수스카우팅",
    "lang": "en",
    "obs_points": [
     {
@@ -3330,6 +3482,82 @@
    "transcript_path": null,
    "url": "https://www.youtube.com/watch?v=wRb-1PbylS8",
    "video_id": "wRb-1PbylS8"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 347,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "left_cb_wide_cover",
+     "field_kr": "왼쪽 센터백 측면 커버",
+     "focus": null,
+     "headline_kr": null,
+     "player": null,
+     "points_kr": null,
+     "quote": "「the left center back in our system often has to defend out wide and cover in those wide areas」(우리 체계의 왼쪽 센터백은 자주 측면으로 나가 그 넓은 지역을 커버해야 한다) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "left CB must defend wide areas 1v1 when left back advances",
+     "value_kr": "왼쪽 풀백(마첸) 전진 시 왼쪽 CB가 측면 넓은 공간 1대1 수비",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 왼쪽 CB 히트맵의 측면 열(열0~1) 수비 행동 비중"
+    },
+    {
+     "axis": "limit",
+     "field": "cb_build_up_demand",
+     "field_kr": "센터백 빌드업 요구",
+     "focus": null,
+     "headline_kr": "밍스는 걷어내기형 — 빌드업 요구 시 불안",
+     "player": "밍스",
+     "points_kr": "[\"본래 최후방 걷어내기형 수비수\", \"좁은 공간 패스·운반을 요구받음\", \"전진 패스 하위 5%(전사 수치)\"]",
+     "quote": "「we're asking him to you know play in tight spaces pass out from the back maybe carry the ball a little bit」(좁은 공간에서 뛰고 후방에서 패스로 풀어 나오고 공을 조금 운반하라고 요구한다) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "asked to play out under pressure though a last-ditch defender by nature",
+     "value_kr": "밍스는 본래 걷어내기형인데 빌드업·운반을 요구받아 불안 — 게임 역할로 성향 차 재현 한계",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 밍스 전진 패스·패스 성공률 실측과 cb_defender/cb_stopper 적합도"
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Build-Up",
+     "headline_kr": null,
+     "player": "파우 토레스",
+     "points_kr": null,
+     "quote": "「he's averaging per 90 8.78 progressive passes. That's in the top 16%」(90분당 전진 패스 8.78개로 상위 16%) — 「we know how good he's on the ball」(그가 공을 다룰 때 얼마나 좋은지 다 안다) · auto-caption",
+     "role_id": "cb_bpd",
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 토레스 cb_bpd Build-Up 적합도와 전진 패스 실측(205분 소표본)"
+    }
+   ],
+   "key_points": [
+    "[02:39] 왼쪽 센터백이 최우선 — 토레스(P's, 오인식 추정) 계약 2028·밍스 2027 · [03:40] 10번(만잠비 뒤) 품질 보강도 필요",
+    "[04:11] 패널: 오른쪽 CB(린델뢰프 노쇠·하우드-벨리스 미검증)와 중앙 미드필더(고레츠카 31세·바클리·오나나 부상) 보강 필요",
+    "[08:16] 토레스 205분 · 90분당 전진 패스 8.78(상위 16%) vs 밍스 298분 3.62(하위 5%) — 전사 수치(auto-caption, 실측 대조 필요)",
+    "[11:50] 밍스는 「asked to do things that he's not good at」(잘하지 못하는 걸 요구받는다) — 좁은 공간 빌드업·운반",
+    "[13:23] 검색 조건: 왼발 CB 21~28세 5대 리그 · 전진 패스·운반·압박 탈출·지상/공중 경합·높은 라인 수비 기여",
+    "[17:03] 패널 선택 로이드 켈리(유벤투스, 시장가 2,400만) — 빠르고 공격적인 보완형 · [19:07] 진행자 선택 레나토 베이가(비야레알, 2,900만 유로·23세)",
+    "[22:39] 빌라 체계의 왼쪽 CB는 마첸 전진 시 측면 넓은 공간을 1대1로 커버해야 한다는 패널 주장"
+   ],
+   "kind": "선수스카우팅",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-29",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "UTV 진행자와 패널(얼)이 스쿼드 지도를 놓고 다음 이적시장 보강 위치를 짚은 뒤 스카우팅 사이트로 왼발 센터백 후보를 뽑은 회차다. 진행자는 왼쪽 센터백(토레스 2028·밍스 2027 계약 만료)과 10번(만잠비 백업)을, 패널은 오른쪽 센터백(린델뢰프 노쇠)과 중앙 미드필더(고레츠카·바클리 고령, 오나나 부상)를 꼽았다. 토레스는 이번 시즌 90분당 전진 패스 8.78(상위 16%)로 밍스 3.62(하위 5%)를 크게 앞서며, 밍스는 빌드업을 요구받지만 본래 성향이 아니라는 데 두 사람이 동의한다. 후보로 진행자는 레나토 베이가(비야레알), 패널은 하우드-벨리스와 보완형인 로이드 켈리(유벤투스)를 택했고, 빌라 체계의 왼쪽 CB는 측면 1대1 커버가 필요하다는 근거를 들었다.",
+   "team_code": "AVL",
+   "title": "THE DATA SAYS ASTON VILLA MUST SIGN?",
+   "transcript_path": "reports/transcripts/hSOZeCMSRE0.en.md",
+   "url": "https://www.youtube.com/watch?v=hSOZeCMSRE0",
+   "video_id": "hSOZeCMSRE0"
   },
   {
    "channel": "1874 : The Aston Villa Channel",
@@ -3468,6 +3696,82 @@
    "video_id": "XtbWFYzXqjc"
   },
   {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 345,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "asymmetric_back_three_shift",
+     "field_kr": "비대칭 백3 전환",
+     "focus": null,
+     "headline_kr": "한쪽 풀백 전진, 반대쪽이 좁혀 백3",
+     "player": null,
+     "points_kr": "[\"루헤리 전진 시 캐시가 안으로\", \"캐시 전진 시 루헤리가 백3 합류\", \"경기별로 고정 운용도 가능\"]",
+     "quote": "「Rogeri bombs on ... Matty Cash back three ... Cash bombs on Harwood Bellis comes across ... Regier makes up that back three」(루헤리가 올라가면 캐시가 백3로, 캐시가 올라가면 하우드-벨리스가 옮기고 루헤리가 백3를 이룬다) — Rogeri/Regier=루헤리, 오인식 추정(auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "one full-back pushes on, other tucks in to make back three",
+     "value_kr": "한쪽 풀백이 올라가면 반대쪽 풀백이 안으로 좁혀 백3를 만든다(루헤리↔캐시 교대)",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 루헤리·캐시 동시 출전 경기의 평균 위치로 비대칭 백3 여부 확인"
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Defend",
+     "headline_kr": null,
+     "player": "마테오 루헤리",
+     "points_kr": null,
+     "quote": "「bit more defensively minded」(조금 더 수비 지향적인 왼쪽 풀백) — 루헤리를 마트센보다 선호하는 근거",
+     "role_id": "fb_fullback",
+     "team_code": "AVL",
+     "value": null,
+     "value_kr": null,
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 루헤리 표본이 적다(헐 19분·토트넘전) — 출전 누적 후 수비·전진 지표 재확인"
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Build-Up",
+     "headline_kr": null,
+     "player": "하우드-벨리스",
+     "points_kr": null,
+     "quote": "「if you put a ball playing center half next to Pow, what are the passes that Harard Bellis can play?」(파우 옆에 볼 플레잉 센터백을 두면 하우드-벨리스는 어떤 패스를 할 수 있나?) — 롱패스 범위 근거, 오인식 추정(auto-caption)",
+     "role_id": "cb_bpd",
+     "team_code": "AVL",
+     "value": null,
+     "value_kr": null,
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 하우드-벨리스 롱패스 시도·성공률(코번트리전 중앙 배치 포함)"
+    }
+   ],
+   "key_points": [
+    "[01:10] 오른쪽 풀백은 캐시 우선 — 완비사카(Wambaka — 오인식 추정(auto-caption))는 적응 중이지만 경쟁이 긍정적",
+    "[03:13] 오른쪽 센터백 하우드-벨리스 — 린델뢰프보다 성장성이 높다고 보고 「he will be playing for England」(그는 잉글랜드 대표로 뛸 것이다)라는 핫테이크",
+    "[07:24] 왼쪽 풀백 루헤리(Rajieri/Rogeri — 오인식 추정(auto-caption)) — 수비 경합 상위 10%, 가로채기 상위 1%. 마트센은 박스 터치는 많으나 결과물이 부족하다고 평가",
+    "[13:33] 패스 범위 삼각형 — 「these three in this triangle can either go short, mid-range or long」(이 셋의 삼각형은 짧게·중간·길게 다 갈 수 있다) — 스즈키·파우·하우드-벨리스",
+    "[14:37] 비대칭 백3 전환 — 루헤리 전진 시 캐시가 안으로, 캐시 전진 시 루헤리가 백3를 구성",
+    "[17:13] 중원 2명은 카마라·주앙 고메스(Xiao Gomez — 오인식 추정(auto-caption)), 고레츠카는 역할이 확인될 때까지 보류",
+    "[20:18] 잭슨 아래 만잠비 — 「Manzambi's ceiling is far higher than Rogers」(만잠비의 상한이 로저스보다 훨씬 높다), 위치 선정은 다듬어야 함"
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-23",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "UTV 진행자가 「아직 보지 못한 빌라 베스트 11」을 고르는 영상으로, 스즈키·캐시·하우드-벨리스·파우 토레스·루헤리, 카마라·주앙 고메스, 음바예(추정)·만잠비·맥긴, 잭슨을 꼽는다. 왼쪽 풀백은 마트센보다 수비 지표가 뛰어난 루헤리를 택하고, 하우드-벨리스의 롱패스 범위가 파우와 스즈키를 보완해 짧은·중간·긴 패스를 모두 쓸 수 있는 후방을 만든다고 주장한다. 이 백4는 한쪽 풀백이 전진하고 반대쪽이 안으로 좁혀 백3로 바뀌는 다기능 구조라고 설명한다. 만잠비는 로저스보다 기술·잠재력이 높지만 위치 선정은 다듬어야 한다고 평가하며, 상대에 따라 라인업은 바뀐다고 덧붙인다.",
+   "team_code": "AVL",
+   "title": "THE BEST ASTON VILLA XI WE HAVEN'T SEEN YET",
+   "transcript_path": "reports/transcripts/HkU01PLqC5c.en.md",
+   "url": "https://www.youtube.com/watch?v=HkU01PLqC5c",
+   "video_id": "HkU01PLqC5c"
+  },
+  {
    "channel": "1874 : The Aston Villa Channel",
    "confidence": "MEDIUM(메타) — 채널·제목·게시일은 RSS/oEmbed. ⛔ 자막 미확보(유튜브 429 레이트리밋) — 요약은 자막을 받은 뒤 쓴다. 지금은 제목·설명만 근거다.",
    "id": 239,
@@ -3485,6 +3789,174 @@
    "transcript_path": null,
    "url": "https://www.youtube.com/watch?v=rp3tyJF4aek",
    "video_id": "rp3tyJF4aek"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 343,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "gk_distribution",
+     "field_kr": "GK 배급",
+     "focus": null,
+     "headline_kr": "스즈키 롱 배급이 상대 압박을 억제",
+     "player": null,
+     "points_kr": "[\"잭슨에게 직접 연결하는 선택지\", \"상대가 라인을 높이 올리기 망설임\", \"그 결과 중원 공간이 열림\"]",
+     "quote": "「once other teams are thinking about that ball in behind from the goalkeeper, it just opens up so much more space for for the midfield」(상대가 골키퍼의 뒷공간 볼을 의식하는 순간 중원에 훨씬 많은 공간이 열린다) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "long direct balls to striker as a threat that stops opponents squeezing high",
+     "value_kr": "스즈키 롱 배급(잭슨 직결)으로 상대 전방 압박 억제 → 중원 공간 확보",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 스즈키 롱패스 비율·목표 지점(9번 쪽 비중)과 상대 PPDA 변화"
+    },
+    {
+     "axis": "instruction",
+     "field": "goal_kick_build_up",
+     "field_kr": "골킥 빌드업",
+     "focus": null,
+     "headline_kr": null,
+     "player": null,
+     "points_kr": null,
+     "quote": "「the reason why we we play out from the back is because we create the 3v2」(우리가 후방에서 풀어 나오는 이유는 3대2를 만들기 때문이다) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "3v2 with GK and split centre backs",
+     "value_kr": "GK+벌어진 센터백 둘로 상대 1선 2명에 3대2",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 골킥 시 CB 벌림 형태와 상대 1선 압박 인원(경기 영상·패스맵)"
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Build-Up",
+     "headline_kr": null,
+     "player": "스즈키 지온",
+     "points_kr": null,
+     "quote": "「I can push you further out you know and and play as an actual three against teams at home in buildup」(너를 더 앞으로 올려 홈 경기 빌드업에서 실제 세 번째 선수로 뛰게 할 수 있다) — 진행자 추정(에메리 발언 아님) · auto-caption",
+     "role_id": "gk_ballplaying",
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 스즈키 골킥·빌드업 시 위치(박스 밖 전진 빈도)와 gk_ballplaying/gk_sweeper 적합도 비교"
+    }
+   ],
+   "key_points": [
+    "[00:42] 첫 강점은 멘털 — 「confidence, mentality, uh presence」(자신감, 멘털, 존재감) · 처음부터 수비진에게 위치를 지시",
+    "[04:54] 에메리가 그를 더 앞으로 올려 「play as an actual three against teams at home in buildup」(홈 경기 빌드업에서 실제 세 번째 선수로 뛰게) 할 수 있다는 진행자 견해",
+    "[06:30] 선방률 75%(리그 6위) · 90분당 패스 29.33·성공률 79.4%·전진 패스 18.13 · 40m+ 전진 22회 — 전사 수치(auto-caption, 실측 대조 필요)",
+    "[09:41] 롱 배급은 「a massive weapon」(엄청난 무기) — 상대가 뒷공간 볼을 의식하면 중원 공간이 열린다는 패널 주장",
+    "[11:12] 골킥 빌드업은 GK 포함 3v2 — 상대가 세 번째 압박수를 붙이면 다른 곳에 빈 선수가 생긴다는 진행자 설명",
+    "[13:13] 라야 비교: 패스 정확도 84.6 vs 79.4, 롱패스 10.73 vs 9.63 — 선방률·나오기(exits)는 스즈키가 높음 · 나이 24세 vs 31세",
+    "[20:54] 맥긴(McInn, 오인식 추정 auto-caption)이 스퍼스전 뒤 에메리의 요구를 좋아한다고 인터뷰했다는 언급 · 가르나초 옹호로 마무리"
+   ],
+   "kind": "선수스카우팅",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-22",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "UTV 진행자와 패널(얼)이 스즈키 자이온의 빌라 초반을 데이터로 점검한 회차다. 두 사람 모두 첫 번째 강점으로 멘털·존재감(백포 지휘)을 꼽고, 마르티네스의 후임이라는 부담 속에서도 팀의 버팀목이 됐다고 평가한다. 스탯 사이트 수치로 선방률 75%(리그 6위), 90분당 패스 29.33회·성공률 79.4%·전진 패스 18.13회, 40m 이상 전진 22회를 제시하고 라야(아스널)와 비교해 롱패스·패스 정확도는 조금 낮지만 선방률·나오기(exits)는 높다고 본다. 롱킥 위협이 상대의 전방 압박을 망설이게 해 중원 공간이 열리고 잭슨에게 직접 연결하는 선택지가 생긴다는 것이 핵심 주장이다. 후반부는 영입 전반(만잠비·잭슨·주앙 고메스 등)과 가르나초 옹호로 흐른다.",
+   "team_code": "AVL",
+   "title": "HOW ZION SUZUKI IS TRANSFORMING ASTON VILLA",
+   "transcript_path": "reports/transcripts/4fPRUgJvqLk.en.md",
+   "url": "https://www.youtube.com/watch?v=4fPRUgJvqLk",
+   "video_id": "4fPRUgJvqLk"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-20] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 346,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "left_back_profile",
+     "field_kr": "왼쪽 풀백 성향",
+     "focus": null,
+     "headline_kr": null,
+     "player": "마테오 루헤리",
+     "points_kr": null,
+     "quote": "「he offers something very different to to Matson um in terms of his his crossing ability」(크로스 능력 면에서 마첸과 아주 다른 것을 준다) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "early crosser rather than byline runner (vs Maatsen)",
+     "value_kr": "루헤리는 이른 크로스형 · 마첸은 바이라인 돌파형",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 루헤리·마첸 크로스 시도 위치(하프스페이스 vs 바이라인) 분포"
+    },
+    {
+     "axis": "instruction",
+     "field": "cm_progression",
+     "field_kr": "중앙 미드필더 전진",
+     "focus": null,
+     "headline_kr": null,
+     "player": "주앙 고메스",
+     "points_kr": null,
+     "quote": "「can we get him on the edge of the box a little bit more shooting?」(그를 박스 가장자리로 더 올려 슈팅하게 할 수 있을까?) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "drive forward past players, wants more presence on edge of box",
+     "value_kr": "운반 돌파로 득점 관여 · 박스 앞 진출·슈팅을 더 요구",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 주앙 고메스 히트맵 전진 구역 비중·운반 지표와 카마라 짝일 때 역할 분담"
+    },
+    {
+     "axis": "instruction",
+     "field": "winger_dribbling",
+     "field_kr": "윙어 드리블 재량",
+     "focus": null,
+     "headline_kr": "윙어에게 드리블·크로스 자유 재량 없음",
+     "player": null,
+     "points_kr": "[\"자기 진영 드리블 실점 위험 회피\", \"드리블·크로스 반복은 빌라 방식 아님\", \"대상 선수 음바예는 오인식 추정\"]",
+     "quote": "「We we don't just allow our wingers to just dribble dribble dribble cross cross」(우리는 윙어가 드리블·드리블·크로스만 반복하게 두지 않는다) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "wingers not given free license to dribble and cross repeatedly",
+     "value_kr": "윙어에게 반복 드리블·크로스 자유를 주지 않음(음바예 오인식 추정)",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 음바예 신원 확인(18세 윙어) 후 드리블 시도·크로스 빈도"
+    },
+    {
+     "axis": "limit",
+     "field": "positioning",
+     "field_kr": "위치 선정",
+     "focus": null,
+     "headline_kr": null,
+     "player": "완비사카",
+     "points_kr": null,
+     "quote": "「the positional awareness in this MBY system, if it's not right, you can spot it a mile off」(이 에메리 체계에서 위치 감각이 틀리면 멀리서도 보인다) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "a yard or two out of position while adapting to Emery system",
+     "value_kr": "에메리 체계 적응기 한두 걸음 위치 이탈 — 게임 설정으로 재현 불가",
+     "verdict": "PENDING",
+     "verdict_note": "실측 대조 필요: 완비사카 경기별 수비 지표·히트맵 변화(적응 추세)"
+    }
+   ],
+   "key_points": [
+    "[02:15] 완비사카 5~6점 — 「a yard or two, a step or two out of position at times」(때때로 한두 걸음 위치가 어긋난다) · 캐시 부상으로 출전이 강제됨",
+    "[05:48] 루헤리 7점 — 바이라인까지 가는 마첸과 달리 크로스형이라 잭슨·에이브러햄 공중볼에 유리하다는 패널 견해",
+    "[07:18] 수비진 미안정 — 린델뢰프·토레스(Po, 오인식 추정)·밍스·마첸·루헤리 조합이 계속 바뀐다는 지적",
+    "[11:23] 주앙 고메스(Xiao Gomez, 오인식 추정 auto-caption) 7.5점 — 첫 경기 퇴장 후 브뤼헤·스퍼스전 반등 · 카마라와 「containing partnership」(억제형 짝)",
+    "[18:00] 잭슨 8점·업그레이드 — 채널 침투·연계·포스트 플레이 · 공격 기회 공급이 부족했다는 평가",
+    "[22:11] 18세 윙어(음바예 추정, 「and boy」(오인식 — 음바예 추정, auto-caption) 오인식 auto-caption) 8점 — 빌라는 「dribble dribble dribble cross cross」(드리블·드리블·크로스만 반복) 하는 팀이 아니라는 언급",
+    "[26:46] 스즈키는 마르티네스 대비 업그레이드 · [28:52] 헤밍스 7.5점(왼쪽 측면 새 포지션 적응)"
+   ],
+   "kind": "선수스카우팅",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-09-21",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "UTV 진행자와 패널(얼)이 스퍼스전 승리 직후 A매치 휴식기에 신규 영입(과 헤밍스)을 경기력 기준으로 5~10점 티어로 매긴 회차다. 완비사카 6점(위치 선정이 한두 걸음 어긋남), 루헤리 7점(마첸과 다른 크로스형), 하우드-벨리스 7점, 주앙 고메스 7.5점, 만잠비·잭슨·음바예(오인식 추정) 8점, 가르나초 5~6점, 헤밍스 7.5점을 줬다. 잭슨과 스즈키는 떠난 왓킨스·마르티네스 대비 「업그레이드」로 분류됐다. 전반적으로 에메리 체계 적응 중이라는 판단이고 수비진 조합이 매 경기 바뀌어 안정되지 않았다는 지적이 반복된다.",
+   "team_code": "AVL",
+   "title": "RATING ASTON VILLA'S NEW SIGNINGS ON PERFORMANCE",
+   "transcript_path": "reports/transcripts/eAPbrcxVst8.en.md",
+   "url": "https://www.youtube.com/watch?v=eAPbrcxVst8",
+   "video_id": "eAPbrcxVst8"
   },
   {
    "channel": "(채널명 미확인)",
@@ -4429,7 +4901,7 @@
     "⭐⭐ 86′ 실점 = 2차 클리어 2회 실패 — 원문 「We have one opportunity to deal with it here. Rejieri, clear it. We then have another opportunity here. Buendía, win the ball. Clear it. We don't.」(여기서 처리할 기회가 한 번 있었다. 루헤리, 걷어내라. 여기서 또 한 번 기회가 있었다. 부엔디아, 볼을 따내라. 걷어내라. 우리는 못 했다.) ※ Rejieri=Ruggeri 오인식",
     "⭐⭐ 90+8′ 세트피스 실점 3중 지적 — 원문 「blockers and grabbers that are grabbing our players that are stopping us when this ball goes to Van Heeka」(우리 선수를 붙잡아 판 헤케에게 볼이 갈 때 우리가 못 가게 막는 블로커·그래버) · 「three players for Villa here who are beyond Ming」(밍스보다 뒤에 있는 빌라 선수가 셋이다) ※ Van Heeka=van Hecke · Ming=Mings"
    ],
-   "kind": "경기반응",
+   "kind": "선수스카우팅",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-20",
@@ -8286,7 +8758,7 @@
     "⭐ **맥락 — 유럽에서 잉글랜드 4팀 전승** — 「**The perfect four out of four for the English clubs in Europe this week**」(**이번 주 유럽에서 잉글랜드 클럽 4전 4승**).",
     "⛔ **auto-caption 오인식** — 대문자·소문자가 뒤섞이고(「I'M NOT INTO MY BASKETBALL WHATEVER IT IS」) 화자 구분이 거의 불가능하다. 「Alister」(Ally McCoist를 가리키는 듯), 「Sabah」(맨유 상대팀), 「Gab」(패널명). **인물 귀속 신뢰도 낮음 — 구조 관찰만 취했다.**"
    ],
-   "kind": "경기반응",
+   "kind": "전술분석",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-10",
@@ -8830,7 +9302,7 @@
     "⭐ 파우 토레스에게 요구한 것 = **개인의 책임** — 「Be brave, come off the defensive, don't play too cautious… 심리적으로 덜 안정된 선수라면 그냥 걷어냈을 것」. 「에메리가 계획을 줄 수 있지만 **선수가 스스로 책임을 져야 최대치가 나온다**」는 이 채널의 반복 논지.",
     "공격 국면 인원 — 그 장면에서 「빌라가 공격 국면에 **4명을 관여시켰다**」는 점을 긍정 신호로 언급."
    ],
-   "kind": "경기반응",
+   "kind": "선수스카우팅",
    "lang": "en",
    "obs_points": [
     {
@@ -8894,7 +9366,7 @@
     "⚠️ 완비사카 평가는 **혼재** — 「특히 후반에 정말 고전했다 · 상대 윙어가 문제를 많이 만들었고 오버래핑 런이 겹쳤다 · 카마라가 도우러 붙었지만 듀얼에서 밀렸다 · **핸드볼 PK는 좋지 않았다**」. 「맨유에서 충분히 봤다 — **백포스트에서 졸다 잡히는 게 그의 경기**」라는 개인적 관찰을 덧붙였다.",
     "⭐ 교체 해석 — 「빌라가 후반에 고전하고 있었으니 **에메리가 신뢰하는·시스템을 더 아는 선수**로 갔을 것」. 알리송은 「투입 후 매우 밝았고 좁은 공간 드리블이 최상급」. 음바예·가르나초는 「**국제 휴식기 이후**에 적응하며 더 많은 분을 받을 것」으로 전망."
    ],
-   "kind": null,
+   "kind": "선수스카우팅",
    "lang": "en",
    "obs_points": [],
    "published": "2026-09-08",
@@ -9193,7 +9665,7 @@
     "파이널서드 국면 — 여기서 **10번들이 더 공간으로 움직여야 한다**는 것이 이 영상의 결론. 즉 구조 문제가 아니라 최종 국면의 움직임 문제로 귀속.",
     "⚠️ **auto-caption 오인식 확인** — 전사가 풀백을 「Matt Targett and Matty Cash」로 적었으나 26/27 좌측백은 **마첸(Maatsen)**이다(docs/30 「Matty Cash ↔ Maatsen」 오인식 대조표와 동일 사례). 인용 시 이름은 실측으로 교차검증할 것."
    ],
-   "kind": "경기반응",
+   "kind": "선수스카우팅",
    "lang": "en",
    "obs_points": [
     {
@@ -9935,7 +10407,7 @@
     "⭐ 산초와의 대비 — 「산초는 빌라에서 기대를 배신했다 · 에메리는 **공을 받아 목적 없이 크로스만 올리는 선수를 정말 싫어한다**」 ⇒ 음바예의 컷백이 그 요구에 맞는다는 논리.",
     "⚠️ 바요는 「빌라가 **약 두 시즌간 없던 기술 = 페이스**를 가져온다」로 짧게 규정. ⛔ **auto-caption 오인식** — 음바예가 **「Mbappé」**로, 바요가 **「Bale」**로 적히는 구간이 반복된다. 이름은 실측으로 확인할 것."
    ],
-   "kind": "경기반응",
+   "kind": "선수스카우팅",
    "lang": "en",
    "obs_points": [
     {
@@ -13553,7 +14025,8 @@
    255,
    250,
    253,
-   251
+   251,
+   344
   ],
   "52": [
    256,

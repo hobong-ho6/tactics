@@ -66,6 +66,9 @@ for t in AVL CHE LIV ATM; do .venv/bin/python scripts/collect_fotmob_players.py 
 - ⭐ **AVL 회차는 UTV | Aston Villa Fan Channel(`@UTVFANCHANNEL`)·The Villans(`@TheViIIans`)·1874 : The Aston Villa Channel(`@The1874Podcast`, 토크/팟캐스트 — 기자 출연분은 1차 발언 원출처) 세 채널을
   항상 포함한다**(2026-09-07 사용자 지시, 정본 docs/30 「AVL 필수 채널 3곳」). 최신 목록을 조회하고
   해당 경기·선수 영상은 전사(`scripts/yt_transcript.py` 또는 봇 차단 시 `scripts/yt_transcript_json3.py`)까지 확보한다.
+  ⭐⭐ **경기 사이의 분석 영상은 「채널 스윕」이 맡는다**(2026-10-20 사용자 지시 · 10-20 대조에서 UTV 최근 30편 중 16편 미수집):
+  월요일 주간 회차(예약 `match-watch-weekly`)가 세 채널의 지난 7일 업로드 중 **분석 영상**(전술·선수·데이터·영입 평가)을
+  경기와 무관하게 전사·요약한다 — 프리뷰·Q&A·잡담은 건너뛰고 건수만 보고. 절차 정본은 그 예약 프롬프트의 「채널 스윕」 절.
 - ⭐⭐ **AVL 회차는 Jacob Tanswell(The Athletic 빌라 담당)을 반드시 조회한다**(2026-09-13 사용자 지시, 정본 docs/30 「AVL 필수 기자 1인」).
   **X `@J_Tanswell` 최근 트윗부터** 훑을 것 — 회견 직후 **에메리 발언 verbatim**(교체·명단 제외 사유)이 기사보다 먼저, 더 상세히 올라온다.
   실증(09-12 포레스트전): 잭슨 HT 교체가 주심 경고에 따른 강제였다는 것, 아브라함의 비침투 때문에 윙어를 동반 투입했다는 것,
