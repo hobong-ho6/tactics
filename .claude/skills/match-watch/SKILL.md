@@ -66,6 +66,7 @@ for t in AVL CHE LIV ATM; do .venv/bin/python scripts/collect_fotmob_players.py 
 - ⭐ **AVL 회차는 UTV | Aston Villa Fan Channel(`@UTVFANCHANNEL`)·The Villans(`@TheViIIans`)·1874 : The Aston Villa Channel(`@The1874Podcast`, 토크/팟캐스트 — 기자 출연분은 1차 발언 원출처) 세 채널을
   항상 포함한다**(2026-09-07 사용자 지시, 정본 docs/30 「AVL 필수 채널 3곳」). 최신 목록을 조회하고
   해당 경기·선수 영상은 전사(`scripts/yt_transcript.py` 또는 봇 차단 시 `scripts/yt_transcript_json3.py`)까지 확보한다.
+  ⛔ 브라우저로 자막을 잡을 때 **소리는 필요 없다 — 항상 뮤트**(플레이어 mute()+자동재생 끄기 → 포착 즉시 정지 → 탭 닫기 · 절차는 json3 스크립트 머리말 · 2026-10-20 사용자 지시).
   ⭐⭐ **경기 사이의 분석 영상은 「채널 스윕」이 맡는다**(2026-10-20 사용자 지시 · 10-20 대조에서 UTV 최근 30편 중 16편 미수집):
   월요일 주간 회차(예약 `match-watch-weekly`)가 세 채널의 지난 7일 업로드 중 **분석 영상**(전술·선수·데이터·영입 평가)을
   경기와 무관하게 전사·요약한다 — 프리뷰·Q&A·잡담은 건너뛰고 건수만 보고. 절차 정본은 그 예약 프롬프트의 「채널 스윕」 절.

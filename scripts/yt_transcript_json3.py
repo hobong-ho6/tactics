@@ -5,6 +5,9 @@
 `/api/timedtext?...&pot=...&fmt=json3` URL을 그대로 복사해 넘긴다(pot 토큰은 영상·세션 단위라
 다른 영상에 재사용할 수 없다). 산출물·형식은 scripts/yt_transcript.py와 동일.
 
+⛔ 소리는 필요 없다 — 항상 뮤트로(2026-10-20 사용자 지시). 페이지가 뜨면 먼저 movie_player의 mute()·setVolume(0)과
+   자동재생 끄기 → 자막 켜서 URL 포착 → 즉시 pauseVideo() → 전사 후 탭 닫기. video.muted만 걸면 다음 영상 자동 재생에서 풀린다.
+
 사용법:
     python3 scripts/yt_transcript_json3.py VIDEO_ID LANG "TIMEDTEXT_URL" [제목메모]
 """
