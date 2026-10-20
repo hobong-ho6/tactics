@@ -73,7 +73,7 @@ export function claimLabel(field, value){
 /* ── 산문 변환 ──
    ⑴ 역할/포커스 코드 → 한글  ⑵ 컬럼명 → 읽는 말  ⑶ 내부 참조(obs#·docs/·migration·G17·scripts/·커밋)는 본문에서 빼서 끝에 「참조」로 모은다.
    태그 안(<…>)은 건드리지 않는다. 반환 { html, refs }. */
-const ROLE_RE = /\b(gk|cb|fb|dm|cm|cam|wm|w|st)_[a-z0-9]+(?:\/(Attack|Balanced|Defend|Build-Up|Roaming|Support|Versatile|Aggressive|Ball-Winning|Wide))?/g;
+const ROLE_RE = /\b(gk|cb|fb|dm|cm|cam|wm|w|st)_[a-z0-9]+(?:_[a-z0-9]+)*(?:\/(Attack|Balanced|Defend|Build-Up|Roaming|Support|Versatile|Aggressive|Ball-Winning|Wide))?/g;
 const METRIC_RE = new RegExp('(?<![\\w가-힣])(' + Object.keys(METRIC_KR).sort((a, b) => b.length - a.length).join('|') + ')(?![\\w])', 'g');
 const REF_RES = [
   /\(?\bobs#\s?\d+(?:\s*[·~,~]\s*#?\d+)*\)?/g,

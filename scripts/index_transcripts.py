@@ -81,6 +81,30 @@ CHANNEL_TEAM = {
     "talkSPORT": (None, "경기반응"),
     "Mundo Deportivo": (None, "감독회견"),
     "LockyLeeds": (None, "상대팀"),
+    # ⭐ 2026-10-20 뉴캐슬전 「미분류」 18편에서 나온 채널(사용자 지시 「미분류 영상 기본 종류 규칙」).
+    #    빌라 팬·팟캐스트 — 팀을 못 박고 기본은 경기반응(제목이 전술분석·회견이면 그쪽이 이긴다)
+    "The 12th Man - An Aston Villa Podcast": ("AVL", "경기반응"),
+    "We Are Villans": ("AVL", "경기반응"),
+    "The Holy Trinity Show | Aston Villa": ("AVL", "경기반응"),
+    "Justin Talks Villa": ("AVL", "경기반응"),
+    "The Villa Park Podcast | Aston Villa": ("AVL", "경기반응"),
+    "Aston Villa Colombia": ("AVL", "경기반응"),
+    "Penno | Aston Villa": ("AVL", "경기반응"),
+    "The Terrace View An Aston Villa Podcast": ("AVL", "경기반응"),
+    # 뉴캐슬 팬 채널 — 관리 4팀 밖이라 팀은 None, 종류는 상대팀(상대 관점)
+    "Two For Joy": (None, "상대팀"),
+    "Everything Is Black & White - Newcastle United": (None, "상대팀"),
+    "The Magpie Channel TV": (None, "상대팀"),
+    "Newcastle Mania": (None, "상대팀"),
+    "True Faith Newcastle United Podcast and Fan Channel": (None, "상대팀"),
+    "Howay & Say": (None, "상대팀"),
+    "GallowgateShots - NUFC": (None, "상대팀"),
+    "Ever More - NUFC": (None, "상대팀"),
+    "The Toon Review": (None, "상대팀"),
+    # 중립 방송·통신 — 회견 전문을 올리는 채널은 감독회견
+    "Sky Sports Premier League": (None, "경기반응"),
+    "NBC Sports": (None, "경기반응"),
+    "HaytersTV": (None, "감독회견"),
 }
 # 제목·메모에 나오는 상대팀 표기 → matches.opponent 매칭 키워드
 OPPONENT_HINTS = {
@@ -114,6 +138,7 @@ KIND_HINTS = [
     (r"post[- ]?match live|match ?reaction|instant reaction|full[- ]time thoughts", "경기반응"),
     (r"scouting|스카우팅|why .* is (perfect|underrated)|fits into", "선수스카우팅"),
     (r"tactical analysis|전술 ?분석|build-?up|analysis:|taktik analiz|análisis táctico", "전술분석"),
+    (r"outsmarted|tactics? (are |is )?wrong|tactical breakdown|tactics explained", "전술분석"),
     (r"things we learned|reaction|review|fall to|defeat|draw at|win", "경기반응"),
     (r"preseason|프리시즌|pre-?season", "프리시즌"),
     (r"EA FC ?2\d|career mode|recreated in|tactics recreated", "게임재현"),
@@ -153,6 +178,24 @@ def parse_header(path: Path):
                 out["approx"] = 1
         break
     return out
+
+
+# ⭐ 마지막 기본값(2026-10-20) — 제목·메모·채널 어디에도 단서가 없을 때. 스코어 표기·결과 단어가 있으면 경기 반응이다.
+SCORE_FALLBACK = r"\b\d\s?[-–]\s?\d\b|victory|beaten|takeaways|warm down|opinión|análisis del partido"
+
+
+def resolve_kind(title, note, channel):
+    """종류 판정 정본 — 순서: 제목(회견 포함) → 메모(회견 제외) → 채널 기본값 → 스코어 기본값.
+    ⭐ 상대 팬 채널(채널 기본값 「상대팀」)은 제목이 경기반응·무단서일 때 상대팀으로 둔다 — 회견·전술분석은 제목이 이긴다."""
+    ch_kind = CHANNEL_TEAM.get((channel or "").strip(), (None, None))[1]
+    k = guess_kind(title or "", channel=channel) or guess_kind(note or "", presser=False)
+    if ch_kind == "상대팀" and k in (None, "경기반응"):
+        return "상대팀"
+    if k:
+        return k
+    if ch_kind:
+        return ch_kind
+    return "경기반응" if re.search(SCORE_FALLBACK, title or "", re.I) else None
 
 
 def guess_kind(text, presser=True, channel=None):
@@ -206,8 +249,8 @@ def main():
             else:
                 no_meta.append(path.name)
                 continue
-        team, kind = CHANNEL_TEAM.get(h["channel"], (None, None))
-        kind = guess_kind(h['title'] or '', channel=h['channel']) or guess_kind(h['note'] or '', presser=False) or kind   # 회견 판정은 제목만
+        team, _ = CHANNEL_TEAM.get((h["channel"] or "").strip(), (None, None))   # ⚠️ 채널명 끝 공백(「Justin Talks Villa 」)
+        kind = resolve_kind(h['title'], h['note'], h['channel'])   # 회견 판정은 제목만 · 정본 resolve_kind
         blob = f"{h['title'] or ''} {h['note']}".lower()
 
         # 경기 귀속 — 상대팀 표기로 후보를 좁히고 **하나로 특정될 때만** 붙인다.
