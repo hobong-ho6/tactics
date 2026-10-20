@@ -1,7 +1,9 @@
 """케미 신호(futgg_chem_signals) 「바뀐 행만 저장」 규약의 정본 (migration 106 · 2026-10-12).
 
 행 = pulled부터 last_seen까지 같은 값으로 **연속 관측된** (카드, 스타일). 그날 유효한 행은 pulled ≤ 날짜 ≤ last_seen.
-⭐ 「연속」은 **수집 회차(표 전체의 관측일)** 기준이다 — 그 카드를 못 받은 회차가 끼면 잇지 않는다(부재도 사실이다).
+⭐ 「연속」은 **그 카드의 직전 관측** 기준이다(2026-10-20 증분 수집 전환) — 수집기가 회차마다 일부 카드만 열므로
+   안 연 회차는 부재가 아니라 미관측이다. 직전 관측과 값이 같으면 잇고, 다르면 새 행을 연다.
+   (종전 2026-10-12~10-20은 표 전체 회차 기준이었다 — 매번 전수를 열던 때.)
 ⛔ 수집기·마이그레이션·export·게이트가 각자 비교식을 다시 쓰지 않는다 — 여기서 import한다(불변규칙 13 ②).
 """
 
@@ -11,16 +13,16 @@ def content_key(accelerate, vote_pct):
     return (accelerate, vote_pct)
 
 
-def prev_round(con, pulled):
-    """pulled 직전 수집 회차의 날짜(없으면 None). ⚠️ 그 회차의 행을 쓰기 **전에** 부른다."""
-    return con.execute("SELECT MAX(last_seen) FROM futgg_chem_signals WHERE last_seen < ?",
-                       (pulled,)).fetchone()[0]
+def prev_obs(con, ea_item_id, pulled):
+    """그 카드의 pulled 직전 관측일(없으면 None). ⚠️ 그 카드의 오늘 행을 쓰기 **전에** 부른다."""
+    return con.execute("SELECT MAX(last_seen) FROM futgg_chem_signals WHERE ea_item_id=? AND last_seen < ?",
+                       (ea_item_id, pulled)).fetchone()[0]
 
 
 def upsert(con, ea_item_id, pulled, style, accelerate, vote_pct, source, confidence, prev):
     """한 (카드, 스타일) 관측을 적는다. 반환: 'extend' | 'insert' | 'same-day'.
 
-    prev = prev_round()가 준 직전 회차. 직전 회차에 같은 값으로 끝난 행이 있으면 last_seen만 늘린다.
+    prev = prev_obs()가 준 그 카드의 직전 관측일. 그날 같은 값으로 끝난 행이 있으면 last_seen만 늘린다.
     """
     row = con.execute("""SELECT id, pulled, last_seen, accelerate, vote_pct FROM futgg_chem_signals
                           WHERE ea_item_id=? AND style_name=? ORDER BY last_seen DESC, id DESC LIMIT 1""",

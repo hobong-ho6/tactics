@@ -11,9 +11,15 @@
 ⛔ curl·WebFetch로는 안 된다 — 이 격자는 클라이언트 렌더라 정적 HTML에 없다.
 ⚠️ fut.gg에 부담을 주지 않도록 페이지마다 쉰다. 로그인은 필요 없다(공개 페이지).
 
+⭐ 증분 수집(2026-10-20) — 기본은 ⑴ 관측이 없는 카드(신규 보유) ⑵ 마지막 관측이 오래된 카드 순으로
+   **예산(--budget, 기본 30장)만** 연다. 종전 전수(215장 · 15분 48초)는 98%가 「변화 없음 연장」이었다.
+   안 연 카드는 last_seen을 늘리지 않는다(관측하지 않은 것을 관측했다고 쓰지 않는다) — export가 카드별 최신 행을 읽는다.
+   오늘 이미 관측한 카드는 건너뛴다. 전수는 --all.
+
 사용:
     .venv/bin/python scripts/collect_futgg_chem.py --dry-run
-    .venv/bin/python scripts/collect_futgg_chem.py                # 보유 전체
+    .venv/bin/python scripts/collect_futgg_chem.py                # 신규 + 오래된 순 30장
+    .venv/bin/python scripts/collect_futgg_chem.py --all          # 보유 전체
     .venv/bin/python scripts/collect_futgg_chem.py --items 236987 227174
 """
 import argparse
@@ -22,11 +28,12 @@ import sqlite3
 import sys
 import time
 from pathlib import Path
+from urllib.parse import urljoin
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 DB = ROOT / "db" / "tactics.db"
-from core.chem_signals import prev_round, upsert   # noqa: E402 — 「바뀐 행만 저장」 정본(migration 106)
+from core.chem_signals import prev_obs, upsert   # noqa: E402 — 「바뀐 행만 저장」 정본(migration 106)
 from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 ACCEL = {"C": "Controlled", "E": "Explosive", "L": "Lengthy"}
@@ -80,26 +87,54 @@ JS = """() => {
 }"""
 
 
+def load(pg, url):
+    """페이지를 열고 격자·투표가 **다 그려진 뒤** JS 결과를 돌려준다.
+    ⭐ 종전엔 고정 2.2초를 기다렸다(카드당 3.4초의 대부분). 격자는 즉시 그려지지만 투표는 별도 응답
+       `/api/fut/players/27/<id>/chemistry-style/`(top3ChemistryStyles)을 받은 뒤 그려진다(2026-10-20 실측) —
+       그 응답이 말하는 투표 수만큼 화면에 뜰 때까지만 기다린다. 투표 0건 카드는 응답만 받으면 끝이다."""
+    with pg.expect_response(lambda r: "/chemistry-style/" in r.url, timeout=30_000) as ri:
+        pg.goto(url, wait_until="domcontentloaded", timeout=60_000)
+    want = len((ri.value.json().get("data") or {}).get("top3ChemistryStyles") or [])
+    t0 = time.time()
+    while True:
+        data = pg.evaluate(JS)
+        if data.get("tiles") and len(dict(data.get("votes") or [])) >= want:
+            return data
+        if time.time() - t0 > 10:
+            raise TimeoutError(f"10초 안에 다 그려지지 않았다(격자 {len(data.get('tiles') or [])} · "
+                               f"투표 {len(dict(data.get('votes') or []))}/{want})")
+        pg.wait_for_timeout(150)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--items", nargs="*", type=int, default=[], help="ea_item_id 한정")
     ap.add_argument("--pulled", default=dt.date.today().isoformat())
     ap.add_argument("--sleep", type=float, default=1.2)
+    ap.add_argument("--budget", type=int, default=30, help="한 회차에 열 카드 수(기본 30)")
+    ap.add_argument("--all", action="store_true", help="보유 전체를 연다(예산 무시 · 약 15분)")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
     con = connect_db(DB)
     con.row_factory = sqlite3.Row
-    q = """SELECT c.ea_item_id, c.name, i.futgg_url
+    # ⭐ 관측 없는 카드('0000') → 마지막 관측이 오래된 순. ea_item_id 순이면 앞쪽만 영원히 갱신된다(시세 선례).
+    q = """SELECT c.ea_item_id, c.name, i.futgg_url,
+                  (SELECT MAX(s.last_seen) FROM futgg_chem_signals s WHERE s.ea_item_id = c.ea_item_id) seen
              FROM fut_club_players c
              LEFT JOIN player_card_items i ON i.ea_item_id = c.ea_item_id
-            WHERE c.status='owned'"""
+            WHERE c.status='owned'
+            ORDER BY COALESCE(seen, '0000'), c.ea_item_id"""
     rows = [r for r in con.execute(q)]
     if a.items:
         rows = [r for r in rows if r["ea_item_id"] in a.items]
     todo = [r for r in rows if r["futgg_url"]]
     missing = [r["name"] for r in rows if not r["futgg_url"]]
-    print(f"대상 {len(todo)}장 · futgg_url 결손 {len(missing)}장" + (f" ({', '.join(missing)})" if missing else ""))
+    print(f"보유 {len(todo)}장 · futgg_url 결손 {len(missing)}장" + (f" ({', '.join(missing)})" if missing else ""))
+    if not (a.all or a.items):
+        new = sum(1 for r in todo if r["seen"] is None)
+        todo = [r for r in todo if r["seen"] != a.pulled][:a.budget]
+        print(f"이번 회차 {len(todo)}장(관측 없음 {new}장 우선 · 나머지 오래된 순 · 예산 {a.budget}) — 전수는 --all")
     if a.dry_run:
         return
 
@@ -111,20 +146,21 @@ def main():
             "(2026-09-21 실측 확정: 카마라 전 스타일 C=Controlled · 음바페 대부분 E=Explosive). "
             "⚠️ vote_pct는 **커뮤니티 투표 비율**이고 fut.gg 편집부 추천이 아니다 — 인기이지 정답이 아니다.")
 
-    # ⭐ 직전 회차는 오늘 행을 쓰기 **전에** 정한다 — 쓰는 도중엔 오늘이 섞인다.
-    prev = prev_round(con, a.pulled)
     stat = {"extend": 0, "insert": 0, "same-day": 0}
     with sync_playwright() as p:
         br = p.chromium.launch()
         pg = br.new_page()
         for n, r in enumerate(todo, 1):
-            url = "https://www.fut.gg" + r["futgg_url"]
+            # ⚠️ futgg_url에 절대·상대가 섞여 있다 — 문자열을 붙이면 `https://www.fut.gghttps://…`가 된다(2026-10-20 3장).
+            url = urljoin("https://www.fut.gg/", r["futgg_url"])
             try:
-                pg.goto(url, wait_until="domcontentloaded", timeout=60_000)
-                pg.wait_for_timeout(2200)
-                data = pg.evaluate(JS)
+                data = load(pg, url)
             except Exception as e:  # 한 장이 실패해도 나머지를 계속 받는다
-                skipped.append((r["name"], str(e)[:60]))
+                skipped.append((r["name"], str(e).splitlines()[0][:160]))
+                # ⚠️ 실패한 탭은 chrome-error로 넘어가는 중이라 다음 goto가 「interrupted by another navigation」으로
+                #    줄줄이 죽는다(2026-10-20 페리시치·헤이닐두·호프만) — 탭을 새로 연다.
+                pg.close()
+                pg = br.new_page()
                 continue
             tiles = data.get("tiles") or []
             if not tiles:
@@ -133,6 +169,10 @@ def main():
             votes = {k: v for k, v in (data.get("votes") or [])}
             if not votes:
                 novote += 1
+            # ⭐ 네트워크가 끝난 뒤에만 쓰기 잠금을 잡는다 — 카드 하나(19행)를 쓰고 바로 커밋한다.
+            #    IMMEDIATE: 읽기 잠금을 쥔 채 쓰기로 올리다 다른 작성자와 교착하는 길을 없앤다(클럽 싱크 병렬 구간).
+            con.execute("BEGIN IMMEDIATE")
+            prev = prev_obs(con, r["ea_item_id"], a.pulled)
             for style, badge in tiles:
                 stat[upsert(con, r["ea_item_id"], a.pulled, style, accel_of(badge, unknown),
                             votes.get(style), SRC, CONF, prev)] += 1
@@ -141,7 +181,6 @@ def main():
             con.commit()        # ⭐ 카드마다 커밋(2026-10-15) — 쉬는 동안 잠금을 쥐지 않게(클럽 싱크 병렬 구간)
             time.sleep(a.sleep)
         br.close()
-    con.commit()
     print(f"\n관측 {ins}행(새 행 {stat['insert']} · 변화 없음 연장 {stat['extend']} · 같은 날 재관측 {stat['same-day']}) "
           f"· 투표 0건 카드 {novote}장 · 실패 {len(skipped)}장")
     for nm, why in skipped:

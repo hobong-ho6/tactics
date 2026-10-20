@@ -1111,8 +1111,10 @@ def run(db_path=None, verbose=True):
     #    ⚠️ `player_card_prices`는 2026-09-29에 뺐다 — 시세는 **회차를 나눠 받는 게 정상 동작**이 됐고
     #       (collect_futgg_prices.py 기본 = 예산 한 번), export가 카드별 최신을 읽어 부분 회차가 화면을 비우지 않는다.
     #       남겨 두면 부분 회차마다 이 게이트가 export·ship을 막는다(「항상 막힌다」의 한 원인이었다).
+    #    ⚠️ `futgg_chem_signals`도 2026-10-20에 같은 이유로 뺐다 — 케미 신호 수집이 예산 30장 증분이 됐고
+    #       (collect_futgg_chem.py 기본 · 전수는 --all) export가 카드별 최신 관측을 읽는다.
     G21_TABLES = ["player_evolutions", "fc_evolutions", "fc_evolution_eligibility",
-                  "futgg_chem_signals", "fc_objective_tasks",
+                  "fc_objective_tasks",
                   "fut_tactic_roles"]
     # ⛔ 1회성 예외 — 정당한 감소만, 사유와 함께. 새 줄을 늘리기 전에 수집이 끊긴 게 아닌지 먼저 본다.
     #   player_evolutions 10-19=2302(724 base) → 10-20=97(27 base): 10-19 사용자 지시로 진화 수집을
@@ -1121,8 +1123,8 @@ def run(db_path=None, verbose=True):
     g21_bad = []
     for t in G21_TABLES:
         try:
-            if t in ("player_evolutions", "futgg_chem_signals"):
-                # ⭐ 「바뀐 행만 저장」(migration 099 · 106) — 회차별 행 수가 아니라 **그 회차에 관측된 행 수**로 센다
+            if t == "player_evolutions":
+                # ⭐ 「바뀐 행만 저장」(migration 099) — 회차별 행 수가 아니라 **그 회차에 관측된 행 수**로 센다
                 #    (pulled ≤ 회차 ≤ last_seen). 안 그러면 변화 없는 회차가 0행처럼 보여 매번 막힌다.
                 days = [d for (d,) in con.execute(f"SELECT DISTINCT last_seen FROM {t} "
                                                   "ORDER BY last_seen DESC LIMIT 2")]

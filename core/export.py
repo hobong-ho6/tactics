@@ -526,11 +526,14 @@ def export_all(db_path=None, window="2026-summer"):
                            "chem_styles": chem_styles, "squad": squad, "squad_slots": squad_slots,
                            "obj_tasks": obj_tasks, "ps_names": ps_names, "eligible": elig_rows,
                            "cosmetic_keys": sorted(__import__("core.futgg_attrs", fromlist=["x"]).COSMETIC_UPGRADES),   # ⭐ 코스메틱 판정 정본(core/futgg_attrs)
-                           # fut.gg 케미 신호(migration 055) — 최신 회차만. 배지는 등급이 아니라 AcceleRATE다.
-                           #   ⭐ 「바뀐 행만 저장」(migration 106) — 최신 회차에 관측된 행 = last_seen이 최신인 행.
-                           "chem_signals": _rows(con, """SELECT ea_item_id, style_name, accelerate, vote_pct
-                                                           FROM futgg_chem_signals
-                                                          WHERE last_seen=(SELECT MAX(last_seen) FROM futgg_chem_signals)"""),
+                           # fut.gg 케미 신호(migration 055) — 보유 카드마다 최신 관측. 배지는 등급이 아니라 AcceleRATE다.
+                           #   ⭐ 「바뀐 행만 저장」(migration 106) + 증분 수집(2026-10-20 · 회차마다 일부 카드만 연다) —
+                           #      표 전체의 최신 회차가 아니라 **카드별 last_seen 최신 행**을 읽는다(안 연 카드가 화면에서 사라지지 않게).
+                           "chem_signals": _rows(con, """SELECT s.ea_item_id, s.style_name, s.accelerate, s.vote_pct
+                                                           FROM futgg_chem_signals s
+                                                          WHERE s.ea_item_id IN (SELECT ea_item_id FROM fut_club_players WHERE status='owned')
+                                                            AND s.last_seen=(SELECT MAX(last_seen) FROM futgg_chem_signals t
+                                                                              WHERE t.ea_item_id=s.ea_item_id)"""),
                            "canon_roles": _rows(con, """SELECT pos, role_id, focus, game_version FROM slot_canon_roles
                                                        WHERE regime_id=1 AND formation='4-2-3-1 Wide'"""),
                            # ⭐ 케미 기준선은 `core/chem.py`가 정본이다 — 화면이 같은 표를 다시 적지 않게 내보낸다.

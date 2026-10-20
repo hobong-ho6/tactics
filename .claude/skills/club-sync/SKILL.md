@@ -531,7 +531,7 @@ python3 scripts/gaps.py squad     # 활성 스쿼드가 두 수집 축의 **조�
 .venv/bin/python scripts/collect_face_stat_defs.py       # 6대 스탯 구성식
 .venv/bin/python scripts/collect_playstyle_ids.py        # PlayStyle id → 이름
 .venv/bin/python scripts/collect_futgg_formations.py     # 포메이션·칸 자격
-.venv/bin/python scripts/collect_futgg_chem.py           # 케미 신호(AcceleRATE 등)
+.venv/bin/python scripts/collect_futgg_chem.py           # 케미 신호(AcceleRATE 등) — 기본 신규+오래된 순 30장 · 전수는 --all
 ```
 
 - ⭐ **평소엔 안 바뀌지만 EA 패치 때 바뀐다.** 이 표들이 틀리면 **6대 스탯·케미·진화 계산이 통째로** 틀어진다
