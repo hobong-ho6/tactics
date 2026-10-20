@@ -1,0 +1,38 @@
+# 전사(자동 생성 자막) — qm65lcoeEPg (en-orig)
+
+> MightyBluesNews — Xabi Alonso on Martinez injury, Neto and clean sheet | Everton 0-2 Chelsea (2026-10-17 게시, 경기 후 기자회견)
+
+> 원본: https://www.youtube.com/watch?v=qm65lcoeEPg · 수집: yt-dlp json3(서사 서브에이전트 2026-10-19) → scripts/yt_transcript.to_markdown
+> ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.
+
+**[00:00]** Okay, who would like to get us started? Nizaal, second, please. >> Hi Javi. How proud are you of getting the first clean sheet, but how concerned are you about Emiliano Martinez as well? >> Well, first about Emi, what we know is that he left the stadium conscious. And right now he's in the in the hospital doing a precautionary tests. So, we need to to wait. And for sure, hopefully he will be it won't be too bad. And we need but we
+
+**[00:31]** need to wait at the moment. And and yeah, really pleased with the with the performance, with the win, with the clean sheet, many positives to build from the from today. It was we knew that it was going to be a hard challenge to win in in this stadium, but we did many many things to deserve the win. I think that we got many things right. Going through very playing very professional, very solid. And it's good to have this feeling to win this way.
+
+**[01:01]** >> Do you know if it's concussion with Martinez or is it something else potentially? >> No, it was the concussion, but more than that, I don't I saw just one one clip and we need to wait now. >> And what about Mike? How did he get on today? >> He did well. You could see what's about a Mike is as personality, he's brave. And we have full trust with with him. He played in the the cup games and whenever he's needed like the other players, whenever they are needed,
+
+**[01:32]** uh they can perform like Jorael. He did really well today as well coming having the the first game after the the little problem with with Pep. So, this is all about the squad that all the players they are they feel important that they will have their moment whenever they are needed and and that's that's very positive as well. >> Kieran. >> Hi Javi. Um can I just check what the injury is with Pep and is Malo got an injury as well. >> Yeah, Malo was ill yesterday and he was not feeling well to to come here to to Liverpool.
+
+**[02:03]** And Pep last action in the training he felt something so tomorrow he's having the the test to to have the full information about the injury so but he was not feeling well enough to to compete for today. >> And just on Pedro Neto how is he taken to being a wing back? Has he surprised you the way he's embraced that? >> You think he's a he's a wing back? >> Well, you tell me. Is he more of a winger or you using him as a right back? >> You can call him whatever. Winger, wing back
+
+**[02:34]** attacking position, defending. He can do many things. So today he's done he's done well. He's so competitive. He's when when he's close to the actions he's he's a threat against any any other full back. When he's on the last line or he's in between he connects well with with the players around, with Joao, with Cole, today with Josh as well. They work really well but I'm happy with that that he could score but I'm going to say
+
+**[03:04]** >> [snorts] >> today that Cole, Joao, Morgan they didn't score but for me they played a fantastic game. They work really hard. They were helping the team Morgan on the wing Cole and Joao in the middle so we need a lot from that to win as a team and many positives. >> Oh. Is happy in previous seasons Chelsea have come here and been sort of bullied a little bit physically intimidated by Everton
+
+**[03:34]** Goodison and and here last season. Did you like the spirit the team showed? And the physical. >> Absolutely because we will have many of many of these ones and we needed to feel that we could win in in this way looking solid, playing solid being uh being a strong, looking in control, going through difficult moments first half. There were moments when they were throwing corners, corners, throwing and you need to go through overcome this those moments and knowing that
+
+**[04:04]** it's uh it's it's it's very hard in probably to have full control of the game during the whole moments, but you don't lose your shape. You don't lose your your conviction of the things you are doing and today we did that really well. We have what I spoke in a half time. The first one the first goal was going to be key to go either one way or the other. It went our way because but I think that because we deserved. I think that we did very very well good game. >> Simon. Hey Javier, I think during talks with
+
+**[04:35]** the club when you were discussing taking over um you were talking about building mentality monsters. Is that what we saw today? Is that the sort of the the the blueprint for what you're looking for? >> It is one day. Let's let's let's we need to repeat repeat and again and again and again to to know but for sure there were the mentality was very good because we knew that it was not about playing nice. Sometimes it's not just to play nice, it's to play good and to play we played
+
+**[05:06]** good football. We won many many duels, many second balls. We we knew how to be efficient in different situations. So that's uh that's I think that something that we will build from from the future. We will build a lot of things from from today's game. We needed one of this. Uh with the clean sheet, with the with the win after the defeat in in Brentford. The feeling was not that it was not enough and today has been better.
+
+**[05:36]** >> And and psychologically you sort of touched on it there. Getting that clean sheet, that that drought without a clean sheet, do you think that's that's key for the squad to believe oh >> It's just one. It will be key when we are able to to manage 10 clean sheets. So, first one feels good. First one feels good and it was needed. But, now the goal is to to be consistent and to keep doing keep doing that. >> Second row, please. >> Hi Xavi. I'm Anthony from some of the B
+
+**[06:07]** comes. We've seen the team go a lot go very direct a lot over the course of the season to Morgan Rogers and Jay Rodriguez specifically. When they were signed, was that the plan in mind to play more direct football or is this adapting to your opposition? >> No, it's adapting to the context today. We knew that Everton sometimes can come one v one. Sometimes they can have plus one. So, you need to to choose uh to choose how to how to be more efficient on your game and we know that is they are strong enough Joe and and and
+
+**[06:38]** and Morgan to to hold the duels. The first goal the way Morgan has hold the ball and he he dribbled it on the from the left wing to to make the pass to to Joel. You see that he's solid. He's complete. He's He's a strong and and we need to use that to use that that power to to be able to play some more direct sometimes. >> And also we saw today you made your first substitution your first outfield substitution in the 90th minute. Is the
+
+**[07:08]** plan to let the players play and see how many mistakes they >> It's 90th minute, but there were 11 minutes because So, you you can see it was the 20 79th minute. I know it's depend on the context. So, it's not a plan. It's you you prepare a few things, but you need to adapt to circumstances. The team was looking good. It was in good shape. And I felt that the substitute players there were going to be needed, but in the in the right moment and and Moi
+
+**[07:39]** is his second game. He was a bit tired. And Romeo, he played really well those moments. He's in a good moment, so Yeah, today things things were went our way. >> Right. Thank you very >> Thank you.
