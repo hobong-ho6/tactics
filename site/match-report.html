@@ -10,6 +10,9 @@
   <label class="kv">히트맵 <select id="matchPlayerSel" aria-label="경기 히트맵 선수 선택"></select></label>
   <label class="kv">출전자 범위 <select id="heatView" aria-label="히트맵 출전자 범위"><option value="starters" selected>선발 11명</option><option value="all">전체 출전자</option><option value="subs">교체 선수</option></select></label>
   <label class="kv">재현 XI <select id="presetView" aria-label="경기 재현 프리셋 시점"><option value="start">선발 XI</option><option value="final">교체 반영 종료 XI</option></select></label>
+  <!-- ⭐ 목차(2026-10-20 사용자 지시 「페이지가 길어졌으니 상단에 목차」) — 선택 막대와 함께 위에 붙는다.
+       ⛔ 항목을 손으로 적지 않는다: 렌더가 끝난 뒤 **실제로 보이는 패널**에서 만든다(buildToc) — 패널이 늘거나 숨으면 목차도 따라간다. -->
+  <nav id="toc" class="toc" aria-label="목차"></nav>
 </div>
 <div id="empty" class="panel dim" hidden>이 팀에는 완료된 경기 분석 리포트가 아직 없습니다.</div>
 <main id="report" hidden>
@@ -617,6 +620,23 @@ function render(r){
     (subs.length?`<optgroup label="교체 ${subs.length}명">${subs.map(p=>`<option value="${p.player_id}">${esc(p.position)} · ${esc(p.label)} (${esc(p.minutes)}분)</option>`).join('')}</optgroup>`:'');
   if ([...playerSel.options].some(o=>o.value===keep)) playerSel.value=keep;
   renderPitch(r);
+  buildToc();
+}
+/* 목차 — 보이는 패널(숨김·빈 패널 제외)의 제목으로 만든다. 제목이 경기 이름인 요약 패널 등은 고정 라벨을 쓴다. */
+const TOC_LABEL = { summary:'경기 요약', viz:'경기 차트', hypPanel:'관전 메모 판정', injPanel:'부상', overall:'총평',
+                    gamePreset:'재현 프리셋', videoPanel:'영상 분석' };
+const TOC_SHORT = { '실제 경기 히트맵':'히트맵', '팀 전체 스탯':'팀 스탯', '선수별 히트맵·역할·전체 스탯':'선수', '전체 분석 원문·레퍼런스 펼치기':'원문' };
+function buildToc(){
+  const nav = document.getElementById('toc'); if (!nav) return;
+  const secs = [...document.querySelectorAll('#report > .panel, #report > #viz, #report > .grid2 > .panel')]
+    .filter(el => !el.hidden && el.offsetParent !== null && el.textContent.trim());
+  nav.innerHTML = '<span class="toc-lab">목차</span>' + secs.map((el, i) => {
+    if (!el.id) el.id = 'sec' + i;
+    const h = el.querySelector('h2,h3,summary');
+    const raw = TOC_LABEL[el.id] || (h ? h.childNodes[0]?.textContent.trim() : '') || '섹션';
+    const label = TOC_SHORT[raw] ?? raw;
+    return `<a href="#${el.id}">${esc(label.replace(/\s*[—-].*$/, '').slice(0, 18))}</a>`;
+  }).join('');
 }
 function currentReport(){ return ordered.find(r=>String(r.event_id)===reportSel.value) ?? ordered[0]; }
 if (!reports.length){

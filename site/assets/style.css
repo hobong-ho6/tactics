@@ -188,6 +188,12 @@ details.match-players>summary,details.report-source>summary{color:var(--acc);cur
 
 /* 별도 경기 분석 화면 */
 .report-picker{display:flex;gap:14px;align-items:center;flex-wrap:wrap;position:sticky;top:0;z-index:20}
+/* 목차(2026-10-20) — 선택 막대 안 둘째 줄 · 가로 스크롤 한 줄 · 이동한 패널이 막대 밑에 가리지 않게 scroll-margin */
+.toc{flex-basis:100%;display:flex;gap:6px;overflow-x:auto;white-space:nowrap;padding-top:6px;border-top:1px solid var(--line);font-size:12.5px}
+.toc a{padding:3px 9px;border:1px solid var(--line);border-radius:12px;color:var(--txt);text-decoration:none}
+.toc a:hover{border-color:var(--acc);color:var(--acc)}
+.toc .toc-lab{color:var(--dim);padding:3px 2px}
+#report > .panel,#report > #viz,#report > .grid2 > .panel{scroll-margin-top:130px}
 .report-picker select{min-width:230px}
 .match-overview canvas.pitch{max-width:440px}
 .player-stats-table{margin:10px 0;min-width:720px;border:1px solid var(--line);border-radius:8px}
@@ -377,7 +383,9 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 /* 스쿼드 베스트 XI 피치 — 세로로 긴 그림이라 폭을 다 쓰면 화면 밖으로 길어진다. 폭 상한만 둔다(2026-10-05). */
 .mviz .vz svg.sv-pitch{max-width:600px;margin:0 auto}
 .mviz .vz svg.sv-depth{max-width:1000px;margin:0}
-@media(min-width:1100px){.mviz{grid-auto-rows:minmax(0,1fr)}}
+/* ⛔ 2026-10-20 제거: `@media(min-width:1100px){.mviz{grid-auto-rows:minmax(0,1fr)}}` — 「모든 행 같은 높이」가
+   전폭 패널(경기 흐름 732px)의 높이를 460px 차트 행에도 강요해 행마다 ~270px 빈 띠가 생겼다(사용자 지적 「그래프 간 간격이 넓은 이유」).
+   일반 카드는 위에서 height:460px로 이미 고정이라 짝끼리 높이는 그대로 같다 — 행 높이는 내용(auto)에 맡긴다. */
 
 /* 선수 리포트 — 포지션군 묶음(2026-09-22).
    ⚠️ `#players`에 `.player-report-list`(2열 grid)가 걸려 있어서 **그룹 자체가 2열로 나란히** 섰고,
