@@ -554,7 +554,7 @@ CREATE TABLE video_impl_claims(
   verdict_note TEXT,                -- ⛔ HELD·REJECTED는 사유·재판정 조건 필수(G17)
   source TEXT, confidence TEXT,
   added TEXT NOT NULL DEFAULT (date('now'))
-, field_kr TEXT, value_kr TEXT, headline_kr TEXT, points_kr TEXT);
+, field_kr TEXT, value_kr TEXT, headline_kr TEXT, points_kr TEXT, issue_id INTEGER REFERENCES claim_issues(id));
 CREATE TABLE player_evolutions(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL REFERENCES game_versions(code),
@@ -1405,3 +1405,29 @@ CREATE TABLE match_tactical_changes (
   confidence TEXT NOT NULL,
   UNIQUE (report_id, seq)
 );
+CREATE TABLE claim_issues(
+  id INTEGER PRIMARY KEY,
+  team_code TEXT NOT NULL REFERENCES teams(code),
+  title_kr TEXT NOT NULL,           -- 쟁점 이름 ≤40자(질문의 이름 — 결론이 아니다)
+  question_kr TEXT NOT NULL,        -- 무엇을 판정하나
+  measure_kr TEXT NOT NULL,         -- 판정에 쓸 실측(표·지표·기준값)
+  trigger_kind TEXT NOT NULL CHECK(trigger_kind IN ('matches','player_starts','date')),
+  trigger_n INTEGER,                -- matches·player_starts: 몇 경기
+  trigger_comp TEXT CHECK(trigger_comp IS NULL OR trigger_comp IN ('league','official')),
+  trigger_player_id INTEGER REFERENCES players(id),
+  trigger_pos TEXT,                 -- player_starts: pos_class CSV(선택)
+  trigger_date TEXT,                -- date: 이 날짜가 지나면
+  since TEXT,                       -- matches·player_starts: 이 날짜 **이후** 경기부터 센다
+  hold INTEGER NOT NULL DEFAULT 0,  -- 1 = 그 팀 수집 보류 중(CHE·LIV·ATM 2026-10-20~) — G39 기한 검사 제외
+  status TEXT NOT NULL DEFAULT 'open' CHECK(status IN ('open','closed')),
+  resolution TEXT CHECK(resolution IS NULL OR resolution IN ('APPLIED','HELD','REJECTED')),
+  resolution_note TEXT,             -- 판정 근거(실측 수치) — 닫을 때 필수
+  closed TEXT,
+  source TEXT, confidence TEXT,
+  created TEXT NOT NULL DEFAULT (date('now')),
+  CHECK(trigger_kind <> 'date' OR trigger_date IS NOT NULL),
+  CHECK(trigger_kind = 'date' OR (trigger_n IS NOT NULL AND since IS NOT NULL)),
+  CHECK(trigger_kind <> 'player_starts' OR trigger_player_id IS NOT NULL),
+  CHECK(status = 'open' OR (resolution IS NOT NULL AND resolution_note IS NOT NULL AND closed IS NOT NULL))
+);
+CREATE INDEX ix_vic_issue ON video_impl_claims(issue_id);

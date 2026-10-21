@@ -38,3 +38,4 @@ INSERT INTO _migration_log VALUES('2026-10-20','110-card-position-changes','card
 INSERT INTO _migration_log VALUES('2026-10-20','111-match-tactical-structured','match_reports 전술 3단·강점/취약/교란·구현 결론·재검증 + match_tactical_changes + match_player_prescriptions.fit_delta/alt_role — 전술 분석 4칸 시각화(사용자 지시 2026-10-20) · 기존 산문은 원문 유지');
 INSERT INTO _migration_log VALUES('2026-10-20','112-claims-korean','video_impl_claims.field_kr·value_kr — 지시·운용/재현 한계/팀 설정 축 한국어 표기(사용자 지적 2026-10-20) · 144행 백필');
 INSERT INTO _migration_log VALUES('2026-10-20','113-claims-headline','video_impl_claims.headline_kr·points_kr — 40자 초과 자유 문구 주장 24행 백필 · 화면은 헤드라인 굵게 + 요점 목록 + 전문 툴팁 · write_video_summary·G17이 40자 초과 시 필수로 막음');
+INSERT INTO _migration_log VALUES('2026-10-21','114-claim-issues','claim_issues 신설 + video_impl_claims.issue_id — PENDING을 판정 조건별 쟁점으로 묶고 트리거(팀 공식전 N·선수 선발 N·날짜)로 기한을 둔다 · core/claim_issues.py 판정 정본 · scripts/claim_issues.py --due/--close · G39');

@@ -18,7 +18,7 @@
        "key_points": ["...", "..."],
        "impl_claims": [
          {"axis": "role", "player": "만잠비", "role_id": "cm_playmaker", "focus": "Roaming",
-          "quote": "원문 「…」(한국어 번역)", "verdict": "PENDING",
+          "quote": "원문 「…」(한국어 번역)", "verdict": "PENDING", "issue_id": 3,   # ⭐ PENDING은 쟁점 필수(migration 114)
           "verdict_note": "실측 무결정 Δ0.004 — docs/30 7단계 ⑵ tie-break 대상"},
          {"axis": "team_axis", "team_code": "CHE", "field": "build_up_style", "value": "Counter",
           "field_kr": "빌드업 스타일", "value_kr": "역습",
@@ -52,6 +52,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import DB                                     # noqa: E402
 from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 from core.claims import problems as claim_problems  # noqa: E402  ⭐ 헤드라인·요점 규칙 정본(migration 113)
+from core.claim_issues import insert_issue  # noqa: E402  ⭐ 판정 쟁점(migration 114)
 
 TAIL = ("[요약 {d}] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). "
         "⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). "
@@ -105,15 +106,27 @@ def insert_claims(con, vid, claims, pulled, force=False):
         pid = c.get("player_id")
         if pid is None and c.get("player"):
             pid = resolve_player(con, c["player"])
+        # ⭐ PENDING은 판정 쟁점에 묶어야 들어간다(2026-10-21 · migration 114 · G39) — 산문 조건만 두면 아무도 닫지 않는다.
+        #    기존 쟁점이면 "issue_id", 새 쟁점이면 "issue": {spec}(core.claim_issues.insert_issue 키).
+        iid = c.get("issue_id")
+        if verdict == "PENDING" and iid is None:
+            if not c.get("issue"):
+                raise SystemExit(f"⛔ {vid}: PENDING 주장은 issue_id(기존 쟁점) 또는 issue(새 쟁점 spec)가 필수다 — "
+                                 "python3 scripts/claim_issues.py로 열린 쟁점을 먼저 본다")
+            iid = insert_issue(con, c["issue"], f"scripts/write_video_summary.py, {pulled}")
+        elif iid is not None and not con.execute(
+                "SELECT 1 FROM claim_issues WHERE id=? AND status='open'", (iid,)).fetchone():
+            raise SystemExit(f"⛔ {vid}: 쟁점 #{iid}이 없거나 이미 닫혔다")
         con.execute("""INSERT INTO video_impl_claims
                        (video_id, axis, player_id, team_code, role_id, focus, field, value, field_kr, value_kr, headline_kr, points_kr,
-                        quote, verdict, verdict_note, source, confidence)
-                       VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                        quote, verdict, verdict_note, source, confidence, issue_id)
+                       VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                     (vid, axis, pid, c.get("team_code"), c.get("role_id"), c.get("focus"),
                      c.get("field"), c.get("value"), c.get("field_kr"), c.get("value_kr"), c.get("headline_kr"),
                      json.dumps(c["points_kr"], ensure_ascii=False) if c.get("points_kr") else None, c.get("quote"), verdict, c.get("verdict_note"),
                      c.get("source") or f"전사 원문 읽기 · scripts/write_video_summary.py, {pulled}",
-                     c.get("confidence") or "auto-caption 전사 기반 — 인물명·수치는 실측 교차검증 필요"))
+                     c.get("confidence") or "auto-caption 전사 기반 — 인물명·수치는 실측 교차검증 필요",
+                     iid if verdict == "PENDING" else None))
     return len(claims)
 
 

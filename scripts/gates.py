@@ -1022,6 +1022,36 @@ def run(db_path=None, verbose=True):
     if not ok17:
         fails.append("G17")
 
+    # G39 — 판정 대기(PENDING) 주장이 **닫히는 구조**에 있는지. 2026-10-21 신설(migration 114 · 사용자 「판정대기는 언제
+    #       판정완료되는거야?」 → 「이 구조를 만들자」). PENDING 165건의 판정 조건이 산문에만 있어 아무도 닫지 않았다.
+    #       ① PENDING은 쟁점에 묶여 있어야 한다 ② 쟁점이 닫혔는데 PENDING으로 남은 주장은 모순 ③ 열린 쟁점에 대기 주장이
+    #       하나도 없으면 빈 쟁점 ④ ⛔ 트리거가 찬 뒤 7일(core.claim_issues.GRACE_DAYS)이 지나도 열려 있으면 기한 초과.
+    #       트리거 판정 정본은 core/claim_issues.py(보류 팀 쟁점은 ④ 제외).
+    from core.claim_issues import overdue as _ci_overdue, progress as _ci_progress
+    g39_unlinked = [r[0] for r in con.execute(
+        "SELECT id FROM video_impl_claims WHERE verdict='PENDING' AND issue_id IS NULL")]
+    g39_closed_pending = [r[0] for r in con.execute(
+        """SELECT c.id FROM video_impl_claims c JOIN claim_issues i ON i.id=c.issue_id
+           WHERE c.verdict='PENDING' AND i.status='closed'""")]
+    g39_empty = [r[0] for r in con.execute(
+        """SELECT i.id FROM claim_issues i WHERE i.status='open' AND NOT EXISTS(
+             SELECT 1 FROM video_impl_claims c WHERE c.issue_id=i.id AND c.verdict='PENDING')""")]
+    _ci_prev_rf = con.row_factory
+    con.row_factory = sqlite3.Row
+    _ci_open = con.execute("SELECT * FROM claim_issues WHERE status='open'").fetchall()
+    g39_overdue = [r["id"] for r in _ci_open if _ci_overdue(con, r)]
+    g39_due = [r["id"] for r in _ci_open if _ci_progress(con, r)["due"]]
+    con.row_factory = _ci_prev_rf
+    ok39 = not (g39_unlinked or g39_closed_pending or g39_empty or g39_overdue)
+    if verbose:
+        print(f"G39 판정 쟁점: 열린 {len(_ci_open)} · 판정할 차례 {len(g39_due)} · 쟁점 없는 PENDING {len(g39_unlinked)} · "
+              f"닫힌 쟁점의 PENDING {len(g39_closed_pending)} · 빈 쟁점 {len(g39_empty)} · 기한 초과 {len(g39_overdue)} "
+              + ("✅" if ok39 else "❌ " + (f"기한 초과 쟁점 {g39_overdue} → python3 scripts/claim_issues.py --due 후 --close · " if g39_overdue else "")
+                 + (f"쟁점 없는 PENDING {g39_unlinked[:8]} → claim_issues.py --attach · " if g39_unlinked else "")
+                 + (f"빈 쟁점 {g39_empty} · " if g39_empty else "") + (f"모순 {g39_closed_pending[:8]}" if g39_closed_pending else "")))
+    if not ok39:
+        fails.append("G39")
+
     # G18 — `measured` 집계가 규칙대로 만들어졌는지. 2026-09-15 신설(할 일 22, obs#772·773).
     #       계기: 헤밍스 #470이 스스로 「포지션-순수(LM) 6경기」라 적고도 `pos_class=LDM` 경기를 포함했다.
     #       ⛔ 여기서 막는 것은 **규칙 위반**이지 오염 여부가 아니다 — 오염이 전부 결함은 아니기 때문이다

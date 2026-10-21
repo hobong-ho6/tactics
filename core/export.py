@@ -600,12 +600,22 @@ def export_all(db_path=None, window="2026-summer"):
     # ⭐ 네 번째 층 — 구현 주장(migration 033, docs/30 8단계). 요약이 「구현의 무엇을 건드리는가」를
     #    정형 행으로 갖는다. 화면은 이걸로 배지를 그린다(자유 서술에서 추출하지 않는다).
     claims_by_vid = {}
+    # ⭐ 판정 쟁점(migration 114) — PENDING 주장마다 「무엇이 차면 판정하나 · 지금 몇/몇」을 함께 싣는다(트리거 정본 core.claim_issues)
+    from core.claim_issues import progress as _ci_progress, trigger_kr as _ci_trigger
+    _rf = con.row_factory
+    con.row_factory = sqlite3.Row
+    issues = {r["id"]: {"id": r["id"], "title": r["title_kr"], "status": r["status"], "hold": bool(r["hold"]),
+                        "trigger": _ci_trigger(con, r), "due": _ci_progress(con, r)["due"],
+                        "resolution": r["resolution"], "closed": r["closed"]}
+              for r in con.execute("SELECT * FROM claim_issues")}
+    con.row_factory = _rf
     for c in _rows(con, """SELECT c.video_id, c.axis, c.role_id, c.focus, c.field, c.value, c.field_kr, c.value_kr, c.headline_kr, c.points_kr,
-                                  c.verdict, c.verdict_note, c.quote, c.team_code,
+                                  c.verdict, c.verdict_note, c.quote, c.team_code, c.issue_id,
                                   COALESCE(p.name_kr, p.name) AS player
                            FROM video_impl_claims c
                            LEFT JOIN players p ON p.id = c.player_id
                            ORDER BY c.axis, c.id"""):
+        c["issue"] = issues.get(c.pop("issue_id"))
         claims_by_vid.setdefault(c.pop("video_id"), []).append(c)
     videos, by_report = [], {}
     for v in _rows(con, """SELECT id, video_id, lang, report_id, team_code, channel, title, published,
@@ -623,7 +633,8 @@ def export_all(db_path=None, window="2026-summer"):
         videos.append(v)
         if v["report_id"]:
             by_report.setdefault(str(v["report_id"]), []).append(v["id"])
-    written.append(_write(SITE_DATA / "videos.json", {"all": videos, "by_report": by_report}))
+    written.append(_write(SITE_DATA / "videos.json", {"all": videos, "by_report": by_report,
+                                                       "issues": sorted(issues.values(), key=lambda i: i["id"])}))
 
     # ── teams/{CODE}.json ────────────────────────────────────────────
     for rg in regimes:
