@@ -190,7 +190,10 @@ def parse_header(path: Path):
             continue
         body = line[2:].strip()
         # {채널} — {제목} ({메타}) / {채널} - {제목}
-        sp = re.split(r"\s+[—–]\s+|\s+-\s+", body, maxsplit=1)
+        # 「—」가 있으면 그것만 구분자다 — 채널명 속 「 - 」(「All Villa No Filler - An Aston Villa Podcast」)에서 먼저 잘리던 것(2026-10-21)
+        sp = re.split(r"\s+—\s+", body, maxsplit=1)
+        if len(sp) == 1:
+            sp = re.split(r"\s+[–]\s+|\s+-\s+", body, maxsplit=1)
         if len(sp) == 1:
             # ⭐ 구분자 없는 줄은 **수집 메모**다(「CHE-ARS 2026-09-06 D+2」) — 종전엔 이걸 채널로 넣어
             #    15편이 「채널=메모 · 제목 없음」으로 인덱스됐다(2026-10-21). 채널은 비워 _meta_backfill 폴백에 맡긴다.
