@@ -1891,6 +1891,28 @@ def run(db_path=None, verbose=True):
     if g38:
         fails.append("G38")
 
+    # G40 — ⛔ **게임 버전은 경기 날짜와 `game_versions`가 정한다.** 2026-10-22 신설(사용자 지적 「FC27용으로 패치도
+    #   분석하고 그랬는데 안 바뀌어 있다니」 — FC27 출시(09-25) 뒤 경기 11건이 FC26으로 적혔고 FC27 역할표가 0행이었다.
+    #   원인은 코드 곳곳의 'FC26' 하드코딩). 정본은 core/game_version.py. 2항:
+    #   ⑴ 버전어긋남  경기 세팅·경기 선수 처방의 game_version ≠ 그 경기 날짜에 살아 있던 버전
+    #   ⑵ 현행결손    현행 버전 행이 0인 버전 축 표(역할·포커스·변형·시즌 정본·전술 파라미터)
+    from core.game_version import live_on as _live_on, current as _cur_gv
+    _gv_now = _cur_gv(con)
+    g40_mis = [f"#{rid}({d} {gv}→{_live_on(con, d)})" for rid, d, gv in con.execute(
+        """SELECT r.id, m.date, x.game_version FROM match_reports r JOIN matches m ON m.id=r.match_id
+           JOIN (SELECT report_id, game_version FROM match_game_setups
+                 UNION SELECT report_id, game_version FROM match_player_prescriptions) x ON x.report_id=r.id""")
+        if _live_on(con, d) and _live_on(con, d) != gv]
+    g40_gap = [t for t in ("game_roles", "game_role_focus", "game_role_variants", "slot_canon_roles", "game_tactic_params")
+               if not con.execute(f"SELECT 1 FROM {t} WHERE game_version=? LIMIT 1", (_gv_now,)).fetchone()]
+    if verbose:
+        print(f"G40 게임 버전 정합(현행 {_gv_now}): 버전어긋남 {len(g40_mis)} · 현행결손 {len(g40_gap)} "
+              + ("✅" if not (g40_mis or g40_gap) else
+                 "❌ core/game_version.live_on(경기일)로 적을 것 · 새 버전이면 migrate_fc27.py 같은 승계를 먼저 — "
+                 + " · ".join(g40_mis[:6] + g40_gap)))
+    if g40_mis or g40_gap:
+        fails.append("G40")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")

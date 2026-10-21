@@ -180,11 +180,56 @@ def apply_roles(con, items, src_note):
     print(f"✅ {GV_NEW} 적재 {got} (역할·포커스·변형) · 그룹 장면표 포함 — 다음: core/kernel.py EXPECTED['{GV_NEW}'] 등록")
     return True
 
+def carry(con, today):
+    """역할표가 같다는 확인(apply_roles) 뒤의 FC27 승계 — 사용자 지시 2026-10-22 「옮겨둬」.
+
+    ① game_tactic_params · slot_canon_roles: FC26 행을 FC27 행으로 **추가**(불변규칙 2 — FC26 행은 그대로).
+       전술 옵션 이름은 fut.gg FC27 커뮤니티 전술 통계(빌드업 3종 · 수비 접근 4종)로 존재를 확인했다 — 설명문은 FC26 판.
+    ② match_game_setups · match_player_prescriptions: 리포트당 한 행 구조라 버전 행을 더할 수 없다.
+       ⇒ **경기 날짜에 살아 있던 버전**(core.game_version.live_on)과 다른 행만 라벨을 정정하고 source에 덧붙여 남긴다.
+       출시 전 경기는 FC26이 맞으므로 건드리지 않는다. 역할·포커스 내용은 FC27 역할표가 FC26과 전항 같아서 그대로 유효하다."""
+    from core.game_version import live_on
+    if not q(con, "SELECT 1 FROM game_role_focus WHERE game_version=? LIMIT 1", GV_NEW):
+        print(f"⛔ {GV_NEW} 역할표가 없다 — 먼저 --roles … --apply"); return False
+    note = f"{today} FC27 승계(migrate_fc27.py --carry): FC27 역할표가 FC26과 전항 일치 확인 뒤 FC26 판을 그대로 옮김"
+    n = {}
+    if not q(con, "SELECT 1 FROM game_tactic_params WHERE game_version=? LIMIT 1", GV_NEW):
+        n["game_tactic_params"] = con.execute(
+            """INSERT INTO game_tactic_params(game_version, param, option, description)
+               SELECT ?, param, option, description FROM game_tactic_params WHERE game_version=?""",
+            (GV_NEW, GV_BASE)).rowcount
+    if not q(con, "SELECT 1 FROM slot_canon_roles WHERE game_version=? LIMIT 1", GV_NEW):
+        n["slot_canon_roles"] = con.execute(
+            """INSERT INTO slot_canon_roles(regime_id, formation, pos, game_version, role_id, focus, rationale,
+                                            source, confidence, updated)
+               SELECT regime_id, formation, pos, ?, role_id, focus, rationale,
+                      COALESCE(source, '') || ' ‖ ' || ?, confidence, ? FROM slot_canon_roles WHERE game_version=?""",
+            (GV_NEW, note, today, GV_BASE)).rowcount
+    fix = []
+    for rid, d, gv in q(con, """SELECT g.report_id, m.date, g.game_version FROM match_game_setups g
+                                JOIN match_reports r ON r.id=g.report_id JOIN matches m ON m.id=r.match_id"""):
+        want = live_on(con, d)
+        if want and want != gv:
+            fix.append((rid, d, gv, want))
+    for rid, d, gv, want in fix:
+        msg = f" ‖ {today} 버전 라벨 정정 {gv}→{want}: 경기일 {d}은 {want} 출시 뒤 — 'FC26' 하드코딩으로 잘못 적혔다(core/game_version.py 신설)"
+        con.execute("UPDATE match_game_setups SET game_version=?, source=source || ? WHERE report_id=?", (want, msg, rid))
+        con.execute("UPDATE match_player_prescriptions SET game_version=?, source=source || ? WHERE report_id=? AND game_version=?",
+                    (want, msg, rid, gv))
+    con.commit()
+    n["match 라벨 정정(리포트)"] = len(fix)
+    print("FC27 승계:", n)
+    for rid, d, gv, want in fix:
+        print(f"   🔁 리포트 #{rid} ({d}) {gv} → {want}")
+    return True
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--roles", help="fut.gg /api/fut/roles/ FC27 응답 JSON 파일")
     ap.add_argument("--check", action="store_true", help="역할 JSON 구조 검증만")
     ap.add_argument("--apply", action="store_true", help="검증 통과 시 FC27 행 적재(사용자 승인 후)")
+    ap.add_argument("--carry", action="store_true", help="역할표 적재 뒤: 전술 파라미터·시즌 정본 FC27 행 추가 + 경기 세팅 버전 라벨 정정")
     ap.add_argument("--src", default="fut.gg /api/fut/roles/", help="적재 행 source에 덧붙일 수집 출처·날짜")
     a = ap.parse_args()
     con = connect_db(DB)
@@ -193,4 +238,7 @@ if __name__ == "__main__":
         items = check_roles(a.roles)
         if a.apply and items and ok:
             apply_roles(con, items, a.src)
+    if a.carry:
+        from datetime import date
+        carry(con, date.today().isoformat())
     sys.exit(0 if ok else 1)

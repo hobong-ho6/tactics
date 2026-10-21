@@ -279,7 +279,9 @@ provenance가 산문에만 있으면 **여러 경기를 가로질러 집계할 �
 ## 4. 집계·적합 갱신
 - 표본이 2경기 이상 쌓인 선수는 `core.aggregate.player_aggregate`(포지션-순수)로
   `prescriptions` kind='measured'(26/27 시즌 행 — 25/26 행을 덮지 않는다, 추가만) 갱신.
-- 적합은 `core.kernel.Kernel('FC26').best_fit_slot()`. 노이즈 구간(Δ≤.05)은 인선 변경 금지.
+- 적합은 `core.kernel.Kernel(core.game_version.live_on(con, 경기일)).best_fit_slot()`. 노이즈 구간(Δ≤.05)은 인선 변경 금지.
+  ⛔ 버전을 `'FC26'`처럼 박지 않는다 — `match_game_setups`·`match_player_prescriptions`의 game_version도 같은 함수 값이다
+  (2026-10-22: FC27 출시 뒤 경기 11건이 FC26으로 적혀 G40 신설 · `core/game_version.py`).
 - 경기별 판정을 직전 완료 리포트와 비교해 `유지/변화`를 적는다. 같은 변화가 누적되면 observation으로
   승격하고, 실제 처방 변경은 표본·서사·커널 적합이 함께 지지할 때만 한다.
 

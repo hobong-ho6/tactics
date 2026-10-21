@@ -18,7 +18,8 @@ def state(con: sqlite3.Connection) -> dict:
     out = {}
     have = {r[0] for r in con.execute("SELECT name FROM sqlite_master WHERE type='table'")}
     if "slot_canon_roles" in have:
-        for r in con.execute("SELECT regime_id, formation, pos, role_id, focus FROM slot_canon_roles"):
+        # ⭐ 버전 행이 여럿이면 새 버전이 이긴다(FC26 < FC27 · 2026-10-22 FC27 승계) — 같은 칸 키가 순서에 따라 갈리지 않게
+        for r in con.execute("SELECT regime_id, formation, pos, role_id, focus FROM slot_canon_roles ORDER BY game_version"):
             out[("slot_canon", r[0], f"{r[1]}|{r[2]}")] = f"{r[3]}/{r[4]}"
     if "team_tactic_setups" in have:
         for r in con.execute("SELECT regime_id, season, kind, formation, build_up_style, defensive_approach, line_height "

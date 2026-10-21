@@ -5681,7 +5681,53 @@
    "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
   }
  ],
- "tactic_params": [],
+ "tactic_params": [
+  {
+   "description": "Mix of forward runs and coming short; steady transition into the in-possession shape.",
+   "option": "Balanced",
+   "param": "build_up_style"
+  },
+  {
+   "description": "Players run in behind as the team transitions quickly from defence to attack.",
+   "option": "Counter",
+   "param": "build_up_style"
+  },
+  {
+   "description": "Players come short to support the carrier instead of running forward; slow transition, keeps defensive shape longest.",
+   "option": "Short Passing",
+   "param": "build_up_style"
+  },
+  {
+   "description": "Highest-risk: high line + immediate counter-press after losing the ball, offside traps.",
+   "option": "Aggressive",
+   "param": "defensive_approach"
+  },
+  {
+   "description": "Flexible depth; adjusts line and run-tracking situationally.",
+   "option": "Balanced",
+   "param": "defensive_approach"
+  },
+  {
+   "description": "Safety-first; defensive line drops deep, tracks opposition runs.",
+   "option": "Deep",
+   "param": "defensive_approach"
+  },
+  {
+   "description": "High line with situational pressure; does not track runs closely (offside-trap risk).",
+   "option": "High",
+   "param": "defensive_approach"
+  },
+  {
+   "description": "0-100 slider; selectable range is constrained by the chosen defensive_approach.",
+   "option": "numeric",
+   "param": "line_height"
+  },
+  {
+   "description": "Shareable code encoding formation + build-up + defensive approach + line height + 11 roles/focuses.",
+   "option": "string",
+   "param": "tactic_code"
+  }
+ ],
  "variants": [
   {
    "focus": "Attack",

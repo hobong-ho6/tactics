@@ -19,6 +19,7 @@ from . import DB, ROOT
 from .chem import CHEM
 from . import position_ovr as POVR
 from . import gallery as GAL
+from .game_version import current as current_gv
 from .whoscored import PHASE_METRICS, PHASE_GROUPS
 from core.db import connect as connect_db
 
@@ -537,7 +538,8 @@ def export_all(db_path=None, window="2026-summer"):
                                                             AND s.last_seen=(SELECT MAX(last_seen) FROM futgg_chem_signals t
                                                                               WHERE t.ea_item_id=s.ea_item_id)"""),
                            "canon_roles": _rows(con, """SELECT pos, role_id, focus, game_version FROM slot_canon_roles
-                                                       WHERE regime_id=1 AND formation='4-2-3-1 Wide'"""),
+                                                       WHERE regime_id=1 AND formation='4-2-3-1 Wide' AND game_version=?""",
+                                                (current_gv(con),)),
                            # ⭐ 케미 기준선은 `core/chem.py`가 정본이다 — 화면이 같은 표를 다시 적지 않게 내보낸다.
                            "chem_tiers": CHEM,
                            # ⭐⭐ 레어도 판 자산(migration 084) — 진화 카드의 완성 이미지는 어디에도 없어서
@@ -648,7 +650,8 @@ def export_all(db_path=None, window="2026-summer"):
                                      c.rationale, c.source, c.confidence, c.updated
                               FROM slot_canon_roles c JOIN slots s
                                 ON s.regime_id=c.regime_id AND s.formation=c.formation AND s.pos=c.pos
-                              WHERE c.regime_id=? ORDER BY c.formation, s.sort_order""", (rid,))
+                              WHERE c.regime_id=? AND c.game_version=? ORDER BY c.formation, s.sort_order""",
+                      (rid, current_gv(con)))   # ⭐ 현행 버전만(core/game_version) — 버전 행이 둘이면 칸이 겹친다
         # name_kr = 다른 맵(form·season_stats·fbref…)의 키. label은 표시용이라 접미·별칭이 붙어 다를 수 있다.
         squad = _rows(con, """SELECT s.player_id, COALESCE(s.label, p.name_kr, p.name) label,
                                      p.name name_en, COALESCE(p.name_kr, p.name) name_kr,
