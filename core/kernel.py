@@ -36,7 +36,7 @@ class Kernel:
     """게임 버전 하나의 커널 라이브러리. 로드 시 정합성 assert."""
 
     # FC26 정합 기대값 — 버전 추가 시 여기 확장 (docs/20 게이트 표와 동기)
-    EXPECTED = {"FC26": (37, 85, 217)}
+    EXPECTED = {"FC26": (37, 85, 217), "FC27": (37, 85, 217)}  # FC27: 2026-10-22 fut.gg 응답이 FC26과 전항 일치(migrate_fc27.py --apply)
 
     def __init__(self, game_version="FC26", db_path=None):
         self.gv = game_version
