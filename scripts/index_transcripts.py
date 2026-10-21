@@ -125,6 +125,31 @@ OPPONENT_HINTS = {
     # 약어(리포트 제목에서 쓰는 3글자 코드)
     " ars": "Arsenal", " nffc": "Nottingham", " avl": None, " che": "Chelsea", " liv": "Liverpool",
 }
+# ⭐ 팀 미지정 채널(PL 전반 분석·중립 방송·상대팀 팬)의 **제목 단서 → 팀**(2026-10-21 사용자 승인 — 제목에 Villa·Emery가 있는데
+#    team_code가 빈 영상 46편이 빌라 영상 목록에서 빠졌다). ⛔ 관리 4팀 중 **한 팀만** 걸릴 때만 붙인다 —
+#    「Liverpool vs Aston Villa」처럼 둘이 걸리면 어느 팀 영상인지 모르니 비워 둔다. 「villa」는 Villarreal과 겹치지 않게 단어 경계.
+TEAM_HINTS = {
+    "AVL": r"\baston villa\b|\bvilla\b|\bemery\b|아스톤 빌라|빌라|에메리|ヴィラ|エメリ",
+    "CHE": r"\bchelsea\b|\balonso\b|첼시|알론소",
+    "LIV": r"\bliverpool\b|\biraola\b|리버풀|이라올라",
+    "ATM": r"\batl[eé]tico\b|\batleti\b|\bsimeone\b|아틀레티코|시메오네",
+}
+
+
+# 「Barcola VS Atletico」처럼 vs·against 바로 뒤에만 나오는 팀은 **상대**다(그 영상은 다른 쪽 팀 이야기)
+VS_BEFORE = r"(\bvs?\.?|\bversus|\bagainst|\bcontra)\s+$"
+
+
+def guess_team(title):
+    t = title or ""
+    hits = {team: [m.start() for m in re.finditer(pat, t, re.I)] for team, pat in TEAM_HINTS.items()}
+    hits = {team: pos for team, pos in hits.items() if pos}
+    if len(hits) != 1:
+        return None
+    (team, pos), = hits.items()
+    return None if all(re.search(VS_BEFORE, t[:i], re.I) for i in pos) else team
+
+
 # ⭐⭐ 「감독회견」은 **명시어 또는 감독이 화자인 제목**일 때만(2026-10-20 사용자 지적 — 뉴캐슬전 「감독 회견 7편」이 전부 팬 반응 영상).
 #    ⛔ 종전엔 이 패턴에 `reaction`·`경기 후`·`post-match`가 있어 「Match Reaction」이 아래 경기반응보다 먼저 잡혔다.
 #    「Press Conference Reaction」(팬이 회견에 반응)은 회견이 아니다.
@@ -240,6 +265,7 @@ def main():
     backfill = (json.loads(META_BACKFILL.read_text(encoding="utf-8"))
                 if META_BACKFILL.exists() else {})
     rows, no_meta, unlinked, backfilled = [], [], 0, 0
+    chan_team = {}   # 채널이 못 박은 팀(없으면 None) — 저장된 경기 귀속으로 팀을 정할 때 채널 고정값을 덮지 않으려고
     for path in sorted(TX.glob("*.md")):
         parts = path.name.split(".")
         vid, lang = parts[0], (parts[1] if len(parts) > 2 else None)
@@ -256,6 +282,7 @@ def main():
                 no_meta.append(path.name)
                 continue
         team, _ = CHANNEL_TEAM.get((h["channel"] or "").strip(), (None, None))   # ⚠️ 채널명 끝 공백(「Justin Talks Villa 」)
+        chan_team[vid] = team
         kind = resolve_kind(h['title'], h['note'], h['channel'])   # 회견 판정은 제목만 · 정본 resolve_kind
         blob = f"{h['title'] or ''} {h['note']}".lower()
 
@@ -278,6 +305,7 @@ def main():
                 team = team or cand[0]["team_code"]
         if report_id is None:
             unlinked += 1
+        team = team or guess_team(h["title"])   # 채널·경기 귀속으로 못 정한 것만 — 채널 고정값을 덮지 않는다
 
         rel = str(path.relative_to(ROOT))
         refs = sorted(o["id"] for o in obs_src if f"{vid}." in o["source"])
@@ -324,6 +352,14 @@ def main():
                 if r["report_id"] != ex["report_id"]:
                     conflicts.append((r["video_id"], ex["report_id"], r["report_id"]))
                 r = {**r, "report_id": ex["report_id"]}
+                # ⭐ 팀은 **저장된** 경기 귀속을 따른다(2026-10-21) — 종전엔 추정 귀속에서만 팀을 따와
+                #    사람이 붙인 경기 귀속이 있는 영상 약 90편의 team_code가 비거나 추정 경기 쪽 팀으로 갈렸다.
+                if chan_team.get(r["video_id"]) is None:
+                    rt = cur.execute("""SELECT r.team_code, g.id FROM match_reports r
+                                        LEFT JOIN regimes g ON g.team_code=r.team_code AND g.end IS NULL
+                                        WHERE r.id=?""", (ex["report_id"],)).fetchone()
+                    if rt:
+                        r = {**r, "team_code": rt[0], "regime_id": rt[1]}
             cur.execute(f"UPDATE match_videos SET {', '.join(f'{c}=:{c}' for c in cols)} WHERE id=:_id",
                         {**r, "_id": ex["id"]})
             upd += 1

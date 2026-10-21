@@ -11,7 +11,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from index_transcripts import guess_kind, resolve_kind  # noqa: E402
+from index_transcripts import guess_kind, guess_team, resolve_kind  # noqa: E402
 
 CASES = [  # (제목, 채널, 기대)
     ("Toothless Performance | Newcastle United 0-1 Aston Villa | Match Reaction", "GallowgateShots - NUFC", "경기반응"),
@@ -50,7 +50,19 @@ CASES_R = [
 ]
 bad = [(t, c, e, guess_kind(t, channel=c)) for t, c, e in CASES if guess_kind(t, channel=c) != e]
 bad += [(t, c, e, resolve_kind(t, None, c)) for t, c, e in CASES_R if resolve_kind(t, None, c) != e]
-CASES = CASES + CASES_R
+# 제목 단서 → 팀(2026-10-21 · 팀 미지정 채널의 빌라 영상 46편이 팀 없이 빠졌던 것)
+CASES_T = [
+    ("How Aston Villa Made £300M & Got Better.", "AVL"),
+    ("How Unai Emery Nearly Stopped Arsenal", "AVL"),
+    ("Villarreal 2-1 Sevilla | Match Reaction", None),          # Villarreal ≠ Villa
+    ("Liverpool vs Aston Villa: Tactical Preview", None),       # 관리 팀 둘 → 비운다
+    ("Why Jaissle Is Getting Newcastle's Tactics WRONG", None),
+    ("Nobody Realises Just How Good Wirtz & Barcola were Vs Atletico Madrid…", None),   # vs 뒤 = 상대
+    ("Unai Emery REACTS after Aston Villa end winless run with victory against Spurs", "AVL"),
+    ("🚨 SIMEONE EXPLOTA TRAS CAER EN ANFIELD", "ATM"),
+]
+bad += [(t, "-", e, guess_team(t)) for t, e in CASES_T if guess_team(t) != e]
+CASES = CASES + CASES_R + CASES_T
 for t, c, e, got in bad:
     print(f"❌ {t[:60]} ({c}) — 기대 {e} · 실제 {got}")
 print(f"{'✅' if not bad else '⛔'} 영상 종류 판정 {len(CASES) - len(bad)}/{len(CASES)}")
