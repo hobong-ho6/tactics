@@ -180,6 +180,7 @@ def main():
                              ea_evo_history=?, ea_evo_active=? WHERE id=last_insert_rowid()""",
                         (b(r.get("unt")), b(r.get("act")), b(r.get("cap")), r.get("kit"), r.get("own"),
                          b(r.get("loan")), r.get("loan_n"), *evo_json(r)))
+            tl_update(con, r, "last_insert_rowid()")
             continue
         # ⭐⭐ **EA 목록에 있으면 「보유」다 — 처분 표시를 되돌린다**(2026-09-25 신설).
         #    ⛔ 종전엔 status를 **한 방향으로만** 바꿨다: 「EA에 없으면 sold」는 있는데 그 반대가 없었다.
@@ -247,6 +248,7 @@ def main():
                          ea_evo_history=?, ea_evo_active=? WHERE id=?""",
                     (b(r.get("unt")), b(r.get("act")), b(r.get("cap")), r.get("kit"), r.get("own"),
                      b(r.get("loan")), r.get("loan_n"), *evo_json(r), cur["id"]))
+        tl_update(con, r, cur["id"])
         # ② 경기 기록 — 누적값이라 **회차 스냅샷**으로 쌓는다(같은 날 재실행이면 덮어쓴다).
         st = r.get("st") or {}
         if any(v is not None for v in st.values()):
