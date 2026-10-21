@@ -376,7 +376,7 @@ import re as _re
 # prescriptions.kind 허용 어휘. pos_class(obs#527)와 같은 병(자유 어휘 60종)을 구조로 고정한다 —
 # 기존 값을 바꾸지 않고 **형태**만 묶는다. 새 접두를 만들려면 여기와 docs/00을 함께 고친다.
 KIND_RE = _re.compile(
-    r"^(fc26:opt:[A-Z]{2,3}(-deprecated)?"
+    r"^((fc26:)?opt:[A-Z]{2,3}(-deprecated)?"
     r"|measured(:[A-Za-z0-9/_-]+)*(@(dom|tight))?"
     r"|optimal(:[A-Za-z0-9/_-]+)?(-deprecated)?"
     r"|role(:[A-Za-z0-9/_-]+)?"
@@ -395,20 +395,20 @@ def g8_prescription_checks(con):
                          if not KIND_RE.match(k)]
     out["opt_pos_orphan"] = con.execute("""
         SELECT p.id, p.regime_id, p.pos_label FROM prescriptions p
-        WHERE p.kind LIKE 'fc26:opt:%' AND p.kind NOT LIKE '%-deprecated'
+        WHERE (p.kind LIKE 'opt:%' OR p.kind LIKE 'fc26:opt:%') AND p.kind NOT LIKE '%-deprecated'
           AND NOT EXISTS (SELECT 1 FROM slots s WHERE s.regime_id=p.regime_id AND s.pos=p.pos_label)
         """).fetchall()
     out["opt_role_group"] = con.execute("""
         SELECT p.id, p.regime_id, p.pos_label, p.role_id FROM prescriptions p
         JOIN game_roles gr ON gr.role_id=p.role_id AND gr.game_version=COALESCE(p.game_version,'FC26')
-        WHERE p.kind LIKE 'fc26:opt:%' AND p.kind NOT LIKE '%-deprecated'
+        WHERE (p.kind LIKE 'opt:%' OR p.kind LIKE 'fc26:opt:%') AND p.kind NOT LIKE '%-deprecated'
           AND NOT EXISTS (SELECT 1 FROM slots s WHERE s.regime_id=p.regime_id AND s.pos=p.pos_label
                             AND s.slot_type=gr.position_type)""").fetchall()
     # 선발은 체제·버전당 정확히 11명이고, 11명의 pos가 **한 포메이션**의 슬롯에 전부 들어가야 한다.
     for rid, gv in con.execute("""SELECT DISTINCT regime_id, COALESCE(game_version,'FC26')
-                                  FROM prescriptions WHERE kind LIKE 'fc26:opt:%' AND starter=1"""):
+                                  FROM prescriptions WHERE (kind LIKE 'opt:%' OR kind LIKE 'fc26:opt:%') AND starter=1"""):
         poss = [r[0] for r in con.execute("""SELECT pos_label FROM prescriptions
-            WHERE regime_id=? AND COALESCE(game_version,'FC26')=? AND kind LIKE 'fc26:opt:%'
+            WHERE regime_id=? AND COALESCE(game_version,'FC26')=? AND (kind LIKE 'opt:%' OR kind LIKE 'fc26:opt:%')
               AND kind NOT LIKE '%-deprecated' AND starter=1""", (rid, gv))]
         fits = [f for (f,) in con.execute("SELECT DISTINCT formation FROM slots WHERE regime_id=?", (rid,))
                 if set(poss) <= {p for (p,) in con.execute(
@@ -729,7 +729,7 @@ def run(db_path=None, verbose=True):
     departed_starters = con.execute("""
         SELECT pr.regime_id,pr.pos_label,pr.player_id
         FROM prescriptions pr JOIN regimes r ON r.id=pr.regime_id
-        WHERE pr.kind LIKE 'fc26:opt:%' AND pr.starter=1
+        WHERE (pr.kind LIKE 'opt:%' OR pr.kind LIKE 'fc26:opt:%') AND pr.starter=1
           AND EXISTS (
             SELECT 1 FROM transfer_outgoing o
             WHERE o.team_code=r.team_code AND o.player_id=pr.player_id
@@ -1077,7 +1077,9 @@ def run(db_path=None, verbose=True):
     # ⛔ `player_aggregate`는 모듈 최상단에서 이미 임포트돼 있다(G4가 쓴다) — 지역 임포트로 가리지 말 것.
     rows18 = [dict(zip(("id", "player_id", "pos_label", "map25", "rationale"), x)) for x in con.execute(
         "SELECT id, player_id, pos_label, map25, rationale FROM prescriptions "
-        "WHERE kind='measured' AND map25 IS NOT NULL AND season='2026-27'").fetchall()]
+        "WHERE kind='measured' AND map25 IS NOT NULL AND season='2026-27' "
+        "AND game_version=(SELECT code FROM game_versions WHERE released<=date('now') ORDER BY released DESC LIMIT 1)"
+        ).fetchall()]   # ⭐ 현행 버전 행만(2026-10-22 FC27 승계 · 옛 버전 행은 갱신되지 않는다)
     for r18 in rows18:
         adj = "[표본판정" in (r18["rationale"] or "")
         allow = G18_OK.get((r18["pos_label"] or "").strip())
@@ -1903,7 +1905,8 @@ def run(db_path=None, verbose=True):
            JOIN (SELECT report_id, game_version FROM match_game_setups
                  UNION SELECT report_id, game_version FROM match_player_prescriptions) x ON x.report_id=r.id""")
         if _live_on(con, d) and _live_on(con, d) != gv]
-    g40_gap = [t for t in ("game_roles", "game_role_focus", "game_role_variants", "slot_canon_roles", "game_tactic_params")
+    g40_gap = [t for t in ("game_roles", "game_role_focus", "game_role_variants", "slot_canon_roles", "game_tactic_params",
+                           "prescriptions", "reproduction_limits", "team_tactic_setups")
                if not con.execute(f"SELECT 1 FROM {t} WHERE game_version=? LIMIT 1", (_gv_now,)).fetchone()]
     if verbose:
         print(f"G40 게임 버전 정합(현행 {_gv_now}): 버전어긋남 {len(g40_mis)} · 현행결손 {len(g40_gap)} "

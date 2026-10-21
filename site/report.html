@@ -11,7 +11,7 @@
 <div id="hdr"></div>
 <h1 id="title"></h1>
 <div id="asof" class="kv" style="margin:-6px 0 10px;font-size:13px"></div>
-<div class="panel"><h2>⭐ FC26 설정 시트 — 게임에 그대로 입력</h2>
+<div class="panel"><h2>⭐ 게임 설정 시트(현행 버전) — 게임에 그대로 입력</h2>
   <div id="teamset" class="kv"></div><div id="pitch2"></div><table id="sheet"></table></div>
 <div class="panel"><h2>전술 정본 — 인선 무관 <small class="dim">slot_canon_roles — 감독이 요구하는
   슬롯 임무의 게임 번역. 위 설정 시트(인선 프리셋)가 이와 다르면 편차다</small></h2>
@@ -54,7 +54,7 @@ document.getElementById('teamset').innerHTML = (su ? `<b>${su.formation??''}</b>
 const canonSlots = canonSlotsOf(td);
 const order = canonSlots.map(s2=>s2.pos);
 const geo = Object.fromEntries(canonSlots.map(s2=>[s2.pos,s2]));
-const rx = td.prescriptions.filter(p=>p.kind.startsWith('fc26:opt:'));
+const rx = td.prescriptions.filter(p=>/^(fc26:)?opt:/.test(p.kind));
 const all = order.flatMap(pos => slotCandidates(td, pos, { includeTransfers: false }).map(q => {
   const saved = rx.find(p => p.player_id===q.player_id && p.pos_label===pos);
   return {
@@ -108,7 +108,7 @@ function drawSheet(){
      const dev = p && cn && (cn.role_id!==p.role_id || cn.focus!==p.focus)
        ? `<br><small class="dim">⚠ 정본은 <b>${roleLabel(cn.role_id, cn.focus)}</b></small>` : '';
      return `<tr>${bandCell(pos)}<td><b>${pos}</b></td><td>${sel}</td><td>${p?roleLabel(p.role_id):'—'}${dev}</td><td>${p?focusLabel(p.focus):'—'}</td>${fidCell(p)}</tr>`;
-   }).join('') : '<tr><td colspan="6" class="dim">게임 처방(fc26:opt) 미기록</td></tr>');
+   }).join('') : '<tr><td colspan="6" class="dim">게임 처방(opt) 미기록</td></tr>');
   document.querySelectorAll('#sheet select').forEach(el=>el.addEventListener('change',()=>{
     chosen[el.dataset.pos]=+el.value; drawSheet(); drawCanon();   // 정본 표의 「현재 프리셋」도 같이 갱신
   }));

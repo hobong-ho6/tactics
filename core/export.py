@@ -100,8 +100,9 @@ def export_all(db_path=None, window="2026-summer"):
                                FROM prescriptions p JOIN players pl ON pl.id=p.player_id
                                LEFT JOIN regimes r ON r.id=p.regime_id
                                WHERE p.kind LIKE 'measured%' AND p.fit_sim IS NOT NULL AND p.map25 IS NOT NULL
+                                 AND p.game_version=?
                                  AND p.role_id IN (SELECT role_id FROM game_role_focus WHERE game_version=?))
-                             WHERE rn_p=1 ORDER BY role_id, focus, fit_sim DESC""", (gv,))
+                             WHERE rn_p=1 ORDER BY role_id, focus, fit_sim DESC""", (gv, gv))
         real_top = []
         for r in real:
             if sum(1 for x in real_top if x["role_id"] == r["role_id"] and x["focus"] == r["focus"]) < 3:
@@ -592,7 +593,8 @@ def export_all(db_path=None, window="2026-summer"):
                                                                      t.build_up_style, t.defensive_approach, t.line_height
                                                                 FROM fut_planned_squads q LEFT JOIN team_tactic_setups t
                                                                   ON t.regime_id=q.regime_id AND t.kind=q.setup_kind
-                                                               ORDER BY q.id""")],
+                                                                 AND t.game_version=?
+                                                               ORDER BY q.id""", (current_gv(con),))],
                            "formations": formations}))
 
     # ── videos.json — 영상 1편 = 항목 1개 (2026-09-15 신설, 사용자 지시) ──
@@ -645,7 +647,7 @@ def export_all(db_path=None, window="2026-summer"):
         #    ⛔ 정렬로 정본을 흉내 내지 않는다. 표시가 정본이고, 화면은 `data.js`의 `canonSlots()`만 부른다.
         slots = _rows(con, """SELECT formation, pos, slot_type, x, y, sort_order, is_canon
                               FROM slots WHERE regime_id=? ORDER BY is_canon DESC, formation, sort_order""", (rid,))
-        # 슬롯별 전술 정본(인선 무관) — migrations/008. 프리셋(fc26:opt:*)과 다르면 편차로 읽는다.
+        # 슬롯별 전술 정본(인선 무관) — migrations/008. 프리셋(opt:* · 옛 이름 fc26:opt:*)과 다르면 편차로 읽는다.
         canon = _rows(con, """SELECT c.formation, c.pos, c.game_version, c.role_id, c.focus,
                                      c.rationale, c.source, c.confidence, c.updated
                               FROM slot_canon_roles c JOIN slots s
@@ -669,7 +671,8 @@ def export_all(db_path=None, window="2026-summer"):
                    pr.kind, pr.pos_label, pr.x, pr.y, pr.role_id, pr.focus, pr.map25, pr.starter,
                    pr.fit_sim, pr.sample_n, pr.avg_rating, pr.rationale, pr.grid_club
             FROM prescriptions pr JOIN players p ON p.id=pr.player_id
-            WHERE pr.regime_id=? ORDER BY pr.player_id, pr.kind""", (rid,))
+            WHERE pr.regime_id=? AND pr.game_version=? ORDER BY pr.player_id, pr.kind""", (rid, current_gv(con)))
+        # ⭐ 현행 버전 처방만 내보낸다(2026-10-22) — 버전 행이 둘이면 선발이 22명으로 겹친다
         # 모든 화면이 공유하는 슬롯 후보 정본. squad/transfer를 페이지별로 다시 합치지 않는다.
         # v_slot_candidates가 (regime, formation, pos, player_id) 중복 제거와 승격 우선순위를 보장한다.
         # shirt_number는 player_shirt_numbers를 LEFT JOIN해 붙인다 — v_slot_candidates(뷰)를
@@ -720,7 +723,7 @@ def export_all(db_path=None, window="2026-summer"):
         setups = _rows(con, """SELECT season, game_version, kind, formation, build_up_style,
                                       defensive_approach, line_height, tactic_code, rationale, confidence
                                FROM team_tactic_setups WHERE regime_id=?
-                               ORDER BY season, kind""", (rid,))
+                               ORDER BY season, kind, game_version""", (rid,))   # ⭐ 같은 kind면 새 버전이 뒤(화면이 마지막을 쓴다)
         # 재현 불가 항목(reproduction_limits, migration 027) — 공통(regime_id NULL) + 이 체제. 화면은
         # 설정 시트 옆에 「재현 불가 N건」으로 센다 — 설정값을 읽을 때 기대치를 맞추기 위해서다(점검 7번).
         # 인게임 커널 신뢰도(v_kernel_fidelity, migration 029) — 처방 화면이 역할/포커스 옆에 「게임검증 cos·n」을 붙인다.

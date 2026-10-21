@@ -22,3 +22,14 @@ def live_on(con, on):
 def current(con):
     """오늘 기준 현행 버전."""
     return live_on(con, _date.today().isoformat())
+
+
+# ⭐ 게임 처방(선발 프리셋) 종류 이름 — 2026-10-22부터 버전을 이름에 넣지 않는다(`opt:<칸>`).
+#    `fc26:opt:<칸>`은 FC26 판 옛 이름이다(행은 보존 · 불변규칙 2). 버전은 game_version 칸이 정한다.
+OPT_PREFIX = "opt:"
+LEGACY_OPT_PREFIX = "fc26:opt:"
+
+
+def opt_sql(col="kind"):
+    """게임 처방 행을 고르는 SQL 조각(새 이름 · 옛 이름 모두)."""
+    return f"({col} LIKE '{OPT_PREFIX}%' OR {col} LIKE '{LEGACY_OPT_PREFIX}%')"
