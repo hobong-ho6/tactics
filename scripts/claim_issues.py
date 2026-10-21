@@ -11,6 +11,8 @@
     python3 scripts/claim_issues.py --attach ISSUE CLAIM_ID…      # 새 PENDING 주장을 기존 쟁점에 묶는다
     python3 scripts/claim_issues.py --close ISSUE --verdict HELD --note "실측 근거…"
         → 쟁점을 닫고 묶인 PENDING 주장의 verdict를 한 번에 바꾼다(verdict_note에 판정 이력을 **덧붙인다**)
+    python3 scripts/claim_issues.py --extend ISSUE --since 2026-10-21 --n 3 --note "실측이 아직 결정적이지 않은 이유·수치"
+        → 트리거를 다시 건다(이력은 source에 덧붙인다 — 같은 쟁점을 무한 연장하지 말 것: 2회째면 HELD로 닫고 재판정 조건을 적는다)
 ⛔ 판정(--close)은 사람이 실측을 보고 내린다 — 이 스크립트는 판정을 만들지 않는다.
 """
 import argparse
@@ -66,6 +68,9 @@ def main():
     ap.add_argument("--close", type=int)
     ap.add_argument("--verdict", choices=("APPLIED", "HELD", "REJECTED"))
     ap.add_argument("--note")
+    ap.add_argument("--extend", type=int, help="실측이 아직 부족한 쟁점의 트리거를 다시 건다(--since·--n · 이력은 source에 덧붙인다)")
+    ap.add_argument("--since")
+    ap.add_argument("--n", type=int)
     a = ap.parse_args()
     con = connect_db(DB)
     con.row_factory = sqlite3.Row
@@ -82,6 +87,18 @@ def main():
         attach(con, a.attach[0], a.attach[1:])
         con.commit()
         print(f"쟁점 #{a.attach[0]}에 주장 {len(a.attach) - 1}행 연결")
+    elif a.extend:
+        if not ((a.note or "").strip() and (a.since or a.n)):
+            raise SystemExit("⛔ --extend는 --note(왜 아직 판정 못 하나 · 실측 수치)와 --since/--n이 필수다")
+        con.execute("BEGIN IMMEDIATE")
+        r = con.execute("SELECT * FROM claim_issues WHERE id=? AND status='open'", (a.extend,)).fetchone()
+        if not r or r["trigger_kind"] == "date":
+            raise SystemExit(f"⛔ 연장할 수 있는 열린 경기 트리거 쟁점 #{a.extend}이 없다")
+        log = f" · [연장 {TODAY}: since {r['since']}→{a.since or r['since']} · n {r['trigger_n']}→{a.n or r['trigger_n']} — {a.note}]"
+        con.execute("UPDATE claim_issues SET since=?, trigger_n=?, source=COALESCE(source,'')||? WHERE id=?",
+                    (a.since or r["since"], a.n or r["trigger_n"], log, a.extend))
+        con.commit()
+        print(f"쟁점 #{a.extend} 연장 — {trigger_kr(con, con.execute('SELECT * FROM claim_issues WHERE id=?', (a.extend,)).fetchone())}")
     elif a.close:
         if not (a.verdict and (a.note or "").strip()):
             raise SystemExit("⛔ --close는 --verdict와 --note(실측 근거)가 필수다")

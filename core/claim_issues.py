@@ -12,7 +12,7 @@
 """
 import datetime as dt
 
-from core.aggregate import NON_OFFICIAL_COMP
+from core.aggregate import NON_OFFICIAL_COMP, club_official_sql
 
 LEAGUE_COMP = {"AVL": "Premier League", "CHE": "Premier League", "LIV": "Premier League", "ATM": "LaLiga"}
 GRACE_DAYS = 7          # 트리거가 찬 뒤 이 기간이 지나도 열려 있으면 G39가 막는다
@@ -34,11 +34,14 @@ def _dates(con, issue):
         rows = con.execute(f"SELECT date FROM matches WHERE team_code=? AND date>? AND {csql} ORDER BY date",
                            [issue["team_code"], issue["since"], *cpar]).fetchall()
     else:
+        # ⛔ 선수 경기는 대표팀 경기가 섞인다 — 「클럽 공식전」 단일 정의(core.aggregate.club_official_sql)를 같이 건다
+        #    (2026-10-21 실증: 음바예 선발 3경기 중 1경기가 세네갈 A매치라 트리거가 일찍 찼다)
+        osql, opar = club_official_sql()
         pos = [p.strip() for p in (issue["trigger_pos"] or "").split(",") if p.strip()]
         psql = (" AND pos_class IN (%s)" % ",".join("?" * len(pos))) if pos else ""
         rows = con.execute(f"""SELECT DISTINCT date FROM player_matches WHERE player_id=? AND started=1 AND date>?
-                               AND {csql}{psql} ORDER BY date""",
-                           [issue["trigger_player_id"], issue["since"], *cpar, *pos]).fetchall()
+                               AND {csql} AND {osql}{psql} ORDER BY date""",
+                           [issue["trigger_player_id"], issue["since"], *cpar, *opar, *pos]).fetchall()
     return [r[0] for r in rows]
 
 

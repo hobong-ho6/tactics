@@ -63,14 +63,14 @@
      "focus": "Support",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -79,8 +79,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "정본 st_advanced/Support와 방향은 맞지만(침투+연계) 영상의 「측면 이탈로 수비 2명 고정」은 역할 코드를 가르지 못한다. 판정 조건: 잭슨 26/27 측면 셀 비중을 25/26 왓킨스와 대조"
+     "verdict": "HELD",
+     "verdict_note": "정본 st_advanced/Support와 방향은 맞지만(침투+연계) 영상의 「측면 이탈로 수비 2명 고정」은 역할 코드를 가르지 못한다. 판정 조건: 잭슨 26/27 측면 셀 비중을 25/26 왓킨스와 대조 [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -239,12 +239,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 20,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
       "trigger": "2026-08-11 이후 주앙 고메스 선발 3경기 (6/3)"
      },
@@ -255,8 +255,8 @@
      "team_code": null,
      "value": "kamara_vacates_gomes_shows_cb_split",
      "value_kr": "카마라가 비우고 주앙 고메스가 다가오며 센터백 벌림",
-     "verdict": "PENDING",
-     "verdict_note": "상대 채널 서술 · WS로 카마라·고메스 수신 위치 분리 계산 미실행 — D+3 또는 다음 회차에서 실측 대조"
+     "verdict": "HELD",
+     "verdict_note": "상대 채널 서술 · WS로 카마라·고메스 수신 위치 분리 계산 미실행 — D+3 또는 다음 회차에서 실측 대조 [쟁점 #20 판정 2026-10-21 → HELD] LDM 정본 dm_dlp/Roaming을 유지한다. 고메스 LDM 공식 선발 5경기 집계(core.aggregate): dm_dlp/Roaming .818 · dm_holding/Roaming .761 · dm_holding/Ball-Winning .612. cm_holding/Ball-Winning은 LDM x에서 .571이다. 분업은 고정돼 있지 않다. 동시 선발 6경기 avg_x(고메스−카마라)는 +5.5 · +2.1 · +9.7 · −2.1 · −1.9 · +1.9로, 누가 더 높은지가 경기마다 바뀐다. 국면 그리드 깊이(고메스−카마라)는 브뤼헤 보유 +8.5 · 수비 +9.7, 토트넘 +1.7/−3.3, 브렌트퍼드 −3.8/−0.9, 뉴캐슬 +1.7/+2.4다. 태클+가로채기는 고메스 20(417′ · 4.3/90) 대 카마라 15(404′ · 3.3/90)로 고메스가 조금 더 파괴적이다. #270 맞음(둘 다 수비·전진) · #279 브렌트퍼드에서만 맞음(카마라 보유 깊이 51.1 > 고메스 47.3 · 최전방 2행 비중 .42 대 .24 · 브뤼헤는 반대) · #280 틀림(cm_holding Ball-Winning .571 ≪ dm_dlp/Roaming .818) · #268 틀림(뉴캐슬 빌드업 수신은 카마라 15회(y32) · 고메스 6회(y49)로 카마라가 비우지 않았다) · #285 요구라 판정하지 않음(고메스 슈팅 0~1/경기). 재판정 조건: 고메스 LDM 집계에서 dm_dlp/Roaming 대비 Δ>.05인 다른 역할이 나오면 다시 본다. 참고(이 쟁점 밖): 카마라 RDM 집계는 dm_dlp/Roaming .831 > 정본 dm_holding/Defend .683(Δ.148)이다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -296,14 +296,14 @@
      "focus": null,
      "headline_kr": "좌우 반전: 10번이 왼쪽, 부엔디아 왼쪽 터치라인",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 21,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "2선(만잠비·부엔디아) 배치와 만잠비 역할",
-      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (4/3)"
+      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (3/3)"
      },
      "player": null,
      "points_kr": "[\"페네르바체전 전반에 한 배치(화자 관찰)\", \"부엔디아가 왼쪽 터치라인 윙\", \"10번 만잠비가 왼쪽, 잭슨은 오른쪽\", \"평소 빌라는 10번이 오른쪽에 치우침\", \"완비사카 부상 뒤 왼쪽 수비 보강안으로 추측\"]",
@@ -312,8 +312,8 @@
      "team_code": "AVL",
      "value": "Fenerbahce 1st half: Buendia as touchline LW, Manzambi (No.10) drifting left, Jackson right — possible fix for LB shortage",
      "value_kr": "페네르바체전 전반 좌우 반전 — 부엔디아 왼쪽 터치라인 윙 · 10번 만잠비 왼쪽 · 잭슨 오른쪽(LB 공백 대안으로 추측)",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 페네르바체전(UCL) 전반 만잠비·부엔디아·잭슨 평균 위치/히트맵 — 팬 화자의 관찰·추측이며 뉴캐슬전 자체 배치 주장 아님"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 페네르바체전(UCL) 전반 만잠비·부엔디아·잭슨 평균 위치/히트맵 — 팬 화자의 관찰·추측이며 뉴캐슬전 자체 배치 주장 아님 [쟁점 #21 판정 2026-10-21 → HELD] 정본 CAM cam_playmaker/Roaming 유지. 만잠비 CAM 공식 선발 3경기(토트넘·브렌트퍼드·뉴캐슬) 단일 fit 1위가 모두 playmaker/Roaming(.622/.751/.752)이고, 3경기 집계는 .769로 2위 playmaker/Balanced .645와 Δ.124다. #200 틀림: halfwinger Attack이 Balanced보다 낮다(.355/.373/.448 vs .502/.560/.547, 집계 .428 vs .597). #301 틀림: classic10 최고치가 Roaming보다 .10~.14 낮다(집계 Versatile .624). #317 틀림: 뉴캐슬전 1H 알리송이 우측 터치라인 83%(y15.7)라 박스형 4-2-2-2가 아니라 비대칭 4-2-3-1이다. #311 부분 맞음: 좁힌 건 부엔디아(y62.8 좌 하프스페이스)뿐이다. #322 맞음: 부엔디아 좌측 터치라인 32%. #292 부분 맞음: 9분 창 교대(H3)가 확인된다. #306 부분 맞음: 페네르바체전 만잠비 y62.4 좌측(음바예 정통 윙어 탓, 부엔디아 미출전)이고 뉴캐슬전에는 반복되지 않았다(y42.8). #204 부분 맞음: 부엔디아 CAM 4선발 중 3경기가 우측 열 비중 .42~.47 > 좌 .30~.34(아스날전만 반대). 재판정 조건: CAM 선발 2경기 이상에서 Roaming 외 조합이 Δ>.05로 1위일 때. 후속(정본 아님): 만잠비 fc26:opt:CAM(halfwinger/Balanced .861)은 25/26 투영값이고 26/27 measured 행이 없다. 재산출을 권장한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -391,14 +391,14 @@
      "focus": null,
      "headline_kr": "중원·2선 위치 교대가 잦다",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 21,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "2선(만잠비·부엔디아) 배치와 만잠비 역할",
-      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (4/3)"
+      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (3/3)"
      },
      "player": null,
      "points_kr": "[\"카마라 전진 ↔ 고메스 후퇴\", \"만잠비·부엔디아 10번↔좌측 교환\", \"잭슨이 내려와 연결\"]",
@@ -407,8 +407,8 @@
      "team_code": "AVL",
      "value": "Kamara steps up while Gomes drops; Manzambi and Buendia interchange between the 10 and outside left; Jackson drops deeper",
      "value_kr": "카마라가 올라가면 고메스가 내려오고, 만잠비·부엔디아가 10번과 좌측을 맞바꾸며 잭슨도 내려온다",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 뉴캐슬전 만잠비·부엔디아 히트맵 중첩, 카마라·고메스 평균 위치 상하 교대 여부"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 뉴캐슬전 만잠비·부엔디아 히트맵 중첩, 카마라·고메스 평균 위치 상하 교대 여부 [쟁점 #21 판정 2026-10-21 → HELD] 정본 CAM cam_playmaker/Roaming 유지. 만잠비 CAM 공식 선발 3경기(토트넘·브렌트퍼드·뉴캐슬) 단일 fit 1위가 모두 playmaker/Roaming(.622/.751/.752)이고, 3경기 집계는 .769로 2위 playmaker/Balanced .645와 Δ.124다. #200 틀림: halfwinger Attack이 Balanced보다 낮다(.355/.373/.448 vs .502/.560/.547, 집계 .428 vs .597). #301 틀림: classic10 최고치가 Roaming보다 .10~.14 낮다(집계 Versatile .624). #317 틀림: 뉴캐슬전 1H 알리송이 우측 터치라인 83%(y15.7)라 박스형 4-2-2-2가 아니라 비대칭 4-2-3-1이다. #311 부분 맞음: 좁힌 건 부엔디아(y62.8 좌 하프스페이스)뿐이다. #322 맞음: 부엔디아 좌측 터치라인 32%. #292 부분 맞음: 9분 창 교대(H3)가 확인된다. #306 부분 맞음: 페네르바체전 만잠비 y62.4 좌측(음바예 정통 윙어 탓, 부엔디아 미출전)이고 뉴캐슬전에는 반복되지 않았다(y42.8). #204 부분 맞음: 부엔디아 CAM 4선발 중 3경기가 우측 열 비중 .42~.47 > 좌 .30~.34(아스날전만 반대). 재판정 조건: CAM 선발 2경기 이상에서 Roaming 외 조합이 Δ>.05로 1위일 때. 후속(정본 아님): 만잠비 fc26:opt:CAM(halfwinger/Balanced .861)은 25/26 투영값이고 26/27 measured 행이 없다. 재산출을 권장한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -497,14 +497,14 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 21,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "2선(만잠비·부엔디아) 배치와 만잠비 역할",
-      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (4/3)"
+      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (3/3)"
      },
      "player": null,
      "points_kr": null,
@@ -513,8 +513,8 @@
      "team_code": "AVL",
      "value": "two narrow No.10s (Buendia, Manzambi) inside in the 10 space; double pivot behind",
      "value_kr": "두 10번(부엔디아·만잠비)이 안으로 좁혀 10번 공간 점유",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 뉴캐슬전 부엔디아·만잠비 평균 위치·터치 히트맵(하프스페이스 vs 측면) — 상대 팬의 일반론"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 뉴캐슬전 부엔디아·만잠비 평균 위치·터치 히트맵(하프스페이스 vs 측면) — 상대 팬의 일반론 [쟁점 #21 판정 2026-10-21 → HELD] 정본 CAM cam_playmaker/Roaming 유지. 만잠비 CAM 공식 선발 3경기(토트넘·브렌트퍼드·뉴캐슬) 단일 fit 1위가 모두 playmaker/Roaming(.622/.751/.752)이고, 3경기 집계는 .769로 2위 playmaker/Balanced .645와 Δ.124다. #200 틀림: halfwinger Attack이 Balanced보다 낮다(.355/.373/.448 vs .502/.560/.547, 집계 .428 vs .597). #301 틀림: classic10 최고치가 Roaming보다 .10~.14 낮다(집계 Versatile .624). #317 틀림: 뉴캐슬전 1H 알리송이 우측 터치라인 83%(y15.7)라 박스형 4-2-2-2가 아니라 비대칭 4-2-3-1이다. #311 부분 맞음: 좁힌 건 부엔디아(y62.8 좌 하프스페이스)뿐이다. #322 맞음: 부엔디아 좌측 터치라인 32%. #292 부분 맞음: 9분 창 교대(H3)가 확인된다. #306 부분 맞음: 페네르바체전 만잠비 y62.4 좌측(음바예 정통 윙어 탓, 부엔디아 미출전)이고 뉴캐슬전에는 반복되지 않았다(y42.8). #204 부분 맞음: 부엔디아 CAM 4선발 중 3경기가 우측 열 비중 .42~.47 > 좌 .30~.34(아스날전만 반대). 재판정 조건: CAM 선발 2경기 이상에서 Roaming 외 조합이 Δ>.05로 1위일 때. 후속(정본 아님): 만잠비 fc26:opt:CAM(halfwinger/Balanced .861)은 25/26 투영값이고 26/27 measured 행이 없다. 재산출을 권장한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -677,12 +677,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 15,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "비보유 기본 형태: 4-4-2 vs 4-4-1-1",
       "trigger": "2026-08-11 이후 리그 3경기 (7/3)"
      },
@@ -693,8 +693,8 @@
      "team_code": "AVL",
      "value": "4-4-2 off the ball, Barkley as second striker pressing, Goretzka CM",
      "value_kr": "수비 시 4-4-2 — 바클리가 투톱 한 자리 압박, 고레츠카는 중앙",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 72′ 교체 후 바클리·고레츠카 평균 위치·히트맵"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 72′ 교체 후 바클리·고레츠카 평균 위치·히트맵 [쟁점 #15 판정 2026-10-21 → HELD] 비보유 기본 형태는 4-4-2가 더 많았다. 정본(4-2-3-1 Wide + CAM cam_playmaker/Roaming '수비 시 ST 옆 4-4-2 앞줄 합류')과 같은 방향이라 새 구현은 필요 없다. 잭슨−CAM 수비 액션 x 격차(WS 반별): 아스날 +0.8(경기 전체 · 리포트 #31) · 브렌트퍼드 1H −9 · 2H −5 · 뉴캐슬 1H −0.4는 4-4-2 쪽이다. 헐 1H +20(n3)만 4-4-1-1 기준(15+)에 들고, 토트넘 1H +9는 중간이다. 4-4-2가 PL 3경기에서 나왔다. 다만 표본이 반당 n2~8로 작다. 4-2-3-1↔4-4-2/4-3-3 전술 전환(#378)은 26/27에 없다(포레스트 87′ 4-4-2는 10명이 된 결과 · obs#713). 뉴캐슬은 후반 측면 미드 37·49 대 백4 10~22라 '6+4'가 아니라 낮은 4-4-2다(PPDA 8.87 · def_x 33.4 · 77′+ 31.5). game_system_changes에는 비보유 형태를 따로 정하는 축이 없다. #426·#467·#472 맞음 · #323 맞음 · #463 부분 맞음(4-4-2 저블록 O · 5-4-1 X) · #320 틀림(형태) · #378 26/27 미관측. 재판정 조건: FC27에 비보유 형태 축이 생기면 다시 본다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -703,12 +703,12 @@
      "focus": "Build-Up",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 3,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
       "trigger": "2026-08-11 이후 스즈키 지온 선발 3경기 (8/3)"
      },
@@ -719,8 +719,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 스즈키 패스 성공률·롱패스 비율 — 시즌 정본 GK 역할과 비교"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 스즈키 패스 성공률·롱패스 비율 — 시즌 정본 GK 역할과 비교 [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -756,14 +756,14 @@
      "focus": "Defend",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 27,
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "완비사카: 적응 추세와 좌측 기용 포커스",
-      "trigger": "2026-08-11 이후 완비사카 선발 3경기 (8/3)"
+      "trigger": "2026-08-11 이후 완비사카 선발 3경기 (6/3)"
      },
      "player": "완비사카",
      "points_kr": null,
@@ -772,8 +772,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 완비사카 좌측 기용 경기의 전진 패스·크로스·상대 진영 터치 대 태클·인터셉트(커널 fb_fullback Defend 적합도)"
+     "verdict": "REJECTED",
+     "verdict_note": "실측 대조 필요: 완비사카 좌측 기용 경기의 전진 패스·크로스·상대 진영 터치 대 태클·인터셉트(커널 fb_fullback Defend 적합도) [쟁점 #27 판정 2026-10-21 → REJECTED] #293(좌측 기용 시 fb_fullback/Defend)은 실측과 반대다. LB 선발 2경기에서 fullback/Defend는 .339(페네르바체)·.386(뉴캐슬)으로 최하위권이고, 1위는 wingback/Balanced .868·att_wb/Support .929다. 집계는 att_wb/Support .951 vs fullback/Defend .431(Δ.52)이다. 뉴캐슬전에는 평균 x 55.0·좌측 터치라인 94%·상대 진영 62%·패스 출발 x 62.2(캐시 43.5)로, 정본 LB fb_att_wb/Support 쪽 고점 폭이었다. 「공격 기여 없음」은 수치상 부분 맞음이다(키패스 0·0, 크로스 2). #287(적응 추세)은 측정 가능한 추세가 없다. 태클+인터셉트 /90은 5.3→8.0→6.0→8.0→(LB)6.0→4.0→2.3으로 줄었지만, 역할이 RB 억제형에서 LB 고점형으로 바뀐 영향이 섞여 있다. 평점은 6.7~7.5로 평탄하다. 실점 기원은 브뤼헤전 2실점(PK 헌납 1)이 그의 측면이었고, 이후 4선발에서는 해당 지적이 0건이다. 오른쪽 햄스트링 부상(10-17 77′)으로 추가 표본이 당분간 없다. 재판정 조건: 복귀 후 LB 선발 3경기에서 fullback 계열이 Δ>.05로 1위일 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -902,12 +902,12 @@
      "focus": null,
      "headline_kr": "공격 전환이 더 빠르고 직선적이다",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 1,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
       "trigger": "2026-08-11 이후 리그 6경기 (7/6)"
      },
@@ -918,8 +918,8 @@
      "team_code": "AVL",
      "value": "more pace, more direct running, run at defenders before the opposition is organised",
      "value_kr": "상대가 정비하기 전에 더 빠르고 직선적으로 운반하고 수비수에게 달려든다",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 25/26 대비 26/27 빌라 역습 슈팅·빠른 공격 비율, 뉴캐슬전 전환 슈팅 수"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 25/26 대비 26/27 빌라 역습 슈팅·빠른 공격 비율, 뉴캐슬전 전환 슈팅 수 [쟁점 #1 판정 2026-10-21 → HELD] 정본 빌드업 Balanced(#32, 10-15) 유지. 26/27 PL 7경기는 점유 중앙값 50%, 롱볼 중앙값 12.8%이고 core.team_settings 기준으로 Balanced다(공식전 11경기는 45%·11.8%로 역시 Balanced). 경기별로는 Counter 4(브라이턴·아스날·토트넘·브렌트퍼드)·Balanced 2·Short 1(헐)이다. 홈은 C2/B1, 원정은 C2/B1/S1로 홈·원정 차이가 없다. 상대 PPDA와 롱볼% 상관은 PL −0.95(공식전 −0.84)다. Counter 4경기의 상대 PPDA는 모두 ≤8.17, 비Counter 경기는 7.46~20.8이다. 즉 롱볼은 상대 압박에 대한 반응이지 기본값이 아니다(obs#1081과 같다). 주장별: #356 틀림(압박과 무관한 쏠림이 없다). #196 부분: 점유는 25/26 PL 53.5%에서 47.4%로 −6.1pp 낮아졌지만, 25/26 롱볼 데이터가 0/46행이라 롱볼 비교는 할 수 없다. #273 맞음(브렌트퍼드 15.0% vs PL 평균 12.0%, 상대 PPDA 6.68). #298 맞음(뉴캐슬 스즈키 롱 비중 15%→63%→92%, 43′ 맨마킹 전환 반응). #45·#52는 설정 축이 아니다(브뤼헤 점유 36%·xG 3.22 승, 포레스트 54%·xG 0.82 패, 우측 xG 0.00) — 승패는 상대 구조의 결과다. #294는 역습 슈팅 데이터가 없어 판정 불가. 재판정 조건: 저압박 상대(PPDA ≥11) PL 3경기 이상에서도 롱볼 ≥13%이거나 점유 ≤40%가 나올 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -955,12 +955,12 @@
      "focus": "Attack",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 8,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "맥긴 RM: 터치라인 윙어 vs 안쪽형",
       "trigger": "2026-08-11 이후 맥긴 RM,RAM,RW 선발 3경기 (10/3)"
      },
@@ -971,8 +971,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 뉴캐슬전 46′ 이후 맥긴 위치·크로스·박스 진입(같은 경기 RwB6WEcxeLk는 「우측에서 안쪽으로 좁힌다」고 관찰 — 상충 확인)"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 뉴캐슬전 46′ 이후 맥긴 위치·크로스·박스 진입(같은 경기 RwB6WEcxeLk는 「우측에서 안쪽으로 좁힌다」고 관찰 — 상충 확인) [쟁점 #8 판정 2026-10-21 → HELD] 정본 RM wm_winger/Attack 유지. 맥긴 RM/RAM 선발 10경기의 커널 평균은 winger/Attack .675, insidefwd/Balanced .507(Δ.168), wideplm/Attack .620이다. 점유 국면 7경기도 winger/Attack .684 vs insidefwd/Balanced .489(Δ.195)다. 경기별 1위(전체)는 winger/Attack 5·widemid 3·wideplm 2, insidefwd 0이다. #369의 기계 기준(avg_y 25~75 안)만 보면 avg_y 8/10, 점유 무게중심 7/7(평균 32.0)이 안쪽에 걸린다. 그런데 커널로 재검토하면 안쪽형은 지지되지 않는다 — 우측 터치라인 셀 비중 .29~.70이다. 주장별: #302 맞음(뉴캐슬 46′ 이후 winger/Balanced .680 1위, 우측 터치라인 50%·중앙 25%, avg_y 30.0). #369 틀림(26/27 페네르 지공 맥긴 y22, 터치라인 10/16 — 「4명 모두 좁게」가 아니다). #250은 실측 미확보라 판정 불가 — 페네르 전반 빅찬스 0-3·xG 0.70-1.35는 있지만 상대 공격 측면 분포가 DB에 없다. 캐시↔맥긴 교대는 3체인(A1<B2)이다. rest-defense 비용은 obs#1010 축에서 누적한다. 재판정 조건: 맥긴 RM 집계에서 winger/Attack 우위가 Δ≤.05로 줄어들 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -1095,12 +1095,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 20,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
       "trigger": "2026-08-11 이후 주앙 고메스 선발 3경기 (6/3)"
      },
@@ -1111,8 +1111,8 @@
      "team_code": null,
      "value": "kamara_gomes_shared_both_ways",
      "value_kr": "카마라·주앙 고메스 공수 분담 공유",
-     "verdict": "PENDING",
-     "verdict_note": "팬 채널 서술 · 카마라 시즌 DM 역할과 대조 필요 — 카마라·고메스 국면 그리드 2경기 비교 후 판정"
+     "verdict": "HELD",
+     "verdict_note": "팬 채널 서술 · 카마라 시즌 DM 역할과 대조 필요 — 카마라·고메스 국면 그리드 2경기 비교 후 판정 [쟁점 #20 판정 2026-10-21 → HELD] LDM 정본 dm_dlp/Roaming을 유지한다. 고메스 LDM 공식 선발 5경기 집계(core.aggregate): dm_dlp/Roaming .818 · dm_holding/Roaming .761 · dm_holding/Ball-Winning .612. cm_holding/Ball-Winning은 LDM x에서 .571이다. 분업은 고정돼 있지 않다. 동시 선발 6경기 avg_x(고메스−카마라)는 +5.5 · +2.1 · +9.7 · −2.1 · −1.9 · +1.9로, 누가 더 높은지가 경기마다 바뀐다. 국면 그리드 깊이(고메스−카마라)는 브뤼헤 보유 +8.5 · 수비 +9.7, 토트넘 +1.7/−3.3, 브렌트퍼드 −3.8/−0.9, 뉴캐슬 +1.7/+2.4다. 태클+가로채기는 고메스 20(417′ · 4.3/90) 대 카마라 15(404′ · 3.3/90)로 고메스가 조금 더 파괴적이다. #270 맞음(둘 다 수비·전진) · #279 브렌트퍼드에서만 맞음(카마라 보유 깊이 51.1 > 고메스 47.3 · 최전방 2행 비중 .42 대 .24 · 브뤼헤는 반대) · #280 틀림(cm_holding Ball-Winning .571 ≪ dm_dlp/Roaming .818) · #268 틀림(뉴캐슬 빌드업 수신은 카마라 15회(y32) · 고메스 6회(y49)로 카마라가 비우지 않았다) · #285 요구라 판정하지 않음(고메스 슈팅 0~1/경기). 재판정 조건: 고메스 LDM 집계에서 dm_dlp/Roaming 대비 Δ>.05인 다른 역할이 나오면 다시 본다. 참고(이 쟁점 밖): 카마라 RDM 집계는 dm_dlp/Roaming .831 > 정본 dm_holding/Defend .683(Δ.148)이다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -1145,12 +1145,12 @@
      "focus": null,
      "headline_kr": "로우 블록 6+4",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 15,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "비보유 기본 형태: 4-4-2 vs 4-4-1-1",
       "trigger": "2026-08-11 이후 리그 3경기 (7/3)"
      },
@@ -1161,8 +1161,8 @@
      "team_code": "AVL",
      "value": "low block: back four plus two wide players tucking in = block of six, four in front",
      "value_kr": "로우 블록 — 수비 4명에 측면 2명이 내려와 6명 라인, 그 앞에 4명",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 뉴캐슬전 빌라 비보유 시 평균 위치·PPDA·수비 라인 높이 — 하프타임 점유율 60%(UTV 화면 판독)와 충돌 가능, 득점 후 구간에 한정된 형태인지 확인"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 뉴캐슬전 빌라 비보유 시 평균 위치·PPDA·수비 라인 높이 — 하프타임 점유율 60%(UTV 화면 판독)와 충돌 가능, 득점 후 구간에 한정된 형태인지 확인 [쟁점 #15 판정 2026-10-21 → HELD] 비보유 기본 형태는 4-4-2가 더 많았다. 정본(4-2-3-1 Wide + CAM cam_playmaker/Roaming '수비 시 ST 옆 4-4-2 앞줄 합류')과 같은 방향이라 새 구현은 필요 없다. 잭슨−CAM 수비 액션 x 격차(WS 반별): 아스날 +0.8(경기 전체 · 리포트 #31) · 브렌트퍼드 1H −9 · 2H −5 · 뉴캐슬 1H −0.4는 4-4-2 쪽이다. 헐 1H +20(n3)만 4-4-1-1 기준(15+)에 들고, 토트넘 1H +9는 중간이다. 4-4-2가 PL 3경기에서 나왔다. 다만 표본이 반당 n2~8로 작다. 4-2-3-1↔4-4-2/4-3-3 전술 전환(#378)은 26/27에 없다(포레스트 87′ 4-4-2는 10명이 된 결과 · obs#713). 뉴캐슬은 후반 측면 미드 37·49 대 백4 10~22라 '6+4'가 아니라 낮은 4-4-2다(PPDA 8.87 · def_x 33.4 · 77′+ 31.5). game_system_changes에는 비보유 형태를 따로 정하는 축이 없다. #426·#467·#472 맞음 · #323 맞음 · #463 부분 맞음(4-4-2 저블록 O · 5-4-1 X) · #320 틀림(형태) · #378 26/27 미관측. 재판정 조건: FC27에 비보유 형태 축이 생기면 다시 본다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -1411,12 +1411,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 1,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
       "trigger": "2026-08-11 이후 리그 6경기 (7/6)"
      },
@@ -1427,8 +1427,8 @@
      "team_code": "AVL",
      "value": "build from the back to lure the press, then switch quickly to a direct ball over the top",
      "value_kr": "후방에서 짧게 유인한 뒤 배후 롱볼로 빠르게 직접 전환",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 뉴캐슬전 빌라 롱패스 비율·GK 롱킥 비율을 시즌 평균과 비교(팬 채널 해석, 에메리 발언 아님)"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 뉴캐슬전 빌라 롱패스 비율·GK 롱킥 비율을 시즌 평균과 비교(팬 채널 해석, 에메리 발언 아님) [쟁점 #1 판정 2026-10-21 → HELD] 정본 빌드업 Balanced(#32, 10-15) 유지. 26/27 PL 7경기는 점유 중앙값 50%, 롱볼 중앙값 12.8%이고 core.team_settings 기준으로 Balanced다(공식전 11경기는 45%·11.8%로 역시 Balanced). 경기별로는 Counter 4(브라이턴·아스날·토트넘·브렌트퍼드)·Balanced 2·Short 1(헐)이다. 홈은 C2/B1, 원정은 C2/B1/S1로 홈·원정 차이가 없다. 상대 PPDA와 롱볼% 상관은 PL −0.95(공식전 −0.84)다. Counter 4경기의 상대 PPDA는 모두 ≤8.17, 비Counter 경기는 7.46~20.8이다. 즉 롱볼은 상대 압박에 대한 반응이지 기본값이 아니다(obs#1081과 같다). 주장별: #356 틀림(압박과 무관한 쏠림이 없다). #196 부분: 점유는 25/26 PL 53.5%에서 47.4%로 −6.1pp 낮아졌지만, 25/26 롱볼 데이터가 0/46행이라 롱볼 비교는 할 수 없다. #273 맞음(브렌트퍼드 15.0% vs PL 평균 12.0%, 상대 PPDA 6.68). #298 맞음(뉴캐슬 스즈키 롱 비중 15%→63%→92%, 43′ 맨마킹 전환 반응). #45·#52는 설정 축이 아니다(브뤼헤 점유 36%·xG 3.22 승, 포레스트 54%·xG 0.82 패, 우측 xG 0.00) — 승패는 상대 구조의 결과다. #294는 역습 슈팅 데이터가 없어 판정 불가. 재판정 조건: 저압박 상대(PPDA ≥11) PL 3경기 이상에서도 롱볼 ≥13%이거나 점유 ≤40%가 나올 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -1464,14 +1464,14 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -1480,8 +1480,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 뉴캐슬전 잭슨 히트맵·볼 받는 위치(하프라인 쪽으로 내려온 빈도)·공중 경합 수로 st_target과 st_false9 중 어느 쪽인지 가린다"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 뉴캐슬전 잭슨 히트맵·볼 받는 위치(하프라인 쪽으로 내려온 빈도)·공중 경합 수로 st_target과 st_false9 중 어느 쪽인지 가린다 [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -1672,14 +1672,14 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 21,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "2선(만잠비·부엔디아) 배치와 만잠비 역할",
-      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (4/3)"
+      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (3/3)"
      },
      "player": "부엔디아",
      "points_kr": null,
@@ -1688,8 +1688,8 @@
      "team_code": "AVL",
      "value": "Buendía drifts inside into pockets, not touchline",
      "value_kr": "부엔디아는 터치라인 대신 안쪽 포켓으로 이동",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 부엔디아 뉴캐슬전 히트맵(측면 vs 하프스페이스)"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 부엔디아 뉴캐슬전 히트맵(측면 vs 하프스페이스) [쟁점 #21 판정 2026-10-21 → HELD] 정본 CAM cam_playmaker/Roaming 유지. 만잠비 CAM 공식 선발 3경기(토트넘·브렌트퍼드·뉴캐슬) 단일 fit 1위가 모두 playmaker/Roaming(.622/.751/.752)이고, 3경기 집계는 .769로 2위 playmaker/Balanced .645와 Δ.124다. #200 틀림: halfwinger Attack이 Balanced보다 낮다(.355/.373/.448 vs .502/.560/.547, 집계 .428 vs .597). #301 틀림: classic10 최고치가 Roaming보다 .10~.14 낮다(집계 Versatile .624). #317 틀림: 뉴캐슬전 1H 알리송이 우측 터치라인 83%(y15.7)라 박스형 4-2-2-2가 아니라 비대칭 4-2-3-1이다. #311 부분 맞음: 좁힌 건 부엔디아(y62.8 좌 하프스페이스)뿐이다. #322 맞음: 부엔디아 좌측 터치라인 32%. #292 부분 맞음: 9분 창 교대(H3)가 확인된다. #306 부분 맞음: 페네르바체전 만잠비 y62.4 좌측(음바예 정통 윙어 탓, 부엔디아 미출전)이고 뉴캐슬전에는 반복되지 않았다(y42.8). #204 부분 맞음: 부엔디아 CAM 4선발 중 3경기가 우측 열 비중 .42~.47 > 좌 .30~.34(아스날전만 반대). 재판정 조건: CAM 선발 2경기 이상에서 Roaming 외 조합이 Δ>.05로 1위일 때. 후속(정본 아님): 만잠비 fc26:opt:CAM(halfwinger/Balanced .861)은 25/26 투영값이고 26/27 measured 행이 없다. 재산출을 권장한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -2072,14 +2072,14 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -2088,8 +2088,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 뉴캐슬전 잭슨 등지고 받은 횟수·볼 소유 유지(lost possession)·파울 획득으로 홀드업 역할(st_target) 근거가 되는지 확인"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 뉴캐슬전 잭슨 등지고 받은 횟수·볼 소유 유지(lost possession)·파울 획득으로 홀드업 역할(st_target) 근거가 되는지 확인 [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -2124,14 +2124,14 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -2140,8 +2140,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 잭슨 등지고 받기·공중볼·키핑 지표로 st_target vs 기존 주장 st_advanced(Support) 비교"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 잭슨 등지고 받기·공중볼·키핑 지표로 st_target vs 기존 주장 st_advanced(Support) 비교 [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -2150,14 +2150,14 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 21,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "2선(만잠비·부엔디아) 배치와 만잠비 역할",
-      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (4/3)"
+      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (3/3)"
      },
      "player": "만잠비",
      "points_kr": null,
@@ -2166,8 +2166,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 기존 주장이 cam_playmaker·cam_halfwinger로 갈림 — 「10번 위치」는 위치 묘사라 역할 변형 판정에는 터치맵·전진 패스/드리블 비율 대조 필요"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 기존 주장이 cam_playmaker·cam_halfwinger로 갈림 — 「10번 위치」는 위치 묘사라 역할 변형 판정에는 터치맵·전진 패스/드리블 비율 대조 필요 [쟁점 #21 판정 2026-10-21 → HELD] 정본 CAM cam_playmaker/Roaming 유지. 만잠비 CAM 공식 선발 3경기(토트넘·브렌트퍼드·뉴캐슬) 단일 fit 1위가 모두 playmaker/Roaming(.622/.751/.752)이고, 3경기 집계는 .769로 2위 playmaker/Balanced .645와 Δ.124다. #200 틀림: halfwinger Attack이 Balanced보다 낮다(.355/.373/.448 vs .502/.560/.547, 집계 .428 vs .597). #301 틀림: classic10 최고치가 Roaming보다 .10~.14 낮다(집계 Versatile .624). #317 틀림: 뉴캐슬전 1H 알리송이 우측 터치라인 83%(y15.7)라 박스형 4-2-2-2가 아니라 비대칭 4-2-3-1이다. #311 부분 맞음: 좁힌 건 부엔디아(y62.8 좌 하프스페이스)뿐이다. #322 맞음: 부엔디아 좌측 터치라인 32%. #292 부분 맞음: 9분 창 교대(H3)가 확인된다. #306 부분 맞음: 페네르바체전 만잠비 y62.4 좌측(음바예 정통 윙어 탓, 부엔디아 미출전)이고 뉴캐슬전에는 반복되지 않았다(y42.8). #204 부분 맞음: 부엔디아 CAM 4선발 중 3경기가 우측 열 비중 .42~.47 > 좌 .30~.34(아스날전만 반대). 재판정 조건: CAM 선발 2경기 이상에서 Roaming 외 조합이 Δ>.05로 1위일 때. 후속(정본 아님): 만잠비 fc26:opt:CAM(halfwinger/Balanced .861)은 25/26 투영값이고 26/27 measured 행이 없다. 재산출을 권장한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -2287,12 +2287,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 16,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
       "trigger": "2026-08-11 이후 리그 2경기 (7/2)"
      },
@@ -2303,8 +2303,8 @@
      "team_code": "AVL",
      "value": "McGinn on at HT to slow the game down and hold the ball",
      "value_kr": "하프타임 맥긴 투입으로 템포를 늦추고 볼 소유 유지",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 전·후반 점유율·패스 수·PPDA 비교로 후반 템포가 실제로 느려졌는지(화자는 맥긴이 그 역할에 실패했다고 봄). 알리송 교체는 경고 관리가 주 원인이라는 리포트 판단과 함께 볼 것"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 전·후반 점유율·패스 수·PPDA 비교로 후반 템포가 실제로 느려졌는지(화자는 맥긴이 그 역할에 실패했다고 봄). 알리송 교체는 경고 관리가 주 원인이라는 리포트 판단과 함께 볼 것 [쟁점 #16 판정 2026-10-21 → HELD] 리드한 후반이 있었던 PL 경기는 2경기(토트넘 49′~ · 뉴캐슬 36′~)다. 브렌트퍼드 77~79′ 2분은 뺐다. 양 측면 미드가 백4 깊이까지 내려온 경기는 0/2라서 백6은 성립하지 않는다. 토트넘 2H는 맥긴 32 · 부엔디아 41 대 백4 13~22로 우측만 내려온 편중 백5다(리포트 #47과 같음). 뉴캐슬 2H는 부엔디아 37 · 맥긴 49 대 백4 10~22로 낮은 4-4-2 블록이다. 두 경기 형태가 달라서 match_game_setups나 게임플랜 2안으로 옮길 근거가 없다. 정본(수비 Balanced · 라인 유지)을 유지하고 '리드 시 라인 하향' 국면 지시로만 둔다. #366·#405 틀림(백6) · #201 부분 맞음(뉴캐슬 4-4-2 저블록 O · 토트넘은 편중 백5) · #202 부분 맞음(토트넘 우측 터치 95→82로 줄었지만 그쪽 박스 진입은 2→5로 늘었다. 반대편 터치는 64→127) · #246 정합(페네르 UCL PPDA 1H 10.79→2H 15.0) · #315 템포는 늦어졌지만 볼 소유에는 실패(점유 60→41 · PPDA 7.19→11.43). 재판정 조건: 리드 후반 PL 2경기를 더 모아 같은 형태가 2회 이상 나오면 프리셋을 검토한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -2616,14 +2616,14 @@
      "focus": null,
      "headline_kr": "전반 보유 시 4-2-2-2 박스 미드필드",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 21,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "2선(만잠비·부엔디아) 배치와 만잠비 역할",
-      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (4/3)"
+      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (3/3)"
      },
      "player": null,
      "points_kr": "[\"두 수비형 미드필더(고메스·카마라)가 가깝게\", \"만잠비·잭슨이 붙어 선다\", \"알리송이 카마라 옆까지 안쪽으로\"]",
@@ -2632,8 +2632,8 @@
      "team_code": "AVL",
      "value": "4-2-2-2 box midfield: double pivot close together, Manzambi and Jackson close, Alisson tucking in",
      "value_kr": "4-2-2-2 박스 미드필드 — 두 수비형 미드필더가 가깝게 서고, 만잠비·잭슨이 붙어 서며, 알리송이 안쪽으로 좁혀 들어온다",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 뉴캐슬전 전반 평균 위치(SofaScore)에서 알리송·부엔디아의 안쪽 위치와 만잠비-잭슨 간격 확인 — 4-2-2-2(박스)인지 4-4-1-1인지 판별"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 뉴캐슬전 전반 평균 위치(SofaScore)에서 알리송·부엔디아의 안쪽 위치와 만잠비-잭슨 간격 확인 — 4-2-2-2(박스)인지 4-4-1-1인지 판별 [쟁점 #21 판정 2026-10-21 → HELD] 정본 CAM cam_playmaker/Roaming 유지. 만잠비 CAM 공식 선발 3경기(토트넘·브렌트퍼드·뉴캐슬) 단일 fit 1위가 모두 playmaker/Roaming(.622/.751/.752)이고, 3경기 집계는 .769로 2위 playmaker/Balanced .645와 Δ.124다. #200 틀림: halfwinger Attack이 Balanced보다 낮다(.355/.373/.448 vs .502/.560/.547, 집계 .428 vs .597). #301 틀림: classic10 최고치가 Roaming보다 .10~.14 낮다(집계 Versatile .624). #317 틀림: 뉴캐슬전 1H 알리송이 우측 터치라인 83%(y15.7)라 박스형 4-2-2-2가 아니라 비대칭 4-2-3-1이다. #311 부분 맞음: 좁힌 건 부엔디아(y62.8 좌 하프스페이스)뿐이다. #322 맞음: 부엔디아 좌측 터치라인 32%. #292 부분 맞음: 9분 창 교대(H3)가 확인된다. #306 부분 맞음: 페네르바체전 만잠비 y62.4 좌측(음바예 정통 윙어 탓, 부엔디아 미출전)이고 뉴캐슬전에는 반복되지 않았다(y42.8). #204 부분 맞음: 부엔디아 CAM 4선발 중 3경기가 우측 열 비중 .42~.47 > 좌 .30~.34(아스날전만 반대). 재판정 조건: CAM 선발 2경기 이상에서 Roaming 외 조합이 Δ>.05로 1위일 때. 후속(정본 아님): 만잠비 fc26:opt:CAM(halfwinger/Balanced .861)은 25/26 투영값이고 26/27 measured 행이 없다. 재산출을 권장한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -2763,14 +2763,14 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -2779,8 +2779,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 잭슨 등지는 받기·공중볼·키패스/홀드업 지표로 st_target vs st_advanced 판별 — 감독 발언은 「홀드업 기준점」이지 역할 코드 지정 아님"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 잭슨 등지는 받기·공중볼·키패스/홀드업 지표로 st_target vs st_advanced 판별 — 감독 발언은 「홀드업 기준점」이지 역할 코드 지정 아님 [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -3051,12 +3051,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 23,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "토레스·린델뢰프 CB 포커스: Build-Up vs Aggressive",
       "trigger": "2026-08-11 이후 파우 토레스 LCB 선발 3경기 (5/3)"
      },
@@ -3067,8 +3067,8 @@
      "team_code": "AVL",
      "value": "lindelof_steps_into_cdm_zone",
      "value_kr": "린델뢰프가 수비형 미드 구역으로 전진",
-     "verdict": "PENDING",
-     "verdict_note": "실측 일치(패스 출발 40.5m vs 토레스 34.0m · 상대 3분의 1 국면 53.8m vs 46.6m) — 정본 RCB bpd Aggressive는 기하 1위라 유지, Build-Up 성향 혼재는 다경기 누적 후 판정"
+     "verdict": "HELD",
+     "verdict_note": "실측 일치(패스 출발 40.5m vs 토레스 34.0m · 상대 3분의 1 국면 53.8m vs 46.6m) — 정본 RCB bpd Aggressive는 기하 1위라 유지, Build-Up 성향 혼재는 다경기 누적 후 판정 [쟁점 #23 판정 2026-10-21 → HELD] 정본 LCB cb_bpd/Build-Up과 RCB cb_bpd/Aggressive를 둘 다 유지한다. 토레스 LCB 공식 선발 5경기(PSG·브라이턴·아스날·브뤼헤·페네르바체)에서 Build-Up−Aggressive 단일 Δ는 +.041/+.004/−.034/−.012/−.034이고, 집계는 .922 vs .926(Δ−.004)이다. 모두 노이즈 구간(≤.05)이라 기하로는 포커스를 가르지 못한다. 기능 축은 Build-Up 쪽이다. 패스 89.3%(134/150), 페네르바체전 전진 패스 20(두 CB 중 최다)·54/57, 브뤼헤전 도움 2·키패스 4. #275·#288 맞음(전개 허브). 다만 브라이턴전 실점 직결 실수가 1회 있었다. 린델뢰프 RCB 10선발에서 Aggressive가 1위인 경기는 9/10이고, 집계는 .975 vs Build-Up .912(Δ.063)다. #239 부분 맞음: 페네르바체전에는 패스 출발 40.5m vs 토레스 34.0m로 높았지만, 뉴캐슬전에는 출발 x 27.4(밍스 34.1)·평균 x 24.8로 낮았다. 상시 CDM 전진이 아니라 경기 의존이다. 재판정 조건: 토레스 LCB 선발 3경기 이상에서 Aggressive가 Δ>.05로 앞서거나, 린델뢰프 RCB 집계 Δ가 .05 아래로 내려올 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "instruction",
@@ -3197,12 +3197,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 16,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
       "trigger": "2026-08-11 이후 리그 2경기 (7/2)"
      },
@@ -3213,8 +3213,8 @@
      "team_code": "AVL",
      "value": "more_compact_when_leading",
      "value_kr": "리드 시 더 촘촘하게",
-     "verdict": "PENDING",
-     "verdict_note": "감독 1차 발언 · 실측 2H 평균 높이 하강과 정합. 경기 프리셋은 단일 설정이라 국면 전환(리드 시 라인 하향) 지시로만 기록 — FC 게임플랜 2안 구성 시 반영 후보"
+     "verdict": "HELD",
+     "verdict_note": "감독 1차 발언 · 실측 2H 평균 높이 하강과 정합. 경기 프리셋은 단일 설정이라 국면 전환(리드 시 라인 하향) 지시로만 기록 — FC 게임플랜 2안 구성 시 반영 후보 [쟁점 #16 판정 2026-10-21 → HELD] 리드한 후반이 있었던 PL 경기는 2경기(토트넘 49′~ · 뉴캐슬 36′~)다. 브렌트퍼드 77~79′ 2분은 뺐다. 양 측면 미드가 백4 깊이까지 내려온 경기는 0/2라서 백6은 성립하지 않는다. 토트넘 2H는 맥긴 32 · 부엔디아 41 대 백4 13~22로 우측만 내려온 편중 백5다(리포트 #47과 같음). 뉴캐슬 2H는 부엔디아 37 · 맥긴 49 대 백4 10~22로 낮은 4-4-2 블록이다. 두 경기 형태가 달라서 match_game_setups나 게임플랜 2안으로 옮길 근거가 없다. 정본(수비 Balanced · 라인 유지)을 유지하고 '리드 시 라인 하향' 국면 지시로만 둔다. #366·#405 틀림(백6) · #201 부분 맞음(뉴캐슬 4-4-2 저블록 O · 토트넘은 편중 백5) · #202 부분 맞음(토트넘 우측 터치 95→82로 줄었지만 그쪽 박스 진입은 2→5로 늘었다. 반대편 터치는 64→127) · #246 정합(페네르 UCL PPDA 1H 10.79→2H 15.0) · #315 템포는 늦어졌지만 볼 소유에는 실패(점유 60→41 · PPDA 7.19→11.43). 재판정 조건: 리드 후반 PL 2경기를 더 모아 같은 형태가 2회 이상 나오면 프리셋을 검토한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -3289,12 +3289,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 29,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "세트피스 허용 억제와 득점 경로",
       "trigger": "2026-08-11 이후 리그 5경기 (7/5)"
      },
@@ -3305,8 +3305,8 @@
      "team_code": "AVL",
      "value": "set_piece+high_press_transition+mid_low_block_transition",
      "value_kr": "세트피스·하이프레스 전환·중저블록 전환",
-     "verdict": "PENDING",
-     "verdict_note": "실측 득점 경로(31′·39′ 중원 탈취 전환 · 12′ 코너 · PK) 정합 — 팀 설정 축 값이 아니라 게임플랜 서술로만 보관"
+     "verdict": "HELD",
+     "verdict_note": "실측 득점 경로(31′·39′ 중원 탈취 전환 · 12′ 코너 · PK) 정합 — 팀 설정 축 값이 아니라 게임플랜 서술로만 보관 [쟁점 #29 판정 2026-10-21 → HELD] 게임플랜 서술로만 보관하고 팀 설정 값은 바꾸지 않는다. PL 7경기 결과: 실점 11 중 세트피스 실점은 1(토트넘 98′ 판 헤케 헤더)이고, 세트피스 xG 허용은 1.93(경기당 .28 · 허용 xG의 17%)이다. 「결과로서의 세트피스 억제」는 시즌 패턴이 맞다. 그러나 #274의 「코너·프리킥 허용 자체를 줄인다」는 시즌 수준에서 틀림이다. 코너 허용 30(4.3/경기)이 획득 22(3.1)보다 많고, 토트넘전은 11개였다(저블록 def_x 30.6). 점유 ≥50% 4경기는 2.5/경기다. 브렌트퍼드전 자체는 맞음이다(코너 허용 2·세트 xG .21·세트 실점 0). 박스 근처 프리킥은 DB에 없어 미측정이다. #248 부분 맞음: PL 득점 7은 세트피스 0(PL 세트 xG 합 ≈.51)이고, 전환·오픈플레이(토트넘 3·뉴캐슬 크로스 등)다. 세트피스 득점은 컵·UCL에서만 3(코번트리 코너 2·페네르바체 12′ 코너)+PK 1이다. 재판정 조건: PL 세트피스 실점이 누적 3에 도달하거나, 코너 허용이 획득보다 적어지는 구간이 5경기 지속될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -3315,14 +3315,14 @@
      "focus": "Support",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -3331,8 +3331,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "감독 1차 발언이 좌우 이동을 확인 — 실측 단일 경기 st_advanced/Support .749(Δ.228)·브렌트포드전 Δ.146과 같은 방향. 정본 포커스 Versatile → Support 변경은 사용자 확인 대상"
+     "verdict": "HELD",
+     "verdict_note": "감독 1차 발언이 좌우 이동을 확인 — 실측 단일 경기 st_advanced/Support .749(Δ.228)·브렌트포드전 Δ.146과 같은 방향. 정본 포커스 Versatile → Support 변경은 사용자 확인 대상 [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -3407,12 +3407,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 8,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "맥긴 RM: 터치라인 윙어 vs 안쪽형",
       "trigger": "2026-08-11 이후 맥긴 RM,RAM,RW 선발 3경기 (10/3)"
      },
@@ -3423,8 +3423,8 @@
      "team_code": "AVL",
      "value": "exploited_by_opponent_left_winger",
      "value_kr": "상대 좌측 윙어가 공략",
-     "verdict": "PENDING",
-     "verdict_note": "상대 해설(D등급) · Tanswell 19:28Z 「funnelling the majority of their attacks down #AVFC's right side」와 같은 방향. 캐시↔맥긴 교대(H2)의 rest-defense 비용 — 다경기 누적 후 판정"
+     "verdict": "HELD",
+     "verdict_note": "상대 해설(D등급) · Tanswell 19:28Z 「funnelling the majority of their attacks down #AVFC's right side」와 같은 방향. 캐시↔맥긴 교대(H2)의 rest-defense 비용 — 다경기 누적 후 판정 [쟁점 #8 판정 2026-10-21 → HELD] 정본 RM wm_winger/Attack 유지. 맥긴 RM/RAM 선발 10경기의 커널 평균은 winger/Attack .675, insidefwd/Balanced .507(Δ.168), wideplm/Attack .620이다. 점유 국면 7경기도 winger/Attack .684 vs insidefwd/Balanced .489(Δ.195)다. 경기별 1위(전체)는 winger/Attack 5·widemid 3·wideplm 2, insidefwd 0이다. #369의 기계 기준(avg_y 25~75 안)만 보면 avg_y 8/10, 점유 무게중심 7/7(평균 32.0)이 안쪽에 걸린다. 그런데 커널로 재검토하면 안쪽형은 지지되지 않는다 — 우측 터치라인 셀 비중 .29~.70이다. 주장별: #302 맞음(뉴캐슬 46′ 이후 winger/Balanced .680 1위, 우측 터치라인 50%·중앙 25%, avg_y 30.0). #369 틀림(26/27 페네르 지공 맥긴 y22, 터치라인 10/16 — 「4명 모두 좁게」가 아니다). #250은 실측 미확보라 판정 불가 — 페네르 전반 빅찬스 0-3·xG 0.70-1.35는 있지만 상대 공격 측면 분포가 DB에 없다. 캐시↔맥긴 교대는 3체인(A1<B2)이다. rest-defense 비용은 obs#1010 축에서 누적한다. 재판정 조건: 맥긴 RM 집계에서 winger/Attack 우위가 Δ≤.05로 줄어들 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -3827,12 +3827,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 22,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "밍스 선발 시 CB 역할: 빌드업 BPD vs 덜 관여하는 역할",
       "trigger": "2026-08-11 이후 밍스 선발 3경기 (5/3)"
      },
@@ -3843,8 +3843,8 @@
      "team_code": null,
      "value": "mings_casual_on_ball_and_no_line_organisation",
      "value_kr": "밍스의 안이한 볼 처리와 라인 조율 부재",
-     "verdict": "PENDING",
-     "verdict_note": "claim #210·#216과 같은 축 — 밍스 선발 시 처방 변경은 사용자 판단 대기. 이 영상은 독립 4번째 소스."
+     "verdict": "HELD",
+     "verdict_note": "claim #210·#216과 같은 축 — 밍스 선발 시 처방 변경은 사용자 판단 대기. 이 영상은 독립 4번째 소스. [쟁점 #22 판정 2026-10-21 → HELD] 밍스 처방 cb_bpd/Aggressive는 기하로 유지된다(처방 변경 여부는 사용자 판단으로 넘긴다). 공식 선발 5경기(헐·코번트리·토트넘·브렌트퍼드·뉴캐슬) 집계에서 cb_bpd/Aggressive .906 > Build-Up .886 > cb_stopper/Aggressive .799(Δ.107) > cb_defender/Balanced .702(Δ.204)다. 단일 경기에서 stopper·defender가 1위인 경기는 0이다. 패스 품질은 약점이 맞다. 4경기 패스 163/193(84.5%)으로 린델뢰프 91.9%(296/322)·토레스 89.3%(134/150)보다 낮고, 브렌트퍼드전 77%(36/47)는 CB 최저이며 9′ Opta Error가 10′ 실점으로 이어졌다. 같은 경기 대조: 토트넘 91% vs 린델뢰프 93% · 뉴캐슬 85% vs 84%로 차이가 없고, 뉴캐슬전 전진 패스는 6 vs 린델뢰프 10(WS)이다. #210·#216·#234 맞음: 표적 압박 + 실행 실수가 1경기에서 확인된다. #289 부분 맞음: 빌드업 불안은 패스율 −7%p로 보이지만, 커널은 defender/stopper를 지지하지 않는다. 재판정 조건: 밍스 선발 패스 성공률 80% 미만이 3경기 누적되거나 실점 직결 실수가 2회째일 때 사용자에게 다시 상정한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -3885,12 +3885,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 20,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
       "trigger": "2026-08-11 이후 주앙 고메스 선발 3경기 (6/3)"
      },
@@ -3901,8 +3901,8 @@
      "team_code": "AVL",
      "value": "Gomes mops up and shields defence, Kamara pushes up more",
      "value_kr": "주앙 고메스가 궂은일·수비 보호, 카마라는 조금 더 전진",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 브렌트퍼드전 카마라·주앙 고메스 평균 위치·히트맵과 태클·가로채기 분담"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 브렌트퍼드전 카마라·주앙 고메스 평균 위치·히트맵과 태클·가로채기 분담 [쟁점 #20 판정 2026-10-21 → HELD] LDM 정본 dm_dlp/Roaming을 유지한다. 고메스 LDM 공식 선발 5경기 집계(core.aggregate): dm_dlp/Roaming .818 · dm_holding/Roaming .761 · dm_holding/Ball-Winning .612. cm_holding/Ball-Winning은 LDM x에서 .571이다. 분업은 고정돼 있지 않다. 동시 선발 6경기 avg_x(고메스−카마라)는 +5.5 · +2.1 · +9.7 · −2.1 · −1.9 · +1.9로, 누가 더 높은지가 경기마다 바뀐다. 국면 그리드 깊이(고메스−카마라)는 브뤼헤 보유 +8.5 · 수비 +9.7, 토트넘 +1.7/−3.3, 브렌트퍼드 −3.8/−0.9, 뉴캐슬 +1.7/+2.4다. 태클+가로채기는 고메스 20(417′ · 4.3/90) 대 카마라 15(404′ · 3.3/90)로 고메스가 조금 더 파괴적이다. #270 맞음(둘 다 수비·전진) · #279 브렌트퍼드에서만 맞음(카마라 보유 깊이 51.1 > 고메스 47.3 · 최전방 2행 비중 .42 대 .24 · 브뤼헤는 반대) · #280 틀림(cm_holding Ball-Winning .571 ≪ dm_dlp/Roaming .818) · #268 틀림(뉴캐슬 빌드업 수신은 카마라 15회(y32) · 고메스 6회(y49)로 카마라가 비우지 않았다) · #285 요구라 판정하지 않음(고메스 슈팅 0~1/경기). 재판정 조건: 고메스 LDM 집계에서 dm_dlp/Roaming 대비 Δ>.05인 다른 역할이 나오면 다시 본다. 참고(이 쟁점 밖): 카마라 RDM 집계는 dm_dlp/Roaming .831 > 정본 dm_holding/Defend .683(Δ.148)이다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -3911,12 +3911,12 @@
      "focus": "Ball-Winning",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 20,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
       "trigger": "2026-08-11 이후 주앙 고메스 선발 3경기 (6/3)"
      },
@@ -3927,8 +3927,8 @@
      "team_code": "AVL",
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 주앙 고메스 수비 행동 지표·평균 위치로 cm_holding Ball-Winning vs dm 계열 판정"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 주앙 고메스 수비 행동 지표·평균 위치로 cm_holding Ball-Winning vs dm 계열 판정 [쟁점 #20 판정 2026-10-21 → HELD] LDM 정본 dm_dlp/Roaming을 유지한다. 고메스 LDM 공식 선발 5경기 집계(core.aggregate): dm_dlp/Roaming .818 · dm_holding/Roaming .761 · dm_holding/Ball-Winning .612. cm_holding/Ball-Winning은 LDM x에서 .571이다. 분업은 고정돼 있지 않다. 동시 선발 6경기 avg_x(고메스−카마라)는 +5.5 · +2.1 · +9.7 · −2.1 · −1.9 · +1.9로, 누가 더 높은지가 경기마다 바뀐다. 국면 그리드 깊이(고메스−카마라)는 브뤼헤 보유 +8.5 · 수비 +9.7, 토트넘 +1.7/−3.3, 브렌트퍼드 −3.8/−0.9, 뉴캐슬 +1.7/+2.4다. 태클+가로채기는 고메스 20(417′ · 4.3/90) 대 카마라 15(404′ · 3.3/90)로 고메스가 조금 더 파괴적이다. #270 맞음(둘 다 수비·전진) · #279 브렌트퍼드에서만 맞음(카마라 보유 깊이 51.1 > 고메스 47.3 · 최전방 2행 비중 .42 대 .24 · 브뤼헤는 반대) · #280 틀림(cm_holding Ball-Winning .571 ≪ dm_dlp/Roaming .818) · #268 틀림(뉴캐슬 빌드업 수신은 카마라 15회(y32) · 고메스 6회(y49)로 카마라가 비우지 않았다) · #285 요구라 판정하지 않음(고메스 슈팅 0~1/경기). 재판정 조건: 고메스 LDM 집계에서 dm_dlp/Roaming 대비 Δ>.05인 다른 역할이 나오면 다시 본다. 참고(이 쟁점 밖): 카마라 RDM 집계는 dm_dlp/Roaming .831 > 정본 dm_holding/Defend .683(Δ.148)이다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -4000,13 +4000,13 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 7,
       "resolution": null,
       "status": "open",
       "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-      "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+      "trigger": "2026-08-11 이후 음바예 선발 3경기 (2/3)"
      },
      "player": "음바예",
      "points_kr": null,
@@ -4224,12 +4224,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 18,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "카마라·고메스 동시 선발 시 배급 주도권(CB 1·2위)",
       "trigger": "2026-10-11 이후 주앙 고메스 선발 1경기 (1/1)"
      },
@@ -4240,8 +4240,8 @@
      "team_code": "AVL",
      "value": "gomes_network_hub",
      "value_kr": "주앙 고메스가 패스 네트워크 허브",
-     "verdict": "PENDING",
-     "verdict_note": "claim #167(카마라·고메스 누구도 배급을 지배하지 않는다)의 반대 방향 정황. 단 패스량 실측은 CB 1·2위(밍스47·린델뢰프46, SofaScore) · 고메스 40(공동 5위) — 「연결 중심」과 「배급 물량」은 다른 축이다. FotMob 경유 고메스 라인 브레이킹 패스 12(Aston Villa News). 재판정 조건은 #167과 같다(다음 동시 선발 경기)."
+     "verdict": "HELD",
+     "verdict_note": "claim #167(카마라·고메스 누구도 배급을 지배하지 않는다)의 반대 방향 정황. 단 패스량 실측은 CB 1·2위(밍스47·린델뢰프46, SofaScore) · 고메스 40(공동 5위) — 「연결 중심」과 「배급 물량」은 다른 축이다. FotMob 경유 고메스 라인 브레이킹 패스 12(Aston Villa News). 재판정 조건은 #167과 같다(다음 동시 선발 경기). [쟁점 #18 판정 2026-10-21 → HELD] 3회째는 나오지 않았다. 10-11 사용자 결정 뒤 카마라·고메스 동시 선발 공식전은 10-17 뉴캐슬전 1경기다(10-14 페네르는 고메스 교체 출전). SofaScore pass_total 순위는 린델뢰프 57 · 스즈키(GK) 49 · 카마라 43 · 밍스 40으로 CB 듀오 1·2위가 아니다. 누적은 패스 집계가 가능한 동시 선발 5경기 중 2경기다(08-12 ✗ · 09-08 ✓ · 09-19 ✗ · 10-10 ✓ · 10-17 ✗). 'CB 1·2위' 패턴은 APPLIED 조건에 못 미친다. #167 맞음: 동시 선발 5경기 모두 카마라·고메스 누구도 1위가 아니다. 카마라는 필드 2~3위 4회, 고메스는 5위 이하다. #217 틀림(물량 기준): 고메스는 5위 이하다. 연결 허브(네트워크) 축은 재지 않았다. 피벗 정본(LDM dm_dlp/Roaming · RDM dm_holding/Defend)은 바꾸지 않는다. 재판정 조건: 동시 선발 3경기를 새로 모아 CB 1·2위가 3경기 중 2경기 이상이면 다시 올린다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "limit",
@@ -4267,12 +4267,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 22,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "밍스 선발 시 CB 역할: 빌드업 BPD vs 덜 관여하는 역할",
       "trigger": "2026-08-11 이후 밍스 선발 3경기 (5/3)"
      },
@@ -4283,8 +4283,8 @@
      "team_code": "AVL",
      "value": "mings_unpressured_first_touch_error",
      "value_kr": "압박 없는 상황의 밍스 첫 터치 실수",
-     "verdict": "PENDING",
-     "verdict_note": "claim #210(밍스 표적 압박)과 같은 축. 이 영상은 9′을 「압박이 아니라 첫 터치·판단」으로 귀속 — Tanswell 「showing the ball to Mings」(밍스가 받게 내준다)와 모순되지 않는다(수신은 자유, 실행에서 실패). 이 경기 패스 성공률 77%(SofaScore 36/47 · CB 중 최저). 밍스 선발 시 처방 변경은 사용자 판단."
+     "verdict": "HELD",
+     "verdict_note": "claim #210(밍스 표적 압박)과 같은 축. 이 영상은 9′을 「압박이 아니라 첫 터치·판단」으로 귀속 — Tanswell 「showing the ball to Mings」(밍스가 받게 내준다)와 모순되지 않는다(수신은 자유, 실행에서 실패). 이 경기 패스 성공률 77%(SofaScore 36/47 · CB 중 최저). 밍스 선발 시 처방 변경은 사용자 판단. [쟁점 #22 판정 2026-10-21 → HELD] 밍스 처방 cb_bpd/Aggressive는 기하로 유지된다(처방 변경 여부는 사용자 판단으로 넘긴다). 공식 선발 5경기(헐·코번트리·토트넘·브렌트퍼드·뉴캐슬) 집계에서 cb_bpd/Aggressive .906 > Build-Up .886 > cb_stopper/Aggressive .799(Δ.107) > cb_defender/Balanced .702(Δ.204)다. 단일 경기에서 stopper·defender가 1위인 경기는 0이다. 패스 품질은 약점이 맞다. 4경기 패스 163/193(84.5%)으로 린델뢰프 91.9%(296/322)·토레스 89.3%(134/150)보다 낮고, 브렌트퍼드전 77%(36/47)는 CB 최저이며 9′ Opta Error가 10′ 실점으로 이어졌다. 같은 경기 대조: 토트넘 91% vs 린델뢰프 93% · 뉴캐슬 85% vs 84%로 차이가 없고, 뉴캐슬전 전진 패스는 6 vs 린델뢰프 10(WS)이다. #210·#216·#234 맞음: 표적 압박 + 실행 실수가 1경기에서 확인된다. #289 부분 맞음: 빌드업 불안은 패스율 −7%p로 보이지만, 커널은 defender/stopper를 지지하지 않는다. 재판정 조건: 밍스 선발 패스 성공률 80% 미만이 3경기 누적되거나 실점 직결 실수가 2회째일 때 사용자에게 다시 상정한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "limit",
@@ -4837,12 +4837,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 22,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "밍스 선발 시 CB 역할: 빌드업 BPD vs 덜 관여하는 역할",
       "trigger": "2026-08-11 이후 밍스 선발 3경기 (5/3)"
      },
@@ -4853,8 +4853,8 @@
      "team_code": "AVL",
      "value": "mings_targeted_by_designed_press",
      "value_kr": "상대 설계 압박의 표적이 된 밍스",
-     "verdict": "PENDING",
-     "verdict_note": "Tanswell 14′(브렌트퍼드가 첫 골킥부터 밍스에게 공을 내주도록 유도) + 이 영상 — 독립 2소스 일치. 밍스 선발 시 처방(cb_bpd/Aggressive 유지 vs 덜 관여하는 역할) 변경은 사용자 판단\n[D+2 2026-10-12] UTV 전술 리뷰가 9′을 「압박 없이 받은 뒤 첫 터치·판단 실수」로 귀속 — 설계(수신자 유도)는 상대, 실점은 실행(obs#988). PENDING 유지, 처방 변경은 사용자 판단."
+     "verdict": "HELD",
+     "verdict_note": "Tanswell 14′(브렌트퍼드가 첫 골킥부터 밍스에게 공을 내주도록 유도) + 이 영상 — 독립 2소스 일치. 밍스 선발 시 처방(cb_bpd/Aggressive 유지 vs 덜 관여하는 역할) 변경은 사용자 판단\n[D+2 2026-10-12] UTV 전술 리뷰가 9′을 「압박 없이 받은 뒤 첫 터치·판단 실수」로 귀속 — 설계(수신자 유도)는 상대, 실점은 실행(obs#988). PENDING 유지, 처방 변경은 사용자 판단. [쟁점 #22 판정 2026-10-21 → HELD] 밍스 처방 cb_bpd/Aggressive는 기하로 유지된다(처방 변경 여부는 사용자 판단으로 넘긴다). 공식 선발 5경기(헐·코번트리·토트넘·브렌트퍼드·뉴캐슬) 집계에서 cb_bpd/Aggressive .906 > Build-Up .886 > cb_stopper/Aggressive .799(Δ.107) > cb_defender/Balanced .702(Δ.204)다. 단일 경기에서 stopper·defender가 1위인 경기는 0이다. 패스 품질은 약점이 맞다. 4경기 패스 163/193(84.5%)으로 린델뢰프 91.9%(296/322)·토레스 89.3%(134/150)보다 낮고, 브렌트퍼드전 77%(36/47)는 CB 최저이며 9′ Opta Error가 10′ 실점으로 이어졌다. 같은 경기 대조: 토트넘 91% vs 린델뢰프 93% · 뉴캐슬 85% vs 84%로 차이가 없고, 뉴캐슬전 전진 패스는 6 vs 린델뢰프 10(WS)이다. #210·#216·#234 맞음: 표적 압박 + 실행 실수가 1경기에서 확인된다. #289 부분 맞음: 빌드업 불안은 패스율 −7%p로 보이지만, 커널은 defender/stopper를 지지하지 않는다. 재판정 조건: 밍스 선발 패스 성공률 80% 미만이 3경기 누적되거나 실점 직결 실수가 2회째일 때 사용자에게 다시 상정한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "limit",
@@ -4920,7 +4920,7 @@
       "resolution": null,
       "status": "open",
       "title": "RM 인선: 침투형 윙어 vs 맥긴 체제",
-      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": "[\"가르나초·음바예·알리송 중 1명 선발\", \"상대 풀백 전진을 억제\", \"맥긴 측면 배치는 비추천(앞에서만 순환)\"]",
@@ -4939,12 +4939,12 @@
      "focus": null,
      "headline_kr": "세트피스는 허용 자체를 줄인다",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 29,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "세트피스 허용 억제와 득점 경로",
       "trigger": "2026-08-11 이후 리그 5경기 (7/5)"
      },
@@ -4955,8 +4955,8 @@
      "team_code": "AVL",
      "value": "avoid fouls near own box, clear further up the pitch, mark back post",
      "value_kr": "박스 근처 파울·코너 허용을 줄이고 걷어내기는 멀리, 먼 포스트와 두 번째 동작 대비",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 브렌트퍼드전 허용 코너·박스 근처 프리킥 수와 세트피스 실점 여부"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 브렌트퍼드전 허용 코너·박스 근처 프리킥 수와 세트피스 실점 여부 [쟁점 #29 판정 2026-10-21 → HELD] 게임플랜 서술로만 보관하고 팀 설정 값은 바꾸지 않는다. PL 7경기 결과: 실점 11 중 세트피스 실점은 1(토트넘 98′ 판 헤케 헤더)이고, 세트피스 xG 허용은 1.93(경기당 .28 · 허용 xG의 17%)이다. 「결과로서의 세트피스 억제」는 시즌 패턴이 맞다. 그러나 #274의 「코너·프리킥 허용 자체를 줄인다」는 시즌 수준에서 틀림이다. 코너 허용 30(4.3/경기)이 획득 22(3.1)보다 많고, 토트넘전은 11개였다(저블록 def_x 30.6). 점유 ≥50% 4경기는 2.5/경기다. 브렌트퍼드전 자체는 맞음이다(코너 허용 2·세트 xG .21·세트 실점 0). 박스 근처 프리킥은 DB에 없어 미측정이다. #248 부분 맞음: PL 득점 7은 세트피스 0(PL 세트 xG 합 ≈.51)이고, 전환·오픈플레이(토트넘 3·뉴캐슬 크로스 등)다. 세트피스 득점은 컵·UCL에서만 3(코번트리 코너 2·페네르바체 12′ 코너)+PK 1이다. 재판정 조건: PL 세트피스 실점이 누적 3에 도달하거나, 코너 허용이 획득보다 적어지는 구간이 5경기 지속될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -4965,12 +4965,12 @@
      "focus": "Build-Up",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 23,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "토레스·린델뢰프 CB 포커스: Build-Up vs Aggressive",
       "trigger": "2026-08-11 이후 파우 토레스 LCB 선발 3경기 (5/3)"
      },
@@ -4981,8 +4981,8 @@
      "team_code": "AVL",
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 파우 토레스 전진 패스·압박 하 패스 성공률로 cb_bpd Build-Up 적합도 확인"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 파우 토레스 전진 패스·압박 하 패스 성공률로 cb_bpd Build-Up 적합도 확인 [쟁점 #23 판정 2026-10-21 → HELD] 정본 LCB cb_bpd/Build-Up과 RCB cb_bpd/Aggressive를 둘 다 유지한다. 토레스 LCB 공식 선발 5경기(PSG·브라이턴·아스날·브뤼헤·페네르바체)에서 Build-Up−Aggressive 단일 Δ는 +.041/+.004/−.034/−.012/−.034이고, 집계는 .922 vs .926(Δ−.004)이다. 모두 노이즈 구간(≤.05)이라 기하로는 포커스를 가르지 못한다. 기능 축은 Build-Up 쪽이다. 패스 89.3%(134/150), 페네르바체전 전진 패스 20(두 CB 중 최다)·54/57, 브뤼헤전 도움 2·키패스 4. #275·#288 맞음(전개 허브). 다만 브라이턴전 실점 직결 실수가 1회 있었다. 린델뢰프 RCB 10선발에서 Aggressive가 1위인 경기는 9/10이고, 집계는 .975 vs Build-Up .912(Δ.063)다. #239 부분 맞음: 페네르바체전에는 패스 출발 40.5m vs 토레스 34.0m로 높았지만, 뉴캐슬전에는 출발 x 27.4(밍스 34.1)·평균 x 24.8로 낮았다. 상시 CDM 전진이 아니라 경기 의존이다. 재판정 조건: 토레스 LCB 선발 3경기 이상에서 Aggressive가 Δ>.05로 앞서거나, 린델뢰프 RCB 집계 Δ가 .05 아래로 내려올 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "team_axis",
@@ -4991,12 +4991,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 1,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
       "trigger": "2026-08-11 이후 리그 6경기 (7/6)"
      },
@@ -5007,8 +5007,8 @@
      "team_code": "AVL",
      "value": "Long Ball (mixed)",
      "value_kr": "롱볼 병행(압박 회피용 채널·맥긴 타깃)",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 브렌트퍼드전 롱패스 비율·골킥 길이를 시즌 평균과 비교"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 브렌트퍼드전 롱패스 비율·골킥 길이를 시즌 평균과 비교 [쟁점 #1 판정 2026-10-21 → HELD] 정본 빌드업 Balanced(#32, 10-15) 유지. 26/27 PL 7경기는 점유 중앙값 50%, 롱볼 중앙값 12.8%이고 core.team_settings 기준으로 Balanced다(공식전 11경기는 45%·11.8%로 역시 Balanced). 경기별로는 Counter 4(브라이턴·아스날·토트넘·브렌트퍼드)·Balanced 2·Short 1(헐)이다. 홈은 C2/B1, 원정은 C2/B1/S1로 홈·원정 차이가 없다. 상대 PPDA와 롱볼% 상관은 PL −0.95(공식전 −0.84)다. Counter 4경기의 상대 PPDA는 모두 ≤8.17, 비Counter 경기는 7.46~20.8이다. 즉 롱볼은 상대 압박에 대한 반응이지 기본값이 아니다(obs#1081과 같다). 주장별: #356 틀림(압박과 무관한 쏠림이 없다). #196 부분: 점유는 25/26 PL 53.5%에서 47.4%로 −6.1pp 낮아졌지만, 25/26 롱볼 데이터가 0/46행이라 롱볼 비교는 할 수 없다. #273 맞음(브렌트퍼드 15.0% vs PL 평균 12.0%, 상대 PPDA 6.68). #298 맞음(뉴캐슬 스즈키 롱 비중 15%→63%→92%, 43′ 맨마킹 전환 반응). #45·#52는 설정 축이 아니다(브뤼헤 점유 36%·xG 3.22 승, 포레스트 54%·xG 0.82 패, 우측 xG 0.00) — 승패는 상대 구조의 결과다. #294는 역습 슈팅 데이터가 없어 판정 불가. 재판정 조건: 저압박 상대(PPDA ≥11) PL 3경기 이상에서도 롱볼 ≥13%이거나 점유 ≤40%가 나올 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -5071,14 +5071,14 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 21,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "2선(만잠비·부엔디아) 배치와 만잠비 역할",
-      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (4/3)"
+      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (3/3)"
      },
      "player": "부엔디아",
      "points_kr": null,
@@ -5087,8 +5087,8 @@
      "team_code": "AVL",
      "value": "outside_run_when_winger_inverts",
      "value_kr": "윙어가 안으로 들어오면 바깥 침투",
-     "verdict": "PENDING",
-     "verdict_note": "친선 1경기. 공식전 CAM 히트맵 우측 편중 여부로 검증한다."
+     "verdict": "HELD",
+     "verdict_note": "친선 1경기. 공식전 CAM 히트맵 우측 편중 여부로 검증한다. [쟁점 #21 판정 2026-10-21 → HELD] 정본 CAM cam_playmaker/Roaming 유지. 만잠비 CAM 공식 선발 3경기(토트넘·브렌트퍼드·뉴캐슬) 단일 fit 1위가 모두 playmaker/Roaming(.622/.751/.752)이고, 3경기 집계는 .769로 2위 playmaker/Balanced .645와 Δ.124다. #200 틀림: halfwinger Attack이 Balanced보다 낮다(.355/.373/.448 vs .502/.560/.547, 집계 .428 vs .597). #301 틀림: classic10 최고치가 Roaming보다 .10~.14 낮다(집계 Versatile .624). #317 틀림: 뉴캐슬전 1H 알리송이 우측 터치라인 83%(y15.7)라 박스형 4-2-2-2가 아니라 비대칭 4-2-3-1이다. #311 부분 맞음: 좁힌 건 부엔디아(y62.8 좌 하프스페이스)뿐이다. #322 맞음: 부엔디아 좌측 터치라인 32%. #292 부분 맞음: 9분 창 교대(H3)가 확인된다. #306 부분 맞음: 페네르바체전 만잠비 y62.4 좌측(음바예 정통 윙어 탓, 부엔디아 미출전)이고 뉴캐슬전에는 반복되지 않았다(y42.8). #204 부분 맞음: 부엔디아 CAM 4선발 중 3경기가 우측 열 비중 .42~.47 > 좌 .30~.34(아스날전만 반대). 재판정 조건: CAM 선발 2경기 이상에서 Roaming 외 조합이 Δ>.05로 1위일 때. 후속(정본 아님): 만잠비 fc26:opt:CAM(halfwinger/Balanced .861)은 25/26 투영값이고 26/27 measured 행이 없다. 재산출을 권장한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "limit",
@@ -5224,7 +5224,7 @@
       "resolution": null,
       "status": "open",
       "title": "RM 인선: 침투형 윙어 vs 맥긴 체제",
-      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": "[\"잭슨은 내려와 받는 9번\", \"맥긴·부엔디아는 뒷공간을 뛰지 않는다(맥긴 본인 발언 인용)\", \"음바예·만잠비를 침투자로\"]",
@@ -5271,12 +5271,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 1,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
       "trigger": "2026-08-11 이후 리그 6경기 (7/6)"
      },
@@ -5287,8 +5287,8 @@
      "team_code": "AVL",
      "value": "Counter",
      "value_kr": "역습(공을 내주고 받아친다)",
-     "verdict": "PENDING",
-     "verdict_note": "근거가 토트넘 원정 1경기(점유 36%·롱볼 14.5%, 리포트 #47)다. 정본 빌드업 Balanced(obs#1081 — 롱볼 비중은 상대 압박 반응)와 충돌하지만 기각할 만큼 반증도 없다. 판정 조건: 26/27 PL 홈·원정 각 3경기 이상에서 점유율·롱볼 비율이 상대 압박 강도와 무관하게 역습 쪽으로 쏠리면 Counter 검토"
+     "verdict": "HELD",
+     "verdict_note": "근거가 토트넘 원정 1경기(점유 36%·롱볼 14.5%, 리포트 #47)다. 정본 빌드업 Balanced(obs#1081 — 롱볼 비중은 상대 압박 반응)와 충돌하지만 기각할 만큼 반증도 없다. 판정 조건: 26/27 PL 홈·원정 각 3경기 이상에서 점유율·롱볼 비율이 상대 압박 강도와 무관하게 역습 쪽으로 쏠리면 Counter 검토 [쟁점 #1 판정 2026-10-21 → HELD] 정본 빌드업 Balanced(#32, 10-15) 유지. 26/27 PL 7경기는 점유 중앙값 50%, 롱볼 중앙값 12.8%이고 core.team_settings 기준으로 Balanced다(공식전 11경기는 45%·11.8%로 역시 Balanced). 경기별로는 Counter 4(브라이턴·아스날·토트넘·브렌트퍼드)·Balanced 2·Short 1(헐)이다. 홈은 C2/B1, 원정은 C2/B1/S1로 홈·원정 차이가 없다. 상대 PPDA와 롱볼% 상관은 PL −0.95(공식전 −0.84)다. Counter 4경기의 상대 PPDA는 모두 ≤8.17, 비Counter 경기는 7.46~20.8이다. 즉 롱볼은 상대 압박에 대한 반응이지 기본값이 아니다(obs#1081과 같다). 주장별: #356 틀림(압박과 무관한 쏠림이 없다). #196 부분: 점유는 25/26 PL 53.5%에서 47.4%로 −6.1pp 낮아졌지만, 25/26 롱볼 데이터가 0/46행이라 롱볼 비교는 할 수 없다. #273 맞음(브렌트퍼드 15.0% vs PL 평균 12.0%, 상대 PPDA 6.68). #298 맞음(뉴캐슬 스즈키 롱 비중 15%→63%→92%, 43′ 맨마킹 전환 반응). #45·#52는 설정 축이 아니다(브뤼헤 점유 36%·xG 3.22 승, 포레스트 54%·xG 0.82 패, 우측 xG 0.00) — 승패는 상대 구조의 결과다. #294는 역습 슈팅 데이터가 없어 판정 불가. 재판정 조건: 저압박 상대(PPDA ≥11) PL 3경기 이상에서도 롱볼 ≥13%이거나 점유 ≤40%가 나올 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -5324,14 +5324,14 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 13,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-08-11 이후 캐시 RB 선발 3경기 (8/3)"
+      "trigger": "2026-08-11 이후 캐시 RB 선발 3경기 (7/3)"
      },
      "player": null,
      "points_kr": null,
@@ -5340,8 +5340,8 @@
      "team_code": "AVL",
      "value": "left CB must defend wide areas 1v1 when left back advances",
      "value_kr": "왼쪽 풀백(마첸) 전진 시 왼쪽 CB가 측면 넓은 공간 1대1 수비",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 왼쪽 CB 히트맵의 측면 열(열0~1) 수비 행동 비중"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 왼쪽 CB 히트맵의 측면 열(열0~1) 수비 행동 비중 [쟁점 #13 판정 2026-10-21 → HELD] RB 정본 fb_wingback/Balanced를 유지한다. 캐시 공식전 RB 선발 7경기의 단일 경기 1위: wingback/Balanced 4(PSG .907 · 브라이턴 .951 · 페네르 .870 Δ.027 · 뉴캐슬 .895 Δ.112) 대 att_wb/Support 3(아스날 .789 · 헐 .910 · 브렌트퍼드 .895 Δ.004). Δ>.05로 결정된 경기는 뉴캐슬 하나이고, 결과는 wingback이다. 7경기 집계(core.aggregate·hp≥15)도 wingback/Balanced .897 > att_wb/Support .879(Δ.018 노이즈)다. 비대칭은 경기마다 달랐다: 뉴캐슬 좌측만 높음(완비사카 x55 · 캐시 46.2 잔류) · 페네르 2-4-4 대칭(UEFA 40.6 대 41.5m) · 브렌트퍼드 캐시 46.2 > 루헤리 35.8. 그래서 '한쪽 전진'은 맞지만 고정된 쪽은 없다. 좌측 CB의 터치라인 열(열0) 수비 비중은 13/97=13%로 RCB 열4의 10/99=10%와 비슷하다. #401 맞음 · #276 부분 맞음(동시 선발 1경기) · #290 과장 · #46 단일 경기라 미판정. 재판정 조건: 캐시 다음 선발 5경기 중 3경기에서 att_wb가 Δ>.05로 1위면 다시 본다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "limit",
@@ -5350,12 +5350,12 @@
      "focus": null,
      "headline_kr": "밍스는 걷어내기형 — 빌드업 요구 시 불안",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 22,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "밍스 선발 시 CB 역할: 빌드업 BPD vs 덜 관여하는 역할",
       "trigger": "2026-08-11 이후 밍스 선발 3경기 (5/3)"
      },
@@ -5366,8 +5366,8 @@
      "team_code": "AVL",
      "value": "asked to play out under pressure though a last-ditch defender by nature",
      "value_kr": "밍스는 본래 걷어내기형인데 빌드업·운반을 요구받아 불안 — 게임 역할로 성향 차 재현 한계",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 밍스 전진 패스·패스 성공률 실측과 cb_defender/cb_stopper 적합도"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 밍스 전진 패스·패스 성공률 실측과 cb_defender/cb_stopper 적합도 [쟁점 #22 판정 2026-10-21 → HELD] 밍스 처방 cb_bpd/Aggressive는 기하로 유지된다(처방 변경 여부는 사용자 판단으로 넘긴다). 공식 선발 5경기(헐·코번트리·토트넘·브렌트퍼드·뉴캐슬) 집계에서 cb_bpd/Aggressive .906 > Build-Up .886 > cb_stopper/Aggressive .799(Δ.107) > cb_defender/Balanced .702(Δ.204)다. 단일 경기에서 stopper·defender가 1위인 경기는 0이다. 패스 품질은 약점이 맞다. 4경기 패스 163/193(84.5%)으로 린델뢰프 91.9%(296/322)·토레스 89.3%(134/150)보다 낮고, 브렌트퍼드전 77%(36/47)는 CB 최저이며 9′ Opta Error가 10′ 실점으로 이어졌다. 같은 경기 대조: 토트넘 91% vs 린델뢰프 93% · 뉴캐슬 85% vs 84%로 차이가 없고, 뉴캐슬전 전진 패스는 6 vs 린델뢰프 10(WS)이다. #210·#216·#234 맞음: 표적 압박 + 실행 실수가 1경기에서 확인된다. #289 부분 맞음: 빌드업 불안은 패스율 −7%p로 보이지만, 커널은 defender/stopper를 지지하지 않는다. 재판정 조건: 밍스 선발 패스 성공률 80% 미만이 3경기 누적되거나 실점 직결 실수가 2회째일 때 사용자에게 다시 상정한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -5376,12 +5376,12 @@
      "focus": "Build-Up",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 23,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "토레스·린델뢰프 CB 포커스: Build-Up vs Aggressive",
       "trigger": "2026-08-11 이후 파우 토레스 LCB 선발 3경기 (5/3)"
      },
@@ -5392,8 +5392,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 토레스 cb_bpd Build-Up 적합도와 전진 패스 실측(205분 소표본)"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 토레스 cb_bpd Build-Up 적합도와 전진 패스 실측(205분 소표본) [쟁점 #23 판정 2026-10-21 → HELD] 정본 LCB cb_bpd/Build-Up과 RCB cb_bpd/Aggressive를 둘 다 유지한다. 토레스 LCB 공식 선발 5경기(PSG·브라이턴·아스날·브뤼헤·페네르바체)에서 Build-Up−Aggressive 단일 Δ는 +.041/+.004/−.034/−.012/−.034이고, 집계는 .922 vs .926(Δ−.004)이다. 모두 노이즈 구간(≤.05)이라 기하로는 포커스를 가르지 못한다. 기능 축은 Build-Up 쪽이다. 패스 89.3%(134/150), 페네르바체전 전진 패스 20(두 CB 중 최다)·54/57, 브뤼헤전 도움 2·키패스 4. #275·#288 맞음(전개 허브). 다만 브라이턴전 실점 직결 실수가 1회 있었다. 린델뢰프 RCB 10선발에서 Aggressive가 1위인 경기는 9/10이고, 집계는 .975 vs Build-Up .912(Δ.063)다. #239 부분 맞음: 페네르바체전에는 패스 출발 40.5m vs 토레스 34.0m로 높았지만, 뉴캐슬전에는 출발 x 27.4(밍스 34.1)·평균 x 24.8로 낮았다. 상시 CDM 전진이 아니라 경기 의존이다. 재판정 조건: 토레스 LCB 선발 3경기 이상에서 Aggressive가 Δ>.05로 앞서거나, 린델뢰프 RCB 집계 Δ가 .05 아래로 내려올 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -5456,12 +5456,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 1,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
       "trigger": "2026-08-11 이후 리그 6경기 (7/6)"
      },
@@ -5472,8 +5472,8 @@
      "team_code": "AVL",
      "value": "Counter",
      "value_kr": "역습",
-     "verdict": "PENDING",
-     "verdict_note": "팬 관찰(근거 등급 D) — 방향은 토트넘전 롱볼 비중 14.5%(26/27 최고, D7zbh9-q8d8 claim)와 맞지만, 그 경기는 상대 맞춤 설계였다는 것이 기존 판정이다. 재판정 조건: 시즌 리그 경기의 롱패스 비율·GK 롱킥 비중이 25/26 대비 일관되게 높으면(3경기 이상) 시즌 정본으로 올린다. 1경기 맞춤 설계와 시즌 기본값을 구분할 것. ⚠️ auto-caption."
+     "verdict": "HELD",
+     "verdict_note": "팬 관찰(근거 등급 D) — 방향은 토트넘전 롱볼 비중 14.5%(26/27 최고, D7zbh9-q8d8 claim)와 맞지만, 그 경기는 상대 맞춤 설계였다는 것이 기존 판정이다. 재판정 조건: 시즌 리그 경기의 롱패스 비율·GK 롱킥 비중이 25/26 대비 일관되게 높으면(3경기 이상) 시즌 정본으로 올린다. 1경기 맞춤 설계와 시즌 기본값을 구분할 것. ⚠️ auto-caption. [쟁점 #1 판정 2026-10-21 → HELD] 정본 빌드업 Balanced(#32, 10-15) 유지. 26/27 PL 7경기는 점유 중앙값 50%, 롱볼 중앙값 12.8%이고 core.team_settings 기준으로 Balanced다(공식전 11경기는 45%·11.8%로 역시 Balanced). 경기별로는 Counter 4(브라이턴·아스날·토트넘·브렌트퍼드)·Balanced 2·Short 1(헐)이다. 홈은 C2/B1, 원정은 C2/B1/S1로 홈·원정 차이가 없다. 상대 PPDA와 롱볼% 상관은 PL −0.95(공식전 −0.84)다. Counter 4경기의 상대 PPDA는 모두 ≤8.17, 비Counter 경기는 7.46~20.8이다. 즉 롱볼은 상대 압박에 대한 반응이지 기본값이 아니다(obs#1081과 같다). 주장별: #356 틀림(압박과 무관한 쏠림이 없다). #196 부분: 점유는 25/26 PL 53.5%에서 47.4%로 −6.1pp 낮아졌지만, 25/26 롱볼 데이터가 0/46행이라 롱볼 비교는 할 수 없다. #273 맞음(브렌트퍼드 15.0% vs PL 평균 12.0%, 상대 PPDA 6.68). #298 맞음(뉴캐슬 스즈키 롱 비중 15%→63%→92%, 43′ 맨마킹 전환 반응). #45·#52는 설정 축이 아니다(브뤼헤 점유 36%·xG 3.22 승, 포레스트 54%·xG 0.82 패, 우측 xG 0.00) — 승패는 상대 구조의 결과다. #294는 역습 슈팅 데이터가 없어 판정 불가. 재판정 조건: 저압박 상대(PPDA ≥11) PL 3경기 이상에서도 롱볼 ≥13%이거나 점유 ≤40%가 나올 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -5597,12 +5597,12 @@
      "focus": "Balanced",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 26,
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "헤밍스 LM 역할: 인사이드 포워드 vs 와이드 미드",
       "trigger": "2026-08-11 이후 헤밍스 LM,LAM 선발 3경기 (6/3)"
      },
@@ -5613,8 +5613,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "정본 LM 슬롯(wm_insidefwd/Balanced)과 방향은 맞지만 영상은 히트맵이 왼쪽 윙 위주·박스 터치 1.12라 안으로 좁히는 몫이 약하다고 본다 — 역할 코드를 가르지 못한다. 판정 조건: 헤밍스 LM 선발 3경기 이상 단일 경기 fit에서 wm_insidefwd와 wm_widemid의 차이가 0.05를 넘으면"
+     "verdict": "REJECTED",
+     "verdict_note": "정본 LM 슬롯(wm_insidefwd/Balanced)과 방향은 맞지만 영상은 히트맵이 왼쪽 윙 위주·박스 터치 1.12라 안으로 좁히는 몫이 약하다고 본다 — 역할 코드를 가르지 못한다. 판정 조건: 헤밍스 LM 선발 3경기 이상 단일 경기 fit에서 wm_insidefwd와 wm_widemid의 차이가 0.05를 넘으면 [쟁점 #26 판정 2026-10-21 → REJECTED] 헤밍스를 wm_insidefwd/Balanced로 본 #359·#432는 실측과 반대다. 헤밍스 LAM 공식 선발 6경기 단일 fit에서 와이드 미드(widemid 최고 포커스)가 인사이드 포워드 Balanced를 앞선 경기는 5/6이고, Δ>.05인 경기는 4경기다(PSG +.186 · 아스날 +.149 · 포레스트 +.102 · 코번트리 +.260 · 브뤼헤 +.036). IF가 앞선 경기는 헐 1경기(+.063)뿐이다. 6경기 집계(450분)는 widemid/Support .684 vs IF/Balanced .608(Δ.076)이고, 1위는 wm_winger/Balanced .712다. 두 영상의 단서(좌측 고정 y78.3·박스 터치 적음)와 실측이 일치하지만, 결론(IF/Balanced)은 기각한다. 정본 LM은 바꾸지 않는다. 10-15 사용자 결정으로 음바예·부엔디아 근거의 IF/Balanced가 됐고 헤밍스는 09-16 이후 선발이 없다. 헤밍스 개인 처방 fc26:opt:LM(widemid/Support .662)이 이미 실측 방향이다. 헤밍스 LM 선발 경기 프리셋은 widemid/Support를 쓴다. 참고: 부엔디아 뉴캐슬전 LM도 widemid/Support .696 vs IF .474다(정본 재검토 조건은 윙어 계열 기준). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -5729,14 +5729,14 @@
      "focus": "Support",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -5745,8 +5745,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "정본 ST st_advanced/Support와 방향은 맞지만(돌파·연계) 「박스 중앙 점유가 부족하다」는 지적은 Attack 포커스 쪽 근거도 된다 — 역할·포커스를 가르지 못한다. 판정 조건: 잭슨 26/27 박스 안 터치·측면 셀 비중을 25/26 왓킨스와 대조(vqV-BmjVt2c claim #333과 같은 조건)"
+     "verdict": "HELD",
+     "verdict_note": "정본 ST st_advanced/Support와 방향은 맞지만(돌파·연계) 「박스 중앙 점유가 부족하다」는 지적은 Attack 포커스 쪽 근거도 된다 — 역할·포커스를 가르지 못한다. 판정 조건: 잭슨 26/27 박스 안 터치·측면 셀 비중을 25/26 왓킨스와 대조(vqV-BmjVt2c claim #333과 같은 조건) [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -5780,14 +5780,14 @@
      "focus": null,
      "headline_kr": "한쪽 풀백 전진, 반대쪽이 좁혀 백3",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 13,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-08-11 이후 캐시 RB 선발 3경기 (8/3)"
+      "trigger": "2026-08-11 이후 캐시 RB 선발 3경기 (7/3)"
      },
      "player": null,
      "points_kr": "[\"루헤리 전진 시 캐시가 안으로\", \"캐시 전진 시 루헤리가 백3 합류\", \"경기별로 고정 운용도 가능\"]",
@@ -5796,8 +5796,8 @@
      "team_code": "AVL",
      "value": "one full-back pushes on, other tucks in to make back three",
      "value_kr": "한쪽 풀백이 올라가면 반대쪽 풀백이 안으로 좁혀 백3를 만든다(루헤리↔캐시 교대)",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 루헤리·캐시 동시 출전 경기의 평균 위치로 비대칭 백3 여부 확인"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 루헤리·캐시 동시 출전 경기의 평균 위치로 비대칭 백3 여부 확인 [쟁점 #13 판정 2026-10-21 → HELD] RB 정본 fb_wingback/Balanced를 유지한다. 캐시 공식전 RB 선발 7경기의 단일 경기 1위: wingback/Balanced 4(PSG .907 · 브라이턴 .951 · 페네르 .870 Δ.027 · 뉴캐슬 .895 Δ.112) 대 att_wb/Support 3(아스날 .789 · 헐 .910 · 브렌트퍼드 .895 Δ.004). Δ>.05로 결정된 경기는 뉴캐슬 하나이고, 결과는 wingback이다. 7경기 집계(core.aggregate·hp≥15)도 wingback/Balanced .897 > att_wb/Support .879(Δ.018 노이즈)다. 비대칭은 경기마다 달랐다: 뉴캐슬 좌측만 높음(완비사카 x55 · 캐시 46.2 잔류) · 페네르 2-4-4 대칭(UEFA 40.6 대 41.5m) · 브렌트퍼드 캐시 46.2 > 루헤리 35.8. 그래서 '한쪽 전진'은 맞지만 고정된 쪽은 없다. 좌측 CB의 터치라인 열(열0) 수비 비중은 13/97=13%로 RCB 열4의 10/99=10%와 비슷하다. #401 맞음 · #276 부분 맞음(동시 선발 1경기) · #290 과장 · #46 단일 경기라 미판정. 재판정 조건: 캐시 다음 선발 5경기 중 3경기에서 att_wb가 Δ>.05로 1위면 다시 본다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -5813,7 +5813,7 @@
       "resolution": null,
       "status": "open",
       "title": "루헤리 LB 역할: 공격형 윙백 vs 수비형 풀백",
-      "trigger": "2026-08-11 이후 마테오 루헤리 LB 선발 5경기 (4/5)"
+      "trigger": "2026-08-11 이후 마테오 루헤리 LB 선발 5경기 (3/5)"
      },
      "player": "마테오 루헤리",
      "points_kr": null,
@@ -5886,14 +5886,14 @@
      "focus": "Support",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -5902,8 +5902,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "정본 ST st_advanced/Support(침투+연계)와 방향은 맞지만 「뒷공간·연계·볼 유지 모두」라는 묘사는 역할 코드를 가르지 못한다. 판정 조건: 잭슨 26/27 측면·하프라인 셀 비중을 25/26 왓킨스와 대조(vqV-BmjVt2c claim #333과 같은 조건)"
+     "verdict": "HELD",
+     "verdict_note": "정본 ST st_advanced/Support(침투+연계)와 방향은 맞지만 「뒷공간·연계·볼 유지 모두」라는 묘사는 역할 코드를 가르지 못한다. 판정 조건: 잭슨 26/27 측면·하프라인 셀 비중을 25/26 왓킨스와 대조(vqV-BmjVt2c claim #333과 같은 조건) [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -5939,12 +5939,12 @@
      "focus": null,
      "headline_kr": "스즈키 롱 배급이 상대 압박을 억제",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 3,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
       "trigger": "2026-08-11 이후 스즈키 지온 선발 3경기 (8/3)"
      },
@@ -5955,8 +5955,8 @@
      "team_code": "AVL",
      "value": "long direct balls to striker as a threat that stops opponents squeezing high",
      "value_kr": "스즈키 롱 배급(잭슨 직결)으로 상대 전방 압박 억제 → 중원 공간 확보",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 스즈키 롱패스 비율·목표 지점(9번 쪽 비중)과 상대 PPDA 변화"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 스즈키 롱패스 비율·목표 지점(9번 쪽 비중)과 상대 PPDA 변화 [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "instruction",
@@ -5965,12 +5965,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 3,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
       "trigger": "2026-08-11 이후 스즈키 지온 선발 3경기 (8/3)"
      },
@@ -5981,8 +5981,8 @@
      "team_code": "AVL",
      "value": "3v2 with GK and split centre backs",
      "value_kr": "GK+벌어진 센터백 둘로 상대 1선 2명에 3대2",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 골킥 시 CB 벌림 형태와 상대 1선 압박 인원(경기 영상·패스맵)"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 골킥 시 CB 벌림 형태와 상대 1선 압박 인원(경기 영상·패스맵) [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -5991,12 +5991,12 @@
      "focus": "Build-Up",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 3,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
       "trigger": "2026-08-11 이후 스즈키 지온 선발 3경기 (8/3)"
      },
@@ -6007,8 +6007,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 스즈키 골킥·빌드업 시 위치(박스 밖 전진 빈도)와 gk_ballplaying/gk_sweeper 적합도 비교"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 스즈키 골킥·빌드업 시 위치(박스 밖 전진 빈도)와 gk_ballplaying/gk_sweeper 적합도 비교 [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -6045,14 +6045,14 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 12,
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "루헤리 크로스 위치: 이른 크로스 vs 컷백",
-      "trigger": "2026-08-11 이후 마테오 루헤리 선발 2경기 (4/2)"
+      "trigger": "2026-08-11 이후 마테오 루헤리 선발 2경기 (3/2)"
      },
      "player": "마테오 루헤리",
      "points_kr": null,
@@ -6061,8 +6061,8 @@
      "team_code": "AVL",
      "value": "early crosser rather than byline runner (vs Maatsen)",
      "value_kr": "루헤리는 이른 크로스형 · 마첸은 바이라인 돌파형",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 루헤리·마첸 크로스 시도 위치(하프스페이스 vs 바이라인) 분포"
+     "verdict": "REJECTED",
+     "verdict_note": "실측 대조 필요: 루헤리·마첸 크로스 시도 위치(하프스페이스 vs 바이라인) 분포 [쟁점 #12 판정 2026-10-21 → REJECTED] 루헤리 빌라 공식전 선발 3경기(코번트리·토트넘·브렌트퍼드)의 WS 오픈플레이 크로스 8개를 셌다. 시작 깊이는 바이라인(x≥88) 4 · 이른 크로스(x<83) 4로 반반이다. 시작 레인은 8개 중 7개가 터치라인 레인(y≥83)이다. 하프스페이스에서 시작한 이른 크로스는 0이고, 컷백(바이라인에서 뒤로 박스 앞에 내주는 패스)도 0이다. 성공은 2/8. 키패스 3개 중 2개는 자기 진영(x25·x31)에서 찬 롱볼이다. 마첸(헐·포레스트 크로스 5): 바이라인 2 · x83~88 2 · 이른 크로스 1이고, 하프스페이스 시작(84,76)이 1개 있다. 둘이 「아주 다르다」고 할 차이는 없다. ⇒ #284 부분 맞음(이른 크로스 4/8은 맞다. 다만 하프스페이스가 아니라 터치라인 레인이고 마첸과 차이도 작다). #453 틀림(컷백 0/8 · 원 근거는 아틀레티코 단일 경기). 표본이 크로스 8개뿐이다. 재판정 조건: 루헤리 선발 3경기를 더 모아 크로스 15개 이상이 되면 다시 센다(현재 햄스트링 부상). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "instruction",
@@ -6071,12 +6071,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 20,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
       "trigger": "2026-08-11 이후 주앙 고메스 선발 3경기 (6/3)"
      },
@@ -6087,8 +6087,8 @@
      "team_code": "AVL",
      "value": "drive forward past players, wants more presence on edge of box",
      "value_kr": "운반 돌파로 득점 관여 · 박스 앞 진출·슈팅을 더 요구",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 주앙 고메스 히트맵 전진 구역 비중·운반 지표와 카마라 짝일 때 역할 분담"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 주앙 고메스 히트맵 전진 구역 비중·운반 지표와 카마라 짝일 때 역할 분담 [쟁점 #20 판정 2026-10-21 → HELD] LDM 정본 dm_dlp/Roaming을 유지한다. 고메스 LDM 공식 선발 5경기 집계(core.aggregate): dm_dlp/Roaming .818 · dm_holding/Roaming .761 · dm_holding/Ball-Winning .612. cm_holding/Ball-Winning은 LDM x에서 .571이다. 분업은 고정돼 있지 않다. 동시 선발 6경기 avg_x(고메스−카마라)는 +5.5 · +2.1 · +9.7 · −2.1 · −1.9 · +1.9로, 누가 더 높은지가 경기마다 바뀐다. 국면 그리드 깊이(고메스−카마라)는 브뤼헤 보유 +8.5 · 수비 +9.7, 토트넘 +1.7/−3.3, 브렌트퍼드 −3.8/−0.9, 뉴캐슬 +1.7/+2.4다. 태클+가로채기는 고메스 20(417′ · 4.3/90) 대 카마라 15(404′ · 3.3/90)로 고메스가 조금 더 파괴적이다. #270 맞음(둘 다 수비·전진) · #279 브렌트퍼드에서만 맞음(카마라 보유 깊이 51.1 > 고메스 47.3 · 최전방 2행 비중 .42 대 .24 · 브뤼헤는 반대) · #280 틀림(cm_holding Ball-Winning .571 ≪ dm_dlp/Roaming .818) · #268 틀림(뉴캐슬 빌드업 수신은 카마라 15회(y32) · 고메스 6회(y49)로 카마라가 비우지 않았다) · #285 요구라 판정하지 않음(고메스 슈팅 0~1/경기). 재판정 조건: 고메스 LDM 집계에서 dm_dlp/Roaming 대비 Δ>.05인 다른 역할이 나오면 다시 본다. 참고(이 쟁점 밖): 카마라 RDM 집계는 dm_dlp/Roaming .831 > 정본 dm_holding/Defend .683(Δ.148)이다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "instruction",
@@ -6123,14 +6123,14 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 27,
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "완비사카: 적응 추세와 좌측 기용 포커스",
-      "trigger": "2026-08-11 이후 완비사카 선발 3경기 (8/3)"
+      "trigger": "2026-08-11 이후 완비사카 선발 3경기 (6/3)"
      },
      "player": "완비사카",
      "points_kr": null,
@@ -6139,8 +6139,8 @@
      "team_code": "AVL",
      "value": "a yard or two out of position while adapting to Emery system",
      "value_kr": "에메리 체계 적응기 한두 걸음 위치 이탈 — 게임 설정으로 재현 불가",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 완비사카 경기별 수비 지표·히트맵 변화(적응 추세)"
+     "verdict": "REJECTED",
+     "verdict_note": "실측 대조 필요: 완비사카 경기별 수비 지표·히트맵 변화(적응 추세) [쟁점 #27 판정 2026-10-21 → REJECTED] #293(좌측 기용 시 fb_fullback/Defend)은 실측과 반대다. LB 선발 2경기에서 fullback/Defend는 .339(페네르바체)·.386(뉴캐슬)으로 최하위권이고, 1위는 wingback/Balanced .868·att_wb/Support .929다. 집계는 att_wb/Support .951 vs fullback/Defend .431(Δ.52)이다. 뉴캐슬전에는 평균 x 55.0·좌측 터치라인 94%·상대 진영 62%·패스 출발 x 62.2(캐시 43.5)로, 정본 LB fb_att_wb/Support 쪽 고점 폭이었다. 「공격 기여 없음」은 수치상 부분 맞음이다(키패스 0·0, 크로스 2). #287(적응 추세)은 측정 가능한 추세가 없다. 태클+인터셉트 /90은 5.3→8.0→6.0→8.0→(LB)6.0→4.0→2.3으로 줄었지만, 역할이 RB 억제형에서 LB 고점형으로 바뀐 영향이 섞여 있다. 평점은 6.7~7.5로 평탄하다. 실점 기원은 브뤼헤전 2실점(PK 헌납 1)이 그의 측면이었고, 이후 4선발에서는 해당 지적이 0건이다. 오른쪽 햄스트링 부상(10-17 77′)으로 추가 표본이 당분간 없다. 재판정 조건: 복귀 후 LB 선발 3경기에서 fullback 계열이 Δ>.05로 1위일 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -6177,12 +6177,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 3,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
       "trigger": "2026-08-11 이후 스즈키 지온 선발 3경기 (8/3)"
      },
@@ -6193,8 +6193,8 @@
      "team_code": null,
      "value": "catch_then_hold_until_shape_set_then_long_ball",
      "value_kr": "잡은 뒤 대형이 갖춰질 때까지 쥐고 롱볼",
-     "verdict": "PENDING",
-     "verdict_note": "해설자 본인이 추측이라고 밝혔다(「予想でしかない」/예상일 뿐). 재판정 조건: Opta 이벤트에서 스즈키 Claim/KeeperPickup → 다음 스즈키 Pass까지의 초 단위 간격과 그 패스의 Longball 비율을 2경기 이상 집계해, 빠른 스로 대신 지연 후 롱볼이 다수면 확정한다. ⚠️ auto-caption."
+     "verdict": "HELD",
+     "verdict_note": "해설자 본인이 추측이라고 밝혔다(「予想でしかない」/예상일 뿐). 재판정 조건: Opta 이벤트에서 스즈키 Claim/KeeperPickup → 다음 스즈키 Pass까지의 초 단위 간격과 그 패스의 Longball 비율을 2경기 이상 집계해, 빠른 스로 대신 지연 후 롱볼이 다수면 확정한다. ⚠️ auto-caption. [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "instruction",
@@ -6203,12 +6203,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 2,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
       "trigger": "2026-08-11 이후 공식전 5경기 (11/5)"
      },
@@ -6219,8 +6219,8 @@
      "team_code": "AVL",
      "value": "behind_advanced_fullbacks",
      "value_kr": "전진한 상대 풀백 뒤",
-     "verdict": "PENDING",
-     "verdict_note": "같은 경기에 대한 D7zbh9-q8d8 claim(behind_advanced_fullbacks)이 이미 Opta 실측으로 APPLIED다 — 이 영상은 다른 언어권·다른 채널의 독립 수렴이지만 같은 중계 화면을 본 해설이라 완전한 독립 교차검증은 아니다(불변규칙 12 주의). 값 변경 없음. ⚠️ auto-caption."
+     "verdict": "HELD",
+     "verdict_note": "같은 경기에 대한 D7zbh9-q8d8 claim(behind_advanced_fullbacks)이 이미 Opta 실측으로 APPLIED다 — 이 영상은 다른 언어권·다른 채널의 독립 수렴이지만 같은 중계 화면을 본 해설이라 완전한 독립 교차검증은 아니다(불변규칙 12 주의). 값 변경 없음. ⚠️ auto-caption. [쟁점 #2 판정 2026-10-21 → HELD] 상대 유형별 신규 프리셋은 만들지 않는다. 현행 vs-strong/vs-weak/lead와 저점유 보조 #33을 유지하고, 경기 전용 설정은 지금처럼 match_game_setups에 둔다. 26/27 공식전 11경기를 유형별로 나눴다. ①백3 2경기: 헐 5-4-1(0-0, 점유 74%, xG 1.93-0.57)과 포레스트 3-4-2-1(1-2 패, xG 0.82-2.28, 부상 탓에 강제된 백3). 결과가 갈려 「크립토나이트」 패턴이 아니다. ②투톱 1경기(뉴캐슬 4-1-3-2): DM 슬롯 선발 11경기 중 CB 자원 0회(카마라 9·고메스 5·바클리 5…). 대신 스즈키를 추가 인원으로 쓰고 캐시를 잔류시켰다(x 46). ③고압박(상대 PPDA ≤8.5) 7경기: 롱볼 평균 13.2%, 저압박 4경기는 8.0%. 결과는 3승 1무 3패다. 사용자 결정(10-20, obs#1081)으로 Counter 보조 프리셋은 두지 않는다. ④고라인(def_x_o ≥42.6) 4경기: match_period_stats에 롱패스 열이 없어 반별 비교가 안 된다. 주장별: #56 틀림(2경기 1무 1패지만 xG가 갈림). #370 틀림(26/27 재현 0회). #372 부분(롱 증가는 맞지만 25/26 첼시전 대조 자료가 없다). #373 틀림(뉴캐슬 43′ 대응은 앵커+전진 피벗이 아니라 GK 직접 배급). #377 판정 불가. #199 이미 APPLIED라 값 변경 없음. 재판정 조건: 투톱 상대 2경기째 또는 백3 상대 3경기째. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "instruction",
@@ -6229,12 +6229,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 16,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
       "trigger": "2026-08-11 이후 리그 2경기 (7/2)"
      },
@@ -6245,8 +6245,8 @@
      "team_code": "AVL",
      "value": "442_low_block_left_side_fixed",
      "value_kr": "4-4-2 낮은 블록, 좌측 고정",
-     "verdict": "PENDING",
-     "verdict_note": "같은 후반을 UTV(-5lhUwdm9QU)는 백5·백6 하강으로 읽어 APPLIED돼 있다 — 「저블록」은 일치하나 형태 단위가 갈린다. 재판정 조건: 후반 수비 국면 평균 좌표에서 윙어(부엔디아·맥긴)가 수비 라인 높이까지 내려앉았는지(백5/6) 미드 라인에 남았는지(4-4-2)를 하프 분할로 확인한다. ⚠️ auto-caption."
+     "verdict": "HELD",
+     "verdict_note": "같은 후반을 UTV(-5lhUwdm9QU)는 백5·백6 하강으로 읽어 APPLIED돼 있다 — 「저블록」은 일치하나 형태 단위가 갈린다. 재판정 조건: 후반 수비 국면 평균 좌표에서 윙어(부엔디아·맥긴)가 수비 라인 높이까지 내려앉았는지(백5/6) 미드 라인에 남았는지(4-4-2)를 하프 분할로 확인한다. ⚠️ auto-caption. [쟁점 #16 판정 2026-10-21 → HELD] 리드한 후반이 있었던 PL 경기는 2경기(토트넘 49′~ · 뉴캐슬 36′~)다. 브렌트퍼드 77~79′ 2분은 뺐다. 양 측면 미드가 백4 깊이까지 내려온 경기는 0/2라서 백6은 성립하지 않는다. 토트넘 2H는 맥긴 32 · 부엔디아 41 대 백4 13~22로 우측만 내려온 편중 백5다(리포트 #47과 같음). 뉴캐슬 2H는 부엔디아 37 · 맥긴 49 대 백4 10~22로 낮은 4-4-2 블록이다. 두 경기 형태가 달라서 match_game_setups나 게임플랜 2안으로 옮길 근거가 없다. 정본(수비 Balanced · 라인 유지)을 유지하고 '리드 시 라인 하향' 국면 지시로만 둔다. #366·#405 틀림(백6) · #201 부분 맞음(뉴캐슬 4-4-2 저블록 O · 토트넘은 편중 백5) · #202 부분 맞음(토트넘 우측 터치 95→82로 줄었지만 그쪽 박스 진입은 2→5로 늘었다. 반대편 터치는 64→127) · #246 정합(페네르 UCL PPDA 1H 10.79→2H 15.0) · #315 템포는 늦어졌지만 볼 소유에는 실패(점유 60→41 · PPDA 7.19→11.43). 재판정 조건: 리드 후반 PL 2경기를 더 모아 같은 형태가 2회 이상 나오면 프리셋을 검토한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "instruction",
@@ -6255,12 +6255,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 16,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
       "trigger": "2026-08-11 이후 리그 2경기 (7/2)"
      },
@@ -6271,8 +6271,8 @@
      "team_code": "AVL",
      "value": "gomes_buendia_track_gray_savinho",
      "value_kr": "주앙 고메스·부엔디아가 그레이·사비뉴 추적",
-     "verdict": "PENDING",
-     "verdict_note": "재판정 조건: 토트넘 우측(사비뉴·그레이)의 전·후반 이벤트 수·박스 진입을 하프 분할로 비교해 후반 감소가 확인되면 APPLIED. 해설은 대가로 빌라 우측(캐시·맥긴)이 흔들렸다고 지적하므로 반대편 증가도 함께 본다. ⚠️ auto-caption(「ブエリア」는 부엔디아 오인식)."
+     "verdict": "HELD",
+     "verdict_note": "재판정 조건: 토트넘 우측(사비뉴·그레이)의 전·후반 이벤트 수·박스 진입을 하프 분할로 비교해 후반 감소가 확인되면 APPLIED. 해설은 대가로 빌라 우측(캐시·맥긴)이 흔들렸다고 지적하므로 반대편 증가도 함께 본다. ⚠️ auto-caption(「ブエリア」는 부엔디아 오인식). [쟁점 #16 판정 2026-10-21 → HELD] 리드한 후반이 있었던 PL 경기는 2경기(토트넘 49′~ · 뉴캐슬 36′~)다. 브렌트퍼드 77~79′ 2분은 뺐다. 양 측면 미드가 백4 깊이까지 내려온 경기는 0/2라서 백6은 성립하지 않는다. 토트넘 2H는 맥긴 32 · 부엔디아 41 대 백4 13~22로 우측만 내려온 편중 백5다(리포트 #47과 같음). 뉴캐슬 2H는 부엔디아 37 · 맥긴 49 대 백4 10~22로 낮은 4-4-2 블록이다. 두 경기 형태가 달라서 match_game_setups나 게임플랜 2안으로 옮길 근거가 없다. 정본(수비 Balanced · 라인 유지)을 유지하고 '리드 시 라인 하향' 국면 지시로만 둔다. #366·#405 틀림(백6) · #201 부분 맞음(뉴캐슬 4-4-2 저블록 O · 토트넘은 편중 백5) · #202 부분 맞음(토트넘 우측 터치 95→82로 줄었지만 그쪽 박스 진입은 2→5로 늘었다. 반대편 터치는 64→127) · #246 정합(페네르 UCL PPDA 1H 10.79→2H 15.0) · #315 템포는 늦어졌지만 볼 소유에는 실패(점유 60→41 · PPDA 7.19→11.43). 재판정 조건: 리드 후반 PL 2경기를 더 모아 같은 형태가 2회 이상 나오면 프리셋을 검토한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -6281,14 +6281,14 @@
      "focus": "Attack",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 21,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "2선(만잠비·부엔디아) 배치와 만잠비 역할",
-      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (4/3)"
+      "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (3/3)"
      },
      "player": "만잠비",
      "points_kr": null,
@@ -6297,8 +6297,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "역할(cam_halfwinger)은 현 처방(CAM cam_halfwinger/Balanced .861)과 같고, 영상은 배후 침투 비중을 근거로 Attack 쪽을 시사한다. 재판정 조건: 만잠비 CAM 선발 표본이 3경기 이상 쌓인 뒤 Attack이 Balanced를 fit Δ>0.05로 앞서면 focus를 바꾼다. ⚠️ auto-caption(이름이 「萬山日」「萬ザ日」 등으로 오인식)."
+     "verdict": "HELD",
+     "verdict_note": "역할(cam_halfwinger)은 현 처방(CAM cam_halfwinger/Balanced .861)과 같고, 영상은 배후 침투 비중을 근거로 Attack 쪽을 시사한다. 재판정 조건: 만잠비 CAM 선발 표본이 3경기 이상 쌓인 뒤 Attack이 Balanced를 fit Δ>0.05로 앞서면 focus를 바꾼다. ⚠️ auto-caption(이름이 「萬山日」「萬ザ日」 등으로 오인식). [쟁점 #21 판정 2026-10-21 → HELD] 정본 CAM cam_playmaker/Roaming 유지. 만잠비 CAM 공식 선발 3경기(토트넘·브렌트퍼드·뉴캐슬) 단일 fit 1위가 모두 playmaker/Roaming(.622/.751/.752)이고, 3경기 집계는 .769로 2위 playmaker/Balanced .645와 Δ.124다. #200 틀림: halfwinger Attack이 Balanced보다 낮다(.355/.373/.448 vs .502/.560/.547, 집계 .428 vs .597). #301 틀림: classic10 최고치가 Roaming보다 .10~.14 낮다(집계 Versatile .624). #317 틀림: 뉴캐슬전 1H 알리송이 우측 터치라인 83%(y15.7)라 박스형 4-2-2-2가 아니라 비대칭 4-2-3-1이다. #311 부분 맞음: 좁힌 건 부엔디아(y62.8 좌 하프스페이스)뿐이다. #322 맞음: 부엔디아 좌측 터치라인 32%. #292 부분 맞음: 9분 창 교대(H3)가 확인된다. #306 부분 맞음: 페네르바체전 만잠비 y62.4 좌측(음바예 정통 윙어 탓, 부엔디아 미출전)이고 뉴캐슬전에는 반복되지 않았다(y42.8). #204 부분 맞음: 부엔디아 CAM 4선발 중 3경기가 우측 열 비중 .42~.47 > 좌 .30~.34(아스날전만 반대). 재판정 조건: CAM 선발 2경기 이상에서 Roaming 외 조합이 Δ>.05로 1위일 때. 후속(정본 아님): 만잠비 fc26:opt:CAM(halfwinger/Balanced .861)은 25/26 투영값이고 26/27 measured 행이 없다. 재산출을 권장한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -6370,12 +6370,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 18,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "카마라·고메스 동시 선발 시 배급 주도권(CB 1·2위)",
       "trigger": "2026-10-11 이후 주앙 고메스 선발 1경기 (1/1)"
      },
@@ -6386,8 +6386,8 @@
      "team_code": "AVL",
      "value": "kamara_gomes_neither_dominant",
      "value_kr": "카마라·주앙 고메스 누구도 주도 못 함",
-     "verdict": "PENDING",
-     "verdict_note": "이 경기 실측: 카마라 패스 42(성공 35)·터치 48 · 주앙 고메스 패스·터치는 비슷한 대역이고 어느 쪽도 팀 배급을 독점하지 않는다. 다만 「지배하려 하지 않는다」는 성향 주장이라 단일 경기로 판정하지 않는다. ⛔ 재판정 조건: 두 선수 동시 선발 3경기에서 팀 패스 점유율 상위 1·2위를 CB가 차지하는 패턴이 반복되면 APPLIED.\n[D+3 2026-09-21 — 조건 미충족, PENDING 유지] 카마라·고메스 동시 선발 공식전은 이번 경기까지 4경기(08-12 슈퍼컵·08-23 PL·09-08 UCL·09-19 PL)이지만 08-23은 stats_json 결손으로 패스 집계 불가. 패스량 랭킹: 08-12 슈퍼컵(부엔디아1·캐시2·린델뢰프3, 카마라8·고메스9 — CB 상위 아님) / 09-08 UCL(파우 토레스1·린델뢰프2 — **CB 듀오가 상위 1·2위**, 카마라3·고메스5) / 09-19 이 경기(밍스1·카마라2 — CB 1명만 상위, 고메스는 순위 밖). ⇒ 「CB가 1·2위」 패턴은 3경기 중 1경기(09-08)에서만 나타나 **반복 조건 미충족**. PENDING 유지.\n[2026-10-11 스케줄 재확인(avl-kamara-gomes-cocheck-1010) — PENDING 유지 · 사람 판단 요청] 09-19 이후 AVL 공식전은 10-10 PL 브렌트퍼드전(match_id=115) 1경기(10-02 세비야전은 친선 — 제외). 카마라·고메스 둘 다 선발. SofaScore pass_total 랭킹: 밍스(LCB) 47 1위 · 린델뢰프(RCB) 46 2위 · 카마라 44 3위 · 스즈키 42 · 고메스·캐시 40 공동 5위 ⇒ **CB 듀오 1·2위 ✓**. 누적(패스 집계 가능한 동시 선발 공식전, 08-23 결손 제외): 08-12 ✗ / 09-08 ✓ / 09-19 ✗ / 10-10 ✓ = **2/4**. ⚠️ 판정 보류 사유: 원 조건 「3경기에서 반복」이 '2회 이상 출현(=반복)'인지 '3경기 중 다수/최근 3경기 기준(09-08~10-10 = 2/3)'인지 불명확하고, 전체 표본으론 50%다. 리포트 #51(reports/match-watch/2026-10-10-avl-brentford.md §7-1)은 「다음 동시 선발에서 한 번 더 나오면 APPLIED」로 적었다 — 기준 확정은 사용자 판단에 맡긴다. 참고: WhoScored 이벤트 집계로는 캐시 51·밍스 47·스즈키 46·린델뢰프 46으로 순위가 달라진다(정의 차이 — 판정은 SofaScore 기준 유지). 이월: 다음 카마라·고메스 동시 선발 공식전에서 재확인.\n[2026-10-11 사용자 결정] 2/4(최근 3경기 2/3)로는 APPLIED하지 않고 **다음 카마라·고메스 동시 선발 공식전 1경기를 더 본 뒤 판정**한다. 그 경기에서 CB 듀오가 패스량(SofaScore pass_total) 1·2위면 3회째 출현 → APPLIED 후보로 사람 판단에 올린다.\n[D+1 2026-10-11 브렌트퍼드전 추적] 새 패스 증거 없음(사용자 결정대로 다음 동시 선발 경기 대기). 정황만 추가: 1874 「Brenford really pressed him [Gomes] … from goal kicks」(골킥 빌드업 때 고메스를 집중 압박) — 고메스가 배급 축이 되지 못한 원인 후보(상대 표적 압박). Tanswell HT 「not sure if he can do that with Gomes & Kamara, who love duels」. PENDING 유지.\n[D+2 2026-10-12 — PENDING 유지] 새 패스 실측 없음. UTV 전술 리뷰(YV8GaXrtRpo)는 고메스를 네트워크 허브로 그린다 — #167의 반대 방향 정황이나 물량 지표(CB 1·2위)와 다른 축(obs#990). 재판정 조건 불변: 다음 동시 선발 경기에서 CB 1·2위가 한 번 더 나오면 APPLIED.\n[D+3 2026-10-13 — PENDING 유지 · 3일 추적 종결 후 이관] 새 패스 실측 0. 1874(4GBP2O02vTI)는 카마라 백3 하강 빌드업을 「제안」했으나 이 경기에서 관찰되지 않았다(카마라 점유 국면 자기 진영 최하단 행 .07 — claim REJECTED). ⛔ 재판정 조건 불변: 다음 카마라·고메스 동시 선발 공식전(예상 10-14 UCL 페네르바체전)에서 SofaScore pass_total 1·2위가 CB 듀오면 3회째 → APPLIED 후보로 사람 판단. 그 경기 match-watch 회차가 이 행을 이어받는다(obs#1005)."
+     "verdict": "HELD",
+     "verdict_note": "이 경기 실측: 카마라 패스 42(성공 35)·터치 48 · 주앙 고메스 패스·터치는 비슷한 대역이고 어느 쪽도 팀 배급을 독점하지 않는다. 다만 「지배하려 하지 않는다」는 성향 주장이라 단일 경기로 판정하지 않는다. ⛔ 재판정 조건: 두 선수 동시 선발 3경기에서 팀 패스 점유율 상위 1·2위를 CB가 차지하는 패턴이 반복되면 APPLIED.\n[D+3 2026-09-21 — 조건 미충족, PENDING 유지] 카마라·고메스 동시 선발 공식전은 이번 경기까지 4경기(08-12 슈퍼컵·08-23 PL·09-08 UCL·09-19 PL)이지만 08-23은 stats_json 결손으로 패스 집계 불가. 패스량 랭킹: 08-12 슈퍼컵(부엔디아1·캐시2·린델뢰프3, 카마라8·고메스9 — CB 상위 아님) / 09-08 UCL(파우 토레스1·린델뢰프2 — **CB 듀오가 상위 1·2위**, 카마라3·고메스5) / 09-19 이 경기(밍스1·카마라2 — CB 1명만 상위, 고메스는 순위 밖). ⇒ 「CB가 1·2위」 패턴은 3경기 중 1경기(09-08)에서만 나타나 **반복 조건 미충족**. PENDING 유지.\n[2026-10-11 스케줄 재확인(avl-kamara-gomes-cocheck-1010) — PENDING 유지 · 사람 판단 요청] 09-19 이후 AVL 공식전은 10-10 PL 브렌트퍼드전(match_id=115) 1경기(10-02 세비야전은 친선 — 제외). 카마라·고메스 둘 다 선발. SofaScore pass_total 랭킹: 밍스(LCB) 47 1위 · 린델뢰프(RCB) 46 2위 · 카마라 44 3위 · 스즈키 42 · 고메스·캐시 40 공동 5위 ⇒ **CB 듀오 1·2위 ✓**. 누적(패스 집계 가능한 동시 선발 공식전, 08-23 결손 제외): 08-12 ✗ / 09-08 ✓ / 09-19 ✗ / 10-10 ✓ = **2/4**. ⚠️ 판정 보류 사유: 원 조건 「3경기에서 반복」이 '2회 이상 출현(=반복)'인지 '3경기 중 다수/최근 3경기 기준(09-08~10-10 = 2/3)'인지 불명확하고, 전체 표본으론 50%다. 리포트 #51(reports/match-watch/2026-10-10-avl-brentford.md §7-1)은 「다음 동시 선발에서 한 번 더 나오면 APPLIED」로 적었다 — 기준 확정은 사용자 판단에 맡긴다. 참고: WhoScored 이벤트 집계로는 캐시 51·밍스 47·스즈키 46·린델뢰프 46으로 순위가 달라진다(정의 차이 — 판정은 SofaScore 기준 유지). 이월: 다음 카마라·고메스 동시 선발 공식전에서 재확인.\n[2026-10-11 사용자 결정] 2/4(최근 3경기 2/3)로는 APPLIED하지 않고 **다음 카마라·고메스 동시 선발 공식전 1경기를 더 본 뒤 판정**한다. 그 경기에서 CB 듀오가 패스량(SofaScore pass_total) 1·2위면 3회째 출현 → APPLIED 후보로 사람 판단에 올린다.\n[D+1 2026-10-11 브렌트퍼드전 추적] 새 패스 증거 없음(사용자 결정대로 다음 동시 선발 경기 대기). 정황만 추가: 1874 「Brenford really pressed him [Gomes] … from goal kicks」(골킥 빌드업 때 고메스를 집중 압박) — 고메스가 배급 축이 되지 못한 원인 후보(상대 표적 압박). Tanswell HT 「not sure if he can do that with Gomes & Kamara, who love duels」. PENDING 유지.\n[D+2 2026-10-12 — PENDING 유지] 새 패스 실측 없음. UTV 전술 리뷰(YV8GaXrtRpo)는 고메스를 네트워크 허브로 그린다 — #167의 반대 방향 정황이나 물량 지표(CB 1·2위)와 다른 축(obs#990). 재판정 조건 불변: 다음 동시 선발 경기에서 CB 1·2위가 한 번 더 나오면 APPLIED.\n[D+3 2026-10-13 — PENDING 유지 · 3일 추적 종결 후 이관] 새 패스 실측 0. 1874(4GBP2O02vTI)는 카마라 백3 하강 빌드업을 「제안」했으나 이 경기에서 관찰되지 않았다(카마라 점유 국면 자기 진영 최하단 행 .07 — claim REJECTED). ⛔ 재판정 조건 불변: 다음 카마라·고메스 동시 선발 공식전(예상 10-14 UCL 페네르바체전)에서 SofaScore pass_total 1·2위가 CB 듀오면 3회째 → APPLIED 후보로 사람 판단. 그 경기 match-watch 회차가 이 행을 이어받는다(obs#1005). [쟁점 #18 판정 2026-10-21 → HELD] 3회째는 나오지 않았다. 10-11 사용자 결정 뒤 카마라·고메스 동시 선발 공식전은 10-17 뉴캐슬전 1경기다(10-14 페네르는 고메스 교체 출전). SofaScore pass_total 순위는 린델뢰프 57 · 스즈키(GK) 49 · 카마라 43 · 밍스 40으로 CB 듀오 1·2위가 아니다. 누적은 패스 집계가 가능한 동시 선발 5경기 중 2경기다(08-12 ✗ · 09-08 ✓ · 09-19 ✗ · 10-10 ✓ · 10-17 ✗). 'CB 1·2위' 패턴은 APPLIED 조건에 못 미친다. #167 맞음: 동시 선발 5경기 모두 카마라·고메스 누구도 1위가 아니다. 카마라는 필드 2~3위 4회, 고메스는 5위 이하다. #217 틀림(물량 기준): 고메스는 5위 이하다. 연결 허브(네트워크) 축은 재지 않았다. 피벗 정본(LDM dm_dlp/Roaming · RDM dm_holding/Defend)은 바꾸지 않는다. 재판정 조건: 동시 선발 3경기를 새로 모아 CB 1·2위가 3경기 중 2경기 이상이면 다시 올린다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -7442,12 +7442,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 16,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
       "trigger": "2026-08-11 이후 리그 2경기 (7/2)"
      },
@@ -7458,8 +7458,8 @@
      "team_code": "AVL",
      "value": "both wide midfielders drop to form a back six, congested middle",
      "value_kr": "양 측면 미드가 내려와 백6, 중앙은 촘촘히",
-     "verdict": "PENDING",
-     "verdict_note": "리포트 #47 실측은 대칭 백6이 아니라 우측만 내려온 편중 백5(맥긴 수비 x 56.3→32.1, 부엔디아 35.6→47.6)이고 에메리 회견도 「측면」 단수로 말했다. 정본 수비 Balanced·라인 52는 유지(리포트 #47 결정). 판정 조건: 리드 상황 후반에 측면 미드 2명 모두 백4 깊이로 내려오는 경기가 2경기 이상 실측되면 경기 전용 설정(match_game_setups)에 반영 검토"
+     "verdict": "HELD",
+     "verdict_note": "리포트 #47 실측은 대칭 백6이 아니라 우측만 내려온 편중 백5(맥긴 수비 x 56.3→32.1, 부엔디아 35.6→47.6)이고 에메리 회견도 「측면」 단수로 말했다. 정본 수비 Balanced·라인 52는 유지(리포트 #47 결정). 판정 조건: 리드 상황 후반에 측면 미드 2명 모두 백4 깊이로 내려오는 경기가 2경기 이상 실측되면 경기 전용 설정(match_game_setups)에 반영 검토 [쟁점 #16 판정 2026-10-21 → HELD] 리드한 후반이 있었던 PL 경기는 2경기(토트넘 49′~ · 뉴캐슬 36′~)다. 브렌트퍼드 77~79′ 2분은 뺐다. 양 측면 미드가 백4 깊이까지 내려온 경기는 0/2라서 백6은 성립하지 않는다. 토트넘 2H는 맥긴 32 · 부엔디아 41 대 백4 13~22로 우측만 내려온 편중 백5다(리포트 #47과 같음). 뉴캐슬 2H는 부엔디아 37 · 맥긴 49 대 백4 10~22로 낮은 4-4-2 블록이다. 두 경기 형태가 달라서 match_game_setups나 게임플랜 2안으로 옮길 근거가 없다. 정본(수비 Balanced · 라인 유지)을 유지하고 '리드 시 라인 하향' 국면 지시로만 둔다. #366·#405 틀림(백6) · #201 부분 맞음(뉴캐슬 4-4-2 저블록 O · 토트넘은 편중 백5) · #202 부분 맞음(토트넘 우측 터치 95→82로 줄었지만 그쪽 박스 진입은 2→5로 늘었다. 반대편 터치는 64→127) · #246 정합(페네르 UCL PPDA 1H 10.79→2H 15.0) · #315 템포는 늦어졌지만 볼 소유에는 실패(점유 60→41 · PPDA 7.19→11.43). 재판정 조건: 리드 후반 PL 2경기를 더 모아 같은 형태가 2회 이상 나오면 프리셋을 검토한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -10417,14 +10417,14 @@
      "focus": null,
      "headline_kr": "우측 해방 시 좌측 풀백 고립",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 13,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-08-11 이후 캐시 RB 선발 3경기 (8/3)"
+      "trigger": "2026-08-11 이후 캐시 RB 선발 3경기 (7/3)"
      },
      "player": null,
      "points_kr": "[\"구성: 맥긴 우측 윙어로 해방\", \"결과: 좌측 풀백 1대1 고립\", \"좌측 더블링 부재 → 후반 붕괴 경로\"]",
@@ -10433,8 +10433,8 @@
      "team_code": "AVL",
      "value": "우측 해방(맥긴 winger) 구성에서 좌측 풀백이 1대1로 고립된다 — 좌측 더블링 부재가 후반 붕괴 경로",
      "value_kr": "우측 해방(맥긴 윙어) 구성에서 좌측 풀백이 1대1로 고립 — 좌측 더블링 부재가 후반 붕괴 경로",
-     "verdict": "PENDING",
-     "verdict_note": "⭐⭐ **obs#768의 직접 후속이다** — 맥긴 RM을 `wm_winger/Attack`(뱅크 **0.00**)으로 교정하고 헤밍스 LM을 `wm_widemid/Support`(뱅크 0.60)로 둔 구성에서 **좌측 커버 공백은 구조적 귀결**이다. 이 영상이 그 귀결을 **실전에서 관측**했다(같은 경기 report 39). ⇒ **C2/C6 재판정(할 일 20)의 실전 증거로 편입.** 마감 조건: 할 일 20 판정 시 이 관찰을 obs#443(윙어 쪽 풀백 절제) ↔ obs#95(해방 사이드 풀백 전진) 중 어느 쪽을 지지하는지 판정 — 현재로선 **「윙어 쪽이 아니라 반대쪽이 비었다」**이므로 단순 대입이 안 된다."
+     "verdict": "HELD",
+     "verdict_note": "⭐⭐ **obs#768의 직접 후속이다** — 맥긴 RM을 `wm_winger/Attack`(뱅크 **0.00**)으로 교정하고 헤밍스 LM을 `wm_widemid/Support`(뱅크 0.60)로 둔 구성에서 **좌측 커버 공백은 구조적 귀결**이다. 이 영상이 그 귀결을 **실전에서 관측**했다(같은 경기 report 39). ⇒ **C2/C6 재판정(할 일 20)의 실전 증거로 편입.** 마감 조건: 할 일 20 판정 시 이 관찰을 obs#443(윙어 쪽 풀백 절제) ↔ obs#95(해방 사이드 풀백 전진) 중 어느 쪽을 지지하는지 판정 — 현재로선 **「윙어 쪽이 아니라 반대쪽이 비었다」**이므로 단순 대입이 안 된다. [쟁점 #13 판정 2026-10-21 → HELD] RB 정본 fb_wingback/Balanced를 유지한다. 캐시 공식전 RB 선발 7경기의 단일 경기 1위: wingback/Balanced 4(PSG .907 · 브라이턴 .951 · 페네르 .870 Δ.027 · 뉴캐슬 .895 Δ.112) 대 att_wb/Support 3(아스날 .789 · 헐 .910 · 브렌트퍼드 .895 Δ.004). Δ>.05로 결정된 경기는 뉴캐슬 하나이고, 결과는 wingback이다. 7경기 집계(core.aggregate·hp≥15)도 wingback/Balanced .897 > att_wb/Support .879(Δ.018 노이즈)다. 비대칭은 경기마다 달랐다: 뉴캐슬 좌측만 높음(완비사카 x55 · 캐시 46.2 잔류) · 페네르 2-4-4 대칭(UEFA 40.6 대 41.5m) · 브렌트퍼드 캐시 46.2 > 루헤리 35.8. 그래서 '한쪽 전진'은 맞지만 고정된 쪽은 없다. 좌측 CB의 터치라인 열(열0) 수비 비중은 13/97=13%로 RCB 열4의 10/99=10%와 비슷하다. #401 맞음 · #276 부분 맞음(동시 선발 1경기) · #290 과장 · #46 단일 경기라 미판정. 재판정 조건: 캐시 다음 선발 5경기 중 3경기에서 att_wb가 Δ>.05로 1위면 다시 본다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "team_axis",
@@ -10443,12 +10443,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 1,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
       "trigger": "2026-08-11 이후 리그 6경기 (7/6)"
      },
@@ -10459,8 +10459,8 @@
      "team_code": "AVL",
      "value": "Balanced",
      "value_kr": "균형",
-     "verdict": "PENDING",
-     "verdict_note": "⭐ 팀 설정 3축은 실측이 값을 갖지 않아 전술 분석이 1차 소스다(docs/30 7단계). 현행 AVL regime 1은 **Short Passing**(20/22행이 이 값)인데, 「후방에서 위험한 잔기술 + 전방에서 안전한 패스」는 **짧은 패스 지향의 부작용**을 서술한 것으로 읽힌다. ⛔ 단 이 영상은 **경기 직후 감정 반응 1건**이라 단독 근거로 부족하다. 마감 조건: 같은 지적이 2소스 이상(§11-3의 「폭 미활용·안전함」 축과 함께) 반복되고, 실측(파이널 서드 패스 방향·박스 진입 수)으로 교차 확인될 것."
+     "verdict": "HELD",
+     "verdict_note": "⭐ 팀 설정 3축은 실측이 값을 갖지 않아 전술 분석이 1차 소스다(docs/30 7단계). 현행 AVL regime 1은 **Short Passing**(20/22행이 이 값)인데, 「후방에서 위험한 잔기술 + 전방에서 안전한 패스」는 **짧은 패스 지향의 부작용**을 서술한 것으로 읽힌다. ⛔ 단 이 영상은 **경기 직후 감정 반응 1건**이라 단독 근거로 부족하다. 마감 조건: 같은 지적이 2소스 이상(§11-3의 「폭 미활용·안전함」 축과 함께) 반복되고, 실측(파이널 서드 패스 방향·박스 진입 수)으로 교차 확인될 것. [쟁점 #1 판정 2026-10-21 → HELD] 정본 빌드업 Balanced(#32, 10-15) 유지. 26/27 PL 7경기는 점유 중앙값 50%, 롱볼 중앙값 12.8%이고 core.team_settings 기준으로 Balanced다(공식전 11경기는 45%·11.8%로 역시 Balanced). 경기별로는 Counter 4(브라이턴·아스날·토트넘·브렌트퍼드)·Balanced 2·Short 1(헐)이다. 홈은 C2/B1, 원정은 C2/B1/S1로 홈·원정 차이가 없다. 상대 PPDA와 롱볼% 상관은 PL −0.95(공식전 −0.84)다. Counter 4경기의 상대 PPDA는 모두 ≤8.17, 비Counter 경기는 7.46~20.8이다. 즉 롱볼은 상대 압박에 대한 반응이지 기본값이 아니다(obs#1081과 같다). 주장별: #356 틀림(압박과 무관한 쏠림이 없다). #196 부분: 점유는 25/26 PL 53.5%에서 47.4%로 −6.1pp 낮아졌지만, 25/26 롱볼 데이터가 0/46행이라 롱볼 비교는 할 수 없다. #273 맞음(브렌트퍼드 15.0% vs PL 평균 12.0%, 상대 PPDA 6.68). #298 맞음(뉴캐슬 스즈키 롱 비중 15%→63%→92%, 43′ 맨마킹 전환 반응). #45·#52는 설정 축이 아니다(브뤼헤 점유 36%·xG 3.22 승, 포레스트 54%·xG 0.82 패, 우측 xG 0.00) — 승패는 상대 구조의 결과다. #294는 역습 슈팅 데이터가 없어 판정 불가. 재판정 조건: 저압박 상대(PPDA ≥11) PL 3경기 이상에서도 롱볼 ≥13%이거나 점유 ≤40%가 나올 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -10497,12 +10497,12 @@
      "focus": null,
      "headline_kr": "상대 백3 대응이 구조적 약점",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 2,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
       "trigger": "2026-08-11 이후 공식전 5경기 (11/5)"
      },
@@ -10513,8 +10513,8 @@
      "team_code": "AVL",
      "value": "상대 백3(특히 글라스너의 백3)에 대한 대응이 구조적 약점 — 「늘 빌라의 크립토나이트」",
      "value_kr": "상대 백3(특히 글라스너의 백3) 대응이 구조적 약점 — 늘 빌라의 크립토나이트",
-     "verdict": "PENDING",
-     "verdict_note": "⭐⭐ `pO6Pxey6GY0`이 **「감독 매치업」**(에메리 vs 글라스너 무승)으로 본 것을 이 자료가 **「포메이션 매치업」**으로 좁혔다 — 2소스가 같은 현상을 다른 층위로 설명한다. ⛔ 우리 `team_tactic_setups`에는 **상대 유형별 프리셋이 `vs-strong`/`vs-weak`/`lead` 3종뿐**이고 **상대 포메이션 축이 없다**. ⇒ 마감 조건: ⓐ 백3 상대 경기의 실측(AVL의 파이널 서드 진입·측면 대 중앙 비율)을 2경기 이상 모아 패턴이 실재하는지 확인 ⓑ 실재하면 `optimal:vs-back3` 프리셋 신설 판단. ⚠️ 표본 주의 — 「늘」이라는 표현은 팬 인상이므로 **실제 상대 포메이션별 전적으로 검증**해야 한다."
+     "verdict": "HELD",
+     "verdict_note": "⭐⭐ `pO6Pxey6GY0`이 **「감독 매치업」**(에메리 vs 글라스너 무승)으로 본 것을 이 자료가 **「포메이션 매치업」**으로 좁혔다 — 2소스가 같은 현상을 다른 층위로 설명한다. ⛔ 우리 `team_tactic_setups`에는 **상대 유형별 프리셋이 `vs-strong`/`vs-weak`/`lead` 3종뿐**이고 **상대 포메이션 축이 없다**. ⇒ 마감 조건: ⓐ 백3 상대 경기의 실측(AVL의 파이널 서드 진입·측면 대 중앙 비율)을 2경기 이상 모아 패턴이 실재하는지 확인 ⓑ 실재하면 `optimal:vs-back3` 프리셋 신설 판단. ⚠️ 표본 주의 — 「늘」이라는 표현은 팬 인상이므로 **실제 상대 포메이션별 전적으로 검증**해야 한다. [쟁점 #2 판정 2026-10-21 → HELD] 상대 유형별 신규 프리셋은 만들지 않는다. 현행 vs-strong/vs-weak/lead와 저점유 보조 #33을 유지하고, 경기 전용 설정은 지금처럼 match_game_setups에 둔다. 26/27 공식전 11경기를 유형별로 나눴다. ①백3 2경기: 헐 5-4-1(0-0, 점유 74%, xG 1.93-0.57)과 포레스트 3-4-2-1(1-2 패, xG 0.82-2.28, 부상 탓에 강제된 백3). 결과가 갈려 「크립토나이트」 패턴이 아니다. ②투톱 1경기(뉴캐슬 4-1-3-2): DM 슬롯 선발 11경기 중 CB 자원 0회(카마라 9·고메스 5·바클리 5…). 대신 스즈키를 추가 인원으로 쓰고 캐시를 잔류시켰다(x 46). ③고압박(상대 PPDA ≤8.5) 7경기: 롱볼 평균 13.2%, 저압박 4경기는 8.0%. 결과는 3승 1무 3패다. 사용자 결정(10-20, obs#1081)으로 Counter 보조 프리셋은 두지 않는다. ④고라인(def_x_o ≥42.6) 4경기: match_period_stats에 롱패스 열이 없어 반별 비교가 안 된다. 주장별: #56 틀림(2경기 1무 1패지만 xG가 갈림). #370 틀림(26/27 재현 0회). #372 부분(롱 증가는 맞지만 25/26 첼시전 대조 자료가 없다). #373 틀림(뉴캐슬 43′ 대응은 앵커+전진 피벗이 아니라 GK 직접 배급). #377 판정 불가. #199 이미 APPLIED라 값 변경 없음. 재판정 조건: 투톱 상대 2경기째 또는 백3 상대 3경기째. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -11843,12 +11843,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 1,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
       "trigger": "2026-08-11 이후 리그 6경기 (7/6)"
      },
@@ -11859,8 +11859,8 @@
      "team_code": "AVL",
      "value": "Balanced",
      "value_kr": "균형",
-     "verdict": "PENDING",
-     "verdict_note": "⭐ `yMmxDTdffv4`(UTV, 「파이널 서드에서 리스크를 안 진다」)와 **같은 결손을 다른 방향에서 진술**한 2번째 소스다. 현행 AVL regime 1은 `Short Passing` 20/22행. ⇒ 마감 조건에 한 걸음 다가섰다(2소스 확보). ⏰ 남은 조건: **실측 교차검증** — 파이널 서드 패스 방향·박스 진입 수·시퀀스당 패스를 브뤼헤전(승)과 포레스트전(패)으로 나눠 대조. 승패로 갈리면 「목적성」은 결과 서술이지 설정 축이 아닐 수 있다."
+     "verdict": "HELD",
+     "verdict_note": "⭐ `yMmxDTdffv4`(UTV, 「파이널 서드에서 리스크를 안 진다」)와 **같은 결손을 다른 방향에서 진술**한 2번째 소스다. 현행 AVL regime 1은 `Short Passing` 20/22행. ⇒ 마감 조건에 한 걸음 다가섰다(2소스 확보). ⏰ 남은 조건: **실측 교차검증** — 파이널 서드 패스 방향·박스 진입 수·시퀀스당 패스를 브뤼헤전(승)과 포레스트전(패)으로 나눠 대조. 승패로 갈리면 「목적성」은 결과 서술이지 설정 축이 아닐 수 있다. [쟁점 #1 판정 2026-10-21 → HELD] 정본 빌드업 Balanced(#32, 10-15) 유지. 26/27 PL 7경기는 점유 중앙값 50%, 롱볼 중앙값 12.8%이고 core.team_settings 기준으로 Balanced다(공식전 11경기는 45%·11.8%로 역시 Balanced). 경기별로는 Counter 4(브라이턴·아스날·토트넘·브렌트퍼드)·Balanced 2·Short 1(헐)이다. 홈은 C2/B1, 원정은 C2/B1/S1로 홈·원정 차이가 없다. 상대 PPDA와 롱볼% 상관은 PL −0.95(공식전 −0.84)다. Counter 4경기의 상대 PPDA는 모두 ≤8.17, 비Counter 경기는 7.46~20.8이다. 즉 롱볼은 상대 압박에 대한 반응이지 기본값이 아니다(obs#1081과 같다). 주장별: #356 틀림(압박과 무관한 쏠림이 없다). #196 부분: 점유는 25/26 PL 53.5%에서 47.4%로 −6.1pp 낮아졌지만, 25/26 롱볼 데이터가 0/46행이라 롱볼 비교는 할 수 없다. #273 맞음(브렌트퍼드 15.0% vs PL 평균 12.0%, 상대 PPDA 6.68). #298 맞음(뉴캐슬 스즈키 롱 비중 15%→63%→92%, 43′ 맨마킹 전환 반응). #45·#52는 설정 축이 아니다(브뤼헤 점유 36%·xG 3.22 승, 포레스트 54%·xG 0.82 패, 우측 xG 0.00) — 승패는 상대 구조의 결과다. #294는 역습 슈팅 데이터가 없어 판정 불가. 재판정 조건: 저압박 상대(PPDA ≥11) PL 3경기 이상에서도 롱볼 ≥13%이거나 점유 ≤40%가 나올 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -12743,12 +12743,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 16,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
       "trigger": "2026-08-11 이후 리그 2경기 (7/2)"
      },
@@ -12759,8 +12759,8 @@
      "team_code": "AVL",
      "value": "both wide midfielders drop to make a back six",
      "value_kr": "양 측면 미드(맥긴·헤밍스)가 내려와 백6을 만든다",
-     "verdict": "PENDING",
-     "verdict_note": "F2M6XgRkAuE와 같은 계열(PENDING). ⚠️ 실측과 다름: 헐전은 양쪽이 아니라 한쪽 와이드만 최종라인 합류(헤밍스 21.5 · 아스날전은 맥긴 20.8) — 비대칭 하강(리포트 #31 ②). 판정 조건: 4-4-2/6-2-2 판정(obs#725)과 함께 좌우 하강 빈도"
+     "verdict": "HELD",
+     "verdict_note": "F2M6XgRkAuE와 같은 계열(PENDING). ⚠️ 실측과 다름: 헐전은 양쪽이 아니라 한쪽 와이드만 최종라인 합류(헤밍스 21.5 · 아스날전은 맥긴 20.8) — 비대칭 하강(리포트 #31 ②). 판정 조건: 4-4-2/6-2-2 판정(obs#725)과 함께 좌우 하강 빈도 [쟁점 #16 판정 2026-10-21 → HELD] 리드한 후반이 있었던 PL 경기는 2경기(토트넘 49′~ · 뉴캐슬 36′~)다. 브렌트퍼드 77~79′ 2분은 뺐다. 양 측면 미드가 백4 깊이까지 내려온 경기는 0/2라서 백6은 성립하지 않는다. 토트넘 2H는 맥긴 32 · 부엔디아 41 대 백4 13~22로 우측만 내려온 편중 백5다(리포트 #47과 같음). 뉴캐슬 2H는 부엔디아 37 · 맥긴 49 대 백4 10~22로 낮은 4-4-2 블록이다. 두 경기 형태가 달라서 match_game_setups나 게임플랜 2안으로 옮길 근거가 없다. 정본(수비 Balanced · 라인 유지)을 유지하고 '리드 시 라인 하향' 국면 지시로만 둔다. #366·#405 틀림(백6) · #201 부분 맞음(뉴캐슬 4-4-2 저블록 O · 토트넘은 편중 백5) · #202 부분 맞음(토트넘 우측 터치 95→82로 줄었지만 그쪽 박스 진입은 2→5로 늘었다. 반대편 터치는 64→127) · #246 정합(페네르 UCL PPDA 1H 10.79→2H 15.0) · #315 템포는 늦어졌지만 볼 소유에는 실패(점유 60→41 · PPDA 7.19→11.43). 재판정 조건: 리드 후반 PL 2경기를 더 모아 같은 형태가 2회 이상 나오면 프리셋을 검토한다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "instruction",
@@ -13160,14 +13160,14 @@
      "focus": null,
      "headline_kr": "2CB+피벗 박스, 양 풀백이 폭",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 13,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-08-11 이후 캐시 RB 선발 3경기 (8/3)"
+      "trigger": "2026-08-11 이후 캐시 RB 선발 3경기 (7/3)"
      },
      "player": null,
      "points_kr": "[\"밍스·린델뢰프·바클리·카마라의 중앙 박스\", \"캐시·마첸이 폭 담당\", \"맥긴 안쪽 이동은 실측(터치라인)과 다름\"]",
@@ -13176,8 +13176,8 @@
      "team_code": "AVL",
      "value": "2 CBs + double pivot box, both full-backs hold width, McGinn inverts to free Cash",
      "value_kr": "2CB+더블 피벗 박스, 양 풀백(캐시·마첸)이 폭을 잡고 맥긴이 안으로 좁혀 캐시를 전진시킨다",
-     "verdict": "PENDING",
-     "verdict_note": "박스·양 풀백 폭은 헐전 실측과 정합(캐시 fb_att_wb/Support .910·ax 53.7, 마첸 att_wb .903 — 리포트 #31). ⚠️ 실측과 다름: 「맥긴 안쪽 이동」 — 맥긴 ay 23.6 터치라인 윙어(wm_winger/Attack .774). 판정 조건: 정본 RB fb_wingback/Balanced vs fb_att_wb — 캐시 3경기 실측"
+     "verdict": "HELD",
+     "verdict_note": "박스·양 풀백 폭은 헐전 실측과 정합(캐시 fb_att_wb/Support .910·ax 53.7, 마첸 att_wb .903 — 리포트 #31). ⚠️ 실측과 다름: 「맥긴 안쪽 이동」 — 맥긴 ay 23.6 터치라인 윙어(wm_winger/Attack .774). 판정 조건: 정본 RB fb_wingback/Balanced vs fb_att_wb — 캐시 3경기 실측 [쟁점 #13 판정 2026-10-21 → HELD] RB 정본 fb_wingback/Balanced를 유지한다. 캐시 공식전 RB 선발 7경기의 단일 경기 1위: wingback/Balanced 4(PSG .907 · 브라이턴 .951 · 페네르 .870 Δ.027 · 뉴캐슬 .895 Δ.112) 대 att_wb/Support 3(아스날 .789 · 헐 .910 · 브렌트퍼드 .895 Δ.004). Δ>.05로 결정된 경기는 뉴캐슬 하나이고, 결과는 wingback이다. 7경기 집계(core.aggregate·hp≥15)도 wingback/Balanced .897 > att_wb/Support .879(Δ.018 노이즈)다. 비대칭은 경기마다 달랐다: 뉴캐슬 좌측만 높음(완비사카 x55 · 캐시 46.2 잔류) · 페네르 2-4-4 대칭(UEFA 40.6 대 41.5m) · 브렌트퍼드 캐시 46.2 > 루헤리 35.8. 그래서 '한쪽 전진'은 맞지만 고정된 쪽은 없다. 좌측 CB의 터치라인 열(열0) 수비 비중은 13/97=13%로 RCB 열4의 10/99=10%와 비슷하다. #401 맞음 · #276 부분 맞음(동시 선발 1경기) · #290 과장 · #46 단일 경기라 미판정. 재판정 조건: 캐시 다음 선발 5경기 중 3경기에서 att_wb가 Δ>.05로 1위면 다시 본다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -13733,7 +13733,7 @@
       "resolution": null,
       "status": "open",
       "title": "RM 인선: 침투형 윙어 vs 맥긴 체제",
-      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": null,
@@ -13795,14 +13795,14 @@
      "focus": "Support",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -13811,8 +13811,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "정본 ST st_advanced/Support(침투+연계)와 방향은 맞지만 「측면 이탈·하강·연계」 묘사는 역할 코드를 가르지 못한다. 아스날전 단일 경기 fit은 st_false9/Build-Up .723(리포트 #30 — 리포트 자체가 딥블록 국면 함수로 재해석). 판정 조건: 잭슨 26/27 측면·하프라인 셀 비중을 25/26 왓킨스와 대조(vqV-BmjVt2c claim #333·rp3tyJF4aek와 같은 조건)"
+     "verdict": "HELD",
+     "verdict_note": "정본 ST st_advanced/Support(침투+연계)와 방향은 맞지만 「측면 이탈·하강·연계」 묘사는 역할 코드를 가르지 못한다. 아스날전 단일 경기 fit은 st_false9/Build-Up .723(리포트 #30 — 리포트 자체가 딥블록 국면 함수로 재해석). 판정 조건: 잭슨 26/27 측면·하프라인 셀 비중을 25/26 왓킨스와 대조(vqV-BmjVt2c claim #333·rp3tyJF4aek와 같은 조건) [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -13932,13 +13932,13 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 7,
       "resolution": null,
       "status": "open",
       "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-      "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+      "trigger": "2026-08-11 이후 음바예 선발 3경기 (2/3)"
      },
      "player": "음바예",
      "points_kr": null,
@@ -14043,7 +14043,7 @@
       "resolution": null,
       "status": "open",
       "title": "RM 인선: 침투형 윙어 vs 맥긴 체제",
-      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": null,
@@ -14379,12 +14379,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 15,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "비보유 기본 형태: 4-4-2 vs 4-4-1-1",
       "trigger": "2026-08-11 이후 리그 3경기 (7/3)"
      },
@@ -14395,8 +14395,8 @@
      "team_code": "AVL",
      "value": "flat 4-4-2 out of possession (nominal 4-2-3-1)",
      "value_kr": "볼이 없을 때 4-4-2 플랫(명목 4-2-3-1)",
-     "verdict": "PENDING",
-     "verdict_note": "아스날전은 obs#402로 기록(4-4-2 기본+순간 5-3-2, 4자 일치·리포트 #30). 그러나 헐전 좌표 검증은 측정 불가로 판정 보류(obs#447, 리포트 #31 — 대신 와이드 비대칭 하강 확인). FC26에서 무공 형태를 따로 지정하는 축이 있는지 game_system_changes 확인 필요. 판정 조건: 이후 경기에서 잭슨−CAM 수비액션 x 격차(0 근처=4-4-2, 15+=4-4-1-1)"
+     "verdict": "HELD",
+     "verdict_note": "아스날전은 obs#402로 기록(4-4-2 기본+순간 5-3-2, 4자 일치·리포트 #30). 그러나 헐전 좌표 검증은 측정 불가로 판정 보류(obs#447, 리포트 #31 — 대신 와이드 비대칭 하강 확인). FC26에서 무공 형태를 따로 지정하는 축이 있는지 game_system_changes 확인 필요. 판정 조건: 이후 경기에서 잭슨−CAM 수비액션 x 격차(0 근처=4-4-2, 15+=4-4-1-1) [쟁점 #15 판정 2026-10-21 → HELD] 비보유 기본 형태는 4-4-2가 더 많았다. 정본(4-2-3-1 Wide + CAM cam_playmaker/Roaming '수비 시 ST 옆 4-4-2 앞줄 합류')과 같은 방향이라 새 구현은 필요 없다. 잭슨−CAM 수비 액션 x 격차(WS 반별): 아스날 +0.8(경기 전체 · 리포트 #31) · 브렌트퍼드 1H −9 · 2H −5 · 뉴캐슬 1H −0.4는 4-4-2 쪽이다. 헐 1H +20(n3)만 4-4-1-1 기준(15+)에 들고, 토트넘 1H +9는 중간이다. 4-4-2가 PL 3경기에서 나왔다. 다만 표본이 반당 n2~8로 작다. 4-2-3-1↔4-4-2/4-3-3 전술 전환(#378)은 26/27에 없다(포레스트 87′ 4-4-2는 10명이 된 결과 · obs#713). 뉴캐슬은 후반 측면 미드 37·49 대 백4 10~22라 '6+4'가 아니라 낮은 4-4-2다(PPDA 8.87 · def_x 33.4 · 77′+ 31.5). game_system_changes에는 비보유 형태를 따로 정하는 축이 없다. #426·#467·#472 맞음 · #323 맞음 · #463 부분 맞음(4-4-2 저블록 O · 5-4-1 X) · #320 틀림(형태) · #378 26/27 미관측. 재판정 조건: FC27에 비보유 형태 축이 생기면 다시 본다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -14439,7 +14439,7 @@
       "resolution": null,
       "status": "open",
       "title": "RM 인선: 침투형 윙어 vs 맥긴 체제",
-      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": null,
@@ -14535,13 +14535,13 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 7,
       "resolution": null,
       "status": "open",
       "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-      "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+      "trigger": "2026-08-11 이후 음바예 선발 3경기 (2/3)"
      },
      "player": "음바예",
      "points_kr": null,
@@ -14652,12 +14652,12 @@
      "focus": "Balanced",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 26,
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "헤밍스 LM 역할: 인사이드 포워드 vs 와이드 미드",
       "trigger": "2026-08-11 이후 헤밍스 LM,LAM 선발 3경기 (6/3)"
      },
@@ -14668,8 +14668,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "정본 LM wm_insidefwd/Balanced와 방향은 맞지만 아스날전 헤밍스는 y=78.3 좌측 고정·단일 fit wm_widemid/Defend .542(리포트 #30)로 안쪽 몫이 약했다. 4pumolre4vQ와 같은 축. 판정 조건: 헤밍스 LM 선발 3경기 이상 단일 경기 fit에서 wm_insidefwd와 wm_widemid의 차이가 0.05를 넘으면"
+     "verdict": "REJECTED",
+     "verdict_note": "정본 LM wm_insidefwd/Balanced와 방향은 맞지만 아스날전 헤밍스는 y=78.3 좌측 고정·단일 fit wm_widemid/Defend .542(리포트 #30)로 안쪽 몫이 약했다. 4pumolre4vQ와 같은 축. 판정 조건: 헤밍스 LM 선발 3경기 이상 단일 경기 fit에서 wm_insidefwd와 wm_widemid의 차이가 0.05를 넘으면 [쟁점 #26 판정 2026-10-21 → REJECTED] 헤밍스를 wm_insidefwd/Balanced로 본 #359·#432는 실측과 반대다. 헤밍스 LAM 공식 선발 6경기 단일 fit에서 와이드 미드(widemid 최고 포커스)가 인사이드 포워드 Balanced를 앞선 경기는 5/6이고, Δ>.05인 경기는 4경기다(PSG +.186 · 아스날 +.149 · 포레스트 +.102 · 코번트리 +.260 · 브뤼헤 +.036). IF가 앞선 경기는 헐 1경기(+.063)뿐이다. 6경기 집계(450분)는 widemid/Support .684 vs IF/Balanced .608(Δ.076)이고, 1위는 wm_winger/Balanced .712다. 두 영상의 단서(좌측 고정 y78.3·박스 터치 적음)와 실측이 일치하지만, 결론(IF/Balanced)은 기각한다. 정본 LM은 바꾸지 않는다. 10-15 사용자 결정으로 음바예·부엔디아 근거의 IF/Balanced가 됐고 헤밍스는 09-16 이후 선발이 없다. 헤밍스 개인 처방 fc26:opt:LM(widemid/Support .662)이 이미 실측 방향이다. 헤밍스 LM 선발 경기 프리셋은 widemid/Support를 쓴다. 참고: 부엔디아 뉴캐슬전 LM도 widemid/Support .696 vs IF .474다(정본 재검토 조건은 윙어 계열 기준). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -14678,14 +14678,14 @@
      "focus": "Support",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -14694,8 +14694,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "정본 ST st_advanced/Support(침투+연계)와 방향은 맞지만 「측면 이탈·하강·연계」 묘사는 역할 코드를 가르지 못한다. 아스날전 단일 경기 fit은 st_false9/Build-Up .723(리포트 #30 — 리포트 자체가 딥블록 국면 함수로 재해석). 판정 조건: 잭슨 26/27 측면·하프라인 셀 비중을 25/26 왓킨스와 대조(vqV-BmjVt2c claim #333·rp3tyJF4aek와 같은 조건)"
+     "verdict": "HELD",
+     "verdict_note": "정본 ST st_advanced/Support(침투+연계)와 방향은 맞지만 「측면 이탈·하강·연계」 묘사는 역할 코드를 가르지 못한다. 아스날전 단일 경기 fit은 st_false9/Build-Up .723(리포트 #30 — 리포트 자체가 딥블록 국면 함수로 재해석). 판정 조건: 잭슨 26/27 측면·하프라인 셀 비중을 25/26 왓킨스와 대조(vqV-BmjVt2c claim #333·rp3tyJF4aek와 같은 조건) [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -15123,14 +15123,14 @@
      "focus": "Support",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -15139,8 +15139,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "정본 ST st_advanced/Support와 방향은 맞지만(침투+연계) 역할·포커스를 가르지 못한다. 26/27 실측 처방 #471은 st_false9/Build-Up .645(3경기, 직전 st_advanced/Support .602와 Δ≤.05 노이즈)이고, 아스날전 리포트 #30은 D+2에서 「홀드업·채널 러너」로 정정했다. ⚠️ 근거 영상은 첼시·바이에른 시절(불변규칙 7 — 타 팀 체제). 판정 조건: 잭슨 26/27 측면 셀·박스 안 터치 비중을 25/26 왓킨스와 대조(vqV-BmjVt2c claim #333과 같은 조건)"
+     "verdict": "HELD",
+     "verdict_note": "정본 ST st_advanced/Support와 방향은 맞지만(침투+연계) 역할·포커스를 가르지 못한다. 26/27 실측 처방 #471은 st_false9/Build-Up .645(3경기, 직전 st_advanced/Support .602와 Δ≤.05 노이즈)이고, 아스날전 리포트 #30은 D+2에서 「홀드업·채널 러너」로 정정했다. ⚠️ 근거 영상은 첼시·바이에른 시절(불변규칙 7 — 타 팀 체제). 판정 조건: 잭슨 26/27 측면 셀·박스 안 터치 비중을 25/26 왓킨스와 대조(vqV-BmjVt2c claim #333과 같은 조건) [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -15268,14 +15268,14 @@
      "focus": "Support",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -15284,8 +15284,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "정본 ST st_advanced/Support와 방향은 맞지만(침투+연계) 역할·포커스를 가르지 못한다. 26/27 실측 처방 #471은 st_false9/Build-Up .645(3경기, 직전 st_advanced/Support .602와 Δ≤.05 노이즈)이고, 아스날전 리포트 #30은 D+2에서 「홀드업·채널 러너」로 정정했다. ⚠️ 근거 영상은 첼시·바이에른 시절(불변규칙 7 — 타 팀 체제). 판정 조건: 잭슨 26/27 측면 셀·박스 안 터치 비중을 25/26 왓킨스와 대조(vqV-BmjVt2c claim #333과 같은 조건)"
+     "verdict": "HELD",
+     "verdict_note": "정본 ST st_advanced/Support와 방향은 맞지만(침투+연계) 역할·포커스를 가르지 못한다. 26/27 실측 처방 #471은 st_false9/Build-Up .645(3경기, 직전 st_advanced/Support .602와 Δ≤.05 노이즈)이고, 아스날전 리포트 #30은 D+2에서 「홀드업·채널 러너」로 정정했다. ⚠️ 근거 영상은 첼시·바이에른 시절(불변규칙 7 — 타 팀 체제). 판정 조건: 잭슨 26/27 측면 셀·박스 안 터치 비중을 25/26 왓킨스와 대조(vqV-BmjVt2c claim #333과 같은 조건) [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -16036,14 +16036,14 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 12,
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "루헤리 크로스 위치: 이른 크로스 vs 컷백",
-      "trigger": "2026-08-11 이후 마테오 루헤리 선발 2경기 (4/2)"
+      "trigger": "2026-08-11 이후 마테오 루헤리 선발 2경기 (3/2)"
      },
      "player": "마테오 루헤리",
      "points_kr": null,
@@ -16052,8 +16052,8 @@
      "team_code": "AVL",
      "value": "drives forward, waits for runner, cutback to edge of box instead of early cross",
      "value_kr": "이른 크로스 대신 전진 뒤 기다렸다가 박스 앞 컷백",
-     "verdict": "PENDING",
-     "verdict_note": "출처 팀 = 아틀레티코(시메오네 체제 백5 윙백 · CL 4강 아스날전 단일 경기) — 불변규칙 7, 빌라 실측 아님. 같은 선수를 「이른 크로스형」으로 본 claim #284(eAPbrcxVst8)와 방향이 갈린다. 판정 조건: 루헤리 26/27 빌라 공식전 크로스·키패스 시작 위치(하프스페이스 이른 크로스 vs 바이라인·컷백) 분포를 2경기 이상 집계(#284와 같은 조건)"
+     "verdict": "REJECTED",
+     "verdict_note": "출처 팀 = 아틀레티코(시메오네 체제 백5 윙백 · CL 4강 아스날전 단일 경기) — 불변규칙 7, 빌라 실측 아님. 같은 선수를 「이른 크로스형」으로 본 claim #284(eAPbrcxVst8)와 방향이 갈린다. 판정 조건: 루헤리 26/27 빌라 공식전 크로스·키패스 시작 위치(하프스페이스 이른 크로스 vs 바이라인·컷백) 분포를 2경기 이상 집계(#284와 같은 조건) [쟁점 #12 판정 2026-10-21 → REJECTED] 루헤리 빌라 공식전 선발 3경기(코번트리·토트넘·브렌트퍼드)의 WS 오픈플레이 크로스 8개를 셌다. 시작 깊이는 바이라인(x≥88) 4 · 이른 크로스(x<83) 4로 반반이다. 시작 레인은 8개 중 7개가 터치라인 레인(y≥83)이다. 하프스페이스에서 시작한 이른 크로스는 0이고, 컷백(바이라인에서 뒤로 박스 앞에 내주는 패스)도 0이다. 성공은 2/8. 키패스 3개 중 2개는 자기 진영(x25·x31)에서 찬 롱볼이다. 마첸(헐·포레스트 크로스 5): 바이라인 2 · x83~88 2 · 이른 크로스 1이고, 하프스페이스 시작(84,76)이 1개 있다. 둘이 「아주 다르다」고 할 차이는 없다. ⇒ #284 부분 맞음(이른 크로스 4/8은 맞다. 다만 하프스페이스가 아니라 터치라인 레인이고 마첸과 차이도 작다). #453 틀림(컷백 0/8 · 원 근거는 아틀레티코 단일 경기). 표본이 크로스 8개뿐이다. 재판정 조건: 루헤리 선발 3경기를 더 모아 크로스 15개 이상이 되면 다시 센다(현재 햄스트링 부상). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -16069,7 +16069,7 @@
       "resolution": null,
       "status": "open",
       "title": "루헤리 LB 역할: 공격형 윙백 vs 수비형 풀백",
-      "trigger": "2026-08-11 이후 마테오 루헤리 LB 선발 5경기 (4/5)"
+      "trigger": "2026-08-11 이후 마테오 루헤리 LB 선발 5경기 (3/5)"
      },
      "player": "마테오 루헤리",
      "points_kr": null,
@@ -16256,7 +16256,7 @@
       "resolution": null,
       "status": "open",
       "title": "루헤리 LB 역할: 공격형 윙백 vs 수비형 풀백",
-      "trigger": "2026-08-11 이후 마테오 루헤리 LB 선발 5경기 (4/5)"
+      "trigger": "2026-08-11 이후 마테오 루헤리 LB 선발 5경기 (3/5)"
      },
      "player": "마테오 루헤리",
      "points_kr": null,
@@ -16870,12 +16870,12 @@
      "focus": null,
      "headline_kr": "6명 빌드업 + 최전방 4명 4대4(6-4)",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 8,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "맥긴 RM: 터치라인 윙어 vs 안쪽형",
       "trigger": "2026-08-11 이후 맥긴 RM,RAM,RW 선발 3경기 (10/3)"
      },
@@ -16886,8 +16886,8 @@
      "team_code": "AVL",
      "value": "six-man first phase + four narrow attackers on the last line (4v4), not a true 4-2-3-1",
      "value_kr": "6명 1단계 빌드업 뒤 최전방 4명이 좁게 서서 상대 백4와 4대4 — 지면상 4-2-3-1이 아니라 6-4",
-     "verdict": "PENDING",
-     "verdict_note": "25/26 근거 — 26/27 실측으로 재확인 필요. 근거 장면·패스 네트워크가 전부 25/26 시즌(로저스·맥긴·부엔디아 2선)이다. 정본 4-2-3-1 Wide(LM wm_insidefwd·RM wm_winger)는 좌측만 좁고 우측은 넓어 「4명 모두 좁게」와 부분적으로 갈린다. 판정 조건: 26/27 PL 점유 국면 map25_poss에서 LM·RM 평균 avg_y가 중앙 쪽(25~75 밖으로 안 나감)이면 RM 역할 재검토 후보로 올린다"
+     "verdict": "HELD",
+     "verdict_note": "25/26 근거 — 26/27 실측으로 재확인 필요. 근거 장면·패스 네트워크가 전부 25/26 시즌(로저스·맥긴·부엔디아 2선)이다. 정본 4-2-3-1 Wide(LM wm_insidefwd·RM wm_winger)는 좌측만 좁고 우측은 넓어 「4명 모두 좁게」와 부분적으로 갈린다. 판정 조건: 26/27 PL 점유 국면 map25_poss에서 LM·RM 평균 avg_y가 중앙 쪽(25~75 밖으로 안 나감)이면 RM 역할 재검토 후보로 올린다 [쟁점 #8 판정 2026-10-21 → HELD] 정본 RM wm_winger/Attack 유지. 맥긴 RM/RAM 선발 10경기의 커널 평균은 winger/Attack .675, insidefwd/Balanced .507(Δ.168), wideplm/Attack .620이다. 점유 국면 7경기도 winger/Attack .684 vs insidefwd/Balanced .489(Δ.195)다. 경기별 1위(전체)는 winger/Attack 5·widemid 3·wideplm 2, insidefwd 0이다. #369의 기계 기준(avg_y 25~75 안)만 보면 avg_y 8/10, 점유 무게중심 7/7(평균 32.0)이 안쪽에 걸린다. 그런데 커널로 재검토하면 안쪽형은 지지되지 않는다 — 우측 터치라인 셀 비중 .29~.70이다. 주장별: #302 맞음(뉴캐슬 46′ 이후 winger/Balanced .680 1위, 우측 터치라인 50%·중앙 25%, avg_y 30.0). #369 틀림(26/27 페네르 지공 맥긴 y22, 터치라인 10/16 — 「4명 모두 좁게」가 아니다). #250은 실측 미확보라 판정 불가 — 페네르 전반 빅찬스 0-3·xG 0.70-1.35는 있지만 상대 공격 측면 분포가 DB에 없다. 캐시↔맥긴 교대는 3체인(A1<B2)이다. rest-defense 비용은 obs#1010 축에서 누적한다. 재판정 조건: 맥긴 RM 집계에서 winger/Attack 우위가 Δ≤.05로 줄어들 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -17167,7 +17167,7 @@
       "resolution": null,
       "status": "open",
       "title": "RM 인선: 침투형 윙어 vs 맥긴 체제",
-      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": null,
@@ -17236,7 +17236,7 @@
       "resolution": null,
       "status": "open",
       "title": "RM 인선: 침투형 윙어 vs 맥긴 체제",
-      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": null,
@@ -17409,12 +17409,12 @@
      "focus": null,
      "headline_kr": "투톱 상대엔 CB를 미드필드에 둬 +1",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 2,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
       "trigger": "2026-08-11 이후 공식전 5경기 (11/5)"
      },
@@ -17425,8 +17425,8 @@
      "team_code": "AVL",
      "value": "vs a front two pinning both CBs, play a CB in midfield for +1 and to cover third-man runs; in possession he drops to RCB so both FBs push on",
      "value_kr": "상대 투톱이 CB 둘을 묶으면 CB 한 명을 미드필드에 두어 +1과 3선 침투 차단, 점유 시엔 우측 CB로 내려가 양 풀백을 올린다",
-     "verdict": "PENDING",
-     "verdict_note": "25/26 근거 — 26/27 실측으로 재확인 필요. 실측은 영상과 일치한다(린델뢰프 lineup_pos M · avg_x 40.2 · avg_y 35.3). 단 상대 맞춤 1경기 설계라 시즌 정본이 아니라 경기 프리셋 후보다. 판정 조건: 26/27에 상대 투톱 경기에서 CB 자원이 DM 슬롯 선발로 다시 나오면 match_game_setups 경기 전용 RDM 역할(dm_centrehalf 등)로 기록"
+     "verdict": "HELD",
+     "verdict_note": "25/26 근거 — 26/27 실측으로 재확인 필요. 실측은 영상과 일치한다(린델뢰프 lineup_pos M · avg_x 40.2 · avg_y 35.3). 단 상대 맞춤 1경기 설계라 시즌 정본이 아니라 경기 프리셋 후보다. 판정 조건: 26/27에 상대 투톱 경기에서 CB 자원이 DM 슬롯 선발로 다시 나오면 match_game_setups 경기 전용 RDM 역할(dm_centrehalf 등)로 기록 [쟁점 #2 판정 2026-10-21 → HELD] 상대 유형별 신규 프리셋은 만들지 않는다. 현행 vs-strong/vs-weak/lead와 저점유 보조 #33을 유지하고, 경기 전용 설정은 지금처럼 match_game_setups에 둔다. 26/27 공식전 11경기를 유형별로 나눴다. ①백3 2경기: 헐 5-4-1(0-0, 점유 74%, xG 1.93-0.57)과 포레스트 3-4-2-1(1-2 패, xG 0.82-2.28, 부상 탓에 강제된 백3). 결과가 갈려 「크립토나이트」 패턴이 아니다. ②투톱 1경기(뉴캐슬 4-1-3-2): DM 슬롯 선발 11경기 중 CB 자원 0회(카마라 9·고메스 5·바클리 5…). 대신 스즈키를 추가 인원으로 쓰고 캐시를 잔류시켰다(x 46). ③고압박(상대 PPDA ≤8.5) 7경기: 롱볼 평균 13.2%, 저압박 4경기는 8.0%. 결과는 3승 1무 3패다. 사용자 결정(10-20, obs#1081)으로 Counter 보조 프리셋은 두지 않는다. ④고라인(def_x_o ≥42.6) 4경기: match_period_stats에 롱패스 열이 없어 반별 비교가 안 된다. 주장별: #56 틀림(2경기 1무 1패지만 xG가 갈림). #370 틀림(26/27 재현 0회). #372 부분(롱 증가는 맞지만 25/26 첼시전 대조 자료가 없다). #373 틀림(뉴캐슬 43′ 대응은 앵커+전진 피벗이 아니라 GK 직접 배급). #377 판정 불가. #199 이미 APPLIED라 값 변경 없음. 재판정 조건: 투톱 상대 2경기째 또는 백3 상대 3경기째. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -17682,12 +17682,12 @@
      "focus": null,
      "headline_kr": "앵커+전진 피벗+버티는 ST로 압박 해제",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 2,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
       "trigger": "2026-08-11 이후 공식전 5경기 (11/5)"
      },
@@ -17698,8 +17698,8 @@
      "team_code": "AVL",
      "value": "at 59' switch 4-4-2 to 4-2-3-1: anchor DM, other pivot pushed up into a 4-man front line, hold-up ST as outball, wide forward pinning opposition DM/FB",
      "value_kr": "4-4-2를 4-2-3-1로 바꿔 앵커 1명·한 피벗을 전방 4명 라인으로 올리고, 버티는 ST를 출구로 삼아 상대 미드·풀백을 묶는다",
-     "verdict": "PENDING",
-     "verdict_note": "25/26 근거 — 26/27 실측으로 재확인 필요. 선수 구성(오나나·산초·왓킨스·로저스)이 26/27에 없어 그대로 옮길 수 없고 원리(앵커+전진 피벗+버티는 ST)만 후보다. 판정 조건: 26/27 대인 압박 상대 경기에서 경기 중 형태 전환이 match_tactical_changes에 기록되면 같은 원리인지 대조 · FC 게임플랜 2안(B안) 후보"
+     "verdict": "HELD",
+     "verdict_note": "25/26 근거 — 26/27 실측으로 재확인 필요. 선수 구성(오나나·산초·왓킨스·로저스)이 26/27에 없어 그대로 옮길 수 없고 원리(앵커+전진 피벗+버티는 ST)만 후보다. 판정 조건: 26/27 대인 압박 상대 경기에서 경기 중 형태 전환이 match_tactical_changes에 기록되면 같은 원리인지 대조 · FC 게임플랜 2안(B안) 후보 [쟁점 #2 판정 2026-10-21 → HELD] 상대 유형별 신규 프리셋은 만들지 않는다. 현행 vs-strong/vs-weak/lead와 저점유 보조 #33을 유지하고, 경기 전용 설정은 지금처럼 match_game_setups에 둔다. 26/27 공식전 11경기를 유형별로 나눴다. ①백3 2경기: 헐 5-4-1(0-0, 점유 74%, xG 1.93-0.57)과 포레스트 3-4-2-1(1-2 패, xG 0.82-2.28, 부상 탓에 강제된 백3). 결과가 갈려 「크립토나이트」 패턴이 아니다. ②투톱 1경기(뉴캐슬 4-1-3-2): DM 슬롯 선발 11경기 중 CB 자원 0회(카마라 9·고메스 5·바클리 5…). 대신 스즈키를 추가 인원으로 쓰고 캐시를 잔류시켰다(x 46). ③고압박(상대 PPDA ≤8.5) 7경기: 롱볼 평균 13.2%, 저압박 4경기는 8.0%. 결과는 3승 1무 3패다. 사용자 결정(10-20, obs#1081)으로 Counter 보조 프리셋은 두지 않는다. ④고라인(def_x_o ≥42.6) 4경기: match_period_stats에 롱패스 열이 없어 반별 비교가 안 된다. 주장별: #56 틀림(2경기 1무 1패지만 xG가 갈림). #370 틀림(26/27 재현 0회). #372 부분(롱 증가는 맞지만 25/26 첼시전 대조 자료가 없다). #373 틀림(뉴캐슬 43′ 대응은 앵커+전진 피벗이 아니라 GK 직접 배급). #377 판정 불가. #199 이미 APPLIED라 값 변경 없음. 재판정 조건: 투톱 상대 2경기째 또는 백3 상대 3경기째. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "limit",
@@ -17708,12 +17708,12 @@
      "focus": null,
      "headline_kr": "대인 압박엔 6명 빌드업이 묶인다",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 2,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
       "trigger": "2026-08-11 이후 공식전 5경기 (11/5)"
      },
@@ -17724,8 +17724,8 @@
      "team_code": "AVL",
      "value": "six-man first phase gets pinned by an aggressive man-to-man press; outlet becomes long chipped balls to wide players in 50/50s",
      "value_kr": "대인 압박에 6명 1단계가 묶이면 출구가 측면 띄운 롱볼뿐이라 50대50 경합으로 소유를 잃는다",
-     "verdict": "PENDING",
-     "verdict_note": "25/26 근거 — 26/27 실측으로 재확인 필요. 정본 빌드업 Balanced·GK gk_ballplaying/Build-Up과 충돌 가능한 한계 축이다. 26/27에는 스즈키 체제로 고압박 상대 짧은 전개 사례(vqV-BmjVt2c 브렌트퍼드전)가 있어 방향이 갈린다. 판정 조건: 26/27 대인 고압박 상대 경기의 GK·CB 롱패스 비중과 자기 진영 소유 상실을 25/26 첼시전과 대조"
+     "verdict": "HELD",
+     "verdict_note": "25/26 근거 — 26/27 실측으로 재확인 필요. 정본 빌드업 Balanced·GK gk_ballplaying/Build-Up과 충돌 가능한 한계 축이다. 26/27에는 스즈키 체제로 고압박 상대 짧은 전개 사례(vqV-BmjVt2c 브렌트퍼드전)가 있어 방향이 갈린다. 판정 조건: 26/27 대인 고압박 상대 경기의 GK·CB 롱패스 비중과 자기 진영 소유 상실을 25/26 첼시전과 대조 [쟁점 #2 판정 2026-10-21 → HELD] 상대 유형별 신규 프리셋은 만들지 않는다. 현행 vs-strong/vs-weak/lead와 저점유 보조 #33을 유지하고, 경기 전용 설정은 지금처럼 match_game_setups에 둔다. 26/27 공식전 11경기를 유형별로 나눴다. ①백3 2경기: 헐 5-4-1(0-0, 점유 74%, xG 1.93-0.57)과 포레스트 3-4-2-1(1-2 패, xG 0.82-2.28, 부상 탓에 강제된 백3). 결과가 갈려 「크립토나이트」 패턴이 아니다. ②투톱 1경기(뉴캐슬 4-1-3-2): DM 슬롯 선발 11경기 중 CB 자원 0회(카마라 9·고메스 5·바클리 5…). 대신 스즈키를 추가 인원으로 쓰고 캐시를 잔류시켰다(x 46). ③고압박(상대 PPDA ≤8.5) 7경기: 롱볼 평균 13.2%, 저압박 4경기는 8.0%. 결과는 3승 1무 3패다. 사용자 결정(10-20, obs#1081)으로 Counter 보조 프리셋은 두지 않는다. ④고라인(def_x_o ≥42.6) 4경기: match_period_stats에 롱패스 열이 없어 반별 비교가 안 된다. 주장별: #56 틀림(2경기 1무 1패지만 xG가 갈림). #370 틀림(26/27 재현 0회). #372 부분(롱 증가는 맞지만 25/26 첼시전 대조 자료가 없다). #373 틀림(뉴캐슬 43′ 대응은 앵커+전진 피벗이 아니라 GK 직접 배급). #377 판정 불가. #199 이미 APPLIED라 값 변경 없음. 재판정 조건: 투톱 상대 2경기째 또는 백3 상대 3경기째. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -18013,12 +18013,12 @@
      "focus": null,
      "headline_kr": "고라인엔 중앙발 뒷공간 직선 패스",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 2,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
       "trigger": "2026-08-11 이후 공식전 5경기 (11/5)"
      },
@@ -18029,8 +18029,8 @@
      "team_code": "AVL",
      "value": "when opponents jump aggressively to block central progression, switch to direct balls in behind from central areas for ST runs",
      "value_kr": "상대가 중앙 전진을 막으려 높이 튀어나오면, 중앙에서 뒷공간으로 띄우는 직선 패스로 ST 침투를 살린다",
-     "verdict": "PENDING",
-     "verdict_note": "25/26 근거 — 26/27 실측으로 재확인 필요. 정본 빌드업 Balanced 안에서의 경기 중 변주로, 26/27 토트넘전 Counter 경기 설정(kJZ0G7WvLWY APPLIED)과 같은 「상대 의존 직선화」 방향이다. 판정 조건: 26/27 고라인 상대 경기의 반별 롱패스 비중 변화를 match_period_stats로 확인되면 FC 게임플랜 B안(Long Ball/Counter)으로 기록"
+     "verdict": "HELD",
+     "verdict_note": "25/26 근거 — 26/27 실측으로 재확인 필요. 정본 빌드업 Balanced 안에서의 경기 중 변주로, 26/27 토트넘전 Counter 경기 설정(kJZ0G7WvLWY APPLIED)과 같은 「상대 의존 직선화」 방향이다. 판정 조건: 26/27 고라인 상대 경기의 반별 롱패스 비중 변화를 match_period_stats로 확인되면 FC 게임플랜 B안(Long Ball/Counter)으로 기록 [쟁점 #2 판정 2026-10-21 → HELD] 상대 유형별 신규 프리셋은 만들지 않는다. 현행 vs-strong/vs-weak/lead와 저점유 보조 #33을 유지하고, 경기 전용 설정은 지금처럼 match_game_setups에 둔다. 26/27 공식전 11경기를 유형별로 나눴다. ①백3 2경기: 헐 5-4-1(0-0, 점유 74%, xG 1.93-0.57)과 포레스트 3-4-2-1(1-2 패, xG 0.82-2.28, 부상 탓에 강제된 백3). 결과가 갈려 「크립토나이트」 패턴이 아니다. ②투톱 1경기(뉴캐슬 4-1-3-2): DM 슬롯 선발 11경기 중 CB 자원 0회(카마라 9·고메스 5·바클리 5…). 대신 스즈키를 추가 인원으로 쓰고 캐시를 잔류시켰다(x 46). ③고압박(상대 PPDA ≤8.5) 7경기: 롱볼 평균 13.2%, 저압박 4경기는 8.0%. 결과는 3승 1무 3패다. 사용자 결정(10-20, obs#1081)으로 Counter 보조 프리셋은 두지 않는다. ④고라인(def_x_o ≥42.6) 4경기: match_period_stats에 롱패스 열이 없어 반별 비교가 안 된다. 주장별: #56 틀림(2경기 1무 1패지만 xG가 갈림). #370 틀림(26/27 재현 0회). #372 부분(롱 증가는 맞지만 25/26 첼시전 대조 자료가 없다). #373 틀림(뉴캐슬 43′ 대응은 앵커+전진 피벗이 아니라 GK 직접 배급). #377 판정 불가. #199 이미 APPLIED라 값 변경 없음. 재판정 조건: 투톱 상대 2경기째 또는 백3 상대 3경기째. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "instruction",
@@ -18039,12 +18039,12 @@
      "focus": null,
      "headline_kr": "4-2-3-1 압박 → 4-4-2/4-3-3 유연 압박",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 15,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "비보유 기본 형태: 4-4-2 vs 4-4-1-1",
       "trigger": "2026-08-11 이후 리그 3경기 (7/3)"
      },
@@ -18055,8 +18055,8 @@
      "team_code": "AVL",
      "value": "aggressive 4-2-3-1 press over-collapsing to one flank left gaps; ~60' switch to 4-4-2 that becomes 4-3-3 with a CM (McGinn) jumping",
      "value_kr": "한쪽으로 과하게 몰리던 4-2-3-1 압박을 60분 무렵 4-4-2로 바꾸고, 맥긴이 튀어나가면 4-3-3이 되게 했다",
-     "verdict": "PENDING",
-     "verdict_note": "25/26 근거 — 26/27 실측으로 재확인 필요. Hr9ZXtlksv8 비보유 블록 주장(4-4-2·4-3-3·미드 점프)과 같은 원리이나 동일 화자라 독립 교차가 아니다. 판정 조건: 26/27 경기 반별 수비 국면 평균 위치에서 4-4-2/4-3-3 전환이 반복 확인되면 FC 수비 형태 지시로 기록"
+     "verdict": "HELD",
+     "verdict_note": "25/26 근거 — 26/27 실측으로 재확인 필요. Hr9ZXtlksv8 비보유 블록 주장(4-4-2·4-3-3·미드 점프)과 같은 원리이나 동일 화자라 독립 교차가 아니다. 판정 조건: 26/27 경기 반별 수비 국면 평균 위치에서 4-4-2/4-3-3 전환이 반복 확인되면 FC 수비 형태 지시로 기록 [쟁점 #15 판정 2026-10-21 → HELD] 비보유 기본 형태는 4-4-2가 더 많았다. 정본(4-2-3-1 Wide + CAM cam_playmaker/Roaming '수비 시 ST 옆 4-4-2 앞줄 합류')과 같은 방향이라 새 구현은 필요 없다. 잭슨−CAM 수비 액션 x 격차(WS 반별): 아스날 +0.8(경기 전체 · 리포트 #31) · 브렌트퍼드 1H −9 · 2H −5 · 뉴캐슬 1H −0.4는 4-4-2 쪽이다. 헐 1H +20(n3)만 4-4-1-1 기준(15+)에 들고, 토트넘 1H +9는 중간이다. 4-4-2가 PL 3경기에서 나왔다. 다만 표본이 반당 n2~8로 작다. 4-2-3-1↔4-4-2/4-3-3 전술 전환(#378)은 26/27에 없다(포레스트 87′ 4-4-2는 10명이 된 결과 · obs#713). 뉴캐슬은 후반 측면 미드 37·49 대 백4 10~22라 '6+4'가 아니라 낮은 4-4-2다(PPDA 8.87 · def_x 33.4 · 77′+ 31.5). game_system_changes에는 비보유 형태를 따로 정하는 축이 없다. #426·#467·#472 맞음 · #323 맞음 · #463 부분 맞음(4-4-2 저블록 O · 5-4-1 X) · #320 틀림(형태) · #378 26/27 미관측. 재판정 조건: FC27에 비보유 형태 축이 생기면 다시 본다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -18248,14 +18248,14 @@
      "focus": null,
      "headline_kr": "잭슨 주변에 붙는 동료가 없다",
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": null,
      "points_kr": "[\"평균 위치 맵에서 잭슨이 다른 모두와 멀다\", \"바클리·카마라는 전진 패스 후 재이동이 약하다\", \"부엔디아는 10번 위치 규율이 약하다\", \"ST 앞으로 넘어서는 러너가 없다\"]",
@@ -18264,8 +18264,8 @@
      "team_code": "AVL",
      "value": "ST isolated; no one close or beyond him (pivots don't pass-and-move, No.10 dragged out)",
      "value_kr": "ST 주변·앞에 붙는 동료가 없다 — 피벗은 패스 후 재이동이 없고 10번은 끌려나간다",
-     "verdict": "PENDING",
-     "verdict_note": "1874 단일 채널(2인 대담). 정본 CAM cam_playmaker/Roaming의 자유 이동이 ST 고립과 맞물리는지가 쟁점이다. 판정 조건: 26/27 PL 경기별 잭슨 평균 위치와 가장 가까운 동료(CAM·LM·RM) 거리를 25/26 왓킨스–로저스 간격과 비교해 3경기 이상 일관되게 크면 CAM 포커스(Roaming→Attack) 또는 측면 침투 지시 검토"
+     "verdict": "HELD",
+     "verdict_note": "1874 단일 채널(2인 대담). 정본 CAM cam_playmaker/Roaming의 자유 이동이 ST 고립과 맞물리는지가 쟁점이다. 판정 조건: 26/27 PL 경기별 잭슨 평균 위치와 가장 가까운 동료(CAM·LM·RM) 거리를 25/26 왓킨스–로저스 간격과 비교해 3경기 이상 일관되게 크면 CAM 포커스(Roaming→Attack) 또는 측면 침투 지시 검토 [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "limit",
@@ -18568,12 +18568,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 15,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "비보유 기본 형태: 4-4-2 vs 4-4-1-1",
       "trigger": "2026-08-11 이후 리그 3경기 (7/3)"
      },
@@ -18584,8 +18584,8 @@
      "team_code": "AVL",
      "value": "4-4-2 mid-block; handled Odegaard dropping but no answer to wide 3v3",
      "value_kr": "4-4-2 미드블록 — 중앙은 막았지만 측면 3대3엔 해법 없음",
-     "verdict": "PENDING",
-     "verdict_note": "obs#402(아스날전 무공 4-4-2 플랫, 카라거)와 같은 경기·같은 결론이고 글라스너 회견(SW1aUWWC9Wk)과 독립 교차한다. 실점 장면 선수는 원문 「Calum O'Hare」, 추정: 에제(auto-caption). 판정 조건: 26/27 PL 비보유 국면 평균 위치에서 CAM이 ST와 같은 높이로 올라간 4-4-2가 3경기 이상 반복되면 FC 구현 검토(SW1aUWWC9Wk 주장과 같은 조건)"
+     "verdict": "HELD",
+     "verdict_note": "obs#402(아스날전 무공 4-4-2 플랫, 카라거)와 같은 경기·같은 결론이고 글라스너 회견(SW1aUWWC9Wk)과 독립 교차한다. 실점 장면 선수는 원문 「Calum O'Hare」, 추정: 에제(auto-caption). 판정 조건: 26/27 PL 비보유 국면 평균 위치에서 CAM이 ST와 같은 높이로 올라간 4-4-2가 3경기 이상 반복되면 FC 구현 검토(SW1aUWWC9Wk 주장과 같은 조건) [쟁점 #15 판정 2026-10-21 → HELD] 비보유 기본 형태는 4-4-2가 더 많았다. 정본(4-2-3-1 Wide + CAM cam_playmaker/Roaming '수비 시 ST 옆 4-4-2 앞줄 합류')과 같은 방향이라 새 구현은 필요 없다. 잭슨−CAM 수비 액션 x 격차(WS 반별): 아스날 +0.8(경기 전체 · 리포트 #31) · 브렌트퍼드 1H −9 · 2H −5 · 뉴캐슬 1H −0.4는 4-4-2 쪽이다. 헐 1H +20(n3)만 4-4-1-1 기준(15+)에 들고, 토트넘 1H +9는 중간이다. 4-4-2가 PL 3경기에서 나왔다. 다만 표본이 반당 n2~8로 작다. 4-2-3-1↔4-4-2/4-3-3 전술 전환(#378)은 26/27에 없다(포레스트 87′ 4-4-2는 10명이 된 결과 · obs#713). 뉴캐슬은 후반 측면 미드 37·49 대 백4 10~22라 '6+4'가 아니라 낮은 4-4-2다(PPDA 8.87 · def_x 33.4 · 77′+ 31.5). game_system_changes에는 비보유 형태를 따로 정하는 축이 없다. #426·#467·#472 맞음 · #323 맞음 · #463 부분 맞음(4-4-2 저블록 O · 5-4-1 X) · #320 틀림(형태) · #378 26/27 미관측. 재판정 조건: FC27에 비보유 형태 축이 생기면 다시 본다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "instruction",
@@ -18628,14 +18628,14 @@
      "focus": "Support",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 5,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+      "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -18644,8 +18644,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "정본 ST st_advanced/Support와 방향은 맞지만(채널 침투+홀드업 연계) 이 경기 실측 1위는 st_false9/Build-Up .723이었다(리포트 #30 D+2에서 국면 함수로 재해석). 판정 조건: 잭슨 26/27 측면·하프라인 셀 비중을 25/26 왓킨스와 대조(claim #333과 같은 조건)"
+     "verdict": "HELD",
+     "verdict_note": "정본 ST st_advanced/Support와 방향은 맞지만(채널 침투+홀드업 연계) 이 경기 실측 1위는 st_false9/Build-Up .723이었다(리포트 #30 D+2에서 국면 함수로 재해석). 판정 조건: 잭슨 26/27 측면·하프라인 셀 비중을 25/26 왓킨스와 대조(claim #333과 같은 조건) [쟁점 #5 판정 2026-10-21 → HELD] 정본 ST st_advanced/Support(10-15 Versatile→Support 반영 완료)를 유지하고, st_target 변형은 기각한다. 잭슨 26/27 클럽 공식 선발 7경기(45분+, hp15+) 집계는 st_advanced/Support .701 1위, false9/Build-Up .653(Δ.048), st_advanced/Attack .500, st_target 최대 .413(Wide)이다. 25/26 왓킨스 36경기도 st_advanced/Support .711 1위라 같은 역할이다. 셀 비중(잭슨 vs 왓킨스): 측면 열 .227 vs .294, x<60 .357 vs .341, 박스 중앙 .197 vs .222. 잭슨은 왓킨스보다 덜 벌리고 깊이는 비슷하다. 주장별: #247 맞음(이미 반영). #300·#310·#313·#314 틀림 — 뉴캐슬전 st_target 최고 .568으로 false9/Attack .649·adv/Support .611보다 낮고, 듀얼 2-10, 0–36′ 터치는 팀 최저다. 7경기 중 st_target 1위는 0회다. #333·#365·#414·#433·#445·#446·#475는 방향만 맞음(Support 유지, 「측면 이탈」은 왓킨스보다 오히려 적다). #364는 박스 비중 −.025라 Attack 근거가 되지 않는다. #465 틀림 — PL 6경기 최근접 2선 동료 거리 평균 10.5(최대 15.1)로 25/26 왓킨스–로저스 15.7(32경기)보다 가깝다. 재판정 조건: 잭슨 집계에서 false9 또는 Attack이 Δ>.05로 1위가 될 때. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     }
    ],
    "key_points": [
@@ -19006,12 +19006,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 15,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "비보유 기본 형태: 4-4-2 vs 4-4-1-1",
       "trigger": "2026-08-11 이후 리그 3경기 (7/3)"
      },
@@ -19022,8 +19022,8 @@
      "team_code": "AVL",
      "value": "very compact 4-4-2 block, front-footed to go forward on transition",
      "value_kr": "매우 콤팩트한 4-4-2 블록 · 앞발로 서서 전환 시 바로 전진",
-     "verdict": "PENDING",
-     "verdict_note": "상대 감독의 사전 스카우팅(1차 발언)으로 obs#725에 반영됐고 obs#402(아스날전 카라거)·3ePF8hjITI4(Bains)와 독립 교차한다. 정본은 명목 4-2-3-1 Wide · 수비 Balanced로 충돌하지 않는다. 판정 조건: 26/27 PL 비보유 국면 평균 위치에서 CAM이 ST와 같은 높이로 올라간 4-4-2가 3경기 이상 반복되면 FC 구현(CAM 역할 또는 포메이션 대안) 검토"
+     "verdict": "HELD",
+     "verdict_note": "상대 감독의 사전 스카우팅(1차 발언)으로 obs#725에 반영됐고 obs#402(아스날전 카라거)·3ePF8hjITI4(Bains)와 독립 교차한다. 정본은 명목 4-2-3-1 Wide · 수비 Balanced로 충돌하지 않는다. 판정 조건: 26/27 PL 비보유 국면 평균 위치에서 CAM이 ST와 같은 높이로 올라간 4-4-2가 3경기 이상 반복되면 FC 구현(CAM 역할 또는 포메이션 대안) 검토 [쟁점 #15 판정 2026-10-21 → HELD] 비보유 기본 형태는 4-4-2가 더 많았다. 정본(4-2-3-1 Wide + CAM cam_playmaker/Roaming '수비 시 ST 옆 4-4-2 앞줄 합류')과 같은 방향이라 새 구현은 필요 없다. 잭슨−CAM 수비 액션 x 격차(WS 반별): 아스날 +0.8(경기 전체 · 리포트 #31) · 브렌트퍼드 1H −9 · 2H −5 · 뉴캐슬 1H −0.4는 4-4-2 쪽이다. 헐 1H +20(n3)만 4-4-1-1 기준(15+)에 들고, 토트넘 1H +9는 중간이다. 4-4-2가 PL 3경기에서 나왔다. 다만 표본이 반당 n2~8로 작다. 4-2-3-1↔4-4-2/4-3-3 전술 전환(#378)은 26/27에 없다(포레스트 87′ 4-4-2는 10명이 된 결과 · obs#713). 뉴캐슬은 후반 측면 미드 37·49 대 백4 10~22라 '6+4'가 아니라 낮은 4-4-2다(PPDA 8.87 · def_x 33.4 · 77′+ 31.5). game_system_changes에는 비보유 형태를 따로 정하는 축이 없다. #426·#467·#472 맞음 · #323 맞음 · #463 부분 맞음(4-4-2 저블록 O · 5-4-1 X) · #320 틀림(형태) · #378 26/27 미관측. 재판정 조건: FC27에 비보유 형태 축이 생기면 다시 본다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "role",
@@ -19371,12 +19371,12 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": true,
       "hold": false,
       "id": 15,
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "비보유 기본 형태: 4-4-2 vs 4-4-1-1",
       "trigger": "2026-08-11 이후 리그 3경기 (7/3)"
      },
@@ -19387,8 +19387,8 @@
      "team_code": "AVL",
      "value": "drop into 4-4-2 (or 5-3-2 / 5-4-1) when under sustained pressure",
      "value_kr": "밀릴 때는 4-4-2(또는 윙어가 내려온 5-4-1)로 좁혀 버틴다",
-     "verdict": "PENDING",
-     "verdict_note": "화자의 처방(이 경기에서 일어나지 않은 것)이다. 비보유 4-4-2는 obs#402·#725와 같은 축이고 claim #201·#323도 PENDING이다. 판정 조건: 26/27 PL 경기 반별 비보유 평균 위치에서 수세 구간 4-4-2/5-4-1 전환이 3경기 이상 반복 확인되면 FC 수비 형태로 기록"
+     "verdict": "HELD",
+     "verdict_note": "화자의 처방(이 경기에서 일어나지 않은 것)이다. 비보유 4-4-2는 obs#402·#725와 같은 축이고 claim #201·#323도 PENDING이다. 판정 조건: 26/27 PL 경기 반별 비보유 평균 위치에서 수세 구간 4-4-2/5-4-1 전환이 3경기 이상 반복 확인되면 FC 수비 형태로 기록 [쟁점 #15 판정 2026-10-21 → HELD] 비보유 기본 형태는 4-4-2가 더 많았다. 정본(4-2-3-1 Wide + CAM cam_playmaker/Roaming '수비 시 ST 옆 4-4-2 앞줄 합류')과 같은 방향이라 새 구현은 필요 없다. 잭슨−CAM 수비 액션 x 격차(WS 반별): 아스날 +0.8(경기 전체 · 리포트 #31) · 브렌트퍼드 1H −9 · 2H −5 · 뉴캐슬 1H −0.4는 4-4-2 쪽이다. 헐 1H +20(n3)만 4-4-1-1 기준(15+)에 들고, 토트넘 1H +9는 중간이다. 4-4-2가 PL 3경기에서 나왔다. 다만 표본이 반당 n2~8로 작다. 4-2-3-1↔4-4-2/4-3-3 전술 전환(#378)은 26/27에 없다(포레스트 87′ 4-4-2는 10명이 된 결과 · obs#713). 뉴캐슬은 후반 측면 미드 37·49 대 백4 10~22라 '6+4'가 아니라 낮은 4-4-2다(PPDA 8.87 · def_x 33.4 · 77′+ 31.5). game_system_changes에는 비보유 형태를 따로 정하는 축이 없다. #426·#467·#472 맞음 · #323 맞음 · #463 부분 맞음(4-4-2 저블록 O · 5-4-1 X) · #320 틀림(형태) · #378 26/27 미관측. 재판정 조건: FC27에 비보유 형태 축이 생기면 다시 본다. (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21)"
     },
     {
      "axis": "limit",
@@ -19796,32 +19796,32 @@
  },
  "issues": [
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 1,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
    "trigger": "2026-08-11 이후 리그 6경기 (7/6)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 2,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
    "trigger": "2026-08-11 이후 공식전 5경기 (11/5)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 3,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
    "trigger": "2026-08-11 이후 스즈키 지온 선발 3경기 (8/3)"
   },
@@ -19836,14 +19836,14 @@
    "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 5,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-   "trigger": "2026-08-11 이후 잭슨 선발 3경기 (10/3)"
+   "trigger": "2026-08-11 이후 잭슨 선발 3경기 (8/3)"
   },
   {
    "closed": null,
@@ -19853,25 +19853,25 @@
    "resolution": null,
    "status": "open",
    "title": "RM 인선: 침투형 윙어 vs 맥긴 체제",
-   "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (2/3)"
+   "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (1/3)"
   },
   {
    "closed": null,
-   "due": true,
+   "due": false,
    "hold": false,
    "id": 7,
    "resolution": null,
    "status": "open",
    "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-   "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+   "trigger": "2026-08-11 이후 음바예 선발 3경기 (2/3)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 8,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "맥긴 RM: 터치라인 윙어 vs 안쪽형",
    "trigger": "2026-08-11 이후 맥긴 RM,RAM,RW 선발 3경기 (10/3)"
   },
@@ -19903,27 +19903,27 @@
    "resolution": null,
    "status": "open",
    "title": "루헤리 LB 역할: 공격형 윙백 vs 수비형 풀백",
-   "trigger": "2026-08-11 이후 마테오 루헤리 LB 선발 5경기 (4/5)"
+   "trigger": "2026-08-11 이후 마테오 루헤리 LB 선발 5경기 (3/5)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 12,
-   "resolution": null,
-   "status": "open",
+   "resolution": "REJECTED",
+   "status": "closed",
    "title": "루헤리 크로스 위치: 이른 크로스 vs 컷백",
-   "trigger": "2026-08-11 이후 마테오 루헤리 선발 2경기 (4/2)"
+   "trigger": "2026-08-11 이후 마테오 루헤리 선발 2경기 (3/2)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 13,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-   "trigger": "2026-08-11 이후 캐시 RB 선발 3경기 (8/3)"
+   "trigger": "2026-08-11 이후 캐시 RB 선발 3경기 (7/3)"
   },
   {
    "closed": null,
@@ -19936,22 +19936,22 @@
    "trigger": "2026-08-11 이후 알리송 선발 3경기 (1/3)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 15,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "비보유 기본 형태: 4-4-2 vs 4-4-1-1",
    "trigger": "2026-08-11 이후 리그 3경기 (7/3)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 16,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
    "trigger": "2026-08-11 이후 리그 2경기 (7/2)"
   },
@@ -19966,12 +19966,12 @@
    "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 18,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "카마라·고메스 동시 선발 시 배급 주도권(CB 1·2위)",
    "trigger": "2026-10-11 이후 주앙 고메스 선발 1경기 (1/1)"
   },
@@ -19986,42 +19986,42 @@
    "trigger": "2026-10-17 이후 카마라 RDM 선발 3경기 (0/3)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 20,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
    "trigger": "2026-08-11 이후 주앙 고메스 선발 3경기 (6/3)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 21,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "2선(만잠비·부엔디아) 배치와 만잠비 역할",
-   "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (4/3)"
+   "trigger": "2026-08-11 이후 만잠비 CAM 선발 3경기 (3/3)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 22,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "밍스 선발 시 CB 역할: 빌드업 BPD vs 덜 관여하는 역할",
    "trigger": "2026-08-11 이후 밍스 선발 3경기 (5/3)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 23,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "토레스·린델뢰프 CB 포커스: Build-Up vs Aggressive",
    "trigger": "2026-08-11 이후 파우 토레스 LCB 선발 3경기 (5/3)"
   },
@@ -20046,24 +20046,24 @@
    "trigger": "2026-08-11 이후 고레츠카 선발 2경기 (0/2)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 26,
-   "resolution": null,
-   "status": "open",
+   "resolution": "REJECTED",
+   "status": "closed",
    "title": "헤밍스 LM 역할: 인사이드 포워드 vs 와이드 미드",
    "trigger": "2026-08-11 이후 헤밍스 LM,LAM 선발 3경기 (6/3)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 27,
-   "resolution": null,
-   "status": "open",
+   "resolution": "REJECTED",
+   "status": "closed",
    "title": "완비사카: 적응 추세와 좌측 기용 포커스",
-   "trigger": "2026-08-11 이후 완비사카 선발 3경기 (8/3)"
+   "trigger": "2026-08-11 이후 완비사카 선발 3경기 (6/3)"
   },
   {
    "closed": null,
@@ -20076,12 +20076,12 @@
    "trigger": "2026-08-11 이후 타미 아브라함 선발 3경기 (1/3)"
   },
   {
-   "closed": null,
+   "closed": "2026-10-21",
    "due": true,
    "hold": false,
    "id": 29,
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "세트피스 허용 억제와 득점 경로",
    "trigger": "2026-08-11 이후 리그 5경기 (7/5)"
   },
