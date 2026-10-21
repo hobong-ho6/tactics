@@ -20,6 +20,8 @@
     python3 scripts/claim_issues.py --close ISSUE --verdict HELD --note "…" --w-kind matches --w-n 5 --w-comp league --w-since 2026-10-21
         → 정본 유지 + 재판정 트리거(감시 단계로 남는다) · 감시 중인 쟁점이면 같은 명령으로 다시 건다
     python3 scripts/claim_issues.py --close ISSUE --verdict HELD --final --note "재판정 조건이 없는 이유"
+    python3 scripts/claim_issues.py --close-claims CLAIM_ID… --verdict REJECTED|HELD --final --note "조건 소멸·이미 충족 사유"
+        → 쟁점 전체가 아니라 주장 몇 개만 종결(종결 쟁점으로 떼어 낸다)
     python3 scripts/claim_issues.py --extend ISSUE --since 2026-10-21 --n 3 --note "아직 결정적이지 않은 이유·수치"   # 판정 대기만
 ⛔ 판정(--close)은 사람이 실측을 보고 내린다 — 이 스크립트는 판정을 만들지 않는다. 정본을 바꾸는 APPLIED는 사용자 승인 후.
 """
@@ -109,6 +111,39 @@ def close(con, a):
     return f"쟁점 #{a.close} 「{r['title_kr']}」 → {a.verdict}{' (종결)' if a.final else ''} · 주장 {n}행"
 
 
+def close_claims(con, a):
+    """주장 몇 개만 종결 — 원 쟁점에서 떼어 종결 쟁점 1행(trigger date=오늘)에 묶고 닫는다(이력은 양쪽에 남는다).
+    ⛔ 원 쟁점의 마지막 주장이면 거부한다 — 그때는 쟁점 자체를 --close한다."""
+    if not (a.verdict and (a.note or "").strip()):
+        raise SystemExit("⛔ --close-claims는 --verdict와 --note(사유)가 필수다")
+    if a.verdict == "HELD" and not a.final:
+        raise SystemExit("⛔ 주장 단위 HELD 종결은 --final(재판정 조건이 없는 이유)만 허용 — 감시를 이어갈 거면 쟁점에 남겨 둔다")
+    rows = [con.execute("SELECT * FROM video_impl_claims WHERE id=?", (c,)).fetchone() for c in a.close_claims]
+    if not all(rows):
+        raise SystemExit("⛔ 없는 주장 id가 있다")
+    src = {r["issue_id"] for r in rows}
+    if len(src) != 1 or None in src:
+        raise SystemExit("⛔ 같은 쟁점에 묶인 주장만 한 번에 종결한다")
+    parent = con.execute("SELECT * FROM claim_issues WHERE id=?", (src.pop(),)).fetchone()
+    left = con.execute(f"SELECT COUNT(*) FROM video_impl_claims WHERE issue_id=? AND id NOT IN ({','.join('?' * len(rows))})",
+                       (parent["id"], *a.close_claims)).fetchone()[0]
+    if parent["status"] == "open" and left == 0:
+        raise SystemExit(f"⛔ 쟁점 #{parent['id']}의 마지막 주장이다 — 쟁점 자체를 --close로 닫는다")
+    ids = ", ".join(f"#{c}" for c in a.close_claims)
+    iid = insert_issue(con, {"team_code": parent["team_code"], "title_kr": f"개별 종결 {ids} (쟁점 #{parent['id']}에서)"[:40],
+                             "question_kr": f"쟁점 #{parent['id']} 「{parent['title_kr']}」에서 떼어 낸 주장 {ids}의 종결",
+                             "measure_kr": a.note, "trigger_kind": "date", "trigger_date": TODAY},
+                       f"scripts/claim_issues.py --close-claims, {TODAY}")
+    con.execute("UPDATE claim_issues SET status='closed', resolution=?, resolution_note=?, closed=? WHERE id=?",
+                (a.verdict, f"[{a.verdict}{' final' if a.final else ''} {TODAY}] {a.note}", TODAY, iid))
+    tag = f" [쟁점 #{parent['id']}→#{iid} 개별 종결 {TODAY} → {a.verdict}] {a.note}"
+    con.executemany("UPDATE video_impl_claims SET issue_id=?, verdict=?, verdict_note=COALESCE(verdict_note,'')||? WHERE id=?",
+                    [(iid, a.verdict, tag, c) for c in a.close_claims])
+    con.execute("UPDATE claim_issues SET source=COALESCE(source,'')||? WHERE id=?",
+                (f" · [{TODAY} 주장 {ids} → 쟁점 #{iid}로 개별 종결({a.verdict})]", parent["id"]))
+    return f"주장 {ids} → {a.verdict} 종결(쟁점 #{iid} · 원 쟁점 #{parent['id']} 남은 주장 {left})"
+
+
 def apply_watch(con, path):
     d = json.loads(Path(path).read_text(encoding="utf-8"))
     src = f"scripts/claim_issues.py --apply-watch {Path(path).name}, {TODAY}"
@@ -140,13 +175,15 @@ def main():
     for k in ("kind", "comp", "player", "pos", "date", "since", "measure"):
         ap.add_argument(f"--w-{k}")
     ap.add_argument("--w-n", type=int)
+    ap.add_argument("--close-claims", nargs="+", type=int, metavar="CLAIM_ID",
+                    help="쟁점 전체가 아니라 주장 몇 개만 종결(조건 소멸·이미 충족) — 종결 쟁점 1행으로 떼어 낸다")
     ap.add_argument("--extend", type=int, help="판정 대기 쟁점의 트리거를 다시 건다(--since·--n)")
     ap.add_argument("--since")
     ap.add_argument("--n", type=int)
     a = ap.parse_args()
     con = connect_db(DB)
     con.row_factory = sqlite3.Row
-    if not any((a.load, a.apply_watch, a.attach, a.close, a.extend)):
+    if not any((a.load, a.apply_watch, a.attach, a.close, a.extend, a.close_claims)):
         return show(con, a.due)
     con.execute("BEGIN IMMEDIATE")
     if a.load:
@@ -160,6 +197,8 @@ def main():
     elif a.attach:
         attach(con, a.attach[0], a.attach[1:])
         msg = f"쟁점 #{a.attach[0]}에 주장 {len(a.attach) - 1}행 연결"
+    elif a.close_claims:
+        msg = close_claims(con, a)
     elif a.extend:
         if not ((a.note or "").strip() and (a.since or a.n)):
             raise SystemExit("⛔ --extend는 --note(왜 아직 판정 못 하나 · 실측 수치)와 --since/--n이 필수다")

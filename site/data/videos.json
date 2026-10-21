@@ -11719,15 +11719,15 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": false,
       "hold": false,
-      "id": 21,
-      "phase": "watch",
-      "resolution": "HELD",
-      "status": "open",
-      "title": "2선(만잠비·부엔디아) 배치와 만잠비 역할",
-      "trigger": "2026-10-21 이후 만잠비 CAM 선발 2경기 (0/2)"
+      "id": 76,
+      "phase": "decide",
+      "resolution": "REJECTED",
+      "status": "closed",
+      "title": "개별 종결 #53 (쟁점 #21에서)",
+      "trigger": "2026-10-21 이후"
      },
      "player": "만잠비",
      "points_kr": null,
@@ -11736,8 +11736,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "HELD",
-     "verdict_note": "✅ **독립 수렴이다** — 우리 어휘에 `mezzala`는 없지만 가장 가까운 것이 `cm_halfwinger`/`cam_halfwinger`(하프스페이스 침투형)이고, `#254`·`squad_entries`가 이미 **CAM `cam_halfwinger/Balanced` .861**로 잡고 있다. 영상과 커널이 따로 같은 자리에 도달했다 ⇒ 변경 없음. ⚠️ **재판정 조건: 26/27 AVL 공식전 표본 확보**. 현재 만잠비 실측은 전부 25/26(프라이부르크·스위스 대표팀)이고 `#254`의 .861도 그 그리드 기반이다 — 복귀 후 포지션-순수 2경기 이상 쌓이면 재산출 1순위."
+     "verdict": "REJECTED",
+     "verdict_note": "✅ **독립 수렴이다** — 우리 어휘에 `mezzala`는 없지만 가장 가까운 것이 `cm_halfwinger`/`cam_halfwinger`(하프스페이스 침투형)이고, `#254`·`squad_entries`가 이미 **CAM `cam_halfwinger/Balanced` .861**로 잡고 있다. 영상과 커널이 따로 같은 자리에 도달했다 ⇒ 변경 없음. ⚠️ **재판정 조건: 26/27 AVL 공식전 표본 확보**. 현재 만잠비 실측은 전부 25/26(프라이부르크·스위스 대표팀)이고 `#254`의 .861도 그 그리드 기반이다 — 복귀 후 포지션-순수 2경기 이상 쌓이면 재산출 1순위. [쟁점 #21→#76 개별 종결 2026-10-21 → REJECTED] 재판정 조건(26/27 AVL 공식전 표본)이 충족됐고 결과가 주장과 반대 — 만잠비 CAM 선발 3경기(토트넘·브렌트퍼드·뉴캐슬) 집계 cam_playmaker/Roaming .769 vs cam_halfwinger/Balanced .597(Δ.172), 단일 경기도 3경기 모두 Roaming 1위(쟁점 #21 판정). #254 .861은 25/26 프라이부르크 그리드 투영값이라 26/27 실측이 대체한다(사용자 지시 2026-10-21 「판단 필요한건 닫아줘」)"
     }
    ],
    "key_points": [
@@ -18958,15 +18958,15 @@
      "focus": "Versatile",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-10-21",
       "due": false,
       "hold": false,
-      "id": 5,
-      "phase": "watch",
+      "id": 77,
+      "phase": "decide",
       "resolution": "HELD",
-      "status": "open",
-      "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "status": "closed",
+      "title": "개별 종결 #17 (쟁점 #5에서)",
+      "trigger": "2026-10-21 이후"
      },
      "player": "왓킨스",
      "points_kr": null,
@@ -18976,7 +18976,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "✅ 이미 일치 — `prescriptions#11` = `st_advanced/Versatile`(obs#12가 07-08의 Support 변경을 되돌린 값). 영상이 독립 수렴했다. 재판정 조건: 26/27 왓킨스 표본이 쌓여 기능 프로파일(xg/xa)이 바뀌면 재산출."
+     "verdict_note": "✅ 이미 일치 — `prescriptions#11` = `st_advanced/Versatile`(obs#12가 07-08의 Support 변경을 되돌린 값). 영상이 독립 수렴했다. 재판정 조건: 26/27 왓킨스 표본이 쌓여 기능 프로파일(xg/xa)이 바뀌면 재산출. [쟁점 #5→#77 개별 종결 2026-10-21 → HELD] 재판정 조건 소멸 — 「26/27 왓킨스 표본」이 조건인데 왓킨스는 이적해 빌라 26/27 클럽 경기가 없다. ST 슬롯 역할 판정은 잭슨 쟁점 #5(st_advanced/Support 유지·감시 중)가 이어받는다(사용자 지시 2026-10-21 「판단 필요한건 닫아줘」)"
     },
     {
      "axis": "role",
@@ -21874,6 +21874,28 @@
    "status": "open",
    "title": "ATM 측면 비대칭 서술(게임 재현 채널)",
    "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+  },
+  {
+   "closed": "2026-10-21",
+   "due": false,
+   "hold": false,
+   "id": 76,
+   "phase": "decide",
+   "resolution": "REJECTED",
+   "status": "closed",
+   "title": "개별 종결 #53 (쟁점 #21에서)",
+   "trigger": "2026-10-21 이후"
+  },
+  {
+   "closed": "2026-10-21",
+   "due": false,
+   "hold": false,
+   "id": 77,
+   "phase": "decide",
+   "resolution": "HELD",
+   "status": "closed",
+   "title": "개별 종결 #17 (쟁점 #5에서)",
+   "trigger": "2026-10-21 이후"
   }
  ]
 }
