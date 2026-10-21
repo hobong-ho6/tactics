@@ -113,7 +113,7 @@ for t in AVL CHE LIV ATM; do .venv/bin/python scripts/collect_fotmob_players.py 
   대상(`player`/`team_code` + `role_id`·`focus`·`field`·`value`) · `quote`(원문+번역) ·
   `verdict`(APPLIED/HELD/REJECTED/PENDING/NA) · `verdict_note`.
   ⛔ **주장이 없는 영상도 `{"axis":"none"}` 한 행을 넣는다** — 안 넣으면 「주장 없음」과 「미작성」이 구분되지 않는다.
-  ⭐⭐ **PENDING(판정 대기)은 판정 쟁점에 묶어야 들어간다**(2026-10-21 · migration 114 · 사용자 「판정대기는 언제 판정완료되는거야?」 — 산문 조건만 두면 아무도 닫지 않아 165건이 쌓였다). `python3 scripts/claim_issues.py`로 열린 쟁점을 보고 같은 판정 조건이면 `"issue_id": N`, 새 조건이면 `"issue": {…}`(트리거 `matches`·`player_starts`·`date`). 트리거가 차면 `claim_issues.py --due`에 뜨고 `--close <id> --verdict … --note "실측"`로 **묶인 주장이 한 번에 닫힌다**. 찬 뒤 7일 넘게 열려 있으면 G39가 막는다 — **회차 마무리에 `--due`를 반드시 돈다**.
+  ⭐⭐ **PENDING(판정 대기)은 판정 쟁점에 묶어야 들어간다**(2026-10-21 · migration 114 · 사용자 「판정대기는 언제 판정완료되는거야?」 — 산문 조건만 두면 아무도 닫지 않아 165건이 쌓였다). `python3 scripts/claim_issues.py`로 열린 쟁점을 보고 같은 판정 조건이면 `"issue_id": N`, 새 조건이면 `"issue": {…}`(트리거 `matches`·`player_starts`·`date`). 트리거가 차면 `claim_issues.py --due`에 뜨고 `--close <id> --verdict … --note "실측"`로 **묶인 주장이 한 번에 닫힌다**. 찬 뒤 7일 넘게 열려 있으면 G39가 막는다 — **회차 마무리에 `--due`를 반드시 돈다**. ⭐ **HELD(화면 「유지」)도 감시 쟁점에 묶는다**(migration 115 · 사용자 「보류 판정도 이후에 업데이트 되는거야?」) — HELD 주장은 열린 감시 쟁점의 `issue_id` 또는 `issue` spec(트리거 = 재판정 조건)이 필수이고, 트리거가 차면 「재판정할 차례」로 다시 뜬다.
   ⛔⛔ **team_axis·instruction·limit 주장은 `field_kr`·`value_kr`(한국어) 필수**(2026-10-20 · migration 112 · 불변규칙 11 —
   영어 자유 문구 `defensive_shape_first_half: wide mids drop back six`가 화면에 그대로 찍혔다). 없으면 `write_video_summary.py`가
   적재를 거부하고 G17이 「한국어 결손」으로 막는다. 선수 이름은 `players.name_kr`. 영어 `field`·`value`는 원문으로 그대로 둔다(화면 툴팁).

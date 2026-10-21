@@ -604,7 +604,7 @@ def export_all(db_path=None, window="2026-summer"):
     from core.claim_issues import progress as _ci_progress, trigger_kr as _ci_trigger
     _rf = con.row_factory
     con.row_factory = sqlite3.Row
-    issues = {r["id"]: {"id": r["id"], "title": r["title_kr"], "status": r["status"], "hold": bool(r["hold"]),
+    issues = {r["id"]: {"id": r["id"], "title": r["title_kr"], "status": r["status"], "phase": r["phase"], "hold": bool(r["hold"]),
                         "trigger": _ci_trigger(con, r), "due": _ci_progress(con, r)["due"],
                         "resolution": r["resolution"], "closed": r["closed"]}
               for r in con.execute("SELECT * FROM claim_issues")}

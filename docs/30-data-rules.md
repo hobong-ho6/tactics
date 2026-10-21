@@ -348,7 +348,7 @@ AVL·CHE·LIV 공통.
 
    `verdict` 어휘: `APPLIED`(처방·설정을 바꿨다) · `HELD`(안 바꿨다 — ⛔ **재판정 조건 필수**) ·
    `REJECTED`(채택 안 함 — ⛔ **사유 필수**) · `PENDING`(판정 대기) · `NA`(`none` 전용).
-   ⭐ **`PENDING`은 판정 쟁점(`claim_issues`)에 묶는다**(2026-10-21 · migration 114 · G39) — 판정 조건을 산문이 아니라 **트리거**(팀 공식전 N경기 · 선수 선발 N경기 · 날짜)로 둔다. 같은 조건의 주장은 영상이 달라도 한 쟁점이고 `scripts/claim_issues.py --close`로 함께 닫힌다. 트리거 판정 정본 `core/claim_issues.py` · 찬 뒤 7일 넘게 열려 있으면 G39 실패.
+   ⭐ **`PENDING`은 판정 쟁점(`claim_issues`)에 묶는다**(2026-10-21 · migration 114 · G39) — 판정 조건을 산문이 아니라 **트리거**(팀 공식전 N경기 · 선수 선발 N경기 · 날짜)로 둔다. 같은 조건의 주장은 영상이 달라도 한 쟁점이고 `scripts/claim_issues.py --close`로 함께 닫힌다. 트리거 판정 정본 `core/claim_issues.py` · 찬 뒤 7일 넘게 열려 있으면 G39 실패. ⭐ **`HELD`(화면 「유지」)도 감시 쟁점에 묶는다**(2026-10-21 · migration 115) — 쟁점 단계 decide(PENDING) → HELD 판정 시 watch(재판정 조건이 트리거) → 차면 「재판정할 차례」. 종결은 APPLIED·REJECTED 또는 `HELD --final`(재판정 조건 없음·사유 필수).
 
    **작성 규약**:
    - `role_id`·`focus`는 **우리 어휘만** 쓴다(커널 `role_group` 키 / 포커스 7종). ⛔ 자유 문자열 금지 —

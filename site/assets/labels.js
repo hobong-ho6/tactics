@@ -17,7 +17,7 @@ export const ROLE_KR = {
 const POS_OF = { gk:'GK', cb:'CB', fb:'풀백', dm:'DM', cm:'CM', cam:'CAM', w:'윙', wm:'측면 MF', st:'ST' };
 export const FOCUS_KR = { Attack:'공격', Balanced:'균형', Defend:'수비', 'Build-Up':'빌드업', Roaming:'자유 이동',
   Support:'지원', Versatile:'다재다능', Aggressive:'적극', 'Ball-Winning':'볼 탈취', Wide:'넓게' };
-export const VERDICT_KR = { APPLIED:'반영됨', HELD:'보류', REJECTED:'기각', PENDING:'판정 대기', NA:'해당 없음',
+export const VERDICT_KR = { APPLIED:'반영됨', HELD:'유지', REJECTED:'기각', PENDING:'판정 대기', NA:'해당 없음',
   MATCH:'일치', CONFLICT:'충돌', PROSE:'산문' };
 export const AXIS_KR = { role:'역할', focus:'포커스', team_axis:'팀 설정', instruction:'지시·운용', limit:'재현 한계', none:'주장 없음' };
 

@@ -1028,14 +1028,18 @@ def run(db_path=None, verbose=True):
     #       하나도 없으면 빈 쟁점 ④ ⛔ 트리거가 찬 뒤 7일(core.claim_issues.GRACE_DAYS)이 지나도 열려 있으면 기한 초과.
     #       트리거 판정 정본은 core/claim_issues.py(보류 팀 쟁점은 ④ 제외).
     from core.claim_issues import overdue as _ci_overdue, progress as _ci_progress
+    #       ⑤ 2026-10-21 확장(migration 115 · 사용자 「보류 판정도 이후에 업데이트 되는거야?」): HELD(정본 유지)도 감시 쟁점에
+    #          묶여야 한다 — 재판정 조건을 트리거로 둔다. 쟁점 단계별로 묶이는 판정: decide=PENDING · watch=HELD.
     g39_unlinked = [r[0] for r in con.execute(
-        "SELECT id FROM video_impl_claims WHERE verdict='PENDING' AND issue_id IS NULL")]
+        "SELECT id FROM video_impl_claims WHERE verdict IN ('PENDING','HELD') AND issue_id IS NULL")]
     g39_closed_pending = [r[0] for r in con.execute(
         """SELECT c.id FROM video_impl_claims c JOIN claim_issues i ON i.id=c.issue_id
-           WHERE c.verdict='PENDING' AND i.status='closed'""")]
+           WHERE (c.verdict='PENDING' AND (i.status='closed' OR i.phase='watch'))
+              OR (c.verdict='HELD' AND i.status='open' AND i.phase='decide')""")]
     g39_empty = [r[0] for r in con.execute(
         """SELECT i.id FROM claim_issues i WHERE i.status='open' AND NOT EXISTS(
-             SELECT 1 FROM video_impl_claims c WHERE c.issue_id=i.id AND c.verdict='PENDING')""")]
+             SELECT 1 FROM video_impl_claims c WHERE c.issue_id=i.id
+               AND c.verdict = CASE i.phase WHEN 'watch' THEN 'HELD' ELSE 'PENDING' END)""")]
     _ci_prev_rf = con.row_factory
     con.row_factory = sqlite3.Row
     _ci_open = con.execute("SELECT * FROM claim_issues WHERE status='open'").fetchall()
@@ -1044,10 +1048,10 @@ def run(db_path=None, verbose=True):
     con.row_factory = _ci_prev_rf
     ok39 = not (g39_unlinked or g39_closed_pending or g39_empty or g39_overdue)
     if verbose:
-        print(f"G39 판정 쟁점: 열린 {len(_ci_open)} · 판정할 차례 {len(g39_due)} · 쟁점 없는 PENDING {len(g39_unlinked)} · "
-              f"닫힌 쟁점의 PENDING {len(g39_closed_pending)} · 빈 쟁점 {len(g39_empty)} · 기한 초과 {len(g39_overdue)} "
+        print(f"G39 판정 쟁점: 열린 {len(_ci_open)} · (재)판정할 차례 {len(g39_due)} · 쟁점 없는 PENDING·HELD {len(g39_unlinked)} · "
+              f"단계 모순 {len(g39_closed_pending)} · 빈 쟁점 {len(g39_empty)} · 기한 초과 {len(g39_overdue)} "
               + ("✅" if ok39 else "❌ " + (f"기한 초과 쟁점 {g39_overdue} → python3 scripts/claim_issues.py --due 후 --close · " if g39_overdue else "")
-                 + (f"쟁점 없는 PENDING {g39_unlinked[:8]} → claim_issues.py --attach · " if g39_unlinked else "")
+                 + (f"쟁점 없는 PENDING·HELD {g39_unlinked[:8]} → claim_issues.py --attach · " if g39_unlinked else "")
                  + (f"빈 쟁점 {g39_empty} · " if g39_empty else "") + (f"모순 {g39_closed_pending[:8]}" if g39_closed_pending else "")))
     if not ok39:
         fails.append("G39")

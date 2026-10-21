@@ -1424,7 +1424,7 @@ CREATE TABLE claim_issues(
   resolution_note TEXT,             -- 판정 근거(실측 수치) — 닫을 때 필수
   closed TEXT,
   source TEXT, confidence TEXT,
-  created TEXT NOT NULL DEFAULT (date('now')),
+  created TEXT NOT NULL DEFAULT (date('now')), phase TEXT NOT NULL DEFAULT 'decide' CHECK(phase IN ('decide','watch')), armed TEXT,
   CHECK(trigger_kind <> 'date' OR trigger_date IS NOT NULL),
   CHECK(trigger_kind = 'date' OR (trigger_n IS NOT NULL AND since IS NOT NULL)),
   CHECK(trigger_kind <> 'player_starts' OR trigger_player_id IS NOT NULL),

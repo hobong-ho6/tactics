@@ -273,7 +273,7 @@ function renderVideos(r){
   /* ⭐⭐ 감독 회견을 맨 위 별도 영역으로, 나머지는 **정보 등급** 순으로 배치한다
      (2026-09-22 사용자 지시 「감독회견은 중요하니 상단에 별도 영역 · 유용한 정보는 등급을 매겨 높은 것을 위로」).
      ⛔ 등급은 **원장 값으로만 계산한다** — 산문을 읽고 점수를 매기지 않는다:
-        A = 구현에 **반영된**(APPLIED) 주장이 있다 · B = 판정 대기(HELD/PENDING) 주장이 있다
+        A = 구현에 **반영된**(APPLIED) 주장이 있다 · B = 유지(HELD)·판정 대기(PENDING) 주장이 있다
         C = 읽었고 **주장 없음**(axis='none') · D = 요약 미작성(전사만 있다)
      ⚠️ 등급은 「이 영상이 우리 구현을 얼마나 움직였나」이지 영상의 품질 평가가 아니다. */
   const gradeOf = v => {
@@ -285,7 +285,7 @@ function renderVideos(r){
   };
   const GRADE_WHY = {
     A: '구현에 반영된(APPLIED) 주장이 있다',
-    B: '판정 대기(HELD·PENDING) 주장이 있다',
+    B: '유지(HELD)·판정 대기(PENDING) 주장이 있다',
     C: '전사를 읽었고 구현에 닿는 주장이 없다',
     D: '요약 미작성 — 전사만 확보',
   };
@@ -335,7 +335,7 @@ function renderVideos(r){
     + (pressers.length ? `<section class="vsec presserbox"><h3>🗣️ 감독 회견 <small class="dim">${pressers.length}편 — 1차 발언이라 가장 세다</small></h3>
         ${pDone.map(v => card(v, null)).join('')}
         ${pressers.length > pDone.length ? `<ul class="vidlist">${pressers.filter(v => !v.summary).map(row).join('')}</ul>` : ''}</section>` : '')
-    + sec('영상 분석', `요약 있는 ${oDone.length}편 — 정보 등급順 · <b class="badge vgrade vA">A</b> 구현 반영 <b class="badge vgrade vB">B</b> 판정 대기 <b class="badge vgrade vC">C</b> 주장 없음`,
+    + sec('영상 분석', `요약 있는 ${oDone.length}편 — 정보 등급順 · <b class="badge vgrade vA">A</b> 구현 반영 <b class="badge vgrade vB">B</b> 유지·판정 대기 <b class="badge vgrade vC">C</b> 주장 없음`,
           oDone.map(x => card(x.v, x.g)).join(''))
     + (todo.filter(v => v.kind !== '감독회견').length ? `<details class="vsec vidtodo"><summary><b>요약 미작성 ${todo.filter(v => v.kind !== '감독회견').length}편</b> <small class="dim">— 전사는 확보돼 있다 · 채널·제목·날짜만</small></summary>
         <ul class="vidlist">${todo.filter(v => v.kind !== '감독회견').map(row).join('')}</ul></details>` : '');
@@ -365,9 +365,13 @@ function claimTarget(c){
    같은 쟁점의 주장은 여러 영상에 흩어져 있어도 한 번 판정으로 같이 닫힌다(scripts/claim_issues.py --close). */
 function issueLine(c){
   const i = c.issue; if (!i) return '';
+  /* ⭐ 감시(watch, migration 115) — 정본 유지로 판정한 뒤 재판정 조건이 트리거로 걸려 있다 */
+  const watch = i.phase === 'watch';
   const st = i.status === 'closed' ? `판정 완료 ${esc(i.closed ?? '')}`
-           : i.hold ? '수집 보류 중' : i.due ? '⭐ 판정할 차례' : '판정 시점 대기';
-  return `<div class="claimissue dim" style="font-size:12px;margin-top:2px">⏳ 쟁점 #${i.id} 「${esc(i.title)}」 — ${esc(i.trigger)} · <b>${st}</b></div>`;
+           : i.hold ? '수집 보류 중'
+           : watch ? (i.due ? '⭐ 재판정할 차례' : '유지 · 재판정 조건 감시 중')
+           : i.due ? '⭐ 판정할 차례' : '판정 시점 대기';
+  return `<div class="claimissue dim" style="font-size:12px;margin-top:2px">${watch ? '🔁' : '⏳'} 쟁점 #${i.id} 「${esc(i.title)}」 — ${watch ? '재판정 조건 ' : ''}${esc(i.trigger)} · <b>${st}</b></div>`;
 }
 function claimsHtml(v){
   const cs = v.impl_claims ?? [];

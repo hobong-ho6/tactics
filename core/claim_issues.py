@@ -66,7 +66,7 @@ def overdue(con, issue, today=None):
         return False
     today = dt.date.fromisoformat(today or dt.date.today().isoformat())
     # 기한은 「트리거가 찬 날」과 「쟁점을 만든 날」 중 늦은 날부터 센다 — 이미 찬 조건으로 새로 연 쟁점이 즉시 초과가 되지 않게
-    start = max(p["due_date"], issue["created"])
+    start = max(p["due_date"], issue["armed"] or issue["created"])
     return (today - dt.date.fromisoformat(start)).days > GRACE_DAYS
 
 
@@ -88,6 +88,26 @@ def trigger_kr(con, issue):
 def insert_issue(con, spec, source):
     """쟁점 1행 추가 → id. spec 키: team_code·title_kr·question_kr·measure_kr·trigger_kind·trigger_n·trigger_comp·
     trigger_player(이름, 유일 일치)|trigger_player_id·trigger_pos·trigger_date·since·hold."""
+    pid = resolve_player_id(con, spec)
+    if len((spec.get("title_kr") or "").strip()) > 40:
+        raise SystemExit(f"⛔ title_kr가 40자를 넘는다 — 「{spec['title_kr']}」")
+    phase = spec.get("phase") or "decide"
+    if phase not in ("decide", "watch"):
+        raise SystemExit(f"⛔ phase 어휘 이탈 「{phase}」")
+    cur = con.execute("""INSERT INTO claim_issues(team_code, title_kr, question_kr, measure_kr, trigger_kind, trigger_n,
+                             trigger_comp, trigger_player_id, trigger_pos, trigger_date, since, hold, source, confidence,
+                             phase, resolution, resolution_note, armed)
+                         VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,date('now'))""",
+                      (spec["team_code"], spec["title_kr"], spec["question_kr"], spec["measure_kr"],
+                       spec["trigger_kind"], spec.get("trigger_n"), spec.get("trigger_comp") or "official", pid,
+                       spec.get("trigger_pos"), spec.get("trigger_date"), spec.get("since"), int(bool(spec.get("hold"))),
+                       source, spec.get("confidence") or "트리거는 verdict_note 산문 조건을 셀 수 있는 형태로 옮긴 것",
+                       phase, "HELD" if phase == "watch" else None,
+                       spec.get("resolution_note") if phase == "watch" else None))
+    return cur.lastrowid
+
+
+def resolve_player_id(con, spec):
     pid = spec.get("trigger_player_id")
     if pid is None and spec.get("trigger_player"):
         rows = con.execute("SELECT id FROM players WHERE name_kr=? OR name=?",
@@ -95,13 +115,28 @@ def insert_issue(con, spec, source):
         if len(rows) != 1:
             raise SystemExit(f"⛔ 트리거 선수 「{spec['trigger_player']}」가 유일하게 해석되지 않는다({len(rows)}건)")
         pid = rows[0][0]
-    if len((spec.get("title_kr") or "").strip()) > 40:
-        raise SystemExit(f"⛔ title_kr가 40자를 넘는다 — 「{spec['title_kr']}」")
-    cur = con.execute("""INSERT INTO claim_issues(team_code, title_kr, question_kr, measure_kr, trigger_kind, trigger_n,
-                             trigger_comp, trigger_player_id, trigger_pos, trigger_date, since, hold, source, confidence)
-                         VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
-                      (spec["team_code"], spec["title_kr"], spec["question_kr"], spec["measure_kr"],
-                       spec["trigger_kind"], spec.get("trigger_n"), spec.get("trigger_comp") or "official", pid,
-                       spec.get("trigger_pos"), spec.get("trigger_date"), spec.get("since"), int(bool(spec.get("hold"))),
-                       source, spec.get("confidence") or "트리거는 verdict_note 산문 조건을 셀 수 있는 형태로 옮긴 것"))
-    return cur.lastrowid
+    return pid
+
+
+def arm_watch(con, issue_id, trig, note, today):
+    """쟁점을 감시 단계로 둔다(또는 다시 건다) — 트리거를 재판정 조건으로 바꾸고 이전 트리거는 source에 남긴다."""
+    r = con.execute("SELECT * FROM claim_issues WHERE id=?", (issue_id,)).fetchone()
+    kind = trig.get("trigger_kind")
+    if kind not in ("matches", "player_starts", "date"):
+        raise SystemExit(f"⛔ 쟁점 #{issue_id}: 재판정 트리거 종류가 없다 — matches|player_starts|date")
+    if kind == "date" and not trig.get("trigger_date"):
+        raise SystemExit(f"⛔ 쟁점 #{issue_id}: date 트리거는 trigger_date 필수")
+    if kind != "date" and not (trig.get("trigger_n") and trig.get("since")):
+        raise SystemExit(f"⛔ 쟁점 #{issue_id}: 경기 트리거는 trigger_n·since 필수")
+    pid = resolve_player_id(con, trig)
+    if kind == "player_starts" and pid is None:
+        raise SystemExit(f"⛔ 쟁점 #{issue_id}: player_starts는 trigger_player 필수")
+    old = (f"{r['trigger_kind']}/{r['trigger_n'] or r['trigger_date']}/since {r['since']}")
+    con.execute("""UPDATE claim_issues SET phase='watch', status='open', resolution='HELD', closed=NULL,
+                     resolution_note=COALESCE(resolution_note||' · ','')||?, armed=?,
+                     trigger_kind=?, trigger_n=?, trigger_comp=?, trigger_player_id=?, trigger_pos=?, trigger_date=?, since=?,
+                     measure_kr=COALESCE(?, measure_kr), source=COALESCE(source,'')||?
+                   WHERE id=?""",
+                (f"[유지 {today}] {note}", today, kind, trig.get("trigger_n"), trig.get("trigger_comp") or "official",
+                 pid, trig.get("trigger_pos"), trig.get("trigger_date"), trig.get("since"), trig.get("measure_kr"),
+                 f" · [감시 트리거 {today}: 이전 {old}]", issue_id))
