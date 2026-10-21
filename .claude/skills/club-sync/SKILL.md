@@ -149,7 +149,10 @@ FUTBIN·FUTWIZ로 대체 조회)이다 — 그 일이 실행기와 겹치면 그
   ⚠️ 429는 「다음 회차」가 정답인 경우가 있다(§7 예산) — 그래도 이번 회차 결손은 대체 출처로 메울 수 있으면 메운다.
 - **어떻게**: Chrome(`claude-in-chrome`) 탭에서 사이트를 열고 페이지를 읽거나 **같은 출처 fetch**로 받는다.
   ⭐ FUTBIN은 스크립트 직접 호출 = Cloudflare **403**, in-app 브라우저 패널 = 봇 검사 **못 넘음**(2026-09-28 실측, §6).
-  FUTWIZ는 **미실측**이다 — 같은 방식(Chrome)부터 시도하고, 결과를 이 절에 실측으로 적는다.
+  ⭐ FUTWIZ 실측(2026-10-22): **in-app 브라우저 패널에서 봇 검사 없이 열린다**(같은 날 FUTBIN은 Cloudflare에 막힘).
+  SBC 세트 페이지 `futwiz.com/sbcs/<slug>/<번호>`의 **번호 = EA `set_ea_id`**이고 본문에 `FORMATION 433`·`TOTAL PLAYERS`가 있다.
+  ⚠️ 챌린지 링크 번호(`/sbcs/squads/<slug>/114`)는 FUTWIZ 자체 id다 — **세트당 챌린지가 1개일 때만** challenge_ea_id로 잇는다.
+  ⚠️ `collect_futbin_sbc_formations.py --json-file`은 source를 FUTBIN으로 고정하므로 FUTWIZ 값을 넣는 데 쓰지 않는다(그날은 행을 직접 넣었다).
   ⛔ 봇 검사·CAPTCHA를 우회하거나 대신 풀지 않는다 — 막히면 사용자에게 Chrome에서 통과해 달라고 한다.
   ⛔ 로그인·계정 연동 대행 금지(§0)는 세 곳 모두 같다.
 - **어느 축에 쓰나**: 공개 페이지에서 얻을 수 있는 축 — 카드 스탯·PlayStyle·진화 카탈로그·SBC·시세.
