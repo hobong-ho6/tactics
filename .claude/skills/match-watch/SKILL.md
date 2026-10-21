@@ -63,8 +63,8 @@ for t in AVL CHE LIV ATM; do .venv/bin/python scripts/collect_fotmob_players.py 
 - **소스 4종을 매 회차 확인**하고, 빠뜨린 종류는 리포트에 **"미수행 + 사유"** 를 적는다:
   **유튜브 전술 분석** · **전술 블로그**(TFA·BTL·Spielverlagerung·Coaches' Voice) ·
   **기사**(클럽 전담 기자) · **본인 발언**(기자회견·인터뷰 — 1차 자료라 가장 세다).
-- ⭐ **AVL 회차는 UTV | Aston Villa Fan Channel(`@UTVFANCHANNEL`)·The Villans(`@TheViIIans`)·1874 : The Aston Villa Channel(`@The1874Podcast`, 토크/팟캐스트 — 기자 출연분은 1차 발언 원출처) 세 채널을
-  항상 포함한다**(2026-09-07 사용자 지시, 정본 docs/30 「AVL 필수 채널 3곳」). 최신 목록을 조회하고
+- ⭐ **AVL 회차는 UTV | Aston Villa Fan Channel(`@UTVFANCHANNEL`)·The Villans(`@TheViIIans`)·1874 : The Aston Villa Channel(`@The1874Podcast`, 토크/팟캐스트 — 기자 출연분은 1차 발언 원출처)·Jacob Horsfall(`@jacobhorsfall`, PL 전반 전술 해설 — 빌라 영상만 · 2026-10-21 추가) 네 채널을
+  항상 포함한다**(2026-09-07 사용자 지시, 정본 docs/30 「AVL 필수 채널 4곳」). 최신 목록을 조회하고
   해당 경기·선수 영상은 전사(`scripts/yt_transcript.py` 또는 봇 차단 시 `scripts/yt_transcript_json3.py`)까지 확보한다.
   ⛔ 브라우저로 자막을 잡을 때 **소리는 필요 없다 — 항상 뮤트**(플레이어 mute()+자동재생 끄기 → 포착 즉시 정지 → 탭 닫기 · 절차는 json3 스크립트 머리말 · 2026-10-20 사용자 지시).
   ⭐⭐ **경기 사이의 분석 영상은 「채널 스윕」이 맡는다**(2026-10-20 사용자 지시 · 10-20 대조에서 UTV 최근 30편 중 16편 미수집):
