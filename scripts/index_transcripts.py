@@ -116,6 +116,7 @@ OPPONENT_HINTS = {
     "fulham": "Fulham", "luton": "Luton", "leeds": "Leeds", "villarreal": "Villarreal",
     "malaga": "Malaga", "sevilla": "Sevilla", "athletic": "Athletic",
     "liverpool": "Liverpool", "chelsea": "Chelsea", "newcastle": "Newcastle",
+    "fenerbah": "Fenerbah",
     # ⭐ 한국어 메모 표기 — 우리 전사 헤더는 「헐전 D+1」처럼 한글로 적는다(영어만 보면 70편이 미귀속)
     "헐": "Hull", "포레스트": "Nottingham", "노팅엄": "Nottingham", "아스날": "Arsenal",
     "브뤼헤": "Brugge", "브렌트포드": "Brentford", "풀럼": "Fulham", "루턴": "Luton",
@@ -190,8 +191,16 @@ def parse_header(path: Path):
         body = line[2:].strip()
         # {채널} — {제목} ({메타}) / {채널} - {제목}
         sp = re.split(r"\s+[—–]\s+|\s+-\s+", body, maxsplit=1)
+        if len(sp) == 1:
+            # ⭐ 구분자 없는 줄은 **수집 메모**다(「CHE-ARS 2026-09-06 D+2」) — 종전엔 이걸 채널로 넣어
+            #    15편이 「채널=메모 · 제목 없음」으로 인덱스됐다(2026-10-21). 채널은 비워 _meta_backfill 폴백에 맡긴다.
+            out["note"] = body
+            d = re.search(r"(20\d\d)[-.](\d\d)[-.](\d\d)", body)
+            if d:   # 메모 날짜는 수집 맥락(경기일 등)이라 게시일 근사로만 쓴다 — 보강 메타가 있으면 그쪽이 이긴다
+                out["published"], out["approx"] = f"{d.group(1)}-{d.group(2)}-{d.group(3)}", 1
+            break
         out["channel"] = sp[0].strip()
-        rest = sp[1].strip() if len(sp) > 1 else ""
+        rest = sp[1].strip()
         mm = re.match(r"(.*?)\s*\(([^()]*)\)\s*$", rest)
         if mm:
             out["title"], out["note"] = mm.group(1).strip(), mm.group(2).strip()
@@ -292,10 +301,13 @@ def main():
         #      — 「Forest defeat」는 AVL 09-12과 LIV 08-29 둘이라 팀이 없으면 여전히 미귀속이다
         report_id = None
         hits = {op for k, op in OPPONENT_HINTS.items() if op and k in blob}
+        # 채널이 팀을 못 박지 않았으면 제목 팀 단서로 후보를 좁힌다 — 「Liverpool's Champions League win」이
+        # 「liverpool」 상대팀 단서로 ATM-리버풀전(ATM 리포트)에 붙던 것(2026-10-21)
+        scope = team or guess_team(h["title"])
         if hits:
             cand = [r for r in reports
                     if any(op.lower() in (r["opponent"] or "").lower() for op in hits)
-                    and (team is None or r["team_code"] == team)]
+                    and (scope is None or r["team_code"] == scope)]
             if h["published"]:
                 pub = dt.date.fromisoformat(h["published"])
                 cand = [r for r in cand
@@ -349,7 +361,8 @@ def main():
             #    같은 오류가 회차마다 되살아난다(2026-09-15 The Liverpool FC TV 오귀속 수습 후 규칙화).
             #    내 추정과 저장값이 다르면 덮지 않고 **보고**한다.
             if ex["report_id"] is not None:
-                if r["report_id"] != ex["report_id"]:
+                # 추정이 「없음」인 건 충돌이 아니다(사람이 더 안다) — 종전엔 이것까지 100여 줄 찍혀 진짜 3건이 묻혔다(2026-10-21)
+                if r["report_id"] is not None and r["report_id"] != ex["report_id"]:
                     conflicts.append((r["video_id"], ex["report_id"], r["report_id"]))
                 r = {**r, "report_id": ex["report_id"]}
                 # ⭐ 팀은 **저장된** 경기 귀속을 따른다(2026-10-21) — 종전엔 추정 귀속에서만 팀을 따와
