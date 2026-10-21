@@ -90,8 +90,12 @@ def main():
     # ⛔⛔ **같은 카드를 여러 장 가진 경우 한 장만 원장에 남긴다**(2026-09-28 · 알리송 78 진화본 + 70 사본).
     #    원장 키가 카드 id(ea_item_id)라 둘이 한 행에 번갈아 쓰였고, 뒤에 온 70 사본이 GG Club id·진화 이력을
     #    덮었다(스탯은 진화 보호가 막았다). ⇒ 캡처 단계에서 **어느 사본이 원장 행인지** 정한다:
-    #    ① 원장이 이미 가리키던 사본 → ② EA 진화 이력이 있는 사본 → ③ OVR이 높은 사본.
+    #    ① EA 진화 이력이 있는 사본 → ② 원장이 이미 가리키던 사본 → ③ OVR이 높은 사본.
     #    나머지는 보고만 한다(SBC 재료 등 · 사용자 판단 2026-09-28 「알리송 70은 SBC용이라 그대로」).
+    #    ⛔ 2026-10-21 재발로 ①②를 뒤집었다 — 원장이 한 번 70 사본을 가리키자 ①「원장 사본」이 그걸 고정했고,
+    #       진화본은 GG id에 진화 접미(`-6`)가 붙어 바뀌어서 다시 매칭되지 않았다(사용자 「83짜리가 진화한 alysson」).
+    #       ⇒ GG id는 접미를 떼고 비교하고, 진화 이력이 원장 사본보다 앞선다.
+    gg_base = lambda g: "-".join((g or "").split("-")[:2])
     groups = {}
     for r in rows:
         groups.setdefault(r["ea"], []).append(r)
@@ -100,7 +104,7 @@ def main():
         if len(grp) < 2:
             continue
         gg_now = (have.get(ea_) or {}).get("gg_player_id")
-        grp.sort(key=lambda r: (r.get("gg") != gg_now, not r.get("evh"), -(r.get("ovr") or 0)))
+        grp.sort(key=lambda r: (not r.get("evh"), gg_base(r.get("gg")) != gg_base(gg_now), -(r.get("ovr") or 0)))
         dup_rep.append((grp[0]["n"], grp[0]["ovr"], [x["ovr"] for x in grp[1:]]))
     keep = {id(g[0]) for g in groups.values()}
     rows = [r for r in rows if id(r) in keep]
