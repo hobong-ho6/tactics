@@ -1,0 +1,13 @@
+INSERT INTO match_set_pieces VALUES(1,126,62,'corner',22,'v',NULL,14,NULL,'shot','부엔디아 슈팅 빗나감 · 22′ 고메스 크로스 굴절 크로스바 → 코너(Sky)','SofaScore shotmap 16938853 situation=corner · 리포트 #62 §2','MEDIUM — 키커 결손(WS JSON 미보존) · 슛으로 이어진 코너만 보임');
+INSERT INTO match_set_pieces VALUES(2,126,62,'corner',23,'v',86,21,NULL,'goal','음바예 코너 → 바클리 니어포스트 헤더(1-0)','SofaScore shotmap 16938853 situation=corner · 리포트 #62 §2 「음바예 코너 → 바클리」','HIGH — 득점 장면(SS 도움 기록·팬 채널 서술 일치)');
+INSERT INTO match_set_pieces VALUES(3,126,62,'corner',31,'v',NULL,4,NULL,'shot','토레스 빗나감 · 같은 분 부엔디아 유효슈팅(선방) — 한 코너인지 두 코너인지 미구분','SofaScore shotmap 16938853 situation=corner','MEDIUM — 키커 결손 · 코너 수 미확정');
+INSERT INTO match_set_pieces VALUES(4,126,62,'corner',45,'v',NULL,14,NULL,'shot','부엔디아 슈팅 블록','SofaScore shotmap 16938853 situation=corner','MEDIUM — 키커 결손');
+INSERT INTO match_set_pieces VALUES(5,126,62,'corner',45,'o',NULL,NULL,NULL,'shot','달란드(Daland) 슈팅 블록','SofaScore shotmap 16938853 situation=corner','MEDIUM — 상대 선수 미등록');
+INSERT INTO match_set_pieces VALUES(6,126,62,'corner',81,'v',NULL,190,NULL,'shot','숏코너 → 고레츠카 컷백 → 가르나초 감아차기 빗나감','SofaScore shotmap 16938853 situation=corner · 리포트 #62 §5 가르나초','MEDIUM — 키커 결손 · 타깃=숏코너 수신 고레츠카(서술)');
+INSERT INTO match_set_pieces VALUES(7,126,62,'pk',37,'v',14,NULL,NULL,'goal','알리송 PK 획득(트리피치 반칙 · VAR) → 부엔디아 PK 성공(2-0)','SofaScore incidents·shotmap 16938853 situation=penalty','HIGH');
+INSERT INTO match_set_pieces VALUES(8,126,62,'fk',41,'v',14,NULL,NULL,'miss','부엔디아 직접 프리킥 빗나감','SofaScore shotmap 16938853 situation=free-kick','HIGH — 직접 슛이라 키커=슈터');
+INSERT INTO match_set_pieces VALUES(9,120,56,'corner',68,'v',NULL,2,NULL,'shot','캐시 슈팅 빗나감','SofaScore shotmap 16363888 situation=corner','MEDIUM — 키커 결손(WS JSON 미보존)');
+INSERT INTO match_set_pieces VALUES(10,120,56,'corner',23,'o',NULL,NULL,NULL,'shot','위사(Wissa) 슈팅 블록','SofaScore shotmap 16363888 situation=corner','MEDIUM — 상대 선수 미등록');
+INSERT INTO match_set_pieces VALUES(11,120,56,'fk',26,'o',NULL,NULL,NULL,'shot','위사 슈팅 블록 · SS situation=set-piece(FK/스로인 미구분)','SofaScore shotmap 16363888 situation=set-piece','LOW — kind=fk는 SS set-piece 어휘를 옮긴 것');
+INSERT INTO match_set_pieces VALUES(12,120,56,'fk',33,'o',NULL,NULL,NULL,'shot','위사 빗나감 · 보트만 블록(같은 분) · SS situation=set-piece','SofaScore shotmap 16363888 situation=set-piece','LOW — kind=fk는 SS set-piece 어휘를 옮긴 것');
+INSERT INTO match_set_pieces VALUES(13,120,56,'fk',49,'o',NULL,NULL,NULL,'shot','보트만 FK 유효슈팅 → 스즈키 선방(리포트 「유효슈팅은 49′ 보트만 FK 1개」)','SofaScore shotmap 16363888 situation=set-piece · 리포트 #56 §2','MEDIUM — 리포트가 FK로 서술');

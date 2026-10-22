@@ -282,6 +282,8 @@
 - **DB 추가**: matches #126 · player_matches 16(국면 그리드 16 · phase 분 · pos_class) · team_match_stats 1(xG 4종 FotMob 동일 스냅샷 · PPDA·def_x) · match_events 16 · match_period_stats 2 · match_shots 32 · match_reports #62 · match_player_reports 16 · match_game_setups 1 · match_player_prescriptions 16 · match_hypotheses 30 · match_phase_metrics · match_tactical_changes 6 · observations #1084~#1113(대조표 30행 판정별) · match_videos 3편 요약·구현 주장 · manager_profiles buildup·role_demands 덧붙임.
 - **한계**: ⑴ 상대 수준(노르웨이 리그 팀 · 1H 바이킹 슈팅 1) ⑵ 2-0 이후 스코어 효과(점유·PPDA 하강) ⑶ 부상 강제 구성(전문 풀백 0) — 일반화 금지 ⑷ WS 이벤트는 앱 브라우저에서 필드 축약 전사(qualifier 일부) — PPDA·def_x·국면 그리드·레인 계산엔 영향 없음 · 수신자·운반은 **추정** ⑸ SS(평균 위치·히트맵)와 WS(볼 소유 좌표)의 음바예 레인 차이 ⑹ McGinn 패스 WS 71/80 vs SS 69/74(제공사 차이) ⑺ SS VAR 2행의 시각·선수 표기가 기사와 다름(§1).
 - `match_reports.status` = **draft**(D+2·D+3 추적 남음 · 회견 영상·전술 분석 미확보). G12·G37 결과는 ship 로그.
+- **세트피스 정형(migration 117 · 2026-10-22 P2 회차)**: `match_set_pieces` 8행(코너 6 · PK 1 · FK 1). WS 2029164 JSON이 **미보존**(축약 전사)이라 qualifier 추출을 못 했고 SS 슛맵(situation)+본문 서술로 채웠다 — 키커가 확인된 행은 23′ 음바예 코너(→바클리 골) · 37′ 부엔디아 PK · 41′ 부엔디아 FK뿐이고 코너 8개 중 **슛으로 이어지지 않은 코너 2~3개와 나머지 키커 5칸(22′·31′·45′·81′)은 결손**(taker_id NULL). 31′은 토레스·부엔디아 슈팅이 한 코너인지 둘인지 미구분. 바이킹 코너 6개 중 45′ 1행만.
+- **GK 배급 비중(G37 ⑹)**: `match_phase_metrics` gk_long_share 경기 전체 1행 — SS 선수 스탯 스즈키 롱볼 **14/25 = 56%**(성공 6). ⚠️ §2 「GK 롱 배급 국면이 없었다」(WS 패스 20/28)와 충돌 — 실측 채택, 구간 분해는 WS JSON 미보존으로 불가.
 
 ## D+1 추적 (2026-10-22 · 09:00 회차)
 

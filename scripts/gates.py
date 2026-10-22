@@ -1949,6 +1949,7 @@ def run(db_path=None, verbose=True):
     #      (2026-10-20 사용자 결정 「10-14부터 · 아스톤 빌라 기준으로만 우선 · CHE·ATM·LIV는 백필하지 않고 수집 잠정 보류」)
     #   ⑶ match_phase_metrics.metric ⊆ core.whoscored.PHASE_METRICS(화면 라벨 정본)
     #   ⑷ 같은 대상 리포트 → tac_possession·impl_verdict + match_tactical_changes ≥1 + 선발(GK 제외) fit_delta 전원(migration 111)
+    #   ⑹ report_date ≥ 2026-10-22 AVL 리포트 → match_phase_metrics side='v' metric='gk_long_share' ≥1(아래)
     from core.whoscored import PHASE_METRICS as _PM37
     G37_FROM, G37_TEAMS = "2026-10-14", ("AVL",)
     _root37 = Path(__file__).resolve().parent.parent
@@ -1961,6 +1962,10 @@ def run(db_path=None, verbose=True):
     _shape37 = {r for (r,) in con.execute("""SELECT report_id FROM match_game_setups
                                             WHERE shape_in_possession IS NOT NULL AND shape_out_possession IS NOT NULL""")}
     _pm37 = {r for (r,) in con.execute("SELECT DISTINCT report_id FROM match_phase_metrics")}
+    # ⑹ GK 배급 비중(gk_long_share · 2026-10-22 구현 검토 §2.3 #8) — PHASE_METRICS에 정의만 있고 미적재였다.
+    #    report_date ≥ G37_GK_FROM AVL 리포트는 side='v' gk_long_share ≥1행(WS JSON이면 segment_metrics · 없으면 SS 선수 스탯 1행).
+    G37_GK_FROM = "2026-10-22"
+    _gk37 = {r for (r,) in con.execute("SELECT DISTINCT report_id FROM match_phase_metrics WHERE side='v' AND metric='gk_long_share'")}
     g37 = []
     for _note in sorted((_root37 / "reports" / "match-watch" / "notes").glob("*.md")):
         _hit = [r for r in _rep37 if r[1] and _note.stem.startswith(Path(r[1]).stem)]
@@ -1981,6 +1986,8 @@ def run(db_path=None, verbose=True):
                 g37.append(f"#{_id} 선발 처방 fit_delta 결손")
             if _id not in _shape37:
                 g37.append(f"#{_id} 보유/비보유 형태(shape_in/out_possession) 미기록")
+            if (_d or "") >= G37_GK_FROM and _id not in _gk37:
+                g37.append(f"#{_id} GK 배급 비중(gk_long_share · side=v) 0행")
     g37 += [f"모르는 구간 지표 {m}" for (m,) in con.execute("SELECT DISTINCT metric FROM match_phase_metrics")
             if m not in _PM37]
     if verbose:

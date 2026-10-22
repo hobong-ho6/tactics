@@ -52,6 +52,8 @@ for t in AVL CHE LIV ATM; do .venv/bin/python scripts/collect_fotmob_players.py 
 - ⭐ **국면 분리 그리드 필수**(2026-09-08 신설 · docs/30 「국면 분리 그리드」): WhoScored `matchCentreData.events`를 받아
   출전 선수 전원에 `core.whoscored.phase_cells(events, wsPlayerId)` → `cells_poss/cells_def/map25_poss/map25_def/phase_source`.
   ⛔ 브라우저 JS로 계산하지 않는다 — 이벤트 JSON을 파이썬에 넘긴다(불변규칙 4). 같은 이벤트로 §3의 PPDA·def_x도 낸다.
+  ⭐ `load_whoscored.py --apply`는 같은 이벤트의 qualifier로 **세트피스(코너·FK·PK 키커/타깃)**도 `match_set_pieces`에 넣는다(migration 117 · 2026-10-22) —
+  축약 전사본(qualifier 없음)이면 0행이라 **scope=full JSON을 `reports/match-watch/data/`에 남긴다**(§2-2a).
 
 ## 2-1. ⭐ 서사 수집 — 매 회차 의무 (2026-08-12 신설, 사용자 지시)
 
@@ -200,8 +202,10 @@ G12가 누락·원문 경로·UI 연결을 검사한다(초안도 선수 행이 
    `.venv/bin/python scripts/match_phase_metrics.py --report N --events <json> --team-id <우리> --opp-id <상대> --cuts <득점·교체 분>`.
    ⭐ 그 `<json>`은 **`reports/match-watch/data/<날짜>-<팀>-ws-<matchId>.json`으로 저장소에 남긴다**(2026-10-22 실증 — 바이킹전 D+1이 브라우저에서
    축약 전사만 하고 파일을 안 남겨 GK 배급 비중(`gk_long_share`)을 뒤에 계산할 수 없었다 · 상대 선수 이름은 들어 있어도 좌표·타입이 원료라 보존).
-   계산은 `core.whoscored.segment_metrics`(def_x·PPDA·자기 진영 패스 성공률, 양 팀)만 쓴다. GK 롱패스 비중처럼
-   경기마다 대상이 다른 지표는 아래 JSON의 `phase_metrics`로 넣는다(지표 목록 정본 `core.whoscored.PHASE_METRICS`).
+   계산은 `core.whoscored.segment_metrics`(def_x·PPDA·자기 진영 패스 성공률·**GK 롱패스 비중 `gk_long_share`**, 양 팀)만 쓴다 —
+   GK는 matchCentreData `home/away.players`로 알아내므로 events 배열만 넘기면 스크립트가 멈춘다(2026-10-22 · G37 ⑹이 AVL 리포트 ≥10-22에 side='v' 1행을 요구).
+   WS JSON을 못 받은 경기는 SofaScore `/event/<eid>/player/<pid>/statistics`(totalLongBalls/totalPass · 브라우저 same-origin fetch)로 경기 전체 1행을 `phase_metrics`로 넣고 출처에 적는다.
+   그 밖에 경기마다 대상이 다른 지표는 아래 JSON의 `phase_metrics`로 넣는다(지표 목록 정본 `core.whoscored.PHASE_METRICS`).
 2. **요약·가설 판정**: 리포트 「요약」 불릿과 「사용자 의견 대조표」를 JSON 한 장으로 만들어
    `.venv/bin/python scripts/load_match_extras.py --json <file> --dry-run` → 실제 적재. 형식은 스크립트 머리 주석.
    판정 값: match(일치) · partial(부분 일치) · mismatch(불일치) · undecided(판정 불가) · pending(D+N 대기).

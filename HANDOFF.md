@@ -37,8 +37,8 @@
 번호는 v1 체계 그대로(근거·경위 원문은 [handoff-context 「다음 할 일」](docs/handoff-context.md#다음-할-일)).
 
 **P1**
-- [ ] **⭐ FC27 구현 검토 사용자 판단 5건**(리서치 §1.6 ㉡ · 전부 `slot_canon_roles`/프리셋 사안이라 새 행으로만) — ⑴ RDM 홀딩→DLP/Build-Up(아래 카마라 항목과 동일) ⑵ ST 포커스 Support↔인게임 Attack↔opt false9 세 층 통일 ⑶ LM Balanced↔Attack · IF↔윙어(쟁점 #7) ⑷ LB 저점유 프리셋을 경기마다 바꾸는지 ⑸ FC27 `optimal:lead` 신설 여부
-- [ ] **데이터 결손 P2 migration 3건**(리서치 §2.3 7·9·10 — 번호는 부모 배정 · 다음 117~) — `match_set_pieces`(코너 키커·타깃 · WS qualifier 추출) · `fut_tactics.setup_kind`(pulled 코드↔프리셋 연결) · G37에 `gk_long_share` 필수 + `segment_metrics` GK 롱패스 비율 계산
+- [ ] **⭐ FC27 슬롯 정본 판단 5건 — 사용자 보류(10-22 「실측 더 확보 후 결정」 · obs 기록)** — RDM·ST 포커스·LM·LB 운용·리드 프리셋. **재판정: 다음 AVL 공식전 2경기(맨시티 10-24 포함) 프리셋이 쌓이면 같은 표를 다시 낸다**(리서치 §1.2 형식 · RDM은 카마라 인게임 결과 병기 · LM은 루헤리 복귀 병기). 그 전엔 정본·인게임 코드 어느 쪽도 바꾸지 않는다
+- [x] **데이터 결손 P2 migration 3건**(리서치 §2.3 7·9·10 · 10-22 하위 세션 · migration 117 `match_set_pieces` · 118 `fut_tactics.setup_kind/setup_diff` · G37 ⑹ gk_long_share · 119 불요) — 남은 결손: #62 코너 키커 5칸·#56 키커 전원(WS JSON 미보존 → 재수집 때 `load_whoscored.py --apply`) · setup_kind 미해결 15행(4-4-2 3 · Balanced/50 후보 둘 9 · 라인 58 1 · 옛 id 체계 2)
 - [ ] **바이킹전 D+2·D+3**(예약) — 전술 블로그·The Villans 후속·Sky 「best minutes」 원문·avfc.co.uk 인터뷰·Sports Mole 3백 표기·감독 직함·맨시티전(10-24 12:30 BST) 명단으로 고메스 RB·밍스 잔류 재확인 → D+3에 complete 판정
 - [ ] **카마라 RDM Build-Up 인게임 테스트 결과 받기**(obs#1080) — 결과·다음 2경기 실측으로 정본 변경 여부(새 행) 결정
 - [ ] **헤밍스 Zoomaestro(2602) 단계 완료 기록** — lv1 시작 10-20(사용자는 부엔디아 추천 대신 헤밍스) · 단계마다 `complete` · 완주 OVR 65→72 · 다음 싱크 EA 실측 대조

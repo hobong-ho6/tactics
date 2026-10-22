@@ -776,7 +776,7 @@ CREATE TABLE fut_tactics (
   squad_name        TEXT,
   last_updated_at   TEXT,                      -- fut.gg가 기록한 마지막 변경 시각(UTC)
   source            TEXT,
-  confidence        TEXT,
+  confidence        TEXT, setup_kind TEXT, setup_diff TEXT,
   PRIMARY KEY (account_id, pulled)
 );
 CREATE TABLE fut_tactic_roles (
@@ -1431,3 +1431,19 @@ CREATE TABLE claim_issues(
   CHECK(status = 'open' OR (resolution IS NOT NULL AND resolution_note IS NOT NULL AND closed IS NOT NULL))
 );
 CREATE INDEX ix_vic_issue ON video_impl_claims(issue_id);
+CREATE TABLE match_set_pieces(
+  id INTEGER PRIMARY KEY,
+  match_id INTEGER NOT NULL REFERENCES matches(id),
+  report_id INTEGER REFERENCES match_reports(id),
+  kind TEXT NOT NULL CHECK(kind IN ('corner','fk','pk')),
+  minute INTEGER NOT NULL,
+  side TEXT NOT NULL CHECK(side IN ('v','o')),
+  taker_id INTEGER REFERENCES players(id),     -- NULL = 결손(미등록 선수·출처 없음)
+  target_id INTEGER REFERENCES players(id),    -- 첫 수신자(코너·FK) · PK는 NULL
+  flank TEXT CHECK(flank IS NULL OR flank IN ('L','R')),
+  outcome TEXT,
+  note TEXT,
+  source TEXT NOT NULL,
+  confidence TEXT
+);
+CREATE INDEX ix_match_set_pieces_m ON match_set_pieces(match_id, minute);

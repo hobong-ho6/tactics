@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from core import DB                                   # noqa: E402
 from core.db import connect as connect_db             # noqa: E402
-from core.whoscored import segment_metrics            # noqa: E402
+from core.whoscored import gk_ids_of, segment_metrics  # noqa: E402
 
 
 def main():
@@ -35,7 +35,12 @@ def main():
     raw = json.loads(Path(a.events).read_text(encoding="utf-8"))
     events = raw.get("events", raw) if isinstance(raw, dict) else raw
     cuts = {15, 30, 45, 60, 75} | {int(x) for x in a.cuts.split(",") if x.strip()}
-    rows = segment_metrics(events, a.team_id, a.opp_id, cuts)
+    # ⭐ GK 롱패스 비중(gk_long_share · G37 ⑹)은 전체 matchCentreData(home/away.players)가 있어야 GK를 안다 —
+    #    events 배열만 넘기면 계산되지 않으므로 여기서 멈춘다(조용히 빠지면 G37이 커밋을 막을 때 원인을 모른다).
+    gk_ids = gk_ids_of(raw)
+    if not gk_ids:
+        raise SystemExit("⛔ GK를 알 수 없다(home/away.players 없음) — matchCentreData 전체 JSON을 넘길 것(gk_long_share 계산 불가)")
+    rows = segment_metrics(events, a.team_id, a.opp_id, cuts, gk_ids=gk_ids)
     src = f"WhoScored matchCentreData {Path(a.events).name} → core.whoscored.segment_metrics (match_phase_metrics.py)"
     conf = "HIGH — Opta 이벤트 직접 계산. ⚠️ 구간이 짧으면 표본(n)이 작다 — 화면이 흐리게 그린다"
     for r in rows:

@@ -156,7 +156,8 @@ MANUAL = {
     "sbc": ["포메이션 결손이 있으면 Chrome의 www.futbin.com 탭에서 "
             "`collect_futbin_sbc_formations.py --print-snippet` ①시작 → ②읽기 → `--json-file`로 넣는다(해법은 자동 재계산)"],
     "전술": ["`https://www.fut.gg/gg-club/my/tactics/` 본문을 읽어 `fut_tactics`/`fut_tactic_roles`에 새 `pulled` 행 추가",
-             "활성 스쿼드 응답의 formation/manager/buildUp을 보고 `fut_squads` 갱신(케미에 직접 들어간다)"],
+             "활성 스쿼드 응답의 formation/manager/buildUp을 보고 `fut_squads` 갱신(케미에 직접 들어간다)",
+             "행을 넣은 뒤 `python3 scripts/fut_tactic_setup_kind.py` — pulled 코드가 어느 프리셋(setup_kind)인지 판정 · 11칸 차이는 setup_diff(migration 118)"],
 }
 
 
@@ -288,6 +289,8 @@ def main():
         print("\n⚠️ 전술은 **손 작업**이다 — 스크립트가 대신하지 않는다.")
         for m in MANUAL["전술"]:
             print(f"   · {m}")
+        # ⭐ 손으로 넣은 pulled 행 ↔ 프리셋 연결은 기계가 판정한다(migration 118 · 2026-10-22) — setup_kind 결손 행이 있을 때만 쓴다.
+        run("[전술] pulled 코드 ↔ 프리셋 판정(setup_kind)", [sys.executable, S("fut_tactic_setup_kind.py"), "--all"], a.dry_run)
         staleness()
         return
 

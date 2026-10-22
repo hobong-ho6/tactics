@@ -14,7 +14,8 @@ WhoScored 원본: **x = 그 팀의 공격 방향 0~100, y 낮음 = 오른쪽**(S
 """
 from .encode import cells_from_points, encode
 
-__all__ = ["ppda", "def_x", "phase_cells", "segment_metrics", "PHASE_METRICS", "PHASE_GROUPS", "PPDA_METHOD", "DEF_X_METHOD"]
+__all__ = ["ppda", "def_x", "phase_cells", "segment_metrics", "set_pieces", "gk_ids_of", "PHASE_METRICS", "PHASE_GROUPS",
+           "PPDA_METHOD", "DEF_X_METHOD"]
 
 PPDA_DEN = {"Tackle", "Interception", "Challenge", "Foul"}
 DEF_TYPES = PPDA_DEN | {"Clearance", "BlockedPass", "Aerial", "BallRecovery"}
@@ -63,8 +64,9 @@ def phase_cells(events, player_id):
 # ── 구간별 지표 (2026-10-20 · migration 109 match_phase_metrics) ─────────────────────────────
 # ⭐ 경기 분석 화면 「경기 흐름」의 지표 목록·라벨·단위 **정본**이다(사용자 지시 「경기 흐름 … 항상 제공」).
 #    export가 이 표를 그대로 내보내고, G37이 match_phase_metrics.metric ⊆ 이 키를 지킨다 — 화면에 다시 적지 않는다.
-#    segment_metrics()가 계산하는 것은 앞 셋(def_x·ppda·own_half_pass_pct)뿐이다. 나머지는 수집 회차가
-#    리포트에서 근거를 들고 넣는 지표(GK 롱패스 비중 등 — 경기마다 대상 선수가 다르다).
+#    segment_metrics()가 계산하는 것은 def_x·ppda·own_half_pass_pct와 gk_long_share(gk_ids를 줄 때 · 2026-10-22)다. 나머지는
+#    수집 회차가 리포트에서 근거를 들고 넣는 지표. ⭐ gk_long_share는 G37 ⑹이 AVL 리포트(≥2026-10-22) side='v'에 요구한다 —
+#    WS JSON이 없으면 SofaScore 선수 스탯(totalLongBalls/totalPass)으로 경기 전체 1행이라도 넣는다(출처·confidence 명기).
 PHASE_METRICS = {
     "def_x":             dict(label="수비 액션 높이", unit="", lo_good=False, group="press",
                               help="팀 수비 액션 8종의 평균 x(자기 공격 방향 0~100) — 높을수록 앞에서 막는다. " + DEF_X_METHOD),
@@ -99,11 +101,34 @@ def _successful(e):
     return (o.get("displayName") if isinstance(o, dict) else o) == "Successful"
 
 
-def segment_metrics(events, team_id, opp_id, cuts=(15, 30, 45, 60, 75)):
-    """구간 [a, b)마다 def_x(양 팀)·ppda(양 팀)·own_half_pass_pct(양 팀) 행 목록.
+def _quals(e):
+    """이벤트 qualifier displayName 집합 — {'Longball', 'CornerTaken', 'Cross', …}. 축약 전사본은 빈 집합일 수 있다."""
+    out = set()
+    for q in e.get("qualifiers") or []:
+        t = q.get("type") if isinstance(q, dict) else None
+        name = t.get("displayName") if isinstance(t, dict) else t
+        if name:
+            out.add(name)
+    return out
+
+
+def gk_ids_of(match_centre):
+    """matchCentreData(home/away.players[].position=='GK') → GK WhoScored playerId 집합. events만 있는 입력이면 빈 집합."""
+    ids = set()
+    for side in ("home", "away"):
+        for p in ((match_centre.get(side) or {}).get("players") or []) if isinstance(match_centre, dict) else []:
+            if p.get("position") == "GK" and p.get("playerId") is not None:
+                ids.add(p["playerId"])
+    return ids
+
+
+def segment_metrics(events, team_id, opp_id, cuts=(15, 30, 45, 60, 75), gk_ids=None):
+    """구간 [a, b)마다 def_x(양 팀)·ppda(양 팀)·own_half_pass_pct(양 팀)·gk_long_share(양 팀 · gk_ids를 줄 때만) 행 목록.
     반환 dict(side 'v'|'o', metric, seg_from, seg_to(None=종료), value, n) — match_phase_metrics 열과 같다.
-    표본 0인 칸은 행을 만들지 않는다(0으로 지어내지 않는다)."""
+    표본 0인 칸은 행을 만들지 않는다(0으로 지어내지 않는다).
+    gk_long_share = GK 패스 중 Longball qualifier 비율(%) · n=GK 패스 수(2026-10-22 · G37 ⑹ AVL 필수 — gk_ids는 gk_ids_of())."""
     edges = [0, *sorted(set(int(c) for c in cuts if 0 < int(c) < 130)), None]
+    gk_ids = set(gk_ids or ())
     out = []
     for a, b in zip(edges, edges[1:]):
         seg = [e for e in events if _clock(e) >= a and (b is None or _clock(e) < b)]
@@ -118,4 +143,63 @@ def segment_metrics(events, team_id, opp_id, cuts=(15, 30, 45, 60, 75)):
             if ps:
                 out.append(dict(side=side, metric="own_half_pass_pct", seg_from=a, seg_to=b,
                                 value=round(100 * sum(map(_successful, ps)) / len(ps), 1), n=len(ps)))
+            gp = [e for e in seg if e.get("teamId") == me and _type(e) == "Pass" and e.get("playerId") in gk_ids]
+            if gp:
+                out.append(dict(side=side, metric="gk_long_share", seg_from=a, seg_to=b,
+                                value=round(100 * sum("Longball" in _quals(e) for e in gp) / len(gp), 1), n=len(gp)))
+    return out
+
+
+# ── 세트피스 (2026-10-22 · migration 117 match_set_pieces) ───────────────────────────────────────
+# Opta qualifier: 코너 = Pass + CornerTaken · FK = Pass + FreekickTaken(상대 진영 x≥50만 — 자기 진영 FK는 리스타트일 뿐이다)
+#   또는 슛 + DirectFreekick · PK = 슛 + Penalty. 타깃 = 킥 뒤 20초 안 같은 팀의 첫 볼 이벤트(키커 제외).
+#   결과 = 그 20초 안 같은 팀 슛이 있으면 goal|shot, 없으면 킥 패스의 outcomeType으로 retained|lost(슛 kind는 슛 결과).
+SHOT_TYPES = {"Goal", "MissedShots", "SavedShot", "ShotOnPost"}
+_SHOT_OUTCOME = {"Goal": "goal", "MissedShots": "miss", "SavedShot": "saved", "ShotOnPost": "post"}
+_SP_WINDOW = 20   # 초
+
+
+def _secs(e):
+    return int(_clock(e)) * 60 + int(e.get("second") or 0)
+
+
+def set_pieces(events):
+    """events → [dict(kind, minute, team_id, taker, target, flank, outcome)] — taker/target은 WhoScored playerId.
+    flank는 코너만(y≥50=L · y 낮음=오른쪽 규약). qualifier가 없는 축약 전사본이면 빈 목록이다(0으로 지어내지 않는다)."""
+    out = []
+    for i, e in enumerate(events):
+        q, typ = _quals(e), _type(e)
+        if typ == "Pass" and "CornerTaken" in q:
+            kind = "corner"
+        elif typ == "Pass" and "FreekickTaken" in q and (e.get("x") or 0) >= 50:
+            kind = "fk"
+        elif typ in SHOT_TYPES and "Penalty" in q:
+            kind = "pk"
+        elif typ in SHOT_TYPES and "DirectFreekick" in q:
+            kind = "fk"
+        else:
+            continue
+        row = dict(kind=kind, minute=int(e.get("minute") or 0), team_id=e.get("teamId"),
+                   taker=e.get("playerId"), target=None, flank=None, outcome=None)
+        if typ in SHOT_TYPES:
+            row["outcome"] = _SHOT_OUTCOME[typ]
+            out.append(row)
+            continue
+        if kind == "corner" and e.get("y") is not None:
+            row["flank"] = "L" if e["y"] >= 50 else "R"
+        t0 = _secs(e)
+        for n in events[i + 1:]:
+            if _secs(n) - t0 > _SP_WINDOW:
+                break
+            if n.get("teamId") != e.get("teamId"):
+                continue
+            if row["target"] is None and n.get("playerId") not in (None, e.get("playerId")) \
+                    and _type(n) in POSS_TYPES | {"Aerial"}:
+                row["target"] = n["playerId"]
+            if _type(n) in SHOT_TYPES:
+                row["outcome"] = "goal" if _type(n) == "Goal" else "shot"
+                break
+        if row["outcome"] is None:
+            row["outcome"] = "retained" if _successful(e) else "lost"
+        out.append(row)
     return out

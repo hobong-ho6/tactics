@@ -636,3 +636,6 @@
 - **The Athletic 전술 글**(「How Aston Villa create momentum through manipulation」 10-19 등)은 도구 차단으로 **본문 0건**(제목·시각만).
 - 다국어: 스페인어(「Emery rueda de prensa Viking」·「Emery Garnacho Viking」)·노르웨이어(「Emery pressekonferanse Viking Aston Villa」) **0건** — 검색어 전체는 sources 파일.
 - **match_reports #56 → complete**(G12·G37 조건 충족: 필수 섹션 · 출전 16/16 · 경기 프리셋 · 선발 11 · 구간 지표 29 · 판정 · 전술 4칸) · obs#1082~1083 · manager_profiles AVL role_demands 덧붙임(고메스 「8번」 1차 발언 vs 이 경기 대칭 실측).
+
+### 세트피스 정형 (2026-10-22 · migration 117 · P2 회차 · complete 판정 뒤 추가)
+- `match_set_pieces` 5행 — 빌라 코너 68′(캐시 슈팅 · 키커 결손) · 뉴캐슬 코너 23′ · 세트피스 26′·33′·49′(보트만 FK → 스즈키 선방). WS 1983613 JSON이 미보존이라 qualifier 추출 불가 → SS 슛맵(situation)만. SS `set-piece`는 FK/스로인을 구분하지 않아 kind=fk로 두고 note에 적었다(confidence LOW). 빌라 코너 5개 중 슛 없는 4개와 키커 전원이 **결손**. gk_long_share 3구간(0–43′ 15.4% · 43–77′ 62.5% · 77′+ 91.7%)은 10-20 백필 행 그대로(SS 전체 24/49=49%와 방향 일치).

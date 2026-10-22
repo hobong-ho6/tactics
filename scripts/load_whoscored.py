@@ -22,7 +22,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
-from core.whoscored import DEF_X_METHOD, PPDA_METHOD, def_x, phase_cells, ppda  # noqa: E402
+from core.whoscored import DEF_X_METHOD, PPDA_METHOD, def_x, phase_cells, ppda, set_pieces  # noqa: E402
 from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 DB = ROOT / "db" / "tactics.db"
@@ -58,6 +58,41 @@ def match_players(con, event_id, names, manual):
         else:
             unmatched.append(ws_name)
     return pairs, unmatched
+
+
+def load_set_pieces(con, d, events, a, pairs, src):
+    """코너·FK·PK 키커/타깃을 match_set_pieces에 쓴다(migration 117 · 계산은 core.whoscored.set_pieces).
+    같은 match_id에 행이 이미 있으면 건너뛴다(불변규칙 2 — 재수집은 사람이 판단). 상대 선수는 player_id 없이 note에 이름만."""
+    us = d["home"] if a.side == "home" else d["away"]
+    mrow = con.execute("SELECT id FROM matches WHERE event_id=? AND team_code=?", (a.event, a.team)).fetchone()
+    if not mrow:
+        print(f"⚠️ matches에 event_id={a.event} {a.team} 행이 없다 — 세트피스 생략(팀 스탯 적재 뒤 다시 돌릴 것)")
+        return
+    match_id = mrow[0]
+    have = con.execute("SELECT COUNT(*) FROM match_set_pieces WHERE match_id=?", (match_id,)).fetchone()[0]
+    if have:
+        print(f"세트피스: match {match_id}에 이미 {have}행 — 생략")
+        return
+    rrow = con.execute("SELECT id FROM match_reports WHERE event_id=? AND team_code=?", (a.event, a.team)).fetchone()
+    report_id = rrow[0] if rrow else None
+    ws2pid = {ws_id: pid for ws_id, pid, _ in pairs}
+    names = d.get("playerIdNameDictionary", {})
+    n = 0
+    for r in set_pieces(events):
+        side = "v" if r["team_id"] == us["teamId"] else "o"
+        taker, target = ws2pid.get(r["taker"]), ws2pid.get(r["target"])
+        note = None
+        if side == "o" or (r["taker"] and taker is None) or (r["target"] and target is None):
+            note = "WS " + " → ".join(names.get(str(x), str(x)) for x in (r["taker"], r["target"]) if x)
+        con.execute("""INSERT INTO match_set_pieces(match_id,report_id,kind,minute,side,taker_id,target_id,flank,outcome,note,source,confidence)
+                       VALUES(?,?,?,?,?,?,?,?,?,?,?,?)""",
+                    (match_id, report_id, r["kind"], r["minute"], side, taker, target, r["flank"], r["outcome"], note,
+                     src + " · core.whoscored.set_pieces(qualifier CornerTaken/FreekickTaken/Penalty/DirectFreekick)",
+                     "HIGH — Opta qualifier 직접 추출 · 타깃=킥 뒤 20초 안 같은 팀 첫 볼 이벤트(추정)"))
+        n += 1
+    con.commit()
+    print(f"세트피스 {n}행 → match_set_pieces(match {match_id} · report {report_id})"
+          + ("" if n else " ⚠️ 0건 — qualifier가 없는 축약 전사본이면 scope=full로 다시 받을 것"))
 
 
 def main():
@@ -104,8 +139,11 @@ def main():
                          src, pid, a.event))
         con.commit()
         print(f"적용 {len(pairs)}행 · phase_source='{src}'")
+        load_set_pieces(con, d, events, a, pairs, src)
     else:
         print("(--apply 없음 — 쓰기 생략)")
+        sp = set_pieces(events)
+        print(f"세트피스 후보 {len(sp)}건(우리 {sum(1 for r in sp if r['team_id'] == us['teamId'])}) — --apply 때 match_set_pieces에 쓴다")
 
     print(json.dumps({"ppda_v": pv, "ppda_num_v": nv, "ppda_den_v": dv,
                       "ppda_o": po, "ppda_num_o": no, "ppda_den_o": do,
