@@ -15,7 +15,7 @@ WhoScored 원본: **x = 그 팀의 공격 방향 0~100, y 낮음 = 오른쪽**(S
 from .encode import cells_from_points, encode
 
 __all__ = ["ppda", "def_x", "phase_cells", "segment_metrics", "set_pieces", "gk_ids_of", "PHASE_METRICS", "PHASE_GROUPS",
-           "PPDA_METHOD", "DEF_X_METHOD"]
+           "PPDA_METHOD", "DEF_X_METHOD", "carry_est", "CARRY_EST_METHOD"]
 
 PPDA_DEN = {"Tackle", "Interception", "Challenge", "Foul"}
 DEF_TYPES = PPDA_DEN | {"Clearance", "BlockedPass", "Aerial", "BallRecovery"}
@@ -203,3 +203,46 @@ def set_pieces(events):
             row["outcome"] = "retained" if _successful(e) else "lost"
         out.append(row)
     return out
+
+
+# ── 운반(carry) **추정** (2026-10-22 · FC27 구현 검토 §2.2 「운반 — 공급원 없음」) ──────────────────────────
+# ⚠️ Opta 공개 이벤트에는 캐리 이벤트가 없다(SofaScore·FotMob 경기 단위도 없다). 바이킹전 D+1 대조표 10행이 손으로 센 추정을
+#    core에 올려 같은 정의로 재현되게 한다. **추정이다** — 컬럼 이름(carry_est_*)과 method 문자열에 그렇게 박는다.
+CARRY_EST_METHOD = ("추정 — 같은 선수의 연속 볼 이벤트 쌍(시작=직전 팀 동료 성공 패스의 endX/endY(수신) 또는 본인 직전 볼 이벤트 x/y, "
+                    "끝=본인 다음 볼 이벤트 x/y · 사이에 다른 선수 볼 이벤트 없음 · 15초 이내 · 세트피스·스로인 제외)의 전진 거리 Δx. "
+                    "prog10=Δx≥10(피치 길이 %) · m=Δx×1.05m(105m 피치). 원천=WhoScored matchCentreData(Opta) — core.whoscored.carry_est")
+_CARRY_MAX_SEC = 15
+_CARRY_SKIP_Q = {"CornerTaken", "FreekickTaken", "ThrowIn", "GoalKick", "KickOff"}
+
+
+def carry_est(events, player_id):
+    """선수 한 명의 운반 추정 → dict(carry_est_n, carry_est_prog10_n, carry_est_prog_m_sum, carry_est_method).
+    모든 숫자는 추정이며 0은 「추정 쌍이 없음」이지 「운반이 없음」이 아니다(이벤트 없는 축약본이면 전부 0)."""
+    seq = sorted((e for e in events if e.get("x") is not None and e.get("playerId") is not None),
+                 key=lambda e: (_clock(e), e.get("second") or 0, e.get("eventId") or 0))
+    n = prog = 0
+    m_sum = 0.0
+    prev = None                                   # 직전 볼 이벤트(누구의 것이든)
+    for e in seq:
+        typ = _type(e)
+        is_ball = typ in POSS_TYPES
+        if not is_ball:
+            prev = None if typ in DEF_TYPES and e.get("playerId") != player_id else prev
+            continue
+        if e.get("playerId") == player_id and prev is not None and _CARRY_MAX_SEC >= _secs(e) - _secs(prev) >= 0 \
+                and not (_quals(e) & _CARRY_SKIP_Q):
+            start = None
+            if prev.get("playerId") == player_id and not (_quals(prev) & _CARRY_SKIP_Q):
+                start = (prev.get("x"), prev.get("y"))
+            elif prev.get("teamId") == e.get("teamId") and _type(prev) == "Pass" and _successful(prev) \
+                    and prev.get("endX") is not None:
+                start = (prev["endX"], prev.get("endY"))
+            if start is not None and start[0] is not None:
+                dx = float(e["x"]) - float(start[0])
+                n += 1
+                if dx >= 10:
+                    prog += 1
+                if dx > 0:
+                    m_sum += dx * 1.05
+        prev = e
+    return dict(carry_est_n=n, carry_est_prog10_n=prog, carry_est_prog_m_sum=round(m_sum, 1), carry_est_method=CARRY_EST_METHOD)

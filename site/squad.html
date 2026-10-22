@@ -2,7 +2,8 @@
 <html lang="ko"><head><meta charset="utf-8"><title>스쿼드 — 택틱스 랩</title>
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="stylesheet" href="assets/style.css"></head><body>
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/theme.css"></head><body>
 <div id="hdr"></div>
 <h1>스쿼드 · 베스트 11 <small class="dim">슬롯별 실측 최적 인선 — 평점·적합 근거 병기 · 그리드=실측(경기 데이터), 게임 커널 히트맵은 히트맵 비교 B패널</small></h1>
 <div class="panel"><label class="kv">슬롯 <select id="posSel"><option value="">전체</option></select></label></div>
@@ -25,7 +26,7 @@
 <span class="mono">python3 scripts/export.py</span>를 다시 돌릴 것.</p>
 <script type="module">
 import { mountHeader, loadTeam, loadKernels, loadCurrentKernels, loadGameStats, slotCandidates, sofifaLink, statLine, isGkSlot, gkPosCell, canonSlots} from './assets/data.js?v=20261004-nav';
-import { annotate, mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
+import { annotate, mountGlossaryTips } from './assets/glossary.js';
 import { Kernel } from './assets/kernel.js?v=20260825-decodemap-null';
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
 import { pitchXI, depthStrip, mountTips } from './assets/squadviz.js?v=20261005c';

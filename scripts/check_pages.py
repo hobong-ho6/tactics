@@ -18,6 +18,7 @@
     python3 scripts/check_pages.py --team CHE           # 팀을 바꿔서 전수
 """
 import argparse
+import os
 import asyncio
 import re
 import subprocess
@@ -108,8 +109,12 @@ if __name__ == "__main__":
     try:
         import playwright  # noqa: F401
     except ImportError:
-        if venv.exists() and Path(sys.executable).resolve() != venv.resolve():
-            # ⭐ playwright는 .venv에만 있다 — 사용자가 `python3`로 불러도 알아서 넘긴다(런북 삽질 방지).
-            sys.exit(subprocess.run([str(venv), __file__, *sys.argv[1:]]).returncode)
-        sys.exit("⛔ playwright 없음 — .venv/bin/python 으로 실행할 것")
+        # ⭐ playwright는 .venv에만 있다 — 사용자가 `python3`로 불러도 알아서 넘긴다(런북 삽질 방지).
+        # ⚠️ 경로 비교(resolve)로 판별하면 안 된다 — 시스템 python3와 .venv/bin/python이 같은 프레임워크 바이너리로
+        #    resolve돼 재실행 분기를 못 타고 「playwright 없음」으로 멈췄다(2026-10-22 AL02359162 실증).
+        #    ⇒ 「import 실패 + 아직 재실행 전」이면 무조건 .venv로 넘기고, 환경변수로 두 번째 실패만 멈춘다.
+        if venv.exists() and not os.environ.get("CHECK_PAGES_REEXEC"):
+            sys.exit(subprocess.run([str(venv), __file__, *sys.argv[1:]],
+                                    env={**os.environ, "CHECK_PAGES_REEXEC": "1"}).returncode)
+        sys.exit("⛔ playwright 없음 — .venv/bin/python -m pip install playwright && .venv/bin/playwright install chromium")
     sys.exit(asyncio.run(main(a)))

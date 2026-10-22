@@ -3,6 +3,7 @@
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/theme.css">
 <style>/* 감독 프로필 표 — 축·갱신(날짜) 열은 꺾지 않는다 */
 #profile td:first-child,#profile td:last-child{white-space:nowrap}
 /* 표 안의 접이식 근거는 공용 .refs 폭 제한(360px)을 풀어 셀 폭을 그대로 쓴다 */
@@ -29,9 +30,9 @@
 결론(프로필 축·세팅)만 보여준다.</p>
 <script type="module">
 import { mountHeader, loadTeam, slotCandidates, canonSlots as canonSlotsOf, currentGameVersion } from './assets/data.js?v=20261004-nav';
-import { mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
+import { mountGlossaryTips } from './assets/glossary.js';
 import { prose } from './assets/prose.js';
-import { roleLabel, focusLabel, humanize, mountRawToggle } from './assets/labels.js?v=20260918';
+import { roleLabel, focusLabel, humanize, mountRawToggle } from './assets/labels.js';
 import { laneTimeline, mountTips as histTips } from './assets/histviz.js?v=20260918';   // 긴 DB 산문은 공용 렌더러로 끊어 읽는다(player.html과 동일)
 
 const { team, regime } = await mountHeader('report.html');

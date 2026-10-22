@@ -3,13 +3,15 @@
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css">
-<link rel="stylesheet" href="assets/clubviz.css?v=20260925a"></head><body>
+<link rel="stylesheet" href="assets/clubviz.css?v=20260925a">
+<link rel="stylesheet" href="assets/theme.css"></head><body>
 <div id="hdr"></div>
 <h1>선수 분석 <small class="dim">실측 히트맵 · 경기 스탯 · 게임 스탯 · 영상 분석 파일럿</small></h1>
 <div class="panel"><label class="kv">그룹 <select id="grp"></select></label> <label class="kv">선수 <select id="who"></select></label> <span id="sf"></span></div>
 
-<div id="pstatus"></div>
 <div class="panel" id="playercard"></div>
+<!-- 부상·계약 상태 스트립 — 2026-10-22 UX: 첫 화면은 선수 카드, 상태는 그 바로 아래 짧은 띠(사용자 10-16 「부상·정보 최신」 요구는 유지 — 가려지지 않는다) -->
+<div id="pstatus"></div>
 
 <div class="menubar">
   <button class="mtab on" data-view="card">카드 · 종합평가</button>
@@ -88,7 +90,7 @@ import { pizza, dumbbell, formRibbon } from './assets/playerviz.js?v=20260918';
 // 차트 폭 — 패널이 display:none인 채로 렌더되면 clientWidth가 0이라, 보이는 본문 폭에서 계산한다(패딩 20×2 + 패널 14×2)
 const vizW = (el, cap, pad = 0) => Math.min(cap, Math.max(320, (el?.clientWidth || (document.body.clientWidth - 68)) - pad));
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
-import { annotate, mountGlossaryTips, glTip } from './assets/glossary.js?v=20260913-selection-glossary';
+import { annotate, mountGlossaryTips, glTip } from './assets/glossary.js';
 import { prose } from './assets/prose.js';
 import { PLAYSTYLES } from './assets/playstyle-icons.js';
 import { repaintEvoCard, replateCard, rarityLevel } from './assets/evocard.js?v=20260927a';

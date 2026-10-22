@@ -125,6 +125,11 @@ export async function mountHeader(active){
     setCurrentTeam(b.dataset.t);
     if (isGlobal) location.href = 'index.html'; else location.reload();
   }));
+  /* 고정 헤더 높이를 CSS 변수(--hdr-h)로 — 고정 선택 막대·표 머리·목차 점프가 헤더 밑에 가리지 않게(theme.css · 2026-10-22).
+     값만 넘기고 스타일은 전부 theme.css에 있다(CSS를 JS에 두지 않는다 — G22). */
+  const setH = () => document.documentElement.style.setProperty('--hdr-h', `${el.offsetHeight}px`);
+  setH();
+  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(setH).observe(el);
   return { idx, team, regime: idx.regimes.find(r => r.team_code === team) };
 }
 

@@ -70,20 +70,49 @@ def load_set_pieces(con, d, events, a, pairs, src):
         return
     match_id = mrow[0]
     have = con.execute("SELECT COUNT(*) FROM match_set_pieces WHERE match_id=?", (match_id,)).fetchone()[0]
-    if have:
-        print(f"세트피스: match {match_id}에 이미 {have}행 — 생략")
+    if have and not getattr(a, "sp_merge", False):
+        print(f"세트피스: match {match_id}에 이미 {have}행 — 생략(--sp-merge면 키커 결손 행을 채우고 없는 장면만 추가)")
         return
     rrow = con.execute("SELECT id FROM match_reports WHERE event_id=? AND team_code=?", (a.event, a.team)).fetchone()
     report_id = rrow[0] if rrow else None
     ws2pid = {ws_id: pid for ws_id, pid, _ in pairs}
     names = d.get("playerIdNameDictionary", {})
-    n = 0
+    n, merged, kept = 0, [], []
+    # ⭐ 병합 후보는 **이 실행 전에 있던 행**뿐이고, 한 행은 한 번만 짝이 된다 — 같은 분의 두 코너가 한 행에 겹쳐 쓰이거나
+    #    방금 넣은 행이 다음 WS 행과 짝지어지는 사고(2026-10-22 바이킹전 fk 41·코너 48·66 실증)를 막는다.
+    pool = {row[0] for row in con.execute("SELECT id FROM match_set_pieces WHERE match_id=?", (match_id,))} if have else set()
     for r in set_pieces(events):
         side = "v" if r["team_id"] == us["teamId"] else "o"
         taker, target = ws2pid.get(r["taker"]), ws2pid.get(r["target"])
         note = None
         if side == "o" or (r["taker"] and taker is None) or (r["target"] and target is None):
             note = "WS " + " → ".join(names.get(str(x), str(x)) for x in (r["taker"], r["target"]) if x)
+        if have:
+            # ⭐ --sp-merge(2026-10-22): SS 슛맵으로 먼저 넣어 둔 행(키커 NULL)이 있으면 같은 장면(kind·side·분 ±1)을 찾아
+            #    키커·타깃·방향만 채운다(outcome은 SS 슛 결과를 유지). 짝이 없는 장면(슛으로 안 끝난 코너 등)만 새 행.
+            hit = None
+            for cand in con.execute("""SELECT id, taker_id, target_id, flank FROM match_set_pieces
+                                       WHERE match_id=? AND kind=? AND side=? AND ABS(minute-?)<=1
+                                       ORDER BY ABS(minute-?), id""",
+                                    (match_id, r["kind"], side, r["minute"], r["minute"])):
+                if cand[0] in pool:
+                    hit = cand
+                    break
+            if hit:
+                hid, t0, g0, f0 = hit
+                pool.discard(hid)
+                if t0 is None or g0 is None or f0 is None:
+                    con.execute("""UPDATE match_set_pieces SET taker_id=COALESCE(taker_id,?), target_id=COALESCE(target_id,?),
+                                   flank=COALESCE(flank,?), note=COALESCE(note,'') || ?, source=source || ?,
+                                   confidence=confidence || ? WHERE id=?""",
+                                (taker, target, r["flank"],
+                                 " · [WS 보강] " + (note or " → ".join(names.get(str(x), str(x)) for x in (r["taker"], r["target"]) if x)),
+                                 " · " + src + " 키커/타깃/방향 보강(--sp-merge)",
+                                 " · 키커 WS qualifier 직접(HIGH) · 타깃=킥 뒤 20초 안 같은 팀 첫 볼 이벤트(추정)", hid))
+                    merged.append(hid)
+                else:
+                    kept.append(hid)
+                continue
         con.execute("""INSERT INTO match_set_pieces(match_id,report_id,kind,minute,side,taker_id,target_id,flank,outcome,note,source,confidence)
                        VALUES(?,?,?,?,?,?,?,?,?,?,?,?)""",
                     (match_id, report_id, r["kind"], r["minute"], side, taker, target, r["flank"], r["outcome"], note,
@@ -91,6 +120,8 @@ def load_set_pieces(con, d, events, a, pairs, src):
                      "HIGH — Opta qualifier 직접 추출 · 타깃=킥 뒤 20초 안 같은 팀 첫 볼 이벤트(추정)"))
         n += 1
     con.commit()
+    if have:
+        print(f"세트피스 병합: 기존 행 보강 {len(merged)}(id {merged}) · 이미 채워져 유지 {len(kept)} · 새 행 {n}")
     print(f"세트피스 {n}행 → match_set_pieces(match {match_id} · report {report_id})"
           + ("" if n else " ⚠️ 0건 — qualifier가 없는 축약 전사본이면 scope=full로 다시 받을 것"))
 
@@ -104,6 +135,8 @@ def main():
     ap.add_argument("--ws-match", type=int, required=True)
     ap.add_argument("--map", action="append", default=[], help='"WhoScored 이름=player_id"')
     ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--sp-merge", action="store_true",
+                    help="match_set_pieces에 이미 행이 있어도 키커 NULL 행을 WS로 채우고 없는 장면만 추가(2026-10-22)")
     a = ap.parse_args()
 
     d = json.loads(Path(a.json_path).read_text())
@@ -117,7 +150,8 @@ def main():
     xo, so = def_x(events, them["teamId"])
     today = date.today().isoformat()
 
-    print(f"{d['home']['name']} {d['ftScore']} {d['away']['name']} — 이벤트 {len(events)}건")
+    # ⚠️ 저장소에 남긴 축약본(reports/match-watch/data/*-ws-*.json)은 ftScore 대신 score만 있다(2026-10-22)
+    print(f"{d['home']['name']} {d.get('ftScore') or d.get('score')} {d['away']['name']} — 이벤트 {len(events)}건")
     print(f"PPDA  {a.team} {pv} ({nv}/{dv})  상대 {po} ({no}/{do})")
     print(f"def_x {a.team} {xv} (n={sv})  상대 {xo} (n={so})")
 

@@ -30,6 +30,9 @@ def main():
     ap.add_argument("--team-id", type=int, required=True, help="리포트 팀의 WhoScored teamId")
     ap.add_argument("--opp-id", type=int, required=True)
     ap.add_argument("--cuts", default="", help="15분 창에 더할 구간 경계 분(쉼표)")
+    ap.add_argument("--metrics", default="", help="이 지표만(쉼표 · 예: gk_long_share) — 다른 지표가 이미 적재된 리포트에 한 지표를 보강할 때")
+    ap.add_argument("--merge-existing", action="store_true",
+                    help="같은 (report, side, metric, seg_from)이 있으면 멈추지 않고 value·n·seg_to를 갱신(구간 재정의 — 사람이 판단한 뒤에만 · note에 남긴다)")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
     raw = json.loads(Path(a.events).read_text(encoding="utf-8"))
@@ -41,6 +44,9 @@ def main():
     if not gk_ids:
         raise SystemExit("⛔ GK를 알 수 없다(home/away.players 없음) — matchCentreData 전체 JSON을 넘길 것(gk_long_share 계산 불가)")
     rows = segment_metrics(events, a.team_id, a.opp_id, cuts, gk_ids=gk_ids)
+    if a.metrics:
+        keep = {m.strip() for m in a.metrics.split(",") if m.strip()}
+        rows = [r for r in rows if r["metric"] in keep]
     src = f"WhoScored matchCentreData {Path(a.events).name} → core.whoscored.segment_metrics (match_phase_metrics.py)"
     conf = "HIGH — Opta 이벤트 직접 계산. ⚠️ 구간이 짧으면 표본(n)이 작다 — 화면이 흐리게 그린다"
     for r in rows:
@@ -51,6 +57,16 @@ def main():
     con = connect_db(DB)
     try:
         for r in rows:
+            if a.merge_existing:
+                hit = con.execute("SELECT id, seg_to, value, n FROM match_phase_metrics WHERE report_id=? AND side=? AND metric=? AND seg_from=?",
+                                  (a.report, r["side"], r["metric"], r["seg_from"])).fetchone()
+                if hit:
+                    con.execute("""UPDATE match_phase_metrics SET seg_to=?, value=?, n=?, source=?, confidence=?,
+                                   note=COALESCE(note,'') || ? WHERE id=?""",
+                                (r["seg_to"], r["value"], r["n"], src, conf,
+                                 f" · [구간 재정의 {src.split(' ')[0]}] 종전 {r['seg_from']}–{hit[1] if hit[1] is not None else '끝'} {hit[2]}(n={hit[3]}) → "
+                                 f"{r['seg_from']}–{r['seg_to'] if r['seg_to'] is not None else '끝'} (--merge-existing)", hit[0]))
+                    continue
             con.execute("""INSERT INTO match_phase_metrics(report_id,side,metric,seg_from,seg_to,value,n,note,source,confidence)
                            VALUES(?,?,?,?,?,?,?,NULL,?,?)""",
                         (a.report, r["side"], r["metric"], r["seg_from"], r["seg_to"], r["value"], r["n"], src, conf))
