@@ -17,18 +17,18 @@
   --bg-2:#0e1320;
   --panel:rgba(19,25,39,.94);                /* 읽는 면 — 94% 불투명 */
   --panel-solid:#131927;                     /* 고정 헤더행·스티키 셀처럼 완전 불투명이 필요한 곳 */
-  --card:rgba(255,255,255,.035);             /* 패널 안의 떠 있는 카드 */
-  --card-hover:rgba(255,255,255,.06);
+  --card:rgba(var(--ink-rgb),.035);             /* 패널 안의 떠 있는 카드 */
+  --card-hover:var(--ink-06);
   --glass:rgba(16,21,33,.62);                /* 크롬(헤더·탭·툴팁) — blur와 함께 쓴다 */
   --glass-strong:rgba(12,16,26,.88);         /* 툴팁처럼 글자가 얹히는 글래스 */
   --glass-blur:22px;
   --glass-sat:170%;
-  --pill:rgba(255,255,255,.06);
-  --pill-line:rgba(255,255,255,.11);
-  --pill-hover:rgba(255,255,255,.11);
+  --pill:var(--ink-06);
+  --pill-line:rgba(var(--ink-rgb),.11);
+  --pill-hover:rgba(var(--ink-rgb),.11);
   /* 선 */
-  --line:rgba(255,255,255,.12);
-  --line-strong:rgba(255,255,255,.22);
+  --line:rgba(var(--ink-rgb),.12);
+  --line-strong:rgba(var(--ink-rgb),.22);
   --spec:rgba(255,255,255,.14);              /* 글래스 윗면 1px 하이라이트(specular) */
   /* 글자 — #131927 위에서 본문 15.4:1 · 보조 8.6:1 · 흐림 5.6:1 */
   --txt:#eef2f8;
@@ -36,12 +36,12 @@
   --dim-2:#8c98aa;
   --link:#ffa061;                            /* 본문 링크 — 악센트보다 한 톤 밝게(8.9:1) */
   /* 악센트·의미색 */
-  --acc:#ff8a3d; --acc-ink:#14100b;          /* 악센트 위 글자색 */
+  --acc:#ff8a3d; --acc-hi:#ffa05c; --acc-ink:#14100b;  /* 악센트 · 알약 윗색 · 악센트 위 글자색 */
   --acc-soft:rgba(255,138,61,.14);
   --ok:#4cd97b; --warn:#ffd54d; --bad:#ff6b6b;
   --ok-soft:rgba(76,217,123,.12); --warn-soft:rgba(255,213,77,.12); --bad-soft:rgba(255,107,107,.12);
   /* 데이터 시각화 시리즈색 — dataviz 검증 통과(2026-09-18) · 바꾸지 않는다 */
-  --viz-us:#d95926; --viz-them:#3987e5; --viz-grid:rgba(255,255,255,.08);
+  --viz-us:#d95926; --viz-them:#3987e5; --viz-grid:rgba(var(--ink-rgb),.08);
   /* 반경·그림자 */
   --r-s:10px; --r:14px; --r-l:20px; --r-pill:999px;
   --sh-1:0 1px 2px rgba(0,0,0,.35),0 10px 28px -16px rgba(0,0,0,.7);
@@ -53,6 +53,18 @@
   --fs:15px; --lh:1.65;
   --measure:74ch;                            /* 긴 산문의 줄 길이 상한(한글 약 36~40자) */
   --hdr-h:64px;                              /* data.js mountHeader가 실측해 덮어쓴다 */
+  /* 잉크 틴트 — 「글자색 방향의 반투명」. 다크는 흰색, 라이트는 남색 잉크(아래 light 블록). CSS/SVG는 rgba(var(--ink-rgb),.x) 또는 --ink-NN */
+  --ink-rgb:255,255,255;
+  --ink-02:rgba(var(--ink-rgb),.02); --ink-04:rgba(var(--ink-rgb),.04); --ink-06:rgba(var(--ink-rgb),.06);
+  --ink-08:rgba(var(--ink-rgb),.08); --ink-12:rgba(var(--ink-rgb),.12); --ink-14:rgba(var(--ink-rgb),.14);
+  --ink-18:rgba(var(--ink-rgb),.18); --ink-20:rgba(var(--ink-rgb),.2); --ink-25:rgba(var(--ink-rgb),.25);
+  --ink-34:rgba(var(--ink-rgb),.34); --ink-40:rgba(var(--ink-rgb),.4);
+  /* 피치(무대) — 두 스킴에서 같다: 열지도 램프·칩이 어두운 초록 위에서만 읽힌다. 그 위 글자는 --on-pitch-* */
+  --pitch-bg:#0d1b12; --pitch-line:rgba(255,255,255,.25); --pitch-chip-bg:rgba(0,0,0,.65); --pitch-chip-txt:#fff;
+  --on-pitch-txt:#eef2f8; --on-pitch-dim:#aeb9ca; --on-color-ink:#0b0f14;  /* 색 마커 위 글자 */
+  --kbd-bg:#2a3446; --kbd-txt:#cfe0ff;         /* 등번호 배지 */
+  --series-3:#b07cff; --series-4:#d4a800;      /* 진화 비교 차트 3·4번째 시리즈 */
+  --viz-them-ink:#fff;                         /* 파란 칸 위 글자(game.html 역할 그리드) */
 }
 
 /* ── 바닥 · 활자 ─────────────────────────────────────────────────────────── */
@@ -84,7 +96,7 @@ h3{font-size:14.5px;font-weight:700;line-height:1.4}
 h4{font-size:13.5px;font-weight:700}
 small,.dim{color:var(--dim)}
 .mono{font-family:var(--font-mono);font-size:.86em}
-code{font-family:var(--font-mono);font-size:.88em;background:rgba(255,255,255,.06);border:1px solid var(--line);
+code{font-family:var(--font-mono);font-size:.88em;background:var(--ink-06);border:1px solid var(--line);
   border-radius:5px;padding:0 5px}
 a{color:var(--link);text-decoration:none;text-underline-offset:3px;text-decoration-thickness:1px}
 a:hover{text-decoration:underline}
@@ -124,7 +136,7 @@ hr{border:0;border-top:1px solid var(--line);margin:16px 0}
 #hdr .teams button:hover,#hdr nav a:hover,button.tab:hover,button.mtab:hover,.toc a:hover,.seasontog:hover,button.filt:hover,.act.ghost:hover,.plist button:hover{
   background:var(--pill-hover);border-color:var(--line-strong);color:var(--txt);text-decoration:none}
 #hdr .teams button.on,#hdr nav a.on,button.tab.on,button.mtab.on,button.act.ghost.on{
-  background:linear-gradient(180deg,#ffa05c,var(--acc));border-color:transparent;color:var(--acc-ink);
+  background:linear-gradient(180deg,var(--acc-hi),var(--acc));border-color:transparent;color:var(--acc-ink);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px -6px rgba(255,138,61,.7)}
 #hdr nav a.on{outline:none}
 .seasontog.on,button.filt.on,.cardpick.on{background:var(--acc-soft);border-color:var(--acc);color:var(--acc)}
@@ -138,11 +150,11 @@ button.tab{min-height:30px;padding:3px 12px;font-size:12.5px;margin-left:0}
 
 /* ── 읽는 면: 패널·카드·표 ─────────────────────────────────────────────────── */
 .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-l);padding:16px 18px;margin:14px 0;
-  box-shadow:var(--sh-1),inset 0 1px 0 rgba(255,255,255,.04)}
+  box-shadow:var(--sh-1),inset 0 1px 0 var(--ink-04)}
 .panel .panel{box-shadow:none;border-radius:var(--r)}
 .pcard,.gcard,.vidcard,.dutycard,.evo-card,.tcard,.step,.nextcard,.bcard,.cardver,.optbox,.evalgrid section,.dutygrid section,
 .report-grid section,.player-report,.mviz .vz,.vzcard,.fc-side,.cele-group,.rs-grp,.rs-role,.cmp-verdict{
-  background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:inset 0 1px 0 rgba(var(--ink-rgb),.035)}
 .pcard{padding:12px 14px;min-width:220px}
 .mviz .vz,.vzcard{background:var(--panel-solid)}
 .report-metrics span,.st,.statline span{background:var(--card);border-radius:var(--r-s)}
@@ -157,8 +169,8 @@ th{color:var(--dim);font-weight:600;font-size:12.5px;letter-spacing:.01em}
   .scrollx thead th,.scrollx table>tr:first-child>th{top:0}
 }
 /* 줄무늬 + 행 하이라이트 — 넓은 표에서 행을 따라 읽기 */
-tbody tr:nth-child(even)>td,table>tr:nth-child(even)>td{background:rgba(255,255,255,.022)}
-tbody tr:hover>td,table>tr:hover>td{background:rgba(255,255,255,.05)}
+tbody tr:nth-child(even)>td,table>tr:nth-child(even)>td{background:rgba(var(--ink-rgb),.022)}
+tbody tr:hover>td,table>tr:hover>td{background:rgba(var(--ink-rgb),.05)}
 .gcmp td:first-child,.gcmp th:first-child{background:var(--panel-solid)}
 td.num,th.num,.num{text-align:right;font-variant-numeric:tabular-nums}
 .player-stats-table{border-radius:var(--r-s)}
@@ -218,11 +230,52 @@ pre,.report-source pre{font-family:var(--font-mono);font-size:12.5px;line-height
   .gl-tip,.helptip,.mviz .tip{background:var(--panel-solid)}
 }
 @media (prefers-reduced-transparency:reduce){
-  :root{--glass:#121826;--glass-strong:#0e131e;--panel:#131927}
+  :root{--glass:var(--panel-solid);--glass-strong:var(--panel-solid);--panel:var(--panel-solid)}
   #hdr,.report-picker,.gl-tip,.helptip,.mviz .tip{-webkit-backdrop-filter:none;backdrop-filter:none}
   body::before{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+
+/* ── 라이트 스킴(prefers-color-scheme: light · 2026-10-22) ────────────────────
+   같은 구조·같은 규칙: 글래스는 크롬에만, 읽는 면은 96% 불투명. 잉크 틴트(--ink-rgb)가 남색으로 바뀌어
+   style.css/clubviz.css의 rgba(var(--ink-rgb),.x)가 전부 따라온다. 대비 실측은 reports/research/2026-10-22-site-ux-review.md. */
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#eef1f6; --bg-2:#f7f8fb;
+    --panel:rgba(255,255,255,.96); --panel-solid:#ffffff;
+    --glass:rgba(255,255,255,.66); --glass-strong:rgba(255,255,255,.92);
+    --ink-rgb:16,24,40;
+    --spec:rgba(255,255,255,.85);
+    --txt:#16202d; --dim:#4b5a6e; --dim-2:#5f6e84;
+    --link:#a8460c;
+    --acc:#bd4e16; --acc-hi:#dc6c2c; --acc-ink:#ffffff;
+    --acc-soft:rgba(196,84,26,.12);
+    --ok:#1b7f45; --warn:#7a5a00; --bad:#b93434;
+    --ok-soft:rgba(27,127,69,.12); --warn-soft:rgba(122,90,0,.12); --bad-soft:rgba(185,52,52,.12);
+    /* 시리즈색은 색상 유지, 밝기만 내린다(흰 면 위 4.5:1 이상) — dataviz 검증색의 라이트 대응 */
+    --viz-us:#bd4418; --viz-them:#2c6fc4;
+    --series-3:#7a46c9; --series-4:#8a6d00;
+    --kbd-bg:#dfe6f2; --kbd-txt:#1d2a3d;
+    --on-color-ink:#0b0f14;
+    --sh-1:0 1px 2px rgba(16,24,40,.08),0 10px 28px -16px rgba(16,24,40,.28);
+    --sh-2:0 2px 6px rgba(16,24,40,.1),0 18px 40px -18px rgba(16,24,40,.35);
+    --sh-glass:inset 0 1px 0 var(--spec),0 12px 32px -18px rgba(16,24,40,.35);
+  }
+  html{color-scheme:light}
+  body::before{background:
+    radial-gradient(900px 600px at 8% -10%,rgba(196,84,26,.14),transparent 60%),
+    radial-gradient(800px 560px at 100% 0%,rgba(44,111,196,.14),transparent 60%),
+    radial-gradient(700px 500px at 60% 110%,rgba(27,127,69,.08),transparent 60%),
+    linear-gradient(180deg,var(--bg-2),var(--bg) 40%)}
+  #hdr .brand img{filter:drop-shadow(0 2px 6px rgba(16,24,40,.25))}
+  #hdr .teams button.on,#hdr nav a.on,button.tab.on,button.mtab.on,button.act.ghost.on{
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 4px 14px -6px rgba(196,84,26,.55)}
+  .panel{box-shadow:var(--sh-1),inset 0 1px 0 rgba(255,255,255,.9)}
+  code{background:var(--ink-06)}
+  pre,.report-source pre{background:#f1f4f9;color:var(--txt)}
+  .futcard-img,.futcard-patch{filter:drop-shadow(0 4px 10px rgba(16,24,40,.28))}
+}
 
 /* ── 모바일 ───────────────────────────────────────────────────────────────── */
 @media(max-width:700px){

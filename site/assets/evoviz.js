@@ -24,7 +24,7 @@ export function deadlineChart(catalog, { W = 720, consumed = {} } = {}){
     <text x="${x(d)}" y="${T - 12}" text-anchor="middle" font-size="10" fill="var(--dim)">${d === 0 ? '오늘' : `D+${d}`}</text>`).join('');
   const body = rows.map((r, i) => { const y = T + i * rowH + 14, d = Math.ceil((r.end - now) / 864e5);
     const used = consumed[r.c.evo_id]; const urgent = d <= 7;
-    const col = used?.exhausted ? 'rgba(255,255,255,.18)' : urgent ? 'var(--bad)' : d <= 30 ? 'var(--warn)' : US;
+    const col = used?.exhausted ? 'var(--ink-18)' : urgent ? 'var(--bad)' : d <= 30 ? 'var(--warn)' : US;
     const tip = `${r.c.name} · 마감 ${fmtD(r.c.end_submission_time || r.c.end_time)} (D-${d})` +
       `${r.c.repeatability > 1 ? ` · 반복 ${r.c.repeatability}회` : ' · 1회성'}${used ? ` · ${used.exhausted ? '소진' : `사용 ${used.count}`}` : ''}` +
       `${r.c.unlock_text ? ` · ${r.c.unlock_text}` : ''}`;
@@ -35,7 +35,7 @@ export function deadlineChart(catalog, { W = 720, consumed = {} } = {}){
       <text x="${x(d) + (d > maxD ? 14 : 6)}" y="${y + 4}" font-size="10" fill="${urgent ? 'var(--bad)' : 'var(--dim)'}">D-${d}</text></g>`; }).join('');
   return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="진화 마감 타임라인">${grid}${body}</svg>
     <div class="lg"><span><i style="background:${US}"></i>여유</span><span><i style="background:var(--warn)"></i>한 달 이내</span>
-      <span><i style="background:var(--bad)"></i>일주일 이내</span><span><i style="background:rgba(255,255,255,.18)"></i>소진</span>
+      <span><i style="background:var(--bad)"></i>일주일 이내</span><span><i style="background:var(--ink-18)"></i>소진</span>
       <span class="dim">막대 길이 = 남은 기간(축 상한 ${maxD}일 · ▸는 그보다 먼 상시 진화)</span></div>`;
 }
 
@@ -49,10 +49,10 @@ export function sixDumbbell(before, after, { W = 420, gk = false } = {}){
   const L = 42, R = 52, T = 8, rowH = 22, H = T + pairs.length * rowH + 6;
   const x = v => L + (W - L - R) * ((v - lo) / Math.max(1, hi - lo));
   const body = pairs.map((p, i) => { const y = T + i * rowH + 12, d = (p.b ?? 0) - (p.a ?? 0);
-    const line = p.a != null && p.b != null ? `<line x1="${x(p.a)}" x2="${x(p.b)}" y1="${y}" y2="${y}" stroke="${d > 0 ? 'var(--ok)' : 'rgba(255,255,255,.2)'}" stroke-width="3"/>` : '';
+    const line = p.a != null && p.b != null ? `<line x1="${x(p.a)}" x2="${x(p.b)}" y1="${y}" y2="${y}" stroke="${d > 0 ? 'var(--ok)' : 'var(--ink-20)'}" stroke-width="3"/>` : '';
     return `<g class="hit" data-tip="${esc(`${p.k} ${p.a ?? '—'} → ${p.b ?? '—'}${d ? ` (${d > 0 ? '+' : ''}${d})` : ' 변화 없음'}`)}">
       <text x="${L - 8}" y="${y + 4}" text-anchor="end" font-size="10.5" fill="var(--dim)">${p.k}</text>${line}
-      ${p.a != null ? `<circle cx="${x(p.a)}" cy="${y}" r="4.5" fill="${SURF}"/><circle cx="${x(p.a)}" cy="${y}" r="3" fill="rgba(255,255,255,.4)"/>` : ''}
+      ${p.a != null ? `<circle cx="${x(p.a)}" cy="${y}" r="4.5" fill="${SURF}"/><circle cx="${x(p.a)}" cy="${y}" r="3" fill="var(--ink-40)"/>` : ''}
       ${p.b != null ? `<circle cx="${x(p.b)}" cy="${y}" r="6" fill="${SURF}"/><circle cx="${x(p.b)}" cy="${y}" r="4.5" fill="${d > 0 ? 'var(--ok)' : US}"/>` : ''}
       <text x="${W - 8}" y="${y + 4}" text-anchor="end" font-size="10.5" fill="var(--txt)">${p.b ?? '—'}${d ? `<tspan fill="${d > 0 ? 'var(--ok)' : 'var(--bad)'}" font-size="9.5"> ${d > 0 ? '+' : ''}${d}</tspan>` : ''}</text></g>`; }).join('');
   return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="6스탯 적용 전후">${body}</svg>`;

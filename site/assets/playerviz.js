@@ -32,10 +32,10 @@ export function pizza(rows, { W = 360, gk = false } = {}){
     const am = (a0 + a1) / 2; const [lx, ly] = pol(am, R + 14); const [vx, vy] = pol(am, Math.max(ro - 12, r0 + 10));
     const col = GROUP_COL[s.g];
     return `<g><path d="${wedge(a0, a1, r0, ro)}" fill="${col}" fill-opacity=".85"><title>${esc(s.r.metric_kr || s.k)} — 동포지션 백분위 ${s.p} · 시즌 ${esc(s.r.stat_value ?? '—')}${s.r.per90 != null ? ` · ${s.r.per90}/90` : ''}</title></path>
-      <path d="${wedge(a0, a1, r0, R)}" fill="none" stroke="rgba(255,255,255,.06)"/>
+      <path d="${wedge(a0, a1, r0, R)}" fill="none" stroke="var(--ink-06)"/>
       <text x="${vx}" y="${vy + 3.5}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--txt)">${s.p}</text>
       <text x="${lx}" y="${ly + 3.5}" text-anchor="${Math.cos(am) > .2 ? 'start' : Math.cos(am) < -.2 ? 'end' : 'middle'}" font-size="10" fill="var(--dim)">${esc(s.r.metric_kr || s.k)}</text></g>`; }).join('');
-  const rings = [25, 50, 75, 100].map(p => `<circle cx="${cx}" cy="${cy}" r="${r0 + (R - r0) * p / 100}" fill="none" stroke="rgba(255,255,255,.08)"/>`).join('');
+  const rings = [25, 50, 75, 100].map(p => `<circle cx="${cx}" cy="${cy}" r="${r0 + (R - r0) * p / 100}" fill="none" stroke="var(--ink-08)"/>`).join('');
   const groups = [...new Set(slices.map(s => s.g))];
   return `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="리그 동포지션 백분위 피자" style="display:block;margin:0 auto">${rings}${parts}
       <circle cx="${cx}" cy="${cy}" r="${r0 - 2}" fill="var(--panel)"/></svg>

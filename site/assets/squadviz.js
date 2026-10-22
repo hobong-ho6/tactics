@@ -13,12 +13,12 @@ export function pitchXI(rows, { W = 560, lo = 0.6, hi = 1 } = {}){
   const H = Math.round(W * 1.42), pad = 10;
   const X = px => pad + (W - pad * 2) * (px / 100), Y = py => H - pad - (H - pad * 2) * (py / 100);
   const line = (a) => `<path d="${a}" fill="none" stroke="var(--line)"/>`;
-  const pitch = `<rect x="${X(0)}" y="${Y(100)}" width="${X(100) - X(0)}" height="${Y(0) - Y(100)}" rx="6" fill="rgba(255,255,255,.015)" stroke="var(--line)"/>
+  const pitch = `<rect x="${X(0)}" y="${Y(100)}" width="${X(100) - X(0)}" height="${Y(0) - Y(100)}" rx="6" fill="var(--ink-02)" stroke="var(--line)"/>
     ${line(`M${X(0)},${Y(50)} H${X(100)}`)}<circle cx="${X(50)}" cy="${Y(50)}" r="${(X(100) - X(0)) * 0.13}" fill="none" stroke="var(--line)"/>
     ${line(`M${X(21)},${Y(0)} V${Y(17)} H${X(79)} V${Y(0)}`)}${line(`M${X(37)},${Y(0)} V${Y(6)} H${X(63)} V${Y(0)}`)}
     ${line(`M${X(21)},${Y(100)} V${Y(83)} H${X(79)} V${Y(100)}`)}${line(`M${X(37)},${Y(100)} V${Y(94)} H${X(63)} V${Y(100)}`)}`;
   const chips = rows.map(r => { const t = r.isGk ? null : (r.top?.sim == null ? null : (r.top.sim - lo) / (hi - lo));
-    const col = t == null ? 'rgba(255,255,255,.18)' : rampOf(t);
+    const col = t == null ? 'var(--ink-18)' : rampOf(t);
     const cw = Math.max(86, Math.min(124, (W - 40) / 4.6)), ch = 56;   // 2026-10-05 「너무 작다」 — 칩·글자 확대
     const cx = X(r.x) - cw / 2, cy = Y(r.y) - ch / 2;
     const name = r.top?.label ?? '공백';
@@ -55,13 +55,13 @@ export function depthStrip(rows, { W = 720, key = 'sim', lo = 0.6, hi = 1, label
     if (!vals.length) return `<g><text x="${L - 8}" y="${y + 4}" text-anchor="end" font-size="11" fill="var(--dim)">${esc(r.pos)}</text>
       <text x="${L + 6}" y="${y + 4}" font-size="11" fill="var(--dim)">실측 후보 없음 — 공백 슬롯</text></g>`;
     const top = r.cands.find(c => c[key] === Math.max(...vals));
-    const spread = `<line x1="${x(Math.min(...vals))}" x2="${x(Math.max(...vals))}" y1="${y}" y2="${y}" stroke="rgba(255,255,255,.14)" stroke-width="2"/>`;
+    const spread = `<line x1="${x(Math.min(...vals))}" x2="${x(Math.max(...vals))}" y1="${y}" y2="${y}" stroke="var(--ink-14)" stroke-width="2"/>`;
     const dots = r.cands.filter(c => c[key] != null).sort((a, b) => a[key] - b[key]).map(c => {
       const isTop = c === top, cx = x(c[key]);
       const tip = `${r.pos} · ${c.label}${c.shirt != null ? ` (${c.shirt}번)` : ''} · ${label} ${c[key].toFixed(key === 'sim' ? 3 : 2)}${c.roleName ? ` · ${c.roleName}/${c.focus}` : ''}${c.starter ? ' · 처방 선발' : ''}`;
       return `<g class="hit" data-tip="${esc(tip)}"><circle cx="${cx}" cy="${y}" r="9" fill="transparent"/>
         <circle cx="${cx}" cy="${y}" r="${isTop ? 6.5 : 5}" fill="${SURF}"/>
-        <circle cx="${cx}" cy="${y}" r="${isTop ? 5 : 3.5}" fill="${isTop ? US : 'rgba(255,255,255,.34)'}"/>
+        <circle cx="${cx}" cy="${y}" r="${isTop ? 5 : 3.5}" fill="${isTop ? US : 'var(--ink-34)'}"/>
         ${c.starter ? `<circle cx="${cx}" cy="${y}" r="8.5" fill="none" stroke="${US}" stroke-opacity=".55"/>` : ''}</g>`; }).join('');
     const gap = vals.length > 1 ? Math.max(...vals) - vals.slice().sort((a, b) => b - a)[1] : null;
     const tight = gap != null && gap <= tie;
@@ -76,7 +76,7 @@ export function depthStrip(rows, { W = 720, key = 'sim', lo = 0.6, hi = 1, label
       <text x="${W - 8}" y="${y + 4}" text-anchor="end" font-size="10" fill="${tight ? 'var(--warn)' : 'var(--dim)'}">${r.cands.length}명${gap != null ? ` · Δ${gap.toFixed(key === 'sim' ? 3 : 2)}${tight ? ' 경합' : ''}` : ''}</text></g>`; }).join('');
   return `<svg class="sv-depth" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="슬롯별 후보 ${label} 분포">
       <text x="${L - 8}" y="${T - 12}" text-anchor="end" font-size="10" fill="var(--dim)">${esc(label)}</text>${grid}${body}</svg>
-    <div class="lg"><span><i style="background:${US}"></i>슬롯 1순위</span><span><i style="background:rgba(255,255,255,.34)"></i>그 밖 후보</span>
+    <div class="lg"><span><i style="background:${US}"></i>슬롯 1순위</span><span><i style="background:var(--ink-34)"></i>그 밖 후보</span>
       <span class="dim">◎ = 게임 처방 선발 · Δ = 1~2순위 격차(${tie} 이하면 경합)</span></div>`;
 }
 

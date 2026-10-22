@@ -15,7 +15,7 @@
 /* 세로 배치 규칙은 style.css가 정본이다(2026-09-23) — 같은 규칙을 두 곳에 두지 않는다. */
 .evo-dumb{margin:8px 0 2px;max-width:none}
 .evo-dumb svg{display:block;max-width:100%;height:auto}
-.step{border:1px solid var(--line);border-radius:8px;padding:8px;min-width:150px;font-size:12px;background:rgba(255,255,255,.02)}
+.step{border:1px solid var(--line);border-radius:8px;padding:8px;min-width:150px;font-size:12px;background:var(--ink-02)}
 .step img{width:72px;display:block;margin-bottom:4px}
 .step.best{border-color:var(--ok)}
 .up{color:var(--ok)} .dn{color:var(--bad)}
@@ -24,7 +24,7 @@
 .plist button{background:none;border:1px solid var(--line);color:var(--txt);border-radius:8px;padding:3px 8px;cursor:pointer;font-size:12px}
 .plist button.t2{border-color:var(--ok);color:var(--ok)} .plist button.t1{border-color:var(--warn);color:var(--warn)}
 .form{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;align-items:end;margin:8px 0}
-.form label{font-size:12px;color:var(--dim)} .form input,.form select{width:100%;padding:6px 8px;background:var(--bg,#111);color:var(--txt);border:1px solid var(--line);border-radius:6px}
+.form label{font-size:12px;color:var(--dim)} .form input,.form select{width:100%;padding:6px 8px;background:var(--pill);color:var(--txt);border:1px solid var(--line);border-radius:6px}
 .form button,.act{background:var(--acc);color:#14100b;border:0;border-radius:8px;padding:7px 12px;font-weight:700;cursor:pointer}
 .act.ghost{background:none;color:var(--txt);border:1px solid var(--line);font-weight:400}
 .act.ghost.on{border-color:var(--acc);color:var(--acc)}
@@ -2314,7 +2314,7 @@ function cmpPanel(){
      직관적으로」). 종전엔 이긴 칸이 전부 초록이라 **어느 선수가 이겼는지**를 다시 머리글과 맞춰 봐야 했다.
      ⇒ 경기 분석과 같은 규약: 1번 열 --viz-us(주황) · 2번 열 --viz-them(파랑) · 3번째부터 보조색.
         머리글·이긴 칸·「누가 높나」의 이름이 **같은 색**이라 눈이 한 번에 잇는다. */
-  const COLC = ['var(--viz-us)', 'var(--viz-them)', '#b07cff', '#d4a800'];
+  const COLC = ['var(--viz-us)', 'var(--viz-them)', 'var(--series-3)', 'var(--series-4)'];
   const colc = i => COLC[i % COLC.length];
   const cmpCell = vals => {
     const ok = vals.map((v, i) => [v, i]).filter(([v]) => v != null);

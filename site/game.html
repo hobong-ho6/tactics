@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="assets/style.css">
 <link rel="stylesheet" href="assets/theme.css">
 <style>
-.cele-group{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--bg2,rgba(255,255,255,.02))}
+.cele-group{margin:10px 0;border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--ink-02)}
 .cele-group summary{cursor:pointer;color:var(--acc);user-select:none;list-style:none}
 .cele-group summary::-webkit-details-marker{display:none}
 .cele-group summary::before{content:'▸ ';display:inline-block}
@@ -203,7 +203,7 @@ function evidence(f){
 }
 function kgrid(k, diff){
   return `<div class="rs-k">${[...k].map((ch,i)=>{const v=ch==='X'?1:(+ch)/10;
-    return `<div class="${diff.has(i)?'d':''}" style="background:rgba(57,135,229,${(v===0?0.05:0.15+v*0.85).toFixed(2)});color:${v>0.5?'#fff':'var(--dim)'}">${v===0?'':ch}</div>`;}).join('')}</div>`;
+    return `<div class="${diff.has(i)?'d':''}" style="background:rgba(57,135,229,${(v===0?0.05:0.15+v*0.85).toFixed(2)});color:${v>0.5?'var(--viz-them-ink)':'var(--dim)'}">${v===0?'':ch}</div>`;}).join('')}</div>`;
 }
 function renderCards(){
   const g=(kd.role_groups??[]).find(x=>x.position_type===grp.value);

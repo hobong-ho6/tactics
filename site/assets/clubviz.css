@@ -31,8 +31,8 @@
 .fc-gcell{width:150px;cursor:pointer;position:relative;border-radius:8px;padding:3px;transition:background .12s}
 .fc-gcell .fc-card{width:100%}
 .fc-gcell .fc-card .fc-art img,.fc-gcell .fc-card .fc-art canvas{width:100%;height:auto}
-.fc-gcell:hover{background:rgba(255,255,255,.06)}
-.fc-gcell.sel{outline:2px solid var(--acc);background:rgba(255,255,255,.08)}
+.fc-gcell:hover{background:rgba(var(--ink-rgb),.06)}
+.fc-gcell.sel{outline:2px solid var(--acc);background:rgba(var(--ink-rgb),.08)}
 .fc-gcell .fc-gbadge{font-size:11.5px;line-height:1.35;text-align:center;margin-top:2px;color:var(--dim)}
 .fc-gcell.t-go .fc-gbadge{color:var(--ok)}
 .fc-gcell.t-wait .fc-gbadge{color:var(--warn)}
@@ -81,7 +81,7 @@
 .fc-card.picked .fc-artwrap{filter:drop-shadow(0 0 0 2px var(--viz-us)) drop-shadow(0 4px 10px rgba(0,0,0,.6))}
 .fc-card.picked::after{content:'✓';position:absolute;top:2px;left:2px;z-index:6;
   width:16px;height:16px;line-height:16px;text-align:center;border-radius:50%;
-  background:var(--viz-us);color:#0b0f14;font-size:11px;font-weight:800}
+  background:var(--viz-us);color:var(--on-color-ink);font-size:11px;font-weight:800}
 .fc-slot.picked{z-index:4}
 .fc-card.empty{opacity:.45;cursor:default}
 .fc-artwrap{position:relative;line-height:0}
@@ -108,11 +108,11 @@
 /* 포지션·역할 pill — 카드 바로 아래 한 줄(fut.gg와 같은 자리). */
 .fc-tag{display:inline-flex;gap:5px;align-items:center;justify-content:center;margin-top:-2px;
   background:rgba(4,10,7,.82);border:1px solid var(--line);border-radius:99px;padding:2px 8px;
-  font-size:10px;line-height:1.5;max-width:100%}
+  font-size:10px;line-height:1.5;max-width:100%;color:var(--on-pitch-txt)}
 /* ⛔ 줄이 넘치면 **포지션 목록**이 잘려야 한다 — OVR 배지(74▸79)가 잘리면 뜻을 잃는다
    (2026-09-24 실증: CDM/CM/RB 3포지션 카드에서 배지가 「74▸…」로 잘렸다). */
 .fc-tag b{font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.fc-tag span{color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fc-tag span{color:var(--on-pitch-dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fc-pips{display:inline-flex;gap:2px;flex:0 0 auto}
 .fc-pips i{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.22)}
 .fc-pips i.on{background:var(--ok)}
@@ -242,7 +242,7 @@
 .cmp-d.big{font-size:15.5px;padding:1px 8px}
 .cmp-card.sA b{color:var(--viz-us)} .cmp-card.sB b{color:var(--viz-them)}
 /* 에메리 기준 판정 */
-.cmp-verdict{border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:rgba(255,255,255,.02)}
+.cmp-verdict{border:1px solid var(--line);border-radius:9px;padding:10px 12px;background:rgba(var(--ink-rgb),.02)}
 .cmp-verdict.none{font-size:12px}
 .cmp-vrow + .cmp-vrow{margin-top:10px;padding-top:10px;border-top:1px dotted var(--line)}
 .cmp-vhead{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px}
@@ -279,7 +279,7 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .cmp-slot.empty{justify-content:center;border-style:dashed;opacity:.65}
 .cmp-slot.empty i{display:block;font-style:normal;font-size:10px;opacity:.8;margin-top:2px}
 .cmp-slot img,.cmp-slot canvas{width:44px;height:58px;object-fit:contain;flex:none}
-.cmp-slot-ph{width:44px;height:58px;flex:none;border-radius:5px;background:rgba(255,255,255,.06)}
+.cmp-slot-ph{width:44px;height:58px;flex:none;border-radius:5px;background:rgba(var(--ink-rgb),.06)}
 .cmp-slot-t{display:flex;flex-direction:column;gap:1px;font-size:11.5px;min-width:0}
 .cmp-slot-t b{font-size:13px}
 .cmp-slot.sA{border-color:var(--viz-us)} .cmp-slot.sA .cmp-slot-t>b{color:var(--viz-us)}
@@ -338,14 +338,14 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .sbc-slot{position:absolute;transform:translate(-50%,50%);width:86px;text-align:center}
 .sbc-slot img{display:block;width:100%;height:auto;border-radius:4px}
 .sbc-slot.off img{outline:2px solid var(--bad);outline-offset:1px;border-radius:4px}
-.sbc-slot i{display:block;font-style:normal;font-size:9.5px;color:var(--dim);letter-spacing:.4px;
+.sbc-slot i{display:block;font-style:normal;font-size:9.5px;color:var(--on-pitch-dim);letter-spacing:.4px;
   background:rgba(6,14,10,.85);border:1px solid var(--line);border-radius:99px;padding:0 5px;
   width:fit-content;margin:0 auto 2px}
 .sbc-slot.off i{border-color:var(--bad);color:var(--bad)}
 .sbc-slot .noart{display:block;background:rgba(6,14,10,.85);border:1px solid var(--line);
-  border-radius:6px;padding:4px 2px;font-size:10px;line-height:1.3}
+  border-radius:6px;padding:4px 2px;font-size:10px;line-height:1.3;color:var(--on-pitch-txt)}
 .sbc-slot .noart b{display:block;font-size:13px}
-.sbc-slot u{display:block;text-decoration:none;font-size:8.5px;color:var(--dim)}
+.sbc-slot u{display:block;text-decoration:none;font-size:8.5px;color:var(--on-pitch-dim)}
 /* 포메이션 모양만 보는 중 — **선수를 그리지 않는다**(판정 안 거친 배치를 답처럼 보여주지 않기 위해). */
 .sbc-slot.empty .noart{border-style:dashed;opacity:.55;padding:14px 2px}
 
@@ -359,7 +359,7 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
   padding:2px 3px;border-radius:3px;background:rgba(6,14,10,.88);border:1px solid var(--line);color:var(--warn)}
 .sbc-chem.c3{color:var(--ok)} .sbc-chem.c0{color:var(--bad);border-color:var(--bad)}
 .sbc-x{position:absolute;top:15px;right:1px;z-index:3;width:19px;height:19px;line-height:17px;
-  border-radius:99px;border:1px solid var(--line);background:rgba(6,14,10,.92);color:var(--dim);
+  border-radius:99px;border:1px solid var(--line);background:rgba(6,14,10,.92);color:var(--on-pitch-dim);
   font-size:11px;cursor:pointer;padding:0;opacity:.75;transition:opacity .12s,color .12s}
 .sbc-slot:hover .sbc-x{opacity:1}
 .sbc-x:hover{color:var(--bad);border-color:var(--bad);background:rgba(20,6,6,.95)}
@@ -376,7 +376,7 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .sbc-ck .ck-y{color:var(--dim)}
 .sbc-ck .ck-n b{color:var(--bad)}
 .sbc-ck .buy{display:inline-block;margin:2px 0 3px 18px;font-size:11px;color:var(--acc);
-  background:rgba(255,255,255,.04);border:1px dashed var(--line);border-radius:6px;padding:1px 6px}
+  background:rgba(var(--ink-rgb),.04);border:1px dashed var(--line);border-radius:6px;padding:1px 6px}
 
 /* SBC 세트 카드 — 목록을 훑을 수 있게(2026-09-25). 챌린지 상세는 그 안의 details가 접어 둔다. */
 /* ⛔ 종전 minmax(360px)는 넓은 화면에서 **4열**이 돼 카드가 좁았고, 그 안의 피치가 겹쳤다
@@ -419,7 +419,7 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .altcard{flex:0 0 auto;width:86px;text-align:center}
 .altcard img{display:block;width:100%;height:auto;border-radius:4px}
 .altcard .noart{display:block;background:rgba(6,14,10,.85);border:1px solid var(--line);
-  border-radius:6px;padding:10px 2px;font-size:10.5px;line-height:1.3}
+  border-radius:6px;padding:10px 2px;font-size:10.5px;line-height:1.3;color:var(--on-pitch-txt)}
 .altcard .noart b{display:block;font-size:13px}
 .altcard u{display:block;text-decoration:none;font-size:8.5px;color:var(--dim)}
 
@@ -437,11 +437,11 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 /* ── 갤러리 (2026-10-02 · evolutions.html 「갤러리」 탭) ── */
 .galnew{display:inline-block;margin-left:4px;padding:0 6px;border-radius:999px;background:var(--bad);color:#fff;
   font-size:10.5px;font-weight:700;line-height:17px;vertical-align:middle}
-.galcard{border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin:6px 0;background:rgba(255,255,255,.02)}
+.galcard{border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin:6px 0;background:rgba(var(--ink-rgb),.02)}
 .galcard.fresh{border-color:var(--bad);box-shadow:0 0 0 1px rgba(255,107,107,.25) inset}
 .galgrade{display:inline-block;min-width:22px;text-align:center;border-radius:5px;font-weight:800;padding:0 6px;
   border:1px solid var(--line)}
-.galgrade.gS{color:#ffd54d;border-color:#ffd54d}.galgrade.gA{color:var(--ok);border-color:var(--ok)}
-.galgrade.gB{color:#7fb6ff;border-color:#7fb6ff}.galgrade.gC{color:var(--txt)}.galgrade.gD{color:var(--dim)}
-.galpop{position:fixed;right:18px;bottom:18px;z-index:99998;max-width:340px;background:#141a24;border:1px solid var(--bad);
+.galgrade.gS{color:var(--warn);border-color:var(--warn)}.galgrade.gA{color:var(--ok);border-color:var(--ok)}
+.galgrade.gB{color:var(--viz-them);border-color:var(--viz-them)}.galgrade.gC{color:var(--txt)}.galgrade.gD{color:var(--dim)}
+.galpop{position:fixed;right:18px;bottom:18px;z-index:99998;max-width:340px;background:var(--panel-solid);border:1px solid var(--bad);
   border-radius:10px;padding:10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.45);font-size:13px}

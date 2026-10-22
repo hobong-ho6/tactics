@@ -1,6 +1,8 @@
 /* 데이터 로더 + 팀 상태. 모든 페이지가 공유한다.
    데이터는 site/data/*.json (scripts/export.py 산출물) — 손편집 금지. */
 
+import { onSchemeChange } from './tokens.js';
+
 const BASE = new URL('.', import.meta.url).href.replace(/assets\/$/, '');
 
 async function j(path){
@@ -107,6 +109,7 @@ const TEAM_NAV = [
 ];
 const GLOBAL_NAV = [['evolutions.html', '얼티밋팀'], ['game.html', '게임 시스템'], ['manual.html', '매뉴얼']];
 export async function mountHeader(active){
+  onSchemeChange();   // 라이트/다크 전환 시 새로 고침 — 캔버스(피치·열지도)는 다시 안 그려지므로(tokens.js)
   const idx = await loadIndex();
   const team = currentTeam();
   const isGlobal = GLOBAL_NAV.some(([h]) => h === active);

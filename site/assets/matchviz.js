@@ -457,7 +457,7 @@ export function playerRows(r, team, W = 900){
   const gx = m => L + ganttW * (m / end);
   const rx0 = L + ganttW + GAP, lo = 5.5, hi = 10;
   const rx = v => rx0 + (ratW - 44) * ((Math.min(hi, Math.max(lo, v)) - lo) / (hi - lo));
-  const col = v => v == null ? 'rgba(255,255,255,.25)' : v >= 7.5 ? 'var(--ok)' : v >= 6.5 ? 'var(--warn)' : 'var(--bad)';
+  const col = v => v == null ? 'var(--ink-25)' : v >= 7.5 ? 'var(--ok)' : v >= 6.5 ? 'var(--warn)' : 'var(--bad)';
   const ticks = [0, 15, 30, 45, 60, 75, 90].filter(t => t <= end).map(t =>
     `<line x1="${gx(t)}" x2="${gx(t)}" y1="${T - 8}" y2="${H - 8}" stroke="${GRID}"/><text x="${gx(t)}" y="${T - 12}" text-anchor="middle" font-size="10" fill="var(--dim)">${t}′</text>`).join('');
   const rticks = [6, 7, 8, 9].map(v =>

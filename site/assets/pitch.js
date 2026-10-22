@@ -2,10 +2,12 @@
    좌표 규약: 그리드 행0 = 공격 방향(위), 열0 = 좌측 터치라인.
    슬롯/선수 x,y는 툴좌표(0–100): x=좌우(0=좌), y=수직(작을수록 자기 골문 쪽 — v1 규약 유지). */
 
+import { cssVar } from './tokens.js';
+
 export function drawPitch(ctx, w, h){
-  ctx.fillStyle = '#0d1b12';
+  ctx.fillStyle = cssVar('--pitch-bg');
   ctx.fillRect(0, 0, w, h);
-  ctx.strokeStyle = 'rgba(255,255,255,.25)'; ctx.lineWidth = 1;
+  ctx.strokeStyle = cssVar('--pitch-line'); ctx.lineWidth = 1;
   ctx.strokeRect(w*.03, h*.02, w*.94, h*.96);
   ctx.beginPath(); ctx.moveTo(w*.03, h*.5); ctx.lineTo(w*.97, h*.5); ctx.stroke();
   ctx.beginPath(); ctx.arc(w*.5, h*.5, w*.12, 0, Math.PI*2); ctx.stroke();
@@ -47,15 +49,15 @@ export function drawComposite(ctx, w, h, decoded, intensity = 1){
 }
 
 /* 슬롯 칩 (선수명 라벨) — 툴좌표 x(0=좌), y(0=자기 골문) → 캔버스 (위=공격) */
-export function drawChip(ctx, w, h, x, y, label, color = '#ffd54d'){
+export function drawChip(ctx, w, h, x, y, label, color = cssVar('--warn')){
   const px = w*.03 + (x/100) * w*.94;
   const py = h*.02 + (1 - y/100) * h*.96;
   ctx.font = '12px sans-serif';
   const tw = ctx.measureText(label).width + 12;
-  ctx.fillStyle = 'rgba(0,0,0,.65)';
+  ctx.fillStyle = cssVar('--pitch-chip-bg');
   ctx.beginPath(); ctx.roundRect(px - tw/2, py - 10, tw, 20, 9); ctx.fill();
   ctx.strokeStyle = color; ctx.stroke();
-  ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = cssVar('--pitch-chip-txt'); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   ctx.fillText(label, px, py);
 }
 

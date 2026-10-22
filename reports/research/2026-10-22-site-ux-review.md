@@ -113,3 +113,37 @@
 - 표의 숫자 열 오른쪽 정렬은 CSS 훅(`.num`)만 — JS 렌더 표가 열에 클래스를 붙이지 않아 전역 자동 정렬은 안 했다(열 뜻을 모르면 오정렬이 더 나쁘다).
 - 이적 총평 원문의 `## …` 마크다운 머리글이 그대로 보이는 것은 DB 산문 문제(prose.js가 마크다운을 해석하지 않음) — 화면에서 고치지 않는다.
 - 이전 회차에서 남긴 `check_pages.py`의 시스템 python 재실행 분기(`scripts/` 범위 밖)는 그대로.
+
+### 라이트 스킴 (2026-10-22)
+
+`@media (prefers-color-scheme: light)`로 라이트 스킴을 붙였다(토글은 없고 OS 설정을 따른다 — 기존에 토글이 없었다). 구조는 다크와 같다: 글래스는 크롬(헤더·알약·선택 막대·툴팁)에만, 읽는 면은 96% 불투명, 산문 74ch·표 머리 고정·줄무늬는 그대로.
+
+**핵심 장치 — 잉크 틴트 토큰.** `style.css`·`clubviz.css`에 80여 곳 있던 `rgba(255,255,255,.x)`(어두운 바닥 전제의 흰 틴트)를 `rgba(var(--ink-rgb),.x)`로 바꿨다. `--ink-rgb`가 다크 `255,255,255` / 라이트 `16,24,40`으로만 바뀌면 줄무늬·카드·알약·선·코드 배경이 전부 따라온다(단일 정본 · 불변규칙 13 ②). SVG 문자열은 `fill="var(--ink-18)"`처럼 토큰을 직접 쓰고, 캔버스만 `site/assets/tokens.js`의 `cssVar()`로 읽는다.
+
+| 라이트 토큰 | 값 | 흰 패널(#fefeff) 위 대비 |
+|---|---|---|
+| `--txt` | #16202d | **16.3:1** |
+| `--dim` | #4b5a6e | 7.0:1 (카드 위 6.5:1) |
+| `--dim-2` | #5f6e84 | 5.1:1 |
+| `--link` | #a8460c | 5.9:1 |
+| `--acc` / `--acc-ink` | #bd4e16 / #fff | 4.7:1 · 악센트 위 흰 글자 4.7:1 |
+| `--ok` · `--warn` · `--bad` | #1b7f45 · #7a5a00 · #b93434 | 5.0 · 6.3 · 5.8:1 |
+| `--viz-us` · `--viz-them` | #bd4418 · #2c6fc4 | 5.2 · 5.0:1 (색상 유지 · 밝기만 내림 — dataviz 검증색의 라이트 대응) |
+| `--series-3` · `--series-4` | #7a46c9 · #8a6d00 | 5.9 · 4.9:1 |
+| 등번호 배지 `--kbd-txt/--kbd-bg` | #1d2a3d / #dfe6f2 | 11.5:1 |
+| 글래스 헤더 위 `--txt` · 툴팁 위 | — | 15.7 · 16.3:1 |
+| 피치 위 보조 글자 `--on-pitch-dim` | #aeb9ca on #0d1b12 | 9.0:1 (두 스킴 동일) |
+
+**토큰화한 것(파일:위치)**
+- `assets/pitch.js` `drawPitch`·`drawChip` — 피치 바닥·선·칩 배경/글자 → `--pitch-bg/--pitch-line/--pitch-chip-bg/--pitch-chip-txt`(두 스킴 동일 · 열지도 램프는 어두운 초록 위에서만 읽힌다 · 불변규칙 8 단일색 램프 유지).
+- `assets/squadviz.js`(슬롯 깊이 점·범위선·범례) · `assets/playerviz.js`(레이더 링) · `assets/histviz.js`(레인선·마커 글자 `--on-color-ink`) · `assets/evoviz.js`(소진·범위·덤벨) · `assets/matchviz.js`(평점 없음 색) · `game.html` 역할 그리드(`--viz-them-ink`) · `player.html` 진행 막대·레이더 격자 · `evolutions.html` 비교 시리즈 3·4(`--series-3/4`).
+- `style.css` 고정 어두운 면 7곳(툴팁 3종 → `--glass-strong` · 미니맵 바닥 → `--panel-solid` · 원문 pre → `--bg-2` · 등번호 배지 → `--kbd-*`) · `clubviz.css` 갤러리 팝업·등급색·카드 pill 글자(`--on-pitch-*`).
+- 투명도 줄이기 폴백이 다크 고정값(#121826)이었던 것을 `--panel-solid` 참조로 바꿔 두 스킴에서 동작.
+
+**장식으로 남긴 것(스킴 무관)**: fut 카드 아트·케미 스타일 토큰 그라디언트(`evolutions.html STYLE_TONE`)·EVO 배지(어두운 pill+초록)·PlayStyle 아이콘 바닥(#eef0f3 · 검은 선화)·피치 위 흰 선·별·핍(`fc-lines`·`fc-star`·`fc-pips`·`sbc-pitch`)·`evocard.js`(카드 그림에서 잉크색을 추출하는 코드).
+
+**재렌더 전략**: SVG는 `var()`라 스킴이 바뀌면 브라우저가 다시 칠한다. 캔버스(피치·열지도)는 다시 그려지지 않으므로 `tokens.js onSchemeChange()`가 **모든 페이지에서 새로 고침**한다(`data.js mountHeader`에서 등록 · URL 상태 `?event=`·`?id=`는 남고 셀렉트 선택은 초기화 — 스킴 전환은 드문 일이라 감수).
+
+**검증**: 라이트 데스크톱 1280 — 허브·스쿼드·히트맵·경기 분석(#62)·선수 비교·이적·리포트·선수(59)·게임 시스템·얼티밋팀·매뉴얼 11장 스크린샷(피치·열지도·5×5·덤벨·레이더 모두 판독) · 라이트 모바일 375 — 허브·경기 분석·선수·얼티밋팀 `scrollWidth 375/375` · 다크 회귀 — 스쿼드·얼티밋팀·선수 동일 · 콘솔은 알려진 `kernels/FC25.json` 404·미러 `ERR_CONNECTION_RESET`뿐 · `.venv/bin/python scripts/check_pages.py` 11페이지 ✅ · 게이트 G9 ✅ · G10 ✅ · G22 위반 0 ✅ · G38 위반 0 ✅.
+
+**남긴 것**: `--acc` 4.7:1은 AA 통과이나 AAA(7:1)는 아님 — 더 내리면 다크 악센트와 인상이 갈려 멈췄다 · 표 숫자 열 `.num` 훅은 종전과 같이 JS 렌더 표 미적용.
