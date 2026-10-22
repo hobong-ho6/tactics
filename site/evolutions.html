@@ -150,7 +150,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels, loadCurrentKernels } from './assets/data.js?v=20261004-nav';
 import { deadlineChart, sixDumbbell, mountTips as evoTips } from './assets/evoviz.js?v=20261014';
-import { evoRules, logState, inProgress, unlockCond, unlockCondKr, psGrant, psCapSim, psCapNote } from './assets/evorules.js?v=20261018';
+import { evoRules, logState, inProgress, unlockCond, unlockCondKr, psGrant, psPlusGrant, psCapSim, psCapNote } from './assets/evorules.js?v=20261022';
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
 import { statTip } from './assets/stat-tips.js?v=20261009';   // 속성 이름 툴팁(정본 표 하나 · 2026-10-06 GK 세부 속성 추가)
@@ -274,11 +274,15 @@ function stepsHTML(p, pid, opts = {}){
   const isGk = /GK/.test(String((steps[0] || {}).position || st?.positions || ''));
   if (!base) return fallbackSteps(p, pid);        // 보유 카드가 없으면 fut.gg 값으로 물러선다
   const at = { ...base };
-  const haveP = new Set(havePSOf(pid));     // ⭐ PS 개수 상한 반영(2026-10-13) — 종전엔 상한을 무시하고 「얻는 PlayStyle」에 적었다
+  const haveP = new Set(havePSOf(pid)), havePP = new Set(havePSPOf(pid));     // ⭐ PS 개수 상한 반영(2026-10-13) — 종전엔 상한을 무시하고 「얻는 PlayStyle」에 적었다
   const grant = src => src.filter(u => u.upgrade === 'play_style').map(u => {
     const nm = PS_NAME[String(u.value)]; if (!nm) return null;
     const g = psGrant(haveP, nm, u.maxValue ?? null);
-    return g === 'gain' ? nm : g === 'cap' ? `✕${nm}` : null; }).filter(Boolean);
+    return g === 'gain' ? nm : g === 'cap' ? `✕${nm}` : null; }).filter(Boolean)
+    .concat(src.filter(u => u.upgrade === 'play_style_plus').map(u => {
+      const nm = PS_NAME[String(u.value)]; if (!nm) return null;
+      const g = psPlusGrant(havePP, nm, u.maxValue ?? null);
+      return g === 'gain' ? `${nm}+` : g === 'cap' ? `✕${nm}+` : null; }).filter(Boolean));
   const rows = [{ label: '지금 내 카드', six: faceFromAttrs(at, EVO.face_stats || [], isGk), ovr: st.ovr, ps: [] }];
   let n = 0;
   for (const id of (p.ids || [])){
@@ -493,15 +497,16 @@ function evalLevel(opts, pres, have, attrOf){
         ⚠️ **판단값(MEDIUM)이다** — EA가 「속성이 높으면 PS를 더 쓴다」고 말한 적은 없다.
         패스 60인 수비수에게 Incisive Pass가 덜 쓰인다는 상식 수준의 근거뿐이라 **등급을 밝혀 제시**한다. */
   if (rec < 0){
-    const cutN = whys.map(w => w.ps.filter(n => PS_FC27_CUT[n]).length);
+    const bare = n => n.replace(/\+$/, '');
+    const cutN = whys.map(w => w.ps.filter(n => PS_FC27_CUT[bare(n)]).length);
     if (cutN.some(n => n > 0) && cutN.some(n => n === 0)){
       rec = cutN.findIndex(n => n === 0);
-      const bad = whys.map((w, k) => cutN[k] ? w.ps.filter(n => PS_FC27_CUT[n]) : []).flat();
+      const bad = whys.map((w, k) => cutN[k] ? w.ps.filter(n => PS_FC27_CUT[bare(n)]) : []).flat();
       reason = `반대쪽 <b>${esc(bad.join('·'))}</b>은 <b>FC27에서 EA가 효과를 깎았다</b>` +
-        ` <small>(${esc(PS_FC27_CUT[bad[0]] || '')} · EA 1차)</small> — 같은 한 칸이면 안 깎인 쪽이 낫다.`;
+        ` <small>(${esc(PS_FC27_CUT[bare(bad[0])] || '')} · EA 1차)</small> — 같은 한 칸이면 안 깎인 쪽이 낫다.`;
     } else if (attrOf){
       const use = whys.map(w => w.ps.reduce((t, n) =>
-        t + (PS_ATTRS[n] || []).reduce((u, a) => u + (attrOf[a] ?? 0), 0) / Math.max(1, (PS_ATTRS[n] || []).length), 0));
+        t + (PS_ATTRS[bare(n)] || []).reduce((u, a) => u + (attrOf[a] ?? 0), 0) / Math.max(1, (PS_ATTRS[bare(n)] || []).length), 0));
       const hi = use.indexOf(Math.max(...use));
       if (use.filter(v => v === use[hi]).length === 1 && Math.max(...use) - Math.min(...use) >= 3){
         rec = hi; recSoft = true;
@@ -549,8 +554,8 @@ function branchEval(opts, pres, have, opt = {}){
 function evalBasis(pid, pres){
   const st = pid != null ? STATE[String(pid)] : null;
   const bc = pid != null ? (CARDS[String(pid)] || []).find(x => x.is_base) : null;
-  const have = new Set(String((st || bc || {}).playstyles || '')
-    .split(',').map(x => x.trim().replace(/\+$/, '')).filter(Boolean));
+  const raw = String((st || bc || {}).playstyles || '').split(',').map(x => x.trim()).filter(Boolean);
+  const have = new Set([...raw.map(x => x.replace(/\+$/, '')), ...raw.filter(x => x.endsWith('+'))]);  // 「이름+」도 둔다 — PS+ 보상 dup 판정(2026-10-22)
   /* ⑸축(이 카드가 실제로 더 쓸 쪽)에 쓸 **지금 카드 29속성**. 보유가 없으면 기준 카드로 물러선다. */
   const attrOf = J((st || bc || {}).attrs, null) || null;
   return { pres: pres || null, have, attrOf };
@@ -1581,6 +1586,8 @@ const reqKr = l => REQ_KR[l] || l;
 const PS_NAME = EVO.ps_names || {};
 /* ⭐⭐ PS 개수 상한으로 **증발하는 보상**을 사람이 읽는 문장으로(판정 정본은 evorules.js psCapSim · 2026-10-13 잭슨 사고). */
 const havePSOf = pid => String(STATE[String(pid)]?.playstyles || '').split(',').map(x => x.trim().replace(/\+$/, '')).filter(Boolean);
+/* 보유 PS+만(「+」를 뗀 이름) — play_style_plus 보상 판정용(2026-10-22) */
+const havePSPOf = pid => String(STATE[String(pid)]?.playstyles || '').split(',').map(x => x.trim()).filter(x => x.endsWith('+')).map(x => x.slice(0, -1));
 function psLostText(c, pid){
   if (!STATE[String(pid)]) return '';
   const sim = psCapSim(c, havePSOf(pid), PS_NAME);
@@ -1602,6 +1609,7 @@ function psCapNoteHTML(c){
 function upLabel(u){
   const k = String(u.upgrade || '');
   if (k === 'play_style') return `PlayStyle ${PS_NAME[String(u.value)] || `#${u.value}`}${u.maxValue ? ` (^${u.maxValue})` : ''}`;
+  if (k === 'play_style_plus') return `PlayStyle+ ${PS_NAME[String(u.value)] || `#${u.value}`}${u.maxValue ? ` (^${u.maxValue})` : ''}`;
   if (k === 'overall') return `OVR +${u.value}${u.maxValue ? ` (^${u.maxValue})` : ''}`;
   /* ⚠️ 역할도 **숫자 id**로만 온다 — role_map으로 풀지 않으면 「Role+ #34」처럼 못 읽는다(2026-09-22). */
   if (k === 'role_plus' || k === 'role_plus_plus'){
@@ -1623,6 +1631,7 @@ function brLabel(src){
     const k = String(u.upgrade || '');
     if (k.startsWith('attribute_')) at.push(ATTR_KR[k.slice(10)] || k.slice(10));
     else if (k === 'play_style') etc.push(`PS ${PS_NAME[String(u.value)] || `#${u.value}`}`);
+    else if (k === 'play_style_plus') etc.push(`PS+ ${PS_NAME[String(u.value)] || `#${u.value}`}`);
     else if (k === 'overall') etc.push(`OVR +${u.value}`);
     else if (k === 'role_plus') etc.push('Role+');
     else if (k === 'role_plus_plus') etc.push('Role++');
@@ -1648,12 +1657,14 @@ function branchWhy(src, pres, have){
     if (!k || !w || !w[k]) continue;
     score += w[k] * (u.value || 0); hit.push(`${k}×${w[k]}`);
   }
-  const ps = src.filter(u => u.upgrade === 'play_style').map(u => PS_NAME[String(u.value)]).filter(Boolean);
+  /* PS+ 보상은 「이름+」로 담는다(2026-10-22) — have에는 보유 PS+가 「이름+」로도 들어 있어 이미 PS+일 때만 dup이다. */
+  const ps = src.filter(u => u.upgrade === 'play_style').map(u => PS_NAME[String(u.value)]).filter(Boolean)
+    .concat(src.filter(u => u.upgrade === 'play_style_plus').map(u => PS_NAME[String(u.value)]).filter(Boolean).map(n => `${n}+`));
   const dup = ps.filter(n => have.has(n));
   const fresh = ps.filter(n => !have.has(n));
   /* 그 PlayStyle이 처방 역할이 **●● 이상으로 보는 속성**을 건드리나 */
   const hotAttrs = w ? new Set(Object.entries(w).filter(([, v]) => v >= 2).map(([k]) => k)) : new Set();
-  const onRole = fresh.filter(n => (PS_ATTRS[n] || []).some(a => hotAttrs.has(a)));
+  const onRole = fresh.filter(n => (PS_ATTRS[n.replace(/\+$/, '')] || []).some(a => hotAttrs.has(a)));
   return { score, hit, ps, dup, fresh, onRole };
 }
 function optionsHTML(c, best){
@@ -1801,6 +1812,7 @@ function tryRun(pid, steps){
      역할도 보여줘서 비교할 수 있도록」) — 스탯만으로는 진화의 값어치를 못 견준다.
      ⚠️ 이미 갖고 있으면 **새로 얻는 게 아니다** — 기존 보유와 대조해 「이미 보유」로 갈라 적는다. */
   const havePS = new Set(String(st.playstyles || '').split(',').map(x => x.trim().replace(/\+$/, '')).filter(Boolean));
+  const havePP = new Set(havePSPOf(pid));
   const gain = { ps: [], psDup: [], psCap: [], role: [] };
   const addUp = u => {
     if (u.upgrade === 'play_style'){
@@ -1811,6 +1823,12 @@ function tryRun(pid, steps){
       if (g === 'dup') gain.psDup.push(nm);
       else if (g === 'cap') gain.psCap.push(`${nm} (^${u.maxValue})`);
       else gain.ps.push(nm);                // 같은 진화를 두 번 걸면 두 번째 PS는 「이미 보유」다(2026-10-06)
+    } else if (u.upgrade === 'play_style_plus'){
+      const nm = PS_NAME[String(u.value)] || `#${u.value}`;
+      const g = psPlusGrant(havePP, nm, u.maxValue ?? null);
+      if (g === 'dup') gain.psDup.push(`${nm}+`);
+      else if (g === 'cap') gain.psCap.push(`${nm}+ (^${u.maxValue})`);
+      else { gain.ps.push(`${nm}+`); cur.psp++; }   // 다음 진화의 「Max PS+」 판정에 잇는다
     } else if (u.upgrade === 'role_plus' || u.upgrade === 'role_plus_plus'){
       const kind = u.upgrade === 'role_plus' ? 'plus' : 'plusplus';
       const r = ROLEBYID[`${kind}:${u.value}`];

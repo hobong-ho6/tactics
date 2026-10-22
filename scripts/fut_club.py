@@ -203,7 +203,7 @@ def cmd_evolve(con, a):
             #    ⚠️ 기존 보유와 **합집합**으로 둔다 — 진화는 역할을 빼앗지 않는다.
             gain_rpp = [u["value"] for u in ups if u.get("upgrade") == "role_plus_plus"]
             gain_rp = [u["value"] for u in ups if u.get("upgrade") == "role_plus"]
-            gain_ps = [u["value"] for u in ups if u.get("upgrade") == "play_style"]
+            gain_ps = [u["value"] for u in ups if u.get("upgrade") in ("play_style", "play_style_plus")]
             # ⛔⛔ PlayStyle도 **이 단계 보상만** 얹는다(2026-09-28 실측 사고 — 바르가스 반복 배급 1단계).
             #    종전엔 `path_json`(fut.gg **완주** 카드)의 PlayStyle을 그대로 적어서, 1단계만 끝났는데
             #    2·3단계 보상(핑드 패스·퍼스트 터치)이 현재 카드에 붙었다. 스탯은 이미 단계별 계산이었다.
@@ -224,6 +224,19 @@ def cmd_evolve(con, a):
                     print(f"ℹ️ PlayStyle {ps_names[u['value']]}는 받지 못한다 — 보유 {len(ps_after)}개 ≥ 상한 {cap}")
                     continue
                 ps_after.append(ps_names[u["value"]])
+            # ⭐ PlayStyle+ 보상(2026-10-22) — 같은 칸에 「이름+」로 둔다(EA 싱크 표기와 같다). 기본 PS가 있으면 +로 올린다.
+            #    「(^N)」은 보유 **PS+** 개수 상한으로 읽는다 — PS 상한(#41)과 같은 꼴이라는 추정(D)이다. 인게임 확인 전.
+            for u in ups:
+                if u.get("upgrade") != "play_style_plus":
+                    continue
+                nm = ps_names[u["value"]]
+                if nm + "+" in ps_after:
+                    continue
+                cap = u.get("maxValue")
+                if cap and sum(x.endswith("+") for x in ps_after) >= int(cap):
+                    print(f"ℹ️ PlayStyle+ {nm}는 받지 못한다 — 보유 PS+ 개수 ≥ 상한 {cap}")
+                    continue
+                ps_after = [x for x in ps_after if x != nm] + [nm + "+"]
             face_rows = con.execute("SELECT abbr, attr, weight, is_gk FROM fc_face_stats").fetchall()
             # ⛔ GK는 GK 구성식(DIV·HAN…)으로 환산한다 — 빼먹으면 필드 6대가 들어간다(2026-09-27 스즈키 실측 사고).
             #    GK 여부는 현재 카드의 6대 모양(EA 실측)으로 가른다.

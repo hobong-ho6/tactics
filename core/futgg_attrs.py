@@ -86,6 +86,7 @@ EVO_ATTR_KR = {
 NON_ATTR_OK = {
     "overall",        # apply_upgrades가 콜백으로 돌려준다
     "play_style",     # fut_club_players.current_playstyles
+    "play_style_plus",  # 같은 칸에 「이름+」로 — fut_club.py evolve가 기록한다(2026-10-22 Glue or Genius·Clinical or Technical?에서 일반 카드로 번짐)
     "role_plus", "role_plus_plus",   # current_roles_plus(_plus)
     "skill_moves", "weak_foot",      # player_card_items 쪽 축 — 29속성에 없다
     "rarity_id",      # 카드 겉모습(희귀도) 변경 — 스탯 효과 없음(2026-10-10 Future Stars Academy I 4단계에서 처음 등장)

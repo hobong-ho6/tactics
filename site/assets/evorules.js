@@ -46,6 +46,14 @@ export function psGrant(have, name, cap){
   if (cap != null && have.size >= +cap) return 'cap';
   have.add(name); return 'gain';
 }
+/* ⭐ PlayStyle+ 보상(`play_style_plus` · 2026-10-22 일반 카드로 번짐 — Glue or Genius·Clinical or Technical?).
+   haveP = 보유 **PS+** 이름 집합(「+」를 뗀 이름). 「(^N)」은 보유 PS+ 개수 상한으로 읽는다 — PS 상한(#41)과 같은 꼴이라는 추정(D).
+   기본 PS를 이미 갖고 있어도 +로 오르는 것이므로 이득이다(dup은 PS+를 이미 가진 경우뿐). */
+export function psPlusGrant(haveP, name, cap){
+  if (haveP.has(name)) return 'dup';
+  if (cap != null && haveP.size >= +cap) return 'cap';
+  haveP.add(name); return 'gain';
+}
 const srcOf = o => Array.isArray(o) ? o : (o?.upgrades || []);
 /* 진화 c를 PS 집합 havePS에서 시작해 단계별로 밟는다. 갈림길은 **새로 받을 수 있는 가지**를 가정한다(없으면 첫 가지).
    반환: [{ level, branch, options:[{ ps:[이름], status:['gain'|'dup'|'cap'] }], taken }] — 'cap'이 곧 증발한 보상이다. */
