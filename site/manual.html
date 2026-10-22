@@ -4,13 +4,13 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css"></head><body>
 <div id="hdr"></div>
-<h1>실축 → FC26 구현 매뉴얼 <small class="dim">역할·포커스를 정하는 기준</small></h1>
+<h1>실축 → FC 구현 매뉴얼 <small class="dim">역할·포커스를 정하는 기준 — 현행 버전 FC27(FC26 데이터는 보존)</small></h1>
 <div class="panel"><h2>1. 실측 수집 — 선수의 진짜 발자국</h2>
 <p>SofaScore 히트맵(경기당 좌표 수십~수백 점)을 5×5 그리드로 압축한다. <b>히트포인트 15 미만 경기는 버리고</b>,
 같은 포지션 경기끼리만 묶는다(포지션-순수 — 섞으면 어느 역할과도 안 닮은 뭉개진 그리드가 된다).
 평점·xG·수비 스탯을 함께 수집해 <b>위치(그리드) + 산출(스탯) 2차원</b>으로 본다.</p></div>
 <div class="panel"><h2>2. 커널 — 게임 역할의 기대 히트맵</h2>
-<p>EA의 역할×포커스마다 게임이 기대하는 히트맵(<b>커널</b>)이 있다 — FC26은 역할 37 × 조합 85 × 위치 변형 217.
+<p>EA의 역할×포커스마다 게임이 기대하는 히트맵(<b>커널</b>)이 있다 — FC27(FC26 역할표 전항 일치로 승계 · 2026-10-22)은 역할 37 × 조합 85 × 위치 변형 217.
 선수가 설 슬롯의 x좌표(예: RM=85, LM=14)에 <b>질량중심이 가장 가까운 변형</b>을 그대로 쓴다(합성·시프트 금지 — EA 정본).
 슬롯은 자기 포지션군(WM/DM/CB…)의 역할만 후보로 삼는다.</p></div>
 <div class="panel"><h2>3. 적합(fit) — 실측과 커널의 코사인 유사도</h2>

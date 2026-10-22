@@ -14,7 +14,8 @@ JSON 형식:
    "tactics": {"tac_possession", "tac_defense", "tac_transition" (markdown 불릿), "strengths": [..], "weaknesses": [..],
                "opp_disruption", "impl_verdict": "유지|추가 관찰|시험 프리셋|정본 변경", "recheck_items": [..]},
    "changes": [{"seq", "minute", "minute_to", "title", "detail"}],          # 경기 중 변화 단계(분 축)
-   "prescriptions": [{"pos_label", "fit_delta", "alt_role"}]}                # 선발 처방의 1·2위 격차(무결정 Δ 막대)
+   "prescriptions": [{"pos_label", "fit_delta", "alt_role"}],               # 선발 처방의 1·2위 격차(무결정 Δ 막대)
+   "shapes": {"in": "3-2-5", "out": "4-4-2"}}                                  # 보유/비보유 실축 형태(migration 116 · 숫자 형태 어휘 · G37 AVL 필수)
   verdict ∈ match · partial · mismatch · undecided · pending.  metric ⊆ core.whoscored.PHASE_METRICS.
 
 ⛔ 추가만(불변규칙 2): 정정은 원래 행을 고치지 않는다 — 같은 seq의 **최신 행**을 supersedes_id로 가리키는
@@ -28,6 +29,7 @@ JSON 형식:
 import argparse
 import datetime as dt
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -103,6 +105,14 @@ def main():
             con.execute("""INSERT INTO match_tactical_changes(report_id,seq,minute,minute_to,title,detail,source,confidence)
                            VALUES(?,?,?,?,?,?,?,?)""",
                         (rid, c["seq"], c["minute"], c.get("minute_to"), c["title"], c.get("detail"), src, conf))
+        sh = d.get("shapes") or {}
+        if sh:
+            if set(sh) - {"in", "out"} or not all(re.fullmatch(r"\d(-\d){1,4}", str(sh.get(k, ""))) for k in ("in", "out")):
+                raise ValueError(f"shapes는 {{'in': '3-2-5', 'out': '4-4-2'}} 꼴(숫자 형태)이어야 한다: {sh}")
+            n = con.execute("UPDATE match_game_setups SET shape_in_possession=?, shape_out_possession=? WHERE report_id=?",
+                            (sh["in"], sh["out"], rid)).rowcount
+            if n != 1:
+                raise ValueError(f"match_game_setups #{rid} 행이 없다 — 경기 프리셋을 먼저 만들 것(shapes는 그 행에 붙는다)")
         for x in d.get("prescriptions", []):
             n = con.execute("""UPDATE match_player_prescriptions SET fit_delta=?, alt_role=?
                                WHERE report_id=? AND pos_label=? AND starter=1""",

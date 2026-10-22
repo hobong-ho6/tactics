@@ -39,6 +39,11 @@
 
 - 팀 설정(`team_tactic_setups`)은 **kind가 달라도 원칙적으로 동일**해야 한다
   (빌드업 Short Passing / 수비 Balanced 미드블록 / 라인 ~52). 근거가 있을 때만 kind별로 다르게.
+  - **[2026-10-22 정정]** 빌드업은 **Balanced**다(2026-10-15 사용자 결정 · `team_tactic_setups` #32 · obs#1081 10-20 재확인 · obs#1122).
+    실측(26/27 공식전 시즌 중앙값 점유 42%·롱볼 10.4%·PPDA 12.4 → `core.team_settings` Balanced/Balanced/48~58)이 Short Passing을
+    지지하지 않았고, 「숏 빌드업 고수」 재현은 팀 빌드업 스타일이 아니라 GK·CB 역할(볼 플레잉 키퍼 Build-Up · 볼 플레잉 CB)이 담당한다.
+    FC27 26/27 시즌 정본은 `team_tactic_setups kind='optimal'`(4-2-3-1 Wide · Balanced/Balanced/52 · 2026-10-22 신설)이다 —
+    위 문장의 Short Passing은 2026-07-31 설계 당시 값으로 남겨 둔다(지우지 않는다).
 - 기본 전술 1개 = `kind='optimal'`. 경기별 변형은 `kind='match:<태그>'`로 쌓되,
   이는 "다른 철학"이 아니라 **역할·선발 스왑 프리셋**이다 (예: 로저스 CAM 변형).
 - FC26에서는 기본 전술 + 변형 프리셋을 같은 팀 설정으로 저장해 경기 중 스위칭으로 재현한다.

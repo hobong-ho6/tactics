@@ -147,7 +147,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 </section>
 
 <script type="module">
-import { mountHeader, loadTeam, loadGameStats, loadKernels } from './assets/data.js?v=20261004-nav';
+import { mountHeader, loadTeam, loadGameStats, loadKernels, loadCurrentKernels } from './assets/data.js?v=20261004-nav';
 import { deadlineChart, sixDumbbell, mountTips as evoTips } from './assets/evoviz.js?v=20261014';
 import { evoRules, logState, inProgress, unlockCond, unlockCondKr, psGrant, psCapSim, psCapNote } from './assets/evorules.js?v=20261018';
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
@@ -163,7 +163,7 @@ const vizW = (el, cap, pad = 26) => Math.min(cap, Math.max(320, (el?.clientWidth
 
 const { idx } = await mountHeader('evolutions.html');
 const [EVO, CARDS, K26, K27, ...TEAMS] = await Promise.all([
-  loadGameStats('evolutions'), loadGameStats('cards'), loadKernels('FC26').catch(() => ({roles: []})),
+  loadGameStats('evolutions'), loadGameStats('cards'), loadCurrentKernels().catch(() => ({roles: []})),
   /* ⭐ 역할 가중만 FC27판을 쓴다(migration 079) — 역할 이름·포커스는 FC26이 정본이라 그대로 둔다. */
   loadKernels('FC27').catch(() => ({})),
   ...idx.regimes.map(r => loadTeam(r.team_code).then(t => [r.team_code, t]).catch(() => [r.team_code, null])),

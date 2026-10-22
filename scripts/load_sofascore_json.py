@@ -24,6 +24,7 @@ from core import DB                                   # noqa: E402
 from core.classify import lateral_for_formation, normalize_formation, pos_class  # noqa: E402
 from core.encode import encode                        # noqa: E402
 from core.sofascore import FLOATS, STAT_FIELDS        # noqa: E402
+from core.phase_minutes import phase_minutes, score_timeline  # noqa: E402  국면 분(2026-10-22)
 from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 NT_RE = re.compile(r"World Cup Qual|FIFA World Cup|Africa Cup|Nations League|International Friendly|Euro.*Qual|"
@@ -83,6 +84,14 @@ def main():
                 stats[name] = (float(raw) if raw else None) if name in FLOATS else (
                     (int(raw) if raw else None) if name == "minutes" else (int(raw) if raw else 0))
             cells = p[-1].replace(".", ",") if p[-1] else None
+            # ⭐ 스코어 국면 분 — 수집 JSON의 incidents로 여기서 채운다(2026-10-22 · core.phase_minutes 단일 정본).
+            #    빠뜨리면 G23이 막는다. 교체 투입 분은 minutes 역산(90−minutes)이다(incidents의 이름 매칭을 믿지 않는다).
+            if data.get("incidents"):
+                tl = score_timeline([(i.get("t"), "v" if i.get("side") == data.get("side") else "o")
+                                     for i in data["incidents"] if i.get("type") == "goal"])
+                ph = phase_minutes(tl, stats.get("minutes"), started)
+                if ph:
+                    stats.update(ph)
             rows.append(dict(player_id=pid, event_id=eid, team_code=a.team, date=date, competition=comp or None,
                              opponent=opp or None, venue=venue, started=started, hit_points=hp, lineup_pos=lpos or None,
                              avg_x=float(ax) if ax else None, avg_y=float(ay) if ay else None, cells=cells,

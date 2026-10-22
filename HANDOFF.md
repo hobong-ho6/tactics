@@ -2,14 +2,15 @@
 
 <!-- 구조 규칙(2026-10-14 v2): 헤더 15줄 안에 착수 조건 · 현재 상태 표 10행 이내 · 다음 할 일은 열린 항목만(항목당 2줄) · 세션 기록 최대 5개 · 목표 10~15KB · 상한 20KB(`wc -c`). 넘치면 지우지 말고 docs/handoff-context.md · docs/decisions.md로 포인터 압축. 절차 정본: .claude/skills/handoff/SKILL.md -->
 
-- **담당자** 김호근 · **갱신** 2026-10-20 · **세션** 부모 세션(대화) — 진화 수집 병렬 · 숨김 · 경기 분석 개편 · 영상 파이프라인 · 하위 세션 커밋 규칙 · **작업 PC** `AD03230205ui-iMac.local` · **브랜치** main · **WIP** 없음
-- **마지막 커밋** = `git log -1`(이 문서를 갱신한 커밋) · 직전 `5c71776` · **문서 버전** v2 · **분량** 13KB(목표 10~15 · 상한 20)
+- **담당자** 김호근 · **갱신** 2026-10-22 · **세션** 부모 세션(대화) + 서브에이전트 7 — 바이킹전 D+1 보강 · FC27 구현 검토·정본 행·선발 재지정 · 국면 분 백필·카드 재수집 · 웹 UX · **작업 PC** `AL02359162.local`(⚠️ iMac이 아님 — 예약은 PC별) · **브랜치** main · **WIP** 없음
+- **마지막 커밋** = `git log -1`(이 문서를 갱신한 커밋) · 직전 `a517b8e` · **문서 버전** v2 · **분량** 15KB(목표 10~15 · 상한 20)
 - 실축 감독 전술(**AVL/에메리(주) · CHE/알론소 · LIV/이라올라 · ATM/시메오네**)을 실측으로 분해해 FC26·FC27 전술로 재현. 규약 정본 `CLAUDE.md` · `docs/00-overview.md`.
 
 > ⛔ **먼저 알 것**
 > 1. **명시 스테이징만**(`git add -A` 금지 · `.claude/settings.json` PAT) · DB 변경은 `python3 scripts/ship.py -m "…"` 한 줄 · ⭐ **하위 세션은 커밋하지 않는다 — 부모가 `ship.py --collect <세션 id>`로 등록하고 모아서 ship**(CLAUDE.md 불변규칙 5 · 10-20) · migration 번호는 부모가 배정
 > 2. git엔 `.db`가 없다 — pull 뒤 **`scripts/db_restore.sh`** · **반복 사고 규칙 정본은 [docs/70-lessons.md](docs/70-lessons.md)** · ⭐ **CHE·LIV·ATM 수집·업데이트 잠정 보류 — AVL만**(10-20 사용자 · 메모리 `che-atm-liv-collection-hold`)
-> 3. 예약 정본은 `list_scheduled_tasks` · **이 iMac 전용** → 회차마다 실재 확인(10-20 뉴캐슬 D+3 예약은 「있다」고 적혀 있었지만 미등록이었다) · 스케줄 세션이 같은 작업 트리를 쓴다 → 끝날 때까지 커밋 보류
+> 3. 예약 정본은 `list_scheduled_tasks` · **PC마다 따로** → 회차마다 실재 확인(10-20 뉴캐슬 D+3 · 10-22 바이킹 D+2·D+3이 리포트엔 「있다」였지만 이 PC엔 없었다 → `AL02359162`에 재생성 · ⚠️ iMac에도 있으면 **중복 실행**) · 스케줄 세션이 같은 작업 트리를 쓴다 → 끝날 때까지 커밋 보류
+> 4. yt-dlp는 이 PC에서 봇 차단 → **브라우저 pot 경로 + fetch/XHR 훅**(`window.fetch`를 감싸 `/api/timedtext` URL을 잡는다 · 뮤트 · `yt_transcript_json3.py`) · 영어권 알리송 표기는 **Alysson**(obs#1116)
 
 ---
 
@@ -17,15 +18,15 @@
 
 | 영역 | 상태 | 정본 |
 |---|---|---|
-| 게이트 | **전항 통과(10-20)** · 신설 G37(경기 분석 정형 축 · AVL 10-14 이후) · G38(밑줄+툴팁 단일 경로) · G17 확장(id>342 새 전사 요약 누락 · 한국어 칸 · 40자 초과 헤드라인) | `gates.py` |
+| 게이트 | **전항 통과(10-22)** · 10-22 확장: G8+(opt 선발 ≠ 정본·장기 부상 · AVL) · G1/G3/G5 현행 버전 루프 · G22 비현행 `loadKernels` 리터럴 금지 · G37 ⑸ 보유/비보유 형태(migration 116) · G21 출시 후 카드 스냅샷 · G23 국면 분 결손(`core/phase_minutes.py`) — 문구는 docs/00 | `gates.py` |
 | 수집 범위 | **AVL만** — CHE·LIV·ATM 잠정 보류(예약 `match-watch-weekly` AVL만 · G37 AVL만) · 10-19 주간 회차 5경기(#57~#61) 리포트는 draft로 보존 | 메모리 · 예약 프롬프트 |
 | 경기 분석 화면 | 요약·경기 흐름 3묶음·관전 메모 가설 판정(D+N 정정=새 행)·부상(한국어·KST)·포지션별 스탯 카드·전술 분석 4칸·상단 목차 · migration 109·111·112·113 | `match-report.html` · `load_match_extras.py` |
 | 영상 | 전사하면 같은 회차에 **전 편 요약**(G17) · 월요일 **채널 스윕**(UTV·Villans·1874 분석 영상) · 자막 포착은 **항상 뮤트** · 분류 정본 `resolve_kind` · 뉴캐슬전 40/40 요약 · UTV 분석 6편 | `index_transcripts.py` · 예약 프롬프트 |
-| 경기 수집 | AVL 뉴캐슬 #56 **draft · D+3 미실시**(사용자 결정 · 예약 미등록이었음) · 페네르바흐체 #55 complete | `reports/match-watch/2026-10-17-avl-newcastle.md` |
+| 경기 수집 | AVL 바이킹 #62 **draft · D+1 보강 완료**(전사 6편 뮤트 · 자막 없음 4편 · 다국어 pt/es/스코 0건 · VAR 2행 해석 obs#1114 · 가설 D1 정정 4행 · 감독 직함 Jensen↔Aarsheim 미확정) · **D+2 10-23 20:00 · D+3 10-24 20:00 예약(이 PC)** · 뉴캐슬 #56 complete(D+3 미실시) | `reports/match-watch/2026-10-21-avl-viking.md` · `-d1-sources.md` |
 | FUT 구단 | 10-20 싱크 217장 · 진화 수집 병렬(WORKERS=6) · Excluded Rarity 실판정 · 진화·SBC 세트 **숨김** · 카드 포지션 이력(110 · 맥긴·퀜다·소보슬라이) · 케미 신호 증분(클럽 싱크 22분→5분) · **진행 중 헤밍스 Zoomaestro lv1(10-20)** · SBC 101 완료 기록(카드 미반영) | `fut_*` · club-sync 런북 |
-| 전술 판단 | 카마라 RDM `dm_holding/Defend` → **`dm_dlp/Build-Up` 후보 · 인게임 테스트 중**(obs#1080) · 스즈키 롱볼 증가 → 팀 설정 **유지**(obs#1081 · Balanced/Balanced/52) | `observations` |
+| 전술 판단 | **FC27 시즌 정본 `optimal` #46 신설**(Balanced/Balanced/52 · 코드 7ZTFKBu$37p7) · opt:* 선발 11칸 정본 역할로 재지정(obs#1120 · 옛 GK/ST 행 `-deprecated`) · 사용자 판단 대기 5건(RDM obs#1080 · ST 포커스 3층 · LM 포커스/역할 · LB 저점유 운용 · FC27 `optimal:lead`) — 정본 [리서치](reports/research/2026-10-22-fc27-avl-implementation-review.md) §1.6 ㉡ | `team_tactic_setups` · `observations` |
 | 이적 감시 | 10-17 21시 임시 클론 `3e2790b`는 **/tmp 소실·미푸시** — 원 작업트리 리포트 10-14~17 4건은 10-20 커밋에 실음 · CHE·LIV 이적 판단은 보류 | `reports/transfer-watch/` |
-| 열린 결손 | 링크 결손 3건 · `ref_map25` 동률 비결정 · ATM regime 4 CAM 슬롯 없음 · 다른 경기 미분류 영상 62편(대부분 보류 팀) | `gaps.py links` |
+| 열린 결손 | FC27 카드 4명 fut.gg 404(잭슨·음바예·하우드-벨리스·고레츠카 · 09-10 행 유지) · #62 `gk_long_share` 미적재(WS JSON 미보존 → 런북 §2-2a 저장 규칙 추가) · 링크 결손 3건 · `ref_map25` 동률 · ATM regime 4 CAM 슬롯 없음 · 미분류 영상 62편(보류 팀) | `gaps.py links` · 리서치 §2.2 |
 
 ## 진행 중 작업 (WIP)
 
@@ -36,6 +37,9 @@
 번호는 v1 체계 그대로(근거·경위 원문은 [handoff-context 「다음 할 일」](docs/handoff-context.md#다음-할-일)).
 
 **P1**
+- [ ] **⭐ FC27 구현 검토 사용자 판단 5건**(리서치 §1.6 ㉡ · 전부 `slot_canon_roles`/프리셋 사안이라 새 행으로만) — ⑴ RDM 홀딩→DLP/Build-Up(아래 카마라 항목과 동일) ⑵ ST 포커스 Support↔인게임 Attack↔opt false9 세 층 통일 ⑶ LM Balanced↔Attack · IF↔윙어(쟁점 #7) ⑷ LB 저점유 프리셋을 경기마다 바꾸는지 ⑸ FC27 `optimal:lead` 신설 여부
+- [ ] **데이터 결손 P2 migration 3건**(리서치 §2.3 7·9·10 — 번호는 부모 배정 · 다음 117~) — `match_set_pieces`(코너 키커·타깃 · WS qualifier 추출) · `fut_tactics.setup_kind`(pulled 코드↔프리셋 연결) · G37에 `gk_long_share` 필수 + `segment_metrics` GK 롱패스 비율 계산
+- [ ] **바이킹전 D+2·D+3**(예약) — 전술 블로그·The Villans 후속·Sky 「best minutes」 원문·avfc.co.uk 인터뷰·Sports Mole 3백 표기·감독 직함·맨시티전(10-24 12:30 BST) 명단으로 고메스 RB·밍스 잔류 재확인 → D+3에 complete 판정
 - [ ] **카마라 RDM Build-Up 인게임 테스트 결과 받기**(obs#1080) — 결과·다음 2경기 실측으로 정본 변경 여부(새 행) 결정
 - [ ] **헤밍스 Zoomaestro(2602) 단계 완료 기록** — lv1 시작 10-20(사용자는 부엔디아 추천 대신 헤밍스) · 단계마다 `complete` · 완주 OVR 65→72 · 다음 싱크 EA 실측 대조
 - [ ] **SBC 101 카드 반영 확인** — 10-20 「기록만」 완료(낸 11장 모름) · 다음 클럽 싱크가 소모 카드를 잡는지 · 그 전 다른 SBC 제출 시 카드 겹침 주의
@@ -71,6 +75,7 @@
 
 ## 주요 결정 (전문 [docs/decisions.md](docs/decisions.md))
 
+- 10-22 FC27 시즌 정본 = `team_tactic_setups kind='optimal'`(#46 · Balanced/Balanced/52) · opt 선발은 정본 역할·가용 인원으로(G8+가 막는다) · 예약은 PC별로 실재 확인 · 영상 전사는 항상 뮤트
 - 10-20 하위 세션 커밋 금지 · 부모가 모아서 ship(`ship.py --collect`) · CHE·LIV·ATM 잠정 보류 · 뉴캐슬전 D+3 미실시 · 스즈키 롱볼 → 설정 유지(obs#1081)
 - 10-20 영상: 전사 즉시 전 편 요약(G17) · 월요일 채널 스윕 · 항상 뮤트 · 40자 초과 구현 주장 = 헤드라인+요점(migration 113)
 - 10-20 진화 조건 판정은 fut.gg 유지(내부 계산 기각 — 낡은 포지션·신규 카탈로그 결손으로 조용한 누락) · 조회만 병렬화
@@ -83,12 +88,12 @@
 
 ## 최근 세션 기록
 
+- **10-22 · 부모 세션(대화) + 서브에이전트 7**(이 커밋) — 바이킹전 #62 D+1 보강(뮤트 전사 6편 · 요약·구현 주장 31행 · 다국어 재검색 원 기록 · VAR 해석 · 가설 D1 정정 4 · obs#1114~1119 · D+2/D+3 예약 재생성) · FC27 구현 검토 리서치 + 반영(optimal #46 · opt 선발 재지정 · obs#1120~1122 · reproduction_limits #29~30 · migration 116 형태 2칸 · 게이트 6종 확장 · 화면 `loadCurrentKernels()` · docs/10 정정) · 국면 분 백필 541행(`core/phase_minutes.py` 단일 정본 · 수집 hook) · FC27 카드 출시 후 스냅샷 24행(역할 숙련 24) · 웹 UX(모바일 뷰포트 375 전 페이지 · 제목 위계 · report.html 현재 설정 optimal 우선 · FC26 문구 정정 · [리뷰](reports/research/2026-10-22-site-ux-review.md))
 - **10-20 · 부모 세션(대화) + 하위 4**(`56f7a63`~`5c71776` 17커밋) — 진화 수집 병렬(조건 판정 12→2초) · Excluded Rarity · 사이트 이름 「택틱스 랩」·로고 · 진화/SBC 숨김 · 카드 포지션 이력 · 케미 신호 증분(클럽 싱크 22분→5분) · 경기 분석 개편(가설 판정·흐름·부상 KST·포지션 스탯·전술 4칸·목차·범례) · 영상(오분류 수정·지시 한국어화·헤드라인·UTV 6편·뉴캐슬 35편 요약·채널 스윕·뮤트) · 카마라 Build-Up 후보 · 하위 세션 커밋 규칙 · 헤밍스 Zoomaestro 시작 · SBC 101 완료 기록
 - **10-19 23시 · 주간 match-watch(스케줄)** — CHE 1·LIV 2·ATM 2 수집 · 리포트 #57~#61 draft · DB는 이후 커밋 덤프에 실렸고 리포트·전사 본문은 10-20 커밋에 실음 · D+3 예약 3건은 보류로 미등록
 - **10-19 · 클럽 싱크 [선수+진화+sbc] + 진화 수집 빌라 한정**(`58cca1b`) — 보유 216 · Zoomaestro 비교(부엔디아 추천) · G34 우회 커밋
 - **10-17 21시 · 3팀 이적 감시**(임시 클론 `3e2790b` · 미푸시 · /tmp 소실) — Endrick `DEAD` · Scott `MEDIUM-HIGH`
-- **10-17 · AVL 페네르바흐체 D+3 종결**(`28da5f6`) — #55 complete · obs#1046~1047
-- 아카이브: 10-17 클럽 싱크 2회(`b56a224`·`7c128e8`) · 10-17 09시 이적 감시 · 10-14 이전 → [handoff-context](docs/handoff-context.md#최근-작업) · `git log`
+- 아카이브: 10-17 페네르바흐체 D+3 종결(`28da5f6` · #55 complete) · 10-17 클럽 싱크 2회(`b56a224`·`7c128e8`) · 10-17 09시 이적 감시 · 10-14 이전 → [handoff-context](docs/handoff-context.md#최근-작업) · `git log`
 
 ## 문서 맵
 

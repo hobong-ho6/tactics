@@ -41,6 +41,43 @@ RELEASED = {"25": "2024-09-27", "26": "2025-09-26", "27": "2026-09-25"}
 #    한 곳만 키가 틀려 「프리킥 정확도」가 100% 누락된 사고가 있었다).
 from core.futgg_attrs import ATTR_KR as ATTR_MAP  # noqa: E402
 from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
+# ⭐ fut.gg 역할 숙련 id(rolesPlus/rolesPlusPlus · fc_role_familiarity_map) → 우리 role_id (2026-10-22 신설 · 단일 정본 —
+#    fill_futgg_fc27_detail.py도 이것을 import한다). FC26 행 규약과 같은 JSON {role_id: 1(+)|2(++)} — 좌우 칸(LB/RB·LM/RM·LW/RW)은
+#    같은 role_id로 합치고 높은 쪽을 남긴다. 이름이 표에 없으면 적재하지 않고 보고한다(발명 금지).
+ROLE_NAME_TO_ID = {
+    ("GK", "Goalkeeper"): "gk_goalkeeper", ("GK", "Sweeper Keeper"): "gk_sweeper", ("GK", "Ball Playing Keeper"): "gk_ballplaying",
+    ("FB", "Fullback"): "fb_fullback", ("FB", "Falseback"): "fb_falseback", ("FB", "Wingback"): "fb_wingback",
+    ("FB", "Attacking Wingback"): "fb_att_wb", ("FB", "Inverted Wingback"): "fb_inverted",
+    ("CB", "Defender"): "cb_defender", ("CB", "Stopper"): "cb_stopper", ("CB", "Ball-Playing Defender"): "cb_bpd", ("CB", "Wide Back"): "cb_wideback",
+    ("CDM", "Holding"): "dm_holding", ("CDM", "Centre-Half"): "dm_centrehalf", ("CDM", "Deep-Lying Playmaker"): "dm_dlp",
+    ("CDM", "Wide Half"): "dm_widehalf", ("CDM", "Box Crasher"): "dm_boxcrasher",
+    ("CM", "Box-To-Box"): "cm_b2b", ("CM", "Holding"): "cm_holding", ("CM", "Deep-Lying Playmaker"): "cm_dlp",
+    ("CM", "Playmaker"): "cm_playmaker", ("CM", "Half-Winger"): "cm_halfwinger",
+    ("WM", "Winger"): "wm_winger", ("WM", "Wide Midfielder"): "wm_widemid", ("WM", "Wide Playmaker"): "wm_wideplm", ("WM", "Inside Forward"): "wm_insidefwd",
+    ("CAM", "Playmaker"): "cam_playmaker", ("CAM", "Shadow Striker"): "cam_shadow", ("CAM", "Half-Winger"): "cam_halfwinger", ("CAM", "Classic 10"): "cam_classic10",
+    ("W", "Winger"): "w_winger", ("W", "Inside Forward"): "w_insidefwd", ("W", "Wide Playmaker"): "w_wideplm",
+    ("ST", "Advanced Forward"): "st_advanced", ("ST", "Poacher"): "st_poacher", ("ST", "False 9"): "st_false9", ("ST", "Target Forward"): "st_target",
+}
+ROLE_POS_GROUP = {"GK": "GK", "RB": "FB", "LB": "FB", "CB": "CB", "CDM": "CDM", "CM": "CM", "RM": "WM", "LM": "WM",
+                  "CAM": "CAM", "RW": "W", "LW": "W", "ST": "ST"}
+
+
+def role_familiarity_json(con, game_version, plus_ids, plusplus_ids):
+    """(json 문자열 또는 None, 미해결 id 목록). fc_role_familiarity_map(ea_id→이름·포지션)을 거쳐 role_id로 옮긴다."""
+    rows = dict((r[0], (r[1], r[2])) for r in con.execute(
+        "SELECT ea_id, name, position_name FROM fc_role_familiarity_map WHERE game_version=?", (game_version,)))
+    out, bad = {}, []
+    for ids, lvl in ((plus_ids or [], 1), (plusplus_ids or [], 2)):
+        for i in ids:
+            nm_pos = rows.get(i)
+            rid = ROLE_NAME_TO_ID.get((ROLE_POS_GROUP.get(nm_pos[1], ""), nm_pos[0])) if nm_pos else None
+            if not rid:
+                bad.append(i)
+                continue
+            out[rid] = max(out.get(rid, 0), lvl)
+    return (json.dumps(out, ensure_ascii=False) if out else None), bad
+
+
 GK_ATTRS = {"가속", "질주 속도", "반응력", "다이빙", "핸들링", "킥", "포지셔닝", "반사신경"}   # 기존 GK 행의 attrs 키 집합
 OUTFIELD_DROP = {"다이빙", "핸들링", "킥", "포지셔닝", "반사신경"}                            # 기존 필드 행은 GK 5속성 미포함
 # positionId → 표기. v2 목록에서 관측된 값(2026-09-12)으로 고정하고, 미지의 id는 그대로 문자열로 남긴다.
@@ -83,6 +120,9 @@ def main():
     ap.add_argument("--team", nargs="*", default=[], help="regime team_code로 squad_entries 대상 한정")
     ap.add_argument("--ea", nargs="*", default=[], help="player_id=eaId 수동 지정(예: 198=243630)")
     ap.add_argument("--pulled", default=dt.date.today().isoformat())
+    ap.add_argument("--roster-date", default=None,
+                    help="roster_date 고정(기본 아이템 createdAt). ⭐ 출시 후 라이브판 재수집은 수집일을 준다 — createdAt(공개일)으로 두면 "
+                         "기존 행과 키가 겹쳐 건너뛰고(2026-10-22 실증: 빌라 전원 08-18/09-10 공개일) 출시 후 변화(키·몸무게·PlayStyle 개명·역할 숙련)가 안 실린다")
     ap.add_argument("--dry-run", action="store_true")
     a = ap.parse_args()
 
@@ -161,7 +201,7 @@ def main():
             if d.get("gender") != 1 or not (norm(p["name"]) & norm(d.get("commonName", "") + " " + d.get("firstName", "") + " " + d.get("lastName", ""))):
                 mismatch.append((kr, gv, ea, d.get("commonName"), d.get("gender")))
                 continue
-            roster = (d.get("createdAt") or "")[:10] or RELEASED.get(g)
+            roster = a.roster_date or (d.get("createdAt") or "")[:10] or RELEASED.get(g)
             if cur.execute("SELECT 1 FROM player_game_stats WHERE game_version=? AND player_id=? AND roster_date=?",
                            (gv, pid, roster)).fetchone():
                 skip += 1
@@ -183,6 +223,9 @@ def main():
             if d.get("dateOfBirth"):
                 b = dt.date.fromisoformat(d["dateOfBirth"]); r = dt.date.fromisoformat(roster)
                 age = r.year - b.year - ((r.month, r.day) < (b.month, b.day))
+            rf, rf_bad = role_familiarity_json(con, gv, d.get("rolesPlus"), d.get("rolesPlusPlus"))
+            if rf_bad:
+                print(f"  ⚠️ {kr}[{gv}] 역할 숙련 id 미해결 {rf_bad} — fc_role_familiarity_map/ROLE_NAME_TO_ID 확인(적재 안 함)")
             # 카드 이미지·클럽명은 v2 목록에서
             lst = get(f"{API}/players/v2/{g}/?ea_ids={ea}")
             base = next((x for x in (lst or {}).get("data", []) if x.get("eaId") == ea), {}) if lst else {}
@@ -195,22 +238,24 @@ def main():
                 pac=six[0], sho=six[1], pas=six[2], dri=six[3], def_=six[4], phy=six[5],
                 attrs=json.dumps(attrs, ensure_ascii=False), playstyles=", ".join(ps) or None,
                 accelerate=accelerate_label(d.get("accelerateType")), preferred_foot=FOOT.get(d.get("foot")),
-                card_image_url=card, nationality=None,
-                source=f"fut.gg /api/fut/player-item-definitions/{g}/{ea}/ (base 아이템, createdAt {d.get('createdAt','')[:10]}, "
-                       f"{a.pulled} 수집, collect_futgg_history.py) · 카드/클럽 /api/fut/players/v2/{g}/?ea_ids={ea}",
+                card_image_url=card, nationality=None, role_familiarity=rf,
+                source=(f"fut.gg /api/fut/player-item-definitions/{g}/{ea}/ (base 아이템, createdAt {d.get('createdAt','')[:10]}, "
+                        + (f"roster_date={roster} 고정(출시 후 라이브판 스냅샷), " if a.roster_date else "")
+                        + f"{a.pulled} 수집, collect_futgg_history.py) · 카드/클럽 /api/fut/players/v2/{g}/?ea_ids={ea}"),
                 confidence=(f"MEDIUM-HIGH — ⭐ fut.gg base 아이템은 **{gv} 출시판 값**이다(라이브 갱신 미반영; 실증 왓킨스 FC26 base 84 = fut.gg Δ 기준 "
                             f"출시판 ↔ sofifa 시즌말 82). roster_date는 아이템 createdAt(EA 공개일). club은 {gv} DB 기준 소속. "
-                            f"GK 6종합은 DIV/HAN/KIC/REF/SPD/POS 순으로 pac~phy에 적재(기존 행 규약). pot·가치·traits·역할숙련은 이 API에 없어 NULL(결손)."),
+                            f"GK 6종합은 DIV/HAN/KIC/REF/SPD/POS 순으로 pac~phy에 적재(기존 행 규약). pot·가치·traits는 이 API에 없어 NULL(결손). "
+                            f"역할 숙련은 rolesPlus/rolesPlusPlus(fc_role_familiarity_map 경유 · {'있음' if rf else '응답 없음'})."),
             )
             if a.dry_run:
-                print(f"  [{gv}] {kr}: OVR {row['ovr']} {row['positions']} {row['roster_date']} {row['club']} PS={row['playstyles']}")
+                print(f"  [{gv}] {kr}: OVR {row['ovr']} {row['positions']} {row['roster_date']} {row['club']} PS={row['playstyles']} RF={row['role_familiarity']}")
             else:
                 cur.execute("""INSERT INTO player_game_stats(game_version, roster_date, player_id, name_kr, sofifa_id, sofifa_name, club,
                                positions, best_pos, age, height_cm, weight_kg, ovr, pot, pac, sho, pas, dri, def, phy, attrs, playstyles,
-                               accelerate, preferred_foot, card_image_url, source, confidence)
+                               accelerate, preferred_foot, card_image_url, role_familiarity, source, confidence)
                                VALUES(:game_version,:roster_date,:player_id,:name_kr,:sofifa_id,:sofifa_name,:club,:positions,:best_pos,:age,
                                :height_cm,:weight_kg,:ovr,:pot,:pac,:sho,:pas,:dri,:def_,:phy,:attrs,:playstyles,:accelerate,:preferred_foot,
-                               :card_image_url,:source,:confidence)
+                               :card_image_url,:role_familiarity,:source,:confidence)
                                ON CONFLICT(game_version, roster_date, name_kr) DO NOTHING""", row)
             ins += 1
     if not a.dry_run:

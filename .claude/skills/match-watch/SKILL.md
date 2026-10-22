@@ -198,6 +198,8 @@ G12가 누락·원문 경로·UI 연결을 검사한다(초안도 선수 행이 
 화면에 안 나온다 — 같은 회차에 DB 행으로 올린다(부상은 `collect_fotmob_players.py`의 `player_status`를 export가 붙이므로 따로 할 일 없음).
 1. **구간 지표**: WhoScored matchCentreData를 JSON으로 받아 두고
    `.venv/bin/python scripts/match_phase_metrics.py --report N --events <json> --team-id <우리> --opp-id <상대> --cuts <득점·교체 분>`.
+   ⭐ 그 `<json>`은 **`reports/match-watch/data/<날짜>-<팀>-ws-<matchId>.json`으로 저장소에 남긴다**(2026-10-22 실증 — 바이킹전 D+1이 브라우저에서
+   축약 전사만 하고 파일을 안 남겨 GK 배급 비중(`gk_long_share`)을 뒤에 계산할 수 없었다 · 상대 선수 이름은 들어 있어도 좌표·타입이 원료라 보존).
    계산은 `core.whoscored.segment_metrics`(def_x·PPDA·자기 진영 패스 성공률, 양 팀)만 쓴다. GK 롱패스 비중처럼
    경기마다 대상이 다른 지표는 아래 JSON의 `phase_metrics`로 넣는다(지표 목록 정본 `core.whoscored.PHASE_METRICS`).
 2. **요약·가설 판정**: 리포트 「요약」 불릿과 「사용자 의견 대조표」를 JSON 한 장으로 만들어

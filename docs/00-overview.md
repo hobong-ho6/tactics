@@ -40,6 +40,12 @@ G12 경기 리포트(필수 섹션·수집 선수 전원·원문·경기 분석 
 **G8+ 게임 처방 정합**(kind 어휘 · fc26:opt pos∈slots · 역할군=slot_type · 선발 11명이 한 포메이션) ·
 **G12 확장**(경기 프리셋 역할군=slot_type) · **G15 팀 설정 규칙**(`core/team_settings.py` 규칙 vs 기록 — 편차는 `rule_note`에 신고).
 
+> ⭐ **2026-10-22 FC27 구현 검토에서 확장**([리서치](../reports/research/2026-10-22-fc27-avl-implementation-review.md)):
+> **G8+** 현행 버전·현 시즌 `opt:*` 선발 11행이 `slot_canon_roles` 역할/포커스와 다르거나 `player_status` 장기 부상이면 실패(AVL만 — 보류 팀 제외) ·
+> **G1/G3/G5** FC26 고정 → 현행 버전(`core.game_version.current`) 루프 · **G22 ⑵-2b** 비현행 버전 `loadKernels('FC2x')` 리터럴 금지(화면은 `loadCurrentKernels()`) ·
+> **G37 ⑸** AVL 리포트(≥10-14)는 `match_game_setups.shape_in_possession/shape_out_possession`(migration 116) 필수 ·
+> **G21** 현행 버전 출시 후 `player_game_stats` 스냅샷 0행인 관리 팀 실패 · **G23** 2026-08-12 이후 공식전 `player_matches`에 `phase_lead/level/trail` 결손 실패(정본 `core/phase_minutes.py`).
+
 > ⭐ **G8+ · G12 확장 · G15는 2026-09-08 점검에서 신설**(사용자 지시 2·5번). G8+가 잡은 실물: CHE `fc26:opt` 선발 **12명**
 > (3-4-2-1 11 + 5-4-1 RB) · CHE `fc26:opt:LDM/RDM` 4행(그 포메이션에 없는 슬롯) · 경기 프리셋 교체 6행이 슬롯 역할군 밖
 > (`cm_b2b`를 RCB·LM·ST·LAM·RM에). 전부 migration 027로 정정. **`prescriptions.kind`는 이제 `KIND_RE`(gates.py) 형태로만

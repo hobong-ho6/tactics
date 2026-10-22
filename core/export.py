@@ -20,6 +20,8 @@ from .chem import CHEM
 from . import position_ovr as POVR
 from . import gallery as GAL
 from .game_version import current as current_gv
+from .kernel import Kernel as _KernelCls
+_KEXP = _KernelCls.EXPECTED
 from .whoscored import PHASE_METRICS, PHASE_GROUPS
 from core.db import connect as connect_db
 
@@ -109,6 +111,8 @@ def export_all(db_path=None, window="2026-summer"):
                 real_top.append(r)
         written.append(_write(SITE_DATA / "kernels" / f"{gv}.json",
                               {"game_version": gv, "roles": roles, "focus": focus, "role_groups": role_groups,
+                               # ⭐ 정합 기대값(core.kernel.Kernel.EXPECTED) — kernel.js가 버전 리터럴 대신 이 값으로 검사한다(2026-10-22)
+                               "expected": list(_KEXP.get(gv)) if _KEXP.get(gv) else None,
                                "role_ingame": ingame, "role_real_players": real_top,
                                "role_evidence": _rows(con, """SELECT role_id, focus, claim_kr, quote_orig, quote_kr, lang,
                                      source_name, source_url, observed_gv, observed_date, grade, snippet_only, contradicts_ea, notes

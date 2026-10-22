@@ -28,7 +28,7 @@
 <p class="dim">서사·분석 전문은 docs/1x 감독 문서가 정본이다 — 이 페이지는 DB에 확정 기록된
 결론(프로필 축·세팅)만 보여준다.</p>
 <script type="module">
-import { mountHeader, loadTeam, slotCandidates, canonSlots as canonSlotsOf} from './assets/data.js?v=20261004-nav';
+import { mountHeader, loadTeam, slotCandidates, canonSlots as canonSlotsOf, currentGameVersion } from './assets/data.js?v=20261004-nav';
 import { mountGlossaryTips } from './assets/glossary.js?v=20260913-selection-glossary';
 import { prose } from './assets/prose.js';
 import { roleLabel, focusLabel, humanize, mountRawToggle } from './assets/labels.js?v=20260918';
@@ -41,7 +41,14 @@ document.getElementById('title').textContent =
 
 // FC26 설정 시트 — 팀 세팅(setups 최신 projected/optimal) + 슬롯별 게임 처방(fc26:opt)
 /* ⚠️ 실측만 있는 팀(ATM)은 주 행 `measured`를 쓴다 — 「마지막 행」이면 대안 행(measured:3-4-2-1)이 잡혔다(2026-10-04). */
-const su = td.setups.filter(x=>!/deprecated|reference/.test(x.kind) && /projected|optimal/.test(x.kind)).slice(-1)[0]
+/* ⭐ 2026-10-22 — 「현재 설정」은 **현행 게임 버전·최신 시즌의 `kind='optimal'` 행**이 1순위다(docs/10 「기본 전술 1개 = optimal」).
+   종전 「kind 정렬 마지막 행」은 FC27 26/27에 optimal(#46 · Balanced/Balanced/52)이 생긴 뒤에도
+   알파벳상 뒤인 projected:emery-2627(Short Passing · 폐기값)을 집어 낡은 값을 보여줬다. 없으면 종전 폴백 그대로. */
+const gvNow = await currentGameVersion();
+const optNow = td.setups.filter(x => x.kind === 'optimal' && x.game_version === gvNow)
+  .sort((a, b) => String(a.season).localeCompare(String(b.season))).slice(-1)[0];
+const su = optNow
+  ?? td.setups.filter(x=>!/deprecated|reference/.test(x.kind) && /projected|optimal/.test(x.kind)).slice(-1)[0]
   ?? td.setups.find(x=>x.kind==='measured') ?? td.setups.slice(-1)[0];
 /* 재현 불가 항목(reproduction_limits, migration 027) — 설정값 옆에 개수를 붙이고 목록은 접는다.
    설정 시트를 읽는 사람이 「이 값이 담지 못하는 것」을 같은 화면에서 보게 하기 위해서다(2026-09-08 점검 7번). */

@@ -383,7 +383,8 @@ KIND_RE = _re.compile(
     r"|projected(:[A-Za-z0-9/_-]+)?(-deprecated)?"
     r"|match:[A-Z]{3}-[0-9]+-[0-9]+)$")
 G8X_LABELS = {"kind_vocab": "kind어휘이탈", "opt_pos_orphan": "opt슬롯없음",
-              "opt_role_group": "opt역할군불일치", "opt_xi": "opt선발≠11/단일포메이션"}
+              "opt_role_group": "opt역할군불일치", "opt_xi": "opt선발≠11/단일포메이션",
+              "opt_canon_mismatch": "opt선발≠슬롯정본", "opt_injured_starter": "opt선발장기부상"}
 
 
 def g8_prescription_checks(con):
@@ -415,6 +416,55 @@ def g8_prescription_checks(con):
                     "SELECT pos FROM slots WHERE regime_id=? AND formation=?", (rid, f))}]
         if len(poss) != 11 or len(set(poss)) != 11 or not fits:
             out["opt_xi"].append((rid, gv, len(poss), fits))
+    # ⭐ 2026-10-22 확장(obs#1120) — 선발 처방 층이 **낡은 채로** 통과했다: FC26→FC27 승계가 7~9월 선발을 그대로 옮겨
+    #   11칸 중 7칸이 slot_canon_roles와 역할/포커스가 달랐고(GK·LCB·RB·LM·CAM·RM·ST) 4칸은 장기 부상자·이적 후보였다.
+    #   역할군만 보던 검사로는 못 잡는다 ⇒ ⑴ 현행 버전 opt 선발은 그 칸의 slot_canon_roles(같은 버전·체제)와 역할/포커스가
+    #   같아야 한다(정본 행이 없는 칸은 건너뜀) ⑵ 선발은 player_status 최신 스냅샷이 장기 부상이면 안 된다.
+    #   「장기」는 데이터에 명시 필드가 없어 보수적으로 둔다 — 복귀 예상(detail 「Month YYYY」)이 이번 달 뒤이거나,
+    #   부상일(as_of) 21일 경과 뒤 최신 스냅샷(7일 내)이 여전히 injury.
+    #   ⚠️ 범위는 G37과 같이 **AVL만**(2026-10-20 사용자 결정 — CHE·LIV·ATM 수집 잠정 보류 · 그 팀들의 선발층은 보류 해제 때 손본다).
+    from core.game_version import current as _cur, opt_sql as _opt
+    gv_now = _cur(con)
+    G8X_TEAMS = ("AVL",)
+    _rids = [r for (r,) in con.execute(f"SELECT id FROM regimes WHERE team_code IN ({','.join('?'*len(G8X_TEAMS))})", G8X_TEAMS)]
+    if gv_now and _rids:
+        _in = ",".join(str(int(r)) for r in _rids)
+        out["opt_canon_mismatch"] = con.execute(f"""
+            SELECT p.id, p.regime_id, p.pos_label, p.role_id||'/'||p.focus,
+                   (SELECT group_concat(c.role_id||'/'||c.focus) FROM slot_canon_roles c
+                     WHERE c.regime_id=p.regime_id AND c.pos=p.pos_label AND c.game_version=p.game_version)
+            FROM prescriptions p
+            WHERE {_opt('p.kind')} AND p.kind NOT LIKE '%-deprecated' AND p.starter=1 AND p.game_version=? AND p.regime_id IN ({_in})
+              AND EXISTS (SELECT 1 FROM slot_canon_roles c WHERE c.regime_id=p.regime_id AND c.pos=p.pos_label
+                            AND c.game_version=p.game_version)
+              AND NOT EXISTS (SELECT 1 FROM slot_canon_roles c WHERE c.regime_id=p.regime_id AND c.pos=p.pos_label
+                            AND c.game_version=p.game_version AND c.role_id=p.role_id AND c.focus=p.focus)""",
+            (gv_now,)).fetchall()
+        import datetime as _dt
+        today = _dt.date.today()
+        _MON = {m: i for i, m in enumerate(("January", "February", "March", "April", "May", "June", "July",
+                                             "August", "September", "October", "November", "December"), 1)}
+        for pid, pname, pos, kind, value, detail, as_of, pulled in con.execute(f"""
+            SELECT p.player_id, COALESCE(pl.name_kr, pl.name), p.pos_label, s.kind, s.value, s.detail, s.as_of, s.pulled
+            FROM prescriptions p JOIN players pl ON pl.id=p.player_id
+            JOIN player_status s ON s.player_id=p.player_id AND s.kind IN ('injury','injury_none')
+             AND s.pulled=(SELECT MAX(x.pulled) FROM player_status x WHERE x.player_id=p.player_id AND x.kind IN ('injury','injury_none'))
+            WHERE {_opt('p.kind')} AND p.kind NOT LIKE '%-deprecated' AND p.starter=1 AND p.game_version=? AND p.regime_id IN ({_in})""", (gv_now,)):
+            if kind != "injury":
+                continue
+            long_term = False
+            parts = (detail or "").split()
+            if len(parts) == 2 and parts[0] in _MON and parts[1].isdigit():
+                long_term = (int(parts[1]), _MON[parts[0]]) > (today.year, today.month)
+            try:
+                injured_days = (today - _dt.date.fromisoformat(as_of[:10])).days if as_of else 0
+                fresh = (today - _dt.date.fromisoformat(pulled[:10])).days <= 7 if pulled else False
+            except ValueError:
+                injured_days, fresh = 0, False
+            if injured_days >= 21 and fresh:
+                long_term = True
+            if long_term:
+                out["opt_injured_starter"].append((pid, pname, pos, value, detail, as_of))
     return out
 
 
@@ -475,10 +525,14 @@ def run(db_path=None, verbose=True):
     con = connect_db(db_path)
     fails = []
 
-    # G1 — Kernel 로드가 정합 assert를 겸한다
-    k = Kernel("FC26", db_path)
+    # G1 — Kernel 로드가 정합 assert를 겸한다. ⭐ 2026-10-22: FC26만 보던 것을 **현행 버전까지** 본다(구현 검토 §1.4 —
+    #   FC27 커널은 익스포트만 되고 어느 게이트도 안 봤다). 정본은 core/game_version.current — 버전 문자열을 새로 박지 않는다.
+    from core.game_version import current as _cur_gv1
+    _gvs = ["FC26"] + [g for g in [_cur_gv1(con)] if g and g != "FC26"]
+    kernels = {gv: Kernel(gv, db_path) for gv in _gvs}
+    k = kernels["FC26"]
     if verbose:
-        print("G1 커널 정합: 37/85/217 ✅")
+        print(f"G1 커널 정합({' · '.join(_gvs)}): 37/85/217 ✅")
 
     # G2
     bad, total = regression_check(con)
@@ -487,23 +541,25 @@ def run(db_path=None, verbose=True):
     if bad:
         fails.append("G2")
 
-    # G3
-    for label, sql, params, x, st, wr, wf, ws in ANCHORS:
-        if sql is None:
-            m25 = params
-        else:
-            row = con.execute(sql, params).fetchone()
-            if not row or not row[0]:
-                if verbose:
-                    print(f"G3 {label}: ⚠️ 행 없음 — 건너뜀 (보존정책 삭제 가능)")
-                continue
-            m25 = row[0]
-        r, f, s = k.best_fit(m25, x, st)
-        ok = r == wr and f == wf and abs(s - ws) < 0.001
-        if verbose:
-            print(f"G3 {label}: {r}/{f} {s:.3f} {'✅' if ok else f'⛔ 기대 {wr}/{wf} {ws}'}")
-        if not ok:
-            fails.append(f"G3:{label}")
+    # G3 — 앵커 6항. ⭐ 현행 버전 커널도 같은 앵커·같은 기대값으로 본다(FC27 역할표는 FC26과 전항 일치 승계라
+    #   수치가 같아야 한다 — 「같다」를 검사하지 않으면 승계가 깨져도 모른다).
+    for gv3, k3 in kernels.items():
+        for label, sql, params, x, st, wr, wf, ws in ANCHORS:
+            if sql is None:
+                m25 = params
+            else:
+                row = con.execute(sql, params).fetchone()
+                if not row or not row[0]:
+                    if verbose and gv3 == "FC26":
+                        print(f"G3 {label}: ⚠️ 행 없음 — 건너뜀 (보존정책 삭제 가능)")
+                    continue
+                m25 = row[0]
+            r, f, s = k3.best_fit(m25, x, st)
+            ok = r == wr and f == wf and abs(s - ws) < 0.001
+            if verbose:
+                print(f"G3[{gv3}] {label}: {r}/{f} {s:.3f} {'✅' if ok else f'⛔ 기대 {wr}/{wf} {ws}'}")
+            if not ok:
+                fails.append(f"G3:{gv3}:{label}")
 
     # G4 — 집계 공식 재현 (만잠비 대표팀 12경기 → prescriptions measured:national)
     manz = con.execute("SELECT id FROM players WHERE name='Johan Manzambi'").fetchone()
@@ -524,8 +580,9 @@ def run(db_path=None, verbose=True):
     # G5 — JS 커널 동치 (site/assets/kernel.js가 파이썬과 같은 값을 내는가)
     #      node + 익스포트된 kernels/FC26.json으로 앵커 재계산. node/JSON 부재 시 건너뜀.
     import subprocess
-    kern_json = Path(__file__).resolve().parent.parent / "site" / "data" / "kernels" / "FC26.json"
-    if kern_json.exists():
+    for gv5 in _gvs:                                   # ⭐ 2026-10-22: 현행 버전 JSON도 본다(종전 FC26.json만)
+      kern_json = Path(__file__).resolve().parent.parent / "site" / "data" / "kernels" / f"{gv5}.json"
+      if kern_json.exists():
         cases = []   # (map25, x, slot_type, 기대 sim)
         for label, sql, params, x, st, wr, wf, ws in ANCHORS:
             con2 = connect_db(db_path)
@@ -547,14 +604,15 @@ def run(db_path=None, verbose=True):
                                capture_output=True, text=True, timeout=30)
             ok5 = p.returncode == 0
             if verbose:
-                print(f"G5 JS 커널 동치({len(cases)}앵커): {'✅ ' + p.stdout.strip() if ok5 else '⛔ ' + p.stdout + p.stderr}")
+                print(f"G5[{gv5}] JS 커널 동치({len(cases)}앵커): {'✅ ' + p.stdout.strip() if ok5 else '⛔ ' + p.stdout + p.stderr}")
             if not ok5:
-                fails.append("G5")
+                fails.append(f"G5:{gv5}")
         except FileNotFoundError:
             if verbose:
                 print("G5 JS 커널 동치: ⚠️ node 없음 — 건너뜀")
-    elif verbose:
-        print("G5 JS 커널 동치: ⚠️ kernels/FC26.json 미익스포트 — 건너뜀")
+            break
+      elif verbose:
+        print(f"G5 JS 커널 동치: ⚠️ kernels/{gv5}.json 미익스포트 — 건너뜀")
 
     # G6 — SQLite는 연결별 foreign_keys 설정에 따라 고아 FK 삽입을 허용할 수 있다.
     #      읽기 전용 검사인 foreign_key_check는 설정과 무관하게 전체 고아 행을 찾는다.
@@ -1205,6 +1263,26 @@ def run(db_path=None, verbose=True):
             continue
         if n_prev and n_now * 2 < n_prev:
             g21_bad.append(f"{t} {p_prev}={n_prev} → {p_now}={n_now}")
+    # ⭐ 2026-10-22 확장 — **현행 게임 버전의 선수 카드 축이 출시 후 한 번도 재수집되지 않으면 막는다.**
+    #    왜: FC27 `player_game_stats`가 전부 09-10(출시 전 공개판)이었고 PlayStyle 24/122·Role+ 0/122였다(FC27 구현 검토 §2.1).
+    #    출시 후 fut.gg 라이브판은 키·몸무게·PlayStyle 이름까지 달랐다(38건 충돌). 수집 보류 팀(CHE·LIV·ATM · 10-20 사용자 결정)은 제외.
+    try:
+        from core.game_version import current as _gv_current  # noqa: E402
+        gv_now = _gv_current(con)
+        rel = con.execute("SELECT released FROM game_versions WHERE code=?", (gv_now,)).fetchone()
+        G21_CARD_TEAMS = ["AVL"]              # 수집 보류 해제 시 여기에 팀을 더한다(HANDOFF 「수집 범위」)
+        if rel and rel[0]:
+            for tc in G21_CARD_TEAMS:
+                fresh = con.execute("""SELECT COUNT(*) FROM player_game_stats g
+                                       JOIN squad_entries se ON se.player_id=g.player_id
+                                       JOIN regimes r ON r.id=se.regime_id
+                                       WHERE r.team_code=? AND g.game_version=? AND g.roster_date>=?""",
+                                    (tc, gv_now, rel[0])).fetchone()[0]
+                if not fresh:
+                    g21_bad.append(f"player_game_stats {gv_now} {tc}: 출시({rel[0]}) 후 스냅샷 0행 → "
+                                   f"collect_futgg_history.py --team {tc} --games {gv_now[2:]} --roster-date <오늘>")
+    except Exception as _e:                       # noqa: BLE001  game_version 모듈·표가 없으면 건너뛴다
+        pass
     ok21 = not g21_bad
     if verbose:
         detail = ("❌ " + " · ".join(g21_bad[:3])
@@ -1259,6 +1337,23 @@ def run(db_path=None, verbose=True):
         for tok, why in STALE_VOCAB.items():
             if tok in txt:
                 g22.append(f"{f.relative_to(root).as_posix()}: 적재 전 어휘 {tok} — {why}")
+
+    # ⑵-2b ⛔ **화면이 커널 버전을 문자열로 박지 않는다.** 2026-10-22 실증(구현 검토 §1.4): 처방은 FC27인데
+    #    squad/compare/heatmap/game/evolutions 다섯 화면이 `loadKernels('FC26')`을 박아 두고 있었다 — 값이 같아 보여
+    #    아무도 몰랐다(core/game_version.py 머리말이 금지한 바로 그 형태). ⇒ 현행 버전은 `currentGameVersion()`(data.js ·
+    #    index.json의 game_versions.released)에서 받는다. 특정 버전을 일부러 가리키는 호출은 `loadKernels(gv)` 변수로.
+    #    규칙: **현행이 아닌 버전** 리터럴은 위반 — 단 같은 파일이 현행 버전 리터럴도 부르면 「버전 비교」(player.html K26↔K27)라 허용.
+    #    버전이 바뀌면(FC28) 옛 리터럴이 저절로 위반이 된다 — 그게 이 검사의 목적이다.
+    from core.game_version import current as _cur22
+    _gv22 = _cur22(con)
+    for f in sorted(site.glob("*.html")) + sorted((site / "assets").glob("*.js")):
+        if f.name == "data.js":
+            continue
+        _lits = set(re.findall(r"loadKernels\(\s*'(FC\d\d)'\s*\)", f.read_text()))
+        _stale = sorted(_lits - {_gv22})
+        if _stale and _gv22 not in _lits:
+            g22.append(f"{f.relative_to(root).as_posix()}: loadKernels('{_stale[0]}') — 현행({_gv22}) 아닌 버전 리터럴. "
+                       f"currentGameVersion()/loadCurrentKernels()를 쓸 것(버전 비교면 현행 리터럴을 함께)")
 
     # ⑵-3 **「현재 스탯」을 인쇄 카드에서 읽지 않는다.** 2026-09-27 실증(사용자 지적):
     #    역할 적합·케미 스타일 추천이 **다섯 곳 모두** `p.attrs`(카드에 인쇄된 값)를 먹고 있었다.
@@ -1354,6 +1449,19 @@ def run(db_path=None, verbose=True):
                                  AND current_attrs NOT LIKE '%프리킥 정확도%'""").fetchone()[0]
         if thin:
             g23.append(f"fut_club_players.current_attrs 프리킥 결손 {thin}명 (fut.gg 필드명 확인)")
+    except sqlite3.OperationalError:
+        pass
+    # ⭐ 2026-10-22 확장 — 스코어 국면 분(phase_lead/level/trail)이 **공식전**에 빠지면 막는다.
+    #    왜: 회차마다 세션 JS로 따로 넣다가 09-12·10-15 수집이 빠뜨려 공식전 5경기(08-31·09-08·09-19·10-10·10-14)가
+    #    0행이었고 @lead/@trail 분리 집계 표본이 반토막 났다(FC27 구현 검토 §2.1). 이제 core.phase_minutes가 단일 정본이고
+    #    load_sofascore_json.py가 수집 시 채우며, 결손은 scripts/backfill_phase_minutes.py로 보충한다. 친선전·v1 승계(08-12 전)는 제외.
+    try:
+        n_ph = con.execute("""SELECT COUNT(*) FROM player_matches pm JOIN matches m ON m.id=pm.match_id
+                               WHERE m.date >= '2026-08-12' AND m.competition NOT LIKE '%Friendly%'
+                                 AND pm.minutes IS NOT NULL
+                                 AND json_extract(pm.stats_json,'$.phase_lead') IS NULL""").fetchone()[0]
+        if n_ph:
+            g23.append(f"player_matches 공식전 국면 분(phase_*) 결손 {n_ph}행 → scripts/backfill_phase_minutes.py")
     except sqlite3.OperationalError:
         pass
     ok23 = not g23
@@ -1849,6 +1957,9 @@ def run(db_path=None, verbose=True):
     _nodelta37 = {r for (r,) in con.execute("""SELECT DISTINCT report_id FROM match_player_prescriptions
                                                WHERE starter=1 AND fit_delta IS NULL AND pos_label!='GK'""")}
     _hyp37 = {r for (r,) in con.execute("SELECT DISTINCT report_id FROM match_hypotheses")}
+    # ⑸ 보유·비보유 실축 형태 정형(migration 116 · 2026-10-22) — 「보유 3-2-5 / 비보유 4-4-2」가 산문에만 있던 것
+    _shape37 = {r for (r,) in con.execute("""SELECT report_id FROM match_game_setups
+                                            WHERE shape_in_possession IS NOT NULL AND shape_out_possession IS NOT NULL""")}
     _pm37 = {r for (r,) in con.execute("SELECT DISTINCT report_id FROM match_phase_metrics")}
     g37 = []
     for _note in sorted((_root37 / "reports" / "match-watch" / "notes").glob("*.md")):
@@ -1868,6 +1979,8 @@ def run(db_path=None, verbose=True):
                 g37.append(f"#{_id} 경기 중 변화 단계 0행")
             if _id in _nodelta37:
                 g37.append(f"#{_id} 선발 처방 fit_delta 결손")
+            if _id not in _shape37:
+                g37.append(f"#{_id} 보유/비보유 형태(shape_in/out_possession) 미기록")
     g37 += [f"모르는 구간 지표 {m}" for (m,) in con.execute("SELECT DISTINCT metric FROM match_phase_metrics")
             if m not in _PM37]
     if verbose:

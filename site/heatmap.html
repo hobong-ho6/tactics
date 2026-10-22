@@ -20,17 +20,17 @@
   <div class="panel"><h2>A · 실측 <small class="dim">이름 칩 = 실제 평균 위치</small></h2><canvas class="pitch" id="cvA" width="640" height="860"></canvas><div id="capA" class="kv" style="margin-top:8px"></div></div>
   <div class="panel"><h2>B · 처방(커널) <small class="dim">이름 칩 = FC 슬롯 좌표</small></h2><canvas class="pitch" id="cvB" width="640" height="860"></canvas><div id="capB" class="kv" style="margin-top:8px"></div></div>
 </div>
-<p class="dim">데이터: teams/{팀}.json (slots·squad·prescriptions) + kernels/FC26.json. 인선을 바꾸면 즉시 다시 그린다.
+<p class="dim">데이터: teams/{팀}.json (slots·squad·prescriptions) + kernels/{현행 게임 버전}.json. 인선을 바꾸면 즉시 다시 그린다.
 칸이 비면 그 슬롯은 실측 후보가 없는 것 — 데이터가 생기면 자동으로 나타난다.
 <b>A 패널의 이름 칩은 슬롯 좌표가 아니라 그 선수의 실제 평균 위치</b>(avg_positions, 45분+·히트포인트 15+ 표본 평균)이고,
 B 패널은 FC 슬롯 좌표다. 두 칩의 어긋남이 곧 "실측과 처방 자리의 거리"다.</p>
 <script type="module">
-import { mountHeader, loadTeam, loadKernels, slotCandidates, canonSlots} from './assets/data.js?v=20261004-nav';
+import { mountHeader, loadTeam, loadKernels, loadCurrentKernels, slotCandidates, canonSlots} from './assets/data.js?v=20261004-nav';
 import { Kernel, decodeMap } from './assets/kernel.js?v=20260825-decodemap-null';
 import { drawPitch, drawComposite, drawChip } from './assets/pitch.js?v=20260825-decodemap-null';
 
 const { team } = await mountHeader('heatmap.html');
-const [td, kd] = await Promise.all([loadTeam(team), loadKernels('FC26')]);
+const [td, kd] = await Promise.all([loadTeam(team), loadCurrentKernels()]);
 const K = new Kernel(kd);
 // 대표 평균위치 — map25와 같은 유효 표본(45분+ · 히트포인트 15+) 평균. A 패널 전용.
 const AVG = new Map((td.avg_positions ?? []).map(a => [a.player_id, a]));

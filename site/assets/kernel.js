@@ -32,8 +32,10 @@ export class Kernel {
       this.variants.get(k).push({ x: v.pitch_x, map: decodeMap(v.kernel25) });
     }
     const nVar = data.variants.length, nCombo = this.variants.size, nRole = data.roles.length;
-    if (this.gv === 'FC26' && (nRole !== 37 || nCombo !== 85 || nVar !== 217))
-      throw new Error(`커널 정합 실패 ${nRole}/${nCombo}/${nVar} (기대 37/85/217)`);
+    // 정합 기대값은 JSON이 들고 온다(export가 core.kernel.Kernel.EXPECTED를 실어 보냄) — 버전 리터럴로 고르지 않는다(2026-10-22).
+    const exp = data.expected ?? (data.game_version === 'FC26' || data.game_version === 'FC27' ? [37, 85, 217] : null);
+    if (exp && (nRole !== exp[0] || nCombo !== exp[1] || nVar !== exp[2]))
+      throw new Error(`커널 정합 실패 ${nRole}/${nCombo}/${nVar} (기대 ${exp.join('/')})`);
   }
   placed(role, focus, x){
     const lst = this.variants.get(role + '|' + focus);

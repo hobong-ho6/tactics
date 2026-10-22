@@ -40,3 +40,4 @@ INSERT INTO _migration_log VALUES('2026-10-20','112-claims-korean','video_impl_c
 INSERT INTO _migration_log VALUES('2026-10-20','113-claims-headline','video_impl_claims.headline_kr·points_kr — 40자 초과 자유 문구 주장 24행 백필 · 화면은 헤드라인 굵게 + 요점 목록 + 전문 툴팁 · write_video_summary·G17이 40자 초과 시 필수로 막음');
 INSERT INTO _migration_log VALUES('2026-10-21','114-claim-issues','claim_issues 신설 + video_impl_claims.issue_id — PENDING을 판정 조건별 쟁점으로 묶고 트리거(팀 공식전 N·선수 선발 N·날짜)로 기한을 둔다 · core/claim_issues.py 판정 정본 · scripts/claim_issues.py --due/--close · G39');
 INSERT INTO _migration_log VALUES('2026-10-21','115-claim-issues-watch','claim_issues.phase(decide|watch)·armed — HELD 판정을 재판정 트리거가 걸린 감시 쟁점으로 · G39가 쟁점 없는 HELD·빈 감시 쟁점·재판정 기한 초과를 막는다 · 화면 HELD 라벨 「유지」');
+INSERT INTO _migration_log VALUES('2026-10-22','116-shape-columns','match_game_setups.shape_in_possession·shape_out_possession — 보유/비보유 실축 형태 정형(어휘 숫자 형태 · NULL=미기록) · load_match_extras.py "shapes" · G37 AVL 필수');

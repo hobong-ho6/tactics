@@ -82,7 +82,7 @@
 <p class="dim">EA 피치노트 원문 분석·판정 이력 전문은 docs/20이 정본. PlayStyles·스탯·조작·세리머니 서사 정본은 docs/22.
 FIFA→FC 변천사는 FC27 온보딩(docs/21) 때 소급 기입.</p>
 <script type="module">
-import { mountHeader, loadIndex, loadKernels, loadGameStats } from './assets/data.js?v=20261004-nav';
+import { mountHeader, loadIndex, loadKernels, loadCurrentKernels, loadGameStats } from './assets/data.js?v=20261004-nav';
 import { prose } from './assets/prose.js';
 import { CONTROLS, STATS, STATS_NOTE, PLAYSTYLE_CATEGORIES, PLAYSTYLES, PLAYSTYLE_NOTE, esc, mountSearchableCatalog } from './assets/gamemechanics.js';
 import { CATEGORIES as CELE_CATEGORIES, CELEBRATIONS, CONTEXT_CELEBRATIONS, mountCelebrationSearch } from './assets/celebrations.js';
@@ -143,7 +143,7 @@ const celeRender = mountCelebrationSearch(document.getElementById('celeGroups'))
 document.getElementById('celeSearch').addEventListener('input', e => celeRender(e.target.value));
 document.getElementById('celeCtx').innerHTML = '<tr><th>세리머니</th><th>발동 조건</th></tr>' +
   CONTEXT_CELEBRATIONS.map(c => `<tr><td><b>${esc(c.name_kr)}</b><br><small class="dim">${esc(c.name_en)}</small></td><td class="dim">${esc(c.trigger)}</td></tr>`).join('');
-const kd = await loadKernels('FC26');
+const kd = await loadCurrentKernels();
 document.getElementById('gv').textContent = `역할 커널 ${kd.game_version}`;  // ⚠️ 시스템 분석 패널은 버전이 따로다
 const AREA={engine:'엔진',roles:'역할',positioning:'포지셔닝',attributes:'속성',tactics:'전술',playstyles:'플레이스타일',meta:'메타'};
 // ⭐ 시스템 분석은 역할 커널과 버전이 다를 수 있다(2026-09-21) — FC27은 역할 목록 확정 전이라 커널이 비어 있지만

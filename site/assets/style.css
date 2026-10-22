@@ -633,3 +633,22 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 .pr2 .st:not(.key) span{font-size:10.5px}
 .gcmp td:first-child,.gcmp th:first-child{position:sticky;left:0;background:var(--panel);z-index:1}
 .gcmp thead th{border-bottom:1px solid var(--line)}
+
+/* 2026-10-22 UX 검토 — 제목 위계. 종전엔 h1/h2 안의 <small>이 굵기와 거의 같은 크기를 물려받아
+   부제가 제목처럼 보였고, 모바일에선 h1이 3줄짜리 굵은 문단이 됐다. 부제는 본문보다 작고 가볍게. */
+h1 small{font-size:13px;font-weight:400;line-height:1.4}
+h2 small{font-size:12px;font-weight:400}
+/* 2026-10-22 UX 검토 — 모바일 표 넘침. .scrollx를 두르지 않은 표(스쿼드 #tbl · 선수 비교 #rank · 이적 #in ·
+   리포트 #sheet/#canon/#profile · 게임 시스템 #chg/#roles)가 뷰포트를 516~759px로 밀어 **화면 전체가 축소**됐다.
+   표마다 감싸는 대신(불변규칙 13 ① — 빠뜨리는 구조를 없앤다) 패널 자체가 가로 스크롤 컨테이너가 된다.
+   ⚠ 용어 툴팁 .gl-tip은 body의 자식이라 잘리지 않고, 절대 위치 요소는 전부 자기 피치/카드 안에 있다(2026-10-22 확인). */
+@media(max-width:700px){
+  .panel{overflow-x:auto}
+  /* 경기 분석 선택 막대(셀렉트 4개 + 목차)가 sticky면 812px 화면의 1/3을 덮는다 → 모바일에선 흐르게 둔다 */
+  .report-picker{position:static}
+  .report-picker label.kv{display:flex;align-items:center;gap:6px;width:100%;white-space:nowrap}
+  .report-picker select{flex:1 1 auto;min-width:0;max-width:100%}
+  #report > .panel,#report > #viz,#report > .grid2 > .panel{scroll-margin-top:12px}
+  /* 전체 메뉴가 줄바꿈되면 왼쪽 세로선만 떠 있었다 */
+  #hdr nav.global{border-left:0;padding-left:0}
+}

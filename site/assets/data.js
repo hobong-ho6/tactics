@@ -16,6 +16,20 @@ async function j(path){
 export const loadIndex   = () => j('index.json');
 export const loadTeam    = code => j(`teams/${code}.json`);
 export const loadKernels = gv => j(`kernels/${gv}.json`);
+/* ⭐ 현행 게임 버전 — index.json의 game_versions.released로 정한다(core/game_version.current와 같은 규칙 · 2026-10-22).
+   ⛔ 화면이 'FC26'/'FC27'을 「현행」이라는 뜻으로 박지 않는다(G22가 막는다). 특정 버전 비교는 loadKernels(gv)로. */
+let _gvCache = null;
+export async function currentGameVersion(){
+  if (_gvCache) return _gvCache;
+  const idx = await loadIndex();
+  const today = new Date().toISOString().slice(0, 10);
+  const live = (idx.game_versions || []).filter(v => v.released && v.released <= today)
+    .sort((a, b) => a.released < b.released ? 1 : -1);
+  _gvCache = live[0]?.code ?? null;
+  if (!_gvCache) throw new Error('현행 게임 버전을 index.json에서 정할 수 없다');
+  return _gvCache;
+}
+export const loadCurrentKernels = async () => loadKernels(await currentGameVersion());
 export const loadGameStats = gv => j(`game_stats/${gv}.json`).catch(() => ({}));
 
 /* ⭐⭐ 화면 공통 **정본 포메이션 슬롯** (2026-09-25 신설 · migration 063).
