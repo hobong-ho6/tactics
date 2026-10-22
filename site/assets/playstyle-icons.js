@@ -1,5 +1,17 @@
 /* FC27 PlayStyle 아이콘·설명 — fut.gg /api/fut/playstyles/ 원문(영문)을 한글로 요약(2026-09-11 수집).
-   base=기본 효과, plus=PlayStyle+ 효과. 아이콘은 베이스·+ 공통(fut.gg 원본과 동일). */
+   base=기본 효과, plus=PlayStyle+ 효과. 아이콘은 베이스·+ 공통(fut.gg 원본과 동일).
+   ⭐ 키는 **EA 공식 이름**(2026-10-22 · migration 121: 「1v1 Close Down」(옛 Rush Out) · 「Gamechanger」).
+   저장 행·fut.gg가 옛 이름을 줘도 화면은 psLookup()/psCanon() **한 곳**을 거친다 — 별칭 표는 DB(fc_playstyle_aliases)가 정본이고
+   export가 index.json `playstyle_aliases`로 싣는다(data.js loadIndex가 setPlaystyleAliases로 주입). 여기 사전을 옛 이름으로 다시 키잡지 말 것. */
+let _ALIASES = { "Rush Out": "1v1 Close Down", "Game Changer": "Gamechanger" };   // index.json 로드 전 폴백(같은 값)
+export function setPlaystyleAliases(map){ if (map && typeof map === 'object') _ALIASES = { ..._ALIASES, ...map }; }
+/* 이름(끝 `+` 허용) → EA 공식 이름. 별칭이 아니면 그대로(이 버전에 없는 잔존 이름도 지우지 않는다). */
+export function psCanon(name){
+  const raw = String(name ?? '').trim(); const plus = /\+$/.test(raw); const base = raw.replace(/\s*\+$/, '');
+  const c = _ALIASES[base]; return (c || base) + (plus ? '+' : '');
+}
+/* 사전 조회 — 옛 이름이 와도 공식 이름 키로 찾는다. */
+export function psLookup(name){ return PLAYSTYLES[psCanon(name).replace(/\s*\+$/, '')]; }
 export const PLAYSTYLES = {
   "Chip Shot": {
     "icon": "https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=180/2026/play-styles/1.2.png",
@@ -131,7 +143,7 @@ export const PLAYSTYLES = {
     "base": "크로스 캐칭 속도·궤적 인지·펀칭 리치와 파워 향상.",
     "plus": "모든 수치가 한층 더 향상된다."
   },
-  "Rush Out": {
+  "1v1 Close Down": {
     "icon": "https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=180/2026/play-styles/31.3.png",
     "base": "박스 밖으로 뛰쳐나가는 속도와 슛 반응 속도 향상.",
     "plus": "속도와 반응 속도가 대폭 향상된다."
@@ -161,7 +173,7 @@ export const PLAYSTYLES = {
     "base": "드리블 중 숄더 챌린지·쉴딩 효율 향상.",
     "plus": "드리블 중 숄더 챌린지·쉴딩 효율 향상(카탈로그상 +효과가 베이스와 동일 표기)."
   },
-  "Game Changer": {
+  "Gamechanger": {
     "icon": "https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=180/2026/play-styles/37.3.png",
     "base": "화려한 슛·트리벨라 슛 정확도 향상.",
     "plus": "정확도가 대폭 향상된다."

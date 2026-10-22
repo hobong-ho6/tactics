@@ -52,8 +52,19 @@ def export_all(db_path=None, window="2026-summer"):
                             FROM regimes r JOIN teams t ON t.code=r.team_code
                             WHERE r.end IS NULL ORDER BY r.is_main DESC, r.id""")
     versions = _rows(con, "SELECT code, released, notes FROM game_versions ORDER BY code")
+    # ⭐ PlayStyle 별칭(fc_playstyle_aliases · migration 121) — 화면은 playstyle-icons.js psLookup 한 곳에서 쓴다.
+    #    `current`는 현행 버전(core.game_version.current)의 alias→canonical(NULL=이 버전에 없는 잔존 이름은 제외).
+    from core.playstyles import alias_map as _ps_alias_map
+    try:
+        from core.game_version import current as _gv_current
+        _gv_now = _gv_current(con)
+    except Exception:
+        _gv_now = None
+    ps_aliases = {"current": {a: c for a, c in _ps_alias_map(con, _gv_now).items() if c} if _gv_now else {},
+                  "by_version": {gv: _ps_alias_map(con, gv) for (gv,) in con.execute("SELECT code FROM game_versions")}}
     written.append(_write(SITE_DATA / "index.json",
-                          {"regimes": regimes, "game_versions": versions, "window": window}))
+                          {"regimes": regimes, "game_versions": versions, "window": window,
+                           "playstyle_aliases": ps_aliases}))
 
     # ── kernels/{GV}.json ────────────────────────────────────────────
     for (gv,) in con.execute("SELECT code FROM game_versions"):
@@ -867,6 +878,14 @@ def export_all(db_path=None, window="2026-summer"):
               ORDER BY m.date""", (rid, rid)):
             form.setdefault(r["label"], []).append([r["date"], r["rating"], r["competition"]])
         form = {k: v[-10:] for k, v in form.items()}   # 최근 10경기
+        # ⭐ Understat 선수·경기 창조 지표(현 시즌 · PL만 · core.understat) — 선수 화면 「경기를 푸는 축」 표기용.
+        from .understat import season_rows as _us_season
+        understat = {}
+        # 시즌 시작 연도 = 팀 최근 공식전 날짜 기준(7월 이후면 그 해 · 그 전이면 전해) — Understat season 표기와 같다.
+        _last = con.execute("SELECT MAX(date) FROM matches WHERE team_code=?", (code,)).fetchone()[0] or "2026-07-01"
+        season_start = int(_last[:4]) - (1 if int(_last[5:7]) < 7 else 0)
+        for r in _us_season(con, code, season_start):
+            understat.setdefault(r[0], []).append([r[2], r[3], r[4], r[6], round(r[7], 2), round(r[8], 2), round(r[10], 2), round(r[11], 2)])
         # 경기별 리포트 — 해석은 match_reports/match_player_reports, 원천 수치는
         # matches/player_matches/team_match_stats에서 같은 event_id로 묶는다.
         match_reports = _rows(con, """
@@ -937,6 +956,7 @@ def export_all(db_path=None, window="2026-summer"):
                        mpp.game_version,mpp.pos_label,mpp.role_id,gr.name role_name,
                        mpp.focus,mpp.fit_sim,mpp.starter,mpp.sort_order,mpp.rationale,
                        mpp.replaced_player_id,mpp.minute_on,mpp.fit_delta,mpp.alt_role,
+                       mpp.fit_sim_poss,mpp.fit_sim_def,mpp.alt_role_poss,mpp.fit_delta_poss,   -- 보유/비보유 분리 그리드 적합(migration 119)
                        mpp.source,mpp.confidence,
                        COALESCE(s.x,f.x) x, COALESCE(s.y,f.y) y
                 FROM match_player_prescriptions mpp
@@ -970,6 +990,11 @@ def export_all(db_path=None, window="2026-summer"):
             for h in hyp:
                 by_seq.setdefault(h["seq"], []).append(h)
             report["hypotheses"] = [dict(rows[-1], history=rows[:-1]) for _s, rows in sorted(by_seq.items())]
+            # ⭐ Understat 창조 지표(xGChain·xGBuildup · PL만) — 「경기를 푸는 축」 가설의 직접 지표(2026-10-22 · core.understat로 날짜+팀명 연결).
+            from .understat import match_rows as _us_rows
+            report["understat"] = [dict(player_id=r[0], minutes=r[6], xg=round(r[7], 2), xa=round(r[8], 2),
+                                        xg_chain=round(r[10], 2), xg_buildup=round(r[11], 2))
+                                   for r in _us_rows(con, code, report["date"])] if report.get("date") else []
             report["changes"] = _rows(con, """SELECT seq, minute, minute_to, title, detail FROM match_tactical_changes
                                               WHERE report_id=? ORDER BY seq""", (report["id"],))
             report["phase_metrics"] = _rows(con, """SELECT side, metric, seg_from, seg_to, value, n, note
@@ -1008,7 +1033,7 @@ def export_all(db_path=None, window="2026-summer"):
             "regime": rg, "slots": slots, "slot_canon": canon,
             "slot_candidates": slot_candidates,
             "squad": squad, "prescriptions": prescriptions,
-            "duties": duties, "player_stats": pstats, "departed": departed, "form": form,
+            "duties": duties, "player_stats": pstats, "departed": departed, "form": form, "understat": understat,
             "avg_positions": avg_positions,
             "match_reports": match_reports,
             "phase_metric_defs": PHASE_METRICS,   # 「경기 흐름」 지표 라벨·단위 정본(core.whoscored)

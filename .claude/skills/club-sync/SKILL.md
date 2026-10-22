@@ -539,6 +539,10 @@ python3 scripts/gaps.py squad     # 활성 스쿼드가 두 수집 축의 **조�
 .venv/bin/python scripts/collect_futgg_chem.py           # 케미 신호(AcceleRATE 등) — 기본 신규+오래된 순 30장 · 전수는 --all
 ```
 
+- ⭐ (2026-10-22 추가) `.venv/bin/python scripts/collect_futgg_meta_tactics.py` — fut.gg 커뮤니티 **메타 전술 대조군**(4-2-3-1 Wide·4-4-2·3-4-2-1 ·
+  3축·라인·대표 코드·11칸 분포)을 `team_tactic_setups kind='meta:futgg-<포메이션>-<날짜>'`로 **주 1회**(전체 회차) 적재한다. 등급 B 사용 통계 —
+  정본(optimal)을 바꾸는 근거가 아니라 인게임 A/B 대조군이다. `fut_tactic_setup_kind.py`는 meta를 후보에서 뺀다.
+
 - ⭐ **평소엔 안 바뀌지만 EA 패치 때 바뀐다.** 이 표들이 틀리면 **6대 스탯·케미·진화 계산이 통째로** 틀어진다
   (실증: `attributeFreeKickAccuracy` 오타 하나로 보유 89명의 PAS가 어긋났다 · G29가 같은 축을 감시한다).
 - ⚠️ 2026-09-27 기준 가장 낡은 것은 `fc_role_familiarity_map`(09-17)·`fc_chemistry_styles`(09-19)였다.

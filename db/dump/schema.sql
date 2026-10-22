@@ -398,7 +398,7 @@ CREATE TABLE match_player_prescriptions(
   sort_order INTEGER,
   rationale TEXT NOT NULL,
   source TEXT NOT NULL,
-  confidence TEXT NOT NULL, replaced_player_id INTEGER REFERENCES players(id), minute_on INTEGER, fit_delta REAL, alt_role TEXT,
+  confidence TEXT NOT NULL, replaced_player_id INTEGER REFERENCES players(id), minute_on INTEGER, fit_delta REAL, alt_role TEXT, fit_sim_poss REAL, fit_sim_def REAL, alt_role_poss TEXT, fit_delta_poss REAL,
   PRIMARY KEY(report_id,player_id),
   FOREIGN KEY(game_version,role_id,focus)
     REFERENCES game_role_focus(game_version,role_id,focus)
@@ -1447,3 +1447,22 @@ CREATE TABLE match_set_pieces(
   confidence TEXT
 );
 CREATE INDEX ix_match_set_pieces_m ON match_set_pieces(match_id, minute);
+CREATE TABLE fc_playstyle_aliases (
+  game_version TEXT NOT NULL,
+  alias        TEXT NOT NULL,          -- 저장 행·외부 소스에서 보이는 이름
+  canonical    TEXT,                   -- EA 공식 이름. NULL = 이 버전 목록에 없는 이름(FC24~25 잔존)
+  source       TEXT NOT NULL,
+  note         TEXT,
+  added        TEXT NOT NULL,
+  PRIMARY KEY (game_version, alias)
+);
+CREATE TABLE match_momentum(
+  id INTEGER PRIMARY KEY,
+  match_id INTEGER NOT NULL REFERENCES matches(id),
+  minute REAL NOT NULL,
+  value INTEGER NOT NULL,
+  source TEXT NOT NULL,
+  pulled TEXT NOT NULL,
+  UNIQUE(match_id, minute, source)
+);
+CREATE INDEX ix_match_momentum_m ON match_momentum(match_id, minute);

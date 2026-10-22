@@ -1283,6 +1283,45 @@ def run(db_path=None, verbose=True):
                                    f"collect_futgg_history.py --team {tc} --games {gv_now[2:]} --roster-date <오늘>")
     except Exception as _e:                       # noqa: BLE001  game_version 모듈·표가 없으면 건너뛴다
         pass
+    # ⭐ 2026-10-22 확장 ② — **경기 수집 회차마다 범위가 달라지지 않게 한다**(경기 데이터 결손 검토 §0·§5 #4).
+    #    실물: FotMob 경기별 선수 스탯(상대 박스 터치·라인 브레이킹)은 브라이튼전 1경기, WS 보유 x는 브뤼허전 1경기뿐이었다 —
+    #    같은 제공사 같은 호출인데 런북에 「필수」가 없어 회차마다 빠졌다. 이제 AVL 공식전(report_date ≥ 2026-10-14)의 45분+ 선수행에
+    #    ⑴ SofaScore 확장 키(core.sofascore.STAT_FIELDS_EXT 중 대표 3) ⑵ FotMob 경기별 키(touches_opp_box 등) ⑶ WS 이벤트 JSON 파일
+    #    (`reports/match-watch/data/*-ws-<matchId>.json`) ⑷ WS 수신 귀속 키(recv_* · report_date ≥ 2026-10-17)가 없으면 막는다.
+    #    보류 팀(CHE·LIV·ATM)은 G21_CARD_TEAMS와 같은 목록으로 제외. 소급: scripts/backfill_ss_stats.py · load_fotmob_match.py · load_ws_player_extras.py.
+    try:
+        import glob as _glob21
+        G21_MATCH_TEAMS = ["AVL"]
+        G21_SS_KEYS = ["long_att", "carries_ss", "aerials_won"]          # STAT_FIELDS_EXT 대표(롱볼·실측 운반·공중)
+        G21_FM_KEYS = ["fm_match_id"]                                   # GK는 Attack 절이 없어 touches_opp_box가 비는 게 정상
+        G21_RECV_KEYS = ["recv_n", "recv_x_mean", "recv_deep_n", "recv_prog_n", "recv_through_n"]
+        for tc in G21_MATCH_TEAMS:
+            for mid, date, opp, rdate, path in con.execute(
+                    """SELECT m.id, m.date, m.opponent, r.report_date, r.report_path FROM matches m
+                       JOIN match_reports r ON r.match_id=m.id
+                       WHERE m.team_code=? AND r.report_date>='2026-10-14' AND m.competition NOT LIKE '%Friendly%'""", (tc,)):
+                def _missing(keys):
+                    return con.execute(
+                        "SELECT COUNT(*) FROM player_matches pm WHERE pm.match_id=? AND pm.minutes>=45 AND ("
+                        + " OR ".join(f"json_extract(pm.stats_json,'$.{k}') IS NULL" for k in keys) + ")", (mid,)).fetchone()[0]
+                n_ss, n_fm = _missing(G21_SS_KEYS), _missing(G21_FM_KEYS)
+                if n_ss:
+                    g21_bad.append(f"#{mid} {date} {opp}: SofaScore 확장 키 결손 {n_ss}행 → backfill_ss_stats.py --match {mid}")
+                if n_fm:
+                    g21_bad.append(f"#{mid} {date} {opp}: FotMob 경기별 키 결손 {n_fm}행 → load_fotmob_match.py --resolve")
+                ws_files = _glob21.glob(str(ROOT / "reports" / "match-watch" / "data" / f"{date}-{tc.lower()}-ws-*.json"))
+                # WS JSON 보존 규칙은 10-22에 생겼고 앱 브라우저로만 받을 수 있다(headless는 Cloudflare) — 10-17 이후 경기부터 요구.
+                #   #119 페네르바흐체(2029163)는 미보존 상태로 남아 있다(HANDOFF 열린 결손).
+                if rdate < "2026-10-17":
+                    continue
+                if not ws_files:
+                    g21_bad.append(f"#{mid} {date} {opp}: WS 이벤트 JSON 미보존 → reports/match-watch/data/{date}-{tc.lower()}-ws-<matchId>.json(앱 브라우저)")
+                else:
+                    n_rv = _missing(G21_RECV_KEYS)
+                    if n_rv:
+                        g21_bad.append(f"#{mid} {date} {opp}: WS 수신 귀속 키(recv_*) 결손 {n_rv}행 → load_ws_player_extras.py")
+    except Exception as _e:                       # noqa: BLE001  표·컬럼이 없으면 건너뛴다(첫 수집을 막지 않는다)
+        pass
     ok21 = not g21_bad
     if verbose:
         detail = ("❌ " + " · ".join(g21_bad[:3])
@@ -1921,6 +1960,37 @@ def run(db_path=None, verbose=True):
               + ("✅" if not g35 else "❌ site/evolutions.html TREQ에 판정을 추가할 것 — " + " · ".join(g35)))
     if g35:
         fails.append("G35")
+    # G35 ⑵ — ⛔ **PlayStyle 이름 어휘**(2026-10-22 · migration 121 · FC27 시스템 검토 §4 「어휘 드리프트」).
+    #   EA 공식 이름(1v1 Close Down · Gamechanger)과 fut.gg·저장 행의 옛 이름(Rush Out · Game Changer)이 섞여 있었다.
+    #   정본 ∪ 별칭(core/playstyles.vocab) 밖의 이름이 현행 버전 카드 데이터(fut_club_players.current_playstyles ·
+    #   player_game_stats.playstyles 현행 버전)에 있으면 실패 — 새 이름이 생기면 fc_playstyle_ids/fc_playstyle_aliases에 먼저 넣는다.
+    try:
+        from core.playstyles import vocab as _ps_vocab, split_list as _ps_split, split_plus as _ps_plus
+        _gv35 = gv_now if "gv_now" in dir() else None
+        if not _gv35:
+            from core.game_version import current as _gv_cur35
+            _gv35 = _gv_cur35(con)
+        _voc35 = _ps_vocab(con, _gv35)
+        _bad35 = {}
+        for (s,) in con.execute("SELECT current_playstyles FROM fut_club_players WHERE current_playstyles IS NOT NULL"):
+            for nm in _ps_split(s):
+                b, _ = _ps_plus(nm)
+                if b not in _voc35:
+                    _bad35[b] = _bad35.get(b, 0) + 1
+        for (s,) in con.execute("SELECT playstyles FROM player_game_stats WHERE game_version=? AND playstyles IS NOT NULL", (_gv35,)):
+            for nm in _ps_split(s):
+                b, _ = _ps_plus(nm)
+                if b not in _voc35:
+                    _bad35[b] = _bad35.get(b, 0) + 1
+        if verbose:
+            print(f"G35 ⑵ PlayStyle 어휘({_gv35} 정본 {len(_voc35)}=36+별칭): 모르는 이름 {len(_bad35)} "
+                  + ("✅" if not _bad35 else "❌ fc_playstyle_ids/fc_playstyle_aliases에 먼저 넣을 것 — "
+                     + " · ".join(f"{k}×{v}" for k, v in sorted(_bad35.items()))))
+        if _bad35:
+            fails.append("G35")
+    except Exception as _e35:                                # 표가 없는 옛 DB(migration 121 이전)는 건너뛴다
+        if verbose:
+            print(f"G35 ⑵ PlayStyle 어휘: ⚠️ 건너뜀({_e35})")
 
     # G36 — ⛔ **메인 DB에 `sqlite3.connect`를 직접 쓰지 않는다.** 2026-10-19 신설(사용자 「대기·순번제」)
     #   직접 열면 ⑴ 기본 5초 만에 「database is locked」로 넘어지고 ⑵ 「작성 중」 표시가 안 남아 ship.py가

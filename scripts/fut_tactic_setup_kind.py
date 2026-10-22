@@ -46,8 +46,9 @@ def judge(con, account_id, pulled):
                     "WHERE account_id=? AND pulled=?", (account_id, pulled)).fetchone()
     form = FUT_FORMATION.get(t[0], t[0])
     gv, season = live_on(con, pulled[:10]), season_of(pulled[:10])
+    # ⛔ `meta:*`(fut.gg 커뮤니티 메타 대조군 · 2026-10-22)는 우리 프리셋이 아니다 — 후보에서 뺀다(우연히 3축이 같아도 「켜 둔 프리셋」이 아니다).
     cands = con.execute("""SELECT id, kind FROM team_tactic_setups WHERE regime_id=? AND game_version=? AND season=?
-                           AND kind NOT LIKE '%-deprecated' AND formation=? AND build_up_style=? AND defensive_approach=?
+                           AND kind NOT LIKE '%-deprecated' AND kind NOT LIKE 'meta:%' AND formation=? AND build_up_style=? AND defensive_approach=?
                            AND line_height=? ORDER BY kind""", (REGIME, gv, season, form, t[1], t[2], t[3])).fetchall()
     notes = []
     kinds = [k for _, k in cands]

@@ -22,8 +22,34 @@ STAT_FIELDS = [
     ("recoveries", "ballRecovery"), ("shots_on", "onTargetScoringAttempt"),
     ("shots_total", "totalShots"), ("clearances", "totalClearance"),
     ("saves", "saves"),
+    # ⭐ 2026-10-22 확장(경기 데이터 결손 검토 §3-1) — lineups.players[].statistics가 주는데 안 받던 것.
+    #    같은 호출·같은 직렬화 경로라 **여기 한 줄이 어휘 정본**이다(두 번째 목록을 만들지 않는다).
+    #    이름은 FotMob 경기별 키(#86 brighton)와 겹치지 않게 SofaScore 쪽은 접미사 없이 두되 의미가 같은 것(long_att 등)은
+    #    같은 이름을 쓴다 — 적재 시 기존 키는 덮지 않는다(scripts/backfill_ss_stats.py).
+    ("long_att", "totalLongBalls"), ("long_acc", "accurateLongBalls"),
+    ("crosses_att", "totalCross"), ("crosses_acc", "accurateCross"),
+    ("dribbles_att", "totalContest"), ("dribbles_succ", "wonContest"),
+    ("aerials_won", "aerialWon"), ("aerials_lost", "aerialLost"),
+    ("dispossessed", "dispossessed"), ("poss_lost", "possessionLostCtrl"),
+    ("big_chance_created", "bigChanceCreated"), ("big_chance_missed", "bigChanceMissed"),
+    ("was_fouled", "wasFouled"), ("fouls", "fouls"), ("blocks", "outfielderBlock"),
+    ("challenge_lost", "challengeLost"), ("penalty_conceded", "penaltyConceded"),
+    ("offsides", "totalOffside"), ("xgot", "expectedGoalsOnTarget"),
+    ("own_half_pass_att", "totalOwnHalfPasses"), ("own_half_pass_acc", "accurateOwnHalfPasses"),
+    ("opp_half_pass_att", "totalOppositionHalfPasses"), ("opp_half_pass_acc", "accurateOppositionHalfPasses"),
+    # ⭐ 운반 — SofaScore가 2026-10-22 확인 시점에 **실측 운반**을 준다(ballCarriesCount 등). WS 추정(carry_est_*)의 실측 짝.
+    ("carries_ss", "ballCarriesCount"), ("carries_prog_ss", "progressiveBallCarriesCount"),
+    ("carries_dist_m_ss", "totalBallCarriesDistance"), ("carries_prog_dist_m_ss", "totalProgressiveBallCarriesDistance"),
+    ("progression_m_ss", "totalProgression"),
+    # GK — 스위핑(gk_ballplaying 재검토 조건 「3경기 중 2경기 KeeperSweeper」)을 이제 잴 수 있다.
+    ("runs_out", "totalKeeperSweeper"), ("runs_out_succ", "accurateKeeperSweeper"),
+    ("high_claims", "goodHighClaim"), ("saves_in_box", "savedShotsFromInsideTheBox"),
+    ("goals_prevented", "goalsPrevented"),
 ]
-FLOATS = {"rating", "xg", "xa"}
+FLOATS = {"rating", "xg", "xa", "xgot", "carries_dist_m_ss", "carries_prog_dist_m_ss", "progression_m_ss",
+          "goals_prevented"}
+# 2026-10-22 확장분(소급·게이트가 「확장 수집 완료」를 판정하는 기준 키) — STAT_FIELDS에서 파생, 따로 적지 않는다.
+STAT_FIELDS_EXT = [n for n, _ in STAT_FIELDS[19:]]
 
 
 def js_collect(player_id, date_from, date_to, pages=2):

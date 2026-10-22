@@ -146,7 +146,7 @@
 | Far Reach | 원거리 선방(다이빙) | 다이빙/점프 애니메이션 다양화 + 박스 밖 슛 대응력 향상 |
 | Footwork | 발밑 선방 | 풋세이브 성능 향상 + 전용 애니메이션 |
 | Cross Claimer | 크로스 캐칭 | 크로스 차단 속도 향상 + 전용 캐칭 애니메이션 |
-| Rush Out | 박스 밖 스위핑(전진 저지) | 박스 밖으로 뛰쳐나가는 속도 향상 + 반사/예측 전용 애니메이션 |
+| Rush Out → **1v1 Close Down**(FC27 개명 · 2026-10-22) | 박스 밖 스위핑(전진 저지) | 박스 밖으로 뛰쳐나가는 속도 향상 + 반사/예측 전용 애니메이션 |
 | Deflector | 슛 저지(막지 못하는 상황) | 쳐낸 볼이 위험 지역이 아니라 안전한 곳(동료 쪽)으로 향하도록 보정 + 전용 애니메이션 |
 | Far Throw | 골킥/배급 | 스로 파워·거리 향상 |
 
@@ -162,6 +162,11 @@
   Rush Out·Pinged Pass·Long Ball이 기본 세트.
 - ⚠️ **FC26은 전작 대비 쉴딩 자체가 약화**됐다는 커뮤니티 평가가 많다(자연 쉴딩 판정 약화로 상대가 더 쉽게
   볼을 빼앗음) — Press Proven·Enforcer 미보유 선수의 볼 운반 시 상대와의 거리를 더 벌리는 식으로 보완할 것.
+
+### 4.1 [FC27] 카탈로그 어휘 메모 (2026-10-22 · migration 121)
+
+- FC27 PlayStyle은 **36종**(삭제·신설 0 · 개명 1 · 표기 1): **Rush Out → 「1v1 Close Down」**(EA what-are-playstyles 2026-09-25 · fut.gg slug `rush-out` 유지) · **「Gamechanger」** 한 단어. 위 §3 표의 FC26 이름은 그대로 두고 별칭 표 `fc_playstyle_aliases`로 잇는다 — 읽기는 `core/playstyles.py`, 화면은 `playstyle-icons.js psLookup` 한 곳, 게이트는 G35 ⑵. FC24~25 잔존 이름(Flair·Trivela·Power Header·Aerial)은 「FC27 없음」(canonical NULL).
+- Incisive Pass도 핑드 패스·티키타카와 같이 **수신자 트랩 오차 감소가 제거**됐다(`game_system_changes` #60 · limits #31) — §6.1 「패서 PlayStyle로 리시버를 덮지 않는다」는 패스 PlayStyle 3종 전부에 적용된다.
 
 ## 5. DB 반영 규칙
 

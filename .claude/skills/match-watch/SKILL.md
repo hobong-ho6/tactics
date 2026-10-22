@@ -38,6 +38,14 @@ for t in AVL CHE LIV ATM; do .venv/bin/python scripts/collect_fotmob_players.py 
 ## 2. 선수 실측 수집
 - 라인업 API로 **출전 선수 전원** → `core.sofascore.js_collect()` 스니펫으로 일괄 수집
   → `parse_collected()` → `player_matches` INSERT (source·confidence 필수).
+- ⭐⭐ **경기마다 필수 3종 — 빠지면 G21이 막는다**(2026-10-22 신설 · 경기 데이터 결손 검토: 같은 호출인데 회차마다 범위가 달라
+  FotMob 경기별 스탯은 1경기, WS 보유 x는 1경기뿐이었다). ⑴ SofaScore 확장 필드는 `core.sofascore.STAT_FIELDS`(롱볼·크로스·공중·
+  ⭐ 실측 운반 `carries_ss`·GK 스위핑 `runs_out`)가 어휘 정본이라 `collect_event.py`가 그대로 받는다 — 옛 행 소급은
+  `scripts/backfill_ss_stats.py --team AVL --match N`. ⑵ FotMob 경기별 선수 스탯(상대 박스 터치·라인 브레이킹·파이널서드 패스·PL은 피지컬):
+  `.venv/bin/python scripts/load_fotmob_match.py --team AVL --resolve`(페이지 안 fetch · 키는 `collect_fotmob_players.LABELS` 사전).
+  ⚠️ FotMob 경기 응답에 **운반(Carries)은 없다**(2026-10-22 확인 · UCL·PL 모두) — 실측 운반은 SofaScore 몫. ⑶ WhoScored 이벤트 JSON을
+  `reports/match-watch/data/<날짜>-<팀>-ws-<matchId>.json`으로 보존(§2-2a) → `load_ws_player_extras.py`(수신 귀속·운반 추정). 모멘텀은
+  `scripts/load_momentum.py --team AVL --match N --propose`(SofaScore graph · migration 120 · 흐름 3묶음 경계 **제안**).
 - ⛔ **`event_id` 부호 규약**: SofaScore 수집은 event id 그대로(양수), **FotMob 수집은 `−matchId`**(음수).
   양수 공간은 SofaScore 전용이다 — FotMob matchId를 양수로 넣으면 경기 동일성이 깨진다(G20 ⑵).
 - 45분 미만 교체 출전도 스탯·역할 리포트에는 포함한다. 단 대표 히트맵·시즌 처방 집계는 기존 기준

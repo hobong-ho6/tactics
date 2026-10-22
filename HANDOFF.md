@@ -44,7 +44,9 @@
 - [ ] **헤밍스 Zoomaestro(2602) 단계 완료 기록** — lv1 시작 10-20(사용자는 부엔디아 추천 대신 헤밍스) · 단계마다 `complete` · 완주 OVR 65→72 · 다음 싱크 EA 실측 대조
 - [ ] **SBC 101 카드 반영 확인** — 10-20 「기록만」 완료(낸 11장 모름) · 다음 클럽 싱크가 소모 카드를 잡는지 · 그 전 다른 SBC 제출 시 카드 겹침 주의
 - [ ] **cron FotMob 부분/0바이트 원인** — 10-12·10-17 09/21시 0바이트, 10-16 21시는 AVL 8건 뒤 종료·예외 미기록. 팀별 종료코드/예외 기록과 실패 팀 재시도 구조 필요
-- [ ] **000⑴ 패치 감시 후속** — FC27 Launch Update 미적재 3건(ICON 국적 +2→+1 · Hero 리그 +2→+1 · Hall of FUT) EA 원문 대조 후 적재 → 케미 재검산 · 스크립트 `reports/patch-watch/wip/2026-09-21-launch-update-insert.py`
+- [x] **000⑴ 패치 감시 후속** — 10-22 종료: EA 원문(09-14) 대조 후 `game_system_changes` #58(케미 A)·#59(Campaign Role++ A) 적재 · 케미 상수는 코드에 없고 fut.gg `chem_extra`를 읽으므로 재검산은 다음 클럽 싱크의 케미 신호 수집이 그대로 수행(#28 impact) · 같은 회차 #57(10-13 재확인)·#60(Incisive)·#61(PlayStyle 36·개명)·#62(TU 동결) · limits #31 · `scripts/patch_watch_index.py`(EA 색인 차집합)
+- [ ] **★ FC27 라인 슬라이더 상하한 메뉴 실측(30분 · 플레이 불필요)** — Deep에서 31, Balanced에서 61, High에서 91 입력 가능 여부 + 구간 경계에서 Run Tracking 문구 변화 스크린샷 4장 → `core/team_settings.py` 구간 30/60/90 재정렬(새 규칙 버전 · G15 rule_note) · [검토](reports/research/2026-10-22-fc27-system-gap-review.md) §5
+- [ ] **★ FC27 첫 인게임 캡처(T6·T7 재개)** — 현재 코드 `7ZTFKBu$37p7`로 비조작 3경기 캡처(Competitive 명기) → `ingame_captures` FC27 ≥3 · `v_kernel_fidelity` FC27 ≥1 · 대조군 코드 `xYJb3Bj37tdy`(meta:futgg-2026-10-22)
 - [ ] **000⑶ 지모알로바 Creative Crossroads 3단계** — 마감 09-30 17:00 UTC 경과 · 적용 여부 미확인 → `fut_evolution_log` 대조 · 적용됐으면 연관 메뉴(런북 표) 한 회차에 닫기
 - [ ] **000⑷⑸ FC27 고압박·라인 높이** — Team Press 자기 수비 3분의 1 무효 · `core/team_settings.py` 구간이 EA 1–30/31–60 밖 → FC27 슬라이더 실측 선행 · 정정은 새 행
 - [ ] **000⑹ 10월 중순 리서치 재조사** — C·B등급 수집(First Touch↔볼컨 · 역할/포커스 이동량 · 스탯 선형/계단 · 반응력 실체)

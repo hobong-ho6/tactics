@@ -2,6 +2,7 @@
    데이터는 site/data/*.json (scripts/export.py 산출물) — 손편집 금지. */
 
 import { onSchemeChange } from './tokens.js';
+import { setPlaystyleAliases } from './playstyle-icons.js';
 
 const BASE = new URL('.', import.meta.url).href.replace(/assets\/$/, '');
 
@@ -15,7 +16,9 @@ async function j(path){
   return r.json();
 }
 
-export const loadIndex   = () => j('index.json');
+/* ⭐ index.json을 읽을 때 PlayStyle 별칭 표(fc_playstyle_aliases → export `playstyle_aliases`)를 playstyle-icons.js에 주입한다 —
+   화면이 옛 이름(Rush Out)을 공식 이름(1v1 Close Down)으로 푸는 길은 psLookup/psCanon 한 곳뿐이다(2026-10-22 · migration 121). */
+export const loadIndex   = async () => { const idx = await j('index.json'); setPlaystyleAliases(idx.playstyle_aliases?.current || null); return idx; };
 export const loadTeam    = code => j(`teams/${code}.json`);
 export const loadKernels = gv => j(`kernels/${gv}.json`);
 /* ⭐ 현행 게임 버전 — index.json의 game_versions.released로 정한다(core/game_version.current와 같은 규칙 · 2026-10-22).

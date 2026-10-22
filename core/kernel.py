@@ -87,6 +87,34 @@ class Kernel:
                 best = (role, focus, s)
         return best
 
+    def top2(self, map25, x, slot_type):
+        """슬롯 x·역할군에서 적합 상위 2 조합 [(role, focus, sim), (role, focus, sim)] — Δ(무결정 판정)용."""
+        v = decode(map25)
+        scored = []
+        for (role, focus), lst in self.variants.items():
+            if self.role_group.get(role) != slot_type:
+                continue
+            pm = min(lst, key=lambda t: abs(t[0] - x))[1]
+            scored.append((role, focus, cos(v, pm)))
+        scored.sort(key=lambda t: -t[2])
+        return scored[:2]
+
+    def fit_split(self, map25_poss, map25_def, role, focus, x, slot_type):
+        """보유/비보유 분리 그리드 적합 병기(migration 119 · 2026-10-22). 같은 커널·같은 슬롯 x.
+        → dict(fit_sim_poss, fit_sim_def, alt_role_poss, fit_delta_poss). 그리드가 없으면 그 칸은 None.
+        alt_role_poss = 보유 그리드 1위가 기록 역할과 다르면 1위, 같으면 2위("role/focus .sim")."""
+        out = dict(fit_sim_poss=None, fit_sim_def=None, alt_role_poss=None, fit_delta_poss=None)
+        if map25_poss:
+            out["fit_sim_poss"] = round(self.fit(map25_poss, role, focus, x), 4)
+            top = self.top2(map25_poss, x, slot_type)
+            if len(top) == 2:
+                out["fit_delta_poss"] = round(top[0][2] - top[1][2], 4)
+                alt = top[0] if (top[0][0], top[0][1]) != (role, focus) else top[1]
+                out["alt_role_poss"] = f"{alt[0]}/{alt[1]} {alt[2]:.3f}"
+        if map25_def:
+            out["fit_sim_def"] = round(self.fit(map25_def, role, focus, x), 4)
+        return out
+
     def best_fit_slot(self, map25, regime_id, pos, db_path=None):
         """slots 테이블의 regime 기하로 best_fit. (팀 고유 x — 빌라 x 재사용 금지)"""
         con = connect_db(db_path or DB)

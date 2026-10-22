@@ -5,8 +5,8 @@
       다시 쓰면 확대할 때 자국이 남는다). 진화로 값이 달라진 카드만 **카드 밖에 배지**로 현재 OVR을 알린다.
    ⭐ 배치는 fut.gg 슬롯 순서 규약을 따른다(f4231a: 0 GK · 1 RB · 2 CB · 3 CB · 4 LB · 5 CDM · 6 CDM ·
       7 RM · 8 LM · 9 CAM · 10 ST, **우→좌**). */
-import { PLAYSTYLES } from './playstyle-icons.js';
-export { PLAYSTYLES };   // 화면들이 같은 사전을 쓰도록 재수출(설명·아이콘 중복 방지)
+import { PLAYSTYLES, psLookup, psCanon } from './playstyle-icons.js';
+export { PLAYSTYLES, psLookup, psCanon };   // 화면들이 같은 사전을 쓰도록 재수출(설명·아이콘 중복 방지) · 조회는 psLookup 한 곳(2026-10-22)
 import { repaintEvoCard, replateCard, rarityLevel } from './evocard.js?v=20260927a';
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -556,9 +556,9 @@ export function compareCards(a, b, ctx = {}) {
     const list = String(c.current_playstyles || '').split(',').map(x => x.trim()).filter(Boolean);
     if (!list.length) return '<span class="dim">없음</span>';
     return list.map(nm => {
-      const plus = /\+$/.test(nm), base = nm.replace(/\s*\+$/, '');
-      const d = PLAYSTYLES[base];
-      const uniq = !other.includes(nm);
+      const plus = /\+$/.test(nm), base = psCanon(nm).replace(/\s*\+$/, '');
+      const d = psLookup(nm);
+      const uniq = !other.map(psCanon).includes(psCanon(nm));
       return `<span class="fc-ps${plus ? ' plus' : ''}${uniq ? ' uniq' : ''}" title="${esc(base)}">
         ${d?.icon ? `<img src="${esc(d.icon)}" alt="" loading="lazy">` : ''}${esc(base)}${plus ? '<i>+</i>' : ''}</span>`;
     }).join('');
@@ -703,8 +703,8 @@ function psBlock(csv) {
     /* ⭐ PlayStyle+는 **이름 끝 `+`**로 표현된다(2026-09-20 확인 — `Dead Ball+`).
        사전은 `+` 없는 이름으로 키가 잡혀 있어, 떼고 조회하지 않으면 아이콘이 통째로 빠진다. */
     const plus = /\+$/.test(nm);
-    const base = nm.replace(/\s*\+$/, '');
-    const d = PLAYSTYLES[base];
+    const base = psCanon(nm).replace(/\s*\+$/, '');
+    const d = psLookup(nm);
     const tip = d ? (plus ? (d.plus || d.base) : d.base) || '' : base;
     return `<span class="fc-ps${plus ? ' plus' : ''}" title="${esc(base)}${plus ? '+' : ''} — ${esc(tip)}">
       ${d?.icon ? `<img src="${esc(d.icon)}" alt="" loading="lazy">` : ''}${esc(base)}${plus ? '<i>+</i>' : ''}</span>`;

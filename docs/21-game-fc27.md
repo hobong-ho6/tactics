@@ -85,3 +85,11 @@ EA 1차 피치노트 4건(Gameplay Deep Dive 07-29 · FUT Deep Dive · Career De
 2. **09-18 얼리액세스** → fut.gg `/api/fut/roles/` FC27 응답 확보 → `migrate_fc27.py --roles … --check` → 카운트·diff 확정 → obs.
 3. `EXPECTED["FC27"]` 추가 → `gates.py` G1/G5에 FC27 앵커 **새 행**(FC26 앵커 유지) → `--apply`(사용자 승인) → export → G5 JS 동치 확인.
 4. 팀 전술 파라미터(`game_tactic_params` FC27)는 게임 내 설정 화면 확인 후 행 추가 — 피치노트에 변화 언급 없음.
+
+## 2026-10-22 추가 — 출시 후 시스템 재검토 요약 ([전문](../reports/research/2026-10-22-fc27-system-gap-review.md))
+
+- 출시 후 TU v1.0.1~v1.0.4·Season 2(10-22)까지 **게임플레이 밸런스 변경 0건**(gsc #62) · 풀백 조기 하강은 10-13에 「신중」으로 재확인 · 수정 일정 없음(gsc #57 · limits #30 유효).
+- 라인 높이 4구간·빌드업 3종 정의는 FC27에서 EA가 다시 쓴 적이 없다(커뮤니티 표는 FC25 전재) → `core/team_settings.py` 구간은 **인게임 슬라이더 메뉴 실측**으로만 닫힌다(HANDOFF ★).
+- 역할표 FC26 전항 일치 재확인 · PlayStyle 36종(개명 Rush Out→1v1 Close Down · migration 121 별칭 표) · Incisive Pass 수신 보정 제거(gsc #60) · 케미 ICON/Hero +1 EA 원문(gsc #58 · HANDOFF 000⑴ 종료).
+- 메타 대조군: fut.gg 커뮤니티 전술 통계를 `team_tactic_setups kind='meta:futgg-<포메이션>-<날짜>'`로 적재(`scripts/collect_futgg_meta_tactics.py` · 등급 B · 인게임 A/B 대조군 전용 — 정본 변경 근거 아님).
+- EA 뉴스 색인 차집합 검사 `scripts/patch_watch_index.py` — 패치 감시 회차 §1에 편입.

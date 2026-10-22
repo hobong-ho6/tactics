@@ -84,11 +84,12 @@ export const PLAYSTYLES = [
   { cat: 'gk', name_kr: '파 리치', name_en: 'Far Reach', trigger: '원거리 선방(다이빙)', effect: '다이빙/점프 애니메이션 다양화 + 박스 밖 슛 대응력 향상' },
   { cat: 'gk', name_kr: '풋워크', name_en: 'Footwork', trigger: '발밑 선방', effect: '풋세이브 성능 향상 + 전용 애니메이션' },
   { cat: 'gk', name_kr: '크로스 클레이머', name_en: 'Cross Claimer', trigger: '크로스 캐칭', effect: '크로스 차단 속도 향상 + 전용 캐칭 애니메이션' },
-  { cat: 'gk', name_kr: '러시 아웃', name_en: 'Rush Out', trigger: '박스 밖 스위핑(전진 저지)', effect: '박스 밖으로 뛰쳐나가는 속도 향상 + 반사/예측 전용 애니메이션' },
+  { cat: 'gk', name_kr: '1 대 1 클로즈 다운(옛 러시 아웃)', name_en: '1v1 Close Down', trigger: '박스 밖 스위핑(전진 저지)', effect: '박스 밖으로 뛰쳐나가는 속도 향상 + 반사/예측 전용 애니메이션 · FC27에서 Rush Out → 1v1 Close Down으로 개명(EA 2026-09-25)' },
   { cat: 'gk', name_kr: '디플렉터', name_en: 'Deflector', trigger: '슛 저지(막지 못하는 상황)', effect: '쳐낸 볼이 위험 지역이 아니라 안전한 곳(동료 쪽)으로 향하도록 보정 + 전용 애니메이션' },
   { cat: 'gk', name_kr: '파 스로우', name_en: 'Far Throw', trigger: '골킥/배급', effect: '스로 파워·거리 향상' },
 ];
 export const PLAYSTYLE_NOTE = '⚠️ FC26에서 Trivela·Flair·Power Header·Aerial 4종이 폐지되고 Enforcer 등 5종으로 재구성됐다 — 전작(FC25) 자료를 그대로 인용하지 말 것. ' +
+  'FC27은 총 36종(삭제·신설 0 · 개명 1: Rush Out → 1v1 Close Down · 표기 Gamechanger) — 옛 이름은 별칭 표(fc_playstyle_aliases · 2026-10-22)로 잇는다. ' +
   '⭐ 공통 원칙: PlayStyle은 대부분 패시브다 — 그 상황에서 자동으로 보정치가 얹힌다. +(플러스) 버전은 효과가 과장된 수준으로 강화된다(실존 선수의 특출난 능력치 반영, EA 비공개 수치). ' +
   '박스투박스 CM은 Pinged Pass+Press Proven, 풀백은 Bruiser+/Intercept+/Quick Step+/Pinged Pass+, 스트라이커는 Finesse Shot+/Low Driven+가 상위 빌드의 공통축.';
 

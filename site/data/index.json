@@ -16,6 +16,28 @@
    "released": "2026-09-25"
   }
  ],
+ "playstyle_aliases": {
+  "by_version": {
+   "FC25": {},
+   "FC26": {},
+   "FC27": {
+    "Aerial": null,
+    "Flair": null,
+    "Game Changer": "Gamechanger",
+    "Long Ball": "Long Ball Pass",
+    "Low Driven": "Low Driven Shot",
+    "Power Header": null,
+    "Rush Out": "1v1 Close Down",
+    "Trivela": null
+   }
+  },
+  "current": {
+   "Game Changer": "Gamechanger",
+   "Long Ball": "Long Ball Pass",
+   "Low Driven": "Low Driven Shot",
+   "Rush Out": "1v1 Close Down"
+  }
+ },
  "regimes": [
   {
    "id": 1,

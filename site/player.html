@@ -92,7 +92,7 @@ const vizW = (el, cap, pad = 0) => Math.min(cap, Math.max(320, (el?.clientWidth 
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
 import { annotate, mountGlossaryTips, glTip } from './assets/glossary.js';
 import { prose } from './assets/prose.js';
-import { PLAYSTYLES } from './assets/playstyle-icons.js';
+import { PLAYSTYLES, psLookup, psCanon } from './assets/playstyle-icons.js';
 import { repaintEvoCard, replateCard, rarityLevel } from './assets/evocard.js?v=20260927a';
 /* ⛔ 진화 경로의 소진·프리미엄 판정은 **진화 메뉴와 같은 모듈**을 쓴다(2026-09-22 전수 조사) */
 import { evoRules } from './assets/evorules.js?v=20261018';
@@ -567,8 +567,8 @@ function renderCard(sel, g0, g26, g27, isGkRow){
   const styles = String(gg.playstyles ?? '').split(/[;,]/).map(s=>s.trim()).filter(Boolean);
   const pschip = raw => {
     const plus = raw.endsWith('+');
-    const name = plus ? raw.slice(0, -1) : raw;
-    const def = PLAYSTYLES[name];
+    const name = psCanon(raw).replace(/\s*\+$/, '');   // 옛 이름(Rush Out)도 공식 이름(1v1 Close Down)으로 — migration 121
+    const def = psLookup(raw);
     const tip = def ? (plus ? def.plus : def.base) : '';
     return `<div class="pschip gl${plus ? ' plus' : ''}" tabindex="0" data-tip="${esc(tip)}" title="${esc(tip)}">
       ${def ? `<img src="${esc(def.icon)}" alt="">` : '<span class="pschip-noicon">?</span>'}

@@ -44,7 +44,8 @@ G12 경기 리포트(필수 섹션·수집 선수 전원·원문·경기 분석 
 > **G8+** 현행 버전·현 시즌 `opt:*` 선발 11행이 `slot_canon_roles` 역할/포커스와 다르거나 `player_status` 장기 부상이면 실패(AVL만 — 보류 팀 제외) ·
 > **G1/G3/G5** FC26 고정 → 현행 버전(`core.game_version.current`) 루프 · **G22 ⑵-2b** 비현행 버전 `loadKernels('FC2x')` 리터럴 금지(화면은 `loadCurrentKernels()`) ·
 > **G37 ⑸** AVL 리포트(≥10-14)는 `match_game_setups.shape_in_possession/shape_out_possession`(migration 116) 필수 ·
-> **G21** 현행 버전 출시 후 `player_game_stats` 스냅샷 0행인 관리 팀 실패 · **G23** 2026-08-12 이후 공식전 `player_matches`에 `phase_lead/level/trail` 결손 실패(정본 `core/phase_minutes.py`).
+> **G21** 현행 버전 출시 후 `player_game_stats` 스냅샷 0행인 관리 팀 실패 · **G23** 2026-08-12 이후 공식전 `player_matches`에 `phase_lead/level/trail` 결손 실패(정본 `core/phase_minutes.py`) ·
+> **G35 ⑵** PlayStyle 이름 어휘(migration 121 `fc_playstyle_aliases` · 정본 36 ∪ 별칭 · `core/playstyles.py`) 밖의 이름이 현행 버전 카드 데이터에 있으면 실패 — `team_tactic_setups.kind='meta:*'`(fut.gg 메타 대조군)는 prescriptions `KIND_RE` 대상이 아니며 `fut_tactic_setup_kind.py` 후보에서 제외.
 > ⭐ **2026-10-22 P2 결손 3건(리서치 §2.3 7·9·10 · migration 117~118)**: **G37 ⑹** AVL 리포트(report_date ≥ 2026-10-22)는 `match_phase_metrics` side='v' metric='gk_long_share' ≥1행(계산 정본 `core.whoscored.segment_metrics(gk_ids=…)` · WS JSON 없으면 SS 선수 스탯 1행) · `match_set_pieces`(117 · 코너/FK/PK 키커·타깃 — `load_whoscored.py --apply`가 qualifier로 자동 적재 · 계산 `core.whoscored.set_pieces`) · `fut_tactics.setup_kind/setup_diff`(118 · pulled 코드 ↔ `team_tactic_setups.kind` — `fut_tactic_setup_kind.py` · club_sync 전술 단계).
 
 > ⭐ **G8+ · G12 확장 · G15는 2026-09-08 점검에서 신설**(사용자 지시 2·5번). G8+가 잡은 실물: CHE `fc26:opt` 선발 **12명**

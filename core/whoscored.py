@@ -15,6 +15,7 @@ WhoScored 원본: **x = 그 팀의 공격 방향 0~100, y 낮음 = 오른쪽**(S
 from .encode import cells_from_points, encode
 
 __all__ = ["ppda", "def_x", "phase_cells", "segment_metrics", "set_pieces", "gk_ids_of", "PHASE_METRICS", "PHASE_GROUPS",
+           "receptions", "RECV_METHOD",
            "PPDA_METHOD", "DEF_X_METHOD", "carry_est", "CARRY_EST_METHOD"]
 
 PPDA_DEN = {"Tackle", "Interception", "Challenge", "Foul"}
@@ -246,3 +247,41 @@ def carry_est(events, player_id):
                     m_sum += dx * 1.05
         prev = e
     return dict(carry_est_n=n, carry_est_prog10_n=prog, carry_est_prog_m_sum=round(m_sum, 1), carry_est_method=CARRY_EST_METHOD)
+
+
+# ── 수신 귀속(receptions) (2026-10-22 · 경기 데이터 결손 검토 §2 「수신 위치 — JSON엔 있는데 귀속 함수가 없다」) ──────────
+# Opta 이벤트는 패스의 끝 좌표(PassEndX/Y = endX/endY)를 패서 행에 둔다. 「누가 어디서 받았나」는 **같은 팀의 다음 볼 이벤트 주체**를
+# 수신자로 귀속해 얻는다. 대조표 #13·#19(부엔디아·맥긴 내려와 받기)·#16(알리송 깊은 수신)이 손계산하던 값의 정본.
+RECV_METHOD = ("수신 = 같은 팀 성공 패스(endX/endY 있음 · 패서≠본인) 직후 10초 이내 **같은 팀의 다음 볼 이벤트**(POSS_TYPES·Aerial)의 주체가 "
+               "본인일 때, 수신 좌표는 그 패스의 endX/endY. deep=endX≥66.7(상대 진영 마지막 3분의 1) · deep80=endX≥80(리포트 손계산 호환) · "
+               "prog=endX−패스 시작 x≥10 · through=패스 qualifier Throughball. 원천=WhoScored matchCentreData(Opta) — core.whoscored.receptions")
+_RECV_MAX_SEC = 10
+_RECV_DEEP_X = 66.7
+_RECV_DEEP80_X = 80.0
+
+
+def receptions(events, player_id):
+    """선수 한 명의 수신 귀속 → dict(recv_n, recv_x_mean, recv_deep_n, recv_deep80_n, recv_prog_n, recv_through_n, recv_method).
+    0은 「귀속된 수신이 없음」이지 「받은 적 없음」이 아니다(축약본이면 전부 0)."""
+    seq = sorted((e for e in events if e.get("playerId") is not None),
+                 key=lambda e: (_clock(e), e.get("second") or 0, e.get("eventId") or 0))
+    xs, deep, deep80, prog, through = [], 0, 0, 0, 0
+    for i, e in enumerate(seq):
+        if _type(e) != "Pass" or not _successful(e) or e.get("endX") is None or e.get("playerId") == player_id:
+            continue
+        t0 = _secs(e)
+        for n in seq[i + 1:]:
+            if _secs(n) - t0 > _RECV_MAX_SEC:
+                break
+            if n.get("teamId") != e.get("teamId") or _type(n) not in POSS_TYPES | {"Aerial"}:
+                continue
+            if n.get("playerId") == player_id:
+                ex = float(e["endX"])
+                xs.append(ex)
+                deep += ex >= _RECV_DEEP_X
+                deep80 += ex >= _RECV_DEEP80_X
+                prog += (ex - float(e.get("x") or 0)) >= 10
+                through += "Throughball" in _quals(e)
+            break                                      # 같은 팀의 첫 볼 이벤트가 수신자 — 그 뒤는 보지 않는다
+    return dict(recv_n=len(xs), recv_x_mean=round(sum(xs) / len(xs), 1) if xs else None,
+                recv_deep_n=deep, recv_deep80_n=deep80, recv_prog_n=prog, recv_through_n=through, recv_method=RECV_METHOD)
