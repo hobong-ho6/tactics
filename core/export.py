@@ -997,6 +997,9 @@ def export_all(db_path=None, window="2026-summer"):
                                    for r in _us_rows(con, code, report["date"])] if report.get("date") else []
             report["changes"] = _rows(con, """SELECT seq, minute, minute_to, title, detail FROM match_tactical_changes
                                               WHERE report_id=? ORDER BY seq""", (report["id"],))
+            # 모멘텀(migration 120 · SofaScore graph · 우리 팀 기준 부호 — core.momentum) — 경기 분석 「모멘텀」 차트 원료.
+            report["momentum"] = _rows(con, """SELECT minute, value, source FROM match_momentum
+                                               WHERE match_id=? ORDER BY minute""", (report["match_id"],)) if report.get("match_id") else []
             report["phase_metrics"] = _rows(con, """SELECT side, metric, seg_from, seg_to, value, n, note
                                                     FROM match_phase_metrics WHERE report_id=?
                                                     ORDER BY metric, side, seg_from""", (report["id"],))

@@ -300,3 +300,12 @@ pre,.report-source pre{font-family:var(--font-mono);font-size:12.5px;line-height
   .report-picker{position:static;background:var(--panel);-webkit-backdrop-filter:none;backdrop-filter:none}
   #report > .panel,#report > #viz,#report > .grid2 > .panel{scroll-margin-top:8px}
 }
+
+/* 2026-10-22 경기 분석 — 보유 그리드 Δ · 운반 실측/추정 · 모멘텀 */
+.legend-line{font-size:12.5px;line-height:1.6;margin:8px 0 0;max-width:none}
+.legend-line .badge{margin:0 2px}
+.match-preset-table td .badge{margin-top:3px}
+.carry-table{min-width:560px}
+.carry-table th .badge{font-size:11px;padding:0 6px;margin-left:2px}
+.carry-table td:first-child,.carry-table th:first-child{position:sticky;left:0;background:var(--panel);z-index:1}
+#mom .vz{min-height:0}

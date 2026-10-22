@@ -532,3 +532,69 @@ export function renderMatchViz(el, r, team){
   if (el._ro) el._ro.disconnect();
   let t = null; el._ro = new ResizeObserver(() => { clearTimeout(t); t = setTimeout(draw, 120); }); el._ro.observe(el);
 }
+
+/* ── 모멘텀 (2026-10-22 · migration 120 · SofaScore graph — core.momentum이 우리 팀 기준 부호로 통일) ──
+   위(+) = 우리 팀 우세 · 아래(−) = 상대 우세. 면적 두 장(양수만·음수만)을 따로 칠해 색이 섞이지 않게 한다.
+   세로 표식: 득점(우리 위·상대 아래 원) · 경기 중 변화 단계 시작(match_tactical_changes · 점선) · HT.
+   ⛔ 값이 없으면 숨기지 않고 「미수집」이라고 쓴다. */
+export function momentum(r, team, W = 900){
+  const pts = (r.momentum || []).map(p => ({ m: Number(p.minute), v: Number(p.value) })).filter(p => isFinite(p.m) && isFinite(p.v))
+    .sort((a, b) => a.m - b.m);
+  const opp = r.opponent || '상대';
+  if (!pts.length) return `<div class="vz wide"><h4>모멘텀</h4><span class="dim" style="font-size:12px">모멘텀 미수집 — match_momentum이 비어 있다(scripts/load_momentum.py가 채운다).</span></div>`;
+  const ev = r.events || [];
+  const end = Math.max(90, ...pts.map(p => p.m), ...ev.map(e => e.minute || 0)) + 1;
+  const H = 210, L = 30, R = 16, T = 26, B = 26, mid = T + (H - T - B) / 2, hh = (H - T - B) / 2;
+  const peak = Math.max(1, ...pts.map(p => Math.abs(p.v)));
+  const x = m => L + (W - L - R) * (m / end), y = v => mid - hh * (v / peak);
+  const area = sel => {
+    const seq = [{ m: 0, v: 0 }, ...pts, { m: pts[pts.length - 1].m, v: 0 }];
+    return 'M' + seq.map(p => `${x(p.m).toFixed(1)},${y(sel(p.v)).toFixed(1)}`).join(' L') + ' Z';
+  };
+  const ticks = [];
+  for (let t = 0; t <= end; t += 15) ticks.push(`<line x1="${x(t)}" x2="${x(t)}" y1="${T}" y2="${H - B}" stroke="${GRID}"/><text x="${x(t)}" y="${H - 8}" text-anchor="middle" class="dim sm">${t}′</text>`);
+  const half = `<line x1="${x(45)}" x2="${x(45)}" y1="${T - 6}" y2="${H - B}" stroke="var(--line)"/><text x="${x(45)}" y="${T - 10}" text-anchor="middle" class="dim sm">HT</text>`;
+  const changes = (r.changes || []).filter(c => c.minute > 0).map(c =>
+    `<g class="hit" data-tip="${esc(`${c.minute}′ 변화 단계 — ${c.title}`)}"><line x1="${x(c.minute)}" x2="${x(c.minute)}" y1="${T}" y2="${H - B}" stroke="var(--dim)" stroke-dasharray="3 3"/>
+      <rect x="${x(c.minute) - 5}" y="${T}" width="10" height="${H - T - B}" fill="transparent"/></g>`).join('');
+  const goals = ev.filter(e => /goal$/.test(e.kind)).map(e => {
+    const up = e.side === 'v', cx = x(e.minute), cy = up ? T + 6 : H - B - 6;
+    const who = e.kind === 'own_goal' ? `${e.player_name || ''} (자책)` : (e.player_name || '');
+    return `<g class="hit" data-tip="${esc(`${e.minute}′ ${up ? team : opp} 득점 · ${who}${e.score_v != null ? ` · ${e.score_v}-${e.score_o}` : ''}`)}">
+      <circle cx="${cx}" cy="${cy}" r="6" fill="${SURF}"/><circle cx="${cx}" cy="${cy}" r="4.5" fill="${up ? US : THEM}"/></g>`;
+  }).join('');
+  // 호버용 투명 막대 — 분마다 값 한 줄
+  const step = (W - L - R) / Math.max(1, pts.length);
+  const hits = pts.map(p => `<rect class="hit" data-tip="${esc(`${p.m}′ · ${p.v > 0 ? `${team} 우세` : p.v < 0 ? `${opp} 우세` : '균형'} ${p.v > 0 ? '+' : ''}${p.v}`)}" x="${x(p.m) - step / 2}" y="${T}" width="${step}" height="${H - T - B}" fill="transparent"/>`).join('');
+  const usSum = pts.filter(p => p.v > 0).length, themSum = pts.filter(p => p.v < 0).length;
+  return `<div class="vz wide"><h4>모멘텀 ${q('SofaScore 「Attack momentum」 — 분마다 어느 팀이 위협적인 공격을 몰아쳤는지를 −100~+100으로 낸 제공사 지표다. 위(주황) = 우리 팀 우세, 아래(파랑) = 상대 우세. ⚠️ 공식이 공개되지 않은 제공사 합성 지표라 xG·점유와 함께 읽는다.')} <span class="dim">— 우세 분 ${esc(team)} ${usSum} · ${esc(opp)} ${themSum} · 점선 = 경기 중 변화 단계</span></h4>
+    <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(`${team} 대 ${opp} 경기 모멘텀 — 위는 ${team} 우세, 아래는 ${opp} 우세`)}"><title>경기 모멘텀</title>
+      ${ticks.join('')}${half}
+      <path d="${area(v => Math.max(0, v))}" fill="${US}" opacity=".85"/>
+      <path d="${area(v => Math.min(0, v))}" fill="${THEM}" opacity=".85"/>
+      <line x1="${x(0)}" x2="${x(end)}" y1="${mid}" y2="${mid}" stroke="var(--line)"/>
+      <text x="${L}" y="${T + 4}" class="dim sm">${esc(team)}</text><text x="${L}" y="${H - B - 2}" class="dim sm">${esc(opp)}</text>
+      ${hits}${changes}${goals}</svg>
+    <div class="lg"><span><i style="background:${US}"></i>${esc(team)} 우세</span><span><i style="background:${THEM}"></i>${esc(opp)} 우세</span><span>● 득점</span><span>┆ 변화 단계 시작</span>
+      <span class="vz-read">읽는 법 — 면적이 한쪽으로 길게 이어지면 그 팀이 <b>몰아친 구간</b>이다. 변화 단계(점선) 직후 면적의 방향이 바뀌었다면 <b>그 조정이 흐름을 바꿨다</b>는 후보 — 득점·교체와 겹치는지 타임라인과 함께 본다.</span></div></div>`;
+}
+
+/* 모멘텀 단독 패널 — renderMatchViz와 같은 배선(실폭 다시 그리기 · .hit 툴팁)을 한 장짜리로 쓴다. */
+export function renderMomentum(el, r, team){
+  el.className = 'mviz';
+  el.innerHTML = '<div class="vz wide"></div><div class="tip" hidden></div>';
+  const box = el.querySelector('.vz'), tip = el.querySelector('.tip');
+  const draw = () => {
+    const w = Math.max(320, Math.floor(box.clientWidth - 26));
+    const tmp = document.createElement('div'); tmp.innerHTML = momentum(r, team, Math.min(w, 1240));
+    box.innerHTML = tmp.firstElementChild.innerHTML;
+    box.querySelectorAll('.hit').forEach(g => {
+      g.addEventListener('pointerenter', () => { tip.textContent = g.dataset.tip; tip.hidden = false; });
+      g.addEventListener('pointermove', e => { tip.style.left = Math.min(e.clientX + 12, window.innerWidth - 300) + 'px'; tip.style.top = (e.clientY + 14) + 'px'; });
+      g.addEventListener('pointerleave', () => { tip.hidden = true; });
+    });
+  };
+  draw();
+  if (el._ro) el._ro.disconnect();
+  let t = null; el._ro = new ResizeObserver(() => { clearTimeout(t); t = setTimeout(draw, 120); }); el._ro.observe(el);
+}

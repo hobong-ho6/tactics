@@ -27,11 +27,13 @@
   </div>
   <div class="panel" id="summary"></div>
   <div id="viz"></div>
+  <div class="panel" id="momPanel"><h2>모멘텀 <small class="dim">— 분마다 어느 쪽이 몰아쳤나 · SofaScore</small></h2><div id="mom"></div></div>
   <!-- ⭐ 2026-10-20 사용자 지시 「관전 메모 가설 판정·부상 … 경기 분석에서 항상 제공」(migration 109) -->
   <div class="panel" id="hypPanel"></div>
   <div class="panel" id="injPanel"></div>
   <div class="panel" id="overall" hidden></div>
   <div class="panel" id="gamePreset"></div>
+  <div class="panel" id="carryPanel"></div>
   <div class="panel"><h2>선수별 히트맵·역할·전체 스탯</h2>
     <div id="pviz" class="mviz" style="grid-template-columns:1fr;margin:0 0 12px"></div>
     <div id="players"></div></div>
@@ -50,7 +52,7 @@ import { decodeMap } from './assets/kernel.js?v=20260825-decodemap-null';
 import { drawPitch, drawComposite, drawChip } from './assets/pitch.js?v=20260825-decodemap-null';
 import { annotate, mountGlossaryTips, glTip } from './assets/glossary.js';
 import { roleLabel, focusLabel, claimLabel, humanize, VERDICT_KR, AXIS_KR, mountRawToggle } from './assets/labels.js';
-import { renderMatchViz, playerRows } from './assets/matchviz.js?v=20261020-phase';
+import { renderMatchViz, renderMomentum, playerRows } from './assets/matchviz.js?v=20261022-mom';
 import { prose } from './assets/prose.js';
 
 const { team, regime } = await mountHeader('match-report.html');
@@ -226,6 +228,53 @@ function ruleLine(s){
     ${note?`<span class="badge ${k.c}" title="${esc(note)}">${k.t}</span>`:''}
     ${detail?`<small class="dim">${esc(detail)}</small>`:''}</p>`;
 }
+/* 보유/비보유 분리 그리드 적합(migration 119) — alt_role_poss = 보유 1위가 기록 역할과 다르면 그 1위, 같으면 2위("role/focus .sim"). */
+const POSS_TIP = '우리 팀이 공을 가진 국면의 이벤트만으로 만든 히트맵(WhoScored 국면 분리 그리드)에 같은 역할 커널을 맞춘 적합도. 합산 히트맵은 수비 국면 위치가 섞여 1·2위 차이(Δ)가 작아지기 쉽다 — 보유 국면만 보면 역할 차이가 드러나는 칸이 있다. Δ는 보유 그리드에서 1위와 2위 역할의 차이다.';
+function possAlt(p){
+  const m = String(p.alt_role_poss || '').match(/^([^/\s]+)\/(\S+)\s+([\d.]+)$/);
+  return m ? { role: m[1], focus: m[2], sim: Number(m[3]) } : null;
+}
+function possCell(p){
+  if (isGkSlot(p.pos_label) || !present(p.fit_sim_poss)) return '<small class="dim">—</small>';
+  const alt = possAlt(p), changed = alt && alt.sim > Number(p.fit_sim_poss) + 1e-6;
+  const decided = present(p.fit_delta) && p.fit_delta <= .05 && present(p.fit_delta_poss) && p.fit_delta_poss > .05;
+  return `<span class="num">${Number(p.fit_sim_poss).toFixed(3)}</span>${present(p.fit_delta_poss) ? ` <small class="dim">Δ${Number(p.fit_delta_poss).toFixed(3)}</small>` : ''}
+    ${decided ? '<br><span class="badge hi">보유에서 결정</span>' : ''}
+    ${changed ? `<br><span class="badge mid">보유 1위 다름</span> <small>${roleLabel(alt.role, alt.focus)} ${alt.sim.toFixed(3)}</small>`
+      : alt ? `<br><small class="dim">2위 ${roleLabel(alt.role, alt.focus)}</small>` : ''}`;
+}
+/* 운반 — 실측(SofaScore lineups.statistics · 2026-10-22 STAT_FIELDS 확장)과 추정(WhoScored 연속 볼 이벤트 · core.whoscored.carry_est)을 나란히.
+   ⛔ 두 값을 섞지 않는다 — 정의가 다르다(실측 = 제공사 트래킹 · 추정 = 이벤트 좌표 차). 실측이 있으면 실측을 우선해 읽는다. */
+const CARRY_DEF = {
+  n: 'SofaScore 실측 — 공을 몰고 이동한 횟수(볼 캐리). 제공사 트래킹 기준이다.',
+  prog: 'SofaScore 실측 — 그중 상대 골문 쪽으로 의미 있게 전진한 운반(프로그레시브 캐리) 횟수.',
+  progm: 'SofaScore 실측 — 프로그레시브 캐리로 전진한 거리 합(m).',
+  total: 'SofaScore 실측 — 볼 전진 거리(m). 운반으로 공을 상대 골문 쪽으로 옮긴 총량이다.',
+  est: '추정 — WhoScored 이벤트에서 같은 선수의 연속 볼 이벤트 사이 전진 거리가 피치 길이의 10% 이상인 횟수. 트래킹이 아니라 좌표 차로 낸 값이라 실측과 순위가 다를 수 있다.',
+};
+function renderCarries(r){
+  const el = document.getElementById('carryPanel');
+  const rows = (r.players || []).map(p => { let x = {}; try { x = JSON.parse(p.stats_json || '{}'); } catch (_) {} return { p, x }; })
+    .filter(({ x }) => x.carries_ss != null || x.carry_est_prog10_n != null);
+  if (!rows.length){
+    el.innerHTML = '<h2>운반 <small class="dim">— 실측 vs 추정</small></h2><p class="dim">운반 미수집 — SofaScore 확장 필드(scripts/backfill_ss_stats.py)와 WhoScored 추정(scripts/load_ws_player_extras.py)이 채운다.</p>';
+    return;
+  }
+  const n = v => v == null ? null : Number(v);
+  rows.sort((a, b) => (n(b.x.carries_prog_ss) ?? -1) - (n(a.x.carries_prog_ss) ?? -1)
+    || (n(b.x.progression_m_ss) ?? -1) - (n(a.x.progression_m_ss) ?? -1));
+  const cell = (v, d = 0) => v == null ? '<td class="num dim">—</td>' : `<td class="num">${Number(v).toFixed(d)}</td>`;
+  el.innerHTML = `<h2>운반 <small class="dim">— 실측(SofaScore) vs 추정(WhoScored) · 전진 운반 순</small></h2>
+    <div class="scrollx"><table class="carry-table"><thead><tr><th>선수</th><th class="num">분</th>
+      <th class="num">${glTip('운반 <span class="badge hi">실측</span>', CARRY_DEF.n)}</th>
+      <th class="num">${glTip('전진 운반 <span class="badge hi">실측</span>', CARRY_DEF.prog)}</th>
+      <th class="num">${glTip('전진 운반 거리 m', CARRY_DEF.progm)}</th>
+      <th class="num">${glTip('볼 전진 거리 m', CARRY_DEF.total)}</th>
+      <th class="num">${glTip('전진 운반 <span class="badge mid">추정</span>', CARRY_DEF.est)}</th></tr></thead>
+    <tbody>${rows.map(({ p, x }) => `<tr><td><b>${esc(p.label)}</b></td>${cell(p.minutes)}${cell(x.carries_ss)}${cell(x.carries_prog_ss)}
+      ${cell(x.carries_prog_dist_m_ss)}${cell(x.progression_m_ss)}${cell(x.carry_est_prog10_n)}</tr>`).join('')}</tbody></table></div>
+    <p class="dim legend-line">실측 = SofaScore 제공사 트래킹 · 추정 = WhoScored 이벤트 좌표 차(같은 선수 연속 볼 이벤트 · 전진 ≥ 피치 10%). 두 값의 순위가 갈리면 <b>실측을 우선</b>한다.</p>`;
+}
 function renderGamePreset(r){
   const s=r.game_setup, all=r.game_players??[];
   const el=document.getElementById('gamePreset');
@@ -245,11 +294,13 @@ function renderGamePreset(r){
     <div class="grid2"><div><div class="tacpitch match-tacpitch">${players.map(p=>
       `<div class="tchip" style="left:${p.x}%;bottom:${Math.max(4,p.y*.92+4)}%"><b>${esc(p.label)}</b>
        <span>${esc(p.pos_label)}</span><small>${annotate(esc(p.role_name||p.role_id))}<br>${annotate(esc(p.focus))}${p.starter?'':`<br>${esc(p.minute_on)}분 투입`}</small></div>`).join('')}</div></div>
-      <div class="scrollx"><table class="match-preset-table"><tr><th>위치</th><th>선수</th><th>구분</th><th>역할</th><th>포커스</th><th>경기 적합</th></tr>
+      <div class="scrollx"><table class="match-preset-table"><tr><th>위치</th><th>선수</th><th>구분</th><th>역할</th><th>포커스</th><th class="num">경기 적합</th><th>${glTip('보유 그리드', POSS_TIP)}</th></tr>
       ${players.map(p=>`<tr><td><b>${esc(p.pos_label)}</b></td><td>${esc(p.label)}</td><td>${p.starter?'선발':`교체 ${esc(p.minute_on)}′`}</td><td>${annotate(esc(p.role_name||p.role_id))}<br><small>${esc(p.role_id)}</small></td>
         <td>${annotate(esc(p.focus))}</td><td>${
           isGkSlot(p.pos_label) ? '<small class="dim" title="GK는 커널 적합이 변별력을 갖지 못한다(obs#220)">—</small>'
-          : present(p.fit_sim)?Number(p.fit_sim).toFixed(3):'—'}</td></tr>`).join('')}</table></div></div>
+          : present(p.fit_sim)?Number(p.fit_sim).toFixed(3):'—'}</td><td>${possCell(p)}</td></tr>`).join('')}</table></div></div>
+    ${players.some(p=>present(p.fit_sim_poss))?`<p class="dim legend-line"><b>보유 그리드</b> = 우리 볼 보유 국면 이벤트로만 만든 히트맵(WhoScored)에 같은 역할 커널을 맞춘 값 · Δ = 보유 그리드 1·2위 격차 ·
+      <span class="badge hi">보유에서 결정</span> 합산 Δ ≤ .05(무결정)인데 보유 Δ > .05 · <span class="badge mid">보유 1위 다름</span> 보유 그리드 1위가 기록 역할과 다른 칸(역할 결정은 바꾸지 않는다 — 사용자 판단)</p>`:''}
     ${subs.length?`<p class="dim">종료 XI 교체: ${subs.map(p=>`${esc(p.minute_on)}′ ${esc(all.find(x=>x.player_id===p.replaced_player_id)?.label||'—')} → <b>${esc(p.label)}</b>`).join(' · ')}</p>`:''}
     <details class="report-source"><summary>이 경기 설정의 근거·한계</summary>${prose(s.rationale)}
       ${prose(s.source)}${prose(s.confidence)}</details>`;
@@ -517,7 +568,7 @@ function renderTactical(r){
           <span><i></i>Δ > .05 · 1위가 뚜렷하다</span><span class="dim">막대 길이 = Δ (오른쪽 끝 .25)</span></div>
         <div class="dbars">${starters.map(p => `<div class="dbar${p.fit_delta <= .05 ? ' und' : ''}"><span><b>${esc(p.pos_label)}</b> ${esc(p.label)}</span>
           <i style="--w:${Math.min(100, 100 * p.fit_delta / .25)}%"></i><em>Δ${Number(p.fit_delta).toFixed(3)}</em>
-          <small class="dim">1위 ${roleLabel(p.role_id, p.focus)} · 2위 ${altL(p.alt_role)}</small></div>`).join('')}</div>` : ''}
+          <small class="dim">1위 ${roleLabel(p.role_id, p.focus)} · 2위 ${altL(p.alt_role)}${present(p.fit_delta_poss) ? ` · 보유 Δ${Number(p.fit_delta_poss).toFixed(3)}${p.fit_delta <= .05 && p.fit_delta_poss > .05 ? ' <b class="ok">보유에서 결정</b>' : ''}` : ''}</small></div>`).join('')}</div>` : ''}
       ${JL(r.recheck_items).length ? `<div class="kv" style="margin-top:8px"><b>다음 경기 재검증</b></div><ul class="checks">${JL(r.recheck_items).map(x => `<li>${numChips(annotate(esc(x)))}</li>`).join('')}</ul>` : ''}
     </section>${raw}`;
 }
@@ -537,7 +588,8 @@ function render(r){
     ${r.key_points ? `<div class="keypts"><h3>요약 포인트</h3>${prose(r.key_points)}</div>`
       : '<p class="dim" style="font-size:12px">요약 포인트 미작성 — 수집 회차가 scripts/load_match_extras.py로 채운다.</p>'}`;
   r.phase_defs = td.phase_metric_defs || {}; r.phase_groups = td.phase_metric_groups || {};   // 「경기 흐름」 라벨·묶음 정본(core.whoscored)
-  renderMatchViz(document.getElementById('viz'), r, regime?.team_kr || team);   // 타임라인·흐름·팀 대조·하프 비교(matchviz.js)
+  renderMatchViz(document.getElementById('viz'), r, regime?.team_kr || team);
+  renderMomentum(document.getElementById('mom'), r, regime?.team_kr || team);   // 모멘텀(migration 120)   // 타임라인·흐름·팀 대조·하프 비교(matchviz.js)
   renderHypotheses(r);
   renderInjuries(r);
   document.getElementById('teamStats').innerHTML=teamStatRows(r);
@@ -547,6 +599,7 @@ function render(r){
   oa.hidden=!r.overall_assessment;
   if (r.overall_assessment) oa.innerHTML=`<h2>경기 총평·매체 평가 <small class="dim">전술·선수 분석과 별개의 전반적 평가</small></h2>${prose(r.overall_assessment)}`;
   renderGamePreset(r);
+  renderCarries(r);
   renderVideos(r);
   renderTactical(r);
   /* 출전 구간·평점 한 장 — 16명을 카드로만 두면 비교가 안 된다(카드는 상세, 이 그림은 조망) */
@@ -637,7 +690,7 @@ function render(r){
   buildToc();
 }
 /* 목차 — 보이는 패널(숨김·빈 패널 제외)의 제목으로 만든다. 제목이 경기 이름인 요약 패널 등은 고정 라벨을 쓴다. */
-const TOC_LABEL = { summary:'경기 요약', viz:'경기 차트', hypPanel:'관전 메모 판정', injPanel:'부상', overall:'총평',
+const TOC_LABEL = { summary:'경기 요약', viz:'경기 차트', momPanel:'모멘텀', carryPanel:'운반', hypPanel:'관전 메모 판정', injPanel:'부상', overall:'총평',
                     gamePreset:'재현 프리셋', videoPanel:'영상 분석' };
 const TOC_SHORT = { '실제 경기 히트맵':'히트맵', '팀 전체 스탯':'팀 스탯', '선수별 히트맵·역할·전체 스탯':'선수', '전체 분석 원문·레퍼런스 펼치기':'원문' };
 function buildToc(){
