@@ -110,6 +110,14 @@ const TEAM_NAV = [
   ['index.html', '허브'], ['heatmap.html', '히트맵 비교'], ['match-report.html', '경기 분석'], ['squad.html', '스쿼드'],
   ['compare.html', '선수 비교'], ['transfer.html', '이적'], ['report.html', '리포트'], ['player.html', '선수'],
 ];
+/* 라이트/다크 토글(2026-10-22 사용자 요청) — 선택·저장·적용은 theme-boot.js(head 동기 스크립트)가 한다.
+   ⛔ 여기는 버튼만 그린다(스타일은 theme.css .themetog). */
+const THEME_OPTS = [['auto', '자동', '기기 설정을 따른다'], ['light', '라이트', '항상 라이트'], ['dark', '다크', '항상 다크']];
+function themeToggle(){
+  const cur = window.tacticsTheme?.pref?.() || 'auto';
+  return `<div class="themetog" role="group" aria-label="화면 모드">${THEME_OPTS.map(([v, l, t]) =>
+    `<button data-theme-set="${v}" class="${v === cur ? 'on' : ''}" title="${t}" aria-pressed="${v === cur}">${l}</button>`).join('')}</div>`;
+}
 const GLOBAL_NAV = [['evolutions.html', '얼티밋팀'], ['game.html', '게임 시스템'], ['manual.html', '매뉴얼']];
 export async function mountHeader(active){
   onSchemeChange();   // 라이트/다크 전환 시 새로 고침 — 캔버스(피치·열지도)는 다시 안 그려지므로(tokens.js)
@@ -125,8 +133,11 @@ export async function mountHeader(active){
         `<button data-t="${r.team_code}" class="${!isGlobal && r.team_code === team ? 'on' : ''}"${isGlobal ? ' title="팀 데이터 보기 — 그 팀 허브로 이동"' : ''}>${r.team_kr}</button>`).join('')}
       </div>
       <nav class="global" title="팀과 무관한 메뉴">${GLOBAL_NAV.map(link).join('')}</nav>
+      ${themeToggle()}
     </div>
     <nav class="teamnav">${TEAM_NAV.map(link).join('')}</nav>`;
+  el.querySelectorAll('button[data-theme-set]').forEach(b => b.addEventListener('click', () =>
+    window.tacticsTheme?.set(b.dataset.themeSet)));
   el.querySelectorAll('button[data-t]').forEach(b => b.addEventListener('click', () => {
     setCurrentTeam(b.dataset.t);
     if (isGlobal) location.href = 'index.html'; else location.reload();
