@@ -3,6 +3,13 @@
 <!-- 2026-10-14 HANDOFF v2 압축 때 신설. 되돌리기 어렵거나 이후 작업의 전제가 되는 결정만 둔다. HANDOFF.md 「주요 결정」엔 한 줄씩만, 전문은 여기.
      인용 문단은 v1 HANDOFF 원문(docs/handoff-context.md)에서 그대로 옮겼다. 규약 자체의 정본은 CLAUDE.md 불변규칙 · docs/70-lessons.md이고, 여기는 「언제·왜 그렇게 정했나」의 색인이다. 최신을 맨 위에. -->
 
+## 2026-10-22 · FC27 시즌 정본 행 · 슬롯 판단 보류 · 경기마다 필수 3종
+
+- FC27 26/27 시즌 정본을 `team_tactic_setups kind='optimal'`(#46 · Balanced/Balanced/52 · 코드 `7ZTFKBu$37p7`)로 신설 — 폐기값을 든 `projected:emery-2627`가 「정본」처럼 읽히던 문제. opt 선발은 정본 역할·가용 인원으로만(G8+). 근거 `reports/research/2026-10-22-fc27-avl-implementation-review.md`.
+- 슬롯 정본 판단 5건(RDM·ST 포커스·LM·LB 운용·리드 프리셋)은 사용자 보류 「실측 데이터를 더 확보 후 결정」(obs#1123) — 다음 AVL 공식전 2경기 뒤 같은 표 재제출.
+- 경기마다 SS 확장 필드·FotMob 경기별 선수 스탯·WS 이벤트 JSON 저장을 필수로(G21) — 회차마다 수집 범위가 달라 FotMob 선수 스탯이 12경기 중 1경기만 있던 사고. 실측 운반은 SofaScore(`carries_ss`)가 정본, WS 추정은 병기.
+- 사이트 디자인 토큰 단일 정본 `site/assets/theme.css` · JS 색은 `tokens.js` cssVar만 — 글래스는 크롬에만, 읽는 면은 불투명.
+
 ## 2026-10-14 · HANDOFF 구조 규칙 v2(포인터 압축)
 
 - 사용자 지시(핸드오프 쓰는 전 프로젝트 동일 적용). 헤더 15줄 안에 착수 조건 · 현재 상태 표 10행 · 다음 할 일은 열린 것만 · 세션 기록 최대 5개 · **목표 10~15KB · 상한 20KB 하드**. 절차 정본은 `.claude/skills/handoff/SKILL.md` 「갱신 규칙」·「분량 조정」.
