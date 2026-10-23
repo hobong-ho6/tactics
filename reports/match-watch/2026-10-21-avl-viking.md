@@ -314,3 +314,93 @@
   - **운반(추정) 정형화**(`core.whoscored.carry_est` · `scripts/load_carry_est.py` · `player_matches.stats_json carry_est_*`): 대조표 10행(고메스 볼 캐리) D1 재판정 — 10+ 전진 운반 알리송 5 · **고메스 4** · 린델뢰프 4 · 맥긴 3 · 토레스 2 · 바클리 0 · 전진 거리 알리송 165m · 토레스 132m · 고메스 124m. 손계산(고메스 4 팀 최다·CB 각 3)은 고메스 4만 맞고 서열은 알리송이 위 — **부분 일치 유지**(hypotheses D1 행). 추정이라는 점은 컬럼 이름·`CARRY_EST_METHOD`에 박았다.
   - **FC27 카드 4명 결손 해소**: 잭슨·음바예·하우드-벨리스·고레츠카는 fut.gg 아이템 id가 이적 후 **새 라이브 아이템(50590845 · 50406097 · 50584441 · 50541306 · base id는 그대로)**으로 바뀌어 옛 id가 404였다. `/api/fut/players/v2/27/?name=` 검색으로 찾아 `collect_futgg_history.py --ea --roster-date 2026-10-22`로 적재(OVR 79/76/75/82 · PlayStyle 2/2/3/5 · 역할 숙련 잭슨 st_poacher+ · 음바예 insidefwd+ · 하우드-벨리스 defender+/bpd+ · 고레츠카 dlp+/boxcrasher+). 새 카드 URL이 `/27-{id}`라 다음 회차부터 자동 해소된다.
 - ⑽ **수신 귀속 정형화 + 보유 그리드 적합 병기(2026-10-22 · WP-M1)**: 대조표 #13·#19가 콘솔에서 손계산하던 「수신 위치」를 `core.whoscored.receptions`(패스 끝 좌표 → 같은 팀 다음 볼 이벤트 주체 · 방법은 `recv_method`)로 올리고 `player_matches.stats_json recv_*` 16행에 적재했다(`scripts/load_ws_player_extras.py` · 옛 이름 load_carry_est). 정형 값: 부엔디아 수신 35 · x̄ 63.6 · 마지막 3분의 1 수신 18 · 전진 수신 10 / 맥긴 61(1위) · x̄ 57.5 · 전진 14 / 고메스 58 · x̄ 58.0 / 알리송 38 · x̄ 73.4 · **x≥80 깊은 수신 14**(위 손계산 15와 1건 차 — 귀속 창 10초 정의 차이 · 전진 수신 28 팀 1위 · 스루패스 수신 0) / 음바예 x≥80 10(손계산 9). 판정은 #13·#19 모두 **부분 일치 유지**(D2 행 #148·#149 · supersedes). 보유 그리드 적합(migration 119 · `fit_sim_poss`): 이 경기 선발 11칸 1위 변경 0 · 고메스 RB fb_inverted/Build-Up이 합산 무결정(Δ.034)→보유 그리드 결정(Δ.060) — 4경기 합계는 obs 참조(무결정 29→결정 12 · 선발 1위 변경 6 · 역할 결정 불변).
+
+## D+2 추적 (2026-10-23)
+
+> 예약 회차 `mw-avl-viking-d2`(20:00 KST). DB: obs **#1126**(가르나초 발언 정정) · **#1127**(바이킹 공동 감독) · **#1128**(D+2 재판정 묶음) · match_hypotheses **D2 정정 10행**(seq 1·11·12·15·17·20·21·25·26·27 · supersedes) · player_duties #21·#22·#25·#31 덧붙임 · match_videos **#365~#377 13편** 요약·구현 주장 44행(G17). **뒤집힌 판정 0건**, 당일 판단 정정 1건(가르나초 발언 채택).
+
+### ⑴ 영상 — 채널 스윕(업로드 이번 주) + 사이트 검색
+
+- **필수 4채널**: UTV 「HOW UNAI EMERY CHANGED HIS TACTICS TO BEAT VIKING」(WQvl_3aAF0U · 10-22 · 26:51 · **전술 분석**) · The Villans 「Alysson Has Arrived, Unai Emery's Tactical Approach & Facing Barcelona Next」(uONQiXH0uc0 · 10-22) · 1874 「Watching Aston Villa Conquer Viking」(K_c5J7UN7q4 · 10-22 · 관전 브이로그) · **Jacob Horsfall — 이 경기 영상 0**(최신 「How Aston Villa Sold £300M & Got Better」 vqV-BmjVt2c는 10-20 게시 · 경기 전 · 시즌 축이라 귀속 안 함). The Villans 10-23 「Why Manchester City Face Biggest Challenge Yet」(9l_njxOTvEk)는 다음 경기 프리뷰 — 미전사.
+- **D+1 「자막 없음」 4편 → 전부 전사**: The Terrace View 「Tactical MASTERCLASS」(T9oeQvVdZQs) · Claret & Blue(tmKhm8XMrCM) · All Villa No Filler(zll4KBBCbsc) · Penno(2Gpe1NGWJ5E).
+- **검색으로 새로 찾음**: ⭐ BeanymanSports **에메리 경기 후 회견 전체**(4KfnyXz4nyA · 9:07) · AVFC 공식 **알리송 인터뷰**(zPCV6bVy-9c · 1:01) · Rogers Reports(1wLpgy1eHWU) · Villa Park Podcast 2편째(rZOaaAqIKok) · Justin Talks Villa(NOgjhw97o7g) · Villa in NOIR(2iU3L7czGGs · ⚠️ 기계 번역 트랙 의심 저품질).
+- **제외**: 「雑学うさぎさん」 스즈키 영상(hFUvXiktVcs · 일본어 · 1:53) — 자막이 상대를 「Young Boys」로 적는 AI 생성 영상이라 귀속 안 함 · 워치얼롱 2편(Holy Trinity 4VhJOg6vRBI · Villa in NOIR s3iqqF69Hxg — 실시간 중계 반응) · 하이라이트(z3MMAqIgdjA).
+- 전사 경로: yt-dlp는 목록·메타만 통과하고 자막은 **429** → 13편 중 12편 브라우저 pot 경로(`yt_transcript_json3.py` · **플레이어 mute()+자동재생 끄기 → 포착 즉시 pauseVideo → 탭 닫기**) · 1편(tmKhm8XMrCM) yt-dlp. 전부 **auto-caption**.
+- **노르웨이어 영상 0**(검색어 「Viking Aston Villa analyse」 · 「Viking Aston Villa reaksjon Jensen」).
+
+**구조 서술 요지(auto-caption · D등급)**
+- UTV(전술 분석): 고정 3백 + 높은 윙어 둘 · 「we really locked in on that right-hand side」(오른쪽에 확실히 집중했다) · 맥긴·고메스 「pretty much played on the same position」(거의 같은 자리) · 부엔디아 「sort of dropping in and playing in those little pockets」(내려와 작은 포켓에서 뛰었다).
+- All Villa No Filler: 비보유 4-4-2 · 보유 「a three, a two, and then a kind of five in attack」(3, 2, 그리고 공격의 5) — **사용자 메모 1의 두 형태를 숫자로 그대로 말한 유일한 영상**.
+- Justin Talks Villa: 「they sort of took it in turns covering right back」(둘이 번갈아 RB를 커버했다) · 바클리 「deep-lying midfielder」(딥라잉 미드필더) · 잭슨 「actually played quite deep tonight」(오늘 꽤 깊게 섰다).
+- Terrace View: 고메스 「one minute he was center mid, one minute he was out on the left」(한때는 중앙, 한때는 왼쪽) — 실측(좌측 7%)과 충돌.
+
+### ⑵ 기사·블로그(D+1 미확보분)
+
+- **Dan Bardell(Roundtable · Yahoo 10-22 · 직접 열람)**: 「without the ball it was essentially the same 4-2-3-1 shape」(공이 없을 때는 사실상 평소의 4-2-3-1) · 「Gomes moved into midfield, McGinn pushed forward to operate alongside Emi Buendia」(고메스는 중원으로, 맥긴은 전진해 부엔디아와 나란히) · 「Mings dropped back to form a three with Pau Torres and Victor Lindelöf」(밍스가 내려와 토레스·린델뢰프와 3백) · 「McGinn almost had a free role at times」(맥긴은 때때로 사실상 자유 역할).
+- **Sonny Kelland 「The Alysson Show」(substack 10-22)**: 「More than ever, there was a clear back three in possession」(그 어느 때보다 보유 시 3백이 뚜렷했다) · 음바예 「tight to the touchline」(터치라인에 붙어). ⚠️ 검색 요약이 62′ 크로스를 고메스로 적었다 — 다른 전 소스(알리송)와 충돌, 채택 안 함.
+- TalkVilla(substack) 3백 서술 일치 · **Justin Talks Villa(substack)는 밍스 LB의 백4로 읽음**(형태 서술 충돌 — 실측 평균 위치는 3백).
+- **Sports Mole(Darren Plant 10-21 · 직접 열람)**: 「Emery names baffling XI」(어리둥절한 선발 11명) · 「Three centre-backs - Victor Lindelof, Pau Torres and Tyrone Mings - have been named」(센터백 셋 선발) · 바클리 임시 RB 추측은 빗나감.
+- **Sky 원문(Adam Bate · 직접 열람)**: 「There was praise too for Alejandro Garnacho who "played his best minutes" in a late cameo off the bench.」(교체로 짧게 뛴 가르나초에게도 칭찬이 있었다 — 「최고의 시간을 뛰었다」) — 필자 문장 속 부분 인용. 전문은 아래 ⑶.
+- **0건**: The Athletic(Tanswell 기사) · Birmingham Mail(Preece·Townley) · Total Football Analysis · Between The Lines · Spielverlagerung · Coaches' Voice · StatsBomb · 7500 to Holte. E&S(Maher) 403(스니펫 「a system which was both fluid and effective」(유연하고 효과적인 시스템)). **Tanswell X 미수행**(402 접근 차단 지속 — D+1과 동일 사유).
+
+### ⑶ 감독 회견 전문(원문+번역)
+
+**에메리(BeanymanSports 4KfnyXz4nyA 전사 · auto-caption · 질문 5개 전부)**
+- 총평: 「Collectively, tactically, respecting the and following the plan we we settle. And then individually, the players as well trying to exploit their qualities.」(팀으로, 전술적으로, 존중하며 세운 계획을 따랐다. 그리고 개인적으로도 선수들이 자기 장점을 살리려 했다) · 「some players as well they they did one a step forward in their confidence, feeling better, understanding tactically everything」(몇몇 선수는 자신감에서 한 걸음 나아갔고, 컨디션이 좋아졌고, 전술을 모두 이해했다).
+- 유럽 홈 12연승: 「Disciplined tactically and individually each one getting their best. So, I think still work to do.」(전술적으로 규율 있게, 각자 최선을 끌어내며 — 아직 할 일이 있다) · 「After in Premier League we weren't winning. And we are the still not winning.」(프리미어리그에선 이기지 못했고 아직도 못 이기고 있다).
+- **바클리**: 「always playing eight number or 10 number improving in our demands defensively. I am pushing him a lot defensively because I know offensively he can score and in set pieces as well he is very good heading.」(8번이든 10번이든 늘 수비 요구를 채우며 나아지고 있다. 공격에선 득점할 수 있고 세트피스 헤더도 좋다는 걸 알기에 수비를 많이 다그친다).
+- **바이킹 인상**: 「we plan the match uh respecting them and playing trying to impose to dominate and avoid their power. And I think we achieve it during the 90 minutes, more or less.」(상대를 존중하며 경기를 짰고, 주도권을 쥐어 그들의 힘을 피하려 했다. 90분 동안 대체로 해냈다고 본다).
+- **만잠비**: 「Now I don't know if he's going to be available or not for Saturday.」(토요일 맨시티전 출전 여부는 지금 모른다).
+- **음바예·알리송(질문 「It seemed that you asked them to play wider today with the tactical system」(오늘 전술상 더 넓게 서라고 한 것 같다))**: 「Improving, understanding our demands, exploiting their qualities. Very, very important, but collectively we must uh feel strong in our structure.」(나아지고 있고 요구를 이해하며 장점을 살리고 있다. 매우 중요하지만 팀으로서 우리 구조 안에서 강해야 한다) — 폭 기용 전제를 부정하지 않았다.
+- ⭐ **가르나초**: 「Garnacho as well uh playing 20 minutes, really he played the best minutes with us. So, as well, okay, it's positive.」(가르나초도 20분을 뛰었는데 정말 우리와 함께한 최고의 시간이었다. 긍정적이다) — Football365(Will Ford 10-22) 「Garnacho played 20 minutes and these were his best minutes with us. It is positive.」와 일치.
+- 고메스 RB·3백·70′ 3명 교체 사유: **질문 0 · 발언 0**(전문 확인으로 확정).
+- 스페인어: Yahoo Noticias(Goal 계열 10-22) 「Los respetamos y seguimos el plan que habíamos preparado.」(상대를 존중했고 준비한 계획을 따랐다) — 영어 회견의 **번역본**(스페인어 별도 발언 아님) · EFE·Marca·AS·Relevo 0.
+
+**바이킹(공동 감독 — obs#1127)**
+- 오르샤임(ESPN/PA): 「Maybe we had too much respect in the first half, they were all over us」(전반엔 너무 존중했던 것 같다, 그들이 우리를 압도했다) · 「we have to be braver with the ball」(공을 가졌을 때 더 용감해야 한다).
+- 옌센(NRK 10-22 · 직접 열람): 「Ja, det var ganske brutalt i førsteomgang, både i nærkampane og ikkje minst på dødball.」(전반은 꽤 혹독했다, 경합에서도 특히 세트피스에서도) · 「Vi fekk køyrt oss ein del i bakrom då dei sette fart på i kontringane sine.」(그들이 역습에 속도를 붙이자 뒷공간에서 꽤 털렸다) · 에메리에 대해 「Han var veldig intens.」(매우 강렬했다).
+- 옌센(TV 2): 「I andre omgang bestemte vi oss for å matche dem på det vi er gode på og stole på våre egne ferdigheter.」(후반엔 우리가 잘하는 것으로 맞서고 우리 기량을 믿기로 했다).
+- 주장 트리피치(Nettavisen): 「Jeg føler at vi kaster litt bort kampen i førsteomgang, vi er for unøyaktige og vi virker litt redde.」(전반에 경기를 버린 것 같다 — 부정확했고 좀 겁먹었다) · (Dagbladet) 「Vi blir rett og slett litt for puslete i noen av duellene.」(몇몇 경합에서 그냥 너무 약했다).
+- ⇒ **상대 관점이 실측과 같은 방향**: 전반 경합·세트피스 열세(빌라 1H xG 1.95–0.02 · 세트 xG 0.47) · 뒷공간 역습 노출(알리송 깊은 수신 15) · 후반 자기 방식 회복(바이킹 2H 점유 56% · xG 0.72–0.73).
+- 노르웨이 매체 선수 평점(karakterer·terningkast·spillerbørs) **0건** · Stavanger Aftenblad 3건 유료벽(「De innrømmer at de ble litt feige」(좀 겁먹었다고 인정) 리드만).
+- 감독 표기(obs#1115) 종결: NRK(2026-08-26) 「I ein kamp er det Bjarte Lunde Aarsheim som står oppført som hovudtrenar. I den neste er det Morten Jensen.」(한 경기에선 오르샤임이, 다음 경기에선 옌센이 감독으로 등록된다) — SofaScore·ESPN 표기 둘 다 맞다.
+
+### ⑷ 가설·당일 판정 재판정
+
+| # | 행 | D+1까지 | D+2 | 근거 |
+|---|---|---|---|---|
+| 1 | 수비 4-4-2 · RB 고메스 | 부분 일치 | **부분 일치(보강)** | 영상 7편 교대 서술 · Bardell 「essentially the same 4-2-3-1」 · AVNF 4-4-2 |
+| 11 | 고메스 좌우 프리롤 | 불일치 | **불일치 유지 + 서사 충돌** | 팬 4곳(Terrace View·Villans·C&B·Kelland)이 사용자 쪽, 전술 분석 2곳(UTV·AVNF)이 실측 쪽 → 실측(좌측 7%) 채택 |
+| 12 | 바클리 2선 전진 | 부분 일치 | 부분 일치 | 에메리 「eight number or 10 number」 · Terrace View 반대 서술(실측 채택) |
+| 15 | 잭슨↔음바예 교환 | 불일치 | **불일치 유지** | 영상 13편·블로그 4편·노르웨이 기사 4곳 서술 0 · 음바예 「drop in」(하강)·「by lines」 |
+| 17 | 3-4-2-1 vs 3-2-5 | 부분 일치 | 부분 일치 | AVNF 「a three, a two, … a five」 · 3-4-2-1 명시 0 |
+| 20 | 음바예 IF | 불일치 | **불일치 유지** | 회견 질문 전제 「play wider」 · Kelland 「tight to the touchline」(반대: Justin 영상 1) |
+| 21 | 바클리 cm_playmaker/Roaming | 부분 일치 | 부분 일치 | 에메리 8·10번 · Justin 「deep-lying midfielder」 → 커널 DM 칸 dm_dlp/Roaming과 같은 방향 |
+| 25 | 알리송 평가 | 일치 | 일치 | 브라질 3곳(Zona Mista·Itatiaia·Canal 38) + 본인 인터뷰 |
+| 26 | 맥긴·고메스 축 | 일치 | 일치 | UTV 「pretty much played on the same position」 · Bardell 맥긴–부엔디아 라인 사이 |
+| 27 | 가르나초 서열 발언 | 부분 일치 | 부분 일치 · **당일 판단 정정** | 「best minutes」 = 에메리 본인 발언(회견 전사 + Football365) — obs#1118 보류를 obs#1126이 정정 · 서열 발언은 여전히 0 |
+
+- #13(부엔디아 하강)·#19(빌드업 관여)는 WP-M1이 이미 D2 행을 썼다(같은 회차 키 · 추가 불가). D+2 서술: 하강은 UTV 「dropping in … little pockets」 1건, Justin은 「McGinn and Buendía picking up a bit of space in behind Nicholas Jackson」(잭슨 뒤 공간)으로 높은 위치 서술 — 판정 영향 없음(부분 일치 유지 · 구간을 나눈 서술 0).
+- **VAR 2행**: 84′ 장면을 다룬 영상 0(D+1 기사 2건 확정 유지). PK는 영상 4편이 「플레이 온 → 모니터 → PK」 순서를 재확인. Rogers Reports는 PK성 장면이 **두 번**이었다고 주장(첫 장면 미선언) — 실측·기사 1건뿐이라 채택 안 함.
+
+### ⑤ 중점 4인 — D+2 덧붙임
+
+- **알리송**: 본인 첫 영어 인터뷰(AVFC) 「For me, it was a dream night for me, for my family. So, I'm very proud.」(나와 가족에게 꿈같은 밤이었다. 정말 자랑스럽다) · 「This is my my first interview in English, so it's very difficult, but should be okay.」(영어 첫 인터뷰라 어렵지만 괜찮을 것 같다). **포르투갈어(D+1 0건 해소)**: Zona Mista(Eduardo Caspary 10-22 · 직접 열람) 「Um dos grandes destaques da vitória do Aston Villa por 3×1 para cima do Viking」(바이킹전 3-1 승리에서 가장 돋보인 선수 중 한 명) · 본인 발언 「Estou muito orgulhoso da minha atuação e da equipe」(제 경기력과 팀이 매우 자랑스럽다) · Itatiaia(10-22) 「O atacante brasileiro foi eleito pelo clube inglês o melhor em campo.」(브라질 공격수가 잉글랜드 구단이 뽑은 경기 최우수 선수가 됐다) · Canal 38(고향 아푸카라나) · Goal Brasil 「Foi uma noite dos sonhos para mim, para minha família」(나와 가족에게 꿈같은 밤) — ⚠️ 영문판 번역 기사(독립 교차검증 아님). Times 평(Dagbladet 번역 — 독립 아님) 「Han plaget Viking-forsvaret så mye at det nesten ble latterlig.」(바이킹 수비를 거의 우스울 정도로 괴롭혔다). MOTM은 갈렸다 — 구단 알리송 · UEFA 맥긴(C&B 「robbery」(강탈)). ge.globo·UOL·Lance!·셀레상 각도 0.
+- **주앙 고메스**: Bardell 「He's so good defensively that I think he could probably play as an orthodox right-back」(수비가 워낙 좋아 정통 RB도 가능할 것) · NOIR 「one of the best performances I've ever seen from João Gomes」(내가 본 고메스 최고 경기 중 하나) · AVNF 「Tonight I really saw it」(오늘 밤 비로소 봤다) · Villa Park Podcast: 후반 바이킹이 왼쪽에 공격수를 올려 고메스를 RB에 묶었다(2H 하강 서술). FotMob 경유 수치 81터치·패스 91%·라인 브레이킹 7(LiveScore — 독립 실측 아님). 포르투갈어: Goal Brasil 「lateral-direito improvisado」(임시 라이트백 · 번역 기사 추정) · 플라멩구 계열 0 · 에메리 개별 언급 0(회견 전문 확인).
+- **맥긴**: UEFA 공식 MOTM · Scotsman 스니펫 「hailed as "the heart" of his Aston Villa side」(빌라의 「심장」으로 불렸다 · 본문 403 · 저자·날짜 미확인) · Bardell 「almost had a free role at times」 · AVNF 주장·리더십 칭찬 · Rogers 「captain fantastic」. 스코틀랜드(Daily Record·Herald·Scottish Sun·BBC·STV) 0 · Clarke 각도 0.
+- **가르나초**: 에메리 「best minutes」 확정(⑶) · 팬 5편 긍정 · Villa Park Podcast 「got to get in ahead of Ibrahim Mbaye」(음바예를 넘어서야 한다) · Justin: 78′·81′ 뒤 동료 5~6명이 다가가 격려. 스페인어: dondeverfutbolhoy 「entró con ganas tratando de reivindicarse」(만회하려는 의욕을 품고 들어갔다) · EFE(HolaNews)는 D+1 EFE와 같은 통신 텍스트 · El Intransigente(10-22)의 「Está progresando」(나아지고 있다)는 A매치 기간 발언이라 이 경기 근거 아님. Olé·TyC·Clarín·La Nación 0.
+
+### ⑥ 0건·시도 기록(다음 회차가 반복하지 않게)
+
+- 포르투갈어: 「Alysson Aston Villa Viking pênalti」(적중) · 「ex-Grêmio Alysson Champions League Aston Villa melhor em campo」(적중) · 「João Gomes lateral-direito Aston Villa Viking」 · 「ex-Flamengo João Gomes Aston Villa Champions Viking」(0) · 「Alysson Aston Villa Seleção Ancelotti convocação」(0 · 리버풀 GK와 섞임) · 「colunadofla João Gomes Viking lateral」(0) · 「Alysson comemoração Neymar Aston Villa」(포르투갈어 0).
+- 스페인어: 「Garnacho Aston Villa Viking Emery "mejores minutos"」 · 「Unai Emery Viking declaraciones rueda de prensa Champions」(0) · 「Garnacho … Olé TyC」(0) · 「Emery Viking EFE declaraciones tras el partido」(번역본만).
+- 영어(스코틀랜드): 「McGinn Viking Villa Champions League captain」(Scotsman) · 「McGinn Viking Daily Record Scotland Clarke」(0) · 도메인 제한 검색은 도구 차단.
+- 노르웨이어: 「Viking Aston Villa spillerbørs karakterer」 · 「terningkast Viking spillerne Aston Villa」 · 「aftenbladet Viking Villa Park børs」(평점 0) · 「Viking Aston Villa Morten Jensen hovedtrener etter kampen」(적중).
+- 영어 전술: 「The Athletic Aston Villa Viking Emery Gomes right-back analysis」 · 「Birmingham Mail Aston Villa Viking verdict」 · 「Aston Villa Viking Jackson drifted left Mbaye striker analysis」(전부 0).
+
+### ⑦ D+3(`mw-avl-viking-d3` 10-24 20:00)에 넘기는 것
+
+- **맨시티전(10-24 토 12:30 BST) 명단** — 고메스 RB 재기용 · 만잠비 복귀 · 마첸 · 가르나초 서열(교체 순번) 확인(대조표 #27·#28).
+- The Athletic(Tanswell) 경기 후 기사·X(402 재시도) · Stavanger Aftenblad 유료 기사 · Birmingham Mail 전술 기사 — 셋 다 D+2까지 0/차단.
+- 전술 블로그 마지막 스윕(TFA·BTL·Spielverlagerung) — D+3에도 0이면 「이 경기 전술 블로그 0」으로 닫는다.
+- `match_reports.status`는 **draft 유지** — 3일 추적 완료(D+3) 후 complete 판단.
