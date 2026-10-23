@@ -210,6 +210,14 @@ details.match-players>summary,details.report-source>summary{color:var(--acc);cur
 .hypbar{display:flex;flex:1 1 220px;height:8px;border-radius:4px;overflow:hidden;gap:2px;min-width:160px}
 .hypbar i{display:block} .hypbar .v-match{background:var(--ok)} .hypbar .v-partial{background:var(--warn)}
 .hypbar .v-mismatch{background:var(--bad)} .hypbar .v-undecided,.hypbar .v-pending{background:var(--dim);opacity:.5}
+/* 판정 필터(2026-10-23) — 요약 라벨·막대 조각을 누르면 그 판정만 보인다 */
+.hypsum .hypf{display:inline-flex;align-items:center;gap:4px;padding:2px 6px;border:1px solid transparent;border-radius:var(--r-pill,999px);
+  background:transparent;color:inherit;font:inherit;cursor:pointer}
+.hypsum .hypf:hover{border-color:var(--line-strong,var(--line))}
+.hypsum .hypf.on{border-color:var(--acc);background:var(--acc-soft)}
+.hypsum.filtering .hypf:not(.on):not(.all){opacity:.5}
+.hypsum .hypf.all{font-size:11.5px;color:var(--dim)}
+.hypbar i{cursor:pointer} .hypbar i.off{opacity:.25}
 .hyptable{width:100%;font-size:12.5px;border-collapse:collapse}
 .hyptable th{font-size:11px;color:var(--dim);font-weight:400;text-align:left;padding:4px 8px}
 .hyptable td{vertical-align:top;padding:7px 8px;border-top:1px solid var(--line);line-height:1.5}

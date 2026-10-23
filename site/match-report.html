@@ -450,21 +450,32 @@ function claimsHtml(v){
    ⛔ 메모가 없는 경기는 숨기지 않고 「관전 메모 없음」이라고 쓴다. */
 const VERD = { match:['일치','hi'], partial:['부분 일치','mid'], mismatch:['불일치','dead'], undecided:['판정 불가','own'], pending:['대기','own'] };
 const vbadge = v => `<span class="badge ${VERD[v]?.[1] ?? ''}">${esc(VERD[v]?.[0] ?? v)}</span>`;
+let HYP_F = null;   // 판정 필터(2026-10-23 사용자 지시 「일치·부분 일치·불일치 라벨을 필터로」) — null = 전체
 function renderHypotheses(r){
   const el = document.getElementById('hypPanel'), hs = r.hypotheses || [];
   if (!hs.length){ el.innerHTML = `<h2>관전 메모 가설 판정</h2><p class="dim" style="font-size:12px">이 경기에는 판정할 관전 메모가 없다(reports/match-watch/notes/에 메모가 없거나 아직 적재 전).</p>`; return; }
   const cnt = hs.reduce((m, h) => (m[h.verdict] = (m[h.verdict] || 0) + 1, m), {});
+  if (HYP_F && !cnt[HYP_F]) HYP_F = null;          // 다른 경기로 옮겨 그 판정이 없으면 풀어 준다
   const nFix = hs.filter(h => h.history?.length).length;
-  el.innerHTML = `<h2>관전 메모 가설 판정 <small class="dim">— ${hs.length}건 · 최신 회차 기준${nFix ? ` · 정정 ${nFix}건` : ''}</small></h2>
-    <div class="hypsum">${Object.keys(VERD).filter(k => cnt[k]).map(k => `<span>${vbadge(k)} <b>${cnt[k]}</b></span>`).join('')}
-      <span class="hypbar">${Object.keys(VERD).filter(k => cnt[k]).map(k => `<i class="v-${k}" style="flex:${cnt[k]}" title="${VERD[k][0]} ${cnt[k]}"></i>`).join('')}</span></div>
-    <div class="scrollx"><table class="hyptable"><thead><tr><th>#</th><th>판정</th><th>사용자 의견</th><th>실측·근거</th></tr></thead><tbody>${hs.map(h => `<tr>
+  const shown = HYP_F ? hs.filter(h => h.verdict === HYP_F) : hs;
+  /* ⭐ 요약 라벨·막대 조각이 곧 필터 버튼이다 — 누르면 그 판정만, 다시 누르면 전체.
+     ⛔ 숨긴 행 수를 감추지 않는다 — 제목에 「N건 중 M건 표시」를 적는다. */
+  el.innerHTML = `<h2>관전 메모 가설 판정 <small class="dim">— ${hs.length}건 · 최신 회차 기준${nFix ? ` · 정정 ${nFix}건` : ''}${HYP_F ? ` · <b>${esc(VERD[HYP_F][0])}만 ${shown.length}건 표시</b>` : ''}</small></h2>
+    <div class="hypsum${HYP_F ? ' filtering' : ''}">${Object.keys(VERD).filter(k => cnt[k]).map(k => `<button type="button" class="hypf${HYP_F === k ? ' on' : ''}" data-hypf="${k}" aria-pressed="${HYP_F === k}" title="${HYP_F === k ? '다시 누르면 전체 보기' : `${VERD[k][0]}만 보기`}">${vbadge(k)} <b>${cnt[k]}</b></button>`).join('')}
+      ${HYP_F ? '<button type="button" class="hypf all" data-hypf="">전체 보기</button>' : ''}
+      <span class="hypbar">${Object.keys(VERD).filter(k => cnt[k]).map(k => `<i class="v-${k}${HYP_F && HYP_F !== k ? ' off' : ''}" data-hypf="${k}" style="flex:${cnt[k]}" title="${VERD[k][0]} ${cnt[k]} — 눌러서 이 판정만 보기"></i>`).join('')}</span></div>
+    <div class="scrollx"><table class="hyptable"><thead><tr><th>#</th><th>판정</th><th>사용자 의견</th><th>실측·근거</th></tr></thead><tbody>${shown.map(h => `<tr>
       <td class="dim">${esc(h.seq)}${h.tag ? `<br><b>${esc(h.tag)}</b>` : ''}</td>
       <td>${vbadge(h.verdict)}${h.round !== 'D0' ? ` <span class="badge own" title="${esc(h.round)} 회차에 다시 판정했다">${esc(h.round.replace('D', 'D+'))} ${h.history?.length ? '정정' : ''}</span>` : ''}</td>
       <td>${annotate(esc(h.claim))}</td>
       <td>${annotate(esc(h.measured))}${h.verdict_note ? `<div class="hypnote">${annotate(esc(h.verdict_note))}</div>` : ''}
         <small class="dim">${esc(h.evidence || '')}${h.obs_id ? ` · obs#${esc(h.obs_id)}` : ''}</small>
         ${h.history?.length ? `<details class="hyphist"><summary>이전 판정 ${h.history.length}건</summary>${h.history.map(x => `<div>${esc(x.round.replace('D', 'D+'))} ${vbadge(x.verdict)} ${esc(x.verdict_note || '')}</div>`).join('')}</details>` : ''}</td></tr>`).join('')}</tbody></table></div>`;
+  el.querySelectorAll('[data-hypf]').forEach(b => b.addEventListener('click', () => {
+    const k = b.dataset.hypf || null;
+    HYP_F = HYP_F === k ? null : k;
+    renderHypotheses(r);
+  }));
 }
 /* ── 부상 추적 — player_status(FotMob 스냅샷)를 경기일 기준으로 자른 것(export). 리포트 본문의 T3 서술은 원문에 있다. */
 function renderInjuries(r){
