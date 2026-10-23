@@ -1466,3 +1466,13 @@ CREATE TABLE match_momentum(
   UNIQUE(match_id, minute, source)
 );
 CREATE INDEX ix_match_momentum_m ON match_momentum(match_id, minute);
+CREATE TABLE fc_evolution_unlock_supplement (
+  game_version TEXT NOT NULL,
+  evo_id       INTEGER NOT NULL,
+  unlock_text  TEXT NOT NULL,          -- fut.gg·EA와 같은 영문 문형(evorules.js가 그 문형으로 판정한다)
+  source       TEXT NOT NULL,
+  confidence   TEXT NOT NULL,
+  is_void      INTEGER NOT NULL DEFAULT 0,
+  added        TEXT NOT NULL,
+  PRIMARY KEY (game_version, evo_id)
+);
