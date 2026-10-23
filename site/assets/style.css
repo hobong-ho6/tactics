@@ -467,6 +467,14 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .reqbox>b{display:block;font-size:11px;color:var(--warn);letter-spacing:.03em;margin-bottom:4px}
 .reqbox>div{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:3px}
 .reqbox small{font-size:10.5px;line-height:1.5;display:block}
+/* 획득 조건(2026-10-23) — 「걸 수 있는 카드 조건」(.reqbox)과 같은 모양·같은 레벨. 경로별 왼쪽 띠 색만 다르다(evorules.js acquireRoute). */
+.acqbox{border:1px solid var(--line);border-left:3px solid var(--ok);border-radius:0 8px 8px 0;padding:7px 10px;margin:6px 0;font-size:12px;line-height:1.5}
+.acqbox>b{display:block;font-size:11px;color:var(--ok);letter-spacing:.03em;margin-bottom:4px}
+.acqbox>div{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:3px}
+.acqbox small{font-size:10.5px;line-height:1.5;display:block}
+.acqbox.k-prem,.acqbox.k-token,.acqbox.k-obj,.acqbox.k-other{border-left-color:var(--acc)}
+.acqbox.k-prem>b,.acqbox.k-token>b,.acqbox.k-obj>b,.acqbox.k-other>b{color:var(--acc)}
+.acqbox .acqwarn{color:var(--warn);margin-top:3px}
 /* 갈림길 옵션 — ★가 우리 제안 */
 .optbox{border:1px solid var(--line);border-radius:8px;padding:7px 10px;margin:6px 0;background:rgba(var(--ink-rgb),.02)}
 .optbox>b{display:block;font-size:11px;color:var(--acc);letter-spacing:.03em;margin-bottom:5px}

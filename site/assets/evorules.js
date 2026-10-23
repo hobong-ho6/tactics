@@ -99,6 +99,33 @@ export function unlockCondKr(t){
   return null;
 }
 
+/* ⭐⭐ **「어떻게 얻나」 경로 판정 정본** (2026-10-23 사용자 지적 「각 진화의 획득 조건이 잘 안 보여 — 별도 카드 영역으로」).
+   ⛔ 종전엔 비용 한 줄(`costText` → 「무료」)과 해금 문구가 있을 때만 뜨는 블록이 따로 놀아,
+      해금 문구가 빈 해금형(Composed Stopper = 챔피언스 토큰 · migration 122 보충)이 「무료」로 보였다.
+   ⇒ 모든 진화를 아래 6갈래 중 하나로 판정하고, 화면은 이 결과로만 「획득 조건」 상자를 그린다(불변규칙 13 ②).
+   kind: prem(프리미엄 시즌패스) · sp(스탠다드 시즌패스) · token(토큰 스토어) · obj(과제) · other(그 밖의 Unlocked by) · pay(코인/포인트) · free */
+export function acquireRoute(c){
+  const u = unlockCond(c);
+  const sp = /reaching level\s+(\d+)\s+in the\s+(Standard|Premium)\s+Season Pass/i.exec(u);
+  if (sp){
+    const prem = /premium/i.test(sp[2]);
+    return { kind: prem ? 'prem' : 'sp', level: +sp[1],
+             label: `${prem ? '프리미엄' : '스탠다드'} 시즌패스 레벨 ${sp[1]} 달성`,
+             how: prem ? '프리미엄 시즌패스를 구매하고 레벨을 올리면 진화 랩에 열린다 — 레벨만 올려서는 받을 수 없다.'
+                       : '스탠다드 시즌패스는 구매 없이 레벨만 올리면 진화 랩에 열린다.' };
+  }
+  const tk = /Token Store for (\d+) tokens?/i.exec(u);
+  if (tk) return { kind: 'token', tokens: +tk[1], label: `챔피언스 토큰 ${tk[1]}개로 토큰 스토어에서 구매`,
+                   how: '챔피언스 토큰은 FUT Champions(주말 리그) 보상으로 받는다 — 갤러리 토큰 스토어와는 다른 상점이다. 산 뒤에는 진화 랩에서 바로 시작한다.' };
+  if (/^Unlocked by/i.test(u)) return { kind: 'other', label: unlockCondKr(u) || u, how: '달성 여부는 계정 상태라 fut.gg가 주지 않는다.' };
+  if (u) return { kind: 'obj', label: `과제 「${u}」 완료`, how: '과제(Objectives)를 끝내면 보상으로 진화가 열린다.' };
+  if (c?.coins_cost || c?.points_cost){
+    const parts = [c.coins_cost ? `${Number(c.coins_cost).toLocaleString()} 코인` : null, c.points_cost ? `${c.points_cost} FC 포인트` : null].filter(Boolean);
+    return { kind: 'pay', label: `진화 랩에서 ${parts.join(' 또는 ')}로 시작`, how: '해금 조건 없이 진화 랩에 열려 있다 — 시작할 때 값을 낸다.' };
+  }
+  return { kind: 'free', label: '진화 랩에서 바로 시작 (무료)', how: '해금 조건·비용 없이 진화 랩에 열려 있다.' };
+}
+
 export function evoRules(EVO, accName){
   const C = EVO?.club || { accounts: [], players: [], log: [] };
   const acc = (C.accounts || []).find(a => a.name === accName) || (C.accounts || [])[0] || null;

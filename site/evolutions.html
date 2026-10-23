@@ -151,7 +151,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels, loadCurrentKernels } from './assets/data.js?v=20261004-nav';
 import { deadlineChart, sixDumbbell, mountTips as evoTips } from './assets/evoviz.js?v=20261014';
-import { evoRules, logState, inProgress, unlockCond, unlockCondKr, psGrant, psPlusGrant, psCapSim, psCapNote } from './assets/evorules.js?v=20261022';
+import { evoRules, logState, inProgress, unlockCond, unlockCondKr, acquireRoute, psGrant, psPlusGrant, psCapSim, psCapNote } from './assets/evorules.js?v=20261023';
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
 import { statTip } from './assets/stat-tips.js?v=20261009';   // 속성 이름 툴팁(정본 표 하나 · 2026-10-06 GK 세부 속성 추가)
@@ -1221,47 +1221,37 @@ function teamBar(el, team, onPick){
    ⛔ 시즌패스 해금(「Unlocked by reaching level N …」)은 문구 자체가 이미 답이라 건드리지 않는다.
    ⚠️ 원문과 한국어 번역을 함께 적는다(불변규칙 11). 번역이 없으면 원문만 적고 그 사실이 드러나게 둔다. */
 function unlockHow(c){
-  const u = unlockCond(c);     // ⭐ 정본은 evorules.js — unlock_text가 비면 description의 「Unlocked by …」(2026-10-13)
-  if (!u) return '';
-  /* ⭐ 시즌패스 해금도 **해금 조건 블록에 넣는다**(2026-09-22 사용자 지적 「이 두 건도 시즌 레벨 올려야 받는 거잖아」).
-     ⛔ 종전에는 「문구 자체가 답이다」라며 건너뛰었는데, 그 결과 **영어 원문만 두 번 반복**되고
-        한국어 번역이 없었다(불변규칙 11 위반). 조건은 조건이므로 같은 자리에 같은 모양으로 적는다.
-     ⚠️ 프리미엄은 **구매해야 열린다** — 미구매 상태에서는 레벨을 올려도 안 열리니 그 사실을 함께 적는다. */
-  const sp = u.match(/reaching level (\d+) in the (Standard|Premium) Season Pass/i);
-  if (sp){
-    const [, lv, tier] = sp, prem = /premium/i.test(tier);
-    return `<div class="unlockhow${prem ? ' prem' : ''}"><b>해금 조건</b>
-      <div>「${esc(u)}」 <b>(${prem ? '프리미엄' : '스탠다드'} 시즌패스 <b>레벨 ${esc(lv)}</b> 달성)</b></div>
-      <span class="dim">${prem
-        ? '⚠️ 프리미엄 시즌패스를 <b>구매해야</b> 열린다 — 레벨만 올려서는 받을 수 없다.'
-        : '스탠다드 시즌패스는 구매 없이 레벨만 올리면 된다.'}</span></div>`;
+  /* ⭐⭐ 「획득 조건」 상자 — **모든 진화**에 뜬다(2026-10-23 사용자 지적 「획득 조건을 별도 카드 영역으로」).
+     경로 판정은 evorules.js acquireRoute 한 곳이고, 여기는 그 결과에 **원문 근거**(해금 문구 원문+번역 · 과제 원문+번역)를 붙인다.
+     ⛔ 종전엔 해금 문구가 있을 때만 블록이 떠서, 문구가 빈 해금형(Composed Stopper)이 비용 한 줄 「무료」로만 보였다.
+     ⚠️ fut.gg가 주지 않아 우리가 보충한 경로(migration 122)는 근거 등급을 같이 띄운다 — fut.gg 값과 같은 얼굴로 두지 않는다. */
+  const r = acquireRoute(c), u = unlockCond(c);
+  let src = '';
+  if (r.kind === 'obj'){
+    const all = EVO.obj_tasks || [];
+    /* 후보 = 과제명이 맞거나 그룹명이 맞는 것. ⛔ 그룹 소개문(과제명 == 그룹명)은 제외한다.
+       고르는 순서: ⑴ 진화와 이름이 같은 과제 ⑵ 보상이 Evo인 과제 ⑶ 해금 문구와 이름이 같은 과제 ⑷ 첫 번째
+       (Ted Lasso 그룹의 「Believe」 과제가 곧 Believe 진화의 조건이다). */
+    const cand = all.filter(x => (x.task_name === u || x.group_name === u) && x.task_name !== x.group_name);
+    /* ⭐ 보상이 **이 진화 이름**인 과제를 가장 먼저 고른다(2026-10-23 — Gamechanger의 해금 문구 「Win 1」이 같은 이름의
+       다른 과제(헤리티지 서킷 · 보상 78+ 팩)로 잡혔다. 진짜는 Ultimate Gauntlet 2 「Win 1」 · 보상 Gamechanger). */
+    const t = cand.find(x => (x.reward || '').split(/,\s*/).includes(c.name)) || cand.find(x => x.task_name === c.name)
+           || cand.find(x => /evo/i.test(x.reward || ''))
+           || cand.find(x => x.task_name === u) || cand[0];
+    src = t ? `${t.task_name !== u ? `<span class="dim">${esc(t.group_name)} › ${esc(t.task_name)}</span>` : ''}
+        <div>「${esc(t.task_text)}」${t.task_text_kr ? ` <b>(${esc(t.task_text_kr)})</b>` : ' <span class="dim">(번역 없음)</span>'}</div>
+        ${t.reward ? `<span class="dim">이 과제 보상: ${esc(t.reward)}</span>` : ''}`
+      : '<span class="dim">과제 원문을 못 찾았다(목표 표에 없음) — 이름만 안다.</span>';
+  } else if (u){
+    const kr = r.kind === 'token' ? `챔피언스 토큰 스토어에서 토큰 ${r.tokens}개로 구매` : unlockCondKr(u);
+    src = `<div class="dim">「${esc(u)}」 ${kr ? `(${esc(kr)})` : '(번역 없음)'}</div>`;
   }
-  /* ⭐ 토큰 스토어형(2026-10-06) — 영어 원문만 나오고 번역이 없었다(불변규칙 11). */
-  const tk = u.match(/Token Store for (\d+) tokens?/i);
-  if (tk) return `<div class="unlockhow"><b>해금 조건</b>
-      <div>「${esc(u)}」 <b>(챔피언스 토큰 스토어에서 토큰 ${esc(tk[1])}개로 구매)</b></div>
-      <span class="dim">챔피언스 토큰은 FUT Champions(주말 리그) 보상으로 받는다 — 갤러리 토큰 스토어와는 다른 상점이다.
-        산 뒤에는 미션 없이 바로 적용된다.</span></div>`;
-  /* ⭐ 그 밖의 「Unlocked by …」(예: 전작 FC26 시즌 패스 완주 이월 보상 · 2026-10-13) — 과제 표에 없으니 문구를 그대로 조건으로 적는다. */
-  if (/^Unlocked by/i.test(u)){
-    const kr = unlockCondKr(u);
-    return `<div class="unlockhow"><b>해금 조건</b>
-      <div>「${esc(u)}」 ${kr ? `<b>(${esc(kr)})</b>` : '<span class="dim">(번역 없음)</span>'}</div>
-      ${RULES.lockInfo[c.evo_id]?.unknown ? '<span class="dim">달성했는지는 계정 상태라 fut.gg가 주지 않는다 — 했다/안 했다를 알려 주면 해금 기록으로 남긴다.</span>' : ''}</div>`;
-  }
-  const all = EVO.obj_tasks || [];
-  /* 후보 = 과제명이 맞거나 그룹명이 맞는 것. ⛔ 그룹 소개문(과제명 == 그룹명)은 제외한다. */
-  const cand = all.filter(x => (x.task_name === u || x.group_name === u) && x.task_name !== x.group_name);
-  /* 고르는 순서: ⑴ 진화와 이름이 같은 과제 ⑵ 보상이 Evo인 과제 ⑶ 해금 문구와 이름이 같은 과제 ⑷ 첫 번째.
-     ⑴이 먼저인 이유 — Ted Lasso 그룹의 「Believe」 과제가 곧 Believe 진화의 조건이다. */
-  const t = cand.find(x => x.task_name === c.name)
-         || cand.find(x => /evo/i.test(x.reward || ''))
-         || cand.find(x => x.task_name === u) || cand[0];
-  if (!t) return '';
-  return `<div class="unlockhow"><b>해금 조건</b>
-    ${t.task_name !== u ? `<span class="dim">${esc(t.group_name)} › ${esc(t.task_name)}</span>` : ''}
-    <div>「${esc(t.task_text)}」${t.task_text_kr ? ` <b>(${esc(t.task_text_kr)})</b>` : ''}</div>
-    ${t.reward ? `<span class="dim">이 과제 보상: ${esc(t.reward)}</span>` : ''}</div>`;
+  const lock = RULES.lockInfo[c.evo_id];
+  return `<div class="acqbox k-${r.kind}"><b>획득 조건</b>
+    <div><span class="req"><b>${esc(r.label)}</b></span></div>
+    ${src}
+    <small class="dim">${esc(r.how)}${lock?.unknown ? ' 해금했는지는 계정 상태라 모른다 — 했다고 알려 주면 해금 기록으로 남긴다.' : ''}</small>
+    ${c.unlock_src ? `<small class="acqwarn">⚠️ fut.gg가 이 경로를 주지 않아 <b>우리가 보충한 값</b>이다 — 근거 ${esc(c.unlock_conf || '')} · 출처 ${esc(c.unlock_src)}</small>` : ''}</div>`;
 }
 let CAT_TEAM = localStorage.getItem('evo_cat_team') || 'AVL';
 let SHOW_USED = false;   // 소진 진화는 기본으로 감춘다(위 renderCatalog 주석 참조)
@@ -1375,7 +1365,7 @@ function renderCatalog(team = CAT_TEAM){
           && !/^Unlocked by/i.test((c.description || '').trim())
           ? `<div class="dim" style="font-size:12px"${c.description_kr ? ` title="${esc(c.description)}"` : ''}>${
               esc(c.description_kr || c.description)}</div>` : ''}
-      <div class="kv" style="margin:6px 0;font-size:12px"><span>${esc(costText(c))}</span>
+      <div class="kv" style="margin:6px 0;font-size:12px">${c.training_time ? `<span>훈련 ${Math.round(c.training_time / 3600)}h</span>` : ''}
         ${dl != null ? `<span class="${dl <= 7 ? 'dn' : ''}">마감 ${esc(String(c.end_submission_time || c.end_time).slice(0, 10))} (${dl >= 0 ? `D-${dl}` : '지남'})</span>` : ''}
         ${c.unlock_text && !/Season Pass|^Unlocked by/i.test(c.unlock_text)
             ? `<span class="dim">${esc(c.unlock_text)}</span>` : ''}</div>

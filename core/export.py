@@ -235,7 +235,12 @@ def export_all(db_path=None, window="2026-summer"):
                             FROM fc_role_familiarity_map ORDER BY game_version, kind, ea_id""")
     # 카탈로그(fc_evolutions, 최신 pulled) + 내 구단 원장(fut_*) — 진화 메뉴(evolutions.html)가 읽는다 (migration 036)
     # ⭐ 한국어 이름·설명(migration 076 · futmind = EA 현지화 노출) — 없는 종은 NULL이다(해금형 9종).
-    catalog = _rows(con, """SELECT game_version, evo_id, name, name_kr, description_kr, levels_kr, slug, url, description, category, unlock_text,
+    # ⭐ 해금 문구는 fut.gg 값이 비면 보충 표(migration 122 · fut.gg가 주지 않는 토큰 스토어 연결 등)로 채운다 —
+    #    unlock_src·unlock_conf로 「어디서 온 문구인가」를 같이 내려 화면이 근거 등급을 띄운다(fut.gg 값과 같은 얼굴로 두지 않는다).
+    catalog = _rows(con, """SELECT e.game_version, e.evo_id, name, name_kr, description_kr, levels_kr, slug, url, description, category,
+                                   COALESCE(NULLIF(e.unlock_text, ''), s.unlock_text) unlock_text,
+                                   CASE WHEN COALESCE(e.unlock_text, '') = '' AND s.unlock_text IS NOT NULL THEN s.source END unlock_src,
+                                   CASE WHEN COALESCE(e.unlock_text, '') = '' AND s.unlock_text IS NOT NULL THEN s.confidence END unlock_conf,
                                    coins_cost, points_cost, token_cost,
                                    -- ⭐ 반복 횟수는 EA 원본 우선(migration 089 · RW Roles++는 fut.gg가 1로 틀리게 준다)
                                    COALESCE(repeat_total_ea, repeatability) repeatability, repeatability repeatability_futgg,
@@ -243,8 +248,11 @@ def export_all(db_path=None, window="2026-summer"):
                                    training_time, created_at, end_time, end_submission_time, requirements_text,
                                    total_upgrades_text, levels, allowed_prior_ids, number_of_players, is_expired, pulled,
                                    carried_from
-                            FROM fc_evolutions WHERE pulled=(SELECT MAX(pulled) FROM fc_evolutions)
-                            ORDER BY is_expired, end_time, evo_id""")
+                            FROM fc_evolutions e
+                            LEFT JOIN fc_evolution_unlock_supplement s
+                              ON s.game_version=e.game_version AND s.evo_id=e.evo_id AND s.is_void=0
+                            WHERE e.pulled=(SELECT MAX(pulled) FROM fc_evolutions)
+                            ORDER BY is_expired, end_time, e.evo_id""")
     # ⭐⭐ **적용 가능 선수**(migration 058) — 경로 축(`player_evolutions`)이 못 덮는 진화를 여는 축이다.
     #    fut.gg `paths/v2`는 base 카드 기준 조합 경로만 줘서 ⑴ 특별 카드 전용 진화 ⑵ 단독 진화를 놓친다
     #    (2026-09-22 실측 33쌍 · Relentless는 카탈로그에도 없어 손수집했다).
