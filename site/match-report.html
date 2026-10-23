@@ -265,7 +265,38 @@ function renderCarries(r){
   rows.sort((a, b) => (n(b.x.carries_prog_ss) ?? -1) - (n(a.x.carries_prog_ss) ?? -1)
     || (n(b.x.progression_m_ss) ?? -1) - (n(a.x.progression_m_ss) ?? -1));
   const cell = (v, d = 0) => v == null ? '<td class="num dim">—</td>' : `<td class="num">${Number(v).toFixed(d)}</td>`;
-  el.innerHTML = `<h2>운반 <small class="dim">— 실측(SofaScore) vs 추정(WhoScored) · 전진 운반 순</small></h2>
+  /* ⭐ 시각화(2026-10-24 사용자 요청 「운반 지표를 시각화」) — 선수별 가로 막대 두 칸(횟수 · 거리 — 단위가 달라 한 축에 겹치지 않는다).
+     진한 = 전진(프로그레시브) · 옅은 = 나머지 · 빈 마커 = WhoScored 추정(실측과 섞지 않는다 — 모양으로 구분).
+     「90분당」은 출전 시간 차(18~90분)를 지운다 — 30분 미만은 표본이 작아 흐리게 둔다. 색·모양은 style.css(.cv-*). */
+  const p90 = CARRY_P90, k = m => (p90 && m) ? 90 / m : 1;
+  const V = rows.map(({ p, x }) => { const f = k(+p.minutes || 0);
+    const c = n(x.carries_ss), cp = n(x.carries_prog_ss), dm = n(x.carries_prog_dist_m_ss), tm = n(x.progression_m_ss), est = n(x.carry_est_prog10_n);
+    return { p, short: (+p.minutes || 0) < 30,
+             c: c == null ? null : c * f, cp: cp == null ? null : cp * f, est: est == null ? null : est * f,
+             tm: tm == null ? null : tm * f, dm: dm == null ? null : dm * f }; });
+  /* 90분당이면 30분 미만 출전은 축 계산에서 뺀다 — 18분짜리 환산값이 축을 잡아 나머지가 눌린다(막대는 끝에서 잘린다 · 값은 숫자로 남는다) */
+  const VS = p90 ? V.filter(v => !v.short) : V;
+  const mxC = Math.max(1, ...VS.map(v => Math.max(v.c ?? 0, v.est ?? 0))), mxM = Math.max(1, ...VS.map(v => Math.max(v.tm ?? 0, v.dm ?? 0)));
+  const pct = (v, mx) => `${Math.max(0, Math.min(100, (v ?? 0) / mx * 100)).toFixed(2)}%`;
+  const fmt = (v, d) => v == null ? '—' : (p90 ? v.toFixed(1) : v.toFixed(d));
+  const bar = (whole, part, mx, est, tip) => whole == null && part == null ? '<div class="cv-bar cv-none">미수집</div>'
+    : `<div class="cv-bar" title="${esc(tip)}"><i class="cv-rest" style="width:${pct(whole, mx)}"></i><i class="cv-prog" style="width:${pct(part, mx)}"></i>${
+        est ? `<b class="cv-est" style="left:${pct(est, mx)}"></b>` : ''}</div>`;
+  /* 거리 두 값은 포함 관계가 아니다(SofaScore 정의가 다름 — 알리송 전진 운반 거리 214m > 볼 전진 거리 204m) ⇒ 겹치지 않고 두 줄 */
+  const bar2 = (a1, a2, mx, tip) => a1 == null && a2 == null ? '<div class="cv-bar cv-none">미수집</div>'
+    : `<div class="cv-bar cv-two" title="${esc(tip)}"><i class="cv-prog" style="width:${pct(a1, mx)}"></i><i class="cv-rest" style="width:${pct(a2, mx)}"></i></div>`;
+  const chart = `<div class="cv-ctrl"><span class="dim">기준</span>${[['all', '경기 전체'], ['p90', '90분당']].map(([key, l]) =>
+      `<button type="button" data-carryp90="${key}" class="${(key === 'p90') === p90 ? 'on' : ''}">${l}</button>`).join('')}</div>
+    <div class="cv-grid"><div class="cv-head"></div><div class="cv-head">운반 횟수 <small class="dim">진한 = 전진 운반</small></div>
+      <div class="cv-head">거리 m <small class="dim">위(진한) = 전진 운반 거리 · 아래(옅은) = 볼 전진 거리</small></div>
+      ${V.map(v => `<div class="cv-name${v.short ? ' cv-short' : ''}" title="${v.short ? '30분 미만 출전 — 표본이 작다' : ''}"><b>${esc(v.p.label)}</b> <small class="dim">${esc(v.p.minutes ?? '')}′</small></div>
+        <div class="cv-cell${v.short ? ' cv-short' : ''}">${bar(v.c, v.cp, mxC, v.est,
+          `${v.p.label} · 운반 ${fmt(v.c, 0)} · 전진 운반 ${fmt(v.cp, 0)}(실측) · 추정 ${fmt(v.est, 0)}${p90 ? ' · 90분당' : ''}`)}<span class="cv-val">${fmt(v.cp, 0)}<small class="dim">/${fmt(v.c, 0)}</small></span></div>
+        <div class="cv-cell${v.short ? ' cv-short' : ''}">${bar2(v.dm, v.tm, mxM,
+          `${v.p.label} · 전진 운반 거리 ${fmt(v.dm, 0)}m · 볼 전진 거리 ${fmt(v.tm, 0)}m${p90 ? ' · 90분당' : ''}`)}<span class="cv-val cv-val2">${fmt(v.dm, 0)}<br><small class="dim">${fmt(v.tm, 0)}</small></span></div>`).join('')}</div>
+    <p class="dim legend-line cv-legend"><span><i class="cv-sw cv-prog"></i>전진 운반(실측)</span><span><i class="cv-sw cv-rest"></i>운반 전체 · 볼 전진 거리(실측)</span>
+      <span><b class="cv-sw cv-est"></b>전진 운반 추정(WhoScored)</span>${p90 ? '<span>· 90분당 환산 — 흐린 행은 30분 미만 출전</span>' : ''}</p>`;
+  el.innerHTML = `<h2>운반 <small class="dim">— 실측(SofaScore) vs 추정(WhoScored) · 전진 운반 순</small></h2>${chart}
     <div class="scrollx"><table class="carry-table"><thead><tr><th>선수</th><th class="num">분</th>
       <th class="num">${glTip('운반 <span class="badge hi">실측</span>', CARRY_DEF.n)}</th>
       <th class="num">${glTip('전진 운반 <span class="badge hi">실측</span>', CARRY_DEF.prog)}</th>
@@ -275,7 +306,10 @@ function renderCarries(r){
     <tbody>${rows.map(({ p, x }) => `<tr><td><b>${esc(p.label)}</b></td>${cell(p.minutes)}${cell(x.carries_ss)}${cell(x.carries_prog_ss)}
       ${cell(x.carries_prog_dist_m_ss)}${cell(x.progression_m_ss)}${cell(x.carry_est_prog10_n)}</tr>`).join('')}</tbody></table></div>
     <p class="dim legend-line">실측 = SofaScore 제공사 트래킹 · 추정 = WhoScored 이벤트 좌표 차(같은 선수 연속 볼 이벤트 · 전진 ≥ 피치 10%). 두 값의 순위가 갈리면 <b>실측을 우선</b>한다.</p>`;
+  el.querySelectorAll('[data-carryp90]').forEach(btn => btn.addEventListener('click', () => {
+    CARRY_P90 = btn.dataset.carryp90 === 'p90'; renderCarries(r); }));
 }
+let CARRY_P90 = false;   // 운반 차트 기준(경기 전체 · 90분당)
 function renderGamePreset(r){
   const s=r.game_setup, all=r.game_players??[];
   const el=document.getElementById('gamePreset');
