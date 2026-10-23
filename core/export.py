@@ -347,9 +347,9 @@ def export_all(db_path=None, window="2026-summer"):
                --    단위가 다르다. 둘을 섞으면 같은 선수가 화면마다 다른 횟수로 보인다
                --    (지모알로바 6 ↔ 2 · 루제리 3 ↔ 1). ⛔ `fut_club_players.evo_count`는 스크립트가
                --    +1 하는 값이라 원장과 어긋날 수 있다 — 원장에서 직접 센 이 값을 쓴다.
-               (SELECT COUNT(*) FROM v_evo_log l
+               (SELECT COUNT(*) FROM v_evo_log_active l
                  WHERE l.club_player_id=c.id) evo_levels,
-               (SELECT GROUP_CONCAT(DISTINCT l.evo_name) FROM v_evo_log l
+               (SELECT GROUP_CONCAT(DISTINCT l.evo_name) FROM v_evo_log_active l
                  WHERE l.club_player_id=c.id) evo_names
           FROM fut_club_players c
           LEFT JOIN player_card_items i ON i.ea_item_id=c.ea_item_id
@@ -368,7 +368,7 @@ def export_all(db_path=None, window="2026-summer"):
     in_squad = {r[0] for r in con.execute(
         "SELECT id FROM fut_club_players WHERE status='owned' AND is_in_active_squad=1")}
     has_evo = {r[0] for r in con.execute(
-        "SELECT DISTINCT club_player_id FROM v_evo_log")}
+        "SELECT DISTINCT club_player_id FROM v_evo_log_active")}
     state = {}
     for r in sorted(club_state, key=lambda r: (r["club_player_id"] not in in_squad,
                                                r["club_player_id"] not in has_evo,
@@ -488,7 +488,7 @@ def export_all(db_path=None, window="2026-summer"):
     #   (마조 Striker Glow Up은 적용된 적이 없는데 소진으로 잠겨 있었다).
     log = _rows(con, """SELECT id, club_player_id, evo_id, evo_name, level, applied_at, completed_at, ovr_before, ovr_after,
                                six_before, six_after, attrs_delta, playstyles_after, roles_plus_after, roles_plus_plus_after,
-                               is_void, notes
+                               is_void, removed_at, removed_how, notes
                         FROM fut_evolution_log ORDER BY applied_at, id""")   # G32 허용: 화면이 무효 행도 표시한다(logState가 판정)
     # ⭐ 갤러리(migration 092) — 세트·등급별 토큰·최신 평가·내 기록, 그리고 **분류는 core/gallery.classify 하나로**
     #   (스크립트 출력과 화면이 같은 목록을 보게 한다). 평가는 클럽 싱크 `선수` 끝의 gallery_eval.py가 쌓는다.

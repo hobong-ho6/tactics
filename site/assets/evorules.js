@@ -21,8 +21,12 @@ const J = (v, d) => { try { return JSON.parse(v ?? 'null') ?? d; } catch(e){ ret
    `completed_at`이 NULL이라 카드가 계속 「진화 진행 중」이었다.
    ⭐ 같은 실수가 **두 번째**다 — 소진 계산에서 한 번(migration 053), 카드 뱃지에서 또 한 번.
       ⇒ 「조심하자」 대신 판정을 여기 한 곳에 두고 화면은 부르기만 한다(CLAUDE.md 불변규칙 13 ②). */
-export const logState   = l => l.is_void ? 'void' : l.completed_at ? 'done' : 'progress';
+export const logState   = l => l.is_void ? 'void' : l.removed_at ? 'removed' : l.completed_at ? 'done' : 'progress';
 export const inProgress = l => logState(l) === 'progress';
+/* ⭐ 「지금 이 카드에 걸린 진화」 판정 정본(2026-10-24 · migration 123 진화 제거).
+   ⛔ 화면마다 `!l.is_void`로 세던 것을 여기로 모은다 — 제거된 진화(removed_at)는 카드에서 빠졌으므로 「진화 N단계」·
+      「이어 붙일 진화」·카드 배지에서 빼야 한다. 단 **소진(사용 횟수)은 계속 센다**(EA: 슬롯 환급 없음 · 아래 consumed). */
+export const activeLog  = l => !l.is_void && !l.removed_at;
 
 /* ⭐⭐ 진화의 **해금 조건 문구** 정본 (2026-10-13 사용자 지적 — Quick Step [FC 26 Obj]가 「즉시 적용」으로 떴다).
    fut.gg는 해금 문구를 `unlock_text`(customUnlockable·sbcName·objectiveGroupName)에 주지만,
@@ -149,7 +153,7 @@ export function evoRules(EVO, accName){
       consumed[l.evo_id].count++;
       consumed[l.evo_id].by.push({ name: p.name, pid: p.player_id, date: l.applied_at });
     }
-    if (p.player_id == null) continue;
+    if (p.player_id == null || l.removed_at) continue;     // 제거된 진화는 「이미 적용한 진화」에서 뺀다(소진은 위에서 이미 셌다)
     const k = `${p.player_id}:${l.evo_id}`;
     const e = (applied[k] ??= { pid: p.player_id, evo_id: l.evo_id, name: l.evo_name, levels: [], done: false,
                                 ovr_before: null, ovr_after: null, first: null, last: null });

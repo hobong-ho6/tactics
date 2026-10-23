@@ -633,7 +633,7 @@ CREATE TABLE fut_evolution_log(
   attrs_delta TEXT,                           -- JSON {한글 라벨: +n}
   playstyles_after TEXT, roles_plus_after TEXT, roles_plus_plus_after TEXT,
   source TEXT, confidence TEXT, notes TEXT
-, is_void INTEGER NOT NULL DEFAULT 0, attrs_after TEXT);
+, is_void INTEGER NOT NULL DEFAULT 0, attrs_after TEXT, removed_at TEXT, removed_how TEXT);
 CREATE TABLE player_card_prices(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL REFERENCES game_versions(code),
@@ -1326,10 +1326,7 @@ WHERE tt.map25 IS NOT NULL
 /* v_slot_candidates(regime_id,team_code,formation,pos,slot_type,player_id,label,name_en,name_kr,source_kind,status,map25,rating,rate_basis,rate_note,fit_role,fit_focus,fit_sim,source,confidence,sort_order,grid_club,grid_caveat) */;
 CREATE VIEW v_evo_log AS                       -- 유효 행(무효 제외) = logState ≠ 'void'
   SELECT * FROM fut_evolution_log WHERE COALESCE(is_void, 0) = 0
-/* v_evo_log(id,club_player_id,evo_id,evo_name,level,applied_at,completed_at,ovr_before,ovr_after,six_before,six_after,attrs_delta,playstyles_after,roles_plus_after,roles_plus_plus_after,source,confidence,notes,is_void,attrs_after) */;
-CREATE VIEW v_evo_log_open AS                  -- 진행 중 = logState = 'progress'
-  SELECT * FROM v_evo_log WHERE completed_at IS NULL
-/* v_evo_log_open(id,club_player_id,evo_id,evo_name,level,applied_at,completed_at,ovr_before,ovr_after,six_before,six_after,attrs_delta,playstyles_after,roles_plus_after,roles_plus_plus_after,source,confidence,notes,is_void,attrs_after) */;
+/* v_evo_log(id,club_player_id,evo_id,evo_name,level,applied_at,completed_at,ovr_before,ovr_after,six_before,six_after,attrs_delta,playstyles_after,roles_plus_after,roles_plus_plus_after,source,confidence,notes,is_void,attrs_after,removed_at,removed_how) */;
 CREATE TABLE fut_evo_ea_ack (
   id INTEGER PRIMARY KEY,
   club_player_id INTEGER NOT NULL REFERENCES fut_club_players(id),
@@ -1476,3 +1473,9 @@ CREATE TABLE fc_evolution_unlock_supplement (
   added        TEXT NOT NULL,
   PRIMARY KEY (game_version, evo_id)
 );
+CREATE VIEW v_evo_log_active AS                -- 지금 카드에 걸린 진화 = 유효 행 중 제거되지 않은 것
+  SELECT * FROM v_evo_log WHERE removed_at IS NULL
+/* v_evo_log_active(id,club_player_id,evo_id,evo_name,level,applied_at,completed_at,ovr_before,ovr_after,six_before,six_after,attrs_delta,playstyles_after,roles_plus_after,roles_plus_plus_after,source,confidence,notes,is_void,attrs_after,removed_at,removed_how) */;
+CREATE VIEW v_evo_log_open AS                  -- 진행 중 = 걸려 있고 완료 전
+  SELECT * FROM v_evo_log_active WHERE completed_at IS NULL
+/* v_evo_log_open(id,club_player_id,evo_id,evo_name,level,applied_at,completed_at,ovr_before,ovr_after,six_before,six_after,attrs_delta,playstyles_after,roles_plus_after,roles_plus_plus_after,source,confidence,notes,is_void,attrs_after,removed_at,removed_how) */;

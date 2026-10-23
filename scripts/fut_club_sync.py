@@ -116,7 +116,7 @@ def main():
     #    ⚠️ 보호는 `current_ovr`·`current_six`에만 건다. 케미 스타일·개인 케미는 진화와 무관하고
     #       EA가 정본이라 항상 갱신한다.
     evolved = {r["club_player_id"] for r in
-               con.execute("""SELECT DISTINCT club_player_id FROM v_evo_log""")}
+               con.execute("""SELECT DISTINCT club_player_id FROM v_evo_log_active""")}
     cards = {r["ea_item_id"]: dict(r) for r in
              con.execute("SELECT ea_item_id, player_id, name_kr, best_pos FROM player_card_items WHERE game_version='FC27'")}
     # ⭐⭐ ① PlayStyle은 숫자 id로 온다 — 이름표 정본은 `fc_playstyle_ids`(scripts/collect_playstyle_ids.py).

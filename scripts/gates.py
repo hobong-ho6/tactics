@@ -1401,6 +1401,14 @@ def run(db_path=None, verbose=True):
     for f in sorted(site.glob("*.html")) + sorted((site / "assets").glob("*.js")):
         for m in re.finditer(r"\b(styleRank|bestRoleFor|roleFit)\(\s*([A-Za-z_$][\w$]*)\.attrs\b", f.read_text()):
             g22.append(f"{f.relative_to(root).as_posix()}: {m.group(1)}({m.group(2)}.attrs …) — 인쇄 카드 스탯이다. nowAttrs()를 쓸 것")
+    # ⑵-3b **「지금 걸린 진화」를 화면이 각자 판정하지 않는다.** 2026-10-24(migration 123 진화 제거):
+    #    `!l.is_void`로 세던 곳이 다섯 군데였고, 제거(removed_at)를 넣자 다섯 곳을 다 고쳐야 했다.
+    #    ⇒ 판정은 evorules.js `activeLog`(카드) · `logState`(표시) 하나다. 소진은 evoRules가 센다.
+    for f in sorted(site.glob("*.html")) + sorted((site / "assets").glob("*.js")):
+        if f.name == "evorules.js":
+            continue
+        if re.search(r"!\s*\w+\.is_void\b", f.read_text()):
+            g22.append(f"{f.relative_to(root).as_posix()}: `!x.is_void`로 진화를 직접 거른다 — evorules.js activeLog()를 쓸 것(제거 진화가 빠진다)")
 
     # ⑵-4 ⛔⛔ **화면 스크립트의 문법을 실제로 검사한다.** 2026-09-27 신설
     #    백틱 사고는 docs/70의 대표 반복 사고인데 **오늘 또 났다** — 템플릿 리터럴을 닫는 백틱을

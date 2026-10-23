@@ -8,6 +8,7 @@
 import { PLAYSTYLES, psLookup, psCanon } from './playstyle-icons.js';
 export { PLAYSTYLES, psLookup, psCanon };   // 화면들이 같은 사전을 쓰도록 재수출(설명·아이콘 중복 방지) · 조회는 psLookup 한 곳(2026-10-22)
 import { repaintEvoCard, replateCard, rarityLevel } from './evocard.js?v=20260927a';
+import { activeLog } from './evorules.js?v=20261024';   // 「지금 카드에 걸린 진화」 정본(제거·무효 제외 · migration 123)
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
@@ -718,7 +719,7 @@ function psBlock(csv) {
    ⛔ `evo_count`가 원장과 어긋나면 **원장(유효 로그 행 수)을 믿는다** — 스크립트가 +1 하는 값이라
    과거 재계산·중복 기록의 흔적이 남을 수 있다. */
 function evoCountLabel(p, log) {
-  const mine = (log || []).filter(l => l.club_player_id === p.id && !l.is_void);
+  const mine = (log || []).filter(l => l.club_player_id === p.id && activeLog(l));
   const n = mine.length || p.evo_count || 0;
   return `<small class="dim">${n}회 <span title="「회」는 밟은 단계 수다(4단계 완주 = 4회)">(단계)</span></small>`;
 }
@@ -729,9 +730,10 @@ function evoBlock(p, log) {
   return `<table class="tbl"><thead><tr><th>진화</th><th>단계</th><th>상태</th><th>OVR</th></tr></thead><tbody>
     ${mine.map(l => {
       const state = l.is_void ? '<span class="dim">무효</span>'
+        : l.removed_at ? `<span class="dim">제거 ${esc(l.removed_at)}</span>`
         : l.completed_at ? `완료 <small class="dim">${esc(l.completed_at)}</small>`
         : '<b class="up">진행 중</b>';
-      return `<tr${l.is_void ? ' style="opacity:.5"' : ''}><td>${esc(l.evo_name)}</td><td>${l.level ?? '-'}</td>
+      return `<tr${l.is_void || l.removed_at ? ' style="opacity:.5"' : ''}><td>${esc(l.evo_name)}</td><td>${l.level ?? '-'}</td>
         <td>${state}</td><td class="dim">${l.ovr_before ?? '-'} → ${l.ovr_after ?? '-'}</td></tr>`;
     }).join('')}</tbody></table>`;
 }
@@ -815,7 +817,7 @@ export function faceOf(at, faceRows, isGk = false) {
 function evolvedAttrs(p, ctx) {
   const base = parse(p.attrs);
   if (!base) return null;
-  const log = (ctx.log || []).filter(l => l.club_player_id === p.id && !l.is_void)
+  const log = (ctx.log || []).filter(l => l.club_player_id === p.id && activeLog(l))
     .sort((a, b) => (a.applied_at || '').localeCompare(b.applied_at || '') || a.id - b.id);
   if (!log.length) return null;
   const cat = {}; for (const c of (ctx.catalog || [])) cat[c.evo_id] = c;
@@ -1231,7 +1233,7 @@ export function cardDetail(p, ctx = {}) {
           ${/* ⚠️ 호출측이 횟수를 알고 있으면 그걸 쓴다(2026-09-22 사용자 지적 「진화 0회는 잘못된 정보」).
                  진화 경로 카드는 `p.id`(보유 행 id)가 없는 **가상 카드**라 로그로 셀 수 없었다. */''}
           <span class="chip">진화 ${ctx.evo_runs != null ? ctx.evo_runs
-            : (ctx.log || []).filter(l => l.club_player_id === p.id && !l.is_void).length}회</span>
+            : (ctx.log || []).filter(l => l.club_player_id === p.id && activeLog(l)).length}회</span>
           ${num(p.skill_moves) ? `<span class="chip">스킬 ${num(p.skill_moves)}★</span>` : ''}
           ${num(p.weak_foot) ? `<span class="chip">약발 ${num(p.weak_foot)}★</span>` : ''}
           ${p.accelerate ? `<span class="chip dim">${esc(p.accelerate)}</span>` : ''}

@@ -96,7 +96,7 @@ import { prose } from './assets/prose.js';
 import { PLAYSTYLES, psLookup, psCanon } from './assets/playstyle-icons.js';
 import { repaintEvoCard, replateCard, rarityLevel } from './assets/evocard.js?v=20260927a';
 /* ⛔ 진화 경로의 소진·프리미엄 판정은 **진화 메뉴와 같은 모듈**을 쓴다(2026-09-22 전수 조사) */
-import { evoRules } from './assets/evorules.js?v=20261018';
+import { evoRules, activeLog } from './assets/evorules.js?v=20261024';
 import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20261009';
 const { team, idx } = await mountHeader('player.html');
 const [td, GS, GS27, HIST, CARDS, EVO, K26, K27] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history'), loadGameStats('cards'), loadGameStats('evolutions').catch(()=>({paths:{},role_map:[]})), loadKernels('FC26').catch(()=>({roles:[]})), loadKernels('FC27').catch(()=>({}))]);
@@ -595,7 +595,7 @@ function renderCard(sel, g0, g26, g27, isGkRow){
   const state = (EVO.club?.state || {})[String(sel.pid)] || null;
   const evoLevels = state?.evo_levels ?? 0;
   if (club && evoLevels > 0){
-    const logs = (EVO.club?.log || []).filter(l => l.club_player_id === club.id && !l.is_void)
+    const logs = (EVO.club?.log || []).filter(l => l.club_player_id === club.id && activeLog(l))
       .sort((a, b) => String(a.applied_at).localeCompare(String(b.applied_at)) || a.id - b.id);
     const applied = logs.map(l => l.evo_id);
     const src = cards.find(c => c.item_id === ownedItem) || cards.find(c => c.is_base) || {};

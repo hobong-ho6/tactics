@@ -151,7 +151,7 @@ details.path summary{cursor:pointer;list-style:none} details.path summary::-webk
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels, loadCurrentKernels } from './assets/data.js?v=20261004-nav';
 import { deadlineChart, sixDumbbell, mountTips as evoTips } from './assets/evoviz.js?v=20261014';
-import { evoRules, logState, inProgress, unlockCond, unlockCondKr, acquireRoute, psGrant, psPlusGrant, psCapSim, psCapNote } from './assets/evorules.js?v=20261023';
+import { evoRules, logState, inProgress, activeLog, unlockCond, unlockCondKr, acquireRoute, psGrant, psPlusGrant, psCapSim, psCapNote } from './assets/evorules.js?v=20261024';
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
 import { statTip } from './assets/stat-tips.js?v=20261009';   // 속성 이름 툴팁(정본 표 하나 · 2026-10-06 GK 세부 속성 추가)
@@ -3275,7 +3275,7 @@ function renderClub(){
   /* 카드 그리드 + 사이드패널 — ⛔ 「지금 내 팀」과 **같은 렌더러**를 쓴다(fcCardGrid·cardDetail). */
   const box = document.getElementById('owned');
   const cells = shown.slice().sort((a, b) => (b.current_ovr ?? 0) - (a.current_ovr ?? 0)).map(p => {
-    const nlv = logs.filter(l => l.club_player_id === p.id && !l.is_void).length;
+    const nlv = logs.filter(l => l.club_player_id === p.id && activeLog(l)).length;
     const prog = logs.some(l => l.club_player_id === p.id && inProgress(l));
     return { player: p, posName: posFirst(p.positions),
              tone: prog ? 'wait' : nlv ? 'go' : '',
@@ -3305,7 +3305,7 @@ function renderClub(){
     lastOpened = id;
     box.querySelectorAll('.fc-gcell.sel').forEach(x => x.classList.remove('sel'));
     box.querySelector(`.fc-gcell[data-gp="${p.player_id ?? ''}"]`)?.classList.add('sel');
-    const applied = logs.filter(l => l.club_player_id === p.id && !l.is_void)
+    const applied = logs.filter(l => l.club_player_id === p.id && activeLog(l))
       .sort((a, b) => String(a.applied_at).localeCompare(String(b.applied_at)) || a.id - b.id).map(l => l.evo_id);
     const cont = (RANKED[p.player_id] || []).filter(r => r.ids.length > applied.length && applied.every((x, i) => r.ids[i] === x));
     cside.innerHTML = `<div class="fc-back">
@@ -3328,6 +3328,13 @@ function renderClub(){
             <div><label>적용일</label><input type="date" data-date="${p.id}" value="${new Date().toISOString().slice(0, 10)}"></div>
             <div><label>메모</label><input data-note="${p.id}" placeholder="선택"></div>
           </div>
+          ${/* ⭐ 진화 제거(2026-10-24 · migration 123) — 인게임 「마지막 진화 제거」·「모든 진화 제거」를 원장에 적는다.
+               EA 규칙: 진행 중이어도 제거 가능 · 되돌릴 수 없음 · **진화 사용은 환급 안 됨**(소진은 그대로 센다) ·
+               거래 가능 복구는 전부 제거해야만. 「되돌리기」는 원장에 잘못 적은 제거 기록을 취소하는 것이다. */
+            (n => n ? `<div class="evorm"><button class="act ghost" data-evorm="last" data-cp="${p.id}" title="인게임에서 「마지막 진화 제거」를 했을 때 — 가장 최근 진화 하나(다단계면 그 진화 전체)를 원장에서 제거로 표시한다">마지막 진화 제거</button>${
+                n > 1 ? `<button class="act ghost" data-evorm="all" data-cp="${p.id}" title="인게임에서 「모든 진화 제거」를 했을 때 — 이 카드의 진화 ${n}개를 모두 제거로 표시하고 카드를 진화 전으로 되돌린다">모든 진화 제거 <small>(${n}개)</small></button>` : ''}</div>` : '')(
+              new Set(logs.filter(l => l.club_player_id === p.id && activeLog(l) && (l.level ?? 1) === 1).map(l => l.id)).size)}
+          ${logs.some(l => l.club_player_id === p.id && l.removed_at) ? `<button class="act ghost" data-evorm="undo" data-cp="${p.id}" title="원장에 잘못 적은 제거 기록을 취소한다 — 인게임 제거는 되돌릴 수 없다">제거 기록 되돌리기</button>` : ''}
           <button class="act ghost" data-sell="${p.id}" style="margin-top:6px">판매/방출</button>
           <div id="pm${p.id}"></div></div>` : '');
     cside.querySelector('[data-cmpadd]')?.addEventListener('click', () => CMPC.start(p));
@@ -3338,6 +3345,20 @@ function renderClub(){
         note: cside.querySelector(`input[data-note="${p.id}"]`).value || null });
       say(document.getElementById(`pm${p.id}`), r1);
       if (r1?.ok) reloadAfterWrite('진화를 원장에 적었다'); });
+    cside.querySelectorAll(`button[data-evorm][data-cp="${p.id}"]`).forEach(btn => btn.addEventListener('click', async () => {
+      const scope = btn.dataset.evorm;
+      const ask = scope === 'undo'
+        ? `${p.name}의 가장 최근 「진화 제거」 기록을 취소할까?\n(원장 정정용 — 인게임 제거는 되돌릴 수 없다)`
+        : `${p.name} — 인게임에서 「${scope === 'all' ? '모든 진화 제거' : '마지막 진화 제거'}」를 했나?\n\n` +
+          '· 카드 스탯은 그 진화 이전으로 돌아간다(다음 클럽 싱크가 EA 실측으로 확정)\n· 진화 사용은 환급되지 않는다 — 소진·반복 횟수는 그대로\n' +
+          (scope === 'all' ? '· 원래 거래 가능하던 카드면 다시 거래할 수 있다' : '· 거래 가능 여부는 모든 진화를 제거해야 돌아온다');
+      if (!confirm(ask)) return;
+      const r = await api('evo_remove', scope === 'undo'
+        ? { account: acc.name, player: p.id, undo: true }
+        : { account: acc.name, player: p.id, scope, date: new Date().toISOString().slice(0, 10) });
+      say(document.getElementById(`pm${p.id}`), r);
+      if (r?.ok) reloadAfterWrite(scope === 'undo' ? '제거 기록을 되돌렸다' : '진화 제거를 원장에 적었다');
+    }));
     cside.querySelector(`button[data-sell="${p.id}"]`)?.addEventListener('click', async () => {
       const st = prompt('상태 (sold / discarded)', 'sold'); if (!st) return;
       const r2 = await api('player_set', { account: acc.name, player: p.id, status: st });
@@ -3354,7 +3375,8 @@ function renderClub(){
     return `<li><b>${esc(l.applied_at)}</b> ${esc(p?.name || '')} ← ${evoName(l.evo_id) || esc(l.evo_name)} <span class="chip">OVR ${l.ovr_before ?? '—'}→${l.ovr_after ?? '—'}</span>
       ${{ done: `<span class="badge hi">완료 ${esc(l.completed_at)}</span>`,
           progress: '<span class="badge mid">진행 중 — 완주 시 반영</span>',
-          void: '<span class="badge">무효 — 적용된 적 없음(실측 확인)</span>' }[logState(l)]}
+          void: '<span class="badge">무효 — 적용된 적 없음(실측 확인)</span>',
+          removed: `<span class="badge dead">제거 ${esc(l.removed_at)}${l.removed_how === 'all' ? ' · 모든 진화 제거' : ''} — 사용 횟수는 그대로</span>` }[logState(l)]}
       ${l.playstyles_after ? `<small class="dim">PS ${esc(J(l.playstyles_after, []).join(', '))}</small>` : ''} ${l.notes ? `<small class="dim">— ${esc(l.notes)}</small>` : ''}</li>`; }).join('')
     || '<li class="dim">기록 없음</li>';
 }

@@ -110,7 +110,7 @@ def pre_step_state(con, cp, game):
        현재값이 들어가 「79→79」가 됐다(런북 연관표 #2 — 손으로 고치던 것).
     ⇒ 출발점은 **원장 사슬**이다: 이 카드의 마지막 유효 로그(attrs_after)가 있으면 그것,
        없으면 기준 카드(`player_card_items`). EA 실측과의 대조는 호출부가 한다."""
-    last = con.execute("""SELECT ovr_after, six_after, attrs_after FROM v_evo_log
+    last = con.execute("""SELECT ovr_after, six_after, attrs_after FROM v_evo_log_active
                            WHERE club_player_id=? AND completed_at IS NOT NULL
                            ORDER BY applied_at DESC, id DESC LIMIT 1""", (cp["id"],)).fetchone()
     if last and last["attrs_after"]:
@@ -788,14 +788,110 @@ def cmd_sbc_resolve(con, a):
     print(f"🔁 SBC 해법 재계산 완료\n{tail}")
 
 
+def cmd_evo_remove(con, a):
+    """인게임 「진화 제거」를 원장에 적는다 — 마지막 진화(scope=last) 또는 모든 진화(scope=all) (migration 123 · 2026-10-24).
+
+    EA 규칙(help.ea.com · 등급 A): 진행 중인 진화도 제거 가능 · 되돌릴 수 없음 · 스탯은 그 진화 이전으로 ·
+    ⭐ **진화 사용(슬롯)은 환급되지 않는다** → 로그 행을 지우거나 is_void로 돌리지 않고 removed_at만 적는다
+       (소진 계산은 v_evo_log가 제거분까지 계속 센다 · 현재 카드는 v_evo_log_active가 제거분을 뺀다).
+    ⭐ 「진화 하나」 = 1단계 행부터 다음 1단계 행 직전까지(다단계는 행이 여러 개다 — 소진 세는 단위와 같다).
+    카드 현재값(current_*)은 **남은 진화의 마지막 완료 상태**, 남은 게 없으면 **기준 카드**로 되돌린다 — 다음 EA 싱크가 확정한다."""
+    acc = account(con, a.account)
+    cp = club_player(con, acc["id"], a.player, a.expect_player_id)
+    if a.undo:
+        return _evo_remove_undo(con, cp, a)
+    rows = con.execute("""SELECT * FROM v_evo_log_active WHERE club_player_id=?
+                          ORDER BY applied_at, id""", (cp["id"],)).fetchall()
+    if not rows:
+        raise SystemExit(f"⛔ {cp['name']}에게 걸려 있는 진화가 없다(이미 제거했거나 기록이 없다)")
+    runs = []
+    for r in rows:
+        if not runs or (r["level"] or 1) == 1 or r["evo_id"] != runs[-1][-1]["evo_id"]:
+            runs.append([])
+        runs[-1].append(r)
+    scope = a.scope or "last"
+    gone = runs[-1:] if scope == "last" else runs
+    ids = [r["id"] for run in gone for r in run]
+    con.execute(f"UPDATE fut_evolution_log SET removed_at=?, removed_how=? WHERE id IN ({','.join('?' * len(ids))})",
+                (a.date, scope, *ids))
+    keep = [r for run in runs[:len(runs) - len(gone)] for r in run if r["completed_at"]]
+    base = con.execute("""SELECT ovr, attrs, playstyles, positions FROM player_card_items
+                           WHERE ea_item_id=? AND game_version='FC27'""", (cp["ea_item_id"],)).fetchone()
+    if keep and keep[-1]["attrs_after"]:
+        last = keep[-1]
+        ovr, attrs, six = last["ovr_after"], last["attrs_after"], last["six_after"]
+        ps = ", ".join(json.loads(last["playstyles_after"])) if last["playstyles_after"] else None
+        basis = f"남은 진화의 마지막 완료 상태({last['evo_name']} {last['level']}단계)"
+    elif not keep and base and base["attrs"]:
+        rows_f = [dict(zip(("abbr", "attr", "weight", "is_gk"), x)) for x in
+                  con.execute("SELECT abbr, attr, weight, is_gk FROM fc_face_stats WHERE game_version='FC27'")]
+        at = json.loads(base["attrs"])
+        ovr, attrs = base["ovr"], base["attrs"]
+        six = json.dumps(face_of(at, rows_f, is_gk="GK" in (base["positions"] or "")), ensure_ascii=False)
+        ps = base["playstyles"]
+        basis = "기준 카드(진화 전)"
+    else:
+        ovr = attrs = six = ps = None
+        basis = None
+    if basis:
+        con.execute("""UPDATE fut_club_players SET current_ovr=?, current_attrs=?, current_six=?,
+                         current_playstyles=COALESCE(?, current_playstyles), updated=? WHERE id=?""",
+                    (ovr, attrs, six, ps, TODAY, cp["id"]))
+    names = " · ".join(f"{run[0]['evo_name']}({len(run)}단계{'' if run[-1]['completed_at'] else ' · 진행 중'})" for run in gone)
+    print(f"진화 제거({'마지막' if scope == 'last' else '전부'}): {cp['name']} ← {names} · 제거일 {a.date}")
+    print(f"   카드 현재값 → {basis} · OVR {cp['current_ovr']} → {ovr}" if basis else
+          "   ⚠️ 되돌릴 기준(남은 진화의 29속성 · 기준 카드)이 없어 카드 현재값은 그대로 뒀다 — 다음 EA 싱크가 맞춘다.")
+    print("   ⭐ 진화 사용은 환급되지 않는다(EA) — 소진·반복 횟수는 그대로 센다. Role+/++는 다음 클럽 싱크의 EA 실측으로 확정한다.")
+    if scope == "last" and len(runs) > 1:
+        print("   ⚠️ 거래 가능 여부는 **모든 진화를 제거해야** 돌아온다(EA) — 아직 진화가 남아 있다.")
+
+
+def _restore_current(con, cp):
+    """걸린 진화(v_evo_log_active)의 마지막 완료 상태 — 없으면 기준 카드 — 로 current_*를 맞춘다. 반환: 무엇으로 맞췄나(없으면 None)."""
+    keep = con.execute("""SELECT * FROM v_evo_log_active WHERE club_player_id=? AND completed_at IS NOT NULL
+                          ORDER BY applied_at DESC, id DESC LIMIT 1""", (cp["id"],)).fetchone()
+    if keep and keep["attrs_after"]:
+        ps = ", ".join(json.loads(keep["playstyles_after"])) if keep["playstyles_after"] else None
+        con.execute("""UPDATE fut_club_players SET current_ovr=?, current_attrs=?, current_six=?,
+                         current_playstyles=COALESCE(?, current_playstyles), updated=? WHERE id=?""",
+                    (keep["ovr_after"], keep["attrs_after"], keep["six_after"], ps, TODAY, cp["id"]))
+        return f"걸린 진화의 마지막 완료 상태({keep['evo_name']} {keep['level']}단계) · OVR {keep['ovr_after']}"
+    if keep and keep["ovr_after"] is not None:
+        # 옛 행(migration 082 이전)은 29속성이 없다 — OVR·6대만 맞추고 29속성은 다음 EA 싱크에 맡긴다
+        con.execute("UPDATE fut_club_players SET current_ovr=?, current_six=COALESCE(?, current_six), updated=? WHERE id=?",
+                    (keep["ovr_after"], keep["six_after"], TODAY, cp["id"]))
+        return f"걸린 진화의 마지막 완료 상태({keep['evo_name']} {keep['level']}단계) · OVR {keep['ovr_after']} — ⚠️ 29속성은 기록이 없어 다음 EA 싱크가 맞춘다"
+    return None
+
+
+def _evo_remove_undo(con, cp, a):
+    """제거 기록 되돌리기(2026-10-24 사용자 지시 「제거한 진화 되돌리기 기능도 추가」).
+    ⛔ 인게임 제거는 EA 규칙상 되돌릴 수 없다 — 이건 **원장에 잘못 적은 제거 기록**을 취소하는 기능이다.
+    가장 최근 제거일의 행을 다시 「걸린 진화」로 돌리고, 카드 현재값을 그 사슬의 마지막 완료 상태로 맞춘다."""
+    last = con.execute("""SELECT MAX(removed_at) FROM v_evo_log WHERE club_player_id=? AND removed_at IS NOT NULL""",
+                       (cp["id"],)).fetchone()[0]
+    if not last:
+        raise SystemExit(f"⛔ {cp['name']}에게 되돌릴 제거 기록이 없다")
+    rows = con.execute("""SELECT id, evo_name, level FROM v_evo_log WHERE club_player_id=? AND removed_at=?
+                          ORDER BY applied_at, id""", (cp["id"], last)).fetchall()
+    con.execute(f"UPDATE fut_evolution_log SET removed_at=NULL, removed_how=NULL WHERE id IN ({','.join('?' * len(rows))})",
+                [r["id"] for r in rows])
+    basis = _restore_current(con, cp)
+    names = " · ".join(dict.fromkeys(r["evo_name"] for r in rows))
+    print(f"제거 기록 되돌림: {cp['name']} ← {names}({len(rows)}행 · 제거일 {last} 기록 취소)")
+    print(f"   카드 현재값 → {basis}" if basis else
+          "   ⚠️ 걸린 진화의 완료 상태(29속성)가 없어 카드 현재값은 그대로 뒀다 — 다음 EA 싱크가 맞춘다.")
+    print("   ⚠️ 인게임 진화 제거는 되돌릴 수 없다(EA) — 이건 원장의 잘못된 제거 기록만 취소한다.")
+
+
 def run(con, cmd, **kw):
     """serve.py 쓰기 API용 진입점 — CLI와 같은 함수를 같은 규약으로 실행한다(발명 금지·출처 기록 동일)."""
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
                     level=1, date=TODAY, completed=None, note=None, ovr_after=None, six_after=None, status=None, op="add",
                     in_progress=False, evo=None, challenge=None, formation=None, club_player=None, undo=False, cards=True,
-                    expect_player_id=None, set_id=None, grade=None, q=None, storage_id=None, kind=None, item=None)
+                    expect_player_id=None, set_id=None, grade=None, q=None, storage_id=None, kind=None, item=None, scope=None)
     a = argparse.Namespace(**{**defaults, **kw})
-    fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete,
+    fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete, "evo_remove": cmd_evo_remove,
           "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude,
           "sbc_submit": cmd_sbc_submit, "gallery_complete": cmd_gallery_complete, "sbc_resolve": cmd_sbc_resolve,
           "storage_search": cmd_storage_search, "storage_add": cmd_storage_add, "storage_remove": cmd_storage_remove,
@@ -834,6 +930,11 @@ def main():
     s = sub.add_parser("complete"); s.add_argument("--account", required=True); s.add_argument("--player", required=True)
     s.add_argument("--evo", type=int); s.add_argument("--date", default=TODAY)
     s.add_argument("--ovr-after", type=int); s.add_argument("--six-after")
+    s = sub.add_parser("evo-remove", help="인게임 「진화 제거」 기록 — 마지막(last) 또는 전부(all) · 진화 사용은 환급되지 않는다")
+    s.add_argument("--account", required=True); s.add_argument("--player", required=True)
+    s.add_argument("--expect-player-id", dest="expect_player_id", type=int)
+    s.add_argument("--scope", choices=["last", "all"], default="last"); s.add_argument("--date", default=TODAY)
+    s.add_argument("--undo", action="store_true", help="가장 최근 제거 기록을 취소한다(원장 정정용 — 인게임 제거는 되돌릴 수 없다)")
     s = sub.add_parser("player-set"); s.add_argument("--account", required=True); s.add_argument("--player", required=True)
     s.add_argument("--status", choices=["owned", "sold", "discarded"]); s.add_argument("--notes")
     s = sub.add_parser("import"); s.add_argument("path"); s.add_argument("--account", required=True)
@@ -843,7 +944,7 @@ def main():
     con = connect_db(DB); con.row_factory = sqlite3.Row
     con.execute("PRAGMA foreign_keys=ON")
     {"account": cmd_account, "player": cmd_player_add, "player-set": cmd_player_set, "evolve": cmd_evolve,
-     "complete": cmd_complete, "import": cmd_import, "list": cmd_list}[a.cmd](con, a)
+     "complete": cmd_complete, "evo-remove": cmd_evo_remove, "import": cmd_import, "list": cmd_list}[a.cmd](con, a)
     con.commit()
     if a.cmd != "list":
         print("다음: python3 scripts/export.py && scripts/db_dump.sh")

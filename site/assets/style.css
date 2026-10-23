@@ -483,6 +483,8 @@ details.claimnote summary{list-style:none} details.claimnote summary::-webkit-de
 .acqbox.k-prem,.acqbox.k-token,.acqbox.k-obj,.acqbox.k-other{border-left-color:var(--acc)}
 .acqbox.k-prem>b,.acqbox.k-token>b,.acqbox.k-obj>b,.acqbox.k-other>b{color:var(--acc)}
 .acqbox .acqwarn{color:var(--warn);margin-top:3px}
+/* 진화 제거 버튼(2026-10-24) */
+.evorm{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
 /* 갈림길 옵션 — ★가 우리 제안 */
 .optbox{border:1px solid var(--line);border-radius:8px;padding:7px 10px;margin:6px 0;background:rgba(var(--ink-rgb),.02)}
 .optbox>b{display:block;font-size:11px;color:var(--acc);letter-spacing:.03em;margin-bottom:5px}
