@@ -145,12 +145,37 @@ export function fcPitch(xi, bench, meta = {}) {
       두 벌이 되면 한쪽만 고쳐져 같은 카드가 탭마다 다르게 보인다(docs/70 「현재 상태」 사고).
    ⚠️ 렌더 뒤 `paintEvoCards()`를 불러야 진화 카드의 인쇄값이 현재 값으로 바뀐다(fcPitch와 같다).
    `rows`: [{ player, posName, badge, tone }] — badge는 카드 밑에 붙는 한 줄(상태 요약). */
+/* ⭐ 카드 목록 정렬 — **오버롤 / 포지션**(2026-10-24 사용자 지시 「선수 카드 목록을 보여주는 모든 화면에서 정렬 필터」).
+   카드 목록은 전부 fcCardGrid가 그리므로 정렬도 여기 한 곳이다. 선택은 화면 공통으로 기억한다(localStorage card_sort).
+   ⚠️ rows를 **제자리에서** 정렬한다 — 호출부가 `cells[i]`로 타일과 행을 잇기 때문이다(순서가 갈리면 엉뚱한 카드가 열린다).
+   포지션 순서는 뒤에서 앞으로(GK → 수비 → 미드 → 공격) · 같은 포지션 안에서는 오버롤 높은 순. */
+const POS_ORDER = ['GK', 'RB', 'RWB', 'CB', 'LB', 'LWB', 'CDM', 'CM', 'RM', 'LM', 'CAM', 'RW', 'LW', 'CF', 'ST'];
+export const cardSortMode = () => { try { return localStorage.getItem('card_sort') === 'pos' ? 'pos' : 'ovr'; } catch { return 'ovr'; } };
+const ovrOfRow = r => Number(r.player?.current_ovr ?? r.player?.ovr ?? 0);
+const posOfRow = r => { const x = String(r.posName || r.player?.positions || '').split(/[\/,]/)[0].trim();
+  const i = POS_ORDER.indexOf(x); return i < 0 ? 99 : i; };
+export function sortCardRows(rows, mode = cardSortMode()) {
+  return rows.sort((a, b) => mode === 'pos'
+    ? (posOfRow(a) - posOfRow(b) || ovrOfRow(b) - ovrOfRow(a))
+    : (ovrOfRow(b) - ovrOfRow(a) || posOfRow(a) - posOfRow(b)));
+}
+/* 정렬 막대를 누르면 저장하고 호출부가 준 rerender()로 다시 그린다 */
+export function bindCardSort(root, rerender) {
+  root?.querySelectorAll('[data-cardsort]').forEach(b => b.addEventListener('click', () => {
+    try { localStorage.setItem('card_sort', b.dataset.cardsort); } catch {}
+    rerender();
+  }));
+}
 export function fcCardGrid(rows, { sideId = 'fcside', side = '' } = {}) {
+  const mode = cardSortMode();
+  sortCardRows(rows, mode);
+  const bar = `<div class="fc-sortbar"><span class="dim">정렬</span>${[['ovr', '오버롤'], ['pos', '포지션']].map(([k, l]) =>
+    `<button type="button" data-cardsort="${k}" class="${mode === k ? 'on' : ''}" aria-pressed="${mode === k}">${l}</button>`).join('')}</div>`;
   const tiles = rows.map(r => `<div class="fc-gcell${r.tone ? ' t-' + r.tone : ''}" data-gp="${r.player?.player_id ?? ''}">
       ${card(r.player, null, r.posName ?? (r.player?.positions?.split(',')[0] ?? ''), { bench: true })}
       ${r.badge ? `<div class="fc-gbadge">${r.badge}</div>` : ''}</div>`).join('');
   return `<div class="fc-wrap fc-gridwrap"><div class="fc-layout">
-      <div class="fc-main"><div class="fc-grid">${tiles}</div></div>
+      <div class="fc-main">${bar}<div class="fc-grid">${tiles}</div></div>
       <aside class="fc-side" id="${sideId}">${side}</aside>
     </div></div>`;
 }
@@ -724,18 +749,98 @@ function evoCountLabel(p, log) {
   return `<small class="dim">${n}회 <span title="「회」는 밟은 단계 수다(4단계 완주 = 4회)">(단계)</span></small>`;
 }
 
-function evoBlock(p, log) {
-  const mine = (log || []).filter(l => l.club_player_id === p.id).sort((a, b) => a.id - b.id);
+/* ⭐ 진화 상태 표 — 행을 누르면 **그 단계에서 무엇이 올랐는지** 펼친다(2026-10-24 사용자 지시).
+   ⛔ 값을 지어내지 않는다 — 세부 속성은 evolvedAttrs와 같은 재구성(기준 카드 + 카탈로그 단계 보상 + applyEvoLevel 상한)을
+      **단계마다 전/후 스냅샷**으로 떠서 실제 상승분만 적는다. 갈림길인데 어느 가지였는지 기록이 없으면 「가지 미기록」으로 두고
+      가지별 보상을 나열한다. OVR·6대는 원장 기록, PlayStyle·Role+는 직전 기록과의 차이다. */
+/* 마감돼 현재 카탈로그에 없는 진화의 단계 보상(export log_levels) — 화면이 한 번 넣어 준다(setRarityAssets와 같은 방식) */
+let EVO_LEVELS = {}, PS_NAMES = {};
+export function setEvoLevels(m, psNames) { EVO_LEVELS = m || {}; PS_NAMES = psNames || {}; }
+const upText = u => String(u.upgrade || '').startsWith('play_style')
+  ? `${String(u.upgrade) === 'play_style_plus' ? 'PlayStyle+' : 'PlayStyle'} ${PS_NAMES[String(u.value)] || '#' + u.value}`
+  : `${upLabel(u)} +${u.value}${u.maxValue != null ? ` (^${u.maxValue})` : ''}`;
+const UP_KR = { overall: 'OVR', skill_moves: '개인기', weak_foot: '약발', play_style: 'PlayStyle', play_style_plus: 'PlayStyle+',
+                role_plus: 'Role+', role_plus_plus: 'Role++', rarity_id: '카드 디자인' };
+function upLabel(u) {
+  const k = String(u.upgrade || '');
+  if (k.startsWith('attribute_')) return ATTR_KR[k.slice(10)] || k.slice(10);
+  return FACE_UPGRADE[k] || UP_KR[k] || k;
+}
+function evoBlock(p, ctx) {
+  const log = ctx.log || [];
+  const mine = log.filter(l => l.club_player_id === p.id)
+    .sort((a, b) => (a.applied_at || '').localeCompare(b.applied_at || '') || a.id - b.id);
   if (!mine.length) return '<p class="dim">적용한 진화 없음.</p>';
-  return `<table class="tbl"><thead><tr><th>진화</th><th>단계</th><th>상태</th><th>OVR</th></tr></thead><tbody>
-    ${mine.map(l => {
-      const state = l.is_void ? '<span class="dim">무효</span>'
-        : l.removed_at ? `<span class="dim">제거 ${esc(l.removed_at)}</span>`
-        : l.completed_at ? `완료 <small class="dim">${esc(l.completed_at)}</small>`
-        : '<b class="up">진행 중</b>';
-      return `<tr${l.is_void || l.removed_at ? ' style="opacity:.5"' : ''}><td>${esc(l.evo_name)}</td><td>${l.level ?? '-'}</td>
-        <td>${state}</td><td class="dim">${l.ovr_before ?? '-'} → ${l.ovr_after ?? '-'}</td></tr>`;
-    }).join('')}</tbody></table>`;
+  const cat = {}; for (const c of (ctx.catalog || [])) cat[c.evo_id] = c;
+  const roleName = id => (ctx.role_map || []).find(r => +r.ea_id === +id)?.name || `#${id}`;
+  const base = parse(p.attrs);
+  const at = base ? { ...base } : null;
+  let prevPS = null, prevRP = null;
+  const rows = mine.map(l => {
+    const state = l.is_void ? '<span class="dim">무효</span>'
+      : l.removed_at ? `<span class="dim">제거 ${esc(l.removed_at)}</span>`
+      : l.completed_at ? `완료 <small class="dim">${esc(l.completed_at)}</small>`
+      : '<b class="up">진행 중</b>';
+    const lv = (parse(cat[l.evo_id]?.levels) || parse(EVO_LEVELS[l.evo_id]) || []).find(x => Number(x.idx) === Number(l.level));
+    const det = [];
+    /* ① 세부 속성 — 걸린 진화만 사슬에 얹는다(무효·제거는 카드에 없다) */
+    if (activeLog(l) && at && lv) {
+      const before = { ...at };
+      const r = applyEvoLevel(at, lv);
+      if (r.ok) {
+        const ch = Object.keys(at).filter(k => at[k] !== before[k]).map(k => `${esc(k)} ${before[k]}→<b class="up">${at[k]}</b>`);
+        const capped = (lv.upgrades || []).filter(u => String(u.upgrade).startsWith('attribute_'))
+          .map(u => ATTR_KR[String(u.upgrade).slice(10)]).filter(k => k && before[k] != null && at[k] === before[k]);
+        det.push(`<div><b>세부 속성</b> ${ch.join(' · ') || '<span class="dim">변화 없음</span>'}${capped.length
+          ? ` <small class="dim">· 상한에 걸려 0: ${capped.map(esc).join(', ')}</small>` : ''}</div>`);
+      } else {
+        /* 가지 기록은 없지만 이 단계에서 새로 얻은 PlayStyle이 **한 가지에만** 있으면 그 가지로 보인다(추정 — 확정이 아니다) */
+        const psNow = parse(l.playstyles_after), opts = (lv.upgradeOptions || []).map(o => Array.isArray(o) ? o : (o.upgrades || []));
+        const gained = Array.isArray(psNow) && prevPS ? psNow.filter(x => !prevPS.includes(x)) : [];
+        const hit = opts.map(us => us.some(u => String(u.upgrade).startsWith('play_style') && gained.includes(PS_NAMES[String(u.value)])));
+        const guess = hit.filter(Boolean).length === 1 ? hit.indexOf(true) : -1;
+        det.push(`<div><b>세부 속성</b> <span class="dim">${esc(r.reason)} — 어느 가지였는지 기록이 없다. 가지별 보상:</span>${
+          opts.map((us, i) => `<div class="${i === guess ? '' : 'dim'}" style="margin-left:8px">${i + 1}) ${us.map(u => esc(upText(u))).join(' · ')}${
+            i === guess ? ' <b class="up">← 새로 얻은 PlayStyle로 보아 이 가지(추정)</b>' : ''}</div>`).join('')}</div>`);
+      }
+    } else if (!lv) det.push('<div class="dim">카탈로그에 이 단계 보상이 없다(마감·코스메틱) — 세부 속성을 재구성할 수 없다.</div>');
+    /* ② 속성 밖 보상(OVR·개인기·약발·Role·디자인) — 카탈로그 원문 */
+    const other = (lv?.upgrades || []).filter(u => !String(u.upgrade).startsWith('attribute_') && !String(u.upgrade).startsWith('play_style'));
+    if (other.length) det.push(`<div><b>그 밖의 보상</b> ${other.map(u => String(u.upgrade).startsWith('role_')
+      ? `${esc(upLabel(u))} ${esc(roleName(u.value))}` : esc(upText(u))).join(' · ')}</div>`);
+    /* ③ OVR·6대 — 원장 기록 */
+    const s0 = parse(l.six_before), s1 = parse(l.six_after);
+    const sixCh = s0 && s1 ? Object.keys(s1).filter(k => s0[k] != null && s1[k] !== s0[k]).map(k => `${k} ${s0[k]}→<b class="up">${s1[k]}</b>`) : [];
+    det.push(`<div><b>OVR</b> ${l.ovr_before ?? '—'} → ${l.ovr_after ?? '—'}${sixCh.length ? ` · <b>6대</b> ${sixCh.join(' · ')}` : ''}</div>`);
+    /* ④ PlayStyle·Role+ — 직전 기록과의 차이(기록이 없으면 모른다) */
+    const ps = parse(l.playstyles_after), rp = parse(l.roles_plus_after);
+    if (Array.isArray(ps)) {
+      const gain = prevPS ? ps.filter(x => !prevPS.includes(x)) : null;
+      det.push(`<div><b>PlayStyle</b> ${gain ? (gain.length ? gain.map(x => `<b class="up">+ ${esc(x)}</b>`).join(' · ') : '<span class="dim">새로 얻은 것 없음</span>')
+        : `<span class="dim">적용 후 ${esc(ps.join(', ') || '없음')} (직전 기록이 없어 무엇이 새것인지 모른다)</span>`}</div>`);
+      if (activeLog(l)) prevPS = ps;
+    }
+    if (Array.isArray(rp) && rp.length) {
+      const gain = prevRP ? rp.filter(x => !prevRP.includes(x)) : null;
+      if (gain?.length) det.push(`<div><b>Role+</b> ${gain.map(x => `<b class="up">+ ${esc(roleName(x))}</b>`).join(' · ')}</div>`);
+      if (activeLog(l)) prevRP = rp;
+    }
+    if (l.notes) det.push(`<div class="dim">메모: ${esc(l.notes)}</div>`);
+    return `<tr class="evorow"${l.is_void || l.removed_at ? ' style="opacity:.5"' : ''} title="눌러서 이 단계에서 오른 것 보기"><td>${esc(l.evo_name)} <small class="dim">▸</small></td><td>${l.level ?? '-'}</td>
+        <td>${state}</td><td class="dim">${l.ovr_before ?? '-'} → ${l.ovr_after ?? '-'}</td></tr>
+      <tr class="evodet" hidden><td colspan="4">${det.join('')}</td></tr>`;
+  });
+  return `<table class="tbl evotbl"><thead><tr><th>진화</th><th>단계</th><th>상태</th><th>OVR</th></tr></thead><tbody>${rows.join('')}</tbody></table>
+    <small class="dim">행을 누르면 그 단계에서 오른 것이 펼쳐진다 — 세부 속성은 기준 카드에 카탈로그 보상을 상한 규칙대로 얹은 <b>재구성</b>이다(EA는 단계별 속성을 공개하지 않는다).</small>`;
+}
+/* 진화 상태 표 펼치기 — 화면마다 다시 그려지므로 문서에 한 번만 건다 */
+if (typeof document !== 'undefined' && !document.__evoRowBound) {
+  document.__evoRowBound = true;
+  document.addEventListener('click', e => {
+    const tr = e.target.closest?.('tr.evorow'); if (!tr) return;
+    const d = tr.nextElementSibling;
+    if (d?.classList.contains('evodet')) { d.hidden = !d.hidden; tr.classList.toggle('open', !d.hidden); }
+  });
 }
 
 /* ⭐⭐ 진화 상승분을 **재구성**한다(2026-09-22 사용자 지시 「진화한 내역을 아니 진화 스탯을 알 수 있지 않아?」).
@@ -1264,7 +1369,7 @@ export function cardDetail(p, ctx = {}) {
     ${traitRow(p, ctx.role_map)}
     <h4>현재 카드 스탯</h4>${sixRow(cur, base)}
     ${psBlock(p.current_playstyles)}
-    <h4>진화 상태 ${evoCountLabel(p, ctx.log)}</h4>${evoBlock(p, ctx.log)}
+    <h4>진화 상태 ${evoCountLabel(p, ctx.log)}</h4>${evoBlock(p, ctx)}
     <h4>적용된 케미스트리</h4>${chemBlock(p, ctx.chem_styles)}
     ${recoBlock(p, ctx.reco, ctx.chem_styles)}
 

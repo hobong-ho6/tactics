@@ -156,8 +156,8 @@ import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
 import { statTip } from './assets/stat-tips.js?v=20261009';   // 속성 이름 툴팁(정본 표 하나 · 2026-10-06 GK 세부 속성 추가)
 import { posOvrRaw } from './assets/posovr.js?v=20261002';
-import { setRarityAssets } from './assets/clubviz.js?v=20261006e';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
-import { fcPitch, fcCardGrid, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, psLookup, psCanon, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate, FACE_UPGRADE } from './assets/clubviz.js?v=20261006e';
+import { setRarityAssets, setEvoLevels } from './assets/clubviz.js?v=20261024';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
+import { fcPitch, fcCardGrid, bindCardSort, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, psLookup, psCanon, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate, FACE_UPGRADE } from './assets/clubviz.js?v=20261024';
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const J = (s, d) => { try { return s == null ? d : (typeof s === 'string' ? JSON.parse(s) : s); } catch(e){ return d; } };
 // 차트 폭 — 탭이 display:none인 채로 렌더되면 clientWidth가 0이라 본문 폭에서 계산한다(2026-09-18)
@@ -366,6 +366,7 @@ function sixText(before, after){
 const STATE = EVO.club?.state || {};
 /* ⭐ 레어도 판 자산을 카드 그리기에 등록한다(2026-09-27) — 없으면 판 교체를 안 한다. */
 setRarityAssets(EVO.rarity_assets || []);
+setEvoLevels(EVO.log_levels || {}, EVO.ps_names || {});   // 마감된 진화도 진화 상태 표에서 단계 보상을 펼칠 수 있게
 /* ⛔ 포지션 문자열은 **슬래시 구분**이다("LM/LB/CAM"). 2026-09-26 검수에서 두 곳이
    `split(',')`를 쓰고 있었고, 그건 통째로 돌려주므로 카드에 「LM/LB/CAM」이 그대로 찍혔다.
    ⇒ 쪼개는 규칙을 여기 하나만 둔다 — 새로 쓰는 자리는 이걸 부른다. */
@@ -2624,6 +2625,7 @@ function renderPaths(team, focusPid){
       side: `<div class="fc-sidebox"><b>선수 카드를 누르면</b> 그 선수의 진화 경로·적용 이력이 여기 나온다.
         <div class="dim" style="font-size:12px;margin-top:6px">초록 = 지금 밟을 수 있음 · 노랑 = 진행 중</div></div>` });
     paintEvoCards(panel);
+    bindCardSort(panel, () => renderPaths(team, focusPid));   // 정렬(오버롤·포지션) — 선택은 화면 공통으로 기억한다
     const sideEl = document.getElementById('pathside');
     const openPid = pid => {
       panel.querySelectorAll('.fc-gcell.sel').forEach(x => x.classList.remove('sel'));
@@ -3286,6 +3288,7 @@ function renderClub(){
     : '<span class="dim">이 필터에 해당하는 보유 선수가 없다.</span>';
   if (!cells.length){ document.getElementById('log').innerHTML = ''; return; }
   paintEvoCards(box);
+  bindCardSort(box, renderClub);
   const cside = document.getElementById('clubside');
 
   /* ⭐ 비교 — **「지금 내 팀」과 같은 모듈**을 쓴다(2026-09-23 사용자 지시 「동작이 다르다 — 동일하게」).

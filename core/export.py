@@ -548,8 +548,16 @@ def export_all(db_path=None, window="2026-summer"):
                             WHERE pulled=(SELECT MAX(pulled) FROM fut_tactics)""")
     tactic_roles = _rows(con, """SELECT position_id, position_name, role_ea_id, role_name, focus FROM fut_tactic_roles
                                  WHERE pulled=(SELECT MAX(pulled) FROM fut_tactic_roles) ORDER BY position_id""")
+    # ⭐ 원장에 적힌 진화의 단계 보상 — **마감돼 현재 카탈로그에서 빠진 진화도** 남긴다(2026-10-24 · 진화 상태 표 펼치기).
+    #    현재 카탈로그는 최신 pulled만 내보내므로 Repeat Delivery·Wing Specialization 같은 지난 진화는 보상을 잃었다.
+    #    진화마다 levels가 있는 가장 최근 회차를 쓴다.
+    log_levels = {str(e): lv for e, lv in con.execute(
+        """SELECT f.evo_id, f.levels FROM fc_evolutions f
+             JOIN (SELECT evo_id, MAX(pulled) mp FROM fc_evolutions WHERE levels IS NOT NULL AND levels<>'[]' GROUP BY evo_id) m
+               ON m.evo_id=f.evo_id AND m.mp=f.pulled
+            WHERE f.evo_id IN (SELECT DISTINCT evo_id FROM v_evo_log)""")}
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
-                          {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices,
+                          {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices, "log_levels": log_levels,
                            "chem_styles": chem_styles, "squad": squad, "squad_slots": squad_slots,
                            "obj_tasks": obj_tasks, "ps_names": ps_names, "eligible": elig_rows,
                            "cosmetic_keys": sorted(__import__("core.futgg_attrs", fromlist=["x"]).COSMETIC_UPGRADES),   # ⭐ 코스메틱 판정 정본(core/futgg_attrs)
