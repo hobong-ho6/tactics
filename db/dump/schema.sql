@@ -892,7 +892,7 @@ CREATE TABLE fc_sbc_formations(
   game_version    TEXT NOT NULL REFERENCES game_versions(code),
   challenge_ea_id INTEGER NOT NULL,
   formation       TEXT NOT NULL,           -- '4-2-3-1' 같은 표기. FORMS 키와 맞춘다
-  source TEXT, confidence TEXT, updated TEXT,
+  source TEXT, confidence TEXT, updated TEXT, blocked_slots TEXT,
   PRIMARY KEY(game_version, challenge_ea_id)
 );
 CREATE TABLE fc_formations(

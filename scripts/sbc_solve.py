@@ -172,6 +172,15 @@ def pin_of(xi):
     return {p["slot"]: i for i, p in enumerate(xi) if p.get("fixed") and p.get("slot")}
 
 
+def form_base(form):
+    """파생 포메이션 키(「3-4-3|LM,RM」) → 원래 이름. 해법 JSON·출력은 원래 이름을 쓴다."""
+    return str(form or "").split("|")[0] or form
+
+
+def form_blocked(form):
+    return [x for x in str(form or "").split("|")[1].split(",") if x] if "|" in str(form or "") else []
+
+
 def best_placement(xi, form):
     """배치. ⛔⛔ **기록된 포메이션으로만 배치한다**(2026-09-25 · 2026-09-28 강화).
        인게임 SBC는 챌린지마다 포메이션이 고정인데 EA·fut.gg가 그 값을 주지 않는다
@@ -931,8 +940,20 @@ def main():
     if not FORMS:
         raise SystemExit("⛔ 포메이션이 없다 — .venv/bin/python scripts/collect_futgg_formations.py 먼저 돌릴 것")
     print(f"📐 포메이션 {len(FORMS)}종 적재")
-    FORM_OF.update({r[0]: r[1] for r in con.execute(
-        "SELECT challenge_ea_id, formation FROM fc_sbc_formations WHERE game_version=?", (a.game,))})
+    # ⭐ 막힌 칸(migration 124 · 브릭 챌린지) — 그 칸을 뺀 **파생 포메이션**을 FORMS에 등록하고 챌린지가 그걸 쓰게 한다.
+    #    키는 「3-4-3|LM,LW,RM,RW」 꼴이고, 해법 JSON에는 form_base·form_blocked로 갈라 적는다(화면은 원래 이름을 본다).
+    for ch_id, fname, blk in con.execute(
+            "SELECT challenge_ea_id, formation, blocked_slots FROM fc_sbc_formations WHERE game_version=?", (a.game,)):
+        blocked = sorted(json.loads(blk)) if blk else []
+        if blocked and fname in FORMS:
+            unknown = [b for b in blocked if b not in {s["label"] for s in FORMS[fname]}]
+            if unknown:
+                raise SystemExit(f"⛔ 챌린지 {ch_id} 막힌 칸 {unknown}이 {fname}에 없다 — 칸 이름을 확인할 것")
+            key = f"{fname}|{','.join(blocked)}"
+            FORMS[key] = [s for s in FORMS[fname] if s["label"] not in blocked]
+            FORM_OF[ch_id] = key
+        else:
+            FORM_OF[ch_id] = fname
     if FORM_OF:
         print(f"📐 포메이션 기록 {len(FORM_OF)}챌린지 — 그 안에서만 배치한다")
     # ⭐ SBC가 박아 두는 고정 카드(migration 073) — 내 보유분이 아니지만 **조건에 그대로 들어간다**.
@@ -1004,6 +1025,11 @@ def main():
         # ⛔⛔ 포메이션을 모르면 풀지 않는다(2026-09-28 사용자 지시) — 추정 배치는 인게임에서 쓸 수 없다.
         if CUR_FORM[0] not in FORMS:
             noform.append((r, [p for p in pool_c if per_player_ok(p, conds)])); continue
+        # ⛔⛔ **11명 미만 + 케미 조건이면 막힌 칸을 알아야 푼다**(2026-10-24 · migration 124 · Spooky Nights).
+        #    인원보다 칸이 많으면 계산기가 아무 칸이나 골라 막힌 칸에 카드를 넣는다 — 케미가 칸 배치로 정해지므로 쓸 수 없는 답이 된다.
+        #    ⇒ 칸 수 ≠ 인원이면 「막힌 칸 입력 필요」로 뺀다(케미 조건이 없으면 칸이 결과를 바꾸지 않으므로 그대로 푼다).
+        if size < 11 and any(k == "chem" for (k, _v), _ in conds) and len(FORMS[CUR_FORM[0]]) != size:
+            noform.append((r, [p for p in pool_c if per_player_ok(p, conds)], "blocked")); continue
         xi, cands, best = solve(pool_c, conds, size, a.tries, rng,
                                 fixed=FIXED.get(r['challenge_ea_id'], []))
         if xi:
@@ -1024,7 +1050,7 @@ def main():
         aw = ", ".join(x["name"] for x in json.loads(r["awards_text"] or "[]")) or "—"
         known = FORM_OF.get(r["challenge_ea_id"])
         ch, form, pl = best_placement(xi, known)
-        print(f"\n✅ {head(r)}  [{size}명 · {form} · 보상 {aw} · 마감 {(r['end_time'] or '')[:10]}]")
+        print(f"\n✅ {head(r)}  [{size}명 · {form_base(form)}{(' · 막힌 칸 ' + ','.join(form_blocked(form))) if form_blocked(form) else ''} · 보상 {aw} · 마감 {(r['end_time'] or '')[:10]}]")
         for nm, _x, _y, p, fit, _w in pl:
             if not p:
                 continue
@@ -1126,7 +1152,7 @@ def main():
         #    「포메이션 모습으로 보여줘 · 어떤 포지션의 선수인지도 모르겠어」).
         squad = squad_of(pl)
         rows.append((a.game, r["challenge_ea_id"], today, aid, "ok",
-                     json.dumps({"formation": form, "formation_known": bool(known), "partial": False,
+                     json.dumps({"formation": form_base(form), "blocked": form_blocked(form), "formation_known": bool(known), "partial": False,
                                  "players": squad, "checks": breakdown(xi, _cd, ch),
                                  "buy": buy_specs(xi, pl, _cd, pool),
                                  "alt": alternatives(xi, pl, _cd, pool)}, ensure_ascii=False),
@@ -1143,7 +1169,7 @@ def main():
         sj = None
         if part:
             ch, form, pl = best_placement(part, known)
-            sj = json.dumps({"formation": form, "formation_known": bool(known), "partial": True,
+            sj = json.dumps({"formation": form_base(form), "blocked": form_blocked(form), "formation_known": bool(known), "partial": True,
                              "players": squad_of(pl),
                              "checks": breakdown(part, conds, ch),
                              "buy": [dict(b, market=market_for(b, pool, qual_floor=QUAL_FLOOR.get(_qual_tier(conds))))
@@ -1159,8 +1185,10 @@ def main():
     for r, conds, cs in oneclick:
         rows.append((a.game, r["challenge_ea_id"], today, aid, "oneclick", None, None, None, len(cs),
                      "원클릭 제출 — fut.gg가 제출 인원을 주지 않아 인원 판정을 하지 않는다", src, conf))
-    for r, cs in noform:
+    for r, cs, *why in noform:
         rows.append((a.game, r["challenge_ea_id"], today, aid, "need_form", None, None, None, len(cs),
+                     ("막힌 칸 미기록 — 인원이 11명보다 적고 케미 조건이 있어, 인게임에서 막힌 칸을 입력하기 전에는 풀지 않는다"
+                      "(fut_club.py sbc_formation --blocked)") if why else
                      "포메이션 미기록 — 인게임 포메이션을 입력하기 전에는 풀지 않는다(추정 배치는 쓸 수 없다)",
                      src, conf))
     for r, bad in undec:

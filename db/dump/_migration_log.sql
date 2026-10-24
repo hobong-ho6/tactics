@@ -48,3 +48,4 @@ INSERT INTO _migration_log VALUES('2026-10-22','121-playstyle-alias','fc_playsty
 INSERT INTO _migration_log VALUES('2026-10-22','120-match-momentum','match_momentum 신설 — SofaScore graph 분 단위 모멘텀(우리 팀 기준 부호) · scripts/load_momentum.py · core.momentum 경계 제안');
 INSERT INTO _migration_log VALUES('2026-10-23','122-evo-unlock-supplement','fc_evolution_unlock_supplement 신설 — fut.gg가 비워 둔 해금 경로 보충(Composed Stopper 2606 = 챔피언스 토큰 125 · 등급 C) · export가 catalog.unlock_text에 합침 · 화면 「획득 조건」 상자');
 INSERT INTO _migration_log VALUES('2026-10-24','123-evo-removal','fut_evolution_log.removed_at·removed_how + v_evo_log_active(제거분 제외) · v_evo_log_open은 active 기준 — 소진은 v_evo_log(제거분 포함)로 계속 센다(EA: 슬롯 환급 없음) · fut_club.py evo_remove · 화면 「마지막/모든 진화 제거」');
+INSERT INTO _migration_log VALUES('2026-10-24','124-sbc-blocked-slots','fc_sbc_formations.blocked_slots — 브릭 챌린지의 막힌 칸 · Spooky Nights(112) 3-4-3 중 LM·RM·LW·RW 막힘(사용자 확인) · sbc_solve.py가 그 칸을 빼고 배치');

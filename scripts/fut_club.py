@@ -452,12 +452,16 @@ def cmd_sbc_formation(con, a):
                       (ch,)).fetchone()
     if not row:
         raise SystemExit(f"⛔ 챌린지 {ch}를 모른다 — 먼저 collect_futgg_sbc.py로 수집할 것")
-    con.execute("""INSERT INTO fc_sbc_formations(game_version, challenge_ea_id, formation, source, confidence, updated)
-                   VALUES(?,?,?,?,?,?)
+    # ⭐ 막힌 칸(migration 124) — 11명 미만 브릭 챌린지에서 카드를 넣지 않는 칸. 「LM,RM,LW,RW」처럼 칸 이름을 쉼표로.
+    blocked = [x.strip().upper() for x in str(a.blocked or "").split(",") if x.strip()] if a.blocked else None
+    con.execute("""INSERT INTO fc_sbc_formations(game_version, challenge_ea_id, formation, source, confidence, updated, blocked_slots)
+                   VALUES(?,?,?,?,?,?,?)
                    ON CONFLICT(game_version, challenge_ea_id) DO UPDATE SET
-                     formation=excluded.formation, source=excluded.source, updated=excluded.updated""",
-                (a.game, ch, form, f"사용자 입력({TODAY}) — 인게임 SBC 화면 표기",
-                 "MEASURED(사용자 확인) — EA·fut.gg가 이 값을 주지 않는다(migration 069 주석).", TODAY))
+                     formation=excluded.formation, source=excluded.source, updated=excluded.updated,
+                     blocked_slots=COALESCE(excluded.blocked_slots, fc_sbc_formations.blocked_slots)""",
+                (a.game, ch, form, f"사용자 입력({TODAY}) — 인게임 SBC 화면 표기" + (f" · 막힌 칸 {','.join(blocked)}" if blocked else ""),
+                 "MEASURED(사용자 확인) — EA·fut.gg가 이 값을 주지 않는다(migration 069 주석).", TODAY,
+                 json.dumps(blocked) if blocked else None))
     con.commit()
     print(f"📐 {row['name']} 포메이션 {form} 기록 — 다시 푸는 중…")
     _resolve()
@@ -889,7 +893,7 @@ def run(con, cmd, **kw):
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
                     level=1, date=TODAY, completed=None, note=None, ovr_after=None, six_after=None, status=None, op="add",
                     in_progress=False, evo=None, challenge=None, formation=None, club_player=None, undo=False, cards=True,
-                    expect_player_id=None, set_id=None, grade=None, q=None, storage_id=None, kind=None, item=None, scope=None)
+                    expect_player_id=None, set_id=None, grade=None, q=None, storage_id=None, kind=None, item=None, scope=None, blocked=None)
     a = argparse.Namespace(**{**defaults, **kw})
     fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete, "evo_remove": cmd_evo_remove,
           "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude,

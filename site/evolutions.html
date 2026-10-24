@@ -3884,13 +3884,14 @@ function renderSbc(){
                 ? `<span id="sbch${c.challenge_ea_id}"><b class="${part ? 'dn' : ''}">${part
                      ? '⚠️ 여기까지는 내 카드로 채운다 — <u>제출은 안 된다</u>'
                      : '이 스쿼드로 된다'}</b>
-                     <small class="dim">— ${esc(form)} · ${sq.length}명 · 평균 OVR <b>${
+                     <small class="dim">— ${esc(form)}${(xi.blocked || []).length ? ` · <b title="11명 미만 챌린지 — 이 칸에는 카드를 넣지 않는다(인게임 확인 · migration 124)">막힌 칸 ${esc(xi.blocked.join('·'))}</b>` : ''} · ${sq.length}명 · 평균 OVR <b>${
                        (sq.reduce((s, p) => s + (p.ovr || 0), 0) / sq.length).toFixed(1)}</b>
                      · 팀 레이팅 <b>${c.team_rating}</b> <span title="EA 산식은 비공개다 — 커뮤니티식(등급 D)">ⓘ</span>
-                     · 케미 <b>${c.chem_total}</b>/33${
+                     · 케미 <b>${c.chem_total}</b>/${sq.length * 3}${
                        bad ? ` · <b class="dn">자리 안 맞음 ${bad}명(케미 0)</b>` : ''}</small></span>`
                 : stg === 'need_form'
-                ? `<b class="dim">📐 인게임 포메이션을 아래에서 고르면 그때 푼다 — 포메이션 없이 짠 스쿼드는 쓸 수 없다</b>`
+                ? (/막힌 칸/.test(c.note || '') ? `<b class="dim">📐 ${esc(c.note)}</b>`
+                   : `<b class="dim">📐 인게임 포메이션을 아래에서 고르면 그때 푼다 — 포메이션 없이 짠 스쿼드는 쓸 수 없다</b>`)
                 : `<b class="dim">이 포메이션으로는 내 보유 카드로 스쿼드가 안 나온다</b>`}
                 ${checksHTML(xi)}
                 ${/* ⛔ 고르자마자 풀지 않는다(2026-09-25 사용자 지시 「포메이션 선택 후 계산이나 풀기 버튼을
