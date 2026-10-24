@@ -117,12 +117,13 @@ OPPONENT_HINTS = {
     "malaga": "Malaga", "sevilla": "Sevilla", "athletic": "Athletic",
     "liverpool": "Liverpool", "chelsea": "Chelsea", "newcastle": "Newcastle",
     "fenerbah": "Fenerbah", "viking": "Viking",
+    "man city": "Manchester City", "manchester city": "Manchester City",
     # ⭐ 한국어 메모 표기 — 우리 전사 헤더는 「헐전 D+1」처럼 한글로 적는다(영어만 보면 70편이 미귀속)
     "헐": "Hull", "포레스트": "Nottingham", "노팅엄": "Nottingham", "아스날": "Arsenal",
     "브뤼헤": "Brugge", "브렌트포드": "Brentford", "풀럼": "Fulham", "루턴": "Luton",
     "리즈": "Leeds", "비야레알": "Villarreal", "말라가": "Malaga", "세비야": "Sevilla",
     "아틀레틱": "Athletic", "리버풀": "Liverpool", "첼시": "Chelsea", "뉴캐슬": "Newcastle",
-    "소시에다드": "Sociedad", "레알 소시에다드": "Sociedad", "바이킹": "Viking",
+    "소시에다드": "Sociedad", "레알 소시에다드": "Sociedad", "바이킹": "Viking", "맨시티": "Manchester City",
     # 약어(리포트 제목에서 쓰는 3글자 코드)
     " ars": "Arsenal", " nffc": "Nottingham", " avl": None, " che": "Chelsea", " liv": "Liverpool",
 }

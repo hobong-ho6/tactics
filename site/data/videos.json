@@ -1,6 +1,263 @@
 {
  "all": [
   {
+   "channel": "AVFC 공식",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 383,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "「this is our fortress」(여기가 우리 요새다) — 홈 PL 첫 승 · 아스날·노팅엄·브렌트퍼드전 무승 언급",
+    "「testing with them the level they have now」(지금 맨시티가 가진 수준으로 우리를 시험했다)",
+    "「We are building the team and trying to get our structure stronger」(팀을 만들며 구조를 더 단단히 하려 한다)",
+    "「we kept calm after their goal and … continue in our game plan」(실점 뒤 침착하게 게임 플랜을 이어갔다)",
+    "다음 일정: 수요일 본머스(컵) · 토요일 홈"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-24",
+   "published_approx": 0,
+   "report_id": 63,
+   "summary": "에메리 경기 후 구단 공식 인터뷰(2분 39초). 홈 PL 첫 승을 팬 응원과 연결하고, 맨시티를 「the best team in Premier League and one of the best team in Europe」(프리미어리그 최고 팀이자 유럽 최고 팀 중 하나)로 부르며 이 경기를 수준 시험으로 규정했다. 전술 언급은 「understanding tactically everybody their task」(모두가 전술적으로 자기 임무를 이해하는 것) 한 줄이고, 실점 뒤에는 「we kept calm after their goal … to continue in our game plan」(실점 뒤에도 침착하게 게임 플랜을 이어갔다)이라고 했다. 선수 개인·교체 사유·명단(가르나초·밍스) 언급은 없다.",
+   "team_code": "AVL",
+   "title": "\"Everything today was positive!\" | Unai Emery FULL post-match interview",
+   "transcript_path": "reports/transcripts/xN_Cosi8gC4.en.md",
+   "url": "https://www.youtube.com/watch?v=xN_Cosi8gC4",
+   "video_id": "xN_Cosi8gC4"
+  },
+  {
+   "channel": "BeanymanSports",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 382,
+   "impl_claims": [
+    {
+     "axis": "team_axis",
+     "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 1,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
+     },
+     "player": null,
+     "points_kr": null,
+     "quote": "「when you plan a game especially against this team, you know that you are going to concede some transition because they play for that. They wait for that.」(이 팀을 상대로는 전환을 몇 번 내줄 수밖에 없다 — 그들은 그걸 노리고 기다린다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Counter",
+     "value_kr": "역습(전환 대기)",
+     "verdict": "HELD",
+     "verdict_note": "상대 감독 진술 · 이 경기 실측: 점유 37% · 롱볼 53/314(SS) · PPDA 8.55 · 2골 모두 상대 실책 후 전환. 강팀 원정형 1경기 — 쟁점 #1(리그 5경기) 트리거까지 유지"
+    }
+   ],
+   "key_points": [
+    "게히·셰르키 교체 = 기술적 결정 + 경고 누적 위험(빌라 파크 소음 속 판정 우려)",
+    "「you are going to concede some transition because they play for that. They wait for that」(그들은 전환을 노리고 기다린다 — 몇 번은 내줄 수밖에 없다)",
+    "「Second half … I don't remember any more shots or any more chances for them unless the goal」(후반엔 그 골 말고 그들의 슈팅·찬스가 기억나지 않는다) — 실측 빌라 2H 슈팅 2 · xG 0.22",
+    "「we spent most of the game in their side and in their box」(대부분 상대 진영·박스에서 보냈다) — 실측 박스 터치 53–12",
+    "쿠사노프 교체는 경련(cramp) 때문"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-24",
+   "published_approx": 0,
+   "report_id": 63,
+   "summary": "마레스카(맨시티) 경기 후 회견 전사. 게히·셰르키 하프타임 교체는 「technical decision」(기술적 결정)이자 둘 다 경고를 안고 있었기 때문이라고 했다. 실점 두 골을 「the first goal because of the mistake, the second goal again came from transition」(첫 골은 실수, 두 번째는 또 전환에서)으로 나눴고, 빌라를 「they play for that. They wait for that」(그걸 노리고 경기한다, 기다린다)이라며 전환 대기형 팀으로 묘사했다. 「we spent most of the game in their side and in their box」(경기 대부분을 상대 진영과 박스에서 보냈다)는 실측(맨시티 박스 터치 53 대 12 · 점유 63%)과 맞는다.",
+   "team_code": "AVL",
+   "title": "LIVE | Enzo Maresca | Aston Villa 2-1 Man City | Premier League",
+   "transcript_path": "reports/transcripts/tWsbxCU1SjE.en.md",
+   "url": "https://www.youtube.com/watch?v=tWsbxCU1SjE",
+   "video_id": "tWsbxCU1SjE"
+  },
+  {
+   "channel": "ESPN UK",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 380,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "pressing_phase",
+     "field_kr": "압박 구간",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 59,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "수비 블록 높이·후반 붕괴",
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
+     },
+     "player": null,
+     "points_kr": null,
+     "quote": "「First 10, 15 minutes from Villa … that's very difficult to do for 90 minutes. You can kind of do it in chunks」(처음 10~15분 — 90분 내내는 어렵고 구간으로 한다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "intense opening 10-20 minutes then drop",
+     "value_kr": "초반 10~20분 강하게 누른 뒤 블록 하강",
+     "verdict": "HELD",
+     "verdict_note": "실측 0–6′ def_x 55.6·PPDA 6.5 → 6–15′ 31.8·6.2 → 15–30′ 32.2·11.75 — 높이는 6′ 득점 뒤 바로 내려감. 쟁점 #59 트리거까지 유지"
+    },
+    {
+     "axis": "limit",
+     "field": "set_piece_defending",
+     "field_kr": "세트피스 수비",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 29,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "세트피스 허용 억제와 득점 경로",
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
+     },
+     "player": null,
+     "points_kr": null,
+     "quote": "「Villa … get very narrow, understandably with the position of the free kick. They leave a striker out wide with a player like Ndiaye」(프리킥 위치상 이해되지만 빌라가 아주 좁아져 은디아예 같은 선수를 측면에 남겼다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "narrow on wide free kicks, leaves attacker 1v1 wide",
+     "value_kr": "측면 프리킥에서 좁아져 바깥 1대1을 남김",
+     "verdict": "HELD",
+     "verdict_note": "WS 52′ 실점 직전 이벤트: 은디아예 (93.2, 22.3) 크로스 → 홀란 공중 경합 승(린델뢰프) · FC 세트피스 수비 설정은 게임 축 밖 — 쟁점 #29(리그 5경기) 트리거까지 유지"
+    }
+   ],
+   "key_points": [
+    "0–15/20′ 빌라 강도 → 그 뒤 맨시티 통제(「very difficult to do for 90 minutes … in chunks」(90분 내내는 어렵고 구간으로 한다))",
+    "선제골: 게히 실수 → 맥긴 컷백 → 잭슨",
+    "동점골: 프리킥 수비에서 빌라가 좁아져 은디아예 vs 만잠비 1대1 측면 크로스 허용",
+    "결승골: 음바예 투입 직후 롱볼 한 번에 오른쪽 넓은 공간 → 잭슨 원터치 · 돈나룸마 발 정지 실패",
+    "스즈키 6선방 · 「Suzuki was equal to it」(스즈키가 다 막아냈다)"
+   ],
+   "kind": null,
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-24",
+   "published_approx": 0,
+   "report_id": 63,
+   "summary": "ESPN FC 중립 분석(마크 도널드슨·샤카 히슬롭). 빌라가 첫 15~20분 「their pace, their movement」(속도·움직임)로 맨시티를 몰아붙였고 이후 맨시티가 통제했다는 데 동의. 1골은 게히(사실상 RB 위치의 CB)의 첫 터치 실수 + 맥긴 컷백, 2골은 음바예 투입 직후 롱볼 하나로 열린 오른쪽 공간 + 돈나룸마 위치 선정 실수로 봤다. 홀란 동점골은 빌라가 프리킥에서 「get very narrow … leave a striker out wide」(아주 좁아져 측면에 공격수를 남겼다) — 은디아예가 만잠비와 1대1로 크로스를 올렸다는 세트피스 수비 지적. 스즈키 선방을 두 GK 차이로 꼽았다.",
+   "team_code": "AVL",
+   "title": "Man City LOSE vs. Aston Villa! How did Emery’s side upset the Premier League leaders? | ESPN FC",
+   "transcript_path": "reports/transcripts/NDhq-OUuzDo.en.md",
+   "url": "https://www.youtube.com/watch?v=NDhq-OUuzDo",
+   "video_id": "NDhq-OUuzDo"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 381,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "defensive_block",
+     "field_kr": "수비 블록",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 59,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "수비 블록 높이·후반 붕괴",
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
+     },
+     "player": null,
+     "points_kr": null,
+     "quote": "「Every single time they were at us, we were in our shape, compact. They couldn't get near us.」(그들이 올 때마다 우리는 형태를 지켰고 촘촘했다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "compact mid-low block, stay in shape",
+     "value_kr": "형태를 유지하는 촘촘한 중·저블록",
+     "verdict": "HELD",
+     "verdict_note": "실측 def_x 34.9(바이킹전 35.2 · 상대 45.3) · 6–30′ 31.8~32.2 · 60–66′ 20.4 — 블록 하강은 일치. 쟁점 #59(리그 5경기) 트리거까지 유지"
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Support",
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 4,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
+     },
+     "player": "잭슨",
+     "points_kr": null,
+     "quote": "「It's the same ball every single time … Manzambi comes through. Jackson lays it off to him.」(매번 같은 공 — 잭슨이 내주고 만잠비가 침투 · 팬 인터뷰 · auto-caption)",
+     "role_id": "st_advanced",
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "PENDING",
+     "verdict_note": "이 경기 커널 ST 1위 st_advanced/Support .375(Δ.035 무결정 · 2위 st_false9/Attack) — 쟁점 #4(리그 5경기) 표본"
+    }
+   ],
+   "key_points": [
+    "전반 0–10′ 강한 출발 → 선제골 뒤 맨시티 주도(팬 서술 = 실측 0–6′ def_x 55.6 → 6–30′ 31.8~32.2)",
+    "「we were in our shape, compact … Big block」(형태 유지·촘촘한 큰 블록)",
+    "캐시 vs 도쿠: 「Cash shut Doku on the outside all game long」(바깥쪽으로 막았다) — 단 막판 한 번 안쪽 허용",
+    "음바예 투입 1분 뒤 결승골 도움 — 「to add some pace」(속도 추가)로 해석",
+    "「Manzambi comes through. Jackson lays it off to him」(잭슨이 내주고 만잠비가 침투) — 팬 1인 서술",
+    "맥긴 66′ 교체를 「bold move」(대담한 결정)로 봄"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-24",
+   "published_approx": 0,
+   "report_id": 63,
+   "summary": "UTV 경기장 밖 팬 리액션(호스트 Luke·Manny + 팬 인터뷰). 공통 평가는 ⑴ 잭슨 2골 — 「ran the channel really well」(채널(측면 공간) 침투를 잘했다)·홀드업 ⑵ 캐시가 도쿠를 「shut Doku on the outside all game long」(경기 내내 바깥쪽으로 막았다) ⑶ 마트센 막판 골라인 클리어 ⑷ 수비 블록 — 「Every single time they were at us, we were in our shape, compact」(그들이 올 때마다 우리는 형태를 유지했고 촘촘했다). 호스트는 전반 첫 10분 「on the front foot」(앞으로 나가) 몰아친 뒤 밀렸고, 후반 맨시티가 리코 루이스·포든 투입 뒤 측면(도쿠)으로 공을 보내며 공간이 생겼다고 봤다. 음바예 투입 직후 결승골은 에메리의 교체 의도(속도 추가)로 읽었다. 제목 「cheat」는 맨시티 재정 혐의 조롱이고 전술 내용과 무관.",
+   "team_code": "AVL",
+   "title": "I'D RATHER BE A VILLAN THAN A CHEAT | ASTON VILLA 2-1 MANCHESTER CITY",
+   "transcript_path": "reports/transcripts/qcGR9TddiPo.en.md",
+   "url": "https://www.youtube.com/watch?v=qcGR9TddiPo",
+   "video_id": "qcGR9TddiPo"
+  },
+  {
    "channel": "1874 : The Aston Villa Channel",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 369,
@@ -20,7 +277,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -47,7 +304,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -67,14 +324,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -157,7 +414,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -184,7 +441,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -264,7 +521,7 @@
   },
   {
    "channel": "Aston Villa Football Club",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-24] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 378,
    "impl_claims": [
     {
@@ -405,7 +662,7 @@
   },
   {
    "channel": "Every Week We Follow | An Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-24] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 379,
    "impl_claims": [
     {
@@ -423,7 +680,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "수비 블록 높이·후반 붕괴",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -450,7 +707,7 @@
       "resolution": null,
       "status": "open",
       "title": "윙어 드리블·폭 재량",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -519,7 +776,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"비보유: 고메스 RB · 밍스 LB의 평소 백4\", \"보유: 백3로 전환\", \"고메스가 바클리 옆 더블 피벗으로 올라감\"]",
@@ -566,14 +823,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -600,7 +857,7 @@
       "resolution": null,
       "status": "open",
       "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -656,7 +913,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"3백 앞에서 고메스가 보조 RB → 보유 시 안으로\", \"맥긴·바클리·고메스가 가운데 3\", \"폭은 알리송·음바예\", \"후반엔 맥긴도 RB 자리로 내려감\"]",
@@ -676,14 +933,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -738,7 +995,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"고메스(RB)가 보유 시 중원으로 안쪽 이동\", \"가운데 수적 우위로 중앙을 채움\", \"알리송·음바예는 바이라인 폭 유지\"]",
@@ -765,7 +1022,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -812,14 +1069,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -875,7 +1132,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -902,7 +1159,7 @@
       "resolution": null,
       "status": "open",
       "title": "윙어 드리블·폭 재량",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -929,7 +1186,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -949,14 +1206,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -1012,7 +1269,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"백3: 토레스 가운데 · 린델뢰프 오른쪽 · 밍스 왼쪽\", \"고메스(RB)가 중원으로 올라가 바클리와 2\", \"맥긴은 오른쪽 바깥으로 빠져 공간 확보\"]",
@@ -1083,7 +1340,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -1103,14 +1360,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -1137,7 +1394,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "토레스·린델뢰프 CB 포커스: Build-Up vs Aggressive",
-      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (1/3)"
      },
      "player": "린델뢰프",
      "points_kr": null,
@@ -1193,7 +1450,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -1213,14 +1470,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -1247,7 +1504,7 @@
       "resolution": null,
       "status": "open",
       "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -1302,7 +1559,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"3백 = 밍스·토레스·린델뢰프(폭 전체)\", \"고메스가 중앙 미드필드로 이동\", \"린델뢰프가 사실상 RB 역할\"]",
@@ -1329,7 +1586,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -1356,7 +1613,7 @@
       "resolution": null,
       "status": "open",
       "title": "윙어 드리블·폭 재량",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"에메리는 계속 1대1을 시도할 재량을 잘 주지 않는다는 서술\", \"알리송 돌파는 더 목적이 분명했다는 비교\", \"진행자도 작은 지적이라고 한정\"]",
@@ -1383,7 +1640,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -1403,14 +1660,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -1464,7 +1721,7 @@
       "resolution": null,
       "status": "open",
       "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -1520,7 +1777,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"밍스가 내려와 백3 형성\", \"파우 토레스가 중앙, 린델뢰프가 반대편\", \"고메스는 중원으로 이동\"]",
@@ -1618,7 +1875,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -1665,14 +1922,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -1699,7 +1956,7 @@
       "resolution": null,
       "status": "open",
       "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -1868,14 +2125,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -1902,7 +2159,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -1956,7 +2213,7 @@
       "resolution": null,
       "status": "open",
       "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -2096,7 +2353,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -2151,7 +2408,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"바이킹이 많은 인원을 올리지 않는다는 판단\", \"밍스·토레스·린델뢰프 3명 + 고메스 중원\"]",
@@ -2222,7 +2479,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -2242,14 +2499,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -2331,7 +2588,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -2392,7 +2649,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -2419,7 +2676,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -2446,7 +2703,7 @@
       "resolution": null,
       "status": "open",
       "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -2555,7 +2812,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -2575,14 +2832,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -2637,7 +2894,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": null,
@@ -2742,7 +2999,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": "[\"더블 피벗+안쪽으로 좁힌 공격수 2명\", \"상대 윙어는 좁게·상대 미드는 넓게 끌어낸다\", \"피벗으로 대각 패스 → 측면 넓은 공간 1대1\"]",
@@ -2769,7 +3026,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -2823,7 +3080,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -3000,7 +3257,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": null,
@@ -3201,14 +3458,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": null,
      "points_kr": null,
@@ -3480,7 +3737,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -3621,14 +3878,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -3682,7 +3939,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"상대 정비 전에 공격\", \"직선적 운반·1대1 돌파\", \"젊은 교체 자원이 속도 공급\"]",
@@ -3877,7 +4134,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": null,
@@ -3982,7 +4239,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": null,
      "points_kr": null,
@@ -4205,7 +4462,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -4259,7 +4516,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -4359,7 +4616,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -4452,7 +4709,7 @@
       "resolution": null,
       "status": "open",
       "title": "압박 트리거: 1선→2선 패스 순간",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -4637,7 +4894,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -4900,7 +5157,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -4953,7 +5210,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -5118,7 +5375,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -5138,14 +5395,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 14,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -5199,7 +5456,7 @@
       "resolution": null,
       "status": "open",
       "title": "카마라 RDM 역할: 홀딩 Defend vs DLP Build-Up",
-      "trigger": "2026-10-17 이후 카마라 RDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-17 이후 카마라 RDM 선발 3경기 (1/3)"
      },
      "player": "카마라",
      "points_kr": null,
@@ -5226,7 +5483,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -5408,7 +5665,7 @@
       "resolution": null,
       "status": "open",
       "title": "카마라 RDM 역할: 홀딩 Defend vs DLP Build-Up",
-      "trigger": "2026-10-17 이후 카마라 RDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-17 이후 카마라 RDM 선발 3경기 (1/3)"
      },
      "player": "카마라",
      "points_kr": null,
@@ -5609,7 +5866,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -5789,7 +6046,7 @@
       "resolution": null,
       "status": "open",
       "title": "압박 트리거: 1선→2선 패스 순간",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -5899,7 +6156,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "토레스·린델뢰프 CB 포커스: Build-Up vs Aggressive",
-      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (1/3)"
      },
      "player": "린델뢰프",
      "points_kr": null,
@@ -5926,7 +6183,7 @@
       "resolution": null,
       "status": "open",
       "title": "카마라 RDM 역할: 홀딩 Defend vs DLP Build-Up",
-      "trigger": "2026-10-17 이후 카마라 RDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-17 이후 카마라 RDM 선발 3경기 (1/3)"
      },
      "player": "카마라",
      "points_kr": null,
@@ -5953,7 +6210,7 @@
       "resolution": null,
       "status": "open",
       "title": "압박 트리거: 1선→2선 패스 순간",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -6048,7 +6305,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -6141,7 +6398,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "세트피스 허용 억제와 득점 경로",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -6168,7 +6425,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -6527,7 +6784,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "실점 장면 수비 귀속: 침투 추적·박스 앞",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -6676,7 +6933,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "중앙 트랩·짧은 골킥 빌드업 턴오버",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -6762,7 +7019,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": null,
@@ -6789,7 +7046,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -6844,7 +7101,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "카마라·고메스 동시 선발 시 배급 주도권(CB 1·2위)",
-      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (1/3)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -7124,7 +7381,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "카마라·고메스 동시 선발 시 배급 주도권(CB 1·2위)",
-      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": null,
@@ -7151,7 +7408,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "실점 장면 수비 귀속: 침투 추적·박스 앞",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "캐시",
      "points_kr": null,
@@ -7205,7 +7462,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "카마라 구역 고립·rest-defense",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -7232,7 +7489,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -7809,7 +8066,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "카마라 구역 고립·rest-defense",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "카마라",
      "points_kr": null,
@@ -7896,7 +8153,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "세트피스 허용 억제와 득점 경로",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"박스 근처 파울 금지(고메스·캐시)\", \"걷어내기는 멀리\", \"먼 포스트·두 번째 동작 대비\"]",
@@ -7923,7 +8180,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "토레스·린델뢰프 CB 포커스: Build-Up vs Aggressive",
-      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (1/3)"
      },
      "player": "파우 토레스",
      "points_kr": null,
@@ -7950,7 +8207,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -8255,7 +8512,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -8309,7 +8566,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -8363,7 +8620,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "토레스·린델뢰프 CB 포커스: Build-Up vs Aggressive",
-      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (1/3)"
      },
      "player": "파우 토레스",
      "points_kr": null,
@@ -8445,7 +8702,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -8527,7 +8784,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -8716,7 +8973,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -8771,7 +9028,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -8823,7 +9080,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"루헤리 전진 시 캐시가 안으로\", \"캐시 전진 시 루헤리가 백3 합류\", \"경기별로 고정 운용도 가능\"]",
@@ -8932,7 +9189,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -8986,7 +9243,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": null,
      "points_kr": "[\"잭슨에게 직접 연결하는 선택지\", \"상대가 라인을 높이 올리기 망설임\", \"그 결과 중원 공간이 열림\"]",
@@ -9013,7 +9270,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": null,
      "points_kr": null,
@@ -9040,7 +9297,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -9122,7 +9379,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -9149,7 +9406,7 @@
       "resolution": null,
       "status": "open",
       "title": "윙어 드리블·폭 재량",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"자기 진영 드리블 실점 위험 회피\", \"드리블·크로스 반복은 빌라 방식 아님\", \"대상 선수 음바예는 오인식 추정\"]",
@@ -9231,7 +9488,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -9258,7 +9515,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -9285,7 +9542,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -9312,7 +9569,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -9429,7 +9686,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "카마라·고메스 동시 선발 시 배급 주도권(CB 1·2위)",
-      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": null,
@@ -10543,7 +10800,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -10570,7 +10827,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -11144,7 +11401,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "실점 장면 수비 귀속: 침투 추적·박스 앞",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -11875,7 +12132,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -12688,7 +12945,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "세트피스 허용 억제와 득점 경로",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -12898,7 +13155,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "세트피스 허용 억제와 득점 경로",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -13200,7 +13457,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "중앙 트랩·짧은 골킥 빌드업 턴오버",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "바클리",
      "points_kr": "[\"상대가 더블 피벗에 점프해 2v5를 만든다(포레스트)\", \"바클리는 온더볼은 좋지만 커버 범위가 부족\", \"역할 코드(dm_dlp/Roaming .888 동일)로는 차이 재현 불가\"]",
@@ -13311,7 +13568,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "중앙 트랩·짧은 골킥 빌드업 턴오버",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"상대가 더블 피벗 주위에 5명 배치\", \"빌라는 중앙 투입을 반복\", \"해법은 폭으로 벌려 중앙을 여는 것\"]",
@@ -13710,7 +13967,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"구성: 맥긴 우측 윙어로 해방\", \"결과: 좌측 풀백 1대1 고립\", \"좌측 더블링 부재 → 후반 붕괴 경로\"]",
@@ -13737,7 +13994,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -13792,7 +14049,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"특히 글라스너의 백3\", \"「빌라의 크립토나이트」\"]",
@@ -15247,7 +15504,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -15595,7 +15852,7 @@
       "resolution": null,
       "status": "open",
       "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -15622,7 +15879,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "토레스·린델뢰프 CB 포커스: Build-Up vs Aggressive",
-      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (1/3)"
      },
      "player": "파우 토레스",
      "points_kr": null,
@@ -15686,7 +15943,7 @@
       "resolution": null,
       "status": "open",
       "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -15740,7 +15997,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -15767,7 +16024,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
      },
      "player": "주앙 고메스",
      "points_kr": null,
@@ -15794,7 +16051,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "카마라 RDM: dm_holding/Defend vs dm_dlp",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "카마라",
      "points_kr": null,
@@ -15849,7 +16106,7 @@
       "resolution": null,
       "status": "open",
       "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -15876,7 +16133,7 @@
       "resolution": null,
       "status": "open",
       "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -15974,7 +16231,7 @@
       "resolution": null,
       "status": "open",
       "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"잭슨에게 발밑으로 공급\", \"하강 시 2선이 배후로 뛰어야 최대치\", \"브뤼헤전에서 가설이 맞았다는 자평\"]",
@@ -16001,7 +16258,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -16028,7 +16285,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "토레스·린델뢰프 CB 포커스: Build-Up vs Aggressive",
-      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (1/3)"
      },
      "player": "파우 토레스",
      "points_kr": null,
@@ -16152,7 +16409,7 @@
       "resolution": null,
       "status": "open",
       "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"잭슨이 내려와 상대 CB를 끌어낸다\", \"부엔디아·맥긴이 같이 공 쪽으로 온다\", \"만잠비의 X자 배후 침투가 해법\"]",
@@ -16246,7 +16503,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -16300,7 +16557,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -16380,7 +16637,7 @@
       "resolution": null,
       "status": "open",
       "title": "윙어 드리블·폭 재량",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"75분 가르나초·알리송 투입\", \"반대발 배치로 안쪽으로만 좁힘\", \"터치라인 돌파·크로스 시도 부재\"]",
@@ -16685,7 +16942,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"밍스·린델뢰프·바클리·카마라의 중앙 박스\", \"캐시·마첸이 폭 담당\", \"맥긴 안쪽 이동은 실측(터치라인)과 다름\"]",
@@ -16712,7 +16969,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -16798,7 +17055,7 @@
       "resolution": null,
       "status": "open",
       "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -17193,7 +17450,7 @@
       "resolution": null,
       "status": "open",
       "title": "윙어 드리블·폭 재량",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"측면에서 속도를 늦추고 백패스\", \"「돌파 재량을 받지 못했다」는 진행자 추정\", \"지시 확인이 아니라 팬 채널 해석\"]",
@@ -17312,7 +17569,7 @@
       "resolution": null,
       "status": "open",
       "title": "카마라 RDM 역할: 홀딩 Defend vs DLP Build-Up",
-      "trigger": "2026-10-17 이후 카마라 RDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-17 이후 카마라 RDM 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": null,
@@ -17366,7 +17623,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -17393,7 +17650,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -18055,7 +18312,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -18115,7 +18372,7 @@
       "resolution": null,
       "status": "open",
       "title": "윙어 드리블·폭 재량",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -18289,7 +18546,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -18475,7 +18732,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -18747,7 +19004,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -18893,7 +19150,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -19169,7 +19426,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "9번의 기능과 9번 없는 구성",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"채널을 뛰어 준다\", \"내려와 볼을 지킨다\", \"동료를 끌어들인다\"]",
@@ -19222,7 +19479,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "9번의 기능과 9번 없는 구성",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"브라이턴전 부엔디아 9번 대행 실패\", \"후방에서 침투 러닝을 찾을 대상이 없었다\"]",
@@ -19555,7 +19812,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "9번의 기능과 9번 없는 구성",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"상대 라인을 늘린다\", \"동료를 끌어들인다\", \"동료가 운반해 들어갈 공간을 만든다\", \"CB의 출구(아웃볼)가 된다\"]",
@@ -19801,7 +20058,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -20043,7 +20300,7 @@
       "resolution": null,
       "status": "open",
       "title": "카마라 RDM 역할: 홀딩 Defend vs DLP Build-Up",
-      "trigger": "2026-10-17 이후 카마라 RDM 선발 3경기 (0/3)"
+      "trigger": "2026-10-17 이후 카마라 RDM 선발 3경기 (1/3)"
      },
      "player": "카마라",
      "points_kr": null,
@@ -20623,7 +20880,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-10-21 이후 만잠비 LDM,RDM,CDM,LCM,RCM,LM,RM,LAM,RAM,LW,RW 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 만잠비 LDM,RDM,CDM,LCM,RCM,LM,RM,LAM,RAM,LW,RW 선발 2경기 (1/2)"
      },
      "player": "만잠비",
      "points_kr": null,
@@ -20677,7 +20934,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-10-21 이후 만잠비 LDM,RDM,CDM,LCM,RCM,LM,RM,LAM,RAM,LW,RW 선발 2경기 (0/2)"
+      "trigger": "2026-10-21 이후 만잠비 LDM,RDM,CDM,LCM,RCM,LM,RM,LAM,RAM,LW,RW 선발 2경기 (1/2)"
      },
      "player": "만잠비",
      "points_kr": null,
@@ -21179,7 +21436,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"상대 투톱이 빌라 CB 둘을 묶는 구조\", \"CB 한 명이 미드필드에서 3선 침투 공간 차단\", \"점유 시 우측 CB로 내려가 양 풀백 전진\"]",
@@ -21206,7 +21463,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "토레스·린델뢰프 CB 포커스: Build-Up vs Aggressive",
-      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (1/3)"
      },
      "player": "파우 토레스",
      "points_kr": null,
@@ -21485,7 +21742,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"앵커 투입(오나나), 다른 피벗(틸레만스) 전진\", \"버티는 ST(왓킨스)가 롱볼 출구\", \"윙어(로저스)를 측면에 고정해 상대 미드 묶기\", \"압박도 4-2-3-1로 전환\"]",
@@ -21512,7 +21769,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"상대 윙어가 풀백을 대인으로 마크\", \"출구는 측면 띄운 롱볼 → 50대50\", \"자기 진영에서 연속 소유 상실\"]",
@@ -21634,7 +21891,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
      },
      "player": "캐시",
      "points_kr": null,
@@ -21761,7 +22018,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"CB 둘이 GK 양옆으로 벌어짐\", \"풀백은 터치라인, 더블 피벗은 박스 끝\", \"상대가 붙으면 ST 수직 패스·롱볼\", \"넘기면 최전방 4대4, 2선은 좁게\"]",
@@ -21788,7 +22045,7 @@
       "resolution": null,
       "status": "open",
       "title": "압박 트리거: 1선→2선 패스 순간",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"좁은 5-4-1·4-4-2·4-3-3\", \"트리거: 상대 CB 사이 패스\", \"미드필더 점프로 측면으로 몰기\", \"풀백이 윙어 도전 + 미드 측면 2대1\"]",
@@ -21815,7 +22072,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "카마라 RDM: dm_holding/Defend vs dm_dlp",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "카마라",
      "points_kr": null,
@@ -21869,7 +22126,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
      },
      "player": null,
      "points_kr": "[\"상대가 2선 중앙 수신자를 따라 올라옴\", \"빈 뒷공간으로 띄우는 직선 패스\", \"ST 곡선 침투로 CB 시선 분산\"]",
@@ -22106,7 +22363,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": "[\"평균 위치 맵에서 잭슨이 다른 모두와 멀다\", \"바클리·카마라는 전진 패스 후 재이동이 약하다\", \"부엔디아는 10번 위치 규율이 약하다\", \"ST 앞으로 넘어서는 러너가 없다\"]",
@@ -22313,7 +22570,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "수비 블록 높이·후반 붕괴",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -22474,7 +22731,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -22501,7 +22758,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -22528,7 +22785,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": "잭슨",
      "points_kr": null,
@@ -22716,7 +22973,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -22868,7 +23125,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "수비 블록 높이·후반 붕괴",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -22954,7 +23211,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": "스즈키 지온",
      "points_kr": null,
@@ -23318,7 +23575,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
      },
      "player": null,
      "points_kr": "[\"아브라함 투입 후 채널 패스 시도 자체가 사라짐\", \"아웃볼이 없어 중앙 피벗으로 무리하게 투입\", \"전방 2인 압박도 사라짐\"]",
@@ -23372,7 +23629,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "중앙 트랩·짧은 골킥 빌드업 턴오버",
-      "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
      },
      "player": null,
      "points_kr": null,
@@ -23795,6 +24052,12 @@
    362,
    367,
    359
+  ],
+  "63": [
+   383,
+   382,
+   380,
+   381
   ]
  },
  "issues": [
@@ -23807,7 +24070,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
-   "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
   },
   {
    "closed": null,
@@ -23818,7 +24081,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-   "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
   },
   {
    "closed": null,
@@ -23829,7 +24092,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-   "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (0/2)"
+   "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
   },
   {
    "closed": null,
@@ -23840,7 +24103,7 @@
    "resolution": null,
    "status": "open",
    "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
-   "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
   },
   {
    "closed": null,
@@ -23851,7 +24114,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-   "trigger": "2026-10-21 이후 잭슨 선발 3경기 (0/3)"
+   "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
   },
   {
    "closed": null,
@@ -23906,7 +24169,7 @@
    "resolution": null,
    "status": "open",
    "title": "윙어 드리블·폭 재량",
-   "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
   },
   {
    "closed": null,
@@ -23939,18 +24202,18 @@
    "resolution": "HELD",
    "status": "open",
    "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
-   "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (1/5)"
   },
   {
    "closed": null,
-   "due": false,
+   "due": true,
    "hold": false,
    "id": 14,
    "phase": "decide",
    "resolution": null,
    "status": "open",
    "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-   "trigger": "2026-08-11 이후 알리송 선발 3경기 (2/3)"
+   "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
   },
   {
    "closed": null,
@@ -23972,7 +24235,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
-   "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
   },
   {
    "closed": null,
@@ -23983,7 +24246,7 @@
    "resolution": null,
    "status": "open",
    "title": "압박 트리거: 1선→2선 패스 순간",
-   "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
   },
   {
    "closed": null,
@@ -23994,7 +24257,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "카마라·고메스 동시 선발 시 배급 주도권(CB 1·2위)",
-   "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (0/3)"
+   "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (1/3)"
   },
   {
    "closed": null,
@@ -24005,7 +24268,7 @@
    "resolution": null,
    "status": "open",
    "title": "카마라 RDM 역할: 홀딩 Defend vs DLP Build-Up",
-   "trigger": "2026-10-17 이후 카마라 RDM 선발 3경기 (0/3)"
+   "trigger": "2026-10-17 이후 카마라 RDM 선발 3경기 (1/3)"
   },
   {
    "closed": null,
@@ -24016,7 +24279,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-   "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (0/3)"
+   "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
   },
   {
    "closed": null,
@@ -24049,7 +24312,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "토레스·린델뢰프 CB 포커스: Build-Up vs Aggressive",
-   "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (0/3)"
+   "trigger": "2026-10-21 이후 파우 토레스 LCB 선발 3경기 (1/3)"
   },
   {
    "closed": null,
@@ -24115,7 +24378,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "세트피스 허용 억제와 득점 경로",
-   "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
   },
   {
    "closed": null,
@@ -24335,7 +24598,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-   "trigger": "2026-10-21 이후 만잠비 LDM,RDM,CDM,LCM,RCM,LM,RM,LAM,RAM,LW,RW 선발 2경기 (0/2)"
+   "trigger": "2026-10-21 이후 만잠비 LDM,RDM,CDM,LCM,RCM,LM,RM,LAM,RAM,LW,RW 선발 2경기 (1/2)"
   },
   {
    "closed": null,
@@ -24357,7 +24620,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "카마라 RDM: dm_holding/Defend vs dm_dlp",
-   "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
   },
   {
    "closed": null,
@@ -24368,7 +24631,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "중앙 트랩·짧은 골킥 빌드업 턴오버",
-   "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
   },
   {
    "closed": null,
@@ -24379,7 +24642,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "실점 장면 수비 귀속: 침투 추적·박스 앞",
-   "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
   },
   {
    "closed": null,
@@ -24390,7 +24653,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "카마라 구역 고립·rest-defense",
-   "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
   },
   {
    "closed": null,
@@ -24401,7 +24664,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "9번의 기능과 9번 없는 구성",
-   "trigger": "2026-10-21 이후 공식전 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 공식전 5경기 (1/5)"
   },
   {
    "closed": null,
@@ -24445,7 +24708,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "수비 블록 높이·후반 붕괴",
-   "trigger": "2026-10-21 이후 리그 5경기 (0/5)"
+   "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
   },
   {
    "closed": null,

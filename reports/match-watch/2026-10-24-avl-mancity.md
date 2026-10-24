@@ -1,0 +1,222 @@
+# 2026-10-24 AVL vs Manchester City — 2-1
+
+> 수집일 2026-10-25(00:32 예약 회차 · 경기 다음 날 D+1 · FT 22:20 KST 뒤 약 2시간) · SofaScore event `16363892` · 프리미어리그 MD8 · **홈(빌라 파크)** · 기본 포메이션 4-2-3-1(SofaScore 표기 · 상대 4-2-3-1)
+> FotMob matchId `5795486` · WhoScored matchId `1983617`(Opta · scope=full · 이벤트 1,464건 · pulled=2026-10-25 · ⭐ **matchCentreData 전체 JSON 보존** [data/2026-10-24-avl-ws-1983617.json](data/2026-10-24-avl-ws-1983617.json) — headful Playwright로 Cloudflare 통과) · **match_reports #63** · matches #127
+> 맨시티 감독 **엔초 마레스카**(SofaScore managers) · 주심 Peter Bankes · 게임 버전 **FC27**(`core.game_version.live_on(con,'2026-10-24')`)
+> ⚠️ 예약 프롬프트는 「Manchester City vs Aston Villa」로 적었지만 SofaScore·WhoScored·FotMob 모두 **빌라 홈**이다(home=Aston Villa · venue Villa Park).
+> 관전 메모: `reports/match-watch/notes/`에 이 경기 메모(2026-10-24-avl-mancity*) **없음** — 사용자 가설 대조 대신 직전 경기(바이킹전 D+3)가 넘긴 확인 항목 6개를 「이월 확인 대조표」로 판정했다.
+
+## 요약
+
+- **결과는 2-1, 내용은 맨시티가 앞섰다.** xG **0.61 대 1.79**(FotMob · 오픈플레이 0.48/1.43 · 세트 0.13/0.36 · PK 0), 슈팅 8–15, 박스 안 터치 **12 대 53**, 점유 **37%**(1H 41 · 2H 33). 빌라 두 골은 모두 **맨시티 실책에서** 나왔다(SS `errorLeadToGoal` 2 — 6′ 게히 첫 터치 → 잭슨 · 60′ 돈나룸마 위치 선정 → 잭슨). 스즈키 선방 6 · 막은 실점 **+1.74**(SS goals prevented).
+- **바이킹전 「보유 3백 + 오른쪽 과부하」는 유지되지 않았다 — 4백 + 왼쪽 쏠림.** 볼 소유 평균 위치(WS): 린델뢰프 (25, 26) · 토레스 (24, 66)가 CB 2, **캐시 (40, 17) · 마트센 (45, 88)이 양쪽 폭**, 그 앞 **카마라 (38, 38) · 고메스 (44, 68)** 더블 피벗, 맥긴 (61, 47) 중앙 10번, 알리송 (63, 22) 오른쪽, 만잠비 (58, 67) 왼쪽 안쪽, 잭슨 (61, 63). 중앙·상대 진영 볼 소유 레인 **왼쪽 44% · 중앙 26% · 오른쪽 30%**(바이킹전 오른쪽 46%의 반대).
+- **비보유는 4-4-1-1 중·저블록.** 팀 수비 액션 높이 def_x **34.9**(맨시티 45.3) · 6′ 득점 뒤 6–30′ **31.8~32.2** · 2-1 리드 뒤 60–66′ **20.4**. 맥긴의 수비 액션 평균 (34, 38)은 카마라 (33, 34) 바로 옆 — 공이 없을 때는 CAM이 아니라 중원 셋째 자리로 내려왔다.
+- **주앙 고메스는 RB가 아니라 LDM(카마라 왼쪽)** — 바이킹전 RB는 부상 강제 1회성(obs#1129 확정과 일치). 패스 **27/28**(96%) · 가로채기 3 · 볼 소유 레인 왼쪽 58%.
+- **「맥긴·고메스 중원 축」은 이 경기에서는 성립하지 않았다.** 연결 상위 쌍은 **토레스→스즈키 20 · 린델뢰프↔토레스 11/10 · 마트센→고메스 10 · 마트센→토레스 10** — 후방 순환과 왼쪽(마트센–고메스)이다. 맥긴은 볼 소유 18 · 패스 8/15(WS)로 연결보다 **압박·탈취·마무리 공급**(선제골 도움 · 기회 창출 4 · FM 7.98)이었다.
+- **교체 서열**: 59′ 음바예(알리송 자리 · **오른쪽**) → 1분 뒤 결승골 도움 · 66′ 바클리←맥긴 · 부엔디아←만잠비 · 82′ 고레츠카←고메스 · 마조←잭슨. **가르나초는 소집 명단 밖**(PL 2경기 연속 · 사유 공식 확인 0 · 계약 조항 루머 LOW). 밍스는 벤치 미출전.
+- **게임 구현: 추가 관찰.** 이 경기 전용 프리셋 4-2-3-1 Wide · **Counter**/Balanced/48(규칙 Counter/Balanced/55~62 — 라인만 DIVERGE: def_x 34.9). 시즌 정본 변경 없음.
+
+## ⭐ 이월 확인 대조표 (바이킹전 D+3 → 이 경기)
+
+관전 메모가 없어 사용자 가설 대신 바이킹전 리포트 「D+3 ⑷」와 예약 프롬프트가 넘긴 항목을 판정했다. `match_hypotheses` #63 C1~C6.
+
+| # | 이월 항목 | 실측 | 판정 |
+|---|---|---|---|
+| C1 | 주앙 고메스 RB 재기용 여부 | SS 라인업 M(LDM 칸) · 볼 소유 (44, 68) 왼쪽 58% · RB 존(x<40·y<25) 수비 액션 **0** · RB는 캐시 90분 · BBC 「Worked alongside Kamara」(카마라 옆에서 뛰었다) · 포르투갈어 hoop78 「O volante João Gomes」(볼란치 주앙 고메스) | **불일치(RB 재기용 없음)** — 바이킹전 RB는 부상 강제 1회성 |
+| C2 | 만잠비 복귀 | 선발 66′ · LM 칸 · 볼 소유 (58, 67) 왼쪽 71% · 수비 액션 (31, 65) · 54′ 경고(지연) · watson.ch 「주중 CL은 가벼운 종아리 문제로 쉬었다」 · SS missingPlayers엔 「Physical Discomfort」가 그대로 남음(경기 전 표기 잔존) | **일치(복귀)** — 위치는 CAM이 아니라 왼쪽 안쪽 |
+| C3 | 마트센(LB) 복귀·기능 | 선발 90′ · 볼 소유 (45, 88) · 상대 진영(x≥66.7) 볼 소유 **11**(팀 공동 1위 · 잭슨 11) · 운반(SS) 전진 2·81.8m · 수비 액션 15 (37, 90) · 막판 홀란 헤더 골라인 클리어 · 평점 AVN 4 ~ SportsDunia 7(가장 크게 갈림) | **일치(복귀 · 높은 LB)** |
+| C4 | 가르나초 서열(교체 순번) | 소집 명단 제외(벤치 9명: 비조·밍스·바클리·부엔디아·음바예·보가르드·고레츠카·마조·헤밍스) · 첫 교체는 59′ 음바예 | **판정 불가** — 명단 밖이라 순번 없음. 사유: 공식 0 · OneFootball(AI 보조 표기)·Football Insider 「구매 의무 조항 회피」 루머 LOW(obs#1129와 같은 축) |
+| C5 | 보유 3백(밍스·토레스·린델뢰프) + 오른쪽 과부하 유지 여부 | 밍스 벤치 · 4백(캐시·린델뢰프·토레스·마트센) · 양 풀백 보유 x 40~45(바이킹전 밍스 42·고메스 55와 달리 둘 다 폭) · 중앙·상대 진영 레인 **왼쪽 44**/중 26/오른 30 · Sports Mole 「recognised back four」(익숙한 4백) | **불일치(변화)** — 4백 + 왼쪽 쏠림 · 강팀 상대 37% 점유라 3백 빌드업 국면 자체가 적었다 |
+| C6 | 맥긴·고메스 중원 축(바이킹전 가설 최종 일치) | 이 경기 연결 상위 = 후방 순환(토레스→스즈키 20 · CB 상호 21) · 마트센→고메스 10 · 맥긴 볼 소유 18 · 패스 8/15(WS) · 고메스 패스 27/28이지만 대상은 토레스·마트센 | **불일치(이 경기 한정)** — 37% 점유·롱볼 22%에서는 중원 연결 국면이 짧았다. 바이킹전 판정을 뒤집지 않는다(경기 성격이 다름) |
+
+## ⭐ 중점 4인 전용 절
+
+### 알리송 (#47 · 브라질 · 전 그레미우)
+- **실측**: 선발 RM 59′ · SS 6.4 · FM 6.66 · 볼 소유 16 (63, 22) 오른쪽 75% · 깊은 수신(x≥66.7) 5 · 드리블 1/2 · 슈팅 3(블록 2 · xG 0.10) · 수비 액션 14 (48, 23) · **스프린트 거리 310m**(SS 피지컬 · 팀 최다 · 횟수 13 — 횟수 최다는 잭슨 15) · 상대 진영 볼 소유 7. 바이킹전(SS 8.4 · 깊은 수신 15)과 달리 고립된 1대1 장면이 적었다.
+- **에메리 발언**: 이 경기 알리송 언급 **0건**(영어 회견·공식 인터뷰 · 스페인어 0).
+- **평점**: BBC 7(「또 눈에 띄는 경기」) · The National 7 「full of running up and down pitch」(피치를 위아래로 쉼 없이 뛰었다) · AVN 6 · EPL Index 6 · dave.sport 6.5(AI 보조 표기) · SportsDunia 6.5.
+- **장면**: A Bola 39′ 「Alysson entra na área, dribla para um lado e para o outro e tira o central da frente」(알리송이 박스에 들어가 좌우로 드리블해 센터백을 제쳤다) → 디아스 블록(BBC 서술 · WS 39′ 블록 슈팅). SI 「desperate to dribble at every opportunity」(기회마다 드리블하려 안달했다).
+- **모국어(포르투갈어)**: hoop78 「O ponta Alysson, revelado pelo Grêmio, saiu aos 14 do segundo tempo」(그레미우 출신 윙어 알리송은 후반 14분에 나갔다) — 위치는 「ponta」(윙어). ge.globo·GZH·UOL·Lance! 0건(차단·미게재).
+- **FC 함의**: 커널 RM 1위 wm_insidefwd/Attack **.455**(Δ.002 무결정 · 2위 wm_wideplm/Attack .454) — 바이킹전 wm_winger/Attack .809와 크게 다르다. 수비 국면 비중이 컸던 경기라 히트맵이 안쪽·아래로 번졌다. 쟁점 #14(알리송 수비 복귀형 vs 윙어 · 「판정할 차례」)의 표본 1경기 — 이 경기 단독으로 닫지 않는다(§7).
+
+### 주앙 고메스 (#35 · 브라질)
+- **실측**: 선발 **LDM** 82′ · SS 6.7 · FM 7.05 · 패스 27/28 · 볼 소유 31 (44, 68) 왼쪽 58% · 수비 액션 13 (36, 65) · 가로채기 3 · 운반(SS) 8회 69m(전진 0) · 수신 22(x̄ 45.5). 60′~ 볼 소유 (38, 74)로 더 왼쪽·아래.
+- **에메리 발언**: 0건. 바이킹전 회견 「고메스는 늘 8번」(obs#1083 맥락)과 충돌 없음 — 이 경기는 6번 짝.
+- **평점**: BBC 6 · The National 7 · AVN 7 · EPL Index 6 · SportsDunia 7 · dave.sport 6.5(82분 패스 96%).
+- **모국어**: hoop78 「O volante João Gomes jogou até os 37 minutos do segundo tempo」(볼란치 주앙 고메스는 후반 37분까지 뛰었다). 브라질 대형 매체 평점 0건.
+- **FC 함의**: LDM 1위 dm_dlp/Build-Up **.811**(Δ.018 무결정 · 2위 dm_holding/Defend .792) · 보유 그리드 1위 dm_dlp/Defend .855. 쟁점 #20(더블 피벗 분업: 고메스 궂은일 vs 카마라 전진)은 이 경기에서 **반대 방향** — 카마라 수비 액션 27(팀 1위) · 고메스 13.
+
+### 맥긴 (#7 · 주장 · 스코틀랜드)
+- **실측**: 선발 **CAM** 66′ · SS 7.3 · FM 7.98 · **선제골 도움**(6′ — 게히 실책 직후 컷백) · 기회 창출 4(FM) · 키패스 4(SS) · 볼 소유 18 (61, 47) · 패스 8/15(WS · FM 8/12) · 수비 액션 13 **(34, 38)** · 운반 전진 2(47m).
+- **에메리 발언**: 0건. 66′ 교체 사유 언급 없음(UTV 팬 「bold move」(대담한 결정)).
+- **평점**: BBC 7(「경기장 전체 최다 기회 창출」) · The National 7 「constant harrying of opponents」(상대를 끊임없이 괴롭혔다)·카마라와 「dovetailing」(잘 맞물렸다) · AVN 7 · EPL Index 7 · SportsDunia 8 · dave.sport 7.5.
+- **스코틀랜드 매체**: Daily Record·Herald·Scottish Sun·BBC Scotland **차단**, Scotsman 0건 — 미확보(사유: 검색 도구 차단).
+- **FC 함의**: CAM 1위 cam_playmaker/Build-Up .540(Δ.069) · 보유 그리드 1위 cam_halfwinger/Roaming .687. 비보유 위치가 카마라 옆이라 **FC 4-2-3-1 CAM 칸 그대로는 수비 형태를 재현하지 못한다**(FC CAM은 비보유에 내려오지 않는다 — D등급 통설 · 미검증).
+
+### 가르나초 (#17 · 아르헨티나 · 첼시 임대)
+- **출전 없음 — 소집 명단 제외**(PL 2경기 연속 · UCL 바이킹전은 72′ 교체 출전). SS missingPlayers에도 없음 = 부상 표기 아님.
+- **사유**: 구단·에메리 공식 0건. 영어 OneFootball(필진 「OffsAIde」 · AI 보조 작성 명시)·Football Insider 경유 「구매 의무 조항 발동을 피하려 출전을 제한」 — **LOW**(익명 소스 · obs#1129와 같은 루머). 에메리 최근 직접 발언은 9월 「Garnacho is a little bit behind, because of some circumstances we had in pre-season」(가르나초는 프리시즌의 사정 때문에 조금 뒤처져 있다 · 검색요약 경유).
+- **스페인어(아르헨티나)**: La Nación 경기 기사에 가르나초 언급 0 · Olé·TyC·Clarín 차단.
+- **함의**: 쟁점 #9(가르나초 LM 기용 시 좌측 구조)·#47 표본 0 유지.
+
+## 1. 경기 개요와 원천 수치
+
+| 항목 | 빌라 | 맨시티 | 원천 |
+|---|---|---|---|
+| 점유 | 37% (1H 41 · 2H 33) | 63% | FM(=SS) |
+| xG | **0.61**(오픈 0.48 · 세트 0.13 · PK 0) | **1.79**(오픈 1.43 · 세트 0.36) | FM 한 응답(xg_source=FotMob) · SS statistics 0.61/1.79 · SS 슛맵 합 0.61/1.79 일치 |
+| xGOT | 0.32 | **2.74** | FM |
+| 슈팅 / 유효 / 블록 / 골대 | 8 / 2 / 3 / 0 | 15 / 7 / 4 / 2 | SS·FM |
+| 빅찬스(미스) | 1 (0) | 4 (3) | SS |
+| 박스 안 터치 | 12 | 53 | SS |
+| 패스(성공) | 314 (254 · 81%) | 528 (472 · 89%) | SS |
+| 롱볼 | 19/53 | 17/32 | SS |
+| 크로스 | 0/5 | 9/22 | SS |
+| 파이널서드 진입 | 27 | 49 | SS |
+| 태클 / 가로채기 / 클리어 | 31 / 10 / 22 | 13 / 8 / 16 | SS |
+| 드리블 | 3/10 | 17/39 | SS |
+| 코너 / 파울 / 경고 | 4 / 21 / 4 | 7 / 17 / 4 | SS |
+| PPDA | **8.55**(325/38) · 1H 7.58 · 2H 9.53 | 7.5 · 1H 12.08 · 2H 5.38 | WS · `core.whoscored.ppda` |
+| def_x(수비 액션 높이) | **34.9**(n=170) | 45.3(n=132) | WS · `core.whoscored.def_x` |
+| GK 선방 · 막은 실점 | 6 · **+1.74** | 0 · −1.68 | SS |
+| 실책→실점 | 0 | **2** | SS |
+| 뛴 거리 · 스프린트 | 113.2km · 70 | 112.1km · 83 | SS |
+
+- **득점·국면**: **6′ 잭슨**(맥긴 도움 — 디아스→게히 긴 패스를 게히가 첫 터치 실수 · 맥긴 탈취 → 잭슨 앤더슨 제치고 니어 상단 · 1-0) · **52′ 홀란**(은디아예 도움 — 카마라 반칙 FK → 짧게 받은 은디아예 크로스 → 홀란 헤더 · 린델뢰프 공중 경합 패 · 1-1) · **60′ 잭슨**(음바예 도움 — 투입 1분 뒤 오른쪽 침투 컷백 → 잭슨 원터치 · 돈나룸마 발 정지 실패 · 2-1). 스코어 국면: lead 6–52′ · level 52–60′ · lead 60′~.
+- **교체**: 맨시티 46′ 포든←셰르키 · 리코 루이스←게히(둘 다 경고 · 마레스카 「technical decision」(기술적 결정)) · 69′ 맥아이두←은디아예 / 빌라 **59′ 음바예←알리송** · **66′ 바클리←맥긴 · 부엔디아←만잠비** · **82′ 고레츠카←고메스 · 마조←잭슨**.
+- **카드**: 맨시티 게히 32′ · 셰르키 38′ · 앤더슨 74′ · 맥아이두 76′ / 빌라 만잠비 54′(지연) · 캐시 55′ · 마조 83′(항의 — PL 데뷔) · 부엔디아 90+5′.
+- **수집 엔드포인트**: SS `/api/v1/event/16363892/{lineups,heatmap,average-positions,statistics,incidents,shotmap,managers,graph}`(Playwright 기본 UA headless · `collect_event.py`) · FM `/api/data/matchDetails?matchId=5795486`(페이지 안 fetch · `load_fotmob_match.py`) · WS `matchCentreData`(**headful** Playwright — headless는 Cloudflare 「Attention Required」 · 앱 브라우저는 로컬 전송이 막혀 전사 대신 headful로 전체 저장).
+- **유효 히트맵 기준(45분+ · hit_points 15+)**: 선발 11명 전원 통과(최저 만잠비 28 · 알리송 30 · 맥긴 35). 교체 5명(음바예 10 · 바클리 8 · 부엔디아 19 · 고레츠카 6 · 마조 13)은 45분 미만 — 리포트 근거로만 쓴다.
+
+## 2. 전술 설명
+
+### 점유 구조·빌드업
+- **4백 + 더블 피벗 + 왼쪽 쏠림.** 명단 4-2-3-1 그대로 섰다. CB 린델뢰프 (25, 26)·토레스 (24, 66)가 넓게 갈라지고 캐시 (40, 17)·마트센 (45, 88)이 폭. 카마라 (38, 38)가 오른쪽·낮게, 고메스 (44, 68)가 왼쪽. 앞선은 맥긴 (61, 47) 중앙 · 만잠비 (58, 67) 왼쪽 안쪽 · 알리송 (63, 22) 오른쪽 · 잭슨 (61, 63)이 왼쪽 채널로 빠진다.
+- **후방 순환 → 왼쪽 전진 또는 롱볼.** 연결 상위: 토레스→스즈키 20 · 린델뢰프→토레스 11 · 토레스→린델뢰프 10 · **마트센→고메스 10 · 마트센→토레스 10** · 스즈키→토레스 9 · 고메스→토레스 9 · 린델뢰프↔캐시 9/9. 롱볼 비중 **20%**(69/338 WS · SS 53/314) — 바이킹전 6.8%의 3배. 스즈키 패스 36/49 · 롱 19(성공 6) · GK 롱 비중 구간 0~100%(75′~ 70%).
+- 중앙·상대 진영 볼 소유 레인 **왼쪽 44 · 중 26 · 오른 30%**. 상대 진영 볼 소유 상위: 잭슨 11 · **마트센 11** · 맥긴 7 · 알리송 7 · 마조 7.
+- **잭슨은 박스에 머물지 않았다(다시).** 볼 소유 27 · 평균 (61, 63) 왼쪽 48% · 깊은 수신 7 · 운반 전진 3(69m · SS) · 스프린트 15회. 슈팅 2(둘 다 골 · xG 0.36).
+
+### 비점유 구조·압박
+- **0–6′ 높게 → 6′ 득점 뒤 중·저블록.** 빌라 def_x **55.6**(0–6′) → **31.8**(6–15′) · **32.2**(15–30′) · 41.8(30–45′) · 40.3(45–52′) · 34.8(52–59′) · **20.4**(60–66′) · 31.1(66–75′) · 35.8(75′~). PPDA 6.5 → 6.2 → 11.75 → 6.62 · 2H 9.53.
+- **4-4-1-1.** 수비 액션 평균(0–52′): 캐시 (42, 11) · 알리송 (46, 22) · 맥긴 (39, 37) · 카마라 (33, 39) · 고메스 (33, 40) · 만잠비 (31, 62) · 잭슨 (52, 61) · 마트센 (51, 92). 맥긴이 카마라 옆으로 내려오고, 만잠비가 왼쪽 미드 라인을 지킨다. **마트센은 수비 액션도 높다(51, 92)** — 맨시티 오른쪽(쿠사노프 RB→은디아예)을 앞에서 끊는 쪽.
+- 태클 31(맨시티 13) · 캐시 태클 **8**(양 팀 최다) — 도쿠 전담(BBC·UTV 「Cash shut Doku on the outside all game long」(경기 내내 바깥쪽으로 막았다)). 단 캐시 드리블 허용 5(SS dribbled past).
+- 마레스카 「We struggled the first probably 10-15 minutes and we expected them in one way and they were in a different way」(처음 10~15분 고전했다 — 한 방식으로 나올 줄 알았는데 다르게 나왔다 · NBC) — 「다른 방식」의 내용은 미서술. 실측으로는 0–6′ def_x 55.6의 **높은 출발**이 그 후보다.
+
+### 전환·rest-defense·세트피스
+- **두 골 모두 전환.** 6′ 높은 위치 탈취(サッカーキング 「敵陣高い位置でボールを奪い切ると」(상대 진영 높은 위치에서 공을 완전히 빼앗자)) · 60′ 음바예 오른쪽 침투(ESPN 「one long ball over the top … has time to run into that space」(롱볼 하나로 공간에 뛰어들 시간)). 마레스카 「they play for that. They wait for that」(그걸 노리고 기다린다 · 회견 전사 auto-caption).
+- **세트피스 실점.** 52′ 짧은 FK → 은디아예 (93, 22) 크로스 → 홀란. ESPN 히슬롭 「Villa … get very narrow … leave a striker out wide with a player like Ndiaye」(빌라가 아주 좁아져 은디아예 같은 선수를 측면에 남겼다 · auto-caption) — 은디아예 앞 만잠비 1대1. `match_set_pieces` 30행(우리 14).
+- 빌라 세트 xG 0.13(코너 4).
+
+## 3. 전술적 특성
+
+- **강점**: ⑴ 첫 6분 높은 출발로 맨시티 빌드업 실책 유도(게히 · 마레스카도 인정) ⑵ 중·저블록에서 박스 수비 — 맨시티 박스 터치 53에 슈팅 xG 1.79 · 스즈키 선방 6(박스 안 5) · 마트센 골라인 클리어 ⑶ 교체 직후 속도(음바예)로 전환 한 방 ⑷ 캐시 도쿠 봉쇄(태클 8).
+- **약점**: ⑴ 자기 창출 부족 — xG 0.61 · 빅찬스 1 · 크로스 0/5 · 박스 터치 12. 결과가 내용(xG 차 −1.18)을 크게 앞섰다 ⑵ 세트피스 측면 1대1(52′ 실점) ⑶ 롱볼 성공 19/53(36%) — 잭슨 공중 2/2 외에는 회수 근거 약함 ⑷ 60–66′ def_x 20.4까지 내려앉음.
+- **상대 교란**: 맨시티는 1H 게히를 사실상 RB 위치에 두고(ESPN 「your center back playing almost as a right back」(센터백이 거의 라이트백처럼)) 쿠사노프를 높였다가, 하프타임 리코 루이스 투입으로 수비 시 3백(ESPN 「At times it was a three when they were defending」(수비할 때 가끔 3백))·그바르디올 전진. 2H 맨시티 PPDA **5.38**(빌라 자기 진영 패스 성공률 75′~ 63%).
+- **기존 프로필·직전 경기 대비**: 강팀 원정/홈 저점유 경기의 에메리 계열(리드 후 블록 하강 — 뉴캐슬전 77′+·바이킹전 2H와 같은 방향)이다. 바이킹전의 고메스 RB→하프스페이스 3선은 **명단 복귀(캐시·마트센)와 함께 사라졌다** — 구조 선택이 아니라 가용 인원 강제였다는 obs#1129 판단을 실측이 지지한다.
+
+## 4. 경기 중 변화
+
+1. **0–6′ (0-0)**: 빌라 def_x 55.6 · PPDA 6.5 — 높은 압박. 6′ 게히 실책 → 맥긴 → 잭슨 1-0.
+2. **6–52′ (리드)**: 중·저블록(def_x 31.8~41.8) · 맨시티 점유 59%. 13′·21′·24′ 은디아예·셰르키·쿠사노프 슈팅 선방(日刊スポーツ). 39′ 알리송 슈팅 디아스 블록. 1H xG 0.38–0.54.
+3. **46′ 맨시티 2명 교체**: 포든·리코 루이스 — 측면(도쿠)으로 공 보내기(UTV) · 수비 3백 변형. 52′ FK → 홀란 1-1.
+4. **59–60′ 음바예 투입 → 결승골**: 알리송 자리(오른쪽)에 음바예 — 1분 뒤 오른쪽 침투 컷백 → 잭슨 2-1.
+5. **60–66′**: def_x **20.4** — 가장 낮게 내려앉음 · 맨시티 PPDA 5.5.
+6. **66′ 바클리←맥긴 · 부엔디아←만잠비 / 82′ 고레츠카←고메스 · 마조←잭슨**: 부엔디아 왼쪽 (49, 75) · 바클리 오른쪽 중원 (49, 29) · 마조 최전방 (79, 60). 75′~ 빌라 GK 롱 비중 70% · PPDA 7.0. 2H 빌라 슈팅 2 · xG 0.22.
+
+## 5. 선수별 분석 — 출전 선수 전원
+
+평균 위치는 WS 볼 소유 이벤트 (x, y) · y 낮음=오른쪽 · 커널은 FC27 · 「1위(Δ)」는 해당 칸 1·2위 격차.
+
+| 선수 | 위치·실제 역할 | 분/평점·핵심 스탯 | 평균 위치·히트맵 | 특성·수행 | FC 역할/포커스 함의 |
+|---|---|---|---|---|---|
+| 스즈키 | GK | 90 · SS **9.0** · FM 8.56 · 선방 6(박스 안 5) · 막은 실점 +1.74 · 패스 36/49 · 롱 19(성공 6) | (8.6, 51.3) | 경기 승부처 — 1H 유효 3 전부 선방 · 2H 56′·68′ 그바르디올 | gk_goalkeeper/Defend .939(Δ.034 무결정 · Balanced .905) |
+| 캐시 | RB · 도쿠 전담 | 90 · SS 6.8 · FM 7.18 · **태클 8** · 드리블 허용 5 · 패스 19/22 | (40.1, 17.3) · 오른쪽 90% · 수비 (31, 15) | 바깥쪽 봉쇄 · 55′ 경고 · 막판 주장 완장 | fb_fullback/Balanced .929(Δ.023 무결정 · Versatile .906) |
+| 린델뢰프 | RCB | 90 · SS 6.8 · 패스 35/41 · 클리어 4 · 공중 1-1 | (25.3, 26.4) | 52′ 홀란 공중 경합 패 · UTV 「crucial tackles」 | cb_bpd/Aggressive .921(Δ.005 무결정 · Build-Up .916) |
+| 파우 토레스 | LCB | 90 · SS 6.5 · 패스 49/58 · 운반 23회 178m(SS · 전진 0) · 공중 0-2 | (23.9, 66.1) | 후방 순환 축(스즈키 연결 20) · BBC 「Calming presence」(안정감) | cb_bpd/Build-Up .975(Δ.058) |
+| 마트센 | LB · 높은 폭 | 90 · SS 6.7 · FM 6.97 · 상대 진영 볼 소유 11 · 운반 전진 2(82m) · 태클 4 · 슈팅 1(블록) · 골라인 클리어 | (45.2, 88.2) · 왼쪽 93% | 왼쪽 쏠림의 출발점(→고메스 10·→토레스 10) · 평점 4~7로 갈림 | fb_wingback/Balanced .869(Δ.069) |
+| 카마라 | RDM · 수비 중심 | 90 · SS 6.9 · FM 7.39 · 패스 27/30 · **태클 6**·수비 액션 27(팀 1위) · 클리어 4 · 52′ FK 내준 반칙 | (37.7, 38.3) · 수비 (33, 34) | BBC 「At the heart of everything good」(좋은 장면마다 중심) · 에메리 「today was match for them — like Kamara and Cash」(오늘은 카마라·캐시 같은 선수들의 경기였다) | dm_holding/Defend .779(Δ.013 무결정 · dm_centrehalf/Defend .765) · 보유 1위 dm_dlp/Defend .863 |
+| 주앙 고메스 | **LDM**(RB 아님) | 82 · SS 6.7 · FM 7.05 · 패스 **27/28** · 가로채기 3 | (44.0, 67.9) · 왼쪽 58% | 볼 순환·왼쪽 연결 | dm_dlp/Build-Up .811(Δ.018 무결정 · dm_holding/Defend .792) |
+| 맥긴 | CAM → 비보유 중원 셋째 | 66 · SS 7.3 · FM 7.98 · **도움 1** · 키패스 4 · 패스 8/15(WS) | (61.4, 47.2) · 수비 (34, 38) | 압박·탈취(6′) · 기회 창출 최다 | cam_playmaker/Build-Up .540(Δ.069) · 보유 1위 cam_halfwinger/Roaming .687 |
+| 만잠비 | LM · 왼쪽 안쪽 | 66 · SS 6.8 · FM 6.77 · 태클 3 · 듀얼 6-3 · 54′ 경고 | (58.4, 66.9) · 왼쪽 71% · 수비 (31, 65) | 38′ 셰르키 탈취(경고 유도) · 52′ FK 측면 1대1(은디아예) | wm_widemid/Defend .538(Δ.007 무결정 · wm_wideplm/Build-Up .531) · 보유 1위 wm_insidefwd/Balanced .741 |
+| 알리송 | RM · 오른쪽 윙어 | 59 · SS 6.4 · FM 6.66 · 슈팅 3(xG .10) · 스프린트 13 | (63.0, 22.2) · 오른쪽 75% | 39′ 박스 드리블→디아스 블록 · 수비 복귀 14 | wm_insidefwd/Attack .455(Δ.002 무결정 · wm_wideplm/Attack .454) |
+| 잭슨 | ST → 왼쪽 채널 | 82 · SS **9.5** · FM 8.85 · **2골**(xG .36) · 드리블 2/2 · 공중 2/2 · 스프린트 15 | (60.8, 62.8) · 왼쪽 48% · 깊은 수신 7 | 결정력(xG .36 → 2골) · 에메리 「How he was defending, wow」(수비하는 모습이 와) | st_advanced/Support .375(Δ.035 무결정 · st_false9/Attack .340) — 전 ST 역할 .44 이하 |
+| 음바예 (59′) | RM(알리송 자리 · **오른쪽**) | 31 · SS 6.6 · **도움 1**(60′) · 키패스 1 | (66.1, 26.4) | 투입 1분 뒤 결승골 공급 | 표본 미달 |
+| 바클리 (66′) | 중원 오른쪽(맥긴 자리) | 24 · SS 6.6 · 패스 2/4 | (49.5, 28.7) | 리드 지키기 · 공중 1 | 표본 미달 |
+| 부엔디아 (66′) | LM(만잠비 자리) | 24 · SS 6.5 · FM 5.88 · 태클 3 · 90+5′ 경고 | (48.9, 75.4) · 수비 (35, 92) | 왼쪽 수비 커버 · The National 「full of energy」(에너지가 넘쳤다) | 표본 미달 |
+| 고레츠카 (82′) | LDM(고메스 자리) | 8 · SS 6.5 · 패스 2/3 | (43.9, 44.7) | — | 표본 미달 |
+| 마조 (82′) | ST(잭슨 자리) · PL 데뷔 | 8 · SS 6.7 · 듀얼 4-4 · 83′ 경고 | (79.0, 59.8) | 높은 위치 기준점 | 표본 미달 |
+
+## 6. 전술 변화 판정
+
+- **유지**: 리드 후 블록 하강(뉴캐슬전·바이킹전과 같은 방향) · 잭슨의 박스 밖 이동(왼쪽 채널) · 세트피스 측면 수비 취약(쟁점 #29).
+- **변화**: ⑴ 3백 빌드업·오른쪽 과부하 → **4백 + 왼쪽 쏠림**(가용 인원 복귀 + 37% 점유) ⑵ 고메스 RB → LDM ⑶ 맥긴 RDM/우측 → CAM(비보유 중원) ⑷ 음바예 왼쪽 → **오른쪽 교체 투입** ⑸ 롱볼 비중 6.8% → 20%.
+- **직전 경기 대비**: 바이킹전(점유 54% · 3-2-5)과 이 경기(37% · 4-4-1-1 블록)는 경기 성격이 달라 「유지/변화」를 구조 선택으로 읽지 않는다 — 가용 인원(캐시·마트센·만잠비 복귀)과 상대 수준이 갈랐다(70-lessons 「선발은 가용성 질문」).
+- **반영**: observations 4행(#1132~#1135 · 구조 변화·고메스 위치·결과-내용 괴리·가르나초) · `manager_profiles` situational 덧붙임(강팀 상대 저점유 블록 실측) · 이월 대조표 6행(`match_hypotheses`).
+
+## 7. 게임 구현 판정
+
+- 결론: **추가 관찰** — 단일 경기 · 여러 칸 Δ≤.05 · 결과가 내용(xG 0.61–1.79)과 어긋난 경기. 시즌 정본(slot_canon_roles · prescriptions · team_tactic_setups)은 바꾸지 않는다.
+- **이 경기 전용 팀 설정**: FC27 · **4-2-3-1 Wide** · 빌드업 **Counter** · 수비 접근 **Balanced** · 라인 **48**. `core.team_settings.suggest(37, 314, 53, 8.55)` → Counter/Balanced/55~62(롱볼 16.9%) · 기록 Counter/Balanced/48 → **DIVERGE(라인)**: def_x 34.9(바이킹전 35.2와 같은 대역)·6–30′ 31.8~32.2·60–66′ 20.4로 실제 블록이 규칙 구간보다 낮다. PPDA 8.55는 0–6′ 높은 출발과 중원 태클(31)이 만든 값이라 라인 높이 근거로 약하다. ⚠️ FC27 라인 구간 자체가 미실측(HANDOFF P1 「라인 슬라이더 상하한」) — 48은 상대값.
+- **보유/비보유 형태**: 보유 4-2-3-1(양 풀백 폭 · 왼쪽 쏠림) · 비보유 4-4-1-1(맥긴 하강).
+- **이 경기 선발 11명(커널 단일 경기 fit)**:
+
+| 슬롯 | 선수 | 역할/포커스 | fit | Δ(2위) | 선택 이유 |
+|---|---|---|---|---|---|
+| GK | 스즈키 | gk_goalkeeper/Defend | .939 | .034 무결정 (Balanced) | 커널 1위 |
+| RB | 캐시 | fb_fullback/Balanced | .929 | .023 무결정 (Versatile) | 커널 1위 · 도쿠 전담 잔류형 |
+| RCB | 린델뢰프 | cb_bpd/Aggressive | .921 | .005 무결정 (Build-Up) | 커널 1위 · 쟁점 #23 표본 |
+| LCB | 파우 토레스 | cb_bpd/Build-Up | .975 | .058 (Defend) | 커널 1위 |
+| LB | 마트센 | fb_wingback/Balanced | .869 | .069 (fb_fullback/Balanced) | 커널 1위 · 상대 진영 볼 소유 11 |
+| RDM | 카마라 | dm_holding/Defend | .779 | .013 무결정 (dm_centrehalf/Defend) | 커널 1위 · 쟁점 #19·#51 표본(holding 쪽) |
+| LDM | 주앙 고메스 | dm_dlp/Build-Up | .811 | .018 무결정 (dm_holding/Defend) | 커널 1위 + 패스 27/28 |
+| CAM | 맥긴 | cam_playmaker/Build-Up | .540 | .069 (cam_halfwinger/Roaming) | 커널 1위 · ⚠️ 비보유 하강은 칸이 재현 못 함 |
+| LM | 만잠비 | wm_widemid/Defend | .538 | .007 무결정 (wm_wideplm/Build-Up) | 커널 1위(수비 국면 우세) · 보유는 wm_insidefwd/Balanced .741 |
+| RM | 알리송 | wm_insidefwd/Attack | .455 | .002 무결정 (wm_wideplm/Attack) | 실측 무결정 — 바이킹전 wm_winger/Attack .809와 갈림 · 쟁점 #14 |
+| ST | 잭슨 | st_advanced/Support | .375 | .035 무결정 (st_false9/Attack) | 커널 1위 = 시즌 정본과 같음 · 전 역할 .44 이하 · 쟁점 #4 |
+
+- **근거 등급(불변규칙 12)**: 역할 히트맵 = fut.gg 게임 역할 히트맵(B · FC27 역할표 FC26 전항 일치 승계 · 2026-10-22). 「Counter 빌드업은 롱볼·전환 우선」은 game_system_changes 기준 B(FC26 설명 승계 · FC27 변경 미확인). 「FC CAM은 비보유에 내려오지 않는다」는 **D(통설)** — 실측 미검증.
+- **시즌 정본 대조**(slot_canon_roles FC27 · 4-2-3-1 Wide): ST 정본 `st_advanced/Support` — 이 경기 1위와 같다(.375 · 낮음). RDM 정본 `dm_holding/Defend` — 카마라 1위와 같다. LM 정본 `wm_insidefwd/Balanced` — 만잠비 **보유** 그리드 1위와 같다(.741 · 전체 그리드는 widemid/Defend). RB 정본 `fb_wingback/Balanced`(캐시) — 이 경기 1위 fb_fullback/Balanced(Δ.023 무결정).
+- `prescriptions`·`slot_canon_roles`·`team_tactic_setups` 변경: **없음** · FC27 슬롯 정본 판단 5건(사용자 보류 · HANDOFF P1)은 「다음 AVL 공식전 2경기」 중 **1경기째** 표본이다 — 다음 경기(본머스 컵 또는 풀럼) 뒤 같은 표로 재제출.
+- **판정 쟁점 `--due`(회차 마무리)**: AVL 「판정할 차례」 3건 — #7 음바예 윙어 vs IF · #14 알리송 수비 복귀형 vs 윙어 · #30 설정 축 없는 성향. 기한 초과 0(G39 통과)이라 이 회차에선 닫지 않았다. #14 근거(단일 경기 커널 RM · FC27): 뉴캐슬 wm_winger .857 vs wm_widemid .806(Δ.051) · 바이킹 .809 vs .410 · 맨시티 .447 vs .435(Δ.012 무결정) — 3경기 모두 winger 우위이나 결정적 격차는 1경기. 묶인 주장이 양쪽을 섞고 있어 사람 판정으로 넘긴다.
+- **다음 경기 재검증**: ⑴ 알리송 RM 역할(쟁점 #14 · 이 경기 insidefwd 무결정 vs 바이킹전 winger) ⑵ 카마라 RDM holding vs dlp(#19·#51) ⑶ 마트센 LB 높이(fb_wingback 유지 여부) ⑷ 음바예 오른쪽 기용 반복 여부(#6·#48) ⑸ 가르나초 명단 복귀.
+
+⚠️ 이 설정은 `match_game_setups`·`match_player_prescriptions`의 `MATCH ONLY` 프리셋이다. 전체 시즌 전술이나 대표 선수 역할에 자동 병합하지 않는다.
+
+## 8. 영상·기사·감독 발언
+
+- **영상**(AVL 필수 채널 4곳 + 검색 · 자막 포착은 전부 뮤트):
+  - 전사·요약 4편(auto-caption · `match_videos` #380~#383 · 구현 주장 6행): **AVFC 공식** 「"Everything today was positive!" Unai Emery FULL post-match interview」(xN_Cosi8gC4 · 10-24) · **UTV** 「I'D RATHER BE A VILLAN THAN A CHEAT | ASTON VILLA 2-1 MANCHESTER CITY」(qcGR9TddiPo · 10-24) · **ESPN FC** 「Man City LOSE vs. Aston Villa! …」(NDhq-OUuzDo · 10-24 · 중립) · **BeanymanSports** 마레스카 경기 후 회견(tWsbxCU1SjE · 10-24 · 상대 감독).
+  - **1874** 「Nicolas Jackson at the double as Villa beat Man City AGAIN」(1Xv_Y_4iecc) — 수집 시점 **라이브 진행 중**(자막 미생성) → 13:00 회차 재시도.
+  - **The Villans · Jacob Horsfall** — 이 경기 영상 **0건**(최신은 경기 전 프리뷰 「Why Manchester City Face Biggest Challenge Yet At Villa Park」(9l_njxOTvEk) · Horsfall 「What Has Happened To Sunderland?」).
+  - 미전사(검색 확보 · D+1~D+3 대상): More Lyes 「Emery Has Done It Again..」(v5XShfKHy-g) · tacticafoot 「Emery & Maresca React」(A07aC4fuVDc) · The Football Flex(aFXSkC3cwwY) · URKG(RpK7bMvg8_U) · Premier League Dad 라이브(s7go7bWC1no).
+- **기사**: NBC(Nicholas Mendola · 양 감독 발언) · PA/Irish News(Sunny Badwal) · GOAL(Khaled Mahmoud · Adhe Makayasa) · Football365(Sam Cooper) · City Xtra(Nathan Allen) · SI · Sports Mole(Darren Plant) · TNT 라이브 · 평점(BBC/Yahoo · The National · AVN · EPL Index · dave.sport(AI 보조) · SportsDunia) · 다국어 아래.
+- **감독 1차 발언**:
+  - 에메리: 「We planned this match, trying to keep the same consistencies and demands.」(같은 일관성과 요구를 유지하도록 이 경기를 계획했다 · NBC) · 「today was match for them — like Kamara and Cash.」(오늘은 카마라·캐시 같은 선수들의 경기였다 — 바이킹전 휴식 선수 기용 · NBC) · 잭슨 「How he was working. How he was defending, wow.」(얼마나 일하고 수비했는지, 와 · NBC) · 공식 인터뷰 「we kept calm after their goal and … continue in our game plan」(실점 뒤 침착하게 게임 플랜을 이어갔다 · xN_Cosi8gC4 auto-caption). 알리송·고메스·맥긴·가르나초·밍스 개별 언급 **0건**.
+  - 마레스카: 「We struggled the first probably 10-15 minutes and we expected them in one way and they were in a different way」(처음 10~15분 고전 — 다르게 나왔다 · NBC) · 「the second goal again came from transition」(두 번째 골은 또 전환에서 · 회견 전사 auto-caption) · 게히 교체 「It's just a technical decision … also because he had a yellow card」(기술적 결정이자 경고 때문 · PA).
+- **다국어(불변규칙 10)**:
+  - 스페인어(필수): EFE(Infobae) 「Emery acaba con el imparable City」(에메리가 멈추지 않던 시티를 끝냈다) — 에메리 직접 인용 없음 · Fútbol Centroamérica 「Hoy fue una prueba muy buena, estábamos muy motivados」(오늘은 아주 좋은 시험이었고 우리는 동기부여가 높았다) — **영어 발언의 번역(동일 원문)으로 판단**, 교차검증 아님 · La Nación(부엔디아 경고·마트센 클리어). Marca·AS·Relevo·MD·Cadena SER **차단** → **에메리 스페인어 원어 발언 미확보**.
+  - 포르투갈어: hoop78(고메스 볼란치·알리송 윙어) · A Bola 라이브(만잠비 속도·셰르키 경고·알리송 39′·카마라 52′ 반칙) · Terra.
+  - 프랑스어: wiwsport(음바예 첫 터치 도움) · Le Soleil · Foot Mercato(평점). 독일어/스위스: Blick(만잠비) · watson.ch(종아리 문제). 일본어: サッカーキング · 日刊スポーツ(스즈키 선방 시각) · FOOTBALL ZONE. 이탈리아어(마레스카): DerbyDerbyDerby 「si sono difesi con ordine e sono ripartiti con pericolosità」(질서 있게 수비하고 위협적으로 역습했다) · Tuttosport · Fanpage(403 — 검색요약 「Non credo che meritassimo di perdere」(질 만했다고 생각하지 않는다) 미검증).
+- **미수행·미확인과 사유**:
+  - **Jacob Tanswell X(@J_Tanswell)**: HTTP 402 · nitter 서비스 종료(10-10) · 검색은 9월 트윗만 → **미수행(접근 차단)** · 13:00 회차 재시도.
+  - Birmingham Mail · Express & Star(403) · Shropshire Star(403) · Guardian · Sky · The Athletic · MEN · avillafan(AVR)·4th Official·MOMS: 검색 미노출 또는 차단 — D+1 13:00 회차.
+  - 스코틀랜드(Daily Record·Herald·Scottish Sun·BBC Scotland) 차단 · 브라질 대형 매체(ge.globo·UOL·Lance!·GZH) 0건.
+  - 전술 블로그(TFA·BTL·Spielverlagerung·Coaches' Voice): D+0 게시 전 — D+2·D+3 추적 대상.
+
+## 9. 데이터 반영과 한계
+
+- **DB 추가**: matches #127 · player_matches 16(국면 그리드 16 · phase 분 · pos_class · SS 확장(운반 실측) · FotMob 경기 스탯 +470키 · WS 운반 추정·수신) · team_match_stats 1(xG 4종 FotMob 동일 스냅샷 · PPDA·def_x) · match_events 19 · match_period_stats 2 · match_shots 23 · match_momentum 92점 · match_set_pieces 30 · match_reports #63 · match_player_reports 16 · match_game_setups 1 · match_player_prescriptions 16 · match_hypotheses 6(이월 C1~C6) · match_phase_metrics 74 · match_tactical_changes 6 · observations 4 · match_videos 4편 요약·구현 주장 6행 · manager_profiles situational 덧붙임.
+- **한계**: ⑴ 결과-내용 괴리(xG 0.61–1.79 · 두 골 모두 상대 실책) — 「강팀 공략 성공」으로 일반화 금지 ⑵ 37% 점유라 보유 구조 표본이 짧다(WS 볼 소유 393) ⑶ SS missingPlayers가 만잠비를 「Physical Discomfort」로 남긴 채 출전 — 경기 전 표기 잔존 ⑷ 맥긴 패스 WS 8/15 vs FM 8/12(제공사 차이) ⑸ 영상은 D+0.5 시점이라 전술 분석 채널(The Villans·Horsfall·1874 사후판) 미게재 ⑹ 일부 평점 출처(dave.sport · OneFootball)는 AI 보조 작성 표기.
+- `match_reports.status` = **draft**(D+1 13:00 보강 · D+2 · D+3 추적 남음). G12·G37 결과는 ship 로그.
+
+## D+1 추적 (예약 `mw-avl-mancity-collect-1300` · 2026-10-25 13:00)
+
+- 남은 것: 1874 사후판 전사 · Tanswell X 재시도 · Birmingham Mail(Townley·Preece)·Express & Star 원문 · avfc.co.uk 회견 전문 · The Athletic · 에메리 스페인어 원어 · 미전사 영상 5편.
+
+## D+2 추적 (예약 `mw-avl-mancity-d2` · 2026-10-26 20:00)
+
+- 전술 블로그·The Villans·Horsfall 분석 영상 · 이월 대조표 재판정.
+
+## D+3 추적 (예약 `mw-avl-mancity-d3` · 2026-10-27 20:00)
+
+- 다음 경기(본머스 컵 · 10-28 수) 명단으로 가르나초·밍스 재확인 · complete 판정.

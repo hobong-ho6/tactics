@@ -2006,3 +2006,10 @@ INSERT INTO fotmob_season_stats VALUES(2013,57,'2026-10-22','Bundesliga Champion
 INSERT INTO fotmob_season_stats VALUES(2014,57,'2026-10-22','Bundesliga Championship Group','2025/2026','Rating','평점','7.255384615384615','fotmob.com/api/data (player 1714552, scripts/collect_fotmob_players.py, 2026-10-22 수집)');
 INSERT INTO fotmob_season_stats VALUES(2015,57,'2026-10-22','Bundesliga Championship Group','2025/2026','Yellow cards','경고','5','fotmob.com/api/data (player 1714552, scripts/collect_fotmob_players.py, 2026-10-22 수집)');
 INSERT INTO fotmob_season_stats VALUES(2016,57,'2026-10-22','Bundesliga Championship Group','2025/2026','Red cards','퇴장','0','fotmob.com/api/data (player 1714552, scripts/collect_fotmob_players.py, 2026-10-22 수집)');
+INSERT INTO fotmob_season_stats VALUES(2017,61,'2026-10-25','Premier League','2026/2027','Goals','골','0','fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-10-25 수집)');
+INSERT INTO fotmob_season_stats VALUES(2018,61,'2026-10-25','Premier League','2026/2027','Assists','어시스트','0','fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-10-25 수집)');
+INSERT INTO fotmob_season_stats VALUES(2019,61,'2026-10-25','Premier League','2026/2027','Started','선발','0','fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-10-25 수집)');
+INSERT INTO fotmob_season_stats VALUES(2020,61,'2026-10-25','Premier League','2026/2027','Matches','경기','1','fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-10-25 수집)');
+INSERT INTO fotmob_season_stats VALUES(2021,61,'2026-10-25','Premier League','2026/2027','Minutes played','출전 시간','8','fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-10-25 수집)');
+INSERT INTO fotmob_season_stats VALUES(2022,61,'2026-10-25','Premier League','2026/2027','Yellow cards','경고','1','fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-10-25 수집)');
+INSERT INTO fotmob_season_stats VALUES(2023,61,'2026-10-25','Premier League','2026/2027','Red cards','퇴장','0','fotmob.com/api/data (player 1729841, scripts/collect_fotmob_players.py, 2026-10-25 수집)');

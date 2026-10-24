@@ -36020,11 +36020,6 @@
   ],
   "음바예": [
    [
-    "2026-08-08",
-    7.5,
-    "Club Friendly Games"
-   ],
-   [
     "2026-09-12",
     6.7,
     "Premier League"
@@ -36068,6 +36063,11 @@
     "2026-10-21",
     7.2,
     "UEFA Champions League"
+   ],
+   [
+    "2026-10-24",
+    6.6,
+    "Premier League"
    ]
   ],
   "응구모하": [
@@ -69157,16 +69157,16 @@
   },
   {
    "avg_rating": 6.93,
-   "dw_pg": 1.74,
-   "ic_pg": 0.2,
-   "kp_pg": 0.64,
+   "dw_pg": 1.71,
+   "ic_pg": 0.19,
+   "kp_pg": 0.65,
    "label": "음바예",
-   "minutes": 2162,
-   "n": 76,
+   "minutes": 2193,
+   "n": 77,
    "player_id": 86,
    "pos_group": "WM",
    "tk_pg": 0.43,
-   "xa_pg": 0.087,
+   "xa_pg": 0.086,
    "xg_pg": 0.2
   },
   {
@@ -72924,12 +72924,12 @@
   ],
   "음바예": [
    {
-    "assists": 0,
-    "avg_rating": 6.83,
+    "assists": 1,
+    "avg_rating": 6.78,
     "competition": "Premier League",
     "goals": 0,
-    "minutes": 86,
-    "n": 4,
+    "minutes": 117,
+    "n": 5,
     "season": "2026-27",
     "starts": 0
    },
