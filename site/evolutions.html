@@ -1765,6 +1765,7 @@ const TREQ = {
   'Long Shots': (v, s) => attrMax('long_shots', v, s),
   'Standing Tackle': (v, s) => attrMax('standing_tackle', v, s),
   'Strength': (v, s) => attrMax('strength', v, s),
+  'Agility': (v, s) => attrMax('agility', v, s),
 };
 function attrMax(key, v, s){
   const m = /Max\.\s*(\d+)/.exec(v), x = s.at?.[key];

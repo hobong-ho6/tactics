@@ -38,6 +38,7 @@
 - **장면**: A Bola 39′ 「Alysson entra na área, dribla para um lado e para o outro e tira o central da frente」(알리송이 박스에 들어가 좌우로 드리블해 센터백을 제쳤다) → 디아스 블록(BBC 서술 · WS 39′ 블록 슈팅). SI 「desperate to dribble at every opportunity」(기회마다 드리블하려 안달했다).
 - **모국어(포르투갈어)**: hoop78 「O ponta Alysson, revelado pelo Grêmio, saiu aos 14 do segundo tempo」(그레미우 출신 윙어 알리송은 후반 14분에 나갔다) — 위치는 「ponta」(윙어). ge.globo·GZH·UOL·Lance! 0건(차단·미게재).
 - **FC 함의**: 커널 RM 1위 wm_insidefwd/Attack **.455**(Δ.002 무결정 · 2위 wm_wideplm/Attack .454) — 바이킹전 wm_winger/Attack .809와 크게 다르다. 수비 국면 비중이 컸던 경기라 히트맵이 안쪽·아래로 번졌다. 쟁점 #14(알리송 수비 복귀형 vs 윙어 · 「판정할 차례」)의 표본 1경기 — 이 경기 단독으로 닫지 않는다(§7).
+- **D+1 보강(10-25 13:00)**: Express & Star(George Bennett · 403 → 검색요약 2회 일치) **7** 「He showcased his attacking qualities in glimpses and never neglected his defensive duties, cutting out a number of attacks.」(공격 자질을 간간이 보여줬고 수비 임무를 결코 소홀히 하지 않아 여러 공격을 끊었다) — 수비 액션 14 실측과 같은 방향 · The Independent(Jolly) 「looking reminiscent of Morgan Rogers」(모건 로저스를 떠올리게 했다) · 1874 사후 라이브 「with Allison obviously high and wide on the right」(알리송은 오른쪽에 높고 넓게 · auto-caption) — 볼 소유 (63, 22)와 일치. 에메리 발언 여전히 **0건**. 포르투갈어 0건(시도: 「Alysson Aston Villa Manchester City ex-Grêmio atuação」 · 「Alysson nota … ge globo OR GZH OR Lance」 · 「Alysson Edward … vitória titular Grêmio Info」). 쟁점 #14 표본에 「수비 임무」 서술 1건 + 「높고 넓게」 1건 — 양쪽 서술이 공존(닫지 않음).
 
 ### 주앙 고메스 (#35 · 브라질)
 - **실측**: 선발 **LDM** 82′ · SS 6.7 · FM 7.05 · 패스 27/28 · 볼 소유 31 (44, 68) 왼쪽 58% · 수비 액션 13 (36, 65) · 가로채기 3 · 운반(SS) 8회 69m(전진 0) · 수신 22(x̄ 45.5). 60′~ 볼 소유 (38, 74)로 더 왼쪽·아래.
@@ -45,6 +46,7 @@
 - **평점**: BBC 6 · The National 7 · AVN 7 · EPL Index 6 · SportsDunia 7 · dave.sport 6.5(82분 패스 96%).
 - **모국어**: hoop78 「O volante João Gomes jogou até os 37 minutos do segundo tempo」(볼란치 주앙 고메스는 후반 37분까지 뛰었다). 브라질 대형 매체 평점 0건.
 - **FC 함의**: LDM 1위 dm_dlp/Build-Up **.811**(Δ.018 무결정 · 2위 dm_holding/Defend .792) · 보유 그리드 1위 dm_dlp/Defend .855. 쟁점 #20(더블 피벗 분업: 고메스 궂은일 vs 카마라 전진)은 이 경기에서 **반대 방향** — 카마라 수비 액션 27(팀 1위) · 고메스 13.
+- **D+1 보강(10-25 13:00)**: ⭐ **본인 발언(포르투갈어)** somosfanaticos BR(Sidney Araujo · 10-24) 「Uma vitória muito especial. Sabíamos do desafio que seria enfrentar o líder do campeonato.」(아주 특별한 승리다. 리그 선두를 상대하는 게 어떤 도전인지 알고 있었다) — 발언 매체 미표기 · 기사는 「volante」(볼란치)로 서술 · 전술 내용 없음. Express & Star **7** 「showed good coordination with Kamara, as the pair complimented each other well」(카마라와 호흡이 좋아 서로를 잘 보완했다 · 검색요약) · 1874 「Kamara and Gomez jumped on those two」(카마라·고메스가 상대 두 미드필더에게 달려들었다 · auto-caption) — LDM 실측과 일치. 에메리 발언 0건.
 
 ### 맥긴 (#7 · 주장 · 스코틀랜드)
 - **실측**: 선발 **CAM** 66′ · SS 7.3 · FM 7.98 · **선제골 도움**(6′ — 게히 실책 직후 컷백) · 기회 창출 4(FM) · 키패스 4(SS) · 볼 소유 18 (61, 47) · 패스 8/15(WS · FM 8/12) · 수비 액션 13 **(34, 38)** · 운반 전진 2(47m).
@@ -52,12 +54,14 @@
 - **평점**: BBC 7(「경기장 전체 최다 기회 창출」) · The National 7 「constant harrying of opponents」(상대를 끊임없이 괴롭혔다)·카마라와 「dovetailing」(잘 맞물렸다) · AVN 7 · EPL Index 7 · SportsDunia 8 · dave.sport 7.5.
 - **스코틀랜드 매체**: Daily Record·Herald·Scottish Sun·BBC Scotland **차단**, Scotsman 0건 — 미확보(사유: 검색 도구 차단).
 - **FC 함의**: CAM 1위 cam_playmaker/Build-Up .540(Δ.069) · 보유 그리드 1위 cam_halfwinger/Roaming .687. 비보유 위치가 카마라 옆이라 **FC 4-2-3-1 CAM 칸 그대로는 수비 형태를 재현하지 못한다**(FC CAM은 비보유에 내려오지 않는다 — D등급 통설 · 미검증).
+- **D+1 보강(10-25 13:00)**: ⭐ **위치 서사 2건이 실측과 일치**(obs#1138) — Express & Star talking points 「Emery deployed him [Manzambi] on the left, rather than as the No 10. Instead, Villa skipper McGinn took up a central role」(만잠비를 10번이 아니라 왼쪽에, 대신 맥긴이 중앙 역할 · 403 → 검색요약) · 상대 관점 Esteemed Kompany 「McGinn would start up front then drift into midfield」(앞에서 시작해 미드필드로 흘러 내려왔다) · 「Ruben Dias was getting drawn out of position … leaving a big hole for Nicolas Jackson」(디아스가 끌려나와 잭슨에게 큰 구멍이 생겼다) — 보유 (61, 47)↔비보유 (34, 38) 이동을 행동으로 서술한 유일 대목. 1874는 보유 시 「가짜 공격수」로 봤고 66′ 교체엔 아쉬움(auto-caption). Express & Star 평점 8은 요약 간 불일치(원문 403). 경기 전 Sports Mole 「McGinn remaining on the right」(맥긴 오른쪽 유지)는 명단 해석 — 실측과 불일치 → 기각. 스코틀랜드 매체 이 경기 0건(시도: 「McGinn … Scotland captain Daily Record」 · 「Scotsman OR Daily Record McGinn Villa City assist Guehi」 · 「heraldscotland OR scottishsun McGinn …」).
 
 ### 가르나초 (#17 · 아르헨티나 · 첼시 임대)
 - **출전 없음 — 소집 명단 제외**(PL 2경기 연속 · UCL 바이킹전은 72′ 교체 출전). SS missingPlayers에도 없음 = 부상 표기 아님.
 - **사유**: 구단·에메리 공식 0건. 영어 OneFootball(필진 「OffsAIde」 · AI 보조 작성 명시)·Football Insider 경유 「구매 의무 조항 발동을 피하려 출전을 제한」 — **LOW**(익명 소스 · obs#1129와 같은 루머). 에메리 최근 직접 발언은 9월 「Garnacho is a little bit behind, because of some circumstances we had in pre-season」(가르나초는 프리시즌의 사정 때문에 조금 뒤처져 있다 · 검색요약 경유).
 - **스페인어(아르헨티나)**: La Nación 경기 기사에 가르나초 언급 0 · Olé·TyC·Clarín 차단.
 - **함의**: 쟁점 #9(가르나초 LM 기용 시 좌측 구조)·#47 표본 0 유지.
+- **D+1 보강 — 당일 판정 정정(obs#1136 · C4 D1 정정 행)**: 사유 「공식 0」 → **에메리 직접 발언 확보** — Hayters(Dan Bennett · 10-24 17:42) 「He's progressing. He played fantastic 20 minutes on Wednesday in Champions League, but today as well we have players as well now ready, available.」(그는 나아지고 있다. 수요일 CL에서 환상적인 20분을 뛰었지만 오늘은 이제 준비된·출전 가능한 선수들이 있다) · 「of course will have as well minutes」(물론 출전 시간도 받을 것이다) · 요약 경유. Football365 「BirminghamLive 인용」은 같은 회견 같은 문장(교차검증 아님). ⇒ 사유 = 복귀 선수(마트센·만잠비·카마라·캐시)로 인한 명단 경쟁. 「구매 의무 조항 회피」 루머(GOAL 「freeze out」·SportBible·TeamTalk — 전부 Football Insider 재가공)는 LOW 유지. 스페인어(아르헨티나) 이 경기 0건 — Olé 「Está progresando」(나아지고 있다)는 10-09경 A매치 휴식기 회견(이 경기 아님 · 영어 번역 가능성).
 
 ## 1. 경기 개요와 원천 수치
 
@@ -220,3 +224,52 @@
 ## D+3 추적 (예약 `mw-avl-mancity-d3` · 2026-10-27 20:00)
 
 - 다음 경기(본머스 컵 · 10-28 수) 명단으로 가르나초·밍스 재확인 · complete 판정.
+
+## D+1 보강 (2026-10-25 13:00)
+
+> 예약 `mw-avl-mancity-collect-1300` · 이 PC · 앞 회차(00:32) 이후 새 자료만. 실측(§2·§3) 재수집 없음. 기사 재검색 원 보고는 [2026-10-24-avl-mancity-d1-sources.md](2026-10-24-avl-mancity-d1-sources.md)(서브에이전트 · WebSearch/WebFetch **요약 경유**). 중점 4인 새 대목은 각 전용 절 「D+1 보강」 불릿.
+
+### ⑴ 당일 판정 정정
+- **가르나초 명단 제외 사유 「공식 0」 → 에메리 직접 발언 있음**(Hayters · obs#1136 · `match_hypotheses` C4 D1 정정 행 — 원래 D0 행 보존). 서열 판정은 계속 **판정 불가**(명단 밖). 원문·번역은 가르나초 절.
+- 그 밖의 당일 판정 뒤집힘 **0**. 대조표 C1·C2·C3·C5·C6 그대로.
+
+### ⑵ 감독 발언 새것 (에메리 · 회견/MOTD)
+- 잭슨 역할 지시(obs#1137): 「Sometimes he can drop, because he's good at getting duels, but we need him more running in behind.」(경합에 강해 가끔 내려와도 되지만 우리는 뒷공간 침투를 더 원한다) · 「He is understanding as well where we need him.」(우리가 그를 어디에 필요로 하는지 이해한다) — Hayters · 요약 경유. 쟁점 #4·#5에 감독 진술 1건(이 경기 ST 1위 st_advanced/Support Δ.035 무결정 — 회견 1건으로 닫지 않음).
+- 스즈키 빌드업 의도: 「he can play short, he can understand where is the superiority to break the opponent's press」(짧게 줄 수 있고 상대 압박을 깰 수적 우위가 어디인지 안다) · 「He has as well qualities to do long ball」(롱볼 자질도 있다) — WS 연결 1위 토레스→스즈키 20과 맞물림. 쟁점 #3.
+- BBC MOTD(SoccerNews/Stats Perform 전재): 「We analysed the match against Arsenal at home. … We analysed the match against Forest at home. … We improved so many things against Brentford at home.」(홈 아스날전·포리스트전을 분석했고 … 홈 브렌트퍼드전에서 많은 걸 개선했다) — 강팀 홈전 준비 근거가 앞선 홈 3경기 분석이라는 진술(구체 전술 없음).
+- PA: 「We have 11 points. It's not enough, but we have a much better feeling.」(승점 11은 부족하지만 느낌은 훨씬 좋다).
+- 선수 개별(알리송·고메스·맥긴·밍스·음바예) 평가·교체 사유 발언: **0건**(이번 회차도).
+- **에메리 스페인어 원어**: **0건** — GOAL 스페인어판 「Preparamos este encuentro intentando mantener la misma regularidad y exigencia.」(같은 일관성과 요구를 유지하려 이 경기를 준비했다)는 「Traducido por」 표기의 **영어 회견 번역 복제**(교차검증 아님). 시도: 「Unai Emery "City" "hemos" Aston Villa Jackson declaraciones」 · 「Emery … Marca AS Relevo」 · 「Movistar OR DAZN entrevista」 · 「Cadena SER OR El Desmarque OR COPE」.
+- 선수 발언: 캐시 「He's always got a new plan for something.」(그는 늘 새 계획이 있다 · AVFC 공식) · 도쿠 대응 「I like to get tight early on」(일찍 바짝 붙는 걸 좋아한다 · TNT 경유 Sky).
+
+### ⑶ Jacob Tanswell
+- X 직접 조회 **402**(x.com) · nitter 종료 → 검색 색인 경유 경기 중 트윗 **1건**: 「Villa struggle to control games at the best of times, let alone against Man City. Villa leaning into transitional, pacey strengths.」(빌라는 평소에도 경기 통제가 어려운데 맨시티 상대로는 더하다. 전환·속도 강점에 기대고 있다) — 59′ 음바예 투입 시점. 우리 판정(4-4-1-1 중·저블록 + 역습)과 같은 방향.
+- FT·회견 verbatim 트윗 · The Athletic 경기 기사: **0건**(시도 검색어 6종 — d1-sources §1). D+2에 브라우저 headful X 재시도.
+
+### ⑷ 충돌 판정
+| 서술 | 출처 | 실측 | 판정 |
+|---|---|---|---|
+| 도쿠를 「후반 대부분 마트센이 막았다」 | GOAL(맨시티 평점 · Adhe Makayasa) | WS 도쿠 이벤트 y̅ 1H **79.0**(36건 · y>66 32) · 2H **82.8**(42건 · y>66 40 · y<33 0) — 양 하프 모두 맨시티 **왼쪽** = 빌라 오른쪽(캐시) | **기각** — 캐시 담당(캐시 인터뷰·Bains·UTV 일치) |
+| 맥긴 「오른쪽 유지」 | Sports Mole 경기 전 선발 기사 | 볼 소유 (61, 47) 중앙 | **기각**(명단 해석) |
+| 「They want to keep the ball」(공을 지키려 한다) | 홀란 플래시 인터뷰(tacticafoot 재편집 · auto-caption) | 점유 37% · 롱볼 20% | 상대 선수 인상 — 채택 안 함 |
+| 「press from the front」(전방 압박) | More Lyes(auto-caption) | 높았던 건 0–6′(def_x 55.6)뿐 · 전체 34.9 | 부분 — 초반 구간만 |
+| 골킥 압박 7~8회 「한쪽 가두기」 | Bains Analysis(auto-caption) | 높은 압박 0–6′ 집중 · 골킥 국면 압박 횟수는 미조회 | 미검증(PENDING #17) |
+| 교체 시각 음바예 55′/58′/60′ · 맥긴 65′ | FotMob 요약·BBC·라이브·AVFC | SS 59′·66′ | SS 정본 유지 |
+
+### ⑸ 영상 (필수 채널 4곳 + 검색 · 전부 뮤트 pot 경로)
+- **채널 최신 목록 조회(13:10)**: **1874** — 사후 라이브 「Nicolas Jackson at the double as Villa beat Man City AGAIN」(1Xv_Y_4iecc) 종료 → **전사**. **UTV** — 새 업로드 없음(최신 qcGR9TddiPo는 앞 회차 요약 완료). **The Villans** — 새 업로드 「PREMIER LEAGUE GAMEWEEK 8 PREDICTIONS」(2wNasTobcec · 경기 전 예측 → 건너뜀). **Jacob Horsfall** — 「What Has Happened To Sunderland?」(sh16rkzsmuw · 빌라 아님 → 건너뜀).
+- **전사·요약·구현 주장 +6편**(`match_videos` #384~#389 · 전부 r63 귀속 · 주장 17행 · auto-caption):
+  - 1874 사후 라이브(1Xv_Y_4iecc · 31:21): 보유 「4-2-4」(잭슨 왼쪽·맥긴/만잠비 가짜 공격수·알리송 오른쪽 폭) — WS 보유 위치와 일치. 주장 4(보유 형태 HELD #2 · 알리송 wm_winger/Attack PENDING #14 · 더블 피벗 압박 HELD #20 · 잭슨 채널 HELD #5).
+  - Bains Analysis(e4hYc9wPpRo · 9:20 · 전술 분석): 캐시가 내려오는 도쿠에게 튀어나가 대인 · 카마라의 그바르디올 추적 · 골킥 압박 한쪽 가두기 · 피벗 벌린 빌드업. 주장 4(압박 트리거 PENDING #17 · 빌드업 형태 HELD #1 · 카마라 dm_holding/Defend PENDING #19(Δ.013 무결정 tie-break) · 잭슨 HELD #5).
+  - NBC Sports 스튜디오(gsGnSC0JHfg): 「높게 시작 → 공을 내주고 촘촘히 하강 → 역습」 — 실측과 일치. 주장 2(HELD #59 · #1).
+  - tacticafoot(A07aC4fuVDc): 에메리 대목은 §8 NBC 인용과 동일. 새것은 홀란 인터뷰 · 마레스카 플래시 「didn't deserve to lose」(질 만한 경기가 아니었다 · auto-caption) 영어 원문 확인(앞 회차 Fanpage 검색요약 미검증분). 주장 2(HELD #1 · #3).
+  - More Lyes(v5XShfKHy-g): 재건 서사·맨시티 실책 위주 · 전술은 일반론. 주장 3(HELD #1 · #59 · #5).
+  - LNobbins(7jer3zJlJR8 · 1:06:01 · 맨시티 팬 · **상대 관점**): 대부분 맨시티 내부 비판. 빌라 쪽은 스즈키 배급 출발점·캐시의 도쿠 봉쇄·카마라/고메스 중원 안정. 주장 2(HELD #1 · #3) — 「압박 끌어들여 통과」 서술은 롱볼 20%·점유 37%와 부분 불일치.
+- 미전사(이번 회차 선별 제외): The Football Flex(aFXSkC3cwwY) · URKG(RpK7bMvg8_U) · Premier League Dad 라이브(s7go7bWC1no) · The 12th Man 팟캐스트(kSZxcE_QsFk) · The Football Brief(vafps5GtqKw) · 戦術と真実(Z8kmyUXeBJI · 일본어 · 경기 전 스즈키 프리뷰) — D+2 판단.
+
+### ⑹ 다국어 결과 요약
+- **포르투갈어**: 고메스 본인 발언 1건(somosfanaticos) · 알리송 0건. **스페인어**: 에메리 원어 0 · 가르나초 이 경기 0. **스코틀랜드**: 맥긴 0. **이탈리아어**: ANSA 사실 보도만 · Fanpage·Gazzetta 0. **영어 상대 관점**: Esteemed Kompany(맥긴 디아스 끌어내기)·GOAL 맨시티 평점(「disciplined low block」(규율 있는 로우 블록) · 「Emery's clinical counter-attacking setup」(에메리의 냉정한 역습 셋업)) · LNobbins 영상.
+- 전술 블로그(TFA·BTL·Spielverlagerung·Coaches' Voice): **0건** — D+2.
+
+### ⑺ DB 반영 (행 추가만)
+- observations #1136(가르나초 사유 정정) · #1137(잭슨 역할 지시) · #1138(맥긴·만잠비 배치 서사 일치) · `match_hypotheses` C4 D1 정정 1행 · `match_videos` #384~#389 요약 · `video_impl_claims` 17행. 시즌 정본·경기 프리셋·처방 변경 없음(서사가 실측 판정을 바꾸지 않음).
