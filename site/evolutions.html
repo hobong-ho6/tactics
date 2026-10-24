@@ -1761,7 +1761,17 @@ const TREQ = {
      목록 정본은 G35(카탈로그 문구 ⊆ 이 표 ∪ 판정 불가로 둔 문구)가 지킨다. */
   'Defending': (v, s) => { const m = /Max\.\s*(\d+)/.exec(v); return !m || s.def == null || s.def <= +m[1] || `DEF ${s.def} > 최대 ${m[1]}`; },
   'Skill Moves': (v, s) => { const m = /Max\.\s*(\d+)/.exec(v); return !m || s.sm == null || s.sm <= +m[1] || `개인기 ${s.sm}★ > 최대 ${m[1]}★`; },
+  /* ⭐ 2026-10-24 세부 속성 상한(Center Spectre · Wicked Winger) — 카드 상태의 29속성(s.at)으로 잰다. 값이 없으면 ❔ */
+  'Long Shots': (v, s) => attrMax('long_shots', v, s),
+  'Standing Tackle': (v, s) => attrMax('standing_tackle', v, s),
+  'Strength': (v, s) => attrMax('strength', v, s),
 };
+function attrMax(key, v, s){
+  const m = /Max\.\s*(\d+)/.exec(v), x = s.at?.[key];
+  if (!m) return true;
+  if (x == null) return `❔ 판정 불가: ${ATTR_KR[key]} 값 없음`;
+  return x <= +m[1] || `${ATTR_KR[key]} ${x} > 최대 ${m[1]}`;
+}
 function tryReq(cat, st){
   const out = [];
   for (const q of (J(cat?.requirements_text, []) || [])){
@@ -1780,7 +1790,7 @@ function curStateOf(pid){
   const at = J(st.attrs, null); if (!at) return null;
   const isGk = /GK/.test(String(st.positions || ''));
   const six0 = faceFromAttrs(at, EVO.face_stats || [], isGk);
-  return { ovr: st.ovr, pac: six0.PAC, def: six0.DEF, sm: st.skill_moves ?? null,
+  return { ovr: st.ovr, pac: six0.PAC, def: six0.DEF, sm: st.skill_moves ?? null, at,
            icon: st.is_icon ?? null, hero: st.is_hero ?? null, base: st.is_base ?? null, pos: String(st.positions || '').split('/').filter(Boolean),
            ps: String(st.playstyles || '').split(',').filter(x => x.trim() && !x.includes('+')).length,
            psp: String(st.playstyles || '').split(',').filter(x => x.includes('+')).length };
@@ -1799,6 +1809,7 @@ function tryRun(pid, steps){
   const bs = evalBasis(+pid, PRES[pid] || null);
   const six0 = faceFromAttrs(at, EVO.face_stats || [], isGk);
   const cur = curStateOf(pid);
+  if (cur) cur.at = at;   // 세부 속성 상한(attrMax)이 앞 진화가 올린 값을 보게 같은 객체를 쓴다
   const before = { at: { ...at }, six: six0, ovr: st.ovr };
   /* ⭐ **얻는 PlayStyle·역할도 모은다**(2026-09-26 사용자 지시 「진화를 통해 얻는 플레이스타일이나
      역할도 보여줘서 비교할 수 있도록」) — 스탯만으로는 진화의 값어치를 못 견준다.

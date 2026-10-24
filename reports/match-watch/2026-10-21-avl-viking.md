@@ -404,3 +404,80 @@
 - The Athletic(Tanswell) 경기 후 기사·X(402 재시도) · Stavanger Aftenblad 유료 기사 · Birmingham Mail 전술 기사 — 셋 다 D+2까지 0/차단.
 - 전술 블로그 마지막 스윕(TFA·BTL·Spielverlagerung) — D+3에도 0이면 「이 경기 전술 블로그 0」으로 닫는다.
 - `match_reports.status`는 **draft 유지** — 3일 추적 완료(D+3) 후 complete 판단.
+
+## D+3 추적 (2026-10-24)
+
+> 예약 회차 `mw-avl-viking-d3`(20:00 KST · 맨시티전 킥오프 30분 전). DB: obs **#1129**(맨시티전 명단으로 재확인 · 가르나초 소집 제외) · **#1130**(상대 관점 서사 충돌 — RA 「하우겐 쪽 공략」) · **#1131**(D+3 최종 재판정 묶음) · match_hypotheses **D3 6행**(seq 1·25·26·27·28·30 · supersedes) · match_videos **#378·#379** 요약·구현 주장 4행(G17) · player_duties #21·#22·#25·#31 덧붙임 · manager_profiles `buildup` 덧붙임 · match_reports #62 **draft → complete**. **뒤집힌 판정 0건 · 당일 판단 정정 0건.**
+
+### ⑴ 영상 — 채널 스윕(D+2 이후 새 업로드) + 검색
+
+- **필수 4채널**: UTV 「ASTON VILLA v MANCHESTER CITY | MATCH PREVIEW」(LjzhiSsKR2E) · The Villans 「PREMIER LEAGUE GAMEWEEK 8 PREDICTIONS」(2wNasTobcec) · 1874 「Aston Villa v Man City | Can Emery End Maresca's Winning PL Run?」(1FxqGWv4NOk) — 셋 다 **다음 경기 프리뷰라 경기 범위 밖**(§2-1a 「그 경기 한정」 · D+2의 Villans 프리뷰와 같은 처리 · 미전사). **Jacob Horsfall — 새 업로드 0**(최신 vqV-BmjVt2c 10-20 그대로).
+- **검색으로 새로 찾아 전사(yt-dlp 통과 · auto-caption)**: ⭐ AVFC 공식 「POST-MATCH LIVE | With Alan McInally and Ian Taylor」(tZQIzEvZ7-c · 10-22 · 16:07 · 전 선수 패널) · Every Week We Follow 「Villa CRUSH the Vikings at Villa Park!」(x2vn-DzEpqM · 10-22 · 33:42 · 뒤 절반은 맨유·재정 담론으로 이 경기와 무관).
+- **제외**: AVFC 「UNAI CAM」(EIg0_fPY5U4 · 2:05 · 터치라인 카메라 — 발화 거의 없음) · Pitchside(fY9fw-t6bR8) · Villa On Tour 브이로그(gMGb84PQ8rc) · ZOU SPORT 음바예 하이라이트(fCdNmqfpb9s) · 하이라이트 4편 · U19 경기 2편 · eFootball 시뮬레이션.
+
+**요지(auto-caption · D등급)**
+- 이언 테일러(구단 공식): 「when we had the ball, he was in midfield. When we didn't have the ball, he went out to right back.」(볼을 가졌을 때는 미드필드, 없을 때는 라이트백으로 나갔다 · [05:37]) · 매키널리 「Gomez played kind of right back and him and John just swapped」(고메스가 라이트백 비슷하게 섰고 맥긴과 그냥 자리를 바꿨다 · [01:33]) — **우측 RB 교대 서술 9편째**.
+- 매키널리: 「after all the changes I thought near the end and it got a bit disjointed」(교체가 많아진 막판엔 조금 끊겼다).
+- Every Week We Follow: 「We played 3-5-2」(3-5-2로 뛰었다 · 형태 이름은 팬 표기) · 「It was pure width that we used」(순전히 폭을 썼다) · ⭐ 「after he took Gomez off who basically Gomez and McGinn were almost filling in in those full-back positions … when we went back to a back four, you were relying on Cash and then Mings」(고메스와 맥긴이 사실상 풀백 자리를 메웠는데, 고메스를 빼고 4백으로 돌아가자 캐시와 밍스에게 기대야 했다 · [06:04]).
+
+### ⑵ 기사·블로그(D+2 미확보분)
+
+- **Football Insider(Harri Burton 10-22 · 직접 열람)**: 「In possession, he was part of the same double-pivot in midfield as always」(보유 시엔 평소처럼 더블 피벗의 일원) · 「Due to Villa playing with a back-three, he often found himself in a right-back role」(빌라가 3백이어서 자주 RB 자리에 있었다) — **인과가 뒤집힌 서술**(실측: 비보유 4백의 RB → 보유 시 우측 하프스페이스로 올라가 3백이 생김). 판정 영향 없음.
+- **LiveScore/Claret Villans(Mark Oldacres · 직접 열람 · 게시일 미표기)**: 「He only stayed at right-back when Villa did not have the ball」(빌라가 공이 없을 때만 RB에 머물렀다) · 「42% of Villa's attacks came down the right」(빌라 공격의 42%가 오른쪽) · 알리송 박스 안 터치 **10**(SS 8 · Yahoo 9와 제공사 차이 — 원값 보존).
+- **TNT 해설(Yahoo/Villa News Jacob Raw 10-22 경유)**: 앨런 허튼 「he's a defender's nightmare」(수비수의 악몽이다) · 조 콜 「He's not the finished article, and there's so much to come from him.」(아직 완성형은 아니고 앞으로 보여줄 게 많다).
+- **노르웨이어**: VG(Husvik·Hellenes 10-21) 옌센 「Vi hadde for mye respekt for dem og ble miniputter i enkelte dueller」(너무 존중했고 몇몇 경합에서 꼬마들이 됐다 — TV 2 발언 재인용) · ⭐ **Rogalandsavis**(Ebbesvik·Iversen 10-21 · 무료) 「Hjemmelaget virket også å ha en klar plan om å angripe mot Herman Haugen」(홈팀은 헤르만 하우겐 쪽을 공격하겠다는 분명한 계획이 있어 보였다) · 「samtidig sørge for at ballen var sjeldnere på siden til Tripic」(동시에 트리피치 쪽으로는 공이 덜 가게 했다) → 아래 ⑶ 서사 충돌.
+- **스코틀랜드**: Scotsman 「John McGinn lands award after 'influential' performance on record equalling night in Champions League」(기록 타이의 밤, 「영향력 있는」 활약으로 상을 받았다) — 헤드라인·스니펫만(본문 403) · 스니펫 「the heart」(심장) · AOL 「typical 'Super John McGinn' performance」(전형적인 「슈퍼 존 맥긴」 경기)는 스니펫 경유.
+- **스페인어(가르나초)**: SportBible(Chris Byfield 10-22) — 팬 X 가설 「Emery is deliberately breaking Garnacho down」(에메리가 일부러 가르나초를 무너뜨려 다시 만든다 · 팬 의견) · Football365(Lewis Oldham · Football Insider 인용) 「they will avoid playing him enough to trigger their buy clause」(구매 조항이 발동될 만큼은 뛰게 하지 않겠다 · **익명 소스 루머 — 미채택**). Olé·TyC·Clarín·La Nación 0.
+- **0건(최종)**: The Athletic(Tanswell) 경기 후 기사 · Birmingham Mail 전술/판정 기사 · **전술 블로그 TFA·BTL·Spielverlagerung·Coaches' Voice ⇒ 「이 경기 전술 블로그 0」으로 닫는다** · Stavanger Aftenblad 분석(유료벽 · 검색 0) · ge.globo·UOL·Lance!(고메스·알리송) · Daily Record·Herald(맥긴). **Tanswell X**: 이번엔 열렸으나 비로그인이라 고정 글(4-28 SJA 수상)만 노출 — 경기 관련 글 확인 불가.
+
+### ⑶ 상대 관점 서사 충돌 — RA 「하우겐 쪽 공략」(obs#1130)
+
+| 항목 | RA 서술 | 실측 |
+|---|---|---|
+| 하우겐 위치 | (암시) 공략 대상 | 바이킹 **RB**(SS 4-5-1 수비 첫째 · WS 터치 평균 y 12.1) = **빌라 왼쪽**(음바예 쪽) |
+| 트리피치 위치 | 공을 덜 보낸 쪽 | 바이킹 왼쪽(y 66.8) = **빌라 오른쪽**(알리송 쪽 · 33′ PK 파울 당사자) |
+| 빌라 마지막 3분의 1 터치 198개 | — | **오른쪽 46% · 중앙 22% · 왼쪽 32%**(1H 48/18/34 · 2H 42/27/30) · Claret Villans 오른쪽 42% · 알리송 깊은 수신 15(팀 1위) |
+
+⇒ **실측 채택**(불변규칙 3). 빌라 주공 측면은 오른쪽(트리피치 쪽)이다. 왼쪽 32%도 작지 않아 「하우겐 공략」은 **보조 경로로는** 성립한다. RA 문장은 기자 인상 서술(근거 미제시)이다.
+
+### ⑷ 다음 경기 명단으로 재확인 — 맨시티전(PL MD8 · 10-24 12:30 BST · obs#1129)
+
+SofaScore `/event/16363892/lineups`(confirmed · 브라우저) + CityXtra(10-24 10:15) **2소스 일치**:
+선발 Suzuki; **Cash**, Lindelöf, Torres, **Maatsen**; Kamara, **Gomes**, Manzambi; McGinn, Jackson, Alysson(SS 4-2-3-1 · 고메스 **M**) · 벤치 Bizot·Mings·Barkley·Buendía·Bogarde·Goretzka·Hemmings·Mbaye·Madjo.
+- **고메스 RB = 부상 강제 1회성 확정**(대조표 #28) · 만잠비 선발 복귀(SS엔 doubtful 표기 잔존) · 마트센 선발 · 바이킹전 3백 축(밍스)·바클리·부엔디아·음바예는 벤치.
+- ⭐ **가르나초 소집 제외** — 벤치 9명에 없고 SS missingPlayers에도 없다(부상 표기 아님). 사유 보도 0.
+
+### ⑸ 가설·당일 판정 최종 재판정(종결)
+
+| # | 행 | D+2까지 | **D+3(최종)** | 근거 |
+|---|---|---|---|---|
+| 1 | 수비 4-4-2 · RB 고메스 | 부분 일치 | **부분 일치(확정)** | 구단 공식 패널 · Claret Villans 「only stayed at right-back when Villa did not have the ball」 — 우측 수비는 맥긴과 교대 |
+| 25 | 알리송 평가 | 일치 | **일치(확정)** | TNT 허튼·콜 · Claret Villans 수치 · 맨시티전 선발 유지 |
+| 26 | ⭐ 맥긴·고메스 축 | 일치 | **일치(확정)** | 실측 불변 + 패널 「the two boys in the middle were absolutely brilliant」(가운데 둘이 정말 훌륭했다) · 단서: 무대는 오른쪽 하프스페이스 · 고메스 RB 출발은 1회성 |
+| 27 | 가르나초 | 부분 일치 | **부분 일치(확정)** | 긍정 평가 확정 · 서열 발언 0 · 다음 경기 소집 제외 |
+| 28 | 고메스 명단상 RB | 일치 | **일치(확정)** | 맨시티전 CM 복귀 → 1회성 |
+| 30 | 경기 전체 vs 구간 | 부분 일치 | **부분 일치(확정)** | 70′ 교체 뒤 4백 복귀 서술 2곳(EWWF·패널) · 실측 70–84′ def_x 41.6 · 84′ 실점 |
+
+**대조표 30행 최종**: 일치 12 · 부분 일치 14 · 불일치 4(#11 고메스 프리롤 · #15 잭슨↔음바예 교환 · #18 잭슨 AF/Support · #20 음바예 IF). 관전 메모 1~4·중점 요청 3건의 **열린 행 0** — 남은 미확인은 아래 「미확인 확정」으로 닫는다.
+
+### ⑹ 중점 4인 — 마무리
+
+- **알리송**: 평가 축 완료 — 경기 최고 평점(SS 8.4) · 매체 8~9 · 구단 MOTM · TNT 「a defender's nightmare」 · 본인 첫 영어 인터뷰 · 브라질 중소 매체 4곳(Zona Mista·Itatiaia·Canal 38·Goal Brasil 번역). **미확인 확정**: ge.globo·UOL·Lance!·ESPN Brasil·셀레상 각도(포르투갈어 검색어 D+1~D+3 누적 12종 · ge.globo 직접 열람 차단). 맨시티전 선발 유지(쟁점 #14 · 수비 복귀형 vs 윙어 — 이 경기는 윙어 쪽 표본).
+- **주앙 고메스**: ⭐ **「맥긴·고메스가 중원에서 경기를 푸는 축」 최종 일치** — 성공 패스 13.2%(팀 4위권) · 연결 관여 25.6%(4위) · 맥긴과의 쌍방 연결 29(16+13)는 CB 쌍(토레스–밍스·토레스–린델뢰프 각 32) 다음, **CB 밖에서는 팀 최다 쌍**(2위 맥긴–알리송 26 · WS 수신 추정 기준). 단, 무대는 **오른쪽 하프스페이스**(우측 레인 77%)이고 「좌우 프리롤」은 불일치(#11). RB 기용은 1회성(맨시티전 CM). **미확인 확정**: 포르투갈어 대형 매체·플라멩구 계열 0(검색어 누적 9종) · 에메리 개별 언급 0(회견 전문 확인).
+- **맥긴**: UEFA MOTM · 연결 관여 1위(27.7%) · 수신 1위(63) · RB 교대 커버 · 맨시티전 선발. **미확인 확정**: 스코틀랜드 Daily Record·Herald·Scottish Sun·BBC Scotland·STV 0 · Scotsman은 헤드라인만(본문 403).
+- **가르나초**: 72′ 투입 18분 · 슈팅 3 · 에메리 「best minutes」 확정 · 서열 발언 0 · **맨시티전 소집 제외**(사유 보도 0 · 계약 조항 루머 미채택). **미확인 확정**: Olé·TyC·Clarín·La Nación·Marca·AS 0(스페인어 검색어 누적 8종).
+- **T2(4-1절) 판정 — 서술층 갱신 대상 없음**: `refresh_eval_samples.py --apply` 변경 0행 · `gaps.py eval` 대상 0명. 맥긴(12경기·978분)·고메스(8·544)·알리송(11·285)은 판정 개시선(3경기·90분)을 이미 넘은 뒤 10-20에 서술층을 갱신했고, 가르나초는 60분으로 아직 미달. T3(감독 회견의 서열 변화)도 해당 없음 — 가르나초 소집 제외는 회견 발언이 아니다. ⇒ **다음 트리거**: 가르나초 90분 도달 시 T2 ⑴ · 고메스 RB 재기용 시 measured 슬롯 argmax 재확인.
+
+### ⑺ 리포트 상태·프로필 판정
+
+- **`match_reports.status` = complete**(draft → complete). 근거: 필수 8섹션 · 출전 16명 전원 `match_player_reports`·`match_player_prescriptions` · 경기 전용 `match_game_setups`(match_only=1 · 4-2-3-1 Wide · 보유 3-2-5/비보유 4-4-2) · 선발 11칸 역할·포커스 · 3일 추적(D+1~D+3) 완료 · 영상 15편 전사·요약 · 회견 전문(양 팀) · 다국어(포르투갈어·스페인어·노르웨이어) 확보. 남은 0건 축(The Athletic·전술 블로그·브라질 대형 매체)은 사유 기록. `recheck_items`는 각 항목 뒤에 「→ 닫힘/이관」을 덧붙였다.
+- **`manager_profiles`**: `buildup` 덧붙임(풀백 부재형 3-2-5 = 부상 강제 1회성 확정 · 재사용 조건 = 전문 풀백 둘 이상 결장 · 쟁점 #2·#57). `formation`·`role_demands`·`situational`은 **갱신 불필요** — 형태·역할 변화는 이미 `buildup`·`role_demands`(10-22)에 들어갔고, D+3 서사는 그 골격을 뒤집지 않았다.
+- **게임 구현 판정**: **유지(시험 프리셋 그대로)** — 이 경기 전용 `match_game_setups`는 그대로 두고, 시즌 정본(`optimal` #46·`slot_canon_roles`)은 바꾸지 않는다(단일 경기 · 부상 강제 구성). 재사용은 쟁점 #2 트리거.
+
+### ⑻ 0건·시도 기록(D+3)
+
+- 영어: 「Tanswell Athletic Aston Villa Viking Gomes right-back Emery」(기사 0 · 1874 뉴캐슬 디브리프만) · 「Birmingham Mail Aston Villa Viking Emery tactics Gomes Mings back three verdict」(0) · 「"Viking" "Aston Villa" tactical analysis 2026 totalfootballanalysis OR betweenthelines OR spielverlagerung」(0) · 「John McGinn Viking Champions League Villa captain Scotland Daily Record」(Scotsman만).
+- 포르투갈어: 「Alysson Aston Villa Viking análise atuação Champions」(영어권 재인용만) · 「João Gomes Aston Villa lateral Viking Emery improvisado」(Goal Brasil 1) · 「ge.globo João Gomes Aston Villa lateral-direito Viking volante Emery」(0 — 이적 기사만).
+- 스페인어: 「Garnacho Aston Villa Manchester City Emery titular suplente」(0) · 「Garnacho fuera de la convocatoria Aston Villa Manchester City」(0) · 「Garnacho Aston Villa Viking "mejores minutos" Emery argentino Olé」(영어권·EFE만).
+- 노르웨이어: 「Viking Aston Villa analyse Aftenblad Jensen Aarsheim etter Villa Park」(VG·Dagbladet·TV 2·RA 적중 · Aftenblad 0).
+- 3일 추적 종료 — 이 경기 후속 예약 없음.
