@@ -287,3 +287,59 @@
 - **Tanswell**: 검색 색인상 경기 후 기사·트윗 **0**(색인된 최신은 경기 전 만잠비 출전 판단·「I am not celebrating」(축하하지 않는다) 회견 트윗) — D+2 headful X 재시도 유지.
 - **0건 검색어 기록**: 스페인어 「Garnacho afuera de la convocatoria Aston Villa Emery City」·「Garnacho … Olé OR TyC OR Clarín」 · 포르투갈어 「Alysson Aston Villa Manchester City atuação」·「Alysson Gvardiol … brasileiro ponta」·「"João Gomes" Aston Villa City vitória volante」 · 스코틀랜드 「McGinn … Herald OR Scotsman OR "Scottish Sun"」 · 영어 「… player ratings Birmingham Live Townley」(검색 미노출) · 「Jacob Tanswell … October 2026」. 에메리 스페인어 원어 **여전히 0**.
 - **DB(행 추가만)**: observations #1139 1행. 가설·대조표 정정 행 없음(새 근거로 닫히는 항목 없음). 시즌 정본·프리셋·처방 변경 없음.
+
+## D+1 저녁 보강 (2026-10-25 20:50)
+
+> 예약 `mw-avl-mancity-d1-evening` · 사용자 요청 추가 회차 · **13:00 회차 이후** 새 자료만. 실측(§2·§3) 재수집 없음. 기사 다국어 스윕은 서브에이전트(WebSearch/WebFetch · 읽기 전용), Tanswell X·UTV 자막은 메인이 브라우저로 직접(자막은 뮤트·정지 → 탭 닫기).
+
+### ⑴ 당일 판정 정정
+- **6′ 선제골 기전(obs#1140)**: §3 강점 ⑴ 「첫 6분 높은 출발로 맨시티 빌드업 실책 유도」 → **부분 일치로 정정**. dave.sport(James Chettle · 10-25 07:00 · Opta 2차 인용) 「Guéhi was not under pressure when he lost the ball」(게히는 공을 잃을 때 압박받지 않았다). WS 대조: 5′32″~47″ 맨시티 자기 진영 6패스 연속 동안 빌라 수비 이벤트 **0** → 5′47″ **엔소 페르난데스** 칩 롱패스 → 5′49″ 게히 첫 터치 실패(경합 이벤트 없음) → 맥긴 회수(게히에서 약 6m). 높은 위치(0–6′ def_x 55.6)는 맞지만 실책 순간 직접 압박은 없었다 — 빌라 기여는 **근접 위치 선점**이다. 원래 문구는 보존한다.
+- **표기 정정**: §1 득점 줄의 「디아스→게히 긴 패스」는 WS상 **엔소 페르난데스**의 패스다(obs#1140).
+- 이월 대조표 C1~C6·`match_hypotheses`: 변경 **0**(새 근거로 닫히는 가설 없음 · C4 가르나초는 아래 ⑹).
+
+### ⑵ 감독 발언 새것
+- **Tanswell X 직접 열람 성공**(13:00 회차는 402 — 이번엔 브라우저로 열림 · obs#1141). 회견에서 Tanswell이 직접 물은 잭슨 답 **전문**: 「But we need him more running in behind because we need the runners on the field, and one of the runners normally is the striker, and he has quality and power.」(필드에 러너가 필요하고 그 러너 중 하나는 보통 스트라이커라서 뒷공간으로 더 뛰길 원한다. 그는 질과 힘이 있다) · 「His speed is fantastic, and as well his capacity to get duels man to man. He's coachable.」(속도가 환상적이고 1대1 경합 능력도 있다. 지도를 잘 받아들인다). 13:00 회차의 Hayters 요약보다 「러너 = 보통 스트라이커」라는 이유가 붙었다 → 쟁점 #4(어드밴스드 vs 폴스9)에 배후 러너 쪽 감독 진술. 실측은 하강·경합도 함께 보여 단독으로 닫지 않는다.
+- 같은 계정: 「This year we started so poor, we needed time to understand how we needed to improve or how to work in our structure.」(올해 출발이 너무 나빴고 어떻게 개선하고 우리 구조로 일할지 이해할 시간이 필요했다) · 스즈키 「We are very, very impressed with how he adapted so quick with us.」(그가 그렇게 빨리 적응한 데 매우 감명받았다).
+- Telegraph(John Percy · Yahoo 전재 · 13:00 전 발행 · 미수집분): 잭슨에게 「How he was working, defending, getting duels… wow!」(일하고 수비하고 경합을 이기는 걸 보면… 와!).
+- dave.sport(BBC MOTD·AOL 경유 2차): 「We needed the defence, keeper, sacrificing defensively a lot of the time.」(수비진과 골키퍼가 필요했고 많은 시간을 수비적으로 희생했다) — BBC 원문 미확인.
+- **맨시티 쪽(상대 관점 · obs#1142)**: 디아스(mancity.com · Yahoo 전재) 「They changed the way they set up so we took time to adapt.」(그들이 셋업을 바꿔 적응에 시간이 걸렸다) · 「they ended up scoring two goals in two transitions - very efficient.」(전환 두 번에 두 골 — 매우 효율적) — 마레스카 「expected them in one way」(한 방식으로 예상했다)와 **독립 진술 2건째**(바이킹전 보유 3백 → 이 경기 4백 전환과 맞물림 · 구체 서술은 없음). 마레스카 「If you mention to come here and don't concede one or two transitions it's almost not the reality.」(여기 와서 전환 한두 번 안 내주는 건 거의 비현실적이다).
+- **회견 전문**: avfc.co.uk 본문 잘림 · mancity.com 403 → **미확보**(VillaTV 영상만). **에메리 스페인어 원어 여전히 0** — zamin.uz 스페인어판은 출처 없는 영어판 번역 복제라 채택하지 않음(LOW).
+
+### ⑶ Jacob Tanswell
+- 경기 후 트윗 3건 전문 확보(위 ⑵). ⭐ **The Athletic 「Unai Emery, the Premier League's best coach」**(Tanswell · 2026-10-25 16:55 KST 공유 · 무료 링크) — **본문 미열람**: nytimes.com이 브라우저(안전 제한)·WebFetch 모두 차단. 제목만 기록 → D+2에서 다른 경로(전재·요약) 시도.
+
+### ⑷ 기사·평점 (새것 · 상대 관점 포함)
+| 서술 | 출처 | 실측 | 판정 |
+|---|---|---|---|
+| 「make his wingers drop back and form, sometimes, a line of six players」(윙어를 내려 때때로 6명 라인) | CityXtra(Enzo Krieger · 10-25 09:09 · 맨시티 관점) | 수비 액션 평균 알리송 (37.7, 27.2) 깊은 것 2/9 · 만잠비 (26.5, 60.0) 깊지만 **안쪽** · 측면 깊은 수비는 캐시·마트센·부엔디아·음바예 | **대체로 기각** — 선발 윙어 6백 아님(교체 뒤 음바예·부엔디아 구간만 가능 · 쟁점 #16 표본) |
+| 「double man-marking on both flanks」(양 측면 이중 대인마크) | CityXtra | 오른쪽 캐시+카마라(ȳ 37.5) · Telegraph 「Doku sprints down the left but can't get past Kamara」(도쿠가 카마라를 넘지 못한다) / 왼쪽 마트센 태클 0/3 | 오른쪽만 일치 |
+| 「pressed quickly in a man-to-man system」(맨투맨으로 빠르게 압박) | Squawka(Harry Edwards · 10-24 · 403 → 검색 요약 경유) | def_x 34.9 · 높은 압박은 0–6′뿐 | 부분 — 초반만 |
+| 「Villa keep the pressure up for the opening minutes」(초반 몇 분 압박 유지) | Telegraph 라이브(Percy) | 0–6′ def_x 55.6 | 일치 |
+| 만잠비 「on the left rather than as the No 10」(10번이 아니라 왼쪽) · 맥긴 「more centrally」(더 중앙) | Express & Star Verdict(George Bennett · 10-25 09:01 · 403 → 검색 요약 경유) | 만잠비 (58, 67) · 맥긴 (61, 47) | 일치(obs#1138 재확인) |
+| 「release a runner, support him and arrive in the box」(침투자를 내보내고 지원하고 박스에 도착) | dave.sport | 역습 2골(잭슨) | 일반론 — 채택 안 함 |
+| 고메스 82′ 교체 「might have taken that knock」(충돌로 다쳤을 수 있다) | Telegraph 라이브 | — | 추정 — 채택 안 함 |
+- 평점: thefalse9(Arjun Rao) 잭슨 9 · 맥긴 8 · 카마라 7 · 고메스 6 · 알리송 6 · 만잠비 5 — 「31 tackles to City's 13」(태클 31 대 13)은 SS와 같음. Read Man City(10-25 09:42)는 마레스카 MOTD 「We adjusted then controlled the game.」(조정한 뒤 통제했다) 외 재전재.
+- **0건**: Birmingham Mail/Live(Preece·Townley) 원문 · Express & Star Matt Maher 경기 Verdict · The Athletic(Sam Lee)·MEN 경기 기사.
+
+### ⑸ 영상 (필수 채널 4곳 · 뮤트 경로)
+- **최신 목록(20:5x)**: **UTV — 새 업로드 1편** 「WHY NICOLAS JACKSON SCARES EVERY DEFENCE!」(Id10w3mpHVI · 2026-10-25 17:00 KST · 36:36 · 전술 디브리프) → yt-dlp 봇 차단(「The page needs to be reloaded」) → 브라우저 pot 경로(mute·정지 확인 → 자막 포착 → 탭 닫기)로 **전사** → `match_videos` **#390**(r63 귀속) 요약 + 구현 주장 **7행**. **The Villans · 1874 · Jacob Horsfall — 13:00 이후 새 업로드 0**(최신 각각 2wNasTobcec 경기 전 · 1Xv_Y_4iecc 전사 완료 · sh16rkzsmuw 빌라 아님).
+- #390 요지(auto-caption · obs#1143): ① **51′ 실점** 서술이 WS 이벤트 순서와 정확히 일치 — 잭슨 패스 차단 → 은디아예가 카마라 상대 파울 획득 → 빠른 FK → 은디아예 크로스 (93, 22) → 홀란 헤더(린델뢰프 패). ② **왼쪽 약점** 「we didn't really have that extra player at times that was really helping out with Ian Matson」(마트센을 돕는 추가 인원이 때때로 없었다) — WS 은디아예 터치 ȳ 16(빌라 왼쪽) · 빌라 왼쪽 수비 진영 태클 마트센 0/3·만잠비 1/3·부엔디아 0/3 → 같은 방향(쟁점 #47·#53). ③ 중원 박스(카마라·고메스·만잠비·맥긴 + 잭슨 하강 · #21). ④ 교체 역할(음바예 폭·캐시 지원 #48 · 부엔디아 마트센 보호 · 바클리·고레츠카 중원 · 마조 채널 홀드업). ⑤ 잭슨 홀드업 후 왼쪽 빈 공간으로 전개(#5). ⑥ 압박 「We know when to jump … We hunt in packs」(언제 튀어나갈지 안다 … 무리 지어 사냥한다 · #17 PENDING). ⑦ xG stat 수비 라인 ~30m 대 41m(#59).
+- 13:00 회차 미전사 6편(The Football Flex · URKG · Premier League Dad · The 12th Man · The Football Brief · 戦術と真実): 이번 회차도 미전사 — D+2 판단 유지.
+
+### ⑹ 중점 4인
+- **알리송**(포르투갈어): 새 기사 **0**. 영어 Telegraph 「Gvardiol buys a foul from a naive Alysson on the left wing」(그바르디올이 순진한 알리송에게서 파울을 얻어냈다 — 맨시티 기준 왼쪽) — obs#1139 그바르디올 대면과 같은 방향.
+- **주앙 고메스**(포르투갈어): 새 기사 **0**(ge·Lance·UOL 평점 미노출). 82′ 교체 「knock」(충돌)은 Telegraph 추정 — 채택 안 함.
+- **맥긴**(스코틀랜드): 스코틀랜드 매체 **0**. Telegraph 「McGinn slides in Jackson on the inside left」(맥긴이 왼쪽 안쪽으로 잭슨에게 찔러준다) · UTV 「McIn four key passes」(키패스 4 — SS 4와 같음).
+- **가르나초**(스페인어): 새 1차 근거 **0**. UTV 진행자 해석 「there's other players that are ahead of him」(그보다 앞선 선수들이 있다 — 교체 역할 서열)은 **등급 D 추론**으로 C4 판정 불변(판정 불가 유지).
+
+### ⑺ 0건 검색어 (이번 회차 새로 시도 — 13:00 회차와 중복 없음)
+- 스페인어·바스크어: 「Emery Aston Villa Manchester City Diario Vasco OR "Noticias de Gipuzkoa" OR "El Correo" OR "Mundo Deportivo"」 · 「Unai Emery entrevista Movistar Plus OR "El Larguero" OR "Onda Cero"」 · 「Emery Aston Villak Manchester City Jackson Berria … Hondarribia」 · 「Garnacho … no fue convocado … motivo Emery Olé TyC Marca」 · 「site:ole.com.ar Garnacho Aston Villa Manchester City」.
+- 포르투갈어: 「Alysson Aston Villa ex-Grêmio … ponta」 · 「Alysson … Gvardiol … GZH OR "Correio do Povo" OR UOL」 · 「João Gomes … ex-Flamengo atuação Emery volante 25 outubro」 · 「"João Gomes" … nota ge globo OR Lance OR UOL」.
+- 스코틀랜드: 「John McGinn … Steve Clarke Daily Record」 · 「McGinn … Scotland skipper Herald Scotsman October 25 2026」.
+- 독일어: 「Aston Villa Manchester City Analyse Emery Maresca Konter Jackson Taktik」.
+- 영어: 회견 전문 transcript · MEN Maresca verdict · Sam Lee · Matt Maher Verdict · BirminghamLive ratings · TFA/BTL/Coaches' Voice · 「five things/talking points」 — 상세는 서브에이전트 보고 기준 12종.
+- 전술 블로그(TFA·BTL·Spielverlagerung·Coaches' Voice): **0** — D+2 유지.
+
+### ⑻ DB 반영 (행 추가만)
+- observations **#1140**(6′ 골 기전 정정) · **#1141**(Tanswell 잭슨 전문·회견 트윗) · **#1142**(맨시티 관점 셋업 변화·6백/이중마크 대조) · **#1143**(UTV #390 실점·왼쪽 약점) · `match_videos` #390 신규(색인) + 요약 · `video_impl_claims` 7행(HELD 6 · PENDING 1 — 전부 기존 쟁점 #47·#53·#21·#48·#5·#17·#59에 묶음). `match_hypotheses` 정정 행 없음 · 시즌 정본·경기 프리셋·처방 변경 없음(서사가 실측 판정을 바꾸지 않음).
+- 마무리: `refresh_duty_applied.py` 신규 CONFLICT 0 · `claim_issues.py --due` 판정할 차례 15(AVL #7 음바예 역할 · #14 알리송 측면 기용 · #30 설정 축 없는 성향 + 보류 팀 12) — 이번 회차 새 근거로 닫히는 것이 없어 미판정(G39 7일 이내 · 게이트 통과). #14는 이 회차 obs#1139·#1142 표본 추가.

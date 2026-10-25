@@ -1,8 +1,226 @@
 {
  "all": [
   {
-   "channel": "1874 : The Aston Villa Channel",
+   "channel": "UTV | Aston Villa Fan Channel",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 390,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "left_flank_cover",
+     "field_kr": "왼쪽 측면 커버",
+     "focus": null,
+     "headline_kr": "왼쪽 마트센 지원 부족",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 47,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "좌측 측면 구조: 안쪽형 LM·폭은 LB(C2/C6)",
+      "trigger": "2026-10-21 이후 가르나초 LM,LAM,LW 선발 2경기 (0/2)"
+     },
+     "player": null,
+     "points_kr": "[\"은디아예와 1대1 노출\", \"만잠비 복귀 지연\"]",
+     "quote": "「I just felt like we didn't really have that extra player at times that was really helping out with Ian Matson」(때때로 마트센을 실제로 돕는 추가 인원이 없었다고 느꼈다 · auto-caption 「Matson」=마트센)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "left side lacked an extra player to double Ndiaye vs Maatsen; Manzambi slow to recover",
+     "value_kr": "마트센–은디아예 1대1에 만잠비 복귀가 늦어 수적 지원 부족",
+     "verdict": "HELD",
+     "verdict_note": "실측 같은 방향 — WS 은디아예 터치 ȳ 16.6(1H)·16.1(2H)=빌라 왼쪽 · 빌라 왼쪽 수비 진영(x<50·y>66) 태클 마트센 0/3·만잠비 1/3·부엔디아 0/3 · 51′ 실점 크로스 은디아예 (93, 22). 단 은디아예 드리블 1/4·크로스 1/3로 지배는 아님. 왼쪽 구조 쟁점 #47 트리거(가르나초 LM 선발 2경기)에서 재판정."
+    },
+    {
+     "axis": "instruction",
+     "field": "conceded_goal_51",
+     "field_kr": "51′ 실점 귀속",
+     "focus": null,
+     "headline_kr": "51′ 실점은 왼쪽 바이라인에서",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 53,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "실점 장면 수비 귀속: 침투 추적·박스 앞",
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
+     },
+     "player": null,
+     "points_kr": "[\"잭슨 패스 차단\", \"카마라 파울 → 빠른 FK\", \"만잠비 바이라인 돌파 허용\", \"홀란 헤더(린델뢰프 패)\"]",
+     "quote": "「So it's left to Manzambi who gets beat at the by line and the ball goes in and Harland's got his hands all over Lindelof」(결국 만잠비에게 맡겨졌고 바이라인에서 뚫려 공이 들어가자 홀란이 린델뢰프를 붙잡고 있었다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Jackson held ball and tried cute pass, intercepted; Ndiaye won foul past Kamara; quick FK; Manzambi beaten at byline; Haaland beat Lindelof",
+     "value_kr": "잭슨 패스 차단 → 카마라 파울 → 빠른 FK → 만잠비 바이라인 돌파 허용",
+     "verdict": "HELD",
+     "verdict_note": "WS 이벤트 순서 일치 — 51′06″ 잭슨 패스 실패(33, 75) → 포든 차단 → 51′09″ 은디아예 파울 획득·카마라 파울 → 엔소 FK → 은디아예 크로스(93, 22) → 홀란 공중 경합 승(린델뢰프 패). 실점 장면 귀속 쟁점 #53 트리거(리그 5경기)에서 누적 판정."
+    },
+    {
+     "axis": "instruction",
+     "field": "midfield_box",
+     "field_kr": "중원 박스",
+     "focus": null,
+     "headline_kr": "중원 4인 박스 + 잭슨 하강",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 21,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "2선(만잠비·부엔디아) 배치와 만잠비 역할",
+      "trigger": "2026-10-21 이후 만잠비 CAM 선발 2경기 (0/2)"
+     },
+     "player": null,
+     "points_kr": "[\"카마라·고메스·만잠비·맥긴\", \"잭슨이 내려와 수적 우위\"]",
+     "quote": "「you've got Kamar, you've got Gomez, you've got Manzambi in there, and you've got McInn creating that box」(카마라·고메스·만잠비·맥긴이 박스를 만든다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Kamara, Gomes, Manzambi, McGinn form a central box vs Anderson/Enzo/Cherki; Jackson drops to add a man",
+     "value_kr": "카마라·고메스·만잠비·맥긴 4인 박스 + 잭슨 하강으로 중앙 수적 우위",
+     "verdict": "HELD",
+     "verdict_note": "기하 일치 — WS 볼 소유 평균 맥긴 (61, 47)·만잠비 (58, 67) 안쪽 · 카마라 (38, 38)·고메스 (44, 68). 단 볼 소유 레인 왼쪽 44%로 박스보다 왼쪽 쏠림이 더 큰 특징. 만잠비 배치 쟁점 #21 트리거(만잠비 CAM 선발 2경기)에서 재판정."
+    },
+    {
+     "axis": "instruction",
+     "field": "sub_role",
+     "field_kr": "교체 역할",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 48,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "음바예 우측 윙어 기능: 폭·배후 침투·수비",
+      "trigger": "2026-10-21 이후 음바예 RM,RAM,RW 선발 2경기 (0/2)"
+     },
+     "player": "음바예",
+     "points_kr": null,
+     "quote": "「So Ambai was brought on to hold the width and become a threat which he was and help out with Matty Cash」(음바예는 폭을 유지하며 위협이 되고 캐시를 돕도록 투입됐다 · auto-caption 「Ambai」=음바예)",
+     "role_id": null,
+     "team_code": null,
+     "value": "brought on to hold width on the right, stretch, and help Cash",
+     "value_kr": "오른쪽 폭 유지·뒷공간 늘리기·캐시 수비 지원",
+     "verdict": "HELD",
+     "verdict_note": "59′ 투입 → 60′ 잭슨 2골째 도움(낮고 빠른 컷백). 31분 표본 1경기 · 음바예 우측 기능 쟁점 #48 트리거(음바예 RM 선발 2경기)에서 재판정."
+    },
+    {
+     "axis": "instruction",
+     "field": "st_hold_up_release",
+     "field_kr": "ST 홀드업 후 전개",
+     "focus": null,
+     "headline_kr": "잭슨 홀드업 후 왼쪽으로 전개",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 5,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
+     },
+     "player": "잭슨",
+     "points_kr": "[\"첫 터치 홀드업\", \"CB 반대 빈 공간으로 이동\", \"전진 패스\"]",
+     "quote": "「So his first touch is hold up. Second movement is to get that ball away from that center half」(첫 터치는 홀드업, 두 번째 동작은 공을 센터백에게서 떼어내는 것 · auto-caption)",
+     "role_id": null,
+     "team_code": null,
+     "value": "first touch hold-up, then move the ball away from CB into open space on the left and release",
+     "value_kr": "첫 터치 홀드업 → CB 반대 왼쪽 빈 공간으로 빼서 전진 패스",
+     "verdict": "HELD",
+     "verdict_note": "일치 — 잭슨 볼 소유 평균 (61, 63) 왼쪽 48% · 깊은 수신 7 · 공중 2/2. 홀드업 성향은 기존 HELD 묶음과 같음 · 쟁점 #5 트리거(잭슨 선발 3경기)."
+    },
+    {
+     "axis": "instruction",
+     "field": "pressing_trigger",
+     "field_kr": "압박 트리거",
+     "focus": null,
+     "headline_kr": "트리거 순간 무리 지어 압박",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 17,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "압박 트리거: 1선→2선 패스 순간",
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
+     },
+     "player": null,
+     "points_kr": "[\"상시 압박 아님\", \"초반 집중\"]",
+     "quote": "「We know when to jump. … We hunt in packs and once one goes, the others go」(언제 튀어나갈지 안다 … 무리 지어 사냥하고 한 명이 가면 나머지도 간다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "early aggressive box-in press, jump on triggers in packs rather than constant press",
+     "value_kr": "상시 압박이 아니라 트리거 순간 무리 지어 튀어나가 가두기(초반 집중)",
+     "verdict": "PENDING",
+     "verdict_note": "부분 일치 — 높은 압박은 0–6′ def_x 55.6 구간에 집중(전체 34.9). 트리거 종류(1선→2선 패스)는 영상이 특정하지 않음 · 쟁점 #17."
+    },
+    {
+     "axis": "instruction",
+     "field": "def_line_height",
+     "field_kr": "수비 라인 높이",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 59,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "수비 블록 높이·후반 붕괴",
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
+     },
+     "player": null,
+     "points_kr": null,
+     "quote": "「Villa's defensive line was around about 30 m. Man City was at 41」(빌라 수비 라인은 약 30m, 맨시티는 41m · auto-caption · 수치 출처 xG stat)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "defensive line ~30m vs City 41m (xG stat)",
+     "value_kr": "수비 라인 약 30m(맨시티 41m) — 중·저블록",
+     "verdict": "HELD",
+     "verdict_note": "같은 방향 — WS def_x 34.9 대 45.3. 블록 높이 쟁점 #59 트리거(리그 5경기)에서 누적 판정."
+    }
+   ],
+   "key_points": [
+    "초반 압박: 「We know when to jump … We hunt in packs」(언제 튀어나갈지 안다 … 무리 지어 사냥한다) — 높은 압박은 경기 초반 구간 서술(실측 0–6′ def_x 55.6과 같은 방향)",
+    "51′ 실점: 잭슨이 키핑 후 시도한 패스가 차단 → 은디아예가 카마라를 제치며 파울 획득 → 빠른 프리킥 → 만잠비가 바이라인에서 뚫리고 홀란이 린델뢰프 상대 헤더 — WS 이벤트 순서와 일치",
+    "왼쪽 약점: 마트센이 은디아예와 1대1, 만잠비 복귀 지연 · 반대쪽(캐시·카마라·알리송)은 안정",
+    "중원 박스: 카마라·고메스·만잠비·맥긴 4명 vs 앤더슨·엔소·셰르키 + 잭슨 하강",
+    "60′ 2-1: 토레스가 왼쪽에서 막히자 안쪽으로 드리블해 약발 패스 → 잭슨 홀드업 후 왼쪽으로 풀어 음바예 → 음바예의 낮고 빠른 컷백 — 「Every sub has a purpose and a role」(모든 교체엔 목적과 역할이 있다)",
+    "교체 역할: 음바예 폭·캐시 지원 / 부엔디아 마트센 보호 / 바클리·고레츠카 중원 구조 / 마조 채널 홀드업",
+    "가르나초 제외 = 교체 역할 서열 해석(진행자 추론 — 에메리 발언 아님)",
+    "xG stat 인용: 공격 방향 왼쪽 50·오른쪽 38·중앙 12% · 수비 라인 ~30m(맨시티 41m) · 5초 내 회수 측면 23%씩 · 캐시 vs 도쿠 경합 2-17(영상 수치 · 출처 xG stat)"
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-25",
+   "published_approx": 0,
+   "report_id": 63,
+   "summary": "UTV 진행자의 맨시티전 D+1 전술 디브리프(36분). 초반 6명이 웅크려 「boxing Manchester City in」(맨시티를 가뒀다) 한 압박 속에서 게히 첫 터치 실책 → 맥긴 → 잭슨 선제골을 설명하고, 이후 빌라 왼쪽(마트센 쪽)이 은디아예와의 1대1에 자주 노출돼 「we didn't really have that extra player at times that was really helping out with Ian Maatsen」(마트센을 돕는 추가 인원이 때때로 없었다)고 지적한다 — 51′ 실점(잭슨 패스 차단 → 은디아예 파울 획득 → 빠른 프리킥 → 은디아예 크로스 → 홀란 헤더)도 그 측면에서 나왔다. 중원은 카마라·고메스·만잠비·맥긴이 상대 앤더슨·엔소·셰르키를 상대로 박스를 만들고 잭슨이 내려와 한 명을 더했다고 본다. 교체 5명은 각자 사전 브리핑된 역할(음바예 폭·캐시 지원, 부엔디아 마트센 보호, 바클리·고레츠카 중원, 마조 채널 홀드업)이라며, 가르나초 명단 제외를 「there's other players that are ahead of him」(그보다 앞선 선수들이 있다)는 역할 서열로 해석한다(진행자 추론 · 1차 근거 아님). xG stat 화면으로 공격 방향 왼쪽 50·오른쪽 38·중앙 12%, 수비 라인 약 30m(맨시티 41m)를 인용한다.",
+   "team_code": "AVL",
+   "title": "WHY NICOLAS JACKSON SCARES EVERY DEFENCE!",
+   "transcript_path": "reports/transcripts/Id10w3mpHVI.en.md",
+   "url": "https://www.youtube.com/watch?v=Id10w3mpHVI",
+   "video_id": "Id10w3mpHVI"
+  },
+  {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 384,
    "impl_claims": [
     {
@@ -181,7 +399,7 @@
   },
   {
    "channel": "Bains Analysis",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 387,
    "impl_claims": [
     {
@@ -450,7 +668,7 @@
   },
   {
    "channel": "LNobbins",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 385,
    "impl_claims": [
     {
@@ -532,7 +750,7 @@
   },
   {
    "channel": "More Lyes",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 389,
    "impl_claims": [
     {
@@ -640,7 +858,7 @@
   },
   {
    "channel": "NBC Sports",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 388,
    "impl_claims": [
     {
@@ -802,7 +1020,7 @@
   },
   {
    "channel": "tacticafoot",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 386,
    "impl_claims": [
     {
@@ -24678,6 +24896,7 @@
    359
   ],
   "63": [
+   390,
    384,
    383,
    387,
