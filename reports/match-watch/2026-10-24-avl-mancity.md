@@ -39,6 +39,7 @@
 - **모국어(포르투갈어)**: hoop78 「O ponta Alysson, revelado pelo Grêmio, saiu aos 14 do segundo tempo」(그레미우 출신 윙어 알리송은 후반 14분에 나갔다) — 위치는 「ponta」(윙어). ge.globo·GZH·UOL·Lance! 0건(차단·미게재).
 - **FC 함의**: 커널 RM 1위 wm_insidefwd/Attack **.455**(Δ.002 무결정 · 2위 wm_wideplm/Attack .454) — 바이킹전 wm_winger/Attack .809와 크게 다르다. 수비 국면 비중이 컸던 경기라 히트맵이 안쪽·아래로 번졌다. 쟁점 #14(알리송 수비 복귀형 vs 윙어 · 「판정할 차례」)의 표본 1경기 — 이 경기 단독으로 닫지 않는다(§7).
 - **D+1 보강(10-25 13:00)**: Express & Star(George Bennett · 403 → 검색요약 2회 일치) **7** 「He showcased his attacking qualities in glimpses and never neglected his defensive duties, cutting out a number of attacks.」(공격 자질을 간간이 보여줬고 수비 임무를 결코 소홀히 하지 않아 여러 공격을 끊었다) — 수비 액션 14 실측과 같은 방향 · The Independent(Jolly) 「looking reminiscent of Morgan Rogers」(모건 로저스를 떠올리게 했다) · 1874 사후 라이브 「with Allison obviously high and wide on the right」(알리송은 오른쪽에 높고 넓게 · auto-caption) — 볼 소유 (63, 22)와 일치. 에메리 발언 여전히 **0건**. 포르투갈어 0건(시도: 「Alysson Aston Villa Manchester City ex-Grêmio atuação」 · 「Alysson nota … ge globo OR GZH OR Lance」 · 「Alysson Edward … vitória titular Grêmio Info」). 쟁점 #14 표본에 「수비 임무」 서술 1건 + 「높고 넓게」 1건 — 양쪽 서술이 공존(닫지 않음).
+- **13:00 실행 회차 덧붙임**: Yardbarker(상대 관점) 「Alysson was quick, but Gvardiol was quicker」(알리송은 빨랐지만 그바르디올이 더 빨랐다) — WS상 그바르디올 맨시티 왼쪽(ȳ 76~78) · 둘의 파울 경합 4회(알리송 반칙 3) → 측면 돌파 실패는 실측과 같은 방향(obs#1139 · 「D+1 보강 ⑻」).
 
 ### 주앙 고메스 (#35 · 브라질)
 - **실측**: 선발 **LDM** 82′ · SS 6.7 · FM 7.05 · 패스 27/28 · 볼 소유 31 (44, 68) 왼쪽 58% · 수비 액션 13 (36, 65) · 가로채기 3 · 운반(SS) 8회 69m(전진 0) · 수신 22(x̄ 45.5). 60′~ 볼 소유 (38, 74)로 더 왼쪽·아래.
@@ -273,3 +274,16 @@
 
 ### ⑺ DB 반영 (행 추가만)
 - observations #1136(가르나초 사유 정정) · #1137(잭슨 역할 지시) · #1138(맥긴·만잠비 배치 서사 일치) · `match_hypotheses` C4 D1 정정 1행 · `match_videos` #384~#389 요약 · `video_impl_claims` 17행. 시즌 정본·경기 프리셋·처방 변경 없음(서사가 실측 판정을 바꾸지 않음).
+
+### ⑻ 13:00 실제 실행 회차 델타 (2026-10-25 13:00 · 앞 블록은 07:16 커밋 52e623e에 선반영)
+
+> 같은 예약의 정시 실행. 07:16 이후 새 자료만 훑었다. 실측 재수집 없음 · 당일 판정·대조표 변경 **0**.
+
+- **필수 채널 4곳(yt-dlp 최신 목록 · 13:0x)**: UTV · The Villans · 1874 · Jacob Horsfall — **07:16 이후 새 업로드 0**(UTV 최신 qcGR9TddiPo · 1874 최신 라이브 1Xv_Y_4iecc 둘 다 전사 완료 · The Villans 2wNasTobcec 경기 전 · Horsfall sh16rkzsmuw 빌라 아님). 전사 추가 0.
+- **알리송 ↔ 그바르디올(새 · obs#1139)**: Yardbarker(Alyssa Clang · 10-24 · 상대 관점 · 직접 fetch) 「He was tasked with neutralizing Villa's exciting Brazilian winger Alysson」(빌라의 브라질 윙어 알리송을 무력화하는 임무를 받았다) · 「Alysson was quick, but Gvardiol was quicker」(알리송은 빨랐지만 그바르디올이 더 빨랐다). **WS 대조**: 그바르디올 ȳ 76.2(1H)·78.0(2H) = 맨시티 왼쪽 → 알리송과 같은 측면 · 둘의 파울 경합 4회(13′·44′·56′ 알리송 반칙 — 빌라 x 84·90·61 높은 위치 · 24′ 알리송 피파울) · 알리송 드리블 1/2. ⇒ 「그 측면 돌파 실패」는 실측과 같은 방향, 「전담 임무」는 포지션상 자연 대면이라 지시 근거 아님. 쟁점 #14 표본 추가(단독으로 닫지 않음).
+- **가르나초**: 새 1차 발언 0 — 기존 Hayters/BirminghamLive 인용의 재전재(Football365 · SportBible · LiveScore). 새 맥락 2건(모두 **LOW** · 판정 반영 없음): GOAL US 「Villa executed an identical manoeuvre with … Harvey Elliott last season」(지난 시즌 엘리엇에게도 같은 조치를 했다) — Football Insider 루머 재가공 · footballtransfers 「last ditch attempt … after Unai Emery showdown talks」(에메리와 담판 뒤 마지막 시도 · 제목만 · 원문 미확인).
+- **맥긴**: RotoWire 「three crosses (zero accurate) and two corners」(크로스 3회(정확 0)·코너킥 2회) — 도움·기회 창출 4는 기존 실측과 같음. 스코틀랜드 매체 새 기사 0.
+- **고메스**: 포르투갈어 새 기사 0(somosfanaticos 본인 발언은 07:16 반영분과 같은 것).
+- **Tanswell**: 검색 색인상 경기 후 기사·트윗 **0**(색인된 최신은 경기 전 만잠비 출전 판단·「I am not celebrating」(축하하지 않는다) 회견 트윗) — D+2 headful X 재시도 유지.
+- **0건 검색어 기록**: 스페인어 「Garnacho afuera de la convocatoria Aston Villa Emery City」·「Garnacho … Olé OR TyC OR Clarín」 · 포르투갈어 「Alysson Aston Villa Manchester City atuação」·「Alysson Gvardiol … brasileiro ponta」·「"João Gomes" Aston Villa City vitória volante」 · 스코틀랜드 「McGinn … Herald OR Scotsman OR "Scottish Sun"」 · 영어 「… player ratings Birmingham Live Townley」(검색 미노출) · 「Jacob Tanswell … October 2026」. 에메리 스페인어 원어 **여전히 0**.
+- **DB(행 추가만)**: observations #1139 1행. 가설·대조표 정정 행 없음(새 근거로 닫히는 항목 없음). 시즌 정본·프리셋·처방 변경 없음.
