@@ -78388,6 +78388,13 @@
    "price": 650,
    "pulled": "2026-10-18"
   },
+  "214649": {
+   "has_price": 1,
+   "momentum": null,
+   "platform": "ps5",
+   "price": 192000,
+   "pulled": "2026-10-26"
+  },
   "214676": {
    "has_price": 1,
    "momentum": null,
@@ -83457,20 +83464,20 @@
     "challenge_ea_id": 113,
     "challenge_type": "BRICK_CHALLENGE",
     "cheapest_price": 4450,
-    "chem_total": null,
+    "chem_total": 5,
     "description": "Find the scary candy and earn a Mixed Players Pack.",
     "hidden_reason": null,
     "name": "Scary Candy",
-    "note": "막힌 칸 미기록 — 인원이 11명보다 적고 케미 조건이 있어, 인게임에서 막힌 칸을 입력하기 전에는 풀지 않는다(fut_club.py sbc_formation --blocked)",
+    "note": "남은 위반: Nations: Max. 4 / Chemistry: Min. 16",
     "pool_size": 22,
     "rec_formation": "4-2-3-1 (2)",
     "requirements_text": "[\"Same league: Max. 5 players\", \"Same club: Min. 2 players\", \"Nations: Max. 4\", \"Quality: Min. 5 Gold players\", \"Quality: Min. Silver\", \"Chemistry: Min. 16\", \"Players: 6\"]",
     "set_ea_id": 73,
     "solve_conf": "판정 근거 등급: 조건·보상=A(fut.gg) · 카드 등급(Bronze/Silver/Gold)=D(OVR 구간 통설) · 팀 레이팅 산식=D(EA 비공개·커뮤니티식) · 케미=화면과 같은 FC27 기준선. ⛔ not_found는 불가 증명이 아니다 — 탐색이 최적을 보장하지 않는다.",
     "solved_at": "2026-10-26",
-    "squad_json": null,
-    "team_rating": null,
-    "verdict": "need_form"
+    "squad_json": "{\"formation\": \"4-2-3-1 (2)\", \"blocked\": [\"LB\", \"LDM\", \"LM\", \"RDM\", \"RM\"], \"formation_known\": true, \"partial\": true, \"players\": [{\"id\": 289, \"name\": \"무소\", \"ovr\": 82, \"club\": \"Atlético de Madrid\", \"league\": \"LALIGA EA SPORTS\", \"nation\": \"Argentina\", \"untradeable\": 1, \"pos\": [\"GK\"], \"card\": \"https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/2027/futgg-player-item-card/27-214979.b0f333a3764ab9ce3ba72bb0d53a1715e097a12873fe70fc02b91a591bf2c0e0.webp\", \"slot\": \"GK\", \"x\": 50, \"y\": 6, \"fit\": true, \"want\": [\"GK\"], \"chem\": 2}, {\"id\": 327, \"name\": \"Pascal Groß\", \"ovr\": 81, \"club\": \"Brighton\", \"league\": \"Premier League\", \"nation\": \"Germany\", \"untradeable\": 1, \"pos\": [\"CDM\", \"CM\"], \"card\": \"https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/2027/futgg-player-item-card/27-50522413.59f598b046ef777a3fc223239a9becec29d287202dedba07282e442825e7e84a.webp\", \"slot\": \"RB\", \"x\": 88, \"y\": 26, \"fit\": false, \"want\": [\"RB\"], \"chem\": 0}, {\"id\": 282, \"name\": \"Luka Vušković\", \"ovr\": 84, \"club\": \"Brighton\", \"league\": \"Premier League\", \"nation\": \"Croatia\", \"untradeable\": 1, \"pos\": [\"CB\"], \"card\": \"https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/2027/futgg-player-item-card/27-50606840.58a5c1fd59683f2714ce11785deb3777a7fffacc19289705c52f2d82547148aa.webp\", \"slot\": \"RCB\", \"x\": 66, \"y\": 22, \"fit\": true, \"want\": [\"CB\"], \"chem\": 0}, {\"id\": 756, \"name\": \"Antonio Rüdiger\", \"ovr\": 83, \"club\": \"Real Madrid\", \"league\": \"LALIGA EA SPORTS\", \"nation\": \"Germany\", \"untradeable\": 0, \"pos\": [\"CB\"], \"card\": \"https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/2027/futgg-player-item-card/27-205452.0a812f46500fea00d03cee339efa81eaef88326fa3df87375819d9e0840f2c78.webp\", \"slot\": \"LCB\", \"x\": 34, \"y\": 22, \"fit\": true, \"want\": [\"CB\"], \"chem\": 1}, {\"id\": 481, \"name\": \"이강인\", \"ovr\": 84, \"club\": \"Atlético de Madrid\", \"league\": \"LALIGA EA SPORTS\", \"nation\": \"Korea Republic\", \"untradeable\": 1, \"pos\": [\"CAM\", \"CM\", \"RM\", \"RW\"], \"card\": \"https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/2027/futgg-player-item-card/27-50575428.543884a482e5c712730d5c0424605c9f5631ee5c2f7222f7bba532f93398a11f.webp\", \"slot\": \"CAM\", \"x\": 50, \"y\": 66, \"fit\": true, \"want\": [\"CAM\"], \"chem\": 2}, {\"id\": 640, \"name\": \"Youri Tielemans\", \"ovr\": 85, \"club\": \"Man Utd\", \"league\": \"Premier League\", \"nation\": \"Belgium\", \"untradeable\": 1, \"pos\": [\"CAM\", \"CDM\", \"CM\"], \"card\": \"https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/2027/futgg-player-item-card/27-50548041.700a223d84a71c5ddbe26c303c3adae3570d2267bd6914e875e37c6a3711e4c0.webp\", \"slot\": \"ST\", \"x\": 50, \"y\": 88, \"fit\": false, \"want\": [\"ST\"], \"chem\": 0}], \"checks\": [{\"text\": \"스쿼드에 골키퍼 정확히 1명(EA 규칙 · 조건 문장에 없지만 없으면 제출 자체가 안 된다)\", \"ok\": true, \"gap\": 0, \"kind\": \"gk\"}, {\"text\": \"Same league: Max. 5 players\", \"ok\": true, \"gap\": 0, \"kind\": \"same\"}, {\"text\": \"Same club: Min. 2 players\", \"ok\": true, \"gap\": 0, \"kind\": \"same\"}, {\"text\": \"Nations: Max. 4\", \"ok\": false, \"gap\": 1, \"kind\": \"distinct\"}, {\"text\": \"Quality: Min. 5 Gold players\", \"ok\": true, \"gap\": 0, \"kind\": \"min_tier\"}, {\"text\": \"Quality: Min. Silver\", \"ok\": true, \"gap\": 0, \"kind\": \"qual_min\"}, {\"text\": \"Chemistry: Min. 16\", \"ok\": false, \"gap\": 11, \"kind\": \"chem\"}, {\"text\": \"Players: 6\", \"ok\": true, \"gap\": 0, \"kind\": \"size\"}], \"buy\": [{\"slot\": \"RB\", \"pos\": [\"RB\"], \"club\": \"Real Madrid\", \"league\": \"LALIGA EA SPORTS\", \"nation\": \"Germany\", \"ovr\": 81, \"replaces\": \"Pascal Groß\", \"was_fit\": false, \"gain\": 5, \"chem_after\": 10, \"left\": 7, \"quality\": [\"Quality: Min. Silver\"], \"market\": []}, {\"slot\": \"ST\", \"pos\": [\"ST\"], \"club\": \"Atlético de Madrid\", \"league\": \"LALIGA EA SPORTS\", \"nation\": \"Croatia\", \"ovr\": 85, \"replaces\": \"Youri Tielemans\", \"was_fit\": false, \"gain\": 7, \"chem_after\": 16, \"left\": 0, \"quality\": [\"Quality: Min. Silver\"], \"market\": [{\"ea\": 214649, \"name\": \"Davor Šuker\", \"ovr\": 87, \"pos\": \"ST\", \"club\": null, \"price\": 192000, \"club_ok\": false}]}], \"hints\": [{\"text\": \"Nations: Max. 4\", \"how\": \"국적 종류를 줄여야 한다 — 이미 쓰는 국적에서 더 사 모아야 한다\"}, {\"text\": \"Chemistry: Min. 16\", \"how\": \"케미가 모자란다 — 같은 클럽·리그·국적을 묶어야 오른다\"}]}",
+    "team_rating": 83,
+    "verdict": "not_found"
    },
    {
     "awards_text": "[]",
