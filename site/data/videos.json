@@ -2,7 +2,7 @@
  "all": [
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 390,
    "impl_claims": [
     {
@@ -312,14 +312,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -328,8 +328,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "이 경기 볼 소유 (63, 22) 오른쪽 75%·깊은 수신 5 · 커널 RM 1위 wm_insidefwd/Attack .455(Δ.002 무결정) · wm_winger .447 — Δ≤.05 구간이라 tie-break 대상. 쟁점 #14 표본(뉴캐슬·바이킹·맨시티 모두 winger 우위)"
+     "verdict": "HELD",
+     "verdict_note": "이 경기 볼 소유 (63, 22) 오른쪽 75%·깊은 수신 5 · 커널 RM 1위 wm_insidefwd/Attack .455(Δ.002 무결정) · wm_winger .447 — Δ≤.05 구간이라 tie-break 대상. 쟁점 #14 표본(뉴캐슬·바이킹·맨시티 모두 winger 우위) [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     }
    ],
    "key_points": [
@@ -1166,14 +1166,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -1182,8 +1182,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "팬 한 줄 평가(auto-caption: Allison=알리송) — 직선 돌파 서술은 윙어 쪽 약한 표본. 수비 복귀 언급 없음. 실측 커널 wm_winger/Attack .809(Δ.274)"
+     "verdict": "HELD",
+     "verdict_note": "팬 한 줄 평가(auto-caption: Allison=알리송) — 직선 돌파 서술은 윙어 쪽 약한 표본. 수비 복귀 언급 없음. 실측 커널 wm_winger/Attack .809(Δ.274) [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     }
    ],
    "key_points": [
@@ -1638,14 +1638,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 7,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-      "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+      "trigger": "2026-10-22 이후 음바예 선발 2경기 (0/2)"
      },
      "player": "음바예",
      "points_kr": null,
@@ -1665,14 +1665,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -1681,8 +1681,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "쟁점 #14 선택지(widemid vs winger) 밖의 IF 서술 — 실측은 우측 레인 47/52(TL 33) · 커널 wm_winger/Attack .809(Δ.274)로 윙어. 컷인은 장면 특성(포커스·PlayStyle 후보)으로만 참고"
+     "verdict": "HELD",
+     "verdict_note": "쟁점 #14 선택지(widemid vs winger) 밖의 IF 서술 — 실측은 우측 레인 47/52(TL 33) · 커널 wm_winger/Attack .809(Δ.274)로 윙어. 컷인은 장면 특성(포커스·PlayStyle 후보)으로만 참고 [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     },
     {
      "axis": "role",
@@ -1775,14 +1775,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -1791,8 +1791,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "auto-caption · 직선 돌파형 윙어 서술 — 윙어 쪽 표본. 수비 복귀 서술 없음"
+     "verdict": "HELD",
+     "verdict_note": "auto-caption · 직선 돌파형 윙어 서술 — 윙어 쪽 표본. 수비 복귀 서술 없음 [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     }
    ],
    "key_points": [
@@ -1884,14 +1884,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 7,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-      "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+      "trigger": "2026-10-22 이후 음바예 선발 2경기 (0/2)"
      },
      "player": "음바예",
      "points_kr": null,
@@ -1911,14 +1911,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -1927,8 +1927,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "auto-caption(Allison=알리송) · 폭·드리블 서술, 수비 복귀 언급 없음 — 이슈 #14 윙어 쪽 표본"
+     "verdict": "HELD",
+     "verdict_note": "auto-caption(Allison=알리송) · 폭·드리블 서술, 수비 복귀 언급 없음 — 이슈 #14 윙어 쪽 표본 [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     }
    ],
    "key_points": [
@@ -2048,14 +2048,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -2064,8 +2064,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "auto-caption · 「넓게 서라」는 감독 지시를 화자가 추정한 것(회견 인용 아님). 실측 우측 레인 47/52와 일치 — 윙어 쪽 표본"
+     "verdict": "HELD",
+     "verdict_note": "auto-caption · 「넓게 서라」는 감독 지시를 화자가 추정한 것(회견 인용 아님). 실측 우측 레인 47/52와 일치 — 윙어 쪽 표본 [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     }
    ],
    "key_points": [
@@ -2202,14 +2202,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -2218,8 +2218,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "auto-caption(Allison=알리송) · 공격 서술은 윙어 쪽, 「풀백 지원 복귀」는 widemid 쪽 신호도 함께 — 실측 수비 액션 5(RB 존 1)로 이 경기 수비 비중 낮음. 이슈 #14 양쪽 표본"
+     "verdict": "HELD",
+     "verdict_note": "auto-caption(Allison=알리송) · 공격 서술은 윙어 쪽, 「풀백 지원 복귀」는 widemid 쪽 신호도 함께 — 실측 수비 액션 5(RB 존 1)로 이 경기 수비 비중 낮음. 이슈 #14 양쪽 표본 [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     },
     {
      "axis": "role",
@@ -2312,14 +2312,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -2328,8 +2328,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "auto-caption · 팬 인상 — 윙어 쪽 표본(커널 wm_winger/Attack .809와 일치). 수비 복귀 서술은 없음"
+     "verdict": "HELD",
+     "verdict_note": "auto-caption · 팬 인상 — 윙어 쪽 표본(커널 wm_winger/Attack .809와 일치). 수비 복귀 서술은 없음 [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     },
     {
      "axis": "role",
@@ -2502,14 +2502,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -2518,8 +2518,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "auto-caption · 커널 wm_winger/Attack .809(Δ.274)와 일치. 이 경기는 우측 수비를 고메스·맥긴이 맡아 수비 복귀형 판정에는 쓸 수 없다(조건부 표본)"
+     "verdict": "HELD",
+     "verdict_note": "auto-caption · 커널 wm_winger/Attack .809(Δ.274)와 일치. 이 경기는 우측 수비를 고메스·맥긴이 맡아 수비 복귀형 판정에는 쓸 수 없다(조건부 표본) [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     },
     {
      "axis": "role",
@@ -2529,14 +2529,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 7,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-      "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+      "trigger": "2026-10-22 이후 음바예 선발 2경기 (0/2)"
      },
      "player": "음바예",
      "points_kr": null,
@@ -2598,6 +2598,114 @@
    "transcript_path": "reports/transcripts/WQvl_3aAF0U.en.md",
    "url": "https://www.youtube.com/watch?v=WQvl_3aAF0U",
    "video_id": "WQvl_3aAF0U"
+  },
+  {
+   "channel": "1874",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-26] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 391,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "gk_distribution",
+     "field_kr": "GK 배급",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 3,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
+      "trigger": "2026-10-21 이후 스즈키 지온 GK 선발 2경기 (1/2)"
+     },
+     "player": null,
+     "points_kr": null,
+     "quote": "「when the ball comes to his feet he's like an extra outfielder」(발밑에 공이 오면 필드 플레이어가 한 명 더 있는 것 같다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "GK acts as an extra outfielder when the ball is at his feet",
+     "value_kr": "발밑 공 처리 시 필드 플레이어 한 명 추가처럼 빌드업 관여",
+     "verdict": "HELD",
+     "verdict_note": "ballplaying 쪽 서술 — 쟁점 #3(스즈키 GK 선발 2경기 · 현재 1/2) 트리거까지 정본 유지 · 팬 패널 서술이라 실측(GK 패스 수·롱킥 비율)으로만 판정"
+    },
+    {
+     "axis": "instruction",
+     "field": "st_profile",
+     "field_kr": "ST 기능",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 5,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
+      "trigger": "2026-10-21 이후 잭슨 선발 3경기 (1/3)"
+     },
+     "player": null,
+     "points_kr": null,
+     "quote": "「Gets himself in great positions whether that be pulling wide or getting himself in the box to try and sniff out a chance」(측면으로 빠지든 박스로 들어가 기회를 노리든 좋은 위치를 잡는다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "pulls wide or gets into the box, stretches the defence and holds the ball up",
+     "value_kr": "측면으로 빠지거나 박스 침투 · 수비 라인을 늘리고 홀드업",
+     "verdict": "HELD",
+     "verdict_note": "기존 쟁점 #5 묶음(채널·홀드업)과 같은 서술 — 맨시티전 잭슨 볼 소유 왼쪽 48% · 깊은 수신 7(행 #587 실측). 쟁점 #5 트리거(잭슨 선발 3경기 · 현재 1/3)까지 유지"
+    },
+    {
+     "axis": "team_axis",
+     "field": "build_up_style",
+     "field_kr": "빌드업 스타일",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 1,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "AVL 빌드업 스타일: Balanced·Counter·Short",
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
+     },
+     "player": null,
+     "points_kr": null,
+     "quote": "「We still try and build it from the back … but I think the difference is now is that they're also prepared to go long when they need to」(여전히 후방에서 빌드업하지만, 이제 차이는 필요하면 길게 차는 것도 마다하지 않는다는 점이다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Balanced",
+     "value_kr": "균형(골킥은 후방 빌드업 · 오픈 플레이는 필요시 롱볼·직선 전개)",
+     "verdict": "HELD",
+     "verdict_note": "정본 Balanced와 같은 방향 — 맨시티전 롱볼 20% · 바이킹전 6.8%(쟁점 #1 기존 행 #580 실측)로 상대에 따라 롱볼 비중이 갈린다는 서술과 일치. 쟁점 #1 트리거(10-21 이후 리그 5경기 · 현재 1/5)까지 유지"
+    }
+   ],
+   "key_points": [
+    "빌드업: 「We still try and build it from the back like we have done in previous seasons with Emery, but … they're also prepared to go long when they need to」(에메리 체제 이전 시즌처럼 여전히 후방 빌드업을 하지만, 필요하면 길게 차는 것도 마다하지 않는다) — 골킥이 아닌 오픈 플레이에서는 「quite direct」(꽤 직선적)",
+    "GK 배급: 「when the ball comes to his feet he's like an extra outfielder」(발밑에 공이 오면 필드 플레이어가 한 명 더 있는 것 같다) — 왓킨스·마르티네스 대체 영입(잭슨·스즈키)이 기대 이상이라는 맥락",
+    "잭슨: 「Gets himself in great positions whether that be pulling wide or getting himself in the box」(측면으로 빠지든 박스로 들어가든 좋은 위치를 잡는다) · 수비 라인을 늘리고 홀드업 · 25세 · 이적료 6,500만 파운드 언급",
+    "만잠비: 가장 인상적인 영입 — 로저스와 비슷한 거리를 운반하지만 몸 동작·마무리가 더 세련됐다는 평 · 피트니스가 갖춰지자 곧바로 선발 투입(에메리가 모든 신입에게 하지 않는 일)",
+    "고메스: 디 애슬레틱 빌라 담당 기자 전언으로 「he'll do what Tielemans did and more」(틸레망스가 한 것 이상을 할 것) — 1차 근거 아님 · 고레츠카는 부상 후 적응 중",
+    "로테이션: 「we can mix and match players and actually not be weakened」(선수를 바꿔 써도 약해지지 않는다) — 지난 시즌과 달리 같은 코어에 의존하지 않는다는 평가"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-21",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "1874가 다시 올린 talkSPORT 출연분(10분 · 게시 10-21 · 맨시티전·바이킹전 이전)에서 빌라 팬 패널 댄 바델(Dan Bardell)이 여름 영입을 총평한다. 에메리가 핵심 선수 매각·PSR 속에서도 팀을 제자리에 돌려놓는다고 보며, 뉴캐슬 원정 1-0(맥긴 선발 제외)을 스쿼드 깊이의 증거로 든다. 스타일은 「We still try and build it from the back … but … they're also prepared to go long when they need to」(여전히 후방 빌드업을 하지만 필요하면 길게 차는 것도 마다하지 않는다)로 요약한다 — 골킥이 아닐 때는 꽤 직선적이라는 것. 새 GK는 「when the ball comes to his feet he's like an extra outfielder」(발밑에 공이 오면 필드 플레이어가 한 명 더 있는 것 같다)고 하고, 잭슨은 측면으로 빠지거나 박스로 들어가 기회를 노리며 수비를 늘리고 공을 지킨다고 평가한다. 가장 인상적인 영입으로 만잠비(21세 · 이적료 5천만~6천만 파운드 추정 · 뉴캐슬 결승 헤더)를 꼽고, 고메스는 틸레망스처럼 성장할 여지가 있다고 디 애슬레틱 빌라 담당 기자의 말을 전한다(전언). 맨시티전·바이킹전 승리를 예상한다(예측일 뿐 · 실제 결과 2-1·3-1 승).",
+   "team_code": "AVL",
+   "title": "Dan Bardell at talkSPORT: Aston Villa's Summer Recruitment Has Been Exceptional",
+   "transcript_path": "reports/transcripts/4ITEh-CnWtY.en.md",
+   "url": "https://www.youtube.com/watch?v=4ITEh-CnWtY",
+   "video_id": "4ITEh-CnWtY"
   },
   {
    "channel": "1874 : The Aston Villa Channel",
@@ -2737,14 +2845,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 7,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-      "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+      "trigger": "2026-10-22 이후 음바예 선발 2경기 (0/2)"
      },
      "player": "음바예",
      "points_kr": null,
@@ -2764,14 +2872,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -2780,8 +2888,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "우측 윙어로 폭·1대1 돌파 담당, 주 발은 왼발이나 바깥으로도 돌파 — 이슈 #14(수비 복귀형 vs 윙어) 표본, 수비 복귀 기여는 영상 2에 수치"
+     "verdict": "HELD",
+     "verdict_note": "우측 윙어로 폭·1대1 돌파 담당, 주 발은 왼발이나 바깥으로도 돌파 — 이슈 #14(수비 복귀형 vs 윙어) 표본, 수비 복귀 기여는 영상 2에 수치 [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     },
     {
      "axis": "role",
@@ -2967,14 +3075,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -2983,8 +3091,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "우측 윙어로 1대1 돌파·왼발 컷 후 크로스 — 이슈 #14(수비 복귀형 vs 윙어) 표본, 수비 기여 수치는 실측 대조 필요"
+     "verdict": "HELD",
+     "verdict_note": "우측 윙어로 1대1 돌파·왼발 컷 후 크로스 — 이슈 #14(수비 복귀형 vs 윙어) 표본, 수비 기여 수치는 실측 대조 필요 [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     },
     {
      "axis": "role",
@@ -3021,14 +3129,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 7,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-      "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+      "trigger": "2026-10-22 이후 음바예 선발 2경기 (0/2)"
      },
      "player": "음바예",
      "points_kr": null,
@@ -3341,14 +3449,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -3357,8 +3465,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "우측 윙어로 1대1·박스 진입 서술 — 이슈 #14 표본(비교 서술: 좌측에서 슈팅 장면도 언급되어 좌우 서술 엇갈림)"
+     "verdict": "HELD",
+     "verdict_note": "우측 윙어로 1대1·박스 진입 서술 — 이슈 #14 표본(비교 서술: 좌측에서 슈팅 장면도 언급되어 좌우 서술 엇갈림) [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     },
     {
      "axis": "role",
@@ -3368,14 +3476,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 7,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-      "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+      "trigger": "2026-10-22 이후 음바예 선발 2경기 (0/2)"
      },
      "player": "음바예",
      "points_kr": null,
@@ -3565,14 +3673,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 7,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-      "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+      "trigger": "2026-10-22 이후 음바예 선발 2경기 (0/2)"
      },
      "player": "음바예",
      "points_kr": null,
@@ -3674,14 +3782,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -3690,8 +3798,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "팬 평가 · 폭·크로스 서술은 윙어 쪽. 수비 복귀 언급 없음 — 이슈 #14 표본 1건(실측 커널 wm_winger/Attack .809)"
+     "verdict": "HELD",
+     "verdict_note": "팬 평가 · 폭·크로스 서술은 윙어 쪽. 수비 복귀 언급 없음 — 이슈 #14 표본 1건(실측 커널 wm_winger/Attack .809) [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     }
    ],
    "key_points": [
@@ -4300,14 +4408,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": null,
      "points_kr": null,
@@ -4316,8 +4424,8 @@
      "team_code": "AVL",
      "value": "right-sided midfielder (Alisson, later McGinn) fills the space between the full-backs to shut down Newcastle's left (Hall/Barnes)",
      "value_kr": "우측 미드필더가 풀백 사이를 메워 상대 좌측(홀·반스) 봉쇄",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 알리송·맥긴 히트맵/수비 액션 위치와 뉴캐슬 좌측(홀·반스) 터치·크로스 수"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 알리송·맥긴 히트맵/수비 액션 위치와 뉴캐슬 좌측(홀·반스) 터치·크로스 수 [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     }
    ],
    "key_points": [
@@ -4720,14 +4828,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -4736,8 +4844,8 @@
      "team_code": "AVL",
      "value": "wide forward tracks back to double Harvey Barnes with Cash",
      "value_kr": "알리송이 내려와 캐시와 함께 하비 반스 협력 수비",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 알리송 전반 수비 행동(태클·리커버리)·위치 — 채널 해석이며 에메리 발언 아님"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 알리송 전반 수비 행동(태클·리커버리)·위치 — 채널 해석이며 에메리 발언 아님 [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     }
    ],
    "key_points": [
@@ -6237,14 +6345,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 14,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
      },
      "player": "알리송",
      "points_kr": null,
@@ -6253,8 +6361,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 필요: 알리송 뉴캐슬전 45분 수비 기여(태클·인터셉트·자기 진영 터치)와 히트맵으로 wm_widemid(수비 복귀형) vs wm_winger 판별"
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 필요: 알리송 뉴캐슬전 45분 수비 기여(태클·인터셉트·자기 진영 터치)와 히트맵으로 wm_widemid(수비 복귀형) vs wm_winger 판별 [쟁점 #14 판정 2026-10-26 → HELD] 알리송 선발 3경기(2026-10-26 대조): 커널 winger≥widemid 3/3 — 뉴캐슬 RM winger/Balanced .857 vs widemid/Support .806(Δ.051) · 바이킹 winger/Attack .809 vs widemid .410(Δ.399) · 맨시티 IF .455·wideplm .454·winger .447·widemid .435(4역할 Δ≤.02 무결정). 수비 기여는 상대 강도에 갈림 — 뉴캐슬 45′ 태클2·인터셉트1·avg_x 51 / 맨시티 59′ 태클3·인터셉트1·avg_x 56 / 바이킹 75′ 0·0·avg_x 74. ⇒ 정본 RM wm_winger/Attack(#761) 유지(widemid 미채택). 강팀 상대 수비 복귀형 신호가 있어 선발 3경기 더 감시"
     }
    ],
    "key_points": [
@@ -7980,14 +8088,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 7,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-      "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+      "trigger": "2026-10-22 이후 음바예 선발 2경기 (0/2)"
      },
      "player": "음바예",
      "points_kr": null,
@@ -9673,14 +9781,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 30,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "설정 축 없는 성향: 볼 처리 속도·크로스 빈도",
-      "trigger": "2026-10-21 이후"
+      "trigger": "2026-10-27 이후 리그 5경기 (0/5)"
      },
      "player": null,
      "points_kr": null,
@@ -9689,8 +9797,8 @@
      "team_code": "AVL",
      "value": "fewest crosses in PL by choice; every action must have a purpose",
      "value_kr": "크로스를 의도적으로 적게 한다",
-     "verdict": "PENDING",
-     "verdict_note": "「PL 크로스 최저」 수치 출처 미기재. FC26 팀 전술에 크로스 빈도 직접 축이 있는지 game_system_changes로 확인 필요. 판정 조건: 26/27 PL 경기별 크로스 수 실측(SofaScore)이 리그 하위권으로 확인되고 대응 게임 축이 있으면"
+     "verdict": "HELD",
+     "verdict_note": "「PL 크로스 최저」 수치 출처 미기재. FC26 팀 전술에 크로스 빈도 직접 축이 있는지 game_system_changes로 확인 필요. 판정 조건: 26/27 PL 경기별 크로스 수 실측(SofaScore)이 리그 하위권으로 확인되고 대응 게임 축이 있으면 [쟁점 #30 판정 2026-10-26 → HELD] 문서 대조(2026-10-26): FC27 팀 설정·지시에 크로스 빈도 축 없음(game_system_changes FC27 tactics 행 #14·#20은 Team Press만 · docs/22 Whipped Pass는 크로스 정확도·속도·커브로 빈도와 무관 · docs/22 PlayStyle 표 기준). 혼잡 지역 볼 처리 속도도 설정 축이 없고 선수 축(Press Proven 조깅 드리블 쉴딩 · First Touch 수신)만 근사 — 설정 이식 불가 → 정본 변경 없음. reproduction_limits 신규 행 등록은 사용자 판단 대기(#39·#46과 같은 유형). 리그 5경기 뒤 크로스 수 실측으로 재판정"
     },
     {
      "axis": "role",
@@ -15514,14 +15622,14 @@
      "headline_kr": "혼잡 지역 볼 처리 속도가 약점",
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 30,
-      "phase": "decide",
-      "resolution": null,
+      "phase": "watch",
+      "resolution": "HELD",
       "status": "open",
       "title": "설정 축 없는 성향: 볼 처리 속도·크로스 빈도",
-      "trigger": "2026-10-21 이후"
+      "trigger": "2026-10-27 이후 리그 5경기 (0/5)"
      },
      "player": null,
      "points_kr": "[\"구조적 약점\", \"바클리·부엔디아·헤밍스가 같은 함정\"]",
@@ -15530,8 +15638,8 @@
      "team_code": "AVL",
      "value": "혼잡 지역에서의 볼 처리 속도가 구조적 약점 — 바클리·부엔디아·헤밍스가 같은 함정에 빠진다",
      "value_kr": "혼잡 지역에서의 볼 처리 속도가 구조적 약점 — 바클리·부엔디아·헤밍스가 같은 함정에 빠진다",
-     "verdict": "PENDING",
-     "verdict_note": "⭐⭐ **세 소스가 같은 결손을 서로 다른 층위에서 지목했다**: ⑴ `yMmxDTdffv4` 「중앙 좁은 공간에서 위험한 잔기술」(위치) ⑵ `tq5_q0cl5hM` 「점유에 목적이 없다」(의도) ⑶ 이 영상 「혼잡 지역 처리 속도」(개인 기능, 3명 지목). ⛔ 그런데 **FC26에 「볼 처리 속도」 설정 축이 없다** — 이건 능력치·PlayStyle 층(docs/22)이지 역할 층이 아니다. ⇒ 마감 조건: ⓐ docs/22 PlayStyle 축(예: Press Proven·Technical)에서 대응물을 찾을지 판단 ⓑ 아니면 `reproduction_limits`에 「개인 볼 처리 속도는 전술 설정 축이 아니다」로 등록. **⚠️ 팀 설정 3축(build_up_style) 주장으로 잘못 편입하지 말 것** — 층이 다르다."
+     "verdict": "HELD",
+     "verdict_note": "⭐⭐ **세 소스가 같은 결손을 서로 다른 층위에서 지목했다**: ⑴ `yMmxDTdffv4` 「중앙 좁은 공간에서 위험한 잔기술」(위치) ⑵ `tq5_q0cl5hM` 「점유에 목적이 없다」(의도) ⑶ 이 영상 「혼잡 지역 처리 속도」(개인 기능, 3명 지목). ⛔ 그런데 **FC26에 「볼 처리 속도」 설정 축이 없다** — 이건 능력치·PlayStyle 층(docs/22)이지 역할 층이 아니다. ⇒ 마감 조건: ⓐ docs/22 PlayStyle 축(예: Press Proven·Technical)에서 대응물을 찾을지 판단 ⓑ 아니면 `reproduction_limits`에 「개인 볼 처리 속도는 전술 설정 축이 아니다」로 등록. **⚠️ 팀 설정 3축(build_up_style) 주장으로 잘못 편입하지 말 것** — 층이 다르다. [쟁점 #30 판정 2026-10-26 → HELD] 문서 대조(2026-10-26): FC27 팀 설정·지시에 크로스 빈도 축 없음(game_system_changes FC27 tactics 행 #14·#20은 Team Press만 · docs/22 Whipped Pass는 크로스 정확도·속도·커브로 빈도와 무관 · docs/22 PlayStyle 표 기준). 혼잡 지역 볼 처리 속도도 설정 축이 없고 선수 축(Press Proven 조깅 드리블 쉴딩 · First Touch 수신)만 근사 — 설정 이식 불가 → 정본 변경 없음. reproduction_limits 신규 행 등록은 사용자 판단 대기(#39·#46과 같은 유형). 리그 5경기 뒤 크로스 수 실측으로 재판정"
     },
     {
      "axis": "role",
@@ -18605,14 +18713,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 7,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-      "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+      "trigger": "2026-10-22 이후 음바예 선발 2경기 (0/2)"
      },
      "player": "음바예",
      "points_kr": null,
@@ -19234,14 +19342,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 7,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-      "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+      "trigger": "2026-10-22 이후 음바예 선발 2경기 (0/2)"
      },
      "player": "음바예",
      "points_kr": null,
@@ -24978,14 +25086,14 @@
   },
   {
    "closed": null,
-   "due": true,
+   "due": false,
    "hold": false,
    "id": 7,
    "phase": "decide",
    "resolution": null,
    "status": "open",
    "title": "음바예 역할: 터치라인 윙어 vs 인사이드 포워드",
-   "trigger": "2026-08-11 이후 음바예 선발 3경기 (3/3)"
+   "trigger": "2026-10-22 이후 음바예 선발 2경기 (0/2)"
   },
   {
    "closed": null,
@@ -25055,14 +25163,14 @@
   },
   {
    "closed": null,
-   "due": true,
+   "due": false,
    "hold": false,
    "id": 14,
-   "phase": "decide",
-   "resolution": null,
+   "phase": "watch",
+   "resolution": "HELD",
    "status": "open",
    "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-   "trigger": "2026-08-11 이후 알리송 선발 3경기 (3/3)"
+   "trigger": "2026-10-27 이후 알리송 선발 3경기 (0/3)"
   },
   {
    "closed": null,
@@ -25231,14 +25339,14 @@
   },
   {
    "closed": null,
-   "due": true,
+   "due": false,
    "hold": false,
    "id": 30,
-   "phase": "decide",
-   "resolution": null,
+   "phase": "watch",
+   "resolution": "HELD",
    "status": "open",
    "title": "설정 축 없는 성향: 볼 처리 속도·크로스 빈도",
-   "trigger": "2026-10-21 이후"
+   "trigger": "2026-10-27 이후 리그 5경기 (0/5)"
   },
   {
    "closed": null,
