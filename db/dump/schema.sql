@@ -611,7 +611,7 @@ CREATE TABLE fc_evolutions(
   number_of_players INTEGER,            -- fut.gg 집계 적용 가능 선수 수(전체 DB 기준)
   is_expired INTEGER NOT NULL DEFAULT 0,
   source TEXT, confidence TEXT,
-  pulled TEXT NOT NULL, carried_from TEXT, name_kr TEXT, description_kr TEXT, levels_kr TEXT, repeat_total_ea INTEGER, ea_evo_id INTEGER, event_token_id INTEGER,                 -- 진화는 기간제 — 시점이 정본
+  pulled TEXT NOT NULL, carried_from TEXT, name_kr TEXT, description_kr TEXT, levels_kr TEXT, repeat_total_ea INTEGER, ea_evo_id INTEGER, event_token_id INTEGER, do_not_generate INTEGER,                 -- 진화는 기간제 — 시점이 정본
   UNIQUE(game_version, evo_id, pulled)
 );
 CREATE TABLE fut_accounts(

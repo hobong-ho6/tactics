@@ -1440,7 +1440,7 @@ const doneScore = (r, pid) => { const d = appliedIn(r, pid);
   return d.length && d.length === (r.ids || []).length && d.every(x => x.finished) ? 1 : 0; };
 /* 그 선수에게 **열려 있지만 fut.gg가 경로를 안 주는** 진화 — 안 적으면 「없다」로 읽힌다(obs#132). */
 const eligOpen = pid => (ELIG_BY_PID[pid] || [])
-  .filter(r => !RULES.neverIds.has(r.evo_id) && !RULES.cosmeticIds.has(r.evo_id) && !RULES.starOnlyIds.has(r.evo_id) && !CONSUMED[r.evo_id]?.exhausted && !hasOpenPath(pid, r.evo_id)
+  .filter(r => CATBYID[r.evo_id] /* 현행 카탈로그에 없는 진화(만료 — 10-20에 끝난 Technical 2543이 「0단계짜리」로 떴다 · 2026-10-26) */ && !RULES.neverIds.has(r.evo_id) && !RULES.cosmeticIds.has(r.evo_id) && !RULES.starOnlyIds.has(r.evo_id) && !CONSUMED[r.evo_id]?.exhausted && !hasOpenPath(pid, r.evo_id)
             && (SHOW_PREM || !RULES.premOnlyIds.has(r.evo_id))
             && (SHOW_LOCKED || !RULES.progressIds.has(r.evo_id))
             && (SHOW_ROLEPP || !RULES.rolesPPIds.has(r.evo_id))
@@ -1973,7 +1973,7 @@ function tryPanel(pid){
   const keys = Object.keys(r.before.at).filter(k => (r.after.at[k] ?? 0) !== (r.before.at[k] ?? 0));
   const tot = keys.reduce((t, k) => t + Math.max(0, (r.after.at[k] ?? 0) - (r.before.at[k] ?? 0)), 0);
   const d = (a, b) => a == null ? '—' : b === a ? `<span class="dim">${a}</span>` : `${a}<b class="${b > a ? 'up' : 'dn'}"> ▸${b}</b>`;
-  return `<div class="trybox"><div class="kv"><b>🔬 미리보기 — 걸면 이렇게 된다</b>
+  return `<div class="trybox trysticky"><div class="kv"><b>🔬 미리보기 — 걸면 이렇게 된다</b>
       <small class="dim">아무것도 기록하지 않는다</small>
       <button class="act" id="trysave">📌 비교에 담기</button>
       ${ownedPickHTML('tryaddown', '⚖️ 보유 카드와 바로 비교…')}

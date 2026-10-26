@@ -135,8 +135,13 @@ export function acquireRoute(c){
     const parts = [c.coins_cost ? `${Number(c.coins_cost).toLocaleString()} 코인` : null, c.points_cost ? `${c.points_cost} FC 포인트` : null].filter(Boolean);
     return { kind: 'pay', label: `진화 랩에서 ${parts.join(' 또는 ')}로 시작`, how: '해금 조건 없이 진화 랩에 열려 있다 — 시작할 때 값을 낸다.' };
   }
+  if (notInLab(c)) return { kind: 'other', label: '진화 랩에 없다 — 얻는 경로 미상',
+                            how: 'fut.gg가 해금 문구·비용을 주지 않고 경로 생성에서도 뺀 진화다(doNotGenerate · migration 126). 과제·SBC·토큰 스토어 보상일 수 있으나 어디서 주는지 확인하지 못했다.' };
   return { kind: 'free', label: '진화 랩에서 바로 시작 (무료)', how: '해금 조건·비용 없이 진화 랩에 열려 있다.' };
 }
+/* ⭐ 해금 문구·비용이 전부 비었는데 fut.gg `doNotGenerate`=1 — 진화 랩에 없는 진화(2026-10-26 사용자 「Anticipate … 내 진화 목록에는 없어」).
+   대조 근거(C): 현행 44종 중 진화 랩에 열린 15종은 전부 0, 해금형은 전부 1(migration 126). NULL(미관측)은 판정하지 않는다. */
+const notInLab = c => c?.do_not_generate === 1 && !unlockCond(c) && !c?.coins_cost && !c?.points_cost;
 
 export function evoRules(EVO, accName){
   const C = EVO?.club || { accounts: [], players: [], log: [] };
@@ -234,6 +239,8 @@ export function evoRules(EVO, accName){
                     「안 했다」로 기록됐으면 지금 게임에서 다시 할 방법이 없다. 목표·토큰처럼 나중에 열릴 수 있는 잠김과 다르다 ⇒ 화면에서 뺀다. */
                  never: manual[c.evo_id] === false && /FC ?\d+ Season \d+ Pass/i.test(cond) };
     }
+    if (!info && notInLab(c) && manual[c.evo_id] !== true)
+      info = { locked: true, unknown: manual[c.evo_id] === undefined, why: '진화 랩에 없다 — 얻는 경로 미상(fut.gg doNotGenerate)', kind: 'obj' };
     if (manual[c.evo_id] === true) info = null;      // 사용자가 해금했다고 기록하면 그것이 이긴다
     if (info) lockInfo[c.evo_id] = info;
   }

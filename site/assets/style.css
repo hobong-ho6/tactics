@@ -575,6 +575,9 @@ button.filt.on{border-color:var(--acc);color:var(--acc);background:rgba(255,138,
 
 /* 🔬 진화 미리보기 — **기록이 아니다**(2026-09-26). 원장에 적는 「진화 완료」와 색을 갈라 둔다. */
 .trybox{border:1px dashed var(--acc);border-radius:8px;padding:7px 9px;margin:6px 0;font-size:12px}
+/* ⭐ 미리보기(걸어 보기) 스탯은 스크롤을 따라다닌다(2026-10-26 사용자 지시 「선수 스탯 영역은 플로팅으로 스크롤 따라다니게」).
+   넓은 화면 = 사이드 패널(.fc-side) 안 스크롤 · 좁은 화면 = 페이지 스크롤 — 둘 다 sticky 한 줄로 된다. 길면 자기 안에서 스크롤한다. */
+.trybox.trysticky{position:sticky;top:0;z-index:6;background:var(--panel);box-shadow:0 4px 12px rgba(0,0,0,.12);max-height:45vh;overflow:auto}
 .trysteps{display:flex;flex-direction:column;gap:4px;margin:5px 0}
 .trystep{border-left:2px solid var(--ok);padding-left:7px}
 .trystep.bad{border-left-color:var(--bad)}
