@@ -706,3 +706,12 @@ h2 small{font-size:12px;font-weight:400}
 i.cv-sw.cv-prog{background:var(--viz-us)} i.cv-sw.cv-rest{background:color-mix(in oklab,var(--viz-us) 30%,transparent)}
 b.cv-sw.cv-est{width:9px;height:9px;border:2px solid var(--txt);border-radius:50%}
 @media(max-width:700px){.cv-grid{grid-template-columns:90px 1fr 1fr;gap:4px 8px}.cv-val{min-width:44px}}
+
+/* SBC 미완성 스쿼드(2026-10-27) — 해법과 한눈에 갈라지게: 피치 위 붉은 띠 + 피치 흐림·빗금 + 워터마크 */
+.sbc-nogo{margin:4px 0 6px;padding:7px 10px;border:2px solid var(--bad);border-radius:8px;background:color-mix(in srgb,var(--bad) 10%,transparent);font-size:13px;line-height:1.5}
+.sbc-nogo>b{color:var(--bad)} .sbc-nogo span{display:block;font-weight:600} .sbc-nogo small{display:block;color:var(--dim)}
+.sbc-pitch.partial{position:relative;outline:2px dashed var(--bad);outline-offset:-2px}
+.sbc-pitch.partial .sbc-slot{opacity:.5;filter:grayscale(.6)}
+.sbc-pitch.partial::after{content:"미완성 · 제출 불가";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;
+  font-size:clamp(18px,4vw,40px);font-weight:800;color:var(--bad);opacity:.35;transform:rotate(-18deg);
+  background:repeating-linear-gradient(135deg,transparent 0 22px,color-mix(in srgb,var(--bad) 8%,transparent) 22px 26px)}
