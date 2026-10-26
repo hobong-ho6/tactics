@@ -34565,6 +34565,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -36411,6 +36412,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -38135,6 +38137,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -40058,6 +40061,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -41891,6 +41895,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -43728,6 +43733,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -45403,6 +45409,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -47112,6 +47119,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -48893,6 +48901,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -50857,6 +50866,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -52746,6 +52756,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -53670,6 +53681,10 @@
    "help": "상대 페널티 박스 안 터치 수(10분당).",
    "label": "상대 박스 터치 /10분",
    "lo_good": false,
+   "say": [
+    "박스 침투는 {w}가 더 잦았다",
+    "박스 침투 빈도는 비슷했다"
+   ],
    "unit": ""
   },
   "def_x": {
@@ -53677,6 +53692,10 @@
    "help": "팀 수비 액션 8종의 평균 x(자기 공격 방향 0~100) — 높을수록 앞에서 막는다. 팀 수비액션 8종(Tackle·Interception·Challenge·Foul·Clearance·BlockedPass·Aerial·BallRecovery)의 x 평균(자기 공격 방향 0~100). 라인 높이 프록시 — core.whoscored.def_x",
    "label": "수비 액션 높이",
    "lo_good": false,
+   "say": [
+    "수비 라인은 {w}가 더 높았다",
+    "수비 라인 높이는 비슷했다"
+   ],
    "unit": ""
   },
   "gk_long_share": {
@@ -53684,6 +53703,10 @@
    "help": "골키퍼 패스 중 롱패스(≥32m) 비율 — 짧은 빌드업에서 직접 배급으로 넘어갔는가.",
    "label": "GK 롱패스 비중",
    "lo_good": false,
+   "say": [
+    "GK 배급은 {w}가 더 길게 찼다",
+    "GK 배급 길이는 비슷했다"
+   ],
    "unit": "%"
   },
   "own_half_pass_pct": {
@@ -53691,6 +53714,10 @@
    "help": "자기 진영(x<50)에서 시도한 패스의 성공 비율 — 상대 압박에 빌드업이 버티는가.",
    "label": "자기 진영 패스 성공률",
    "lo_good": false,
+   "say": [
+    "자기 진영 빌드업은 {w}가 더 안정적이었다",
+    "자기 진영 빌드업 안정성은 비슷했다"
+   ],
    "unit": "%"
   },
   "own_third_losses": {
@@ -53698,6 +53725,10 @@
    "help": "자기 진영 1/3에서 공을 잃은 횟수.",
    "label": "자기 1/3 볼 손실",
    "lo_good": true,
+   "say": [
+    "자기 1/3 볼 손실은 {w}가 더 적었다",
+    "자기 1/3 볼 손실은 비슷했다"
+   ],
    "unit": "회"
   },
   "possession": {
@@ -53705,6 +53736,10 @@
    "help": "구간 점유율.",
    "label": "점유",
    "lo_good": false,
+   "say": [
+    "점유는 {w}가 가져갔다",
+    "점유는 팽팽했다"
+   ],
    "unit": "%"
   },
   "ppda": {
@@ -53712,6 +53747,10 @@
    "help": "상대 패스 수 ÷ 우리 수비 액션 — 낮을수록 강하게 압박한다. 분자=상대가 자기 진영 3/5(x<60)에서 시도한 패스 · 분모=해당 팀 수비액션(Tackle·Interception·Challenge·Foul) 상대 진영 2/5(x>40). 원천=WhoScored matchCentreData(Opta) — core.whoscored.ppda",
    "label": "PPDA",
    "lo_good": true,
+   "say": [
+    "압박은 {w}가 거셌다",
+    "압박 강도는 비슷했다"
+   ],
    "unit": ""
   },
   "shots_p10": {
@@ -53719,6 +53758,10 @@
    "help": "슈팅 수(10분당).",
    "label": "슈팅 /10분",
    "lo_good": false,
+   "say": [
+    "슈팅은 {w}가 더 많이 때렸다",
+    "슈팅 빈도는 비슷했다"
+   ],
    "unit": ""
   },
   "xg": {
@@ -53726,6 +53769,10 @@
    "help": "그 구간에 쌓인 기대득점.",
    "label": "구간 xG",
    "lo_good": false,
+   "say": [
+    "기회의 질은 {w}가 앞섰다",
+    "기회의 질은 비슷했다"
+   ],
    "unit": ""
   }
  },

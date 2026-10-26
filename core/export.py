@@ -22,7 +22,7 @@ from . import gallery as GAL
 from .game_version import current as current_gv
 from .kernel import Kernel as _KernelCls
 _KEXP = _KernelCls.EXPECTED
-from .whoscored import PHASE_METRICS, PHASE_GROUPS
+from .whoscored import PHASE_METRICS, PHASE_GROUPS, phase_verdicts
 from core.db import connect as connect_db
 
 SITE_DATA = ROOT / "site" / "data"
@@ -1019,6 +1019,7 @@ def export_all(db_path=None, window="2026-summer"):
             report["phase_metrics"] = _rows(con, """SELECT side, metric, seg_from, seg_to, value, n, note
                                                     FROM match_phase_metrics WHERE report_id=?
                                                     ORDER BY metric, side, seg_from""", (report["id"],))
+            report["phase_verdicts"] = phase_verdicts(report["phase_metrics"])   # 「경기 흐름」 칸별 한줄평 원료(core.whoscored)
             # 부상 — 새 표가 아니라 player_status(FotMob 스냅샷)를 그 경기 기준으로 자른다:
             #   그 팀 스쿼드 · 경기일 −14일 ~ +7일에 시작한 부상 · 같은 부상의 **가장 최근 관측** + 지금 상태.
             #   ⚠️ FotMob 반영이 하루 늦는 경우가 있다(완비사카 10-17 부상이 10-18 스냅샷엔 injury_none) — MIN이 아니라 MAX다.

@@ -14,7 +14,7 @@ WhoScored 원본: **x = 그 팀의 공격 방향 0~100, y 낮음 = 오른쪽**(S
 """
 from .encode import cells_from_points, encode
 
-__all__ = ["ppda", "def_x", "phase_cells", "segment_metrics", "set_pieces", "gk_ids_of", "PHASE_METRICS", "PHASE_GROUPS",
+__all__ = ["ppda", "def_x", "phase_cells", "segment_metrics", "set_pieces", "gk_ids_of", "PHASE_METRICS", "PHASE_GROUPS", "phase_verdicts",
            "receptions", "RECV_METHOD",
            "PPDA_METHOD", "DEF_X_METHOD", "carry_est", "CARRY_EST_METHOD"]
 
@@ -69,25 +69,64 @@ def phase_cells(events, player_id):
 #    수집 회차가 리포트에서 근거를 들고 넣는 지표. ⭐ gk_long_share는 G37 ⑹이 AVL 리포트(≥2026-10-22) side='v'에 요구한다 —
 #    WS JSON이 없으면 SofaScore 선수 스탯(totalLongBalls/totalPass)으로 경기 전체 1행이라도 넣는다(출처·confidence 명기).
 PHASE_METRICS = {
-    "def_x":             dict(label="수비 액션 높이", unit="", lo_good=False, group="press",
+    "def_x":             dict(label="수비 액션 높이", say=("수비 라인은 {w}가 더 높았다", "수비 라인 높이는 비슷했다"), unit="", lo_good=False, group="press",
                               help="팀 수비 액션 8종의 평균 x(자기 공격 방향 0~100) — 높을수록 앞에서 막는다. " + DEF_X_METHOD),
-    "ppda":              dict(label="PPDA", unit="", lo_good=True, group="press",
+    "ppda":              dict(label="PPDA", say=("압박은 {w}가 거셌다", "압박 강도는 비슷했다"), unit="", lo_good=True, group="press",
                               help="상대 패스 수 ÷ 우리 수비 액션 — 낮을수록 강하게 압박한다. " + PPDA_METHOD),
-    "own_half_pass_pct": dict(label="자기 진영 패스 성공률", unit="%", lo_good=False, group="build",
+    "own_half_pass_pct": dict(label="자기 진영 패스 성공률", say=("자기 진영 빌드업은 {w}가 더 안정적이었다", "자기 진영 빌드업 안정성은 비슷했다"), unit="%", lo_good=False, group="build",
                               help="자기 진영(x<50)에서 시도한 패스의 성공 비율 — 상대 압박에 빌드업이 버티는가."),
-    "possession":        dict(label="점유", unit="%", lo_good=False, group="flow", help="구간 점유율."),
-    "gk_long_share":     dict(label="GK 롱패스 비중", unit="%", lo_good=False, group="build",
+    "possession":        dict(label="점유", say=("점유는 {w}가 가져갔다", "점유는 팽팽했다"), unit="%", lo_good=False, group="flow", help="구간 점유율."),
+    "gk_long_share":     dict(label="GK 롱패스 비중", say=("GK 배급은 {w}가 더 길게 찼다", "GK 배급 길이는 비슷했다"), unit="%", lo_good=False, group="build",
                               help="골키퍼 패스 중 롱패스(≥32m) 비율 — 짧은 빌드업에서 직접 배급으로 넘어갔는가."),
-    "own_third_losses":  dict(label="자기 1/3 볼 손실", unit="회", lo_good=True, group="build", help="자기 진영 1/3에서 공을 잃은 횟수."),
-    "box_touches_p10":   dict(label="상대 박스 터치 /10분", unit="", lo_good=False, group="threat", help="상대 페널티 박스 안 터치 수(10분당)."),
-    "shots_p10":         dict(label="슈팅 /10분", unit="", lo_good=False, group="threat", help="슈팅 수(10분당)."),
-    "xg":                dict(label="구간 xG", unit="", lo_good=False, group="threat", help="그 구간에 쌓인 기대득점."),
+    "own_third_losses":  dict(label="자기 1/3 볼 손실", say=("자기 1/3 볼 손실은 {w}가 더 적었다", "자기 1/3 볼 손실은 비슷했다"), unit="회", lo_good=True, group="build", help="자기 진영 1/3에서 공을 잃은 횟수."),
+    "box_touches_p10":   dict(label="상대 박스 터치 /10분", say=("박스 침투는 {w}가 더 잦았다", "박스 침투 빈도는 비슷했다"), unit="", lo_good=False, group="threat", help="상대 페널티 박스 안 터치 수(10분당)."),
+    "shots_p10":         dict(label="슈팅 /10분", say=("슈팅은 {w}가 더 많이 때렸다", "슈팅 빈도는 비슷했다"), unit="", lo_good=False, group="threat", help="슈팅 수(10분당)."),
+    "xg":                dict(label="구간 xG", say=("기회의 질은 {w}가 앞섰다", "기회의 질은 비슷했다"), unit="", lo_good=False, group="threat", help="그 구간에 쌓인 기대득점."),
 }
 
 
 # 「경기 흐름」 묶음 — 화면이 이 순서·제목으로 칸을 묶는다(2026-10-20 사용자 지적 「그래프가 나열돼 잘 안 보임」).
 PHASE_GROUPS = [["press", "압박 — 높이·강도"], ["build", "우리 빌드업"], ["threat", "위협 — 박스·슈팅"], ["flow", "점유"]]   # 배열 = 순서 보존(export JSON은 키를 정렬한다)
 
+
+
+# 「경기 흐름」 한줄평 (2026-10-26 사용자 지시 「지표마다 한줄평 — 압박은 맨시티가 거셌다 같은」).
+#   경기 전체 값 = 구간 값의 가중평균 — 가중치는 n(그 지표의 분모: PPDA는 수비 액션, 성공률은 패스 수)이라
+#   PPDA·성공률은 경기 전체 값과 정확히 같다. n이 없으면 구간 길이(분). xg만 합계다.
+#   승자 = lo_good 방향으로 앞선 쪽(문구 PHASE_METRICS[m]["say"]). 차이가 작으면(% 단위 3%p · 그 외 8% 미만) 비슷.
+#   더해 우리 팀 전반(<45′)→후반(≥45′) 값 — 화면이 「전반 a → 후반 b」로 붙인다.
+_TIE_PCT, _TIE_REL = 3.0, 0.08
+
+
+def _agg(rs, metric, end=95):
+    if not rs:
+        return None
+    if metric == "xg":
+        return round(sum(r["value"] for r in rs), 2)
+    w = [(r["n"] if r.get("n") is not None else (r["seg_to"] or end) - r["seg_from"]) for r in rs]
+    tw = sum(w)
+    return round(sum(r["value"] * x for r, x in zip(rs, w)) / tw, 1) if tw else None
+
+
+def phase_verdicts(rows):
+    """match_phase_metrics 행(dict side·metric·seg_from·seg_to·value·n) → {metric: dict(win 'v'|'o'|None, v, o, h1, h2)}.
+    v·o = 경기 전체 값(한쪽 행이 없으면 None — 그때 win도 None) · h1·h2 = 우리 팀 전반·후반 값."""
+    out = {}
+    for m in sorted({r["metric"] for r in rows}):
+        d = PHASE_METRICS.get(m, {})
+        rs = [r for r in rows if r["metric"] == m]
+        v = _agg([r for r in rs if r["side"] == "v"], m)
+        o = _agg([r for r in rs if r["side"] == "o"], m)
+        win = None
+        if v is not None and o is not None:
+            gap = abs(v - o)
+            tie = gap < _TIE_PCT if d.get("unit") == "%" else gap < _TIE_REL * max(abs(v), abs(o), 1e-9)
+            if not tie:
+                win = ("v" if v < o else "o") if d.get("lo_good") else ("v" if v > o else "o")
+        us = [r for r in rs if r["side"] == "v"]
+        out[m] = dict(win=win, v=v, o=o, h1=_agg([r for r in us if r["seg_from"] < 45], m),
+                      h2=_agg([r for r in us if r["seg_from"] >= 45], m))
+    return out
 
 def _clock(e):
     """경기 시계 분 — 전반 추가시간은 전반 마지막 구간에, 후반은 45분부터(WS minute는 후반에 45로 다시 시작한다)."""

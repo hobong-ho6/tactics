@@ -67178,6 +67178,36 @@
      "value": 7.0
     }
    ],
+   "phase_verdicts": {
+    "def_x": {
+     "h1": 36.9,
+     "h2": 33.3,
+     "o": 45.3,
+     "v": 35.0,
+     "win": "o"
+    },
+    "gk_long_share": {
+     "h1": 25.0,
+     "h2": 52.0,
+     "o": 11.1,
+     "v": 38.8,
+     "win": "v"
+    },
+    "own_half_pass_pct": {
+     "h1": 88.3,
+     "h2": 76.0,
+     "o": 89.3,
+     "v": 81.9,
+     "win": "o"
+    },
+    "ppda": {
+     "h1": 7.6,
+     "h2": 9.4,
+     "o": 7.3,
+     "v": 8.5,
+     "win": "o"
+    }
+   },
    "players": [
     {
      "assists": 0,
@@ -70937,6 +70967,36 @@
      "value": 31.0
     }
    ],
+   "phase_verdicts": {
+    "def_x": {
+     "h1": 41.0,
+     "h2": 30.3,
+     "o": 39.1,
+     "v": 35.2,
+     "win": "o"
+    },
+    "gk_long_share": {
+     "h1": 42.9,
+     "h2": 64.3,
+     "o": 40.5,
+     "v": 53.6,
+     "win": "v"
+    },
+    "own_half_pass_pct": {
+     "h1": 86.8,
+     "h2": 83.2,
+     "o": 84.6,
+     "v": 84.9,
+     "win": null
+    },
+    "ppda": {
+     "h1": 7.7,
+     "h2": 17.0,
+     "o": 12.0,
+     "v": 10.5,
+     "win": "v"
+    }
+   },
    "players": [
     {
      "assists": 0,
@@ -74288,6 +74348,57 @@
      "value": 2.2
     }
    ],
+   "phase_verdicts": {
+    "box_touches_p10": {
+     "h1": null,
+     "h2": null,
+     "o": 3.4,
+     "v": null,
+     "win": null
+    },
+    "def_x": {
+     "h1": null,
+     "h2": 31.5,
+     "o": 45.0,
+     "v": 31.5,
+     "win": "o"
+    },
+    "gk_long_share": {
+     "h1": 33.3,
+     "h2": 91.7,
+     "o": null,
+     "v": 46.3,
+     "win": null
+    },
+    "own_half_pass_pct": {
+     "h1": 83.3,
+     "h2": 71.3,
+     "o": null,
+     "v": 77.0,
+     "win": null
+    },
+    "own_third_losses": {
+     "h1": 12.0,
+     "h2": 10.0,
+     "o": null,
+     "v": 10.4,
+     "win": null
+    },
+    "ppda": {
+     "h1": 4.1,
+     "h2": null,
+     "o": 8.2,
+     "v": 4.1,
+     "win": "v"
+    },
+    "shots_p10": {
+     "h1": null,
+     "h2": null,
+     "o": 1.6,
+     "v": null,
+     "win": null
+    }
+   },
    "players": [
     {
      "assists": 0,
@@ -77818,6 +77929,15 @@
      "value": 6.14
     }
    ],
+   "phase_verdicts": {
+    "ppda": {
+     "h1": null,
+     "h2": null,
+     "o": 11.3,
+     "v": null,
+     "win": null
+    }
+   },
    "players": [
     {
      "assists": 0,
@@ -80315,6 +80435,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -82032,6 +82153,7 @@
    "passes_v": null,
    "periods": [],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": null,
@@ -84139,6 +84261,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -86741,6 +86864,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -89272,6 +89396,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -91808,6 +91933,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 2,
@@ -94160,6 +94286,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -96465,6 +96592,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": null,
@@ -98709,6 +98837,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -100284,6 +100413,7 @@
    "passes_v": null,
    "periods": [],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": null,
@@ -101870,6 +102000,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -103800,6 +103931,7 @@
     }
    ],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": 0,
@@ -105116,6 +105248,7 @@
    "passes_v": null,
    "periods": [],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": null,
@@ -106122,6 +106255,7 @@
    "passes_v": null,
    "periods": [],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": null,
@@ -107035,6 +107169,7 @@
    "passes_v": null,
    "periods": [],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": null,
@@ -108233,6 +108368,7 @@
    "passes_v": null,
    "periods": [],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": null,
@@ -109526,6 +109662,7 @@
    "passes_v": null,
    "periods": [],
    "phase_metrics": [],
+   "phase_verdicts": {},
    "players": [
     {
      "assists": null,
@@ -110401,6 +110538,10 @@
    "help": "상대 페널티 박스 안 터치 수(10분당).",
    "label": "상대 박스 터치 /10분",
    "lo_good": false,
+   "say": [
+    "박스 침투는 {w}가 더 잦았다",
+    "박스 침투 빈도는 비슷했다"
+   ],
    "unit": ""
   },
   "def_x": {
@@ -110408,6 +110549,10 @@
    "help": "팀 수비 액션 8종의 평균 x(자기 공격 방향 0~100) — 높을수록 앞에서 막는다. 팀 수비액션 8종(Tackle·Interception·Challenge·Foul·Clearance·BlockedPass·Aerial·BallRecovery)의 x 평균(자기 공격 방향 0~100). 라인 높이 프록시 — core.whoscored.def_x",
    "label": "수비 액션 높이",
    "lo_good": false,
+   "say": [
+    "수비 라인은 {w}가 더 높았다",
+    "수비 라인 높이는 비슷했다"
+   ],
    "unit": ""
   },
   "gk_long_share": {
@@ -110415,6 +110560,10 @@
    "help": "골키퍼 패스 중 롱패스(≥32m) 비율 — 짧은 빌드업에서 직접 배급으로 넘어갔는가.",
    "label": "GK 롱패스 비중",
    "lo_good": false,
+   "say": [
+    "GK 배급은 {w}가 더 길게 찼다",
+    "GK 배급 길이는 비슷했다"
+   ],
    "unit": "%"
   },
   "own_half_pass_pct": {
@@ -110422,6 +110571,10 @@
    "help": "자기 진영(x<50)에서 시도한 패스의 성공 비율 — 상대 압박에 빌드업이 버티는가.",
    "label": "자기 진영 패스 성공률",
    "lo_good": false,
+   "say": [
+    "자기 진영 빌드업은 {w}가 더 안정적이었다",
+    "자기 진영 빌드업 안정성은 비슷했다"
+   ],
    "unit": "%"
   },
   "own_third_losses": {
@@ -110429,6 +110582,10 @@
    "help": "자기 진영 1/3에서 공을 잃은 횟수.",
    "label": "자기 1/3 볼 손실",
    "lo_good": true,
+   "say": [
+    "자기 1/3 볼 손실은 {w}가 더 적었다",
+    "자기 1/3 볼 손실은 비슷했다"
+   ],
    "unit": "회"
   },
   "possession": {
@@ -110436,6 +110593,10 @@
    "help": "구간 점유율.",
    "label": "점유",
    "lo_good": false,
+   "say": [
+    "점유는 {w}가 가져갔다",
+    "점유는 팽팽했다"
+   ],
    "unit": "%"
   },
   "ppda": {
@@ -110443,6 +110604,10 @@
    "help": "상대 패스 수 ÷ 우리 수비 액션 — 낮을수록 강하게 압박한다. 분자=상대가 자기 진영 3/5(x<60)에서 시도한 패스 · 분모=해당 팀 수비액션(Tackle·Interception·Challenge·Foul) 상대 진영 2/5(x>40). 원천=WhoScored matchCentreData(Opta) — core.whoscored.ppda",
    "label": "PPDA",
    "lo_good": true,
+   "say": [
+    "압박은 {w}가 거셌다",
+    "압박 강도는 비슷했다"
+   ],
    "unit": ""
   },
   "shots_p10": {
@@ -110450,6 +110615,10 @@
    "help": "슈팅 수(10분당).",
    "label": "슈팅 /10분",
    "lo_good": false,
+   "say": [
+    "슈팅은 {w}가 더 많이 때렸다",
+    "슈팅 빈도는 비슷했다"
+   ],
    "unit": ""
   },
   "xg": {
@@ -110457,6 +110626,10 @@
    "help": "그 구간에 쌓인 기대득점.",
    "label": "구간 xG",
    "lo_good": false,
+   "say": [
+    "기회의 질은 {w}가 앞섰다",
+    "기회의 질은 비슷했다"
+   ],
    "unit": ""
   }
  },

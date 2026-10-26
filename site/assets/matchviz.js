@@ -110,6 +110,17 @@ export function phaseFlow(r, team, W = 900){
   const ev = (r.events || []).filter(e => /goal$/.test(e.kind) || e.kind === 'red' || (e.kind === 'sub' && e.side === 'v'));   // 교체는 우리 팀만
   const evMin = [...new Map(ev.map(e => [`${e.minute}|${/goal$/.test(e.kind) ? 'g' : e.kind}`, e])).values()];
   const vlines = evMin.map(e => `<line x1="${x(e.minute)}" x2="${x(e.minute)}" y1="${T}" y2="${H - B}" stroke="${/goal$/.test(e.kind) ? (e.side === 'v' ? US : THEM) : 'var(--dim)'}" stroke-opacity="${/goal$/.test(e.kind) ? .8 : .45}" stroke-dasharray="${/goal$/.test(e.kind) ? '' : '3 3'}"/>`).join('');
+  /* 칸별 한줄평 — 판정은 export `phase_verdicts`(core.whoscored.phase_verdicts)가 정본 · 여기선 팀 이름만 끼운다(2026-10-26 사용자 지시). */
+  const opp = r.opponent || '상대', u = d => d.unit === '%' ? '%' : '';
+  const verdict = (m, d) => {
+    const pv = (r.phase_verdicts || {})[m]; if (!pv) return '';
+    const say = d.say || [`${d.label}은 {w}가 앞섰다`, `${d.label}은 비슷했다`];
+    const head = pv.v != null && pv.o != null
+      ? `${(pv.win ? say[0].replace('{w}', pv.win === 'v' ? team : opp) : say[1])} <span class="dim">(${esc(team)} ${pv.v}${u(d)} · ${esc(opp)} ${pv.o}${u(d)})</span>`
+      : `<span class="dim">${esc(pv.v != null ? opp : team)} 미수집 — 비교 불가 (${esc(pv.v != null ? team : opp)} ${pv.v ?? pv.o}${u(d)})</span>`;
+    const half = pv.h1 != null && pv.h2 != null ? ` <span class="dim">· ${esc(team)} 전반 ${pv.h1}${u(d)} → 후반 ${pv.h2}${u(d)}</span>` : '';
+    return `<div class="pfv">${head}${half}</div>`;
+  };
   const one = m => {
     const d = defs[m] || { label: m, unit: '' }, rs = rows.filter(q => q.metric === m);
     const max = Math.max(...rs.map(q => q.value)) * 1.22 || 1, y = v => T + (H - T - B) * (1 - v / max);
@@ -122,7 +133,7 @@ export function phaseFlow(r, team, W = 900){
         <line x1="${a + 1.5}" x2="${b - 1.5}" y1="${yy}" y2="${yy}" stroke="${col}" stroke-width="3.5" stroke-linecap="round"${s.side === 'o' ? ' stroke-dasharray="7 4"' : ''}/>
         <text x="${(a + b) / 2}" y="${s.side === 'o' ? yy + 15 : yy - 6}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--txt)">${s.value}${d.unit === '%' ? '%' : ''}</text></g>`;
     };
-    return `<div class="pf"><div class="pfh"><b>${esc(d.label)}</b> ${d.help ? q(d.help) : ''}${d.lo_good ? ' <small class="dim">낮을수록 강함</small>' : ''}</div>
+    return `<div class="pf"><div class="pfh"><b>${esc(d.label)}</b> ${d.help ? q(d.help) : ''}${d.lo_good ? ' <small class="dim">낮을수록 강함</small>' : ''}</div>${verdict(m, d)}
       <svg width="${cw}" height="${H}" viewBox="0 0 ${cw} ${H}" role="img" aria-label="${esc(d.label)} 구간별">${ticks}${vlines}
         <line x1="${x(0)}" x2="${x(end)}" y1="${H - B}" y2="${H - B}" stroke="var(--line)"/>${rs.map(seg).join('')}</svg></div>`;
   };
