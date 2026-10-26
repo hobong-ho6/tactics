@@ -1340,13 +1340,21 @@ function renderCatalog(team = CAT_TEAM){
          지금 상태로 다시 본다. k>0이면 앞 단계를 밟은 뒤라 지금 값으로 판정할 수 없다. */
       /* ⛔ k>0도 보유 선수면 **지금 카드에서 아직 안 밟은 선행 단계를 얹어 본 뒤** 다시 잰다(2026-10-26 사용자 지적 —
          82가 된 보가르드가 base 74 경로 「Creep Inside → Witching Hour」로 `OVR Max. 80` 진화의 최적 선수에 섰다). */
+      /* ⭐ 그 시뮬레이션 결과가 곧 「적용 후」다 — 보유 선수는 base 경로 값(path.ovr_before 등)이 아니라 **지금 카드 + 남은 선행 + 이 진화**로 적는다
+         (2026-10-26 사용자 지시 — Wicked Winger 최적 선수 지모알로바가 지금 80인데 「OVR 65→80」으로 떴다). 선행 단계 수도 남은 것만 센다. */
+      let kk = k, d = r.d, after = null;
       if (STATE[String(pid)]){
         const pre = r.ids.slice(0, k).filter(i => !APPLIED[`${pid}:${i}`]?.finished).map(id => ({ id }));
-        const run = tryRun(+pid, pre);
-        if (run && (run.steps.some(s => s.fails.length) || tryReq(c, run.cur).length)) continue;
+        const run = tryRun(+pid, [...pre, { id: c.evo_id }]);
+        if (run && run.steps.some(s => s.fails.length)) continue;
+        if (run){
+          kk = pre.length; d = run.after.ovr - run.before.ovr;
+          const ord = o => Object.fromEntries(Object.keys(J(r.six_after, {}) || {}).filter(x => x in o).map(x => [x, o[x]]));   // 경로 표와 같은 순서(PAC→PHY)
+          after = { ovr_before: run.before.ovr, ovr_after: run.after.ovr, six_before: ord(run.before.six), six_after: ord(run.after.six) };
+        }
       }
       const base = (CARDS[pid] || []).find(x => x.is_base);
-      apps.push({ pid: +pid, tier: r.tier, k, d: r.d, score: r.score, rs: r.rs, name: r.name_kr, owned: OWNED.has(+pid), price: base ? priceOf(base.item_id) : null, path: r }); break;
+      apps.push({ pid: +pid, tier: r.tier, k: kk, d, score: r.score, rs: r.rs, name: r.name_kr, owned: OWNED.has(+pid), price: base ? priceOf(base.item_id) : null, path: r, after: after || r }); break;
     }
     // 진화별 최적 선수: 처방 역할 적중 → 내 구단 보유(사서 쓸 필요 없음) → 즉시 적용(첫 단계) → 역할 가중 점수 → OVR 상승 → 시세 낮은 순
     apps.sort((a, b) => b.tier - a.tier || (b.owned - a.owned) || a.k - b.k || b.score - a.score || b.d - a.d || (a.price ?? 9e9) - (b.price ?? 9e9));
@@ -1363,7 +1371,7 @@ function renderCatalog(team = CAT_TEAM){
       ${catOpenHTML(c)}
       ${best && !used?.exhausted ? `<div class="pcard tier${best.tier}" style="margin:6px 0;padding:6px 10px"><span class="badge hi">이 진화 최적 선수</span> <b>${esc(best.name)}</b>
         <small class="dim">${best.tier === 2 ? '처방 역할 Role++' : best.tier === 1 ? '처방 역할 Role+' : '처방 역할 무관(능력치만)'} · ${best.owned ? '내 구단 보유' : `미보유 · ${fmtPrice(best.price)}`} · ${best.k ? `${best.k + 1}단계째(선행 ${best.k})` : '즉시 적용'}${best.d ? ` · OVR +${best.d}` : ''}</small> ${best.rs ? scoreChip(best.rs) : ''}
-        <div class="dim" style="font-size:11px;margin-top:3px"><b>적용 후</b> OVR ${best.path.ovr_before}→${best.path.ovr_after} · ${sixText(best.path.six_before, best.path.six_after)}</div>${
+        <div class="dim" style="font-size:11px;margin-top:3px"><b>적용 후</b> OVR ${best.after.ovr_before}→${best.after.ovr_after} · ${sixText(best.after.six_before, best.after.six_after)}${best.after === best.path ? '' : ' <small>(지금 카드 기준)</small>'}</div>${
           (t => t ? `<div style="font-size:12px;margin-top:3px;color:var(--bad,#e55)"><b>⚠️ ${esc(best.name)}은(는) 받지 못하는 보상</b> — ${esc(t)} (지금 PS ${havePSOf(best.pid).length}개 · 개수 상한)</div>` : '')(psLostText(c, best.pid))}</div>` : ''}
       ${/* ⛔ description이 해금 문구와 **같은 문장**인 진화가 있다(시즌패스 계열 전부).
              아래 「해금 조건」 블록이 같은 걸 번역까지 달아 보여주므로 여기서는 지운다 —
