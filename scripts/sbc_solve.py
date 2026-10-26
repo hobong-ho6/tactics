@@ -1040,8 +1040,9 @@ def main():
         return f"{r['set_name']} › {r['name']}"
     print(f"\n🧩 해법끼리 카드 겹침 없음 — 배정한 카드 {len(taken)}장(마감 빠른 세트 → 선택지 좁은 챌린지 순)")
     print(f"\n{'='*70}\n■ 달성 가능 {len(ok)} · 불가/못 찾음 {len(no)} · 원클릭 {len(oneclick)} · 판정 불가 {len(undec)} · 포메이션 입력 필요 {len(noform)}\n{'='*70}")
-    for r, cs in noform:
-        print(f"  📐 {head(r)} — 포메이션 미기록이라 풀지 않았다(조건 통과 {len(cs)}장). 화면에서 포메이션을 입력하면 재계산된다")
+    for r, cs, *why in noform:
+        what = "막힌 칸 미기록" if why else "포메이션 미기록"
+        print(f"  📐 {head(r)} — {what}이라 풀지 않았다(조건 통과 {len(cs)}장). 화면에서 입력하면 재계산된다")
     if oneclick:
         print("\n── 원클릭 제출(인원 수를 fut.gg가 주지 않는다 — 조건 통과 카드 수만 센다) ──")
         for r, conds, cs in oneclick:
