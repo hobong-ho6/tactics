@@ -1342,19 +1342,22 @@ function renderCatalog(team = CAT_TEAM){
          82가 된 보가르드가 base 74 경로 「Creep Inside → Witching Hour」로 `OVR Max. 80` 진화의 최적 선수에 섰다). */
       /* ⭐ 그 시뮬레이션 결과가 곧 「적용 후」다 — 보유 선수는 base 경로 값(path.ovr_before 등)이 아니라 **지금 카드 + 남은 선행 + 이 진화**로 적는다
          (2026-10-26 사용자 지시 — Wicked Winger 최적 선수 지모알로바가 지금 80인데 「OVR 65→80」으로 떴다). 선행 단계 수도 남은 것만 센다. */
-      let kk = k, d = r.d, after = null;
+      let kk = k, d = r.d, after = null, rs = r.rs;
       if (STATE[String(pid)]){
         const pre = r.ids.slice(0, k).filter(i => !APPLIED[`${pid}:${i}`]?.finished).map(id => ({ id }));
         const run = tryRun(+pid, [...pre, { id: c.evo_id }]);
         if (run && run.steps.some(s => s.fails.length)) continue;
         if (run){
           kk = pre.length; d = run.after.ovr - run.before.ovr;
+          /* 역할 가중도 같은 결과의 **실제 상승분**(상한 반영)으로 잰다 — base 경로 `upgrades`가 아니라. */
+          const up = {}; for (const a in run.after.at){ const x = run.after.at[a] - (run.before.at[a] ?? 0); if (x) up[a] = x; }
+          rs = roleScore(r.pres, up);
           const ord = o => Object.fromEntries(Object.keys(J(r.six_after, {}) || {}).filter(x => x in o).map(x => [x, o[x]]));   // 경로 표와 같은 순서(PAC→PHY)
           after = { ovr_before: run.before.ovr, ovr_after: run.after.ovr, six_before: ord(run.before.six), six_after: ord(run.after.six) };
         }
       }
       const base = (CARDS[pid] || []).find(x => x.is_base);
-      apps.push({ pid: +pid, tier: r.tier, k: kk, d, score: r.score, rs: r.rs, name: r.name_kr, owned: OWNED.has(+pid), price: base ? priceOf(base.item_id) : null, path: r, after: after || r }); break;
+      apps.push({ pid: +pid, tier: r.tier, k: kk, d, score: rs.score, rs, name: r.name_kr, owned: OWNED.has(+pid), price: base ? priceOf(base.item_id) : null, path: r, after: after || r }); break;
     }
     // 진화별 최적 선수: 처방 역할 적중 → 내 구단 보유(사서 쓸 필요 없음) → 즉시 적용(첫 단계) → 역할 가중 점수 → OVR 상승 → 시세 낮은 순
     apps.sort((a, b) => b.tier - a.tier || (b.owned - a.owned) || a.k - b.k || b.score - a.score || b.d - a.d || (a.price ?? 9e9) - (b.price ?? 9e9));
