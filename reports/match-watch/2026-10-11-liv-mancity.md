@@ -19,7 +19,7 @@
 | PPDA (WhoScored) | **8.98** (413/46) | 8.0 (232/29) |
 | def_x (라인 높이 프록시) | **43.0** | 38.3 |
 
-**하프별** (FotMob Periods · PPDA는 core.whoscored 하프 이벤트): 1H 점유 46% · xG 0.47–0.08 · 슈팅 5–3 · PPDA 6.23–8.33 / 2H 점유 25% · xG 0.47–1.21 · 슈팅 8–12 · PPDA 14.12–7.45
+**하프별** (FotMob Periods · PPDA는 core.whoscored 하프 이벤트): 전반 점유 46% · xG 0.47–0.08 · 슈팅 5–3 · PPDA 6.23–8.33 / 후반 점유 25% · xG 0.47–1.21 · 슈팅 8–12 · PPDA 14.12–7.45
 
 **타임라인** (SofaScore incidents · v=우리)
 - 8′ [v] yellow Ronald Araújo
@@ -62,11 +62,11 @@
 
 ## 3. 전술적 특성
 
-⑴ 11대11 62분은 압박 우세(1H 상대 xG 0.08) — 이라올라 「we were the better team until the red card」(퇴장 전까지 우리가 더 나은 팀이었다) 수치로 확인. ⑵ 결정력·창출 결손: 빅찬스 0, 중거리 다발(TFS), xG 0.94 중 오픈플레이 0.43. ⑶ ⭐ 퇴장이 **역습 차단 파울**(2번째 경고)에서 나왔다 — 피벗 전진 뒤 전환 노출이 카드로 전가되는 rest-defense 비용(obs#644 계열, 단일 경기라 약함). ⑷ 10인 전환 대응 지연 — 62′ 퇴장 → 65′ 실점이 66′ 첫 교체보다 먼저(이라올라 「we concede straight away before making a substitution」(교체를 하기도 전에 곧바로 실점했다)).
+⑴ 11대11 62분은 압박 우세(전반 상대 xG 0.08) — 이라올라 「we were the better team until the red card」(퇴장 전까지 우리가 더 나은 팀이었다) 수치로 확인. ⑵ 결정력·창출 결손: 빅찬스 0, 중거리 다발(TFS), xG 0.94 중 오픈플레이 0.43. ⑶ ⭐ 퇴장이 **역습 차단 파울**(2번째 경고)에서 나왔다 — 피벗 전진 뒤 전환 노출이 카드로 전가되는 rest-defense 비용(obs#644 계열, 단일 경기라 약함). ⑷ 10인 전환 대응 지연 — 62′ 퇴장 → 65′ 실점이 66′ 첫 교체보다 먼저(이라올라 「we concede straight away before making a substitution」(교체를 하기도 전에 곧바로 실점했다)).
 
 ## 4. 경기 중 변화
 
-8′ 아라우호 경고(항의) · 47′ 그라벤베르흐 경고 · 58′ 오라일리 경고 · **62′ 그라벤베르흐 2번째 경고 퇴장** → 65′ 0-1 홀란(도쿠 돌파·맥 알리스터 굴절) → 66′ 비르츠→뇨니(피벗 복원) → 68′ 0-2 도쿠 → 75′ 아라우호→프림퐁·쿠마스→응구모하 → 78′ 0-3 체르키(41패스 연결, TFS auto-caption) → 88′ 자케→고메스·바르콜라→키에사. 2H 점유 25% · 상대 xG 1.21.
+8′ 아라우호 경고(항의) · 47′ 그라벤베르흐 경고 · 58′ 오라일리 경고 · **62′ 그라벤베르흐 2번째 경고 퇴장** → 65′ 0-1 홀란(도쿠 돌파·맥 알리스터 굴절) → 66′ 비르츠→뇨니(피벗 복원) → 68′ 0-2 도쿠 → 75′ 아라우호→프림퐁·쿠마스→응구모하 → 78′ 0-3 체르키(41패스 연결, TFS auto-caption) → 88′ 자케→고메스·바르콜라→키에사. 후반 점유 25% · 상대 xG 1.21.
 
 ## 5. 선수별 분석 — 출전 선수 전원
 
@@ -78,7 +78,7 @@
 | Alexis Mac Allister | LDM — LDM — 팀 최다 xG(0.27) · 퇴장 후 1인 피벗 부담 | 90′ 6.7 · G0 A0 · KP2 · 태클1 · 인터셉트0 · 듀얼 2/6 | (x48.41, y56.25) · hp 76 | dm_dlp/Roaming 0.809(Δ0.127) — 정본 dm_holding/Ball-Winning 불일치 |
 | Víctor Muñoz | RM — RW — 가장 위험한 공격 옵션(ESPN 7 · Anfield Index MOTM) · 쿠마스와 1선 압박 리듬 교란 | 90′ 6.5 · G0 A0 · KP0 · 태클1 · 인터셉트2 · 듀얼 6/14 | (x56.97, y23.19) · hp 52 | wm_wideplm/Attack 0.725(Δ0.083) — 정본 wm_wideplm/Attack 일치 |
 | Jérémy Jacquet | RCB — RCB — 홀란 마크·인터셉트 3 | 88′ 6.4 · G0 A0 · KP0 · 태클3 · 인터셉트3 · 듀얼 5/7 | (x30.73, y32.79) · hp 43 | cb_bpd/Build-Up 0.882(Δ0.020 실측 무결정) — 정본 cb_stopper/Aggressive 불일치 |
-| Bradley Barcola | LM — LW — 영향 미미(슈팅 0), 1H 수비 복귀 | 88′ 6.5 · G0 A0 · KP2 · 태클3 · 인터셉트0 · 듀얼 8/17 | (x56.93, y75.34) · hp 53 | wm_insidefwd/Balanced 0.782(Δ0.068) — 정본 wm_wideplm/Attack 불일치 |
+| Bradley Barcola | LM — LW — 영향 미미(슈팅 0), 전반 수비 복귀 | 88′ 6.5 · G0 A0 · KP2 · 태클3 · 인터셉트0 · 듀얼 8/17 | (x56.93, y75.34) · hp 53 | wm_insidefwd/Balanced 0.782(Δ0.068) — 정본 wm_wideplm/Attack 불일치 |
 | Ronald Araújo | RB — RB — 8′ 조기 경고 후 수비 위주(이라올라 「you put… the right-back with a yellow card」(초반부터 라이트백을 경고 상태로 만들었다)) · 2실점 장면 도쿠 컷인 허용 | 75′ 6.3 · G0 A0 · KP1 · 태클1 · 인터셉트2 · 듀얼 2/5 | (x45.62, y13.29) · hp 48 | fb_wingback/Support 0.896(Δ0.034 실측 무결정) — 정본 fb_wingback/Support 일치 |
 | Lewis Koumas | ST — ST — PL 첫 선발(인원 강제), 홀드업·CB 경합(ESPN 「Tireless」(지칠 줄 모르는)), 47′ 슈팅 선방 | 75′ 6.3 · G0 A0 · KP0 · 태클0 · 인터셉트0 · 듀얼 2/10 | (x60.12, y44.59) · hp 27 | st_false9/Build-Up 0.506(Δ0.064) — 정본 st_advanced/Attack 불일치 |
 | Florian Wirtz | CAM — CAM — 최저 평가 다수 · 55′ 오버랩 외면 슈팅 · 66′ 피벗 복원 교체 대상 | 66′ 6.5 · G0 A0 · KP2 · 태클1 · 인터셉트1 · 듀얼 4/10 | (x63.3, y59.22) · hp 56 | cam_halfwinger/Attack 0.763(Δ0.050 실측 무결정) — 정본 cam_playmaker/Roaming 불일치 |
@@ -93,7 +93,7 @@
 
 ## 6. 전술 변화 판정
 
-- 유지: 4-2-3-1 · 11대11 고압박(1H PPDA 6.23) · 창출 결손.
+- 유지: 4-2-3-1 · 11대11 고압박(전반 PPDA 6.23) · 창출 결손.
 - 새로 나타난 것: 쿠마스 ST(인원 강제) · 퇴장 = 역습 차단 파울.
 - 직전(09-20 본머스 1-0, 물러섬으로 승리) 대비: def_x 34.8→43.0 · PPDA 11.13→8.98 — 상대가 시티일 때 오히려 높였다.
 - 반영: observations #994~995 · manager_profiles `pressing`·`situational` 덧붙임.
@@ -101,7 +101,7 @@
 ## 7. 게임 구현 판정
 
 - 결론: **추가 관찰.** 경기 프리셋 4-2-3-1 · Balanced/Balanced/58 — 규칙은 Counter이나 퇴장 오염으로 DIVERGE 사유 기록. 정본 변경 없음. 재검증: ⑴ 11대11 고압박(PPDA≤7)이 다음 경기에도 나오는가 — 나오면 pressing 축 「국면 분리」(obs#915) 재확인 ⑵ 쿠마스 ST는 인원 강제(이라올라 경기 전 「A full No.9… we probably only have Koumas right now」(정통 9번은 지금 사실상 쿠마스뿐)) — 슬롯 정본 근거로 쓰지 않는다.
-- **이 경기 전용 팀 설정**: FC26 / 4-2-3-1 / 빌드업 Balanced / 수비 접근 Balanced / 라인 58 / tactic_code 없음 · rule_note `DIVERGE: 규칙 Counter(점유 35%·롱볼 13.3%)는 62′ 이후 10인 28분 국면 오염 — 11대11 1H 점유 46%·PPDA 6.23·def_x 44.1로 직전 정본(Balanced/58) 유지`
+- **이 경기 전용 팀 설정**: FC26 / 4-2-3-1 / 빌드업 Balanced / 수비 접근 Balanced / 라인 58 / tactic_code 없음 · rule_note `DIVERGE: 규칙 Counter(점유 35%·롱볼 13.3%)는 62′ 이후 10인 28분 국면 오염 — 11대11 전반 점유 46%·PPDA 6.23·def_x 44.1로 직전 정본(Balanced/58) 유지`
   - `core.team_settings.suggest` → {'build_up_style': 'Counter', 'defensive_approach': 'Balanced', 'line_lo': 55, 'line_hi': 62, 'long_pct': 13.3}
 - **이 경기 선발 11명**:
 

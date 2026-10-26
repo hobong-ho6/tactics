@@ -100,7 +100,7 @@
 | 16:56(≈26′) | 「Joao Gomes booked. Emery tells him to calm down … the midfielder needs to learn from Brighton and find control」 | 고메스 경고. 에메리가 진정하라고 한다 … 브라이턴전(퇴장)에서 배워 통제력을 찾아야 한다 | 고메스 경고 직후 에메리의 지시 |
 | 16:58(≈28′) | 「Alysson now booked for diving.」 | 알리송이 다이빙으로 경고 | SS `Simulation`과 일치 |
 | 17:07(≈37′) | 「The referee set the tone early on here. A handful of players booked, relatively softly … In an aggressive, man-to-man game, some composure is needed」 | 주심이 초반에 기조를 정했다. 몇 명이 비교적 가볍게 경고를 받았다 … 공격적인 맨투맨 경기라 침착함이 필요하다 | ⚠️ 「man-to-man」은 **43′ 이전**의 표현이다. 압박 구조라기보다 1대1 경합이 많은 경기라는 뜻으로 읽힌다. 정정 ③(N1 구조 미확정)을 뒤집지 않는다 |
-| 17:18(HT) | (D+2에 실린 「plays free」 · 「limit fouls/bookings」 원문) | — | 원문 출처가 이 Bluesky 글임을 확인했다(D+1은 스니펫이었다) |
+| 17:18(하프타임) | (D+2에 실린 「plays free」 · 「limit fouls/bookings」 원문) | — | 원문 출처가 이 Bluesky 글임을 확인했다(D+1은 스니펫이었다) |
 | 17:45(≈60′) | 「Osula is about to come on - Emery shouts at Mings and tells him to be aware of Osula running in behind. Manzambi has license to overload whatever side he chooses.」 | 오술라가 들어오려 하자 에메리가 밍스에게 배후 침투를 조심하라고 소리친다. 만잠비는 원하는 쪽 어디든 과부하를 걸 권한이 있다 | 만잠비 프리롤 재확인 |
 | 17:45 | 「Gomes & Kamara have to keep finding them, especially with Nico & Joelinton on yellows」 | 고메스와 카마라가 계속 그들(부엔디아·만잠비)을 찾아줘야 한다. 니코와 조엘린통이 경고를 받은 상태라 더욱 | 4절 참고 — 두 피벗에 **같은 과제**를 준 서술 |
 | 18:05~18:14(≈79~88′) | 「Pau is on and Mings has gone to left-back. Will need Ibrahim Mbaye to essentially serve as a wing-back.」 / 「When they've trialled this before, he has played central and Pau out-wide … Mings holding his right leg but gritting his teeth. Newcastle targeting his side.」 | 파우가 들어오고 밍스가 LB로 갔다. 음바예가 사실상 윙백을 해야 한다 / 예전에 시험할 때는 밍스가 중앙, 파우가 바깥이었다 … 밍스가 오른 다리를 잡고 이를 악문다. 뉴캐슬이 그쪽을 노린다 | ⭐ 바이킹전 LB 판단 근거: 훈련에서는 **파우 LB / 밍스 CB**를 시험한 적이 있다. 밍스 오른 다리 통증도 관찰됐다(부상 보도는 0) |
@@ -135,7 +135,7 @@
 | 만잠비 | 8 | 「After making an opening for Jackson in the 29th minute, he made use of space himself by heading in Gomes' cross」(29분 잭슨의 기회를 만든 뒤, 직접 공간을 활용해 고메스의 크로스를 헤더로 넣었다) |
 | 부엔디아 | 7 | 「trusted by Emery to carry out his demands in the structure … Overhit a free kick in the 15th minute」(구조 안에서 에메리의 요구를 수행한다고 신뢰받는다 … 15분 프리킥은 너무 길었다) |
 | 잭슨 | 7 | 「two presentable chances in the first half」(전반에 괜찮은 기회 두 번) |
-| 맥긴(HT 투입) | 7 | 「Helped see out the win with a proffesional display」(프로다운 경기로 승리를 지키는 데 기여) |
+| 맥긴(하프타임 투입) | 7 | 「Helped see out the win with a proffesional display」(프로다운 경기로 승리를 지키는 데 기여) |
 | 고레츠카 | 6 | 「(for Manzambi, 73')」(만잠비와 교체, 73분) |
 | 바클리 | 6 | 「(for Gomes, 73')」(고메스와 교체, 73분) · 「denied by Hornicek」(호르니체크에게 막혔다) |
 | 음바예(부엔디아와 교체) | 7 | 「Direct and a threat … nearly scoring what would have been a stunning solo goal」(직선적이고 위협적이었다 … 환상적인 단독 골이 될 뻔했다) |

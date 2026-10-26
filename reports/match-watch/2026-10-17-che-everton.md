@@ -19,8 +19,8 @@
 
 | 하프 | 점유 | xG v–o | 슛 v–o | 유효 v–o | PPDA v / o |
 |---|---|---|---|---|---|
-| 1H | 61% | 0.48–0.31 | 5–4 | 3–4 | 8.25 / 13.5 |
-| 2H | 46% | 0.99–0.12 | 13–2 | 4–1 | 17.45 / 14.33 |
+| 전반 | 61% | 0.48–0.31 | 5–4 | 3–4 | 8.25 / 13.5 |
+| 후반 | 46% | 0.99–0.12 | 13–2 | 4–1 | 17.45 / 14.33 |
 
 타임라인(SofaScore incidents):
 
@@ -50,27 +50,27 @@
 
 **2-4 빌드업 → 3-2 베이스.** 라크루아·콜윌 2인 1선(평균 x35.0·32.7), GK 마르티네스가 둘 사이 중앙(Eliyas Melese 영상), 아체암퐁(x43.2·y15.9)·하토(x53.9·y82.2) 풀백이 높고 넓게, 카이세도(x47.5)·헨더슨(x58.5·y68.6) 피벗, 팔머(x64.9 중앙)·로저스(좌 y76.1)·주앙 페드루가 라인 사이. 2선 진입 뒤 카이세도가 내려와 3-2(Blue is the colour, auto-caption). FotMob 포메이션 4-2-3-1 · SofaScore도 4-2-3-1 — 직전 본머스전(3-4-2-1 기록)과 표기가 다르다. 알론소는 전방 3인을 「Morgan on the wing, Cole and Joao in the middle」(모건은 측면, 콜과 주앙은 중앙)로 직접 배치 설명(경기 후 회견, MightyBluesNews qm65lcoeEPg · auto-caption).
 
-**전반 골킥 대인 압박에 막힘 → 후반 직접 축구.** 1H 점유 61%인데 xG 0.48(세트피스 위주). ChelseaFCOnline 「The man-to-man marking on goal kicks went unanswered for the full 45 minutes」(골킥 대인 마크에 전반 45분 내내 답하지 못했다). 네투: 「We adjusted a little bit because we were seeing that they were pressing man-to-man on the goal kicks」(골킥에 대인 압박하는 걸 보고 조금 수정했다, chelseafc.com). 46′ 첫 골은 마르티네스 롱킥 → 로저스 경합 승 → 백힐 → 하토 바이라인 → 네투. 알론소 「we need to use that power to be able to play some more direct sometimes」(그 힘을 써서 때로는 더 직접적으로 해야 한다 · auto-caption). 롱볼 23/58(성공 40% · 패스 대비 12.5%) — 직전 본머스전 10.2%보다 높다(⚠️ 이 회차 롱볼은 FotMob 역산, 이전 경기는 SofaScore 정의라 직접 비교는 참고만).
+**전반 골킥 대인 압박에 막힘 → 후반 직접 축구.** 전반 점유 61%인데 xG 0.48(세트피스 위주). ChelseaFCOnline 「The man-to-man marking on goal kicks went unanswered for the full 45 minutes」(골킥 대인 마크에 전반 45분 내내 답하지 못했다). 네투: 「We adjusted a little bit because we were seeing that they were pressing man-to-man on the goal kicks」(골킥에 대인 압박하는 걸 보고 조금 수정했다, chelseafc.com). 46′ 첫 골은 마르티네스 롱킥 → 로저스 경합 승 → 백힐 → 하토 바이라인 → 네투. 알론소 「we need to use that power to be able to play some more direct sometimes」(그 힘을 써서 때로는 더 직접적으로 해야 한다 · auto-caption). 롱볼 23/58(성공 40% · 패스 대비 12.5%) — 직전 본머스전 10.2%보다 높다(⚠️ 이 회차 롱볼은 FotMob 역산, 이전 경기는 SofaScore 정의라 직접 비교는 참고만).
 
 ### 비점유 구조·압박
 
-**비점유 4-4-2(중블록).** PPDA 12.65 · def_x 36.5 — 직전 본머스전(10.75 · 38.4)보다 낮은 블록이며 def_x를 잰 CHE 6경기(38.4~41.0) 중 최저. 1선 아체암퐁·라크루아·콜윌(+하토), 2선 네투·카이세도·헨더슨·로저스, 전방 팔머·주앙(Blue is the colour). 경기 전날 알론소 「Can be in a 4-4-2, it can be in a 5-2-3 but the distances… how you have a good balance」(4-4-2일 수도 5-2-3일 수도 있다, 간격과 균형이다 — dNQjlVTxyow · auto-caption). 에버턴 슛 6·xG 0.43·박스 터치 17. 취약점은 네투·로저스의 복귀 의존 — 「the fragility… relies on Rogers, on Neto, and their tracking back」(취약성이 로저스·네투의 복귀에 기대고 있다, Blue is the colour · auto-caption). 2H PPDA 17.45(1H 8.25) — 리드 후 블록을 내렸다(CFCOnline 「happy to let Everton have the ball」(에버턴에게 공을 내줘도 괜찮아했다)).
+**비점유 4-4-2(중블록).** PPDA 12.65 · def_x 36.5 — 직전 본머스전(10.75 · 38.4)보다 낮은 블록이며 def_x를 잰 CHE 6경기(38.4~41.0) 중 최저. 1선 아체암퐁·라크루아·콜윌(+하토), 2선 네투·카이세도·헨더슨·로저스, 전방 팔머·주앙(Blue is the colour). 경기 전날 알론소 「Can be in a 4-4-2, it can be in a 5-2-3 but the distances… how you have a good balance」(4-4-2일 수도 5-2-3일 수도 있다, 간격과 균형이다 — dNQjlVTxyow · auto-caption). 에버턴 슛 6·xG 0.43·박스 터치 17. 취약점은 네투·로저스의 복귀 의존 — 「the fragility… relies on Rogers, on Neto, and their tracking back」(취약성이 로저스·네투의 복귀에 기대고 있다, Blue is the colour · auto-caption). 후반 PPDA 17.45(전반 8.25) — 리드 후 블록을 내렸다(CFCOnline 「happy to let Everton have the ball」(에버턴에게 공을 내줘도 괜찮아했다)).
 
 ### 전환·rest-defense·세트피스
 
-리드 후 깊게 내려 역습: 팔머 운반 → 주앙 스루패스(1대1 픽포드 선방). 2H 점유 46%·xG 0.99–0.12. 세트피스: 연습된 코너(카이세도 파포스트 발리 크로스바 40′·라크루아 헤더 45+3′ 라인 위 클리어), 90′ 헨더슨 직접 FK 세컨드볼 → 네투 2호골. 상대 xG 0.43 중 세트피스 0.30 — 에버턴 위협도 세트피스뿐(모예스 「I can only really think of Tierno's header」(기억나는 건 [배리] 헤더뿐), auto-caption).
+리드 후 깊게 내려 역습: 팔머 운반 → 주앙 스루패스(1대1 픽포드 선방). 후반 점유 46%·xG 0.99–0.12. 세트피스: 연습된 코너(카이세도 파포스트 발리 크로스바 40′·라크루아 헤더 45+3′ 라인 위 클리어), 90′ 헨더슨 직접 FK 세컨드볼 → 네투 2호골. 상대 xG 0.43 중 세트피스 0.30 — 에버턴 위협도 세트피스뿐(모예스 「I can only really think of Tierno's header」(기억나는 건 [배리] 헤더뿐), auto-caption).
 
 ## 3. 전술적 특성
 
 - 강점: 측면 2인(네투 2골·키패스 5 · 로저스 수비기여 11)이 공·수 양쪽 폭을 책임지는 구조, 롱볼 타깃 로저스(듀얼 7-6)·주앙(7-7)의 경합 버티기, 연습된 세트피스.
-- 취약: 짧은 빌드업이 대인 압박에 막히면 대안이 GK 롱킥뿐(1H xG 0.48 · 오픈플레이 xG 전체 0.95), 주앙 페드루 고립(SI 「often left isolated」(자주 고립)), 풀백 높이 탓에 역습 시 네투·로저스 복귀 의존.
+- 취약: 짧은 빌드업이 대인 압박에 막히면 대안이 GK 롱킥뿐(전반 xG 0.48 · 오픈플레이 xG 전체 0.95), 주앙 페드루 고립(SI 「often left isolated」(자주 고립)), 풀백 높이 탓에 역습 시 네투·로저스 복귀 의존.
 - 상대 설계: 모예스는 차바리아 선발을 예상해 뢸을 우측에 세웠는데 하토가 나왔다(모예스 회견 · auto-caption) — 하토가 첫 골 크로스.
 - 직전 경기 대비: 본머스전 「비보유 4-4-2·2-4 빌드업·헨더슨 FK」 축은 유지. 새로 나타난 것은 **명목 포메이션이 4-2-3-1로 기록**된 점과 **후반 직접 축구 전환**.
 
 ## 4. 경기 중 변화
 
 1. 0-0(0–46′): 점유 61% · 대인 압박에 빌드업 정체 · 세트피스로만 위협(카이세도 크로스바).
-2. 46′ 네투 선제골(하프타임 수정 = 롱킥→로저스 경합) → 리드 44분: 2H 점유 46%·PPDA 17.45로 블록 하강, 역습 위주.
+2. 46′ 네투 선제골(하프타임 수정 = 롱킥→로저스 경합) → 리드 44분: 후반 점유 46%·PPDA 17.45로 블록 하강, 역습 위주.
 3. 75′ 마르티네스 부상 → 펜더스(PL 데뷔). 90+2′ 하토→팔레스트라 · 카이세도→라비아 · 주앙→웰벡(알론소 「it was the 79th minute」(추가시간 11분이라 사실상 79분) · 「Moi… was a bit tired」(모이는 조금 지쳤다)).
 4. 90′ 헨더슨 FK 세컨드볼 네투 2-0 · 90+12′ 네투→퀜다.
 
@@ -108,7 +108,7 @@
 
 - 결론: **추가 관찰**
 - **이 경기 전용 팀 설정**: FC26 / 4-2-3-1 Wide / 빌드업 Balanced / 수비 접근 Balanced / 라인 50 / tactic_code 없음 · rule_note `RULE`
-- 규칙 대조: suggest → Balanced/Balanced/48~58 (롱볼 12.5%). 라인 50 = def_x 36.5(중블록) · 2H 블록 하강. 빌드업 Balanced: 롱볼 12.5%로 Counter 경계(13%) 직하 — 전반 짧게·후반 직접의 평균. 포메이션은 정본 3-4-2-1이 아니라 이 경기 실측 4-2-3-1 Wide(regime 2 slots 보유).
+- 규칙 대조: suggest → Balanced/Balanced/48~58 (롱볼 12.5%). 라인 50 = def_x 36.5(중블록) · 후반 블록 하강. 빌드업 Balanced: 롱볼 12.5%로 Counter 경계(13%) 직하 — 전반 짧게·후반 직접의 평균. 포메이션은 정본 3-4-2-1이 아니라 이 경기 실측 4-2-3-1 Wide(regime 2 slots 보유).
 - **이 경기 선발 11명**:
 
 | 슬롯 | 선수 | 역할 | 포커스 | 단일 경기 fit | 근거 |

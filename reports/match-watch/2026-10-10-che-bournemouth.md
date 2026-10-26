@@ -19,7 +19,7 @@
 | PPDA (WhoScored) | **10.75** (344/32) | 14.62 (424/29) |
 | def_x (라인 높이 프록시) | **38.4** | 42.5 |
 
-**하프별** (FotMob Periods · PPDA는 core.whoscored 하프 이벤트): 1H 점유 55% · xG 0.43–0.35 · 슈팅 7–4 · PPDA 10.19–16.5 / 2H 점유 43% · xG 0.66–1.03 · 슈팅 3–5 · PPDA 11.82–12.31
+**하프별** (FotMob Periods · PPDA는 core.whoscored 하프 이벤트): 전반 점유 55% · xG 0.43–0.35 · 슈팅 7–4 · PPDA 10.19–16.5 / 후반 점유 43% · xG 0.66–1.03 · 슈팅 3–5 · PPDA 11.82–12.31
 
 **타임라인** (SofaScore incidents · v=우리)
 - 2′ [v] **goal Jordan Henderson** (도움 Cole Palmer) → 1-0
@@ -53,13 +53,13 @@
 - 득점 장면 박스 점유 분담 — 팔머 니어 · 주앙 페드루 중앙 · 로저스 박스 모서리: 「práctica evidente」(분명히 연습된 것, TM auto-caption).
 
 ### 비점유 구조·압박
-- PPDA 10.75 · def_x 38.4(PL 평균대 하단). 1H PPDA 10.19 → 2H 11.82.
+- PPDA 10.75 · def_x 38.4(PL 평균대 하단). 전반 PPDA 10.19 → 후반 11.82.
 - ⭐ 서사(football.london — LiveScore 경유): 「nominal back three… shifted into different shapes」(명목상 백3, 경기 중 여러 형태로 변형), 비보유 4-4-2로 아체암퐁이 RB.
   실측 대조: 아체암퐁 평균 (x40.5, y14.2) · 수비셀 우측 하단 — **일치**. 네투 수비셀 최대도 우측 최후방 — 「네투는 더 높이」와는 **충돌**(obs#992).
 - 로제 「even our pressing was today not… Bournemouth-like」(오늘은 압박조차 본머스답지 않았다, 8qEWOs7EiWU auto-caption).
 
 ### 전환·rest-defense·세트피스
-- 3-0 이후 48~67′ 본머스 반격 — 알론소 「after conceding the three-one… we were not in control」(3-1 실점 뒤… 통제하지 못했다). 2H 상대 xG 1.03.
+- 3-0 이후 48~67′ 본머스 반격 — 알론소 「after conceding the three-one… we were not in control」(3-1 실점 뒤… 통제하지 못했다). 후반 상대 xG 1.03.
 - 세트피스 수비: 51′ 코너 니어 플릭 후 혼전 실점, 상대 세트 xG 1.01 — 결손 지속.
 - 세트피스 공격: 헨더슨 70′ 직접 FK(키커 팔머→헨더슨). 알론소 「He has been using the international break to practice his free-kicks」(A매치 휴식기를 프리킥 연습에 썼다, BBC MOTD — Goal 2차 인용).
 
@@ -69,7 +69,7 @@
 
 ## 4. 경기 중 변화
 
-2′·3′ 2-0(헨더슨·로저스) → 46′ 3-0(주앙 페드루, 네투 컷백) → 51′ 3-1(에반일송, 코너) → 67′ 4-1(주앙 페드루, 차바리아) → 70′ 5-1(헨더슨 FK). 72′ 카이세도→라비아 · 주앙 페드루→팔레스트라(시즌 첫 출전 관리 — 알론소 「The plan was for him not to play… the whole game」(풀타임은 계획에 없었다)), 83′ 네투→웰벡, 84′ 로저스→에스테방, 88′ 팔머→구스토. 2H 점유 55→43% · PPDA 10.19→11.82 · 상대 xG 0.35→1.03 — 3-0 이후 통제 상실(알론소 「we were not in control」(통제하지 못했다))이 수치로도 보인다.
+2′·3′ 2-0(헨더슨·로저스) → 46′ 3-0(주앙 페드루, 네투 컷백) → 51′ 3-1(에반일송, 코너) → 67′ 4-1(주앙 페드루, 차바리아) → 70′ 5-1(헨더슨 FK). 72′ 카이세도→라비아 · 주앙 페드루→팔레스트라(시즌 첫 출전 관리 — 알론소 「The plan was for him not to play… the whole game」(풀타임은 계획에 없었다)), 83′ 네투→웰벡, 84′ 로저스→에스테방, 88′ 팔머→구스토. 후반 점유 55→43% · PPDA 10.19→11.82 · 상대 xG 0.35→1.03 — 3-0 이후 통제 상실(알론소 「we were not in control」(통제하지 못했다))이 수치로도 보인다.
 
 ## 5. 선수별 분석 — 출전 선수 전원
 
@@ -198,7 +198,7 @@
   - ⇒ 네투 「높게」를 고정 위치가 아니라 **압박 배정**으로 서술한다.
 - 🇬🇧 그 밖의 매체
   - VAVEL(10-11): 아체암퐁 라인 브레이킹 패스 15.
-  - Chelsea FC Online: 66′까지 본머스가 2H의 37%를 첼시 수비 구역에서 보냈다 · 「Palmer's clever dummy」(팔머의 영리한 페이크 — FK 디코이).
+  - Chelsea FC Online: 66′까지 본머스가 후반의 37%를 첼시 수비 구역에서 보냈다 · 「Palmer's clever dummy」(팔머의 영리한 페이크 — FK 디코이).
   - Opta Analyst(10-10): 「actually won the expected goals (xG) battle 1.46 to 1.08」(사실 xG 싸움은 1.46 대 1.08로 본머스가 이겼다).
   - Squawka: 헨더슨 FK xG 0.01(우리 SofaScore 0.07 — 제공사 차) · SofaScore 기사: 페트로비치 goals prevented −2.85.
 - 🍒 **본머스 관점**
@@ -234,7 +234,7 @@
 | obs#992 네투 위치 충돌 | 「네투 높게」와 충돌 | ⚠️ **당일 판정 정정(부분)**. ⑴ WhoScored 이벤트를 재수신해 분 단위로 갈랐다. 전체 map25_def는 DB 값과 일치했다(같은 스냅샷). ⑵ 네투 수비액션 13건 중 **9건이 39~67′**였다. 0~38′은 **2건**(x 56·38)이고, 같은 구간 아체암퐁은 10건(y 7~12)이었다. ⑶ ⇒ 「충돌」은 3-1 전후 구간이 90분 그리드를 지배한 **시간대 혼재**다. 안정 구간에서는 서사와 모순되지 않지만 n=2라 지지라고 보기도 어렵다(**obs#1006**). |
 | 비보유 4-4-2 의도 | 서사 1매체 | 관찰 서사는 football.london+Chelsea's Voice로 늘었다. **감독 의도 진술은 0건**이다(obs#1008). |
 | 헨더슨 FK 키커 전환 | 「키커 팔머→헨더슨」 | ⚠️ **범위 보정** — 지정 키커 전환이 아니라 **1회 양보**다(obs#1007). |
-| 알론소 「not in control」 | 2H 수치와 일치 | 유지. 다만 감독은 8~10분이라 했고 실제 구간은 16분이다(obs#1009). |
+| 알론소 「not in control」 | 후반 수치와 일치 | 유지. 다만 감독은 8~10분이라 했고 실제 구간은 16분이다(obs#1009). |
 | 로제 라얀 9번 vs 라인업 2선 | 충돌 | **의도된 9번 기용**으로 해소(1차 발언). |
 
 ⇒ **당일 판정 정정 1건(부분 · obs#992→#1006) · 범위 보정 1건(obs#1007).** §1~9는 고치지 않았다.

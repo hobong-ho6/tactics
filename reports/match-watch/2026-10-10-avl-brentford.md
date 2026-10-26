@@ -8,7 +8,7 @@
 
 | 항목 | AVL | BRE |
 |---|---|---|
-| 점유 | 52% (1H 50 · 2H 54) | 48% |
+| 점유 | 52% (전반 50 · 후반 54) | 48% |
 | xG (FotMob = SofaScore) | **1.76** (오픈플레이 1.72 · 세트 0.05) | 1.25 (오픈플레이 1.04 · 세트 0.21) |
 | xGOT | 2.25 | 0.56 |
 | 슈팅 / 유효 / 블록 | 20 / 7 / 7 | 14 / 4 / 3 |
@@ -23,7 +23,7 @@
 | 실점으로 이어진 실수 | **1** (9′ 밍스) | 0 |
 | GK 실점 방지(SofaScore goals prevented) | 스즈키 **−1.44** | 켈러허 +0.25 |
 
-**하프별** (FotMob 동일 스냅샷): 1H xG **1.24 – 0.53** · 슈팅 10–5 / 2H xG **0.52 – 0.72** · 슈팅 10–9. 전반 우세 → 후반 역전된 흐름.
+**하프별** (FotMob 동일 스냅샷): 전반 xG **1.24 – 0.53** · 슈팅 10–5 / 후반 xG **0.52 – 0.72** · 슈팅 10–9. 전반 우세 → 후반 역전된 흐름.
 
 **타임라인** (SofaScore incidents)
 - 10′ 야르몰류크 0-1 — 9′ 빌드업 중 **밍스 패스 실수(Opta `Error`)** → 샤데 회수 → 티아구 → 린델뢰프 걷어내기 → 야르몰류크
@@ -74,7 +74,7 @@
 | #964 | 만잠비 반응형 측면 교환 → 플레이메이커 Roaming | cam_playmaker/Roaming .751 Δ.106(하프윙어 .560) | ✅ 일치 |
 | #965 | 고메스 LDM 높은 위치 · 카마라 아래 | dm_dlp/Roaming .875 Δ.154 · 고메스 x +2.6 · 좌측 | ✅ 역할 일치 · ⚠️ 「2선 높이」는 터치 평균상 미확인 |
 | #966·#975 | 스즈키 높은 빌드업 · 박스 밖 러시 | 패스 46(팀 3위) · KeeperSweeper 2회(80′ x19 · **96′ x47**) · 박스 밖 회수 2회(2′·6′) · 히트맵 적합은 gk_goalkeeper/Defend .939 | ✅ 이벤트로 일치 — 히트맵(위치)은 박스 안 중심이라 희소 행동을 못 담는다 |
-| #967 | 루제리 HT 교체 사유 미상 | **SofaScore 부상 교체** | ✅ 사유 확정(부상) |
+| #967 | 루제리 하프타임 교체 사유 미상 | **SofaScore 부상 교체** | ✅ 사유 확정(부상) |
 | #968·#971·#974 | 2선 3인(만잠비·맥긴·음바예) 순환 | 64~86′ 터치 평균: 만잠비 y52(중앙) · 맥긴 34.7 · 음바예 35.7(둘 다 오른쪽 안쪽) | ⚠️ 평균은 순환을 지운다 — 장면 단위는 영상 확인 필요 |
 | #969·#970 | 음바예 안쪽 이동 · Balanced 추정 | wm_insidefwd/Attack .444 > Balanced .350(hp21 · 26′) | ⚠️ 역할(IF)은 일치 · 포커스는 실측이 Attack 쪽(짧은 표본) |
 | #972 | 맥긴 IF 느낌 | wm_winger/Attack .772(IF Balanced .528) · 터치 y 22.2(0~64′, 오른쪽) | ❌ 실측은 윙어 — 득점 장면의 안쪽 침투는 순간 행동일 수 있음 |
@@ -93,7 +93,7 @@
 | 캐시 | RB · fb_att_wb/Support .895 (Δ.004 무결정 · 2위 fb_wingback/Balanced) | 90′ 6.6 · 패스 35/40 · 태클 5 · 경고 72′ | (46.2, 12.6) · hp74 | 우측 전진·수비 겸장, WhoScored 패스 1위(51) | 시즌 정본 fb_wingback/Balanced와 무결정 동률 — 유지 |
 | 린델뢰프 | RCB · cb_bpd/Aggressive .857 (Δ.029 무결정) | 90′ 6.9 · 패스 41/46 · 걷어내기 13 | (28.3, 31.1) · hp73 | 걷어내기 13으로 후방 정리 | 정본 유지 |
 | 밍스 | LCB · cb_bpd/Aggressive .905 (Δ.001 무결정 · 2위 Build-Up .904) | 90′ 6.0 · 패스 36/47 · **9′ 실점 이어진 실수** | (33.7, 65.1) · hp67 | 패스량 팀 1위(SofaScore 47) | 정본 유지 · 빌드업 실수 1건 기록 |
-| 루제리 | LB · fb_wingback/Balanced .920 (Δ.064) | 45′ 6.4 · 패스 11/13 · 키패스 1 | (35.8, 86.0) · hp28 | **부상으로 HT 교체** | 시즌 measured 갱신(n 3) — fb_wingback/Balanced .899 |
+| 루제리 | LB · fb_wingback/Balanced .920 (Δ.064) | 45′ 6.4 · 패스 11/13 · 키패스 1 | (35.8, 86.0) · hp28 | **부상으로 하프타임 교체** | 시즌 measured 갱신(n 3) — fb_wingback/Balanced .899 |
 | 완비사카 | LB(본래 RB) · fb_att_wb/Support .791 (Δ.040 무결정) | 45′ 6.6 · 태클 2 · 인터셉트 1 | (44.6, 82.4) · hp33 | 반대발 왼쪽 수행, 루제리보다 전진 | 교체 표본 — 시즌 집계 제외 |
 | 카마라 | RDM · dm_dlp/Roaming .636 (Δ.021 무결정 · 2위 dm_dlp/Build-Up) | 90′ **7.3** · 패스 36/44 · 키패스 1 · 경합 9-4 | (46.5, 34.3) · hp81 | 앵커 · 경합 우위 | 정본 RDM holding/Defend 유지(적합도 낮고 무결정) |
 | 고메스 | LDM · **dm_dlp/Roaming .875 (Δ.154)** | 86′ 6.9 · 패스 36/40 | (44.6, 55.0) · hp62 | 좌측 피벗, 카마라보다 약간 높음 | **오늘 바꾼 정본과 일치** · 시즌 measured argmax도 dm_dlp/Roaming(.812)으로 변경 |
@@ -153,7 +153,7 @@
 - ~5′: 「Johan Manzambi largely operating as a right 10 … has freedom to drift across」(만잠비는 주로 오른쪽 10번으로 뛰지만 가로질러 떠다닐 자유가 있다).
 - ~14′: 「Brentford's goal had come from them showing the ball to Mings since the first goal kick」(브렌트퍼드의 골은 첫 골킥부터 밍스에게 공을 내주도록 유도한 결과였다) — **9′ 실수는 상대의 설계된 압박 함정**이었다.
 - ~21′: 「Brentford's full-backs not comfortable in following Buendia and McGinn when they move inside」(부엔디아·맥긴이 안으로 들어올 때 브렌트퍼드 풀백이 따라가기 불편해한다) — 에메리 원칙 「와이드는 안으로」가 작동한 장면.
-- HT: 「not sure if he can do that with Gomes & Kamara, who love duels」(경합을 좋아하는 고메스·카마라로 통제가 가능할지 확신이 없다) — claim #167(배급 비지배)과 같은 방향의 기자 판단.
+- 하프타임: 「not sure if he can do that with Gomes & Kamara, who love duels」(경합을 좋아하는 고메스·카마라로 통제가 가능할지 확신이 없다) — claim #167(배급 비지배)과 같은 방향의 기자 판단.
 - ~54′: 「Wan-Bissaka now tasked with providing high width outside of Buendia, which doesn't tend to come naturally」(완비사카는 부엔디아 바깥에서 높은 폭을 대는 임무 — 그에게 자연스럽지 않다) — 실측 fb_att_wb/Support .791과 일치.
 - ~63′: 「Matteo Ruggeri has just come out of the tunnel and has some strapping on his left leg. Hamstring area.」(루제리가 왼쪽 다리 햄스트링 부위에 테이핑을 하고 터널에서 나왔다) — SofaScore 부상 교체 분류와 함께 **부상 교체 확정에 가깝다**(공식 진단은 미발표).
 - ~68′: 「Manzambi moves to the left, McGinn as the 10, Mbaye on the right」(만잠비 왼쪽, 맥긴 10번, 음바예 오른쪽) — **현장 관찰 obs#968과 정확히 일치**.
@@ -189,7 +189,7 @@
 > 수집 시각 2026-10-11 KST · 회차: 스케줄 `mw-avl-brentford-d1` · 당일 절(§1~9)은 수정하지 않았다.
 
 ### D1-1. 에메리 경기 후 발언 — ✅ 확보(정식 회견 전문은 미확보 · 매체 발췌 + 구단 플래시 인터뷰)
-- **루제리 HT 교체 = 햄스트링 부상 확정**: 원문 「Ruggeri is hamstring」(루제리는 햄스트링이다 — Hayters TV, 10-10 19:44, 1차 확인) · 「It's his hamstring. We will check tomorrow.」(햄스트링이다. 내일 검사한다 — RotoWire). PA(Express & Star 등 · **원문 403, 검색 스니펫만**): 일요일 스캔 · 「I will try to keep our structure without our two left-footed full-backs in Maatsen and Ruggeri」(왼발 풀백 마트선·루제리 없이도 구조를 바꾸지 않고 유지하겠다) · 완비사카가 왼쪽 풀백을 이어 맡을 전망. ⇒ §4-1 obs#967 「부상」 판정 **확증**(obs#983).
+- **루제리 하프타임 교체 = 햄스트링 부상 확정**: 원문 「Ruggeri is hamstring」(루제리는 햄스트링이다 — Hayters TV, 10-10 19:44, 1차 확인) · 「It's his hamstring. We will check tomorrow.」(햄스트링이다. 내일 검사한다 — RotoWire). PA(Express & Star 등 · **원문 403, 검색 스니펫만**): 일요일 스캔 · 「I will try to keep our structure without our two left-footed full-backs in Maatsen and Ruggeri」(왼발 풀백 마트선·루제리 없이도 구조를 바꾸지 않고 유지하겠다) · 완비사카가 왼쪽 풀백을 이어 맡을 전망. ⇒ §4-1 obs#967 「부상」 판정 **확증**(obs#983).
 - **자기 진단 = 통제 부족**(BBC MOTD 발췌, Yahoo 재게재): 「We must try to control the match and structure better with possession and positioning」(점유와 포지셔닝으로 경기와 구조를 더 잘 통제해야 한다) · 「We were sometimes in a hurry and losing the ball」(때때로 서두르다 공을 잃었다) · ESPN/PA: 「We were expecting to try and dominate the ball more than we did」(실제보다 공을 더 지배하길 기대했다) → obs#986. ⚠️ 팀 빌드업 정본 Counter를 바꿀 근거는 아니다(감독 목표 ≠ 이 경기 실측 스타일) — 추가 관찰.
 - 구단 플래시 인터뷰(gxU0HMfb3Nk · auto-caption · VAVEL 정리본과 문구 일치): 「more or less I think the result is fair in 90 minutes … we conceded more than I expected」(대체로 결과는 공정, 하지만 기대보다 많이 실점) · 「Nicolas Jackson … understanding everything tactically and everything with his power in our structure better」(잭슨은 자기 힘을 우리 구조 안에서 점점 더 잘 이해하고 있다) · 「like Johan Manzambi – it's his second match playing in the starting 11」(만잠비처럼 선발 두 번째 경기인 선수도 있다).
 - ❌ **미확보**: 부엔디아→음바예·알리송·바클리 교체 의도, 2선 순환, 만잠비 「play free」 후속, 스즈키 빌드업, 고메스·카마라 언급 — 확인한 어느 매체 발췌에도 없다. 구단 「POST-MATCH LIVE」(0G-3rgIq77o)는 **해설진 토크만 있고 회견은 들어 있지 않다**(전사로 확인).
@@ -205,7 +205,7 @@
 | AVFC 「Unai Emery post match reaction」 gxU0HMfb3Nk | 10-10 | 플래시 인터뷰 | 위 D1-1 | none 1 |
 | AVFC 「POST-MATCH LIVE」 0G-3rgIq77o | 10-10 | 해설진 토크 | 만잠비 「10 position … with Jackson most of the time」(대부분 잭슨 바로 뒤 10번) · 「unai system … wants them to try and play through」(에메리 시스템은 뒤에서 풀어 나오길 원한다) · 음바예·알리송 투입 후 「who's on the right, who's on the left」(누가 오른쪽이고 왼쪽인지 계속 바뀌었다) | 만잠비 cam_playmaker APPLIED · 골킥 빌드업 NA |
 | UTV 「SOME OF THIS DOESN'T MAKE SENSE!」 HKPnsNlcdEQ | 10-10 | 경기 반응+복스팝 | 「we're still so narrow … so easy to be jumped on」(여전히 너무 좁아 압박당하기 쉽다) · 밍스 표적 압박 · 카마라 고립 · 고메스 견실 | 폭 limit HELD · 밍스 limit PENDING · 카마라 limit HELD |
-| 1874 「Plenty Of Positives」 aEKmZ70siXA | 10-11 | 경기 반응 라이브 | 고메스 사실상 MOTM · 골킥 때 고메스 집중 압박 · 루제리 HT 이탈로 왼쪽 자연 폭 상실 · 음바예 좌우 위협 · 만잠비 후반 체력 저하 | 고메스 dm_dlp APPLIED · 골킥 수신 HELD · 음바예 IF PENDING |
+| 1874 「Plenty Of Positives」 aEKmZ70siXA | 10-11 | 경기 반응 라이브 | 고메스 사실상 MOTM · 골킥 때 고메스 집중 압박 · 루제리 하프타임 이탈로 왼쪽 자연 폭 상실 · 음바예 좌우 위협 · 만잠비 후반 체력 저하 | 고메스 dm_dlp APPLIED · 골킥 수신 HELD · 음바예 IF PENDING |
 
 - The Villans: 경기 후 영상 **미게시**(최신은 10-08 프리뷰 「Dismantling Keith Andrews…」) → D+2 재확인.
 - 1874: 월요일(10-12) 「five things」 후속 쇼 예고 → D+2·D+3 대상.
@@ -316,7 +316,7 @@
 - 🇬🇧 **Sonny Kelland(서브스택, 10-12)**: 완비사카 「attempted to cut in every single time he went forward」(전진할 때마다 안으로 꺾으려 했다) · 맥긴 도움 장면 「had smartly pulled away from the collection of defenders」(수비수 무리에서 영리하게 빠져나갔다) · 2실점째 「a flick off of Victor Lindelof」(린델뢰프에 맞고 굴절).
 - 🇬🇧 The False 9(10-11): 2실점째 「Joao Gomes failing to track the run」(고메스가 침투를 따라가지 못했다) — obs#987과 같은 방향 · 「Boubacar Kamara limping off late」(카마라가 막판 절뚝였다) — **1소스·후속 보도 0**, 기록만.
 - 🇬🇧 myoldmansaid: 「Unai Emery went with Tyrone Mings over Pau Torres to deal with Brentford's set pieces」(브렌트퍼드 세트피스 대응으로 토레스 대신 밍스) — 선발 사유 **추정**(감독 발언 근거 없음), 채택하지 않음.
-- 🐝 **브렌트퍼드 관점**: 구단 공식 분석(Playmaker Stats, 10-12) — 디우프 첫 PL 선발 LB 터치 64·태클 4 · HT 슈스터 아웃·히키 CB 이동 패스 96% · **빌라 구조 서술 0**. The Brentford Way(10-11) 아예르 「cantered through the Villa defence」(빌라 수비를 성큼성큼 뚫었다) — 구조 서술 0. Beesotted·Bees United·Ealing Road·Jay Harris **0건**(검색어: 「Beesotted Aston Villa 2-2 review Ajer Yarmoliuk」 · 「Brentford Villa Ealing Road OR "Bees United" OR "Jay Harris" Villa Park Ajer Diouf review」).
+- 🐝 **브렌트퍼드 관점**: 구단 공식 분석(Playmaker Stats, 10-12) — 디우프 첫 PL 선발 LB 터치 64·태클 4 · 하프타임 슈스터 아웃·히키 CB 이동 패스 96% · **빌라 구조 서술 0**. The Brentford Way(10-11) 아예르 「cantered through the Villa defence」(빌라 수비를 성큼성큼 뚫었다) — 구조 서술 0. Beesotted·Bees United·Ealing Road·Jay Harris **0건**(검색어: 「Beesotted Aston Villa 2-2 review Ajer Yarmoliuk」 · 「Brentford Villa Ealing Road OR "Bees United" OR "Jay Harris" Villa Park Ajer Diouf review」).
 - 🇺🇦 야르몰류크(상대): ukrfootball.ua(10-10 · 회차 창 밖이지만 유일한 행동 서술) 「опинившись на м'ячі перед штрафним майданчиком суперника в результаті підбирання」(세컨드볼을 주워 상대 박스 앞에서 공을 잡았다) — 1874의 「박스 앞 공백」과 일치.
 - 🇹🇷 Fotomaç(10-13): 「Wan-Bissaka'nın yerine Ruggeri'nin forma giyeceğini vurguladı」(완비사카 대신 루제리가 뛸 것이라 강조했다) — 영국 언론 전언이고 결장 보도와 충돌 → **채택 안 함**.
 - 🇮🇹 루제리 **이탈리아어 2026-10 보도 0건**(검색어: 「Ruggeri infortunio Aston Villa」 · 「Ruggeri esami flessore Aston Villa tempi di recupero」). 🇪🇸 에메리 신규 0(「Emery Ruggeri isquiotibial Aston Villa Brentford」 · 「Emery rueda de prensa Fenerbahçe Aston Villa Champions」). 🇧🇷 고메스·알리송 0(「João Gomes Aston Villa empate Brentford」 · 「Alysson Aston Villa Brentford estreia OR entrou」). 🇨🇭/🇫🇷 만잠비 0(「Manzambi Blick Aston Villa Brentford Nati」 · 「Manzambi passe décisive McGinn Aston Villa Brentford」). 🇸🇪 린델뢰프 0(「Lindelöf Villa Brentford oavgjort Aftonbladet OR Expressen OR Fotbollskanalen」). 🇫🇷 카마라 0(「Boubacar Kamara Aston Villa Brentford blessure octobre 2026」). 🇳🇴 아예르(상대) 0(「Ajer scoring mot Aston Villa Brentford uavgjort」).

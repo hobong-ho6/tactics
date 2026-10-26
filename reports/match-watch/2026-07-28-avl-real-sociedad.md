@@ -34,7 +34,7 @@
 
 ## 4. 경기 중 변화
 
-1. HT 4명 동시(James Wright·파우 토레스·보가르드·Luka Lynch) — 비조·시세·밍스·헤밍스 교대.
+1. 하프타임 4명 동시(James Wright·파우 토레스·보가르드·Luka Lynch) — 비조·시세·밍스·헤밍스 교대.
 2. 68′ 3명(네델코비치·TJ Carroll·Ben Broggio).
 3. 76′ 3명(Aidan Borland·Jimoh-Aloba·Triston Rowe).
 ⛔ 4실점이 어느 블록 구간에 나왔는지 **득점 시각이 없어 알 수 없다** — "교체 후 붕괴" 같은 서술을 쓰지 않는다.

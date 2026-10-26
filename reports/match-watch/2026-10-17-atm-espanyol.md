@@ -19,8 +19,8 @@
 
 | 하프 | 점유 | xG v–o | 슛 v–o | 유효 v–o | PPDA v / o |
 |---|---|---|---|---|---|
-| 1H | 70% | 0.78–0.25 | 10–4 | 2–0 | 14.88 / 19.36 |
-| 2H | 71% | 0.69–0.26 | 9–6 | 4–2 | 5.94 / 20.45 |
+| 전반 | 70% | 0.78–0.25 | 10–4 | 2–0 | 14.88 / 19.36 |
+| 후반 | 71% | 0.69–0.26 | 9–6 | 4–2 | 5.94 / 20.45 |
 
 타임라인(SofaScore incidents):
 
@@ -49,11 +49,11 @@
 
 ### 점유 구조·빌드업
 
-**점유 70% · 패스 670 vs 백5 저블록.** 에스파뇰 5-4-1(EFE 선발: 엘 힐랄리·리델·카브레라·드르쿠시치·히노호). 율만이 라인 사이 무게를 떠안았다 — El Gol Digital(10-18) 「107 toques, 90 pases, 7 recuperaciones, 3 tiros y 4 despejes」(터치 107·패스 90·리커버리 7·슈팅 3·클리어 4, 전부 경기 1위). 선발 투톱 데이비드·루크먼이 둘 다 뒷공간형이라 라인 사이 여분이 없었다(TheFalse9 10-18 — 루크먼은 실제로 좌측 넓게 y83.8). 상대 「keep the penalty area crowded, force Atletico wide」(박스를 붐비게 하고 아틀레티코를 측면으로 몰았다, TheFalse9). 1H xG 0.78 · 코너 12.
+**점유 70% · 패스 670 vs 백5 저블록.** 에스파뇰 5-4-1(EFE 선발: 엘 힐랄리·리델·카브레라·드르쿠시치·히노호). 율만이 라인 사이 무게를 떠안았다 — El Gol Digital(10-18) 「107 toques, 90 pases, 7 recuperaciones, 3 tiros y 4 despejes」(터치 107·패스 90·리커버리 7·슈팅 3·클리어 4, 전부 경기 1위). 선발 투톱 데이비드·루크먼이 둘 다 뒷공간형이라 라인 사이 여분이 없었다(TheFalse9 10-18 — 루크먼은 실제로 좌측 넓게 y83.8). 상대 「keep the penalty area crowded, force Atletico wide」(박스를 붐비게 하고 아틀레티코를 측면으로 몰았다, TheFalse9). 전반 xG 0.78 · 코너 12.
 
 ### 비점유 구조·압박
 
-**맞압박 강도 ↑.** PPDA 8.69(2H 5.94) · def_x 37.6. 상대는 장기전 설계 — 마놀로 곤살레스 「queríamos que el partido fuera largo.」(경기가 길게 가기를 원했다) · 「Para cuando se rompiera, atacar.」(경기가 깨질 때 공격하려고, COPE/EFE 10-17). 에스파뇰 xG 0.51 · 유효 2. 로메로 66′ 경고 후 67′ 자청 교체(내전근 저등급 부상).
+**맞압박 강도 ↑.** PPDA 8.69(후반 5.94) · def_x 37.6. 상대는 장기전 설계 — 마놀로 곤살레스 「queríamos que el partido fuera largo.」(경기가 길게 가기를 원했다) · 「Para cuando se rompiera, atacar.」(경기가 깨질 때 공격하려고, COPE/EFE 10-17). 에스파뇰 xG 0.51 · 유효 2. 로메로 66′ 경고 후 67′ 자청 교체(내전근 저등급 부상).
 
 ### 전환·rest-defense·세트피스
 
@@ -62,15 +62,15 @@
 ## 3. 전술적 특성
 
 - 강점: 율만 중심 점유 순환(패스 82/90), 교체로 백5를 부순 구조 변경(훌리안 하강·그리말도 고점·요렌테 우측 고점·바에나 안쪽), 전방 압박 탈취 결승골.
-- 취약: 선발 조합(데이비드·루크먼 둘 다 뒷공간형)이 저블록에서 라인 사이 여분을 못 만듦 — 1H 결정력 부족(시메오네 「no pudimos tener esa contundencia」(그 결정력을 갖지 못했다)).
+- 취약: 선발 조합(데이비드·루크먼 둘 다 뒷공간형)이 저블록에서 라인 사이 여분을 못 만듦 — 전반 결정력 부족(시메오네 「no pudimos tener esa contundencia」(그 결정력을 갖지 못했다)).
 - 감독 프로필 대비: 「gestionar los minutos」(출전 시간 관리) 3경기 연속 — 「Buscábamos gestionar los minutos, el esfuerzo, necesitábamos piernas.」(출전 시간과 체력 소모를 관리하려 했다, 다리가 필요했다).
 
 ## 4. 경기 중 변화
 
-1. 0-0(0–89′ · phase level 89분): 1H 점유 70%·xG 0.78, 29′ 줄리아노 1대1 무산·37′ 데이비드 선방.
+1. 0-0(0–89′ · phase level 89분): 전반 점유 70%·xG 0.78, 29′ 줄리아노 1대1 무산·37′ 데이비드 선방.
 2. 46′ 루크먼→훌리안(좌중앙 하강 — TheFalse9 「dropped into the space in front of Espanyol's midfield and drifted left」(에스파뇰 미드필드 앞 공간으로 내려와 좌측으로 흘렀다)) · D. 마르티네스→그리말도(고점).
 3. 55′ 바리오스→요렌테(「pushed higher on the right than Barrios had, pinning Hinojo back」(바리오스보다 우측에서 더 높이 올라가 히노호를 묶었다)) · 62′ 이강인→바에나(좁게 서서 박스 가장자리 도착) · 67′ 로메로→멘도사(「a midfielder for a centre-back」(센터백 자리에 미드필더) — 평균 위치 x53.0·y24.5 우측 중원 → 후방 1명 감축).
-4. 89′ 훌리안 도움 바에나 0-1. 2H PPDA 5.94 — 후반 압박 강도 최고.
+4. 89′ 훌리안 도움 바에나 0-1. 후반 PPDA 5.94 — 후반 압박 강도 최고.
 
 ## 5. 선수별 분석 — 출전 선수 전원
 
@@ -85,7 +85,7 @@
 | 쿠티 로메로 | RCB · RCB — 67′ 자청 교체 | 67′ 7.7 · 키패스 0 · xG 미수집 · xA 0.15 · 패스 67/68 · 태클 1 · 인터셉트 0 · 터치 77 · 듀얼 5-4 | (x35.7, y39.3) · 히트포인트 89 · 국면 리드/동점/열세 0/67/0분 | VAVEL 8.75 · 패스 67/68. 66′ 경고. 시메오네 「entró Mendoza cuando 'Cuti' pidió el cambio」(쿠티가 교체를 요청했을 때 멘도사가 들어갔다). 내전근 저등급 부상 10~12일(Marca→ElDesmarque 10-18). | cb_bpd/Aggressive 0.883(Δ0.167) — 정본 cb_bpd/Aggressive 일치 |
 | 이강인 | RAM · 세컨드 톱(메디아푼타) — RAM 슬롯 · 62′ 아웃 | 62′ 7.0 · 키패스 3 · xG 0.14 · xA 0.34 · 패스 41/44 · 태클 0 · 인터셉트 0 · 터치 58 · 듀얼 1-4 | (x65.6, y37.4) · 히트포인트 63 · 국면 리드/동점/열세 1/89/0분 | xA 0.34 · 키패스 3 · 코너 8개 전담. VAVEL 「se colocó como mediapunta, algo por detrás del delantero」(공격수 약간 뒤 메디아푼타에 섰다). 43′ 경고. | 실측 무결정 Δ0.047 — 1위 cam_halfwinger/Attack 0.811 · 2위 cam_halfwinger/Roaming 0.764(서사 tie-break 근거 없음 → 1위 잠정) — 4-4-2 정본에 RAM 슬롯 없음(비교 불가) |
 | 바리오스 | RDM · RDM — 더블 피벗(공격 가담 자유) · 55′ 아웃 | 55′ 7.4 · 키패스 1 · xG 미수집 · xA 0.15 · 패스 46/55 · 태클 0 · 인터셉트 1 · 터치 62 · 듀얼 3-1 | (x58.9, y30.8) · 히트포인트 69 · 국면 리드/동점/열세 0/55/0분 | ElDesmarque 5 「최근 경기 수준이 아니었다」. 시메오네 「Barrios salió porque hay una atención mayor」(바리오스는 더 큰 주의가 필요해서 나왔다). | 실측 무결정 Δ0.049 — 1위 dm_dlp/Roaming 0.616 · 2위 dm_boxcrasher/Balanced 0.567(서사 tie-break 근거 없음 → 1위 잠정) — 정본 dm_dlp/Roaming 일치 |
-| 다니 마르티네스 | LB · LB — 45분 | 45′ 7.0 · 키패스 1 · xG 0.04 · xA 0.02 · 패스 28/31 · 태클 0 · 인터셉트 0 · 터치 42 · 듀얼 2-1 | (x52.4, y86.9) · 히트포인트 48 · 국면 리드/동점/열세 0/46/0분 | ElDesmarque 6 「tuvo valentía para lanzarse al ataque」(공격에 뛰어드는 용기가 있었다). HT 그리말도 교체. | fb_att_wb/Support 0.897(Δ0.073) — 정본 fb_att_wb/Support 일치 |
+| 다니 마르티네스 | LB · LB — 45분 | 45′ 7.0 · 키패스 1 · xG 0.04 · xA 0.02 · 패스 28/31 · 태클 0 · 인터셉트 0 · 터치 42 · 듀얼 2-1 | (x52.4, y86.9) · 히트포인트 48 · 국면 리드/동점/열세 0/46/0분 | ElDesmarque 6 「tuvo valentía para lanzarse al ataque」(공격에 뛰어드는 용기가 있었다). 하프타임 그리말도 교체. | fb_att_wb/Support 0.897(Δ0.073) — 정본 fb_att_wb/Support 일치 |
 | 루크만 | LM · LM(좌측 넓게) — 45분 | 45′ 6.4 · 키패스 0 · xG 0.04 · xA 0.01 · 패스 11/13 · 태클 1 · 인터셉트 0 · 터치 20 · 듀얼 1-3 | (x62.1, y83.8) · 히트포인트 22 · 국면 리드/동점/열세 0/46/0분 | ElDesmarque 4 「sigue sin encontrar la regularidad」(여전히 꾸준함을 찾지 못한다). 듀얼 1-3. | wm_wideplm/Attack 0.880(Δ0.158) — 정본 wm_insidefwd/Attack 불일치 |
 | 그리말도 | LB · LB — 46′ 투입 · 고점 | 45′ 6.9 · 키패스 1 · xG 미수집 · xA 0.06 · 패스 15/18 · 태클 1 · 인터셉트 0 · 터치 28 · 듀얼 3-1 | (x53.5, y71.2) · 히트포인트 31 · 국면 리드/동점/열세 1/43/0분 | 훌리안 결승골 채널을 연 높은 위치(TheFalse9). ElDesmarque 5 · VAVEL 8. | 실측 무결정 Δ0.019 — 1위 fb_wingback/Support 0.749 · 2위 fb_att_wb/Support 0.730(서사 tie-break 근거 없음 → 1위 잠정) — 정본 fb_att_wb/Support 불일치 |
 | J. 알바레스 | LST · LST — 46′ 투입 · 좌중앙 하강 여분 | 45′ 7.8 · 도움 1 · 키패스 1 · xG 0.28 · xA 0.11 · 패스 26/29 · 태클 0 · 인터셉트 0 · 터치 37 · 듀얼 4-0 | (x62.7, y61.0) · 히트포인트 41 · 국면 리드/동점/열세 1/89/0분 | 89′ 도움 · 듀얼 4-0. ElDesmarque 8. | st_false9/Build-Up 0.779(Δ0.076) — 정본 st_advanced/Support 불일치 |

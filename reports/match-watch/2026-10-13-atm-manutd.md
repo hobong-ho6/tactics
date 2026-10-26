@@ -19,8 +19,8 @@
 
 | 하프 | 점유 | xG v–o | 슛 v–o | 유효 v–o | PPDA v / o |
 |---|---|---|---|---|---|
-| 1H | 66% | 0.34–0.68 | 6–4 | 2–2 | 9.25 / 21.62 |
-| 2H | 49% | 1.12–0.3 | 5–5 | 3–2 | 13.23 / 12.12 |
+| 전반 | 66% | 0.34–0.68 | 6–4 | 2–2 | 9.25 / 21.62 |
+| 후반 | 49% | 1.12–0.3 | 5–5 | 3–2 | 13.23 / 12.12 |
 
 타임라인(SofaScore incidents):
 
@@ -47,11 +47,11 @@
 
 ### 점유 구조·빌드업
 
-**명목 4-4-2 · 빌드업 4-3-3(카르도주 단독 피벗).** FotMob 4-4-2(positionId 72/74/76/78 · 104/106). Footballoverthinker(Substack 10-14) 「built from the back in a 4-3-3 formation」(후방에서 4-3-3으로 빌드업했다) — 카르도주가 깊이 내려가 3v2, 바리오스와 내려온 훌리안이 미드필드에 붙는다. 카르도주 「his marker, Mbeumo, failed to follow him」(그의 마크맨 음뵈모가 따라가지 않았다). 평균 위치: 카르도주 (x44.3·y59.4) · 바리오스 (x52.9·y34.8) · 훌리안 (x62.3·y58.6) · 이강인 (x59.8·y32.4). 시메오네: 「Sabíamos que si podíamos hacer esa primera presión nos podíamos encontrar con jugadas muy importantes.」(그 첫 번째 압박을 넘어설 수 있으면 아주 중요한 장면들을 만날 수 있다는 걸 알고 있었다 — Infobae/EFE 10-13). 1′ 선제골: 이강인 하프라인 뒤 로빙 → 바에나 → 바리오스 2선 침투. 1H 점유 66%·패스 651(경기).
+**명목 4-4-2 · 빌드업 4-3-3(카르도주 단독 피벗).** FotMob 4-4-2(positionId 72/74/76/78 · 104/106). Footballoverthinker(Substack 10-14) 「built from the back in a 4-3-3 formation」(후방에서 4-3-3으로 빌드업했다) — 카르도주가 깊이 내려가 3v2, 바리오스와 내려온 훌리안이 미드필드에 붙는다. 카르도주 「his marker, Mbeumo, failed to follow him」(그의 마크맨 음뵈모가 따라가지 않았다). 평균 위치: 카르도주 (x44.3·y59.4) · 바리오스 (x52.9·y34.8) · 훌리안 (x62.3·y58.6) · 이강인 (x59.8·y32.4). 시메오네: 「Sabíamos que si podíamos hacer esa primera presión nos podíamos encontrar con jugadas muy importantes.」(그 첫 번째 압박을 넘어설 수 있으면 아주 중요한 장면들을 만날 수 있다는 걸 알고 있었다 — Infobae/EFE 10-13). 1′ 선제골: 이강인 하프라인 뒤 로빙 → 바에나 → 바리오스 2선 침투. 전반 점유 66%·패스 651(경기).
 
 ### 비점유 구조·압박
 
-**함정형 압박 + 중블록.** PPDA 11.03 · def_x 40.5. Goal 전술판(10-14) 「Atletico did not press the United centre-backs relentlessly」(아틀레티코는 맨유 센터백을 끊임없이 압박하지 않았다) — 「a collective trap, led by Julian Alvarez and Kang-in Lee」(훌리안과 이강인이 이끈 집단 함정). 1H 맨유 xG 0.68 > 아틀레티코 0.34 — 로메로가 음뵈모에게 뚫린 장면(12′ 넛메그, SI 스니펫 기준)이 맨유 첫 빅찬스. 2H PPDA 13.23으로 리드 관리. 맨유 빅찬스 4(캐릭 「We had four big chances」(빅찬스가 넷 있었다)) — 오블락 선방 2회가 막았다(ElDesmarque 9점).
+**함정형 압박 + 중블록.** PPDA 11.03 · def_x 40.5. Goal 전술판(10-14) 「Atletico did not press the United centre-backs relentlessly」(아틀레티코는 맨유 센터백을 끊임없이 압박하지 않았다) — 「a collective trap, led by Julian Alvarez and Kang-in Lee」(훌리안과 이강인이 이끈 집단 함정). 전반 맨유 xG 0.68 > 아틀레티코 0.34 — 로메로가 음뵈모에게 뚫린 장면(12′ 넛메그, SI 스니펫 기준)이 맨유 첫 빅찬스. 후반 PPDA 13.23으로 리드 관리. 맨유 빅찬스 4(캐릭 「We had four big chances」(빅찬스가 넷 있었다)) — 오블락 선방 2회가 막았다(ElDesmarque 9점).
 
 ### 전환·rest-defense·세트피스
 
@@ -60,7 +60,7 @@
 ## 3. 전술적 특성
 
 - 강점: 카르도주 단독 피벗 하강으로 맨유 4-2-4 압박의 1선 수적 열세를 푼 빌드업, 바리오스 2선 침투(골·기점 2), 풀백 고점으로 상대 윙어 묶기, 오블락.
-- 취약: 1H 맨유 xG 0.68 — 로메로 1대1 수비(음뵈모)·뒷공간, 훌리안 결정력(빅찬스 2 미스 · 6.2), 경합 승률 35.7%(FotMob).
+- 취약: 전반 맨유 xG 0.68 — 로메로 1대1 수비(음뵈모)·뒷공간, 훌리안 결정력(빅찬스 2 미스 · 6.2), 경합 승률 35.7%(FotMob).
 - 감독 프로필 대비: 「gestionar los minutos」(출전 시간 관리) 축 반복 — 바리오스 60′ 관리 교체(감독 확인). 직전 알라베스전 4-2-3-1 기록 → 이번 4-4-2 복귀.
 
 ## 4. 경기 중 변화

@@ -103,6 +103,7 @@ for t in AVL CHE LIV ATM; do .venv/bin/python scripts/collect_fotmob_players.py 
   전사 수집 후 `python3 scripts/index_transcripts.py`를 돌려 `match_videos`에 메타·경기 귀속을 채우고,
   그 경기 영상은 **`summary`(3~5문장)와 `key_points`(줄바꿈 구분)를 직접 작성**한다 — 경기 화면 「이 경기 영상 분석」 패널이 그걸 읽는다.
   ⛔ **인용은 원문 「…」 + 한국어 번역 병기**(불변규칙 11)이고, 전사 기반이므로 confidence에 **auto-caption**을 명기한다.
+  ⛔ **하프 표기는 전반/후반/하프타임** — 제공사 코드 1H/2H·HT를 문장에 쓰지 않는다(2026-10-26 사용자 「1H 2H가 뭐야?」 · G41이 DB 전 열·match-watch md를 막는다 · 변환은 `core.half_terms.conv()`/`conv_md()`).
   ⚠️ 인물명은 실측과 교차검증한다(docs/30 오인식 대조표 — 「Matty Cash ↔ Maatsen」이 실제로 재발했다).
   ⛔⛔ **「핵심 몇 편만」 요약하고 나머지를 백로그로 넘기지 않는다**(2026-10-20 사용자 지시 「전사 수집 완료되면 바로 요약 생성하도록」 —
   뉴캐슬전 40편 중 5편만 요약돼 화면이 「미작성」으로 덮였다). 순서: 전사 → `index_transcripts.py` → **새로 귀속된 전 편**

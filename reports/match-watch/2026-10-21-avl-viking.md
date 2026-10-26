@@ -60,7 +60,7 @@
 | 27 | ⭐ 가르나초: 출전 여부·분·서열 발언 | **72′ 음바예 대신 투입 18분**(뉴캐슬전 명단 제외 뒤 복귀) · 좌측 레인 9/12 · 슈팅 3(78′ 선방 · 81′ 감아차기 빗나감 · 88′ 블록) · xG 0.18 · SS 6.7. 에메리 서열 발언은 이 경기 뒤 0건 — Sky 기자 문장 속 인용부호 조각 「played his best minutes」(가장 좋은 시간을 뛰었다)만 있다(전문 미확인) | SS · WS · 기사 | **D+2에서 재판정**(서열 발언) — 출전 사실은 확정 |
 | 28 | 확인 1: 고메스가 명단상 RB였나 | SS lineup_pos **D**(이번 시즌 공식전 11경기 전부 M → **첫 D**) · FM positionId 32(RB 칸). 사유: 완비사카(햄스트링)·루제리·만잠비 결장 · 캐시·마트센 벤치 → 「an XI without a recognised full back」(전문 풀백이 한 명도 없는 선발 11명 · E&S 스니펫) | SS · FM · 기사 | **일치 — 새 사실**(선수 리포트·경기 중 변화에 기록) |
 | 29 | 확인 3: 정본 C2 풀백 비대칭(한 번에 한 명 전진)과 방향이 다르다 — 어느 풀백도 폭을 대지 않고 폭은 측면 미드가 댄다 | 왼쪽 밍스는 좌측 터치라인 레인에 26개를 찍었지만 높이는 x 42(상대 진영 x≥75 0). 오른쪽 고메스는 안쪽(HS). 상대 진영 폭은 음바예(x≥75 19)·알리송(36)이 댔다 | WS | **일치** — 「높은 폭」은 측면 미드 몫. 밍스는 「낮은 폭」(3백 왼쪽). 정본 변경은 사용자 판단 사안 — 대조만 기록 |
-| 30 | 확인 4: 관찰이 경기 전체인지 특정 구간인지 | 0–23′(0-0): 빌라 PPDA **7.5** · def_x 41.2 · 바클리 높음. 23–62′: PPDA 11.0 → 15.6. 2H 점유 **44%** · PPDA **30.7**. 70′ 3명 교체 뒤 AVR 「more of a back four」(4백 쪽) | WS · FM · 기사 | **부분 일치** — 3-2-5 골격은 0–70′ 내내 보인다. 바클리 전진은 0–23′, 부엔디아 하강은 후반이 주 구간 |
+| 30 | 확인 4: 관찰이 경기 전체인지 특정 구간인지 | 0–23′(0-0): 빌라 PPDA **7.5** · def_x 41.2 · 바클리 높음. 23–62′: PPDA 11.0 → 15.6. 후반 점유 **44%** · PPDA **30.7**. 70′ 3명 교체 뒤 AVR 「more of a back four」(4백 쪽) | WS · FM · 기사 | **부분 일치** — 3-2-5 골격은 0–70′ 내내 보인다. 바클리 전진은 0–23′, 부엔디아 하강은 후반이 주 구간 |
 
 ### 히트맵 대조 (5×5 · 열0=좌측 · 행0=공격 방향 · X=최댓값 · 숫자/10 · SS 전체 터치)
 
@@ -143,7 +143,7 @@
 
 | 항목 | 빌라 | 바이킹 | 원천 |
 |---|---|---|---|
-| 점유 | 54% (1H 66 · 2H 44) | 46% | FM(=SS) |
+| 점유 | 54% (전반 66 · 후반 44) | 46% | FM(=SS) |
 | xG | **2.67**(오픈 1.41 · 세트 0.47 · PK 0.79 · 논PK 1.88) | 0.75(오픈 0.73 · 세트 0.02) | FM 한 응답(xg_source=FotMob) · SS 슛맵 합 2.68/0.75 일치 |
 | xGOT | 1.75 | 0.31 | FM |
 | 슈팅 / 유효 / 블록 | 21 / 10 / 4 | 10 / 3 / 7 | SS·FM |
@@ -153,7 +153,7 @@
 | 크로스 | 5/11 | 3/16 | SS |
 | 박스 안 터치 | 39 | 13 | SS |
 | 코너 / 파울 | 8 / 7 | 6 / 14 | SS |
-| PPDA | **15.25**(305/20) · 1H 8.64 · 2H **30.67** | 13.12 · 1H 10.93 · 2H 16.4 | WS · `core.whoscored.ppda` |
+| PPDA | **15.25**(305/20) · 전반 8.64 · 후반 **30.67** | 13.12 · 전반 10.93 · 후반 16.4 | WS · `core.whoscored.ppda` |
 | def_x(수비 액션 높이) | **35.2**(n=126) | 39.1(n=124) | WS · `core.whoscored.def_x` |
 | GK 선방 | 2 | 8 | SS |
 
@@ -173,9 +173,9 @@
 - 스즈키 패스 20/28 — 이 경기는 GK 롱 배급 국면이 없었다(바이킹 압박 0–23′ 이후 해제).
 
 ### 비점유 구조·압박
-- **0–23′ 중간 높이 압박**: 빌라 PPDA **7.5** · def_x **41.2**. 리드 뒤 23–37′ PPDA 11.0 · 37–62′ 15.6 · 2H 전체 **30.7** — 점유를 내주고 중·저블록으로 지켰다.
+- **0–23′ 중간 높이 압박**: 빌라 PPDA **7.5** · def_x **41.2**. 리드 뒤 23–37′ PPDA 11.0 · 37–62′ 15.6 · 후반 전체 **30.7** — 점유를 내주고 중·저블록으로 지켰다.
 - **4-4-2 블록 + RB 교대 커버.** 오른쪽 수비는 고메스(RB 존 6)·맥긴(5)이 가까운 쪽이 내려가 메웠다(팬 팟캐스트 서술과 실측 일치 · 1행). 왼쪽은 밍스가 LB(수비 액션 평균 (27, 77)).
-- 바이킹 2H xG 0.73 · 박스 터치 증가 — 젠센 「we did a much better job by asking questions of Villa's midfield and their defence」(빌라 미드필드와 수비진에 질문을 던지는 데 훨씬 나아졌다 · 검색요약).
+- 바이킹 후반 xG 0.73 · 박스 터치 증가 — 젠센 「we did a much better job by asking questions of Villa's midfield and their defence」(빌라 미드필드와 수비진에 질문을 던지는 데 훨씬 나아졌다 · 검색요약).
 
 ### 전환·rest-defense·세트피스
 - 세트피스: 코너 8 · 세트 xG **0.47**. 23′ 선제골은 음바예 코너 → 바클리 니어포스트 헤더(팬 채널 「반복 설계된 같은 위치」 서술). 바이킹 VG 기사 「빌라 세트피스 코치가 노르웨이인」 언급.
@@ -183,19 +183,19 @@
 
 ## 3. 전술적 특성
 
-- **강점**: ⑴ 오른쪽 3인(고메스·맥긴·알리송) 과부하로 알리송 1대1 고립 → xA 0.59 · PK · 자책골 ⑵ 3-2 rest-defense로 1H 바이킹 슈팅 1 · xG 0.02 ⑶ 크로스 공급원 다변화(맥긴·부엔디아·음바예·고메스) · 세트피스.
-- **약점**: ⑴ 결정력 — 빅찬스 9 중 7 미스(부엔디아 슈팅 7 · xG 1.54에 PK 1골) ⑵ 리드 후 점유 이탈(2H 44% · PPDA 30.7)로 2H xG 0.72–0.73 동률 ⑶ 잭슨 볼 소유 25 — 최전방 기준점이 약했다.
+- **강점**: ⑴ 오른쪽 3인(고메스·맥긴·알리송) 과부하로 알리송 1대1 고립 → xA 0.59 · PK · 자책골 ⑵ 3-2 rest-defense로 전반 바이킹 슈팅 1 · xG 0.02 ⑶ 크로스 공급원 다변화(맥긴·부엔디아·음바예·고메스) · 세트피스.
+- **약점**: ⑴ 결정력 — 빅찬스 9 중 7 미스(부엔디아 슈팅 7 · xG 1.54에 PK 1골) ⑵ 리드 후 점유 이탈(후반 44% · PPDA 30.7)로 후반 xG 0.72–0.73 동률 ⑶ 잭슨 볼 소유 25 — 최전방 기준점이 약했다.
 - **상대 교란**: 바이킹 4-5-1은 0–23′ 높게 눌렀다(PPDA 8.0 · def_x 45.6) → 실점 뒤 23–37′ def_x 35.0으로 내려섰다(팟캐스트 「for the first 10-15 minutes they pressured us high, but then they retreated to a low block」(초반 10~15분 높게 압박하다 로우블록으로 물러났다) · 실측 일치). 젠센 「Maybe we had too much respect for them in the first half」(전반엔 상대를 너무 존중했던 것 같다).
 - **기존 프로필·직전 경기 대비**: 고빌드업 「3-2-5로 중앙 밀집」(manager_profiles buildup)과 같은 계열이지만, **3을 만드는 방식이 다르다** — 지금까지는 풀백 한 명이 남는 비대칭(C2)이었고, 이 경기는 **전문 풀백 없이 RB 자리의 CM(고메스)이 안으로 들어가는** 방식이다. 뉴캐슬전(카마라–고메스 거울 피벗 · obs#1083)과 달리 고메스는 오른쪽에 고정됐다.
 
 ## 4. 경기 중 변화
 
 1. **0–23′ (0-0)**: 빌라 중간 높이 압박(def_x 41.2 · PPDA 7.5) · 바이킹 하이프레스(def_x 45.6). 바클리 전진(x 66) · 잭슨 3′·6′ 헤더 2개 선방. 22′ 고메스 크로스 크로스바 → 코너 → 23′ 바클리 골.
-2. **23–45′ (리드)**: 바이킹 로우블록 전환(def_x 35.0) · 빌라 점유 1H 66%. 잭슨 좌측으로 벌리기(20–40′ y 81~84). 33~37′ 알리송 PK 획득 → 부엔디아 2-0. 1H xG 1.95–0.02.
+2. **23–45′ (리드)**: 바이킹 로우블록 전환(def_x 35.0) · 빌라 점유 전반 66%. 잭슨 좌측으로 벌리기(20–40′ y 81~84). 33~37′ 알리송 PK 획득 → 부엔디아 2-0. 전반 xG 1.95–0.02.
 3. **45–62′**: 빌라 점유 하락 · PPDA 15.6 → 부엔디아 하강(x 56.5). 55′ 부엔디아 · 57′ 알리송 슈팅.
 4. **62–70′**: 62′ 알리송 크로스 자책골 3-0. 빌라 def_x **26.7**(최저 구간) — 내려앉기.
 5. **70′ 3명 교체 + 72′ 가르나초**: 고메스→캐시로 **전문 RB 복귀** → AVR 「more of a back four」(4백 쪽). 70–84′ 빌라 def_x 41.6. 가르나초 78·81·88′ 슈팅.
-6. **84′~**: 크리스티안센 실점(VAR 인정 · 기사) 3-1. 바이킹 2H는 xG 동률.
+6. **84′~**: 크리스티안센 실점(VAR 인정 · 기사) 3-1. 바이킹 후반은 xG 동률.
 
 ## 5. 선수별 분석 — 출전 선수 전원
 
@@ -280,7 +280,7 @@
 ## 9. 데이터 반영과 한계
 
 - **DB 추가**: matches #126 · player_matches 16(국면 그리드 16 · phase 분 · pos_class) · team_match_stats 1(xG 4종 FotMob 동일 스냅샷 · PPDA·def_x) · match_events 16 · match_period_stats 2 · match_shots 32 · match_reports #62 · match_player_reports 16 · match_game_setups 1 · match_player_prescriptions 16 · match_hypotheses 30 · match_phase_metrics · match_tactical_changes 6 · observations #1084~#1113(대조표 30행 판정별) · match_videos 3편 요약·구현 주장 · manager_profiles buildup·role_demands 덧붙임.
-- **한계**: ⑴ 상대 수준(노르웨이 리그 팀 · 1H 바이킹 슈팅 1) ⑵ 2-0 이후 스코어 효과(점유·PPDA 하강) ⑶ 부상 강제 구성(전문 풀백 0) — 일반화 금지 ⑷ WS 이벤트는 앱 브라우저에서 필드 축약 전사(qualifier 일부) — PPDA·def_x·국면 그리드·레인 계산엔 영향 없음 · 수신자·운반은 **추정** ⑸ SS(평균 위치·히트맵)와 WS(볼 소유 좌표)의 음바예 레인 차이 ⑹ McGinn 패스 WS 71/80 vs SS 69/74(제공사 차이) ⑺ SS VAR 2행의 시각·선수 표기가 기사와 다름(§1).
+- **한계**: ⑴ 상대 수준(노르웨이 리그 팀 · 전반 바이킹 슈팅 1) ⑵ 2-0 이후 스코어 효과(점유·PPDA 하강) ⑶ 부상 강제 구성(전문 풀백 0) — 일반화 금지 ⑷ WS 이벤트는 앱 브라우저에서 필드 축약 전사(qualifier 일부) — PPDA·def_x·국면 그리드·레인 계산엔 영향 없음 · 수신자·운반은 **추정** ⑸ SS(평균 위치·히트맵)와 WS(볼 소유 좌표)의 음바예 레인 차이 ⑹ McGinn 패스 WS 71/80 vs SS 69/74(제공사 차이) ⑺ SS VAR 2행의 시각·선수 표기가 기사와 다름(§1).
 - `match_reports.status` = **draft**(D+2·D+3 추적 남음 · 회견 영상·전술 분석 미확보). G12·G37 결과는 ship 로그.
 - **세트피스 정형(migration 117 · 2026-10-22 P2 회차)**: `match_set_pieces` 8행(코너 6 · PK 1 · FK 1). WS 2029164 JSON이 **미보존**(축약 전사)이라 qualifier 추출을 못 했고 SS 슛맵(situation)+본문 서술로 채웠다 — 키커가 확인된 행은 23′ 음바예 코너(→바클리 골) · 37′ 부엔디아 PK · 41′ 부엔디아 FK뿐이고 코너 8개 중 **슛으로 이어지지 않은 코너 2~3개와 나머지 키커 5칸(22′·31′·45′·81′)은 결손**(taker_id NULL). 31′은 토레스·부엔디아 슈팅이 한 코너인지 둘인지 미구분. 바이킹 코너 6개 중 45′ 1행만.
 - **GK 배급 비중(G37 ⑹)**: `match_phase_metrics` gk_long_share 경기 전체 1행 — SS 선수 스탯 스즈키 롱볼 **14/25 = 56%**(성공 6). ⚠️ §2 「GK 롱 배급 국면이 없었다」(WS 패스 20/28)와 충돌 — 실측 채택, 구간 분해는 WS JSON 미보존으로 불가.
@@ -361,7 +361,7 @@
 - 옌센(NRK 10-22 · 직접 열람): 「Ja, det var ganske brutalt i førsteomgang, både i nærkampane og ikkje minst på dødball.」(전반은 꽤 혹독했다, 경합에서도 특히 세트피스에서도) · 「Vi fekk køyrt oss ein del i bakrom då dei sette fart på i kontringane sine.」(그들이 역습에 속도를 붙이자 뒷공간에서 꽤 털렸다) · 에메리에 대해 「Han var veldig intens.」(매우 강렬했다).
 - 옌센(TV 2): 「I andre omgang bestemte vi oss for å matche dem på det vi er gode på og stole på våre egne ferdigheter.」(후반엔 우리가 잘하는 것으로 맞서고 우리 기량을 믿기로 했다).
 - 주장 트리피치(Nettavisen): 「Jeg føler at vi kaster litt bort kampen i førsteomgang, vi er for unøyaktige og vi virker litt redde.」(전반에 경기를 버린 것 같다 — 부정확했고 좀 겁먹었다) · (Dagbladet) 「Vi blir rett og slett litt for puslete i noen av duellene.」(몇몇 경합에서 그냥 너무 약했다).
-- ⇒ **상대 관점이 실측과 같은 방향**: 전반 경합·세트피스 열세(빌라 1H xG 1.95–0.02 · 세트 xG 0.47) · 뒷공간 역습 노출(알리송 깊은 수신 15) · 후반 자기 방식 회복(바이킹 2H 점유 56% · xG 0.72–0.73).
+- ⇒ **상대 관점이 실측과 같은 방향**: 전반 경합·세트피스 열세(빌라 전반 xG 1.95–0.02 · 세트 xG 0.47) · 뒷공간 역습 노출(알리송 깊은 수신 15) · 후반 자기 방식 회복(바이킹 후반 점유 56% · xG 0.72–0.73).
 - 노르웨이 매체 선수 평점(karakterer·terningkast·spillerbørs) **0건** · Stavanger Aftenblad 3건 유료벽(「De innrømmer at de ble litt feige」(좀 겁먹었다고 인정) 리드만).
 - 감독 표기(obs#1115) 종결: NRK(2026-08-26) 「I ein kamp er det Bjarte Lunde Aarsheim som står oppført som hovudtrenar. I den neste er det Morten Jensen.」(한 경기에선 오르샤임이, 다음 경기에선 옌센이 감독으로 등록된다) — SofaScore·ESPN 표기 둘 다 맞다.
 
@@ -386,7 +386,7 @@
 ### ⑤ 중점 4인 — D+2 덧붙임
 
 - **알리송**: 본인 첫 영어 인터뷰(AVFC) 「For me, it was a dream night for me, for my family. So, I'm very proud.」(나와 가족에게 꿈같은 밤이었다. 정말 자랑스럽다) · 「This is my my first interview in English, so it's very difficult, but should be okay.」(영어 첫 인터뷰라 어렵지만 괜찮을 것 같다). **포르투갈어(D+1 0건 해소)**: Zona Mista(Eduardo Caspary 10-22 · 직접 열람) 「Um dos grandes destaques da vitória do Aston Villa por 3×1 para cima do Viking」(바이킹전 3-1 승리에서 가장 돋보인 선수 중 한 명) · 본인 발언 「Estou muito orgulhoso da minha atuação e da equipe」(제 경기력과 팀이 매우 자랑스럽다) · Itatiaia(10-22) 「O atacante brasileiro foi eleito pelo clube inglês o melhor em campo.」(브라질 공격수가 잉글랜드 구단이 뽑은 경기 최우수 선수가 됐다) · Canal 38(고향 아푸카라나) · Goal Brasil 「Foi uma noite dos sonhos para mim, para minha família」(나와 가족에게 꿈같은 밤) — ⚠️ 영문판 번역 기사(독립 교차검증 아님). Times 평(Dagbladet 번역 — 독립 아님) 「Han plaget Viking-forsvaret så mye at det nesten ble latterlig.」(바이킹 수비를 거의 우스울 정도로 괴롭혔다). MOTM은 갈렸다 — 구단 알리송 · UEFA 맥긴(C&B 「robbery」(강탈)). ge.globo·UOL·Lance!·셀레상 각도 0.
-- **주앙 고메스**: Bardell 「He's so good defensively that I think he could probably play as an orthodox right-back」(수비가 워낙 좋아 정통 RB도 가능할 것) · NOIR 「one of the best performances I've ever seen from João Gomes」(내가 본 고메스 최고 경기 중 하나) · AVNF 「Tonight I really saw it」(오늘 밤 비로소 봤다) · Villa Park Podcast: 후반 바이킹이 왼쪽에 공격수를 올려 고메스를 RB에 묶었다(2H 하강 서술). FotMob 경유 수치 81터치·패스 91%·라인 브레이킹 7(LiveScore — 독립 실측 아님). 포르투갈어: Goal Brasil 「lateral-direito improvisado」(임시 라이트백 · 번역 기사 추정) · 플라멩구 계열 0 · 에메리 개별 언급 0(회견 전문 확인).
+- **주앙 고메스**: Bardell 「He's so good defensively that I think he could probably play as an orthodox right-back」(수비가 워낙 좋아 정통 RB도 가능할 것) · NOIR 「one of the best performances I've ever seen from João Gomes」(내가 본 고메스 최고 경기 중 하나) · AVNF 「Tonight I really saw it」(오늘 밤 비로소 봤다) · Villa Park Podcast: 후반 바이킹이 왼쪽에 공격수를 올려 고메스를 RB에 묶었다(후반 하강 서술). FotMob 경유 수치 81터치·패스 91%·라인 브레이킹 7(LiveScore — 독립 실측 아님). 포르투갈어: Goal Brasil 「lateral-direito improvisado」(임시 라이트백 · 번역 기사 추정) · 플라멩구 계열 0 · 에메리 개별 언급 0(회견 전문 확인).
 - **맥긴**: UEFA 공식 MOTM · Scotsman 스니펫 「hailed as "the heart" of his Aston Villa side」(빌라의 「심장」으로 불렸다 · 본문 403 · 저자·날짜 미확인) · Bardell 「almost had a free role at times」 · AVNF 주장·리더십 칭찬 · Rogers 「captain fantastic」. 스코틀랜드(Daily Record·Herald·Scottish Sun·BBC·STV) 0 · Clarke 각도 0.
 - **가르나초**: 에메리 「best minutes」 확정(⑶) · 팬 5편 긍정 · Villa Park Podcast 「got to get in ahead of Ibrahim Mbaye」(음바예를 넘어서야 한다) · Justin: 78′·81′ 뒤 동료 5~6명이 다가가 격려. 스페인어: dondeverfutbolhoy 「entró con ganas tratando de reivindicarse」(만회하려는 의욕을 품고 들어갔다) · EFE(HolaNews)는 D+1 EFE와 같은 통신 텍스트 · El Intransigente(10-22)의 「Está progresando」(나아지고 있다)는 A매치 기간 발언이라 이 경기 근거 아님. Olé·TyC·Clarín·La Nación 0.
 
@@ -436,7 +436,7 @@
 |---|---|---|
 | 하우겐 위치 | (암시) 공략 대상 | 바이킹 **RB**(SS 4-5-1 수비 첫째 · WS 터치 평균 y 12.1) = **빌라 왼쪽**(음바예 쪽) |
 | 트리피치 위치 | 공을 덜 보낸 쪽 | 바이킹 왼쪽(y 66.8) = **빌라 오른쪽**(알리송 쪽 · 33′ PK 파울 당사자) |
-| 빌라 마지막 3분의 1 터치 198개 | — | **오른쪽 46% · 중앙 22% · 왼쪽 32%**(1H 48/18/34 · 2H 42/27/30) · Claret Villans 오른쪽 42% · 알리송 깊은 수신 15(팀 1위) |
+| 빌라 마지막 3분의 1 터치 198개 | — | **오른쪽 46% · 중앙 22% · 왼쪽 32%**(전반 48/18/34 · 후반 42/27/30) · Claret Villans 오른쪽 42% · 알리송 깊은 수신 15(팀 1위) |
 
 ⇒ **실측 채택**(불변규칙 3). 빌라 주공 측면은 오른쪽(트리피치 쪽)이다. 왼쪽 32%도 작지 않아 「하우겐 공략」은 **보조 경로로는** 성립한다. RA 문장은 기자 인상 서술(근거 미제시)이다.
 

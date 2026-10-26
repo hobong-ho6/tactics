@@ -19,7 +19,7 @@
 | PPDA (WhoScored) | **8.21** (279/34) | 14.19 (440/31) |
 | def_x (라인 높이 프록시) | **42.1** | 36.6 |
 
-**하프별** (FotMob Periods · PPDA는 core.whoscored 하프 이벤트): 1H 점유 60% · xG 0.65–0.93 · 슈팅 9–5 · PPDA 15.7–10.5 / 2H 점유 74% · xG 1.4–0.37 · 슈팅 13–3 · PPDA 5.08–20.91
+**하프별** (FotMob Periods · PPDA는 core.whoscored 하프 이벤트): 전반 점유 60% · xG 0.65–0.93 · 슈팅 9–5 · PPDA 15.7–10.5 / 후반 점유 74% · xG 1.4–0.37 · 슈팅 13–3 · PPDA 5.08–20.91
 
 **타임라인** (SofaScore incidents · v=우리)
 - 33′ [v] **goal Alejandro Grimaldo** (도움 Jonathan David) → 1-0
@@ -52,7 +52,7 @@
 - ⭐ 「요렌테 = 3번째 CB」(Mundo Maldini·De Padres a Hijos)는 실측 **기각**: 보유 셀 질량이 우측 열 행1~3(obs#996).
 
 ### 비점유 구조·압박
-- 1H PPDA 15.7 · def_x 38.7(초반 10분 알라베스 「presionando muy arriba」(아주 높이 압박)에 밀림) → 2H PPDA 5.08.
+- 전반 PPDA 15.7 · def_x 38.7(초반 10분 알라베스 「presionando muy arriba」(아주 높이 압박)에 밀림) → 후반 PPDA 5.08.
 - 줄리아노 하강 5백 — 실측 수비셀 우측 최후방(obs#997). 더비(09-20) 「보유 백4 / 비보유 백3」 서술과 방향이 같은 계열(비보유 시 라인 추가).
 - 압박 1차 서술 0건. ⚠️ 마이데일리의 「계속 압박을 했다」는 원문 「insistíamos」(계속 시도했다)의 **오역** — 압박 축 근거로 쓰지 않는다.
 
@@ -63,11 +63,11 @@
 
 ## 3. 전술적 특성
 
-⑴ 보유: 그리말도 안쪽 수취(「recibe… en zona mucho más interior que exterior」(바깥보다 훨씬 안쪽에서 받는다), Mundo Maldini auto-caption) + 카르도소 좌측 커버(DIVAD auto-caption) — 33′ 득점이 그리말도–데이비드 원투 후 박스 침투. ⑵ 비보유: 줄리아노 하강 5백(실측 일치). ⑶ 10대11 정체 — 상대 4-4-1 저블록(키케 「Pusimos un 4-4-1」(4-4-1로 바꿨다)) 앞에서 61′~87′ 무득점, 2H xG 1.40 중 결승골까지 26분. ⑷ 카르도소 듀얼 8/16(FotMob) — 더비 0/6 반복 안 됨.
+⑴ 보유: 그리말도 안쪽 수취(「recibe… en zona mucho más interior que exterior」(바깥보다 훨씬 안쪽에서 받는다), Mundo Maldini auto-caption) + 카르도소 좌측 커버(DIVAD auto-caption) — 33′ 득점이 그리말도–데이비드 원투 후 박스 침투. ⑵ 비보유: 줄리아노 하강 5백(실측 일치). ⑶ 10대11 정체 — 상대 4-4-1 저블록(키케 「Pusimos un 4-4-1」(4-4-1로 바꿨다)) 앞에서 61′~87′ 무득점, 후반 xG 1.40 중 결승골까지 26분. ⑷ 카르도소 듀얼 8/16(FotMob) — 더비 0/6 반복 안 됨.
 
 ## 4. 경기 중 변화
 
-33′ 0-1 그리말도(도움 J.데이비드) → 45′ 루크먼 경고 · 45+1′ 르노르망 경고 → 45+6′ 1-1 보예 PK(르노르망 홀딩) → **46′ 바에나·훌리안 투입(루크먼·데이비드 OUT)** — 시메오네 「Fuimos gestionando los minutos entre Jonathan y Julián, Lookman y Baena」(조나탄과 훌리안, 루크먼과 바에나 사이에서 시간을 관리했다, Movistar+ 플래시 — ElDesmarque 경유) → 57′ 바리오스→이강인 → 60′ VAR → **61′ 앙헬 페레스 퇴장** → 62′ 르노르망→한츠코 → 73′ 줄리아노→쇠를로트(투톱) → **87′ 1-2 로메로 헤더(바에나 아웃프런트 크로스)**. 1H PPDA 15.7 · def_x 38.7 → 2H PPDA 5.08 · 45–61′ def_x 51.1.
+33′ 0-1 그리말도(도움 J.데이비드) → 45′ 루크먼 경고 · 45+1′ 르노르망 경고 → 45+6′ 1-1 보예 PK(르노르망 홀딩) → **46′ 바에나·훌리안 투입(루크먼·데이비드 OUT)** — 시메오네 「Fuimos gestionando los minutos entre Jonathan y Julián, Lookman y Baena」(조나탄과 훌리안, 루크먼과 바에나 사이에서 시간을 관리했다, Movistar+ 플래시 — ElDesmarque 경유) → 57′ 바리오스→이강인 → 60′ VAR → **61′ 앙헬 페레스 퇴장** → 62′ 르노르망→한츠코 → 73′ 줄리아노→쇠를로트(투톱) → **87′ 1-2 로메로 헤더(바에나 아웃프런트 크로스)**. 전반 PPDA 15.7 · def_x 38.7 → 후반 PPDA 5.08 · 45–61′ def_x 51.1.
 
 ## 5. 선수별 분석 — 출전 선수 전원
 
@@ -82,9 +82,9 @@
 | Giuliano Simeone | RM — RM — 비보유 시 최후방까지 하강해 5백(실측 일치) · 키패스 2·xA 0.35 | 73′ 7.5 · G0 A0 · KP2 · 태클2 · 인터셉트0 · 듀얼 7/11 | (x53.48, y25.24) · hp 56 | wm_winger/Balanced 0.684(Δ0.045 실측 무결정) — 정본 wm_widemid/Support 불일치 |
 | Robin Le Normand | LCB — LCB — 45+1′ 경고 · 45+6′ PK 허용 · 62′ 교체(시메오네 「Está condicionado por su forma de jugar」(플레이 방식 때문에 제약을 받는다)) | 62′ 5.7 · G0 A0 · KP0 · 태클1 · 인터셉트1 · 듀얼 3/9 | (x37.45, y69.25) · hp 61 | cb_bpd/Aggressive 0.759(Δ0.155) — 정본 cb_wideback/Aggressive 불일치 |
 | Pablo Barrios | RAM(FotMob 명목 CAM) — 실제 우측 인테리오르(Mundo Maldini · 평균 y29 실측 일치) · 부상 복귀 첫 선발 57′ | 57′ 6.6 · G0 A0 · KP1 · 태클1 · 인터셉트1 · 듀얼 3/7 | (x55.92, y29.09) · hp 58 | cam_playmaker/Build-Up 0.636(Δ0.115) — 정본 cam_halfwinger/Balanced 불일치 |
-| Ademola Lookman | LM — LM — 좌측 표적(방향 전환 패스) · 지상 듀얼 0/9 · 45′ 경고 후 HT 교체 | 45′ 6.0 · G0 A0 · KP0 · 태클0 · 인터셉트0 · 듀얼 0/9 | (x69.93, y78.51) · hp 41 | wm_insidefwd/Attack 0.784(Δ0.086) — 정본 wm_widemid/Support 불일치 |
+| Ademola Lookman | LM — LM — 좌측 표적(방향 전환 패스) · 지상 듀얼 0/9 · 45′ 경고 후 하프타임 교체 | 45′ 6.0 · G0 A0 · KP0 · 태클0 · 인터셉트0 · 듀얼 0/9 | (x69.93, y78.51) · hp 41 | wm_insidefwd/Attack 0.784(Δ0.086) — 정본 wm_widemid/Support 불일치 |
 | Álex Baena (교체 46′) | LM — LM(46′) — 루크먼 자리, 87′ 아웃프런트 크로스 도움 | 45′ 7.1 · G0 A1 · KP4 · 태클0 · 인터셉트0 · 듀얼 1/3 | (x69.96, y77.6) · hp 42 | wm_winger/Attack 0.801(Δ0.043 실측 무결정) — 정본 wm_widemid/Support 불일치 |
-| Jonathan David | ST — ST — 측면으로 빠져 공간 생성(VAVEL) · 33′ 원투 도움 · HT 교체(시간 관리) | 45′ 6.9 · G0 A1 · KP1 · 태클0 · 인터셉트1 · 듀얼 2/7 | (x60.51, y42.69) · hp 22 | st_poacher/Support 0.369(Δ0.052) — 정본 st_advanced/Support 불일치 |
+| Jonathan David | ST — ST — 측면으로 빠져 공간 생성(VAVEL) · 33′ 원투 도움 · 하프타임 교체(시간 관리) | 45′ 6.9 · G0 A1 · KP1 · 태클0 · 인터셉트1 · 듀얼 2/7 | (x60.51, y42.69) · hp 22 | st_poacher/Support 0.369(Δ0.052) — 정본 st_advanced/Support 불일치 |
 | Julián Álvarez (교체 46′) | ST — ST(46′) — 62′ FK 골대 · 61′ 퇴장 유도 · 쇠를로트 투입 후 처진 10번(DIVAD) | 45′ 6.5 · G0 A0 · KP0 · 태클1 · 인터셉트0 · 듀얼 3/6 | (x64.86, y52.61) · hp 36 | st_false9/Build-Up 0.713(Δ0.064) — 정본 st_advanced/Support 불일치 |
 | Kang-In Lee (교체 57′) | RAM — 실측 평균 y24 우측, 「gris」(밋밋했다, Pase Atras) | 33′ 7.4 · G0 A0 · KP3 · 태클1 · 인터셉트0 · 듀얼 1/1 | (x73.21, y24.39) · hp 37 | cam_halfwinger/Attack 0.845(Δ0.011 실측 무결정) — 정본 cam_halfwinger/Balanced 불일치 |
 | Dávid Hancko (교체 62′) | LCB — LCB(62′) — 폭·안정(VAVEL) | 28′ 6.8 · G0 A0 · KP0 · 태클0 · 인터셉트0 · 듀얼 0/0 | (x45.18, y68.74) · hp 44 | cb_bpd/Aggressive 0.717(Δ0.090) — 정본 cb_wideback/Aggressive 불일치 |
@@ -94,7 +94,7 @@
 
 ## 6. 전술 변화 판정
 
-- 유지: 점유 지향(Short Passing) · 경고 선수 조기 교체 패턴(루크먼 HT·르노르망 62′ — 감독 확인 없음) · 크로스→CB 헤더 결승.
+- 유지: 점유 지향(Short Passing) · 경고 선수 조기 교체 패턴(루크먼 하프타임·르노르망 62′ — 감독 확인 없음) · 크로스→CB 헤더 결승.
 - 새로 나타난 것: 4-2-3-1 선발(라리가) · 비보유 줄리아노 하강 5백(실측 일치) · 카르도소 듀얼 50%.
 - 직전(09-20 더비, 4-4-2) 대비: 점유 61→68% · PPDA 10.2→8.21 · def_x 38.3→42.1.
 - 반영: observations #996~998 · manager_profiles `formation`·`rotation` 덧붙임.

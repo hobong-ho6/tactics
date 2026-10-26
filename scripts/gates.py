@@ -2114,6 +2114,20 @@ def run(db_path=None, verbose=True):
     if g40_mis or g40_gap:
         fails.append("G40")
 
+    # G41 — ⛔ **하프 표기는 한국어(전반/후반/하프타임)로 쓴다.** 2026-10-26 신설(사용자 「1H 2H가 뭐야?」 → 「기존 리포트도
+    #   한국어로」 · 기존 322건(DB 41열)·md 26파일 일괄 정리). 규칙 정본은 core/half_terms.py — 「」 원문·영어 원문·코드 표는 제외.
+    #   DB 텍스트 전 열 + reports/match-watch/**/*.md에서 conv()가 바꿀 것이 0이어야 한다.
+    from core.half_terms import db_violations as _ht_db, conv_md as _ht_md
+    g41 = [f"{t}.{c}#{rid}" for t, c, rid in _ht_db(con)]
+    _root41 = Path(__file__).resolve().parent.parent / "reports" / "match-watch"
+    g41 += [str(_f.relative_to(_root41.parent.parent)) for _f in sorted(_root41.rglob("*.md"))
+            if (_t := _f.read_text(encoding="utf-8", errors="ignore")) != _ht_md(_t)]
+    if verbose:
+        print(f"G41 하프 표기 한국어(1H/2H/HT 금지): 위반 {len(g41)} "
+              + ("✅" if not g41 else "❌ core.half_terms.conv()/conv_md()로 바꿔 넣을 것 — " + " · ".join(g41[:6])))
+    if g41:
+        fails.append("G41")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")

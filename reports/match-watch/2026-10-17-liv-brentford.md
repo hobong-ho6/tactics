@@ -19,8 +19,8 @@
 
 | 하프 | 점유 | xG v–o | 슛 v–o | 유효 v–o | PPDA v / o |
 |---|---|---|---|---|---|
-| 1H | 60% | 0.72–0.55 | 7–6 | 0–1 | 8.22 / 13.85 |
-| 2H | 60% | 0.92–0.33 | 14–4 | 5–1 | 8.75 / 9.0 |
+| 전반 | 60% | 0.72–0.55 | 7–6 | 0–1 | 8.22 / 13.85 |
+| 후반 | 60% | 0.92–0.33 | 14–4 | 5–1 | 8.75 / 9.0 |
 
 타임라인(SofaScore incidents):
 
@@ -46,7 +46,7 @@
 - 79′ 🔁 우리 Alexander Isak → Lewis Koumas
 - 92′ 🟥 상대 Vitaly Janelt
 
-- 수집 한계: SofaScore statistics·shotmap 403 → 팀 스탯·슛은 FotMob 한 응답(동일 스냅샷). 45+8′ 야르몰류크 퇴장(VAR 「headbutting action」(박치기 동작)) → **후반 전체 11대10**, 90+2′ 야넬트 2번째 경고로 11대9. 2H 수치는 수적 우위 국면이라 정본 근거로 쓰지 않는다. 경기 중 부상 교체 2(32′ 소보슬라이·52′ 프림퐁).
+- 수집 한계: SofaScore statistics·shotmap 403 → 팀 스탯·슛은 FotMob 한 응답(동일 스냅샷). 45+8′ 야르몰류크 퇴장(VAR 「headbutting action」(박치기 동작)) → **후반 전체 11대10**, 90+2′ 야넬트 2번째 경고로 11대9. 후반 수치는 수적 우위 국면이라 정본 근거로 쓰지 않는다. 경기 중 부상 교체 2(32′ 소보슬라이·52′ 프림퐁).
 
 ## 2. 전술 설명
 
@@ -56,11 +56,11 @@
 
 ### 비점유 구조·압박
 
-**PPDA 8.43(1H 8.22) · def_x 37.7.** 전반 브렌트퍼드 직선·크로스 공략(Telegraph: 루이스-포터·카요데 크로스 다발) — 44′ 티아구 크로스 → 루이스-포터 헤더 실점. 케르케즈가 우아타라에게 고전 — 「didn't always make the right defensive decision」(수비 판단이 늘 옳진 않았다, Echo 계열). 자케 듀얼 10-8·라인 위 클리어(28′)·야르몰류크 퇴장 유발 피지컬(Goal ES 「principal villano para el Brentford」(브렌트퍼드의 주적)).
+**PPDA 8.43(전반 8.22) · def_x 37.7.** 전반 브렌트퍼드 직선·크로스 공략(Telegraph: 루이스-포터·카요데 크로스 다발) — 44′ 티아구 크로스 → 루이스-포터 헤더 실점. 케르케즈가 우아타라에게 고전 — 「didn't always make the right defensive decision」(수비 판단이 늘 옳진 않았다, Echo 계열). 자케 듀얼 10-8·라인 위 클리어(28′)·야르몰류크 퇴장 유발 피지컬(Goal ES 「principal villano para el Brentford」(브렌트퍼드의 주적)).
 
 ### 전환·rest-defense·세트피스
 
-HT 아라우호→프림퐁(우측 공격화) → 52′ 프림퐁 근육 부상 → 응구모하 투입, 무뇨스 RB로 하강(NBC·Telegraph 「attacking right-back」(공격형 라이트백)). 62′ 무뇨스 컷인 동점 · 70′ 맥 알리스터 크로스→바르콜라 떨굼→이삭 결승. 2-1 이후 역습 마무리 실패 — 이라올라 「We missed clear counters to finish the game」(경기를 끝낼 명확한 역습을 놓쳤다). 73′ 티아구 빅찬스 허용.
+하프타임 아라우호→프림퐁(우측 공격화) → 52′ 프림퐁 근육 부상 → 응구모하 투입, 무뇨스 RB로 하강(NBC·Telegraph 「attacking right-back」(공격형 라이트백)). 62′ 무뇨스 컷인 동점 · 70′ 맥 알리스터 크로스→바르콜라 떨굼→이삭 결승. 2-1 이후 역습 마무리 실패 — 이라올라 「We missed clear counters to finish the game」(경기를 끝낼 명확한 역습을 놓쳤다). 73′ 티아구 빅찬스 허용.
 
 ## 3. 전술적 특성
 
@@ -73,7 +73,7 @@ HT 아라우호→프림퐁(우측 공격화) → 52′ 프림퐁 근육 부상 
 1. 0-0 → 32′ 소보슬라이(부상)→뇨니 → 44′ 루이스-포터 1-0 → 45+8′ 야르몰류크 퇴장(11대10).
 2. 46′ 아라우호→프림퐁 · 52′ 프림퐁(부상)→응구모하, 무뇨스 RB 하강.
 3. 62′ 무뇨스 1-1 · 70′ 이삭 1-2(바르콜라 도움) → 79′ 무뇨스→고메스(RB) · 이삭→쿠마스.
-4. 90+2′ 야넬트 2번째 경고(11대9) · 2H 점유 60%·xG 0.92–0.33.
+4. 90+2′ 야넬트 2번째 경고(11대9) · 후반 점유 60%·xG 0.92–0.33.
 
 ## 5. 선수별 분석 — 출전 선수 전원
 
@@ -88,7 +88,7 @@ HT 아라우호→프림퐁(우측 공격화) → 52′ 프림퐁 근육 부상 
 | 바르콜라 | LM · LM — 좌측 1대1 · 이삭 결승골 도움 | 90′ 6.7 · 도움 1 · 키패스 1 · xG 0.53 · xA 0.19 · 패스 36/45 · 태클 1 · 인터셉트 1 · 터치 64 · 듀얼 4-7 | (x64.9, y77.7) · 히트포인트 75 · 국면 리드/동점/열세 20/52/18분 | xG 0.53 · 20′ 칩슛·79′ 크로스바 · 31′ 경고. | 실측 무결정 Δ0.001(1위 wm_wideplm/Attack 0.738 · 2위 wm_insidefwd/Attack 0.737) → wm_insidefwd/Attack 0.737 채택 — tie-break 근거: 20′ 칩슛·79′ 크로스바 — 득점 시도형(Echo 계열 「Pressed hard」(강하게 압박)) · Δ.001 — 정본 wm_wideplm/Attack 불일치 |
 | 무뇨스 | RM · RM → 52′ 이후 RB | 79′ 7.7 · 골 1 · 키패스 0 · xG 0.20 · xA 0.01 · 패스 15/18 · 태클 0 · 인터셉트 0 · 터치 39 · 듀얼 5-4 | (x60.6, y18.7) · 히트포인트 48 · 국면 리드/동점/열세 9/52/18분 | 62′ 컷인 동점골 · 무릎 타박에도 분전(Echo 계열). 79′ 교체. | 실측 무결정 Δ0.037(1위 wm_winger/Balanced 0.843 · 2위 wm_widemid/Support 0.806) → wm_winger/Balanced 0.843 채택 — tie-break 근거: 1위 유지 — 62′ 컷인 득점(Δ.037 · 서사 반대 근거 없음) — 정본 wm_wideplm/Attack 불일치 |
 | 이삭 | ST · ST — 부상 복귀전 | 79′ 7.7 · 골 1 · 키패스 0 · xG 0.33 · xA 0.02 · 패스 3/8 · 태클 0 · 인터셉트 0 · 터치 16 · 듀얼 2-2 | (x74.9, y42.0) · 히트포인트 20 · 국면 리드/동점/열세 9/52/18분 | 70′ 결승골 · 터치 16 — 전반 「flitted around the periphery」(주변부를 맴돌았다, Echo 계열). | 실측 무결정 Δ0.000 — 1위 st_target/Attack 0.828 · 2위 st_poacher/Attack 0.828(서사 tie-break 근거 없음 → 1위 잠정) — 정본 st_advanced/Attack 불일치 |
-| 아라우호 | RB · RB — 45분 · HT 교체 | 45′ 6.4 · 키패스 0 · xG 미수집 · xA 0.00 · 패스 12/17 · 태클 0 · 인터셉트 0 · 터치 25 · 듀얼 2-3 | (x50.0, y16.3) · 히트포인트 34 · 국면 리드/동점/열세 0/44/2분 | 앤서니에게 고전 「found Anthony a difficult customer」(Echo 계열 6점) · 교체 사유 감독 발언 0건(전술/관리 판별 불가). | 실측 무결정 Δ0.021 — 1위 fb_wingback/Support 0.817 · 2위 fb_wingback/Balanced 0.796(서사 tie-break 근거 없음 → 1위 잠정) — 정본 fb_wingback/Support 일치 |
+| 아라우호 | RB · RB — 45분 · 하프타임 교체 | 45′ 6.4 · 키패스 0 · xG 미수집 · xA 0.00 · 패스 12/17 · 태클 0 · 인터셉트 0 · 터치 25 · 듀얼 2-3 | (x50.0, y16.3) · 히트포인트 34 · 국면 리드/동점/열세 0/44/2분 | 앤서니에게 고전 「found Anthony a difficult customer」(Echo 계열 6점) · 교체 사유 감독 발언 0건(전술/관리 판별 불가). | 실측 무결정 Δ0.021 — 1위 fb_wingback/Support 0.817 · 2위 fb_wingback/Balanced 0.796(서사 tie-break 근거 없음 → 1위 잠정) — 정본 fb_wingback/Support 일치 |
 | 소보슬라이 | LDM · LDM — 32′ 부상 교체 | 32′ 6.9 · 키패스 0 · xG 0.10 · xA 0.24 · 패스 23/28 · 태클 1 · 인터셉트 0 · 터치 33 · 듀얼 2-1 | (x55.8, y65.3) · 히트포인트 39 · 국면 리드/동점/열세 0/32/0분 | 햄스트링 재발 — 이라올라 「Dominic felt the same injuries, not a new injury」(같은 부상, 새 부상 아님, ESPN). 「공을 너무 오래 끌었다」(Origo). | dm_dlp/Roaming 0.679(Δ0.281) — 정본 dm_holding/Ball-Winning 불일치 · ⚠️ 45분 미만/hit<15 — 단일 경기 참고값 |
 | 뇨니 | LDM · LDM 자리 32′ 투입 | 58′ 6.8 · 키패스 1 · xG 0.09 · xA 0.07 · 패스 38/45 · 태클 1 · 인터셉트 2 · 터치 57 · 듀얼 3-3 | (x51.0, y47.6) · 히트포인트 62 · 국면 리드/동점/열세 20/20/18분 | 58분 · 인터셉트 2·패스 38/45 — 「helped pin Brentford back second half」(후반 브렌트퍼드를 눌렀다, Echo 계열). | dm_dlp/Roaming 0.774(Δ0.115) — 정본 dm_holding/Ball-Winning 불일치 |
 | 프림퐁 | RB · RB 46′ 투입 → 52′ 부상 교체 | 7′ 평점 없음 · 키패스 1 · xG 미수집 · xA 0.01 · 패스 2/2 · 태클 1 · 인터셉트 0 · 터치 5 · 듀얼 1-1 | (x75.6, y13.5) · 히트포인트 7 · 국면 리드/동점/열세 0/0/6분 | 7분 · 신규 근육 부상(이라올라 「Jeremie injury is new」(제레미 부상은 새 것)). | fb_att_wb/Attack 0.915(Δ0.253) — 정본 fb_wingback/Support 불일치 · ⚠️ 45분 미만/hit<15 — 단일 경기 참고값 |
@@ -109,7 +109,7 @@ HT 아라우호→프림퐁(우측 공격화) → 52′ 프림퐁 근육 부상 
 
 - 결론: **추가 관찰**
 - **이 경기 전용 팀 설정**: FC26 / 4-2-3-1 Wide / 빌드업 Balanced / 수비 접근 Balanced / 라인 58 / tactic_code 없음 · rule_note `RULE`
-- 규칙 대조: suggest → Balanced/Balanced/55~62 (롱볼 8.7%). 규칙 일치 · 정본 Balanced/58과 동일. 라인 58 = PPDA 8.43(규칙 55~62) · def_x 37.7. 2H는 11대10이라 1H(PPDA 8.22·점유 60%)를 기준으로 봐도 같은 결론.
+- 규칙 대조: suggest → Balanced/Balanced/55~62 (롱볼 8.7%). 규칙 일치 · 정본 Balanced/58과 동일. 라인 58 = PPDA 8.43(규칙 55~62) · def_x 37.7. 후반은 11대10이라 전반(PPDA 8.22·점유 60%)를 기준으로 봐도 같은 결론.
 - **이 경기 선발 11명**:
 
 | 슬롯 | 선수 | 역할 | 포커스 | 단일 경기 fit | 근거 |
@@ -153,13 +153,13 @@ HT 아라우호→프림퐁(우측 공격화) → 52′ 프림퐁 근육 부상 
 
 **기사**: Telegraph · Goal(EN·ES 평점) · Brit Brief(Echo 재게재 평점 — 원출처 미확정) · Origo·Telex(헝가리어) · VI(네덜란드어 — 프림퐁 대표팀 불참 가능, 헤드라인) · SVT(스웨덴어 — 영역본만) · FourFourTwo(본문 미노출 — 응구모하 두 번째 10번, 스니펫).
 **영상(전부 메타데이터만 · 자막 HTTP 429로 미시청)**: Liverpool FC 「Szoboszlai & Frimpong Update | Andoni Iraola Press Conference」 `V5ptLTLy9IY`(10-17) · This Is Anfield `xp6xvEgV2RM` · Redmen TV 2 `sRoLecrGD_o` · AnfieldArmyNews `DAjJZGr1YFE`(10-18) · Tom Little 「AN ANDONI IRAOLA MASTERCLASS!…」 `DjfdNs_yVEA` · David Lynch 「IRAOLA BRAVERY & ISAK CLASS WON IT!」 `4gKyYQo8uSE` · 앤드루스 `L27lB0wmNHY`·`eOCLUfUZkdw`.
-**미수행·사유**: The Athletic·Echo 원본 0건 · 아라우호 HT 교체 사유 발언 0건 · Tribuna·This Is Anfield 전술 기사 403 · 스페인어·바스크어 이라올라 발언 0건 · 회견 자막 429.
+**미수행·사유**: The Athletic·Echo 원본 0건 · 아라우호 하프타임 교체 사유 발언 0건 · Tribuna·This Is Anfield 전술 기사 403 · 스페인어·바스크어 이라올라 발언 0건 · 회견 자막 429.
 ⚠️ NBC 요약의 「각포를 막판에 무리시키지 않았다」는 출전 명단과 모순 — 채택하지 않음.
 
 ## 9. 데이터 반영과 한계
 
 - DB: `matches` #123 · `player_matches` 16 · `team_match_stats` 1(FotMob xG 1.64/0.88 · 오픈 1.26/0.60 · PPDA 8.43/11.33 · def_x 37.7/34.1) · `match_events` 21(퇴장 2 포함 · 45+8′은 minute 53 규약) · `match_shots` 31(FotMob) · `match_period_stats` 2.
-- 한계: 2H 11대10 · 부상 교체 2 · 회견 영상 전사 미확보(활자 인용만).
+- 한계: 후반 11대10 · 부상 교체 2 · 회견 영상 전사 미확보(활자 인용만).
 
 ## D+2 추적 (2026-10-19)
 
