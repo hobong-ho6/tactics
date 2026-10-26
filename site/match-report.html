@@ -53,7 +53,7 @@ import { decodeMap } from './assets/kernel.js?v=20260825-decodemap-null';
 import { drawPitch, drawComposite, drawChip } from './assets/pitch.js?v=20260825-decodemap-null';
 import { annotate, mountGlossaryTips, glTip } from './assets/glossary.js';
 import { roleLabel, focusLabel, claimLabel, humanize, VERDICT_KR, AXIS_KR, mountRawToggle } from './assets/labels.js';
-import { renderMatchViz, renderMomentum, playerRows } from './assets/matchviz.js?v=20261026-pfv';
+import { renderMatchViz, renderMomentum, playerRows } from './assets/matchviz.js?v=20261026-say';
 import { prose } from './assets/prose.js';
 
 const { team, regime } = await mountHeader('match-report.html');
@@ -296,7 +296,12 @@ function renderCarries(r){
           `${v.p.label} · 전진 운반 거리 ${fmt(v.dm, 0)}m · 볼 전진 거리 ${fmt(v.tm, 0)}m${p90 ? ' · 90분당' : ''}`)}<span class="cv-val cv-val2">${fmt(v.dm, 0)}<br><small class="dim">${fmt(v.tm, 0)}</small></span></div>`).join('')}</div>
     <p class="dim legend-line cv-legend"><span><i class="cv-sw cv-prog"></i>전진 운반(실측)</span><span><i class="cv-sw cv-rest"></i>운반 전체 · 볼 전진 거리(실측)</span>
       <span><b class="cv-sw cv-est"></b>전진 운반 추정(WhoScored)</span>${p90 ? '<span>· 90분당 환산 — 흐린 행은 30분 미만 출전</span>' : ''}</p>`;
-  el.innerHTML = `<h2>운반 <small class="dim">— 실측(SofaScore) vs 추정(WhoScored) · 전진 운반 순</small></h2>${chart}
+  /* 한줄평(2026-10-26 사용자 지시) — 지금 기준(경기 전체/90분당)의 1위. 90분당이면 30분 미만 출전은 뺀다(축과 같은 규칙). */
+  const top = key => VS.filter(v => v[key] != null).sort((a, b) => b[key] - a[key])[0];
+  const tc = top('cp'), tt = top('tm');
+  const sayC = tc ? `<div class="vz-say">전진 운반 1위 <b>${esc(tc.p.label)}</b> ${fmt(tc.cp, 0)}회${p90 ? '(90분당)' : ''}`
+    + (tt ? ` · 볼 전진 거리 1위 <b>${esc(tt.p.label)}</b> ${fmt(tt.tm, 0)}m` : '') + '</div>' : '';
+  el.innerHTML = `<h2>운반 <small class="dim">— 실측(SofaScore) vs 추정(WhoScored) · 전진 운반 순</small></h2>${sayC}${chart}
     <div class="scrollx"><table class="carry-table"><thead><tr><th>선수</th><th class="num">분</th>
       <th class="num">${glTip('운반 <span class="badge hi">실측</span>', CARRY_DEF.n)}</th>
       <th class="num">${glTip('전진 운반 <span class="badge hi">실측</span>', CARRY_DEF.prog)}</th>

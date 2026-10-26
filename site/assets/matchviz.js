@@ -39,6 +39,129 @@ const READ = {
   shotMap: '읽는 법 — 점이 클수록 xG가 높다(= 좋은 기회). 박스 밖 작은 점이 많으면 <b>안으로 못 들어가 밖에서 쏜</b> 경기다.',
   halves: '읽는 법 — 전·후반 막대 높이가 xG다. 후반에 우리 막대가 낮아지고 상대가 높아졌다면 <b>체력·교체·국면</b> 중 무엇이 원인인지 타임라인과 국면별 xG로 확인한다.',
 };
+/* ── 한줄평 (2026-10-26 사용자 지시 「경기 흐름처럼 나머지 그래프들도 한줄평」) — **그 경기 데이터**로 판정한 한 문장.
+   READ(읽는 법)는 어느 경기에나 같은 일반 안내라 별개다. ⛔ 데이터가 모자라면 지어내지 않고 빈 문자열(줄이 안 생긴다).
+   「경기 흐름」 칸의 판정은 core.whoscored.phase_verdicts가 정본(export) — 여기 SAY는 카드가 이미 그리는 값으로만 말한다. */
+const say = t => t ? `<div class="vz-say">${t}</div>` : '';
+const near = (a, b, rel) => Math.abs(a - b) <= rel * Math.max(Math.abs(a), Math.abs(b), 1e-9);
+const SAY = {
+  timeline(r, team){
+    const opp = r.opponent || '상대', nm = s => esc(s === 'v' ? team : opp);
+    const ev = (r.events || []).slice().sort((a, b) => a.minute - b.minute);
+    const g = ev.filter(e => /goal$/.test(e.kind) && e.score_v != null);
+    const sub = ev.find(e => e.side === 'v' && (e.kind === 'sub' || e.kind === 'gk_change'));
+    const reds = ev.filter(e => e.kind === 'red').map(e => `${e.minute}′ ${nm(e.side)} 퇴장`);
+    const tail = (sub ? ` · ${esc(team)} 첫 교체 ${sub.minute}′` : '') + (reds.length ? ` · ${reds.join(' · ')}` : '');
+    if (!g.length) return `득점 없이 끝났다${tail}`;
+    const last = g[g.length - 1], sv = last.score_v, so = last.score_o, first = g[0];
+    if (sv === so) return `${first.minute}′ <b>${nm(first.side)}</b> 선제골 → ${sv}–${so} 무승부${tail}`;
+    const win = sv > so ? 'v' : 'o';
+    let dec = null, prev = false;
+    for (const e of g){ const lead = win === 'v' ? e.score_v > e.score_o : e.score_o > e.score_v; if (lead && !prev) dec = e; prev = lead; }
+    const comeback = first.side !== win;
+    if (dec === first) return `${dec.minute}′ ${esc(dec.player_name || '')} 선제 결승골로 <b>${nm(win)}</b> ${sv}–${so} 승리${tail}`;
+    return `${first.minute}′ <b>${nm(first.side)}</b> 선제골 → ${dec.minute}′ ${esc(dec.player_name || '')} 결승골로 <b>${nm(win)}</b> ${sv}–${so} ${comeback ? '역전승' : '승리'}${tail}`;
+  },
+  xgRace(r, team, shots){
+    const opp = r.opponent || '상대', nm = s => esc(s === 'v' ? team : opp);
+    const t = { v: 0, o: 0 }, gl = { v: 0, o: 0 }, bins = {};
+    for (const s of shots){ t[s.side] += s.xg; if (s.outcome === 'goal') gl[s.side]++;
+      const b = Math.min(75, Math.floor(s.minute / 15) * 15); bins[`${s.side}|${b}`] = (bins[`${s.side}|${b}`] || 0) + s.xg; }
+    const w = near(t.v, t.o, .15) ? null : t.v > t.o ? 'v' : 'o';
+    const head = w ? `기회는 <b>${nm(w)}</b>가 더 만들었다` : '기회는 팽팽했다';
+    const eff = s => { const d = gl[s] - t[s]; return Math.abs(d) < .5 ? '' : ` · ${nm(s)} xG보다 ${fmt(Math.abs(d), 1)}골 ${d > 0 ? '더' : '덜'} 넣음`; };
+    const [pk, pv] = Object.entries(bins).sort((a, b) => b[1] - a[1])[0] || [];
+    const peak = pk ? (() => { const [s, b] = pk.split('|'); return ` · 가장 몰린 구간: ${nm(s)} ${b}–${+b === 75 ? '종료' : +b + 15 + '′'} (xG ${fmt(pv, 2)})`; })() : '';
+    return `${head} (xG ${fmt(t.v, 2)} vs ${fmt(t.o, 2)})${eff('v')}${eff('o')}${peak}`;
+  },
+  shotMap(r, team, shots, toPitch, PW, PH){
+    const opp = r.opponent || '상대';
+    const inBox = s => { const [px, py] = toPitch(s); return Math.abs(py - PH / 2) <= 20.16 && (s.side === 'v' ? px >= PW - 16.5 : px <= 16.5); };
+    const st = sd => { const a = shots.filter(s => s.side === sd); const k = a.filter(inBox).length; return { n: a.length, k, p: a.length ? Math.round(k / a.length * 100) : null }; };
+    const A = st('v'), B = st('o');
+    const w = A.p == null || B.p == null || Math.abs(A.p - B.p) < 15 ? null : A.p > B.p ? team : opp;
+    const best = shots.filter(s => s.xg != null).sort((a, b) => b.xg - a.xg)[0];
+    const RES = { goal:'득점', save:'선방', miss:'빗나감', block:'블록', post:'골대' };
+    return (w ? `박스 안에서 더 많이 쏜 쪽은 <b>${esc(w)}</b>` : '박스 안 슛 비중은 비슷했다')
+      + ` (박스 안 ${esc(team)} ${A.k}/${A.n} · ${esc(opp)} ${B.k}/${B.n})`
+      + (best ? ` · 가장 큰 기회: ${best.minute}′ ${esc(best.player_name || '')} xG ${fmt(best.xg, 2)} → ${RES[best.outcome] || best.outcome}` : '');
+  },
+  finishing(r, team, A, B){
+    const gain = A.xgot - A.xg, gk = B.xgot - B.goals;
+    const fin = gain >= .15 ? `코스가 좋았다 (마무리 +${fmt(gain, 2)})` : gain <= -.15 ? `골문 정면으로 약하게 찼다 (마무리 ${fmt(gain, 2)})` : `마무리는 기대 수준이었다 (${gain >= 0 ? '+' : ''}${fmt(gain, 2)})`;
+    const sv = gk >= .3 ? `우리 GK가 기대보다 <b>${fmt(gk, 1)}골</b> 더 막았다` : gk <= -.3 ? `우리 GK가 기대보다 <b>${fmt(-gk, 1)}골</b> 더 내줬다` : '우리 GK 선방은 기대 수준이었다';
+    return `<b>${esc(team)}</b> ${fin} · ${sv}`;
+  },
+  situations(r, team, A, B, hasXg){
+    const top = d => { if (!d.n) return null; const tot = d.parts.reduce((t, p) => t + (hasXg ? p.xg : p.n), 0) || 1;
+      const p = d.parts.slice().sort((a, b) => (hasXg ? b.xg - a.xg : b.n - a.n))[0]; return `<b>${SIT_NAME[p.k]}</b>(${hasXg ? 'xG' : '슛'} ${Math.round((hasXg ? p.xg : p.n) / tot * 100)}%)`; };
+    const a = top(A), b = top(B);
+    if (a && b && a.replace(/\(.*/, '') === b.replace(/\(.*/, '')) return `두 팀 모두 ${a.replace(/\(.*/, '')} 위주로 기회를 만들었다 (${esc(team)} ${a.match(/\((.*)\)/)[1]} · ${esc(r.opponent || '상대')} ${b.match(/\((.*)\)/)[1]})`;
+    return [a && `${esc(team)}는 ${a}에서`, b && `${esc(r.opponent || '상대')}는 ${b}에서`].filter(Boolean).join(', ') + ' 기회를 가장 많이 만들었다';
+  },
+  scoreState(r, team, B, keys, rate){
+    const opp = r.opponent || '상대', NAME = { lead:'리드', level:'동점', trail:'열세' };
+    const ok = keys.filter(k => B[k].min >= 15);
+    if (!ok.length) return '모든 국면이 15분 미만이라 판단을 보류한다';
+    const parts = ok.map(k => { const a = rate(k, 'v'), b = rate(k, 'o'), w = near(a, b, .2) ? null : a > b ? team : opp;
+      return `${NAME[k]} ${B[k].min}분엔 ${w ? `<b>${esc(w)}</b> 우세` : '비슷'} (${fmt(a, 2)} vs ${fmt(b, 2)})`; });
+    const sat = ok.includes('lead') && rate('lead', 'o') > Math.max(.1, rate('lead', 'v') * 1.5) ? ' — <b>리드 뒤 내려앉았다</b>' : '';
+    return parts.join(' · ') + sat;
+  },
+  halves(r, team, ps){
+    const opp = r.opponent || '상대', h1 = ps.find(p => p.period === '1H'), h2 = ps.find(p => p.period === '2H');
+    const one = (p, lab) => { if (!p) return null; const a = num(p.xg_v), b = num(p.xg_o); if (a == null || b == null) return null;
+      const w = near(a, b, .15) ? null : a > b ? team : opp; return `${lab} ${w ? `<b>${esc(w)}</b> 우세` : '비슷'} (xG ${fmt(a, 2)} vs ${fmt(b, 2)})`; };
+    const s = [one(h1, '전반'), one(h2, '후반')].filter(Boolean);
+    const pv = h1 && h2 && num(h1.possession_v) != null && num(h2.possession_v) != null ? ` · ${esc(team)} 점유 ${fmt(h1.possession_v)}% → ${fmt(h2.possession_v)}%` : '';
+    return s.length ? s.join(' → ') + pv : '';
+  },
+  butterfly(r, team){
+    const opp = r.opponent || '상대', v = k => num(r[k]);
+    const poss = v('possession'), xv = v('xg_v'), xo = v('xg_o'), pv = v('ppda_v'), po = v('ppda_o');
+    const pw = poss == null || Math.abs(poss - 50) < 3 ? null : poss > 50 ? team : opp;
+    const xw = xv == null || xo == null || near(xv, xo, .15) ? null : xv > xo ? team : opp;
+    const pp = pw === team ? poss : 100 - poss;
+    let s = pw && xw ? (pw === xw ? `점유(${fmt(pp)}%)와 기회(xG) 모두 <b>${esc(pw)}</b>가 앞섰다 — 경기를 주도했다`
+                                  : `점유는 <b>${esc(pw)}</b>가 가졌지만 기회(xG)는 <b>${esc(xw)}</b>가 앞섰다`)
+          : xw ? `기회(xG)는 <b>${esc(xw)}</b>가 앞섰다` : pw ? `점유는 <b>${esc(pw)}</b>가 가졌다 (${fmt(pp)}%)`
+          : poss != null && xv != null && xo != null ? '점유·기회 모두 팽팽했다' : '';
+    if (pv != null && po != null && !near(pv, po, .1)) s += `${s ? ' · ' : ''}압박은 <b>${esc(pv < po ? team : opp)}</b>가 거셌다 (PPDA ${fmt(pv, 1)} vs ${fmt(po, 1)})`;
+    return s;
+  },
+  duels(r, team){
+    const opp = r.opponent || '상대', v = k => num(r[k]), out = [];
+    const av = v('aerial_won_v'), ao = v('aerial_won_o');
+    if (av != null && ao != null) out.push(av === ao ? `공중전은 ${av}–${ao}로 비겼다` : `공중전은 <b>${esc(av > ao ? team : opp)}</b>가 이겼다 (${av} vs ${ao}승)`);
+    const cv = v('clearances_v'), co = v('clearances_o');
+    if (cv != null && co != null && Math.max(cv, co) >= 1.5 * Math.max(1, Math.min(cv, co)))
+      out.push(`클리어는 <b>${esc(cv > co ? team : opp)}</b>가 ${Math.max(cv, co)} vs ${Math.min(cv, co)}로 많았다 — 그만큼 박스 앞에서 버틴 쪽`);
+    const rv = (v('tackles_v') ?? 0) + (v('interceptions_v') ?? 0), ro = (v('tackles_o') ?? 0) + (v('interceptions_o') ?? 0);
+    if (!out.length && (rv || ro)) out.push(`태클+인터셉트 ${esc(team)} ${rv} · ${esc(opp)} ${ro}`);
+    return out.join(' · ');
+  },
+  players(r, team, rows){
+    const rt = rows.filter(p => p.rating != null);
+    if (!rt.length) return '';
+    const by = rt.slice().sort((a, b) => b.rating - a.rating), best = by[0];
+    const st = rt.filter(p => p.started && (p.minutes ?? 0) >= 45), worst = st.sort((a, b) => a.rating - b.rating)[0];
+    const subs = rt.filter(p => !p.started), top = rt.filter(p => p.rating >= 7.5).length;
+    return `최고 <b>${esc(best.label)} ${best.rating}</b>` + (worst && worst !== best ? ` · 최저(선발 45분+) ${esc(worst.label)} ${worst.rating}` : '')
+      + ` · 7.5+ ${top}명` + (subs.length ? ` · 교체 ${subs.length}명 평균 ${fmt(subs.reduce((t, p) => t + p.rating, 0) / subs.length, 1)}` : '');
+  },
+  momentum(r, team, pts){
+    const opp = r.opponent || '상대', nm = s => esc(s > 0 ? team : opp);
+    const us = pts.filter(p => p.v > 0).length, them = pts.filter(p => p.v < 0).length;
+    let best = null, cur = null;
+    for (const p of pts){ const s = Math.sign(p.v);
+      if (!s){ cur = null; continue; }
+      if (cur && cur.s === s) cur.b = p.m; else cur = { s, a: p.m, b: p.m };
+      if (!best || cur.b - cur.a > best.b - best.a) best = { ...cur }; }
+    const w = Math.abs(us - them) <= Math.max(3, .1 * (us + them)) ? null : us > them ? 1 : -1;
+    return (w ? `흐름은 <b>${nm(w)}</b>가 더 오래 쥐었다` : '흐름은 반반이었다') + ` (우세 분 ${esc(team)} ${us} · ${esc(opp)} ${them})`
+      + (best && best.b > best.a ? ` · 가장 길게 몰아친 구간: <b>${nm(best.s)}</b> ${best.a}–${best.b}′` : '');
+  },
+};
 /* h4에 다는 ? — 툴팁 배선은 renderMatchViz의 `.hit`가 그대로 처리한다(새 배선을 만들지 않는다). */
 const q = tip => `<span class="hit vzq" data-tip="${esc(tip)}" tabindex="0">?</span>`;
 const readLine = k => READ[k] ? `<span class="vz-read">${READ[k]}</span>` : '';
@@ -87,7 +210,7 @@ export function timeline(r, team, W = 900){
     return `<g class="hit" data-tip="${t}"><circle cx="${cx}" cy="${cy}" r="3.5" fill="var(--dim)"/></g>`;
   }).join('');
   const nSub = ev.filter(e => e.kind === 'sub' || e.kind === 'gk_change').length, nCard = ev.filter(e => /yellow|red/.test(e.kind)).length;
-  return `<div class="vz wide"><h4>타임라인 ${q('가로축은 경기 분(0~90+)이다. 옅은 띠는 스코어 국면(주황=우리 리드, 파랑=열세, 색 없음=동점), 위쪽 표식이 우리 팀·아래쪽이 상대다.')} <span class="dim">— 득점 ${goals.length} · 교체 ${nSub} · 카드 ${nCard} · 위 = ${esc(team)}, 아래 = ${esc(r.opponent || '상대')}</span></h4>
+  return `<div class="vz wide"><h4>타임라인 ${q('가로축은 경기 분(0~90+)이다. 옅은 띠는 스코어 국면(주황=우리 리드, 파랑=열세, 색 없음=동점), 위쪽 표식이 우리 팀·아래쪽이 상대다.')} <span class="dim">— 득점 ${goals.length} · 교체 ${nSub} · 카드 ${nCard} · 위 = ${esc(team)}, 아래 = ${esc(r.opponent || '상대')}</span></h4>${say(SAY.timeline(r, team))}
     <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="경기 타임라인">${bands}${ticks}${half}${axis}
       <text x="${L}" y="${mid - 58}" class="dim sm">${esc(team)}</text><text x="${L}" y="${mid + 64}" class="dim sm">${esc(r.opponent || '상대')}</text>${marks}</svg>
     <div class="lg"><span><i style="background:${US}"></i>리드 구간</span><span><i style="background:${THEM}"></i>열세 구간</span><span>● 득점(도움)</span><span>▲ 교체 <span style="color:var(--warn)">▲</span> GK 교체</span><span><span style="color:var(--warn)">▮</span> 경고</span>${readLine('timeline')}</div></div>`;
@@ -165,7 +288,7 @@ export function butterfly(r, team, W = 560){
     { label:'롱볼 성공/시도', a: v('long_acc_v'), b: v('long_acc_o'), d: 0, aTot: v('long_att_v'), bTot: v('long_att_o') },
     { label:'PPDA (낮을수록 강한 압박)', a: v('ppda_v'), b: v('ppda_o'), d: 2, invert: true },
     { label:'수비 액션 평균 위치', a: v('def_x_v'), b: v('def_x_o'), d: 1, max: 100 },
-  ], 'butterfly');
+  ], 'butterfly', SAY.butterfly(r, team));
 }
 
 /* ── 2b. 수비·경합 프로필 (2026-09-22 신설) — 「어디서 공을 되찾았나 / 얼마나 밀렸나」.
@@ -181,11 +304,11 @@ export function duels(r, team, W = 560){
     { label:'클리어', a: v('clearances_v'), b: v('clearances_o'), d: 0 },
     { label:'공중전 승/시도', a: v('aerial_won_v'), b: v('aerial_won_o'), d: 0, aTot: v('aerial_att_v'), bTot: v('aerial_att_o') },
     { label:'드리블 성공/시도', a: v('dribble_succ_v'), b: v('dribble_succ_o'), d: 0, aTot: v('dribble_att_v'), bTot: v('dribble_att_o') },
-  ], 'duels');
+  ], 'duels', SAY.duels(r, team));
 }
 
 /* 버터플라이 렌더러 — 팀 대조와 수비·경합이 공유한다(같은 모양이면 같은 코드로 그린다). */
-function bfly(r, team, W, title, note, rows0, readKey){
+function bfly(r, team, W, title, note, rows0, readKey, verdict = ''){
   const rows = rows0.filter(x => x.a != null || x.b != null);
   if (!rows.length) return '';
   const rowH = 28, top = 22, H = top + rows.length * rowH + 8, C = W / 2, span = Math.max(90, C - 60 - 64), bar = 13;   // 가운데 라벨 폭 120 + 값 라벨 여백
@@ -212,7 +335,7 @@ function bfly(r, team, W, title, note, rows0, readKey){
         <text x="${C + 66 + Math.max(wb, 0) + 4}" y="${y + 12}" class="sm">${lb}</text></g></g>`;
   }).join('');
   return `<div class="vz"><h4>${esc(title)} ${q('가운데 라벨이 지표명이고, 왼쪽 막대가 우리·오른쪽이 상대다. ⛔ 행마다 축이 달라 **같은 행 안에서만** 길이를 비교한다. 각 지표명에 마우스를 올리면 그 지표의 정의가 나온다.')}
-      <span class="dim">— 왼쪽 ${esc(team)} · 오른쪽 ${esc(r.opponent || '상대')}. ${esc(note)}</span></h4>
+      <span class="dim">— 왼쪽 ${esc(team)} · 오른쪽 ${esc(r.opponent || '상대')}. ${esc(note)}</span></h4>${say(verdict)}
     <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(title)}"><line x1="${C}" x2="${C}" y1="${top - 6}" y2="${H - 6}" stroke="${GRID}"/>${svgRows}</svg>
     <div class="lg"><span><i style="background:${US}"></i>${esc(team)}</span><span><i style="background:${THEM}"></i>${esc(r.opponent || '상대')}</span><span><i style="background:${US};opacity:.35"></i>시도(연한) / 성공(진한)</span>${readLine(readKey)}</div></div>`;
 }
@@ -257,7 +380,7 @@ export function finishing(r, team, W = 560){
   };
   const gain = A.xgot - A.xg, gk = B.xgot - B.goals;
   return `<div class="vz"><h4>결정력 ${q(`${HELP.xG}\n\n${HELP.xGOT}\n\n가로축은 셋 다 같은 단위(골 개수)라 한 축에 놓을 수 있다 — 빈 원 xG · 채운 원 xGOT · 세로선 실득점.`)}
-      <span class="dim">— 가로축: 골 개수 단위</span></h4>
+      <span class="dim">— 가로축: 골 개수 단위</span></h4>${say(SAY.finishing(r, team, A, B))}
     <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="결정력">${ticks}
       <text x="${(L + W - R) / 2}" y="${H - 8}" text-anchor="middle" class="dim sm">xG · xGOT · 득점 (골 개수)</text>
       ${line(A, rowY[0], US, team)}${line(B, rowY[1], THEM, r.opponent || '상대')}</svg>
@@ -309,7 +432,7 @@ export function shotSituations(r, team, W = 560){
   };
   const lg = SIT_ORDER.map(k => `<span><i style="background:${US};opacity:${COL[k]}"></i>${SIT_NAME[k]}</span>`).join('');
   return `<div class="vz"><h4>슛이 나온 상황 ${q(`슛을 만든 국면으로 나눈 것이다. 오픈플레이 = 흐름 속 · 세트피스 = 코너·프리킥·스로인 · 역습 = 속공 · 페널티.\n\n가로축은 그 팀의 슛 100%를 채운 비율이고(두 팀의 막대 길이는 서로 비교하지 않는다), 안쪽 어두운 띠 높이는 그 칸이 가져간 xG 비중이다.\n\n${HELP.xG}`)}
-      <span class="dim">— 가로: 그 팀 슛의 100%${hasXg ? ' · 세로 띠: xG 비중' : ' · ⚠️ 이 회차는 슛별 xG 미제공'}</span></h4>
+      <span class="dim">— 가로: 그 팀 슛의 100%${hasXg ? ' · 세로 띠: xG 비중' : ' · ⚠️ 이 회차는 슛별 xG 미제공'}</span></h4>${say(SAY.situations(r, team, A, B, hasXg))}
     <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="슛 상황 분해">
       ${bar(A, rowY[0], US, team)}${bar(B, rowY[1], THEM, r.opponent || '상대')}</svg>
     <div class="lg">${lg}${readLine('situations')}</div></div>`;
@@ -357,7 +480,7 @@ export function scoreStateXg(r, team, W = 560){
       <line x1="${x0}" x2="${x0}" y1="${T}" y2="${base}" stroke="${GRID}"/></g>`;
   }).join('');
   return `<div class="vz"><h4>스코어 국면별 xG ${q(`경기를 스코어 상태(리드·동점·열세)로 잘라 각 구간의 기회 생산 속도를 잰다.\n\n세로축은 10분당 xG다 — 구간 길이가 달라도 비교되게 분당으로 환산했다. 구간의 가로 폭은 그 국면이 이어진 분이다.\n\n${HELP.xG}`)}
-      <span class="dim">— 세로: 10분당 xG · 가로 폭: 국면 지속 분</span></h4>
+      <span class="dim">— 세로: 10분당 xG · 가로 폭: 국면 지속 분</span></h4>${say(SAY.scoreState(r, team, B, keys, rate))}
     <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="스코어 국면별 xG">
       <line x1="${L}" x2="${W - R}" y1="${base}" y2="${base}" stroke="var(--line)"/>
       <text x="${L - 6}" y="${T + 8}" text-anchor="end" class="dim sm">${maxY.toFixed(1)}</text>
@@ -379,7 +502,7 @@ export function halves(r, team, W = 560){
       <g class="hit" data-tip="${esc(`${r.opponent || '상대'} xG ${fmt(p.xg_o, 2)} · 슈팅 ${fmt(p.shots_o)}`)}"><rect x="${gx + 26}" y="${base - b}" width="22" height="${b}" rx="3" fill="${THEM}"/><text x="${gx + 37}" y="${base - b - 4}" text-anchor="middle" class="sm">${fmt(p.xg_o, 2)}</text></g>
       ${poss != null ? `<g class="hit" data-tip="${esc(`점유 ${team} ${fmt(poss)}% · ${r.opponent || '상대'} ${fmt(100 - poss)}%`)}"><rect x="${gx + 60}" y="${base - 26}" width="${gw - 60}" height="8" rx="4" fill="${THEM}" opacity=".35"/><rect x="${gx + 60}" y="${base - 26}" width="${(gw - 60) * poss / 100}" height="8" rx="4" fill="${US}"/><text x="${gx + 60}" y="${base - 4}" class="sm">점유 ${fmt(poss)}%</text></g>` : ''}
     </g>`; }).join('');
-  return `<div class="vz"><h4>하프 비교 ${q(`전반·후반을 나눠 각 반의 xG와 점유를 본다. 막대 높이가 xG, 아래 띠가 점유 비중이다.\n\n${HELP.xG}`)} <span class="dim">— xG(막대)와 점유(띠)</span></h4>
+  return `<div class="vz"><h4>하프 비교 ${q(`전반·후반을 나눠 각 반의 xG와 점유를 본다. 막대 높이가 xG, 아래 띠가 점유 비중이다.\n\n${HELP.xG}`)} <span class="dim">— xG(막대)와 점유(띠)</span></h4>${say(SAY.halves(r, team, ps))}
     <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="하프별 비교"><line x1="${x0 - 10}" x2="${W - 20}" y1="${base}" y2="${base}" stroke="var(--line)"/><text x="${x0 - 14}" y="${base + 4}" text-anchor="end" class="dim sm">xG</text>${bars}</svg>
     <div class="lg"><span><i style="background:${US}"></i>${esc(team)}</span><span><i style="background:${THEM}"></i>${esc(r.opponent || '상대')}</span>${readLine('halves')}</div></div>`;
 }
@@ -405,7 +528,7 @@ export function xgRace(r, team, W = 760){
     return `<g class="hit" data-tip="${esc(`${g.minute}′ ${g.side === 'v' ? team : (r.opponent || '상대')} 득점 · ${g.player_name || ''} · 슛 xG ${fmt(g.xg, 2)} · 누적 ${fmt(g.cum, 2)}`)}">
       <circle cx="${x(g.minute)}" cy="${y(g.cum)}" r="7" fill="${SURF}"/><circle cx="${x(g.minute)}" cy="${y(g.cum)}" r="5" fill="${col}"/></g>`; }).join('');
   const endLab = (side, col) => `<text x="${W - R + 6}" y="${y(tot[side]) + 3.5}" class="sm"><tspan font-weight="700">${fmt(tot[side], 2)}</tspan></text>`;
-  return `<div class="vz"><h4>xG 레이스 ${q(`가로축은 경기 분, 세로축은 그 시점까지 쌓인 누적 xG다. 슛이 나올 때마다 계단이 한 칸 올라간다.\n\n${HELP.xG}`)} <span class="dim">— 누적 기대득점 · 점 = 득점 · ${esc(prov)} 모델</span></h4>
+  return `<div class="vz"><h4>xG 레이스 ${q(`가로축은 경기 분, 세로축은 그 시점까지 쌓인 누적 xG다. 슛이 나올 때마다 계단이 한 칸 올라간다.\n\n${HELP.xG}`)} <span class="dim">— 누적 기대득점 · 점 = 득점 · ${esc(prov)} 모델</span></h4>${say(SAY.xgRace(r, team, shots))}
     <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="누적 xG">${ys}
       <line x1="${x(45)}" x2="${x(45)}" y1="${T}" y2="${H - B}" stroke="var(--line)"/><text x="${x(45)}" y="${T - 4}" text-anchor="middle" class="dim sm">HT</text>
       ${step(pts.o, THEM)}${step(pts.v, US)}${gm}${endLab('v', US)}${endLab('o', THEM)}${ticks}
@@ -433,7 +556,7 @@ export function shotMap(r, team, W = 760){
       ${goal ? `<circle cx="${X(px)}" cy="${Y(py)}" r="${rr + 2}" fill="${SURF}"/><circle cx="${X(px)}" cy="${Y(py)}" r="${rr}" fill="${col}"/>`
              : `<circle cx="${X(px)}" cy="${Y(py)}" r="${rr}" fill="${col}" fill-opacity=".14" stroke="${col}" stroke-width="1.5"/>`}</g>`; }).join('');
   const n = side => shots.filter(s => s.side === side).length, g = side => shots.filter(s => s.side === side && s.outcome === 'goal').length;
-  return `<div class="vz"><h4>슛 맵 ${q(`슛이 일어난 지점을 피치 위에 찍은 것이다. 두 팀이 서로 반대 골문을 공격하도록 그린다 — 우리는 오른쪽 골문.\n\n점의 크기가 그 슛의 xG다.\n\n${HELP.xG}`)} <span class="dim">— ${esc(team)} → 오른쪽 골문 · ${esc(r.opponent || '상대')} → 왼쪽 · 점 크기 = xG · 채움 = 득점</span></h4>
+  return `<div class="vz"><h4>슛 맵 ${q(`슛이 일어난 지점을 피치 위에 찍은 것이다. 두 팀이 서로 반대 골문을 공격하도록 그린다 — 우리는 오른쪽 골문.\n\n점의 크기가 그 슛의 xG다.\n\n${HELP.xG}`)} <span class="dim">— ${esc(team)} → 오른쪽 골문 · ${esc(r.opponent || '상대')} → 왼쪽 · 점 크기 = xG · 채움 = 득점</span></h4>${say(SAY.shotMap(r, team, shots, toPitch, PW, PH))}
     <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="슛 맵">${pitch}${dots}
       <text x="${X(PW) - 4}" y="${Y(PH) + 12}" text-anchor="end" class="dim sm">${esc(team)} 슛 ${n('v')} · 득점 ${g('v')}</text>
       <text x="${X(0) + 4}" y="${Y(PH) + 12}" class="dim sm">${esc(r.opponent || '상대')} 슛 ${n('o')} · 득점 ${g('o')}</text></svg>
@@ -490,7 +613,7 @@ export function playerRows(r, team, W = 900){
         <text x="${rx(p.rating) + 5}" y="${y + 3}" font-size="9" font-weight="700" fill="var(--txt)">${p.rating}</text>
         <text x="${W - 6}" y="${y + 3}" text-anchor="end" font-size="8" fill="var(--dim)">접점 ${p.hit_points ?? '—'}</text>`
         : `<text x="${rx0}" y="${y + 3}" font-size="9" fill="var(--dim)">평점 미수집</text>`}</g>`; }).join('');
-  return `<div class="vz wide"><h4>선수별 출전 구간·평점 <span class="dim">— 왼쪽: 언제 뛰었나 · 오른쪽: 평점(6.5 평범 · 7.5 상위) · 이름을 누르면 아래 상세가 열린다</span></h4>
+  return `<div class="vz wide"><h4>선수별 출전 구간·평점 <span class="dim">— 왼쪽: 언제 뛰었나 · 오른쪽: 평점(6.5 평범 · 7.5 상위) · 이름을 누르면 아래 상세가 열린다</span></h4>${say(SAY.players(r, team, rows))}
     <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="선수별 출전 구간과 평점">
       <text x="${L}" y="${T - 12}" font-size="10" fill="var(--dim)">출전 구간</text>
       <text x="${rx0}" y="${T - 12}" font-size="10" fill="var(--dim)">평점</text>${ticks}${rticks}${body}</svg>
@@ -578,7 +701,7 @@ export function momentum(r, team, W = 900){
   const step = (W - L - R) / Math.max(1, pts.length);
   const hits = pts.map(p => `<rect class="hit" data-tip="${esc(`${p.m}′ · ${p.v > 0 ? `${team} 우세` : p.v < 0 ? `${opp} 우세` : '균형'} ${p.v > 0 ? '+' : ''}${p.v}`)}" x="${x(p.m) - step / 2}" y="${T}" width="${step}" height="${H - T - B}" fill="transparent"/>`).join('');
   const usSum = pts.filter(p => p.v > 0).length, themSum = pts.filter(p => p.v < 0).length;
-  return `<div class="vz wide"><h4>모멘텀 ${q('SofaScore 「Attack momentum」 — 분마다 어느 팀이 위협적인 공격을 몰아쳤는지를 −100~+100으로 낸 제공사 지표다. 위(주황) = 우리 팀 우세, 아래(파랑) = 상대 우세. ⚠️ 공식이 공개되지 않은 제공사 합성 지표라 xG·점유와 함께 읽는다.')} <span class="dim">— 우세 분 ${esc(team)} ${usSum} · ${esc(opp)} ${themSum} · 점선 = 경기 중 변화 단계</span></h4>
+  return `<div class="vz wide"><h4>모멘텀 ${q('SofaScore 「Attack momentum」 — 분마다 어느 팀이 위협적인 공격을 몰아쳤는지를 −100~+100으로 낸 제공사 지표다. 위(주황) = 우리 팀 우세, 아래(파랑) = 상대 우세. ⚠️ 공식이 공개되지 않은 제공사 합성 지표라 xG·점유와 함께 읽는다.')} <span class="dim">— 우세 분 ${esc(team)} ${usSum} · ${esc(opp)} ${themSum} · 점선 = 경기 중 변화 단계</span></h4>${say(SAY.momentum(r, team, pts))}
     <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(`${team} 대 ${opp} 경기 모멘텀 — 위는 ${team} 우세, 아래는 ${opp} 우세`)}"><title>경기 모멘텀</title>
       ${ticks.join('')}${half}
       <path d="${area(v => Math.max(0, v))}" fill="${US}" opacity=".85"/>
