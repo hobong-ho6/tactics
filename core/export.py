@@ -241,7 +241,7 @@ def export_all(db_path=None, window="2026-summer"):
                                    COALESCE(NULLIF(e.unlock_text, ''), s.unlock_text) unlock_text,
                                    CASE WHEN COALESCE(e.unlock_text, '') = '' AND s.unlock_text IS NOT NULL THEN s.source END unlock_src,
                                    CASE WHEN COALESCE(e.unlock_text, '') = '' AND s.unlock_text IS NOT NULL THEN s.confidence END unlock_conf,
-                                   coins_cost, points_cost, token_cost,
+                                   coins_cost, points_cost, token_cost, event_token_id,
                                    -- ⭐ 반복 횟수는 EA 원본 우선(migration 089 · RW Roles++는 fut.gg가 1로 틀리게 준다)
                                    COALESCE(repeat_total_ea, repeatability) repeatability, repeatability repeatability_futgg,
                                    is_reward, is_gk, is_timed,

@@ -171,7 +171,7 @@ def is_cosmetic(e):
 
 CATALOG_COLS = [
     "game_version", "evo_id", "name", "slug", "url", "description", "category", "unlock_text",
-    "coins_cost", "points_cost", "token_cost", "repeatability", "is_reward", "is_gk", "is_timed",
+    "coins_cost", "points_cost", "token_cost", "event_token_id", "repeatability", "is_reward", "is_gk", "is_timed",
     "training_time", "created_at", "end_time", "end_submission_time", "requirements_text",
     "total_upgrades_text", "levels", "allowed_prior_ids", "number_of_players", "is_expired",
     "source", "confidence", "pulled", "ea_evo_id"]
@@ -186,6 +186,7 @@ def catalog_row(e, gv, pulled):
         url=("https://www.fut.gg" + e["url"]) if e.get("url") else None, description=e.get("description"),
         category=e.get("categoryName"), unlock_text=unlock,
         coins_cost=e.get("coinsCost"), points_cost=e.get("pointsCost"), token_cost=e.get("tokenCost"),
+        event_token_id=e.get("eventTokenId"),   # 토큰 종류(migration 125) — 1 갤러리·2 챔피언스·3 얼티밋 스크림
         repeatability=e.get("repeatabilityCount"), is_reward=1 if e.get("isRewardEvolution") else 0,
         is_gk=1 if e.get("isGkEvolution") else 0, is_timed=1 if e.get("isTimed") else 0,
         training_time=e.get("totalTrainingTime"), created_at=e.get("createdAt"),

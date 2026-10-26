@@ -437,7 +437,7 @@ CREATE TABLE understat_player_matches(
   source TEXT,
   UNIQUE(player_id, us_match_id)
 );
-CREATE TABLE IF NOT EXISTS "player_evaluations"(
+CREATE TABLE "player_evaluations"(
   id INTEGER PRIMARY KEY,
   regime_id INTEGER REFERENCES regimes(id),   -- NULL = 아직 우리 선수가 아니다(영입 후보). 불변규칙 7.
   player_id INTEGER NOT NULL REFERENCES players(id),
@@ -611,7 +611,7 @@ CREATE TABLE fc_evolutions(
   number_of_players INTEGER,            -- fut.gg 집계 적용 가능 선수 수(전체 DB 기준)
   is_expired INTEGER NOT NULL DEFAULT 0,
   source TEXT, confidence TEXT,
-  pulled TEXT NOT NULL, carried_from TEXT, name_kr TEXT, description_kr TEXT, levels_kr TEXT, repeat_total_ea INTEGER, ea_evo_id INTEGER,                 -- 진화는 기간제 — 시점이 정본
+  pulled TEXT NOT NULL, carried_from TEXT, name_kr TEXT, description_kr TEXT, levels_kr TEXT, repeat_total_ea INTEGER, ea_evo_id INTEGER, event_token_id INTEGER,                 -- 진화는 기간제 — 시점이 정본
   UNIQUE(game_version, evo_id, pulled)
 );
 CREATE TABLE fut_accounts(
@@ -911,7 +911,7 @@ CREATE TABLE fc_sbc_exclusions(
   added           TEXT,
   PRIMARY KEY(game_version, challenge_ea_id, club_player_id)
 );
-CREATE TABLE IF NOT EXISTS "fut_club_players"(
+CREATE TABLE "fut_club_players"(
   id INTEGER PRIMARY KEY,
   account_id INTEGER NOT NULL REFERENCES fut_accounts(id),
   player_id INTEGER REFERENCES players(id),   -- 우리 DB 선수면 연결(조인 규칙: player_id)
@@ -991,7 +991,7 @@ CREATE TABLE fc_gallery_tiers(
   source TEXT, confidence TEXT,
   PRIMARY KEY(game_version, set_id, grade, pulled)
 );
-CREATE TABLE IF NOT EXISTS "fc_sbc_solutions"(
+CREATE TABLE "fc_sbc_solutions"(
   game_version    TEXT NOT NULL REFERENCES game_versions(code),
   challenge_ea_id INTEGER NOT NULL,
   pulled          TEXT NOT NULL,          -- 판정일 = 그날의 보유 카드 기준이라는 뜻

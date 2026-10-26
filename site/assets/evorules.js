@@ -33,12 +33,20 @@ export const activeLog  = l => !l.is_void && !l.removed_at;
    어떤 진화는 그 칸이 비고 **`description`에만** 「Unlocked by completing the FC 26 Season 9 Pass」처럼 적는다.
    ⛔ 잠김 판정·해금 조건 블록이 각자 `unlock_text`만 보면 이 부류가 **잠김 없이 「즉시 적용」**으로 나온다.
    ⇒ 문구는 여기서만 고르고 화면은 부르기만 한다(불변규칙 13 ②). */
+/* fut.gg eventTokenId → 토큰 이름(fut.gg /token-store/ 서버 상태 · 2026-10-26 열람 · migration 125). */
+export const EVENT_TOKEN = { 1: { en: 'Gallery', kr: '갤러리 토큰' }, 2: { en: 'Champions', kr: '챔피언스 토큰' }, 3: { en: 'Ultimate Scream', kr: '얼티밋 스크림 토큰' } };
 export function unlockCond(c){
   const u = (c?.unlock_text || '').trim();
   if (u) return u;
   const d = (c?.description || '').trim();
-  return /^Unlocked by/i.test(d) ? d : '';
+  if (/^Unlocked by/i.test(d)) return d;
+  /* ⛔ 해금 문구가 비어도 `token_cost`가 있으면 토큰 스토어형이다(2026-10-26 — Haunted Wall 500·Wicked Winger 900이 「무료」로 떴다).
+     fut.gg 문형과 같게 만들어 아래 판정이 한 갈래로 받는다. */
+  if (c?.token_cost > 0) return `Unlocked via the ${EVENT_TOKEN[c.event_token_id]?.en ? EVENT_TOKEN[c.event_token_id].en + ' ' : ''}Token Store for ${c.token_cost} tokens`;
+  return '';
 }
+/* 토큰 스토어형 진화의 토큰 이름 — eventTokenId가 정본, 없으면 「토큰」(종류를 지어내지 않는다). */
+const tokenKr = c => EVENT_TOKEN[c?.event_token_id]?.kr || '토큰';
 /* ⭐⭐⭐ PlayStyle 보상의 **「(^N)」 = 보유 PS 개수 상한** 정본 (2026-10-13 · game_system_changes #41).
    보상 PS는 **보유 PS가 N개 미만일 때만** 들어온다. 진화 요구조건 「Max PS」와 상한이 어긋나면 조건은 통과해도
    보상이 증발한다 — 실증: 잭슨 PS 2개로 Creative or Composed? [SP 27](Max PS 2 · 보상 PS 2개 모두 ^3)을 걸어
@@ -119,8 +127,8 @@ export function acquireRoute(c){
                        : '스탠다드 시즌패스는 구매 없이 레벨만 올리면 진화 랩에 열린다.' };
   }
   const tk = /Token Store for (\d+) tokens?/i.exec(u);
-  if (tk) return { kind: 'token', tokens: +tk[1], label: `챔피언스 토큰 ${tk[1]}개로 토큰 스토어에서 구매`,
-                   how: '챔피언스 토큰은 FUT Champions(주말 리그) 보상으로 받는다 — 갤러리 토큰 스토어와는 다른 상점이다. 산 뒤에는 진화 랩에서 바로 시작한다.' };
+  if (tk) return { kind: 'token', tokens: +tk[1], label: `${tokenKr(c)} ${tk[1]}개로 토큰 스토어에서 구매`,
+                   how: `진화 랩이 아니라 ${tokenKr(c)} 스토어에서 산다 — 상점마다 토큰이 따로다. 산 뒤에는 진화 랩에서 바로 시작한다.` };
   if (/^Unlocked by/i.test(u)) return { kind: 'other', label: unlockCondKr(u) || u, how: '달성 여부는 계정 상태라 fut.gg가 주지 않는다.' };
   if (u) return { kind: 'obj', label: `과제 「${u}」 완료`, how: '과제(Objectives)를 끝내면 보상으로 진화가 열린다.' };
   if (c?.coins_cost || c?.points_cost){
@@ -210,7 +218,7 @@ export function evoRules(EVO, accName){
       const n = (/(\d+)\s*tokens?/i.exec(cond) || [])[1];
       if (manual[c.evo_id] !== true)
         info = { locked: true, unknown: manual[c.evo_id] === undefined,
-                 why: `챔피언스 토큰 스토어에서 토큰 ${n ?? '?'}개로 구매해야 열린다`, kind: 'token' };
+                 why: `${tokenKr(c)} 스토어에서 토큰 ${n ?? '?'}개로 구매해야 열린다`, kind: 'token' };
     } else if (cond && !/^Unlocked by/i.test(cond)){
       /* 목표형 — 이름만 있고 조건식이 없다. 기록이 없으면 「모름」이다. */
       if (manual[c.evo_id] !== true)
