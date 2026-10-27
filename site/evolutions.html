@@ -3793,7 +3793,7 @@ function renderSbc(){
       if (box && !await fresh(id, box)) { b.disabled = false; return; }
       if (box) box.innerHTML = `<span class="dim">${undo ? '되돌리고 남은 SBC를 다시 푸는 중… (수십 초)' : '기록하는 중… (남은 해법과 겹치는 카드가 있을 때만 다시 푼다)'}</span>`;
       const r = await api('sbc_submit', { challenge: id, undo, game: 'FC27',
-                                          cards: !b.hasAttribute('data-nocards') });
+                                          cards: !b.hasAttribute('data-nocards'), bought: b.hasAttribute('data-bought') });
       say(box, r); b.disabled = false;
       /* ⭐ SBC 제출은 **카드를 스쿼드에서 빼므로** 케미·진화·전술이 전부 흔들린다. 통째로 다시 읽는다. */
       if (r?.ok) reloadAfterWrite(undo ? '제출을 되돌렸다' : 'SBC 제출을 기록했다');
@@ -3887,6 +3887,16 @@ function renderSbc(){
                      <small class="dim">위 11장이 <b>구단에서 빠지고</b> 남은 SBC를 다시 푼다(되돌릴 수 있다).
                        <b>다른 조합</b>으로 내셨다면 오른쪽 버튼 — 낸 카드를 모르므로 <b>기록만</b> 하고
                        소모는 다음 클럽 싱크가 잡는다.</small>
+                     <span class="msg-slot" id="sbcs${c.challenge_ea_id}"></span></div>`
+                : /* ⭐ 미완성 해 + 구매 처방 — 추천 카드를 사서 냈을 때(2026-10-27 사용자 지시 「구매해서 제출한 경우도 처리」).
+                     서버가 저장된 `after`(살 카드를 넣은 뒤 스쿼드)를 낸 카드로 적는다. */
+                  xi.partial && (xi.after || []).some(p => p.buy)
+                ? `<div class="sbc-sub"><b>🛒 추천 카드를 사서 제출하셨나요?</b>
+                     <button class="act" data-sbcdone="${c.challenge_ea_id}" data-bought="1">샀고 제출했다 — 완료 처리</button>
+                     <button class="act ghost" data-sbcdone="${c.challenge_ea_id}" data-nocards="1"
+                        title="다른 카드로 내셨을 때 — 완료 사실만 적고 구단은 건드리지 않는다">다른 조합으로 냈다</button>
+                     <small class="dim">아래 「선수 구성」의 <b>내 카드 ${(xi.after || []).filter(p => !p.buy).length}장이 구단에서 빠지고</b>,
+                       산 카드 ${(xi.after || []).filter(p => p.buy).map(p => esc(p.name)).join('·')}는 제출 기록에 🛒로 남는다(되돌릴 수 있다).</small>
                      <span class="msg-slot" id="sbcs${c.challenge_ea_id}"></span></div>` : ''}
             ${(() => {
               /* ⭐⭐ **피치 모양으로 그린다**(2026-09-25 사용자 지시 「리스트로만 있으니 어떤 포지션의 선수인지도 모르겠어」).

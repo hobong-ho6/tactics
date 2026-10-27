@@ -1226,7 +1226,7 @@ def main():
                 continue
             b = by.get(nm)
             if b:
-                p = {"id": -(b["card"] or {}).get("ea", 0) or p["id"], "name": (b["card"] or {}).get("name") or "(살 카드)",
+                p = {"id": 0, "ea": (b["card"] or {}).get("ea"), "name": (b["card"] or {}).get("name") or "(살 카드)",
                      "ovr": b["ovr"], "club": b["club"], "league": b["league"], "nation": b["nation"],
                      "is_untradeable": 0, "card_image_url": None, "positions": "/".join(b["pos"]), "best_pos": None}
                 fit = True

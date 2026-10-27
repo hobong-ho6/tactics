@@ -559,7 +559,19 @@ def cmd_sbc_submit(con, a):
               f"⚠️ 그 사이 남은 해법에 이번에 낸 카드가 들어 있을 수 있다.")
         return
 
-    if row["verdict"] != "ok" or not row["squad_json"]:
+    # ⭐⭐ **추천 카드를 사서 냈다**(2026-10-27 사용자 지시 「Scary Candy 구매 리스트 애들 사서 제출했어 · 구매해서 제출한 경우도
+    #    처리되도록」). 미완성 해(not_found)에는 솔버가 «살 카드를 넣은 뒤 스쿼드»(`after`)를 저장해 둔다 —
+    #    그 스쿼드가 곧 낸 카드다. 내 카드는 구단에서 덜고, 산 카드는 구단에 들어온 적 없이 바로 소모됐으니
+    #    **기록(squad_note)에만** 🛒로 남긴다. ⛔ 산 카드와 내 카드는 id 부호가 아니라 `buy` 표시로 가른다
+    #    (음수 id는 SBC 스토리지 카드다 — migration 095).
+    bought = getattr(a, "bought", False)
+    if bought:
+        sj = json.loads(row["squad_json"] or "{}")
+        if not sj.get("partial") or not sj.get("after") or not any(p.get("buy") for p in sj["after"]):
+            raise SystemExit(f"⛔ {row['name']}: 저장된 구매 처방이 없다 — 「추천 카드를 사서 냈다」는 미완성 해의 구매 목록이 있을 때만 쓴다.")
+        sq = sj["after"]
+        mine = [p for p in sq if not p.get("buy")]
+    elif row["verdict"] != "ok" or not row["squad_json"]:
         # ⚠️ 화면엔 「해법 완료」로 보이는데 여기 오는 일이 있다 — **그 사이 판정이 뒤집힌** 것이다
         #    (다른 SBC를 제출해 카드가 빠지면 남은 챌린지가 못 풀리게 된다). 그 사실을 그대로 적는다.
         raise SystemExit(
@@ -567,9 +579,11 @@ def cmd_sbc_submit(con, a):
             "   화면엔 해법이 보였다면 **그 사이 판정이 바뀐 것**이다 — 다른 SBC를 제출해 카드가 빠졌거나\n"
             "   다시 풀렸다. 새로고침하면 지금 판정이 보인다.\n"
             "   ⭐ 인게임에서 이미 내셨다면, 낸 카드를 알려 주시면 그대로 기록하겠다(해법과 달라도 된다).")
-    sq = json.loads(row["squad_json"])["players"]
-    ids = [p["id"] for p in sq if p["id"] > 0]
-    sids = [-p["id"] for p in sq if p["id"] < 0]          # ⭐ 음수 id = SBC 스토리지 카드(migration 095)
+    else:
+        sq = json.loads(row["squad_json"])["players"]
+        mine = sq
+    ids = [p["id"] for p in mine if p["id"] > 0]
+    sids = [-p["id"] for p in mine if p["id"] < 0]        # ⭐ 음수 id = SBC 스토리지 카드(migration 095)
     bad = con.execute("SELECT name, status FROM fut_club_players WHERE id IN (%s) AND status<>'owned'"
                       % ",".join("?" * len(ids)), ids).fetchall() if ids else []
     if sids:
@@ -579,7 +593,7 @@ def cmd_sbc_submit(con, a):
         raise SystemExit("⛔ 해법이 낡았다 — 이미 보유가 아닌 카드가 들어 있다: "
                          + ", ".join(f"{b['name']}({b['status']})" for b in bad)
                          + "\n   먼저 다시 풀 것(화면의 「이 포메이션으로 풀기」).")
-    note = " · ".join(f"{p['slot']} {p['name']}({p['ovr']})" for p in sq)
+    note = " · ".join(f"{p['slot']} {'🛒' if p.get('buy') else ''}{p['name']}({p['ovr']})" for p in sq)
     con.execute("""INSERT INTO fut_sbc_log(account_id, game_version, set_ea_id, challenge_ea_id,
                      completed_at, squad_note, source, confidence, notes)
                    VALUES((SELECT id FROM fut_accounts ORDER BY id LIMIT 1),?,?,?,?,?,?,?,?)
@@ -587,8 +601,11 @@ def cmd_sbc_submit(con, a):
                      completed_at=excluded.completed_at, squad_note=excluded.squad_note""",
                 (a.game, row["set_ea_id"], ch, TODAY, note,
                  f"사용자가 화면에서 완료 처리({TODAY}) — EA·fut.gg가 주지 않는 축이라 사람이 적는다",
-                 "MEASURED(사용자 행위). ⚠️ 제출 카드는 **우리가 제안한 11장**으로 적었다 — "
-                 "다른 조합으로 내셨다면 사실과 다르다(되돌리려면 완료 취소).",
+                 ("MEASURED(사용자 행위). ⚠️ 제출 카드는 **우리가 처방한 구매 카드(🛒) + 남긴 내 카드**로 적었다 — "
+                  "다른 카드를 사셨다면 사실과 다르다(되돌리려면 완료 취소). 🛒 카드는 구단을 거치지 않고 소모돼 원장에 행이 없다."
+                  if bought else
+                  "MEASURED(사용자 행위). ⚠️ 제출 카드는 **우리가 제안한 11장**으로 적었다 — "
+                  "다른 조합으로 내셨다면 사실과 다르다(되돌리려면 완료 취소)."),
                  row["name"]))
     n = con.execute("UPDATE fut_club_players SET status='sbc', sbc_challenge_ea_id=?, updated=? "
                     "WHERE id IN (%s)" % ",".join("?" * len(ids)), [ch, TODAY] + ids).rowcount if ids else 0
@@ -596,7 +613,8 @@ def cmd_sbc_submit(con, a):
         n += con.execute("UPDATE fut_sbc_storage SET status='used', used_challenge_ea_id=?, used_at=? "
                          "WHERE id IN (%s)" % ",".join("?" * len(sids)), [ch, TODAY] + sids).rowcount
     con.commit()
-    print(f"🏁 {row['name']} 완료 처리 — 카드 {n}장을 구단에서 덜어냈다.")
+    print(f"🏁 {row['name']} 완료 처리 — 카드 {n}장을 구단에서 덜어냈다."
+          + (f" 🛒 구매 카드 {sum(1 for p in sq if p.get('buy'))}장은 기록에만 남겼다." if bought else ""))
     _resolve_if_overlap(con, ch, ids, sids)
 
 
@@ -893,7 +911,7 @@ def run(con, cmd, **kw):
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
                     level=1, date=TODAY, completed=None, note=None, ovr_after=None, six_after=None, status=None, op="add",
                     in_progress=False, evo=None, challenge=None, formation=None, club_player=None, undo=False, cards=True,
-                    expect_player_id=None, set_id=None, grade=None, q=None, storage_id=None, kind=None, item=None, scope=None, blocked=None)
+                    expect_player_id=None, set_id=None, grade=None, q=None, storage_id=None, kind=None, item=None, scope=None, blocked=None, bought=False)
     a = argparse.Namespace(**{**defaults, **kw})
     fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete, "evo_remove": cmd_evo_remove,
           "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude,
