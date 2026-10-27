@@ -3548,25 +3548,26 @@ const misfitHTML = xi => {
         EA는 아무 칸에나 넣게 허용하고 벌칙은 <b>그 선수 케미 0</b>뿐이다. 메우면 케미만 더 오른다.</small></div>`;
   }
   /* ⭐ 「무엇을 사야 제출 가능한가」 — 칸·포지션뿐 아니라 **클럽 / 리그 / 국적 / OVR**까지 찍는다
-     (2026-09-25 사용자 지시). 클럽·국적은 **이미 스쿼드에 있는 값**이라야 케미가 붙는다. */
+     (2026-09-25 사용자 지시). ⭐ 2026-10-27부터 b.card = fut.gg 시장 목록의 **실제 카드**(sbc_solve buy_specs). */
   const still = buy[buy.length - 1].still;
   const rows = buy.map((b, i) => `<li>
     <span class="bn">${i + 1}</span>
     <b>${esc(b.slot)}</b> 칸 ← <b class="pos">${(b.pos || []).map(esc).join(' / ')}</b>
     · 클럽 <b>${esc(b.club || '—')}</b> <span class="dim">(${esc(b.league || '—')})</span>
     · 국적 <b>${esc(b.nation || '—')}</b>
-    · OVR <b>${b.ovr}</b> 안팎
+    · ${b.card ? `<b>${esc(b.card.name)}</b> OVR <b>${b.ovr}</b>${b.card.price != null ? ` · 최근 시세 <b>${b.card.price.toLocaleString()}</b> 코인` : ''}`
+        : `OVR <b>${b.ovr}</b> 안팎${b.verified === false ? ' <b class="dn">(실재 미확인 — fut.gg 목록 조회 실패)</b>' : ''}`}
     <br><small class="dim">${esc(b.replaces)} 대신 넣는다${b.was_fit ? ' <b class="dn">(지금 자리가 맞는 사람이다)</b>' : ''}
       — 남은 위반 ${b.gain} 줄어 <b>${b.left}</b> · 케미 <b>${b.chem_after}</b>${
       b.quality?.length ? ` · 등급 조건 ${b.quality.map(esc).join(' · ')}` : ''}</small>${
       /* ⭐ 실제 시장 카드 + 시세(2026-10-09 · sbc_solve market_for — fut.gg 서명 가격 API) — 해법 없는 챌린지에만 붙는다 */
       Array.isArray(b.market) ? (b.market.length
         ? `<br><small>💰 시장 후보: ${b.market.map(m => `<b>${esc(m.name)}</b> ${m.ovr} ${esc(m.pos || '')} · ${esc(m.club || '')}${m.club_ok === false ? ' <span class="dn">(클럽 다름 — 리그·국적 링크만)</span>' : ''} · <b>${m.price != null ? m.price.toLocaleString() + ' 코인' : '시세 없음'}</b>`).join(' / ')}</small>`
-        : '<br><small class="dim">💰 시장 후보: 조건(리그·국적·포지션·OVR)에 맞는 카드가 fut.gg 목록에 없다</small>') : ''}</li>`).join('');
+        : b.card ? '' : '<br><small class="dim">💰 시장 후보: 조건(리그·국적·포지션·OVR)에 맞는 카드가 fut.gg 목록에 없다</small>') : ''}</li>`).join('');
   return `<div class="sbc-mf${still ? '' : ' fix'}">
     <b class="${still ? 'dn' : ''}">${still ? '⚠️ 사도 다 안 닫힌다' : `🛒 이 ${buy.length}장을 사면 제출 가능해진다`}</b>
-    <small class="dim">— 클럽·국적은 <b>이미 스쿼드에 있는 값</b>이라야 케미가 붙는다(혼자짜리는 0).
-      OVR은 빼는 사람 근처로 잡아 팀 레이팅을 흔들지 않는다. ⚠️ 우리 계산(등급 C) · 시세는 fut.gg 집계(실제 호가와 다를 수 있다 · 해법 없는 챌린지만 조회).</small>
+    <small class="dim">— fut.gg 시장 목록에 <b>실제로 있는 카드</b>만 추천한다(2026-10-27 — 없는 조합을 처방하던 것 정정).
+      스쿼드에 있는 리그의 카드 중 남은 위반을 가장 많이 줄이는 카드 · 같으면 최근 시세가 싼 카드 · 빼는 사람 OVR에 가까운 카드 순. ⚠️ 우리 계산(등급 C) · 시세는 fut.gg 집계(실제 호가와 다를 수 있다 · 해법 없는 챌린지만 조회).</small>
     <ul class="buylist">${rows}</ul>
     ${still ? `<div class="dn" style="font-size:11.5px">⛔ 그래도 남는 조건: ${still.map(esc).join(' / ')}
       <small class="dim">— 이건 카드 한 장으로 안 풀린다(스쿼드 구성 자체를 바꿔야 한다).</small></div>` : ''}</div>`;

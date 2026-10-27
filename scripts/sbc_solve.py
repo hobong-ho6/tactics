@@ -432,31 +432,59 @@ def buy_specs(xi, pl, conds, pool):
             c += max(0, v - chem_total(fitset)) if kind == "chem" else cost1(squad, kind, v)
         return c
 
+    # ⭐⭐ **실재하는 카드만 후보로 쓴다**(2026-10-27 사용자 지적 「슬로베니아 국적의 맨유 CB가 없으면 다른 조합을
+    #    추천해야 하는 거 아니야? 실제 구매해서 완성 가능한 카드를 추천해야지」). 종전엔 (클럽 × 국적) 조합으로
+    #    가상의 카드를 세워 고른 뒤 시장 후보를 **나중에** 찾아서, 존재하지 않는 카드(Man Utd·Slovenia·CB)를 처방했다.
+    #    ⇒ 스쿼드에 있는 리그마다 fut.gg 시장 목록에서 그 칸 포지션의 카드를 받아 **그 카드 자체**로 위반 감소를 잰다.
+    #    클럽이 스쿼드에 없어도 리그·국적 링크로 케미가 붙으므로 리그 안의 다른 클럽도 후보다.
+    #    ⚠️ fut.gg 조회가 실패한 리그는 종전 가상 카드로 물러서고 `verified: False`로 표시한다(화면이 「미확인」으로 쓴다).
+    floor = QUAL_FLOOR.get(_qual_tier(conds))
+    lg_ids = {p["league"]: p.get("league_ea_id") for p in xi if p.get("league") and p.get("league_ea_id")}
+
+    def candidates(want, old):
+        cs, failed = [], False
+        for lg, lid in lg_ids.items():
+            cards = market_cards(lid, want, floor)
+            if cards is None:
+                failed = True
+                continue
+            cs += [dict(c, id=old["id"]) for c in cards if per_player_ok(c, conds)]
+        if failed or not lg_ids:
+            cs += [{"id": old["id"], "name": "(살 카드)", "club": cb, "league": lg_of.get(cb), "nation": na,
+                    "ovr": old["ovr"], "is_special": old["is_special"], "positions": "/".join(want),
+                    "best_pos": None, "verified": False} for cb in clubs for na in nats]
+        return cs
+
     out, cur_xi, cur_fit = [], list(xi), list(fit)
     cost = cost_of(cur_xi, cur_fit)
     for nm, want, old, was_fit in miss:
         if not cost:
             break
         best = None
-        for cb in clubs:
-            for na in nats:
-                synth = {"id": old["id"], "name": "(살 카드)", "club": cb, "league": lg_of.get(cb),
-                         "nation": na, "ovr": old["ovr"], "is_special": old["is_special"],
-                         "positions": "/".join(want), "best_pos": None}
-                nxi = [synth if p["id"] == old["id"] else p for p in cur_xi]
-                nfit = [p for p in cur_fit if p["id"] != old["id"]] + [synth]
-                c2 = cost_of(nxi, nfit)
-                if c2 >= cost:                       # ⛔ 줄지 않으면 제안이 아니다(같아도 안 산다)
-                    continue
-                if best is None or c2 < best[0]:
-                    best = (c2, cb, na, synth, nxi, nfit)
+        # ⛔ 이미 스쿼드에 선 **선수**(base_ea_id)는 다시 살 수 없다 — 같은 선수 두 장은 제출 불가(dup_cost와 같은 축).
+        #    2026-10-27 실측: RCB Thiaw를 둔 채 LCB에 Thiaw를 또 추천했다.
+        taken = {p.get("who") or p.get("ea_item_id") for p in cur_xi if p["id"] != old["id"]}
+        for synth in candidates(want, old):
+            if synth.get("who") in taken:
+                continue
+            nxi = [synth if p["id"] == old["id"] else p for p in cur_xi]
+            nfit = [p for p in cur_fit if p["id"] != old["id"]] + [synth]
+            c2 = cost_of(nxi, nfit)
+            if c2 >= cost:                           # ⛔ 줄지 않으면 제안이 아니다(같아도 안 산다)
+                continue
+            # 같은 감소면 ① 최근 수집 시세가 싼 카드(시세 모름은 뒤로) ② OVR이 바뀌는 사람에 가까운 카드(팀 레이팅을 덜 흔든다)
+            key = (c2, last_price(synth.get("ea")), abs(synth["ovr"] - old["ovr"]))
+            if best is None or key < best[0]:
+                best = (key, synth, nxi, nfit)
         if not best:
             continue
-        c2, cb, na, synth, cur_xi, cur_fit = best
-        out.append({"slot": nm, "pos": want, "club": cb, "league": lg_of.get(cb), "nation": na,
-                    "ovr": old["ovr"], "replaces": old["name"], "was_fit": bool(was_fit),
+        (c2, price, _d), synth, cur_xi, cur_fit = best
+        out.append({"slot": nm, "pos": want, "club": synth["club"], "league": synth["league"], "nation": synth["nation"],
+                    "ovr": synth["ovr"], "replaces": old["name"], "was_fit": bool(was_fit),
                     "gain": cost - c2, "chem_after": chem_total(cur_fit),
-                    "left": c2, "quality": qual})
+                    "left": c2, "quality": qual, "verified": synth.get("verified", True),
+                    "card": {"ea": synth["ea"], "name": synth["name"],
+                             "price": price if price < 10 ** 9 else None} if synth.get("ea") else None})
         cost = c2
     # ⭐ 다 사도 안 닫히면 그 사실을 마지막 줄에 남긴다 — 「사면 된다」로 읽히면 안 된다.
     if out and cost:
@@ -723,6 +751,56 @@ def _nation_id(name, pool):
     return _NATION_ID[name]
 
 
+_MARKET = {}
+_PRICE = {}
+
+
+def last_price(ea):
+    """그 카드의 **가장 최근 수집 시세**(`player_card_prices`) — 없으면 10**9(정렬 뒤로).
+       ⚠️ 그날 시세가 아니다 — 서명 가격 API가 막힌 날(Cloudflare)에도 고르는 데 쓰는 보조값이다."""
+    if not ea:
+        return 10 ** 9
+    if ea not in _PRICE:
+        c = connect_db(DB, timeout=120)
+        r = c.execute("""SELECT price FROM player_card_prices WHERE game_version='FC27' AND ea_item_id=? AND has_price=1
+                          ORDER BY pulled DESC LIMIT 1""", (ea,)).fetchone()
+        c.close()
+        _PRICE[ea] = r[0] if r and r[0] is not None else 10 ** 9
+    return _PRICE[ea]
+
+
+def market_cards(league_ea, want, floor=None, pages=8):
+    """한 리그에서 칸 포지션(want)에 설 수 있는 **시장 카드**(fut.gg 목록) — buy_specs의 후보 정본.
+       ⛔ SBC·오브젝티브·진화 카드는 살 수 없고, 아이콘·히어로는 케미 규칙이 달라 뺀다.
+       조회 실패면 None(빈 목록과 구분한다 — 「없다」와 「모른다」는 다르다)."""
+    key = (league_ea, tuple(want), floor)
+    if key not in _MARKET:
+        pos_id = {v: k for k, v in GEN_POS.items()}
+        q = f"sorts=overall&leagues={league_ea}&positions={','.join(str(pos_id[x]) for x in want if x in pos_id)}"
+        if floor:
+            q += f"&overall__gte={floor}"
+        out = []
+        try:
+            for page in range(1, pages + 1):
+                d = _get(f"{FUTGG}/players/v2/27/?{q}&page={page}")
+                for x in d.get("data") or []:
+                    if x.get("isSbc") or x.get("isObjective") or x.get("isEvolutionPlayerItem") or x.get("isIcon") or x.get("isHero"):
+                        continue
+                    ps = [x.get("position")] + list(x.get("alternativePositions") or [])
+                    if not set(ps) & set(want):
+                        continue
+                    out.append({"ea": x["eaId"], "who": x.get("basePlayerEaId") or x["eaId"], "name": x.get("commonName") or f"{x.get('firstName','')} {x.get('lastName','')}".strip(),
+                                "club": (x.get("club") or {}).get("name"), "league": (x.get("league") or {}).get("name"),
+                                "nation": (x.get("nation") or {}).get("name"), "ovr": x.get("overall"),
+                                "is_special": bool(x.get("isSpecial")), "positions": "/".join(p for p in ps if p), "best_pos": None})
+                if not d.get("next"):
+                    break
+        except Exception:
+            out = None
+        _MARKET[key] = out
+    return _MARKET[key]
+
+
 def market_for(spec, pool, qual_floor=None, limit=2):
     """⭐ 칸 처방(buy_specs의 한 줄 — 포지션·클럽/리그·국적·OVR)에 맞는 **실제 시장 카드와 시세**를 붙인다
        (2026-10-09 사용자 지시 「해법 없는 SBC는 적절한 사야 하는 카드로 구성 · 시세도 수집」).
@@ -754,11 +832,15 @@ def market_for(spec, pool, qual_floor=None, limit=2):
         # 같은 클럽 카드가 시장 목록에 없으면 **리그·국적만 맞는 카드**로 물러선다(클럽 링크는 잃고 리그·국적 링크는 남는다)
         items, club_ok = allx[:6], False
     out, rows = [], []
+    blocked = False
     for x in items:
-        try:
-            cur, why = signed_price(27, x["eaId"])
-        except (Challenge, RateLimited):
-            break                               # 봇 검사·속도 제한은 우회하지 않는다 — 받은 데까지만
+        cur, why = None, "blocked"
+        if not blocked:
+            try:
+                cur, why = signed_price(27, x["eaId"])
+            except (Challenge, RateLimited):
+                blocked = True                  # 봇 검사·속도 제한은 우회하지 않는다 — 시세만 비우고 카드는 남긴다(2026-10-27:
+                                                #   종전엔 여기서 break해 카드까지 버려 화면이 「목록에 없다」로 오독했다)
         price = (cur or {}).get("price") if why == "ok" else None
         if why == "ok":
             rows.append(("FC27", x["eaId"], None, price, int(price is not None), None, (cur or {}).get("platform") or "ps5",
