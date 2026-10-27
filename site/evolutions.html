@@ -3618,7 +3618,7 @@ const compHTML = (sq, c) => {
   const dist = has ? [3, 2, 1, 0].map(v => `${v}점 ${sq.filter(p => p.chem === v).length}명`).join(' · ') : '';
   return `<div class="kv" style="font-size:12px;margin:4px 0;line-height:1.9">
     <div>📊 평균 OVR <b>${avg}</b> · 팀 레이팅 <b>${c.team_rating ?? '—'}</b>
-      · 케미 <b>${c.chem_total ?? '—'}</b>/33${has ? ` <small class="dim">(${dist})</small>` : ' <small class="dim">— 선수별 케미는 다음 재계산부터</small>'}</div>
+      · 케미 <b>${c.chem_total ?? '—'}</b>/${sq.length * 3}${has ? ` <small class="dim">(${dist})</small>` : ' <small class="dim">— 선수별 케미는 다음 재계산부터</small>'}</div>
     <div>🏆 리그 ${tally('league').length}개 — ${chips('league')}</div>
     <div>🛡️ 클럽 ${tally('club').length}개 — ${chips('club')}</div>
     <div>🌍 국가 ${tally('nation').length}개 — ${chips('nation')}</div></div>`;
