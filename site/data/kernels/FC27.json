@@ -5738,6 +5738,42 @@
    "impact": "처방 재검토 주기 그대로. 패치 감시 회차는 EA 뉴스 색인(/fc-27/news) 전수를 game_system_changes.source와 차집합으로 대조한다(scripts/patch_watch_index.py) — 10-13·10-19·10-22 3건이 10-12 이후 미적재였던 구조적 결손 대응.",
    "recorded": "2026-10-22",
    "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-0-4 (2026-10-07) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-season-2-fc-heritage (2026-10-22) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-the-grounds-developer-archetypes-update (2026-10-19)"
+  },
+  {
+   "area": "meta",
+   "change": "출시 초기 밸런스 동결이 **TU v1.1.0(10-27)까지 연장**됐다 — 코어 게임플레이 밸런스·튜닝 변경 0. 대신 EA가 **「이번 주 안」에 Gameplay Developer Notes를 내고 그 조정은 다음 TU에 반영**하겠다고 예고했다(출시 후 첫 밸런스 변경의 예고 · #47·#62의 연장).",
+   "confidence": "A (EA 1차 · 2026-10-27 직접 열람)",
+   "evidence": "TU v1.1.0 「There are no gameplay balance and tuning changes in this update」(이번 업데이트에 게임플레이 밸런스·튜닝 변경은 없다) · v1.1 Pitch Notes 「Later this week we will release another set of Gameplay Developer Notes … along with some discussion about potential adjustments that will follow in our next Title Update」(이번 주 후반에 게임플레이 개발자 노트를 내고, 다음 타이틀 업데이트에 이어질 조정 가능성을 논의하겠다) · 게임플레이 항목은 튜토리얼 정지·PC 키보드 GK 마우스·2v2/1v1/3v3 버그만. ⚠️ ko-kr·ja-jp·de-de 로케일도 영어 본문만 제공 — 다국어 교차검증 불가(불변규칙 10 예외 사유 · #57과 같음).",
+   "impact": "AVL 팀 전술·처방(match_game_setups·prescriptions) **변경 불필요** — 역할·라인·팀 프레스·PlayStyle 수치가 하나도 안 바뀌었다. ⭐ 다음 패치 감시는 **Gameplay Developer Notes(10-27 주)** 를 최우선으로 본다 — 풀백 조기 하강(#57)·저수비 인터셉트(#46)·킥오프 골이 조정 후보로 거론될 가능성이 높고, 그때 #30 유보 결론과 리드 국면 Deep 프리셋을 재검토한다.",
+   "recorded": "2026-10-27",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-1-0 (2026-10-27) · https://www.ea.com/games/ea-sports-fc/fc-27/news/update-v1-1-pitch-notes (2026-10-26)"
+  },
+  {
+   "area": "tactics",
+   "change": "FUT·커리어의 **새 전술 저장 버그 수정** — 새로 만든 전술이 잘못 저장되고 **일부 선수가 엉뚱한 포지션으로 옮겨지는** 문제(FUT)와, 팀 관리에서 새 전술 저장 후 선수가 잘못된 포지션에 놓이는 문제(커리어)를 고쳤다. 팀 관리 화면에 Player Role이 **최대 5개까지만 표시**되던 문제도 함께 수정.",
+   "confidence": "A (EA 1차 · 2026-10-27 직접 열람)",
+   "evidence": "TU v1.1.0 Ultimate Team 「In some cases, new tactics could be saved incorrectly and some players could be moved into the wrong positions」(일부 경우 새 전술이 잘못 저장되고 일부 선수가 잘못된 포지션으로 옮겨질 수 있었다) · Career 「players could be placed in the wrong positions in the formation after creating and saving a new tactic from the Team Management screen」(팀 관리 화면에서 새 전술을 만들어 저장하면 선수가 포메이션의 잘못된 위치에 놓일 수 있었다) · General 「Only up to 5 Player Roles could be displayed in the Team Management screen」(팀 관리 화면에 Player Role이 5개까지만 표시됐다). ⚠️ ko-kr·ja-jp·de-de 로케일도 영어 본문만 제공 — 다국어 교차검증 불가(불변규칙 10 예외 사유 · #57과 같음).",
+   "impact": "⚠️ 10-27 패치 **이전에 새로 저장한** 커스텀 전술(fut_tactics 2026-10-27T10:13 행 · QxpaxCTYN%8R · 4-1-2-1-2 (2) · EA last_updated 01:11Z)은 인게임 배치가 의도와 다를 수 있었다 — 21:13 싱크의 새 코드(NxmX27PVKL5% · 12:11Z 저장)로 이미 다시 저장됐으므로 지금 활성 전술은 패치 후 저장분이다. 사용자에게 인게임 스쿼드 화면에서 선수 위치를 한 번 확인하도록 안내. 전술 처방 값(역할·포커스·라인) 자체는 영향 없음.",
+   "recorded": "2026-10-27",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-1-0 (2026-10-27)"
+  },
+  {
+   "area": "evolution",
+   "change": "진화·SBC 화면 표시 버그 수정 — ⑴ 패스웨이 진화 **미리보기에서 엉뚱한 스탯이 녹색(상승)으로 강조**되던 문제 ⑵ GK 진화 미리보기에서 상승 스탯이 강조되지 않던 문제 ⑶ 간소화 SBC에 낸 **SBC 스토리지 선수가 다른 SBC에 잠시 계속 보이던** 문제. 스탯 자체·진화 보상·SBC 규칙 변경은 0.",
+   "confidence": "A (EA 1차 · 2026-10-27 직접 열람)",
+   "evidence": "TU v1.1.0 Ultimate Team 「In certain cases when previewing Pathway Evolutions, the incorrect stats could appear highlighted in green」(일부 경우 패스웨이 진화 미리보기에서 잘못된 스탯이 녹색으로 강조될 수 있었다) · 「When applying an Evolution to a Goalkeeper, the upgraded stats in the preview would not be highlighted in green」(GK에 진화를 적용할 때 미리보기에서 상승 스탯이 녹색으로 강조되지 않았다) · 「SBC Storage Player Items that were submitted into Simplified SBCs could still temporarily appear for when completing other SBCs」(간소화 SBC에 제출한 SBC 스토리지 선수 아이템이 다른 SBC를 완료할 때 잠시 계속 나타날 수 있었다). ⚠️ ko-kr·ja-jp·de-de 로케일도 영어 본문만 제공 — 다국어 교차검증 불가(불변규칙 10 예외 사유 · #57과 같음).",
+   "impact": "우리 진화 비교·원장은 인게임 미리보기가 아니라 카탈로그 상한 적용(core/futgg_attrs.apply_upgrades)과 EA 싱크 실측을 쓰므로 **수치 영향 없음**. 10-27 이전 인게임 미리보기 스크린샷을 근거로 받은 「오른 스탯」 보고는 잘못 강조됐을 수 있다(사용자 보고와 싱크값이 갈리면 싱크 우선). SBC 스토리지는 원장이 제출 시 status='used'로 내리므로 영향 없음.",
+   "recorded": "2026-10-27",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-1-0 (2026-10-27)"
+  },
+  {
+   "area": "meta",
+   "change": "Ultimate Scream(10-23~ 2주) 한정 규칙 — **2026-11-24부터 1주일간 모든 Ultimate Scream 선수 아이템이 일시 변신**: 페이스 스탯 하나가 **99**가 되고, **자리만 맞으면 케미 풀(3)** 을 받는다(아이콘·히어로식 무조건 케미). 토큰 스토어 진화 2종(수비 스탯 강화 · 측면 선수 PlayStyle+) 공개.",
+   "confidence": "A (EA 1차 · 2026-10-27 직접 열람)",
+   "evidence": "「all Ultimate Scream Player Items will undergo a temporary transformation for one full week, starting November 24, 2026. This limited-time upgrade will boost a single face stat to 99 and reward the player with full in-position Chemistry」(모든 Ultimate Scream 선수 아이템이 2026-11-24부터 한 주 동안 일시 변신한다 — 페이스 스탯 하나를 99로 올리고 자리에 맞으면 풀 케미를 준다) · 「The first upgrades a player’s defensive stats, while the second offers a PlayStyle+ to a wide player」(첫째는 수비 스탯을 올리고 둘째는 측면 선수에게 PlayStyle+를 준다). ⚠️ ko-kr·ja-jp·de-de 로케일도 영어 본문만 제공 — 다국어 교차검증 불가(불변규칙 10 예외 사유 · #57과 같음).",
+   "impact": "⚠️ 보유 US 카드 4장(Woltemade·Chong·Lukeba·Vobian) — 11-24~12-01 동안 우리 케미 계산(core/chem.per_player)은 이 카드를 일반 카드로 세어 **케미를 낮게** 잡는다(아이콘·히어로만 무조건 3). 그 주 SBC 해법·스쿼드 케미가 실제보다 보수적으로 나온다 → 11-24 전에 기간 한정 규칙 반영 필요(후속 과제). 99 페이스 스탯은 어느 스탯인지 미공개.",
+   "recorded": "2026-10-27",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-ultimate-scream (2026-10-23)"
   }
  ],
  "tactic_params": [
