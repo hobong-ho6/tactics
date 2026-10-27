@@ -1214,6 +1214,27 @@ def main():
         pc = {id(p): c for p, c in zip(fit_ps, per_player(fit_ps))}
         return [dict(slim(p), slot=nm, x=x, y=y, fit=fit, want=want, chem=pc.get(id(p), 0))
                 for nm, x, y, p, fit, want in pl if p]
+    def after_of(pl, buys):
+        """⭐ 살 카드를 넣은 **뒤의 스쿼드**(2026-10-27 사용자 지시 「표도 살 카드 기준으로 바꿔줘」) — 화면 「선수 구성」 표가 읽는다.
+           살 카드는 그 칸 포지션으로 산 것이라 자리가 맞는다(fit) · 케미는 바뀐 스쿼드로 다시 잰다."""
+        if not buys:
+            return None
+        by = {b["slot"]: b for b in buys}
+        rows_ = []
+        for nm, x, y, p, fit, want in pl:
+            if not p:
+                continue
+            b = by.get(nm)
+            if b:
+                p = {"id": -(b["card"] or {}).get("ea", 0) or p["id"], "name": (b["card"] or {}).get("name") or "(살 카드)",
+                     "ovr": b["ovr"], "club": b["club"], "league": b["league"], "nation": b["nation"],
+                     "is_untradeable": 0, "card_image_url": None, "positions": "/".join(b["pos"]), "best_pos": None}
+                fit = True
+            rows_.append((nm, x, y, p, fit, want, bool(b)))
+        fit_ps = [p for _n, _x, _y, p, fit, _w, _b in rows_ if fit]
+        pc = {id(p): c for p, c in zip(fit_ps, per_player(fit_ps))}
+        return [dict(slim(p), slot=nm, x=x, y=y, fit=fit, want=want, chem=pc.get(id(p), 0), **({"buy": True} if bought else {}))
+                for nm, x, y, p, fit, want, bought in rows_]
     bad_save = []
     for r, xi, size, cands, _cd, _b in ok:
         known = FORM_OF.get(r["challenge_ea_id"])
@@ -1252,11 +1273,14 @@ def main():
         sj = None
         if part:
             ch, form, pl = best_placement(part, known)
+            buys = buy_specs(part, pl, conds, pool)
             sj = json.dumps({"formation": form_base(form), "blocked": form_blocked(form), "formation_known": bool(known), "partial": True,
                              "players": squad_of(pl),
+                             "after": (aft := after_of(pl, buys)),
+                             "after_rating": team_rating([p["ovr"] for p in aft]) if aft else None,
                              "checks": breakdown(part, conds, ch),
                              "buy": [dict(b, market=market_for(b, pool, qual_floor=QUAL_FLOOR.get(_qual_tier(conds))))
-                                     for b in buy_specs(part, pl, conds, pool)],
+                                     for b in buys],
                              "hints": [{"text": t, "how": h} for t, h in
                                        group_hints({c["text"] for c in breakdown(part, conds, ch) if not c["ok"]},
                                                    conds)]}, ensure_ascii=False)

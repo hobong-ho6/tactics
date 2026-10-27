@@ -3945,14 +3945,21 @@ function renderSbc(){
                 </div><div class="sbc-r2">${altHTML(xi)}
                 ${misfitHTML(xi)}
                 ${exclHTML(c.challenge_ea_id)}
-                ${!sq.length ? '' : `<details open style="margin-top:4px" id="sbct${c.challenge_ea_id}"><summary class="dim" style="cursor:pointer">선수 구성 — 리그 · 클럽 · 국가 · OVR · 케미</summary>
-                  ${compHTML(sq, c)}
+                ${!sq.length ? '' : (() => {
+                  /* ⭐ 미완성이면 표는 **살 카드를 넣은 뒤**의 스쿼드(2026-10-27 사용자 지시 「표도 살 카드 기준으로 바꿔줘」 ·
+                     solver `after` — 케미·팀 레이팅도 바뀐 스쿼드로 잰 값). 해법이면 그대로 sq. */
+                  const aft = part && Array.isArray(xi.after) ? xi.after : null, tb = aft || sq;
+                  const cc = aft ? { team_rating: xi.after_rating, chem_total: aft.reduce((s, p) => s + (p.chem || 0), 0) } : c;
+                  return `<details open style="margin-top:4px" id="sbct${c.challenge_ea_id}"><summary class="dim" style="cursor:pointer">선수 구성 — 리그 · 클럽 · 국가 · OVR · 케미${
+                    aft ? ' <b>(🛒 살 카드를 넣은 뒤)</b>' : ''}</summary>
+                  ${compHTML(tb, cc)}
                   <table class="tbl" style="margin-top:4px"><thead><tr><th>자리</th><th>OVR</th><th>선수</th><th>클럽</th><th>리그</th><th>국적</th><th>케미</th></tr></thead><tbody>
-                  ${sq.map(p => `<tr${p.fit === false ? ' style="opacity:.6"' : ''}><td><b>${esc(p.slot || '')}</b></td><td>${p.ovr}</td>
-                    <td>${esc(p.name)}${p.untradeable ? ' <span class="chip dim">거래불가</span>' : ''}</td>
+                  ${tb.map(p => `<tr${p.fit === false ? ' style="opacity:.6"' : ''}><td><b>${esc(p.slot || '')}</b></td><td>${p.ovr}</td>
+                    <td>${p.buy ? '🛒 ' : ''}${esc(p.name)}${p.buy ? ' <span class="chip">살 카드</span>' : p.untradeable ? ' <span class="chip dim">거래불가</span>' : ''}</td>
                     <td class="dim">${esc(p.club || '—')}</td><td class="dim">${esc(p.league || '—')}</td>
                     <td class="dim">${esc(p.nation || '—')}</td>
-                    <td>${p.chem == null ? '<span class="dim">—</span>' : `<b>${p.chem}</b>/3${p.fit === false ? ' <small class="dn">자리</small>' : ''}`}</td></tr>`).join('')}</tbody></table></details>`}</div></div></div>`;
+                    <td>${p.chem == null ? '<span class="dim">—</span>' : `<b>${p.chem}</b>/3${p.fit === false ? ' <small class="dn">자리</small>' : ''}`}</td></tr>`).join('')}</tbody></table></details>`;
+                })()}</div></div></div>`;
             })()}
             ${c.solve_conf ? `<div class="dim" style="font-size:11px;margin-top:5px">${esc(c.solve_conf)}</div>` : ''}
           </div></details>`;
