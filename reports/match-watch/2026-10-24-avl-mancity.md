@@ -483,3 +483,128 @@
 - `refresh_duty_applied.py`: 신규 CONFLICT **0** · 억제 4건(기존).
 - `claim_issues.py --due`: 열린 쟁점 72 · 판정할 차례 **12 — 전부 보류 팀(ATM·CHE·LIV)** · **AVL 0**. 이번 회차 주장은 모두 트리거 전 쟁점에 묶었다(#14 알리송은 트리거 10-27 이후 선발 3경기).
 - `match_reports.status`는 **draft 유지** — D+3(10-27 20:00 · 본머스 컵전 명단 전날)에 complete 판정.
+
+## D+3 추적 (2026-10-27)
+
+> 예약 `mw-avl-mancity-d3` · 이 PC · **3일 추적 종결 회차**. 실측 재수집 없음. 기사 다국어 스윕은 서브에이전트(WebSearch/WebFetch · 읽기 전용), 영상은 메인이 직접(yt-dlp 목록 → 봇 차단 → 브라우저 pot 경로 · **뮤트·즉시 정지·탭 닫기**). 관전 메모(`notes/2026-10-24-avl-mancity*`) **없음** — 닫을 사용자 가설 행 없음, 이월 대조표 C1~C6을 최종 판정으로 닫는다.
+
+### ⑴ 당일 판정 정정
+- **0건.** 3일 동안 당일 골격(4백 + 왼쪽 쏠림 · 4-4-1-1 중·저블록 · 고메스 LDM · 결과-내용 괴리)을 뒤집은 자료는 없다.
+- 반대 방향 서사는 기록만 했다. 맨시티 관점 3건은 실점 둘을 실책으로 돌린다. Esteemed Kompany(Yahoo 재게재 10-26)는 「it wasn't a tactical master-class from Unai Emery.」(에메리의 전술 걸작은 아니었다)라고 썼다. 이는 당일 obs#1134 「구조 성공 근거로 쓰지 않는다」와 맞는다. → obs#1147 ⑷
+
+### ⑵ 감독 발언 새것
+- **에메리(1차 · GOAL Khaled Mahmoud 전재 · 10-25 무렵)**: 「How we responded with some players fresh who didn't play on Wednesday... for example Boubacar Kamara and Matty Cash.」(수요일에 뛰지 않은 신선한 선수들이 어떻게 반응했는지… 예를 들어 카마라와 캐시) · 「We planned this match trying to keep the same consistency and demands.」(같은 일관성과 요구 수준을 유지하려고 이 경기를 계획했다).
+  - 바이킹전에 카마라·캐시가 빠진 것은 **계획된 휴식**이었다(obs#1136 「명단 휴식」과 일치). → `manager_profiles.rotation` 덧붙임.
+  - 잭슨 평가: 「How he was working, defending, getting duels - wow.」(일하고 수비하고 경합을 따내는 모습은 — 와우).
+- **마레스카(MOTD · Read Man City 10-25 경유 · BBC 원천)**: 「We struggled the first 10-15 minutes because we expected them one way but they were different」(예상한 방식과 달라 첫 10~15분 고전했다) · 「We adjusted then controlled the game.」(조정한 뒤 통제했다). 0–6′ def_x 55.6 · PPDA 6.5 고압 출발과 같은 방향이다.
+- **회견 전문**: avfc.co.uk는 본문이 잘리고 mancity.com 회견 영상은 403 → **최종 미확보**. 3회차 동안 쓸 수 있었던 경로는 Tanswell X(D+1) · 요약 기사 · 1874 전언(D+2) · GOAL 전재(D+3)뿐이다.
+- **10-27 본머스 컵전 프리뷰 회견**: 이 회차 시점에 **미발견**(영어 3 · 스페인어 1 검색어 · avfc 목록 본문 잘림). 거기서 나올 발언은 본머스전 리포트 몫이다.
+- 에메리 스페인어 원어 **0**(3회차 누적). 개별 평가(알리송·고메스·맥긴·만잠비)도 **0**(4회차 누적).
+- 비전술(기록만): 에메리 DAZN(10-26 발롱도르 행사 전 · Sports Mole 10-27 경유) 「Aston Villa is where I am feeling so, so comfortable and improving in my career as a coach.」(빌라는 내가 아주 편안하고 감독 경력에서 성장하는 곳이다). 맨유 관심설에 대한 응답이다.
+
+### ⑶ Jacob Tanswell
+- 10-25~10-27 새 Athletic 기사·X 게시물 **0**(서브에이전트 검색 · 직접 열람 못 함). 확보분은 D+2의 1874 먼데이 리뷰(#392)가 마지막이다.
+- Athletic 「Unai Emery, the Premier League's best coach」 본문은 **최종 미열람**(유료 · 전재 0). 요지는 #392에서 본인이 말했다(D+2 ⑶).
+
+### ⑷ 지연 전술 분석·블로그
+| 자료 | 서술 | 실측 대조 | 판정 |
+|---|---|---|---|
+| Dom Phillips 서브스택(10-25 · 직접 열람) | 「John McGinn kept drawing Dias out into the middle, out of position.」(맥긴이 디아스를 계속 중앙으로 끌어내 자리를 비우게 했다) | 디아스의 맥긴 상대 파울 2(38′·41′) · 토레스→맥긴 세로 4(D+2 ⑷) | **일치** — LNobbins(#394)와 같은 장면군 |
+| 같은 글 | 비보유 「4-4-2 + 측면 MF 안쪽」(열람 도구 요약 · 원문 문구 불확실) | 맥긴 수비 액션 (34, 38) · 카마라 (33, 34) 바로 옆 | 당일 4-4-1-1 **유지** — 쟁점 #15 누적(4-4-2 서술 3곳째) |
+| 같은 글 | 「It took 60 seconds for Mbaye, playing on the right for the first time, to make a devastating run behind City.」(처음 오른쪽에 선 음바예가 60초 만에 뒷공간 침투) | 59′ 투입 → 60′ 결승골 도움 · 음바예는 바이킹전에 **왼쪽**(볼 소유 36/37 좌측 · r62) | 장면 **일치** · 「처음 오른쪽」은 직전 경기와 맞음(시즌 전체는 미대조) — 쟁점 #48(음바예 우측 기능) 표본 |
+| The Villans(#400 · 10-26) | 선제 뒤 「step back … how to defend the box」(물러서서 박스를 지켰다) | def_x 6–30′ 31.8~32.2 · 60–66′ 20.4 | **일치** |
+| The Villans(#400) | 맨시티가 게히를 오른쪽으로 옮겼고 잭슨이 그쪽을 몰아 첫 실책을 끌어냈다 | 게히 ȳ 28 · 실책 순간 직접 압박 없음(obs#1140) | 배치 **일치** · 「압박으로 끌어냈다」는 **기각** |
+| City Xtra(10-25) · Read Man City(10-25) | 실점은 게히 첫 터치 · 돈나룸마 위치 | SS errorLeadToGoal 2 | 일치(새 사실 없음) |
+- **전술 블로그 최종 0건**: TFA · BTL · Spielverlagerung · Between the Posts · Coaches' Voice · Tifo · StatsBomb · 이탈리아어 assoanalisti. 독일어 기사(Sportschau · Sport1 · Sky DE · laola1 · SRF)는 경기 보도뿐이다. SRF 「spielte Johan Manzambi bis zur 66. Minute」(만잠비는 66분까지 뛰었다)는 C2와 일치한다.
+
+### ⑸ 영상 (필수 채널 4곳 · 전부 뮤트 pot 경로)
+- **The Villans — 새 2편.** 전부 전사·요약했다.
+  - **#400** 「Beating Manchester City, Ian Maatsen Improvement & Clinical Nicolas Jackson」(kyOeYKF1Q8c · 10-26 · 28:14): 팬 패널 리뷰다.
+    - 구현 주장 3행 · 전부 HELD
+      - 마첸 「left 10」 안쪽 진입 → 쟁점 #47. 이 경기 실측은 반대로 폭 유지 (45, 88)였다.
+      - 선제 뒤 박스 수비 → 쟁점 #59
+      - 고메스 「hybrid right back」 → 쟁점 #20. 근거는 바이킹전 1회뿐이다.
+    - 오인식: 「Palhinha」=토레스 · 「Guinea」=잭슨으로 추정
+  - **#399** 「How Much Will Unai Emery Rotate Against Bournemouth In The Carabao Cup?」(5xoiziTaf8o · 10-27 · 18:15): 본머스 프리뷰다. 귀속은 r63(인덱서 판단 · 맨시티전 언급이 일부 있음)이다. `axis:none`
+    - 가르나초에 대한 내용은 패널 의견뿐이다 — 「Hemmings is above him」(헤밍스가 앞선다).
+- **UTV — 새 1편**: 「MARCUS ALLBÄCK ON VICTOR LINDELÖF …」(e1Catd-Ea1s · 10-26 · 35:24) — 전 빌라 선수 인터뷰다. 이 경기 분석이 아니라서 **건너뛰었다**. 주간 채널 스윕(`match-watch-weekly`)이 맡는다.
+- **1874 — 새것 0**(최신은 D+2에 전사한 V4eYrxC3rws).
+- **Jacob Horsfall — 새것 0**(최신 sh16rkzsmuw는 빌라 아님 · vqV-BmjVt2c는 #349로 이미 요약).
+- 이 경기 귀속 영상은 3일 누적 **r63 20편**(#380~#400 · #391 Bardell talkSPORT는 비귀속)이다. G17 새 전사 요약 누락은 **0**이다.
+
+### ⑹ 다국어 결과 (최종)
+- **스페인어**: 에메리 원어 **0**(3회차 누적).
+  - 가르나초: Olé · TyC · Clarín **0**. Examedia(10-27 · Despierta Feliciano 전재) 「perdió terreno en la consideración de Unai Emery y quedó afuera de las convocatorias en dos partidos」(에메리의 신임을 잃고 두 경기 명단에서 빠졌다)는 **사유를 적지 않았다** → C4 근거로 쓰지 않는다.
+- **포르투갈어**: 알리송 · 고메스 새 기사 **0**. Somos Fanáticos 「Uma vitória muito especial」(아주 특별한 승리)는 D+2와 같은 출처다. hoop78 「saiu aos 14 do segundo tempo」(후반 14분에 나갔다) = 59′(SS)이다. FotMob 55′ 표기와 어긋나지만 SS를 채택한다.
+- **스코틀랜드(맥긴)**: Scotsman · Herald · Daily Record · Scottish Sun **0**(3회차 누적). 이 경기에 대한 스코틀랜드 매체 서사는 없는 것으로 확정한다.
+- **독일어**: 보도 6건, 분석 0. **이탈리아어**: calciomercato(번역 복제) · sbircialanotizia(경기 요약)뿐. **프랑스어**: 0(D+2).
+- **일본어**: D+2에 TOTAL FOOTBALL(#393)을 전사했다. D+3에는 새 분석이 없다(서브에이전트 범위 밖 · YouTube 필수 채널 목록에서도 없음).
+
+### ⑺ 중점 4인 — 마무리
+| 선수 | 3일 누적 결론 | T2 임계(런북 4-1) |
+|---|---|---|
+| **알리송** | RM 59′ · 수비 액션 14 · 스프린트 거리 팀 1위. 서술은 「수비 임무를 소홀히 하지 않음」(E&S · National · Tanswell 「오프 더 볼 학습 중」)과 「높고 넓게 · 직선 드리블」(1874 · Independent) 양쪽에서 나왔다. 커널 RM 1위 wm_insidefwd/Attack .455는 **Δ.002 무결정**이다. 에메리 개별 언급은 **0**(4회차). 포르투갈어 **0**. | **해당 없음** — 표본 12경기 · 344분(판정 개시선은 이미 넘었다) · 평가 `updated` 10-27(c5e8dbf 증분 갱신이 이 경기까지 반영 · B-→B). argmax 변화·fit Δ>.05 없음. 쟁점 #14(10-27 이후 선발 3경기)로 넘긴다. |
+| **주앙 고메스** | **LDM 확정**(C1). RB는 바이킹전 부상 강제 1회성이다. 본인 GE 인용 「볼란치지만 풀백도 가능」 · 팬 패널 「hybrid right back」은 모두 바이킹전 근거라 C1과 모순이 없다. 패스 27/28 · 왼쪽 58% · 마첸→고메스 10. | **해당 없음** — 표본 9경기 · 626분 · `updated` 10-27. 역할 argmax는 LDM 그대로다. 쟁점 #18 · #20(고메스 선발 3경기)으로 넘긴다. |
+| **맥긴** | CAM 66′. 연결 허브가 아니라 **압박 · 탈취 · 공급**(선제골 도움 · 기회 창출 4)이었다. 「전반 라인 사이 수신으로 디아스 유인」은 영상 · 블로그 2곳(LNobbins · Dom Phillips)에 WS 4회 · 파울 유도 2가 맞물린다. 비보유에서는 카마라 옆으로 하강했다(4-4-1-1). 스코틀랜드 매체 **0**. | **해당 없음** — 13경기 · 1044분 · `updated` 10-27 · 등급 S 유지. CAM 기용은 이 경기 단일이다. 쟁점 #8(RM)은 그대로 둔다. |
+| **가르나초** | **명단 밖**(PL 2경기 연속). 사유는 에메리 「players … now ready, available」(출전 가능한 선수들이 준비됐다 · 부상 언급 0)로 확정이다. 구매 의무 조항 루머는 LOW 유지다. 본머스 컵전 명단은 내일(10-28)이라 이 회차에는 확인할 수 없다. | **해당 없음** — 5경기 · **60분**(90분 미만 → 판정 개시 전). 본머스 · 풀럼전 출전이 쌓이면 T2 ⑴(3경기 · 90분)이 처음 닿을 후보다. **다음 서열 확인 = 본머스전 리포트.** |
+
+### ⑻ 이월 대조표 — 최종 판정
+| # | 당일 | D+1 | D+2 | **D+3 최종** |
+|---|---|---|---|---|
+| C1 고메스 RB 재기용 | 불일치(LDM) | — | 유지 | **불일치 확정** — RB는 부상 강제 1회성 |
+| C2 만잠비 복귀 | 일치(왼쪽 안쪽) | — | 유지 | **일치 확정**(SRF 66′ 재확인) |
+| C3 마첸 복귀 · 기능 | 일치(높은 LB) | — | 유지 | **일치 확정** — 팬 패널 「left 10」 서술은 이 경기 실측과 반대라 #47에 HELD |
+| C4 가르나초 서열 | 판정 불가 | 사유 정정(기용 판단) | 유지 | **판정 불가로 종결**(`match_hypotheses` D3 새 행 · supersedes #172) — 명단 밖이라 이 경기에서는 서열이 정의되지 않는다. 본머스 · 풀럼 리포트로 넘긴다 |
+| C5 3백 + 오른쪽 과부하 유지 | 불일치(4백 + 왼쪽) | — | 유지 · 근거 강화 | **불일치 확정** — GK 배급(왼쪽 14/19)까지 일관 |
+| C6 맥긴 · 고메스 중원 축 | 불일치(이 경기 한정) | — | 유지 | **불일치(이 경기 한정) 확정** — 맥긴 전진 수신은 토레스 세로 패스 축이었다 |
+
+### ⑼ 0건 검색어 (이번 회차 새로 시도)
+- **영어**
+  - `Emery press conference Bournemouth Carabao Cup Garnacho`
+  - `Unai Emery pre-match press conference Bournemouth Carabao Cup fourth round team news`
+  - `Emery Bournemouth Carabao Cup said Tuesday Villa boss rotation Vitality Stadium Wednesday`
+  - `avfc.co.uk news 2026 october 27 Emery Bournemouth preview`
+  - `Jacob Tanswell Aston Villa Manchester City Athletic`
+  - `The Athletic Emery Manchester United Aston Villa contract Tanswell Ornstein October 26 2026`
+  - `spielverlagerung OR Breaking the Lines OR Between the Posts Aston Villa Manchester City 2026 Emery mid-block`
+  - `Man City newsletter Villa defeat Maresca analysis Guehi Dias Doku Cash 2-1`
+  - `John McGinn Man City assist Jackson Villa win Daily Record Scottish Sun October 2026`
+  - `McGinn Manchester City Villa Park Scotland captain Clarke Herald Scotsman`
+- **스페인어**
+  - `Emery rueda de prensa Bournemouth Copa de la Liga Aston Villa`
+  - `Garnacho fuera de la lista Aston Villa Emery Olé TyC Sports octubre`
+  - `Garnacho no fue convocado Aston Villa Manchester City Emery progresando Clarín Olé`
+  - `Emery Manchester City Jackson día fantástico EFE Aston Villa declaraciones`
+- **포르투갈어**
+  - `Alysson Aston Villa Manchester City ge globo atuação Emery`
+  - `Alysson Aston Villa vitória sobre o City brasileiro titular`
+  - `João Gomes Aston Villa vence Manchester City volante brasileiro`
+  - `João Gomes Aston Villa City vitória muito especial ge`
+- **독일어**
+  - `Aston Villa Manchester City Emery Taktik Analyse Maresca`
+  - `Manchester City erste Niederlage Aston Villa Jackson Doppelpack Maresca Emery kicker`
+- **이탈리아어**
+  - `Aston Villa Manchester City analisi tattica Emery Maresca prima sconfitta`
+  - `assoanalisti Aston Villa Manchester City Emery Maresca`
+
+### ⑽ DB 반영 (행 추가만)
+- **observations #1147**: D+3 지연 자료 종합 — 맥긴의 디아스 유인 · 계획 휴식(1차) · 마레스카 「expected them one way」 · 맨시티 관점 반대 서사 · C4 최종 · 에메리 거취.
+- **match_videos #399 · #400**: 신규 2편(r63 귀속). 요약을 쓰고 `video_impl_claims` **4행**을 넣었다(HELD 3 · none 1 · auto-caption).
+- **match_hypotheses**: C4 **D3 새 행**(undecided · supersedes #172).
+- **match_reports #63**: `key_points` 가르나초 줄을 갱신했다(「사유 공식 0」 → 에메리 발언).
+- **manager_profiles(AVL · 덧붙임 · updated 10-27)**:
+  - **buildup**: 강팀전 = 4백 + GK 왼쪽 롱볼 + 9번 배후. 에메리의 조건부 진술 포함.
+  - **rotation**: UCL–PL 사이 계획 휴식에 대한 에메리 1차 발언.
+  - 그 밖의 axis는 **갱신 불필요**:
+    - situational: 10-25에 이 경기를 덧붙였다.
+    - pressing · formation · rest_defense · set_pieces · role_demands · implementation: 강팀전 1경기 · 결과-내용 괴리(obs#1134)라 정본 서술을 바꿀 근거가 아니다. 4-4-2/4-4-1-1은 쟁점 #15가 맡는다.
+- **변경 없음**: 시즌 정본 · 경기 프리셋 · 선발 처방(게임 구현 판정 「추가 관찰」 유지).
+
+### ⑾ status 판단
+- **`match_reports.status` = complete.**
+  - 필수 섹션 1~8(§1~§9)이 있다.
+  - 수집 선수 16명 전원의 `match_player_reports`가 있다.
+  - 경기 전용 `match_game_setups` 1행과 `match_player_prescriptions` 16행(선발 11 포함 · 커널 단일 경기 fit 기반)이 있다.
+  - 3일 추적(D+1 · D+2 · D+3)을 모두 채웠다.
+  - G12 · G37은 통과했다(ship 전 `gates.py`).
+- 자료가 얕은 축(회견 전문 · 에메리 스페인어 원어 · 스코틀랜드 · 브라질 매체)은 **미확보로 확정**하고 위에 시도 검색어를 남겼다. 실측 · 프리셋 · 처방 층이 다 차 있으므로 draft로 남길 사유는 아니라고 판단했다.

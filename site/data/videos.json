@@ -1,6 +1,48 @@
 {
  "all": [
   {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-27] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 399,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "본머스 컵전 예상 XI: 비조·캐시(RB)·하우드-벨리스·밍스·마첸(짧게) · 고레츠카·바클리 · 헤밍스/가르나초 · 마조 등 — 패널 예상",
+    "가르나초: 「Hemmings is above him」(헤밍스가 앞선다) — 팬 의견 · C4 명단 제외 사유의 1차 근거 아님",
+    "맨시티전 언급은 캐시·마첸의 도쿠·아마두 대응 정신력 정도 — 새 사실 없음",
+    "보가르드를 「Gomez role at right back」(고메스식 RB)으로 시험하자는 제안 — 의견"
+   ],
+   "kind": "선수스카우팅",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-27",
+   "published_approx": 0,
+   "report_id": 63,
+   "summary": "The Villans 패널의 카라바오컵 본머스전(10-28) 로테이션 예상이다(2026-10-27 · 18분). 맨시티전 자체 분석은 거의 없고, 주중 바르셀로나(UCL)·주말 풀럼을 앞두고 캐시·카마라·고메스·잭슨을 쉬게 하고 비조·하우드-벨리스·밍스·고레츠카·바클리·헤밍스·마조 등을 쓸 것이라 예상한다. 가르나초에 대해선 「Garnacho's performance against Viking earns him the spot, but … where he's at in terms of learning the Unai style, Hemmings is above him」(바이킹전 활약이면 자리를 받을 만하지만 에메리 스타일 습득 단계로는 헤밍스가 앞선다)는 패널 의견뿐이다 — 명단 제외 사유의 1차 근거가 아니다. 마첸은 부상 복귀 직후라 짧게 뛸 것이라 봤다. 핵심(구현 주장) 없음.",
+   "team_code": "AVL",
+   "title": "How Much Will Unai Emery Rotate Against Bournemouth In The Carabao Cup?",
+   "transcript_path": "reports/transcripts/5xoiziTaf8o.en.md",
+   "url": "https://www.youtube.com/watch?v=5xoiziTaf8o",
+   "video_id": "5xoiziTaf8o"
+  },
+  {
    "channel": "1874 : The Aston Villa Channel",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 392,
@@ -193,7 +235,7 @@
   },
   {
    "channel": "93:20 Cityzens",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-26] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 395,
    "impl_claims": [
     {
@@ -245,7 +287,7 @@
   },
   {
    "channel": "LNobbins",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-26] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 394,
    "impl_claims": [
     {
@@ -325,8 +367,116 @@
    "video_id": "IkO2-skXk_8"
   },
   {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-27] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 400,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "lb_inside_left10",
+     "field_kr": "LB 안쪽 진입",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 47,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "좌측 측면 구조: 안쪽형 LM·폭은 LB(C2/C6)",
+      "trigger": "2026-10-21 이후 가르나초 LM,LAM,LW 선발 2경기 (0/2)"
+     },
+     "player": "마첸",
+     "points_kr": null,
+     "quote": "「whether to go inside and come in as that left 10」(안쪽으로 들어와 왼쪽 10번이 될지)",
+     "role_id": null,
+     "team_code": null,
+     "value": "inverts inside as a left 10 at times",
+     "value_kr": "상황에 따라 안쪽으로 들어와 왼쪽 10번 역할",
+     "verdict": "HELD",
+     "verdict_note": "이 경기 실측은 반대 방향 — 마첸 볼 소유 평균 (45, 88)로 폭 유지·상대 진영 볼 소유 11(팀 공동 1위)·안쪽 셀 진입 근거 없음. 시즌 서술(팬 의견)이라 쟁점 #47(좌측 구조: 폭은 LB) 트리거(가르나초 LM 선발 2경기)에서 열0 비중과 함께 재판정"
+    },
+    {
+     "axis": "instruction",
+     "field": "post_lead_shape",
+     "field_kr": "선제 뒤 수비 형태",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 59,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "수비 블록 높이·후반 붕괴",
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
+     },
+     "player": null,
+     "points_kr": null,
+     "quote": "「we then step back, don't we? And absolute masterclass from Unai Emery and how to defend the box」(그 뒤 우리는 물러섰다. 에메리의 박스 수비 마스터클래스였다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "step back and defend the box after early lead",
+     "value_kr": "물러나 박스를 지킨다",
+     "verdict": "HELD",
+     "verdict_note": "실측과 같은 방향 — def_x 6–30′ 31.8~32.2 · 2-1 리드 뒤 60–66′ 20.4 · 박스 터치 12 대 53. 강팀전 1경기라 쟁점 #59(블록 높이·후반 붕괴) 트리거 5경기에서 상대 수준별로 재판정"
+    },
+    {
+     "axis": "instruction",
+     "field": "rb_hybrid_option",
+     "field_kr": "RB 하이브리드 옵션",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 20,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+     },
+     "player": "주앙 고메스",
+     "points_kr": null,
+     "quote": "「Gomez we know now is an unbelievable hybrid right back」(고메스는 이제 놀라운 하이브리드 RB라는 걸 안다)",
+     "role_id": null,
+     "team_code": null,
+     "value": "hybrid right back option",
+     "value_kr": "필요 시 하이브리드 RB",
+     "verdict": "HELD",
+     "verdict_note": "근거는 바이킹전 1회(풀백 3명 부상 강제) — 맨시티전은 LDM(C1 불일치 · RB 존 수비 액션 0). 쟁점 #20(피벗 분업) 트리거 고메스 선발 3경기에서 RB 재기용이 나오면 재판정"
+    }
+   ],
+   "key_points": [
+    "6′ 선제 뒤 물러나 박스 수비 — 「absolute masterclass from Unai Emery and how to defend the box」(에메리의 박스 수비 마스터클래스) · 실측 def_x 31.8~32.2(6–30′)와 같은 방향",
+    "맨시티가 게히를 오른쪽으로 옮겼고 잭슨이 그쪽을 압박해 첫 실책을 끌어냈다는 서술 — D+2 WS 게히 ȳ 28과 일치 · 실책 순간 직접 압박은 없었다(obs#1140)",
+    "캐시–도쿠 1대1: 「a masterclass in how to defend against a world-class winger」(세계적 윙어 상대 수비의 교본) · 조기 경고 뒤에도 유지 · 막판 주장 완장",
+    "마첸: 수비 위치 선정 향상 · 「whether to go inside and come in as that left 10」(안쪽으로 들어와 왼쪽 10번이 될지) 판단 — 이 경기 실측은 폭 유지(볼 소유 (45, 88))라 시즌 서술로 둔다",
+    "카마라–고메스 짝 · 고메스 「hybrid right back」(하이브리드 RB)은 바이킹전 1회 근거 — C1 판정(맨시티전 LDM)과 모순 없음",
+    "인물명 오인식: 「Palhinha」=토레스(Pau) · 「Guinea」=잭슨 추정(auto-caption)"
+   ],
+   "kind": "선수스카우팅",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-26",
+   "published_approx": 0,
+   "report_id": 63,
+   "summary": "The Villans 팬 패널(4인)의 맨시티전 사후 리뷰다(2026-10-26 · 28분). 경기 첫 10분은 짧은 패스로 맨시티를 몰아붙였고, 6′ 선제 뒤에는 물러나 박스를 지키는 경기로 바뀌었다고 본다 — 「we then step back, don't we? And absolute masterclass from Unai Emery and how to defend the box」(그 뒤 우리는 물러섰다. 에메리의 박스 수비 마스터클래스였다). 개인 평가는 캐시의 도쿠 봉쇄(조기 경고 뒤에도 유지 · 후반 주장 완장), 토레스·린델뢰프 CB의 조용한 라인 관리, 카마라의 경기 읽기(후반 크로스 차단), 마첸의 성장(막판 홀란 헤더 골라인 클리어 · 「solid eight out of 10」(탄탄한 8점))이다. 맨시티가 게히를 오른쪽으로 옮겼고 잭슨이 그쪽을 몰아붙여 첫 실책을 끌어냈다는 서술은 D+2 WS 실측(게히 ȳ 28)과 같은 방향이다. 고메스는 바이킹전 「hybrid right back」(하이브리드 RB)을 근거로 다기능 자원으로 언급되고, 카마라–고메스 짝을 맨시티 엔소–앤더슨보다 낫다고 평했다(팬 의견).",
+   "team_code": "AVL",
+   "title": "Beating Manchester City, Ian Maatsen Improvement & Clinical Nicolas Jackson",
+   "transcript_path": "reports/transcripts/kyOeYKF1Q8c.en.md",
+   "url": "https://www.youtube.com/watch?v=kyOeYKF1Q8c",
+   "video_id": "kyOeYKF1Q8c"
+  },
+  {
    "channel": "FußballFokus",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-26] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 397,
    "impl_claims": [
     {
@@ -378,7 +528,7 @@
   },
   {
    "channel": "TOTAL FOOTBALL",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-26] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 393,
    "impl_claims": [
     {
@@ -430,7 +580,7 @@
   },
   {
    "channel": "TheFootballPlus",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-26] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 398,
    "impl_claims": [
     {
@@ -689,7 +839,7 @@
   },
   {
    "channel": "talkSPORT",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-26] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 396,
    "impl_claims": [
     {
@@ -25525,9 +25675,11 @@
    359
   ],
   "63": [
+   399,
    392,
    395,
    394,
+   400,
    397,
    393,
    398,
