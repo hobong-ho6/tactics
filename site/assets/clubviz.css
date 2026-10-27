@@ -348,6 +348,7 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .sbc-slot u{display:block;text-decoration:none;font-size:8.5px;color:var(--on-pitch-dim)}
 /* 포메이션 모양만 보는 중 — **선수를 그리지 않는다**(판정 안 거친 배치를 답처럼 보여주지 않기 위해). */
 .sbc-slot.empty .noart{border-style:dashed;opacity:.55;padding:14px 2px}
+.sbc-slot.empty.buy .noart{opacity:1;border:2px dashed var(--warn,#e0a020);padding:10px 2px} .sbc-slot.empty.buy .noart small{display:block;font-size:10px;color:#cfd8d3} /* 살 카드 자리(2026-10-27) */
 
 /* 카드에서 빼기 ✕ — 제외는 **이 SBC 한정**이고 되돌릴 수 있다.
    ⛔⛔ **hover로 숨기지 않는다**(2026-09-25 사용자 지적 「선수제거가 동작안함」). 두 가지가 겹쳐 있었다:

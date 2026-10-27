@@ -3480,7 +3480,14 @@ const shapeHTML = slots => slots.map(s => `
 /* ⭐ 카드마다 ✕ — **이 챌린지에서만** 뺀다(2026-09-25 사용자 지시 「선수를 스쿼드에서 제외하고
    재계산하는 기능을 넣어줘 제외한 선수는 해당 sbc에 포함 안 시키는 용이야」 · migration 071).
    ⛔ 카드를 팔거나 상태를 바꾸는 게 아니다 — 판정 입력일 뿐이라 언제든 되돌린다. */
-const pitchHTML = (sq, chId) => sq.map(p => `
+/* ⭐ 미완성 스쿼드에서 **살 카드 자리는 비운다**(2026-10-27 사용자 지시 「사야 하는 카드 자리는 비워줘 — 지금은 다른 카드가 들어가 있어」).
+   그 칸에 서 있던 내 카드는 어차피 빠질 사람이라, 그대로 그리면 「이 카드로 낸다」로 읽힌다 ⇒ 점선 빈 칸 + 🛒 살 카드 이름. */
+const buySlotHTML = (p, b) => `
+  <div class="sbc-slot empty buy" style="left:${p.x}%;bottom:${p.y}%"
+       title="살 카드 — ${esc(b.card?.name || '(미확인)')} ${b.ovr} · ${esc(b.club || '—')} · ${esc(b.league || '—')} · ${esc(b.nation || '—')} · ${esc(b.replaces)} 대신">
+    <i>${esc(p.slot || '')}</i>
+    <span class="noart">🛒 <b>${b.ovr}</b>${esc(b.card?.name || '살 카드')}<small>${esc(b.club || '')} · ${esc(b.nation || '')}</small></span></div>`;
+const pitchHTML = (sq, chId, buy = []) => sq.map(p => buy.find(b => b.slot === p.slot) ? buySlotHTML(p, buy.find(b => b.slot === p.slot)) : `
   <div class="sbc-slot${p.fit === false ? ' off' : ''}" style="left:${p.x}%;bottom:${p.y}%"
        title="${esc(p.name)} ${p.ovr} · ${esc(p.club || '—')} · ${esc(p.league || '—')} · ${esc(p.nation || '—')}${
          p.fit === false ? ' · ⚠️ 자리가 맞지 않아 케미 0' : ''}">
@@ -3723,7 +3730,7 @@ function renderSbc(){
       const slots = SBC_SLOTS[sel.value];
       if (!pit || !slots) return;
       const back = sel.value === sol.formation;      // 원래 해법의 포메이션으로 되돌린 경우
-      pit.innerHTML = back ? pitchHTML(sol.players || [], id) : shapeHTML(slots);
+      pit.innerHTML = back ? pitchHTML(sol.players || [], id, sol.partial ? sol.buy || [] : []) : shapeHTML(slots);
       for (const k of ['sbct', 'sbch']) document.getElementById(k + id)?.toggleAttribute('hidden', !back);
       const box = document.getElementById(`sbcm${id}`);
       if (box) box.innerHTML = back ? ''
@@ -3934,7 +3941,7 @@ function renderSbc(){
                       : `${esc(k.text)} (${k.gap} 모자람)`).join(' · ') || '조건 미충족'}${bad ? ` · 자리 안 맞음 ${bad}명` : ''}</span>
                     <small>내 카드로 <b>가장 가깝게</b> 채운 배치일 뿐 해법이 아니다 — 조건 목록의 💰·🎯 줄대로 카드를 사야 풀린다.</small></div>` : ''}
                 <div class="sbc-pitch${part && sq.length ? ' partial' : ''}" id="sbcp${c.challenge_ea_id}">${
-                  sq.length ? pitchHTML(sq, c.challenge_ea_id) : shapeHTML(SBC_SLOTS[form] || [])}</div>
+                  sq.length ? pitchHTML(sq, c.challenge_ea_id, part ? xi.buy || [] : []) : shapeHTML(SBC_SLOTS[form] || [])}</div>
                 </div><div class="sbc-r2">${altHTML(xi)}
                 ${misfitHTML(xi)}
                 ${exclHTML(c.challenge_ea_id)}
