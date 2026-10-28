@@ -2,7 +2,7 @@
 
 <!-- 구조 규칙(2026-10-14 v2): 헤더 15줄 안에 착수 조건 · 현재 상태 표 10행 이내 · 다음 할 일은 열린 항목만(항목당 2줄) · 세션 기록 최대 5개 · 목표 10~15KB · 상한 20KB(`wc -c`). 넘치면 지우지 말고 docs/handoff-context.md · docs/decisions.md로 포인터 압축. 절차 정본: .claude/skills/handoff/SKILL.md -->
 
-- **담당자** 김호근 · **갱신** 2026-10-28(주간 매치워치) · **세션** 부모 세션(대화) + 서브에이전트·하위 세션 다수 — 바이킹전 D+1 · FC27 구현 검토·반영 · 경기 데이터 확장 · 디자인 개편(글래스·라이트) · **작업 PC** `AL02359162.local`(⚠️ iMac이 아님 — 예약은 PC별) · **브랜치** main · **WIP** 없음
+- **담당자** 김호근 · **갱신** 2026-10-28(부모 세션 · 시즌 검토 · 선발 자동 산출 · G42 · 분석 영상 확장 수집) · **세션** 부모 세션(대화) + 서브에이전트·하위 세션 다수 — 바이킹전 D+1 · FC27 구현 검토·반영 · 경기 데이터 확장 · 디자인 개편(글래스·라이트) · **작업 PC** `AL02359162.local`(⚠️ iMac이 아님 — 예약은 PC별) · **브랜치** main · **WIP** 없음
 - **마지막 커밋** = `git log -1`(이 문서를 갱신한 커밋) · 직전 `0d58a93` · **문서 버전** v2 · **분량** 15KB(목표 10~15 · 상한 20)
 - 실축 감독 전술(**AVL/에메리(주) · CHE/알론소 · LIV/이라올라 · ATM/시메오네**)을 실측으로 분해해 FC26·FC27 전술로 재현. 규약 정본 `CLAUDE.md` · `docs/00-overview.md`.
 
@@ -18,16 +18,16 @@
 
 | 영역 | 상태 | 정본 |
 |---|---|---|
-| 게이트 | **전항 통과(10-22)** · 10-22 확장: G8+(opt 선발 ≠ 정본·장기 부상 · AVL) · G1/G3/G5 현행 버전 루프 · G22 비현행 `loadKernels` 리터럴 금지 · G37 ⑸ 보유/비보유 형태(migration 116) · G21 출시 후 카드 스냅샷 · G23 국면 분 결손(`core/phase_minutes.py`) — 문구는 docs/00 | `gates.py` |
+| 게이트 | **전항 통과(10-28)** · ⭐ **G42 외국어 인용 한국어 병기**(10-28 · DB 텍스트 열 전수 · 백로그 약 2,900건 일괄 번역 · `core/quote_ko.py` · G14는 「」 뒤 번역 삽입 허용) · · 10-22 확장: G8+(opt 선발 ≠ 정본·장기 부상 · AVL) · G1/G3/G5 현행 버전 루프 · G22 비현행 `loadKernels` 리터럴 금지 · G37 ⑸ 보유/비보유 형태(migration 116) · G21 출시 후 카드 스냅샷 · G23 국면 분 결손(`core/phase_minutes.py`) — 문구는 docs/00 | `gates.py` |
 | 수집 범위 | **AVL만** — CHE·LIV·ATM 잠정 보류(예약 `match-watch-weekly` AVL만 · G37 AVL만) · 10-19 주간 회차 5경기(#57~#61) 리포트는 draft로 보존 | 메모리 · 예약 프롬프트 |
 | 경기 분석 화면 | 요약·흐름·가설 판정·부상·포지션 스탯·전술 4칸·목차 + **10-22: 보유 그리드 Δ 열·운반(SS 실측 vs WS 추정)·모멘텀 차트** · 디자인 `theme.css`(글래스 크롬·불투명 패널·라이트 스킴 · `tokens.js`) | `match-report.html` · `matchviz.js` · [UX 리뷰](reports/research/2026-10-22-site-ux-review.md) |
-| 영상 | 전사하면 같은 회차에 **전 편 요약**(G17) · 월요일 **채널 스윕**(UTV·Villans·1874 분석 영상) · 자막 포착은 **항상 뮤트** · 분류 정본 `resolve_kind` · 뉴캐슬전 40/40 요약 · UTV 분석 6편 · **10-28 스윕**: 신규 분석 0 · 건너뜀 10(프리뷰 7·예측 1·브이로그 1·회고 인터뷰 1 e1Catd-Ea1s) · 기수집 10 · ⚠️ **Jacob Horsfall 채널 소실**(`@jacobhorsfall` 404 · 기수집 4편 재생 불가 · 새 핸들 미확인 — 예약 프롬프트 4채널 목록 정리 필요) | `index_transcripts.py` · 예약 프롬프트|
+| 영상 | ⭐ **10-28 분석 영상 확장 수집 56편**(26/27 · 필수 채널 + 다국어 검색 · 영 47·일 5·서 3·불 1·터 1 · 전 편 요약·주장 101행 · 자막 없는 2편 제외 · 브라우저 플레이어 1개로 연속 포착 · 뮤트) · 전사하면 같은 회차에 **전 편 요약**(G17) · 월요일 **채널 스윕**(UTV·Villans·1874 분석 영상) · 자막 포착은 **항상 뮤트** · 분류 정본 `resolve_kind` · 뉴캐슬전 40/40 요약 · UTV 분석 6편 · **10-28 스윕**: 신규 분석 0 · 건너뜀 10(프리뷰 7·예측 1·브이로그 1·회고 인터뷰 1 e1Catd-Ea1s) · 기수집 10 · ⚠️ **Jacob Horsfall 채널 소실**(`@jacobhorsfall` 404 · 기수집 4편 재생 불가 · 새 핸들 미확인 — 예약 프롬프트 4채널 목록 정리 필요) | `index_transcripts.py` · 예약 프롬프트|
 | 경기 수집 | **10-28 주간 회차: AVL 새 경기 없음** — 최근 맨시티 10-24(#127 · 보고서 #63 complete) · 다음 본머스(EFL컵 10-28 19:45 UTC · SS 17118370 · 이번 회차 시점 notstarted) → 풀럼(10-31) → 바르사(UCL 11-03) · 판정 쟁점 10-28: AVL 판정할 차례 0(남은 12건 전부 보류 팀) · 10-26 #14·#30 감시 · #7 연장 · ⚠️ headless Playwright는 SofaScore 403 challenge → 브라우저 패널로 라운드 확인 | `reports/match-watch/` · `claim_issues.py --due` |
 | FUT 구단 | 10-20 싱크 217장 · 진화 수집 병렬(WORKERS=6) · Excluded Rarity 실판정 · 진화·SBC 세트 **숨김** · 카드 포지션 이력(110 · 맥긴·퀜다·소보슬라이) · 케미 신호 증분(클럽 싱크 22분→5분) · **진행 중 헤밍스 Zoomaestro lv1(10-20)** · SBC 101 완료 기록(카드 미반영) | `fut_*` · club-sync 런북 |
-| 전술 판단 | **FC27 시즌 정본 `optimal` #46 신설**(Balanced/Balanced/52 · 코드 7ZTFKBu$37p7) · opt:* 선발 11칸 정본 역할로 재지정(obs#1120 · 옛 GK/ST 행 `-deprecated`) · 사용자 판단 대기 5건(RDM obs#1080 · ST 포커스 3층 · LM 포커스/역할 · LB 저점유 운용 · FC27 `optimal:lead`) — 정본 [리서치](reports/research/2026-10-22-fc27-avl-implementation-review.md) §1.6 ㉡ | `team_tactic_setups` · `observations` |
+| 전술 판단 | ⭐ **선발 처방 층 자동 산출**(10-28 · `core/opt_starters` · export가 최근 공식전 5경기 슬롯 선발 최다로 산출 — 손으로 고르지 않는다 · obs#1148) · 시즌 검토 10-28(감독 프로필 pressing·formation·implementation 덧붙임) · **FC27 시즌 정본 `optimal` #46 신설**(Balanced/Balanced/52 · 코드 7ZTFKBu$37p7) · opt:* 선발 11칸 정본 역할로 재지정(obs#1120 · 옛 GK/ST 행 `-deprecated`) · 사용자 판단 대기 5건(RDM obs#1080 · ST 포커스 3층 · LM 포커스/역할 · LB 저점유 운용 · FC27 `optimal:lead`) — 정본 [리서치](reports/research/2026-10-22-fc27-avl-implementation-review.md) §1.6 ㉡ | `team_tactic_setups` · `observations` |
 | 이적 감시 | 10-17 21시 임시 클론 `3e2790b`는 **/tmp 소실·미푸시** — 원 작업트리 리포트 10-14~17 4건은 10-20 커밋에 실음 · CHE·LIV 이적 판단은 보류 | `reports/transfer-watch/` |
 | 경기 데이터 | 10-22 확장: SS 48필드(실측 운반 `carries_ss`·GK 스위핑) · FotMob 경기별 선수 스탯 · WS 수신 `recv_*` · 보유/비보유 fit(119) · `match_momentum`(120) · 세트피스(117) · Understat 26/27 — **경기마다 필수 3종(SS 확장·FotMob·WS JSON 저장)은 G21이 막는다** | [결손 검토](reports/research/2026-10-22-match-data-gap-review.md) · match-watch §2 |
-| 열린 결손 | 페네르바흐체 WS JSON 미보존 · offside 이벤트(SS 미제공) · `matches.event_id` FotMob id 3경기(#86·94·95) · `--acc` 라이트 4.7:1 · 이적 총평 `##` 머리글 노출(DB 산문 · prose.js 미해석) · 표 숫자 열 `.num` 훅만(JS 렌더 표 미적용) · 링크 결손 3건 · `ref_map25` 동률 · ATM regime 4 CAM 슬롯 없음 · 미분류 영상 62편(보류 팀) | `gaps.py links` · 리서치 §2.2 |
+| 열린 결손 | 페네르바흐체 WS JSON 미보존 · offside 이벤트(SS 미제공) · `matches.event_id` FotMob id 3경기(#86·94·95) · `--acc` 라이트 4.7:1 · 이적 총평 `##` 머리글 노출(DB 산문 · prose.js 미해석) · 표 숫자 열 `.num` 훅만(JS 렌더 표 미적용) · 링크 결손 3건 · (`ref_map25` 동률 10-28 해소) · ATM regime 4 CAM 슬롯 없음 · 미분류 영상 62편(보류 팀) | `gaps.py links` · 리서치 §2.2 |
 
 ## 진행 중 작업 (WIP)
 
@@ -85,6 +85,7 @@
 
 ## 최근 세션 기록
 
+- **10-28 · 부모 세션(대화) + 서브에이전트**(`a2b2664`~) — AVL 시즌 검토(선발 3칸 되돌림 · 감독 프로필 3축 · 직무 3행 · obs#1148) · 선발 처방 자동 산출(`core/opt_starters` · 불변규칙 13) · G15·G14 회귀 테스트 픽스처 조건화 · export 비결정성(`ref_map25`) 해소 · **G42 신설 + 외국어 인용 약 2,900건 번역**(서브에이전트 14) · 분석 영상 56편 수집·요약(재판정 보류 5건은 본머스전 뒤)
 - **10-22 · 부모 세션(대화) + 서브에이전트·하위 세션**(`ae96b01`~`0d58a93` 8커밋) — 바이킹전 D+1 보강(뮤트 전사 6 · obs#1114~1119 · D+2/D+3 예약) · FC27 구현 검토·반영(optimal #46 · opt 선발 재지정 · 게이트 6종) · 슬롯 정본 5건 사용자 보류(obs#1123) · 국면 분 백필·FC27 카드 · migration 116~121(형태·세트피스·setup_kind·보유 fit·모멘텀·PlayStyle 별칭) · SS 48필드·FotMob 경기 스탯·WS 수신 · FC27 시스템 #57~62 · 메타 대조군 #47~49 · 디자인 개편(글래스·가독성·라이트) · 경기 분석 새 지표 3종 · 리서치 4편(`reports/research/2026-10-22-*`)
 - **10-20 · 부모 세션(대화) + 하위 4**(`56f7a63`~`5c71776` 17커밋) — 진화 수집 병렬(조건 판정 12→2초) · Excluded Rarity · 사이트 이름 「택틱스 랩」·로고 · 진화/SBC 숨김 · 카드 포지션 이력 · 케미 신호 증분(클럽 싱크 22분→5분) · 경기 분석 개편(가설 판정·흐름·부상 KST·포지션 스탯·전술 4칸·목차·범례) · 영상(오분류 수정·지시 한국어화·헤드라인·UTV 6편·뉴캐슬 35편 요약·채널 스윕·뮤트) · 카마라 Build-Up 후보 · 하위 세션 커밋 규칙 · 헤밍스 Zoomaestro 시작 · SBC 101 완료 기록
 - **10-19 23시 · 주간 match-watch(스케줄)** — CHE 1·LIV 2·ATM 2 수집 · 리포트 #57~#61 draft · DB는 이후 커밋 덤프에 실렸고 리포트·전사 본문은 10-20 커밋에 실음 · D+3 예약 3건은 보류로 미등록
