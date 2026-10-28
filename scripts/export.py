@@ -10,6 +10,13 @@ from core.export import export_all
 from scripts.gates import run as run_gates
 
 if __name__ == "__main__":
+    # 선발 처방 층은 손으로 고르지 않는다 — 게이트 전에 산출해 반영한다(core/opt_starters · obs#1148)
+    from core.db import connect as connect_db
+    from core.opt_starters import apply as apply_opt_starters
+    _con = connect_db()
+    for pos, before, after, why in apply_opt_starters(_con):
+        print(f"  선발 자동 산출 {pos}: {before} → {after} ({why})")
+    _con.close()
     if not run_gates(verbose=False):
         sys.exit("⛔ 게이트 실패 — 익스포트 중단. scripts/gates.py로 확인할 것")
     written = export_all()

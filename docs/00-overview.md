@@ -42,6 +42,7 @@ G12 경기 리포트(필수 섹션·수집 선수 전원·원문·경기 분석 
 
 > ⭐ **2026-10-22 FC27 구현 검토에서 확장**([리서치](../reports/research/2026-10-22-fc27-avl-implementation-review.md)):
 > **G8+** 현행 버전·현 시즌 `opt:*` 선발 11행이 `slot_canon_roles` 역할/포커스와 다르거나 `player_status` 장기 부상이면 실패(AVL만 — 보류 팀 제외) ·
+> ⭐ **선발 인선은 손으로 고르지 않는다**(2026-10-28 · obs#1148) — `scripts/export.py`가 게이트 전에 `core/opt_starters.apply()`로 산출한다(최근 클럽 공식전 5경기 슬롯 선발 최다 · 장기 부상 제외 · 역할은 정본 · 변경은 tactic_change_log 자동 사유) ·
 > **G1/G3/G5** FC26 고정 → 현행 버전(`core.game_version.current`) 루프 · **G22 ⑵-2b** 비현행 버전 `loadKernels('FC2x')` 리터럴 금지(화면은 `loadCurrentKernels()`) ·
 > **G37 ⑸** AVL 리포트(≥10-14)는 `match_game_setups.shape_in_possession/shape_out_possession`(migration 116) 필수 ·
 > **G21** 현행 버전 출시 후 `player_game_stats` 스냅샷 0행인 관리 팀 실패 · **G23** 2026-08-12 이후 공식전 `player_matches`에 `phase_lead/level/trail` 결손 실패(정본 `core/phase_minutes.py`) ·

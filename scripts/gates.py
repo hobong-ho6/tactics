@@ -440,31 +440,15 @@ def g8_prescription_checks(con):
               AND NOT EXISTS (SELECT 1 FROM slot_canon_roles c WHERE c.regime_id=p.regime_id AND c.pos=p.pos_label
                             AND c.game_version=p.game_version AND c.role_id=p.role_id AND c.focus=p.focus)""",
             (gv_now,)).fetchall()
-        import datetime as _dt
-        today = _dt.date.today()
-        _MON = {m: i for i, m in enumerate(("January", "February", "March", "April", "May", "June", "July",
-                                             "August", "September", "October", "November", "December"), 1)}
-        for pid, pname, pos, kind, value, detail, as_of, pulled in con.execute(f"""
-            SELECT p.player_id, COALESCE(pl.name_kr, pl.name), p.pos_label, s.kind, s.value, s.detail, s.as_of, s.pulled
+        # 장기 부상 판정은 core.opt_starters.long_term_injured 하나다 — 선발 자동 산출(export)과 같은 기준(obs#1148)
+        from core.opt_starters import long_term_injured as _ltj
+        hurt = _ltj(con)
+        for pid, pname, pos in con.execute(f"""
+            SELECT p.player_id, COALESCE(pl.name_kr, pl.name), p.pos_label
             FROM prescriptions p JOIN players pl ON pl.id=p.player_id
-            JOIN player_status s ON s.player_id=p.player_id AND s.kind IN ('injury','injury_none')
-             AND s.pulled=(SELECT MAX(x.pulled) FROM player_status x WHERE x.player_id=p.player_id AND x.kind IN ('injury','injury_none'))
             WHERE {_opt('p.kind')} AND p.kind NOT LIKE '%-deprecated' AND p.starter=1 AND p.game_version=? AND p.regime_id IN ({_in})""", (gv_now,)):
-            if kind != "injury":
-                continue
-            long_term = False
-            parts = (detail or "").split()
-            if len(parts) == 2 and parts[0] in _MON and parts[1].isdigit():
-                long_term = (int(parts[1]), _MON[parts[0]]) > (today.year, today.month)
-            try:
-                injured_days = (today - _dt.date.fromisoformat(as_of[:10])).days if as_of else 0
-                fresh = (today - _dt.date.fromisoformat(pulled[:10])).days <= 7 if pulled else False
-            except ValueError:
-                injured_days, fresh = 0, False
-            if injured_days >= 21 and fresh:
-                long_term = True
-            if long_term:
-                out["opt_injured_starter"].append((pid, pname, pos, value, detail, as_of))
+            if pid in hurt:
+                out["opt_injured_starter"].append((pid, pname, pos, *hurt[pid]))
     return out
 
 
