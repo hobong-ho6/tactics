@@ -1,6 +1,6 @@
 # 전사(자동 생성 자막) — COJ71S37huk (en)
 
-> Coventry 1-3 Aston Villa reaction and average positions - UTV | Aston Villa Fan Channel
+> UTV | Aston Villa Fan Channel — REACTING TO UNAI EMERY'S COMMENTS ON ALEJANDRO GARNACHO (게시 2026-09-17 · auto-caption · 수집 메모: 코번트리 1-3 반응·평균 위치 · 헤더 정정 2026-10-29: 종전 「설명 - 채널」 순서라 채널·제목이 뒤바뀌어 색인됐다)
 
 > 원본: https://www.youtube.com/watch?v=COJ71S37huk · 수집: scripts/yt_transcript.py
 > ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.
