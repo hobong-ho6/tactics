@@ -35,6 +35,10 @@ TX = ROOT / "reports" / "transcripts"
 # ⭐ 헤더에 채널이 없는 전사의 **보강 메타**(scripts/backfill_transcript_meta.py가 유튜브 원천에서 받아 쌓는다).
 #    ⛔ 전사 파일을 고치지 않기 위한 폴백이다 — 원본은 「수집 당시 그대로」 남고 보강분은 자기 provenance를 갖는다.
 META_BACKFILL = TX / "_meta_backfill.json"
+# ⭐ 사람 판정 층(2026-10-28 사용자 지시 「미분류 분류하고 경기 귀속 안 된 것도 연결」) — {video_id: {"kind"?, "report_id"?, "why"}}.
+#    규칙(resolve_kind·상대팀 단서)보다 **항상 이긴다**. 키가 있을 때만 적용한다 — `"report_id": null`은 「경기에 붙이지 않는다」는 판정이다.
+#    ⛔ 종전엔 kind가 색인마다 다시 계산돼 DB에서 손으로 고친 종류가 다음 회차에 지워졌다(report_id는 채움 전용이라 반대로 잘못 붙은 걸 못 뗐다).
+OVERRIDES = TX / "_video_overrides.json"
 
 # 채널 → (팀 코드, 종류 기본값). 팀 팬채널은 팀이 확정된다.
 CHANNEL_TEAM = {
@@ -118,12 +122,19 @@ OPPONENT_HINTS = {
     "liverpool": "Liverpool", "chelsea": "Chelsea", "newcastle": "Newcastle",
     "fenerbah": "Fenerbah", "viking": "Viking",
     "man city": "Manchester City", "manchester city": "Manchester City",
+    # ⭐ 2026-10-28 보강 — 제목에 상대가 분명한데 사전에 없어 미귀속이던 표기(PSG 슈퍼컵 2편·브라이턴 4-0·토트넘 5편·뉴캐슬 4편 등)
+    "psg": "Paris", "paris saint": "Paris", "spurs": "Tottenham", "tottenham": "Tottenham",
+    "brighton": "Brighton", "nufc": "Newcastle", "coventry": "Coventry", "bayern": "Bayern",
+    "gladbach": "Gladbach", "pathum": "Pathum", "pattaya": "Pathum", "walsall": "Walsall", "porto": "Porto",
+    "sociedad": "Sociedad", "マンc": "Manchester City", "マンチェスター・シティ": "Manchester City",
+    "アーセナル": "Arsenal", "ニューカッスル": "Newcastle",
     # ⭐ 한국어 메모 표기 — 우리 전사 헤더는 「헐전 D+1」처럼 한글로 적는다(영어만 보면 70편이 미귀속)
     "헐": "Hull", "포레스트": "Nottingham", "노팅엄": "Nottingham", "아스날": "Arsenal",
     "브뤼헤": "Brugge", "브렌트포드": "Brentford", "풀럼": "Fulham", "루턴": "Luton",
     "리즈": "Leeds", "비야레알": "Villarreal", "말라가": "Malaga", "세비야": "Sevilla",
     "아틀레틱": "Athletic", "리버풀": "Liverpool", "첼시": "Chelsea", "뉴캐슬": "Newcastle",
     "소시에다드": "Sociedad", "레알 소시에다드": "Sociedad", "바이킹": "Viking", "맨시티": "Manchester City",
+    "토트넘": "Tottenham", "브라이턴": "Brighton", "브라이튼": "Brighton", "코번트리": "Coventry", "바이에른": "Bayern",
     # 약어(리포트 제목에서 쓰는 3글자 코드)
     " ars": "Arsenal", " nffc": "Nottingham", " avl": None, " che": "Chelsea", " liv": "Liverpool",
 }
@@ -277,6 +288,8 @@ def main():
 
     backfill = (json.loads(META_BACKFILL.read_text(encoding="utf-8"))
                 if META_BACKFILL.exists() else {})
+    overrides = (json.loads(OVERRIDES.read_text(encoding="utf-8"))
+                 if OVERRIDES.exists() else {})
     rows, no_meta, unlinked, backfilled = [], [], 0, 0
     chan_team = {}   # 채널이 못 박은 팀(없으면 None) — 저장된 경기 귀속으로 팀을 정할 때 채널 고정값을 덮지 않으려고
     for path in sorted(TX.glob("*.md")):
@@ -319,6 +332,13 @@ def main():
             if len(cand) == 1:
                 report_id = cand[0]["id"]
                 team = team or cand[0]["team_code"]
+        ov = overrides.get(vid, {})
+        if "report_id" in ov:
+            report_id = ov["report_id"]
+            if report_id is not None:
+                team = team or con.execute("SELECT team_code FROM match_reports WHERE id=?", (report_id,)).fetchone()[0]
+        if "kind" in ov:
+            kind = ov["kind"]
         if report_id is None:
             unlinked += 1
         team = team or guess_team(h["title"])   # 채널·경기 귀속으로 못 정한 것만 — 채널 고정값을 덮지 않는다
@@ -364,7 +384,9 @@ def main():
             # ⛔ `report_id`는 **채움 전용**이다 — 사람이 고친 경기 귀속을 휴리스틱이 덮으면
             #    같은 오류가 회차마다 되살아난다(2026-09-15 The Liverpool FC TV 오귀속 수습 후 규칙화).
             #    내 추정과 저장값이 다르면 덮지 않고 **보고**한다.
-            if ex["report_id"] is not None:
+            if "report_id" in overrides.get(r["video_id"], {}):
+                pass                                  # 사람 판정이 이긴다(위에서 이미 반영) — 저장값 보존 규칙보다 우선
+            elif ex["report_id"] is not None:
                 # 추정이 「없음」인 건 충돌이 아니다(사람이 더 안다) — 종전엔 이것까지 100여 줄 찍혀 진짜 3건이 묻혔다(2026-10-21)
                 if r["report_id"] is not None and r["report_id"] != ex["report_id"]:
                     conflicts.append((r["video_id"], ex["report_id"], r["report_id"]))

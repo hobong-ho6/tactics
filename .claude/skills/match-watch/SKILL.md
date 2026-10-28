@@ -101,6 +101,7 @@ for t in AVL CHE LIV ATM; do .venv/bin/python scripts/collect_fotmob_players.py 
 - ⚠️ **위치 주장은 실측이 이긴다.** 서사가 실측과 어긋나면 충돌을 기록하고 실측을 채택한다.
 - ⭐⭐ **전사를 확보했으면 그 회차에 요약까지 쓴다**(2026-09-15 신설, 사용자 지시 「UTV·The Villans 주요 내용을 우리 페이지에서 보게」):
   전사 수집 후 `python3 scripts/index_transcripts.py`를 돌려 `match_videos`에 메타·경기 귀속을 채우고,
+  ⭐ 종류·경기 귀속을 **사람이 고칠 때는 DB가 아니라 `reports/transcripts/_video_overrides.json`**(`{id: {kind?, report_id?(null=떼기), why, date}}`)에 적는다 — 색인이 규칙보다 이 파일을 우선한다(10-28 · DB에서 고친 kind는 다음 색인에 지워졌다).
   그 경기 영상은 **`summary`(3~5문장)와 `key_points`(줄바꿈 구분)를 직접 작성**한다 — 경기 화면 「이 경기 영상 분석」 패널이 그걸 읽는다.
   ⛔ **인용은 원문 「…」 + 한국어 번역 병기**(불변규칙 11)이고, 전사 기반이므로 confidence에 **auto-caption**을 명기한다.
   ⛔ **하프 표기는 전반/후반/하프타임** — 제공사 코드 1H/2H·HT를 문장에 쓰지 않는다(2026-10-26 사용자 「1H 2H가 뭐야?」 · G41이 DB 전 열·match-watch md를 막는다 · 변환은 `core.half_terms.conv()`/`conv_md()`).
