@@ -2,7 +2,7 @@
 
 <!-- 구조 규칙(2026-10-14 v2): 헤더 15줄 안에 착수 조건 · 현재 상태 표 10행 이내 · 다음 할 일은 열린 항목만(항목당 2줄) · 세션 기록 최대 5개 · 목표 10~15KB · 상한 20KB(`wc -c`). 넘치면 지우지 말고 docs/handoff-context.md · docs/decisions.md로 포인터 압축. 절차 정본: .claude/skills/handoff/SKILL.md -->
 
-- **담당자** 김호근 · **갱신** 2026-10-26(주간 매치워치) · **세션** 부모 세션(대화) + 서브에이전트·하위 세션 다수 — 바이킹전 D+1 · FC27 구현 검토·반영 · 경기 데이터 확장 · 디자인 개편(글래스·라이트) · **작업 PC** `AL02359162.local`(⚠️ iMac이 아님 — 예약은 PC별) · **브랜치** main · **WIP** 없음
+- **담당자** 김호근 · **갱신** 2026-10-28(주간 매치워치) · **세션** 부모 세션(대화) + 서브에이전트·하위 세션 다수 — 바이킹전 D+1 · FC27 구현 검토·반영 · 경기 데이터 확장 · 디자인 개편(글래스·라이트) · **작업 PC** `AL02359162.local`(⚠️ iMac이 아님 — 예약은 PC별) · **브랜치** main · **WIP** 없음
 - **마지막 커밋** = `git log -1`(이 문서를 갱신한 커밋) · 직전 `0d58a93` · **문서 버전** v2 · **분량** 15KB(목표 10~15 · 상한 20)
 - 실축 감독 전술(**AVL/에메리(주) · CHE/알론소 · LIV/이라올라 · ATM/시메오네**)을 실측으로 분해해 FC26·FC27 전술로 재현. 규약 정본 `CLAUDE.md` · `docs/00-overview.md`.
 
@@ -21,8 +21,8 @@
 | 게이트 | **전항 통과(10-22)** · 10-22 확장: G8+(opt 선발 ≠ 정본·장기 부상 · AVL) · G1/G3/G5 현행 버전 루프 · G22 비현행 `loadKernels` 리터럴 금지 · G37 ⑸ 보유/비보유 형태(migration 116) · G21 출시 후 카드 스냅샷 · G23 국면 분 결손(`core/phase_minutes.py`) — 문구는 docs/00 | `gates.py` |
 | 수집 범위 | **AVL만** — CHE·LIV·ATM 잠정 보류(예약 `match-watch-weekly` AVL만 · G37 AVL만) · 10-19 주간 회차 5경기(#57~#61) 리포트는 draft로 보존 | 메모리 · 예약 프롬프트 |
 | 경기 분석 화면 | 요약·흐름·가설 판정·부상·포지션 스탯·전술 4칸·목차 + **10-22: 보유 그리드 Δ 열·운반(SS 실측 vs WS 추정)·모멘텀 차트** · 디자인 `theme.css`(글래스 크롬·불투명 패널·라이트 스킴 · `tokens.js`) | `match-report.html` · `matchviz.js` · [UX 리뷰](reports/research/2026-10-22-site-ux-review.md) |
-| 영상 | 전사하면 같은 회차에 **전 편 요약**(G17) · 월요일 **채널 스윕**(UTV·Villans·1874 분석 영상) · 자막 포착은 **항상 뮤트** · 분류 정본 `resolve_kind` · 뉴캐슬전 40/40 요약 · UTV 분석 6편 · **10-26 스윕**: 신규 분석 1(1874 Bardell 4ITEh-CnWtY) · 건너뜀 10(프리뷰 7·예측 1·브이로그 1·타 팀 1) · 기수집 10 | `index_transcripts.py` · 예약 프롬프트|
-| 경기 수집 | **10-26 주간 회차: AVL 새 경기 없음** — 맨시티 10-24(#127 · 보고서 #63) 기적재 · **D+2 10-26 20:00 · D+3 10-27 20:00 예약 실재(이 PC)** · 다음 본머스(EFL컵 10-28 · SS 17118370) → 풀럼(10-31) → 바르사(UCL 11-03) · 판정 쟁점 10-26: #14 알리송·#30 볼 처리/크로스 HELD→감시 · #7 음바예 연장(선발 2 더) · ⚠️ headless Playwright는 SofaScore 403 challenge → 브라우저 패널로 라운드 확인 | `reports/match-watch/` · `claim_issues.py --due` |
+| 영상 | 전사하면 같은 회차에 **전 편 요약**(G17) · 월요일 **채널 스윕**(UTV·Villans·1874 분석 영상) · 자막 포착은 **항상 뮤트** · 분류 정본 `resolve_kind` · 뉴캐슬전 40/40 요약 · UTV 분석 6편 · **10-28 스윕**: 신규 분석 0 · 건너뜀 10(프리뷰 7·예측 1·브이로그 1·회고 인터뷰 1 e1Catd-Ea1s) · 기수집 10 · ⚠️ **Jacob Horsfall 채널 소실**(`@jacobhorsfall` 404 · 기수집 4편 재생 불가 · 새 핸들 미확인 — 예약 프롬프트 4채널 목록 정리 필요) | `index_transcripts.py` · 예약 프롬프트|
+| 경기 수집 | **10-28 주간 회차: AVL 새 경기 없음** — 최근 맨시티 10-24(#127 · 보고서 #63 complete) · 다음 본머스(EFL컵 10-28 19:45 UTC · SS 17118370 · 이번 회차 시점 notstarted) → 풀럼(10-31) → 바르사(UCL 11-03) · 판정 쟁점 10-28: AVL 판정할 차례 0(남은 12건 전부 보류 팀) · 10-26 #14·#30 감시 · #7 연장 · ⚠️ headless Playwright는 SofaScore 403 challenge → 브라우저 패널로 라운드 확인 | `reports/match-watch/` · `claim_issues.py --due` |
 | FUT 구단 | 10-20 싱크 217장 · 진화 수집 병렬(WORKERS=6) · Excluded Rarity 실판정 · 진화·SBC 세트 **숨김** · 카드 포지션 이력(110 · 맥긴·퀜다·소보슬라이) · 케미 신호 증분(클럽 싱크 22분→5분) · **진행 중 헤밍스 Zoomaestro lv1(10-20)** · SBC 101 완료 기록(카드 미반영) | `fut_*` · club-sync 런북 |
 | 전술 판단 | **FC27 시즌 정본 `optimal` #46 신설**(Balanced/Balanced/52 · 코드 7ZTFKBu$37p7) · opt:* 선발 11칸 정본 역할로 재지정(obs#1120 · 옛 GK/ST 행 `-deprecated`) · 사용자 판단 대기 5건(RDM obs#1080 · ST 포커스 3층 · LM 포커스/역할 · LB 저점유 운용 · FC27 `optimal:lead`) — 정본 [리서치](reports/research/2026-10-22-fc27-avl-implementation-review.md) §1.6 ㉡ | `team_tactic_setups` · `observations` |
 | 이적 감시 | 10-17 21시 임시 클론 `3e2790b`는 **/tmp 소실·미푸시** — 원 작업트리 리포트 10-14~17 4건은 10-20 커밋에 실음 · CHE·LIV 이적 판단은 보류 | `reports/transfer-watch/` |
