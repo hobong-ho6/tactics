@@ -84,6 +84,8 @@
 <div class="panel"><h2>영상·스카우트 분석 (가설 → 실측 교차검증)</h2>
 <p class="dim">각 분석은 <b>분석 기준일·표본 범위</b>를 함께 표시한다. <b>레퍼런스 보기</b>를 펼치면 저장된 원문·내부 근거를 직접 확인할 수 있다. 기간을 복원할 수 없는 과거 기록은 임의 추정하지 않고 <b>기간 미기록</b>으로 표시한다.</p>
 <div id="duty"></div></div>
+<div class="panel"><h2>이 선수를 다룬 영상 <small class="dim">— 구현 주장이 이 선수를 가리키는 영상(경기 귀속 여부 무관) · 카드는 경기 분석·팀 리포트와 같은 정본</small></h2>
+<div id="pvideos"></div></div>
 </section>
 <script type="module">
 import { mountHeader, loadTeam, loadGameStats, loadKernels, slotCandidates, sofifaLink, isGkSlot, gkPosCell, setCurrentTeam, canonSlots} from './assets/data.js?v=20261004-nav';
@@ -93,6 +95,8 @@ const vizW = (el, cap, pad = 0) => Math.min(cap, Math.max(320, (el?.clientWidth 
 import { miniGrid } from './assets/pitch.js?v=20260825-decodemap-null';
 import { annotate, mountGlossaryTips, glTip } from './assets/glossary.js';
 import { prose } from './assets/prose.js';
+import { loadVideos, renderVideoList } from './assets/videos.js?v=20261028';   // 영상 카드 정본(2026-10-28)
+const VID = await loadVideos();
 import { PLAYSTYLES, psLookup, psCanon } from './assets/playstyle-icons.js';
 import { repaintEvoCard, replateCard, rarityLevel } from './assets/evocard.js?v=20260927a';
 /* ⛔ 진화 경로의 소진·프리미엄 판정은 **진화 메뉴와 같은 모듈**을 쓴다(2026-09-22 전수 조사) */
@@ -1361,6 +1365,10 @@ function render(){
       <footer>${references(d.source)}</footer>
     </article>`).join('')
     : '<p class="dim">영상 분석 미수행 — 규칙상 신규 선수·MEDIUM-HIGH+ 후보는 자동 수행 대상</p>';
+  /* ⭐ 선수별 영상(2026-10-28 사용자 지시) — player_id로 잇는다(불변규칙 6 · 이름 조인 금지). */
+  const pv = (VID?.all ?? []).filter(v => sel.pid != null && (v.impl_claims ?? []).some(c => c.player_id === sel.pid));
+  renderVideoList(document.getElementById('pvideos'), pv, { newestFirst: true, title: '이 선수 관련 영상',
+    empty: `<p class="dim">${VID ? '이 선수를 가리키는 구현 주장이 있는 영상이 아직 없다' : '영상 데이터 없음'}</p>` });
 }
 render();
 mountGlossaryTips();

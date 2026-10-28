@@ -647,7 +647,7 @@ def export_all(db_path=None, window="2026-summer"):
               for r in con.execute("SELECT * FROM claim_issues")}
     con.row_factory = _rf
     for c in _rows(con, """SELECT c.video_id, c.axis, c.role_id, c.focus, c.field, c.value, c.field_kr, c.value_kr, c.headline_kr, c.points_kr,
-                                  c.verdict, c.verdict_note, c.quote, c.team_code, c.issue_id,
+                                  c.verdict, c.verdict_note, c.quote, c.team_code, c.issue_id, c.player_id,
                                   COALESCE(p.name_kr, p.name) AS player
                            FROM video_impl_claims c
                            LEFT JOIN players p ON p.id = c.player_id

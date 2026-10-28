@@ -27,6 +27,11 @@
   <div id="histviz" class="vzcard" style="display:block;margin:0 0 10px"></div>
   <div class="menubar" id="histf"></div><ul id="hist" style="list-style:none;padding:0;margin:0"></ul></div>
 
+<div class="panel" id="vidTeamPanel"><h2>영상 분석 — 경기 밖 <small class="dim">— 전술·선수·영입 평가처럼 특정 경기에 귀속되지 않은 분석 영상 · 경기 영상은 「경기 분석」 메뉴의 각 경기에</small></h2>
+  <div class="menubar" id="vidf"></div>
+  <input type="search" id="vidq" placeholder="제목·채널·요약·선수 검색" style="width:100%;max-width:360px;margin:0 0 10px">
+  <div id="teamVideos"></div></div>
+
 <p class="dim">서사·분석 전문은 docs/1x 감독 문서가 정본이다 — 이 페이지는 DB에 확정 기록된
 결론(프로필 축·세팅)만 보여준다.</p>
 <script type="module">
@@ -35,6 +40,7 @@ import { mountGlossaryTips } from './assets/glossary.js';
 import { prose } from './assets/prose.js';
 import { roleLabel, focusLabel, humanize, mountRawToggle } from './assets/labels.js';
 import { laneTimeline, mountTips as histTips } from './assets/histviz.js?v=20260918';   // 긴 DB 산문은 공용 렌더러로 끊어 읽는다(player.html과 동일)
+import { loadVideos, renderVideoList } from './assets/videos.js?v=20261028';   // 영상 카드 정본(경기 분석·선수 페이지와 공용)
 
 const { team, regime } = await mountHeader('report.html');
 const td = await loadTeam(team);
@@ -229,6 +235,27 @@ function drawHist(){
 }
 drawHistViz(); drawHist();
 new ResizeObserver(() => drawHistViz()).observe(document.getElementById('histviz'));
+
+
+/* ── 영상 분석 — 경기 밖(2026-10-28 사용자 지시 「팀 리포트 메뉴에서 볼 수 있게」) ──
+   경기에 귀속되지 않은(report_id 없음) 이 팀 영상 전부. 카드·등급·구현 주장은 assets/videos.js 정본.
+   ⛔ 숨기지 않는다 — 요약 미작성도 목록에 남는다. 필터는 종류 칩 + 검색어(제목·채널·요약·요점·주장 선수). */
+const VID = await loadVideos();
+const teamVids = (VID?.all ?? []).filter(v => v.team_code === team && !v.report_id);
+let VK = 'all', VQ = '';
+function drawTeamVideos(){
+  const kinds = teamVids.reduce((m, v) => (m[v.kind || '미분류'] = (m[v.kind || '미분류'] || 0) + 1, m), {});
+  document.getElementById('vidf').innerHTML = [['all', `전부 ${teamVids.length}`], ...Object.entries(kinds).sort((a, b) => b[1] - a[1]).map(([k, n]) => [k, `${k} ${n}`])]
+    .map(([k, l]) => `<button class="tab${VK === k ? ' on' : ''}" data-k="${k}">${l}</button>`).join('');
+  document.querySelectorAll('#vidf button').forEach(b => b.addEventListener('click', () => { VK = b.dataset.k; drawTeamVideos(); }));
+  const q = VQ.trim().toLowerCase();
+  const hay = v => [v.title, v.channel, v.summary, ...(v.key_points ?? []), ...(v.impl_claims ?? []).map(c => c.player)].join(' ').toLowerCase();
+  const rows = teamVids.filter(v => (VK === 'all' || (v.kind || '미분류') === VK) && (!q || hay(v).includes(q)));
+  renderVideoList(document.getElementById('teamVideos'), rows, { newestFirst: true, title: '분석 영상',
+    empty: `<p class="dim">${teamVids.length ? '조건에 맞는 영상이 없다' : '경기 밖 분석 영상이 아직 없다'}</p>` });
+}
+if (!VID) document.getElementById('vidTeamPanel').hidden = true;
+else { document.getElementById('vidq').addEventListener('input', e => { VQ = e.target.value; drawTeamVideos(); }); drawTeamVideos(); }
 
 
 mountGlossaryTips(); mountRawToggle(document.getElementById('asof'));
