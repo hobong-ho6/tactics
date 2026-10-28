@@ -5335,7 +5335,17 @@
      "field_kr": "좌측 풀백 공백 대응",
      "focus": null,
      "headline_kr": null,
-     "issue": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 78,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "왼쪽 풀백 결원 시 대체 구성(밍스·보가르드)",
+      "trigger": "2026-10-28 이후 공식전 5경기 (0/5)"
+     },
      "player": null,
      "points_kr": null,
      "quote": "「Mings at left-back, I think, is just the easy solution」(밍스 레프트백이 쉬운 해법)",
@@ -5343,8 +5353,8 @@
      "team_code": null,
      "value": "Mings at LB",
      "value_kr": "밍스를 레프트백에 쓰는 임시 방편",
-     "verdict": "NA",
-     "verdict_note": "쟁점 없음 — 새 쟁점 후보: 좌측 풀백 부상 시 대체(밍스·보가르드) 구성. 시즌 후반 10분 기용 외 선발 실측 없음."
+     "verdict": "PENDING",
+     "verdict_note": "쟁점 없음 — 새 쟁점 후보: 좌측 풀백 부상 시 대체(밍스·보가르드) 구성. 시즌 후반 10분 기용 외 선발 실측 없음. ‖ [2026-10-28] 사용자 지시 「새 쟁점 후보 전부 등록」 — 새 판정 쟁점에 묶어 판정 대기로 전환"
     },
     {
      "axis": "role",
@@ -8187,7 +8197,17 @@
      "field_kr": "빌드업 센터백 간격",
      "focus": null,
      "headline_kr": null,
-     "issue": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 82,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "상대 형태별 센터백 간격",
+      "trigger": "2026-10-28 이후 공식전 5경기 (0/5)"
+     },
      "player": null,
      "points_kr": null,
      "quote": "「Villa use their center backs on the outside of Fenerbahçe's first line」(빌라는 센터백을 페네르바체 1선 바깥에 둔다)",
@@ -8195,8 +8215,8 @@
      "team_code": null,
      "value": "Split centre-backs wide against a 4-4-2 first line",
      "value_kr": "상대 1선 바깥으로 센터백 벌림",
-     "verdict": "NA",
-     "verdict_note": "게임에 센터백 간격 설정이 없고 상대 4-4-2 한정 서술. 쟁점 없음 — 새 쟁점 후보: 상대 형태별 센터백 폭(상대 프리셋 축 #60 맥락)."
+     "verdict": "PENDING",
+     "verdict_note": "게임에 센터백 간격 설정이 없고 상대 4-4-2 한정 서술. 쟁점 없음 — 새 쟁점 후보: 상대 형태별 센터백 폭(상대 프리셋 축 #60 맥락). ‖ [2026-10-28] 사용자 지시 「새 쟁점 후보 전부 등록」 — 새 판정 쟁점에 묶어 판정 대기로 전환"
     },
     {
      "axis": "role",
@@ -22877,7 +22897,17 @@
      "field_kr": "만잠비 ST 배치",
      "focus": null,
      "headline_kr": null,
-     "issue": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 79,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "만잠비 ST 임시 기용",
+      "trigger": "2026-10-28 이후 만잠비 ST 선발 1경기 (0/1)"
+     },
      "player": null,
      "points_kr": null,
      "quote": "「He can also be deployed up front, but that's kind of if necessary」(필요하면 최전방도 가능하지만 임시다)",
@@ -22885,8 +22915,8 @@
      "team_code": null,
      "value": "Only if necessary",
      "value_kr": "필요할 때만 가능한 임시 기용",
-     "verdict": "NA",
-     "verdict_note": "입단 전 스카우팅 의견. 쟁점 없음 — 새 쟁점 후보: 만잠비 ST 임시 기용 가능성(현재 쟁점 49는 비CAM 피벗·측면 배치)."
+     "verdict": "PENDING",
+     "verdict_note": "입단 전 스카우팅 의견. 쟁점 없음 — 새 쟁점 후보: 만잠비 ST 임시 기용 가능성(현재 쟁점 49는 비CAM 피벗·측면 배치). ‖ [2026-10-28] 사용자 지시 「새 쟁점 후보 전부 등록」 — 새 판정 쟁점에 묶어 판정 대기로 전환"
     },
     {
      "axis": "role",
@@ -24099,7 +24129,17 @@
      "field_kr": "마조 9번 기능(등지기·홀드업·연계)",
      "focus": null,
      "headline_kr": null,
-     "issue": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 80,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "마조 ST 역할: 홀드업 vs 침투",
+      "trigger": "2026-10-28 이후 마조 ST 선발 2경기 (0/2)"
+     },
      "player": null,
      "points_kr": null,
      "quote": "「il a un très bon jeu de dos au but」(등지고 하는 플레이가 매우 좋다) · 「il est assez juste aussi dans ses remises, dans ses déviations」(리시브와 디플렉션도 꽤 정확하다)",
@@ -24107,8 +24147,8 @@
      "team_code": null,
      "value": "Hold-up striker: strong back to goal, wins duels, accurate lay-offs",
      "value_kr": "등지고 버티며 정확한 리시브·연계를 하는 홀드업형 9번",
-     "verdict": "NA",
-     "verdict_note": "쟁점 없음 — 새 쟁점 후보: 마조 9번 홀드업 기능(후보 ST 역할). 영상은 타 팀 시점·한 경기 인상평이며 역할명을 말하지 않았고, 우리 정본에는 마조 슬롯이 없다."
+     "verdict": "PENDING",
+     "verdict_note": "쟁점 없음 — 새 쟁점 후보: 마조 9번 홀드업 기능(후보 ST 역할). 영상은 타 팀 시점·한 경기 인상평이며 역할명을 말하지 않았고, 우리 정본에는 마조 슬롯이 없다. ‖ [2026-10-28] 사용자 지시 「새 쟁점 후보 전부 등록」 — 새 판정 쟁점에 묶어 판정 대기로 전환"
     }
    ],
    "key_points": [
@@ -24387,7 +24427,17 @@
      "field_kr": "마조 피지컬 스카우팅",
      "focus": "Support",
      "headline_kr": null,
-     "issue": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 80,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "마조 ST 역할: 홀드업 vs 침투",
+      "trigger": "2026-10-28 이후 마조 ST 선발 2경기 (0/2)"
+     },
      "player": "마조",
      "points_kr": null,
      "quote": "「he was just holding Tah off」(타를 막아 세우고 있었다)",
@@ -24395,8 +24445,8 @@
      "team_code": null,
      "value": "Madjo holds off Tah and runs channels",
      "value_kr": "마조가 몸싸움·채널 침투로 호평",
-     "verdict": "NA",
-     "verdict_note": "쟁점 없음 — 새 쟁점 후보: 마조 17세 백업 ST 기용·역할. 프리시즌 단일 경기, 정규 시즌 표본 없음."
+     "verdict": "PENDING",
+     "verdict_note": "쟁점 없음 — 새 쟁점 후보: 마조 17세 백업 ST 기용·역할. 프리시즌 단일 경기, 정규 시즌 표본 없음. ‖ [2026-10-28] 사용자 지시 「새 쟁점 후보 전부 등록」 — 새 판정 쟁점에 묶어 판정 대기로 전환"
     }
    ],
    "key_points": [
@@ -25081,7 +25131,17 @@
      "field_kr": null,
      "focus": "Attack",
      "headline_kr": null,
-     "issue": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 81,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "가르나초 결정력(빌라 실측)",
+      "trigger": "2026-10-28 이후 가르나초 선발 3경기 (0/3)"
+     },
      "player": "가르나초",
      "points_kr": null,
      "quote": "「He sees an incredibly gifted attacking winger who just needs to sharpen up his finishing」(결정력만 다듬으면 되는 매우 재능 있는 공격 윙어를 본다)",
@@ -25089,8 +25149,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "NA",
-     "verdict_note": "영입 전 첼시·맨유 25/26 시절 수치 기반이며 빌라 슬롯(LM 안쪽형 정본) 판정 근거가 아니다. 쟁점 없음 — 새 쟁점 후보: 가르나초 결정력 문제의 빌라 실측 확인(기존 #9·#47이 위치 구조를 다룸)."
+     "verdict": "PENDING",
+     "verdict_note": "영입 전 첼시·맨유 25/26 시절 수치 기반이며 빌라 슬롯(LM 안쪽형 정본) 판정 근거가 아니다. 쟁점 없음 — 새 쟁점 후보: 가르나초 결정력 문제의 빌라 실측 확인(기존 #9·#47이 위치 구조를 다룸). ‖ [2026-10-28] 사용자 지시 「새 쟁점 후보 전부 등록」 — 새 판정 쟁점에 묶어 판정 대기로 전환"
     }
    ],
    "key_points": [
@@ -25123,7 +25183,17 @@
      "field_kr": "잭슨 침투 타이밍 약점",
      "focus": null,
      "headline_kr": null,
-     "issue": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 83,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "잭슨 오프사이드·침투 타이밍",
+      "trigger": "2026-10-28 이후 잭슨 선발 5경기 (0/5)"
+     },
      "player": null,
      "points_kr": null,
      "quote": "「he's also pretty bad at tracking his runs properly and keeping himself onside」(침투를 제대로 맞추고 오프사이드를 피하는 데도 꽤 서툴다)",
@@ -25131,8 +25201,8 @@
      "team_code": null,
      "value": "Poor run timing, offside",
      "value_kr": "침투 타이밍·오프사이드가 약점(첼시 시절 서술)",
-     "verdict": "NA",
-     "verdict_note": "영입 전 첼시·세네갈 대표팀 시절 서술이라 현 빌라 실측이 아니다. 쟁점 없음 — 새 쟁점 후보: 잭슨 오프사이드·침투 타이밍(빌라 실측으로 검증)."
+     "verdict": "PENDING",
+     "verdict_note": "영입 전 첼시·세네갈 대표팀 시절 서술이라 현 빌라 실측이 아니다. 쟁점 없음 — 새 쟁점 후보: 잭슨 오프사이드·침투 타이밍(빌라 실측으로 검증). ‖ [2026-10-28] 사용자 지시 「새 쟁점 후보 전부 등록」 — 새 판정 쟁점에 묶어 판정 대기로 전환"
     }
    ],
    "key_points": [
@@ -26011,7 +26081,17 @@
      "field_kr": "고메스 최종 3분의 1 기여",
      "focus": null,
      "headline_kr": null,
-     "issue": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 85,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "고메스 박스 도착·최종 패스 비중",
+      "trigger": "2026-10-28 이후 주앙 고메스 선발 3경기 (0/3)"
+     },
      "player": null,
      "points_kr": null,
      "quote": "「maybe a bit more goal contributions output in the final third」(최종 3분의 1에서 골 기여를 조금 더)",
@@ -26019,8 +26099,8 @@
      "team_code": null,
      "value": "Low goal/assist output expected to be challenged",
      "value_kr": "골·도움 낮음 — 슈팅·침투 과제",
-     "verdict": "NA",
-     "verdict_note": "울브스 시절 스탯 기반 추측이라 구현 대상 아님. 쟁점 없음 — 새 쟁점 후보: 고메스 박스 도착·최종 패스 비중."
+     "verdict": "PENDING",
+     "verdict_note": "울브스 시절 스탯 기반 추측이라 구현 대상 아님. 쟁점 없음 — 새 쟁점 후보: 고메스 박스 도착·최종 패스 비중. ‖ [2026-10-28] 사용자 지시 「새 쟁점 후보 전부 등록」 — 새 판정 쟁점에 묶어 판정 대기로 전환"
     },
     {
      "axis": "role",
@@ -26253,7 +26333,17 @@
      "field_kr": "25/26 인터셉트·회수 리그 최저",
      "focus": null,
      "headline_kr": null,
-     "issue": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 84,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "팀 인터셉트·볼 회수 25/26 대비",
+      "trigger": "2026-10-28 이후 리그 5경기 (0/5)"
+     },
      "player": null,
      "points_kr": null,
      "quote": "「Aston Villa ranked lowest for making interceptions last season with 238」(빌라는 지난 시즌 인터셉트 238회로 리그 최저였다)",
@@ -26261,8 +26351,8 @@
      "team_code": null,
      "value": "Lowest interceptions and recoveries in 25/26",
      "value_kr": "25/26 인터셉트 238·회수 1,663 리그 최저",
-     "verdict": "NA",
-     "verdict_note": "25/26 시즌 팀 지표라 26/27 압박 쟁점에 직접 쓸 수 없다. 쟁점 없음 — 새 쟁점 후보: 26/27 시즌 인터셉트·회수 수치 비교."
+     "verdict": "PENDING",
+     "verdict_note": "25/26 시즌 팀 지표라 26/27 압박 쟁점에 직접 쓸 수 없다. 쟁점 없음 — 새 쟁점 후보: 26/27 시즌 인터셉트·회수 수치 비교. ‖ [2026-10-28] 사용자 지시 「새 쟁점 후보 전부 등록」 — 새 판정 쟁점에 묶어 판정 대기로 전환"
     }
    ],
    "key_points": [
@@ -26451,7 +26541,17 @@
      "field_kr": "카마라 출전·부상 관리",
      "focus": null,
      "headline_kr": null,
-     "issue": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 86,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "카마라 결장 시 RDM 대체 서열",
+      "trigger": "2026-10-28 이후 공식전 5경기 (0/5)"
+     },
      "player": null,
      "points_kr": null,
      "quote": "「How do we manage Boubacar Kamara?」(카마라를 어떻게 관리할 것인가)",
@@ -26459,8 +26559,8 @@
      "team_code": null,
      "value": "One match per week, injury-prone",
      "value_kr": "주 1경기 수준 관리 필요",
-     "verdict": "NA",
-     "verdict_note": "게임에 대응 설정 없음(부상·출전 시간). 25/26 기록 기반. 쟁점 없음 — 새 쟁점 후보: 카마라 결장 시 RDM 대체 서열."
+     "verdict": "PENDING",
+     "verdict_note": "게임에 대응 설정 없음(부상·출전 시간). 25/26 기록 기반. 쟁점 없음 — 새 쟁점 후보: 카마라 결장 시 RDM 대체 서열. ‖ [2026-10-28] 사용자 지시 「새 쟁점 후보 전부 등록」 — 새 판정 쟁점에 묶어 판정 대기로 전환"
     },
     {
      "axis": "role",
@@ -30462,6 +30562,105 @@
    "status": "closed",
    "title": "개별 종결 #17 (쟁점 #5에서)",
    "trigger": "2026-10-21 이후"
+  },
+  {
+   "closed": null,
+   "due": false,
+   "hold": false,
+   "id": 78,
+   "phase": "decide",
+   "resolution": null,
+   "status": "open",
+   "title": "왼쪽 풀백 결원 시 대체 구성(밍스·보가르드)",
+   "trigger": "2026-10-28 이후 공식전 5경기 (0/5)"
+  },
+  {
+   "closed": null,
+   "due": false,
+   "hold": false,
+   "id": 79,
+   "phase": "decide",
+   "resolution": null,
+   "status": "open",
+   "title": "만잠비 ST 임시 기용",
+   "trigger": "2026-10-28 이후 만잠비 ST 선발 1경기 (0/1)"
+  },
+  {
+   "closed": null,
+   "due": false,
+   "hold": false,
+   "id": 80,
+   "phase": "decide",
+   "resolution": null,
+   "status": "open",
+   "title": "마조 ST 역할: 홀드업 vs 침투",
+   "trigger": "2026-10-28 이후 마조 ST 선발 2경기 (0/2)"
+  },
+  {
+   "closed": null,
+   "due": false,
+   "hold": false,
+   "id": 81,
+   "phase": "decide",
+   "resolution": null,
+   "status": "open",
+   "title": "가르나초 결정력(빌라 실측)",
+   "trigger": "2026-10-28 이후 가르나초 선발 3경기 (0/3)"
+  },
+  {
+   "closed": null,
+   "due": false,
+   "hold": false,
+   "id": 82,
+   "phase": "decide",
+   "resolution": null,
+   "status": "open",
+   "title": "상대 형태별 센터백 간격",
+   "trigger": "2026-10-28 이후 공식전 5경기 (0/5)"
+  },
+  {
+   "closed": null,
+   "due": false,
+   "hold": false,
+   "id": 83,
+   "phase": "decide",
+   "resolution": null,
+   "status": "open",
+   "title": "잭슨 오프사이드·침투 타이밍",
+   "trigger": "2026-10-28 이후 잭슨 선발 5경기 (0/5)"
+  },
+  {
+   "closed": null,
+   "due": false,
+   "hold": false,
+   "id": 84,
+   "phase": "decide",
+   "resolution": null,
+   "status": "open",
+   "title": "팀 인터셉트·볼 회수 25/26 대비",
+   "trigger": "2026-10-28 이후 리그 5경기 (0/5)"
+  },
+  {
+   "closed": null,
+   "due": false,
+   "hold": false,
+   "id": 85,
+   "phase": "decide",
+   "resolution": null,
+   "status": "open",
+   "title": "고메스 박스 도착·최종 패스 비중",
+   "trigger": "2026-10-28 이후 주앙 고메스 선발 3경기 (0/3)"
+  },
+  {
+   "closed": null,
+   "due": false,
+   "hold": false,
+   "id": 86,
+   "phase": "decide",
+   "resolution": null,
+   "status": "open",
+   "title": "카마라 결장 시 RDM 대체 서열",
+   "trigger": "2026-10-28 이후 공식전 5경기 (0/5)"
   }
  ]
 }
