@@ -196,6 +196,9 @@ def g14_clash(claim, evid, minblk=8, win=14):
     return out
 
 
+from core.quote_ko import only_translation_inserts  # noqa: E402  G14 ⑴ 번역 삽입 허용 · G42
+
+
 def g14_checks(con, base):
     """{키: 위반 리스트} — **읽기 전용**. base가 None이면 ⑴을 건너뛴다(첫 커밋 등)."""
     out = {"append_rewrite": [], "dup_phrase": [], "claim_evid_clash": []}
@@ -232,6 +235,8 @@ def g14_checks(con, base):
                         continue
                     if n is not None and n.startswith(o):
                         continue                      # 덧붙임(prefix 보존) → 정상
+                    if only_translation_inserts(o, n):
+                        continue                      # 「」 바로 뒤 한글 번역 괄호 삽입만(불변규칙 11 · core.quote_ko) → 정상
                     out["append_rewrite"].append(
                         (table, rid, fld, (o or "")[:60], (n or "")[:60]))
 
@@ -250,7 +255,9 @@ def g14_checks(con, base):
                 "SELECT id, claim, evidence, source, confidence FROM observations")}
         except sqlite3.Error:
             prev = {}
-        rows = [r for r in rows if prev.get(r[0]) != tuple(r[1:])]
+        # 「」 뒤 번역 괄호 삽입만 바뀐 행은 델타에서 뺀다 — 보존 중인 과거 결함(obs#503 등)이 번역 일괄 삽입으로 재적발되지 않게
+        rows = [r for r in rows if prev.get(r[0]) != tuple(r[1:])
+                and not (r[0] in prev and all(only_translation_inserts(o, n) for o, n in zip(prev[r[0]], r[1:])))]
     for rid, c, e, s, cf in rows:
         for fld, txt in (("claim", c), ("evidence", e), ("source", s), ("confidence", cf)):
             if not txt:
@@ -2111,6 +2118,18 @@ def run(db_path=None, verbose=True):
               + ("✅" if not g41 else "❌ core.half_terms.conv()/conv_md()로 바꿔 넣을 것 — " + " · ".join(g41[:6])))
     if g41:
         fails.append("G41")
+
+    # G42 — ⛔ **외국어 인용은 바로 뒤 괄호에 한국어 번역**(불변규칙 11 · 2026-09-13 사용자 지시). 2026-10-28 신설 —
+    #   지시 6주 뒤에도 obs·직무·감독 프로필에 미번역 인용 1,048건(383행)이 남아 있었다(「조심하자」 실패 · 불변규칙 13).
+    #   백로그를 일괄 번역한 뒤 **전수 검사**로 둔다(G41과 같은 방식). 판정 정본은 core/quote_ko.py.
+    #   G14 ⑴은 「」 바로 뒤 한글 괄호 삽입만 있는 변경을 재작성으로 보지 않는다(같은 모듈).
+    from core.quote_ko import db_violations as _qk_db
+    g42 = _qk_db(con)
+    if verbose:
+        print(f"G42 외국어 인용 한국어 병기: 위반 {len(g42)} "
+              + ("✅" if not g42 else "❌ 원문 「…」 바로 뒤에 (한국어 번역)을 붙일 것 — " + " · ".join(g42[:6])))
+    if g42:
+        fails.append("G42")
 
     con.close()
     if verbose:
