@@ -1,6 +1,6 @@
 # 전사(자동 생성 자막) — ZSfdxm9Al8o (en)
 
-> Andoni Iraola post-match press conference Liverpool 3-1 Tottenham - Liverpool FC
+> This Is Anfield — LIVERPOOL 3-1 TOTTENHAM | Andoni Iraola Press Conference (Carabao Cup) (게시 2026-09-15 · auto-caption · 수집 메모: 이라올라 경기 후 회견 — 종전 헤더 채널 「Liverpool FC」은 화자 소속 · 헤더 정정 2026-10-29: 종전 「설명 - 채널」 순서라 채널·제목이 뒤바뀌어 색인됐다)
 
 > 원본: https://www.youtube.com/watch?v=ZSfdxm9Al8o · 수집: scripts/yt_transcript.py
 > ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.

@@ -1,6 +1,6 @@
 # 전사(자동 생성 자막) — 6EF9ICo4zec (en)
 
-> Roberto De Zerbi post-match press conference Liverpool 3-1 Tottenham - Tottenham Hotspur
+> BeanymanSports — DE ZERBI: “I’M SORRY, IT’S MY RESPONSIBILITY!” 🙏 Liverpool 3-1 Tottenham 🏆 Carabao Cup (게시 2026-09-15 · auto-caption · 수집 메모: 데 제르비 경기 후 회견 — 종전 헤더 채널 「Tottenham Hotspur」은 화자 소속 · 헤더 정정 2026-10-29: 종전 「설명 - 채널」 순서라 채널·제목이 뒤바뀌어 색인됐다)
 
 > 원본: https://www.youtube.com/watch?v=6EF9ICo4zec · 수집: scripts/yt_transcript.py
 > ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.

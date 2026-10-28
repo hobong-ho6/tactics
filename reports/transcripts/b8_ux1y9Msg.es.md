@@ -1,6 +1,6 @@
 # 전사(자동 생성 자막) — b8_ux1y9Msg (es)
 
-> ATM 4-0 Osasuna recital ofensivo - Atletico Stats
+> Atlético Stats — ATLETI 4-0 OSASUNA: RECITAL OFENSIVO ANTES DEL DERBI (게시 2026-09-16 · auto-caption · 수집 메모: ATM 4-0 오사수나 공격 분석 · 헤더 정정 2026-10-29: 종전 「설명 - 채널」 순서라 채널·제목이 뒤바뀌어 색인됐다)
 
 > 원본: https://www.youtube.com/watch?v=b8_ux1y9Msg · 수집: scripts/yt_transcript.py
 > ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.
