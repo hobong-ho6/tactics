@@ -46,41 +46,47 @@ def main():
           f"실제 { {k: len(v) for k, v in res.items() if v} }")
     live.close(); base.close()
 
+    # 주입 대상: id를 박지 않고 HEAD dump(base)에 있는 가장 작은 obs id를 쓴다(2026-10-28 — 고정 id 픽스처가 낡은 G15 사고와 같은 구조 제거)
+    _l, _b = fresh()
+    oid = _b.execute("SELECT MIN(id) FROM observations").fetchone()[0]
+    _l.close(); _b.close()
+    check("주입 대상 존재", oid is not None, "HEAD dump observations가 비었다")
+
     # ── 1. ⑴ prefix 비보존 재작성 ────────────────────────────────────────
     live, base = fresh()
-    live.execute("UPDATE observations SET claim='완전히 다른 내용으로 바꿔 썼다' WHERE id=1")
+    live.execute("UPDATE observations SET claim='완전히 다른 내용으로 바꿔 썼다' WHERE id=?", (oid,))
     res = g14_checks(live, base)
-    hit = [r for r in res["append_rewrite"] if r[1] == 1 and r[2] == "claim"]
+    hit = [r for r in res["append_rewrite"] if r[1] == oid and r[2] == "claim"]
     check("⑴ 재작성 적발", bool(hit), f"append_rewrite={res['append_rewrite'][:2]}")
     live.close(); base.close()
 
     # ── 2. ⑴ 덧붙임(prefix 보존)은 통과해야 한다 — 정당한 addendum ───────
     live, base = fresh()
-    old = live.execute("SELECT claim FROM observations WHERE id=1").fetchone()[0]
-    live.execute("UPDATE observations SET claim=? WHERE id=1",
-                 (old + "\n\n[2026-09-08 추가] 덧붙임은 정상 작업이다.",))
+    old = live.execute("SELECT claim FROM observations WHERE id=?", (oid,)).fetchone()[0]
+    live.execute("UPDATE observations SET claim=? WHERE id=?",
+                 (old + "\n\n[2026-09-08 추가] 덧붙임은 정상 작업이다.", oid))
     res = g14_checks(live, base)
     check("⑴ 덧붙임은 통과(오탐 아님)",
-          not [r for r in res["append_rewrite"] if r[1] == 1],
+          not [r for r in res["append_rewrite"] if r[1] == oid],
           f"append_rewrite={res['append_rewrite'][:2]}")
     live.close(); base.close()
 
     # ── 3. ⑴ 행 삭제 적발 ───────────────────────────────────────────────
     live, base = fresh()
-    live.execute("DELETE FROM observations WHERE id=1")
+    live.execute("DELETE FROM observations WHERE id=?", (oid,))
     res = g14_checks(live, base)
     check("⑴ 행 삭제 적발",
-          any(r[1] == 1 and "삭제" in r[2] for r in res["append_rewrite"]))
+          any(r[1] == oid and "삭제" in r[2] for r in res["append_rewrite"]))
     live.close(); base.close()
 
     # ── 4. ⑴ escape hatch (G14_ALLOW_REWRITE) ───────────────────────────
     import os
     live, base = fresh()
-    live.execute("UPDATE observations SET claim='이관 때문에 재작성' WHERE id=1")
-    os.environ["G14_ALLOW_REWRITE"] = "observations:1"
+    live.execute("UPDATE observations SET claim='이관 때문에 재작성' WHERE id=?", (oid,))
+    os.environ["G14_ALLOW_REWRITE"] = f"observations:{oid}"
     res = g14_checks(live, base)
     del os.environ["G14_ALLOW_REWRITE"]
-    check("⑴ 명시 허용 시 통과", not [r for r in res["append_rewrite"] if r[1] == 1])
+    check("⑴ 명시 허용 시 통과", not [r for r in res["append_rewrite"] if r[1] == oid])
     live.close(); base.close()
 
     # ── 4b. ⑴ player_duties도 보호 대상이다(observations 전용이 아니다) ──

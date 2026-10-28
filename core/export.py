@@ -97,11 +97,13 @@ def export_all(db_path=None, window="2026-summer"):
         ingame = []
         for fr in _rows(con, "SELECT * FROM v_kernel_fidelity WHERE game_version=? ORDER BY role_id, focus", (gv,)):
             caps = con.execute("""SELECT map25, ref_map25, note FROM ingame_captures
-                                  WHERE game_version=? AND ref_kind LIKE ? AND note NOT LIKE '%조작 오염%'""",
+                                  WHERE game_version=? AND ref_kind LIKE ? AND note NOT LIKE '%조작 오염%'
+                                  ORDER BY rowid""",
                                (gv, f"kernel:{fr['role_id']}/{fr['focus']}@%")).fetchall()
             refs = [c[1] for c in caps]
             fr["measured_map25"] = mean_map25([c[0] for c in caps])
-            fr["ref_map25"] = max(set(refs), key=refs.count) if refs else None
+            # 최빈 기준 · 동률이면 가장 최근 캡처의 기준(2026-10-28 — set 순회 순서가 실행마다 달라 export가 두 값을 오갔다)
+            fr["ref_map25"] = max(reversed(refs), key=refs.count) if refs else None
             fr["n_sim"] = sum("시뮬레이션" in (c[2] or "") for c in caps)
             ingame.append(fr)
         # 역할 근거 ③ 실축 예시 선수 — 실측 처방(kind measured*)에서 이 역할·포커스가 최적 적합으로 나온 선수, 적합도 순 3명.
