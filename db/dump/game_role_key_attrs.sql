@@ -282,7 +282,7 @@ INSERT INTO game_role_key_attrs VALUES(289,'FC26','cb_bpd','질주 속도',2,'20
 INSERT INTO game_role_key_attrs VALUES(290,'FC26','cb_defender','가속',2,'2026-09-19 보정 — 속도 축 결손(사용자 지적)','MEDIUM — 상동');
 INSERT INTO game_role_key_attrs VALUES(291,'FC26','cb_defender','질주 속도',2,'2026-09-19 보정 — 속도 축 결손(사용자 지적)','MEDIUM — 상동');
 INSERT INTO game_role_key_attrs VALUES(292,'FC26','wm_widemid','체력',3,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 왕복이 이 역할의 전제. 종전 유지');
-INSERT INTO game_role_key_attrs VALUES(293,'FC26','wm_widemid','크로스',3,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 「stay wide to support」의 산출물. 2→3 상향');
+INSERT INTO game_role_key_attrs VALUES(293,'FC26','wm_widemid','크로스',3,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 「stay wide to support」(폭을 유지해 지원한다)의 산출물. 2→3 상향');
 INSERT INTO game_role_key_attrs VALUES(294,'FC26','wm_widemid','가속',2,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 종전 표에 아예 없었다(결손). 폭을 유지하며 오르내리려면 필요');
 INSERT INTO game_role_key_attrs VALUES(295,'FC26','wm_widemid','질주 속도',2,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 1→2 상향');
 INSERT INTO game_role_key_attrs VALUES(296,'FC26','wm_widemid','짧은 패스',2,'EA 역할 설명 3종 재독(2026-09-19 재검토)','MEDIUM — 점유 지원. 종전 유지');

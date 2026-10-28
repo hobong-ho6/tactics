@@ -6,7 +6,8 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from core.quote_ko import missing, only_translation_inserts  # noqa: E402
+from core.quote_ko import missing, only_translation_inserts, target_columns  # noqa: E402
+import sqlite3  # noqa: E402
 
 FAIL = []
 
@@ -24,6 +25,10 @@ check("바로 뒤 괄호 번역은 통과", not missing("「It was my decision�
 check("— 「한국어」 번역은 통과", not missing("「Marco felt pain in his back」 — 「마르코가 등에 통증을 느꼈다」"))
 check("한국어 인용은 대상 아님", not missing("「비보유 RB → 보유 중원」 구조"))
 check("단어 하나(고유명)는 대상 아님", not missing("「Alysson」 표기"))
+check("= 「한국어」 번역은 통과", not missing("「he is very limited」 = 「매우 제한적이다」"))
+check("원문 표기(번역이 앞)는 통과", not missing("수비를 보호한다(EA 원문 「drop into the defensive line」)."))
+check("같은 괄호 안 쉼표 뒤 번역은 통과", not missing("(「six to eight weeks out」, 6~8주 결장)"))
+check("약어·도메인만은 대상 아님", not missing("「PL/EL」 · 「readastonvilla.com 2026-09-07」"))
 check("한글 없는 괄호(출처)는 번역 아님", len(missing("「we lost our shape」(obs#638)")) == 1)
 
 print("G14 번역 삽입 허용")
@@ -39,6 +44,16 @@ check("「」 아닌 자리 삽입 → 불허", not only_translation_inserts(old
 check("기존 번역 삭제 → 불허", not only_translation_inserts("「a b」(가나) 끝", "「a b」 끝"))
 check("기존 괄호 앞에 새 번역 삽입 → 허용", only_translation_inserts("「a b」(obs#1) 끝", "「a b」(가 나)(obs#1) 끝"))
 check("삽입 괄호와 같은 글자로 이어지는 본문 → 허용", only_translation_inserts("「a b」(번역 아님 x", "「a b」(번역)(번역 아님 x"))
+
+print("범위")
+_m = sqlite3.connect(":memory:")
+_m.executescript("CREATE TABLE match_reports(id INT, overall_assessment TEXT, source TEXT);"
+                 "CREATE TABLE fc_objective_tasks(id INT, task_text_kr TEXT);"
+                 "CREATE TABLE match_videos(id INT, title TEXT, key_points TEXT);")
+_tc = target_columns(_m)
+check("리포트 본문 열은 대상", "overall_assessment" in _tc.get("match_reports", []))
+check("source·title 열은 제외", "source" not in _tc.get("match_reports", []) and "title" not in _tc.get("match_videos", []))
+check("게임 카탈로그 표(fc_*)는 제외", "fc_objective_tasks" not in _tc)
 
 print("✅ 전항 통과" if not FAIL else f"❌ 실패 {FAIL}")
 sys.exit(1 if FAIL else 0)
