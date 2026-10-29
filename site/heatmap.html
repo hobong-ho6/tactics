@@ -29,7 +29,7 @@ B 패널은 FC 슬롯 좌표다. 두 칩의 어긋남이 곧 "실측과 처방 �
 <script type="module">
 import { mountHeader, loadTeam, loadKernels, loadCurrentKernels, slotCandidates, canonSlots} from './assets/data.js?v=20261004-nav';
 import { Kernel, decodeMap } from './assets/kernel.js?v=20260825-decodemap-null';
-import { drawPitch, drawComposite, drawChip } from './assets/pitch.js?v=20260825-decodemap-null';
+import { drawPitch, drawComposite, drawChip } from './assets/pitch.js?v=20261029-grid-pct';
 
 const { team } = await mountHeader('heatmap.html');
 const [td, kd] = await Promise.all([loadTeam(team), loadCurrentKernels()]);

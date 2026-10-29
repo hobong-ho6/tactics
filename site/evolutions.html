@@ -3276,7 +3276,7 @@ function renderClub(){
   /* ⭐⭐ **보유 전체를 카드로 세우고 리그 → 팀으로 좁힌다**(2026-09-23 사용자 지시).
      ⛔ 「빌라만」 토글을 리그·팀 필터로 대체했다 — 보유 99명이 26개 리그·51개 클럽에 흩어져 있어
         한 팀만 보는 토글로는 나머지를 찾을 수 없었다. */
-  const owned = all;
+  const owned = all.filter(p => p.status === 'owned');   // ⛔ SBC 제출·판매·버림 카드는 원장에만 남기고 화면에서 뺀다
   const LG = p => p.league || '(리그 미수집)';
   const CL = p => p.club || '(클럽 미수집)';
   const lgCount = {}; for (const p of owned) lgCount[LG(p)] = (lgCount[LG(p)] || 0) + 1;
@@ -3298,7 +3298,7 @@ function renderClub(){
       opt('ALL', '전체', owned.length, curLg)}${byCount(lgCount).map(([k, n]) => opt(k, k, n, curLg)).join('')}</select></label>
     <label class="kv">팀 <select id="clsel">${
       opt('ALL', '전체', inLg.length, curCl)}${byCount(clCount).map(([k, n]) => opt(k, k, n, curCl)).join('')}</select></label>
-    <span class="dim" style="font-size:12px">${shown.length}명 표시 · 보유 ${all.length}명</span>`;
+    <span class="dim" style="font-size:12px">${shown.length}명 표시 · 보유 ${owned.length}명</span>`;
   fb.querySelector('#lgsel').addEventListener('change', e => {
     localStorage.setItem('club_lg', e.target.value); localStorage.setItem('club_cl', 'ALL'); renderClub(); });
   fb.querySelector('#clsel').addEventListener('change', e => {
