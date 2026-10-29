@@ -437,7 +437,7 @@ CREATE TABLE understat_player_matches(
   source TEXT,
   UNIQUE(player_id, us_match_id)
 );
-CREATE TABLE "player_evaluations"(
+CREATE TABLE IF NOT EXISTS "player_evaluations"(
   id INTEGER PRIMARY KEY,
   regime_id INTEGER REFERENCES regimes(id),   -- NULL = 아직 우리 선수가 아니다(영입 후보). 불변규칙 7.
   player_id INTEGER NOT NULL REFERENCES players(id),
@@ -911,7 +911,7 @@ CREATE TABLE fc_sbc_exclusions(
   added           TEXT,
   PRIMARY KEY(game_version, challenge_ea_id, club_player_id)
 );
-CREATE TABLE "fut_club_players"(
+CREATE TABLE IF NOT EXISTS "fut_club_players"(
   id INTEGER PRIMARY KEY,
   account_id INTEGER NOT NULL REFERENCES fut_accounts(id),
   player_id INTEGER REFERENCES players(id),   -- 우리 DB 선수면 연결(조인 규칙: player_id)
@@ -991,7 +991,7 @@ CREATE TABLE fc_gallery_tiers(
   source TEXT, confidence TEXT,
   PRIMARY KEY(game_version, set_id, grade, pulled)
 );
-CREATE TABLE "fc_sbc_solutions"(
+CREATE TABLE IF NOT EXISTS "fc_sbc_solutions"(
   game_version    TEXT NOT NULL REFERENCES game_versions(code),
   challenge_ea_id INTEGER NOT NULL,
   pulled          TEXT NOT NULL,          -- 판정일 = 그날의 보유 카드 기준이라는 뜻
