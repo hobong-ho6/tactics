@@ -25,6 +25,14 @@ UA = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"}
 INDEX = {"FC27": "https://www.ea.com/games/ea-sports-fc/fc-27/news", "FC26": "https://www.ea.com/games/ea-sports-fc/fc-26/news"}
 # 게임 시스템과 무관한 글(모드 소개·구매 안내)은 「무관」으로 표시만 한다 — 적재 대상이 아니라고 색인에서 지우지는 않는다.
 OFF_TOPIC = re.compile(r"editions-and-release-dates|dual-entitlement|club-membership|which-fc27-mode|how-to-get-started|authenticity$")
+# 회차에서 원문을 읽고 「시스템 변경 없음」으로 판정한 글 — 판정 회차 리포트를 함께 적는다(다음 회차가 같은 글을 또 읽지 않게 · 10-29 future-stars 2회차).
+REVIEWED = {
+    "fc-27-future-stars": "FUT 프로모 한정 규칙 · 2026-10-12",
+    "title-update-v1-0-3": "버그 수정만(밸런스 0) · 2026-10-29",
+    "fc27-month-1-evolutions-rewards": "클럽 멤버 보상 진화 공지 · 2026-10-29",
+    "fc-27-the-grounds-developer-launch-update": "The Grounds 모드 · 2026-10-29",
+    "pitch-notes-fc27-the-grounds-deep-dive": "The Grounds 모드 · 2026-10-29",
+}
 
 
 def main():
@@ -54,9 +62,10 @@ def main():
     for s in slugs:
         hit = s in joined
         off = bool(OFF_TOPIC.search(s))
-        mark = "✅ 적재됨" if hit else ("— 무관(모드·구매 안내)" if off else "❌ 미적재")
+        rev = REVIEWED.get(s)
+        mark = "✅ 적재됨" if hit else ("— 무관(모드·구매 안내)" if off else (f"— 검토·비적재({rev})" if rev else "❌ 미적재"))
         print(f"  {mark:12s} {s}")
-        if not hit and not off:
+        if not hit and not off and not rev:
             missing.append(s)
     print(f"\n미적재 {len(missing)}: " + (" · ".join(missing) if missing else "0 ✅"))
     sys.exit(2 if missing else 0)
