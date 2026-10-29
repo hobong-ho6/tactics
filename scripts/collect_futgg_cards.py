@@ -112,52 +112,78 @@ def main():
 
     cur = con.cursor()
     rows, mismatch = [], []
+    jobs = []
     for ea, (pid, kr) in sorted(targets.items(), key=lambda x: x[1][1]):
         d = get(f"{API}/players/v2/all-versions/{ea}/")
-        for it in (d or {}).get("data", []):
-            if str(it.get("game")) not in a.games:
-                continue
-            if it.get("basePlayerEaId") != ea:
-                mismatch.append((kr, ea, it.get("eaId"), it.get("basePlayerEaId")))
-                continue
-            gk = it.get("position") == 0
-            attrs = {ATTR_MAP[k]: it[k] for k in ATTR_MAP if it.get(k) is not None}
-            attrs = {k: v for k, v in attrs.items() if (k in GK_ATTRS if gk else k not in OUTFIELD_DROP)}
-            ps = [playstyle.get(i, f"PS#{i}") for i in it.get("playstyles") or []] + \
-                 [playstyle.get(i, f"PS#{i}") + "+" for i in it.get("playstylesPlus") or []]
-            positions = "/".join([POS.get(it.get("position"), str(it.get("position")))] +
-                                 [POS.get(i, str(i)) for i in it.get("alternativePositionIds") or []])
-            six = ([it.get("gkFaceDiving"), it.get("gkFaceHandling"), it.get("gkFaceKicking"),
-                    it.get("gkFaceReflexes"), it.get("gkFaceSpeed"), it.get("gkFacePositioning")] if gk else
-                   [it.get("facePace"), it.get("faceShooting"), it.get("facePassing"),
-                    it.get("faceDribbling"), it.get("faceDefending"), it.get("facePhysicality")])
-            rows.append(dict(
-                game_version=f"FC{it['game']}", ea_item_id=it["eaId"], base_ea_id=ea,
-                is_base=1 if it["eaId"] == ea else 0, player_id=pid, name_kr=kr,
-                rarity_ea_id=it.get("rarityEaId"), rarity_name=None,
-                released_at=(it.get("createdAt") or "")[:10] or None, club=None,
-                positions=positions, best_pos=positions.split("/")[0] if positions else None,
-                ovr=it.get("overall"), pac=six[0], sho=six[1], pas=six[2], dri=six[3], def_=six[4], phy=six[5],
-                attrs=json.dumps(attrs, ensure_ascii=False) if attrs else None,
-                playstyles=", ".join(ps) or None,
-                roles_plus=json.dumps(it.get("rolesPlus") or []),
-                roles_plus_plus=json.dumps(it.get("rolesPlusPlus") or []),
-                skill_moves=it.get("skillMoves"), weak_foot=it.get("weakFoot"),
-                height_cm=it.get("height"), weight_kg=it.get("weight"), birthdate=it.get("dateOfBirth"),
-                # ⚠️ 겉모습 축이다(migration 066) — 성능 판단에 쓰지 않는다.
-                #    False를 0으로 남기려면 원값의 None 여부를 먼저 본다(결손과 「제네릭 확인」은 다른 사실이다).
-                is_real_face=None if it.get("isRealFace") is None else int(it["isRealFace"]),
-                accelerate=accelerate_label(it.get("accelerateType")), preferred_foot=FOOT.get(it.get("foot")),
-                # 이미지: 목록 API cardImageUrl이 우선이고, 없으면 정의의 cardImagePath로 만든다(2026-09-17 — 20장이 NULL이었다)
-                card_image_url=("https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/" + it["cardImagePath"])
-                               if it.get("cardImagePath") else None,
-                futgg_url=it.get("url"),
-                acquisition=None, is_special=None, first_seen=a.pulled,   # 획득 경로·특별카드 여부는 아래 목록 API에서 채운다
-                nation=None, league=None, chem_extra=None, is_icon=None, is_hero=None,  # 케미스트리 원료도 목록 API에서(044)
-                simple_card_url=None, render_url=None,                                    # 합성용 자산(049)
-                source=f"fut.gg /api/fut/players/v2/all-versions/{ea}/ ({a.pulled} 수집, collect_futgg_cards.py)",
-                confidence="HIGH — EA 확정 아이템 정의. ⛔ Role+/++는 카탈로그 미공개라 raw id 목록이다(docs/21 ②).",
-            ))
+        jobs += [(ea, pid, kr, it) for it in (d or {}).get("data", [])]
+    # ⛔⛔ **all-versions도 아이템을 빠뜨린다 — 보유 카드는 상세 API로 보충한다**(2026-10-29 실증).
+    #    Jauregizar 「Destined for Glory」 85(27-67388468)가 base 279604의 all-versions 응답에 없어서,
+    #    싱크가 만든 스텁 행이 **한 달 동안 카드 이미지·포지션 없이** 남았다(화면은 「85 Jauregizar」 빈 카드).
+    #    `/player-item-definitions/{g}/{ea}/`에는 멀쩡히 있다 — 9-23 목록 API 누락과 같은 꼴이라 구조로 막는다.
+    #    ⇒ 보유 중인데 이번 응답에 안 나온 빈 카드만 낱개로 묻고, **보충 건수를 보고한다**(조용히 비워 두지 않는다).
+    if not a.team:
+        seen = {it.get("eaId") for *_, it in jobs}
+        supplemented = []
+        for gv in a.games:
+            for r in con.execute("""SELECT f.ea_item_id, COALESCE(i.name_kr, f.name) kr, i.player_id
+                                    FROM fut_club_players f
+                                    LEFT JOIN player_card_items i ON i.ea_item_id=f.ea_item_id AND i.game_version=?
+                                    WHERE f.status='owned' AND f.ea_item_id IS NOT NULL
+                                      AND (i.ea_item_id IS NULL OR i.card_image_url IS NULL
+                                           OR COALESCE(TRIM(i.positions),'')='')""", (f"FC{gv}",)):
+                if r["ea_item_id"] in seen:
+                    continue
+                o = (get(f"{API}/player-item-definitions/{gv}/{r['ea_item_id']}/") or {}).get("data") or {}
+                if o.get("eaId") != r["ea_item_id"] or not o.get("basePlayerEaId"):
+                    continue
+                jobs.append((o["basePlayerEaId"], r["player_id"], r["kr"], {**o, "game": str(o.get("game") or gv)}))
+                supplemented.append(r["kr"])
+        if supplemented:
+            print(f"  ↪️ all-versions 미응답 보유 카드 {len(supplemented)}장 → 상세 API로 보충: " + " · ".join(supplemented))
+    for ea, pid, kr, it in jobs:
+        if str(it.get("game")) not in a.games:
+            continue
+        if it.get("basePlayerEaId") != ea:
+            mismatch.append((kr, ea, it.get("eaId"), it.get("basePlayerEaId")))
+            continue
+        gk = it.get("position") == 0
+        attrs = {ATTR_MAP[k]: it[k] for k in ATTR_MAP if it.get(k) is not None}
+        attrs = {k: v for k, v in attrs.items() if (k in GK_ATTRS if gk else k not in OUTFIELD_DROP)}
+        ps = [playstyle.get(i, f"PS#{i}") for i in it.get("playstyles") or []] + \
+             [playstyle.get(i, f"PS#{i}") + "+" for i in it.get("playstylesPlus") or []]
+        positions = "/".join([POS.get(it.get("position"), str(it.get("position")))] +
+                             [POS.get(i, str(i)) for i in it.get("alternativePositionIds") or []])
+        six = ([it.get("gkFaceDiving"), it.get("gkFaceHandling"), it.get("gkFaceKicking"),
+                it.get("gkFaceReflexes"), it.get("gkFaceSpeed"), it.get("gkFacePositioning")] if gk else
+               [it.get("facePace"), it.get("faceShooting"), it.get("facePassing"),
+                it.get("faceDribbling"), it.get("faceDefending"), it.get("facePhysicality")])
+        rows.append(dict(
+            game_version=f"FC{it['game']}", ea_item_id=it["eaId"], base_ea_id=ea,
+            is_base=1 if it["eaId"] == ea else 0, player_id=pid, name_kr=kr,
+            rarity_ea_id=it.get("rarityEaId"), rarity_name=None,
+            released_at=(it.get("createdAt") or "")[:10] or None, club=None,
+            positions=positions, best_pos=positions.split("/")[0] if positions else None,
+            ovr=it.get("overall"), pac=six[0], sho=six[1], pas=six[2], dri=six[3], def_=six[4], phy=six[5],
+            attrs=json.dumps(attrs, ensure_ascii=False) if attrs else None,
+            playstyles=", ".join(ps) or None,
+            roles_plus=json.dumps(it.get("rolesPlus") or []),
+            roles_plus_plus=json.dumps(it.get("rolesPlusPlus") or []),
+            skill_moves=it.get("skillMoves"), weak_foot=it.get("weakFoot"),
+            height_cm=it.get("height"), weight_kg=it.get("weight"), birthdate=it.get("dateOfBirth"),
+            # ⚠️ 겉모습 축이다(migration 066) — 성능 판단에 쓰지 않는다.
+            #    False를 0으로 남기려면 원값의 None 여부를 먼저 본다(결손과 「제네릭 확인」은 다른 사실이다).
+            is_real_face=None if it.get("isRealFace") is None else int(it["isRealFace"]),
+            accelerate=accelerate_label(it.get("accelerateType")), preferred_foot=FOOT.get(it.get("foot")),
+            # 이미지: 목록 API cardImageUrl이 우선이고, 없으면 정의의 cardImagePath로 만든다(2026-09-17 — 20장이 NULL이었다)
+            card_image_url=("https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/" + it["cardImagePath"])
+                           if it.get("cardImagePath") else None,
+            futgg_url=it.get("url"),
+            acquisition=None, is_special=None, first_seen=a.pulled,   # 획득 경로·특별카드 여부는 아래 목록 API에서 채운다
+            nation=None, league=None, chem_extra=None, is_icon=None, is_hero=None,  # 케미스트리 원료도 목록 API에서(044)
+            simple_card_url=None, render_url=None,                                    # 합성용 자산(049)
+            source=f"fut.gg /api/fut/players/v2/all-versions/{ea}/ ({a.pulled} 수집, collect_futgg_cards.py)",
+            confidence="HIGH — EA 확정 아이템 정의. ⛔ Role+/++는 카탈로그 미공개라 raw id 목록이다(docs/21 ②).",
+        ))
 
     # 희귀도 이름·클럽·카드 이미지는 목록 API에서(버전별로 묶어 한 번에)
     for gv in {r["game_version"] for r in rows}:

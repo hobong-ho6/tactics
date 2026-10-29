@@ -7,7 +7,7 @@
       7 RM · 8 LM · 9 CAM · 10 ST, **우→좌**). */
 import { PLAYSTYLES, psLookup, psCanon } from './playstyle-icons.js';
 export { PLAYSTYLES, psLookup, psCanon };   // 화면들이 같은 사전을 쓰도록 재수출(설명·아이콘 중복 방지) · 조회는 psLookup 한 곳(2026-10-22)
-import { repaintEvoCard, replateCard, rarityLevel } from './evocard.js?v=20260927a';
+import { repaintEvoCard, replateCard, rarityLevel } from './evocard.js?v=20261029-ovrband';
 import { activeLog } from './evorules.js?v=20261024';   // 「지금 카드에 걸린 진화」 정본(제거·무효 제외 · migration 123)
 
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));

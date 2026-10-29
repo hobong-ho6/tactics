@@ -118,6 +118,13 @@ export function repaintEvoCard(im, vals){
     // ① 좌상단 OVR·포지션 (원본 카드 그대로의 자리)
     const ox0 = Math.round(W * 0.12), ox1 = Math.round(W * 0.34);
     const ob = bandsIn(ox0, ox1, Math.round(H * 0.11), Math.round(H * 0.42));
+    /* ⛔ 글자 줄이 **템플릿과 다르게 잡히면 다시 그리지 않는다**(2026-10-29 사용자 지적 「86이 카드 밖으로 크게 나온다」).
+       정상 카드 16장 실측: OVR 줄 98–126/419(6.9%) · 스탯 값 줄 319–333/419(중심 77.8%)로 일정하다.
+       무늬가 화려한 판(레어도 150 — Ferran Torres·Vušković·이강인)은 배경이 잉크로 잡혀 OVR 줄이 54–175(29%)가 됐고,
+       그 높이로 숫자를 그려 카드를 덮었다. 템플릿 자리로 강제해 봐도 흰 글자·다른 배치라 줄무늬와 겹침이 남았다.
+       ⇒ null(원본 유지) — 현재 값은 카드 아래 칩(85▸86)이 보여 준다. */
+    const okBand = (b, lo, hi) => b && (b.b - b.a + 1) / H >= lo && (b.b - b.a + 1) / H <= hi;
+    if (!okBand(ob[0], 0.04, 0.10)) return null;
     if (ob[0]){ const col = inkColor(ox0, ox1, ob[0]); erase(ox0, ox1, ob[0]); cx.fillStyle = col;
                 draw(String(vals.ovr ?? '—'), (ox0 + ox1) / 2, ob[0], 700); }
     if (ob[1] && vals.pos){ const col = inkColor(ox0, ox1, ob[1]); erase(ox0, ox1, ob[1]); cx.fillStyle = col;
@@ -129,6 +136,7 @@ export function repaintEvoCard(im, vals){
     const sx0 = Math.round(W * 0.15), sx1 = Math.round(W * 0.85);
     const sb = bandsIn(sx0, sx1, Math.round(H * 0.62), Math.round(H * 0.82));
     const labelB = sb.length >= 2 ? sb[sb.length - 2] : null, valB = sb.length >= 2 ? sb[sb.length - 1] : sb[0];
+    if (valB && (Math.abs((valB.a + valB.b) / 2 / H - 0.778) > 0.015 || !okBand(valB, 0.015, 0.05))) return null;
     if (valB){
       /* ⭐⭐⭐ 중심은 **값 줄 자체**에서 읽는다(2026-09-22 전면 수정).
          종전에는 라벨 줄(`PAC SHO …`)에서 x를 읽어 값을 그렸는데, 라벨은 6단어 18글자라
