@@ -263,3 +263,56 @@
 ## D+3 추적
 
 - 예약 `mw-avl-bournemouth-d3`(10-31 20:00) — 3일 추적 종결 · 풀럼전(10-31) 명단으로 가르나초·만잠비·고레츠카 서열 재확인 · complete 판정.
+
+## D+1 보강 (2026-10-29 13:30)
+
+> 예약 `mw-avl-bournemouth-collect-1330` · 분기 = **D+1 보강**(리포트·`match_reports` #64 존재 확인) · 경기 후 약 9시간 시점. 당일 절은 고치지 않고 정정은 아래 「당일 판정 정정」에 적는다.
+
+### ⑴ 감독 회견 — 09:30 이후 새 전문 0 · 기존 인용 보충 1
+- **에메리**: 새 회견 전사·영상 **0**. Tanswell X(22:2x) 긍정 명단 인용의 **뒷문장**을 직접 열람으로 보충 — 「We need players, we are playing a lot of matches and we need them.」(선수가 필요하다. 경기가 아주 많고 그들이 필요하다) → 컵 기용 사유가 「서열 시험」보다 **경기 수 대비 자원 확보**라는 당일 해석(§요약 E&S/PA 인용)과 같은 방향.
+- **에메리 — Sky/E&S 검색 요약 경유(원문 미열람 · E&S·Shropshire Star 403)**: 「We played the idea we set out on so I can't tell nothing to the players, they tried so we move on.」(계획한 아이디어대로 했으니 선수들에게 할 말이 없다. 시도했으니 넘어간다) · 「We are out. I have to accept.」(탈락했다. 받아들여야 한다) — ⚠️ 검색 요약 경유라 confidence 중(1차 원문 재확인 D+2).
+- **마르코 로제(본머스)**: Sky(검색 요약 경유 · 기사 미열람) 「We had eight changes today, and everyone played on a really good level. We are relentless, so it's the attitude and the effort.」(오늘 8명을 바꿨는데 모두 정말 좋은 수준으로 뛰었다. 우리는 끈질기다. 태도와 노력이다) · 「We are unpredictable in this stuff.」(이런 면에서 우리는 예측하기 어렵다 — 득점자 분산) — 빌라 구조를 짚은 대목 **여전히 0**. afcb.co.uk 회견 전문 검색 0.
+- **스페인어(에메리 모국어 · 필수)**: EFE 전재(Infobae·Proceso·ABC Color·Unitel 10-28) 「Emery no da con la tecla en esta competición y otro año más se queda sin alcanzar los cuartos de final」(에메리는 이 대회에서 해법을 찾지 못하고 올해도 8강에 오르지 못했다) — 결과 기사, **에메리 스페인어 발언 0**. OKDiario 「el Aston Villa de Emery no fue rival para un Bournemouth」(에메리의 빌라는 본머스의 상대가 되지 못했다 · 스니펫 · 403). 검색어: 「Emery Bournemouth Copa de la Liga eliminado declaraciones」 · 「Emery "Copa de la Liga" Goretzka Madjo intensidad」.
+
+### ⑵ Jacob Tanswell X — 추가분 0
+- 브라우저 직접 열람(로그아웃 · 13:3x KST): 고정 1 + 경기 관련 4건(21:23 실바 · FT 총평 · 긍정 명단 · 탈압박 계획) — **09:30 회차와 같은 4건, 새 게시 0**. The Athletic 본문(유료벽) 검색 0.
+
+### ⑶ 필수 채널 3곳 — 새 경기 영상 0 (G17 대상 없음)
+| 채널 | 09:30 이후 새 업로드 | 판단 |
+|---|---|---|
+| UTV(@UTVFANCHANNEL) | videos·streams 탭 0 | 리액션 #457 기수집 |
+| The Villans(@TheViIIans) | **경기 후 업로드 여전히 0**(최신 = 프리뷰 5xoiziTaf8o #399 기수집) | D+2에 재확인 |
+| 1874(@The1874Podcast) | ZKAIfnEpyJ8 「Dan Bardell at talkSPORT…」(10-28 · 13:36) | **건너뜀** — 설명란 「discuss Aston Villa's win over Manchester City and Manchester United being linked with Unai Emery」(맨시티전 승리와 맨유-에메리 연결설을 다룬다) · 본머스전 아님(§2-1a 경기 한정) |
+- 확인 방법: `yt-dlp --flat-playlist`(목록·설명란만 · 재생 없음 → 뮤트 해당 없음).
+
+### ⑷ 다국어 기사 — 새 자료 3건
+- **The False 9(Kabir Anand · 10-28 20:11 갱신 · 직접 열람) 「Rose's Press, Wide Overloads and a Fifth Straight Win」** — 전술 분석 형식이나 구체 수치는 경기 기본 지표뿐(등급 D 상당 · 지역지 아님):
+  - 「Villa's midfielders received the ball facing their own goal」(빌라 미드필더들은 자기 골문을 향한 채 볼을 받았다) · 「loose passes in the middle third became Bournemouth attacks rather than clearances」(중앙 3분의 1 지역의 느슨한 패스가 걷어내기가 아니라 본머스 공격이 됐다) → 영상 주장 #52(압박 하 중앙 턴오버 · HELD)와 같은 방향.
+  - 「Villa's right side had to defend the winger, the overlapping full-back and the late runner at the same time」(빌라 오른쪽은 윙어·오버래핑 풀백·늦게 들어오는 러너를 동시에 막아야 했다) → 사용자 메모 H2(실점 2/3 빌라 오른쪽 마무리 · 부분 일치)와 같은 방향 · 보가르드 RB 노출.
+  - 부엔디아 「couldn't find space between Bournemouth's midfield and defence … because Christie and Cook rarely gave him a yard to turn in」(본머스 미드필드와 수비 사이에서 공간을 찾지 못했다 — 크리스티·쿡이 돌아설 틈을 거의 주지 않았다).
+  - 마조 「his clearest chance, a run in behind in the first half, was smothered by Michele Di Gregorio」(가장 확실한 찬스였던 전반 배후 침투를 디 그레고리오가 몸으로 막았다) — ⚠️ **실측과 충돌**: 전반 마조 유효 슈팅은 29′ **부엔디아 슈팅 리바운드**(SS·E&S 「a mis-hit Emi Buendia shot almost became the perfect assist」(빗나간 부엔디아 슈팅이 완벽한 도움이 될 뻔했다 · E&S 검색 요약 경유))이고 빅찬스는 72′. 실측 채택(불변규칙 3) — #80 「침투」 근거로 세지 않는다.
+- **Aston Villa News(Jacob Raw · 10-28 21:51 · 직접)** 보스로이드 비판 반박 기사 — 고레츠카와 고메스는 「were arguably two of Villa's better players against Bournemouth」(본머스전 빌라에서 가장 나은 두 선수였다고 할 만하다) · 「boasting an impressive 97 per cent passing accuracy」(패스 성공률 97%) · 「completing the joint-most dribbles in the match (2)」(경기 최다 타이 드리블 2회) · 「he needs to build his fitness up」(체력을 끌어올려야 한다) · 해당 헤더는 xG 0.03이라 빅찬스 실패가 아니라는 주장(실측 xG 0.03과 일치).
+- **zamin.uz(프랑스어 · 10-28)** 「Nuit de sensations en Angleterre : Aston Villa balayé」(잉글랜드의 이변의 밤: 아스톤 빌라 완패) — 결과·라인업만. ⚠️ 음바예 교체 투입자를 가르나초로 적음 — SS incidents는 **58′ 알리송 ↔ 음바예 · 가르나초 ↔ 헤밍스**(실측 채택).
+- 0건(검색어 기록): BBC·Birmingham Mail 경기 기사 재검색 0 · The Athletic(Tanswell) 0 · afcb.co.uk 로제 회견 전문 0.
+
+### ⑸ 09:30 회차 결손 점검 — 결손 0
+- `gates.py` 전항 통과(13:3x · G21 필수 3종·G23 국면 분·G37 가설/흐름/요약 포함) · `match_player_reports` #64 16행 전부 4열 채움 · `player_matches` 16행 국면 그리드·운반 적재 확인. 채울 빈칸 없음.
+
+### ⭐ 중점 5인 — D+1 추가분
+| 선수 | 새 언급(원문+번역) | 모국어·출신 리그 매체 | 쟁점 진행도(`claim_issues` 13:3x 실측) |
+|---|---|---|---|
+| **마조** | The False 9 「Brian Madjo, the 17-year-old striker leading the line, was booked for diving」(최전방을 맡은 17세 스트라이커 마조는 다이빙으로 경고를 받았다) · 배후 침투 서술은 실측과 충돌(위 ⑷) · E&S 「Madjo couldn't react in time」(마조는 제때 반응하지 못했다 · 29′ 리바운드 · 검색 요약) | ⚠️ **국적 정정**: 당일 절 「카메룬」은 오기 — DB `players.nationality` = **Luxembourg**(A대표 3경기 · 잉글랜드 U17 · 엔필드 출생 · 라싱 룩셈부르크 → 메스). 룩셈부르크 매체(L'essentiel·Luxemburger Wort·RTL) 검색 **0** · 카메룬(Camfoot) 검색 0 · 메스(Républicain Lorrain) 09:30 0 | **#80 0/2** — 이 경기 pos_class LAM이라 세지지 않음(당일 예상대로) |
+| **고레츠카** | Aston Villa News 「two of Villa's better players」(빌라에서 가장 나은 두 선수 중 하나) · 「needs to build his fitness up」(체력을 끌어올려야 한다) · The False 9 「headed a free header wide in first-half stoppage time」(전반 추가시간 노마크 헤더를 빗나가게 했다) | 독일어 재검색(「Goretzka Aston Villa Bournemouth Pokal Aus Startelf Kritik」) — Sport1 기수집 외 **0**(headtopics 「Startelfdebüt für Leon Goretzka」(고레츠카 선발 데뷔)는 Sport1 재게시) | **#25 1/2** — ⚠️ 당일 「2/2 판정할 차례」는 **정정**(아래) |
+| **하우드-벨리스** | 새 언급 0(The False 9·Villa News 모두 이름 없음) | 영어 지역지(Echo·MEN) 0 | **#24 0/2**(10-29 연장 후 재시작) · **#58 0/2**(PL 표본 — 컵이라 미산입) |
+| **음바예** | 새 언급 0 · zamin.uz 교체 오기(위) | 프랑스어·세네갈 재검색(「Ibrahim Mbaye Aston Villa Bournemouth Coupe de la Ligue éliminé」) — Wiwsport 기수집 외 0 | **#6 2/3 · #7 1/2 · #48 1/2** — ⚠️ 당일 「이 경기로 찬다」는 **정정**(아래) |
+| **헤밍스** | 새 언급 0 | 영어 지역지 0 | 대응 쟁점 없음 — 새 쟁점 후보(LM 폭 유지 vs 정본 인사이드 포워드) 그대로 · 사용자 판단 |
+
+### 당일 판정 정정
+- **쟁점 진행도**: 당일 절은 #25 「2/2 판정할 차례」, #6·#7·#48 「이 경기로 트리거가 찬다」고 적었으나 `claim_issues.py --due` 실측은 **#25 1/2 · #6 2/3 · #7 1/2 · #48 1/2 — AVL 판정할 차례 0**(목록 12건은 전부 보류 팀 CHE·LIV·ATM). 다음 음바예·고레츠카 선발 1경기(풀럼 10-31 또는 바르사 11-03)로 #25·#7·#48이 찬다. 당일 「판정은 아래 절」 표기는 무효.
+- **마조 국적**: 카메룬 → 룩셈부르크(DB 정본 · 위 표). 예약 지시의 「카메룬」 모국어 매체 축은 **룩셈부르크(프랑스어·독일어·룩셈부르크어) + 메스(프랑스)**로 바꿔 훑었다.
+
+### 보류 5건 재판정 표
+- 리포트 끝에 이미 있음(09:30 회차 · obs#1123 형식) → 다시 붙이지 않았다. 정본·인게임 코드 변경 없음 — 사용자 판단 대기 그대로.
+
+### D+2로 넘김
+- The Villans 경기 후 영상 · E&S 에메리 회견 원문(403 → 다른 경로) · 전술 블로그(TFA·BTL·Spielverlagerung·Coaches' Voice) · 본머스 관점(Daily Echo·팬 채널) · 룩셈부르크 매체 재시도.
