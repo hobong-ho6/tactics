@@ -316,3 +316,68 @@
 
 ### D+2로 넘김
 - The Villans 경기 후 영상 · E&S 에메리 회견 원문(403 → 다른 경로) · 전술 블로그(TFA·BTL·Spielverlagerung·Coaches' Voice) · 본머스 관점(Daily Echo·팬 채널) · 룩셈부르크 매체 재시도.
+
+## D+2 추적 (2026-10-30)
+
+> 예약 `mw-avl-bournemouth-d2` · 경기 후 약 2일. 당일·D+1 절은 고치지 않고 정정은 아래 「당일 판정 정정」에 적는다(obs#1150·#1151 · `match_hypotheses` D2 정정 2행). 관전 메모(notes)에 「D+2 재판정」으로 남은 행은 없었다.
+
+### ⑴ 감독 회견 — 새 전문 1건(BBC) · D+1 2차 인용의 1차 확인
+- **에메리 — BBC Sport(AOL 전재 · 10-29 09:48 UTC · 직접 열람)**: D+1에서 검색 요약 경유(confidence 중)로 적었던 문장이 **BBC 원문에서 확인됐다** — 「This is a match we have lost, but I can't tell my players anything because I think they made an effort」(진 경기지만 선수들에게 할 말이 없다. 노력했다고 생각한다) + 「they played the plan we set up」(우리가 세운 계획대로 했다). 새 대목: 「We needed fresh players.」(신선한 선수들이 필요했다 — 선발 9명 교체 사유) · 「They are good at creating chances, so we needed our defence and our goalkeeper to be compact.」(상대는 찬스를 잘 만들어서 수비와 골키퍼가 촘촘해야 했다) · 가르나초 PL 출전 근접 여부 질문에 「He got 30 minutes in this match, a good 30 minutes. He is progressing and getting better. This is the way.」(이 경기에서 30분, 좋은 30분을 뛰었다. 나아지고 있다. 이게 그 길이다) → 이월 C1(가르나초 서열) **일치 유지**.
+- **에메리 — Read Aston Villa(10-29 06:41 · 직접)**: avfc 인터뷰 재수록 · 「We needed the 'keeper, we needed the defence being compact, like we are building this team.」(우리가 이 팀을 만들어 가듯 골키퍼와 수비가 촘촘해야 했다) — 나머지는 당일 인용과 같다.
+- **비조·스즈키 관련 에메리 「암시」**: Shropshire Star(Matt Maher 칼럼 · 403 · **검색 요약 경유**) 「Emery certainly hinted at that, during the post-match debrief.」(에메리는 경기 후 브리핑에서 그 점을 분명히 암시했다 — 비조 발밑 처리 vs 스즈키 · 1월 아시안컵) — **에메리 원문은 미확보**(E&S·Shropshire Star 403) → D+3.
+- **마르코 로제**: 새 회견 0 — beIN(스페인어 · 10-29)·Sky·BBC 모두 기존 인용(「relentless」(끈질기다)) 재사용. 빌라 구조를 짚은 대목 **여전히 0**.
+- **스페인어(에메리 모국어)**: beIN 스페인어판(10-29 · 직접) — 에메리 발언은 **간접 인용만**(「compacto」(촘촘함)·우선순위 PL→UCL→FA컵 · 원정 팬 감사) · 직접 인용 0. 검색어: 「Unai Emery Bournemouth derrota Copa de la Liga declaraciones Bizot OR Goretzka octubre 2026」.
+- 풀럼전 사전 회견(10-30 예정): 검색 시점 미게재 → D+3에서 비조·고레츠카·만잠비 언급 확인.
+
+### ⑵ 영상 — 새로 귀속 4편 전부 전사·요약·구현 주장(G17) · 전부 auto-caption · 자막 포착은 뮤트
+| # | 채널·제목 | 게시 | 전사 경로 | 종류 |
+|---|---|---|---|---|
+| #460 | **UTV** 「WHY DOES UNAI EMERY DO THIS IN THE CARABAO CUP?」(9eTWMlqU420 · 25:52) | 10-29 | yt-dlp 429 → 브라우저 pot | 전술분석(실점 3장면) |
+| #461 | **The Villans** 「Do We Have A Goalkeeper Problem?, Beating Fulham & …」(EUhuiiN4cJA · 26:27) | 10-30 | yt-dlp | 경기반응(비조) + 풀럼 프리뷰 |
+| #463 | **본머스 팬채널** Back of the Net 「REACTION: AFC Bournemouth 3-0 Aston Villa」(LwVM0nRNjwo · 15:54) | 10-28 | 브라우저 pot | 상대팀 |
+| #462 | **본머스 팬채널** Cherries Red Army 「On The FINAL WHISTLE: Bournemouth 3-0 Aston Villa」(0NDrl3MNxmQ · 11:23) | 10-29 | 브라우저 pot | 상대팀 |
+- 건너뜀(§2-1a 경기 한정): 1874 FhbYRUQRi_8(풀럼 프리뷰 10-30) · 1874 6IBxLgNjRmQ(캐러거·맨유-에메리 Q&A 10-29) · Penno _BGPEhfoi8A·From Villa Park X2_s9XPAUuw(필수 채널 밖 · 상대 관점 2편으로 대체) · Richard Morse v9GBuypspuk(1:28 단신). Tanswell: 새 기사·X 확인 안 함(D+1에 새 게시 0 · 로그인 벽).
+- 경기 귀속: 제목에 상대 표기가 없거나 채널이 매핑 밖이라 `_video_overrides.json`에 4편 `report_id 64`를 사람 판정으로 붙였다.
+
+**#460 UTV 디브리프** — 앞 절반은 리그컵 상금(10만 파운드 vs UCL 승리당 180만)과 우선순위로 에메리의 로테이션을 설명(팬 의견). 뒤 절반이 실점 3장면:
+- 7′: [14:45] 「Hemmings is so high and by is so high that we needed to have them slightly tucking in a little bit. So we're playing like a four two four here」(헤밍스도 음바예도 너무 높아 조금 좁혀야 했다. 사실상 4-2-4였다) · 미드필드 2와 백4 사이 간격 · [16:18] 보가르드가 오프사이드를 걸려고 전진 → 측면 러너 미추적 · [17:20] 박스 가장자리 러너가 「peels off」(고레츠카에게서 떨어져 나가) 마무리 → 주장 #54 HELD.
+- 51′: 비조 처리 실수 · [18:53] 「Maybe Majo should be on that near post」(마조가 니어포스트에 있었어야 했다) → NA(세트피스 개인 배치 · 역할 축 아님).
+- 69′: [20:57] 「the players that are playing in front of this back four aren't pressurizing on the ball」(백4 앞 선수들이 볼에 압박을 가하지 않는다) · [21:29] 「Harwood Bellis actually really defends this pretty well」(하우드-벨리스는 꽤 잘 막았다) · [22:01] 「Bogard decides to come back inside and play this pass into Gomez. who's under pressure. It's kind of like a blind pass.」(보가르드가 안으로 돌아서 압박받는 고메스에게 블라인드 패스를 넣었다) → 주장 #52 HELD.
+- 실측 대조: WS 68′00 보가르드 패스 (18.9,3.9)→(28.5,24.6) 실패·Error → 클라위버르트 터치 → 애덤스 패스 (71,90)→(85,67) → 68′04 로드리게스 득점 — 턴오버 일치, 단 **고메스 경합 이벤트는 없다**(끊은 첫 터치는 클라위버르트). 「헤밍스·음바예가 너무 높다」는 평균 좌표로는 확인 안 된다(비보유 수비 액션 음바예 (42,35)·헤밍스 (41,84)) — 실점 순간 스냅샷은 이벤트로 측정 불가.
+
+**#461 The Villans** — 앞 10분 「골키퍼 문제」: [01:04] Howard 「he did make two mistakes. So there's no doubt he was was at fault for two of the goals」(실수 두 번, 두 골에 책임이 있다) — ⚠️ **실측과 충돌**: SS errorsLeadToGoal은 비조 1(51′)·보가르드 1(69′) · 실측 채택(불변규칙 3) · Roundtable(Dan Bardell 10-29)은 7′ 실점도 비조가 라인에 머문 탓으로 봄(해석 차 · 에러 이벤트 아님). [01:34] 「He did not have Kamar as a release」(카마라라는 출구가 없었다) · [04:11] 「he's not Suzuki and he can't do what Suzuki can do mainly distribution」(스즈키가 아니라 배급을 못 한다) → 주장 HELD(#52 · 1월 비조 선발 2경기 재판정). [16:08] 알리송 「comes on the pitch and instantly he's going past players」(들어오자마자 상대를 제쳤다) · 「does do the defensive work really well」(수비 가담도 잘한다) → 주장 PENDING #6.
+
+**#463 Back of the Net(상대 관점)** — [03:34] 「Villa weren't quite at the races today」(빌라는 오늘 제 컨디션이 아니었다) · [04:35] 본머스 RB 후안루가 「the one weak link」(유일한 약한 고리)라 그쪽(= **빌라 왼쪽**)이 뚫렸지만 「a lot of the Villa stuff came through the middle」(빌라 공격은 대부분 중앙으로 왔다) · [06:08] 첫 골은 「a long ball sprayed over the top」(머리 위로 뿌린 롱볼) → 솔레르 침투 · [07:09] 로제 구조 = 윙백 높게·CB 넓게·6번 하강 3인 빌드업 · [11:15] 높은 압박과 강도로 전후반 시작을 강하게 → 주장 NA(실측 빌드업 왼쪽 축과 같은 방향). 「대부분 중앙」은 UTV #457의 SS 공격 방향 낭독(왼쪽>중앙>오른쪽)과 엇갈린다 — 판정에 쓰지 않음.
+
+**#462 Cherries Red Army(상대 관점)** — 본머스 선수 평가가 대부분 · 빌라 쪽은 [02:36] 「Keeper was poor」(키퍼가 형편없었다 — 51′) · [06:10] 「Good turnover by Tyler Adams off the bench」(교체 투입된 애덤스의 좋은 볼 탈취 — 69′)뿐 → 주장 none.
+
+주장 5행(+none 1): HELD 3(#54 · #52 ×2) · PENDING 1(#6) · NA 2 · none 1.
+
+### ⑶ 다국어 기사·전술 블로그
+- **Roundtable(Dan Bardell · 10-29 16:44 · 직접)** 「Marco Bizot's difficult evening against Bournemouth has added to concerns about Aston Villa's goalkeeping situation」(본머스전 비조의 힘든 밤이 빌라 골키퍼 문제의 우려를 키웠다) · 2실점째 「the speed of his reaction was nowhere near good enough」(반응 속도가 전혀 충분하지 않았다) · 3실점째는 비조 탓 아님.
+- **Football FanCast(Ethan Lamb · 10-29 · 직접)** 헤밍스 3/10 — 「failed to direct any of his three efforts on target」(슈팅 3개 모두 골문을 벗어났다) · 드리블 40% · 지상 경합 71% 패배 · 보가르드 「one error leading to a goal」(실점으로 이어진 실수 1).
+- **Sport1(독일어 · 10-29 12:42 · 직접)** 「Leon Goretzka nach Klatsche deutlich kritisiert」(완패 뒤 크게 비판받은 고레츠카) — 「Goretzka erhielt bei FotMob mit 7,2 die beste Bewertung seines Teams」(FotMob 7.2로 팀 최고 평점) · 「brachte 97 Prozent seiner Pässe an」(패스 97% 성공) · 「Die Daten relativieren die Schärfe der Kritik allerdings」(다만 데이터는 비판의 날카로움을 누그러뜨린다). 포지션·에메리 언급 없음.
+- **BBC(AOL 전재)** 위 ⑴.
+- 전술 블로그(TFA·BTL·Spielverlagerung·Coaches' Voice·Cherry Chimes): **0건**(검색 「Bournemouth Aston Villa Carabao Cup tactical analysis Rose press」 · 「Bournemouth Aston Villa League Cup Rose pressing analysis cherries blog Adli Tavernier Juanlu」 — The False 9는 D+1 기수집). Bournemouth Daily Echo 검색 0(D+1 Request blocked 그대로).
+
+### ⭐ 중점 5인 — D+2 추가분
+| 선수 | 새 언급(원문+번역) | 모국어·출신 리그 | 쟁점 진행도(`core.claim_issues.progress` 10-30) |
+|---|---|---|---|
+| **마조** | UTV 「Maybe Majo should be on that near post」(니어포스트에 있었어야 했다 · auto-caption · 세트피스 배치) · Shropshire Star 요약: 에메리가 마조의 출전 시간이 「valuable moving forward」(앞으로 가치 있을 것) | 룩셈부르크·메스 재검색(「Brian Madjo Aston Villa Bournemouth titulaire Luxembourg」) **0** | **#80 0/2** |
+| **고레츠카** | Sport1 데이터 옹호(위 ⑶) · UTV 7′ 러너가 「peels off him」(그에게서 떨어져 나갔다) · UTV 「if Geretsk has to come on at the weekend, he's fitter than he was」(주말에 들어가야 해도 전보다 몸이 올라왔다) | 독일어 Sport1 1건(새 기사) · kicker·Bild **0**(「Goretzka Aston Villa Bournemouth Startelf Kritik Emery Fitness」) | **#25 1/2** |
+| **하우드-벨리스** | UTV 「Harwood Bellis actually really defends this pretty well」(꽤 잘 막았다 — 69′ 직전) · The Villans 2군 백라인 호흡 부족 | 영어 지역지 0 | **#24 0/2 · #58 0/2** |
+| **음바예** | UTV 「Hemmings is so high and by is so high」(헤밍스도 음바예도 너무 높았다 · 비보유) · The Villans 풀럼전 「Allison will definitely start on the right」(알리송이 오른쪽에 선발할 것) | 프랑스어 재검색(「Ibrahim Mbaye Aston Villa Bournemouth Alysson concurrence couloir droit」) — Foot Mercato 「faut-il s'inquiéter pour Ibrahim Mbaye ?」(음바예를 걱정해야 하나?)는 **경기 전 기사**(출전 시간 부족) · 경기 서술 0 | **#6 2/3 · #7 1/2 · #48 1/2** |
+| **헤밍스** | UTV 「so high」(위) · Football FanCast 3/10(위) · RotoWire: 가르나초와 2선 보조 자리 경쟁 · 2026년 보도 「left-sided number 10」(왼쪽 10번 — 코치진 구상, 검색 요약 경유) | 영어 지역지 0 | 대응 쟁점 없음 |
+
+⇒ **헤밍스 새 쟁점 후보 — 등록 권고(사용자 판단)**: 「헤밍스 LM: 폭 유지(widemid/winger) vs 정본 인사이드 포워드」. 근거가 이제 3원이다 — ⑴ 실측 커널 widemid/Support .723 vs 정본 insidefwd/Balanced .369(Δ.354) ⑵ measured 집계 #971 n=7 1위 wm_winger/Balanced ⑶ 서사는 반대 방향(「left-sided number 10」(왼쪽 10번) 구상 · 아카데미 중앙 출신). 실측과 구상이 갈리는 전형이라 트리거 「헤밍스 LM 선발 2경기(공식전)」로 여는 것을 제안. 이번 회차엔 **열지 않았다**(사용자 판단 대기 · 영상 주장 중 헤밍스 역할 주장은 UTV 「너무 높다」 1건뿐이라 #54에 묶음).
+
+### 당일 판정 정정 (D+2)
+- **H2 실측 서술 정정(판정 불변 · obs#1150)**: 당일 H2 「69′ 애덤스 y90 크로스」는 크로스가 아니다 — WS 68′00 보가르드 자기 진영 오른쪽 패스 실패(Error) → 클라위버르트 터치 → 애덤스 짧은 패스 (71,90)→(85,67) → 68′04 로드리게스 득점(4초 빌드업 턴오버). 결정적 장면이 빌라 오른쪽에서 마무리된 점은 같아 H2 **부분 일치 유지** · H2′(전환 순간 오른쪽 공백) **불일치 유지**(3실점째는 공격→수비 전환이 아니라 자기 진영 빌드업 실패).
+- **이월 C2 부분 일치 → 일치(obs#1151)**: 만잠비 명단 제외 = 휴식(Fantasy Football Scout 10-29 「Manzambi rested」(만잠비 휴식) · 부상 언급 0 · 2차 매체 단일이라 confidence 중).
+- 그 밖 H1·H3·H4·H1′·C1·C3: 새 자료가 방향을 바꾸지 않았다(H4 — Back of the Net 「long ball sprayed over the top」(머리 위 롱볼)도 첫 골을 정돈 공격의 배후 롱패스로 서술 · 일치 유지).
+
+### DB 반영
+- `match_videos` #460~#463(색인 + 요약 4편) · `video_impl_claims` 6행(HELD 3 · PENDING 1 · NA 2 · none 1) · `_video_overrides.json` 4편 · `observations` #1150·#1151 · `match_hypotheses` D2 정정 2행(seq 2·8) · `player_duties` 5행 덧붙임(헤밍스 LM #89 · 고레츠카 LDM #191 · 마조 ST #90 · 음바예 RM #98 · 하우드-벨리스 RCB #194). 시즌 정본·인게임 코드·`match_reports.status`(draft) 변경 없음.
+
+### D+3로 넘김
+- 에메리 풀럼전 사전 회견(비조·스즈키 암시 원문 · 고레츠카·만잠비) · E&S/Shropshire Star 에메리 비조 대목 원문 · 풀럼전 명단으로 가르나초·만잠비·고레츠카·알리송 서열 확인 · The Villans/1874 풀럼전 리뷰 중 본머스전 언급 · 3일 추적 종결과 complete 판정.

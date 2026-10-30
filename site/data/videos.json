@@ -1,8 +1,235 @@
 {
  "all": [
   {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 461,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "build_up_with_backup_gk",
+     "field_kr": "백업 GK 시 빌드업",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 52,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "중앙 트랩·짧은 골킥 빌드업 턴오버",
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "원문 「he's not Suzuki and he can't do what Suzuki can do mainly distribution」(그는 스즈키가 아니고 스즈키가 하는 것, 주로 배급을 못 한다) [04:11]~[04:43]",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "when Bizot replaces Suzuki (January Asia Cup), build-up must change — Bizot lacks Suzuki's distribution",
+     "value_kr": "비조 선발 땐 스즈키식 배급이 없어 빌드업을 바꿔야 한다",
+     "verdict": "HELD",
+     "verdict_note": "Shropshire Star(Matt Maher · 403·검색 요약 경유)도 「Bizot's difficulty with the ball at his feet」(발밑 볼 처리의 어려움)와 에메리의 사후 암시를 적었다 — 에메리 원문은 미확보. 본머스전 실측: 비조→밍스 패스 23(빌드업 왼쪽 축) · 빌라 PPDA를 당한 쪽 본머스 9.89. 단 비조 1경기·2군 백라인이라 GK 빌드업 설정(GK 역할·짧은 골킥) 변경 근거로 약하다. #52(중앙 트랩·짧은 골킥 빌드업 턴오버) 감시 자료로 묶는다. 재판정: 1월 아시안컵 기간 비조 선발 2경기의 GK 패스 길이·롱킥 비율·빌드업 턴오버(#52 축)."
+    },
+    {
+     "axis": "role",
+     "field": "rm_selection",
+     "field_kr": "RM 인선",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 6,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "RM 인선: 침투형 윙어 vs 맥긴 체제",
+      "trigger": "2026-08-11 이후 음바예 RM,RAM,RW 선발 3경기 (2/3)"
+     },
+     "player": "알리송",
+     "player_id": 59,
+     "points_kr": null,
+     "quote": "원문 「we were pretty average against Bournemouth, but he comes on the pitch and instantly he's going past players」(본머스전은 평범했지만 그가 들어오자마자 상대를 제쳤다) · 「I think he does do the defensive work really well」(수비 가담도 정말 잘한다고 본다) [16:08]~[16:38]",
+     "role_id": "wm_winger",
+     "team_code": "AVL",
+     "value": "Alysson should start on the right ahead of Mbaye — immediate impact off the bench, good defensive work",
+     "value_kr": "알리송이 음바예보다 먼저 오른쪽 선발감",
+     "verdict": "PENDING",
+     "verdict_note": "#6(RM 인선: 침투형 윙어 vs 맥긴 체제) 자료. 진행 2/3(음바예 선발 기준). 본머스전 알리송 32′(58′ 투입) 표본은 짧다 — 판정은 #6 트리거(음바예 선발 3경기) 때 음바예·알리송 RM 커널·보유 그리드를 나란히 본다."
+    }
+   ],
+   "key_points": [
+    "[01:04] Howard 「he did make two mistakes. So there's no doubt he was was at fault for two of the goals」(비조는 실수 두 번을 했고 두 골에 책임이 있다) — ⚠️ 실측 SS errorsLeadToGoal은 비조 1(51′)·보가르드 1(69′) · UTV 디브리프도 3실점째는 보가르드 탓 · Roundtable(Dan Bardell)은 1실점째도 비조가 라인에 머문 탓이라 봄",
+    "[01:34] 「He did not have Kamar as a release. Bogot didn't have a great game at right back」(카마라라는 출구가 없었고 보가르드는 RB에서 좋지 않았다)",
+    "[03:38]~[04:43] 「we'll have to do something slightly different that allows for Bizo」(비조가 뛸 수 있게 뭔가 조금 다르게 해야 한다) · 비조는 스즈키의 배급을 못 한다",
+    "[10:27] 풀럼전 예상: 맨시티전 11명 + 고메스→바클리 · 알리송 오른쪽 선발",
+    "[16:08] 「we were pretty average against Bournemouth, but he comes on the pitch and instantly he's going past players」(본머스전 전체는 평범했지만 알리송은 들어오자마자 상대를 제쳤다) · 「he does do the defensive work really well」(수비 가담도 잘한다)"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-30",
+   "published_approx": 0,
+   "report_id": 64,
+   "summary": "The Villans 4인(Howard·Sean·Luke·Paul) 팟캐스트로, 앞 10분은 본머스전 비조 실수 뒤 「골키퍼 문제」 토론이다. 스즈키가 1월 아시안컵으로 5~7경기 빠지면 비조가 뛰는데, 패널은 비조가 본머스전 두 골에 책임이 있었다면서도(Howard) 카마라 같은 출구가 없고 보가르드·밍스·하우드-벨리스와 호흡이 적은 2군 백라인 앞에서 뛴 탓이 크다고 봤다. 스즈키의 배급(빌드업)이 팀 공격 방식을 바꿨으므로 비조가 뛸 때는 공격 방식을 조금 바꿔야 한다는 데 의견이 모였다. 뒤는 풀럼 프리뷰(고메스→바클리 교체 예상·알리송 오른쪽 선발 예상)와 9라운드 예측이며, 알리송이 들어오면 「무언가 일어난다」며 본머스전 교체 투입 장면을 근거로 들었다.",
+   "team_code": "AVL",
+   "title": "Do We Have A Goalkeeper Problem?, Beating Fulham & Gameweek 9 Premier League Predictions (2026-10-30 게시, 26:27, 본머스전(EFL컵) 비조 실수 후속 토론 + 풀럼 프리뷰)",
+   "transcript_path": "reports/transcripts/EUhuiiN4cJA.en.md",
+   "url": "https://www.youtube.com/watch?v=EUhuiiN4cJA",
+   "video_id": "EUhuiiN4cJA"
+  },
+  {
+   "channel": "Cherries Red Army - AFC Bournemouth Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-30] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 462,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "[02:36] 쿡 득점: 「Keeper was poor, but it was good from Lewis Cook」(키퍼는 형편없었지만 쿡이 잘했다) — 비조 실수(51′)",
+    "[06:10] 69′ 득점: 「Good turnover by Tyler Adams off the bench to be able to put Rodriguez through」(교체 투입된 타일러 애덤스가 볼을 잘 빼앗아 로드리게스를 뚫어 줬다) — WS 68′01 보가르드 Error 뒤 애덤스 패스 (71,90)→(85,67)와 일치(애덤스의 탈취 이벤트는 WS에 없음 · 끊은 첫 터치는 클라위버르트)",
+    "[07:13] 로제가 라인업·전술·교체에서 더 적극적으로 바뀌었다는 평",
+    "빌라 구조·선수 역할에 대한 서술 없음"
+   ],
+   "kind": "상대팀",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-29",
+   "published_approx": 0,
+   "report_id": 64,
+   "summary": "본머스 팬채널 Cherries Red Army 진행자의 단독 경기 반응이다. 로제가 쿡·타버니어·안토니우 실바 같은 경험자 4명과 출전 시간이 적은 선수를 섞어 부상 없이 이긴 「완벽한 컵 경기 운영」이라고 평했다. 본머스 선수 개인 평가가 대부분이고(디 그레고리오 박스 장악·후안루 전반 고전 후 성장·갈랑도크 직선 돌파·로드리게스 홀드업 보완 필요), 빌라 쪽 언급은 비조의 2실점째 실수(「Keeper was poor」(키퍼가 형편없었다))와 69′ 교체 투입된 타일러 애덤스의 볼 탈취 → 로드리게스 득점뿐이다. 로제가 교체를 더 이르게 하고 더 적극적으로 바뀌었다는 서사.",
+   "team_code": "AVL",
+   "title": "On The FINAL WHISTLE: Bournemouth 3-0 Aston Villa - Cherries SET-UP Quarter-Final CLASH vs Liverpool (2026-10-29 게시, 11:23, 본머스전(EFL컵) 상대 팬채널 리액션 · 브라우저 pot 경로 · 뮤트)",
+   "transcript_path": "reports/transcripts/0NDrl3MNxmQ.en.md",
+   "url": "https://www.youtube.com/watch?v=0NDrl3MNxmQ",
+   "video_id": "0NDrl3MNxmQ"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 460,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "wide_mid_defensive_position",
+     "field_kr": "비보유 시 측면 MF 위치",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 54,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "카마라 구역 고립·rest-defense",
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "원문 「if we take a look at our wide players, Hemmings is so high and by is so high that we needed to have them slightly tucking in a little bit. So we're playing like a four two four here and we don't play that formation.」(측면 선수들을 보면 헤밍스도 음바예도 너무 높아서 조금 안쪽으로 좁혀 줘야 했다. 사실상 4-2-4였고 우리는 그런 포메이션을 쓰지 않는다) [14:45]~[15:15]",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "wide mids (Hemmings, Mbaye) too high out of possession — effectively 4-2-4, gap between midfield two and back four; should tuck in",
+     "value_kr": "측면 MF가 너무 높아 4-2-4 — 안쪽으로 좁혀야 한다",
+     "verdict": "HELD",
+     "verdict_note": "UTV 리액션 #457 주장 #711(피벗 옆 하강 부재)과 같은 장면 유형 — #54(카마라 구역 고립·rest-defense) 감시 자료 2번째 영상. 실측: 음바예 비보유 그리드 오른쪽 열 5·5·5·5·수비 액션 평균 (42,35) · 헤밍스 수비 액션 (41,84) — 둘 다 자기 진영 x≈41로 「너무 높다」는 평균 좌표로는 확인되지 않는다(실점 순간 스냅샷은 이벤트로 측정 불가). 로테이션 컵 1경기라 정본(측면 MF 수비 지시) 유지. 재판정: #54 트리거(공식전 5경기 중 피벗 뒤 실점 장면 2경기째 · map25_def 피벗-백4 간격)."
+    },
+    {
+     "axis": "instruction",
+     "field": "rb_buildup_under_pressure",
+     "field_kr": "압박 하 RB 빌드업 선택",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 52,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "중앙 트랩·짧은 골킥 빌드업 턴오버",
+      "trigger": "2026-10-21 이후 리그 5경기 (1/5)"
+     },
+     "player": "보가르드",
+     "player_id": 11,
+     "points_kr": null,
+     "quote": "원문 「Bogard decides to come back inside and play this pass into Gomez. who's under pressure. It's kind of like a blind pass.」(보가르드는 안으로 돌아서 압박받는 고메스에게 패스를 넣기로 했다. 일종의 블라인드 패스다) [22:01]~[22:34]",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Bogarde (RB) plays blind inside pass into pressured Gomes instead of the line — turnover leads to 3rd goal",
+     "value_kr": "보가르드가 측면 대신 압박받는 고메스에게 블라인드 패스",
+     "verdict": "HELD",
+     "verdict_note": "#52(중앙 트랩·짧은 골킥 빌드업 턴오버) 감시 자료. 실측: WS 68′00 보가르드 패스 (18.9,3.9)→(28.5,24.6) 실패 + Error(SS errorsLeadToGoal) → 4초 뒤 실점 — 자기 진영 오른쪽에서 안쪽으로 넣은 패스가 끊긴 것은 일치. 단 WS에 고메스 경합 이벤트는 없고 끊은 선수는 클라위버르트(터치)다. 보가르드는 임시 RB(정본 슬롯 선수 아님)라 RB 정본 설정 변경 근거로 쓰지 않는다. 재판정: #52 트리거(공식전 5경기 · 자기 진영 중앙 턴오버→10초 내 슈팅 장면 수)."
+    },
+    {
+     "axis": "instruction",
+     "field": "corner_near_post_marking",
+     "field_kr": "코너 니어포스트 수비",
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": "마조",
+     "player_id": 61,
+     "points_kr": null,
+     "quote": "원문 「maybe Majo should probably defend the near post better. Maybe Majo should be on that near post and this gets cleared」(마조가 니어포스트를 더 잘 지켰어야 했을지도 모른다. 마조가 니어포스트에 있었다면 걷어냈을 것이다) [18:53]~[19:23] — Majo=마조(auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Madjo should defend the near post at the 51' corner",
+     "value_kr": "51′ 코너에서 마조가 니어포스트를 지켰어야 했다",
+     "verdict": "NA",
+     "verdict_note": "세트피스 개인 마킹 배치 서술 — #80(마조 ST 역할 홀드업 vs 침투)과 무관하고 경기 프리셋·시즌 정본의 역할/포커스 축이 아니다. 실점 원인은 비조 처리 실수(SS errorsLeadToGoal · E&S·BBC 일치)."
+    }
+   ],
+   "key_points": [
+    "[07:26]~[08:30] 에메리 회견 낭독 — 비조·하우드-벨리스·고레츠카·마조가 분을 얻어 「fitter than he was」(전보다 몸이 올라왔다) · 컵 = 출전 시간 확보용이라는 해석",
+    "[13:43]~[15:15] 7′ 실점: 미드필드 2와 백4 사이 간격 · 본머스 11·16·30·21번 히트맵이 고레츠카 뒤·마첸 왼쪽 · 「Hemmings is so high and by is so high」(헤밍스도 음바예도 너무 높았다 — by=음바예 auto-caption) → 「we're playing like a four two four here」(사실상 4-2-4)",
+    "[15:47]~[17:51] 보가르드가 오프사이드를 걸려 전진 → 측면 러너 미추적 · 하우드-벨리스가 「move over」(옆으로 붙어라) 지시 · 박스 가장자리 러너가 고레츠카 등 뒤에서 이탈",
+    "[18:22]~[19:56] 51′ 실점: 비조 처리 실수(「comically bad」(우스울 만큼 나쁘다)) · 마조 니어포스트 수비 지적 · 정적인 수비",
+    "[20:27]~[21:29] 69′ 실점 이전 장면: 볼 압박 부재 → 롱볼에 4대4 노출 · 「the players that are playing in front of this back four aren't pressurizing on the ball」(백4 앞 선수들이 볼에 압박을 가하지 않는다)",
+    "[21:29]~[23:36] 69′ 실점: 하우드-벨리스는 잘 막았다 · 보가르드가 측면 대신 압박받는 고메스에게 블라인드 패스 → 볼 상실 · 고메스는 경기 내내 나쁜 위치에서 볼을 받았다",
+    "실측 대조: WS 68′00 보가르드 패스 (18.9,3.9)→(28.5,24.6) 실패·Error → 클라위버르트 터치 → 애덤스 패스 (71,90)→(85,67) → 로드리게스 득점(4초) · 고메스 경합 이벤트는 없다(영상 서술과 일부 다름)"
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-29",
+   "published_approx": 0,
+   "report_id": 64,
+   "summary": "UTV 진행자 Luke가 본머스 3-0 빌라(EFL컵 4R) 다음 날 올린 단독 미니 전술 디브리프다. 앞 절반은 에메리가 리그컵을 「친선전처럼」 쓰는 이유를 상금 구조(리그컵 우승 10만 파운드 vs UCL 승리당 180만)와 우선순위(PL → UCL → FA컵 → 리그컵)로 풀고, 에메리의 컵 경기 트레이닝복 차림을 심리적 강도 조절로 해석했다(팬 의견). 뒤 절반은 실점 3장면을 화면으로 짚었다: ① 7′ 실점 — 빌라 미드필드 2와 백4 사이 큰 간격, 측면 미드필더(헤밍스·음바예)가 너무 높아 사실상 4-2-4가 됐고, 보가르드가 오프사이드를 걸려고 전진했다가 측면 러너를 놓쳤으며 박스 가장자리 러너(아들리)가 고레츠카 등 뒤에서 빠져나갔다 ② 51′ 실점 — 비조의 코너 처리 실수, 마조가 니어포스트를 더 잘 지켰어야 했다는 지적 ③ 69′ 실점 — 볼에 압박이 없어 롱볼에 노출됐고, 하우드-벨리스가 잘 막은 뒤 보가르드가 측면 대신 압박받는 고메스에게 블라인드 패스를 넣어 볼을 잃었다. 결론은 부상 없이 로테이션 자원에 분을 넣은 것만이 수확이라는 것.",
+   "team_code": "AVL",
+   "title": "WHY DOES UNAI EMERY DO THIS IN THE CARABAO CUP? (2026-10-29 게시, 25:52, 본머스전(EFL컵) 미니 전술 디브리프 — 실점 3장면 분석 · 브라우저 pot 경로 · 뮤트)",
+   "transcript_path": "reports/transcripts/9eTWMlqU420.en.md",
+   "url": "https://www.youtube.com/watch?v=9eTWMlqU420",
+   "video_id": "9eTWMlqU420"
+  },
+  {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-29] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 458,
    "impl_claims": [
     {
@@ -60,8 +287,52 @@
    "video_id": "CsuD00ou-_o"
   },
   {
+   "channel": "Back of the Net - The AFC Bournemouth Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-30] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 463,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "attack_channel",
+     "field_kr": "빌라 공격 경로(상대 관점)",
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "원문 「He wasn't amazing. That was the one weak link for me and getting down that side seemed to be a bit of a problem.」(그는 대단하지 않았다. 내게는 그가 유일한 약한 고리였고 그쪽으로 뚫리는 게 문제였다) · 「Uh but a lot of the Villa stuff came through the middle.」(하지만 빌라 공격 대부분은 중앙으로 왔다) [04:35]",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Villa found joy down Bournemouth's right (Villa left) but most Villa attacks came through the middle",
+     "value_kr": "빌라 왼쪽이 통했지만 공격 대부분은 중앙으로 왔다",
+     "verdict": "NA",
+     "verdict_note": "상대 팬 관점의 경기 서술 — 실측(빌라 빌드업 밍스 축 왼쪽 · 음바예 오른쪽 볼 터치 26으로 고립)과 같은 방향이라 새 구현 주장이 아니다. 「대부분 중앙」은 실측 공격 방향과 대조 필요(UTV #457은 SofaScore 공격 방향 왼쪽>중앙>오른쪽으로 낭독). 시즌·경기 프리셋 변경 없음."
+    }
+   ],
+   "key_points": [
+    "[03:34]~[04:05] 「Villa weren't quite at the races today」(빌라는 오늘 제 컨디션이 아니었다) · 첫 15분 이른 골이 경기 전체를 정했다 · 「especially in the sort of second half of the first half」(전반 후반부에 특히) 빌라 찬스",
+    "[04:05]~[04:35] 본머스 RB(후안루)가 「the one weak link」(유일한 약한 고리) — 「getting down that side seemed to be a bit of a problem」(그쪽으로 내려가는 걸 막는 게 문제였다) = 빌라 왼쪽 · 「a lot of the Villa stuff came through the middle」(빌라 공격은 대부분 중앙으로 왔다)",
+    "[06:08] 첫 골: 「a long ball sprayed over the top」(머리 위로 뿌린 롱볼) → 솔레르 침투 → 아들리 원터치 마무리",
+    "[07:09]~[07:39] 로제 구조: 윙백 높게 · 센터백 넓게 · 수비형 MF가 내려와 3인 빌드업",
+    "[11:15] 「the way that we play uh with that kind of high press, the intensity」(우리가 하는 높은 압박과 강도) · 전후반 시작을 강하게"
+   ],
+   "kind": "상대팀",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-28",
+   "published_approx": 0,
+   "report_id": 64,
+   "summary": "본머스 팬채널 Back of the Net 진행자 2인이 경기 직후 차 안에서 녹화한 상대 관점 리액션이다. 빌라가 「wasn't quite at the races」(제 컨디션이 아니었다)고 보면서도, 본머스가 첫 15분 높은 압박과 강도로 흐름을 잡았고 전반 후반부엔 발을 빼 빌라에 찬스를 줬다고 평했다. 솔레르가 체격 큰 빌라를 상대로 밀리지 않았고 첫 골은 그의 침투에 맞춘 롱볼에서 나왔다고 짚었다. 본머스 오른쪽(후안루 RB)이 「약한 고리」라 그쪽이 뚫렸지만 빌라 공격은 대부분 중앙으로 왔다고 봤다. 로제 체제의 구조로 윙백을 아주 높이 올리고 센터백이 넓게 벌리며 수비형 미드필더가 내려오는 형태, 사전 계획된 이른 교체를 들었다.",
+   "team_code": "AVL",
+   "title": "REACTION: AFC Bournemouth 3-0 Aston Villa | Cherries Draw Liverpol (2026-10-28 게시, 15:54, 본머스전(EFL컵) 상대 팬채널 리액션 · 브라우저 pot 경로 · 뮤트)",
+   "transcript_path": "reports/transcripts/LwVM0nRNjwo.en.md",
+   "url": "https://www.youtube.com/watch?v=LwVM0nRNjwo",
+   "video_id": "LwVM0nRNjwo"
+  },
+  {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-29] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 457,
    "impl_claims": [
     {
@@ -204,7 +475,7 @@
   },
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-10-29] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 459,
    "impl_claims": [
     {
@@ -30721,7 +30992,11 @@
    386
   ],
   "64": [
+   461,
+   462,
+   460,
    458,
+   463,
    457,
    459
   ]
