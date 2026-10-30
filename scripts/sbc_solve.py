@@ -1058,8 +1058,14 @@ def main():
         print("📌 고정 카드 " + " · ".join(
             f"{c}#{f['slot']} {f['name']}({f['ovr']})" for c, fs in FIXED.items() for f in fs))
     # ⭐ 감춘 챌린지는 풀지 않는다(migration 074) — 화면에 안 보이는 걸 계산할 이유가 없다.
+    # ⭐ 화면에서 숨긴 세트(fut_hidden_items · migration 108)도 같이 뺀다 — 안 하는 세트가 카드를 붙잡으면
+    #    다른 챌린지가 못 풀린다(2026-10-30 실측: 숨기기 전 3x 79+ Upgrade가 레나토 베이가를 잡아 Villarreal v Espanyol이 미해결).
     hid = {r[0] for r in con.execute(
         "SELECT challenge_ea_id FROM fc_sbc_hidden WHERE game_version=?", (a.game,))}
+    hid |= {r[0] for r in con.execute(
+        """SELECT DISTINCT c.challenge_ea_id FROM fut_hidden_items h JOIN fc_sbc_challenges c
+             ON c.game_version=h.game_version AND c.set_ea_id=h.item_id
+           WHERE h.game_version=? AND h.kind='sbc_set'""", (a.game,))}
     if hid:
         rows = [r for r in rows if r["challenge_ea_id"] not in hid]
         print(f"🙈 목록에서 감춘 {len(hid)}챌린지는 판정하지 않는다(사용자 판단 · migration 074)")
