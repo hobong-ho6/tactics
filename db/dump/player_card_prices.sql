@@ -1790,3 +1790,8 @@ INSERT INTO player_card_prices VALUES(2405,'FC27',81411,NULL,200,1,NULL,'ps5','f
 INSERT INTO player_card_prices VALUES(2406,'FC27',83546,NULL,200,1,NULL,'ps5','fut.gg https://www.fut.gg/api/fut/player-prices/27/83546/ (서명 조회 · 2026-10-30, collect_futgg_prices.py)','MEDIUM — fut.gg 집계 시세. price 없음은 **미형성/멸종**이지 0원이 아니다.','2026-10-30');
 INSERT INTO player_card_prices VALUES(2407,'FC27',85338,170,250,1,NULL,'ps5','fut.gg https://www.fut.gg/api/fut/player-prices/27/85338/ (서명 조회 · 2026-10-30, collect_futgg_prices.py)','MEDIUM — fut.gg 집계 시세. price 없음은 **미형성/멸종**이지 0원이 아니다.','2026-10-30');
 INSERT INTO player_card_prices VALUES(2408,'FC27',87082,NULL,200,1,NULL,'ps5','fut.gg https://www.fut.gg/api/fut/player-prices/27/87082/ (서명 조회 · 2026-10-30, collect_futgg_prices.py)','MEDIUM — fut.gg 집계 시세. price 없음은 **미형성/멸종**이지 0원이 아니다.','2026-10-30');
+INSERT INTO player_card_prices VALUES(2409,'FC27',272607,NULL,800,1,NULL,'ps5','fut.gg 서명 가격 API (sbc_solve 시장 후보)','MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)','2026-10-30');
+INSERT INTO player_card_prices VALUES(2410,'FC27',265969,NULL,850,1,NULL,'ps5','fut.gg 서명 가격 API (sbc_solve 시장 후보)','MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)','2026-10-30');
+INSERT INTO player_card_prices VALUES(2411,'FC27',265096,NULL,800,1,NULL,'ps5','fut.gg 서명 가격 API (sbc_solve 시장 후보)','MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)','2026-10-30');
+INSERT INTO player_card_prices VALUES(2412,'FC27',273365,NULL,800,1,NULL,'ps5','fut.gg 서명 가격 API (sbc_solve 시장 후보)','MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)','2026-10-30');
+INSERT INTO player_card_prices VALUES(2413,'FC27',257289,NULL,3100,1,NULL,'ps5','fut.gg 서명 가격 API (sbc_solve 시장 후보)','MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)','2026-10-30');
