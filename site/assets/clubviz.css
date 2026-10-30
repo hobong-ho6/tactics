@@ -363,6 +363,10 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
   border-radius:99px;border:1px solid var(--line);background:rgba(6,14,10,.92);color:var(--on-pitch-dim);
   font-size:11px;cursor:pointer;padding:0;opacity:.75;transition:opacity .12s,color .12s}
 .sbc-slot:hover .sbc-x{opacity:1}
+/* ⭐ 마우스를 올린 카드를 맨 앞으로(2026-10-31 사용자 「x 눌러도 반응이 없어」) — 5-3-2처럼 줄 간격이 좁으면
+   위 칸 카드가 아래 칸 카드의 윗부분(✕·케미 자리)을 덮어 elementFromPoint가 위 칸 IMG를 돌려줬다(GK↔CB · CDM↔RCM 실측).
+   칸은 transform이라 각자 쌓임 맥락이다 — 버튼 z-index로는 못 이기고 **칸 자체**를 올려야 한다. */
+.sbc-slot:hover,.sbc-slot:focus-within{z-index:20}
 .sbc-x:hover{color:var(--bad);border-color:var(--bad);background:rgba(20,6,6,.95)}
 .sbc-ex{font-size:11.5px;margin-top:6px;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
 .sbc-ex button.chip{cursor:pointer}
