@@ -221,6 +221,19 @@ function rank(pid, rows){
 const KEY_ROWS = (K27?.role_key_attrs?.length ? K27.role_key_attrs : K26.role_key_attrs) || [];
 const KEY_GV = K27?.role_key_attrs?.length ? 'FC27' : 'FC26';
 const KEYW = {}; for (const r of KEY_ROWS) (KEYW[r.role_id] ??= {})[r.attr] = r.weight;
+/* ⭐ 툴팁에 **실제 상승분**을 함께 적는다(2026-10-31 사용자 지시 「툴팁에 실제 상승분도 같이 보여줘」).
+   ⚖는 가중을 곱한 점수라 「스탯이 몇 오르나」와 다르다(오나나 Haunted Wall: 실제 +25 ↔ ⚖29 · 가속 +10은 Holding 핵심 스탯이 아니라 0점).
+   보유(★)는 지금 카드에 얹어 상한을 반영한 값, 미보유는 fut.gg 기준 카드 경로 값이다. */
+const gainTip = a => {
+  const e = Object.entries(a.gain || {}).filter(([, x]) => x > 0).sort((x, y) => y[1] - x[1]);
+  if (!e.length) return '';
+  return `&#10;실제 상승 +${e.reduce((t, [, x]) => t + x, 0)}${a.owned ? '' : '(기준 카드)'}: ${e.map(([k, x]) => `${esc(k)} +${x}`).join(' · ')}`;
+};
+const roleTip = a => {
+  const w = KEYW[a.path?.pres?.role_id] || {};
+  const e = Object.entries(a.gain || {}).filter(([k, x]) => x > 0 && w[k]).sort((x, y) => w[y[0]] * y[1] - w[x[0]] * x[1]);
+  return e.map(([k, x]) => `${esc(k)} ${x}×${w[k]}`).join(' + ');
+};
 function roleScore(pres, upgradesJson){
   const w = pres && KEYW[pres.role_id]; const up = J(upgradesJson, {}) || {};
   if (!w) return { score: 0, top: [], known: false };
@@ -1342,7 +1355,7 @@ function renderCatalog(team = CAT_TEAM){
          82가 된 보가르드가 base 74 경로 「Creep Inside → Witching Hour」로 `OVR Max. 80` 진화의 최적 선수에 섰다). */
       /* ⭐ 그 시뮬레이션 결과가 곧 「적용 후」다 — 보유 선수는 base 경로 값(path.ovr_before 등)이 아니라 **지금 카드 + 남은 선행 + 이 진화**로 적는다
          (2026-10-26 사용자 지시 — Wicked Winger 최적 선수 지모알로바가 지금 80인데 「OVR 65→80」으로 떴다). 선행 단계 수도 남은 것만 센다. */
-      let kk = k, d = r.d, after = null, rs = r.rs;
+      let kk = k, d = r.d, after = null, rs = r.rs, gain = J(r.upgrades, {}) || {};
       if (STATE[String(pid)]){
         const pre = r.ids.slice(0, k).filter(i => !APPLIED[`${pid}:${i}`]?.finished).map(id => ({ id }));
         const run = tryRun(+pid, [...pre, { id: c.evo_id }]);
@@ -1351,13 +1364,13 @@ function renderCatalog(team = CAT_TEAM){
           kk = pre.length; d = run.after.ovr - run.before.ovr;
           /* 역할 가중도 같은 결과의 **실제 상승분**(상한 반영)으로 잰다 — base 경로 `upgrades`가 아니라. */
           const up = {}; for (const a in run.after.at){ const x = run.after.at[a] - (run.before.at[a] ?? 0); if (x) up[a] = x; }
-          rs = roleScore(r.pres, up);
+          rs = roleScore(r.pres, up); gain = up;
           const ord = o => Object.fromEntries(Object.keys(J(r.six_after, {}) || {}).filter(x => x in o).map(x => [x, o[x]]));   // 경로 표와 같은 순서(PAC→PHY)
           after = { ovr_before: run.before.ovr, ovr_after: run.after.ovr, six_before: ord(run.before.six), six_after: ord(run.after.six) };
         }
       }
       const base = (CARDS[pid] || []).find(x => x.is_base);
-      apps.push({ pid: +pid, tier: r.tier, k: kk, d, score: rs.score, rs, name: r.name_kr, owned: OWNED.has(+pid), price: base ? priceOf(base.item_id) : null, path: r, after: after || r }); break;
+      apps.push({ pid: +pid, tier: r.tier, k: kk, d, score: rs.score, rs, name: r.name_kr, owned: OWNED.has(+pid), price: base ? priceOf(base.item_id) : null, path: r, after: after || r, gain }); break;
     }
     // 진화별 최적 선수: 처방 역할 적중 → 내 구단 보유(사서 쓸 필요 없음) → 즉시 적용(첫 단계) → 역할 가중 점수 → OVR 상승 → 시세 낮은 순
     apps.sort((a, b) => b.tier - a.tier || (b.owned - a.owned) || a.k - b.k || b.score - a.score || b.d - a.d || (a.price ?? 9e9) - (b.price ?? 9e9));
@@ -1400,7 +1413,7 @@ function renderCatalog(team = CAT_TEAM){
       ${optionsHTML(c, best)}
       <div style="margin-top:6px;font-size:12px"><b>업그레이드</b> ${J(c.total_upgrades_text, []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ') || '<span class="dim">없음(도입용)</span>'}</div>
       <div style="margin-top:6px;font-size:12px"><b>${team === 'ALL' ? '우리 선수' : esc(idx.regimes.find(r => r.team_code === team)?.team_kr || team)} 적용 가능 ${apps.length + noPath(c, team).length}명</b> <small class="dim">(fut.gg 전체 ${c.number_of_players?.toLocaleString?.() ?? '—'}명)</small>
-        <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}${a.owned ? ' · 보유' : ''}${a.score ? ` · 역할 가중 +${a.score}` : ''}${(t => t ? ` · ⚠️ PS 개수 상한으로 못 받음: ${esc(t)}` : '')(a.k ? '' : psLostText(c, a.pid))}">${a.owned ? '★ ' : ''}${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${!a.k && psLostText(c, a.pid) ? '<small style="color:var(--bad,#e55)"> ⚠PS상한</small>' : ''}${a.score ? `<small class="up"> ⚖${a.score}</small>` : a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || (noPath(c, team).length ? '' : '<span class="dim">없음' + (used?.exhausted ? '(소진)' : '') + '</span>')}</div>
+        <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}${a.owned ? ' · 보유' : ''}${gainTip(a)}${a.score ? `&#10;역할 가중 ⚖${a.score} = ${roleTip(a)}` : ''}${(t => t ? `&#10;⚠️ PS 개수 상한으로 못 받음: ${esc(t)}` : '')(a.k ? '' : psLostText(c, a.pid))}">${a.owned ? '★ ' : ''}${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${!a.k && psLostText(c, a.pid) ? '<small style="color:var(--bad,#e55)"> ⚠PS상한</small>' : ''}${a.score ? `<small class="up"> ⚖${a.score}</small>` : a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || (noPath(c, team).length ? '' : '<span class="dim">없음' + (used?.exhausted ? '(소진)' : '') + '</span>')}</div>
         ${noPathHTML(c, team)}${catStartHTML(c, apps, team)}</div>
       <div class="kv" style="margin-top:6px;font-size:12px">${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">fut.gg ↗</a>` : ''}
         <button class="act ghost" data-hide="${c.evo_id}"${isHid(c) ? ' data-undo="1"' : ''} style="font-size:11.5px;margin-left:auto"
