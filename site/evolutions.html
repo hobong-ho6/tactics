@@ -1918,11 +1918,42 @@ function tryRun(pid, steps){
         }
       }
     }
-    if (!fails.length){ const f6 = faceFromAttrs(at, EVO.face_stats || [], isGk); cur.pac = f6.PAC; cur.def = f6.DEF; }
+    if (!fails.length){ const f6 = faceFromAttrs(at, EVO.face_stats || [], isGk); cur.pac = f6.PAC; cur.dri = f6.DRI; cur.def = f6.DEF; }
     done.push({ id: step.id, name: cat?.name || `#${step.id}`, fails, picks, ovr: cur.ovr });
   }
   return { st, cur, before, steps: done, gain, nominal: { at: nomAt, cap: capOf },
            after: { at, six: faceFromAttrs(at, EVO.face_stats || [], isGk), ovr: cur.ovr } };
+}
+/* ⭐⭐ **진화 예약**(migration 127 · 2026-11-01 사용자 지시 「시세 다른 진화할 때 공포의 벽 진화 조건을 넘어서면 경고해줘
+   알림창이 됐든 내가 알수 있도록」). 요구조건은 **시작 시점**에 검사되므로 아껴 둔 진화가 있는 선수에게 다른 진화를
+   먼저 걸면 영구히 못 쓰게 된다. ⇒ 다른 진화를 얹은 상태(tryRun)로 예약 진화의 조건(TREQ)을 다시 본다 — 판정은 이 두 함수뿐이다.
+   활성 = 그 보유 카드에 예약 진화 로그가 아직 없고 만료 전. 적용하면 저절로 풀린다. 「❔ 판정 불가」는 경고하지 않는다. */
+function resvOf(pid){
+  const own = (EVO.club?.players || []).find(x => x.player_id === +pid && x.status === 'owned');
+  return (EVO.club?.reservations || []).filter(r => r.player_id === +pid)
+    .map(r => ({ ...r, cat: CATBYID[r.evo_id] }))
+    .filter(r => r.cat && !r.cat.is_expired
+      && !(own && (EVO.club?.log || []).some(l => l.club_player_id === own.id && l.evo_id === r.evo_id && activeLog(l))));
+}
+const hardFails = f => f.filter(t => !String(t).startsWith('❔'));
+/* steps(TRY 형식)를 얹은 뒤 예약 진화 조건을 깨면 [{name, fails}]. 예약 진화 자신을 얹는 경우는 뺀다. */
+function resvBreaks(pid, steps){
+  const rs = resvOf(pid).filter(x => !steps.some(st => +st.id === x.evo_id)); if (!rs.length) return [];
+  const r = tryRun(+pid, steps); if (!r) return [];
+  return rs.map(x => ({ name: evoName(x.cat, { html: false }), fails: hardFails(tryReq(x.cat, r.cur)) })).filter(x => x.fails.length);
+}
+const resvConfirmTxt = b => b.length ? `🚨 예약해 둔 진화의 조건을 깹니다 — 이 진화를 먼저 하면 그 진화를 영구히 못 씁니다.\n${
+  b.map(x => `   「${x.name}」: ${x.fails.join(' · ')}`).join('\n')}\n\n` : '';
+/* 선수 패널 머리 — 예약 목록과 지금 상태로 통과하는지. */
+function resvBannerHTML(pid){
+  const rs = resvOf(pid); if (!rs.length) return '';
+  const cs = curStateOf(+pid);
+  return rs.map(x => { const now = cs ? hardFails(tryReq(x.cat, cs)) : [];
+    const req = (J(x.cat.requirements_text, []) || []).map(q => `${q.label} ${q.value}`).join(' · ');
+    return `<div class="trybox" style="margin:6px 0;padding:6px 8px;border-color:${now.length ? 'var(--bad,#e55)' : 'var(--warn)'}">
+      <b>🔖 예약한 진화: ${evoName(x.cat)}</b> <small class="dim">(${esc(x.noted)} · 마감 ${esc(String(x.cat.end_time || '').slice(0, 10))})</small><br>
+      <small>조건 ${esc(req)} — ${now.length ? `<b class="dn">⛔ 지금 카드로 이미 못 건다: ${esc(now.join(' · '))}</b>`
+        : '<b class="up">지금은 통과</b> · 아래 진화 중 이 조건을 깨는 것은 🚨로 표시하고, 시작·완료 확인창에서도 다시 경고한다.'}</small></div>`; }).join('');
 }
 /* ⭐ 걸어보기의 상세 속성 표 — 「지금 · 표기 · 실제 · 적용 후 · 상한」(gainTable과 같은 열 · 2026-10-06).
    표기 = 상한 없이 얹었을 때(tryRun nominal) · 실제 = 상한 규칙대로 얹은 값. 차이는 상한에 걸려 사라진 몫이다. */
@@ -1984,11 +2015,14 @@ function ovrCheckHTML(r){
 function tryPanel(pid){
   if (TRY.pid !== +pid || !TRY.steps.length) return '';
   const r = tryRun(+pid, TRY.steps); if (!r) return '';
+  const rb = resvBreaks(+pid, TRY.steps);
+  const resvHTML = rb.length ? `<div style="margin:4px 0;padding:5px 8px;border:1px solid var(--bad,#e55);border-radius:6px"><b class="dn">🚨 이 순서대로 걸면 예약한 진화를 못 쓴다</b><br>${
+    rb.map(b => `<small class="dn">「${esc(b.name)}」: ${esc(b.fails.join(' · '))}</small>`).join('<br>')}</div>` : '';
   const FACE = ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY'];
   const keys = Object.keys(r.before.at).filter(k => (r.after.at[k] ?? 0) !== (r.before.at[k] ?? 0));
   const tot = keys.reduce((t, k) => t + Math.max(0, (r.after.at[k] ?? 0) - (r.before.at[k] ?? 0)), 0);
   const d = (a, b) => a == null ? '—' : b === a ? `<span class="dim">${a}</span>` : `${a}<b class="${b > a ? 'up' : 'dn'}"> ▸${b}</b>`;
-  return `<div class="trybox trysticky"><div class="kv"><b>🔬 미리보기 — 걸면 이렇게 된다</b>
+  return `<div class="trybox trysticky">${resvHTML}<div class="kv"><b>🔬 미리보기 — 걸면 이렇게 된다</b>
       <small class="dim">아무것도 기록하지 않는다</small>
       <button class="act" id="trysave">📌 비교에 담기</button>
       ${ownedPickHTML('tryaddown', '⚖️ 보유 카드와 바로 비교…')}
@@ -2070,7 +2104,8 @@ async function evoStart(b, root){
     const lock = RULES.lockInfo[+evo];
     const lost = psLostText(cat, pid);
     const mis = (L1?.challenges || []).join(' / ');
-    if (!confirm(`인게임에서 이 진화를 시작했다고 원장에 적습니다(스탯은 완료 때 반영).\n\n${evoName(+evo, { html: false })} — 1단계 시작 · 전체 ${lv.length}단계`
+    const resv = resvConfirmTxt(resvBreaks(+pid, [{ id: +evo, picks: pick == null ? {} : { [L1?.idx ?? 1]: pick } }]));
+    if (!confirm(`${resv}인게임에서 이 진화를 시작했다고 원장에 적습니다(스탯은 완료 때 반영).\n\n${evoName(+evo, { html: false })} — 1단계 시작 · 전체 ${lv.length}단계`
       + (brTxt ? `\n갈림길: ${brTxt}${byRec ? ' (우리 추천 — 다른 가지면 취소하고 「선수별 진화 패스」에서 🔀로 고른다)' : ''}` : '') + (mis ? `\n1단계 미션: ${mis}` : '')
       + (lock?.unknown ? `\n\n⚠️ 해금 여부를 모른다 — ${lock.why}` : '')
       + (lost ? `\n\n⚠️ PlayStyle 개수 상한으로 못 받는 보상: ${lost}` : '')
@@ -2156,8 +2191,9 @@ async function evoDone(b, root){
       steps.push({ lv: L.idx, ovr, six: faceFromAttrs(at, EVO.face_stats || [], isGk), label, pick });
     }
     const todo = steps.filter(x => x.lv > from);
+    const resv = resvConfirmTxt(resvBreaks(+pid, [{ id: +evo, picks }]));
     if (open){
-      if (!confirm(`진행 중인 진화를 완료로 기록합니다.\n\n${evoName(+evo, { html: false })} — ${open.level}단계(${open.applied_at} 시작)${
+      if (!confirm(`${resv}진행 중인 진화를 완료로 기록합니다.\n\n${evoName(+evo, { html: false })} — ${open.level}단계(${open.applied_at} 시작)${
         todo.length ? `\n이어서 남은 ${todo.length}단계도 완료로 적습니다.` : ''}\n\n· 값은 우리 계산이고 다음 클럽 싱크의 EA 실측으로 확정됩니다.`)) return;
       b.disabled = true;
       const today0 = new Date().toISOString().slice(0, 10);
@@ -2165,7 +2201,7 @@ async function evoDone(b, root){
       if (!rc.ok || !todo.length){ say(box, rc); b.disabled = false; if (rc.ok) reloadAfterWrite('진화 완료를 원장에 적었다'); return; }
     } else if (!todo.length){ say(box, { ok: false, message: '이미 전 단계가 기록돼 있다.' }); return; }
     const brief = todo.map(x => `${x.lv}단계 → OVR ${x.ovr}${x.label ? ` (${x.label.slice(0, 40)}…)` : ''}`).join('\n  ');
-    if (!open && !confirm(`인게임에서 완료한 진화를 원장에 적습니다.\n\n${evoName(+evo, { html: false })}\n  ${brief}\n\n`
+    if (!open && !confirm(`${resv}인게임에서 완료한 진화를 원장에 적습니다.\n\n${evoName(+evo, { html: false })}\n  ${brief}\n\n`
       + '· 갈림길을 다르게 고르셨으면 취소하고 카드의 🔀 선택을 먼저 바꾸세요.\n'
       + '· 스탯만 보려면 이 버튼이 아니라 「🔬 걸어 보기」입니다.\n'
       + '· 값은 우리 계산이고 다음 클럽 싱크의 EA 실측으로 확정됩니다.')) return;
@@ -2305,6 +2341,10 @@ function nextEvoCards(pid){
               <small class="dim brdet" data-evobrdet="${key}">${esc(srcOf(L.upgradeOptions[rec]).map(upLabel).join(' · '))}</small></div>`;
           }).join('');
         })()}
+        ${(() => { /* 🚨 예약 진화 조건을 깨는지(migration 127) — 미리보기를 쌓아 뒀으면 그 뒤에 얹은 상태로 본다. */
+          const rb = resvBreaks(+pid, [...(TRY.pid === +pid ? TRY.steps : []), { id: x.id, picks: {} }]);
+          return rb.length ? `<div style="margin-top:4px;padding:4px 6px;border:1px solid var(--bad,#e55);border-radius:6px"><b class="dn">🚨 예약한 진화 조건을 깬다</b><br>${
+            rb.map(b => `<small class="dn">「${esc(b.name)}」: ${esc(b.fails.join(' · '))}</small>`).join('<br>')}</div>` : ''; })()}
         ${(() => { /* ⚠️ 미리보기를 쌓아 둔 상태에서는 **그 상태 기준으로** 걸 수 있는지 다시 본다 —
                         앞 진화가 OVR·PlayStyle을 올리면 뒤 진화가 잠긴다. 그게 순서를 보는 이유다. */
           const f = simCur ? tryReq(c, simCur) : [];
@@ -2468,6 +2508,7 @@ function pathSide(pid){
       <small class="dim">경로 ${rows.length}건</small>
       <a href="player.html?id=${pid}" style="font-size:12px">선수 화면 →</a></div>
     ${cmpPanel()}
+    ${resvBannerHTML(+pid)}
     ${tryPanel(+pid)}
     ${nextEvoCards(+pid)}
     ${eligPanel(+pid)}

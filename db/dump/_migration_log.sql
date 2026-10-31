@@ -51,3 +51,4 @@ INSERT INTO _migration_log VALUES('2026-10-24','123-evo-removal','fut_evolution_
 INSERT INTO _migration_log VALUES('2026-10-24','124-sbc-blocked-slots','fc_sbc_formations.blocked_slots — 브릭 챌린지의 막힌 칸 · Spooky Nights(112) 3-4-3 중 LM·RM·LW·RW 막힘(사용자 확인) · sbc_solve.py가 그 칸을 빼고 배치');
 INSERT INTO _migration_log VALUES('2026-10-26','125-evo-event-token','fc_evolutions.event_token_id — fut.gg eventTokenId(1 갤러리·2 챔피언스·3 얼티밋 스크림) · 2606=2 · 2622·2623=3 · 화면 획득 조건이 token_cost+토큰 종류로 판정(종전 「무료」 오표기)');
 INSERT INTO _migration_log VALUES('2026-10-26','126-evo-do-not-generate','fc_evolutions.do_not_generate — fut.gg doNotGenerate · 44종 관측(true 29 · false 15) · 해금 문구·비용 없음+true = 진화 랩에 없음·경로 미상(Anticipate·Pinged Pass 2630·Shadow Striker++·Batigol Precision) · 화면 「무료」 오표기 수정');
+INSERT INTO _migration_log VALUES('2026-11-01','127-evo-reservations','fut_evo_reservations — 해금해 두고 아껴 둔 진화(선수 지정) · 다른 진화가 그 조건을 깨면 진화 화면이 카드·걸어보기·시작/완료 확인창에서 경고 · 첫 행 시세 × The Haunted Wall(2622)');

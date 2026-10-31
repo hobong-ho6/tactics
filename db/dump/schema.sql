@@ -1479,3 +1479,11 @@ CREATE VIEW v_evo_log_active AS                -- 지금 카드에 걸린 진화
 CREATE VIEW v_evo_log_open AS                  -- 진행 중 = 걸려 있고 완료 전
   SELECT * FROM v_evo_log_active WHERE completed_at IS NULL
 /* v_evo_log_open(id,club_player_id,evo_id,evo_name,level,applied_at,completed_at,ovr_before,ovr_after,six_before,six_after,attrs_delta,playstyles_after,roles_plus_after,roles_plus_plus_after,source,confidence,notes,is_void,attrs_after,removed_at,removed_how) */;
+CREATE TABLE fut_evo_reservations (
+  account_id INTEGER NOT NULL REFERENCES fut_accounts(id),
+  evo_id     INTEGER NOT NULL,              -- fc_evolutions.evo_id (fut.gg id)
+  player_id  INTEGER NOT NULL REFERENCES players(id),
+  noted      TEXT NOT NULL,                 -- 예약한 날
+  note       TEXT,
+  PRIMARY KEY (account_id, evo_id, player_id)
+);

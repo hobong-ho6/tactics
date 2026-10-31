@@ -1,0 +1,1 @@
+INSERT INTO fut_evo_reservations VALUES(1,2622,57,'2026-11-01','The Haunted Wall(공포의 벽) → 시세 예약 — 사용자 「우선 공포의 벽은 해금했어 좀 지켜보다가 나중에 업글할께」 · 「시세 다른 진화할 때 공포의 벽 진화 조건을 넘어서면 경고해줘」(2026-11-01) · 조건 OVR ≤81 · PS ≤7 · PAC ≤85 · 지금 OVR 78 · PS 1 · PAC 69');
