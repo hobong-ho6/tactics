@@ -1790,6 +1790,8 @@ const TREQ = {
   /* ⭐ 2026-10-19 Zoomaestro(2602)에서 새로 나온 문구 — 없으면 「❔ 판정 불가」라 막지 않아 DEF 77 보가르드가 「걸 수 있음」으로 떴다.
      목록 정본은 G35(카탈로그 문구 ⊆ 이 표 ∪ 판정 불가로 둔 문구)가 지킨다. */
   'Defending': (v, s) => { const m = /Max\.\s*(\d+)/.exec(v); return !m || s.def == null || s.def <= +m[1] || `DEF ${s.def} > 최대 ${m[1]}`; },
+  /* ⭐ 2026-11-01 Two Faces of Fear(2643) — Pace와 나란히 오는 6대 스탯 DRI 상한. */
+  'Dribbling': (v, s) => { const m = /Max\.\s*(\d+)/.exec(v); return !m || s.dri == null || s.dri <= +m[1] || `DRI ${s.dri} > 최대 ${m[1]}`; },
   'Skill Moves': (v, s) => { const m = /Max\.\s*(\d+)/.exec(v); return !m || s.sm == null || s.sm <= +m[1] || `개인기 ${s.sm}★ > 최대 ${m[1]}★`; },
   /* ⭐ 2026-10-24 세부 속성 상한(Center Spectre · Wicked Winger) — 카드 상태의 29속성(s.at)으로 잰다. 값이 없으면 ❔ */
   'Long Shots': (v, s) => attrMax('long_shots', v, s),
@@ -1822,7 +1824,7 @@ function curStateOf(pid){
   const at = J(st.attrs, null); if (!at) return null;
   const isGk = /GK/.test(String(st.positions || ''));
   const six0 = faceFromAttrs(at, EVO.face_stats || [], isGk);
-  return { ovr: st.ovr, pac: six0.PAC, def: six0.DEF, sm: st.skill_moves ?? null, at,
+  return { ovr: st.ovr, pac: six0.PAC, dri: six0.DRI, def: six0.DEF, sm: st.skill_moves ?? null, at,
            icon: st.is_icon ?? null, hero: st.is_hero ?? null, base: st.is_base ?? null, pos: String(st.positions || '').split('/').filter(Boolean),
            ps: String(st.playstyles || '').split(',').filter(x => x.trim() && !x.includes('+')).length,
            psp: String(st.playstyles || '').split(',').filter(x => x.includes('+')).length };
