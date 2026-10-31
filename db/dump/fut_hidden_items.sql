@@ -6,3 +6,4 @@ INSERT INTO fut_hidden_items VALUES(5,'FC27','evo',2606,'사용자가 수행하�
 INSERT INTO fut_hidden_items VALUES(6,'FC27','evo',2621,'사용자가 수행하지 않기로 함','2026-10-26','사용자가 화면에서 숨김');
 INSERT INTO fut_hidden_items VALUES(7,'FC27','evo',2630,'사용자가 수행하지 않기로 함','2026-10-26','사용자가 화면에서 숨김');
 INSERT INTO fut_hidden_items VALUES(8,'FC27','sbc_set',70,'사용자 「3x 79+ Upgrade 이거 안할꺼야」(2026-10-30)','2026-10-30','사용자가 화면에서 숨김');
+INSERT INTO fut_hidden_items VALUES(9,'FC27','evo',2629,'사용자가 수행하지 않기로 함','2026-10-31','사용자가 화면에서 숨김');
