@@ -3,6 +3,18 @@
 > 수집일 2026-10-29(예약 `mw-avl-bournemouth-collect` 09:30 회차) · SofaScore event `17118370` · FotMob `6275374` · WhoScored `2035006` · **EFL컵(카라바오컵) 4라운드** · 원정(바이탈리티 스타디움) · 주심 Tony Harrington · 빌라 4-2-3-1 vs 본머스 4-1-4-1 · 본머스 감독 **Marco Rose** · 게임 버전 `core.game_version.live_on('2026-10-28')` = **FC27**
 > DB: `matches` #128 · `match_reports` #64(draft) · 사용자 관전 메모 [notes/2026-10-28-avl-bournemouth-user-live.md](notes/2026-10-28-avl-bournemouth-user-live.md)(메모 1·2)
 
+## ⭐ 중점 5인 — 3일 추적 종결 요약 (D+3 · 2026-10-31)
+
+> 근거 등급: 실측 = 실축 이벤트(WS·SS·FM) · FC27 역할·포커스 효과 주장은 등급을 붙였다(불변규칙 12). 세부는 아래 「중점 5인 전용 절」과 D+1~D+3 절.
+
+| 선수 | 이 경기로 확인된 것 | 쟁점 진행도 | 게임 구현 함의(역할·포커스 · 근거 등급) |
+|---|---|---|---|
+| **마조** | ST 칸 선발이지만 **평균 위치는 왼쪽(LAM)** · 공중 경합 0 · 볼 터치 16 · 유효 슈팅 2(xG 0.34). 홀드업 근거도 침투 근거도 약하다. The False 9의 「배후 침투」 서술은 실측과 충돌해 채택하지 않았다 | **#80 0/2**(pos_class LAM이라 산입 안 됨) | ST 1위 st_advanced/Support .351(Δ.019 무결정) = 정본과 같음 · fit <.40이라 판정 불가. 변경 없음(실측). ⭐ **T2 ⑴ 도달** — 공식전 3경기 155분(첫 3경기·90분 돌파) → 서술층 갱신 대상 |
+| **고레츠카** | 이적 후 첫 선발 = **더블 피벗 왼쪽(LDM · 10번 아님)** · 패스 34/35 · FM 7.18 팀 1위 · 비보유 때 고메스보다 8m 낮은 아래 축. 에메리 「one step forward」(한 걸음 전진) — 포지션 답은 하지 않았다 | **#25 1/2**(다음 선발 1경기로 판정) | LDM 1위 dm_holding/Roaming .639(Δ.056) · 비보유 1위 dm_centrehalf/Defend .800 vs 정본 dm_dlp/Roaming .523 → 컵·로테이션 1경기라 **추가 관찰**(실측). ⭐ **T2 ⑴ 도달** — 공식전 5경기 124분(첫 90분 돌파) → 서술층 갱신 대상 |
+| **하우드-벨리스** | RCB 90′ · 지상 경합 5/5 · 패스 60/67 · 운반 28회 232m · 헤더 빅찬스 1 실패. 에메리 「he played a good match」(좋은 경기를 했다 · 10-30 회견) | **#24 0/2 · #58 0/2**(LCB 선발 0 · 컵 미산입) | RCB 1위 cb_bpd/Aggressive .869(Δ.015) = 정본 · 비보유 1위 cb_defender/Defend .820 → **유지**(실측). T2 아님(표본 4경기는 이미 넘었고 argmax 불변) |
+| **음바예** | 볼 소유 **91% 오른쪽 폭**(사용자 H1 「자주 중앙」은 볼 소유 기준 불일치) · 전환 순간 오른쪽 공백(H2′) 불일치 · 수비 가담. 에메리는 본머스전을 젊은 측면 자원의 「경합 강도 교재」로 언급(10-30) | **#6 2/3 · #7 1/2 · #48 1/2** | RM 1위 wm_winger/Attack .685(Δ.019 무결정) = 정본 → **유지**(실측). 「포커스를 낮추면 복귀가 는다」는 **D(통설)** — 이 경기에서 낮출 근거가 나오지 않았다. T2 아님 |
+| **헤밍스** | LM 볼 소유 **80% 왼쪽 폭** · 전진 운반 6회 89m(팀 최다) · 슈팅 3 모두 빗나감 · 볼 상실 7 | 대응 쟁점 없음 | LM 1위 wm_widemid/Support .723 vs 정본 wm_insidefwd/Balanced .369(Δ.354) — 정본과 정반대(실측). measured #971 n=7 1위 wm_winger/Balanced(불변 · T2 아님). ⏳ **새 쟁점 후보는 사용자 판단 대기**(아래 종료 보고) |
+
 ## 요약
 
 - **0-3 탈락, 내용은 결과보다 덜 일방적이었다.** xG **1.65 대 2.71**(FotMob · 오픈플레이 1.29/1.64 · 세트 0.37/1.07 · PK 0), 슈팅 17–19, 유효 5–7, 점유 **51%**(전반 44 · 후반 54), 빅찬스 **4 전부 실패**(xGOT 0.99). 실점 3 중 2가 **빌라 에러에서**(SS `errorsLeadToGoal` 2 — 51′ 코너 직후 비조 · 69′ 보가르드 자기 진영 오른쪽), 1이 **빌라 오른쪽 배후 공략**(7′ 타버니어 칩 패스 → 솔레르 → 아들리)이었다.
@@ -381,3 +393,67 @@
 
 ### D+3로 넘김
 - 에메리 풀럼전 사전 회견(비조·스즈키 암시 원문 · 고레츠카·만잠비) · E&S/Shropshire Star 에메리 비조 대목 원문 · 풀럼전 명단으로 가르나초·만잠비·고레츠카·알리송 서열 확인 · The Villans/1874 풀럼전 리뷰 중 본머스전 언급 · 3일 추적 종결과 complete 판정.
+
+## D+3 추적 (2026-10-31)
+
+> 예약 `mw-avl-bournemouth-d3` · 경기 후 약 3일 · **3일 추적 종결 회차**. 당일·D+1·D+2 절은 고치지 않고 정정은 아래 「당일 판정 정정」에 적는다(obs#1152 · `match_hypotheses` D3 1행). 같은 날 풀럼전(PL · 10-31 20:00 영국 = 11-01 05:00 KST)은 **이 회차 범위 밖** — 킥오프 전이라 명단 확인도 불가(아래 「미확인 확정」).
+
+### ⑴ 감독 회견 — 풀럼전 사전 회견(10-30)에서 본머스전 대목 4개
+- **에메리 — avfc.co.uk 「Emery looks ahead to Fulham encounter」(10-30 · 브라우저 직접 열람)**:
+  - 로테이션 사유(시즌 계획): 「everything has a plan, and the plan is try to play focusing each match, each competition, with the players (who) are ready and available to play, with the objective to have as well, some players (who) need confidence, time, adapting us, time to get fit, time after some injuries.」(모든 것에 계획이 있다. 각 경기·각 대회에 뛸 준비가 된 선수로 집중하되, 자신감·시간·적응·몸 만들기·부상 뒤 시간이 필요한 선수들에게도 기회를 주는 것이 목표다) — 당일 E&S/PA 「getting fit」(몸을 끌어올리다) 인용과 같은 방향.
+  - 고레츠카: 「He started being available two weeks ago, and progressively playing minutes, understanding our tactical idea」(2주 전부터 뛸 수 있게 됐고 점진적으로 출전 시간을 늘리며 우리 전술 아이디어를 이해하고 있다) · 「He played in the starting 11 on Wednesday, one step forward for him」(수요일 선발로 뛴 것은 그에게 한 걸음 전진이다).
+  - 하우드-벨리스: 「two matches in Carabao Cup, Coventry and on Wednesday against Bournemouth, he played a good match.」(카라바오컵 두 경기, 코번트리와 수요일 본머스전에서 좋은 경기를 했다).
+- **에메리 — Read Aston Villa(Shumail Sajid · 10-30 18:15 · WebFetch 직접)**: 잭슨·만잠비 본머스전 제외 사유 「For different reasons, not only rest.」(여러 이유가 있다, 휴식만은 아니다) · 「We are going to train and normally, yes」(훈련해 보고 보통이라면 뛴다) · 고레츠카 최적 위치 질문에 「The first one is to be available to play.」(첫째는 뛸 수 있는 몸 상태다) — **포지션 답 없음**(#25 근거 아님). 같은 문장을 RotoWire(10-30 · John Townley/Birmingham Live X 출처)도 실었다 — 만잠비 「(calf)」(종아리) 경미 문제 표기.
+- **에메리 — Express & Star(Lewis Cox · 10-30 22:32 GMT · 브라우저 직접 — WebFetch 403 우회)**: 음바예·알리송에 대해 「The experience is a very important thing. They need time.」(경험이 아주 중요하다. 그들에겐 시간이 필요하다) · 「How hard is each duel with the opponent? A very, very good example is the last match we played in Bournemouth.」(상대와의 경합 하나하나가 얼마나 힘든가? 지난 본머스전이 아주 좋은 예다).
+- **비조·스즈키 「암시」 원문(D+2 이월)**: E&S Matt Maher 칼럼 「Frustrations over Aston Villa's limp Carabao Cup exit unlikely to linger」(빌라의 무기력한 카라바오컵 탈락에 대한 불만은 오래가지 않을 것) — 브라우저로 열었으나 **유료 본문(첫 문단만)** · 10-30 회견 클럽 요약·Read Aston Villa·E&S 기사 어디에도 비조 언급 0 ⇒ **미확인 확정**(훑은 출처: avfc.co.uk · Read Aston Villa · E&S 2건 · Yahoo/Aston Villa News 비조 기사 검색 요약 · 언어: 영어).
+- **마르코 로제**: 새 발언 0(본머스 다음 경기 회견은 빌라 구조 언급 없음 — 검색 요약 수준에서도 0).
+- **스페인어(에메리 모국어)**: 「Emery rueda de prensa Fulham Bournemouth Goretzka Manzambi "no solo descanso"」 — 스페인어 원문 0(영어 회견 재인용만).
+
+### ⑵ 영상 — 필수 채널 3곳 새 업로드 중 본머스전 영상 0 (G17 대상 없음)
+| 채널 | D+2 이후 새 업로드 | 판단 |
+|---|---|---|
+| UTV(@UTVFANCHANNEL) | tgz1-rstQqk 「ASTON VILLA INITIATE LEGAL ACTION AGAINST JAMIE CARRAGHER」(구단 성명) · weXKU3b6L1M 「ASTON VILLA v FULHAM — MATCH PREVIEW」(풀럼 팬 게스트 · 아르벨로아 체제) | **건너뜀** — 설명란 기준 둘 다 본머스전 아님(§2-1a 경기 한정) |
+| The Villans(@TheViIIans) | 0(최신 = EUhuiiN4cJA #461 기수집) | — |
+| 1874(@The1874Podcast) | 0(최신 = FhbYRUQRi_8 풀럼 프리뷰 · D+2에 건너뜀) | — |
+- 확인 방법: `yt-dlp --flat-playlist` + 설명란(재생 없음 → 뮤트 해당 없음). 풀럼전 리뷰 영상은 경기 뒤라 이 회차엔 없다.
+- **Tanswell X**(브라우저 · 로그아웃 · 20:2x KST): 최근 4건 = V Sports 비토리아 지분 · 잭슨-케인 에메리 인용 · 캐러거 법적 조치 · 카마라 태클 — **본머스전 0**.
+
+### ⑶ 지연 전술 분석·블로그·상대 관점
+- **Aston Villa Review(Chris Nee · 10-30) 「The Holy Trinity: Aston Villa conclusions from Carabao Cup loss at Bournemouth」(빌라 결론 3가지)** — 유료벽 · 공개 도입부만: 「Emery made nine changes to his starting line-up and they gave away a sloppy goal early in each half.」(에메리가 선발 9명을 바꿨고 전후반 초반에 하나씩 엉성한 골을 내줬다) — 당일 「각 하프 첫 10분」(Tanswell)·E&S 「첫 15분」 인용과 같은 방향. 본문 3결론은 **미확인**(유료).
+- 전술 블로그 재검색: 「Aston Villa Bournemouth Carabao Cup tactical analysis Rose press Villa」 — The False 9(D+1 기수집) 외 **0**(TFA·BTL·Spielverlagerung·Coaches' Voice).
+- 상대 관점: 본머스 팬채널 2편(D+2 #462·#463) 이후 새 영상·Daily Echo 기사 0.
+- 다국어: 독일어 Spox·Goal DE 「Horror-Startelfdebüt」(악몽 같은 선발 데뷔) · absolutfussball 「Goretzkas erster Startelf-Auftritt für Aston Villa geht daneben」(고레츠카의 빌라 첫 선발은 빗나갔다) — 결과·평점 기사, **행동 서술 0**. 프랑스어(음바예) 「Ibrahim Mbaye Aston Villa Fulham titulaire Bournemouth Alysson」 — 경기 서술 0. 룩셈부르크·메스(마조)는 D+1·D+2에서 0으로 확정.
+
+### ⭐ 중점 5인 — D+3 추가분과 종결
+| 선수 | D+3 새 자료 | 종결 판정 |
+|---|---|---|
+| **마조** | 0(10-30 회견 언급 없음) | #80 0/2 그대로 · ⭐ **T2 ⑴ 도달**(공식전 3경기 155분 — 첫 3경기·90분 돌파 · `player_evaluations` #56 updated 10-27 이전 표본 2경기) → **서술층 갱신 대상**(이번 회차는 표시만 · 산문 재작성은 T2 작업으로 분리) |
+| **고레츠카** | 에메리 「one step forward」(한 걸음 전진) · 「The first one is to be available to play.」(첫째는 뛸 수 있는 몸 상태다) | #25 1/2 그대로(풀럼·바르사 선발 1경기로 판정) · ⭐ **T2 ⑴ 도달**(공식전 5경기 124분 — 이 경기로 첫 90분 돌파 · #63·#127) → **서술층 갱신 대상** |
+| **하우드-벨리스** | 에메리 「he played a good match」(좋은 경기를 했다) | #24·#58 0/2 그대로 · T2 아님 |
+| **음바예** | 에메리 「They need time.」(시간이 필요하다) · 본머스전 = 경합 강도의 예 | #6 2/3 · #7 1/2 · #48 1/2 그대로 · T2 아님 |
+| **헤밍스** | 0 | 대응 쟁점 없음 · **새 쟁점 후보 사용자 판단 대기**(D+2 권고 그대로) |
+- `player_duties` 덧붙임 3행(고레츠카 LDM #191 · 하우드-벨리스 RCB #194 · 음바예 RM #98 — 원문+번역).
+
+### 당일 판정 정정 (D+3)
+- **이월 C2 일치 → 부분 일치(재정정 · obs#1152 · `match_hypotheses` D3 seq 8)**: D+2는 FPL 2차 매체 「Manzambi rested」(만잠비 휴식)로 C2를 「일치」로 올렸으나, 에메리 1차 발언 「For different reasons, not only rest.」(휴식만은 아니다)와 RotoWire 종아리 표기로 **만잠비는 복합 사유**. 카마라·캐시 계획 휴식 · 마첸 연속 선발은 그대로.
+- **최종 재판정 — 나머지 전부 불변**: H1 부분 일치 · H2 부분 일치(D+2 서술 정정 반영) · H3 부분 일치 · H4 일치 · H1′ 부분 일치 · H2′ 불일치 · C1 일치(에메리 BBC 「a good 30 minutes」(좋은 30분)) · C3 변화(피벗 좌우 교대). D+3 자료(회견·AVR 도입부)는 방향을 바꾸지 않았다.
+- **미확인 확정(빈칸 금지)**: ⑴ 비조 「암시」 에메리 원문 — 미확인(E&S Maher 칼럼 유료 · 영어 4개 출처) ⑵ 만잠비 「다른 이유」 내용 — 미공개(영어 3개 출처 · 스페인어 0) ⑶ AVR 「Holy Trinity」 3결론 — 유료 ⑷ 풀럼전 명단으로 가르나초·만잠비·고레츠카·알리송 서열 재확인 — **킥오프(11-01 05:00 KST) 전이라 불가** → 풀럼전 수집 회차로 이관(이 리포트 범위 밖). 관전 메모에 남은 미확인·재판정 행은 0.
+
+### `manager_profiles` 갱신 판정 — **갱신 불필요**
+- 10-30 회견의 로테이션 사유(「everything has a plan」(모든 것에 계획이 있다) · 적응·몸 만들기 대상 선수 기용)는 D+0에 덧붙인 `situational`(컵 로테이션)과 맨시티 D+3 `rotation` 덧붙임(10-27)과 **같은 내용의 재확인**이다. pressing·buildup·formation 등은 로테이션 컵 1경기로 일반화하지 않는다(D+0 판단 유지).
+
+### 슬롯 정본 보류 5건 재판정 표 — 존재 확인
+- 리포트 「⭐ 슬롯 정본 보류 5건 — 재판정 표」(obs#1123 · 맨시티 #63 · 본머스 #64 2경기 · ⑴에 카마라 obs#1149 인게임 테스트 병기)가 있다 → 다시 붙이지 않았다. ⛔ 정본(`slot_canon_roles`·`team_tactic_setups` #46)·인게임 코드 `7ZTFKBu$37p7` **변경 없음** — 종료 보고 맨 위 「사용자 판단 요청」으로 올린다.
+
+### status 판단 — **`match_reports.status` = complete**
+- 필수 섹션 1~8(§1~§9)이 있다 · 출전 16명 전원 `match_player_reports` · 경기 전용 `match_game_setups` 1행 + `match_player_prescriptions` 16행(선발 11 포함 · 단일 경기 fit) · 3일 추적(D+1·D+2·D+3) 완료.
+- 얕은 축(전술 블로그 = The False 9 1건 · AVR 유료 · 비조 원문 · 스페인어 원어 발언)은 위에 **미확인 확정 + 검색어**로 남겼다. 실측·프리셋·처방 층이 다 차 있어 draft 사유는 아니다(맨시티 #63 D+3와 같은 기준). 게임 구현 판정은 **추가 관찰** 그대로(정본 변경 0).
+
+### 0건 검색어 (이번 회차)
+- 영어: `Emery press conference Fulham Bizot Bournemouth October 2026` · `Emery Bizot Suzuki goalkeeper Bournemouth error Fulham Maher` · `Aston Villa Bournemouth Carabao Cup tactical analysis Rose press Villa`
+- 스페인어: `Emery rueda de prensa Fulham Bournemouth Goretzka Manzambi "no solo descanso"`
+- 독일어: `Goretzka Aston Villa Fulham Emery Rolle Startelf Bournemouth`(결과 기사만)
+- 프랑스어: `Ibrahim Mbaye Aston Villa Fulham titulaire Bournemouth Alysson`
+
+### DB 반영 (행 추가·덧붙임만)
+- `observations` #1152(C2 재정정) · `match_hypotheses` D3 1행(seq 8 · supersedes #184) · `player_duties` 덧붙임 3행(#191·#194·#98) · `match_reports` #64 `status` draft → **complete**. 시즌 정본·경기 프리셋·선발 처방·`manager_profiles`·인게임 코드 변경 없음. `match_videos`·`video_impl_claims` 새 행 0(대상 영상 0).
