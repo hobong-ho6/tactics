@@ -9326,3 +9326,9 @@ INSERT INTO fc_evolution_eligibility VALUES('FC27',2642,128,76255,1,'2026-11-01'
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2643,76,50590845,0,'2026-11-01','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2643&club_id=[2] (2026-11-01 수집 · 범위: 클럽 EA id [2] 카드(조건 선확인))');
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2643,60,231352,1,'2026-11-01','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2643&club_id=[2] (2026-11-01 수집 · 범위: 클럽 EA id [2] 카드(조건 선확인))');
 INSERT INTO fc_evolution_eligibility VALUES('FC27',2643,61,80652,1,'2026-11-01','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2643&club_id=[2] (2026-11-01 수집 · 범위: 클럽 EA id [2] 카드(조건 선확인))');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2646,7,50553308,0,'2026-11-01','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2646&club_id=[2] (2026-11-01 수집 · 범위: 클럽 EA id [2] 카드(조건 선확인))');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2646,4,241464,1,'2026-11-01','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2646&club_id=[2] (2026-11-01 수집 · 범위: 클럽 EA id [2] 카드(조건 선확인))');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2646,17,212419,1,'2026-11-01','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2646&club_id=[2] (2026-11-01 수집 · 범위: 클럽 EA id [2] 카드(조건 선확인))');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2646,178,50584441,0,'2026-11-01','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2646&club_id=[2] (2026-11-01 수집 · 범위: 클럽 EA id [2] 카드(조건 선확인))');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2646,7,221660,1,'2026-11-01','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2646&club_id=[2] (2026-11-01 수집 · 범위: 클럽 EA id [2] 카드(조건 선확인))');
+INSERT INTO fc_evolution_eligibility VALUES('FC27',2646,57,77524,1,'2026-11-01','fut.gg /evolutions/v2/27/v2/players/?evolutions_combinations=2646&club_id=[2] (2026-11-01 수집 · 범위: 클럽 EA id [2] 카드(조건 선확인))');
