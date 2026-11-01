@@ -90,7 +90,7 @@
 
 ## 9. 데이터 반영과 한계
 
-- 추가 행: `matches` 101(LIV)·102(ATM) · `player_matches` 31행(+벤치 3) — cells_poss/def·map25_poss/def·phase_source 전원, stats_json phase_* · `team_match_stats` 2행(FotMob 한 스냅샷, xg_source=FotMob, PPDA·def_x WhoScored) · `slots` ATM 3-4-2-1 11행 · `match_reports` 37·38(draft→서사 병합 후 complete) · `match_game_setups` 2 · `match_player_prescriptions` 32 · `match_player_reports` 32.
+- 추가 행: `matches` 101(LIV)·102(ATM) · `player_matches` 31행(+벤치 3) — cells_poss/def·map25_poss/def·phase_source 전원, stats_json phase_* · `team_match_stats` 2행(FotMob 한 스냅샷, xg_source=FotMob, PPDA·수비 액션 평균 높이(def_x) WhoScored) · `slots` ATM 3-4-2-1 11행 · `match_reports` 37·38(draft→서사 병합 후 complete) · `match_game_setups` 2 · `match_player_prescriptions` 32 · `match_player_reports` 32.
 - 한계: 단일 경기·UCL 대회 축(PL 시계열과 분리) · SofaScore statistics 미수집(403) · ATM 슬롯 기하 단일 경기 · D+3 일괄 수집이라 당일/D+1 판정 분리 불가.
 
 

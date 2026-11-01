@@ -19,7 +19,7 @@
 | 경합 · 공중볼 | 56% · 20/36 | 44% · 16/36 |
 | 파울 · 경고 | 7 · 2 | **24 · 5** |
 | PPDA (WhoScored) | **11.2** (280/25) | 6.68 (294/44) |
-| def_x (라인 높이 프록시) | **34.9** (n=185) | 42.8 (n=179) |
+| 수비 액션 평균 높이(def_x) (라인 높이 프록시) | **34.9** (n=185) | 42.8 (n=179) |
 | 실점으로 이어진 실수 | **1** (9′ 밍스) | 0 |
 | GK 실점 방지(SofaScore goals prevented) | 스즈키 **−1.44** | 켈러허 +0.25 |
 
@@ -46,7 +46,7 @@
 - **피벗 비대칭(현장 관찰 obs#965)**: 고메스 터치 평균 x 45.8(0~64′)로 카마라 43.2보다 2.6 높고 왼쪽(y 61.9 vs 38.1). 단일 경기 적합 **dm_dlp/Roaming .875(Δ.154)** — 오늘 바꾼 정본 LDM과 일치. ⚠️ 「2선 높이」는 터치 평균상으론 아니다(2선 x 56~66) — 터치 기반 한계를 감안.
 
 ### 비점유 구조·압박
-- PPDA 11.2 · def_x 34.9 — 직전 토트넘전(13.24 · 30.6)보다 약간 높고 적극적이지만 여전히 중·저블록. 브렌트포드는 PPDA 6.68로 훨씬 강하게 압박했다.
+- PPDA 11.2 · 수비 액션 평균 높이(def_x) 34.9 — 직전 토트넘전(13.24 · 30.6)보다 약간 높고 적극적이지만 여전히 중·저블록. 브렌트포드는 PPDA 6.68로 훨씬 강하게 압박했다.
 - **잭슨의 압박(obs#963)**: 단일 경기 적합 **st_advanced/Support .516(Δ.146 · 2위 포처 Versatile .370)** — EA 정의상 Support의 강화 특성이 「압박」이다. 터치 평균 y 59.5로 왼쪽 쏠림(0~64′) 재현.
 
 ### 전환·rest-defense·세트피스
@@ -117,7 +117,7 @@
 
 - 결론: **추가 관찰** — 단, 두 칸은 이번 회차에 정본 근거가 모였다(LDM 반영 완료 · ST 잭슨 선발 시 Support).
 - **이 경기 전용 팀 설정**: FC26 / 4-2-3-1 Wide / 빌드업 **Counter** / 수비 접근 **Balanced** / 라인 **55** / tactic_code 없음.
-  `core.team_settings.suggest(52, 407, 61, 11.2)` → Counter / Balanced / 55~62(롱볼 15.0%) — **규칙 그대로**(rule_note=RULE). 라인은 def_x 34.9로 하단 55.
+  `core.team_settings.suggest(52, 407, 61, 11.2)` → Counter / Balanced / 55~62(롱볼 15.0%) — **규칙 그대로**(rule_note=RULE). 라인은 수비 액션 평균 높이(def_x) 34.9로 하단 55.
 - **이 경기 선발 11명**: `match_player_prescriptions` 11행 + 교체 4행(단일 경기 적합 1위를 쓴다. Δ≤.05는 「실측 무결정」 명기).
 - **GK 정본 재결정 근거(사용자 판단 대기)**: 이벤트상 스위퍼 행동 2회(하나는 하프라인 근처 x47) + 빌드업 패스 팀 3위 → **gk_sweeper/Build-Up**이 관찰·이벤트 모두에 맞는다. 히트맵(위치)은 박스 안 중심이라 희소 행동을 반영하지 못한다(gk_sweeper/Build-Up .581 · gk_ballplaying/Build-Up .728 · gk_goalkeeper/Defend .939). ⚠️ 첫 실점이 짧은 빌드업 실수에서 나왔다 — 높은 GK 관여의 비용도 같이 본다.
 - **ST**: 잭슨 선발 경기의 실측(.516 Δ.146)과 관찰이 st_advanced/Support로 모인다. 정본 ST(st_advanced/Versatile)는 슬롯 정본이고, **잭슨 선발 시 처방**으로 Support를 쓰는 것이 맞다 — 정본 변경은 사용자 판단.
@@ -180,7 +180,7 @@
 | 다국어 기사 | 영 7 · 일 3 · 서 1 · 포 1 · 불 1 · 이 0 · 브렌트퍼드 측 0 |
 
 ## 9. 데이터 반영과 한계
-- 추가: `matches` 1행(id 115) · `player_matches` 15행(국면 그리드 15행 포함) · `team_match_stats` 1행(xG 4종 FotMob 동일 스냅샷 · PPDA·def_x) · `match_events` 21행 · `match_shots` 34행 · `match_period_stats` 2행.
+- 추가: `matches` 1행(id 115) · `player_matches` 15행(국면 그리드 15행 포함) · `team_match_stats` 1행(xG 4종 FotMob 동일 스냅샷 · PPDA·수비 액션 평균 높이(def_x)) · `match_events` 21행 · `match_shots` 34행 · `match_period_stats` 2행.
 - 갱신: `prescriptions` measured 4행 재집계(G18).
 - 한계: 터치 기반 히트맵 · 교체 4명 짧은 표본 · 2선 순환은 평균 위치가 지운다(영상 필요).
 

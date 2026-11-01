@@ -12,7 +12,7 @@
 | 패스 / 롱볼(성공/시도) | 503 / 14/44 | 330 / 29/60 |
 | 코너 / 경합 승률 | 9 / 53.8% | 3 / 46.2% |
 | 공중볼(승/전체) · 태클 · 인터셉트 · 클리어링 | 18/31 · 14 · 9 · 32 | 13/31 · 16 · 15 · 32 |
-| PPDA · def_x(라인 프록시) | 8.43 · 37.7 | 11.33 · 34.1 |
+| PPDA · 수비 액션 평균 높이(def_x)(라인 프록시) | 8.43 · 37.7 | 11.33 · 34.1 |
 | 포메이션(FotMob) | 4-2-3-1 | 4-2-3-1 |
 
 하프별(FotMob 동일 스냅샷 · PPDA는 WhoScored 하프 이벤트):
@@ -56,7 +56,7 @@
 
 ### 비점유 구조·압박
 
-**PPDA 8.43(전반 8.22) · def_x 37.7.** 전반 브렌트퍼드 직선·크로스 공략(Telegraph: 루이스-포터·카요데 크로스 다발) — 44′ 티아구 크로스 → 루이스-포터 헤더 실점. 케르케즈가 우아타라에게 고전 — 「didn't always make the right defensive decision」(수비 판단이 늘 옳진 않았다, Echo 계열). 자케 듀얼 10-8·라인 위 클리어(28′)·야르몰류크 퇴장 유발 피지컬(Goal ES 「principal villano para el Brentford」(브렌트퍼드의 주적)).
+**PPDA 8.43(전반 8.22) · 수비 액션 평균 높이(def_x) 37.7.** 전반 브렌트퍼드 직선·크로스 공략(Telegraph: 루이스-포터·카요데 크로스 다발) — 44′ 티아구 크로스 → 루이스-포터 헤더 실점. 케르케즈가 우아타라에게 고전 — 「didn't always make the right defensive decision」(수비 판단이 늘 옳진 않았다, Echo 계열). 자케 듀얼 10-8·라인 위 클리어(28′)·야르몰류크 퇴장 유발 피지컬(Goal ES 「principal villano para el Brentford」(브렌트퍼드의 주적)).
 
 ### 전환·rest-defense·세트피스
 
@@ -109,7 +109,7 @@
 
 - 결론: **추가 관찰**
 - **이 경기 전용 팀 설정**: FC26 / 4-2-3-1 Wide / 빌드업 Balanced / 수비 접근 Balanced / 라인 58 / tactic_code 없음 · rule_note `RULE`
-- 규칙 대조: suggest → Balanced/Balanced/55~62 (롱볼 8.7%). 규칙 일치 · 정본 Balanced/58과 동일. 라인 58 = PPDA 8.43(규칙 55~62) · def_x 37.7. 후반은 11대10이라 전반(PPDA 8.22·점유 60%)를 기준으로 봐도 같은 결론.
+- 규칙 대조: suggest → Balanced/Balanced/55~62 (롱볼 8.7%). 규칙 일치 · 정본 Balanced/58과 동일. 라인 58 = PPDA 8.43(규칙 55~62) · 수비 액션 평균 높이(def_x) 37.7. 후반은 11대10이라 전반(PPDA 8.22·점유 60%)를 기준으로 봐도 같은 결론.
 - **이 경기 선발 11명**:
 
 | 슬롯 | 선수 | 역할 | 포커스 | 단일 경기 fit | 근거 |
@@ -158,7 +158,7 @@
 
 ## 9. 데이터 반영과 한계
 
-- DB: `matches` #123 · `player_matches` 16 · `team_match_stats` 1(FotMob xG 1.64/0.88 · 오픈 1.26/0.60 · PPDA 8.43/11.33 · def_x 37.7/34.1) · `match_events` 21(퇴장 2 포함 · 45+8′은 minute 53 규약) · `match_shots` 31(FotMob) · `match_period_stats` 2.
+- DB: `matches` #123 · `player_matches` 16 · `team_match_stats` 1(FotMob xG 1.64/0.88 · 오픈 1.26/0.60 · PPDA 8.43/11.33 · 수비 액션 평균 높이(def_x) 37.7/34.1) · `match_events` 21(퇴장 2 포함 · 45+8′은 minute 53 규약) · `match_shots` 31(FotMob) · `match_period_stats` 2.
 - 한계: 후반 11대10 · 부상 교체 2 · 회견 영상 전사 미확보(활자 인용만).
 
 ## D+2 추적 (2026-10-19)

@@ -7,7 +7,7 @@
 
 - **1-1, 전반 지배·후반 붕괴.** xG **1.71–2.21**(FotMob · 빌라 PK 0.79 포함 → 논PK **0.92–2.21**) · 전반 xG 1.20–0.60 → 후반 **0.51–1.61** · 점유 45%(전반 47·후반 43) · 슈팅 16–14 · 유효 3–5 · 빅찬스 4–4 · 상대 박스 터치 **24–40**.
 - **득점·실점**: 39′ 잭슨(만잠비 스루패스 · 알리송 흘려주기 · 카스타뉴·아펜그루버 제치고 마무리) · 16′ 맥긴 PK 크로스바(13′ 고레츠카 코너 헤더 → 베르게 핸드볼 VAR) · 64′ 이워비 코너를 스즈키가 놓친 **자책골**.
-- **압박이 후반에 사라졌다**: PPDA 빌라 전반 15.58 → 후반 **31.67**(풀럼 경기 12.84) · 0–15′ def_x 62.8로 높게 출발했지만 리드 뒤(39–64′) **19.6~24.8**로 하강 · 에메리 「They were breaking our press and we needed our goalkeeper, Zion Suzuki, saving some actions.」(그들이 우리 압박을 깨고 나왔고 골키퍼 스즈키의 선방이 필요했다 · avfc.co.uk).
+- **압박이 후반에 사라졌다**: PPDA 빌라 전반 15.58 → 후반 **31.67**(풀럼 경기 12.84) · 0–15′ 수비 액션 평균 높이(def_x) 62.8로 높게 출발했지만 리드 뒤(39–64′) **19.6~24.8**로 하강 · 에메리 「They were breaking our press and we needed our goalkeeper, Zion Suzuki, saving some actions.」(그들이 우리 압박을 깨고 나왔고 골키퍼 스즈키의 선방이 필요했다 · avfc.co.uk).
 - **빌라 오른쪽이 풀럼의 주 공격로였다 — 단 「전환 공백」이 아니라 「상대 LB의 배후 침투」로.** 66′ 전 풀럼 오픈플레이 크로스 **빌라 오른쪽 9 : 왼쪽 2**(로빈슨 5·이워비 4) · WLS 「He constantly got in behind Matty Cash」(계속 캐시 뒤를 파고들었다). 상대 진영 볼 상실 뒤 10초 전환 진입은 오른쪽 2·왼쪽 3(본머스전 H2′ 판정과 같은 방향).
 - **배치**: 고레츠카 **LDM**(첫 PL 선발 · 쟁점 #25 2/2 → 더블 피벗 확정) · 맥긴 10번이 오른쪽 하프스페이스로 기울고(볼 터치 62% 오른쪽) 잭슨이 왼쪽으로 내려와(SS 평균 54,60) 만잠비와 연결 · 66′ 3명 동시 교체(위치상 알리송→음바예 · 고레츠카→고메스 · 만잠비→부엔디아 — SofaScore·클럽 기록의 짝은 다르다, 아래).
 - **게임 구현: 추가 관찰.** 경기 프리셋 4-2-3-1 Wide · Balanced/Deep/40(RULE). 정본 변경 없음 — **슬롯 정본 보류 5건 재판정 표(맨시티·본머스·풀럼 3경기)**는 끝 절 · 사용자 판단 대기.
@@ -61,7 +61,7 @@
 | 오프사이드 | 2 | 4 |
 | GK 세이브 · goalsPrevented(SS) | 4 · +0.72 | 2 · −0.52 |
 | PPDA(WS) | **20.94**(전반 15.58 · 후반 31.67) | 12.84(13.75 · 12.0) |
-| def_x(WS) | 40.3 | 36.4 |
+| 수비 액션 평균 높이(def_x)(WS) | 40.3 | 36.4 |
 
 - **득점 국면**: 0-0 0–39′ · 1-0 39–64′ · 1-1 64′– → `phase_level 65 · phase_lead 25 · phase_trail 0`(분).
 - **교체**(SS incidents): 빌라 66′ 고메스·부엔디아·음바예(만잠비·알리송·고레츠카 아웃) · 79′ 바클리(카마라) · 87′ 가르나초(맥긴) / 풀럼 75′ 캐어니(이워비) · 79′ 팔라시오스(킹)·테테(보브) · 87′ 라르손(카스타뉴)·무니스(가르시아). ⚠️ **66′ 교체 짝이 갈린다** — SS·클럽 기록은 고레츠카→음바예 · 알리송→부엔디아 · 만잠비→고메스, **WS formation 슬롯(위치)**은 알리송→음바예(슬롯 7) · 고레츠카→고메스(슬롯 4) · 만잠비→부엔디아(슬롯 11). 처방·분석은 위치 짝을 쓴다(BirmLive·AVR 서술과 일치).
@@ -79,8 +79,8 @@
 - 상대 시각: Fulhamish 「Villa's main strategy was aerial attacks to their pacey forwards」(빌라의 주 전략은 빠른 전방으로 보내는 공중볼이었다).
 
 ### 비점유 구조·압박
-- 4-4-1-1. 0–15′ def_x **62.8** · PPDA 9.71로 높게 출발 — Fulhamish 「Berge and Charles moving amongst the backline to try and help the team wriggle away from a high press」(베르게·찰스가 백라인 사이로 내려와 하이프레스를 벗어나려 했다).
-- 16–30′ def_x 48.5 → 30–39′ 32.0 → **리드 뒤 39–45′ 19.6 · 45–60′ 24.8** · 후반 PPDA 31.67. 에메리 「we were not keeping the same consistency with ball possession」(전반 같은 점유의 일관성을 유지하지 못했다) · 「I want to watch the game to understand better why we couldn't in the second half… Why? I can't understand now」(후반에 왜 안 됐는지 경기를 다시 봐야겠다… 왜인지 지금은 모르겠다 · BirmLive 전문).
+- 4-4-1-1. 0–15′ 수비 액션 평균 높이(def_x) **62.8** · PPDA 9.71로 높게 출발 — Fulhamish 「Berge and Charles moving amongst the backline to try and help the team wriggle away from a high press」(베르게·찰스가 백라인 사이로 내려와 하이프레스를 벗어나려 했다).
+- 16–30′ 수비 액션 평균 높이(def_x) 48.5 → 30–39′ 32.0 → **리드 뒤 39–45′ 19.6 · 45–60′ 24.8** · 후반 PPDA 31.67. 에메리 「we were not keeping the same consistency with ball possession」(전반 같은 점유의 일관성을 유지하지 못했다) · 「I want to watch the game to understand better why we couldn't in the second half… Why? I can't understand now」(후반에 왜 안 됐는지 경기를 다시 봐야겠다… 왜인지 지금은 모르겠다 · BirmLive 전문).
 - 오른쪽: 캐시 수비 액션 13 (38,30) · 알리송 12 (49,22) · 카마라 14 (33,43) — 로빈슨·이워비 2인을 캐시·알리송이 받고 카마라가 안쪽에서 커버.
 
 ### 전환·rest-defense·세트피스
@@ -97,10 +97,10 @@
 
 ## 4. 경기 중 변화
 
-1. **0–15′ 높은 출발**: def_x 62.8 · PPDA 9.71. 5′ 이워비 역습 슈팅(xG 0.30).
+1. **0–15′ 높은 출발**: 수비 액션 평균 높이(def_x) 62.8 · PPDA 9.71. 5′ 이워비 역습 슈팅(xG 0.30).
 2. **13–16′ VAR PK → 맥긴 크로스바**(xG 0.79).
 3. **16–39′ 통제 속 풀럼 역습·세트**: 32′ 보브 빅찬스(로빈슨 역습 · 스즈키 선방) · 33′ 코너 헤더 2 → **39′ 잭슨 1-0**.
-4. **39–64′ 리드 뒤 블록 하강**: def_x 19.6~24.8 · 모멘텀 51–59′ −38.0 · 54′ 찰스 코너 빅찬스 · 60′대 이워비 헤더·가르시아 슈팅 연속 선방 → **64′ 코너 자책 1-1**.
+4. **39–64′ 리드 뒤 블록 하강**: 수비 액션 평균 높이(def_x) 19.6~24.8 · 모멘텀 51–59′ −38.0 · 54′ 찰스 코너 빅찬스 · 60′대 이워비 헤더·가르시아 슈팅 연속 선방 → **64′ 코너 자책 1-1**.
 5. **66′ 3명 동시 교체**(음바예 RM · 부엔디아 LM · 고메스 LDM) → 66–82′ 모멘텀 −26.1 · 79′ 바클리(고메스 RDM) · 87′ 가르나초 LM(부엔디아 CAM) · 83–90′ 모멘텀 +25.4. 형태 4-2-3-1 유지 · 음바예 쪽 크로스 허용 0 · 빌라 후반 xG 0.51.
 
 ## 5. 선수별 분석 — 출전 선수 전원
@@ -131,7 +131,7 @@
 - **유지**: 4-2-3-1 · 비보유 4-4-1-1 · 양 풀백 폭 · 더블 피벗(카마라 + 1).
 - **새로 나타난 것**: 고레츠카 리그 LDM(#25 확정) · 맥긴 10번의 오른쪽 기울기 + 잭슨 왼쪽 하강(왼쪽 연결 경로) · 빌드업 출구 오른쪽(린델뢰프–캐시).
 - **반복된 약점**: 하프 시작 강도(본머스전에 이어) · 빌라 오른쪽 배후.
-- **`manager_profiles` 반영**: **pressing 축 덧붙임** — 리드 뒤 블록 하강·후반 압박 소멸이 맨시티(리드 def_x 20.4~32.2)에 이어 2번째 리드 경기에서 재현(39–64′ def_x 19.6~24.8). 의도(리드 보호)인지 실패인지는 에메리 자신도 「Why? I can't understand now」(왜인지 지금은 모르겠다) — 성향으로 단정하지 않고 사실만 덧붙였다. 나머지 축 갱신 불필요(단일 경기).
+- **`manager_profiles` 반영**: **pressing 축 덧붙임** — 리드 뒤 블록 하강·후반 압박 소멸이 맨시티(리드 수비 액션 평균 높이(def_x) 20.4~32.2)에 이어 2번째 리드 경기에서 재현(39–64′ 수비 액션 평균 높이(def_x) 19.6~24.8). 의도(리드 보호)인지 실패인지는 에메리 자신도 「Why? I can't understand now」(왜인지 지금은 모르겠다) — 성향으로 단정하지 않고 사실만 덧붙였다. 나머지 축 갱신 불필요(단일 경기).
 
 ## 7. 게임 구현 판정
 
@@ -196,7 +196,7 @@
 
 ## 9. 데이터 반영과 한계
 
-- DB(행 추가): `matches` #129 · `player_matches` 16(국면 그리드·phase 분·SS 운반·FotMob 경기 스탯·WS 운반 추정/수신 · pulled=2026-11-01 scope=full) · `team_match_stats` 1(xG 4종 FotMob 동일 스냅샷 · PPDA·def_x) · `match_events` 18 · `match_shots` 31(SofaScore) · `match_period_stats` 2 · `match_momentum` 92 · `match_set_pieces` 23 · `match_reports` #65(draft) · `match_player_reports` 16 · `match_game_setups` 1 · `match_player_prescriptions` 16(선발 11 + 교체 5) · `match_phase_metrics` 80 · 가설 판정 5행 · `match_videos` 2 · `video_impl_claims` 8.
+- DB(행 추가): `matches` #129 · `player_matches` 16(국면 그리드·phase 분·SS 운반·FotMob 경기 스탯·WS 운반 추정/수신 · pulled=2026-11-01 scope=full) · `team_match_stats` 1(xG 4종 FotMob 동일 스냅샷 · PPDA·수비 액션 평균 높이(def_x)) · `match_events` 18 · `match_shots` 31(SofaScore) · `match_period_stats` 2 · `match_momentum` 92 · `match_set_pieces` 23 · `match_reports` #65(draft) · `match_player_reports` 16 · `match_game_setups` 1 · `match_player_prescriptions` 16(선발 11 + 교체 5) · `match_phase_metrics` 80 · 가설 판정 5행 · `match_videos` 2 · `video_impl_claims` 8.
 - 선수 상태(§0-1): `collect_fotmob_players.py --team AVL`만 실행(CHE·LIV·ATM 수집 보류).
 - 집계(§4 · G18): measured #919(맥긴 RM) n=12→**13** — 풀럼전 명목 CAM 선발이 pos_class RAM으로 분류돼 RM 집계에 들어간다(G18 어휘표 RM←RAM) · FC27 wm_winger/Attack .7542(종전 .7454 · 2위 wideplm/Attack .726 · Δ.028 무결정) — argmax 불변 · T2 아님. T1 `refresh_eval_samples --apply` 17행 · `refresh_duty_applied` 상태 변경 0.
 - **선발 처방 층 자동 산출**(export · `core.opt_starters` · obs#1148 — 손으로 고르지 않는다): 최근 공식전 5경기 슬롯 선발 최다로 CAM 부엔디아→**맥긴** · LDM 고메스→**고레츠카** · LM 음바예→**만잠비**(`tactic_change_log` #263~#265). 역할·포커스(슬롯 정본)는 불변.
@@ -214,7 +214,7 @@ obs#1123 재판정의 세 번째 열. 실측 열은 경기 프리셋(`match_play
 | ⑵ | **ST 포커스** Support vs Attack | st_advanced/Support | 잭슨 advanced/Support .375 vs Attack .267 · 보유 1위 false9/Attack .436 | 마조 advanced/Support .351 vs Attack .332(Δ.019) | 잭슨 1위 **advanced/Versatile .467** · Support .419 · Attack **.400** · 보유 Versatile .527 ≈ Support .523 > Attack .466 | **Support ≥ Attack 3/3 — 단 셋 다 fit <.50 무결정** · 풀럼전은 Versatile이 근소 1위(잭슨 왼쪽 하강) | ST 커널 적합 구조적 저조(리서치 §1.2) · 인게임 Attack 유지 여부는 사용자 판단 · 에메리 「we need him more running in behind」(더 배후로 뛰길 원한다 · 맨시티전)와 실측(내려옴)이 계속 긴장 · 실측 |
 | ⑶ | **LM 역할·포커스** | wm_insidefwd/Balanced | 만잠비 1위 widemid/Defend .538(Δ.007) · 보유 1위 insidefwd/Balanced .741 · 정본 .504 | 헤밍스 1위 widemid/Support .723(Δ.060) · 정본 .369 | 만잠비 1위 **wm_wideplm/Attack .718**(Δ.056) · 2위 **정본 insidefwd/Balanced .662** · 보유 wideplm/Attack .783 vs 정본 .701 | **선수 따라 갈림** — 만잠비는 정본이 1·2위권(보유 기준 맨시티 1위 · 풀럼 2위), 헤밍스는 정반대 | 루게리 여전히 부상(한 달+ · 에메리 「more than one month」(한 달 이상)) → LM은 만잠비 주전 · 정본 유지 근거가 가장 강한 칸 · 실측 |
 | ⑷ | **LB 저점유 프리셋 운용** | fb_att_wb/Support(인게임 Wingback/Balanced) | 마첸 1위 wingback/Balanced .869(Δ.069) · 정본 .687 | 마첸 1위 fullback/Balanced .756 · 보유 1위 wingback/Balanced .799 · 정본 .672 | 마첸 1위 **att_wb/Support .902(Δ.133 결정) = 정본** · wingback/Balanced .769 | **뒤집힘 — 2/3 wingback/Balanced → 풀럼에서 정본 att_wb/Support 결정** | 점유 37%·51%는 wingback, 45%는 att_wb — 점유와 단조 관계 아님 · 경기 상대 구조(풀럼 RW 보브 · 오른쪽 과부하 없음)가 변수일 가능성 · 「인게임 값으로 정렬」 제안은 **보류 쪽으로 약해짐** · 실측 |
-| ⑸ | **FC27 optimal:lead 신설** | 없음(#46 optimal만) | 리드 76분 · 리드 구간 def_x 31.8~32.2 · 20.4(60–66′) | 리드 0분 | **리드 25분(39–64′)** · def_x **19.6(39–45′) · 24.8(45–60′) · 38.2(60–64′)** · 후반 PPDA 31.67 · 리드 중 풀럼 xG 대부분(후반 1.61) | **리드 표본 2경기 도달 — 둘 다 「리드 시 블록 20~32로 하강」** · 단 풀럼전은 하강 뒤 실점·지배를 허용 | 조건(리드 2경기) 충족 → 사용자 판단 차례. ⚠️ 풀럼전 하강은 에메리도 원인 미상(의도 아닐 수 있음) — 「리드 = 블록 하강」을 프리셋으로 굳히면 **실패를 재현**할 위험 · 실측 |
+| ⑸ | **FC27 optimal:lead 신설** | 없음(#46 optimal만) | 리드 76분 · 리드 구간 수비 액션 평균 높이(def_x) 31.8~32.2 · 20.4(60–66′) | 리드 0분 | **리드 25분(39–64′)** · 수비 액션 평균 높이(def_x) **19.6(39–45′) · 24.8(45–60′) · 38.2(60–64′)** · 후반 PPDA 31.67 · 리드 중 풀럼 xG 대부분(후반 1.61) | **리드 표본 2경기 도달 — 둘 다 「리드 시 블록 20~32로 하강」** · 단 풀럼전은 하강 뒤 실점·지배를 허용 | 조건(리드 2경기) 충족 → 사용자 판단 차례. ⚠️ 풀럼전 하강은 에메리도 원인 미상(의도 아닐 수 있음) — 「리드 = 블록 하강」을 프리셋으로 굳히면 **실패를 재현**할 위험 · 실측 |
 
 ⇒ **사용자 판단 요청 목록**(종료 보고에 올림): ⑴ RDM — DLP 2/3이지만 풀럼전 무결정 · 인게임 테스트 「좋았다」 → 정본 변경 여부 ⑵ ST 인게임 Attack vs 정본 Support(3/3 Support ≥ Attack · 전부 무결정) ⑶ LM 정본 유지(만잠비 주전 · 정본 1~2위권) ⑷ LB — 풀럼전이 정본 쪽으로 뒤집어 「wingback 정렬」 근거 약화 ⑸ lead 프리셋 — 2경기 조건 충족 · 단 풀럼전 하강은 실패 사례라 신설 시 라인 하한을 둘지.
 

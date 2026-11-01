@@ -12,7 +12,7 @@
 | 패스 / 롱볼(성공/시도) | 670 / 22/38 | 273 / 21/57 |
 | 코너 / 경합 승률 | 12 / 59.5% | 4 / 40.5% |
 | 공중볼(승/전체) · 태클 · 인터셉트 · 클리어링 | 21/31 · 11 · 10 · 18 | 10/31 · 11 · 11 · 17 |
-| PPDA · def_x(라인 프록시) | 8.69 · 37.6 | 19.91 · 38.6 |
+| PPDA · 수비 액션 평균 높이(def_x)(라인 프록시) | 8.69 · 37.6 | 19.91 · 38.6 |
 | 포메이션(FotMob) | 4-3-1-2 | 5-4-1 |
 
 하프별(FotMob 동일 스냅샷 · PPDA는 WhoScored 하프 이벤트):
@@ -53,7 +53,7 @@
 
 ### 비점유 구조·압박
 
-**맞압박 강도 ↑.** PPDA 8.69(후반 5.94) · def_x 37.6. 상대는 장기전 설계 — 마놀로 곤살레스 「queríamos que el partido fuera largo.」(경기가 길게 가기를 원했다) · 「Para cuando se rompiera, atacar.」(경기가 깨질 때 공격하려고, COPE/EFE 10-17). 에스파뇰 xG 0.51 · 유효 2. 로메로 66′ 경고 후 67′ 자청 교체(내전근 저등급 부상).
+**맞압박 강도 ↑.** PPDA 8.69(후반 5.94) · 수비 액션 평균 높이(def_x) 37.6. 상대는 장기전 설계 — 마놀로 곤살레스 「queríamos que el partido fuera largo.」(경기가 길게 가기를 원했다) · 「Para cuando se rompiera, atacar.」(경기가 깨질 때 공격하려고, COPE/EFE 10-17). 에스파뇰 xG 0.51 · 유효 2. 로메로 66′ 경고 후 67′ 자청 교체(내전근 저등급 부상).
 
 ### 전환·rest-defense·세트피스
 
@@ -99,14 +99,14 @@
 
 - 유지된 것: 4-4-2 기본형, 출전 시간 관리형 교체, 후반 교체로 경기를 바꾸는 패턴(알라베스전과 같음).
 - 새로 나타난 것: 0-0 원정에서 CB를 빼고 MF(멘도사)를 넣는 공격적 교체 — 다만 로메로 자청 교체(부상)가 계기.
-- 직전 경기 대비: 점유 58→70%, PPDA 11.03→8.69(맨유전보다 압박 강도↑), def_x 40.5→37.6.
+- 직전 경기 대비: 점유 58→70%, PPDA 11.03→8.69(맨유전보다 압박 강도↑), 수비 액션 평균 높이(def_x) 40.5→37.6.
 - `manager_profiles` 반영: situational(0-0 저블록 상대 후반 교체 4인 구조 변경) · formation(4-4-2 ↔ 4-3-1-2 표기) 덧붙임. observations 신규 행.
 
 ## 7. 게임 구현 판정
 
 - 결론: **추가 관찰**
 - **이 경기 전용 팀 설정**: FC26 / 4-4-2 / 빌드업 Short Passing / 수비 접근 Balanced / 라인 55 / tactic_code 없음 · rule_note `RULE`
-- 규칙 대조: suggest → Short Passing/Balanced/55~62 (롱볼 5.7%). 빌드업 Short Passing: 점유 70%·롱볼 5.7%(규칙 일치). 수비 접근 Balanced: PPDA 8.69는 High 경계(8) 직상. 라인 55 = def_x 37.6(중간). 이강인 세컨드 톱은 RAM 슬롯 기하(x72)로 대체 — regime 4 4-4-2에 CAM 슬롯 없음.
+- 규칙 대조: suggest → Short Passing/Balanced/55~62 (롱볼 5.7%). 빌드업 Short Passing: 점유 70%·롱볼 5.7%(규칙 일치). 수비 접근 Balanced: PPDA 8.69는 High 경계(8) 직상. 라인 55 = 수비 액션 평균 높이(def_x) 37.6(중간). 이강인 세컨드 톱은 RAM 슬롯 기하(x72)로 대체 — regime 4 4-4-2에 CAM 슬롯 없음.
 - **이 경기 선발 11명**:
 
 | 슬롯 | 선수 | 역할 | 포커스 | 단일 경기 fit | 근거 |
@@ -153,7 +153,7 @@
 
 ## 9. 데이터 반영과 한계
 
-- DB: `matches` #125 · `player_matches` 16 · `team_match_stats` 1(FotMob xG 1.47/0.51 · 오픈 1.30/0.16 · PPDA 8.69/19.91 · def_x 37.6/38.6 · formation_v=FotMob 원표기 4-3-1-2) · `match_events` 18 · `match_shots` 29(FotMob) · `match_period_stats` 2.
+- DB: `matches` #125 · `player_matches` 16 · `team_match_stats` 1(FotMob xG 1.47/0.51 · 오픈 1.30/0.16 · PPDA 8.69/19.91 · 수비 액션 평균 높이(def_x) 37.6/38.6 · formation_v=FotMob 원표기 4-3-1-2) · `match_events` 18 · `match_shots` 29(FotMob) · `match_period_stats` 2.
 - 한계: 포메이션 표기 충돌(리포트·프리셋은 4-4-2로 읽음) · 이강인 슬롯 기하 대체(RAM x72) · 교체 3명 35분 이하 표본.
 
 ## D+2 추적 (2026-10-19)

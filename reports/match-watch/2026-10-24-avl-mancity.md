@@ -10,11 +10,11 @@
 
 - **결과는 2-1, 내용은 맨시티가 앞섰다.** xG **0.61 대 1.79**(FotMob · 오픈플레이 0.48/1.43 · 세트 0.13/0.36 · PK 0), 슈팅 8–15, 박스 안 터치 **12 대 53**, 점유 **37%**(전반 41 · 후반 33). 빌라 두 골은 모두 **맨시티 실책에서** 나왔다(SS `errorLeadToGoal` 2 — 6′ 게히 첫 터치 → 잭슨 · 60′ 돈나룸마 위치 선정 → 잭슨). 스즈키 선방 6 · 막은 실점 **+1.74**(SS goals prevented).
 - **바이킹전 「보유 3백 + 오른쪽 과부하」는 유지되지 않았다 — 4백 + 왼쪽 쏠림.** 볼 소유 평균 위치(WS): 린델뢰프 (25, 26) · 토레스 (24, 66)가 CB 2, **캐시 (40, 17) · 마트센 (45, 88)이 양쪽 폭**, 그 앞 **카마라 (38, 38) · 고메스 (44, 68)** 더블 피벗, 맥긴 (61, 47) 중앙 10번, 알리송 (63, 22) 오른쪽, 만잠비 (58, 67) 왼쪽 안쪽, 잭슨 (61, 63). 중앙·상대 진영 볼 소유 레인 **왼쪽 44% · 중앙 26% · 오른쪽 30%**(바이킹전 오른쪽 46%의 반대).
-- **비보유는 4-4-1-1 중·저블록.** 팀 수비 액션 높이 def_x **34.9**(맨시티 45.3) · 6′ 득점 뒤 6–30′ **31.8~32.2** · 2-1 리드 뒤 60–66′ **20.4**. 맥긴의 수비 액션 평균 (34, 38)은 카마라 (33, 34) 바로 옆 — 공이 없을 때는 CAM이 아니라 중원 셋째 자리로 내려왔다.
+- **비보유는 4-4-1-1 중·저블록.** 팀 수비 액션 높이 수비 액션 평균 높이(def_x) **34.9**(맨시티 45.3) · 6′ 득점 뒤 6–30′ **31.8~32.2** · 2-1 리드 뒤 60–66′ **20.4**. 맥긴의 수비 액션 평균 (34, 38)은 카마라 (33, 34) 바로 옆 — 공이 없을 때는 CAM이 아니라 중원 셋째 자리로 내려왔다.
 - **주앙 고메스는 RB가 아니라 LDM(카마라 왼쪽)** — 바이킹전 RB는 부상 강제 1회성(obs#1129 확정과 일치). 패스 **27/28**(96%) · 가로채기 3 · 볼 소유 레인 왼쪽 58%.
 - **「맥긴·고메스 중원 축」은 이 경기에서는 성립하지 않았다.** 연결 상위 쌍은 **토레스→스즈키 20 · 린델뢰프↔토레스 11/10 · 마트센→고메스 10 · 마트센→토레스 10** — 후방 순환과 왼쪽(마트센–고메스)이다. 맥긴은 볼 소유 18 · 패스 8/15(WS)로 연결보다 **압박·탈취·마무리 공급**(선제골 도움 · 기회 창출 4 · FM 7.98)이었다.
 - **교체 서열**: 59′ 음바예(알리송 자리 · **오른쪽**) → 1분 뒤 결승골 도움 · 66′ 바클리←맥긴 · 부엔디아←만잠비 · 82′ 고레츠카←고메스 · 마조←잭슨. **가르나초는 소집 명단 밖**(PL 2경기 연속 · 사유 공식 확인 0 · 계약 조항 루머 LOW). 밍스는 벤치 미출전.
-- **게임 구현: 추가 관찰.** 이 경기 전용 프리셋 4-2-3-1 Wide · **Counter**/Balanced/48(규칙 Counter/Balanced/55~62 — 라인만 DIVERGE: def_x 34.9). 시즌 정본 변경 없음.
+- **게임 구현: 추가 관찰.** 이 경기 전용 프리셋 4-2-3-1 Wide · **Counter**/Balanced/48(규칙 Counter/Balanced/55~62 — 라인만 DIVERGE: 수비 액션 평균 높이(def_x) 34.9). 시즌 정본 변경 없음.
 
 ## ⭐ 이월 확인 대조표 (바이킹전 D+3 → 이 경기)
 
@@ -82,7 +82,7 @@
 | 드리블 | 3/10 | 17/39 | SS |
 | 코너 / 파울 / 경고 | 4 / 21 / 4 | 7 / 17 / 4 | SS |
 | PPDA | **8.55**(325/38) · 전반 7.58 · 후반 9.53 | 7.5 · 전반 12.08 · 후반 5.38 | WS · `core.whoscored.ppda` |
-| def_x(수비 액션 높이) | **34.9**(n=170) | 45.3(n=132) | WS · `core.whoscored.def_x` |
+| 수비 액션 평균 높이(def_x)(수비 액션 높이) | **34.9**(n=170) | 45.3(n=132) | WS · `core.whoscored.def_x` |
 | GK 선방 · 막은 실점 | 6 · **+1.74** | 0 · −1.68 | SS |
 | 실책→실점 | 0 | **2** | SS |
 | 뛴 거리 · 스프린트 | 113.2km · 70 | 112.1km · 83 | SS |
@@ -102,10 +102,10 @@
 - **잭슨은 박스에 머물지 않았다(다시).** 볼 소유 27 · 평균 (61, 63) 왼쪽 48% · 깊은 수신 7 · 운반 전진 3(69m · SS) · 스프린트 15회. 슈팅 2(둘 다 골 · xG 0.36).
 
 ### 비점유 구조·압박
-- **0–6′ 높게 → 6′ 득점 뒤 중·저블록.** 빌라 def_x **55.6**(0–6′) → **31.8**(6–15′) · **32.2**(15–30′) · 41.8(30–45′) · 40.3(45–52′) · 34.8(52–59′) · **20.4**(60–66′) · 31.1(66–75′) · 35.8(75′~). PPDA 6.5 → 6.2 → 11.75 → 6.62 · 후반 9.53.
+- **0–6′ 높게 → 6′ 득점 뒤 중·저블록.** 빌라 수비 액션 평균 높이(def_x) **55.6**(0–6′) → **31.8**(6–15′) · **32.2**(15–30′) · 41.8(30–45′) · 40.3(45–52′) · 34.8(52–59′) · **20.4**(60–66′) · 31.1(66–75′) · 35.8(75′~). PPDA 6.5 → 6.2 → 11.75 → 6.62 · 후반 9.53.
 - **4-4-1-1.** 수비 액션 평균(0–52′): 캐시 (42, 11) · 알리송 (46, 22) · 맥긴 (39, 37) · 카마라 (33, 39) · 고메스 (33, 40) · 만잠비 (31, 62) · 잭슨 (52, 61) · 마트센 (51, 92). 맥긴이 카마라 옆으로 내려오고, 만잠비가 왼쪽 미드 라인을 지킨다. **마트센은 수비 액션도 높다(51, 92)** — 맨시티 오른쪽(쿠사노프 RB→은디아예)을 앞에서 끊는 쪽.
 - 태클 31(맨시티 13) · 캐시 태클 **8**(양 팀 최다) — 도쿠 전담(BBC·UTV 「Cash shut Doku on the outside all game long」(경기 내내 바깥쪽으로 막았다)). 단 캐시 드리블 허용 5(SS dribbled past).
-- 마레스카 「We struggled the first probably 10-15 minutes and we expected them in one way and they were in a different way」(처음 10~15분 고전했다 — 한 방식으로 나올 줄 알았는데 다르게 나왔다 · NBC) — 「다른 방식」의 내용은 미서술. 실측으로는 0–6′ def_x 55.6의 **높은 출발**이 그 후보다.
+- 마레스카 「We struggled the first probably 10-15 minutes and we expected them in one way and they were in a different way」(처음 10~15분 고전했다 — 한 방식으로 나올 줄 알았는데 다르게 나왔다 · NBC) — 「다른 방식」의 내용은 미서술. 실측으로는 0–6′ 수비 액션 평균 높이(def_x) 55.6의 **높은 출발**이 그 후보다.
 
 ### 전환·rest-defense·세트피스
 - **두 골 모두 전환.** 6′ 높은 위치 탈취(サッカーキング 「敵陣高い位置でボールを奪い切ると」(상대 진영 높은 위치에서 공을 완전히 빼앗자)) · 60′ 음바예 오른쪽 침투(ESPN 「one long ball over the top … has time to run into that space」(롱볼 하나로 공간에 뛰어들 시간)). 마레스카 「they play for that. They wait for that」(그걸 노리고 기다린다 · 회견 전사 auto-caption).
@@ -115,17 +115,17 @@
 ## 3. 전술적 특성
 
 - **강점**: ⑴ 첫 6분 높은 출발로 맨시티 빌드업 실책 유도(게히 · 마레스카도 인정) ⑵ 중·저블록에서 박스 수비 — 맨시티 박스 터치 53에 슈팅 xG 1.79 · 스즈키 선방 6(박스 안 5) · 마트센 골라인 클리어 ⑶ 교체 직후 속도(음바예)로 전환 한 방 ⑷ 캐시 도쿠 봉쇄(태클 8).
-- **약점**: ⑴ 자기 창출 부족 — xG 0.61 · 빅찬스 1 · 크로스 0/5 · 박스 터치 12. 결과가 내용(xG 차 −1.18)을 크게 앞섰다 ⑵ 세트피스 측면 1대1(52′ 실점) ⑶ 롱볼 성공 19/53(36%) — 잭슨 공중 2/2 외에는 회수 근거 약함 ⑷ 60–66′ def_x 20.4까지 내려앉음.
+- **약점**: ⑴ 자기 창출 부족 — xG 0.61 · 빅찬스 1 · 크로스 0/5 · 박스 터치 12. 결과가 내용(xG 차 −1.18)을 크게 앞섰다 ⑵ 세트피스 측면 1대1(52′ 실점) ⑶ 롱볼 성공 19/53(36%) — 잭슨 공중 2/2 외에는 회수 근거 약함 ⑷ 60–66′ 수비 액션 평균 높이(def_x) 20.4까지 내려앉음.
 - **상대 교란**: 맨시티는 전반 게히를 사실상 RB 위치에 두고(ESPN 「your center back playing almost as a right back」(센터백이 거의 라이트백처럼)) 쿠사노프를 높였다가, 하프타임 리코 루이스 투입으로 수비 시 3백(ESPN 「At times it was a three when they were defending」(수비할 때 가끔 3백))·그바르디올 전진. 후반 맨시티 PPDA **5.38**(빌라 자기 진영 패스 성공률 75′~ 63%).
 - **기존 프로필·직전 경기 대비**: 강팀 원정/홈 저점유 경기의 에메리 계열(리드 후 블록 하강 — 뉴캐슬전 77′+·바이킹전 후반과 같은 방향)이다. 바이킹전의 고메스 RB→하프스페이스 3선은 **명단 복귀(캐시·마트센)와 함께 사라졌다** — 구조 선택이 아니라 가용 인원 강제였다는 obs#1129 판단을 실측이 지지한다.
 
 ## 4. 경기 중 변화
 
-1. **0–6′ (0-0)**: 빌라 def_x 55.6 · PPDA 6.5 — 높은 압박. 6′ 게히 실책 → 맥긴 → 잭슨 1-0.
-2. **6–52′ (리드)**: 중·저블록(def_x 31.8~41.8) · 맨시티 점유 59%. 13′·21′·24′ 은디아예·셰르키·쿠사노프 슈팅 선방(日刊スポーツ). 39′ 알리송 슈팅 디아스 블록. 전반 xG 0.38–0.54.
+1. **0–6′ (0-0)**: 빌라 수비 액션 평균 높이(def_x) 55.6 · PPDA 6.5 — 높은 압박. 6′ 게히 실책 → 맥긴 → 잭슨 1-0.
+2. **6–52′ (리드)**: 중·저블록(수비 액션 평균 높이(def_x) 31.8~41.8) · 맨시티 점유 59%. 13′·21′·24′ 은디아예·셰르키·쿠사노프 슈팅 선방(日刊スポーツ). 39′ 알리송 슈팅 디아스 블록. 전반 xG 0.38–0.54.
 3. **46′ 맨시티 2명 교체**: 포든·리코 루이스 — 측면(도쿠)으로 공 보내기(UTV) · 수비 3백 변형. 52′ FK → 홀란 1-1.
 4. **59–60′ 음바예 투입 → 결승골**: 알리송 자리(오른쪽)에 음바예 — 1분 뒤 오른쪽 침투 컷백 → 잭슨 2-1.
-5. **60–66′**: def_x **20.4** — 가장 낮게 내려앉음 · 맨시티 PPDA 5.5.
+5. **60–66′**: 수비 액션 평균 높이(def_x) **20.4** — 가장 낮게 내려앉음 · 맨시티 PPDA 5.5.
 6. **66′ 바클리←맥긴 · 부엔디아←만잠비 / 82′ 고레츠카←고메스 · 마조←잭슨**: 부엔디아 왼쪽 (49, 75) · 바클리 오른쪽 중원 (49, 29) · 마조 최전방 (79, 60). 75′~ 빌라 GK 롱 비중 70% · PPDA 7.0. 후반 빌라 슈팅 2 · xG 0.22.
 
 ## 5. 선수별 분석 — 출전 선수 전원
@@ -161,7 +161,7 @@
 ## 7. 게임 구현 판정
 
 - 결론: **추가 관찰** — 단일 경기 · 여러 칸 Δ≤.05 · 결과가 내용(xG 0.61–1.79)과 어긋난 경기. 시즌 정본(slot_canon_roles · prescriptions · team_tactic_setups)은 바꾸지 않는다.
-- **이 경기 전용 팀 설정**: FC27 · **4-2-3-1 Wide** · 빌드업 **Counter** · 수비 접근 **Balanced** · 라인 **48**. `core.team_settings.suggest(37, 314, 53, 8.55)` → Counter/Balanced/55~62(롱볼 16.9%) · 기록 Counter/Balanced/48 → **DIVERGE(라인)**: def_x 34.9(바이킹전 35.2와 같은 대역)·6–30′ 31.8~32.2·60–66′ 20.4로 실제 블록이 규칙 구간보다 낮다. PPDA 8.55는 0–6′ 높은 출발과 중원 태클(31)이 만든 값이라 라인 높이 근거로 약하다. ⚠️ FC27 라인 구간 자체가 미실측(HANDOFF P1 「라인 슬라이더 상하한」) — 48은 상대값.
+- **이 경기 전용 팀 설정**: FC27 · **4-2-3-1 Wide** · 빌드업 **Counter** · 수비 접근 **Balanced** · 라인 **48**. `core.team_settings.suggest(37, 314, 53, 8.55)` → Counter/Balanced/55~62(롱볼 16.9%) · 기록 Counter/Balanced/48 → **DIVERGE(라인)**: 수비 액션 평균 높이(def_x) 34.9(바이킹전 35.2와 같은 대역)·6–30′ 31.8~32.2·60–66′ 20.4로 실제 블록이 규칙 구간보다 낮다. PPDA 8.55는 0–6′ 높은 출발과 중원 태클(31)이 만든 값이라 라인 높이 근거로 약하다. ⚠️ FC27 라인 구간 자체가 미실측(HANDOFF P1 「라인 슬라이더 상하한」) — 48은 상대값.
 - **보유/비보유 형태**: 보유 4-2-3-1(양 풀백 폭 · 왼쪽 쏠림) · 비보유 4-4-1-1(맥긴 하강).
 - **이 경기 선발 11명(커널 단일 경기 fit)**:
 
@@ -210,7 +210,7 @@
 
 ## 9. 데이터 반영과 한계
 
-- **DB 추가**: matches #127 · player_matches 16(국면 그리드 16 · phase 분 · pos_class · SS 확장(운반 실측) · FotMob 경기 스탯 +470키 · WS 운반 추정·수신) · team_match_stats 1(xG 4종 FotMob 동일 스냅샷 · PPDA·def_x) · match_events 19 · match_period_stats 2 · match_shots 23 · match_momentum 92점 · match_set_pieces 30 · match_reports #63 · match_player_reports 16 · match_game_setups 1 · match_player_prescriptions 16 · match_hypotheses 6(이월 C1~C6) · match_phase_metrics 74 · match_tactical_changes 6 · observations 4 · match_videos 4편 요약·구현 주장 6행 · manager_profiles situational 덧붙임.
+- **DB 추가**: matches #127 · player_matches 16(국면 그리드 16 · phase 분 · pos_class · SS 확장(운반 실측) · FotMob 경기 스탯 +470키 · WS 운반 추정·수신) · team_match_stats 1(xG 4종 FotMob 동일 스냅샷 · PPDA·수비 액션 평균 높이(def_x)) · match_events 19 · match_period_stats 2 · match_shots 23 · match_momentum 92점 · match_set_pieces 30 · match_reports #63 · match_player_reports 16 · match_game_setups 1 · match_player_prescriptions 16 · match_hypotheses 6(이월 C1~C6) · match_phase_metrics 74 · match_tactical_changes 6 · observations 4 · match_videos 4편 요약·구현 주장 6행 · manager_profiles situational 덧붙임.
 - **한계**: ⑴ 결과-내용 괴리(xG 0.61–1.79 · 두 골 모두 상대 실책) — 「강팀 공략 성공」으로 일반화 금지 ⑵ 37% 점유라 보유 구조 표본이 짧다(WS 볼 소유 393) ⑶ SS missingPlayers가 만잠비를 「Physical Discomfort」로 남긴 채 출전 — 경기 전 표기 잔존 ⑷ 맥긴 패스 WS 8/15 vs FM 8/12(제공사 차이) ⑸ 영상은 D+0.5 시점이라 전술 분석 채널(The Villans·Horsfall·1874 사후판) 미게재 ⑹ 일부 평점 출처(dave.sport · OneFootball)는 AI 보조 작성 표기.
 - `match_reports.status` = **draft**(D+1 13:00 보강 · D+2 · D+3 추적 남음). G12·G37 결과는 ship 로그.
 
@@ -253,7 +253,7 @@
 | 도쿠를 「후반 대부분 마트센이 막았다」 | GOAL(맨시티 평점 · Adhe Makayasa) | WS 도쿠 이벤트 y̅ 전반 **79.0**(36건 · y>66 32) · 후반 **82.8**(42건 · y>66 40 · y<33 0) — 양 하프 모두 맨시티 **왼쪽** = 빌라 오른쪽(캐시) | **기각** — 캐시 담당(캐시 인터뷰·Bains·UTV 일치) |
 | 맥긴 「오른쪽 유지」 | Sports Mole 경기 전 선발 기사 | 볼 소유 (61, 47) 중앙 | **기각**(명단 해석) |
 | 「They want to keep the ball」(공을 지키려 한다) | 홀란 플래시 인터뷰(tacticafoot 재편집 · auto-caption) | 점유 37% · 롱볼 20% | 상대 선수 인상 — 채택 안 함 |
-| 「press from the front」(전방 압박) | More Lyes(auto-caption) | 높았던 건 0–6′(def_x 55.6)뿐 · 전체 34.9 | 부분 — 초반 구간만 |
+| 「press from the front」(전방 압박) | More Lyes(auto-caption) | 높았던 건 0–6′(수비 액션 평균 높이(def_x) 55.6)뿐 · 전체 34.9 | 부분 — 초반 구간만 |
 | 골킥 압박 7~8회 「한쪽 가두기」 | Bains Analysis(auto-caption) | 높은 압박 0–6′ 집중 · 골킥 국면 압박 횟수는 미조회 | 미검증(PENDING #17) |
 | 교체 시각 음바예 55′/58′/60′ · 맥긴 65′ | FotMob 요약·BBC·라이브·AVFC | SS 59′·66′ | SS 정본 유지 |
 
@@ -293,7 +293,7 @@
 > 예약 `mw-avl-mancity-d1-evening` · 사용자 요청 추가 회차 · **13:00 회차 이후** 새 자료만. 실측(§2·§3) 재수집 없음. 기사 다국어 스윕은 서브에이전트(WebSearch/WebFetch · 읽기 전용), Tanswell X·UTV 자막은 메인이 브라우저로 직접(자막은 뮤트·정지 → 탭 닫기).
 
 ### ⑴ 당일 판정 정정
-- **6′ 선제골 기전(obs#1140)**: §3 강점 ⑴ 「첫 6분 높은 출발로 맨시티 빌드업 실책 유도」 → **부분 일치로 정정**. dave.sport(James Chettle · 10-25 07:00 · Opta 2차 인용) 「Guéhi was not under pressure when he lost the ball」(게히는 공을 잃을 때 압박받지 않았다). WS 대조: 5′32″~47″ 맨시티 자기 진영 6패스 연속 동안 빌라 수비 이벤트 **0** → 5′47″ **엔소 페르난데스** 칩 롱패스 → 5′49″ 게히 첫 터치 실패(경합 이벤트 없음) → 맥긴 회수(게히에서 약 6m). 높은 위치(0–6′ def_x 55.6)는 맞지만 실책 순간 직접 압박은 없었다 — 빌라 기여는 **근접 위치 선점**이다. 원래 문구는 보존한다.
+- **6′ 선제골 기전(obs#1140)**: §3 강점 ⑴ 「첫 6분 높은 출발로 맨시티 빌드업 실책 유도」 → **부분 일치로 정정**. dave.sport(James Chettle · 10-25 07:00 · Opta 2차 인용) 「Guéhi was not under pressure when he lost the ball」(게히는 공을 잃을 때 압박받지 않았다). WS 대조: 5′32″~47″ 맨시티 자기 진영 6패스 연속 동안 빌라 수비 이벤트 **0** → 5′47″ **엔소 페르난데스** 칩 롱패스 → 5′49″ 게히 첫 터치 실패(경합 이벤트 없음) → 맥긴 회수(게히에서 약 6m). 높은 위치(0–6′ 수비 액션 평균 높이(def_x) 55.6)는 맞지만 실책 순간 직접 압박은 없었다 — 빌라 기여는 **근접 위치 선점**이다. 원래 문구는 보존한다.
 - **표기 정정**: §1 득점 줄의 「디아스→게히 긴 패스」는 WS상 **엔소 페르난데스**의 패스다(obs#1140).
 - 이월 대조표 C1~C6·`match_hypotheses`: 변경 **0**(새 근거로 닫히는 가설 없음 · C4 가르나초는 아래 ⑹).
 
@@ -313,8 +313,8 @@
 |---|---|---|---|
 | 「make his wingers drop back and form, sometimes, a line of six players」(윙어를 내려 때때로 6명 라인) | CityXtra(Enzo Krieger · 10-25 09:09 · 맨시티 관점) | 수비 액션 평균 알리송 (37.7, 27.2) 깊은 것 2/9 · 만잠비 (26.5, 60.0) 깊지만 **안쪽** · 측면 깊은 수비는 캐시·마트센·부엔디아·음바예 | **대체로 기각** — 선발 윙어 6백 아님(교체 뒤 음바예·부엔디아 구간만 가능 · 쟁점 #16 표본) |
 | 「double man-marking on both flanks」(양 측면 이중 대인마크) | CityXtra | 오른쪽 캐시+카마라(ȳ 37.5) · Telegraph 「Doku sprints down the left but can't get past Kamara」(도쿠가 카마라를 넘지 못한다) / 왼쪽 마트센 태클 0/3 | 오른쪽만 일치 |
-| 「pressed quickly in a man-to-man system」(맨투맨으로 빠르게 압박) | Squawka(Harry Edwards · 10-24 · 403 → 검색 요약 경유) | def_x 34.9 · 높은 압박은 0–6′뿐 | 부분 — 초반만 |
-| 「Villa keep the pressure up for the opening minutes」(초반 몇 분 압박 유지) | Telegraph 라이브(Percy) | 0–6′ def_x 55.6 | 일치 |
+| 「pressed quickly in a man-to-man system」(맨투맨으로 빠르게 압박) | Squawka(Harry Edwards · 10-24 · 403 → 검색 요약 경유) | 수비 액션 평균 높이(def_x) 34.9 · 높은 압박은 0–6′뿐 | 부분 — 초반만 |
+| 「Villa keep the pressure up for the opening minutes」(초반 몇 분 압박 유지) | Telegraph 라이브(Percy) | 0–6′ 수비 액션 평균 높이(def_x) 55.6 | 일치 |
 | 만잠비 「on the left rather than as the No 10」(10번이 아니라 왼쪽) · 맥긴 「more centrally」(더 중앙) | Express & Star Verdict(George Bennett · 10-25 09:01 · 403 → 검색 요약 경유) | 만잠비 (58, 67) · 맥긴 (61, 47) | 일치(obs#1138 재확인) |
 | 「release a runner, support him and arrive in the box」(침투자를 내보내고 지원하고 박스에 도착) | dave.sport | 역습 2골(잭슨) | 일반론 — 채택 안 함 |
 | 고메스 82′ 교체 「might have taken that knock」(충돌로 다쳤을 수 있다) | Telegraph 라이브 | — | 추정 — 채택 안 함 |
@@ -496,7 +496,7 @@
 - **에메리(1차 · GOAL Khaled Mahmoud 전재 · 10-25 무렵)**: 「How we responded with some players fresh who didn't play on Wednesday... for example Boubacar Kamara and Matty Cash.」(수요일에 뛰지 않은 신선한 선수들이 어떻게 반응했는지… 예를 들어 카마라와 캐시) · 「We planned this match trying to keep the same consistency and demands.」(같은 일관성과 요구 수준을 유지하려고 이 경기를 계획했다).
   - 바이킹전에 카마라·캐시가 빠진 것은 **계획된 휴식**이었다(obs#1136 「명단 휴식」과 일치). → `manager_profiles.rotation` 덧붙임.
   - 잭슨 평가: 「How he was working, defending, getting duels - wow.」(일하고 수비하고 경합을 따내는 모습은 — 와우).
-- **마레스카(MOTD · Read Man City 10-25 경유 · BBC 원천)**: 「We struggled the first 10-15 minutes because we expected them one way but they were different」(예상한 방식과 달라 첫 10~15분 고전했다) · 「We adjusted then controlled the game.」(조정한 뒤 통제했다). 0–6′ def_x 55.6 · PPDA 6.5 고압 출발과 같은 방향이다.
+- **마레스카(MOTD · Read Man City 10-25 경유 · BBC 원천)**: 「We struggled the first 10-15 minutes because we expected them one way but they were different」(예상한 방식과 달라 첫 10~15분 고전했다) · 「We adjusted then controlled the game.」(조정한 뒤 통제했다). 0–6′ 수비 액션 평균 높이(def_x) 55.6 · PPDA 6.5 고압 출발과 같은 방향이다.
 - **회견 전문**: avfc.co.uk는 본문이 잘리고 mancity.com 회견 영상은 403 → **최종 미확보**. 3회차 동안 쓸 수 있었던 경로는 Tanswell X(D+1) · 요약 기사 · 1874 전언(D+2) · GOAL 전재(D+3)뿐이다.
 - **10-27 본머스 컵전 프리뷰 회견**: 이 회차 시점에 **미발견**(영어 3 · 스페인어 1 검색어 · avfc 목록 본문 잘림). 거기서 나올 발언은 본머스전 리포트 몫이다.
 - 에메리 스페인어 원어 **0**(3회차 누적). 개별 평가(알리송·고메스·맥긴·만잠비)도 **0**(4회차 누적).
@@ -512,7 +512,7 @@
 | Dom Phillips 서브스택(10-25 · 직접 열람) | 「John McGinn kept drawing Dias out into the middle, out of position.」(맥긴이 디아스를 계속 중앙으로 끌어내 자리를 비우게 했다) | 디아스의 맥긴 상대 파울 2(38′·41′) · 토레스→맥긴 세로 4(D+2 ⑷) | **일치** — LNobbins(#394)와 같은 장면군 |
 | 같은 글 | 비보유 「4-4-2 + 측면 MF 안쪽」(열람 도구 요약 · 원문 문구 불확실) | 맥긴 수비 액션 (34, 38) · 카마라 (33, 34) 바로 옆 | 당일 4-4-1-1 **유지** — 쟁점 #15 누적(4-4-2 서술 3곳째) |
 | 같은 글 | 「It took 60 seconds for Mbaye, playing on the right for the first time, to make a devastating run behind City.」(처음 오른쪽에 선 음바예가 60초 만에 뒷공간 침투) | 59′ 투입 → 60′ 결승골 도움 · 음바예는 바이킹전에 **왼쪽**(볼 소유 36/37 좌측 · r62) | 장면 **일치** · 「처음 오른쪽」은 직전 경기와 맞음(시즌 전체는 미대조) — 쟁점 #48(음바예 우측 기능) 표본 |
-| The Villans(#400 · 10-26) | 선제 뒤 「step back … how to defend the box」(물러서서 박스를 지켰다) | def_x 6–30′ 31.8~32.2 · 60–66′ 20.4 | **일치** |
+| The Villans(#400 · 10-26) | 선제 뒤 「step back … how to defend the box」(물러서서 박스를 지켰다) | 수비 액션 평균 높이(def_x) 6–30′ 31.8~32.2 · 60–66′ 20.4 | **일치** |
 | The Villans(#400) | 맨시티가 게히를 오른쪽으로 옮겼고 잭슨이 그쪽을 몰아 첫 실책을 끌어냈다 | 게히 ȳ 28 · 실책 순간 직접 압박 없음(obs#1140) | 배치 **일치** · 「압박으로 끌어냈다」는 **기각** |
 | City Xtra(10-25) · Read Man City(10-25) | 실점은 게히 첫 터치 · 돈나룸마 위치 | SS errorLeadToGoal 2 | 일치(새 사실 없음) |
 - **전술 블로그 최종 0건**: TFA · BTL · Spielverlagerung · Between the Posts · Coaches' Voice · Tifo · StatsBomb · 이탈리아어 assoanalisti. 독일어 기사(Sportschau · Sport1 · Sky DE · laola1 · SRF)는 경기 보도뿐이다. SRF 「spielte Johan Manzambi bis zur 66. Minute」(만잠비는 66분까지 뛰었다)는 C2와 일치한다.

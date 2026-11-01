@@ -63,7 +63,7 @@
 (§2-1 D+1 병렬 수집 결과를 병합 절에 덧붙인다.)
 
 ## 9. 데이터 반영과 한계
-- 추가: `matches` · `player_matches` 16행(국면 그리드·stats_json phase 포함) · `team_match_stats` 1행(xg_source=FotMob, PPDA·def_x WhoScored) · `match_reports` 39(draft) · `match_game_setups` 1 · `match_player_prescriptions` 16 · `match_player_reports` 16.
+- 추가: `matches` · `player_matches` 16행(국면 그리드·stats_json phase 포함) · `team_match_stats` 1행(xg_source=FotMob, PPDA·수비 액션 평균 높이(def_x) WhoScored) · `match_reports` 39(draft) · `match_game_setups` 1 · `match_player_prescriptions` 16 · `match_player_reports` 16.
 - 한계: 단일 경기 · 롱볼/크로스 시도 역산 · 서사 층 미병합(draft).
 
 

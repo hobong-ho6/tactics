@@ -12,7 +12,7 @@
 | 패스 / 롱볼(성공/시도) | 463 / 23/58 | 408 / 24/55 |
 | 코너 / 경합 승률 | 7 / 56.7% | 5 / 43.3% |
 | 공중볼(승/전체) · 태클 · 인터셉트 · 클리어링 | 21/35 · 14 · 4 · 29 | 14/35 · 7 · 7 · 23 |
-| PPDA · def_x(라인 프록시) | 12.65 · 36.5 | 13.92 · 40.0 |
+| PPDA · 수비 액션 평균 높이(def_x)(라인 프록시) | 12.65 · 36.5 | 13.92 · 40.0 |
 | 포메이션(FotMob) | 4-2-3-1 | 4-2-3-1 |
 
 하프별(FotMob 동일 스냅샷 · PPDA는 WhoScored 하프 이벤트):
@@ -54,7 +54,7 @@
 
 ### 비점유 구조·압박
 
-**비점유 4-4-2(중블록).** PPDA 12.65 · def_x 36.5 — 직전 본머스전(10.75 · 38.4)보다 낮은 블록이며 def_x를 잰 CHE 6경기(38.4~41.0) 중 최저. 1선 아체암퐁·라크루아·콜윌(+하토), 2선 네투·카이세도·헨더슨·로저스, 전방 팔머·주앙(Blue is the colour). 경기 전날 알론소 「Can be in a 4-4-2, it can be in a 5-2-3 but the distances… how you have a good balance」(4-4-2일 수도 5-2-3일 수도 있다, 간격과 균형이다 — dNQjlVTxyow · auto-caption). 에버턴 슛 6·xG 0.43·박스 터치 17. 취약점은 네투·로저스의 복귀 의존 — 「the fragility… relies on Rogers, on Neto, and their tracking back」(취약성이 로저스·네투의 복귀에 기대고 있다, Blue is the colour · auto-caption). 후반 PPDA 17.45(전반 8.25) — 리드 후 블록을 내렸다(CFCOnline 「happy to let Everton have the ball」(에버턴에게 공을 내줘도 괜찮아했다)).
+**비점유 4-4-2(중블록).** PPDA 12.65 · 수비 액션 평균 높이(def_x) 36.5 — 직전 본머스전(10.75 · 38.4)보다 낮은 블록이며 def_x를 잰 CHE 6경기(38.4~41.0) 중 최저. 1선 아체암퐁·라크루아·콜윌(+하토), 2선 네투·카이세도·헨더슨·로저스, 전방 팔머·주앙(Blue is the colour). 경기 전날 알론소 「Can be in a 4-4-2, it can be in a 5-2-3 but the distances… how you have a good balance」(4-4-2일 수도 5-2-3일 수도 있다, 간격과 균형이다 — dNQjlVTxyow · auto-caption). 에버턴 슛 6·xG 0.43·박스 터치 17. 취약점은 네투·로저스의 복귀 의존 — 「the fragility… relies on Rogers, on Neto, and their tracking back」(취약성이 로저스·네투의 복귀에 기대고 있다, Blue is the colour · auto-caption). 후반 PPDA 17.45(전반 8.25) — 리드 후 블록을 내렸다(CFCOnline 「happy to let Everton have the ball」(에버턴에게 공을 내줘도 괜찮아했다)).
 
 ### 전환·rest-defense·세트피스
 
@@ -101,14 +101,14 @@
 
 - 유지된 것: 2-4 빌드업·비점유 4-4-2·피벗 카이세도+헨더슨·세트피스 루틴(본머스전 #52와 동일).
 - 새로 나타난 것: 4-2-3-1 표기(FotMob·SofaScore 모두) · 전반 대인 압박 대응으로 **GK 롱킥 → 로저스 타깃** 직접 경로. 감독은 「adapting to the context today」(오늘의 맥락에 맞춘 것)라고 정의 — 정체성 변경이 아니라 상대 맞춤.
-- 직전 경기 대비 변화: 블록 높이 하강(def_x 36.5 · PPDA 12.65), 후반 리드 관리형.
+- 직전 경기 대비 변화: 블록 높이 하강(수비 액션 평균 높이(def_x) 36.5 · PPDA 12.65), 후반 리드 관리형.
 - `manager_profiles` 반영: buildup·formation 축에 덧붙임(대인 압박 대응 직접 경로 · 명목 포메이션 이원화 2경기째). observations 신규 행.
 
 ## 7. 게임 구현 판정
 
 - 결론: **추가 관찰**
 - **이 경기 전용 팀 설정**: FC26 / 4-2-3-1 Wide / 빌드업 Balanced / 수비 접근 Balanced / 라인 50 / tactic_code 없음 · rule_note `RULE`
-- 규칙 대조: suggest → Balanced/Balanced/48~58 (롱볼 12.5%). 라인 50 = def_x 36.5(중블록) · 후반 블록 하강. 빌드업 Balanced: 롱볼 12.5%로 Counter 경계(13%) 직하 — 전반 짧게·후반 직접의 평균. 포메이션은 정본 3-4-2-1이 아니라 이 경기 실측 4-2-3-1 Wide(regime 2 slots 보유).
+- 규칙 대조: suggest → Balanced/Balanced/48~58 (롱볼 12.5%). 라인 50 = 수비 액션 평균 높이(def_x) 36.5(중블록) · 후반 블록 하강. 빌드업 Balanced: 롱볼 12.5%로 Counter 경계(13%) 직하 — 전반 짧게·후반 직접의 평균. 포메이션은 정본 3-4-2-1이 아니라 이 경기 실측 4-2-3-1 Wide(regime 2 slots 보유).
 - **이 경기 선발 11명**:
 
 | 슬롯 | 선수 | 역할 | 포커스 | 단일 경기 fit | 근거 |
@@ -163,7 +163,7 @@
 
 ## 9. 데이터 반영과 한계
 
-- DB: `matches` #121 · `player_matches` 16(국면 그리드 16 · phase 분 · possession) · `team_match_stats` 1(FotMob xG 4종 동일 스냅샷 1.47/0.43 · 오픈 0.95/0.13 · PPDA 12.65/13.92 · def_x 36.5/40.0) · `match_events` 17 · `match_shots` 24(FotMob) · `match_period_stats` 2 · 리포트·선수 16·프리셋·처방 16.
+- DB: `matches` #121 · `player_matches` 16(국면 그리드 16 · phase 분 · possession) · `team_match_stats` 1(FotMob xG 4종 동일 스냅샷 1.47/0.43 · 오픈 0.95/0.13 · PPDA 12.65/13.92 · 수비 액션 평균 높이(def_x) 36.5/40.0) · `match_events` 17 · `match_shots` 24(FotMob) · `match_period_stats` 2 · 리포트·선수 16·프리셋·처방 16.
 - 한계: SofaScore statistics/shotmap 403 → 슛 좌표는 FotMob 좌표계(0~105·0~68). 교체 4명은 12분 이하 표본. 포메이션 표기 충돌(FotMob 4-2-3-1 vs SI·TheBlueGaffer 3-4-2-1) — 평균 위치는 백4(아체암퐁 y15.9·하토 y82.2 풀백 폭)를 지지.
 - 전사 8편 `reports/transcripts/` 신규(경기 전·후 회견·모예스·전술 영상 5편) — `match_videos` 색인·요약·impl_claims 같은 회차.
 

@@ -66,7 +66,7 @@
 ⇒ **H5 보강 — 사용자 판단: 스즈키는 「볼 플레잉 키퍼」가 맞다**(현재 정본 「스위퍼 키퍼 · Build-Up」과 다르다 · slot_canon_roles GK). H5 실측의 스위핑 유무가 이 판단을 가른다.
 
 ⇒ **H6 센터백 역할·포커스 재점검**(정본: LCB 파우 토레스 = 볼 플레잉 CB · Build-Up · RCB 린델뢰프 = 볼 플레잉 CB · Aggressive · 사용자도 그렇게 본다)
-  실측: 두 CB 각각 ⑴ **패스 출발 위치**(점유 국면 · 5×5) ⑵ **평균 패스 거리**·롱패스(≥32m) 비중·전진 패스 수 ⑶ **평균 위치** ⑷ **수비 성공 위치**(태클·인터셉트·클리어·블록 성공 좌표 · 높이 def_x) — 전후반 분리.
+  실측: 두 CB 각각 ⑴ **패스 출발 위치**(점유 국면 · 5×5) ⑵ **평균 패스 거리**·롱패스(≥32m) 비중·전진 패스 수 ⑶ **평균 위치** ⑷ **수비 성공 위치**(태클·인터셉트·클리어·블록 성공 좌표 · 높이 수비 액션 평균 높이(def_x)) — 전후반 분리.
   EA 설명(game_role_focus · A):
   - 볼 플레잉 CB · Build-Up — 「moves … into more of a holding defensive midfielder during possession」(점유 시 수비형 미드필더처럼 올라선다) → 파우 토레스의 점유 국면 패스 출발이 **중원 아래(DM 높이)**까지 올라가는가
   - 볼 플레잉 CB · Aggressive — 「focus on intercepting passes and closing down opponents」(패스 차단과 상대 압박에 집중) → 린델뢰프의 수비 성공이 **높은 위치·전진 압박**에서 나오는가

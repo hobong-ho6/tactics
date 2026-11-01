@@ -169,7 +169,7 @@
 | 태클 · 인터셉트 · 클리어 | 17 · 8 · 28 | 12 · 12 · 9 |
 | 파울 · 경고 | 12 · 0 | 6 · 2 |
 | PPDA (WhoScored) | 12.14 (340/28) | 10.62 (276/26) |
-| def_x (라인 높이 프록시) | 36.5 (n=131) | 39.0 (n=120) |
+| 수비 액션 평균 높이(def_x) (라인 높이 프록시) | 36.5 (n=131) | 39.0 (n=120) |
 | 실점으로 이어진 실수 | 0 | **3** |
 | GK goals prevented(SofaScore) | 스즈키 **+0.87** | 에데르송 **−2.19** |
 
@@ -212,7 +212,7 @@
 - **좌측 편중 전개**: 지공·전환 체인 37개(측면 판정된 것)의 측면은 좌 17 · 중 8 · 우 12다.
 
 ### 비점유 구조·압박
-- PPDA 12.14 · def_x 36.5로 중블록이다. 브렌트포드전(11.2 · 34.9)과 비슷하다.
+- PPDA 12.14 · 수비 액션 평균 높이(def_x) 36.5로 중블록이다. 브렌트포드전(11.2 · 34.9)과 비슷하다.
 - 페네르는 55% 점유로 공을 쥐었다. 전반 빅찬스 3개(무리키 헤더·1대1)를 스즈키가 막았다(게키사카 15′·17′).
 - 클리어 28(후반 20)로, 후반에는 박스를 지키며 역습하는 형태였다.
 
@@ -730,7 +730,7 @@ avfc.co.uk 원문 두 건(「Team news for Magpies meeting」 · 「Emery speaks
 - **DB 추가**
   - `matches` #119
   - `player_matches` 16(국면 그리드 16 · `phase_source` pulled=2026-10-15 scope=full)
-  - `team_match_stats`(xG 4종 FotMob 동일 스냅샷 · PPDA · def_x)
+  - `team_match_stats`(xG 4종 FotMob 동일 스냅샷 · PPDA · 수비 액션 평균 높이(def_x))
   - `match_events` 16 · `match_shots` 35(SofaScore) · `match_period_stats` 2(하프별 PPDA 포함)
   - `match_reports` · `match_player_reports` 16 · `match_game_setups` 1 · `match_player_prescriptions` 11
   - `observations` #1020~#1036(사용자 가설 판정 17행 · H1~H15 · 바클리 평점 · 부상 D+1)

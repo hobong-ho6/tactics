@@ -105,6 +105,7 @@ for t in AVL CHE LIV ATM; do .venv/bin/python scripts/collect_fotmob_players.py 
   그 경기 영상은 **`summary`(3~5문장)와 `key_points`(줄바꿈 구분)를 직접 작성**한다 — 경기 화면 「이 경기 영상 분석」 패널이 그걸 읽는다.
   ⛔ **인용은 원문 「…」 + 한국어 번역 병기**(불변규칙 11)이고, 전사 기반이므로 confidence에 **auto-caption**을 명기한다.
   ⛔ **하프 표기는 전반/후반/하프타임** — 제공사 코드 1H/2H·HT를 문장에 쓰지 않는다(2026-10-26 사용자 「1H 2H가 뭐야?」 · G41이 DB 전 열·match-watch md를 막는다 · 변환은 `core.half_terms.conv()`/`conv_md()`).
+  ⛔ **높이·폭은 숫자로, 라벨을 붙여 싣는다**(2026-11-01 사용자 「높이나 폭을 숫자로 보여주는건 좋은디 앞으로도 수집해줘」 · **G43**이 막는다 · 정본 `core/report_numbers.py`) — 좌표 괄호 앞에 「WS 볼 소유 평균 위치(앞뒤, 좌우 · 0~100 · 좌우 0 = 빌라 오른쪽)」·「SS 평균 위치」처럼 무엇의 좌표인지 적고, 보유 요약(`tac_possession`/`key_points`)에 1개 이상 둔다. 수비 높이는 「수비 액션 평균 높이(def_x)」, SofaScore 평균 위치 약칭은 「높이(ax)」·「폭(ay)」로 쓴다 — DB 텍스트는 `core.report_numbers.conv()`, md는 `conv_md()`로 바꿔 넣는다(G43이 리포트 표 5개 텍스트 전 열과 match-watch md를 검사). 패스 연결은 「A→B N회」. SofaScore가 평균 위치를 안 주는 경기는 confidence에 「평균 위치 미제공」.
   ⚠️ 인물명은 실측과 교차검증한다(docs/30 오인식 대조표 — 「Matty Cash ↔ Maatsen」이 실제로 재발했다).
   ⛔⛔ **「핵심 몇 편만」 요약하고 나머지를 백로그로 넘기지 않는다**(2026-10-20 사용자 지시 「전사 수집 완료되면 바로 요약 생성하도록」 —
   뉴캐슬전 40편 중 5편만 요약돼 화면이 「미작성」으로 덮였다). 순서: 전사 → `index_transcripts.py` → **새로 귀속된 전 편**

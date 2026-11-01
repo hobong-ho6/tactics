@@ -12,7 +12,7 @@
 | 패스 / 롱볼(성공/시도) | 651 / 32/55 | 463 / 11/31 |
 | 코너 / 경합 승률 | 2 / 35.7% | 5 / 64.3% |
 | 공중볼(승/전체) · 태클 · 인터셉트 · 클리어링 | 4/9 · 5 · 10 · 12 | 5/9 · 21 · 6 · 16 |
-| PPDA · def_x(라인 프록시) | 11.03 · 40.5 | 16.23 · 40.5 |
+| PPDA · 수비 액션 평균 높이(def_x)(라인 프록시) | 11.03 · 40.5 | 16.23 · 40.5 |
 | 포메이션(FotMob) | 4-4-2 | 4-2-3-1 |
 
 하프별(FotMob 동일 스냅샷 · PPDA는 WhoScored 하프 이벤트):
@@ -51,7 +51,7 @@
 
 ### 비점유 구조·압박
 
-**함정형 압박 + 중블록.** PPDA 11.03 · def_x 40.5. Goal 전술판(10-14) 「Atletico did not press the United centre-backs relentlessly」(아틀레티코는 맨유 센터백을 끊임없이 압박하지 않았다) — 「a collective trap, led by Julian Alvarez and Kang-in Lee」(훌리안과 이강인이 이끈 집단 함정). 전반 맨유 xG 0.68 > 아틀레티코 0.34 — 로메로가 음뵈모에게 뚫린 장면(12′ 넛메그, SI 스니펫 기준)이 맨유 첫 빅찬스. 후반 PPDA 13.23으로 리드 관리. 맨유 빅찬스 4(캐릭 「We had four big chances」(빅찬스가 넷 있었다)) — 오블락 선방 2회가 막았다(ElDesmarque 9점).
+**함정형 압박 + 중블록.** PPDA 11.03 · 수비 액션 평균 높이(def_x) 40.5. Goal 전술판(10-14) 「Atletico did not press the United centre-backs relentlessly」(아틀레티코는 맨유 센터백을 끊임없이 압박하지 않았다) — 「a collective trap, led by Julian Alvarez and Kang-in Lee」(훌리안과 이강인이 이끈 집단 함정). 전반 맨유 xG 0.68 > 아틀레티코 0.34 — 로메로가 음뵈모에게 뚫린 장면(12′ 넛메그, SI 스니펫 기준)이 맨유 첫 빅찬스. 후반 PPDA 13.23으로 리드 관리. 맨유 빅찬스 4(캐릭 「We had four big chances」(빅찬스가 넷 있었다)) — 오블락 선방 2회가 막았다(ElDesmarque 9점).
 
 ### 전환·rest-defense·세트피스
 
@@ -97,14 +97,14 @@
 
 - 유지된 것: 4-4-2 기본형, 출전 시간 관리형 교체(바리오스 60′), 풀백 고점.
 - 새로 나타난 것: 빌드업 단계 4-3-3(카르도주 단독 피벗)·1선 함정형 압박(이강인·훌리안 주도) — 상대 4-2-4 압박 맞춤.
-- 직전 경기(알라베스 #54 4-2-3-1 · Short Passing) 대비: 점유 68→58%, PPDA 8.21→11.03로 압박 강도 하향, def_x 42.1→40.5.
+- 직전 경기(알라베스 #54 4-2-3-1 · Short Passing) 대비: 점유 68→58%, PPDA 8.21→11.03로 압박 강도 하향, 수비 액션 평균 높이(def_x) 42.1→40.5.
 - `manager_profiles` 반영: pressing(함정형 1선 압박)·buildup(단독 피벗 하강) 덧붙임. observations 신규 행.
 
 ## 7. 게임 구현 판정
 
 - 결론: **추가 관찰**
 - **이 경기 전용 팀 설정**: FC26 / 4-4-2 / 빌드업 Balanced / 수비 접근 Balanced / 라인 55 / tactic_code 없음 · rule_note `RULE`
-- 규칙 대조: suggest → Balanced/Balanced/55~62 (롱볼 8.4%). 라인 55 = def_x 40.5(ATM 측정 경기 34.1~42.7의 상단) · PPDA 11.03(규칙 Balanced 55~62 하단). 빌드업 Balanced: 롱볼 8.4%·점유 58% — Short Passing 경계(8%·55%) 직상.
+- 규칙 대조: suggest → Balanced/Balanced/55~62 (롱볼 8.4%). 라인 55 = 수비 액션 평균 높이(def_x) 40.5(ATM 측정 경기 34.1~42.7의 상단) · PPDA 11.03(규칙 Balanced 55~62 하단). 빌드업 Balanced: 롱볼 8.4%·점유 58% — Short Passing 경계(8%·55%) 직상.
 - **이 경기 선발 11명**:
 
 | 슬롯 | 선수 | 역할 | 포커스 | 단일 경기 fit | 근거 |
@@ -151,7 +151,7 @@
 
 ## 9. 데이터 반영과 한계
 
-- DB: `matches` #124 · `player_matches` 16(국면 그리드·phase 분·possession) · `team_match_stats` 1(FotMob xG 1.47/0.98 · 오픈 1.37/0.92 · PPDA 11.03/16.23 · def_x 40.5/40.5) · `match_events` 16(감독 경고 1행 minute=0 보정 — 원값 t=−5) · `match_shots` 20(FotMob) · `match_period_stats` 2.
+- DB: `matches` #124 · `player_matches` 16(국면 그리드·phase 분·possession) · `team_match_stats` 1(FotMob xG 1.47/0.98 · 오픈 1.37/0.92 · PPDA 11.03/16.23 · 수비 액션 평균 높이(def_x) 40.5/40.5) · `match_events` 16(감독 경고 1행 minute=0 보정 — 원값 t=−5) · `match_shots` 20(FotMob) · `match_period_stats` 2.
 - 한계: 요로 퇴장 후 15분 11대10 · SofaScore 팀 스탯 미확보 · 교체 5명 30분 이하 표본 · 경합 승률 35.7%는 FotMob duel_won 기준.
 
 ## D+N 추적

@@ -12,7 +12,7 @@
 | 점유율 | 50% | 50% |
 | 코너 / 프리킥 / 오프사이드 | 5 / 15 / 2 | 5 / 21 / 5 |
 | 경고 | 2 (45′·81′) | 0 |
-| xG·슈팅·패스·PPDA·def_x | **미수집** | **미수집** |
+| xG·슈팅·패스·PPDA·수비 액션 평균 높이(def_x) | **미수집** | **미수집** |
 
 ⛔ SofaScore `statistics`는 Match overview 7종만 준다. `lineups`의 선수 statistics는 **전원 빈 객체**이고 `shotmap`은 404다.
 FotMob matchDetails는 `stats`·`playerStats`·`shotmap`이 모두 비어 있다. WhoScored는 클럽 친선을 커버하지 않는다(08-07 바이에른전 전례).

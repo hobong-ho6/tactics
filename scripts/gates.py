@@ -2131,6 +2131,19 @@ def run(db_path=None, verbose=True):
     if g42:
         fails.append("G42")
 
+    # G43 — ⛔ **리포트 숫자에 「무엇의 숫자인지」를 붙인다 · 높이·폭 좌표를 계속 싣는다**(2026-11-01 사용자 「괄호안에 숫자는 뭐야」 →
+    #   「다른 경기 리포트도 같은 식으로 고쳐줘 그리고 높이나 폭을 숫자로 보여주는건 좋은디 앞으로도 수집해줘」).
+    #   요약으로 옮기며 라벨이 빠진 좌표 2경기·코드명 def_x 21곳을 고친 뒤 신설. 판정 정본은 core/report_numbers.py.
+    from core.report_numbers import db_violations as _rn_db, md_violations as _rn_md
+    g43 = [f"{k} {why}" for k, why in _rn_db(con)]
+    _root43 = Path(__file__).resolve().parent.parent / "reports" / "match-watch"
+    g43 += [f"{_f.relative_to(_root43.parent.parent)} def_x·ax·ay 이름 없음" for _f in _rn_md(_root43)]
+    if verbose:
+        print(f"G43 리포트 높이·폭 좌표 라벨·수집: 위반 {len(g43)} "
+              + ("✅" if not g43 else "❌ 좌표 앞에 「WS 볼 소유 평균 위치(앞뒤, 좌우 · 0~100 · 좌우 0 = 빌라 오른쪽)」식 라벨 · def_x·ax·ay는 core.report_numbers.conv()/conv_md() — " + " · ".join(g43[:6])))
+    if g43:
+        fails.append("G43")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")

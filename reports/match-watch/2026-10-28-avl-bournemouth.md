@@ -20,7 +20,7 @@
 - **0-3 탈락, 내용은 결과보다 덜 일방적이었다.** xG **1.65 대 2.71**(FotMob · 오픈플레이 1.29/1.64 · 세트 0.37/1.07 · PK 0), 슈팅 17–19, 유효 5–7, 점유 **51%**(전반 44 · 후반 54), 빅찬스 **4 전부 실패**(xGOT 0.99). 실점 3 중 2가 **빌라 에러에서**(SS `errorsLeadToGoal` 2 — 51′ 코너 직후 비조 · 69′ 보가르드 자기 진영 오른쪽), 1이 **빌라 오른쪽 배후 공략**(7′ 타버니어 칩 패스 → 솔레르 → 아들리)이었다.
 - **로테이션 11명 중 9명 교체**(맨시티전 선발에서 고메스·마트센만 잔류). 에메리 본인 사유: 「it was a way to add some players our understanding, our idea, getting fit」(몇몇 선수에게 우리의 이해와 아이디어를 입히고 몸을 끌어올리는 길이었다 · E&S/PA).
 - **형태는 맨시티전과 같은 4-2-3-1 — 보유 시 양 풀백 폭, 비보유 4-4-1-1.** 볼 소유 평균(WS): 하우드-벨리스 (33,36) · 밍스 (29,71) CB 2, 보가르드 (41,16) · 마트센 (45,85) 폭, 그 앞 **고메스 (52,45) · 고레츠카 (47,64)** 더블 피벗(고메스가 오른쪽·더 높게), 부엔디아 (64,39) 10번, 음바예 (62,16) 오른쪽 폭, 헤밍스 (60,79) 왼쪽 폭, 마조 (60,66). 빌드업은 **밍스 축 왼쪽**(밍스→마트센 24 · 비조→밍스 23 · 밍스↔하우드-벨리스 21/15).
-- **압박은 빌라가 졌다.** PPDA 빌라 **14.25**(전반 9.75 · 후반 **21.0**) vs 본머스 **9.89** · def_x 35.0 vs 46.4. 에메리 「trying to break the high press, especially the first 10 minutes in each half. But we couldn't.」(각 하프 첫 10분 하이프레스를 깨려 했지만 못 했다 · Tanswell X).
+- **압박은 빌라가 졌다.** PPDA 빌라 **14.25**(전반 9.75 · 후반 **21.0**) vs 본머스 **9.89** · 수비 액션 평균 높이(def_x) 35.0 vs 46.4. 에메리 「trying to break the high press, especially the first 10 minutes in each half. But we couldn't.」(각 하프 첫 10분 하이프레스를 깨려 했지만 못 했다 · Tanswell X).
 - **사용자 관전 메모 판정**: 음바예는 **볼을 잡을 때 91%가 오른쪽 폭**(H1 「자주 중앙」은 볼 소유 기준 불일치 · 오프더볼 런은 이벤트로 측정 불가) · 본머스 볼 소유는 오히려 **빌라 왼쪽**에 쏠렸지만(전반 50%) **실점 2/3은 빌라 오른쪽에서 마무리**(H2 부분 일치) · 첫 실점 = 반대 전환 → 빌라 오른쪽(**H4 일치** · 단 전환 공백이 아니라 30초 정돈 공격) · 「공격→수비 전환 순간 오른쪽 공백」(H2′)은 이벤트 대조 **불일치**.
 - **중점 5인**: 고레츠카 이적 후 첫 선발 = **더블 피벗(LDM)**(#25 표본 · 10번 아님 · FM 7.18 팀 1위) · 마조는 ST 칸이지만 **평균 위치 왼쪽 · 공중 경합 0 · 볼 터치 16**(#80 홀드업/침투 어느 쪽도 약한 표본) · 하우드-벨리스 RCB 90′ 지상 경합 5/5 · 패스 60/67 · 헤더 빅찬스 실패 · 음바예 폭 유지형 RM(#7·#48 표본) · 헤밍스 왼쪽 폭 LM(정본 인사이드 포워드와 갈림 · 새 쟁점 후보).
 - **게임 구현: 추가 관찰.** 경기 전용 프리셋 4-2-3-1 Wide · Balanced/Balanced/48(규칙 48~58 · RULE). 시즌 정본 변경 없음. **슬롯 정본 보류 5건 재판정 표**는 끝 절 — 사용자 판단 대기.
@@ -112,7 +112,7 @@
 | 오프사이드 | 1 | 4 |
 | 에러→실점(SS) | **2** | 0 |
 | PPDA(WS) | **14.25**(전반 9.75 · 후반 21.0) | **9.89**(12.18 · 7.95) |
-| def_x(WS) | 35.0 | 46.4 |
+| 수비 액션 평균 높이(def_x)(WS) | 35.0 | 46.4 |
 
 - **득점 국면**: 0-0 0–7′(7분) · 0-1 7–51′ · 0-2 51–69′ · 0-3 69′– → `phase_level 7 · phase_trail 83`(분). 리드 국면 **0**.
 - **교체**: 본머스 46′ 클라위버르트·라양(타버니어·아들리) · 63′ 애덤스·브룩스 · 80′ 크루피 / 빌라 58′ 알리송(↔음바예)·가르나초(↔헤밍스) · 70′ 맥긴(↔고레츠카)·바클리(↔부엔디아) · 75′ 아브라함(↔마조).
@@ -130,7 +130,7 @@
 
 ### 비점유 구조·압박
 - 4-4-1-1 중·저블록: 수비 액션 높이 음바예 42 · 고메스 42 · 헤밍스 41 · 부엔디아 40 · 고레츠카 34 · 마조 64(혼자 높음).
-- PPDA 14.25 — 맨시티전(8.55)보다 훨씬 수동적. 후반 21.0. def_x 0–7′ 46.4 → 7–15′ **21.4**(실점 직후 낮은 블록) · 45–51′ **15.6**(후반 시작 본머스 압도 · 51′ 실점).
+- PPDA 14.25 — 맨시티전(8.55)보다 훨씬 수동적. 후반 21.0. 수비 액션 평균 높이(def_x) 0–7′ 46.4 → 7–15′ **21.4**(실점 직후 낮은 블록) · 45–51′ **15.6**(후반 시작 본머스 압도 · 51′ 실점).
 - 본머스 4-1-4-1의 **오른쪽 3인 과부하**(후안루·개넌-도크·타버니어)를 빌라 왼쪽(마트센·헤밍스·고레츠카)이 받았고, 왼쪽은 솔레르 1명 폭 + 아들리 안쪽 — 빌라 오른쪽은 **보가르드가 솔레르 배후 침투를 감당**하는 구조.
 
 ### 전환·rest-defense·세트피스
@@ -140,15 +140,15 @@
 ## 3. 전술적 특성
 
 - **강점**: 점유 51%·패스 486으로 볼은 다뤘다(에메리 「we could progress, we could dominate」(전진했고 주도할 수 있었다)). 빅찬스 4 · xG 1.65 — 찬스 생산은 했다.
-- **약점**: ⑴ 결정력(빅찬스 0/4 · xGOT 0.99) ⑵ 개인 에러 2(비조·보가르드) ⑶ 세트피스 수비 ⑷ **각 하프 첫 15분 강도**(def_x 7–15′ 21.4 · 45–51′ 15.6 · 모멘텀 2–22′ −30.1 · 47–56′ −41.2) ⑸ 임시 RB 보가르드의 배후 대응.
+- **약점**: ⑴ 결정력(빅찬스 0/4 · xGOT 0.99) ⑵ 개인 에러 2(비조·보가르드) ⑶ 세트피스 수비 ⑷ **각 하프 첫 15분 강도**(수비 액션 평균 높이(def_x) 7–15′ 21.4 · 45–51′ 15.6 · 모멘텀 2–22′ −30.1 · 47–56′ −41.2) ⑸ 임시 RB 보가르드의 배후 대응.
 - **상대가 만든 교란**: Rose의 「early good starts」(초반 좋은 출발) 설계 — 「Now we changed the momentum, now we are a team that starts well」(이제 시작을 잘하는 팀이 됐다 · PA). 비대칭 4-1-4-1(오른쪽 과부하 + 왼쪽 솔레르 단독 폭)로 빌라를 왼쪽에 묶고 반대쪽으로 친 장면이 선제골.
 - **직전 경기 대비**: 4-2-3-1·4-4-1-1 형태와 왼쪽 쏠림(맨시티전 C5)은 같다. 다른 점은 점유(37→51%)·압박 강도(PPDA 8.55→14.25)·인원(9명 교체).
 
 ## 4. 경기 중 변화
 
-1. **0–7′ 0-0**: 본머스 강한 출발(def_x 본머스 46 · 빌라 46). 5′ 부엔디아 볼 상실 → 밍스 파울 → 30초 정돈 공격 → **7′ 0-1**.
+1. **0–7′ 0-0**: 본머스 강한 출발(수비 액션 평균 높이(def_x) 본머스 46 · 빌라 46). 5′ 부엔디아 볼 상실 → 밍스 파울 → 30초 정돈 공격 → **7′ 0-1**.
 2. **7–51′ 0-1**: 빌라 점유 회복(27–34′ 모멘텀 +25.8 · 30′ 부엔디아·마조 연속 슈팅 · 40′ 헤밍스). 전반 xG 0.61–0.97.
-3. **46′ 본머스 클라위버르트·라양 투입 → 45–51′ 압도(빌라 def_x 15.6) → 51′ 코너·비조 에러 0-2.**
+3. **46′ 본머스 클라위버르트·라양 투입 → 45–51′ 압도(빌라 수비 액션 평균 높이(def_x) 15.6) → 51′ 코너·비조 에러 0-2.**
 4. **58′ 알리송·가르나초 투입** → 57–61′ 모멘텀 **+43.8**(경기 최고) · 58′ 알리송 블록 · 59′ 고메스 유효 슈팅. 62–67′ 본머스 반격(−51.3 · 63′ 로드리게스 0.88 빗나감).
 5. **69′ 보가르드 자기 진영 오른쪽 에러 → 애덤스 크로스 → 0-3.** 70′ 맥긴·바클리 · 75′ 아브라함 — 형태는 4-2-3-1 유지(인원 교체). 72′ 마조 빅찬스 · 78′ 가르나초 · 84′ 알리송 0.31 모두 무득점.
 
@@ -215,7 +215,7 @@
 
 ### Jacob Tanswell (X @J_Tanswell · 브라우저 직접 열람 · 로그아웃 상태 최근 4건)
 - 21:34 FT 총평: 「First 15 minutes set the tone. Villa pedestrian and struggled to play out. Bournemouth pressed and showed the difference in intensity.」(첫 15분이 흐름을 정했다. 빌라는 굼떴고 빌드업 탈출에 애먹었다. 본머스가 압박하며 강도 차이를 보였다) · 「Defence poor, shape was all over the place, getting cut through too easily & players who hoped to stake a claim to Emery did not.」(수비는 형편없었고 대형은 엉망이었으며 너무 쉽게 뚫렸다. 에메리에게 어필하려던 선수들은 그러지 못했다).
-- 22:20 에메리 verbatim: 「We knew before … and we planned to try and stop them with their intensity, trying and get duels, trying to break the high press, especially the first 10 minutes in each half. But we couldn't. But we could progress, we could dominate, but we weren't clinical.」(미리 알았고 그 강도를 막으려 계획했다. 경합에서 이기고 하이프레스를 깨려 했고 특히 각 하프 첫 10분이 그랬다. 하지만 못 했다. 그래도 전진했고 주도했지만 마무리가 날카롭지 못했다) — **탈압박 계획 실패 자기 진단**(PPDA·def_x 15′ 구간과 같은 방향).
+- 22:20 에메리 verbatim: 「We knew before … and we planned to try and stop them with their intensity, trying and get duels, trying to break the high press, especially the first 10 minutes in each half. But we couldn't. But we could progress, we could dominate, but we weren't clinical.」(미리 알았고 그 강도를 막으려 계획했다. 경합에서 이기고 하이프레스를 깨려 했고 특히 각 하프 첫 10분이 그랬다. 하지만 못 했다. 그래도 전진했고 주도했지만 마무리가 날카롭지 못했다) — **탈압박 계획 실패 자기 진단**(PPDA·수비 액션 평균 높이(def_x) 15′ 구간과 같은 방향).
 - 21:23 「Antonio Silva is basically a right footed Pau Torres」(안토니우 실바는 사실상 오른발잡이 파우 토레스다).
 - 미수행: 경기 전 트윗(명단 사유) — 로그아웃 상태에서 4건만 로드 · xcancel 451 · nitter 빈 응답.
 
@@ -242,7 +242,7 @@
 
 ## 9. 데이터 반영과 한계
 
-- DB(행 추가): `matches` #128 · `player_matches` 16(국면 그리드·phase 분·SS 운반·FotMob 경기 스탯·WS 운반 추정/수신 · pulled=2026-10-29 scope=full) · `team_match_stats` 1(xG 4종 FotMob 동일 스냅샷 · PPDA·def_x) · `match_events` 19 · `match_shots` 36(FotMob) · `match_period_stats` 2 · `match_momentum` 92 · `match_set_pieces` 20 · `match_reports` #64(draft) · `match_player_reports` 16 · `match_game_setups` 1 · `match_player_prescriptions` 16(선발 11 + 교체 5) · `phase_metrics` 78 · 가설 판정 9행 · `match_videos` 3.
+- DB(행 추가): `matches` #128 · `player_matches` 16(국면 그리드·phase 분·SS 운반·FotMob 경기 스탯·WS 운반 추정/수신 · pulled=2026-10-29 scope=full) · `team_match_stats` 1(xG 4종 FotMob 동일 스냅샷 · PPDA·수비 액션 평균 높이(def_x)) · `match_events` 19 · `match_shots` 36(FotMob) · `match_period_stats` 2 · `match_momentum` 92 · `match_set_pieces` 20 · `match_reports` #64(draft) · `match_player_reports` 16 · `match_game_setups` 1 · `match_player_prescriptions` 16(선발 11 + 교체 5) · `phase_metrics` 78 · 가설 판정 9행 · `match_videos` 3.
 - 집계(§4 · G18): measured 3행 재집계 — 헤밍스 LM #971 n=6→7 wm_winger/Balanced .7191(Δ.016 무결정 · 2위 widemid/Support) · 밍스 LCB #1004 n=6→7 cb_bpd/Aggressive .9366 · 하우드-벨리스 RCB #1005 n=3→4 cb_bpd/Aggressive .9275 — **argmax 전부 불변**(T2 아님 · 정본 불변). T1 `refresh_eval_samples --apply` 18행.
 - 판정 쟁점: `claim_issues --due` AVL 판정할 차례 1건 — **#24 연장**(하우드-벨리스 LCB 선발 0이라 슬롯 비교 불성립 · 추가 선발 2경기). #6·#7·#25·#48·#80 진행도는 이 경기 반영 후 다음 회차에 다시 본다. 영상 주장 PENDING 2(#25·#24) · HELD 3(#54·#48·#52).
 - 선수 상태(§0-1): `collect_fotmob_players.py --team AVL`만 실행(CHE·LIV·ATM 수집 보류).
@@ -260,7 +260,7 @@
 | ⑵ | **ST 포커스** Support vs Attack | st_advanced/Support | 잭슨 advanced/Support **.375** vs Attack .267 · 보유 1위 false9/Attack .436 | 마조 advanced/Support **.351** vs Attack .332(Δ.019) · 보유 Support .348 vs Attack .343 | **Support 2/2 — 단 둘 다 fit <.40 무결정 구간** | ST 커널 적합이 구조적으로 낮다(리서치 §1.2 「전부 .65 이하」와 같은 현상) · 실측은 Support 쪽 근소 · 인게임 Attack 유지 여부는 사용자 판단 · EA #11 Triggered Runs 거리 제한(A) |
 | ⑶ | **LM 역할·포커스** | wm_insidefwd/Balanced | 만잠비 1위 widemid/Defend .538(Δ.007) · **보유 1위 insidefwd/Balanced .741** · 정본 .504 | 헤밍스 1위 **widemid/Support .723**(Δ.060) · 정본 insidefwd/Balanced **.369** · winger/Attack .563 | **선수 따라 갈림** — 만잠비(안쪽 프리롤)는 보유 기준 정본 일치, 헤밍스(폭)는 정본과 정반대 | 루게리 복귀 병기: **루게리 여전히 부상(두어 달 · AVR 프리뷰)** → LM 칸 대체 자원 표본만 쌓임 · 인게임 포커스 Attack(10-22)과 정본 Balanced 괴리는 그대로 · 실측 |
 | ⑷ | **LB 저점유 프리셋 운용** | fb_att_wb/Support(인게임 Wingback/Balanced) | 마첸 1위 **fb_wingback/Balanced .869**(Δ.069) · 정본 .687 | 마첸 1위 fullback/Balanced .756(Δ.036 무결정) · **보유 1위 wingback/Balanced .799** · 정본 .672(보유 .786) | **wingback/Balanced 2/2(보유 기준)** — 정본 att_wb/Support는 두 경기 모두 2위 이하 | 점유 37%·51% 두 경기 모두 같은 방향 → 「저점유 전용」이 아니라 점유와 무관하게 wingback/Balanced(인게임 값) 쪽 · 실측 |
-| ⑸ | **FC27 optimal:lead 신설** | 없음(#46 optimal만) | 리드 76분(6–52′ · 60–90′) · 리드 구간 def_x 31.8~32.2(6–30′) · **20.4(60–66′)** · PPDA 경기 8.55 | 리드 **0분**(7′부터 열세) — 표본 없음 | **판정 불가 — 리드 표본 1경기** | 맨시티 1경기는 「리드 시 블록을 20~32로 더 내린다」 방향 · 2경기 조건을 리드 국면 기준으로 다시 세면 아직 1/2 · 실측 |
+| ⑸ | **FC27 optimal:lead 신설** | 없음(#46 optimal만) | 리드 76분(6–52′ · 60–90′) · 리드 구간 수비 액션 평균 높이(def_x) 31.8~32.2(6–30′) · **20.4(60–66′)** · PPDA 경기 8.55 | 리드 **0분**(7′부터 열세) — 표본 없음 | **판정 불가 — 리드 표본 1경기** | 맨시티 1경기는 「리드 시 블록을 20~32로 더 내린다」 방향 · 2경기 조건을 리드 국면 기준으로 다시 세면 아직 1/2 · 실측 |
 
 ⇒ **사용자 판단 요청 목록**(종료 보고에 올림): ⑴ RDM 정본을 dm_dlp 계열로 바꿀지(인게임 테스트 + 보유 그리드 2/2 · 포커스는 Build-Up vs Roaming 미정) ⑵ ST 인게임 Attack 유지 vs 정본 Support 맞춤 ⑶ LM은 선수별 갈림이라 정본 유지 + 헤밍스 쟁점 신설 여부 ⑷ LB 정본을 wingback/Balanced로 정렬할지 ⑸ lead 프리셋은 리드 경기 1개 더 필요.
 
