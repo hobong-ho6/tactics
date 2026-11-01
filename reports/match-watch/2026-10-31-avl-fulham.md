@@ -229,3 +229,37 @@ obs#1123 재판정의 세 번째 열. 실측 열은 경기 프리셋(`match_play
 ## D+3 추적
 
 - 예약 `mw-avl-fulham-d3`(11-03 20:00) — 3일 추적 종결 · 바르사전(11-03 UCL) 명단으로 RB·RM 대응 확인 · complete 판정.
+
+## D+1 보강 (2026-11-01 14:00)
+
+> 예약 `mw-avl-fulham-collect-1400` · 10:00 회차가 리포트·`match_reports` #65를 이미 만들었으므로 **보강만** 했다. DB 행 변경 없음(리포트 md만 덧붙임).
+
+### ⑴ 감독 회견 — 10:00 이후 추가분
+- **아르벨로아 — Sports Mole(Ben Sully · 11-01 00:39 GMT · 직접 · 인용 출처 표기 없음)**: 「This is what I want to see from my team, that character, that ambition.」(이게 내 팀에게서 보고 싶은 것, 그 성격과 야망이다) · 「We needed to be aggressive against a team like Villa. It was a Champions League team in front of us.」(빌라 같은 팀을 상대로는 공격적이어야 했다. 앞에 있던 건 챔피언스리그 팀이었다) · 「I think maybe we deserved a little bit more, but the performance was really great.」(조금 더 가져갈 자격이 있었을지도 모르지만 경기력은 정말 훌륭했다) · 「I think we are a very difficult team to beat, and I think we can beat anyone.」(우리는 이기기 매우 어려운 팀이고 누구든 이길 수 있다고 생각한다). ⇒ 10:00 회차의 「더 공격적이어야 한다… 대인 대결에서」와 같은 축 — **후반 풀럼의 대인 압박 강화가 의도된 하프타임 조정**이라는 서술을 보강(빌라 후반 PPDA 31.67·풀럼 12.84 실측과 정합).
+- **에메리 — 새 원문 0.** 10:00 회차 4개 출처(avfc · BirmLive 전문 · PA · Sky) 밖의 추가 회견 전사 없음. PA 기사에 붙은 「one point in a difficult stadium」(어려운 원정에서 승점 1) · 「so happy with the second half」(후반에 매우 만족) 류 문장은 **홈 감독 발언으로 성립하지 않아 상대 감독 발언 혼입으로 판단 · 인용 제외**(검색 요약 단계에서 확인 · 원문 미검증).
+- 66′ 3명 교체 사유 · 헤밍스 명단 제외: 여전히 **1차 소스 0**.
+
+### ⑵ Jacob Tanswell X
+- 브라우저 직접 열람(비로그인 · 14:0x KST): 고정 글 다음 최신이 10:00 회차에 이미 기록한 4건(…2116663575737680038 · …2116663319054676197 · …2116650682615021946 · …2116648458849493345) 그대로 — **추가분 0**.
+
+### ⑶ 필수 채널 3곳 (`/videos` + `/streams` 2탭 · yt-dlp 목록)
+- UTV: 새 영상 0(최신 6bwxQlWU3bk = #464 기수집). The Villans: **경기 후 영상 여전히 0**(최신 EUhuiiN4cJA는 프리뷰 · `/streams` 최신은 UCL 랭킹 aF2xltKwKmE). 1874: 새 영상 0(최신 스트림 ZPtfGsSLb94 = #465 기수집).
+- ⇒ 전사·요약·구현 주장 **신규 0편**(G17 대상 없음). 뮤트 규칙 해당 재생 없음.
+
+### ⑷ 다국어 기사
+- **스페인어(필수)**: Marca 직접 열람 차단(도구 거부) · 검색에 아르벨로아 스페인어 회견 원문 **0**(검색 결과는 맨유전 심판 발언·벌금 건뿐). Flashscore/Soccerway ES 「Emery, más centrado en Arbeloa que en Flick」(직접 · 날짜 표기 없음 · 문맥상 경기 전날) — 에메리 「Así que mañana, Fulham. Hay que dar prioridad claramente a la Premier League, y ese es el mensaje」(그러니 내일은 풀럼이다. 프리미어리그를 분명히 우선해야 하고, 그게 메시지다) · 「En la Premier League nos faltan puntos.」(프리미어리그에서 우리는 승점이 모자란다). ⚠️ 영어 회견의 스페인어 번역 전재로 보인다(에메리 스페인어 원어 여부 불명) — 불변규칙 12의 「번역 복제」 주의 대상이라 **독립 교차검증으로 세지 않는다**. 바르사전 앞 로테이션 대신 리그 우선 → 풀럼전 PL 주전 선발(고레츠카 첫 PL 선발 포함)과 정합.
+- **자책골 접촉 여부**: 영어권 3곳 추가 — Sky 「unforced error」(강요되지 않은 실수) · AllFootball 「completely uncontested」(완전히 경합 없음) · Telegraph(Yahoo 전재) 「backpedals towards his own line」(골라인 쪽으로 뒷걸음질쳤다) · 판정 확인은 골라인 기술뿐(파울 VAR 검토 보도 0). ⇒ **접촉 서술은 FOOTBALL ZONE(일본어) 1곳뿐 · 「경합 없음」 채택**, 충돌은 기록으로 남긴다(영상 확인은 여전히 미수행 — 하이라이트 직접 시청 경로 없음).
+- 헤밍스: Villa News(Declan Carr · 10-30 · 직접) 「Emery simply can't afford to start him next time out.」(에메리는 다음 경기에 그를 선발로 쓸 여유가 없다) — 선발 제외 전망일 뿐 **명단 밖 사유는 아님**. 무릎 부상은 10-20 훈련 복귀(Rotowire · 스니펫)·본머스전 선발로 회복 확인. 포레스트전 하우드-벨리스 전례(PL 명단 인원 제한)와 같은 원인일 가능성은 **D(추정)** — 확인 전 판정에 쓰지 않는다.
+- 다른 언어권: 10:00 회차(일본어·독일어·프랑스어·폴란드어 · 0건 6개 언어)에서 새로 붙은 기사 0.
+
+### ⑸ 10:00 회차 결손 점검
+- `match_player_reports` #65 16명: tactical_role·characteristics·performance·game_implication 빈칸 **0**.
+- `player_matches` match 129 AVL 16명: 국면 그리드(cells_poss·cells_def) 16/16 · 운반 키 16/16 · phase_source `scope=full`.
+- `gates.py` 전항 통과(G21 필수 3종 · G17 · G37 · G42 포함) → **채울 결손 없음**.
+
+### ⑹·⑺ 확인
+- 본머스전 관전 가설(H1′·H2′·H2·H3) 풀럼전 판정: 리포트 앞 「사용자 관전 메모 재대조」 절에 있음 → 추가 작업 없음.
+- 보류 5건 재판정 표(맨시티·본머스·풀럼 3열): 리포트 끝 절에 있음 → 추가 작업 없음 · 정본 불변.
+
+### D+2로 넘김
+- 지연 전술 분석(TFA·BTL·The Athletic) · The Villans 경기 후 영상 재확인 · 풀럼 관점(Fulhamish UOsofuOP5B8 등 — 필수 채널 밖, 전사 판단은 D+2) · 아르벨로아 스페인어 원문(스페인 매체 직접 열람 경로) · 헤밍스 명단 밖 사유 · 66′ 교체 사유.
