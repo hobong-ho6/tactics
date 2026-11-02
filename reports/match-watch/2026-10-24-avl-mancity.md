@@ -39,10 +39,10 @@
 - **모국어(포르투갈어)**: hoop78 「O ponta Alysson, revelado pelo Grêmio, saiu aos 14 do segundo tempo」(그레미우 출신 윙어 알리송은 후반 14분에 나갔다) — 위치는 「ponta」(윙어). ge.globo·GZH·UOL·Lance! 0건(차단·미게재).
 - **FC 함의**: 커널 RM 1위 wm_insidefwd/Attack **.455**(Δ.002 무결정 · 2위 wm_wideplm/Attack .454) — 바이킹전 wm_winger/Attack .809와 크게 다르다. 수비 국면 비중이 컸던 경기라 히트맵이 안쪽·아래로 번졌다. 쟁점 #14(알리송 수비 복귀형 vs 윙어 · 「판정할 차례」)의 표본 1경기 — 이 경기 단독으로 닫지 않는다(§7).
 - **D+1 보강(10-25 13:00)**: Express & Star(George Bennett · 403 → 검색요약 2회 일치) **7** 「He showcased his attacking qualities in glimpses and never neglected his defensive duties, cutting out a number of attacks.」(공격 자질을 간간이 보여줬고 수비 임무를 결코 소홀히 하지 않아 여러 공격을 끊었다) — 수비 액션 14 실측과 같은 방향 · The Independent(Jolly) 「looking reminiscent of Morgan Rogers」(모건 로저스를 떠올리게 했다) · 1874 사후 라이브 「with Allison obviously high and wide on the right」(알리송은 오른쪽에 높고 넓게 · auto-caption) — 볼 소유 (63, 22)와 일치. 에메리 발언 여전히 **0건**. 포르투갈어 0건(시도: 「Alysson Aston Villa Manchester City ex-Grêmio atuação」 · 「Alysson nota … ge globo OR GZH OR Lance」 · 「Alysson Edward … vitória titular Grêmio Info」). 쟁점 #14 표본에 「수비 임무」 서술 1건 + 「높고 넓게」 1건 — 양쪽 서술이 공존(닫지 않음).
-- **13:00 실행 회차 덧붙임**: Yardbarker(상대 관점) 「Alysson was quick, but Gvardiol was quicker」(알리송은 빨랐지만 그바르디올이 더 빨랐다) — WS상 그바르디올 맨시티 왼쪽(ȳ 76~78) · 둘의 파울 경합 4회(알리송 반칙 3) → 측면 돌파 실패는 실측과 같은 방향(obs#1139 · 「D+1 보강 ⑻」).
+- **13:00 실행 회차 덧붙임**: Yardbarker(상대 관점) 「Alysson was quick, but Gvardiol was quicker」(알리송은 빨랐지만 그바르디올이 더 빨랐다) — WS상 그바르디올 맨시티 왼쪽(오른쪽 기준 평균 폭(ȳ) 76~78) · 둘의 파울 경합 4회(알리송 반칙 3) → 측면 돌파 실패는 실측과 같은 방향(obs#1139 · 「D+1 보강 ⑻」).
 
 ### 주앙 고메스 (#35 · 브라질)
-- **실측**: 선발 **LDM** 82′ · SS 6.7 · FM 7.05 · 패스 27/28 · 볼 소유 31 (44, 68) 왼쪽 58% · 수비 액션 13 (36, 65) · 가로채기 3 · 운반(SS) 8회 69m(전진 0) · 수신 22(x̄ 45.5). 60′~ 볼 소유 (38, 74)로 더 왼쪽·아래.
+- **실측**: 선발 **LDM** 82′ · SS 6.7 · FM 7.05 · 패스 27/28 · 볼 소유 31 (44, 68) 왼쪽 58% · 수비 액션 13 (36, 65) · 가로채기 3 · 운반(SS) 8회 69m(전진 0) · 수신 22(평균 높이(x̄) 45.5). 60′~ 볼 소유 (38, 74)로 더 왼쪽·아래.
 - **에메리 발언**: 0건. 바이킹전 회견 「고메스는 늘 8번」(obs#1083 맥락)과 충돌 없음 — 이 경기는 6번 짝.
 - **평점**: BBC 6 · The National 7 · AVN 7 · EPL Index 6 · SportsDunia 7 · dave.sport 6.5(82분 패스 96%).
 - **모국어**: hoop78 「O volante João Gomes jogou até os 37 minutos do segundo tempo」(볼란치 주앙 고메스는 후반 37분까지 뛰었다). 브라질 대형 매체 평점 0건.
@@ -280,7 +280,7 @@
 > 같은 예약의 정시 실행. 07:16 이후 새 자료만 훑었다. 실측 재수집 없음 · 당일 판정·대조표 변경 **0**.
 
 - **필수 채널 4곳(yt-dlp 최신 목록 · 13:0x)**: UTV · The Villans · 1874 · Jacob Horsfall — **07:16 이후 새 업로드 0**(UTV 최신 qcGR9TddiPo · 1874 최신 라이브 1Xv_Y_4iecc 둘 다 전사 완료 · The Villans 2wNasTobcec 경기 전 · Horsfall sh16rkzsmuw 빌라 아님). 전사 추가 0.
-- **알리송 ↔ 그바르디올(새 · obs#1139)**: Yardbarker(Alyssa Clang · 10-24 · 상대 관점 · 직접 fetch) 「He was tasked with neutralizing Villa's exciting Brazilian winger Alysson」(빌라의 브라질 윙어 알리송을 무력화하는 임무를 받았다) · 「Alysson was quick, but Gvardiol was quicker」(알리송은 빨랐지만 그바르디올이 더 빨랐다). **WS 대조**: 그바르디올 ȳ 76.2(전반)·78.0(후반) = 맨시티 왼쪽 → 알리송과 같은 측면 · 둘의 파울 경합 4회(13′·44′·56′ 알리송 반칙 — 빌라 x 84·90·61 높은 위치 · 24′ 알리송 피파울) · 알리송 드리블 1/2. ⇒ 「그 측면 돌파 실패」는 실측과 같은 방향, 「전담 임무」는 포지션상 자연 대면이라 지시 근거 아님. 쟁점 #14 표본 추가(단독으로 닫지 않음).
+- **알리송 ↔ 그바르디올(새 · obs#1139)**: Yardbarker(Alyssa Clang · 10-24 · 상대 관점 · 직접 fetch) 「He was tasked with neutralizing Villa's exciting Brazilian winger Alysson」(빌라의 브라질 윙어 알리송을 무력화하는 임무를 받았다) · 「Alysson was quick, but Gvardiol was quicker」(알리송은 빨랐지만 그바르디올이 더 빨랐다). **WS 대조**: 그바르디올 오른쪽 기준 평균 폭(ȳ) 76.2(전반)·78.0(후반) = 맨시티 왼쪽 → 알리송과 같은 측면 · 둘의 파울 경합 4회(13′·44′·56′ 알리송 반칙 — 빌라 x 84·90·61 높은 위치 · 24′ 알리송 피파울) · 알리송 드리블 1/2. ⇒ 「그 측면 돌파 실패」는 실측과 같은 방향, 「전담 임무」는 포지션상 자연 대면이라 지시 근거 아님. 쟁점 #14 표본 추가(단독으로 닫지 않음).
 - **가르나초**: 새 1차 발언 0 — 기존 Hayters/BirminghamLive 인용의 재전재(Football365 · SportBible · LiveScore). 새 맥락 2건(모두 **LOW** · 판정 반영 없음): GOAL US 「Villa executed an identical manoeuvre with … Harvey Elliott last season」(지난 시즌 엘리엇에게도 같은 조치를 했다) — Football Insider 루머 재가공 · footballtransfers 「last ditch attempt … after Unai Emery showdown talks」(에메리와 담판 뒤 마지막 시도 · 제목만 · 원문 미확인).
 - **맥긴**: RotoWire 「three crosses (zero accurate) and two corners」(크로스 3회(정확 0)·코너킥 2회) — 도움·기회 창출 4는 기존 실측과 같음. 스코틀랜드 매체 새 기사 0.
 - **고메스**: 포르투갈어 새 기사 0(somosfanaticos 본인 발언은 07:16 반영분과 같은 것).
@@ -312,7 +312,7 @@
 | 서술 | 출처 | 실측 | 판정 |
 |---|---|---|---|
 | 「make his wingers drop back and form, sometimes, a line of six players」(윙어를 내려 때때로 6명 라인) | CityXtra(Enzo Krieger · 10-25 09:09 · 맨시티 관점) | 수비 액션 평균 알리송 (37.7, 27.2) 깊은 것 2/9 · 만잠비 (26.5, 60.0) 깊지만 **안쪽** · 측면 깊은 수비는 캐시·마트센·부엔디아·음바예 | **대체로 기각** — 선발 윙어 6백 아님(교체 뒤 음바예·부엔디아 구간만 가능 · 쟁점 #16 표본) |
-| 「double man-marking on both flanks」(양 측면 이중 대인마크) | CityXtra | 오른쪽 캐시+카마라(ȳ 37.5) · Telegraph 「Doku sprints down the left but can't get past Kamara」(도쿠가 카마라를 넘지 못한다) / 왼쪽 마트센 태클 0/3 | 오른쪽만 일치 |
+| 「double man-marking on both flanks」(양 측면 이중 대인마크) | CityXtra | 오른쪽 캐시+카마라(오른쪽 기준 평균 폭(ȳ) 37.5) · Telegraph 「Doku sprints down the left but can't get past Kamara」(도쿠가 카마라를 넘지 못한다) / 왼쪽 마트센 태클 0/3 | 오른쪽만 일치 |
 | 「pressed quickly in a man-to-man system」(맨투맨으로 빠르게 압박) | Squawka(Harry Edwards · 10-24 · 403 → 검색 요약 경유) | 수비 액션 평균 높이(def_x) 34.9 · 높은 압박은 0–6′뿐 | 부분 — 초반만 |
 | 「Villa keep the pressure up for the opening minutes」(초반 몇 분 압박 유지) | Telegraph 라이브(Percy) | 0–6′ 수비 액션 평균 높이(def_x) 55.6 | 일치 |
 | 만잠비 「on the left rather than as the No 10」(10번이 아니라 왼쪽) · 맥긴 「more centrally」(더 중앙) | Express & Star Verdict(George Bennett · 10-25 09:01 · 403 → 검색 요약 경유) | 만잠비 (58, 67) · 맥긴 (61, 47) | 일치(obs#1138 재확인) |
@@ -323,7 +323,7 @@
 
 ### ⑸ 영상 (필수 채널 4곳 · 뮤트 경로)
 - **최신 목록(20:5x)**: **UTV — 새 업로드 1편** 「WHY NICOLAS JACKSON SCARES EVERY DEFENCE!」(Id10w3mpHVI · 2026-10-25 17:00 KST · 36:36 · 전술 디브리프) → yt-dlp 봇 차단(「The page needs to be reloaded」) → 브라우저 pot 경로(mute·정지 확인 → 자막 포착 → 탭 닫기)로 **전사** → `match_videos` **#390**(r63 귀속) 요약 + 구현 주장 **7행**. **The Villans · 1874 · Jacob Horsfall — 13:00 이후 새 업로드 0**(최신 각각 2wNasTobcec 경기 전 · 1Xv_Y_4iecc 전사 완료 · sh16rkzsmuw 빌라 아님).
-- #390 요지(auto-caption · obs#1143): ① **51′ 실점** 서술이 WS 이벤트 순서와 정확히 일치 — 잭슨 패스 차단 → 은디아예가 카마라 상대 파울 획득 → 빠른 FK → 은디아예 크로스 (93, 22) → 홀란 헤더(린델뢰프 패). ② **왼쪽 약점** 「we didn't really have that extra player at times that was really helping out with Ian Matson」(마트센을 돕는 추가 인원이 때때로 없었다) — WS 은디아예 터치 ȳ 16(빌라 왼쪽) · 빌라 왼쪽 수비 진영 태클 마트센 0/3·만잠비 1/3·부엔디아 0/3 → 같은 방향(쟁점 #47·#53). ③ 중원 박스(카마라·고메스·만잠비·맥긴 + 잭슨 하강 · #21). ④ 교체 역할(음바예 폭·캐시 지원 #48 · 부엔디아 마트센 보호 · 바클리·고레츠카 중원 · 마조 채널 홀드업). ⑤ 잭슨 홀드업 후 왼쪽 빈 공간으로 전개(#5). ⑥ 압박 「We know when to jump … We hunt in packs」(언제 튀어나갈지 안다 … 무리 지어 사냥한다 · #17 PENDING). ⑦ xG stat 수비 라인 ~30m 대 41m(#59).
+- #390 요지(auto-caption · obs#1143): ① **51′ 실점** 서술이 WS 이벤트 순서와 정확히 일치 — 잭슨 패스 차단 → 은디아예가 카마라 상대 파울 획득 → 빠른 FK → 은디아예 크로스 (93, 22) → 홀란 헤더(린델뢰프 패). ② **왼쪽 약점** 「we didn't really have that extra player at times that was really helping out with Ian Matson」(마트센을 돕는 추가 인원이 때때로 없었다) — WS 은디아예 터치 오른쪽 기준 평균 폭(ȳ) 16(빌라 왼쪽) · 빌라 왼쪽 수비 진영 태클 마트센 0/3·만잠비 1/3·부엔디아 0/3 → 같은 방향(쟁점 #47·#53). ③ 중원 박스(카마라·고메스·만잠비·맥긴 + 잭슨 하강 · #21). ④ 교체 역할(음바예 폭·캐시 지원 #48 · 부엔디아 마트센 보호 · 바클리·고레츠카 중원 · 마조 채널 홀드업). ⑤ 잭슨 홀드업 후 왼쪽 빈 공간으로 전개(#5). ⑥ 압박 「We know when to jump … We hunt in packs」(언제 튀어나갈지 안다 … 무리 지어 사냥한다 · #17 PENDING). ⑦ xG stat 수비 라인 ~30m 대 41m(#59).
 - 13:00 회차 미전사 6편(The Football Flex · URKG · Premier League Dad · The 12th Man · The Football Brief · 戦術と真実): 이번 회차도 미전사 — D+2 판단 유지.
 
 ### ⑹ 중점 4인
@@ -374,12 +374,12 @@
 ### ⑷ 영상·기사 주장 ↔ 실측 대조 (WS 1983617 원본)
 | 서술 | 출처 | 실측 | 판정 |
 |---|---|---|---|
-| 맨시티가 CB 좌우를 바꿔 빠른 게히를 잭슨이 노는 빌라 왼쪽 채널에 세웠다 | Tanswell(1874 #392) · LNobbins(#394 · 맨시티 관점) | 전반 디아스 터치 ȳ **67.2**(맨시티 왼쪽) · 게히 ȳ **28.0**(오른쪽 · 하프타임 교체) · 잭슨 볼 소유 왼쪽 48% | **일치** |
+| 맨시티가 CB 좌우를 바꿔 빠른 게히를 잭슨이 노는 빌라 왼쪽 채널에 세웠다 | Tanswell(1874 #392) · LNobbins(#394 · 맨시티 관점) | 전반 디아스 터치 오른쪽 기준 평균 폭(ȳ) **67.2**(맨시티 왼쪽) · 게히 오른쪽 기준 평균 폭(ȳ) **28.0**(오른쪽 · 하프타임 교체) · 잭슨 볼 소유 왼쪽 48% | **일치** |
 | 피벗 분할로 대인 중원을 끌어낸 뒤 내려온 맥긴에게 토레스가 세로 패스를 넣었고, 디아스가 따라 나와 파울했다 | LNobbins(#394) | 토레스→맥긴 연결 **4**(1′·23′·38′·41′ — 전부 전반) · 디아스의 맥긴 상대 파울 **2**(38′·41′) · 토레스 최다 연결은 스즈키 20 | **같은 방향 · 「매번」은 과장** |
 | 스즈키가 왼쪽 깊숙이 잭슨을 겨냥해 롱볼을 찼다(내려온 왼쪽 2선을 상대 RB가 따라 나간 뒤 그 뒷공간) | TOTAL FOOTBALL(#393 · 일본어) | 스즈키 롱패스 19 중 왼쪽 레인(y>66) **14** · 성공 6 | **일치** — C5 왼쪽 쏠림을 GK 배급까지 재확인 |
 | 첫 6분 점유 92% | Tanswell(#392) | 0–6′ 패스 47 대 13(**78%**) · 터치 54 대 25 | **과장**(방향만) |
 | 「4-4-2 mid block」(4-4-2 미드블록) | LNobbins · AVillaFan(Wardhana Arya · 10-24) | 맥긴 수비 액션 (34, 38) · 카마라 (33, 34) 바로 옆 | 당일 4-4-1-1 **유지** — 쟁점 #15 누적 |
-| 잭슨을 약간 왼쪽 중앙에 세워 상대 오른쪽 CB를 공략하게 했다 | talkSPORT(#396) | 위 게히 ȳ 28 · 잭슨 왼쪽 48% | **일치** |
+| 잭슨을 약간 왼쪽 중앙에 세워 상대 오른쪽 CB를 공략하게 했다 | talkSPORT(#396) | 위 게히 오른쪽 기준 평균 폭(ȳ) 28 · 잭슨 왼쪽 48% | **일치** |
 | 동점골은 도쿠가 마트센을 제친 크로스, 결승골은 마트센 크로스에 잭슨 발리 | FußballFokus(#397) | 은디아예 FK 크로스(obs#1143) · 음바예 컷백 | **기각**(장면 오류) |
 | 빌라 전반 태클이 두 시즌 PL 전반 최다 | FußballFokus(#397) | WS 전반 태클 빌라 13 · 맨시티 4 | 미검증(기록 대조 불가) |
 | 6′ 골은 「one sharp press」(날카로운 압박 한 번) | TheFootballPlus(#398) | obs#1140 실책 순간 직접 압박 없음 | **기각** — 93:20 Cityzens(#395 · 맨시티 관점) 「no one pressing him」(아무도 압박하지 않았다)은 obs#1140과 같은 방향 |
@@ -513,7 +513,7 @@
 | 같은 글 | 비보유 「4-4-2 + 측면 MF 안쪽」(열람 도구 요약 · 원문 문구 불확실) | 맥긴 수비 액션 (34, 38) · 카마라 (33, 34) 바로 옆 | 당일 4-4-1-1 **유지** — 쟁점 #15 누적(4-4-2 서술 3곳째) |
 | 같은 글 | 「It took 60 seconds for Mbaye, playing on the right for the first time, to make a devastating run behind City.」(처음 오른쪽에 선 음바예가 60초 만에 뒷공간 침투) | 59′ 투입 → 60′ 결승골 도움 · 음바예는 바이킹전에 **왼쪽**(볼 소유 36/37 좌측 · r62) | 장면 **일치** · 「처음 오른쪽」은 직전 경기와 맞음(시즌 전체는 미대조) — 쟁점 #48(음바예 우측 기능) 표본 |
 | The Villans(#400 · 10-26) | 선제 뒤 「step back … how to defend the box」(물러서서 박스를 지켰다) | 수비 액션 평균 높이(def_x) 6–30′ 31.8~32.2 · 60–66′ 20.4 | **일치** |
-| The Villans(#400) | 맨시티가 게히를 오른쪽으로 옮겼고 잭슨이 그쪽을 몰아 첫 실책을 끌어냈다 | 게히 ȳ 28 · 실책 순간 직접 압박 없음(obs#1140) | 배치 **일치** · 「압박으로 끌어냈다」는 **기각** |
+| The Villans(#400) | 맨시티가 게히를 오른쪽으로 옮겼고 잭슨이 그쪽을 몰아 첫 실책을 끌어냈다 | 게히 오른쪽 기준 평균 폭(ȳ) 28 · 실책 순간 직접 압박 없음(obs#1140) | 배치 **일치** · 「압박으로 끌어냈다」는 **기각** |
 | City Xtra(10-25) · Read Man City(10-25) | 실점은 게히 첫 터치 · 돈나룸마 위치 | SS errorLeadToGoal 2 | 일치(새 사실 없음) |
 - **전술 블로그 최종 0건**: TFA · BTL · Spielverlagerung · Between the Posts · Coaches' Voice · Tifo · StatsBomb · 이탈리아어 assoanalisti. 독일어 기사(Sportschau · Sport1 · Sky DE · laola1 · SRF)는 경기 보도뿐이다. SRF 「spielte Johan Manzambi bis zur 66. Minute」(만잠비는 66분까지 뛰었다)는 C2와 일치한다.
 

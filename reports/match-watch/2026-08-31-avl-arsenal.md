@@ -20,7 +20,7 @@
 
 - **득점**: 59분 부카요 사카(어시스트 리카르도 칼라피오리). 선제골이자 결승골 — AVL은 90분 유효슈팅 0으로 무득점.
 - **개막 2연패·2경기 무득점** — 2002년 이후 처음(WebSearch 종합).
-- ⭐ **PPDA 30.50(AVL) vs 11.67(Arsenal)** — Cash(RB)·Maatsen(LB) 실측 좌우 검증으로 WhoScored 좌표계가 SofaScore와 동일 관례(팀별 공격방향, avg_y 낮음=오른쪽)임을 확인한 뒤 계산했다(상대 자기 진영 3/5 패스 / 우리 상대 진영 2/5 수비액션, Tackle+Interception+Foul+Challenge). **30.50은 팀 상수 대비 극단적으로 높다** — 조직적 전방 압박을 사실상 포기한 순수 딥블록이었다.
+- ⭐ **PPDA 30.50(AVL) vs 11.67(Arsenal)** — Cash(RB)·Maatsen(LB) 실측 좌우 검증으로 WhoScored 좌표계가 SofaScore와 동일 관례(팀별 공격방향, 오른쪽 기준 폭(avg_y) 낮음=오른쪽)임을 확인한 뒤 계산했다(상대 자기 진영 3/5 패스 / 우리 상대 진영 2/5 수비액션, Tackle+Interception+Foul+Challenge). **30.50은 팀 상수 대비 극단적으로 높다** — 조직적 전방 압박을 사실상 포기한 순수 딥블록이었다.
 - 히트맵: 15명이 유효(hp≥10), 시즌 집계 기준(hp≥15)을 충족한 인원은 11명(선발 다수 + 카마라 등). 벤치 4명은 hp<15로 참고용.
 
 ## 2. 전술 설명
@@ -75,7 +75,7 @@
 
 ## 6. 전술 변화 판정
 
-- **유지된 것**: 명목 포메이션 4-2-3-1, 좌풀백 공격 가담 우선 문법(마첸 avg_y=88.0 vs 캐시 47.9 — 다만 이번엔 캐시도 상당히 전진했다), 낮은 인터셉트·파울 의존형 수비.
+- **유지된 것**: 명목 포메이션 4-2-3-1, 좌풀백 공격 가담 우선 문법(마첸 오른쪽 기준 폭(avg_y)=88.0 vs 캐시 47.9 — 다만 이번엔 캐시도 상당히 전진했다), 낮은 인터셉트·파울 의존형 수비.
 - **새로 나타난 것**: ⭐⭐ **선발 11명 중 다수가 여름 이적으로 새로 합류하거나 오랜만에 복귀한 선수** — 스즈키(GK)·잭슨(ST) 공식전 데뷔, 바클리·헤밍스 오랜 공백 후 선발. 지난 시즌 주전 5명(마르티네스·콘사·틸레만스·로저스·왓킨스)이 전원 이적(WebSearch: 왓킨스 알힐랄行 약 £50m — 로저스는 첼시로 이적해 이미 CHE 소속으로 실측됨, report 25 참조).
 - **직전 경기(브라이턴, report 22) 대비**: 브라이턴전은 27% 점유·10명(50분)의 극단적 이상치였던 반면, 이 경기는 11명·39% 점유로 더 「정상적인」 원정 열세다. 유효슈팅 0은 두 경기 연속.
 - **`observations` 반영**: obs#350으로 스쿼드 대개편·9번 교체(잭슨 st_false9 vs 왓킨스 st_advanced)의 함의를 기록한다.
@@ -344,7 +344,7 @@ D+1은 앙리의 「you **freeze Matikash**(캐시). He can't go. Now, it's a **
 
 - 🔴 **최종 국면의 당사자는 캐시가 아니라 린델뢰프다** — ESPN·Arseblog: 「**59분** 에제가 칼라피오리를 좌측으로 풀어줬고, **칼라피오리가 빅토르 린델뢰프를 제치고 볼을 따내** 골문 앞을 가로지르는 낮은 배급을 했으며 사카가 마무리」. ⇒ 앙리가 해부한 「캐시 고정 → 내부 공간 개방」은 **선행 조건**이고, 실점을 성립시킨 **직접 듀얼 패배는 린델뢰프**다. 소절 제목의 「캐시가 원인」은 **과잉 귀속**이다.
 - 🔴 **캐시의 경기 전반 평가는 오히려 팀 최상급이다** — Bains: 「**Cash had a really, really good game** considering the circumstances. I think he **locked down** Zolis(=촐리스) quite well in the first half... **I've never seen Cash play that good**」. 78분 교체를 **전술적 문제가 아니라 소진**으로 읽었다(「He came off. I think that says it all」). 🇯🇵 players-rated도 **캐시 6.5**로 스즈키와 동률 상위. 우리 실측 6.74(팀 3위)와 정합.
-- ⭐ **게다가 캐시는 스즈키 롱볼 경로의 러너였다** — 「Matty Cash was **running off Louis Skelly**(루이스-스켈리) today... McGinn wins the initial ball, Matty Cash is running off him, and that gets Aston Villa **40-50 yards up the pitch so easily**」. 즉 캐시의 높은 평균 위치(avg_x 47.9)는 **09-01이 읽은 「공격 가담」이자 D+1이 읽은 「노출된 이음새」이면서, 동시에 지정된 프레스 탈출 경로의 일부**였다.
+- ⭐ **게다가 캐시는 스즈키 롱볼 경로의 러너였다** — 「Matty Cash was **running off Louis Skelly**(루이스-스켈리) today... McGinn wins the initial ball, Matty Cash is running off him, and that gets Aston Villa **40-50 yards up the pitch so easily**」. 즉 캐시의 높은 평균 위치(높이(avg_x) 47.9)는 **09-01이 읽은 「공격 가담」이자 D+1이 읽은 「노출된 이음새」이면서, 동시에 지정된 프레스 탈출 경로의 일부**였다.
 - **정정 내용**: D+1 소절의 판정을 「**캐시가 실점의 원인**」에서 「**아스날의 좌우 반전 로테이션이 캐시를 고정시켜 내부 레인을 열었고(앙리), 그 뒤 칼라피오리가 린델뢰프를 제쳐 크로스를 만들었다(ESPN)**」로 좁힌다. 캐시 개인의 90분 수행은 **호평**이 다수이며, D+1이 제기한 「딥블록 프리셋 ↔ 공격적 풀백 지시의 상충」 논점은 **유효하되 근거를 실점 귀속에서 구조 논점으로 이동**시킨다. ⇒ obs 등재.
 
 ### ⭐ 신규 발견 ④ — 맥긴의 저fit(.613)에는 미기록 기능이 있다: 롱볼 세컨볼 경합자
@@ -391,7 +391,7 @@ D+1은 앙리의 「you **freeze Matikash**(캐시). He can't go. Now, it's a **
 ## 9. 데이터 반영과 한계
 
 - 신규: `matches` 1(id 94) · `player_matches` 15 · `team_match_stats` 1 · `match_reports` 1(id 30, draft) · `match_player_reports` 15 · `match_game_setups` 1 · `match_player_prescriptions` 15.
-- **좌표 출처**: SofaScore가 403이라(불변 사항, HANDOFF 기록) WhoScored/Opta `matchCentreData`(matchId 1983558, 브라우저 인앱 오리진 `require.config.params["args"].matchCentreData`에서 직접 추출)를 대체 사용했다. Cash(RB)·Maatsen(LB)의 실측 좌우(avg_y)로 좌표계가 SofaScore와 동일 관례(avg_x=공격방향·avg_y 낮음=오른쪽)임을 사전 검증했다.
+- **좌표 출처**: SofaScore가 403이라(불변 사항, HANDOFF 기록) WhoScored/Opta `matchCentreData`(matchId 1983558, 브라우저 인앱 오리진 `require.config.params["args"].matchCentreData`에서 직접 추출)를 대체 사용했다. Cash(RB)·Maatsen(LB)의 실측 좌우(오른쪽 기준 폭(avg_y))로 좌표계가 SofaScore와 동일 관례(높이(avg_x)=공격방향·오른쪽 기준 폭(avg_y) 낮음=오른쪽)임을 사전 검증했다.
 - ⭐ **PPDA 30.50/11.67**(위 1절 참조) — 극단적 딥블록. ⛔ **클럽 전술 영상 0건** — D+1~D+3 비차단 추적 대상.
 - 벤치 4명은 hp<15로 대표 그리드·시즌 집계에서 제외(경기 리포트 근거로만 사용).
 - `match_reports.status='draft'` — 클럽 전술 영상·전문 분석·다국어 서사가 채워지면 재검토해 `complete` 승격을 검토한다.

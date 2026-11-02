@@ -54,7 +54,7 @@
 
 ### 비점유 구조·압박
 
-**비점유 4-4-2(중블록).** PPDA 12.65 · 수비 액션 평균 높이(def_x) 36.5 — 직전 본머스전(10.75 · 38.4)보다 낮은 블록이며 def_x를 잰 CHE 6경기(38.4~41.0) 중 최저. 1선 아체암퐁·라크루아·콜윌(+하토), 2선 네투·카이세도·헨더슨·로저스, 전방 팔머·주앙(Blue is the colour). 경기 전날 알론소 「Can be in a 4-4-2, it can be in a 5-2-3 but the distances… how you have a good balance」(4-4-2일 수도 5-2-3일 수도 있다, 간격과 균형이다 — dNQjlVTxyow · auto-caption). 에버턴 슛 6·xG 0.43·박스 터치 17. 취약점은 네투·로저스의 복귀 의존 — 「the fragility… relies on Rogers, on Neto, and their tracking back」(취약성이 로저스·네투의 복귀에 기대고 있다, Blue is the colour · auto-caption). 후반 PPDA 17.45(전반 8.25) — 리드 후 블록을 내렸다(CFCOnline 「happy to let Everton have the ball」(에버턴에게 공을 내줘도 괜찮아했다)).
+**비점유 4-4-2(중블록).** PPDA 12.65 · 수비 액션 평균 높이(def_x) 36.5 — 직전 본머스전(10.75 · 38.4)보다 낮은 블록이며 수비 액션 평균 높이(def_x)를 잰 CHE 6경기(38.4~41.0) 중 최저. 1선 아체암퐁·라크루아·콜윌(+하토), 2선 네투·카이세도·헨더슨·로저스, 전방 팔머·주앙(Blue is the colour). 경기 전날 알론소 「Can be in a 4-4-2, it can be in a 5-2-3 but the distances… how you have a good balance」(4-4-2일 수도 5-2-3일 수도 있다, 간격과 균형이다 — dNQjlVTxyow · auto-caption). 에버턴 슛 6·xG 0.43·박스 터치 17. 취약점은 네투·로저스의 복귀 의존 — 「the fragility… relies on Rogers, on Neto, and their tracking back」(취약성이 로저스·네투의 복귀에 기대고 있다, Blue is the colour · auto-caption). 후반 PPDA 17.45(전반 8.25) — 리드 후 블록을 내렸다(CFCOnline 「happy to let Everton have the ball」(에버턴에게 공을 내줘도 괜찮아했다)).
 
 ### 전환·rest-defense·세트피스
 
