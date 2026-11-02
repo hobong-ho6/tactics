@@ -1355,7 +1355,7 @@ function renderCatalog(team = CAT_TEAM){
          82가 된 보가르드가 base 74 경로 「Creep Inside → Witching Hour」로 `OVR Max. 80` 진화의 최적 선수에 섰다). */
       /* ⭐ 그 시뮬레이션 결과가 곧 「적용 후」다 — 보유 선수는 base 경로 값(path.ovr_before 등)이 아니라 **지금 카드 + 남은 선행 + 이 진화**로 적는다
          (2026-10-26 사용자 지시 — Wicked Winger 최적 선수 지모알로바가 지금 80인데 「OVR 65→80」으로 떴다). 선행 단계 수도 남은 것만 센다. */
-      let kk = k, d = r.d, after = null, rs = r.rs, gain = J(r.upgrades, {}) || {};
+      let kk = k, d = r.d, after = null, rs = r.rs, gain = J(r.upgrades, {}) || {}, og = null;
       if (STATE[String(pid)]){
         const pre = r.ids.slice(0, k).filter(i => !APPLIED[`${pid}:${i}`]?.finished).map(id => ({ id }));
         const run = tryRun(+pid, [...pre, { id: c.evo_id }]);
@@ -1364,13 +1364,13 @@ function renderCatalog(team = CAT_TEAM){
           kk = pre.length; d = run.after.ovr - run.before.ovr;
           /* 역할 가중도 같은 결과의 **실제 상승분**(상한 반영)으로 잰다 — base 경로 `upgrades`가 아니라. */
           const up = {}; for (const a in run.after.at){ const x = run.after.at[a] - (run.before.at[a] ?? 0); if (x) up[a] = x; }
-          rs = roleScore(r.pres, up); gain = up;
+          rs = roleScore(r.pres, up); gain = up; og = ovrGap(run);
           const ord = o => Object.fromEntries(Object.keys(J(r.six_after, {}) || {}).filter(x => x in o).map(x => [x, o[x]]));   // 경로 표와 같은 순서(PAC→PHY)
           after = { ovr_before: run.before.ovr, ovr_after: run.after.ovr, six_before: ord(run.before.six), six_after: ord(run.after.six) };
         }
       }
       const base = (CARDS[pid] || []).find(x => x.is_base);
-      apps.push({ pid: +pid, tier: r.tier, k: kk, d, score: rs.score, rs, name: r.name_kr, owned: OWNED.has(+pid), price: base ? priceOf(base.item_id) : null, path: r, after: after || r, gain }); break;
+      apps.push({ pid: +pid, tier: r.tier, k: kk, d, score: rs.score, rs, name: r.name_kr, owned: OWNED.has(+pid), price: base ? priceOf(base.item_id) : null, path: r, after: after || r, gain, og }); break;
     }
     // 진화별 최적 선수: 처방 역할 적중 → 내 구단 보유(사서 쓸 필요 없음) → 즉시 적용(첫 단계) → 역할 가중 점수 → OVR 상승 → 시세 낮은 순
     apps.sort((a, b) => b.tier - a.tier || (b.owned - a.owned) || a.k - b.k || b.score - a.score || b.d - a.d || (a.price ?? 9e9) - (b.price ?? 9e9));
@@ -1413,7 +1413,7 @@ function renderCatalog(team = CAT_TEAM){
       ${optionsHTML(c, best)}
       <div style="margin-top:6px;font-size:12px"><b>업그레이드</b> ${J(c.total_upgrades_text, []).map(u => `<span class="up">${esc(u.label)} ${esc(u.value)}${u.maxValue ? ' ' + esc(u.maxValue) : ''}</span>`).join(' · ') || '<span class="dim">없음(도입용)</span>'}</div>
       <div style="margin-top:6px;font-size:12px"><b>${team === 'ALL' ? '우리 선수' : esc(idx.regimes.find(r => r.team_code === team)?.team_kr || team)} 적용 가능 ${apps.length + noPath(c, team).length}명</b> <small class="dim">(fut.gg 전체 ${c.number_of_players?.toLocaleString?.() ?? '—'}명)</small>
-        <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}${a.owned ? ' · 보유' : ''}${gainTip(a)}${a.score ? `&#10;역할 가중 ⚖${a.score} = ${roleTip(a)}` : ''}${(t => t ? `&#10;⚠️ PS 개수 상한으로 못 받음: ${esc(t)}` : '')(a.k ? '' : psLostText(c, a.pid))}">${a.owned ? '★ ' : ''}${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${!a.k && psLostText(c, a.pid) ? '<small style="color:var(--bad,#e55)"> ⚠PS상한</small>' : ''}${a.score ? `<small class="up"> ⚖${a.score}</small>` : a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || (noPath(c, team).length ? '' : '<span class="dim">없음' + (used?.exhausted ? '(소진)' : '') + '</span>')}</div>
+        <div class="plist">${apps.map(a => `<button class="t${a.tier}" data-p="${a.pid}" title="${a.k ? a.k + '단계째' : '즉시 적용'}${a.owned ? ' · 보유' : ''}${gainTip(a)}${ovrGapTip(a.og)}${a.score ? `&#10;역할 가중 ⚖${a.score} = ${roleTip(a)}` : ''}${(t => t ? `&#10;⚠️ PS 개수 상한으로 못 받음: ${esc(t)}` : '')(a.k ? '' : psLostText(c, a.pid))}">${a.owned ? '★ ' : ''}${esc(a.name)}${a.k ? `<small> ·${a.k + 1}단계</small>` : ''}${!a.k && psLostText(c, a.pid) ? '<small style="color:var(--bad,#e55)"> ⚠PS상한</small>' : ''}${a.score ? `<small class="up"> ⚖${a.score}</small>` : a.d ? `<small class="up"> +${a.d}</small>` : ''}</button>`).join('') || (noPath(c, team).length ? '' : '<span class="dim">없음' + (used?.exhausted ? '(소진)' : '') + '</span>')}</div>
         ${noPathHTML(c, team)}${catStartHTML(c, apps, team)}</div>
       <div class="kv" style="margin-top:6px;font-size:12px">${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">fut.gg ↗</a>` : ''}
         <button class="act ghost" data-hide="${c.evo_id}"${isHid(c) ? ' data-undo="1"' : ''} style="font-size:11.5px;margin-left:auto"
@@ -2003,14 +2003,31 @@ function tryGainHTML(r){
    ⭐ **차이(Δ)끼리 견준다** — 산정식 절대값은 ±1 오차가 있지만(국제 명성 등) 같은 카드의 전후 차이에서는 상쇄된다.
    ⛔ 산정식은 FC27 비진화 카드로 적합한 값이다(등급 C · EA 비공개). 계산은 `posovr.js`(= core/position_ovr.py · G31). */
 const OVR_GAP_WARN = 3, OVR_GAP_SUSPECT = 2;     // 진화 OVR Δ − 계산 OVR Δ (판단값 — 시험셋 ±1 오차의 두세 배)
-function ovrCheckHTML(r){
-  if (!r.steps.some(x => !x.fails.length)) return '';   // 얹힌 진화가 없으면 견줄 것도 없다(「✅ 맞는다」로 읽히면 안 된다)
+/* ⭐ 부풀림 계산 **한 벌**(2026-11-03 사용자 지시 「부풀림의 차이도 진화 계산할 때 항상 추가하고 진화 화면에서도 볼 수 있게」) —
+   걸어 보기(ovrCheckHTML)·다음 진화 카드(ovrGapChip)·카탈로그 적용 선수 툴팁(ovrGapTip)이 모두 이것을 쓴다.
+   반환 {pos, c0, c1, evoD, calcD, gap, lv} · lv = 'warn'(≥3) | 'suspect'(≥2) | 'ok'. 얹힌 진화가 없거나 산정식이 없으면 null(c0 null은 pos만). */
+function ovrGap(r){
+  if (!r || !r.steps.some(x => !x.fails.length)) return null;
   const M = EVO.ovr_model;
   const pos = String(r.st.positions || '').split(/[\/,]/)[0].trim();
   const c0 = posOvrRaw(r.before.at, pos, M), c1 = posOvrRaw(r.after.at, pos, M);
-  if (c0 == null || c1 == null) return `<div class="kv" style="margin-top:4px"><small class="dim">📐 ${esc(pos || '?')} 산정식이 없어
-    세부 스탯 기준 OVR을 계산하지 못했다.</small></div>`;
+  if (c0 == null || c1 == null) return { pos, c0: null };
   const evoD = (r.after.ovr ?? 0) - (r.before.ovr ?? 0), calcD = c1 - c0, gap = evoD - calcD;
+  return { pos, c0, c1, evoD, calcD, gap, lv: gap >= OVR_GAP_WARN ? 'warn' : gap >= OVR_GAP_SUSPECT ? 'suspect' : 'ok' };
+}
+const fmtD = x => { const v = Math.round(x * 10) / 10 || 0; return `${v >= 0 ? '+' : ''}${v.toFixed(1)}`; };   // -0.0 금지
+const ovrGapTip = og => og && og.c0 != null
+  ? `&#10;OVR 표기 +${og.evoD} · 세부 스탯 계산 ${fmtD(og.calcD)} · 부풀림 ${fmtD(og.gap)}${og.lv === 'warn' ? ' ⚠️' : og.lv === 'suspect' ? ' 🟡' : ''}` : '';
+const ovrGapChip = og => og && og.c0 != null
+  ? `<span class="chip"${og.lv === 'ok' ? '' : ` style="border-color:${og.lv === 'warn' ? 'var(--bad,#e55)' : 'var(--warn)'};color:${og.lv === 'warn' ? 'var(--bad,#e55)' : 'var(--warn)'}"`}
+      title="진화가 주는 OVR(표기)과 세부 스탯으로 다시 계산한 OVR의 상승 차이 — 2 이상 🟡 · 3 이상 ⚠️(산정식 등급 C · 절대값보다 차이로 본다)">📐 OVR 표기 +${og.evoD} · 계산 ${fmtD(og.calcD)} · 부풀림 ${fmtD(og.gap)}${og.lv === 'warn' ? ' ⚠️' : og.lv === 'suspect' ? ' 🟡' : ''}</span>` : '';
+function ovrCheckHTML(r){
+  const og = ovrGap(r); if (!og) return '';   // 얹힌 진화가 없으면 견줄 것도 없다(「✅ 맞는다」로 읽히면 안 된다)
+  const M = EVO.ovr_model;
+  const { pos, c0, c1 } = og;
+  if (c0 == null) return `<div class="kv" style="margin-top:4px"><small class="dim">📐 ${esc(pos || '?')} 산정식이 없어
+    세부 스탯 기준 OVR을 계산하지 못했다.</small></div>`;
+  const { evoD, calcD, gap } = og;
   const g = M.groups[pos], meta = (M.meta || []).find(x => x.pos_group === g);
   const verdict = gap >= OVR_GAP_WARN
       ? `<b class="dn">⚠️ OVR만 뻥튀기 — 진화 OVR +${evoD}인데 세부 스탯은 +${calcD.toFixed(1)}만큼만 오른다(차 +${gap.toFixed(1)})</b>`
@@ -2358,6 +2375,9 @@ function nextEvoCards(pid){
               <small class="dim brdet" data-evobrdet="${key}">${esc(srcOf(L.upgradeOptions[rec]).map(upLabel).join(' · '))}</small></div>`;
           }).join('');
         })()}
+        ${(() => { const r = tryRun(+pid, [...(TRY.pid === +pid ? TRY.steps : []), { id: x.id, picks: {} }]);
+          const og = r && r.steps.length && !r.steps[r.steps.length - 1].fails.length ? ovrGap(r) : null;
+          return og && (og.evoD || Math.abs(og.calcD ?? 0) >= 0.05) ? `<div class="kv" style="margin-top:4px">${ovrGapChip(og)}</div>` : ''; })()}   <!-- OVR이 안 바뀌는 진화(Roles++ 등)는 칩을 안 단다 -->
         ${(() => { /* 🚨 예약 진화 조건을 깨는지(migration 127) — 미리보기를 쌓아 뒀으면 그 뒤에 얹은 상태로 본다. */
           const rb = resvBreaks(+pid, [...(TRY.pid === +pid ? TRY.steps : []), { id: x.id, picks: {} }]);
           return rb.length ? `<div style="margin-top:4px;padding:4px 6px;border:1px solid var(--bad,#e55);border-radius:6px"><b class="dn">🚨 예약한 진화 조건을 깬다</b><br>${
