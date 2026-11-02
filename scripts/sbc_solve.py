@@ -932,7 +932,7 @@ def main():
     # ⛔⛔ **탐색 횟수는 한 곳에만 둔다**(2026-09-25). 종전엔 여기 400 · `fut_club.py`가 500이라
     #    **부르는 경로에 따라 같은 챌린지가 「달성 가능」과 「못 찾음」으로 갈렸다**(실측: Norway v
     #    Portugal이 400에선 못 찾고 500에선 풀렸다). 값을 옮겨 적지 말고 이 기본값을 쓴다.
-    ap.add_argument("--tries", type=int, default=1200)
+    ap.add_argument("--tries", type=int, default=6000)   # 2026-11-02 1200→6000 · Pumpkin Seeds(8인·케미 22)를 1200회로는 못 찾았다
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--include-evolved", action="store_true",
                     help="진화 선수도 후보에 넣는다(기본은 제외 — 진화 카드는 팔지 않는다는 규칙)")
