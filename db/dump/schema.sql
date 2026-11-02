@@ -1484,6 +1484,6 @@ CREATE TABLE fut_evo_reservations (
   evo_id     INTEGER NOT NULL,              -- fc_evolutions.evo_id (fut.gg id)
   player_id  INTEGER NOT NULL REFERENCES players(id),
   noted      TEXT NOT NULL,                 -- 예약한 날
-  note       TEXT,
+  note       TEXT, cancelled TEXT,
   PRIMARY KEY (account_id, evo_id, player_id)
 );

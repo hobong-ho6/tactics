@@ -652,6 +652,32 @@ def cmd_sbc_exclude(con, a):
     _resolve()
 
 
+def cmd_evo_reserve(con, a):
+    """⭐ **진화 예약**(2026-11-02 사용자 지시 「각 선수에게 진화를 예약을 걸어놓고(진화는 하지 않고), 다른 진화를 통해 해당 선수가
+       걸어놓은 진화 조건을 넘어서게 되면 알려주도록」 · migration 127·128).
+       예약은 **판정 입력**일 뿐이다 — 진화 로그·카드를 건드리지 않는다. 조건을 깨는지는 화면(`resvBreaks`)이 판정한다.
+       `--undo`면 푼다 — 행을 지우지 않고 `cancelled`에 날짜를 적는다(불변규칙 2). 다시 걸면 되살린다."""
+    evo, pid = int(a.evo), int(a.player_id)
+    ev = con.execute("SELECT name FROM fc_evolutions WHERE game_version=? AND evo_id=? ORDER BY pulled DESC LIMIT 1",
+                     (a.game, evo)).fetchone()
+    pl = con.execute("SELECT name FROM players WHERE id=?", (pid,)).fetchone()
+    if not ev or not pl:
+        raise SystemExit(f"⛔ 진화 {evo} 또는 선수 {pid}를 모른다")
+    acc = con.execute("SELECT id FROM fut_accounts ORDER BY id LIMIT 1").fetchone()["id"]
+    if getattr(a, "undo", False):
+        n = con.execute("UPDATE fut_evo_reservations SET cancelled=? WHERE account_id=? AND evo_id=? AND player_id=? AND cancelled IS NULL",
+                        (TODAY, acc, evo, pid)).rowcount
+        print(f"🔓 {pl['name']} × {ev['name']} 예약 해제" if n else f"ℹ️ {pl['name']} × {ev['name']} 활성 예약이 없다")
+    else:
+        con.execute("""INSERT INTO fut_evo_reservations(account_id, evo_id, player_id, noted, note, cancelled)
+                       VALUES(?,?,?,?,?,NULL)
+                       ON CONFLICT(account_id, evo_id, player_id) DO UPDATE SET cancelled=NULL, noted=excluded.noted,
+                         note=COALESCE(excluded.note, fut_evo_reservations.note)""",
+                    (acc, evo, pid, TODAY, a.notes))
+        print(f"🔖 {pl['name']} × {ev['name']} 예약 — 다른 진화가 이 조건을 깨면 예약·시작·완료 때 경고한다")
+    con.commit()
+
+
 def cmd_hide(con, a):
     """⭐ **안 할 진화·SBC 세트를 화면에서 숨긴다**(2026-10-20 사용자 지시 「수행 안 할 진화나 sbc는 숨기고 싶어」 · migration 108).
 
@@ -926,7 +952,7 @@ def run(con, cmd, **kw):
           "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude,
           "sbc_submit": cmd_sbc_submit, "gallery_complete": cmd_gallery_complete, "sbc_resolve": cmd_sbc_resolve,
           "storage_search": cmd_storage_search, "storage_add": cmd_storage_add, "storage_remove": cmd_storage_remove,
-          "hide": cmd_hide}[cmd]
+          "hide": cmd_hide, "evo_reserve": cmd_evo_reserve}[cmd]
     fn(con, a)
 
 

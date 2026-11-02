@@ -460,7 +460,7 @@ def export_all(db_path=None, window="2026-summer"):
     # 목표형 해금(「Pep's Domination」 등)은 레벨로 계산되지 않는다 — 진화 단위 기록을 함께 내보낸다.
     unlocks = _rows(con, "SELECT account_id, evo_id, unlocked, noted, note FROM fut_evolution_unlocks")
     # ⭐ 진화 예약(migration 127) — 아껴 둔 진화의 조건을 다른 진화가 깨는지 화면이 판정한다.
-    reservations = _rows(con, "SELECT account_id, evo_id, player_id, noted, note FROM fut_evo_reservations")
+    reservations = _rows(con, "SELECT account_id, evo_id, player_id, noted, note FROM fut_evo_reservations WHERE cancelled IS NULL")
     # 보유 선수 — 케미스트리 원료(국적·리그·클럽·포지션, migration 044)를 카드 표에서 붙여 함께 내보낸다.
     # 화면이 케미 XI를 계산하려면 이 4개가 있어야 한다. 조인은 아이템 id로만 한다(이름 조인 금지).
     # ⭐ `name`은 `club.state`와 **같은 규칙**으로 정한다(위 주석) — 두 표가 갈리면 같은 화면 안에서도 이름이 섞인다.

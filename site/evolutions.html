@@ -1942,6 +1942,22 @@ function resvBreaks(pid, steps){
   const r = tryRun(+pid, steps); if (!r) return [];
   return rs.map(x => ({ name: evoName(x.cat, { html: false }), fails: hardFails(tryReq(x.cat, r.cur)) })).filter(x => x.fails.length);
 }
+/* ⭐ **예약할 때** 서로 깨는지(2026-11-02 사용자 지시 「다른 진화를 예약하거나 시작할 때 알려주면」).
+   ⑴ 이 진화를 하면 이미 예약한 진화 조건을 깨는가 ⑵ 이미 예약한 진화를 하면 이 진화 조건을 깨는가 ⑶ 지금 카드로 이미 못 거는가.
+   판정은 tryRun + tryReq 그대로다(위 resvBreaks와 같은 두 함수). */
+function resvConflicts(pid, evo){
+  const cat = CATBYID[+evo]; if (!cat) return [];
+  const out = resvBreaks(+pid, [{ id: +evo, picks: {} }])
+    .map(b => `🚨 이 진화를 하면 예약해 둔 「${b.name}」 조건을 깬다: ${b.fails.join(' · ')}`);
+  for (const x of resvOf(pid).filter(x => x.evo_id !== +evo)){
+    const r = tryRun(+pid, [{ id: x.evo_id, picks: {} }]); if (!r) continue;
+    const f = hardFails(tryReq(cat, r.cur));
+    if (f.length) out.push(`🚨 예약해 둔 「${evoName(x.cat, { html: false })}」을 먼저 하면 이 진화 조건을 깬다: ${f.join(' · ')}`);
+  }
+  const cs = curStateOf(+pid), now = cs ? hardFails(tryReq(cat, cs)) : [];
+  if (now.length) out.unshift(`⛔ 지금 카드로 이미 이 진화 조건을 넘었다: ${now.join(' · ')}`);
+  return out;
+}
 const resvConfirmTxt = b => b.length ? `🚨 예약해 둔 진화의 조건을 깹니다 — 이 진화를 먼저 하면 그 진화를 영구히 못 씁니다.\n${
   b.map(x => `   「${x.name}」: ${x.fails.join(' · ')}`).join('\n')}\n\n` : '';
 /* 선수 패널 머리 — 예약 목록과 지금 상태로 통과하는지. */
@@ -1951,7 +1967,8 @@ function resvBannerHTML(pid){
   return rs.map(x => { const now = cs ? hardFails(tryReq(x.cat, cs)) : [];
     const req = (J(x.cat.requirements_text, []) || []).map(q => `${q.label} ${q.value}`).join(' · ');
     return `<div class="trybox" style="margin:6px 0;padding:6px 8px;border-color:${now.length ? 'var(--bad,#e55)' : 'var(--warn)'}">
-      <b>🔖 예약한 진화: ${evoName(x.cat)}</b> <small class="dim">(${esc(x.noted)} · 마감 ${esc(String(x.cat.end_time || '').slice(0, 10))})</small><br>
+      <b>🔖 예약한 진화: ${evoName(x.cat)}</b> <small class="dim">(${esc(x.noted)} · 마감 ${esc(String(x.cat.end_time || '').slice(0, 10))})</small>
+      <button class="act ghost" data-evoresv="${pid}:${x.evo_id}" data-undo="1" style="font-size:11px;padding:1px 6px">예약 해제</button><br>
       <small>조건 ${esc(req)} — ${now.length ? `<b class="dn">⛔ 지금 카드로 이미 못 건다: ${esc(now.join(' · '))}</b>`
         : '<b class="up">지금은 통과</b> · 아래 진화 중 이 조건을 깨는 것은 🚨로 표시하고, 시작·완료 확인창에서도 다시 경고한다.'}</small></div>`; }).join('');
 }
@@ -2354,6 +2371,9 @@ function nextEvoCards(pid){
           return open ? evoProgressHTML(c, open) : ''; })()}
         <div class="kv" style="margin-top:5px">
           <button class="act ghost" data-evotry="${pid}:${x.id}" title="원장에 적지 않고 스탯 변화만 계산한다">🔬 걸어 보기</button>
+          ${resvOf(pid).some(r => r.evo_id === x.id)
+            ? `<button class="act ghost" data-evoresv="${pid}:${x.id}" data-undo="1" title="예약을 푼다 — 이 진화 조건을 깨는 다른 진화도 더는 경고하지 않는다">🔖 예약됨 · 해제</button>`
+            : `<button class="act ghost" data-evoresv="${pid}:${x.id}" title="진화는 하지 않고 이 선수 몫으로 아껴 둔다 — 다른 진화가 이 조건을 깨면 예약·시작·완료 때 경고한다">🔖 예약</button>`}
           ${own ? (() => {
             const open = openEvoLog(own.id, x.id);
             if (open) return evoStepButtonsHTML(pid, c, open);   // ⭐ 단계별 기록(시작 → 각 단계 완료 → 종료) — 카탈로그와 같은 버튼
@@ -4053,6 +4073,22 @@ function renderSbc(){
       : '<span class="dim">이 필터에 해당하는 챌린지가 없다.</span>';
 }
 
+/* 🔖 진화 예약 걸기·풀기(migration 128) — 위임으로 한 번만 건다. 걸 때 서로 깨는 예약이 있으면 확인창으로 알린다. */
+document.addEventListener('click', async e => {
+  const b = e.target.closest?.('[data-evoresv]'); if (!b) return;
+  e.preventDefault();
+  const [pid, evo] = b.dataset.evoresv.split(':'), undo = b.hasAttribute('data-undo');
+  const name = evoName(+evo, { html: false });
+  if (!undo){
+    const warn = resvConflicts(+pid, +evo);
+    if (!confirm(`${warn.length ? warn.join('\n') + '\n\n' : ''}「${name}」을 이 선수 몫으로 예약합니다(진화는 하지 않는다).\n`
+      + '다른 진화가 이 조건을 깨면 예약·시작·완료 때 경고합니다.' + (warn.length ? '\n\n⚠️ 위 충돌이 있어도 예약할까요?' : ''))) return;
+  } else if (!confirm(`「${name}」 예약을 풉니다.`)) return;
+  const box = document.getElementById(`em${pid}_${evo}`) || b.parentElement;
+  b.disabled = true;
+  const r = await api('evo_reserve', { evo: +evo, player_id: +pid, undo, game: 'FC27' });
+  say(box, r); b.disabled = false;
+});
 /* ⭐ SBC 해 고르기 — 위임으로 한 번만 건다(카드는 다시 그려지므로). 고른 챌린지는 펼친 채로 다시 그린다. */
 document.addEventListener('click', e => {
   const b = e.target.closest?.('[data-sbcopt]'); if (!b) return;
