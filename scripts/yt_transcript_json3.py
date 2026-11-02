@@ -10,6 +10,7 @@
 
 사용법:
     python3 scripts/yt_transcript_json3.py VIDEO_ID LANG "TIMEDTEXT_URL" [제목메모]
+    python3 scripts/yt_transcript_json3.py VIDEO_ID LANG /tmp/VIDEO_ID.json3 [제목메모]   # 응답 본문을 파일로 받았을 때
 """
 import json
 import subprocess
@@ -19,6 +20,10 @@ from yt_transcript import OUT_DIR, to_markdown
 
 
 def fetch_json3(url: str) -> dict:
+    # ⭐ 2026-11-02: 브라우저 도구가 timedtext URL의 서명·pot을 가린다(REDACTED) — URL 복사가 안 되므로
+    #   페이지에서 응답 본문을 가로채 클립보드 → 파일로 받는다. URL 대신 **로컬 json 파일 경로**도 받는다.
+    if not url.startswith("http"):
+        return json.loads(open(url, encoding="utf-8").read())
     body = subprocess.run(["curl", "-s", url], check=True, capture_output=True).stdout
     if not body:
         sys.exit("빈 응답 — pot 토큰이 만료됐거나 다른 영상의 것이다. 브라우저에서 URL을 다시 잡아라.")

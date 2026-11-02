@@ -2,7 +2,7 @@
  "all": [
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-01] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 465,
    "impl_claims": [
     {
@@ -147,7 +147,7 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-01] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 464,
    "impl_claims": [
     {
@@ -29881,6 +29881,50 @@
    "video_id": "TEWTwrP1aAI"
   },
   {
+   "channel": "1874",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-02] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 466,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "[10:14]~[10:44] 팀 뉴스: 맨시티전과 같은 11명에 「Goretzka in for Gomez. Gomez on the bench.」(고메스 대신 고레츠카, 고메스는 벤치) · 헤밍스·보가르드(caption Boeygord) 명단 제외 — 실측 헤밍스 명단 밖과 정합",
+    "[18:56]~[19:56] 하프타임: 0-0 때 스즈키의 쳐내기 선방이 분기점 · 잭슨 「is just on fire at the moment」(지금 물이 올랐다) · 만잠비 호평 · 오랜만의 PL PK — 실측 16′ 맥긴 PK 크로스바, 39′ 잭슨 득점(만잠비 도움)",
+    "[21:08]~[21:39] 경기 뒤: 후반 「a bit toothless, a bit out of ideas」(무디고 아이디어가 없었다) · 교체 무효과 · 만잠비는 교체될 때 조용했다 — 실측 후반 xG 0.51–1.61",
+    "[22:40]~[23:42] 맥긴이 조용하면 빌라도 조용하다 · 바르사 원정을 의식했을 수 있다는 관중 반응 · 후반 한때 질 것 같았다",
+    "[23:42]~[24:42] 스즈키는 실수가 있었더라도 중요한 선방 3~4개 · 「I thought Matty Cash had a good game.」(캐시는 좋은 경기를 했다) · 막판 큰 찬스 실축(caption Pires — 실측 막판 토레스 헤더 2개로 보아 파우 토레스로 추정, 미확정)"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": null,
+   "published_approx": 0,
+   "report_id": 65,
+   "summary": "1874 진행자 댄이 아버지·의붓아들과 빌라 파크로 향하는 경기 당일 브이로그로, 전술 분석보다 가족 대화와 관중석 반응이 대부분이다. 경기 전엔 맨시티전과 같은 선발에 고메스 대신 고레츠카가 들어간 것을 유일한 놀라움으로 꼽았다. 하프타임엔 맥긴의 PK 실축에도 잭슨 선제골과 0-0 때 스즈키의 결정적 선방으로 「comfortably in control」(편안하게 통제하고 있다)고 평했고 만잠비를 호평했다. 경기 뒤엔 「Fulham deserved the draw」(풀럼은 무승부를 받을 만했다)며 후반 빌라가 무뎠고 교체가 효과가 없었다고 정리했고, 맥긴이 조용하면 팀도 조용하다는 점과 바르사 원정(화요일)을 의식했을 가능성을 언급했다. 스즈키는 실수가 있었더라도 중요한 선방 3~4개로 기여했다고 옹호했다.",
+   "team_code": "AVL",
+   "title": "Watching Aston Villa's Game Of Two Halves Against A Much-Improved Fulham",
+   "transcript_path": "reports/transcripts/7nLXMvJlz7U.en.md",
+   "url": "https://www.youtube.com/watch?v=7nLXMvJlz7U",
+   "video_id": "7nLXMvJlz7U"
+  },
+  {
    "channel": "AVFC 공식",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 58,
@@ -30698,6 +30742,191 @@
    "video_id": "NGzBCdaiIKU"
   },
   {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-02] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 467,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "right wide mid position and role clarity",
+     "field_kr": "알리송 위치·역할",
+     "focus": null,
+     "headline_kr": "알리송: 너무 깊고 역할이 불분명했다",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 14,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (1/3)"
+     },
+     "player": "알리송",
+     "player_id": 59,
+     "points_kr": "[\"때때로 너무 깊어 공격 출구가 되지 못함\", \"10번·윙어·안쪽 이동 중 무엇인지 불분명\", \"알리송–만잠비–잭슨 간격이 큼\"]",
+     "quote": "원문 「I felt like he was too deep at times, and he wasn't giving us any any outlet.」(때때로 너무 깊었고 우리에게 출구를 주지 못했다) [24:56] · 「should he be a number 10? Is he a winger? Is he inverting?」(10번이어야 하나? 윙어인가? 안쪽으로 들어가나?) [08:12] — Allison=알리송(Alysson) auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "too deep at times, no outlet; unclear whether a 10, a winger or inverting",
+     "value_kr": "때때로 너무 깊어 출구가 되지 못했고 10번·윙어·안쪽 이동 사이에서 역할이 불분명했다",
+     "verdict": "HELD",
+     "verdict_note": "부분 정합: 공격 출구가 적었다는 점은 실측과 맞다(패스 4/6 · 볼 터치 24). 「너무 깊었다」는 WS 수비 액션 평균 위치(앞뒤, 좌우 · 0~100 · 좌우 0 = 빌라 오른쪽) (49,22)로 하프라인 부근이라 백4 깊이는 아니다. 보유 시 볼 터치는 오른쪽 폭 83%로 윙어 위치는 명확했다(보유 1위 wm_winger/Attack Δ.194). 같은 영상 안에서도 「풀백을 보호하지 않았다」(루크)와 서술이 갈린다. 정본 wm_winger/Attack 유지 — #14 트리거(10-27 이후 알리송 선발 3경기)."
+    },
+    {
+     "axis": "instruction",
+     "field": "Manzambi left-side role",
+     "field_kr": "만잠비 왼쪽 배치",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 49,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "만잠비 비CAM 배치(피벗·측면) 역할",
+      "trigger": "2026-11-01 이후 만잠비 LDM,RDM,CDM,LCM,RCM,LM,RM,LAM,RAM,LW,RW 선발 2경기 (0/2)"
+     },
+     "player": "만잠비",
+     "player_id": 55,
+     "points_kr": null,
+     "quote": "원문 「Manz Ambi's playing on the the left and he's been playing as a number 10 and he's a little bit confused of probably his positioning」(만잠비는 10번으로 뛰다 왼쪽에서 뛰고 있어 위치를 조금 헷갈렸다) [07:41]~[08:12] — Manz Ambi=만잠비 auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "moved from number 10 to the left and looked unsure of his positioning",
+     "value_kr": "10번에서 왼쪽으로 옮겨 위치 판단을 헷갈렸다",
+     "verdict": "HELD",
+     "verdict_note": "#49(만잠비 비CAM 배치 역할) 서술 1건. 실측: LM 선발 · 볼 터치 왼쪽 82% · 39′ 잭슨 득점 도움 · 경합 5/12 · 66′ 교체. 커널 LM 1위 wm_wideplm/Attack .718 · 2위 정본 wm_insidefwd/Balanced .662(Δ.056). 「위치 혼란」은 이벤트로 직접 측정 불가 — 정본 유지, 재판정은 #49 트리거(11-01 이후 만잠비 비CAM 선발 2경기)."
+    },
+    {
+     "axis": "instruction",
+     "field": "wide forwards tracking back",
+     "field_kr": "측면 공격수 수비 복귀",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 14,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (1/3)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "원문 「the tracking back from the wingers was causing us absolutely huge problems out wide」(윙어들의 수비 복귀가 측면에서 엄청난 문제를 일으켰다) [01:32] · 「they weren't protecting the full backs in that second half」(후반에 그들이 풀백을 보호하지 않았다) [07:09]",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "wingers did not track back or protect the full-backs in the second half",
+     "value_kr": "후반 측면 공격수가 복귀하지 않아 풀백을 보호하지 못했다",
+     "verdict": "HELD",
+     "verdict_note": "오른쪽만 정합: 풀럼 오픈플레이 크로스 출발(코너·프리킥 제외 · WS)은 66′ 전 빌라 오른쪽 9(로빈슨·이워비)·왼쪽 2 — 알리송 쪽은 같은 방향, 만잠비 쪽은 불일치(같은 경기 #464 만잠비 쪽 주장 REJECTED). 오프더볼 복귀 속도는 이벤트로 직접 측정 불가. 정본 유지 — 재판정은 #14 트리거(알리송 선발 3경기, 상대 좌측 크로스 수)."
+    },
+    {
+     "axis": "instruction",
+     "field": "block height after taking the lead",
+     "field_kr": "리드 뒤 블록 높이",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 59,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "수비 블록 높이·후반 붕괴",
+      "trigger": "2026-10-21 이후 리그 5경기 (2/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "원문 「when we scored the goal, they they um as expected, Villa dropped back then, don't they?」(우리가 골을 넣자 예상대로 빌라가 물러섰다) [00:30]~[01:01] · 「Villa just ran out of steam」(빌라가 그냥 힘이 빠졌다) [01:01]",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "pressed hard early, then dropped back after scoring and lost control",
+     "value_kr": "초반엔 강하게 압박했지만 득점 뒤 물러서며 통제를 잃었다",
+     "verdict": "HELD",
+     "verdict_note": "실측 정합: 0–15′ 수비 액션 평균 높이(def_x) 62.8 → 리드 뒤 39–45′ 19.6 · 45–60′ 24.8 · PPDA 전반 15.58 → 후반 31.67. 맨시티전에 이어 2번째 리드 경기 재현이지만 의도(리드 보호)인지 실패인지 에메리 본인도 「Why? I can't understand now」(왜인지 지금은 모르겠다)라 판정 보류 — 재판정은 #59 트리거(리그 5경기, 현재 2/5)."
+    },
+    {
+     "axis": "instruction",
+     "field": "pivot selection: Gomes vs Goretzka",
+     "field_kr": "피벗 선택(고메스 vs 고레츠카)",
+     "focus": null,
+     "headline_kr": "고메스 부재 시 중원 에너지가 떨어진다",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 20,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+     },
+     "player": "주앙 고메스",
+     "player_id": 56,
+     "points_kr": "[\"고레츠카–카마라는 잘못된 조합\", \"고메스 투입 뒤 상대와의 거리가 좁혀졌다는 주장\"]",
+     "quote": "원문 「Gomez is a big worry for me because when he doesn't play, our energy just drops so much.」(고메스가 안 뛰면 에너지가 크게 떨어져서 걱정이다) [19:21] · 「I think it was the wrong combination.」(잘못된 조합이었다고 본다) [19:51]~[20:21]",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "energy and pressing distance drop without Gomes; Goretzka–Kamara was the wrong combination",
+     "value_kr": "고메스가 빠지면 중원 에너지·압박 거리가 떨어진다 — 고레츠카–카마라는 잘못된 조합",
+     "verdict": "HELD",
+     "verdict_note": "실측 불충분: 66′ 고메스 투입은 3명 동시 교체(알리송·만잠비·고레츠카 아웃)라 고메스 효과를 분리할 수 없고, 교체 직후 66–82′ 모멘텀 −26.1 · 83–90′ +25.4로 투입 직후 개선은 확인되지 않는다. 고레츠카–카마라 연결 부족(둘 사이 패스 3·4)은 같은 경기 UTV(kCv8iA8lpPU) 피벗 짝 주장 쪽에서 감시. 정본 유지 — 재판정은 #20 트리거(고메스 LDM 선발 3경기)."
+    },
+    {
+     "axis": "instruction",
+     "field": "penalty taker",
+     "field_kr": "PK 키커",
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": "잭슨",
+     "player_id": 76,
+     "points_kr": null,
+     "quote": "원문 「So Jackson should just be on penalties.」(그러니 잭슨이 그냥 PK를 차야 한다) [14:44]",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Jackson as fixed penalty taker instead of data-selected takers (McGinn missed)",
+     "value_kr": "분석으로 고르는 키커 대신 잭슨 고정",
+     "verdict": "NA",
+     "verdict_note": "PK 키커는 경기 내 세트피스 키커 지정이라 우리 팀 설정·역할 축 밖이다(#464 같은 주장도 NA). 실측은 맥긴 16′ PK 크로스바 1건뿐이고 잭슨의 빌라 PK 표본은 없다."
+    }
+   ],
+   "key_points": [
+    "[00:00]~[01:32] 마시: 초반 5분 풀럼 우세 → 강한 압박으로 전반 통제 → 득점 뒤 「Villa dropped back」(빌라가 물러섰다) · 후반 「completely ran out of steam」(완전히 힘이 빠졌다) — 실측 0–15′ 수비 액션 평균 높이(def_x) 62.8 → 리드 뒤 39–45′ 19.6 · PPDA 전반 15.58 → 후반 31.67",
+    "[01:32]~[02:03] 측면 공격수 수비 복귀 부족 · 고레츠카 선발이 맞지 않았고 고메스가 그리웠다(caption Grealish는 문맥상 고레츠카 오인식 — 실측 고메스 대신 고레츠카 선발)",
+    "[07:09]~[08:42] 루크: 「they weren't protecting the full backs in that second half」(후반에 그들이 풀백을 보호하지 않았다 — 만잠비·알리송) · 만잠비(10번 → 왼쪽)·알리송(10번·윙어·안쪽 이동 사이)·맥긴(앞선을 가로지르는 10번)이 역할을 헷갈렸다",
+    "[12:44]~[17:48] PK 키커 논쟁: 에메리가 분석으로 키커를 정한다는 발언(진행자 전언) vs 잭슨 고정론 · 부엔디아·바클리는 늘 선발이 아니라는 지적",
+    "[17:48]~[21:22] 고레츠카: 「he's missed a lot of football」(경기를 많이 못 뛰었다) · 공중볼·코너 헤더(PK 유도)는 좋았지만 초반 이후 지쳤다 · 고메스 투입 뒤 상대와의 거리가 좁혀졌다는 주장",
+    "[21:53]~[24:56] 로테이션으로 짝이 매번 바뀌어 간격이 어긋난다 · 디코: 「I felt like he was too deep at times」(알리송이 때때로 너무 깊었다) · 알리송–만잠비–잭슨 간격이 컸다 — 실측 알리송 패스 4/6 · 볼 터치 24 중 20 오른쪽 폭 · WS 볼 터치 평균 위치(앞뒤, 좌우 · 0~100 · 좌우 0 = 빌라 오른쪽) (62,22)"
+   ],
+   "kind": "선수스카우팅",
+   "lang": "en",
+   "obs_points": [],
+   "published": null,
+   "published_approx": 0,
+   "report_id": 65,
+   "summary": "The Villans 패널(진행 루크, 마시·지미·디코)의 풀럼전 경기 후 토론이다. 공통 진단은 전반엔 압박으로 통제했지만 득점 뒤 물러섰고 후반엔 힘이 빠져 무너졌다는 것으로, 마시는 측면 공격수의 수비 복귀 부족과 고메스 부재를, 루크는 만잠비·알리송·맥긴이 익숙지 않은 역할에서 위치를 헷갈렸다는 점을 꼽았다. 16′ 맥긴의 PK 실축을 두고 「Jackson should just be on penalties」(잭슨이 그냥 PK를 차야 한다)는 주장이 길게 이어졌고, 키커를 분석으로 정한다는 에메리 발언(진행자 전언)에 의문을 제기했다. 고레츠카–카마라 피벗은 처음 맞춘 조합이라 「the wrong combination」(잘못된 조합)이었고 고레츠카는 초반 이후 체력이 떨어졌다는 평가가 나왔다. 스즈키는 자책골에도 사실상 경기 최우수 선수였다는 의견이 다수였다.",
+   "team_code": "AVL",
+   "title": "Why Nicolas Jackson Should Take Penalties, Is Goretzka Ready & Learning From Mistakes",
+   "transcript_path": "reports/transcripts/OqY_e9q650c.en.md",
+   "url": "https://www.youtube.com/watch?v=OqY_e9q650c",
+   "video_id": "OqY_e9q650c"
+  },
+  {
    "channel": "UTV",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 66,
@@ -30813,6 +31042,153 @@
    "transcript_path": "reports/transcripts/lKvqWRiKwLM.en.md",
    "url": "https://www.youtube.com/watch?v=lKvqWRiKwLM",
    "video_id": "lKvqWRiKwLM"
+  },
+  {
+   "channel": "UTV",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-02] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 468,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "out-of-possession shape under pressure",
+     "field_kr": "수세 시 비보유 형태",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 16,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
+      "trigger": "2026-10-21 이후 리그 5경기 (2/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "원문 「Emery, just tell them compact, tight, 4-4-2, sit in」(에메리, 그냥 콤팩트하게, 촘촘하게, 4-4-2로 내려앉으라고 해라) [06:11]~[06:44] · 「when we know we've got to defend … We will defend in a 4-4-2」(수비해야 한다는 걸 알 때는 4-4-2로 수비한다) [07:14]~[07:44]",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "compact 4-4-2 low block when the opponent dominates territory",
+     "value_kr": "상대가 지역을 장악하면 콤팩트한 4-4-2로 내려앉아 버틴다",
+     "verdict": "HELD",
+     "verdict_note": "#16(리드·수세 시 하강 형태: 편중 백5 vs 백6 또는 4-4-2 저블록)과 같은 축. 실측: 리드 구간 39–45′ 수비 액션 평균 높이(def_x) 19.6 · 45–60′ 24.8로 이미 낮았고 후반 PPDA 31.67 — 「내려앉기」가 빠진 게 아니라 낮은 블록에서 간격·형태가 무너진 쪽이다. 경기 비보유 형태는 4-4-1-1로 기록(리포트 §7). 정본 유지 — 재판정은 #16 트리거(리드 후반이 있는 PL 경기에서 측면 MF 2명 수비 평균 높이 vs 백4 깊이)."
+    },
+    {
+     "axis": "instruction",
+     "field": "right wide mid in possession",
+     "field_kr": "알리송 보유 시 위치",
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": "알리송",
+     "player_id": 59,
+     "points_kr": null,
+     "quote": "원문 「maybe we want Allison to to drift into a number 10 position if we have the ball」(공을 가졌을 때 알리송이 10번 자리로 흘러 들어가길 원했던 것 같다) [05:10] — Allison=알리송(Alysson) auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "drifts into a number 10 position when Villa have the ball",
+     "value_kr": "공을 가지면 10번 자리로 흘러 들어간다",
+     "verdict": "REJECTED",
+     "verdict_note": "실측 불일치: 알리송 볼 터치 24 중 20(83%)이 오른쪽 폭 · 중앙 4 · WS 볼 터치 평균 위치(앞뒤, 좌우 · 0~100 · 좌우 0 = 빌라 오른쪽) (62,22) · 보유 그리드 1위 wm_winger/Attack .733(Δ.194 결정). 오른쪽 안쪽 칸은 10번 맥긴이 채웠다(볼 터치 62% 오른쪽). 보유 시 10번 이동은 이 경기 근거가 없다 — 알리송 측면 역할 자체는 #14가 별도 감시."
+    },
+    {
+     "axis": "instruction",
+     "field": "left wide mid defensive support",
+     "field_kr": "측면 MF 수비 지원(왼쪽)",
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": "만잠비",
+     "player_id": 55,
+     "points_kr": null,
+     "quote": "원문 「There's nobody on that left-hand side helping him and supporting him.」(그 왼쪽에는 그를 돕고 지원하는 사람이 아무도 없다) [03:37]~[04:08] — 후반 평균 위치 그림 근거",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "left the left-back unprotected; stayed close to Jackson instead",
+     "value_kr": "잭슨 쪽에 붙어 왼쪽 풀백 마첸을 보호하지 않았다",
+     "verdict": "REJECTED",
+     "verdict_note": "실측 불일치: 풀럼 오픈플레이 크로스 출발(코너·프리킥 제외 · WS)은 전반 빌라 오른쪽 4·왼쪽 0, 후반(66′ 전) 오른쪽 5·왼쪽 2 — 풀럼의 주 공격로는 빌라 오른쪽(로빈슨·이워비)이었다. 근거가 평균 위치 그림 하나다(평균 위치로 판정하지 않는다 · obs#879). 같은 경기 UTV 리액션(#464)의 만잠비 쪽 주장도 같은 사유로 REJECTED. 만잠비 측면 역할은 #49가 별도 판정."
+    },
+    {
+     "axis": "instruction",
+     "field": "second-half duels and pressure on the ball carrier",
+     "field_kr": "후반 경합·볼 운반자 압박",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 59,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "수비 블록 높이·후반 붕괴",
+      "trigger": "2026-10-21 이후 리그 5경기 (2/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "원문 「Nobody's putting pressure on Bassey for a start.」(우선 아무도 배시에게 압박을 가하지 않는다) [16:01] · 「it was that second half that we lost our jewels」(경합에서 진 건 후반이었다 · jewels=duels auto-caption) [14:25]",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "no pressure on Bassey; duels lost after half-time",
+     "value_kr": "후반 배시에게 압박이 없었고 경합에서 졌다",
+     "verdict": "HELD",
+     "verdict_note": "실측 정합: PPDA 전반 15.58 → 후반 31.67(풀럼 12.84) · 공중 경합 전반 6/8 → 후반 3/13 · 후반 xGA 1.61(전반 0.60의 2.7배 — #59 기준 3배에 근접·미달). 1경기이고 66′ 3명 동시 교체가 끼어 정본(압박·블록 높이) 변경은 보류 — 재판정은 #59 트리거(리그 5경기 · 후반 xGA ≥ 전반×3 경기 수)."
+    },
+    {
+     "axis": "instruction",
+     "field": "double pivot pairing Goretzka–Kamara",
+     "field_kr": "고레츠카–카마라 피벗 짝",
+     "focus": null,
+     "headline_kr": "고레츠카–카마라 짝: 간격이 멀고 연결이 적다",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 87,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "고레츠카–카마라 피벗 짝 연결·간격",
+      "trigger": "2026-11-01 이후 고레츠카 LDM,RDM,CDM 선발 2경기 (0/2)"
+     },
+     "player": "고레츠카",
+     "player_id": 190,
+     "points_kr": "[\"카마라→고레츠카 3개 · 고레츠카→카마라 4개\", \"리그에서 처음 함께 선발된 조합\", \"부분 정합 — 실측 패스 수 일치\"]",
+     "quote": "원문 「Kamara and Goretzka, the distance is huge. They're not even passing to each other.」(카마라와 고레츠카 사이 거리가 엄청나다. 서로 패스조차 하지 않는다) [11:50]",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "too far apart, barely passed to each other (3 and 4 passes); risky first league pairing",
+     "value_kr": "둘 사이 거리가 멀고 서로 패스가 3·4개뿐 — 처음 맞춘 리그 조합이라 위험했다",
+     "verdict": "HELD",
+     "verdict_note": "실측 정합(패스 수): WS 이벤트 근사 집계 카마라→고레츠카 3 · 고레츠카→카마라 4 · WS 볼 터치 평균 위치(앞뒤, 좌우 · 0~100 · 좌우 0 = 빌라 오른쪽) 카마라 (47,34) · 고레츠카 (49,57)로 좌우 간격 23. 다만 1경기이고 고레츠카 66′ 교체 — 짝 선택·역할 변경 근거로는 표본 부족. 재판정: 11-01 이후 고레츠카 피벗 선발 2경기(카마라 동시 선발 시 둘 사이 패스 수 · 좌우 간격)."
+    }
+   ],
+   "key_points": [
+    "[00:33]~[02:03] 「game of two halves」(전반과 후반이 완전히 다른 경기) — 포레스트전과 같은 후반 양상 · 「we were struggling to get our distances correct」(선수 간 거리를 제대로 맞추지 못했다)",
+    "[03:37]~[04:38] 후반 평균 위치 그림: 마첸 앞(왼쪽)·캐시 앞(오른쪽) 모두 보호자가 없다 · 「Matty Cash has got no help whatsoever」(캐시는 아무 도움도 받지 못했다) — 실측 풀럼 오픈플레이 크로스 출발(코너·프리킥 제외 · WS)은 66′ 전 빌라 오른쪽 9·왼쪽 2라 오른쪽 서술만 정합(평균 위치 그림 하나로는 판정하지 않는다)",
+    "[06:11]~[08:46] 밀릴 때 4-4-2 저블록으로 버티라는 처방 — 실측 리드 구간(39–64′) 수비 액션 평균 높이(def_x) 19.6~24.8로 블록은 이미 낮았다(높이보다 간격·형태 문제)",
+    "[11:50]~[13:55] 고레츠카–카마라 간격: 「Kamara to Goretzka all game. Three passes.」(카마라→고레츠카, 경기 전체 3개) — WS 이벤트 근사 집계(다음 이벤트 수신자 기준) 카마라→고레츠카 3 · 고레츠카→카마라 4로 일치",
+    "[14:25]·[21:41]~[22:43] 경합: 「Bassey had the upper hand on John McGinn in the second half, four to one」(후반 배시가 맥긴에게 4대1로 우위였다) · 전반 빌라 경합 68%·공중 75% → 후반 풀럼 공중 77% — 실측 전반 공중 6/8 · 후반 3/13과 정합(caption jewels는 duels 오인식)",
+    "[15:27]~[20:39] 장면 분석: 배시에게 압박이 없어 로빈슨 쪽으로 전개 → 캐시 1대1·카마라 커버 · 보브의 바이라인 크로스(만잠비 쪽) · 64′ 실점 「It's poor from Suzuki」(스즈키의 실수다) · 39′ 잭슨 골(만잠비 스루패스)"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": null,
+   "published_approx": 0,
+   "report_id": 65,
+   "summary": "UTV(Up the Villa) 진행자의 풀럼전 전술 디브리프로, 평균 위치·패스 네트워크·경합 수치를 띄워 놓고 후반부터 거꾸로 분석한다. 핵심 진단은 노팅엄 포레스트전에 이어 후반에 「our system was completely all over the place」(우리 시스템이 완전히 엉망이었다)는 것으로, 선수 간 거리가 무너지고 측면 MF(만잠비·알리송)가 양 풀백(마첸·캐시)을 보호하지 못해 캐시가 로빈슨·이워비 둘을 혼자 상대했다고 봤다. 처방으로는 밀릴 때 「compact, tight, 4-4-2, sit in」(콤팩트하게, 촘촘하게, 4-4-2로 내려앉아라)를 요구하며, 맨시티전처럼 수비해야 할 때는 잘하면서 이 경기는 안이했다고 에메리에게도 책임을 물었다. 또 첫 리그 피벗 조합인 고레츠카–카마라는 둘 사이 패스가 3·4개뿐이라 위험한 실험이었고, 경합 비율이 전반 빌라 우위에서 후반 풀럼 우위로 뒤집힌 것을 「Unai Emery's fundamentals」(에메리의 기본)이 무너진 근거로 들었다. 64′ 실점은 스즈키의 실수지만 그 밖의 선방으로 팀을 지켰다고 옹호했다.",
+   "team_code": "AVL",
+   "title": "HOW ASTON VILLA FAILED TO DO THE UNAI EMERY BASICS AGAIN!",
+   "transcript_path": "reports/transcripts/kCv8iA8lpPU.en.md",
+   "url": "https://www.youtube.com/watch?v=kCv8iA8lpPU",
+   "video_id": "kCv8iA8lpPU"
   },
   {
    "channel": "아르테타 경기 전 회견 (09-05)",
@@ -31272,7 +31648,10 @@
   ],
   "65": [
    465,
-   464
+   464,
+   466,
+   467,
+   468
   ]
  },
  "issues": [
@@ -32221,6 +32600,17 @@
    "status": "open",
    "title": "카마라 결장 시 RDM 대체 서열",
    "trigger": "2026-10-28 이후 공식전 5경기 (1/5)"
+  },
+  {
+   "closed": null,
+   "due": false,
+   "hold": false,
+   "id": 87,
+   "phase": "watch",
+   "resolution": "HELD",
+   "status": "open",
+   "title": "고레츠카–카마라 피벗 짝 연결·간격",
+   "trigger": "2026-11-01 이후 고레츠카 LDM,RDM,CDM 선발 2경기 (0/2)"
   }
  ]
 }
