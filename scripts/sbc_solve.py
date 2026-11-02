@@ -324,15 +324,19 @@ def cost1(xi, kind, v):
     return 0
 
 
-GK_RULE = "스쿼드에 골키퍼 정확히 1명(EA 규칙 · 조건 문장에 없지만 없으면 제출 자체가 안 된다)"
+GK_RULE = "스쿼드에 골키퍼 정확히 1명(EA 규칙 · 조건 문장에 없지만 없으면 제출 자체가 안 된다 · GK 칸이 막힌 포메이션은 0명)"
 
 
 def gk_cost(xi):
     """⛔⛔ **EA는 GK 슬롯을 골키퍼로만 채울 수 있다.** 조건 문장에는 안 나오지만 없으면 제출이 불가하다.
        (2026-09-25 실측: 배치를 붙이고 나서야 「Norway v Portugal」 해에 GK가 없다는 게 드러났다 —
-        그 전까지는 11명만 맞으면 된다고 보고 있었다.)"""
+        그 전까지는 11명만 맞으면 된다고 보고 있었다.)
+       ⛔ **GK 칸이 막힌 포메이션은 골키퍼 0명이다**(2026-11-02 Pumpkin Seeds — 막힌 칸 CB·CB·GK).
+       종전엔 늘 1명을 요구해 골키퍼를 필드 칸에 세웠고(케미 0) 해를 못 찾았다."""
+    slots = FORMS.get(CUR_FORM[0])
+    need = 1 if slots is None or any(s["label"] == "GK" for s in slots) else 0
     n = sum(1 for p in xi if "GK" in positions_of(p))
-    return abs(n - 1)
+    return abs(n - need)
 
 
 DUP_RULE = "같은 선수는 한 스쿼드에 한 장만(EA 규칙 · 보유 카드와 스토리지 사본이 겹치면 제출이 안 된다)"
