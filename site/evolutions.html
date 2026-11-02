@@ -1933,7 +1933,10 @@ function resvOf(pid){
   return (EVO.club?.reservations || []).filter(r => r.player_id === +pid)
     .map(r => ({ ...r, cat: CATBYID[r.evo_id] }))
     .filter(r => r.cat && !r.cat.is_expired
-      && !(own && (EVO.club?.log || []).some(l => l.club_player_id === own.id && l.evo_id === r.evo_id && activeLog(l))));
+      && !(own && (EVO.club?.log || []).some(l => l.club_player_id === own.id && l.evo_id === r.evo_id && activeLog(l)))
+      /* ⭐ 한 진화를 여러 선수에게 예약할 수 있다(2026-11-03 공포의 벽 → 부엔디아·루헤리). 1회성이 다른 선수에게 쓰여
+         소진되면 나머지 예약은 지킬 조건이 없으니 경고하지 않는다 — 판정은 evorules.js consumed 정본. */
+      && !CONSUMED[r.evo_id]?.exhausted);
 }
 const hardFails = f => f.filter(t => !String(t).startsWith('❔'));
 /* steps(TRY 형식)를 얹은 뒤 예약 진화 조건을 깨면 [{name, fails}]. 예약 진화 자신을 얹는 경우는 뺀다. */
