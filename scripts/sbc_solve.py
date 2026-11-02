@@ -614,6 +614,9 @@ def cheapen(xi, cands, conds, n_fixed):
     return xi
 
 
+N_OPTS = 3      # 저장하는 해의 수 — 화면에서 골라 완료 처리한다
+
+
 def solve(pool, conds, size, tries, rng, fixed=()):
     """무작위 재시작 + **위반 크기를 줄이는** 국소 교체.
        ⛔ 못 찾았다고 「불가능」이 아니다 — 최적 보장이 없는 탐색이라 보고에 그렇게 적는다."""
@@ -677,7 +680,16 @@ def solve(pool, conds, size, tries, rng, fixed=()):
         # ⭐ 해를 여러 개 모아 각각 내려 본 뒤 **가장 덜 아까운 것**을 고른다(2026-09-28).
         #    첫 해 하나만 내리면 무작위 탐색이 처음 닿은 곳에 묶인다 — 실측: 48번이 OVR 합 851→900으로 **올랐다**.
         outs = [cheapen(x, cands, conds, len(fixed)) for x in found]
-        return min(outs, key=lambda x: tuple(map(sum, zip(*(spend_key(p) for p in x[len(fixed):]))))), cands, None
+        # ⭐⭐ **해를 3개까지 돌려준다 — 팀 레이팅 낮은 순**(2026-11-02 사용자 지시 「해가 여러 개 나오면 전체 스쿼드
+        #    레이팅이 낮은 순으로 3개 정도 제공해주고 내가 그중에서 … 선택해서 완료 처리」). 같은 카드 묶음은 하나로 센다.
+        #    첫째가 기본 해법이다(겹침 방지 `taken`·대체 카드·구매 처방은 첫째 기준).
+        spend = lambda x: tuple(map(sum, zip(*(spend_key(p) for p in x[len(fixed):]))))   # noqa: E731
+        #    ⚠️ 내린 해(outs)끼리는 같은 묶음으로 수렴하기 쉽다(Pumpkin Seeds 30해 → 1묶음) — 내리기 전 해(found)도 후보에 둔다.
+        uniq = {}
+        for x in outs + found:
+            uniq.setdefault(frozenset(p["id"] for p in x), x)
+        opts = sorted(uniq.values(), key=lambda x: (team_rating([p["ovr"] for p in x]), spend(x)))[:N_OPTS]
+        return opts, cands, None
     return None, cands, best
 
 
@@ -1099,6 +1111,7 @@ def main():
         return (r["end_time"] or "9999", n)
     rows = sorted(rows, key=_order)
     taken = set()
+    OPTS = {}          # 챌린지 → 해 목록(팀 레이팅 낮은 순 · 첫째 = 기본 해법)
     for r in rows:
         conds, bad = parse(json.loads(r["requirements_text"] or "[]"))
         if bad:
@@ -1122,8 +1135,11 @@ def main():
         #    ⇒ 칸 수 ≠ 인원이면 「막힌 칸 입력 필요」로 뺀다(케미 조건이 없으면 칸이 결과를 바꾸지 않으므로 그대로 푼다).
         if size < 11 and any(k == "chem" for (k, _v), _ in conds) and len(FORMS[CUR_FORM[0]]) != size:
             noform.append((r, [p for p in pool_c if per_player_ok(p, conds)], "blocked")); continue
-        xi, cands, best = solve(pool_c, conds, size, a.tries, rng,
-                                fixed=FIXED.get(r['challenge_ea_id'], []))
+        opts, cands, best = solve(pool_c, conds, size, a.tries, rng,
+                                  fixed=FIXED.get(r['challenge_ea_id'], []))
+        xi = opts[0] if opts else None
+        if opts:
+            OPTS[r["challenge_ea_id"]] = opts
         if xi:
             taken |= {p["id"] for p in xi if not p.get("fixed")}     # 이 해법이 쓴 내 카드 — 뒤 챌린지는 못 쓴다
         (ok if xi else no).append((r, xi, size, cands, conds, best))
@@ -1151,6 +1167,9 @@ def main():
                   f"{str(p['nation'] or '—')[:14]:<14}{'' if fit else '  ⚠️ 자리 안 맞음(케미 0)'}"
                   + ("  [거래불가]" if p["is_untradeable"] else ""))
         print(f"     └ 팀 레이팅 {team_rating([p['ovr'] for p in xi])} · 케미 {ch} (배치 반영)")
+        for k, o in enumerate(OPTS.get(r["challenge_ea_id"], [])[1:], 2):
+            print(f"     └ 해 {k}: 팀 레이팅 {team_rating([p['ovr'] for p in o])} · "
+                  + ", ".join(f"{p['name']}({p['ovr']})" for p in sorted(o, key=lambda p: -p['ovr'])))
     for r, _x, size, cands, conds, best in no:
         CUR_FORM[0] = FORM_OF.get(r["challenge_ea_id"])
         print(f"\n❌ {head(r)}  [{size}명 필요 · 조건 통과 카드 {len(cands)}장]")
@@ -1265,9 +1284,17 @@ def main():
         # ⭐ 슬롯·좌표를 함께 저장한다 — 화면이 **피치 모양**으로 그린다(2026-09-25 사용자 지시
         #    「포메이션 모습으로 보여줘 · 어떤 포지션의 선수인지도 모르겠어」).
         squad = squad_of(pl)
+        # ⭐ 고를 수 있는 해(2026-11-02) — 첫째가 위 기본 해법과 같다. 저장 전 재검증을 둘째·셋째에도 똑같이 건다.
+        options = []
+        for o in OPTS.get(r["challenge_ea_id"], [xi]):
+            och, _of, opl = best_placement(o, known)
+            if check(o, _cd)[0] or not chem_ok(o, _cd)[0]:
+                continue
+            options.append({"players": squad_of(opl), "checks": breakdown(o, _cd, och),
+                            "team_rating": team_rating([p["ovr"] for p in o]), "chem": och})
         rows.append((a.game, r["challenge_ea_id"], today, aid, "ok",
                      json.dumps({"formation": form_base(form), "blocked": form_blocked(form), "formation_known": bool(known), "partial": False,
-                                 "players": squad, "checks": breakdown(xi, _cd, ch),
+                                 "players": squad, "checks": breakdown(xi, _cd, ch), "options": options,
                                  "buy": buy_specs(xi, pl, _cd, pool),
                                  "alt": alternatives(xi, pl, _cd, pool)}, ensure_ascii=False),
                      team_rating([p["ovr"] for p in xi]), ch, len(cands), None, src, conf))

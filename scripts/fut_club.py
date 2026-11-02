@@ -580,7 +580,16 @@ def cmd_sbc_submit(con, a):
             "   다시 풀렸다. 새로고침하면 지금 판정이 보인다.\n"
             "   ⭐ 인게임에서 이미 내셨다면, 낸 카드를 알려 주시면 그대로 기록하겠다(해법과 달라도 된다).")
     else:
-        sq = json.loads(row["squad_json"])["players"]
+        sj = json.loads(row["squad_json"])
+        sq = sj["players"]
+        # ⭐ 고른 해로 낸다(2026-11-02 사용자 지시 「3개 정도 제공해주고 내가 그중에서 … 선택해서 완료 처리」).
+        #    0 = 기본 해법(= players). 옛 해법(options 없음)은 0만 있다.
+        k = int(getattr(a, "option", 0) or 0)
+        if k:
+            opts = sj.get("options") or []
+            if k >= len(opts):
+                raise SystemExit(f"⛔ {row['name']}: 해 {k + 1}가 없다(저장된 해 {len(opts) or 1}개) — 새로고침해서 다시 고를 것.")
+            sq = opts[k]["players"]
         mine = sq
     ids = [p["id"] for p in mine if p["id"] > 0]
     sids = [-p["id"] for p in mine if p["id"] < 0]        # ⭐ 음수 id = SBC 스토리지 카드(migration 095)
@@ -911,7 +920,7 @@ def run(con, cmd, **kw):
     defaults = dict(platform=None, game="FC27", notes=None, player_id=None, ea_item=None, acquired=None, how=None,
                     level=1, date=TODAY, completed=None, note=None, ovr_after=None, six_after=None, status=None, op="add",
                     in_progress=False, evo=None, challenge=None, formation=None, club_player=None, undo=False, cards=True,
-                    expect_player_id=None, set_id=None, grade=None, q=None, storage_id=None, kind=None, item=None, scope=None, blocked=None, bought=False)
+                    expect_player_id=None, set_id=None, grade=None, q=None, storage_id=None, kind=None, item=None, scope=None, blocked=None, bought=False, option=0)
     a = argparse.Namespace(**{**defaults, **kw})
     fn = {"account": cmd_account, "player": cmd_player_add, "player_set": cmd_player_set, "evolve": cmd_evolve, "complete": cmd_complete, "evo_remove": cmd_evo_remove,
           "sbc_formation": cmd_sbc_formation, "sbc_exclude": cmd_sbc_exclude,
