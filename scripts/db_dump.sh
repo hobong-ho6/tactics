@@ -8,10 +8,8 @@ cd "$(dirname "$0")/.."
 db=db/tactics.db
 # ⛔ pull로 들어온 남의 dump를 옛 DB로 덮어 지우지 않게 먼저 막는다(db_stamp.sh 참조).
 scripts/db_stamp.sh check
-mkdir -p db/dump
-sqlite3 "$db" .schema > db/dump/schema.sql
-for t in $(sqlite3 "$db" "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name"); do
-  sqlite3 "$db" ".mode insert $t" "SELECT * FROM $t;" > "db/dump/$t.sql"
-done
+# ⭐ 형식은 scripts/db_dump_sql.py가 정한다 — sqlite3 CLI는 버전마다 출력이 달라 PC가 바뀔 때마다
+#    내용이 같은 dump가 수만 줄 바뀌었다(2026-11-02 · 2회째 · 불변규칙 13). ⛔ 여기서 CLI로 다시 쓰지 않는다.
+python3 scripts/db_dump_sql.py
 scripts/db_stamp.sh sync
 echo "dumped $(ls db/dump | wc -l | tr -d ' ') files to db/dump/"

@@ -27,7 +27,7 @@
 | 전술 판단 | ⭐ **선발 처방 층 자동 산출**(10-28 · `core/opt_starters` · export가 최근 공식전 5경기 슬롯 선발 최다로 산출 — 손으로 고르지 않는다 · obs#1148) · 시즌 검토 10-28(감독 프로필 pressing·formation·implementation 덧붙임) · **FC27 시즌 정본 `optimal` #46 신설**(Balanced/Balanced/52 · 코드 7ZTFKBu$37p7) · opt:* 선발 11칸 정본 역할로 재지정(obs#1120 · 옛 GK/ST 행 `-deprecated`) · 사용자 판단 대기 5건(RDM obs#1080 · ST 포커스 3층 · LM 포커스/역할 · LB 저점유 운용 · FC27 `optimal:lead`) — 정본 [리서치](reports/research/2026-10-22-fc27-avl-implementation-review.md) §1.6 ㉡ | `team_tactic_setups` · `observations` |
 | 이적 감시 | 10-17 21시 임시 클론 `3e2790b`는 **/tmp 소실·미푸시** — 원 작업트리 리포트 10-14~17 4건은 10-20 커밋에 실음 · CHE·LIV 이적 판단은 보류 | `reports/transfer-watch/` |
 | 경기 데이터 | 10-22 확장: SS 48필드(실측 운반 `carries_ss`·GK 스위핑) · FotMob 경기별 선수 스탯 · WS 수신 `recv_*` · 보유/비보유 fit(119) · `match_momentum`(120) · 세트피스(117) · Understat 26/27 — **경기마다 필수 3종(SS 확장·FotMob·WS JSON 저장)은 G21이 막는다** | [결손 검토](reports/research/2026-10-22-match-data-gap-review.md) · match-watch §2 |
-| 열린 결손 | 페네르바흐체 WS JSON 미보존 · offside 이벤트(SS 미제공) · `matches.event_id` FotMob id 3경기(#86·94·95) · `--acc` 라이트 4.7:1 · 이적 총평 `##` 머리글 노출(DB 산문 · prose.js 미해석) · 표 숫자 열 `.num` 훅만(JS 렌더 표 미적용) · 링크 결손 3건 · (`ref_map25` 동률 10-28 해소) · ATM regime 4 CAM 슬롯 없음 · 미분류 영상 62편(보류 팀) · ⚠️ dump 실수 표기 흔들림(`7.2999…`↔`7.3` · `CREATE TABLE IF NOT EXISTS` — sqlite3 버전 차 · 내용 동일 · `e994c9e` 19파일 · **11-02 `671ed8c` 재발 2.6만 줄** → 2회째 = 불변규칙 13 대상: `db_dump.sh`가 쓰는 sqlite3 고정 필요) | `gaps.py links` · 리서치 §2.2 |
+| 열린 결손 | 페네르바흐체 WS JSON 미보존 · offside 이벤트(SS 미제공) · `matches.event_id` FotMob id 3경기(#86·94·95) · `--acc` 라이트 4.7:1 · 이적 총평 `##` 머리글 노출(DB 산문 · prose.js 미해석) · 표 숫자 열 `.num` 훅만(JS 렌더 표 미적용) · 링크 결손 3건 · (`ref_map25` 동률 10-28 해소) · ATM regime 4 CAM 슬롯 없음 · 미분류 영상 62편(보류 팀) · ⚠️ dump 실수 표기 흔들림(`7.2999…`↔`7.3` · `CREATE TABLE IF NOT EXISTS` — sqlite3 버전 차 · 내용 동일 · `e994c9e` 19파일 · **11-02 `671ed8c` 재발 2.6만 줄** → 11-02 구조 제거: `db_dump_sql.py`가 형식 고정 · docs/70) | `gaps.py links` · 리서치 §2.2 |
 
 ## 진행 중 작업 (WIP)
 
@@ -58,7 +58,6 @@
 - [ ] **29 LIV 6번 축**(obs#778) — 맥 알리스터 같은 `pos_class` 2경기 채우면 재산출 · 그 전엔 어느 쪽도 처방 금지
 
 **P2**
-- [ ] **⭐ dump 실수 표기 흔들림 구조 제거** — `db_dump.sh`의 sqlite3 경로/버전 고정(2회 재발 · 열린 결손 행)
 - [ ] **구 Jackson 처분 확인** — EA 목록 이탈 11-02 두 회차 · 진화 로그가 있어 자동 처분 안 함 · 판 카드인지 사용자 확인
 - [ ] **빌라 밖 보유 카드는 진화 경로 갱신이 멈춤**(예: 알리 아메드) — 필요하면 `--club-ea`(값 없이)
 - [ ] **0-6 예약 미복원 3건 재생성 판단** — `transfer-watch-daily`·`futgg-prices-daily`·`fc27-patch-watch`(사용자) · 재생성해도 회차마다 실재 확인

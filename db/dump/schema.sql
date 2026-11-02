@@ -1184,8 +1184,7 @@ SELECT player_id,
        ROUND(AVG(duels_won),2) AS dw_pg, COUNT(duels_won) AS dw_n,
        ROUND(AVG(tackles),2) AS tk_pg, COUNT(tackles) AS tk_n,
        ROUND(AVG(interceptions),2) AS ic_pg, COUNT(interceptions) AS ic_n
-FROM player_matches GROUP BY player_id
-/* v_player_profile(player_id,n,avg_rating,minutes,xg_pg,xg_n,xa_pg,xa_n,kp_pg,kp_n,dw_pg,dw_n,tk_pg,tk_n,ic_pg,ic_n) */;
+FROM player_matches GROUP BY player_id;
 CREATE VIEW v_player_season_stats AS
 SELECT player_id, season,
        CASE competition
@@ -1212,8 +1211,7 @@ GROUP BY player_id, season,
          WHEN 'FIFA World Cup' THEN 'World Cup'
          WHEN '' THEN '미분류'
          ELSE COALESCE(competition, '미분류')
-       END
-/* v_player_season_stats(player_id,season,competition,n,starts,minutes,goals,assists,avg_rating,rating_n) */;
+       END;
 CREATE VIEW v_ingame_capture_norm AS
 WITH c AS (
   SELECT id, tactic_code, player_id, game_version, ref_kind, cosine, note, cells,
@@ -1229,8 +1227,7 @@ m AS (
 SELECT c.id, c.tactic_code, c.player_id, c.game_version, c.ref_kind, c.cosine, c.controlled,
        ROUND(c.own_pct, 1) AS own_pct, ROUND(m.team_mean_own, 1) AS team_mean_own,
        ROUND(c.own_pct - m.team_mean_own, 1) AS own_delta, m.n_players
-FROM c JOIN m ON m.tactic_code = c.tactic_code
-/* v_ingame_capture_norm(id,tactic_code,player_id,game_version,ref_kind,cosine,controlled,own_pct,team_mean_own,own_delta,n_players) */;
+FROM c JOIN m ON m.tactic_code = c.tactic_code;
 CREATE VIEW v_kernel_fidelity AS
 SELECT game_version,
        substr(ref_kind, 8, instr(ref_kind, '/') - 8)                          AS role_id,
@@ -1244,8 +1241,7 @@ SELECT game_version,
             ELSE 'n<3' END AS fidelity
 FROM ingame_captures
 WHERE ref_kind LIKE 'kernel:%' AND note NOT LIKE '%조작 오염%'
-GROUP BY game_version, role_id, focus
-/* v_kernel_fidelity(game_version,role_id,focus,n,n_matches,n_players,cos_avg,cos_min,cos_max,fidelity) */;
+GROUP BY game_version, role_id, focus;
 CREATE VIEW v_slot_candidates AS
 SELECT
   r.id AS regime_id,
@@ -1322,11 +1318,9 @@ WHERE tt.map25 IS NOT NULL
     WHERE se2.regime_id=r.id
       AND se2.player_id=COALESCE(tt.player_id, tp.id)
       AND se2.slot_type=sl.slot_type
-  )
-/* v_slot_candidates(regime_id,team_code,formation,pos,slot_type,player_id,label,name_en,name_kr,source_kind,status,map25,rating,rate_basis,rate_note,fit_role,fit_focus,fit_sim,source,confidence,sort_order,grid_club,grid_caveat) */;
+  );
 CREATE VIEW v_evo_log AS                       -- 유효 행(무효 제외) = logState ≠ 'void'
-  SELECT * FROM fut_evolution_log WHERE COALESCE(is_void, 0) = 0
-/* v_evo_log(id,club_player_id,evo_id,evo_name,level,applied_at,completed_at,ovr_before,ovr_after,six_before,six_after,attrs_delta,playstyles_after,roles_plus_after,roles_plus_plus_after,source,confidence,notes,is_void,attrs_after,removed_at,removed_how) */;
+  SELECT * FROM fut_evolution_log WHERE COALESCE(is_void, 0) = 0;
 CREATE TABLE fut_evo_ea_ack (
   id INTEGER PRIMARY KEY,
   club_player_id INTEGER NOT NULL REFERENCES fut_club_players(id),
@@ -1474,11 +1468,9 @@ CREATE TABLE fc_evolution_unlock_supplement (
   PRIMARY KEY (game_version, evo_id)
 );
 CREATE VIEW v_evo_log_active AS                -- 지금 카드에 걸린 진화 = 유효 행 중 제거되지 않은 것
-  SELECT * FROM v_evo_log WHERE removed_at IS NULL
-/* v_evo_log_active(id,club_player_id,evo_id,evo_name,level,applied_at,completed_at,ovr_before,ovr_after,six_before,six_after,attrs_delta,playstyles_after,roles_plus_after,roles_plus_plus_after,source,confidence,notes,is_void,attrs_after,removed_at,removed_how) */;
+  SELECT * FROM v_evo_log WHERE removed_at IS NULL;
 CREATE VIEW v_evo_log_open AS                  -- 진행 중 = 걸려 있고 완료 전
-  SELECT * FROM v_evo_log_active WHERE completed_at IS NULL
-/* v_evo_log_open(id,club_player_id,evo_id,evo_name,level,applied_at,completed_at,ovr_before,ovr_after,six_before,six_after,attrs_delta,playstyles_after,roles_plus_after,roles_plus_plus_after,source,confidence,notes,is_void,attrs_after,removed_at,removed_how) */;
+  SELECT * FROM v_evo_log_active WHERE completed_at IS NULL;
 CREATE TABLE fut_evo_reservations (
   account_id INTEGER NOT NULL REFERENCES fut_accounts(id),
   evo_id     INTEGER NOT NULL,              -- fc_evolutions.evo_id (fut.gg id)
