@@ -263,3 +263,44 @@ obs#1123 재판정의 세 번째 열. 실측 열은 경기 프리셋(`match_play
 
 ### D+2로 넘김
 - 지연 전술 분석(TFA·BTL·The Athletic) · The Villans 경기 후 영상 재확인 · 풀럼 관점(Fulhamish UOsofuOP5B8 등 — 필수 채널 밖, 전사 판단은 D+2) · 아르벨로아 스페인어 원문(스페인 매체 직접 열람 경로) · 헤밍스 명단 밖 사유 · 66′ 교체 사유.
+
+## D+2 추적 (2026-11-02)
+
+> 예약 `mw-avl-fulham-d2`(11-02 20:00 · 이 PC). ⚠️ **영상 축은 이 회차가 하지 않았다** — 부모(대화) 세션이 같은 날 19:42에 사용자 지시(「풀럼전 영상 분석 3편도 수집해줘」)로 필수 채널 3편을 이미 전사·귀속했다: `match_videos` **#466 1874**(7nLXMvJlz7U) · **#467 The Villans**(OqY_e9q650c — D+1까지 0이던 Villans 경기 후 영상) · **#468 UTV**(kCv8iA8lpPU). 요약·구현 주장(G17)은 그 세션 하위 에이전트가 작성 중 — 중복 작업을 피해 **이 회차는 기사·블로그·상대 매체·회견·재판정만** 맡았다. DB 행 변경 없음(이 회차분).
+
+### ⑴ 전술 블로그·상대(풀럼) 관점 — 지연 게시분
+- **전용 전술 분석 0**: TFA·BTL·Spielverlagerung·unexpectedgoals·Coaches' Voice 검색에서 이 경기 글 없음(Coaches' Voice 「Aston Villa 0 Fulham 1」은 옛 경기). The Athletic은 도메인 차단(미수행).
+- **Fulhamish(Owen Macdonald · 10-31 · 직접)**: 「the team returned to the pitch with added zeal, pinging quick passes around Villa to seize control of their half」(후반 더 큰 열의로 돌아와 빠른 패스로 빌라를 돌며 그들 진영을 장악했다) · 「from Bassey, Robinson and Iwobi combined on the left of the box, playing as though Villa's defenders ceased to exist」(바시·로빈슨·이워비가 박스 왼쪽에서 연계했다 — 빌라 수비가 없는 것처럼) · 빌라 득점은 「a poorly defended counter-attack」(허술하게 막은 역습) · 「a dummy by Alysson deceived a reckless press from Castagne」(알리송의 흘려주기가 카스타뉴의 무모한 압박을 속였다) · 버그·찰스가 「to try and help the team wriggle away from a high press」(높은 압박에서 빠져나오도록 돕기 위해) 내려왔다(전반).
+- **Fulham Discussed(Malachi · 11-01 · Substack · 직접)**: 「They were moving the ball more quickly, winning second balls」(공을 더 빨리 돌리고 세컨드볼을 따냈다) · 「Fulham looked capable of causing problems on the counter-attack.」(풀럼은 역습으로 문제를 일으킬 수 있어 보였다) · 캐시·알리송·빌라 오른쪽 언급 **0**.
+- **Fantasy Football Scout(villans82 · 11-01 · 직접)**: 로빈슨 = 「Fulham's best player in the second half, with runs in behind Cash causing Villa problems」(후반 풀럼 최고 선수 · 캐시 뒤로 파고드는 침투가 빌라를 괴롭혔다) · 만잠비 65′ 교체는 「likely with the Barcelona trip in mind」(바르사 원정을 염두에 둔 듯 — 필자 추정 · D) · 아펜그루버 슈팅 3 전부 세트피스 헤더.
+- **GiveMeSport(Alfie Cairns Culshaw · 11-01 · 직접)** 고레츠카 3/10: 「was supposed to be orchestrating Villa's build-up from deep」(깊은 곳에서 빌드업을 지휘해야 했다) · 「He was completely unable to influence the game in possession」(보유 국면에서 전혀 영향을 주지 못했다) · 후반 「the home team bunkered in their own defensive third」(홈팀이 자기 수비 3분의 1에 틀어박혔다) · FotMob 28터치·라인 브레이킹 패스 5·찬스 창출 0. ⚠️ 평점 충돌: Yahoo(빌라 팬 평점) 7 「A very impressive outing」(매우 인상적인 출전) · dave.sport 6.
+- **BBC(Michael Emons · Yahoo 전재 · 11-01 · 직접)**: 「The visitors were the better side in the second half.」(후반엔 원정팀이 더 나았다) — 전술 서술 없음.
+- ⛔ 쓰지 않음: Thames Gazette·azat.tv(출처 표기 없는 집적 기사 · 에메리가 「풀럼의 전술 규율·중원 틈 공략을 칭찬」했다는 서술은 1차 회견 4개 출처 어디에도 없다).
+
+### ⑵ 감독 회견 — 추가분
+- **아르벨로아 — Roundtable Sports(Tom Masters · Yahoo · 11-01 · 직접 · 전문에 가까움)**: 「We needed to fight more than we did in the first half, and we needed to play with character and with ambition」(전반보다 더 싸워야 했고 성격과 야망을 갖고 뛰어야 했다) · 「And I think that's what we did in the second half since the first minute」(후반 첫 1분부터 그걸 해냈다고 생각한다) · 「Maybe we deserved a little bit more… but at the end it's one point in a difficult stadium」(조금 더 가져갈 자격이 있었을지도… 하지만 결국 어려운 경기장에서 얻은 승점 1이다) · 「It's about creating chances, don't concede chances, and playing in the way that we believe」(찬스를 만들고, 내주지 않고, 우리가 믿는 방식대로 하는 것이다).
+  ⇒ **D+1 판단 확인**: D+1이 「홈 감독 발언으로 성립하지 않아 상대 감독 발언 혼입」으로 뺀 「one point in a difficult stadium」(어려운 원정에서 승점 1)은 **아르벨로아 발언으로 확정**(이 원문). 정정 없음.
+- **아르벨로아 — 로빈슨(FFScout · WLS 인용 · 직접)**: 「When you believe in your players, you have to give them the chance to play and to show how good they are.」(선수를 믿는다면 뛰고 기량을 보여줄 기회를 줘야 한다) — 크리스털 팰리스전 부진 뒤 선발 유지(세세뇽 징계로 LB 선발). 「fantastic」(환상적) 단어가 붙은 문장은 검색 요약에만 있어 원문 미확인 → 인용 제외.
+- **에메리 — 새 원문 0**(avfc·BirmLive·PA·Sky 4개 밖 추가 전사 없음). 66′ 3명 교체 사유·헤밍스 명단 밖 사유: **여전히 1차 소스 0**.
+
+### ⑶ 다국어 (불변규칙 10)
+- **스페인어(필수)**: OkDiario 「El Fulham de Arbeloa para al Aston Villa de Emery…」(아르벨로아의 풀럼이 에메리의 빌라를 멈춰 세웠다) — **403 차단**(제목·검색 요약만) · ahora.com.pe(EFE류)·FDP Radio·zamin.uz는 경기 기사뿐 · **아르벨로아·에메리 스페인어 원어 회견 0**(검색어: 「Arbeloa rueda de prensa Villa Park empate」 「Arbeloa "segunda parte" Fulham declaraciones Robinson presión」 「Arbeloa "creo que" OR "estoy muy contento" Suzuki」). Marca·AS·Relevo는 D+1과 같이 도구 차단.
+- 일본어·독일어·프랑스어·폴란드어: D+1 이후 새 기사 검색하지 않음(D+0·D+1에서 이미 훑음 · 이 회차는 전술 분석·상대 관점에 집중).
+
+### ⑷ 가설·당일 판정 재판정
+| 항목 | 당일 판정 | D+2 새 자료 | 재판정 |
+|---|---|---|---|
+| H2 빌라 오른쪽이 뚫린다 | 부분 일치(크로스 9:2 · 원인 로빈슨 오버래핑 vs 캐시+알리송) | 풀럼 쪽 3곳(Fulhamish 「Bassey, Robinson and Iwobi combined on the left」(바시·로빈슨·이워비가 왼쪽에서 연계) · FFScout 「runs in behind Cash」(캐시 뒤 침투) · WLS) 같은 방향 · 아르벨로아 로빈슨 신뢰 발언 | **유지(보강)** — 상대 관점도 「풀럼 왼쪽 삼각(바시·로빈슨·이워비) → 빌라 오른쪽 배후」. Fulhamish 옛 글은 실바 시절부터 풀럼이 「mostly attacked down the left hand side」(주로 왼쪽으로 공격했다 · 검색 요약 · 원문 미열람)라고 써, **상대 고유 성향**일 가능성 — 빌라 오른쪽 구조 결함으로만 읽지 않는다 |
+| H2′ 전환 순간 오른쪽 공백 | 부분 일치(빈도 불일치 2 vs 3 · 30′ 로빈슨 역습 1건) | FDiscussed 「capable of causing problems on the counter-attack」(역습으로 문제를 일으킬 수 있었다)는 방향 서술 없음 | **유지** — 새 이벤트 근거 없음 |
+| H3 반대 전환 | 부분 일치(오른쪽 전환 5/5 · 주 경로는 같은 쪽 전진) | Fulhamish 「pinging quick passes around Villa」(빠른 패스로 빌라를 돌았다) — 전환 방향 서술 없음 | **유지** |
+| 「후반 압박 소멸」(PPDA 15.58→31.67) | 실측 · 에메리도 원인 미상 | 아르벨로아 「since the first minute」(후반 첫 1분부터) 의도된 조정 · GiveMeSport 「bunkered in their own defensive third」(수비 3분의 1에 틀어박혔다) | **유지** — 빌라 블록 하강과 풀럼의 하프타임 강도 상승이 함께 있었다는 서술이 양쪽에서 맞는다. 보류 ⑸(lead 프리셋) 「하강 = 실패 재현 위험」 경고 그대로 |
+| #25 고레츠카 더블 피벗 APPLIED | 선발 2/2 → 확정 | GiveMeSport 3/10(보유 영향 0) vs Yahoo 7 | **유지** — #25는 「누가 LDM에 서나」(배치) 판정이고 경기력 평가는 축이 다르다. 경기력 근거는 평점 충돌로 기록만 |
+⇒ **당일 판정 정정 0건** → `load_match_extras.py` corrections 없음.
+
+### ⑸ 0건·미수행 기록
+- 영상: 이 회차 0(부모 세션 #466~#468 담당 · 위). 필수 채널 밖 후보(Fulhamish UOsofuOP5B8 · talkSPORT · 일본어 2편)도 부모 세션 작업과 겹치지 않게 **전사 보류** → D+3에서 부모 세션 결과를 확인한 뒤 판단.
+- Tanswell·The Athletic: 도메인 차단 · X 재열람 미수행(브라우저 축은 부모 세션이 쓰는 중).
+- 검색어(영어): 「Aston Villa Fulham tactical analysis Emery second half press Arbeloa」 · 「Fulham Aston Villa 1-1 Robinson Iwobi analysis Arbeloa half-time changes」 · 「Fulhamish Arbeloa Villa tactics left side Robinson overload」 · 「Aston Villa Fulham Emery Kamara Goretzka press midfield gaps second half rewatch」.
+
+### D+3로 넘김
+- 부모 세션의 #466~#468 요약·주장 결과를 이 리포트 판정(H2·#14·#16·#25)과 대조 · 바르사전(11-03) 명단으로 RB(캐시 징계는 맨유전)·RM 대응 · 66′ 교체 사유 · complete 판정.
