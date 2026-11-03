@@ -594,10 +594,11 @@ def export_all(db_path=None, window="2026-summer"):
                                          "meta": _rows(con, """SELECT pos_group, MAX(fitted) fitted, MAX(sample_n) sample_n,
                                                                       MAX(test_n) test_n, MAX(test_exact) test_exact,
                                                                       MAX(test_within1) test_within1
-                                                                 FROM fc_position_ovr_weights
-                                                                WHERE game_version='FC27' AND fitted=(SELECT MAX(fitted)
-                                                                      FROM fc_position_ovr_weights WHERE game_version='FC27')
-                                                                GROUP BY pos_group""")},
+                                                                 FROM fc_position_ovr_weights w
+                                                                WHERE game_version='FC27' AND fitted=(SELECT MAX(x.fitted)
+                                                                      FROM fc_position_ovr_weights x WHERE x.game_version='FC27'
+                                                                       AND x.pos_group=w.pos_group)
+                                                                GROUP BY pos_group""")},   # 그룹별 최신 회차(core.position_ovr.load와 같은 규칙)
                            "chem_meta": _rows(con, """SELECT item, value, alternatives, rationale, source
                                                      FROM fc_meta_snapshots WHERE category='chem_style'
                                                      AND pulled=(SELECT MAX(pulled) FROM fc_meta_snapshots WHERE category='chem_style')"""),

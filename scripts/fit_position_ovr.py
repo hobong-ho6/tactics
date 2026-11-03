@@ -122,6 +122,11 @@ def fit(cache, save):
             byg[g].append(c)
     rows = []
     for g, S in sorted(byg.items()):
+        if g == "GK":
+            # ⛔ GK는 적합하지 않는다(2026-11-03 · migration 129) — 네 GK 속성 상관 0.91~0.94에 상수 +1이 있어 「가중 합 1」
+            #   비음수 최소제곱이 39/25/18/13으로 엉뚱하게 갈랐다(정확 41/90). 검증된 공식(21×4/11/5 +1 · 83/90)을 migration이 적는다.
+            print("GK   건너뜀 — 공식은 migration 129(21/21/21/21/11/5 +1)")
+            continue
         S = S[:]
         random.shuffle(S)
         cut = int(len(S) * 0.7)

@@ -21,11 +21,18 @@ GROUP = {"GK": "GK", "CB": "CB", "LB": "FB", "RB": "FB", "LWB": "FB", "RWB": "FB
 APPROX = {"LWB", "RWB", "CF"}
 
 
+# ⭐ 상수항(2026-11-03 · migration 129): attr = CONST 행의 weight_pct는 **가중이 아니라 더하는 OVR 점수**다.
+#   GK 공식이 round(0.21×(다이빙+핸들링+포지셔닝+반사신경)+0.11×반응력+0.05×킥) + 1이라 「가중 합 1」 모양으로는 못 담았다.
+CONST = "_const"
+
+
 def load(con, game="FC27"):
-    """최신 적합 회차의 가중치 {그룹: {속성: %}}. 없으면 빈 dict(⛔ 지어내지 않는다)."""
-    rows = con.execute("""SELECT pos_group, attr, weight_pct FROM fc_position_ovr_weights
-                          WHERE game_version=? AND fitted=(SELECT MAX(fitted) FROM fc_position_ovr_weights
-                                                           WHERE game_version=?)""", (game, game)).fetchall()
+    """**그룹마다** 최신 적합 회차의 가중치 {그룹: {속성: %}}. 없으면 빈 dict(⛔ 지어내지 않는다).
+    ⭐ 2026-11-03: 종전엔 전 그룹 공통 MAX(fitted)라 한 그룹만 다시 적으면 나머지가 통째로 빠졌다 — 그룹별로 고른다."""
+    rows = con.execute("""SELECT w.pos_group, w.attr, w.weight_pct FROM fc_position_ovr_weights w
+                          WHERE w.game_version=? AND w.fitted=(SELECT MAX(x.fitted) FROM fc_position_ovr_weights x
+                                                               WHERE x.game_version=w.game_version AND x.pos_group=w.pos_group)""",
+                       (game,)).fetchall()
     out = {}
     for g, a, w in rows:
         out.setdefault(g, {})[a] = w
@@ -37,9 +44,11 @@ def raw(attrs, pos, weights):
     w = weights.get(GROUP.get(pos))
     if not w or not attrs:
         return None
-    if any(attrs.get(k) is None for k in w):
+    c = w.get(CONST, 0)
+    w = {k: v for k, v in w.items() if k != CONST}
+    if not w or any(attrs.get(k) is None for k in w):
         return None
-    return sum(attrs[k] * v for k, v in w.items()) / sum(w.values())
+    return sum(attrs[k] * v for k, v in w.items()) / sum(w.values()) + c
 
 
 def ovr(attrs, pos, weights):

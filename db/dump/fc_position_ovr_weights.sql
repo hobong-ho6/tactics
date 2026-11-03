@@ -95,3 +95,10 @@ INSERT INTO fc_position_ovr_weights VALUES('FC27','WM','반응력',7,'2026-10-02
 INSERT INTO fc_position_ovr_weights VALUES('FC27','WM','볼컨트롤',22,'2026-10-02',220,66,37,63,'fut.gg FC27 비진화·비특별 카드 220장 적합(scripts/fit_position_ovr.py · 2026-10-02) — 비음수 최소제곱·가중 합 1·1% 미만 제거·정수 %','등급 C(우리 적합 · EA 비공개). 시험셋 정확 37/66·±1 63/66. ⚠️ 절대값보다 진화 전후 차이로 쓸 것 — 국제 명성 등 선수별 오차가 차이에서 상쇄된다.');
 INSERT INTO fc_position_ovr_weights VALUES('FC27','WM','드리블',15,'2026-10-02',220,66,37,63,'fut.gg FC27 비진화·비특별 카드 220장 적합(scripts/fit_position_ovr.py · 2026-10-02) — 비음수 최소제곱·가중 합 1·1% 미만 제거·정수 %','등급 C(우리 적합 · EA 비공개). 시험셋 정확 37/66·±1 63/66. ⚠️ 절대값보다 진화 전후 차이로 쓸 것 — 국제 명성 등 선수별 오차가 차이에서 상쇄된다.');
 INSERT INTO fc_position_ovr_weights VALUES('FC27','WM','체력',5,'2026-10-02',220,66,37,63,'fut.gg FC27 비진화·비특별 카드 220장 적합(scripts/fit_position_ovr.py · 2026-10-02) — 비음수 최소제곱·가중 합 1·1% 미만 제거·정수 %','등급 C(우리 적합 · EA 비공개). 시험셋 정확 37/66·±1 63/66. ⚠️ 절대값보다 진화 전후 차이로 쓸 것 — 국제 명성 등 선수별 오차가 차이에서 상쇄된다.');
+INSERT INTO fc_position_ovr_weights VALUES('FC27','GK','다이빙',21,'2026-11-03',90,90,83,90,'GK 공식 검산(migration 129) — FC27 비특별 기본 GK 카드 90장 · round(0.21×4속성+0.11×반응력+0.05×킥)+1','C — 우리 검산 83/90 정확 · 표 자체는 커뮤니티 고전 표(D) · EA 비공개');
+INSERT INTO fc_position_ovr_weights VALUES('FC27','GK','핸들링',21,'2026-11-03',90,90,83,90,'GK 공식 검산(migration 129)','C');
+INSERT INTO fc_position_ovr_weights VALUES('FC27','GK','포지셔닝',21,'2026-11-03',90,90,83,90,'GK 공식 검산(migration 129)','C');
+INSERT INTO fc_position_ovr_weights VALUES('FC27','GK','반사신경',21,'2026-11-03',90,90,83,90,'GK 공식 검산(migration 129)','C');
+INSERT INTO fc_position_ovr_weights VALUES('FC27','GK','반응력',11,'2026-11-03',90,90,83,90,'GK 공식 검산(migration 129)','C');
+INSERT INTO fc_position_ovr_weights VALUES('FC27','GK','킥',5,'2026-11-03',90,90,83,90,'GK 공식 검산(migration 129)','C');
+INSERT INTO fc_position_ovr_weights VALUES('FC27','GK','_const',1,'2026-11-03',90,90,83,90,'GK 공식 상수 +1(가중 아님 · 더하는 OVR 점수)','C — 상수의 출처는 미상(국제 명성 보정과 별개로 전 카드에 붙는다)');

@@ -7,10 +7,11 @@ export function posOvrRaw(attrs, pos, model) {
   if (!w || !attrs) return null;
   let s = 0, t = 0;
   for (const [k, v] of Object.entries(w)) {
+    if (k === '_const') continue;               // ⭐ 상수항(가중 아님 · 더하는 OVR 점수 · migration 129) — position_ovr.CONST
     if (attrs[k] == null) return null;          // ⛔ 결손을 0으로 세지 않는다
     s += attrs[k] * v; t += v;
   }
-  return t ? s / t : null;
+  return t ? s / t + (w._const || 0) : null;
 }
 
 export function posOvr(attrs, pos, model) {
