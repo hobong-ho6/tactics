@@ -5864,6 +5864,42 @@
    "impact": "니어포스트·로우드리븐 실점에 맞는 처방은 Far Reach가 아니라 Footwork다(텍스트 기준 · 실측 없음). Cross Claimer는 크로스를 「잡게」 하지 않고 펀칭을 늘린다 — 「크로스 캐치형」으로 오해하지 말 것. docs/22 §3 GK 표의 Far Reach 「다이빙/점프 애니메이션 다양화 + 박스 밖 슛」·Cross Claimer 「캐칭 애니메이션」 서술과 충돌한다.",
    "recorded": "2026-11-03",
    "source": "https://www.fut.gg/playstyles/far-reach/ · https://www.fut.gg/playstyles/footwork/ · https://www.fut.gg/playstyles/deflector/ · https://www.fut.gg/playstyles/cross-claimer/ (2026-11-03) · https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/thibaut-courtois/192119"
+  },
+  {
+   "area": "set_pieces",
+   "change": "⭐ 코너킥이 2단계(Two phase corners)로 바뀌었다 — 목표 지점·파워를 고르면 카메라가 박스로 옮겨가고, 공이 오기 전 짧은 창에서 공격수를 직접 움직인다(이동·선수 전환·런·쉴딩·Avoidance). 박스 안 선수가 낙하지점으로 **자동으로 가지 않는다**: 「players contesting for corner kicks in the box will no longer automatically move into the best position」(「코너킥 때 박스에서 경합하는 선수는 더 이상 자동으로 최적 위치로 가지 않는다」) · 「It's up to you to time the run, attack the space, and make first contact manually.」(「런 타이밍·공간 공략·첫 접촉을 직접 해야 한다」). 숏코너는 예외: 「this change does not apply to short corner kicks」(「이 변경은 숏코너에는 적용되지 않는다」).",
+   "confidence": "A — EA 1차(피치노트). 효과 크기 수치 없음.",
+   "evidence": "EA FC27 Gameplay Deep Dive 피치노트(2026-07 말) 원문 직접 읽음. 「connecting with a header from crosses and corners requires greater precision」(「크로스·코너에서 헤더를 맞히려면 더 정밀해야 한다」).",
+   "impact": "코너 득점은 이제 **수동 조작 기량**이 크게 좌우한다 — 실축 코너 루틴(니어 플릭·스크린·키퍼 방해)을 「전술 설정」만으로 재현할 수 없다. 실축 빌라 코너 분석(reports/research/2026-11-04-avl-set-pieces.md)을 FC로 옮길 때 자동 재현 가능한 축(키커·타깃·러너 수·니어/파 런·수비 지역/대인)과 조작 축을 갈라 적는다.",
+   "recorded": "2026-11-04",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-11-04 접속)"
+  },
+  {
+   "area": "set_pieces",
+   "change": "코너 수비·공격 모두 새 조작 Avoidance(R1/RB 홀드)를 쓸 수 있다: 「This allows any attacker or defender you control to become more evasive」(「조종 중인 공격수나 수비수를 더 잘 빠져나가게 한다」) · 「Pairing this with Shielding allows an attacking player to hold their position after creating space」(「쉴딩과 함께 쓰면 공격수가 공간을 만든 뒤 자리를 지킬 수 있다」).",
+   "confidence": "A(Avoidance 동작·입력 R1/RB) · D(쉴딩 입력)",
+   "evidence": "EA FC27 Gameplay Deep Dive 피치노트 원문. 쉴딩 입력(L2/LT 홀드)은 EA 원문에 없고 커뮤니티 가이드(timesaver.gg·m8x) 서술이다.",
+   "impact": "인게임 조작 축 — 감독 재현 정본(slot_canon_roles·tactics)에는 들어가지 않는다.",
+   "recorded": "2026-11-04",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive · https://timesaver.gg/blog/fc-27-corners-how-to-score-defend-aerial-fortress-myth"
+  },
+  {
+   "area": "set_pieces",
+   "change": "세트피스 전술 메뉴가 새로 생겼다(경기 중 D-pad 위). 코너: 세트플레이 인원 추가·제거 · 니어포스트 런 · 파포스트 런 · (수비) 지역 방어 / 대인 방어 전환. 프리킥: 인원 추가·제거 · 니어/파 런 · (수비) 라인 내리기 · 오프사이드 트랩. FC26의 Edge Of Box Run · Crowd the Goalkeeper는 빠졌다. 경기 전에는 팀 관리의 세트피스 키커·타깃 지정이 따로 있다.",
+   "confidence": "D — 커뮤니티 전사(인게임 화면 미확인). 메뉴 존재 자체는 A(EA 이미지 설명).",
+   "evidence": "EA 원문에는 「the new set piece tactics interface visible」(「새 세트피스 전술 화면이 보인다」)라는 이미지 설명뿐이고 항목은 없다. 항목·입력은 Pro Clubs HQ의 인게임 조작 목록 전사와 timesaver.gg·m8x 가이드가 일치한다(같은 전사 계보일 수 있어 독립 교차검증은 아니다).",
+   "impact": "⭐ 빌라 실축 코너 수비 방식(지역/대인/혼합)과 공격 러너 수·니어/파 비중을 **이 메뉴의 선택지로 옮길 수 있다**(구현 가능 축). 인게임 화면으로 항목을 확인하면 A로 올린다.",
+   "recorded": "2026-11-04",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive · https://proclubshq.com/blog/fc27-control-changes/ · https://timesaver.gg/blog/fc-27-corners-how-to-score-defend-aerial-fortress-myth · https://www.m8x.com/news/fc-27-corner-kicks-how-do-you-actually-score-with-the-new-manual-system.html"
+  },
+  {
+   "area": "playstyles",
+   "change": "코너 관련 PlayStyle 문구: Dead Ball 「Set pieces are delivered with exceptional speed, curve, and accuracy.」(「세트피스를 매우 빠르고 휘어지며 정확하게 찬다」) · Precision Header 「Performs headers with greatly increased accuracy and power.」(「헤더 정확도·파워가 크게 오른다」) · Aerial Fortress는 EA 설명이 수비 공중볼 경합에 한정된다 — ⛔ 「Aerial Fortress가 공격 헤더 득점을 돕는다」는 통설은 근거 없음.",
+   "confidence": "A(문구) — 2차 인용 경유 · 효과 크기 없음. Aerial Fortress 공격 효과 = D(기각 대상).",
+   "evidence": "PlayStyle 문구는 EA 설명 인용(timesaver.gg 경유). 효과 크기 수치·통제 실측은 공개된 것이 없다. 타이틀 업데이트 1.0.4(10-07)까지 코너 변경 없음(가이드 서술).",
+   "impact": "빌라 코너 키커·타깃 처방에서 근거로 쓸 수 있는 것은 Dead Ball(키커)·Precision Header(타깃) 문구까지다(A, 크기 미상). Aerial Fortress를 공격 타깃 선택 근거로 쓰지 않는다.",
+   "recorded": "2026-11-04",
+   "source": "https://timesaver.gg/blog/fc-27-corners-how-to-score-defend-aerial-fortress-myth (2026-11-04)"
   }
  ],
  "tactic_params": [
