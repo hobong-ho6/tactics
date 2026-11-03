@@ -143,12 +143,17 @@
 
 | PlayStyle | 발동 상황 | 효과 |
 |---|---|---|
-| Far Reach | 원거리 선방(다이빙) | 다이빙/점프 애니메이션 다양화 + 박스 밖 슛 대응력 향상 |
-| Footwork | 발밑 선방 | 풋세이브 성능 향상 + 전용 애니메이션 |
-| Cross Claimer | 크로스 캐칭 | 크로스 차단 속도 향상 + 전용 캐칭 애니메이션 |
-| Rush Out → **1v1 Close Down**(FC27 개명 · 2026-10-22) | 박스 밖 스위핑(전진 저지) | 박스 밖으로 뛰쳐나가는 속도 향상 + 반사/예측 전용 애니메이션 |
-| Deflector | 슛 저지(막지 못하는 상황) | 쳐낸 볼이 위험 지역이 아니라 안전한 곳(동료 쪽)으로 향하도록 보정 + 전용 애니메이션 |
+| Far Reach | **먼 거리 슛** 선방 | 먼 거리 슛 선방 확률 증가 — EA 툴팁 「better long shot saves」(중거리 슛 선방 향상) · **FC27 A+B**(gsc #76) |
+| Footwork | **낮은 궤적 슛** | 「increased performance against low trajectory shots」(낮은 궤적 슛 대응력 증가) — 니어포스트 로우드리븐 대응은 Far Reach가 아니라 이쪽 · **FC27 B**(gsc #76) |
+| Cross Claimer | 크로스 경합 | 경합 상황에서 **펀칭 애니메이션 우선** + 크로스에 나오는 속도 증가(「잡는다」가 아니다) · **FC27 B**(gsc #76) |
+| Rush Out → **1v1 Close Down**(FC27 개명 · 2026-10-22 · 레이팅 DB는 아직 「Rush Out+」) | 1대1·근거리 슛 | 전진 속도 증가 + **고유 반사 세이브 · 근거리 슛 읽기 향상** — 「Unique reflex saves, better close shot reads, greater rush speed」(고유 반사 세이브, 더 나은 근거리 슛 읽기, 더 빠른 전진 속도) · **FC27 A+B**(gsc #75) |
+| Deflector | 슛 쳐내기 | 「Increased power to parry shots into safer areas」(슛을 안전한 곳으로 쳐내는 힘 증가) · FC26부터 쳐낸 공 방향 보정은 **기본값**이 됐다(gsc #77 · FC26 A) · **FC27 B**(gsc #76) |
 | Far Throw | 골킥/배급 | 스로 파워·거리 향상 |
+
+⭐ **골키퍼 속성 정본 요약**(2026-11-03 조사 · 전문 [reports/research/2026-11-03-fc27-goalkeeper-stats.md](../reports/research/2026-11-03-fc27-goalkeeper-stats.md) · gsc #72~#78):
+- **GK OVR = round(0.21×(다이빙+핸들링+포지셔닝+반사신경) + 0.11×반응력 + 0.05×킥) + 1** — FC27 기본 GK 90장 중 83장 정확(**C** · gsc #72). 네 속성이 **같은 무게**고 속도(SPD)는 OVR에 안 들어간다.
+- EA는 FC27에서 GK 메커니즘 변경을 **한 줄도 밝히지 않았다**(**A · 부재** · gsc #73) — FC26 최종 상태 이월로 보는 것은 추정(D)이다.
+- ⛔ 키 임계(「190cm+」 등) · 반응력·AcceleRATE의 인게임 작용 · 「반사신경 > 다이빙」 우선순위는 **전부 D**다(A·B·C 근거 0).
 
 ⚠️ FC26에서 **Trivela·Flair·Power Header·Aerial 4종이 폐지**되고 **Enforcer 등 5종으로 재구성**됐다 —
 전작(FC25) 자료를 그대로 인용하지 말 것.

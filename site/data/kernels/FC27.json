@@ -5819,6 +5819,51 @@
    "impact": "⑴ ⭐ 버전 차이(A): **스루 패스 보정 축소는 FC26→FC27 변경** — FC26 시절 「스루 패스 역습」 근거를 FC27 처방에 전용하지 않는다. 에메리 재현의 수직 전환(라인 사이 → 침투 스루)은 FC27에서 **조작 정확도에 더 의존**한다. ⑵ 저수비 스탯 인터셉트(#46)에 대해서는 「균형을 익히는 중」이라는 일반론뿐 — **수정 예고가 아니다** → #46 impact(한시적 · 수정 예고 없음) 유지. ⑶ 드리블·전환·Authentic AI는 AVL 전술 처방과 직접 관계 없음(조작·모드 축) — 기록만 한다.",
    "recorded": "2026-10-31",
    "source": "https://steamcommunity.com/app/4080220/discussions/0/588440114694207040/ (「FC 27 - Gameplay Developer Q&A Responses」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-10-09 17:12 UTC 게시 · 공식 Discord 1차 게임플레이 Q&A 정리)"
+  },
+  {
+   "area": "goalkeeping",
+   "change": "⭐⭐ GK OVR 산정식은 GK 4속성 균등이다 — round(0.21×(다이빙+핸들링+포지셔닝+반사신경) + 0.11×반응력 + 0.05×킥) + 1. FC27 비특별 기본 GK 카드 90장 중 83장 정확(92%) · 90장 ±1(100%)(2026-11-03 부모 세션 재검산 · 서브에이전트 1차 76/83). 제약 없는 최소제곱도 23.5/22.2/21.0/20.2/10.3/4.2(%)(합 1.013)로 같은 모양이다. 우리 저장 적합값(반사 39·포지셔닝 25·다이빙 18·핸들링 13·반응 5·킥 0 · 2026-10-02)은 같은 표본에서 40/83(48%)이다 — GK 4속성 간 상관 0.91~0.94의 공선성 착시. 스피드(가속·질주)는 OVR 항에 없다. 빗나간 7장(오블락·알리송·픽포드·Cata Coll·마르티네스·Paños·Earps)은 전부 실제가 +1~2 높다(국제 명성 보너스 가설 · 미검증). +1 상수의 정체는 미상(53 OVR 카드에도 붙는다).",
+   "confidence": "C — 우리 실측 n=90(재검산)(비특별 기본 카드만). EA 비공개. 진화·특별 카드에는 적용되지 않는다. +1 상수·IR 보너스는 미검증.",
+   "evidence": "db/tactics.db player_card_items(FC27·best_pos=GK·is_special=0) 83장에 산정식 6종을 읽기 전용으로 대조(/tmp/cmp/gkfit.py): 고전 21/21/21/21/11/5+1 → 76 · fifauteam FIFA19 24/22/22/22/6/4+1 → 58 · 저장값 → 40 · GameBoost 30/25/20/15/10 → 33 · 곱셈 보정 ×1.0125 → 70. numpy 최소제곱 재적합.",
+   "impact": "진화 부풀림(표기 Δ − 세부 스탯 Δ) 계산이 GK에서 틀린다 — 저장 가중치로는 반사 진화의 Δ를 과대평가하고 핸들링·다이빙 진화를 과소평가한다. OVR 1점당 GK 4속성은 같은 값이고, 반응력 +2 ≈ GK 속성 +1, 킥 +4 ≈ GK 속성 +1이다. fc_position_ovr_weights GK 행을 다시 맞추는 근거(행 추가 · 부모 판단).",
+   "recorded": "2026-11-03",
+   "source": "우리 실측(db/tactics.db player_card_items · 2026-11-03) · 비교 표: https://fifauteam.com/player-ratings-guide-fifa-19/ (2018) · https://gameboost.com/blog/best-goalkeepers-in-ea-fc-27"
+  },
+  {
+   "area": "goalkeeping",
+   "change": "FC27 EA 1차 자료에 GK 메커니즘 변경 서술이 0건이다(부재 증거) — Gameplay Deep Dive(07-29)에 goalkeeper·save·parry·rush 언급이 없고, PlayStyle 리밸런스 10종(#13)에도 GK PlayStyle이 없으며, TU v1.0.1~v1.1.0의 GK 항목은 버그 수정뿐이다(PC 마우스 · Clubs 11v11에서 GK 2명 · 진화 미리보기 #65 · 1v1에서 「the Goal Keeper could hold the ball for longer than expected even if a pass had been requested」(「패스를 요청해도 GK가 예상보다 오래 공을 쥐던 문제」)). ⇒ FC27 GK 엔진은 FC26 최종 상태(TU 1.5.x)를 이어받았다고 보는 것이 가장 그럴듯하다(추정 · EA 미확인).",
+   "confidence": "A(부재) — 직접 읽음. 「FC26 이월」은 추정(D 수준)이라 분리해 적는다.",
+   "evidence": "EA FC27 Gameplay Deep Dive · What are PlayStyles · TU v1.1.0 전문을 직접 읽고 GK 관련 문장을 전수 확인(2026-11-03).",
+   "impact": "FC26 GK 패치 이력(니어포스트 반응 개선 · 잡기/펀칭 판단 · 수동 GK 이동 너프 · 자동 세이브 범위 확대)을 FC27 GK 평가의 전제로 쓸 수 있다. 단 「이월」은 추정이라 그렇게 적는다.",
+   "recorded": "2026-11-03",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-07-29) · https://www.ea.com/games/ea-sports-fc/fc-27/news/what-are-playstyles (2026-09-25) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-1-0 (2026-10-27)"
+  },
+  {
+   "area": "goalkeeping",
+   "change": "EA 밸런스 발언 원문 확보(#47 보강) — 「We're pretty happy with the current balance between shooting and goalkeeping, but we'll continue to monitor your feedback and our data for any potential outliers.」(「슈팅과 골키핑 사이 현재 밸런스에 꽤 만족하지만, 이상치가 있는지 피드백과 데이터를 계속 감시하겠다.」) · 「One of our core philosophies is that players should be rewarded for earning a shot from a dangerous area.」(「위험 지역에서 슛 기회를 만든 플레이어는 보상받아야 한다는 것이 핵심 철학 중 하나다.」). 「fairly happy(꽤 만족한다)」는 원문 표현이 아니다. 한국어·스페인어·이탈리아어·포르투갈어판은 같은 원문의 번역이다(교차검증 아님).",
+   "confidence": "A — EA 원문을 직접 읽음. #47의 원문 보강이며 새 사실은 「위험 지역 보상」 철학 문장뿐이다.",
+   "evidence": "EN·KO·ES·IT·PT-BR 페이지를 직접 읽고 해당 문장을 대조. DE·FR URL의 10-28 글은 본문이 영어 그대로.",
+   "impact": "니어포스트 로우드리븐 슛은 EA가 「위험 지역 슛 보상」 철학으로 정당화하는 영역이다 — v1.2.0에서 GK 쪽이 크게 상향될 거라고 기대하지 말 것(10-28 「조사 중」은 #68).",
+   "recorded": "2026-11-03",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update (2026-09-30) · https://www.ea.com/ko/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update · https://www.ea.com/es/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update"
+  },
+  {
+   "area": "goalkeeping",
+   "change": "⭐ 1v1 Close Down(=Rush Out)은 전진만 하는 PlayStyle이 아니다 — EA 레이팅 툴팁 「Unique reflex saves, better close shot reads, greater rush speed」(「고유 반사 세이브, 더 나은 근거리 슛 읽기, 더 빠른 전진 속도」), fut.gg 게임 데이터 「Unique reflex/anticipation save animations, increase in rush speed and improved read of close shot trajectories.」(「고유 반사·예측 세이브 애니메이션, 전진 속도 증가, 근거리 슛 궤적 읽기 향상」). ⚠️ EA 화면끼리 이름이 다르다: PlayStyles 글은 「1v1 Close Down」(1대1 근접 압박)과 일본어판 「1v1接近戦」(1대1 접근전), 레이팅 DB는 「Rush Out+」(뛰쳐나가기+)와 일본어판 「飛び出し+」(뛰쳐나가기+)를 그대로 쓴다(#61 개명이 다 반영되지 않았다).",
+   "confidence": "A(EA 툴팁) + B(fut.gg) — 같은 게임 데이터 계보일 가능성이 커서 독립 교차검증은 아니다. 효과 크기 수치는 없다.",
+   "evidence": "EA FC27 쿠르투아 레이팅 페이지(Rush Out+ 툴팁)와 fut.gg /playstyles/rush-out/(PlayStyle명 1v1 Close Down · 일반 86 · + 7)을 직접 읽음. JA 레이팅 페이지는 스니펫.",
+   "impact": "1v1 Close Down(+)은 근거리 선방에도 걸린다 — Joan García(86 · Rush Out+)가 OVR 90 쿠르투아보다 많이 쓰이는 메타를 설명하는 후보(D). GK 진화에서 1v1 Close Down을 주는 가지의 가치를 「스위핑」만으로 매기지 말 것.",
+   "recorded": "2026-11-03",
+   "source": "https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/thibaut-courtois/192119 (FC27 · 2026-11-03 접속) · https://www.fut.gg/playstyles/rush-out/ (2026-11-03) · https://www.ea.com/ja/games/ea-sports-fc/fc-27/news/what-are-playstyles (2026-09-25)"
+  },
+  {
+   "area": "goalkeeping",
+   "change": "GK PlayStyle 효과는 슛 종류마다 갈린다(fut.gg 게임 데이터) — Far Reach 「increased chances of saving long distance shots」(「먼 거리 슛 선방 확률 증가」) · Footwork 「increased performance against low trajectory shots」(「낮은 궤적 슛 대응력 증가」) · Deflector 「Increased power to parry shots into safer areas」(「슛을 안전한 곳으로 쳐내는 힘 증가」) · Cross Claimer 「prioritization of punch animations in contested ball scenarios, and increased speed for coming out for crosses」(「경합 상황에서 펀칭 애니메이션 우선, 크로스에 나오는 속도 증가」). EA 레이팅 툴팁의 Far Reach도 「better long shot saves」(「중거리 슛 선방 향상」)다. 보유 수(일반/+, 11-03): Far Reach 81/7 · Footwork 390/2 · Deflector 104/5 · Cross Claimer 246/6 · 1v1 Close Down 86/7.",
+   "confidence": "B — 게임 데이터 텍스트(효과 크기 수치 없음). Far Reach는 EA 툴팁(A)과 일치. 인게임 실측은 0건.",
+   "evidence": "fut.gg /playstyles/{far-reach,footwork,deflector,cross-claimer}/ 직접 읽음 + EA 쿠르투아 레이팅 툴팁(Far Reach) 대조.",
+   "impact": "니어포스트·로우드리븐 실점에 맞는 처방은 Far Reach가 아니라 Footwork다(텍스트 기준 · 실측 없음). Cross Claimer는 크로스를 「잡게」 하지 않고 펀칭을 늘린다 — 「크로스 캐치형」으로 오해하지 말 것. docs/22 §3 GK 표의 Far Reach 「다이빙/점프 애니메이션 다양화 + 박스 밖 슛」·Cross Claimer 「캐칭 애니메이션」 서술과 충돌한다.",
+   "recorded": "2026-11-03",
+   "source": "https://www.fut.gg/playstyles/far-reach/ · https://www.fut.gg/playstyles/footwork/ · https://www.fut.gg/playstyles/deflector/ · https://www.fut.gg/playstyles/cross-claimer/ (2026-11-03) · https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/thibaut-courtois/192119"
   }
  ],
  "tactic_params": [
