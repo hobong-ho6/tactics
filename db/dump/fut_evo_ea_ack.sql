@@ -6,3 +6,5 @@ INSERT INTO fut_evo_ea_ack VALUES(5,31,2544,NULL,'Future Stars Regular Badge —
 INSERT INTO fut_evo_ea_ack VALUES(6,31,2553,NULL,'Future Stars Regular Badge — 로그는 2544로 기록(같은 배지)','2026-10-18','사용자 확인 2026-10-18');
 INSERT INTO fut_evo_ea_ack VALUES(7,25,2489,NULL,'Alysson EA 이력이 빈 배열(EA 카드 70 ↔ 원장 83 진화 보호) — 원장이 맞다','2026-10-18','사용자 확인 2026-10-18');
 INSERT INTO fut_evo_ea_ack VALUES(8,25,2534,NULL,'Alysson EA 이력이 빈 배열(EA 카드 70 ↔ 원장 83 진화 보호) — 원장이 맞다','2026-10-18','사용자 확인 2026-10-18');
+INSERT INTO fut_evo_ea_ack VALUES(9,16,NULL,2842,'코스메틱 EA id — fc_evolutions 매핑 없음(코스메틱 전용이라 카탈로그 적재 제외)','2026-11-04','사용자 확인 2026-11-04');
+INSERT INTO fut_evo_ea_ack VALUES(10,683,NULL,2843,'코스메틱 EA id — fc_evolutions 매핑 없음(코스메틱 전용이라 카탈로그 적재 제외)','2026-11-04','사용자 확인 2026-11-04');
