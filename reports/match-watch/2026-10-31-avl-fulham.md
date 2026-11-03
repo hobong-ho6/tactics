@@ -304,3 +304,75 @@ obs#1123 재판정의 세 번째 열. 실측 열은 경기 프리셋(`match_play
 
 ### D+3로 넘김
 - 부모 세션의 #466~#468 요약·주장 결과를 이 리포트 판정(H2·#14·#16·#25)과 대조 · 바르사전(11-03) 명단으로 RB(캐시 징계는 맨유전)·RM 대응 · 66′ 교체 사유 · complete 판정.
+
+## D+3 추적 (2026-11-03)
+
+> 예약 `mw-avl-fulham-d3`(11-03 20:00 · 이 PC) · **3일 추적 종결 회차**. 당일·D+1·D+2 절은 고치지 않았다. 다음 경기 바르사 원정(UCL · 11-04 05:00 KST)은 **킥오프 전이고 확정 명단도 아직 없다**(명단 발표 ≈ 04:00 KST) → 이 경기 기용 재확인은 프리뷰·사전 회견까지만 쓴다.
+
+### ⑴ 지연 전술 분석·블로그·상대 관점
+- **Sonny Kelland 서브스택 「Aston Villa 1-1 Fulham」(11-02 · WebFetch 직접)** — 이 경기 전용 글 중 처음 나온 전술 서술:
+  - 중원: 「Fulham's strong midfield pairing of Sander Berge and Shea Charles clogging up the central areas.」(풀럼의 강한 중원 짝 베르게·찰스가 중앙을 틀어막았다) — 고레츠카·카마라 연결 부족(#87 HELD · 패스 카마라→고레츠카 3·역방향 4)과 같은 방향.
+  - 만잠비: 「he has been noticeably less involved when operating off the left.」(왼쪽에서 뛸 때 관여가 눈에 띄게 줄었다) → **#49 HELD 유지**(다음 비CAM 선발 2경기).
+  - 잭슨: 「he had his defender beaten whenever he was played in behind」(배후로 패스를 받을 때마다 수비수를 제쳤다) → 보류 ⑵(ST 포커스)에 **Attack 쪽 서술 근거 1건**. 후반엔 배후 공급이 줄어 잭슨이 내려왔다(실측 (54,60)) — 커널 무결정은 그대로.
+  - 고레츠카: 「he is clearly being utilised as a set-piece target」(세트피스 타깃으로 쓰이는 게 분명하다 · 13′ 헤더 → PK).
+  - 아르벨로아: 「made multiple defensive changes, a clear indication that he was very happy with a point.」(수비적 교체를 여러 번 했다 — 승점 1에 만족했다는 뚜렷한 신호).
+  - 빌라 오른쪽·캐시·알리송·로빈슨 언급 **0**.
+- **Villa News(Dan Lewis · Yahoo 전재 · 11-01 16:00 UTC · WebFetch 직접)** — 린델뢰프 「The first 20 minutes [of the second half], we didn't manage to keep the ball.」(후반 첫 20분 우리는 공을 지키지 못했다) · 「Fulham created a few too many chances and obviously we conceded the goal.」(풀럼이 기회를 너무 많이 만들었고 결국 실점했다). 에메리 「we were not keeping the same consistency with ball possession」(점유의 일관성을 유지하지 못했다)와 같은 진단 → 「후반 압박 소멸」 판정 유지.
+- 전술 전용 분석(TFA·BTL·Spielverlagerung·unexpectedgoals): **여전히 0**. The Athletic: 도메인 차단(미수행).
+
+### ⑵ 감독 회견
+- **에메리 — 바르사전 사전 회견(11-02 · 캄 노우)**: 풀럼전 언급 **0**. 확인 출처: Goal EN(11-03 · 직접 — 「We are trying to find our way. We have been together for four years.」(우리 길을 찾는 중이다. 함께한 지 4년이다)) · avfc.co.uk(본문 수신 실패 · 검색 요약만) · EFE/ABC Color(스페인어 · DNS 실패 · 검색 요약 「El Barcelona es favorito para ganar esta competición」(바르셀로나가 이 대회 우승 후보다)). 캐시 대체(맨유전)는 에메리가 「after Barcelona」(바르사전 뒤)로 미룬 상태 그대로.
+- **바르사전 명단 정보(프리뷰 · 확정 명단 아님)**: 오나나(무릎)·루게리(허벅지)·완비사카(허벅지) 결장 · 「no new injury concerns after the Fulham draw」(풀럼전 뒤 새 부상 우려 없음 · 검색 요약). 고레츠카 선발 여부는 프리뷰끼리 갈린다(Sports Mole·Football Faithful 「고메스로 교체 가능」 vs LiveScore 「유지」) → **풀럼전 66′ 고레츠카 교체가 부상 때문이라는 근거 0** · 3명 교체 사유는 **미확인 확정**(훑은 출처: avfc·BirmLive 전문·PA·Sky·Goal EN·Tanswell X · 영어 · 스페인어 EFE 요약).
+- 아르벨로아: D+2 이후 새 원문 0.
+
+### ⑶ 필수 채널 3곳 · Tanswell
+| 채널 | D+2 이후 새 업로드(yt-dlp 목록 · 재생 없음 → 뮤트 해당 없음) | 판단 |
+|---|---|---|
+| UTV | bXXq32QKtUc 「HOW ASTON VILLA BEAT BARCELONA」(11-02 · 36′ · 프리뷰) · vdNc0R3OPmY 「EVERYTHING ASTON VILLA FANS NEED TO KNOW ABOUT BARCELONA」(11-02) · 스트림 2(바르사 워치얼롱·리액션 · 예정) | **건너뜀** — 바르사전 프리뷰(§2-1a 경기 한정) · 바르사전 수집 회차로 |
+| The Villans | Ttk_jjW5KkU 「Can Aston Villa Stop Lamine Yamal…」(11-02 · 프리뷰) | 건너뜀(같은 사유) |
+| 1874 | Ud2cwU17zoU 「Jacob Tanswell Reports From Barcelona」(11-02 · 프리뷰) | 건너뜀(같은 사유) |
+- 풀럼전 영상 5편(#464·#465 당일 · #466~#468 부모 세션 11-02)과 구현 주장 13행(#733~#744 포함)은 이미 귀속됨 → **G17 신규 대상 0**.
+- **Tanswell X**(브라우저 · 로그아웃 · 20:1x KST): 최근 4건 = 존 그레고리 인터뷰 · 맥긴 사전 회견 2 · 에메리 「라 레몬타다」 회고 — **풀럼전 0**.
+
+### ⑷ 다국어 (불변규칙 10)
+- **일본어(스즈키)**: フットボールチャンネル(11-01 · 검색 요약) 「ハイボールの処理を誤り失点招く」(하이볼 처리를 그르쳐 실점을 불렀다) · GOAL JP(11-01 · 검색 요약) Sky 롭 그린 동정 서술 · 접촉 서술 **0** → 자책골 **「경합 없음」 채택 유지**(접촉 서술은 FOOTBALL ZONE 1곳뿐 · 충돌 기록만 남긴다).
+- **스페인어(에메리)**: 바르사전 회견만 있음(풀럼전 대목 0) · 아르벨로아 스페인어 원어 회견 **미확인 확정**(D+1~D+3 · Marca·AS·Relevo 도구 차단 · OkDiario 403).
+- 독일어·프랑스어·폴란드어·포르투갈어: D+0~D+1에서 훑음 · 이 회차 새 검색 안 함(이유: 결과·평점 기사만 나오던 언어권 · 지연 전술 분석이 나올 매체 없음).
+
+### ⭐ 본머스전 관전 가설 — 두 경기 최종 판정 (나란히)
+| # | 가설 | 본머스(10-28 · 음바예 선발 58′) | 풀럼(10-31 · 알리송 66′ / 음바예 24′) | 두 경기 종합(최종) |
+|---|---|---|---|---|
+| H1′ | RM 기본 폭은 오른쪽 넓게, 중앙 진입은 공격 때만 | 부분 일치 — 폭 일치 · 중앙 볼 소유 2/22 | 부분 일치 — 알리송 오른쪽 83% · 음바예 90% · 안쪽은 맥긴(10번)이 채움 | **부분 일치 2/2** — 「넓게」는 맞고, 「공격 때 중앙 진입」은 RM이 아니라 10번이 한다 |
+| H2′ | 오른쪽 공백은 공격→수비 **전환 순간**에 생긴다 | 불일치 — 상대 진영 상실 34 → 오른쪽 진입 0 | 부분 일치 — 68 → 오른쪽 2·왼쪽 3 · 30′ 알리송 상실 → 로빈슨 역습 1건(32′ 빅찬스) | **빈도로는 불성립(2/102)** · 결정적 장면 1건만 — RM이 중앙에 있어서가 아니라 **오른쪽 높은 곳에서 볼을 잃은 뒤** |
+| H2 | 빌라 오른쪽이 비고 자주 뚫린다 | 부분 일치 — 양은 왼쪽 · 결정적 장면 오른쪽(D+2 서술 정정 obs#1150) | 부분 일치 — 파이널서드 터치 대칭 · 오픈플레이 크로스 9:2 오른쪽 · 상대 3곳(Fulhamish·FFScout·WLS) 같은 방향 | **부분 일치 2/2 — 반복된 것은 「오른쪽 배후를 상대 측면 자원이 침투」**(본머스 솔레르 · 풀럼 로빈슨). RB(보가르드 → 캐시)+RM 2인 대응이 상대 LB/LW 오버로드를 못 받는다. ⚠️ 풀럼은 원래 왼쪽 공격 성향(Fulhamish · 검색 요약) — 상대 고유 성향 몫이 섞임 |
+| H3 | 상대는 반대 전환으로 오른쪽을 공략 | 부분 일치 — 오른쪽 효율 높음 · 빈도 왼쪽 | 부분 일치 — 오른쪽 전환 5/5 성공 · 주 경로는 같은 쪽 전진 | **부분 일치 2/2** — 전환 「효율」은 오른쪽, 주 경로는 아니다 |
+- D+3 새 자료(Kelland·린델뢰프·일본어)는 네 가설 어느 쪽 방향도 바꾸지 않았다 → **정정 0 · `match_hypotheses` 새 행 0**.
+
+### ⭐ 게임 구현 함의 — 사용자 판단 대기 (불변규칙 12)
+| 후보 | 내용 | 근거 등급 | 판단 |
+|---|---|---|---|
+| ① RM 역할 유지 | 정본 RM(알리송 1위 wm_winger/Attack · 보유 Δ.194 결정)을 「안쪽 진입」형으로 바꾸지 않는다 — H1′·H2′이 「RM이 중앙에 있어 공백」을 지지하지 않음 | 실측(이벤트 2경기) | 권고: **유지** |
+| ② RB 포커스 보수화 | 캐시 정본 fb_wingback/Balanced → 더 수비적 포커스로 오른쪽 배후 대응 | 실측(H2 2/2) + **D(통설: 포커스를 낮추면 복귀가 늘어난다 — `game_system_changes` A·B·C 근거 없음)** | 사용자 판단 — 맨유전 캐시 징계로 RB 자체가 바뀜 → 대체 RB 확정 뒤 재판정 권고 |
+| ③ RDM 오른쪽 커버 | 카마라(RDM) 커버 범위를 오른쪽으로 | 실측(카마라 WS (47,34)) + **D(커버 지시 효과 미검증)** · 인게임 RDM DLP/Build-Up 「좋았다」(obs#1149)와 상충 가능 | 사용자 판단 |
+- FC26 사실 전용 없음. ⛔ 정본(`slot_canon_roles`·`team_tactic_setups` #46)·인게임 코드 `7ZTFKBu$37p7` **변경 없음**.
+
+### 슬롯 정본 보류 5건 — D+3 덧붙임
+- 표(맨시티 #63 · 본머스 #64 · 풀럼 #65 3열 · obs#1123 · ⑴에 카마라 obs#1149)는 위 「⭐ 슬롯 정본 보류 5건」 절에 있다 → 다시 붙이지 않았다. D+3 덧붙임은 ⑵ 하나: Kelland 「he had his defender beaten whenever he was played in behind」(배후로 받을 때마다 수비수를 제쳤다)는 **Attack 쪽 서술 근거**지만 커널은 Versatile .467 > Support .419 > Attack .400(무결정) — 방향 불변. 나머지 ⑴⑶⑷⑸ 새 자료 0.
+
+### 당일 판정 정정 · 미확인 확정
+- **정정 0건** — H1′·H2′·H2·H3·C1~C3 · 쟁점 #25 APPLIED · #3·#49 HELD 전부 불변 → `load_match_extras.py` corrections 없음.
+- **미확인 확정(빈칸 금지)**: ⑴ 66′ 3명 동시 교체 사유 — 1차 소스 0(영어 6개 출처 · 스페인어 EFE 요약) ⑵ 헤밍스 명단 밖 사유 — 1차 소스 0(영어 · Villa News·RotoWire 스니펫 · PL 명단 인원 제한 가능성은 D) ⑶ 자책골 접촉 — 영상 직접 확인 미수행 · 「경합 없음」 채택(영어 4곳 · 일본어 3곳 중 접촉 서술 1곳) ⑷ 아르벨로아·에메리 스페인어 원어 풀럼전 발언 — 0(스페인 매체 도구 차단) ⑸ The Athletic — 도메인 차단. 관전 메모에 남은 미확인·재판정 행 **0**.
+
+### `manager_profiles` 갱신 판정 — **갱신 불필요**
+- D+0에 pressing 축으로 덧붙인 「리드 뒤 블록 하강·후반 압박 소멸(2번째 리드 경기)」을 D+1~D+3 자료(아르벨로아 하프타임 강도 · 린델뢰프 「didn't manage to keep the ball」(공을 지키지 못했다))가 재확인할 뿐 내용을 바꾸지 않는다. 다른 축은 단일 경기로 일반화하지 않는다.
+
+### status 판단 — **`match_reports.status` = complete**
+- 필수 섹션 1~8 · 출전 16명 전원 `match_player_reports` · 경기 전용 `match_game_setups` 1행 + `match_player_prescriptions` 16행(선발 11 · 단일 경기 fit) · 영상 5편·주장 귀속 · D+1·D+2·D+3 완료. 얕은 축(전술 전용 분석 0 · The Athletic 차단 · 스페인어 원어 0)은 위 미확인 확정으로 남겼다 — 실측·프리셋·처방 층이 다 차 있어 draft 사유는 아니다(맨시티 #63·본머스 #64와 같은 기준). 게임 구현 판정 **추가 관찰** 그대로.
+
+### 0건 검색어 (이번 회차)
+- 영어: `Emery Barcelona press conference Cash replacement Fulham November 2026` · `Aston Villa Fulham 1-1 tactical analysis second half Emery Arbeloa` · `Emery press conference Barcelona Champions League Villa team news Wan-Bissaka Goretzka November 2`
+- 스페인어: `Unai Emery rueda de prensa Barcelona Aston Villa Champions noviembre`
+- 일본어: `鈴木彩艶 オウンゴール フラム 分析 11月2日`
+
+### DB 반영 (행 추가·덧붙임만)
+- `observations` #1153(D+3 종결 · 두 경기 가설 최종 · 구현 함의 대기) · `player_duties` 덧붙임 2행(만잠비 #20 · 잭슨 #199 — 원문+번역) · `match_reports` #65 `status` draft → **complete**. `match_hypotheses`·`match_videos`·`video_impl_claims` 새 행 0. 시즌 정본·경기 프리셋·선발 처방·`manager_profiles`·인게임 코드 변경 없음.
