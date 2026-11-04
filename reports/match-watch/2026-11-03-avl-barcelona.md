@@ -213,3 +213,62 @@
 - 이 회차가 경기 다음 날 오전(D+1) 수집 회차다 — §8이 D+1 결과다. 회견 원문(영어·스페인어)은 확보했고, 영상·전술 블로그·The Athletic은 아직 없다.
 - 당일 판정 정정: 없음. 서사가 실측과 충돌한 2건(Goal 「높은 수비 라인」 · VAVEL 「마첸이 야말에게 거듭 제쳐짐」)은 실측을 채택했다(불변규칙 3).
 - 다음 회차: 13:30 보강(`mw-avl-barcelona-collect-1330`) → D+2(11-05 20:00 `mw-avl-barcelona-d2`) → D+3(11-06 20:00 `mw-avl-barcelona-d3` · complete 판정). 남은 일: 필수 3채널 경기 후 영상 전사·요약·구현 주장(G17) · Tanswell · 스페인어 원어 회견 전문 · 전술 블로그 · R4 설계 의도 재판정.
+
+## D+1 보강 (2026-11-04 13:30)
+
+예약 회차 `mw-avl-barcelona-collect-1330`. 09:30 회차 산출(리포트 · `match_reports` #66)이 있어 보강만 했다. 조회 2026-11-04 13:00~13:40 KST · 회견·기사는 서브에이전트 위임(읽기 전용) · 영상 전사는 브라우저 패널(뮤트 · 포착 즉시 정지 · 탭 닫음).
+
+### ⑴ 감독 회견 — 새로 확보한 원문
+
+- **에메리 — ESPN**(Tom Hamilton · 11-03 · 본문): 「with how they are pressing. It's so intense.」(그들이 압박하는 방식이 정말 강렬하다.) · 「We have worked over four years together and we've made those mistakes before」(우리는 4년 동안 함께 해왔고 전에도 그런 실수를 했다) · 「The 3-0 is more than we suffered but we accept this defeat」(3-0은 우리가 겪은 것보다 큰 점수지만 이 패배를 받아들인다) — 고메스 실수를 압박 강도와 묶은 대목이 새것이다. https://www.espn.com/soccer/story/_/id/50373199/aston-villa-vs-barcelona-uefa-champions-league-unai-emery
+- **에메리 — BBC/TNT**(Yahoo 전재 · 본문): 「after the mistake we made, we were creating chances, facing them with individual duels」(실수 이후 우리는 기회를 만들었고 개인 듀얼로 맞섰다) · 「In this level you must be more ruthless.」(이 수준에서는 더 냉혹해야 한다.)
+- **에메리 — EFE**(Infobae · 본문): 「La clave no han sido solo las pérdidas, sino más bien que nos ha costado mucho ganar duelos con sus centrales.」(핵심은 볼 손실만이 아니라 상대 센터백과의 듀얼에서 이기기가 무척 힘들었다는 점이다.) · ⚠️ 09:30 회차의 Futeros 판 「La clave han sido las pérdidas de balón」(핵심은 볼 손실이었다)과 **받아쓰기가 갈린다** — 두 매체 모두 같은 Movistar 인터뷰 전사라 교차검증이 아니다. EFE 판이 더 길고 문맥(센터백 듀얼 = 잭슨 롱볼 표적)과 맞아 우선하되 확정하지 않는다. https://www.infobae.com/espana/agencias/2026/11/03/emery-el-barcelona-ha-merecido-ganar-aunque-hemos-tenido-nuestras-ocasiones/
+- **에메리 — Fichajes.com**(본문): 「el Barcelona ha aprovechado algún error nuestro en salida de balón」(바르사가 우리 빌드업 실수를 이용했다) · 「el partido ya se ha enfriado por completo」(경기가 완전히 식어버렸다).
+- **에메리 — Europa Press**(Infobae · 본문): 「Barcelona siempre va a ser el Barcelona」(바르셀로나는 언제나 바르셀로나다) · 「ellos al final han merecido ganar」(결국 그들이 이길 자격이 있었다).
+- **에메리 — AS**(Corrientes Hoy 전재 · 발췌 한 줄): 「Hemos demostrado en momentos estar al nivel del Barça」(우리는 순간순간 바르사 수준에 있음을 보여줬다).
+- 제목만 확인(본문 차단): Mundo Deportivo 「Tenemos que saber competir mejor」(더 잘 경쟁할 줄 알아야 한다) · SPORT 「El Barça ha aprovechado nuestros errores」(바르사가 우리 실수를 이용했다) · MARCA 「Este partido, contra uno de los favoritos, nos da información para ser mejores」(우승 후보 중 하나와의 이 경기가 더 나아질 정보를 준다) · Cadena SER · ABC 회견 기사.
+- **플릭 — SB Nation**(Yahoo · 본문): 「we were in the right position and we pressed them well, and they made this mistake and we used it」(올바른 위치에서 잘 압박했고, 그들이 실수했고 우리가 이용했다) · **Europa Press**(Infobae · 본문): 「Hemos estado muy compactos, la última línea ha jugado a un nivel increíble」(아주 콤팩트했고 최종 수비라인이 놀라운 수준이었다). 독일어 Stimmen 0건(laola1·audimax·fussballdaten만 검색됨).
+- **물었던 네 가지**: 고메스 오른쪽·카마라 왼쪽 배치 이유 **0** · 야말 대응 언급 **0**(경기 후 발언에 「Lamine」 없음) · 카마라·만잠비·잭슨·부엔디아·마첸 평가 **0** · 62′ 3인 교체 이유 **0**.
+
+### ⑵ Jacob Tanswell
+
+- X 직접 접근 실패(x.com 402 · xcancel 451). 검색 요약으로 10-31 트윗(캐시 대체는 「after Barcelona」(바르셀로나전 뒤에) 결정 — 에메리 전달)만 확인. 경기 후 트윗·The Athletic 경기 후 기사 **0건** — D+2에서 재시도.
+
+### ⑶ 필수 3채널 영상 — 전사 3편 · 요약·구현 주장 적재
+
+| 채널 | 영상 | 게시 | 요약 | 구현 주장 |
+|---|---|---|---|---|
+| UTV | 「ASTON VILLA LACKED BELIEF AGAINST BARCELONA」 `WaquXcu6cm8` | 11-04 라이브 · 17분 | 패인 = 「lacked belief」(믿음 부족) · 선발이 「conservative」(보수적) · 마첸 8점 「stepped up to the challenge of Lamine」(라민 야말이라는 과제를 감당했다) · 고메스 4점 · 잭슨 「ran the channel well」(채널을 잘 뛰었다) | 2행: 측면 인선(윙어) PENDING #6 · 잭슨 채널 PENDING #4 |
+| 1874 | 「Barcelona 3-0 Aston Villa \| Villa Fall Short At The Nou Camp」 `qe6-ojk1MG8` | 11-04 라이브 · 33분 | 7′ 실수는 고메스 「complete brain fade」(완전한 정신줄 놓기) · 짧은 배급은 지시된 방식 · 윙어 없는 선발이 역습 출구를 없앴다 · 최고 카마라·마첸 | 5행: 짧은 골킥 HELD #52 · 측면 인선 PENDING #6 · 만잠비 투톱 압박 HELD #15 · 빌드업 역습 HELD #1 · 바클리 6번 HELD #50 |
+| UTV | 「BARCELONA v ASTON VILLA \| LIVE CHAMPIONS LEAGUE WATCHALONG」 `IgwcExm5Xms` | 11-03 라이브 · 2시간 28분 | 라인업 때 만잠비 10번·부엔디아 LM(야말 협력 수비용) 예상 · 4-3-3 압박 → 4-4-2 블록 · 잭슨 채널 침투 6회 언급 · 「These corners are posing them all sorts of problems」(우리 코너가 상대에게 온갖 문제를 일으킨다) | 5행: 비보유 형태 HELD #15 · 2선 배치 HELD #21 · 야말 대응 NA · 잭슨 채널 HELD #5 · 강팀 원정 구상 HELD #2 |
+
+- The Villans: 경기 후 영상 **0편**(조회 13:10 KST · 최신은 경기 전 「Can Aston Villa Stop Lamine Yamal…」 `Ttk_jjW5KkU`) — D+2에서 재조회.
+- 경기 귀속은 색인 규칙이 못 잡아 `_video_overrides.json`에 report 66으로 적었다. 전 편 auto-caption — 인용은 confidence에 auto-caption.
+- 오인식 대조: 「Matson」= 마첸 · 「Gomez/Xiao Gomez」= 주앙 고메스 · 「Buender/Bender」= 부엔디아 · 「McInn」= 맥긴 · 「And Bay/Embi」= 음바예 · 「Leml/Lamin」= 야말. 1874 [25:24] 「Garnacho」는 출전하지 않은 선수라 요약에서 뺐다.
+
+### ⑷ 다국어 기사 — 새로 확보
+
+- **독일어 · audimax.de**(Christoph Greiner · 11-04 · 본문): 「Villa setzte im Mittelfeld auf dieselbe Manndeckung, mit der bereits Real Madrid und PSG angetreten waren」(빌라는 미드필드에서 레알 마드리드·PSG가 썼던 것과 같은 대인 마크를 택했다) — EFE 「marcajes individuales a Rodri y Pedri」(로드리·페드리 대인 마크)와 같은 방향(독립 매체 2곳).
+- **스페인어 · VAVEL España**(11-04 · 본문): 「Las llegadas de Matty Cash, João Gomes y Nicolas Jackson」(캐시·고메스·잭슨의 침투) · 「llegaron a generar acciones peligrosas a balón parado」(세트피스로 위협적인 장면을 만들었다).
+- **스페인어 · EFE 크로니카**(Infobae · 요약 기준): 경고 마첸 11′ · 부엔디아 31′ · 잭슨 44′ — 야말 쪽 두 명이 31분 안에 모두 경고(간접 정황).
+- **Goal 전술 보드 재게재**(LiveScore 등 · 요약 기준): 「Cash and Maatsen were told to stay home to counter Barcelona's wide men」(캐시와 마첸은 바르사 윙어 대응을 위해 자리를 지키라는 지시를 받았다).
+- 제목만(본문 차단): El Periódico 「Un Barça opresivo se recompone en Europa ante el asustadizo Aston Villa」(억압적인 바르사가 겁먹은 빌라를 상대로 유럽에서 회복하다) · La Vanguardia 「Unai Emery: Un camaleón en su templo maldito」(우나이 에메리: 저주받은 신전의 카멜레온).
+- **카탈루냐어 0건**: VilaWeb·3Cat/Esport3·RAC1 — 검색어 「crònica Lamine Raphinha Emery Kamara」·「anàlisi tàctica」·「roda de premsa」·「pressió」. Relevo·El País 경기 후 기사 0. MD·SPORT·AS·MARCA·El Periódico는 검색·WebFetch 모두 차단.
+- 영어 전술 블로그(TFA·BTL·Coaches' Voice·Spielverlagerung·7500 to Holte) **0건**.
+
+### ⑸ 09:30 회차 결손 점검
+
+- 출전 16명 전원: 국면 그리드(점유·비점유) · SS 운반 `carries_ss` · `match_player_reports` 다섯 칸 모두 채워짐 · G21(SS 확장·FotMob·WS JSON) 통과 — **채울 결손 없음**.
+
+### ⑹ 관전 메모 가설 — D+1 재대조
+
+| # | D0 | D+1 근거 | D+1 판정 |
+|---|---|---|---|
+| R4-H(고메스 RDM = 야말 대응) | 부분 일치 | 에메리 경기 후 발언 7곳에 배치·야말 언급 0 · 2차 서술은 「부엔디아·마첸 협력 수비」(UTV 워치얼롱)·「캐시·마첸 자리 지키기」(Goal)만 말하고 카마라 배치는 말하지 않는다 · 실측은 카마라 주변 상대 페르민 5·야말 5 | **부분 일치 유지** — 카마라가 야말 쪽 수비에 가담한 것은 실측으로 일치, 설계 의도는 1차 발언 0으로 미확인. 스페인어 회견 기사 본문(MD·SPORT·MARCA·SER·ABC) 미열람 — D+2·D+3 재시도 |
+| H2(잭슨 채널 침투) | 부분 일치 | UTV 「ran the channel well」(채널을 잘 뛰었다) · 워치얼롱 채널 침투 6회·내려와 받기 0 · EFE 「muchos balones en largo para que Nicolas Jackson se la jugara con la pareja de centrales」(잭슨이 센터백 둘과 맞붙도록 롱볼을 많이 보냈다) · 에메리 「nos ha costado mucho ganar duelos con sus centrales」(센터백과의 듀얼이 힘들었다) | **부분 일치 유지** — 채널·롱볼 표적은 서사 3곳 일치, 「내려오지 않음」은 시즌 평소 수준(9%→11%) |
+| R2(세트피스) | 리서치 덧붙임 | 빌라 코너 8(맥긴 3 · 부엔디아 1 · 음바예 4) → 슈팅 3(8′·9′·68′) · 워치얼롱 「These corners are posing them all sorts of problems」(코너가 상대에게 온갖 문제를 일으킨다) vs 1874 「set piece delivery … really poor」(세트피스 전달이 아주 나빴다 · 초반 이후) | 서사가 갈린다 — 실측은 초반 2개(8′·9′)와 음바예 4개 중 1개만 슈팅. 판정은 [세트피스 리서치](../research/2026-11-04-avl-set-pieces.md) 축에서 |
+| H1·H1′·H1″·H3·R1·R1′ | — | 새 1차 근거 없음(영상 3편 모두 좌우 교대·만잠비 LM/CAM 비교를 말하지 않음 · 워치얼롱 [01:26:54] 「Manzambi is the one that's running off Jackson」(만잠비가 잭슨 주변을 도는 쪽) = CAM 정합) | D0 판정 유지 |
+
+- DB: `match_hypotheses` D1 2행(#201 R4-H · #202 H2 · supersedes #194·#195) · `match_videos` 3편 요약 · `video_impl_claims` 12행.
+- ⛔ 정본(slot_canon_roles·team_tactic_setups·opt 처방) 변경 없음 — 구현 함의(3선 좌우·잭슨 채널 포커스·측면 인선)는 사용자 판단 대기.
+- 다음: D+2(11-05 20:00 `mw-avl-barcelona-d2`) — The Villans 경기 후 영상 · Tanswell · 스페인어 회견 기사 본문 · 전술 블로그 · R4 재판정.
