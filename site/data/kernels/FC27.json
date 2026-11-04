@@ -6124,6 +6124,17 @@
    "recorded": "2026-11-04",
    "source": "https://steamcommunity.com/app/4080220/discussions/0/562544805318581878/ (「FC 27 - FUT Developer Q&A Responses」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-10-14 게시 · 공식 Discord FUT Q&A 정리 21문답)",
    "title": "경기 중 전술 전환 시 포지션 버그 인정"
+  },
+  {
+   "area": "evolution",
+   "change": "⑴ 진화 요구조건의 포지션(예: Channel Surfer [SP 11] 「LM, LW」)은 **보조 포지션도 인정**한다 — 주 포지션 CAM(보조 RM·CM·LM·RW·LW)인 지모알로바 카드가 적용 대상에 들었다. ⑵ 인게임 「진화 제거」 직후에는 OVR 조건을 새로 만족해도 **진화 선택 목록에 바로 뜨지 않았고**, 재접속한 뒤에 떴다(EA 쪽 카드 상태 갱신 지연으로 보임).",
+   "confidence": "C — 통제 실측 1건(카드 1장 · 진화 1종). 주 포지션만 맞는 다른 진화에서도 같은지는 미확인.",
+   "evidence": "사용자 인게임 실측 2026-11-04 — 마녀의 시간(Witching Hour) 제거로 OVR 81→80이 된 지모알로바(주 CAM)에게 측면질주(Channel Surfer)가 처음엔 선택 불가 → 재접속 후 선택·시작. fut.gg 적용 가능 선수 목록(fc_evolution_eligibility)에도 이 카드가 올라 있었다(보조 포지션 기준과 정합).",
+   "id": 91,
+   "impact": "진화 후보를 고를 때 보조 포지션까지 넣어 조건을 판정해도 된다(진화 화면 후보 계산과 정합). 진화를 제거한 직후 「대상이 아니다」로 보이면 재접속 뒤 다시 확인한다 — 원장에 시작을 적기 전에 인게임 선택이 됐는지 확인할 것(이번에 한 번 미리 적었다가 무효 처리했다).",
+   "recorded": "2026-11-04",
+   "source": "사용자 인게임 확인(2026-11-04) · 원장 fut_evolution_log(지모알로바 #146 · Witching Hour 제거 · Channel Surfer 시작)",
+   "title": "진화 포지션 조건은 보조 포지션도 인정 · 제거 직후엔 재접속 필요"
   }
  ],
  "tactic_params": [
