@@ -2,6 +2,7 @@
 
 > CHE 수집 보류 해제 첫 회차(사용자 지시 2026-11-04) · 대상: 26/27 공식전 12경기(풀럼 08-24 ~ 맨유 10-31)
 > ⛔ **정본은 바꾸지 않았다.** 아래 후보는 전부 **사용자 판단 대기**다.
+> ✅ **2026-11-04 반영 완료** — 사용자 결정 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 · 결과는 맨 아래 「반영 결과」 절.
 
 ## 결론 먼저
 
@@ -102,3 +103,29 @@
 
 - 경기 리포트: `reports/match-watch/2026-10-17-che-everton.md` · `2026-10-24-che-tottenham.md` · `2026-10-28-che-liverpool.md` · `2026-10-31-che-man-united.md`
 - DB: `team_match_stats`(formation_v·ppda_v·def_x_v) · `match_game_setups` · `match_player_prescriptions` · `team_tactic_setups` #36·#41 · `slot_canon_roles` regime 2 FC27 · `prescriptions` opt:* regime 2 FC27 · `claim_issues` team_code='CHE' · obs#1155·#1156
+
+## 반영 결과 (2026-11-04 · 사용자 결정)
+
+| 축 | 반영 | 사용자 선택 |
+|---|---|---|
+| 팀 설정 | `team_tactic_setups` **optimal 신설** — 4-2-3-1 Wide · Balanced / Balanced / 52 (projected #41 3-4-2-1은 덮지 않고 유지) | 빌드업 「Balanced」 · 라인 「52」 |
+| 슬롯 정본 | `slot_canon_roles` regime 2 FC27 **4-2-3-1 Wide 11칸 신설**(3-4-2-1 11칸은 보조로 유지) | 갈린 칸 「합산 1위」 · DM 「LDM을 딥라잉·빌드업으로 나눔」 |
+| 선발 처방 | `core.opt_starters`(최근 공식전 5경기 슬롯 선발 최다 · 장기 부상 제외)로 재산출 · 3-4-2-1 전용 칸(CCB·LAM·LCM·RAM·RCM) 11행 `-deprecated` | — |
+| 범위 | `core.opt_starters.TEAMS = ("AVL","CHE")` · G8+가 같은 범위 · 정본 대조는 시즌 정본 포메이션(`canon_formation`) 칸만 | — |
+| 판정 쟁점 | CHE 9건 hold 해제 · #40·#41·#66·#68 APPLIED(#6·#20·#60 개별 REJECTED) | — |
+
+| 칸 | 정본 역할/포커스 | 비고 | 선발 |
+|---|---|---|---|
+| GK | gk_goalkeeper/Defend | 무결정 Δ.008 | 펜더스 |
+| RB | fb_wingback/Balanced | Δ.053 | 아체암퐁 |
+| RCB | cb_bpd/Aggressive | Δ.088 | 포파나 |
+| LCB | cb_bpd/Aggressive | 무결정 Δ.015 | 콜윌 |
+| LB | fb_wingback/Support | 무결정 Δ.011 | 하토(허리 · 11월 복귀 예상 — 장기 부상 아님) |
+| RDM | dm_dlp/Roaming | Δ.193 | 카이세도 |
+| LDM | dm_dlp/Build-Up | 2위(Δ.062) — 겹침 회피 | 헨더슨 |
+| RM | wm_winger/Attack | 무결정 Δ.034 | 네투 |
+| CAM | cam_playmaker/Roaming | Δ.026 | 파머 |
+| LM | wm_wideplm/Attack | Δ.034 | 로저스 |
+| ST | st_false9/Build-Up | Δ.031 | 주앙 페드루(허벅지 · 11월 복귀 예상 — 장기 부상 규칙 밖) |
+
+- 부상 3칸: GK 마르티네스 → 펜더스 · LCM 리스 제임스 → 칸 자체가 정본에서 빠짐(헨더슨 LDM) · ST 주앙 페드루는 `long_term_injured` 규칙(복귀 예상 이번 달 이후 · 또는 21일 경과)상 장기 부상이 아니라 선발 유지(네투가 임시 9번 1경기).

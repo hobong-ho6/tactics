@@ -8748,7 +8748,7 @@
      "issue": {
       "closed": null,
       "due": false,
-      "hold": true,
+      "hold": false,
       "id": 67,
       "phase": "watch",
       "resolution": "HELD",
@@ -12117,13 +12117,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-04",
       "due": true,
-      "hold": true,
+      "hold": false,
       "id": 41,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "헨더슨·카이세도 피벗 짝 균형",
       "trigger": "2026-10-09 이후 조던 헨더슨 선발 3경기 (4/3)"
      },
@@ -12135,8 +12135,8 @@
      "team_code": "CHE",
      "value": "henderson_caicedo_balance",
      "value_kr": "조던 헨더슨·카이세도 균형",
-     "verdict": "PENDING",
-     "verdict_note": "1경기 — 후반 상대 xG 1.03으로 결과 미증명. 재판정 조건: 두 선수 동시 선발 3경기 누적 시 상대 오픈플레이 xG 비교(obs#993)"
+     "verdict": "APPLIED",
+     "verdict_note": "1경기 — 후반 상대 xG 1.03으로 결과 미증명. 재판정 조건: 두 선수 동시 선발 3경기 누적 시 상대 오픈플레이 xG 비교(obs#993) [쟁점 #41 판정 2026-11-04 → APPLIED] 헨더슨·카이세도 동시 선발 PL 3경기 상대 오픈플레이 xG 0.37·0.13·0.51(평균 0.34) vs 그 전 PL 5경기 평균 1.16 — 균형 지지. 선발 정본(core.opt_starters 자동 산출)이 RDM 카이세도 dm_dlp/Roaming · LDM 헨더슨 dm_dlp/Build-Up(2026-11-04)"
     }
    ],
    "key_points": [
@@ -12233,7 +12233,7 @@
      "issue": {
       "closed": null,
       "due": false,
-      "hold": true,
+      "hold": false,
       "id": 42,
       "phase": "decide",
       "resolution": null,
@@ -14591,7 +14591,7 @@
      "issue": {
       "closed": null,
       "due": false,
-      "hold": true,
+      "hold": false,
       "id": 70,
       "phase": "watch",
       "resolution": "HELD",
@@ -16258,7 +16258,7 @@
      "issue": {
       "closed": null,
       "due": false,
-      "hold": true,
+      "hold": false,
       "id": 70,
       "phase": "watch",
       "resolution": "HELD",
@@ -16664,7 +16664,7 @@
      "issue": {
       "closed": null,
       "due": false,
-      "hold": true,
+      "hold": false,
       "id": 70,
       "phase": "watch",
       "resolution": "HELD",
@@ -19421,7 +19421,7 @@
      "issue": {
       "closed": null,
       "due": false,
-      "hold": true,
+      "hold": false,
       "id": 69,
       "phase": "watch",
       "resolution": "HELD",
@@ -19504,13 +19504,13 @@
      "focus": null,
      "headline_kr": "파머–로저스 연결이 강점(감독 명시)",
      "issue": {
-      "closed": null,
+      "closed": "2026-11-04",
       "due": true,
-      "hold": true,
+      "hold": false,
       "id": 68,
       "phase": "watch",
-      "resolution": "HELD",
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "CHE 슬롯 확정: 파머–로저스·피벗 짝",
       "trigger": "2026-10-21 이후 공식전 3경기 (3/3)"
      },
@@ -19522,8 +19522,8 @@
      "team_code": "CHE",
      "value": "콜 파머–모건 로저스 연결을 감독이 「우리가 가진 강점」으로 명시 — 좌(로저스)·우(파머) 연결축",
      "value_kr": "콜 파머–모건 로저스 연결을 감독이 우리가 가진 강점으로 명시 — 좌(로저스)·우(파머) 연결축",
-     "verdict": "HELD",
-     "verdict_note": "⭐ 1차 발언으로 **좌·우 연결축을 감독이 인정**했다. 우리 측 현황과 정합한다 — 로저스 `#421` LM `wm_wideplm/Attack`(좌) · 파머 `#484` RAM `cam_playmaker/Roaming`(우, obs#770에서 ST→RAM 재선언). 둘 다 안쪽 지향 창조형이라 **연결이 성립하는 조합**이다 ⇒ 처방 변경 없음. ⚠️ 재판정 조건: MdhMmXmVdUc(Brom Squad)가 지적한 **「두 10번을 같은 유형으로 두면 안 된다」**(obs#464 CAM 유형 함수)와 충돌하는지 — 로저스가 CAM 슬롯으로 올라오면 파머와 유형이 겹칠 수 있다. CHE 슬롯 확정 시 재검토."
+     "verdict": "APPLIED",
+     "verdict_note": "⭐ 1차 발언으로 **좌·우 연결축을 감독이 인정**했다. 우리 측 현황과 정합한다 — 로저스 `#421` LM `wm_wideplm/Attack`(좌) · 파머 `#484` RAM `cam_playmaker/Roaming`(우, obs#770에서 ST→RAM 재선언). 둘 다 안쪽 지향 창조형이라 **연결이 성립하는 조합**이다 ⇒ 처방 변경 없음. ⚠️ 재판정 조건: MdhMmXmVdUc(Brom Squad)가 지적한 **「두 10번을 같은 유형으로 두면 안 된다」**(obs#464 CAM 유형 함수)와 충돌하는지 — 로저스가 CAM 슬롯으로 올라오면 파머와 유형이 겹칠 수 있다. CHE 슬롯 확정 시 재검토. [쟁점 #68 재판정 2026-11-04 → APPLIED] 4-2-3-1 Wide 정본에서 파머 CAM cam_playmaker/Roaming · 로저스 LM wm_wideplm/Attack가 선발 정본(core.opt_starters · 2026-11-04) — 파머 CAM 3/3 · 로저스 LM 2/2(PL 4-2-3-1 3경기)로 좌·우 연결축 유지"
     }
    ],
    "key_points": [
@@ -20164,7 +20164,7 @@
      "issue": {
       "closed": null,
       "due": false,
-      "hold": true,
+      "hold": false,
       "id": 69,
       "phase": "watch",
       "resolution": "HELD",
@@ -20833,15 +20833,15 @@
      "focus": "Ball-Winning",
      "headline_kr": null,
      "issue": {
-      "closed": null,
-      "due": true,
-      "hold": true,
-      "id": 68,
-      "phase": "watch",
-      "resolution": "HELD",
-      "status": "open",
-      "title": "CHE 슬롯 확정: 파머–로저스·피벗 짝",
-      "trigger": "2026-10-21 이후 공식전 3경기 (3/3)"
+      "closed": "2026-11-04",
+      "due": false,
+      "hold": false,
+      "id": 90,
+      "phase": "decide",
+      "resolution": "REJECTED",
+      "status": "closed",
+      "title": "개별 종결 #60 (쟁점 #68에서)",
+      "trigger": "2026-11-04 이후"
      },
      "player": "라비아",
      "player_id": 65,
@@ -20851,8 +20851,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "HELD",
-     "verdict_note": "✅ **정합한다** — obs#770에서 라비아를 LCM `cm_b2b/**Ball-Winning**` .8599(Δ.0709 단독 확정)로 재선언했고, 이 영상은 그를 **바르코(메트로놈형)의 피지컬 보완재**로 지목한다. 볼 위닝형이 딥라잉 플레이메이커 옆에 서는 것은 우리 C3(피벗 분화)와 같은 원리다 ⇒ 변경 없음. ⭐ 재판정 조건: 바르코 축이 우리 DB에 아직 없다 — **바르코 실측이 생기면 피벗 짝(바르코 dlp ↔ 라비아 b2b/Ball-Winning) 정합성을 재산출**한다."
+     "verdict": "REJECTED",
+     "verdict_note": "✅ **정합한다** — obs#770에서 라비아를 LCM `cm_b2b/**Ball-Winning**` .8599(Δ.0709 단독 확정)로 재선언했고, 이 영상은 그를 **바르코(메트로놈형)의 피지컬 보완재**로 지목한다. 볼 위닝형이 딥라잉 플레이메이커 옆에 서는 것은 우리 C3(피벗 분화)와 같은 원리다 ⇒ 변경 없음. ⭐ 재판정 조건: 바르코 축이 우리 DB에 아직 없다 — **바르코 실측이 생기면 피벗 짝(바르코 dlp ↔ 라비아 b2b/Ball-Winning) 정합성을 재산출**한다. [쟁점 #68→#90 개별 종결 2026-11-04 → REJECTED] 시즌 정본이 4-2-3-1 Wide(2026-11-04)로 LCM 칸이 없다 — 라비아는 실측상 RDM dm_dlp/Roaming(맨유전 Δ.239)이고 선발 정본 RDM은 카이세도. cm_b2b/Ball-Winning 전제(3-4-2-1 LCM) 소멸"
     }
    ],
    "key_points": [
@@ -25598,7 +25598,7 @@
      "issue": {
       "closed": null,
       "due": false,
-      "hold": true,
+      "hold": false,
       "id": 65,
       "phase": "watch",
       "resolution": "HELD",
@@ -27112,7 +27112,7 @@
      "issue": {
       "closed": null,
       "due": false,
-      "hold": true,
+      "hold": false,
       "id": 65,
       "phase": "watch",
       "resolution": "HELD",
@@ -27138,15 +27138,15 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
-      "due": true,
-      "hold": true,
-      "id": 66,
-      "phase": "watch",
-      "resolution": "HELD",
-      "status": "open",
-      "title": "CHE 수비 접근: High vs Balanced",
-      "trigger": "2026-10-21 이후 공식전 3경기 (3/3)"
+      "closed": "2026-11-04",
+      "due": false,
+      "hold": false,
+      "id": 89,
+      "phase": "decide",
+      "resolution": "REJECTED",
+      "status": "closed",
+      "title": "개별 종결 #20 (쟁점 #66에서)",
+      "trigger": "2026-11-04 이후"
      },
      "player": null,
      "player_id": null,
@@ -27156,8 +27156,8 @@
      "team_code": "CHE",
      "value": "High",
      "value_kr": "높음",
-     "verdict": "HELD",
-     "verdict_note": "✅ 이미 일치 — `team_tactic_setups` regime 2 `reference`(알론소 블루프린트) = da=High · line=64. ⚠️ 단 같은 regime의 `projected` 행은 da=Balanced로 갈려 있고, gVmb3JTFcKU(Tactical Analysis)는 **시즌 개막 후 압박이 콤팩트해졌다**고 관측했다. ⇒ 재판정 조건: 공식전 3경기 이상 쌓이면 High ↔ Balanced 중 어느 쪽이 정본인지 확정."
+     "verdict": "REJECTED",
+     "verdict_note": "✅ 이미 일치 — `team_tactic_setups` regime 2 `reference`(알론소 블루프린트) = da=High · line=64. ⚠️ 단 같은 regime의 `projected` 행은 da=Balanced로 갈려 있고, gVmb3JTFcKU(Tactical Analysis)는 **시즌 개막 후 압박이 콤팩트해졌다**고 관측했다. ⇒ 재판정 조건: 공식전 3경기 이상 쌓이면 High ↔ Balanced 중 어느 쪽이 정본인지 확정. [쟁점 #66→#89 개별 종결 2026-11-04 → REJECTED] 수비 접근 High(reference #36 High/64)는 공식전 12경기 PPDA 8.38~22.67 중 High 구간(≤8) 0경기 — 실측 불일치. 시즌 정본 optimal은 Balanced(2026-11-04)"
     },
     {
      "axis": "team_axis",
@@ -27166,13 +27166,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-04",
       "due": true,
-      "hold": true,
+      "hold": false,
       "id": 40,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "CHE 빌드업 스타일: Counter·Balanced·Short",
       "trigger": "2026-08-11 이후 공식전 2경기 (12/2)"
      },
@@ -27184,8 +27184,8 @@
      "team_code": "CHE",
      "value": "Balanced",
      "value_kr": "균형",
-     "verdict": "PENDING",
-     "verdict_note": "⭐ 팀 설정 3축은 실측이 값을 갖지 않는 축이라 전술 분석이 1차 소스다(docs/30 7단계). 현행 regime 2는 `Short Passing`(projected·reference 둘 다)인데 이 자료는 **Balanced**, gVmb3JTFcKU는 실측 근거로 **Counter**(146패스·점유 25.6%)를 지지한다 ⇒ **세 값이 갈린다.** 마감 조건: 공식전 표본으로 점유·패스량을 2경기 이상 확인해 Counter/Balanced/Short Passing 중 결정."
+     "verdict": "APPLIED",
+     "verdict_note": "⭐ 팀 설정 3축은 실측이 값을 갖지 않는 축이라 전술 분석이 1차 소스다(docs/30 7단계). 현행 regime 2는 `Short Passing`(projected·reference 둘 다)인데 이 자료는 **Balanced**, gVmb3JTFcKU는 실측 근거로 **Counter**(146패스·점유 25.6%)를 지지한다 ⇒ **세 값이 갈린다.** 마감 조건: 공식전 표본으로 점유·패스량을 2경기 이상 확인해 Counter/Balanced/Short Passing 중 결정. [쟁점 #40 판정 2026-11-04 → APPLIED] CHE 시즌 정본 빌드업 Balanced 반영(2026-11-04 · team_tactic_setups optimal 4-2-3-1 Wide Balanced/Balanced/52) — 경기 프리셋 12경기 다수·중앙값 Balanced 5 · 사용자 결정 「Balanced」 · reports/research/2026-11-04-che-season-review.md ②"
     },
     {
      "axis": "team_axis",
@@ -27196,7 +27196,7 @@
      "issue": {
       "closed": null,
       "due": false,
-      "hold": true,
+      "hold": false,
       "id": 65,
       "phase": "watch",
       "resolution": "HELD",
@@ -31010,15 +31010,15 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
-      "due": true,
-      "hold": true,
-      "id": 40,
+      "closed": "2026-11-04",
+      "due": false,
+      "hold": false,
+      "id": 88,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
-      "title": "CHE 빌드업 스타일: Counter·Balanced·Short",
-      "trigger": "2026-08-11 이후 공식전 2경기 (12/2)"
+      "resolution": "REJECTED",
+      "status": "closed",
+      "title": "개별 종결 #6 (쟁점 #40에서)",
+      "trigger": "2026-11-04 이후"
      },
      "player": null,
      "player_id": null,
@@ -31028,8 +31028,8 @@
      "team_code": "CHE",
      "value": "Counter",
      "value_kr": "역습",
-     "verdict": "PENDING",
-     "verdict_note": "⭐⭐ 팀 설정 3축의 실측 침묵 구간(docs/30 7단계 — 전술 분석 1차 소스). 현행 regime 2 projected = Short Passing인데 146패스·점유 25.6%·「유도 후 역습」 구조는 Counter를 지지한다. ⛔ 단 이건 브라이턴전 1경기 표본이고 match_game_setups에 이미 경기 전용으로 반영된 값이므로, 시즌 정본 변경은 2경기 이상 반복 확인 후. 반박권 확인 완료: 실측 점유·패스량이 Counter와 모순되지 않는다."
+     "verdict": "REJECTED",
+     "verdict_note": "⭐⭐ 팀 설정 3축의 실측 침묵 구간(docs/30 7단계 — 전술 분석 1차 소스). 현행 regime 2 projected = Short Passing인데 146패스·점유 25.6%·「유도 후 역습」 구조는 Counter를 지지한다. ⛔ 단 이건 브라이턴전 1경기 표본이고 match_game_setups에 이미 경기 전용으로 반영된 값이므로, 시즌 정본 변경은 2경기 이상 반복 확인 후. 반박권 확인 완료: 실측 점유·패스량이 Counter와 모순되지 않는다. [쟁점 #40→#88 개별 종결 2026-11-04 → REJECTED] CHE 시즌 정본 빌드업 Balanced 확정(2026-11-04 사용자 결정 · team_tactic_setups optimal) — 공식전 12경기 경기 프리셋 Counter 4 · Balanced 5 · Short 3. Counter는 강팀 원정 경기 프리셋으로만 둔다(브라이턴·아스날·풀럼·스퍼스)"
     },
     {
      "axis": "team_axis",
@@ -31038,13 +31038,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-04",
       "due": true,
-      "hold": true,
+      "hold": false,
       "id": 66,
       "phase": "watch",
-      "resolution": "HELD",
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "CHE 수비 접근: High vs Balanced",
       "trigger": "2026-10-21 이후 공식전 3경기 (3/3)"
      },
@@ -31056,8 +31056,8 @@
      "team_code": "CHE",
      "value": "Balanced",
      "value_kr": "균형",
-     "verdict": "HELD",
-     "verdict_note": "이미 일치 — regime 2 projected = Balanced(전방 압박 아님). 영상의 「프리시즌 High → 시즌 중 콤팩트」 관측이 우리 Balanced 값을 지지한다. 재판정 조건: reference 행(알론소 블루프린트)은 da=High/line=64를 갖고 있어 두 행이 갈린다 — 공식전 3경기 이상 쌓이면 어느 쪽이 정본인지 확정."
+     "verdict": "APPLIED",
+     "verdict_note": "이미 일치 — regime 2 projected = Balanced(전방 압박 아님). 영상의 「프리시즌 High → 시즌 중 콤팩트」 관측이 우리 Balanced 값을 지지한다. 재판정 조건: reference 행(알론소 블루프린트)은 da=High/line=64를 갖고 있어 두 행이 갈린다 — 공식전 3경기 이상 쌓이면 어느 쪽이 정본인지 확정. [쟁점 #66 재판정 2026-11-04 → APPLIED] 수비 접근 Balanced를 시즌 정본(optimal · 2026-11-04 · 사용자 결정)으로 확정 — PPDA 8~12 6경기 · 12~18 4경기 · >18 2경기 · ≤8 0경기"
     }
    ],
    "key_points": [
@@ -32505,31 +32505,31 @@
    "trigger": "2026-10-21 이후"
   },
   {
-   "closed": null,
+   "closed": "2026-11-04",
    "due": true,
-   "hold": true,
+   "hold": false,
    "id": 40,
    "phase": "decide",
-   "resolution": null,
-   "status": "open",
+   "resolution": "APPLIED",
+   "status": "closed",
    "title": "CHE 빌드업 스타일: Counter·Balanced·Short",
    "trigger": "2026-08-11 이후 공식전 2경기 (12/2)"
   },
   {
-   "closed": null,
+   "closed": "2026-11-04",
    "due": true,
-   "hold": true,
+   "hold": false,
    "id": 41,
    "phase": "decide",
-   "resolution": null,
-   "status": "open",
+   "resolution": "APPLIED",
+   "status": "closed",
    "title": "헨더슨·카이세도 피벗 짝 균형",
    "trigger": "2026-10-09 이후 조던 헨더슨 선발 3경기 (4/3)"
   },
   {
    "closed": null,
    "due": false,
-   "hold": true,
+   "hold": false,
    "id": 42,
    "phase": "decide",
    "resolution": null,
@@ -32782,7 +32782,7 @@
   {
    "closed": null,
    "due": false,
-   "hold": true,
+   "hold": false,
    "id": 65,
    "phase": "watch",
    "resolution": "HELD",
@@ -32791,20 +32791,20 @@
    "trigger": "2026-12-31 이후"
   },
   {
-   "closed": null,
+   "closed": "2026-11-04",
    "due": true,
-   "hold": true,
+   "hold": false,
    "id": 66,
    "phase": "watch",
-   "resolution": "HELD",
-   "status": "open",
+   "resolution": "APPLIED",
+   "status": "closed",
    "title": "CHE 수비 접근: High vs Balanced",
    "trigger": "2026-10-21 이후 공식전 3경기 (3/3)"
   },
   {
    "closed": null,
    "due": false,
-   "hold": true,
+   "hold": false,
    "id": 67,
    "phase": "watch",
    "resolution": "HELD",
@@ -32813,20 +32813,20 @@
    "trigger": "2026-10-21 이후 리그 5경기 (2/5)"
   },
   {
-   "closed": null,
+   "closed": "2026-11-04",
    "due": true,
-   "hold": true,
+   "hold": false,
    "id": 68,
    "phase": "watch",
-   "resolution": "HELD",
-   "status": "open",
+   "resolution": "APPLIED",
+   "status": "closed",
    "title": "CHE 슬롯 확정: 파머–로저스·피벗 짝",
    "trigger": "2026-10-21 이후 공식전 3경기 (3/3)"
   },
   {
    "closed": null,
    "due": false,
-   "hold": true,
+   "hold": false,
    "id": 69,
    "phase": "watch",
    "resolution": "HELD",
@@ -32837,7 +32837,7 @@
   {
    "closed": null,
    "due": false,
-   "hold": true,
+   "hold": false,
    "id": 70,
    "phase": "watch",
    "resolution": "HELD",
@@ -33031,6 +33031,39 @@
    "status": "open",
    "title": "고레츠카–카마라 피벗 짝 연결·간격",
    "trigger": "2026-11-01 이후 고레츠카 LDM,RDM,CDM 선발 2경기 (0/2)"
+  },
+  {
+   "closed": "2026-11-04",
+   "due": false,
+   "hold": false,
+   "id": 88,
+   "phase": "decide",
+   "resolution": "REJECTED",
+   "status": "closed",
+   "title": "개별 종결 #6 (쟁점 #40에서)",
+   "trigger": "2026-11-04 이후"
+  },
+  {
+   "closed": "2026-11-04",
+   "due": false,
+   "hold": false,
+   "id": 89,
+   "phase": "decide",
+   "resolution": "REJECTED",
+   "status": "closed",
+   "title": "개별 종결 #20 (쟁점 #66에서)",
+   "trigger": "2026-11-04 이후"
+  },
+  {
+   "closed": "2026-11-04",
+   "due": false,
+   "hold": false,
+   "id": 90,
+   "phase": "decide",
+   "resolution": "REJECTED",
+   "status": "closed",
+   "title": "개별 종결 #60 (쟁점 #68에서)",
+   "trigger": "2026-11-04 이후"
   }
  ]
 }

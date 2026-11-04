@@ -15,7 +15,9 @@
 
 호출: scripts/export.py가 게이트 전에 apply()를 부른다(ship·export 어느 경로든 빠뜨릴 수 없다).
       변경이 있으면 tactic_change_log에 자동 사유로 적는다(G19).
-범위: AVL만(2026-10-20 사용자 결정 — CHE·LIV·ATM 보류 · G8+와 같은 범위).
+범위: AVL·CHE(2026-10-20 AVL만 → 2026-11-04 CHE 편입 · 사용자 「정본 후보는 반영」 · G8+와 같은 범위 · LIV·ATM 보류).
+⭐ 정본 포메이션(2026-11-04): 한 체제의 slot_canon_roles에 포메이션이 여럿이면(CHE 3-4-2-1 + 4-2-3-1 Wide) 칸 이름이 겹친다(GK·LCB·RCB·LM·RM·ST).
+   선발 산출·G8+는 **시즌 정본 포메이션** = team_tactic_setups kind='optimal'(그 버전 최신 행)의 formation 하나만 본다 — canon_formation().
 """
 import datetime as _dt
 
@@ -23,9 +25,9 @@ from core.aggregate import aggregate_rows, NON_OFFICIAL_COMP
 from core.game_version import current, OPT_PREFIX
 from core.kernel import Kernel
 
-__all__ = ["long_term_injured", "derive", "apply", "TEAMS", "RECENT_N"]
+__all__ = ["long_term_injured", "derive", "apply", "canon_formation", "TEAMS", "RECENT_N"]
 
-TEAMS = ("AVL",)
+TEAMS = ("AVL", "CHE")
 RECENT_N = 5
 REASON = f"자동 산출 core.opt_starters — 최근 클럽 공식전 {RECENT_N}경기 슬롯 선발 최다(장기 부상 제외)"
 _MON = {m: i for i, m in enumerate(("January", "February", "March", "April", "May", "June", "July",
@@ -59,6 +61,17 @@ def long_term_injured(con, today=None):
         if long_term:
             out[pid] = (value, detail, as_of)
     return out
+
+
+def canon_formation(con, rid, gv):
+    """그 체제·버전의 시즌 정본 포메이션 — kind='optimal' 최신 행. 없으면 slot_canon_roles 포메이션이 하나일 때 그것, 아니면 None."""
+    r = con.execute("SELECT formation FROM team_tactic_setups WHERE regime_id=? AND game_version=? AND kind='optimal' "
+                    "ORDER BY id DESC LIMIT 1", (rid, gv)).fetchone()
+    if r:
+        return r[0]
+    fs = [f for (f,) in con.execute("SELECT DISTINCT formation FROM slot_canon_roles WHERE regime_id=? AND game_version=?",
+                                    (rid, gv))]
+    return fs[0] if len(fs) == 1 else None
 
 
 def _official(col="m.competition"):
@@ -100,8 +113,11 @@ def derive(con):
             continue
         season = reps[0][2]
         reps = [r for r in reps if r[2] == season]
+        form = canon_formation(con, rid, gv)
+        if not form:
+            continue
         canon = {pos for (pos,) in con.execute(
-            "SELECT pos FROM slot_canon_roles WHERE regime_id=? AND game_version=?", (rid, gv))}
+            "SELECT pos FROM slot_canon_roles WHERE regime_id=? AND game_version=? AND formation=?", (rid, gv, form))}
         tally = {}   # (pos, pid) -> [count, latest_date, minutes]
         for rep_id, date, _ in reps:
             for pos, pid in con.execute("SELECT pos_label, player_id FROM match_player_prescriptions "
@@ -137,11 +153,10 @@ def apply(con, dry_run=False):
     for rid, season, gv, pos, pid, why in plan:
         kernel = kernels.setdefault(gv, Kernel(gv))
         kind = OPT_PREFIX + pos
-        role, focus = con.execute("SELECT role_id, focus FROM slot_canon_roles WHERE regime_id=? AND game_version=? AND pos=?",
-                                  (rid, gv, pos)).fetchone()
-        x, y = con.execute("SELECT x, y FROM slots s JOIN slot_canon_roles c ON c.regime_id=s.regime_id "
-                           "AND c.formation=s.formation AND c.pos=s.pos WHERE c.regime_id=? AND c.game_version=? AND c.pos=?",
-                           (rid, gv, pos)).fetchone()
+        form = canon_formation(con, rid, gv)
+        role, focus = con.execute("SELECT role_id, focus FROM slot_canon_roles WHERE regime_id=? AND game_version=? "
+                                  "AND formation=? AND pos=?", (rid, gv, form, pos)).fetchone()
+        x, y = con.execute("SELECT x, y FROM slots WHERE regime_id=? AND formation=? AND pos=?", (rid, form, pos)).fetchone()
         team = con.execute("SELECT team_code FROM regimes WHERE id=?", (rid,)).fetchone()[0]
         cur = con.execute("SELECT player_id FROM prescriptions WHERE regime_id=? AND season=? AND game_version=? "
                           "AND kind=? AND starter=1", (rid, season, gv, kind)).fetchall()

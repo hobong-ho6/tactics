@@ -430,22 +430,29 @@ def g8_prescription_checks(con):
     #   「장기」는 데이터에 명시 필드가 없어 보수적으로 둔다 — 복귀 예상(detail 「Month YYYY」)이 이번 달 뒤이거나,
     #   부상일(as_of) 21일 경과 뒤 최신 스냅샷(7일 내)이 여전히 injury.
     #   ⚠️ 범위는 G37과 같이 **AVL만**(2026-10-20 사용자 결정 — CHE·LIV·ATM 수집 잠정 보류 · 그 팀들의 선발층은 보류 해제 때 손본다).
+    #   ⭐ 2026-11-04 CHE 편입(사용자 「정본 후보는 반영」) — 범위 정본은 core.opt_starters.TEAMS 하나다(선발 산출과 같은 범위).
+    #      정본 대조는 시즌 정본 포메이션(core.opt_starters.canon_formation) 칸만 — 포메이션이 둘인 체제에서 칸 이름이 겹친다.
     from core.game_version import current as _cur, opt_sql as _opt
     gv_now = _cur(con)
-    G8X_TEAMS = ("AVL",)
+    from core.opt_starters import TEAMS as G8X_TEAMS, canon_formation as _cform
     _rids = [r for (r,) in con.execute(f"SELECT id FROM regimes WHERE team_code IN ({','.join('?'*len(G8X_TEAMS))})", G8X_TEAMS)]
     if gv_now and _rids:
         _in = ",".join(str(int(r)) for r in _rids)
+        con.execute("CREATE TEMP TABLE IF NOT EXISTS _cf37(regime_id INTEGER, formation TEXT)")
+        con.execute("DELETE FROM _cf37")
+        con.executemany("INSERT INTO _cf37 VALUES(?,?)", [(r, _cform(con, r, gv_now)) for r in _rids])
         out["opt_canon_mismatch"] = con.execute(f"""
             SELECT p.id, p.regime_id, p.pos_label, p.role_id||'/'||p.focus,
                    (SELECT group_concat(c.role_id||'/'||c.focus) FROM slot_canon_roles c
-                     WHERE c.regime_id=p.regime_id AND c.pos=p.pos_label AND c.game_version=p.game_version)
-            FROM prescriptions p
+                     WHERE c.regime_id=p.regime_id AND c.pos=p.pos_label AND c.game_version=p.game_version
+                       AND c.formation=cf.formation)
+            FROM prescriptions p JOIN _cf37 cf ON cf.regime_id=p.regime_id
             WHERE {_opt('p.kind')} AND p.kind NOT LIKE '%-deprecated' AND p.starter=1 AND p.game_version=? AND p.regime_id IN ({_in})
               AND EXISTS (SELECT 1 FROM slot_canon_roles c WHERE c.regime_id=p.regime_id AND c.pos=p.pos_label
-                            AND c.game_version=p.game_version)
+                            AND c.game_version=p.game_version AND c.formation=cf.formation)
               AND NOT EXISTS (SELECT 1 FROM slot_canon_roles c WHERE c.regime_id=p.regime_id AND c.pos=p.pos_label
-                            AND c.game_version=p.game_version AND c.role_id=p.role_id AND c.focus=p.focus)""",
+                            AND c.game_version=p.game_version AND c.formation=cf.formation
+                            AND c.role_id=p.role_id AND c.focus=p.focus)""",
             (gv_now,)).fetchall()
         # 장기 부상 판정은 core.opt_starters.long_term_injured 하나다 — 선발 자동 산출(export)과 같은 기준(obs#1148)
         from core.opt_starters import long_term_injured as _ltj

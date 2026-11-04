@@ -39854,6 +39854,242 @@
     "season": "2026/2027",
     "stat_value": "0"
    }
+  ],
+  "펜더스": [
+   {
+    "league": "Ligue 1",
+    "metric": "Red cards",
+    "metric_key": "red_cards",
+    "metric_kr": "레드카드",
+    "per90": 0.0,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "0"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Accurate passes",
+    "metric_key": "successful_passes",
+    "metric_kr": "정확한 패스",
+    "per90": 36.515151515151516,
+    "percentile": 100,
+    "percentile_per90": 100,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "1205"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Saves",
+    "metric_key": "saves",
+    "metric_kr": "세이브",
+    "per90": 3.2727272727272725,
+    "percentile": 95,
+    "percentile_per90": 74,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "108"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Pass accuracy",
+    "metric_key": "successful_passes_accuracy",
+    "metric_kr": "패스 정확도",
+    "per90": 86.07142857142857,
+    "percentile": 92,
+    "percentile_per90": 92,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "86.1"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "High claims",
+    "metric_key": "keeper_high_claim",
+    "metric_kr": "하이 클레임",
+    "per90": 0.8181818181818181,
+    "percentile": 82,
+    "percentile_per90": 55,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "27"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Long ball accuracy",
+    "metric_key": "long_ball_succeeeded_accuracy",
+    "metric_kr": "롱볼 정확도",
+    "per90": 45.1219512195122,
+    "percentile": 82,
+    "percentile_per90": 82,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "45.1"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "xA",
+    "metric_key": "expected_assists",
+    "metric_kr": "xA",
+    "per90": 0.0010037230271281617,
+    "percentile": 76,
+    "percentile_per90": 55,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "0.03"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Accurate long balls",
+    "metric_key": "long_balls_accurate",
+    "metric_kr": "정확한 롱볼",
+    "per90": 4.484848484848484,
+    "percentile": 76,
+    "percentile_per90": 39,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "148"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Save percentage",
+    "metric_key": "save_percentage",
+    "metric_kr": "세이브율",
+    "per90": 69.6774193548387,
+    "percentile": 74,
+    "percentile_per90": 74,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "69.7"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Clean sheets",
+    "metric_key": "clean_sheet_team_title",
+    "metric_kr": "클린시트",
+    "per90": 0.24242424242424243,
+    "percentile": 71,
+    "percentile_per90": 39,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "8"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Goals prevented",
+    "metric_key": "goals_prevented",
+    "metric_kr": "실점 방지",
+    "per90": 0.027112093838778408,
+    "percentile": 68,
+    "percentile_per90": 53,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "0.89"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Penalty save %",
+    "metric_key": "penalty_save_percent",
+    "metric_kr": "PK 선방률",
+    "per90": 20.0,
+    "percentile": 63,
+    "percentile_per90": 63,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "20.0"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Penalties saved",
+    "metric_key": "penalty_saves",
+    "metric_kr": "PK 선방",
+    "per90": 0.030303030303030304,
+    "percentile": 58,
+    "percentile_per90": 58,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "1"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Sweeper clearances",
+    "metric_key": "keeper_sweeper",
+    "metric_kr": "스위퍼 클리어",
+    "per90": 0.15151515151515152,
+    "percentile": 45,
+    "percentile_per90": 13,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "5"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Penalty goals conceded",
+    "metric_key": "penalty_goals_conceded",
+    "metric_kr": "PK 실점",
+    "per90": 0.12121212121212122,
+    "percentile": 18,
+    "percentile_per90": 42,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "4"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Yellow cards",
+    "metric_key": "yellow_cards",
+    "metric_kr": "옐로카드",
+    "per90": 0.09090909090909091,
+    "percentile": 8,
+    "percentile_per90": 18,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "3"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Goals conceded",
+    "metric_key": "goals_conceded",
+    "metric_kr": "실점",
+    "per90": 1.4242424242424243,
+    "percentile": 5,
+    "percentile_per90": 39,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "47"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Error led to goal",
+    "metric_key": "error_led_to_goal",
+    "metric_kr": "실책 실점",
+    "per90": 0.09090909090909091,
+    "percentile": 0,
+    "percentile_per90": 13,
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "stat_value": "3"
+   }
   ]
  },
  "form": {
@@ -41123,6 +41359,48 @@
    [
     "2026-10-31",
     7.1,
+    "Premier League"
+   ]
+  ],
+  "펜더스": [
+   [
+    "2026-08-05",
+    6.3,
+    "Club Friendly"
+   ],
+   [
+    "2026-08-15",
+    6.1,
+    "Club Friendly"
+   ],
+   [
+    "2026-08-27",
+    7.1,
+    "EFL Cup"
+   ],
+   [
+    "2026-09-09",
+    6.1,
+    "EFL Cup"
+   ],
+   [
+    "2026-10-17",
+    7.2,
+    "Premier League"
+   ],
+   [
+    "2026-10-24",
+    5.5,
+    "Premier League"
+   ],
+   [
+    "2026-10-28",
+    8.4,
+    "EFL Cup"
+   ],
+   [
+    "2026-10-31",
+    7.3,
     "Premier League"
    ]
   ]
@@ -44680,6 +44958,80 @@
     "player_id": 38,
     "pulled": "2026-09-13",
     "season": "2026/2027",
+    "value": "0"
+   }
+  ],
+  "펜더스": [
+   {
+    "league": "Ligue 1",
+    "metric": "Clean sheets",
+    "metric_kr": "클린시트",
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "8"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Goals conceded",
+    "metric_kr": "실점",
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "47"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Saved penalties",
+    "metric_kr": "PK 선방",
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "1/5"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Rating",
+    "metric_kr": "평점",
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "6.86"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Matches",
+    "metric_kr": "경기",
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "33"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Minutes played",
+    "metric_kr": "출전 시간",
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "2970"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Yellow cards",
+    "metric_kr": "경고",
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
+    "value": "3"
+   },
+   {
+    "league": "Ligue 1",
+    "metric": "Red cards",
+    "metric_kr": "퇴장",
+    "player_id": 98,
+    "pulled": "2026-08-21",
+    "season": "2025/2026",
     "value": "0"
    }
   ]
@@ -80910,6 +81262,20 @@
    "xg_pg": null
   },
   {
+   "avg_rating": 6.75,
+   "dw_pg": 0.57,
+   "ic_pg": 0.0,
+   "kp_pg": 0.0,
+   "label": "펜더스",
+   "minutes": 539,
+   "n": 8,
+   "player_id": 98,
+   "pos_group": "GK",
+   "tk_pg": 0.0,
+   "xa_pg": 0.001,
+   "xg_pg": 0.0
+  },
+  {
    "avg_rating": 6.77,
    "dw_pg": 3.5,
    "ic_pg": 0.92,
@@ -81718,7 +82084,7 @@
    "role_id": "gk_goalkeeper",
    "sample_n": null,
    "season": "2026-27",
-   "starter": 1,
+   "starter": 0,
    "x": 50,
    "y": null
   },
@@ -81766,37 +82132,37 @@
    "focus": "Roaming",
    "game_version": "FC27",
    "grid_club": null,
-   "kind": "opt:LAM",
+   "kind": "opt:LAM-deprecated",
    "label": "로저스",
    "map25": "253303X330503002022000000",
    "player_id": 13,
    "pos_label": "LAM",
-   "rationale": "[2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⭐신규 생성 — 그 슬롯에 이 선수의 fc26:opt 행이 없었다. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
+   "rationale": "[2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⭐신규 생성 — 그 슬롯에 이 선수의 fc26:opt 행이 없었다. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 -deprecated] 첼시 시즌 정본 포메이션이 4-2-3-1 Wide로 바뀌어(team_tactic_setups optimal) 이 칸(3-4-2-1 전용)은 선발 층에서 빠진다 — 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
    "role_id": "cam_playmaker",
    "sample_n": null,
    "season": "2026-27",
-   "starter": 1,
+   "starter": 0,
    "x": 35,
    "y": null
   },
   {
-   "avg_rating": null,
-   "fit_sim": null,
-   "focus": "Balanced",
+   "avg_rating": 7.72,
+   "fit_sim": 0.783,
+   "focus": "Attack",
    "game_version": "FC27",
    "grid_club": "Aston Villa (25/26)",
    "kind": "opt:LM",
    "label": "로저스",
-   "map25": null,
+   "map25": "54332X8341562115301011111",
    "player_id": 13,
    "pos_label": "LM",
-   "rationale": "알론소 26/27 처방(v1 CHE_PROJ) — LB는 인선 공백(쿠쿠렐라 OUT) ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
-   "role_id": "wm_insidefwd",
-   "sample_n": null,
+   "rationale": "알론소 26/27 처방(v1 CHE_PROJ) — LB는 인선 공백(쿠쿠렐라 OUT) ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)] 최근 5경기 중 3회 선발 · 마지막 2026-10-31 · 옛 역할 wm_insidefwd/Balanced(fit None) → 정본 wm_wideplm/Attack",
+   "role_id": "wm_wideplm",
+   "sample_n": 4,
    "season": "2026-27",
-   "starter": 0,
-   "x": null,
-   "y": null
+   "starter": 1,
+   "x": 15,
+   "y": 64
   },
   {
    "avg_rating": null,
@@ -82089,12 +82455,12 @@
    "focus": "Aggressive",
    "game_version": "FC27",
    "grid_club": null,
-   "kind": "opt:CCB",
+   "kind": "opt:CCB-deprecated",
    "label": "웨슬리 포파나",
    "map25": null,
    "player_id": 33,
    "pos_label": "CCB",
-   "rationale": "squad_entries 파생 후보 (2026-08-11 정합성 동기화 — 페이지 간 후보 풀 일치) ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
+   "rationale": "squad_entries 파생 후보 (2026-08-11 정합성 동기화 — 페이지 간 후보 풀 일치) ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 -deprecated] 첼시 시즌 정본 포메이션이 4-2-3-1 Wide로 바뀌어(team_tactic_setups optimal) 이 칸(3-4-2-1 전용)은 선발 층에서 빠진다 — 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
    "role_id": "cb_bpd",
    "sample_n": null,
    "season": "2026-27",
@@ -82122,21 +82488,21 @@
    "y": null
   },
   {
-   "avg_rating": null,
-   "fit_sim": null,
+   "avg_rating": 7.32,
+   "fit_sim": 0.774,
    "focus": "Aggressive",
    "game_version": "FC27",
    "grid_club": null,
    "kind": "opt:RCB",
    "label": "웨슬리 포파나",
-   "map25": null,
+   "map25": "001010002500157002X600144",
    "player_id": 33,
    "pos_label": "RCB",
-   "rationale": "알론소 26/27 처방(v1 CHE_PROJ) — LB는 인선 공백(쿠쿠렐라 OUT) ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
+   "rationale": "알론소 26/27 처방(v1 CHE_PROJ) — LB는 인선 공백(쿠쿠렐라 OUT) ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)] 최근 5경기 중 1회 선발 · 마지막 2026-10-31",
    "role_id": "cb_bpd",
-   "sample_n": null,
+   "sample_n": 4,
    "season": "2026-27",
-   "starter": 0,
+   "starter": 1,
    "x": null,
    "y": null
   },
@@ -82203,12 +82569,12 @@
    "focus": "Aggressive",
    "game_version": "FC27",
    "grid_club": null,
-   "kind": "opt:CCB",
+   "kind": "opt:CCB-deprecated",
    "label": "트레보 찰로바",
    "map25": null,
    "player_id": 34,
    "pos_label": "CCB",
-   "rationale": "알론소 26/27 처방(v1 CHE_PROJ) — LB는 인선 공백(쿠쿠렐라 OUT) ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
+   "rationale": "알론소 26/27 처방(v1 CHE_PROJ) — LB는 인선 공백(쿠쿠렐라 OUT) ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 -deprecated] 첼시 시즌 정본 포메이션이 4-2-3-1 Wide로 바뀌어(team_tactic_setups optimal) 이 칸(3-4-2-1 전용)은 선발 층에서 빠진다 — 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
    "role_id": "cb_bpd",
    "sample_n": null,
    "season": "2026-27",
@@ -82336,18 +82702,37 @@
    "focus": "Aggressive",
    "game_version": "FC27",
    "grid_club": null,
-   "kind": "opt:CCB",
+   "kind": "opt:CCB-deprecated",
    "label": "요렐 하토",
    "map25": null,
    "player_id": 35,
    "pos_label": "CCB",
-   "rationale": "squad_entries 파생 후보 (2026-08-11 정합성 동기화 — 페이지 간 후보 풀 일치) ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
+   "rationale": "squad_entries 파생 후보 (2026-08-11 정합성 동기화 — 페이지 간 후보 풀 일치) ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 -deprecated] 첼시 시즌 정본 포메이션이 4-2-3-1 Wide로 바뀌어(team_tactic_setups optimal) 이 칸(3-4-2-1 전용)은 선발 층에서 빠진다 — 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
    "role_id": "cb_bpd",
    "sample_n": null,
    "season": "2026-27",
    "starter": 0,
    "x": null,
    "y": null
+  },
+  {
+   "avg_rating": 6.63,
+   "fit_sim": 0.711,
+   "focus": "Support",
+   "game_version": "FC27",
+   "grid_club": "Chelsea",
+   "kind": "opt:LB",
+   "label": "요렐 하토",
+   "map25": "51010X5000650009300022200",
+   "player_id": 35,
+   "pos_label": "LB",
+   "rationale": "[2026-11-04 자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)] 최근 5경기 중 2회 선발 · 마지막 2026-10-24",
+   "role_id": "fb_wingback",
+   "sample_n": 3,
+   "season": "2026-27",
+   "starter": 1,
+   "x": 15,
+   "y": 32
   },
   {
    "avg_rating": null,
@@ -82450,12 +82835,12 @@
    "focus": "Roaming",
    "game_version": "FC27",
    "grid_club": "Chelsea 25/26",
-   "kind": "opt:LCM",
+   "kind": "opt:LCM-deprecated",
    "label": "모이세스 카이세도",
    "map25": null,
    "player_id": 36,
    "pos_label": "LCM",
-   "rationale": "[2026-08-19] FC26 5-4-1 정합 후 CHE LCM(x=40) 커널 최적. 카이세도는 RCM .880이 크게 우위(Δ.156). [투영판정 2026-09-15 · 할 일 16] ⚠️⚠️ **fit .724는 투영값이다.** 카이세도의 실측 처방은 **전부 `season=2025-26`**(#183 LDM n=6 · #333 measured:season:full2526 LDM n=25)이고, **26/27 출전은 친선 3경기 + FIFA 월드컵 1경기뿐 — 공식전(PL·UCL·EFL) 45분+ 출전이 0경기**다(obs#773의 공식전 필터 기준). .724는 25/26 LDM 그리드를 CHE LCM(x=40)에 투영한 값이다. ⏰ 재산출 조건: 26/27 공식전 LCM 포지션-순수 2경기. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
+   "rationale": "[2026-08-19] FC26 5-4-1 정합 후 CHE LCM(x=40) 커널 최적. 카이세도는 RCM .880이 크게 우위(Δ.156). [투영판정 2026-09-15 · 할 일 16] ⚠️⚠️ **fit .724는 투영값이다.** 카이세도의 실측 처방은 **전부 `season=2025-26`**(#183 LDM n=6 · #333 measured:season:full2526 LDM n=25)이고, **26/27 출전은 친선 3경기 + FIFA 월드컵 1경기뿐 — 공식전(PL·UCL·EFL) 45분+ 출전이 0경기**다(obs#773의 공식전 필터 기준). .724는 25/26 LDM 그리드를 CHE LCM(x=40)에 투영한 값이다. ⏰ 재산출 조건: 26/27 공식전 LCM 포지션-순수 2경기. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 -deprecated] 첼시 시즌 정본 포메이션이 4-2-3-1 Wide로 바뀌어(team_tactic_setups optimal) 이 칸(3-4-2-1 전용)은 선발 층에서 빠진다 — 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
    "role_id": "cm_playmaker",
    "sample_n": null,
    "season": "2026-27",
@@ -82488,18 +82873,37 @@
    "focus": "Defend",
    "game_version": "FC27",
    "grid_club": "Chelsea 25/26",
-   "kind": "opt:RCM",
+   "kind": "opt:RCM-deprecated",
    "label": "모이세스 카이세도",
    "map25": null,
    "player_id": 36,
    "pos_label": "RCM",
-   "rationale": "[2026-08-19] FC26 5-4-1 정합 후 CHE RCM(x=60) 커널 최적. 07-25 초안의 cm_holding/Ball-Winning은 같은 x에서 .548로 미달. ‖ [2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⚠️기존 사람 판단값은 cm_b2b/Ball-Winning였고 커널 최적값 cm_holding/Defend으로 교체했다. [투영판정 2026-09-15 · 할 일 16] ⚠️⚠️ **fit .885는 투영값이다.** 근거는 #372와 동일 — 실측 처방이 전부 `season=2025-26`이고 **26/27 공식전 45분+ 출전이 0경기**다(친선 3 + 월드컵 1은 obs#126·obs#773 기준으로 집계 제외). ⭐ 이 값이 `squad_entries`(regime 2 CM `cm_holding/Defend` .885)에도 그대로 들어가 있다 — **같은 투영값의 두 번째 사본**이다. ⏰ 재산출 조건: 26/27 공식전 RCM 포지션-순수 2경기. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
+   "rationale": "[2026-08-19] FC26 5-4-1 정합 후 CHE RCM(x=60) 커널 최적. 07-25 초안의 cm_holding/Ball-Winning은 같은 x에서 .548로 미달. ‖ [2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⚠️기존 사람 판단값은 cm_b2b/Ball-Winning였고 커널 최적값 cm_holding/Defend으로 교체했다. [투영판정 2026-09-15 · 할 일 16] ⚠️⚠️ **fit .885는 투영값이다.** 근거는 #372와 동일 — 실측 처방이 전부 `season=2025-26`이고 **26/27 공식전 45분+ 출전이 0경기**다(친선 3 + 월드컵 1은 obs#126·obs#773 기준으로 집계 제외). ⭐ 이 값이 `squad_entries`(regime 2 CM `cm_holding/Defend` .885)에도 그대로 들어가 있다 — **같은 투영값의 두 번째 사본**이다. ⏰ 재산출 조건: 26/27 공식전 RCM 포지션-순수 2경기. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 -deprecated] 첼시 시즌 정본 포메이션이 4-2-3-1 Wide로 바뀌어(team_tactic_setups optimal) 이 칸(3-4-2-1 전용)은 선발 층에서 빠진다 — 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
    "role_id": "cm_holding",
    "sample_n": null,
    "season": "2026-27",
-   "starter": 1,
+   "starter": 0,
    "x": 60,
    "y": 44
+  },
+  {
+   "avg_rating": 7.03,
+   "fit_sim": 0.888,
+   "focus": "Roaming",
+   "game_version": "FC27",
+   "grid_club": "Chelsea",
+   "kind": "opt:RDM",
+   "label": "모이세스 카이세도",
+   "map25": "011100448313993269X500322",
+   "player_id": 36,
+   "pos_label": "RDM",
+   "rationale": "[2026-11-04 자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)] 최근 5경기 중 3회 선발 · 마지막 2026-10-28",
+   "role_id": "dm_dlp",
+   "sample_n": 3,
+   "season": "2026-27",
+   "starter": 1,
+   "x": 60,
+   "y": 42
   },
   {
    "avg_rating": null,
@@ -82692,23 +83096,23 @@
    "y": null
   },
   {
-   "avg_rating": null,
-   "fit_sim": 0.914,
-   "focus": "Balanced",
+   "avg_rating": 7.16,
+   "fit_sim": 0.809,
+   "focus": "Attack",
    "game_version": "FC27",
    "grid_club": null,
    "kind": "opt:RM",
    "label": "페드루 네투",
-   "map25": null,
+   "map25": "102481115X101160001600023",
    "player_id": 38,
    "pos_label": "RM",
-   "rationale": "squad_entries 파생 후보 (2026-08-11 정합성 동기화 — 페이지 간 후보 풀 일치) ‖ [2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
+   "rationale": "squad_entries 파생 후보 (2026-08-11 정합성 동기화 — 페이지 간 후보 풀 일치) ‖ [2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)] 최근 5경기 중 4회 선발 · 마지막 2026-10-28 · 옛 역할 wm_winger/Balanced(fit 0.914) → 정본 wm_winger/Attack",
    "role_id": "wm_winger",
-   "sample_n": null,
+   "sample_n": 8,
    "season": "2026-27",
    "starter": 1,
-   "x": null,
-   "y": null
+   "x": 85,
+   "y": 64
   },
   {
    "avg_rating": 6.82,
@@ -82768,6 +83172,25 @@
    "y": null
   },
   {
+   "avg_rating": 6.85,
+   "fit_sim": 0.686,
+   "focus": "Roaming",
+   "game_version": "FC27",
+   "grid_club": "Chelsea",
+   "kind": "opt:CAM",
+   "label": "콜 파머",
+   "map25": "212331369X135521022300000",
+   "player_id": 39,
+   "pos_label": "CAM",
+   "rationale": "[2026-11-04 자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)] 최근 5경기 중 3회 선발 · 마지막 2026-10-31",
+   "role_id": "cam_playmaker",
+   "sample_n": 4,
+   "season": "2026-27",
+   "starter": 1,
+   "x": 50,
+   "y": 66
+  },
+  {
    "avg_rating": null,
    "fit_sim": null,
    "focus": "Attack",
@@ -82792,16 +83215,16 @@
    "focus": "Build-Up",
    "game_version": "FC27",
    "grid_club": null,
-   "kind": "opt:RAM",
+   "kind": "opt:RAM-deprecated",
    "label": "콜 파머",
    "map25": "12114014X5114790128200001",
    "player_id": 39,
    "pos_label": "RAM",
-   "rationale": "[2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⭐신규 생성 — 그 슬롯에 이 선수의 fc26:opt 행이 없었다. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
+   "rationale": "[2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⭐신규 생성 — 그 슬롯에 이 선수의 fc26:opt 행이 없었다. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 -deprecated] 첼시 시즌 정본 포메이션이 4-2-3-1 Wide로 바뀌어(team_tactic_setups optimal) 이 칸(3-4-2-1 전용)은 선발 층에서 빠진다 — 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
    "role_id": "cam_playmaker",
    "sample_n": null,
    "season": "2026-27",
-   "starter": 1,
+   "starter": 0,
    "x": 68,
    "y": null
   },
@@ -82901,23 +83324,23 @@
    "y": null
   },
   {
-   "avg_rating": null,
-   "fit_sim": 0.821,
-   "focus": "Support",
+   "avg_rating": 7.76,
+   "fit_sim": 0.655,
+   "focus": "Build-Up",
    "game_version": "FC27",
    "grid_club": null,
    "kind": "opt:ST",
    "label": "주앙 페드루",
-   "map25": null,
+   "map25": "277438X954345433141110111",
    "player_id": 40,
    "pos_label": "ST",
-   "rationale": "알론소 26/27 처방(v1 CHE_PROJ) — LB는 인선 공백(쿠쿠렐라 OUT) ‖ [2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⚠️기존 사람 판단값은 st_false9/Build-Up였고 커널 최적값 st_poacher/Support으로 교체했다. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
-   "role_id": "st_poacher",
-   "sample_n": null,
+   "rationale": "알론소 26/27 처방(v1 CHE_PROJ) — LB는 인선 공백(쿠쿠렐라 OUT) ‖ [2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⚠️기존 사람 판단값은 st_false9/Build-Up였고 커널 최적값 st_poacher/Support으로 교체했다. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)] 최근 5경기 중 2회 선발 · 마지막 2026-10-17 · 옛 역할 st_poacher/Support(fit 0.821) → 정본 st_false9/Build-Up",
+   "role_id": "st_false9",
+   "sample_n": 6,
    "season": "2026-27",
    "starter": 1,
-   "x": null,
-   "y": null
+   "x": 50,
+   "y": 87
   },
   {
    "avg_rating": null,
@@ -82982,16 +83405,16 @@
    "focus": "Roaming",
    "game_version": "FC27",
    "grid_club": "Chelsea 25/26",
-   "kind": "opt:LCM",
+   "kind": "opt:LCM-deprecated",
    "label": "리스 제임스",
    "map25": null,
    "player_id": 41,
    "pos_label": "LCM",
-   "rationale": "[2026-08-19] FC26 5-4-1 정합 후 CHE LCM(x=40) 커널 최적. 리스 제임스는 좌우 동일(.622) — 배정 자유도가 있다. ‖ [2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⚠️기존 사람 판단값은 cm_halfwinger/Support였고 커널 최적값 cm_playmaker/Roaming으로 교체했다. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
+   "rationale": "[2026-08-19] FC26 5-4-1 정합 후 CHE LCM(x=40) 커널 최적. 리스 제임스는 좌우 동일(.622) — 배정 자유도가 있다. ‖ [2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⚠️기존 사람 판단값은 cm_halfwinger/Support였고 커널 최적값 cm_playmaker/Roaming으로 교체했다. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 -deprecated] 첼시 시즌 정본 포메이션이 4-2-3-1 Wide로 바뀌어(team_tactic_setups optimal) 이 칸(3-4-2-1 전용)은 선발 층에서 빠진다 — 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
    "role_id": "cm_playmaker",
    "sample_n": null,
    "season": "2026-27",
-   "starter": 1,
+   "starter": 0,
    "x": 40,
    "y": 44
   },
@@ -83020,12 +83443,12 @@
    "focus": "Support",
    "game_version": "FC27",
    "grid_club": "Chelsea 25/26",
-   "kind": "opt:RCM",
+   "kind": "opt:RCM-deprecated",
    "label": "리스 제임스",
    "map25": null,
    "player_id": 41,
    "pos_label": "RCM",
-   "rationale": "[2026-08-19] FC26 5-4-1 정합 후 CHE RCM(x=60) 커널 최적. LCM과 동일값. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
+   "rationale": "[2026-08-19] FC26 5-4-1 정합 후 CHE RCM(x=60) 커널 최적. LCM과 동일값. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 -deprecated] 첼시 시즌 정본 포메이션이 4-2-3-1 Wide로 바뀌어(team_tactic_setups optimal) 이 칸(3-4-2-1 전용)은 선발 층에서 빠진다 — 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
    "role_id": "cm_halfwinger",
    "sample_n": null,
    "season": "2026-27",
@@ -83148,6 +83571,25 @@
    "y": null
   },
   {
+   "avg_rating": 7.16,
+   "fit_sim": 0.922,
+   "focus": "Balanced",
+   "game_version": "FC27",
+   "grid_club": "Chelsea",
+   "kind": "opt:RB",
+   "label": "아체암퐁",
+   "map25": "0001100026000290013X00135",
+   "player_id": 63,
+   "pos_label": "RB",
+   "rationale": "[2026-11-04 자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)] 최근 5경기 중 4회 선발 · 마지막 2026-10-31",
+   "role_id": "fb_wingback",
+   "sample_n": 5,
+   "season": "2026-27",
+   "starter": 1,
+   "x": 85,
+   "y": 32
+  },
+  {
    "avg_rating": null,
    "fit_sim": 0.635,
    "focus": "Aggressive",
@@ -83162,7 +83604,7 @@
    "role_id": "cb_bpd",
    "sample_n": null,
    "season": "2026-27",
-   "starter": 1,
+   "starter": 0,
    "x": 75,
    "y": null
   },
@@ -83200,7 +83642,7 @@
    "role_id": "wm_winger",
    "sample_n": null,
    "season": "2026-27",
-   "starter": 1,
+   "starter": 0,
    "x": 15,
    "y": null
   },
@@ -83210,12 +83652,12 @@
    "focus": "Aggressive",
    "game_version": "FC27",
    "grid_club": null,
-   "kind": "opt:CCB",
+   "kind": "opt:CCB-deprecated",
    "label": "아다라비오요",
    "map25": "001000100002X110573102400",
    "player_id": 94,
    "pos_label": "CCB",
-   "rationale": "[2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⭐신규 생성 — 그 슬롯에 이 선수의 fc26:opt 행이 없었다. ‖ [2026-09-02] CONFIRMED 이적(Tottenham)으로 starter 해제 — 후임 라크루아. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
+   "rationale": "[2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⭐신규 생성 — 그 슬롯에 이 선수의 fc26:opt 행이 없었다. ‖ [2026-09-02] CONFIRMED 이적(Tottenham)으로 starter 해제 — 후임 라크루아. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 -deprecated] 첼시 시즌 정본 포메이션이 4-2-3-1 Wide로 바뀌어(team_tactic_setups optimal) 이 칸(3-4-2-1 전용)은 선발 층에서 빠진다 — 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
    "role_id": "cb_bpd",
    "sample_n": null,
    "season": "2026-27",
@@ -83224,21 +83666,40 @@
    "y": null
   },
   {
+   "avg_rating": 6.88,
+   "fit_sim": 0.961,
+   "focus": "Defend",
+   "game_version": "FC27",
+   "grid_club": "Chelsea",
+   "kind": "opt:GK",
+   "label": "펜더스",
+   "map25": "0000000000000000020001X20",
+   "player_id": 98,
+   "pos_label": "GK",
+   "rationale": "[2026-11-04 자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)] 최근 5경기 중 3회 선발 · 마지막 2026-10-31",
+   "role_id": "gk_goalkeeper",
+   "sample_n": 5,
+   "season": "2026-27",
+   "starter": 1,
+   "x": 50,
+   "y": 6
+  },
+  {
    "avg_rating": null,
    "fit_sim": 0.844,
    "focus": "Aggressive",
    "game_version": "FC27",
    "grid_club": null,
-   "kind": "opt:CCB",
+   "kind": "opt:CCB-deprecated",
    "label": "라크루아",
    "map25": "000000001000X71228X101352",
    "player_id": 130,
    "pos_label": "CCB",
-   "rationale": "[2026-09-02 선발 공백 충원] 아다라비오요 CONFIRMED 이적(Tottenham)으로 CCB 공백 발생(G11). 잔여 CB 풀(하토·아체암퐁·라크루아·콜윌·포파나) 전원의 LCB/CCB/RCB 3-슬롯 커널 적합을 재계산해 조합 최적화 — 콜윌 LCB(.720)+라크루아 CCB(.844)+아체암퐁 RCB(.635) 합 2.199가 최댓값이었다. ⭐ 이 조합은 실제 CHE 풀럼전(2026-08-24, report 25) 선발 백3와 정확히 일치한다(독립 수렴). LCB·RCB는 기존 값 유지, CCB만 신규 충원. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
+   "rationale": "[2026-09-02 선발 공백 충원] 아다라비오요 CONFIRMED 이적(Tottenham)으로 CCB 공백 발생(G11). 잔여 CB 풀(하토·아체암퐁·라크루아·콜윌·포파나) 전원의 LCB/CCB/RCB 3-슬롯 커널 적합을 재계산해 조합 최적화 — 콜윌 LCB(.720)+라크루아 CCB(.844)+아체암퐁 RCB(.635) 합 2.199가 최댓값이었다. ⭐ 이 조합은 실제 CHE 풀럼전(2026-08-24, report 25) 선발 백3와 정확히 일치한다(독립 수렴). LCB·RCB는 기존 값 유지, CCB만 신규 충원. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:) ‖ [2026-11-04 -deprecated] 첼시 시즌 정본 포메이션이 4-2-3-1 Wide로 바뀌어(team_tactic_setups optimal) 이 칸(3-4-2-1 전용)은 선발 층에서 빠진다 — 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
    "role_id": "cb_bpd",
    "sample_n": null,
    "season": "2026-27",
-   "starter": 1,
+   "starter": 0,
    "x": 57,
    "y": null
   },
@@ -83262,19 +83723,19 @@
    "y": 37.82
   },
   {
-   "avg_rating": null,
-   "fit_sim": 0.72,
+   "avg_rating": 6.75,
+   "fit_sim": 0.919,
    "focus": "Aggressive",
    "game_version": "FC27",
    "grid_club": null,
    "kind": "opt:LCB",
    "label": "콜윌",
-   "map25": "30000470007X2009740054100",
+   "map25": "0010013000472004X51024510",
    "player_id": 131,
    "pos_label": "LCB",
    "rationale": "[2026-09-01 최적 스쿼드 재구성] 확정 이탈 선수가 starter=1을 잡아 리포트 FC26 설정시트가 깨져 있었다. ⭐사용자 지시로 **전술 정본(slot_canon·team_tactic_setups)이 따로 있으므로 이 시트는 「최적 스쿼드」로 구성**한다 — 기존 서열을 보존하지 않고 **커널 적합 총합 최대**가 되도록 11슬롯을 전역 배정했다(greedy + 2-opt 개선, 한 선수는 한 슬롯). 역할·포커스도 커널 산출 최적값을 쓴다. GK는 적합이 변별하지 못하므로(obs#220) **FC26 ovr** 기준이다 — 게임 입력용 시트이므로 실축 평점보다 게임 능치가 목적에 부합한다. pos_only 제약·적합 하한 0.40(런북 §3-5) 준수. ⭐신규 생성 — 그 슬롯에 이 선수의 fc26:opt 행이 없었다. ‖ 2026-10-22 FC27 승계(FC26 행 복사 · 역할표 전항 일치 확인 뒤 · kind fc26:opt:→opt:)",
    "role_id": "cb_bpd",
-   "sample_n": null,
+   "sample_n": 9,
    "season": "2026-27",
    "starter": 1,
    "x": 25,
@@ -83316,6 +83777,25 @@
    "season": "2025-26",
    "starter": 0,
    "x": 60,
+   "y": 42
+  },
+  {
+   "avg_rating": 6.95,
+   "fit_sim": 0.696,
+   "focus": "Build-Up",
+   "game_version": "FC27",
+   "grid_club": "Chelsea",
+   "kind": "opt:LDM",
+   "label": "조던 헨더슨",
+   "map25": "30322556215X4002562011410",
+   "player_id": 210,
+   "pos_label": "LDM",
+   "rationale": "[2026-11-04 자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)] 최근 5경기 중 2회 선발 · 마지막 2026-10-24",
+   "role_id": "dm_dlp",
+   "sample_n": 2,
+   "season": "2026-27",
+   "starter": 1,
+   "x": 40,
    "y": 42
   },
   {
@@ -85818,6 +86298,38 @@
     "season": "2025-26",
     "starts": null
    }
+  ],
+  "펜더스": [
+   {
+    "assists": 0,
+    "avg_rating": 7.2,
+    "competition": "EFL Cup",
+    "goals": 0,
+    "minutes": 270,
+    "n": 3,
+    "season": "2026-27",
+    "starts": 3
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.67,
+    "competition": "Premier League",
+    "goals": 0,
+    "minutes": 195,
+    "n": 3,
+    "season": "2026-27",
+    "starts": 2
+   },
+   {
+    "assists": 0,
+    "avg_rating": 6.2,
+    "competition": "Club Friendly",
+    "goals": 0,
+    "minutes": 74,
+    "n": 2,
+    "season": "2026-27",
+    "starts": 0
+   }
   ]
  },
  "setups": [
@@ -85831,6 +86343,18 @@
    "line_height": null,
    "rationale": "첼시 25/26 실측 기준선. ⚠️ 이 시즌 감독은 알론소가 아니다 — 마레스카(~2026-01-01) → 맥팔레인 대행 → 로즈니어(01-08~04-22) → 맥팔레인(04-22~). PL 9경기 표본 조사 결과 4-2-3-1이 7경기로 압도적 기본형이며 백3/백5는 로즈니어 말기 브라이턴 원정·맥팔레인 최종전의 예외. 결과 PL 10위, 26/27 유럽대회 없음. 이 행의 용도는 \"알론소 전술\"이 아니라 **선수 개인의 위치 성향 기준선**이다.",
    "season": "2025-26",
+   "tactic_code": null
+  },
+  {
+   "build_up_style": "Balanced",
+   "confidence": "MEDIUM-HIGH — 공식전 12경기 실측 + 사용자 결정 · 형태 이동 3경기 중 2경기는 부상(주앙 페드루·하토·라크루아) 영향 · 알론소 형태 1차 발언 0",
+   "defensive_approach": "Balanced",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "kind": "optimal",
+   "line_height": 52,
+   "rationale": "⭐ **FC27 26/27 첼시 시즌 정본(kind='optimal') 신설 — 2026-11-04.** 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위. 근거 reports/research/2026-11-04-che-season-review.md.\n포메이션 4-2-3-1 Wide: 공식전 12경기 표기 3-4-2-1 5 · 4-2-3-1 5 · 4-3-3 2(컵) — 10-17 이후 PL 3경기 연속 4-2-3-1, 3-4-2-1 0경기(obs#1156). 스퍼스전 3-4-2-1 표기는 실측상 백4(obs#1155).\n빌드업 Balanced: 경기 프리셋 Counter 4 · Balanced 5 · Short Passing 3 — 다수·중앙값(쟁점 #40). 강팀 원정 Counter는 경기 프리셋으로 둔다.\n수비 접근 Balanced: PPDA 8.38~22.67 · High 구간(≤8) 0경기 — projected #41의 Balanced 확인, reference #36 High/64는 실측 0(쟁점 #66).\n라인 52: 수비 액션 평균 높이(def_x) 측정 7경기 평균 39.5 · core.team_settings Balanced 구간 48~58 안.\n슬롯 11칸은 slot_canon_roles FC27 4-2-3-1 Wide가 정본이고 이 행은 팀 설정 3축만 든다. projected #41(3-4-2-1)은 덮지 않고 남긴다(3-4-2-1 정본 칸도 보조로 유지).",
+   "season": "2026-27",
    "tactic_code": null
   },
   {
@@ -88579,6 +89103,127 @@
    "role_id": "cam_playmaker",
    "source": "docs/11-alonso-tactics.md (obs#43~50·58·59) · team_tactic_setups id=8(레버쿠젠 이식 초안 2026-07-25) · obs#257(레버쿠젠→첼시 매칭 실측 검증) · 알론소 실측 SofaScore event 16285002·16767421 ‖ 2026-10-22 FC27 승계(migrate_fc27.py --carry): FC27 역할표가 FC26과 전항 일치 확인 뒤 FC26 판을 그대로 옮김",
    "updated": "2026-10-22"
+  },
+  {
+   "confidence": "MEDIUM — 3경기 표본 · 무결정 칸 표시",
+   "focus": "Defend",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "pos": "GK",
+   "rationale": "[2026-11-04 시즌 정본 신설 — 첼시 4-2-3-1 Wide] 합산 1위 Δ.008 — ⚠️ 실측 무결정(2위 gk_goalkeeper/Balanced .931). 사용자 결정 「합산 1위로 넣기」. 원천: PL 4-2-3-1 3경기(에버턴 #57·스퍼스 #67·맨유 #69) 선발 히트맵 합산(core.aggregate.aggregate_rows) ↔ core.kernel(FC27).top2 · 슬롯 regime 2 4-2-3-1 Wide.",
+   "role_id": "gk_goalkeeper",
+   "source": "reports/research/2026-11-04-che-season-review.md §⑤ · 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
+   "updated": "2026-11-04"
+  },
+  {
+   "confidence": "MEDIUM — 3경기 표본 · 무결정 칸 표시",
+   "focus": "Support",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "pos": "LB",
+   "rationale": "[2026-11-04 시즌 정본 신설 — 첼시 4-2-3-1 Wide] 합산 1위 Δ.011 — ⚠️ 실측 무결정(2위 fb_att_wb/Support .827 · 경기별 2/3은 fb_att_wb/Support). 사용자 결정 「합산 1위」. 원천: PL 4-2-3-1 3경기(에버턴 #57·스퍼스 #67·맨유 #69) 선발 히트맵 합산(core.aggregate.aggregate_rows) ↔ core.kernel(FC27).top2 · 슬롯 regime 2 4-2-3-1 Wide.",
+   "role_id": "fb_wingback",
+   "source": "reports/research/2026-11-04-che-season-review.md §⑤ · 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
+   "updated": "2026-11-04"
+  },
+  {
+   "confidence": "MEDIUM — 3경기 표본 · 무결정 칸 표시",
+   "focus": "Aggressive",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "pos": "LCB",
+   "rationale": "[2026-11-04 시즌 정본 신설 — 첼시 4-2-3-1 Wide] 합산 1위 Δ.015 — ⚠️ 실측 무결정(2위 cb_bpd/Build-Up .917). 사용자 결정 「합산 1위」. 원천: PL 4-2-3-1 3경기(에버턴 #57·스퍼스 #67·맨유 #69) 선발 히트맵 합산(core.aggregate.aggregate_rows) ↔ core.kernel(FC27).top2 · 슬롯 regime 2 4-2-3-1 Wide.",
+   "role_id": "cb_bpd",
+   "source": "reports/research/2026-11-04-che-season-review.md §⑤ · 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
+   "updated": "2026-11-04"
+  },
+  {
+   "confidence": "MEDIUM — 3경기 표본 · 무결정 칸 표시",
+   "focus": "Aggressive",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "pos": "RCB",
+   "rationale": "[2026-11-04 시즌 정본 신설 — 첼시 4-2-3-1 Wide] 3/3 경기 1위 · 합산 Δ.088(결정). 원천: PL 4-2-3-1 3경기(에버턴 #57·스퍼스 #67·맨유 #69) 선발 히트맵 합산(core.aggregate.aggregate_rows) ↔ core.kernel(FC27).top2 · 슬롯 regime 2 4-2-3-1 Wide.",
+   "role_id": "cb_bpd",
+   "source": "reports/research/2026-11-04-che-season-review.md §⑤ · 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
+   "updated": "2026-11-04"
+  },
+  {
+   "confidence": "MEDIUM — 3경기 표본 · 무결정 칸 표시",
+   "focus": "Balanced",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "pos": "RB",
+   "rationale": "[2026-11-04 시즌 정본 신설 — 첼시 4-2-3-1 Wide] 합산 1위 Δ.053(2위 fb_att_wb/Support .873) — 경기별로는 갈림(fb_wingback/Balanced·fb_fullback/Balanced·fb_att_wb/Support). 사용자 결정 「합산 1위」. 원천: PL 4-2-3-1 3경기(에버턴 #57·스퍼스 #67·맨유 #69) 선발 히트맵 합산(core.aggregate.aggregate_rows) ↔ core.kernel(FC27).top2 · 슬롯 regime 2 4-2-3-1 Wide.",
+   "role_id": "fb_wingback",
+   "source": "reports/research/2026-11-04-che-season-review.md §⑤ · 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
+   "updated": "2026-11-04"
+  },
+  {
+   "confidence": "MEDIUM — 3경기 표본 · 무결정 칸 표시",
+   "focus": "Build-Up",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "pos": "LDM",
+   "rationale": "[2026-11-04 시즌 정본 신설 — 첼시 4-2-3-1 Wide] 합산 1위는 dm_dlp/Roaming .838, 2위 dm_dlp/Build-Up .777(Δ.062). ⭐ 사용자 결정 「LDM을 딥라잉·빌드업으로 나눔」 — RDM과 같은 딥라잉 로밍 2명 겹침 회피(빌라 3선 조합 검토와 같은 문제 · 메모리 dm-role-pairing-ongoing-review). 커널 1위가 아님을 밝혀 둔다. 원천: PL 4-2-3-1 3경기(에버턴 #57·스퍼스 #67·맨유 #69) 선발 히트맵 합산(core.aggregate.aggregate_rows) ↔ core.kernel(FC27).top2 · 슬롯 regime 2 4-2-3-1 Wide.",
+   "role_id": "dm_dlp",
+   "source": "reports/research/2026-11-04-che-season-review.md §⑤ · 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
+   "updated": "2026-11-04"
+  },
+  {
+   "confidence": "MEDIUM — 3경기 표본 · 무결정 칸 표시",
+   "focus": "Roaming",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "pos": "RDM",
+   "rationale": "[2026-11-04 시즌 정본 신설 — 첼시 4-2-3-1 Wide] 3/3 경기 1위 · 합산 Δ.193(결정) — 라비아·카이세도. 원천: PL 4-2-3-1 3경기(에버턴 #57·스퍼스 #67·맨유 #69) 선발 히트맵 합산(core.aggregate.aggregate_rows) ↔ core.kernel(FC27).top2 · 슬롯 regime 2 4-2-3-1 Wide.",
+   "role_id": "dm_dlp",
+   "source": "reports/research/2026-11-04-che-season-review.md §⑤ · 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
+   "updated": "2026-11-04"
+  },
+  {
+   "confidence": "MEDIUM — 3경기 표본 · 무결정 칸 표시",
+   "focus": "Attack",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "pos": "LM",
+   "rationale": "[2026-11-04 시즌 정본 신설 — 첼시 4-2-3-1 Wide] 로저스 2/2 경기 1위 · 합산 Δ.034(2위 wm_winger/Balanced) — 문서 후보 그대로. 원천: PL 4-2-3-1 3경기(에버턴 #57·스퍼스 #67·맨유 #69) 선발 히트맵 합산(core.aggregate.aggregate_rows) ↔ core.kernel(FC27).top2 · 슬롯 regime 2 4-2-3-1 Wide.",
+   "role_id": "wm_wideplm",
+   "source": "reports/research/2026-11-04-che-season-review.md §⑤ · 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
+   "updated": "2026-11-04"
+  },
+  {
+   "confidence": "MEDIUM — 3경기 표본 · 무결정 칸 표시",
+   "focus": "Roaming",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "pos": "CAM",
+   "rationale": "[2026-11-04 시즌 정본 신설 — 첼시 4-2-3-1 Wide] 합산 1위 Δ.026(2위 cam_classic10/Versatile .663) — 파머 3/3, 역할은 경기별 갈림. 사용자 결정 「합산 1위」. 원천: PL 4-2-3-1 3경기(에버턴 #57·스퍼스 #67·맨유 #69) 선발 히트맵 합산(core.aggregate.aggregate_rows) ↔ core.kernel(FC27).top2 · 슬롯 regime 2 4-2-3-1 Wide.",
+   "role_id": "cam_playmaker",
+   "source": "reports/research/2026-11-04-che-season-review.md §⑤ · 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
+   "updated": "2026-11-04"
+  },
+  {
+   "confidence": "MEDIUM — 3경기 표본 · 무결정 칸 표시",
+   "focus": "Attack",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "pos": "RM",
+   "rationale": "[2026-11-04 시즌 정본 신설 — 첼시 4-2-3-1 Wide] 2/3 경기 1위 · 합산 Δ.034(무결정) — 문서 후보 그대로(사용자 「나머지 칸은 문서 후보 그대로」). 원천: PL 4-2-3-1 3경기(에버턴 #57·스퍼스 #67·맨유 #69) 선발 히트맵 합산(core.aggregate.aggregate_rows) ↔ core.kernel(FC27).top2 · 슬롯 regime 2 4-2-3-1 Wide.",
+   "role_id": "wm_winger",
+   "source": "reports/research/2026-11-04-che-season-review.md §⑤ · 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
+   "updated": "2026-11-04"
+  },
+  {
+   "confidence": "MEDIUM — 3경기 표본 · 무결정 칸 표시",
+   "focus": "Build-Up",
+   "formation": "4-2-3-1 Wide",
+   "game_version": "FC27",
+   "pos": "ST",
+   "rationale": "[2026-11-04 시즌 정본 신설 — 첼시 4-2-3-1 Wide] 합산 1위 Δ.031(2위 st_false9/Attack) — 주앙 페드루(에버턴)·네투(맨유) 가짜 9번 · 알론소 「Pedro … it's not new for him」(네투에게 낯선 자리가 아니다). 사용자 결정 「합산 1위」. 원천: PL 4-2-3-1 3경기(에버턴 #57·스퍼스 #67·맨유 #69) 선발 히트맵 합산(core.aggregate.aggregate_rows) ↔ core.kernel(FC27).top2 · 슬롯 regime 2 4-2-3-1 Wide.",
+   "role_id": "st_false9",
+   "source": "reports/research/2026-11-04-che-season-review.md §⑤ · 사용자 결정 2026-11-04(부모 세션 AskUserQuestion): 「첼시 정기 수집은 하지 않고 정본 후보는 반영」 + 빌드업 Balanced · 라인 52 · LDM 딥라잉·빌드업으로 나눔 · 갈린 칸 합산 1위",
+   "updated": "2026-11-04"
   }
  ],
  "slots": [
@@ -89522,6 +90167,204 @@
   }
  ],
  "tactic_changes": [
+  {
+   "after": "4-2-3-1 Wide · 빌드업 Balanced · 수비 Balanced · 라인 52",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "2026-27|optimal",
+   "layer": "team_setup",
+   "reason": "obs#1155·#1156 · reports/research/2026-11-04-che-season-review.md — 사용자 결정 2026-11-04 「첼시 정기 수집은 하지 않고 정본 후보는 반영」: CHE 시즌 정본 optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52 · 4-2-3-1 Wide 슬롯 정본 11칸(갈린 칸 합산 1위 · LDM dm_dlp/Build-Up으로 RDM과 나눔) · projected #41(3-4-2-1)은 유지",
+   "source": "tactic_changes.py 2026-11-04"
+  },
+  {
+   "after": "st_false9/Build-Up",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "4-2-3-1 Wide|ST",
+   "layer": "slot_canon",
+   "reason": "obs#1155·#1156 · reports/research/2026-11-04-che-season-review.md — 사용자 결정 2026-11-04 「첼시 정기 수집은 하지 않고 정본 후보는 반영」: CHE 시즌 정본 optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52 · 4-2-3-1 Wide 슬롯 정본 11칸(갈린 칸 합산 1위 · LDM dm_dlp/Build-Up으로 RDM과 나눔) · projected #41(3-4-2-1)은 유지",
+   "source": "tactic_changes.py 2026-11-04"
+  },
+  {
+   "after": "wm_winger/Attack",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "4-2-3-1 Wide|RM",
+   "layer": "slot_canon",
+   "reason": "obs#1155·#1156 · reports/research/2026-11-04-che-season-review.md — 사용자 결정 2026-11-04 「첼시 정기 수집은 하지 않고 정본 후보는 반영」: CHE 시즌 정본 optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52 · 4-2-3-1 Wide 슬롯 정본 11칸(갈린 칸 합산 1위 · LDM dm_dlp/Build-Up으로 RDM과 나눔) · projected #41(3-4-2-1)은 유지",
+   "source": "tactic_changes.py 2026-11-04"
+  },
+  {
+   "after": "dm_dlp/Roaming",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "4-2-3-1 Wide|RDM",
+   "layer": "slot_canon",
+   "reason": "obs#1155·#1156 · reports/research/2026-11-04-che-season-review.md — 사용자 결정 2026-11-04 「첼시 정기 수집은 하지 않고 정본 후보는 반영」: CHE 시즌 정본 optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52 · 4-2-3-1 Wide 슬롯 정본 11칸(갈린 칸 합산 1위 · LDM dm_dlp/Build-Up으로 RDM과 나눔) · projected #41(3-4-2-1)은 유지",
+   "source": "tactic_changes.py 2026-11-04"
+  },
+  {
+   "after": "cb_bpd/Aggressive",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "4-2-3-1 Wide|RCB",
+   "layer": "slot_canon",
+   "reason": "obs#1155·#1156 · reports/research/2026-11-04-che-season-review.md — 사용자 결정 2026-11-04 「첼시 정기 수집은 하지 않고 정본 후보는 반영」: CHE 시즌 정본 optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52 · 4-2-3-1 Wide 슬롯 정본 11칸(갈린 칸 합산 1위 · LDM dm_dlp/Build-Up으로 RDM과 나눔) · projected #41(3-4-2-1)은 유지",
+   "source": "tactic_changes.py 2026-11-04"
+  },
+  {
+   "after": "fb_wingback/Balanced",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "4-2-3-1 Wide|RB",
+   "layer": "slot_canon",
+   "reason": "obs#1155·#1156 · reports/research/2026-11-04-che-season-review.md — 사용자 결정 2026-11-04 「첼시 정기 수집은 하지 않고 정본 후보는 반영」: CHE 시즌 정본 optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52 · 4-2-3-1 Wide 슬롯 정본 11칸(갈린 칸 합산 1위 · LDM dm_dlp/Build-Up으로 RDM과 나눔) · projected #41(3-4-2-1)은 유지",
+   "source": "tactic_changes.py 2026-11-04"
+  },
+  {
+   "after": "wm_wideplm/Attack",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "4-2-3-1 Wide|LM",
+   "layer": "slot_canon",
+   "reason": "obs#1155·#1156 · reports/research/2026-11-04-che-season-review.md — 사용자 결정 2026-11-04 「첼시 정기 수집은 하지 않고 정본 후보는 반영」: CHE 시즌 정본 optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52 · 4-2-3-1 Wide 슬롯 정본 11칸(갈린 칸 합산 1위 · LDM dm_dlp/Build-Up으로 RDM과 나눔) · projected #41(3-4-2-1)은 유지",
+   "source": "tactic_changes.py 2026-11-04"
+  },
+  {
+   "after": "dm_dlp/Build-Up",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "4-2-3-1 Wide|LDM",
+   "layer": "slot_canon",
+   "reason": "obs#1155·#1156 · reports/research/2026-11-04-che-season-review.md — 사용자 결정 2026-11-04 「첼시 정기 수집은 하지 않고 정본 후보는 반영」: CHE 시즌 정본 optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52 · 4-2-3-1 Wide 슬롯 정본 11칸(갈린 칸 합산 1위 · LDM dm_dlp/Build-Up으로 RDM과 나눔) · projected #41(3-4-2-1)은 유지",
+   "source": "tactic_changes.py 2026-11-04"
+  },
+  {
+   "after": "cb_bpd/Aggressive",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "4-2-3-1 Wide|LCB",
+   "layer": "slot_canon",
+   "reason": "obs#1155·#1156 · reports/research/2026-11-04-che-season-review.md — 사용자 결정 2026-11-04 「첼시 정기 수집은 하지 않고 정본 후보는 반영」: CHE 시즌 정본 optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52 · 4-2-3-1 Wide 슬롯 정본 11칸(갈린 칸 합산 1위 · LDM dm_dlp/Build-Up으로 RDM과 나눔) · projected #41(3-4-2-1)은 유지",
+   "source": "tactic_changes.py 2026-11-04"
+  },
+  {
+   "after": "fb_wingback/Support",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "4-2-3-1 Wide|LB",
+   "layer": "slot_canon",
+   "reason": "obs#1155·#1156 · reports/research/2026-11-04-che-season-review.md — 사용자 결정 2026-11-04 「첼시 정기 수집은 하지 않고 정본 후보는 반영」: CHE 시즌 정본 optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52 · 4-2-3-1 Wide 슬롯 정본 11칸(갈린 칸 합산 1위 · LDM dm_dlp/Build-Up으로 RDM과 나눔) · projected #41(3-4-2-1)은 유지",
+   "source": "tactic_changes.py 2026-11-04"
+  },
+  {
+   "after": "gk_goalkeeper/Defend",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "4-2-3-1 Wide|GK",
+   "layer": "slot_canon",
+   "reason": "obs#1155·#1156 · reports/research/2026-11-04-che-season-review.md — 사용자 결정 2026-11-04 「첼시 정기 수집은 하지 않고 정본 후보는 반영」: CHE 시즌 정본 optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52 · 4-2-3-1 Wide 슬롯 정본 11칸(갈린 칸 합산 1위 · LDM dm_dlp/Build-Up으로 RDM과 나눔) · projected #41(3-4-2-1)은 유지",
+   "source": "tactic_changes.py 2026-11-04"
+  },
+  {
+   "after": "cam_playmaker/Roaming",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "4-2-3-1 Wide|CAM",
+   "layer": "slot_canon",
+   "reason": "obs#1155·#1156 · reports/research/2026-11-04-che-season-review.md — 사용자 결정 2026-11-04 「첼시 정기 수집은 하지 않고 정본 후보는 반영」: CHE 시즌 정본 optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52 · 4-2-3-1 Wide 슬롯 정본 11칸(갈린 칸 합산 1위 · LDM dm_dlp/Build-Up으로 RDM과 나눔) · projected #41(3-4-2-1)은 유지",
+   "source": "tactic_changes.py 2026-11-04"
+  },
+  {
+   "after": "주앙 페드루: st_false9/Build-Up",
+   "before": "주앙 페드루: st_poacher/Support",
+   "changed_at": "2026-11-04",
+   "key": "ST",
+   "layer": "starter",
+   "reason": "자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)",
+   "source": "core.opt_starters"
+  },
+  {
+   "after": "페드루 네투: wm_winger/Attack",
+   "before": "페드루 네투: wm_winger/Balanced",
+   "changed_at": "2026-11-04",
+   "key": "RM",
+   "layer": "starter",
+   "reason": "자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)",
+   "source": "core.opt_starters"
+  },
+  {
+   "after": "모이세스 카이세도: dm_dlp/Roaming",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "RDM",
+   "layer": "starter",
+   "reason": "자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)",
+   "source": "core.opt_starters"
+  },
+  {
+   "after": "웨슬리 포파나: cb_bpd/Aggressive",
+   "before": "아체암퐁: cb_bpd/Aggressive",
+   "changed_at": "2026-11-04",
+   "key": "RCB",
+   "layer": "starter",
+   "reason": "자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)",
+   "source": "core.opt_starters"
+  },
+  {
+   "after": "아체암퐁: fb_wingback/Balanced",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "RB",
+   "layer": "starter",
+   "reason": "자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)",
+   "source": "core.opt_starters"
+  },
+  {
+   "after": "로저스: wm_wideplm/Attack",
+   "before": "팔레스트라: wm_winger/Balanced",
+   "changed_at": "2026-11-04",
+   "key": "LM",
+   "layer": "starter",
+   "reason": "자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)",
+   "source": "core.opt_starters"
+  },
+  {
+   "after": "조던 헨더슨: dm_dlp/Build-Up",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "LDM",
+   "layer": "starter",
+   "reason": "자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)",
+   "source": "core.opt_starters"
+  },
+  {
+   "after": "요렐 하토: fb_wingback/Support",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "LB",
+   "layer": "starter",
+   "reason": "자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)",
+   "source": "core.opt_starters"
+  },
+  {
+   "after": "펜더스: gk_goalkeeper/Defend",
+   "before": "마르티네스: gk_goalkeeper/Defend",
+   "changed_at": "2026-11-04",
+   "key": "GK",
+   "layer": "starter",
+   "reason": "자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)",
+   "source": "core.opt_starters"
+  },
+  {
+   "after": "콜 파머: cam_playmaker/Roaming",
+   "before": null,
+   "changed_at": "2026-11-04",
+   "key": "CAM",
+   "layer": "starter",
+   "reason": "자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)",
+   "source": "core.opt_starters"
+  },
   {
    "after": null,
    "before": "말로 귀스토: fb_att_wb/Support",
@@ -91097,6 +91940,50 @@
     "metric_kr": "터치",
     "percentile": 35,
     "pos_group": "Stats compared to other attacking midfielders/wingers",
+    "pulled": "2026-08-21"
+   }
+  ],
+  "98": [
+   {
+    "metric": "Clean sheets",
+    "metric_kr": "클린시트",
+    "percentile": 22,
+    "pos_group": "Stats compared to other keepers",
+    "pulled": "2026-08-21"
+   },
+   {
+    "metric": "Goals conceded",
+    "metric_kr": "실점",
+    "percentile": 50,
+    "pos_group": "Stats compared to other keepers",
+    "pulled": "2026-08-21"
+   },
+   {
+    "metric": "High claims",
+    "metric_kr": "하이 클레임",
+    "percentile": 67,
+    "pos_group": "Stats compared to other keepers",
+    "pulled": "2026-08-21"
+   },
+   {
+    "metric": "Long ball percentage",
+    "metric_kr": "롱볼 성공률",
+    "percentile": 94,
+    "pos_group": "Stats compared to other keepers",
+    "pulled": "2026-08-21"
+   },
+   {
+    "metric": "Save percentage",
+    "metric_kr": "세이브율",
+    "percentile": 76,
+    "pos_group": "Stats compared to other keepers",
+    "pulled": "2026-08-21"
+   },
+   {
+    "metric": "Sweeper actions",
+    "metric_kr": "스위퍼 액션",
+    "percentile": 4,
+    "pos_group": "Stats compared to other keepers",
     "pulled": "2026-08-21"
    }
   ]
