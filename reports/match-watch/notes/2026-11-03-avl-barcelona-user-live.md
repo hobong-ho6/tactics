@@ -123,3 +123,9 @@
 | # | 가설 | 실측으로 무엇을 보나 |
 |---|---|---|
 | H3 | **음바예(LM) 투입 후 마첸(LB)이 인버티드 윙백처럼 안쪽으로 좁혀 들어온다** — 음바예가 왼쪽 폭을 맡으니 마첸이 하프스페이스·중원으로 이동 | ⑴ 음바예 투입 시각을 경계로 마첸의 볼 소유 국면 그리드·평균 위치 비교 — 교체 후 1·2열(왼쪽 하프스페이스·중앙 쪽) 비중과 높이가 올라가는가 ⑵ 마첸 패스 출발·수신 위치(안쪽 빌드업 참여 · 3선 옆 자리) ⑶ 교체 전 같은 구간에서 마첸이 터치라인(0열)을 탔는지 대비 ⑷ 수비 전환 때 왼쪽 측면 커버를 누가 했나(음바예·카마라/LDM) ⑸ FC 구현 후보(판정 뒤): LB `fb_inverted`(인버티드 윙백) 계열 — 음바예 같은 왼쪽 폭 담당 윙어와 짝일 때의 조건부 설정인지 사용자 판단 |
+
+## 수집 추가 — 탄스웰 경기 전 발언 (2026-11-04 · 부모 세션)
+
+- 1874 「Jacob Tanswell Reports From Barcelona」(2026-11-02 · `Ud2cwU17zoU` · 전사 `reports/transcripts/Ud2cwU17zoU.en.md` · auto-caption) [13:13]: 「Could you see Kamara and Joe Gomez just swap areas? So, Kamara patrols that left-hand side.」(카마라와 고메스가 자리를 바꿀 수도 있지 않을까? 그러면 카마라가 왼쪽을 지킨다) — **경기 전날 기자가 3선 좌우 교대를 예상했고 실제로 일어났다.** R4-H(야말 대응 설계)의 2차 근거로 쓴다(감독 1차 발언은 여전히 0).
+- 같은 영상: [12:43] 알리송 선발 제외 예상 · [16:47] 「he does not want his full backs defending further than the 18 width of the 18-yard box」(풀백이 18야드 박스 폭보다 바깥에서 수비하지 않게 한다) · [21:53] 잭슨 왼쪽 채널 위협(H2).
+- ⭐ D+2 회차(`mw-avl-barcelona-d2`)가 이 영상을 match_videos에 적재·요약·구현 주장(G17)하고 R4-H·H2를 재판정할 것. 정리 문서: `reports/research/2026-11-04-tanswell-roundup.md`.
