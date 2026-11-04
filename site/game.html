@@ -59,7 +59,17 @@
 .chg-item .when{font-size:11px;color:var(--dim);white-space:nowrap}
 .chg-item[open]>summary{border-bottom:1px solid var(--line)}
 .chg-body{padding:8px 14px 10px;font-size:13px;line-height:1.7}
-.chg-body h4{font-size:12px;margin:10px 0 2px;color:var(--acc)}
+.chg-body h4{font-size:12px;margin:12px 0 4px;color:var(--acc);letter-spacing:.02em}
+.chg-body h4:first-child{margin-top:2px}
+.chg-body .sec-imp{background:rgba(var(--ink-rgb),.035);border-radius:8px;padding:8px 12px}
+.chg-body .sec-ev{font-size:12.5px}
+/* 인용 쌍 — 번역을 본문으로, 원문은 그 아래 작게(3차 · 사용자 「여기 글도 더 가독성 좋게」) */
+.chg-body .qp{display:block;margin:6px 0;padding:4px 0 4px 10px;border-left:3px solid var(--acc);text-indent:0}
+.chg-body .qk{display:block;color:var(--txt)}
+.chg-body .qe{display:block;font-size:11.5px;color:var(--dim);font-style:italic;margin-top:1px}
+.chg-meta{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line);font-size:11.5px;color:var(--dim);max-width:var(--measure);line-height:1.6}
+.chg-meta .lk{display:inline-block;border:1px solid var(--line);border-radius:10px;padding:0 8px;margin:2px 4px 2px 0;color:var(--acc);text-decoration:none;white-space:nowrap}
+.chg-meta .row{margin-top:3px}
 .chg-g{display:inline-block;min-width:20px;text-align:center;font-size:11px;font-weight:700;border-radius:4px;padding:1px 5px;color:#fff;background:var(--dim)}
 .chg-g.A{background:var(--ok)}.chg-g.B{background:var(--acc)}.chg-g.C{background:var(--warn)}.chg-g.D{background:var(--bad)}
 </style></head><body>
@@ -189,6 +199,18 @@ const gradeOf=c=>{const m=String(c??'').match(/^\s*([ABCD])\b/);return m?m[1]:(/
 const clip=(t,n)=>{let s=String(t??'').replace(/\*\*|`/g,'').replace(/^[⭐⛔⚠️\s]+/u,'').replace(/^\[[^\]]*\]\s*/,'')
   .replace(/「[^」]{25,}」(\(「[^」]*」\))?/g,'「…」');const i=s.search(/ — |\. |: |⇒/);if(i>12&&i<n)s=s.slice(0,i);return s.length>n?s.slice(0,n-1)+'…':s;};
 const headOf=t=>clip(t,80), impOf=t=>t?'→ '+clip(t,95):'';
+// 인용 쌍 「원문」(「번역」) / 「원문」(번역) → 번역을 위·원문을 아래로 나눈 블록. 원문이 라틴 문자일 때만(한국어 「…」 강조는 그대로).
+const fmt=t=>prose(t).replace(/「([^」]{3,}?)」\s*\(\s*「?([^)」]+?)」?\s*\)/g,(m,o,k)=>
+  /[A-Za-z]{3}/.test(o)&&/[가-힣]/.test(k)?`<span class="qp"><span class="qk">${k}</span><span class="qe">${o}</span></span>`:m)
+  .replace(/<\/span><\/span>\s*·\s*/g,'</span></span>');   // 블록 사이에 남는 구분점(·) 제거
+// 출처 — URL은 사이트 이름 링크로, 나머지 설명은 한 단락으로. 신뢰도는 등급 배지와 따로.
+const meta=c=>{const s=String(c.source??''), urls=[...new Set(s.match(/https?:\/\/[^\s)」·,]+/g)??[])];
+  const rest=s.replace(/https?:\/\/[^\s)」·,]+/g,'').replace(/\s*·\s*(·\s*)+/g,' · ').replace(/^\s*[·(]\s*|\s*[·]\s*$/g,'').trim();
+  const g=gradeOf(c.confidence);
+  return `<div class="chg-meta">${urls.length?`<div class="row">출처 ${urls.map(u=>{let h=u;try{h=new URL(u).hostname.replace(/^www\./,'');}catch{}
+      return `<a class="lk" href="${esc(u)}" target="_blank" rel="noopener">${esc(h)} ↗</a>`;}).join('')}</div>`:''}
+    ${rest?`<div class="row">${esc(rest)}</div>`:''}
+    <div class="row"><span class="chg-g ${g}">${g==='x'?'?':g}</span> ${esc(c.confidence??'')}</div></div>`;};
 // ⭐ 시스템 분석은 역할 커널과 버전이 다를 수 있다(2026-09-21) — FC27은 역할 목록 확정 전이라 커널이 비어 있지만
 //    시스템 사실은 쌓여 있다. 커널(FC26)과 분리해 최신 버전을 기본으로 보여준다.
 const CHG={};
@@ -226,10 +248,10 @@ function renderChanges(){
     return `<details class="chg-item"><summary><span class="chg-g ${g}" title="근거 등급 — A EA 1차 · B 데이터마이닝 · C 통제 실측 · D 통설">${g==='x'?'?':g}</span>
       <div><div class="t">${esc(c.title||headOf(c.change))}</div>${c.impact?`<div class="imp">${esc(impOf(c.impact))}</div>`:''}</div>
       <span class="when">${esc((c.recorded??'').slice(5))} · #${esc(c.id??'')}</span></summary>
-      <div class="chg-body"><h4>확정 사실</h4>${prose(c.change)}
-      ${c.impact?`<h4>구현에의 영향</h4>${prose(c.impact)}`:''}
-      ${c.evidence?`<h4>근거(원문 + 번역)</h4>${prose(c.evidence)}`:''}
-      <p class="dim" style="font-size:11.5px;margin:8px 0 0">출처 ${esc(c.source??'')} · ${esc(c.confidence??'')}</p></div></details>`;};
+      <div class="chg-body"><h4>확정 사실</h4>${fmt(c.change)}
+      ${c.impact?`<h4>구현에의 영향</h4><div class="sec-imp">${fmt(c.impact)}</div>`:''}
+      ${c.evidence?`<h4>근거</h4><div class="sec-ev">${fmt(c.evidence)}</div>`:''}
+      ${meta(c)}</div></details>`;};
   document.getElementById('chg').innerHTML=order.filter(a=>!chgArea||a===chgArea).map(a=>
     `<div class="chg-sec">${esc(AREA[a]?.[0]??a)} <span class="dim" style="font-size:12px;font-weight:400">${groups[a].length}건</span></div>${groups[a].map(item).join('')}`).join('')
     || '<p class="dim">맞는 항목이 없다.</p>';
