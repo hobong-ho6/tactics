@@ -1424,3 +1424,4 @@ INSERT INTO player_tenures VALUES(174,'2016',NULL,'Belgrano (2경기)','CB',NULL
 INSERT INTO player_tenures VALUES(190,'2026-27',NULL,'Aston Villa (1경기)','CM/DM',NULL,NULL);
 INSERT INTO player_tenures VALUES(66,'2026-27',NULL,'Chelsea (3경기, 평점 5.98)','RM',NULL,NULL);
 INSERT INTO player_tenures VALUES(173,'2026-27',NULL,'Atlético Madrid (1경기, 평점 6.04)','ST',NULL,NULL);
+INSERT INTO player_tenures VALUES(211,'2026-27',NULL,'Chelsea (1경기, 평점 5.97)','ST',NULL,NULL);

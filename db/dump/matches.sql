@@ -121,3 +121,6 @@ INSERT INTO matches VALUES(127,16363892,'AVL','2026-27','2026-10-24','Manchester
 INSERT INTO matches VALUES(128,17118370,'AVL','2026-27','2026-10-28','Bournemouth','EFL Cup','A','3-0',1,'4라운드(16강 전) — 바이탈리티 스타디움 (result는 홈-원정 순서: 본머스 3 · 빌라 0)',51.0);
 INSERT INTO matches VALUES(129,16363901,'AVL','2026-27','2026-10-31','Fulham','Premier League','H','1-1',1,'9라운드 — 빌라 파크 (result는 홈-원정 순서: 빌라 1 · 풀럼 1)',45.0);
 INSERT INTO matches VALUES(130,16938783,'AVL','2026-27','2026-11-03','FC Barcelona','UEFA Champions League','A','3-0',1,'League Phase MD4 — 스포티파이 캄프 노우 (result는 홈-원정 순서: 바르셀로나 3 · 빌라 0)',35.0);
+INSERT INTO matches VALUES(131,16363893,'CHE','2026-27','2026-10-24','Tottenham Hotspur','Premier League','H','0-2',1,'Matchweek 8 — 스탬퍼드 브리지 (result는 홈-원정 순서: 첼시 0 · 토트넘 2)',31.0);
+INSERT INTO matches VALUES(132,17118364,'CHE','2026-27','2026-10-28','Liverpool','EFL Cup','A','1-1',1,'Round 4(16강) — 안필드 (result는 홈-원정 순서: 리버풀 1 · 첼시 1 · 승부차기 6-5 리버풀 · SofaScore 합계 표기 7-6)',48.0);
+INSERT INTO matches VALUES(133,16363904,'CHE','2026-27','2026-10-31','Manchester United','Premier League','H','2-0',1,'Matchweek 9 — 스탬퍼드 브리지 (result는 홈-원정 순서: 첼시 2 · 맨유 0)',58.0);
