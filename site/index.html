@@ -6,33 +6,49 @@
 <link rel="stylesheet" href="assets/theme.css">
 <script src="assets/theme-boot.js"></script></head><body>
 <div id="hdr"></div>
-<h1>실축 → FC 구현 <small class="dim">감독·팀 페어 4 · 현행 게임 버전 FC27(FC26 데이터는 보존)</small></h1>
-<div class="cardrow" id="cards"></div>
-<div class="panel">
-  <h2>페이지</h2>
-  <table>
-    <tr><td><a href="heatmap.html"><b>히트맵 비교</b></a></td><td class="dim">실측 그리드 vs 처방 역할 커널 — A/B 합성 렌더</td></tr>
-    <tr><td><a href="squad.html"><b>스쿼드</b></a></td><td class="dim">슬롯별 실측 최적 인선 + 커널 적합 랭킹</td></tr>
-    <tr><td><a href="compare.html"><b>선수 비교</b></a></td><td class="dim">보유 + 영입 후보의 슬롯 적합성 비교</td></tr>
-    <tr><td><a href="transfer.html"><b>이적</b></a></td><td class="dim">transfer-watch 감시 현황 (영입·유출·수지)</td></tr>
-    <tr><td><a href="report.html"><b>리포트</b></a></td><td class="dim">감독 프로필 11축 + 팀 전술 세팅</td></tr>
-  </table>
-</div>
-<p class="dim">데이터 흐름: db/tactics.db → <span class="mono">scripts/export.py</span>(게이트 통과 필수)
-→ site/data/*.json → 이 페이지들. 손편집 지점 없음.</p>
+<!-- 허브 = 고른 팀의 요약 대시보드(2026-11-04 · 불변규칙 14). 위에서부터: 팀 한 줄 → 숫자 타일 → 최근 경기 → 메뉴 안내.
+     종전엔 링크 5개 표뿐이라 경기 분석·선수·얼티밋팀으로 가는 길이 없었다. -->
+<h1 id="ttl">허브</h1>
+<div id="tiles" class="ux-tiles"></div>
+<div class="panel"><h2>최근 경기 <small class="dim">— 누르면 경기 분석으로</small></h2><div id="matches" class="ux-matches"></div></div>
+<div class="panel"><h2>메뉴</h2>
+  <div class="ux-sec">이 팀의 데이터</div><div id="teamCards" class="ux-cards"></div>
+  <div class="ux-sec">팀과 무관한 메뉴</div><div id="globalCards" class="ux-cards"></div></div>
+<p class="dim" style="font-size:12px">모든 화면은 DB에서 내보낸 데이터만 보여 준다 — 화면에서 손으로 고친 값은 없다.</p>
 <script type="module">
-import { mountHeader, loadTeam, slotCandidates, canonSlots} from './assets/data.js?v=20261004-nav';
-const { idx } = await mountHeader('index.html');
-const cards = await Promise.all(idx.regimes.map(async r => {
-  const td = await loadTeam(r.team_code);
-  // 복수 포메이션 대비 — 시즌 정본 포메이션만 순회한다.
-  const cs0 = canonSlots(td);
-  const current = new Set(cs0.flatMap(s=>slotCandidates(td,s.pos,{includeTransfers:false}))
-    .map(q=>q.player_id ?? q.name_en));
-  return `<div class="pcard"><b>${r.team_kr}</b> <small class="dim">${r.manager_kr ?? r.manager}</small><br>
-    <span class="kv">공통 후보 풀 현재 선수 <b>${current.size}</b>명 · 처방 <b>${td.prescriptions.length}</b>행 ·
-    이적 감시 <b>${td.transfer.targets.length}</b>건</span><br>
-    <small class="dim">${r.is_main ? '★ 주 분석 대상' : ''} ${r.start ?? ''}~</small></div>`;
-}));
-document.getElementById('cards').innerHTML = cards.join('');
+import { mountHeader, loadTeam, TEAM_NAV, GLOBAL_NAV, matchScore, COMP_SHORT } from './assets/data.js?v=20261104-ux';
+const { regime, team } = await mountHeader('index.html');
+const td = await loadTeam(team);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+document.getElementById('ttl').innerHTML = `${esc(regime?.team_kr ?? team)} <small class="dim">${esc(regime?.manager_kr ?? '')} 체제 · ${esc(regime?.start ?? '')}~</small>`;
+
+const ours = m => { const x = matchScore(m); return x ? [x.us, x.them] : null; };
+const wdl = s => !s ? '' : s[0] > s[1] ? 'W' : s[0] < s[1] ? 'L' : 'D';
+const COMP = COMP_SHORT;
+const ms = (td.match_reports ?? []).filter(m => m.result).sort((a, b) => String(b.date).localeCompare(String(a.date)));
+const last5 = ms.slice(0, 5);
+const form = last5.map(m => wdl(ours(m)));
+
+// 숫자 타일 — 최근 5경기 결과 · 득실 · 리포트 수 · 초안 수
+const gf = last5.reduce((s, m) => s + (ours(m)?.[0] ?? 0), 0), ga = last5.reduce((s, m) => s + (ours(m)?.[1] ?? 0), 0);
+const drafts = ms.filter(m => m.status === 'draft').length;
+document.getElementById('tiles').innerHTML = [
+  [form.map(r => `<span class="ux-res ${r}">${r}</span>`).join(' ') || '—', '최근 5경기(최근이 왼쪽)'],
+  [`${gf}–${ga}`, '최근 5경기 득실'],
+  [ms.length, '분석한 경기'],
+  [drafts, '아직 초안인 리포트'],
+].map(([n, l]) => `<div class="ux-tile"><div class="n">${n}</div><div class="l">${l}</div></div>`).join('');
+
+document.getElementById('matches').innerHTML = ms.slice(0, 8).map(m => {
+  const s = ours(m), r = wdl(s);
+  const xg = m.xg_v != null && m.xg_o != null ? ` · xG ${(+m.xg_v).toFixed(2)}–${(+m.xg_o).toFixed(2)}` : '';
+  return `<a class="ux-match" href="match-report.html?event=${esc(m.event_id)}">
+    <div class="top">${r ? `<span class="ux-res ${r}">${r}</span>` : ''}<span class="opp">${esc(m.opponent)}</span>${m.status === 'draft' ? '<span class="ux-draft">초안</span>' : ''}</div>
+    <div class="sc">${s ? `${s[0]} – ${s[1]}` : esc(m.result)}</div>
+    <div class="meta">${esc(String(m.date).slice(5))} · ${esc(COMP[m.competition] ?? m.competition)} · ${m.venue === 'H' ? '홈' : m.venue === 'A' ? '원정' : '중립'}${xg}</div></a>`;
+}).join('') || '<p class="dim">분석한 경기가 아직 없다.</p>';
+
+const card = ([href, label, tip]) => `<a class="ux-card" href="${href}"><b>${label}</b><div class="d">${tip ?? ''}</div></a>`;
+document.getElementById('teamCards').innerHTML = TEAM_NAV.filter(([h]) => h !== 'index.html').map(card).join('');
+document.getElementById('globalCards').innerHTML = GLOBAL_NAV.map(card).join('');
 </script></body></html>

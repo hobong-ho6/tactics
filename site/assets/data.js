@@ -106,9 +106,17 @@ export function setCurrentTeam(code){
      · 팀 메뉴(TEAM_NAV): 고른 팀(regime)의 데이터를 보는 페이지 — 팀 버튼 아래 줄
      · 전체 메뉴(GLOBAL_NAV): 팀과 무관한 페이지(내 얼티밋 계정 · 게임 시스템 · 매뉴얼) — 오른쪽 위에 따로
    전체 메뉴를 보고 있을 때는 팀 버튼을 강조하지 않고, 팀을 누르면 그 팀 허브로 간다(팀 데이터를 보러 가는 동작이므로). */
-const TEAM_NAV = [
-  ['index.html', '허브'], ['heatmap.html', '히트맵 비교'], ['match-report.html', '경기 분석'], ['squad.html', '스쿼드'],
-  ['compare.html', '선수 비교'], ['transfer.html', '이적'], ['report.html', '리포트'], ['player.html', '선수'],
+/* ⭐ 2026-11-04 메뉴 정리(사용자 「전체 메뉴 구성 … 가독성·UI UX 개선」) — 흐름 순서(요약 → 경기 → 팀 전술 → 사람 → 비교 → 이적)로
+   다시 배치하고, 모호했던 「리포트」를 「팀 전술」로 이름을 바꿨다(파일명은 그대로 · 링크 호환). 셋째 칸 = 마우스를 올리면 뜨는 설명. */
+export const TEAM_NAV = [
+  ['index.html', '허브', '팀 요약 · 최근 경기 · 메뉴 안내'],
+  ['match-report.html', '경기 분석', '경기마다 실측·전술·게임 재현 프리셋'],
+  ['report.html', '팀 전술', '시즌 게임 설정 시트 · 전술 정본 · 감독 프로필'],
+  ['squad.html', '스쿼드', '자리별 베스트 XI와 후보 깊이'],
+  ['player.html', '선수', '한 선수의 평가·경기 스탯·카드·진화'],
+  ['compare.html', '선수 비교', '자리별 보유·영입 후보 적합 순위'],
+  ['heatmap.html', '히트맵 비교', '실측 움직임 ↔ 게임 역할 그림 겹쳐 보기'],
+  ['transfer.html', '이적', '영입 후보·유출 감시·수지'],
 ];
 /* 라이트/다크 토글(2026-10-22 사용자 요청) — 선택·저장·적용은 theme-boot.js(head 동기 스크립트)가 한다.
    ⛔ 여기는 버튼만 그린다(스타일은 theme.css .themetog). */
@@ -118,13 +126,14 @@ function themeToggle(){
   return `<div class="themetog" role="group" aria-label="화면 모드">${THEME_OPTS.map(([v, l, t]) =>
     `<button data-theme-set="${v}" class="${v === cur ? 'on' : ''}" title="${t}" aria-pressed="${v === cur}">${l}</button>`).join('')}</div>`;
 }
-const GLOBAL_NAV = [['evolutions.html', '얼티밋팀'], ['game.html', '게임 시스템'], ['manual.html', '매뉴얼']];
+export const GLOBAL_NAV = [['evolutions.html', '얼티밋팀', '내 구단 · 진화 · SBC · 케미'], ['game.html', '게임 시스템', 'EA 확정 사실 · 역할 라이브러리 · 메타'],
+  ['manual.html', '매뉴얼', '이 사이트의 용어와 읽는 법']];
 export async function mountHeader(active){
   onSchemeChange();   // 라이트/다크 전환 시 새로 고침 — 캔버스(피치·열지도)는 다시 안 그려지므로(tokens.js)
   const idx = await loadIndex();
   const team = currentTeam();
   const isGlobal = GLOBAL_NAV.some(([h]) => h === active);
-  const link = ([href, label]) => `<a href="${href}" class="${href === active ? 'on' : ''}">${label}</a>`;
+  const link = ([href, label, tip]) => `<a href="${href}" class="${href === active ? 'on' : ''}"${tip ? ` title="${tip}"` : ''}>${label}</a>`;
   const el = document.getElementById('hdr');
   el.innerHTML = `
     <div class="hrow">
@@ -148,6 +157,51 @@ export async function mountHeader(active){
   setH();
   if (typeof ResizeObserver !== 'undefined') new ResizeObserver(setH).observe(el);
   return { idx, team, regime: idx.regimes.find(r => r.team_code === team) };
+}
+
+/* 경기 결과를 「우리 팀 기준」으로 — result는 홈-원정 순서로 저장된다(venue H·A·N · N은 홈 표기 순서).
+   허브 최근 경기·경기 분석 결론 카드가 함께 쓰는 단일 정본(2026-11-04). → {us, them, res:'W'|'D'|'L'} 또는 null */
+export function matchScore(m){
+  const [h, a] = String(m?.result ?? '').split('-').map(Number);
+  if (!Number.isFinite(h) || !Number.isFinite(a)) return null;
+  const [us, them] = m.venue === 'A' ? [a, h] : [h, a];
+  return { us, them, res: us > them ? 'W' : us < them ? 'L' : 'D' };
+}
+export const COMP_SHORT = {'Premier League':'PL', 'UEFA Champions League':'UCL', 'EFL Cup':'EFL컵', 'FA Cup':'FA컵',
+  'UEFA Europa League':'UEL', 'UEFA Super Cup':'슈퍼컵'};
+
+/* 긴 패널 접기(2026-11-04 · 불변규칙 14) — 높이가 max의 1.4배를 넘는 패널은 max까지만 보이고 아래에 「전체 보기」 버튼을 둔다.
+   다시 그릴 때마다 불러도 된다(이전 버튼·상태를 지우고 새로 잰다). 스타일은 style.css .panel.folded · .fold-btn. */
+export function foldLong(els, max = 640){
+  for (const el of els){
+    if (!el) continue;
+    const prev = el.nextElementSibling;
+    if (prev?.classList.contains('fold-btn')) prev.remove();
+    el.classList.remove('folded');
+    if (el.hidden || el.scrollHeight <= max * 1.4) continue;
+    el.style.setProperty('--fold-h', `${max}px`);
+    el.classList.add('folded');
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'fold-btn';
+    const label = () => el.classList.contains('folded') ? '전체 보기 ↓' : '접기 ↑';
+    b.textContent = label();
+    b.addEventListener('click', () => { el.classList.toggle('folded'); b.textContent = label();
+      if (el.classList.contains('folded')) el.scrollIntoView({ block: 'start' }); });
+    el.after(b);
+  }
+}
+
+/* 페이지 목차(2026-11-04 · 불변규칙 14) — 패널 제목(h2 첫 글자 마디)으로 칩을 만들어 el에 넣는다. 패널에 id가 없으면 붙인다.
+   경기 분석 화면은 자체 목차(buildToc)를 쓴다 — 이건 그 밖의 긴 화면용. */
+export function mountPanelToc(el, panels){
+  if (!el) return;
+  const ps = [...panels].filter(p => p && !p.hidden && p.offsetParent !== null);
+  el.innerHTML = '<span class="toc-lab">목차</span>' + ps.map((p, i) => {
+    if (!p.id) p.id = 'pn' + i;
+    const h = p.querySelector('h2');
+    const t = (h?.childNodes[0]?.textContent ?? h?.textContent ?? '섹션').replace(/^[⭐\s]+/u, '').replace(/\s*[—-].*$/, '').trim().slice(0, 16);
+    return `<a href="#${p.id}">${t}</a>`;
+  }).join('');
 }
 
 /* GK 적합 표시 — obs#220. GK는 커널 적합이 변별력을 갖지 못한다: 측정된 GK들의 그리드가

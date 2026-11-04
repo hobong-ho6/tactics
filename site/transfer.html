@@ -18,6 +18,8 @@ tr.deadrow>td{opacity:.62}
 tr.deadrow>td:first-child{border-left:2px solid var(--bad);padding-left:6px}</style></head><body>
 <div id="hdr"></div>
 <h1>이적 감시 <small class="dim" id="win"></small></h1>
+<!-- 숫자 타일(2026-11-04 · 불변규칙 14) — 확정·진행·무산 건수와 이번 창 현금 흐름을 먼저 보인다 -->
+<div id="ttiles" class="ux-tiles"></div>
 <div class="panel kv" style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
   <button class="tab on" id="deadTgl"></button>
   <small class="dim">DEAD = 무산·강등·정체(STALE) 판정 건. 기본은 숨김 —
@@ -29,7 +31,7 @@ tr.deadrow>td:first-child{border-left:2px solid var(--bad);padding-left:6px}</st
   <div class="panel"><h2>수지 원장</h2><table id="ledger"></table></div>
 </div>
 <script type="module">
-import { mountHeader, loadTeam, loadIndex, gkPosCell } from './assets/data.js?v=20261004-nav';
+import { mountHeader, loadTeam, loadIndex, gkPosCell, foldLong } from './assets/data.js?v=20261104-ux';
 import { miniGrid } from './assets/pitch.js?v=20261029-grid-pct';
 import { prose } from './assets/prose.js';
 
@@ -44,6 +46,15 @@ const badge = lh => !lh ? '' : /^DEAD/i.test(lh) ? `<span class="badge dead">DEA
 
 const T = td.transfer;
 const isDead = x => /^DEAD/i.test(x.likelihood || '');
+{ const conf = rs => rs.filter(x => /^CONFIRMED/.test(x.likelihood || '')).length;
+  const live = rs => rs.filter(x => !isDead(x) && !/^CONFIRMED/.test(x.likelihood || '')).length;
+  const sum = k => (T.ledger || []).filter(l => l.kind === k).reduce((a, l) => a + (+l.amount_m || 0), 0);
+  const spend = sum('영입 지출'), earn = sum('매각 수입'), net = earn - spend;
+  document.getElementById('ttiles').innerHTML = [
+    [conf(T.targets), '영입 확정'], [live(T.targets), '영입 진행 중(보도)'], [conf(T.outgoing), '유출 확정'], [live(T.outgoing), '유출 진행 중'],
+    [`£${spend.toFixed(0)}m`, '영입 지출(공식 발표분)'], [`£${earn.toFixed(0)}m`, '매각 수입(공식 발표분)'],
+    [`${net >= 0 ? '+' : '−'}£${Math.abs(net).toFixed(0)}m`, '순현금(참고 · 회계 손익 아님)'],
+  ].map(([n, l]) => `<div class="ux-tile"><div class="n">${n}</div><div class="l">${l}</div></div>`).join(''); }
 /* DEAD 기본 숨김 — 툴의 injectTransferCandidates()가 /^DEAD/i를 건너뛰는 것과 같은 기준이다.
    다만 「왜 죽었나」의 근거가 오히려 가장 두꺼운 경우가 많아(무산 경위·반증 티어) 토글로 연다. */
 let showDead = false;
@@ -194,4 +205,7 @@ if (T.summary) {
       우리 DB에 <b>축구수익·임금 총액이 없습니다</b>. 위 「연 상각 부담」은 그 분자의 증가분입니다.
     </td></tr>` : '<tr><td colspan="4" class="dim">없음</td></tr>';
 }
+/* 긴 표는 위만 보이고 「전체 보기」(불변규칙 14) — DEAD 토글로 다시 그리면 다시 잰다. */
+const refoldT = () => setTimeout(() => foldLong(['summaryPanel', 'in', 'out', 'ledger'].map(id => { const e = document.getElementById(id); return e?.classList.contains('panel') ? e : e?.closest('.panel'); }), 900), 150);
+document.getElementById('deadTgl')?.addEventListener('click', refoldT); refoldT();
 </script></body></html>

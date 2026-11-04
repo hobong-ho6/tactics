@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="assets/theme.css">
 <script src="assets/theme-boot.js"></script></head><body>
 <div id="hdr"></div>
-<h1>경기별 분석 리포트 <small class="dim">한 경기의 실제 히트맵·전체 스탯·전술 변화·FC 구현 판단</small></h1>
+<h1>경기 분석 <small class="dim">경기를 고르면 결론 → 상세 순으로 보인다</small></h1>
 <div class="panel report-picker">
   <label class="kv">경기 <select id="matchReportSel" aria-label="경기별 분석 리포트 선택"></select></label>
   <label class="kv">히트맵 <select id="matchPlayerSel" aria-label="경기 히트맵 선수 선택"></select></label>
@@ -18,6 +18,8 @@
 </div>
 <div id="empty" class="panel dim" hidden>이 팀에는 완료된 경기 분석 리포트가 아직 없습니다.</div>
 <main id="report" hidden>
+  <!-- ⭐ 결론 카드(2026-11-04 · 불변규칙 14) — 우리 기준 점수·핵심 숫자·요약 3줄·가설 판정·재현 프리셋을 한 장에. 상세는 아래 패널. -->
+  <div class="panel" id="verdict"></div>
   <!-- 히트맵은 위 선택 막대(히트맵·출전자 범위)가 직접 조작하는 대상이라 **바로 아래**에 둔다
        (2026-09-19 사용자 지시 「히트맵과 메뉴가 너무 멀어졌음」 — 종전엔 요약·타임라인 뒤였다). -->
   <div class="grid2 match-overview">
@@ -48,7 +50,7 @@
     <div id="sourceMeta"></div><pre id="markdown"></pre></details></div>
 </main>
 <script type="module">
-import { mountHeader, loadTeam, isGkSlot } from './assets/data.js?v=20261004-nav';
+import { mountHeader, loadTeam, isGkSlot, matchScore, COMP_SHORT, foldLong } from './assets/data.js?v=20261104-ux';
 import { decodeMap } from './assets/kernel.js?v=20260825-decodemap-null';
 import { drawPitch, drawComposite, drawChip } from './assets/pitch.js?v=20261029-grid-pct';
 import { annotate, mountGlossaryTips, glTip } from './assets/glossary.js';
@@ -609,10 +611,47 @@ function render(r){
     (subs.length?`<optgroup label="교체 ${subs.length}명">${subs.map(p=>`<option value="${p.player_id}">${esc(p.position)} · ${esc(p.label)} (${esc(p.minutes)}분)</option>`).join('')}</optgroup>`:'');
   if ([...playerSel.options].some(o=>o.value===keep)) playerSel.value=keep;
   renderPitch(r);
+  renderVerdict(r);
   buildToc();
+  /* 긴 패널은 위만 보이고 「전체 보기」로 편다(불변규칙 14) — 차트·히트맵은 그림이라 접지 않는다. 그림 그리기가 끝난 뒤 잰다. */
+  setTimeout(() => foldLong(['hypPanel', 'gamePreset', 'carryPanel', 'videoPanel', 'overall'].map(id => document.getElementById(id))
+    .concat([document.getElementById('players')?.closest('.panel'), document.getElementById('tactical')?.closest('.panel')]), 620), 400);
+}
+/* ── 결론 카드 — 우리 팀 기준 점수 · 핵심 숫자 · 요약 3줄 · 가설 판정 수 · 재현 프리셋 한 줄(2026-11-04 · 불변규칙 14).
+   ⛔ 새 판정을 만들지 않는다 — 이미 있는 값(result·venue·xg·ppda·key_points·hypotheses·game_setup)만 모아 보인다. */
+function renderVerdict(r){
+  const el = document.getElementById('verdict'), sc = matchScore(r);
+  const RES = { W:'승', D:'무', L:'패' };
+  const n = v => v == null || v === '' ? '—' : esc(v);
+  const fx = v => v == null ? '—' : (+v).toFixed(2);
+  const pts = String(r.key_points ?? '').split(/\n+/).map(x => x.replace(/^\s*-\s*/, '').trim()).filter(Boolean)
+    .map(x => { const m = x.match(/^\*\*(.+?)\*\*/); return m ? m[1].replace(/[:：]$/, '') : x.slice(0, 70); }).slice(0, 4);
+  const hs = r.hypotheses || [], cnt = hs.reduce((m, h) => (m[h.verdict] = (m[h.verdict] || 0) + 1, m), {});
+  const HV = [['match','일치','hi'], ['partial','부분','mid'], ['mismatch','불일치','dead'], ['undecided','판정 불가','own']];
+  const gs = r.game_setup;
+  el.innerHTML = `<div class="verdict">
+    <div class="score">${sc ? `<span class="ux-res ${sc.res}">${RES[sc.res]}</span>` : ''}
+      <div class="big">${sc ? `${sc.us} – ${sc.them}` : n(r.result)}</div>
+      <div class="sub">vs <b>${esc(r.opponent)}</b><br>${esc(String(r.date ?? '').slice(5))} · ${esc(COMP_SHORT[r.competition] ?? r.competition)} · ${r.venue === 'H' ? '홈' : r.venue === 'A' ? '원정' : '중립'}</div>
+      ${isDraft(r) ? '<div style="margin-top:6px"><span class="ux-draft" style="margin:0">초안 — 보강 회차 진행 중</span></div>' : ''}</div>
+    <div>
+      <div class="ux-tiles" style="margin:0 0 6px">
+        <div class="ux-tile"><div class="n">${n(r.possession)}%</div><div class="l">점유율</div></div>
+        <div class="ux-tile"><div class="n">${fx(r.xg_v)}–${fx(r.xg_o)}</div><div class="l">xG (우리–상대)</div></div>
+        <div class="ux-tile"><div class="n">${n(r.shots_v)}–${n(r.shots_o)}</div><div class="l">슈팅 · 유효 ${n(r.sot_v)}–${n(r.sot_o)}</div></div>
+        <div class="ux-tile"><div class="n">${r.ppda_v != null ? (+r.ppda_v).toFixed(1) : '—'}</div><div class="l">우리 PPDA(낮을수록 강한 압박) · 상대 ${r.ppda_o != null ? (+r.ppda_o).toFixed(1) : '—'}</div></div>
+      </div>
+      ${pts.length ? `<b style="font-size:13px">한눈에</b><ul class="pts">${pts.map(p => `<li>${annotate(esc(p))}</li>`).join('')}</ul>` : ''}
+      <div class="chips">
+        ${hs.length ? `<a href="#hypPanel">관전 메모 ${hs.length}건 — ${HV.filter(([k]) => cnt[k]).map(([k, l]) => `${l} ${cnt[k]}`).join(' · ')}</a>` : ''}
+        ${gs ? `<a href="#gamePreset">재현 프리셋 ${esc(gs.formation)} · ${esc(gs.build_up_style)}/${esc(gs.defensive_approach)}/${esc(gs.line_height ?? '—')}</a>` : '<span class="dim">재현 프리셋 없음</span>'}
+        <a href="#players">선수 ${(r.players || []).length}명</a>
+        <a href="#tactical">전술 분석</a>
+      </div>
+    </div></div>`;
 }
 /* 목차 — 보이는 패널(숨김·빈 패널 제외)의 제목으로 만든다. 제목이 경기 이름인 요약 패널 등은 고정 라벨을 쓴다. */
-const TOC_LABEL = { summary:'경기 요약', viz:'경기 차트', momPanel:'모멘텀', carryPanel:'운반', hypPanel:'관전 메모 판정', injPanel:'부상', overall:'총평',
+const TOC_LABEL = { verdict:'결론', summary:'경기 요약', viz:'경기 차트', momPanel:'모멘텀', carryPanel:'운반', hypPanel:'관전 메모 판정', injPanel:'부상', overall:'총평',
                     gamePreset:'재현 프리셋', videoPanel:'영상 분석' };
 const TOC_SHORT = { '실제 경기 히트맵':'히트맵', '팀 전체 스탯':'팀 스탯', '선수별 히트맵·역할·전체 스탯':'선수', '전체 분석 원문·레퍼런스 펼치기':'원문' };
 function buildToc(){

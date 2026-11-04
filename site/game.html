@@ -75,6 +75,7 @@
 </style></head><body>
 <div id="hdr"></div>
 <h1>FC 게임 시스템 분석 <small class="dim" id="gv"></small></h1>
+<nav id="ptoc" class="toc" style="border-top:0;margin:-2px 0 6px"></nav>
 <div class="panel"><h2>시스템 분석 — 구현에 영향을 주는 확정 사실 <small class="dim">game_system_changes</small></h2>
   <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
     <select id="chgGv"></select>
@@ -125,7 +126,7 @@
 <p class="dim">EA 피치노트 원문 분석·판정 이력 전문은 docs/20이 정본. PlayStyles·스탯·조작·세리머니 서사 정본은 docs/22.
 FIFA→FC 변천사는 FC27 온보딩(docs/21) 때 소급 기입.</p>
 <script type="module">
-import { mountHeader, loadIndex, loadKernels, loadCurrentKernels, loadGameStats } from './assets/data.js?v=20261004-nav';
+import { mountHeader, loadIndex, loadKernels, loadCurrentKernels, loadGameStats, foldLong, mountPanelToc } from './assets/data.js?v=20261104-ux';
 import { prose } from './assets/prose.js';
 import { CONTROLS, STATS, STATS_NOTE, PLAYSTYLE_CATEGORIES, PLAYSTYLES, PLAYSTYLE_NOTE, esc, mountSearchableCatalog } from './assets/gamemechanics.js';
 import { CATEGORIES as CELE_CATEGORIES, CELEBRATIONS, CONTEXT_CELEBRATIONS, mountCelebrationSearch } from './assets/celebrations.js';
@@ -253,12 +254,16 @@ function renderChanges(){
       ${c.evidence?`<h4>근거</h4><div class="sec-ev">${fmt(c.evidence)}</div>`:''}
       ${meta(c)}</div></details>`;};
   document.getElementById('chg').innerHTML=order.filter(a=>!chgArea||a===chgArea).map(a=>
-    `<div class="chg-sec">${esc(AREA[a]?.[0]??a)} <span class="dim" style="font-size:12px;font-weight:400">${groups[a].length}건</span></div>${groups[a].map(item).join('')}`).join('')
+    { const lim = chgArea || q ? groups[a].length : 3;   // 전체 보기에서는 영역마다 최신 3건만 — 「N건 더」가 그 영역만 펼친다(불변규칙 14)
+      return `<div class="chg-sec">${esc(AREA[a]?.[0]??a)} <span class="dim" style="font-size:12px;font-weight:400">${groups[a].length}건</span></div>${groups[a].slice(0, lim).map(item).join('')}${
+        groups[a].length > lim ? `<button type="button" class="fold-btn" data-more="${esc(a)}" style="margin:6px 0 4px">${esc(AREA[a]?.[0]??a)} ${groups[a].length - lim}건 더 ↓</button>` : ''}`; }).join('')
     || '<p class="dim">맞는 항목이 없다.</p>';
 }
 chgSel.addEventListener('change', ()=>{chgArea='';renderChanges();});
 document.getElementById('chgQ').addEventListener('input', renderChanges);
 document.getElementById('chgCards').addEventListener('click', e=>{const b=e.target.closest('button');if(!b)return;chgArea=b.dataset.a;renderChanges();});
+document.getElementById('chg').addEventListener('click', e=>{const b=e.target.closest('button[data-more]');if(!b)return;chgArea=b.dataset.more;renderChanges();
+  document.getElementById('chgCards').scrollIntoView({block:'start'});});
 renderChanges();
 const groups=[...new Set(kd.roles.map(r=>r.position_type))];
 const grp=document.getElementById('grp');
@@ -345,4 +350,9 @@ function _j(v){ try{const a=JSON.parse(v??'[]');return Array.isArray(a)?a.map(t=
 renderRoles();
 document.getElementById('prm').innerHTML='<tr><th>파라미터</th><th>옵션</th><th>설명</th></tr>'+
  kd.tactic_params.map(p=>`<tr><td>${p.param}</td><td><b>${p.option}</b></td><td class="dim">${p.description??''}</td></tr>`).join('');
+/* 목차 + 긴 패널 접기(2026-11-04 · 불변규칙 14) — 역할 라이브러리는 군(포지션) 선택을 바꿀 때마다 다시 잰다. */
+mountPanelToc(document.getElementById('ptoc'), document.querySelectorAll('body > .panel'));
+const roleLib = document.getElementById('grp')?.closest('.panel');
+const refold = () => setTimeout(() => foldLong([roleLib], 900), 100);
+grp.addEventListener('change', refold); refold();
 </script></body></html>

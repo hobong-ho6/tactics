@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="assets/theme.css">
 <script src="assets/theme-boot.js"></script></head><body>
 <div id="hdr"></div>
-<h1>스쿼드 · 베스트 11 <small class="dim">슬롯별 실측 최적 인선 — 평점·적합 근거 병기 · 그리드=실측(경기 데이터), 게임 커널 히트맵은 히트맵 비교 B패널</small></h1>
+<h1>스쿼드 · 베스트 11 <small class="dim">자리별 1순위와 후보 깊이 — 아래 표에서 자리마다 적합·평점·실측 그림을 비교한다</small></h1>
 <div class="panel"><label class="kv">슬롯 <select id="posSel"><option value="">전체</option></select></label></div>
 <!-- ⭐ 기준 축 2개를 **화면에 적는다**(2026-09-22 전수 조사) — 둘 다 여기 섞여 있는데 표기가 없었다.
      ⑴ 적합·그리드의 표본은 `squad_entries`(사실상 25/26 전수)다. `fc26:opt` 처방 행이 season='2026-27'로
@@ -22,7 +22,8 @@
   <div id="sviz" class="mviz"></div>
   <p class="dim" style="font-size:12px;margin:6px 0 0">1순위는 <b>커널 적합 최상위</b>(GK는 평점)이고, 게임 처방 선발이 있으면 그 선수를 1순위로 둔다 —
   두 기준이 갈리면 ◎(처방 선발)와 채운 점이 어긋나 보인다. Δ가 <b>0.05 이하</b>면 커널이 판정하지 못하는 구간이라 「경합」으로 적는다.</p></div>
-<div class="panel"><details open><summary class="dim" style="cursor:pointer">슬롯별 후보 표 — 적합·평점·실측 그리드</summary><table id="tbl"></table></details></div>
+<!-- 2026-11-04(불변규칙 14) — 3,200px 표라 기본은 접는다. 위 「슬롯」 선택으로 한 자리만 보면 자동으로 편다. -->
+<div class="panel"><details id="tblWrap"><summary style="cursor:pointer;color:var(--acc)">슬롯별 후보 표 펼치기 — 자리마다 적합·평점·실측 그림</summary><table id="tbl"></table></details></div>
 <p class="dim">적합(sim)은 커널 라이브 산출값. DB 저장값과 어긋나면 익스포트가 낡은 것 —
 <span class="mono">python3 scripts/export.py</span>를 다시 돌릴 것.</p>
 <script type="module">
@@ -45,7 +46,7 @@ const shirt = q => q.shirt_number != null
 
 const posSel=document.getElementById('posSel');
 posSel.innerHTML='<option value="">전체</option>'+slots.map(s2=>`<option>${s2.pos}</option>`).join('');
-posSel.addEventListener('change',build);
+posSel.addEventListener('change',()=>{ document.getElementById('tblWrap').open = !!posSel.value; build(); });   // 한 자리만 고르면 표를 편다
 /* ⭐ 시각화용 행 — 표와 **같은 정렬 규칙**을 쓴다(처방 선발 최우선 → GK는 평점순 → 그 밖 적합순).
    표만 고치고 그림이 다른 규칙을 쓰면 같은 화면에서 ★와 1순위가 어긋난다.
    ⚠️ 모듈 스코프에 둔다 — build() 안에 const로 두면 drawViz()가 못 본다(2026-09-18). */

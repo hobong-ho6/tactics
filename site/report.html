@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="utf-8"><title>전술 리포트 — 택틱스 랩</title>
+<html lang="ko"><head><meta charset="utf-8"><title>팀 전술 — 택틱스 랩</title>
 <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="assets/style.css">
@@ -35,7 +35,7 @@
 <p class="dim">서사·분석 전문은 docs/1x 감독 문서가 정본이다 — 이 페이지는 DB에 확정 기록된
 결론(프로필 축·세팅)만 보여준다.</p>
 <script type="module">
-import { mountHeader, loadTeam, slotCandidates, canonSlots as canonSlotsOf, currentGameVersion } from './assets/data.js?v=20261004-nav';
+import { mountHeader, loadTeam, slotCandidates, canonSlots as canonSlotsOf, currentGameVersion, foldLong } from './assets/data.js?v=20261104-ux';
 import { mountGlossaryTips } from './assets/glossary.js';
 import { prose } from './assets/prose.js';
 import { roleLabel, focusLabel, humanize, mountRawToggle } from './assets/labels.js';
@@ -44,8 +44,8 @@ import { loadVideos, renderVideoList } from './assets/videos.js?v=20261028';   /
 
 const { team, regime } = await mountHeader('report.html');
 const td = await loadTeam(team);
-document.getElementById('title').textContent =
-  `${regime.manager_kr ?? regime.manager} · ${regime.team_kr}`;
+document.getElementById('title').innerHTML =
+  `팀 전술 <small class="dim">${regime.manager_kr ?? regime.manager} · ${regime.team_kr} — 위에서부터 게임 설정 시트 → 전술 정본 → 감독 프로필 → 변경 이력 → 영상</small>`;
 
 // FC26 설정 시트 — 팀 세팅(setups 최신 projected/optimal) + 슬롯별 게임 처방(fc26:opt)
 /* ⚠️ 실측만 있는 팀(ATM)은 주 행 `measured`를 쓴다 — 「마지막 행」이면 대안 행(measured:3-4-2-1)이 잡혔다(2026-10-04). */
@@ -204,7 +204,7 @@ const lastCanon = (td.slot_canon ?? []).map(c => c.updated).filter(Boolean).sort
 document.getElementById('asof').innerHTML =
   `<span><b>시즌 전술 최종 갱신</b> <span class="badge hi">${[lastChange, lastProfile, lastCanon].filter(Boolean).sort().slice(-1)[0] ?? '—'}</span></span>
    <span class="dim">설정 변경 마지막 <b>${lastChange ?? '—'}</b>(${changes.filter(c => c.before != null).length}건) · 슬롯 정본 <b>${lastCanon ?? '—'}</b> · 프로필 마지막 경기 반영 <b>${lastReflect ?? lastProfile ?? '—'}</b>(${reflections.length}건)</span>`;
-let HF = 'all', HDATE = null;   // HDATE = 타임라인에서 고른 날짜(목록을 그날로 좁힌다)
+let HF = 'all', HDATE = null, HN = 10;   // HN = 히스토리 목록에 보이는 건수(최신부터 · 「더 보기」로 늘린다 · 2026-11-04 불변규칙 14)   // HDATE = 타임라인에서 고른 날짜(목록을 그날로 좁힌다)
 /* 층별 4레인 타임라인 — 「언제 무엇이 바뀌었나」를 한 줄로 본다. 목록(아래)이 표 뷰다. */
 function drawHistViz(){
   const el = document.getElementById('histviz');
@@ -215,23 +215,27 @@ function drawHistViz(){
   if (!evs.length){ el.innerHTML = '<span class="dim" style="font-size:12px">기록 없음</span>'; return; }
   const W = Math.min(1100, Math.max(320, (el.clientWidth || (document.body.clientWidth - 68)) - 26));
   el.innerHTML = laneTimeline(evs, { W });
-  histTips(el, (date) => { HDATE = (HDATE === date ? null : date); drawHist(); document.getElementById('histf').scrollIntoView({ block: 'nearest' }); });
+  histTips(el, (date) => { HDATE = (HDATE === date ? null : date); HN = 10; drawHist(); document.getElementById('histf').scrollIntoView({ block: 'nearest' }); });
 }
 function drawHist(){
   document.getElementById('histf').innerHTML = [['all', '전부'], ['change', '설정 변경만'], ['reflect', '경기 반영만']]
     .map(([k, l]) => `<button class="act ghost${HF === k ? ' on' : ''}" data-f="${k}" style="background:none;border:1px solid var(--line);color:${HF === k ? 'var(--acc)' : 'var(--txt)'};border-radius:8px;padding:4px 10px;cursor:pointer">${l}</button>`).join('');
-  document.querySelectorAll('#histf button').forEach(b => b.addEventListener('click', () => { HF = b.dataset.f; drawHist(); }));
+  document.querySelectorAll('#histf button').forEach(b => b.addEventListener('click', () => { HF = b.dataset.f; HN = 10; drawHist(); }));
   const items = [...changes, ...reflections].filter(x => (HF === 'all' || x.kind === HF) && (!HDATE || x.date === HDATE)).sort((a, b) => b.date.localeCompare(a.date));
   const fbar = document.getElementById('histf');
   if (HDATE) fbar.insertAdjacentHTML('beforeend',
     `<button class="act ghost" id="histclear" style="background:none;border:1px solid var(--acc);color:var(--acc);border-radius:8px;padding:4px 10px;cursor:pointer">${HDATE} 만 보기 해제 ✕</button>`);
   document.getElementById('histclear')?.addEventListener('click', () => { HDATE = null; drawHist(); });
-  document.getElementById('hist').innerHTML = items.map(x => x.kind === 'change'
+  const total = items.length;
+  document.getElementById('hist').innerHTML = items.slice(0, HN).map(x => x.kind === 'change'
     ? `<li style="padding:6px 0;border-bottom:1px solid var(--line)"><span class="badge ${x.before == null ? '' : 'mid'}">${x.date}</span> <b>${LAYER_KR[x.layer] ?? x.layer}</b> <code>${x.key}</code>
          ${x.before == null ? `<span class="dim">신설 →</span> <b>${humanize(x.after ?? '')}</b>` : x.after == null ? `<b>${humanize(x.before)}</b> <span class="dim">→ 삭제</span>` : `<span class="dim">${humanize(x.before)}</span> → <b>${humanize(x.after)}</b>`}
          <br><small class="dim">사유: ${x.reason}${x.source?.startsWith('git:') ? ` · <code>${x.source.slice(4)}</code>` : ''}</small></li>`
     : `<li style="padding:6px 0;border-bottom:1px solid var(--line)"><span class="badge">${x.date}</span> <span class="dim">경기 반영 ·</span> <b>${AXES[x.axis] ?? x.axis}</b> <small class="dim">${x.tag}</small>
          <div style="font-size:13px;margin-top:2px">${prose(x.text)}</div></li>`).join('') || '<li class="dim">기록 없음</li>';
+  if (total > HN) document.getElementById('hist').insertAdjacentHTML('beforeend',
+    `<li><button type="button" class="fold-btn" id="histmore" style="margin:12px auto 0">이전 기록 ${total - HN}건 더 보기 ↓</button></li>`);
+  document.getElementById('histmore')?.addEventListener('click', () => { HN += 20; drawHist(); });
 }
 drawHistViz(); drawHist();
 new ResizeObserver(() => drawHistViz()).observe(document.getElementById('histviz'));
@@ -242,21 +246,27 @@ new ResizeObserver(() => drawHistViz()).observe(document.getElementById('histviz
    ⛔ 숨기지 않는다 — 요약 미작성도 목록에 남는다. 필터는 종류 칩 + 검색어(제목·채널·요약·요점·주장 선수). */
 const VID = await loadVideos();
 const teamVids = (VID?.all ?? []).filter(v => v.team_code === team && !v.report_id);
-let VK = 'all', VQ = '';
+let VK = 'all', VQ = '', VN = 6;   // VN = 보이는 영상 수(최신부터 · 「더 보기」)
 function drawTeamVideos(){
   const kinds = teamVids.reduce((m, v) => (m[v.kind || '미분류'] = (m[v.kind || '미분류'] || 0) + 1, m), {});
   document.getElementById('vidf').innerHTML = [['all', `전부 ${teamVids.length}`], ...Object.entries(kinds).sort((a, b) => b[1] - a[1]).map(([k, n]) => [k, `${k} ${n}`])]
     .map(([k, l]) => `<button class="tab${VK === k ? ' on' : ''}" data-k="${k}">${l}</button>`).join('');
-  document.querySelectorAll('#vidf button').forEach(b => b.addEventListener('click', () => { VK = b.dataset.k; drawTeamVideos(); }));
+  document.querySelectorAll('#vidf button').forEach(b => b.addEventListener('click', () => { VK = b.dataset.k; VN = 6; drawTeamVideos(); }));
   const q = VQ.trim().toLowerCase();
   const hay = v => [v.title, v.channel, v.summary, ...(v.key_points ?? []), ...(v.impl_claims ?? []).map(c => c.player)].join(' ').toLowerCase();
   const rows = teamVids.filter(v => (VK === 'all' || (v.kind || '미분류') === VK) && (!q || hay(v).includes(q)));
-  renderVideoList(document.getElementById('teamVideos'), rows, { newestFirst: true, title: '분석 영상',
+  const shown = [...rows].sort((a, b) => String(b.published ?? b.date ?? '').localeCompare(String(a.published ?? a.date ?? ''))).slice(0, VN);
+  renderVideoList(document.getElementById('teamVideos'), shown, { newestFirst: true, title: '분석 영상',
     empty: `<p class="dim">${teamVids.length ? '조건에 맞는 영상이 없다' : '경기 밖 분석 영상이 아직 없다'}</p>` });
+  if (rows.length > VN) document.getElementById('teamVideos').insertAdjacentHTML('beforeend',
+    `<button type="button" class="fold-btn" id="vidmore" style="margin:12px auto 0">영상 ${rows.length - VN}편 더 보기 ↓</button>`);
+  document.getElementById('vidmore')?.addEventListener('click', () => { VN += 12; drawTeamVideos(); });
 }
 if (!VID) document.getElementById('vidTeamPanel').hidden = true;
-else { document.getElementById('vidq').addEventListener('input', e => { VQ = e.target.value; drawTeamVideos(); }); drawTeamVideos(); }
+else { document.getElementById('vidq').addEventListener('input', e => { VQ = e.target.value; VN = 6; drawTeamVideos(); }); drawTeamVideos(); }
 
 
 mountGlossaryTips(); mountRawToggle(document.getElementById('asof'));
+/* 감독 프로필 표는 길어서 위만 보이고 「전체 보기」로 편다(불변규칙 14). */
+setTimeout(() => foldLong([document.getElementById('profile')?.closest('.panel')], 760), 300);
 </script></body></html>

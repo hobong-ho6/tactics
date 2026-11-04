@@ -912,7 +912,8 @@ def run(db_path=None, verbose=True):
         and '[초안]' in match_report_html
         and 'id="presetView"' in match_report_html
         and 'replaced_player_id' in match_report_html
-        and "['match-report.html', '경기 분석']" in data_js
+        # 메뉴 항목은 [파일, 이름, 설명] 3칸이다(2026-11-04 메뉴 개편) — 닫는 괄호 없이 앞 두 칸만 본다.
+        and "['match-report.html', '경기 분석'" in data_js
         and '"match_reports": match_reports' in export_py
     )
     if verbose:
@@ -2017,11 +2018,12 @@ def run(db_path=None, verbose=True):
     #   ⑴ reports/match-watch/notes/에 메모가 있는 경기 → match_hypotheses ≥1 (메모 stem이 리포트 stem으로 시작)
     #   ⑵ report_date ≥ G37_FROM인 **G37_TEAMS** 리포트 → key_points 비어 있지 않음 + match_phase_metrics ≥1
     #      (2026-10-20 사용자 결정 「10-14부터 · 아스톤 빌라 기준으로만 우선 · CHE·ATM·LIV는 백필하지 않고 수집 잠정 보류」)
+    #      ⭐ 2026-11-04 CHE 편입(사용자 「첼시쪽 경기만 수집해서 전술 분석하고 게임 구현 진행 아스톤 빌라처럼」 · ATM·LIV는 계속 보류)
     #   ⑶ match_phase_metrics.metric ⊆ core.whoscored.PHASE_METRICS(화면 라벨 정본)
     #   ⑷ 같은 대상 리포트 → tac_possession·impl_verdict + match_tactical_changes ≥1 + 선발(GK 제외) fit_delta 전원(migration 111)
     #   ⑹ report_date ≥ 2026-10-22 AVL 리포트 → match_phase_metrics side='v' metric='gk_long_share' ≥1(아래)
     from core.whoscored import PHASE_METRICS as _PM37
-    G37_FROM, G37_TEAMS = "2026-10-14", ("AVL",)
+    G37_FROM, G37_TEAMS = "2026-10-14", ("AVL", "CHE")
     _root37 = Path(__file__).resolve().parent.parent
     _rep37 = con.execute("SELECT id, report_path, report_date, key_points, team_code, tac_possession, impl_verdict FROM match_reports").fetchall()
     _chg37 = {r for (r,) in con.execute("SELECT DISTINCT report_id FROM match_tactical_changes")}
