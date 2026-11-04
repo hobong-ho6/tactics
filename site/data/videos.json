@@ -25599,12 +25599,12 @@
       "closed": null,
       "due": false,
       "hold": false,
-      "id": 65,
+      "id": 91,
       "phase": "watch",
-      "resolution": "HELD",
+      "resolution": null,
       "status": "open",
-      "title": "CHE FC27 포메이션 슬롯·압박 트리거 축",
-      "trigger": "2026-12-31 이후"
+      "title": "첼시 시작 포메이션 4-2-3-1 유지 여부",
+      "trigger": "2026-11-04 이후 리그 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -25615,7 +25615,7 @@
      "value": "3-4-2-1",
      "value_kr": "3-4-2-1",
      "verdict": "HELD",
-     "verdict_note": "이미 일치 — team_tactic_setups regime 2 projected = 3-4-2-1. 영상은 그 계보(레버쿠젠 → 첼시)를 확인한 것이라 설정 변경 없음. 재판정 조건: 인게임 포메이션은 슬롯 제약으로 5-4-1을 채택 중이므로(reference 행) FC27에서 3-4-2-1 와이드가 FB 슬롯을 받으면 재매핑."
+     "verdict_note": "이미 일치 — team_tactic_setups regime 2 projected = 3-4-2-1. 영상은 그 계보(레버쿠젠 → 첼시)를 확인한 것이라 설정 변경 없음. 재판정 조건: 인게임 포메이션은 슬롯 제약으로 5-4-1을 채택 중이므로(reference 행) FC27에서 3-4-2-1 와이드가 FB 슬롯을 받으면 재매핑. ‖ [2026-11-04 쟁점 이동 #65 → #91] 시즌 정본 포메이션이 4-2-3-1 Wide로 바뀌어(커밋 877c2593) 「3-4-2-1과 이미 일치」라는 근거가 낡았다. 포메이션 감시 쟁점 #91(다음 PL 3경기 시작 포메이션 — 3-4-2-1 복귀 시 재판단)에 묶는다. 판정(HELD)은 유지."
     }
    ],
    "key_points": [
@@ -27197,12 +27197,12 @@
       "closed": null,
       "due": false,
       "hold": false,
-      "id": 65,
+      "id": 91,
       "phase": "watch",
-      "resolution": "HELD",
+      "resolution": null,
       "status": "open",
-      "title": "CHE FC27 포메이션 슬롯·압박 트리거 축",
-      "trigger": "2026-12-31 이후"
+      "title": "첼시 시작 포메이션 4-2-3-1 유지 여부",
+      "trigger": "2026-11-04 이후 리그 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -27213,7 +27213,7 @@
      "value": "3-4-2-1",
      "value_kr": "3-4-2-1",
      "verdict": "HELD",
-     "verdict_note": "✅ 이미 일치 — regime 2 `projected` = 3-4-2-1. 재판정 조건: 인게임 포메이션은 슬롯 제약으로 5-4-1을 채택 중이므로(reference 행), FC27에서 3-4-2-1 와이드가 FB 슬롯을 받으면 재매핑."
+     "verdict_note": "✅ 이미 일치 — regime 2 `projected` = 3-4-2-1. 재판정 조건: 인게임 포메이션은 슬롯 제약으로 5-4-1을 채택 중이므로(reference 행), FC27에서 3-4-2-1 와이드가 FB 슬롯을 받으면 재매핑. ‖ [2026-11-04 쟁점 이동 #65 → #91] 시즌 정본 포메이션이 4-2-3-1 Wide로 바뀌어(커밋 877c2593) 「3-4-2-1과 이미 일치」라는 근거가 낡았다. 포메이션 감시 쟁점 #91(다음 PL 3경기 시작 포메이션 — 3-4-2-1 복귀 시 재판단)에 묶는다. 판정(HELD)은 유지."
     }
    ],
    "key_points": [
@@ -33064,6 +33064,17 @@
    "status": "closed",
    "title": "개별 종결 #60 (쟁점 #68에서)",
    "trigger": "2026-11-04 이후"
+  },
+  {
+   "closed": null,
+   "due": false,
+   "hold": false,
+   "id": 91,
+   "phase": "watch",
+   "resolution": null,
+   "status": "open",
+   "title": "첼시 시작 포메이션 4-2-3-1 유지 여부",
+   "trigger": "2026-11-04 이후 리그 3경기 (0/3)"
   }
  ]
 }
