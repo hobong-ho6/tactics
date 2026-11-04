@@ -1560,6 +1560,17 @@ def run(db_path=None, verbose=True):
                       AND se.pos_only NOT IN (SELECT pos FROM slots WHERE regime_id=se.regime_id AND is_canon=1)""", (rid,))]
             if orphan:
                 g24.append(f"{code} 정본에 없는 자리(pos_only)에 묶여 후보에서 빠지는 행 {len(orphan)}: {', '.join(orphan[:5])}")
+            # ⑸ ⛔ **정본 표시 포메이션 = 현행 버전 시즌 정본(optimal) 포메이션**(2026-11-04 · migration 131 · 사용자 「첼시 팀전술은 여전히 3421인데?」).
+            #    정본 포메이션이 두 곳(slots.is_canon · team_tactic_setups optimal)에 있어, CHE optimal을 4-2-3-1로 바꾼 뒤에도
+            #    is_canon이 3-4-2-1에 남아 팀 전술 화면이 두 포메이션을 섞어 그렸다. optimal 행이 있는 팀만 본다.
+            opt = con.execute(
+                """SELECT t.formation FROM team_tactic_setups t
+                    WHERE t.regime_id=? AND t.kind='optimal'
+                      AND t.game_version=(SELECT code FROM game_versions WHERE released<=date('now') ORDER BY released DESC LIMIT 1)
+                    ORDER BY t.id DESC LIMIT 1""", (rid,)).fetchone()
+            canon_f = con.execute("SELECT formation FROM slots WHERE regime_id=? AND is_canon=1 LIMIT 1", (rid,)).fetchone()
+            if opt and canon_f and opt[0] != canon_f[0]:
+                g24.append(f"{code} 정본 표시 포메이션 {canon_f[0]} ≠ 시즌 정본(optimal) {opt[0]} — slots.is_canon을 옮길 것")
             base = G24_LOST_BASE.get(code, 0)
             if lost > base:
                 g24.append(f"{code} 정본에 없는 slot_type이라 화면에서 사라지는 선수 {lost}명(기준 {base})")
