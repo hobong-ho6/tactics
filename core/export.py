@@ -70,7 +70,7 @@ def export_all(db_path=None, window="2026-summer"):
     for (gv,) in con.execute("SELECT code FROM game_versions"):
         roles = _rows(con, """SELECT role_id, name, name_en, position_type, focuses, identity_kr, focus_axis_kr
                               FROM game_roles WHERE game_version=? ORDER BY role_id""", (gv,))
-        changes = _rows(con, """SELECT area, change, evidence, impact, source, confidence, recorded
+        changes = _rows(con, """SELECT id, area, change, evidence, impact, source, confidence, recorded
                                FROM game_system_changes WHERE game_version=? ORDER BY id""", (gv,))
         if not roles and not changes:
             continue                      # 커널도 시스템 사실도 없는 버전은 파일을 만들지 않는다

@@ -35,14 +35,33 @@
 .rs-ev .pair .rs-k{max-width:96px}
 .rs-ev .q{border-left:2px solid var(--line);padding-left:8px;margin:6px 0}
 .rs-gr{display:inline-block;font-size:10.5px;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin-right:4px}
+/* 시스템 분석 — 영역별 묶음(2026-11-04 사용자 지시 「일별로 나열돼 있는데 보기 좋게 정리」) */
+.chg-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chg-chips button{font-size:12.5px;padding:3px 10px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--txt);cursor:pointer}
+.chg-chips button.on{border-color:var(--acc);color:var(--acc)}
+.chg-area{border:1px solid var(--line);border-radius:10px;margin:10px 0;background:var(--ink-02)}
+.chg-area>summary{cursor:pointer;padding:9px 14px;font-weight:600;list-style:none}
+.chg-area>summary::-webkit-details-marker{display:none}
+.chg-area>summary::before{content:'▸ '}.chg-area[open]>summary::before{content:'▾ '}
+.chg-item{border-top:1px solid var(--line);padding:9px 14px;font-size:13px;line-height:1.7}
+.chg-item .t{font-weight:600}
+.chg-item .m{font-size:11.5px;margin-bottom:2px}
+.chg-g{display:inline-block;min-width:16px;text-align:center;font-size:10.5px;font-weight:700;border-radius:4px;padding:0 5px;margin-right:4px;border:1px solid currentColor}
+.chg-g.A{color:var(--ok)}.chg-g.B{color:var(--acc)}.chg-g.C{color:var(--warn)}.chg-g.D{color:var(--bad)}.chg-g.x{color:var(--dim)}
+.chg-item details{margin-top:4px;font-size:12.5px}
+.chg-item details summary{cursor:pointer;color:var(--acc)}
 </style></head><body>
 <div id="hdr"></div>
 <h1>FC 게임 시스템 분석 <small class="dim" id="gv"></small></h1>
 <div class="panel"><h2>시스템 분석 — 구현에 영향을 주는 확정 사실 <small class="dim">game_system_changes</small></h2>
   <p class="dim" style="font-size:12.5px;margin:0 0 8px">버전을 골라 본다. <b>근거 보기</b>를 펴면 EA 원문과 한국어 번역이 함께 나온다 —
   원문 없이 번역만 적힌 행은 1차 근거가 아니라는 뜻이다.</p>
-  <select id="chgGv" style="margin-bottom:8px"></select>
-  <table id="chg"></table></div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+    <select id="chgGv"></select>
+    <input id="chgQ" class="gm-search" placeholder="검색 — 예: 코너, Avoidance, D-pad, 홀딩" style="max-width:320px">
+    <span id="chgCount" class="dim" style="font-size:12px"></span></div>
+  <div id="chgChips" class="chg-chips"></div>
+  <div id="chg"></div></div>
 
 <div class="panel"><h2>지금 메타 <small class="dim">— 커뮤니티·프로가 쓰는 설정과 포메이션 · 날짜별 스냅샷</small></h2>
   <p class="dim" style="font-size:12.5px;margin:0 0 8px">⛔ 이 표는 <b>메타</b>이고, 리포트의 전술 시트는 <b>에메리 재현</b>이다 — 층이 다르니 섞어 읽지 말 것.
@@ -147,7 +166,15 @@ document.getElementById('celeCtx').innerHTML = '<tr><th>세리머니</th><th>발
   CONTEXT_CELEBRATIONS.map(c => `<tr><td><b>${esc(c.name_kr)}</b><br><small class="dim">${esc(c.name_en)}</small></td><td class="dim">${esc(c.trigger)}</td></tr>`).join('');
 const kd = await loadCurrentKernels();
 document.getElementById('gv').textContent = `역할 커널 ${kd.game_version}`;  // ⚠️ 시스템 분석 패널은 버전이 따로다
-const AREA={engine:'엔진',roles:'역할',positioning:'포지셔닝',attributes:'속성',tactics:'전술',playstyles:'플레이스타일',meta:'메타'};
+// 영역 → [한국어 이름, 순서]. DB area 어휘가 갈린 것(attribute/attributes)은 여기서 한 묶음으로 모은다.
+const AREA={tactics:['전술·팀 설정',1],roles:['역할',2],positioning:['포지셔닝',3],set_pieces:['세트피스·코너킥',4],
+  playstyles:['플레이스타일',5],attributes:['속성',6],attribute:['속성',6],goalkeeping:['골키핑',7],engine:['엔진·조작',8],
+  evolution:['진화',9],meta:['메타·운영',10]};
+const areaKey=a=>a==='attribute'?'attributes':a;
+// 근거 등급 — confidence 앞머리의 A/B/C/D(불변규칙 12). 「A(…) + B」처럼 섞이면 가장 앞 글자를 배지로, 전문은 근거에 둔다.
+const gradeOf=c=>{const m=String(c??'').match(/^\s*([ABCD])\b/);return m?m[1]:(/HIGH/.test(c??'')?'A':'x');};
+// 한 줄 제목 — 사실 문장의 첫 마디(「 — 」·마침표 앞)만. 전문은 아래에 그대로 둔다.
+const headOf=t=>{const s=String(t??'').replace(/\*\*/g,'').replace(/^[⭐\s]+/,'');const i=s.search(/ — |\. |: /);return (i>0&&i<110?s.slice(0,i):s.slice(0,90)+(s.length>90?'…':''));};
 // ⭐ 시스템 분석은 역할 커널과 버전이 다를 수 있다(2026-09-21) — FC27은 역할 목록 확정 전이라 커널이 비어 있지만
 //    시스템 사실은 쌓여 있다. 커널(FC26)과 분리해 최신 버전을 기본으로 보여준다.
 const CHG={};
@@ -157,15 +184,31 @@ for (const gv of ((await loadIndex()).game_versions??[]).map(v=>v.code)) {
 const chgGvs = Object.keys(CHG).filter(gv=>CHG[gv].length).sort().reverse();
 const chgSel = document.getElementById('chgGv');
 chgSel.innerHTML = chgGvs.map(gv=>`<option>${gv}</option>`).join('');
+let chgArea='';
 function renderChanges(){
-  const rows = CHG[chgSel.value] ?? [];
-  document.getElementById('chg').innerHTML='<tr><th>영역</th><th>확정 사실</th><th>구현에의 영향</th><th>근거</th></tr>'+
-   rows.map(c=>`<tr><td><b>${AREA[c.area]??c.area}</b><br><small class="dim">${esc(c.recorded??'')}</small></td>
-     <td>${prose(c.change)}</td><td>${prose(c.impact??'')}</td>
-     <td>${c.evidence ? `<details class="refs"><summary>근거 보기</summary>${prose(c.evidence)}
-       <p class="dim" style="font-size:11.5px;margin:6px 0 0">출처 ${esc(c.source??'')} · ${esc(c.confidence??'')}</p></details>` : ''}</td></tr>`).join('');
+  const q=document.getElementById('chgQ').value.trim().toLowerCase();
+  const all=(CHG[chgSel.value]??[]).slice().sort((a,b)=>String(b.recorded??'').localeCompare(String(a.recorded??''))||(b.id??0)-(a.id??0));
+  const hit=c=>!q||[c.change,c.impact,c.evidence,c.source,c.area,AREA[c.area]?.[0]].join(' ').toLowerCase().includes(q);
+  const shown=all.filter(hit);
+  const groups={};for(const c of shown)(groups[areaKey(c.area)]??=[]).push(c);
+  const order=Object.keys(groups).sort((a,b)=>(AREA[a]?.[1]??99)-(AREA[b]?.[1]??99));
+  const total={};for(const c of all)total[areaKey(c.area)]=(total[areaKey(c.area)]??0)+1;
+  document.getElementById('chgChips').innerHTML=[['','전체',all.length],...Object.keys(total).sort((a,b)=>(AREA[a]?.[1]??99)-(AREA[b]?.[1]??99)).map(a=>[a,AREA[a]?.[0]??a,total[a]])]
+    .map(([a,n,k])=>`<button data-a="${esc(a)}" class="${a===chgArea?'on':''}">${esc(n)} ${k}</button>`).join('');
+  document.getElementById('chgCount').textContent=q?`검색 결과 ${shown.length}건`:`${all.length}건 · 영역별 최신순`;
+  const item=c=>{const g=gradeOf(c.confidence);
+    return `<div class="chg-item"><div class="m dim"><span class="chg-g ${g}" title="근거 등급 — A EA 1차 · B 데이터마이닝 · C 통제 실측 · D 통설">${g==='x'?'?':g}</span>#${esc(c.id??'')} · ${esc(c.recorded??'')}</div>
+      <div class="t">${esc(headOf(c.change))}</div>
+      <div>${prose(c.change)}</div>
+      ${c.impact?`<details><summary>구현에의 영향</summary>${prose(c.impact)}</details>`:''}
+      ${c.evidence?`<details><summary>근거 보기</summary>${prose(c.evidence)}<p class="dim" style="font-size:11.5px;margin:6px 0 0">출처 ${esc(c.source??'')} · ${esc(c.confidence??'')}</p></details>`:''}</div>`;};
+  document.getElementById('chg').innerHTML=order.filter(a=>!chgArea||a===chgArea).map(a=>
+    `<details class="chg-area" ${chgArea||q||order.length===1?'open':''}><summary>${esc(AREA[a]?.[0]??a)} <span class="dim" style="font-weight:400">${groups[a].length}건 · 최근 ${esc(groups[a][0].recorded??'')}</span></summary>${groups[a].map(item).join('')}</details>`).join('')
+    || '<p class="dim">맞는 항목이 없다.</p>';
 }
-chgSel.addEventListener('change', renderChanges);
+chgSel.addEventListener('change', ()=>{chgArea='';renderChanges();});
+document.getElementById('chgQ').addEventListener('input', renderChanges);
+document.getElementById('chgChips').addEventListener('click', e=>{const b=e.target.closest('button');if(!b)return;chgArea=b.dataset.a;renderChanges();});
 renderChanges();
 const groups=[...new Set(kd.roles.map(r=>r.position_type))];
 const grp=document.getElementById('grp');
