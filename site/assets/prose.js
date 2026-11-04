@@ -20,8 +20,20 @@ const TAG = /^\[([^\]]{1,70})\]\s*/;
    종전에는 ⑴⑵⑶만 나눠서, 같은 구실을 하는 원문자 목록이 통째로 한 문단에 붙어 나왔다.
    ⛔ DB 산문은 고치지 않는다(불변규칙 2) — **읽는 쪽에서** 나눈다. */
 const ENUM_CHARS = '⑴⑵⑶⑷⑸⑹⑺⑻⑼⑽ⓐⓑⓒⓓⓔⓕⓖ①②③④⑤⑥⑦⑧⑨⑩';
-const ENUM = new RegExp('[' + ENUM_CHARS + ']');
-const ENUM_SPLIT = new RegExp('(?=[' + ENUM_CHARS + '])');
+/* ⭐ 2026-11-04: **괄호 안의 원문자는 항목 머리가 아니다**(사용자 「렌더러도 고쳐줘」 — 빌라 게임 구현의
+   「(RDM은 보류 쟁점 obs#1123 ⑴ — …)」·「(obs#1123 ⑷).」가 「⑴ — 맨시티전…」·「⑷ ).」 줄로 잘렸다).
+   괄호 ( ) （ ） 깊이 0에 있는 원문자에서만 나눈다 — 참조 속 번호(obs#…⑴)는 문장 안에 그대로 둔다. */
+function enumParts(t){
+  const parts = []; let depth = 0, last = 0;
+  for (let i = 0; i < t.length; i++){
+    const c = t[i];
+    if (c === '(' || c === '（') depth++;
+    else if ((c === ')' || c === '）') && depth > 0) depth--;
+    else if (depth === 0 && i > 0 && ENUM_CHARS.includes(c)){ parts.push(t.slice(last, i)); last = i; }
+  }
+  parts.push(t.slice(last));
+  return parts;
+}
 
 /* 마커 앞에서 끊는다. 첫 조각은 마커가 없다(mark=''). ⭐⭐는 한 마커로 묶는다. */
 function split(text){
@@ -58,14 +70,15 @@ function body(raw){
      ⛔ `·`로 나누면 안 된다 — 「점유 36%·패스 331」처럼 **수치 나열**에 쓰인다.
      ⛔ 마침표로 나눌 때 소수점(1.16)·약어가 걸리면 안 되므로 **한글 바로 뒤 마침표**만 경계로 본다.
      ⚠️ 문장이 3개 이상일 때만 나눈다 — 짧은 문구까지 쪼개면 되레 산만하다. */
-  if (!ENUM.test(t)) {
+  const parts0 = enumParts(t);
+  if (parts0.length < 2 && !ENUM_CHARS.includes(t[0])) {
     const parts = t.split(/(?<=[가-힣])\.\s+/).map(x => x.trim()).filter(Boolean);
     if (parts.length >= 3 && t.length > 160)
       return head + parts.map(x =>
         `<span class="pl">${bold(x.endsWith('.') ? x : x + '.')}</span>`).join('');
     return head + bold(t);
   }
-  const parts = t.split(ENUM_SPLIT);
+  const parts = parts0;
   // ⑴이 **강조** 안에 들어간 원문이 있다(예: '**⑴ 출처가 브레스트 시절 ⑵ 3티어**').
   // 거기서 끊으면 강조가 쪼개져 * 가 화면에 남는다 — 그런 블록은 줄만 안 나눈다.
   if (parts.some(p => (p.match(/\*\*/g) || []).length % 2)) return head + bold(t);

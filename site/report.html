@@ -185,9 +185,19 @@ const PROFILE_SPLIT = Object.fromEntries((td.profile ?? []).map(p => [p.axis, sp
 document.getElementById('profile').innerHTML =
   `<tr><th>축</th><th>확정 결론</th><th>근거</th><th>갱신</th></tr>` +
   (td.profile.length ? td.profile.map(p => { const sp = PROFILE_SPLIT[p.axis];
+     /* ⭐ 「정본 전환」 덧붙임은 결론 자체를 바꾼다(2026-11-04 사용자 「접힌 카드에도 최신 덧붙임이 먼저 보이게」 — CHE 3-4-2-1→4-2-3-1).
+        표식 `[YYYY-MM-DD 정본 전환 …]`의 마지막 문단을 결론 자리에 올리고, 옛 결론은 접힌 「이전 결론」으로 내린다(원문은 그대로 · 불변규칙 2). */
+     /* 게임 버전 정정 `[YYYY-MM-DD FC27 정정 …]`도 같은 자리에 올린다(2026-11-04 사용자 「빌라 「FC27 정정」도 같은 방식으로」).
+        단 버전 정정은 결론 일부만 고치므로, 접힌 옛 결론에 「정정에 없는 항목은 그대로 유효」를 밝힌다. */
+     const ci = sp.entries.map(e => /정본 전환|FC\d+ 정정/.test(e.tag)).lastIndexOf(true);
+     const cur = ci >= 0 ? sp.entries[ci] : null;
+     const rest = cur ? sp.entries.filter((_, k) => k !== ci) : sp.entries;
+     const partial = cur && !/정본 전환/.test(cur.tag);
+     const head = cur ? `<div style="margin:0 0 4px"><span class="badge hi">${cur.date} ${cur.tag}</span></div>${prose(cur.text)}
+        <details class="refs" style="margin-top:6px"><summary>${partial ? `정정 전 결론 — 위 정정에 없는 항목은 그대로 유효` : `이전 결론(${cur.date} 전)`}</summary>${prose(sp.base)}</details>` : prose(sp.base);
      return `<tr><td><b>${AXES[p.axis] ?? p.axis}</b></td>
-     <td>${prose(sp.base)}${sp.entries.length ? `<details class="refs" style="margin-top:6px"><summary>경기 반영 ${sp.entries.length}건 — 결론을 유지·보강·한정한 관찰</summary>
-        ${sp.entries.map(e => `<div style="margin:8px 0 2px"><span class="badge">${e.date}${e.tag ? ' ' + e.tag : ''}</span></div>${prose(e.text)}`).join('')}</details>` : ''}</td>
+     <td>${head}${rest.length ? `<details class="refs" style="margin-top:6px"><summary>경기 반영 ${rest.length}건 — 결론을 유지·보강·한정한 관찰</summary>
+        ${rest.map(e => `<div style="margin:8px 0 2px"><span class="badge">${e.date}${e.tag ? ' ' + e.tag : ''}</span></div>${prose(e.text)}`).join('')}</details>` : ''}</td>
      <td>${p.evidence ? `<details class="refs"><summary>근거 보기</summary>${prose(p.evidence)}</details>` : ''}</td>
      <td>${p.updated ?? ''}${sp.entries.length ? `<br><small class="dim">마지막 경기 반영</small>` : ''}</td></tr>`; }).join('')
    : `<tr><td colspan="4" class="dim">아직 프로필 축이 기록되지 않았다 — docs 문서에서 이관 예정
