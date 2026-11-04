@@ -5297,7 +5297,8 @@
    "id": 10,
    "impact": "FC26 ①(「less constrained by their Roles」(역할의 제약을 덜 받는))의 연장·강화 — **역할 커널의 결정성이 한 단계 더 약해진다**. 우리 코사인 적합의 구조적 상한이 더 내려가므로 FC27 커널에서는 노이즈 구간(Δ≤0.05)을 넓게 볼 근거가 생긴다(크기는 실측 후 결정). ⚠️ 37/85/217 구조가 유지되는지는 fut.gg /api/fut/roles/ FC27 응답으로만 확정 — Kernel.EXPECTED 확장은 그때.",
    "recorded": "2026-09-04",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-07-29) · https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-fut-deep-dive"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-07-29) · https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-fut-deep-dive",
+   "title": "공격 공간 인식(곡선 침투) 도입 — 역할 개편은 없음"
   },
   {
    "area": "engine",
@@ -5307,7 +5308,8 @@
    "id": 11,
    "impact": "채널 러너형(st_advanced/Support·wm_winger/Attack)의 게임 내 침투 거리가 짧아진다 — 실측 「배후 침투」 서사를 게임에 옮길 때 한 번의 런으로 재현되지 않을 수 있음. 경기 프리셋 설명에 「런 재트리거 필요」 메모.",
    "recorded": "2026-09-04",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)",
+   "title": "트리거 침투 거리 제한"
   },
   {
    "area": "attributes",
@@ -5317,7 +5319,8 @@
    "id": 12,
    "impact": "docs/20 ⑤ 분류 공식(남 183cm 등)은 유지되나 **효과 크기가 줄어** 적합 가중치로 쓸 이유가 더 없어진다. 남성 임계값 변경 언급 없음 — 09-25 이후 sofifa/fut.gg accelerate 라벨 재대조 필요.",
    "recorded": "2026-09-04",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)",
+   "title": "AcceleRATE 영향 축소"
   },
   {
    "area": "playstyles",
@@ -5327,7 +5330,8 @@
    "id": 13,
    "impact": "docs/22 §3 카탈로그(35종)는 이름은 유지되되 **효과 서술 10건을 FC27 절로 갱신**해야 한다(특히 Pinged Pass·Tiki Taka의 「받기 쉬워짐」 문구는 FC27에서 거짓). player_game_stats.playstyles 해석 시 버전 주의. 온볼 층이라 커널 무관.",
    "recorded": "2026-09-04",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-07-29) · https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-fut-deep-dive · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-07-29) · https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-fut-deep-dive · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)",
+   "title": "PlayStyle 10종 리밸런스 · PS+ 상한 3"
   },
   {
    "area": "tactics",
@@ -5337,7 +5341,8 @@
    "id": 14,
    "impact": "FC26 ⑥의 진영별 비대칭이 **수비 3분의 1 완전 무효**로 굳어진다 — 이라올라(고압박) 재현 손실이 더 커지고, 에메리 딥블록 국면(PPDA 30 계열)은 게임에서 「팀 프레스 없음 + 낮은 깊이」로 오히려 정확히 재현된다. 라인 높이 실효(FC26 ⑦ 미검증)는 FC27에서 「더 뚜렷」해진다는 EA 진술 — 재검증 우선순위 상향.",
    "recorded": "2026-09-04",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)",
+   "title": "팀 압박 — 자기 수비 3분의 1에서 무효"
   },
   {
    "area": "engine",
@@ -5347,7 +5352,8 @@
    "id": 15,
    "impact": "수비 역할(cb_*/dm_holding)의 **AI 실행력이 낮아진다** — 커널(위치)은 그대로지만 「막아내는 결과」는 사용자 조작 의존. Intercept PlayStyle은 반대로 강화(#13) — AI 수비 재현은 PlayStyle 층으로 보상. Authentic(커리어)에는 미적용.",
    "recorded": "2026-09-04",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-07-29)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-07-29)",
+   "title": "수동 수비 강화(AI 수비 리치 축소)"
   },
   {
    "area": "engine",
@@ -5357,7 +5363,8 @@
    "id": 16,
    "impact": "docs/22 §1 조작표 갱신 대상(FC27 절). 전술 재현과 무관한 조작 층.",
    "recorded": "2026-09-04",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)",
+   "title": "딩크 패스 완전 수동화"
   },
   {
    "area": "meta",
@@ -5367,7 +5374,8 @@
    "id": 17,
    "impact": "**포지션 유연성이 게임 데이터 축으로 들어온다** — FC26 ②(OOP 페널티 대폭 감소)에서 한 발 더 나가 부 포지션은 무페널티. 우리 「측정 최적 ≠ EA 기본 포지션」 사례(맥긴 RM, 캐시 att_wb 등)의 게임 내 비용이 더 낮아진다. 커리어 축 데이터(7포지션 목록)는 09-10 DB에서 수집 대상 — player_game_stats.positions 해석 갱신.",
    "recorded": "2026-09-04",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-career-mode-deep-dive (2026-07-31)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-career-mode-deep-dive (2026-07-31)",
+   "title": "커리어 모드 포지션·OVR 체계 변경"
   },
   {
    "area": "meta",
@@ -5377,7 +5385,8 @@
    "id": 18,
    "impact": "FC27 커널·파라미터 수집을 **발매 직후 1회로 잡아도 초기 TU로 흔들릴 위험이 작다**(FC26은 TU 1.4/1.5가 역할 위치를 바꿨다 — docs/20 ①). 역할 목록 미공개 상태이므로 09-18 얼리액세스 시점의 fut.gg /api/fut/roles/ 응답이 마이그레이션 트리거.",
    "recorded": "2026-09-04",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)",
+   "title": "출시 초기 밸런스 동결 정책(예고)"
   },
   {
    "area": "roles",
@@ -5387,7 +5396,8 @@
    "id": 19,
    "impact": "우리 역할 커널의 **존재 근거가 유지**된다 — 다만 공간 인식이 겹치면서 같은 역할에서도 움직임 분산이 커지므로 Δ 노이즈 구간을 FC26보다 넓게 잡을 근거가 된다(크기는 FC27 실측 후).",
    "recorded": "2026-09-19",
-   "source": "ea.com FC27 gameplay deep dive · closed beta feedback update (2차 정리 기사 경유)"
+   "source": "ea.com FC27 gameplay deep dive · closed beta feedback update (2차 정리 기사 경유)",
+   "title": "역할은 유지 — 공간 인식과 함께 작동"
   },
   {
    "area": "tactics",
@@ -5397,7 +5407,8 @@
    "id": 20,
    "impact": "에메리 재현에 **유리**하다: 미드블록에서 중원이 먼저 걸고 백4는 자리를 지키는 구조가 게임 기본 동작이 된다. ⚠️ 반대로 RCB Aggressive의 step-out 빈도는 FC26보다 줄 수 있다 — 실측 관찰 항목.",
    "recorded": "2026-09-19",
-   "source": "ea.com FC27 closed beta feedback update (2차 정리 기사 경유, 2026-09-19 확인)"
+   "source": "ea.com FC27 closed beta feedback update (2차 정리 기사 경유, 2026-09-19 확인)",
+   "title": "팀 압박 수비수 효율 저하 · 동료 컨테인 완화"
   },
   {
    "area": "meta",
@@ -5407,7 +5418,8 @@
    "id": 21,
    "impact": "진화·카드 선택 기준이 바뀐다 — 프로모 카드는 처방 역할이 base 포지션과 맞으면 **숙련(Role++)이 자동 충족**된다. 진화로 Role++를 얻으러 갈 이유가 줄고, PS+ 상한 3 때문에 PlayStyle+ 획득 진화의 상대 가치가 오른다.",
    "recorded": "2026-09-19",
-   "source": "FC27 Launch Update pitch notes (2차 정리, 2026-09-19 확인)"
+   "source": "FC27 Launch Update pitch notes (2차 정리, 2026-09-19 확인)",
+   "title": "프로모 선수 Role++ 기본 보유 · PS+ 상한 3 확정"
   },
   {
    "area": "playstyles",
@@ -5417,7 +5429,8 @@
    "id": 22,
    "impact": "⛔ 「패서를 좋게 만들면 리시버의 퍼스트 터치도 좋아진다」는 FC26까지만 성립한다. FC27 처방에서는 **리시버 본인의 볼컨트롤·침착·First Touch PlayStyle을 각자 따로 평가**해야 하고, 패서의 PlayStyle로 리시버의 결점을 가리는 설계(티키타카형 짧은 연계)는 폐기한다. 진화 선택에서도 리시버 측 원 스탯의 가치가 상대적으로 올라간다.",
    "recorded": "2026-09-21",
-   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)"
+   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)",
+   "title": "핑드 패스·티키타카의 수신 보정 제거"
   },
   {
    "area": "attributes",
@@ -5427,7 +5440,8 @@
    "id": 24,
    "impact": "「압박 속에서 공을 지킨다」는 하나의 체감이 게임 내부에서는 **두 개의 판정식**으로 갈라진다 — 수신은 볼컨트롤·인터셉트·침착, 접촉 유지는 Balance·Agility·Dribbling. 처방에서 두 축을 섞지 말 것. ⚠️ gamereactor.fr 핸즈온 기사가 「볼컨트롤이 좋은 선수가 소유권을 유지한다」고 썼으나 EA 공식 프랑스어판과 충돌하므로 EA를 채택한다.",
    "recorded": "2026-09-21",
-   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)"
+   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)",
+   "title": "오프밸런스 드리블 = 균형·민첩·드리블(볼컨 제외)"
   },
   {
    "area": "attributes",
@@ -5437,7 +5451,8 @@
    "id": 25,
    "impact": "⑴ 「반응력 = 세컨볼·리바운드·루즈볼 경합」은 **D등급(통설, 1차 근거 없음)**이다 — 리포트·처방에서 등급을 밝히지 않고 쓰지 말 것. ⑵ 「AI 전용」도 「양쪽 적용」도 **둘 다 근거가 없다**. ⑶ 조작 주체(유저 vs AI)에 따라 달라진다고 EA가 명시한 유일한 항목은 **수비 리치 한 건뿐**이다(FC27, Competitive 한정). ⑷ 우리 「자율 판단 지수」가 반응력에 가중 .25를 주는 것은 여전히 **파생 휴리스틱**이며 EA 공식이 아님을 유지 표기한다. ⇒ 필요한 것은 프랙티스 아레나 A/B 실측(리바운드 볼 획득률·첫 터치 성공률)이다.",
    "recorded": "2026-09-21",
-   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)"
+   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)",
+   "title": "반응력은 EA 1차 정의가 없다"
   },
   {
    "area": "attributes",
@@ -5447,7 +5462,8 @@
    "id": 26,
    "impact": "침착을 **'거리 파라미터'가 아니라 '압박 하 액션 오차 계수(퍼스트 터치 포함)'로 기록**한다. 거리 해석은 채택하지 않는다. 슈팅 전용 스탯이라는 반대쪽 통념도 틀렸다 — EA 1차가 퍼스트 터치 입력으로 명시한다.",
    "recorded": "2026-09-21",
-   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)"
+   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)",
+   "title": "침착의 확인된 기능은 두 가지뿐"
   },
   {
    "area": "meta",
@@ -5457,7 +5473,8 @@
    "id": 27,
    "impact": "우리 solver·화면의 CHEM 상수와 **일치 확인**. 바꿀 것 없음 — 다만 「확인했다」는 사실 자체가 값이다(종전엔 근거 없이 쓰고 있었다)",
    "recorded": "2026-09-25",
-   "source": "timesaver.gg FC27 chemistry explained · fifauteam FC26 chemistry"
+   "source": "timesaver.gg FC27 chemistry explained · fifauteam FC26 chemistry",
+   "title": "케미 기준선(클럽·리그·국적) 유지"
   },
   {
    "area": "meta",
@@ -5467,7 +5484,8 @@
    "id": 28,
    "impact": "⛔ 케미 보정값을 코드에 박으면 안 된다는 실증이다 — 박았다면 2026-09-14에 조용히 틀렸다. ⇒ sbc_solve.chem_total은 규칙 대신 fut.gg의 `player_card_items.chem_extra`를 읽는다(migration 044와 같은 방침)",
    "recorded": "2026-09-25",
-   "source": "timesaver.gg FC27 chemistry explained (EA 런치 업데이트 인용)"
+   "source": "timesaver.gg FC27 chemistry explained (EA 런치 업데이트 인용)",
+   "title": "아이콘·히어로 케미 기여 +2 → +1"
   },
   {
    "area": "meta",
@@ -5477,7 +5495,8 @@
    "id": 29,
    "impact": "sbc_solve.chem_total에 반영. 아이콘 1장이 SBC 케미 조건을 크게 흔든다 — 구매 제안에서 우선 고려 대상",
    "recorded": "2026-09-25",
-   "source": "fifauteam FC26 chemistry · timesaver.gg FC27"
+   "source": "fifauteam FC26 chemistry · timesaver.gg FC27",
+   "title": "아이콘·히어로는 자리만 맞으면 케미 3"
   },
   {
    "area": "meta",
@@ -5487,7 +5506,8 @@
    "id": 30,
    "impact": "⑴ 배치가 최적화 문제라는 근거 — 이것 때문에 place()를 탐욕법에서 최대 매칭+국소탐색으로 바꿨다. ⑵ 화면이 「빨간 칸이어도 제출은 된다」고 단언할 근거",
    "recorded": "2026-09-25",
-   "source": "timesaver.gg FC27 · Vortex Gaming 한국어 정리"
+   "source": "timesaver.gg FC27 · Vortex Gaming 한국어 정리",
+   "title": "자리 안 맞는 선수는 케미 0 · 링크 기여도 없음"
   },
   {
    "area": "meta",
@@ -5497,7 +5517,8 @@
    "id": 31,
    "impact": "⛔ 우리는 **세지 않는다** — 어느 감독을 쓸지 사용자만 안다. ⇒ 우리 케미 값은 **하한**이고, 「케미 부족」 판정이 실제로는 감독으로 메워질 수 있다. 화면에 그 사실을 적었다",
    "recorded": "2026-09-25",
-   "source": "fifauteam FC26 chemistry · fifplay/thefuthub SBC 가이드"
+   "source": "fifauteam FC26 chemistry · fifplay/thefuthub SBC 가이드",
+   "title": "감독 케미 +1(국적·리그 일치)"
   },
   {
    "area": "meta",
@@ -5507,7 +5528,8 @@
    "id": 32,
    "impact": "우리 team_rating()과 **일치 확인**. ⭐ 파생 전략: 보정계수가 평균 초과분만 보상하므로 **상위 1~2장을 높이고 나머지를 낮게** 채우는 편이 싸다(top-heavy). 지금 솔버는 이걸 노리지 않는다 — 보유분 판정이라 비용 축이 없기 때문이다",
    "recorded": "2026-09-25",
-   "source": "fifauteam FC26 squad rating guide · FUTBIN rating combinations"
+   "source": "fifauteam FC26 squad rating guide · FUTBIN rating combinations",
+   "title": "팀 레이팅 산식(EA 비공개 · 추정)"
   },
   {
    "area": "meta",
@@ -5517,7 +5539,8 @@
    "id": 33,
    "impact": "⚠️ 우리 수집분 65개 조건 문장에는 **아직 안 나왔다**. ⛔ 그래서 패턴을 미리 발명하지 않는다 — sbc_solve는 못 읽은 문장을 「판정 불가」로 떨어뜨리므로 나오면 그때 드러난다. 이 행은 **나올 것을 알고 있다**는 기록이다",
    "recorded": "2026-09-25",
-   "source": "EA 포럼 독일어 · github.com/Regista6/EA-FC-Automated-SBC-Solving"
+   "source": "EA 포럼 독일어 · github.com/Regista6/EA-FC-Automated-SBC-Solving",
+   "title": "SBC 희귀도 조건은 등급과 별개"
   },
   {
    "area": "meta",
@@ -5527,7 +5550,8 @@
    "id": 34,
    "impact": "⭐ 우리와 같은 결론에 이미 도달해 있었다 — 「독립 규칙 코드로 재검증」은 2026-09-25에 우리가 저장 직전 게이트로 넣은 것과 같다. ⚠️ 차이: 우리는 **비용 목적이 없다**(시세 미공개) — 그래서 최소 비용 IP가 아니라 보유분 탐색이 맞다",
    "recorded": "2026-09-25",
-   "source": "github.com/Regista6/EA-FC-Automated-SBC-Solving · github.com/theblakelalonde/fc-sbc-solver · github.com/kosciukiewicz/sbc-solver"
+   "source": "github.com/Regista6/EA-FC-Automated-SBC-Solving · github.com/theblakelalonde/fc-sbc-solver · github.com/kosciukiewicz/sbc-solver",
+   "title": "SBC 솔버 정석 — 정수계획법 + 담금질"
   },
   {
    "area": "meta",
@@ -5537,7 +5561,8 @@
    "id": 35,
    "impact": "⚠️ 우리 원장에 **카드 소모 추적이 없다** — 제출한 11장이 어떤 카드였는지 EA가 주지 않아 다음 싱크까지 「보유」로 남는다. ⇒ 연속 SBC 해법이 이미 낸 카드를 다시 쓸 수 있다. 화면·보고에 이 한계를 적는다",
    "recorded": "2026-09-25",
-   "source": "help.ea.com Squad Building Challenges · EA 포럼 독일어"
+   "source": "help.ea.com Squad Building Challenges · EA 포럼 독일어",
+   "title": "SBC 제출은 되돌릴 수 없고 선발 11명만 계산"
   },
   {
    "area": "meta",
@@ -5547,7 +5572,8 @@
    "id": 36,
    "impact": "core/gallery.py tag_bonus 정본 반영(내림·보조 포지션·(클럽,리그) 키·아이템 중복 제거 · POS_GROUP에서 CF·LWB·RWB 제거) · TAG_VERIFIED 12종 등급 A. 미발견 9종(브론즈·실버·다른 리그·TOTW·히어로·아이콘·개인기·약발·홀로그램)은 공개 표(timesaver) 등급 D 유지. ⚠️ 갤러리 진행 상태(세트에 이미 넣은 아이템)는 fut.gg가 주지 않고, 예전에 가졌던 아이템이 대거 들어가 있어(레알 마드리드 16장 vs 우리 원장 8장) 보유 카드만으로는 인게임 점수를 재현할 수 없다.",
    "recorded": "2026-10-03",
-   "source": "PS 리모트 캡처 36장 captures/gallery-2026-10-03 (사용자 · 2026-10-03)"
+   "source": "PS 리모트 캡처 36장 captures/gallery-2026-10-03 (사용자 · 2026-10-03)",
+   "title": "갤러리 태그 보너스 계산 규칙"
   },
   {
    "area": "meta",
@@ -5557,7 +5583,8 @@
    "id": 37,
    "impact": "core/gallery.py tag_bonus 반영 · 태그 정리표 미발견 9종 D→B. 인게임 스냅숏 재현: 아스톤 빌라·스쿼드 기초 0 · 스타터 +0.6% · 세리에 A −2.1% · 프리미어 리그 +4.0% · 라리가 +10.5%(원장 밖 카드 퍼스트 오너 가정). 미확인: Different League 5–9장 1%/2% · 히어로 클럽(114605) 「같은 클럽」 · 홀로그램(원장에 정보 없음).",
    "recorded": "2026-10-03",
-   "source": "reports/research/2026-10-03-fc27-gallery-community.md (웹 조사 · fut.gg·EA 피치노트·timesaver·Red Bull·futgenie·neuralboost)"
+   "source": "reports/research/2026-10-03-fc27-gallery-community.md (웹 조사 · fut.gg·EA 피치노트·timesaver·Red Bull·futgenie·neuralboost)",
+   "title": "갤러리 태그 세부 규칙(커뮤니티 조사)"
   },
   {
    "area": "meta",
@@ -5567,7 +5594,8 @@
    "id": 38,
    "impact": "얼티밋팀 「지금 내 팀」 팀 평점 ≈ 표시(활성 스쿼드 18명 · 저장 처방은 11명). 인게임 값과 대조 필요 — 아스톤 빌라 활성 스쿼드 계산값 81(2026-10-06).",
    "recorded": "2026-10-06",
-   "source": "https://fifauteam.com/fc-27-squad-rating-guide/ · https://github.com/benneknudsen/fut-squad-lab/pull/59 · https://github.com/benneknudsen/fut-squad-lab/issues/53"
+   "source": "https://fifauteam.com/fc-27-squad-rating-guide/ · https://github.com/benneknudsen/fut-squad-lab/pull/59 · https://github.com/benneknudsen/fut-squad-lab/issues/53",
+   "title": "팀 평점 계산식 — 평균 초과분을 한 번 더 센다"
   },
   {
    "area": "meta",
@@ -5577,7 +5605,8 @@
    "id": 39,
    "impact": "core/gallery.py 홀로그램 태그는 계속 계산 제외 — 원장에 홀로 여부가 없다(fut.gg 아이템 hyper-cosmetic 값으로 채울 수 있음). 홀로 아이템 점수 배율(×1.5)은 커뮤니티 역산 D.",
    "recorded": "2026-10-06",
-   "source": "https://timesaver.gg/blog/fc-27-holographic-items-explained-regular-pristine-how-to-get · https://primagames.com/gaming/how-to-get-holographic-autograph-cards-in-ea-fc-27-ultimate-team · https://www.dexerto.com/wikis/ea-fc-27/holographic-and-pristine-cards/ · https://games.gg/ea-sports-fc-27/guides/fc-27-how-to-get-holographic-cards/"
+   "source": "https://timesaver.gg/blog/fc-27-holographic-items-explained-regular-pristine-how-to-get · https://primagames.com/gaming/how-to-get-holographic-autograph-cards-in-ea-fc-27-ultimate-team · https://www.dexerto.com/wikis/ea-fc-27/holographic-and-pristine-cards/ · https://games.gg/ea-sports-fc-27/guides/fc-27-how-to-get-holographic-cards/",
+   "title": "홀로그래픽 아이템 규칙"
   },
   {
    "area": "meta",
@@ -5587,7 +5616,8 @@
    "id": 40,
    "impact": "#38의 근거 D → 이 스쿼드 1건 C. ⚠️ 18명 vs 11명 구분은 이 건으로 갈리지 않았다(11명 기준도 81) — 교체 평점이 크게 다른 스쿼드에서 다시 대조할 것.",
    "recorded": "2026-10-06",
-   "source": "사용자 인게임 확인(PS) · game_system_changes #38"
+   "source": "사용자 인게임 확인(PS) · game_system_changes #38",
+   "title": "팀 평점 공식 인게임 대조 1건 일치"
   },
   {
    "area": "evolution",
@@ -5597,7 +5627,8 @@
    "id": 41,
    "impact": "진화 걸어보기·추천에서 PS 3개 보유 카드는 새 PS 가지를 「받을 수 없음」으로 처리해야 한다. 「PS 상한」은 진화마다 maxValue로 다를 수 있다 — 값은 카탈로그에서 읽는다.",
    "recorded": "2026-10-06",
-   "source": "사용자 인게임 확인(PS) · fc_evolutions evo_id 2538 levels"
+   "source": "사용자 인게임 확인(PS) · fc_evolutions evo_id 2538 levels",
+   "title": "진화 PS 보상 (^3) = 보유 PS 상한 3"
   },
   {
    "area": "meta",
@@ -5607,7 +5638,8 @@
    "id": 42,
    "impact": "#38 근거 C 2건. ⚠️ 이번에도 11명·18명 기준이 둘 다 81이라 인원수 규칙은 여전히 미판별 — 교체 평점이 선발보다 크게 낮거나 높은 스쿼드에서 대조할 것.",
    "recorded": "2026-10-06",
-   "source": "사용자 인게임 확인(PS) · game_system_changes #38 · #40"
+   "source": "사용자 인게임 확인(PS) · game_system_changes #38 · #40",
+   "title": "팀 평점 공식 인게임 대조 2건째 일치"
   },
   {
    "area": "attribute",
@@ -5617,7 +5649,8 @@
    "id": 43,
    "impact": "얼티밋팀 처방: 드리블러 평가에서 민첩·균형은 Off-Balance 입력이라 근거 A로 쓸 수 있으나 「85 문턱」은 D — 문턱 판정에 쓰지 않고 「높을수록 유리」로만 쓴다. 반응력·침착은 여전히 §2.1 결론 유지(반응력 작용 1차 근거 없음 · 침착은 퍼스트 터치·PK 원 두 가지만).",
    "recorded": "2026-10-07",
-   "source": "웹 조사 2026-10-07 — ea.com FC27 Gameplay Deep Dive · fcutcoins.com off-balance guide · nealguides.com · hiddenribbon.com · gall.dcinside.com fifaseries 65320(FC26) · note.com/new_gate_green · fifauteam.com fc-27-attributes · vandal.elespanol.com"
+   "source": "웹 조사 2026-10-07 — ea.com FC27 Gameplay Deep Dive · fcutcoins.com off-balance guide · nealguides.com · hiddenribbon.com · gall.dcinside.com fifaseries 65320(FC26) · note.com/new_gate_green · fifauteam.com fc-27-attributes · vandal.elespanol.com",
+   "title": "민첩·균형·반응력·침착 체감 재수집 — 통설뿐"
   },
   {
    "area": "engine",
@@ -5627,7 +5660,8 @@
    "id": 44,
    "impact": "**C등급(통제 실측)을 할 때 프리셋을 반드시 명기해야 한다.** 우리가 전술 재현을 확인하는 자리는 커리어·킥오프(Authentic)인데, 바로 그쪽만 조키가 빨라졌다 — 같은 선수·같은 전술이라도 v1.0.0 Authentic에서 잰 수비 체감과 v1.0.1 이후 수치가 다르다. 기존 행 #15(수동 수비 강화는 Competitive 전용)의 전제가 **절반 깨졌다**: 수동 수비 보상은 여전히 Competitive 전용이지만, **조키 속도만은 Authentic에도 들어왔다**. ⇒ 앞으로 `match_game_setups`·실측 메모에 프리셋(Competitive/Authentic)과 타이틀 버전을 같이 적는다.",
    "recorded": "2026-10-08",
-   "source": "https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/fc-27-v1-0-1-small-bug-fix-update/13734805 (v1.0.1) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/fc-27-v1-0-2---small-bug-fix-update/13752885 (v1.0.2) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/fc-27-v1-0-3---small-bug-fix-update/13763421 (v1.0.3 · 2026-10-02) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/ea-sports-fc%E2%84%A2-27--title-update-v1-0-4/13777445 (v1.0.4 · 2026-10-07)"
+   "source": "https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/fc-27-v1-0-1-small-bug-fix-update/13734805 (v1.0.1) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/fc-27-v1-0-2---small-bug-fix-update/13752885 (v1.0.2) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/fc-27-v1-0-3---small-bug-fix-update/13763421 (v1.0.3 · 2026-10-02) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/ea-sports-fc%E2%84%A2-27--title-update-v1-0-4/13777445 (v1.0.4 · 2026-10-07)",
+   "title": "TU 1.0.1 Authentic 조키 상향 · 이후 변경 0"
   },
   {
    "area": "positioning",
@@ -5637,7 +5671,8 @@
    "id": 45,
    "impact": "**에메리 재현의 핵심 전제가 흔들린다.** 우리 처방은 높은 수비 라인 + 풀백의 전진 유지를 전제로 역할·전술 슬라이더를 깔아 왔는데, 엔진이 풀백을 조기 하강시키면 그 라인이 실제로는 유지되지 않는다 — `prescriptions`의 풀백 역할·수비 라인 높이 항목이 **의도대로 재현되지 않고 있을 가능성**이 크다. ⚠️ 다만 EA가 **고칠 수도 있다고 밝힌 상태**라, 지금 체감에 맞춰 처방을 영구 변경하면 수정 패치 후 두 번 틀린다. ⇒ 처방은 그대로 두고, 인게임 관측(`reports/ingame/`)에 **「풀백 조기 하강 여부」를 고정 관측 항목으로 추가**해 수정 패치 전후를 비교할 수 있게 둔다.",
    "recorded": "2026-10-08",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update (2026-09-30)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update (2026-09-30)",
+   "title": "풀백 조기 하강 공식 인정(미수정)"
   },
   {
    "area": "attributes",
@@ -5647,7 +5682,8 @@
    "id": 46,
    "impact": "**수비 스탯 투자의 가성비 판단이 바뀐다 — 단, 한시적으로만.** 지금은 인터셉트 축에서 수비 스탯 문턱이 실질적으로 낮으므로, 중원·수비에 「인터셉트를 위해 수비 스탯을 더 산다」는 처방·진화 선택의 근거가 약하다 (같은 코스트면 다른 축이 낫다). ⚠️ EA가 명시적으로 **계속 모니터링한다**고 했으므로 이것은 **버그성 과효율일 가능성이 있는 상태**다 — `fut_evolution_log`·`prescriptions`에 이 사실을 근거로 쓸 때 「2026-10-08 기준 v1.0.4, EA 수정 예고 없음」을 함께 적는다. 수정되면 되돌려야 한다. ⭐ 반대로 **수동 수비 보상 설계는 유지된다**고 EA가 못박았으므로, 패스 길목 차단을 전제로 한 압박 처방(시메오네·에메리 중원 압박)은 그대로 유효하다.",
    "recorded": "2026-10-08",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update (2026-09-30)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update (2026-09-30)",
+   "title": "낮은 수비 스탯 인터셉트 과효 인정(유지)"
   },
   {
    "area": "meta",
@@ -5657,7 +5693,8 @@
    "id": 47,
    "impact": "**처방의 재검토 주기를 짧게 잡을 이유가 없다.** 2026-10-08 기준 v1.0.0의 게임플레이 튜닝이 사실상 그대로 살아 있다(Authentic 조키 1건 예외 — 같은 회차 engine 행 참조). ⇒ 지금 쌓는 인게임 실측은 **한 버전의 일관된 표본**으로 묶어도 된다 — docs/22 §2.1이 예고한 「출시 2~4주 후 C등급 통제 실측」에 지금이 적기다. ⚠️ 반대로 **반칙 판정은 곧 바뀐다** — 태클·경합 관련 실측(적극성 스탯의 반칙 리스크 축)은 지금 재면 수정 후 무효가 될 수 있으니 뒤로 미룬다.",
    "recorded": "2026-10-08",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update (2026-09-30) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/fc-27-v1-0-1-small-bug-fix-update/13734805 (v1.0.1) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/fc-27-v1-0-3---small-bug-fix-update/13763421 (v1.0.3 · 2026-10-02) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/ea-sports-fc%E2%84%A2-27--title-update-v1-0-4/13777445 (v1.0.4 · 2026-10-07)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update (2026-09-30) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/fc-27-v1-0-1-small-bug-fix-update/13734805 (v1.0.1) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/fc-27-v1-0-3---small-bug-fix-update/13763421 (v1.0.3 · 2026-10-02) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/ea-sports-fc%E2%84%A2-27--title-update-v1-0-4/13777445 (v1.0.4 · 2026-10-07)",
+   "title": "초기 밸런스 동결이 실행으로 확인"
   },
   {
    "area": "meta",
@@ -5667,7 +5704,8 @@
    "id": 48,
    "impact": "**처방의 유효기간이 길어진다.** FC26까지는 캠페인 아이템이 속성을 크게 밀어올려 「지금 좋은 카드」가 달마다 갈렸지만, FC27은 상승폭이 작아 한 번 맞춘 `prescriptions`를 시즌 내내 유지할 수 있다. ⭐ 더 중요한 반대 방향: **「캠페인 나오면 메워지겠지」로 미뤄둔 포지션은 캠페인이 메워주지 않는다** — SBC·진화·이적시장으로 직접 채워야 한다. 다음 /club-sync에서 결손 포지션을 캠페인 대기로 두지 말 것.",
    "recorded": "2026-10-08",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-launch-update (2026-09-14) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-fut-developer-launch-update (2026-10-01)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-launch-update (2026-09-14) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-fut-developer-launch-update (2026-10-01)",
+   "title": "캠페인 업그레이드 폭 완화"
   },
   {
    "area": "evolution",
@@ -5677,7 +5715,8 @@
    "id": 49,
    "impact": "**진화 선택 판단의 축이 바뀐다.** 빈도가 낮아져 진화 슬롯 한 칸의 기회비용이 커졌고, 요건이 포지션·속성으로 구체화돼 **요건에 걸리는 카드를 미리 확보해 두는 것**이 이득이 된다. `fut_evolution_log`에 후보를 남길 때 「왜 이 카드인가」를 포지션·속성 요건 기준으로 적는다. 진화가 고유 강점 보존 방향이라면, 우리 처방이 요구하는 역할별 속성(에메리식 역할 등)과 진화 요건이 겹치는 카드를 고르는 것이 가장 정확한 선택이다. 기존 행 #41(PlayStyle 보상의 (^3) = 보유 상한 3)과 같은 방향 — 진화로 메울 수 있는 폭 자체가 좁아졌다.",
    "recorded": "2026-10-08",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-launch-update (2026-09-14) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-fut-developer-launch-update (2026-10-01)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-launch-update (2026-09-14) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-fut-developer-launch-update (2026-10-01)",
+   "title": "진화 출시 빈도 축소 · 맞춤 성장 경로"
   },
   {
    "area": "playstyles",
@@ -5687,7 +5726,8 @@
    "id": 50,
    "impact": "**과녁 1(First Touch가 볼컨트롤을 얼마나 덮는가)의 사전 기대값이 생겼다** — 설계 의도대로라면 First Touch 보정은 「작다」 쪽(H0)에 가깝다. 진화 선택에서 「PlayStyle 하나 vs 원 스탯 +N」을 고를 때 FC26식 PlayStyle 우선 판단을 낮춘다(docs/22 §6.1·§6.2 판정 규약에 반영 검토 — 사용자 판단). ⚠️ 설계 목표와 실제 효과는 다를 수 있다 ⇒ 2026-10-08 실측 프로토콜 P1의 판정(5%p 미만 = H0)으로 확인한 뒤에만 처방 근거로 쓴다.",
    "recorded": "2026-10-08",
-   "source": "https://www.redbull.com/int-en/ea-fc-27-guide-tips (2026-10-02 · Christian Knoth) · pt-br 각색 https://www.redbull.com/br-pt/ea-fc-27-guide-tips (2026-10-06)"
+   "source": "https://www.redbull.com/int-en/ea-fc-27-guide-tips (2026-10-02 · Christian Knoth) · pt-br 각색 https://www.redbull.com/br-pt/ea-fc-27-guide-tips (2026-10-06)",
+   "title": "PlayStyle 효과 설계 목표 약 5~10%"
   },
   {
    "area": "attributes",
@@ -5697,7 +5737,8 @@
    "id": 51,
    "impact": "#43의 「85 문턱은 D — 문턱 판정에 쓰지 않는다」를 **강화**한다: D끼리도 숫자가 상충하므로(각각 85 / 합산 85 / 평균 75) 어느 값도 진화·영입의 컷으로 쓰지 않는다. 드리블러 평가는 「민첩·균형·드리블이 높을수록 유리」(A의 입력 속성)까지만 쓴다. 과녁 5는 **통제 실측 외에 닫을 길이 없다** — 실측 프로토콜 후보(2026-10-08 설계서 「다루지 않는 것」 표).",
    "recorded": "2026-10-08",
-   "source": "https://www.gamereactor.es/ea-sports-fc-27-avance-que-cambios-podemos-esperar-en-el-modo-carrera-y-en-la-gameplay-1757693/ · https://x.com/FutPoliceLeaks/status/2093251532766548129 (402 차단 · 스니펫) · https://www.fcutcoins.com/blog/fc-27-off-balance-dribbling-guide-how-to-use-best-players"
+   "source": "https://www.gamereactor.es/ea-sports-fc-27-avance-que-cambios-podemos-esperar-en-el-modo-carrera-y-en-la-gameplay-1757693/ · https://x.com/FutPoliceLeaks/status/2093251532766548129 (402 차단 · 스니펫) · https://www.fcutcoins.com/blog/fc-27-off-balance-dribbling-guide-how-to-use-best-players",
+   "title": "오프밸런스 드리블 발동 문턱 통설 — 출처 상충"
   },
   {
    "area": "attributes",
@@ -5707,7 +5748,8 @@
    "id": 52,
    "impact": "진화·카드 비교에서 **슈팅 속성(특히 슈팅력) 상승이 로우 드리븐 마무리의 슛 속도로 바로 이어진다**고 읽을 수 있다(A). ⚠️ 「core shooting Attributes」(핵심 슈팅 능력치)가 어느 속성인지(결정력·슈팅력·중거리 중 무엇이 얼마나)는 EA가 밝히지 않았다 — 속성별 비중은 미확인. 결정력=박스 안 발슛 정확도(docs/22 표)는 1차 근거가 없는 통설(D)이다. 2026-10-10 만잠비 Future Stars Academy I 갈래 비교에서 확인.",
    "recorded": "2026-10-10",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive",
+   "title": "로우 드리븐 슛 속도 보너스 제거"
   },
   {
    "area": "attributes",
@@ -5717,7 +5759,8 @@
    "id": 55,
    "impact": "역할 가중표(game_role_key_attrs)가 cam_playmaker·cm_playmaker·dm_dlp 등에 시야 ●●●를 준 것은 **판단값(MEDIUM)**이고 FC 계열 1차 근거가 없다 — 진화·카드 비교에서 시야 상승을 「스루패스가 좋아진다」로 단정하지 않는다(쓰려면 FIFA 21 근거·구버전임을 밝힌다). 반응력(#25)과 같은 부재 증거 축. 2026-10-12 만잠비 FSA II 갈래 비교에서 확인.",
    "recorded": "2026-10-12",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive · https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-gameplay-deep-dive · https://www.fifaultimateteam.it/en/fifa-21-gameplay-official-details-pitch-notes/ (FIFA 21 원문 전재)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive · https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-gameplay-deep-dive · https://www.fifaultimateteam.it/en/fifa-21-gameplay-official-details-pitch-notes/ (FIFA 21 원문 전재)",
+   "title": "시야는 EA 1차 작용 서술이 없다"
   },
   {
    "area": "engine",
@@ -5727,7 +5770,8 @@
    "id": 56,
    "impact": "힘 상승의 가치는 FC27에서도 유지된다(A) — FC26 #53(쉴딩·박스아웃·어깨싸움 힘 차이)의 FC27 측 재확인은 **「힘은 계속 중요」 한 문장까지**다. 수비 쪽 연타 압박은 약해졌으므로 볼 소유자(공격형 미드)의 힘은 「나란히 붙는 정상 타이밍의 어깨싸움」에서 의미가 있다. 2026-10-12 만잠비 FSA II 갈래 비교 중 원문 대조에서 확인(기존 적재 누락분).",
    "recorded": "2026-10-12",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03)",
+   "title": "어깨싸움 개편 — 나란히 붙을 때 가장 효과적"
   },
   {
    "area": "positioning",
@@ -5737,7 +5781,8 @@
    "id": 57,
    "impact": "limit #30(LB att_wb vs 윙백 A/B 결론 유보)의 유효 기간이 길어진다 — Season 2 안 수정 가능성 낮음. 리드 국면 프리셋에 Deep을 쓸 때 풀백이 CB보다 더 내려가는 부작용을 함께 센다. 빌라 구현 판단 5건(obs#1123 보류)을 바꿀 근거는 아니다.",
    "recorded": "2026-10-22",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-launch-feedback-update (2026-10-13)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-launch-feedback-update (2026-10-13)",
+   "title": "풀백 조기 하강 여전히 조사 중(10-13)"
   },
   {
    "area": "meta",
@@ -5747,7 +5792,8 @@
    "id": 58,
    "impact": "케미 상수 변경 없음 — sbc_solve.chem_total은 규칙 대신 fut.gg `player_card_items.chem_extra`를 읽으므로(#28 impact · migration 044 방침) 코드 수정이 없다. 재검산은 다음 /club-sync 회차의 케미 신호 수집이 그대로 수행한다. 000⑴ 종료.",
    "recorded": "2026-10-22",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-launch-update (2026-09-14)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-launch-update (2026-09-14)",
+   "title": "케미 개편 EA 원문 확보"
   },
   {
    "area": "meta",
@@ -5757,7 +5803,8 @@
    "id": 59,
    "impact": "docs/22 §6.1 「역할 숙련은 판정 층에서 제외」 유지 — 스페셜·캠페인 카드는 Role++가 일괄 부여돼 변별력이 없다. 베이스 골드 카드(스즈키·헤밍스 등 진화 대상)에서만 Role++가 의미를 가지므로, 진화 갈림길(§6.2)에서만 「Role++ 가지는 긴급성 축」으로 적는다.",
    "recorded": "2026-10-22",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-launch-update (2026-09-14)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-launch-update (2026-09-14)",
+   "title": "캠페인 아이템은 Role++ 전부 해제로 출시"
   },
   {
    "area": "playstyles",
@@ -5767,7 +5814,8 @@
    "id": 60,
    "impact": "docs/22 §6.1 규약(패서 PlayStyle로 리시버를 덮지 않는다)이 Pinged·Tiki Taka·Incisive 3종 전부에 적용된다 — 바클리·고메스·맥긴의 「연결」 평가에서 Incisive+ 가산을 쓰지 않는다. reproduction_limits FC27에 같은 취지의 한계 행을 둔다.",
    "recorded": "2026-10-22",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/what-are-playstyles (2026-09-25) · Operation Sports / timesaver.gg FC27 PlayStyle 정리 (2026-10-22 열람)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/what-are-playstyles (2026-09-25) · Operation Sports / timesaver.gg FC27 PlayStyle 정리 (2026-10-22 열람)",
+   "title": "인사이시브 패스의 수신 보정도 제거"
   },
   {
    "area": "playstyles",
@@ -5777,7 +5825,8 @@
    "id": 61,
    "impact": "저장 행은 고치지 않고 별칭 표 `fc_playstyle_aliases`(migration 121)로 잇는다 · 읽기는 core/playstyles.py · 화면은 playstyle-icons.js psLookup 한 곳 · G35 ⑵가 정본∪별칭 밖 이름을 막는다. FC24~25 잔존 이름(Flair·Trivela·Power Header·Aerial)은 canonical NULL로 「FC27 없음」 표기.",
    "recorded": "2026-10-22",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/what-are-playstyles (2026-09-25) · https://www.fut.gg/playstyles/ (2026-10-22)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/what-are-playstyles (2026-09-25) · https://www.fut.gg/playstyles/ (2026-10-22)",
+   "title": "PlayStyle 36종 확정 · Rush Out 개명"
   },
   {
    "area": "meta",
@@ -5787,7 +5836,8 @@
    "id": 62,
    "impact": "처방 재검토 주기 그대로. 패치 감시 회차는 EA 뉴스 색인(/fc-27/news) 전수를 game_system_changes.source와 차집합으로 대조한다(scripts/patch_watch_index.py) — 10-13·10-19·10-22 3건이 10-12 이후 미적재였던 구조적 결손 대응.",
    "recorded": "2026-10-22",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-0-4 (2026-10-07) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-season-2-fc-heritage (2026-10-22) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-the-grounds-developer-archetypes-update (2026-10-19)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-0-4 (2026-10-07) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-season-2-fc-heritage (2026-10-22) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-the-grounds-developer-archetypes-update (2026-10-19)",
+   "title": "밸런스 동결 TU 1.0.4까지 확인"
   },
   {
    "area": "meta",
@@ -5797,7 +5847,8 @@
    "id": 63,
    "impact": "AVL 팀 전술·처방(match_game_setups·prescriptions) **변경 불필요** — 역할·라인·팀 프레스·PlayStyle 수치가 하나도 안 바뀌었다. ⭐ 다음 패치 감시는 **Gameplay Developer Notes(10-27 주)** 를 최우선으로 본다 — 풀백 조기 하강(#57)·저수비 인터셉트(#46)·킥오프 골이 조정 후보로 거론될 가능성이 높고, 그때 #30 유보 결론과 리드 국면 Deep 프리셋을 재검토한다.",
    "recorded": "2026-10-27",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-1-0 (2026-10-27) · https://www.ea.com/games/ea-sports-fc/fc-27/news/update-v1-1-pitch-notes (2026-10-26)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-1-0 (2026-10-27) · https://www.ea.com/games/ea-sports-fc/fc-27/news/update-v1-1-pitch-notes (2026-10-26)",
+   "title": "밸런스 동결 TU 1.1.0까지 연장 · 개발 노트 예고"
   },
   {
    "area": "tactics",
@@ -5807,7 +5858,8 @@
    "id": 64,
    "impact": "⚠️ 10-27 패치 **이전에 새로 저장한** 커스텀 전술(fut_tactics 2026-10-27T10:13 행 · QxpaxCTYN%8R · 4-1-2-1-2 (2) · EA last_updated 01:11Z)은 인게임 배치가 의도와 다를 수 있었다 — 21:13 싱크의 새 코드(NxmX27PVKL5% · 12:11Z 저장)로 이미 다시 저장됐으므로 지금 활성 전술은 패치 후 저장분이다. 사용자에게 인게임 스쿼드 화면에서 선수 위치를 한 번 확인하도록 안내. 전술 처방 값(역할·포커스·라인) 자체는 영향 없음.",
    "recorded": "2026-10-27",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-1-0 (2026-10-27)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-1-0 (2026-10-27)",
+   "title": "새 전술 저장 버그 수정(TU 1.1.0)"
   },
   {
    "area": "evolution",
@@ -5817,7 +5869,8 @@
    "id": 65,
    "impact": "우리 진화 비교·원장은 인게임 미리보기가 아니라 카탈로그 상한 적용(core/futgg_attrs.apply_upgrades)과 EA 싱크 실측을 쓰므로 **수치 영향 없음**. 10-27 이전 인게임 미리보기 스크린샷을 근거로 받은 「오른 스탯」 보고는 잘못 강조됐을 수 있다(사용자 보고와 싱크값이 갈리면 싱크 우선). SBC 스토리지는 원장이 제출 시 status='used'로 내리므로 영향 없음.",
    "recorded": "2026-10-27",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-1-0 (2026-10-27)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-1-0 (2026-10-27)",
+   "title": "진화·SBC 화면 표시 버그 수정"
   },
   {
    "area": "meta",
@@ -5827,7 +5880,8 @@
    "id": 66,
    "impact": "⚠️ 보유 US 카드 4장(Woltemade·Chong·Lukeba·Vobian) — 11-24~12-01 동안 우리 케미 계산(core/chem.per_player)은 이 카드를 일반 카드로 세어 **케미를 낮게** 잡는다(아이콘·히어로만 무조건 3). 그 주 SBC 해법·스쿼드 케미가 실제보다 보수적으로 나온다 → 11-24 전에 기간 한정 규칙 반영 필요(후속 과제). 99 페이스 스탯은 어느 스탯인지 미공개.",
    "recorded": "2026-10-27",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-ultimate-scream (2026-10-23)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-ultimate-scream (2026-10-23)",
+   "title": "Ultimate Scream 한정 변신 규칙"
   },
   {
    "area": "positioning",
@@ -5837,7 +5891,8 @@
    "id": 67,
    "impact": "⭐ **v1.2.0 적용 전후가 갈리는 경계가 생긴다.** ⑴ #45·#57의 풀백 조기 하강이 고쳐지면 에메리 재현의 전제(높은 라인 + 풀백 라인 유지)가 엔진에서 복원된다 → limit #30(LB att_wb vs 윙백 유보)·obs#449 양 풀백 판정·FC27 슬롯 정본 보류 중 「LB 저점유 운용」은 **패치 뒤 실측으로 재판정**하고, 패치 전 표본과 섞지 않는다. ⑵ HANDOFF P1 「FC27 첫 인게임 캡처(T6·T7)」는 **v1.2.0 전에 찍으면 패치 전 기준선**이 된다 — 풀백 조기 하강을 고정 관측 항목(#45 impact)으로 함께 센다. ⑶ 리드 국면 Deep 프리셋의 「풀백이 CB보다 더 내려가는 부작용」(#57)은 패치 뒤 다시 센다. ⑷ 오프사이드 인지 개선은 상대 공격수에도 적용되므로 높은 라인의 오프사이드 트랩 효율이 떨어질 수 있다(EA 서술 범위 밖 추론 — 실측 전 처방 근거로 쓰지 않는다). ⛔ 처방·`team_tactic_setups` 정본은 **패치 적용 확인 전 바꾸지 않는다**(#45 원칙 유지).",
    "recorded": "2026-10-29",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-october-gameplay-developer-notes (2026-10-28)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-october-gameplay-developer-notes (2026-10-28)",
+   "title": "TU 1.2.0 첫 밸런스 패치 예고(풀백 라인 등 5항목)"
   },
   {
    "area": "tactics",
@@ -5847,7 +5902,8 @@
    "id": 68,
    "impact": "⑴ **높은 라인 너프 가능성이 EA 공식 조사 항목이 됐다(A · 일정 없음).** AVL FC27 정본 #46(Balanced/Balanced/라인 52)은 High 구간이 아니라 직접 대상은 아니지만, 압박·고라인 국면 프리셋(`optimal:lead` 등 보류 5건)을 High 쪽으로 옮기는 판단에는 「후속 패치에서 약화될 수 있다」는 리스크를 병기한다. 커뮤니티 95 depth 메타(D)는 처방 근거로 쓰지 않는다. ⑵ 포메이션 승률 평준화(A)는 「메타 포메이션으로 바꿔야 이긴다」는 근거가 약하다는 뜻 — 실축 재현 포메이션 유지 방침과 부딪히지 않는다. ⑶ 저수비 스탯 인터셉트 과효율(#46)은 v1.2.0 항목에도 조사 목록에도 없다 → #46 impact(한시적 · 수정 예고 없음) 유지. ⑷ 체격 충돌 조사는 피지컬 진화 선택(가성비)의 FC27 전제가 바뀔 수 있는 축 — 결과가 나오면 docs/22 §2.1과 진화 처방을 다시 본다.",
    "recorded": "2026-10-29",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-october-gameplay-developer-notes (2026-10-28) · https://outputlag.com/news/ea-fc-27s-first-gameplay-patch-lands-mid-november-and-the-95-depth-meta-isnt-in-it/ (커뮤니티 · D)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-october-gameplay-developer-notes (2026-10-28) · https://outputlag.com/news/ea-fc-27s-first-gameplay-patch-lands-mid-november-and-the-95-depth-meta-isnt-in-it/ (커뮤니티 · D)",
+   "title": "TU 1.2.0 밖 조사 중 3건 · 출시 1개월 실측"
   },
   {
    "area": "tactics",
@@ -5857,7 +5913,8 @@
    "id": 69,
    "impact": "⑴ **높은 라인·오프사이드 트랩 너프가 EA 개발자 입으로 확인된 검토 항목이 됐다(A · 일정 없음).** AVL FC27 전술 정본(`team_tactic_setups` #46 · Balanced/Balanced/라인 52)은 직접 대상이 아니다. 단 에메리 재현의 **오프사이드 트랩(높은 라인 + 라인 일제 전진)** 을 FC27에서 고라인 프리셋으로 강화하려는 판단(보류 5건 · `optimal:lead` 등)에는 「후속 패치에서 깊이 상한·트랩 효율이 깎일 수 있다」를 리스크로 병기한다(#68과 같은 결론을 A 근거로 보강). ⑵ 커뮤니티 95 depth 메타·「95에서 스태미나 비소모」는 D — 처방 근거로 쓰지 않는다. ⑶ 풀백 해법이 10-09에 이미 테스트 중이었다는 점은 #67(v1.2.0) 적용 가능성을 높이지만, 처방·`team_tactic_setups` 정본은 **패치 적용 확인 전 바꾸지 않는다**(#45 원칙).",
    "recorded": "2026-10-31",
-   "source": "https://steamcommunity.com/app/4080220/discussions/0/588440114694207040/ (「FC 27 - Gameplay Developer Q&A Responses」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-10-09 17:12 UTC 게시 · 공식 Discord 1차 게임플레이 Q&A 정리)"
+   "source": "https://steamcommunity.com/app/4080220/discussions/0/588440114694207040/ (「FC 27 - Gameplay Developer Q&A Responses」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-10-09 17:12 UTC 게시 · 공식 Discord 1차 게임플레이 Q&A 정리)",
+   "title": "수비 깊이 95 재조정 검토(1차 Q&A)"
   },
   {
    "area": "attributes",
@@ -5867,7 +5924,8 @@
    "id": 70,
    "impact": "⑴ FC27 현행(v1.1.0) 엔진에서 **힘(Strength)·키·체중의 몸싸움 우위가 기대만큼 작동하지 않는 경우가 있다**는 EA 인정(A · 「some instances」(어떤 경우에는) — 빈도·조건 미공개). ⇒ 진화 선택에서 **힘 증가만을 근거로 한 피지컬 진화의 가성비**는 수정 전까지 한 단계 낮춰 본다(docs/22 §2.1의 FC26 근거를 FC27에 전용할 때 이 행을 병기). ⑵ AVL 처방에서 체격형 선수(타깃형 ST·CB 몸싸움)의 역할 판단은 **바꾸지 않는다** — 증상 범위가 불명확하고 수정이 예고돼 있다. 수정 패치가 나오면 docs/22와 진화 처방을 다시 본다.",
    "recorded": "2026-10-31",
-   "source": "https://steamcommunity.com/app/4080220/discussions/0/588440114694207040/ (「FC 27 - Gameplay Developer Q&A Responses」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-10-09 17:12 UTC 게시 · 공식 Discord 1차 게임플레이 Q&A 정리)"
+   "source": "https://steamcommunity.com/app/4080220/discussions/0/588440114694207040/ (「FC 27 - Gameplay Developer Q&A Responses」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-10-09 17:12 UTC 게시 · 공식 Discord 1차 게임플레이 Q&A 정리)",
+   "title": "작은 선수가 큰 선수를 밀어내는 문제 인정"
   },
   {
    "area": "engine",
@@ -5877,7 +5935,8 @@
    "id": 71,
    "impact": "⑴ ⭐ 버전 차이(A): **스루 패스 보정 축소는 FC26→FC27 변경** — FC26 시절 「스루 패스 역습」 근거를 FC27 처방에 전용하지 않는다. 에메리 재현의 수직 전환(라인 사이 → 침투 스루)은 FC27에서 **조작 정확도에 더 의존**한다. ⑵ 저수비 스탯 인터셉트(#46)에 대해서는 「균형을 익히는 중」이라는 일반론뿐 — **수정 예고가 아니다** → #46 impact(한시적 · 수정 예고 없음) 유지. ⑶ 드리블·전환·Authentic AI는 AVL 전술 처방과 직접 관계 없음(조작·모드 축) — 기록만 한다.",
    "recorded": "2026-10-31",
-   "source": "https://steamcommunity.com/app/4080220/discussions/0/588440114694207040/ (「FC 27 - Gameplay Developer Q&A Responses」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-10-09 17:12 UTC 게시 · 공식 Discord 1차 게임플레이 Q&A 정리)"
+   "source": "https://steamcommunity.com/app/4080220/discussions/0/588440114694207040/ (「FC 27 - Gameplay Developer Q&A Responses」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-10-09 17:12 UTC 게시 · 공식 Discord 1차 게임플레이 Q&A 정리)",
+   "title": "스루 패스 수동화 · 드리블 반응성(1차 Q&A)"
   },
   {
    "area": "goalkeeping",
@@ -5887,7 +5946,8 @@
    "id": 72,
    "impact": "진화 부풀림(표기 Δ − 세부 스탯 Δ) 계산이 GK에서 틀린다 — 저장 가중치로는 반사 진화의 Δ를 과대평가하고 핸들링·다이빙 진화를 과소평가한다. OVR 1점당 GK 4속성은 같은 값이고, 반응력 +2 ≈ GK 속성 +1, 킥 +4 ≈ GK 속성 +1이다. fc_position_ovr_weights GK 행을 다시 맞추는 근거(행 추가 · 부모 판단).",
    "recorded": "2026-11-03",
-   "source": "우리 실측(db/tactics.db player_card_items · 2026-11-03) · 비교 표: https://fifauteam.com/player-ratings-guide-fifa-19/ (2018) · https://gameboost.com/blog/best-goalkeepers-in-ea-fc-27"
+   "source": "우리 실측(db/tactics.db player_card_items · 2026-11-03) · 비교 표: https://fifauteam.com/player-ratings-guide-fifa-19/ (2018) · https://gameboost.com/blog/best-goalkeepers-in-ea-fc-27",
+   "title": "GK OVR 산정식 — 4속성 균등 + 상수 1"
   },
   {
    "area": "goalkeeping",
@@ -5897,7 +5957,8 @@
    "id": 73,
    "impact": "FC26 GK 패치 이력(니어포스트 반응 개선 · 잡기/펀칭 판단 · 수동 GK 이동 너프 · 자동 세이브 범위 확대)을 FC27 GK 평가의 전제로 쓸 수 있다. 단 「이월」은 추정이라 그렇게 적는다.",
    "recorded": "2026-11-03",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-07-29) · https://www.ea.com/games/ea-sports-fc/fc-27/news/what-are-playstyles (2026-09-25) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-1-0 (2026-10-27)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-07-29) · https://www.ea.com/games/ea-sports-fc/fc-27/news/what-are-playstyles (2026-09-25) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-1-0 (2026-10-27)",
+   "title": "FC27 GK 메커니즘 변경 0건(부재 증거)"
   },
   {
    "area": "goalkeeping",
@@ -5907,7 +5968,8 @@
    "id": 74,
    "impact": "니어포스트 로우드리븐 슛은 EA가 「위험 지역 슛 보상」 철학으로 정당화하는 영역이다 — v1.2.0에서 GK 쪽이 크게 상향될 거라고 기대하지 말 것(10-28 「조사 중」은 #68).",
    "recorded": "2026-11-03",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update (2026-09-30) · https://www.ea.com/ko/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update · https://www.ea.com/es/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update (2026-09-30) · https://www.ea.com/ko/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update · https://www.ea.com/es/games/ea-sports-fc/fc-27/news/fc-27-gameplay-developer-launch-update",
+   "title": "EA 슈팅·GK 밸런스 만족 발언 원문"
   },
   {
    "area": "goalkeeping",
@@ -5917,7 +5979,8 @@
    "id": 75,
    "impact": "1v1 Close Down(+)은 근거리 선방에도 걸린다 — Joan García(86 · Rush Out+)가 OVR 90 쿠르투아보다 많이 쓰이는 메타를 설명하는 후보(D). GK 진화에서 1v1 Close Down을 주는 가지의 가치를 「스위핑」만으로 매기지 말 것.",
    "recorded": "2026-11-03",
-   "source": "https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/thibaut-courtois/192119 (FC27 · 2026-11-03 접속) · https://www.fut.gg/playstyles/rush-out/ (2026-11-03) · https://www.ea.com/ja/games/ea-sports-fc/fc-27/news/what-are-playstyles (2026-09-25)"
+   "source": "https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/thibaut-courtois/192119 (FC27 · 2026-11-03 접속) · https://www.fut.gg/playstyles/rush-out/ (2026-11-03) · https://www.ea.com/ja/games/ea-sports-fc/fc-27/news/what-are-playstyles (2026-09-25)",
+   "title": "1v1 Close Down은 근거리 선방도 강화"
   },
   {
    "area": "goalkeeping",
@@ -5927,7 +5990,8 @@
    "id": 76,
    "impact": "니어포스트·로우드리븐 실점에 맞는 처방은 Far Reach가 아니라 Footwork다(텍스트 기준 · 실측 없음). Cross Claimer는 크로스를 「잡게」 하지 않고 펀칭을 늘린다 — 「크로스 캐치형」으로 오해하지 말 것. docs/22 §3 GK 표의 Far Reach 「다이빙/점프 애니메이션 다양화 + 박스 밖 슛」·Cross Claimer 「캐칭 애니메이션」 서술과 충돌한다.",
    "recorded": "2026-11-03",
-   "source": "https://www.fut.gg/playstyles/far-reach/ · https://www.fut.gg/playstyles/footwork/ · https://www.fut.gg/playstyles/deflector/ · https://www.fut.gg/playstyles/cross-claimer/ (2026-11-03) · https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/thibaut-courtois/192119"
+   "source": "https://www.fut.gg/playstyles/far-reach/ · https://www.fut.gg/playstyles/footwork/ · https://www.fut.gg/playstyles/deflector/ · https://www.fut.gg/playstyles/cross-claimer/ (2026-11-03) · https://www.ea.com/games/ea-sports-fc/ratings/player-ratings/thibaut-courtois/192119",
+   "title": "GK PlayStyle 효과는 슛 종류마다 다르다"
   },
   {
    "area": "set_pieces",
@@ -5937,7 +6001,8 @@
    "id": 79,
    "impact": "코너 득점은 이제 **수동 조작 기량**이 크게 좌우한다 — 실축 코너 루틴(니어 플릭·스크린·키퍼 방해)을 「전술 설정」만으로 재현할 수 없다. 실축 빌라 코너 분석(reports/research/2026-11-04-avl-set-pieces.md)을 FC로 옮길 때 자동 재현 가능한 축(키커·타깃·러너 수·니어/파 런·수비 지역/대인)과 조작 축을 갈라 적는다.",
    "recorded": "2026-11-04",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-11-04 접속)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-11-04 접속)",
+   "title": "코너킥 2단계 · 박스 위치잡기는 수동"
   },
   {
    "area": "set_pieces",
@@ -5947,7 +6012,8 @@
    "id": 80,
    "impact": "인게임 조작 축 — 감독 재현 정본(slot_canon_roles·tactics)에는 들어가지 않는다.",
    "recorded": "2026-11-04",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive · https://timesaver.gg/blog/fc-27-corners-how-to-score-defend-aerial-fortress-myth"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive · https://timesaver.gg/blog/fc-27-corners-how-to-score-defend-aerial-fortress-myth",
+   "title": "코너 Avoidance(R1/RB 홀드)"
   },
   {
    "area": "set_pieces",
@@ -5957,7 +6023,8 @@
    "id": 81,
    "impact": "⭐ 빌라 실축 코너 수비 방식(지역/대인/혼합)과 공격 러너 수·니어/파 비중을 **이 메뉴의 선택지로 옮길 수 있다**(구현 가능 축). 인게임 화면으로 항목을 확인하면 A로 올린다.",
    "recorded": "2026-11-04",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive · https://proclubshq.com/blog/fc27-control-changes/ · https://timesaver.gg/blog/fc-27-corners-how-to-score-defend-aerial-fortress-myth · https://www.m8x.com/news/fc-27-corner-kicks-how-do-you-actually-score-with-the-new-manual-system.html"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive · https://proclubshq.com/blog/fc27-control-changes/ · https://timesaver.gg/blog/fc-27-corners-how-to-score-defend-aerial-fortress-myth · https://www.m8x.com/news/fc-27-corner-kicks-how-do-you-actually-score-with-the-new-manual-system.html",
+   "title": "세트피스 전술 메뉴 신설(D-pad ↑)"
   },
   {
    "area": "playstyles",
@@ -5967,7 +6034,8 @@
    "id": 82,
    "impact": "빌라 코너 키커·타깃 처방에서 근거로 쓸 수 있는 것은 Dead Ball(키커)·Precision Header(타깃) 문구까지다(A, 크기 미상). Aerial Fortress를 공격 타깃 선택 근거로 쓰지 않는다.",
    "recorded": "2026-11-04",
-   "source": "https://timesaver.gg/blog/fc-27-corners-how-to-score-defend-aerial-fortress-myth (2026-11-04)"
+   "source": "https://timesaver.gg/blog/fc-27-corners-how-to-score-defend-aerial-fortress-myth (2026-11-04)",
+   "title": "코너 관련 PlayStyle(Dead Ball·Precision Header)"
   },
   {
    "area": "set_pieces",
@@ -5977,7 +6045,8 @@
    "id": 83,
    "impact": "빌라 코너 재현의 구현 가능 축 = ①니어/파 런 비중 ②박스 투입 인원(추가·제거) ③수비 지역/대인. ⚠️ 박스 인원 기본값·유지 여부를 모르므로 인게임 1회 확인(코너 한 번 → 메뉴 각 항목 → 박스 인원·러너 동선·다음 코너 유지 여부)이 필요하다 — 확인되면 C(통제 실측)로 새 행을 쓴다.",
    "recorded": "2026-11-04",
-   "source": "https://fifauteam.com/fc-27-controls/ · https://proclubshq.com/blog/fc27-control-changes/ · https://proclubshq.com/blog/ea-fc-corners-guide/ · https://timesaver.gg/blog/fc-27-corners-how-to-score-defend-aerial-fortress-myth · https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-11-04)"
+   "source": "https://fifauteam.com/fc-27-controls/ · https://proclubshq.com/blog/fc27-control-changes/ · https://proclubshq.com/blog/ea-fc-corners-guide/ · https://timesaver.gg/blog/fc-27-corners-how-to-score-defend-aerial-fortress-myth · https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (2026-11-04)",
+   "title": "세트피스 메뉴 입력과 미확인 동작"
   },
   {
    "area": "set_pieces",
@@ -5987,7 +6056,8 @@
    "id": 84,
    "impact": "Avoidance·쉴딩은 조작 축이라 전술 설정·처방에 들어가지 않는다. 다만 ⑶에 따라 빌라 코너 타깃 선택은 헤더 정확도만이 아니라 키·점프력(궤적 이른 지점 공략)을 함께 본다 — 근거 A(EA 문구 · 효과 크기 없음). 수비 코너에서 조종할 선수는 상대 주 타깃 근처의 고점프 수비수가 유리하다(추론 D).",
    "recorded": "2026-11-04",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive · https://insider-gaming.com/ea-fc-27-closed-beta-pitch-notes/ · https://www.fut.gg/news/how-to-use-avoidance-and-shielding-in-fc-27-corner-kicks/ · https://proclubshq.com/blog/ea-fc-corners-guide/ (2026-11-04)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive · https://insider-gaming.com/ea-fc-27-closed-beta-pitch-notes/ · https://www.fut.gg/news/how-to-use-avoidance-and-shielding-in-fc-27-corner-kicks/ · https://proclubshq.com/blog/ea-fc-corners-guide/ (2026-11-04)",
+   "title": "Avoidance·쉴딩 세부 · 위치 자동 보정 제거"
   },
   {
    "area": "tactics",
@@ -5997,7 +6067,8 @@
    "id": 85,
    "impact": "⑴ **높은 라인 너프가 「검토」(#69)에서 「최우선·테스트 중」으로 올라갔다(A).** v1.2.0(#67)에 들어간다는 말은 없다 — 그 이후 패치 가능성이 크다(추론). ⑵ AVL FC27 전술 정본(`team_tactic_setups` #46 · Balanced/Balanced/라인 52)은 직접 대상이 아니다. 고라인·오프사이드 트랩 프리셋 강화 판단(보류 건)에는 #68·#69의 리스크 병기를 유지하고 **「다음 패치에서 깊이 상한·트랩 효율이 바뀔 공산이 더 커졌다」**로 강도를 올린다. ⑶ 포메이션 8종 분산은 메타 서술일 뿐 처방 근거가 아니다. ⑷ 3선(CDM) 역할·포커스 언급 0 → 3선 정본 재검토 사유 아님. ⛔ 처방·정본 변경 없음(#45 원칙 — 패치 적용 확인 전 바꾸지 않는다).",
    "recorded": "2026-11-04",
-   "source": "https://steamcommunity.com/app/4080220/discussions/0/565924099166300274/ (「FC 27 - Gameplay Developer Q&A Responses - October」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-11-02 게시 · 공식 Discord 2차 게임플레이 Q&A(10-30) 정리 11문답)"
+   "source": "https://steamcommunity.com/app/4080220/discussions/0/565924099166300274/ (「FC 27 - Gameplay Developer Q&A Responses - October」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-11-02 게시 · 공식 Discord 2차 게임플레이 Q&A(10-30) 정리 11문답)",
+   "title": "수비 깊이 95가 최우선 과제로(2차 Q&A)"
   },
   {
    "area": "engine",
@@ -6007,7 +6078,8 @@
    "id": 86,
    "impact": "⑴ #71(스루 패스 수동화 · FC26→FC27 버전 차이)의 **결과가 EA 데이터로 확인됐다**(A) — 에메리식 수직 전환을 FC27에서 재현할 때 **스루 패스보다 드리븐 패스(핑드 패스 · #22·#60 PlayStyle 축)가 실효 수단**이라는 판단을 지지한다. 다만 핑 패스 너프 요구가 있고 EA가 「감시 중」이라 패치 리스크가 있다. ⑵ 측면 가로지르는 스루 패스의 리시버 오지정은 측면 전환 처방(Wide 빌드업)을 실행할 때의 조작 리스크로만 기록한다. ⑶ 3선 역할 무관.",
    "recorded": "2026-11-04",
-   "source": "https://steamcommunity.com/app/4080220/discussions/0/565924099166300274/ (「FC 27 - Gameplay Developer Q&A Responses - October」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-11-02 게시 · 공식 Discord 2차 게임플레이 Q&A(10-30) 정리 11문답)"
+   "source": "https://steamcommunity.com/app/4080220/discussions/0/565924099166300274/ (「FC 27 - Gameplay Developer Q&A Responses - October」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-11-02 게시 · 공식 Discord 2차 게임플레이 Q&A(10-30) 정리 11문답)",
+   "title": "땅볼·스루 패스 리시버 겨냥 문제 조사"
   },
   {
    "area": "goalkeeping",
@@ -6017,7 +6089,8 @@
    "id": 87,
    "impact": "⑴ FC27 v1.1.0 시점 **GK 니어포스트 약점은 EA 인정 사실(A)** — #73(EA 1차 자료의 GK 변경 서술 0건)·#78(FC26 TU 1.1.0의 니어포스트 반응 개선 전례)과 함께 본다. 수정 전까지 GK 카드 비교에서 니어포스트 실점은 **카드 차이보다 엔진 공통 약점**일 수 있다. ⑵ GK 선택·진화 처방은 바꾸지 않는다(수정 예고 · 일정 없음). ⑶ 3선 역할 무관.",
    "recorded": "2026-11-04",
-   "source": "https://steamcommunity.com/app/4080220/discussions/0/565924099166300274/ (「FC 27 - Gameplay Developer Q&A Responses - October」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-11-02 게시 · 공식 Discord 2차 게임플레이 Q&A(10-30) 정리 11문답)"
+   "source": "https://steamcommunity.com/app/4080220/discussions/0/565924099166300274/ (「FC 27 - Gameplay Developer Q&A Responses - October」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-11-02 게시 · 공식 Discord 2차 게임플레이 Q&A(10-30) 정리 11문답)",
+   "title": "니어포스트 슛 과효 인정"
   },
   {
    "area": "attributes",
@@ -6027,7 +6100,8 @@
    "id": 88,
    "impact": "⑴ #46(저수비 스탯 선수의 자동 인터셉트)에 대해 1차 Q&A(#71)는 「균형을 익히는 중」이라는 일반론이었는데, 이번에는 **「적극 작업 중」으로 수정 의사를 밝혔다(A · 일정 없음)**. ⇒ #46 impact(한시적)의 「수정 예고 없음」은 **「수정 의사 표명 · 일정 없음」으로 읽는다**(기존 행은 고치지 않고 이 행으로 덧붙인다). ⑵ 3선(CDM) 함의: 수정이 들어가면 **수비 스탯(인터셉트·태클·수비 인지)의 상대 가치가 오른다** — 볼 탈취형 3선(카마라 dm_holding/Defend)에 불리하지 않은 방향이다. 단 역할·포커스 동작 변경이 아니므로 **3선 정본 재검토 사유는 아니다**(사용자 판단 사안 · 정본 변경 없음). ⑶ 체격 균형은 #70 결론(힘만 보는 피지컬 진화 가성비 한 단계 낮춤) 유지.",
    "recorded": "2026-11-04",
-   "source": "https://steamcommunity.com/app/4080220/discussions/0/565924099166300274/ (「FC 27 - Gameplay Developer Q&A Responses - October」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-11-02 게시 · 공식 Discord 2차 게임플레이 Q&A(10-30) 정리 11문답)"
+   "source": "https://steamcommunity.com/app/4080220/discussions/0/565924099166300274/ (「FC 27 - Gameplay Developer Q&A Responses - October」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-11-02 게시 · 공식 Discord 2차 게임플레이 Q&A(10-30) 정리 11문답)",
+   "title": "포지션에 안 맞는 태클·인터셉트 과효 수정 중"
   },
   {
    "area": "evolution",
@@ -6037,7 +6111,8 @@
    "id": 89,
    "impact": "⑴ ⭐ 버전 차이(A): **FC27 진화는 FC26보다 의도적으로 약하게 출발**했다 — FC26 진화 처방·가성비 판단을 FC27로 전용하지 않는다. ⑵ EA가 상향 의사를 밝혔다 → 시즌 중반 이후 진화 카탈로그의 상한이 올라갈 공산이 있다(추론). 지금 약한 진화에 핵심 카드를 소모하는 판단은 「더 강한 진화가 나올 수 있다」를 리스크로 병기한다. ⑶ 진화 슬롯 확대는 진행 동시성 계획에 영향(일정 없음). 3선 역할 무관.",
    "recorded": "2026-11-04",
-   "source": "https://steamcommunity.com/app/4080220/discussions/0/562544805318581878/ (「FC 27 - FUT Developer Q&A Responses」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-10-14 게시 · 공식 Discord FUT Q&A 정리 21문답)"
+   "source": "https://steamcommunity.com/app/4080220/discussions/0/562544805318581878/ (「FC 27 - FUT Developer Q&A Responses」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-10-14 게시 · 공식 Discord FUT Q&A 정리 21문답)",
+   "title": "진화 상향 폭 과소 인정 · 슬롯 확대 계획"
   },
   {
    "area": "tactics",
@@ -6047,7 +6122,8 @@
    "id": 90,
    "impact": "⑴ AVL 경기 프리셋(`match_game_setups`)처럼 **경기 중 커스텀 전술을 갈아끼우는 운용**에서 전환 직후 선수 배치가 정본과 어긋날 수 있다(A · v1.1.0 수정 대상 아님). ⇒ 전환 직후 포메이션 화면에서 슬롯을 확인하는 절차를 권장으로 병기한다. ⑵ 3선 함의: 전환 시 RDM/LDM 자리가 뒤바뀌면 카마라(RDM dm_holding/Defend)·고메스(LDM dm_dlp/Roaming) 배치가 뒤집힐 수 있다 — **역할 동작 변경이 아니라 배치 버그**이므로 정본 재검토 사유는 아니다(정본 변경 없음). ⑶ 이 행은 10-14 게시 글을 11-04에야 검토한 것이다 — Steam Q&A 고정글은 EA 뉴스 색인 밖이라 `patch_watch_index.py`가 잡지 못한다.",
    "recorded": "2026-11-04",
-   "source": "https://steamcommunity.com/app/4080220/discussions/0/562544805318581878/ (「FC 27 - FUT Developer Q&A Responses」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-10-14 게시 · 공식 Discord FUT Q&A 정리 21문답)"
+   "source": "https://steamcommunity.com/app/4080220/discussions/0/562544805318581878/ (「FC 27 - FUT Developer Q&A Responses」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-10-14 게시 · 공식 Discord FUT Q&A 정리 21문답)",
+   "title": "경기 중 전술 전환 시 포지션 버그 인정"
   }
  ],
  "tactic_params": [

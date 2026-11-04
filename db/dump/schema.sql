@@ -198,7 +198,7 @@ CREATE TABLE game_system_changes(
   impact TEXT,                      -- 이 시스템(실측→구현 매핑)에 미치는 영향
   source TEXT, confidence TEXT,
   recorded TEXT                     -- YYYY-MM-DD
-);
+, title TEXT);
 CREATE TABLE slots(                 -- 오늘(v1) 만든 team_slots의 승계 — regime 슬롯 기하
   regime_id INTEGER NOT NULL REFERENCES regimes(id),
   formation TEXT NOT NULL,          -- '4-2-3-1 Wide' / '3-4-2-1' — 같은 regime의 복수 포메이션 허용

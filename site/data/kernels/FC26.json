@@ -5493,7 +5493,8 @@
    "id": 1,
    "impact": "적합도 Δ 0.02~0.05는 노이즈 구간 — 그 차이로 인선을 가르지 않는다(obs#91). 방법론의 구조적 상한",
    "recorded": "2026-08-11",
-   "source": "EA 피치노트"
+   "source": "EA 피치노트",
+   "title": "역할 커널은 결정적이지 않다 — EA가 역할 구속을 완화"
   },
   {
    "area": "roles",
@@ -5503,7 +5504,8 @@
    "id": 2,
    "impact": "미숙련 회피에 큰 적합도를 지불하지 말 것. Δ≤.05면 숙련 우선, 크면 적합 우선(절충)",
    "recorded": "2026-08-11",
-   "source": "EA 피치노트"
+   "source": "EA 피치노트",
+   "title": "Role+/++ 격차·포지션 이탈 페널티 축소"
   },
   {
    "area": "roles",
@@ -5513,7 +5515,8 @@
    "id": 3,
    "impact": "문서 인용 시 표기 혼동 방지",
    "recorded": "2026-08-11",
-   "source": "EA/fut.gg"
+   "source": "EA/fut.gg",
+   "title": "역할·포커스 개명(FC25 표기와 같은 실체)"
   },
   {
    "area": "positioning",
@@ -5523,7 +5526,8 @@
    "id": 4,
    "impact": "에메리 뱅크 칸=Support 기본. 알론소 3-4-2-1에는 최적, 백4 정합성은 미확인",
    "recorded": "2026-08-11",
-   "source": "EA 피치노트"
+   "source": "EA 피치노트",
+   "title": "와이드 미드 리워크 — 수비 지향·백3 최적화"
   },
   {
    "area": "attributes",
@@ -5533,7 +5537,8 @@
    "id": 5,
    "impact": "sofifa 수집값 교차검증용. 효과 크기는 비공개라 적합 가중치로는 못 씀",
    "recorded": "2026-08-11",
-   "source": "EA+실측 대조"
+   "source": "EA+실측 대조",
+   "title": "AcceleRATE 3종 복귀(2차 속성은 힘)"
   },
   {
    "area": "tactics",
@@ -5543,7 +5548,8 @@
    "id": 6,
    "impact": "고압박(이라올라)이 가장 불리, 에메리 미드블록 상대적 유리. 압박은 라인+수비접근으로 근사",
    "recorded": "2026-08-11",
-   "source": "EA 피치노트"
+   "source": "EA 피치노트",
+   "title": "팀 압박 수비 진영 너프"
   },
   {
    "area": "meta",
@@ -5553,7 +5559,8 @@
    "id": 7,
    "impact": "실측 재현의 층위 한계를 명시 — 온더볼은 PlayStyles·스탯 레버",
    "recorded": "2026-08-11",
-   "source": "EA+실측"
+   "source": "EA+실측",
+   "title": "선수 행동의 4층 구조 — 커널은 역할 층만 다룬다"
   },
   {
    "area": "meta",
@@ -5563,7 +5570,8 @@
    "id": 8,
    "impact": "추정을 하드 제약으로 쓰지 않는다",
    "recorded": "2026-08-11",
-   "source": "—"
+   "source": "—",
+   "title": "FC26 미검증 잔여 항목"
   },
   {
    "area": "positioning",
@@ -5573,7 +5581,8 @@
    "id": 9,
    "impact": "풀백 전진은 같은 쪽 와이드 역할이 결정한다 — 터치라인형(winger·widemid·wideplm) 뒤의 풀백은 올라가지 않으므로 wingback/Balanced로 두고, 전진시킬 풀백의 앞은 안쪽형 와이드로 비운다(C6와 결합: 윙어는 절제 사이드). 「풀백을 올리려고 양쪽 att_wb/Support」는 정의·메커니즘·C2 모두 위반. obs#443.",
    "recorded": "2026-09-04",
-   "source": "EA 피치노트 1차(2026-09-04 직독) · game_role_focus · obs#443"
+   "source": "EA 피치노트 1차(2026-09-04 직독) · game_role_focus · obs#443",
+   "title": "측면 혼잡 회피 — 윙백 전진은 앞이 비었을 때만"
   },
   {
    "area": "attributes",
@@ -5583,7 +5592,8 @@
    "id": 23,
    "impact": "⑴ 「퍼스트 터치 = 볼컨트롤」 통념은 EA 1차 서술과 다르다 — 인터셉트·침착도 같은 식의 항이다. ⑵ 「압박 하 수신」은 별도 계수가 아니라 **같은 판정식의 한 항**이다. ⑶ 낮은 볼컨트롤의 트랩 열세는 **조작(L2/LT)으로 일부 메울 수 있다** — 스탯만으로 체감을 귀속하면 안 되고, 통제 실측을 설계할 때 이 입력을 고정하지 않으면 결과가 무효다.",
    "recorded": "2026-09-21",
-   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)"
+   "source": "reports/research/2026-09-21-fc27-system-stats.md (워크플로 fc27-system-research, 8에이전트 다국어 수집 + 2표 반증 검증, 2026-09-21)",
+   "title": "퍼스트 터치 = 볼컨트롤·인터셉트·침착 복합"
   },
   {
    "area": "attributes",
@@ -5593,7 +5603,8 @@
    "id": 53,
    "impact": "공격성이 EA 1차로 작용이 서술된 **유일한** 문장이 쉴딩이다 — 「공격성 = 태클·파울 빈도·압박 강도」는 1차 근거가 없는 통설(D)이다. 진화·카드 비교에서 힘·공격성 상승은 **등지고 받기·볼 보호·어깨싸움** 축으로 읽는다. ⚠️ FC26 사실이다 — FC27에서 EA가 다시 확인한 것은 「힘은 계속 중요」(#56)까지이고 공격성·쉴딩 문장은 재확인되지 않았다. 2026-10-12 만잠비 Future Stars Academy II 갈래 비교에서 확인(사용자 질문 「공격성과 힘이 어떻게 동작하는지」).",
    "recorded": "2026-10-12",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-title-update-1-4-0 · https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-gameplay-deep-dive"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-title-update-1-4-0 · https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-gameplay-deep-dive",
+   "title": "힘·공격성 = 쉴딩·몸싸움"
   },
   {
    "area": "attributes",
@@ -5603,7 +5614,8 @@
    "id": 54,
    "impact": "긴 패스는 「롱볼 전용」이 아니라 **스루패스 커브 조건의 한 축**이다(짧은 패스·커브와 묶임). ⚠️ 「high」의 문턱은 비공개 · 시야(Vision)는 이 조건에 없다. 스루패스 정확도 전반을 어느 능력치가 정하는지는 FC 계열 1차 근거가 없다(FIFA 21의 「짧은/긴 패스+시야+침착」은 구버전 — FC27 행 참조). ⚠️ FC26 사실을 FC27에 전용하는 것은 추정이다. 2026-10-12 만잠비 FSA II 갈래 비교에서 확인.",
    "recorded": "2026-10-12",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-title-update-1-5-0"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-title-update-1-5-0",
+   "title": "패스 능력치가 높으면 스루패스에 커브"
   },
   {
    "area": "goalkeeping",
@@ -5613,7 +5625,8 @@
    "id": 77,
    "impact": "GK 포지셔닝 속성이 RL 포지셔닝의 입력인지는 EA가 밝히지 않았다(열린 질문). 역할 선택의 1차 정의(SK=전진 회수 · BPK=빌드업 + 수비 시 라인 유지). FC27 이월은 미확인.",
    "recorded": "2026-11-03",
-   "source": "https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-gameplay-deep-dive (2025-07-22)"
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-gameplay-deep-dive (2025-07-22)",
+   "title": "FC26 GK 시스템(쳐내기 제어 등)"
   },
   {
    "area": "goalkeeping",
@@ -5623,7 +5636,8 @@
    "id": 78,
    "impact": "FC27 1차 자료에 GK 변경이 0건이라, 이 이력이 FC27 GK 거동의 가장 그럴듯한 출발점이다. 니어포스트 반응은 FC26에서 이미 한 번 상향됐는데도 FC27에서 다시 불만 1순위가 됐다.",
    "recorded": "2026-11-03",
-   "source": "https://fifauteam.com/fc-26-title-update/ · https://www.futwiz.com/news/article/fc-26-title-update-full-notes-1-2-0/12658 (2025-11-10) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/fc-26-v1-1-0-update-notes/12815780"
+   "source": "https://fifauteam.com/fc-26-title-update/ · https://www.futwiz.com/news/article/fc-26-title-update-full-notes-1-2-0/12658 (2025-11-10) · https://forums.ea.com/blog/ea-sports-fc-game-info-hub-en/fc-26-v1-1-0-update-notes/12815780",
+   "title": "FC26 TU의 GK 조정 이력"
   }
  ],
  "tactic_params": [

@@ -202,7 +202,7 @@ let chgArea='';
 function renderChanges(){
   const q=document.getElementById('chgQ').value.trim().toLowerCase();
   const all=(CHG[chgSel.value]??[]).slice().sort((a,b)=>String(b.recorded??'').localeCompare(String(a.recorded??''))||(b.id??0)-(a.id??0));
-  const hit=c=>!q||[c.change,c.impact,c.evidence,c.source,c.area,AREA[c.area]?.[0]].join(' ').toLowerCase().includes(q);
+  const hit=c=>!q||[c.title,c.change,c.impact,c.evidence,c.source,c.area,AREA[c.area]?.[0]].join(' ').toLowerCase().includes(q);
   const shown=all.filter(hit);
   const groups={};for(const c of shown)(groups[areaKey(c.area)]??=[]).push(c);
   const order=Object.keys(groups).sort((a,b)=>(AREA[a]?.[1]??99)-(AREA[b]?.[1]??99));
@@ -224,7 +224,7 @@ function renderChanges(){
   document.getElementById('chgCount').textContent=q?`검색 결과 ${shown.length}건`:'';
   const item=c=>{const g=gradeOf(c.confidence);
     return `<details class="chg-item"><summary><span class="chg-g ${g}" title="근거 등급 — A EA 1차 · B 데이터마이닝 · C 통제 실측 · D 통설">${g==='x'?'?':g}</span>
-      <div><div class="t">${esc(headOf(c.change))}</div>${c.impact?`<div class="imp">${esc(impOf(c.impact))}</div>`:''}</div>
+      <div><div class="t">${esc(c.title||headOf(c.change))}</div>${c.impact?`<div class="imp">${esc(impOf(c.impact))}</div>`:''}</div>
       <span class="when">${esc((c.recorded??'').slice(5))} · #${esc(c.id??'')}</span></summary>
       <div class="chg-body"><h4>확정 사실</h4>${prose(c.change)}
       ${c.impact?`<h4>구현에의 영향</h4>${prose(c.impact)}`:''}

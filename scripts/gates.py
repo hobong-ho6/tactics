@@ -1471,6 +1471,7 @@ def run(db_path=None, verbose=True):
         ("player_card_items", "league"): 11,       # 여성/하위리그 카드 일부 — 상세 API에도 없다
         ("player_card_items", "club"): 4,
         ("player_card_items", "nation"): 11,
+        ("game_system_changes", "title"): 0,       # 2026-11-04 migration 130 — 시스템 분석 화면 한 줄 제목(새 행은 제목과 함께 넣는다)
     }
     g23 = []
     for (tbl, col), base in G23_BASE.items():

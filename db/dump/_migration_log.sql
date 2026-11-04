@@ -54,3 +54,4 @@ INSERT INTO _migration_log VALUES('2026-10-26','126-evo-do-not-generate','fc_evo
 INSERT INTO _migration_log VALUES('2026-11-01','127-evo-reservations','fut_evo_reservations — 해금해 두고 아껴 둔 진화(선수 지정) · 다른 진화가 그 조건을 깨면 진화 화면이 카드·걸어보기·시작/완료 확인창에서 경고 · 첫 행 시세 × The Haunted Wall(2622)');
 INSERT INTO _migration_log VALUES('2026-11-02','128-evo-reservation-cancel','fut_evo_reservations.cancelled — 화면에서 예약 걸기/풀기(fut_club.py evo_reserve) · 푼 예약은 행을 남기고 날짜만 적는다 · export는 활성 예약만 낸다');
 INSERT INTO _migration_log VALUES('2026-11-03','129-gk-ovr-formula','GK OVR 산정식 교정 — 21/21/21/21/11/5 + 상수 1(83/90 정확 · 종전 적합 41/90) · _const 행 도입 · load()·export meta 그룹별 최신 회차 · fit_position_ovr.py GK 건너뜀');
+INSERT INTO _migration_log VALUES('2026-11-04','130-gsc-title','game_system_changes.title — 한 줄 제목 칸 신설 · 전 90행(FC26 14 · FC27 76) 사람이 쓴 제목 · 시스템 분석 화면이 제목을 먼저 보인다 · G23이 title 결손 0을 지킨다');
