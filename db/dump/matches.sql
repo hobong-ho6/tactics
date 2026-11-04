@@ -120,3 +120,4 @@ INSERT INTO matches VALUES(126,16938853,'AVL','2026-27','2026-10-21','Viking FK'
 INSERT INTO matches VALUES(127,16363892,'AVL','2026-27','2026-10-24','Manchester City','Premier League','H','2-1',1,'Matchweek 8 — 빌라 파크',37.0);
 INSERT INTO matches VALUES(128,17118370,'AVL','2026-27','2026-10-28','Bournemouth','EFL Cup','A','3-0',1,'4라운드(16강 전) — 바이탈리티 스타디움 (result는 홈-원정 순서: 본머스 3 · 빌라 0)',51.0);
 INSERT INTO matches VALUES(129,16363901,'AVL','2026-27','2026-10-31','Fulham','Premier League','H','1-1',1,'9라운드 — 빌라 파크 (result는 홈-원정 순서: 빌라 1 · 풀럼 1)',45.0);
+INSERT INTO matches VALUES(130,16938783,'AVL','2026-27','2026-11-03','FC Barcelona','UEFA Champions League','A','3-0',1,'League Phase MD4 — 스포티파이 캄프 노우 (result는 홈-원정 순서: 바르셀로나 3 · 빌라 0)',35.0);

@@ -263,3 +263,4 @@ INSERT INTO tactic_change_log VALUES(262,1,'starter','CAM','만잠비: cam_playm
 INSERT INTO tactic_change_log VALUES(263,1,'starter','CAM','부엔디아: cam_playmaker/Roaming','맥긴: cam_playmaker/Roaming','2026-11-01','자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)','core.opt_starters');
 INSERT INTO tactic_change_log VALUES(264,1,'starter','LDM','주앙 고메스: dm_dlp/Roaming','고레츠카: dm_dlp/Roaming','2026-11-01','자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)','core.opt_starters');
 INSERT INTO tactic_change_log VALUES(265,1,'starter','LM','음바예: wm_insidefwd/Balanced','만잠비: wm_insidefwd/Balanced','2026-11-01','자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)','core.opt_starters');
+INSERT INTO tactic_change_log VALUES(266,1,'starter','RDM','카마라: dm_holding/Defend','주앙 고메스: dm_holding/Defend','2026-11-04','자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)','core.opt_starters');
