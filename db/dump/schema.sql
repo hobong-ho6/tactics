@@ -1479,3 +1479,13 @@ CREATE TABLE fut_evo_reservations (
   note       TEXT, cancelled TEXT,
   PRIMARY KEY (account_id, evo_id, player_id)
 );
+CREATE TABLE fc_chem_style_effects(
+  id INTEGER PRIMARY KEY,
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  style_id INTEGER NOT NULL,       -- fc_chemistry_styles.style_id(같은 game_version)
+  summary_kr TEXT NOT NULL,        -- 한 줄 정의: 무엇이 나아지나
+  basis_kr TEXT NOT NULL,          -- 오르는 속성 → 확인된 작용(등급·버전·gsc #)
+  grade TEXT NOT NULL,
+  source TEXT NOT NULL, recorded TEXT NOT NULL,
+  UNIQUE(game_version, style_id)
+);

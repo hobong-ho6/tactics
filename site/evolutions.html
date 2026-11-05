@@ -2889,7 +2889,7 @@ function styleRank(attrsJson, roleId, isGk, player){
     const before = faceOf(at, isGk), after = faceOf(at2, isGk);
     const to = h ? acceleRate(at2, h) : { type: null, known: false };
     return { name: s.name, score: parts.reduce((t, x) => t + x.s, 0), balance, top: parts.slice(0, 3),
-             parts, boosts, is_gk: s.is_gk, ea_id: s.ea_id, style_id: s.style_id,
+             parts, boosts, is_gk: s.is_gk, ea_id: s.ea_id, style_id: s.style_id, effect: s.effect, effect_basis: s.effect_basis,
              accelFrom: base.type, accelTo: to.type,
              accelFlip: !!(base.type && to.type && base.type !== to.type),
              six: before.map(([k, v], i) => [k, v, after[i][1]]) };
@@ -3026,6 +3026,7 @@ function boosterCard(x, rank){
     <div class="bc-top">${styleIcon(x, 44)}<div style="flex:1;min-width:0">
       <div class="bc-head"><b>${esc(x.name)}</b>${rank ? `<span class="chip dim">차선 ${rank}</span>` : '<span class="chip" style="border-color:var(--ok);color:var(--ok)">추천</span>'}
         <small class="dim">역할 점수 ${Math.round(x.score)}</small></div>
+      ${x.effect ? `<div style="font-size:11px;margin:2px 0" title="${esc(x.effect_basis || '')}">${esc(x.effect)}</div>` : ''}
       <div class="bc-six">${six}</div></div></div>
     <div class="bc-ups">${ups || '<span class="dim">상승 없음</span>'}</div></div>`;
 }
@@ -3055,6 +3056,7 @@ function styleRefGrid(){
         six: imp.map(([k, v]) => [k, 0, v > 0 ? 1 : 0]) }, 44);
       return `<div class="bcard"><div class="bc-top">${tok}<div style="flex:1;min-width:0">
           <div class="bc-head"><b>${esc(s.name)}</b><small class="dim">${s.is_gk ? 'GK' : '필드'}</small></div>
+          ${s.effect ? `<div style="font-size:11px;margin:2px 0" title="${esc(s.effect_basis || '')}">${esc(s.effect)}</div>` : ''}
           <div class="bc-six">${rows}</div></div></div>
         <div class="bc-ups">${ups}</div></div>`;
     }).join('');
@@ -3093,7 +3095,7 @@ const ATTR_EA = {
   '볼컨트롤': { ea: '드리블 터치 정확도·공과의 거리(A · FIFA 23 · FC27 이월 미확인 · gsc #94) · 퍼스트 터치 입력(볼컨트롤·차단·침착 복합 · FC26 A · gsc #23) · Off-Balance 입력에선 배제(A · #24)' },
   '침착': { ea: 'EA가 밝힌 기능은 퍼스트 터치 입력·PK 2가지뿐 (A · gsc #26) · 「압박 인지 반경」은 기각된 통설' },
   '시야': { none: 1, ea: '⚠️ FC25~27 EA 1차 자료에 작용 서술 없음(부재 · gsc #55)' },
-  '반응력': { none: 1, ea: '⚠️ EA 1차 정의 없음(부재 · gsc #25) · 「AI 전용」 통설·반론 모두 기각' },
+  '반응력': { ea: '드리블 동작 속도·전환·드리블 중 속도 유지(A · FIFA 23 · gsc #95) · ⚠️ FC25~27 문서엔 서술 없음(#25) · 「AI 전용」·「세컨볼」 통설 기각' },
 };
 function finalStyle(st, slot, p){
   if (!st || !st.length) return null;
@@ -3120,7 +3122,7 @@ function finalCell(st, slot, p, nowName){
   return `<b style="color:${same ? 'var(--ok)' : 'var(--acc)'}">${same ? '✓ 유지 ' : ''}${esc(f.pick.name)}</b>
     <small class="dim"> ${esc(f.pick.top.map(x => `${x.a}+${x.gain}`).join(' · '))}</small>
     <br><small class="dim">${esc(f.why)}${alt.length ? ` · 동률권 ${esc(alt.join('/'))}` : ''}</small>${
-      f.noBasis ? `<br><small style="color:var(--warn)" title="${esc(ATTR_EA['시야'].ea + ' / ' + ATTR_EA['반응력'].ea)}">⚠️ 역할 점수 ${Math.round(f.pick.score)} 중 ${Math.round(f.noBasis)}점이 EA 작용 근거가 없는 속성(시야·반응력)</small>` : ''}${
+      f.noBasis ? `<br><small style="color:var(--warn)" title="${esc(ATTR_EA['시야'].ea)}">⚠️ 역할 점수 ${Math.round(f.pick.score)} 중 ${Math.round(f.noBasis)}점이 EA 작용 근거가 없는 속성(시야)</small>` : ''}${
       f.pick.accelFlip ? `<br><small class="dim">⚡ AcceleRATE ${esc(f.pick.accelFrom)}→${esc(f.pick.accelTo)} (FC27은 유형 영향이 줄었다 · A)</small>` : ''}</small>`;
 }
 
@@ -3193,7 +3195,10 @@ function styleCompareTable(id, picks){
     verdict = `<div style="margin:4px 0;padding:4px 8px;border-left:3px solid var(--ok);font-size:12px">${best < 0
       ? `역할 점수 <b>동률</b>(${sc[0]})`
       : `<b>${'AB'[best]} ${esc(cols[best].name)}</b>가 이 역할에 더 맞다 — 역할 점수 ${sc[best]} 대 ${sc[1 - best]} (+${Math.abs(sc[0] - sc[1])})`}
-      · 핵심 속성 우세 A ${winA} : B ${winB} · 실제 상승 합 ${sum(cols[0])} 대 ${sum(cols[1])}</div>`;
+      · 핵심 속성 우세 A ${winA} : B ${winB} · 실제 상승 합 ${sum(cols[0])} 대 ${sum(cols[1])}
+      ${cols.map((c, k) => { const fx = (CHEM_STYLES.find(x => x.name === c.name) || {});
+        return fx.effect ? `<div style="margin-top:2px" title="${esc(fx.effect_basis || '')}"><b>${'AB'[k]} ${esc(c.name)}</b>: ${esc(fx.effect)}</div>` : ''; }).join('')}
+      <div class="dim" style="font-size:11px">정의에 마우스를 올리면 속성별 작용 근거(등급·버전)가 보인다.</div></div>`;
   }
   return `${verdict}<table style="font-size:11px;margin-top:2px">${head}
     ${line('역할 점수', c => Math.round(c.score))}

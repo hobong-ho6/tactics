@@ -6168,6 +6168,17 @@
    "recorded": "2026-11-05",
    "source": "EA FIFA 23 Pitch Notes – Gameplay Deep Dive https://www.ea.com/games/battlefield/news/pitch-notes-fifa-23-gameplay-deep-dive (2026-11-05 직접 열람 · 원문 일치) · EA FC26 Gameplay Deep Dive(#23)",
    "title": "볼컨트롤 = 드리블 터치 정확도·공과의 거리 + 퍼스트 터치(FIFA 23·FC26 원문 · FC27 미재확인)"
+  },
+  {
+   "area": "attributes",
+   "change": "반응력(Reactions)의 작용을 EA가 문서로 밝힌 것은 **FIFA 23 문서뿐**이다. ⑴ 드리블 동작 **재생 속도**(드리블·민첩·반응력) ⑵ 드리블 동작 **전환 속도**(드리블·민첩·균형·반응력) ⑶ 드리블 중 **속도 유지**(드리블·반응력) ⑷ GK: 반사신경과 함께 **시야 가림이 선방 능력에 주는 영향**. #25(FC25~FC27 문서에 정의·작용 0건)는 그대로 맞다 — FC27까지 이어지는지 EA가 재확인하지 않았다. 퍼스트 터치 입력 목록(FC26 #23)에는 **없다**. ⛔ 기각 통설 유지: 「세컨볼·리바운드 경합을 결정」·「AI 전용/조작 선수에도 적용」(#25 · docs/22 §2.1). GK OVR 산정식에 0.11 가중으로 들어가는 것(#72)은 OVR 계산일 뿐 작용 근거가 아니다.",
+   "confidence": "A — EA 1차지만 **FIFA 23** 문서다. FC25~FC27 문서는 반응력을 설명하지 않는다(#25 · 부재) → FC27 이월 적용은 추정. 비중·곡선 모양 미공개(#93).",
+   "evidence": "FIFA 23 기술 드리블 속성표: 「Dribbling, Agility and Reactions - How quickly animations play out.」(드리블·민첩·반응력 — 동작이 얼마나 빨리 재생되는가) · 「Dribbling and Reactions - How much speed the ball carrier maintains while dribbling.」(드리블·반응력 — 드리블 중 볼 운반자가 속도를 얼마나 유지하는가) · 「Dribbling, Agility, Balance and Reactions - How quickly the ball carrier can transition between different dribbling animations.」(드리블·민첩·균형·반응력 — 드리블 동작 사이를 얼마나 빨리 넘어가는가). GK 절: 「The Reflex and Reaction Attributes impact how much line of sight affects the goalkeeper's saving ability.」(반사신경·반응 속성은 시야 가림이 골키퍼 선방 능력에 얼마나 영향을 주는지를 정한다).",
+   "id": 95,
+   "impact": "케미 비교에서 반응력 상승은 「드리블 동작 속도·속도 유지」 축으로 읽는다(민첩과 같은 축). docs/22 §2.1 표의 「반응력: 없다」는 FC25~27 기준으로 맞지만, FIFA 23 문서에는 드리블 작용이 있다는 점을 함께 적는다. 케미 비교 화면의 「근거 없음」 표시는 「FIFA 23 근거 · FC27 미재확인」으로 바꾼다.",
+   "recorded": "2026-11-05",
+   "source": "EA FIFA 23 Pitch Notes – Gameplay Deep Dive https://www.ea.com/games/battlefield/news/pitch-notes-fifa-23-gameplay-deep-dive (2026-11-05 직접 열람 · 원문 일치)",
+   "title": "반응력 = 드리블 동작 속도·전환·속도 유지 + GK 시야 가림(FIFA 23 원문 · FC25~27 서술 없음)"
   }
  ],
  "tactic_params": [

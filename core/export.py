@@ -541,8 +541,12 @@ def export_all(db_path=None, window="2026-summer"):
                                                                             WHERE q.ea_item_id=p.ea_item_id)
                                                               ORDER BY ea_item_id, (price IS NOT NULL), platform""")}
     # 케미스트리 스타일 24종(migration 045) — 화면이 역할 가중과 곱해 추천 순위를 만든다.
-    chem_styles = _rows(con, """SELECT style_id, ea_id, name, is_gk, boosts FROM fc_chemistry_styles
-                                WHERE game_version='FC27' ORDER BY is_gk, style_id""")
+    #   + 효과 정의(migration 132) — 한 줄 정의·속성별 작용 근거를 같은 행에 붙인다(style_id + game_version 조인).
+    chem_styles = _rows(con, """SELECT s.style_id, s.ea_id, s.name, s.is_gk, s.boosts,
+                                       e.summary_kr AS effect, e.basis_kr AS effect_basis, e.grade AS effect_grade
+                                FROM fc_chemistry_styles s
+                                LEFT JOIN fc_chem_style_effects e ON e.game_version=s.game_version AND e.style_id=s.style_id
+                                WHERE s.game_version='FC27' ORDER BY s.is_gk, s.style_id""")
     # 실제 스쿼드(migration 050) — 「제안」과 대조하려면 지금 쓰는 XI가 있어야 한다.
     squad = _rows(con, "SELECT * FROM fut_squads")
     squad_slots = _rows(con, "SELECT account_id, grp, idx, ea_item_id, gg_player_id FROM fut_squad_slots ORDER BY grp DESC, idx")
