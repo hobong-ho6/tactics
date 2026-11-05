@@ -1489,3 +1489,15 @@ CREATE TABLE fc_chem_style_effects(
   source TEXT NOT NULL, recorded TEXT NOT NULL,
   UNIQUE(game_version, style_id)
 );
+CREATE TABLE fut_chem_reviews(
+  id INTEGER PRIMARY KEY,
+  club_player_id INTEGER NOT NULL REFERENCES fut_club_players(id),
+  game_version TEXT NOT NULL REFERENCES game_versions(code),
+  role_id TEXT NOT NULL,            -- 검토 기준 역할(UT 전술 역할 · 벤치는 투입될 자리)
+  style_id INTEGER NOT NULL,        -- 권장 스타일(fc_chemistry_styles.style_id)
+  alt_style_id INTEGER,             -- 조건부 대안
+  verdict TEXT NOT NULL CHECK(verdict IN ('applied','keep','change')),
+  reason_kr TEXT NOT NULL,          -- 한 줄 이유
+  report TEXT,                      -- 근거 리포트 경로
+  reviewed TEXT NOT NULL
+);

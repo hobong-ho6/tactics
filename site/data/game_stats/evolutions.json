@@ -1940,6 +1940,238 @@
    "value": "Hunter (느린 ST) / Finisher (빠른 ST)"
   }
  ],
+ "chem_reviews": [
+  {
+   "alt_style": "Shield",
+   "club_player_id": 18,
+   "reason_kr": "실축 롱볼 15.5/90 → 킥 +6 · 다이빙 +9. Shield(반사신경 +9·킥 +6)도 같은 점수",
+   "report": "reports/research/2026-11-05-xi-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "gk_ballplaying",
+   "style": "Wall",
+   "verdict": "applied"
+  },
+  {
+   "alt_style": null,
+   "club_player_id": 8,
+   "reason_kr": "가장 약한 핵심이 가속 76·질주 77 → 속도 +6·+6. 슬라이딩 태클 PlayStyle에 슬라이딩 +9",
+   "report": "reports/research/2026-11-05-xi-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "fb_wingback",
+   "style": "Shadow",
+   "verdict": "applied"
+  },
+  {
+   "alt_style": "Powerhouse",
+   "club_player_id": 143,
+   "reason_kr": "Aggressive 포커스·속도 74·76 → 튀어나간 뒤 복귀 속도(수비 스타일 중 속도는 Shadow뿐). 볼 플레잉 1위 Powerhouse는 패스 가중 탓",
+   "report": "reports/research/2026-11-05-xi-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "cb_bpd",
+   "style": "Shadow",
+   "verdict": "keep"
+  },
+  {
+   "alt_style": "Powerhouse",
+   "club_player_id": 9,
+   "reason_kr": "속도 79·79가 약점이고 패스는 이미 85. 점유 위주 상대를 만나면 Powerhouse",
+   "report": "reports/research/2026-11-05-xi-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "cb_bpd",
+   "style": "Shadow",
+   "verdict": "keep"
+  },
+  {
+   "alt_style": null,
+   "club_player_id": 49,
+   "reason_kr": "역할 1위(속도·크로스)",
+   "report": "reports/research/2026-11-05-xi-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "fb_att_wb",
+   "style": "Catalyst",
+   "verdict": "keep"
+  },
+  {
+   "alt_style": "Powerhouse",
+   "club_player_id": 14,
+   "reason_kr": "공 몰고 가기(드리블·민첩 +6)와 수비(+24)를 함께 올리는 유일한 스타일. 홀딩↔딥라잉을 자주 오가면 Powerhouse",
+   "report": "reports/research/2026-11-05-bench-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "dm_holding",
+   "style": "Guardian",
+   "verdict": "applied"
+  },
+  {
+   "alt_style": null,
+   "club_player_id": 4,
+   "reason_kr": "Engine은 딥라잉 핵심을 거의 안 올렸다(27 → 57). 패스·볼컨트롤·침착",
+   "report": "reports/research/2026-11-05-xi-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "dm_dlp",
+   "style": "Maestro",
+   "verdict": "applied"
+  },
+  {
+   "alt_style": null,
+   "club_player_id": 82,
+   "reason_kr": "역할 1위(드리블·균형·크로스)",
+   "report": "reports/research/2026-11-05-xi-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "wm_winger",
+   "style": "Engine",
+   "verdict": "keep"
+  },
+  {
+   "alt_style": "Engine",
+   "club_player_id": 16,
+   "reason_kr": "속도형(가속 92→98)·실축 xG 0.14·전진 운반 83m/90. 커널 1위 Finisher는 결정력 가중 탓 — 철회. 오래 몰고 크로스까지면 Engine",
+   "report": "reports/research/2026-11-05-xi-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "wm_insidefwd",
+   "style": "Hunter",
+   "verdict": "keep"
+  },
+  {
+   "alt_style": "Artist",
+   "club_player_id": 683,
+   "reason_kr": "실축 슈팅 3.7·크로스 0(90분당) · 볼컨트롤 첫 터치·공 밀착(A). LM 와이드 플레이메이커로 쓰면 Artist",
+   "report": "reports/research/2026-11-05-manzambi-chem-artist-vs-maestro.md",
+   "reviewed": "2026-11-05",
+   "role_id": "cam_playmaker",
+   "style": "Maestro",
+   "verdict": "applied"
+  },
+  {
+   "alt_style": "Hunter",
+   "club_player_id": 848,
+   "reason_kr": "역할 점수 동점. 채널로 빠져 뒷공간을 노리는 쪽이면 Hunter(가속 81·질주 80이 약점)",
+   "report": "reports/research/2026-11-05-xi-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "st_advanced",
+   "style": "Finisher",
+   "verdict": "keep"
+  },
+  {
+   "alt_style": null,
+   "club_player_id": 51,
+   "reason_kr": "속도형(가속 88·질주 85)·실축 xG 0.1 — 음바예와 같은 판단",
+   "report": "reports/research/2026-11-05-bench-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "wm_insidefwd",
+   "style": "Hunter",
+   "verdict": "keep"
+  },
+  {
+   "alt_style": "Catalyst",
+   "club_player_id": 79,
+   "reason_kr": "질주 60·가속 61이 가장 약하다 → 속도 +6·+6과 수비 +18. 패스를 더 원하면 Catalyst(수비 상승 0)",
+   "report": "reports/research/2026-11-05-bench-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "cb_bpd",
+   "style": "Shadow",
+   "verdict": "keep"
+  },
+  {
+   "alt_style": "Hunter",
+   "club_player_id": 30,
+   "reason_kr": "역할 1위(Hunter 동점)",
+   "report": "reports/research/2026-11-05-bench-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "st_advanced",
+   "style": "Finisher",
+   "verdict": "keep"
+  },
+  {
+   "alt_style": null,
+   "club_player_id": 1,
+   "reason_kr": "홀딩·딥라잉 두 역할 모두 1위",
+   "report": "reports/research/2026-11-05-bench-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "dm_holding",
+   "style": "Powerhouse",
+   "verdict": "keep"
+  },
+  {
+   "alt_style": "Artist",
+   "club_player_id": 146,
+   "reason_kr": "측면질주 진화 뒤 측면 카드 · 가장 약한 핵심 결정력 79. CAM으로 쓰면 Artist. 실축 표본 105분",
+   "report": "reports/research/2026-11-05-bench-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "wm_insidefwd",
+   "style": "Finisher",
+   "verdict": "change"
+  },
+  {
+   "alt_style": null,
+   "club_player_id": 25,
+   "reason_kr": "실축 드리블 시도 5.2·전진 운반 116m(90분당) — 드리블러. 지금 스타일 없음(27 → 54)",
+   "report": "reports/research/2026-11-05-bench-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "wm_winger",
+   "style": "Engine",
+   "verdict": "change"
+  },
+  {
+   "alt_style": "Engine",
+   "club_player_id": 12,
+   "reason_kr": "Anchor는 공격형 윙백 핵심을 거의 안 올린다(27 → 54). 안쪽으로 몰고 들어가는 역할이면 Engine",
+   "report": "reports/research/2026-11-05-bench-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "fb_att_wb",
+   "style": "Catalyst",
+   "verdict": "change"
+  },
+  {
+   "alt_style": "Shadow",
+   "club_player_id": 144,
+   "reason_kr": "홀딩·딥라잉 모두 1위. RB로 쓰면 Shadow",
+   "report": "reports/research/2026-11-05-bench-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "dm_holding",
+   "style": "Powerhouse",
+   "verdict": "change"
+  },
+  {
+   "alt_style": null,
+   "club_player_id": 48,
+   "reason_kr": "역할 1위",
+   "report": "reports/research/2026-11-05-bench-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "fb_wingback",
+   "style": "Shadow",
+   "verdict": "keep"
+  },
+  {
+   "alt_style": "Artist",
+   "club_player_id": 132,
+   "reason_kr": "속도 76·69가 가장 약한 핵심 → Hunter로 AcceleRATE Controlled→Explosive. CAM으로 쓰면 Artist",
+   "report": "reports/research/2026-11-05-bench-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "wm_insidefwd",
+   "style": "Hunter",
+   "verdict": "change"
+  },
+  {
+   "alt_style": "Powerhouse",
+   "club_player_id": 27,
+   "reason_kr": "속도 71·67과 패스(시야 57·긴 패스 66)가 모두 약하다 — 센터백 판단(복귀 속도 우선)에 따라 Shadow. 빌드업을 맡기면 Powerhouse",
+   "report": "reports/research/2026-11-05-bench-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "cb_bpd",
+   "style": "Shadow",
+   "verdict": "change"
+  },
+  {
+   "alt_style": null,
+   "club_player_id": 31,
+   "reason_kr": "가장 약한 핵심 차단 74·수비 위치 75·태클 76",
+   "report": "reports/research/2026-11-05-bench-chem-review.md",
+   "reviewed": "2026-11-05",
+   "role_id": "dm_holding",
+   "style": "Powerhouse",
+   "verdict": "change"
+  }
+ ],
  "chem_signals": [
   {
    "accelerate": "Lengthy",

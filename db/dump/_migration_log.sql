@@ -57,3 +57,4 @@ INSERT INTO _migration_log VALUES('2026-11-03','129-gk-ovr-formula','GK OVR 산�
 INSERT INTO _migration_log VALUES('2026-11-04','130-gsc-title','game_system_changes.title — 한 줄 제목 칸 신설 · 전 90행(FC26 14 · FC27 76) 사람이 쓴 제목 · 시스템 분석 화면이 제목을 먼저 보인다 · G23이 title 결손 0을 지킨다');
 INSERT INTO _migration_log VALUES('2026-11-04','131-che-canon-formation','CHE slots.is_canon 3-4-2-1 → 4-2-3-1 Wide(시즌 정본 optimal과 일치) · G24 ⑸ 신설 — 정본 표시 포메이션 = 현행 버전 optimal 포메이션');
 INSERT INTO _migration_log VALUES('2026-11-05','132-chem-style-effects','fc_chem_style_effects 신설 · FC27 24종 한 줄 정의+속성별 작용 근거');
+INSERT INTO _migration_log VALUES('2026-11-05','133-fut-chem-reviews','fut_chem_reviews 신설 · 선발 11 + 교체·리저브 12 검토 결론');

@@ -3115,11 +3115,23 @@ function finalStyle(st, slot, p){
   return { pick, why, band, top: st[0], noBasis };
 }
 /* 최종 추천 칸 HTML — 지금 붙인 것과 같으면 「유지」. 근거는 작은 글씨로. */
+/* ⭐ 검토 결론(migration 133 · 2026-11-05 사용자 지시) — 자동 추천(커널 점수) 위에 **사람이 검토한 결론**을 먼저 보인다.
+   역할·실축 특성·사용자 운용까지 본 판단이라 자동 추천과 다를 수 있다(예: 센터백 Powerhouse 자동 1위 ↔ 검토 Shadow 유지). */
+const CHEM_REV = new Map((EVO.chem_reviews || []).map(r => [r.club_player_id, r]));
+function reviewCell(p, nowName){
+  const r = CHEM_REV.get(p?.id); if (!r) return '';
+  const tag = { applied: ['적용함', 'var(--ok)'], keep: ['유지', 'var(--ok)'], change: ['바꾸기 권장', 'var(--acc)'] }[r.verdict] || ['', 'var(--dim)'];
+  const match = nowName && nowName === r.style;
+  return `<div style="margin-bottom:4px;padding:3px 6px;border-left:3px solid ${tag[1]};font-size:12px">
+    <b>검토 결론</b> <span class="chip" style="border-color:${tag[1]};color:${tag[1]}">${tag[0]}</span> <b>${esc(r.style)}</b>${r.alt_style ? ` <small class="dim">(대안 ${esc(r.alt_style)})</small>` : ''}${
+      !match && r.verdict !== 'change' && nowName ? ` <small style="color:var(--warn)">⚠️ 지금 ${esc(nowName)}</small>` : ''}
+    <br><small class="dim">${esc(r.reason_kr)} · ${esc(r.reviewed)}</small></div>`;
+}
 function finalCell(st, slot, p, nowName){
-  const f = finalStyle(st, slot, p); if (!f) return '<span class="dim">속성 미수집 — 추천 불가</span>';
+  const f = finalStyle(st, slot, p); if (!f) return reviewCell(p, nowName) + '<span class="dim">속성 미수집 — 추천 불가</span>';
   const same = nowName && nowName === f.pick.name;
   const alt = f.band.filter(x => x !== f.pick).map(x => x.name);
-  return `<b style="color:${same ? 'var(--ok)' : 'var(--acc)'}">${same ? '✓ 유지 ' : ''}${esc(f.pick.name)}</b>
+  return `${reviewCell(p, nowName)}<small class="dim">자동 추천</small> <b style="color:${same ? 'var(--ok)' : 'var(--acc)'}">${same ? '✓ 유지 ' : ''}${esc(f.pick.name)}</b>
     <small class="dim"> ${esc(f.pick.top.map(x => `${x.a}+${x.gain}`).join(' · '))}</small>
     <br><small class="dim">${esc(f.why)}${alt.length ? ` · 동률권 ${esc(alt.join('/'))}` : ''}</small>${
       f.noBasis ? `<br><small style="color:var(--warn)" title="${esc(ATTR_TIPS['시야'])}">⚠️ 역할 점수 ${Math.round(f.pick.score)} 중 ${Math.round(f.noBasis)}점이 EA 작용 근거가 없는 속성(시야)</small>` : ''}${

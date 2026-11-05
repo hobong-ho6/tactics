@@ -567,6 +567,13 @@ def export_all(db_path=None, window="2026-summer"):
     written.append(_write(SITE_DATA / "game_stats" / "evolutions.json",
                           {"paths": evos, "role_map": rolemap, "catalog": catalog, "prices": prices, "log_levels": log_levels,
                            "chem_styles": chem_styles, "squad": squad, "squad_slots": squad_slots,
+                           # 케미 검토 결론(migration 133) — 선수마다 가장 늦게 검토한 행만. 화면이 자동 추천과 나란히 보인다.
+                           "chem_reviews": _rows(con, """SELECT r.club_player_id, r.role_id, s.name AS style, a.name AS alt_style,
+                                                                r.verdict, r.reason_kr, r.report, r.reviewed
+                                                         FROM fut_chem_reviews r
+                                                         JOIN fc_chemistry_styles s ON s.game_version=r.game_version AND s.style_id=r.style_id
+                                                         LEFT JOIN fc_chemistry_styles a ON a.game_version=r.game_version AND a.style_id=r.alt_style_id
+                                                         WHERE r.id IN (SELECT MAX(id) FROM fut_chem_reviews GROUP BY club_player_id)"""),
                            "obj_tasks": obj_tasks, "ps_names": ps_names, "eligible": elig_rows,
                            "cosmetic_keys": sorted(__import__("core.futgg_attrs", fromlist=["x"]).COSMETIC_UPGRADES),   # ⭐ 코스메틱 판정 정본(core/futgg_attrs)
                            # fut.gg 케미 신호(migration 055) — 보유 카드마다 최신 관측. 배지는 등급이 아니라 AcceleRATE다.
