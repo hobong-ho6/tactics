@@ -3,6 +3,7 @@
 
 import { onSchemeChange } from './tokens.js';
 import { setPlaystyleAliases } from './playstyle-icons.js';
+import './attr-tips.js?v=20261105';   // FC 세부 속성 이름에 툴팁 자동 부착(전 페이지 · 2026-11-05)
 
 const BASE = new URL('.', import.meta.url).href.replace(/assets\/$/, '');
 

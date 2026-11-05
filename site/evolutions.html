@@ -154,7 +154,8 @@ import { deadlineChart, sixDumbbell, mountTips as evoTips } from './assets/evovi
 import { evoRules, logState, inProgress, activeLog, unlockCond, unlockCondKr, acquireRoute, psGrant, psPlusGrant, psCapSim, psCapNote } from './assets/evorules.js?v=20261024';
 import { cardCompare } from './assets/cardcompare.js?v=20260929a';
 import { chemOf as chemCalc } from './assets/chem.js?v=20260926';
-import { statTip } from './assets/stat-tips.js?v=20261009';   // 속성 이름 툴팁(정본 표 하나 · 2026-10-06 GK 세부 속성 추가)
+import { statTip } from './assets/stat-tips.js?v=20261105';
+import { ATTR_TIPS } from './assets/attr-tips.js?v=20261105';   // 속성 이름 툴팁(정본 표 하나 · 2026-10-06 GK 세부 속성 추가)
 import { posOvrRaw } from './assets/posovr.js?v=20261002';
 import { setRarityAssets, setEvoLevels } from './assets/clubviz.js?v=20261024';  // ⛔ 아래 줄과 **같은 쿼리**여야 한다 — 다르면 모듈 인스턴스가 갈린다
 import { fcPitch, fcCardGrid, bindCardSort, fcSideEmpty, enableDragScroll, paintEvoCards, enableHelpTips, compareCards, cmpSlots, cardDetail, applyEvoLevel, evoOvr, faceOf as faceFromAttrs, PLAYSTYLES, psLookup, psCanon, ATTR_KR, PS_ATTRS, PS_FC27_CUT, acceleRate, FACE_UPGRADE } from './assets/clubviz.js?v=20261024';
@@ -3085,18 +3086,15 @@ const byBalance = st => (st || []).slice().sort((a, b) => b.balance - a.balance)
    ⛔ 체감(D)은 표시만 한다(세부 속성 표 툴팁) · 근거 없는 속성(시야·반응력)은 점수를 깎지 않고 **경고로 드러낸다**. */
 const FINAL_BAND = 0.95;
 /* 속성별 EA 사실(게임 시스템 정본 game_system_changes의 FC27 행 요약 · 등급은 행 그대로) — 화면 해설과 동점 판정이 쓴다. */
+/* ⭐ 속성 표시 플래그만 둔다 — 설명 문장은 assets/attr-tips.js 한 벌이 정본이다(2026-11-05 · 두 벌이던 것을 합침).
+   up = **FC27 패치로 쓰임이 늘어난 속성**(「EA가 확인한 스탯」이라는 뜻이 아니다 — 2026-11-05 사용자 질문으로 표기를 「FC27↑」로 바꿈):
+        가속·질주(AcceleRATE 영향 축소 · #12) · 드리블·민첩·균형(오프밸런스 드리블 신설 · #24) · 슈팅력(슛 속도 = 핵심 슈팅 속성 · #52).
+   none = EA 문서에 작용 서술이 전혀 없는 속성(시야 · #55). */
 const ATTR_EA = {
-  '가속': { up: 1, ea: 'FC27 AcceleRATE 유형 영향↓ → 가속·질주 속성 비중↑ (A · gsc #12)' },
-  '질주 속도': { up: 1, ea: 'FC27 AcceleRATE 유형 영향↓ → 가속·질주 속성 비중↑ (A · gsc #12)' },
-  '드리블': { up: 1, ea: 'FC27 Off-Balance Dribbling 입력 속성 (A · gsc #24)', feel: '「민첩·균형·드리블 85↑면 발동」 통설 — 숫자 버전이 셋으로 상충(D · gsc #43·#51)' },
-  '민첩성': { up: 1, ea: '드리블 애니메이션 재생·전환 속도 + AcceleRATE 판정 (A · FIFA 23 · FC27 이월 미확인 · gsc #92) · FC27 Off-Balance Dribbling 입력 속성 (A · gsc #24)', feel: '방향 전환·조작이 가벼워진다(D · 다국어 공통 서술 · gsc #43)' },
-  '균형 감각': { up: 1, ea: 'FC27 Off-Balance Dribbling 입력 속성 (A · gsc #24)', feel: '80 이상부터는 더 높아도 체감이 크지 않다(D · FC26 이월 · gsc #43)' },
-  '슈팅력': { up: 1, ea: '슛 속도 = 핵심 슈팅 속성 + 입력 파워 — Low Driven 속도 보너스 제거 (A · gsc #52)' },
-  '볼컨트롤': { ea: '드리블 터치 정확도·공과의 거리(A · FIFA 23 · FC27 이월 미확인 · gsc #94) · 퍼스트 터치 입력(볼컨트롤·차단·침착 복합 · FC26 A · gsc #23) · Off-Balance 입력에선 배제(A · #24)' },
-  '침착': { ea: 'EA가 밝힌 기능은 퍼스트 터치 입력·PK 2가지뿐 (A · gsc #26) · 「압박 인지 반경」은 기각된 통설' },
-  '시야': { none: 1, ea: '⚠️ FC25~27 EA 1차 자료에 작용 서술 없음(부재 · gsc #55)' },
-  '공격 위치 선정': { ea: '밀착 마크 시 침투 방향을 바꿔 공간 만들기 — 85 이상 문턱(A · FIFA 23 · FC26·27 속성 언급 없음 · gsc #96)' },
-  '반응력': { ea: '드리블 동작 속도·전환·드리블 중 속도 유지(A · FIFA 23 · gsc #95) · ⚠️ FC25~27 문서엔 서술 없음(#25) · 「AI 전용」·「세컨볼」 통설 기각' },
+  '가속': { up: 1, why: 'AcceleRATE 영향 축소로 가속 비중↑' }, '질주 속도': { up: 1, why: 'AcceleRATE 영향 축소로 질주 비중↑' },
+  '드리블': { up: 1, why: '오프밸런스 드리블 입력' }, '민첩성': { up: 1, why: '오프밸런스 드리블 입력' }, '균형 감각': { up: 1, why: '오프밸런스 드리블 입력' },
+  '슈팅력': { up: 1, why: '슛 속도가 핵심 슈팅 속성으로만 정해짐' },
+  '시야': { none: 1 },
 };
 function finalStyle(st, slot, p){
   if (!st || !st.length) return null;
@@ -3123,7 +3121,7 @@ function finalCell(st, slot, p, nowName){
   return `<b style="color:${same ? 'var(--ok)' : 'var(--acc)'}">${same ? '✓ 유지 ' : ''}${esc(f.pick.name)}</b>
     <small class="dim"> ${esc(f.pick.top.map(x => `${x.a}+${x.gain}`).join(' · '))}</small>
     <br><small class="dim">${esc(f.why)}${alt.length ? ` · 동률권 ${esc(alt.join('/'))}` : ''}</small>${
-      f.noBasis ? `<br><small style="color:var(--warn)" title="${esc(ATTR_EA['시야'].ea)}">⚠️ 역할 점수 ${Math.round(f.pick.score)} 중 ${Math.round(f.noBasis)}점이 EA 작용 근거가 없는 속성(시야)</small>` : ''}${
+      f.noBasis ? `<br><small style="color:var(--warn)" title="${esc(ATTR_TIPS['시야'])}">⚠️ 역할 점수 ${Math.round(f.pick.score)} 중 ${Math.round(f.noBasis)}점이 EA 작용 근거가 없는 속성(시야)</small>` : ''}${
       f.pick.accelFlip ? `<br><small class="dim">⚡ AcceleRATE ${esc(f.pick.accelFrom)}→${esc(f.pick.accelTo)} (FC27은 유형 영향이 줄었다 · A)</small>` : ''}</small>`;
 }
 
@@ -3178,8 +3176,8 @@ function styleCompareTable(id, picks){
     const vs = cols.map(c => at[a] + got(a, c));
     if (two && w[a] && vs[0] !== vs[1]) vs[0] > vs[1] ? winA++ : winB++;
     return `<tr${w[a] ? '' : ' class="dim"'}>
-      <td${ATTR_EA[a] ? ` title="${esc([ATTR_EA[a].ea, ATTR_EA[a].feel && '커뮤니티 체감 ' + ATTR_EA[a].feel].filter(Boolean).join(' / '))}"` : ''}>${w[a] ? `<b>${esc(a)}</b> <small>×${w[a]}</small>` : esc(a)}${
-        ATTR_EA[a]?.up ? ' <small style="color:var(--ok)">EA↑</small>' : ATTR_EA[a]?.none ? ' <small style="color:var(--warn)">근거 없음</small>' : ATTR_EA[a] ? ' <small class="dim">ⓘ</small>' : ''}</td><td>${at[a]}</td>${cols.map((c, k) => cell(a, c, k, vs)).join('')}${diff(vs)}</tr>`; }).join('');
+      <td>${w[a] ? `<b>${esc(a)}</b> <small>×${w[a]}</small>` : esc(a)}${
+        ATTR_EA[a]?.up ? ` <small style="color:var(--ok)" title="FC27 패치로 쓰임이 늘어난 속성 — ${esc(ATTR_EA[a].why)}">FC27↑</small>` : ATTR_EA[a]?.none ? ' <small style="color:var(--warn)" title="EA 문서에 작용 서술이 없다">근거 없음</small>' : ''}</td><td>${at[a]}</td>${cols.map((c, k) => cell(a, c, k, vs)).join('')}${diff(vs)}</tr>`; }).join('');
   const six = faceOf(at, isGk);
   const sixRow = six.map(([k6, v], i) => {
     const vs = cols.map(c => c.six?.[i]?.[2] ?? v ?? 0);
@@ -3206,7 +3204,7 @@ function styleCompareTable(id, picks){
     ${line('실제 상승 합', sum)}
     <tr><td>AcceleRATE</td><td>${esc(cols[0]?.accelFrom || '—')}</td>${cols.map(c => `<td>${esc(c.accelTo || '—')}${c.accelFlip ? ' ⚠️' : ''}</td>`).join('')}${two ? '<td></td>' : ''}</tr>
     <tr><td colspan="${n}" class="dim">6대 스탯</td></tr>${sixRow}
-    <tr><td colspan="${n}" class="dim">세부 속성 — 굵게 = 이 역할 핵심(×가중) · 위에서부터 가중 순 · 초록 바탕 = 더 높은 쪽</td></tr>${rows}</table>
+    <tr><td colspan="${n}" class="dim">세부 속성 — 굵게 = 이 역할 핵심(×가중) · 위에서부터 가중 순 · 초록 바탕 = 더 높은 쪽 · FC27↑ = FC27 패치로 쓰임이 늘어난 속성 · 속성 이름에 마우스 = 설명(근거 등급)</td></tr>${rows}</table>
     <div class="dim" style="font-size:11px">최대 케미(3점) 기준 · 「카드」는 스타일 없는 값 · 2점이면 9→6·6→4·3→2, 1점이면 9→3·6→2·3→1.</div>`;
 }
 const GK_ATTRS = new Set(['다이빙', '핸들링', '킥', '포지셔닝', '반사신경']);
