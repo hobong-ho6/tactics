@@ -6190,6 +6190,17 @@
    "recorded": "2026-11-05",
    "source": "EA FIFA 23 Pitch Notes – Gameplay Deep Dive https://www.ea.com/games/battlefield/news/pitch-notes-fifa-23-gameplay-deep-dive · EA FC26 Gameplay Deep Dive https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-gameplay-deep-dive · EA FC27 Gameplay Deep Dive https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (3건 모두 2026-11-05 직접 열람)",
    "title": "공격 위치 선정 85+ = 밀착 마크 시 침투 방향 전환(FIFA 23 문턱 · FC26·27 속성 언급 없음)"
+  },
+  {
+   "area": "attributes",
+   "change": "FC27 AcceleRATE의 키 임계는 FC26 출시판(남 Explosive ≤182 · Lengthy ≥183 / 여 ≤162 · ≥164)이 아니다. **남 Explosive ≤183cm · Lengthy ≥185cm, 여 Explosive ≤164cm · Lengthy ≥172cm**이고, 그 사이(남 184 · 여 165~171)는 속성과 무관하게 Controlled다. 속성 조건은 바뀌지 않았다 — Explosive 민첩 ≥65 · 민첩−힘 ≥10 · 가속 ≥80 / Lengthy 힘 ≥65 · 힘−민첩 ≥4 · 가속 ≥40. 남 Lengthy 185는 FC26 TU 1.4.0(2026-01-05)에서 바뀐 값이 FC27로 이월된 것이고, 여 Lengthy 172는 FC27 베타 피드백에서 새로 정한 값이다. Explosive 키 상한(남 183 · 여 164)은 EA가 숫자를 밝히지 않아 fut.gg 신호로 역추정했다.",
+   "confidence": "Lengthy 하한 남 185 · 여 172 = A(EA 1차 · 남자 값은 FC26 TU 1.4.0 → FC27 재공시 없음, fut.gg 실측이 이월을 확인) · Explosive 상한 남 183 · 여 164 = B(fut.gg 역추정 · EA는 「maximum」 임계를 바꿨다고만 씀) · 여 Lengthy 하한의 아래쪽 경계(171cm)는 카드 1장뿐이라 역추정만으로는 약하다 — A가 받친다. docs/20 ⑤의 「TU 1.4.0 185cm 주장은 원문에 없다」(2026-07-31)는 오판이었다(원문에 있다).",
+   "evidence": "EA FC26 TU 1.4.0 Gameplay: 「Updated Acceleration Types height values.」(가속 유형 키 값 갱신) · 「This change refines the minimum and maximum height thresholds used to determine run types for players.」(이 변경은 선수의 달리기 유형을 정하는 최소·최대 키 임계를 다듬는다) · 「the minimum Lengthy height requirement for men's players will be 185 cm, and 165 for women's players.」(남자 선수의 Lengthy 최소 키는 185cm, 여자 선수는 165cm가 된다) · 나머지 Lengthy 조건(힘 65 · 힘−민첩 ≥4 · 가속 40)은 그대로라고 명시. EA FC27 베타 피드백 업데이트: 「In FC 27, female players will need to be at least 5'8\" (172 cm) to be eligible for Lengthy.」(FC27에서 여자 선수가 Lengthy 자격을 얻으려면 최소 5피트 8인치 = 172cm여야 한다) — 남자 값은 다시 적지 않았다. fut.gg 역추정(B): 카드×케미 스타일 최신 신호 13,655건(카드 785장 · 남 10,800 / 여 2,855 · 성별은 리그로 구분 · 스타일 부스트는 최대 케미 · 99 상한)에 위 임계를 넣으면 100% 일치. 임계를 하나씩 움직여 100%를 유지하는 값은 남 Explosive 상한 183 · Lengthy 하한 185 · 여 Explosive 상한 164 · Lengthy 하한 172 하나씩뿐이다. 경계 실례(남): 키 183에서 Explosive 속성을 갖춘 12명은 전부 Explosive(라치우·고든·베라르디 등) · 키 184에서 Explosive 속성 7명·Lengthy 속성 11명은 전부 Controlled · 키 185에서 Lengthy 속성 33명은 전부 Lengthy. (여): 164 Explosive 4명 → Explosive · 165~170 Explosive 속성 19명·Lengthy 속성 34명 전부 Controlled · 172 Lengthy 11명 → Lengthy. 종전 공식은 남 95.3% · 여 86.4% 일치.",
+   "id": 97,
+   "impact": "우리 정본(site/assets/clubviz.js acceleRate)을 이 임계로 고치고 성별은 리그(WOMEN_LEAGUES)로 가린다 — G44가 fut.gg 신호와 100% 일치를 커밋마다 확인한다. 보유 카드 Basic 대조의 71건 불일치가 전부 이 키 임계와 성별 미전달에서 나왔다: 키 183 남자 공격형(만잠비·페페·베라르디·라치우·고든)은 Explosive 가능, 183~184 장신 수비수(카마라·캐시 등)는 Controlled. 케미 추천의 AcceleRATE 전환 알림과 진화 화면이 이 판정을 쓴다. 효과 크기는 여전히 비공개(#12)라 적합 가중치로는 쓰지 않는다.",
+   "recorded": "2026-11-05",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-title-update-1-4-0 (2026-01-05) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03) — 둘 다 2026-11-05 직접 열람 · fut.gg futgg_chem_signals × player_card_items(2026-09-21~11-05 수집)",
+   "title": "AcceleRATE 키 임계 FC27 = 남 Explosive ≤183 · Lengthy ≥185 / 여 ≤164 · ≥172 (184cm 남자는 항상 Controlled)"
   }
  ],
  "tactic_params": [

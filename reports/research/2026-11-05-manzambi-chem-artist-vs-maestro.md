@@ -22,7 +22,7 @@ Artist가 앞서는 것은 지금 UT 역할(플레이메이커)의 커널 점수
 | 공격 위치 선정 85 문턱 | 88(넘음) | 91 | 차이 없음 | A(FIFA 23) |
 | 커뮤니티 — 득점형 CAM 추천 | 「패스 우선 창조형」 전용 | Engine 다음 2순위 | Maestro | D(가이드 5~6곳이 서로 복제 → 근거 1건) |
 | fut.gg 데이터 재가공(timesaver) | 상위 아님 | 상위 아님 | — (CAM 1위 Catalyst) | B |
-| AcceleRATE | 바뀌지 않음 | 바뀌지 않음 | 차이 없음 | fut.gg 신호: 둘 다 Explosive · 우리 규칙: 둘 다 Controlled(키 183 > 182) |
+| AcceleRATE | Explosive 유지 | Explosive 유지 | 차이 없음 | FC27 정본(gsc #97 · fut.gg 100% 일치) |
 | 사용자 체감 | — | 「Artist보다 나은 것 같다」 | Maestro | 체감 |
 
 ## 바꿀 조건(Artist가 맞는 경우)
@@ -32,7 +32,7 @@ Artist가 앞서는 것은 지금 UT 역할(플레이메이커)의 커널 점수
 
 ## 열린 문제
 
-- ⚠️ **AcceleRATE 판정이 fut.gg와 어긋난다** — 우리 규칙(docs/20 ⑤ · FC26 원문 · 남 Explosive 키 ≤182)은 만잠비를 Controlled로, fut.gg는 Explosive로 본다. 보유 카드 698장 대조에서 키 183 남자 선수(만잠비·페페·베라르디·라치우·고든)는 fut.gg가 Explosive, 여자 선수 다수와 183~185 장신 수비수는 Lengthy/Controlled 판정이 서로 갈린다. FC27 실제 임계는 인게임 확인이 필요하다(이 선택에는 영향 없음).
+- ✅ **AcceleRATE 불일치 해소(같은 날 하위 세션 · gsc #97 · G44)** — 우리 규칙의 키 임계가 FC26 출시판 값(남 Explosive ≤182)으로 남아 있었다. FC27 정본은 남 Explosive ≤183 · Lengthy ≥185(184는 늘 Controlled) / 여 ≤164 · ≥172 — fut.gg 신호 13,655건 100% 일치. 만잠비(183)는 **Explosive**이고 Artist·Maestro 모두 유지된다(선택 영향 없음).
 - 커뮤니티 체감 비교(Reddit 차단 · 한·일·유럽어권 0건) · 사용률 통계(fut.gg 투표 집계 비공개 · FUTBIN 403)는 확보하지 못했다.
 
 ## 출처

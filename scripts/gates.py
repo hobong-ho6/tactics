@@ -2165,6 +2165,68 @@ def run(db_path=None, verbose=True):
     if g43:
         fails.append("G43")
 
+    # G44 — ⛔ **AcceleRATE 정본(clubviz.js acceleRate)이 fut.gg 신호와 100% 일치해야 한다.** 2026-11-05 신설 —
+    #   FC26 출시판 키 임계(남 182/183 · 여 162/164)를 FC27에 그대로 쓰다 보유 카드 71건이 어긋났다(gsc #97).
+    #   카드×케미 스타일(최신 관측) 전부를 node로 정본 함수에 넣어 본다. 성별 판정도 정본(WOMEN_LEAGUES)에 맡긴다.
+    #   ⚠️ 어긋나면 임계를 손으로 맞추기 전에 ⑴ 새 여자 리그인지 ⑵ EA가 임계를 바꿨는지(패치노트) 먼저 본다.
+    g44 = []
+    try:
+        import json as _json
+        import subprocess as _sp
+        import tempfile as _tf
+        _root44 = Path(__file__).resolve().parent.parent
+        _boost = {n: _json.loads(b) for n, b in con.execute(
+            "SELECT name, boosts FROM fc_chemistry_styles WHERE game_version='FC27'")}
+        _cases = []
+        for ea, sty, acc, attrs, h, lg in con.execute("""
+                SELECT s.ea_item_id, s.style_name, s.accelerate, c.attrs, c.height_cm, c.league
+                  FROM futgg_chem_signals s JOIN player_card_items c
+                    ON c.ea_item_id=s.ea_item_id AND c.game_version='FC27'
+                 WHERE s.accelerate IN ('Explosive','Controlled','Lengthy') AND c.attrs IS NOT NULL AND c.height_cm
+                   AND s.last_seen=(SELECT MAX(last_seen) FROM futgg_chem_signals t
+                                     WHERE t.ea_item_id=s.ea_item_id AND t.style_name=s.style_name)"""):
+            at = _json.loads(attrs)
+            if sty not in _boost or any(at.get(k) is None for k in ("민첩성", "힘", "가속")):
+                continue
+            for k, v in _boost[sty].items():
+                if k in at:
+                    at[k] = min(99, at[k] + v)
+            _cases.append([ea, sty, acc, {k: at[k] for k in ("민첩성", "힘", "가속")}, h, lg])
+        if len(_cases) < 1000:
+            raise RuntimeError(f"대조 표본이 {len(_cases)}건뿐이다")
+        js = "\n".join([
+            "import { acceleRate } from " + _json.dumps((_root44 / "site" / "assets" / "clubviz.js").as_uri()) + ";",
+            "import { readFileSync } from 'node:fs';",
+            "const cs = JSON.parse(readFileSync(process.argv[2], 'utf8'));",
+            "console.log(JSON.stringify(cs.map(c => acceleRate(c[3], c[4], c[5]).type)));",
+        ])
+        with _tf.NamedTemporaryFile("w", suffix=".mjs", delete=False) as fh:
+            fh.write(js)
+            _p44 = fh.name
+        with _tf.NamedTemporaryFile("w", suffix=".json", delete=False) as fh:
+            _json.dump(_cases, fh)
+            _d44 = fh.name
+        out = _sp.run(["node", _p44, _d44], capture_output=True, text=True, cwd=_root44)
+        Path(_p44).unlink(missing_ok=True)
+        Path(_d44).unlink(missing_ok=True)
+        if out.returncode != 0:
+            raise RuntimeError(f"node 실행 실패: {(out.stderr or '')[-300:]}")
+        for c, t in zip(_cases, _json.loads(out.stdout)):
+            if t != c[2]:
+                g44.append(f"{c[0]}/{c[1]}(키 {c[4]} · {c[5] or '리그?'}) 정본={t} fut.gg={c[2]}")
+        _n44 = len(_cases)
+    except FileNotFoundError:
+        g44.append("node를 찾지 못했다 — 정본 함수를 돌릴 수 없다")
+        _n44 = 0
+    except Exception as e:                                   # noqa: BLE001
+        g44.append(f"대조 실패({e})")
+        _n44 = 0
+    if verbose:
+        print(f"G44 AcceleRATE 정본 ↔ fut.gg 신호({_n44}건): 어긋남 {len(g44)} "
+              + ("✅" if not g44 else "❌ docs/20 ⑤ · 새 여자 리그면 clubviz.js WOMEN_LEAGUES에 추가 — " + " · ".join(g44[:4])))
+    if g44:
+        fails.append("G44")
+
     con.close()
     if verbose:
         print("✅ 게이트 전항 통과" if not fails else f"⛔ 실패: {fails}")
