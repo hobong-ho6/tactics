@@ -6179,6 +6179,17 @@
    "recorded": "2026-11-05",
    "source": "EA FIFA 23 Pitch Notes – Gameplay Deep Dive https://www.ea.com/games/battlefield/news/pitch-notes-fifa-23-gameplay-deep-dive (2026-11-05 직접 열람 · 원문 일치)",
    "title": "반응력 = 드리블 동작 속도·전환·속도 유지 + GK 시야 가림(FIFA 23 원문 · FC25~27 서술 없음)"
+  },
+  {
+   "area": "attributes",
+   "change": "공격 위치 선정(Att. Positioning)의 작용을 EA가 **속성 이름으로** 밝힌 것은 FIFA 23 하나다: 밀착 마크를 당한 선수가 **침투 방향을 바꿔 수비수에게서 공간을 만드는 분리 침투(More Separation Runs)** — 조건이 **공격 위치 선정 85 이상**(계단형 문턱 · A). FC26 딥다이브는 공격 침투 로직을 크게 바꿨지만(침투 횟수 증가·빈 공간으로 더 일관되게·최선의 침투 선택·오프사이드 유지) **어느 속성이 침투를 정하는지는 쓰지 않았다**. FC27 딥다이브의 「공격 공간 인지(Attacking Spatial Awareness)」·창의적 침투(Creative Runs)도 속성 언급이 없다. FC26 경기 평점(Match Ratings)에서 위치 선정 지표 비중을 크게 낮췄다는 문장은 **경기 후 평점 계산**이지 이 속성의 작용이 아니다.",
+   "confidence": "A — 문턱(85+)·작용은 **FIFA 23** 문서. FC26·FC27 문서는 침투 로직을 바꾸며 속성을 언급하지 않았다(재확인·부정 모두 없음) → FC27에 문턱이 남아 있는지는 추정. 문턱 아래·위 구간의 연속 효과 여부 미상.",
+   "evidence": "FIFA 23 공격 위치 선정(Attacking Positioning) 절 More Separation Runs [NG]: 「Players that are closely marked can create space from defenders by changing their run direction」(밀착 마크된 선수가 침투 방향을 바꿔 수비수에게서 공간을 만들 수 있다) … 「if they have an 85+ Positioning Attribute.」(위치 선정 속성이 85 이상이면). FC26: 「Attacking runs more consistently run into open space.」(공격 침투가 더 일관되게 빈 공간으로 향한다) · 「Attacking Positioning - Players are less constrained by their Roles.」(공격 위치 선정 — 선수가 역할에 덜 묶인다 · FC IQ 절의 기능 이름이지 속성이 아니다). FC27: 「Our updated Attacking Spatial Awareness makes AI attackers more aware of the space around them and how they move into it.」(업데이트된 공격 공간 인지는 AI 공격수가 주변 공간과 그리로 움직이는 법을 더 잘 알게 한다 — 속성 언급 없음).",
+   "id": 96,
+   "impact": "케미 비교에서 공격 위치 선정 상승은 「밀착 마크 속 침투 방향 전환」 축으로 읽되 **85 문턱을 넘는지가 핵심**이다 — 이미 85 이상인 선수에게 +3·+6의 이득은 FIFA 23 문서로는 설명되지 않는다(문턱 위 효과 미상 · #93). 만잠비 88(Maestro 91)은 두 스타일 모두 문턱 위라 이 축의 차이는 없다. 처방에서 공격수·2선 후보가 84 이하라면 85를 넘기는 케미·진화가 의미가 있다(FIFA 23 기준 · FC27 이월 추정).",
+   "recorded": "2026-11-05",
+   "source": "EA FIFA 23 Pitch Notes – Gameplay Deep Dive https://www.ea.com/games/battlefield/news/pitch-notes-fifa-23-gameplay-deep-dive · EA FC26 Gameplay Deep Dive https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-gameplay-deep-dive · EA FC27 Gameplay Deep Dive https://www.ea.com/games/ea-sports-fc/fc-27/news/pitch-notes-fc27-gameplay-deep-dive (3건 모두 2026-11-05 직접 열람)",
+   "title": "공격 위치 선정 85+ = 밀착 마크 시 침투 방향 전환(FIFA 23 문턱 · FC26·27 속성 언급 없음)"
   }
  ],
  "tactic_params": [
