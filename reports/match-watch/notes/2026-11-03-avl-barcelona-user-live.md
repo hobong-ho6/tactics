@@ -129,3 +129,8 @@
 - 1874 「Jacob Tanswell Reports From Barcelona」(2026-11-02 · `Ud2cwU17zoU` · 전사 `reports/transcripts/Ud2cwU17zoU.en.md` · auto-caption) [13:13]: 「Could you see Kamara and Joe Gomez just swap areas? So, Kamara patrols that left-hand side.」(카마라와 고메스가 자리를 바꿀 수도 있지 않을까? 그러면 카마라가 왼쪽을 지킨다) — **경기 전날 기자가 3선 좌우 교대를 예상했고 실제로 일어났다.** R4-H(야말 대응 설계)의 2차 근거로 쓴다(감독 1차 발언은 여전히 0).
 - 같은 영상: [12:43] 알리송 선발 제외 예상 · [16:47] 「he does not want his full backs defending further than the 18 width of the 18-yard box」(풀백이 18야드 박스 폭보다 바깥에서 수비하지 않게 한다) · [21:53] 잭슨 왼쪽 채널 위협(H2).
 - ⭐ D+2 회차(`mw-avl-barcelona-d2`)가 이 영상을 match_videos에 적재·요약·구현 주장(G17)하고 R4-H·H2를 재판정할 것. 정리 문서: `reports/research/2026-11-04-tanswell-roundup.md`.
+
+## D+2 결과 — R4 이유 확인 (2026-11-05 · 예약 회차)
+
+- 에메리 경기 후 회견(Tanswell 질문 · Mundo Deportivo `VBYGCVbdxfk` [03:18] · auto-caption): 「we needed to press with Jo higher with Pedri and lower with Kamara with Fermín and after it more or less with the ball they have the same task」(고메스는 더 높이 페드리를, 카마라는 더 낮게 페르민을 압박해야 했다. 볼을 가졌을 때는 임무가 거의 같다).
+- ⇒ R4-H(야말 대응)는 **부분 일치 유지** — 같은 쪽 매치업 설계는 맞지만 감독이 꼽은 카마라의 짝은 **페르민**. H1″(고메스가 살짝 높게)는 의도된 배정으로 **확인**. 상세: 리포트 「D+2 추적 (2026-11-05)」 · obs#1157.

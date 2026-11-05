@@ -272,3 +272,71 @@
 - DB: `match_hypotheses` D1 2행(#201 R4-H · #202 H2 · supersedes #194·#195) · `match_videos` 3편 요약 · `video_impl_claims` 12행.
 - ⛔ 정본(slot_canon_roles·team_tactic_setups·opt 처방) 변경 없음 — 구현 함의(3선 좌우·잭슨 채널 포커스·측면 인선)는 사용자 판단 대기.
 - 다음: D+2(11-05 20:00 `mw-avl-barcelona-d2`) — The Villans 경기 후 영상 · Tanswell · 스페인어 회견 기사 본문 · 전술 블로그 · R4 재판정.
+
+## D+2 추적 (2026-11-05)
+
+> **결론: R4(고메스 오른쪽 배치)의 이유를 에메리 본인이 말했다.** 경기 후 회견에서 The Athletic Jacob Tanswell이 직접 물었고, 답은 「비보유 높이 차 — 고메스는 높게 페드리, 카마라는 낮게 페르민」이다. R4-H 판정(부분 일치)은 유지하되 **감독이 꼽은 짝은 야말이 아니라 페르민**이다.
+
+예약 회차 `mw-avl-barcelona-d2`(iMac). 조회 2026-11-05 KST · 기사·회견 다국어 검색은 서브에이전트 위임(읽기 전용) · 유튜브는 사이트 내부 검색(업로드 = 이번 주) · 전사는 yt-dlp 3편 성공 후 429 → 브라우저 timedtext 경로(뮤트 · 포착 즉시 정지) · 전 편 auto-caption.
+
+### ⑴ 감독 회견 — 새로 확보한 원문
+
+| 화자 · 출처 | 원문 | 번역 |
+|---|---|---|
+| ⭐ 에메리 · 공식 회견(Mundo Deportivo 영상 [VBYGCVbdxfk](https://www.youtube.com/watch?v=VBYGCVbdxfk) [03:18] · Tanswell 질문) | 「different heights mainly when we were without the ball because we needed to press with Jo higher with Pedri and lower with Kamara with Fermín and after it more or less with the ball they have the same task」 | 주로 볼이 없을 때 높이가 달라서다. 고메스는 더 높이 페드리를, 카마라는 더 낮게 페르민을 압박해야 했다. 볼을 가졌을 때는 임무가 거의 같다 |
+| 에메리 · 같은 회견 [03:48] | 「before as well he lost very easy two balls before this mistake」 | 그 실수 전에도 공을 아주 쉽게 두 번 잃었다(고메스) |
+| 에메리 · 같은 회견 [04:18] | 「we want to attract them to play for the 10 numbers」 | 상대를 끌어내 10번들에게 주려 한다(짧은 빌드업 의도) |
+| 에메리 · 같은 회견 [04:50] | 「we must be ready when we are changing the position right or left」 | 오른쪽·왼쪽으로 자리를 바꿀 때도 준비돼 있어야 한다 |
+| 에메리 · 구단 공식 인터뷰([D5LNiRkdSPU](https://www.youtube.com/watch?v=D5LNiRkdSPU) · avfc.co.uk 본문 일치) | 「We played the first half like we planned.」 | 전반은 계획대로 했다 |
+| 에메리 · Futbolfrances(Movistar+ 표기 · 재가공 의심 · LOW) | 「La imagen que hemos ofrecido es consecuencia directa de nuestros errores」 | 우리가 보인 모습은 우리 실수의 직접적 결과다 |
+| 플릭 · Goal es-mx(Mundo Deportivo 전재 · 검색 요약) | 「Queríamos presionarlos, obligarlos a cometer errores, y de ahí llegaron los goles.」 | 그들을 압박해 실수를 강요하려 했고 골은 거기서 나왔다 |
+
+- 선수 평가(카마라·마첸·부엔디아·잭슨·만잠비)·62′ 3인 교체 이유·야말 대응 발언은 **여전히 0**. 회견 [06:52] 「throwing the young wingers on」(어린 윙어들을 넣은 것) 질문에는 「never give up」(포기하지 않는다) 태도만 답했다.
+- 맥긴(TNT · 검색 요약): 「a huge learning curve for us」(우리에게 큰 배움) — 전술 의도 없음.
+
+### ⑵ 유튜브 — 8편 전사·요약·구현 주장 14행
+
+| 채널 | 영상 | 언어 | 핵심 | 구현 주장 |
+|---|---|---|---|---|
+| Mundo Deportivo | 에메리 회견 `VBYGCVbdxfk` | en | R4 1차 이유(위 표) · 짧은 빌드업 = 10번 연결 의도 | 2행: 3선 좌우 배정 HELD #20 · 짧은 빌드업 의도 HELD #52 |
+| AVFC 공식 | 에메리 인터뷰 `D5LNiRkdSPU` | en | 전반 계획대로 · 실수는 스타일의 일부 | 주장 없음 |
+| UTV(+The Villans) | 「WHY EVERYONE MUST LEARN FROM THIS BARCELONA DEFEAT」 `Cx3glX3RMvQ` | en | 마첸 최고(지상 경합 10/16 · 야말 상대 우위) · 고메스 터치 25 · 「he was on the opposite side … press resistant to Pedri and Lopez」(반대쪽에 서서 페드리·페르민 상대로 압박을 견뎌야 했다) · 맥긴 터치 30·손실 16 · 빌드업은 방식이 아니라 실행 문제 | 2행: 측면 인선 PENDING #6 · 빌드업 유지 HELD #52 |
+| 1874 | 「What Did Aston Villa Really Get Wrong In Barcelona?」 `GJpKfDnl56Q` | en | 7′ 실점이 계획을 무너뜨림 · 「He traded Kamara and Gomez. Jacob wrote about it in The Athletic this morning.」(카마라와 고메스를 맞바꿨다. 제이콥이 오늘 아침 The Athletic에 썼다) · 6대6 돌파 시 수적 이점 · 윙어 0명 선발 비판 | 2행: 좌우 교대 해석 HELD #20 · 측면 인선 PENDING #6 |
+| Bains Analysis(비빌라) | 「Aston Villa Lost 3-0… But Emery Got A LOT Right」 `pZNrIGvVouE` | en | 만잠비 = 로드리 담당 · 카마라를 야말 쪽에 둔 미세 조정 · 야말은 비교적 묶였다 · 잭슨 채널·버티기 좋고 판단 아쉬움 | 3행: 비보유 4-4-2·만잠비–로드리 HELD #15 · 좌우 교대 HELD #20 · 잭슨 PENDING #4 |
+| Albert Blaya Sensat(바르사 · es) | 「ESTE SÍ es el BARÇA de FLICK」 `7ol9Nnb4VIU` | es | 빌라 계획 = 파리냐스에게 시간을 줘 야말이 등진 채 멀리서 받게 + 1대1 매치업 · 전반 빌라 기회 우위 → 후반 바르사 구조 변화 | 1행: 「고메스–페르민」 매치업 **REJECTED**(감독·실측과 충돌) |
+| GOAT理論 切り抜き(ja) | 「【CL分析】バルセロナ戦の鈴木彩艶の評価…」 `a52qNaoJIQE` | ja | 골 기준 존 수비 · 페르민 안쪽 침투 추적·야말 컷인 오프사이드 · 측면이 수비에 묶여 역습 인원 부족 · 와이드 공략 전술 없음 | 1행: 역습 인원 HELD #2 |
+| 1874(경기 전) | Tanswell 현지 리포트 `Ud2cwU17zoU` | en | [13:13] 카마라·고메스 교대 예상(적중) · 풀백은 박스 폭 바깥에서 수비하지 않는다 | 2행: 풀백 수비 폭 HELD #15 · 교대 예상 HELD #20 |
+
+- 귀속: `_video_overrides.json`에 report 66으로 8편 추가(Ud2cwU17zoU 메타는 `_meta_backfill.json`). 전 편 auto-caption — confidence 명기.
+- ⚠️ 1874 `GJpKfDnl56Q`의 en 자막은 번역 경유로 보인다(어순·인명 「Juan」「Jamal」 오류) — 인용은 뜻 위주. Bains는 야말 상대 풀백을 「Matty Cash」, 고메스를 「Diego Carlos」로 말했다(화자 혼동 — 실측은 마첸·고메스).
+- 필수 3채널: UTV 1편(The Villans 공동 게시 — The Villans 단독 경기 후 영상은 0) · 1874 1편 새로 · 1874 프리뷰 적재. 미전사(우선순위 밖): Diario AS 회견 풀영상 `mMDcKjDgnTc`(51분 · 플릭+에메리) · La pizarra del profe `-hnKnJnnNug` · Dibra Táctica `yzD4PG0udZM` · Zona 14 Culer `i0yybsqebjA` · The Claret & Blue `qMhayTq84Gg` · Every Week We Follow `HHfn6Bglk9E`.
+
+### ⑶ 기사 — 새로 확보(서브에이전트 · 본문 열람 여부 표기)
+
+- **Squawka 경기 후 분석**(11-04 · 403 · 검색 발췌만): 「Fermin Lopez's movement kept Boubacar Kamara pinned inside, as his job was to protect the space behind Maatsen incase Lopez made an underlapping run between Torres and Maatsen」(페르민의 움직임이 카마라를 안쪽에 묶었다. 카마라의 임무는 페르민이 토레스와 마첸 사이로 안쪽 침투할 때 마첸 뒷공간을 지키는 것이었다) — 감독 발언(카마라–페르민)과 같은 그림. 만잠비는 로드리를 「main marking reference」(주 마킹 기준)로 맡음.
+- **Guardian Barney Ronay**(Irish Times 전재 · 본문): 「Emery picked a team to press and stifle the space」(에메리는 압박하고 공간을 질식시킬 선발을 골랐다).
+- **Claret Villans**(LiveScore · 본문): 「They played short from a goal kick, with Barcelona primed and ready to close them down」(골킥을 짧게 찼고 바르사는 덮칠 준비가 돼 있었다).
+- **Roundtable/Dan Bardell**(Yahoo · 본문): 「Boubacar Kamara and Ian Maatsen were our two standout performers」(카마라와 마첸이 가장 돋보였다).
+- **EFE 「5 claves」**(Infobae · 본문): 「El propio Lamine Yamal presionó como nunca」(야말 자신이 전례 없이 압박했다).
+- **평점**: Villa News 고메스 3·카마라 5·마첸 5 / Stadium Rant 고메스 4·카마라 6.5·마첸 4.
+- ⚠️ 1874 [06:24]가 말한 **The Athletic Tanswell 11-04 기사**(좌우 교대 다룸)는 nytimes.com 접근 불가로 미열람 — D+3 재시도.
+
+### ⑷ 가설·당일 판정 재판정
+
+| # | 이전 | D+2 근거 | D+2 판정 |
+|---|---|---|---|
+| R4-H(교대 = 야말 대응) | 부분 일치(D0·D1) | 에메리 1차: 고메스–페드리(높게) · 카마라–페르민(낮게) · Squawka 같은 그림 · Bains·1874는 「야말 쪽」 해석 · 실측 카마라 주변 상대 페르민 5·야말 5 | **부분 일치 유지 — 이유 확정**: 같은 쪽 매치업 설계는 맞고, 감독이 꼽은 짝은 페르민 |
+| H1″(고메스가 살짝 높게) | 일치 | 에메리 「press with Jo higher」(고메스를 더 높게) | **일치 — 의도된 배정으로 확인** |
+| H2(잭슨 채널) | 부분 일치 | Bains 채널·버티기 · GOAT 투톱 고립 · Squawka 잭슨 오른쪽 치우침 | 부분 일치 유지 |
+| H1·H1′·H3·R1·R1′ | — | 새 1차 근거 없음 | 유지 |
+
+- **당일 판정 정정 1건**: §8 R4 「확인된 이유(1차 발언): 없음」과 D+1 「에메리 발언 7곳 배치 언급 0」 → **1차 이유 있음**(위 회견). 판정값은 바뀌지 않는다 — obs#1157 · `match_hypotheses` D2 3행(seq 3·4·5 · supersedes 최신 행).
+- 상충 기록: Blaya(바르사 분석가)는 「고메스–페르민」이라 했다 → 감독 발언·실측과 어긋나 기각(구현 주장 REJECTED).
+- ⛔ 정본(슬롯 역할·팀 전술·선발 처방) 변경 없음. 정리된 비보유 중원 매치업 **만잠비–로드리 · 고메스–페드리 · 카마라–페르민**은 상대 10번 위치에 맞춘 1경기 배정이다 — 쟁점 #20(피벗 분업) 근거로 쌓고, FC 구현 함의(상대에 따라 높은 쪽 DM을 바꾸는 운용)는 사용자 판단 대기.
+
+### ⑸ 0건·실패와 검색어
+
+- The Athletic 경기 후 기사(Tanswell·Corrigan·Ballús) 미열람 · La Vanguardia 「camaleón」·El Periódico 「Un Barça opresivo」 전재처 0 · Birmingham Mail/Live·7500 to Holte·Blaugranes·Culemanía·Relevo·El País·TFA·Between the Lines·Coaches' Voice·Spielverlagerung 0 · Cadena SER·ABC 회견 전문 0 · 독일어(kicker·Sport1·Bild 「Flick Aston Villa」·「Stimmen」) 0 · 포르투갈어 ge.globo 0 · 카탈루냐어(「anàlisi Barça Aston Villa pressió sortida」·「Emery Lamine pla anàlisi tàctica」) 0.
+- 유튜브 검색어(이번 주 필터): 「aston villa barcelona」 · 「1874 aston villa」 · 「UTV aston villa」 · 「the villans aston villa」(0) · 「barcelona aston villa tactical analysis」 · 「barça aston villa análisis táctico」 · 「barça aston villa anàlisi」 · 「emery barcelona press conference」 · 「flick aston villa rueda de prensa」 · 「aston villa barcelona kamara gomes」.
+- 기사 검색어: 스페인어 「Emery Lamine Kamara izquierda planteamiento」·「Kamara a la izquierda Gomes derecha」·「rueda de prensa competir mejor」 · 포르투갈어 「João Gomes volante direita」 · 영어 「Kamara Yamal plan」·「Maatsen Yamal Kamara left side」·「Squawka」.
+- 다음: D+3(11-06 20:00 `mw-avl-barcelona-d3` · complete 판정) — The Athletic Tanswell 11-04 기사 · Diario AS 회견 풀영상의 스페인어 문답 · 남은 스페인어 분석 영상.
