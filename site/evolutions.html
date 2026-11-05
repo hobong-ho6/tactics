@@ -3252,7 +3252,7 @@ function renderChem(owned, all = owned){
     const chemBy = new Map(cur.map((p, i) => [p.id, per[i]]));
     /* ⭐ 교체 명단도 같이 본다(2026-09-19 사용자 지시 「후보 선수들도 케미스트리 추천」).
        교체는 슬롯 역할이 없다 — **카드의 주 포지션**으로 기본 역할을 잡고, 처방이 있으면 그것을 쓴다.
-       ⚠️ 교체는 투입 전까지 개인 케미가 0이라 부스터 효과도 0이다 — 그 사실을 표에 적는다. */
+       ⚠️ 교체로 들어간 선수는 케미 상승이 0이다(EA · gsc #98) — 스타일은 선발로 나설 때만 효과가 있다. 그 사실을 표에 적는다. */
     /* ⭐ 교체 7 · 리저브 5를 나눠 **펼쳐서** 보인다(2026-10-06 사용자 지시 「벤치나 리저브 선수도 케미 확인」).
        종전엔 접힌 칸 하나에 「교체 명단 0명」으로 떴다(함수 benchSlots의 .length를 읽은 버그).
        ⭐ 「투입 시 케미」 — 카드 포지션이 맞는 선발 자리마다 **그 선수와 맞바꾼 XI**로 다시 계산해
@@ -3284,11 +3284,11 @@ function renderChem(owned, all = owned){
     };
     const bAll = benchSlots().map(s2 => byItem.get(s2.ea_item_id));
     const benchTable = (label, ps) => ps.filter(Boolean).length ? `<h4 style="margin:12px 0 4px">${label} ${ps.filter(Boolean).length}명</h4>
-      <table><tr><th>포지션</th><th>선수</th><th>투입 시 케미 <small class="dim">(맞바꿀 선발 · 팀 케미)</small></th><th>기준 역할</th><th>붙인 스타일</th><th>최종 추천 <small class="dim">(근거)</small></th></tr>
+      <table><tr><th>포지션</th><th>선수</th><th>선발로 넣으면 케미 <small class="dim">(맞바꿀 선발 · 팀 케미)</small></th><th>기준 역할</th><th>붙인 스타일</th><th>최종 추천 <small class="dim">(근거)</small></th></tr>
       ${ps.filter(Boolean).map(benchRow).join('')}</table>` : '';
     const benchHtml = benchTable('교체', bAll.slice(0, 7)) + benchTable('리저브', bAll.slice(7))
-      + (bAll.length ? `<p class="dim" style="font-size:12px;margin:6px 0 0">⚠️ 벤치·리저브는 <b>투입 전까지 개인 케미가 0</b>이라 스타일 효과도 0이다 —
-      「투입 시 케미」는 카드 포지션이 맞는 선발과 맞바꿨을 때의 값이다(감독 케미 제외 하한). 기준 역할은 슬롯이 없어 <b>카드 주 포지션</b>(처방이 있으면 처방)으로 잡았다.</p>` : '')
+      + (bAll.length ? `<p class="dim" style="font-size:12px;margin:6px 0 0">⚠️ <b>경기 중 교체로 들어간 선수는 케미 상승을 전혀 받지 못한다</b> — 케미는 킥오프 때 선발 11명에게만 정해지고 경기 중 다시 계산되지 않는다(EA 1차 · FIFA 23 · FC27 이월 · gsc #98).
+      그래서 벤치 선수의 스타일은 <b>그 선수가 선발로 나서는 경기</b>에서만 효과가 있다. 「선발로 넣으면 케미」는 카드 포지션이 맞는 선발과 맞바꿔 <b>경기 전에</b> 선발로 넣었을 때의 값이다(감독 케미 제외 하한). 기준 역할은 슬롯이 없어 <b>카드 주 포지션</b>(처방이 있으면 처방)으로 잡았다.</p>` : '')
       + (bAll.some(x => !x) ? `<p class="dim" style="font-size:12px">원장에 없는 벤치 카드 ${bAll.filter(x => !x).length}장 — 싱크 필요</p>` : '');
     curHtml = `<div class="panel" style="margin:0 0 12px"><div class="kv" style="margin-bottom:6px">
         <b>지금 쓰는 스쿼드</b> <span class="chip">${esc(SQ.title || '')}</span>

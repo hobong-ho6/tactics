@@ -6201,6 +6201,17 @@
    "recorded": "2026-11-05",
    "source": "https://www.ea.com/games/ea-sports-fc/fc-26/news/pitch-notes-fc26-title-update-1-4-0 (2026-01-05) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc-27-closed-beta-feedback-update (2026-09-03) — 둘 다 2026-11-05 직접 열람 · fut.gg futgg_chem_signals × player_card_items(2026-09-21~11-05 수집)",
    "title": "AcceleRATE 키 임계 FC27 = 남 Explosive ≤183 · Lengthy ≥185 / 여 ≤164 · ≥172 (184cm 남자는 항상 Controlled)"
+  },
+  {
+   "area": "meta",
+   "change": "얼티밋팀 케미는 **킥오프 때 선발 11명에게만** 정해지고 경기 중 다시 계산되지 않는다. ⑴ 교체로 들어간 선수는 케미 스타일·케미 상승을 **전혀 받지 못하고** 카드 기본 스탯으로 뛴다(FUT 23부터 저케미 감점이 없어져 손해는 없다) ⑵ 경기 중 팀 관리로 포메이션·전술·포지션을 바꿔도 선발 11명의 케미는 변하지 않는다. 벤치·리저브는 클럽·리그·국적 케미 계산에도 들어가지 않는다.",
+   "confidence": "A — EA 1차지만 **FIFA 23** 문서. FC24~FC27 문서에서 이 규칙을 바꿨다는 공지는 없고, FC27 커뮤니티 가이드가 같은 문장을 반복한다(D · 이월 추정). 사용자 체감(2026-11-05 「교대할 때 케미가 적용 안 되는 것 같다」)과 일치.",
+   "evidence": "EA FIFA 23 Pitch Notes – FUT Chemistry Update(경기 중 케미·교체 절): 「Players who are substituted into a match will play with no Attribute increase from the Chemistry system.」(경기에 교체로 들어간 선수는 케미 시스템의 속성 상승 없이 뛴다) · 「Furthermore, once a FUT match has started, any changes made via team management to formations, tactics or player positions will not affect the Chemistry of your Starting XI players.」(또한 FUT 경기가 시작되면 팀 관리로 포메이션·전술·선수 포지션을 바꿔도 선발 11명의 케미에는 영향이 없다). FC27 가이드(fifauteam·timesaver)도 같은 내용을 반복한다(D · EA 문장 전재).",
+   "id": 98,
+   "impact": "벤치 선수에게 붙인 케미 스타일은 **그 선수가 선발로 나서는 경기에서만** 효과가 있다 — 교체 카드로 쓸 선수의 스타일 고민은 의미가 없다. 경기 중 포지션을 옮긴 선발 선수도 킥오프 때 케미를 그대로 갖는다. 케미스트리 탭 벤치 표 문구를 「선발로 넣으면 케미」로 바꿨다(2026-11-05).",
+   "recorded": "2026-11-05",
+   "source": "EA https://www.ea.com/able/news/pitch-notes-fifa-23-fut-chemistry-update (2026-11-05 직접 열람 · 원문 일치) · https://fifauteam.com/fc-27-chemistry/ · https://timesaver.gg/blog/fc-27-chemistry-explained-icon-hero-link-changes",
+   "title": "교체 투입 선수는 케미 상승 0 · 킥오프 뒤 케미 고정"
   }
  ],
  "tactic_params": [
