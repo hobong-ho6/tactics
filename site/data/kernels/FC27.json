@@ -6157,6 +6157,17 @@
    "recorded": "2026-11-05",
    "source": "https://evoweb.uk/threads/evoweb-gameplay-lab-fifa-20-frostbite-fifas.82886/ · https://evoweb.uk/threads/sprint-speed.101772/ · https://www.redbull.com/us-en/ea-fc-27-guide-tips · EA FC27 Deep Dive · 서브에이전트 다국어 조사(en·ko·ja·es·de·pt · fr·it 미실시 · SoccerGaming 403)",
    "title": "스탯 상승은 선형인가 — 곡선 모양 미상(구조는 「커브+상하한」)"
+  },
+  {
+   "area": "attributes",
+   "change": "볼컨트롤(Ball Control)의 작용을 EA가 문서로 밝힌 것은 셋이다. ⑴ **드리블 터치의 정확도**(드리블·볼컨트롤) ⑵ **드리블 중 공이 몸에 붙어 있는 거리**(드리블·볼컨트롤) — 둘 다 FIFA 23 기술 드리블 속성표 ⑶ **퍼스트 터치 난이도**(볼컨트롤·차단·침착 복합 · FC26 · #23). ⛔ 볼컨트롤이 **들어가지 않는** 것: 드리블 동작 재생 속도·동작 전환 속도(#92 · 드리블·민첩·균형·반응력) · 드리블 중 유지 속도(드리블·반응력) · FC27 오프밸런스 드리블(#24 · 균형·민첩·드리블). FC27 1차 문서에는 볼컨트롤 기능 설명이 0회다(9월 전수 스캔) — 전부 이전 버전 문서의 이월 추정.",
+   "confidence": "A — EA 1차지만 ⑴⑵는 **FIFA 23**, ⑶은 **FC26** 문서다. FC27 문서는 볼컨트롤을 설명하지 않는다(재확인·부정 모두 없음) → FC27 이월 적용은 추정. 각 스탯의 비중·곡선 모양은 미공개(#93).",
+   "evidence": "FIFA 23 기술 드리블 속성표 머리말 「Here's a list of which Attributes can impact aspects of Technical Dribbling the most」(기술 드리블의 각 측면에 가장 크게 영향을 주는 속성 목록) — 「Dribbling and Ball Control - Precision of the dribble touch.」(드리블·볼컨트롤 — 드리블 터치의 정확도) · 「Dribbling and Ball Control - How close or far the ball can stay to the dribbler.」(드리블·볼컨트롤 — 공이 드리블러에게 얼마나 가깝게 또는 멀리 머무는가) · 「Dribbling and Reactions - How much speed the ball carrier maintains while dribbling.」(드리블·반응력 — 드리블 중 볼 운반자가 속도를 얼마나 유지하는가). 퍼스트 터치는 FC26 딥다이브(#23) 원문.",
+   "id": 94,
+   "impact": "케미 스타일 비교에서 볼컨트롤 상승은 「터치가 정확하고 공이 몸에 붙는」 축(+ 퍼스트 터치)으로 읽는다 — 민첩·반응력의 「동작 속도·전환」 축과 겹치지 않는 별개 축이다. 만잠비 Maestro(볼컨트롤 89→95)는 이 축, Artist(민첩 90→99·반응력 87→93)는 동작 속도 축에서 앞선다. 드리블(+3)은 두 스타일이 같다.",
+   "recorded": "2026-11-05",
+   "source": "EA FIFA 23 Pitch Notes – Gameplay Deep Dive https://www.ea.com/games/battlefield/news/pitch-notes-fifa-23-gameplay-deep-dive (2026-11-05 직접 열람 · 원문 일치) · EA FC26 Gameplay Deep Dive(#23)",
+   "title": "볼컨트롤 = 드리블 터치 정확도·공과의 거리 + 퍼스트 터치(FIFA 23·FC26 원문 · FC27 미재확인)"
   }
  ],
  "tactic_params": [
