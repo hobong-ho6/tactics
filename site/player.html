@@ -101,7 +101,7 @@ import { PLAYSTYLES, psLookup, psCanon } from './assets/playstyle-icons.js';
 import { repaintEvoCard, replateCard, rarityLevel } from './assets/evocard.js?v=20261029-ovrband';
 /* ⛔ 진화 경로의 소진·프리미엄 판정은 **진화 메뉴와 같은 모듈**을 쓴다(2026-09-22 전수 조사) */
 import { evoRules, activeLog } from './assets/evorules.js?v=20261024';
-import { statTip, STAT_TIPS } from './assets/stat-tips.js?v=20261105';
+import { statTip, attrTip, STAT_TIPS } from './assets/stat-tips.js?v=20261105b';
 const { team, idx } = await mountHeader('player.html');
 const [td, GS, GS27, HIST, CARDS, EVO, K26, K27] = await Promise.all([loadTeam(team), loadGameStats('FC26'), loadGameStats('FC27').catch(()=>({})), loadGameStats('history'), loadGameStats('cards'), loadGameStats('evolutions').catch(()=>({paths:{},role_map:[]})), loadKernels('FC26').catch(()=>({roles:[]})), loadKernels('FC27').catch(()=>({}))]);
 /* ⭐⭐ **역할 가중은 FC27판이 정본이다**(migration 079 · 2026-09-26 사용자 지시 「가중표를 FC27 조정을 반영해」).
@@ -1264,7 +1264,7 @@ function render(){
       const cards = GROUPS.map(([label, gk, members]) => {
         const rows = members.filter(m => (a27?.[m] ?? a26?.[m]) != null).map(m => {
           const x = a26?.[m] ?? null, y = a27?.[m] ?? null, v = y ?? x;
-          return `<div class="arow"><span class="an">${statTip(m)}</span>
+          return `<div class="arow"><span class="an">${attrTip(m)}</span>
             <span class="ad">${dBadge(x, y)}</span>
             <span class="av" style="color:${tier(v)}">${v}</span>
             <span class="abar"><i style="width:${Math.min(100, v)}%;background:${tier(v)}"></i></span></div>`;
@@ -1304,7 +1304,7 @@ function render(){
           const den = ks.reduce((t, k) => t + k.w * 99, 0), num = ks.reduce((t, k) => t + k.w * k.v, 0);
           const pct = den ? Math.round(num / den * 100) : null;
           const lack = ks.filter(k => k.w >= 2 && k.v < 70);
-          keyHtml = ks.map(k => `<div class="arow"><span class="an">${statTip(k.a)} <small class="dim">가중 ${k.w}</small></span>
+          keyHtml = ks.map(k => `<div class="arow"><span class="an">${attrTip(k.a)} <small class="dim">가중 ${k.w}</small></span>
               <span class="av" style="color:${tier(k.v)}">${k.v}</span>
               <span class="abar"><i style="width:${Math.min(100, k.v)}%;background:${tier(k.v)}"></i></span></div>`).join('');
           fitLine = `<div class="kv" style="margin-bottom:6px"><span class="chip" style="border-color:${pct >= 75 ? 'var(--ok)' : pct >= 62 ? 'var(--warn)' : 'var(--bad)'};color:${pct >= 75 ? 'var(--ok)' : pct >= 62 ? 'var(--warn)' : 'var(--bad)'}">
@@ -1318,10 +1318,10 @@ function render(){
           ${fitLine}
           <div class="agrid"><section class="agrp"><header><b>처방 역할 핵심 속성</b></header>${keyHtml}</section>
             <section class="agrp"><header><b>가장 높은 5개</b></header>${strong.map(([a, v]) =>
-              `<div class="arow"><span class="an">${statTip(a)}</span><span class="av" style="color:${tier(v)}">${v}</span>
+              `<div class="arow"><span class="an">${attrTip(a)}</span><span class="av" style="color:${tier(v)}">${v}</span>
                <span class="abar"><i style="width:${Math.min(100, v)}%;background:${tier(v)}"></i></span></div>`).join('')}</section>
             <section class="agrp"><header><b>가장 낮은 5개</b></header>${weak.map(([a, v]) =>
-              `<div class="arow"><span class="an">${statTip(a)}</span><span class="av" style="color:${tier(v)}">${v}</span>
+              `<div class="arow"><span class="an">${attrTip(a)}</span><span class="av" style="color:${tier(v)}">${v}</span>
                <span class="abar"><i style="width:${Math.min(100, v)}%;background:${tier(v)}"></i></span></div>`).join('')}</section></div>
           <p class="dim" style="font-size:12px;margin:8px 0 0">⛔ 이 값은 <b>능력치 축</b>이다 — 스쿼드 화면의 커널 적합(sim)은 <b>위치·기하 축</b>이라 둘을 더하지 않는다.
           역할별 핵심 속성·가중(3/2/1)은 EA 미공개라 <b>docs/20·22 역할 설명에서 우리가 판단한 값</b>이다(신뢰도 MEDIUM).

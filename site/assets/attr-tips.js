@@ -57,12 +57,21 @@ export const ATTR_TIPS = {
 /* ── 자동 툴팁 ─────────────────────────────────────────── */
 const SKIP = 'abbr.gl, .gl, select, option, textarea, input, script, style, [data-no-attr-tip]';
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+/* ⚠️ 「드리블」은 경기 지표(드리블 시도 횟수)와 이름이 같다(2026-11-05 사용자 지시 「드리블 경기 지표 툴팁도 분리」).
+   같은 표·묶음에 다른 FC 속성 이름이 함께 있을 때만 FC 속성으로 본다. 아니면 붙이지 않는다(경기 지표 쪽은 stat-tips의 statTip). */
+const AMBIG = { '드리블': ['볼컨트롤', '민첩성', '균형 감각', '짧은 패스', '반응력', '침착'] };
+function fcContext(p, key){
+  const box = p.closest('table, .bcard, .bc-ups, .agrp, .agrid, details, section, ul') || p.parentElement;
+  const t = box?.textContent || '';
+  return AMBIG[key].some(k => t.includes(k));
+}
 function wrap(node){
   const t = node.nodeValue, key = t.trim();
   const tip = ATTR_TIPS[key];
   if (!tip) return;
   const p = node.parentElement;
   if (!p || p.closest(SKIP)) return;
+  if (AMBIG[key] && !fcContext(p, key)) return;
   const ab = document.createElement('abbr');
   ab.className = 'gl'; ab.tabIndex = 0; ab.dataset.tip = tip; ab.title = tip;
   ab.textContent = key;

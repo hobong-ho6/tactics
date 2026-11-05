@@ -144,8 +144,9 @@ const T = {
   'SPD':'스피드 — 골키퍼의 이동 속도(박스 밖 대응에 영향). 세부 속성 가속 60% + 질주 속도 40%로 계산된다.',
   'POS':'포지셔닝 — 슛 각도를 줄이는 자리 잡기.',
 
-  /* ── FC 게임 세부 속성 29종 + GK 5종 — 정본은 attr-tips.js(2026-11-05 이관 · 근거 등급 표기) ── */
-  ...ATTR_TIPS,
+  /* ── FC 게임 세부 속성 29종 + GK 5종 — 정본은 attr-tips.js(2026-11-05 이관) · 여기에 섞지 않는다:
+     「드리블」이 경기 지표(시도 횟수)와 FC 속성 이름이 같아, 섞으면 한쪽 설명이 다른 쪽을 덮는다(2026-11-05 사용자 지적).
+     ⇒ 경기 지표 = statTip · FC 속성 = attrTip으로 부르는 쪽이 고른다. ── */
 };
 
 export const STAT_TIPS = T;
@@ -170,8 +171,15 @@ if (typeof document !== 'undefined'){
 /** 지표 라벨을 툴팁으로 감싼다. 등록되지 않은 이름은 **원문 그대로** 돌려준다(은폐 금지). */
 export function statTip(name, innerHtml){
   const key = String(name ?? '').trim();
+  const en = T[key] ? null : ATTR_EN[key];   // 경기 지표면 FC 영문명(Dribbling)을 붙이지 않는다
+  const body = innerHtml ?? (esc(name) + (en ? `<em class="fc-aen">${esc(en)}</em>` : ''));
+  const tip = T[key] ?? ATTR_TIPS[key];   // 경기 지표 우선 — 이름이 겹치면(드리블) 경기 지표 뜻
+  return glTip(body, tip);   // 밑줄·툴팁 정본(glossary.js)
+}
+/** FC 세부 속성 라벨 전용 — 「드리블」도 FC 속성 뜻으로 붙는다. */
+export function attrTip(name, innerHtml){
+  const key = String(name ?? '').trim();
   const en = ATTR_EN[key];
   const body = innerHtml ?? (esc(name) + (en ? `<em class="fc-aen">${esc(en)}</em>` : ''));
-  const tip = T[key];
-  return glTip(body, tip);   // 밑줄·툴팁 정본(glossary.js)
+  return glTip(body, ATTR_TIPS[key]);
 }
