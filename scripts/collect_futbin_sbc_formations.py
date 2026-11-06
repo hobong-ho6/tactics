@@ -18,8 +18,17 @@
 ⛔ 사용자가 적은 값(source가 「사용자 입력」)과 FUTBIN이 갈리면 **덮지 않고 보고한다**(인게임 실측이 우선).
    FUTBIN에서 온 행끼리는 새 값으로 갱신한다(EA가 챌린지를 고치면 따라간다).
 
+⭐⭐ **1차 출처는 FUTWIZ다**(2026-11-06 사용자 지시 「futwiz를 1차로 확인하도록해 futbin은 계속 막히자나」).
+   FUTWIZ는 앱 안 브라우저에서 봇 검사 없이 열린다(2026-10-22·11-06 실측). 세트 페이지 `/sbcs/<아무 slug>/<set_ea_id>`
+   번호 = EA `set_ea_id`이고, 챌린지마다 이름·FORMATION·조건이 있다. ⚠️ FUTWIZ 챌린지 링크 번호는 자체 id라 쓰지 않는다.
+   ⇒ 세트 안 챌린지가 1개면 그대로, 여럿이면 **최소 케미 수치**(fut.gg 조건 「Chemistry: Min. N」 ↔ FUTWIZ 「Min Chem: N」)가
+     세트 안에서 하나로만 맞을 때 잇는다. 갈리면 적재하지 않고 보고한다(이름 매칭 금지 · 불변규칙 6).
+   FUTBIN은 2차다 — FUTWIZ에 없는 챌린지만 Chrome에서 돌린다.
+
 사용:
-    python3 scripts/collect_futbin_sbc_formations.py --print-snippet     # Chrome에서 돌릴 JS
+    python3 scripts/collect_futbin_sbc_formations.py --futwiz-snippet    # ⭐ 1차 — 앱 안 브라우저 futwiz.com 탭에서 돌릴 JS
+    python3 scripts/collect_futbin_sbc_formations.py --futwiz-file /tmp/futwiz-forms-YYYYMMDD.json
+    python3 scripts/collect_futbin_sbc_formations.py --print-snippet     # 2차 — Chrome(FUTBIN)에서 돌릴 JS
     python3 scripts/collect_futbin_sbc_formations.py --json-file /tmp/futbin-forms-YYYYMMDD.json
     python3 scripts/collect_futbin_sbc_formations.py --missing           # 포메이션이 빈 챌린지 수만
 """
@@ -65,10 +74,48 @@ SNIPPET = r"""window.__fbForms = {}; (async () => {
 })(); 'started'"""
 READ = "JSON.stringify(window.__fbForms)   // done:1 이 보이면 끝 — 이 문자열을 그대로 파일에 쓴다"
 
+FW_SRC = "FUTWIZ 세트 페이지 FORMATION (https://www.futwiz.com/sbcs/x/{set} · URL 번호 = EA set_ea_id · {how})"
+FW_CONF = ("MEDIUM(FUTWIZ 표기) — 등급 B(3자 사이트). 「442」식 표기를 변형 번호 없는 포메이션으로 읽었다. "
+           "⚠️ 사용자 인게임 기록과 갈리면 사용자 기록이 우선이다.")
+# ⭐ 앱 안 브라우저 futwiz.com 탭에서 실행한다(봇 검사 없음). 세트마다 HTML을 받아 챌린지 카드(article)를 읽는다.
+#    DOMParser 문서에는 레이아웃이 없어 innerText가 줄을 안 나눈다 — 화면 밖 상자에 잠깐 붙여 읽는다.
+FW_SNIPPET = r"""(async () => {
+  const sets = __SETS__;
+  const box = document.createElement('div');
+  box.style.cssText = 'position:absolute;left:-99999px;top:0;width:800px';
+  document.body.append(box);
+  const out = {};
+  for (const sid of sets) {
+    try {
+      const r = await fetch('/sbcs/x/' + sid);
+      if (!r.ok) { out[sid] = 'HTTP' + r.status; continue; }
+      const d = new DOMParser().parseFromString(await r.text(), 'text/html');
+      out[sid] = [...d.querySelectorAll('article')].filter(a => a.textContent.includes('FORMATION')).map(a => {
+        box.replaceChildren(document.importNode(a, true));
+        const L = box.innerText.split('
+').map(s => s.trim()).filter(Boolean);
+        const j = L.indexOf('REQUIREMENTS');
+        const k = L.findIndex((x, n) => n > j && /^(Lowest-cost solution|Open in squad builder)$/.test(x));
+        return {name: L[0], form: L[L.indexOf('FORMATION') + 1], n: L[L.indexOf('TOTAL PLAYERS') + 1],
+                req: j < 0 ? [] : L.slice(j + 1, k < 0 ? undefined : k)};
+      });
+    } catch (e) { out[sid] = 'ERR'; }
+    await new Promise(x => setTimeout(x, 300));
+  }
+  box.remove();
+  out.done = 1;
+  return JSON.stringify(out);
+})()"""
+
 
 def norm(s):
     """FUTBIN 「4-3-3(4)」 → 우리 표기 「4-3-3 (4)」."""
-    return re.sub(r"\s*\((\d)\)", r" (\1)", s.strip())
+    s = s.strip()
+    m = re.fullmatch(r"(\d{3,5})(?:\s*\((\d)\)|-(\d))?", s)   # FUTWIZ 「442」·「433(4)」·「4231-2」
+    if m:
+        v = m.group(2) or m.group(3)
+        return "-".join(m.group(1)) + (f" ({v})" if v else "")
+    return re.sub(r"\s*\((\d)\)", r" (\1)", s)
 
 
 def target_ids(con):
@@ -84,7 +131,7 @@ def missing(con):
         "SELECT 1 FROM fc_sbc_formations WHERE game_version=? AND challenge_ea_id=?", (GAME, i)).fetchone()]
 
 
-def apply(con, data):
+def apply(con, data, src_of=lambda cid: SRC, conf=CONF, site="FUTBIN"):
     forms = {r[0] for r in con.execute("SELECT name FROM fc_formations WHERE game_version=?", (GAME,))}
     have = {r[0]: (r[1], r[2] or "") for r in con.execute(
         "SELECT challenge_ea_id, formation, source FROM fc_sbc_formations WHERE game_version=?", (GAME,))}
@@ -110,23 +157,23 @@ def apply(con, data):
             cur, src = have[cid]
             if cur == f:
                 same.append(cid); continue
-            if "FUTBIN" not in src:                         # 사용자 인게임 기록 — 덮지 않는다
+            if not src.startswith(("FUTBIN", "FUTWIZ")):    # 사용자 인게임 기록 — 덮지 않는다
                 conflict.append((cid, cur, f)); continue
             con.execute("""UPDATE fc_sbc_formations SET formation=?, source=?, confidence=?, updated=?
-                           WHERE game_version=? AND challenge_ea_id=?""", (f, SRC, CONF, TODAY, GAME, cid))
+                           WHERE game_version=? AND challenge_ea_id=?""", (f, src_of(cid), conf, TODAY, GAME, cid))
             upd.append((cid, cur, f)); continue
         con.execute("""INSERT INTO fc_sbc_formations(game_version, challenge_ea_id, formation, source, confidence, updated)
-                       VALUES(?,?,?,?,?,?)""", (GAME, cid, f, SRC, CONF, TODAY))
+                       VALUES(?,?,?,?,?,?)""", (GAME, cid, f, src_of(cid), conf, TODAY))
         new.append((cid, f))
     con.commit()
-    print(f"FUTBIN 포메이션: 신규 {len(new)} · 일치 {len(same)} · 갱신 {len(upd)} · FUTBIN에 없음 {len(absent)} · "
+    print(f"{site} 포메이션: 신규 {len(new)} · 일치 {len(same)} · 갱신 {len(upd)} · {site}에 없음 {len(absent)} · "
           f"⚠️ 사용자 기록과 충돌 {len(conflict)} · 모르는 표기 {len(unknown)} · 실패 {len(bad)}")
     for cid, f in new:
         print(f"   ➕ {cid}: {f}")
     for cid, a, b in upd:
         print(f"   🔁 {cid}: {a} → {b}")
     for cid, a, b in conflict:
-        print(f"   ⚠️ {cid}: 사용자 기록 {a} ↔ FUTBIN {b} — 덮지 않았다. 인게임에서 확인할 것")
+        print(f"   ⚠️ {cid}: 사용자 기록 {a} ↔ {site} {b} — 덮지 않았다. 인게임에서 확인할 것")
     for cid, v in unknown:
         print(f"   ❔ {cid}: 「{v}」가 fc_formations에 없다 — collect_futgg_formations.py 확인")
     for cid, v in bad:
@@ -137,14 +184,81 @@ def apply(con, data):
     return bool(new or upd)
 
 
+def _chem(lines):
+    for x in lines:
+        m = re.search(r"(?:Chemistry: Min\.|Min Chem:)\s*(\d+)", x)
+        if m:
+            return int(m.group(1))
+    return None
+
+
+def futwiz_map(con, raw):
+    """FUTWIZ 세트별 카드 → {challenge_ea_id: 표기}. 못 잇는 것은 이유와 함께 돌려준다."""
+    data, how, skip = {}, {}, []
+    for sid, cards in raw.items():
+        if sid == "done":
+            continue
+        chs = con.execute("""SELECT challenge_ea_id, name, requirements_text FROM fc_sbc_challenges
+                             WHERE game_version=? AND set_ea_id=? AND challenge_type != 'ONE_CLICK_CHALLENGE'
+                               AND pulled=(SELECT MAX(pulled) FROM fc_sbc_challenges WHERE game_version=?)""",
+                          (GAME, int(sid), GAME)).fetchall()
+        if not isinstance(cards, list) or not cards:
+            skip.append((sid, f"FUTWIZ 응답 {cards!r}"[:60])); continue
+        if len(chs) == 1 and len(cards) == 1:
+            data[str(chs[0][0])] = cards[0]["form"]; how[chs[0][0]] = "세트 내 챌린지 1개"; continue
+        fw = {}
+        for c in cards:
+            fw.setdefault(_chem(c.get("req") or []), []).append(c)
+        for cid, nm, rq in chs:
+            k = _chem(json.loads(rq or "[]"))
+            hit = fw.get(k) if k is not None else None
+            if hit and len(hit) == 1 and sum(1 for _, _, r2 in chs if _chem(json.loads(r2 or "[]")) == k) == 1:
+                data[str(cid)] = hit[0]["form"]; how[cid] = f"세트 내 챌린지 {len(chs)}개 — 최소 케미 {k} 일치로 연결"
+            else:
+                skip.append((cid, f"{nm}: 최소 케미 {k}로 하나로 못 가른다"))
+    data["done"] = 1
+    return data, how, skip
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--print-snippet", action="store_true")
     ap.add_argument("--json-file")
     ap.add_argument("--missing", action="store_true")
+    ap.add_argument("--futwiz-snippet", action="store_true", help="⭐ 1차 — 앱 안 브라우저 futwiz.com 탭에서 돌릴 JS")
+    ap.add_argument("--futwiz-file", help="FUTWIZ 스니펫 결과 JSON 파일")
     ap.add_argument("--no-solve", action="store_true", help="적재 뒤 해법 재계산을 건너뛴다")
     a = ap.parse_args()
     con = connect_db(DB)
+    if a.futwiz_snippet:
+        sets = [r[0] for r in con.execute(
+            """SELECT DISTINCT set_ea_id FROM fc_sbc_challenges WHERE game_version=? AND challenge_type != 'ONE_CLICK_CHALLENGE'
+               AND pulled=(SELECT MAX(pulled) FROM fc_sbc_challenges WHERE game_version=?) ORDER BY 1""", (GAME, GAME))]
+        out = f"/tmp/futwiz-forms-{TODAY.replace('-', '')}.json"
+        print("// 앱 안 브라우저에서 https://www.futwiz.com/ 을 연 탭에서 실행 — 반환 문자열을 그대로 파일에 쓴다\n"
+              + FW_SNIPPET.replace("__SETS__", json.dumps(sets)))
+        print(f"\n── 셸 ──\n.venv/bin/python scripts/collect_futbin_sbc_formations.py --futwiz-file {out}")
+        return
+    if a.futwiz_file:
+        raw = json.load(open(a.futwiz_file))
+        if isinstance(raw, str):
+            raw = json.loads(raw)
+        if not raw.get("done"):
+            raise SystemExit("⛔ `done`이 없다 — 스니펫이 끝나지 않았다")
+        data, how, skip = futwiz_map(con, raw)
+        sid_of = {r[0]: r[1] for r in con.execute("SELECT challenge_ea_id, set_ea_id FROM fc_sbc_challenges WHERE game_version=?", (GAME,))}
+        changed = apply(con, data, src_of=lambda cid: FW_SRC.format(set=sid_of.get(cid), how=how.get(cid, "")) + f" · {TODAY}",
+                        conf=FW_CONF, site="FUTWIZ")
+        for k, why in skip:
+            print(f"   ⏭️ {k}: {why} — 적재 안 함")
+        left = missing(con)
+        print(f"포메이션 미기록 스쿼드형 챌린지: {len(left)}개{' ' + str(left) if left else ''}"
+              + (" ⇒ 2차: Chrome(FUTBIN) `--print-snippet`" if left else ""))
+        con.close()
+        if changed and not a.no_solve:
+            py = ROOT / ".venv" / "bin" / "python"
+            subprocess.run([str(py if py.exists() else sys.executable), str(ROOT / "scripts" / "sbc_solve.py"), "--save"])
+        return
     if a.print_snippet:
         ids = target_ids(con)
         print("// ① 시작\n" + SNIPPET.replace("__IDS__", json.dumps(ids)))
@@ -172,8 +286,8 @@ def main():
     left = missing(con)
     print(f"포메이션 미기록 스쿼드형 챌린지 {len(left)}개{': ' + str(left) if left else ''}")
     if left:
-        print("⇒ Chrome(futbin 탭)에서 `collect_futbin_sbc_formations.py --print-snippet` 스니펫을 돌리고 "
-              "`--json-file`로 넣는다 — 넣으면 해법을 바로 다시 푼다")
+        print("⇒ ⭐ 1차: 앱 안 브라우저 futwiz.com 탭에서 `--futwiz-snippet` 스니펫 → `--futwiz-file`로 넣는다"
+              "(넣으면 해법을 바로 다시 푼다) · 그래도 남으면 2차: Chrome(futbin 탭)에서 `--print-snippet` → `--json-file`")
 
 
 if __name__ == "__main__":

@@ -65,7 +65,7 @@ STEPS = {
     ],
     "sbc": [
         ("SBC 세트·챌린지 수집", [PY, S("collect_futgg_sbc.py")], False),
-        # ⭐ 포메이션은 FUTBIN에서 온다(2026-09-28) — 받는 건 Chrome 단계라 여기선 **결손만 센다**.
+        # ⭐ 포메이션은 FUTWIZ(1차 · 2026-11-06) → FUTBIN(2차)에서 온다 — 받는 건 브라우저 단계라 여기선 **결손만 센다**.
         #    받아 넣으면(`--json-file`) 그 스크립트가 해법을 바로 다시 푼다. 없는 챌린지는 `need_form`으로 남는다.
         ("SBC 포메이션 결손(FUTBIN)", [sys.executable, S("collect_futbin_sbc_formations.py"), "--missing"], False),
         ("해법 재계산", [PY, S("sbc_solve.py"), "--save"], False),
@@ -153,8 +153,8 @@ def print_items(head):
 # 사람이 해야 하는 단계 — 스크립트가 대신하지 않고 **무엇이 남았는지 찍는다**.
 MANUAL = {
     "선수": ["브라우저로 GG Club 열고 `collect_ggclub.py --auth-file …`로 캡처를 만든다(로그인 대행 금지)"],
-    "sbc": ["포메이션 결손이 있으면 Chrome의 www.futbin.com 탭에서 "
-            "`collect_futbin_sbc_formations.py --print-snippet` ①시작 → ②읽기 → `--json-file`로 넣는다(해법은 자동 재계산)"],
+    "sbc": ["포메이션 결손이 있으면 ⭐ 1차: 앱 안 브라우저 www.futwiz.com 탭에서 `collect_futbin_sbc_formations.py --futwiz-snippet` → "
+            "`--futwiz-file`로 넣는다(해법은 자동 재계산) · 그래도 남으면 2차: Chrome의 www.futbin.com 탭에서 `--print-snippet` → `--json-file`"],
     "전술": ["`https://www.fut.gg/gg-club/my/tactics/` 본문을 읽어 `fut_tactics`/`fut_tactic_roles`에 새 `pulled` 행 추가",
              "활성 스쿼드 응답의 formation/manager/buildUp을 보고 `fut_squads` 갱신(케미에 직접 들어간다)",
              "행을 넣은 뒤 `python3 scripts/fut_tactic_setup_kind.py` — pulled 코드가 어느 프리셋(setup_kind)인지 판정 · 11칸 차이는 setup_diff(migration 118)"],
