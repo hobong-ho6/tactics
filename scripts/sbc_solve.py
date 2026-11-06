@@ -388,7 +388,7 @@ def breakdown(xi, conds, chem=None):
     return out
 
 
-def buy_specs(xi, pl, conds, pool):
+def buy_specs(xi, pl, conds, pool, cheap=False):
     """⭐⭐ **무엇을 사면 제출 가능해지는가** — 칸별로 «포지션 + 클럽/리그/국적 + 등급»까지 찍는다
        (2026-09-25 사용자 지시 「어느 국적, 또는 어느 리그, 어느 팀의 어떤 포지션을 사야 제출 가능한지를
         알려줘야지」). 종전엔 「이 칸엔 CB가 설 수 있다」만 적어서 **사도 될지 알 수 없었다**.
@@ -490,7 +490,9 @@ def buy_specs(xi, pl, conds, pool):
             if c2 >= cost:                           # ⛔ 줄지 않으면 제안이 아니다(같아도 안 산다)
                 continue
             # 같은 감소면 ① 최근 수집 시세가 싼 카드(시세 모름은 뒤로) ② OVR이 바뀌는 사람에 가까운 카드(팀 레이팅을 덜 흔든다)
-            key = (c2, last_price(synth.get("ea")), abs(synth["ovr"] - old["ovr"]))
+            #    ⭐ `cheap`(2026-11-06 사용자 「카드까지 아껴서 좀 더 많이 사도 되니」): 같은 감소면 **OVR 낮은 카드**부터 — 브론즈·실버가 골드보다 대개 싸다.
+            key = ((c2, synth["ovr"], last_price(synth.get("ea"))) if cheap
+                   else (c2, last_price(synth.get("ea")), abs(synth["ovr"] - old["ovr"])))
             if best is None or key < best[0]:
                 best = (key, synth, nxi, nfit)
         if not best:
@@ -1381,18 +1383,50 @@ def main():
         CUR_FORM[0] = known
         sj = None
         if part:
-            ch, form, pl = best_placement(part, known)
-            buys = buy_specs(part, pl, conds, pool)
-            sj = json.dumps({"formation": form_base(form), "blocked": form_blocked(form), "formation_known": bool(known), "partial": True,
-                             "players": squad_of(pl),
-                             "after": (aft := after_of(pl, buys)),
-                             "after_rating": team_rating([p["ovr"] for p in aft]) if aft else None,
-                             "checks": breakdown(part, conds, ch),
-                             "buy": [dict(b, market=market_for(b, pool, qual_floor=QUAL_FLOOR.get(_qual_tier(conds))))
-                                     for b in buys],
-                             "hints": [{"text": t, "how": h} for t, h in
-                                       group_hints({c["text"] for c in breakdown(part, conds, ch) if not c["ok"]},
-                                                   conds)]}, ensure_ascii=False)
+            # ⭐⭐ **구매 안을 여러 개 저장한다**(2026-11-06 사용자 지시 「1,2,3번 조합 화면에서 볼수 있게 해줘 해법 여러개인 경우
+            #    선택할 수 있도록」). 같은 챌린지라도 ⑴ 내 카드를 얼마나 아끼나 ⑵ 살 카드를 무엇으로 고르나에 따라 처방이 갈린다
+            #    (Club Brugge v RSC Anderlecht 실측: 골드 3장 섞인 5~6장 구매 ↔ 브론즈·실버 7장 구매).
+            #    축 두 개를 곱한다 — 내 카드 상한(제외 설정 그대로 / OVR 74 이하) × 고르는 기준(OVR 근접 / 싼 카드 우선).
+            #    정렬: 구매로 닫히는 안 → 살 장수 적은 순 → 살 카드 OVR 합 낮은 순. 첫째가 기본(화면·제출의 기본값).
+            def plan_of(part_, cheap, own_cap):
+                ch_, form_, pl_ = best_placement(part_, known)
+                buys_ = buy_specs(part_, pl_, conds, pool, cheap=cheap)
+                aft_ = after_of(pl_, buys_)
+                bk = breakdown(part_, conds, ch_)
+                return {"label": f"내 카드 {'OVR ' + str(own_cap) + ' 이하' if own_cap else '제외 설정 그대로'} · "
+                                 f"{'싼 카드 우선' if cheap else 'OVR 근접'}",
+                        "formation": form_base(form_), "blocked": form_blocked(form_), "players": squad_of(pl_),
+                        "chem": ch_, "team_rating": team_rating([p["ovr"] for p in part_]),
+                        "after": aft_, "after_rating": team_rating([p["ovr"] for p in aft_]) if aft_ else None,
+                        "checks": bk,
+                        "buy": [dict(b, market=market_for(b, pool, qual_floor=QUAL_FLOOR.get(_qual_tier(conds)))) for b in buys_],
+                        "closed": bool(buys_) and not buys_[-1].get("still") and not buys_[-1].get("left"),
+                        "hints": [{"text": t, "how": h} for t, h in
+                                  group_hints({c["text"] for c in bk if not c["ok"]}, conds)]}
+            parts = [(part, None)]
+            if not imp:
+                cheap_pool = [p for p in cands if p["ovr"] <= 74]
+                o74, _c74, b74 = solve(cheap_pool, conds, size, max(500, a.tries // 3), rng,
+                                       fixed=FIXED.get(r['challenge_ea_id'], []))
+                p74 = (o74[0] if o74 else (b74[2] if b74 else None))
+                if p74 and {p["id"] for p in p74} != {p["id"] for p in part}:
+                    parts.append((p74, 74))
+            plans, seen = [], set()
+            for prt, cap in parts:
+                for cheap in (False, True):
+                    pn = plan_of(prt, cheap, cap)
+                    sig = frozenset(str(x.get("ea") or x.get("id")) + str(x.get("slot")) for x in pn["after"] or pn["players"])
+                    if sig in seen:
+                        continue
+                    seen.add(sig); plans.append(pn)
+            plans.sort(key=lambda pn: (not pn["closed"], len(pn["buy"]) or 99, sum(b["ovr"] or 0 for b in pn["buy"])))
+            plans = plans[:4]
+            top = plans[0]
+            ch, form = top["chem"], top["formation"]
+            sj = json.dumps({"formation": top["formation"], "blocked": top["blocked"], "formation_known": bool(known), "partial": True,
+                             "players": top["players"], "after": top["after"], "after_rating": top["after_rating"],
+                             "checks": top["checks"], "buy": top["buy"], "hints": top["hints"],
+                             "plans": plans}, ensure_ascii=False)
         rows.append((a.game, r["challenge_ea_id"], today, aid, "impossible" if imp else "not_found",
                      sj, team_rating([p["ovr"] for p in part]) if part else None,
                      ch if part else None, len(cands),

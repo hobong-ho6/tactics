@@ -4010,10 +4010,26 @@ function renderSbc(){
           xi = { ...xi, players: opts[ok_].players, checks: opts[ok_].checks, alt: {} };
           c = { ...c, team_rating: opts[ok_].team_rating, chem_total: opts[ok_].chem };
         }
-        const optBar = opts.length > 1 ? `<div class="kv sbc-opts" style="margin:4px 0 6px;font-size:12px"><b>해 ${opts.length}개</b>
+        /* ⭐ 구매 안 여러 개(2026-11-06 사용자 지시 「1,2,3번 조합 화면에서 볼수 있게」) — 미완성 해(partial)에
+           sbc_solve.py가 `plans`로 저장한다(내 카드 상한 × 살 카드 고르는 기준). 고르면 피치·구매 목록·조건을 그 안으로 갈아 끼운다. */
+        const plans = (xi.partial && xi.plans) || [];
+        const pk = plans.length ? Math.min(SBC_OPT[c.challenge_ea_id] || 0, plans.length - 1) : 0;
+        if (plans.length && plans[pk]) {
+          const pn = plans[pk];
+          xi = { ...xi, formation: pn.formation, blocked: pn.blocked, players: pn.players, after: pn.after,
+                 after_rating: pn.after_rating, checks: pn.checks, buy: pn.buy, hints: pn.hints };
+          c = { ...c, team_rating: pn.team_rating, chem_total: pn.chem };
+        }
+        const planBar = plans.length > 1 ? `<div class="kv sbc-opts" style="margin:4px 0 6px;font-size:12px"><b>구매 안 ${plans.length}개</b>
+            <small class="dim">— 살 장수 적은 순 · 골라서 보고, 산 안으로 완료 처리한다 · 가격은 인게임에서 비교</small>
+            ${plans.map((pn, k) => { const bs = pn.buy || [];
+              return `<button class="chip${k === pk ? ' hi' : ''}" data-sbcopt="${c.challenge_ea_id}" data-k="${k}"${k === pk ? ' style="outline:2px solid var(--acc)"' : ''}
+                title="${esc(pn.label)} · 살 카드: ${esc(bs.map(b => `${b.card?.name || '(살 카드)'}(${b.ovr})`).join(' · '))}">안 ${k + 1} · 🛒 <b>${bs.length}장</b>
+                · 살 카드 최고 OVR ${bs.length ? Math.max(...bs.map(b => b.ovr || 0)) : '—'}${pn.closed ? '' : ' · <span class="dn">미완</span>'}</button>`; }).join(' ')}</div>` : '';
+        const optBar = planBar || (opts.length > 1 ? `<div class="kv sbc-opts" style="margin:4px 0 6px;font-size:12px"><b>해 ${opts.length}개</b>
             <small class="dim">— 팀 레이팅 낮은 순 · 골라서 보고, 낸 해로 완료 처리한다</small>
             ${opts.map((o, k) => `<button class="chip${k === ok_ ? ' hi' : ''}" data-sbcopt="${c.challenge_ea_id}" data-k="${k}"${k === ok_ ? ' style="outline:2px solid var(--acc)"' : ''}
-              title="${esc(o.players.map(p => `${p.name}(${p.ovr})`).join(' · '))}">해 ${k + 1} · TR <b>${o.team_rating}</b> · 최고 OVR ${Math.max(...o.players.map(p => p.ovr))}</button>`).join(' ')}</div>` : '';
+              title="${esc(o.players.map(p => `${p.name}(${p.ovr})`).join(' · '))}">해 ${k + 1} · TR <b>${o.team_rating}</b> · 최고 OVR ${Math.max(...o.players.map(p => p.ovr))}</button>`).join(' ')}</div>` : '');
         return `<details class="path pcard" style="margin:6px 0"${c.verdict === 'ok' ? '' : ''}${SBC_OPT[c.challenge_ea_id] != null ? ' open' : ''}>
           <summary class="kv"><span class="badge ${v.c}">${v.k}</span> <b>${esc(c.name)}</b>
             ${stg === 'ready' && READY_WHY[c.verdict] ? `<small class="dim">${READY_WHY[c.verdict]}</small>` : ''}
@@ -4049,7 +4065,7 @@ function renderSbc(){
                      서버가 저장된 `after`(살 카드를 넣은 뒤 스쿼드)를 낸 카드로 적는다. */
                   xi.partial && (xi.after || []).some(p => p.buy)
                 ? `<div class="sbc-sub"><b>🛒 추천 카드를 사서 제출하셨나요?</b>
-                     <button class="act" data-sbcdone="${c.challenge_ea_id}" data-bought="1">샀고 제출했다 — 완료 처리</button>
+                     <button class="act" data-sbcdone="${c.challenge_ea_id}" data-bought="1" data-opt="${pk}">샀고 제출했다${plans.length > 1 ? ` (안 ${pk + 1})` : ''} — 완료 처리</button>
                      <button class="act ghost" data-sbcdone="${c.challenge_ea_id}" data-nocards="1"
                         title="다른 카드로 내셨을 때 — 완료 사실만 적고 구단은 건드리지 않는다">다른 조합으로 냈다</button>
                      <small class="dim">아래 「선수 구성」의 <b>내 카드 ${(xi.after || []).filter(p => !p.buy).length}장이 구단에서 빠지고</b>,

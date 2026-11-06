@@ -570,7 +570,12 @@ def cmd_sbc_submit(con, a):
         sj = json.loads(row["squad_json"] or "{}")
         if not sj.get("partial") or not sj.get("after") or not any(p.get("buy") for p in sj["after"]):
             raise SystemExit(f"⛔ {row['name']}: 저장된 구매 처방이 없다 — 「추천 카드를 사서 냈다」는 미완성 해의 구매 목록이 있을 때만 쓴다.")
-        sq = sj["after"]
+        # ⭐ 구매 안이 여러 개면(2026-11-06 · sbc_solve `plans`) 화면에서 고른 안(option)의 스쿼드가 낸 카드다.
+        plans = sj.get("plans") or []
+        k = int(getattr(a, "option", 0) or 0)
+        if plans and not (0 <= k < len(plans) and plans[k].get("after")):
+            raise SystemExit(f"⛔ {row['name']}: 구매 안 {k + 1}이 없다(저장된 안 {len(plans)}개) — 화면을 새로고침하고 다시 고를 것")
+        sq = plans[k]["after"] if plans else sj["after"]
         mine = [p for p in sq if not p.get("buy")]
     elif row["verdict"] != "ok" or not row["squad_json"]:
         # ⚠️ 화면엔 「해법 완료」로 보이는데 여기 오는 일이 있다 — **그 사이 판정이 뒤집힌** 것이다
