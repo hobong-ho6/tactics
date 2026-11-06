@@ -340,3 +340,107 @@
 - 유튜브 검색어(이번 주 필터): 「aston villa barcelona」 · 「1874 aston villa」 · 「UTV aston villa」 · 「the villans aston villa」(0) · 「barcelona aston villa tactical analysis」 · 「barça aston villa análisis táctico」 · 「barça aston villa anàlisi」 · 「emery barcelona press conference」 · 「flick aston villa rueda de prensa」 · 「aston villa barcelona kamara gomes」.
 - 기사 검색어: 스페인어 「Emery Lamine Kamara izquierda planteamiento」·「Kamara a la izquierda Gomes derecha」·「rueda de prensa competir mejor」 · 포르투갈어 「João Gomes volante direita」 · 영어 「Kamara Yamal plan」·「Maatsen Yamal Kamara left side」·「Squawka」.
 - 다음: D+3(11-06 20:00 `mw-avl-barcelona-d3` · complete 판정) — The Athletic Tanswell 11-04 기사 · Diario AS 회견 풀영상의 스페인어 문답 · 남은 스페인어 분석 영상.
+
+## D+3 추적 (2026-11-06)
+
+> **결론: 3일 추적 종결 · `status` = complete · 판정 정정 0.** R4(고메스 오른쪽 배치)는 **확인된 이유 = 비보유 높이 차**(에메리 1차) · **추정 = 야말 대응**(The Athletic Tanswell 경기 중 실시간 해석)으로 최종 정리했다. 둘은 같은 축(바르사 오른쪽 야말–페르민)이라 충돌이 아니다.
+
+예약 회차 `mw-avl-barcelona-d3`(iMac · 11-06 20:00). 당일·D+1·D+2 절은 고치지 않았다. 기사·회견 다국어 검색은 서브에이전트 위임(읽기 전용) · 영상은 yt-dlp `en-orig` 자막(재생 없음 → 뮤트 해당 없음) · Tanswell은 Bluesky 공개 API + X(브라우저 · 로그아웃).
+
+### ⭐ 사용자 판단 대기 — 게임 구현 함의 (정본은 바꾸지 않았다)
+
+| # | 후보 | 이 경기 근거 | 근거 등급(불변규칙 12) | 권고 |
+|---|---|---|---|---|
+| ⑴ | **3선 조합** — 정본 RDM 카마라 dm_holding/Defend · LDM 고메스 dm_dlp/Roaming(`measured:pair:gomes/kamara` · obs#1080 테스트 대기). 이 경기는 좌우 반전(고메스 RDM · 카마라 LDM) | 감독 1차: 좌우 반전 이유는 **비보유 높이 차**(고메스 높게 · 카마라 낮게), 「With the ball, they had the same task」(볼을 가졌을 때는 임무가 같다) · Tanswell 「Gomes playing on the opposite side to usual also perhaps a factor」(평소와 반대쪽에 선 것도 7′ 실점 요인일 수 있다) · 단일 경기 커널 3선 두 칸 모두 무결정(Δ.047·.034) | 실측(커널·위치) + **A**: FC27 역할 개편 없음·공간 인식 추가(`game_system_changes` #10·#19) · 「홀딩이 낮게 남는다 / DLP가 높게 압박한다」는 역할 행동 주장은 **D(통설)** — A·B·C 근거 없음 | **정본 유지**. 좌우 반전은 1경기 상대 맞춤이고 볼 보유 시 임무가 같다는 감독 발언상 「역할을 선수에 붙여 좌우만 바꾸는」 변경 근거가 약하다. obs#1080 인게임 테스트(RDM 딥라잉/빌드업)는 계속 대기 |
+| ⑵ | **잭슨 역할·포커스**(H2 채널 침투) — 정본 st_advanced/Support | Tanswell 「Jackson roaming both channels and is constantly isolating Barcelona's centre-backs」(양쪽 채널을 오가며 센터백을 고립시킨다) · 볼 소유 열 26/0/26/37/11 · 강팀 상대 그리드 2위 st_target/Wide(.422) · 단일 경기 커널 st_advanced/Support Δ.099 | 실측(커널) + 서사 7곳(2차) · 「Wide 포커스가 측면 수신을 늘린다」는 **D** | **정본 유지 + 보류 ⑵(ST 포커스)와 묶어 판단**. 채널 침투는 이 경기 설계라기보다 잭슨 기본 성향(시즌 대비 내려옴 9→11%) |
+| ⑶ | **만잠비 LM/CAM**(R1·R1′) — 정본 CAM cam_playmaker/Roaming | R1′ 7경기 예외 0(부엔디아 선발 = CAM) · 단 이 경기는 **킥오프 명목 LM → 몇 분 만에 부엔디아와 맞바꿈**(Tanswell 20:03·20:07) · R1(어디서 더 잘하나) 판정 불가 확정 | 실측(평균 위치 · 7경기) · 프리셋 두 벌 운용 효과는 **D** | **사용자 판단**: 「부엔디아 선발 = 만잠비 CAM / 윙어 선발 = 만잠비 LM·맥긴 CAM」 프리셋 두 벌을 둘지. 권고는 보류(R1 성적 비교가 판정 불가 · 다음 LM 선발 2경기 #49) |
+
+- FC26 사실 전용 없음(#10·#19는 FC27 행). ⛔ 「상대에 따라 높은 쪽 DM을 바꾸는 운용」은 **사용자 결정 2026-11-05 보류** — 이 표에 올리지 않고 근거만 쟁점 #20에 쌓았다(아래 ⑷).
+
+### ⑴ Jacob Tanswell — 경기 중 실시간 글(Bluesky) · 이번 회차 최대 수확
+
+X는 로그아웃 상태에서 피드가 안 열려(D+1·D+2 실패 원인) **Bluesky 공개 API**(`jacobtanswell.bsky.social`)로 읽었다. 경기 중 글이 X와 같이 올라간다.
+
+| 시각(UTC) | 원문 | 번역 | 쓰임 |
+|---|---|---|---|
+| 20:03 | 「Manzambi starts from the left but surely with license to roam and do his diagonal dribbles. Buendia behind Jackson.」 | 만잠비는 왼쪽에서 출발하지만 자유롭게 움직이며 대각 드리블을 할 것이다. 부엔디아가 잭슨 뒤 | R1′ |
+| 20:07 | 「Manzambi and Buendia have quickly switched positions. Manzambi's role without the ball looks pretty clear - follow Rodri.」 | 만잠비와 부엔디아가 곧바로 자리를 바꿨다. 볼이 없을 때 만잠비의 역할은 분명하다 — 로드리를 따라간다 | R1′ · #15 |
+| 20:11 | 「Kamara and Gomes have switched sides in midfield, with the former in the inside left channel as opposed to the right, clearly trying to negate the threat of Yamal.」 | 카마라와 고메스가 중원 좌우를 바꿨다. 카마라가 오른쪽이 아니라 왼쪽 안쪽 채널에 섰다 — 야말의 위협을 지우려는 게 분명하다 | R4 |
+| 20:13 | 「Emery has specifically put Kamara in the left channel to stop Yamal」 | 에메리가 야말을 막으려고 카마라를 왼쪽 채널에 일부러 뒀다 | R4 |
+| 20:18 | 「Gomes playing on the opposite side to usual also perhaps a factor.」 | 고메스가 평소와 반대쪽에 선 것도 (7′ 실점의) 요인일 수 있다 | 구현 ⑴ |
+| 20:30 | 「Jackson roaming both channels and is constantly isolating Barcelona's centre-backs.」 | 잭슨이 양쪽 채널을 오가며 계속 바르사 센터백을 고립시킨다 | H2·H2′ |
+| 20:48 | 「Villa struggling down their left」 | 빌라가 왼쪽에서 고전한다 | R4 |
+| 21:22 | 「Off come Buendia (before he gets sent off), Manzambi and Gomes.」 | 부엔디아(퇴장당하기 전에)·만잠비·고메스가 나간다 | 62′ 교체 |
+
+- X(11-04) 「Asked Unai Emery about Joao Gomes and Boubacar Kamara switching sides in CM」(에메리에게 고메스·카마라 좌우 교대를 물었다) — D+2가 영상에서 받은 원문과 같다(전사 「Jo」= Joao 확인).
+- **The Athletic 기사 2편 미열람**(nytimes.com — 브라우저·WebFetch 모두 도구 차단): 경기 직후 브리핑 「Barcelona 3 Aston Villa 0 – Ruthless hosts pour it on at rainswept Camp Nou」(11-03) · 분석 「Aston Villa were handed a painful lesson by Barcelona – they need to heed it」(11-04). Bluesky 소개문 「a changed midfield set-up, a left side issue」(바뀐 중원 배치, 왼쪽 문제)만 확보.
+
+### ⑵ 유튜브 — 필수 3채널 새 업로드
+
+| 채널 | 영상 | 판단 |
+|---|---|---|
+| The Villans | 「What Did We Really Learn Against Barcelona, Is Gomes Struggling…」 `f8nxmzu2eD8`(11-04 · 33분) | **D+2가 놓친 경기 후 영상** → 전사(`en-orig` · 기본 `en` 트랙은 번역 경유라 교체) · 경기 귀속 · 요약 · 구현 주장 4행(#771~#774) |
+| 1874 | 「EXCLUSIVE: Jacob Tanswell on Unai Emery's New Contract…」 `t7a-dulRM2Y`(11-05 · 27분) | 전사·요약 · **경기 미귀속**(주제 = 에메리 재계약 · 바르사전은 믹스트존 소회뿐) · 주장 없음 1행 |
+| UTV | 새 경기 후 영상 0(맨유 프리뷰 `4B1McP3ZYPM` · 재계약 소식 `ovQzJ_wqtL0`) | 건너뜀(경기 밖) |
+
+The Villans 핵심(auto-caption):
+- 카마라 「so hyper-fixated on … two absolute worldies to deal with in the middle」(중앙에서 세계적인 두 선수를 막는 데 과하게 집중했다) — 본래 모습이 아니었다.
+- 고메스 「like 25 touches in the whole game, that's not enough from a central midfielder」(경기 전체 터치 25회는 중앙 미드필더로 부족하다) → 맨유전 고레츠카 복귀 주장.
+- 만잠비 「Emery's demands of Manzambi in a 10 … on the left a lot completely different」(10번과 왼쪽에서 요구가 완전히 다르다) · 「a bit lost between roles」(역할 사이에서 헤맸다). ⚠️ 「만잠비가 평균 위치상 최전방」 주장은 실측과 다르다 — WS 볼 소유 평균 위치(앞뒤, 좌우 · 0~100 · 좌우 0 = 빌라 오른쪽) 만잠비 (66,55) · 잭슨 (69,47).
+- 잭슨 「he was able to get in behind」(배후로 빠져 들어갔다) · 공중 경합 뒤 세컨드볼 지원 없음.
+
+### ⑶ 다국어 기사(서브에이전트 · 새로 확보분만)
+
+- **3Cat Esport3**(카탈루냐어 · 11-03 · 본문): 「Nicolas Jackson ha superat Cancelo i ha assistit Manzambi, que gairebé marca l'empat al minut 19」(잭슨이 칸셀루를 제치고 만잠비에게 연결 — 19분 동점골 직전) → H2 채널(바르사 오른쪽 풀백 쪽 = 빌라 왼쪽 채널).
+- **FootballFanCast**(Ethan Lamb · 11-04 · 본문): 부엔디아 「selected to start on the left-hand side of the attack」(공격 왼쪽으로 선발) — Tanswell 20:03(부엔디아가 잭슨 뒤)과 명목 자리 서술이 갈린다. 실측은 부엔디아 왼쪽(WS (60,69)) — **실제 경기 자리 기준으로는 FootballFanCast가 맞다**(킥오프 직후 교대 뒤).
+- **Football365**(Lewis Oldham · 11-03 · 본문): 「guilty of overplaying and inviting pressure」(공을 지나치게 돌려 압박을 불렀다) — 쟁점 #52 방향.
+- **Mundiario**(스페인어 · 경기 전 프리뷰): 「puede transformarse en un 4-4-2 sin balón」(볼이 없을 때 4-4-2로 바뀔 수 있다) — 예상일 뿐.
+- avfc.co.uk 에메리 인터뷰 본문 = D+2 영상과 같은 내용. ESPN FC 「Leboeuf: Emery's tactics … 'complete nonsense'」(에메리 전술은 '완전히 말이 안 됐다') — 제목만.
+- 독립 근거 아님(번역 전재): Yahoo/Barça Universal(MD 발언 영역) · Goal ES·Yahoo Noticias 「no le culpo」(그를 탓하지 않는다 — 영어 회견 번역) · LiveScore·Goal FR 전술 보드(Goal 원본).
+- ⚠️ 사실 충돌: 후반 골대 강타 선수 BBC·ESPN 고레츠카 vs VAVEL 바클리 헤더 — 이 리포트 판정에 쓰지 않는 항목이라 기록만.
+
+### ⑷ 가설·당일 판정 최종 재판정
+
+| # | D+2 | D+3 근거 | **최종** |
+|---|---|---|---|
+| R4-H(교대 = 야말 대응) | 부분 일치 · 이유 확정(페르민) | Tanswell 20:11·20:13 「야말 대응」 실시간 해석 · 20:48 왼쪽 고전 | **부분 일치(최종)** — 확인된 이유 = 비보유 높이 차(감독 1차 · 고메스–페드리 높게 · 카마라–페르민 낮게). 추정 = 야말 대응(기자 2차 · 실측 카마라 야말 근접 수비 6). 같은 쪽 축이라 층위 차이일 뿐 충돌 아님 |
+| H1″ | 일치(의도된 배정) | 새 근거 같은 방향 | **일치(최종)** |
+| H2(잭슨 채널) | 부분 일치 | Tanswell 20:30 · The Villans · 3Cat | **부분 일치(최종)** — 채널·양 터치라인은 서사 7곳+실측 일치, 「안 내려옴」은 평소 수준 |
+| R1′ | 일치(n=7) | 킥오프 명목 LM → 곧바로 CAM 교대 | **일치(최종)** — 분류 기준이 「실제 경기 자리(평균 위치)」임을 명시 |
+| R1 | 판정 불가 | The Villans 「역할 사이에서 헤맴」(새 실측 없음) | **판정 불가 확정** — 다음 LM 선발 2경기(#49) |
+| H1·H1′·H2′·H3·교체 메모 | D0 판정 | 새 근거가 방향을 바꾸지 않음 | **D0 판정 그대로 최종**(H1·H1′ 부분 일치 · H2′ 일치 · H3 불일치 · 교체 메모 일치) |
+
+- **당일 판정 정정 0건.** `match_hypotheses` D3 4행(#206 R4-H · #207 H2 · #208 R1′ · #209 R1 — 각각 최신 행을 supersedes) · obs#1158.
+- 쟁점 #20 근거 덧붙임: Tanswell 실시간 좌우 교대·야말 해석 · The Villans 고메스 터치 25(구현 주장 #772 HELD). 「높은 DM을 상대에 따라 바꾸는 운용」 자체는 보류 그대로.
+
+### ⑸ 관전 메모 미확인·재판정 행 — 닫음
+
+| 행 | 최종 |
+|---|---|
+| R4 고메스 오른쪽 배치 배경 | **확인된 이유**: 비보유 높이 차(에메리 1차 · Mundo Deportivo 회견 영상 + Tanswell X) · **추정**: 야말 대응(Tanswell 실시간 · 2차) · 카마라 컨디션·부상 이유는 근거 0(훑은 출처: 영어 회견·기사 · 스페인어 EFE·Europa Press·Fichajes · 카탈루냐어 3Cat · 포르투갈어 ge.globo·Lance!·CNN Brasil) |
+| 62′ 3명 교체 사유 | **1차 사유 미확인 확정**(훑은 출처: 에메리 회견 영어 전 대목 · avfc · ESPN · BBC/TNT · EFE · Europa Press · Fichajes · 영어·스페인어) · 기자 해석: 부엔디아는 경고 누적 회피(「before he gets sent off」(퇴장당하기 전에) · D) |
+| 선수 평가(카마라·마첸·부엔디아·잭슨·만잠비) 감독 발언 | **0 확정** — 고메스 실수 언급만(「he lost very easy two balls」(공을 아주 쉽게 두 번 잃었다)) · 같은 출처 범위 |
+| R2 세트피스 | 리서치 문서로 닫힘(서사 갈림 기록 유지) |
+| R3 이전 조합 비교 | 사전 분석 + 이 경기 실측으로 닫힘 |
+
+### ⑹ `manager_profiles` 갱신 판정 — **role_demands 덧붙임 1**
+
+- D0이 건 조건(「서사로 설계 의도가 확인되면 role_demands에 덧붙임」)이 충족됐다 → 「상대 10번 위치에 맞춘 피벗 좌우·높이 배정(고메스 높게–페드리 · 카마라 낮게–페르민) · 볼 보유 시 임무 동일 · 1경기 상대 맞춤이라 기본형 불변」을 덧붙였다(updated 2026-11-06). 다른 축은 단일 경기로 일반화하지 않는다.
+
+### ⑺ status 판단 — **`match_reports.status` = complete**
+
+- 필수 섹션 1~8 · 출전 16명 전원 `match_player_reports` · 경기 전용 `match_game_setups` 1행 + 선발 11명 단일 경기 처방 · 영상 12편 귀속·요약·주장 · D+1·D+2·D+3 완료. 얕은 축(The Athletic 본문 · 스페인어 회견 전문 · 전술 블로그 0)은 위에 미확인으로 남겼고, 실측·프리셋·처방 층이 다 차 있어 draft 사유는 아니다(맨시티 #63·풀럼 #65와 같은 기준). 게임 구현 판정 **추가 관찰** 그대로.
+
+### ⑻ 0건·실패와 검색어
+
+- 기사 0건: The Athletic(Tanswell·Corrigan·Ballús — nytimes 도구 차단) · 에메리 스페인어 회견 텍스트 전문(Cadena SER·ABC·MD·Sport·AS) · La Vanguardia 「camaleón」 본문 · El País · Relevo · Blaugranes(403) · kicker · L'Équipe·Foot Mercato(카마라) · 빌라 선수 경기 후 인터뷰 전술 대목. TFA·BTL·Coaches' Voice·7500 to Holte·서브스택은 시간 안에 검색 못 함(남은 공백).
+- 검색어(영어) 「Tanswell Aston Villa Barcelona Kamara Gomes The Athletic」·「"Kamara" "Gomes" "switched sides"」·「"Maatsen" "Lamine" doubled up」 · (스페인어) 「Emery rueda de prensa Kamara Gomes Lamine」·「Emery "Fermín" "Pedri" "Kamara" presionar」·「La Vanguardia camaleón Emery」 · (카탈루냐어) 「Barça Aston Villa Emery Lamine Kamara pressió anàlisi」 · (포르투갈어) 「ge.globo João Gomes Emery」 · (프랑스어) 「L'Équipe Kamara Barcelone」 · (독일어) 「kicker Flick Aston Villa Analyse」.
+
+### ⑼ 경기 밖 — 알려 둘 것
+
+- **에메리 재계약**: Tanswell X(11-05) 「#AVFC to extend Unai Emery's contract beyond 2029」(빌라가 에메리 계약을 2029년 이후까지 연장한다) · 1874 단독 [05:54] 「He's not going to Man United now」(이제 맨유로 가지 않는다). HANDOFF P1 「에메리 → 맨유 감시」에 직결 — 이적 감시 회차 몫이라 이 회차는 DB에 넣지 않았다.
+
+### DB 반영 (추가·덧붙임만)
+
+- `observations` #1158 · `match_hypotheses` D3 4행(#206~#209) · `match_videos` 2편(#480 귀속 66 · #481 미귀속) 요약 + `video_impl_claims` 5행(#771~#775) · `player_duties` 덧붙임 3(카마라 #29 · 만잠비 #20 · 잭슨 #199) · `manager_profiles` role_demands 덧붙임 · `match_reports` #66 draft → **complete**.
+- 시즌 정본(`slot_canon_roles`·`team_tactic_setups` #46·opt 처방)·경기 프리셋·인게임 코드 **변경 없음**.

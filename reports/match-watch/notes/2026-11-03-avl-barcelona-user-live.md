@@ -134,3 +134,9 @@
 
 - 에메리 경기 후 회견(Tanswell 질문 · Mundo Deportivo `VBYGCVbdxfk` [03:18] · auto-caption): 「we needed to press with Jo higher with Pedri and lower with Kamara with Fermín and after it more or less with the ball they have the same task」(고메스는 더 높이 페드리를, 카마라는 더 낮게 페르민을 압박해야 했다. 볼을 가졌을 때는 임무가 거의 같다).
 - ⇒ R4-H(야말 대응)는 **부분 일치 유지** — 같은 쪽 매치업 설계는 맞지만 감독이 꼽은 카마라의 짝은 **페르민**. H1″(고메스가 살짝 높게)는 의도된 배정으로 **확인**. 상세: 리포트 「D+2 추적 (2026-11-05)」 · obs#1157.
+
+## D+3 결과 — 종결 (2026-11-06 · 예약 회차)
+
+- **R4 최종**: 확인된 이유 = 비보유 높이 차(에메리 1차 「press with Joao higher with Pedri and lower with Kamara with Fermin」(고메스는 높이 페드리를, 카마라는 낮게 페르민을 압박)) · 추정 = 야말 대응(The Athletic Tanswell 경기 중 실시간 「Emery has specifically put Kamara in the left channel to stop Yamal」(야말을 막으려고 카마라를 왼쪽 채널에 일부러 뒀다) · 2차). 같은 쪽 축 — R4-H **부분 일치(최종)**.
+- H2 부분 일치(최종 · Tanswell 「Jackson roaming both channels」(잭슨이 양쪽 채널을 오간다)) · R1′ 일치(최종 · 이 경기는 킥오프 명목 LM → 곧바로 부엔디아와 교대해 CAM) · R1 **판정 불가 확정**(#49 다음 LM 선발 2경기).
+- 62′ 교체 1차 사유·선수 평가 감독 발언은 **미확인 확정**(훑은 출처·언어는 리포트 「D+3 추적 (2026-11-06)」 ⑸). 남은 미확인·재판정 행 **0**. obs#1158.

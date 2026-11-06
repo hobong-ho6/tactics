@@ -11,3 +11,9 @@ INSERT INTO fc_sbc_exclusions VALUES('FC27',82,574,'사용자가 이 챌린지�
 INSERT INTO fc_sbc_exclusions VALUES('FC27',82,175,'사용자가 이 챌린지에서 뺌','2026-10-16');
 INSERT INTO fc_sbc_exclusions VALUES('FC27',82,327,'사용자가 이 챌린지에서 뺌','2026-10-16');
 INSERT INTO fc_sbc_exclusions VALUES('FC27',82,282,'사용자가 이 챌린지에서 뺌','2026-10-16');
+INSERT INTO fc_sbc_exclusions VALUES('FC27',159,282,'사용자가 이 챌린지에서 뺌','2026-11-06');
+INSERT INTO fc_sbc_exclusions VALUES('FC27',159,481,'사용자가 이 챌린지에서 뺌','2026-11-06');
+INSERT INTO fc_sbc_exclusions VALUES('FC27',159,909,'사용자가 이 챌린지에서 뺌','2026-11-06');
+INSERT INTO fc_sbc_exclusions VALUES('FC27',159,835,'사용자가 이 챌린지에서 뺌','2026-11-06');
+INSERT INTO fc_sbc_exclusions VALUES('FC27',161,640,'사용자가 이 챌린지에서 뺌','2026-11-06');
+INSERT INTO fc_sbc_exclusions VALUES('FC27',161,799,'사용자가 이 챌린지에서 뺌','2026-11-06');
