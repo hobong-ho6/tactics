@@ -377,15 +377,6 @@ def cmd_complete(con, a):
     if not log:
         raise SystemExit(f"⛔ {cp['name']}에게 진행 중인 진화가 없다")
     con.execute("UPDATE fut_evolution_log SET completed_at=? WHERE id=?", (a.date, log["id"]))
-    # ⛔⛔ **여기도 `current_attrs`를 함께 올린다**(2026-09-26 · migration 082).
-    #    종전엔 `current_ovr`·`current_six`만 올려서, 081이 `evolve`에서 없앤 「두 벌 갈림」이
-    #    **`complete` 경로로 그대로 재현**됐다. 같은 버그를 두 문에 남겨 두지 않는다(불변규칙 13).
-    #    ⚠️ 옛 행은 `attrs_after`가 NULL이다 — 그때는 29속성을 못 올리니 **말없이 넘기지 않고 경고한다**.
-    if log["attrs_after"]:
-        con.execute("UPDATE fut_club_players SET current_attrs=? WHERE id=?", (log["attrs_after"], cp["id"]))
-    else:
-        print("⚠️ 이 로그 행에는 적용 후 29속성이 없다(migration 082 이전 기록) — `current_attrs`를 올리지 못했다. "
-              "다음 클럽 싱크의 EA 실측이 맞춰 줄 때까지 6대 스탯과 29속성이 갈린 상태다.")
     six_new = a.six_after or log["six_after"]
     ovr_new = a.ovr_after or log["ovr_after"]
     # 게이트 — `evolve`와 같은 규칙이다. 진화는 스탯을 내리지 않는다.
@@ -405,6 +396,16 @@ def cmd_complete(con, a):
                       f"(기록 after {six_new} < EA {cp['current_six']}). 남은 단계를 이어서 기록하면 된다.")
                 return
             sys.exit(f"⛔ 완료 처리하면 6대 스탯이 내려간다 — {down} (before→after). 로그의 after 값이 어긋난 것이다.")
+    # ⛔⛔ **여기도 `current_attrs`를 함께 올린다**(2026-09-26 · migration 082).
+    #    종전엔 `current_ovr`·`current_six`만 올려서, 081이 `evolve`에서 없앤 「두 벌 갈림」이
+    #    **`complete` 경로로 그대로 재현**됐다. 같은 버그를 두 문에 남겨 두지 않는다(불변규칙 13).
+    #    ⚠️ 옛 행은 `attrs_after`가 NULL이다 — 그때는 29속성을 못 올리니 **말없이 넘기지 않고 경고한다**.
+    if log["attrs_after"]:
+        con.execute("UPDATE fut_club_players SET current_attrs=? WHERE id=?", (log["attrs_after"], cp["id"]))
+    else:
+        print("⚠️ 이 로그 행에는 적용 후 29속성이 없다(migration 082 이전 기록) — `current_attrs`를 올리지 못했다. "
+              "다음 클럽 싱크의 EA 실측이 맞춰 줄 때까지 6대 스탯과 29속성이 갈린 상태다.")
+    #    ⚠️ EA가 이미 앞선 경우(위 return) 뒤에 둔다 — 앞에 두면 낡은 after로 29속성만 덮였다(2026-11-06 Cissé · G25).
     con.execute("""UPDATE fut_club_players SET current_ovr=?, current_six=COALESCE(?, current_six),
                      current_playstyles=COALESCE(?, current_playstyles), current_roles_plus=COALESCE(?, current_roles_plus),
                      current_roles_plus_plus=COALESCE(?, current_roles_plus_plus), updated=? WHERE id=?""",
