@@ -4353,10 +4353,36 @@ function doneHTML(){
 /* 🔁 SBC 해법 다시 계산(2026-10-05) — 서버가 sbc_solve.py --save → export를 돌린 뒤 화면을 통째로 다시 읽는다. */
 document.getElementById('sbcresolve')?.addEventListener('click', async e => {
   const btn = e.currentTarget, box = document.getElementById('sbcresolvemsg');
-  btn.disabled = true; box.textContent = '계산 중… (1~2분)';
+  btn.disabled = true; box.textContent = '⏳ 해법 계산 중… (몇 분 걸릴 수 있다)';
   const r = await api('sbc_resolve', {});
   btn.disabled = false; say(box, r);      // say가 성공 시 화면을 다시 읽는다
 });
+/* ⏳ 계산 중 표시(2026-11-06 사용자 지시 「계산중이면 계산중이라고 나오게」) — 버튼만이 아니라 제출 뒤 자동 재계산·클럽 싱크가
+   띄운 계산도 보이게 서버 잠금 상태(/api/sbc_status)를 5초마다 묻는다. 계산 중엔 SBC 버튼을 잠근다(sbc_solve.py가 한 번에 하나만 돈다).
+   ⚠️ 정적 배포본엔 이 주소가 없다 — 실패하면 조용히 멈춘다. */
+(() => {
+  const box = document.getElementById('sbcresolvemsg');
+  if (!box) return;
+  let was = false, t0 = null;
+  const lockBtns = on => document.querySelectorAll('#sbcresolve,[data-sbcsolve]').forEach(b => { b.disabled = on; });
+  const tick = async () => {
+    let j;
+    try { const r = await fetch('/api/sbc_status', { cache: 'no-store' }); if (!r.ok) return; j = await r.json(); }
+    catch (e) { return; }
+    if (j.running) {
+      const m = /시작 (\d\d):(\d\d):(\d\d)/.exec(j.who || '');
+      if (m) { const d = new Date(); d.setHours(+m[1], +m[2], +m[3], 0); t0 = d; }
+      const min = t0 ? Math.max(0, Math.floor((Date.now() - t0) / 60000)) : null;
+      box.innerHTML = `<span class="dim">⏳ SBC 해법 계산 중${min != null ? ` · ${min}분째` : ''} — 끝나면 알려 준다(버튼은 그동안 잠긴다)</span>`;
+      lockBtns(true); was = true;
+    } else if (was) {
+      box.innerHTML = '<span style="color:var(--ok)">✅ 해법 계산이 끝났다 — <a href="" onclick="location.reload();return false">새로고침</a>하면 반영된다</span>';
+      lockBtns(false); was = false;
+    }
+    setTimeout(tick, 5000);
+  };
+  tick();
+})();
 renderSquad(); renderClub(); renderCatalog(); renderPaths(CAT_TEAM); renderSbc(); renderStorage(); renderGallery(); galPopup();
 
 

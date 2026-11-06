@@ -937,6 +937,50 @@ def buy_candidates(conds, want, limit=6):
     out.sort(key=lambda r: r["ovr"] or 99)
     return out[:max(limit, want)], (stop or "⚠️ 시세를 하나도 받지 못했다 — OVR 낮은 순으로 대신 보인다(판단값 D)")
 
+LOCK = Path("/tmp/tactics-sbc-solve.lock")
+_lock_fh = None
+
+
+def lock_status():
+    """지금 해법 계산이 돌고 있나 — 화면이 「계산 중」을 띄우려고 묻는다(2026-11-06 · serve.py `/api/sbc_status`).
+       잠금을 잠깐 잡아 보고 바로 놓는다. 반환: (돌고 있나, 「pid N · 시작 HH:MM:SS」)."""
+    import fcntl
+    with open(LOCK, "a+") as fh:
+        try:
+            fcntl.flock(fh, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            fh.seek(0)
+            return True, fh.read().strip()
+        fcntl.flock(fh, fcntl.LOCK_UN)
+        return False, ""
+
+
+def _lock(if_idle):
+    """⛔⛔ **해법 계산은 한 번에 하나만 돈다**(2026-11-06 — 화면 「다시 풀기」를 여러 번 눌러 같은 계산 6개가 동시에 돌았다).
+       같은 DB에 동시에 쓰고 CPU를 나눠 모두 느려진다. 부르는 경로(화면 버튼 · 제출 뒤 재계산 · 클럽 싱크)가 여럿이라
+       잠금은 **여기 한 곳**에 둔다(불변규칙 13 ①).
+       - 기본: 앞 계산이 끝날 때까지 **기다렸다가** 돈다 — 제출·포메이션 입력 뒤라면 앞 계산은 바뀐 데이터를 못 봤다.
+       - `--if-idle`(화면 버튼): 돌고 있으면 새로 띄우지 않고 「이미 계산 중」으로 끝낸다(종료 코드 3).
+       ⭐ 프로세스가 죽으면 운영체제가 잠금을 푼다(flock) — 남은 잠금 파일 때문에 막히는 일은 없다."""
+    global _lock_fh
+    import fcntl
+    import os
+    import time
+    _lock_fh = open(LOCK, "a+")
+    try:
+        fcntl.flock(_lock_fh, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        _lock_fh.seek(0)
+        who = _lock_fh.read().strip() or "?"
+        if if_idle:
+            print(f"⏳ 이미 SBC 해법을 계산 중이다({who}) — 새로 띄우지 않았다. 끝나면 화면에 새 해법이 반영된다(다시 누르지 않아도 된다).")
+            sys.exit(3)
+        print(f"⏳ 다른 SBC 해법 계산이 끝나기를 기다린다({who})…", flush=True)
+        fcntl.flock(_lock_fh, fcntl.LOCK_EX)
+    _lock_fh.seek(0); _lock_fh.truncate()
+    _lock_fh.write(f"pid {os.getpid()} · 시작 {time.strftime('%H:%M:%S')}"); _lock_fh.flush()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--game", default="FC27")
@@ -955,7 +999,10 @@ def main():
     ap.add_argument("--protect-club", nargs="*", default=["Aston Villa"],
                     help="SBC에 내지 않을 클럽(기본 아스톤 빌라 — 내 팀 축이라 소모하면 안 된다). "
                          "--protect-club 만 쓰면 보호 없음")
+    ap.add_argument("--if-idle", action="store_true",
+                    help="이미 다른 계산이 돌고 있으면 기다리지 않고 「이미 계산 중」으로 끝낸다(화면 버튼용 · 종료 코드 3)")
     a = ap.parse_args()
+    _lock(a.if_idle)
     rng = random.Random(a.seed)
 
     con = connect_db(DB)

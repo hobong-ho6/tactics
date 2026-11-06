@@ -838,9 +838,12 @@ def cmd_sbc_resolve(con, a):
     root = Path(__file__).resolve().parent.parent
     py = root / ".venv" / "bin" / "python"
     py = str(py) if py.exists() else sys.executable
-    r = subprocess.run([py, str(root / "scripts" / "sbc_solve.py"), "--save"], capture_output=True, text=True,
+    # ⭐ `--if-idle` — 이미 계산 중이면 새로 띄우지 않는다(2026-11-06 · 버튼 연타로 6개가 동시에 돌았다 · 잠금 정본은 sbc_solve.py `_lock`).
+    r = subprocess.run([py, str(root / "scripts" / "sbc_solve.py"), "--save", "--if-idle"], capture_output=True, text=True,
                        cwd=root, timeout=900)
     tail = "\n".join((r.stdout or "").strip().splitlines()[-8:])
+    if r.returncode == 3:
+        raise SystemExit(tail)
     if r.returncode != 0:
         raise SystemExit(f"⛔ sbc_solve.py 실패(코드 {r.returncode})\n{tail}\n{(r.stderr or '')[-600:]}")
     print(f"🔁 SBC 해법 재계산 완료\n{tail}")

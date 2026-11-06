@@ -31,6 +31,21 @@ class NoCacheHandler(SimpleHTTPRequestHandler):
     # ⭐ 페이지가 DB를 직접 고치지 않는다 — scripts/fut_club.py와 **같은 함수**로 db/tactics.db에 쓰고
     #    곧바로 scripts/export.py(게이트 강제)를 돌려 site/data와 프리뷰 미러를 재생성한다(불변규칙 1·4·5).
     #    localhost 프리뷰 전용이다 — 정적 배포본에는 이 경로가 없고 화면이 CLI 명령을 대신 보여준다.
+    # ⭐ SBC 해법 계산 상태(2026-11-06 사용자 지시 「계산중이면 계산중이라고 나오게」) — 어느 경로가 띄웠든
+    #    잠금(sbc_solve.py `lock_status`)을 보고 답한다. 화면이 몇 초마다 묻는다.
+    def do_GET(self):
+        if self.path.split("?")[0] != "/api/sbc_status":
+            return super().do_GET()
+        import importlib
+
+        from scripts import sbc_solve
+        running, who = importlib.reload(sbc_solve).lock_status()
+        data = json.dumps({"running": running, "who": who}, ensure_ascii=False).encode("utf-8")
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(data)))
+        self.end_headers(); self.wfile.write(data)
+
     def do_POST(self):
         if not self.path.startswith("/api/fut/"):
             self.send_error(404); return
