@@ -444,6 +444,19 @@ def buy_specs(xi, pl, conds, pool):
     #    ⚠️ fut.gg 조회가 실패한 리그는 종전 가상 카드로 물러서고 `verified: False`로 표시한다(화면이 「미확인」으로 쓴다).
     floor = QUAL_FLOOR.get(_qual_tier(conds))
     lg_ids = {p["league"]: p.get("league_ea_id") for p in xi if p.get("league") and p.get("league_ea_id")}
+    # ⭐⭐ **「N명 이상 ○○ 출신」 조건이 이름을 박은 클럽·리그도 후보 리그에 넣는다**(2026-11-06 사용자 지적
+    #    「어느자리에 누굴 사야하는지가 안나와있네」 — Club Brugge v RSC Anderlecht가 처방 0건).
+    #    종전엔 스쿼드에 이미 있는 리그만 시장을 뒤져서, 스쿼드에 없는 구단(벨기에 1부)을 요구하는 조건은 **후보가 아예 안 떴다**.
+    #    ⛔ 이름 → 리그 id는 **보유 풀의 카드 행**(클럽·리그 id가 한 카드에 같이 적힌 것)으로만 푼다 — 남녀 동명 구단이 섞이면
+    #       두 리그 모두 후보에 넣고, 실제로 위반이 주는지는 아래 cost_of가 판정한다(이름 조인으로 결론을 내지 않는다).
+    for (kind, v), _t in conds:
+        if kind != "min_from":
+            continue
+        for p in pool:
+            if p.get("league_ea_id") and (p.get("club") in v[1] or p.get("league") in v[1]):
+                lg_ids.setdefault(p["league"], p["league_ea_id"])
+        for lg, lid in _league_ids_for(v[1]).items():
+            lg_ids.setdefault(lg, lid)
 
     def candidates(want, old):
         cs, failed = [], False
@@ -769,6 +782,18 @@ def _nation_id(name, pool):
 
 _MARKET = {}
 _PRICE = {}
+
+
+def _league_ids_for(names):
+    """조건이 이름으로 박은 클럽·리그 → {리그 이름: 리그 EA id}. 카드 표(player_card_items)에서 같은 행의 값으로만 잇는다.
+       보유 풀에 그 구단 카드가 하나도 없을 때(지금 Club Brugge처럼) 쓰는 경로다."""
+    c = connect_db(DB, timeout=120)
+    q = ",".join("?" * len(names))
+    rows = c.execute(f"""SELECT DISTINCT league, league_ea_id FROM player_card_items
+                         WHERE game_version='FC27' AND league_ea_id IS NOT NULL AND (club IN ({q}) OR league IN ({q}))""",
+                     (*names, *names)).fetchall()
+    c.close()
+    return {lg: lid for lg, lid in rows if lg}
 
 
 def last_price(ea):
