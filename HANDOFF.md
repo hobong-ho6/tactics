@@ -25,9 +25,38 @@
 | 게임 시스템 | `game_system_changes` 91행(전 행 `title`) · 11-04 코너·세트피스 #79~84 · 진화 포지션 조건은 보조 포지션 인정·제거 직후 재접속 #91(C) · **예약 `fc27-patch-watch` 매일 10:30 재생성(iMac) · 월요일 3선 역할 커뮤니티 체감** · TU v1.2.0(11월 중순) 대기 | `game.html` 시스템 분석 · `reports/patch-watch/` |
 | 연구 | 11-04: [세트피스](reports/research/2026-11-04-avl-set-pieces.md)(맥피→팔 피엘데 · §9 반영) · [탄스웰 정리](reports/research/2026-11-04-tanswell-roundup.md) · 스타 퍼포머 기준 조사(대화만) | `reports/research/` |
 | 이적 감시 | 11-04 AVL만 · DB 변경 0 · **에메리 → 맨유 관심(1티어 · 접촉 0 · 11-08 맨유전 전후 확인)** · 누사·비베로스 MEDIUM 유지 · 1월 GK 수요(스즈키 아시안컵) | `reports/transfer-watch/2026-11-04.md` |
-| FUT 구단 | 클럽 싱크 매일 10:00·21:00(iMac) · 11-04~05 진화: **지모알로바 마녀의 시간 제거 → 측면질주(Channel Surfer) 완주**(81→83 · 갈림길 속도) · **시세 Backline Conductor 2회차 제거 → 빛나는 가드 1단계 진행 중** · 카프릴레 No Soul 2단계 완료 · 갤러리 브라이턴 B·토트넘 C · 호커스포커스 SBC 4-4-2(RS·LS 막힘) 해법 | `fut_*` · club-sync 런북 |
+| FUT 구단 | 클럽 싱크 매일 10:00·21:00(iMac) · **진화 내역은 아래 「진화 원장」 블록(DB 자동 생성)** · 갤러리 브라이턴 B·토트넘 C · 호커스포커스 SBC 4-4-2(RS·LS 막힘) 해법 | `fut_*` · club-sync 런북 |
 | 선수 상태 | 지모알로바 **훈련 중 어깨 부상(9월 초 · 복귀 미상)** — FotMob은 유스 부상 미추적(부재 증거로 쓰지 말 것) | `player_status` #1434 |
 | 열린 결손 | 페네르바흐체 WS JSON 미보존 · offside(SS 미제공) · `matches.event_id` FotMob id 3경기 · FC25 커널 파일 404(game.html 무해) · 시세 fut.gg Cloudflare 차단 · 첼시 유튜브 자막 429 | `gaps.py links` |
+
+<!-- evo-ledger:start -->
+**진화 원장 (자동 · 최근 14일 + 진행 중 · 정본 DB `fut_evolution_log` · `ship.py`가 갱신)**
+
+- 2026-11-07 · Alysson ← Matchday Marksman 4단계 · OVR 80→83 · 완료 2026-11-07
+- 2026-11-06 · 오나나 ← Strings of Fate 3단계 · OVR 81→82 · 완료 2026-11-06
+- 2026-11-06 · Hemmings ← Strings of Fate 3단계 · OVR 81→82 · 완료 2026-11-06
+- 2026-11-05 · Cissé ← Glow Guard 4단계 · OVR 73→80 · 완료 2026-11-07
+- 2026-11-04 · Jamaldeen Jimoh-Aloba ← Channel Surfer [SP 11] 3단계 · OVR 80→83 · 완료 2026-11-05
+- 2026-11-03 · 루제리 ← The Haunted Wall 4단계 · OVR 81→84 · 완료 2026-11-03
+- 2026-11-03 · Richard Kone ← Two Faces of Fear 3단계 · OVR 80→81 · 완료 2026-11-03
+- 2026-11-03 · Elia Caprile ← No Soul Shall Pass 2단계 · OVR 80→81 · 완료 2026-11-04
+- 2026-11-02 · 하우드-벨리스 ← CB Roles++ 1단계 · OVR 83→83 · 완료 2026-11-02
+- 2026-11-02 · Pau Torres ← CB Roles++ 1단계 · OVR 85→85 · 완료 2026-11-02
+- 2026-11-02 · Cash ← RB Roles++ 1단계 · OVR 83→83 · 완료 2026-11-02
+- 2026-11-01 · Mbaye ← RM Roles++ 1단계 · OVR 85→85 · 완료 2026-11-01
+- 2026-11-01 · Mbaye ← LM Roles++ 1단계 · OVR 85→85 · 완료 2026-11-01
+- 2026-11-01 · 맥긴 ← RM Roles++ 1단계 · OVR 83→83 · 완료 2026-11-01
+- 2026-11-01 · 맥긴 ← LM Roles++ 1단계 · OVR 83→83 · 완료 2026-11-01
+- 2026-11-01 · 루제리 ← LB Roles++ 1단계 · OVR 81→81 · 완료 2026-11-01
+- 2026-11-01 · Pau Torres ← Luiz Legacy 3단계 · OVR 82→85 · 완료 2026-11-01
+- 2026-10-31 · 부엔디아 ← False Seven 3단계 · OVR 80→81 · 완료 2026-10-31
+- 2026-10-30 · Mbaye ← Wicked Winger 5단계 · OVR 76→85 · 완료 2026-10-31
+- 2026-10-28 · Pau Torres ← Bone Builder 3단계 · OVR 81→82 · 완료 2026-10-30
+- 2026-10-27 · Alysson ← Rise From the Grave 5단계 · OVR 70→80 · 완료 2026-10-29
+- 2026-10-26 · Jamaldeen Jimoh-Aloba ← Witching Hour 3단계 · OVR 80→81 · 제거 2026-11-04
+- 2026-10-25 · 보가르드 ← Creep Inside 4단계 · OVR 79→82 · 완료 2026-10-25
+- 2026-10-25 · Hemmings ← Center Spectre 3단계 · OVR 72→81 · 완료 2026-10-25
+<!-- evo-ledger:end -->
 
 **분량**: 이 문서 약 12.8KB(목표 10~15 · 상한 20) — 11-05 압축(19.98KB에서)(완료 항목 제거 · 세션 기록 병합).
 
@@ -43,7 +72,7 @@
 - [ ] **바르셀로나전 D+2·D+3** — 예약이 돈다(iMac). D+3이 R4-H(야말 대응 · 탄스웰 경기 전 예상 + 감독 1차 발언 여부)·H2·만잠비 R1 최종 판정 + 구현 함의 「사용자 판단 대기」로 올린다(단 「상대에 따라 높은 DM 바꾸기」는 11-05 사용자 보류 — 올리지 않음)
 - [ ] **에메리 → 맨유 감시** — 11-08 빌라–맨유전 전후 접촉 보도 확인(다음 이적 감시 회차 1순위) · 떠나면 체제(regime) 자체가 바뀐다
 - [ ] **FC27 슬롯 정본 보류 5건 + 3선 조합** — RDM(obs#1080 딥라잉 빌드업 인게임 테스트 대기 · 볼 지표: 키패스·역습 허용)·ST 포커스·LM·LB·lead · 바르사전 포함 표로 재판정(정본은 사용자 판단)
-- [ ] **시세 빛나는 가드 2단계 이후** · **헤밍스 Zoomaestro(2602) 단계 완료** — 사용자 보고 시 `fut_club.py evolve/complete`(갈림길은 `--pick`) · 다음 싱크에서 지모알로바 약발 4→3·체력 실측 대조
+- [ ] **헤밍스 Zoomaestro(2602) 단계 완료** — 사용자 보고 시 `fut_club.py evolve/complete`(갈림길은 `--pick`) · 다음 싱크에서 지모알로바 약발 4→3·체력, **시세 빛나는 가드(로그만 기록 · 약발 3)·알리송 Marksman(Game Changer·개인기 +1★)** 실측 대조
 - [ ] **★ FC27 라인 슬라이더 상하한 실측**(30분 · 플레이 불필요) → `core/team_settings.py` 구간 재정렬 · [검토](reports/research/2026-10-22-fc27-system-gap-review.md) §5
 - [ ] **★ FC27 첫 인게임 캡처(T6·T7)** — 코드 `7ZTFKBu$37p7` 비조작 3경기 → `ingame_captures` FC27 ≥3 · 대조군 `xYJb3Bj37tdy`
 - [ ] **세트피스 메뉴 「인원 추가·제거」 동작 실측** — 커뮤니티에도 설명 없음 · 코너 몇 번으로 확인 → `game_system_changes` C행(#83 미확인 목록)

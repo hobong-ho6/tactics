@@ -145,6 +145,13 @@ def _ship(a):
         return 0
 
     paths = ALWAYS + list(a.paths)
+    # ⭐ HANDOFF 진화 원장 블록을 DB에서 다시 쓴다(2026-11-07 · scripts/handoff_evo.py 주석).
+    #    HANDOFF에 이미 커밋 안 된 수정이 있으면 남의 작업일 수 있어 건드리지 않는다(명시 경로로 준 경우는 제외).
+    if "HANDOFF.md" in a.paths or not sh("git diff --name-only -- HANDOFF.md").stdout.strip():
+        if sh("python3 scripts/handoff_evo.py").returncode == 0 and "HANDOFF.md" not in paths:
+            paths.append("HANDOFF.md")
+    else:
+        print("   ⚠️ HANDOFF.md에 커밋 안 된 수정이 있어 진화 원장 블록 갱신을 건너뜀")
     for p in paths:
         if any(f in p for f in FORBIDDEN):
             sys.exit(f"⛔ 커밋 금지 파일이 경로에 들어 있다: {p}")
