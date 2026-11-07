@@ -101,7 +101,7 @@ def cmd_player_add(con, a):
     print(f"보유 등록: {a.name} (player_id={a.player_id}, item={a.ea_item}, OVR {cur.get('current_ovr', '미상')})")
 
 
-def pre_step_state(con, cp, game):
+def pre_step_state(con, cp, game, evo=None, level=None):
     """이 단계를 밟기 **직전** 카드 상태 — (attrs, ovr, six). 없으면 None.
 
     ⛔⛔ `current_attrs`(EA 싱크값)를 출발점으로 쓰지 않는다(2026-10-05 Emily Ramsey 실측 사고).
@@ -110,9 +110,12 @@ def pre_step_state(con, cp, game):
        현재값이 들어가 「79→79」가 됐다(런북 연관표 #2 — 손으로 고치던 것).
     ⇒ 출발점은 **원장 사슬**이다: 이 카드의 마지막 유효 로그(attrs_after)가 있으면 그것,
        없으면 기준 카드(`player_card_items`). EA 실측과의 대조는 호출부가 한다."""
+    # ⛔⛔ **같은 진화의 앞 단계는 「진행 중」이어도 출발점이다**(2026-11-07 시세 빛나는 가드 실측 사고 · 고메스 10-18에 이은 2회차).
+    #    N단계를 적는다는 건 N−1단계가 끝났다는 뜻인데, 종전엔 completed_at이 빈 앞 단계를 건너뛰어
+    #    한참 전 진화(제거된 것 앞의 OVR 73 상태)에서 계산했다 → 2~4단계 결과가 EA보다 낮게 적혔다.
     last = con.execute("""SELECT ovr_after, six_after, attrs_after FROM v_evo_log_active
-                           WHERE club_player_id=? AND completed_at IS NOT NULL
-                           ORDER BY applied_at DESC, id DESC LIMIT 1""", (cp["id"],)).fetchone()
+                           WHERE club_player_id=? AND (completed_at IS NOT NULL OR (evo_id=? AND level<?))
+                           ORDER BY applied_at DESC, id DESC LIMIT 1""", (cp["id"], evo, level or 0)).fetchone()
     if last and last["attrs_after"]:
         return json.loads(last["attrs_after"]), last["ovr_after"], last["six_after"]
     # ⛔⛔ **사슬이 끊긴 카드(옛 로그에 attrs_after 없음 · migration 082 이전)는 기준 카드로 물러서지 않는다**
@@ -190,7 +193,7 @@ def cmd_evolve(con, a):
                 o = opts[0]
                 ups = list(o if isinstance(o, list) else (o.get("upgrades") or []))
             # ⭐ 출발점 = 원장 사슬(pre_step_state) — EA 싱크값이 아니다. GK 5속성 등 기준 카드에 없는 키는 현재값으로 메운다.
-            pre = pre_step_state(con, cp, acc["game_version"])
+            pre = pre_step_state(con, cp, acc["game_version"], a.evo, a.level or 1)
             if pre is None:
                 sys.exit("⛔ 기준 카드(player_card_items)도 이전 로그도 없다 — 진화 직전 상태를 알 수 없다. "
                          "collect_futgg_cards.py로 카드를 먼저 받을 것")
