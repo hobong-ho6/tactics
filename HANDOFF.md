@@ -32,6 +32,7 @@
 <!-- evo-ledger:start -->
 **진화 원장 (자동 · 최근 14일 + 진행 중 · 정본 DB `fut_evolution_log` · `ship.py`가 갱신)**
 
+- 2026-11-08 · Cissé ← CB Roles++ 1단계 · OVR 84→84 · 완료 2026-11-08
 - 2026-11-07 · Cissé ← Pamplona Grit [SP 16] 3단계 · OVR 80→84 · 완료 2026-11-07
 - 2026-11-07 · Alysson ← Matchday Marksman 4단계 · OVR 80→83 · 완료 2026-11-07
 - 2026-11-06 · 오나나 ← Strings of Fate 3단계 · OVR 81→82 · 완료 2026-11-06
