@@ -20,3 +20,4 @@ INSERT INTO fut_gallery_completions VALUES(20,'FC27',121,'C','2026-11-01',21303,
 INSERT INTO fut_gallery_completions VALUES(21,'FC27',26,'B','2026-11-04',NULL,NULL,'사용자 완성 처리(인게임 갤러리) — 화면 또는 fut_club.py gallery_complete · 넣은 카드는 우리 제안과 달라 남기지 않음',NULL);
 INSERT INTO fut_gallery_completions VALUES(22,'FC27',8,'C','2026-11-04',NULL,NULL,'사용자 완성 처리(인게임 갤러리) — 화면 또는 fut_club.py gallery_complete · 넣은 카드는 우리 제안과 달라 남기지 않음',NULL);
 INSERT INTO fut_gallery_completions VALUES(23,'FC27',61,'C','2026-11-07',8118,'[683, 981, 82, 79, 8, 84, 132, 586, 11, 335, 1, 848, 4, 9, 10]','사용자 완성 처리(인게임 갤러리) — 화면 또는 fut_club.py gallery_complete',NULL);
+INSERT INTO fut_gallery_completions VALUES(24,'FC27',36,'D','2026-11-08',10370,'[961, 479, 724, 812, 825, 984, 648, 427, 491, 667, 918, 262, 813, 446, 374]','사용자 완성 처리(인게임 갤러리) — 화면 또는 fut_club.py gallery_complete',NULL);
