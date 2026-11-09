@@ -2,7 +2,7 @@
 
 <!-- 구조 규칙(2026-10-14 v2): 헤더 15줄 안에 착수 조건 · 현재 상태 표 10행 이내 · 다음 할 일은 열린 항목만(항목당 2줄) · 세션 기록 최대 5개 · 목표 10~15KB · 상한 20KB(`wc -c`). 넘치면 지우지 말고 docs/handoff-context.md · docs/decisions.md로 포인터 압축. 절차 정본: .claude/skills/handoff/SKILL.md -->
 
-- **담당자** 김호근 · **갱신** 2026-11-05 · **세션** 부모 세션(대화 · 11-04~05) · **작업 PC** `AD03230205ui-iMac.local` · **브랜치** main · **WIP** 없음
+- **담당자** 김호근 · **갱신** 2026-11-09 · **세션** 스케줄 match-watch-weekly(11-09) · **작업 PC** `AD03230205ui-iMac.local` · **브랜치** main · **WIP** 없음
 - **마지막 커밋** = `git log -1`(이 문서를 갱신한 커밋) · 직전 `eff029c` · **문서 버전** v2 · **분량** 아래 「분량」 줄
 - 실축 감독 전술(**AVL/에메리(주) · CHE/알론소 · LIV/이라올라 · ATM/시메오네**)을 실측으로 분해해 FC26·FC27 전술로 재현. 규약 정본 `CLAUDE.md`(불변규칙 1~14) · `docs/00-overview.md`.
 
@@ -19,7 +19,7 @@
 | 영역 | 상태 | 정본 |
 |---|---|---|
 | 게이트 | 전항 통과(11-05) · 11-04 추가: **G24 ⑸**(정본 표시 포메이션 `slots.is_canon` = 현행 optimal 포메이션) · **G23 `game_system_changes.title` 결손 0** · G12 메뉴 3칸 형식 · G37·G8+ 범위 **AVL·CHE** | `gates.py` |
-| 경기 수집 | AVL **바르셀로나 원정 0-3(UCL 11-03 · #66 · #130)** 수집·D+1·보강 완료 → **D+2(11-05 20:00)·D+3(11-06 20:00) 예약 실재(iMac)** · 관전 메모 15+건 판정(R4-H 야말 대응 = 탄스웰 경기 전 예상과 일치 · D+2가 영상 `Ud2cwU17zoU` 적재) · CHE 4경기(#57·#67~#69 complete) | `reports/match-watch/2026-11-03-avl-barcelona.md` · 메모 `notes/2026-11-03-avl-barcelona-user-live.md` |
+| 경기 수집 | AVL **맨유 원정 4-4(PL 10R 11-08 · matches #134 · 리포트 #70 draft)** 수집·D+1 완료(16명 · xG 2.88/3.55 · PPDA 13.5/9.21 · 수비 액션 평균 높이 31.2 · obs#1159 리드 막판 실점 · #1160 남는 RB) + 채널 스윕 2편 · **D+2(11-10 20:00)·D+3(11-11 20:00) 예약 실재(iMac · 11-09 대화 세션 등록)** | `reports/match-watch/2026-11-08-avl-manchester-united.md` |
 | 전술 정본 | AVL: optimal #46(4-2-3-1 Wide · Balanced/Balanced/52) · **3선 = RDM 홀딩/수비 · LDM 딥라잉/로밍 유지 + 계속 검토**(근거 `measured:pair:gomes/kamara` #1023·#1024 · 히트맵+경기 스탯) · 선발은 자동 산출(현재 LDM 고레츠카·RDM 고메스 — 사용자 「자동에 맡긴다」) · CHE: **optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52**(LDM 딥라잉/빌드업 · 감시 쟁점 #91 = 다음 PL 3경기 3-4-2-1 복귀 시 재판단 · 수동 수집 때만) | `team_tactic_setups` · `slot_canon_roles` · [CHE 검토](reports/research/2026-11-04-che-season-review.md) |
 | 사이트 UI | **11-04 전면 개편**(불변규칙 14): 메뉴 흐름 순서 · 「리포트」→「팀 전술」 · 허브=팀 대시보드 · 경기 분석 결론 카드 · 긴 패널 접기 · 팀 전술 39k→6.9k px · 게임 시스템 숫자 타일·영역 카드·**한 줄 제목**(migration 130)·인용 번역/원문 분리 · 이적 숫자 타일 · 스쿼드 표 접기 · 공용 부품 `data.js`(`matchScore`·`foldLong`·`mountPanelToc`)·`style.css` `ux-*` | `site/*.html` · `assets/data.js` |
 | 게임 시스템 | `game_system_changes` 91행(전 행 `title`) · 11-04 코너·세트피스 #79~84 · 진화 포지션 조건은 보조 포지션 인정·제거 직후 재접속 #91(C) · **예약 `fc27-patch-watch` 매일 10:30 재생성(iMac) · 월요일 3선 역할 커뮤니티 체감** · TU v1.2.0(11월 중순) 대기 | `game.html` 시스템 분석 · `reports/patch-watch/` |
