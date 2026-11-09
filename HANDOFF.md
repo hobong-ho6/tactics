@@ -56,8 +56,6 @@
 - 2026-10-28 · Pau Torres ← Bone Builder 3단계 · OVR 81→82 · 완료 2026-10-30
 - 2026-10-27 · Alysson ← Rise From the Grave 5단계 · OVR 70→80 · 완료 2026-10-29
 - 2026-10-26 · Jamaldeen Jimoh-Aloba ← Witching Hour 3단계 · OVR 80→81 · 제거 2026-11-04
-- 2026-10-25 · 보가르드 ← Creep Inside 4단계 · OVR 79→82 · 완료 2026-10-25
-- 2026-10-25 · Hemmings ← Center Spectre 3단계 · OVR 72→81 · 완료 2026-10-25
 <!-- evo-ledger:end -->
 
 **분량**: 이 문서 약 12.8KB(목표 10~15 · 상한 20) — 11-05 압축(19.98KB에서)(완료 항목 제거 · 세션 기록 병합).
