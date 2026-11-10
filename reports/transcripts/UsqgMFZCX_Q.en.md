@@ -1,0 +1,54 @@
+# 전사(자동 생성 자막) — UsqgMFZCX_Q (en)
+
+> The Holy Trinity Show | Aston Villa — Manchester United 4 Aston Villa 4 (게시 2026-11-09 · auto-caption · 맨유전 D+2)
+
+> 원본: https://www.youtube.com/watch?v=UsqgMFZCX_Q · 수집: scripts/yt_transcript_json3.py(브라우저 pot 경로)
+> ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.
+
+**[00:01]** We all knew disappointment [music] and controversy was imminent. And yet we still allowed ourselves to dream about only a third [music] ever Premier League win at Old Trafford. [music] [cheering] Hello from the parlor. And I don't want to sound defeist, but I'm not going to spend hours on this show because I know
+
+**[00:33]** Villa fans don't want to relive a painful and frustrating outing. And that might have been as painful as they come for this simple reason. Aston Villa may never face a weaker and more vulnerable Manchester United team again, especially one that had to come from two goals down twice. And that is the entire theme of this abbreviated show. The Villa players and fans by now should know that we have no control over the inevitable
+
+**[01:05]** controversial decisions that are going to occur at Old Trafford. And there were numerous examples under the guidance of United supporter Chris Kavanaaugh, which in itself is bizarre. We could talk about Matteas Kuna's penalty, which I felt he was playing for because he's extremely clever at doing this, especially at home. Then there was the Bruno Fernandez karate kick towards Alison in his own penalty area that went uncalled. We could talk about Lenny Yoro's flying challenge against
+
+**[01:35]** Manzambi, which did not even earn the defender a yellow card. And then, of course, there was the obstruction on Zion Suzuki, which led to the equalizer. Now, I'm not going to waste any time trying to dissect or debate any of those decisions because Villa can only control what it can. And that is the management of a game with two two goal leads. And that particular lead, for whatever reason, I've said it often on this show is awkward in any sport. Then add the
+
+**[02:05]** other bizarre aspect of early two goal leads in both halves. And now a team has to figure out mentally how they're going to approach a game with so much time left in each half. I can't recall another game like Sunday. And Villa were given a fantastic gift early when Sene Lammens had a really tough start in those first five minutes as Villa handed Manchester United some unwanted history. The fastest two goals conceded at Old
+
+**[02:36]** Trafford in the Premier League era. Now, you don't get to choose when you are given those gifts. Like, you can't just say, "Well, I wish we would have gotten those two gifts at the end of those 45 minutes when United wouldn't have had an entire half to recover." You just accept them. I said in my notes at the time, I wrote it down. The next goal is massive. Villa gets it. The place turns toxic. doesn't guarantee victory, but there would have been serious doubt cast in
+
+**[03:08]** the minds of the players, the management, and of course all the supporters. And Bournemouth did manage to get that third goal a couple of weeks ago to see things out. The goals that you absolutely and positively need to prevent for as long as humanly possible are the 21 and 43 goals because those are the ones that can whip 74,000 people into believing again. It was only 10 minutes after the 2-nil goal that Villa turned the ball over when Jackson
+
+**[03:39]** couldn't hold it up. Then Harwood Bellis loses the jewel to Kuna. Fair play. It was a great first touch and turn by the winger. But I am convinced that afterwards Kuna looks for the penalty because he broke stride then he extended his nonfavored leg. And I wonder why does Kamara bite there? This wasn't a desperate situation yet. Keep your feet. keep running. Why gamble against that player at that ground in the box? Let's just fast forward to the 89th minute.
+
+**[04:10]** It's 2-4. There are essentially 7 minutes left. And Villa survive a legitimate scare when Mason Mount is played over. He's wide open, but his volley goes crossbar and over. And that chance came from a really poor decision by Bubakar Kamara, who did not have a good outing. And his numbers support that. Why try to force a pass that isn't on in a congested midfield with United gambling? They've got nothing to lose at that stage instead of either settling it, maybe going backwards, playing it
+
+**[04:40]** wide. There were options around him. I felt put it out if you have to. That was a harbinger of things to come. And after that mount miss, it almost felt like there was this sense of inevitability that United was going to lose. You could feel it in the ground. Perhaps there was some complacency setting in. Even the commentary team from my feed, Connor Gallagher and Andy Townsen had basically done and dusted the game and they were talking about Michael Carrick's future. United get a free kick. George Hemings
+
+**[05:11]** is not strong enough or switched on enough to put more pressure on Doru. And then the player who poses the biggest threat, Xerxy, is wide open for the redirect, Jaw Gomez, is late. And what's frustrating about this is that both Hemings and Gomez were relatively fresh. They were subbed on in minutes 71 and 78, respectively. This was the goal we simply could not concede because now United can throw players forward and Bruno Fernandez can whip balls into the
+
+**[05:42]** box. There are 90 seconds left. Zion Suzuki is on the ball. Normally he waits for pressure to come before playing it long or playing it around whoever is pressing. He rushes this rather than playing it sideways or behind or short. As Villa liked to keep possession, like to force the opponent to chase, like to play between and around the press, which they did so effectively at times in this game. Instead, it is lumped almost 80 yards down the field over everybody's head, including Brian Majos, who's a
+
+**[06:13]** good target by the way. And Suzuki has proven over his nine Premier League games that he could pick out a target downfield accurately. And after this point, it is total helter skelter for Aston Villa, including a desperation clearance by Taylor Harwood Bellis, without which it might have been an equalizing goal sooner, but that of course led to the fateful final corner. It's always so easy for people like me to say, "Here's what you should have done after the fact." Why didn't we try and go short from the goalkeeper, invite
+
+**[06:44]** the pressure like we always do, and then play around or between it? Why did we abandon our core principles of being in control of the football? Villa did it masterfully at times in the second half. And I understand there's fatigue and anxiety and it's just human nature to panic a little bit when clinging on to something you so desperately want and need. I can accept it if we learn from it, but that's just a small consolation.
+
+**[07:15]** Give Bruno Fernandez a free chance to whip one in and foolishly expect that the referee and V are going to bail you out at Old Trafford. Guess what's going to happen? Tough week for Zion Suzuki from corners. Although the difference between him getting fingertips to it or not sure looked like a little nudge from his contemporary Lammens who wasn't even looking at the ball at the time. And Damian Vidagani posted after the game that when the PGOL did its orientation
+
+**[07:47]** during the summer, one of the things that it said it would crack down on this year was obstruction of goalkeepers offset pieces. And that's because of all the complaints around Arsenal last year, who might not have won the title without that tactic. As good as Suzuki has been so far, and he made a couple of big saves in this game as well. The high claim part that he was partially recruited for has been exposed over the last two league games. And now every opponent will have the playbook and we
+
+**[08:18]** can expect the exact same kind of delivery week after week. The fact though that Fernandez put it on a dime after 96 minutes. As much as I despise him and wonder how he gets away with so much, his quality is indisputable. I mean, the table don't lie. United are in the relegation zone. Without Bruno, they'd be rock bottom. As much as I would love to see confirmation that Unai Emory has tied down a new contract this
+
+**[08:49]** week, because the standards and the expectations that he's put on the players and the club in general is why we are so gutted having only earned a point at Old Trafford. Whereas in past years, we might have chewed your arm off if you had offered us 44 before kickoff. The expectations of fans have also increased under Una. I do feel it is fair to ask however about the personnel
+
+**[09:19]** choices brought on to see this game out. My gut and my perception from the beginning has been that George Hemings is not ready. Emmy Buendia could have provided some nouse in those final moments. I thought Leon Geretska was extremely composed and assured. Now I could see why we signed him. He and Allison stood out for me after this game. I thought it was Kamara who needed to come off for Gomez. But we're not privy to the full story of fatigue or
+
+**[09:50]** fitness. And while Brian Majo was a logical choice to come on and win aerial duels, fowls and possession with his big frame, it really didn't work out that way. And when you combine Majou Hemmings and Embi in that environment, boy, that's a lot to ask of an average age of just 18. Long-term, probably a brilliant decision for them to learn and gain experience. Short-term, I think it was a factor. So, here we are now, 10 games
+
+**[10:20]** into the Premier League campaign. That's just past the quarter mark of the season. And you could legitimately say that if not for conceding poor goals off corners in successive weeks, we might actually be in the European places heading into the international break. I like to follow certain categories throughout the season every five games or so. The record at Villa Park is obviously a concern that has to change. We're also minus on the set piece plus minus goal difference. And there's been a lot of change in when we score and
+
+**[10:51]** concede goals in the 15minute increments of the game. And even though that last 15 minutes is longer than 15 minutes because of stoppage time, minus4 does kind of stick out like a sore thumb. And I do recall that this was also an issue last year at this time. I'll preview that Sunderland home game are next after the international window at another time during this break. But the fixtures between now and New Year's do [music] look promising. Villa is six undefeated
+
+**[11:22]** in the league. It just doesn't feel that way today. Until next time, thank you for watching and of course up the mighty Villa. Heat. [music] [music] [music] Heat.
+
+**[11:54]** [music]

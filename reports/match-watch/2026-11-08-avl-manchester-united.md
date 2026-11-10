@@ -254,3 +254,88 @@
 
 - 구현 주장 23행 적재 — HELD 11(쟁점 #13·#14·#29·#49·#53·#59·#87에 묶음) · 나머지 NA/none. **정본 변경 0** · 게임 구현 판정 「추가 관찰」 유지.
 - 남은 것(D+2로): 에메리 교체 의도 1차 발언 · 스페인어 회견 원문 · The Villans 경기 후 영상(11-09 저녁 기준 미게시) · The Athletic 본문.
+
+## D+2 추적 (2026-11-10)
+
+> 결론: **당일 판정은 그대로다(정정 0).** D+1 판정 하나만 고친다 — 만잠비 78′ 교체는 「부상 정황」이 아니었다(구조적 부상 없음 · 대표팀 합류).
+> 새 자료: 유튜브 3편(전사·요약·구현 주장 10행) · 전술 글 1(Coaches' Voice) · 다국어 기사 5. 인용은 영상이면 전부 auto-caption 전사 기준이다.
+
+### 새 영상
+
+| 영상 | 채널 · 게시 | 종류 | 한 줄 결론 |
+|---|---|---|---|
+| `fzuyG4ZUVYc` | The Villans 경기 후 패널(42분) · 11-09 | 경기반응 · #70 | D+1까지 미게시였던 영상. 원인은 블록 높이보다 「리드 뒤 경기 상태 통제 실패」 · 고레츠카–카마라 같은 줄 · 전반 왼쪽 노출 |
+| `a94ib5pziPo` | Tactics Exposed(맨유 관점 전술) · 11-09 | 상대팀 · #70 | 캐릭 설계 = 빌라 백4를 좁히고 바깥 침투 · 빌라 빌드업에 대인 마크(마즈라위→만잠비) |
+| `UsqgMFZCX_Q` | The Holy Trinity Show(빌라 팬) · 11-09 | 경기반응 · #70 | 막판 스즈키 롱킥 · 90+2′ 헤밍스·고메스 · 시즌 마지막 15분 득실 −4 |
+
+- UTV(@UTVFANCHANNEL)·1874(@The1874Podcast): 11-09 이후 새 경기 영상 **없음**(동영상·라이브 탭 모두 확인 — 이미 D+1에서 처리한 것뿐).
+- 건너뜀: XPECTED GOALS `XunbzfrNDC0`(100초) · The Malik Playbook `80f4fFnENeE`(163초) — 길이로 보아 분석 밀도가 낮다(내용 미확인). 맨유 팬 리액션 다수(The United Stand 등)는 캐릭 거취 위주라 제목 단계에서 제외 — ⚠️ 이 판단은 제목 기준이다.
+
+### 실측과 맞춰 본 주장
+
+| 주장 | 출처 | 실측 | 결과 |
+|---|---|---|---|
+| 고레츠카는 안전하기만 했다 — 「97% passing accuracy with one misplaced pass. Far too safe」(패스 성공률 97%에 실패 1개 — 너무 안전했다) | The Villans | SofaScore 36/37 · 롱볼 0 · 파이널서드 투입 2 | 일치 |
+| 전반 맨유가 빌라 왼쪽을 집중 공략 — 「Matson had no support whatsoever」(마첸에게 지원이 전혀 없었다) | The Villans | 맨유 크로스 30 중 빌라 왼쪽 17 | 일치 |
+| 알리송에게 볼이 안 갔다(20여 회) | The Villans | 볼 터치 26(71분) | 대체로 일치 |
+| 시즌 마지막 15분 득실 −4 | Holy Trinity | PL 76′ 이후 2득점·6실점 | 일치 |
+| 막판 스즈키가 짧게 풀지 않고 롱킥 | Holy Trinity | 85′ 이후 스즈키 롱볼 9개 중 6개 실패(WS · D+1) | 일치 |
+| 44′ 동점골은 만잠비를 두고 전진한 마즈라위에서 | Tactics Exposed | 틸레만스 골 · 도움 마즈라위(SofaScore) | 일치 |
+
+### 새로 생긴 관찰 — 상대의 「백4 좁히기」
+
+- 맨유는 브루누·음뵈모(후반엔 지르크제이)를 빌라 **센터백과 풀백 사이**에 세워 백4를 좁히고, 쿠냐·아마드·66′ 이후 도르구가 **바깥**을 침투했다. 90+2′ 실점도 같은 패턴이다.
+  - Tactics Exposed: 「positioning themselves in between those center backs to drag Villa even narrower and then that opens that space up out wide」(센터백 사이에 서서 빌라를 더 좁히고 바깥 공간을 연다) · auto-caption.
+  - Coaches' Voice(11-09 글 · 원문 확인): 「Villa's back four became very narrow, with Taylor Harwood-Bellis at right-back drawn into a narrow position inside」(빌라 백4가 매우 좁아졌고, 라이트백 하우드-벨리스가 안쪽으로 끌려 들어갔다).
+- 의미: §요약의 「마지막 두 실점은 빌라 오른쪽」에 **원인 하나가 더해진다** — 측면 미드필더 추적(헤밍스)만이 아니라 백4가 안으로 끌려간 구조. 독립 2소스지만 같은 경기라 쟁점 #53은 「2경기째」 조건을 기다린다. obs#1162.
+- 빌라 빌드업 대응(상대 교란): 앞 3명 지역 블록 + 뒤 대인 마크(요로→잭슨 · 마즈라위→만잠비 · 아마드→마첸 · 마이누가 남는 선수 흡수). D+1 UTV 워치얼롱 「they've gone man-for-man」(맨투맨으로 붙었다)과 일치.
+- Coaches' Voice는 당일 형태 판정도 지지한다: 「3-2-5 structure when secure in possession」(안정적으로 보유하면 3-2-5) · 「Emery's team dropped into a 4-4-2 low block」(에메리 팀은 4-4-2 로우 블록으로 내려섰다).
+
+### 팬 패널이 갈린 지점
+
+| 쟁점 | The Villans | Holy Trinity | 메모 |
+|---|---|---|---|
+| 고레츠카 | 「I'll pass back」(백패스만 한다 — 터미네이터 패러디) · 10번이 낫다 | 「extremely composed and assured」(매우 침착하고 확신에 찼다) | 실측 36/37 — 해석만 갈린다(쟁점 #87) |
+| 카마라 | 지쳐 보였는데 고레츠카가 먼저 나갔다 · 3경기 연속 출전 관리 필요 | 「Kamara who needed to come off for Gomez」(고메스와 바뀔 선수는 카마라였다) | 둘 다 카마라 교체를 원함 · 에메리 설명 없음 |
+| 리드 막판 | 윙어가 백라인으로 내려와 백6 · 마드조에게 넣어 코너로 끌기 | 짧은 빌드업 유지 · 볼 소유 원칙 | 쟁점 #16에 근거로만 쌓음 |
+
+### 만잠비 — D+1 판정 정정
+
+- D+1은 「부상 교체 정황이 강해졌다」고 적었다. **정정**: 스위스 축구협회 미디어 책임자 Adrian Arnold(11-09 회견 · 4-4-2.com 원문 확인):
+  - 「Manzambi hat keine Schmerzen im Knöchel und hat grünes Licht gegeben.」(만잠비는 발목 통증이 없고 출전 가능 신호를 줬다)
+  - 「Er hat noch ein bisschen Schmerzen in der Wade, aber nicht von diesem Foul am Sonntag」(종아리에 약간 통증이 있지만 일요일 파울 때문은 아니다)
+  - 기사 본문: 「Tatsächlich scheint aber keine strukturelle Verletzung vorzuliegen.」(실제로 구조적 부상은 없어 보인다)
+- 남는 것: 교체가 부상 대응이었는지 전술 교체였는지는 **여전히 모른다** — 기사는 「kurze Zeit nach einer Behandlung」(치료 직후 얼마 안 돼) 교체됐다고만 적었다. obs#1161.
+
+### 감독 회견 — 원문 상태
+
+- **에메리 스페인어 원문: 없음(이번에도).** 스페인어로 실린 인용(Yahoo Noticias의 Goal 스페인어판 · Futbol Centroamérica)은 모두 **영어 회견을 옮긴 번역**이다 — 원문으로 쓰지 않는다. 그중 §8에 없던 대목 하나(영어 원문 미확인 · 번역 복제):
+  - 「Le empujan y le molestan. En otros países no lo permiten. Aquí, sí.」(그를 밀고 방해한다. 다른 나라에선 허용하지 않지만 여기선 허용된다) — 스즈키 관련.
+- 일본어(닛칸스포츠 · BBC 인터뷰 번역): 「相手がブロックしてきたときにどう守るか、改善の余地がある。」(상대가 블로킹해 올 때 어떻게 막을지 개선할 여지가 있다) — §8 「키퍼 보호」 발언과 같은 축 · 번역 복제라 교차검증 아님.
+- ESPN(11-09): 「We struggled in the first half in some moments after our two goals」(두 골 뒤 전반에 고전한 순간이 있었다).
+- 고레츠카(Eurosport.de · Sky 인용): 「Wenn man vier Tore im Old Trafford schießt, sollte man schon den Sieg mitnehmen.」(올드 트래퍼드에서 4골을 넣었으면 승리를 가져가야 한다).
+- **교체 의도(71′·78′·86′) 에메리 1차 설명: 여전히 없음.** 영어 회견 전문(AVFC·Birmingham Live)·캐릭 회견 전문도 못 찾음.
+
+### The Athletic · Tanswell
+
+- 기사 7764790 본문: 우회하지 않음(지시대로). 대체 자료는 D+1의 1874 Tanswell 출연분(`T24bW9RS5QE`)이 이미 담고 있다. 11-09 이후 1874 새 출연분은 없다. Bluesky 새 경기 분석 게시: 이번 회차에서 확인 못 함.
+
+### 0건 기록(다음 회차가 반복하지 않도록)
+
+| 언어 | 검색어 | 결과 |
+|---|---|---|
+| 스페인어 | Emery Manchester United 4-4 rueda de prensa declaraciones · Relevo/Marca/AS/Mundo Deportivo · EFE Dorgu minuto 96 | 원문 0 · 번역 기사만 |
+| 영어 | Emery/Carrick press conference full transcript · 7500 to Holte / Claret and Blue / Villa Report 4-4 | 전문 0 · 블로그 0(Coaches' Voice·Goal·Brit Brief만) |
+| 독일어 | kicker Goretzka erstes Tor · Bild/Sport1 | kicker 0 · Eurosport만 |
+| 네덜란드어 | Zirkzee Lammens Aston Villa 4-4 Voetbal International | VI 0(Sporza·Voetbalzone 미열람) |
+| 덴마크어 | Dorgu udligning Aston Villa 4-4 hovedstød | 인용 없음 |
+| 포르투갈어 | Alysson gol primeiro minuto | 인용 0 |
+| 유튜브 | 「Man Utd 4-4 Aston Villa tactical analysis」 외 2개 검색 | 위 2편 채택 · 나머지 제외 |
+
+- 미열람: MEN·Guardian 분석 · United in Focus(402) · Noticias de Gipuzkoa(406) · Bild·Sport1·SRF.
+
+### 구현 판정
+
+- 구현 주장 10행 적재 — HELD 9(쟁점 #16·#49·#53·#59·#87) · NA 1(상대 대인 마크). **정본 변경 0** · 게임 구현 판정 **「추가 관찰」 유지**.
+- 새로 쌓인 근거: 리드 막판 대응(#16)에 「GK 짧은 빌드업 유지」·「윙어 하강 백6」·「템포 낮추기」 세 처방이 팬 소스로 모였다 — 모두 등급 D · 1경기. 실측 근거는 85′ 이후 스즈키 롱볼 실패 6/9와 시즌 마지막 15분 −4.
+- D+3로 넘김: 에메리 교체 의도 1차 발언 · 스페인어 원문 · Tanswell Bluesky 경기 분석 · MEN/Guardian.

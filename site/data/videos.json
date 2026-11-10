@@ -2,7 +2,7 @@
  "all": [
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 493,
    "impl_claims": [
     {
@@ -114,7 +114,7 @@
   },
   {
    "channel": "Sky Sports Premier League",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 495,
    "impl_claims": [
     {
@@ -160,7 +160,7 @@
   },
   {
    "channel": "Stephen Howson",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 496,
    "impl_claims": [
     {
@@ -203,8 +203,360 @@
    "video_id": "m18IWCKfmy8"
   },
   {
+   "channel": "Tactics Exposed",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-10] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 502,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "back_four_narrowing_vulnerability",
+     "field_kr": "백4 좁아짐 취약점",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 53,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "실점 장면 수비 귀속: 침투 추적·박스 앞",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「positioning themselves in between those center backs to drag Villa even narrower and then that opens that space up out wide」(센터백 사이에 서서 빌라를 더 좁히고 바깥 공간을 연다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "opponent 10/inside forwards stand between Villa CB and FB, back four narrows, wide runners attack outside",
+     "value_kr": "상대가 CB–풀백 사이에 서면 빌라 백4가 좁아지고 바깥이 빈다",
+     "verdict": "HELD",
+     "verdict_note": "독립 2소스(같은 경기) — Tactics Exposed(맨유 관점 영상) + Coaches' Voice(11-09 글 「Harwood-Bellis at right-back drawn into a narrow position inside」(라이트백 하우드-벨리스가 안쪽 좁은 위치로 끌려 들어갔다)). 실측: 맨유 크로스 30. 쟁점 #53 조건은 「2경기째」라 이 경기만으로는 재판정하지 않는다 — 다음 경기에서 같은 귀속이 나오면 판정."
+    },
+    {
+     "axis": "limit",
+     "field": "opponent man-marking on build-up",
+     "field_kr": "상대의 빌드업 대응",
+     "focus": null,
+     "headline_kr": "맨유가 빌라 빌드업을 대인 마크로 막았다",
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"요로 → 잭슨\", \"마즈라위 → 만잠비\", \"아마드 → 마첸\", \"마이누가 남는 선수 흡수\"]",
+     "quote": "「rotate that three, follow their man, and stick to a man-to-man plan there」(앞 셋을 돌리고 자기 선수를 따라가 대인 계획을 지켰다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "United zonal front three + man-to-man behind on Villa's build-up",
+     "value_kr": "맨유가 앞 3명 지역 블록 + 뒤 대인 마크로 빌라 빌드업을 막았다",
+     "verdict": "NA",
+     "verdict_note": "상대 전술 교란(opp_disruption)이라 빌라 정본 판정 대상이 아니다. UTV 워치얼롱 34′쯤 「they've gone man-for-man」(맨투맨으로 붙었다 · D+1)과 일치."
+    }
+   ],
+   "key_points": [
+    "백4 좁히기 공략 — 「Bruno … and Mbeumo … positioning themselves in between those center backs to drag Villa even narrower and then that opens that space up out wide」(브루누·음뵈모가 센터백 사이에 서서 빌라를 더 좁히고 바깥 공간을 연다) · auto-caption 「Brian and Burmo」(브라이언 앤 버모 — 음뵈모 오인식)",
+    "90+2′ 실점도 같은 패턴 — 지르크제이가 CB 사이 · 도르구가 바깥 라인 침투",
+    "빌라 빌드업 대인 마크 — 「Yoro is tracking Jackson, Mazraoui is tracking Manzambi」(요로가 잭슨, 마즈라위가 만잠비를 따라간다) · 마이누는 남는 선수를 흡수하는 「hoover」(청소기)",
+    "만잠비 봉쇄 → 역습 — 마즈라위가 만잠비를 두고 전진, 44′ 틸레만스 동점골(도움 마즈라위 — SofaScore 실측 일치)",
+    "빌라 세트 득점 2개 = 맨유 수비가 킥 순간 물러서지 않고 자기 골문을 본 탓(상대 결함)",
+    "맨유 활동량은 직전 경기보다 크게 늘었다(화면 수치 · 단위 불명확)"
+   ],
+   "kind": "상대팀",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-09",
+   "published_approx": 0,
+   "report_id": 70,
+   "summary": "Tactics Exposed(맨유 관점 전술 분석 · 17분). 결론: 4실점은 모두 맨유 수비 개인 실수였지만 캐릭의 경기 설계 자체는 좋았다. 빌라 쪽에 쓸 관찰은 둘이다. ⑴ 공략 설계 — 브루누·음뵈모가 빌라 센터백과 풀백 사이에 서서 빌라 백4를 좁혔고, 쿠냐(왼쪽 윙어형 터치맵)·아마드, 66′ 이후 도르구가 바깥을 침투했다. 90+2′ 실점도 지르크제이가 CB 사이에 서고 도르구가 바깥을 침투한 같은 패턴이다(Coaches' Voice 「Harwood-Bellis … drawn into a narrow position inside」(하우드-벨리스가 안쪽 좁은 위치로 끌려 들어갔다)와 같은 진단) ⑵ 빌라 빌드업 대응 — 앞 3명 지역 블록 + 그 뒤 대인 마크(요로→잭슨 · 마즈라위→만잠비 · 아마드→마첸 · 마이누가 남는 선수를 흡수). 만잠비가 마즈라위에게 막혔고, 마즈라위가 만잠비를 두고 전진해 44′ 틸레만스 동점골이 나왔다. 빌라 세트피스 득점 2개는 맨유 수비가 킥 순간 제자리에서 자기 골문을 보고 있었던 탓으로 본다(상대 결함 — 빌라 설계 근거로는 약함).",
+   "team_code": "AVL",
+   "title": "How Mainoo's 'vacuum' role POWERED Man Utd's comeback v Aston Villa",
+   "transcript_path": "reports/transcripts/a94ib5pziPo.en.md",
+   "url": "https://www.youtube.com/watch?v=a94ib5pziPo",
+   "video_id": "a94ib5pziPo"
+  },
+  {
+   "channel": "The Holy Trinity Show | Aston Villa",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-10] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 501,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "gk_distribution_when_leading",
+     "field_kr": "리드 막판 GK 배급",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 16,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「Why didn't we try and go short from the goalkeeper, invite the pressure like we always do」(왜 평소처럼 키퍼부터 짧게 풀어 압박을 끌어들이지 않았나)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "GK should keep short build-up under late pressure instead of long kick",
+     "value_kr": "리드 막판에도 GK는 롱킥 대신 짧은 빌드업을 유지했어야 했다",
+     "verdict": "HELD",
+     "verdict_note": "실측: 85′ 이후 스즈키 롱볼 9개 중 6개 실패(WS · D+1) · Sky 킨·영(D+1)도 같은 장면. 게임 설정 함의(리드 시 빌드업 「느린 빌드업」 유지 vs 「롱볼」)는 쟁점 #16에 근거로 쌓는다 — 1경기 · 등급 D(팬 관찰 + 실측 1경기)."
+    },
+    {
+     "axis": "instruction",
+     "field": "late_goals_conceded_trend",
+     "field_kr": "마지막 15분 득실",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 59,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "수비 블록 높이·후반 붕괴",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「that last 15 minutes … minus4 does kind of stick out like a sore thumb」(마지막 15분 −4가 눈에 확 띈다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "last-15-minute goal difference -4 in PL",
+     "value_kr": "시즌 PL 마지막 15분 득실 −4 — 리드 막판 실점 반복",
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 일치: match_events PL 2026-27 76′ 이후 빌라 2득점·6실점(−4). obs#1159(리드 막판 승점 손실 3경기)와 같은 축 — 쟁점 #59(후반 붕괴) 근거."
+    },
+    {
+     "axis": "instruction",
+     "field": "wide_midfielder_tracking_fullback",
+     "field_kr": "측면 미드필더의 풀백 추적",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 53,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "실점 장면 수비 귀속: 침투 추적·박스 앞",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「George Hemmings is not strong enough or switched on enough to put more pressure on Dorgu」(헤밍스는 도르구를 더 압박할 만큼 강하거나 집중하지 못했다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "sub Hemmings weak pressure on Dorgu, sub Gomes late on Zirkzee at 90+2",
+     "value_kr": "90+2′ 헤밍스는 도르구 압박이 약했고 고메스는 지르크제이에게 늦었다",
+     "verdict": "HELD",
+     "verdict_note": "같은 장면을 UTV·The Villans·이 영상 셋이 헤밍스로 귀속 — 모두 팬 소스·같은 경기. D+1 판단 유지: 장면 출발은 고메스·하우드-벨리스와 이어져 헤밍스 단독 귀속은 하지 않는다."
+    }
+   ],
+   "key_points": [
+    "스즈키 막판 롱킥 — 「He rushes this rather than playing it sideways or behind or short」(옆·뒤·짧게 주지 않고 서둘렀다) · 실측 85′ 이후 스즈키 롱볼 9개 중 6개 실패(WS · D+1)와 같은 방향",
+    "90+2′ — 「George Hemmings is not strong enough or switched on enough to put more pressure on Dorgu」(헤밍스는 도르구를 더 압박할 만큼 강하거나 집중하지 못했다) · 고메스는 지르크제이에게 늦었다",
+    "카마라 — 89′ 혼잡한 중원에서 무리한 패스로 마운트 찬스 허용 · 「I thought it was Kamara who needed to come off for Gomez」(고메스와 바뀌어야 할 선수는 카마라였다)",
+    "고레츠카는 「extremely composed and assured」(매우 침착하고 확신에 찼다) — The Villans 패널(「안전하기만 하다」)과 반대 평가",
+    "시즌 마지막 15분 득실 −4 — PL 실측 76′ 이후 2득점 6실점과 일치",
+    "교체 3명(헤밍스·음바예·마드조) 평균 18세 — 「that's a lot to ask」(요구가 크다)"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-09",
+   "published_approx": 0,
+   "report_id": 70,
+   "summary": "The Holy Trinity Show(빌라 팬 1인 진행 · 12분). 결론: 판정 논란은 접고 「두 번의 두 골 리드 관리」에 집중한 회고. 관찰 다섯. ⑴ 2-1·4-3 실점을 가장 막았어야 했다 ⑵ 89′ 카마라의 무리한 전진 패스 → 마운트 크로스바(카마라는 고메스와 교체됐어야 했다는 의견) ⑶ 90+2′ 실점: 헤밍스가 도르구 압박이 약했고 고메스가 지르크제이에게 늦었다 — 둘 다 71′·78′에 들어온 생생한 선수 ⑷ 90+4′쯤 스즈키가 평소처럼 압박을 기다려 짧게 풀지 않고 80야드 롱킥 → 이후 혼전 → 마지막 코너 ⑸ 교체 인선(헤밍스·음바예·마드조 평균 18세)은 장기적으로 옳지만 단기 요인. 시즌 지표: 세트피스 득실 마이너스, 마지막 15분 득실 −4(실측 PL 76′ 이후 득점 2·실점 6 = −4 일치).",
+   "team_code": "AVL",
+   "title": "Manchester United 4 Aston Villa 4",
+   "transcript_path": "reports/transcripts/UsqgMFZCX_Q.en.md",
+   "url": "https://www.youtube.com/watch?v=UsqgMFZCX_Q",
+   "video_id": "UsqgMFZCX_Q"
+  },
+  {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 500,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "double_pivot_role_split",
+     "field_kr": "피벗 역할 분담",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 87,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "고레츠카–카마라 피벗 짝 연결·간격",
+      "trigger": "2026-11-01 이후 고레츠카 LDM,RDM,CDM 선발 2경기 (1/2)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「They're playing on the same sort of line that are basically mirroring each other」(같은 줄에서 서로를 거울처럼 따라 한다) · 「It's like sharing the duties … rather than splitting it more」(임무를 나누지 않고 공유한다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "pivot pair on same line mirroring each other, no defined split",
+     "value_kr": "고레츠카–카마라가 같은 줄에서 서로를 따라 해 역할 분담이 없다",
+     "verdict": "HELD",
+     "verdict_note": "실측 대조: 고레츠카 패스 36/37(97%)·롱볼 0·파이널서드 투입 2(SofaScore) — 「안전하지만 전진 없음」과 일치. WS 좌우 간격 전반 9.0 → 후반 21.3(D+1 실측)은 「같은 줄」과 별개 축(앞뒤 높이 차는 미측정). 같은 경기 셋째 팬 소스 — 독립 실측 반복은 다음 고레츠카–카마라 동반 선발에서 판정(쟁점 #87)."
+    },
+    {
+     "axis": "instruction",
+     "field": "wide_midfielder_tracking_fullback",
+     "field_kr": "측면 미드필더의 풀백 추적",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 53,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "실점 장면 수비 귀속: 침투 추적·박스 앞",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「he's so focused on just being in that four that he's not really bothered about Dorgu running off his shoulder」(백4에 서 있는 데만 집중해 도르구가 어깨 뒤로 빠지는 걸 신경 쓰지 않았다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "sub RM Hemmings held the back-four line and let Dorgu run off his shoulder",
+     "value_kr": "교체 RM 헤밍스가 라인 유지에만 집중해 도르구 침투를 놓쳤다",
+     "verdict": "HELD",
+     "verdict_note": "UTV 「미드필드 문제」(I7am7fRYBlU)와 같은 지적 — 같은 경기·같은 장면이라 「2경기째 독립 2소스」 조건은 아직 아니다. D+1 판단대로 헤밍스 단독 귀속은 하지 않는다(90+2′ 출발은 고메스·하우드-벨리스와 이어진 장면)."
+    },
+    {
+     "axis": "instruction",
+     "field": "late_lead_shape",
+     "field_kr": "리드 막판 형태",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 16,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「had the wingers dropping into the back line those last 10 15 minutes we didn't do that」(마지막 10~15분 윙어가 백라인으로 내려와야 했는데 안 했다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "wingers should drop into back line (back six) in last 10-15 minutes when leading",
+     "value_kr": "리드 막판 10~15분엔 윙어가 백라인으로 내려와야 했다(백6)",
+     "verdict": "HELD",
+     "verdict_note": "Tanswell(T24bW9RS5QE)의 「백5 하강 부재」와 같은 방향. 팬 처방이며 에메리 1차 발언 아님 — 쟁점 #16(편중 백5 vs 백6) 근거로만 쌓는다."
+    },
+    {
+     "axis": "instruction",
+     "field": "left_side_cover_first_half",
+     "field_kr": "전반 왼쪽 수비 지원",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 49,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "만잠비 비CAM 배치(피벗·측면) 역할",
+      "trigger": "2026-11-01 이후 만잠비 LDM,RDM,CDM,LCM,RCM,LM,RM,LAM,RAM,LW,RW 선발 2경기 (1/2)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「they absolutely bombarded our left hand side because Matson had no support whatsoever」(마첸에게 지원이 전혀 없어 왼쪽을 집중 공략했다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "first half United bombarded Villa's left, Maatsen had no support",
+     "value_kr": "전반 맨유가 빌라 왼쪽을 집중 공략 — 마첸에게 지원이 없었다",
+     "verdict": "HELD",
+     "verdict_note": "실측 대조: 맨유 크로스 30 중 빌라 왼쪽 17(리포트 요약) — 일치. UTV 워치얼롱 「만잠비가 마첸과 2대1 수비를 하지 않음」과 같은 축. 만잠비 LM 배치의 수비 비용(쟁점 #49)에 근거로 쌓는다."
+    },
+    {
+     "axis": "instruction",
+     "field": "game_state_management",
+     "field_kr": "리드 시 경기 템포 관리",
+     "focus": null,
+     "headline_kr": "리드 뒤 템포를 낮추지 않았다",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 16,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"빠른 짧은 프리킥 재개로 볼을 바로 넘겨줌\", \"엔드투엔드 경기에 응함\", \"마지막 10분 볼 지키기·코너 끌기 없음\"]",
+     "quote": "「we took a quick short free kick and virtually gave them the ball straight away」(빠르게 짧은 프리킥을 해서 사실상 곧바로 볼을 넘겨줬다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "after 4-2 Villa took quick short free kicks and played end-to-end instead of slowing tempo",
+     "value_kr": "4-2 뒤 템포를 낮추지 않고 빠른 재개·엔드투엔드로 응했다",
+     "verdict": "HELD",
+     "verdict_note": "90+2′ 실점이 맨유의 빠른 재개에서 나왔다는 §요약과 별개로, 빌라 쪽의 빠른 재개를 지적. 실측 근거: 85′ 이후 스즈키 롱볼 9개 중 6개 실패(WS · D+1). 게임 설정으로는 리드 시 빌드업 「느린 빌드업」 전환 여부의 정성 근거 — 등급 D(팬 관찰) · 1경기."
+    }
+   ],
+   "key_points": [
+    "막판 경기 관리 부재 — 「not once did I see them try and hit Majo and get Majo into the corners, hold up the ball」(마드조에게 넣어 코너로 끌고 가 볼을 지키려는 시도를 한 번도 못 봤다)",
+    "고레츠카–카마라 역할 미분담 — 「They're playing on the same sort of line that are basically mirroring each other」(같은 줄에서 서로를 거울처럼 따라 한다) · 실측 고레츠카 패스 36/37 · 롱볼 0",
+    "전반 왼쪽 집중 공략 — 「they absolutely bombarded our left hand side because Matson had no support whatsoever」(마첸에게 지원이 전혀 없어 왼쪽을 집중 공략했다) · 실측 맨유 크로스 빌라 왼쪽 17",
+    "헤밍스 추적 — 「he's so focused on just being in that four that he's not really bothered about Dorgu running off his shoulder」(백4에 서 있는 데만 집중해 도르구가 어깨 뒤로 빠지는 걸 신경 쓰지 않았다)",
+    "리드 막판 형태 — 「had the wingers dropping into the back line those last 10 15 minutes we didn't do that」(마지막 10~15분 윙어가 백라인으로 내려와야 했는데 안 했다)",
+    "카마라 출전시간 — 풀럼·바르셀로나·맨유 3경기 연속 출전 · 경기 중 지쳐 보였는데 고레츠카가 먼저 교체됐다는 지적(팬 관찰)",
+    "하우드-벨리스 PL 첫 선발은 「as good as any」(누구 못지않게 좋았다)로 호평"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-09",
+   "published_approx": 0,
+   "report_id": 70,
+   "summary": "The Villans 맨유전 경기 후 패널(진행 Luke · 패널 3명 · 42분). 결론: 실점의 원인을 블록 높이보다 「경기 상태 통제 실패」로 본다 — 4-2 리드 뒤 템포를 낮추지 않고 맨유가 원하는 엔드투엔드 경기에 응했고, 마지막 10분엔 볼 지키기·코너로 끌고 가기·마드조 활용이 한 번도 없었다는 진단. 전술 관찰은 셋: ⑴ 고레츠카–카마라가 같은 줄에서 서로를 거울처럼 따라가 역할 분담이 없다(고레츠카 패스 97%지만 전진 없음 — 실측 36/37 · 롱볼 0 · 파이널서드 투입 2와 일치) ⑵ 전반 맨유가 빌라 왼쪽(마첸)을 집중 공략했다 — 실측 크로스 30개 중 빌라 왼쪽 17과 일치 ⑶ 세 번째 실점에서 헤밍스가 백4 라인 유지에만 집중해 도르구 침투를 놓쳤다(UTV 「미드필드 문제」와 같은 지적). 그 밖에 카마라 3경기 연속 풀타임 출전시간 관리 우려, 알리송 볼 터치 20여 회(실측 26)로 측면 활용 부족, 시즌 내 같은 선발 11명이 한 번도 없었다는 과도한 로테이션 지적. 하우드-벨리스 PL 첫 선발은 호평.",
+   "team_code": "AVL",
+   "title": "Why Can't Aston Villa Control Football Games Anymore, Terminator Leon Goretzka & Unai Can See It",
+   "transcript_path": "reports/transcripts/fzuyG4ZUVYc.en.md",
+   "url": "https://www.youtube.com/watch?v=fzuyG4ZUVYc",
+   "video_id": "fzuyG4ZUVYc"
+  },
+  {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 489,
    "impl_claims": [
     {
@@ -530,7 +882,7 @@
   },
   {
    "channel": "NBC Sports",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 492,
    "impl_claims": [
     {
@@ -573,7 +925,7 @@
   },
   {
    "channel": "Sky Sports Premier League",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 488,
    "impl_claims": [
     {
@@ -618,7 +970,7 @@
   },
   {
    "channel": "Stretford Paddock",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 499,
    "impl_claims": [
     {
@@ -794,7 +1146,7 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 498,
    "impl_claims": [
     {
@@ -956,7 +1308,7 @@
   },
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 497,
    "impl_claims": [
     {
@@ -1003,7 +1355,7 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 490,
    "impl_claims": [
     {
@@ -1046,7 +1398,7 @@
   },
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 486,
    "impl_claims": [
     {
@@ -1088,7 +1440,7 @@
   },
   {
    "channel": "The Villans",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 491,
    "impl_claims": [
     {
@@ -1423,7 +1775,7 @@
   },
   {
    "channel": "The Villans",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 494,
    "impl_claims": [
     {
@@ -1468,7 +1820,7 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-09] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 487,
    "impl_claims": [
     {
@@ -34573,6 +34925,9 @@
    493,
    495,
    496,
+   502,
+   501,
+   500,
    489,
    484,
    488,
