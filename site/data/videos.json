@@ -1,6 +1,88 @@
 {
  "all": [
   {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-11] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 503,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "sub_wide_mid_brief_when_leading",
+     "field_kr": "리드 시 측면 교체 선수 지시",
+     "focus": null,
+     "headline_kr": "리드 막판 측면 교체 = 앉아서 수비",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 16,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"볼 운반이 아니라 콤팩트 유지 지시(팬 해석)\", \"헤밍스는 그 역할을 못 했다는 평가\"]",
+     "quote": "원문 「He's being told to just sit in there, defend, be compact」(그냥 안에 앉아 수비하고 콤팩트하게 있으라는 지시를 받았다) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "late wide-midfield sub told to sit in, defend, stay compact",
+     "value_kr": "리드 막판 측면 교체 선수는 앉아서 수비·콤팩트 유지(볼 운반 아님)",
+     "verdict": "HELD",
+     "verdict_note": "팬 진행자 해석(D) — 같은 채널 D+1 워치얼롱 「a more containing, safer substitution」(봉쇄형·안전한 교체)과 같은 출처라 교차검증 아님. 에메리 1차 설명은 D+3까지 없음. 쟁점 #16(리드 시 하강 형태) 근거로만 쌓는다."
+    },
+    {
+     "axis": "instruction",
+     "field": "rb_asymmetry_backup_rb",
+     "field_kr": "대체 RB의 비대칭 역할",
+     "focus": null,
+     "headline_kr": "하우드-벨리스 RB 첫 경험",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 13,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"센터백형 RB가 안으로 좁히는 비대칭\", \"Tanswell: 에메리가 오래 해온 형태의 변형\"]",
+     "quote": "원문 「Testament to him at Old Trafford that he played right back, never played there before」(올드 트래퍼드에서 처음 해보는 라이트백을 해낸 건 그의 공이다) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Harwood-Bellis first ever RB game at Old Trafford",
+     "value_kr": "하우드-벨리스는 라이트백이 처음 — 센터백형 RB가 안으로 좁히는 비대칭",
+     "verdict": "HELD",
+     "verdict_note": "Tanswell 11-08 원글 전문 「the RB position might just be a version of what Emery has long done - the RB tucking in and the LB pushing high」(RB 자리는 에메리가 오래 해온 것의 변형일 수 있다 — RB가 좁히고 LB가 높이 오른다)와 WS 평균 위치(하우드-벨리스 33,18 · 마첸 47,87)가 일치. 캐시 복귀 뒤 5경기 조건(쟁점 #13)은 그대로."
+    }
+   ],
+   "key_points": [
+    "하우드-벨리스: 「played right back, never played there before」(처음 해보는 라이트백을 뛰었다) — 7점",
+    "헤밍스(71′ 투입): 「He's being told to just sit in there, defend, be compact」(앉아서 수비하고 콤팩트하게 있으라는 지시) — 진행자 해석이며 역할 수행은 실패로 판정 · 5.5점",
+    "헤밍스: 「the tracking of Doucoure」(오인식 — 도르구 추적으로 보임)가 부족했다 · auto-caption",
+    "스즈키: 마지막 실점은 더 잘 막을 수 있었다 · 시즌 전체는 8점",
+    "잭슨 10점(PL 6골) · 알리송 「has to play games for Villa」(빌라에서 계속 뛰어야 한다)"
+   ],
+   "kind": "선수스카우팅",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-10",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "UTV 진행자의 시즌 10경기 선수 평점(37분). 시즌 축 영상이라 경기 리포트에는 귀속하지 않았다. 맨유전 대목은 셋이다: ① 하우드-벨리스 7점 — 「Testament to him at Old Trafford that he played right back, never played there before」(올드 트래퍼드에서 처음 해보는 라이트백을 해낸 건 그의 공) ② 헤밍스 5.5점 — 맨유전 교체 투입 때 「He's being told to just sit in there, defend, be compact」(그냥 안에 앉아 수비하고 콤팩트하게 있으라는 지시를 받았다), 하지만 그 역할을 해내지 못했고 도르구 추적도 약했다 ③ 스즈키 8점 — 마지막 실점은 더 잘 막을 수 있었다(더 강해져야 한다). 그 밖에 잭슨 10점(시즌 최고), 알리송 높은 평가.",
+   "team_code": "AVL",
+   "title": "RATING ASTON VILLA PLAYERS SO FAR THIS SEASON",
+   "transcript_path": "reports/transcripts/TZWH_vlKVaw.en.md",
+   "url": "https://www.youtube.com/watch?v=TZWH_vlKVaw",
+   "video_id": "TZWH_vlKVaw"
+  },
+  {
    "channel": "1874 : The Aston Villa Channel",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 493,
@@ -204,7 +286,7 @@
   },
   {
    "channel": "Tactics Exposed",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-10] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 502,
    "impl_claims": [
     {
@@ -277,7 +359,7 @@
   },
   {
    "channel": "The Holy Trinity Show | Aston Villa",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-10] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 501,
    "impl_claims": [
     {
@@ -967,6 +1049,59 @@
    "transcript_path": "reports/transcripts/92CbtLJc1PE.en.md",
    "url": "https://www.youtube.com/watch?v=92CbtLJc1PE",
    "video_id": "92CbtLJc1PE"
+  },
+  {
+   "channel": "Sky Sports Premier League",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-11] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 504,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "low_block_box_entries_allowed",
+     "field_kr": "저블록의 박스 진입 허용",
+     "focus": null,
+     "headline_kr": "상대 감독: 박스 공략이 좋았다",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 59,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "수비 블록 높이·후반 붕괴",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"캐릭 자기 평가 — 박스 공략·슈팅 많음\", \"실측 맨유 박스 터치 48 · 슈팅 26\"]",
+     "quote": "원문 「I thought we attacked the box really well. We had a lot of shots」(박스 공략이 아주 좋았고 슈팅이 많았다) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "opponent attacked the box well with many shots vs Villa low block",
+     "value_kr": "상대 감독이 「박스 공략이 아주 좋았다」고 평가 — 빌라 저블록이 박스 진입을 허용",
+     "verdict": "HELD",
+     "verdict_note": "실측 일치: 맨유 박스 터치 48(빌라 18) · 슈팅 26 · 수비 액션 평균 높이 31.2(시즌 최저권). 상대 감독의 자기 평가라 근거 등급 D · 1경기 — 쟁점 #59 근거로만 쌓는다(블록 높이 정본 변경 없음)."
+    }
+   ],
+   "key_points": [
+    "도르구: 「we had the better opportunities and we should have won this game」(더 좋은 기회는 우리 쪽이었고 이겼어야 했다)",
+    "캐릭: 「I thought we attacked the box really well. We had a lot of shots」(박스 공략이 아주 좋았고 슈팅이 많았다) — 「defended well, pressed well」(수비도 압박도 잘했다)",
+    "캐릭: 실점은 「individual moments」(개인 실수의 순간) — 맨유 쪽 자기 진단",
+    "빌라 교체·RB·마지막 코너 언급 없음 — 3일 추적의 세 질문에는 답이 없다"
+   ],
+   "kind": "상대팀",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-08",
+   "published_approx": 0,
+   "report_id": 70,
+   "summary": "Sky가 경기 직후 받은 맨유 인터뷰 묶음(쿠냐·도르구·수비수 1명·캐릭). 대부분 맨유의 강등권·정신력 이야기이고 빌라 전술 언급은 적다. 상대 관점에서 쓸 대목은 둘이다: 도르구 「we had the better opportunities and we should have won this game」(우리가 더 좋은 기회를 가졌고 이겼어야 했다)와 캐릭 「I thought we attacked the box really well. We had a lot of shots」(박스 공략이 아주 좋았고 슈팅이 많았다). 둘 다 빌라 4-4 저블록이 박스 진입을 허용했다는 실측(맨유 박스 터치 48 · 슈팅 26)과 같은 방향이다. 교체·하우드-벨리스·마지막 코너에 대한 설명은 없다.",
+   "team_code": "AVL",
+   "title": "\"I'm tired\" Carrick, Cunha and Dorgu's FULL post-match interviews after Aston Villa draw",
+   "transcript_path": "reports/transcripts/icjeNCxfHF0.en.md",
+   "url": "https://www.youtube.com/watch?v=icjeNCxfHF0",
+   "video_id": "icjeNCxfHF0"
   },
   {
    "channel": "Stretford Paddock",
@@ -34931,6 +35066,7 @@
    489,
    484,
    488,
+   504,
    499,
    485,
    498,

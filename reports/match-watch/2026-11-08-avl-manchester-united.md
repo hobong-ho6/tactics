@@ -339,3 +339,86 @@
 - 구현 주장 10행 적재 — HELD 9(쟁점 #16·#49·#53·#59·#87) · NA 1(상대 대인 마크). **정본 변경 0** · 게임 구현 판정 **「추가 관찰」 유지**.
 - 새로 쌓인 근거: 리드 막판 대응(#16)에 「GK 짧은 빌드업 유지」·「윙어 하강 백6」·「템포 낮추기」 세 처방이 팬 소스로 모였다 — 모두 등급 D · 1경기. 실측 근거는 85′ 이후 스즈키 롱볼 실패 6/9와 시즌 마지막 15분 −4.
 - D+3로 넘김: 에메리 교체 의도 1차 발언 · 스페인어 원문 · Tanswell Bluesky 경기 분석 · MEN/Guardian.
+
+## D+3 추적 (2026-11-11) — 3일 추적 마지막 회차
+
+> 결론: **당일 판정 정정 0 · 게임 구현 「추가 관찰」 유지 · 3일 추적 종결.** 세 질문 판정은 아래 표. obs#1163.
+> 새 자료: 영상 2편(전사·요약·구현 주장 3행) · Tanswell Bluesky 원글 전문 · 에메리 PL Productions·BBC 발언(Football365) · 만잠비 본인 발언(20 Minuten) · 팬 칼럼 1(Roundtable). 영상 인용은 전부 auto-caption 전사 기준이다.
+
+### 세 질문 — 최종 판정
+
+| 질문 | 판정 | 핵심 근거 |
+|---|---|---|
+| ⑴ 71′·78′ 교체 의도 | **에메리 1차 설명 없음으로 닫는다** · 만잠비 교체 사유(부상 대응/전술)는 미확정 | 회견·플래시·PL Productions·BBC MOTD 전부 교체 언급 0 · 만잠비 본인 「발목이 아니라 종아리」 |
+| ⑵ 하우드-벨리스 「남는 RB」 | **의도된 형태** — 캐시 공백 대응이 아니라 기존 풀백 비대칭의 연장 | Tanswell 원글 전문 · D+1 UTV 사전 예상 · WS 평균 위치 |
+| ⑶ 리드 막판 실점 원인 | **블록 높이 단독이 아니다** — 경기 관리 + 빌라 오른쪽 구조 + 마지막 코너 배치의 복합 | 에메리 자기 진단 · D+2 「백4 좁히기」 2소스 · D+1 코너 3소스 |
+
+### ⑴ 교체 의도 — 1차 설명은 끝내 없었다
+
+- 에메리가 경기 뒤 남긴 발언 4곳(기자회견 · Sky 플래시 · PL Productions · BBC MOTD)을 전부 확인했다 — **교체 이유는 한 번도 말하지 않았다.** 국가대표 휴식기라 다음 회견은 선덜랜드전(11-21) 전 주로 예상된다.
+- PL Productions(Football365 11-08 전재)에서 새로 찾은 대목 — 교체 대신 「경험 + 젊음」 조합을 말했다:
+  - 「We have experienced players and young talented players, we must get this mix performing, and getting more experiences.」(경험 많은 선수와 재능 있는 젊은 선수가 있다 — 이 조합이 성과를 내게 하고 경험을 더 쌓게 해야 한다)
+- **만잠비(78′ 아웃)** — 본인 발언(20 Minuten 11-09):
+  - 「Ganz okay, immer noch ein bisschen Schmerzen, aber an der Wade, nicht am betroffenen Knöchel.」(괜찮다, 아직 조금 아프지만 맞은 발목이 아니라 종아리다)
+  - 기사 서술: 72′ 요로 태클로 발목을 맞고 **계속 뛰다가** 78′ 교체. ⇒ D+2 정정(구조적 부상 없음)과 같다. 교체가 부상 대응이었는지는 **미확정으로 닫는다.**
+  - ⚠️ 출처 충돌: Read Aston Villa(11-10)는 「a scare to his knee」(무릎 부상 우려)·「awaiting medical tests」(검사 대기)라고 적었다 — 스위스 협회·본인 1차 발언(발목 · 구조적 부상 없음)과 맞지 않아 **1차 발언을 채택**한다(불변규칙 3).
+- **헤밍스(71′ 인)** — 역할 해석은 팬 소스뿐(등급 D):
+  - UTV 시즌 평점(`TZWH_vlKVaw` · 11-10): 「He's being told to just sit in there, defend, be compact」(그냥 안에 앉아 수비하고 콤팩트하게 있으라는 지시를 받았다) — 그리고 그 역할을 해내지 못했다고 봤다(5.5점). D+1 같은 채널 워치얼롱 「a more containing, safer substitution」(봉쇄형·안전한 교체)과 **같은 출처**라 교차검증은 아니다.
+  - 맥락: Tanswell(11-10) 헤밍스 5년 재계약 합의 보도 「reflective of 20yo's improved standing in Unai Emery's squad」(에메리 스쿼드 안에서 높아진 입지를 보여준다) — 교체 선택이 일회성 실험은 아니라는 정황.
+  - 반대 시각: Dan Bardell(Roundtable 11-09) 「almost felt like we were congratulating ourselves on a victory that hadn't actually been secured」(아직 확정되지도 않은 승리를 자축하는 것 같았다) — 맥긴·고레츠카처럼 침착함을 줄 선수가 빠졌다는 비판.
+
+### ⑵ 하우드-벨리스 「남는 RB」 — 의도된 형태로 판정
+
+- D+1 리포트가 인용한 Tanswell 워밍업 관찰은 **잘린 문장**이었다. 원글 전문(Bluesky 11-08 16:13):
+  - 「In truth, the RB position might just be a version of what Emery has long done - the RB tucking in and the LB pushing high」(사실 RB 자리는 에메리가 오래 해온 것의 변형일 수 있다 — RB가 안으로 좁히고 LB가 높이 오른다)
+- 같은 기자의 선발 발표 직후 게시(11-08 15:25): 「Emery confident he won't be fazed starting here」(에메리는 그가 여기서 선발로 나와도 흔들리지 않으리라 확신한다).
+- 실측(WS 평균 위치 하우드-벨리스 33,18 · 마첸 47,87) + D+1 UTV 워치얼롱 사전 예상(「even if Cash is playing」(캐시가 뛰어도 3백이 된다))과 **세 갈래가 일치** ⇒ 캐시 공백 대응이 아니라 **기존 비대칭의 연장**.
+- 대가: UTV(`TZWH_vlKVaw`) 「played right back, never played there before」(처음 해보는 라이트백) · Bardell(Roundtable — 리드 상황인데 때로 너무 앞으로 나갔다는 지적 · 원문 문장 미확인이라 요약만) · D+2 Coaches' Voice 「drawn into a narrow position inside」(안쪽 좁은 위치로 끌려 들어갔다). 쟁점 #13은 **캐시 복귀 뒤 5경기 조건 그대로** 감시.
+
+### ⑶ 리드 막판 실점 — 원인 정리
+
+| 원인 | 3일간 근거 | 실측 | 등급 |
+|---|---|---|---|
+| 경기 관리(볼 소유·템포) | 에메리 「how when we are in the moment we are dominating we attack better」(우리가 지배하는 순간에 어떻게 더 잘 공격할지) · 맥긴 · Tanswell 「They do not control games now」(이제 경기를 통제하지 못한다) · Bardell · D+1·D+2 팬 패널 | 85′ 이후 스즈키 롱볼 9개 중 6개 실패 · 시즌 마지막 15분 득실 −4 | 감독 자기 진단 + 실측 |
+| 빌라 오른쪽 — 백4가 안으로 끌려감 + 측면 추적 | D+2 Tactics Exposed·Coaches' Voice · 에메리 「with Dorgu left side」(도르구 쪽) | 90+2′ 시퀀스 · 맨유 크로스 30 | 독립 2소스 · 1경기 |
+| 마지막 코너 GK 보호 배치 | 에메리 「키퍼 보호에 집중했다면」 · UTV · Tanswell(D+1) | 90+6′ 실점 | 3소스 일치 |
+| 블록 높이 | 캐릭 「I thought we attacked the box really well」(박스 공략이 아주 좋았다 — `icjeNCxfHF0`) · Tanswell 「pressing even less than last season」(지난 시즌보다 압박을 덜 한다) | 수비 액션 평균 높이 31.2 · 맨유 박스 터치 48 · 하프별 PPDA 후반 11.38(전반보다 압박 증가) | **기여 요인** — 단독 원인 아님 |
+
+- Tanswell(11-09)이 이번 경기를 시즌 축으로 묶었다: 「the emphasis on defensive structure to make up for the lack of intensity & ball retention is greater」(강도와 볼 소유 부족을 메우려고 수비 구조에 거는 비중이 더 커졌다). 본문(The Athletic 7765029)은 저자 선물 링크가 있었지만 nytimes.com이 WebFetch·브라우저 모두에서 차단돼 **미열람**.
+- 판정: 쟁점 #16(리드 시 하강 형태)·#59(블록 높이·후반 붕괴)에 근거만 쌓는다 — 둘 다 「2경기 이상」 조건 미충족.
+
+### 새 영상
+
+| 영상 | 채널 · 게시 | 종류 · 귀속 | 한 줄 결론 |
+|---|---|---|---|
+| `icjeNCxfHF0` | Sky 맨유 인터뷰 묶음(캐릭·쿠냐·도르구) · 11-08 | 상대팀 · #70 | 「더 좋은 기회는 우리 쪽」 · 「박스 공략이 아주 좋았다」 — 빌라 교체·RB 언급 없음 |
+| `TZWH_vlKVaw` | UTV 시즌 선수 평점 · 11-10 | 선수스카우팅 · 미귀속(시즌 축) | 맨유전 대목 3개만 위에 인용(하우드-벨리스 RB · 헤밍스 역할 · 스즈키 마지막 실점) |
+
+- UTV·1874 채널: 11-10 이후 새 경기 영상 없음(1874 `vH5icKHuSmw`는 재계약 뉴스 — 경기 내용 아님 · 제목 기준 판단). The Villans 채널 목록은 yt-dlp 404로 못 봤다 — 검색 결과에도 새 경기 영상 없음.
+
+### 0건 기록
+
+| 언어 | 검색어 | 결과 |
+|---|---|---|
+| 영어 | Emery Hemmings substitution 4-4 explained · 「Unai Emery "Hemmings" Manchester United」 · Birmingham Live/Guardian game management | 교체 설명 0 · 재계약·평점 기사만 |
+| 스페인어 | Emery cambios Hemmings Manchester United 4-4 explicó · análisis cambios últimos minutos | 원문 0 — Goal 스페인어판 전술 보드(D등급 · 「교체가 빌라를 더 깊이 내렸다」)만 |
+| 독일어 | Manzambi Nati Training Slowenien Schottland Wade | 20 Minuten 본인 발언 채택 · Blick·4-4-2.com |
+| 덴마크어 | Dorgu Aston Villa 4-4 Tipsbladet/bold.dk | Laudrup·Bendtner 감탄뿐 — 빌라 수비 분석 0 |
+| 유튜브 | 「Man United 4-4 Aston Villa analysis」(최신순) · 「Aston Villa Emery Man Utd draw」 | 위 2편 외 신규 분석 0(맨유 팬 리액션은 캐릭 거취 위주 — 제목 기준 제외) |
+
+### 구현 판정
+
+- 구현 주장 3행 적재 — HELD 3(쟁점 #13·#16·#59). **정본 변경 0** · 게임 구현 판정 **「추가 관찰」 유지**.
+- 3일 추적 종결. 남는 것은 다음 경기로 넘긴다: 에메리 교체 의도는 선덜랜드전(11-21) 전 회견에서 질문이 나오면 그때 붙인다 · 쟁점 #13(캐시 복귀 뒤 RB 비대칭)·#16·#53·#59는 각자 조건대로 감시.
+
+### `manager_profiles` 갱신 판정 — **situational 덧붙임 1**
+
+- D+0에 situational 축으로 덧붙인 내용(리드 막판 관리 · 코너 GK 보호 · RB 비대칭)에 **D+3 확정 2가지만** 더했다(updated 2026-11-11): ① 에메리 자기 진단은 블록 높이가 아니라 「지배하는 순간의 공격(볼 소유)」 ② RB 비대칭은 캐시 공백 대응이 아니라 기존 형태의 연장. 교체 의도는 1차 설명이 없어 성향으로 적지 않았다. 다른 축은 단일 경기로 일반화하지 않는다.
+
+### status 판단 — **`match_reports.status` = complete**
+
+- 필수 섹션 · 출전 선수 16명 전원 리포트 · 경기 전용 프리셋 1 · 선수 처방 16(선발 11) 모두 있음 → G12 통과 확인 뒤 draft → **complete**.
+
+### 쟁점 만기 점검(`claim_issues --due`)
+
+- 판정할 차례 11건은 **전부 ATM(8)·LIV(3) 보류 쟁점**이다 — 수집 보류 중이라 이번 회차에서 다루지 않는다. AVL 쟁점 중 만기 도래 0.
