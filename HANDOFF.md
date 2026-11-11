@@ -32,6 +32,7 @@
 <!-- evo-ledger:start -->
 **진화 원장 (자동 · 최근 14일 + 진행 중 · 정본 DB `fut_evolution_log` · `ship.py`가 갱신)**
 
+- 2026-11-11 · Jack Moylan ← Under the Lights 1단계 · OVR 80→83 · 진행 중
 - 2026-11-10 · Issa Kaboré ← Clean Sheet Nights 3단계 · OVR 72→75 · 완료 2026-11-10
 - 2026-11-10 · Rafiki Saïd ← Underdog Run 1단계 · OVR 72→80 · 진행 중
 - 2026-11-08 · Cissé ← CB Roles++ 1단계 · OVR 84→84 · 완료 2026-11-08
