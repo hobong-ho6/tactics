@@ -1,1 +1,1 @@
-INSERT INTO fut_squads VALUES(1,'EFL','4',45,13,5,6,55,'2026-11-11','fut.gg GG Club /api/gg-club/active-squad/ (2026-11-11 club-sync 예약 실행 21시대 회차 §3-3) · 활성 스쿼드 AVL→EFL · activeFormationId 4 동일 · 감독 국적 45 · 리그 13 동일 · 빌드업 5 · 수비접근 6 · 커스텀 52→55');
+INSERT INTO fut_squads VALUES(1,'EFL','24',45,13,5,6,55,'2026-11-12','fut.gg GG Club /api/gg-club/active-squad/ (2026-11-12 club-sync 예약 실행 오전 회차 §3-3) · 활성 스쿼드 EFL 유지 · activeFormationId 4→24(3-4-2-1) · 감독 국적 45 · 리그 13 동일 · 빌드업 5 · 수비접근 6 · 커스텀 55 동일');
