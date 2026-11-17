@@ -34,7 +34,7 @@
 
 - 2026-11-17 · 린델뢰프 ← Backline Bastion 1단계 · OVR 82→83 · 진행 중
 - 2026-11-17 · Alysson ← Right-Hand Drive 1단계 · OVR 80→83 · 진행 중
-- 2026-11-17 · Maatsen ← Streets Won't Forget 1단계 · OVR 79→83 · 진행 중
+- 2026-11-17 · Maatsen ← Streets Won't Forget 3단계 · OVR 79→83 · 완료 2026-11-17
 - 2026-11-17 · Madjo ← Striker School 5단계 · OVR 65→81 · 완료 2026-11-17
 - 2026-11-11 · Jack Moylan ← Under the Lights 1단계 · OVR 80→83 · 진행 중
 - 2026-11-10 · Issa Kaboré ← Clean Sheet Nights 3단계 · OVR 72→75 · 완료 2026-11-10
