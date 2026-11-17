@@ -34,7 +34,7 @@
 
 - 2026-11-17 · Alysson ← RM Roles++ 1단계 · OVR 83→83 · 완료 2026-11-17
 - 2026-11-17 · Maatsen ← LB Roles++ 1단계 · OVR 83→83 · 완료 2026-11-17
-- 2026-11-17 · 린델뢰프 ← Backline Bastion 1단계 · OVR 82→83 · 진행 중
+- 2026-11-17 · 린델뢰프 ← Backline Bastion 4단계 · OVR 82→83 · 완료 2026-11-17
 - 2026-11-17 · Alysson ← Right-Hand Drive 4단계 · OVR 80→83 · 완료 2026-11-17
 - 2026-11-17 · Maatsen ← Streets Won't Forget 3단계 · OVR 79→83 · 완료 2026-11-17
 - 2026-11-17 · Madjo ← Striker School 5단계 · OVR 65→81 · 완료 2026-11-17
