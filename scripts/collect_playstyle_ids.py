@@ -79,7 +79,9 @@ def fetch_labels():
         raise SystemExit("⛔ 번들 참조를 찾지 못했다 — fut.gg 배포 구조가 바뀌었다")
     url = refs[0] if refs[0].startswith("http") else "https://www.fut.gg" + refs[0]
     js = _get(url)
-    enum = {k: int(v) for k, v in re.findall(r"e\[e\.([A-Z_0-9]+)=(\d+)\]=`\1`", js)}
+    # ⭐ 2026-11-17: 라벨표가 `[z.X]:`Label`` → `get[z.X](){return A(`key`,`Label`)}`(현지화 게터)로 바뀌었다 — 영문 기본값으로 되돌린다
+    js = re.sub(r"get(\[[A-Za-z_$][\w$]*\.[A-Z_0-9]+\])\(\)\{return [\w$]+\(`[^`]*`,(`[^`]*`)\)\}", r"\1:\2", js)
+    enum ={k: int(v) for k, v in re.findall(r"e\[e\.([A-Z_0-9]+)=(\d+)\]=`\1`", js)}
 
     best = {}
     for body in _objects_keyed_by_playstyle(js):

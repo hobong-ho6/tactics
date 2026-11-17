@@ -46,6 +46,8 @@ def fetch_styles():
         raise SystemExit("번들 참조를 찾지 못했다 — fut.gg 배포 구조가 바뀌었다")
     js = _get(refs[0] if refs[0].startswith("http") else "https://www.fut.gg" + refs[0])
     enum = {k: int(v) for k, v in re.findall(r"e\[e\.([A-Z_]+)=(\d+)\]", js)}
+    # ⭐ 2026-11-17: 번들이 `name:`Basic`` → `get name(){return A(`chemStyleBasic`,`Basic`)}`(현지화 게터)로 바뀌었다 — 영문 기본값으로 되돌린다
+    js = re.sub(r"get name\(\)\{return \w+\(`[^`]*`,(`[^`]*`)\)\}", r"name:\1", js)
     m = re.search(r"\[\{id:\w+\.BASIC,name:", js)
     if not m:
         raise SystemExit("CHEMISTRY_STYLES 배열을 찾지 못했다")
