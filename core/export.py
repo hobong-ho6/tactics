@@ -535,11 +535,14 @@ def export_all(db_path=None, window="2026-summer"):
     # ⛔⛔ 한 카드에 **행이 여럿일 수 있다**(platform 별). 종전엔 dict 마지막 행이 이겨 순서가
     #    결정하는 구조였고, 실제로 2026-09-27에 가격 있는 행이 NULL 행에 덮여 120장이 화면에
     #    「미형성」으로 떴다. ⇒ **가격 있는 행을 먼저 고른다**(같은 조건이면 platform 순 — 결정적).
+    # ⭐ 2026-11-11: FUTWIZ 대체 행(platform `futwiz-console`)은 같은 날 fut.gg 행이 있으면 **진다**(fut.gg가 기본 출처).
+    #    화면은 `platform`으로 출처를 안다 — 두 출처 값을 한 카드에서 비교·추세로 섞지 않는다.
     prices = {str(r.pop("ea_item_id")): r for r in _rows(con, """SELECT ea_item_id, price, has_price, momentum, platform, pulled
                                                               FROM player_card_prices p
                                                               WHERE pulled=(SELECT MAX(q.pulled) FROM player_card_prices q
                                                                             WHERE q.ea_item_id=p.ea_item_id)
-                                                              ORDER BY ea_item_id, (price IS NOT NULL), platform""")}
+                                                              ORDER BY ea_item_id, (price IS NOT NULL),
+                                                                       (platform NOT LIKE 'futwiz%'), platform""")}
     # 케미스트리 스타일 24종(migration 045) — 화면이 역할 가중과 곱해 추천 순위를 만든다.
     #   + 효과 정의(migration 132) — 한 줄 정의·속성별 작용 근거를 같은 행에 붙인다(style_id + game_version 조인).
     chem_styles = _rows(con, """SELECT s.style_id, s.ea_id, s.name, s.is_gk, s.boosts,

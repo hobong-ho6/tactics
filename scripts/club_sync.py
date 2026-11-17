@@ -86,6 +86,7 @@ STEPS = {
 #    뒤의 참조 수집·export까지 세우면 시세 하나 때문에 나머지가 전부 낡는다(2026-09-29 Cloudflare 403 실측).
 #    ⇒ 실패하면 **건너뛰고 이어 간다.** 화면은 카드별 최신 시세를 그대로 쓰고, 신선도 표·종료 보고에 남긴다.
 #    ⛔ 여기에 다른 축을 함부로 넣지 않는다 — 입력이 되는 축(선수·진화·sbc)이 조용히 건너뛰면 뒤 계산이 낡은 값 위에서 돈다.
+#    ⭐ 2026-11-11: 건너뛴 시세는 **FUTWIZ 브라우저 단계**로 메운다(아래 MANUAL["시세"] — fut.gg 차단 3회차 연속 뒤 신설).
 OPTIONAL = {"시세"}
 
 # ⭐ 순서가 곧 의존이다 — `선수`가 `진화`의 입력(대상 명단·현재 스탯)을 채운다(런북 「순서 의존」).
@@ -155,6 +156,10 @@ MANUAL = {
     "선수": ["브라우저로 GG Club 열고 `collect_ggclub.py --auth-file …`로 캡처를 만든다(로그인 대행 금지)"],
     "sbc": ["포메이션 결손이 있으면 ⭐ 1차: 앱 안 브라우저 www.futwiz.com 탭에서 `collect_futbin_sbc_formations.py --futwiz-snippet` → "
             "`--futwiz-file`로 넣는다(해법은 자동 재계산) · 그래도 남으면 2차: Chrome의 www.futbin.com 탭에서 `--print-snippet` → `--json-file`"],
+    # ⭐ fut.gg 시세가 막혀 건너뛰었을 때만(2026-11-11 · fut.gg Cloudflare 차단 3회차 연속 → 대체 경로를 스크립트에 넣었다)
+    "시세": ["⭐ FUTWIZ 대체: `collect_futgg_prices.py --futwiz-snippet` → 앱 안 브라우저 www.futwiz.com/fc27/players 탭에서 ① 실행 → "
+             "몇 분 뒤 ② 결과를 파일로 → `--futwiz-file`로 넣는다(EA id 일치 카드만 · platform futwiz-console · fut.gg 값과 섞지 않는다)",
+             "그 뒤 export를 다시 돈다 — 종료 보고·커밋 메시지에는 「시세 FUTWIZ N/M장(fut.gg 차단 대체)」 · 둘 다 막혔을 때만 「시세 미갱신」"],
     "전술": ["`https://www.fut.gg/gg-club/my/tactics/` 본문을 읽어 `fut_tactics`/`fut_tactic_roles`에 새 `pulled` 행 추가",
              "활성 스쿼드 응답의 formation/manager/buildUp을 보고 `fut_squads` 갱신(케미에 직접 들어간다)",
              "행을 넣은 뒤 `python3 scripts/fut_tactic_setup_kind.py` — pulled 코드가 어느 프리셋(setup_kind)인지 판정 · 11칸 차이는 setup_diff(migration 118)"],
@@ -232,7 +237,9 @@ def staleness():
     q = [("보유 카드", "SELECT MAX(synced_at) FROM fut_club_players"),
          ("진화 카탈로그", "SELECT MAX(pulled) FROM fc_evolutions"),
          ("SBC", "SELECT MAX(pulled) FROM fc_sbc_sets"),
-         ("시세", "SELECT MAX(pulled) FROM player_card_prices"),
+         # ⭐ 출처별로 따로 센다(2026-11-11) — FUTWIZ 대체 행이 fut.gg 차단을 「갱신됨」으로 가리지 않게.
+         ("시세(fut.gg)", "SELECT MAX(pulled) FROM player_card_prices WHERE platform NOT LIKE 'futwiz%'"),
+         ("시세(FUTWIZ 대체)", "SELECT MAX(pulled) FROM player_card_prices WHERE platform LIKE 'futwiz%'"),
          ("전술", "SELECT MAX(pulled) FROM fut_tactics"),
          ("스쿼드 메타", "SELECT MAX(synced_at) FROM fut_squads"),
          ("갤러리 평가", "SELECT MAX(pulled) FROM fut_gallery_eval"),
@@ -375,8 +382,12 @@ def main():
             print(f"   · {m}")
     staleness()
     if skipped:
-        print(f"\n⏭️ 건너뛴 축: {' · '.join(skipped)} — 받아오지 못해 **기존 값을 그대로 둔다**."
-              "\n   종료 보고·커밋 메시지에 「시세 미갱신(사유)」을 적는다(신선도 표의 날짜가 근거다).")
+        print(f"\n⏭️ 건너뛴 축: {' · '.join(skipped)} — 받아오지 못해 **기존 값을 그대로 둔다**.")
+        if "시세" in skipped:
+            print("   ⇒ 시세는 **FUTWIZ로 메운다**(브라우저 단계 — 스크립트가 대신하지 않는다):")
+            for m in MANUAL["시세"]:
+                print(f"   · {m}")
+        print("   FUTWIZ까지 막혔을 때만 종료 보고·커밋 메시지에 「시세 미갱신(사유)」을 적는다(신선도 표의 날짜가 근거다).")
     print("\n⛔ **커밋은 아직이다** — 무엇이 바뀌었는지 적어야 한다(불변규칙 5):")
     note = f" · ⚠️ {'·'.join(skipped)} 미갱신" if skipped else ""
     print(f'   python3 scripts/ship.py -m "data(fut): 클럽 싱크 {dt.date.today()} [{item}] — …{note}"')

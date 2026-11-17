@@ -33,6 +33,9 @@
     .venv/bin/python scripts/collect_futgg_prices.py --games 27            # 예산 한 번(~45장) · 기다리지 않음
     .venv/bin/python scripts/collect_futgg_prices.py --games 27 --full     # 대상 전량(기다린다 · 백그라운드)
     .venv/bin/python scripts/collect_futgg_prices.py --games 27 --all      # 카드 표 전체(보유 거래불가 제외는 동일)
+    # ⭐ fut.gg가 막혔을 때(2026-11-11) — FUTWIZ 대체 경로(아래 「FUTWIZ 대체 경로」 절)
+    .venv/bin/python scripts/collect_futgg_prices.py --futwiz-snippet      # 앱 안 브라우저 futwiz.com 탭에서 돌릴 JS
+    .venv/bin/python scripts/collect_futgg_prices.py --futwiz-file /tmp/futwiz-prices-YYYYMMDD.json
 """
 import argparse
 import datetime as dt
@@ -45,6 +48,7 @@ sys.path.insert(0, str(ROOT))
 DB = ROOT / "db" / "tactics.db"
 from scripts.collect_futgg_history import API, UA, get   # noqa: E402
 import json                                          # noqa: E402
+import re                                            # noqa: E402
 import time                                          # noqa: E402
 import urllib.error                                  # noqa: E402
 import urllib.request                                # noqa: E402
@@ -161,6 +165,194 @@ def signed_price(game, ea):
         return None, f"fail:get {type(e).__name__}"
 
 
+# ── FUTWIZ 대체 경로 (2026-11-11 신설 — 불변규칙 13) ─────────────────────────────────────────────
+# 왜: fut.gg 서명 가격 API가 Cloudflare 차단으로 **세 회차 연속**(11-10 오전·저녁 · 11-11 저녁) 막혔다.
+#     club-sync 런북은 「같은 축이 두 회차 연속 대체 출처로 넘어가면 스크립트에 대체 경로를 넣는다」고 한다.
+#     FUTWIZ는 앱 안 브라우저에서 봇 검사 없이 열린다(2026-10-22·11-06·11-11 실측) — SBC 포메이션과 같은 동선이다
+#     (collect_futbin_sbc_formations.py --futwiz-snippet → --futwiz-file).
+# ⭐ 조인은 **EA id로만** 한다. FUTWIZ 카드 페이지의 `definitionid`(= JSON-LD `mpn`)가 EA 아이템 id다
+#    — 2026-11-11 실측: 쇠를로트 base 216549 · 잭슨 TOTW 67368061 · 잭슨 상위 버전 84145277 모두 우리 ea_item_id와 같다.
+#    FUTWIZ 페이지 번호(line_id)는 FUTWIZ 자체 id다. 그걸 찾으려고 이름으로 **검색은** 하지만, 적재는
+#    페이지의 mpn이 우리 ea_item_id와 **같을 때만** 한다(이름은 후보를 좁히는 데만 쓴다 — 불변규칙 6).
+# ⭐⭐ fut.gg 시세와 **섞지 않는다** — `platform='futwiz-console'`로 적는다. platform은 UNIQUE 키에 들어 있어
+#    같은 날 두 출처 행이 서로를 덮을 수 없고(같은 값을 쓰면 fut.gg의 ON CONFLICT가 FUTWIZ 행 가격만 바꿔
+#    source는 FUTWIZ로 남는 **출처 위장**이 생긴다), 추세·비교는 같은 platform끼리만 하면 된다.
+#    momentum은 비운다(FUTWIZ 변동률은 fut.gg momentum과 같은 정의가 아니다). source는 「FUTWIZ」로 시작한다.
+#    export는 같은 날이면 fut.gg 행을 먼저 고른다(core/export.py).
+# ⛔ 봇 검사가 뜨면 멈추고 보고한다 — 우회하지 않는다. 서버 액션은 FUTWIZ 화면의 검색창이 부르는 그 자동완성이다.
+FW_PLATFORM = "futwiz-console"
+FW_PLATFORM_LIKE = "futwiz%"
+FW_URL_RE = re.compile(r"https://www\.futwiz\.com/fc27/player/[a-z0-9-]+/\d+")
+FW_CONF = ("MEDIUM — FUTWIZ 카드 페이지 콘솔 BIN(등급 B · 3자 사이트 집계). ⛔ fut.gg 시세와 다른 출처다 — "
+           "추세·비교는 같은 platform(futwiz-console)끼리만. price 없음은 미형성이지 0원이 아니다.")
+# ⚠️ 두 번에 나눠 부른다(① 시작 → ② 결과 읽기) — 카드당 페이지 1~3장(장당 약 1.2MB)이라 한 번 평가로는 길다.
+FW_SNIPPET = r"""window.__fwPrices = {progress: 0}; (async () => {
+  // ⛔ 앱 안 브라우저의 https://www.futwiz.com/fc27/players 탭에서 실행한다(봇 검사 없음 · 같은 출처 fetch).
+  const T = __TARGETS__;
+  const out = {cards: {}, action: null, total: T.length, progress: 0};
+  window.__fwPrices = out;
+  const sleep = ms => new Promise(x => setTimeout(x, ms));
+  // FUTWIZ 검색창의 자동완성(서버 액션 autocompleteFutSearch) id — 배포마다 바뀌므로 지금 로드된 청크에서 찾는다.
+  for (const s of [...document.scripts].map(s => s.src).filter(s => s.includes('/_next/'))) {
+    try {
+      const m = (await (await fetch(s)).text()).match(/createServerReference\)\("([0-9a-f]+)",[^)]*?"autocompleteFutSearch"\)/);
+      if (m) { out.action = m[1]; break; }
+    } catch (e) {}
+  }
+  const slug = n => n.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const seen = {};                                   // EA id → 읽은 카드(같은 선수의 다른 버전 재사용)
+  const read = async path => {
+    await sleep(250);                                // 예의상 간격 — 실제로 받을 때만 쉰다
+    const r = await fetch(path);
+    if (!r.ok) return null;
+    const h = (await r.text()).replace(/\\"/g, '"');
+    const id = h.match(/"sku":"(\d+)","mpn":"(\d+)"/);          // sku = FUTWIZ line_id · mpn = EA 아이템 id
+    if (!id) return null;
+    const m = h.match(new RegExp('"prices":\\{"console":(\\{"line_id":' + id[1] + ',[^}]*\\}),"pc":'));
+    const p = m ? JSON.parse(m[1]) : {};
+    const c = {ea: +id[2], line: +id[1], url: 'https://www.futwiz.com' + new URL(r.url).pathname,
+               bin: p.bin ?? null, src: p.price_source ?? null, upd: p.last_update ?? null};
+    seen[c.ea] = c;
+    return c;
+  };
+  const found = {};                                  // 검색어 → 결과(같은 선수의 여러 카드가 같은 검색을 한다)
+  const search = async q => {
+    if (found[q]) return found[q];
+    await sleep(250);
+    const r = await fetch('/fc27/players', {method: 'POST', body: JSON.stringify([q, '27']),
+                                           headers: {Accept: 'text/x-component', 'next-action': out.action}});
+    const l = (await r.text()).split('\n').find(x => x.startsWith('1:'));
+    return (found[q] = l ? JSON.parse(l.slice(2)) : []);
+  };
+  for (const [n, c] of T.entries()) {
+    out.progress = n;
+    let hit = seen[c.ea] || null, why = 'NOTFOUND';
+    const cand = [];                                 // 못 찾았을 때 FUTWIZ 후보의 EA id — 진단용(재발행 id 50331648+base 등)
+    try {
+      if (!hit && c.url) { const r = await read(c.url.replace('https://www.futwiz.com', '')); if (r && r.ea === c.ea) hit = r; }
+      if (!hit && !out.action) why = 'NOACTION';
+      if (!hit && out.action) {
+        let res = await search(c.q);
+        if (!res.length && c.q.includes(' ')) res = await search(c.q.split(' ').slice(-1)[0]);  // 결과 0일 때만 성으로
+        res = [...res].sort((a, b) => (b.rating === c.ovr) - (a.rating === c.ovr));         // OVR 같은 후보부터
+        for (const p of res.slice(0, 8)) {
+          const r = Object.values(seen).find(x => x.line === p.line_id)
+                    || await read(`/fc27/player/${slug(p.common_name)}/${p.line_id}`).catch(() => null);
+          if (r && r.ea === c.ea) { hit = r; break; }
+          cand.push(r ? r.ea : 'p' + p.line_id);
+        }
+      }
+    } catch (e) { why = 'ERR ' + e; }
+    out.cards[c.ea] = hit ? {url: hit.url, bin: hit.bin, src: hit.src, upd: hit.upd} : {miss: why, cand};
+  }
+  out.progress = T.length;
+  out.done = 1;
+})(); 'started'"""
+FW_READ = ("(o => o.done ? JSON.stringify(o) : `진행 ${o.progress}/${o.total}`)(window.__fwPrices)"
+           "   // done:1 이 보이면 끝 — 이 문자열을 그대로 파일에 쓴다")
+
+
+def futwiz_snippet(con, gv, all_=False, limit=None):
+    """FUTWIZ 스니펫 대상 — `[{ea, q, ovr, url}]`. q는 fut.gg 카드 URL의 영문 slug(검색어일 뿐 — 조인 키 아님)."""
+    known = {}
+    for ea, src in con.execute("""SELECT ea_item_id, source FROM player_card_prices
+                                  WHERE game_version=? AND platform=? ORDER BY pulled""", (gv, FW_PLATFORM)):
+        m = FW_URL_RE.search(src or "")
+        if m:
+            known[ea] = m.group(0)            # 지난 회차에 찾은 FUTWIZ 페이지 — 검색 없이 바로 읽는다
+    out, skip = [], []
+    for ea, _ in targets(con, gv, all_):
+        url_, name, ovr, pname = con.execute(
+            """SELECT i.futgg_url, i.name_kr, i.ovr, p.name FROM player_card_items i
+               LEFT JOIN players p ON p.id=i.player_id WHERE i.game_version=? AND i.ea_item_id=?""", (gv, ea)).fetchone()
+        m = re.search(r"/players/\d+-([a-z0-9-]+)/", url_ or "")
+        # ⚠️ fut.gg slug가 「unknown-player」인 카드가 있다(2026-11-11 실측 2장) — 그땐 우리 영문 이름으로 찾는다.
+        q = m.group(1).replace("-", " ") if m and m.group(1) != "unknown-player" else None
+        q = q or pname or (name if name and name.isascii() else None)
+        if not q:
+            skip.append(ea); continue
+        out.append({"ea": ea, "q": q, "ovr": ovr, "url": known.get(ea)})
+    if limit:
+        out = out[:limit]
+    return out, skip
+
+
+def futwiz_load(con, gv, raw, pulled):
+    """스니펫 결과를 `player_card_prices`에 적는다. **mpn = ea_item_id인 카드만** 들어온다(스니펫이 이미 걸렀다 — 여기서 한 번 더)."""
+    if isinstance(raw, str):
+        raw = json.loads(raw)
+    if not raw.get("done"):
+        raise SystemExit("⛔ `done`이 없다 — 스니펫이 아직 끝나지 않았다. 잠시 뒤 ②를 다시 읽을 것")
+    if not raw.get("action"):
+        print("   ⚠️ FUTWIZ 자동완성 id를 못 찾았다 — 지난 회차에 찾은 페이지만 읽었다. "
+              "https://www.futwiz.com/fc27/players 탭에서 돌렸는지 확인할 것")
+    pid = dict(targets(con, gv, all_=True))
+    rows, miss, stale, nobin, diag = [], {}, 0, 0, []
+    now = dt.datetime.now().timestamp()
+    for k, c in (raw.get("cards") or {}).items():
+        ea = int(k)
+        if "miss" in c or not FW_URL_RE.fullmatch(c.get("url") or ""):
+            why = c.get("miss", "URL")
+            miss[why] = miss.get(why, 0) + 1
+            if c.get("cand"):
+                diag.append(f"{ea} → FUTWIZ 후보 EA id {c['cand']}")
+            continue
+        if ea not in pid:
+            miss["카드 표에 없는 EA id"] = miss.get("카드 표에 없는 EA id", 0) + 1; continue
+        bin_ = c.get("bin") or None
+        nobin += bin_ is None
+        upd = c.get("upd")
+        when = dt.datetime.fromtimestamp(upd).strftime("%Y-%m-%d %H:%M") if upd else "미상"
+        if upd and now - upd > 3 * 86400:
+            stale += 1
+        rows.append((gv, ea, pid[ea], bin_, 1 if bin_ else 0, None, FW_PLATFORM,
+                     f"FUTWIZ 카드 페이지 prices.console.bin ({c['url']} · mpn=EA {ea} · FUTWIZ 갱신 {when} · "
+                     f"price_source={c.get('src')} · {pulled}, collect_futgg_prices.py --futwiz-file)",
+                     FW_CONF, pulled))
+    con.executemany("""INSERT INTO player_card_prices(game_version, ea_item_id, player_id, price, has_price, momentum, platform,
+                         source, confidence, pulled) VALUES(?,?,?,?,?,?,?,?,?,?)
+                       ON CONFLICT(game_version, ea_item_id, platform, pulled) DO UPDATE SET
+                         price=excluded.price, has_price=excluded.has_price, source=excluded.source""", rows)
+    con.commit()
+    n = len(raw.get("cards") or {})
+    print(f"{gv} FUTWIZ: 대상 {n}장 → {len(rows)}행 적재(platform {FW_PLATFORM}) · 시세 있음 {len(rows) - nobin}장 · "
+          f"BIN 없음 {nobin}장 · 못 찾음 {n - len(rows)}장 (pulled {pulled})")
+    for r, c in sorted(miss.items(), key=lambda kv: -kv[1]):
+        print(f"   ⚠️ {r}: {c}장")
+    if diag:
+        print("   ℹ️ 못 찾은 카드의 FUTWIZ 후보(같은 선수 다른 EA id — 적재하지 않았다 · 50331648+base는 EA 재발행 id):")
+        for d in diag[:15]:
+            print(f"      {d}")
+    if stale:
+        print(f"   ⚠️ FUTWIZ 갱신이 3일 넘은 카드 {stale}장 — 값은 적었고 갱신 시각은 source에 있다")
+    print(f"   종료 보고에 「시세 FUTWIZ {len(rows)}/{n}장(fut.gg 차단 대체)」이라고 적는다.")
+
+
+def targets(con, gv, all_=False):
+    """시세 대상 카드 `[(ea_item_id, player_id)]` — fut.gg·FUTWIZ 두 경로가 **같은 대상**을 쓰게 한 곳에 둔다."""
+    # ⭐ 선수당 2요청이고 **한 회차 약 50장이 한도**다(429). 그래서:
+    #   ⑴ 기본 대상은 **보유 + 관리 4팀**(`--all`이면 전체)
+    #   ⑵ 정렬은 **가장 오래 전에 가격을 받은 순** — 회차를 나눠 돌면 전원이 차례로 갱신된다.
+    #   ⛔ ea_item_id 순으로 두면 앞쪽 50장만 영원히 갱신되고 뒤는 **영영 안 받는다**.
+    #   ⭐ 「받은 날」은 **fut.gg 행으로만** 센다(2026-11-11) — FUTWIZ 대체 행이 fut.gg 순번을 밀어내지 않게.
+    scope = ("" if all_ else
+             " AND (i.ea_item_id IN (SELECT ea_item_id FROM fut_club_players WHERE status='owned')"
+             "      OR i.player_id IN (SELECT se.player_id FROM squad_entries se"
+             "                           JOIN regimes g ON g.id=se.regime_id))")
+    # ⭐ 보유 **거래불가** 카드는 뺀다(2026-09-29) — 팔 수 없고, 화면은 미보유 카드 시세만 쓴다(구매 우선순위).
+    #    같은 아이템을 거래 가능으로도 들고 있으면 남긴다(그건 팔 수 있다).
+    scope += (" AND i.ea_item_id NOT IN (SELECT ea_item_id FROM fut_club_players"
+              "                          WHERE status='owned' AND is_untradeable=1"
+              "                            AND ea_item_id NOT IN (SELECT ea_item_id FROM fut_club_players"
+              "                                                   WHERE status='owned' AND COALESCE(is_untradeable,0)=0))")
+    return con.execute(
+        "SELECT i.ea_item_id, i.player_id FROM player_card_items i"
+        " WHERE i.game_version=?" + scope +
+        " ORDER BY COALESCE((SELECT MAX(p.pulled) FROM player_card_prices p"
+        "                     WHERE p.ea_item_id=i.ea_item_id AND p.price IS NOT NULL"
+        "                       AND p.platform NOT LIKE ?), '0000'),"
+        "          i.ea_item_id", (gv, FW_PLATFORM_LIKE)).fetchall()
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--games", nargs="*", default=["27"])
@@ -173,39 +365,42 @@ def main():
     ap.add_argument("--limit", type=int, help="앞에서 N장만(속도 조절 확인용)")
     ap.add_argument("--full", action="store_true",
                     help="예산이 비면 기다리며 대상 전량을 받는다(오래 걸린다 — 백그라운드로). 기본은 예산 한 번 쓰고 멈춘다")
+    ap.add_argument("--futwiz-snippet", action="store_true",
+                    help="⭐ fut.gg 차단 시 대체 — 앱 안 브라우저 futwiz.com/fc27/players 탭에서 돌릴 JS를 찍는다")
+    ap.add_argument("--futwiz-file", help="FUTWIZ 스니펫 결과 JSON 파일을 적재한다(platform futwiz-console)")
     a = ap.parse_args()
+    if a.futwiz_snippet or a.futwiz_file:
+        con = connect_db(DB)
+        gv = f"FC{a.games[0]}"
+        if a.futwiz_file:
+            futwiz_load(con, gv, json.load(open(a.futwiz_file)), a.pulled)
+            print("\n다음: python3 scripts/export.py && scripts/db_dump.sh")
+            return
+        tg, skip = futwiz_snippet(con, gv, a.all, a.limit)
+        out = f"/tmp/futwiz-prices-{a.pulled.replace('-', '')}.json"
+        known = sum(1 for t in tg if t["url"])
+        print(f"// 대상 {len(tg)}장(지난 회차에 찾은 FUTWIZ 페이지 {known}장 · 나머지는 검색으로 찾는다)"
+              + (f" · 검색어 없음 {len(skip)}장 제외" if skip else ""))
+        print("// ① 시작 — 앱 안 브라우저에서 https://www.futwiz.com/fc27/players 를 연 탭에서 실행\n"
+              + FW_SNIPPET.replace("__TARGETS__", json.dumps(tg, ensure_ascii=False)))
+        print("\n// ② 몇 분 뒤 결과 읽기(진행 중이면 「진행 n/N」)\n" + FW_READ)
+        print(f"\n── 셸 ── (② 결과 JSON 문자열을 {out}에 쓴 뒤)\n"
+              f".venv/bin/python scripts/collect_futgg_prices.py --futwiz-file {out}")
+        return
     global BUDGET
     BUDGET = Budget(a.budget, a.window, wait=a.full)
     con = connect_db(DB)
     for g in a.games:
         gv = f"FC{g}"
-        # ⭐ 선수당 2요청이고 **한 회차 약 50장이 한도**다(429). 그래서:
-        #   ⑴ 기본 대상은 **보유 + 관리 4팀**(`--all`이면 전체)
-        #   ⑵ 정렬은 **가장 오래 전에 가격을 받은 순** — 회차를 나눠 돌면 전원이 차례로 갱신된다.
-        #   ⛔ ea_item_id 순으로 두면 앞쪽 50장만 영원히 갱신되고 뒤는 **영영 안 받는다**.
-        scope = ("" if a.all else
-                 " AND (i.ea_item_id IN (SELECT ea_item_id FROM fut_club_players WHERE status='owned')"
-                 "      OR i.player_id IN (SELECT se.player_id FROM squad_entries se"
-                 "                           JOIN regimes g ON g.id=se.regime_id))")
-        # ⭐ 보유 **거래불가** 카드는 뺀다(2026-09-29) — 팔 수 없고, 화면은 미보유 카드 시세만 쓴다(구매 우선순위).
-        #    같은 아이템을 거래 가능으로도 들고 있으면 남긴다(그건 팔 수 있다).
-        scope += (" AND i.ea_item_id NOT IN (SELECT ea_item_id FROM fut_club_players"
-                  "                          WHERE status='owned' AND is_untradeable=1"
-                  "                            AND ea_item_id NOT IN (SELECT ea_item_id FROM fut_club_players"
-                  "                                                   WHERE status='owned' AND COALESCE(is_untradeable,0)=0))")
-        items = con.execute(
-            "SELECT i.ea_item_id, i.player_id FROM player_card_items i"
-            " WHERE i.game_version=?" + scope +
-            " ORDER BY COALESCE((SELECT MAX(p.pulled) FROM player_card_prices p"
-            "                     WHERE p.ea_item_id=i.ea_item_id AND p.price IS NOT NULL), '0000'),"
-            "          i.ea_item_id", (gv,)).fetchall()
+        items = targets(con, gv, a.all)
         pid = dict(items)
         ids = [i for i, _ in items]
         # ⭐ 오늘 이미 받은 카드는 건너뛴다(2026-09-27) — 이어 돌릴 때 **예산을 이미 끝낸 카드에 쓰던** 것을 막는다.
         #    실증: 391장이 끝난 상태에서 45장을 더 받았는데 새로 채워진 건 2장뿐이었다.
         if not a.refresh:
             done = {e for (e,) in con.execute(
-                "SELECT ea_item_id FROM player_card_prices WHERE game_version=? AND pulled=?", (gv, a.pulled))}
+                "SELECT ea_item_id FROM player_card_prices WHERE game_version=? AND pulled=? AND platform NOT LIKE ?",
+                (gv, a.pulled, FW_PLATFORM_LIKE))}
             skipped = len(ids)
             ids = [e for e in ids if e not in done]
             skipped -= len(ids)
@@ -277,7 +472,8 @@ def main():
         if blocked:
             print(f"   ⛔⛔ fut.gg가 봇 차단(Cloudflare)을 걸었다 — {blocked}. **여기서 멈췄다**(우회하지 않는다)."
                   "\n      재시도·헤더 변경으로 뚫지 않는다. 시간을 두고 다음 회차에 다시 본다 — 화면은 카드별 최신 시세를 그대로 쓴다."
-                  "\n      종료 보고에 「시세 수집 차단(Cloudflare)」이라고 적는다.")
+                  "\n      ⭐ 대체: FUTWIZ — `collect_futgg_prices.py --futwiz-snippet` → 앱 안 브라우저 futwiz.com 탭 → `--futwiz-file`"
+                  "\n      (그것도 안 되면 종료 보고에 「시세 수집 차단(Cloudflare)」이라고 적는다).")
             BLOCKED[0] = True
         if spent and left:
             print(f"   ↪️ 이번 회차 예산을 다 썼다 — 남은 {left}장은 **다음 회차**가 오래된 순으로 받는다."
