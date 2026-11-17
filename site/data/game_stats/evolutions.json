@@ -2123,16 +2123,6 @@
    "verdict": "applied"
   },
   {
-   "alt_style": null,
-   "club_player_id": 82,
-   "reason_kr": "역할 1위(드리블·균형·크로스)",
-   "report": "reports/research/2026-11-05-xi-chem-review.md",
-   "reviewed": "2026-11-05",
-   "role_id": "wm_winger",
-   "style": "Engine",
-   "verdict": "keep"
-  },
-  {
    "alt_style": "Engine",
    "club_player_id": 16,
    "reason_kr": "속도형(가속 92→98)·실축 xG 0.14·전진 운반 83m/90. 커널 1위 Finisher는 결정력 가중 탓 — 철회. 오래 몰고 크로스까지면 Engine",
@@ -2280,6 +2270,16 @@
    "reviewed": "2026-11-17",
    "role_id": "wm_winger",
    "style": "Hunter",
+   "verdict": "applied"
+  },
+  {
+   "alt_style": "Engine",
+   "club_player_id": 82,
+   "reason_kr": "사용자는 크로스를 거의 올리지 않는다 → 윙어 크로스 제외 점수 Finisher 48 > Engine 42 > Hunter 39. 왼발 RM이라 안쪽 마무리 동선 — 결정력 79→88·드리블 81→90·민첩 77→83. 속도 69는 Hunter로도 75(Controlled 유지)라 포기하고 강점 쪽. 정통 윙어로 크로스를 쓰면 Engine. 운용: 음바예 LM 선발 · 맥긴 RM → 후반 중앙 · 알리송 RM 교체(사용자 적용 2026-11-17)",
+   "report": null,
+   "reviewed": "2026-11-17",
+   "role_id": "wm_winger",
+   "style": "Finisher",
    "verdict": "applied"
   }
  ],
@@ -34027,7 +34027,7 @@
     "card_ovr": 83,
     "chem_extra": "{\"club\": 0, \"league\": 0, \"nation\": 0}",
     "chem_points": 3,
-    "chem_style_ea": 260,
+    "chem_style_ea": 252,
     "club": "Aston Villa",
     "current_attrs": "{\"가속\": 69, \"질주 속도\": 69, \"공격 위치 선정\": 80, \"결정력\": 79, \"슈팅력\": 84, \"중거리슛\": 82, \"발리 슛\": 75, \"페널티킥\": 65, \"시야\": 82, \"크로스\": 82, \"프리킥 정확도\": 61, \"짧은 패스\": 82, \"긴 패스\": 80, \"커브\": 81, \"민첩성\": 77, \"균형 감각\": 88, \"반응력\": 86, \"볼컨트롤\": 82, \"드리블\": 81, \"침착\": 83, \"차단력\": 79, \"헤딩 정확도\": 57, \"수비 위치 선정\": 79, \"스탠딩 태클\": 82, \"슬라이딩 태클\": 77, \"점프\": 74, \"체력\": 92, \"힘\": 79, \"공격성\": 87, \"다이빙\": 9, \"핸들링\": 13, \"킥\": 12, \"포지셔닝\": 10, \"반사신경\": 12}",
     "current_ovr": 83,
@@ -34054,7 +34054,7 @@
     "skill_moves": 2,
     "status": "owned",
     "synced_at": "2026-11-12",
-    "updated": "2026-11-03",
+    "updated": "2026-11-17",
     "weak_foot": 2,
     "weight_kg": 68
    },
@@ -66929,7 +66929,7 @@
     "basis": "ea-sync",
     "card_image_url": "https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/2027/futgg-player-item-card/27-210881.5123b23cd68a28676a2da96e454c2f30313496ccf6af48887bc5e69b38256d62.webp",
     "chem_points": 3,
-    "chem_style_ea": 260,
+    "chem_style_ea": 252,
     "club_player_id": 82,
     "evo_levels": 2,
     "evo_names": "LM Roles++,RM Roles++",
