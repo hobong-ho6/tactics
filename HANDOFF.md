@@ -48,9 +48,6 @@
 - 2026-11-06 · Hemmings ← Strings of Fate 3단계 · OVR 81→82 · 완료 2026-11-06
 - 2026-11-05 · Cissé ← Glow Guard 4단계 · OVR 73→80 · 완료 2026-11-07
 - 2026-11-04 · Jamaldeen Jimoh-Aloba ← Channel Surfer [SP 11] 3단계 · OVR 80→83 · 완료 2026-11-05
-- 2026-11-03 · 루제리 ← The Haunted Wall 4단계 · OVR 81→84 · 완료 2026-11-03
-- 2026-11-03 · Richard Kone ← Two Faces of Fear 3단계 · OVR 80→81 · 완료 2026-11-03
-- 2026-11-03 · Elia Caprile ← No Soul Shall Pass 2단계 · OVR 80→81 · 완료 2026-11-04
 <!-- evo-ledger:end -->
 
 **분량**: 이 문서 약 12.8KB(목표 10~15 · 상한 20) — 11-05 압축(19.98KB에서)(완료 항목 제거 · 세션 기록 병합).
