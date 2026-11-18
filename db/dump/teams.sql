@@ -63,3 +63,4 @@ INSERT INTO teams VALUES('SEA','Seattle Sounders','시애틀 사운더스',NULL,
 INSERT INTO teams VALUES('POL','Poland','폴란드',NULL,NULL,'[2026-10-02] ⚠️국가대표 — 참조 어휘(캐시 네이션스리그 적재).',1);
 INSERT INTO teams VALUES('SCO','Scotland','스코틀랜드',NULL,NULL,'[2026-10-02] ⚠️국가대표 — 참조 어휘(맥긴 네이션스리그 적재).',1);
 INSERT INTO teams VALUES('BOU','AFC Bournemouth','본머스',NULL,8678,'[2026-11-18] 상대 팀 등록(사용자 지시) — 로제 체제 전술 + 베스트 11만. fotmob_id 8678은 팀 페이지·스쿼드 API 팀명으로 검증. sofascore_id 미검증(NULL). 근거 reports/research/2026-11-18-opponents-bou-bha-che.md',0);
+INSERT INTO teams VALUES('MIL','AC Milan','AC 밀란',NULL,8564,'[2026-11-18] 상대 팀 등록(사용자 지시) — 아모림 체제 전술 + 베스트 11. fotmob_id 8564는 스쿼드 API 팀명(Milan)·감독(Ruben Amorim)으로 검증. sofascore_id 미검증(NULL). 근거 reports/research/2026-11-18-opponent-milan.md',0);

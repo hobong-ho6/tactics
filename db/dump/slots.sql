@@ -130,3 +130,14 @@ INSERT INTO slots VALUES(6,'4-2-3-1 Wide','RCB','CB',63,28,3,'AVL 4-2-3-1 Wide �
 INSERT INTO slots VALUES(6,'4-2-3-1 Wide','RDM','DM',62,42,6,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
 INSERT INTO slots VALUES(6,'4-2-3-1 Wide','RM','WM',85,64,9,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
 INSERT INTO slots VALUES(6,'4-2-3-1 Wide','ST','ST',50,87,10,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
+INSERT INTO slots VALUES(7,'4-2-3-1 Wide','CAM','CAM',50,66,8,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
+INSERT INTO slots VALUES(7,'4-2-3-1 Wide','GK','GK',50,6,0,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
+INSERT INTO slots VALUES(7,'4-2-3-1 Wide','LB','FB',13,32,1,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
+INSERT INTO slots VALUES(7,'4-2-3-1 Wide','LCB','CB',37,28,2,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
+INSERT INTO slots VALUES(7,'4-2-3-1 Wide','LDM','DM',38,42,5,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
+INSERT INTO slots VALUES(7,'4-2-3-1 Wide','LM','WM',14,64,7,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
+INSERT INTO slots VALUES(7,'4-2-3-1 Wide','RB','FB',87,32,4,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
+INSERT INTO slots VALUES(7,'4-2-3-1 Wide','RCB','CB',63,28,3,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
+INSERT INTO slots VALUES(7,'4-2-3-1 Wide','RDM','DM',62,42,6,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
+INSERT INTO slots VALUES(7,'4-2-3-1 Wide','RM','WM',85,64,9,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
+INSERT INTO slots VALUES(7,'4-2-3-1 Wide','ST','ST',50,87,10,'AVL 4-2-3-1 Wide 슬롯 기하 복사(2026-11-18 상대 팀 등록)','LOW — 팀 고유 기하 실측 없음 · 표준 4-2-3-1 Wide 좌표',1);
