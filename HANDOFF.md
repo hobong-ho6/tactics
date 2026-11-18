@@ -32,16 +32,19 @@
 <!-- evo-ledger:start -->
 **진화 원장 (자동 · 최근 14일 + 진행 중 · 정본 DB `fut_evolution_log` · `ship.py`가 갱신)**
 
-- 2026-11-18 · Suzuki ← Feline Flex 1단계 · OVR 80→83 · 진행 중
+- 2026-11-18 · Mateus Mané ← Intercept 1단계 · OVR 80→80 · 완료 2026-11-18
+- 2026-11-18 · Mateus Mané ← Pinged Pass [FC26 Carryover] 1단계 · OVR 80→80 · 완료 2026-11-18
+- 2026-11-18 · Hemmings ← Shadow Striker++ 1단계 · OVR 82→82 · 완료 2026-11-18
+- 2026-11-18 · Suzuki ← Feline Flex 2단계 · OVR 80→83 · 완료 2026-11-18
 - 2026-11-17 · Alysson ← RM Roles++ 1단계 · OVR 83→83 · 완료 2026-11-17
 - 2026-11-17 · Maatsen ← LB Roles++ 1단계 · OVR 83→83 · 완료 2026-11-17
 - 2026-11-17 · 린델뢰프 ← Backline Bastion 4단계 · OVR 82→83 · 완료 2026-11-17
 - 2026-11-17 · Alysson ← Right-Hand Drive 4단계 · OVR 80→83 · 완료 2026-11-17
 - 2026-11-17 · Maatsen ← Streets Won't Forget 3단계 · OVR 79→83 · 완료 2026-11-17
 - 2026-11-17 · Madjo ← Striker School 5단계 · OVR 65→81 · 완료 2026-11-17
-- 2026-11-11 · Jack Moylan ← Under the Lights 1단계 · OVR 80→83 · 진행 중
+- 2026-11-11 · Jack Moylan ← Under the Lights 4단계 · OVR 80→83 · 완료 2026-11-18
 - 2026-11-10 · Issa Kaboré ← Clean Sheet Nights 3단계 · OVR 72→75 · 완료 2026-11-10
-- 2026-11-10 · Rafiki Saïd ← Underdog Run 1단계 · OVR 72→80 · 진행 중
+- 2026-11-10 · Rafiki Saïd ← Underdog Run 5단계 · OVR 72→80 · 완료 2026-11-18
 - 2026-11-08 · Cissé ← CB Roles++ 1단계 · OVR 84→84 · 완료 2026-11-08
 - 2026-11-07 · Cissé ← Pamplona Grit [SP 16] 3단계 · OVR 80→84 · 완료 2026-11-07
 - 2026-11-07 · Alysson ← Matchday Marksman 4단계 · OVR 80→83 · 제거 2026-11-17
