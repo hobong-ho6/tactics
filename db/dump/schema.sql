@@ -293,39 +293,6 @@ CREATE TABLE fbref_percentiles(
   source TEXT,
   UNIQUE(player_id, metric, period)
 );
-CREATE TABLE fotmob_traits(
-  id INTEGER PRIMARY KEY,
-  player_id INTEGER NOT NULL REFERENCES players(id),
-  pulled TEXT,                 -- 수집일
-  pos_group TEXT,              -- 비교 모집단 원문 (예: 'Stats compared to other midfielders')
-  metric TEXT NOT NULL,        -- Fotmob key (chances_created 등)
-  metric_kr TEXT,
-  percentile INTEGER,          -- 0~100 (원값 0~1 × 100)
-  source TEXT,
-  UNIQUE(player_id, metric)
-);
-CREATE TABLE fotmob_season_stats(
-  id INTEGER PRIMARY KEY,
-  player_id INTEGER NOT NULL REFERENCES players(id),
-  pulled TEXT,
-  league TEXT,                 -- 'Bundesliga 2025/2026'
-  season TEXT,
-  metric TEXT NOT NULL,        -- 라벨 원문 ('Goals','xG' 등)
-  metric_kr TEXT,
-  value TEXT,                  -- 원값 문자열 (%·소수 혼재)
-  source TEXT,
-  UNIQUE(player_id, league, season, metric)
-);
-CREATE TABLE fotmob_detail_stats(
-  id INTEGER PRIMARY KEY,
-  player_id INTEGER NOT NULL REFERENCES players(id),
-  pulled TEXT, season TEXT, league TEXT,
-  metric_key TEXT NOT NULL, metric TEXT, metric_kr TEXT,
-  stat_value TEXT, per90 REAL,
-  percentile INTEGER,          -- 같은 리그 동포지션 대비 백분위(합계 기준)
-  percentile_per90 INTEGER,    -- 90분당 기준 백분위
-  source TEXT,
-  UNIQUE(player_id, season, league, metric_key));
 CREATE TABLE slot_canon_roles(
   regime_id INTEGER NOT NULL REFERENCES regimes(id),
   formation TEXT NOT NULL,
@@ -1501,3 +1468,57 @@ CREATE TABLE fut_chem_reviews(
   report TEXT,                      -- 근거 리포트 경로
   reviewed TEXT NOT NULL
 );
+CREATE TABLE "fotmob_detail_stats"(
+  id INTEGER PRIMARY KEY,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  pulled TEXT NOT NULL,
+  season TEXT,                 -- '2025/2026'
+  league TEXT,                 -- 'Premier League'
+  metric_key TEXT NOT NULL,    -- Fotmob localizedTitleId (안정 키)
+  metric TEXT,                 -- 영문 표시명 원문
+  metric_kr TEXT,
+  stat_value TEXT,             -- 합계 원값 (문자열 — %·분수 혼재)
+  per90 REAL,
+  percentile INTEGER,          -- 같은 리그 동포지션 대비 백분위(합계 기준)
+  percentile_per90 INTEGER,    -- 90분당 기준 백분위
+  source TEXT,
+  UNIQUE(player_id, season, league, metric_key, pulled)
+);
+CREATE INDEX ix_fotmob_detail_player ON fotmob_detail_stats(player_id, season, league, pulled);
+CREATE VIEW v_fotmob_detail_latest AS
+SELECT f.* FROM fotmob_detail_stats f
+ WHERE f.pulled = (SELECT MAX(g.pulled) FROM fotmob_detail_stats g
+                    WHERE g.player_id=f.player_id AND g.season IS f.season AND g.league IS f.league
+                      AND g.metric_key=f.metric_key);
+CREATE TABLE "fotmob_season_stats"(
+  id INTEGER PRIMARY KEY,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  pulled TEXT NOT NULL,
+  league TEXT,                 -- 'Bundesliga 2025/2026'
+  season TEXT,
+  metric TEXT NOT NULL,        -- 라벨 원문 ('Goals','xG' 등)
+  metric_kr TEXT,
+  value TEXT,                  -- 원값 문자열 (%·소수 혼재)
+  source TEXT,
+  UNIQUE(player_id, league, season, metric, pulled)
+);
+CREATE TABLE "fotmob_traits"(
+  id INTEGER PRIMARY KEY,
+  player_id INTEGER NOT NULL REFERENCES players(id),
+  pulled TEXT NOT NULL,        -- 수집일
+  pos_group TEXT,              -- 비교 모집단 원문 (예: 'Stats compared to other midfielders')
+  metric TEXT NOT NULL,        -- Fotmob key (chances_created 등)
+  metric_kr TEXT,
+  percentile INTEGER,          -- 0~100 (원값 0~1 × 100)
+  source TEXT,
+  UNIQUE(player_id, metric, pulled)
+);
+CREATE VIEW v_fotmob_season_latest AS
+SELECT f.* FROM fotmob_season_stats f
+ WHERE f.pulled = (SELECT MAX(g.pulled) FROM fotmob_season_stats g
+                    WHERE g.player_id=f.player_id AND g.league IS f.league AND g.season IS f.season
+                      AND g.metric=f.metric);
+CREATE VIEW v_fotmob_traits_latest AS
+SELECT t.* FROM fotmob_traits t
+ WHERE t.pulled = (SELECT MAX(u.pulled) FROM fotmob_traits u
+                    WHERE u.player_id=t.player_id AND u.metric=t.metric);

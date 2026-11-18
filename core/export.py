@@ -877,7 +877,7 @@ def export_all(db_path=None, window="2026-summer"):
         #       ⇒ 그 선수가 낀 비교가 통째로 빈 화면이 되던 것을 막는다.
         traits = {}
         for r in _rows(con, """SELECT t.player_id, t.pos_group, t.metric, t.metric_kr, t.percentile, t.pulled
-                               FROM fotmob_traits t
+                               FROM v_fotmob_traits_latest t   -- 134: 지표별 최신 수집일만
                               WHERE t.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
                                     UNION SELECT player_id FROM prescriptions WHERE regime_id=?)""", (rid, rid)):
             traits.setdefault(str(r.pop("player_id")), []).append(r)
@@ -887,7 +887,7 @@ def export_all(db_path=None, window="2026-summer"):
         for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, f.player_id, f.season, f.league,
                                       f.metric_key, f.metric, f.metric_kr, f.stat_value, f.per90,
                                       f.percentile, f.percentile_per90, f.pulled
-                               FROM fotmob_detail_stats f JOIN players p ON p.id=f.player_id
+                               FROM v_fotmob_detail_latest f JOIN players p ON p.id=f.player_id   -- 134: 지표별 최신 수집일만
                                WHERE f.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
                                      UNION SELECT player_id FROM prescriptions WHERE regime_id=?
                                      UNION SELECT p2.id FROM transfer_targets t JOIN players p2
@@ -897,7 +897,7 @@ def export_all(db_path=None, window="2026-summer"):
         fm_season = {}
         for r in _rows(con, """SELECT COALESCE(p.name_kr,p.name) label, f.player_id, f.league, f.season,
                                       f.metric, f.metric_kr, f.value, f.pulled
-                               FROM fotmob_season_stats f JOIN players p ON p.id=f.player_id
+                               FROM v_fotmob_season_latest f JOIN players p ON p.id=f.player_id   -- 134: 지표별 최신 수집일만
                                WHERE f.player_id IN (SELECT player_id FROM squad_entries WHERE regime_id=?
                                      UNION SELECT player_id FROM prescriptions WHERE regime_id=?
                                      UNION SELECT p2.id FROM transfer_targets t JOIN players p2

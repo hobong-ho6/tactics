@@ -1540,3 +1540,5 @@ INSERT INTO player_status VALUES(1539,178,'2026-11-17','injury_none',NULL,NULL,N
 INSERT INTO player_status VALUES(1540,178,'2026-11-17','contract_end','2031-06-30',NULL,NULL,'fotmob.com/api/data (player 966021, scripts/collect_fotmob_players.py, 2026-11-17 수집)',NULL);
 INSERT INTO player_status VALUES(1541,190,'2026-11-17','injury_none',NULL,NULL,NULL,'fotmob.com/api/data (player 343748, scripts/collect_fotmob_players.py, 2026-11-17 수집)','FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.');
 INSERT INTO player_status VALUES(1542,190,'2026-11-17','contract_end','2028-06-30',NULL,NULL,'fotmob.com/api/data (player 343748, scripts/collect_fotmob_players.py, 2026-11-17 수집)',NULL);
+INSERT INTO player_status VALUES(1543,59,'2026-11-18','injury_none',NULL,NULL,NULL,'fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-11-18 수집)','FotMob injuryInformation = null(부재 확인). 「부상 없음」의 실측이지 결손이 아니다.');
+INSERT INTO player_status VALUES(1544,59,'2026-11-18','contract_end','2031-06-30',NULL,NULL,'fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-11-18 수집)',NULL);

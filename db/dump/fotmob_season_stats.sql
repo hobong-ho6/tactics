@@ -2023,3 +2023,11 @@ INSERT INTO fotmob_season_stats VALUES(2030,178,'2026-11-09','Premier League','2
 INSERT INTO fotmob_season_stats VALUES(2031,178,'2026-11-09','Premier League','2026/2027','Rating','평점','6.46','fotmob.com/api/data (player 966021, scripts/collect_fotmob_players.py, 2026-11-09 수집)');
 INSERT INTO fotmob_season_stats VALUES(2032,178,'2026-11-09','Premier League','2026/2027','Yellow cards','경고','0','fotmob.com/api/data (player 966021, scripts/collect_fotmob_players.py, 2026-11-09 수집)');
 INSERT INTO fotmob_season_stats VALUES(2033,178,'2026-11-09','Premier League','2026/2027','Red cards','퇴장','0','fotmob.com/api/data (player 966021, scripts/collect_fotmob_players.py, 2026-11-09 수집)');
+INSERT INTO fotmob_season_stats VALUES(2034,59,'2026-11-18','Premier League','2026/2027','Goals','골','2','fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-11-18 수집)');
+INSERT INTO fotmob_season_stats VALUES(2035,59,'2026-11-18','Premier League','2026/2027','Assists','어시스트','0','fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-11-18 수집)');
+INSERT INTO fotmob_season_stats VALUES(2036,59,'2026-11-18','Premier League','2026/2027','Started','선발','4','fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-11-18 수집)');
+INSERT INTO fotmob_season_stats VALUES(2037,59,'2026-11-18','Premier League','2026/2027','Matches','경기','9','fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-11-18 수집)');
+INSERT INTO fotmob_season_stats VALUES(2038,59,'2026-11-18','Premier League','2026/2027','Minutes played','출전 시간','332','fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-11-18 수집)');
+INSERT INTO fotmob_season_stats VALUES(2039,59,'2026-11-18','Premier League','2026/2027','Rating','평점','6.87','fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-11-18 수집)');
+INSERT INTO fotmob_season_stats VALUES(2040,59,'2026-11-18','Premier League','2026/2027','Yellow cards','경고','2','fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-11-18 수집)');
+INSERT INTO fotmob_season_stats VALUES(2041,59,'2026-11-18','Premier League','2026/2027','Red cards','퇴장','0','fotmob.com/api/data (player 1656860, scripts/collect_fotmob_players.py, 2026-11-18 수집)');

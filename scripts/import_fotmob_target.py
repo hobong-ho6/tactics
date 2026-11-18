@@ -113,7 +113,7 @@ def main():
                        player_id,pulled,season,league,metric_key,metric,metric_kr,
                        stat_value,per90,percentile,percentile_per90,source)
                    VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
-                   ON CONFLICT(player_id,season,league,metric_key) DO UPDATE SET
+                   ON CONFLICT(player_id,season,league,metric_key,pulled) DO UPDATE SET
                      pulled=excluded.pulled,metric=excluded.metric,metric_kr=excluded.metric_kr,
                      stat_value=excluded.stat_value,per90=excluded.per90,
                      percentile=excluded.percentile,
@@ -131,7 +131,7 @@ def main():
                 """INSERT INTO fotmob_traits(
                        player_id,pulled,pos_group,metric,metric_kr,percentile,source)
                    VALUES(?,?,?,?,?,?,?)
-                   ON CONFLICT(player_id,metric) DO UPDATE SET
+                   ON CONFLICT(player_id,metric,pulled) DO UPDATE SET
                      pulled=excluded.pulled,pos_group=excluded.pos_group,
                      metric_kr=excluded.metric_kr,percentile=excluded.percentile,
                      source=excluded.source""",
@@ -152,7 +152,7 @@ def main():
                 """INSERT INTO fotmob_season_stats(
                        player_id,pulled,league,season,metric,metric_kr,value,source)
                    VALUES(?,?,?,?,?,?,?,?)
-                   ON CONFLICT(player_id,league,season,metric) DO UPDATE SET
+                   ON CONFLICT(player_id,league,season,metric,pulled) DO UPDATE SET
                      pulled=excluded.pulled,metric_kr=excluded.metric_kr,
                      value=excluded.value,source=excluded.source""",
                 (player_id, a.pulled, a.league, a.season, metric, korean,

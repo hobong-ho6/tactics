@@ -437,7 +437,7 @@ def main():
                     """INSERT INTO fotmob_detail_stats(player_id,pulled,season,league,metric_key,
                        metric,metric_kr,stat_value,per90,percentile,percentile_per90,source)
                        VALUES(?,?,?,?,?,?,?,?,?,?,?,?)
-                       ON CONFLICT(player_id,season,league,metric_key) DO NOTHING""",
+                       ON CONFLICT(player_id,season,league,metric_key,pulled) DO NOTHING""",  # 134: 날짜별 스냅샷
                     (pid, pulled, s["season"], s["league"], key, en, kr, val, per90, pc, pc90, src))
                 ins["detail"] += cur.rowcount
 
@@ -447,7 +447,7 @@ def main():
                 cur.execute(
                     """INSERT INTO fotmob_season_stats(player_id,pulled,league,season,metric,
                        metric_kr,value,source) VALUES(?,?,?,?,?,?,?,?)
-                       ON CONFLICT(player_id,league,season,metric) DO NOTHING""",
+                       ON CONFLICT(player_id,league,season,metric,pulled) DO NOTHING""",
                     (pid, pulled, ml["league"], ml["season"], title,
                      SEASON_LABELS.get(title), value, src))
                 ins["season"] += cur.rowcount
@@ -499,7 +499,7 @@ def main():
             cur.execute(
                 """INSERT INTO fotmob_traits(player_id,pulled,pos_group,metric,metric_kr,
                    percentile,source) VALUES(?,?,?,?,?,?,?)
-                   ON CONFLICT(player_id,metric) DO NOTHING""",
+                   ON CONFLICT(player_id,metric,pulled) DO NOTHING""",
                 (pid, pulled, r.get("traitsTitle"), title, TRAIT_LABELS.get(title),
                  round(float(value) * 100), src))
             ins["traits"] += cur.rowcount

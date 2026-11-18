@@ -58,3 +58,4 @@ INSERT INTO _migration_log VALUES('2026-11-04','130-gsc-title','game_system_chan
 INSERT INTO _migration_log VALUES('2026-11-04','131-che-canon-formation','CHE slots.is_canon 3-4-2-1 → 4-2-3-1 Wide(시즌 정본 optimal과 일치) · G24 ⑸ 신설 — 정본 표시 포메이션 = 현행 버전 optimal 포메이션');
 INSERT INTO _migration_log VALUES('2026-11-05','132-chem-style-effects','fc_chem_style_effects 신설 · FC27 24종 한 줄 정의+속성별 작용 근거');
 INSERT INTO _migration_log VALUES('2026-11-05','133-fut-chem-reviews','fut_chem_reviews 신설 · 선발 11 + 교체·리저브 12 검토 결론');
+INSERT INTO _migration_log VALUES('2026-11-18','134-fotmob-detail-snapshots','fotmob_detail_stats·fotmob_season_stats·fotmob_traits UNIQUE에 pulled 추가(날짜별 스냅샷) · v_fotmob_detail_latest·v_fotmob_season_latest·v_fotmob_traits_latest 신설 — 진행 중 시즌 값이 첫 수집일에 고정되던 문제');
