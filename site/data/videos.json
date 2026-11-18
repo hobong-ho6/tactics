@@ -16990,13 +16990,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 37,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "카르도소 좌측 피벗 커버",
       "trigger": "2026-10-09 이후 카르도소 선발 2경기 (2/2)"
      },
@@ -17008,8 +17008,8 @@
      "team_code": "ATM",
      "value": "ldm_covers_lb_advance",
      "value_kr": "좌측 수비형 미드가 좌측 풀백 전진 커버",
-     "verdict": "PENDING",
-     "verdict_note": "단일 영상(ITC 칼럼이 같은 축). 재판정 조건: 카르도소 map25_def 좌측 열 비중을 2경기 누적으로 확인"
+     "verdict": "HELD",
+     "verdict_note": "단일 영상(ITC 칼럼이 같은 축). 재판정 조건: 카르도소 map25_def 좌측 열 비중을 2경기 누적으로 확인 [쟁점 #37 판정 2026-11-18 → HELD] 판정 불충분으로 종결 — 카르도소 선발 4경기 map25_def 좌측 열(열0~1) 비중 누적 46%(우측 34%)이나 4경기 중 2경기가 LM 선발이라 좌측 편향이 섞였다. 피벗 선발만 보면 LCM(09-20) 31% · LDM(10-10) 50%로 갈린다. ATM 수집 보류로 표본이 더 늘지 않는다."
     }
    ],
    "key_points": [
@@ -20175,13 +20175,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 35,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "더비 후속: 코케 선발 전환·전반 템포 파울",
       "trigger": "2026-09-19 이후 리그 3경기 (3/3)"
      },
@@ -20193,8 +20193,8 @@
      "team_code": "ATM",
      "value": "fouls_to_deny_opposition_transitions",
      "value_kr": "파울로 상대 전환 차단",
-     "verdict": "PENDING",
-     "verdict_note": "실측과 숫자까지 일치한다(전반 파울 10:3·경기 19:6). 다만 「의도된 전술」이라는 해석은 해설자 판단이고 감독 발언으로 뒷받침되지 않았다 — 시메오네는 파울을 언급하지 않았다. 재판정 조건: 라리가 3경기 누적 전반 파울이 상대의 2배 이상으로 반복되면 manager_profiles defence 축에 「템포 차단 파울」을 정식 등재한다."
+     "verdict": "REJECTED",
+     "verdict_note": "실측과 숫자까지 일치한다(전반 파울 10:3·경기 19:6). 다만 「의도된 전술」이라는 해석은 해설자 판단이고 감독 발언으로 뒷받침되지 않았다 — 시메오네는 파울을 언급하지 않았다. 재판정 조건: 라리가 3경기 누적 전반 파울이 상대의 2배 이상으로 반복되면 manager_profiles defence 축에 「템포 차단 파울」을 정식 등재한다. [쟁점 #35 판정 2026-11-18 → REJECTED] ⑴ 코케 선발 전환 조건 충족 — 10-10 알라베스전 RAM 선발(player_matches) → 「선발이 아닌 교체 임팩트」 프레임(#181·#187) 정정. ⑵ 템포 차단 파울(#189) 반복 안 됨 — 경기 전체 파울(team_match_stats, 전반 분리 불가): 더비 09-20 19 vs 6(3.2배) · 10-10 알라베스 14 vs 11(1.3배) · 10-17 에스파뇰 9 vs 10(0.9배) → 2배 이상은 더비 1경기뿐이라 manager_profiles defence에 넣지 않는다."
     },
     {
      "axis": "instruction",
@@ -20203,13 +20203,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 36,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "더비 수비 서술: 좌표로 확인 불가 항목",
       "trigger": "2026-10-21 이후"
      },
@@ -20221,8 +20221,8 @@
      "team_code": "ATM",
      "value": "force_wide_not_press_pivot",
      "value_kr": "피벗 압박보다 측면으로 몰기",
-     "verdict": "PENDING",
-     "verdict_note": "실측 PPDA 전반 12.46(중블록)·def_x 38.3(상대보다 낮음)과 방향이 맞는다 — 중앙을 막고 측면으로 밀었다는 서술. 단 상대 윙어의 터치 분포를 우리가 수집하지 않아 직접 확인은 불가. 재판정 조건: 상대 윙어 터치의 측면 비율을 수집하는 축을 docs/60 양식으로 사전등록한 뒤 판정한다."
+     "verdict": "HELD",
+     "verdict_note": "실측 PPDA 전반 12.46(중블록)·def_x 38.3(상대보다 낮음)과 방향이 맞는다 — 중앙을 막고 측면으로 밀었다는 서술. 단 상대 윙어의 터치 분포를 우리가 수집하지 않아 직접 확인은 불가. 재판정 조건: 상대 윙어 터치의 측면 비율을 수집하는 축을 docs/60 양식으로 사전등록한 뒤 판정한다. [쟁점 #36 판정 2026-11-18 → HELD] 좌표·이벤트 수집 축으로 판정 불가(충돌 장면·윙어 측면 유도는 터치·충돌 로그가 필요) · ATM 수집 보류(2026-10-20) · 신규 축(docs/60) 사전등록하지 않음 — 서사 기록으로만 남긴다."
     }
    ],
    "key_points": [
@@ -20372,13 +20372,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 36,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "더비 수비 서술: 좌표로 확인 불가 항목",
       "trigger": "2026-10-21 이후"
      },
@@ -20390,8 +20390,8 @@
      "team_code": "ATM",
      "value": "cuti_llorente_miscommunication_to_diomande",
      "value_kr": "쿠티·요렌테 충돌로 디오망데에게 기회",
-     "verdict": "PENDING",
-     "verdict_note": "실측 대조 완료 — 후반 레알 오픈플레이 슛은 77′ 디오망데(xG 0.0706·xGOT 0.0194·세이브) 1건뿐이라 장면 특정은 성립한다. 다만 「쿠티-요렌테 충돌」이라는 원인은 좌표 이벤트로 확인 불가(터치·충돌 로그 없음) — 영상 확인이 필요해 PENDING."
+     "verdict": "HELD",
+     "verdict_note": "실측 대조 완료 — 후반 레알 오픈플레이 슛은 77′ 디오망데(xG 0.0706·xGOT 0.0194·세이브) 1건뿐이라 장면 특정은 성립한다. 다만 「쿠티-요렌테 충돌」이라는 원인은 좌표 이벤트로 확인 불가(터치·충돌 로그 없음) — 영상 확인이 필요해 PENDING. [쟁점 #36 판정 2026-11-18 → HELD] 좌표·이벤트 수집 축으로 판정 불가(충돌 장면·윙어 측면 유도는 터치·충돌 로그가 필요) · ATM 수집 보류(2026-10-20) · 신규 축(docs/60) 사전등록하지 않음 — 서사 기록으로만 남긴다."
     },
     {
      "axis": "instruction",
@@ -20400,13 +20400,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 35,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "더비 후속: 코케 선발 전환·전반 템포 파울",
       "trigger": "2026-09-19 이후 리그 3경기 (3/3)"
      },
@@ -20418,8 +20418,8 @@
      "team_code": "ATM",
      "value": "impact_example_not_starting_shift",
      "value_kr": "선발 전환 아닌 교체 임팩트 사례",
-     "verdict": "PENDING",
-     "verdict_note": "리포트 §7 재검증 ⑶(코케 선발 논의)에 대한 1차 답 — 감독은 선발 전환을 시사하지 않았고 교체 임팩트를 팀 문화 사례로 썼다. 재판정 조건: 다음 라리가 2경기 중 1회라도 코케가 선발이면 이 판정을 정정한다."
+     "verdict": "REJECTED",
+     "verdict_note": "리포트 §7 재검증 ⑶(코케 선발 논의)에 대한 1차 답 — 감독은 선발 전환을 시사하지 않았고 교체 임팩트를 팀 문화 사례로 썼다. 재판정 조건: 다음 라리가 2경기 중 1회라도 코케가 선발이면 이 판정을 정정한다. [쟁점 #35 판정 2026-11-18 → REJECTED] ⑴ 코케 선발 전환 조건 충족 — 10-10 알라베스전 RAM 선발(player_matches) → 「선발이 아닌 교체 임팩트」 프레임(#181·#187) 정정. ⑵ 템포 차단 파울(#189) 반복 안 됨 — 경기 전체 파울(team_match_stats, 전반 분리 불가): 더비 09-20 19 vs 6(3.2배) · 10-10 알라베스 14 vs 11(1.3배) · 10-17 에스파뇰 9 vs 10(0.9배) → 2배 이상은 더비 1경기뿐이라 manager_profiles defence에 넣지 않는다."
     }
    ],
    "key_points": [
@@ -20550,13 +20550,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 32,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "ATM 포메이션 표기: 백3/백4/백5 유동 구조",
       "trigger": "2026-09-20 이후 공식전 1경기 (3/1)"
      },
@@ -20568,8 +20568,8 @@
      "team_code": "ATM",
      "value": "백3(푸빌 센터백) — 독립 2차 소스",
      "value_kr": "백3(푸빌 센터백) — 독립 2차 소스",
-     "verdict": "PENDING",
-     "verdict_note": "OKqnpw4YZyQ와 독립적으로 같은 형태를 읽었다(채널·국가·관점 상이). ⚠️ 그러나 **동일 중계 화면을 본 두 해설이므로 완전한 독립 교차검증은 아니다**(불변규칙 12 주의 지점). 우리 실측(푸빌 tool_x 83.7 — 백3 RCB로는 지나치게 넓다)과는 여전히 어긋나며, 판정은 OKqnpw4YZyQ 항목과 동일한 재판정 조건에 묶는다."
+     "verdict": "APPLIED",
+     "verdict_note": "OKqnpw4YZyQ와 독립적으로 같은 형태를 읽었다(채널·국가·관점 상이). ⚠️ 그러나 **동일 중계 화면을 본 두 해설이므로 완전한 독립 교차검증은 아니다**(불변규칙 12 주의 지점). 우리 실측(푸빌 tool_x 83.7 — 백3 RCB로는 지나치게 넓다)과는 여전히 어긋나며, 판정은 OKqnpw4YZyQ 항목과 동일한 재판정 조건에 묶는다. [쟁점 #32 판정 2026-11-18 → APPLIED] 유동 구조로 판정 — 26/27 실측 4-4-2 5경기(정본 #44) + 3-4-2-1 2경기(강팀·원정 대안 #45: 09-09 리버풀 · 09-13 소시에다드) + 10월 4-2-3-1·4-3-1-2 각 1경기(team_match_stats formation_v). 표기 충돌은 상대·국면별 전환이며 정본 1행+대안 1행으로 이미 표현돼 있다. 국면별 9번 교대(#3)와 공/수 포메이션 전환은 reproduction_limits #20(formation)·#26(situational, ATM)으로 이미 등록된 재현 한계다."
     }
    ],
    "key_points": [
@@ -20773,13 +20773,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 35,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "더비 후속: 코케 선발 전환·전반 템포 파울",
       "trigger": "2026-09-19 이후 리그 3경기 (3/3)"
      },
@@ -20791,8 +20791,8 @@
      "team_code": "ATM",
      "value": "first_half_needs_recovering_midfielders",
      "value_kr": "전반엔 볼 회복형 미드필더가 필요",
-     "verdict": "PENDING",
-     "verdict_note": "시메오네 본인 발언(교체 임팩트 예시)과 독립적으로 같은 결론(선발 전환 아님)에 도달했다 — 리포트 §7 ⑶은 이로써 「현 시점 선발 전환 근거 없음」으로 닫는다. 재판정 조건: 코케가 다음 2경기 중 선발하면 정정."
+     "verdict": "REJECTED",
+     "verdict_note": "시메오네 본인 발언(교체 임팩트 예시)과 독립적으로 같은 결론(선발 전환 아님)에 도달했다 — 리포트 §7 ⑶은 이로써 「현 시점 선발 전환 근거 없음」으로 닫는다. 재판정 조건: 코케가 다음 2경기 중 선발하면 정정. [쟁점 #35 판정 2026-11-18 → REJECTED] ⑴ 코케 선발 전환 조건 충족 — 10-10 알라베스전 RAM 선발(player_matches) → 「선발이 아닌 교체 임팩트」 프레임(#181·#187) 정정. ⑵ 템포 차단 파울(#189) 반복 안 됨 — 경기 전체 파울(team_match_stats, 전반 분리 불가): 더비 09-20 19 vs 6(3.2배) · 10-10 알라베스 14 vs 11(1.3배) · 10-17 에스파뇰 9 vs 10(0.9배) → 2배 이상은 더비 1경기뿐이라 manager_profiles defence에 넣지 않는다."
     },
     {
      "axis": "role",
@@ -20829,13 +20829,13 @@
      "focus": "Support",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 33,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "요렌테 역할: RB vs 전진(RM·윙백)",
       "trigger": "2026-09-05 이후 마르코스 요렌테 RM,RAM,RW,RWB 선발 2경기 (3/2)"
      },
@@ -20847,8 +20847,8 @@
      "team_code": "ATM",
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "실측 하프 분할(전반 x̄ 56.4·ȳ 28.7 → 후반 44.1·17.7)과 방향 일치하지만, 이 경기 처방은 전반 RCM 표본이 섞여 단일 행으로 확정할 수 없다(리포트 §5 한계 ②). 재판정 조건: 요렌테가 90분 전부 우측 풀백으로 뛴 경기가 나오면 그때 fb_* 축으로 확정한다."
+     "verdict": "REJECTED",
+     "verdict_note": "실측 하프 분할(전반 x̄ 56.4·ȳ 28.7 → 후반 44.1·17.7)과 방향 일치하지만, 이 경기 처방은 전반 RCM 표본이 섞여 단일 행으로 확정할 수 없다(리포트 §5 한계 ②). 재판정 조건: 요렌테가 90분 전부 우측 풀백으로 뛴 경기가 나오면 그때 fb_* 축으로 확정한다. [쟁점 #33 판정 2026-11-18 → REJECTED] RM 이동 기각 · RB 정본 #476 유지 — 커널 FC27: RB 4경기 fb_att_wb/Support .929(Δ.043 무결정) · RM계 3경기 wm_winger/Balanced .796(Δ.011 무결정). RM·윙백 기용은 3-4-2-1 대안 포메이션 용법. 새 사실 obs#1166: 10-10·10-13 RCB 90분."
     },
     {
      "axis": "team_axis",
@@ -20857,13 +20857,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 32,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "ATM 포메이션 표기: 백3/백4/백5 유동 구조",
       "trigger": "2026-09-20 이후 공식전 1경기 (3/1)"
      },
@@ -20875,8 +20875,8 @@
      "team_code": "ATM",
      "value": "5-3-2 (비보유) ↔ 4-4-2 (보유)",
      "value_kr": "5-3-2 (비보유) ↔ 4-4-2 (보유)",
-     "verdict": "PENDING",
-     "verdict_note": "우리 실측과 정면으로 판정할 수 없다 — 국면 그리드의 **비보유 표본이 푸빌 n=3**이라 백3 여부를 가릴 수 없다(ATM 점유 61%). 방향 단서는 엇갈린다: 비보유 전진값(0=최후방)이 CB 0.69~0.92인데 그리말도 1.89(n=9)·줄리아노 1.62(n=21)로 **한 행 앞**이라 플랫 백5보다 백4 미드블록에 가깝다. 재판정 조건: 다음 ATM 경기에서 우측 풀백의 비보유 셀 n≥15를 확보해 CB 라인과 같은 행에 서는지 본다."
+     "verdict": "APPLIED",
+     "verdict_note": "우리 실측과 정면으로 판정할 수 없다 — 국면 그리드의 **비보유 표본이 푸빌 n=3**이라 백3 여부를 가릴 수 없다(ATM 점유 61%). 방향 단서는 엇갈린다: 비보유 전진값(0=최후방)이 CB 0.69~0.92인데 그리말도 1.89(n=9)·줄리아노 1.62(n=21)로 **한 행 앞**이라 플랫 백5보다 백4 미드블록에 가깝다. 재판정 조건: 다음 ATM 경기에서 우측 풀백의 비보유 셀 n≥15를 확보해 CB 라인과 같은 행에 서는지 본다. [쟁점 #32 판정 2026-11-18 → APPLIED] 유동 구조로 판정 — 26/27 실측 4-4-2 5경기(정본 #44) + 3-4-2-1 2경기(강팀·원정 대안 #45: 09-09 리버풀 · 09-13 소시에다드) + 10월 4-2-3-1·4-3-1-2 각 1경기(team_match_stats formation_v). 표기 충돌은 상대·국면별 전환이며 정본 1행+대안 1행으로 이미 표현돼 있다. 국면별 9번 교대(#3)와 공/수 포메이션 전환은 reproduction_limits #20(formation)·#26(situational, ATM)으로 이미 등록된 재현 한계다."
     }
    ],
    "key_points": [
@@ -24837,13 +24837,13 @@
      "focus": "Roaming",
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 45,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "맥 알리스터 역할: 딥라잉 플레이메이커 재산출",
       "trigger": "2026-08-11 이후 맥 알리스터 LDM 선발 2경기 (3/2)"
      },
@@ -24855,8 +24855,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "⚠️⚠️ **우리 `#491` 맥 알리스터는 role·focus·fit이 전부 NULL이다** — obs#770에서 **클럽 공식전에 2경기 이상 가진 `pos_class`가 하나도 없어**(RDM 1·LDM 1·CAM 1) 집계를 무효화했다. 그런데 **이 영상과 `BG7OGbbKmY0`(「그가 돌아가자 팀이 돌아갔다」, 48터치)가 그를 딥라잉 6번으로 지목**한다 ⇒ **서사 2소스가 실측 공백을 가리키고 있다.** ⛔ 값을 발명하지 않는다 — 처방 없음 유지. **마감 조건: PL·UCL에서 같은 `pos_class` 2경기**가 쌓이면 즉시 재산출하고 이 서사와 argmax를 대조한다(7월 대표팀 5경기는 `FIFA World Cup`이라 공식전 집계에서 제외됨, obs#773)."
+     "verdict": "APPLIED",
+     "verdict_note": "⚠️⚠️ **우리 `#491` 맥 알리스터는 role·focus·fit이 전부 NULL이다** — obs#770에서 **클럽 공식전에 2경기 이상 가진 `pos_class`가 하나도 없어**(RDM 1·LDM 1·CAM 1) 집계를 무효화했다. 그런데 **이 영상과 `BG7OGbbKmY0`(「그가 돌아가자 팀이 돌아갔다」, 48터치)가 그를 딥라잉 6번으로 지목**한다 ⇒ **서사 2소스가 실측 공백을 가리키고 있다.** ⛔ 값을 발명하지 않는다 — 처방 없음 유지. **마감 조건: PL·UCL에서 같은 `pos_class` 2경기**가 쌓이면 즉시 재산출하고 이 서사와 argmax를 대조한다(7월 대표팀 5경기는 `FIFA World Cup`이라 공식전 집계에서 제외됨, obs#773). [쟁점 #45 판정 2026-11-18 → APPLIED] dm_dlp/Roaming 채택 — pos_class 백필 뒤 LDM 포지션-순수 3경기(09-04 입스위치 · 09-20 본머스 · 10-11 맨시티) 커널 FC27 .838 > dm_dlp/Build-Up .672(Δ.166 결정). prescriptions #491(FC26)·#992(FC27) pos_label RDM→LDM · role·fit 채움. 서사 #87(이라올라 「my number six」(나의 6번))과 일치."
     },
     {
      "axis": "role",
@@ -25181,13 +25181,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 33,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "요렌테 역할: RB vs 전진(RM·윙백)",
       "trigger": "2026-09-05 이후 마르코스 요렌테 RM,RAM,RW,RWB 선발 2경기 (3/2)"
      },
@@ -25199,8 +25199,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "⭐⭐ **`i_nG7i-vavk`(「요렌테를 전진시켜라」)와 수렴하는 2번째 소스**이고, 이쪽은 **형태까지 특정**한다 — 3-4-2-1의 **우측 카릴레로(윙백)**. 우리 어휘로는 `fb_att_wb` 또는 백3 와이드(`wm_*`)다. ⛔ 현재 `#476` 요렌테는 **RB n=3(201분)**이고 백3 카릴레로 표본이 없다. 또한 NPJTYeyCCuY(Pedro El Ingeniero)는 그를 **「lateral más cortito」(더 짧은 측면)**로 봐 **절제형에 가깝게** 서술했다 ⇒ **3소스가 갈린다**. 마감 조건: ATM이 3-4-2-1로 서는 경기에서 요렌테 포지션-순수 2경기 확보 후 재산출. ⚠️ ATM 3-4-2-1 슬롯 체계가 **LOW-MEDIUM 잠정**이라 그것도 선행 조건이다."
+     "verdict": "REJECTED",
+     "verdict_note": "⭐⭐ **`i_nG7i-vavk`(「요렌테를 전진시켜라」)와 수렴하는 2번째 소스**이고, 이쪽은 **형태까지 특정**한다 — 3-4-2-1의 **우측 카릴레로(윙백)**. 우리 어휘로는 `fb_att_wb` 또는 백3 와이드(`wm_*`)다. ⛔ 현재 `#476` 요렌테는 **RB n=3(201분)**이고 백3 카릴레로 표본이 없다. 또한 NPJTYeyCCuY(Pedro El Ingeniero)는 그를 **「lateral más cortito」(더 짧은 측면)**로 봐 **절제형에 가깝게** 서술했다 ⇒ **3소스가 갈린다**. 마감 조건: ATM이 3-4-2-1로 서는 경기에서 요렌테 포지션-순수 2경기 확보 후 재산출. ⚠️ ATM 3-4-2-1 슬롯 체계가 **LOW-MEDIUM 잠정**이라 그것도 선행 조건이다. [쟁점 #33 판정 2026-11-18 → REJECTED] RM 이동 기각 · RB 정본 #476 유지 — 커널 FC27: RB 4경기 fb_att_wb/Support .929(Δ.043 무결정) · RM계 3경기 wm_winger/Balanced .796(Δ.011 무결정). RM·윙백 기용은 3-4-2-1 대안 포메이션 용법. 새 사실 obs#1166: 10-10·10-13 RCB 90분."
     }
    ],
    "key_points": [
@@ -25312,13 +25312,13 @@
      "focus": null,
      "headline_kr": "rest-defense 결손이 하이프레스 팀 공통 약점",
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 46,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "rest-defense의 재현 한계 등록",
       "trigger": "2026-10-21 이후"
      },
@@ -25330,8 +25330,8 @@
      "team_code": null,
      "value": "rest-defense(점유 중 볼 뒤 형태) 결손이 하이프레스 팀의 공통 취약점 — 볼 상실 후 패스 한 번에 백라인 도달",
      "value_kr": "rest-defense(점유 중 볼 뒤 형태) 결손이 하이프레스 팀의 공통 취약점 — 볼 상실 후 패스 한 번에 백라인 도달",
-     "verdict": "PENDING",
-     "verdict_note": "⭐⭐ **같은 진단이 세 팀에서 나왔다** — 리버풀(`67TNBKbdUDw` 「rest defense isn't fixed」(레스트 디펜스가 고정돼 있지 않다), obs#621~627 계열에서도 2회 지목), 리즈(이 영상), 그리고 AVL의 「파이널 서드 판단 부재」(`yMmxDTdffv4`)가 같은 언어를 쓴다. ⛔ FC26에 **rest-defense 설정 축이 없다** — 역할 조합(피벗 포커스·풀백 전진도)으로만 간접 조절된다. ⇒ 마감 조건: `reproduction_limits`에 **「rest-defense = 점유 중 볼 뒤 형태는 설정 축이 아니라 역할 조합의 창발 속성」**을 `in_possession` 축 신규 행으로 등록할지 판단. 3소스가 모였으므로 등록 근거는 충분하다."
+     "verdict": "APPLIED",
+     "verdict_note": "⭐⭐ **같은 진단이 세 팀에서 나왔다** — 리버풀(`67TNBKbdUDw` 「rest defense isn't fixed」(레스트 디펜스가 고정돼 있지 않다), obs#621~627 계열에서도 2회 지목), 리즈(이 영상), 그리고 AVL의 「파이널 서드 판단 부재」(`yMmxDTdffv4`)가 같은 언어를 쓴다. ⛔ FC26에 **rest-defense 설정 축이 없다** — 역할 조합(피벗 포커스·풀백 전진도)으로만 간접 조절된다. ⇒ 마감 조건: `reproduction_limits`에 **「rest-defense = 점유 중 볼 뒤 형태는 설정 축이 아니라 역할 조합의 창발 속성」**을 `in_possession` 축 신규 행으로 등록할지 판단. 3소스가 모였으므로 등록 근거는 충분하다. [쟁점 #46 판정 2026-11-18 → APPLIED] 이미 등록 — reproduction_limits #14(FC26)·#28(FC27) in_possession 「rest-defense — 점유 중 볼 뒤에 남겨두는 형태」. 출처 #62(CHE 영상 · 리즈 진단)·#83(LIV) 팀 혼재는 해당 행 source에 명기 대상."
     }
    ],
    "key_points": [
@@ -25453,13 +25453,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 43,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "LIV 빌드업 스타일: Counter vs Balanced",
       "trigger": "2026-09-11 이후 리그 1경기 (4/1)"
      },
@@ -25471,8 +25471,8 @@
      "team_code": "LIV",
      "value": "Counter",
      "value_kr": "역습",
-     "verdict": "PENDING",
-     "verdict_note": "⭐ ETMJDrEH2Pk(Brom Squad Gaming)도 이라올라 빌드업을 **Counter**로 지목했고, 이 영상은 **실측 수치로 같은 방향을 지지**한다(점유 45%인데 침투 지표는 압도). 현행 regime 3 `projected`는 **Balanced**다. ⇒ 두 소스가 수렴하므로 마감에 가까워졌다. 마감 조건: PL 공식전 표본 1건 더(점유·xG·박스 터치) 확인 후 `team_tactic_setups` 갱신."
+     "verdict": "REJECTED",
+     "verdict_note": "⭐ ETMJDrEH2Pk(Brom Squad Gaming)도 이라올라 빌드업을 **Counter**로 지목했고, 이 영상은 **실측 수치로 같은 방향을 지지**한다(점유 45%인데 침투 지표는 압도). 현행 regime 3 `projected`는 **Balanced**다. ⇒ 두 소스가 수렴하므로 마감에 가까워졌다. 마감 조건: PL 공식전 표본 1건 더(점유·xG·박스 터치) 확인 후 `team_tactic_setups` 갱신. [쟁점 #43 판정 2026-11-18 → REJECTED] Counter 기각 · Balanced 유지 — LIV 26/27 공식전 11경기(team_match_stats): 패스 점유 비중 평균 약 53%(35~69%), 롱볼 시도 비중 약 10%, 상대보다 패스 많은 경기 7/11. 역습 팀의 점유 패턴이 아니다. 「위험한 순간을 지배했다」(#35)는 단일 경기 서술."
     }
    ],
    "key_points": [
@@ -25509,13 +25509,13 @@
      "focus": null,
      "headline_kr": "명목 4-4-2 · 실질 백5/백4 하이브리드",
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 32,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "ATM 포메이션 표기: 백3/백4/백5 유동 구조",
       "trigger": "2026-09-20 이후 공식전 1경기 (3/1)"
      },
@@ -25527,8 +25527,8 @@
      "team_code": "ATM",
      "value": "명목 4-4-2 ↔ 실질 하이브리드(백5/백4 전환), 축은 요렌테의 위치",
      "value_kr": "명목 4-4-2 ↔ 실질 하이브리드(백5/백4 전환), 축은 요렌테의 위치",
-     "verdict": "PENDING",
-     "verdict_note": "⚠️⚠️ **HANDOFF 미해결 1(ATM 포메이션 표기 충돌)의 세 번째 표기다** — 우리·El Desmarque·COPE는 4-4-2, Infobae는 4-3-3, `Y5xXltqB6uo`는 3-4-2-1↔백5, 이 자료는 **「명목 4-4-2 ↔ 실질 하이브리드」**. ⭐⭐ **그런데 이 자료가 충돌을 해소할 열쇠를 준다**: 표기가 갈리는 이유가 **요렌테 한 칸의 높이**이고, 그가 어디 있느냐에 따라 백3/백4/백5로 **보이는** 것이다. ⇒ 마감 조건: 요렌테의 경기별 `avg_x`·`pos_class`를 시계열로 뽑아 **그 한 칸의 이동으로 표기 충돌이 설명되는지** 검증. 설명되면 미해결 1을 「표기 문제가 아니라 유동 구조」로 닫을 수 있다. ⭐ 이것이 `i_nG7i-vavk`·`Vcps1dALdnE`의 「요렌테를 전진시켜라」 제안과도 같은 축이다."
+     "verdict": "APPLIED",
+     "verdict_note": "⚠️⚠️ **HANDOFF 미해결 1(ATM 포메이션 표기 충돌)의 세 번째 표기다** — 우리·El Desmarque·COPE는 4-4-2, Infobae는 4-3-3, `Y5xXltqB6uo`는 3-4-2-1↔백5, 이 자료는 **「명목 4-4-2 ↔ 실질 하이브리드」**. ⭐⭐ **그런데 이 자료가 충돌을 해소할 열쇠를 준다**: 표기가 갈리는 이유가 **요렌테 한 칸의 높이**이고, 그가 어디 있느냐에 따라 백3/백4/백5로 **보이는** 것이다. ⇒ 마감 조건: 요렌테의 경기별 `avg_x`·`pos_class`를 시계열로 뽑아 **그 한 칸의 이동으로 표기 충돌이 설명되는지** 검증. 설명되면 미해결 1을 「표기 문제가 아니라 유동 구조」로 닫을 수 있다. ⭐ 이것이 `i_nG7i-vavk`·`Vcps1dALdnE`의 「요렌테를 전진시켜라」 제안과도 같은 축이다. [쟁점 #32 판정 2026-11-18 → APPLIED] 유동 구조로 판정 — 26/27 실측 4-4-2 5경기(정본 #44) + 3-4-2-1 2경기(강팀·원정 대안 #45: 09-09 리버풀 · 09-13 소시에다드) + 10월 4-2-3-1·4-3-1-2 각 1경기(team_match_stats formation_v). 표기 충돌은 상대·국면별 전환이며 정본 1행+대안 1행으로 이미 표현돼 있다. 국면별 9번 교대(#3)와 공/수 포메이션 전환은 reproduction_limits #20(formation)·#26(situational, ATM)으로 이미 등록된 재현 한계다."
     }
    ],
    "key_points": [
@@ -25971,13 +25971,13 @@
      "focus": null,
      "headline_kr": "리드하면 라인을 내려 지킨다",
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 38,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "HELD",
+      "status": "closed",
       "title": "ATM 리드 시 라인 하강: 상대 강도별 조건부 실패",
       "trigger": "2026-09-10 이후 공식전 2경기 (6/2)"
      },
@@ -25989,8 +25989,8 @@
      "team_code": "ATM",
      "value": "리드를 잡으면 라인을 내리고 결과를 지키려 한다 — 강팀 원정에서는 그 선택이 역효과",
      "value_kr": "리드를 잡으면 라인을 내리고 결과를 지키려 한다 — 강팀 원정에서는 그 선택이 역효과",
-     "verdict": "PENDING",
-     "verdict_note": "⭐⭐ **우리 obs#514(「리드 뒤 후퇴가 실패점」)와 독립 일치**하는 외부 진술이고, AVL의 `optimal:lead` 프리셋(da=Deep · line=45)이 재현하려는 행동과 **같은 형태**다. ⛔ 그런데 ATM `team_tactic_setups`는 `measured` 행뿐이라 **line_height가 NULL**이다 — 채울 근거를 모으는 중. ⭐⭐ **중요한 단서: 이 자료는 그 행동의 「조건부 실패」를 지적한다** — 강팀 원정(안필드)에서는 역효과라는 것. ⇒ 마감 조건: ATM 리드 국면 실측(리드 전후 평균 라인·PPDA)을 2경기 이상 확보하고, **상대 강도별로 분리**해 `lead` 프리셋에 조건을 붙일지 판단. ⚠️ AVL의 `optimal:lead`에도 상대 강도 조건이 없어 **같은 점검이 필요**하다."
+     "verdict": "HELD",
+     "verdict_note": "⭐⭐ **우리 obs#514(「리드 뒤 후퇴가 실패점」)와 독립 일치**하는 외부 진술이고, AVL의 `optimal:lead` 프리셋(da=Deep · line=45)이 재현하려는 행동과 **같은 형태**다. ⛔ 그런데 ATM `team_tactic_setups`는 `measured` 행뿐이라 **line_height가 NULL**이다 — 채울 근거를 모으는 중. ⭐⭐ **중요한 단서: 이 자료는 그 행동의 「조건부 실패」를 지적한다** — 강팀 원정(안필드)에서는 역효과라는 것. ⇒ 마감 조건: ATM 리드 국면 실측(리드 전후 평균 라인·PPDA)을 2경기 이상 확보하고, **상대 강도별로 분리**해 `lead` 프리셋에 조건을 붙일지 판단. ⚠️ AVL의 `optimal:lead`에도 상대 강도 조건이 없어 **같은 점검이 필요**하다. [쟁점 #38 판정 2026-11-18 → HELD] 실측으로 도출 불가 — team_match_stats의 수비 높이(def_x)·PPDA는 경기 단위라 리드 전후 국면 분리가 없다(match_game_setups도 경기 단위). 상대 강도 분리 이전에 국면 분리 축이 없으므로 line_height 반영 보류 · ATM 수집 보류."
     }
    ],
    "key_points": [
@@ -26269,13 +26269,13 @@
      "focus": null,
      "headline_kr": "LIV 중원·측면이 열려 있었다",
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 46,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "rest-defense의 재현 한계 등록",
       "trigger": "2026-10-21 이후"
      },
@@ -26287,8 +26287,8 @@
      "team_code": null,
      "value": "리버풀이 중원과 양 측면(특히 우측)에서 열려 있었다 — rest-defense 결손의 세 번째 독립 관측",
      "value_kr": "리버풀이 중원과 양 측면(특히 우측)에서 열려 있었다 — rest-defense 결손의 세 번째 독립 관측",
-     "verdict": "PENDING",
-     "verdict_note": "⭐⭐ **같은 경기에서 rest-defense 결손을 지목한 세 번째 소스**다: `67TNBKbdUDw`(「rest defense isn't fixed」(레스트 디펜스가 고정돼 있지 않다)) · `kURILCR5GQA`(「미드필드를 지나면 큰 열린 공간」) · 이 영상(「중원과 우측이 열려 있었다」). 여기에 `K6PKQW16wv0`(리즈)의 같은 진단까지 더하면 **4소스**다. ⇒ **`reproduction_limits`에 「rest-defense = 점유 중 볼 뒤 형태는 설정 축이 아니라 역할 조합의 창발 속성」을 `in_possession` 신규 행으로 등록할 근거가 충분해졌다**(K6PKQW16wv0의 같은 주장과 통합 처리). ⏰ 마감 조건: 등록 여부 사용자 판단 — 등록하면 「우리가 재현할 수 없는 것」 목록이 하나 늘고, 대신 **역할 조합(피벗 포커스·풀백 전진도)으로 간접 조절**한다는 지침이 붙는다."
+     "verdict": "APPLIED",
+     "verdict_note": "⭐⭐ **같은 경기에서 rest-defense 결손을 지목한 세 번째 소스**다: `67TNBKbdUDw`(「rest defense isn't fixed」(레스트 디펜스가 고정돼 있지 않다)) · `kURILCR5GQA`(「미드필드를 지나면 큰 열린 공간」) · 이 영상(「중원과 우측이 열려 있었다」). 여기에 `K6PKQW16wv0`(리즈)의 같은 진단까지 더하면 **4소스**다. ⇒ **`reproduction_limits`에 「rest-defense = 점유 중 볼 뒤 형태는 설정 축이 아니라 역할 조합의 창발 속성」을 `in_possession` 신규 행으로 등록할 근거가 충분해졌다**(K6PKQW16wv0의 같은 주장과 통합 처리). ⏰ 마감 조건: 등록 여부 사용자 판단 — 등록하면 「우리가 재현할 수 없는 것」 목록이 하나 늘고, 대신 **역할 조합(피벗 포커스·풀백 전진도)으로 간접 조절**한다는 지침이 붙는다. [쟁점 #46 판정 2026-11-18 → APPLIED] 이미 등록 — reproduction_limits #14(FC26)·#28(FC27) in_possession 「rest-defense — 점유 중 볼 뒤에 남겨두는 형태」. 출처 #62(CHE 영상 · 리즈 진단)·#83(LIV) 팀 혼재는 해당 행 source에 명기 대상."
     }
    ],
    "key_points": [
@@ -26435,13 +26435,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 31,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "ATM 빌드업 스타일: Counter vs Short Passing",
       "trigger": "2026-08-11 이후 리그 2경기 (9/2)"
      },
@@ -26453,8 +26453,8 @@
      "team_code": "ATM",
      "value": "Short Passing",
      "value_kr": "짧은 패스",
-     "verdict": "PENDING",
-     "verdict_note": "⚠️⚠️ **11kt8KYhtvw(Brom Squad Gaming, 25/26)는 ATM 빌드업을 `Counter`로 지목했는데 이 자료는 「빌드업을 시도하다 잃는다」는 반대 방향**이다 — **체제 변화(25/26 직선 → 26/27 빌드업 시도)를 반영한 차이**로 보인다. ATM `team_tactic_setups`는 `measured` 행만 있고 bu·da·line이 전부 NULL이라 **채울 근거를 모으는 중**이다. ⇒ 마감 조건: 26/27 라리가 실측(시퀀스당 패스·롱볼 비율·자기 진영 턴오버)을 2경기 이상 확보해 `Counter` ↔ `Short Passing` 중 판정. **이 영상과 11kt8KYhtvw를 같은 시즌으로 섞지 말 것**(불변규칙 7)."
+     "verdict": "APPLIED",
+     "verdict_note": "⚠️⚠️ **11kt8KYhtvw(Brom Squad Gaming, 25/26)는 ATM 빌드업을 `Counter`로 지목했는데 이 자료는 「빌드업을 시도하다 잃는다」는 반대 방향**이다 — **체제 변화(25/26 직선 → 26/27 빌드업 시도)를 반영한 차이**로 보인다. ATM `team_tactic_setups`는 `measured` 행만 있고 bu·da·line이 전부 NULL이라 **채울 근거를 모으는 중**이다. ⇒ 마감 조건: 26/27 라리가 실측(시퀀스당 패스·롱볼 비율·자기 진영 턴오버)을 2경기 이상 확보해 `Counter` ↔ `Short Passing` 중 판정. **이 영상과 11kt8KYhtvw를 같은 시즌으로 섞지 말 것**(불변규칙 7). [쟁점 #31 판정 2026-11-18 → APPLIED] Short Passing 채택 — team_tactic_setups #18(FC26)·#44(FC27)이 2026-10-04 8경기 실측(4-4-2 5경기 중 Short Passing 4)으로 이미 Short Passing이다. 주장 #63(시메오네 회견: 롱볼·잠그기를 거부)과 일치. 25/26·26/27 시즌 섞지 않음."
     }
    ],
    "key_points": [
@@ -26754,13 +26754,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 45,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "맥 알리스터 역할: 딥라잉 플레이메이커 재산출",
       "trigger": "2026-08-11 이후 맥 알리스터 LDM 선발 2경기 (3/2)"
      },
@@ -26772,8 +26772,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "⚠️ **우리 `#491`은 현재 role·focus·fit이 전부 NULL이다** — obs#770에서 **클럽 공식전에 2경기 이상 가진 pos_class가 하나도 없어**(RDM 1·LDM 1·CAM 1) 집계를 무효화했다. 이 자료는 그를 **딥라잉 플레이메이커 계열**로 보는 서사 근거를 주지만 **실측이 없어 처방을 만들 수 없다**(값을 발명하지 않는다). ⇒ 마감 조건: ⓐ `pos_class` 백필 후에도 그는 7월 대표팀 5경기가 **FIFA World Cup**이라 공식전 집계에 못 들어간다(obs#773) ⓑ **PL·UCL에서 같은 pos_class 2경기**가 쌓이면 즉시 재산출. 그때 이 서사와 실측 argmax를 대조한다."
+     "verdict": "APPLIED",
+     "verdict_note": "⚠️ **우리 `#491`은 현재 role·focus·fit이 전부 NULL이다** — obs#770에서 **클럽 공식전에 2경기 이상 가진 pos_class가 하나도 없어**(RDM 1·LDM 1·CAM 1) 집계를 무효화했다. 이 자료는 그를 **딥라잉 플레이메이커 계열**로 보는 서사 근거를 주지만 **실측이 없어 처방을 만들 수 없다**(값을 발명하지 않는다). ⇒ 마감 조건: ⓐ `pos_class` 백필 후에도 그는 7월 대표팀 5경기가 **FIFA World Cup**이라 공식전 집계에 못 들어간다(obs#773) ⓑ **PL·UCL에서 같은 pos_class 2경기**가 쌓이면 즉시 재산출. 그때 이 서사와 실측 argmax를 대조한다. [쟁점 #45 판정 2026-11-18 → APPLIED] dm_dlp/Roaming 채택 — pos_class 백필 뒤 LDM 포지션-순수 3경기(09-04 입스위치 · 09-20 본머스 · 10-11 맨시티) 커널 FC27 .838 > dm_dlp/Build-Up .672(Δ.166 결정). prescriptions #491(FC26)·#992(FC27) pos_label RDM→LDM · role·fit 채움. 서사 #87(이라올라 「my number six」(나의 6번))과 일치."
     }
    ],
    "key_points": [
@@ -28312,13 +28312,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 33,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "요렌테 역할: RB vs 전진(RM·윙백)",
       "trigger": "2026-09-05 이후 마르코스 요렌테 RM,RAM,RW,RWB 선발 2경기 (3/2)"
      },
@@ -28330,8 +28330,8 @@
      "team_code": null,
      "value": null,
      "value_kr": null,
-     "verdict": "PENDING",
-     "verdict_note": "⭐ **우리 축에 직접 옮길 수 있는 인선·슬롯 주장이다** — 현재 요렌테는 `#476` **RB** n=3(201분), 쿠티 로메로는 `#500` **CCB** n=2다. 제안은 **요렌테 RB→전진(RM/RAM), 쿠티를 그 뒤(RB/RCB)**로 놓는 구조다. ⛔ 아직 반영하지 않았다 — ⑴ 팬 채널 제안 1건이고 ⑵ 요렌테의 **RM 포지션-순수 표본이 없다**(RB만 있다) ⑶ NPJTYeyCCuY(Pedro El Ingeniero)는 요렌테를 **「조금 더 짧은 측면(lateral más cortito)」**으로 봤는데 이는 오히려 **절제형 RB**에 가까워 **두 소스가 갈린다**. ⇒ 마감 조건: 요렌테가 실제로 전진 배치되는 경기가 나오면 포지션-순수 집계로 재산출. 그 전까지는 `#476` RB 유지."
+     "verdict": "REJECTED",
+     "verdict_note": "⭐ **우리 축에 직접 옮길 수 있는 인선·슬롯 주장이다** — 현재 요렌테는 `#476` **RB** n=3(201분), 쿠티 로메로는 `#500` **CCB** n=2다. 제안은 **요렌테 RB→전진(RM/RAM), 쿠티를 그 뒤(RB/RCB)**로 놓는 구조다. ⛔ 아직 반영하지 않았다 — ⑴ 팬 채널 제안 1건이고 ⑵ 요렌테의 **RM 포지션-순수 표본이 없다**(RB만 있다) ⑶ NPJTYeyCCuY(Pedro El Ingeniero)는 요렌테를 **「조금 더 짧은 측면(lateral más cortito)」**으로 봤는데 이는 오히려 **절제형 RB**에 가까워 **두 소스가 갈린다**. ⇒ 마감 조건: 요렌테가 실제로 전진 배치되는 경기가 나오면 포지션-순수 집계로 재산출. 그 전까지는 `#476` RB 유지. [쟁점 #33 판정 2026-11-18 → REJECTED] RM 이동 기각 · RB 정본 #476 유지 — 커널 FC27: RB 4경기 fb_att_wb/Support .929(Δ.043 무결정) · RM계 3경기 wm_winger/Balanced .796(Δ.011 무결정). RM·윙백 기용은 3-4-2-1 대안 포메이션 용법. 새 사실 obs#1166: 10-10·10-13 RCB 90분."
     }
    ],
    "key_points": [
@@ -31433,13 +31433,13 @@
      "focus": null,
      "headline_kr": "오각형 압박 함정",
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 39,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "압박 형태(함정·오각형)의 재현 한계 등록",
       "trigger": "2026-10-21 이후"
      },
@@ -31451,8 +31451,8 @@
      "team_code": null,
      "value": "trampa pentagonal(오각형 함정) — 라비아·리스 제임스가 밑변, 좌 로저스·우 파머, 꼭대기 주앙 페드루",
      "value_kr": "오각형 함정 — 라비아·리스 제임스가 밑변, 좌 로저스·우 파머, 꼭대기 주앙 페드루",
-     "verdict": "PENDING",
-     "verdict_note": "압박 「형태」에 기하를 부여한 유일한 자료. FC26 팀 설정에 압박 트리거·형태 축이 없어(reproduction_limits pressing 3행) 설정값으로 옮길 수 없다 — reproduction_limits에 「압박 형태(오각 함정)」를 4번째 pressing 행으로 추가할지 판단 필요."
+     "verdict": "APPLIED",
+     "verdict_note": "압박 「형태」에 기하를 부여한 유일한 자료. FC26 팀 설정에 압박 트리거·형태 축이 없어(reproduction_limits pressing 3행) 설정값으로 옮길 수 없다 — reproduction_limits에 「압박 형태(오각 함정)」를 4번째 pressing 행으로 추가할지 판단 필요. [쟁점 #39 판정 2026-11-18 → APPLIED] reproduction_limits #32(FC27 · pressing · 전 체제 공통) 신설 — 압박 「형태」(ATM 타이밍 함정 · CHE 알론소 오각형 함정)는 기존 pressing 행(#16 마킹 · #17 트리거·강도 · #18 PPDA)과 다른 축이다. 출처 팀·체제 명기(불변규칙 7)."
     },
     {
      "axis": "team_axis",
@@ -34959,13 +34959,13 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 43,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "REJECTED",
+      "status": "closed",
       "title": "LIV 빌드업 스타일: Counter vs Balanced",
       "trigger": "2026-09-11 이후 리그 1경기 (4/1)"
      },
@@ -34977,8 +34977,8 @@
      "team_code": "LIV",
      "value": "Counter",
      "value_kr": "역습",
-     "verdict": "PENDING",
-     "verdict_note": "⭐ 팀 설정 3축은 실측이 값을 갖지 않아 전술 분석이 1차 소스다(docs/30 7단계). 현행 regime 3 `projected`는 **Balanced**이고 이 자료는 **Counter**다 ⇒ 갈린다. ⛔ 단 **부임 전 추측판**이라 단독 근거로 부족하다. 마감 조건: 이라올라 체제 공식전 실측(점유율·패스량·시퀀스당 패스)을 2경기 이상 확보해 판정. LIV는 이미 UCL MD1(ATM전) 실측이 있으므로 PL 표본만 더 쌓이면 된다."
+     "verdict": "REJECTED",
+     "verdict_note": "⭐ 팀 설정 3축은 실측이 값을 갖지 않아 전술 분석이 1차 소스다(docs/30 7단계). 현행 regime 3 `projected`는 **Balanced**이고 이 자료는 **Counter**다 ⇒ 갈린다. ⛔ 단 **부임 전 추측판**이라 단독 근거로 부족하다. 마감 조건: 이라올라 체제 공식전 실측(점유율·패스량·시퀀스당 패스)을 2경기 이상 확보해 판정. LIV는 이미 UCL MD1(ATM전) 실측이 있으므로 PL 표본만 더 쌓이면 된다. [쟁점 #43 판정 2026-11-18 → REJECTED] Counter 기각 · Balanced 유지 — LIV 26/27 공식전 11경기(team_match_stats): 패스 점유 비중 평균 약 53%(35~69%), 롱볼 시도 비중 약 10%, 상대보다 패스 많은 경기 7/11. 역습 팀의 점유 패턴이 아니다. 「위험한 순간을 지배했다」(#35)는 단일 경기 서술."
     },
     {
      "axis": "team_axis",
@@ -35287,13 +35287,13 @@
      "focus": null,
      "headline_kr": "상시 압박이 아닌 타이밍 함정",
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 39,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "압박 형태(함정·오각형)의 재현 한계 등록",
       "trigger": "2026-10-21 이후"
      },
@@ -35305,8 +35305,8 @@
      "team_code": null,
      "value": "상시 압박이 아니라 간헐적·타이밍 기반 함정 — 상대를 중앙으로 유도한 뒤 수적으로 덮친다",
      "value_kr": "상시 압박이 아니라 간헐적·타이밍 기반 함정 — 상대를 중앙으로 유도한 뒤 수적으로 덮친다",
-     "verdict": "PENDING",
-     "verdict_note": "⭐⭐ **HANDOFF 미해결 1의 「저블록 서사 ↔ 압박 상수(PPDA 8.26) 불일치」를 설명할 후보다** — 상시 압박이 아니라 간헐적 함정이면 PPDA가 중간값으로 나온다. ⛔ FC26에는 압박 트리거 축이 없어 설정으로 못 옮긴다(`reproduction_limits` pressing 3행). ⇒ **실축 해석 근거**로는 채택 후보, **구현 주장으로는 한계 축**. 마감 조건: 알론소 「trampa pentagonal」(오각형 함정)(qkcMoU2khyk)과 함께 「압박 형태」를 reproduction_limits 4번째 pressing 행으로 묶어 등록할지 판단."
+     "verdict": "APPLIED",
+     "verdict_note": "⭐⭐ **HANDOFF 미해결 1의 「저블록 서사 ↔ 압박 상수(PPDA 8.26) 불일치」를 설명할 후보다** — 상시 압박이 아니라 간헐적 함정이면 PPDA가 중간값으로 나온다. ⛔ FC26에는 압박 트리거 축이 없어 설정으로 못 옮긴다(`reproduction_limits` pressing 3행). ⇒ **실축 해석 근거**로는 채택 후보, **구현 주장으로는 한계 축**. 마감 조건: 알론소 「trampa pentagonal」(오각형 함정)(qkcMoU2khyk)과 함께 「압박 형태」를 reproduction_limits 4번째 pressing 행으로 묶어 등록할지 판단. [쟁점 #39 판정 2026-11-18 → APPLIED] reproduction_limits #32(FC27 · pressing · 전 체제 공통) 신설 — 압박 「형태」(ATM 타이밍 함정 · CHE 알론소 오각형 함정)는 기존 pressing 행(#16 마킹 · #17 트리거·강도 · #18 PPDA)과 다른 축이다. 출처 팀·체제 명기(불변규칙 7)."
     },
     {
      "axis": "team_axis",
@@ -35343,15 +35343,15 @@
      "focus": null,
      "headline_kr": null,
      "issue": {
-      "closed": null,
-      "due": true,
-      "hold": true,
-      "id": 31,
+      "closed": "2026-11-18",
+      "due": false,
+      "hold": false,
+      "id": 92,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
-      "title": "ATM 빌드업 스타일: Counter vs Short Passing",
-      "trigger": "2026-08-11 이후 리그 2경기 (9/2)"
+      "resolution": "REJECTED",
+      "status": "closed",
+      "title": "개별 종결 #29 (쟁점 #31에서)",
+      "trigger": "2026-11-18 이후"
      },
      "player": null,
      "player_id": null,
@@ -35361,8 +35361,8 @@
      "team_code": "ATM",
      "value": "Counter",
      "value_kr": "역습",
-     "verdict": "PENDING",
-     "verdict_note": "⭐ 팀 설정 3축은 실측이 값을 갖지 않아 전술 분석이 1차 소스다(docs/30 7단계). ATM은 `team_tactic_setups`에 `measured` 행만 있고 **bu·da·line이 전부 NULL**이다 ⇒ 채울 근거가 필요한 상태. ⛔ 단 25/26 자료라 26/27에 그대로 옮길 수 없다. 마감 조건: 26/27 라리가 실측(점유율·시퀀스당 패스·롱볼 비율)으로 교차검증 후 등록."
+     "verdict": "REJECTED",
+     "verdict_note": "⭐ 팀 설정 3축은 실측이 값을 갖지 않아 전술 분석이 1차 소스다(docs/30 7단계). ATM은 `team_tactic_setups`에 `measured` 행만 있고 **bu·da·line이 전부 NULL**이다 ⇒ 채울 근거가 필요한 상태. ⛔ 단 25/26 자료라 26/27에 그대로 옮길 수 없다. 마감 조건: 26/27 라리가 실측(점유율·시퀀스당 패스·롱볼 비율)으로 교차검증 후 등록. [쟁점 #31→#92 개별 종결 2026-11-18 → REJECTED] ATM 26/27 라리가 8경기 실측에서 빌드업 Short Passing 4/5(team_tactic_setups #18·#44) — Counter(#29, 부임 전 추측형 서술)는 채택하지 않는다"
     }
    ],
    "key_points": [
@@ -36764,13 +36764,13 @@
      "focus": null,
      "headline_kr": "국면별 9번 교대",
      "issue": {
-      "closed": null,
+      "closed": "2026-11-18",
       "due": true,
       "hold": true,
       "id": 32,
       "phase": "decide",
-      "resolution": null,
-      "status": "open",
+      "resolution": "APPLIED",
+      "status": "closed",
       "title": "ATM 포메이션 표기: 백3/백4/백5 유동 구조",
       "trigger": "2026-09-20 이후 공식전 1경기 (3/1)"
      },
@@ -36782,8 +36782,8 @@
      "team_code": null,
      "value": "국면별 9번 교대 — 무공 국면에서는 바에나가 9번, 볼 회복 시 줄리아노 시메오네가 9번이 된다",
      "value_kr": "국면별 9번 교대 — 무공 국면에서는 바에나가 9번, 볼 회복 시 줄리아노 시메오네가 9번이 된다",
-     "verdict": "PENDING",
-     "verdict_note": "⭐ HANDOFF 미해결 1(ATM 포메이션 표기 충돌)에 직접 대응하는 외부 단서. FC26은 국면별 포지션 교대를 갖지 않으므로 reproduction_limits 후보(기존 formation 축 「국면별 포메이션 전환」과 같은 부류, 단 이건 선수 단위 교대다). 등록 전 2소스 교차검증 필요 — 현재 단일 소스."
+     "verdict": "APPLIED",
+     "verdict_note": "⭐ HANDOFF 미해결 1(ATM 포메이션 표기 충돌)에 직접 대응하는 외부 단서. FC26은 국면별 포지션 교대를 갖지 않으므로 reproduction_limits 후보(기존 formation 축 「국면별 포메이션 전환」과 같은 부류, 단 이건 선수 단위 교대다). 등록 전 2소스 교차검증 필요 — 현재 단일 소스. [쟁점 #32 판정 2026-11-18 → APPLIED] 유동 구조로 판정 — 26/27 실측 4-4-2 5경기(정본 #44) + 3-4-2-1 2경기(강팀·원정 대안 #45: 09-09 리버풀 · 09-13 소시에다드) + 10월 4-2-3-1·4-3-1-2 각 1경기(team_match_stats formation_v). 표기 충돌은 상대·국면별 전환이며 정본 1행+대안 1행으로 이미 표현돼 있다. 국면별 9번 교대(#3)와 공/수 포메이션 전환은 reproduction_limits #20(formation)·#26(situational, ATM)으로 이미 등록된 재현 한계다."
     },
     {
      "axis": "role",
@@ -38316,35 +38316,35 @@
    "trigger": "2026-10-27 이후 리그 5경기 (2/5)"
   },
   {
-   "closed": null,
+   "closed": "2026-11-18",
    "due": true,
    "hold": true,
    "id": 31,
    "phase": "decide",
-   "resolution": null,
-   "status": "open",
+   "resolution": "APPLIED",
+   "status": "closed",
    "title": "ATM 빌드업 스타일: Counter vs Short Passing",
    "trigger": "2026-08-11 이후 리그 2경기 (9/2)"
   },
   {
-   "closed": null,
+   "closed": "2026-11-18",
    "due": true,
    "hold": true,
    "id": 32,
    "phase": "decide",
-   "resolution": null,
-   "status": "open",
+   "resolution": "APPLIED",
+   "status": "closed",
    "title": "ATM 포메이션 표기: 백3/백4/백5 유동 구조",
    "trigger": "2026-09-20 이후 공식전 1경기 (3/1)"
   },
   {
-   "closed": null,
+   "closed": "2026-11-18",
    "due": true,
    "hold": true,
    "id": 33,
    "phase": "decide",
-   "resolution": null,
-   "status": "open",
+   "resolution": "REJECTED",
+   "status": "closed",
    "title": "요렌테 역할: RB vs 전진(RM·윙백)",
    "trigger": "2026-09-05 이후 마르코스 요렌테 RM,RAM,RW,RWB 선발 2경기 (3/2)"
   },
@@ -38360,57 +38360,57 @@
    "trigger": "2026-09-20 이후 리그 3경기 (2/3)"
   },
   {
-   "closed": null,
+   "closed": "2026-11-18",
    "due": true,
    "hold": true,
    "id": 35,
    "phase": "decide",
-   "resolution": null,
-   "status": "open",
+   "resolution": "REJECTED",
+   "status": "closed",
    "title": "더비 후속: 코케 선발 전환·전반 템포 파울",
    "trigger": "2026-09-19 이후 리그 3경기 (3/3)"
   },
   {
-   "closed": null,
+   "closed": "2026-11-18",
    "due": true,
    "hold": true,
    "id": 36,
    "phase": "decide",
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "더비 수비 서술: 좌표로 확인 불가 항목",
    "trigger": "2026-10-21 이후"
   },
   {
-   "closed": null,
+   "closed": "2026-11-18",
    "due": true,
    "hold": true,
    "id": 37,
    "phase": "decide",
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "카르도소 좌측 피벗 커버",
    "trigger": "2026-10-09 이후 카르도소 선발 2경기 (2/2)"
   },
   {
-   "closed": null,
+   "closed": "2026-11-18",
    "due": true,
    "hold": true,
    "id": 38,
    "phase": "decide",
-   "resolution": null,
-   "status": "open",
+   "resolution": "HELD",
+   "status": "closed",
    "title": "ATM 리드 시 라인 하강: 상대 강도별 조건부 실패",
    "trigger": "2026-09-10 이후 공식전 2경기 (6/2)"
   },
   {
-   "closed": null,
+   "closed": "2026-11-18",
    "due": true,
    "hold": true,
    "id": 39,
    "phase": "decide",
-   "resolution": null,
-   "status": "open",
+   "resolution": "APPLIED",
+   "status": "closed",
    "title": "압박 형태(함정·오각형)의 재현 한계 등록",
    "trigger": "2026-10-21 이후"
   },
@@ -38448,13 +38448,13 @@
    "trigger": "2026-10-09 이후 차바리아 선발 2경기 (1/2)"
   },
   {
-   "closed": null,
+   "closed": "2026-11-18",
    "due": true,
    "hold": true,
    "id": 43,
    "phase": "decide",
-   "resolution": null,
-   "status": "open",
+   "resolution": "REJECTED",
+   "status": "closed",
    "title": "LIV 빌드업 스타일: Counter vs Balanced",
    "trigger": "2026-09-11 이후 리그 1경기 (4/1)"
   },
@@ -38470,24 +38470,24 @@
    "trigger": "2026-08-11 이후 소보슬라이 RDM 선발 3경기 (2/3)"
   },
   {
-   "closed": null,
+   "closed": "2026-11-18",
    "due": true,
    "hold": true,
    "id": 45,
    "phase": "decide",
-   "resolution": null,
-   "status": "open",
+   "resolution": "APPLIED",
+   "status": "closed",
    "title": "맥 알리스터 역할: 딥라잉 플레이메이커 재산출",
    "trigger": "2026-08-11 이후 맥 알리스터 LDM 선발 2경기 (3/2)"
   },
   {
-   "closed": null,
+   "closed": "2026-11-18",
    "due": true,
    "hold": true,
    "id": 46,
    "phase": "decide",
-   "resolution": null,
-   "status": "open",
+   "resolution": "APPLIED",
+   "status": "closed",
    "title": "rest-defense의 재현 한계 등록",
    "trigger": "2026-10-21 이후"
   },
@@ -38985,6 +38985,17 @@
    "status": "open",
    "title": "첼시 시작 포메이션 4-2-3-1 유지 여부",
    "trigger": "2026-11-04 이후 리그 3경기 (0/3)"
+  },
+  {
+   "closed": "2026-11-18",
+   "due": false,
+   "hold": false,
+   "id": 92,
+   "phase": "decide",
+   "resolution": "REJECTED",
+   "status": "closed",
+   "title": "개별 종결 #29 (쟁점 #31에서)",
+   "trigger": "2026-11-18 이후"
   }
  ]
 }
