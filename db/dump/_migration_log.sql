@@ -59,3 +59,4 @@ INSERT INTO _migration_log VALUES('2026-11-04','131-che-canon-formation','CHE sl
 INSERT INTO _migration_log VALUES('2026-11-05','132-chem-style-effects','fc_chem_style_effects 신설 · FC27 24종 한 줄 정의+속성별 작용 근거');
 INSERT INTO _migration_log VALUES('2026-11-05','133-fut-chem-reviews','fut_chem_reviews 신설 · 선발 11 + 교체·리저브 12 검토 결론');
 INSERT INTO _migration_log VALUES('2026-11-18','134-fotmob-detail-snapshots','fotmob_detail_stats·fotmob_season_stats·fotmob_traits UNIQUE에 pulled 추가(날짜별 스냅샷) · v_fotmob_detail_latest·v_fotmob_season_latest·v_fotmob_traits_latest 신설 — 진행 중 시즌 값이 첫 수집일에 고정되던 문제');
+INSERT INTO _migration_log VALUES('2026-11-18','135-opponents-bou-bha','BOU 팀 신설·BHA fotmob_id 채움 · regime 로제(BOU)·휘르첼러(BHA) · 4-2-3-1 Wide 슬롯·FC27 optimal·슬롯 정본 역할 11칸×2 · 베스트 11 선수 22명 + squad_entries(자리표시 그리드) + opt 선발 처방');

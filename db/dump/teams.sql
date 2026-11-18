@@ -51,7 +51,7 @@ INSERT INTO teams VALUES('LSK','LASK','LASK',NULL,NULL,'[2026-09-12] player_matc
 INSERT INTO teams VALUES('STU','Sturm Graz','슈투름 그라츠',NULL,NULL,'[2026-09-12] player_matches.team_code NULL 잔여 정리(obs#618)로 등재 — 경기 시점 소속 표기용, sofascore_id 미확보',0);
 INSERT INTO teams VALUES('BJK','Beşiktaş','베식타시',NULL,NULL,'[2026-09-12] player_matches.team_code NULL 잔여 정리(obs#618)로 등재 — 경기 시점 소속 표기용, sofascore_id 미확보',0);
 INSERT INTO teams VALUES('OSA','Osasuna','오사수나',NULL,NULL,'[2026-09-12] player_matches.team_code NULL 잔여 정리(obs#618)로 등재 — 경기 시점 소속 표기용, sofascore_id 미확보',0);
-INSERT INTO teams VALUES('BHA','Brighton & Hove Albion','브라이턴',NULL,NULL,'[2026-09-12] player_matches.team_code NULL 잔여 정리(obs#618)로 등재 — 경기 시점 소속 표기용, sofascore_id 미확보',0);
+INSERT INTO teams VALUES('BHA','Brighton & Hove Albion','브라이턴',NULL,10204,'[2026-09-12] player_matches.team_code NULL 잔여 정리(obs#618)로 등재 — 경기 시점 소속 표기용, sofascore_id 미확보 | [2026-11-18] 상대 팀으로 승격(사용자 지시) — 휘르첼러 체제 전술 + 베스트 11. fotmob_id 10204는 스쿼드 API 팀명으로 검증 · sofascore_id 미검증(NULL). 근거 reports/research/2026-11-18-opponents-bou-bha-che.md',0);
 INSERT INTO teams VALUES('NIR','Northern Ireland','북아일랜드',NULL,NULL,'[2026-09-12] player_matches.team_code NULL 잔여 정리(obs#618)로 등재 — 경기 시점 소속 표기용, sofascore_id 미확보',1);
 INSERT INTO teams VALUES('ITA','Italy','이탈리아',NULL,NULL,'[2026-09-12] player_matches.team_code NULL 잔여 정리(obs#618)로 등재 — 경기 시점 소속 표기용, sofascore_id 미확보',1);
 INSERT INTO teams VALUES('CZE','Czechia','체코',NULL,NULL,'[2026-09-12] player_matches.team_code NULL 잔여 정리(obs#618)로 등재 — 경기 시점 소속 표기용, sofascore_id 미확보',1);
@@ -62,3 +62,4 @@ INSERT INTO teams VALUES('JUV','Juventus','유벤투스',NULL,NULL,'[2026-09-12]
 INSERT INTO teams VALUES('SEA','Seattle Sounders','시애틀 사운더스',NULL,NULL,'[2026-09-12] 바르가스 2025 MLS·리그스컵 소속 — 경기 시점 소속 표기용',0);
 INSERT INTO teams VALUES('POL','Poland','폴란드',NULL,NULL,'[2026-10-02] ⚠️국가대표 — 참조 어휘(캐시 네이션스리그 적재).',1);
 INSERT INTO teams VALUES('SCO','Scotland','스코틀랜드',NULL,NULL,'[2026-10-02] ⚠️국가대표 — 참조 어휘(맥긴 네이션스리그 적재).',1);
+INSERT INTO teams VALUES('BOU','AFC Bournemouth','본머스',NULL,8678,'[2026-11-18] 상대 팀 등록(사용자 지시) — 로제 체제 전술 + 베스트 11만. fotmob_id 8678은 팀 페이지·스쿼드 API 팀명으로 검증. sofascore_id 미검증(NULL). 근거 reports/research/2026-11-18-opponents-bou-bha-che.md',0);
