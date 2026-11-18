@@ -1,8 +1,62 @@
 {
  "all": [
   {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 520,
+   "impl_claims": [
+    {
+     "axis": "focus",
+     "field": null,
+     "field_kr": null,
+     "focus": "Support",
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 5,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (1/3)"
+     },
+     "player": "잭슨",
+     "player_id": 76,
+     "points_kr": null,
+     "quote": "원문「Jackson is on the goal line challenging the defender」(잭슨이 골라인에서 수비수와 경합한다) · 「he always rolls into the open space」(그는 항상 돌아서 빈 공간으로 들어간다)",
+     "role_id": "st_advanced",
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "HELD",
+     "verdict_note": "영상은 박스 안 포칭(세컨드볼 반응·골라인 경합)과 하프라인 등지고 돌아서기를 함께 묘사한다 — 어느 한 포커스로 바꿀 근거가 아니라 왓킨스 대비 박스·홀드업 비중을 보는 감시 축(#5)의 정성 자료. auto-caption · 팬 채널 분석 · 대표팀 골 2개 포함."
+    }
+   ],
+   "key_points": [
+    "맨유전 골: 오프사이드 위치에서 수비수의 골문 쪽 자리를 빼앗고, 키퍼가 흘린 세컨드볼에 반응해 득점",
+    "세네갈전 골: 하프라인에서 등진 수비수를 몸으로 버티며 돌아서 전진 — 「he always rolls into the open space」(그는 항상 돌아서 빈 공간으로 들어간다)",
+    "마지막 골: 음바예의 코너킥 때 골라인에서 수비수와 경합하다 니어포스트 혼전에서 밀어 넣음",
+    "진행자 평가: 「You can't buy instinct」(본능은 돈으로 살 수 없다) — 박스 안 탭인도 정상급 스트라이커의 몫",
+    "리그 백분위(진행자 화면 인용): 테이크온 3.96(94), 기대 어시스트 0.19(91), 세컨드 어시스트 0.23(94), 전진 운반 2.56(91) — 전환·수비 지표는 두드러지지 않음"
+   ],
+   "kind": "선수스카우팅",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-17",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "UTV 진행자가 잭슨의 최근 세 골(맨유 원정 리그 1골, 세네갈 대표팀 2골)을 장면별로 분석한 영상이다. 첫 골에서는 오프사이드 위치에 서서 수비수가 골문 쪽으로 서지 못하게 만들고, 키퍼가 흘린 공을 침착하게 마무리했다고 설명한다. 진행자는 세 골을 우연한 탭인이 아니라 「Instinct」(본능)·움직임·예측의 결과로 보고, 바이에른에서 해리 케인과 함께 훈련하며 침착함과 깨끗한 슈팅을 배웠을 것이라고 추정한다. 리그 백분위 지표(테이크온·기대 어시스트·세컨드 어시스트·전진 운반)를 근거로 시즌 30골 가능성까지 언급한다.",
+   "team_code": "AVL",
+   "title": "WHY NICOLAS JACKSON CAN'T STOP SCORING!",
+   "transcript_path": "reports/transcripts/D4mTw1VRx_0.en.md",
+   "url": "https://www.youtube.com/watch?v=D4mTw1VRx_0",
+   "video_id": "D4mTw1VRx_0"
+  },
+  {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-17] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 508,
    "impl_claims": [
     {
@@ -203,7 +257,7 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-17] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 513,
    "impl_claims": [
     {
@@ -287,8 +341,90 @@
    "video_id": "gPUHP5WzLYM"
   },
   {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 539,
+   "impl_claims": [
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Attack",
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 14,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (2/3)"
+     },
+     "player": "알리송",
+     "player_id": 59,
+     "points_kr": null,
+     "quote": "원문「you had Allison holding the width on the on the right」(오른쪽에서 알리송이 폭을 유지했다)",
+     "role_id": "wm_winger",
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "HELD",
+     "verdict_note": "맨시티전 회고(진행자 서술 · auto-caption) — 오른쪽 폭을 지키는 윙어 쪽 근거로 정본 RM wm_winger와 같은 방향이나 수비 복귀형과의 비교 실측은 없음. 감시 유지"
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Build-Up",
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 3,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
+      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (2/3)"
+     },
+     "player": "스즈키 지온",
+     "player_id": 132,
+     "points_kr": null,
+     "quote": "원문「maybe it's just been instructional over the last couple of games」(최근 몇 경기는 그냥 지시였을 수 있다)",
+     "role_id": "gk_ballplaying",
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "HELD",
+     "verdict_note": "시청자 질문(배급이 짧고 안전해졌다)에 대한 진행자의 추측 — 상대별 지시라는 해석으로 역할 변경 근거가 아니다. 쟁점 #3 감시 유지"
+    }
+   ],
+   "key_points": [
+    "수비 보강은 1월보다 2027년 여름에 크게 할 것으로 전망 — 현재 파우 토레스·린델뢰프가 1순위",
+    "늦은 실점은 노련함·볼 유지 능력 상실 탓 — 「we're not as good at ball retention」(볼 유지가 예전만 못하다)",
+    "맨시티전 구성: 잭슨 왼쪽 이동 → 만잠비·맥긴 중앙, 알리송 오른쪽 폭 유지",
+    "대안 구성(컵 결승 가정): 마첸 안쪽 진입, 캐시 전진 허용, 카마라가 내려가 백3",
+    "스즈키 배급이 짧아진 것은 지시일 가능성이 크고, 세트피스 수비 약화는 밍스 미출전·콘사 이탈 영향"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-14",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "1874 진행자 댄 바델이 A매치 휴식기에 시청자 질문에 답한 Q&A다. 대부분은 제임스 본드 후보·아카데미 유망주·이적 같은 잡담이지만 전술 답변이 몇 개 있다. 맨시티전 승리 구성(잭슨이 왼쪽으로 빠지고 만잠비·맥긴이 중앙, 알리송이 오른쪽 폭 유지)이 통했다고 짚었고, 스즈키의 배급이 짧아진 것은 최근 경기의 지시 때문일 가능성이 크다고 봤다. 또한 세트피스 수비와 경기 마무리 능력이 떨어진 원인을 콘사·틸레만스 등 경험 많은 선수들의 이탈에서 찾았다.",
+   "team_code": "AVL",
+   "title": "Answering YOUR Aston Villa Questions! | Best Front Four, January Defensive Plans & More",
+   "transcript_path": "reports/transcripts/zwgjn2ixYdk.en.md",
+   "url": "https://www.youtube.com/watch?v=zwgjn2ixYdk",
+   "video_id": "zwgjn2ixYdk"
+  },
+  {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-17] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 509,
    "impl_claims": [
     {
@@ -457,7 +593,7 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-17] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 514,
    "impl_claims": [
     {
@@ -503,7 +639,7 @@
   },
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-17] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 506,
    "impl_claims": [
     {
@@ -790,7 +926,7 @@
   },
   {
    "channel": "The Villans",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-17] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 507,
    "impl_claims": [
     {
@@ -903,7 +1039,7 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-17] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 505,
    "impl_claims": [
     {
@@ -988,7 +1124,7 @@
   },
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-17] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 512,
    "impl_claims": [
     {
@@ -1156,8 +1292,95 @@
    "video_id": "eTKj4JbNa7g"
   },
   {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 516,
+   "impl_claims": [
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Support",
+     "headline_kr": null,
+     "issue": null,
+     "player": "마첸",
+     "player_id": 6,
+     "points_kr": null,
+     "quote": "원문「getting himself to dangerous areas in the wide positions and delivering crosses」(측면의 위험 지역으로 들어가 크로스를 올린다)",
+     "role_id": "fb_att_wb",
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "APPLIED",
+     "verdict_note": "정본 LB fb_att_wb/Support와 같은 방향(측면 전진·크로스). 1대1 수비 약점 언급은 역할 변경 근거가 아님"
+    }
+   ],
+   "key_points": [
+    "마첸 2032년까지 재계약 — 확고한 주전 왼쪽 풀백(루헤리는 부상으로 출전 제한)",
+    "강점: 침투·속도·측면 크로스 / 약점: 결정적 패스 부족, 강한 상대와의 1대1 수비",
+    "맨시티전에서 마첸·캐시 양 풀백이 모두 좋았다는 평가",
+    "오나나 공백이 생각보다 크다 — 오나나가 돌아오면 고메스·카마라·오나나·고레츠카에 바클리까지 중원 자원 과잉",
+    "밍스 계약 만료 임박, 파우 토레스 잔여 계약 2년 → 9~10개월 안에 센터백 변화 예상"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-11",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "1874 댄 바델이 이언 마첸의 2032년까지 재계약 소식을 다룬 단독 방송이다. 마첸이 이제 확고한 주전 왼쪽 풀백이며, 침투와 속도로 측면 위험 지역에 들어가 크로스를 올리는 능력이 강점이라고 평가했다. 다만 공격 포인트는 부족하고, 최근 강한 상대에게 1대1 수비에서 고전했는데 만잠비의 지원이 적었다는 점을 짚었다. 오나나 공백과 바클리·밍스의 계약 상황, 센터백 세대교체 가능성도 함께 다뤘다.",
+   "team_code": "AVL",
+   "title": "Ian Maatsen Signs NEW Aston Villa Contract! | Onana Talks, Mings & Barkley Futures",
+   "transcript_path": "reports/transcripts/4i5i4GWBGTc.en.md",
+   "url": "https://www.youtube.com/watch?v=4i5i4GWBGTc",
+   "video_id": "4i5i4GWBGTc"
+  },
+  {
+   "channel": "Aston Villa Football Club",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 533,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "재계약 이유: 클럽 발전 방향·에메리의 비전·동료",
+    "에메리: 「really is into the details」(정말 디테일에 파고든다) — 모두가 같은 계획을 공유하게 함",
+    "뤼카 디뉴에게 배우며 성장했다고 언급",
+    "목표: 리그 선전과 트로피 1개"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-11",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "이안 마첸의 재계약 공식 인터뷰다. 재계약 이유로 클럽의 발전 방향과 에메리의 비전, 동료들을 꼽으며 「I feel at home here you know and I can develop here」(여기가 집처럼 편하고 성장할 수 있다)고 말했다. 에메리에 대해서는 「he's really demanding」(정말 요구가 많다)며 디테일에 집착하고 모두가 같은 계획을 공유하게 만든다고 했다. 가장 좋은 기억은 유로파리그 결승과 우승 퍼레이드였고, 이번 시즌 목표는 리그 선전과 트로피 하나다. 전술 내용은 없다.",
+   "team_code": null,
+   "title": "🗣️ \"I feel at home, and I can develop here\" Ian Maatsen on signing NEW contract | INTERVIEW",
+   "transcript_path": "reports/transcripts/vFshSk0CFRo.en.md",
+   "url": "https://www.youtube.com/watch?v=vFshSk0CFRo",
+   "video_id": "vFshSk0CFRo"
+  },
+  {
    "channel": "The Villans",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-17] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 510,
    "impl_claims": [
     {
@@ -1299,7 +1522,7 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-17] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 511,
    "impl_claims": [
     {
@@ -1523,6 +1746,92 @@
    "transcript_path": "reports/transcripts/e9WBTat40QU.en.md",
    "url": "https://www.youtube.com/watch?v=e9WBTat40QU",
    "video_id": "e9WBTat40QU"
+  },
+  {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 534,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "린델뢰프 1년 연장 — 콘사 대체자로 시즌 내내 거의 전 경기 출전, 하우드-벨리스는 그의 백업",
+    "헤밍스 5년 계약 합의 — 1군 선수로 대우(임대 없음)",
+    "헤밍스는 6·8번 출신인데 왼쪽 10번·오른쪽 10번으로 기용됨 → 장기적으로는 6번이나 중앙 10번이 맞을 수 있다는 의견",
+    "부엔디아·에메리 재계약 임박, 맥긴·밍스 계약 상황 주목"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-10",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "1874 댄 바델이 린델뢰프의 1년 연장 옵션 행사와 조지 헤밍스의 5년 계약 합의 소식에 반응한 짧은 방송이다. 린델뢰프는 콘사 이탈 공백을 메운 안정적인 리더로, 잭슨을 빼면 시즌 최우수 선수감이라고 평가했다. 헤밍스는 원래 6번·8번 출신인데 왼쪽 10번, 최근에는 오른쪽 10번으로 뛰며 새 위치를 배우는 중이고, 장기적으로는 6번이나 중앙 10번이 맞을 수 있다고 봤다. 부엔디아·에메리 재계약 임박 소식도 전했다.",
+   "team_code": "AVL",
+   "title": "Aston Villa Contract News: Victor Lindelöf New Deal & George Hemmings to Sign!",
+   "transcript_path": "reports/transcripts/vH5icKHuSmw.en.md",
+   "url": "https://www.youtube.com/watch?v=vH5icKHuSmw",
+   "video_id": "vH5icKHuSmw"
+  },
+  {
+   "channel": "Aston Villa Football Club",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 529,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "1년 연장 계약 — 부상이 잦던 시기 뒤 긴 여름 휴식이 몸에 도움이 됐다고 함",
+    "이번 시즌 리그·챔피언스리그 전 경기 선발(인터뷰어 언급)",
+    "에메리: 「he's very good at bringing out the best in in players」(선수의 최고치를 끌어내는 데 아주 능하다)",
+    "목표: 경기 하나씩 집중, 리그 상위권 확보"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-10",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "빅토르 린델뢰프의 1년 연장 계약 공식 인터뷰다. 「I'm super happy here」(여기서 정말 행복하다)며 유로파리그 결승 선발, 챔피언스리그 진출, 스웨덴 주장으로 나선 월드컵까지 돌아봤다. 에메리에 대해서는 요구가 많지만 선수의 최고치를 끌어낸다며 「I understand the way he wants me wants me to play」(그가 원하는 플레이 방식을 이해한다)고 했다. 이번 시즌 리그·챔피언스리그 전 경기 선발이며, 어린 선수들을 돕는 리더 역할도 언급했다. 전술 내용은 없다.",
+   "team_code": null,
+   "title": "🗣️🇸🇪 \"I’m super happy here\" | Victor Lindelöf on signing NEW contract | INTERVIEW",
+   "transcript_path": "reports/transcripts/gGjKKX4xgGc.en.md",
+   "url": "https://www.youtube.com/watch?v=gGjKKX4xgGc",
+   "video_id": "gGjKKX4xgGc"
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
@@ -2485,6 +2794,60 @@
    "transcript_path": "reports/transcripts/ZlDoYo0KCe0.en.md",
    "url": "https://www.youtube.com/watch?v=ZlDoYo0KCe0",
    "video_id": "ZlDoYo0KCe0"
+  },
+  {
+   "channel": "Aston Villa Football Club",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 530,
+   "impl_claims": [
+    {
+     "axis": "team_axis",
+     "field": "lead_protection_late",
+     "field_kr": "리드 지키기(경기 막판)",
+     "focus": null,
+     "headline_kr": "4-2 리드 중 막판 6분 2실점",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 16,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"맨유 원정 4-4(11-08)\", \"후반은 계획대로 통제했다는 감독 평가\", \"마지막 6분이 문제 — 빨리 고쳐야 한다\"]",
+     "quote": "원문 「the last six minutes really was what was getting us upset how we concede those two goals」(마지막 6분, 그 두 골을 내준 방식이 우리를 화나게 했다) — 우나이 에메리 · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Leading 4-2 in stoppage time, Villa conceded twice in the last six minutes; Emery wants it corrected",
+     "value_kr": "4-2 리드에서 마지막 6분 2실점 — 감독이 즉시 수정 과제로 지목",
+     "verdict": "HELD",
+     "verdict_note": "쟁점 #16(리드·수세 시 하강 형태) — 감독 1차 발언으로 리드 상황 막판 붕괴를 확인했으나 형태(백5·백6) 서술은 없다. 맨유전(match_report 70) 막판 좌표로 하강 형태를 판정한다."
+    }
+   ],
+   "key_points": [
+    "전반: 2골 뒤 2실점, 상대가 밀어붙여 찬스를 만듦",
+    "후반: 2골 뒤 하프타임 계획대로 통제 — 「we could control the game like we planned」(계획한 대로 경기를 통제할 수 있었다)",
+    "마지막 6분 2실점: 「something we have to to try to correct as quick as possible」(최대한 빨리 고쳐야 할 것)",
+    "새 선수 적응: 「how difficult this Premier League and how we play 90 minutes」(이 리그가 얼마나 어렵고 90분을 어떻게 뛰어야 하는지)",
+    "최근 리그 6경기 3승 3무"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-08",
+   "published_approx": 0,
+   "report_id": 70,
+   "summary": "맨유 원정 4-4 무승부 뒤 에메리의 경기 후 인터뷰다. 추가시간에 4-2로 앞서다 두 골을 내준 결과를 「It's difficult to accept this result」(받아들이기 어려운 결과다)라고 했다. 전반은 두 골을 넣은 뒤 두 골을 내주고 밀렸고, 후반은 다시 두 골을 넣은 뒤 하프타임에 계획한 대로 경기를 통제했다고 설명했다. 마지막 6분의 2실점을 빨리 고쳐야 할 문제로 꼽았고, 새 선수들이 프리미어리그 90분을 견디는 법에 적응해야 한다고 말했다.",
+   "team_code": "AVL",
+   "title": "\"It's difficult to accept this result\" | Unai Emery on draw to Manchester United",
+   "transcript_path": "reports/transcripts/iSPwoU7zWxU.en.md",
+   "url": "https://www.youtube.com/watch?v=iSPwoU7zWxU",
+   "video_id": "iSPwoU7zWxU"
   },
   {
    "channel": "NBC Sports",
@@ -4419,6 +4782,49 @@
    "video_id": "D5LNiRkdSPU"
   },
   {
+   "channel": "Aston Villa Football Club",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 523,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "에메리 체제의 리그·유럽 병행 꾸준함이 저평가돼 있다는 평가",
+    "바르사전: 「It's not a case of taking part」(참가에 의의를 두는 게 아니다) — 멀리 가겠다는 야망",
+    "바르사전은 형태·구조를 세계 최고 팀 상대로 시험할 기회",
+    "팬: 「they deserve to enjoy these times」(이 시간을 즐길 자격이 있다)"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-03",
+   "published_approx": 0,
+   "report_id": 66,
+   "summary": "바르셀로나 원정을 앞둔 타이론 밍스의 인터뷰다. 8년 가까운 빌라 생활을 「pride」(자부심)로 요약하며 에메리 체제에서 리그와 유럽대항전을 함께 소화해 온 꾸준함이 저평가돼 있다고 말했다. 브뤼헤·페네르바체전을 돌아보며 자신감을 얻었다고 했고, 바르사전은 「test our shape and our structure」(우리의 형태와 구조를 시험할) 기회라고 표현했다. 원정 팬들이 자기만의 유럽 원정 추억을 만들기를 바란다고 했다. 구체적 전술 내용은 없다.",
+   "team_code": "AVL",
+   "title": "🗣️ \"The fans deserve to enjoy these times\" | Tyrone Mings ahead of Barcelona | PRE MATCH",
+   "transcript_path": "reports/transcripts/HOBGfqKbR1I.en.md",
+   "url": "https://www.youtube.com/watch?v=HOBGfqKbR1I",
+   "video_id": "HOBGfqKbR1I"
+  },
+  {
    "channel": "UTV | Aston Villa Fan Channel",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 469,
@@ -4659,6 +5065,103 @@
    "transcript_path": "reports/transcripts/Ud2cwU17zoU.en.md",
    "url": "https://www.youtube.com/watch?v=Ud2cwU17zoU",
    "video_id": "Ud2cwU17zoU"
+  },
+  {
+   "channel": "Aston Villa Football Club",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 531,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "에메리: 「The manager is so demanding」(감독은 정말 요구가 많다) — 경기마다 다음 경기만 생각",
+    "강팀 상대 결과(PSG·바이에른·맨시티·토트넘)가 자신감의 근거",
+    "드레싱룸의 결속력과 재능이 최고치를 끌어낸다는 평가",
+    "캄프 누는 어릴 적 꿈 — 승점 3이 목표"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-02",
+   "published_approx": 0,
+   "report_id": 66,
+   "summary": "바르셀로나 원정을 앞둔 존 맥긴의 인터뷰다. 브뤼헤·페네르바체·바이킹으로 이어진 챔피언스리그 출발을 돌아보며, 에메리가 매우 요구가 많아 3~4일마다 다음 경기만 생각한다고 말했다. PSG·바이에른·맨시티·토트넘 상대 결과로 「we we can compete」(우리는 경쟁할 수 있다)는 믿음이 생겼다고 했다. 캄프 누 원정은 어릴 적 꿈이지만 승점 3을 가져와야 즐거운 경험이 된다고 강조했다. 전술 내용은 없다.",
+   "team_code": "AVL",
+   "title": "💪 \"We've proven against the BEST teams we can compete\" | John McGinn ahead of Barcelona | PRE MATCH",
+   "transcript_path": "reports/transcripts/pKGtMdqfdBA.en.md",
+   "url": "https://www.youtube.com/watch?v=pKGtMdqfdBA",
+   "video_id": "pKGtMdqfdBA"
+  },
+  {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 524,
+   "impl_claims": [
+    {
+     "axis": "team_axis",
+     "field": "defensive_drop_shape",
+     "field_kr": "수세 시 하강 형태",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 16,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "리드·수세 시 하강 형태: 편중 백5 vs 백6",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "원문「When we go into like a back six and a back five, I think we defend it very well」(백6나 백5로 내려앉으면 수비를 아주 잘한다고 본다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Drops into a back five / back six when forced to defend the box against elite opposition",
+     "value_kr": "강팀 상대로 박스를 지킬 때 백5·백6로 내려앉음",
+     "verdict": "HELD",
+     "verdict_note": "팬 패널의 인상 서술(맨시티전 기억 기반 · auto-caption) — 백5와 백6 중 어느 쪽인지 가리지 않아 쟁점 #16 판정 근거로는 부족, 감시 유지"
+    }
+   ],
+   "key_points": [
+    "바르사 약점 진단: 어리고 가벼운 스쿼드 · 높은 라인 — 「they play so high」(그들은 라인을 아주 높게 둔다)",
+    "핵심 맞대결은 마첸 대 라민 야말 — 속도가 대등해 마첸의 시험대라는 평가",
+    "예상 백4는 스즈키·캐시·린델뢰프·파우 토레스·마첸, 최전방은 잭슨, 피벗은 카마라·고메스",
+    "측면 자원은 풀백 수비 지원이 최우선 — 풀럼전에서 만잠비·알리송이 이 부분에서 부족했다는 지적",
+    "만잠비 기용 위치(왼쪽 측면 대 중앙)와 부엔디아 깜짝 선발 가능성을 두고 의견이 갈림"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-02",
+   "published_approx": 0,
+   "report_id": 66,
+   "summary": "The Villans 팬 패널이 바르셀로나 원정(챔피언스리그) 직전에 상대를 진단하고 빌라 선발을 예상한 방송이다. 바르셀로나 거주 패널은 바르사가 어리고 가벼워 피지컬이 강한 팀에 약하고 라인이 높아 배후 공간이 열린다고 봤다. 핵심 대결로는 마첸과 라민 야말의 맞대결을 꼽았다. 측면 두 자리를 두고 만잠비·알리송·맥긴·음바예·부엔디아 기용안이 엇갈렸는데, 풀럼전에서 만잠비·알리송의 수비 가담이 아쉬웠다는 지적이 공통으로 나왔다.",
+   "team_code": "AVL",
+   "title": "Can Aston Villa Stop Lamine Yamal, Emery Knows The Barca Weakness & Who Plays In Attack",
+   "transcript_path": "reports/transcripts/Ttk_jjW5KkU.en.md",
+   "url": "https://www.youtube.com/watch?v=Ttk_jjW5KkU",
+   "video_id": "Ttk_jjW5KkU"
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
@@ -4913,6 +5416,59 @@
    "video_id": "bXXq32QKtUc"
   },
   {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 535,
+   "impl_claims": [
+    {
+     "axis": "team_axis",
+     "field": "opponent_preset_high_line",
+     "field_kr": "상대 고라인 대응 프리셋",
+     "focus": null,
+     "headline_kr": "고라인 상대엔 GK 롱볼로 채널 공략",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 2,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
+      "trigger": "2026-11-09 이후 공식전 5경기 (0/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"대상: 바르셀로나처럼 하프라인 근처까지 라인을 올리는 팀\", \"방법: 스즈키 배급 → 측면 채널 긴 공으로 센터백 둘 고립\", \"근거: 팬 채널 진행자의 경기 전 예상(실측 아님)\"]",
+     "quote": "원문「we go long and hit the balls into the channel」(길게 차서 채널로 공을 넣는다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Against a very high defensive line (Barcelona), go longer: GK distribution into the channels to isolate the two centre-backs",
+     "value_kr": "상대가 하프라인 근처까지 라인을 올리면 GK 배급으로 채널에 긴 공을 넣어 센터백 둘을 고립시킨다",
+     "verdict": "HELD",
+     "verdict_note": "경기 전 팬 진행자의 예상일 뿐 바르셀로나전(경기 66) 실측이 아니다 — 상대 유형별 프리셋 감시 축(#2 고라인 항목)에 정성 자료로 붙인다. auto-caption."
+    }
+   ],
+   "key_points": [
+    "바르사 팬 진단: 「we are playing with the defense line very up」(수비 라인을 아주 높게 두고 경기한다) — 오프사이드 유도와 높은 압박의 대가로 뒷공간 위험",
+    "바르사 팬: 압박을 벗겨내고 뒷공간을 쓰면 빌라에도 기회가 있다고 봄",
+    "진행자 예상: 스즈키의 배급으로 상대 센터백 둘을 고립시키고 채널로 긴 공 — 「go slightly longer against you guys」(너희 상대로는 조금 더 길게 간다)",
+    "전술과 무관한 대화(야말 평가·메시 회고·에메리의 2017 PSG 역전패·경기장 공사)가 대부분"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-02",
+   "published_approx": 0,
+   "report_id": 66,
+   "summary": "바르셀로나전(11-03) 프리뷰로, UTV 진행자가 바르셀로나 팬 조르디와 대담한 영상이다. 조르디는 플릭 감독의 바르사를 빠른 템포·강한 압박·매우 높은 수비 라인으로 설명하고, 그 대가로 뒷공간이 크게 비며 챔피언스리그에서 오랫동안 무실점 경기가 없었다고 말한다. 진행자는 에메리가 이 높은 라인을 노려 스즈키의 배급으로 채널에 긴 공을 넣을 것이라고 예상한다. 나머지는 야말·메시·캄프 누 공사·에메리의 PSG 시절 등 전술과 무관한 잡담이다.",
+   "team_code": "AVL",
+   "title": "EVERYTHING ASTON VILLA FANS NEED TO KNOW ABOUT BARCELONA",
+   "transcript_path": "reports/transcripts/vdNc0R3OPmY.en.md",
+   "url": "https://www.youtube.com/watch?v=vdNc0R3OPmY",
+   "video_id": "vdNc0R3OPmY"
+  },
+  {
    "channel": "1874 : The Aston Villa Channel",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 465,
@@ -5058,6 +5614,59 @@
    "video_id": "ZPtfGsSLb94"
   },
   {
+   "channel": "Aston Villa Football Club",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 518,
+   "impl_claims": [
+    {
+     "axis": "team_axis",
+     "field": "second_half_opening_control",
+     "field_kr": "후반 초반 경기 통제",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 59,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "수비 블록 높이·후반 붕괴",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "원문 「We didn't manage to to keep the ball and yeah, they created a few chances」(공을 지키지 못했고, 상대가 찬스를 몇 번 만들었다) — 빅토르 린델뢰프 · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Villa failed to keep the ball for roughly the first 20 minutes of the second half vs Fulham and conceded",
+     "value_kr": "풀럼전 후반 첫 20분 볼 유지 실패 → 찬스 허용·실점",
+     "verdict": "HELD",
+     "verdict_note": "쟁점 #59(수비 블록 높이·후반 붕괴) — 선수 1차 발언이며 같은 경기 에메리 인터뷰(xedpMYS5eSA)와 일치한다. 풀럼전(match_report 65) 후반 0~20분 점유·xGA로 확인한다."
+    }
+   ],
+   "key_points": [
+    "후반 초반: 「the first 20 minutes or something like that. We didn't manage to to keep the ball」(첫 20분쯤, 공을 지키지 못했다)",
+    "상대 찬스 허용: 「a few too many chances」(찬스를 너무 많이 내줬다)",
+    "과제: 「be able to to control the game in a in a better way」(경기를 더 잘 통제할 수 있어야 한다)",
+    "전반 페널티 실축 — 2-0 기회 무산"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-01",
+   "published_approx": 0,
+   "report_id": 65,
+   "summary": "풀럼전 무승부 뒤 빅토르 린델뢰프의 인터뷰다. 승점 3을 놓쳐 실망스럽다며, 특히 후반 시작 20분가량 공을 지키지 못해 상대에게 찬스를 너무 많이 내주고 실점했다고 짚었다. 전반 페널티 실축으로 2-0을 놓친 것보다 후반에 더 강하게 나와 경기를 통제했어야 했다는 점을 강조했다. 최근 결과는 좋았기 때문에 더 아쉽다고 덧붙였다.",
+   "team_code": "AVL",
+   "title": "\"We're disappointed not to get the 3 points\" | Victor Lindelöf reflects on Fulham draw 🗣️",
+   "transcript_path": "reports/transcripts/8uV56O8q-jg.en.md",
+   "url": "https://www.youtube.com/watch?v=8uV56O8q-jg",
+   "video_id": "8uV56O8q-jg"
+  },
+  {
    "channel": "UTV | Aston Villa Fan Channel",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 464,
@@ -5183,6 +5792,157 @@
    "video_id": "6bwxQlWU3bk"
   },
   {
+   "channel": "Aston Villa Football Club",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 538,
+   "impl_claims": [
+    {
+     "axis": "team_axis",
+     "field": "second_half_opening_control",
+     "field_kr": "후반 초반 경기 통제",
+     "focus": null,
+     "headline_kr": "후반 첫 20분 점유 상실·실점",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 59,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "수비 블록 높이·후반 붕괴",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"풀럼전(10-31) 감독 1차 발언\", \"전반엔 지배했지만 전환·압박 회피 허용\", \"후반 첫 20분 풀럼 득점\", \"마지막 10~15분 다시 공세\"]",
+     "quote": "원문 「the first 20 minutes of half they they were pushing, they were dominating」(후반 첫 20분 상대가 밀어붙이고 지배했다) — 우나이 에메리 · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "First 20 minutes of the second half Fulham dominated and scored; Villa lost first-half possession consistency",
+     "value_kr": "후반 첫 20분 풀럼 우세·실점, 전반의 점유 일관성 상실",
+     "verdict": "HELD",
+     "verdict_note": "쟁점 #59(후반 붕괴) — 감독·린델뢰프(8uV56O8q-jg) 두 1차 발언이 일치한다. 풀럼전(match_report 65) 후반 0~20분 점유·xGA로 확인한다."
+    }
+   ],
+   "key_points": [
+    "전반: 더 지배, 코너킥·페널티 획득 — 다만 전환 허용",
+    "압박 회피 허용: 「they were being as well clinical breaking our our press」(상대는 우리 압박을 깨는 데도 효율적이었다)",
+    "후반 첫 20분: 「we were not really uh keeping the same consistency with the ball possession」(점유의 일관성을 전반처럼 유지하지 못했다)",
+    "마지막 10~15분 다시 공세, 결과는 공정",
+    "골키퍼 선방 언급(자막에 이름 오인식 — 특정 안 함)"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-31",
+   "published_approx": 0,
+   "report_id": 65,
+   "summary": "풀럼전 무승부 뒤 에메리의 경기 후 인터뷰다. 「Disappointing result. Fair result.」(실망스러운 결과, 공정한 결과)라며 풀럼이 조직적이고 찬스를 만들었다고 인정했다. 전반은 더 지배하며 코너킥과 페널티를 얻었지만 몇 차례 전환을 허용했고 풀럼이 압박을 벗겨 냈다고 했다. 후반 첫 20분은 풀럼이 밀어붙여 득점했고 빌라는 전반 같은 점유 일관성을 잃었으며, 마지막 10~15분에 다시 밀어붙였다고 설명했다. 빌라 파크를 요새로 만드는 과정의 「one stop」(한 번의 멈춤)이라고 정리했다.",
+   "team_code": "AVL",
+   "title": "\"It's a fair result\" | Unai Emery post-match interview 🗣️",
+   "transcript_path": "reports/transcripts/xedpMYS5eSA.en.md",
+   "url": "https://www.youtube.com/watch?v=xedpMYS5eSA",
+   "video_id": "xedpMYS5eSA"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 532,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "구단 성명 핵심 표현 「ascension」(상승) — 진행자는 이를 빌라의 상승 궤도 선언으로 해석",
+    "진행자: 맨유와 빌라의 유러피언컵 우승 횟수(3 대 1) 차이는 크지 않으며, 이번 시즌 챔피언스리그 우승 가능성은 빌라가 더 높다고 주장",
+    "에메리 이적설(맨유)에 대해 구단 대응이 잔류 신호라고 봄",
+    "전술·선수 기용 내용 없음"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-31",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "구단이 제이미 캐러거를 상대로 법적 조치를 예고한 사건에 대한 UTV 진행자의 의견 영상이다. 캐러거가 「Aston Villa will never be Manchester United」(빌라는 절대 맨유가 될 수 없다)라며 빌라 팬들에게 입을 다물라고 한 발언을 진행자는 편향되고 무례하다고 비판한다. 진행자는 구단의 역사·인프라 투자·구단주의 야망을 근거로 빌라의 상승세를 강조하고, 이번 대응이 에메리가 맨유로 가지 않고 오래 남는다는 신호라고 해석한다. 전술 내용은 없다.",
+   "team_code": "AVL",
+   "title": "ASTON VILLA INITIATE LEGAL ACTION AGAINST JAMIE CARRAGHER",
+   "transcript_path": "reports/transcripts/tgz1-rstQqk.en.md",
+   "url": "https://www.youtube.com/watch?v=tgz1-rstQqk",
+   "video_id": "tgz1-rstQqk"
+  },
+  {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 521,
+   "impl_claims": [
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Build-Up",
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 4,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "잭슨 ST 역할: 어드밴스드 vs 폴스9(배후 러너)",
+      "trigger": "2026-10-21 이후 리그 5경기 (3/5)"
+     },
+     "player": "잭슨",
+     "player_id": 76,
+     "points_kr": null,
+     "quote": "원문「coming into maybe the number 10 role, dropping deep and linking the play a little bit more rather than trying to run in behind」(배후로 뛰기보다 10번 자리로 내려와 연결을 더 맡는다)",
+     "role_id": "st_false9",
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "PENDING",
+     "verdict_note": "풀럼전 프리뷰의 상대별 예상(미드블록 상대) — 정본 st_advanced/Support와 다른 방향. 판정은 풀럼전 실측(경기 65)으로"
+    }
+   ],
+   "key_points": [
+    "선발 예상: 맨시티전과 같은 11명 — 맥긴·만잠비는 고정, 남은 측면 한 자리는 알리송 대 음바예",
+    "풀럼: 아르벨로아의 미드블록 + 샤 찰스·후고 라르손 중원",
+    "경고: 중원이 막혀 측면으로만 공격하면 빌라는 무뎌진다 — 과거 번리전 크로스 남발 사례",
+    "맨시티전은 대부분 좁게 섰고 알리송이 폭을 담당 — 「we played really narrow against Man City」(맨시티전에서 아주 좁게 섰다)",
+    "만잠비는 로저스보다 박스 안에서 마무리 능력이 낫다는 평가"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-30",
+   "published_approx": 0,
+   "report_id": 65,
+   "summary": "1874 댄 바델과 닐 던워스가 풀럼 홈경기를 앞두고 나눈 프리뷰다. 리그컵 탈락은 로테이션의 결과로 크게 개의치 않고, 맨시티전 선발을 거의 그대로 낼 것으로 예상했다(남은 고민은 알리송과 음바예 중 누구냐). 풀럼은 아르벨로아 감독 아래 미드블록을 쓰고 샤 찰스·후고 라르손이 중원을 지킨다며, 빌라가 중원 싸움에 끌려가 측면으로만 공격하게 되면 무뎌진다고 경고했다. 공간이 적을 풀럼전에서는 잭슨이 배후 침투보다 10번 자리로 내려와 연결해야 할 것이라는 의견이 나왔다.",
+   "team_code": "AVL",
+   "title": "Aston Villa v Fulham | Can Emery’s Men Deliver Again at Villa Park?",
+   "transcript_path": "reports/transcripts/FhbYRUQRi_8.en.md",
+   "url": "https://www.youtube.com/watch?v=FhbYRUQRi_8",
+   "video_id": "FhbYRUQRi_8"
+  },
+  {
    "channel": "The Villans",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 461,
@@ -5263,6 +6023,103 @@
    "transcript_path": "reports/transcripts/EUhuiiN4cJA.en.md",
    "url": "https://www.youtube.com/watch?v=EUhuiiN4cJA",
    "video_id": "EUhuiiN4cJA"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 536,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "풀럼 팬: 아르벨로아는 실바보다 상대 맞춤 대응이 약하고 공격 철학이 고정적 — 「both fullbacks coming forward to attack」(양쪽 풀백이 함께 공격에 올라온다)이 시즌 초 큰 약점",
+    "진행자가 인용한 풀럼 지표: 점유율 58%(5위), 패스 수 2위, 파이널서드 패스 5위, 전진 패스 18위",
+    "풀럼 팬의 빌라 인상: 스즈키·만잠비 칭찬, 잭슨의 활약에 놀람",
+    "빌라 전술 내용은 없음"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-30",
+   "published_approx": 0,
+   "report_id": 65,
+   "summary": "풀럼전(10-31) 프리뷰로, UTV 진행자가 풀럼 팬 팟캐스트 진행자와 대담한 영상이다. 대화는 대부분 풀럼 이야기다. 새 감독 아르벨로아 체제는 실바보다 덜 실용적이고 점유 지향이며, 시즌 초 양쪽 풀백이 함께 올라가 크게 노출됐다는 평가가 나온다. 진행자는 풀럼이 점유율 5위·패스 수 2위이지만 전진 패스는 18위라는 지표를 소개한다. 빌라 쪽 언급은 스즈키·만잠비에 대한 칭찬과 잭슨의 활약 정도뿐이다.",
+   "team_code": "AVL",
+   "title": "ASTON VILLA v FULHAM | MATCH PREVIEW",
+   "transcript_path": "reports/transcripts/weXKU3b6L1M.en.md",
+   "url": "https://www.youtube.com/watch?v=weXKU3b6L1M",
+   "video_id": "weXKU3b6L1M"
+  },
+  {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 517,
+   "impl_claims": [
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Balanced",
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 80,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "마조 ST 역할: 홀드업 vs 침투",
+      "trigger": "2026-10-28 이후 마조 ST 선발 2경기 (0/2)"
+     },
+     "player": "마조",
+     "player_id": 61,
+     "points_kr": null,
+     "quote": "원문「Villa will have to play in a different way to an extent when Maja's on the pitch」(마조가 뛸 때는 빌라가 어느 정도 다르게 플레이해야 한다)",
+     "role_id": "st_target",
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "PENDING",
+     "verdict_note": "시청자 질문(마조가 체격 때문에 내려와 연결하는 역할을 할 수 있나)에 대한 진행자 답 — 힘을 쓰는 다른 유형의 9번이라는 서술로 홀드업 쪽. 포커스는 원문이 특정하지 않음(Balanced는 잠정). 마조 ST 선발 실측으로 판정"
+    }
+   ],
+   "key_points": [
+    "캐러거 「Aston Villa will never be Man United」(빌라는 결코 맨유가 될 수 없다) 발언 반박 — 맨유는 에메리에게 지금의 권한을 줄 수 없다",
+    "스즈키 아시안컵 차출(최대 8경기) 대비 우려 — 리그컵에서 비조의 실수",
+    "보가르드: 「this guy is not a right back」(이 선수는 오른쪽 풀백이 아니다) — 중원 서열도 낮아 이적 전망",
+    "밍스는 파우 토레스의 왼쪽 센터백 백업이자 몸싸움이 많은 경기용 — 리그컵 수비 붕괴는 하우스·베드나렉 책임이 더 크다는 평가",
+    "마조(17세): 왓킨스·잭슨처럼 내려와 연결할 수 있을지는 미지수 — 코치진이 다듬겠지만 힘이 장점이고, 그가 뛰면 빌라가 어느 정도 다르게 플레이해야 함"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-29",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "1874 댄 바델이 리그컵 탈락 다음 날 진행한 Q&A다. 앞부분은 제이미 캐러거가 에메리의 맨유행 가능성을 다시 주장한 것에 대한 반박으로, 맨유는 에메리가 빌라에서 가진 권한을 줄 수 없다고 봤다. 이어 1~2월 아시안컵으로 스즈키가 빠질 때 비조로 버틸 수 있을지 우려했고, 보가르드는 오른쪽 풀백에 맞지 않아 이적이 필요하다고 평가했다. 밍스는 파우 토레스의 왼쪽 센터백 백업으로 몸싸움이 많은 경기에 쓰는 카드로 남을 가치가 있다고 봤다. 17세 공격수 마조가 뛸 때는 빌라가 어느 정도 다르게 플레이해야 할 것이라고 답했다.",
+   "team_code": "AVL",
+   "title": "Dan Bardell Responds to Jamie Carragher DOUBLING DOWN on Manchester United & Unai Emery!",
+   "transcript_path": "reports/transcripts/6IBxLgNjRmQ.en.md",
+   "url": "https://www.youtube.com/watch?v=6IBxLgNjRmQ",
+   "video_id": "6IBxLgNjRmQ"
   },
   {
    "channel": "Cherries Red Army - AFC Bournemouth Fan Channel",
@@ -5467,6 +6324,88 @@
    "transcript_path": "reports/transcripts/CsuD00ou-_o.en.md",
    "url": "https://www.youtube.com/watch?v=CsuD00ou-_o",
    "video_id": "CsuD00ou-_o"
+  },
+  {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 526,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "st_all_round_function",
+     "field_kr": "9번의 기능",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 5,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (1/3)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "원문 「Jackson's able to to come off the front and link play」(잭슨은 앞선에서 내려와 연계할 수 있다) · 「He can hold the ball up really well」(공을 아주 잘 지켜 준다) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Jackson comes off the front to link, runs in behind, holds the ball up and wins fouls",
+     "value_kr": "내려와 연계·배후 침투·홀드업·파울 유도를 모두 하는 9번",
+     "verdict": "HELD",
+     "verdict_note": "쟁점 #5(잭슨 포커스·홀드업 변형)에 묶음 — 정본 st_advanced/Support와 충돌하지 않는 서술이다. 잭슨 선발 경기 커널(하강·측면 이동 비중)로 판정한다."
+    },
+    {
+     "axis": "team_axis",
+     "field": "out_of_possession_shape",
+     "field_kr": "비보유 기본 형태",
+     "focus": null,
+     "headline_kr": "비보유 시 맥긴이 올라선 4-4-2",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 15,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "비보유 기본 형태: 4-4-2 vs 4-4-1-1",
+      "trigger": "2026-12-31 이후"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"맨시티전 전반 관찰(진행자 · auto-caption)\", \"2선: 왼쪽 만잠비·오른쪽 알리송\", \"맥긴이 잭슨 옆 1선으로 올라섬\"]",
+     "quote": "원문 「McGinn and Jackson in a in a 4-4-2 off the ball」(맥긴과 잭슨이 앞선 비보유 4-4-2) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "4-4-2 off the ball with McGinn alongside Jackson; Manzambi left, Alysson right",
+     "value_kr": "맥긴이 잭슨 옆으로 올라선 4-4-2(왼쪽 만잠비·오른쪽 알리송)",
+     "verdict": "HELD",
+     "verdict_note": "쟁점 #15(4-4-2 vs 4-4-1-1) — CAM(맥긴)이 ST 높이로 올라선다는 서술은 4-4-2 쪽 근거다. 진행자 관찰 1건이므로 맨시티전 비보유 좌표로 맥긴·잭슨 높이를 확인해 판정한다."
+    }
+   ],
+   "key_points": [
+    "비보유 형태: 「McGinn and Jackson in a in a 4-4-2 off the ball」(맥긴과 잭슨이 앞선 비보유 4-4-2) — 진행자 관찰(auto-caption)",
+    "압박 조직: 「everyone knows when the trigger point is」(모두가 압박 트리거 시점을 안다)",
+    "잭슨: 내려와 연계(득점 장면 어시스트 전 터치), 배후 침투, 홀드업, 파울 유도를 모두 한다는 평가",
+    "교체: 부엔디아(하프타임 직후), 마조(막판 코너 부근 볼 키핑·파울 유도), 바클리 투입",
+    "에메리 이적설: 2029년까지 계약, 재계약 임박설 — 전술 내용 아님"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-28",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "talkSPORT의 댄 바델(빌라 팬)과 맨유 팬 진행자가 빌라의 맨시티전 승리와 에메리 맨유행 루머를 이야기한 토크다. 진행자는 맨시티전 전반 빌라의 압박 강도를 높이 평가하며 비보유 시 맥긴과 잭슨이 앞선 4-4-2 형태, 왼쪽 만잠비·오른쪽 알리송 배치를 짚었다. 바델은 여름 영입이 골키퍼와 중앙 공격수를 모두 업그레이드했다고 보고, 잭슨이 연계·배후 침투·홀드업·파울 유도를 다 하는 9번이라고 평가했다. 후반부는 에메리가 빌라를 떠나지 않을 것이라는 대화와 광고가 차지한다.",
+   "team_code": "AVL",
+   "title": "Dan Bardell at talkSPORT | Flex FINALLY Admits Man United Can't Attract Unai Emery!",
+   "transcript_path": "reports/transcripts/ZKAIfnEpyJ8.en.md",
+   "url": "https://www.youtube.com/watch?v=ZKAIfnEpyJ8",
+   "video_id": "ZKAIfnEpyJ8"
   },
   {
    "channel": "Back of the Net - The AFC Bournemouth Fan Channel",
@@ -5887,6 +6826,78 @@
    "transcript_path": "reports/transcripts/5xoiziTaf8o.en.md",
    "url": "https://www.youtube.com/watch?v=5xoiziTaf8o",
    "video_id": "5xoiziTaf8o"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 525,
+   "impl_claims": [
+    {
+     "axis": "focus",
+     "field": null,
+     "field_kr": null,
+     "focus": "Support",
+     "headline_kr": null,
+     "issue": null,
+     "player": "잭슨",
+     "player_id": 76,
+     "points_kr": null,
+     "quote": "원문「He'll crop up on the left … He'll crop up on the right」(왼쪽에도 오른쪽에도 나타난다) · 「he runs, he presses, defends well」(뛰고, 압박하고, 수비도 잘한다)",
+     "role_id": "st_advanced",
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "APPLIED",
+     "verdict_note": "측면으로 빠져 침투하고 수비수를 압박한다는 묘사는 어드밴스드 포워드 Support의 EA 정의(「make runs from deeper or wider positions, and press the defenders」(더 깊거나 넓은 위치에서 침투하고 수비수를 압박한다))와 일치 — 시즌 정본 유지. auto-caption · 팬 패널 의견."
+    },
+    {
+     "axis": "team_axis",
+     "field": "build_up_shape",
+     "field_kr": "빌드업 형태",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 13,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "원문「we build up with that three at the back. You know, that's what we generally always build up with」(우리는 백3로 빌드업한다, 평소 늘 그렇게 한다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Villa generally build up with a back three (one full-back tucking in alongside the centre-backs)",
+     "value_kr": "빌라는 평소 백3 형태로 빌드업한다",
+     "verdict": "HELD",
+     "verdict_note": "팬 진행자가 컵 선발을 예상하며 전제로 깐 진술이고 특정 경기 실측이 아니다 — 풀백 비대칭(한쪽 전진·반대쪽 백3) 감시 축(#13)의 정성 자료로만 붙인다. auto-caption."
+    }
+   ],
+   "key_points": [
+    "컵 로테이션: 진행자는 에메리가 약 8명을 바꿀 것으로 예상 — 카마라·고메스·맥긴·잭슨·캐시 휴식 제안",
+    "진행자: 「we build up with that three at the back」(우리는 백3로 빌드업한다)를 빌라의 평소 빌드업 형태로 전제",
+    "측면: 얼은 가르나초의 배후 침투를 원하지만, 진행자는 에메리가 복귀 직후인 헤밍스를 쓸 것이라고 봄",
+    "잭슨 평가(얼): 「He'll crop up on the left … He'll crop up on the right」(왼쪽에도 오른쪽에도 나타난다) · 뒷공간 침투·짧게 내려오기·압박 모두 가능",
+    "진행자: 에메리가 잭슨의 높게 뜨던 슈팅을 낮게 감아 차도록 교정했다는 인터뷰를 소개하고, 워밍업에서도 낮은 슈팅만 찬다고 관찰"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-27",
+   "published_approx": 0,
+   "report_id": 64,
+   "summary": "본머스 원정 카라바오컵(10-28) 프리뷰로, UTV 진행자와 고정 패널 얼이 대담한 영상이다. 전반부는 에메리가 발롱도르 시상식에 빌라 엠블럼 정장을 입고 나온 것의 의미와 맨시티전 승리 이야기다. 컵 예상 선발에서는 약 8명 로테이션을 전제로 하우드-벨리스·밍스 센터백, 고레츠카 선발 필요성, 헤밍스와 가르나초의 측면 경쟁을 논의한다. 후반부에서 얼은 잭슨이 좌우로 빠지고 뒷공간 침투·짧게 내려오기·압박을 모두 해낸다고 평가하고, 진행자는 바르셀로나의 높은 라인을 스즈키와 잭슨으로 공략할 수 있다고 본다.",
+   "team_code": "AVL",
+   "title": "BOURNEMOUTH v ASTON VILLA | MATCH PREVIEW",
+   "transcript_path": "reports/transcripts/Y2u0lm29XjA.en.md",
+   "url": "https://www.youtube.com/watch?v=Y2u0lm29XjA",
+   "video_id": "Y2u0lm29XjA"
   },
   {
    "channel": "1874 : The Aston Villa Channel",
@@ -6468,6 +7479,102 @@
    "transcript_path": "reports/transcripts/kyOeYKF1Q8c.en.md",
    "url": "https://www.youtube.com/watch?v=kyOeYKF1Q8c",
    "video_id": "kyOeYKF1Q8c"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 528,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "알베크의 린델뢰프 평가: 「he's just getting better and better」(그는 점점 더 좋아지고 있다) — 재계약 권유, 활동량을 강점으로 꼽음",
+    "에메리 체제 최근 한두 달 흐름을 긍정적으로 평가(뉴캐슬전 시청 언급)",
+    "나머지는 선수 시절 회고와 다큐멘터리 크라우드펀딩 홍보"
+   ],
+   "kind": "선수스카우팅",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-26",
+   "published_approx": 0,
+   "report_id": null,
+   "summary": "빌라 출신 스웨덴 공격수 마르쿠스 알베크와의 인터뷰 및 다큐멘터리 「The Mighty Cosmos」(마이티 코스모스) 후원 홍보 영상이다. 알베크는 그레이엄 테일러 시절 입단, 후안 파블로 앙헬과의 공격수 경쟁, 스웨덴 대표팀 시절 스페인전 골을 회고한다. 현 주장 린델뢰프에 대해서는 경기력이 계속 좋아지고 있으며 재계약해야 한다고 말한다. 후반부는 다르푸르 난민 출신 선수들이 스웨덴에서 만든 클럽 회장 인터뷰로, 전술 내용은 없다.",
+   "team_code": "AVL",
+   "title": "MARCUS ALLBÄCK ON VICTOR LINEDELÖF, LEARNING FROM JUAN PABLO ÁNGEL & THE MIGHTY COSMOS",
+   "transcript_path": "reports/transcripts/e1Catd-Ea1s.en.md",
+   "url": "https://www.youtube.com/watch?v=e1Catd-Ea1s",
+   "video_id": "e1Catd-Ea1s"
+  },
+  {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 537,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "st_channel_drift",
+     "field_kr": "골키퍼 빌드업 시 9번 위치",
+     "focus": null,
+     "headline_kr": "골키퍼 빌드업 때 잭슨이 왼쪽 채널로",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 5,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (1/3)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"맨시티전 전반 관찰(진행자 · auto-caption)\", \"스즈키 소유 시 4-2-4\", \"잭슨이 왼쪽 풀백과 게히 사이를 공략\"]",
+     "quote": "원문 「Jackson's getting in between the fullback and Guy」(잭슨이 풀백과 게히 사이로 파고든다) · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "In goal-kick build-up Villa form a 4-2-4 and Jackson drifts left into the gap between full-back and centre-back",
+     "value_kr": "스즈키 소유 시 4-2-4, 잭슨은 왼쪽 풀백–센터백 사이로 이동",
+     "verdict": "HELD",
+     "verdict_note": "쟁점 #5(잭슨 측면 이동·변형) — 측면 채널 이동은 st_advanced/Support 정본 범위 안이다. 맨시티전 잭슨 좌표의 왼쪽 채널 비중으로 확인한다. 4-2-4 빌드업 형태 자체는 1회 관찰이라 별도 축으로 올리지 않는다."
+    }
+   ],
+   "key_points": [
+    "선발: 스즈키·캐시·린델뢰프·파우 토레스·마첸 / 카마라·주앙 고메스 / 알리송·맥긴·만잠비 / 잭슨(부엔디아 벤치)",
+    "워밍업 관찰: 맥긴 중앙·만잠비 왼쪽, 마첸과 왼쪽 연계 기대",
+    "하프타임: 「Villa are basically playing in a 4-2-4, and Jackson's pulling left」(빌라는 사실상 4-2-4로 서고 잭슨은 왼쪽으로 빠진다) — 골키퍼 소유 시",
+    "전반 평가: 볼 유무 모두 강도가 매우 높았고 필요할 때는 쉬었다",
+    "후반: 「probably the only shot we had in the second half」(후반 슈팅은 아마 그거 하나였다) — 수비로 버틴 승리"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-25",
+   "published_approx": 0,
+   "report_id": 63,
+   "summary": "1874 채널 진행자가 아버지·친구와 함께 맨시티전 홈경기를 관전한 브이로그다. 선발 발표 때 만잠비가 복귀했는데도 알리송이 함께 선발되고 부엔디아가 벤치로 간 것을 「공격적인 선택」으로 평가했다. 하프타임에는 스즈키가 공을 잡으면 빌라가 4-2-4로 서고 잭슨이 왼쪽으로 빠져 풀백과 게히 사이를 공략한다고 짚었다. 경기 후에는 캐시(골라인 클리어링)와 잭슨(2골)을 칭찬했고, 후반 슈팅은 사실상 1개였다고 말했다.",
+   "team_code": "AVL",
+   "title": "Watching the VILLANS Beat the VILLAINS | Aston Villa v Man City Matchday Experience",
+   "transcript_path": "reports/transcripts/xa7y91-yvFw.en.md",
+   "url": "https://www.youtube.com/watch?v=xa7y91-yvFw",
+   "video_id": "xa7y91-yvFw"
   },
   {
    "channel": "FußballFokus",
@@ -8031,6 +9138,131 @@
    "transcript_path": "reports/transcripts/A07aC4fuVDc.en.md",
    "url": "https://www.youtube.com/watch?v=A07aC4fuVDc",
    "video_id": "A07aC4fuVDc"
+  },
+  {
+   "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 515,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "rb_inverting_into_midfield",
+     "field_kr": "오른쪽 풀백의 중원 진입",
+     "focus": null,
+     "headline_kr": "바이킹전 한정: 고메스가 RB에서 중원으로",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 13,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"볼 유무별로 다른 시스템(진행자 · auto-caption)\", \"점유 우위가 확실한 상대용이라는 해석\", \"맨시티전에선 쓰지 않을 것이라 전망\"]",
+     "quote": "원문 「the decision for Gomez to to kind of play midfield and and right back」(고메스를 중원과 오른쪽 풀백 양쪽으로 쓰는 결정) — 데이브 리드 · auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Vs Viking, João Gomes played a hybrid role moving between right-back and midfield (different on/off-ball shape)",
+     "value_kr": "바이킹전: 주앙 고메스가 오른쪽 풀백↔중원을 오간 볼 유무별 형태",
+     "verdict": "HELD",
+     "verdict_note": "쟁점 #13(풀백 비대칭·한쪽 좁힘) — 오른쪽 풀백이 중원으로 좁히는 사례다. 진행자 스스로 바이킹전 전용이라 했으므로 시즌 정본 근거가 아니라 상대별 프리셋 후보로만 본다. 바이킹전 고메스 좌표로 확인."
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Attack",
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 14,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
+      "trigger": "2026-10-27 이후 알리송 선발 3경기 (2/3)"
+     },
+     "player": "알리송",
+     "player_id": 59,
+     "points_kr": null,
+     "quote": "원문 「he was the one who was kind of trying to run off Jackson in behind when Villa went direct」(빌라가 직선적으로 갈 때 잭슨에게서 떨어지는 공을 받아 배후로 뛰던 게 그였다) — 데이브 리드 · auto-caption",
+     "role_id": "wm_winger",
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "HELD",
+     "verdict_note": "쟁점 #14(알리송 widemid vs winger) — 배후 침투 서술은 wm_winger 쪽이나 뉴캐슬전 1경기 관찰이고 role_id는 요약자 추정이다. 알리송 선발 경기 커널로 판정한다. · 포커스는 영상이 특정하지 않아 RM 정본(wm_winger/Attack) 기준으로 채움(2026-11-18 메인 검수)"
+    }
+   ],
+   "key_points": [
+    "지난 시즌 맨시티전: 비보유 저블록 때 카마라가 내려와 백5 — 같은 방식 가능성 언급",
+    "바이킹전: 주앙 고메스가 오른쪽 풀백에서 중원으로 들어오는 볼 유무별 시스템 — 진행자도 「맨시티전에선 안 볼 것」이라 함",
+    "알리송: 뉴캐슬전에서 직선적 전개 때 잭슨의 플릭을 받아 배후로 뛰는 역할",
+    "선발 예상: 만잠비가 뛰면 맥긴·만잠비·부엔디아 2선, 왼쪽 풀백은 캐시 또는 밍스",
+    "맨시티 위협: 홀란 — 지난 시즌엔 콘사가 막았지만 이번엔 콘사 부재"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-23",
+   "published_approx": 0,
+   "report_id": 63,
+   "summary": "1874 채널의 맨시티전 프리뷰(댄 바델·데이브 리드)다. 맨시티가 마레스카 체제에서 득점은 많지만 실점도 하는 개방적인 팀이라 빌라에게 기회가 있다고 봤다. 지난 시즌 맨시티전에서 카마라가 내려와 백5를 만들었던 방식이 반복될 수 있다고 전망했고, 바이킹전에서 주앙 고메스가 오른쪽 풀백과 중원을 오가는 볼 유무별 다른 시스템이 인상적이었다고 언급했다. 선발 쟁점은 만잠비 부상 여부에 따른 알리송 기용과 왼쪽 풀백(캐시 vs 밍스)이었다.",
+   "team_code": "AVL",
+   "title": "Aston Villa v Man City | Can Emery End Maresca’s Winning PL Run?",
+   "transcript_path": "reports/transcripts/1FxqGWv4NOk.en.md",
+   "url": "https://www.youtube.com/watch?v=1FxqGWv4NOk",
+   "video_id": "1FxqGWv4NOk"
+  },
+  {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 519,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "맨시티 규정 위반 판정과 그 팬들의 반응 비판이 방송의 대부분",
+    "맨시티는 7연승이지만 수비가 불안하고 실점 기회를 많이 내준다는 평가",
+    "측면 선발로 경기 의도를 읽을 수 있다는 관점 — 알리송 선발이면 공격적, 맥긴 오른쪽이면 견제형",
+    "가르나초 교체 투입, 만잠비의 큰 경기 영향력에 기대"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-23",
+   "published_approx": 0,
+   "report_id": 63,
+   "summary": "The Villans 팬 패널이 맨시티 홈경기를 앞두고 나눈 대화로, 대부분은 맨시티의 재정 규정 위반 판정과 그 팬들의 태도에 대한 비판이다. 패널들은 빌라가 최근 맨시티를 상대로 성적이 좋았고 스쿼드가 강해져 이길 수 있다는 자신감을 드러냈다. 전술 언급은 맨시티 수비가 7연승만큼 단단하지 않다는 평가, 측면 선발 구성(알리송이면 공격적, 맥긴이면 견제형)으로 경기 의도를 읽을 수 있다는 정도에 그친다.",
+   "team_code": "AVL",
+   "title": "Why Manchester City Face Biggest Challenge Yet At Villa Park",
+   "transcript_path": "reports/transcripts/9l_njxOTvEk.en.md",
+   "url": "https://www.youtube.com/watch?v=9l_njxOTvEk",
+   "video_id": "9l_njxOTvEk"
   },
   {
    "channel": "1874 : The Aston Villa Channel",
@@ -11332,6 +12564,88 @@
    "transcript_path": "reports/transcripts/8GsKeUVbWq0.en.md",
    "url": "https://www.youtube.com/watch?v=8GsKeUVbWq0",
    "video_id": "8GsKeUVbWq0"
+  },
+  {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 522,
+   "impl_claims": [
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Defend",
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 78,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "왼쪽 풀백 결원 시 대체 구성(밍스·보가르드)",
+      "trigger": "2026-10-28 이후 공식전 5경기 (3/5)"
+     },
+     "player": "보가르드",
+     "player_id": 11,
+     "points_kr": null,
+     "quote": "원문「if we're building a back three, you'll have Bogarde, Pau, and possibly like Lindelof as your three」(백3를 만든다면 보가르드·파우·린델뢰프가 그 셋이 된다)",
+     "role_id": "fb_fullback",
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "PENDING",
+     "verdict_note": "진행자의 선발 예상(바이킹전 전) — 왼쪽 풀백 결원 시 보가르드가 머무는 풀백으로 백3를 만들고 폭은 왼쪽 윙어가 맡는다는 주장. 실제 기용은 바이킹전 기록으로 확인"
+    },
+    {
+     "axis": "role",
+     "field": null,
+     "field_kr": null,
+     "focus": "Attack",
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 48,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "음바예 우측 윙어 기능: 폭·배후 침투·수비",
+      "trigger": "2026-10-21 이후 음바예 RM,RAM,RW 선발 2경기 (1/2)"
+     },
+     "player": "음바예",
+     "player_id": 86,
+     "points_kr": null,
+     "quote": "원문「he'll go after that fullback again and again」(그는 그 풀백을 계속해서 공략한다)",
+     "role_id": "wm_winger",
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "HELD",
+     "verdict_note": "교체 출전 인상 서술(auto-caption · 이름 오인식 보정) — 풀백 1대1 공략·수비 복귀 둘 다 언급, 쟁점 #48 기능 판정에 쓸 실측은 아님. 감시 유지"
+    }
+   ],
+   "key_points": [
+    "잭슨·만잠비 영입이 즉시 성공했다는 평가 — 역습 때 득점 기대감이 생겼다",
+    "음바예(자막상 'Amad'·'Imbight'로 오인식): 같은 풀백을 계속 공략하는 끈질김과 수비 복귀 — 「he's tracking back and contributing defensively」(수비로 복귀해 수비에 기여한다)",
+    "챔피언스리그 상위 8위 진입 = 경기당 상금 + 플레이오프 면제로 중요",
+    "왼쪽 풀백 후보: 보가르드(오른발·멀티) · 밍스(왼발·공중볼·박스 수비) · 트레보 패터슨(등록 가능 여부 불확실)",
+    "로테이션 고민: 맨시티전을 앞두고 캐시 과부하 우려, 고레츠카 선발 시점"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-19",
+   "published_approx": 0,
+   "report_id": 62,
+   "summary": "The Villans 해외 팬 패널이 페네르바흐체 6-0 승·뉴캐슬 원정 1-0 승 직후 바이킹전(챔피언스리그)을 앞두고 나눈 대화다. 신입 잭슨·만잠비가 기대 이상이고, 18세 윙어 음바예가 교체로 나와 풀백을 반복해서 공략하고 수비 복귀에도 성실하다는 호평이 나왔다. 챔피언스리그 상위 8위 진입의 중요성을 짚었고, 마첸 부상으로 비는 왼쪽 풀백 자리에 보가르드·밍스·트레보 패터슨 중 누구를 쓸지 각자 의견을 냈다. 진행자는 보가르드를 넣어 백3를 만들고 폭은 왼쪽 윙어에게 맡기는 구성을 제시했다.",
+   "team_code": "AVL",
+   "title": "Who Plays At Left Back Against Viking, Ibrahim Mbaye's Impact & Winning The Champions League",
+   "transcript_path": "reports/transcripts/Gxr4p8c2XbQ.en.md",
+   "url": "https://www.youtube.com/watch?v=Gxr4p8c2XbQ",
+   "video_id": "Gxr4p8c2XbQ"
   },
   {
    "channel": "talkSPORT Newcastle",
@@ -15508,6 +16822,60 @@
    "transcript_path": "reports/transcripts/FppJLWu8C_Q.tr.md",
    "url": "https://www.youtube.com/watch?v=FppJLWu8C_Q",
    "video_id": "FppJLWu8C_Q"
+  },
+  {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-18] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 527,
+   "impl_claims": [
+    {
+     "axis": "team_axis",
+     "field": "left_flank_width_source",
+     "field_kr": "좌측 폭의 출처",
+     "focus": null,
+     "headline_kr": "좌측 폭은 LB 몫 — 대체 LB는 폭 부족",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 47,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "좌측 측면 구조: 안쪽형 LM·폭은 LB(C2/C6)",
+      "trigger": "2026-10-21 이후 가르나초 LM,LAM,LW 선발 2경기 (0/2)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"정상 체제: 왼쪽 폭은 LB가 터치라인을 타며 만든다(시즌 정본 LB 공격형 윙백과 같은 방향)\", \"대체 LB가 들어가면 폭이 사라진다는 팬 패널의 우려\", \"근거: 경기 전 팬 패널 의견(실측 아님)\"]",
+     "quote": "원문「we get our width from the left side of the left-back, and he doesn't really do that」(우리 폭은 왼쪽 풀백 쪽에서 나오는데, 그는 그걸 잘 못 한다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Width on the left comes from the left-back; the stand-in left-back does not provide it",
+     "value_kr": "왼쪽 폭은 왼쪽 풀백이 만든다 — 대체 왼쪽 풀백은 폭을 주지 못한다",
+     "verdict": "HELD",
+     "verdict_note": "시즌 정본(LB 공격형 윙백·안쪽형 LM)과 방향이 같지만 경기 전 팬 의견이라 새 근거는 아니다 — 좌측 측면 구조 감시 축(#47)과 LB 결원 대체 질문에 정성 자료로 붙인다. 자막상 대체 LB 이름이 불명확해 특정하지 않음. auto-caption(번역 자막으로 보이는 문장 혼재)."
+    }
+   ],
+   "key_points": [
+    "수비진: 오리에 부상으로 완비사카 투입 예상 — 수비 라인 변화가 잦아 젊은 공격 자원 기용을 주저하게 만든다는 의견",
+    "피벗: 고메스가 「everywhere」(어디에나 있었다)며 카마라의 경기 리듬 회복을 도왔다는 평가 — 고메스·카마라 유지 예상",
+    "공격 서열: 음바예(자막 「Amboy」) 왼쪽·알리송 오른쪽·가르나초 그다음 — 일부는 맥긴 오른쪽·부엔디아 왼쪽 선발 예상",
+    "좌측 폭: 「we get our width from the left side of the left-back」(우리의 폭은 왼쪽 풀백 쪽에서 나온다) — 대체 왼쪽 풀백은 그 역할을 못 한다는 우려",
+    "상대 경계 대상으로 그린우드를 꼽고 고메스와의 맞대결을 승부처로 봄"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-10-13",
+   "published_approx": 0,
+   "report_id": 55,
+   "summary": "The Villans 패널이 페네르바흐체전(10-14 챔피언스리그) 직전에 나눈 프리뷰 대담이다. 오리에 부상으로 완비사카가 들어가 수비진이 또 바뀔 것이라는 예상과 함께 고메스·카마라 피벗 유지, 파우 토레스·린델뢰프 센터백 조합 가능성이 나온다. 공격진 서열은 음바예 왼쪽·알리송 오른쪽·가르나초 교체 순서로 보며, 부엔디아 대신 음바예 선발을 원하는 의견과 맥긴 오른쪽·부엔디아 왼쪽을 예상하는 의견이 갈린다. 한 패널은 빌라의 측면 폭이 왼쪽 풀백에서 나오는데 대체 자원이 그 역할을 못 한다고 우려한다.",
+   "team_code": "AVL",
+   "title": "Champions League Nights Return, Mbaye To Start & Greenwood We Haven't Forgot!",
+   "transcript_path": "reports/transcripts/dDLDSJ6byDA.en.md",
+   "url": "https://www.youtube.com/watch?v=dDLDSJ6byDA",
+   "video_id": "dDLDSJ6byDA"
   },
   {
    "channel": "1874 : The Aston Villa Channel",
@@ -36430,7 +37798,8 @@
    278,
    273,
    271,
-   411
+   411,
+   527
   ],
   "56": [
    339,
@@ -36521,7 +37890,8 @@
    362,
    367,
    359,
-   404
+   404,
+   522
   ],
   "63": [
    399,
@@ -36531,6 +37901,7 @@
    394,
    452,
    400,
+   537,
    397,
    449,
    393,
@@ -36547,7 +37918,9 @@
    388,
    409,
    381,
-   386
+   386,
+   515,
+   519
   ],
   "64": [
    461,
@@ -36556,11 +37929,16 @@
    458,
    463,
    457,
-   459
+   459,
+   525
   ],
   "65": [
    465,
+   518,
    464,
+   538,
+   521,
+   536,
    466,
    467,
    468
@@ -36576,9 +37954,13 @@
    470,
    473,
    474,
+   523,
    469,
    476,
-   482
+   531,
+   524,
+   482,
+   535
   ],
   "70": [
    493,
@@ -36589,6 +37971,7 @@
    500,
    489,
    484,
+   530,
    488,
    504,
    499,

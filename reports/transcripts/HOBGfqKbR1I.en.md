@@ -1,0 +1,24 @@
+# 전사(자동 생성 자막) — HOBGfqKbR1I (en)
+
+> Aston Villa Football Club — 🗣️ "The fans deserve to enjoy these times" | Tyrone Mings ahead of Barcelona | PRE MATCH (게시 2026-11-03 · auto-caption · 채널 스윕 2026-11-18)
+
+> 원본: https://www.youtube.com/watch?v=HOBGfqKbR1I · 수집: 브라우저 자막 응답 가로채기(yt_transcript_json3.py 경로 · 429 우회 · 음소거)
+> ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.
+
+**[00:00]** Certainly an iconic, kind of historic moment in our in our recent history. I think everybody's very excited. The manager is um quick to stress that he's he's trying to build a team to compete with the very best in the world. When these games come around and when these opportunities come around, I think everybody's looking forward to uh yeah, testing ourselves against and that is really one of the best teams in the world. So, I think it's been a amazing journey. Certainly one that I take huge pride in.
+
+**[00:31]** Um lots of there's lots of ups and downs, lots of positive moments, um experiences that we that we could definitely learn from as well. But, I just think ever since the first interview I done at this club and what I was saying about giving everything when I put the shirt on is probably something that you can expect from me as a new signing. I'm really proud to to still be doing that. I still love the club. I still think that there's so much more that we can achieve as well, which is exciting in itself. But, probably I mean pride is how I sum up the last nearly 8
+
+**[01:03]** years in terms of how long I've been here, what we've achieved, um what I've personally overcome and and got back to as well. So, yeah, very proud. Under the manager's guidance, we've managed to navigate Europe and the league it is so difficult and certainly first year that we qualified for Europe, I was injured, but the adaptation from the players that that were here before not used to playing in Europe to then the obviously the Conference League season um and and finishing in Champions
+
+**[01:34]** League spots. I think always goes under the radar just how consistent we've been in the league and also in Europe. So, yeah, I think I think it gives us a great platform to to kick on and to to go into these games and to go into the big occasions in the big European nights and feel like we've deserved it. Feels like we've earned it and probably allows you to to go and enjoy it a little more, as well. Every time that you step onto the pitch, you just got to be at your very, very
+
+**[02:04]** best in these games. And um I think we've shown that we can rise to the occasion um in those big European nights. So, I think it's definitely excitement. It's excitement, it's ambition. It's not a It's not a case of taking part. We really want to go far in these competitions and and see where that takes us. >> [music] >> Every game is difficult, of course. Every game in isolation um is difficult. But, then the context around it, obviously Brugge then going on and and um picking up points after they after they
+
+**[02:35]** lost to us and Fenerbahçe away last year, you remember how how difficult that was. And then to beat them um convincingly at home was was uh an amazing step. So, I think we can take full confidence into um like you mentioned, match week four with how we've started. [music] But, that's been built, as you mentioned, over the course of 3-4 years of consistency and of the right culture and um the right guidance and the what and the right work ethic. So, very much looking forward to it. Um of
+
+**[03:05]** course, we're confident, but also aware of uh challenges ahead, as well. I don't think there's anything other than a very difficult game ahead. But, that's something that we are excited and enthused by. The chance to go there and to test our shape and our structure and our capabilities and our ability against the world's very best um best players, best teams. So, yeah, expecting a difficult game, but I That is an opportunity rather than anything to be worried about. Everything that we do is is for the fans. I I
+
+**[03:36]** remember I was sitting on the bench the other day looking around Villa Park thinking, "These guys have uh have all been here way before us and will all be here way after us." Um so, it of course it is their club. These are These are their memories. Um we are in a fortunate position where we can contribute to the history and the recent history of this football club. I I love the fact that they are getting to create their own European memories the same way that me when I was
+
+**[04:06]** a kid watching Champions League games and remembering what they were like and and kind of having those memories. There's a new generation of fans that that are getting to create them with their immediate family, friends. So I hope they have a fantastic trip because ultimately this is this is all for them and it's all about them and and this is this is their club. So they deserve to enjoy these times.
