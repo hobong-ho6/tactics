@@ -2606,3 +2606,11 @@ INSERT INTO player_card_prices VALUES(3221,'FC27',50534459,1,3100,1,NULL,'ps5','
 INSERT INTO player_card_prices VALUES(3222,'FC27',50562547,158,135000,1,NULL,'ps5','fut.gg https://www.fut.gg/api/fut/player-prices/27/50562547/ (서명 조회 · 2026-11-19, collect_futgg_prices.py)','MEDIUM — fut.gg 집계 시세. price 없음은 **미형성/멸종**이지 0원이 아니다.','2026-11-19');
 INSERT INTO player_card_prices VALUES(3223,'FC27',50564136,174,13000,1,NULL,'ps5','fut.gg https://www.fut.gg/api/fut/player-prices/27/50564136/ (서명 조회 · 2026-11-19, collect_futgg_prices.py)','MEDIUM — fut.gg 집계 시세. price 없음은 **미형성/멸종**이지 0원이 아니다.','2026-11-19');
 INSERT INTO player_card_prices VALUES(3224,'FC27',50565379,72,535000,1,NULL,'ps5','fut.gg https://www.fut.gg/api/fut/player-prices/27/50565379/ (서명 조회 · 2026-11-19, collect_futgg_prices.py)','MEDIUM — fut.gg 집계 시세. price 없음은 **미형성/멸종**이지 0원이 아니다.','2026-11-19');
+INSERT INTO player_card_prices VALUES(3225,'FC27',76250,NULL,750,1,NULL,'ps5','fut.gg 서명 가격 API (sbc_solve 시장 후보)','MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)','2026-11-19');
+INSERT INTO player_card_prices VALUES(3226,'FC27',217826,NULL,750,1,NULL,'ps5','fut.gg 서명 가격 API (sbc_solve 시장 후보)','MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)','2026-11-19');
+INSERT INTO player_card_prices VALUES(3227,'FC27',73558,NULL,NULL,0,NULL,'ps5','fut.gg 서명 가격 API (sbc_solve 시장 후보)','MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)','2026-11-19');
+INSERT INTO player_card_prices VALUES(3228,'FC27',266039,NULL,650,1,NULL,'ps5','fut.gg 서명 가격 API (sbc_solve 시장 후보)','MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)','2026-11-19');
+INSERT INTO player_card_prices VALUES(3229,'FC27',233486,NULL,700,1,NULL,'ps5','fut.gg 서명 가격 API (sbc_solve 시장 후보)','MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)','2026-11-19');
+INSERT INTO player_card_prices VALUES(3230,'FC27',232488,NULL,700,1,NULL,'ps5','fut.gg 서명 가격 API (sbc_solve 시장 후보)','MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)','2026-11-19');
+INSERT INTO player_card_prices VALUES(3231,'FC27',247103,NULL,700,1,NULL,'ps5','fut.gg 서명 가격 API (sbc_solve 시장 후보)','MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)','2026-11-19');
+INSERT INTO player_card_prices VALUES(3232,'FC27',72788,NULL,800,1,NULL,'ps5','fut.gg 서명 가격 API (sbc_solve 시장 후보)','MEDIUM — fut.gg 집계 시세(실제 호가와 다를 수 있다)','2026-11-19');
