@@ -32,6 +32,8 @@
 <!-- evo-ledger:start -->
 **진화 원장 (자동 · 최근 14일 + 진행 중 · 정본 DB `fut_evolution_log` · `ship.py`가 갱신)**
 
+- 2026-11-20 · John McGinn ← Glue or Genius [SP 28] 1단계 · OVR 84→84 · 완료 2026-11-20
+- 2026-11-20 · Madjo ← Top Tier Striker 5단계 · OVR 81→84 · 완료 2026-11-20
 - 2026-11-18 · Suzuki ← Feline Flex 2단계 · OVR 80→83 · 완료 2026-11-18
 - 2026-11-17 · Alysson ← RM Roles++ 1단계 · OVR 83→83 · 완료 2026-11-17
 - 2026-11-17 · Maatsen ← LB Roles++ 1단계 · OVR 83→83 · 완료 2026-11-17
