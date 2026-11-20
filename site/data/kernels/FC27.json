@@ -6451,6 +6451,28 @@
    "recorded": "2026-11-17",
    "source": "https://steamcommunity.com/app/4080220/discussions/0/567051233471532410/ (「FC 27 - FUT Developer Q&A Responses - November」 · 작성자 EA_Vendcera(EA 커뮤니티 매니저) · 2026-11-16 게시 · 공식 Discord FUT Q&A(11-13) 정리 14문답 · 2026-11-17 직접 열람)",
    "title": "FUT 11월 Q&A — 진화 상향은 Thunderstruck부터 · 케미 유연성 과잉 축소 인정"
+  },
+  {
+   "area": "playstyles",
+   "change": "Press Proven(압박 검증) FC27 공식 효과 — 두 갈래다. ⑴ **근접 컨트롤**: 조깅 속도(스프린트 없음) 드리블에만 붙는다. ⑵ **쉴드 강화**: PS+에만 있고 문구에 속도 조건이 없다. FC27 출시~TU 1.2(11-10)까지 변경 이력 없음 · FC27 PlayStyle 10종 조정 목록에도 없음. 공식 이름: 한국어 「압박 검증」 · 일본어 「シールド」(실드) · 프랑스어 「Résiste au pressing」(압박에 버틴다). ⛔ 발동 입력은 조깅 속도 하나뿐(「L2+R1 느린 드리블과 짝」 기각 유지). ⚠️ 미확인: R1 근접 드리블·스틱 반 기울이기·첫 터치 적용 여부(근거 0) · 등지고 받을 때 자동 발동설(FC24 추정 1건).",
+   "confidence": "A(EA 문구 · 언어판은 같은 문구 번역) · 패치 변경 없음은 A(부재)+2차 요약 · 발동 세부·효과 크기 미실측",
+   "evidence": "기본 「Keeps close control of the ball while dribbling at jog speed」(조깅 속도로 드리블할 때 공을 가깝게 다룬다) · PS+ 「Can shield the ball much more effectively from stronger opponents」(더 강한 상대로부터 공을 훨씬 효과적으로 지킬 수 있다) · 일본어 공식 「ジョギング速度で足元のコントロールを行い、より効果的にボールを守る」(조깅 속도로 발밑을 컨트롤하고 볼을 더 효과적으로 지킨다 — 같은 문구의 번역이라 교차검증 아님)",
+   "id": 112,
+   "impact": "진화 선택(2026-11-20 「Glue or Genius」(접착제냐 천재냐) PS+ 택1): 발동 빈도가 높은 쪽(공을 잡고 스프린트하지 않는 모든 순간)이라 Inventive+보다 범용. 커뮤니티(D)는 CDM·CM·CAM·등지는 ST에 권장. 효과 크기 수치(B)·통제 실측(C) 0건.",
+   "recorded": "2026-11-20",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/what-are-playstyles (2026-09-25) · https://www.ea.com/ko/games/ea-sports-fc/ratings/abilities-ratings/press-proven/play-style-plus/icontrait1_16777216 · https://www.ea.com/ja/games/ea-sports-fc/ratings/player-ratings/rodri/231866 · https://www.ea.com/fr/games/ea-sports-fc/ratings/abilities-ratings/press-proven/play-style/trait1_16777216 · https://fifafutguide.com/archives/6620 (10종 조정 목록 2026-09-14) · 2026-11-20 조사",
+   "title": "Press Proven(압박 검증) FC27 — 조깅 근접 컨트롤 + PS+ 쉴드 강화 · 패치 변경 없음"
+  },
+  {
+   "area": "playstyles",
+   "change": "Inventive(인벤티브) FC27 공식 효과 = 팬시(플레어) 패스·트리벨라 패스 **정확도만** 향상(PS+는 크게). 공식 이름: 한국어 「인벤티브」 · 일본어 「独創」(독창) · 스페인어 「Inventivo」(창의적인). FC27 출시~TU 1.2 변경 없음. ⚠️ 문구 충돌: FUT.GG FC27 게임 문구에는 「로빙 패스」와 「상황별 인벤티브 애니메이션」이 있는데 EA FC27 마케팅 문구에는 없다 — FC26 TU 1.5.0 보정이 남았는지 미검증. ⛔ 「미보유 선수는 트리벨라 패스 불가」는 FC26 출시 전 통설(D) — EA가 「보유자만 가능」이라 쓴 것은 **트리벨라 슛(Gamechanger)** 뿐이다. ⛔ 「압박 속 노룩 패스」·「위험한 창의적 패스 성공률 상승」(games.gg)은 공식 문구에 없음 — 기각.",
+   "confidence": "A(EA 문구) / B(FUT.GG 게임 문구) · 둘이 충돌 · 효과 크기 미실측",
+   "evidence": "EA 「Fancy and Trivela passes are performed with improved accuracy」(팬시 패스와 트리벨라 패스를 향상된 정확도로 수행한다) · PS+ 「greatly improved accuracy」(크게 향상된 정확도) · FUT.GG 「Lofted passes and Fancy passes, including outside of the foot passes」(로빙 패스와 아웃프런트 패스를 포함한 팬시 패스) · 「Performs Inventive animations when contextually appropriate」(상황이 맞으면 인벤티브 애니메이션을 수행한다)",
+   "id": 114,
+   "impact": "진화 선택: 플레어 패스(L2/LT+패스 · FC26 가이드 D)를 실제로 쓰는 사용자에게만 의미. 커뮤니티(D)는 CAM·플레이메이커·반대발 측면 선수에 권장. FC27 체감 자료 0건 · 보유 카드 흔함(FUT.GG 564명) · PS+ 보유 6명.",
+   "recorded": "2026-11-20",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/what-are-playstyles (2026-09-25) · https://www.ea.com/ko/games/ea-sports-fc/ratings/abilities-ratings/inventive/play-style/trait1_8192 · https://www.fut.gg/playstyles/inventive/ · https://games.gg/ea-sports-fc-26/guides/ea-fc-26-all-playstyles-explained/ (기각 대상 · FC26) · 2026-11-20 조사",
+   "title": "Inventive(인벤티브) FC27 — 팬시·트리벨라 패스 정확도 · 로빙 패스 포함 여부 충돌"
   }
  ],
  "tactic_params": [
