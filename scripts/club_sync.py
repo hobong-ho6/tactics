@@ -59,6 +59,8 @@ STEPS = {
         ("진화 카탈로그·경로·적용가능", [PY, S("collect_futgg_evolutions.py"), "--games", "27", "--fill-catalog"], False),
         ("목표 과제·SP 목표(해금 조건 포함)", [PY, S("collect_futgg_objectives.py")], False),
         ("한국어 이름·설명·미션", [PY, S("collect_futmind_kr.py")], False),
+        # ⭐ 액티비티 피드(migration 137 · 로그인 불요): 진화 완료일을 발견 시각(상한)으로 정정 + 영입 경로 채우기.
+        ("액티비티(진화 완료일·영입 경로)", [PY, S("collect_ggclub_activity.py")], False),
         # ⭐ 1차 판정: EA가 준 진화 이력과 로그를 대조한다(migration 090). 스탯 역추정(--verify)은 보조다.
         ("진화 이력 대조(EA 이력 ↔ 로그)", [sys.executable, S("evo_detect.py"), "--ea"], False),
         ("원장 검산(EA 실측 대조)", [sys.executable, S("evo_detect.py"), "--verify"], False),

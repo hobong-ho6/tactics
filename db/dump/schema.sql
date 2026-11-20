@@ -1522,3 +1522,15 @@ CREATE VIEW v_fotmob_traits_latest AS
 SELECT t.* FROM fotmob_traits t
  WHERE t.pulled = (SELECT MAX(u.pulled) FROM fotmob_traits u
                     WHERE u.player_id=t.player_id AND u.metric=t.metric);
+CREATE TABLE fut_club_activity(
+  event_id TEXT PRIMARY KEY,
+  account_id INTEGER NOT NULL REFERENCES fut_accounts(id),
+  type TEXT NOT NULL,              -- evo.completed · signing.bought · signing.reward …
+  occurred_at TEXT NOT NULL,       -- UTC ISO(fut.gg 원값)
+  date_kind TEXT,                  -- sync = 싱크에서 발견한 시각(상한) · exact = 실제 시각
+  payload TEXT NOT NULL,           -- fut.gg payload JSON 원문
+  pulled TEXT NOT NULL,
+  source TEXT NOT NULL,
+  confidence TEXT NOT NULL
+);
+CREATE INDEX ix_fut_club_activity_type ON fut_club_activity(type, occurred_at);

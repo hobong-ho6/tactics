@@ -1800,6 +1800,9 @@ const TREQ = {
   'Standing Tackle': (v, s) => attrMax('standing_tackle', v, s),
   'Strength': (v, s) => attrMax('strength', v, s),
   'Agility': (v, s) => attrMax('agility', v, s),
+  /* 2026-11-17 G35 — 카탈로그에 새로 나온 세부 속성 상한(가속·질주 속도). */
+  'Acceleration': (v, s) => attrMax('acceleration', v, s),
+  'Sprint Speed': (v, s) => attrMax('sprint_speed', v, s),
 };
 function attrMax(key, v, s){
   /* ⛔ 카드 속성(s.at)은 한국어 키다(「중거리슛」) — 영문 키로만 찾아 늘 「값 없음」이 돼 보유 선수가 전부 탈락했다(2026-10-26 지모알로바 × Witching Hour). */

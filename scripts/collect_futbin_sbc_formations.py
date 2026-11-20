@@ -38,6 +38,8 @@ import json
 import re
 import sqlite3
 import subprocess
+import unicodedata
+from collections import Counter
 import sys
 from pathlib import Path
 
@@ -184,6 +186,12 @@ def apply(con, data, src_of=lambda cid: SRC, conf=CONF, site="FUTBIN"):
     return bool(new or upd)
 
 
+def _fold(s):
+    """악센트·대소문자·공백을 접는다 — FUTWIZ는 'Zumarraga', fut.gg는 'Zumárraga'."""
+    s = unicodedata.normalize("NFKD", s or "")
+    return " ".join("".join(c for c in s if not unicodedata.combining(c)).lower().split())
+
+
 def _chem(lines):
     for x in lines:
         m = re.search(r"(?:Chemistry: Min\.|Min Chem:)\s*(\d+)", x)
@@ -209,13 +217,22 @@ def futwiz_map(con, raw):
         fw = {}
         for c in cards:
             fw.setdefault(_chem(c.get("req") or []), []).append(c)
+        # 최소 케미로 못 가를 때(Gallery Milestone처럼 케미 조건이 없는 세트) — 같은 EA 세트 안 챌린지 이름이
+        # 양쪽 모두 하나로만 맞을 때 잇는다(2026-11-19·20 연속 결손 · 불변규칙 13)
+        fwn = {}
+        for c in cards:
+            fwn.setdefault(_fold(c.get("name")), []).append(c)
+        dbn = Counter(_fold(nm) for _, nm, _ in chs)
         for cid, nm, rq in chs:
             k = _chem(json.loads(rq or "[]"))
             hit = fw.get(k) if k is not None else None
+            byname = fwn.get(_fold(nm))
             if hit and len(hit) == 1 and sum(1 for _, _, r2 in chs if _chem(json.loads(r2 or "[]")) == k) == 1:
                 data[str(cid)] = hit[0]["form"]; how[cid] = f"세트 내 챌린지 {len(chs)}개 — 최소 케미 {k} 일치로 연결"
+            elif byname and len(byname) == 1 and dbn[_fold(nm)] == 1:
+                data[str(cid)] = byname[0]["form"]; how[cid] = f"세트 내 챌린지 {len(chs)}개 — 같은 세트 안 챌린지 이름 일치로 연결"
             else:
-                skip.append((cid, f"{nm}: 최소 케미 {k}로 하나로 못 가른다"))
+                skip.append((cid, f"{nm}: 최소 케미 {k}·이름으로 하나로 못 가른다"))
     data["done"] = 1
     return data, how, skip
 
