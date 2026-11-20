@@ -68,6 +68,33 @@ function evoArtAttrs(p) {
     : 'loading="lazy"';
 }
 
+/* ⭐⭐ 보유 카드의 **지금 모습 합성**(2026-11-20 사용자 지시 「내 구단의 카드들 현재 얼티밋팀의 코스메틱 적용한 카드로
+   업데이트해줘 맥긴의 경우는 카드이미지도 없어」 · migration 138).
+   fut.gg GG Club 화면과 같은 방식이다(실측): **레어도 판 + 선수 렌더 + 글자(현재 OVR·포지션·이름·6대 스탯) + 로고**.
+   ⇒ 코스메틱 진화(판 교체)·진화 OVR·이미지 결손이 한 번에 맞는다. 덧칠(repaint/replate)이 필요 없다.
+   좌표·글자 크기는 fut.gg 카드 요소의 카드 대비 %를 그대로 옮겼다(2026-11-20 측정 · CSS `.fcx`).
+   ⛔ 재료(`card_art`)가 없으면 null — 호출측은 종전 완성 이미지로 물러선다. */
+export function cardArt(p, cls = '', posFallback = '') {
+  const a = parse(p?.card_art);
+  if (!a || !a.frames || !a.render) return null;
+  const lv = (rarityLevel(p.current_ovr) ?? 3) - 1;      // ⛔ 등급 경계 정본 = evocard.js rarityLevel
+  const six = parse(p.current_six) || {};
+  const keys = 'DIV' in six ? ['DIV', 'HAN', 'KIC', 'REF', 'SPD', 'POS'] : ['PAC', 'SHO', 'PAS', 'DRI', 'DEF', 'PHY'];
+  const KEY_LABEL = { SPD: 'SPE' };                      // fut.gg·EA 카드 표기
+  const col = (a.text || [])[lv], line = (a.line || [])[lv];
+  const pos = String(a.pos || p.positions || p.best_pos || posFallback || '').split(/[,/]/)[0].trim();   // 카드엔 주 포지션 하나만 인쇄된다
+  const logo = (u, alt) => u ? `<img src="${esc(u)}" alt="${alt}" loading="lazy">` : '';
+  return `<div class="fcx${a.dyn ? ' dyn' : ''} ${cls}" style="${col ? `--fcx-ink:#${esc(col)};` : ''}${line ? `--fcx-line:#${esc(line)}` : ''}"
+      title="${esc(a.rarity || '')}">
+    <img class="fcx-frame" src="${esc(a.frames[lv] || a.frames[2])}" alt="" loading="lazy">
+    <img class="fcx-render" src="${esc(a.render)}" alt="${esc(p.name || '')} 카드" loading="lazy">
+    <div class="fcx-ovr">${p.current_ovr ?? ''}</div><div class="fcx-pos">${esc(pos)}</div>
+    <div class="fcx-name">${esc(a.name || p.name_fut || p.name || '')}</div>
+    <div class="fcx-six">${keys.map(k => `<div><span>${KEY_LABEL[k] || k}</span><b>${six[k] ?? ''}</b></div>`).join('')}</div>
+    <div class="fcx-logos">${logo(a.nation, '국가')}${logo(a.league, '리그')}${logo(a.club, '클럽')}</div>
+  </div>`;
+}
+
 function card(p, role, posName, { bench = false } = {}) {
   if (!p) return `<div class="fc-card empty${bench ? ' bench' : ''}">
       <div class="fc-art ph">비어 있음</div><div class="fc-tag">${esc(posName ?? '')}</div></div>`;
@@ -79,9 +106,9 @@ function card(p, role, posName, { bench = false } = {}) {
   /* ⚠️ 진화 카드는 loading="lazy"를 쓰지 않는다(2026-09-21 실측): 화면 밖 카드는 로드가 미뤄져
      naturalWidth가 0이고, 그러면 다시 그리기가 영영 실행되지 않아 **인쇄된 옛 OVR이 그대로 남는다**.
      진화 카드는 스쿼드에 몇 장뿐이라 즉시 로드해도 부담이 없다. */
-  const art = p.card_image_url
+  const art = cardArt(p, 'fc-art', posName) || (p.card_image_url
     ? `<img class="fc-art" src="${esc(p.card_image_url)}" alt="${esc(p.name)} 카드" ${evoArtAttrs(p)}>`
-    : `<div class="fc-art ph"><b>${p.current_ovr ?? ''}</b><span>${esc(p.name)}</span></div>`;
+    : `<div class="fc-art ph"><b>${p.current_ovr ?? ''}</b><span>${esc(p.name)}</span></div>`);
   const chem = p.chem_style_ea
     ? `<span class="fc-chem"><img src="assets/chemstyles/${p.chem_style_ea}.png" alt="케미 스타일" loading="lazy"></span>`
     : '';
@@ -530,7 +557,7 @@ function emeryVerdict(a, b, ctx) {
    ⭐ 진화 카드는 **아트도 현재 상태로 다시 그린다**(2026-09-29 사용자 지시) — 「진화 전 N」 병기는 뺐다. */
 export function cmpSlots(picked) {
   const slot = (c, i) => c ? `<div class="cmp-slot fill s${i}">
-      ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="" ${evoArtAttrs(c)}>` : '<div class="cmp-slot-ph"></div>'}
+      ${cardArt(c) || (c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="" ${evoArtAttrs(c)}>` : '<div class="cmp-slot-ph"></div>')}
       <div class="cmp-slot-t"><b>${esc(c.name)}</b>
         <span>OVR <b>${c.current_ovr ?? '-'}</b></span>
         <span class="dim">${esc(c.positions || '')}</span>
@@ -549,7 +576,7 @@ export function compareCards(a, b, ctx = {}) {
   const B = parse(b.current_attrs) || parse(b.attrs) || {};
   const sixA = parse(a.current_six) || {}, sixB = parse(b.current_six) || {};
   const head = (c, side) => `<div class="cmp-card ${side}">
-      ${c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="" ${evoArtAttrs(c)}>` : ''}
+      ${cardArt(c) || (c.card_image_url ? `<img src="${esc(c.card_image_url)}" alt="" ${evoArtAttrs(c)}>` : '')}
       <b>${esc(c.name)}</b>
       <span class="dim">OVR ${c.current_ovr ?? '-'}</span>
       <span class="dim">${esc(c.positions || '')}</span>
@@ -1334,7 +1361,7 @@ export function cardDetail(p, ctx = {}) {
     : `<span class="chip dim">⚠️ 우리 DB에 등재되지 않은 선수 — 프로필 없음</span>`;
   return `<div class="fc-detail">
     <div class="fc-dhead">
-      <img class="fc-dart" src="${esc(p.card_image_url || '')}" alt="" ${evoArtAttrs(p)}>
+      ${cardArt(p, 'fc-dart') || `<img class="fc-dart" src="${esc(p.card_image_url || '')}" alt="" ${evoArtAttrs(p)}>`}
       <div class="fc-dinfo">
         <h3>${esc(p.name)}</h3>
         <div class="fc-dovr"><b>${p.current_ovr ?? '-'}</b><span>OVR</span>

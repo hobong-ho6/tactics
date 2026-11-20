@@ -450,3 +450,35 @@ b.wA{color:var(--viz-us)} b.wB{color:var(--viz-them)}
 .galgrade.gB{color:var(--viz-them);border-color:var(--viz-them)}.galgrade.gC{color:var(--txt)}.galgrade.gD{color:var(--dim)}
 .galpop{position:fixed;right:18px;bottom:18px;z-index:99998;max-width:340px;background:var(--panel-solid);border:1px solid var(--bad);
   border-radius:10px;padding:10px 12px;box-shadow:0 8px 24px rgba(0,0,0,.45);font-size:13px}
+
+/* ⭐ 보유 카드 지금 모습 합성(2026-11-20 · clubviz.js cardArt · migration 138).
+   fut.gg GG Club 카드와 같은 구성 — 판 + 선수 렌더 + 글자 + 로고. 좌표·글자 크기는 fut.gg 요소의 카드 대비 %를 옮겼다.
+   글자 크기는 카드 폭 기준(cqw)이라 피치·그리드·비교 칸 어디서 작게 그려도 비율이 같다.
+   (이 블록 주석에는 백틱을 쓰지 않는다 — docs/70 · G22) */
+.fcx{position:relative;aspect-ratio:.71527778;container-type:inline-size;line-height:1;
+  color:var(--fcx-ink,#fff);font-family:"Barlow Condensed","Roboto Condensed","Arial Narrow",sans-serif;overflow:hidden}
+.fcx > img{position:absolute;display:block}
+.fcx .fcx-frame{left:0;top:0;width:100%;height:100%}
+/* 렌더 배치(fut.gg 실측 · 원본 비율 유지): 얼굴 렌더 300×300 = 폭 64.3% · 위 17.4% · 중심 56% /
+   카드 전체 그림(dyn · 300×416) = 폭 98% · 위 2% · 중심 50% */
+.fcx .fcx-render{left:56%;top:17.4%;width:64.3%;height:auto;transform:translateX(-50%)}
+.fcx.dyn .fcx-render{left:50%;top:2%;width:98%}
+.fcx .fcx-ovr{position:absolute;left:12.3%;top:22.8%;width:16.3%;text-align:center;font-size:13.3cqw;font-weight:700}
+.fcx .fcx-pos{position:absolute;left:12.3%;top:31.6%;width:16.3%;text-align:center;font-size:7.2cqw;font-weight:600}
+.fcx .fcx-name{position:absolute;left:8%;top:64.6%;width:84%;text-align:center;font-size:8.4cqw;font-weight:700;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fcx .fcx-six{position:absolute;left:12.5%;top:72.2%;width:75%;display:flex;justify-content:space-between}
+.fcx .fcx-six div{display:flex;flex-direction:column;align-items:center;gap:.6cqw;width:15%}
+.fcx .fcx-six span{font-size:5.35cqw;font-weight:600}
+.fcx .fcx-six b{font-size:7.6cqw;font-weight:700}
+.fcx .fcx-logos{position:absolute;left:0;top:81.8%;width:100%;height:6%;display:flex;justify-content:center;align-items:center;gap:4cqw}
+.fcx .fcx-logos img{height:100%;width:auto;object-fit:contain}
+.fcx .fcx-logos img:first-child{height:70%}
+/* 그리드 칸의 「.fc-art 안 img는 폭 100%」 규칙(위 33행)이 합성 카드 안 렌더·로고까지 늘린다 — 합성 카드만 되돌린다 */
+.fc-gcell .fc-card .fcx .fcx-render{width:64.3%;height:auto}
+.fc-gcell .fc-card .fcx.dyn .fcx-render{width:98%}
+.fc-gcell .fc-card .fcx .fcx-logos img{width:auto;height:100%}
+.fc-gcell .fc-card .fcx .fcx-logos img:first-child{height:70%}
+.cmp-slot .fcx{width:44px;flex:none}
+.cmp-card .fcx{width:150px;margin:0 auto 6px}
+.fc-dart.fcx{width:196px}

@@ -152,6 +152,8 @@ def main():
     # ⭐ EA 진화 이력(migration 090) — 키가 없으면(구 캡처) NULL로 두어 「이력 없음」과 「미수집」을 가른다.
     evo_json = lambda r: ((json.dumps(r["evh"]) if "evh" in r else None),               # noqa: E731
                           (json.dumps(r["eva"]) if r.get("eva") else None))
+    # ⭐ 카드의 지금 모습 재료(migration 138) — 옛 캡처(art 없음)는 None이라 기존 값을 지우지 않는다.
+    art_json = lambda r: json.dumps(r["art"], ensure_ascii=False) if r.get("art") else None   # noqa: E731
     for r in rows:
         card = cards.get(r["ea"]) or {}
         # ⛔⛔ **GK 판정의 정본은 캡처 파일이다**(2026-09-27 실측 사고).
@@ -184,9 +186,10 @@ def main():
             # ⚠️ 자산 축은 신규 행에도 넣는다 — 종전엔 기존 행만 갱신해서 새 카드의 거래불가·임대가 비어 있었다.
             con.execute("""UPDATE fut_club_players SET is_untradeable=?, is_in_active_squad=?, is_captain=?,
                              kit_number=?, number_of_owners=?, is_loan=?, loan_games=?,
-                             ea_evo_history=?, ea_evo_active=? WHERE id=last_insert_rowid()""",
+                             ea_evo_history=?, ea_evo_active=?, card_art=COALESCE(?, card_art)
+                           WHERE id=last_insert_rowid()""",
                         (b(r.get("unt")), b(r.get("act")), b(r.get("cap")), r.get("kit"), r.get("own"),
-                         b(r.get("loan")), r.get("loan_n"), *evo_json(r)))
+                         b(r.get("loan")), r.get("loan_n"), *evo_json(r), art_json(r)))
             tl_update(con, r, "last_insert_rowid()")
             continue
         # ⭐⭐ **EA 목록에 있으면 「보유」다 — 처분 표시를 되돌린다**(2026-09-25 신설).
@@ -260,9 +263,9 @@ def main():
         # ③ 스쿼드·자산 축 — 진화와 무관하고 EA가 정본이라 **보호 여부와 관계없이** 갱신한다(케미와 같은 취급).
         con.execute("""UPDATE fut_club_players SET is_untradeable=?, is_in_active_squad=?, is_captain=?,
                          kit_number=?, number_of_owners=?, is_loan=?, loan_games=?,
-                         ea_evo_history=?, ea_evo_active=? WHERE id=?""",
+                         ea_evo_history=?, ea_evo_active=?, card_art=COALESCE(?, card_art) WHERE id=?""",
                     (b(r.get("unt")), b(r.get("act")), b(r.get("cap")), r.get("kit"), r.get("own"),
-                     b(r.get("loan")), r.get("loan_n"), *evo_json(r), cur["id"]))
+                     b(r.get("loan")), r.get("loan_n"), *evo_json(r), art_json(r), cur["id"]))
         tl_update(con, r, cur["id"])
         # ② 경기 기록 — 누적값이라 **회차 스냅샷**으로 쌓는다(같은 날 재실행이면 덮어쓴다).
         st = r.get("st") or {}
@@ -291,10 +294,12 @@ def main():
                  ("preferred_foot", "foot"), ("height_cm", "h"), ("weight_kg", "w"), ("birthdate", "dob"),
                  ("nation", "nat"), ("league", "lg"), ("club", "club"),
                  ("is_real_face", "face"),
-                 ("rarity_name", "rar"), ("rarity_ea_id", "rar_ea")]
+                 ("rarity_name", "rar"), ("rarity_ea_id", "rar_ea"),
+                 # ⭐ 기준 카드 완성 이미지(2026-11-20 — 맥긴 TOTW 84는 싱크가 만든 카드 행이라 이미지가 비어 카드가 안 보였다)
+                 ("card_image_url", "img")]
     filled, made = 0, []
     for r in rows:
-        c = r.get("card") or {}
+        c = {**(r.get("card") or {}), "img": (r.get("art") or {}).get("card")}
         if r["ea"] not in cards:
             # 카드 행 자체가 없다 — 최소 정보로 만든다. ⛔ player_id는 잇지 않는다(관리 4팀 밖은 NULL이 정상).
             con.execute("""INSERT INTO player_card_items(game_version, ea_item_id, base_ea_id, is_base, name_kr,

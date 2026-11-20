@@ -198,11 +198,37 @@ def get(url, headers, end_on_404=False):
 # ⛔ 표를 여기 두지 않는다 — 정본은 `core/futgg_attrs.py`다(2026-09-23).
 #    종전엔 같은 표가 네 파일에 복제돼 있었고 **이 파일만** `attributeFreeKickAccuracy`(오타)를 찾아
 #    「프리킥 정확도」를 100% 흘렸다 → 6대 스탯 PAS가 보유 89명 전원에서 2~4 낮게 계산됐다.
+from scripts.collect_futgg_history import POS  # noqa: E402  포지션 id → 이름 정본(카드 수집기와 같은 표)
 from core.futgg_attrs import parse_attrs        # noqa: E402  (ROOT를 sys.path에 넣은 뒤라 아래에 둔다)
 from core.db import connect as connect_db  # noqa: E402  ⭐ DB 연결 정본(대기·작성 중 표시)
 
 # 수집 중 발견한 결손 속성 — ⛔ 조용히 넘기지 않고 끝에 건수로 보고한다(obs#132).
 MISSING = {}
+
+
+CDN = "https://game-assets.fut.gg/cdn-cgi/image/quality=85,format=auto,width=300/"
+
+
+def art_of(q):
+    """fut.gg GG Club 화면이 카드를 합성하는 재료(2026-11-20 실측): 레어도 판 + 선수 렌더 + 로고 + 글자색.
+    판·글자색은 레어도가 OVR 등급(브론즈·실버·골드)마다 하나씩 준다 — 특별 레어도는 셋이 같다.
+    ⭐ 셋 다 싣고 고르기는 화면이 한다 — 등급 경계의 정본은 site/assets/evocard.js `rarityLevel`(여기 다시 적지 않는다).
+    ⛔ 판이나 렌더가 없으면 None — 화면은 종전 완성 이미지로 물러선다."""
+    r = q.get("rarity") or {}
+    frames, render = r.get("imagePaths") or [], q.get("imagePath")
+    if len(frames) != 3 or not render:
+        return None
+    url = lambda o: (o or {}).get("imageUrl")                     # noqa: E731
+    return {"frames": [CDN + f for f in frames], "render": CDN + render,
+            "nation": url(q.get("nation")), "league": url(q.get("league")),
+            "club": url(q.get("club")) or url(q.get("uniqueClub")),
+            "text": r.get("textColor"), "line": r.get("lineColor"),
+            "rarity_ea": r.get("eaId"), "rarity": r.get("name"),
+            "name": q.get("commonName") or q.get("lastName"),
+            "pos": POS.get(q.get("position")),
+            # 렌더가 카드 전체 그림(300×416 · TOTW·특별 카드)인지 얼굴 렌더(300×300)인지 — 배치가 다르다(fut.gg 실측)
+            "dyn": bool(q.get("hasDynamic")),                    # 카드에 인쇄되는 주 포지션(맥긴 TOTW처럼 카드 행에 포지션이 빈 경우가 있다)     # 카드에 인쇄되는 이름(fut.gg 표기 — 원장 이름은 한글·영문이 섞여 있다)
+            "card": CDN + q["cardImagePath"] if q.get("cardImagePath") else None}
 
 
 def rows_of(players):
@@ -264,7 +290,9 @@ def rows_of(players):
                              # ⚠️ 겉모습 축이다(migration 066) — 성능 판단에 쓰지 않는다.
                              #    `is` 대신 원값을 그대로 넘긴다: 없으면 NULL(미수집)로 남겨야 한다.
                              "face": None if q.get("isRealFace") is None else int(q.get("isRealFace")),
-                             "rar": nm_of(q.get("rarity")), "rar_ea": (q.get("rarity") or {}).get("eaId")}})
+                             "rar": nm_of(q.get("rarity")), "rar_ea": (q.get("rarity") or {}).get("eaId")},
+                    # ⭐ 카드의 「지금 모습」 재료(migration 138 · 2026-11-20) — 코스메틱 진화로 바뀐 레어도까지 이 카드의 현재값이다.
+                    "art": art_of(q)})
     out.sort(key=lambda r: r["ea"] or 0)
     return out
 

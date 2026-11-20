@@ -337,6 +337,7 @@ def export_all(db_path=None, window="2026-summer"):
                c.current_playstyles playstyles, c.current_roles_plus roles_plus,
                c.current_roles_plus_plus roles_plus_plus,
                c.chem_style_ea, c.chem_points,
+               c.card_art,   -- ⭐ 카드의 지금 모습 재료(migration 138 · 코스메틱 진화 반영 · 화면 clubviz.js가 합성)
                i.ovr base_ovr, i.attrs base_attrs, i.ea_item_id base_ea_id,
                i.skill_moves, i.weak_foot, i.preferred_foot, i.accelerate,
                i.height_cm, i.weight_kg, i.positions, i.card_image_url, i.rarity_ea_id,
@@ -472,6 +473,7 @@ def export_all(db_path=None, window="2026-summer"):
                                 -- ⭐ 29속성 EA 실측(2026-09-22) — GG Club이 그대로 준다. 화면은 이것을 정본으로 쓰고
                                 --    기준 카드+진화 보상 재구성은 검증용으로만 쓴다.
                                 f.current_attrs,
+                                f.card_art,   -- ⭐ migration 138 — 위 club.state와 같은 열
                                 c.ovr AS card_ovr, c.positions, c.nation, c.league, c.club, c.is_icon, c.is_hero,
                                 c.chem_extra, c.card_image_url, c.attrs,
                                 -- ⭐ 판(레어도 틀) 교체용(2026-09-27) — 진화로 OVR이 오르면 화면이
