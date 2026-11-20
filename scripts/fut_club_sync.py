@@ -154,6 +154,8 @@ def main():
                           (json.dumps(r["eva"]) if r.get("eva") else None))
     # ⭐ 카드의 지금 모습 재료(migration 138) — 옛 캡처(art 없음)는 None이라 기존 값을 지우지 않는다.
     art_json = lambda r: json.dumps(r["art"], ensure_ascii=False) if r.get("art") else None   # noqa: E731
+    # ⭐ 현재 개인기·약발(migration 139) — 진화가 별을 올린다. 기준 카드 표는 빈 칸만 채우므로 여기가 현재값이다.
+    sm_wf = lambda r: ((r.get("card") or {}).get("sm"), (r.get("card") or {}).get("wf"))   # noqa: E731
     for r in rows:
         card = cards.get(r["ea"]) or {}
         # ⛔⛔ **GK 판정의 정본은 캡처 파일이다**(2026-09-27 실측 사고).
@@ -186,10 +188,11 @@ def main():
             # ⚠️ 자산 축은 신규 행에도 넣는다 — 종전엔 기존 행만 갱신해서 새 카드의 거래불가·임대가 비어 있었다.
             con.execute("""UPDATE fut_club_players SET is_untradeable=?, is_in_active_squad=?, is_captain=?,
                              kit_number=?, number_of_owners=?, is_loan=?, loan_games=?,
-                             ea_evo_history=?, ea_evo_active=?, card_art=COALESCE(?, card_art)
+                             ea_evo_history=?, ea_evo_active=?, card_art=COALESCE(?, card_art),
+                             current_skill_moves=?, current_weak_foot=?
                            WHERE id=last_insert_rowid()""",
                         (b(r.get("unt")), b(r.get("act")), b(r.get("cap")), r.get("kit"), r.get("own"),
-                         b(r.get("loan")), r.get("loan_n"), *evo_json(r), art_json(r)))
+                         b(r.get("loan")), r.get("loan_n"), *evo_json(r), art_json(r), *sm_wf(r)))
             tl_update(con, r, "last_insert_rowid()")
             continue
         # ⭐⭐ **EA 목록에 있으면 「보유」다 — 처분 표시를 되돌린다**(2026-09-25 신설).
@@ -246,7 +249,8 @@ def main():
                        or (r.get("attrs") and cur["current_attrs"] != json.dumps(r["attrs"], ensure_ascii=False))
                        or (isinstance(r.get("rp"), list) and cur["current_roles_plus"] != json.dumps(r["rp"]))
                        or (isinstance(r.get("rpp"), list) and cur["current_roles_plus_plus"] != json.dumps(r["rpp"]))
-                       or (ps_new is not None and (cur["current_playstyles"] or "") != ps_new))
+                       or (ps_new is not None and (cur["current_playstyles"] or "") != ps_new)
+                       or sm_wf(r) != (cur["current_skill_moves"], cur["current_weak_foot"]))
             # ⭐ 29속성(`attrs`)·AcceleRATE는 GG Club이 **EA 실측 그대로** 준다(2026-09-22) —
             #    받은 회차에만 덮고, 안 온 회차에는 기존 값을 지운다(COALESCE로 보존).
             attrs_json = json.dumps(r["attrs"], ensure_ascii=False) if r.get("attrs") else None
@@ -257,9 +261,11 @@ def main():
                              current_roles_plus=COALESCE(?, current_roles_plus),
                              current_roles_plus_plus=COALESCE(?, current_roles_plus_plus),
                              current_playstyles=COALESCE(?, current_playstyles),
+                             current_skill_moves=COALESCE(?, current_skill_moves),
+                             current_weak_foot=COALESCE(?, current_weak_foot),
                              gg_player_id=?, synced_at=?, updated=? WHERE id=?""",
                         (r["ovr"], six, r.get("cs"), r.get("cp"), attrs_json, rp_json, rpp_json, ps_new,
-                         r.get("gg"), a.pulled, TODAY if changed else cur["updated"], cur["id"]))
+                         *sm_wf(r), r.get("gg"), a.pulled, TODAY if changed else cur["updated"], cur["id"]))
         # ③ 스쿼드·자산 축 — 진화와 무관하고 EA가 정본이라 **보호 여부와 관계없이** 갱신한다(케미와 같은 취급).
         con.execute("""UPDATE fut_club_players SET is_untradeable=?, is_in_active_squad=?, is_captain=?,
                          kit_number=?, number_of_owners=?, is_loan=?, loan_games=?,

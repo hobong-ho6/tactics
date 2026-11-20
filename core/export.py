@@ -339,7 +339,9 @@ def export_all(db_path=None, window="2026-summer"):
                c.chem_style_ea, c.chem_points,
                c.card_art,   -- ⭐ 카드의 지금 모습 재료(migration 138 · 코스메틱 진화 반영 · 화면 clubviz.js가 합성)
                i.ovr base_ovr, i.attrs base_attrs, i.ea_item_id base_ea_id,
-               i.skill_moves, i.weak_foot, i.preferred_foot, i.accelerate,
+               -- ⭐ 개인기·약발은 보유 카드 현재값 우선(migration 139 — 진화가 별을 올린다 · 마조 3★→4★)
+               COALESCE(c.current_skill_moves, i.skill_moves) skill_moves,
+               COALESCE(c.current_weak_foot, i.weak_foot) weak_foot, i.preferred_foot, i.accelerate,
                i.height_cm, i.weight_kg, i.positions, i.card_image_url, i.rarity_ea_id,
                i.is_icon, i.is_hero, i.is_base,   -- 진화 요구조건 「Excluded Rarity: Base Icon, Base Hero」 판정용(2026-10-20)
                CASE WHEN c.current_attrs IS NOT NULL THEN 'ea-sync' ELSE 'base-card' END basis,
@@ -480,7 +482,9 @@ def export_all(db_path=None, window="2026-summer"):
                                 --    브론즈/실버/골드 판을 갈아 끼운다. `card_ovr`(인쇄)과 짝이다.
                                 c.rarity_ea_id,
                                 -- 스킬무브·약발·주발(2026-09-21 사용자 요청) — 카드 표에만 있다.
-                                c.skill_moves, c.weak_foot, c.preferred_foot, c.accelerate,
+                                COALESCE(f.current_skill_moves, c.skill_moves) AS skill_moves,   -- migration 139 — 현재값 우선
+                                COALESCE(f.current_weak_foot, c.weak_foot) AS weak_foot,
+                                c.preferred_foot, c.accelerate,
                                 c.height_cm, c.weight_kg, c.birthdate,
                                 -- 리얼페이스 여부(migration 066) — ⚠️ 겉모습 축이라 성능 판단에 쓰지 않는다.
                                 --    NULL(미수집)과 0(제네릭 확인)을 화면에서도 구분해 쓴다.

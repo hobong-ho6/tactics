@@ -62,3 +62,4 @@ INSERT INTO _migration_log VALUES('2026-11-18','134-fotmob-detail-snapshots','fo
 INSERT INTO _migration_log VALUES('2026-11-18','135-opponents-bou-bha','BOU 팀 신설·BHA fotmob_id 채움 · regime 로제(BOU)·휘르첼러(BHA) · 4-2-3-1 Wide 슬롯·FC27 optimal·슬롯 정본 역할 11칸×2 · 베스트 11 선수 22명 + squad_entries(자리표시 그리드) + opt 선발 처방');
 INSERT INTO _migration_log VALUES('2026-11-18','136-opponent-milan','MIL 팀 신설 · regime 아모림 · 4-2-3-1 Wide 슬롯·FC27 optimal(Short Passing·Balanced·58)·슬롯 정본 역할 11칸 · 베스트 11 선수 11명 + squad_entries(자리표시 그리드) + opt 선발 처방 + 듀티');
 INSERT INTO _migration_log VALUES('2026-11-20','138-fut-club-card-art','fut_club_players.card_art 신설 — GG Club playerDef의 현재 레어도 판·선수 렌더·로고·글자색(코스메틱 진화 카드 합성용)');
+INSERT INTO _migration_log VALUES('2026-11-20','139-fut-club-sm-wf','fut_club_players.current_skill_moves·current_weak_foot 신설 — 진화로 오른 개인기·약발(EA 실측)을 싱크마다 저장 · 기준 카드 값은 그대로');
