@@ -85,12 +85,12 @@ export function cardArt(p, cls = '', posFallback = '') {
   const pos = String(a.pos || p.positions || p.best_pos || posFallback || '').split(/[,/]/)[0].trim();   // 카드엔 주 포지션 하나만 인쇄된다
   const logo = (u, alt) => u ? `<img src="${esc(u)}" alt="${alt}" loading="lazy">` : '';
   /* PlayStyle+ 배지(2026-11-20 사용자 지시 「플레이스타일+ 붙은것도 카드에 표시해줘」) — fut.gg 카드와 같은 모양·자리:
-     카드 왼쪽 위 17.4% 아래 오각 배지, 속은 판 선색 · 테두리와 아이콘은 글자색. 여러 개면 위로 쌓는다(카드당 최대 3 · FC27). */
+     카드 왼쪽 오각 배지(fut.gg보다 2배 크게 · 사용자 지시), 속은 판 선색 · 테두리와 아이콘은 글자색. 여러 개면 위로 쌓는다(카드당 최대 3 · FC27). */
   const plus = String(p.current_playstyles || p.playstyles || '').split(',')   // club 행 = current_playstyles · club.state 행 = playstyles(같은 값)
    .map(x => x.trim()).filter(x => /\+$/.test(x)).slice(0, 3);
   const psp = plus.map((nm, i) => {
     const d = psLookup(nm), base = psCanon(nm).replace(/\s*\+$/, '');
-    return `<span class="fcx-ps" style="top:${(52.9 - i * 9).toFixed(1)}%" title="${esc(base)}+">
+    return `<span class="fcx-ps" style="top:${(46.5 - i * 17.5).toFixed(1)}%" title="${esc(base)}+">
       <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M12.813,104.953L68.157,21.862H188.143l55.045,83.091L128,235.138Z"/></svg>
       ${d?.icon ? `<i style="-webkit-mask-image:url('${esc(d.icon)}');mask-image:url('${esc(d.icon)}')"></i>` : ''}</span>`;
   }).join('');
