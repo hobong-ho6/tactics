@@ -48,10 +48,9 @@
 - 2026-11-08 · Cissé ← CB Roles++ 1단계 · OVR 84→84 · 완료 2026-11-08
 - 2026-11-07 · Cissé ← Pamplona Grit [SP 16] 3단계 · OVR 80→84 · 완료 2026-11-07
 - 2026-11-07 · Alysson ← Matchday Marksman 4단계 · OVR 80→83 · 제거 2026-11-17
+- 2026-11-06 · Cissé ← Glow Guard 4단계 · OVR 80→80 · 완료 2026-11-07
 - 2026-11-06 · 오나나 ← Strings of Fate 3단계 · OVR 81→82 · 완료 2026-11-06
 - 2026-11-06 · Hemmings ← Strings of Fate 3단계 · OVR 81→82 · 완료 2026-11-06
-- 2026-11-05 · Cissé ← Glow Guard 4단계 · OVR 73→80 · 완료 2026-11-07
-- 2026-11-05 · Jamaldeen Jimoh-Aloba ← Channel Surfer [SP 11] 3단계 · OVR 83→83 · 완료 2026-11-05
 <!-- evo-ledger:end -->
 
 **분량**: 이 문서 약 12.8KB(목표 10~15 · 상한 20) — 11-05 압축(19.98KB에서)(완료 항목 제거 · 세션 기록 병합).
