@@ -36,8 +36,8 @@ description: 내 얼티밋 구단 동기화 — fut.gg GG Club에서 현재 스�
 ⭐⭐ **표를 읽는 대신 실행기를 부른다**(2026-09-27 — ④스크립트). 순서·구성이 코드에 있다:
 ```bash
 python3 scripts/club_sync.py 진화          # 항목 하나
-python3 scripts/club_sync.py 선수 --capture /tmp/ggclub-YYYYMMDD.json
-python3 scripts/club_sync.py 전체 --capture /tmp/ggclub-YYYYMMDD.json
+python3 scripts/club_sync.py 선수          # 보유 카드는 공개 클럽 경로로 직접 받는다(캡처 불요 · 2026-11-20)
+python3 scripts/club_sync.py 전체
 python3 scripts/club_sync.py 진화 sbc       # 항목 여러 개 — 한 번에 넘겨야 병렬로 돈다
 python3 scripts/club_sync.py 진화 --dry-run   # 무엇을 돌릴지(어느 구간·어느 줄인지) 본다
 python3 scripts/club_sync.py                 # ⭐ 항목 목록만 본다(인자 없으면 돌지 않고 표만 찍는다)
@@ -199,6 +199,11 @@ FUTWIZ·FUTBIN으로 대체 조회)이다 — 그 일이 실행기와 겹치면 
    ⚠️ 클릭 자체는 `b.click()`(JS)이 확실하다. 좌표 클릭은 스크린샷 좌표계 해석이 틀리면 엉뚱한 카드를 누른다 —
    **계정에 작업을 거는 버튼**이라 무엇을 누르는지 확정할 수 있는 쪽을 쓴다.
 4. ⭐⭐ **수집은 `scripts/collect_ggclub.py`로 한다**(2026-09-21 신설 — 사용자 지시 「스크립트를 만들어서 싱크해」).
+   ⭐⭐⭐⭐ **2026-11-20부터 로그인·토큰·스니펫·COPY 클릭이 필요 없다** — `club_sync.py 선수/전체`가 공개 클럽 경로
+   (`/api/gg-club/ho6/players/`·`/active-squad/`)로 직접 받는다(같은 날 로그인 경로 캡처와 135명 × 전 필드 동일 확인).
+   사람이 할 일은 인게임 변경 뒤 fut.gg에서 「Sync Club」을 누르는 것뿐이다(위 3).
+   ⇒ **아래 스니펫 절차는 예비 경로다** — 공개 경로가 404(클럽 이름 오류·fut.gg가 공개를 닫음)일 때만 쓰고,
+     만든 파일을 `club_sync.py … --capture <파일>`로 넘긴다(그러면 공개 수집 단계를 건너뛴다).
    ⛔ **브라우저 출력을 대화로 받아 파일에 옮겨 적지 말 것** — 100명 캡처가 컨텍스트를 두 번 통과해 회차당 약 **1만 토큰**이 샜다.
    스크립트가 API를 직접 부르면 보유가 몇 명이든 **컨텍스트 비용은 0**이고, 표준출력은 요약 몇 줄뿐이다.
    ```

@@ -14,8 +14,8 @@
 
 사용:
     python3 scripts/club_sync.py 진화
-    python3 scripts/club_sync.py 선수 --capture /tmp/ggclub-20260927.json
-    python3 scripts/club_sync.py 전체 --capture /tmp/ggclub-20260927.json
+    python3 scripts/club_sync.py 선수            # 보유 카드는 공개 클럽 경로로 직접 받는다(2026-11-20)
+    python3 scripts/club_sync.py 전체
     python3 scripts/club_sync.py sbc | 시세 | 전술
     python3 scripts/club_sync.py 진화 --dry-run      # 무엇을 돌릴지만 찍는다
     python3 scripts/club_sync.py 진화 sbc            # 항목 여러 개 — 한 번에 부르면 병렬 묶음이 같이 돈다
@@ -43,8 +43,11 @@ S = lambda n: str(ROOT / "scripts" / n)                     # noqa: E731
 # ── 항목 정의 ────────────────────────────────────────────────────────────────
 # ⛔ **새 수집 축을 만들면 반드시 여기에 올린다** — 표에 없으면 아무도 부르지 않는다(위 주석의 실증).
 #    `capture`가 True인 단계는 캡처 파일 경로를 인자로 받는다.
+COLLECT = "GG Club 수집(공개 경로)"
 STEPS = {
     "선수": [
+        # ⭐ 공개 클럽 경로로 직접 받는다(2026-11-20 · 로그인·토큰·클립보드 불요). `--capture`를 주면 이 단계를 건너뛴다.
+        (COLLECT, [PY, S("collect_ggclub.py"), "--apply-squad", "--out", "{capture}"], True),
         ("보유·스쿼드 반영", [PY, S("fut_club_sync.py"), "{capture}", "--account", "main"], True),
         ("관리 4팀 카드 수집", [PY, S("collect_futgg_cards.py"), "--games", "27"], False),
         ("링크 결손", [sys.executable, S("gaps.py"), "links"], False),
@@ -134,7 +137,7 @@ ALIAS = {"all": "전체", "전체": "전체", "player": "선수", "선수": "선
 #       여기 걸릴 일이 없고, 걸린다면 그건 **사람이 셸에서 친 것**이라 고를 기회를 주는 게 맞다.
 ITEM_HELP = [
     ("전체",  "all",    "아래 전부 + 참조 표 (가장 오래 걸린다)"),
-    ("선수",  "player", "보유 카드·활성 스쿼드·케미 스타일 · 새 카드 수집 · 링크/동일성 검산 · 갤러리 평가  [--capture 필요]"),
+    ("선수",  "player", "보유 카드·활성 스쿼드·케미 스타일 · 새 카드 수집 · 링크/동일성 검산 · 갤러리 평가  (공개 경로 · 로그인 불요)"),
     ("진화",  "evo",    "카탈로그·해금 조건·한국어 · 적용 가능 선수 · 원장 검산"),
     ("sbc",   "sbc",    "SBC 세트/챌린지 수집 + 해법 재계산"),
     ("시세",  "price",  "카드 시세 스냅샷 (예산 한 번 ~45장 · 1분 안쪽 · 나머지는 다음 회차가 이어 받는다)"),
@@ -150,12 +153,12 @@ def print_items(head):
     after = " · ".join(f"{k}→{'·'.join(v)}" for k, v in AFTER.items())
     print(f"\n  ⭐ 연쇄: {after}  (고른 항목이 흔드는 축은 자동으로 따라 돈다)")
     print("  예:  python3 scripts/club_sync.py 진화")
-    print("       python3 scripts/club_sync.py 전체 --capture /tmp/ggclub-YYYYMMDD.json")
+    print("       python3 scripts/club_sync.py 전체")
     print("       python3 scripts/club_sync.py 진화 --dry-run")
 
 # 사람이 해야 하는 단계 — 스크립트가 대신하지 않고 **무엇이 남았는지 찍는다**.
 MANUAL = {
-    "선수": ["브라우저로 GG Club 열고 `collect_ggclub.py --auth-file …`로 캡처를 만든다(로그인 대행 금지)"],
+    "선수": ["fut.gg 값은 마지막 「Sync Club」 시점 기준이다 — 인게임 변경 뒤에는 사용자가 fut.gg에서 Sync Club을 먼저 누른다(클릭 대행 금지)"],
     "sbc": ["포메이션 결손이 있으면 ⭐ 1차: 앱 안 브라우저 www.futwiz.com 탭에서 `collect_futbin_sbc_formations.py --futwiz-snippet` → "
             "`--futwiz-file`로 넣는다(해법은 자동 재계산) · 그래도 남으면 2차: Chrome의 www.futbin.com 탭에서 `--print-snippet` → `--json-file`"],
     # ⭐ fut.gg 시세가 막혀 건너뛰었을 때만(2026-11-11 · fut.gg Cloudflare 차단 3회차 연속 → 대체 경로를 스크립트에 넣었다)
@@ -272,10 +275,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("item", nargs="*")   # ⛔ 기본값을 두지 않는다 — 없으면 목록을 보여주고 멈춘다 · 여러 개 가능
     ap.add_argument("--list", action="store_true", help="항목 목록만 보여준다")
-    ap.add_argument("--capture", help="collect_ggclub.py가 만든 /tmp/ggclub-YYYYMMDD.json")
+    ap.add_argument("--capture", help="(예비) 손으로 만든 캡처 파일 — 주지 않으면 공개 경로로 직접 받는다")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--serial", action="store_true", help="병렬 구간 없이 예전처럼 한 줄로 돈다(문제 추적용)")
     a = ap.parse_args()
+    auto_capture = not a.capture
+    if auto_capture:
+        a.capture = f"/tmp/ggclub-{dt.date.today():%Y%m%d}.json"
     if a.list or not a.item:
         print_items("■ 클럽 싱크 — 돌릴 항목을 고른다" if not a.item else "■ 클럽 싱크 항목")
         if not a.item:
@@ -329,15 +335,13 @@ def main():
     # ⭐ 단계 목록을 세 구간으로 가른다(LANE·POST 표). --serial이면 전부 ① 앞 구간처럼 한 줄로.
     pre, lanes, post = [], {}, []
     for b in buckets:
-        if b == "선수" and not a.capture and not a.dry_run:
-            print("\n⚠️ `선수`는 캡처 파일이 필요하다(`--capture`). 브라우저 단계는 사람이 한다:")
+        if b == "선수":
             for m in MANUAL["선수"]:
-                print(f"   · {m}")
-            print("   ⇒ 보유 반영을 건너뛰고 나머지(카드 수집·검산)만 돈다.")
+                print(f"\n⚠️ {m}")
         for label, cmd, needs_cap in STEPS[b]:
+            if label == COLLECT and not auto_capture:
+                continue                         # 손 캡처를 받았다 — 다시 받지 않는다
             if needs_cap:
-                if not a.capture:
-                    continue
                 cmd = [c.replace("{capture}", a.capture) for c in cmd]
             if a.serial:
                 pre.append((b, label, cmd))

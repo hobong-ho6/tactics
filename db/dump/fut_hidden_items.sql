@@ -11,3 +11,5 @@ INSERT INTO fut_hidden_items VALUES(10,'FC27','evo',2654,'사용자가 수행하
 INSERT INTO fut_hidden_items VALUES(11,'FC27','evo',2651,'사용자가 수행하지 않기로 함','2026-11-11','사용자가 화면에서 숨김');
 INSERT INTO fut_hidden_items VALUES(12,'FC27','evo',2547,'사용자가 수행하지 않기로 함','2026-11-11','사용자가 화면에서 숨김');
 INSERT INTO fut_hidden_items VALUES(13,'FC27','evo',2624,'사용자가 수행하지 않기로 함','2026-11-11','사용자가 화면에서 숨김');
+INSERT INTO fut_hidden_items VALUES(14,'FC27','sbc_set',163,'사용자가 수행하지 않기로 함','2026-11-20','사용자가 화면에서 숨김');
+INSERT INTO fut_hidden_items VALUES(15,'FC27','sbc_set',157,'사용자가 수행하지 않기로 함','2026-11-20','사용자가 화면에서 숨김');

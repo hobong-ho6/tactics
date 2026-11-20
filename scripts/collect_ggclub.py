@@ -187,7 +187,8 @@ def get(url, headers, end_on_404=False):
                 time.sleep(RETRY_MS / 1000)
     if end_on_404:
         return None                               # 끝 — 오류가 아니다
-    sys.exit(f"⛔ 404 — {RETRY}회 모두 404다. 토큰이 만료됐거나 헤더가 빠졌다(수명 약 1시간).\n"
+    sys.exit(f"⛔ 404 — {RETRY}회 모두 404다. 토큰 경로면 토큰 만료·헤더 누락(수명 약 1시간), "
+             "공개 경로면 클럽 이름(--club)이 틀렸거나 fut.gg가 공개를 닫았다(→ --print-snippet 예비 경로).\n"
              "   (목록 2페이지 이후의 404라면 그건 「마지막 페이지 다음」이라 정상이다)")
 
 
@@ -305,6 +306,7 @@ def main():
     ap.add_argument("--print-snippet", action="store_true",
                     help="브라우저 안에서 **전량 수집까지 끝내는** 스니펫을 출력하고 끝낸다(손조립 불필요)")
     ap.add_argument("--auth-file", help="토큰 JSON이 든 파일(저장소 밖). 읽는 즉시 삭제한다.")
+    ap.add_argument("--club", default="ho6", help="공개 클럽 경로의 클럽 이름(fut.gg/gg-club/<club>/) — 토큰이 없을 때 쓴다")
     ap.add_argument("--raw-file", help="브라우저 안에서 받아 둔 원본 응답 {players,squad} JSON. 토큰 경로를 쓰지 않는다.")
     a = ap.parse_args()
 
@@ -349,19 +351,24 @@ def main():
             print(f"토큰 파일 폐기: {p}")
         except OSError as e:
             print(f"⚠️ 토큰 파일 삭제 실패({e}) — 직접 지울 것: {p}")
-    if not raw:
-        sys.exit("⛔ 토큰이 없다 — `FUTGG_AUTH` 환경변수나 `--auth-file`을 주라 "
-                 "(`--print-snippet`으로 스니펫을 받아 로그인된 탭에서 꺼낸다)")
-    headers = json.loads(raw)
+    # ⭐⭐ 토큰이 없으면 **공개 클럽 경로**(2026-11-20 사용자 지시 「선수 목록 API도 로그인 없이 받게 바꿔줘」).
+    #    `/api/gg-club/<클럽>/players/`·`/active-squad/`는 로그인 없이 200이고, 같은 날 로그인 경로 캡처와
+    #    **135명 × 전 필드 동일**했다(rows_of 결과 비교 · 활성 스쿼드 23칸). ⇒ 토큰·스니펫·클립보드가 필요 없다.
+    #    토큰 경로(위)와 스니펫(--print-snippet → --raw-file)은 fut.gg가 공개를 닫을 때의 예비로 남는다.
+    if raw:
+        headers, base = json.loads(raw), API
+        headers.setdefault("Referer", "https://www.fut.gg/gg-club/my/players/")
+    else:
+        headers, base = {"Referer": f"https://www.fut.gg/gg-club/{a.club}/"}, f"{API}/{a.club}"
+        print(f"공개 클럽 경로: {base}/ (토큰 없음)")
     headers.setdefault("Accept", "application/json")
     # ⚠️ 기본 urllib UA로는 403이다(Cloudflare) — 다른 수집기와 같은 UA를 쓴다(2026-09-21 실측).
     headers.setdefault("User-Agent", "Mozilla/5.0")
     headers.setdefault("Origin", "https://www.fut.gg")
-    headers.setdefault("Referer", "https://www.fut.gg/gg-club/my/players/")
 
     players, page = [], 1
     while page <= 100:                                    # 폭주 방지
-        d = get(API + PLAYERS_URL.format(game=a.game, page=page), headers, end_on_404=page > 1)
+        d = get(base + PLAYERS_URL.format(game=a.game, page=page), headers, end_on_404=page > 1)
         if d is None:                                     # ⭐ 마지막 페이지 다음의 404 = 정상 종료
             page -= 1
             break
@@ -372,8 +379,7 @@ def main():
 
     squad = []
     try:
-        squad = (((get(f"{API}/active-squad/", headers) or {}).get("data") or {}).get("data") or {}).get(
-            "activeGroupPositions") or []
+        squad = get(f"{base}/active-squad/", headers) or []    # 봉투 벗기기는 slots_of 한 곳(write_out)
     except Exception as e:
         print(f"⚠️ 활성 스쿼드 조회 실패({e}) — 선수 목록만 쓴다")
 
