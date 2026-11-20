@@ -383,13 +383,26 @@ def main():
     except Exception as e:
         print(f"⚠️ 활성 스쿼드 조회 실패({e}) — 선수 목록만 쓴다")
 
-    write_out(rows_of(players), squad, a, pages=page)
+    # ⭐ fut.gg가 EA에서 마지막으로 받은 시각(2026-11-20) — 이 데이터가 **언제 상태**인지다.
+    #    「Sync Club」을 누르기 전에 SBC를 제출했으면 낸 카드가 아직 목록에 있다 → fut_club_sync가 이 시각과
+    #    제출일을 비교해 제출 기록을 되돌리지 않는다(같은 날 11:17 제출을 09:50 데이터로 되돌린 사고).
+    synced_at = None
+    if not raw:
+        try:
+            synced_at = ((get(f"{base}/summary/", headers) or {}).get("data") or {}).get("lastDataSyncAt")
+        except Exception as e:                                   # noqa: BLE001 — 없어도 싱크는 보수적으로 돈다
+            print(f"⚠️ 마지막 데이터 싱크 시각 조회 실패({e})")
+    write_out(rows_of(players), squad, a, pages=page, synced_at=synced_at)
 
 
-def write_out(rows, squad, a, pages):
+def write_out(rows, squad, a, pages, synced_at=None):
     squad = slots_of(squad)
     uniq = {r["gg"] for r in rows}
     Path(a.out).write_text(json.dumps(rows, ensure_ascii=False, indent=0), encoding="utf-8")
+    # 캡처 형식(리스트)은 그대로 두고 시각은 옆 파일에 둔다 — fut_club_sync.py가 있으면 읽는다.
+    Path(a.out + ".meta.json").write_text(json.dumps({"lastDataSyncAt": synced_at}), encoding="utf-8")
+    if synced_at:
+        print(f"fut.gg 마지막 데이터 싱크: {synced_at} (UTC)")
     print(f"수집 {len(rows)}명(고유 {len(uniq)}) · {pages}페이지 · 스쿼드 슬롯 {len(squad)} → {a.out}")
     # ⛔⛔ **결손을 조용히 넘기지 않는다**(2026-09-23 · obs#132). 2026-09-22까지 「프리킥 정확도」가
     #    100% 빠지고 있었는데 아무도 몰랐고, 6대 스탯 PAS가 89명 전원에서 2~4 낮게 계산됐다.

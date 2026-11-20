@@ -27,6 +27,7 @@ import re
 import sqlite3
 import sys
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -84,6 +85,12 @@ def main():
         raise SystemExit(f"⛔ 캡처가 낡았다 — 캡처 {cap_day} < 마지막 싱크 {last}.\n"
                          f"   그대로 먹이면 그 사이의 갱신(처분·진화·PlayStyle)이 **되돌아간다**.\n"
                          f"   새로 수집하거나, 되돌리기를 감수하고 --allow-stale 을 주라.")
+    # ⭐ 이 캡처가 **언제의 EA 상태**인가(2026-11-20 · collect_ggclub.py가 옆 파일에 남긴 fut.gg lastDataSyncAt · KST 날짜).
+    #    없으면 캡처 날짜로 둔다 — 같은 날 제출은 되돌리지 않는 쪽(보수적)으로 기운다.
+    meta = Path(a.path + ".meta.json")
+    ts = json.loads(meta.read_text(encoding="utf-8")).get("lastDataSyncAt") if meta.exists() else None
+    data_day = (dt.datetime.fromisoformat(ts.replace("Z", "+00:00")).astimezone(ZoneInfo("Asia/Seoul")).date().isoformat()
+                if ts else cap_day)
     styles = {r["ea_id"]: r["name"] for r in con.execute("SELECT ea_id, name FROM fc_chemistry_styles WHERE ea_id IS NOT NULL")}
     have = {r["ea_item_id"]: dict(r) for r in
             con.execute("SELECT * FROM fut_club_players WHERE account_id=?", (acc["id"],))}
@@ -139,7 +146,7 @@ def main():
         return ", ".join(out)
 
     ins = upd = same = 0
-    conflicts, applied_styles, done, protected, ps_fixed, restored = [], [], [], [], [], []
+    conflicts, applied_styles, done, protected, ps_fixed, restored, held = [], [], [], [], [], [], []
     stats_n = 0
     b = lambda v: None if v is None else int(bool(v))       # noqa: E731
     # ⭐ EA 진화 이력(migration 090) — 키가 없으면(구 캡처) NULL로 두어 「이력 없음」과 「미수집」을 가른다.
@@ -188,7 +195,15 @@ def main():
         #       실측(2026-09-25): 캡처 99장 중 **11장이 sold로 박혀** SBC 판정 풀이 89장으로 줄어 있었다
         #       (데 케텔라레·만치니·캄비아소 등). ⇒ 「내 보유로 달성 가능한가」가 과소 판정됐다.
         #    ⭐ 어느 쪽이든 정본은 EA다 — 목록에 있으면 보유, 없으면 처분(아래 `gone`).
-        if cur["status"] != "owned":
+        # ⛔⛔ 단, **EA 데이터가 SBC 제출보다 앞서면 되돌리지 않는다**(2026-11-20 사용자 보고 — 11:17 Sevilla 제출 11장을
+        #    09:50 fut.gg 데이터(「Sync Club」 전)로 보유로 되돌려, 재계산 해법이 낸 카드를 또 썼다).
+        #    날짜 단위라 같은 날 제출도 지킨다 — 정말 기록이 틀렸으면 다음 날 싱크(또는 화면의 완료 취소)가 되돌린다.
+        sub_day = (con.execute("SELECT MAX(completed_at) FROM fut_sbc_log WHERE challenge_ea_id=?",
+                               (cur["sbc_challenge_ea_id"],)).fetchone()[0]
+                   if cur["status"] == "sbc" and cur["sbc_challenge_ea_id"] else None)
+        if sub_day and sub_day >= data_day:
+            held.append((cur["name"], sub_day))
+        elif cur["status"] != "owned":
             con.execute("UPDATE fut_club_players SET status='owned', updated=? WHERE id=?", (TODAY, cur["id"]))
             restored.append((cur["name"], cur["status"]))
         # ③ 어긋남 검출 — 원장이 기록한 현재 OVR과 EA 실제값이 다르면 보고한다(진화 기록 오류 신호)
@@ -353,6 +368,11 @@ def main():
 
     print(f"{'(dry-run) ' if a.dry_run else ''}싱크 {len(rows)}장 · 신규 {ins} · 갱신 {upd} · 변화 없음 {same}")
     print(f"경기 기록 스냅샷 {stats_n}행 · 카드 빈칸 보충 {filled}칸" + (f" · 카드 행 신설 {len(made)}장 {made}" if made else ""))
+    if held:
+        print(f"\n⏸️ SBC 제출 기록을 지킨 카드 {len(held)}장 — EA 데이터({data_day})가 제출일보다 앞서 아직 목록에 남아 있다"
+              "(fut.gg에서 「Sync Club」을 누르면 사라진다):")
+        for n_, d_ in held:
+            print(f"   {n_:<22} 제출 {d_}")
     if restored:
         print(f"\n⭐ 처분 표시를 되돌린 카드 {len(restored)}장 — EA 목록에 있으므로 보유다:")
         for n_, st in restored:

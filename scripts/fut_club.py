@@ -489,14 +489,21 @@ def _resolve_if_overlap(con, ch, ids, sids):
        ⚠️ 해법이 그 규칙 이전에 저장됐거나 손으로 다시 푼 챌린지가 섞여 있으면 겹칠 수 있다 → 그때만 다시 푼다."""
     used = set(ids) | {-x for x in sids}
     hit = {}
+    # ⛔⛔ 기본 11장(`players`)만 보면 안 된다(2026-11-20 사용자 보고 「제출하면 나머지 sbc에 해당 선수 사용한 경우 재계산해야 하는데
+    #    안 하고 있음」). 해법끼리 겹치지 않게 나누는 건 **기본 해뿐**이고, 화면에서 고르는 대안 해(`options`)·
+    #    미완성 해의 구매 안(`after`·`plans`)·verdict≠ok 해법은 다른 챌린지의 카드를 쓴다 — Sevilla v Betis 제출 뒤
+    #    HoF 3·Liverpool 대안 해와 LOSC·Milano 구매 안에 낸 카드가 남았는데 「겹침 없음」으로 건너뛰었다.
+    #    ⇒ 저장된 해법이 담은 **카드 목록 전부**를 verdict와 무관하게 본다.
     for cid, sj in con.execute("""SELECT challenge_ea_id, squad_json FROM fc_sbc_solutions
                                    WHERE pulled=(SELECT MAX(pulled) FROM fc_sbc_solutions)
-                                     AND verdict='ok' AND challenge_ea_id<>?""", (ch,)):
+                                     AND challenge_ea_id<>?""", (ch,)):
         try:
-            pl = json.loads(sj or "{}").get("players") or []
+            d = json.loads(sj or "{}")
+            lists = [d.get("players"), d.get("after"), *[o.get("players") for o in d.get("options") or []],
+                     *[p.get("after") for p in d.get("plans") or []]]
         except (ValueError, AttributeError):
             continue
-        n = sum(1 for p in pl if p.get("id") in used)
+        n = len({p.get("id") for pl in lists for p in (pl or []) if p.get("id") in used})
         if n:
             hit[cid] = n
     if hit:
