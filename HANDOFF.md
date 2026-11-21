@@ -50,8 +50,6 @@
 - 2026-11-07 · Hemmings ← Shadow Striker++ 1단계 · OVR 82→82 · 완료 2026-11-07
 - 2026-11-07 · Cissé ← Pamplona Grit [SP 16] 3단계 · OVR 80→84 · 완료 2026-11-07
 - 2026-11-07 · Alysson ← Matchday Marksman 4단계 · OVR 80→83 · 제거 2026-11-17
-- 2026-11-06 · 오나나 ← Strings of Fate 3단계 · OVR 81→82 · 완료 2026-11-06
-- 2026-11-06 · Hemmings ← Strings of Fate 3단계 · OVR 81→82 · 완료 2026-11-06
 <!-- evo-ledger:end -->
 
 **분량**: 이 문서 약 12.8KB(목표 10~15 · 상한 20) — 11-05 압축(19.98KB에서)(완료 항목 제거 · 세션 기록 병합).
