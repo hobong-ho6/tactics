@@ -297,6 +297,9 @@ provenance가 산문에만 있으면 **여러 경기를 가로질러 집계할 �
 - 표본이 2경기 이상 쌓인 선수는 `core.aggregate.player_aggregate`(포지션-순수)로
   `prescriptions` kind='measured'(26/27 시즌 행 — 25/26 행을 덮지 않는다, 추가만) 갱신.
 - 적합은 `core.kernel.Kernel(core.game_version.live_on(con, 경기일)).best_fit_slot()`. 노이즈 구간(Δ≤.05)은 인선 변경 금지.
+- ⭐⭐ **역할 1·2위·Δ는 `core.role_stats.rank_slot(kernel, Reference(con), con, regime_id, pos, map25, 경기 행들)`로 잰다**
+  (2026-11-22 사용자 지시 — 히트맵 0.6 + 경기 스탯 0.4 합산). 경기 처방의 `fit_sim`은 커널 값을 그대로 두고,
+  `fit_delta`·`alt_role`과 1위 역할은 합산 점수로 정한다. rationale에 `커널 k · 스탯 s · 합산` 세 값을 적는다. 정본 docs/30 7단계 ⭐.
   ⛔ 버전을 `'FC26'`처럼 박지 않는다 — `match_game_setups`·`match_player_prescriptions`의 game_version도 같은 함수 값이다
   (2026-10-22: FC27 출시 뒤 경기 11건이 FC26으로 적혀 G40 신설 · `core/game_version.py`).
 - 경기별 판정을 직전 완료 리포트와 비교해 `유지/변화`를 적는다. 같은 변화가 누적되면 observation으로
