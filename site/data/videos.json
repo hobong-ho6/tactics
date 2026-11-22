@@ -2,7 +2,7 @@
  "all": [
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-22] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 540,
    "impl_claims": [
     {
@@ -199,8 +199,61 @@
    "video_id": "-1V5uHE8BcA"
   },
   {
-   "channel": "UTV | Aston Villa Fan Channel",
+   "channel": "Aston Villa Football Club",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-22] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 543,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "players_in_box",
+     "field_kr": "박스 투입 인원",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 55,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "9번의 기능과 9번 없는 구성",
+      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「trying to to to get with more players their their box」(상대 박스에 더 많은 선수를 넣으려 한다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "more players in the box",
+     "value_kr": "공격 시 상대 박스에 더 많은 선수",
+     "verdict": "HELD",
+     "verdict_note": "감독의 부족 진단(지시가 아니라 개선 방향) · 이 경기 박스 터치 /10분 0–60′ 4.0 · 73′– 4.0으로 교체 뒤에도 늘지 않음 · 단일 경기 · 정본 변경 근거 아님 — 쟁점 #55(9번의 기능) 트리거 때 박스 인원 실측과 함께 재판정"
+    }
+   ],
+   "key_points": [
+    "자평: 「today one step forward clear」(오늘은 분명한 한 걸음 전진) — 경기 통제·박스 진입 다수",
+    "부족: 「I am lacking off some action offensively a little more intense or aggressive」(공격에서 조금 더 강렬하거나 공격적인 동작이 부족하다)",
+    "해법 방향: 「trying to to to get with more players their their box」(상대 박스에 더 많은 선수를 넣으려 한다) — 박스 인원 부족 진단",
+    "교체 의도·선수 개별 평가·형태 언급 0건(전문 확인) — 60′ 교체의 유일한 설명은 BBC의 「Fresh legs」(새 다리)"
+   ],
+   "kind": "감독회견",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-21",
+   "published_approx": 0,
+   "report_id": 71,
+   "summary": "구단 공식 VillaTV의 에메리 경기 후 인터뷰 전체(2분 15초). 결과는 부족하지만 「one step forward clear」(분명한 한 걸음 전진)라며 풀럼전보다 경기를 통제했다고 자평하고, 부족한 점으로 「a little more intense or aggressive」(조금 더 강렬하거나 공격적인) 공격 동작과 「get with more players their box」(상대 박스에 더 많은 선수를 넣는 것)를 꼽는다. ⭐ 교체(음바예·맥긴 60′, 마조·바클리 73′) 의도·피벗 좌우 배치·개별 선수 평가는 전체 인터뷰 어디에도 없다 — 리포트 §8의 「교체 의도 발언 없음」을 전문 기준으로 확정.",
+   "team_code": "AVL",
+   "title": "\"I know it's not enough the result\" | Unai Emery on Sunderland draw",
+   "transcript_path": "reports/transcripts/g6GPidTTTXI.en.md",
+   "url": "https://www.youtube.com/watch?v=g6GPidTTTXI",
+   "video_id": "g6GPidTTTXI"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 542,
    "impl_claims": [
     {
@@ -370,7 +423,7 @@
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-22] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 541,
    "impl_claims": [
     {
@@ -38409,6 +38462,7 @@
   ],
   "71": [
    540,
+   543,
    542,
    541
   ]
