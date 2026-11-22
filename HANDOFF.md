@@ -32,6 +32,13 @@
 <!-- evo-ledger:start -->
 **진화 원장 (자동 · 최근 14일 + 진행 중 · 정본 DB `fut_evolution_log` · `ship.py`가 갱신)**
 
+- 2026-11-22 · Cissé ← Storm Wall 4단계 · OVR 80→86 · 완료 2026-11-22
+- 2026-11-22 · Madjo ← ST Roles++ 1단계 · OVR 84→84 · 완료 2026-11-22
+- 2026-11-22 · Alysson ← Circuit Breaker 4단계 · OVR 83→86 · 완료 2026-11-22
+- 2026-11-22 · 바클리 ← CDM Roles++ 1단계 · OVR 85→85 · 완료 2026-11-22
+- 2026-11-22 · 바클리 ← Full Overload 5단계 · OVR 83→85 · 완료 2026-11-22
+- 2026-11-22 · 바클리 ← High Voltage 3단계 · OVR 82→83 · 완료 2026-11-22
+- 2026-11-22 · 바클리 ← Static Charge 4단계 · OVR 77→82 · 완료 2026-11-22
 - 2026-11-20 · John McGinn ← Glue or Genius [SP 28] 1단계 · OVR 84→84 · 완료 2026-11-20
 - 2026-11-20 · Madjo ← Top Tier Striker 5단계 · OVR 81→84 · 완료 2026-11-20
 - 2026-11-18 · Suzuki ← Feline Flex 2단계 · OVR 80→83 · 완료 2026-11-18
@@ -44,7 +51,7 @@
 - 2026-11-11 · Jack Moylan ← Under the Lights 4단계 · OVR 80→83 · 완료 2026-11-11
 - 2026-11-10 · Issa Kaboré ← Clean Sheet Nights 3단계 · OVR 72→75 · 완료 2026-11-10
 - 2026-11-10 · Rafiki Saïd ← Underdog Run 5단계 · OVR 72→80 · 완료 2026-11-10
-- 2026-11-08 · Cissé ← CB Roles++ 1단계 · OVR 84→84 · 완료 2026-11-08
+- 2026-11-08 · Cissé ← CB Roles++ 1단계 · OVR 84→86 · 제거 2026-11-22
 <!-- evo-ledger:end -->
 
 **분량**: 이 문서 약 12.8KB(목표 10~15 · 상한 20) — 11-05 압축(19.98KB에서)(완료 항목 제거 · 세션 기록 병합).

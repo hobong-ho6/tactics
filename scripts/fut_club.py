@@ -265,7 +265,10 @@ def cmd_evolve(con, a):
             #    1회차(2026-09-29 스즈키 GK 역할++): 구성식 SPD 56 ↔ EA 58 → 「속성이 하나도 안 바뀌는 진화」만 예외로 뺐다.
             #    2회차(2026-10-06 스즈키 Goal Guardian): DIV·HAN이 올라 예외를 벗어나자 **안 바뀐 SPD**가 56으로 재환산돼 또 막혔다.
             #    ⇒ 구성식과 EA 표시값의 반올림 차이가 「건드리지 않은 스탯」에 새어 들어올 구조를 없앤다.
-            prev_six = json.loads(pre[2] or cp["current_six"] or "{}")
+            # ⛔ 사슬 첫 행(기준 카드 출발 · pre[2] 없음)에서 EA 현재 6대를 잇는 것은 **EA 카드가 기준 카드 그대로일 때만**이다
+            #    (2026-11-22 바클리 실측 — 진화 4종을 한꺼번에 기록하자 1단계가 EA 최종 PAC 85를 이어받아 2단계부터 「내려간다」로 막혔다).
+            same_as_ea = all(cur_attrs.get(k) == v for k, v in pre[0].items() if k in cur_attrs)
+            prev_six = json.loads(pre[2] or (cp["current_six"] if same_as_ea else six_before) or "{}")
             if prev_six:
                 comp = {}
                 for r in face_rows:
