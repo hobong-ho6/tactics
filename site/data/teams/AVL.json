@@ -135898,8 +135898,8 @@
    "y": null
   },
   {
-   "avg_rating": 7.23,
-   "fit_sim": 0.744,
+   "avg_rating": 7.34,
+   "fit_sim": 0.627,
    "focus": "Build-Up",
    "game_version": "FC27",
    "grid_club": "Aston Villa",
@@ -135908,9 +135908,9 @@
    "map25": "0000000000000000010001X10",
    "player_id": 132,
    "pos_label": "GK",
-   "rationale": "[2026-10-22 선발 재지정 — obs#1120] 현 가용 XI(바이킹전·뉴캐슬전 선발 + 캐시 RB 복귀 기준) · 역할/포커스 = slot_canon_roles FC27 4-2-3-1 Wide 정본 · fit_sim = core.kernel.Kernel('FC27') ↔ 26/27 클럽 공식전 45분+ 표본 그리드(map25) · 정본 역할 적합이라 커널 1위가 아닐 수 있다(1위는 measured 행)",
-   "role_id": "gk_ballplaying",
-   "sample_n": 10,
+   "rationale": "[2026-10-22 선발 재지정 — obs#1120] 현 가용 XI(바이킹전·뉴캐슬전 선발 + 캐시 RB 복귀 기준) · 역할/포커스 = slot_canon_roles FC27 4-2-3-1 Wide 정본 · fit_sim = core.kernel.Kernel('FC27') ↔ 26/27 클럽 공식전 45분+ 표본 그리드(map25) · 정본 역할 적합이라 커널 1위가 아닐 수 있다(1위는 measured 행) ‖ [2026-11-23 자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)] 최근 5경기 중 4회 선발 · 마지막 2026-11-21 · 옛 역할 gk_ballplaying/Build-Up(fit 0.744) → 정본 gk_sweeper/Build-Up",
+   "role_id": "gk_sweeper",
+   "sample_n": 14,
    "season": "2026-27",
    "starter": 1,
    "x": 50,
@@ -142333,10 +142333,10 @@
    "formation": "4-2-3-1 Wide",
    "game_version": "FC27",
    "pos": "GK",
-   "rationale": "5-2 빌드업 참여는 후방 패스 옵션이지 전진 스위핑이 아니다(obs#154 — 스위퍼 아님, 실측 .961). buildup·implementation ⑴. [2026-10-11 교정: gk_goalkeeper/Defend → **gk_ballplaying/Build-Up** · 사용자 결정] 2026-10-10 브렌트포드전 사용자 관찰(obs#966): 스즈키가 매우 높은 위치까지 나와 빌드업에서 공을 받아 줌. 볼 플레잉 키퍼 Build-Up = EA 「push higher up the pitch to support play」(더 높이 올라가 플레이를 지원) + 희생 「전진 러시」 — 종전 근거 「후방 패스 옵션이지 전진 스위핑이 아니다(스위퍼 아님)」와 모순되지 않는 쪽을 골랐다. 스위퍼 키퍼는 뒷공간 러시가 강화 특성이라 제외. [2026-10-11 재교정: gk_ballplaying/Build-Up → **gk_sweeper/Build-Up** · 사용자 결정] 브렌트포드전(2026-10-10) 실측: WhoScored KeeperSweeper 2회(80′ x19 · 96′ x47 하프라인 부근) · 박스 밖 볼 회수 2회 · 빌드업 패스 팀 3위(46) · 일본 매체(게키사카·사커다이제스트)도 96′ 하프라인 부근 커버 보도 · 사용자 관찰 obs#966·#975. 높은 빌드업 + 뒷공간 러시를 둘 다 하므로 러시를 희생하는 볼 플레잉보다 스위퍼가 맞다. ⚠️ 비용: 첫 실점이 GK→밍스 짧은 빌드업에서 상대 유도 압박에 걸려 나왔다(Tanswell). 위치 히트맵은 gk_goalkeeper/Defend .939로 희소 행동을 담지 못한다. [2026-10-15 재교정: gk_sweeper/Build-Up → **gk_ballplaying/Build-Up** · 사용자 결정] 페네르바흐체전(UCL MD2) 실측: 스위핑 0(KeeperSweeper 0·박스 밖 비패스 행동 0) · 짧은 패스 15/15·3-2 빌드업 참여 5~6/18체인 · 히트맵 기하는 두 역할 모두 비지지(골키퍼 Defend .957 ≫ 볼 플레잉 .677 > 스위퍼 .576). 2경기 스위핑 2:0으로 갈려 행동 근거 무결정 → 사용자 관전 판단(obs#1019 전후 메모·obs#1024)과 인게임 설정(클럽 싱크 9ad84fc Ball Playing Keeper)에 맞췄다. 재검토 조건: 이후 3경기 중 2경기 이상 KeeperSweeper 발생.",
-   "role_id": "gk_ballplaying",
-   "source": "manager_profiles(1) implementation·buildup + obs#154 · obs#966 · obs#975·#982 · match_reports#51 · WhoScored 1983592 ‖ 2026-10-22 FC27 승계(migrate_fc27.py --carry): FC27 역할표가 FC26과 전항 일치 확인 뒤 FC26 판을 그대로 옮김",
-   "updated": "2026-10-22"
+   "rationale": "5-2 빌드업 참여는 후방 패스 옵션이지 전진 스위핑이 아니다(obs#154 — 스위퍼 아님, 실측 .961). buildup·implementation ⑴. [2026-10-11 교정: gk_goalkeeper/Defend → **gk_ballplaying/Build-Up** · 사용자 결정] 2026-10-10 브렌트포드전 사용자 관찰(obs#966): 스즈키가 매우 높은 위치까지 나와 빌드업에서 공을 받아 줌. 볼 플레잉 키퍼 Build-Up = EA 「push higher up the pitch to support play」(더 높이 올라가 플레이를 지원) + 희생 「전진 러시」 — 종전 근거 「후방 패스 옵션이지 전진 스위핑이 아니다(스위퍼 아님)」와 모순되지 않는 쪽을 골랐다. 스위퍼 키퍼는 뒷공간 러시가 강화 특성이라 제외. [2026-10-11 재교정: gk_ballplaying/Build-Up → **gk_sweeper/Build-Up** · 사용자 결정] 브렌트포드전(2026-10-10) 실측: WhoScored KeeperSweeper 2회(80′ x19 · 96′ x47 하프라인 부근) · 박스 밖 볼 회수 2회 · 빌드업 패스 팀 3위(46) · 일본 매체(게키사카·사커다이제스트)도 96′ 하프라인 부근 커버 보도 · 사용자 관찰 obs#966·#975. 높은 빌드업 + 뒷공간 러시를 둘 다 하므로 러시를 희생하는 볼 플레잉보다 스위퍼가 맞다. ⚠️ 비용: 첫 실점이 GK→밍스 짧은 빌드업에서 상대 유도 압박에 걸려 나왔다(Tanswell). 위치 히트맵은 gk_goalkeeper/Defend .939로 희소 행동을 담지 못한다. [2026-10-15 재교정: gk_sweeper/Build-Up → **gk_ballplaying/Build-Up** · 사용자 결정] 페네르바흐체전(UCL MD2) 실측: 스위핑 0(KeeperSweeper 0·박스 밖 비패스 행동 0) · 짧은 패스 15/15·3-2 빌드업 참여 5~6/18체인 · 히트맵 기하는 두 역할 모두 비지지(골키퍼 Defend .957 ≫ 볼 플레잉 .677 > 스위퍼 .576). 2경기 스위핑 2:0으로 갈려 행동 근거 무결정 → 사용자 관전 판단(obs#1019 전후 메모·obs#1024)과 인게임 설정(클럽 싱크 9ad84fc Ball Playing Keeper)에 맞췄다. 재검토 조건: 이후 3경기 중 2경기 이상 KeeperSweeper 발생. [2026-11-23 재교정: gk_ballplaying/Build-Up → **gk_sweeper/Build-Up** · 사용자 결정 「스즈키 스위퍼 키퍼로 바꿔」] 10-15 재검토 조건(이후 3경기 중 2경기 이상 KeeperSweeper) 충족 — 11-01 이후 선발 3경기 KeeperSweeper 3/3 · 경기당 1.67 (쟁점 #3 측정 기준 ≥1.5). 포커스는 10-11 스위퍼 선택과 같은 Build-Up(높은 빌드업 + 뒷공간 러시를 둘 다 함). ⚠️ 위치 히트맵은 여전히 gk_goalkeeper/Defend 1위(희소 행동을 담지 못함 — 종전 판단 유지).",
+   "role_id": "gk_sweeper",
+   "source": "manager_profiles(1) implementation·buildup + obs#154 · obs#966 · obs#975·#982 · match_reports#51 · WhoScored 1983592 ‖ 2026-10-22 FC27 승계(migrate_fc27.py --carry): FC27 역할표가 FC26과 전항 일치 확인 뒤 FC26 판을 그대로 옮김 ‖ claim_issues#3 2026-11-23 · 사용자 결정",
+   "updated": "2026-11-23"
   },
   {
    "confidence": "HIGH",
@@ -143332,6 +143332,24 @@
   }
  ],
  "tactic_changes": [
+  {
+   "after": "스즈키 지온: gk_sweeper/Build-Up",
+   "before": "스즈키 지온: gk_ballplaying/Build-Up",
+   "changed_at": "2026-11-23",
+   "key": "GK",
+   "layer": "starter",
+   "reason": "자동 산출 core.opt_starters — 최근 클럽 공식전 5경기 슬롯 선발 최다(장기 부상 제외)",
+   "source": "core.opt_starters"
+  },
+  {
+   "after": "gk_sweeper/Build-Up",
+   "before": "gk_ballplaying/Build-Up",
+   "changed_at": "2026-11-23",
+   "key": "4-2-3-1 Wide|GK",
+   "layer": "slot_canon",
+   "reason": "claim_issues#3 · 사용자 결정 2026-11-23 「스즈키 스위퍼 키퍼로 바꿔」 — KeeperSweeper 3/3(11-01 이후 선발 3경기 · 경기당 1.67)",
+   "source": "tactic_changes.py 2026-11-23"
+  },
   {
    "after": "부엔디아: cam_playmaker/Roaming",
    "before": "맥긴: cam_playmaker/Roaming",
