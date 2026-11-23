@@ -38,3 +38,6 @@ db/tactics.db.restore-tmp
 db/.dump_stamp
 # 세션별 「DB 작성 중」 표시(core/db.py · ship.py가 기다린다) — PC·실행마다 다르다.
 db/.leases/
+
+# Codex 스킬 연결 심볼릭 링크(PC마다 · docs/codex-guide.md 4절)
+.agents/
