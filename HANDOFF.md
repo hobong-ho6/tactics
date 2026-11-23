@@ -32,6 +32,7 @@
 <!-- evo-ledger:start -->
 **진화 원장 (자동 · 최근 14일 + 진행 중 · 정본 DB `fut_evolution_log` · `ship.py`가 갱신)**
 
+- 2026-11-23 · 오나나 ← Lightning Rod 4단계 · OVR 81→84 · 진행 중
 - 2026-11-22 · Cissé ← CB Roles++ 1단계 · OVR 86→86 · 완료 2026-11-22
 - 2026-11-22 · Cissé ← Storm Wall 4단계 · OVR 80→86 · 완료 2026-11-22
 - 2026-11-22 · Madjo ← ST Roles++ 1단계 · OVR 84→84 · 완료 2026-11-22
