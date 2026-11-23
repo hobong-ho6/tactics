@@ -1,0 +1,26 @@
+# 전사(자동 생성 자막) — HBXQd07r1UM (en)
+
+> Sunderland AFC — Regis Le Bris and Thomas Meunier | Post-Match Reaction (게시 2026-11-21 · 4분 54초 · auto-caption · 상대 감독 경기 후 인터뷰 · 선덜랜드전 D+2 추적 2026-11-23)
+
+> 원본: https://www.youtube.com/watch?v=HBXQd07r1UM · 수집: scripts/yt_transcript_json3.py(브라우저 pot 경로)
+> ⚠️ 유튜브 자동 생성 자막 — 오인식 가능. 인용 시 confidence에 auto-caption 명기.
+
+**[00:00]** Rejis, an important point. Just summarize the game for me. >> Yeah, important um to be solid away from home. Um it was the case against Chelsea. I think uh the team spirit, the [snorts] way we defended our goal high up the pitch in the mid press on lower on the pitch. The lads did really well to to reduce their threat. Uh we knew before this game that Villa had [snorts] really really strong side um well organized with talented players, the ability to dribble in tight spaces. So
+
+**[00:32]** if you don't um work together, you can't manage those threats and I think they did really well uh finally that didn't create many big chances a few maybe. And uh with the ball we had the opportunities to go forward to exploit um big spaces. At times we were just on the edge to exploit uh good opportunities but um at the end of the day it's it's a good point. I'm proud of the team spirit. >> How important are these foundations of clean sheets that we're building ahead of the busy schedule that we're going to run into?
+
+**[01:02]** >> Yeah, it's crucial. Um I think our season started um a bit difficult because we had the ball with the ability to create chances to play good football at times but we were often too exposed. So it was really important to to adjust this part of of the game because if you are always um chasing it's hard even if you you have a talented team which is our case. So it was important to reduce the opponent threats. I think it was was the case today. You handed Jules a Hawker his first Premier League start.
+
+**[01:33]** How impressed have you been with him? >> Yeah, he's good. He's doing well. Young lad, um calm under pressure, really intense in duels in understands well the game plan as well game model. So good to to have him in the squad. He's part of the death of this team and um he's doing well. >> In another interview, Thomas Mooney has described him as Sergio Buscat. [laughter] >> I know. Uh I hope it will be the same career. Uh could be really really good
+
+**[02:03]** for him. At the minute it's important to to stay consistent and to go again for the next game. >> Two home games coming up and the fans will back us just like they have today. >> Yeah, it's going to be really positive. We want to build our season as well at home with our fans. We know that um the stadium of light is unique with this connection with the our fans was incredible fantastic against Chelsea for example and today they were behind us so go again it's the identity of Sunderland
+
+**[02:33]** we are in the fight and we want to show that who we were >> Thomas an important point on the road just how did you say that one >> I mean as you say really important and and after the after the victory against Chelsea I I I was hoping that the dynamism would would stay uh in the team and that we would uh just get better and better and better. Uh very honestly, we've played two champions uh teams with Villa and Chelsea and four out of six is it's it's really really good. Uh let's
+
+**[03:03]** be honest, we're at the bottom of the league. Every point will be important and what we did today was just a a real sacrifice from the from every players. Uh the the commitment that we've shown um was unbelievable and I'm yeah I'm quite happy with this point. >> It looked like everybody gave everything. >> It's I I mean it's a it's it's a bit boring to play that kind of game because yeah of course you would prefer to have the ball position and to play nice football and create uh many many chances but it's not always possible and and and
+
+**[03:34]** we have to be honest as well. Aston Villa as a better team, but I think that our collective is really really wonderful and and and we've shown it against Chelsea uh and and again today. So um yeah, what we can see also is that uh even if we miss a few players uh the one on the pitch um being like substitute uh normally are are doing the job and and the quality of the group is uh is really to to be underlined. There was obviously a lot of defending to do, but we also had our chances in that game
+
+**[04:05]** as well. >> Yeah, very honestly, we could win this game um if we were a bit a bit smarter at some moment. Um like keeping the ball, making the the right move, but it's not always easy to to have this freshness u because at the end you struggle the whole game trying to to keep the clean sheet and when you get the ball, it's not always easy like to to sprint 60 m or 70 m to finish in one against one against the goalkeeper. Um so yeah I mean we we cannot blame anyone
+
+**[04:35]** uh for the result today. We can just be happy with this 00 and it's yeah it's a wonderful point. Just finally a word on the away support in that corner because they were present the full 90. Yeah. Yeah. But they are there and we we know uh or present are the supporters of Sunderland. Everywhere we go, they are there.

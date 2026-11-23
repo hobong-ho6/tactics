@@ -338,3 +338,99 @@ WS 수비 액션 평균 위치(앞뒤, 좌우 · 0~100 · 좌우 0 = 빌라 오�
 - 에메리의 「박스 인원 부족」 진단은 교체 뒤에도 박스 터치가 늘지 않은 실측과 맞는다 — 박스 투입 설정 검토는 쟁점 #55 트리거 때.
 
 출처: [avfc.co.uk 에메리 경기 후](https://www.avfc.co.uk/news/2026/november/21/interview-postmatch-unai-emery-post-match-sunderland) · [Yahoo/BBC](https://sports.yahoo.com/articles/aston-villa-0-0-sunderland-173305913.html) · [VillaTV 유튜브](https://www.youtube.com/watch?v=g6GPidTTTXI) · [PL News Now](https://premierleaguenewsnow.com/2026/11/22/aston-villa-0-0-sunderland-emery-frustrated-roefs/) · [feverpitch.de](https://www.feverpitch.de/goretzka-baut-serie-mit-villa-aus/) · [SportsDunia 평점](https://www.sportsdunia.com/football-ratings/aston-villa-vs-sunderland-player-ratings-epl-21st-november-2026) · obs #1170·#1171
+
+## D+2 추적 (2026-11-23)
+
+**결론**: 새 자료 6건(영상 3 · 블로그 2 · 감독 발언 1)으로 관전 가설 **H1″·H3·H8을 다시 봤고, 당일 판정 하나를 정정**한다 — 73′ 뒤 맥긴은 「중앙 CAM」이 아니라 **부엔디아의 오른쪽 기운 CAM 자리를 이어받았다**(평균 좌우 51.0은 코너·막판 왼쪽 구간이 섞인 착시). 교체 의도를 말한 에메리 발언은 여전히 「새 다리」뿐이다. 낮은 블록은 빌라 형태 때문이 아니라 **선덜랜드가 처음부터 고른 것**이었다(르 브리·상대 팬 진술).
+
+### 교체에 따른 전술·역할 변화 — D+2 보강
+
+**① 오픈 플레이 좌우 분포**(세트피스 qualifier 제외 · WS 이벤트 · 좌우 0 = 빌라 오른쪽 · 오른쪽 <37 · 중앙 37~63 · 왼쪽 ≥63)
+
+| 선수 | ① 0–60′ | ②③ 60–73′ | ④ 73′–끝 | 읽기 |
+|---|---|---|---|---|
+| 부엔디아 → **맥긴**(CAM) | 부 R14 · C10 · L9 (평균 43.7) | 맥 R4 · C2 · L0 (33.1) | 맥 **R8 · C3 · L4** (46.6) | 같은 오른쪽 기운 CAM — 74–81′ 오른쪽 하프스페이스 · 82–86′ 왼쪽 |
+| 카마라 | R11 · C21 · L27 (55.6) | **L10/12** (69.5) | R9 · C8 · L2 (38.1) | 마트센이 안쪽에 들어간 구간에 더 왼쪽 → 73′ 오른쪽 |
+| 고레츠카 → 바클리 | 고 R18 · C16 · L2 (35.9) | 고 C5 · L3 (48.7) | 바 C11 · L7 (60.2) | 바클리는 중앙~왼쪽 |
+
+**② 상대 쪽에서 본 교체 효과** — 선덜랜드의 빌라 진영 볼 이벤트가 빌라 어느 쪽으로 나왔나
+
+| 구간 | 빌라 왼쪽 | 중앙 | 빌라 오른쪽 | 선덜랜드 슈팅(왼·중·오) |
+|---|---|---|---|---|
+| ① 0–60′ | 43 | 20 | 46 | 1 · 1 · 1 |
+| ②③ 60–73′ | **12** | 5 | 4 | 0 · 1 · 0 |
+| ④ 73′– | 7 | 8 | 8 | 0 · 1 · 2 |
+
+- 0–60′엔 마트센이 높이 올라가도 **왼쪽 노출이 없었다**(43:46) — 카마라가 미드필드 높이에서 왼쪽을 덮은 결과와 맞는다.
+- 60–73′(음바예가 폭 · 마트센 안쪽) 13분 동안 상대 이벤트가 **빌라 왼쪽에 12:4로 쏠렸다**. 마트센의 65′ 경고 반칙 위치는 (57.7, 47.2) **중앙** — 안쪽에 들어가 있다가 이시도르의 역습을 끊은 반칙이고(SportsDunia 평점 기사의 경고 사유 — 검색 요약 기준), 그 뒤 ③에서 바깥으로 돌아갔다. ⇒ ②→③ 변화의 **원인 후보 = 마트센 경고**(감독 진술 없음).
+- 선덜랜드의 짝 맞추기: 오른쪽 측면 흄의 수비 액션 평균 위치(빌라 기준 앞뒤, 좌우) 0–60′ **(56.2, 77.3)** · 오른쪽 풀백 뫼니에 (77.6, 65.7) — 마트센 쪽을 2명이 지켰다(상대 팬 팟캐스트·Justin Talks Villa 블로그와 일치).
+
+**③ 교체 의도 — 발언 대조**(원문 · 번역)
+
+| 누가 | 발언 | 등급 |
+|---|---|---|
+| 에메리(BBC · AOL 재게재 원문 열람) | 「The first half we were more or less in the way we planned.」(전반은 대체로 계획한 대로였다) — **0–60′ 형태는 계획된 배치** | 1차 |
+| 에메리(같은 곳) | 「Fresh legs, so we need fresh players.」(새 다리가 필요했다) — 60′ 교체 설명은 여전히 이것뿐 | 1차 |
+| SofaScore 프랑스어 기사(기자 서술) | 「McGinn et Mbaye sont entrés à la 60e pour dynamiser le pressing et apporter des courses en profondeur.」(맥긴·음바예는 압박에 힘을 싣고 배후 침투를 더하려 60′에 들어왔다) · 「Ross Barkley et Brian Madjo ont suivi à la 73e, l'un pour attaquer entre les lignes」(바클리·마조가 73′에 이어 들어왔다 — 한 명은 라인 사이 공격용) | **D(기자 해석 · 감독 인용 아님)** |
+
+⇒ 「교체 전 → 교체 후」 표(§4)의 맥긴 행 읽기를 바꾼다: **「73′ 뒤에만 중앙」 → 「60′부터 끝까지 오른쪽 기운 CAM(부엔디아 자리 승계) · 82–86′만 왼쪽」**. 구간 커널(클래식10/다재다능 0.770 = 와이드 Δ0.0001)은 같은 이벤트로 계산돼 그대로다. 경기 전용 플랜 B의 CAM 역할도 그대로이고, rationale 산문의 「중앙 CAM」 서술만 이 절이 정정한다(행은 덮지 않음).
+
+### 당일 판정 정정
+
+| 대상 | D0 서술 | D+2 정정 | 근거 |
+|---|---|---|---|
+| 요약·§4·경기 전용 설정 rationale | 「73′ 교체 뒤 맥긴이 처음으로 중앙 CAM (73.6, 51.0)」 | 맥긴은 오픈 플레이 오른쪽 12 · 중앙 5 · 왼쪽 4(60′–) — **오른쪽 기운 CAM**. 51.0은 코너(99.7, 99.3)와 82–86′ 왼쪽 구간이 섞인 평균 | obs #1172 · 가설 H8 D2 정정 |
+
+### 관전 가설 D2 재판정 (원래 행은 그대로 · 정정 행 추가)
+
+| # | 가설 | 이전 | D2 근거 | D2 판정 |
+|---|---|---|---|---|
+| H1″ | 카마라 왼쪽 = 마트센 뒤 커버 | 부분 일치 | 0–60′ 왼쪽 노출 없음(43:46) · 마트센 안쪽 60–73′에 카마라 더 왼쪽(L10/12)·상대 왼쪽 쏠림 12:4 · 에메리 「전반 계획대로」 | **부분 일치(정황 강화)** — 「이유」를 말한 감독 진술은 0 |
+| H3 | 3-2-2-3 · 상대 내려앉음 때문 | 부분 일치 | 르 브리 「the shape we used today was crucial」(오늘 쓴 형태가 결정적이었다) · 상대 팬 「4-4-2 두 줄 → 백5~6」 · 에메리 「계획대로」 | **부분 일치(원인 방향 정정)** — 내려앉음은 선덜랜드의 사전 선택, 빌라 형태도 계획. 「때문」 인과는 지지 안 됨 |
+| H8 | 60′ 뒤 맥긴 CAM · 양 측면 윙어 | 부분 일치 | 맥긴 오른쪽 기운(위 표) · 음바예 왼쪽 끝 · 알리송 오른쪽 끝 유지 | **부분 일치(당일 서술 정정)** — 「맥긴 중앙」 부분만 바뀜 |
+| H5′ · H5″ | 잭슨 AF 포커스 | 판정 불가 | 새 근거 없음 | 유지(D3 재확인) |
+
+### 새 자료
+
+**상대 감독 — 르 브리**
+
+- 구단 공식 영상(HBXQd07r1UM · 11-21 · 4분 54초 · auto-caption · 전사 `reports/transcripts/HBXQd07r1UM.en.md`): 「the way we defended our goal high up the pitch in the mid press on lower on the pitch」(높은 곳에서, 중간 압박에서, 낮은 곳에서 골문을 지킨 방식) · 「the ability to dribble in tight spaces. So if you don't work together, you can't manage those threats」(좁은 공간 드리블 능력이 있다 — 함께 움직이지 않으면 그 위협을 관리할 수 없다). 교체·형태 변경 언급 0.
+- Sky(11-21 17:17 · 원문 열람): 「In 1v1s, they are so skilled, they can combine in tight areas as well, so the shape we used today was crucial.」(1대1에 능하고 좁은 곳에서 연계도 하니 오늘 쓴 형태가 결정적이었다) · 패트릭 로(Sky 분석) 「They invited the pressure from Villa, denied the likes of Jackson and Manzambi the space they thrive in」(빌라의 압박을 끌어들이고 잭슨·만잠비가 좋아하는 공간을 막았다).
+- 뫼니에(같은 영상): 「it's a bit boring to play that kind of game」(이런 경기는 좀 지루하다) · 「Aston Villa as a better team」(빌라가 더 나은 팀이었다).
+
+**영상(새로 귀속 3편 · 전부 auto-caption · 항상 뮤트로 자막만 포착)**
+
+| 채널 | 제목 · 게시 | 종류 | 처리 |
+|---|---|---|---|
+| Haway The Podcast(선덜랜드 팬 · 상대 관점) | DID SUNDERLAND DELIVER AT VILLA PARK?! · 11-21 | 상대팀 | 전사 1,246큐 · 요약 · 주장 2행(HELD #2 · REJECTED 맥긴 왼쪽 채널) |
+| Justin Talks Villa | 17 SHOTS AND STILL NO GOAL · 11-21 | 경기반응 | 전사 343큐 · 요약 · 주장 2행(HELD #50 · #55) |
+| Sunderland AFC(구단 공식) | Regis Le Bris and Thomas Meunier · Post-Match Reaction · 11-21 | 감독회견 | 전사 130큐 · 요약 · 주장 없음(none) |
+
+- 확인만(귀속·전사 안 함): TM Talks Ball 「Sunderland Look Elite DEFENSIVELY AGAIN!」(11-21 · 아스널 팬 채널 — 선덜랜드전은 끝 2분 · 「0.26 xG」·뮈키엘레 칭찬뿐).
+- **AVL 필수 채널 3곳**: 11-23 아침 주간 스윕 이후 이 경기 새 영상 **0편**(UTV 신규 l7Vegoh6h28은 갈라타사라이 원정 프리뷰 · The Villans·1874 신규 없음).
+
+**블로그**
+
+- Justin Talks Villa Substack 「McGinn showed what Villa were missing」(11-23): 「Sunderland responded by using Trai Hume to help deal with him」(선덜랜드는 흄을 써서 마트센을 막았다) · 「Too much of our pressure ended with Sunderland still facing the ball and set to defend the next action.」(우리 압박의 너무 많은 부분이 선덜랜드가 여전히 공을 마주 보고 다음 동작을 막을 준비가 된 채 끝났다) · 「I would have liked Emery to consider keeping Jackson on and putting Madjo alongside him for that final push.」(막판에 잭슨을 남기고 마조를 옆에 붙였으면 했다).
+- My Old Man Said 평점(토머스 뉴턴 · 11-23): 「Is the low block and a narrow 4-4-2 Emery's kryptonite?」(낮은 블록과 좁은 4-4-2가 에메리의 약점인가?) · 「the changes on the hour didn't seem to change the pattern much」(60분 교체가 흐름을 별로 바꾸지 못한 것 같다 — 실측 60–73′ 슈팅 /10분 0~1.4로 일치) · 마트센 「Probably covered every position except left back.」(아마 왼쪽 풀백만 빼고 모든 자리를 다 뛰었다 — H10″ 방향 일치) · 음바예 「It was like him and Maatsen were on a different frequency…or planet at times.」(음바예와 마트센은 가끔 다른 주파수… 아니 다른 행성에 있는 것 같았다).
+
+**Jacob Tanswell**: 새 글·출연 0(유튜브 검색 「Jacob Tanswell Aston Villa」 이번 주 = 1874 -1V5uHE8BcA 1편뿐 · X 402 그대로).
+
+**다국어(불변규칙 10)**
+
+| 언어 | 대상 | 검색어 | 결과 |
+|---|---|---|---|
+| 프랑스어 | 르 브리 · 뫼니에(벨기에) · 카마라 | 「Le Bris Sunderland Aston Villa nul 0-0 bloc bas Meunier」 | SofaScore FR 기사 1건(위 표 · D급 기자 해석) — 르 브리 프랑스어 회견 없음 |
+| 네덜란드어 | 로프스(네덜란드 GK) · 마트센 | 「Roefs Aston Villa Sunderland 0-0 reddingen Maatsen」 | 네덜란드어 매체 0건(영어·스페인어·터키어 요약만) |
+| 스페인어 | 에메리 | (soccerway ES 「No jugamos a nuestro estilo」 확인) | **오귀속 함정** — 「A veces fuimos perezosos」(가끔 우리는 게을렀다)는 2025-09 원정 1-1 발언 · 쓰지 않음 |
+| 독일어 | 고레츠카 | D+1 결과와 같음 — 새 기사 없음(재검색 생략) | — |
+
+**미수행 + 사유**: Sunderland Echo·Shields Gazette 본문(403 — 검색 요약만) · Roker Report 본문 리뷰(검색 0건 — 팟캐스트가 「in-depth review in the morning」(다음 날 아침 심층 리뷰)를 예고했지만 이번 주 업로드에서 찾지 못함 → D+3 재확인) · The Athletic 본문.
+
+### 구현 함의 — 사용자 판단 대기(변경 없음)
+
+- 플랜 B의 CAM은 「중앙」이 아니라 **오른쪽 기운**이었다 — 게임 재현에서 CAM 역할(클래식10/다재다능 · 커널 동률 와이드)은 그대로 두고, 오른쪽 윙어(알리송)와 겹치는 구역이라는 점만 메모한다(단일 경기 · 정본 변경 근거 아님).
+- 「LB 인버티드 성분 + LM 폭 윙어」 조합의 **대가**가 처음 보였다: 마트센이 안쪽에 있을 때 상대 이벤트가 빌라 왼쪽으로 12:4 쏠렸다(13분 표본). D+1의 후보 메모에 이 위험을 덧붙인다.
+- 「저블록 4-4-2 상대 프리셋」 주장 1행 → 쟁점 #2(상대 유형별 경기 프리셋)에 HELD로 묶었다.
+
+출처: [Sky Sports 경기 리포트](https://www.skysports.com/football/aston-villa-vs-sunderland/4906657091825263232) · [AOL/BBC What Emery said](https://www.aol.co.uk/articles/aston-villa-0-0-sunderland-173715000.html) · [Sunderland AFC 영상](https://www.youtube.com/watch?v=HBXQd07r1UM) · [Haway The Podcast](https://www.youtube.com/watch?v=r62jyKecy3U) · [Justin Talks Villa 영상](https://www.youtube.com/watch?v=z6SLU5tHfPA) · [Justin Talks Villa 블로그](https://justintalksvilla.substack.com/p/mcginn-showed-what-villa-were-missing) · [My Old Man Said](https://myoldmansaid.com/aston-villa-0-0-sunderland-player-ratings/) · [SofaScore FR](https://www.sofascore.com/fr/news/aston-villa-0-0-sunderland-roefs-brille-lors-dun-match-nul) · [TribalFootball 르 브리](https://tribalfootball.com/article/le-bris-sunderland-building-momentum-after-villa-draw-2c979ee0-5024-47f3-8bf9-9993280b0a58) · obs #1172·#1173
