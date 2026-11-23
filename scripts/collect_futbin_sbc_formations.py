@@ -94,8 +94,7 @@ FW_SNIPPET = r"""(async () => {
       const d = new DOMParser().parseFromString(await r.text(), 'text/html');
       out[sid] = [...d.querySelectorAll('article')].filter(a => a.textContent.includes('FORMATION')).map(a => {
         box.replaceChildren(document.importNode(a, true));
-        const L = box.innerText.split('
-').map(s => s.trim()).filter(Boolean);
+        const L = box.innerText.split('\n').map(s => s.trim()).filter(Boolean);
         const j = L.indexOf('REQUIREMENTS');
         const k = L.findIndex((x, n) => n > j && /^(Lowest-cost solution|Open in squad builder)$/.test(x));
         return {name: L[0], form: L[L.indexOf('FORMATION') + 1], n: L[L.indexOf('TOTAL PLAYERS') + 1],
