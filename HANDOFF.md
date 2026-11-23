@@ -2,7 +2,7 @@
 
 <!-- 구조 규칙(2026-10-14 v2): 헤더 15줄 안에 착수 조건 · 현재 상태 표 10행 이내 · 다음 할 일은 열린 항목만(항목당 2줄) · 세션 기록 최대 5개 · 목표 10~15KB · 상한 20KB(`wc -c`). 넘치면 지우지 말고 docs/handoff-context.md · docs/decisions.md로 포인터 압축. 절차 정본: .claude/skills/handoff/SKILL.md -->
 
-- **담당자** 김호근 · **갱신** 2026-11-17 · **세션** 스케줄 match-watch-weekly(11-17) · **작업 PC** `AD03230205ui-iMac.local` · **브랜치** main · **WIP** 없음
+- **담당자** 김호근 · **갱신** 2026-11-23 · **세션** 스케줄 match-watch-weekly(11-23) · **작업 PC** `AD03230205ui-iMac.local` · **브랜치** main · **WIP** 없음
 - **마지막 커밋** = `git log -1`(이 문서를 갱신한 커밋) · 직전 `eff029c` · **문서 버전** v2 · **분량** 아래 「분량」 줄
 - 실축 감독 전술(**AVL/에메리(주) · CHE/알론소 · LIV/이라올라 · ATM/시메오네**)을 실측으로 분해해 FC26·FC27 전술로 재현. 규약 정본 `CLAUDE.md`(불변규칙 1~14) · `docs/00-overview.md`.
 
@@ -10,7 +10,7 @@
 > 1. **명시 스테이징만**(`git add -A` 금지) · DB 변경은 `python3 scripts/ship.py -m "…"` 한 줄 · **하위 세션은 커밋 안 함 — 부모가 `ship.py --collect <id>` 등록 후 모아서 ship · 끝나면 `--collect-end`** · migration 번호는 부모가 배정(최신 **131**)
 > 2. git엔 `.db`가 없다 — pull 뒤 `scripts/db_restore.sh` · 반복 사고 규칙 정본 [docs/70-lessons.md](docs/70-lessons.md) · **정기 수집은 AVL만** — CHE는 11-04 **1회성** 수집·정본 반영만(정기 수집 안 함) · LIV·ATM 보류(메모리 `che-atm-liv-collection-hold`)
 > 3. 예약은 **PC마다 따로**(`list_scheduled_tasks`로 실재 확인 · 같은 작업 트리 → 스케줄 세션 중엔 커밋 보류) · ⭐ **새 불변규칙 14: 답변·리포트·화면은 결론 먼저 · 표/목록 · 인용 번역/원문 분리**(11-04)
-> 4. yt-dlp는 봇 차단 → 브라우저 fetch/XHR 훅으로 `/api/timedtext` 응답 본문 포착 → COPY 버튼 실제 클릭 → `yt_transcript_json3.py VIDEO en /tmp/x.json3`(항상 뮤트)
+> 4. yt-dlp는 봇 차단 → 브라우저 fetch/XHR 훅으로 `/api/timedtext` 응답 본문 포착 → COPY 버튼 실제 클릭 → `yt_transcript_json3.py VIDEO en /tmp/x.json3`(항상 뮤트) · ⭐ 패널이 숨겨진 스케줄 회차는 클립보드가 안 된다 → JS가 응답 본문을 **큰 반환값**으로 돌려주면 tool-results 파일로 떨어지니 그 파일에서 꺼낸다(11-23 5편 실증)
 
 ---
 
@@ -19,7 +19,7 @@
 | 영역 | 상태 | 정본 |
 |---|---|---|
 | 게이트 | 전항 통과(11-05) · 11-04 추가: **G24 ⑸**(정본 표시 포메이션 `slots.is_canon` = 현행 optimal 포메이션) · **G23 `game_system_changes.title` 결손 0** · G12 메뉴 3칸 형식 · G37·G8+ 범위 **AVL·CHE** | `gates.py` |
-| 경기 수집 | **11-17 주간: 새 경기 없음(A매치 휴식 · 다음 11-21 홈 선덜랜드 · 11-24 UCL 갈라타사라이 원정)** · 직전 AVL 맨유 원정 4-4(11-08 · matches #134 · D+3 종결) · 채널 스윕 11-17 분석 영상 10편(UTV 5 · The Villans 2 · 1874 3 · 주장 44행 · 새 쟁점 0) · 판정할 차례 AVL 0(ATM·LIV 11건은 보류) | `reports/match-watch/2026-11-08-avl-manchester-united.md` |
+| 경기 수집 | **11-23 주간: 새 경기 없음**(직전 11-21 홈 선덜랜드 0-0 = matches #135 · 리포트 #71 draft · D+1 완료 · D+2·D+3 예약 · 다음 **11-24 UCL 갈라타사라이 원정** → 11-28 입스위치 원정) · 채널 스윕 11-23 분석 5편(UTV 2 · The Villans 2 · 1874 1 · 주장 9행 · 새 쟁점 0 · 모두 리포트 #71에 귀속 · 건너뜀 3편 = 프리뷰 2·예측 1) · **쟁점 #3 스즈키 GK 재판정**: 11-01 이후 3선발 모두 스위퍼 행동(경기당 1.67) → 정본 ballplaying 유지 + sweeper 전환은 사용자 판단 대기 · 다음 3선발 재감시 | `reports/match-watch/2026-11-21-avl-sunderland.md` |
 | 전술 정본 | AVL: optimal #46(4-2-3-1 Wide · Balanced/Balanced/52) · **3선 = RDM 홀딩/수비 · LDM 딥라잉/로밍 유지 + 계속 검토**(근거 `measured:pair:gomes/kamara` #1023·#1024 · 히트맵+경기 스탯) · 선발은 자동 산출(현재 LDM 고레츠카·RDM 고메스 — 사용자 「자동에 맡긴다」) · CHE: **optimal 신설 4-2-3-1 Wide · Balanced/Balanced/52**(LDM 딥라잉/빌드업 · 감시 쟁점 #91 = 다음 PL 3경기 3-4-2-1 복귀 시 재판단 · 수동 수집 때만) | `team_tactic_setups` · `slot_canon_roles` · [CHE 검토](reports/research/2026-11-04-che-season-review.md) |
 | 사이트 UI | **11-04 전면 개편**(불변규칙 14): 메뉴 흐름 순서 · 「리포트」→「팀 전술」 · 허브=팀 대시보드 · 경기 분석 결론 카드 · 긴 패널 접기 · 팀 전술 39k→6.9k px · 게임 시스템 숫자 타일·영역 카드·**한 줄 제목**(migration 130)·인용 번역/원문 분리 · 이적 숫자 타일 · 스쿼드 표 접기 · 공용 부품 `data.js`(`matchScore`·`foldLong`·`mountPanelToc`)·`style.css` `ux-*` | `site/*.html` · `assets/data.js` |
 | 게임 시스템 | `game_system_changes` 91행(전 행 `title`) · 11-04 코너·세트피스 #79~84 · 진화 포지션 조건은 보조 포지션 인정·제거 직후 재접속 #91(C) · **예약 `fc27-patch-watch` 매일 10:30 재생성(iMac) · 월요일 3선 역할 커뮤니티 체감** · TU v1.2.0(11월 중순) 대기 | `game.html` 시스템 분석 · `reports/patch-watch/` |
@@ -32,13 +32,14 @@
 <!-- evo-ledger:start -->
 **진화 원장 (자동 · 최근 14일 + 진행 중 · 정본 DB `fut_evolution_log` · `ship.py`가 갱신)**
 
+- 2026-11-22 · Cissé ← CB Roles++ 1단계 · OVR 86→86 · 완료 2026-11-22
 - 2026-11-22 · Cissé ← Storm Wall 4단계 · OVR 80→86 · 완료 2026-11-22
 - 2026-11-22 · Madjo ← ST Roles++ 1단계 · OVR 84→84 · 완료 2026-11-22
-- 2026-11-22 · Alysson ← Circuit Breaker 4단계 · OVR 83→86 · 완료 2026-11-22
 - 2026-11-22 · 바클리 ← CDM Roles++ 1단계 · OVR 85→85 · 완료 2026-11-22
 - 2026-11-22 · 바클리 ← Full Overload 5단계 · OVR 83→85 · 완료 2026-11-22
 - 2026-11-22 · 바클리 ← High Voltage 3단계 · OVR 82→83 · 완료 2026-11-22
-- 2026-11-22 · 바클리 ← Static Charge 4단계 · OVR 77→82 · 완료 2026-11-22
+- 2026-11-21 · Alysson ← Circuit Breaker 4단계 · OVR 83→86 · 완료 2026-11-21
+- 2026-11-21 · 바클리 ← Static Charge 4단계 · OVR 77→82 · 완료 2026-11-21
 - 2026-11-20 · John McGinn ← Glue or Genius [SP 28] 1단계 · OVR 84→84 · 완료 2026-11-20
 - 2026-11-20 · Madjo ← Top Tier Striker 5단계 · OVR 81→84 · 완료 2026-11-20
 - 2026-11-18 · Suzuki ← Feline Flex 2단계 · OVR 80→83 · 완료 2026-11-18
@@ -51,7 +52,6 @@
 - 2026-11-11 · Jack Moylan ← Under the Lights 4단계 · OVR 80→83 · 완료 2026-11-11
 - 2026-11-10 · Issa Kaboré ← Clean Sheet Nights 3단계 · OVR 72→75 · 완료 2026-11-10
 - 2026-11-10 · Rafiki Saïd ← Underdog Run 5단계 · OVR 72→80 · 완료 2026-11-10
-- 2026-11-08 · Cissé ← CB Roles++ 1단계 · OVR 84→86 · 제거 2026-11-22
 <!-- evo-ledger:end -->
 
 **분량**: 이 문서 약 12.8KB(목표 10~15 · 상한 20) — 11-05 압축(19.98KB에서)(완료 항목 제거 · 세션 기록 병합).

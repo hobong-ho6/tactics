@@ -2,6 +2,245 @@
  "all": [
   {
    "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 545,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "jackson_left_after_madjo",
+     "field_kr": "마조 투입 뒤 잭슨 위치",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 5,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+     },
+     "player": "잭슨",
+     "player_id": 76,
+     "points_kr": null,
+     "quote": "「You can see Jackson moving out to the left there. Madjo up top.」(잭슨이 왼쪽으로 빠지고 마조가 최전방에 선다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "When Madjo came on, Jackson moved out to the left before being substituted; no crosses followed",
+     "value_kr": "마조 투입 뒤 잭슨이 왼쪽으로 이동 — 이후 교체 · 크로스 0",
+     "verdict": "HELD",
+     "verdict_note": "감시 쟁점 #5(유지·감시)에 묶음 — 그 쟁점의 재판정 트리거에서 함께 본다 · 채널 스윕 2026-11-23"
+    }
+   ],
+   "key_points": [
+    "카마라 = 왼쪽 중앙 미드필더(LDM) — 이유는 모르겠다는 반응",
+    "알리송·만잠비 측면 존재감 없음 · 부엔디아가 셋 중 가장 활발",
+    "마조 투입 뒤 잭슨이 왼쪽으로 이동 → 이후 교체 · 크로스 0회라는 지적",
+    "하우드-벨리스·토레스·마트센 호평 · 완비사카 위치 판단 불안",
+    "린델뢰프 몸살로 제외(현장 전언)",
+    "홈 4경기 승점 3 — 홈 경기력 우려"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-22",
+   "published_approx": 0,
+   "report_id": 71,
+   "summary": "1874 진행자 댄 바델이 아버지·친구와 선덜랜드전(0-0)을 직관한 브이로그. 대부분은 경기장 가는 길의 잡담이고 경기 내용은 하프타임·종료 직후 몇 분이다. 관찰: 카마라가 「왼쪽 중앙 미드필더」처럼 뛰었다, 알리송(오른쪽)·만잠비(왼쪽)는 존재감이 없었다, 마조 투입 뒤 잭슨이 왼쪽으로 빠졌다가 교체됐다, 마조가 들어왔는데 크로스가 한 번도 없었다. 하우드-벨리스·토레스·마트센은 좋았고, 완비사카는 위치 판단이 불안했다고 본다. 린델뢰프는 몸이 안 좋아 제외됐다고 전한다. 홈 4경기(포레스트·브렌트퍼드·풀럼·선덜랜드) 승점 3을 우려한다.",
+   "team_code": "AVL",
+   "title": "Was That the WORST Game in Premier League History?! | Aston Villa 0-0 Sunderland",
+   "transcript_path": "reports/transcripts/4JiYCYg6MWo.en.md",
+   "url": "https://www.youtube.com/watch?v=4JiYCYg6MWo",
+   "video_id": "4JiYCYg6MWo"
+  },
+  {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 546,
+   "impl_claims": [
+    {
+     "axis": "none",
+     "field": null,
+     "field_kr": null,
+     "focus": null,
+     "headline_kr": null,
+     "issue": null,
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": null,
+     "role_id": null,
+     "team_code": null,
+     "value": null,
+     "value_kr": null,
+     "verdict": "NA",
+     "verdict_note": null
+    }
+   ],
+   "key_points": [
+    "성장통 진단: 선발 6명 교체 뒤 팀 응집이 아직 부족",
+    "에메리는 맨유·풀럼전 뒤 통제·구조 쪽으로 균형을 찾는 중이라는 해석",
+    "선덜랜드전 2선 움직임·자리 바꾸기 부족(부엔디아) — 관찰만, 수치 없음",
+    "고메스가 녹아들면 중원이 해결된다는 기대"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-22",
+   "published_approx": 0,
+   "report_id": 71,
+   "summary": "The Villans 패널 3명의 선덜랜드전(0-0) 뒤 심경 토크. 결론은 「걱정할 단계는 아니다 — 선발 6명이 바뀐 뒤의 성장통」이다. 근거로는 새 선수들(고메스·마조·완비사카·하우드-벨리스·고레츠카·알리송·스즈키·만잠비 등)이 아직 에메리 체계에 녹지 않았다는 것, 에메리가 풀럼·맨유전처럼 흔들린 경기 뒤 통제 쪽으로 균형을 찾는 중이라는 것을 든다. 전술 관찰은 적다: 부엔디아 등 2선의 움직임·자리 바꾸기가 거의 없었다는 지적뿐이다. 수치·실측 근거는 없다.",
+   "team_code": "AVL",
+   "title": "Why You Shouldn't Be Worried, Unai Emery Always Wins!",
+   "transcript_path": "reports/transcripts/NgLgccEx8Ik.en.md",
+   "url": "https://www.youtube.com/watch?v=NgLgccEx8Ik",
+   "video_id": "NgLgccEx8Ik"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 544,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "pivot_role_split",
+     "field_kr": "피벗 분업",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 87,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "고레츠카–카마라 피벗 짝 연결·간격",
+      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「Goretzka isn't the progressor. Kamara is.」(고레츠카는 전진 담당이 아니다. 카마라가 그렇다.)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Vs Sunderland Goretzka was the holding CDM and Kamara the progressor (roles swapped)",
+     "value_kr": "선덜랜드전 고레츠카 홀딩 · 카마라 전진 배급(역할 교대)",
+     "verdict": "HELD",
+     "verdict_note": "감시 쟁점 #87(유지·감시)에 묶음 — 그 쟁점의 재판정 트리거에서 함께 본다 · 채널 스윕 2026-11-23"
+    },
+    {
+     "axis": "instruction",
+     "field": "st_isolation",
+     "field_kr": "9번 고립",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 5,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+     },
+     "player": "잭슨",
+     "player_id": 76,
+     "points_kr": null,
+     "quote": "「Jackson has no network with anybody」(잭슨은 누구와도 패스 연결이 없다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Jackson had no passing network with anyone and under 15 passes; should drop into the space in front of the back four to drag a centre-back",
+     "value_kr": "잭슨 패스 연결 0 — 내려와 센터백을 끌어내야 한다",
+     "verdict": "HELD",
+     "verdict_note": "감시 쟁점 #5(유지·감시)에 묶음 — 그 쟁점의 재판정 트리거에서 함께 본다 · 채널 스윕 2026-11-23"
+    },
+    {
+     "axis": "instruction",
+     "field": "manzambi_left_vs_central",
+     "field_kr": "만잠비 배치",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 49,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "만잠비 비CAM 배치(피벗·측면) 역할",
+      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+     },
+     "player": "만잠비",
+     "player_id": 55,
+     "points_kr": null,
+     "quote": "「Manzambi for me is too far away from the striker」(내가 보기에 만잠비는 스트라이커와 너무 멀다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Manzambi on the left is too far from the striker; prefers him central vs a low block",
+     "value_kr": "왼쪽은 9번과 너무 멀다 — 저블록 상대로는 중앙",
+     "verdict": "HELD",
+     "verdict_note": "감시 쟁점 #49(유지·감시)에 묶음 — 그 쟁점의 재판정 트리거에서 함께 본다 · 채널 스윕 2026-11-23"
+    },
+    {
+     "axis": "instruction",
+     "field": "build_up_back_three",
+     "field_kr": "빌드업 형태",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 13,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「we are building in a back three with Torres, Harwood-Bellis and Wan-Bissaka」(토레스·하우드-벨리스·완비사카로 백3 빌드업을 한다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Built up in a back three of Torres, Harwood-Bellis and Wan-Bissaka with Maatsen and Alysson as the width",
+     "value_kr": "토레스·하우드-벨리스·완비사카 백3 · 폭은 마트센·알리송",
+     "verdict": "HELD",
+     "verdict_note": "감시 쟁점 #13(유지·감시)에 묶음 — 그 쟁점의 재판정 트리거에서 함께 본다 · 채널 스윕 2026-11-23"
+    }
+   ],
+   "key_points": [
+    "피벗 역할 교대: 「Goretzka isn't the progressor. Kamara is.」(고레츠카는 전진 담당이 아니다. 카마라가 그렇다.) — 고레츠카가 홀딩 CDM",
+    "빌드업 백3 = 토레스·하우드-벨리스·완비사카(오른쪽 풀백이 안으로) · 폭 = 마트센·알리송",
+    "잭슨 고립: 「Jackson has no network with anybody」(잭슨은 누구와도 패스 연결이 없다) — 패스 15회 미만",
+    "공격 방향 왼쪽 44% · 중앙 36% · 오른쪽 20% — 알리송 쪽이 가장 적다(터치 56·드리블 2회 중 1회 성공)",
+    "마트센 뒤·오른쪽 방향 패스 21회 — 폭은 서지만 전진 패스·크로스가 부족하다는 평가",
+    "만잠비는 왼쪽이 아니라 중앙(잭슨 옆)에서 저블록을 흔들어야 한다는 주장",
+    "높은 수비 라인·높은 볼 회수 위치는 긍정 — 비보유 시 만잠비가 내려와 백5",
+    "선덜랜드는 비보유 4-4-2로 페널티 박스 폭 안에 좁게 섰다 — 측면 공간을 빨리 써야 했다는 진단"
+   ],
+   "kind": "전술분석",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-22",
+   "published_approx": 0,
+   "report_id": 71,
+   "summary": "UTV 진행자의 선덜랜드전(0-0) 데이터 분석. 결론: 통제·구조는 「에메리가 원하는 형태」였고 문제는 전방 4명(잭슨·부엔디아·만잠비·알리송)의 연결 부재다. 평균 위치상 빌드업은 토레스·하우드-벨리스·완비사카 백3, 폭은 마트센·알리송, 피벗은 카마라(전진·배급)·고레츠카(홀딩)로 역할이 바뀌어 있었다고 본다. 패스 네트워크에서 잭슨은 누구와도 연결이 없고(패스 15회 미만) 부엔디아–잭슨·알리송–부엔디아 연결도 없었다. 공격 방향은 왼쪽 44%·중앙 36%·오른쪽 20%. 만잠비는 왼쪽에서 9번과 너무 멀어 저블록 상대로는 중앙 배치를 원한다. 고레츠카는 시즌 최고 경기로 평가하고, 패스 708 대 263·박스 터치 37 대 14를 근거로 「골만 빠진 완성형 경기」라고 정리한다.",
+   "team_code": "AVL",
+   "title": "WHY DOES IT ALWAYS HAVE TO BE SOMEONE'S FAULT?",
+   "transcript_path": "reports/transcripts/1UO7pPhsjbo.en.md",
+   "url": "https://www.youtube.com/watch?v=1UO7pPhsjbo",
+   "video_id": "1UO7pPhsjbo"
+  },
+  {
+   "channel": "1874 : The Aston Villa Channel",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 540,
    "impl_claims": [
@@ -200,7 +439,7 @@
   },
   {
    "channel": "Aston Villa Football Club",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-22] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 543,
    "impl_claims": [
     {
@@ -348,14 +587,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -366,7 +605,7 @@
      "value": "Suzuki no longer plays long diagonal kicks; short balls into the middle let the opponent set",
      "value_kr": "긴 대각선 킥 감소 — 짧은 중앙 배급 사이 상대 블록 정렬",
      "verdict": "HELD",
-     "verdict_note": "이번 경기 롱킥 수는 입력에 없음. 선덜랜드 PPDA 13.69로 압박이 없어 짧은 배급이 자연스러운 경기 — 팬 관찰 1회. 스즈키 배급 쟁점 #3(재판정할 차례)에서 GK 이벤트로 판정."
+     "verdict_note": "이번 경기 롱킥 수는 입력에 없음. 선덜랜드 PPDA 13.69로 압박이 없어 짧은 배급이 자연스러운 경기 — 팬 관찰 1회. 스즈키 배급 쟁점 #3(재판정할 차례)에서 GK 이벤트로 판정. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "limit",
@@ -476,6 +715,144 @@
    "transcript_path": "reports/transcripts/LnpRaAD4Sco.en.md",
    "url": "https://www.youtube.com/watch?v=LnpRaAD4Sco",
    "video_id": "LnpRaAD4Sco"
+  },
+  {
+   "channel": "UTV | Aston Villa Fan Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 547,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "three_cb_build_up",
+     "field_kr": "빌드업 백3 구성",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 13,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「I think in this game we could go with three center halves」(이 경기에서는 센터백 3명으로 갈 수 있다고 본다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "With Cash out, build up with three centre-backs rather than an advancing full-back to handle a lone target striker",
+     "value_kr": "캐시 결장 시 풀백 대신 센터백 3명으로 백3",
+     "verdict": "HELD",
+     "verdict_note": "감시 쟁점 #13(유지·감시)에 묶음 — 그 쟁점의 재판정 트리거에서 함께 본다 · 채널 스윕 2026-11-23"
+    }
+   ],
+   "key_points": [
+    "선덜랜드 첼시전: 패스가 브로비 한 곳에 모임 · 장거리 전진 43% · 수비 라인 37m",
+    "제안: 캐시 결장이면 오른쪽 풀백 전진 없이 센터백 3명으로 백3 빌드업",
+    "앞에서부터 압박해 롱볼 공급을 끊는 것이 마지막 수비 실수보다 중요하다는 주장",
+    "맥긴은 지금 왼쪽이 더 낫다는 의견(측면 수비 문제)",
+    "후반 실점 문제: 전반만 치면 승점 17·3위라는 수치 인용(The Villans 회차와 같은 출처)",
+    "⚠️ auto-caption 오인식(선수 이름) 다수 — 예상 선발은 참고만"
+   ],
+   "kind": "상대팀",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-19",
+   "published_approx": 0,
+   "report_id": 71,
+   "summary": "UTV의 선덜랜드전 상대 분석·예상 선발(경기 전 11-19 게시). 선덜랜드는 4-2-3-1이고 첼시전에서 모든 전진 패스가 9번 브로비에게 모였다(장거리 전진 43%). 진행자는 브로비 대응으로 빌드업 시 센터백 3명 백3(캐시 결장이라 풀백 전진 불필요)을 제안하고, 앞에서부터의 압박으로 롱볼 공급을 끊자고 한다. 예상 선발은 스즈키 · 마트센·린델뢰프·하우드-벨리스·밍스 · 카마라·고레츠카 · 알리송·맥긴(왼쪽)·만잠비(10번) · 잭슨. 자막에 선수 이름 오인식(해리 매과이어·기마랑이스로 잘못 받아 적힌 곳)이 있어 이름 인용은 쓰지 않는다. 실제 선발은 완비사카·토레스·만잠비 왼쪽으로 예상과 달랐다.",
+   "team_code": "AVL",
+   "title": "WHO STOPS WILSON ISIDOR, MINGS or PAU?",
+   "transcript_path": "reports/transcripts/UH0zoitRN2Q.en.md",
+   "url": "https://www.youtube.com/watch?v=UH0zoitRN2Q",
+   "video_id": "UH0zoitRN2Q"
+  },
+  {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 548,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "rb_tuck_back_three",
+     "field_kr": "오른쪽 풀백 좁히기",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 13,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "풀백 비대칭: 한쪽 전진·반대쪽 백3",
+      "trigger": "2026-10-21 이후 캐시 RB 선발 5경기 (3/5)"
+     },
+     "player": "완비사카",
+     "player_id": 90,
+     "points_kr": null,
+     "quote": "「that's a really functional back three when he tucks in」(그가 안으로 좁히면 정말 기능적인 백3가 된다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "If Wan-Bissaka starts, him tucking in makes a functional back three",
+     "value_kr": "완비사카가 안으로 좁혀 백3를 만든다",
+     "verdict": "HELD",
+     "verdict_note": "감시 쟁점 #13(유지·감시)에 묶음 — 그 쟁점의 재판정 트리거에서 함께 본다 · 채널 스윕 2026-11-23"
+    },
+    {
+     "axis": "team_axis",
+     "field": "second_half_drop_off",
+     "field_kr": "후반 하락",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 59,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "수비 블록 높이·후반 붕괴",
+      "trigger": "2026-10-21 이후 리그 5경기 (4/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「if the games ended at halftime, Aston Villa would be sitting third place in the Premier League with 17 points」(경기가 하프타임에 끝났다면 빌라는 승점 17로 프리미어리그 3위였을 것이다)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Villa would be 3rd on 17 points if games ended at half-time; second-half drop linked to weak defence–midfield link and changing pivot pairs",
+     "value_kr": "전반 기준 3위·승점 17 — 후반에 승점 4를 잃음",
+     "verdict": "HELD",
+     "verdict_note": "감시 쟁점 #59(유지·감시)에 묶음 — 그 쟁점의 재판정 트리거에서 함께 본다 · 채널 스윕 2026-11-23"
+    }
+   ],
+   "key_points": [
+    "전반 기준 승점 17·3위, 실제는 그보다 −4 — 후반 하락",
+    "원인 진단(패널 의견): 수비–중원 연결 약함 · 교체 시점 · 피벗 짝이 매주 바뀜",
+    "「we've got to start having a set two in that midfield」(중원 두 명을 고정해야 한다)",
+    "완비사카 선발 시 안으로 좁혀 백3 — 기능적이라는 평가",
+    "재계약: 계약 연장은 이적료 상각을 줄인다(오나나 예시) — 경기력과 별개 논리",
+    "리그 > 갈라타사라이 우선순위 합의"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-18",
+   "published_approx": 0,
+   "report_id": 71,
+   "summary": "The Villans의 선덜랜드전 프리뷰 겸 토크(11-18 게시). 세 갈래다. ① 전반만 치면 승점 17·3위인데 후반에 4점을 잃는다 — 패널은 수비와 중원 사이 연결이 약하고, 교체 시점과 피벗 짝이 매주 바뀌는 것을 원인으로 든다. ② 선덜랜드 대비: 완비사카가 출전 가능하면 안으로 좁혀 백3를 만드는 게 가장 기능적이고, 밍스를 쓰면 빌드업 패스가 부족해 바클리를 8번으로 붙여야 한다는 의견. ③ 재계약(린델뢰프·헤밍스·오나나·마트센·부엔디아 대기) — 감가상각 분산 논리와 오나나의 출전 신뢰도 논쟁. 갈라타사라이보다 리그가 우선이라는 데 합의한다.",
+   "team_code": "AVL",
+   "title": "The Importance Of New Contracts, Forget About Galatasaray & Second Half Drop Offs",
+   "transcript_path": "reports/transcripts/ZmgKVAPCjMk.en.md",
+   "url": "https://www.youtube.com/watch?v=ZmgKVAPCjMk",
+   "video_id": "ZmgKVAPCjMk"
   },
   {
    "channel": "UTV | Aston Villa Fan Channel",
@@ -858,14 +1235,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -876,7 +1253,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "시청자 질문(배급이 짧고 안전해졌다)에 대한 진행자의 추측 — 상대별 지시라는 해석으로 역할 변경 근거가 아니다. 쟁점 #3 감시 유지"
+     "verdict_note": "시청자 질문(배급이 짧고 안전해졌다)에 대한 진행자의 추측 — 상대별 지시라는 해석으로 역할 변경 근거가 아니다. 쟁점 #3 감시 유지 [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -1267,14 +1644,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -1285,7 +1662,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "정본 GK gk_ballplaying/Build-Up과 같은 방향(빌드업 다양화). 스위핑 언급은 없다 — 쟁점 #3 ballplaying vs sweeper 판정에는 중립. focus는 서술에서 요약자가 정본 값을 붙인 것."
+     "verdict_note": "정본 GK gk_ballplaying/Build-Up과 같은 방향(빌드업 다양화). 스위핑 언급은 없다 — 쟁점 #3 ballplaying vs sweeper 판정에는 중립. focus는 서술에서 요약자가 정본 값을 붙인 것. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "role",
@@ -3211,14 +3588,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -3229,7 +3606,7 @@
      "value": "Suzuki lost confidence on crosses after last week's error; should be stronger coming for the ball",
      "value_kr": "스즈키 지난주 실수 뒤 크로스 처리 흔들림",
      "verdict": "HELD",
-     "verdict_note": "Opta는 90+6 실점을 스즈키 실수로 기록, 에메리는 「adaptation」(적응 과정)과 상대의 방해를 언급. 크로스 처리는 GK 역할 축의 부수 근거 — 쟁점 #3에만 쌓는다."
+     "verdict_note": "Opta는 90+6 실점을 스즈키 실수로 기록, 에메리는 「adaptation」(적응 과정)과 상대의 방해를 언급. 크로스 처리는 GK 역할 축의 부수 근거 — 쟁점 #3에만 쌓는다. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "instruction",
@@ -3554,14 +3931,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -3572,7 +3949,7 @@
      "value": "Suzuki should have come and claimed the late corner",
      "value_kr": "스즈키가 나와서 마지막 코너를 잡았어야",
      "verdict": "HELD",
-     "verdict_note": "Opta는 90+6 실점을 스즈키 실수로 기록, 람먼스의 스즈키 블로킹 논란이 있고 에메리는 「adaptation for Suzuki」(스즈키의 적응 과정)로 설명. 크로스 처리는 GK 역할(ballplaying vs sweeper) 축의 부수 근거 — 쟁점 #3에만 쌓고 정본 변경은 없다."
+     "verdict_note": "Opta는 90+6 실점을 스즈키 실수로 기록, 람먼스의 스즈키 블로킹 논란이 있고 에메리는 「adaptation for Suzuki」(스즈키의 적응 과정)로 설명. 크로스 처리는 GK 역할(ballplaying vs sweeper) 축의 부수 근거 — 쟁점 #3에만 쌓고 정본 변경은 없다. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "instruction",
@@ -4018,14 +4395,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -4036,7 +4413,7 @@
      "value": "Suzuki goes slightly longer into the pockets for the 10s and wide players, not straight to Jackson",
      "value_kr": "잭슨 직행보다 2선 포켓으로 중거리 패스",
      "verdict": "HELD",
-     "verdict_note": "경기 전 주장. 스즈키 배급 길이·목표 구역 실측은 이 영상 요약 단계에서 대조하지 않았다 — 쟁점 #3(스즈키 GK 역할·배급) 근거로만 쌓는다."
+     "verdict_note": "경기 전 주장. 스즈키 배급 길이·목표 구역 실측은 이 영상 요약 단계에서 대조하지 않았다 — 쟁점 #3(스즈키 GK 역할·배급) 근거로만 쌓는다. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "instruction",
@@ -5737,14 +6114,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -5755,7 +6132,7 @@
      "value": "Suzuki long passes straight to Jackson as the outlet",
      "value_kr": "스즈키가 잭슨에게 바로 길게 — 출구",
      "verdict": "HELD",
-     "verdict_note": "실측 불일치: 7′ 실점은 스즈키→고메스 짧은 배급에서 나왔다(경기 뒤 1874 「지시된 방식」 · 쟁점 #52). 예상과 실제 배급 방식이 갈린 사례 — 쟁점 #3(스즈키 배급) 근거로만 쌓는다."
+     "verdict_note": "실측 불일치: 7′ 실점은 스즈키→고메스 짧은 배급에서 나왔다(경기 뒤 1874 「지시된 방식」 · 쟁점 #52). 예상과 실제 배급 방식이 갈린 사례 — 쟁점 #3(스즈키 배급) 근거로만 쌓는다. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "instruction",
@@ -8162,14 +8539,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -8180,7 +8557,7 @@
      "value": "long balls deep to the left for Jackson drifting into space vacated by the RB following the dropping left midfielder",
      "value_kr": "왼쪽 깊숙이 — 내려온 왼쪽 2선을 따라 나온 상대 RB 뒷공간의 잭슨",
      "verdict": "HELD",
-     "verdict_note": "WS 일치 — 스즈키 롱패스 19 중 왼쪽 레인(y>66) 14 · 성공 6 · 토레스→스즈키 20(골킥 재시작). GK 배급 쟁점 #3(스즈키 선발 2경기)에서 누적 · auto-caption(일본어) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "WS 일치 — 스즈키 롱패스 19 중 왼쪽 레인(y>66) 14 · 성공 6 · 토레스→스즈키 20(골킥 재시작). GK 배급 쟁점 #3(스즈키 선발 2경기)에서 누적 · auto-caption(일본어) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -9130,14 +9507,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -9148,7 +9525,7 @@
      "value": "accurate distribution as build-up starting point",
      "value_kr": "빌드업 출발점으로서 정확한 배급",
      "verdict": "HELD",
-     "verdict_note": "스즈키 패스 36/49 · 롱 19(성공 6) · 연결 토레스→스즈키 20·스즈키→토레스 9 · 커널 gk_goalkeeper/Defend .939(Δ.034 무결정 · Balanced .905) — 배급 정확도는 롱볼 성공 6/19로 서술보다 낮다. 쟁점 #3(스즈키 GK 선발 2경기) 트리거까지 유지 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "스즈키 패스 36/49 · 롱 19(성공 6) · 연결 토레스→스즈키 20·스즈키→토레스 9 · 커널 gk_goalkeeper/Defend .939(Δ.034 무결정 · Balanced .905) — 배급 정확도는 롱볼 성공 6/19로 서술보다 낮다. 쟁점 #3(스즈키 GK 선발 2경기) 트리거까지 유지 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -9546,14 +9923,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -9564,7 +9941,7 @@
      "value": "calm on the ball, long-range kicking to create chances",
      "value_kr": "침착한 발밑과 장거리 킥으로 기회 창출",
      "verdict": "HELD",
-     "verdict_note": "스즈키 패스 36/49 · 롱 19(성공 6) · 75′~ GK 롱 비중 70% · 선방 6 · 막은 실점 +1.74 · 커널 gk_goalkeeper/Defend .939. 롱킥 성공률은 낮음 — 쟁점 #3 트리거까지 유지 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "스즈키 패스 36/49 · 롱 19(성공 6) · 75′~ GK 롱 비중 70% · 선방 6 · 막은 실점 +1.74 · 커널 gk_goalkeeper/Defend .939. 롱킥 성공률은 낮음 — 쟁점 #3 트리거까지 유지 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "team_axis",
@@ -11298,14 +11675,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -11316,7 +11693,7 @@
      "value": "GK acts as an extra outfielder when the ball is at his feet",
      "value_kr": "발밑 공 처리 시 필드 플레이어 한 명 추가처럼 빌드업 관여",
      "verdict": "HELD",
-     "verdict_note": "ballplaying 쪽 서술 — 쟁점 #3(스즈키 GK 선발 2경기 · 현재 1/2) 트리거까지 정본 유지 · 팬 패널 서술이라 실측(GK 패스 수·롱킥 비율)으로만 판정 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "ballplaying 쪽 서술 — 쟁점 #3(스즈키 GK 선발 2경기 · 현재 1/2) 트리거까지 정본 유지 · 팬 패널 서술이라 실측(GK 패스 수·롱킥 비율)으로만 판정 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "instruction",
@@ -12698,14 +13075,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -12716,7 +13093,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "이미 일치 — slot_canon_roles AVL 4-2-3-1 Wide GK = gk_ballplaying/Build-Up. 영상 장면(브렌트퍼드전)은 고압박 상대에서도 짧게 푼 사례라 obs#1081(롱볼 비중은 상대 압박 반응)과 모순되지 않는다. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되면 팀 설정 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "이미 일치 — slot_canon_roles AVL 4-2-3-1 Wide GK = gk_ballplaying/Build-Up. 영상 장면(브렌트퍼드전)은 고압박 상대에서도 짧게 푼 사례라 obs#1081(롱볼 비중은 상대 압박 반응)과 모순되지 않는다. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되면 팀 설정 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "role",
@@ -13646,14 +14023,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -13664,7 +14041,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "실측 대조 필요: 스즈키 패스 성공률·롱패스 비율 — 시즌 정본 GK 역할과 비교 [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "실측 대조 필요: 스즈키 패스 성공률·롱패스 비율 — 시즌 정본 GK 역할과 비교 [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -14158,14 +14535,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -14176,7 +14553,7 @@
      "value": "short_64pct_then_long_after_43",
      "value_kr": "짧게 64%, 43분 이후 롱킥 전환",
      "verdict": "HELD",
-     "verdict_note": "경기 전용(match_game_setups) 서술과 일치하나 영상 툴 수치라 정의 미상 · WS 실측(스즈키 롱 0–43′ 4 → 43′+ 21)이 정본 · 재판정 조건: 고압박 원정 2경기 추가 시 시즌 GK 배급 축 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "경기 전용(match_game_setups) 서술과 일치하나 영상 툴 수치라 정의 미상 · WS 실측(스즈키 롱 0–43′ 4 → 43′+ 21)이 정본 · 재판정 조건: 고압박 원정 2경기 추가 시 시즌 GK 배급 축 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -18091,14 +18468,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -18109,7 +18486,7 @@
      "value": "late_sweep_symptom_of_lost_control",
      "value_kr": "막판 스위핑은 통제 상실의 증상",
      "verdict": "HELD",
-     "verdict_note": "스위핑 행동 자체는 확인(WhoScored 96′ KeeperSweeper x47 · 東スポ·フットボールチャンネル·닛칸). 이 영상은 원인을 팀 통제 부족으로 돌린다 — GK 정본 gk_sweeper/Build-Up(2026-10-11 결정)을 뒤집는 주장은 아니다. ⛔ 재판정 조건: 점유 우위·리드 관리 경기에서도 KeeperSweeper가 나오는지 3경기 누적(상황 강제형인지 성향형인지 분리). [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "스위핑 행동 자체는 확인(WhoScored 96′ KeeperSweeper x47 · 東スポ·フットボールチャンネル·닛칸). 이 영상은 원인을 팀 통제 부족으로 돌린다 — GK 정본 gk_sweeper/Build-Up(2026-10-11 결정)을 뒤집는 주장은 아니다. ⛔ 재판정 조건: 점유 우위·리드 관리 경기에서도 KeeperSweeper가 나오는지 3경기 누적(상황 강제형인지 성향형인지 분리). [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -19519,14 +19896,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -19537,7 +19914,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "이미 일치 — 정본 GK gk_ballplaying/Build-Up. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되면 팀 설정 재검토(obs#1081과 같은 조건) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "이미 일치 — 정본 GK gk_ballplaying/Build-Up. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되면 팀 설정 재검토(obs#1081과 같은 조건) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -19713,14 +20090,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -19731,7 +20108,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "이미 일치 — 정본 GK gk_ballplaying/Build-Up. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되면 팀 설정 재검토(obs#1081) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "이미 일치 — 정본 GK gk_ballplaying/Build-Up. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되면 팀 설정 재검토(obs#1081) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -20100,14 +20477,14 @@
      "headline_kr": "스즈키 롱 배급이 상대 압박을 억제",
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -20118,7 +20495,7 @@
      "value": "long direct balls to striker as a threat that stops opponents squeezing high",
      "value_kr": "스즈키 롱 배급(잭슨 직결)으로 상대 전방 압박 억제 → 중원 공간 확보",
      "verdict": "HELD",
-     "verdict_note": "실측 대조 필요: 스즈키 롱패스 비율·목표 지점(9번 쪽 비중)과 상대 PPDA 변화 [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "실측 대조 필요: 스즈키 롱패스 비율·목표 지점(9번 쪽 비중)과 상대 PPDA 변화 [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "instruction",
@@ -20128,14 +20505,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -20146,7 +20523,7 @@
      "value": "3v2 with GK and split centre backs",
      "value_kr": "GK+벌어진 센터백 둘로 상대 1선 2명에 3대2",
      "verdict": "HELD",
-     "verdict_note": "실측 대조 필요: 골킥 시 CB 벌림 형태와 상대 1선 압박 인원(경기 영상·패스맵) [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "실측 대조 필요: 골킥 시 CB 벌림 형태와 상대 1선 압박 인원(경기 영상·패스맵) [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "role",
@@ -20156,14 +20533,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -20174,7 +20551,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "실측 대조 필요: 스즈키 골킥·빌드업 시 위치(박스 밖 전진 빈도)와 gk_ballplaying/gk_sweeper 적합도 비교 [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "실측 대조 필요: 스즈키 골킥·빌드업 시 위치(박스 밖 전진 빈도)와 gk_ballplaying/gk_sweeper 적합도 비교 [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -20352,14 +20729,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -20370,7 +20747,7 @@
      "value": "catch_then_hold_until_shape_set_then_long_ball",
      "value_kr": "잡은 뒤 대형이 갖춰질 때까지 쥐고 롱볼",
      "verdict": "HELD",
-     "verdict_note": "해설자 본인이 추측이라고 밝혔다(「予想でしかない」(예상에 불과하다)/예상일 뿐). 재판정 조건: Opta 이벤트에서 스즈키 Claim/KeeperPickup → 다음 스즈키 Pass까지의 초 단위 간격과 그 패스의 Longball 비율을 2경기 이상 집계해, 빠른 스로 대신 지연 후 롱볼이 다수면 확정한다. ⚠️ auto-caption. [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "해설자 본인이 추측이라고 밝혔다(「予想でしかない」(예상에 불과하다)/예상일 뿐). 재판정 조건: Opta 이벤트에서 스즈키 Claim/KeeperPickup → 다음 스즈키 Pass까지의 초 단위 간격과 그 패스의 Longball 비율을 2경기 이상 집계해, 빠른 스로 대신 지연 후 롱볼이 다수면 확정한다. ⚠️ auto-caption. [쟁점 #3 판정 2026-10-21 → HELD] 정본 GK gk_ballplaying/Build-Up(10-15) 유지. 스즈키 26/27 선발은 8경기다. 히트맵 커널은 8경기 모두 gk_goalkeeper/Defend 1위다(집계 .961, ballplaying .744, sweeper/Balanced .773). 다만 GK 위치 그리드는 희소 행동을 담지 못한다는 기존 판단(정본 rationale)이 그대로 적용된다. 박스 밖 히트 비중은 .109로 25/26 마르티네스 .136(44경기)보다 낮고, 평균 x도 10.3 vs 11.2다. 패스 성공률은 7경기 181/265=68%다. 배급은 상황에 따라 갈린다: 페네르바체전 짧은 패스 15/15, 뉴캐슬전 롱 비중 0–43′ 15%(4/26) → 43′ 이후 63% → 77′ 이후 92%. 주장별: #281 틀림(「더 앞으로」 근거 없음, 박스 밖 비중이 마르티네스 이하). #324 맞음(짧은 패스 15/15, ballplaying 방향). #283 맞음(페네르 3-2 참여 5~6/18체인, 뉴캐슬 「extra man」(추가 인원)) — 역할 코드와는 무관. #282 부분(롱 증가 뒤 상대 PPDA 6.9→17.3이었지만 56–77′에는 4.89로 압박 정점이라 억제가 일관되지 않다). #198은 Opta Claim→Pass 간격 데이터가 DB에 없어 판정 불가. 재판정 조건: 10-15 이후 3경기 중 2경기 이상 KeeperSweeper가 나오면 sweeper 재검토(현재 1경기 경과). (판정안: 서브에이전트 실측 대조 · 부모 세션 검수 2026-10-21) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "instruction",
@@ -22473,14 +22850,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -22491,7 +22868,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "감독이 GK 참여 빌드업과 상대 배후 롱 배급을 모두 언급 — 스즈키 gk_ballplaying/Build-Up 정본(쟁점 3: ballplaying vs sweeper) 유지·감시 근거. 보도 인용이라 1차 회견 원문 확인 전까지 보조 증거. [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "감독이 GK 참여 빌드업과 상대 배후 롱 배급을 모두 언급 — 스즈키 gk_ballplaying/Build-Up 정본(쟁점 3: ballplaying vs sweeper) 유지·감시 근거. 보도 인용이라 1차 회견 원문 확인 전까지 보조 증거. [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -27566,14 +27943,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -27584,7 +27961,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "이미 일치 — slot_canon_roles AVL 4-2-3-1 Wide GK = gk_ballplaying/Build-Up. ⚠️ 위치 커널은 gk_goalkeeper(브뤼헤 Defend .966·헐 Balanced .965, obs#154 스위퍼 아님)라 역할 코드는 배급 축 근거로만 유지된다. 브뤼헤전 롱볼 15개 중 5성공(33%)·상대 진영 4/14(리포트 #35) vs 헐전 롱볼 9/10(리포트 #31) — 배급 질은 상대 압박에 따라 갈린다. 재판정 조건: 고압박 상대 3경기에서 롱볼 성공률 40% 미만이 이어지면 배급 축 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "이미 일치 — slot_canon_roles AVL 4-2-3-1 Wide GK = gk_ballplaying/Build-Up. ⚠️ 위치 커널은 gk_goalkeeper(브뤼헤 Defend .966·헐 Balanced .965, obs#154 스위퍼 아님)라 역할 코드는 배급 축 근거로만 유지된다. 브뤼헤전 롱볼 15개 중 5성공(33%)·상대 진영 4/14(리포트 #35) vs 헐전 롱볼 9/10(리포트 #31) — 배급 질은 상대 압박에 따라 갈린다. 재판정 조건: 고압박 상대 3경기에서 롱볼 성공률 40% 미만이 이어지면 배급 축 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "role",
@@ -27834,14 +28211,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -27852,7 +28229,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "이미 일치 — slot_canon_roles AVL 4-2-3-1 Wide GK = gk_ballplaying/Build-Up. ⚠️ 위치 커널은 gk_goalkeeper(브뤼헤 Defend .966·헐 Balanced .965, obs#154 스위퍼 아님)라 역할 코드는 배급 축 근거로만 유지된다. 브뤼헤전 롱볼 15개 중 5성공(33%)·상대 진영 4/14(리포트 #35) vs 헐전 롱볼 9/10(리포트 #31) — 배급 질은 상대 압박에 따라 갈린다. 재판정 조건: 고압박 상대 3경기에서 롱볼 성공률 40% 미만이 이어지면 배급 축 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "이미 일치 — slot_canon_roles AVL 4-2-3-1 Wide GK = gk_ballplaying/Build-Up. ⚠️ 위치 커널은 gk_goalkeeper(브뤼헤 Defend .966·헐 Balanced .965, obs#154 스위퍼 아님)라 역할 코드는 배급 축 근거로만 유지된다. 브뤼헤전 롱볼 15개 중 5성공(33%)·상대 진영 4/14(리포트 #35) vs 헐전 롱볼 9/10(리포트 #31) — 배급 질은 상대 압박에 따라 갈린다. 재판정 조건: 고압박 상대 3경기에서 롱볼 성공률 40% 미만이 이어지면 배급 축 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "role",
@@ -28139,14 +28516,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -28157,7 +28534,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "이미 일치 — slot_canon_roles AVL 4-2-3-1 Wide GK = gk_ballplaying/Build-Up. ⚠️ 위치 커널은 gk_goalkeeper(브뤼헤 Defend .966·헐 Balanced .965, obs#154 스위퍼 아님)라 역할 코드는 배급 축 근거로만 유지된다. 브뤼헤전 롱볼 15개 중 5성공(33%)·상대 진영 4/14(리포트 #35) vs 헐전 롱볼 9/10(리포트 #31) — 배급 질은 상대 압박에 따라 갈린다. 재판정 조건: 고압박 상대 3경기에서 롱볼 성공률 40% 미만이 이어지면 배급 축 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "이미 일치 — slot_canon_roles AVL 4-2-3-1 Wide GK = gk_ballplaying/Build-Up. ⚠️ 위치 커널은 gk_goalkeeper(브뤼헤 Defend .966·헐 Balanced .965, obs#154 스위퍼 아님)라 역할 코드는 배급 축 근거로만 유지된다. 브뤼헤전 롱볼 15개 중 5성공(33%)·상대 진영 4/14(리포트 #35) vs 헐전 롱볼 9/10(리포트 #31) — 배급 질은 상대 압박에 따라 갈린다. 재판정 조건: 고압박 상대 3경기에서 롱볼 성공률 40% 미만이 이어지면 배급 축 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -28556,14 +28933,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -28574,7 +28951,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "이미 일치 — slot_canon_roles AVL 4-2-3-1 Wide GK = gk_ballplaying/Build-Up. ⚠️ 위치 커널은 gk_goalkeeper(브뤼헤 Defend .966·헐 Balanced .965, obs#154 스위퍼 아님)라 역할 코드는 배급 축 근거로만 유지된다. 브뤼헤전 롱볼 15개 중 5성공(33%)·상대 진영 4/14(리포트 #35) vs 헐전 롱볼 9/10(리포트 #31) — 배급 질은 상대 압박에 따라 갈린다. 재판정 조건: 고압박 상대 3경기에서 롱볼 성공률 40% 미만이 이어지면 배급 축 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "이미 일치 — slot_canon_roles AVL 4-2-3-1 Wide GK = gk_ballplaying/Build-Up. ⚠️ 위치 커널은 gk_goalkeeper(브뤼헤 Defend .966·헐 Balanced .965, obs#154 스위퍼 아님)라 역할 코드는 배급 축 근거로만 유지된다. 브뤼헤전 롱볼 15개 중 5성공(33%)·상대 진영 4/14(리포트 #35) vs 헐전 롱볼 9/10(리포트 #31) — 배급 질은 상대 압박에 따라 갈린다. 재판정 조건: 고압박 상대 3경기에서 롱볼 성공률 40% 미만이 이어지면 배급 축 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -29252,14 +29629,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -29270,7 +29647,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "이미 일치 — 정본 GK gk_ballplaying/Build-Up(gS_6Hxwii_Q·dennvbSNrME HELD와 같은 결론). 아스날전 배급(일본어 매체 분 단위 기록, 리포트 #30)과 헐전 롱볼 9/10(리포트 #31)도 같은 방향. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되면 팀 설정 재검토(obs#1081) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "이미 일치 — 정본 GK gk_ballplaying/Build-Up(gS_6Hxwii_Q·dennvbSNrME HELD와 같은 결론). 아스날전 배급(일본어 매체 분 단위 기록, 리포트 #30)과 헐전 롱볼 9/10(리포트 #31)도 같은 방향. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되면 팀 설정 재검토(obs#1081) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -29580,14 +29957,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -29598,7 +29975,7 @@
      "value": "GK progressive passes into midfield",
      "value_kr": "GK가 중원으로 직접 전진 패스",
      "verdict": "HELD",
-     "verdict_note": "GK 이름이 자막에서 깨져 스즈키로 단정 불가. #3(스즈키 GK ballplaying vs sweeper)의 ballplaying 방향을 지지하는 약한 외부 근거. [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "GK 이름이 자막에서 깨져 스즈키로 단정 불가. #3(스즈키 GK ballplaying vs sweeper)의 ballplaying 방향을 지지하는 약한 외부 근거. [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "team_axis",
@@ -29965,14 +30342,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -29983,7 +30360,7 @@
      "value": "Long kick to McGinn / lofted pass to escape press",
      "value_kr": "맥긴 쪽으로 롱킥, 공중 패스로 탈압박",
      "verdict": "HELD",
-     "verdict_note": "스즈키 GK 역할·배급(ballplaying vs sweeper) 쟁점. 롱킥 배급 서술은 정본 검토 자료. [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "스즈키 GK 역할·배급(ballplaying vs sweeper) 쟁점. 롱킥 배급 서술은 정본 검토 자료. [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "instruction",
@@ -30258,14 +30635,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -30276,7 +30653,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "이미 일치 — 정본 GK gk_ballplaying/Build-Up(gS_6Hxwii_Q·dennvbSNrME HELD와 같은 결론). 아스날전 배급(일본어 매체 분 단위 기록, 리포트 #30)과 헐전 롱볼 9/10(리포트 #31)도 같은 방향. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되면 팀 설정 재검토(obs#1081). ⚠️ 「박스 밖 시작 위치」는 gk_sweeper 쪽 근거도 되므로 4fPRUgJvqLk(gk_ballplaying vs gk_sweeper 대조 PENDING)와 함께 본다 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "이미 일치 — 정본 GK gk_ballplaying/Build-Up(gS_6Hxwii_Q·dennvbSNrME HELD와 같은 결론). 아스날전 배급(일본어 매체 분 단위 기록, 리포트 #30)과 헐전 롱볼 9/10(리포트 #31)도 같은 방향. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되면 팀 설정 재검토(obs#1081). ⚠️ 「박스 밖 시작 위치」는 gk_sweeper 쪽 근거도 되므로 4fPRUgJvqLk(gk_ballplaying vs gk_sweeper 대조 PENDING)와 함께 본다 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -30687,14 +31064,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -30705,7 +31082,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "이미 일치 — 정본 GK gk_ballplaying/Build-Up(slot_canon_roles 2026-10-15). 아스날전 리포트 #30도 스즈키 롱 배급을 맨투맨 하이프레스를 건너뛰는 지정 경로로 3중 확증(27·29·33분, obs#403). ⚠️ 이 전사는 인물명 오인식이 심하지만(「Perraud」 등) 이 발언은 문맥상 GK 스즈키로 특정된다. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되면 팀 설정 재검토(obs#1081) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "이미 일치 — 정본 GK gk_ballplaying/Build-Up(slot_canon_roles 2026-10-15). 아스날전 리포트 #30도 스즈키 롱 배급을 맨투맨 하이프레스를 건너뛰는 지정 경로로 3중 확증(27·29·33분, obs#403). ⚠️ 이 전사는 인물명 오인식이 심하지만(「Perraud」 등) 이 발언은 문맥상 GK 스즈키로 특정된다. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되면 팀 설정 재검토(obs#1081) [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -32352,14 +32729,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": null,
      "player_id": null,
@@ -32370,7 +32747,7 @@
      "value": "Box command weaker than Martinez",
      "value_kr": "6야드 박스·크로스 장악은 아직 약점",
      "verdict": "HELD",
-     "verdict_note": "크로스 처리·박스 장악 한계 서술. 쟁점 #3의 GK 역할 판정 시 참고할 정성 증언이다. 영입 전 평가이므로 실측으로 확인 필요. [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "크로스 처리·박스 장악 한계 서술. 쟁점 #3의 GK 역할 판정 시 참고할 정성 증언이다. 영입 전 평가이므로 실측으로 확인 필요. [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     },
     {
      "axis": "role",
@@ -32380,14 +32757,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -32398,7 +32775,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "정본 GK는 gk_ballplaying/Build-Up과 일치. 쟁점 #3(ballplaying vs sweeper) 감시 항목이며 이 영상은 영입 전 외부 전문가 증언(D급 통설)이다. [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "정본 GK는 gk_ballplaying/Build-Up과 일치. 쟁점 #3(ballplaying vs sweeper) 감시 항목이며 이 영상은 영입 전 외부 전문가 증언(D급 통설)이다. [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -32476,14 +32853,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": true,
+      "due": false,
       "hold": false,
       "id": 3,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -32494,7 +32871,7 @@
      "value": null,
      "value_kr": null,
      "verdict": "HELD",
-     "verdict_note": "이미 일치 — slot_canon_roles AVL 4-2-3-1 Wide GK = gk_ballplaying/Build-Up(claim #331·#358과 같은 결론). 영입 전(파르마 시절) 해설이라 빌라 실측 근거는 아니며, 훅의 「배후를 쓸어 담는 A타입」 서술은 gk_sweeper 쪽 읽기도 가능하다. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되거나(obs#1081과 같은 조건) KeeperSweeper가 리드·점유 우위 경기에서도 반복되면 gk_sweeper 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기."
+     "verdict_note": "이미 일치 — slot_canon_roles AVL 4-2-3-1 Wide GK = gk_ballplaying/Build-Up(claim #331·#358과 같은 결론). 영입 전(파르마 시절) 해설이라 빌라 실측 근거는 아니며, 훅의 「배후를 쓸어 담는 A타입」 서술은 gk_sweeper 쪽 읽기도 가능하다. 재판정 조건: 고압박 상대 경기에서 GK 짧은 패스 비중이 롱볼보다 지속적으로 높게 실측되거나(obs#1081과 같은 조건) KeeperSweeper가 리드·점유 우위 경기에서도 반복되면 gk_sweeper 재검토 [쟁점 #3 재판정 2026-11-01 → HELD] 재판정(10-15 이후 스즈키 선발 기준): KeeperSweeper 바이킹(10-21) 0 · 맨시티(10-24) 0 · 풀럼(10-31) 0 — 스위퍼 근거 2경기 조건 미충족 → gk_ballplaying/Build-Up 정본 유지. 풀럼전 배급: 패스 36(롱 8 · 성공 5) · 박스 밖 비패스 행동 1 · 커널 합산 1위 gk_goalkeeper/Defend .939(Δ.008 무결정) — 위치 히트맵은 역할 판정력 없음(10-15 재교정 근거와 같음). 다음 재판정: 11-01 이후 스즈키 선발 3경기. [쟁점 #3 재판정 2026-11-23 → HELD] [재판정 2026-11-23] 조건 충족: 11-01 이후 스즈키 선발 3경기 모두 KeeperSweeper ≥1(바르셀로나 11-03 3/3 · 맨유 11-08 1/1 · 선덜랜드 11-21 1/1 = 경기당 1.67 · 성공 100%). 10-15~10-31 4경기는 경기당 0.25(뉴캐슬 1 · 나머지 0). 시즌 전체 14경기 17회(경기당 1.21 · 1회+ 9경기). ⚠️ 비교 기준 없음: 25/26 마르티네스 runs_out은 DB에 없다. GK는 커널 단독이고 위치 그리드는 역할 판정력이 없다(10-15 재교정 근거). ⇒ 정본 gk_ballplaying/Build-Up은 유지한다. gk_sweeper 전환은 정본 변경이라 사용자 판단 대기로 올린다(이번 회차는 변경 0). 다음 재판정: 11-23 이후 스즈키 선발 3경기에서 경기당 KeeperSweeper ≥1.5가 유지되는지 확인. 유지되면 sweeper 전환안을 사용자에게 올리고, 0.5 이하로 돌아가면 ballplaying을 확정한다."
     }
    ],
    "key_points": [
@@ -38461,10 +38838,15 @@
    487
   ],
   "71": [
+   545,
+   546,
+   544,
    540,
    543,
    542,
-   541
+   541,
+   547,
+   548
   ]
  },
  "issues": [
@@ -38492,14 +38874,14 @@
   },
   {
    "closed": null,
-   "due": true,
+   "due": false,
    "hold": false,
    "id": 3,
    "phase": "watch",
    "resolution": "HELD",
    "status": "open",
    "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-   "trigger": "2026-11-01 이후 스즈키 지온 GK 선발 3경기 (3/3)"
+   "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
   },
   {
    "closed": null,
