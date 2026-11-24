@@ -758,12 +758,12 @@
       "closed": null,
       "due": false,
       "hold": false,
-      "id": 87,
+      "id": 93,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
-      "title": "고레츠카–카마라 피벗 짝 연결·간격",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "title": "고레츠카 RDM 역할: 홀딩 수비 vs 로밍",
+      "trigger": "2026-11-21 이후 고레츠카 RDM 선발 2경기 (0/2)"
      },
      "player": "고레츠카",
      "player_id": 190,
@@ -40061,6 +40061,17 @@
    "status": "closed",
    "title": "개별 종결 #29 (쟁점 #31에서)",
    "trigger": "2026-11-18 이후"
+  },
+  {
+   "closed": null,
+   "due": false,
+   "hold": false,
+   "id": 93,
+   "phase": "watch",
+   "resolution": "HELD",
+   "status": "open",
+   "title": "고레츠카 RDM 역할: 홀딩 수비 vs 로밍",
+   "trigger": "2026-11-21 이후 고레츠카 RDM 선발 2경기 (0/2)"
   }
  ]
 }
