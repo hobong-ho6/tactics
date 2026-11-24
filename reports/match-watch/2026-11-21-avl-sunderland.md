@@ -434,3 +434,99 @@ WS 수비 액션 평균 위치(앞뒤, 좌우 · 0~100 · 좌우 0 = 빌라 오�
 - 「저블록 4-4-2 상대 프리셋」 주장 1행 → 쟁점 #2(상대 유형별 경기 프리셋)에 HELD로 묶었다.
 
 출처: [Sky Sports 경기 리포트](https://www.skysports.com/football/aston-villa-vs-sunderland/4906657091825263232) · [AOL/BBC What Emery said](https://www.aol.co.uk/articles/aston-villa-0-0-sunderland-173715000.html) · [Sunderland AFC 영상](https://www.youtube.com/watch?v=HBXQd07r1UM) · [Haway The Podcast](https://www.youtube.com/watch?v=r62jyKecy3U) · [Justin Talks Villa 영상](https://www.youtube.com/watch?v=z6SLU5tHfPA) · [Justin Talks Villa 블로그](https://justintalksvilla.substack.com/p/mcginn-showed-what-villa-were-missing) · [My Old Man Said](https://myoldmansaid.com/aston-villa-0-0-sunderland-player-ratings/) · [SofaScore FR](https://www.sofascore.com/fr/news/aston-villa-0-0-sunderland-roefs-brille-lors-dun-match-nul) · [TribalFootball 르 브리](https://tribalfootball.com/article/le-bris-sunderland-building-momentum-after-villa-draw-2c979ee0-5024-47f3-8bf9-9993280b0a58) · obs #1172·#1173
+
+## D+3 종결 (2026-11-24)
+
+**결론**: 3일 추적을 닫는다 — **당일 판정 정정 0 · 남은 판정 불가 0 · `status` = complete · 게임 구현 「추가 관찰」 유지 · 정본 변경 0.**
+- 남아 있던 잭슨 포커스(H5′·H5″)는 **「지원 유지」로 최종 판정**했다. 시즌 13경기 중 11경기에서 지원이 1위였고, 이 경기만 압박 0 때문에 3위로 밀렸다.
+- 역할 판정을 11-22에 정한 정본 방식(히트맵 0.6 + 경기 스탯 0.4 합산)으로 다시 쟀다. D0 처방은 커널(히트맵)만 썼으므로 **바뀐 1위를 아래 표에 기록만** 한다. 처방 행은 덮지 않는다.
+- 새 자료는 블로그·평점 3건이다. 교체 의도를 말한 에메리 발언은 **3일 내내 「새 다리」 하나뿐**이었다. obs #1174.
+
+### 교체에 따른 전술·역할 변화 — D+3 보강(합산 점수 재판정)
+
+**① 선수 역할 — 히트맵만 vs 히트맵+스탯 합산**(이 경기 볼 소유 그리드 · 45분 미만 교체는 스탯 미사용)
+
+| 선수(자리) | D0 커널 1위 | 합산 1위 · 점수 | 합산 2위 · Δ | 달라진 점 |
+|---|---|---|---|---|
+| 마트센(LB) | 공격형 윙백/지원 | 공격형 윙백/지원 .765 | 공격형 윙백/공격 · .137 | 같음(결정) |
+| 카마라(LDM→RDM) | 딥라잉/로밍 | 딥라잉/로밍 .750 | 박스 크래셔/균형 · .095 | 같음(결정) |
+| 고레츠카(RDM 0–73′) | 딥라잉/로밍 | **박스 크래셔/균형 .629** | 딥라잉/로밍 · **.000** | 동률 — 「바클리와 같은 딥라잉 계열」(H12)이 약해짐 |
+| 알리송(RM) | 윙어/공격 | 윙어/공격 .737 | 윙어/균형 · .079 | 같음 |
+| 완비사카(RB) | 공격형 윙백/지원 | 윙백/지원 .661 | 공격형 윙백/지원 · .047 | 무결정 — 잔류형에 가까운 쪽으로 기움 |
+| 하우드-벨리스(RCB) | BPD/공격적 | BPD/빌드업 .643 | BPD/공격적 · .024 | 무결정 |
+| 토레스(LCB) | BPD/공격적 | BPD/빌드업 .591 | BPD/공격적 · .092 | 포커스 바뀜(전진 배급 스탯 상위) |
+| 부엔디아(CAM 0–60′) | 클래식10/와이드 | 하프윙어/균형 .834 | 클래식10/다재다능 · .069 | 바뀜 — 오른쪽 기운 CAM과 정합 |
+| 만잠비(LM 0–60′) | 윙어/공격 | 윙어/균형 .715 | 와이드 미드필더/빌드업 · .022 | 무결정 |
+| 잭슨(ST 0–73′) | 어드밴스드/공격 | 폴스9/공격 .621 | 포처/공격 · .010 | 무결정 — 아래 ③ |
+| 바클리·맥긴·음바예·마조(교체) | — | D0와 같음(커널 단독) | — | 출전 17~30분이라 스탯을 쓰지 않음 |
+
+⇒ 「교체 전 → 교체 후」 표(§4)에 덧붙일 것은 두 가지다.
+- **고레츠카 → 바클리**: 같은 역할의 교대라기보다 **「박스 크래셔 성분이 있는 오른쪽 DM」이 「왼쪽 딥라잉」으로 바뀐 것**이다. 평점 기사도 성격 차를 같은 방향으로 봤다:
+  - 「Moved the ball quicker and with more purpose than the man he replaced but mainly limited to potshots.」(교체된 선수보다 공을 더 빠르고 목적 있게 돌렸지만 대부분 먼 거리 슈팅에 그쳤다 — Aston Villa Review)
+- **부엔디아 → 맥긴**: 부엔디아는 합산으로 하프윙어/균형이었다. D+2의 「맥긴이 부엔디아의 **오른쪽 기운 CAM** 자리를 이어받았다」는 정정과 같은 방향이다.
+
+**② 교체 효과 — 3일간 자료 종합**
+
+| 구간 | 형태(실측) | 결과 | 3일간 외부 평가 |
+|---|---|---|---|
+| ① 0–60′ | 3-2-2-3 · 피벗 반전 · 마트센 높게 | 슈팅 12 · xG 0.70 | 에메리 「계획대로」 · 르 브리 「형태가 결정적」 |
+| ② 60–66′ | 음바예 폭 · 마트센 안쪽 · 토레스 측면 전진 | 슈팅 0 · 상대 이벤트 왼쪽 쏠림 | Sonny Kelland(맥긴) 「Villa's exceptional captain completely changed the intensity of the game」(빌라의 뛰어난 주장이 경기 강도를 완전히 바꿨다) · My Old Man Said 「the changes on the hour didn't seem to change the pattern much」(60분 교체가 흐름을 별로 바꾸지 못했다) — **엇갈림 · 실측은 후자** |
+| ③ 66–73′ | 마트센 경고 뒤 바깥 복귀 | 점유 63% 최저 · 상대 압박 최고 | — |
+| ④ 73′– | 플랜 B(카마라 오른쪽 · 바클리 왼쪽 · 양 측면 윙어) | 슈팅 /10분 3.0 · xG 0.24 | Aston Villa Review: 음바예 「seemed reluctant to either attack his man or cross the ball」(상대를 공략하거나 크로스하기를 꺼리는 듯했다) — 실측 크로스 0 · 안쪽 운반 0과 일치 |
+
+- 음바예–마트센 연결은 팬 3곳이 같은 문제를 짚었다(D+2 My Old Man Said 「다른 주파수」 · 같은 매체 팟캐스트 「Why did the left side, with Ian Maatsen, Johan Manzambi and later Ibrahim Mbaye, never quite click?」(왜 마트센·만잠비·이후 음바예가 선 왼쪽은 끝내 맞물리지 않았나?) · Aston Villa Review). ⚠️ 앞의 둘은 **같은 매체**라 교차검증은 2곳이다.
+
+**③ 에메리 교체 의도 — 최종**
+- 1차 발언은 「Fresh legs, so we need fresh players.」(새 다리가 필요했다, 그래서 새 선수가 필요했다) 하나로 닫는다.
+- 11-23 갈라타사라이 사전 회견(마트센 동석)에서도 선덜랜드전 교체·형태 언급은 **0건**이었다(ESPN·Yahoo·Goal·fanatik 요약 기준).
+
+### 관전 가설 — 최종(D3 · 원래 행은 그대로 · 정정 행 추가)
+
+| # | 가설 | 이전 | D3 근거 | D3 판정 |
+|---|---|---|---|---|
+| H5′ | 잭슨 AF 지원 vs 다재다능 | 판정 불가(D0) | 합산 점수 이 경기 공격 .510 · 다재다능 .506 · 지원 .428 / 시즌 경기별 1위 **지원 11** · 다재다능 1 · 공격 1 · 평균 지원 .530 | **부분 일치 — 시즌 정본 「지원」 유지** · 이 경기는 단일 이탈(다재다능 우세도 아님 · Δ.004) · 재판정: 다재다능 합산 1위 2경기 이상(쟁점 #4) |
+| H5″ | 시즌 그리드·스탯 대비 | 판정 불가(D0) | 열 비중(왼→오) 24·46·30·0·0 vs 시즌 22·26·28·15·9 · 위 두 줄 80% vs 64% · 크로스 0 · 리커버리 0 · 수비 액션 0 | **부분 일치** — 전제 유지 · 이 경기는 「높고 왼쪽에 고립」(다재다능 행동도, 지원 압박도 없음) |
+| H12 | 바클리 = 고레츠카 역할 | 부분 일치 | 고레츠카 합산 박스 크래셔 = 딥라잉(Δ0) · 바클리 딥라잉(커널) · 반대편 | **부분 일치(근거 약화)** |
+
+- 외부 정합: Aston Villa Review 잭슨 「A bright first half, running the channels and causing problems with no real sight of goal」(전반엔 활발했다 — 채널로 뛰며 문제를 일으켰지만 골문은 보지 못했다). 채널 침투는 「공격」 쪽 성분이다.
+- **최종 집계(22건)**: 일치 6 · 부분 일치 14 · 불일치 2 · 판정 불가 0.
+
+### 새 자료(D+2 이후)
+
+| 자료 | 게시 · 작성 | 종류 | 쓴 것 |
+|---|---|---|---|
+| [Aston Villa Review 평점](https://astonvillareview.com/p/aston-villa-player-ratings-sunderland-premier-league) | 11-22 · 게스트 Jamie | 평점(팬 블로그 · D) | 마트센 「Full of running and a constant outlet.」(쉼 없이 뛰는 상시 출구) · 고레츠카 「Currently feels more suited to a role off the bench to see out games.」(지금은 경기를 마무리하는 교체 역할이 더 맞아 보인다) · 바클리·음바예·잭슨(위 인용) |
+| [Sonny Kelland Substack](https://sonnyav.substack.com/p/uneventful-at-villa-park) | 11-23 | 경기 블로그(D) | 「out of possession he doesn't provide enough support for Kamara which leaves the Frenchman quite isolated at times」(비보유 때 고레츠카가 카마라를 충분히 돕지 않아 카마라가 때로 고립된다) — 실측: 고레츠카 볼 이벤트 46 · 카마라 패스 90 |
+| [My Old Man Said 팟캐스트 페이지](https://myoldmansaid.com/aston-villa-0-0-sunderland-post-mortem-podcast/) | 11-22 | 팟캐스트 소개문 | 왼쪽 연결 문제 질문(위 인용) · 오디오는 듣지 않음(자막 없음) |
+
+- **오기 주의**: Read Aston Villa(11-24 · Lucie Turner)와 일부 요약이 맥긴 투입을 「in the 71st minute」(71분)이라고 적었다. 실제는 **60′**(SofaScore incidents · avfc.co.uk 공식 리포트 「Mbaye '59」 표기)이다 — 쓰지 않는다.
+- Sunderland Echo 분석(11-24 「goalscoring struggles examined」): 403이라 본문을 열지 못했다. 검색 요약 기준 르 브리가 「absolutely」(절대적으로) 초반 리스크 회피가 사전 논의였다고 말했다 — D+2 「낮은 블록 = 사전 선택」과 같은 방향이다(요약만이라 인용 등급 낮음).
+- **AVL 필수 채널 3곳**: 11-23 이후 이 경기 새 영상 0편(갈라타사라이 프리뷰만 · 검색 기준).
+- **Jacob Tanswell**: 새 글·출연 0(X 402 그대로).
+
+**다국어(불변규칙 10) — 0건 기록**
+
+| 언어 | 대상 | 검색어 | 결과 |
+|---|---|---|---|
+| 독일어 | 고레츠카 | 「Goretzka Aston Villa Sunderland Kritik Emery Doppelsechs Kamara」 | 독일어 기사 0 — 영어 평점·블로그만 |
+| 네덜란드어 | 마트센 | 「Maatsen Aston Villa Sunderland Mbaye linksback Voetbal International」 | 0(soccernews.nl 선수 페이지뿐) |
+| 프랑스어 | 카마라 | 「Kamara Aston Villa Sunderland capitaine bloc bas match nul analyse」 | 0 — 카마라 발언은 avfc.co.uk 영어 원문(§8)뿐 |
+| 스페인어 | 에메리 | 「Unai Emery Sunderland empate Villa Park análisis cambios Mbaye McGinn noviembre 2026」 | 0 — 영어 리포트만 |
+| 터키어 | 에메리(갈라타사라이 사전 회견) | (검색 결과 gzt.com·evrensel.net) | 선덜랜드전 언급 없음(경기장 상태·상대 평가뿐) |
+
+### 구현 함의 — 사용자 판단 대기(정본·인게임 코드 변경 없음)
+
+| # | 후보 | 이 경기 근거 | 반대·한계 | 다음 확인 |
+|---|---|---|---|---|
+| 1 | **피벗 좌우 반전**(카마라 LDM · 고레츠카 RDM) | 에메리 「전반은 계획대로」 · 0–60′ 왼쪽 노출 없음(43:46) | 시즌 처음 · 1경기 · 고레츠카가 빠지자 바로 원래대로(73′) · 고레츠카 합산은 박스 크래셔와 동률 | 고레츠카 선발 다음 경기 좌우 |
+| 2 | **마트센 공격형 윙백**(높이) | 공격형 윙백/지원 합산 .765 Δ.137(결정) · 시즌 최고 높이 61.9 | 정본도 이미 공격형 윙백/지원 — 바꿀 것은 역할이 아니라 **라인 높이·폭 함의**뿐 | — |
+| 3 | **보유 3-2-2-3**(완비사카 잔류 3백) | 3백+피벗 2 · 완비사카 합산 윙백/지원 .661(잔류형 쪽 · Δ.047 무결정) | 오른쪽 풀백 정본 윙백/균형과 가까움 · 맨유전 「남는 RB」(하우드-벨리스)와 같은 계열 | 쟁점 #13 감시와 함께 |
+| 4 | **잭슨 어드밴스드 포워드 지원 vs 다재다능** | 시즌 합산 1위 **지원 11/13** | 이 경기만 공격≈다재다능 > 지원(고립 · 압박 0) | ⇒ **지원 유지 권고** · 쟁점 #4 · 다재다능 1위 2경기 반복 시 재검토 |
+| 5 | **60′ 이후 양 측면 윙어 형태**(음바예 왼쪽 · 알리송 오른쪽 + 맥긴 오른쪽 기운 CAM) | 73′ 뒤 슈팅 빈도 최고 · 음바예 윙어/공격 .882 | xG 0.24/6슛 · 음바예–마트센 연결 문제(팬 2곳) · 마트센 안쪽일 때 상대 왼쪽 쏠림 12:4 · 20분 표본 | 음바예 왼쪽 윙어로 선발하는 경기 |
+
+### 상태 판단 — **`match_reports.status` = complete**
+
+- 필수 섹션 8개 · 출전 선수 15명 전원 리포트 · 경기 전용 설정 1행(플랜 B는 같은 행 근거 칸 + 교체 처방 4행) · 선발 11명 역할·포커스·단일 경기 적합도 → 조건 충족, draft → **complete**.
+- ⚠️ 구조 메모: `match_game_setups`는 리포트당 1행이다(기본키 = 리포트 번호). 그래서 「경기 중 플랜 B」를 **별도 행으로 둘 수 없다** — 근거 칸과 교체 처방 행(`starter=0` · `minute_on`)으로 기록했다. 플랜 B를 화면에 독립 카드로 보이려면 스키마 변경이 필요하다(사용자 판단 대기 · 이번 회차는 하지 않음).
+
+출처: [Aston Villa Review](https://astonvillareview.com/p/aston-villa-player-ratings-sunderland-premier-league) · [Sonny Kelland](https://sonnyav.substack.com/p/uneventful-at-villa-park) · [My Old Man Said 팟캐스트](https://myoldmansaid.com/aston-villa-0-0-sunderland-post-mortem-podcast/) · [Read Aston Villa](https://readastonvilla.com/2026/11/24/aston-villa-sunderland-draw-galatasaray-pitch-concerns/) · [Sunderland Echo(403 · 요약만)](https://www.sunderlandecho.com/sport/football/sunderland-afc/sunderland-premier-league-analysis-aston-villa-9369063) · [ESPN 갈라타사라이 사전 회견](https://www.espn.com/soccer/story/_/id/50572850/aston-villa-unai-emery-galatasaray-champions-league) · [Goal 마트센 회견](https://www.goal.com/en/news/aston-villa-ian-maatsen-warns-unai-emery-champions-league-test-galatasaray/bltb0cd36a820444ab2) · obs #1174
