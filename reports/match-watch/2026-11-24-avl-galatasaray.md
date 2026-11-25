@@ -252,6 +252,95 @@
 - 다국어 0건 기록(다음 회차 반복 방지): 프랑스어 「Nicolas Jackson Kamara Aston Villa Galatasaray défaite」 · 스웨덴어 「Lindelöf … förlust Expressen OR Aftonbladet」·「… föll」 · 포르투갈어 「… derrota ge.globo」·「… cartão amarelo」 · 스페인어 「Emery Galatasaray rueda de prensa」·「"merecíamos" empate」·「"árbitro" EFE Marca AS」.
 - 쟁점 트리거: #93(고레츠카 RDM 선발 2경기)은 이번 경기 고레츠카 LDM 교체 출전이라 **미충족**. #20·#21·#24·#49·#57 표본 +1.
 
+## D+1 보강 (2026-11-25 14:00)
+
+**결론: 새 1차 자료는 부룩 회견 원 매체 확정과 에메리 심판·탑8 발언 보강뿐이다. 로테이션·교체 의도에 대한 에메리 본인 발언은 여전히 0건이다. 정형 축은 10:15 회차에서 모두 채워져 추가 적재가 없다. 정본 변경 0.**
+
+### 새로 확보한 자료
+
+| 축 | 자료 | 결과 |
+|---|---|---|
+| UTV(@UTVFANCHANNEL) | 「WHAT ON EARTH WAS EMERY THINKING TAKING MCGINN OFF」 · 2026-11-24 · 라이브 약 32분 · https://www.youtube.com/watch?v=UU_6STnnBIY | **10:15 회차가 놓친 영상** — 동영상 탭이 아니라 **라이브 탭**에 있었다. 전사(auto-caption)·요약·구현 주장 4행(HELD #21·#47·#59·#20) |
+| UTV 워치얼롱 | 「LIVE CHAMPIONS LEAGUE WATCHALONG」 · -cAOulGki8s | 실시간 시청 방송이라 건너뜀(채널 스윕 규약 — 잡담) |
+| The Villans · 1874 | 동영상·라이브 탭 | 경기 후 새 영상 없음(1874는 10:15 회차분 J3joLJvKAbg가 최신) |
+| 오칸 부룩 회견 | Fanatik(11-24 23:11) | 10:15 회차의 「원 매체 미특정」 교체 발언을 **Fanatik으로 확정** |
+| 에메리 회견 | Haberler 영어판(11-25) | 심판·추가시간·탑8 발언 보강(아래) |
+| 터키어 칼럼 | Sabah(Timurlenk·Tüzemen) · Fotomaç | 상대 관점 전술 서술 확보 |
+| 영어 분석 | dave.sport(James Chettle) · Football365(Archynewsy 인용) | 무슈팅 44분 · 바르시 알페르 위치 변경 |
+| Jacob Tanswell | 검색 | The Athletic 이 경기 기사 여전히 미발견 — X 직접 열람은 10:15 회차와 같이 막힘 → **D+2 재시도** |
+
+### 감독 발언 보강
+
+**오칸 부룩(Fanatik · 직접 열람)**
+- 「Oyuncu değişiklikleri sonrası da bunu biraz daha artırdık bence.」(교체 뒤 그것[압박]을 조금 더 끌어올렸다고 본다) — §8의 「검색 요약만」 발언의 원 매체.
+- 「Oyuncu değişiklikleri sonrası da biraz daha yorulan takımımızı öne doğru taşıdık.」(교체 뒤 조금 지친 우리 팀을 앞으로 끌어올렸다)
+- 「Kaleci ayağıyla çözüyor, kısa ve uzun her yeri çözüyor.」(골키퍼가 발로 풀어낸다. 짧게든 길게든 다 푼다) — 스즈키 배급이 압박 설계의 출발점이었다.
+
+**에메리(Haberler 영어판 · 11-25)** — ⚠️ 터키 매체의 영어 기사라 원 발언의 재번역일 수 있다(confidence MEDIUM).
+- 「After Galatasaray scored, it became impossible to play football. They constantly wasted time.」(실점 뒤엔 축구를 할 수 없었다. 계속 시간을 끌었다)
+- 「We could not create chances in attack, either individually or as a team.」(개인으로도 팀으로도 공격 기회를 만들지 못했다)
+- 「Losing this match decreased our chances of a top-8 finish.」(이 패배로 탑8 가능성이 줄었다)
+- ⛔ 여전히 없는 것: 선발 로테이션 이유 · 66′(고메스·알리송)·74′(맥긴·만잠비) 교체 의도.
+
+### 상대 관점(터키어) — 갈라타사라이 구조
+
+- **바르시 알페르 위마즈가 최전방으로 선발 → 62′ 귈 투입과 함께 왼쪽으로 이동.** Sabah 뷜렌트 티무를렝크: 「1 saat geride kalırken Barış Alper Yılmaz'ı kanada, Deniz Gül'ü en uca oyuna aldı.」(한 시간이 지난 시점에 바르시 알페르를 측면으로, 데니즈 귈을 최전방으로 돌렸다)
+- 영어권 독립 교차(번역 복제 아님): Football365는 바르시 알페르가 밍스·린델뢰프에게 「swallowed whole」(통째로 삼켜졌다)였다고 썼다. 이는 §4 변화 3단계(62′ 귈 투입 · 투톱)와 일치한다.
+- 티무를렝크: 「Aston Villa'yı dar alana hapsetme fikri başarılı oldu.」(빌라를 좁은 공간에 가두는 발상이 통했다) · 「Lemina ve Torreira orta sahayı mükemmel tuttular.」(레미나·토레이라가 중원을 완벽하게 잡았다)
+- 레벤트 튀제멘: 「Kanatları iyi kullanan Aston Villa'ya akıllarda kalacak pozisyon bile verilmedi.」(측면을 잘 쓰는 빌라에게 기억에 남을 기회조차 주지 않았다)
+- Fotomaç: 「77'de Jackson'ın kafasına attığı tekmeye rağmen ağları sarstı.」(77′ 잭슨의 발에 머리를 차이고도 골망을 흔들었다) — 실점 장면의 잭슨 하이킥. 영어권(Yahoo 평점)도 「almost sent off for his high boot」(하이킥으로 퇴장당할 뻔했다)로 같은 장면을 짚었다.
+
+### 영어 분석·평점(2차)
+
+- dave.sport(James Chettle · 11-24): 빌라는 27′ 이후 **코너를 하나도 얻지 못했다**(「It was the only corner they won all evening」 — 그날 밤 얻은 유일한 코너였다). 갈라타사라이 코너는 5개. 실점 뒤 헤밍스 슈팅이 **44분 만의 첫 슈팅**이다.
+- 고메스 교체 사유: 1차 발언은 없다. 정황은 58′ 경고 뒤 Daily Mail의 「경고로 끝난 것이 운」 논조, 그리고 UTV의 「he couldn't finish the match because he couldn't keep his composure」(평정을 잃어 경기를 끝내지 못했다 · auto-caption)다. **경고 관리 교체로 추정하며, 판정은 하지 않는다.**
+- 평점 보강: SportNewsAfrica(프랑스어) 카마라 5 · 잭슨 4.5 / Yahoo 잭슨 4 「perhaps Villa's worst attacker」(아마 빌라 최악의 공격수) · 터치 22 / Yardbarker 린델뢰프·맥긴·만잠비 6.5.
+
+### UTV 영상 요점(auto-caption · ⚠️ 문장이 기계 번역처럼 어색 — 취지만 신뢰)
+
+- 후반 붕괴: 「from the 50th, 55th, 60th, 65th minute the game was simply slipping out of our hands」(50·55·60·65분부터 경기가 손에서 빠져나갔다). 실측 모멘텀 60–72′ 갈라타사라이 우세와 같은 방향이다.
+- 맥긴 교체 비판: 「You are removing your captain」(주장을 빼고 있다)
+- 만잠비: 「either we're doing something wrong and putting him in the wrong position, or his role is wrong」(잘못된 위치에 두거나 역할이 잘못됐다). 실측 상대 박스 터치 0이다.
+- 진행자 평점: 에메리 4 · 고메스 3 · 린델뢰프 7.
+
+### 다국어 결과
+
+| 언어 | 대상 | 결과 |
+|---|---|---|
+| 터키어 | 상대 관점 | Fanatik·Fotomaç·Sabah 확보(위) |
+| 네덜란드어 | 마첸 | ANP(nieuws.nl) 경기 기사뿐 · 마첸 평가 없음 |
+| 포르투갈어 | 고메스·알리송 | Brasil247 경기 기사뿐 · 선수 평가 없음 |
+| 프랑스어 | 카마라·잭슨 | SportNewsAfrica 평점(위) |
+| 스웨덴어 | 린델뢰프 | 0건(영어 결과만) |
+| 스페인어 | 에메리 | 새 원문 0건 — AFP 스페인어(10:15 회차)가 유일 |
+
+### 재판정·정형 축
+
+- 10:15 회차가 남긴 판정 대기: 관전 메모가 없어 가설 행이 0건이므로 정정(corrections) 대상도 없다. 영상 주장 #944(잭슨 침투 · PENDING #83)는 새 실측이 없어 유지한다.
+- 정형 축 점검 결과 **결손 0**:
+
+| 축 | 상태 |
+|---|---|
+| 구간 지표 | 0–15 … 77–82 · 82–종료 · 69행 · 교체·득점 분 62·66·74·77·82 컷 포함 |
+| WS 전체 JSON | 보존 |
+| 세트피스 | 10행 |
+| 경기 데이터 | match_events 17 · match_shots 13 · match_period_stats 2 |
+| 실측 운반(SofaScore carries) | 출전 16명 전원 |
+| FotMob 경기 스탯 | 상대 박스 터치 포함 |
+
+- **구현 함의(사용자 판단 대기)**: 바뀐 것 없음. UTV 주장 4행은 모두 HELD이며, 기존 쟁점 #20·#21·#47·#59의 트리거에서 재판정한다.
+
+### 출처
+
+- Fanatik https://www.fanatik.com.tr/galatasaray/galatasaray-teknik-direktoru-okan-buruk-en-iyi-macimizdi-2645711
+- Fotomaç https://www.fotomac.com.tr/galatasaray/2026/11/25/villayi-deniz-yikti
+- Sabah https://www.sabah.com.tr/trend/galeri/spor/galatasarayin-zaferi-icin-ovgu-dolu-sozler-okan-burukun-ustalik-eseri
+- Haberler https://en.haberler.com/aston-villa-head-coach-unai-emery-blasted-the-2343992/
+- dave.sport https://dave.sport/news/aston-villa-galatasaray-shot-analysis/
+- Archynewsy(Football365 인용) https://www.archynewsy.com/galatasaray-1-0-aston-villa-defeat-extends-villa-winless-run-to-six-games/
+- SportNewsAfrica https://sportnewsafrica.com/actualites/galatasaray-bat-aston-villa-1-0-sur-un-but-de-deniz-gul
+- Yahoo 평점 https://sports.yahoo.com/articles/aston-villa-player-ratings-vs-192946949.html
+
 ## D+2 추적
 
 - 예약 `mw-avl-galatasaray-d2`(11-26 20:00)가 이 절을 채운다 — UTV·The Villans 경기 후 분석 · Tanswell 재시도 · 터키어 전술 분석.

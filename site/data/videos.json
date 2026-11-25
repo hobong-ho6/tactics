@@ -2,7 +2,7 @@
  "all": [
   {
    "channel": "1874 : The Aston Villa Channel",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 552,
    "impl_claims": [
     {
@@ -138,6 +138,145 @@
    "transcript_path": "reports/transcripts/J3joLJvKAbg.en.md",
    "url": "https://www.youtube.com/watch?v=J3joLJvKAbg",
    "video_id": "J3joLJvKAbg"
+  },
+  {
+   "channel": "UTV",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 553,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "manzambi_role",
+     "field_kr": "만잠비 역할",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 21,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "2선(만잠비·부엔디아) 배치와 만잠비 역할",
+      "trigger": "2026-10-21 이후 만잠비 CAM 선발 2경기 (1/2)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「either we're doing something wrong and putting him in the wrong position, or his role is wrong」(잘못된 위치에 두거나 역할이 잘못됐다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "freer attacking role for Manzambi",
+     "value_kr": "만잠비에게 더 자유로운 공격 역할",
+     "verdict": "HELD",
+     "verdict_note": "팬 진행자 발언(1차 아님). 실측 이 경기 만잠비 LAM 74분 · 상대 박스 터치 0 · 터치 41 — 쟁점 #21(2선 배치와 만잠비 역할) 감시 트리거에서 재판정"
+    },
+    {
+     "axis": "instruction",
+     "field": "left_side_structure",
+     "field_kr": "왼쪽 측면 구조",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 47,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "좌측 측면 구조: 안쪽형 LM·폭은 LB(C2/C6)",
+      "trigger": "2026-10-21 이후 가르나초 LM,LAM,LW 선발 2경기 (0/2)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「a left wing with Matsen and Manzabi doesn't work for me」(마첸·만잠비 왼쪽 조합은 안 된다고 본다 · auto-caption · 이름 오인식 그대로)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Maatsen + Manzambi left side does not work",
+     "value_kr": "마첸·만잠비 왼쪽 조합 재검토",
+     "verdict": "HELD",
+     "verdict_note": "실측 마첸 LB 90분 평점 5.7 · 상대 박스 터치 2 — 단일 경기. 쟁점 #47(좌측 측면 구조) 트리거에서 재판정"
+    },
+    {
+     "axis": "instruction",
+     "field": "double_pivot_pair",
+     "field_kr": "더블 피벗 짝",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 20,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「he has to figure out very quickly what this pair of midfielders should look like」(중원 두 명이 어떤 모습이어야 할지 빨리 정해야 한다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "settle on a fixed midfield pair",
+     "value_kr": "중원 두 명 짝을 고정하라",
+     "verdict": "HELD",
+     "verdict_note": "이 경기 고메스(LDM)·카마라(RDM) 선발 → 66′ 고레츠카. 쟁점 #20(더블 피벗 분업) 트리거에서 재판정"
+    },
+    {
+     "axis": "limit",
+     "field": "second-half pressing resistance",
+     "field_kr": "후반 압박 대처",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 59,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "수비 블록 높이·후반 붕괴",
+      "trigger": "2026-10-21 이후 리그 5경기 (4/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「These teams put pressure on us, and it's very difficult for us to adapt to such a game」(이런 팀들이 압박하면 우리는 적응하기 매우 어렵다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "team cannot cope when opponent raises press in 2nd half",
+     "value_kr": "후반 상대 압박 상승 시 대처 실패 반복",
+     "verdict": "HELD",
+     "verdict_note": "실측 모멘텀 60–72′ 갈라타사라이 우세 · 부룩 「Oyuncu değişiklikleri sonrası da bunu biraz daha artırdık」(교체 뒤 압박을 조금 더 올렸다 · Fanatik). 쟁점 #59(블록 높이·후반 붕괴) 5경기 트리거에서 재판정"
+    }
+   ],
+   "key_points": [
+    "후반 압박에 대처 실패 — 「from the 50th, 55th, 60th, 65th minute the game was simply slipping out of our hands」(50·55·60·65분부터 경기가 손에서 빠져나갔다). 실측 모멘텀 60–72′ 갈라타사라이 우세와 일치",
+    "74′ 맥긴 교체 비판 — 「You are removing your captain」(주장을 빼고 있다). 실측: 맥긴 52′ 경고 보유 상태에서 교체(교체 의도 에메리 발언 없음)",
+    "만잠비 역할 제한 — 「either we're doing something wrong and putting him in the wrong position, or his role is wrong」(잘못된 위치에 두거나 역할이 잘못됐다). 실측 만잠비 상대 박스 터치 0 · 터치 41",
+    "좌측 구조 — 「a left wing with Matsen and Manzabi doesn't work for me」(마첸·만잠비 왼쪽 조합은 안 된다고 본다 · 자막 표기 그대로). 실측 마첸 평점 5.7(빌라 최저)",
+    "중원 짝 미정 — 고메스·카마라를 골랐지만 고메스가 58′ 경고 뒤 66′ 교체로 90분을 못 채웠다는 지적",
+    "평점: 린델뢰프 7 · 밍스 6 · 하우드-벨리스 6.5 · 스즈키 6 · 고메스 3 · 카마라 6 · 맥긴 6 · 알리송 5 · 잭슨 5 · 에메리 4"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-24",
+   "published_approx": 0,
+   "report_id": 72,
+   "summary": "UTV 루크 로빈슨의 경기 직후 반응 라이브(약 32분). 전반은 대등했고 빌라가 중앙을 조금 뚫었지만, 후반 갈라타사라이가 강도를 올리자 「we couldn't cope」(우리는 감당하지 못했다) — 포리스트·풀럼전 후반과 같은 패턴이라고 본다. 74′ 맥긴 교체(헤밍스·바클리 투입)를 가장 크게 비판하고, 만잠비는 역할이 묶여 「he doesn't seem to touch the ball much」(공을 거의 만지지 못한다)고 평했다. 마첸은 파이널 서드에서 선택을 못 하고, 고메스는 경고(58′) 뒤 66′에 빠져 90분을 버티지 못했다는 진단. 에메리 평점 4 — 수비 단위는 괜찮지만 중원 짝을 정하지 못했다고 결론.",
+   "team_code": "AVL",
+   "title": "WHAT ON EARTH WAS EMERY THINKING TAKING MCGINN OFF | GALATASARAY | MATCH REACTION 1-0 ASTON VILLA",
+   "transcript_path": "reports/transcripts/UU_6STnnBIY.en.md",
+   "url": "https://www.youtube.com/watch?v=UU_6STnnBIY",
+   "video_id": "UU_6STnnBIY"
   },
   {
    "channel": "1874 : The Aston Villa Channel",
@@ -39188,7 +39327,8 @@
    548
   ],
   "72": [
-   552
+   552,
+   553
   ]
  },
  "issues": [
