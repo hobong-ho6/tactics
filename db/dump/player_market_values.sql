@@ -9574,3 +9574,11 @@ INSERT INTO player_market_values VALUES(9573,247,'2026-08-01',47537004,42783303,
 INSERT INTO player_market_values VALUES(9574,247,'2026-09-01',52290704,47061633,57519774,'Milan','fotmob.com/api/data (scisports, player 940087)');
 INSERT INTO player_market_values VALUES(9575,247,'2026-10-01',49403020,37052265,61753775,'Milan','fotmob.com/api/data (scisports, player 940087)');
 INSERT INTO player_market_values VALUES(9576,247,'2026-11-01',56878760,51190884,62566636,'Milan','fotmob.com/api/data (scisports, player 940087)');
+INSERT INTO player_market_values VALUES(9577,30,'2026-01-01',20786638,18707974,22865301,'Aston Villa','fotmob.com/api/data (scisports, player 1607333)');
+INSERT INTO player_market_values VALUES(9578,30,'2026-02-01',20786638,18707974,22865301,'Aston Villa','fotmob.com/api/data (scisports, player 1607333)');
+INSERT INTO player_market_values VALUES(9579,30,'2026-03-01',20786638,18707974,22865301,'Aston Villa','fotmob.com/api/data (scisports, player 1607333)');
+INSERT INTO player_market_values VALUES(9580,30,'2026-04-01',20786638,18707974,22865301,'Aston Villa','fotmob.com/api/data (scisports, player 1607333)');
+INSERT INTO player_market_values VALUES(9581,61,'2026-01-01',30076829,27069146,33084511,'Aston Villa','fotmob.com/api/data (scisports, player 1729841)');
+INSERT INTO player_market_values VALUES(9582,61,'2026-02-01',30076829,27069146,33084511,'Aston Villa','fotmob.com/api/data (scisports, player 1729841)');
+INSERT INTO player_market_values VALUES(9583,61,'2026-03-01',30076829,27069146,33084511,'Aston Villa','fotmob.com/api/data (scisports, player 1729841)');
+INSERT INTO player_market_values VALUES(9584,61,'2026-04-01',30076829,27069146,33084511,'Aston Villa','fotmob.com/api/data (scisports, player 1729841)');

@@ -2,6 +2,145 @@
  "all": [
   {
    "channel": "1874 : The Aston Villa Channel",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-25] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 552,
+   "impl_claims": [
+    {
+     "axis": "instruction",
+     "field": "manzambi_position",
+     "field_kr": "만잠비 배치",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 21,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "2선(만잠비·부엔디아) 배치와 만잠비 역할",
+      "trigger": "2026-10-21 이후 만잠비 CAM 선발 2경기 (1/2)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「personally I'd stick him in the number 10 and just see what happens」(개인적으로는 그를 10번에 두고 어떻게 되는지 보겠다) — auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "play Manzambi at number 10 rather than left",
+     "value_kr": "왼쪽 대신 10번(CAM) 기용",
+     "verdict": "HELD",
+     "verdict_note": "팬 패널 제안(1차 발언 아님). 이 경기 만잠비 LM 단일 경기 합산 1위 wm_widemid/Defend 0.606(Δ0.003 실측 무결정) — 쟁점 #21 감시 트리거(만잠비 CAM 선발 2경기)가 차면 재판정"
+    },
+    {
+     "axis": "instruction",
+     "field": "attacking tempo",
+     "field_kr": "공격 속도",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 30,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "설정 축 없는 성향: 볼 처리 속도·크로스 빈도",
+      "trigger": "2026-10-27 이후 리그 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「It's almost like possession with no purpose」(거의 목적 없는 점유 같다) — auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "possession without penetration or speed",
+     "value_kr": "점유는 하지만 침투·속도 부족",
+     "verdict": "HELD",
+     "verdict_note": "게임에 속도 축 설정 없음(쟁점 #30 설정 축 없는 성향). 실측 빌라 점유 55%·오픈플레이 xG 0.12 — 리그 5경기 트리거에서 재판정"
+    },
+    {
+     "axis": "instruction",
+     "field": "striker runs",
+     "field_kr": "잭슨 배후 침투",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 83,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "잭슨 오프사이드·침투 타이밍",
+      "trigger": "2026-10-28 이후 잭슨 선발 5경기 (3/5)"
+     },
+     "player": "잭슨",
+     "player_id": 76,
+     "points_kr": null,
+     "quote": "「he's always on the move. He's always trying to make a run」(늘 움직이고 늘 침투를 시도한다) — auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Jackson's runs off the shoulder not being found",
+     "value_kr": "침투는 반복되나 패스가 오지 않음",
+     "verdict": "PENDING",
+     "verdict_note": "실측 잭슨 깊은 수신 9·박스 터치 3·오프사이드 1 — 쟁점 #83(잭슨 침투 타이밍) 트리거에서 판정"
+    },
+    {
+     "axis": "limit",
+     "field": "set pieces",
+     "field_kr": "세트피스",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 29,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "세트피스 허용 억제와 득점 경로",
+      "trigger": "2026-10-21 이후 리그 5경기 (4/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「another awful goal from a set piece to add to the collection」(세트피스에서 또 끔찍한 실점이 하나 더 쌓였다) — auto-caption",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "set-piece goals conceded again; own set pieces less threatening",
+     "value_kr": "세트피스 실점 반복·공격 위협 저하",
+     "verdict": "HELD",
+     "verdict_note": "실측: 실점 77′ 코너 세컨드볼(xG 0.195) · 빌라 세트피스 xG 0.47(코너 헤더 1회). 쟁점 #29 감시 트리거(리그 5경기)에서 재판정"
+    }
+   ],
+   "key_points": [
+    "전반 지배·무위협: 「Didn't ever look like we were going to score」(득점할 것 같지가 않았다) — 실측 빌라 슈팅 4·유효 0·오픈플레이 xG 0.12와 일치",
+    "왼쪽 정체: 만잠비 「really struggled to get into the game」(경기에 거의 들어오지 못했다) · 마첸 「end product just isn't there」(최종 결과물이 없다) — 실측 마첸 볼 손실 21·경합 2-11 · 만잠비 박스 터치 0",
+    "점유의 목적: 「possession with no purpose」(목적 없는 점유) · 공간이 나도 뒤로 돌려 다시 쌓는다는 지적 — 실측 앞 다섯 볼 소유 높이 52~70",
+    "세트피스: 「another awful goal from a set piece」(또 하나의 끔찍한 세트피스 실점) · 우리 세트피스도 위협이 약해졌다 — 실측 실점 = 77′ 코너 세컨드볼 · 빌라 최대 기회도 코너(27′ xG 0.47)",
+    "잭슨: 「He's always on the move」(늘 움직인다) — 배후 침투를 동료가 쓰지 못함 · 실측 터치 26·깊은 수신 9",
+    "만잠비 배치 제안: 「I'd stick him in the number 10」(나라면 10번에 두겠다)"
+   ],
+   "kind": "경기반응",
+   "lang": "en",
+   "obs_points": [],
+   "published": "2026-11-24",
+   "published_approx": 0,
+   "report_id": 72,
+   "summary": "1874 RAW(댄 바델·프랭키 매과이어)의 경기 직후 반응. 전반은 빌라가 「senior team」(더 노련한 팀)처럼 공을 쥐었지만 하프라인을 넘은 뒤 아무 일도 일어나지 않았다는 것이 요지다 — 「possession with no purpose」(목적 없는 점유). 왼쪽은 만잠비가 경기에 들어오지 못했고 마첸은 폭은 댔지만 최종 결과물이 없었다고 본다. 실점은 맨유전 추가시간에 이은 또 하나의 세트피스 실점이며, 빌라 세트피스 공격도 지난 시즌보다 위협이 약하다고 지적한다. 잭슨의 배후 침투가 반복됐지만 활용되지 않았고, 만잠비는 왼쪽보다 10번에 두자는 제안이 나왔다.",
+   "team_code": "AVL",
+   "title": "TOOTHLESS Villa come away with NOTHING at Galatasaray.",
+   "transcript_path": "reports/transcripts/J3joLJvKAbg.en.md",
+   "url": "https://www.youtube.com/watch?v=J3joLJvKAbg",
+   "video_id": "J3joLJvKAbg"
+  },
+  {
+   "channel": "1874 : The Aston Villa Channel",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 545,
    "impl_claims": [
@@ -13,14 +152,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -118,7 +257,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "고레츠카–카마라 피벗 짝 연결·간격",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -139,14 +278,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -174,7 +313,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "만잠비",
      "player_id": 55,
@@ -259,7 +398,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "고레츠카–카마라 피벗 짝 연결·간격",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -287,7 +426,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "만잠비",
      "player_id": 55,
@@ -308,14 +447,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -343,7 +482,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -457,7 +596,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "9번의 기능과 9번 없는 구성",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -492,7 +631,7 @@
   },
   {
    "channel": "Haway The Podcast",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 550,
    "impl_claims": [
     {
@@ -510,7 +649,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -564,7 +703,7 @@
   },
   {
    "channel": "Justin Talks Villa",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 551,
    "impl_claims": [
     {
@@ -610,7 +749,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "9번의 기능과 9번 없는 구성",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -646,7 +785,7 @@
   },
   {
    "channel": "Sunderland AFC",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-23] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 549,
    "impl_claims": [
     {
@@ -791,7 +930,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -1064,14 +1203,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -1125,7 +1264,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "고레츠카–카마라 피벗 짝 연결·간격",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -1181,7 +1320,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": "주앙 고메스",
      "player_id": 56,
@@ -1354,7 +1493,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -1411,7 +1550,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -1439,7 +1578,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -1605,7 +1744,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -1736,7 +1875,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": "주앙 고메스",
      "player_id": 56,
@@ -1785,14 +1924,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -1820,7 +1959,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "고레츠카–카마라 피벗 짝 연결·간격",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "고레츠카",
      "player_id": 190,
@@ -1848,7 +1987,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -1904,7 +2043,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "만잠비",
      "player_id": 55,
@@ -1932,7 +2071,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -1995,7 +2134,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "밍스 선발 시 CB 역할: 빌드업 BPD vs 덜 관여하는 역할",
-      "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -2023,7 +2162,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "하우드-벨리스 CB: 슬롯별 포커스와 공중볼",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -2044,14 +2183,14 @@
      "headline_kr": "카마라 역할 대체자 없음",
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 86,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "카마라 결장 시 RDM 대체 서열",
-      "trigger": "2026-10-28 이후 공식전 5경기 (4/5)"
+      "trigger": "2026-10-28 이후 공식전 5경기 (5/5)"
      },
      "player": null,
      "player_id": null,
@@ -2136,7 +2275,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "밍스 선발 시 CB 역할: 빌드업 BPD vs 덜 관여하는 역할",
-      "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (2/3)"
      },
      "player": "밍스",
      "player_id": 17,
@@ -2449,7 +2588,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "고레츠카–카마라 피벗 짝 연결·간격",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -2505,7 +2644,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -2619,7 +2758,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -2703,7 +2842,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": "주앙 고메스",
      "player_id": 56,
@@ -2731,7 +2870,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "고레츠카–카마라 피벗 짝 연결·간격",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "고레츠카",
      "player_id": 190,
@@ -2986,7 +3125,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -3372,7 +3511,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "고레츠카–카마라 피벗 짝 연결·간격",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -3456,7 +3595,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -3540,7 +3679,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "고레츠카–카마라 피벗 짝 연결·간격",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -3624,7 +3763,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "고레츠카–카마라 피벗 짝 연결·간격",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "고레츠카",
      "player_id": 190,
@@ -3708,7 +3847,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -3736,7 +3875,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -3792,7 +3931,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -4135,7 +4274,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -4163,7 +4302,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "고레츠카–카마라 피벗 짝 연결·간격",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -4293,7 +4432,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -4321,7 +4460,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "고레츠카–카마라 피벗 짝 연결·간격",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -4599,7 +4738,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -4627,7 +4766,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -4683,7 +4822,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -4732,14 +4871,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -5126,7 +5265,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -5279,7 +5418,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -5361,7 +5500,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -5415,7 +5554,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -5503,7 +5642,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "만잠비",
      "player_id": 55,
@@ -5531,7 +5670,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": "주앙 고메스",
      "player_id": 56,
@@ -5962,14 +6101,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -5997,7 +6136,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -6084,7 +6223,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -6290,7 +6429,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -6318,7 +6457,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -6346,7 +6485,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -6423,14 +6562,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -6486,7 +6625,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -6595,7 +6734,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "만잠비",
      "player_id": 55,
@@ -6616,14 +6755,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -6737,7 +6876,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -7337,7 +7476,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "하우드-벨리스 CB: 슬롯별 포커스와 공중볼",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "하우드-벨리스",
      "player_id": 178,
@@ -7389,14 +7528,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -7991,14 +8130,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -8026,7 +8165,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "만잠비",
      "player_id": 55,
@@ -8054,7 +8193,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -8496,7 +8635,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": "주앙 고메스",
      "player_id": 56,
@@ -8586,14 +8725,14 @@
      "headline_kr": "골키퍼 빌드업 때 잭슨이 왼쪽 채널로",
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -8743,7 +8882,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -8996,14 +9135,14 @@
      "headline_kr": "잭슨 홀드업 후 왼쪽으로 전개",
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -9109,14 +9248,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -9169,7 +9308,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -9197,7 +9336,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -9218,14 +9357,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -9253,7 +9392,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -9402,14 +9541,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -9711,7 +9850,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -9788,14 +9927,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -10127,7 +10266,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -10238,7 +10377,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -10391,7 +10530,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -10476,7 +10615,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -10497,14 +10636,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -10904,7 +11043,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -10989,7 +11128,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -11017,7 +11156,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -11073,7 +11212,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -11157,7 +11296,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -11298,7 +11437,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -11376,14 +11515,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 8,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "맥긴 RM: 터치라인 윙어 vs 안쪽형",
-      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -11457,7 +11596,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -11542,7 +11681,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -11570,7 +11709,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -11654,7 +11793,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -11766,7 +11905,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -11879,7 +12018,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -11900,14 +12039,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -11990,7 +12129,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -12039,14 +12178,14 @@
      "headline_kr": "맥긴 자유 롤·보유 시 부엔디아 곁 10번",
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 8,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "맥긴 RM: 터치라인 윙어 vs 안쪽형",
-      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -12148,7 +12287,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -12357,7 +12496,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -12640,7 +12779,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -12661,14 +12800,14 @@
      "headline_kr": "맥긴 우측 이동·넓은 공간",
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 8,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "맥긴 RM: 터치라인 윙어 vs 안쪽형",
-      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -12742,7 +12881,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -13023,14 +13162,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 8,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "맥긴 RM: 터치라인 윙어 vs 안쪽형",
-      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -13086,7 +13225,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -13142,7 +13281,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -13251,7 +13390,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -13279,7 +13418,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -13328,14 +13467,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -13489,14 +13628,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 78,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "왼쪽 풀백 결원 시 대체 구성(밍스·보가르드)",
-      "trigger": "2026-10-28 이후 공식전 5경기 (4/5)"
+      "trigger": "2026-10-28 이후 공식전 5경기 (5/5)"
      },
      "player": null,
      "player_id": null,
@@ -13524,7 +13663,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -13629,14 +13768,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 78,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "왼쪽 풀백 결원 시 대체 구성(밍스·보가르드)",
-      "trigger": "2026-10-28 이후 공식전 5경기 (4/5)"
+      "trigger": "2026-10-28 이후 공식전 5경기 (5/5)"
      },
      "player": "보가르드",
      "player_id": 11,
@@ -13737,7 +13876,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -13949,7 +14088,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -14227,7 +14366,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -14378,7 +14517,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -14481,14 +14620,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 8,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "맥긴 RM: 터치라인 윙어 vs 안쪽형",
-      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (3/3)"
      },
      "player": "맥긴",
      "player_id": 10,
@@ -14632,7 +14771,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -14739,7 +14878,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -15015,14 +15154,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -15124,7 +15263,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -15669,14 +15808,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -15723,14 +15862,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -15927,7 +16066,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -16010,7 +16149,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": "주앙 고메스",
      "player_id": 56,
@@ -16394,14 +16533,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -16494,14 +16633,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 82,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "상대 형태별 센터백 간격",
-      "trigger": "2026-10-28 이후 공식전 5경기 (4/5)"
+      "trigger": "2026-10-28 이후 공식전 5경기 (5/5)"
      },
      "player": null,
      "player_id": null,
@@ -16522,14 +16661,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 8,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "맥긴 RM: 터치라인 윙어 vs 안쪽형",
-      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (3/3)"
      },
      "player": "맥긴",
      "player_id": 10,
@@ -16647,14 +16786,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -17409,14 +17548,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -17504,14 +17643,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 8,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "맥긴 RM: 터치라인 윙어 vs 안쪽형",
-      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -18129,7 +18268,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "밍스 선발 시 CB 역할: 빌드업 BPD vs 덜 관여하는 역할",
-      "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (2/3)"
      },
      "player": "밍스",
      "player_id": 17,
@@ -18189,7 +18328,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -18217,7 +18356,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": "주앙 고메스",
      "player_id": 56,
@@ -18273,7 +18412,7 @@
       "resolution": "HELD",
       "status": "closed",
       "title": "카마라·고메스 동시 선발 시 배급 주도권(CB 1·2위)",
-      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (3/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (4/3)"
      },
      "player": "주앙 고메스",
      "player_id": 56,
@@ -18560,7 +18699,7 @@
       "resolution": "HELD",
       "status": "closed",
       "title": "카마라·고메스 동시 선발 시 배급 주도권(CB 1·2위)",
-      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (3/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (4/3)"
      },
      "player": null,
      "player_id": null,
@@ -18616,7 +18755,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "밍스 선발 시 CB 역할: 빌드업 BPD vs 덜 관여하는 역할",
-      "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (2/3)"
      },
      "player": "밍스",
      "player_id": 17,
@@ -18672,7 +18811,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -19235,7 +19374,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "밍스 선발 시 CB 역할: 빌드업 BPD vs 덜 관여하는 역할",
-      "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (2/3)"
      },
      "player": "밍스",
      "player_id": 17,
@@ -19904,7 +20043,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "밍스 선발 시 CB 역할: 빌드업 BPD vs 덜 관여하는 역할",
-      "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (2/3)"
      },
      "player": "밍스",
      "player_id": 17,
@@ -20100,7 +20239,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -20294,7 +20433,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -20343,14 +20482,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -20396,14 +20535,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -20431,7 +20570,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "9번의 기능과 9번 없는 구성",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -20570,7 +20709,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "하우드-벨리스 CB: 슬롯별 포커스와 공중볼",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "하우드-벨리스",
      "player_id": 178,
@@ -20619,14 +20758,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -20681,7 +20820,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -20709,7 +20848,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -20737,7 +20876,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -20821,7 +20960,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": "주앙 고메스",
      "player_id": 56,
@@ -20933,7 +21072,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -20961,7 +21100,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -21138,7 +21277,7 @@
       "resolution": "HELD",
       "status": "closed",
       "title": "카마라·고메스 동시 선발 시 배급 주도권(CB 1·2위)",
-      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (3/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (4/3)"
      },
      "player": null,
      "player_id": null,
@@ -23054,7 +23193,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -26156,7 +26295,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -28147,7 +28286,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -28175,7 +28314,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": "주앙 고메스",
      "player_id": 56,
@@ -28415,7 +28554,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -28720,7 +28859,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -29137,7 +29276,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -29798,14 +29937,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -29833,7 +29972,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -30161,7 +30300,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -30546,7 +30685,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -30839,7 +30978,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -30989,7 +31128,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "하우드-벨리스 CB: 슬롯별 포커스와 공중볼",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "하우드-벨리스",
      "player_id": 178,
@@ -31071,14 +31210,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -31268,7 +31407,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -31375,7 +31514,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "하우드-벨리스 CB: 슬롯별 포커스와 공중볼",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "하우드-벨리스",
      "player_id": 178,
@@ -31403,7 +31542,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "하우드-벨리스 CB: 슬롯별 포커스와 공중볼",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "하우드-벨리스",
      "player_id": 178,
@@ -31539,14 +31678,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -31742,14 +31881,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -32102,7 +32241,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "9번의 기능과 9번 없는 구성",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -32156,7 +32295,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "9번의 기능과 9번 없는 구성",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -32575,7 +32714,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "9번의 기능과 9번 없는 구성",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -32933,7 +33072,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -32961,7 +33100,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -33057,7 +33196,7 @@
       "resolution": "APPLIED",
       "status": "closed",
       "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+      "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
      },
      "player": "스즈키 지온",
      "player_id": 132,
@@ -33251,7 +33390,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "9번의 기능과 9번 없는 구성",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": "마조",
      "player_id": 61,
@@ -33474,7 +33613,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -34355,7 +34494,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -34673,7 +34812,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": "주앙 고메스",
      "player_id": 56,
@@ -34701,7 +34840,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "만잠비",
      "player_id": 55,
@@ -34755,7 +34894,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "만잠비",
      "player_id": 55,
@@ -34802,14 +34941,14 @@
      "headline_kr": "6명 빌드업 + 최전방 4명 4대4(6-4)",
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 8,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "맥긴 RM: 터치라인 윙어 vs 안쪽형",
-      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (2/3)"
+      "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -34837,7 +34976,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "만잠비",
      "player_id": 55,
@@ -34892,7 +35031,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": "주앙 고메스",
      "player_id": 56,
@@ -34946,7 +35085,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "만잠비",
      "player_id": 55,
@@ -35118,7 +35257,7 @@
       "resolution": "HELD",
       "status": "closed",
       "title": "카마라·고메스 동시 선발 시 배급 주도권(CB 1·2위)",
-      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (3/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (4/3)"
      },
      "player": null,
      "player_id": null,
@@ -35190,7 +35329,7 @@
       "resolution": null,
       "status": "open",
       "title": "고메스 박스 도착·최종 패스 비중",
-      "trigger": "2026-10-28 이후 주앙 고메스 선발 3경기 (1/3)"
+      "trigger": "2026-10-28 이후 주앙 고메스 선발 3경기 (2/3)"
      },
      "player": null,
      "player_id": null,
@@ -35325,7 +35464,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "만잠비",
      "player_id": 55,
@@ -35653,14 +35792,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 86,
       "phase": "decide",
       "resolution": null,
       "status": "open",
       "title": "카마라 결장 시 RDM 대체 서열",
-      "trigger": "2026-10-28 이후 공식전 5경기 (4/5)"
+      "trigger": "2026-10-28 이후 공식전 5경기 (5/5)"
      },
      "player": null,
      "player_id": null,
@@ -36190,7 +36329,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -36504,7 +36643,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -36532,7 +36671,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -36899,7 +37038,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-      "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
      },
      "player": null,
      "player_id": null,
@@ -37134,14 +37273,14 @@
      "headline_kr": "잭슨 주변에 붙는 동료가 없다",
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -37427,14 +37566,14 @@
      "headline_kr": null,
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": "잭슨",
      "player_id": 76,
@@ -38092,7 +38231,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "알리송",
      "player_id": 59,
@@ -38120,7 +38259,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "만잠비",
      "player_id": 55,
@@ -38148,7 +38287,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": null,
      "player_id": null,
@@ -38204,7 +38343,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+      "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
      },
      "player": "주앙 고메스",
      "player_id": 56,
@@ -38270,14 +38409,14 @@
      "headline_kr": "ST 배후 침투가 빌드업 아웃볼",
      "issue": {
       "closed": null,
-      "due": false,
+      "due": true,
       "hold": false,
       "id": 5,
       "phase": "watch",
       "resolution": "HELD",
       "status": "open",
       "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+      "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
      },
      "player": null,
      "player_id": null,
@@ -38486,7 +38625,7 @@
       "resolution": "HELD",
       "status": "open",
       "title": "고레츠카–카마라 피벗 짝 연결·간격",
-      "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+      "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
      },
      "player": "고레츠카",
      "player_id": 190,
@@ -39047,6 +39186,9 @@
    541,
    547,
    548
+  ],
+  "72": [
+   552
   ]
  },
  "issues": [
@@ -39070,7 +39212,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
-   "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+   "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
   },
   {
    "closed": "2026-11-23",
@@ -39081,7 +39223,7 @@
    "resolution": "APPLIED",
    "status": "closed",
    "title": "스즈키 GK 역할·배급: ballplaying vs sweeper",
-   "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (0/3)"
+   "trigger": "2026-11-23 이후 스즈키 지온 GK 선발 3경기 (1/3)"
   },
   {
    "closed": null,
@@ -39096,14 +39238,14 @@
   },
   {
    "closed": null,
-   "due": false,
+   "due": true,
    "hold": false,
    "id": 5,
    "phase": "watch",
    "resolution": "HELD",
    "status": "open",
    "title": "잭슨 ST 포커스·변형: 왓킨스 대비 측면·박스·홀드업",
-   "trigger": "2026-11-04 이후 잭슨 선발 3경기 (2/3)"
+   "trigger": "2026-11-04 이후 잭슨 선발 3경기 (3/3)"
   },
   {
    "closed": null,
@@ -39129,14 +39271,14 @@
   },
   {
    "closed": null,
-   "due": false,
+   "due": true,
    "hold": false,
    "id": 8,
    "phase": "watch",
    "resolution": "HELD",
    "status": "open",
    "title": "맥긴 RM: 터치라인 윙어 vs 안쪽형",
-   "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (2/3)"
+   "trigger": "2026-10-21 이후 맥긴 RM,RAM,RW 선발 3경기 (3/3)"
   },
   {
    "closed": null,
@@ -39202,7 +39344,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "알리송 측면 기용: 수비 복귀형 vs 윙어",
-   "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+   "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
   },
   {
    "closed": null,
@@ -39246,7 +39388,7 @@
    "resolution": "HELD",
    "status": "closed",
    "title": "카마라·고메스 동시 선발 시 배급 주도권(CB 1·2위)",
-   "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (3/3)"
+   "trigger": "2026-10-21 이후 주앙 고메스 선발 3경기 (4/3)"
   },
   {
    "closed": null,
@@ -39268,7 +39410,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "더블 피벗 분업: 고메스 궂은일 vs 카마라 전진",
-   "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (1/3)"
+   "trigger": "2026-10-21 이후 주앙 고메스 LDM 선발 3경기 (2/3)"
   },
   {
    "closed": null,
@@ -39290,7 +39432,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "밍스 선발 시 CB 역할: 빌드업 BPD vs 덜 관여하는 역할",
-   "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (1/3)"
+   "trigger": "2026-10-21 이후 밍스 LCB,RCB,CCB 선발 3경기 (2/3)"
   },
   {
    "closed": null,
@@ -39312,7 +39454,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "하우드-벨리스 CB: 슬롯별 포커스와 공중볼",
-   "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+   "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
   },
   {
    "closed": "2026-11-01",
@@ -39587,7 +39729,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "만잠비 비CAM 배치(피벗·측면) 역할",
-   "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+   "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
   },
   {
    "closed": null,
@@ -39653,7 +39795,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "9번의 기능과 9번 없는 구성",
-   "trigger": "2026-11-09 이후 공식전 5경기 (1/5)"
+   "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
   },
   {
    "closed": null,
@@ -39899,14 +40041,14 @@
   },
   {
    "closed": null,
-   "due": false,
+   "due": true,
    "hold": false,
    "id": 78,
    "phase": "decide",
    "resolution": null,
    "status": "open",
    "title": "왼쪽 풀백 결원 시 대체 구성(밍스·보가르드)",
-   "trigger": "2026-10-28 이후 공식전 5경기 (4/5)"
+   "trigger": "2026-10-28 이후 공식전 5경기 (5/5)"
   },
   {
    "closed": null,
@@ -39943,14 +40085,14 @@
   },
   {
    "closed": null,
-   "due": false,
+   "due": true,
    "hold": false,
    "id": 82,
    "phase": "decide",
    "resolution": null,
    "status": "open",
    "title": "상대 형태별 센터백 간격",
-   "trigger": "2026-10-28 이후 공식전 5경기 (4/5)"
+   "trigger": "2026-10-28 이후 공식전 5경기 (5/5)"
   },
   {
    "closed": null,
@@ -39983,18 +40125,18 @@
    "resolution": null,
    "status": "open",
    "title": "고메스 박스 도착·최종 패스 비중",
-   "trigger": "2026-10-28 이후 주앙 고메스 선발 3경기 (1/3)"
+   "trigger": "2026-10-28 이후 주앙 고메스 선발 3경기 (2/3)"
   },
   {
    "closed": null,
-   "due": false,
+   "due": true,
    "hold": false,
    "id": 86,
    "phase": "decide",
    "resolution": null,
    "status": "open",
    "title": "카마라 결장 시 RDM 대체 서열",
-   "trigger": "2026-10-28 이후 공식전 5경기 (4/5)"
+   "trigger": "2026-10-28 이후 공식전 5경기 (5/5)"
   },
   {
    "closed": null,
@@ -40005,7 +40147,7 @@
    "resolution": "HELD",
    "status": "open",
    "title": "고레츠카–카마라 피벗 짝 연결·간격",
-   "trigger": "2026-11-22 이후 공식전 3경기 (0/3)"
+   "trigger": "2026-11-22 이후 공식전 3경기 (1/3)"
   },
   {
    "closed": "2026-11-04",

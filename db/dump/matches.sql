@@ -126,3 +126,4 @@ INSERT INTO matches VALUES(132,17118364,'CHE','2026-27','2026-10-28','Liverpool'
 INSERT INTO matches VALUES(133,16363904,'CHE','2026-27','2026-10-31','Manchester United','Premier League','H','2-0',1,'Matchweek 9 — 스탬퍼드 브리지 (result는 홈-원정 순서: 첼시 2 · 맨유 0)',58.0);
 INSERT INTO matches VALUES(134,16363918,'AVL','2026-27','2026-11-08','Manchester United','Premier League','A','4-4',1,'Premier League R10 — 올드 트래퍼드 (result는 홈-원정 순서: 맨유 4 · 빌라 4)',44.0);
 INSERT INTO matches VALUES(135,16363654,'AVL','2026-27','2026-11-21','Sunderland','Premier League','H','0-0',1,'Premier League R11 — 빌라 파크 (result는 홈-원정 순서: 빌라 0 · 선덜랜드 0)',73.0);
+INSERT INTO matches VALUES(136,16938980,'AVL','2026-27','2026-11-24','Galatasaray','UEFA Champions League','A','1-0',1,'League Phase MD5 — RAMS Park(이스탄불) (result는 홈-원정 순서: 갈라타사라이 1 · 빌라 0)',55.0);
