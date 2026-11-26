@@ -138,6 +138,42 @@ def pre_step_state(con, cp, game, evo=None, level=None):
     return None
 
 
+def positions_with(con, cp, game, ups):
+    """진화 보상 `alternative_positions`(값 = EA 포지션 id)를 현재 포지션에 **합집합**으로 얹는다(migration 140 · 2026-11-26).
+
+    출발점은 `current_positions`(싱크·이전 진화) → 없으면 기준 카드 `player_card_items.positions`.
+    형식은 기준 카드와 같다 — 「주 포지션/보조/…」(슬래시 구분 · 주 포지션은 맨 앞 그대로).
+    ⭐ 「(^N)」은 보유 포지션 개수 상한으로 읽는다 — PlayStyle 상한(#41)과 같은 꼴이라는 추정(D)이다.
+       Switchback Dynamo는 요구조건이 Max Pos. 5 · 보상 2개 · 상한 7이라 이 진화에서는 상한이 걸릴 일이 없다.
+    반환: 바뀐 포지션 문자열 · 보상이 없거나 이미 다 있으면 None(= 기존 값 유지).
+    """
+    gain = [u for u in ups if u.get("upgrade") == "alternative_positions"]
+    if not gain:
+        return None
+    from scripts.collect_futgg_history import POS     # EA 포지션 id → 약칭 정본
+    miss = [u.get("value") for u in gain if u.get("value") not in POS]
+    if miss:
+        sys.exit(f"⛔ 모르는 포지션 id {miss} — 지어내지 않는다. scripts/collect_futgg_history.py POS 표를 먼저 채울 것")
+    cur = cp["current_positions"]
+    if not cur:
+        r = con.execute("SELECT positions FROM player_card_items WHERE game_version=? AND ea_item_id=?",
+                        (game, cp["ea_item_id"])).fetchone()
+        cur = r["positions"] if r else None
+    if not cur:
+        sys.exit("⛔ 현재 포지션을 알 수 없다(현재값·기준 카드 모두 없음) — collect_futgg_cards.py로 카드를 먼저 받을 것")
+    have = [x.strip() for x in cur.split("/") if x.strip()]
+    out = list(have)
+    for u in gain:
+        name, cap = POS[u["value"]], u.get("maxValue")
+        if name in out:
+            continue
+        if cap and len(out) >= int(cap):
+            print(f"ℹ️ 포지션 {name}은 받지 못한다 — 보유 {len(out)}개 ≥ 상한 {cap}")
+            continue
+        out.append(name)
+    return "/".join(out) if out != have else None
+
+
 def cmd_evolve(con, a):
     acc = account(con, a.account)
     cp = club_player(con, acc["id"], a.player, getattr(a, "expect_player_id", None))
@@ -174,6 +210,7 @@ def cmd_evolve(con, a):
     attrs_after = None
     ovr_before, six_before = cp["current_ovr"], cp["current_six"]   # 카탈로그로 계산하면 원장 사슬 값으로 바뀐다
     ps_after = None                 # 카탈로그로 계산하면 채운다 — 없을 때만 path_json(완주 카드)으로 물러선다
+    pos_after = None                # 포지션 추가 보상(migration 140) — 없으면 None(= 기존 포지션 유지)
     cur_attrs = json.loads(cp["current_attrs"]) if cp["current_attrs"] else None
     lvrow = con.execute("SELECT levels FROM fc_evolutions WHERE evo_id=? ORDER BY pulled DESC",
                         (a.evo,)).fetchone()
@@ -207,6 +244,7 @@ def cmd_evolve(con, a):
             gain_rpp = [u["value"] for u in ups if u.get("upgrade") == "role_plus_plus"]
             gain_rp = [u["value"] for u in ups if u.get("upgrade") == "role_plus"]
             gain_ps = [u["value"] for u in ups if u.get("upgrade") in ("play_style", "play_style_plus")]
+            pos_after = positions_with(con, cp, acc["game_version"], ups)
             # ⛔⛔ PlayStyle도 **이 단계 보상만** 얹는다(2026-09-28 실측 사고 — 바르가스 반복 배급 1단계).
             #    종전엔 `path_json`(fut.gg **완주** 카드)의 PlayStyle을 그대로 적어서, 1단계만 끝났는데
             #    2·3단계 보상(핑드 패스·퍼스트 터치)이 현재 카드에 붙었다. 스탯은 이미 단계별 계산이었다.
@@ -328,7 +366,8 @@ def cmd_evolve(con, a):
     #    완료되면 `complete` 서브커맨드로 그때 스탯을 반영한다.
     con.execute("""INSERT INTO fut_evolution_log(club_player_id, evo_id, evo_name, level, applied_at, completed_at,
                      ovr_before, ovr_after, six_before, six_after, attrs_after, playstyles_after, roles_plus_after,
-                     roles_plus_plus_after, source, confidence, notes) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
+                     roles_plus_plus_after, positions_after, source, confidence, notes)
+                     VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)""",
                 (cp["id"], a.evo, evo_name, a.level, a.date, a.completed, ovr_before, ovr_after, six_before, six_after,
                  # ⭐ 29속성을 함께 남긴다(migration 082) — `complete`가 이걸 보고 current_attrs를 올린다.
                  json.dumps(attrs_after, ensure_ascii=False) if attrs_after is not None else None,
@@ -338,6 +377,7 @@ def cmd_evolve(con, a):
                      json.dumps((after or {}).get("roles_plus")) if after else None),
                  json.dumps(_union(cp["current_roles_plus_plus"], gain_rpp)) if attrs_after is not None else (
                      json.dumps((after or {}).get("roles_plus_plus")) if after else None),
+                 pos_after,   # migration 140 — 포지션 추가 보상이 있을 때만 · 없으면 NULL(= 기존 포지션 유지)
                  f"scripts/fut_club.py evolve ({TODAY} 기록) · 적용 후 값 출처: {src}",
                  "MEASURED(사용자 행위) — 적용 사실은 사용자 보고. 적용 후 스탯은 " + src + ".", a.note))
     if getattr(a, "in_progress", False):
@@ -364,12 +404,14 @@ def cmd_evolve(con, a):
         json.dumps(after["roles_plus_plus"]) if after else None)
     con.execute("""UPDATE fut_club_players SET current_ovr=?, current_six=?, current_playstyles=COALESCE(?, current_playstyles),
                      current_roles_plus=COALESCE(?, current_roles_plus), current_roles_plus_plus=COALESCE(?, current_roles_plus_plus),
+                     current_positions=COALESCE(?, current_positions),
                      evo_count=evo_count+1, updated=? WHERE id=?""",
                 (ovr_after, six_after,
                  ", ".join(ps_after) if ps_after is not None else
                  (", ".join(after["playstyles"]) if after and after.get("playstyles") else None),
-                 rp_new, rpp_new, TODAY, cp["id"]))
-    print(f"진화 기록: {cp['name']} ← {evo_name} (lv{a.level}) OVR {ovr_before} → {ovr_after} · 적용일 {a.date}")
+                 rp_new, rpp_new, pos_after, TODAY, cp["id"]))
+    print(f"진화 기록: {cp['name']} ← {evo_name} (lv{a.level}) OVR {ovr_before} → {ovr_after} · 적용일 {a.date}"
+          + (f" · 포지션 → {pos_after}" if pos_after else ""))
 
 
 def cmd_complete(con, a):
@@ -414,10 +456,11 @@ def cmd_complete(con, a):
     #    ⚠️ EA가 이미 앞선 경우(위 return) 뒤에 둔다 — 앞에 두면 낡은 after로 29속성만 덮였다(2026-11-06 Cissé · G25).
     con.execute("""UPDATE fut_club_players SET current_ovr=?, current_six=COALESCE(?, current_six),
                      current_playstyles=COALESCE(?, current_playstyles), current_roles_plus=COALESCE(?, current_roles_plus),
-                     current_roles_plus_plus=COALESCE(?, current_roles_plus_plus), updated=? WHERE id=?""",
+                     current_roles_plus_plus=COALESCE(?, current_roles_plus_plus),
+                     current_positions=COALESCE(?, current_positions), updated=? WHERE id=?""",
                 (ovr_new, six_new,
                  ", ".join(json.loads(log["playstyles_after"])) if log["playstyles_after"] else None,
-                 log["roles_plus_after"], log["roles_plus_plus_after"], TODAY, cp["id"]))
+                 log["roles_plus_after"], log["roles_plus_plus_after"], log["positions_after"], TODAY, cp["id"]))
     print(f"진화 완료: {cp['name']} ← {log['evo_name']} · OVR {log['ovr_before']} → {a.ovr_after or log['ovr_after']} · 완료일 {a.date}")
 
 
@@ -916,6 +959,7 @@ def cmd_evo_remove(con, a):
         con.execute("""UPDATE fut_club_players SET current_ovr=?, current_attrs=?, current_six=?,
                          current_playstyles=COALESCE(?, current_playstyles), updated=? WHERE id=?""",
                     (ovr, attrs, six, ps, TODAY, cp["id"]))
+        _set_kept_positions(con, cp)
     names = " · ".join(f"{run[0]['evo_name']}({len(run)}단계{'' if run[-1]['completed_at'] else ' · 진행 중'})" for run in gone)
     print(f"진화 제거({'마지막' if scope == 'last' else '전부'}): {cp['name']} ← {names} · 제거일 {a.date}")
     print(f"   카드 현재값 → {basis} · OVR {cp['current_ovr']} → {ovr}" if basis else
@@ -923,6 +967,14 @@ def cmd_evo_remove(con, a):
     print("   ⭐ 진화 사용은 환급되지 않는다(EA) — 소진·반복 횟수는 그대로 센다. Role+/++는 다음 클럽 싱크의 EA 실측으로 확정한다.")
     if scope == "last" and len(runs) > 1:
         print("   ⚠️ 거래 가능 여부는 **모든 진화를 제거해야** 돌아온다(EA) — 아직 진화가 남아 있다.")
+
+
+def _set_kept_positions(con, cp):
+    """포지션(migration 140)도 **걸린 진화**의 마지막 포지션 추가 기록으로 맞춘다 — 없으면 NULL(= 기준 카드 포지션).
+    포지션 보상은 누적이라 「마지막 완료 행」이 아니라 「포지션을 남긴 마지막 완료 행」을 본다. 다음 EA 싱크가 확정한다."""
+    r = con.execute("""SELECT positions_after FROM v_evo_log_active WHERE club_player_id=? AND completed_at IS NOT NULL
+                         AND positions_after IS NOT NULL ORDER BY applied_at DESC, id DESC LIMIT 1""", (cp["id"],)).fetchone()
+    con.execute("UPDATE fut_club_players SET current_positions=? WHERE id=?", (r[0] if r else None, cp["id"]))
 
 
 def _restore_current(con, cp):
@@ -934,6 +986,7 @@ def _restore_current(con, cp):
         con.execute("""UPDATE fut_club_players SET current_ovr=?, current_attrs=?, current_six=?,
                          current_playstyles=COALESCE(?, current_playstyles), updated=? WHERE id=?""",
                     (keep["ovr_after"], keep["attrs_after"], keep["six_after"], ps, TODAY, cp["id"]))
+        _set_kept_positions(con, cp)
         return f"걸린 진화의 마지막 완료 상태({keep['evo_name']} {keep['level']}단계) · OVR {keep['ovr_after']}"
     if keep and keep["ovr_after"] is not None:
         # 옛 행(migration 082 이전)은 29속성이 없다 — OVR·6대만 맞추고 29속성은 다음 EA 싱크에 맡긴다

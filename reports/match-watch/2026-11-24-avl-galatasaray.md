@@ -341,9 +341,58 @@
 - SportNewsAfrica https://sportnewsafrica.com/actualites/galatasaray-bat-aston-villa-1-0-sur-un-but-de-deniz-gul
 - Yahoo 평점 https://sports.yahoo.com/articles/aston-villa-player-ratings-vs-192946949.html
 
-## D+2 추적
+## D+2 추적 (2026-11-26 · 수동 — 사용자 지시 「우려 섞인 영상들도 수집해서 보완」)
 
-- 예약 `mw-avl-galatasaray-d2`(11-26 20:00)가 이 절을 채운다 — UTV·The Villans 경기 후 분석 · Tanswell 재시도 · 터키어 전술 분석.
+**결론: 필수 3채널에 경기 후 분석 영상이 3편 새로 올라왔고, 셋 다 전사·요약·구현 주장(12행 · 전부 HELD)까지 마쳤다. 우려는 네 갈래로 모인다 — ⑴ 후반 경합 붕괴 ⑵ 앞 4명 단절과 만잠비 위치 ⑶ 근성·리더십 부재(고메스 다혈질 포함) ⑷ 가르나초 명단 제외. 밍스의 경기 후 TNT 인터뷰도 1차 발언으로 확보했다. 정본 변경 0.**
+
+### 새로 확보한 영상
+
+| 채널 | 영상 · 게시 | 길이 | 귀속·주장 |
+|---|---|---|---|
+| UTV | 「WE NEED A SERIOUS CONVERSATION ABOUT ASTON VILLA」 · 11-25 · https://www.youtube.com/watch?v=WA_HHefibuU | 32분 | 리포트 #72 · 전술분석 · 주장 6(HELD #20·#21·#47·#59) |
+| The Villans | 「HOW HAVE ASTON VILLA GOT INTO THIS SITUATION AGAIN.」 · 11-25 · https://www.youtube.com/watch?v=Oa-PkZJldFg | 41분 | 리포트 #72 · 경기반응(색인 오분류 선수스카우팅 → 수동 교정) · 주장 3(HELD #20·#57·#59) |
+| 1874 | 「Aston Villa Q&A – Why the Garnacho Situation Isn't a Good Look for Club or Player」 · 11-26 · https://www.youtube.com/watch?v=NoUKjmUmhVI | 28분 | 리포트 #72 · 경기반응 · 주장 3(HELD #20·#21·#30) |
+
+- 세 편 모두 제목에 상대가 없어 색인이 귀속하지 못했다 → `_video_overrides.json`으로 리포트 #72에 수동 귀속했다.
+- 전사는 auto-caption(브라우저 timedtext 응답 포착 · 뮤트)이다. 인명 오인식(「Matson」= 마첸 · 「Xiao Gomez」= 주앙 고메스 · 「Embi/Bay」= 음바예 · 「Gacho/Ganacho」= 가르나초)은 교정해 인용했다.
+- 건너뛴 영상: 1874 프리뷰 2편 · The Villans 프리뷰 1편(D+1 회차와 같음). UTV 입스위치 프리뷰는 11-28 예정이다.
+
+### 우려 4갈래 — 영상 주장 vs 실측
+
+| 우려 | 영상 서술 | 실측 대조 | 판정 |
+|---|---|---|---|
+| ⑴ 후반 경합 붕괴 | UTV 「We were outfought in that second half」(후반에 몸싸움에서 졌다) · 경합 승률 46% → 39%, 땅볼 38%(영상 수치) | 후반 xG 0.06 · 모멘텀 60–72′ 갈라타사라이 우세 · 66–74′ 패스 점유 46% | **같은 방향** — 쟁점 #59 표본 +1 |
+| ⑵ 앞 4명 단절·만잠비 위치 | UTV 패스맵: 고메스·맥긴·알리송에서 잭슨으로 가는 연결 0 · 세 채널 모두 「만잠비를 잭슨 옆 10번으로」 | 앞 5명 볼 소유 평균 높이 52~70 · 만잠비 상대 박스 터치 0 · 오른쪽 2선 중복(맥긴·알리송) | **같은 방향** — 쟁점 #21. ⚠️ 팬 채널 3곳의 같은 주장은 독립 근거로 세지 않는다 |
+| ⑶ 근성·리더십 부재 | The Villans 「They rattled us without even trying too hard」(상대는 별로 애쓰지도 않고 우리를 흔들었다) · 고메스가 표적 → 경고 → 60~66′ 교체 패턴 | 경합 43% · 볼 빼앗김 13(상대 4) · 고메스 58′ 경고 → 66′ 교체 · 파울 5 | 실측과 맞는 부분만 채택(경합·교체). 「근성」 자체는 측정값이 없다 |
+| ⑷ 교체 시점 | UTV 「You could have made that change about 50, 55」(50~55분쯤 바꿨어야 했다) | 첫 교체 66′ · 흐름 전환 60′ — 리포트 §4 「교체보다 흐름 전환이 먼저」와 합치 | 쟁점 #59 |
+
+- 그 밖의 주장: 바클리 피벗 선발(UTV — 90분당 전진 패스 11.51 · 영상 수치 · DB 대조 전) · 고레츠카·카마라 활동량 부족(1874 · 실측 지표 없음) · 느린 빌드업이 새 공격수와 맞지 않는다(1874 · 쟁점 #30) · 하우드-벨리스 RB가 오버랩으로 알리송을 돕지 못했다(The Villans · 쟁점 #57) · 캐시를 오른쪽 폭으로 쓰는 뒤집힌 3백(UTV · 쟁점 #47).
+
+### 밍스 경기 후 발언(1차 · TNT Sports → Shropshire Star·Hayters·Birmingham Live 운반)
+
+- 「Time can pass and things can drift, and it feels like that is happening in games at the moment.」(시간이 흐르면 경기가 흘러가 버릴 수 있는데, 지금 경기들에서 그런 일이 일어나는 것 같다)
+- 「In the main it was OK. But OK is not good enough.」(대체로 괜찮았다. 하지만 괜찮은 걸로는 충분하지 않다)
+- 「There is no shortcut to success; it is really hard work every single day.」(성공에 지름길은 없다. 매일 정말 힘든 노력이다)
+- 영상(UTV)은 이 발언이 알리송·만잠비·고메스를 겨냥했다고 해석했다 — **진행자 추론이며 채택하지 않는다.**
+
+### 가르나초 — 명단 제외 사실관계(이적 축은 `reports/transfer-watch/2026-11-26.md`)
+
+- 교체 12자리 중 11자리(GK 2명 포함)만 채우고 1자리를 비운 채 제외했다. UCL 등록 선수이고, 부상·징계 언급은 0이다(ESPN · PA). 3경기 연속 명단 제외 · 11월 출전 0이다.
+- 에메리 「Today the players were here who I think are the best players to be here with us」(오늘 여기 온 선수들이 함께할 최선의 선수들이다 · PA 표기 — §8 Guardian 표기와 어순만 다름).
+- 경기 다음날 인스타그램에서 빌라 흔적을 지웠다(Birmingham Mail · 영상 2편도 언급).
+- ⚠️ 출전 분 불일치: DB 10-31 풀럼전 9분 ↔ Goal 「three-minute cameo」(3분 교체 출전) — SofaScore 재확인 대상.
+
+### 미수행·다음
+
+- **Jacob Tanswell**: 이 경기 기사는 여전히 찾지 못했다. 가르나초 관련 X 게시물(Football365 운반)만 확인했다. 예약 D+2 회차가 X를 다시 시도한다.
+- 예약 `mw-avl-galatasaray-d2`(11-26 20:00)는 **이 PC에는 없다**(`list_scheduled_tasks` 0건 — 예약은 PC마다 따로라 다른 PC에 있을 수 있다). 그 예약이 돌면 이 절의 영상 3편은 요약까지 끝났으니 다시 하지 않는다 — 그 뒤 업로드분 · Tanswell X · 터키어 전술 분석만 본다.
+
+### 출처
+
+- 밍스(Shropshire Star): https://www.shropshirestar.com/sport/football/aston-villa/things-can-drift-defender-fires-aston-villa-warning-after-galatasaray-defeat-9372666
+- 밍스(Hayters): https://hayters.com/there-is-no-shortcut-to-success-mings-demands-more-from-aston-villa-after-galatasaray-loss/
+- 가르나초 제외(ESPN): https://www.espn.com/soccer/story/_/id/50591453/alejandro-garnacho-aston-villa-unai-emery
+- 가르나초 제외(PA/RTÉ): https://www.rte.ie/sport/soccer/2026/1125/1600607-garnacho-facing-bleak-future-after-villa-squad-omission/
 
 ## D+3 추적
 

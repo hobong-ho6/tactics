@@ -282,6 +282,12 @@ def rows_of(players):
                     "card": {"gk": q.get("position") == 0,
                              "base": q.get("basePlayerEaId"), "url": q.get("url"),
                              "sm": q.get("skillMoves"), "wf": q.get("weakFoot"),
+                             # ⭐ 현재 포지션(migration 140 · 2026-11-26) — 진화 보상 `alternative_positions`가 보조 포지션을 늘린다.
+                             #    「주/보조…」 슬래시 형식(기준 카드와 같다). ⚠️ 키 이름은 fut.gg 카드 정의 API(`alternativePositionIds`)와
+                             #    같다는 가정이다(GG Club 원본에서 미확인) — 키가 없으면 None이라 기존 값을 지우지 않는다.
+                             "pos": ("/".join(dict.fromkeys(POS[x] for x in [q.get("position")] + list(q["alternativePositionIds"] or [])
+                                                            if x in POS))
+                                     if "alternativePositionIds" in q and q.get("position") in POS else None),
                              "foot": {1: "오른쪽", 2: "왼쪽"}.get(q.get("foot")),
                              "h": q.get("height"), "w": q.get("weight"), "dob": q.get("dateOfBirth"),
                              "nat": nm_of(q.get("nation")), "lg": nm_of(q.get("league")),

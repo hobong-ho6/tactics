@@ -792,13 +792,16 @@ function evoCountLabel(p, log) {
       **단계마다 전/후 스냅샷**으로 떠서 실제 상승분만 적는다. 갈림길인데 어느 가지였는지 기록이 없으면 「가지 미기록」으로 두고
       가지별 보상을 나열한다. OVR·6대는 원장 기록, PlayStyle·Role+는 직전 기록과의 차이다. */
 /* 마감돼 현재 카탈로그에 없는 진화의 단계 보상(export log_levels) — 화면이 한 번 넣어 준다(setRarityAssets와 같은 방식) */
-let EVO_LEVELS = {}, PS_NAMES = {};
-export function setEvoLevels(m, psNames) { EVO_LEVELS = m || {}; PS_NAMES = psNames || {}; }
+let EVO_LEVELS = {}, PS_NAMES = {}, POS_NAMES = {};
+/* posNames — EA 포지션 id → 약칭(export `pos_names` · 정본 scripts/collect_futgg_history.POS) · 포지션 추가 보상 라벨용(migration 140) */
+export function setEvoLevels(m, psNames, posNames) { EVO_LEVELS = m || {}; PS_NAMES = psNames || {}; POS_NAMES = posNames || {}; }
 const upText = u => String(u.upgrade || '').startsWith('play_style')
   ? `${String(u.upgrade) === 'play_style_plus' ? 'PlayStyle+' : 'PlayStyle'} ${PS_NAMES[String(u.value)] || '#' + u.value}`
+  : String(u.upgrade) === 'alternative_positions'
+  ? `새 포지션 ${POS_NAMES[String(u.value)] || '#' + u.value}`
   : `${upLabel(u)} +${u.value}${u.maxValue != null ? ` (^${u.maxValue})` : ''}`;
 const UP_KR = { overall: 'OVR', skill_moves: '개인기', weak_foot: '약발', play_style: 'PlayStyle', play_style_plus: 'PlayStyle+',
-                role_plus: 'Role+', role_plus_plus: 'Role++', rarity_id: '카드 디자인' };
+                role_plus: 'Role+', role_plus_plus: 'Role++', rarity_id: '카드 디자인', alternative_positions: '새 포지션' };
 function upLabel(u) {
   const k = String(u.upgrade || '');
   if (k.startsWith('attribute_')) return ATTR_KR[k.slice(10)] || k.slice(10);

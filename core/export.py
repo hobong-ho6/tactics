@@ -342,7 +342,9 @@ def export_all(db_path=None, window="2026-summer"):
                -- ⭐ 개인기·약발은 보유 카드 현재값 우선(migration 139 — 진화가 별을 올린다 · 마조 3★→4★)
                COALESCE(c.current_skill_moves, i.skill_moves) skill_moves,
                COALESCE(c.current_weak_foot, i.weak_foot) weak_foot, i.preferred_foot, i.accelerate,
-               i.height_cm, i.weight_kg, i.positions, i.card_image_url, i.rarity_ea_id,
+               i.height_cm, i.weight_kg,
+               COALESCE(c.current_positions, i.positions) positions,   -- migration 140 — 진화로 늘어난 보조 포지션 우선
+               i.positions base_positions, i.card_image_url, i.rarity_ea_id,
                i.is_icon, i.is_hero, i.is_base,   -- 진화 요구조건 「Excluded Rarity: Base Icon, Base Hero」 판정용(2026-10-20)
                CASE WHEN c.current_attrs IS NOT NULL THEN 'ea-sync' ELSE 'base-card' END basis,
                (SELECT COUNT(*) FROM v_evo_log l
@@ -476,7 +478,9 @@ def export_all(db_path=None, window="2026-summer"):
                                 --    기준 카드+진화 보상 재구성은 검증용으로만 쓴다.
                                 f.current_attrs,
                                 f.card_art,   -- ⭐ migration 138 — 위 club.state와 같은 열
-                                c.ovr AS card_ovr, c.positions, c.nation, c.league, c.club, c.is_icon, c.is_hero,
+                                c.ovr AS card_ovr,
+                                COALESCE(f.current_positions, c.positions) AS positions,   -- migration 140 — 현재값 우선
+                                c.nation, c.league, c.club, c.is_icon, c.is_hero,
                                 c.chem_extra, c.card_image_url, c.attrs,
                                 -- ⭐ 판(레어도 틀) 교체용(2026-09-27) — 진화로 OVR이 오르면 화면이
                                 --    브론즈/실버/골드 판을 갈아 끼운다. `card_ovr`(인쇄)과 짝이다.
@@ -584,6 +588,8 @@ def export_all(db_path=None, window="2026-summer"):
                                                          LEFT JOIN fc_chemistry_styles a ON a.game_version=r.game_version AND a.style_id=r.alt_style_id
                                                          WHERE r.id IN (SELECT MAX(id) FROM fut_chem_reviews GROUP BY club_player_id)"""),
                            "obj_tasks": obj_tasks, "ps_names": ps_names, "eligible": elig_rows,
+                           # ⭐ 포지션 추가 보상(alternative_positions · migration 140) 라벨용 EA 포지션 id → 약칭 — 정본은 collect_futgg_history.POS
+                           "pos_names": {str(k): v for k, v in __import__("scripts.collect_futgg_history", fromlist=["x"]).POS.items()},
                            "cosmetic_keys": sorted(__import__("core.futgg_attrs", fromlist=["x"]).COSMETIC_UPGRADES),   # ⭐ 코스메틱 판정 정본(core/futgg_attrs)
                            # fut.gg 케미 신호(migration 055) — 보유 카드마다 최신 관측. 배지는 등급이 아니라 AcceleRATE다.
                            #   ⭐ 「바뀐 행만 저장」(migration 106) + 증분 수집(2026-10-20 · 회차마다 일부 카드만 연다) —

@@ -600,7 +600,7 @@ CREATE TABLE fut_evolution_log(
   attrs_delta TEXT,                           -- JSON {한글 라벨: +n}
   playstyles_after TEXT, roles_plus_after TEXT, roles_plus_plus_after TEXT,
   source TEXT, confidence TEXT, notes TEXT
-, is_void INTEGER NOT NULL DEFAULT 0, attrs_after TEXT, removed_at TEXT, removed_how TEXT);
+, is_void INTEGER NOT NULL DEFAULT 0, attrs_after TEXT, removed_at TEXT, removed_how TEXT, positions_after TEXT);
 CREATE TABLE player_card_prices(
   id INTEGER PRIMARY KEY,
   game_version TEXT NOT NULL REFERENCES game_versions(code),
@@ -893,7 +893,7 @@ CREATE TABLE "fut_club_players"(
   notes TEXT,
   updated TEXT NOT NULL, chem_style_ea INTEGER, chem_points INTEGER, gg_player_id TEXT, synced_at TEXT, current_attrs TEXT, is_untradeable INTEGER, is_in_active_squad INTEGER, is_captain INTEGER, kit_number INTEGER, number_of_owners INTEGER,
   -- 어느 챌린지에 넣었나(status='sbc'일 때만). 되돌리기와 출처 추적용.
-  sbc_challenge_ea_id INTEGER, is_loan INTEGER, loan_games INTEGER, ea_evo_history TEXT, ea_evo_active TEXT, is_on_transfer_list INTEGER, tl_state TEXT, tl_buy_now INTEGER, tl_expires TEXT, tl_last_seen TEXT, card_art TEXT, current_skill_moves INTEGER, current_weak_foot INTEGER,
+  sbc_challenge_ea_id INTEGER, is_loan INTEGER, loan_games INTEGER, ea_evo_history TEXT, ea_evo_active TEXT, is_on_transfer_list INTEGER, tl_state TEXT, tl_buy_now INTEGER, tl_expires TEXT, tl_last_seen TEXT, card_art TEXT, current_skill_moves INTEGER, current_weak_foot INTEGER, current_positions TEXT,
   UNIQUE(account_id, ea_item_id)
 );
 CREATE TABLE fc_sbc_fixed(
