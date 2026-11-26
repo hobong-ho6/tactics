@@ -32,6 +32,9 @@
 <!-- evo-ledger:start -->
 **진화 원장 (자동 · 최근 14일 + 진행 중 · 정본 DB `fut_evolution_log` · `ship.py`가 갱신)**
 
+- 2026-11-25 · 가르나초 ← Slick Operator 3단계 · OVR 81→83 · 진행 중
+- 2026-11-24 · 가르나초 ← Forked Lightning 4단계 · OVR 77→81 · 완료 2026-11-25
+- 2026-11-24 · 맥긴 ← Cutting Edge 5단계 · OVR 83→87 · 완료 2026-11-24
 - 2026-11-23 · 오나나 ← Lightning Rod 4단계 · OVR 81→84 · 진행 중
 - 2026-11-22 · Cissé ← CB Roles++ 1단계 · OVR 86→86 · 완료 2026-11-22
 - 2026-11-22 · Cissé ← Storm Wall 4단계 · OVR 80→86 · 완료 2026-11-22
@@ -50,9 +53,6 @@
 - 2026-11-17 · Alysson ← Right-Hand Drive 4단계 · OVR 80→83 · 완료 2026-11-17
 - 2026-11-17 · Maatsen ← Streets Won't Forget 3단계 · OVR 79→83 · 완료 2026-11-17
 - 2026-11-17 · Madjo ← Striker School 5단계 · OVR 65→81 · 완료 2026-11-17
-- 2026-11-11 · Jack Moylan ← Under the Lights 4단계 · OVR 80→83 · 완료 2026-11-11
-- 2026-11-10 · Issa Kaboré ← Clean Sheet Nights 3단계 · OVR 72→75 · 완료 2026-11-10
-- 2026-11-10 · Rafiki Saïd ← Underdog Run 5단계 · OVR 72→80 · 완료 2026-11-10
 <!-- evo-ledger:end -->
 
 **분량**: 이 문서 약 17.4KB(목표 10~15 · 상한 20) — 11-26 갱신(완료 2건 제거 · 세션 기록 5개 유지).

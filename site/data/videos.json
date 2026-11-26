@@ -2,7 +2,7 @@
  "all": [
   {
    "channel": "1874",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-26] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 554,
    "impl_claims": [
     {
@@ -113,8 +113,279 @@
    "video_id": "NoUKjmUmhVI"
   },
   {
-   "channel": "The Villans",
+   "channel": "Barış ÖZER",
    "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-26] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "id": 560,
+   "impl_claims": [
+    {
+     "axis": "limit",
+     "field": "build-up start turnovers",
+     "field_kr": "빌드업 시작 턴오버",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 52,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "중앙 트랩·짧은 골킥 빌드업 턴오버",
+      "trigger": "2026-10-21 이후 리그 5경기 (4/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「Oyun başlangıcını yaparken stoperlerle yani defans hattıyla 1. bölgeyle 2. bölge arasında sürekli top kaptırıyorlar.」(빌드업을 시작할 때 센터백, 즉 수비 라인에서 1구역과 2구역 사이에 계속 공을 빼앗긴다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Villa lose the ball between first and second phase when starting from the centre-backs",
+     "value_kr": "센터백에서 시작하는 1→2단계 사이에서 공을 자주 잃는다",
+     "verdict": "HELD",
+     "verdict_note": "이 경기 실측은 부분 일치: 실점 사슬의 턴오버(75′45″ 카마라)는 자기 진영 피벗 구역에서 났다. 해설이 든 15′ 사례는 WS에서 센터백 구간 턴오버로 확인되지 않는다(가장 가까운 것은 13′58″ 맥긴 자기 진영 볼 빼앗김 · 레미나 태클). 상대 관점 단일 해설 — 쟁점 #52(중앙 트랩·짧은 골킥 턴오버) 트리거에서 재판정"
+    }
+   ],
+   "key_points": [
+    "귈 투입 전후로 경기가 갈렸다 — 바르시 최전방은 볼 키핑 실패",
+    "2선 지역 방어로 20~30m 공간에 가둠 · 3단계 진입 때마다 플레이 중단",
+    "빌라 고질 = 빌드업 시작(센터백·1→2단계)의 볼 손실 · 15′ 1회 포착(해설)",
+    "3단계 압박 위치 선정은 갈라타사라이 쪽 약점(14′·24′)으로 지적"
+   ],
+   "kind": "상대팀",
+   "lang": "tr",
+   "obs_points": [],
+   "published": "2026-11-25",
+   "published_approx": 0,
+   "report_id": 72,
+   "summary": "갈라타사라이 관점의 짧은 전술 분석(터키어 · 5분). 경기를 귈 투입 전후로 나눈다. 최전방 바르시 알페르는 공을 지키지 못했고, 귈이 들어온 뒤에야 전환이 살아났다는 평가다. 수비는 2선에서 지역 방어로 폭을 좁혀 빌라를 20~30m 공간에 가뒀고, 빌라가 2단계에서 3단계로 넘어가려 할 때마다 공을 멈춰 세웠다(파울·터치라인 아웃·탈취). 빌라의 시즌 고질로는 후방 빌드업 시작 단계, 곧 센터백과 1·2단계 사이의 볼 손실을 꼽았다. 갈라타사라이가 15′에 한 번 그걸 잡았다고 했다.",
+   "team_code": "AVL",
+   "title": "Galatasaray - Aston Villa Müsabakasının Taktik Analizi",
+   "transcript_path": "reports/transcripts/XFt6c_q-Xls.tr.md",
+   "url": "https://www.youtube.com/watch?v=XFt6c_q-Xls",
+   "video_id": "XFt6c_q-Xls"
+  },
+  {
+   "channel": "Doksanın Ötesi",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 559,
+   "impl_claims": [
+    {
+     "axis": "limit",
+     "field": "striker runs in behind neutralised",
+     "field_kr": "잭슨 배후 침투",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 83,
+      "phase": "decide",
+      "resolution": null,
+      "status": "open",
+      "title": "잭슨 오프사이드·침투 타이밍",
+      "trigger": "2026-10-28 이후 잭슨 선발 5경기 (3/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「En büyük tehlike Jackson'ın arkaya koşuları demiştik. Burada Galatasaray'ın hakkını vermek lazım.」(가장 큰 위험은 잭슨의 배후 침투라고 했었다. 이 부분은 갈라타사라이를 인정해야 한다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Jackson's runs in behind were shut down; only one shot (4')",
+     "value_kr": "배후 침투가 막혀 4′ 슈팅 1개가 전부",
+     "verdict": "PENDING",
+     "verdict_note": "실측: 잭슨 슈팅 1(4′ · 박스 밖) · 오프사이드 1 · 41′ 경고(시간 지연 · SofaScore). 침투 타이밍 쟁점 #83 (decide 단계) 판정 대상으로 추가 — 이 경기는 상대 1대1 대인 대응이라 표본 가중 낮음"
+    }
+   ],
+   "key_points": [
+    "경기 전 예측 4개 모두 적중(채널 자평)",
+    "잭슨: 4′ 슈팅 1개가 전부 · 배후 침투 봉쇄",
+    "77′ 실점 장면 잭슨 하이킥 — 41′ 경고가 있어 두 번째 경고 대상이었으나 VAR 개입 불가",
+    "스프린트 158 대 120(해설 수치 · 출처 미기재)",
+    "Opta: 에메리 빌라는 이번 시즌 전까지 196경기 연속 유효 슈팅 ≥1(채널 인용 · 미검증)"
+   ],
+   "kind": "상대팀",
+   "lang": "tr",
+   "obs_points": [],
+   "published": "2026-11-25",
+   "published_approx": 0,
+   "report_id": 72,
+   "summary": "갈라타사라이 관점의 경기 후 정리(터키어 · 8분). 채널이 경기 전에 낸 예측 4개(볼 소유보다 볼 잃는 위치 · 바르시 알페르 최전방 · 빌라 세트피스 주의 · 잭슨 배후 침투 경계)를 대조했고 넷 다 맞았다고 본다. 실점은 사라 코너 → 싱고 헤더 → 잭슨 맞고 튐 → 귈 헤더이며, 잭슨의 발이 귈 얼굴에 닿았다. 잭슨은 41′에 이미 경고가 있어 주심이 두 번째 경고를 줄 수 있었지만, VAR은 두 번째 경고에 개입할 수 없다고 짚었다. 갈라타사라이 스프린트 158 대 빌라 120(해설 수치). 에메리 체제 빌라가 시즌 전까지 196경기 연속 유효 슈팅을 기록했다는 Opta 수치도 인용했다.",
+   "team_code": "AVL",
+   "title": "Galatasaray Aston Villa'yı Nasıl Yendi? | Okan Buruk'un Taktik Zaferi!",
+   "transcript_path": "reports/transcripts/u-bNkz7h2wE.tr.md",
+   "url": "https://www.youtube.com/watch?v=u-bNkz7h2wE",
+   "video_id": "u-bNkz7h2wE"
+  },
+  {
+   "channel": "Hastalık Bu Futbol",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 558,
+   "impl_claims": [
+    {
+     "axis": "limit",
+     "field": "opponent deep man-marking 5-3-2",
+     "field_kr": "상대 대인 5-3-2 대응",
+     "focus": null,
+     "headline_kr": "3-2-5에 5-3-2 대인 맞대응",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 2,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"유누스가 내려와 백5\", \"1대1 짝 7쌍 고정\", \"3단계 진입 순간만 강하게\", \"빌라 패스 65%가 자기 진영(WS 311/480)\"]",
+     "quote": "「Jackson'la Davinson, Abdülkerim'le McKin, Singo'yla Manzambi birebir oynuyor.」(잭슨엔 다빈손, 맥긴엔 압둘케림, 만잠비엔 싱고가 1대1로 붙는다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Galatasaray matched Villa's 3-2-5 with a 5-3-2 (winger dropping as 5th) and 1v1 pairs, forcing play outside",
+     "value_kr": "갈라타사라이가 빌라 3-2-5에 윙어를 5번째 수비로 내린 5-3-2와 1대1 짝으로 맞서 바깥으로 밀어냈다",
+     "verdict": "HELD",
+     "verdict_note": "상대 관점 해설(1차 아님)이지만 실측과 같은 방향: WS 빌라 패스 480 중 311(65%)이 자기 진영 · 만잠비 상대 박스 터치 0 · 슈팅 4(유효 0). 부룩 회견(DHA·Çukurova 11-24)의 토레이라 대인 압박 발언과 독립 교차. 쟁점 #2(상대 유형별 프리셋 · 대인압박) 트리거에서 재판정"
+    },
+    {
+     "axis": "limit",
+     "field": "striker isolation under 1v1 marking",
+     "field_kr": "9번 고립",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 55,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "9번의 기능과 9번 없는 구성",
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「Gerçekten sahayı dar etti Ncolas Jackson'a.」(니콜라 잭슨에게 정말로 경기장을 좁혀 버렸다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Jackson marked 1v1 by Sanchez with Singo switch cover; no free runs behind",
+     "value_kr": "잭슨에 다빈손 1대1 · 싱고와 짝을 바꿔 배후 침투를 지움",
+     "verdict": "HELD",
+     "verdict_note": "실측: 잭슨 슈팅 1(4′) · 오프사이드 1 · WS 패스 11 · 터치 26(FotMob) — 고립 방향 일치. 대인 1대1 상대에서의 9번 기능은 쟁점 #55 트리거에서 재판정(1경기 · 상대 특수 대응)"
+    },
+    {
+     "axis": "limit",
+     "field": "pivot turnover under double press",
+     "field_kr": "피벗 턴오버",
+     "focus": null,
+     "headline_kr": "피벗 사이 패스 협공 → 실점 코너",
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 52,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "중앙 트랩·짧은 골킥 빌드업 턴오버",
+      "trigger": "2026-10-21 이후 리그 5경기 (4/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": "[\"75′43″ 고레츠카→카마라\", \"토레이라 차단 · 우고추쿠 회수\", \"29초 뒤 코너 → 77′ 실점\"]",
+     "quote": "「Goreska çok düşünmeden Kamara'ya döndüğünde Toreira ve Ugo Chukvu ikili bir sıkıştırma uyguluyorlar.」(고레츠카가 별생각 없이 카마라에게 돌려주자 토레이라와 우고추쿠가 2인 협공을 건다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Goretzka to Kamara backward pass in own half double-teamed by Torreira and Ugochukwu, leading to the corner",
+     "value_kr": "자기 진영 고레츠카→카마라 패스를 토레이라·우고추쿠가 협공해 실점 코너로 이어짐",
+     "verdict": "HELD",
+     "verdict_note": "WS 이벤트로 확인: 75′43″ 고레츠카 패스(33,75) → 75′45″ 카마라 패스 실패 · 토레이라 BlockedPass → 75′47″ 우고추쿠 BallRecovery → 76′15″ 코너 → 76′47″ 귈 골. 리포트 §4 「75′ 카마라 자기 진영 패스가 막힘」을 협공 구조까지 보강(정정 아님). 쟁점 #52(중앙 트랩·턴오버) 트리거에서 재판정"
+    }
+   ],
+   "key_points": [
+    "빌라 3-2-5 대응 = 유누스가 내려와 만든 백5 + 토레이라·레미나·에렌 3 + 바르시·바트라코프 2(5-3-2)",
+    "1대1 짝: 잭슨↔다빈손 · 맥긴↔압둘케림 · 만잠비↔싱고 · 알리송↔야콥스 · 마첸↔유누스 · 고메스↔토레이라 · 카마라↔레미나",
+    "센터백이 튀어나가도 유누스가 5번째로 메워 뒤가 열리지 않았다 — 릴·스포르팅전에서 실점한 공간을 이번엔 닫았다는 해설",
+    "골킥·후방 1·2단계는 허용, 3단계 진입 순간에만 강하게 — 자기 진영 패스 약 250(해설 수치)",
+    "실점 직전: 고레츠카가 카마라에게 되돌린 패스를 토레이라·우고추쿠가 협공 → 우고추쿠 회수 → 유누스 → 밍스 머리 맞고 귈이 코너 획득 → 사라 코너 → 귈 득점"
+   ],
+   "kind": "상대팀",
+   "lang": "tr",
+   "obs_points": [],
+   "published": "2026-11-25",
+   "published_approx": 0,
+   "report_id": 72,
+   "summary": "갈라타사라이 관점의 경기 후 전술 해설(터키어 · 35분). 부룩은 평소의 전방 대인 압박 대신 '볼을 내주고 3선 진입만 막는' 낮은 강도의 5-3-2를 썼다. 오른쪽 윙어 유누스 아크귄이 내려와 5번째 수비수가 됐고, 그 덕에 센터백(다빈손 산체스·압둘케림)이 맥긴·잭슨을 따라 앞으로 나가도 뒤가 비지 않았다. 빌라의 3-2-5(밍스 왼쪽으로 벌림 · 린델뢰프 중앙 · 하우드-벨리스 오른쪽 · 마첸 높게 · 만잠비 안쪽)에 1대1로 짝을 붙이고, 진행 방향으로 짝을 바꾸는 '스위치'로 방향 전환 손실을 없앴다. 빌라는 계속 바깥으로 밀려 자기 진영 패스만 쌓았다. 실점 사슬은 교체 3명(우고추쿠 회수 · 귈 코너 획득 · 사라 코너)이 모두 관여했다.",
+   "team_code": "AVL",
+   "title": "387 İsabetli Pas, 0 İsabetli Şut | Galatasaray - Aston Villa",
+   "transcript_path": "reports/transcripts/Cl-NPLfxajk.tr.md",
+   "url": "https://www.youtube.com/watch?v=Cl-NPLfxajk",
+   "video_id": "Cl-NPLfxajk"
+  },
+  {
+   "channel": "L1 Üçgen",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
+   "id": 557,
+   "impl_claims": [
+    {
+     "axis": "limit",
+     "field": "settled attack vs low block",
+     "field_kr": "지공 생산",
+     "focus": null,
+     "headline_kr": null,
+     "issue": {
+      "closed": null,
+      "due": false,
+      "hold": false,
+      "id": 2,
+      "phase": "watch",
+      "resolution": "HELD",
+      "status": "open",
+      "title": "상대 유형별 경기 프리셋 후보(백3·투톱·대인압박·고라인)",
+      "trigger": "2026-11-09 이후 공식전 5경기 (2/5)"
+     },
+     "player": null,
+     "player_id": null,
+     "points_kr": null,
+     "quote": "「Aston Villa topla fazla oynadığı ve rakibin geride durduğu maçlarda sete oturduğunda üretmekte zorlanabiliyor.」(빌라는 공을 많이 갖고 상대가 내려앉은 경기에서 지공에 들어가면 만들어 내는 데 애를 먹을 수 있다 · auto-caption)",
+     "role_id": null,
+     "team_code": "AVL",
+     "value": "Villa struggle to create in settled possession when opponents sit deep",
+     "value_kr": "상대가 내려앉으면 지공에서 기회를 못 만든다",
+     "verdict": "HELD",
+     "verdict_note": "실측 같은 방향: 점유 55% · 오픈플레이 xG 0.12 · 슈팅 4(유효 0). 직전 선덜랜드전 0-0(내려앉은 상대)과 같은 유형 — 상대 유형별 프리셋 쟁점 #2 트리거에서 재판정. 단일 해설·상대 관점"
+    }
+   ],
+   "key_points": [
+    "계획: 볼 양보 + 왼쪽은 닫고 오른쪽 과부하 + 롱볼",
+    "빌라 약점 해석: 상대가 내려앉은 지공에서 생산 부족",
+    "레미나 '문어처럼' 중앙 지배 · 토레이라 경합 담당",
+    "대가: 바르시 알페르가 센터백 사이에서 고립 — 경합 12 중 4 승",
+    "62′ 귈 투입 → 바르시 측면 이동 → 전방 인원 증가 → 77′ 득점"
+   ],
+   "kind": "상대팀",
+   "lang": "tr",
+   "obs_points": [],
+   "published": "2026-11-25",
+   "published_approx": 0,
+   "report_id": 72,
+   "summary": "갈라타사라이 관점의 경기 후 정리(터키어 · 14분 · 중간에 광고 2건). 오심헨·레앙·샬라이가 없어 부룩이 볼을 내주고 상대 공격을 먼저 끊는 계획을 골랐다는 해석이다. 근거로 '빌라는 볼을 많이 갖고 상대가 내려앉으면 지공에서 만들어 내지 못한다'는 잉글랜드 쪽 평가를 든다. 전반 빌라 점유 55%·xG 0.54 대 0.02(진행자 수치)였지만 중앙은 레미나·토레이라가 닫았다. 대가는 최전방 바르시 알페르의 고립이었고(밍스가 롱볼 대부분을 따냄), 62′ 귈 투입으로 바르시를 측면으로 돌리면서 풀렸다.",
+   "team_code": "AVL",
+   "title": "Galatasaray Artık Şampiyonlar Ligi Takımı mı? Aston Villa'yı Uyuttu!",
+   "transcript_path": "reports/transcripts/AVzMLQ_rmrE.tr.md",
+   "url": "https://www.youtube.com/watch?v=AVzMLQ_rmrE",
+   "video_id": "AVzMLQ_rmrE"
+  },
+  {
+   "channel": "The Villans",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 555,
    "impl_claims": [
     {
@@ -226,7 +497,7 @@
   },
   {
    "channel": "UTV",
-   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다. · [요약 2026-11-26] summary/key_points는 **전사 원문을 읽고 쓴 것**이다(영상 미시청). ⚠️ auto-caption 오인식 가능 — 인물명·수치는 실측과 교차검증 필요(docs/30 대조표). 인용은 원문+한국어 번역 병기(불변규칙 11).",
+   "confidence": "MEDIUM-HIGH(메타) — 채널·제목·게시일은 전사 헤더 파싱값이다. ⚠️ 전사 본문은 **유튜브 자동 생성 자막**이라 오인식이 있다(docs/30 대조표) — 인용 시 auto-caption 명기·원문+번역 병기(불변규칙 11). 경기 귀속은 상대팀 표기+날짜 창으로 단일 특정된 건만 붙였다.",
    "id": 556,
    "impl_claims": [
     {
@@ -39749,6 +40020,10 @@
   ],
   "72": [
    554,
+   560,
+   559,
+   558,
+   557,
    555,
    556,
    552,

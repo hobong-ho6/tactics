@@ -394,6 +394,107 @@
 - 가르나초 제외(ESPN): https://www.espn.com/soccer/story/_/id/50591453/alejandro-garnacho-aston-villa-unai-emery
 - 가르나초 제외(PA/RTÉ): https://www.rte.ie/sport/soccer/2026/1125/1600607-garnacho-facing-bleak-future-after-villa-squad-omission/
 
+## D+2 추적 (2026-11-26) — 예약 회차 `mw-avl-galatasaray-d2`
+
+**결론: 무득점과 실점의 상대 쪽 메커니즘이 확인됐다. 갈라타사라이는 빌라 3-2-5에 대인 5-3-2로 맞섰다. 실점 코너는 고레츠카→카마라 자기 진영 패스를 2명이 협공해 따낸 것이다(WS 이벤트로 확인). 당일 판정과 충돌하는 자료는 없어 정정 0이고, 정본 변경도 0이다. 로테이션 선발 이유에 대한 에메리 본인 발언은 D+2까지 여전히 0건이다.**
+
+### 이번 회차에 새로 확보한 자료
+
+| 축 | 자료 | 결과 |
+|---|---|---|
+| 필수 3채널(UTV·The Villans·1874) | 동영상·라이브 탭 재스윕(20:00) | 수동 D+2 이후 **새 업로드 0**. UTV 다음 예정은 입스위치 프리뷰(11-28) |
+| 갈라타사라이 쪽 유튜브(터키어) | 유튜브 검색 「Galatasaray Aston Villa maç analizi taktik」(이번 주) | 경기 후 분석 4편 전사·요약·주장 6행(아래) |
+| 오칸 부룩 회견 | DHA · Çukurova Gazetesi(11-24 23:50) | **대인 압박 설계 원문 확보**(아래) |
+| Jacob Tanswell | X 프로필 직접 열람(이번엔 열림) | 11-25 게시 4건 — 에메리 회견 원문 2건 · 분위기 기사 1건 · 가르나초 1건. **전술 분석 기사는 없다** |
+| 일본어(스즈키) | footballchannel · FOOTBALL ZONE · 東スポ · Qoly | 평점·배급 칭찬. 실점 책임은 없다는 쪽이 다수 |
+| 포르투갈어(고메스·알리송) | brasileirao.com.br 외 | 선발 기사뿐 · 새 평가 없음 |
+| 영어 블로그 | Squawka(403 차단) · readastonvilla · thefalse9 | 평점·결과 기사. 새 전술 서술 없음 |
+
+### 새 영상 4편 — 갈라타사라이 관점(전부 auto-caption · 터키어)
+
+| 채널 · 게시 | 길이 | 요점 | 구현 주장 |
+|---|---|---|---|
+| Hastalık Bu Futbol 「387 İsabetli Pas, 0 İsabetli Şut」 · 11-25 · https://www.youtube.com/watch?v=Cl-NPLfxajk | 35분 | 전술판 해설. 5-3-2 대인 대응 · 실점 사슬 | 3행 — HELD #2 · #55 · #52 |
+| L1 Üçgen 「Aston Villa'yı Uyuttu!」 · 11-25 · https://www.youtube.com/watch?v=AVzMLQ_rmrE | 14분 | 볼을 내주는 계획 · 레미나·토레이라가 중앙 봉쇄 | 1행 — HELD #2 |
+| Doksanın Ötesi 「Okan Buruk'un Taktik Zaferi!」 · 11-25 · https://www.youtube.com/watch?v=u-bNkz7h2wE | 8분 | 사전 예측 대조 · 잭슨 41′ 경고 뒤 77′ 하이킥 | 1행 — PENDING #83 |
+| Barış ÖZER 「Galatasaray - Aston Villa Müsabakasının Taktik Analizi」 · 11-25 · https://www.youtube.com/watch?v=XFt6c_q-Xls | 5분 | 2선 지역 방어로 3단계 진입 차단 · 빌라 빌드업 시작 단계 턴오버 | 1행 — HELD #52 |
+
+- 네 편 모두 `_video_overrides.json`으로 리포트 #72에 귀속했다(종류: 상대팀).
+- 건너뛴 영상: 경기 전 프리뷰 6편(Taktik Kare · Doksanın Ötesi · Eski Açık · Uzatmalar · Mackolik · TaktiXPro). 장시간 라이브 3편(BORGES TV 41분 · Atistics TV 1시간 · Libero TV 2.5시간)은 잡담 비중이 커서 건너뛰었다 → D+3 후보(필요 시).
+
+### 재판정 ① 무득점 원인(잭슨 고립) — 당일 판정 유지 · 메커니즘 보강
+
+당일 판정은 「앞줄이 낮고 박스에 아무도 도착하지 않았다」였다. 상대 쪽 자료가 **왜 그렇게 됐는지**를 채운다.
+
+- **5-3-2 대인 맞대응** — 오른쪽 윙어 유누스 아크귄이 내려와 5번째 수비가 됐다. 그래서 센터백이 앞으로 튀어나가도 뒤가 비지 않았다(Hastalık Bu Futbol 해설).
+- **1대1 짝**: 잭슨↔다빈손 산체스 · 맥긴↔압둘케림 · 만잠비↔싱고 · 알리송↔야콥스 · 마첸↔유누스 · 고메스↔토레이라 · 카마라↔레미나.
+  - 「Jackson'la Davinson, Abdülkerim'le McKin, Singo'yla Manzambi birebir oynuyor.」(잭슨엔 다빈손, 맥긴엔 압둘케림, 만잠비엔 싱고가 1대1로 붙는다 · auto-caption)
+  - 「Gerçekten sahayı dar etti Ncolas Jackson'a.」(니콜라 잭슨에게 정말로 경기장을 좁혀 버렸다 · auto-caption)
+- **후방은 내주고 3단계 진입만 막았다** — 해설은 빌라의 자기 진영 패스를 약 250개로 셌다. **WS 실측은 패스 480 중 311(65%)이 자기 진영**이다(해설 수치와 집계 기준이 달라 값은 다르지만 방향은 같다).
+- 빌라 3-2-5 형태 서술(밍스 왼쪽으로 벌림 · 린델뢰프 중앙 · 하우드-벨리스 오른쪽 · 마첸 높게 · 만잠비 안쪽)은 리포트 §2·§5의 WS 볼 소유 평균 위치와 일치한다.
+
+**오칸 부룩 회견(DHA·Çukurova 11-24 23:50 · 1차)**
+- 「Özellikle McGinn ve Manzambi ile birlikte çok agresif oldular.」(특히 맥긴과 만잠비를 앞세워 아주 공격적으로 나왔다)
+- 「Burada da adam adama baskılara oyunun başında önce Torreira ile gitmeye çalıştık.」(그래서 경기 초반엔 먼저 토레이라로 대인 압박을 하려 했다)
+- 「Devamında Lemina'yı da çıkartıp oraya daha yüksek şiddetli baskılar yapmaya çalıştık.」(이어 레미나도 끌어올려 그 자리에 더 강한 압박을 하려 했다)
+- 「Sol tarafları daha etkili olduğu için biraz daha sağ tarafa yönlendirmeye çalıştığımız yerler oldu.」(빌라는 왼쪽이 더 위협적이라 오른쪽으로 몰려고 한 장면들이 있었다)
+  - ⚠️ 실측 대조(WS 상대 진영 패스 좌우 분포): 전반 오른쪽 40% · 중앙 21% · 왼쪽 39%, 후반 33 · 24 · 43. **「오른쪽으로 몰기」는 실측상 뚜렷하지 않다** — 부룩 자신도 「장면들이 있었다」고 했다.
+
+### 재판정 ② 실점 장면(77′ · 74′ 3명 교체 직후) — 당일 판정 유지 · 협공 구조 보강
+
+당일 판정은 「75′ 카마라 자기 진영 패스가 막힘 → 우고추쿠 회수」였다. 상대 관점 해설이 **그 패스가 어떻게 막혔는지**를 보탰고, WS 이벤트와 초 단위로 맞는다.
+
+| 시각(WS) | 사건 |
+|---|---|
+| 75′43″ | 고레츠카(66′ 투입)가 자기 진영에서 카마라에게 패스 |
+| 75′45″ | 카마라 패스 실패 — **토레이라 차단**(BlockedPass) |
+| 75′47″ | **우고추쿠(74′ 투입) 회수** → 유누스 → 사라(74′ 투입)와 연결 |
+| 76′11″~15″ | 귈(62′ 투입)의 패스가 밍스 맞고 → **코너 획득** |
+| 76′47″ | 사라 코너 → 싱고 헤더 → 잭슨 맞고 뜬 공 → **귈 헤더 골**(SofaScore 77′) |
+
+- 「Goreska çok düşünmeden Kamara'ya döndüğünde Toreira ve Ugo Chukvu ikili bir sıkıştırma uyguluyorlar.」(고레츠카가 별생각 없이 카마라에게 돌려주자 토레이라와 우고추쿠가 2인 협공을 건다 · auto-caption)
+- 해설의 결론: 실점에 관여한 **우고추쿠·귈·사라 3명이 모두 교체 투입 선수**다. 빌라 쪽은 같은 74′에 맥긴·만잠비를 뺐다.
+- **잭슨 77′ 하이킥 = 두 번째 경고 위험** — 잭슨은 41′에 이미 경고가 있었다(SofaScore · 시간 지연). Doksanın Ötesi는 「VAR은 주심이 주지 않은 두 번째 경고에 개입할 수 없다」고 짚었다. 퇴장 판정은 없었다.
+
+### 재판정 ③ 로테이션 선발(카마라·린델뢰프·하우드-벨리스) — 미확인 유지
+
+- **에메리 본인 설명은 0건이다**(Tanswell X 회견 원문 2건 · beIN · Yahoo 확인).
+- 경기 전 정황(2차 · 프리뷰): 린델뢰프는 감기에서 막 복귀했다. 토레스는 직전 4경기 연속 선발이라 휴식 후보였다. 캐시는 뇌진탕 프로토콜로 결장했다(EPL Index·Yahoo 프리뷰). **추정 근거로만 적고 판정하지 않는다.**
+- 상대 관점 해설은 하우드-벨리스를 「원래 오른쪽 풀백이지만 센터백 능력도 있는 선수」로 봤다. 오른쪽 잔류형 비대칭 3백(리포트 §2)과 같은 서술이다.
+
+### 감독 발언 보강(에메리 · Tanswell X 11-25 · 1차 운반)
+
+- 「Playing eight matches in the CL group two years ago, we lost Monaco and Club Brugge. Today I can compare this match like those matches.」(2년 전 챔피언스리그 8경기에서 모나코와 클럽 브뤼헤에 졌다. 오늘 경기는 그 경기들과 비교할 수 있다)
+- 「The match was difficult because they were pressing intensely.」(그들이 강하게 압박해서 어려운 경기였다)
+- 「I think the referee was not fair but I am not blaming him.」(주심이 공정하지 않았다고 보지만 탓하지는 않겠다)
+- Tanswell 본인 평: 「A poor #AVFC team had no answer in the second half.」(부진한 빌라는 후반에 아무 답이 없었다) · The Athletic 기사는 경기장 소음(킥오프 108dB · 결승골 109dB) 기사다. **전술 분석 기사는 D+2까지 없다.**
+
+### 다국어 결과(0건 포함 — 다음 회차 반복 방지)
+
+| 언어 | 검색어 | 결과 |
+|---|---|---|
+| 터키어 | 「Galatasaray Aston Villa taktik analiz Okan Buruk Deniz Gül」 · 「Okan Buruk Aston Villa Torreira adam adama McGinn Manzambi」 · 유튜브 「Galatasaray Aston Villa maç analizi taktik」 | 회견 원문·칼럼 목록(Cumhuriyet·Ajansspor 칼럼 모음 — 이전 회차 Sabah와 같은 칼럼 묶음이라 생략) · 영상 4편 |
+| 영어 | 「Galatasaray Aston Villa tactical analysis Emery Kamara Lindelof」 · 「… Jackson isolated … what went wrong」 · 「Emery Monaco Club Brugge Galatasaray」 · 「Emery rotation Hause Lindelof Kamara explained」 | Squawka 분석(본문 403 차단 · 검색 요약만) · 평점 기사 · 로테이션 설명 0 |
+| 일본어 | 「鈴木彩艶 アストン・ヴィラ ガラタサライ 評価」 | 평점·배급 칭찬 7건 · 전술 서술 없음 |
+| 포르투갈어 | 「João Gomes Alysson Aston Villa Galatasaray análise substituído Emery」 | 선발 기사뿐 |
+
+### 데이터 반영
+
+- `match_videos` +4(리포트 #72 · 상대팀) · 요약 4편 · `video_impl_claims` +6(HELD #2×2 · #52×2 · #55 / PENDING #83).
+- `observations` #1176(이번 회차 종합 · 부룩 원문 · WS 실점 사슬).
+- 관전 가설 행이 없어 `load_match_extras.py` 정정(corrections)도 없다.
+- **구현 함의(사용자 판단 대기)**: 「대인 5-3-2로 3단계 진입을 막는 상대」가 새 상대 유형 후보다. 쟁점 #2(상대 유형별 프리셋) 트리거에서 판단한다. 정본·경기 전용 설정은 바꾸지 않았다.
+
+### 출처
+
+- 부룩 회견(DHA): https://www.dha.com.tr/spor/okan-buruk-taktiksel-anlamda-en-iyi-maclarimizdan-birini-oynadik-2988098
+- 부룩 회견(Çukurova Gazetesi · 원문 문장 확인): https://cukurovagazetesi.com/taktiksel-anlamda-en-iyi-maclarimizdan-birini-oynadik
+- 부룩 회견(영어 · Turkish-Football): https://turkish-football.com/okan-buruk-hails-galatasarays-best-match-of-the-season-after-1-0-aston-villa-win/
+- Jacob Tanswell X: https://x.com/J_Tanswell (11-25 게시 4건)
+- 에메리 회견(beIN): https://www.beinsports.com/en-us/soccer/uefa-champions-league/articles/emery-picked-best-players-to-be-here-with-villa-amid-garnacho-snub-2026-11-24
+- 스즈키(footballchannel): https://www.footballchannel.jp/2026/11/25/post1059052/
+- 프리뷰(EPL Index · 린델뢰프·토레스·캐시 정황): https://eplindex.com/152723/aston-villa-starting-xi-vs-galatasaray-confirmed-team-news-and-predicted-lineup.html
+
 ## D+3 추적
 
 - 예약 `mw-avl-galatasaray-d3`(11-27 20:00)가 이 절을 채우고 complete를 판정한다.
