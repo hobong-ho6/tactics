@@ -37,6 +37,7 @@ REVIEWED = {
     "fc-27-uefa-road-to-the-knockouts": "FUT 프로모 한정 규칙 · 2026-11-07",
     "hall-of-fut-unleashed": "FUT 프로모(Hall of FUT: Unleashed 카드·진화·SBC 안내) · 2026-11-17",
     "fc-27-bf-thunderstruck": "FUT 프로모(Black Friday: Thunderstruck 토큰·업그레이드 조건·진화 안내) · 2026-11-21",
+    "fc-27-john-motson-tribute": "중계 음성(존 모트슨 AI 해설) · 2026-11-26",
 }
 # ⭐ 2026-11-04: EA 개발자 Q&A 정리는 뉴스 색인이 아니라 Steam 포럼 고정글에만 올라온다 — 1차 게임플레이 Q&A(10-09)는 10-31에,
 # FUT Q&A(10-14)는 11-04에야 발견됐다(2회차 → 불변규칙 13 · 색인에 넣어 구조로 막는다). 고정글 + 「All Developer Q&A」 정리글의 링크를 함께 대조한다.

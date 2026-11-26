@@ -6746,6 +6746,72 @@
    "recorded": "2026-11-22",
    "source": "https://proclubshq.com/blog/fc27-control-changes/ (Pro Clubs HQ 「What Changed in EA FC 27's Controls」 · 2026-08-16 게시 · 2026-10-15 갱신 · 인게임 Advanced 조작 페이지 전사 · 2026-11-22 본문 직접 확인)",
    "title": "프리킥 세트피스 메뉴 입력은 코너와 방향이 다르다"
+  },
+  {
+   "area": "positioning",
+   "change": "⭐⭐ v1.3.0에서 **수비형 미드필더(CDM)가 팀 전체가 올라설 때 너무 늦게 따라 올라오던 문제**를 고쳤다. 역할(홀딩·딥라잉 플레이메이커)이나 포커스(Defend·Build-Up·Roaming·Ball-Winning)별 동작 변경은 아니다 — CDM 포지션 공통의 라인 추종 수정이다.",
+   "confidence": "A (EA 1차 · 2026-11-26 직접 열람) · 배포 당일이라 인게임 적용은 미실측",
+   "evidence": "「Fixed an issue where Central Defensive Midfielders (CDMs) were sometimes too slow to move up with the rest of the team.」(중앙 수비형 미드필더 CDM이 가끔 팀의 나머지와 함께 올라가는 속도가 너무 느리던 문제를 고쳤다.) · TU 노트: 「Defensive Midfielders were sometimes too slow to move up the pitch.」(수비형 미드필더가 가끔 경기장 위로 올라가는 게 너무 느렸다.)",
+   "id": 118,
+   "impact": "⑴ 아스톤 빌라 3선 정본(RDM dm_holding/Defend · LDM dm_dlp/Roaming · prescriptions measured:pair:gomes/kamara · obs#1080 딥라잉 빌드업 테스트 대기) 재검토 필요 — 역할·포커스 설명은 그대로지만 **3선과 2선 사이 간격(라인 사이 공간)이 패치 전후로 달라질 수 있다**. 특히 Holding+Defend 칸은 원래 낮게 머무는 설정이라 「버그로 늦던 것」과 「설정상 낮은 것」이 섞여 있었을 수 있다(추론). ⑵ 11-26 이전 3선 인게임 관측(바클리 LDM · 고레츠카 RDM · B안 Holding Defend + DLP Build-Up)은 **패치 전 기준선**으로 따로 둔다. ⑶ 이슈 #93(고레츠카 RDM 판정)의 다음 표본은 패치 뒤 표본으로 센다. ⛔ 처방·정본 변경 없음 — 사용자 판단 사안.",
+   "recorded": "2026-11-26",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/update-v1-3-pitch-notes (「EA SPORTS FC 27 | Title Update v1.3.0 Pitch Notes」 · 2026-11-25 게시) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-3-0 (「EA SPORTS FC 27 | Title Update v1.3.0」 · 2026-11-26 배포)",
+   "title": "TU 1.3.0 CDM이 팀과 함께 늦게 올라오던 버그 수정"
+  },
+  {
+   "area": "attributes",
+   "change": "⭐⭐ 키 차이가 큰 경합을 조정했다. ⑴ **작은 선수가 훨씬 큰 상대를 어깨로 쉽게 밀어내지 못한다**(공을 노출하면 타이밍 좋은 태클은 여전히 통한다). ⑵ **키 큰 선수의 왼쪽 스틱 드리블 반응·첫 터치 트래핑·개인기 민첩성을 올렸다** — 좁은 공간에서 가장 크게 느껴진다. 목적은 「스쿼드 다양성」이라고 밝혔다. 수치(몇 cm부터인지)는 밝히지 않았다.",
+   "confidence": "A (EA 1차 · 2026-11-26 직접 열람) · 배포 당일이라 인게임 적용은 미실측",
+   "evidence": "「Shorter players will be less able to easily bump significantly taller opponents off the ball, though well-timed challenges will remain effective when a taller player leaves the ball exposed.」(작은 선수는 훨씬 큰 상대를 공에서 쉽게 밀어내기 어려워지지만, 큰 선수가 공을 노출하면 타이밍 좋은 태클은 여전히 효과적이다.) · 「taller players will now feel noticeably more responsive and agile, which will be most apparent when navigating tight spaces.」(키 큰 선수는 이제 눈에 띄게 더 반응이 빠르고 민첩하게 느껴지며, 좁은 공간을 지날 때 가장 뚜렷하다.) · 예시 영상 선수: 「6'5\" with mid-to-high 60's agility and balance, and high 70's dribbling」(196cm · 민첩성·균형 60대 중후반 · 드리블 70대 후반) · ⚠️ 플랫폼 표기 충돌: Pitch Notes는 스위치 2 포함, TU 노트는 「[PC, PS5, XBS X|S Only]」(PC·PS5·XBS 한정).",
+   "id": 119,
+   "impact": "⑴ 11월 FUT 개발자 노트(#110)가 예고한 「스쿼드 다양성 게임플레이 조정」의 실제 반영으로 보인다(추론). ⑵ 진화·카드 선택에서 **키·체형이 패치 전 체감보다 덜 결정적일 수 있다** — 작은 윙어·공격수의 어깨 경합 이점은 줄어든다. ⑶ 신장 경계값 미공개 → 처방 근거로 쓰기 전 실측 필요. ⛔ 처방·정본 변경 없음.",
+   "recorded": "2026-11-26",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/update-v1-3-pitch-notes (「EA SPORTS FC 27 | Title Update v1.3.0 Pitch Notes」 · 2026-11-25 게시) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-3-0 (「EA SPORTS FC 27 | Title Update v1.3.0」 · 2026-11-26 배포)",
+   "title": "TU 1.3.0 키 큰 선수 상향 — 몸싸움에서 덜 밀리고 드리블이 기민해진다"
+  },
+  {
+   "area": "goalkeeping",
+   "change": "⭐ 니어포스트 슛이 너무 잘 들어간다는 피드백에 대응해 ⑴ **골키퍼가 더 좋은 시작 각도를 잡고 니어포스트 위협에 더 안정적으로 반응**하며 ⑵ **각도가 좁은 위치에서의 슈팅 오차·퍼짐을 소폭 늘렸다**. 니어포스트만이 아니라 좁은 각도 슛 전반에 적용된다.",
+   "confidence": "A (EA 1차 · 2026-11-26 직접 열람) · 배포 당일이라 인게임 적용은 미실측",
+   "evidence": "「Goalkeepers will now take up stronger starting angles and react more reliably against near-post threats. At the same time, shot error and spread has been increased for shots taken from difficult angles」(골키퍼는 이제 더 좋은 시작 각도를 잡고 니어포스트 위협에 더 안정적으로 반응한다. 동시에 어려운 각도에서의 슈팅 오차와 퍼짐을 늘렸다.)",
+   "id": 120,
+   "impact": "⑴ 측면에서 파고들어 각도 없이 차는 마무리(윙어 컷인 니어 슛)의 기대값이 내려간다 — 가르나초·알리송 같은 측면 자원 운용에 영향(추론 · 미실측). ⑵ 박스 중앙 침투·컷백 쪽 상대 가치가 오른다(추론). ⛔ 처방 변경 없음.",
+   "recorded": "2026-11-26",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/update-v1-3-pitch-notes (「EA SPORTS FC 27 | Title Update v1.3.0 Pitch Notes」 · 2026-11-25 게시) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-3-0 (「EA SPORTS FC 27 | Title Update v1.3.0」 · 2026-11-26 배포)",
+   "title": "TU 1.3.0 니어포스트 슈팅 너프 — GK 위치 강화 · 각도 없는 슛 오차 증가"
+  },
+  {
+   "area": "engine",
+   "change": "⭐ ⑴ **수비 능력치가 낮은 선수의 가로채기 도달 범위·반응 범위를 소폭 줄였다**(가로채기를 능력치에 더 묶으려는 조정). ⑵ 패스를 가로챈 직후 압박하던 상대가 즉시 공을 빼앗던 상황에서 **공 회수 거리를 조정해 가로챈 선수가 공을 완전히 잡을 여유**를 줬다. ⑶ 루즈볼 트래핑에 실패하면 추격 애니메이션에 묶이지 않고 **공을 놓아 더 좋은 위치의 동료가 잡게** 바꿨다. ⑷ 정지·저속 공을 쉴드하면 일부 지역에서 수비수 자동 태클이 꺼지던 버그 · 태클/가로채기 때 공이 수비수 발을 통과하던 드문 버그를 고쳤다.",
+   "confidence": "A (EA 1차 · 2026-11-26 직접 열람) · 배포 당일이라 인게임 적용은 미실측",
+   "evidence": "「decrease interception reach & range for players with lower defensive Attributes」(수비 능력치가 낮은 선수의 가로채기 도달·범위를 줄인다) · 예시 영상: 「Interceptions value of 50」(가로채기 50) · 「give defenders some more breathing room after completing an interception」(가로챈 뒤 수비수에게 조금 더 여유를 준다) · 「This targeted adjustment is strictly limited to this specific shielding interaction and will not impact the frequency of auto-tackles during active dribbling.」(이 조정은 이 특정 쉴드 상황에만 한정되며 일반 드리블 중 자동 태클 빈도에는 영향을 주지 않는다.)",
+   "id": 121,
+   "impact": "⑴ 현 3선 카드의 가로채기는 고레츠카 87 · 만잠비 82 · 바클리 75 — EA 예시(50)보다 한참 높아 **직접 하향 대상일 공산은 작다**(추론 · 경계값 미공개). ⑵ 공격수·윙어의 전방 압박 가로채기 기여는 줄 수 있다(추론). ⑶ 가로챈 뒤 즉시 재탈취가 줄어 **역압박으로 공을 되찾는 효율은 약간 내려가고, 중원 차단 뒤 전환은 쉬워진다**(추론). ⑷ 아스톤 빌라 3선 정본(RDM dm_holding/Defend · LDM dm_dlp/Roaming · prescriptions measured:pair:gomes/kamara · obs#1080 딥라잉 빌드업 테스트 대기) 재검토 필요 — 다만 역할 동작 자체 변경은 아니다. ⛔ 처방·정본 변경 없음.",
+   "recorded": "2026-11-26",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/update-v1-3-pitch-notes (「EA SPORTS FC 27 | Title Update v1.3.0 Pitch Notes」 · 2026-11-25 게시) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-3-0 (「EA SPORTS FC 27 | Title Update v1.3.0」 · 2026-11-26 배포)",
+   "title": "TU 1.3.0 수비 스탯 낮은 선수 가로채기 범위 축소 · 가로챈 뒤 숨 돌릴 거리"
+  },
+  {
+   "area": "engine",
+   "change": "⭐ ⑴ **오른쪽 스틱 플릭 효과를 줄였고, 연속 사용할수록 더 약해지며 플릭업 직후 속도를 낮췄다**. ⑵ 드리블러 **바로 뒤에서 거는 어깨 경합**이 부자연스러운 비틀거림·볼 손실을 덜 일으킨다 — 어깨 경합과 Bruiser(브루저) PlayStyle은 나란히 붙은 경합에서 쓰라는 설계 의도로 맞췄다. ⑶ 박스 안에서 **가벼운 옆 밀기·정당한 태클 뒤 휘청임은 페널티로 덜 불린다**. ⑷ 깨끗한 슬라이딩 태클의 회복 동작 중 파울이 불리던 버그를 고쳤다.",
+   "confidence": "A (EA 1차 · 2026-11-26 직접 열람) · 배포 당일이라 인게임 적용은 미실측",
+   "evidence": "「We have reduced the effectiveness of right stick flicks, especially when chaining them together, and reduced a player's speed immediately after performing a flick-up.」(오른쪽 스틱 플릭의 효과를 줄였다 — 특히 연달아 쓸 때 — 그리고 플릭업 직후 선수 속도를 낮췄다.) · 「keeping shoulder challenges and PlayStyles such as Bruiser focused on side-by-side contests」(어깨 경합과 Bruiser 같은 PlayStyle이 나란히 선 경합에 집중되게 한다) · 「light side-barges and minor stumbling after a fair challenge are less likely to be penalised with a penalty kick」(가벼운 옆 밀기와 정당한 태클 뒤 작은 휘청임은 페널티킥으로 덜 판정된다)",
+   "id": 122,
+   "impact": "⑴ Bruiser 보유 카드의 가치는 **나란히 붙는 경합에서만** 유지 — 뒤에서 덮치는 압박용으로는 하향(A). ⑵ 플릭 의존 돌파의 가치가 내려간다 — 진화 선택에서 개인기 별 수 비중을 조금 낮춰 볼 근거(추론). ⛔ 처방 변경 없음.",
+   "recorded": "2026-11-26",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/update-v1-3-pitch-notes (「EA SPORTS FC 27 | Title Update v1.3.0 Pitch Notes」 · 2026-11-25 게시) · https://www.ea.com/games/ea-sports-fc/fc-27/news/fc27-title-update-v1-3-0 (「EA SPORTS FC 27 | Title Update v1.3.0」 · 2026-11-26 배포)",
+   "title": "TU 1.3.0 플릭 너프 · 등 뒤 어깨 경합 · 페널티 판정 조정"
+  },
+  {
+   "area": "positioning",
+   "change": "v1.2.0의 풀백 라인 유지 조정(#100) 뒤에도 **개선 여지가 있다는 피드백을 인정하고 추가 변경을 다음 타이틀 업데이트에 예정**했다. v1.3.0에는 들어가지 않았다. 일정·내용은 미공개.",
+   "confidence": "A (EA 1차 · 2026-11-26 직접 열람) · 배포 당일이라 인게임 적용은 미실측",
+   "evidence": "「we've seen your feedback that there is still room for improvement, and we have further changes planned for an upcoming Title Update.」(아직 개선 여지가 있다는 피드백을 확인했고, 다음 타이틀 업데이트에 추가 변경을 계획하고 있다.)",
+   "id": 123,
+   "impact": "⑴ #100·#108(풀백은 나아졌지만 센터백이 튀어나간다는 체감)의 후속 — 풀백·수비 라인 판단(LB 운용·limit #30)은 **다음 TU까지 확정하지 않는다**. ⑵ 3선 변경 아님. ⛔ 처방·정본 변경 없음.",
+   "recorded": "2026-11-26",
+   "source": "https://www.ea.com/games/ea-sports-fc/fc-27/news/update-v1-3-pitch-notes (「EA SPORTS FC 27 | Title Update v1.3.0 Pitch Notes」 · 2026-11-25 게시)",
+   "title": "풀백 위치 추가 조정 예고 — 1.2.0 이후에도 개선 여지 인정"
   }
  ],
  "tactic_params": [
