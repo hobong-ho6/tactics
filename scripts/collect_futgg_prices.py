@@ -187,7 +187,7 @@ FW_CONF = ("MEDIUM — FUTWIZ 카드 페이지 콘솔 BIN(등급 B · 3자 사�
            "추세·비교는 같은 platform(futwiz-console)끼리만. price 없음은 미형성이지 0원이 아니다.")
 # ⚠️ 두 번에 나눠 부른다(① 시작 → ② 결과 읽기) — 카드당 페이지 1~3장(장당 약 1.2MB)이라 한 번 평가로는 길다.
 FW_SNIPPET = r"""window.__fwPrices = {progress: 0}; (async () => {
-  // ⛔ 앱 안 브라우저의 https://www.futwiz.com/fc27/players 탭에서 실행한다(봇 검사 없음 · 같은 출처 fetch).
+  // ⛔ 앱 안 브라우저의 https://www.futwiz.com/players 탭에서 실행한다(봇 검사 없음 · 같은 출처 fetch).
   const T = __TARGETS__;
   const out = {cards: {}, action: null, total: T.length, progress: 0};
   window.__fwPrices = out;
@@ -219,8 +219,14 @@ FW_SNIPPET = r"""window.__fwPrices = {progress: 0}; (async () => {
   const search = async q => {
     if (found[q]) return found[q];
     await sleep(250);
-    const r = await fetch('/fc27/players', {method: 'POST', body: JSON.stringify([q, '27']),
-                                           headers: {Accept: 'text/x-component', 'next-action': out.action}});
+    // ⭐ 2026-11-27: FUTWIZ가 /fc27/players → /players로 옮겼다. 옛 주소로 POST하면 리다이렉트 뒤 페이지 HTML이 와서
+    //    「결과 0건」으로 조용히 떨어졌다(102장 NOTFOUND · 후보 0). ⇒ 새 주소로 보내고, 응답이 RSC가 아니면 **오류로 남긴다**.
+    const r = await fetch('/players', {method: 'POST', body: JSON.stringify([q, '27']),
+                                       headers: {Accept: 'text/x-component', 'next-action': out.action}});
+    if (!(r.headers.get('content-type') || '').includes('text/x-component')) {
+      out.searchBroken = `HTTP ${r.status} ${r.headers.get('content-type')} ${r.url}`;
+      throw new Error('search not RSC');
+    }
     const l = (await r.text()).split('\n').find(x => x.startsWith('1:'));
     return (found[q] = l ? JSON.parse(l.slice(2)) : []);
   };
@@ -285,7 +291,10 @@ def futwiz_load(con, gv, raw, pulled):
         raise SystemExit("⛔ `done`이 없다 — 스니펫이 아직 끝나지 않았다. 잠시 뒤 ②를 다시 읽을 것")
     if not raw.get("action"):
         print("   ⚠️ FUTWIZ 자동완성 id를 못 찾았다 — 지난 회차에 찾은 페이지만 읽었다. "
-              "https://www.futwiz.com/fc27/players 탭에서 돌렸는지 확인할 것")
+              "https://www.futwiz.com/players 탭에서 돌렸는지 확인할 것")
+    if raw.get("searchBroken"):
+        print(f"   ⛔ FUTWIZ 검색이 검색 결과가 아닌 응답을 돌려줬다({raw['searchBroken']}) — "
+              "못 찾은 카드는 「없음」이 아니라 **검색 고장**이다. 스니펫의 검색 주소를 점검할 것")
     pid = dict(targets(con, gv, all_=True))
     rows, miss, stale, nobin, diag = [], {}, 0, 0, []
     now = dt.datetime.now().timestamp()
@@ -366,7 +375,7 @@ def main():
     ap.add_argument("--full", action="store_true",
                     help="예산이 비면 기다리며 대상 전량을 받는다(오래 걸린다 — 백그라운드로). 기본은 예산 한 번 쓰고 멈춘다")
     ap.add_argument("--futwiz-snippet", action="store_true",
-                    help="⭐ fut.gg 차단 시 대체 — 앱 안 브라우저 futwiz.com/fc27/players 탭에서 돌릴 JS를 찍는다")
+                    help="⭐ fut.gg 차단 시 대체 — 앱 안 브라우저 futwiz.com/players 탭에서 돌릴 JS를 찍는다")
     ap.add_argument("--futwiz-file", help="FUTWIZ 스니펫 결과 JSON 파일을 적재한다(platform futwiz-console)")
     a = ap.parse_args()
     if a.futwiz_snippet or a.futwiz_file:
@@ -381,7 +390,7 @@ def main():
         known = sum(1 for t in tg if t["url"])
         print(f"// 대상 {len(tg)}장(지난 회차에 찾은 FUTWIZ 페이지 {known}장 · 나머지는 검색으로 찾는다)"
               + (f" · 검색어 없음 {len(skip)}장 제외" if skip else ""))
-        print("// ① 시작 — 앱 안 브라우저에서 https://www.futwiz.com/fc27/players 를 연 탭에서 실행\n"
+        print("// ① 시작 — 앱 안 브라우저에서 https://www.futwiz.com/players 를 연 탭에서 실행\n"
               + FW_SNIPPET.replace("__TARGETS__", json.dumps(tg, ensure_ascii=False)))
         print("\n// ② 몇 분 뒤 결과 읽기(진행 중이면 「진행 n/N」)\n" + FW_READ)
         print(f"\n── 셸 ── (② 결과 JSON 문자열을 {out}에 쓴 뒤)\n"
