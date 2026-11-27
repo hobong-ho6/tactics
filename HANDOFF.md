@@ -32,7 +32,7 @@
 <!-- evo-ledger:start -->
 **진화 원장 (자동 · 최근 14일 + 진행 중 · 정본 DB `fut_evolution_log` · `ship.py`가 갱신)**
 
-- 2026-11-27 · Cash ← Tempest Strike 1단계 · OVR 82→85 · 진행 중
+- 2026-11-27 · Cash ← Tempest Strike 5단계 · OVR 82→85 · 완료 2026-11-27
 - 2026-11-27 · Cash ← Static Surge 5단계 · OVR 81→82 · 완료 2026-11-27
 - 2026-11-25 · 가르나초 ← Slick Operator 3단계 · OVR 81→83 · 진행 중
 - 2026-11-24 · 가르나초 ← Forked Lightning 4단계 · OVR 77→81 · 완료 2026-11-25
