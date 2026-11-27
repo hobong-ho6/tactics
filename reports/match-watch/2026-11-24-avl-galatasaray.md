@@ -498,3 +498,74 @@
 ## D+3 추적
 
 - 예약 `mw-avl-galatasaray-d3`(11-27 20:00)가 이 절을 채우고 complete를 판정한다.
+
+## D+3 종결 (2026-11-27)
+
+**결론: 3일 추적을 닫는다. 당일 판정 정정 0 · 판정 불가 2건(조건 명기) · `status` = complete · 게임 구현 「추가 관찰」 유지 · 정본 변경 0.**
+- D+2 이후 새 자료는 5건이다. 모두 당일 판정과 같은 방향이다(점유는 했지만 침투 없음 · 만잠비 왼쪽 영향 없음 · 세트피스 실점 반복).
+- 새로 드러난 엇갈림은 하나다. **갈라타사라이 62′ 교체(귈←에렌 엘말르)가 전술 수였는지 부상 때문이었는지** 매체 사이에서 갈렸다. 리포트 §4는 의도를 단정하지 않았으므로 정정은 아니다. 미확정으로 기록한다.
+- 에메리의 로테이션 선발 사유는 **3일 내내 1차 발언 0건**이었다. obs #1177.
+
+### 새 자료(D+2 이후)
+
+| 자료 | 게시 · 작성 | 종류 · 등급 | 쓴 것 |
+|---|---|---|---|
+| Roundtable Sports(Yahoo 재게재) 「Possession without purpose」 | 11-25 10:56 UTC · Dan Bardell | 팬 분석 블로그(2차) | 점유 대비 침투 부재 · 만잠비 왼쪽 · 세트피스 실점 반복(아래 인용) |
+| Read Aston Villa 「Emery must find solutions to tactical problems」 | 11-26 14:35 · Lucie Turner | 칼럼(2차) | 「must alter their strategy」(전략을 바꿔야 한다) 수준의 일반론 — 이 경기 구조 서술 없음 · 쓰지 않음 |
+| İlkhaber(İHA 운반) 부룩 회견 | 11-25 10:02 | 회견 1차 운반 | D+2 DHA 원문과 같은 회견 · 새 문장 1(아래) |
+| Hürriyet 칼럼 묶음 | 11-25 07:42 | 터키 칼럼(2차 · 상대 관점) | 62′ 교체 해석(아래) |
+| Habertürk 칼럼 묶음(8명) | 11-25 11:48 | 터키 칼럼(2차 · 상대 관점) | 볼을 내주고 자리를 지킨 구조 · 62′ 교체 동기 엇갈림(아래) |
+
+**빌라 쪽(영어)**
+- 「There is a difference between having control of a game of football and actually looking like you're going to win it」(경기를 통제하는 것과 실제로 이길 것처럼 보이는 것은 다르다 — Bardell)
+- 「Johan Manzambi struggled to have any sort of influence on proceedings from the left-hand side」(만잠비는 왼쪽에서 경기에 아무 영향도 주지 못했다 — Bardell). 실측과 같다: 만잠비 상대 박스 터치 0(§5).
+- 「there is now a fairly concerning pattern emerging with the goals we are conceding from set pieces」(세트피스 실점에 꽤 우려스러운 패턴이 생기고 있다 — Bardell). 풀럼·맨유전 세트피스 실점과 세트피스 코치 오스틴 맥피 이탈을 함께 들었다 → 쟁점 #29 감시 근거로만 쓴다(1경기 · 팬 블로그).
+
+**갈라타사라이 쪽(터키어 · 상대 관점)**
+- 부룩(İHA): 「Oyuncu değişiklikleri sonrası baskıları arttırdık.」(교체 뒤 압박을 끌어올렸다) — D+1에 실은 Fanatik 문장과 같은 취지이며, 실측 60–72′ 갈라타사라이 모멘텀 우세와 맞는다.
+- 세르칸 악잔(Fanatik): 「Topu Aston Villa'ya bıraktı, ancak rakibini sahanın her bölgesinde doğru konumlanarak karşıladı.」(볼은 빌라에 내줬지만 경기장 모든 구역에서 제자리를 잡고 상대를 맞았다) — D+2 「후방은 내주고 3단계 진입만 막았다」와 같은 방향이다. 실측: 빌라 패스 65%가 자기 진영(WS).
+- **62′ 교체 동기 — 매체 간 충돌**
+  - 엔긴 베렐(Akşam): 「Okan Buruk, 62'de Eren'i kenara alıp, Deniz Gül'ü forvete koyarak, kazanmayı hedefleyen ilk hamlesini yaptı.」(부룩은 62분 에렌을 빼고 귈을 최전방에 넣어 이기기 위한 첫 수를 뒀다)
+  - 오스만 셴헤르(Milliyet): 「Eren sakatlandı, hoca hiç tereddüt etmeden Barış'ı sol çizgiye, Deniz'i santrfora koydu.」(에렌이 다쳤고, 감독은 망설임 없이 바르시를 왼쪽 라인에, 데니즈를 최전방에 놓았다)
+  - ⇒ 형태 변화(투톱 · 바르시 알페르 왼쪽)는 양쪽이 같다. **동기만 갈린다.** 우리 구현 판단에는 형태만 쓰므로 영향이 없다. SofaScore 교체 사건에는 부상 표기가 없어 판정하지 않는다.
+
+**다국어(불변규칙 10) — 이번 회차 검색 기록**
+
+| 언어 | 대상 | 검색어 | 결과 |
+|---|---|---|---|
+| 영어 | 에메리 · 로테이션 | 「Emery Galatasaray rotation Lindelof Harwood-Bellis Kamara explained Ipswich press conference」 · 「Unai Emery Ipswich press conference Galatasaray Jackson Manzambi Cash fitness」 | 로테이션 설명 0 · 입스위치 사전 회견 미게시(avfc.co.uk 11-25~27 뉴스 목록 확인 · FPL 프리뷰뿐) |
+| 영어 | 경기 분석 | 「Aston Villa Galatasaray tactical analysis what went wrong Emery」 · 「Daily Mail Collomosse Emery indecision best XI」 | Bardell · Read Aston Villa(위) · Collomosse(Daily Mail 11-24 · 원문 미확보 · 집계 사이트 요약만 → 쓰지 않음) |
+| 스페인어 | 에메리 | 「Emery rueda de prensa Ipswich Galatasaray rotaciones noviembre 2026」 | 0 — 영어 기사만 |
+| 독일어(스위스) | 만잠비 | 「Manzambi Aston Villa Galatasaray Blick Nati analyse」 | Blick·nau.ch·bluewin 결과 기사 — 「diskreter Leistung」(눈에 띄지 않은 경기력 · bluewin) 수준 · 23′ 찬스는 잭슨 오프사이드로 무효. 새 전술 서술 없음 |
+| 터키어 | 부룩 · 칼럼 | 「Galatasaray Aston Villa taktik analiz Okan Buruk 5-3-2 adam adama」 · 유튜브 「Galatasaray Aston Villa tactical analysis breakdown Okan Buruk man marking」 | İHA 회견 · Hürriyet·Habertürk 칼럼 묶음(위) · **새 유튜브 분석 0**(D+2 4편 이후) |
+
+- 일본어(스즈키)·포르투갈어(고메스·알리송)·프랑스어(카마라·잭슨)·스웨덴어(린델뢰프)는 D+1·D+2에서 결과·평점뿐이었다. 이번 회차는 다시 검색하지 않았다(새 경기 일정 없음 · 반복 검색 회피).
+- 유튜브는 검색 결과 목록만 봤다. 새 영상이 없어 재생(뮤트)도 하지 않았다. D+2에서 건너뛴 장시간 라이브 3편(BORGES TV · Atistics TV · Libero TV)은 잡담 비중이 커서 최종적으로 수집하지 않는다.
+
+### 남은 판정 — 최종
+
+| 대상 | 이전 | D+3 판정 | 다음 재판정 조건 |
+|---|---|---|---|
+| 영상 주장 #944(UTV 계열 「잭슨 침투가 안 보인다」) · #965(Doksanın Ötesi 「배후 침투 봉쇄 · 슈팅 1」) — 둘 다 PENDING | 쟁점 #83 대기 | **판정 불가 유지.** 이 경기만으로는 「침투가 오프사이드로 끊긴다」(쟁점 질문)를 가를 수 없다. 오프사이드 1 · 슈팅 1이고, 상대가 1대1 대인으로 붙어 표본 가중이 낮다. 원래 행은 고치지 않는다 | 쟁점 #83 트리거 = 잭슨 리그 선발 5경기(10-28 이후 · 현재 약 3/5). 입스위치전(11-28)부터 센다 |
+| 리포트 재판정 ③ 로테이션 선발 사유(카마라·린델뢰프·하우드-벨리스) | 미확인 | **판정 불가로 종결.** 3일간 에메리 1차 발언 0건이다. 정황(린델뢰프 감기 복귀 · 캐시 뇌진탕 · 피치 상태)은 프리뷰 2차 자료뿐이다 | 입스위치 사전 회견(11-27~28)이나 PSG전 사전 회견에서 이 선발을 언급하면 재판정. 언급이 없으면 닫힌 채로 둔다 |
+| 갈라타사라이 62′ 교체 동기(새로 발견) | — | **미확정**(전술 vs 부상 · 매체 충돌) | 판정에 쓰지 않는다 — 형태만 쓴다 |
+
+- 관전 메모가 없어 관전 가설(`match_hypotheses`) 행이 없다. 따라서 가설 정정 행도 없다.
+- 당일 판정이 뒤집힌 것은 없다. 그래서 정정(corrections) 행은 만들지 않았다.
+
+### 구현 함의 — 사용자 판단 대기(정본·인게임 코드 변경 없음)
+
+| # | 후보 | 이 경기 근거 | 반대·한계 | 다음 확인 |
+|---|---|---|---|---|
+| 1 | **로테이션 선발 배치 — RB 하우드-벨리스 = 잔류형**(경기 프리셋 1위 공격형 윙백/지원 Δ.019 · 볼 소유 위치는 잔류형 (44.3, 13.3)) | 비대칭 3백 오른쪽 축 · 상대 해설도 「센터백 능력 있는 RB」 | 단일 경기 Δ≤.05 무결정 · 알리송 경합 1-7(오버랩 지원 부족 지적 #957) | 쟁점 #57 — 캐시 복귀 경기와 비교 |
+| 2 | **대인 5-3-2 상대용 프리셋**(라인 하강·롱볼 억제 vs 3단계 직선 침투) | 자기 진영 패스 65% · 오픈플레이 xG 0.12 · 부룩·터키 칼럼·상대 해설 4편이 같은 그림 | 1경기 · 상대 핵심 결장(오시멘·레앙) | 쟁점 #2(상대 유형별 프리셋) |
+| 3 | **교체 후 형태 — 66′ 고레츠카·음바예, 74′ 바클리·헤밍스 동시 교체 직후 실점** | 74′ 교체 3분 뒤 77′ 실점 · (Collomosse 「맥긴 교체 역효과」는 집계 요약만이라 근거로 쓰지 않음) · 실점 사슬은 고레츠카→카마라 백패스 협공 | 교체 전 60′부터 이미 흐름 넘어감(모멘텀) — 교체 탓으로 단정 불가 | 쟁점 #59(후반 붕괴) · #20(피벗 분업) |
+| 4 | **실점 대응(0-1 뒤 82′ 부엔디아←카마라 · 피벗 하나 + 2선 추가)** | 82′ 뒤 PPDA 5.83 · 점유 61%로 압박은 올렸음 | 슈팅 1(xG 0.06) · 9분 표본 | 다음 리드 허용 경기의 플랜 B와 비교 |
+| 5 | **세트피스 수비**(코너 세컨드볼) | 풀럼·맨유·이 경기 세트피스 실점 묶음(Bardell · 연속 여부는 미확인) · 이 경기 코너 세컨드볼 | 게임 설정 축은 세트피스 마킹 지정뿐 | 쟁점 #29(리그 5경기) |
+
+### 상태 판단 — **`match_reports.status` = complete**
+
+- 필수 섹션 8개 · 출전 선수 16명 전원 리포트 · 경기 전용 설정 1행 · 선발 11명 역할·포커스·단일 경기 적합도가 모두 있다 → 조건 충족, draft → **complete**.
+- 판정 불가 2건은 위 조건으로 넘겼다. complete를 막는 조건은 아니다(선덜랜드전 선례와 같다).
+
+출처: [Roundtable Sports(Yahoo)](https://sports.yahoo.com/soccer/articles/galatasaray-1-0-aston-villa-105623615.html) · [Read Aston Villa](https://readastonvilla.com/2026/11/26/unai-emery-aston-villa-tactical-problems/) · [İlkhaber(İHA)](https://www.ilkhaber-gazetesi.com/spor/okan-buruk-1-0-lik-zaferin-sifresini-verdi-iste-aston-villa-yi-kilitleyen-o-hamle-473396) · [Hürriyet 칼럼 묶음](https://www.hurriyet.com.tr/sporarena/galatasarayin-aston-villa-zaferi-sonrasi-ovgu-yagdi-buyuk-satranc-ustaligi-62de-kalkan-tabela-43390115) · [Habertürk 칼럼 묶음](https://www.haberturk.com/spor/foto/spor-yazarlarindan-galatasaray-aston-villa-yorumu-okan-buruk-emery-yi-sah-mat-etti-3929978) · [bluewin](https://www.bluewin.ch/de/sport/fussball/champions-league/manzambi-mit-aston-villa-zu-gast-in-der-hoelle-von-istanbul-li.3685661) · [frnt(Collomosse 요약)](https://frnt.com/story/93205/aston-villa-slumps-to-champions-league-defeat-against-galatasaray) · obs #1177
