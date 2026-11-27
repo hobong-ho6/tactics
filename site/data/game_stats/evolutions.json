@@ -2211,16 +2211,6 @@
    "verdict": "applied"
   },
   {
-   "alt_style": null,
-   "club_player_id": 8,
-   "reason_kr": "가장 약한 핵심이 가속 76·질주 77 → 속도 +6·+6. 슬라이딩 태클 PlayStyle에 슬라이딩 +9",
-   "report": "reports/research/2026-11-05-xi-chem-review.md",
-   "reviewed": "2026-11-05",
-   "role_id": "fb_wingback",
-   "style": "Shadow",
-   "verdict": "applied"
-  },
-  {
    "alt_style": "Powerhouse",
    "club_player_id": 143,
    "reason_kr": "Aggressive 포커스·속도 74·76 → 튀어나간 뒤 복귀 속도(수비 스타일 중 속도는 Shadow뿐). 볼 플레잉 1위 Powerhouse는 패스 가중 탓",
@@ -2459,6 +2449,16 @@
    "role_id": "wm_insidefwd",
    "style": "Finisher",
    "verdict": "applied"
+  },
+  {
+   "alt_style": "Catalyst",
+   "club_player_id": 8,
+   "reason_kr": "Tempest Strike 완주(OVR 85) 후 재검토 — 윙백 가중 Shadow 51 > Catalyst 48 > Backbone 42 · 가속 87→93·질주 88→94 · 헤딩 74(진화로 −4)→80 보강. ⚠️ Slide Tackle PlayStyle은 진화 제거로 사라져 슬라이딩 +9의 가치는 줄었다. 공격형 윙백(fb_att_wb)으로 쓰면 Catalyst 54 > Engine 48 > Shadow 42 — 시야 78→87·크로스 83→89",
+   "report": null,
+   "reviewed": "2026-11-27",
+   "role_id": "fb_wingback",
+   "style": "Shadow",
+   "verdict": "keep"
   }
  ],
  "chem_signals": [
