@@ -260,6 +260,10 @@ PATS = [
                                                                                       {"Nations": "Nationalities"}.get(m[1], m[1]), int(m[3])))),
     (r"^Team rating: (Min|Max)\. (\d+)$",                     lambda m: ("rating", (m[1], int(m[2])))),
     (r"^Chemistry: Min\. (\d+)$",                             lambda m: ("chem", int(m[1]))),
+    # ⭐ 카드 종류 조건(2026-11-27 사용자 지시 「Rarity 조건 읽게 고쳐줘」 · 10x 82+ Upgrade가 unparsed였다).
+    #    종류 이름은 `player_card_items.rarity_name`(fut.gg 표기)과 **대소문자 무시 일치**로 센다 — 별칭 없음.
+    #    종류를 모르는 카드(구매 후보 자리표시 등)는 세지 않는다 — 모르면 「된다」로 세지 않는다.
+    (r"^Rarity: Min\. (\d+) (.+?) players?$",                  lambda m: ("min_rarity", (int(m[1]), m[2].strip()))),
 ]
 FIELD = {"Clubs": "club", "Leagues": "league", "Nationalities": "nation"}
 
@@ -321,6 +325,8 @@ def cost1(xi, kind, v):
         return max(0, v[1] - r) if v[0] == "Min" else max(0, r - v[1])
     if kind == "chem":
         return max(0, v - chem_total(xi))
+    if kind == "min_rarity":
+        return max(0, v[0] - sum(1 for p in xi if (p.get("rarity") or "").lower() == v[1].lower()))
     return 0
 
 
@@ -1040,7 +1046,7 @@ def main():
                -- ⭐ 아이콘·히어로 케미(2026-09-25) — 규칙을 박지 않고 fut.gg 값을 그대로 쓴다.
                i.chem_extra, COALESCE(i.is_icon,0) is_icon, COALESCE(i.is_hero,0) is_hero,
                COALESCE(i.is_special,0) is_special,
-               c.is_untradeable, c.ea_item_id, i.base_ea_id who, i.league_ea_id
+               c.is_untradeable, c.ea_item_id, i.base_ea_id who, i.league_ea_id, i.rarity_name rarity
           FROM fut_club_players c LEFT JOIN player_card_items i
             ON i.ea_item_id=c.ea_item_id AND i.game_version=?
          WHERE c.status='owned' AND COALESCE(c.current_ovr, i.ovr) IS NOT NULL
@@ -1084,7 +1090,7 @@ def main():
     stor = [dict(r) for r in con.execute("""
         SELECT -s.id id, COALESCE(i.name_kr, s.name) name, i.ovr, i.nation, i.league, i.club, i.positions, i.best_pos,
                i.card_image_url, i.chem_extra, COALESCE(i.is_icon,0) is_icon, COALESCE(i.is_hero,0) is_hero,
-               COALESCE(i.is_special,0) is_special, 1 is_untradeable, s.ea_item_id, 1 storage, i.base_ea_id who
+               COALESCE(i.is_special,0) is_special, 1 is_untradeable, s.ea_item_id, 1 storage, i.base_ea_id who, i.rarity_name rarity
           FROM fut_sbc_storage s JOIN player_card_items i ON i.ea_item_id=s.ea_item_id AND i.game_version=s.game_version
          WHERE s.status='stored' AND s.game_version=? AND i.ovr IS NOT NULL""", (a.game,))]
     if stor:
@@ -1131,7 +1137,7 @@ def main():
     # ⭐ SBC가 박아 두는 고정 카드(migration 073) — 내 보유분이 아니지만 **조건에 그대로 들어간다**.
     FIXED = {}
     for r in con.execute("""SELECT f.challenge_ea_id, f.slot, f.name, f.ovr, f.club, f.league, f.nation, f.positions,
-                                   f.is_special, f.ea_item_id, i.base_ea_id who
+                                   f.is_special, f.ea_item_id, i.base_ea_id who, i.rarity_name rarity
                               FROM fc_sbc_fixed f LEFT JOIN player_card_items i
                                 ON i.ea_item_id=f.ea_item_id AND i.game_version=f.game_version
                              WHERE f.game_version=?""", (a.game,)):
@@ -1142,7 +1148,7 @@ def main():
              # ⛔ 거래 가능 여부·카드 아트는 **모른다** — fut.gg에 같은 선수 카드가 둘이라
              #    하나를 골라 그리면 화면이 거짓말을 한다. 텍스트로 물러선다(불변규칙 3).
              "card_image_url": None,
-             "chem_extra": None, "is_icon": 0, "is_hero": 0, "ea_item_id": r["ea_item_id"], "who": r["who"],
+             "chem_extra": None, "is_icon": 0, "is_hero": 0, "ea_item_id": r["ea_item_id"], "who": r["who"], "rarity": r["rarity"],
              "fixed": True, "slot": r["slot"]})
     if FIXED:
         print("📌 고정 카드 " + " · ".join(
